@@ -20,7 +20,7 @@
 
 %define         sover 2_2-2
 Name:           guvcview
-Version:        2.2.1
+Version:        2.2.2
 Release:        0
 Summary:        GTK+ UVC Viewer and Capturer
 # Reference to GPL-2.0 in some files?
@@ -30,27 +30,22 @@ URL:            https://guvcview.sourceforge.net/
 #Git-Clone:     git://git.code.sf.net/p/guvcview/git-master
 Source0:        https://sourceforge.net/projects/guvcview/files/source/guvcview-src-%{version}.tar.bz2
 Source1:        guvcview-qt.desktop
-Patch3:         0001-fix-deprecation-warning-with-ffpmeg-7.1-add-Wall-to-.patch
-Patch4:         0002-Fix-desktop-file-for-cmake.patch
 Patch5:         fix-linking.patch
 Patch6:         fix-pkgconfig-path.patch
-#
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libpng-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(gsl)
-BuildRequires:  pkgconfig(gtk+-3.0)
-# use ffmpeg7
-BuildRequires:  ffmpeg-7-libavcodec-devel
-BuildRequires:  ffmpeg-7-libavutil-devel
-#
-BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(Qt6Gui)
 BuildRequires:  pkgconfig(Qt6Widgets)
+BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(gsl)
+BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libv4l2)

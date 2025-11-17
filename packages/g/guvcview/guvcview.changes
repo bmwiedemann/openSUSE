@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov 14 16:55:53 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.2
+  * Apply ffmpeg8 and musl patches by Paul Zander.
+  * Update to SFML 3.0 .
+  * Fix some spelling errors.
+  * Add support for OBSMEET4K.
+- Drop patches:
+  * 0001-fix-deprecation-warning-with-ffpmeg-7.1-add-Wall-to-.patch
+  * 0002-Fix-desktop-file-for-cmake.patch
+
+-------------------------------------------------------------------
 Wed Nov 12 19:15:51 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Add desktop file for guvcview-qt6
