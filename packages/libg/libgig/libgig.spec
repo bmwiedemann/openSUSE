@@ -18,17 +18,17 @@
 #
 
 
-%define sover_gig  11
+%define sover_gig  13
 %define sover_akai 0
 Name:           libgig
-Version:        4.4.1
+Version:        4.5.1
 Release:        0
 Summary:        Library for loading Gigasampler and DLS Level 1/2 files
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://linuxsampler.org/
 Source0:        http://download.linuxsampler.org/packages/libgig-%{version}.tar.bz2
-BuildRequires:  c++_compiler
+BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(sndfile) >= 1.0.2
 BuildRequires:  pkgconfig(uuid)

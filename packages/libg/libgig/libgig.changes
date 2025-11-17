@@ -1,4 +1,134 @@
 -------------------------------------------------------------------
+Thu Nov 13 18:41:02 UTC 2025 - Edgar Aichinger <edogawa@aon.at>
+
+- Update to version 4.5.1 (07 Nov 2025)
+
+  * general changes:
+    * Fix typos in man page of wav2gig.
+    * Fix locale triggered misbehaviours (affecting floating point to string
+      conversions and vice versa).
+
+  * src/Serialization.cpp, src/Serialization.h:
+    * Fix compilation errors when serializing pointers.
+    * Fix serializing pointers by identifying whether they are strong or weak
+      pointers (bump encoded data stream format to Srx v1.2).
+    * Implement Object::setNativeValueFromString() for pointer types.
+    * Fix compiler error when using pointers as key type for Set and Map
+      containers.
+    * Fix serialization of pointer types for Map and Set containers.
+    * Fix serialization of Set and Map containers with strong pointers.
+    * Fix serialization of polymorphic strong pointers.
+    * Fix compiler warnings about uninitialized variables.
+    * Fix serializing polymorphic classes overriding the serialize() method.
+
+  * packaging changes:
+    * Debian: Raise compatibility level from 9 to 10.
+
+- Update to version 4.5.0 (02 Jun 2025)
+
+  * general changes:
+    * Make: add 'make check' rule which compiles and runs all test cases.
+    * Make: integrate helper functions tests into 'make check' rule.
+    * Pacify pedantic 'unused parameter' compiler warnings.
+    * Drop dependency to cppunit (optional test cases).
+    * Tests: add test cases for Serialization classes.
+    * Tests: add test cases for RIFF classes.
+    * Drop hopelessly outdated KDevelop files (these files haven't been
+      updated for the KDevelop IDE in years and the KDevelop project file
+      is written in a file format that's no longer supported by KDevelop
+      for many years).
+
+  * src/gig.cpp, src/gig.h:
+    * const-ify method Exception::PrintMessage().
+
+  * src/DLS.cpp, src/DLS.h:
+    * Mark Info::UseFixedLengthStrings member variable as deprecated on
+      compiler level (it was already marked deprecated on API doc level).
+    * Add new method File::CountSamples().
+    * Fix File::Save() from having calculated garbage progress values.
+    * Improve accuracy of File::Save() progress values.
+    * Fix undefined behaviour if File::Save() was called from another thread
+      than file was opened on and IsIOPerThread() being enabled.
+    * File::Save(): provide current, ongoing action as text with new
+      progress_t::activity member variable.
+    * Pacify false -Wdeprecated-declarations warning raised by GCC bug when
+      initializing Info::UseFixedLengthStrings member variable.
+    * const-ify method Exception::PrintMessage().
+
+  * src/RIFF.cpp, src/RIFF.h:
+    * Improve accuracy of File::Save() progress values.
+    * Raise compiler warning when trying to compile against libgig
+      without C++11 (or higher).
+    * Add progress_t::__private member variable (reserved for libgig internal
+      purposes only).
+    * Fix read() / write() calls to hang on POSIX systems by using -1 (instead
+      of 0) as invalid file descriptor (as 0 refers to stdin on POSIX systems).
+    * Add methods File::totalDataChunkCount(), File::totalListChunkCount() and
+      File::totalChunkCount().
+    * Add member variable 'activity' to struct progress_t, providing a text
+      describing the current, ongoing action (e.g. to be displayed along a
+      progress bar).
+    * Add (virtual) destructor to struct progress_t.
+    * const-ify method Exception::PrintMessage().
+    * Move Exception destructor implementation from header file to unit.
+    * const-ify methods progress_t::subdivide().
+    * Simplify Chunk::convertToString() implementation.
+    * Fix File::Save() progress jumping back and forth.
+
+  * src/Korg.cpp, src/Korg.h:
+    * const-ify method Exception::PrintMessage().
+
+  * src/Serialization.h:
+    * Fix an assertion fault with GCC when deserializing a member of native data
+      type std::vector<>.
+    * const-ify method Exception::PrintMessage().
+
+  * src/tools/gigdump.cpp:
+    * Replace deprecated GetFirstInstrument() / GetNextInstrument() calls by
+      GetInstrument() calls.
+    * Replace deprecated GetFirstRegion() / GetNextRegion() calls by
+      GetRegionAt() calls.
+    * Replace deprecated GetFirstSample() / GetNextSample() calls by
+      GetSample() calls.
+    * Replace deprecated GetFirstGroup() / GetNextGroup() calls by GetGroup()
+      calls.
+
+  * src/tools/gigextract.cpp:
+    * Replace deprecated GetFirstSample() / GetNextSample() calls by
+      GetSample() calls.
+
+  * src/tools/gig2stereo.cpp:
+    * Replace deprecated GetFirstInstrument() / GetNextInstrument() calls by
+      GetInstrument() calls.
+    * Replace deprecated GetFirstRegion() / GetNextRegion() calls by
+      GetRegionAt() calls.
+    * Replace deprecated GetFirstSample() / GetNextSample() calls by
+      GetSample() calls.
+    * Replace deprecated GetFirstGroup() / GetNextGroup() calls by GetGroup()
+      calls.
+
+  * src/tools/gig2mono.cpp:
+    * Replace deprecated GetFirstInstrument() / GetNextInstrument() calls by
+      GetInstrument() calls.
+    * Replace deprecated GetFirstRegion() / GetNextRegion() calls by
+      GetRegionAt() calls.
+    * Replace deprecated GetFirstSample() / GetNextSample() calls by
+      GetSample() calls.
+    * Use gig::File::CountSamples() instead of counting samples in a loop.
+
+  * src/tools/dlsdump.cpp:
+    * Replace deprecated GetFirstInstrument() / GetNextInstrument() calls by
+      GetInstrument() calls.
+    * Replace deprecated GetFirstRegion() / GetNextRegion() calls by
+      GetRegionAt() calls.
+    * Replace deprecated GetFirstSample() / GetNextSample() calls by
+      GetSample() calls.
+
+  * src/tools/rifftree.cpp:
+    * Replace deprecated GetFirstSubChunk() / GetNextSubChunk() calls by
+      GetSubChunkAt() calls.
+
+-------------------------------------------------------------------
 Tue Apr 23 21:05:31 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to version 4.4.1:
