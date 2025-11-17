@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Nov 14 21:16:23 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.6.2:
+  * chore: prepare release
+  * fix: fmt command with symlinks (#6187)
+  * build(deps): bump golangci/golangci-lint-action from 8.0.0 to 9.0.0 in the github-actions group (#6186)
+  * build(deps): bump golang.org/x/oauth2 from 0.32.0 to 0.33.0 in /scripts/gen_github_action_config in the scripts group (#6185)
+  * build(deps): bump github.com/maratori/testpackage from 1.1.1 to 1.1.2 (#6183)
+  * build(deps): bump github.com/maratori/testableexamples from 1.0.0 to 1.0.1 (#6182)
+  * build(deps): bump golang.org/x/sync from 0.17.0 to 0.18.0 (#6181)
+  * fix: use file depending on build configuration to invalidate cache (#6179)
+  * docs: improve fix flag description (#6175)
+  * docs: fix changelog
+  * docs: update GitHub Action assets (#6172)
+
+-------------------------------------------------------------------
 Tue Nov 04 14:39:56 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 2.6.1:
