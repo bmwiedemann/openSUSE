@@ -1779,4 +1779,12 @@
   * BUG/MEDIUM: mt_lists: Avoid el-&gt;prev = el-&gt;next = el</comment>
     <requestid>1316410</requestid>
   </revision>
+  <revision rev="170" vrev="2">
+    <srcmd5>d5a98f31156c5b82a97efb0d8b9826c5</srcmd5>
+    <version>3.2.8+git0.9200f398d</version>
+    <time>1763378215</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1317993</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov  7 20:10:51 UTC 2025 - Peter Varkoly <varkoly@suse.com>
+
+- Remove checks for not supported openSUSE versions
+- Remove deprecated build options: USE_RELRO_NOW=1, USE_STACKPROTECTOR=1, USE_PIE=1, USE_SYSTEMD=1
+- Remove deprecated ini file
+
+-------------------------------------------------------------------
 Fri Nov 07 10:18:45 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 3.2.8+git0.9200f398d:

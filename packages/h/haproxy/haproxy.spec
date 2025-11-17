@@ -34,34 +34,9 @@
 %bcond_without rc_symlink
 %endif
 
-%if 0%{?suse_version} >= 1230
-%bcond_without tcp_fast_open
-%bcond_without network_namespace
-%else
-%bcond_with tcp_fast_open
-%bcond_with network_namespace
-%endif
-
-%if 0%{?suse_version} > 1320
-%bcond_without lua
-%else
-%bcond_with    lua
-%endif
-
-%if 0%{?suse_version} >= 1310
-%bcond_without systemd
-%else
-%bcond_with systemd
-%endif
-
 %bcond_without pcre2_jit
 
 %bcond_without  apparmor
-%if 0%{?suse_version} > 1320
-%bcond_without apparmor_reload
-%else
-%bcond_with    apparmor_reload
-%endif
 
 %if 0%{?suse_version} >= 1500
 %bcond_without sysusers
@@ -82,7 +57,6 @@ Group:          Productivity/Networking/Web/Proxy
 URL:            https://www.haproxy.org/
 #               source URL in _service file
 Source:         haproxy-%{version}.tar.gz
-Source1:        %{pkg_name}.init
 Source2:        usr.sbin.haproxy.apparmor
 Source3:        local.usr.sbin.haproxy.apparmor
 Source4:        haproxy.cfg
@@ -109,39 +83,22 @@ Obsoletes:      haproxy-1.5 < %{version}
 #
 #
 %if %{with apparmor}
-%if 0%{?suse_version} <= 1315
-BuildRequires:  apparmor-profiles
-Recommends:     apparmor-profiles
-%else
 BuildRequires:  apparmor-abstractions
 Recommends:     apparmor-abstractions
-%endif
-%if %{with apparmor_reload}
 BuildRequires:  apparmor-rpm-macros
 %endif
-%endif
-%if %{with lua}
 BuildRequires:  lua-devel >= 5.3
-%endif
 %if %{with awslc}
 BuildRequires:  aws-lc-devel
 %else
 BuildRequires:  openssl-devel
 %endif
-%if %{with systemd}
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
-%if %{with sysusers}
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
-%endif
-%endif
-%if %{with systemd}
 %{?systemd_ordering}
-%if %{with sysusers}
 %sysusers_requires
-%endif
-%endif
 
 %description
 HAProxy implements an event-driven, mono-process model which enables support
@@ -175,22 +132,10 @@ cp %{SOURCE7} .
 %else
     USE_OPENSSL=1 \
 %endif
-    %if %{with lua}
     USE_LUA=1 \
-    %endif
     USE_ZLIB=1 \
-    %if %{with tcp_fast_open}
     USE_TFO=1 \
-    %endif
-    %if %{with network_namespace}
     USE_NS=1 \
-    %endif
-%if %{with systemd}
-    USE_SYSTEMD=1 \
-%endif
-    USE_PIE=1 \
-    USE_STACKPROTECTOR=1 \
-    USE_RELRO_NOW=1 \
     LIB="%{_lib}" \
     PREFIX="%{_prefix}" \
     USE_PROMEX=1 \
@@ -207,12 +152,8 @@ cp %{SOURCE7} .
     USE_MEMORY_PROFILING=1 \
     %endif
     DEBUG_CFLAGS="%{optflags}" V=1
-%if %{with systemd}
 %make_build -C admin/systemd  PREFIX="%{_prefix}"
-%if %{with sysusers}
 %sysusers_generate_pre %{SOURCE5} haproxy haproxy-user.conf
-%endif
-%endif
 %make_build admin/halog/halog DEBUG_CFLAGS="%{optflags}"
 
 %install
@@ -222,22 +163,12 @@ install    -m 0640 %{SOURCE4}              %{buildroot}%{_sysconfdir}/%{pkg_name
 
 install -D -m 0755 admin/halog/halog %{buildroot}%{_sbindir}/haproxy-halog
 
-%if %{with systemd}
 install -D -m 0644 admin/systemd/%{pkg_name}.service  %{buildroot}%{_unitdir}/%{pkg_name}.service
 %if %{with rc_symlink}
 ln -sf /sbin/service   %{buildroot}%{_sbindir}/rc%{pkg_name}
 %endif
-%if %{with sysusers}
 install -D -m 644 %{SOURCE5} %{buildroot}%{_sysusersdir}/haproxy-user.conf
-%endif
-%if %{with tmpfiles}
 install -D -m 644 %{SOURCE6} %{buildroot}%{_tmpfilesdir}/%{name}.conf
-%endif
-%else
-install -D -m 0755 %{SOURCE1}                      %{buildroot}%{_sysconfdir}/init.d/%{pkg_name}
-ln -fs %{_sysconfdir}/init.d/%{pkg_name} %{buildroot}%{_sbindir}/rc%{pkg_name}
-%endif
-
 install -d -m 0750                          %{buildroot}%{pkg_home}
 install -D -m 0644 admin/syntax-highlight/haproxy.vim     %{buildroot}%{vim_data_dir}/syntax/%{pkg_name}.vim
 install -D -m 0644 doc/%{pkg_name}.1        %{buildroot}%{_mandir}/man1/%{pkg_name}.1
@@ -250,23 +181,14 @@ install -D -m 0644 %{SOURCE3}                   %{buildroot}%{_sysconfdir}/appar
 rm examples/*init*
 
 
-%if %{with systemd}
-%if %{with sysusers}
 %pre -f haproxy.pre
-%else
-%pre
-%endif
 %service_add_pre %{pkg_name}.service
 
 %post
-%if %{with apparmor} && %{with apparmor_reload}
+%if %{with apparmor}
 %apparmor_reload %{_sysconfdir}/apparmor.d/usr.sbin.haproxy
 %endif
-%if %{with systemd}
-%if %{with tmpfiles}
 %tmpfiles_create %{_tmpfilesdir}/%{name}.conf
-%endif
-%endif
 %service_add_post %{pkg_name}.service
 
 %preun
@@ -274,26 +196,6 @@ rm examples/*init*
 
 %postun
 %service_del_postun %{pkg_name}.service
-%else
-%pre
-getent group %{pkg_name} >/dev/null || %{_sbindir}/groupadd -r %{pkg_name}
-getent passwd %{pkg_name} >/dev/null || \
-	%{_sbindir}/useradd  -g %{pkg_name} -s /bin/false -r \
-	-c "user for %{pkg_name}" -d %{pkg_home} %{pkg_name}
-
-%post
-%fillup_and_insserv %{pkg_name}
-%if %{with apparmor} && %{with apparmor_reload}
-%apparmor_reload %{_sysconfdir}/apparmor.d/usr.sbin.haproxy
-%endif
-
-%preun
-%stop_on_removal %{pkg_name}
-
-%postun
-%restart_on_update %{pkg_name}
-%insserv_cleanup
-%endif
 
 %files
 %license LICENSE
@@ -302,18 +204,10 @@ getent passwd %{pkg_name} >/dev/null || \
 %doc admin/netsnmp-perl/ admin/selinux/
 %dir %attr(-,root,haproxy) %{_sysconfdir}/%{pkg_name}
 %config(noreplace) %attr(-,root,haproxy) %{_sysconfdir}/%{pkg_name}/*
-%if %{with systemd}
 %{_unitdir}/%{pkg_name}.service
-%if %{with sysusers}
 %{_sysusersdir}/haproxy-user.conf
-%endif
-%if %{with tmpfiles}
 %{_tmpfilesdir}/%{name}.conf
 %dir %ghost %{_rundir}/%{name}
-%endif
-%else
-%config(noreplace) %{_sysconfdir}/init.d/%{pkg_name}
-%endif
 %{_sbindir}/haproxy
 %{_sbindir}/haproxy-halog
 %if %{with rc_symlink}
