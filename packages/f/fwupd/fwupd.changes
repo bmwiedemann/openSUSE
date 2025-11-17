@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Tue Nov 11 16:11:26 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Do not try to load i2c_dev kernel module on s390x. S390x has no
+  native i2c devices and does not have the module (bsc#1253138).
+
+-------------------------------------------------------------------
+Wed Nov  5 16:39:37 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.0.17:
+  + This release adds the following features:
+    - Add support for client-side phased update deployment
+    - Add support for post-quantum signatures
+    - Allow clearing the cache dirirectory
+    - Allow fwupdtpmevlog to dump the raw eventlog data
+    - Build a NVMe GUID derived from the serial number
+    - Make fwupdtool extract work with deeply nested images
+    - Parse VSS and FTW variable stores from EFI volumes
+    - Reintroduce the FreeBSD CI target
+    - Support very old versions of UDisks
+  + This release fixes the following bugs:
+    - Add 'fwupdmgr hwids' by exposing another daemon property
+    - Add offline hashes for the Microsoft 20250902 dbx
+    - Add the Framework-specific KEK and db hashes
+    - Allow updating IFD BIOS region via parent MTD
+    - Avoid showing reinstall prompts for composite devices
+    - Clean up the fwupdtool lock file in all cases
+    - Correctly match the correct historical composite component
+    - Do not allow PK or KEK updates when system has a test key installed
+    - Do not allow reinstalling when using ONLY_VERSION_UPGRADE
+    - Do not require AC power to run the installed tests
+    - Do not scan EFI volumes when constructing MTD BIOS devices
+    - Ensure REGION is always set for MTD IFD children
+    - Ensure SCSI instance IDs are valid ASCII values
+    - Fix a critical warning when parsing invalid Jabra firmware
+    - Fix an Ilitek parsing crash found when fuzzing
+    - Fix an inotify race when refreshing metadata
+    - Fix a pending-activation problem with Dell docking stations
+    - Fix a potential hang when creating a chunk array with aligned sizes
+    - Fix MTD emulation recording for PCI-backed devices
+    - Fix the device order when the parent specifies install-parent-first
+    - Fix the FLMSTR layout when reading IFD partitions
+    - Fix the thunderbolt controller rushing to finalize before onlining retimers
+    - Fix writing Intel GPU OptionROM data and OptionROM code
+    - Flush stale events to make the Logitech Rallybar more reliable
+    - Ignore all the Intel GPU MTD devices
+    - Ignore errors when writing the last page of Dell dock firmware
+    - Make an error message more specific
+    - Modify the Dell dock needs-activation flag after updates are installed
+    - Only add one devlink device for each PCI card
+    - Parse the FMAP SBOM area as uSWID when required
+    - Relax the USI dock DMC child device checks for new firmware
+    - Revert back to the flashrom deprecated API as the new API is unusable
+    - Rewrite the fwupdmgr manpage to be more useful
+    - Use higher delay when update status for Logitech peripheral devices
+  + This release adds support for the following hardware:
+    - ASUS CX9406 (touch controller)
+    - Framework Copilot keyboard
+    - Genesys GL352530 and GL352360
+    - Huddly C1
+    - Lexar and Maxio NVMe SSDs
+    - Primax Ryder mouse 2
+- Add pkgconfig(libmnl) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
 Thu Oct  2 11:10:01 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Fix file list

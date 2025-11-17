@@ -44,7 +44,7 @@
 %define docs 0
 
 Name:           fwupd
-Version:        2.0.16
+Version:        2.0.17
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -107,6 +107,7 @@ BuildRequires:  pkgconfig(libcurl) >= 7.62.0
 BuildRequires:  pkgconfig(libdrm_amdgpu)
 BuildRequires:  pkgconfig(libelf)
 BuildRequires:  pkgconfig(libgcab-1.0) >= 1.0
+BuildRequires:  pkgconfig(libmnl)
 BuildRequires:  pkgconfig(libprotobuf-c)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libusb-1.0) >= 0.1.27
@@ -252,6 +253,9 @@ export CFLAGS="%{optflags} -D_GNU_SOURCE"
 
 %install
 %meson_install
+%ifarch s390x
+rm -f %{buildroot}%{_modulesloaddir}/fwupd-i2c.conf
+%endif
 %find_lang %{name}
 %fdupes -s %{buildroot}%{_datadir}/doc
 
@@ -328,7 +332,9 @@ rm -fr %{buildroot}%{_datadir}/fish
 %endif
 %endif
 %{_datadir}/polkit-1/actions/org.freedesktop.fwupd.policy
+%ifnarch s390x
 %{_modulesloaddir}/fwupd-i2c.conf
+%endif
 %if %{with msr_support}
 %dir %{_modulesloaddir}
 %{_modulesloaddir}/fwupd-msr.conf
@@ -337,11 +343,13 @@ rm -fr %{buildroot}%{_datadir}/fish
 %dir %{_sysconfdir}/pki
 %dir %{_sysconfdir}/pki/fwupd
 %dir %{_sysconfdir}/pki/fwupd-metadata
-%{_sysconfdir}/pki/fwupd-metadata/GPG-KEY-Linux-Vendor-Firmware-Service
 %{_sysconfdir}/pki/fwupd-metadata/GPG-KEY-Linux-Foundation-Metadata
+%{_sysconfdir}/pki/fwupd-metadata/GPG-KEY-Linux-Vendor-Firmware-Service
+%{_sysconfdir}/pki/fwupd-metadata/LVFS-CA-2025PQ.pem
 %{_sysconfdir}/pki/fwupd-metadata/LVFS-CA.pem
-%{_sysconfdir}/pki/fwupd/GPG-KEY-Linux-Vendor-Firmware-Service
 %{_sysconfdir}/pki/fwupd/GPG-KEY-Linux-Foundation-Firmware
+%{_sysconfdir}/pki/fwupd/GPG-KEY-Linux-Vendor-Firmware-Service
+%{_sysconfdir}/pki/fwupd/LVFS-CA-2025PQ.pem
 %{_sysconfdir}/pki/fwupd/LVFS-CA.pem
 %if %{with efi_fw_update}
 %dir %{_sysconfdir}/grub.d
