@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Nov 13 20:58:44 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.20.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.20.0
+- Changes since 6.19.0:
+  * Update dependency version to 6.20.0
+  * Use CamelCase Qt include
+  * 7z: Change for{if{}} to if{for{}}
+  * autotests/kcompressiondevicetest.cpp spell check
+  * 7z: Fix infinite loop in malformed file
+  * ktar: Fix/Tweak the skip error condition
+  * Add nodiscard attribute to open(...) declarations
+  * ktar: Optimize memory allocations
+  * KTar: Use skip instead of seek for skipping
+  * testTarReadWrite: Also test with KCompressionDevice
+  * Add some const
+  * 7z: Fix assert/crash in malformed file
+  * Explicitly convert enum to int for QString::arg
+  * 7z: Break early on failure in K7ZipPrivate::folderItem
+  * Update version to 6.20.0
+
+-------------------------------------------------------------------
 Tue Oct  7 17:06:11 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.19.0
