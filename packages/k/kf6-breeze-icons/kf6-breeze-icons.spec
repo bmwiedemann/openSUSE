@@ -19,11 +19,11 @@
 %define qt6_version 6.8.0
 
 %define rname breeze-icons
-# Full KF6 version (e.g. 6.19.0)
+# Full KF6 version (e.g. 6.20.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-breeze-icons
-Version:        6.19.0
+Version:        6.20.0
 Release:        0
 Summary:        Breeze icon theme
 License:        LGPL-3.0-only
@@ -33,10 +33,6 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-# PATCH-FIX-OPENSUSE boo#1226207
-Patch1:         kf6-breeze-icons-generate-dark.patch
-# PATCH-FIX-OPENSUSE boo#1226207
-Patch2:         kf6-breeze-icons-skip-unused.patch
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
 BuildRequires:  libxml2-tools
