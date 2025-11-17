@@ -27,7 +27,7 @@
 %define         short_name immutabledict
 %{?sle15_python_module_pythons}
 Name:           python-%{short_name}%{psuffix}
-Version:        4.2.1
+Version:        4.2.2
 Release:        0
 Summary:        Immutable wrapper around dictionaries (a fork of frozendict)
 License:        MIT
@@ -35,7 +35,7 @@ URL:            https://github.com/corenting/immutabledict
 Source:         https://files.pythonhosted.org/packages/source/i/immutabledict/immutabledict-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core}
+BuildRequires:  %{python_module poetry-core >= 2.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  %{python_module wheel}
