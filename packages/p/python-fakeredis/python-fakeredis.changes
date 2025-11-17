@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov 14 13:57:32 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.32.1
+  * fix:support for py3.7 #423
+  * fix:`xpending_range` to return all 4 required fields
+    per Redis spec @zzstoatzz #427
+  * fix[TcpFakeServer]: add exception prefix #432
+  * Update tests to support redis-py 7.0.1
+  * Update tests to support valkey 9.0.0
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Mon Nov  3 04:58:17 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.32.0:
