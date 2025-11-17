@@ -1,0 +1,16 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fc7a3980d00bb0cd606faad6e66fd6b3</srcmd5>
+    <version>20250220.02</version>
+    <time>1763378277</time>
+    <user>anag_factory</user>
+    <comment>This package provides the dock updater needed to update the official Steam Deck dock.
+Another package, jupiter-hw-support, expects the files to land in /usr/lib.
+
+(Request for that package will follow, it is not required for this to work :) )
+
+This package is only a download script that downloads the files.
+It follows how this package works, the use cases are very similar/identical: https://build.opensuse.org/package/show/openSUSE:Factory/fetchmsttfonts</comment>
+    <requestid>1318030</requestid>
+  </revision>
+</revisionlist>

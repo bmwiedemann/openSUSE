@@ -1,0 +1,109 @@
+#!/bin/sh
+
+BASE_URL="https://steamdeck-packages.steamos.cloud/archlinux-mirror/jupiter-main/os/x86_64"
+PKG_VERSION="__VERSION__"
+PKG_NAME="jupiter-dock-updater-bin-${PKG_VERSION}-1-x86_64.pkg.tar.zst"
+PKG_URL="${BASE_URL}/${PKG_NAME}"
+
+CHECKSUM_FILE="/usr/share/__NAME__/jupiter-dock-updater.pkg.sha256"
+TARGET_DIR="/usr/lib/jupiter-dock-updater"
+POST_MESSAGE="/var/adm/update-messages/__NAME__-__VERSION__-__RELEASE__-1"
+
+exit_code=1
+for arg in "$@"; do
+    if [ "$arg" = "--no-fail" ]; then
+        exit_code=0
+        break
+    fi
+done
+
+if [ -e "${TARGET_DIR}/jupiter-dock-updater.sh" ]; then
+    echo "*** No update necessary. Dock updater already installed in ${TARGET_DIR}. ***"
+    exit 0
+fi
+
+tmpname=$(basename "$0")
+tmpdir=$(mktemp -d "/tmp/$tmpname.XXXXXX")
+trap "rm -rf \"$tmpdir\"" EXIT
+
+if [ ! -d "$tmpdir" ] || [ -z "$tmpdir" ]; then
+    echo "$0: Can't create temp dir, exiting..."
+    exit $exit_code
+fi
+
+cd "$tmpdir" || exit $exit_code
+
+echo "Dock updater package:"
+echo "  ${PKG_NAME}"
+echo -n "  Fetching   ... "
+
+if ! curl -L -s -o "$PKG_NAME" "$PKG_URL"; then
+    echo "failed!"
+    if [ "$exit_code" -ne 0 ]; then
+        exit $exit_code
+    fi
+    echo "*** No dock updater installed. ***" | tee "$POST_MESSAGE"
+    exit 0
+fi
+
+echo "done"
+
+if [ -f "$CHECKSUM_FILE" ]; then
+    if ! grep " $PKG_NAME" "$CHECKSUM_FILE" | sha256sum --check --quiet --status >/dev/null 2>&1; then
+        echo "checksum mismatch for $PKG_NAME ... deleted!"
+        rm -f "$PKG_NAME"
+        if [ "$exit_code" -ne 0 ]; then
+            exit $exit_code
+        fi
+        echo "*** No dock updater installed. ***" | tee "$POST_MESSAGE"
+        exit 0
+    fi
+fi
+
+echo -n "  Extracting ... "
+if ! tar --zstd -xf "$PKG_NAME"; then
+    echo "failed!"
+    if [ "$exit_code" -ne 0 ]; then
+        exit $exit_code
+    fi
+    echo "*** No dock updater installed. ***" | tee "$POST_MESSAGE"
+    exit 0
+fi
+echo "done"
+
+if [ ! -d "usr/lib/jupiter-dock-updater" ]; then
+    echo "Expected directory usr/lib/jupiter-dock-updater not found in package."
+    if [ "$exit_code" -ne 0 ]; then
+        exit $exit_code
+    fi
+    echo "*** No dock updater installed. ***" | tee "$POST_MESSAGE"
+    exit 0
+fi
+
+mkdir -p "$TARGET_DIR"
+
+for f in \
+    hub_update \
+    jaguar-b0_LUXSHARE_spi_image_V0.013.15.0.128_20250213.bin \
+    jaguar-b0_mca_i2c_isp_driver_payload.bin \
+    jupiter-dock-updater-mock.sh \
+    jupiter-dock-updater.sh \
+    update.ini
+do
+    if [ -f "usr/lib/jupiter-dock-updater/$f" ]; then
+        case "$f" in
+            *.sh|hub_update)
+                install -m 0755 "usr/lib/jupiter-dock-updater/$f" "$TARGET_DIR/$f"
+                ;;
+            *)
+                install -m 0644 "usr/lib/jupiter-dock-updater/$f" "$TARGET_DIR/$f"
+                ;;
+        esac
+    else
+        echo "Warning: file $f not found in package."
+    fi
+done
+
+echo "*** Dock updater installed in $TARGET_DIR. ***" | tee "$POST_MESSAGE"
+
+exit 0
