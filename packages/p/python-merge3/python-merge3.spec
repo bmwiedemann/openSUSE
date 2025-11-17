@@ -16,9 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-merge3
-Version:        0.0.15
+Version:        0.0.16
 Release:        0
 Summary:        Python implementation of 3-way merge
 License:        GPL-2.0-or-later

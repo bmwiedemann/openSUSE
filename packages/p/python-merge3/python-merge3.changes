@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Nov 14 15:25:30 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.0.16
+  * Format with ruff
+  * Upgrade action
+  * Add missing dollar sign
+  * Update copyright headers
+  * Drop python 3.7, 3.8, add 3.13
+  * Migrate disperse configuration to toml
+  * Fix spelling errors
+  * Use disperse action
+  * [master 074b9b7] Add code of conduct
+  * Fix spelling errors
+  * auto-merge dependabot PRs
+  * Fix setuptools deprecation warnings in pyproject.toml
+  * Add Python 3.14 support
+  * Add typing
+- Switch package to modern Python Stack on SLE-15
+  * Use Python 3.11 on SLE-15 by default
+  * Drop support for older Python versions
+
+-------------------------------------------------------------------
 Thu Nov 14 08:13:30 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.0.15
