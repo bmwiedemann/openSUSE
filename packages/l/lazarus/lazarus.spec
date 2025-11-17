@@ -1,7 +1,7 @@
 #
 # spec file for package lazarus
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define qt5_sover   1
 %define qt6_sover   6
 Name:           lazarus
-Version:        4.2
+Version:        4.4
 Release:        0
 # Please note that the LGPL is modified and this is not multi-licensed, but each component has a separate license chosen.
 Summary:        FreePascal RAD IDE and Component Library
@@ -248,6 +248,9 @@ chmod +x components/aggpas/examples/build_find_compile/build-find_compilers_mac
 chmod +x components/aggpas/examples/build_find_compile/build-upi
 chmod +x components/aggpas/examples/build_find_compile/build-x11
 chmod +x components/fpweb/images/make_fpweb_images_res.sh
+
+# reset executable bit to fix rpmlint error "script-without-shebang"
+chmod -x lcl/include/screen.inc
 
 # remove git ignore files to prevent them from being installed to fix rpmlint error "version-control-internal-file"
 find . \( -name ".gitignore" \) -delete
