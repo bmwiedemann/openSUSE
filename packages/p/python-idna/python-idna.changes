@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 11 09:04:52 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.11
+  * Update to Unicode 16.0.0, including significant changes to
+    UTS46 processing. As a result of Unicode ending support for
+    it, transitional processing no longer has an effect and
+    returns the same result.
+  * Add support for Python 3.14, lowest supported version is Python 3.8.
+  * Various updates to packaging, including PEP 740 support.
+
+-------------------------------------------------------------------
 Wed Oct 23 13:14:53 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.10

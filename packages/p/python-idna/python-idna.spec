@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-idna
-Version:        3.10
+Version:        3.11
 Release:        0
 Summary:        Internationalized Domain Names in Applications (IDNA)
 License:        BSD-3-Clause
