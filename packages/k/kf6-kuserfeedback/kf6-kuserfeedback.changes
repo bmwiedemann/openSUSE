@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Nov 13 20:59:00 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.20.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.20.0
+- Changes since 6.19.0:
+  * Update dependency version to 6.20.0
+  * Properly handling large timeouts for encouragement timer (kde#511102)
+  * Use const pointer
+  * Add missing explicit keyword
+  * Port deprecated invalidateFilter method (qt6.10). Use beginFilterChange/endFilterChange
+  * Use QCOMPARE vs QVERIFY
+  * Remove old qt check
+  * Update version to 6.20.0
+
+-------------------------------------------------------------------
 Tue Oct  7 17:06:27 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.19.0
