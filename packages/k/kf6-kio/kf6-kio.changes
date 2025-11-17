@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Nov 13 20:58:53 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.20.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.20.0
+- Too many changes since 6.19.0, only listing bugfixes:
+  * trashimpl: better determine trashForMountPoint for network file systems (kde#506755)
+  * KCoreDirLister: Enable using mime globs (kde#450612)
+  * [http] Remember that we're doing webdav while handling redirects (kde#486790)
+  * kfileitems: Use internal name again for sorting
+  * CopyJob: Skip permission check if there is no UDS_ACCESS entry (kde#510567)
+  * KFilePlaces: add a link to systemsettings recent config (kde#507966)
+  * [ftp] Claim that dir is writable during stat (kde#510456)
+  * trash: force confirmation for ERR_TRASH_FILE_TOO_LARGE (kde#475235)
+
+-------------------------------------------------------------------
 Thu Oct 16 20:48:29 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.19.1

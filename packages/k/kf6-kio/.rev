@@ -188,4 +188,12 @@
   * CopyJob: Skip permission check if there is no UDS_ACCESS entry</comment>
     <requestid>1311804</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>e1867db71be4c28165cbf92609f7434a</srcmd5>
+    <version>6.20.0</version>
+    <time>1763377859</time>
+    <user>anag_factory</user>
+    <comment>KDE Frameworks 6.20.0</comment>
+    <requestid>1317895</requestid>
+  </revision>
 </revisionlist>
