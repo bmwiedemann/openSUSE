@@ -17,7 +17,7 @@
 
 
 Name:           qubesome
-Version:        0.0.15
+Version:        0.0.16
 Release:        0
 Summary:        Containerize Window Managers, apps and config from a declarative state in Git
 License:        Apache-2.0

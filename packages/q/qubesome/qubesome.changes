@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Nov 16 12:02:11 UTC 2025 - Paulo Gomes <pjbgf@linux.com>
+
+- Update to version 0.0.16:
+  * build: Remove protoc version prefix
+  * fix(deps): update module golang.org/x/term to v0.37.0
+  * chore(deps): update dependency protocolbuffers/protobuf to v33.1
+  * chore(deps): update dependency golangci/golangci-lint to v2.6.1
+  * chore(deps): update dependency protocolbuffers/protobuf to v33
+  * chore(deps): update dependency golangci/golangci-lint to v2.6.0
+  * build: Remove renovate workflow This is being replaced by the workflow in qubesome/.github: https://github.com/qubesome/.github/blob/main/.github/workflows/renovate.yml
+  * build: Add renovate workflow
+  * build: Add renovate workflow
+  * build(deps): bump github.com/urfave/cli/v3 from 3.5.0 to 3.6.0
+  * build(deps): bump golang.org/x/sys in the golang-org group
+  * build: Transition to new archives config x-ref: https://goreleaser.com/deprecations/#archivesformat
+  * build: Add support for new cosign bundle
+
+-------------------------------------------------------------------
 Wed Nov 05 09:33:50 UTC 2025 - Paulo Gomes <pjbgf@linux.com>
 
 - Update to version 0.0.15:
