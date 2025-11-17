@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov 15 12:59:29 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 3.16.2.
+  Changelog: https://github.com/GrandOrgue/grandorgue/releases/tag/3.16.2-1
+  - Added option of BAS/MEL coupler behaviour to fix missed notes https://github.com/GrandOrgue/grandorgue/issues/1672
+  - Fixed displaying more than 10 enclosures on the CouplerManualsAndVolume panel https://github.com/GrandOrgue/grandorgue/issues/2100
+
+-------------------------------------------------------------------
 Thu Aug 28 15:28:10 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 3.16.1.
