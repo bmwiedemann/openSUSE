@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Nov 14 10:19:33 UTC 2025 - ecsos <ecsos@opensuse.org> - 5.5.2
+
+- Update to 5.5.2
+  * Security
+    - #23775 Properly escape transitions export overlay title
+    - #23761 Fix AI referrer detection cache
+    - #23754 Fix superuser check in logme method
+    - #23700 Ensure to only invalidate segment for desired site
+
+-------------------------------------------------------------------
+Tue Oct 21 09:41:20 UTC 2025 - ecsos <ecsos@opensuse.org> - 5.5.1
+
+- Update to 5.5.1
+  * Security
+    - #23648 Show plugins update count asynchronously with 5 minute caching
+    - #23650 Secondary dimension in event report takes over the header
+    - #23653 Do not update report title for secondary dimension reports
+
+-------------------------------------------------------------------
 Wed Oct  8 10:59:27 UTC 2025 - ecsos <ecsos@opensuse.org> - 5.5.0
 
 - Update to 5.5.0
