@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Nov 13 19:21:42 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.8.1
+  * Crash (sigsegv) after AX.25 connection attempt timeout with
+    AGW network interface.
+- Update to version 1.8
+  New Features:
+  * Added support for libgpiod version 2. This is needed for GPIO
+    PTT on Raspberry Pi OS 13 trixie. You will need to install
+    libgpiod-dev before building.
+  * Support for CM108 PTT on Mac.
+  * New NCHANNEL feature to map a channel number to an external
+    network TCP KISS TNC. See APRS-LoRa-VHF-APRS-Bridge.pdf for
+    explanation and example.
+  * http://www.aprs.org/aprs11/tocalls.txt has been abandoned since
+    the end of 2021. https://github.com/aprsorg/aprs-deviceid is
+    now the authoritative source of truth for the vendor/model
+    encoding.
+  * New direwolf icon.
+  * Enhanced IGate functionality to allow downloading from all 
+    CWOP servers concurrently.
+- Drop patch:
+  * fix-udev-rules-path.patch
+
+-------------------------------------------------------------------
 Wed Feb 12 10:56:10 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.7 (boo#1212912)

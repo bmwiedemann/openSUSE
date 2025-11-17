@@ -3,15 +3,15 @@
 #
 # Copyright (c) 2017 Walter Fey DL8FCL
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 SUSE LLC and contributors
 # 
 # This file is under MIT license
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 Name:           direwolf
-Version:        1.7
+Version:        1.8.1
 Release:        0
 Summary:        Software "soundcard" modem/TNC and APRS
 License:        GPL-2.0-only
@@ -19,15 +19,14 @@ Group:          Productivity/Hamradio/Other
 URL:            https://github.com/wb2osz/direwolf
 Source0:        https://github.com/wb2osz/direwolf/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        direwolf.desktop
-Patch1:         fix-udev-rules-path.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(avahi-core)
 BuildRequires:  pkgconfig(hamlib)
 BuildRequires:  pkgconfig(libgps)
 BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(avahi-core)
 
 %description
 Dire Wolf is a software "soundcard" modem/TNC and APRS * encoder/decoder. It
@@ -68,7 +67,7 @@ install -D --mode=644 %{SOURCE1} %{buildroot}%{_datadir}/applications/direwolf.d
 %{_datadir}/applications/%{name}.desktop
 %{_prefix}/lib/udev/rules.d/99-direwolf-cmedia.rules
 %{_datadir}/pixmaps/direwolf_icon.png
-%{_mandir}/*/*
+%{_mandir}/man1/*1%{?ext_man}
 
 %files doc
 %license LICENSE
