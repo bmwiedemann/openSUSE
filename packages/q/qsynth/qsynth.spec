@@ -1,7 +1,7 @@
 #
 # spec file for package qsynth
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2014 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,17 +18,18 @@
 
 
 Name:           qsynth
-Version:        0.9.13
+Version:        1.0.3
 Release:        0
 Summary:        Graphical User Interface for fluidsynth
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Midi
 URL:            https://qsynth.sourceforge.net/qsynth-index.html
+#Git-Clone:     https://git.code.sf.net/p/qsynth/code
 Source:         https://sourceforge.net/projects/qsynth/files/qsynth/%{version}/qsynth-%{version}.tar.gz
 Patch0:         qsynth-fix_desktop_file.patch
-Patch1:         0001-Fixed-system-tray-icon-to-a-32x32-pixmap.patch
 BuildRequires:  cmake
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6Gui)
@@ -66,12 +67,13 @@ toolkit using Qt Designer.
 %{_datadir}/applications/org.rncbc.%{name}.desktop
 %{_datadir}/icons/*/*/apps/org.rncbc.qsynth.png
 %{_datadir}/icons/hicolor/scalable/apps/org.rncbc.qsynth.svg
+%dir %{_datadir}/%{name}
+%{_datadir}/%{name}/palette
 %{_datadir}/metainfo
-%{_mandir}/man1/qsynth.1%{ext_man}
-%{_mandir}/fr/man1/qsynth.1%{ext_man}
+%{_mandir}/man1/qsynth.1%{?ext_man}
+%{_mandir}/fr/man1/qsynth.1%{?ext_man}
 
 %files lang -f %{name}.lang
-%dir %{_datadir}/qsynth
 %{_datadir}/qsynth/translations
 
 %changelog

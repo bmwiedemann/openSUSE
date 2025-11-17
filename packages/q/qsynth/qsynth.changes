@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Nov 14 18:34:13 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.3
+  * Master gain front panel control now ranges from 0..1000, with
+    default still at 100 (unit gain).
+  * Fixed command line parsing (QCommandLineParser/Option) to not
+    exiting the application with a segfault when showing help and
+    version information.
+  * Peppino knob style adjusted to lighter custom color themes.
+- Update to version 1.0.2
+  * Peppino knob graphic style refined to follow designated
+    palette color theme (and not being such an ugly style
+    anymore;)).
+- Update to version 1.0.1
+  * Setup/Settings editor: differ between edit text being changed
+    and just finished and committed.
+- Update to version 1.0.0
+  * Cancel button option added to close to system-tray icon
+    message.
+  * Introduce Setup/Settings custom editing per engine.
+- Update to version 0.9.91
+  * Updated to latest framework level (Qt >= 6.7)
+- Update to version 0.9.90
+  * Custom color themes are now file based (*.conf); legacy still
+    preserved ntl.
+- Drop patch:
+  * 0001-Fixed-system-tray-icon-to-a-32x32-pixmap.patch
+
+-------------------------------------------------------------------
 Tue Apr  2 06:19:42 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Require pipewire at build time
