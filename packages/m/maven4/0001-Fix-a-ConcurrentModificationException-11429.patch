@@ -1,0 +1,39 @@
+From f471d7940be6df851872c6506e9dfbdc346f3130 Mon Sep 17 00:00:00 2001
+From: Martin Desruisseaux <martin.desruisseaux@geomatys.com>
+Date: Mon, 10 Nov 2025 22:13:16 +0100
+Subject: [PATCH 1/2] Fix a `ConcurrentModificationException` (#11429)
+
+The exception was observed in the integration tests of Maven Compiler Plugin when Maven is executed with the `-T4` option.
+---
+ .../java/org/apache/maven/impl/DefaultDependencyResolver.java | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/impl/maven-impl/src/main/java/org/apache/maven/impl/DefaultDependencyResolver.java b/impl/maven-impl/src/main/java/org/apache/maven/impl/DefaultDependencyResolver.java
+index d29c3f369a..4e955f0901 100644
+--- a/impl/maven-impl/src/main/java/org/apache/maven/impl/DefaultDependencyResolver.java
++++ b/impl/maven-impl/src/main/java/org/apache/maven/impl/DefaultDependencyResolver.java
+@@ -21,11 +21,11 @@
+ import java.io.IOException;
+ import java.nio.file.Path;
+ import java.util.Collection;
+-import java.util.HashMap;
+ import java.util.List;
+ import java.util.Map;
+ import java.util.Objects;
+ import java.util.Set;
++import java.util.concurrent.ConcurrentHashMap;
+ import java.util.function.Predicate;
+ import java.util.stream.Collectors;
+ 
+@@ -85,7 +85,7 @@ public class DefaultDependencyResolver implements DependencyResolver {
+      */
+     public DefaultDependencyResolver() {
+         // TODO: the cache should not be instantiated here, but should rather be session-wide.
+-        moduleCaches = new HashMap<>();
++        moduleCaches = new ConcurrentHashMap<>();
+     }
+ 
+     /**
+-- 
+2.51.1
+

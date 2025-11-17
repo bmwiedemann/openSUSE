@@ -18,9 +18,9 @@
 
 %global maven_version_suffix 4
 %global base_name maven
-%global file_version 4.0.0-rc-4
+%global file_version 4.0.0-rc-5
 Name:           %{base_name}%{?maven_version_suffix}-testing
-Version:        4.0.0~rc4
+Version:        4.0.0~rc5
 Release:        0
 Summary:        Maven Plugin Testing Mechanism
 # maven itself is ASL 2.0
@@ -35,9 +35,8 @@ Source10:       apache-%{base_name}-build.tar.xz
 Patch1:         0001-Adapt-mvn-script.patch
 # Downstream-specific, avoids dependency on logback
 Patch2:         0002-Invoke-logback-via-reflection.patch
-Patch3:         0001-Resolver-2.0.11-11043-11115.patch
-Patch4:         maven4-resolver-2.0.13.patch
-Patch5:         0001-Set-Guice-class-loading-to-CHILD-avoid-using-termina.patch
+Patch3:         0001-Fix-a-ConcurrentModificationException-11429.patch
+Patch4:         0002-Fix-field-accessibility-leak-in-EnhancedCompositeBea.patch
 BuildRequires:  ant
 BuildRequires:  apiguardian
 BuildRequires:  fdupes
@@ -52,7 +51,9 @@ BuildRequires:  maven-resolver2-transport-apache
 BuildRequires:  maven-resolver2-transport-file
 BuildRequires:  maven4-lib
 BuildRequires:  mockito
+BuildRequires:  opentest4j
 BuildRequires:  plexus-classworlds
+BuildRequires:  plexus-sec-dispatcher4
 BuildRequires:  plexus-utils
 BuildRequires:  plexus-xml4
 BuildRequires:  slf4j2
@@ -79,7 +80,6 @@ BuildArch:      noarch
 %patch -P 2 -p1
 %patch -P 3 -p1
 %patch -P 4 -p1
-%patch -P 5 -p1
 
 %pom_remove_dep -r :junit-bom
 %pom_remove_dep -r :mockito-bom
@@ -157,8 +157,10 @@ build-jar-repository -s lib \
   maven-resolver/maven-resolver-transport-apache \
   maven-resolver/maven-resolver-transport-file-2 \
   mockito/mockito-core \
+  opentest4j/opentest4j \
   org.eclipse.sisu.plexus \
   plexus-classworlds \
+  plexus/sec-dispatcher-4 \
   plexus/utils \
   plexus/xml-4 \
   slf4j/api-2

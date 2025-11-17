@@ -1,4 +1,123 @@
 -------------------------------------------------------------------
+Thu Nov 13 15:50:19 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 4.0.0-rc-5
+  * Breaking changes
+    + Disable consumer POM flattening by default and add an opt-in
+      feature
+  * New features and improvements
+    + Make config files use UTF8
+    + Simplify prefix resolution
+    + Add PathMatcherFactory.includesAll()
+    + Add skipMavenRc to ExecutorRequest and use it in ITs
+    + Add PathMatcherFactory service with directory filtering
+      optimization
+    + Allow configurable repository selection for version range
+      resolution
+    + Switch resolver to use rwlock-local locks
+  * Bug Fixes
+    + Fix resource targetPath resolution to be relative to output
+      directory
+    + Fix MavenStaxReader location reporting for properties
+    + Fix false parent cycle detection with flatten-maven-plugin
+    + Resolve property before model reflection to avoid recursion
+    + Explicitly register jdk ToolchainFactory for Maven 3 plugins
+    + Fix -itr option not honored
+    + Do not include invalid transitive repositories
+    + Prevent infinite loop in RootLocator when .mvn directory
+      exists in subdirectory
+    + Fix [unknown project] messages in error output
+    + Restore compatibility in maven-embedder
+    + Add backward compatibility dependencies to maven-compat
+    + Relative are resolved against the wrong directory
+    + Bug: when raw-streams are used, ensure system streams are set
+      up
+    + Fix plugin prefix resolution when metadata is not available
+      from repository
+    + Maven model 4.1.0 should not allow non-pom packaging for
+      aggregators
+    + Fix exception caused by duplicate dependencies in consumer pom
+    + Remove use of toRealPath
+    + Bugfix: fix CLI graceful death
+    + Introduce RepositoryAwareRequest interface to consolidate
+      repository handling
+    + Fix repository ID interpolation in Maven 4
+    + Fix dependency groupId inference for Maven 4.1.0 model version
+    + Consumer POM should keep only transitive dependencies
+    + Fix StackOverflowError in parent POM resolution
+    + Fix CI-friendly version processing with profile properties
+    + Add phase upgrade support for Maven 4.1.0 model upgrades
+    + Fix GH-11199: Maven 4.0.0-rc-4 ignores defaultLogLevel
+    + Validate metaversions and detect extension conflicts
+    + Allow repository URL interpolation with improved validation
+    + Improve mvn usage message
+    + Enable the search for module-info.class file in the
+      META-INF/versions/ sub-directories of a JAR file.
+    + Fix #10939: DefaultModelXmlFactory: make location tracking
+      opt-in—disabled by default, enabled when an
+      InputLocationFormatter is provided.
+    + Fix #11000: fix help default text
+    + GH-10210: fix too eager decrypt of legacy passwords
+    + #11055: Inject all services into mojos and enable easy
+      real-session mojo testing
+    + Fix ReactorReader to prefer consumer POMs over build POMs
+    + model-builder: simplify subproject auto-discovery decision
+    + Add missing equals and hashCode methods in modular Java path
+      type.
+    + fix: include extension in equals/hashCode of
+      DefaultArtifactCoordinates
+    + Fix #11127: enforce non-null keys for InputLocation lookups
+      and document behavior
+    + Bug: bad cache isolation between two sessions
+    + Fix targetPath parameter ignored in resource bundles
+    + Maven Upgrade Tool: remove unused --force and --yes options
+    + Fix XMLReader#getURL and enable the unit test
+    + [#11048] Fix race condition in MessageUtils
+    + Uninterpolated repositories from parent POMs during model
+      building
+    + Fix maven.mainClass property missing for external tools
+    + Set Guice class loading to CHILD - avoid using terminally
+      deprecated methods
+    + Avoid parsing MAVEN_OPTS (master/4.x)
+    + Port the bug fixes identified when using that class in Maven
+      clean and compiler plugin
+    + Fix XmlNode.equals returning false between two different node
+      implementations
+    + perf: optimize CompositeBeanHelper with reflection caching
+    + Expand value interning optimization and add configurable
+      session property
+    + Optimize validation performance with lazy SourceHint
+      evaluation
+    + Refactor setupContainer to validate ExtensionContext, test
+      class and instance, and throw clear IllegalStateExceptions
+    + Bug fix in the default directory computed by DefaultSourceRoot
+    + Optimize XmlPlexusConfiguration for performance and thread
+      safety
+    + Fix mvnup tool issues #7934-#7938
+    + Fix #2486: Make Resource.addInclude() persist in project model
+    + Fix MavenProject#getPlugin(String) performances
+    + bug: fix duplicate dependency in effective model
+    + Split system and user properties from maven.properties
+    + Fix ReactorReader incorrect warnings and logic
+    + Avoid double flush
+    + Deduplicate filtered dependency graph
+- Removed patches:
+  * 0001-Resolver-2.0.11-11043-11115.patch
+  * 0001-Set-Guice-class-loading-to-CHILD-avoid-using-termina.patch
+  * maven4-resolver-2.0.13.patch
+    + integrated in this version
+- Added patches:
+  * 0001-Fix-a-ConcurrentModificationException-11429.patch
+    + fixing the exception that was observed in the integration
+      tests of Maven Compiler Plugin when Maven is executed with
+      the '-T4' option.
+  * 0002-Fix-field-accessibility-leak-in-EnhancedCompositeBea.patch
+    + the fix ensures that field accessibility is properly restored
+      to its original state after setting field values, preventing
+      accessibility state from leaking between different bean
+      instances.
+
+-------------------------------------------------------------------
 Tue Nov  4 21:52:09 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Do not install some of the pom-only artifacts to avoid clashes
