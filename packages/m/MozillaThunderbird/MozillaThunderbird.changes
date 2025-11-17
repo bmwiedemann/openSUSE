@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Nov  9 12:24:12 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 140.5.0 ESR
+  MFSA 2025-91 (bsc#1253188)
+  * CVE-2025-13012 (bmo#1991458)
+    Race condition in the Graphics component
+  * CVE-2025-13016 (bmo#1992130)
+    Incorrect boundary conditions in the JavaScript: WebAssembly
+    component
+  * CVE-2025-13017 (bmo#1980904)
+    Same-origin policy bypass in the DOM: Notifications component
+  * CVE-2025-13018 (bmo#1984940)
+    Mitigation bypass in the DOM: Security component
+  * CVE-2025-13019 (bmo#1988412)
+    Same-origin policy bypass in the DOM: Workers component
+  * CVE-2025-13013 (bmo#1991945)
+    Mitigation bypass in the DOM: Core & HTML component
+  * CVE-2025-13020 (bmo#1995686)
+    Use-after-free in the WebRTC: Audio/Video component
+  * CVE-2025-13014 (bmo#1994241)
+    Use-after-free in the Audio/Video component
+  * CVE-2025-13015 (bmo#1994164)
+    Spoofing issue in Thunderbird
+  * fixed: Could not drag and drop ICS file to Today Pane
+    (bmo#1992935)
+  * fixed: With Thunderbird closed, clicking a 'mailto:' link to
+    send signed message failed (bmo#1972857)
+  * fixed: Upgrade from 128.x->140.x broke authentication for
+    @att.net using Yahoo backend (bmo#1978361)
+
+-------------------------------------------------------------------
 Sat Oct 18 05:29:10 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 140.4.0 ESR

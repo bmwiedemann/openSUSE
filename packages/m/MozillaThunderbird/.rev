@@ -6129,4 +6129,12 @@ I cannot test locally unfortunately.
     140.4, Thunderbird ESR 140.4, Firefox 144 and Thunderbird 144</comment>
     <requestid>1312139</requestid>
   </revision>
+  <revision rev="375" vrev="1">
+    <srcmd5>b5bfca97c0496eb7d542d7e495740cf6</srcmd5>
+    <version>140.5.0</version>
+    <time>1763378157</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1317982</requestid>
+  </revision>
 </revisionlist>
