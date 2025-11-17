@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct  7 07:11:01 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to version 3.0.4:
+  * Fix build with latest clang
+  * Minor documentation fixes
+
+-------------------------------------------------------------------
 Mon Nov 20 20:32:33 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - initial version, 3.0.3

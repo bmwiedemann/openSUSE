@@ -18,7 +18,7 @@
 
 %define sover 1
 Name:           libversion
-Version:        3.0.3
+Version:        3.0.4
 Release:        0
 Summary:        Version string comparison library
 License:        MIT
