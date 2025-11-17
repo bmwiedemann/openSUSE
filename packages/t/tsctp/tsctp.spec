@@ -1,8 +1,8 @@
 #
 # spec file for package tsctp
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2020-2023, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2020-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           tsctp
-Version:        0.7.12
+Version:        0.8.4
 Release:        0
 Summary:        SCTP test tool
 License:        BSD-3-Clause
@@ -37,7 +37,7 @@ functionality tests to check implementations interoperability and
 to verify that the SCTP stack is working.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %cmake
@@ -48,8 +48,9 @@ to verify that the SCTP stack is working.
 
 %files
 %license COPYING-BSD
-%doc AUTHORS ChangeLog README
+%doc AUTHORS ChangeLog README.md
 %{_bindir}/tsctp
 %{_mandir}/man1/tsctp.1%{?ext_man}
+%{_datadir}/bash-completion/
 
 %changelog
