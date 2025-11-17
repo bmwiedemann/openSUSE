@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 14 22:09:18 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1763153079.b36ac754:
+  * Skip a build if there are no jobs
+  * Remove unused variable
+
+-------------------------------------------------------------------
 Tue Nov 11 18:10:52 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1762879267.52145e9a:
