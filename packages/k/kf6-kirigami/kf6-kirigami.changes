@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Nov 13 20:58:54 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.20.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.20.0
+- Changes since 6.19.0:
+  * Update dependency version to 6.20.0
+  * Fix documentation for AlignedSize
+  * Add missing FrameContrast enum documentation
+  * Fix documentation for closeDialog
+  * Keep passive notifications inside the SafeArea
+  * ActionTextField: don't let inline buttons accept focus on click
+  * ActionTextField: use display property to control icons-only-ness
+  * OverlayDrawer: Fix handle positioning on RTL layouts
+  * Fix accessibile properties on ActionTextField properties
+  * Support menus in bottom ActionToolbars
+  * feat: Expose closeDialog as a signal to the PageStack attached property
+  * ActionTextField: adopt some good ideas from the PlasmaExtras version
+  * ActionTextField: use standard implementation for inline action buttons (kde#484301)
+  * Use reversed open-link when needed and present
+  * PageRow: Fix dialogs not being closable via Escape
+  * PlatformTheme: setFrameContrast value
+  * CardsListView: Make sure it never will have horizontal scrolling (kde#477493)
+  * cmake: Add missing icon for android
+  * ActionsMenu: Restore the icon for submenus
+  * PageRow: Different style for the push/pop animation/gesture
+  * Make Separator always perfectly pixel-aligned (kde#510353)
+  * Fix up overlay sheet header content width w.r.t close button
+  * Fix up overlay sheet's close button location
+  * platform: Include child Quick items when updating child PlatformTheme instances (kde#510480)
+  * Remove outdated comment
+  * Typo fix
+  * SelectableLabel: Only enable shortcuts if the label has focus
+  * platform: Skip update() in PlatformTheme if we don't have a window (kde#493921)
+  * Update version to 6.20.0
+
+-------------------------------------------------------------------
 Tue Oct  7 17:06:20 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.19.0
