@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Nov 14 08:32:24 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- dbus-launch only works with dbus-1-daemon, not dbus-broker
+  [bnc#1253497]
+
+-------------------------------------------------------------------
+Fri Nov 14 08:23:46 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.86.1+11:
+  + gregex: Handle PCRE2_ERROR_MISSING_NUMBER_TERMINATOR if
+    defined.
+  + gutils: Strip all trailing slashes (boo#1253163)
+  + gio: add fallback implementation of
+    g_memory_monitor_base_query_mem_ratio.
+
+-------------------------------------------------------------------
 Tue Oct 21 14:50:21 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.86.1:

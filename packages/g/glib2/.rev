@@ -2445,4 +2445,12 @@ Extra note: I see glib2 in G:N is missing its link - manual merge needed after a
     <comment></comment>
     <requestid>1313600</requestid>
   </revision>
+  <revision rev="298" vrev="1">
+    <srcmd5>2b45c3e65a7fda41f87883166242fe1c</srcmd5>
+    <version>2.86.1+11</version>
+    <time>1763377998</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1317780</requestid>
+  </revision>
 </revisionlist>

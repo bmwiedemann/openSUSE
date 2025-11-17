@@ -37,7 +37,7 @@
 %define libgthread libgthread-%{libver}
 %define libgirepository libgirepository-%{libver}
 Name:           glib2%{psuffix}
-Version:        2.86.1
+Version:        2.86.1+11
 Release:        0
 Summary:        General-Purpose Utility Library
 License:        LGPL-2.1-or-later
@@ -231,8 +231,8 @@ Group:          System/Libraries
 # The tools are useful for people having libgio
 # bnc#555605: shared-mime-info is required by libgio to properly detect mime types, but not during build
 #!BuildIgnore:  shared-mime-info
-# bnc#678518: libgio interacts with others by means of dbus-launch
-Requires:       (%{_bindir}/dbus-launch if dbus-service)
+# bnc#1253497: dbus-launch only works with dbus-1-daemon, not dbus-broker
+Requires:       (%{_bindir}/dbus-launch if dbus-1-daemon)
 Requires:       %{name}-tools
 Requires:       gio-branding = %{version}
 Requires:       shared-mime-info
