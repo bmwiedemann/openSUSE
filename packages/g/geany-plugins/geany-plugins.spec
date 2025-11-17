@@ -1,7 +1,7 @@
 #
 # spec file for package geany-plugins
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,6 @@ BuildRequires:  intltool
 BuildRequires:  libgeany0 >= 2.1
 BuildRequires:  libgpgme-devel
 BuildRequires:  libtool
-BuildRequires:  lua51-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  vala
@@ -49,7 +48,6 @@ BuildRequires:  pkgconfig(vte-2.91)
 BuildRequires:  pkgconfig(webkit2gtk-4.1)
 
 Requires:       geany >= 2.1
-Requires:       lua
 Enhances:       geany
 
 %description
@@ -83,8 +81,6 @@ find %{buildroot} -size 0 -delete
 %{_libdir}/libgeanypluginutils.so
 %{_libdir}/libgeanypluginutils.so.*
 # Explicitly list plugins, so we don't lose any by accident
-%dir %{_libdir}/geany-plugins
-%dir %{_libdir}/geany-plugins/geanylua
 %{_docdir}/%{name}/
 %{_datadir}/geany-plugins/
 %{_libdir}/geany/addons.so
@@ -98,8 +94,6 @@ find %{buildroot} -size 0 -delete
 %{_libdir}/geany/geanyextrasel.so
 %{_libdir}/geany/geanyinsertnum.so
 %{_libdir}/geany/lipsum.so
-%{_libdir}/geany/geanylua.so
-%{_libdir}/geany-plugins/geanylua/libgeanylua.so
 %{_libdir}/geany/geanyminiscript.so
 %{_libdir}/geany/geanypg.so
 %{_libdir}/geany/sendmail.so

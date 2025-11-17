@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 13 12:08:35 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop lua plugin, it only supports lua51, and that is going away
+  from Tumbleweed (boo#1252922).
+
+-------------------------------------------------------------------
 Sat Aug  9 09:24:54 UTC 2025 - anenasa <anenasaa@yahoo.com>
 
 - Update to 2.1:
