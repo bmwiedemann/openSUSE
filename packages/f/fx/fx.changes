@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 12 18:52:04 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 39.2.0
+  * Improved filtering for streaming mode
+  * Now it is possible to use ?.value >= 42 filter in streaming
+    mode.
+  * Improved map func to work in streaming mode as well.
+
+-------------------------------------------------------------------
 Mon Sep  8 17:23:24 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 39.1.0
