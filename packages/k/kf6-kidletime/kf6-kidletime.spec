@@ -19,11 +19,11 @@
 %define qt6_version 6.8.0
 
 %define rname kidletime
-# Full KF6 version (e.g. 6.19.0)
+# Full KF6 version (e.g. 6.20.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-kidletime
-Version:        6.19.0
+Version:        6.20.0
 Release:        0
 Summary:        User and system idle time reporting singleton
 License:        LGPL-2.1-or-later
