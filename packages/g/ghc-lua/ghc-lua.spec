@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-lua
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.3.3
+Version:        2.3.4
 Release:        0
 Summary:        Lua, an embeddable scripting language
 License:        MIT
@@ -42,7 +42,7 @@ BuildRequires:  ghc-tasty-prof
 This package provides bindings and types to bridge Haskell and
 <https://www.lua.org/ Lua>.
 
-The full Lua interpreter version 5.4.7 is included. Alternatively, a
+The full Lua interpreter version 5.4.8 is included. Alternatively, a
 system-wide Lua installation can be linked instead.
 
 %package devel
