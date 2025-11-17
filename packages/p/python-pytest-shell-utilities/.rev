@@ -65,4 +65,13 @@
   * Support for psutil 6.0.0</comment>
     <requestid>1222983</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>682e740a5f445105e04b6558802214c5</srcmd5>
+    <version>1.9.7</version>
+    <time>1763378410</time>
+    <user>anag_factory</user>
+    <comment>- Add patch python314.patch to make tests compatible with python 3.14
+  gh#saltstack/pytest-shell-utilities#57</comment>
+    <requestid>1318210</requestid>
+  </revision>
 </revisionlist>

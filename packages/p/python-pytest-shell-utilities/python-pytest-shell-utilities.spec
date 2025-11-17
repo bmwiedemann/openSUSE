@@ -32,6 +32,8 @@ Summary:        Pytest plugin to simplify running shell commands against the sys
 License:        Apache-2.0
 URL:            https://github.com/saltstack/pytest-shell-utilities
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-shell-utilities/pytest_shell_utilities-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM python314.patch gh#saltstack/pytest-shell-utilities#57
+Patch0:         python314.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 50.3.2}
 BuildRequires:  %{python_module setuptools_scm >= 3.4}
@@ -64,7 +66,7 @@ BuildArch:      noarch
 Pytest plugin to simplify running shell commands against the system
 
 %prep
-%setup -q -n pytest_shell_utilities-%{version}
+%autosetup -p1 -n pytest_shell_utilities-%{version}
 
 %build
 %pyproject_wheel

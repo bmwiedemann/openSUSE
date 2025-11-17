@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 17 09:53:35 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add patch python314.patch to make tests compatible with python 3.14
+  gh#saltstack/pytest-shell-utilities#57
+
+-------------------------------------------------------------------
 Thu Nov  7 13:31:16 UTC 2024 - Pablo Suárez Hernández <psuarezhernandez@suse.com>
 
 - update to 1.9.7:
