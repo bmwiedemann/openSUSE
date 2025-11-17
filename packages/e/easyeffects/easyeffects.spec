@@ -17,30 +17,18 @@
 
 
 Name:           easyeffects
-Version:        8.0.0
+Version:        8.0.3
 Release:        0
-Summary:        Audio Effects for PipeWire Applications
+Summary:        Simple audio effects
 License:        GPL-3.0-or-later
 URL:            https://github.com/wwmm/easyeffects
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  glib2-devel
-BuildRequires:  gsl-devel
 BuildRequires:  kf6-extra-cmake-modules
 BuildRequires:  ladspa-devel
-BuildRequires:  libbs2b-devel
-BuildRequires:  libebur128-devel
-BuildRequires:  liblilv-0-devel
-BuildRequires:  libportal-qt6-devel
-BuildRequires:  libsamplerate-devel
-BuildRequires:  libsndfile-devel
-BuildRequires:  libwebrtc-audio-processing-devel
 BuildRequires:  nlohmann_json-devel
-BuildRequires:  pipewire-devel
-BuildRequires:  rnnoise-devel
-BuildRequires:  soundtouch-devel
-BuildRequires:  tbb-devel
+BuildRequires:  pkg-config
 BuildRequires:  zita-convolver-devel
 BuildRequires:  cmake(KF6Config)
 BuildRequires:  cmake(KF6ConfigWidgets)
@@ -56,6 +44,18 @@ BuildRequires:  cmake(Qt6Graphs)
 BuildRequires:  cmake(Qt6QuickControls2)
 BuildRequires:  cmake(Qt6QuickShapesPrivate)
 BuildRequires:  cmake(Qt6WebEngineQuick)
+BuildRequires:  pkgconfig(gsl)
+BuildRequires:  pkgconfig(libbs2b)
+BuildRequires:  pkgconfig(libebur128)
+BuildRequires:  pkgconfig(libpipewire-0.3)
+BuildRequires:  pkgconfig(libportal-qt6)
+BuildRequires:  pkgconfig(lilv-0)
+BuildRequires:  pkgconfig(rnnoise)
+BuildRequires:  pkgconfig(samplerate)
+BuildRequires:  pkgconfig(sndfile)
+BuildRequires:  pkgconfig(soundtouch)
+BuildRequires:  pkgconfig(tbb)
+BuildRequires:  pkgconfig(webrtc-audio-processing-2)
 Requires:       kf6-kirigami
 Requires:       kirigami-addons6
 Requires:       qt6-graphs-imports
@@ -66,9 +66,9 @@ Recommends:     lv2-zam-plugins
 Recommends:     mda-lv2
 
 %description
-Easy Effects is a collection of audio effects, providing limiter, compressor,
-convolver, equalizer and auto volume and many other plugins for PipeWire
-applications.
+Easy Effects is a collection of audio effects, providing limiter,
+compressor, convolver, equalizer and auto volume and many other
+plugins for PipeWire applications.
 
 %lang_package
 
@@ -76,9 +76,7 @@ applications.
 %autosetup
 
 %build
-%cmake \
-  -DCMAKE_CXX_FLAGS='-isystem /usr/include/glib-2.0' \
-  -DCMAKE_CXX_FLAGS='-isystem /usr/lib64/glib-2.0/include'
+%cmake
 %cmake_build
 
 %install
