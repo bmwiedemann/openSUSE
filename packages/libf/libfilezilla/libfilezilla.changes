@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Nov 15 12:15:39 UTC 2025 - ecsos <ecsos@opensuse.org> - 0.52.0
+
+- Update to 0.52.0
+  * New features:
+    - Event handlers can now be in a hierarchy.
+      If calling remove_handler on a handler that has children,
+      they are removed as well.
+    - MSW: Added fz::async_pipe
+    - Add operator< and operator== for strtokenizer
+    - Added fz::read_file overload accepting a filename
+  * Bugfixes and minor changes:
+    - Fixes to mutex debugging to fix destruction order issues
+      on program exit
+    - Certificate verification: Display friendly error message in
+      case of GNUTLS_CERT_INVALID_OCSP_STATUS
+
+-------------------------------------------------------------------
 Tue Aug 12 10:37:02 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.51.1
