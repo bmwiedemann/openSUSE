@@ -65,6 +65,7 @@ BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} > 1500
 BuildRequires:  pkgconfig(libjxl)
 %endif
+Recommends:     xorg-x11-fonts-legacy
 
 %description
 GraphicsMagick provides an image manipulation and translation

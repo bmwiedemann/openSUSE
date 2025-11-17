@@ -1334,4 +1334,13 @@ New Features:
   + GraphicsMagick-CVE-2025-32460.patch</comment>
     <requestid>1269453</requestid>
   </revision>
+  <revision rev="96" vrev="4">
+    <srcmd5>7152f0670d5eb101083e2125fa6af94e</srcmd5>
+    <version>1.3.45</version>
+    <time>1763377705</time>
+    <user>anag_factory</user>
+    <comment>- recommend xorg-x11-fonts-legacy
+  (https://progress.opensuse.org/issues/192340)</comment>
+    <requestid>1317714</requestid>
+  </revision>
 </revisionlist>
