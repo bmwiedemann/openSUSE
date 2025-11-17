@@ -19,7 +19,7 @@
 
 %define lib_ver 3
 Name:           utf8proc
-Version:        2.11.0
+Version:        2.11.1
 Release:        0
 Summary:        Library for processing UTF-8 encoded Unicode strings
 License:        MIT

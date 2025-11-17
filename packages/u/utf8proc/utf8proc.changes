@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 14 20:03:52 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.11.1:
+  * Correct out-of-bounds memory access when calling utf8proc_map
+    with both UTF8PROC_CHARBOUND and UTF8PROC_DECOMPOSE
+
+-------------------------------------------------------------------
 Sat Sep 13 20:52:50 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.11.0:
