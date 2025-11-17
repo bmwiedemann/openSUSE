@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov 15 22:16:37 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to 8.8.0
+  https://www.digikam.org/news/2025-10-19-8.8.0_release_announcement/
+- Drop patch, merged upstream:
+  * 0001-Fix-build-with-Qt-6.10.patch
+
+-------------------------------------------------------------------
 Sat Oct 11 20:36:30 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add patch (boo#1251869)
