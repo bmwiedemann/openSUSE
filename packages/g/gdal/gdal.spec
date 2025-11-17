@@ -1,7 +1,7 @@
 #
 # spec file for package gdal
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -43,7 +43,7 @@
 %define mypython_sitearch %{expand:%%%{mypython}_sitearch}
 
 Name:           gdal
-Version:        3.11.3
+Version:        3.11.5
 Release:        0
 Summary:        GDAL/OGR - a translator library for raster and vector geospatial data formats
 License:        BSD-3-Clause AND MIT AND SUSE-Public-Domain
@@ -68,8 +68,8 @@ BuildRequires:  libcryptopp-devel
 BuildRequires:  libdeflate-devel
 BuildRequires:  libtool
 BuildRequires:  libzstd-devel
-BuildRequires:  mysql-devel
 BuildRequires:  muparser-devel
+BuildRequires:  mysql-devel
 # This one is needed for Leap :-(
 BuildRequires:  opencl-headers
 BuildRequires:  %{mypython}-base
