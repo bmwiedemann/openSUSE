@@ -24,7 +24,8 @@ Summary:        A plugin to fake subprocess for pytest
 License:        MIT
 URL:            https://github.com/aklajnert/pytest-subprocess
 Source0:        https://github.com/aklajnert/pytest-subprocess/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}-gh.tar.gz
-Patch1:         https://github.com/aklajnert/pytest-subprocess/commit/be30d9a94ba45afb600717e3fcd95b8b2ff2c60e.patch#/py314-fix-tests.patch
+# PATCH-FIX-UPSTREAM Based on gh#aklajnert/pytest-subprocess#be30d9a94ba45afb600717e3fcd95b8b2ff2c60e
+Patch1:         py314-fix-tests.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

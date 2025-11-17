@@ -5,6 +5,5 @@
 register subprocess results so you won't need to rely on the real processes.
 
 </description>
-  <devel project="devel:languages:python:pytest" package="python-pytest-subprocess"/>
   <url>https://github.com/aklajnert/pytest-subprocess</url>
 </package>

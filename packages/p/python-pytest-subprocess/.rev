@@ -60,4 +60,13 @@
 - add py314-fix-tests.patch to fix tests with python 3.14</comment>
     <requestid>1304755</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>e21217cf8b53646c4155acc20288bf06</srcmd5>
+    <version>1.5.3</version>
+    <time>1763377718</time>
+    <user>anag_factory</user>
+    <comment>- Refresh patch py314-fix-tests.patch:
+  * Ignore DeprecationWarning about asyncio event loop policies.</comment>
+    <requestid>1317762</requestid>
+  </revision>
 </revisionlist>
