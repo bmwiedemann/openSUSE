@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Nov 13 20:59:03 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.20.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.20.0
+- Changes since 6.19.0:
+  * Update dependency version to 6.20.0
+  * PlasmaDesktopTheme: Set frameContrast on change
+  * Harmonize delegate tooltip code
+  * SpinBox: Make paddings integer to avoid potential polish loops (kde#510758)
+  * Remove Qt version checks now that 6.8.0 is the minimum required
+  * Update version to 6.20.0
+
+-------------------------------------------------------------------
 Tue Oct  7 17:06:30 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.19.0
