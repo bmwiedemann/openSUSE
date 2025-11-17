@@ -17,7 +17,7 @@
 
 
 Name:           ibus-typing-booster
-Version:        2.28.3
+Version:        2.28.4
 Release:        0
 Summary:        An input completion utility
 License:        GPL-3.0-or-later
@@ -136,6 +136,13 @@ desktop-file-validate \
     %{buildroot}%{_datadir}/applications/ibus-setup-typing-booster.desktop
 desktop-file-validate \
     %{buildroot}%{_datadir}/applications/emoji-picker.desktop
+# Test whether any python file has syntax errors, useful to find
+# problems with Python 3.6 in openSUSE 15.4, 15.5, 15.6:
+for i in */*.py
+do
+    echo python3 -m py_compile $i
+    python3 -m py_compile $i
+done
 pushd engine
     # run doctests
     # hunspell_suggest.py test currently doesn't work on SuSE because
