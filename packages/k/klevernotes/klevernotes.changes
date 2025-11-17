@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov 16 10:28:23 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.2.5
+  * Fix major issue with the painting page
+  * Fix the preview going black when the app loses focus
+  * Tweak the auto indent
+
+-------------------------------------------------------------------
 Sat Oct 25 12:41:02 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.2.4
