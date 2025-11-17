@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov 14 13:34:45 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.3.4
+  * Use `importlib` where available.
+  * Bump python versions for CI.
+  * beginning calmjs.parse-1.3.4-pre
+  * Changelog
+  * Clean up test matrix.
+  * Include Python 3.14 for CI
+  * Package metadata.
+  * calmjs.parse-1.3.4
+
+-------------------------------------------------------------------
 Mon Jun 16 06:12:16 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyroject macros.

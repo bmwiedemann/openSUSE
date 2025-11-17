@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-calmjs.parse
-Version:        1.3.3
+Version:        1.3.4
 Release:        0
 Summary:        Various parsers for ECMA standards
 License:        MIT
