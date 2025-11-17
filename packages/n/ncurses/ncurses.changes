@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 14 11:54:02 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Enforce to use signed char for boolean (boo#1253383)
+
+-------------------------------------------------------------------
 Mon Nov  3 08:41:42 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20251101

@@ -580,6 +580,7 @@ export CFLAGS_SHARED
 	--enable-colorfgbg	\
 	--enable-sp-funcs	\
 	--enable-interop	\
+	--enable-signed-char	\
 	--with-termlib=%{soname_tinfo}	\
 	--enable-ext-colors	\
 	--disable-wgetch-events	\
@@ -1077,6 +1078,8 @@ nm -D %{buildroot}%{_libdir}/libncursesw.so.%{basevers} | grep -q in_wch
 %if %{with onlytinfo}
 nm -D %{buildroot}%{_libdir}/libtinfo.so.%{basevers} | grep -q _nc_read_entry2
 %endif
+num="$(TERM=vt220 %{buildroot}%{_bindir}/tput colors)"
+test -n "$num"
 pushd test
     expect -d <<-'EOF'
 	set env(TERM) xterm

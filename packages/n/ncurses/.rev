@@ -5404,4 +5404,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1316880</requestid>
   </revision>
+  <revision rev="313" vrev="86">
+    <srcmd5>a62b6279fad18fe126ca3b6844eb4d27</srcmd5>
+    <version>unknown</version>
+    <time>1763377991</time>
+    <user>anag_factory</user>
+    <comment>- Enforce to use signed char for boolean (boo#1253383)</comment>
+    <requestid>1317787</requestid>
+  </revision>
 </revisionlist>
