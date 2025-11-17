@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 14 03:13:57 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Skip a test broken by idna 3.11.
+
+-------------------------------------------------------------------
 Mon Nov  3 11:51:55 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.13.2:

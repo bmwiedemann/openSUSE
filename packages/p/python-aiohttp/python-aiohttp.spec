@@ -144,6 +144,8 @@ donttest="test_aiohttp_request_coroutine or test_mark_formdata_as_processed or t
 donttest+=" or test_tcp_connector_ssl_shutdown_timeout"
 # most probably https://github.com/cbornet/blockbuster/issues/47
 donttest+=" or (test_cookie_jar and (heap or expire)) or test_treat_as_secure_origin_init"
+# broken with idna 3.11 https://github.com/aio-libs/aiohttp/pull/11638
+donttest+=" or test_invalid_idna"
 
 # requires python-on-whales
 rm -v tests/autobahn/test_autobahn.py

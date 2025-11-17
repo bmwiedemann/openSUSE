@@ -804,4 +804,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1316904</requestid>
   </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>851e717418e3bd92d1781df1cf4b11fb</srcmd5>
+    <version>3.13.2</version>
+    <time>1763377695</time>
+    <user>anag_factory</user>
+    <comment>- Skip a test broken by idna 3.11.</comment>
+    <requestid>1317683</requestid>
+  </revision>
 </revisionlist>
