@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Nov 13 20:58:53 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.20.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.20.0
+- Changes since 6.19.0:
+  * Update dependency version to 6.20.0
+  * PSD: limit memory usage on corrupted files
+  * Fix assert on broken data
+  * PSD: minor fixes while reading Image resource Section
+  * IFF: fix crash on malformed files
+  * iff: Fix crash on malformed files
+  * PSD: improve sections size checks
+  * TGA: ignoring large metadata on dev area
+  * Check device before read
+  * Fix possible infinite loop when reading a broken jp2
+  * On demand buffer allocation on PCHG decompression
+  * Fix possible read overflow with malformed data
+  * Fix wrong palette check
+  * Use internal FP32 conversion instead of FP16
+  * Fix read test failing on aarch64
+  * Remove Qt version checks now that 6.8.0 is the minimum required
+  * Fix assert on broken data
+  * CI: Try newer libjxl for ossfuzz
+  * tga: Reduce Warning to Debug
+  * Fix crash on malformed files
+  * Fix crash on malformed files
+  * Update version to 6.20.0
+
+-------------------------------------------------------------------
 Tue Oct  7 17:06:19 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.19.0

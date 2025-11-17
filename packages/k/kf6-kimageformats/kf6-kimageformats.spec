@@ -28,11 +28,11 @@
 # Not available
 %define with_jp2 1
 %endif
-# Full KF6 version (e.g. 6.19.0)
+# Full KF6 version (e.g. 6.20.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-kimageformats
-Version:        6.19.0
+Version:        6.20.0
 Release:        0
 Summary:        Image format plugins for Qt
 License:        LGPL-2.1-or-later
