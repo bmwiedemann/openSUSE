@@ -1,0 +1,32 @@
+From 412479e5d6b02f7dd7e20f870132a413dc83898a Mon Sep 17 00:00:00 2001
+From: Doyle Rowland <doyle.rowland@reliaqual.com>
+Date: Thu, 14 Aug 2025 17:58:02 -0400
+Subject: [PATCH] fix: explicitly ignore utf_16 and utf_32 encoding
+
+---
+ src/docformatter/encode.py | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/src/docformatter/encode.py b/src/docformatter/encode.py
+index ac55ee9..c7e36f0 100644
+--- a/src/docformatter/encode.py
++++ b/src/docformatter/encode.py
+@@ -64,9 +64,15 @@ def do_detect_encoding(self, filename) -> None:
+         """
+         try:
+             detection_result = from_path(filename).best()
+-            self.encoding = (
+-                detection_result.encoding if detection_result else self.DEFAULT_ENCODING
+-            )
++            if detection_result and detection_result.encoding in ["utf_16", "utf_32"]:
++                # Treat undetectable/binary encodings as failure
++                self.encoding = self.DEFAULT_ENCODING
++            else:
++                self.encoding = (
++                    detection_result.encoding
++                    if detection_result
++                    else self.DEFAULT_ENCODING
++                )
+ 
+             # Check for correctness of encoding.
+             with self.do_open_with_encoding(filename) as check_file:

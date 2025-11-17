@@ -1,7 +1,7 @@
 #
 # spec file for package python-docformatter
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            https://github.com/myint/docformatter
 Source:         https://github.com/PyCQA/docformatter/archive/refs/tags/v%{version}.tar.gz#/docformatter-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE Do not require virtualenvs to run the tests
 Patch0:         do-not-require-venv.patch
+# PATCH-FIX-UPSTREAM cherry-pick from https://github.com/PyCQA/docformatter/pull/323 fix: issue 321
+Patch1:         ignore-utf16.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}

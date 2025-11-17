@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 14 13:51:14 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream ignore-utf16.patch to fix test failure
+
+-------------------------------------------------------------------
 Mon May 19 10:01:24 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.7.7
