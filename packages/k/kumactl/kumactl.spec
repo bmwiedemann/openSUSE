@@ -17,7 +17,7 @@
 
 
 Name:           kumactl
-Version:        2.12.3
+Version:        2.12.4
 Release:        0
 Summary:        CLI for the Kuma service mesh
 License:        Apache-2.0
@@ -99,11 +99,11 @@ go build \
    -mod=vendor \
    -buildmode=pie \
    -ldflags=" \
-   -X github.com/kumahq/kuma/pkg/version.version=v%{version} \
-   -X github.com/kumahq/kuma/pkg/version.gitTag=%{version} \
-   -X github.com/kumahq/kuma/pkg/version.gitCommit=${COMMIT_HASH} \
-   -X github.com/kumahq/kuma/pkg/version.buildDate=${BUILD_DATE} \
-   -X github.com/kumahq/kuma/pkg/version.Envoy=${ENVOY_VERSION}" \
+   -X github.com/kumahq/kuma/v2/pkg/version.version=v%{version} \
+   -X github.com/kumahq/kuma/v2/pkg/version.gitTag=%{version} \
+   -X github.com/kumahq/kuma/v2/pkg/version.gitCommit=${COMMIT_HASH} \
+   -X github.com/kumahq/kuma/v2/pkg/version.buildDate=${BUILD_DATE} \
+   -X github.com/kumahq/kuma/v2/pkg/version.Envoy=${ENVOY_VERSION}" \
    -o bin/%{name} ./app/%{name}
 
 %install

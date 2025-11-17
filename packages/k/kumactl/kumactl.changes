@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Nov 17 07:24:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.12.4:
+  * fix(tools): fix AddGoComments for symlinks
+  * chore(generate): regenerate protobuf Message.json
+  * feat(deps)!: migrate module path to github.com/kumahq/kuma/v2
+    (#14968)
+  * fix(xds): set keepalive configuration for dpp to cpp connection
+    (backport of #14912) (#14926)
+  * feat(mise): move golang dependency to mise (backport of #14884)
+    (#14887)
+  * fix(MeshCircuitBreaker): properly configure inbounds with
+    servicePort set (backport of #14875) (#14880)
+  * perf(rules): optimize SubsetIter to enumerate only correct
+    subsets (backport of #14862) (#14871)
+  * fix(meshpassthrough): sort IP address to provide predictable
+    order (backport of #14857) (#14863)
+
+-------------------------------------------------------------------
 Sun Nov 02 06:42:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.12.3:
