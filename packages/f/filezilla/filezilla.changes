@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Nov 15 12:16:00 UTC 2025 - ecsos <ecsos@opensuse.org> - 3.69.5
+
+- Update to 3.69.5
+  * Bugfixes and minor changes:
+    - macOS: Fixed issue with toolbar size
+- Changes from 3.69.4
+  * Bugfixes and minor changes:
+    - Fixed an issue whith the certificate verification dialog not
+      becoming scrollable on certificates with many subject
+      alternative names
+    - Updated to libfilezilla 0.52.0
+
+-------------------------------------------------------------------
 Tue Aug 12 11:03:36 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.69.3
