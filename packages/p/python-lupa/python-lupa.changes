@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 14 14:58:02 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.6
+  * The bundled LuaJIT versions were updated to the latest git branches.
+  * Built with Cython 3.1.6.
+
+-------------------------------------------------------------------
 Mon Oct 27 16:57:01 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Enable luajit on riscv64
