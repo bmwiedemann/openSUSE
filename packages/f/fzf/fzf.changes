@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov 16 17:09:47 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.67.0:
+  * Added --freeze-left=N option to keep the leftmost N columns always visible
+  * Added --freeze-right=N option to keep the rightmost N columns always visible
+  * Updated --info=inline to print the spinner (load indicator)
+  * Bug fixes
+
+-------------------------------------------------------------------
 Fri Oct 31 21:28:01 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to version 0.66.1:
