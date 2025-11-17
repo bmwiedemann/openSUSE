@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 14 18:57:41 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 37.10.0
+  * Added app.isHardwareAccelerationEnabled().
+  * Automatically focus DevTools when element is inspected or breakpoint is triggered.
+  * v8: Preserve field repr in property array extension
+
+-------------------------------------------------------------------
 Sat Nov  8 18:37:21 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 37.9.0

@@ -1497,4 +1497,15 @@ to Staging:F with it</comment>
   * Fixed draw smoothing round corner issue</comment>
     <requestid>1316608</requestid>
   </revision>
+  <revision rev="174" vrev="1">
+    <srcmd5>46cff9f11d934172d1eaf1c42943b498</srcmd5>
+    <version>37.10.0</version>
+    <time>1763378091</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release 37.10.0
+  * Added app.isHardwareAccelerationEnabled().
+  * Automatically focus DevTools when element is inspected or breakpoint is triggered.
+  * v8: Preserve field repr in property array extension</comment>
+    <requestid>1317932</requestid>
+  </revision>
 </revisionlist>
