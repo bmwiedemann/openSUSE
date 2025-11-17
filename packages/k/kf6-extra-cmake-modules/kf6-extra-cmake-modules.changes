@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Nov 13 20:58:43 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.20.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.20.0
+- Changes since 6.19.0:
+  * generate-fastlane-metadata.py use https://kde.org/donate
+  * Strip username and password from Fastlane source URLs
+  * KDEClangFormat: Avoid error w/ CMP0175 enabled
+  * [FindFFmpeg] Skip version check on Windows
+  * KDE*CompilerSettings: add note why no cmake_policy is set
+  * Public KDE-specific modules: set module cmake_policy
+  * Module templates: set module cmake_policy
+  * Public general modules: set module cmake_policy
+  * Public find modules: set module cmake_policy
+  * ECMGenerateExportHeader: set module cmake_policy, not just one policy
+  * ECMGenerateExportHeader: do not push/pop module policy explicitly
+  * ECMQmlLoader: generic languages should have lower precedence (kde#509902)
+  * FindFFmpeg: add AVFILTER and SWRESAMPLE components
+  * Add FindFFmpeg.cmake used by many KDE project
+  * Fix QML modules to be rebuilt all the time with Qt5
+  * ecm_generate_headers: support headers in clang vs. deduplicated header files
+  * CMakeLists.txt - remove trailing '/' to fix CMP0177 warning
+  * ECMSetupQtPluginMacroNames: fix setting up names for own build
+  * Update version to 6.20.0
+
+-------------------------------------------------------------------
 Tue Oct  7 17:06:10 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.19.0
