@@ -1,7 +1,7 @@
 #
 # spec file for package drbd-utils
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -74,6 +74,7 @@ Patch1006:      bsc-1233273_drbd.ocf-replace-crm_master-with-ocf_promotion_score
 Patch1007:      bsc-1233273_drbd.ocf-update-for-OCF-1.1.patch
 Patch1008:      rpmlint-build-error.patch
 Patch1009:      bsc-1247534_drbd-didnt-start-due-to-drbd_rules-returning-err.patch
+Patch1010:      1252991-selinux-domtrans-from-kernel.patch
 #############################################
 
 Provides:       drbd-bash-completion = %{version}

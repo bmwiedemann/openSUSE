@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 14 11:10:58 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
+
+- Allow domtrans from kernel_t to drbd_t (bsc#1252991)
+  * add patch
+    - 1252991-selinux-domtrans-from-kernel.patch
+
+-------------------------------------------------------------------
 Tue Aug 19 12:28:46 UTC 2025 - heming zhao <heming.zhao@suse.com>
 
 - drbd_passive didn't start due to drbd.rules returning error (bsc#1247534)

@@ -1,0 +1,46 @@
+From c2a3e3ea3de7eb7b9e0a8cf78cdb3bb7f56d52f3 Mon Sep 17 00:00:00 2001
+From: Cathy Hu <cahu@suse.de>
+Date: Fri, 14 Nov 2025 11:38:23 +0100
+Subject: [PATCH] selinux: Allow domtrans from kernel_t to drbd_t
+
+/usr/lib/drbd/crm-fence-peer.9.sh is labelled drbd_exec_t, however
+the domain lands in kernel_generic_helper_t as it is not allowed
+to transition from kernel_t to drbd_t.
+
+Additionally, when the domtrans succeeds, crm-fence-peer.9.sh
+will create entries in /proc with drbd_t label, so allowing that.
+---
+ selinux/drbd.te | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/selinux/drbd.te b/selinux/drbd.te
+index 8aa2c573..5b2e9861 100644
+--- a/selinux/drbd.te
++++ b/selinux/drbd.te
+@@ -50,6 +50,7 @@ require {
+ #============= drbd_t ==============
+ allow drbd_t self:capability { dac_read_search  kill net_admin sys_admin };
+ dontaudit drbd_t self:capability sys_tty_config;
++allow drbd_t self:dir rw_dir_perms;
+ allow drbd_t self:fifo_file rw_fifo_file_perms;
+ allow drbd_t self:unix_stream_socket create_stream_socket_perms;
+ allow drbd_t self:netlink_socket create_socket_perms;
+@@ -72,6 +73,7 @@ manage_dirs_pattern(drbd_t, drbd_tmp_t, drbd_tmp_t)
+ manage_files_pattern(drbd_t, drbd_tmp_t, drbd_tmp_t)
+ files_tmp_filetrans(drbd_t, drbd_tmp_t, {file dir})
+ 
++kernel_domtrans_to(drbd_t, drbd_exec_t)
+ kernel_read_system_state(drbd_t)
+ kernel_load_module(drbd_t)
+ 
+@@ -91,6 +93,7 @@ files_read_kernel_modules(drbd_t)
+ 
+ logging_send_syslog_msg(drbd_t)
+ 
++fs_associate_proc(drbd_t)
+ fs_getattr_xattr_fs(drbd_t)
+ 
+ modutils_read_module_config(drbd_t)
+-- 
+2.51.1
+
