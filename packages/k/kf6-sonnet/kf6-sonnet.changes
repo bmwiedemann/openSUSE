@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Nov 13 20:59:03 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.20.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.20.0
+- Changes since 6.19.0:
+  * Update dependency version to 6.20.0
+  * Remove double margins around groupbox
+  * Fix load default ignore list when we call slotDefault method
+  * Add missing [[nodiscard]]
+  * Use [[nodiscard]]
+  * Show headers in qtc
+  * Ensure parent is alive when removing eventfilters (kde#492444)
+  * Add SpellCheckDecorator destruction autotests (kde#492444)
+  * Update version to 6.20.0
+
+-------------------------------------------------------------------
 Tue Oct  7 17:06:30 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.19.0
