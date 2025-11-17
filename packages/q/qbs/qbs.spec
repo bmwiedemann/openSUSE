@@ -22,7 +22,7 @@
 %bcond_without qch_doc
 %endif
 Name:           qbs
-Version:        3.1.0
+Version:        3.1.1
 Release:        0
 Summary:        Build tool for software projects
 # Legal:
