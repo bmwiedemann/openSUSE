@@ -1,8 +1,8 @@
-Index: acsccid-1.1.12/src/ccid_usb.c
+Index: acsccid-1.1.13/src/ccid_usb.c
 ===================================================================
---- acsccid-1.1.12.orig/src/ccid_usb.c
-+++ acsccid-1.1.12/src/ccid_usb.c
-@@ -1940,6 +1940,8 @@ int InterruptRead(int reader_index, int
+--- acsccid-1.1.13.orig/src/ccid_usb.c
++++ acsccid-1.1.13/src/ccid_usb.c
+@@ -1993,6 +1993,8 @@ int InterruptRead(int reader_index, int
  		libusb_free_transfer(transfer);
  		DEBUG_CRITICAL2("libusb_submit_transfer failed: %s",
  			libusb_error_name(ret));
@@ -11,7 +11,7 @@ Index: acsccid-1.1.12/src/ccid_usb.c
  		return IFD_COMMUNICATION_ERROR;
  	}
  
-@@ -1959,6 +1961,8 @@ int InterruptRead(int reader_index, int
+@@ -2012,6 +2014,8 @@ int InterruptRead(int reader_index, int
  			libusb_free_transfer(transfer);
  			DEBUG_CRITICAL2("libusb_handle_events failed: %s",
  				libusb_error_name(ret));
@@ -20,7 +20,7 @@ Index: acsccid-1.1.12/src/ccid_usb.c
  			return IFD_COMMUNICATION_ERROR;
  		}
  	}
-@@ -2013,7 +2017,10 @@ int InterruptRead(int reader_index, int
+@@ -2066,7 +2070,10 @@ int InterruptRead(int reader_index, int
  			DEBUG_COMM4("InterruptRead (%d/%d): %d",
  				usbDevice[reader_index].bus_number,
  				usbDevice[reader_index].device_address, ret);

@@ -1,8 +1,8 @@
-Index: acsccid-1.1.10/src/ccid_usb.c
+Index: acsccid-1.1.13/src/ccid_usb.c
 ===================================================================
---- acsccid-1.1.10.orig/src/ccid_usb.c
-+++ acsccid-1.1.10/src/ccid_usb.c
-@@ -284,13 +284,48 @@ status_t OpenUSBByName(unsigned int read
+--- acsccid-1.1.13.orig/src/ccid_usb.c
++++ acsccid-1.1.13/src/ccid_usb.c
+@@ -287,13 +287,48 @@ status_t OpenUSBByName(unsigned int read
  			return STATUS_UNSUCCESSFUL;
  		}
  

@@ -1,8 +1,8 @@
-Index: acsccid-1.1.12/src/ifdhandler.c
+Index: acsccid-1.1.13/src/ifdhandler.c
 ===================================================================
---- acsccid-1.1.12.orig/src/ifdhandler.c
-+++ acsccid-1.1.12/src/ifdhandler.c
-@@ -433,7 +433,7 @@ EXTERNAL RESPONSECODE IFDHCloseChannel(D
+--- acsccid-1.1.13.orig/src/ifdhandler.c
++++ acsccid-1.1.13/src/ifdhandler.c
+@@ -435,7 +435,7 @@ EXTERNAL RESPONSECODE IFDHCloseChannel(D
  
  
  #if !defined(TWIN_SERIAL)
@@ -11,7 +11,7 @@ Index: acsccid-1.1.12/src/ifdhandler.c
  {
  	int reader_index;
  
-@@ -450,7 +450,7 @@ static RESPONSECODE IFDHPolling(DWORD Lu
+@@ -452,7 +452,7 @@ static RESPONSECODE IFDHPolling(DWORD Lu
  
  /* on an ICCD device the card is always inserted
   * so no card movement will ever happen: just do nothing */
@@ -20,7 +20,7 @@ Index: acsccid-1.1.12/src/ifdhandler.c
  {
  	int reader_index;
  
-@@ -484,6 +484,16 @@ static RESPONSECODE IFDHStopPolling(DWOR
+@@ -486,6 +486,16 @@ static RESPONSECODE IFDHStopPolling(DWOR
  	(void)InterruptStop(reader_index);
  	return IFD_SUCCESS;
  }
@@ -37,7 +37,7 @@ Index: acsccid-1.1.12/src/ifdhandler.c
  #endif
  
  
-@@ -705,7 +715,7 @@ EXTERNAL RESPONSECODE IFDHGetCapabilitie
+@@ -707,7 +717,7 @@ EXTERNAL RESPONSECODE IFDHGetCapabilitie
  				{
  					*Length = sizeof(void *);
  					if (Value)
@@ -46,7 +46,7 @@ Index: acsccid-1.1.12/src/ifdhandler.c
  				}
  
  				if ((PROTOCOL_ICCD_A == ccid_desc->bInterfaceProtocol)
-@@ -713,7 +723,7 @@ EXTERNAL RESPONSECODE IFDHGetCapabilitie
+@@ -715,7 +725,7 @@ EXTERNAL RESPONSECODE IFDHGetCapabilitie
  				{
  					*Length = sizeof(void *);
  					if (Value)
@@ -55,7 +55,7 @@ Index: acsccid-1.1.12/src/ifdhandler.c
  				}
  			}
  			break;
-@@ -765,6 +775,44 @@ EXTERNAL RESPONSECODE IFDHGetCapabilitie
+@@ -767,6 +777,44 @@ EXTERNAL RESPONSECODE IFDHGetCapabilitie
  				}
  			}
  			break;

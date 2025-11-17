@@ -1,8 +1,8 @@
-Index: acsccid-1.1.10/src/ccid_usb.c
+Index: acsccid-1.1.13/src/ccid_usb.c
 ===================================================================
---- acsccid-1.1.10.orig/src/ccid_usb.c
-+++ acsccid-1.1.10/src/ccid_usb.c
-@@ -193,6 +193,59 @@ static struct _bogus_firmware Bogus_firm
+--- acsccid-1.1.13.orig/src/ccid_usb.c
++++ acsccid-1.1.13/src/ccid_usb.c
+@@ -196,6 +196,59 @@ static struct _bogus_firmware Bogus_firm
  /* data rates supported by the secondary slots on the GemCore Pos Pro & SIM Pro */
  unsigned int SerialCustomDataRates[] = { GEMPLUS_CUSTOM_DATA_RATES, 0 };
  

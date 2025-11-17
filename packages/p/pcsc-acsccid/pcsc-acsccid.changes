@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Nov 17 06:34:17 UTC 2025 - Godfrey Chung <godfrey.chung@acs.com.hk>
+
+- Updated to version 1.1.13.
+  * Add the following readers support:
+    ACR1255U-J1 BL
+  * Fix a status change issue for the first SAM slot on ACR1281U-C6.
+  * Fix the incorrect bMaxSlotIndex value for ACR1255U-J1 BL.
+  * Disable USB-persist for CCID devices.
+  * Give pcscd group permission to CCID devices in udev rule.
+  * Avoid USB overflow by using a multiple of the packet size in ReadUSB().
+  * Enable SAM slot with ICC absent for ACR39 FW_Upgrade.
+- Replaced acsccid-1.1.10-libhal.patch with acsccid-1.1.13-libhal.patch.
+- Replaced acsccid-1.1.12-polling-thread.patch with
+  acsccid-1.1.13-polling-thread.patch.
+- Replaced acsccid-1.1.12-polling-unplug.patch with
+  acsccid-1.1.13-polling-unplug.patch.
+- Replaced acsccid-1.1.10-libusb-1.0.8.patch with
+  acsccid-1.1.13-libusb-1.0.8.patch.
+
+-------------------------------------------------------------------
 Thu Apr 24 02:33:13 UTC 2025 - Godfrey Chung <godfrey.chung@acs.com.hk>
 
 - Updated to version 1.1.12.

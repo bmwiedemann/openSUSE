@@ -42,7 +42,7 @@ BuildRequires:  pkg-config
 %if 0%{?suse_version} >= 1140
 BuildRequires:  pkgconfig(udev)
 %endif
-Version:        1.1.12
+Version:        1.1.13
 Release:        0
 URL:            http://acsccid.sourceforge.net/
 Summary:        PCSC Driver for ACS CCID Based Smart Card Readers
@@ -51,14 +51,14 @@ Group:          Productivity/Security
 Source:         http://downloads.sourceforge.net/%{_name}/%{_name}-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
 %if 0%{?sles_version} == 11
-# PATCH-FIX-SLE acsccid-1.1.10-libhal.patch godfrey.chung@acs.com.hk -- Fix the compatibility with libhal.
-Patch0:         %{_name}-1.1.10-libhal.patch
-# PATCH-FIX-SLE acsccid-1.1.12-polling-thread.patch godfrey.chung@acs.com.hk -- Add polling thread support for slot status.
-Patch1:         %{_name}-1.1.12-polling-thread.patch
-# PATCH-FIX-SLE acsccid-1.1.12-polling-unplug.patch godfrey.chung@acs.com.hk -- Let pcsc-lite delay the polling if the reader is unplugged.
-Patch2:         %{_name}-1.1.12-polling-unplug.patch
-# PATCH-FIX-SLE acsccid-1.1.10-libusb-1.0.8.patch godfrey.chung@acs.com.hk -- Fix the compatibility with libusb 1.0.8.
-Patch3:         %{_name}-1.1.10-libusb-1.0.8.patch
+# PATCH-FIX-SLE acsccid-1.1.13-libhal.patch godfrey.chung@acs.com.hk -- Fix the compatibility with libhal.
+Patch0:         %{_name}-1.1.13-libhal.patch
+# PATCH-FIX-SLE acsccid-1.1.13-polling-thread.patch godfrey.chung@acs.com.hk -- Add polling thread support for slot status.
+Patch1:         %{_name}-1.1.13-polling-thread.patch
+# PATCH-FIX-SLE acsccid-1.1.13-polling-unplug.patch godfrey.chung@acs.com.hk -- Let pcsc-lite delay the polling if the reader is unplugged.
+Patch2:         %{_name}-1.1.13-polling-unplug.patch
+# PATCH-FIX-SLE acsccid-1.1.13-libusb-1.0.8.patch godfrey.chung@acs.com.hk -- Fix the compatibility with libusb 1.0.8.
+Patch3:         %{_name}-1.1.13-libusb-1.0.8.patch
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       pcsc-lite >= %{pcsc_lite_ver}
@@ -128,6 +128,7 @@ Enhances:       modalias(usb:v072Fp225Cd*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp226Bd*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp226Ad*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp223Fd*dc*dsc*dp*ic*isc*ip*)
+Enhances:       modalias(usb:v072Fp2250d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp2239d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp2211d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp2252d*dc*dsc*dp*ic*isc*ip*)
