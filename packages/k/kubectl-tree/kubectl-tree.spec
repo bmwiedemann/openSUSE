@@ -1,7 +1,7 @@
 #
 # spec file for package kubectl-tree
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,8 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           kubectl-tree
-Version:        0.4.3
+Version:        0.4.6
 Release:        0
 Summary:        Kubectl plugin to browse Kubernetes object hierarchies as a tree
 License:        Apache-2.0

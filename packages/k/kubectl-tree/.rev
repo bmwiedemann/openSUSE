@@ -7,4 +7,12 @@
     <comment>new package kubectl-tree: kubectl plugin to browse Kubernetes object hierarchies as a tree</comment>
     <requestid>1121213</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>df102cb59994c7d2bba32d96d3d4efcb</srcmd5>
+    <version>0.4.6</version>
+    <time>1763378386</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1318157</requestid>
+  </revision>
 </revisionlist>

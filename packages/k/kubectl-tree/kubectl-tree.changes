@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Mon Nov 17 07:04:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.4.6:
+  * Fix namespace and CRD handling logic (vibe slop)
+  * Implement label selector for lists
+  * Use cli-runtime to parse resource/name structure
+
+-------------------------------------------------------------------
+Mon Nov 17 07:03:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.4.5:
+  * Add Linux arm64 platform support
+
+-------------------------------------------------------------------
+Mon Nov 17 06:57:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.4.4:
+  * potential fix for warnings printed
+  * feat: add --condition-types flag for custom condition types
+    (#102)
+  * chore(deps): bump actions/setup-go from 5 to 6 (#99)
+  * chore(deps): bump the kubernetes group with 3 updates
+  * chore(deps): bump github.com/spf13/cobra from 1.9.1 to 1.10.1
+  * chore(deps): bump github.com/spf13/pflag from 1.0.7 to 1.0.10
+  * chore(deps): bump the kubernetes group with 3 updates
+  * chore(deps): bump the kubernetes group with 3 updates
+  * chore(deps): bump the kubernetes group with 3 updates
+  * chore(deps): bump github.com/spf13/pflag from 1.0.6 to 1.0.7
+  * chore(deps): bump the kubernetes group with 3 updates
+  * chore(deps): bump the kubernetes group with 3 updates (#89)
+  * chore(deps): bump goreleaser/goreleaser-action from 1 to 6
+    (#84)
+  * chore(deps): bump actions/setup-go from 1 to 5 (#83)
+  * fix dependabot schema
+  * Move from renovate to dependabot
+  * chore(deps): update dependency go to 1.24 (#75)
+  * chore(deps): update rajatjindal/krew-release-bot action to
+    v0.0.47 (#72)
+  * fix(deps): update module github.com/spf13/pflag to v1.0.6 (#73)
+  * Add renovate.json (#71)
+  * change --rm-dist to --clean (#70)
+  * Skip forbidden resources as they are rarely required (#55)
+  * ignore discovery errors (#67)
+  * add support for showing kstatus (#66)
+  * Fix confusion with duplicate names (#65)
+  * Make color output configurable (#63)
+  * dependency updates, bump to go1.20
+  * disable printing warnings
+
+-------------------------------------------------------------------
 Thu Apr  6 12:27:55 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - new package kubectl-tree: kubectl plugin to browse Kubernetes
