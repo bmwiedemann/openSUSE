@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov 15 21:25:14 UTC 2025 - Matthias Bach <marix@marix.org> - 6.5.1
+
+- Add update-go-crypto.patch to address bsc#1253563.
+- Switch to go1.24 as required by updated libraries in
+  update-go-crypto.patch.
+
+-------------------------------------------------------------------
 Mon Apr 28 18:33:42 UTC 2025 - Matthias Bach <marix@marix.org> - 6.5.1
 
 - Update to version 6.5.1

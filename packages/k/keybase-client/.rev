@@ -307,4 +307,14 @@
   manualrun.</comment>
     <requestid>1273254</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>a88cb6a7ddb3a6b6824d5facebacc487</srcmd5>
+    <version>6.5.1</version>
+    <time>1763378263</time>
+    <user>anag_factory</user>
+    <comment>- Add update-go-crypto.patch to address bsc#1253563.
+- Switch to go1.24 as required by updated libraries in
+  update-go-crypto.patch.</comment>
+    <requestid>1318028</requestid>
+  </revision>
 </revisionlist>
