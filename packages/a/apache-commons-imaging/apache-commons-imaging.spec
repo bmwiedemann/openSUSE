@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-imaging
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,8 @@
 
 %global base_name imaging
 %global short_name commons-%{base_name}
-%global base_ver 1.0
-%global pre_ver alpha2
+%global base_ver 1.0.0
+%global pre_ver alpha6
 Name:           apache-%{short_name}
 Version:        %{base_ver}~%{pre_ver}
 Release:        0
@@ -27,11 +27,15 @@ Summary:        Apache Commons Imaging
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://commons.apache.org/proper/%{short_name}/
-Source0:        http://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{base_ver}-%{pre_ver}-src.tar.gz
+Source0:        https://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{base_ver}-%{pre_ver}-src.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(org.apache.commons:commons-parent:pom:)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
+# A reproducer in test-suite gets flagged
+#!BuildIgnore:  clamav
+#!BuildIgnore:  clamav-database
+#!BuildIgnore:  post-build-checks-malwarescan
 BuildArch:      noarch
 
 %description
@@ -47,7 +51,6 @@ This package contains the API documentation for %{name}.
 %prep
 %setup -q -n %{short_name}-%{base_ver}-%{pre_ver}-src
 %pom_remove_plugin org.codehaus.mojo:animal-sniffer-maven-plugin
-%pom_remove_plugin org.codehaus.mojo:findbugs-maven-plugin
 
 %build
 %{mvn_build} -f -- -Dsource=8

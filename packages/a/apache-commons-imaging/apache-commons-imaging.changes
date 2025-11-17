@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Fri Nov 14 09:59:37 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 1.0.0-alpha6
+  * New features
+    + Add an Imaging-specific security page #439
+    + Add Maven property commons.taglist.version for debugging
+    + Add support of GPSHPositioningError in GpsTagConstants #451
+    + Support Extensions from PNG 1.2 Specification, Version 1.5.0
+      #269
+    + Optionally force UTF-8 encoding for IPTC records #477
+    + Add Maven PMD check to the default build
+  * Fixed Bugs
+    + Replace Locale.ENGLISH with Locale.ROOT processing file names
+    + Fix PMD UnnecessaryFullyQualifiedName
+    + Fix PMD TooManyStaticImports
+    + Fix PMD UnusedFormalParameter
+    + Fix PMD UnusedLocalVariable
+    + Increase default block size in byte sources from 1024 to 8192
+      bytes
+    + Remove double ImagingException from method signatures #462
+    + Fix all PMD issues
+    + Fix SpotBugs CT_CONSTRUCTOR_THROW
+    + IMAGING-319:  Fix EXIF metadata is discarded when updating
+      offsets (wrong calculation)
+    + IMAGING-351:  Fix ExifRewriterRoundtripTest that was disabled
+  * Changes
+    + Bump org.apache.commons:commons-parent from 69 to 81 #400,
+      #406, #428, #430, #436, #442, #445, #545
+    + Bump org.apache.commons:commons-lang3 from 3.14.0 to 3.17.0
+      #416, #423, #431
+    + Bump commons-io:commons-io from 2.16.1 to 2.19.0 #437, #464
+    + Bump org.codehaus.mojo:taglist-maven-plugin from 3.1.0 to
+      3.2.1 #453
+  * Removed
+    + Remove direct dependency on org.hamcrest:hamcrest
+    + Rename methods BinaryFunctions.findNull() to indexOf0() like
+      String
+    + Rename method BinaryFunctions.slice() to copyOfRange() like
+      Arrays
+    + Rename method BinaryFunctions.head() to copyOfStart() like
+      Arrays
+    + Replace BinaryFunctions.startsWith(byte[], BinaryConstant)
+      with BinaryConstant.isStartOf(byte[])
+
+-------------------------------------------------------------------
+Fri Nov 14 09:35:04 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Disable clamav run on relevant distributions, because a reproducer
+  of an exploit is flagged although being only in a regression test
+  to protect against the exploit resurfacing.
+
+-------------------------------------------------------------------
 Tue Aug 13 08:26:18 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build with apache-commons-parent 71
