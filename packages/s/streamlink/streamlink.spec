@@ -24,7 +24,7 @@
 %endif
 %{?sle15_python_module_pythons}%{!?sle15_python_module_pythons:%define pythons python3}
 Name:           streamlink%{psuffix}
-Version:        7.6.0
+Version:        8.0.0
 Release:        0
 Summary:        Program to pipe streams from services into a video player
 License:        Apache-2.0 AND BSD-2-Clause
@@ -41,22 +41,24 @@ BuildRequires:  %{python_module myst-parser >= 1.0.0}
 BuildRequires:  %{python_module pip >= 21.0.0}
 BuildRequires:  %{python_module pycountry}
 BuildRequires:  %{python_module pycryptodome >= 3.4.3}
-BuildRequires:  %{python_module requests >= 2.26}
+BuildRequires:  %{python_module requests >= 2.30}
 BuildRequires:  %{python_module setuptools >= 77.0}
 BuildRequires:  %{python_module sphinx-design >= 0.5.0}
-BuildRequires:  %{python_module urllib3 >= 1.26.0}
+BuildRequires:  %{python_module trio >= 0.25.0}
+BuildRequires:  %{python_module trio-websocket >= 0.9.0}
+BuildRequires:  %{python_module urllib3 >= 2.0.0}
 BuildRequires:  %{python_module versioningit >= 2.0.0}
 BuildRequires:  %{python_module websocket-client >= 1.2.1}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 
 %if "%{flavor}" == "test"
-BuildRequires:  %{python_module freezegun >= 1.0.0}
-BuildRequires:  %{python_module pytest >= 8.0.0}
+BuildRequires:  %{python_module freezegun >= 1.5.0}
+BuildRequires:  %{python_module pytest >= 8.4.0}
 BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-trio}
 BuildRequires:  %{python_module requests-mock}
-BuildRequires:  %{python_module trio}
 BuildRequires:  streamlink = %{version}
 %endif
 
@@ -67,7 +69,7 @@ Requires:       %{pythons}-lxml >= 4.6.4
 Requires:       %{pythons}-pycountry
 Requires:       %{pythons}-pycryptodome >= 3.4.3
 Requires:       %{pythons}-requests >= 2.26
-Requires:       %{pythons}-trio >= 0.22.0
+Requires:       %{pythons}-trio >= 0.25.0
 Requires:       %{pythons}-trio-websocket >= 0.9.0
 Requires:       %{pythons}-urllib3 >= 1.26.0
 Requires:       %{pythons}-websocket-client >= 1.2.1
