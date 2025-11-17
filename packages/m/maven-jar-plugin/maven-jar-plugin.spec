@@ -23,7 +23,7 @@
 %bcond_with bootstrap
 %endif
 %global base_name maven-jar-plugin
-Version:        3.4.2
+Version:        3.5.0
 Release:        0
 Summary:        Maven JAR Plugin
 License:        Apache-2.0
@@ -32,8 +32,7 @@ URL:            https://maven.apache.org/plugins/maven-jar-plugin/
 Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugins/%{base_name}/%{version}/%{base_name}-%{version}-source-release.zip
 Source1:        %{base_name}-build.xml
 Patch0:         %{base_name}-bootstrap-resources.patch
-Patch1:         01-allow-replacing-artifacts.patch
-BuildRequires:  atinject
+BuildRequires:  atinject apache-commons-io
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
@@ -43,7 +42,6 @@ BuildRequires:  maven-lib
 BuildRequires:  maven-plugin-annotations
 BuildRequires:  objectweb-asm
 BuildRequires:  plexus-archiver >= 4.2.0
-BuildRequires:  plexus-utils >= 3.3.0
 BuildRequires:  sisu-inject
 BuildRequires:  slf4j
 BuildRequires:  unzip
@@ -92,7 +90,6 @@ API documentation for %{name}.
 cp %{SOURCE1} build.xml
 %patch -P 0 -p1
 %endif
-%patch -P 1 -p1
 
 # Remove all dependencies with scope test, since a raw xmvn does not hide them
 %pom_remove_dep -r :::test:

@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sat Nov 15 13:36:34 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 3.5.0
+  * New features and improvements
+    + Add new "attach" configuration parameter (3.x port of #482)
+    + Add Java-Version to MANIFEST.MF
+  * Bug Fixes
+    + Fix detecting java version for toolchains and JDK 1.8
+    + Ignore stderr when parsing javac version from toolchain
+  * Maintenance
+    + Update site descriptor to 2.0.0
+    + chore: remove junit3 references
+    + Migrate component injection to JSR-330
+    + Add PR Automation to 3.x
+    + Improve release-drafter configuration
+    + Fix for Maven 4.0.0-rc-3
+    + MNGSITE-529: Rename "Goals" to "Plugin Documentation"
+  * Build
+    + Bump m-invoker-p to 3.9.1 for Java 25
+  * Dependency updates
+    + Bump commons-io:commons-io from 2.16.1 to 2.21.0
+    + Bump org.codehaus.plexus:plexus-archiver from 4.9.2 to 4.10.4
+    + Use maven-plugin-testing-harness version 3.4.0
+    + Bump org.apache.maven.plugin-tools:maven-plugin-annotations
+      from 3.15.1 to 3.15.2
+    + Bump org.apache.maven.plugins:maven-plugins from 42 to 45
+    + Bump org.apache.maven:maven-archiver from 3.6.2 to 3.6.4
+    + Bump mavenVersion from 3.6.3 to 3.9.11
+    + Bump org.apache.maven.shared:file-management from 3.1.0 to
+      3.2.0
+- Removed patch:
+  * 01-allow-replacing-artifacts.patch
+    + rendered superfluous by the "attach" configuration parameter
+
+-------------------------------------------------------------------
 Mon Jul 21 14:29:28 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Removed patch:

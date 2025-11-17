@@ -14,10 +14,16 @@
             value="Builds a Java Archive (JAR) file from the compiled project classes and resources."/>
   <property name="project.groupId" value="org.apache.maven.plugins"/>
   <property name="project.artifactId" value="maven-jar-plugin"/>
-  <property name="project.version" value="3.4.2"/>
+  <property name="project.version" value="3.5.0"/>
   <property name="project.organization.name" value="The Apache Software Foundation"/>
+  
+  <property name="version.maven-resources-plugin" value="3.3.1"/>
+  <property name="version.maven-compiler-plugin" value="3.11.0"/>
+  <property name="version.maven-surefire" value="3.2.2"/>
+  <property name="version.maven-install-plugin" value="3.1.1"/>
+  <property name="version.maven-deploy-plugin" value="3.1.1"/>
 
-  <property name="spec.version" value="3.4"/>
+  <property name="spec.version" value="3.5"/>
 
   <property name="compiler.source" value="1.8"/>
   <property name="compiler.target" value="${compiler.source}"/>
@@ -87,6 +93,12 @@
             <propertyref name="project.groupId"/>
             <propertyref name="project.artifactId"/>
             <propertyref name="project.description"/>
+            <!-- substitution for components.xml -->
+            <propertyref name="version.maven-resources-plugin"/>
+            <propertyref name="version.maven-compiler-plugin"/>
+            <propertyref name="version.maven-surefire"/>
+            <propertyref name="version.maven-install-plugin"/>
+            <propertyref name="version.maven-deploy-plugin"/>
           </propertyset>
         </expandproperties>
       </filterchain>
