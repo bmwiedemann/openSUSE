@@ -21,14 +21,14 @@
 %define executable_name kubectl-view_secret
 
 Name:           kubectl-view-secret
-Version:        0.15.0
+Version:        0.15.1
 Release:        0
 Summary:        Kubernetes CLI plugin to decode Kubernetes secrets
 License:        MIT
 URL:            https://github.com/elsesiy/kubectl-view-secret
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.25
+BuildRequires:  go1.25 >= 1.25.4
 
 %description
 This plugin allows for easy secret decoding. Useful if you want to see what's
