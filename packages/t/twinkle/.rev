@@ -360,4 +360,12 @@
 - remove ZRTP support (bdo#797554, bsc#1219884)</comment>
     <requestid>1240902</requestid>
   </revision>
+  <revision rev="49" vrev="5">
+    <srcmd5>427976e8369c0efa10b88aae10d9d7a6</srcmd5>
+    <version>1.10.3</version>
+    <time>1763378402</time>
+    <user>anag_factory</user>
+    <comment>- Disable ILBC for now: Twinkle does not support iLBC 3.x (forwarded request 1317846 from dimstar)</comment>
+    <requestid>1317849</requestid>
+  </revision>
 </revisionlist>

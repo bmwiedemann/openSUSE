@@ -1,7 +1,7 @@
 #
 # spec file for package twinkle
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%bcond ilbc 0
 
 Name:           twinkle
 Version:        1.10.3
@@ -31,7 +33,9 @@ BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  file-devel
 BuildRequires:  flex
+%if %{with ilbc}
 BuildRequires:  ilbc-devel
+%endif
 BuildRequires:  libgsm-devel
 BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  libqt5-qttools-devel
@@ -60,7 +64,9 @@ networks.
 %cmake \
   -DWITH_ZRTP=OFF \
   -DWITH_SPEEX=ON \
+%if %{with ilbc}
   -DWITH_ILBC=ON \
+%endif
   -DWITH_GSM=ON \
   -DWITH_G729=ON \
   -DWITH_ALSA=ON \

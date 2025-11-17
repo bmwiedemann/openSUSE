@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 14 16:13:12 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Disable ILBC for now: Twinkle does not support iLBC 3.x
+
+-------------------------------------------------------------------
 Thu Jul 11 11:28:32 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update home page link to a working page
@@ -184,7 +189,7 @@ Mon Mar  8 01:45:40 CET 2010 - ro@suse.de
 - fix compiler warning about no-return-in-nonvoid-function
 
 -------------------------------------------------------------------
-Wed Feb 26 23:02;92 CET 2009 - rbos@opensuse.org
+Wed Feb 26 23:02:52 CET 2009 - rbos@opensuse.org
 
 - Integration with Diamondcard Worldwide Communication Service
   (worldwide calls to regular and cell phones and SMS).
@@ -197,7 +202,7 @@ Wed Feb 26 23:02;92 CET 2009 - rbos@opensuse.org
 - Link with ncurses library
 
 -------------------------------------------------------------------
-Sat Jan 31 22:18;30 CET 2009 - rbos@opensuse.org
+Sat Jan 31 22:18:30 CET 2009 - rbos@opensuse.org
 
 * Update to 1.4.1
 * No sound when Twinkle is compiled without speex support.
