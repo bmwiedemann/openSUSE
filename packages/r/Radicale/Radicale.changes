@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Nov  9 11:44:40 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
+
+- Enable Argon2 support for testing and as a recommendation
+- Update to 3.5.8
+  * Extend [auth]: re-factor & overhaul LDAP authentication, especially for Python's ldap module
+  * Fix: out-of-range timestamp on 32-bit systems
+  * Fix: format_ut problem on 32-bit systems
+  * Feature: extend logging with response size in bytes and flag served as plain or gzip
+  * Feature: [storage] strict_preconditions: new config option to enforce strict preconditions check on PUT in case item already exists [RFC6352#9.2]
+  * Doc: Telugu translation
+
+-------------------------------------------------------------------
 Sun Sep 28 09:11:54 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
 
 - Update to 3.5.7
