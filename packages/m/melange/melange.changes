@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 17 06:17:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.33.2:
+  * build: always perform build (#2223)
+  * fetch: add support for no checksum validation (#2222)
+  * qemu runner: make virtfs 9p bindings read-only v2 (#2155)
+
+-------------------------------------------------------------------
 Thu Nov 13 06:59:49 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.33.1:
