@@ -1,4 +1,118 @@
 -------------------------------------------------------------------
+Mon Nov 17 06:20:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.4.3:
+  This release reduces dependencies for a number of exported
+  packages.
+  This release also changes the format of the binary and container
+  signature, which is now a Sigstore bundle. To verify a release,
+  use the latest Cosign 3.x, verifying with
+
+    cosign verify-blob --bundle <artifact>-keyless.sigstore.json <artifact>.
+
+  * Improvements
+    - use interruptable context to elegantly handle signals in
+      rekor-cli (#2681)
+    - restapi: Don't log client errors as errors (#2680)
+    - pkg: separate pki types from implementations (#2668)
+    - e2e: don't mix e2e and regular utilities (#2672)
+    - pkg: remove viper config from spec definitions (#2669)
+    - log: remove zap & go-chi dependecy from pkg/types (#2667)
+    - chore: update go-openapi/runtime to v0.29.0 (#2670)
+    - chore: remove double imported mapstructure pkg (#2671)
+    - remove archived dependency and use stdlib slices (#2650)
+  * Documentation
+    - (docs): guard unsafe int/uint conversions flagged by gosec
+      (#2679)
+  * Dependencies
+    - build(deps): Bump actions/setup-go from 5.5.0 to 6.0.0
+    - build(deps): Bump actions/upload-artifact from 4.6.2 to 5.0.0
+    - build(deps): Bump cloud.google.com/go/pubsub/v2 from 2.0.0 to
+      2.3.0 (#2654)
+    - build(deps): Bump github.com/go-openapi/loads from 0.22.0 to
+      0.23.1 (#2632)
+    - build(deps): Bump github.com/go-openapi/swag from 0.24.1 to
+      0.25.1 (#2666)
+    - build(deps): Bump github.com/go-openapi/swag/conv from 0.24.0
+      to 0.25.1 (#2628)
+    - build(deps): Bump github.com/go-openapi/validate from 0.24.0
+      to 0.25.0 (#2629)
+    - build(deps): Bump github.com/go-swagger/go-swagger from
+      0.32.3 to 0.33.1 in /hack/tools in the all group (#2643)
+    - build(deps): Bump github.com/redis/go-redis/v9 from 9.12.1 to
+      9.13.0
+    - build(deps): Bump github.com/redis/go-redis/v9 from 9.13.0 to
+      9.14.0
+    - build(deps): Bump github.com/spf13/cobra from 1.9.1 to 1.10.1
+    - build(deps): Bump github.com/spf13/viper from 1.20.1 to
+      1.21.0
+    - build(deps): Bump github.com/tink-crypto/tink-go/v2 from
+      2.4.0 to 2.5.0 (#2661)
+    - build(deps): Bump github/codeql-action from 3.30.3 to 4.30.9
+      (#2645)
+    - build(deps): Bump github/codeql-action in the all group
+      (#2659)
+    - build(deps): Bump github/codeql-action in the all group
+      (#2663)
+    - build(deps): Bump go.step.sm/crypto from 0.70.0 to 0.72.0
+      (#2651)
+    - build(deps): Bump go.step.sm/crypto from 0.73.0 to 0.74.0
+      (#2674)
+    - build(deps): Bump golang from 1.25.0 to 1.25.1 in the all
+      group (#2611)
+    - build(deps): Bump golang from 1.25.1 to 1.25.2 in the all
+      group (#2644)
+    - build(deps): Bump golang from 1.25.2 to 1.25.3 in the all
+      group
+    - build(deps): Bump golang from 1.25.3 to 1.25.4 in the all
+      group (#2675)
+    - build(deps): Bump golang from `a5e935d` to `8305f5f`
+    - build(deps): Bump golang.org/x/mod from 0.27.0 to 0.28.0
+    - build(deps): Bump golang.org/x/mod from 0.28.0 to 0.29.0
+      (#2665)
+    - build(deps): Bump golang.org/x/net from 0.43.0 to 0.44.0
+    - build(deps): Bump golang.org/x/net from 0.44.0 to 0.46.0
+      (#2656)
+    - build(deps): Bump golang.org/x/sync from 0.16.0 to 0.17.0
+    - build(deps): Bump google.com/cloudsdktool/google-cloud-cli
+    - build(deps): Bump google.com/cloudsdktool/google-cloud-cli
+    - build(deps): Bump google.com/cloudsdktool/google-cloud-cli
+      (#2618)
+    - build(deps): Bump google.com/cloudsdktool/google-cloud-cli
+      (#2642)
+    - build(deps): Bump google.com/cloudsdktool/google-cloud-cli
+      (#2658)
+    - build(deps): Bump google.com/cloudsdktool/google-cloud-cli
+      (#2660)
+    - build(deps): Bump google.com/cloudsdktool/google-cloud-cli
+      (#2676)
+    - build(deps): Bump google.golang.org/api from 0.248.0 to
+      0.249.0
+    - build(deps): Bump google.golang.org/api from 0.249.0 to
+      0.252.0 (#2648)
+    - build(deps): Bump google.golang.org/api from 0.252.0 to
+      0.253.0 (#2653)
+    - build(deps): Bump google.golang.org/grpc from 1.75.1 to
+      1.76.0 (#2652)
+    - build(deps): Bump sigstore/cosign-installer from 3.10.0 to
+      4.0.0 (#2646)
+    - build(deps): Bump sigstore/scaffolding/trillian_log_server
+      (#2636)
+    - build(deps): Bump sigstore/scaffolding/trillian_log_server
+      (#2678)
+    - build(deps): Bump sigstore/scaffolding/trillian_log_signer
+      (#2635)
+    - build(deps): Bump sigstore/scaffolding/trillian_log_signer
+      (#2677)
+    - build(deps): Bump the all group across 1 directory with 5
+      updates (#2647)
+    - build(deps): Bump the all group with 2 updates
+    - build(deps): Bump the all group with 2 updates
+    - build(deps): Bump the all group with 2 updates
+    - build(deps): Bump the all group with 3 updates
+    - build(deps): Bump the all group with 7 updates (#2673)
+
+-------------------------------------------------------------------
 Thu Sep 18 13:01:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.4.2:

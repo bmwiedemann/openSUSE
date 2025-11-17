@@ -494,4 +494,12 @@
     <comment>update to 1.4.2 (forwarded request 1305801 from ojkastl_buildservice)</comment>
     <requestid>1305808</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>1a9a495ab2fb470562b9f5b7d622d624</srcmd5>
+    <version>1.4.3</version>
+    <time>1763378403</time>
+    <user>anag_factory</user>
+    <comment>update to 1.4.3 (forwarded request 1318133 from ojkastl_buildservice)</comment>
+    <requestid>1318184</requestid>
+  </revision>
 </revisionlist>
