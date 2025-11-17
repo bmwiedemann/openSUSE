@@ -17,11 +17,11 @@
 
 
 # Use --with-bootstrap to build sbcl using the upstream binaries
-%bcond_with bootstrap
+%bcond_without bootstrap
 
 Name:           sbcl
 #!BuildIgnore:  gcc-PIE
-Version:        2.5.9
+Version:        2.5.10
 Release:        0
 Summary:        Steel Bank Common Lisp
 License:        BSD-3-Clause AND SUSE-Public-Domain
@@ -33,10 +33,10 @@ Source2:        sbclrc.sample
 Source3:        customize-target-features.lisp
 %if %{with bootstrap}
 Source20:       http://downloads.sourceforge.net/sourceforge/sbcl/sbcl-1.4.3-x86-linux-binary.tar.bz2
-Source21:       http://downloads.sourceforge.net/sourceforge/sbcl/sbcl-1.4.7-x86-64-linux-binary.tar.bz2
+Source21:       http://downloads.sourceforge.net/sourceforge/sbcl/sbcl-2.3.4-x86-64-linux-binary.tar.bz2
 Source22:       http://downloads.sourceforge.net/sourceforge/sbcl/sbcl-1.2.7-powerpc-linux-binary.tar.bz2
 Source23:       http://downloads.sourceforge.net/sourceforge/sbcl/sbcl-1.2.7-armel-linux-binary.tar.bz2
-Source24:       http://downloads.sourceforge.net/sourceforge/sbcl/sbcl-1.4.11-armhf-linux-binary.tar.bz2
+Source24:       http://downloads.sourceforge.net/sourceforge/sbcl/sbcl-2.3.3-arm-linux-binary.tar.bz2
 Source25:       http://downloads.sourceforge.net/sourceforge/sbcl/sbcl-1.4.2-arm64-linux-binary.tar.bz2
 Source26:       http://downloads.sourceforge.net/sourceforge/sbcl/sbcl-1.5.8-ppc64le-linux-binary.tar.bz2
 %ifarch %{ix86}
