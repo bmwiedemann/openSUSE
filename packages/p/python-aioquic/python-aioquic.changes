@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Nov 13 14:41:20 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.3.0
+  * Ensure PATH_CHALLENGE frames are sent before other frame types.
+  * Reclaim memory when HTTP/3 streams end.
+  * Limit the number of remote PATH_CHALLENGE stored per path.
+  * Avoid assertion error when receiving multiple STOP_SENDING frames.
+  * Improve type annotations.
+  * Make it possible to use LibreSSL instead of OpenSSL.
+  * Add support Python 3.13 and 3.14, drop support for Python 3.8 and 3.9.
+  * Build binary wheels for musllinux.
+  * Build binary wheels against OpenSSL 3.5.4.
+  * Add command-line argument to the http3_client example to request
+    a key update during interoperability tests.
+- Update BuildRequires from setup.py
+
+-------------------------------------------------------------------
 Wed Oct  9 08:43:08 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.2.0
