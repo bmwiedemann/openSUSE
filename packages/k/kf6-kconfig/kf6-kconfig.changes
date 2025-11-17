@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Nov 13 20:58:46 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.20.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.20.0
+- Changes since 6.19.0:
+  * Update dependency version to 6.20.0
+  * kconfig_compiler: prevent empty private: section in headers
+  * Use QLockFile.tryLock with timeout rather then lock forever (kde#508253)
+  * Add 59ca348606 to .git-blame-ignore-revs
+  * kdesktopfileaction: Improve docs strings
+  * Use QCOMPARE vs QVERIFY
+  * typo--
+  * Update version to 6.20.0
+
+-------------------------------------------------------------------
 Tue Oct  7 17:06:13 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.19.0
