@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov 14 12:34:10 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 5.5.13.4
+  * Security update of Bouncy Castle dependency to fix bsc#1224299,
+    CVE-2024-29857.
+- Removed patch:
+  * itextpdf-bc175.patch
+    + not needed with this version
+- Added patch:
+  * 0001-Upgrade-to-commons-imaging-1.0.0-alpha6.patch
+    + Upgrade to the latest commons-imaging and fix the build
+
+-------------------------------------------------------------------
 Wed Feb 21 10:45:18 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

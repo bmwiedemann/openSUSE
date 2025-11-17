@@ -1,0 +1,69 @@
+From 3621b8cb6f1466015f2e092f70e7b9b35b8234db Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
+Date: Fri, 14 Nov 2025 13:29:50 +0100
+Subject: [PATCH] Upgrade to commons-imaging 1.0.0-alpha6
+
+---
+ xtra/pom.xml                                   |  4 ++--
+ .../pdfcleanup/PdfCleanUpRenderListener.java   | 18 +++++++++++-------
+ 2 files changed, 13 insertions(+), 9 deletions(-)
+
+diff --git a/xtra/pom.xml b/xtra/pom.xml
+index bbfcccecb..8c43aa5b2 100644
+--- a/xtra/pom.xml
++++ b/xtra/pom.xml
+@@ -83,12 +83,12 @@
+     <dependency>
+       <groupId>org.apache.commons</groupId>
+       <artifactId>commons-imaging</artifactId>
+-      <version>1.0-alpha1</version>
++      <version>1.0.0-alpha6</version>
+     </dependency>
+     <dependency>
+       <groupId>commons-io</groupId>
+       <artifactId>commons-io</artifactId>
+-      <version>2.4</version>
++      <version>2.19.0</version>
+     </dependency>
+     <dependency>
+       <groupId>junit</groupId>
+diff --git a/xtra/src/main/java/com/itextpdf/text/pdf/pdfcleanup/PdfCleanUpRenderListener.java b/xtra/src/main/java/com/itextpdf/text/pdf/pdfcleanup/PdfCleanUpRenderListener.java
+index e82fb5e0e..9f96d3a8f 100644
+--- a/xtra/src/main/java/com/itextpdf/text/pdf/pdfcleanup/PdfCleanUpRenderListener.java
++++ b/xtra/src/main/java/com/itextpdf/text/pdf/pdfcleanup/PdfCleanUpRenderListener.java
+@@ -86,6 +86,8 @@ import org.apache.commons.imaging.ImageInfo;
+ import org.apache.commons.imaging.Imaging;
+ import org.apache.commons.imaging.ImagingConstants;
+ import org.apache.commons.imaging.formats.tiff.constants.TiffConstants;
++import org.apache.commons.imaging.formats.tiff.TiffImageParser;
++import org.apache.commons.imaging.formats.tiff.TiffImagingParameters;
+ 
+ class PdfCleanUpRenderListener implements ExtRenderListener {
+ 
+@@ -315,14 +317,16 @@ class PdfCleanUpRenderListener implements ExtRenderListener {
+             // Apache can only read JPEG, so we should use awt for writing in this format
+             if (imageInfo.getFormat() == ImageFormats.JPEG) {
+                 return getJPGBytes(image);
++            // In order to pass parameters, we have to use the image parser directly
++            } else if (imageInfo.getFormat() == ImageFormats.TIFF) {
++                final TiffImageParser tiffImageParser = new TiffImageParser();
++                final TiffImagingParameters params = new TiffImagingParameters();
++                ByteArrayOutputStream bos = new ByteArrayOutputStream();
++                params.setCompression(TiffConstants.COMPRESSION_LZW);
++                tiffImageParser.writeImage(image, bos, params);
++                return bos.toByteArray();
+             } else {
+-                Map<String, Object> params = new HashMap<String, Object>();
+-
+-                if (imageInfo.getFormat() == ImageFormats.TIFF) {
+-                    params.put(ImagingConstants.PARAM_KEY_COMPRESSION, TiffConstants.TIFF_COMPRESSION_LZW);
+-                }
+-
+-                return Imaging.writeImageToBytes(image, imageInfo.getFormat(), params);
++                return Imaging.writeImageToBytes(image, imageInfo.getFormat());
+             }
+         } catch (Exception e) {
+             throw new RuntimeException(e);
+-- 
+2.51.1
+

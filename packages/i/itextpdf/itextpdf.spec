@@ -17,14 +17,14 @@
 
 
 Name:           itextpdf
-Version:        5.5.13.3
+Version:        5.5.13.4
 Release:        0
 Summary:        A Free Java-PDF library
 License:        AGPL-3.0-only
 Group:          Development/Libraries/Java
 URL:            https://itextpdf.com
 Source0:        https://github.com/itext/%{name}/archive/%{version}.tar.gz
-Patch0:         itextpdf-bc175.patch
+Patch0:         0001-Upgrade-to-commons-imaging-1.0.0-alpha6.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.itextpdf:itext-parent:pom:)
@@ -61,8 +61,7 @@ This package contains the API documentation for %{name}.
 %pom_remove_plugin -r :buildnumber-maven-plugin
 
 %build
-%{mvn_build} -f -- \
-    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)
+%{mvn_build} -f
 
 %install
 %mvn_install
