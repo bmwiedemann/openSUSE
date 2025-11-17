@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Nov 15 14:42:22 UTC 2025 - Holden Fried <holden@opensuse.org>
+
+- update to 0.59.13:
+  - [management] activity events on group updates by
+    @pascal-fischer in #4750
+  - Bump github.com/containerd/containerd from 1.7.27 to 1.7.29 by
+    @dependabot[bot] in #4756
+  - [management] incremental network map builder by @crn4 in #4753
+  - [management] add pat rate limiting by @pascal-fischer in #4741
+  - [management] remove toAll firewall rule by @crn4 in #4725
+  - [management] remove GLOBAL when disabling foreign keys on mysql
+    by @pascal-fischer in #4615
+  - [management] remove timing logs by @pascal-fischer in #4761
+  - [client] Create networkd.conf.d if it doesn't exist by @lixmal
+    in #4764
+  - [management] fix pg db deadlock after app panic by @crn4 in
+    #4772
+  - [client] Fix agent reference by @pappz in #4776
+  - [management] move network map logic into new design by
+    @pascal-fischer in #4774
+  - [management] Removed policy posture checks on original peer by
+    @pascal-fischer in #4779
+  - [client] Fix shutdown blocking on stuck ICE agent close by
+    @lixmal in #4780
+  - [client] Add quick actions window by @doromaraujo in #4717
+  - [client] Use stdnet with a context to avoid DNS deadlocks by
+    @lixmal in #4781
+  - [client] Replace ipset lib by @lixmal in #4777
+
+
+-------------------------------------------------------------------
 Thu Nov  6 18:02:21 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 0.59.12:
