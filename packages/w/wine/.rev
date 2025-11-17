@@ -5688,4 +5688,18 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 10.18 release</comment>
     <requestid>1315020</requestid>
   </revision>
+  <revision rev="476" vrev="1">
+    <srcmd5>a1d7f977d2b70779695f95acf391a09a</srcmd5>
+    <version>10.19</version>
+    <time>1763378249</time>
+    <user>anag_factory</user>
+    <comment>- updated to 10.19 release
+  - Support for reparse points.
+  - More support for WinRT exceptions.
+  - Refactoring of Common Controls after the v5/v6 split.
+  - Typed Arrays support in JScript.
+  - Various bug fixes.
+- update staging to 10.19 release</comment>
+    <requestid>1318024</requestid>
+  </revision>
 </revisionlist>

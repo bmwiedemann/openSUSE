@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov 15 20:08:34 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- updated to 10.19 release
+  - Support for reparse points.
+  - More support for WinRT exceptions.
+  - Refactoring of Common Controls after the v5/v6 split.
+  - Typed Arrays support in JScript.
+  - Various bug fixes.
+- update staging to 10.19 release
+
+-------------------------------------------------------------------
 Sat Nov  1 10:12:13 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - updated to 10.18 release
