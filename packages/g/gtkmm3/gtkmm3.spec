@@ -77,7 +77,6 @@ freely combined to quickly create complex user interfaces.
 Summary:        C++ Interface for GTK3 (a GUI Library for X)
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Documentation/HTML
-Requires:       glibmm2-doc
 BuildArch:      noarch
 
 %description doc
@@ -99,8 +98,7 @@ freely combined to quickly create complex user interfaces.
 %meson_install
 %fdupes %{buildroot}/%{_prefix}
 
-%post -n libgtkmm%{so_ver} -p /sbin/ldconfig
-%postun -n libgtkmm%{so_ver} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgtkmm%{so_ver}
 
 %files -n libgtkmm%{so_ver}
 %license COPYING

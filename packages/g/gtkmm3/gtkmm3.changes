@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 14 06:48:16 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop hard glibmm2-doc Requires: Not needed.
+- Use ldconfig_scriptlets macro for post(un) handling.
+
+-------------------------------------------------------------------
 Tue Sep  9 10:50:14 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add explicit glycin-loaders BuildRequires: provide image loaders
