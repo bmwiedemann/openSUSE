@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Nov 17 06:18:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.30.22:
+  * build(deps): bump github/codeql-action from 4.31.2 to 4.31.3
+    (#1936)
+  * Add support for tagged repositories (#1868)
+  * build(deps): bump github/codeql-action from
+    8a06050a8c0348fb4738f28e0cfbb6727cf054ce to
+    04bd5c6aabdcaa5cccaf378a97ef5062b2061cd0 (#1927)
+  * build(deps): bump google.golang.org/api from 0.254.0 to 0.255.0
+    (#1917)
+  * build(deps): bump go.step.sm/crypto from 0.73.0 to 0.74.0
+    (#1914)
+  * build(deps): bump docker/setup-qemu-action from 3.6.0 to 3.7.0
+    (#1921)
+  * build(deps): bump golang.org/x/oauth2 from 0.32.0 to 0.33.0
+    (#1924)
+  * build(deps): bump chainguard-dev/actions from 1.5.7 to 1.5.8
+    (#1928)
+  * build(deps): bump golangci/golangci-lint-action from 8.0.0 to
+    9.0.0 (#1929)
+  * build(deps): bump golang.org/x/sys from 0.37.0 to 0.38.0
+    (#1925)
+  * build(deps): bump golang.org/x/sync from 0.17.0 to 0.18.0
+    (#1926)
+
+-------------------------------------------------------------------
+Mon Nov 10 13:03:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.30.21:
+  * Upgrade golangci-lint to 2.6.1 and enable modernize linter
+    (#1916)
+  * build(deps): bump step-security/harden-runner from 2.13.1 to
+    2.13.2 (#1919)
+
+-------------------------------------------------------------------
 Tue Nov 04 08:34:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.30.20 (.19 was not released):
