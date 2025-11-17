@@ -1,0 +1,138 @@
+#!/bin/sh
+
+TOS_URL="https://www.microsoft.com/en-us/legal/terms-of-use"
+TOS_FILE="/usr/share/doc/xone-dongle-firmware/MICROSOFT-TOS.html"
+POST_MESSAGE="/var/adm/update-messages/__NAME__-__VERSION__-__RELEASE__-1"
+
+FIRMWARE_URL="http://download.windowsupdate.com/c/msdownload/update/driver/drvs/2017/07/1cd6a87c-623f-4407-a52d-c31be49e925c_e19f60808bdcbfbd3c3df6be3e71ffc52e43261e.cab"
+FIRMWARE_FILE="/usr/lib/firmware/xow_dongle.bin"
+CHECKSUM_FILE="/usr/share/__NAME__/firmware.sha256"
+
+CURL_OPTIONS="-L -s"
+
+# Default: fail unless told otherwise
+exit_code=1
+for arg in "$@"; do
+    if [ "$arg" = "--no-fail" ]; then
+        exit_code=0
+        break
+    fi
+done
+
+echo "Microsoft Terms of Use:"
+if [ -e "$TOS_FILE" ]; then
+    echo "  already present"
+else
+    echo -n "  Fetching   ... "
+    if curl $CURL_OPTIONS -o "$TOS_FILE" "$TOS_URL"; then
+        echo "done"
+    else
+        rm -f "$TOS_FILE"
+        echo "failed ... deleted!"
+    fi
+fi
+
+tmpname=$(basename "$0")
+tmpdir=$(mktemp -d "/tmp/$tmpname.XXXXXX")
+trap "rm -rf $tmpdir" EXIT
+if [ $? -ne 0 ] || [ -z "$tmpdir" ]; then
+    echo "$0: Can't create temp dir, exiting..."
+    exit $exit_code
+fi
+
+cd "$tmpdir" || exit $exit_code
+
+if [ -e "$FIRMWARE_FILE" ]; then
+    echo "*** No update necessary. Firmware already installed at $FIRMWARE_FILE. ***"
+    # Still show ToS summary below
+else
+    echo "Downloading Xbox Wireless Controller Adapter firmware..."
+
+    echo -n "  Fetching   ... "
+    if ! wget -q -O driver.cab "$FIRMWARE_URL"; then
+        echo "failed!"
+        if [ "$exit_code" -ne 0 ]; then
+            exit $exit_code
+        else
+            echo "*** No Firmware installed. ***" | tee "$POST_MESSAGE"
+            # Show ToS and exit
+            if [ -f "$TOS_FILE" ] && command -v w3m >/dev/null 2>&1; then
+                w3m -dump "$TOS_FILE" | tee "$POST_MESSAGE"
+            fi
+            exit 0
+        fi
+    fi
+    echo "done"
+
+    echo -n "  Extracting ... "
+    if ! cabextract -F FW_ACC_00U.bin driver.cab >/dev/null 2>&1; then
+        echo "failed!"
+        rm -f driver.cab
+        if [ "$exit_code" -ne 0 ]; then
+            exit $exit_code
+        else
+            echo "*** No Firmware installed. ***" | tee "$POST_MESSAGE"
+            if [ -f "$TOS_FILE" ] && command -v w3m >/dev/null 2>&1; then
+                w3m -dump "$TOS_FILE" | tee "$POST_MESSAGE"
+            fi
+            exit 0
+        fi
+    fi
+    echo "done"
+
+    rm -f driver.cab
+
+    if [ ! -f FW_ACC_00U.bin ]; then
+        echo "Firmware file FW_ACC_00U.bin not found after extraction."
+        if [ "$exit_code" -ne 0 ]; then
+            exit $exit_code
+        else
+            echo "*** No Firmware installed. ***" | tee "$POST_MESSAGE"
+            if [ -f "$TOS_FILE" ] && command -v w3m >/dev/null 2>&1; then
+                w3m -dump "$TOS_FILE" | tee "$POST_MESSAGE"
+            fi
+            exit 0
+        fi
+    fi
+
+    if [ ! -f "$CHECKSUM_FILE" ]; then
+        echo "Checksum file $CHECKSUM_FILE not found."
+        if [ "$exit_code" -ne 0 ]; then
+            exit $exit_code
+        else
+            echo "*** No Firmware installed. ***" | tee "$POST_MESSAGE"
+            if [ -f "$TOS_FILE" ] && command -v w3m >/dev/null 2>&1; then
+                w3m -dump "$TOS_FILE" | tee "$POST_MESSAGE"
+            fi
+            exit 0
+        fi
+    fi
+
+    if ! grep "FW_ACC_00U.bin" "$CHECKSUM_FILE" | sha256sum --check --quiet --status >/dev/null 2>&1; then
+        echo "Checksum mismatch for FW_ACC_00U.bin ... deleted!"
+        rm -f FW_ACC_00U.bin
+        if [ "$exit_code" -ne 0 ]; then
+            exit $exit_code
+        else
+            echo "*** No Firmware installed. ***" | tee "$POST_MESSAGE"
+            if [ -f "$TOS_FILE" ] && command -v w3m >/dev/null 2>&1; then
+                w3m -dump "$TOS_FILE" | tee "$POST_MESSAGE"
+            fi
+            exit 0
+        fi
+    fi
+
+    chmod 644 FW_ACC_00U.bin
+    mv -f FW_ACC_00U.bin "$FIRMWARE_FILE"
+    echo "*** Firmware installed. ***" | tee "$POST_MESSAGE"
+fi
+
+# Show ToS at the end
+if [ -f "$TOS_FILE" ] && command -v w3m >/dev/null 2>&1; then
+    w3m -dump "$TOS_FILE" | tee "$POST_MESSAGE"
+else
+    echo "Please review Microsoft's Terms of Use at:"
+    echo "  $TOS_URL" | tee "$POST_MESSAGE"
+fi
+
+exit 0

@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a7cf153e243fd0652a490c7d60265d0d</srcmd5>
+    <version>0.1</version>
+    <time>1763378241</time>
+    <user>anag_factory</user>
+    <comment>This package adds a script to download the firmware for Microsoft's Xbox One Controllers. It is required for a specialized driver called &quot;xone&quot;. xone is required to support the audio interface of xbox type controllers and its wireless dongle.
+Submitting this package to allow installation of the xone package which I will add to regular Factory when this is accepted.
+
+This package is only a download script that presents the TOS of Microsoft during installation. It follows how this package works, the use cases are very similar/identical: https://build.opensuse.org/package/show/openSUSE:Factory/fetchmsttfonts</comment>
+    <requestid>1318010</requestid>
+  </revision>
+</revisionlist>
