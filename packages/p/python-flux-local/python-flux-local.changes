@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov 17 07:04:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 8.0.1:
+  * chore(deps): update python docker tag to v3.14 by
+    @renovate[bot] in #1016
+  * chore(deps): update ubuntu docker tag to noble-20251013 by
+    @renovate[bot] in #1041
+  * Fix building HelmRelease with a chartRef of a HelmChart by
+    @allenporter in #1042
+  * Remove unecessary logging by @allenporter in #1043
+
+-------------------------------------------------------------------
 Fri Nov 14 12:08:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 8.0.0:
