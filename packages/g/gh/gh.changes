@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov 14 08:13:12 UTC 2025 - Pavel Dostál <pdostal@suse.com>
+
+- Update to version 2.83.1:
+  * chore(deps): bump golangci/golangci-lint-action from 8.0.0 to 9.0.0
+  * Check user and teams nil state instead of length
+  * Update third-party licenses and dependencies
+  * Ensure empty arrays for reviewers in PR API calls
+  * Update .github/workflows/lint.yml
+  * Annotate go-licenses install with version tag
+  * Integrate license checks back into lint workflow
+
+-------------------------------------------------------------------
 Wed Nov 12 13:41:47 UTC 2025 - Pavel Dostál <pdostal@suse.com>
 
 - Bump go from 1.24 to 1.25
