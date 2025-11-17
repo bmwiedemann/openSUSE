@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 14 15:21:56 UTC 2025 - Fuminobu Takeyama <ftake@geeko.jp>
+
+- Fix build error with bazel 8.4.1
+  * Move files from Bazel Central Registry to bcr.tar and
+    use a local bazel registry
+
+-------------------------------------------------------------------
 Tue Jul 22 12:13:00 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 
 - Update mozc.spec:

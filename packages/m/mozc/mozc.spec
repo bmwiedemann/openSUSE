@@ -74,7 +74,9 @@ Source1:        README.SUSE
 # See dependencies.tar/sbom.json for license information
 # License: Apache-2.0 AND BSD-3-Clause AND Zlib AND SUSE-Public-Domain
 Source2:        dependencies.tar
-Source3:        MODULE.bazel.lock
+# A Subset of Bazel Central Registry
+# License: Apache-2.0
+Source3:        bcr.tar.xz
 Source4:        ibus-setup-mozc-jp.desktop.in
 #
 #
@@ -188,7 +190,6 @@ tar xvf %{SOURCE20}
 %patch -P 1 -p1
 
 cp %{SOURCE1} .
-cp %{SOURCE3} src
 
 %if 0%{?suse_version} == 1500
 %patch -P 3 -p1
@@ -198,6 +199,7 @@ cp %{SOURCE3} src
 
 # extract dependencies
 tar xf %{SOURCE2}
+tar xf %{SOURCE3}
 
 # fix installation, library and header path
 sed -e 's|@libdir@|%{_libdir}|g' %{SOURCE4} > ibus-setup-mozc-jp.desktop
@@ -214,6 +216,12 @@ for f in %{optflags}; do
 		*) echo build --copt=$f >> src/.bazelrc
 	esac
 done
+
+# The version of buil-in bazel module is different for each minor bazel versions
+# Use build-in bazel modules from Bazel 8.4
+# https://github.com/bazelbuild/bazel/blob/release-8.4.1/src/MODULE.tools
+echo 'bazel_dep(name = "rules_java", version = "8.14.0")' >> src/MODULE.bazel
+echo 'bazel_dep(name = "zlib", version = "1.3.1.bcr.5")' >> src/MODULE.bazel
 
 %build
 
@@ -235,6 +243,7 @@ bazel build package \
 	"//unix/fcitx5:fcitx5-mozc.so" \
 %endif
 	--repository_cache=../dependencies \
+	--registry=file:$(realpath ../bcr) \
 	--config oss_linux \
 	-c opt \
 	--force_pic \
