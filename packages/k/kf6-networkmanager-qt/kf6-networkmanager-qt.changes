@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Nov 13 20:59:02 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.20.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.20.0
+- Changes since 6.19.0:
+  * Update dependency version to 6.20.0
+  * Add missing documentation comments for WifiP2P
+  * Fix since documentation for WifiP2P
+  * Fix enum value for WifiP2P
+  * Deprecate unused, Java-style iterator NMStringMapIterator typedef
+  * Add WifiP2P device
+  * Update version to 6.20.0
+
+-------------------------------------------------------------------
 Tue Oct  7 17:06:29 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.19.0
