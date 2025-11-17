@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov 14 10:10:32 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 3.0.6.1:
+  + Changes
+    - Revert "chg:pkg: Cleanup the build system."
+  + Fix
+    - Use the same executable as parent.
+    - Fix test\_restore\_to\_nonexisting\_dir().
+    - Regression in pexpect+sftp backend.
+    - Unpin httplib2 but add pysocks needed for proxy support.
+
+-------------------------------------------------------------------
 Tue Nov 11 22:35:51 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 3.0.6
