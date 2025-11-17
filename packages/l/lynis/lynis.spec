@@ -1,7 +1,6 @@
 #
 # spec file for package lynis
 #
-# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2009-2013 Sascha Manns <saigkill@opensuse.org>
 #
@@ -50,6 +49,8 @@ Patch0:         %{name}_1.3.5_lynis.diff
 # PATCH-OPENSUSE-FIX -- thomas@novell.com - modifying for openSUSE
 Patch2:         %{name}_1.3.1_include_consts.diff
 Patch5:         %{name}_1.3.6_include-osdetection.diff
+# PATCH-FIX-UPSTREAM -  gh#CISOfy/lynis#1682 mardnh@gmx.de
+Patch6:         https://github.com/CISOfy/lynis/pull/1682.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libxml2-devel
 Requires:       bash
@@ -77,6 +78,7 @@ most interesting parts useful for audits, like:
 %patch -P 0
 %patch -P 2
 %patch -P 5
+%patch -p1 -P 6
 
 %build
 
