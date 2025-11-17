@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Nov 15 21:21:02 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.6.0
+  * Fix drag handler and aspect ratio logic
+  * Feature to enforce aspect ratio in crop
+  * AnnotationTool: add CropTool enum value and geometry property
+  * Remove kirigami link dependency
+  * Use OpenCV 4.7 for stack blur
+  * Make OpenCV fully optional and add a warning message without it
+  * Move modification state tracking to History
+  * Add modified property to annotationdocument
+  * Move functions above struct/class definitions
+  * AnnotationDocument & SelectedItemWrapper: Add applyTransform()
+  * Allow saving and clearing the annotation document from QML
+  * add spectacle annotation system
+
+-------------------------------------------------------------------
 Tue Feb 18 09:47:04 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.5.0

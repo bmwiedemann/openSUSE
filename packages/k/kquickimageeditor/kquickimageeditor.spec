@@ -1,7 +1,7 @@
 #
 # spec file for package kquickimageeditor
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,14 +23,14 @@ ExclusiveArch:  do_not_build
 %if "%{flavor}" == "qt6"
   %define qt6 1
   %define pkg_suffix 6
-  %define kf6_version 6.0.0
-  %define qt6_version 6.6.0
+  %define kf6_version 6.13.0
+  %define qt6_version 6.8.0
 %endif
 %define rname kquickimageeditor
 
 %bcond_without released
 Name:           kquickimageeditor%{?pkg_suffix}
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        A set of QtQuick components for image editing
 License:        LGPL-2.1-or-later
@@ -42,7 +42,10 @@ Source2:        kquickimageeditor.keyring
 %endif
 %if 0%{?qt6}
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(OpenCV) >= 4.7.0
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 %endif
 
@@ -57,13 +60,19 @@ Summary:        A set of QtQuick components for image editing
 KQuickImageEditor is a set of QtQuick components providing basic image editing
 capabilities.
 
+%package -n libKQuickImageEditor1
+Summary:        KQuickImageEditor library
+
+%description -n libKQuickImageEditor1
+KQuickImageEditor is a set of QtQuick components providing basic image editing
+capabilities.
+
 %package devel
 Summary:        Development files for KQuickImageEditor
 Requires:       kquickimageeditor%{?pkg_suffix}-imports = %{version}
+Requires:       libKQuickImageEditor1 = %{version}
 %if 0%{?qt6}
 Requires:       cmake(Qt6Core) >= %{qt6_version}
-# TODO: Remove after next update
-Conflicts:      kquickimageeditor-devel
 %endif
 
 %description devel
@@ -84,6 +93,14 @@ basic image editing capabilities.
 %kf6_install
 %endif
 
+%if 0%{?qt6}
+%ldconfig_scriptlets -n libKQuickImageEditor1
+
+%files -n libKQuickImageEditor1
+%license LICENSES/*
+%{_kf6_libdir}/libKQuickImageEditor.so.*
+%endif
+
 %files imports
 %license LICENSES/*
 %doc README.md
@@ -93,7 +110,10 @@ basic image editing capabilities.
 
 %files devel
 %if 0%{?qt6}
+%{_includedir}/kquickimageeditor/
+%{_includedir}/KQuickImageEditor/
 %{_kf6_cmakedir}/KQuickImageEditor/
+%{_kf6_libdir}/libKQuickImageEditor.so
 %{_kf6_mkspecsdir}/qt_KQuickImageEditor.pri
 %endif
 
