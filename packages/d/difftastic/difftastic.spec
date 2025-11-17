@@ -24,7 +24,7 @@
 %endif
 
 Name:           difftastic
-Version:        0.65.0
+Version:        0.67.0
 Release:        0
 Summary:        A structural diff that understands syntax
 License:        Apache-2.0 AND MIT
