@@ -1862,4 +1862,21 @@
     <comment></comment>
     <requestid>1311761</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>7c8b5485a840c7d2184dc1c2a3a02900</srcmd5>
+    <version>3.12.12</version>
+    <time>1763476092</time>
+    <user>anag_factory</user>
+    <comment>- Add CVE-2025-6075-expandvars-perf-degrad.patch avoid simple
+  quadratic complexity vulnerabilities of os.path.expandvars()
+  (CVE-2025-6075, bsc#1252974).
+- Reapply patches:
+  - bsc1243155-sphinx-non-determinism.patch
+  - doc-py38-to-py36.patch
+  - fix_configure_rst.patch
+
+      if there are no bytes prepended to the ZIP file
+      (CVE-2025-8291, bsc#1251305).</comment>
+    <requestid>1318036</requestid>
+  </revision>
 </revisionlist>
