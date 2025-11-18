@@ -313,4 +313,23 @@ https://pypi.org/project/click/8.2.2/
 (and if I read `osc log` I would know dgarcia did this already)</comment>
     <requestid>1307244</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>1bd17541e3dbda7bf3fb26849c362ba0</srcmd5>
+    <version>8.3.1</version>
+    <time>1763476164</time>
+    <user>anag_factory</user>
+    <comment>- Update to 8.3.1
+  * Don’t discard pager arguments by correctly using subprocess.Popen.
+  * Replace Sentinel.UNSET default values by None as they’re passed
+    through the Context.invoke() method.
+  * Fix conversion of Sentinel.UNSET happening too early, which caused
+    incorrect behavior for multiple parameters using the same name.
+  * Hide Sentinel.UNSET values as None when looking up for other
+    parameters through the context inside parameter callbacks.
+  * Fix rendering when prompt and confirm parameter prompt_suffix is empty.
+  * When Sentinel.UNSET is found during parsing, it will skip calls to
+    type_cast_value.
+</comment>
+    <requestid>1318239</requestid>
+  </revision>
 </revisionlist>

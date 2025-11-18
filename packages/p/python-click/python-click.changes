@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov 17 08:34:57 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 8.3.1
+  * Don’t discard pager arguments by correctly using subprocess.Popen.
+  * Replace Sentinel.UNSET default values by None as they’re passed
+    through the Context.invoke() method.
+  * Fix conversion of Sentinel.UNSET happening too early, which caused
+    incorrect behavior for multiple parameters using the same name.
+  * Hide Sentinel.UNSET values as None when looking up for other
+    parameters through the context inside parameter callbacks.
+  * Fix rendering when prompt and confirm parameter prompt_suffix is empty.
+  * When Sentinel.UNSET is found during parsing, it will skip calls to
+    type_cast_value.
+
+-------------------------------------------------------------------
 Fri Sep 26 04:26:21 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 8.3.0:
