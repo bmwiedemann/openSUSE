@@ -1,4 +1,105 @@
 -------------------------------------------------------------------
+Tue Nov 18 06:25:19 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.0.178:
+  * Performance
+    - Critical: Eliminated O(n²) bottleneck in list block parsing
+      (Issue #148)
+      - Replaced nested loop with forward-scanning O(n) algorithm
+        using state tracking
+      - Performance improvement: 900-line files with nested lists
+        now parse in ~20ms (previously 50+ seconds)
+      - User-reported case: 890-line file improved from 50.2s to
+        ~0.2s (250x speedup)
+      - User-reported case: 1780-line file improved from 347s to
+        ~0.4s (867x speedup)
+      - Algorithm now scales linearly O(n) instead of quadratically
+        O(n²)
+      - Uses two tracking variables to detect list-breaking content
+        and validate continuation indentation
+      - Extracted reset_tracking_state() helper to eliminate code
+        duplication
+      - Replaced magic number 2 with
+        UNORDERED_LIST_MIN_CONTINUATION_INDENT constant
+  * Changed
+    - Code cleanup: Removed unused O(n²) trap methods
+      - Removed links_on_line() and images_on_line() methods from
+        LintContext
+      - These methods were never used but could cause performance
+        issues if called in loops
+  * Added
+    - Comprehensive regression tests for list block parsing
+      - 27 new tests covering edge cases: consecutive items,
+        list-breaking content, indentation rules
+      - Performance tests verify O(n) scaling for 1000+ item lists
+      - Tests reproduce exact Issue #148 pattern (nested lists with
+        brackets)
+
+-------------------------------------------------------------------
+Tue Nov 18 06:12:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.0.177:
+  * Fixed
+    - MD003 (heading-style): Fixed non-deterministic test failure
+      - Eliminated flaky behavior caused by HashMap iteration order
+        when multiple heading styles had equal counts
+      - Added deterministic tiebreaker that prefers ATX style over
+        Setext styles
+      - Ensures consistent style detection across all test runs
+    - MD044 (proper-names): Added international character support
+      - Added tilde characters (ã, õ) and Nordic å to ASCII
+        normalization
+      - Enables proper name matching for international cities like
+        São Paulo, Coimbra, and Århus
+    - MD013 (line-length): Fixed infinite hang in sentence-per-line
+      reflow mode
+      - Fixed abbreviation detection causing hang on words ending
+        in letter sequences
+      - Corrected logic to properly detect abbreviations vs.
+        sentence endings
+      - Issue #150: Resolves infinite loop that occurred with
+        certain text patterns
+    - Table style detection improvements
+      - MD055/MD056/MD058: Now analyze all table rows to detect
+        style, not just first row
+      - Prevents false positives when first row has different
+        separator style than rest of table
+    - Code quality fixes
+      - Resolved Issues #151 and #152 with comprehensive test
+        coverage
+      - Eliminated code duplication in MD005, MD042, and other
+        rules
+      - Extracted shared helper methods to reduce maintenance
+        burden
+  * Added
+    - MD013: Comprehensive abbreviation detection tests
+      - 42 test cases covering sentence-per-line reflow edge cases
+      - Validates correct behavior for abbreviations, acronyms, and
+        punctuation patterns
+    - Text reflow test organization
+      - Separated 42 integration tests into dedicated test file
+        (text_reflow_test.rs)
+      - Follows established codebase pattern for test organization
+      - Improves maintainability while keeping 1 private helper
+        test inline
+  * Changed
+    - MD029 (ordered-list-prefix): Improved warning messages
+      - Messages now include contextual style information
+      - Shows both configured style and detected document style for
+        clarity
+      - Examples: "configured style 'one'" vs "document style
+        'ordered'"
+    - MD029 rule name standardization
+      - Removed deprecated MD029-style suffix variant
+      - Unified to single consistent "MD029" identifier across
+        codebase
+  * Performance
+    - Memory optimization in MD005 and MD042
+      - Reduced memory allocations in list consistency and link
+        reference checks
+      - More efficient data structure usage
+
+-------------------------------------------------------------------
 Fri Nov 14 13:23:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.0.176:
