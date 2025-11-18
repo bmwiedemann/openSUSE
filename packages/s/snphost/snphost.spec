@@ -18,7 +18,7 @@
 
 
 Name:           snphost
-Version:        0.6.1
+Version:        0.7.0
 Release:        0
 Summary:        A Rust command-line tool for interacting with the AMD Secure Processor
 License:        Apache-2.0

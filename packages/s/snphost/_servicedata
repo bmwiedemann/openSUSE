@@ -1,6 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/virtee/snphost.git</param>
-              <param name="changesrevision">7f7a5308cf3a25f2776a3acb6673413df036d4b7</param></service><service name="tar_scm">
+              <param name="changesrevision">d9a263e1b2c811fb45a4bbfda38de4808687a3e6</param></service><service name="tar_scm">
                 <param name="url">https://gitlab.suse.de/virtualization/snphost.git</param>
               <param name="changesrevision">545bdf882ec5a5f054e0b75d0b382040bd8efc39</param></service></servicedata>
