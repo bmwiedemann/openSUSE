@@ -201,4 +201,12 @@
     <comment>2.11.0</comment>
     <requestid>1315773</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>46b01d2f378333282eecdd0b68cd031a</srcmd5>
+    <version>2.11.0</version>
+    <time>1763476444</time>
+    <user>anag_factory</user>
+    <comment>fix typo in changes</comment>
+    <requestid>1318235</requestid>
+  </revision>
 </revisionlist>
