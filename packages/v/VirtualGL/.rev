@@ -218,4 +218,35 @@
 - Extend 64bit conditions to s390x ppc64 ppc64le aarch64</comment>
     <requestid>1217268</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b5d1bb75a85d86eea9ead3d9dc6df4d1</srcmd5>
+    <version>3.1.4</version>
+    <time>1763476634</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.1.4:
+  * 1. The VirtualGL Faker now includes an optional workaround
+    for an interaction issue with the X visual selection mechanism in
+    Chrome/Chromium v129 and later and MATLAB R2025a and later.
+  * 2. Fixed a regression introduced by 3.1 beta1[3] that
+    prevented the faker from enabling quad-buffered stereo, even
+    if the requirements for quad-buffered stereo had been met.
+  * 3. On Wayland-enabled Linux systems running GDM,
+    `vglserver_config` no longer disables the ability to log in
+    locally with a Wayland session.  Instead,
+    `vglrun` automatically sets `VGL_DISPLAY` to `:1024` if
+    `VGL_DISPLAY` is unset,
+    X Display :1024 exists, and X Display :0 does not exist.
+    This allows VirtualGL to use the GDM greeter's Xwayland
+    instance as a 3D X server.
+  * 1. Fixed an issue whereby, with certain GPU drivers
+    (including nVidia's proprietary drivers), the EGL back end
+    did not release the GPU resources associated with an OpenGL
+    context when that context was unbound from a rendering thread.
+  * 2. Fixed an error (&quot;undefined symbol: eglGetProcAddress&quot;)
+    that occurred when attempting to run a GLX application using
+    the EGL back end and `vglrun -nodl`.
+  * 3. Fixed an issue whereby the VirtualGL Configuration dialog
+    did not pop up if the Num Lock key was on.</comment>
+    <requestid>1318306</requestid>
+  </revision>
 </revisionlist>
