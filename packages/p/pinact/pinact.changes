@@ -1,0 +1,223 @@
+-------------------------------------------------------------------
+Mon Nov 17 06:34:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.4.3:
+  * Bug Fixes
+    - #1201 Skip prereleases when current version is stable
+      @mceachen
+    - #1213 Fixed bugs of #1201
+  * Dependencies
+    - chore(deps): update actions/setup-go action to v6 (#1123)
+    - chore(deps): update aquaproj/aqua-installer action to v4.0.3
+      (#1113)
+    - chore(deps): update aquaproj/aqua-installer action to v4.0.4
+      (#1198)
+    - chore(deps): update aquaproj/aqua-renovate-config to v2.9.0
+      (#1136)
+    - chore(deps): update dependency anchore/syft to v1.32.0
+      (#1110)
+    - chore(deps): update dependency anchore/syft to v1.33.0
+      (#1143)
+    - chore(deps): update dependency anchore/syft to v1.34.1
+      (#1182)
+    - chore(deps): update dependency anchore/syft to v1.34.2
+      (#1183)
+    - chore(deps): update dependency anchore/syft to v1.36.0
+      (#1192)
+    - chore(deps): update dependency anchore/syft to v1.37.0
+      (#1202)
+    - chore(deps): update dependency aquaproj/aqua to v2.53.10
+      (#1114)
+    - chore(deps): update dependency aquaproj/aqua to v2.53.11
+      (#1126)
+    - chore(deps): update dependency aquaproj/aqua to v2.54.0
+      (#1134)
+    - chore(deps): update dependency aquaproj/aqua to v2.54.1
+      (#1137)
+    - chore(deps): update dependency aquaproj/aqua to v2.55.0
+      (#1148)
+    - chore(deps): update dependency aquaproj/aqua to v2.55.1
+      (#1190)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.404.0 (#1106)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.405.0 (#1107)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.406.0 (#1108)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.407.0 (#1111)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.408.0 (#1116)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.409.0 (#1127)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.409.1 (#1128)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.410.0 (#1129)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.411.0 (#1131)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.411.1 (#1135)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.412.0 (#1142)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.413.0 (#1146)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.414.0 (#1149)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.415.0 (#1150)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.416.0 (#1153)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.417.0 (#1154)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.418.0 (#1157)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.419.0 (#1160)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.420.0 (#1163)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.421.0 (#1165)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.422.0 (#1167)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.423.0 (#1168)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.424.0 (#1169)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.425.0 (#1171)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.426.0 (#1173)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.427.0 (#1176)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.428.0 (#1181)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.429.0 (#1184)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.430.0 (#1187)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.430.1 (#1193)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.431.0 (#1195)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.432.0 (#1196)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.433.0 (#1199)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.434.0 (#1207)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.435.0 (#1209)
+    - chore(deps): update dependency crate-ci/typos to v1.35.5
+      (#1105)
+    - chore(deps): update dependency crate-ci/typos to v1.35.6
+      (#1112)
+    - chore(deps): update dependency crate-ci/typos to v1.36.1
+      (#1117)
+    - chore(deps): update dependency crate-ci/typos to v1.36.2
+      (#1125)
+    - chore(deps): update dependency crate-ci/typos to v1.36.3
+      (#1159)
+    - chore(deps): update dependency go to v1.25.1 (#1141)
+    - chore(deps): update dependency go to v1.25.2 (#1172)
+    - chore(deps): update dependency go to v1.25.3 (#1179)
+    - chore(deps): update dependency go to v1.25.4 (#1204)
+    - chore(deps): update dependency golangci/golangci-lint to
+      v2.5.0 (#1152)
+    - chore(deps): update dependency google/go-licenses to v2
+      (#1122)
+    - chore(deps): update dependency goreleaser/goreleaser to
+      v2.12.0 (#1118)
+    - chore(deps): update dependency goreleaser/goreleaser to
+      v2.12.1 (#1145)
+    - chore(deps): update dependency goreleaser/goreleaser to
+      v2.12.2 (#1147)
+    - chore(deps): update dependency goreleaser/goreleaser to
+      v2.12.3 (#1158)
+    - chore(deps): update dependency goreleaser/goreleaser to
+      v2.12.4 (#1162)
+    - chore(deps): update dependency goreleaser/goreleaser to
+      v2.12.5 (#1164)
+    - chore(deps): update dependency goreleaser/goreleaser to
+      v2.12.6 (#1188)
+    - chore(deps): update dependency goreleaser/goreleaser to
+      v2.12.7 (#1194)
+    - chore(deps): update dependency mvdan/gofumpt to v0.9.0
+      (#1119)
+    - chore(deps): update dependency mvdan/gofumpt to v0.9.1
+      (#1130)
+    - chore(deps): update dependency mvdan/gofumpt to v0.9.2
+      (#1186)
+    - chore(deps): update dependency reviewdog/reviewdog to v0.21.0
+      (#1120)
+    - chore(deps): update dependency rhysd/actionlint to v1.7.8
+      (#1177)
+    - chore(deps): update dependency sigstore/cosign to v2.6.0
+      (#1139)
+    - chore(deps): update dependency sigstore/cosign to v2.6.1
+      (#1166)
+    - chore(deps): update dependency sigstore/cosign to v3 (#1175)
+    - chore(deps): update dependency sigstore/cosign to v3.0.2
+      (#1178)
+    - chore(deps): update dependency suzuki-shunsuke/pinact to
+      v3.4.2 (#1104)
+    - chore(deps): update suzuki-shunsuke/go-release-workflow
+      action to v6.0.2 (#1115)
+    - chore(deps): update suzuki-shunsuke/go-release-workflow
+      action to v7 (#1189)
+    - chore(deps): update suzuki-shunsuke/go-test-full-workflow
+      action to v4.0.1 (#1156)
+    - chore(deps): update suzuki-shunsuke/go-test-full-workflow
+      action to v5 (#1174)
+    - chore(deps): update suzuki-shunsuke/go-test-full-workflow
+      action to v5.0.1 (#1191)
+    - chore(deps): update suzuki-shunsuke/renovate-config to v3.3.0
+      (#1121)
+    - chore(deps): update suzuki-shunsuke/renovate-config to v3.3.1
+      (#1144)
+    - fix(deps): update module github.com/google/go-github/v74 to
+      v75 (#1155)
+    - fix(deps): update module github.com/google/go-github/v75 to
+      v76 (#1180)
+    - fix(deps): update module github.com/google/go-github/v76 to
+      v78 (#1206)
+    - fix(deps): update module github.com/spf13/afero to v1.15.0
+      (#1132)
+    - fix(deps): update module github.com/urfave/cli/v3 to v3.5.0
+      (#1185)
+    - fix(deps): update module github.com/urfave/cli/v3 to v3.6.0
+      (#1208)
+    - fix(deps): update module golang.org/x/oauth2 to v0.31.0
+      (#1124)
+    - fix(deps): update module golang.org/x/oauth2 to v0.32.0
+      (#1170)
+    - fix(deps): update module golang.org/x/oauth2 to v0.33.0
+      (#1205)
+
+-------------------------------------------------------------------
+Fri Nov 07 18:08:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.4.2:
+  * fix(casks): restrict quarantine removal to macOS only (#1103)
+  * test: add comprehensive unit tests for version comparison
+    functions (#1102)
+  * feat: add Claude Code auto-formatting hooks (#1101)
+  * docs: add comprehensive AI assistant guidelines with shared
+    documentation (#1100)
+  * docs: add CLAUDE.md with project guidelines for AI assistants
+    (#1099)
+  * docs: add comprehensive documentation comments to all packages
+    (#1098)
+  * chore(deps): update dependency anchore/syft to v1.31.0 (#1097)
+  * ci: use go-test-full-workflow (#1094)
+  * chore: use aqua lsp (#1093)
+  * chore(deps): update dependency aquaproj/aqua-registry to
+    v4.403.0 (#1092)
+
+-------------------------------------------------------------------
+Fri Nov  7 17:57:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package pinact: CLI to edit GitHub Workflow and Composite
+  action files and pin versions of Actions and Reusable Workflows.
+  pinact can also update their versions and verify version
+  annotations
