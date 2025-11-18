@@ -17,4 +17,14 @@
   * https://github.com/melonDS-emu/melonDS/releases/tag/1.0</comment>
     <requestid>1291367</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2cfed61c6ad6d3575cb2a69af96dd04e</srcmd5>
+    <version>1.1</version>
+    <time>1763476780</time>
+    <user>anag_factory</user>
+    <comment>- Updated to 1.1
+  * Enabled LTO and dropped Leap 15.6 support (faad2 needed).
+  * https://github.com/melonDS-emu/melonDS/releases/tag/1.1</comment>
+    <requestid>1318357</requestid>
+  </revision>
 </revisionlist>

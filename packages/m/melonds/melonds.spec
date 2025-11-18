@@ -1,7 +1,7 @@
 #
 # spec file for package melonds
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define __builder ninja
 %define _name melonDS
 Name:           melonds
-Version:        1.0
+Version:        1.1
 Release:        0
 Summary:        Nintendo DS emulator
 License:        GPL-3.0-or-later
@@ -31,21 +31,17 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-gui-private-devel
 BuildRequires:  pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(Qt6Multimedia)
 BuildRequires:  pkgconfig(Qt6OpenGLWidgets)
 BuildRequires:  pkgconfig(Qt6Svg)
 BuildRequires:  pkgconfig(Qt6WaylandClient)
 BuildRequires:  pkgconfig(Qt6Widgets)
+BuildRequires:  pkgconfig(faad2)
 BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libenet)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(sdl2)
-%if 0%{?sle_version} > 150000 && 0%{?sle_version} < 160000
-BuildRequires:  gcc13
-BuildRequires:  gcc13-c++
-%endif
 
 %description
 %{_name} aims at providing fast and accurate Nintendo DS emulation.
@@ -55,13 +51,6 @@ BuildRequires:  gcc13-c++
 sed -i '1s|^|include_directories("%{_includedir}/wayland")\n\n|' src/frontend/qt_sdl/CMakeLists.txt
 
 %build
-%if 0%{?is_opensuse} && !0%{?sle_version}
-%define _lto_cflags %{nil}
-%endif
-%if 0%{?sle_version} > 150000 && 0%{?sle_version} < 160000
-export CC="gcc-13"
-export CXX="g++-13"
-%endif
 export CMAKE_GENERATOR=Ninja
 %cmake -LA
 %cmake_build

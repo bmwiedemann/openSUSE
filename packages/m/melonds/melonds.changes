@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 18 00:54:14 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 1.1
+  * Enabled LTO and dropped Leap 15.6 support (faad2 needed).
+  * https://github.com/melonDS-emu/melonDS/releases/tag/1.1
+
+-------------------------------------------------------------------
 Wed Jul  9 01:16:45 UTC 2025 - Илья Индиго <ilya@ilya.top>
 
 - Disabled LTO for gcc-c++ >= 15 (internal compiler error).
