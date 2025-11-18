@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov 17 14:28:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.0:
+  * Enforce sort order of files by @jules2689 in #105
+  * add support for python <=3.9 and update template handling by
+    @adietrich-ussignal in #108
+  * fix whitespace for description fields by @adietrich-ussignal in
+    #109
+  * docs: correct errors in README.md by @Kloppi313 in #110
+  * Implement # type: to override type of variables by @dbrennand
+    in #115
+  * Update dt_update to use ISO 8601 Date Format by @dbrennand in
+    #116
+
+-------------------------------------------------------------------
 Mon Aug  4 08:16:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.7.25:

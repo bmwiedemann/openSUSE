@@ -1,7 +1,7 @@
 #
 # spec file for package docsible
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,26 +38,26 @@
 %endif
 
 Name:           docsible
-Version:        0.7.25
+Version:        0.8.0
 Release:        0
 Summary:        Auto documentation for Ansible roles and collections
 License:        MIT
 URL:            https://github.com/docsible/docsible
 # PyPI tarball does not contain tests directory...
-Source:         https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{ansible_python}-pip
-BuildRequires:  %{ansible_python}-poetry-core
-BuildRequires:  %{ansible_python}-click >= 8.1.7
+Source0:        https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{ansible_python}-Jinja2 >= 3.1.2
 BuildRequires:  %{ansible_python}-PyYAML >= 6.0.1
+BuildRequires:  %{ansible_python}-click >= 8.1.7
+BuildRequires:  %{ansible_python}-pip
+BuildRequires:  %{ansible_python}-poetry-core
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{ansible_python}-pytest
 # /SECTION
 BuildRequires:  fdupes
-Requires:       %{ansible_python}-click >= 8.1.7
 Requires:       %{ansible_python}-Jinja2 >= 3.1.2
 Requires:       %{ansible_python}-PyYAML >= 6.0.1
+Requires:       %{ansible_python}-click >= 8.1.7
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
