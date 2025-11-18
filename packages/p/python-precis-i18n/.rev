@@ -107,4 +107,15 @@
   * Update copyright year (2024).</comment>
     <requestid>1225311</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>62fcc451c2d4c5b09a2e602ff48afa79</srcmd5>
+    <version>1.1.2</version>
+    <time>1763476743</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.1.2:
+  * Update internal tables for Unicode 17.0.
+  * Drop support for Python 3.5 and 3.6.
+  * Update copyright year (2025).</comment>
+    <requestid>1318326</requestid>
+  </revision>
 </revisionlist>

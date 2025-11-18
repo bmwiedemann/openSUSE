@@ -1,7 +1,7 @@
 #
 # spec file for package python-precis-i18n
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %define _name   precis_i18n
 Name:           python-precis-i18n
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        Internationalised Usernames and Passwords
 License:        MIT

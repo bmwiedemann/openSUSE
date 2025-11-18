@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 17 21:11:57 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.2:
+  * Update internal tables for Unicode 17.0.
+  * Drop support for Python 3.5 and 3.6.
+  * Update copyright year (2025).
+
+-------------------------------------------------------------------
 Wed Nov 20 14:57:38 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.1:
