@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 17 14:51:31 UTC 2025 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Upstream bugfix update:
+  - openvswtich to 3.6.1
+    https://www.openvswitch.org/releases/NEWS-3.6.1.txt
+  - OVN to 25.03.1
+    https://github.com/ovn-org/ovn/blob/v25.03.1/NEWS
+
+-------------------------------------------------------------------
 Thu Aug 21 14:56:11 UTC 2025 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - Update openvswitch to 3.6.0. For a list of changes, check

@@ -20,8 +20,8 @@
 %define skip_python2 1
 %define ovs_lname libopenvswitch-3_6-0
 %define ovn_lname libovn-25_03-0
-%define ovs_version 3.6.0
-%define ovn_version 25.03.0
+%define ovs_version 3.6.1
+%define ovn_version 25.03.1
 %define ovs_dir ovs-%{ovs_version}
 %define ovn_dir ovn-%{ovn_version}
 %define rpmstate %{_rundir}/openvswitch-rpm-state-
