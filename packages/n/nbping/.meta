@@ -1,0 +1,14 @@
+<package name="nbping" project="openSUSE:Factory">
+  <title>A ping tool with real-time data and visualizations</title>
+  <description>A ping tool with real-time data and visualizations.
+
+Features
+ * Supports concurrent Ping for multiple addresses..
+ * Supports visual latency display.
+ * Real-time display of maximum, minimum, average latency, packet
+   loss rate, and other metrics.
+ * Support IPv4 and IPv6.
+ * Supports concurrent pinging of n ip's under one address.
+ * Support output results to files.</description>
+  <url>https://github.com/hanshuaikang/Nping</url>
+</package>
