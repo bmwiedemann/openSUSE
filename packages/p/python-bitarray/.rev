@@ -492,4 +492,12 @@
   * update cibuildwheel to 3.2.0 (forwarded request 1312727 from glaubitz)</comment>
     <requestid>1312824</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>ae70c3bfb208d6ff305116ee9b8ade98</srcmd5>
+    <version>3.8.0</version>
+    <time>1763476534</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1318259</requestid>
+  </revision>
 </revisionlist>

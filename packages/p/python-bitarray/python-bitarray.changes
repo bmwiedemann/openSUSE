@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 17 09:31:56 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.8.0
+  * add experimental support for free-threaded builds (GIL disabled), #234
+  * remove `_set_default_endian()`
+  * add `.__bytes__()`, see #246
+
+-------------------------------------------------------------------
 Tue Oct 21 09:19:26 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.7.2
