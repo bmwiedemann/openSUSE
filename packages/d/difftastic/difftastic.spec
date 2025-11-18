@@ -36,9 +36,11 @@ BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  jq
-BuildRequires:  libstdc++6-devel-gcc13
 BuildRequires:  rust >= 1.75.0
 BuildRequires:  shared-mime-info
+%if 0%{?suse_version} < 1600
+BuildRequires:  libstdc++6-devel-gcc14
+%endif
 Requires:       shared-mime-info
 %if %{with docs}
 Suggests:       %{name}-doc
@@ -66,6 +68,7 @@ This package contains the documentation for difftastic.
 
 %if %{with docs}
 cd manual
+sed -e 's/DFT_VERSION_HERE/%{version}/g' -i src/introduction.md
 mdbook build
 %endif
 
