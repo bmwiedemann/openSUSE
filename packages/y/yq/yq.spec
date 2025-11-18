@@ -1,7 +1,7 @@
 #
 # spec file for package yq
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global import_path     %{provider_prefix}
 
 Name:           yq
-Version:        4.46.1
+Version:        4.48.2
 Release:        0
 Summary:        A portable command-line YAML processor
 License:        MIT

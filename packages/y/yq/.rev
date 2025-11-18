@@ -196,4 +196,31 @@ IMO the Conflicts tag is unavoidable, hence adding.
     <comment></comment>
     <requestid>1296513</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c75b4f1ed13011eed815a6a0575fd520</srcmd5>
+    <version>4.48.2</version>
+    <time>1763476658</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.48.2:
+  * Strip whitespace when decoding base64 #2507
+  * Upgraded to go-yaml v4! (thanks @ccoVeille, @ingydotnet)
+  * Add linux/loong64 to release target (thanks @znley)
+  * Added --shell-key-separator flag for customizable shell
+    output format #2497 (thanks @rsleedbx)
+- update to 4.48.1:
+  * Added 'parents' operator, to return a list of all the
+    hierarchical parents of a node
+  * Added 'first(exp)' operator, to return the first entry
+    matching an expression in an array
+  * Fixed xml namespace prefixes #1730 (thanks @baodrate)
+  * Fixed out of range panic in yaml decoder #2460 (thanks
+    @n471d)
+- update to 4.47.2:
+  * Conversion from TOML to JSON no longer omits empty tables
+    #2459 (thanks @louislouislouislouis)
+- update to 4.47.1:
+  * Fixed merge anchor behaviour (`&lt;&lt;`); #2404, #2110, #2386,
+    #2178 Huge thanks to @stevenwdv!</comment>
+    <requestid>1318294</requestid>
+  </revision>
 </revisionlist>
