@@ -2105,4 +2105,41 @@ Fixed:
     The previous fix in v3.5.0 was insufficient.</comment>
     <requestid>1284191</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>9c0403c7a41b050293e30cd309e375cf</srcmd5>
+    <version>3.6.1</version>
+    <time>1763476795</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.6.1:
+Fixed:
+  * A regression in v3.6.0 where the page didn't have keyboard
+    focus after closing the completion, so e.g. typing in an input
+    field after hinting didn't work.
+    gh#qutebrowser/qutebrowser#8750
+- Changes in 3.6.0:
+Added:
+  * The `:version` info now shows additional information:
+    + The X11 window manager / Wayland compositor name (mostly
+      useful for bug/crash reports).
+    + Loaded WebExtensions (partial support landed in
+      QtWebEngine 6.10, no official qutebrowser support yet).
+  * Support for hinting elements which are part of an (open) shadow
+    DOM.
+Changed:
+  * The `qutedmenu` userscript now sorts history by the last access
+    time.
+  * Hardware accelerated 2D canvas is now enabled by default on
+    Qt 6.8.2+, as graphic glitches with e.g. PDF.js and Google
+    Sheets should be fixed nowadays. If you still run into issues,
+    please report them and set
+    `qt.workarounds.disable_accelerated_2d_canvas` to `always`
+    to disable it again.
+Fixed:
+  * Fixed crash if two new downloads start while a download prompt
+    is already open
+    gh#qutebrowser/qutebrowser#8674.
+  * Fixed exception when closing a qutebrowser window while a
+    download prompt is still open.</comment>
+    <requestid>1318366</requestid>
+  </revision>
 </revisionlist>

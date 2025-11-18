@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Tue Nov 18 02:07:59 UTC 2025 - Mia Herkt <mia@0x0.st>
+
+- Update to version 3.6.1:
+Fixed:
+  * A regression in v3.6.0 where the page didn't have keyboard
+    focus after closing the completion, so e.g. typing in an input
+    field after hinting didn't work.
+    gh#qutebrowser/qutebrowser#8750
+- Changes in 3.6.0:
+Added:
+  * The `:version` info now shows additional information:
+    + The X11 window manager / Wayland compositor name (mostly
+      useful for bug/crash reports).
+    + Loaded WebExtensions (partial support landed in
+      QtWebEngine 6.10, no official qutebrowser support yet).
+  * Support for hinting elements which are part of an (open) shadow
+    DOM.
+
+Changed:
+  * The `qutedmenu` userscript now sorts history by the last access
+    time.
+  * Hardware accelerated 2D canvas is now enabled by default on
+    Qt 6.8.2+, as graphic glitches with e.g. PDF.js and Google
+    Sheets should be fixed nowadays. If you still run into issues,
+    please report them and set
+    `qt.workarounds.disable_accelerated_2d_canvas` to `always`
+    to disable it again.
+
+Fixed:
+  * Fixed crash if two new downloads start while a download prompt
+    is already open
+    gh#qutebrowser/qutebrowser#8674.
+  * Fixed exception when closing a qutebrowser window while a
+    download prompt is still open.
+  * Hopefully proper fix for some web pages jumping to the top when
+    the statusbar is hidden
+    gh#qutebrowser/qutebrowser#8223.
+  * Fix for the page header being shown on YouTube after the
+    fullscreen notification was hidden
+    gh#qutebrowser/qutebrowser#8625.
+  * Fix for videos losing keyboard focus when the fullscreen
+    notification shows
+    gh#qutebrowser/qutebrowser#8174.
+  * The workaround for microphone/camera permissions not being
+    requested with QtWebEngine 6.9 on Google Meet, Zoom, or other
+    pages using the new `<permission>` element now got extended to
+    Qt 6.9.1+ as it's still not fixed upstream.
+    gh#qutebrowser/qutebrowser#8612
+  * The package version for Jinja 3.3+ is now correctly displayed
+    in `:version`.
+  * Fixed crash with Qt 6.10 (and possibly older Qt versions) when
+    navigating from a `qute://` page to a web page, e.g. when
+    searching on `qute://start`.
+  * On Wayland with Qt <= 6.9, `EGL_PLATFORM=wayland` is now set by
+    qutebrowser to get hardware rendering. Qt 6.10 includes an
+    equivalent fix
+    gh#qutebrowser/qutebrowser#8637.
+  * Added workaround for per-domain User-Agent header not being
+    used on redirects
+    gh#qutebrowser/qutebrowser#8679.
+  * Added site-specific quirk for gitlab.gnome.org agressively
+    blocking old Chromium versions (and thus QtWebEngine)
+    gh#qutebrowser/qutebrowser#8509.
+  * Using `:config-list-remove` with an invalid value for the
+    respective option type now corrently displays an error instead
+    of crashing.
+
+-------------------------------------------------------------------
 Mon Jun  9 13:07:02 UTC 2025 - Mia Herkt <mia@0x0.st>
 
 - Update to version 3.5.1:

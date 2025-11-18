@@ -1,7 +1,7 @@
 #
 # spec file for package qutebrowser
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           qutebrowser
-Version:        3.5.1
+Version:        3.6.1
 Release:        0
 Summary:        Keyboard-driven vim-like browser based on Qt6
 License:        GPL-3.0-or-later
