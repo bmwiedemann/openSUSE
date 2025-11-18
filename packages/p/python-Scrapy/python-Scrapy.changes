@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 17 10:58:13 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update CVE-2025-6176.patch to reflect the latest changes upstream to
+  the patch.
+- Remove the CVE-2025-6176-testfile-bomb-br-64GiB.bin source, it's not
+  needed anymore.
+  gh#scrapy/scrapy#7134, bsc#1252945, CVE-2025-6176)
+
+-------------------------------------------------------------------
 Wed Nov 12 12:28:41 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Use libalternatives

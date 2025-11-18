@@ -342,4 +342,16 @@ Requires python-setuptools 78 to build successfully.
   gh#scrapy/scrapy#7134, bsc#1252945, CVE-2025-6176)</comment>
     <requestid>1317343</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>8adc9b4c060884a313a484863605a28e</srcmd5>
+    <version>2.13.3</version>
+    <time>1763476435</time>
+    <user>anag_factory</user>
+    <comment>- Update CVE-2025-6176.patch to reflect the latest changes upstream to
+  the patch.
+- Remove the CVE-2025-6176-testfile-bomb-br-64GiB.bin source, it's not
+  needed anymore.
+  gh#scrapy/scrapy#7134, bsc#1252945, CVE-2025-6176)</comment>
+    <requestid>1318232</requestid>
+  </revision>
 </revisionlist>

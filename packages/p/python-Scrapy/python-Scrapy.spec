@@ -38,9 +38,6 @@ Summary:        A high-level Python Screen Scraping framework
 License:        BSD-3-Clause
 URL:            https://scrapy.org
 Source:         https://files.pythonhosted.org/packages/source/s/scrapy/scrapy-%{version}.tar.gz
-# New test file added in the gh#scrapy/scrapy#7134, needed for Patch2
-# related to CVE-2025-6176
-Source1:        CVE-2025-6176-testfile-bomb-br-64GiB.bin
 # PATCH-FIX-UPSTREAM gh#scrapy/scrapy#6922
 Patch0:         remove-hoverxref.patch
 # PATCH-FIX-OPENSUSE No sphinx-rtd-dark-mode
@@ -54,7 +51,7 @@ BuildRequires:  %{python_module wheel}
 %if %{with test}
 # Test requirements:
 BuildRequires:  %{python_module Scrapy = %{version}}
-BuildRequires:  %{python_module Brotli}
+BuildRequires:  %{python_module Brotli >= 1.2.0}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module Protego}
 BuildRequires:  %{python_module PyDispatcher >= 2.0.5}
@@ -146,8 +143,6 @@ popd
 
 %if %{with test}
 %check
-cp %{SOURCE1} tests/sample_data/compressed/bomb-br-64GiB.bin
-
 # no color in obs chroot console
 skiplist="test_pformat"
 # no online connection to toscrapy.com
