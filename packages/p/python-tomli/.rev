@@ -76,4 +76,12 @@
   * mypyc generated binary wheels for common platforms</comment>
     <requestid>1248028</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c407a300d62ecc7d75426b21a2ac1d71</srcmd5>
+    <version>2.3.0</version>
+    <time>1763476141</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1318191</requestid>
+  </revision>
 </revisionlist>

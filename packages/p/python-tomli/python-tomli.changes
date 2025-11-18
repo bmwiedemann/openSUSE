@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 10 08:24:24 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.0:
+  * Binary wheels for Python 3.14 (also free-threaded)
+  * Performance
+  * Reduced import time
+
+-------------------------------------------------------------------
 Mon Feb 24 08:51:45 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.1:
