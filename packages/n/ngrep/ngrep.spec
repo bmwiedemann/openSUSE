@@ -1,7 +1,7 @@
 #
 # spec file for package ngrep
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,14 @@
 #
 
 
-%define tarver 1_47
 Name:           ngrep
-Version:        1.47
+Version:        1.48.3
 Release:        0
 Summary:        Network grep
 License:        BSD-4-Clause
 Group:          Productivity/Networking/Diagnostic
 URL:            https://github.com/jpr5/ngrep
-Source:         https://github.com/jpr5/ngrep/archive/V%{tarver}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM: Switch from PCRE to PCRE2 (https://github.com/jpr5/ngrep/pull/27)
-Patch0:         27.patch
+Source:         https://github.com/jpr5/ngrep/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  libpcap-devel
 BuildRequires:  pcre2-devel
 
@@ -40,14 +37,12 @@ understands BPF filter logic in the same fashion as more common packet
 sniffing tools, such as tcpdump and snoop.
 
 %prep
-%autosetup -p1 -n %{name}-%{tarver}
+%autosetup -p1
 
 %build
 %configure \
     --enable-pcre2 \
-    --enable-ipv6 \
-    --with-pcap-includes=%{_includedir}/pcap
-
+    --enable-ipv6
 make %{?_smp_mflags}
 
 %install

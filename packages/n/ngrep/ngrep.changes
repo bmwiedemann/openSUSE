@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Nov  8 08:18:50 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.48.3
+  * allow path pcre2-config to be specified.
+  * auto-use first device found.
+  * Fix small typo in manpage.
+  * Add missing cmdline option doc references.
+
+-------------------------------------------------------------------
+Sat Nov  1 07:25:39 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.48.1
+  * Support display of UTF8 data when -u is specified.
+  * Minor documentation fixes.
+
+-------------------------------------------------------------------
+Mon Oct 27 19:45:25 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.48.0
+  * Upgrade to PCRE2.
+  * Add additional level of quiet for certain filtering scenarios.
+  * Update to latest autotools for ngrep and regex-0.12 (2.72, 2023)
+  * Update manpage for missing options and typos.
+  * Fix BPF DLT_ type detections within libpcap (e.g. DLT_LINUX_SLL)
+  * Allow for specifying specific location of PCRE2 includes.
+  * Eliminate various non-fatal build warnings (e.g. pcap_lookupdev
+    deprecation).
+  * Fix ./configure --disable-tcpkill
+  * Source cleanup (nuke old files, unused vars, missing refs, etc)
+- Drop patch:
+  * 27.patch (not longer needed)
+
+-------------------------------------------------------------------
 Thu Feb 22 14:09:54 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
