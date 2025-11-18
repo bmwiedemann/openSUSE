@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Nov 17 17:26:52 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.1:
+  * GH13: hpm netfn2c/cmd34 error, bridge netfn06,07/cmd34
+  * GH17: do not abort if sensor command fails
+  * GH17: if MALFORMED, not fatal, show message before correct
+  * GH15: fails to dump FRU with -d (added load_fru for fdump)
+  * GH14: GH14: user set password fails w 0xCC, upriv = rd3 & 0x0F
+  * fix macos compile error with vFlashstr typedef
+  * detect if IP address
+  * GH21: ipmi_cmdraw_ia(% int sdata %)
+  * GH21: define BYTE for LTO issue
+  * GH21: define uchar for LTO issue
+  * GH21: lan_keepalive( uchar type), open_sockfd(int port)
+  * GH21: lan_keepalive( uchar type)
+  * GH21: GetSensorType( uchar snum ...)
+  * GH21: get_unit_type( uchar iunit ...), GetSensorType(uchar)
+
+-------------------------------------------------------------------
 Thu Feb 22 13:37:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
@@ -128,7 +147,7 @@ Fri Jun  5 17:00:29 UTC 2015 - mpluskal@suse.com
 Wed Jan 21 23:54:03 UTC 2015 - p.drouand@gmail.com
 
 - Update to version 2.9.5
-  see http://ipmiutil.sourceforge.net/docs/ChangeLog 
+  see http://ipmiutil.sourceforge.net/docs/ChangeLog
 - Updated patch
   * ipmiutil-2.9.2-fix-bashisms.patch > ipmiutil-2.9.5-fix-bashisms.patch
   * automake-1_13.patch
@@ -145,13 +164,13 @@ Mon Nov 17 04:00:00 UTC 2014 - Led <ledest@gmail.com>
 Fri Oct 11 06:58:05 UTC 2013 - kkaempf@suse.com
 
 - update to upstream ipmiutil-2.9.2
-  See http://ipmiutil.sourceforge.net/docs/ChangeLog 
+  See http://ipmiutil.sourceforge.net/docs/ChangeLog
 
 -------------------------------------------------------------------
 Fri Oct  4 08:02:42 UTC 2013 - kkaempf@suse.com
 
 - update to upstream ipmiutil-2.9.1
-  See http://ipmiutil.sourceforge.net/docs/ChangeLog 
+  See http://ipmiutil.sourceforge.net/docs/ChangeLog
 
 -------------------------------------------------------------------
 Thu Feb 28 13:35:16 UTC 2013 - kkaempf@suse.com

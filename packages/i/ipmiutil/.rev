@@ -202,4 +202,30 @@ SPDX format (forwarded request 110715 from babelworx)</comment>
     <comment></comment>
     <requestid>1155018</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>282cfff326705a8b5c2dc72883b2c9b2</srcmd5>
+    <version>3.2.1</version>
+    <time>1763476654</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.2.1:
+  * GH13: hpm netfn2c/cmd34 error, bridge netfn06,07/cmd34
+  * GH17: do not abort if sensor command fails
+  * GH17: if MALFORMED, not fatal, show message before correct
+  * GH15: fails to dump FRU with -d (added load_fru for fdump)
+  * GH14: GH14: user set password fails w 0xCC, upriv = rd3 &amp; 0x0F
+  * fix macos compile error with vFlashstr typedef
+  * detect if IP address
+  * GH21: ipmi_cmdraw_ia(% int sdata %)
+  * GH21: define BYTE for LTO issue
+  * GH21: define uchar for LTO issue
+  * GH21: lan_keepalive( uchar type), open_sockfd(int port)
+  * GH21: lan_keepalive( uchar type)
+  * GH21: GetSensorType( uchar snum ...)
+  * GH21: get_unit_type( uchar iunit ...), GetSensorType(uchar)
+
+  see http://ipmiutil.sourceforge.net/docs/ChangeLog
+  See http://ipmiutil.sourceforge.net/docs/ChangeLog
+  See http://ipmiutil.sourceforge.net/docs/ChangeLog</comment>
+    <requestid>1318299</requestid>
+  </revision>
 </revisionlist>
