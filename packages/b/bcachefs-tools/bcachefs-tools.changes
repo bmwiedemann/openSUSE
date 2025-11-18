@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov 16 19:36:29 UTC 2025 - Holden Fried <holden@opensuse.org>
+
+- Update to release 1.32.1
+  * Update bcachefs sources to 99a43760af01 bcachefs: ret_fsck_err()
+  * Update bcachefs sources to f4a2c8cad65c bcachefs: print NO_KEYS
+    in snapshot_to_text()
+
+-------------------------------------------------------------------
 Sun Nov  9 17:39:05 UTC 2025 - Holden Fried <holden@opensuse.org>
 
 - Update to release 1.32.0
