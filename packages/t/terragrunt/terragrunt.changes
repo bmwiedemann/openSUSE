@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov 18 06:14:49 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.93.9:
+  * New Features
+    - Added support for Openbao encryption provider
+      Key provider now supports openbao
+  * Bug Fixes
+    - Fixed error in calling sensitive() function in HCL
+      HCL sensitive() function now correctly handles values and
+      calls without errors.
+  * What's Changed
+    -  deps: updated aws and gcp dependencies (#5107)
+    -  bug: sensitive() values handling in HCL (#5097)
+    -  support Openbao as an encryption provider (#5048)
+
+-------------------------------------------------------------------
 Thu Nov 13 08:18:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.93.8:
