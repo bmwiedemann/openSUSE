@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Nov 11 09:16:50 UTC 2025 - pgajdos@suse.com
+
+- version update to 3.4.3
+  * Buffer overflow in PyOpenEXR_old's channels() and channel() in legacy python
+  * Use after free in PyObject_StealAttrString in legacy python
+  * Use of Uninitialized Memory in openexr
+  * Heap-based Buffer Overflow Remote Code Execution Vulnerability
+  * OSS-fuzz 456158449 Heap-buffer-overflow in generic_unpack
+  * OSS-fuzz 447429458 Heap-buffer-overflow in DwaCompressor_uncompress
+  * OSS-fuzz 439237843 Heap-buffer-overflow in internal_exr_undo_ht
+  * OSS-fuzz 436037111 Heap-buffer-overflow in generic_unpack
+  * OSS-fuzz 435779241 Heap-buffer-overflow in generic_unpack
+  * OSS-fuzz 420744464 Abrt in __cxxabiv1::failed_throw
+  * Fix a bug with re-reading a scanline file with a different set of channels.
+  * Only populate CMAKE_DEBUG_POSTFIX with _d if it is undefined, which makes
+    it possible to set CMAKE_DEBUG_POSTFIX="".
+- fixes bsc#1253233 (CVE-2025-64181)
+        bsc#1253234 (CVE-2025-64182)
+        bsc#1253235 (CVE-2025-64183)
+
+-------------------------------------------------------------------
 Sat Oct 18 08:05:35 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Add symbol versioning to OpenEXR ELF files [boo#1252012]
