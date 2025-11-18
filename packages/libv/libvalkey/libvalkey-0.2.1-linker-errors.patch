@@ -1,0 +1,185 @@
+From 6721322e6f0dd20ab45e30c3a7c08e843e4eac6f Mon Sep 17 00:00:00 2001
+From: Andreas Stieger <andreasstieger@users.noreply.github.com>
+Date: Thu, 16 Oct 2025 10:58:32 +0200
+Subject: [PATCH] Fix linker errors when building with CMake, TLS and
+ -Wl,--no-undefined (#248)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Add missing dependencies, and make valkeyContextRegisterFuncs
+visible in shared libraries since it's used by libvalkey_rdma.so.
+
+Furthermore, let valkey_unittest.a bundle all libraries to avoid
+ODR warnings due to the added dependencies.
+
+Signed-off-by: Andreas Stieger <Andreas.Stieger@gmx.de>
+Signed-off-by: Björn Svensson <bjorn.a.svensson@est.tech>
+Co-authored-by: Björn Svensson <bjorn.a.svensson@est.tech>
+---
+ CMakeLists.txt       | 46 +++++++++++++++++++++++---------------------
+ src/valkey_private.h |  3 ++-
+ tests/CMakeLists.txt | 25 +++++++-----------------
+ 3 files changed, 33 insertions(+), 41 deletions(-)
+
+
+Patch adapted to apply to 0.2.1 (unrelated Mac changes)
+
+https://github.com/valkey-io/libvalkey/issues/247
+https://github.com/valkey-io/libvalkey/pull/248
+
+Index: libvalkey-0.2.1/CMakeLists.txt
+===================================================================
+--- libvalkey-0.2.1.orig/CMakeLists.txt
++++ libvalkey-0.2.1/CMakeLists.txt
+@@ -70,10 +70,10 @@ set_target_properties(valkey PROPERTIES
+   SOVERSION "${VERSION_MAJOR}"
+   VERSION "${VERSION}")
+ 
+-IF(MSVC)
+-    SET_TARGET_PROPERTIES(valkey
+-        PROPERTIES COMPILE_FLAGS /Z7)
+-ENDIF()
++if(MSVC)
++  # Produce object files that contain debug info.
++  target_compile_options(valkey PRIVATE /Z7)
++endif()
+ IF(WIN32)
+     TARGET_LINK_LIBRARIES(valkey PUBLIC ws2_32 crypt32)
+ ELSEIF(CMAKE_SYSTEM_NAME MATCHES "FreeBSD")
+@@ -125,17 +125,23 @@ INSTALL(TARGETS valkey
+     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+-if (MSVC AND BUILD_SHARED_LIBS)
+-    INSTALL(FILES $<TARGET_PDB_FILE:valkey>
+-        DESTINATION ${CMAKE_INSTALL_BINDIR}
+-        CONFIGURATIONS Debug RelWithDebInfo)
++if(MSVC AND BUILD_SHARED_LIBS)
++  # Install linker generated program database file.
++  install(FILES $<TARGET_PDB_FILE:valkey>
++          DESTINATION ${CMAKE_INSTALL_BINDIR}
++          CONFIGURATIONS Debug RelWithDebInfo)
+ endif()
+ 
+ # Install public headers
+ install(DIRECTORY include/valkey
+         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+         PATTERN "tls.h" EXCLUDE
+-        PATTERN "rdma.h" EXCLUDE)
++        PATTERN "rdma.h" EXCLUDE
++        PATTERN "adapters/macosx.h" EXCLUDE)
++if(APPLE)
++  install(FILES include/valkey/adapters/macosx.h
++          DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/valkey/adapters)
++endif()
+ 
+ INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/valkey.pc
+     DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+@@ -196,14 +202,11 @@ IF(ENABLE_TLS)
+       WINDOWS_EXPORT_ALL_SYMBOLS TRUE
+       SOVERSION "${VERSION_MAJOR}"
+       VERSION "${VERSION}")
+-    IF(MSVC)
+-        SET_TARGET_PROPERTIES(valkey_tls
+-            PROPERTIES COMPILE_FLAGS /Z7)
+-    ENDIF()
+-    TARGET_LINK_LIBRARIES(valkey_tls PRIVATE OpenSSL::SSL)
+-    if(WIN32 OR CYGWIN)
+-        target_link_libraries(valkey_tls PRIVATE valkey)
++    if(MSVC)
++      # Produce object files that contain debug info.
++      target_compile_options(valkey_tls PRIVATE /Z7)
+     endif()
++    target_link_libraries(valkey_tls PRIVATE valkey::valkey OpenSSL::SSL)
+     CONFIGURE_FILE(valkey_tls.pc.in valkey_tls.pc @ONLY)
+ 
+     INSTALL(TARGETS valkey_tls
+@@ -216,10 +219,11 @@ IF(ENABLE_TLS)
+     install(FILES include/valkey/tls.h
+             DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/valkey)
+ 
+-    if (MSVC AND BUILD_SHARED_LIBS)
+-        INSTALL(FILES $<TARGET_PDB_FILE:valkey_tls>
+-            DESTINATION ${CMAKE_INSTALL_BINDIR}
+-            CONFIGURATIONS Debug RelWithDebInfo)
++    if(MSVC AND BUILD_SHARED_LIBS)
++      # Install linker generated program database file.
++      install(FILES $<TARGET_PDB_FILE:valkey_tls>
++              DESTINATION ${CMAKE_INSTALL_BINDIR}
++              CONFIGURATIONS Debug RelWithDebInfo)
+     endif()
+ 
+     INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/valkey_tls.pc
+@@ -254,7 +258,7 @@ if(ENABLE_RDMA)
+     add_library(valkey_rdma ${valkey_rdma_sources})
+     add_library(valkey::valkey_rdma ALIAS valkey_rdma)
+ 
+-    target_link_libraries(valkey_rdma LINK_PRIVATE ${RDMACM_LIBRARIES} ${IBVERBS_LIBRARIES})
++    target_link_libraries(valkey_rdma PRIVATE valkey::valkey ${RDMACM_LIBRARIES} ${IBVERBS_LIBRARIES})
+     target_include_directories(valkey_rdma
+         PRIVATE
+             $<INSTALL_INTERFACE:include>
+@@ -303,26 +307,31 @@ endif()
+ 
+ # Add tests
+ if(NOT DISABLE_TESTS)
+-  if(BUILD_SHARED_LIBS)
+-    # Test using a static library since symbols are not hidden then.
+-    # Use same source, include dirs and dependencies as the shared library.
+-    add_library(valkey_unittest STATIC ${valkey_sources})
+-    get_target_property(include_directories valkey::valkey INCLUDE_DIRECTORIES)
+-    target_include_directories(valkey_unittest PUBLIC ${include_directories})
+-    get_target_property(link_libraries valkey::valkey LINK_LIBRARIES)
+-    if(link_libraries)
+-      target_link_libraries(valkey_unittest PUBLIC ${link_libraries})
+-    endif()
+-    # Create libvalkey_unittest.a in the tests directory.
+-    set_target_properties(valkey_unittest PROPERTIES
+-      ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/tests")
+-  else()
+-    # Target is an alias for the static library.
+-    add_library(valkey_unittest ALIAS valkey)
++  # Unit tests uses a static library to ensure all symbols are visible.
++  # This single library also bundles TLS and RDMA when enabled.
++  add_library(valkey_unittest STATIC ${valkey_sources} ${valkey_tls_sources} ${valkey_rdma_sources})
++
++  # Mirror the include directories.
++  get_target_property(include_directories valkey::valkey INCLUDE_DIRECTORIES)
++  target_include_directories(valkey_unittest PUBLIC ${include_directories})
++
++  # Mirror the link libraries.
++  get_target_property(link_libraries valkey::valkey LINK_LIBRARIES)
++  if(link_libraries)
++    target_link_libraries(valkey_unittest PUBLIC ${link_libraries})
++  endif()
++  if(ENABLE_TLS)
++    target_link_libraries(valkey_unittest PRIVATE OpenSSL::SSL)
+   endif()
++  if(ENABLE_RDMA)
++    target_link_libraries(valkey_unittest PRIVATE ${RDMACM_LIBRARIES} ${IBVERBS_LIBRARIES})
++  endif()
++
++  # Create libvalkey_unittest.a in the tests directory.
++  set_target_properties(valkey_unittest PROPERTIES
++                        ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/tests")
+ 
+   # Make sure ctest prints the output when a test fails.
+-  # Must be set before including CTest.
+   set(CMAKE_CTEST_ARGUMENTS "--output-on-failure")
+   include(CTest)
+   add_subdirectory(tests)
+Index: libvalkey-0.2.1/src/valkey_private.h
+===================================================================
+--- libvalkey-0.2.1.orig/src/valkey_private.h
++++ libvalkey-0.2.1/src/valkey_private.h
+@@ -124,7 +124,8 @@ static inline int valkeyContextUpdateCom
+     return VALKEY_OK;
+ }
+ 
+-int valkeyContextRegisterFuncs(valkeyContextFuncs *funcs, enum valkeyConnectionType type);
++/* Visible although private since required by libvalkey_rdma.so */
++LIBVALKEY_API int valkeyContextRegisterFuncs(valkeyContextFuncs *funcs, enum valkeyConnectionType type);
+ void valkeyContextRegisterTcpFuncs(void);
+ void valkeyContextRegisterUnixFuncs(void);
+ void valkeyContextRegisterUserfdFuncs(void);

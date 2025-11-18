@@ -1,0 +1,7 @@
+<package name="libvalkey" project="openSUSE:Factory">
+  <title>Valkey client library in C</title>
+  <description>Libvalkey is the official C client for the Valkey database. It also supports
+any server that uses the RESP protocol (version 2 or 3). This project supports
+both standalone and cluster modes.</description>
+  <url>https://github.com/valkey-io/libvalkey</url>
+</package>

@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Thu Oct 16 17:10:18 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- enable RDMA support
+- refresh libvalkey-0.2.1-linker-errors.patch to upstream merged
+  change
+- add libvalkey-0.2.1-32-bit.patch to fix RDMA build on 32 bit
+
+-------------------------------------------------------------------
+Wed Oct  8 06:35:10 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- initial version, supporting TLS but not RDMA
