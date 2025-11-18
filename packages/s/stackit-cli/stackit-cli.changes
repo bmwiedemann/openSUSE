@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Nov 18 12:24:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.48.0:
+  * chore(deps): bump renovatebot/github-action from 44.0.2 to
+    44.0.3 (#1089)
+  * chore: remove typo in server create example (#1090)
+  * fix(deps): update module github.com/jedib0t/go-pretty/v6 to
+    v6.7.2 (#1088)
+  * fix(dns): print valid JSON/YAML output for list cmds (#1040)
+  * chore(deps): bump github.com/stackitcloud/stackit-sdk-go/core
+    (#1086)
+  * chore(deps): update module golang.org/x/tools to v0.39.0
+    (#1087)
+  * fix(sqlserverflex): print valid JSON/YAML output for list cmds
+    (#1044)
+  * fix(deps): update kubernetes packages to v0.34.2 (#1085)
+  * fix(deps): update module golang.org/x/text to v0.31.0 (#1083)
+  * fix(deps): update module golang.org/x/term to v0.37.0 (#1082)
+  * fix(deps): update module golang.org/x/mod to v0.30.0 (#1081)
+  * chore(deps): bump golang.org/x/oauth2 from 0.32.0 to 0.33.0
+    (#1077)
+  * chore(deps): update renovatebot/github-action action to v44.0.2
+    (#1079)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/alb (#1076)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/iaas (#1075)
+  * fix(deps): update module github.com/jedib0t/go-pretty/v6 to
+    v6.7.1 (#1074)
+  * fix(opensearch): print valid JSON/YAML output for list cmds
+    (#1046)
+  * chore(deps): bump renovatebot/github-action from 43.0.20 to
+    44.0.0 (#1072)
+  * fix(kms): use fixed wait handler for disableKeyVersion command
+    (#1064)
+
+-------------------------------------------------------------------
 Fri Nov 07 13:04:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.47.0:
