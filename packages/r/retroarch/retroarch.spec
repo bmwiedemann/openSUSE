@@ -1,7 +1,7 @@
 #
 # spec file for package retroarch
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           retroarch
-Version:        1.19.1
+Version:        1.22.1
 Release:        0
 Summary:        Emulator frontend
 License:        GPL-3.0-only
 Group:          System/Emulators/Other
-URL:            http://www.retroarch.com
+URL:            https://www.retroarch.com
 Source0:        %{name}-%{version}.tar.gz
 Source1:        %{name}_migrate_old_config.py
 
@@ -32,11 +32,19 @@ BuildRequires:  p7zip
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  unzip
+%if 0%{?suse_version} >= 1600
+BuildRequires:  pkgconfig(Qt6Concurrent)
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6Widgets)
+%else
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Widgets)
+%endif
 BuildRequires:  pkgconfig(SDL2_gfx)
 BuildRequires:  pkgconfig(SDL2_image)
 BuildRequires:  pkgconfig(SDL2_mixer)
@@ -64,7 +72,7 @@ BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xv)
 BuildRequires:  pkgconfig(xxf86vm)
 BuildRequires:  pkgconfig(zlib)
-%if ( 0%{?suse_version} || 0%{?leap_version} )
+%if 0%{?is_opensuse}
 BuildRequires:  update-desktop-files
 BuildRequires:  vulkan-devel
 BuildRequires:  pkgconfig(libavcodec)
@@ -122,7 +130,7 @@ export CXXFLAGS="$CFLAGS"
 %ifarch x86
     --enable-sse \
 %endif
-%if ( 0%{?suse_version} || 0%{?leap_version} )
+%if 0%{is_opensuse}
     --enable-vulkan \
 %endif
     --enable-7zip \
@@ -143,9 +151,9 @@ install -m 0755 %{SOURCE1} %{buildroot}%{_bindir}/%{name}_migrate_old_config
 %{_bindir}/%{name}
 %{_bindir}/%{name}_migrate_old_config
 %{_bindir}/%{name}-cg2glsl
-%{_datadir}/applications/org.libretro.RetroArch.desktop
+%{_datadir}/applications/com.libretro.RetroArch.desktop
 %{_datadir}/metainfo/com.libretro.*.xml
-%{_datadir}/pixmaps/%{name}.svg
+%{_datadir}/pixmaps/com.libretro.RetroArch.svg
 %{_mandir}/man?/%{name}.?*
 %{_mandir}/man?/%{name}-cg2glsl.?*
 %{_datadir}/doc/%{name}
