@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 12 19:50:46 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Add fix-MDEV-32585.patch (boo#1237555)
+  * Fixes non-null-terminated array which caused a buffer overflow
+    in get_defaults_options()
+
+-------------------------------------------------------------------
 Sat Oct 25 08:53:32 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - disable pcre2 tests boo#1252518

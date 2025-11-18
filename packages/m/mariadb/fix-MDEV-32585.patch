@@ -1,0 +1,22 @@
+Index: b/sql-common/client.c
+===================================================================
+--- a/sql-common/client.c
++++ b/sql-common/client.c
+@@ -893,7 +893,7 @@ void mysql_read_default_options(struct s
+ 				const char *filename,const char *group)
+ {
+   int argc;
+-  char *argv_buff[1],**argv;
++  char *argv_buff[2],**argv;
+   const char *groups[5];
+   DBUG_ENTER("mysql_read_default_options");
+   DBUG_PRINT("enter",("file: %s  group: %s",filename,group ? group :"NULL"));
+@@ -901,7 +901,7 @@ void mysql_read_default_options(struct s
+   compile_time_assert(OPT_keep_this_one_last ==
+                       array_elements(default_options));
+ 
+-  argc=1; argv=argv_buff; argv_buff[0]= (char*) "client";
++  argc=1; argv=argv_buff; argv_buff[0]= (char*) "client"; argv_buff[1]= NULL;
+   groups[0]= (char*) "client";
+   groups[1]= (char*) "client-server";
+   groups[2]= (char*) "client-mariadb";

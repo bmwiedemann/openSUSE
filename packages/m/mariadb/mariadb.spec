@@ -82,6 +82,8 @@ Patch10:        fix-pamdir.patch
 Patch11:        gcc13-fix.patch
 Patch12:        mariadb-fix-testsuite-openssl3.2.3.patch
 Patch13:        mariadb-fix-armv9.patch
+# PATCH-FIX-OPENSUSE fix-MDEV-32585.patch boo#1237555 antonio.teixeira@suse.com -- Fixes potential buffer overflow in get_defaults_options()
+Patch14:        fix-MDEV-32585.patch
 # needed for bison SQL parser and wsrep API
 BuildRequires:  bison
 BuildRequires:  cmake
@@ -366,6 +368,7 @@ find . -name "*.jar" -type f -exec rm --verbose -f {} \;
 %patch -P 11 -p1
 %patch -P 12 -p1
 %patch -P 13 -p1
+%patch -P 14 -p1
 
 cp %{_sourcedir}/suse-test-run .
 
