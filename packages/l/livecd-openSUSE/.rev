@@ -2182,4 +2182,14 @@
     <comment></comment>
     <requestid>1304761</requestid>
   </revision>
+  <revision rev="275" vrev="275">
+    <srcmd5>3fed6dbd61ba3415ab178a47e82aa675</srcmd5>
+    <version>unknown</version>
+    <time>1763476492</time>
+    <user>anag_factory</user>
+    <comment>- list-common.sh: Install shim explicitly to work around bug in
+  Leap 15.6 patterns
+- config.sh: Use modules.d/*kiwi-live/ to support newer kiwi (forwarded request 1318242 from favogt)</comment>
+    <requestid>1318254</requestid>
+  </revision>
 </revisionlist>

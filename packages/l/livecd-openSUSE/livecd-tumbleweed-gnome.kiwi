@@ -404,6 +404,7 @@
     <package name="ucode-amd" arch="i686,x86_64"/>
     <!-- OBS-IgnorePackage: ucode-intel -->
     <ignore name="ucode-intel"/>
+    <package name="shim" arch="i686,x86_64,aarch64"/>
 
     <!-- list-gnome.sh -->
     <!-- OBS-IgnorePackage: libreoffice-calc -->

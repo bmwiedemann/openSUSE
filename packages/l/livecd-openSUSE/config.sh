@@ -70,7 +70,7 @@ echo 'compress="xz -9 --check=crc32 --memlimit-compress=50%"' >> /etc/dracut.con
 # Smaller initrd where necessary
 if [ "$desktop" = "x11" ] || [ "$desktop" = "xfce" ]; then
 	# Forcibly exclude networking support
-	sed -i 's/echo network rootfs-block/echo rootfs-block/' /usr/lib/dracut/modules.d/90kiwi-live/module-setup.sh
+	sed -i 's/echo network rootfs-block/echo rootfs-block/' /usr/lib/dracut/modules.d/*kiwi-live/module-setup.sh
 	echo 'omit_dracutmodules+=" network qemu-net rdma "' >> /etc/dracut.conf.d/no-network.conf
 
 	# This only needs to be able to boot the live cd
