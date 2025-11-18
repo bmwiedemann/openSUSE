@@ -1,0 +1,10 @@
+<constraints>
+  <hardware>
+    <cpu>
+      <flag>sse2</flag>
+    </cpu>
+    <memory>
+      <size unit="M">6000</size>
+    </memory>
+  </hardware>
+</constraints> 
