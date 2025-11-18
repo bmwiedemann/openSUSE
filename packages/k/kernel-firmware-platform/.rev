@@ -160,4 +160,12 @@ After this PR, there will be a delete request for kernel-firmware.
   * WHENCE: rename LICENCE.go7007-s2250 to LICENCE.sensoray</comment>
     <requestid>1311176</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>14853a574d942a9a0301f08dc7f28638</srcmd5>
+    <version>20251004</version>
+    <time>1763476243</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases</comment>
+    <requestid>1317808</requestid>
+  </revision>
 </revisionlist>
