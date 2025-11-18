@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 17 15:45:20 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with Audaspace 1.8.0, add audaspace_1_8_compat.patch
+- Remove no longer needed separate assets tarball, as it is
+  included in the regular sources now.
+
+-------------------------------------------------------------------
 Thu Oct 30 02:30:16 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 4.5.4

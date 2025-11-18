@@ -103,8 +103,6 @@ Source0:        %{pkg_name}-%{version}.tar.xz
 Source0:        https://download.blender.org/source/%{pkg_name}-%{version}.tar.xz
 Source1:        https://download.blender.org/source/%{pkg_name}-%{version}.tar.xz.md5sum
 %endif
-# Unfortunately, the "Essentials" library is only availabe using GIT LFS. https://projects.blender.org/blender/blender/issues/128359
-Source2:        blender-assets-%{version}.tar.xz
 Source4:        geeko.blend
 Source5:        geeko.README
 Source6:        geeko_example_scene.blend
@@ -115,6 +113,8 @@ Source10:       SUSE-NVIDIA-OptiX-rendering.txt
 Source99:       series
 # PATCH-FIX-UPSTREAM https://projects.blender.org/blender/blender/pulls/115320
 Patch1:         cmake_manpage_fix.patch
+# PATCH-FIX-UPSTREAM https://projects.blender.org/blender/blender/pulls/149301
+Patch2:         audaspace_1_8_compat.patch
 BuildRequires:  %{py3pkg}-devel
 BuildRequires:  %{py3pkg}-numpy-devel
 BuildRequires:  %{py3pkg}-requests
@@ -288,8 +288,6 @@ popd
 %endif
 
 %autosetup -p1 -n %{pkg_name}-%{version}
-%setup -T -D -a 2 -q -n %{pkg_name}-%{version}
-mv blender-assets-%{version} release/datafiles/assets
 
 rm -rf extern/libopenjpeg
 rm -rf extern/glew

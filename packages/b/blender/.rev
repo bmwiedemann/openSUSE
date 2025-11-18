@@ -1580,4 +1580,12 @@ Enable cycles-osl in build</comment>
     <comment>- Update to 4.5.4</comment>
     <requestid>1314925</requestid>
   </revision>
+  <revision rev="198" vrev="2">
+    <srcmd5>eefaea2eb561d865ff04f37249d62300</srcmd5>
+    <version>4.5.4</version>
+    <time>1763476857</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1318422</requestid>
+  </revision>
 </revisionlist>
