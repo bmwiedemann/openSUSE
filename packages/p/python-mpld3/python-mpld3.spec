@@ -1,7 +1,7 @@
 #
 # spec file for package python-mpld3
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-mpld3
-Version:        0.5.10
+Version:        0.5.12
 Release:        0
 Summary:        D3 Viewer for Matplotlib
 License:        BSD-3-Clause

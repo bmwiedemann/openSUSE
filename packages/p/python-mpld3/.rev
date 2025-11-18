@@ -73,4 +73,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1163970</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ac9c66f4298a39905337d8827984dbc4</srcmd5>
+    <version>0.5.12</version>
+    <time>1763476768</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.5.12:
+  * use raw strings in re functions
+  * prevent id() collisions if memory addresses are reused
+  * Avoid double-applying alpha to path colors
+  * delete extraneous files
+
+- update to 0.5.10:</comment>
+    <requestid>1318334</requestid>
+  </revision>
 </revisionlist>
