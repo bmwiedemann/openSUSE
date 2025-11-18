@@ -235,4 +235,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * linux-firmware: Update firmware file for Intel BlazarI core</comment>
     <requestid>1316553</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>e6996beb32bddbea4d7255f435ccd2b1</srcmd5>
+    <version>20251111</version>
+    <time>1763476230</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251111 (git commit 6fc940781a01):
+  * rtl_bt: Update RTL8922A BT USB firmware to 0x41C0_C905</comment>
+    <requestid>1317806</requestid>
+  </revision>
 </revisionlist>

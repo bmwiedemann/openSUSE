@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 12 09:29:46 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251111 (git commit 6fc940781a01):
+  * rtl_bt: Update RTL8922A BT USB firmware to 0x41C0_C905
+
+-------------------------------------------------------------------
 Fri Nov  7 08:09:29 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20251106 (git commit b055b3e24542):
