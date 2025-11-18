@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 11 08:31:58 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.23.3
+  * Expose Event Loop Type of ELG by @sbSteveK in (#765)
+
+-------------------------------------------------------------------
 Thu Oct 16 09:21:51 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.23.2
