@@ -144,6 +144,14 @@ qcom_q6v5_mss: of:N*T*Cqcom%2Csdm660-mss-pil
 qcom_q6v5_mss: of:N*T*Cqcom%2Csdm660-mss-pilC*
 qcom_q6v5_mss: of:N*T*Cqcom%2Csdm845-mss-pil
 qcom_q6v5_mss: of:N*T*Cqcom%2Csdm845-mss-pilC*
+qcom_q6v5_pas: of:N*T*Cqcom%2Cmilos-adsp-pas
+qcom_q6v5_pas: of:N*T*Cqcom%2Cmilos-adsp-pasC*
+qcom_q6v5_pas: of:N*T*Cqcom%2Cmilos-cdsp-pas
+qcom_q6v5_pas: of:N*T*Cqcom%2Cmilos-cdsp-pasC*
+qcom_q6v5_pas: of:N*T*Cqcom%2Cmilos-mpss-pas
+qcom_q6v5_pas: of:N*T*Cqcom%2Cmilos-mpss-pasC*
+qcom_q6v5_pas: of:N*T*Cqcom%2Cmilos-wpss-pas
+qcom_q6v5_pas: of:N*T*Cqcom%2Cmilos-wpss-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom%2Cmsm8226-adsp-pil
 qcom_q6v5_pas: of:N*T*Cqcom%2Cmsm8226-adsp-pilC*
 qcom_q6v5_pas: of:N*T*Cqcom%2Cmsm8953-adsp-pil

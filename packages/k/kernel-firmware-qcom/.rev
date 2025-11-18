@@ -277,4 +277,12 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: add SOCCP firmware for kaanapali platform</comment>
     <requestid>1316555</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>20e6be3b40fc8947e5b4ceb46234dcc8</srcmd5>
+    <version>20251106</version>
+    <time>1763476248</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases</comment>
+    <requestid>1317809</requestid>
+  </revision>
 </revisionlist>

@@ -30,7 +30,7 @@ License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20251004.tar.gz#/kernel-firmware-tools-20251004.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20251111.tar.gz#/kernel-firmware-tools-20251111.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -56,6 +56,14 @@ Supplements:    modalias(of:N*T*Cqcom%2Cmdss)
 Supplements:    modalias(of:N*T*Cqcom%2CmdssC*)
 Supplements:    modalias(of:N*T*Cqcom%2Cmdss_mdp)
 Supplements:    modalias(of:N*T*Cqcom%2Cmdss_mdpC*)
+Supplements:    modalias(of:N*T*Cqcom%2Cmilos-adsp-pas)
+Supplements:    modalias(of:N*T*Cqcom%2Cmilos-adsp-pasC*)
+Supplements:    modalias(of:N*T*Cqcom%2Cmilos-cdsp-pas)
+Supplements:    modalias(of:N*T*Cqcom%2Cmilos-cdsp-pasC*)
+Supplements:    modalias(of:N*T*Cqcom%2Cmilos-mpss-pas)
+Supplements:    modalias(of:N*T*Cqcom%2Cmilos-mpss-pasC*)
+Supplements:    modalias(of:N*T*Cqcom%2Cmilos-wpss-pas)
+Supplements:    modalias(of:N*T*Cqcom%2Cmilos-wpss-pasC*)
 Supplements:    modalias(of:N*T*Cqcom%2Cmsm8226-adsp-pil)
 Supplements:    modalias(of:N*T*Cqcom%2Cmsm8226-adsp-pilC*)
 Supplements:    modalias(of:N*T*Cqcom%2Cmsm8226-mss-pil)
