@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 12 07:29:18 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade the embedded golang.org/x/net to 0.46.0
+  * Fixes: bsc#1251399, CVE-2025-47911: various algorithms with
+    quadratic complexity when parsing HTML documents
+  * Fixes: bsc#1251609, CVE-2025-58190: excessive memory consumption
+    by 'html.ParseFragment' when processing specially crafted input
+
+-------------------------------------------------------------------
 Mon Oct 13 09:06:05 UTC 2025 - Jan Loeser <rooterle@posteo.de>
 
 - Update to version 0.18:

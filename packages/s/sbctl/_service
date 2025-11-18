@@ -15,5 +15,6 @@
   </service>
   <service name="go_modules" mode="manual">
     <param name="replace">github.com/ulikunitz/xz=github.com/ulikunitz/xz@v0.5.14</param>
+    <param name="replace">golang.org/x/net=golang.org/x/net@v0.46.0</param>
   </service>
 </services>
