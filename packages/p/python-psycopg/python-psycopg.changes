@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov 11 15:36:00 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.12:
+  * Allow copy to pass different types per column, as long as the
+    database can convert them. Regression introduced in 3.2.11
+  * Fix spurious readiness flags in some of the wait functions
+  * Fix high CPU usage using the wait_c function on Windows
+  * Fix bad data on error in binary copy (ticket #1147).
+  * Respect Copy.set_types() in TEXT copy in C version,
+    consistently with the Python version (ticket #1153).
+  * Don’t raise warning, and don’t leak resources, if a builtin
+    function is used as JSON dumper/loader function (ticket #1165).
+  * Improve performance of Python conversion on results loading
+   (ticket #1155).
+
+-------------------------------------------------------------------
 Mon Sep 29 21:11:53 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.10:
