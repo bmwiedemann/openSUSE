@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Nov 13 05:40:34 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
+
+- Update to 117
+  * 117
+    - Performance and stability improvements
+  * 116
+    - Support stopping/starting/restart quadlets
+
+-------------------------------------------------------------------
+Mon Oct 20 08:29:31 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
+
+- Update to 115
+  * 115
+    - List stopped quadlets
+    - Translations and dependency updates
+  * 114
+    - Bug fixes and translation updates
+  * 113
+    - Sortable Images table
+
+-------------------------------------------------------------------
 Tue Sep  9 04:08:26 UTC 2025 - Miika Alikirri <miika.alikirri@suse.com>
 
 - Update to 113

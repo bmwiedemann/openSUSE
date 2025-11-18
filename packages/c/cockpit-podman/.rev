@@ -275,4 +275,25 @@
     - Bug fixes and translation updates</comment>
     <requestid>1306668</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>8b5f70da291e2fd8902ec275ac9a36f0</srcmd5>
+    <version>117</version>
+    <time>1763476158</time>
+    <user>anag_factory</user>
+    <comment>- Update to 117
+  * 117
+    - Performance and stability improvements
+  * 116
+    - Support stopping/starting/restart quadlets
+
+- Update to 115
+  * 115
+    - List stopped quadlets
+    - Translations and dependency updates
+  * 114
+    - Bug fixes and translation updates
+  * 113
+    - Sortable Images table</comment>
+    <requestid>1318207</requestid>
+  </revision>
 </revisionlist>
