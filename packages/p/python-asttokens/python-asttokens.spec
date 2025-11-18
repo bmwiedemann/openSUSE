@@ -19,14 +19,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-asttokens
-Version:        3.0.0
+Version:        3.0.1
 Release:        0
 Summary:        Annotate AST trees with source code positions
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/gristlabs/asttokens
 Source:         https://files.pythonhosted.org/packages/source/a/asttokens/asttokens-%{version}.tar.gz
-Patch1:         https://github.com/gristlabs/asttokens/commit/bb1df1417159f6ad0ec5c6c8b27118d50b35f70a.patch#/py314-deprecations.patch
 BuildRequires:  %{python_module astroid}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}

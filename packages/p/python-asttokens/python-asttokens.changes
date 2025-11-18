@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov 17 08:44:09 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.0.1
+  * Replace ast.Str usages with ast.Constant (#157)
+  * Bump jinja2 from 3.1.4 to 3.1.6 in /docs
+  * Bump urllib3 from 2.2.2 to 2.5.0 in /docs
+  * Bump requests from 2.32.2 to 2.32.4 in /docs
+  * Various links improvements (#163)
+  * Adapt asttokens for astroid 4.x (#165)
+  * Add tests for astroid v2, v3, and v4 to the CI (#166)
+  * Update mypy; add 3.14 to the CI; drop python 3.8 support (#167)
+- Drop py314-deprecations.patch, merged upstream
+
+-------------------------------------------------------------------
 Sun Sep 21 20:18:07 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - add py314-deprecations.patch
