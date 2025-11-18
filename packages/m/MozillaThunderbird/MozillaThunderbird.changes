@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 17 10:52:31 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
+
+- Add build_limit for s390x on SLE16 (bsc#1247774)
+  * by Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+-------------------------------------------------------------------
 Sun Nov  9 12:24:12 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 140.5.0 ESR
@@ -5301,7 +5307,7 @@ Fri Jun 19 17:00:11 UTC 2015 - wr@rosenauer.org
 - tb-develdirs.patch is now mozilla-develdirs.patch as it is a
   platform configuration now
 
---------------------------------------------------------------------
+-------------------------------------------------------------------
 Thu Jun 18 10:30:18 UTC 2015 - schwab@suse.de
 
 - mozilla-arm64-libjpeg-turbo.patch: fix libjpeg-turbo configuration
