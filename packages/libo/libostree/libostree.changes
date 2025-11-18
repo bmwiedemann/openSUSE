@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 12 19:21:18 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2025.7:
+  + Support using composefs signatures also with bootc commits
+  + status: Include deployment index in JSON output
+  + Fix various things around signatures and their use in rust
+  + deploy: Use delete_if_present in can_soft_reboot
+  + prepare-root: Fix crash if no valid signatures
+  + documentation updates
+
+-------------------------------------------------------------------
 Sun Sep  7 13:13:05 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 2025.6:
