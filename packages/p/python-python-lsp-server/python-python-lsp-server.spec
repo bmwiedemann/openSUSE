@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-lsp-server
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,23 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %{?sle15_python_module_pythons}
 Name:           python-python-lsp-server
-Version:        1.13.0
+Version:        1.13.1
 Release:        0
 Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
 URL:            https://github.com/python-lsp/python-lsp-server
 Source:         https://files.pythonhosted.org/packages/source/p/python-lsp-server/python_lsp_server-%{version}.tar.gz
 Patch1:         unpin-autopep8.patch
+# PATCH-FIX-UPSTREAM allow-pylint4.patch https://github.com/python-lsp/python-lsp-server/pull/687
+Patch2:         allow-pylint4.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61.2}
@@ -33,6 +41,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros >= 20210628
 # SECTION test requirements
 BuildRequires:  %{python_module autopep8 >= 2.0.4}
+BuildRequires:  %{python_module PyQt6}
 BuildRequires:  %{python_module black}
 BuildRequires:  %{python_module docstring-to-markdown}
 BuildRequires:  %{python_module flaky}
@@ -43,7 +52,7 @@ BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pluggy}
 BuildRequires:  %{python_module pydocstyle >= 6.3.0 with %python-pydocstyle < 6.4.0}
-BuildRequires:  %{python_module pylint >= 3.1 with %python-pylint < 4}
+BuildRequires:  %{python_module pylint >= 3.1 with %python-pylint < 4.1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-lsp-jsonrpc >= 1.1.0 with %python-python-lsp-jsonrpc < 2}
 BuildRequires:  %{python_module rope >= 1.2.0}
@@ -68,8 +77,13 @@ Requires:       (python-python-lsp-jsonrpc >= 1.1.0 with python-python-lsp-jsonr
 Requires:       python-importlib_metadata >= 4.8.3
 %endif
 BuildArch:      noarch
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -95,7 +109,7 @@ Requires:       python-autopep8 >= 2.0.4
 Requires:       python-rope >= 1.2.0
 Requires:       python-yapf >= 0.33
 Requires:       (python-pydocstyle >= 6.3.0 with python-pydocstyle < 6.4.0)
-Requires:       (python-pylint >= 3.1 with python-pylint < 4)
+Requires:       (python-pylint >= 3.1 with python-pylint < 4.1)
 Requires:       (python-whatthepatch >= 1.0.2 with python-whatthepatch < 2)
 # Let's bump this in sync with flake8 and ignore pylsp upstream being still behind
 # https://flake8.pycqa.org/en/latest/faq.html#why-does-flake8-use-ranges-for-its-dependencies
@@ -130,8 +144,12 @@ sed -i  pyproject.toml \
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# PyQt5 not maintained anymore. Reenable when upstream moves to PyQt6
-%pytest -k "not test_pyqt_completion"
+# test_missing_message is hanging https://github.com/python-lsp/python-lsp-server/issues/679
+%pytest -k "not test_missing_message"
+
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative pylsp
 
 %post
 %python_install_alternative pylsp

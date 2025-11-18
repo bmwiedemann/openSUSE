@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov 17 09:32:52 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 1.13.1
+  * Use PyQt6 for testing
+  * Expose a shutdown hook
+  * Copy LAST_JEDI_COMPLETIONS to cell document so that completionItem/resolve
+    will work
+- add allow-pylint4.patch to allow new pylint version
+- enable PyQt test again as upstream moved to PyQt6
+- disable test that hangs
+  (see: https://github.com/python-lsp/python-lsp-server/issues/679)
+- use libalternatives on newer releases
+
+-------------------------------------------------------------------
 Wed Jul 23 08:29:46 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.13.0

@@ -429,4 +429,12 @@
   * Drop support for Python 3.8 (forwarded request 1295256 from bnavigator)</comment>
     <requestid>1295257</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>5e4648127666500df8092e010c08264c</srcmd5>
+    <version>1.13.1</version>
+    <time>1763476877</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1318437</requestid>
+  </revision>
 </revisionlist>
