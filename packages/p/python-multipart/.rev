@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>1253025</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>47b448a20f459d527b111739ac37aff6</srcmd5>
+    <version>1.3.0</version>
+    <time>1763476747</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.3.0:
+  * **Full Changelog**:
+    https://github.com/defnull/multipart/compare/v1.2.0...v1.3.0</comment>
+    <requestid>1318327</requestid>
+  </revision>
 </revisionlist>
