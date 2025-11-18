@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov 17 21:22:58 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.3:
+  * Python 3.14 wheels (issue #1432)
+  * support os.PathLike arguments for `Dataset.fromcdl` and raise
+    a `FileNotFoundError` if the cdl is missing and a
+    `FileExistsError` if the nc file already exists (PR #1387)
+  * raise more informative error when trying to iterate or
+    perform a membership operation on a Dataset (issue #1383)
+  * fix type hint for createEnumType (issue #1378)
+  * add python 3.13 to windows wheel builds (PR #1377)
+  * allow slicing of vlen and string variables with non-unitary
+    strides (issue #1408).
+
+-------------------------------------------------------------------
 Mon May  5 20:59:04 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.2:

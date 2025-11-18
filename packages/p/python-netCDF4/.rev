@@ -476,4 +476,22 @@
   * Fix NETCDF3 endian error (issue #1373, PR #1355).</comment>
     <requestid>1274714</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>ebe76a0e355c7ddd22880406660f4515</srcmd5>
+    <version>1.7.3</version>
+    <time>1763476766</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.7.3:
+  * Python 3.14 wheels (issue #1432)
+  * support os.PathLike arguments for `Dataset.fromcdl` and raise
+    a `FileNotFoundError` if the cdl is missing and a
+    `FileExistsError` if the nc file already exists (PR #1387)
+  * raise more informative error when trying to iterate or
+    perform a membership operation on a Dataset (issue #1383)
+  * fix type hint for createEnumType (issue #1378)
+  * add python 3.13 to windows wheel builds (PR #1377)
+  * allow slicing of vlen and string variables with non-unitary
+    strides (issue #1408).</comment>
+    <requestid>1318333</requestid>
+  </revision>
 </revisionlist>
