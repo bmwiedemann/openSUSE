@@ -141,4 +141,20 @@
     <comment>- update to 3.22.1.0 (bsc#1249617):</comment>
     <requestid>1307937</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>894f16d42672c6a42b7e35dfae57985d</srcmd5>
+    <version>4.25.9.0</version>
+    <time>1763476646</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.25.9.0:
+  * Reject fanotify-only options if fanotify is disabled
+  * Fix formatting of man page references
+  * Disable SonarCloud
+  * Remove dead builds from README.md
+  * Add Fedora 39 build to github actions
+  * Add flag for forcing static compilation
+  * Allow recursive watch with --include
+  * Fix a crash on &gt;=1024 watched files</comment>
+    <requestid>1318293</requestid>
+  </revision>
 </revisionlist>

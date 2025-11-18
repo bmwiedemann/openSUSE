@@ -17,7 +17,7 @@
 
 
 Name:           inotify-tools
-Version:        4.23.9.0
+Version:        4.25.9.0
 Release:        0
 Summary:        Tools for inotify
 License:        GPL-2.0-only WITH Linux-syscall-note AND GPL-2.0-or-later
