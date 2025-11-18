@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 12 15:01:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.19.2:
+  * [backport] fix: get-helm-3 script use helm3-latest-version
+    8766e71 (George Jenkins)
+
+-------------------------------------------------------------------
 Tue Nov 11 10:17:19 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.19.1 (bsc#1251649, CVE-2025-58190,
