@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Nov 13 04:36:07 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
+
+- Update to 351
+  * Changes since 349
+    - 351
+      * Firewall ports can be deleted individually
+    - 350
+      * networking: fix renaming of bridges and other groups (RHEL-117883)
+      * bridge: fix OpenSSH_10.2p1 host key detection
+
+-------------------------------------------------------------------
+Fri Oct 17 09:44:51 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
+
+- Update to 349
+  * Changes since 346
+    - 349
+      * Package manifests: add any test
+      * Bug fixes and translation updates
+    - 348
+      * Bug fixes and translation updates
+    - 347
+      * Site-specific branding support
+
+-------------------------------------------------------------------
 Tue Sep 23 09:11:48 UTC 2025 - Luna D Dragon <luna.dragon@suse.com>
 
 - add requirement on python3-pcp if pcp is installed bsc#1239759  

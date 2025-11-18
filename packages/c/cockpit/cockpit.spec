@@ -58,7 +58,7 @@ Summary:        Web Console for Linux servers
 License:        LGPL-2.1-or-later
 URL:            https://cockpit-project.org/
 
-Version:        346
+Version:        351
 Release:        0
 Source0:        cockpit-%{version}.tar.gz
 Source2:        cockpit-rpmlintrc
@@ -197,6 +197,9 @@ Requires: cockpit-system
 # Optional components
 Recommends: (cockpit-storaged if udisks2)
 Recommends: (cockpit-packagekit if (dnf or zypper))
+%if 0%{?suse_version} == 0
+Recommends: (dnf5-daemonserver if dnf5)
+%endif
 Recommends: (cockpit-firewalld if firewalld)
 
 %if 0%{?rhel} == 0
@@ -541,7 +544,6 @@ Provides: cockpit-users = %{version}-%{release}
 Requires: NetworkManager >= 1.6
 Requires: sos
 Requires: sudo
-Recommends: PackageKit
 Recommends: setroubleshoot-server >= 3.3.3
 Recommends: kexec-tools
 Suggests: NetworkManager-team
@@ -872,7 +874,7 @@ Requires: python3-dbus-python
 Recommends: udisks2-lvm2 >= 2.9
 Recommends: udisks2-iscsi >= 2.9
 %if ! 0%{?rhel}
-Recommends: udisks2-btrfs >= 2.9
+Recommends: (udisks2-btrfs >= 2.9 if (btrfs-progs or btrfsprogs))
 %endif
 Recommends: device-mapper-multipath
 Recommends: clevis-luks
