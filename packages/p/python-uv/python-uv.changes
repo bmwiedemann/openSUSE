@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Nov 17 10:24:20 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 0.9.9
+  * Deprecations
+    * Deprecate use of --project in uv init
+  * Enhancements
+    * Add iOS support to Python interpreter discovery
+    * Reject ambiguously parsed URLs
+    * Allow explicit values in uv version --bump
+    * Warn on use of managed pre-release Python versions when a stable version
+      is available
+    * Allow signing trampolines on Windows by using .rcdata to store metadata
+    * Add --only-emit-workspace and similar variants to uv export
+  * Preview features
+    * Add uv workspace dir command
+    * Add uv workspace metadata command
+  * Configuration
+    * Add UV_NO_DEFAULT_GROUPS environment variable
+  * Bug fixes
+    * Remove torch-model-archiver and torch-tb-profiler from PyTorch backend
+    * Fix Pixi environment detection
+  * Documentation
+    * Fix CMD path in FastAPI Dockerfile
+
+-------------------------------------------------------------------
 Mon Nov 10 10:23:13 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.9.8
