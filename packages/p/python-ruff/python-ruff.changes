@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Nov 15 18:07:24 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.14.4 
+ * Preview features
+  * [flake8-simplify] Apply SIM113 when index variable is of type int 
+  * [pydoclint] Fix false positive when Sphinx directives follow a "Raises" section (DOC502) 
+  * [pydoclint] Support NumPy-style comma-separated parameters (DOC102) 
+  * [refurb] Auto-fix annotated assignments (FURB101) 
+  * [ruff] Ignore str() when not used for simple conversion (RUF065) 
+ * Bug fixes
+  * Fix syntax error false positive on alternative match patterns 
+  * [flake8-simplify] Fix false positive for iterable initializers with generator arguments (SIM222) 
+  * [pyupgrade] Fix false positive on relative imports from local .builtins module (UP029) 
+  * [pyupgrade] Consistently set the deprecated tag (UP035) 
+ * Rule changes
+  * [refurb] Detect empty f-strings (FURB105) 
+ * CLI
+  * Add option to provide a reason to --add-noqa 
+  * Add upstream linter URL to ruff linter --output-format=json 
+  * Add color to --help 
+ * Documentation
+  * Add a new "Opening a PR" section to the contribution guide 
+  * Added the PyScripter IDE to the list of "Who is using Ruff?" 
+  * Update PyCharm setup instructions 
+  * [flake8-annotations] Add link to allow-star-arg-any option (ANN401) 
+ * Other changes
+  * [configuration] Improve error message when line-length exceeds u16::MAX 
+
+-------------------------------------------------------------------
 Fri Nov  7 10:35:47 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.14.4
