@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 10 20:01:34 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 25.3.4; changes since 25.2.4
+  * Upstream PTL encoding support
+  * Added VVC Decoding level 6.3 and profile 
+    MFX_PROFILE_VVC_MAIN10_STILL_PICTURE
+  * Fixed XYUV color format handling. Export more capability
+    information in mfxImplDescription for HEVC/AVC/AV1 encoder 
+  * Use VPP for YUV422H to RGB CSC if VD-SFC not available
+
+-------------------------------------------------------------------
 Tue Jun 10 15:25:23 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 25.2.4; changes since 25.1.4

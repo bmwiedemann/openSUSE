@@ -1,7 +1,7 @@
 #
 # spec file for package libmfx-gen
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global sover 1_2
 Name:           libmfx-gen
 %define lname   libmfx-gen%{sover}
-Version:        25.2.4
+Version:        25.3.4
 Release:        0
 Summary:        Intel oneVPL GPU Runtime
 License:        MIT
