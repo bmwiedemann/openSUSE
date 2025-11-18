@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov 18 12:23:19 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.30.24:
+  * Return structured error if path mutations result in an "already
+    exists"  error (#1937)
+
+-------------------------------------------------------------------
+Tue Nov 18 06:11:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.30.23:
+  * github: build samples offline too (#1941)
+  * apk: fix offline cached builds with alpine key discovery
+    (#1938)
+  * build(deps): bump chainguard-dev/actions from 1.5.8 to 1.5.9
+    (#1939)
+
+-------------------------------------------------------------------
 Mon Nov 17 06:18:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.30.22:
