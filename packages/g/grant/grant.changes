@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov 18 06:14:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.5.1:
+  * fix: add case handler for panic (#309)
+  * chore(deps): update anchore dependencies (#316)
+  * chore(deps): update tools to latest versions (#312)
+  * chore(deps): bump golang.org/x/term from 0.36.0 to 0.37.0
+    (#313)
+  * chore(deps): bump docker/login-action from 3.5.0 to 3.6.0
+    (#304)
+  * chore(deps): bump github.com/opencontainers/selinux (#311)
+  * chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.6.9 to
+    6.7.1 (#310)
+  * chore(deps): update tools to latest versions (#305)
+  * chore(deps): bump github.com/containerd/containerd from 1.7.28
+    to 1.7.29 (#308)
+
+-------------------------------------------------------------------
 Tue Nov 04 09:31:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.5.0:
