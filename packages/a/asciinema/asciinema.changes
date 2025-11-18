@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Nov  1 14:08:15 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 3.0.1:
+  * fixed reading of asciicasts v1 and v2 having null env values in header
+  * upgraded embedded player to the latest version
+  * enabled Link-Time Optimization (LTO) and codegen-units=1
+  * cleaned up nix flake
+
+-------------------------------------------------------------------
+Mon Sep 29 16:27:21 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 3.0.0:
+  * Rewrite in rust
+  * New v3 file format uses intervals (deltas) for timing session
+    events easing editing, restructured headers, support comments
+  * Support live terminal streaming
+  * Local-first operation: filename is always required, the rec
+    command no longer has upload capability. Use asciinema upload
+    to publish
+  * More self-hosting friendliness
+
+-------------------------------------------------------------------
 Tue Oct 24 19:16:22 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.4.0:

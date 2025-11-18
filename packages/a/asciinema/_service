@@ -1,0 +1,23 @@
+<services>
+  <service mode="manual" name="obs_scm">
+    <param name="url">https://github.com/asciinema/asciinema.git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="scm">git</param>
+    <param name="revision">v3.0.1</param>
+    <param name="match-tag">*</param>
+    <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service mode="manual" name="tar"/>
+  <service mode="manual" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+  <service mode="manual" name="set_version"/>
+  <service name="cargo_vendor" mode="manual">
+     <param name="src">asciinema</param>
+     <param name="compression">zst</param>
+     <param name="update">true</param>
+  </service>
+</services>
