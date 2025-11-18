@@ -18,7 +18,7 @@
 
 
 Name:           snpguest
-Version:        0.9.1
+Version:        0.10.0
 Release:        0
 Summary:        A Rust command-line tool for interacting with the AMD Secure Processor
 License:        Apache-2.0
