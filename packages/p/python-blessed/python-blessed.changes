@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Nov 17 15:48:04 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.24
+  * bugfix: :meth:`blessed.Terminal`get_sixel_height_and_width` detection order
+    and improve documentation for window resize event handling (#320).
+  * bugfix: change default argument ``timeout=None`` to ``timeout=1`` in methods
+    requiring automatic response, preventing stalls on "dumb" terminals (#317).
+- from version 1.23
+  * introduced: Environment values FORCE_COLOR_, CLICOLOR_FORCE_, and NO_COLOR_
+    overrides :class:`blessed.Terminal` argument value, ``force_styling`` (#295).
+  * improved: performance of :meth:`~Terminal.rgb_downconvert` for 256-color
+    terminals, (#298).
+  * deprecated: Python 2.7 through 3.6 no longer supported. (#299).
+  * improved: keyboard support for modifier keys, (#306).
+  * introduced: kitty keyboard protocol support, (#309).
+  * introduced: mouse support, Synchronized Output, and support for DEC Private
+    Modes, (#310).
+  * introduced: methods to determine Sixel, dimensions and color depth (#312).
+  * introduced: in-band resize support (DEC Private Mode 2048) (#313).
+  * introduced: XTVersion identification: (#314).
+  * bugfix: default timeout for get_bgcolor, get_fgcolor (#315).
+- Update BuildRequires and Requires from pyproject.toml
+
+-------------------------------------------------------------------
 Wed Oct 22 13:11:07 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.22.0
