@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov 17 21:13:48 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.7.0:
+  * Add repository URL
+  * README: Remove badges
+  * Add mypy
+  * Add typing
+  * Add ruff
+  * pre-commit: Bump dependencies
+  * Migrate setup configuration to pyproject.toml
+  * Drop Python 3.9 support
+  * Update master for stable/2025.2
+
+-------------------------------------------------------------------
 Wed Nov  5 14:08:04 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.6.0:

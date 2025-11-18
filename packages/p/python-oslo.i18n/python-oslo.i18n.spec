@@ -17,7 +17,7 @@
 
 
 Name:           python-oslo.i18n
-Version:        6.6.0
+Version:        6.7.0
 Release:        0
 Summary:        OpenStack i18n library
 License:        Apache-2.0
