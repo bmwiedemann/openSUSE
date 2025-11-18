@@ -121,4 +121,19 @@
   * protobufs: v2.7.8</comment>
     <requestid>1306303</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d9e0e4c0252418a18aeb7290bbde1f24</srcmd5>
+    <version>2.7.4</version>
+    <time>1763476754</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.7.4:
+  * Plumb timeout from --timeout through MeshInterface
+  * add icon parameter to sendWaypoint()
+  * Add T-Deck device support
+  * refactor close()
+  * CLI: normalize lora.ignore_incoming IDs (dec/!hex/0x),
+    dedupe, YAML [] clear, fix bytes→int crash
+  * Add Channel Hash Utility to Node class</comment>
+    <requestid>1318336</requestid>
+  </revision>
 </revisionlist>
