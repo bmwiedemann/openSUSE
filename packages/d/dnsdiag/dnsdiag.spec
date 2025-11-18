@@ -17,9 +17,10 @@
 #
 
 
-%bcond_without test
+%define pythons python3
+%bcond_with test
 Name:           dnsdiag
-Version:        2.8.1
+Version:        2.9.1
 Release:        0
 Summary:        DNS request auditing toolset
 License:        BSD-3-Clause
@@ -30,9 +31,10 @@ Source:         https://github.com/farrokhi/dnsdiag/archive/refs/tags/v%{version
 Source1:        dnseval.1
 Source2:        dnsping.1
 Source3:        dnstraceroute.1
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-setuptools
 Requires:       python3-aioquic >= 1.2.0
 Requires:       python3-cryptography >= 42.0.5
 Requires:       python3-cymruwhois >= 1.6
@@ -43,6 +45,7 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  python3-cymruwhois >= 1.6
 BuildRequires:  python3-dnspython >= 2.6.1
+BuildRequires:  python3-pytest
 %endif
 
 %description
@@ -67,21 +70,21 @@ of a resolver.
 
 %prep
 %autosetup -n dnsdiag-%{version}
-sed -e '/^#!\//, 1d' -i dnsdiag/*.py
+sed -e '/^#!\//, 1d' -i *.py dnsdiag/*.py
 
 %build
-%python3_build
+%pyproject_wheel
 
 %install
-%python3_install
-%fdupes %{buildroot}%{python3_sitelib}
-mv %{buildroot}%{_bindir}/dnseval.py %{buildroot}%{_bindir}/dnseval
-mv %{buildroot}%{_bindir}/dnstraceroute.py %{buildroot}%{_bindir}/dnstraceroute
-mv %{buildroot}%{_bindir}/dnsping.py %{buildroot}%{_bindir}/dnsping
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 install -d -m0755 %{buildroot}%{_mandir}/man1/
-install -m0644 %{SOURCE1} %{buildroot}%{_mandir}/man1/
-install -m0644 %{SOURCE2} %{buildroot}%{_mandir}/man1/
-install -m0644 %{SOURCE3} %{buildroot}%{_mandir}/man1/
+install -m0644 %{SOURCE1} %{SOURCE2} %{SOURCE3} -t %{buildroot}%{_mandir}/man1/
+
+%check
+%if %{with test}
+%pytest
+%endif
 
 %files
 %doc README.md
@@ -92,6 +95,11 @@ install -m0644 %{SOURCE3} %{buildroot}%{_mandir}/man1/
 %{_mandir}/man1/dnseval.1%{?ext_man}
 %{_mandir}/man1/dnstraceroute.1%{?ext_man}
 %{_mandir}/man1/dnsping.1%{?ext_man}
-%{python3_sitelib}/dnsdiag*
+%{python_sitelib}/dnseval.py
+%{python_sitelib}/dnsping.py
+%{python_sitelib}/dnstraceroute.py
+%{python_sitelib}/dnsdiag
+%{python_sitelib}/dnsdiag-%{version}.dist-info
+%pycache_only %{python_sitelib}/__pycache__
 
 %changelog

@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Oct 31 10:49:42 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.9.1
+  * Multithreaded DNS Evaluation: dnseval now uses concurrent
+    evaluation when testing multiple DNS resolvers, improving
+    evaluation times. The tool employs ThreadPoolExecutor with up
+    to 10 worker threads for parallel testing while maintaining
+    thread-safe output handling. Results continue to be displayed
+    in the same order as the input file.
+  * Cookie Display Enhancement: DNS COOKIE output in dnsping is
+    now truncated to 8 hex characters followed by "..." in normal
+    mode, keeping output compact and readable. Full cookie details
+    remain available when using verbose mode.
+
+-------------------------------------------------------------------
+Sun Oct 26 09:14:13 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Switch to pyproject macros.
+- Update to version 2.9.0
+  New Features
+  * Added --nsid support to dnstraceroute for tracing paths to
+    anycast instances.
+  * Added DNS COOKIE support to dnsping (--cookie).
+  * Added DoQ (DNS over QUIC) and DoH3 (DNS over HTTP/3) protocol
+    support to dnseval.
+  * Added cache warmup behavior to dnseval for fair resolver
+    comparisons.
+  * Added EDNS flags display in dnseval output.
+  * Added Python 3.14 support.
+  Improvements
+  * Refactored codebase with PEP 8 conventions and comprehensive
+    type hints.
+  * Improved CLI error handling and parameter validation across
+    all tools.
+  * Enhanced hostname validation to allow RFC-compliant hostnames
+    starting with underscore.
+  * Improved IPv6 address display with bracket wrapping for
+    readability.
+  Bug Fixes
+  * Fixed IPv4/IPv6 address family selection to default to
+    AF_UNSPEC for automatic detection.
+  * Fixed DoH3 feature detection to properly check HTTPVersion.H3.
+  * Fixed IPv6 hostname resolution to avoid IPv4-mapped IPv6
+    addresses.
+  * Fixed DNS COOKIE display in normal and verbose modes.
+  * Fixed JSON output type consistency for float values.
+  * Fixed premature TCP connection termination handling.
+
+-------------------------------------------------------------------
 Sat Oct  4 15:22:35 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.8.1

@@ -79,4 +79,43 @@
     <comment></comment>
     <requestid>1311536</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7d028c9d6b656371590999c86e4fc890</srcmd5>
+    <version>2.9.1</version>
+    <time>1763476499</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1314805 from mnhauke
+
+- Update to version 2.9.1
+  * Multithreaded DNS Evaluation: dnseval now uses concurrent
+    evaluation when testing multiple DNS resolvers, improving
+    evaluation times. The tool employs ThreadPoolExecutor with up
+    to 10 worker threads for parallel testing while maintaining
+    thread-safe output handling. Results continue to be displayed
+    in the same order as the input file.
+  * Cookie Display Enhancement: DNS COOKIE output in dnsping is
+    now truncated to 8 hex characters followed by &quot;...&quot; in normal
+    mode, keeping output compact and readable. Full cookie details
+    remain available when using verbose mode.
+
+- Switch to pyproject macros.
+- Update to version 2.9.0
+  New Features
+  * Added --nsid support to dnstraceroute for tracing paths to
+    anycast instances.
+  * Added DNS COOKIE support to dnsping (--cookie).
+  * Added DoQ (DNS over QUIC) and DoH3 (DNS over HTTP/3) protocol
+    support to dnseval.
+  * Added cache warmup behavior to dnseval for fair resolver
+    comparisons.
+  * Added EDNS flags display in dnseval output.
+  * Added Python 3.14 support.
+  Improvements
+  * Refactored codebase with PEP 8 conventions and comprehensive
+    type hints.
+  * Improved CLI error handling and parameter validation across
+    all tools.
+  * Enhanced hostname validation to allow RFC-compliant hostnames</comment>
+    <requestid>1318249</requestid>
+  </revision>
 </revisionlist>
