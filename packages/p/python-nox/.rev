@@ -152,4 +152,25 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1307578</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3c59ce765f8756ba0d2f232b34975032</srcmd5>
+    <version>2025.11.12</version>
+    <time>1763476751</time>
+    <user>anag_factory</user>
+    <comment>- update to 2025.11.12:
+  * Avoid warnings when running in script mode
+  * `nox --report  ` should support `Path`
+  * Install env was typed differently
+  * pytest `log_level` is better than `log_cli_level`
+  * Use last intel macOS image
+  * Add a few more passing ruff checks
+- update to 2025.10.16:
+  * Make pbs-installer an optional dependency
+  * Include time on longer runs (adds `humanize` dependency)
+- update to 2025.10.14:
+  * Add `--download-python` python option
+  * Add `session.env_dir` to get the Path to the environment
+  * Correct minimum versions and test</comment>
+    <requestid>1318332</requestid>
+  </revision>
 </revisionlist>
