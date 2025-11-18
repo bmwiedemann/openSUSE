@@ -290,7 +290,48 @@ done
 %{_sbindir}/*
 %{_mandir}/man?/*
 %dir %attr(0755,root,root) %{_libdir}/%{name}/
-%{_libdir}/%{name}/*.so
+%{_libdir}/%{name}/mod_auth_otp.so
+%{_libdir}/%{name}/mod_ban.so
+%{_libdir}/%{name}/mod_copy.so
+%{_libdir}/%{name}/mod_ctrls_admin.so
+%{_libdir}/%{name}/mod_deflate.so
+%{_libdir}/%{name}/mod_digest.so
+%{_libdir}/%{name}/mod_dnsbl.so
+%{_libdir}/%{name}/mod_dynmasq.so
+%{_libdir}/%{name}/mod_exec.so
+%{_libdir}/%{name}/mod_ifsession.so
+%{_libdir}/%{name}/mod_ifversion.so
+%{_libdir}/%{name}/mod_load.so
+%{_libdir}/%{name}/mod_log_forensic.so
+%{_libdir}/%{name}/mod_qos.so
+%{_libdir}/%{name}/mod_quotatab.so
+%{_libdir}/%{name}/mod_quotatab_file.so
+%{_libdir}/%{name}/mod_quotatab_ldap.so
+%{_libdir}/%{name}/mod_quotatab_radius.so
+%{_libdir}/%{name}/mod_quotatab_sql.so
+%{_libdir}/%{name}/mod_ratio.so
+%{_libdir}/%{name}/mod_readme.so
+%{_libdir}/%{name}/mod_rewrite.so
+%{_libdir}/%{name}/mod_sftp.so
+%{_libdir}/%{name}/mod_sftp_pam.so
+%{_libdir}/%{name}/mod_sftp_sql.so
+%{_libdir}/%{name}/mod_shaper.so
+%{_libdir}/%{name}/mod_site_misc.so
+%{_libdir}/%{name}/mod_snmp.so
+%{_libdir}/%{name}/mod_sql.so
+%{_libdir}/%{name}/mod_sql_odbc.so
+%{_libdir}/%{name}/mod_sql_passwd.so
+%{_libdir}/%{name}/mod_statcache.so
+%{_libdir}/%{name}/mod_tls.so
+%{_libdir}/%{name}/mod_tls_fscache.so
+%{_libdir}/%{name}/mod_tls_memcache.so
+%{_libdir}/%{name}/mod_tls_redis.so
+%{_libdir}/%{name}/mod_tls_shmcache.so
+%{_libdir}/%{name}/mod_unique_id.so
+%{_libdir}/%{name}/mod_wrap2.so
+%{_libdir}/%{name}/mod_wrap2_file.so
+%{_libdir}/%{name}/mod_wrap2_redis.so
+%{_libdir}/%{name}/mod_wrap2_sql.so
 %exclude %{_libdir}/%{name}/mod_ldap.so
 %exclude %{_libdir}/%{name}/mod_sql_mysql.so
 %exclude %{_libdir}/%{name}/mod_sql_postgres.so

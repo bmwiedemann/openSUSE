@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 22 08:28:53 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Explicitly list all installed proftpd modules in the %files
+  section (rather than using a catch-all glob) to make sure we
+  notice when changes to the package break the installation of any
+  of those modules -- as has happened in bsc#1246853.
+
+-------------------------------------------------------------------
 Fri Jun 13 13:11:39 UTC 2025 - chris@computersalat.de
 
 - switch to _service file
