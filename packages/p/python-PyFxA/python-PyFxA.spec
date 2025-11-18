@@ -16,16 +16,20 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+%{?sle15_python_module_pythons}
 Name:           python-PyFxA
-Version:        0.7.9
+Version:        0.8.1
 Release:        0
 Summary:        Firefox Accounts client library for Python
 License:        MPL-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/mozilla/PyFxA
 Source:         https://files.pythonhosted.org/packages/source/P/PyFxA/pyfxa-%{version}.tar.gz
-BuildRequires:  %{python_module PyBrowserID}
 BuildRequires:  %{python_module PyJWT}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module hatchling}
@@ -40,13 +44,17 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-PyBrowserID
 Requires:       python-PyJWT
 Requires:       python-cryptography
 Requires:       python-hawkauthlib
 Requires:       python-requests >= 2.4.2
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -79,11 +87,16 @@ includedTests="\
   not test_monkey_patch_for_gevent"
 %pytest -k "${includedTests}" fxa/tests/
 
+%if %{with libalternatives}
+%pre
+%python_libalternatives_reset_alternative fxa-client
+%else
 %post
 %python_install_alternative fxa-client
 
 %postun
 %python_uninstall_alternative fxa-client
+%endif
 
 %files %{python_files}
 %doc CHANGES.txt README.rst
