@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-PyNaCl
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        Python binding to the Networking and Cryptography (NaCl) library
 License:        Apache-2.0

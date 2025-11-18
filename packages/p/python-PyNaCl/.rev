@@ -156,4 +156,12 @@
   * Added support for Windows on ARM wheels.</comment>
     <requestid>1304701</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>86b792ff5d5eb8b92acb10a7d8d5f355</srcmd5>
+    <version>1.6.1</version>
+    <time>1763476170</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1318240</requestid>
+  </revision>
 </revisionlist>
