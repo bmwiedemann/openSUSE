@@ -97,4 +97,12 @@
     <comment></comment>
     <requestid>1285442</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1192b4630e1118b80596f32547dc54de</srcmd5>
+    <version>4.0.8</version>
+    <time>1763476099</time>
+    <user>anag_factory</user>
+    <comment>utfcpp 4.0.8 (forwarded request 1313072 from AndreasStieger)</comment>
+    <requestid>1318095</requestid>
+  </revision>
 </revisionlist>
