@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 11 08:34:18 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.10.7
+  * Update mock server by @azkrishpy in (#534)
+  * Configurable ports for HTTP/1.1 mock server by @azkrishpy in (#535)
+
+-------------------------------------------------------------------
 Tue Oct 21 10:10:07 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.10.6
