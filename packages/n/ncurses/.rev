@@ -5412,4 +5412,19 @@
     <comment>- Enforce to use signed char for boolean (boo#1253383)</comment>
     <requestid>1317787</requestid>
   </revision>
+  <revision rev="314" vrev="87">
+    <srcmd5>bfc828888f8a9c20176a7c35d290c9d5</srcmd5>
+    <version>unknown</version>
+    <time>1763476285</time>
+    <user>anag_factory</user>
+    <comment>- Add ncurses patch 20251115
+  + check for special case of wcrtomb() converting a single byte code to
+    a different single byte code, which glibc does for code 160 in the
+    KOI8-R encoding (report by Yury V Zaytsev).
+  + improve formatting/style of manpages (patches by Branden Robinson).
+  + amend recent changes to mouse handling to avoid a case which caused
+    a loop in wgetch until additional input is provided (htop #1769,
+    cf: 20250913).</comment>
+    <requestid>1318224</requestid>
+  </revision>
 </revisionlist>

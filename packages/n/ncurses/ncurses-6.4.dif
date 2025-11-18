@@ -17,8 +17,8 @@
  15 files changed, 188 insertions(+), 64 deletions(-)
 
 --- aclocal.m4
-+++ aclocal.m4	2025-11-03 08:42:33.961636930 +0000
-@@ -6223,12 +6223,12 @@ cat >>$cf_edit_man <<CF_EOF
++++ aclocal.m4	2025-11-17 08:25:40.426919217 +0000
+@@ -6224,12 +6224,12 @@ cat >>$cf_edit_man <<CF_EOF
  		echo "? missing rename for \$cf_source"
  		cf_target="\$cf_source"
  	fi
@@ -33,7 +33,7 @@
  	sed	-f "$cf_man_alias" \\
  CF_EOF
  
-@@ -6238,7 +6238,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -6239,7 +6239,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
@@ -42,7 +42,7 @@
  CF_EOF
  fi
  
-@@ -6285,7 +6285,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -6295,7 +6295,7 @@ cat >>$cf_edit_man <<CF_EOF
  		mv \$TMP.$cf_manpage_so_strip \$TMP
  	fi
  	fi
@@ -51,7 +51,7 @@
  CF_EOF
  fi
  
-@@ -6294,31 +6294,31 @@ case "$MANPAGE_FORMAT" in
+@@ -6304,31 +6304,31 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
  	if test "\$form" = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
@@ -90,7 +90,7 @@
  				for cf_alias in \$aliases
  				do
  					if test "\$section" = 1 ; then
-@@ -6328,7 +6328,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -6338,7 +6338,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
  						if test -f "\$cf_alias\${suffix}" ; then
@@ -99,7 +99,7 @@
  							then
  								continue
  							fi
-@@ -6338,18 +6338,18 @@ CF_EOF
+@@ -6348,18 +6348,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
@@ -121,7 +121,7 @@
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
  if test -n "$cf_manpage_compress" ; then
-@@ -6369,9 +6369,9 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -6379,9 +6379,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
  	elif test "\$verb" = removing ; then
@@ -134,7 +134,7 @@
  		)
  		test -d "\$cf_subdir\${section}" &&
  		test -n "\$aliases" && (
-@@ -6392,6 +6392,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -6402,6 +6402,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi
@@ -143,7 +143,7 @@
  esac
  done
 --- configure
-+++ configure	2025-10-20 06:44:01.963090642 +0000
++++ configure	2025-11-17 08:25:40.430919144 +0000
 @@ -6764,7 +6764,7 @@ echo $ECHO_N "checking for an rpath opti
  		fi
  		;;
@@ -173,7 +173,7 @@
  	do
  
  if test "$PKG_CONFIG" != none && "$PKG_CONFIG" --exists "$cf_with_pcre2"; then
-@@ -29481,12 +29481,12 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -29560,12 +29560,12 @@ cat >>$cf_edit_man <<CF_EOF
  		echo "? missing rename for \$cf_source"
  		cf_target="\$cf_source"
  	fi
@@ -188,7 +188,7 @@
  	sed	-f "$cf_man_alias" \\
  CF_EOF
  
-@@ -29496,7 +29496,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -29575,7 +29575,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
@@ -197,7 +197,7 @@
  CF_EOF
  fi
  
-@@ -29543,7 +29543,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -29631,7 +29631,7 @@ cat >>$cf_edit_man <<CF_EOF
  		mv \$TMP.$cf_manpage_so_strip \$TMP
  	fi
  	fi
@@ -206,7 +206,7 @@
  CF_EOF
  fi
  
-@@ -29552,31 +29552,31 @@ case "$MANPAGE_FORMAT" in
+@@ -29640,31 +29640,31 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
  	if test "\$form" = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
@@ -245,7 +245,7 @@
  				for cf_alias in \$aliases
  				do
  					if test "\$section" = 1 ; then
-@@ -29586,7 +29586,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -29674,7 +29674,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
  						if test -f "\$cf_alias\${suffix}" ; then
@@ -254,7 +254,7 @@
  							then
  								continue
  							fi
-@@ -29596,18 +29596,18 @@ CF_EOF
+@@ -29684,18 +29684,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
@@ -276,7 +276,7 @@
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
  if test -n "$cf_manpage_compress" ; then
-@@ -29627,9 +29627,9 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -29715,9 +29715,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
  	elif test "\$verb" = removing ; then
@@ -289,7 +289,7 @@
  		)
  		test -d "\$cf_subdir\${section}" &&
  		test -n "\$aliases" && (
-@@ -29650,6 +29650,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -29738,6 +29738,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi
@@ -330,10 +330,10 @@
  scanf.3				scanf.3
  ttys.5				ttys.4
 --- man/ncurses.3x
-+++ man/ncurses.3x	2025-05-05 07:22:16.198714905 +0000
++++ man/ncurses.3x	2025-11-17 08:28:40.895593396 +0000
 @@ -364,6 +364,10 @@ they permit overlapping windows and ease
  with
- .IR curses .
+ .IR curses "."
  .SS "Initialization"
 +Beware: the terminal your program is running may or may not have
 +the features you expect. Ncurses makes no attempt to check available

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov 17 08:25:05 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20251115
+  + check for special case of wcrtomb() converting a single byte code to
+    a different single byte code, which glibc does for code 160 in the
+    KOI8-R encoding (report by Yury V Zaytsev).
+  + improve formatting/style of manpages (patches by Branden Robinson).
+  + amend recent changes to mouse handling to avoid a case which caused
+    a loop in wgetch until additional input is provided (htop #1769,
+    cf: 20250913).
+
+-------------------------------------------------------------------
 Fri Nov 14 11:54:02 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Enforce to use signed char for boolean (boo#1253383)

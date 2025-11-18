@@ -476,6 +476,12 @@ export CFLAGS_SHARED
     if [[ "$BUILD_BASENAME" = debug-* ]] ; then
 	CFLAGS="${CFLAGS} -g -DTRACE"
     fi
+    echo -e 'int main() { return ((char)~1 > 0); }' | gcc -O2 -Wall -xc -o unsign -
+    if ./unsign ; then
+	CHARSIGNESS=
+    else
+	CHARSIGNESS=--enable-signed-char
+    fi
     cflags -Wl,-O2                  LDFLAGS
     cflags -Wl,-Bsymbolic-functions LDFLAGS
     cflags -Wl,--hash-size=8599     LDFLAGS
@@ -580,7 +586,7 @@ export CFLAGS_SHARED
 	--enable-colorfgbg	\
 	--enable-sp-funcs	\
 	--enable-interop	\
-	--enable-signed-char	\
+	$CHARSIGNESS		\
 	--with-termlib=%{soname_tinfo}	\
 	--enable-ext-colors	\
 	--disable-wgetch-events	\
