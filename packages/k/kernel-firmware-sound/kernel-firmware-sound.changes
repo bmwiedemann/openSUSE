@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 11 06:58:45 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251110 (git commit 15b5dddd9b2a):
+  * ASoC: tas2781: Update dsp firmware for HP and ASUS projects
+  * Revert "Merge branch 'robot/patch-0-1762671757' into 'main'"
+  * ASoC: tas2781: Update dsp firmware for HP and ASUS projects
+- Update aliases
+
+-------------------------------------------------------------------
 Fri Nov  7 08:11:41 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20251106 (git commit b055b3e24542):

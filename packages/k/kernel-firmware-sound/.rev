@@ -293,4 +293,16 @@ After this PR, there will be a delete request for kernel-firmware.
   * linux-firmware: Create audio folder in ti folder, and move all the audio firmwares into it</comment>
     <requestid>1316557</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>747b7fb1e9d069afd04fa5d6c93a105f</srcmd5>
+    <version>20251110</version>
+    <time>1763476260</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251110 (git commit 15b5dddd9b2a):
+  * ASoC: tas2781: Update dsp firmware for HP and ASUS projects
+  * Revert &quot;Merge branch 'robot/patch-0-1762671757' into 'main'&quot;
+  * ASoC: tas2781: Update dsp firmware for HP and ASUS projects
+- Update aliases</comment>
+    <requestid>1317811</requestid>
+  </revision>
 </revisionlist>
