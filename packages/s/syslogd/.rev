@@ -893,4 +893,12 @@
     <comment></comment>
     <requestid>1274943</requestid>
   </revision>
+  <revision rev="106" vrev="805">
+    <srcmd5>b3d3e5263f6c5f15ef5edaf24bd30b92</srcmd5>
+    <version>unknown</version>
+    <time>1763476176</time>
+    <user>anag_factory</user>
+    <comment>- Drop last sysvinit Requirement/Provide (PED-13698)</comment>
+    <requestid>1318241</requestid>
+  </revision>
 </revisionlist>

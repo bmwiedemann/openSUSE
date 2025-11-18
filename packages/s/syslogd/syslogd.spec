@@ -1,7 +1,7 @@
 #
 # spec file for package syslogd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -82,8 +82,6 @@ Requires(pre):  group(news)
 Conflicts:      syslog
 Provides:       sysklogd
 Provides:       syslog
-Provides:       sysvinit(syslog)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
 
 %description
@@ -112,7 +110,6 @@ Summary:        Syslog service files & scripts
 Group:          System/Daemons
 Requires:       logrotate
 Requires:       syslog
-Requires:       sysvinit(network)
 Requires(post): %fillup_prereq
 BuildArch:      noarch
 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 17 13:55:32 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Drop last sysvinit Requirement/Provide (PED-13698)
+
+-------------------------------------------------------------------
 Sat May  3 10:14:22 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - Add -std=gnu89 to compile flags to fix gcc-15 errors
