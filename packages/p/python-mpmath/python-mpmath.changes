@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 18 03:06:06 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pytest macro.
+- Skip a test that breaks due to a Python 3.14 behaviour change.
+
+-------------------------------------------------------------------
 Fri May  9 05:11:54 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

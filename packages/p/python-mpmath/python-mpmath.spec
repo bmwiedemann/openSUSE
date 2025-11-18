@@ -1,7 +1,7 @@
 #
 # spec file for package python-mpmath
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -62,8 +62,8 @@ sed -i '1d' mpmath/tests/runtests.py  # fix non-executable-script rpmlint warnin
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export PYTHONDONTWRITEBYTECODE=1
-%python_expand PYTHONPATH="%{buildroot}%{$python_sitelib}" py.test-%{$python_bin_suffix} -v --pyargs mpmath
+# "Broken" by https://github.com/python/cpython/issues/121149 in 3.14
+%pytest -v --pyargs mpmath -k 'not mpmath.functions.orthogonal.spherharm'
 
 %files %{python_files}
 %license LICENSE

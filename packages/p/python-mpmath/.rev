@@ -78,4 +78,13 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1275997</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>4dfe179a589347d0fb7dd6b12d0c5ecd</srcmd5>
+    <version>1.3.0</version>
+    <time>1763476803</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pytest macro.
+- Skip a test that breaks due to a Python 3.14 behaviour change.</comment>
+    <requestid>1318367</requestid>
+  </revision>
 </revisionlist>
