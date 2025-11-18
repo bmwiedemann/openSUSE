@@ -438,4 +438,27 @@
     <comment>switch to singlespec</comment>
     <requestid>1316790</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>5a3916059af787993c80503c1a50b567</srcmd5>
+    <version>4.4.0</version>
+    <time>1763476735</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.4.0:
+  * trivial: Avoid use of kwargs
+  * Synch Service.launch() signature
+  * reno: Update master for unmaintained/2024.1
+  * Extract shared logic between eventlet and threading backends
+  * Bump pyupgrade target to 3.10+
+  * Migrate bandit options to pyproject.toml
+  * Fix incomplete Launcher in threading backend
+  * Fix ignored restart\_method in threading backend
+  * Fix wrong mapping in threading backend
+  * Add license note to optional dependencies
+  * pre-commit: Bump dependencies
+  * Migrate setup configuration to pyproject.toml
+  * Drop Python 3.9 support
+  * Update master for stable/2025.2
+  * Prevent WSGI Server usage with threading backend</comment>
+    <requestid>1318335</requestid>
+  </revision>
 </revisionlist>

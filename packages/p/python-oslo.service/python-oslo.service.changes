@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Nov 17 21:26:26 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.4.0:
+  * trivial: Avoid use of kwargs
+  * Synch Service.launch() signature
+  * reno: Update master for unmaintained/2024.1
+  * Extract shared logic between eventlet and threading backends
+  * Bump pyupgrade target to 3.10+
+  * Migrate bandit options to pyproject.toml
+  * Fix incomplete Launcher in threading backend
+  * Fix ignored restart\_method in threading backend
+  * Fix wrong mapping in threading backend
+  * Add license note to optional dependencies
+  * pre-commit: Bump dependencies
+  * Migrate setup configuration to pyproject.toml
+  * Drop Python 3.9 support
+  * Update master for stable/2025.2
+  * Prevent WSGI Server usage with threading backend
+
+-------------------------------------------------------------------
 Sun Nov  9 17:52:00 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.3.0:

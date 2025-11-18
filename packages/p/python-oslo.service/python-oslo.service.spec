@@ -17,7 +17,7 @@
 
 
 Name:           python-oslo.service
-Version:        4.3.0
+Version:        4.4.0
 Release:        0
 Summary:        OpenStack oslo.service library
 License:        Apache-2.0
