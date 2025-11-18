@@ -1,7 +1,7 @@
 #
 # spec file for package gpgme
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -32,6 +32,8 @@ Source2:        baselibs.conf
 Source3:        https://gnupg.org/signature_key.asc#/gpgme.keyring
 # used to have a fixed timestamp
 Source99:       gpgme.changes
+# PATCH-FIX-UPSTREAM Treat empty DISPLAY variable as unset. [bsc#1252425, bsc#1231055] https://dev.gnupg.org/T7919
+Patch1:         gpgme-Treat-empty-DISPLAY-variable-as-unset.patch
 BuildRequires:  gpg2 >= 2.4.1
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gpg-error) >= 1.47

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 22 12:14:29 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Treat empty DISPLAY variable as unset. [bsc#1252425, bsc#1231055]
+  * To avoid gpgme constructing an invalid gpg command line when
+    the DISPLAY variable is empty it can be treated as unset.
+  * Add gpgme-Treat-empty-DISPLAY-variable-as-unset.patch
+  * Reported upstream: dev.gnupg.org/T7919
+
+-------------------------------------------------------------------
 Tue Sep 23 19:54:19 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 2.0.1:

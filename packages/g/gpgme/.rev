@@ -950,4 +950,12 @@ See the HACKING file in the doc directory (forwarded request 176432 from babelwo
     <comment>gpgme 2.0.1</comment>
     <requestid>1306796</requestid>
   </revision>
+  <revision rev="117" vrev="2">
+    <srcmd5>eb89fe8f42556d14013c33a5bb3523bd</srcmd5>
+    <version>2.0.1</version>
+    <time>1763476222</time>
+    <user>anag_factory</user>
+    <comment>treat empty DISPLAY variable as unset. [bsc#1252425, bsc#1231055]</comment>
+    <requestid>1317796</requestid>
+  </revision>
 </revisionlist>
