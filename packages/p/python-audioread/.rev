@@ -123,4 +123,12 @@
   * Add two external module depends for Python 3.13+.</comment>
     <requestid>1230257</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>60cb70ca375df5658294727c431ff076</srcmd5>
+    <version>3.1.0</version>
+    <time>1763476536</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1318261</requestid>
+  </revision>
 </revisionlist>

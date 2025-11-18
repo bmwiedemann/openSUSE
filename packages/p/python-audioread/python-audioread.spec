@@ -15,20 +15,18 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%{?sle15_python_module_pythons}
 Name:           python-audioread
-Version:        3.0.1
+Version:        3.1.0
 Release:        0
 Summary:        Wrapper for audio decoding via selectable backends
 License:        MIT
 URL:            https://github.com/beetbox/audioread
 Source0:        https://github.com/beetbox/audioread/archive/v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Based on gh#beetbox/audioread#145
-Patch0:         support-python-313.patch
 BuildRequires:  %{ffmpeg_pref}
 BuildRequires:  %{python_module base}
-BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module standard-aifc if %python-base >= 3.13}
 BuildRequires:  %{python_module standard-sunau if %python-base >= 3.13}

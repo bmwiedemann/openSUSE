@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Nov 17 10:09:53 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.1.0
+  * add support for os.PathLike filenames in macca.py
+  * Version bump/changelog: 3.0.2
+  * include license in pyproject.toml
+  * Modernize package setup
+  * Add release workflow
+  * Increment version to 3.1.0a1
+  * Try using proper pypi repo
+  * Remove legacy url
+  * Add standard-aifc and standard-sunau as dependencies for python
+    3.13 and above. Python core removed these modules in 3.13 as part
+    of PEP-594. The standard-* modules are forks of the modules that
+    had previously been in the python core. Fixes #144
+  * run tests on python 3.12 and 3.13
+  * Increment version to 3.1.0
+- Drop support-python-313.patch, merged upstream
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Thu Dec 12 03:15:22 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Drop patch no-removed-formats.patch, it was a terrible idea.
