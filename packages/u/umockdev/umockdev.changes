@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov  9 08:57:10 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.19.4:
+  * preload: Hide sticky bit from emulated block dev stat.
+  * preload: Wrap listxattr().
+  * uevent-sender: Retry udev_device_new_from_syspath() on
+    failure.
+  * uevent_sender: Retry sendmsg() on EAGAIN.
+  * tests: Adjust for evtest 1.36.
+
+-------------------------------------------------------------------
 Mon Aug  4 14:37:54 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.19.3:
