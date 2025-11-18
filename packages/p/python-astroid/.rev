@@ -672,4 +672,41 @@ python-logilab-common is in openSUSE:Factory so this builds now.</comment>
     <comment>- add py314-failing-tests.patch</comment>
     <requestid>1306358</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>8b16b00546d66390404108609815b2ca</srcmd5>
+    <version>4.0.2</version>
+    <time>1763476112</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.0.2:
+  * Handle FunctionDef blockstart_tolineno edge cases correctly.
+  * Add HTTPMethod enum support to brain module for Python 3.11+.
+  * Suppress SyntaxWarning for invalid escape sequences and return in finally
+    on Python 3.14 when parsing modules.
+  * Assign Import and ImportFrom nodes to module locals if used with global.
+  * Support constraints from ternary expressions in inference.
+  * Handle deprecated bool(NotImplemented) cast in const nodes.
+  * Add support for boolean truthiness constraints (x, not x) in inference.
+  * Fix false positive invalid-name on attrs classes with ClassVar annotated
+    variables.
+  * Prevent crash when parsing deeply nested parentheses causing MemoryError
+    in python's built-in ast.
+  * Fix crash when inferring namedtuple with invalid field name looking like
+    f-string formatting.
+  * Fix false positive no-member in except * handler.
+  * Fix crash when comparing invalid dict literal
+  * To alleviate circular imports, the manager argument to AstroidBuilder()
+    is now required.
+  * Constants now have a parent of nodes.SYNTHETIC_ROOT.
+  * Fix crashes with large positive and negative list multipliers.
+  * Fix precedence of path arg in modpath_from_file_with_callback to be
+    higher than sys.path
+  * Improve consistency of JoinedStr inference by not raising InferenceError
+    and returning either Uninferable or a fully resolved Const.
+  * Fix crash when typing._alias() call is missing arguments.
+  * Remove support for Python 3.9 (and constant PY310_PLUS).
+  * Include subclasses of standard property classes as property decorators
+  * Modify astroid.bases and tests.test_nodes to reflect that enum.property
+    was added in Python 3.11, not 3.10</comment>
+    <requestid>1318120</requestid>
+  </revision>
 </revisionlist>

@@ -18,15 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-astroid
-Version:        3.3.11
+Version:        4.0.2
 Release:        0
 Summary:        Representation of Python source as an AST for pylint
 License:        LGPL-2.1-or-later
 URL:            https://github.com/pycqa/astroid
 Source:         https://github.com/PyCQA/astroid/archive/refs/tags/v%{version}.tar.gz#/astroid-%{version}-gh.tar.gz
-# PATCH-FIX-UPSTREAM: https://github.com/pylint-dev/astroid/pull/2731.patch
-Patch1:         py314-failing-tests.patch
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module mypy}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -69,6 +67,6 @@ objects.
 %license LICENSE
 %doc ChangeLog README.rst
 %{python_sitelib}/astroid/
-%{python_sitelib}/astroid-%{version}*-info
+%{python_sitelib}/astroid-%{version}.dist-info
 
 %changelog
