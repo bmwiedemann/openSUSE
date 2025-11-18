@@ -296,4 +296,21 @@
     <comment></comment>
     <requestid>1243463</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>fe08a82584c2e7fb389f2a828ae96ec4</srcmd5>
+    <version>2.5.0</version>
+    <time>1763476641</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.5.0:
+  * Add a release note for list by branch
+  * Add a Gerrit 3.11 test job
+  * Update higher Gerrit versions used in testing
+  * Add CC similarly to reviewers
+  * Fix TypeError when reporting old git version
+  * Suggest --no-thin based on error output
+  * Stop setting a default topic on new changes
+  * Update the upper bound for Python and Gerrit tests
+  * Show remote side colors when color is enabled</comment>
+    <requestid>1318303</requestid>
+  </revision>
 </revisionlist>

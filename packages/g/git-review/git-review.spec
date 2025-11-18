@@ -17,12 +17,12 @@
 
 
 Name:           git-review
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        Tool to submit code to Gerrit
 License:        Apache-2.0
 URL:            https://git.openstack.org/cgit/openstack-infra/git-review
-Source:         https://files.pythonhosted.org/packages/source/g/%{name}/%{name}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/g/%{name}/git_review-%{version}.tar.gz
 BuildRequires:  fdupes
 # Note that this package is intentionally not using singlespec because
 # it is not a library but a plain CLI tool, and it doesn't make sense to
@@ -44,7 +44,7 @@ git-review is a tool that helps submitting git branches to gerrit for
 review.
 
 %prep
-%autosetup -p1 -n git-review-%{version}
+%autosetup -p1 -n git_review-%{version}
 
 %build
 %python3_pyproject_wheel
