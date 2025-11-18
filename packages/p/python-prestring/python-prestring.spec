@@ -1,7 +1,7 @@
 #
 # spec file for package python-prestring
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,14 +35,14 @@ BuildArch:      noarch
 BuildRequires:  %{python_module evilunit}
 BuildRequires:  %{python_module typing_extensions}
 # /SECTION
+Requires:       python-typing_extensions
 %python_subpackages
 
 %description
 Python source code generation library (with overuse with-syntax).
 
 %prep
-%setup -q -n prestring-%{version}
-%autopatch -p1
+%autosetup -p1 -n prestring-%{version}
 
 %build
 %pyproject_wheel
@@ -58,6 +58,6 @@ Python source code generation library (with overuse with-syntax).
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/prestring
-%{python_sitelib}/prestring-%{version}*-info
+%{python_sitelib}/prestring-%{version}.dist-info
 
 %changelog

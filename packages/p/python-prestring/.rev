@@ -23,4 +23,12 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1282304</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ae177435b6f9e7dfb2689ac92ba99876</srcmd5>
+    <version>0.9.0</version>
+    <time>1763476799</time>
+    <user>anag_factory</user>
+    <comment>- Rewrite py39.patch to support all Python 3 versions we ship.</comment>
+    <requestid>1318368</requestid>
+  </revision>
 </revisionlist>

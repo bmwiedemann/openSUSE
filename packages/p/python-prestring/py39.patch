@@ -1,26 +1,15 @@
-From 55165f7b1a622577801f8d6c2bd3d0f16555be4b Mon Sep 17 00:00:00 2001
-From: podhmo <ababjam61+github@gmail.com>
-Date: Sun, 28 Mar 2021 14:27:35 +0900
-Subject: [PATCH] Fix test for py39 (#75)
-
-* test: remove try-except
-
-* test: fix tests (work-around)
----
- prestring/tests/test_lazy_object.py | 33 +++++++++++++++++------------
- 1 file changed, 20 insertions(+), 13 deletions(-)
-
-diff --git a/prestring/tests/test_lazy_object.py b/prestring/tests/test_lazy_object.py
-index f528009..a41457f 100644
---- a/prestring/tests/test_lazy_object.py
-+++ b/prestring/tests/test_lazy_object.py
-@@ -29,23 +29,30 @@ def test_with_actual_types(self):
+Index: prestring-0.9.0/prestring/tests/test_lazy_object.py
+===================================================================
+--- prestring-0.9.0.orig/prestring/tests/test_lazy_object.py
++++ prestring-0.9.0/prestring/tests/test_lazy_object.py
+@@ -29,23 +29,27 @@ class LazyArgumentsTests(unittest.TestCa
          self.assertEqual(str(target), "x: int, y: bool, *")
  
      def test_with_actual_types2(self):
 -        try:
 -            import typing as t
--
++        import typing as t
+ 
 -            target = self._makeOne(
 -                ["x", "y", "z"],
 -                types={
@@ -29,8 +18,12 @@ index f528009..a41457f 100644
 -                    "z": t.Sequence[t.Optional[int]],
 -                },
 -            )
-+        import typing as t
-+
+-            self.assertEqual(
+-                str(target),
+-                "x: int, y: 'typing.Union[int, NoneType]', z: 'typing.Sequence[typing.Union[int, NoneType]]'",
+-            )
+-        except ImportError:
+-            pass
 +        target = self._makeOne(
 +            ["x", "y", "z"],
 +            types={
@@ -43,18 +36,13 @@ index f528009..a41457f 100644
 +        # TODO: fix, this is work-around
 +        import sys
 +
-+        if (3, 9) > sys.version_info:
-             self.assertEqual(
-                 str(target),
-                 "x: int, y: 'typing.Union[int, NoneType]', z: 'typing.Sequence[typing.Union[int, NoneType]]'",
-             )
--        except ImportError:
--            pass
++        if sys.version_info[:2] >= (3, 14):
++            match = "x: int, y: 'int | None', z: 'typing.Sequence[int | None]'"
++        elif sys.version_info[:2] > (3, 9):
++            match = "x: int, y: 'typing.Optional[int]', z: 'typing.Sequence[typing.Optional[int]]'"
 +        else:
-+            self.assertEqual(
-+                str(target),
-+                "x: int, y: 'typing.Optional[int]', z: 'typing.Sequence[typing.Optional[int]]'",
-+            )
++            match = "x: int, y: 'typing.Union[int, NoneType]', z: 'typing.Sequence[typing.Union[int, NoneType]]'"
++        self.assertEqual(str(target), match)
  
  
  @test_target("prestring:LazyKeywords")

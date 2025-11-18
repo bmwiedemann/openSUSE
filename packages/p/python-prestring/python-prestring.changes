@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 18 03:55:44 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Rewrite py39.patch to support all Python 3 versions we ship. 
+
+-------------------------------------------------------------------
 Tue Jun  3 12:07:31 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
