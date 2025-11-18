@@ -1,7 +1,7 @@
 #
 # spec file for package qgit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           qgit
-Version:        2.12
+Version:        2.13
 Release:        0
 Summary:        Graphical Git Repository Viewer
 License:        GPL-2.0-or-later

@@ -227,4 +227,27 @@
     <comment></comment>
     <requestid>1300414</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>04584fb53606cc4dfdb6d57f06a33689</srcmd5>
+    <version>2.13</version>
+    <time>1763476638</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.13:
+  * Bug fixing release to address annoying issues with search
+    input and external diff, caused by the whole regular
+    expression &quot;windstorm&quot; due to migration to Qt6.
+  * Fix issue #162: match partial strings as well as wildcards in
+    listview search
+  * Fix issue #164. listview: always wipe clean the branch tags
+    before painting them
+  * listview: FIX truncated tag width with Qt5
+  * some cautionary comments
+
+  * Update project URLs to GitHub repo
+  * mainly a manteinance release with added a new and
+  * Qt4 port, less security vulnerabilities
+- update to 1.5.7
+- update to 1.5.6</comment>
+    <requestid>1318301</requestid>
+  </revision>
 </revisionlist>

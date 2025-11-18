@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov 17 17:39:38 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.13:
+  * Bug fixing release to address annoying issues with search
+    input and external diff, caused by the whole regular
+    expression "windstorm" due to migration to Qt6.
+  * Fix issue #162: match partial strings as well as wildcards in
+    listview search
+  * Fix issue #164. listview: always wipe clean the branch tags
+    before painting them
+  * listview: FIX truncated tag width with Qt5
+  * some cautionary comments
+
+-------------------------------------------------------------------
 Mon Jul 14 19:32:41 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.12:
@@ -31,7 +45,7 @@ Fri Feb  4 22:13:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Don't rely on STDERR for determining whether command failed
   * Compilation cleanup
   * Support for fractional device pixel ratio
-  * Update project URLs to GitHub repo 
+  * Update project URLs to GitHub repo
 
 -------------------------------------------------------------------
 Mon May 10 13:53:53 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -91,7 +105,7 @@ Thu Dec  1 09:34:18 CET 2011 - dmueller@suse.de
 Wed Sep  9 18:16:33 CEST 2009 - dmueller@suse.de
 
 - update to 2.3:
-  * mainly a manteinance release with added a new and 
+  * mainly a manteinance release with added a new and
   better graph look
 
 -------------------------------------------------------------------
@@ -123,17 +137,17 @@ Mon Mar 10 13:02:31 CET 2008 - dmueller@suse.de
 Mon Oct  8 23:13:05 CEST 2007 - dmueller@suse.de
 
 - update to 2.0:
-  * Qt4 port, less security vulnerabilities 
+  * Qt4 port, less security vulnerabilities
 
 -------------------------------------------------------------------
 Mon Oct  8 22:48:50 CEST 2007 - dmueller@suse.de
 
-- update to 1.5.7 
+- update to 1.5.7
 
 -------------------------------------------------------------------
 Sun Aug 12 10:20:10 CEST 2007 - dmueller@suse.de
 
-- update to 1.5.6 
+- update to 1.5.6
 
 -------------------------------------------------------------------
 Thu May 17 07:04:18 CEST 2007 - dmueller@suse.de
