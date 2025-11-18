@@ -1,0 +1,14 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1c350339229b281c8b200cdd2178da02</srcmd5>
+    <version>0.4.11</version>
+    <time>1763476771</time>
+    <user>anag_factory</user>
+    <comment>This package provides the Linux kernel driver for Xbox One and Xbox Series X|S accessories.
+it serves as a modern replacement for xpad, aiming to be
+compatible with Microsoft's Game Input Protocol (GIP).
+
+Now that xone-dongle-firmware is also in Factory, the driver can easily be installed and used on openSUSE :)</comment>
+    <requestid>1318347</requestid>
+  </revision>
+</revisionlist>
