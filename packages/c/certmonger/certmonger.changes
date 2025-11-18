@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 13 09:26:01 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Cleanup dbus dependencies: dbus-send is part of dbus-1-tools
+  and the %preun does not use any dbus tool nor sed.
+
+-------------------------------------------------------------------
 Wed Sep  3 09:38:31 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Disable failing tests with NSS 3.115.1: 007-certsave-dbm

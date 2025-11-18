@@ -67,10 +67,8 @@ BuildRequires:  pkgconfig(systemd)
 BuildRequires:  which
 BuildRequires:  xmlrpc-c-devel
 
-Requires:       dbus-1
-Requires(post): dbus-1
-Requires(preun): dbus-1
-Requires(preun): sed
+Requires:       dbus-1-tools
+Requires(post): dbus-1-tools
 
 BuildRequires:  systemd-rpm-macros
 %{?systemd_requires}
