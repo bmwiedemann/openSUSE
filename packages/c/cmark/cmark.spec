@@ -2,6 +2,7 @@
 # spec file for package cmark
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +17,9 @@
 #
 
 
-%define libname libcmark0_31_0
+%define libname libcmark0_31_1
 Name:           cmark
-Version:        0.31.0
+Version:        0.31.1
 Release:        0
 Summary:        CommonMark parsing and rendering library and program in C
 License:        BSD-2-Clause AND MIT AND CC-BY-SA-4.0
@@ -63,7 +64,7 @@ Requires:       %{name} = %{version}
 This package provides the development files for cmark.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake -DCMARK_TESTS=OFF -DCMARK_STATIC=OFF
@@ -72,8 +73,10 @@ This package provides the development files for cmark.
 %install
 %cmake_install
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%check
+%ctest
+
+%ldconfig_scriptlets -n %{libname}
 
 %files
 %license COPYING
@@ -94,7 +97,6 @@ This package provides the development files for cmark.
 %{_mandir}/man3/cmark.3%{?ext_man}
 %dir %{_libdir}/cmake/cmark
 %{_libdir}/cmake/cmark/cmark*.cmake
-
 %doc README.md
 
 %changelog

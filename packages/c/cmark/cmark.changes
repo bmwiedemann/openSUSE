@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul  9 18:12:40 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.31.1:
+  * Flag root node as open in cmark_parser_new_with_mem_into_root
+  * Remove source, add search to list of block tags
+  * Accept lowercase inline HTML declarations
+  * wrapper fixes to memory leaks
+  * Improved hadndling of utf8 handling
+  * Build system and fixes to tests
+- run tests
+
+-------------------------------------------------------------------
 Mon Apr  1 10:50:27 UTC 2024 - Jianhua Lu <lujianhua000@gmail.com>
 
 - update to 0.31.0 
