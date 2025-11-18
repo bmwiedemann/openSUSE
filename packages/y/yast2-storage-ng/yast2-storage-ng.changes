@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov  6 16:57:22 UTC 2025 - Stefan Schubert <schubi@suse.de>
+
+- Suggesting PbkdFunction::PBKDF2 for none efi systems in the
+  expert partitioner (bsc#1249670).
+- 5.0.38
+
+-------------------------------------------------------------------
 Fri Oct 10 09:44:39 UTC 2025 - Stefan Schubert <schubi@suse.de>
 
 - Add umask=0077 fstab option to vfat partitions in order to reduce
