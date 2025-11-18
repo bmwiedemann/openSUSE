@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Nov 18 06:15:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.104.0:
+  * Added Features
+    - Add --from flag [#3035 @wagoodman]
+    - Let a suppression expire to prevent that one will forget to
+      resolve a vulnerability [#3031]
+  * Bug Fixes
+    - Unnormalized fix version triggers false-positive in
+      mssql-jdbc [#3042 #3034 @jamestexas]
+  * Additional Changes
+    - junit template use CDATA block to prevent XML parse errors
+      [#3019 @nvtkaszpir]
+    - Keep nested loggers labeled [#3040 @wagoodman]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#3055)
+    - test: update quality gate db to latest version (#3053)
+    - fix: normalize java runtime qualifiers in maven version
+      comparisons (#3034)
+    - chore(deps): update tools to latest versions (#3045)
+    - fix: junit template use CDATA block to prevent XML parse
+      errors (#3019)
+    - feat: add basic VEX support for SBOM and other sources
+    - chore(deps): bump golang.org/x/tools from 0.38.0 to 0.39.0
+      (#3046)
+    - chore(deps): bump github.com/opencontainers/selinux (#3044)
+    - chore(deps): bump github.com/olekukonko/tablewriter from
+      1.1.0 to 1.1.1 (#3039)
+    - keep nested loggers labeled (#3040)
+    - Add `--from` flag (#3035)
+    - chore(deps): bump github.com/docker/docker (#3032)
+    - chore(deps): bump github.com/containerd/containerd from
+      1.7.28 to 1.7.29 (#3033)
+    - test: update quality gate db to latest version (#3027)
+
+-------------------------------------------------------------------
 Tue Nov 04 08:34:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.103.0:
