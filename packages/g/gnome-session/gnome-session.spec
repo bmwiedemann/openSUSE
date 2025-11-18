@@ -51,7 +51,7 @@ BuildRequires:  pkgconfig(systemd) >= 242
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xtrans)
-Requires:       /usr/bin/dbus-launch
+Requires:       dbus-service
 Requires:       gnome-settings-daemon
 Requires:       gsettings-desktop-schemas >= 0.1.7
 Requires:       hicolor-icon-theme

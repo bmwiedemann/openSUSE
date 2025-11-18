@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 14 10:00:50 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace dbus-launch with dbus-service Requires (boo#1253498).
+
+-------------------------------------------------------------------
 Sat Oct 11 04:12:18 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.1:
