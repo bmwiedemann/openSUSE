@@ -405,4 +405,29 @@
     be the problem.</comment>
     <requestid>1304694</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>3203454025e3fb05052ef48174075215</srcmd5>
+    <version>25.4.0</version>
+    <time>1763476108</time>
+    <user>anag_factory</user>
+    <comment>- Update to 25.4.0:
+  * Class-level kw_only=True behavior is now consistent with dataclasses.
+  * Values passed to the __init__() method of attrs classes are now correctly
+    passed to __attrs_pre_init__() instead of their default values (in cases
+    where kw_only was not specified).
+  * Added support for Python 3.14 and PEP 749.
+  * attrs.validators.deep_mapping() now allows to leave out either
+    key_validator xor value_validator.
+  * attrs.validators.deep_iterator() and attrs.validators.deep_mapping() now
+    accept lists and tuples for all validators and wrap them into a
+    attrs.validators.and_().
+  * Added a new experimental way to inspect classes.
+  * Fixed annotations for attrs.field(converter=...). Previously, a tuple of
+    converters was only accepted if it had exactly one element.
+  * The performance of attrs.asdict() has been improved by 45–260%.
+  * The performance of attrs.astuple() has been improved by 49–270%.
+  * The type annotation for attrs.validators.or_() now allows for different
+    types of validators.</comment>
+    <requestid>1318118</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-attrs
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,11 +26,10 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-attrs%{psuffix}
-Version:        25.3.0
+Version:        25.4.0
 Release:        0
 Summary:        Attributes without boilerplate
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/hynek/attrs/
 Source:         https://files.pythonhosted.org/packages/source/a/attrs/attrs-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
@@ -93,7 +92,7 @@ python-attrs is the successor to python-characterstic
 %doc CHANGELOG.md README.md
 %{python_sitelib}/attr
 %{python_sitelib}/attrs
-%{python_sitelib}/attrs-%{version}*-info
+%{python_sitelib}/attrs-%{version}.dist-info
 %endif
 
 %changelog
