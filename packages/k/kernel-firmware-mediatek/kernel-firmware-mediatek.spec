@@ -20,17 +20,17 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version bfc84303530a1cdd603fc40aa25b4452f10870dc
+%define git_version 15b5dddd9b2a212baedb2823b04ce3294ff397af
 
 Name:           kernel-firmware-mediatek
-Version:        20251029
+Version:        20251110
 Release:        0
 Summary:        Kernel firmware files for Mediatek network drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20251004.tar.gz#/kernel-firmware-tools-20251004.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20251111.tar.gz#/kernel-firmware-tools-20251111.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -49,6 +49,7 @@ Conflicts:      (filesystem without may-perform-usrmerge)
 %endif
 Provides:       ralink-firmware = %{version}
 Obsoletes:      ralink-firmware < %{version}
+Supplements:    modalias(mdio:0000000000110011100111??????????)
 Supplements:    modalias(of:N*T*Cmediatek%2Cmt7622-bluetooth)
 Supplements:    modalias(of:N*T*Cmediatek%2Cmt7622-bluetoothC*)
 Supplements:    modalias(of:N*T*Cmediatek%2Cmt7663u-bluetooth)

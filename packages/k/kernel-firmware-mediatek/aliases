@@ -95,6 +95,7 @@ mt7996e: pci:v000014C3d00007992sv*sd*bc*sc*i*
 mt7996e: pci:v000014C3d00007993sv*sd*bc*sc*i*
 mt7996e: pci:v000014C3d0000799Asv*sd*bc*sc*i*
 mt7996e: pci:v000014C3d0000799Bsv*sd*bc*sc*i*
+mtk_2p5ge: mdio:0000000000110011100111??????????
 mtk_scp: of:N*T*Cmediatek%2Cmt8183-scp
 mtk_scp: of:N*T*Cmediatek%2Cmt8183-scpC*
 mtk_scp: of:N*T*Cmediatek%2Cmt8186-scp
