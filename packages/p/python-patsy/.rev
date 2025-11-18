@@ -131,4 +131,13 @@ Needed by python-seaborn, see request 436927</comment>
 - Switch to pyproject macros.</comment>
     <requestid>1231597</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ba8db40a3f33865858b4e9daa2fb5751</srcmd5>
+    <version>1.0.2</version>
+    <time>1763476764</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.0.2:
+  * Fixed compatibility with Pandas 3's new StringDtype.</comment>
+    <requestid>1318328</requestid>
+  </revision>
 </revisionlist>

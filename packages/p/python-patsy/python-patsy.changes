@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 17 21:13:17 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.2:
+  * Fixed compatibility with Pandas 3's new StringDtype.
+
+-------------------------------------------------------------------
 Tue Dec 17 03:22:37 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.0.1:

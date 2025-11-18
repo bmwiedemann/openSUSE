@@ -1,7 +1,7 @@
 #
 # spec file for package python-patsy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15allpythons}
 Name:           python-patsy
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        A Python package for statistical models and design matrices
 License:        BSD-2-Clause
