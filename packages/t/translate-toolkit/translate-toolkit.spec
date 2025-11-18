@@ -1,7 +1,7 @@
 #
 # spec file for package translate-toolkit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,24 +50,23 @@
 %define manpages translatetoolkit %binaries_and_manpages
 
 Name:           translate-toolkit%{psuffix}
-Version:        3.16.1
+Version:        3.16.3
 Release:        0
 Summary:        Tools and API to assist with translation and software localization
 License:        GPL-2.0-or-later
 URL:            https://toolkit.translatehouse.org/
 Source:         https://github.com/translate/translate/archive/refs/tags/%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.9}
-BuildRequires:  %{python_module cheroot >= 9}
-BuildRequires:  %{python_module cwcwidth >= 0.1.10}
+BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module cheroot >= 10}
+BuildRequires:  %{python_module wcwidth >= 0.2.14}
 BuildRequires:  %{python_module iniparse >= 0.5}
 BuildRequires:  %{python_module lxml >= 5.2.0}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module phply >= 1.2.5}
-BuildRequires:  %{python_module ruamel.yaml >= 0.17.21}
-BuildRequires:  %{python_module setuptools >= 42}
-BuildRequires:  %{python_module setuptools_scm >= 6.2}
-BuildRequires:  %{python_module vobject >= 0.9.6.1}
+BuildRequires:  %{python_module phply >= 1.2.6}
+BuildRequires:  %{python_module ruamel.yaml >= 0.18.0}
+BuildRequires:  %{python_module setuptools >= 78.0.2}
+BuildRequires:  %{python_module vobject >= 0.9.9}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  alts
 BuildRequires:  dos2unix
@@ -79,38 +78,38 @@ BuildRequires:  python-rpm-macros
 Requires:       alts
 Requires:       gettext-runtime
 Requires:       python
-Requires:       python-cwcwidth >= 0.1.10
+Requires:       python-wcwidth >= 0.2.14
 Requires:       python-lxml >= 5.2.0
 # The following are for the full experience of translate-toolkit
 Recommends:     %{name}-doc
 Recommends:     %{name}-man
 Recommends:     gaupol
 Recommends:     iso-codes
-Recommends:     python-Levenshtein >= 0.12
-Recommends:     python-aeidon >= 1.13
-Recommends:     python-beautifulsoup4 >= 4.3
-Recommends:     python-charset-normalizer >= 3.3.2
+Recommends:     python-Levenshtein >= 0.21.0
+Recommends:     python-aeidon >= 1.14.1
+Recommends:     python-beautifulsoup4 >= 4.13.0
+Recommends:     python-charset-normalizer >= 3.4.0
 Recommends:     python-cheroot >= 10
 Recommends:     python-iniparse >= 0.5
-Recommends:     python-mistletoe >= 1.2.1
+Recommends:     python-mistletoe >= 1.4.0
 Recommends:     python-phply >= 1.2.6
 Recommends:     python-pyenchant >= 3.2.2
-Recommends:     python-pyparsing >= 3.1.1
-Recommends:     python-ruamel.yaml >= 0.18.5
-Recommends:     python-vobject >= 0.9.6.1
+Recommends:     python-pyparsing >= 3.2.0
+Recommends:     python-ruamel.yaml >= 0.18.0
+Recommends:     python-vobject >= 0.9.9
 %if %{without test} && %{without doc} && ("%{python_flavor}" == "python3" || "%{?python_provides}" == "python3")
 Provides:       translate-toolkit = %{version}-%{release}
 Obsoletes:      translate-toolkit < %{version}-%{release}
 %endif
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module Levenshtein >= 0.12}
-BuildRequires:  %{python_module aeidon >= 1.13}
-BuildRequires:  %{python_module beautifulsoup4 >= 4.3}
+BuildRequires:  %{python_module Levenshtein >= 0.21.0}
+BuildRequires:  %{python_module aeidon >= 1.14.1}
+BuildRequires:  %{python_module beautifulsoup4 >= 4.13.0}
 BuildRequires:  %{python_module charset-normalizer >= 3.3.2}
-BuildRequires:  %{python_module mistletoe >= 1.2.1}
+BuildRequires:  %{python_module mistletoe >= 1.4.0}
 BuildRequires:  %{python_module pyenchant >= 3.2.2}
-BuildRequires:  %{python_module pyparsing >= 3.1.1}
+BuildRequires:  %{python_module pyparsing >= 3.2.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module translate-toolkit = %{version}}

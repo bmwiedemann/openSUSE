@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Nov 14 11:16:08 UTC 2025 - Luiz Fernando Ranghetti <elchevive@opensuse.org>
+
+- Update various (build)requires versions
+- Correct the 'wcwidth' requirement (was set to another package 'cwcwidth')
+
+-------------------------------------------------------------------
+Wed Nov 12 12:02:33 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.16.3:
+  * Improvements in Android format
+  * Python 3.14 compatibility
+- update to 3.16.2:
+  * Improvements in PO and MO formats
+  * Incomplete plurals handling
+  * Big endian compatbility
+
+-------------------------------------------------------------------
 Thu Oct  2 12:26:22 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 3.16.1
@@ -34,7 +51,7 @@ Wed Jan 15 14:52:14 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 -------------------------------------------------------------------
 Fri Jan 10 12:03:46 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
-- Split the documentation from the main package to avoid many new 
+- Split the documentation from the main package to avoid many new
   dependencies in Ring1
   * man pages are being made optional by this change
 
