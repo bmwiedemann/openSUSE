@@ -823,4 +823,41 @@
     pyreverse's Mermaid output.</comment>
     <requestid>1304654</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>35d856585bed02f1a21c732fede1757c</srcmd5>
+    <version>4.0.3</version>
+    <time>1763476418</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.0.3:
+  * Add Enum dunder methods _generate_next_value_, _missing_, _numeric_repr_,
+    _add_alias_, and _add_value_alias_ to the list passed to
+    --good-dunder-names.
+  * Fixed false positive for invalid-name with typing.Annotated.
+  * Fix false positive for f-string-without-interpolation with template
+    strings when using format spec.
+  * Fix a false positive when an UPPER_CASED class attribute was raising an
+    invalid-name when typed with Final.
+  * Fix a false positive for unbalanced-tuple-unpacking when a tuple is
+    assigned to a function call and the structure of the function's return
+    value is ambiguous.
+  * Make 'ignore' option work as expected again.
+  * Fix crash for consider-using-assignment-expr when a variable annotation
+    without assignment is used as the if test expression.
+  * Fix crash for prefer-typing-namedtuple and consider-math-not-float when
+    a slice object is called.
+  * Fix false positive for invalid-name on a partially uninferable
+    module-level constant.
+  * Fix a false positive for invalid-name on exclusive module-level
+    assignments composed of three or more branches.
+  * Fix false positive for invalid-name for TypedDict instances.
+  * Fix false-positive for bare-name-capture-pattern if a case guard is used.
+  * Check enums created with the Enum() functional syntax to pass against the
+    --class-rgx for the  invalid-name check, like other enums.
+  * Pylint now supports Python 3.14.
+  * Pylint's inference engine (astroid) is now much more precise,
+    understanding implicit booleanness and ternary expressions. The required
+    astroid version is now 4.0.0.
+  * Handling of invalid-name at the module level was patchy. Now,</comment>
+    <requestid>1318121</requestid>
+  </revision>
 </revisionlist>

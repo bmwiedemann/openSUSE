@@ -1,4 +1,122 @@
 -------------------------------------------------------------------
+Mon Nov 17 04:33:49 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.0.3:
+  * Add Enum dunder methods _generate_next_value_, _missing_, _numeric_repr_,
+    _add_alias_, and _add_value_alias_ to the list passed to
+    --good-dunder-names.
+  * Fixed false positive for invalid-name with typing.Annotated.
+  * Fix false positive for f-string-without-interpolation with template
+    strings when using format spec.
+  * Fix a false positive when an UPPER_CASED class attribute was raising an
+    invalid-name when typed with Final.
+  * Fix a false positive for unbalanced-tuple-unpacking when a tuple is
+    assigned to a function call and the structure of the function's return
+    value is ambiguous.
+  * Make 'ignore' option work as expected again.
+  * Fix crash for consider-using-assignment-expr when a variable annotation
+    without assignment is used as the if test expression.
+  * Fix crash for prefer-typing-namedtuple and consider-math-not-float when
+    a slice object is called.
+  * Fix false positive for invalid-name on a partially uninferable
+    module-level constant.
+  * Fix a false positive for invalid-name on exclusive module-level
+    assignments composed of three or more branches.
+  * Fix false positive for invalid-name for TypedDict instances.
+  * Fix false-positive for bare-name-capture-pattern if a case guard is used.
+  * Check enums created with the Enum() functional syntax to pass against the
+    --class-rgx for the  invalid-name check, like other enums.
+  * Pylint now supports Python 3.14.
+  * Pylint's inference engine (astroid) is now much more precise,
+    understanding implicit booleanness and ternary expressions. The required
+    astroid version is now 4.0.0.
+  * Handling of invalid-name at the module level was patchy. Now,
+    module-level constants that are reassigned are treated as variables and
+    checked against --variable-rgx rather than --const-rgx. Module-level
+    lists, sets, and objects can pass against either regex.
+  * invalid-name now distinguishes module-level constants that are assigned
+    only once from those that are reassigned and now applies --variable-rgx
+    to the latter.
+  * The unused pylintrc argument to PyLinter.__init__() is deprecated and
+    will be removed.
+  * pyreverse Run was changed to no longer call sys.exit() in its __init__.
+  * The suggestion-mode option was removed, as pylint now always emits
+    user-friendly hints instead of false-positive error messages.
+  * The async.py checker module has been renamed to async_checker.py since
+    async is a Python keyword and cannot be imported directly. This allows
+    for better testing and extensibility of the async checker functionality.
+  * The message-id of continue-in-finally was changed from E0116 to W0136.
+    The warning is now emitted for every Python version since it will raise a
+    syntax warning in Python 3.14.
+  * Removed support for nmp.NaN alias for numpy.NaN being recognized in
+    nan-comparison.
+  * Version requirement for isort has been bumped to >=5.0.0.
+  * comparison-of-constants now uses the unicode from the ast instead of
+    reformatting from the node's values preventing some bad formatting due to
+    utf-8 limitation.
+  * The use-implicit-booleaness-not-x checks now distinguish between
+    comparisons used in boolean contexts and those that are not, enabling
+    them to provide more accurate refactoring suggestions.
+  * The verbose option now outputs the filenames of the files that have been
+    checked.
+  * colorized reporter now colorizes messages/categories that have been
+    configured as fail-on in red inverse.
+  * Enhanced support for @property decorator in pyreverse to correctly
+    display return types of annotated properties when generating class
+    diagrams.
+  * Handle deferred evaluation of annotations in Python 3.14.
+  * pyreverse: add support for colorized output when using output format mmd
+    (MermaidJS) and html.
+  * pypy 3.11 is now officially supported.
+  * Add support for Python 3.14.
+  * Add naming styles for ParamSpec and TypeVarTuple that align with the
+    TypeVar style.
+  * Add match-statements checker and the following message:
+    bare-name-capture-pattern.
+  * Add new check async-context-manager-with-regular-with to detect async
+    context managers used with regular with statements instead of async with.
+  * Add break-in-finally warning. Using break inside the finally clause will
+    raise a syntax warning in Python 3.14.
+  * Add new checks for invalid uses of class patterns in match.
+  * Add additional checks for suboptimal uses of class patterns in match.
+  * Add a consider-math-not-float message. float("nan") and float("inf") are
+    slower than their counterpart math.inf and math.nan by a factor of 4
+    (notwithstanding the initial import of math) and they are also not well
+    typed when using mypy.
+  * Fix a false positive for used-before-assignment when a variable defined
+    under an if and via a named expression (walrus operator) is used later
+    when guarded under the same if test.
+  * Fix no-name-in-module for members of concurrent.futures with Python 3.14.
+  * Fix false negative for used-before-assignment when a TYPE_CHECKING import
+    is used as a type annotation prior to erroneous usage.
+  * Match cases are now counted as edges in the McCabe graph and will
+    increase the complexity accordingly.
+  * Check module-level constants with type annotations for invalid-name.
+  * Fix false negative where function-redefined (E0102) was not reported for
+    functions with a leading underscore.
+  * We now raise a logging-too-few-args for format string with no
+    interpolation arguments at all.
+  * Fix false negative for used-before-assignment when a function is defined
+    inside a TYPE_CHECKING guard block and used later.
+  * Fix a false negative for possibly-used-before-assignment when a variable
+    is conditionally defined and later assigned to a type-annotated variable.
+  * Fix false negative for deprecated-module when a __import__ method is used
+    instead of import sentence.
+  * Remove support for launching pylint with Python 3.9.
+  * Fix used-before-assignment for PEP 695 type aliases and parameters.
+  * No longer flag undeprecated functions in importlib.resources as
+    deprecated.
+  * Fix false positive inconsistent-return-statements when using quit() or
+    exit() functions.
+  * Fix false positive undefined-variable (E0602) for for-loop variable
+    shadowing patterns like for item in item: when the variable was
+    previously defined.
+  * Fixed crash in 'unnecessary-list-index-lookup' when starting an
+    enumeration using minus the length of an iterable inside a dict
+    comprehension when the len call was only made in this dict comprehension,
+    and not elsewhere.
+
+-------------------------------------------------------------------
 Sun Sep 14 18:17:44 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.8:

@@ -24,14 +24,14 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pylint
-Version:        3.3.8
+Version:        4.0.3
 Release:        0
 Summary:        Syntax and style checker for Python code
 License:        GPL-2.0-or-later
 URL:            https://github.com/pylint-dev/pylint
 # Tests are no longer packaged in the PyPI sdist, use GitHub archive
 Source:         https://github.com/pylint-dev/pylint/archive/refs/tags/v%{version}.tar.gz#/pylint-%{version}-gh.tar.gz
-BuildRequires:  %{python_module base >= 3.7.2}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -40,8 +40,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-dill >= 0.3.7
 Requires:       python-platformdirs >= 2.2
 Requires:       python-tomlkit >= 0.10.1
-Requires:       (python-astroid >= 3.3.8 with python-astroid < 4.0.0~dev0)
-Requires:       (python-isort >= 4.2.5 with python-isort < 7)
+Requires:       (python-astroid >= 4.0.2 with python-astroid < 4.1.0~dev0)
+Requires:       (python-isort >= 5 with python-isort < 8)
 Requires:       (python-mccabe >= 0.6 with python-mccabe < 0.8)
 BuildArch:      noarch
 %if 0%{?python_version_nodots} < 311
@@ -52,10 +52,10 @@ Requires:       python-typing-extensions >= 3.10
 %endif
 %if %{with tests}
 # SECTION pylint deps
-BuildRequires:  %{python_module astroid >= 3.3.8 with %python-astroid < 4.0.0~dev0}
+BuildRequires:  %{python_module astroid >= 4.0.2 with %python-astroid < 4.1.0~dev0}
 BuildRequires:  %{python_module dill >= 0.3.7}
 BuildRequires:  %{python_module enchant}
-BuildRequires:  %{python_module isort >= 4.2.5 with %python-isort < 7}
+BuildRequires:  %{python_module isort >= 5 with %python-isort < 8}
 BuildRequires:  %{python_module mccabe >= 0.6 with %python-mccabe < 0.8}
 BuildRequires:  %{python_module platformdirs >= 2.2}
 BuildRequires:  %{python_module tomli >= 1.1.0 if %python-base < 3.11}
@@ -118,13 +118,9 @@ done
 export LC_ALL="en_US.UTF-8"
 # reruns: tests/pyreverse is incredibly non-deterministic in failures
 donttest="test_linter_with_unpickleable_plugins_is_pickleable"
-# Fails with pytest-8 gh#pylint-dev/pylint#9545
-donttest+=" or recursion_error_3159"
-# Fails with python 3.12
-donttest+=" or test_functional_relation_extraction"
 # Broken upstream
-donttest+=" or test_functional"
-%pytest -n auto --ignore tests/benchmark --reruns 5 -rsfER -k "not ($donttest)"
+donttest+=" or test_functional or test_progress_reporting"
+%pytest -vv -n auto --ignore tests/benchmark --reruns 5 -rsfER -k "not ($donttest)"
 %endif
 
 %pre
