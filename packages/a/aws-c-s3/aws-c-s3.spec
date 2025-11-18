@@ -19,7 +19,7 @@
 %define library_version 1.0.0
 %define library_soversion 0unstable
 Name:           aws-c-s3
-Version:        0.9.2
+Version:        0.10.1
 Release:        0
 Summary:        AWS Cross-Platform, C99 wrapper for cryptography primitives
 License:        Apache-2.0

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 11 08:30:02 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.10.1
+  * Fix compiler warnings by @TingDaoK in (#593)
+- from version 0.10.0
+  * Auto - Update S3 Ruleset & Partition by @TingDaoK in (#590)
+  * Dynamic default part size by @TingDaoK in (#575)
+
+-------------------------------------------------------------------
 Mon Oct 13 11:14:07 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.9.2
