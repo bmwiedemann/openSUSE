@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 17 13:22:36 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Skip some tests that are failing with pytest 3.14
+
+-------------------------------------------------------------------
 Wed Nov 13 11:28:01 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 0.21.2

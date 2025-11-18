@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>1223940</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>a5c0861fbaff526f9dcf93bc8349b857</srcmd5>
+    <version>0.21.2</version>
+    <time>1763476458</time>
+    <user>anag_factory</user>
+    <comment>- Skip some tests that are failing with pytest 3.14</comment>
+    <requestid>1318234</requestid>
+  </revision>
 </revisionlist>
