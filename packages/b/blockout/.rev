@@ -60,4 +60,12 @@
     <comment>- Trim outdated specfile constructs.</comment>
     <requestid>832494</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>878088a270ed97e13ac72e2465b94c43</srcmd5>
+    <version>2.5</version>
+    <time>1763476675</time>
+    <user>anag_factory</user>
+    <comment>- Add glu.diff for a successful build with sdl_compat</comment>
+    <requestid>1318318</requestid>
+  </revision>
 </revisionlist>

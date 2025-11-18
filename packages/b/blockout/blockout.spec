@@ -1,7 +1,7 @@
 #
 # spec file for package blockout
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,10 +29,12 @@ Source2:        https://downloads.sf.net/blockout/bl25-linux-x86.tar.gz
 Patch1:         automake.diff
 Patch2:         compilefixes.diff
 Patch3:         bl2home.diff
+Patch4:         glu.diff
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig(SDL_mixer)
+BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(sdl)
 
