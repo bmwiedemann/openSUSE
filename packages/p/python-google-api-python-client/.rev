@@ -1586,4 +1586,12 @@ eplacement for google-api-python-client, follow our naming convention</comment>
   * **firestore:** Update the api (forwarded request 1315281 from glaubitz)</comment>
     <requestid>1315296</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>5749927b15f49e2e89fa820eccd640ef</srcmd5>
+    <version>2.187.0</version>
+    <time>1763476450</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1318236</requestid>
+  </revision>
 </revisionlist>

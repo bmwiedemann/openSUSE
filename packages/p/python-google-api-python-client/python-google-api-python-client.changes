@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Mon Nov 10 08:59:30 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.187.0
+  * **admin:** Update the api
+  * **aiplatform:** Update the api
+  * **alloydb:** Update the api
+  * **analyticshub:** Update the api
+  * **androidpublisher:** Update the api
+  * **apigee:** Update the api
+  * **apihub:** Update the api
+  * **apphub:** Update the api
+  * **artifactregistry:** Update the api
+  * **authorizedbuyersmarketplace:** Update the api
+  * **backupdr:** Update the api
+  * **biglake:** Update the api
+  * **bigquerydatatransfer:** Update the api
+  * **bigquery:** Update the api
+  * **chat:** Update the api
+  * **cloudfunctions:** Update the api
+  * **cloudidentity:** Update the api
+  * **cloudkms:** Update the api
+  * **cloudscheduler:** Update the api
+  * **compute:** Update the api
+  * **contactcenterinsights:** Update the api
+  * **container:** Update the api
+  * **dataplex:** Update the api
+  * **dataproc:** Update the api
+  * **datastream:** Update the api
+  * **developerconnect:** Update the api
+  * **dfareporting:** Update the api
+  * **dialogflow:** Update the api
+  * **discoveryengine:** Update the api
+  * **displayvideo:** Update the api
+  * **dlp:** Update the api
+  * **documentai:** Update the api
+  * **drive:** Update the api
+  * **file:** Update the api
+  * **firebaseappdistribution:** Update the api
+  * **firebaseapphosting:** Update the api
+  * **firebasedataconnect:** Update the api
+  * **gkeonprem:** Update the api
+  * **healthcare:** Update the api
+  * **iamcredentials:** Update the api
+  * **ids:** Update the api
+  * **logging:** Update the api
+  * **looker:** Update the api
+  * **managedkafka:** Update the api
+  * **marketingplatformadmin:** Update the api
+  * **merchantapi:** Update the api
+  * **migrationcenter:** Update the api
+  * **networkservices:** Update the api
+  * **notebooks:** Update the api
+  * **paymentsresellersubscription:** Update the api
+  * **places:** Update the api
+  * **pubsub:** Update the api
+  * **redis:** Update the api
+  * **retail:** Update the api
+  * **securitycenter:** Update the api
+  * **securityposture:** Update the api
+  * **serviceconsumermanagement:** Update the api
+  * **serviceusage:** Update the api
+  * **solar:** Update the api
+  * **sqladmin:** Update the api
+  * **storagetransfer:** Update the api
+  * **trafficdirector:** Update the api
+  * **vmmigration:** Update the api
+  * **vmwareengine:** Update the api
+  * **vpcaccess:** Update the api
+  * **workflows:** Update the api
+  * **dataflow:** Update the api
+  * **parametermanager:** Update the api
+
+-------------------------------------------------------------------
 Mon Nov  3 11:34:22 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.186.0
