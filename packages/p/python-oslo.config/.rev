@@ -916,4 +916,21 @@ all changed Requires/Buildrequires seem to be available
 - fix requires of test package</comment>
     <requestid>1316855</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>e27b4de197c0691613f2dab2e4b3836f</srcmd5>
+    <version>10.1.0</version>
+    <time>1763476727</time>
+    <user>anag_factory</user>
+    <comment>- update to 10.1.0:
+  * reno: Update master for unmaintained/2024.1
+  * Bump pyupgrade target to 3.10+
+  * Migrate bandit options to pyproject.toml
+  * Fix type mismatch between option and its default
+  * pre-commit: Bump dependencies
+  * Migrate setup configuration to pyproject.toml
+  * Drop Python 3.9 support
+  * Fix wrong comment in find\_config\_dirs
+  * Update master for stable/2025.2</comment>
+    <requestid>1318325</requestid>
+  </revision>
 </revisionlist>

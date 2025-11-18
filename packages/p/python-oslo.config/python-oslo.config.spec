@@ -17,7 +17,7 @@
 
 
 Name:           python-oslo.config
-Version:        10.0.0
+Version:        10.1.0
 Release:        0
 Summary:        OpenStack common configuration library
 License:        Apache-2.0

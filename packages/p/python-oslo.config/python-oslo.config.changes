@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov 17 21:10:32 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.1.0:
+  * reno: Update master for unmaintained/2024.1
+  * Bump pyupgrade target to 3.10+
+  * Migrate bandit options to pyproject.toml
+  * Fix type mismatch between option and its default
+  * pre-commit: Bump dependencies
+  * Migrate setup configuration to pyproject.toml
+  * Drop Python 3.9 support
+  * Fix wrong comment in find\_config\_dirs
+  * Update master for stable/2025.2
+
+-------------------------------------------------------------------
 Sun Nov  9 10:03:25 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 10.0.0:
