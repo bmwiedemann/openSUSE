@@ -119,6 +119,7 @@ EOF
 
 %install
 %meson_install
+install -m 0644 host.def %{buildroot}%{_configdir}/host.def
 
 %files
 %defattr(-,root,root)

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 15 22:27:17 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- fix generated host.def no longer included in configuration
+
+-------------------------------------------------------------------
 Thu Oct  2 13:52:53 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - add xorg-cf-files-1.0.9-configdir.patch

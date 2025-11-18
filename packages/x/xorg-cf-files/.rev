@@ -170,4 +170,12 @@
     <comment></comment>
     <requestid>1309825</requestid>
   </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>30bf0d744b7d216f9e66c93657f92fd3</srcmd5>
+    <version>1.0.9</version>
+    <time>1763476094</time>
+    <user>anag_factory</user>
+    <comment>- fix generated host.def no longer included in configuration</comment>
+    <requestid>1318038</requestid>
+  </revision>
 </revisionlist>
