@@ -1,7 +1,7 @@
-Index: mesa-25.2.0/src/nouveau/headers/class_parser.py
+Index: mesa-25.3.0/src/nouveau/headers/class_parser.py
 ===================================================================
---- mesa-25.2.0.orig/src/nouveau/headers/class_parser.py
-+++ mesa-25.2.0/src/nouveau/headers/class_parser.py
+--- mesa-25.3.0.orig/src/nouveau/headers/class_parser.py
++++ mesa-25.3.0/src/nouveau/headers/class_parser.py
 @@ -14,6 +14,16 @@ from mako.template import Template
  import util
  
@@ -19,16 +19,16 @@ Index: mesa-25.2.0/src/nouveau/headers/class_parser.py
  METHOD_ARRAY_SIZES = {
      'BIND_GROUP_CONSTANT_BUFFER'                            : 16,
      'CALL_MME_DATA'                                         : 256,
-@@ -478,7 +488,7 @@ def parse_header(nvcl, f):
+@@ -560,7 +570,7 @@ def parse_header(nvcl, f):
                      state = 1
                  elif teststr in list[1]:
                      if not SKIP_FIELD[0] in list[1]:
--                        curfield.defs[list[1].removeprefix(teststr)] = list[2]
-+                        curfield.defs[removeprefix(list[1],teststr)] = list[2]
+-                        curfield.add_def(list[1].removeprefix(teststr), list[2])
++                        curfield.add_def(removeprefix(list[1],teststr), list[2])
                  else:
                      state = 1
  
-@@ -488,7 +498,7 @@ def parse_header(nvcl, f):
+@@ -570,7 +580,7 @@ def parse_header(nvcl, f):
                      if ("0x" in list[2]):
                          state = 1
                      else:
@@ -37,7 +37,7 @@ Index: mesa-25.2.0/src/nouveau/headers/class_parser.py
                          bitfield = list[2].split(":")
                          f = Field(field, bitfield[1], bitfield[0])
                          curmthd.fields.append(f)
-@@ -508,13 +518,13 @@ def parse_header(nvcl, f):
+@@ -590,13 +600,13 @@ def parse_header(nvcl, f):
                  is_array = 0
                  if (':' in list[2]):
                      continue
@@ -54,7 +54,7 @@ Index: mesa-25.2.0/src/nouveau/headers/class_parser.py
  
                  curmthd = Method(name, list[2], is_array)
                  methods[name] = curmthd
-@@ -523,8 +533,8 @@ def parse_header(nvcl, f):
+@@ -605,8 +615,8 @@ def parse_header(nvcl, f):
      return (version, methods)
  
  def nvcl_for_filename(name):
@@ -65,7 +65,7 @@ Index: mesa-25.2.0/src/nouveau/headers/class_parser.py
      return "NV" + name.upper()
  
  def main():
-@@ -553,7 +563,7 @@ def main():
+@@ -636,7 +646,7 @@ def main():
      if args.prev_in_h is not None:
          prev_clheader = os.path.basename(args.prev_in_h)
          prev_nvcl = nvcl_for_filename(prev_clheader)
@@ -74,9 +74,11 @@ Index: mesa-25.2.0/src/nouveau/headers/class_parser.py
          with open(args.prev_in_h, 'r', encoding='utf-8') as f:
              (prev_version, prev_methods) = parse_header(prev_nvcl, f)
  
---- mesa-25.2.0/src/compiler/nir/nir_algebraic.py.orig	2025-08-08 14:53:23.002148943 +0200
-+++ mesa-25.2.0/src/compiler/nir/nir_algebraic.py	2025-08-08 14:57:34.748734069 +0200
-@@ -31,6 +31,11 @@
+Index: mesa-25.3.0/src/compiler/nir/nir_algebraic.py
+===================================================================
+--- mesa-25.3.0.orig/src/compiler/nir/nir_algebraic.py
++++ mesa-25.3.0/src/compiler/nir/nir_algebraic.py
+@@ -31,6 +31,11 @@ import traceback
  
  from nir_opcodes import opcodes, type_sizes
  
@@ -88,7 +90,7 @@ Index: mesa-25.2.0/src/nouveau/headers/class_parser.py
  # This should be the same as NIR_SEARCH_MAX_COMM_OPS in nir_search.c
  nir_search_max_comm_ops = 8
  
-@@ -395,7 +400,7 @@
+@@ -396,7 +401,7 @@ class Expression(Value):
        self.nnan = cond.pop('nnan', False)
        self.ninf = cond.pop('ninf', False)
        self.contract = cond.pop('contract', False)
@@ -97,3 +99,233 @@ Index: mesa-25.2.0/src/nouveau/headers/class_parser.py
  
        assert len(cond) <= 1
        self.cond = cond.popitem()[0] if cond else None
+Index: mesa-25.3.0/src/nouveau/headers/nv_push_class_dump_h.py
+===================================================================
+--- mesa-25.3.0.orig/src/nouveau/headers/nv_push_class_dump_h.py
++++ mesa-25.3.0/src/nouveau/headers/nv_push_class_dump_h.py
+@@ -5,6 +5,11 @@ from collections import defaultdict
+ from mako.template import Template
+ import util
+ 
++def removeprefix(s, prefix):
++    if s.startswith(prefix):
++        return s[len(prefix):]
++    return s
++
+ TEMPLATE_H = Template(
+     """\
+ #pragma once
+@@ -129,7 +134,7 @@ def main():
+     classes_per_eng = defaultdict(list)
+ 
+     for cl in classes:
+-        class_id = int(cl.removeprefix("cl"), 16)
++        class_id = int(removeprefix(cl,"cl"), 16)
+         engine_id = class_id_to_engine_id(class_id)
+ 
+         classes_per_eng[engine_id].append(class_id)
+Index: mesa-25.3.0/src/vulkan/util/vk_physical_device_features_gen.py
+===================================================================
+--- mesa-25.3.0.orig/src/vulkan/util/vk_physical_device_features_gen.py
++++ mesa-25.3.0/src/vulkan/util/vk_physical_device_features_gen.py
+@@ -34,6 +34,11 @@ import mako
+ from mako.template import Template
+ from vk_extensions import Requirements, get_all_required, filter_api
+ 
++def removeprefix(s, prefix):
++    if s.startswith(prefix):
++        return s[len(prefix):]
++    return s
++
+ RENAMED_FEATURES = {
+     # See https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/17272#note_1446477 for details
+     ('BufferDeviceAddressFeaturesEXT', 'bufferDeviceAddressCaptureReplay'): 'bufferDeviceAddressCaptureReplayEXT',
+@@ -149,7 +154,7 @@ for (feature_structs, features) in KNOWN
+             RENAMED_FEATURES[rename] = flag
+ 
+ def get_renamed_feature(c_type, feature):
+-    return RENAMED_FEATURES.get((c_type.removeprefix('VkPhysicalDevice'), feature), feature)
++    return RENAMED_FEATURES.get((removeprefix(c_type, 'VkPhysicalDevice'), feature), feature)
+ 
+ @dataclass
+ class FeatureStruct:
+@@ -512,12 +517,12 @@ def get_feature_structs_from_xml(xml_fil
+             if renamed_flag not in features:
+                 features[renamed_flag] = f.c_type
+             else:
+-                a = features[renamed_flag].removeprefix('VkPhysicalDevice')
+-                b = f.c_type.removeprefix('VkPhysicalDevice')
++                a = removeprefix(features[renamed_flag], 'VkPhysicalDevice')
++                b = removeprefix(f.c_type, 'VkPhysicalDevice')
+                 if (a, flag) not in RENAMED_FEATURES or (b, flag) not in RENAMED_FEATURES:
+                     diagnostics.append(f'{a} and {b} both define {flag}')
+ 
+-            unused_renames.pop((f.c_type.removeprefix('VkPhysicalDevice'), flag), None)
++            unused_renames.pop((removeprefix(f.c_type, 'VkPhysicalDevice'), flag), None)
+ 
+     for rename in unused_renames:
+         diagnostics.append(f'unused rename {rename}')
+Index: mesa-25.3.0/src/vulkan/util/vk_physical_device_spirv_caps_gen.py
+===================================================================
+--- mesa-25.3.0.orig/src/vulkan/util/vk_physical_device_spirv_caps_gen.py
++++ mesa-25.3.0/src/vulkan/util/vk_physical_device_spirv_caps_gen.py
+@@ -14,6 +14,11 @@ import xml.etree.ElementTree as et
+ import mako
+ from mako.template import Template
+ 
++def removeprefix(s, prefix):
++    if s.startswith(prefix):
++        return s[len(prefix):]
++    return s
++
+ TEMPLATE_C = Template(COPYRIGHT + """
+ /* This file generated from ${filename}, don't edit directly. */
+ 
+@@ -71,13 +76,13 @@ def process_enable(enab):
+         else:
+             return f"(p->{attrib['member']} & {attrib['value']})"
+     elif 'extension' in attrib:
+-        return f"e->{attrib['extension'].removeprefix('VK_')}"
++        return f"e->{removeprefix(attrib['extension'], 'VK_')}"
+     elif 'feature' in attrib:
+         feat = get_renamed_feature(attrib['struct'], attrib['feature'])
+         return f"f->{feat}"
+     else:
+         version = attrib['version']
+-        return f"(api_version >= VK_API_{version.removeprefix('VK_')})"
++        return f"(api_version >= VK_API_{removeprefix(version,'VK_')})"
+ 
+ def get_capabilities(doc, beta):
+     caps = {}
+Index: mesa-25.3.0/src/amd/vulkan/layers/radv_annotate_layer_gen.py
+===================================================================
+--- mesa-25.3.0.orig/src/amd/vulkan/layers/radv_annotate_layer_gen.py
++++ mesa-25.3.0/src/amd/vulkan/layers/radv_annotate_layer_gen.py
+@@ -14,6 +14,11 @@ import xml.etree.ElementTree as et
+ import mako
+ from mako.template import Template
+ 
++def removesuffix(s, suffix):
++    if s.endswith(suffix):
++        return s[:-len(suffix)]
++    return s
++
+ sys.path.append(os.path.join(sys.path[0], '../../../vulkan/util/'))
+ 
+ from vk_entrypoints import get_entrypoints_from_xml
+@@ -68,7 +73,7 @@ def main():
+         if not e.name.startswith('Cmd') or e.alias or e.return_type != "void":
+             continue
+ 
+-        stripped_name = e.name.removesuffix('EXT').removesuffix('KHR').removesuffix('2')
++        stripped_name = removesuffix(removesuffix(removesuffix(e.name, 'EXT'), 'KHR'), '2')
+         if stripped_name in commands_names or stripped_name in EXCLUDED_COMMANDS:
+             continue
+ 
+Index: mesa-25.3.0/src/nouveau/compiler/latencies/lat_rs_gen.py
+===================================================================
+--- mesa-25.3.0.orig/src/nouveau/compiler/latencies/lat_rs_gen.py
++++ mesa-25.3.0/src/nouveau/compiler/latencies/lat_rs_gen.py
+@@ -13,6 +13,11 @@ import sys
+ 
+ from mako import template
+ 
++def removesuffix(s, suffix):
++    if s.endswith(suffix):
++        return s[:-len(suffix)]
++    return s
++
+ TEMPLATE_RS = template.Template(text="""\
+ // Copyright 2024 Red Hat Inc.
+ // SPDX-License-Identifier: MIT
+@@ -105,7 +110,7 @@ class Fld(object):
+             self.pred_val = part[1]
+         elif " & sb" in line:
+             self.scoreboard = True
+-            self.value = line.removesuffix(" & sb");
++            self.value = removesuffix(line, " & sb");
+         else:
+             self.scoreboard = False
+             self.value = line.strip()
+@@ -185,7 +190,7 @@ def main():
+ 
+     file_cats = {}
+     for csv_file in args.csv_files[0]:
+-        split = os.path.basename(csv_file).removesuffix('.csv').split('_')
++        split = removesuffix(os.path.basename(csv_file), '.csv').split('_')
+         assert len(split) == 2
+         reg_file = split[0]
+         latcat = split[1]
+Index: mesa-25.3.0/src/nouveau/headers/lib_rs_gen.py
+===================================================================
+--- mesa-25.3.0.orig/src/nouveau/headers/lib_rs_gen.py
++++ mesa-25.3.0/src/nouveau/headers/lib_rs_gen.py
+@@ -16,6 +16,10 @@ from mako.template import Template
+ 
+ import util
+ 
++def removesuffix(s, suffix):
++    if s.endswith(suffix):
++        return s[:-len(suffix)]
++    return s
+ 
+ TEMPLATE_RS = Template("""\
+ // Copyright © 2024 Collabora Ltd. and Red Hat Inc.
+@@ -103,7 +107,7 @@ def main():
+     for f in args.class_files[0]:
+         f = os.path.basename(f)
+         assert f.endswith('.rs')
+-        f = f.removesuffix('.rs')
++        f = removesuffix(f, '.rs')
+ 
+         mod_path = f.split('_')
+         assert mod_path[0] == 'nvh'
+Index: mesa-25.3.0/src/nouveau/headers/struct_parser.py
+===================================================================
+--- mesa-25.3.0.orig/src/nouveau/headers/struct_parser.py
++++ mesa-25.3.0/src/nouveau/headers/struct_parser.py
+@@ -13,6 +13,10 @@ from mako.template import Template
+ 
+ import util
+ 
++def removesuffix(s, suffix):
++    if s.endswith(suffix):
++        return s[:-len(suffix)]
++    return s
+ 
+ TEMPLATE_RS = Template("""\
+ // Copyright © 2024 Collabora Ltd. and Red Hat Inc.
+@@ -144,7 +148,7 @@ def parse_header(nvcl, file):
+             hi = int(mw_arr.group('hi'))
+             stride = int(mw_arr.group('stride'))
+             assert name.endswith('(i)')
+-            struct.add_field(name.removesuffix('(i)'), lo, hi, stride)
++            struct.add_field(removesuffix(name, '(i)'), lo, hi, stride)
+         else:
+             for f in struct.fields:
+                 if name.startswith(f.name + '_'):
+Index: mesa-25.3.0/src/vulkan/util/vk_physical_device_properties_gen.py
+===================================================================
+--- mesa-25.3.0.orig/src/vulkan/util/vk_physical_device_properties_gen.py
++++ mesa-25.3.0/src/vulkan/util/vk_physical_device_properties_gen.py
+@@ -36,6 +36,11 @@ from mako.template import Template
+ 
+ from vk_extensions import get_all_required, filter_api
+ 
++def removeprefix(s, prefix):
++    if s.startswith(prefix):
++        return s[len(prefix):]
++    return s
++
+ # Some extensions have been promoted to core, their properties are renamed
+ # in the following hashtable.
+ # The hashtable takes the form:
+@@ -297,7 +302,7 @@ def get_property_structs(doc, api, beta)
+             if "STRUCTURE_TYPE" in str(elem.attrib):
+                 s_type = elem.attrib.get("values")
+ 
+-        name = full_name.removeprefix("VkPhysicalDevice")
++        name = removeprefix(full_name, "VkPhysicalDevice")
+ 
+         # collect a list of properties
+         properties = []

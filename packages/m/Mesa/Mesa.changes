@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sat Nov 15 20:02:05 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- adjusted baselibs.conf
+
+-------------------------------------------------------------------
+Sat Nov 15 10:36:27 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to release 25.3.0
+  -->  https://docs.mesa3d.org/relnotes/25.3.0
+- adjusted massively python36-buildfix1.patch; upstream now
+  requires python 3.9
+- supersedes n_stop-iris-flicker.patch
+- refreshed patches
+  * U_fix-mpeg1_2-decode-mesa-20.2.patch
+  * n_add-Mesa-headers-again.patch
+  * n_drirc-disable-rgb10-for-chromium-on-amd.patch
+  * tlsdesc_test.patch
+  * u_0002-intel-genxml-Add-a-untyped-OrderedDict-fallback-for-.patch
+  * u_meson-lower-python-version-requirement.patch
+- u_d3d12.patch
+  * fixes d3d12 gallium (video-) driver
+- "-Dspirv-tools=enabled" now needed for building the drivers
+- VDPAU drivers no longer available, so drop all the packages
+  * libvdpau_nouveau
+  * libvdpau_r600
+  * libvdpau_radeonsi
+  * libvdpau_virtio_gpu
+  * libvdpau_d3d12
+
+-------------------------------------------------------------------
+Fri Nov 14 15:55:22 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- enable panfrost vulkan driver also on SLE16
+
+-------------------------------------------------------------------
 Wed Nov 12 21:39:59 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to release 25.2.7

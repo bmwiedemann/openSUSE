@@ -48,7 +48,7 @@
 %define glamor 1
 %define _name_archive mesa
 %ifnarch s390x
-%define _version 25.2.7
+%define _version 25.3.0
 %else
 %define _version 24.1.7
 %endif
@@ -61,20 +61,6 @@
   %define gallium_loader 1
 %else
   %define gallium_loader 0
-%endif
-
-%define vdpau_nouveau 0
-%define vdpau_radeon 0
-%define vdpau_virtio_gpu 0
-%define vdpau_d3d12 0
-
-%ifarch %{ix86} x86_64 aarch64 %{arm} loongarch64 ppc64 ppc64le riscv64
-  %define vdpau_nouveau 1
-  %define vdpau_radeon 1
-  %define vdpau_virtio_gpu 1
-%ifarch %{ix86} x86_64
-  %define vdpau_d3d12 1
-%endif
 %endif
 
 %if 0%{gallium_loader}
@@ -92,10 +78,8 @@
     %if 0%{?suse_version} > 1600
       %define vulkan_drivers swrast,amd,broadcom,freedreno,intel,intel_hasvk,nouveau,panfrost
     %else
-      %if 0%{?suse_version} == 1600 && 0%{?is_opensuse}
+      %if 0%{?suse_version} == 1600
         %define vulkan_drivers swrast,amd,broadcom,freedreno,intel,intel_hasvk,panfrost
-      %else
-        %define vulkan_drivers swrast,amd,broadcom,freedreno,intel,intel_hasvk
       %endif
     %endif
   %endif
@@ -125,18 +109,6 @@
   # OpenCL requires clang (LLVM)
   %define with_opencl 0
 
-  # Not built because radeon driver is not built.
-  %define vdpau_radeon 0
-
-  # Not built because nouveau driver is not built.
-  %define vdpau_nouveau 0
-
-  # Not built because virtio_gpu driver is not built.
-  %define vdpau_virtio_gpu 0
-
-  # Not built because d3d12 driver is not built.
-  %define vdpau_d3d12 0
-
   # Vulkan includes radv driver which requires llvm
   %define with_vulkan 0
 %endif
@@ -157,7 +129,7 @@
 
 Name:           Mesa%{psuffix}
 %ifnarch s390x
-Version:        25.2.7
+Version:        25.3.0
 %else
 Version:        24.1.7
 %endif
@@ -189,8 +161,8 @@ Source9:        manual-pages.tar.bz2
 Source10:       Mesa-rpmlintrc
 Source11:       Mesa.keyring
 Source12:       README-suse-maintenance.md
-Source20:       https://archive.mesa3d.org/%{_name_archive}-25.2.7.tar.xz
-Source21:       https://archive.mesa3d.org/%{_name_archive}-25.2.7.tar.xz.sig
+Source20:       https://archive.mesa3d.org/%{_name_archive}-25.3.0.tar.xz
+Source21:       https://archive.mesa3d.org/%{_name_archive}-25.3.0.tar.xz.sig
 # download with 'osc service runall download_files'; github tarballs have different checksums!
 Source22:       http://crates.io/api/v1/crates/rustc-hash/%{_rustc_hash_crate_ver}/download#/rustc-hash-%{_rustc_hash_crate_ver}.tar.gz
 Patch2:         n_add-Mesa-headers-again.patch
@@ -205,7 +177,6 @@ Patch17:        tlsdesc_test.patch
 # never to be upstreamed
 Patch54:        n_drirc-disable-rgb10-for-chromium-on-amd.patch
 Patch100:       U_fix-mpeg1_2-decode-mesa-20.2.patch
-Patch400:       n_stop-iris-flicker.patch
 %ifnarch s390x
 Patch500:       u_dep_xcb.patch
 %else
@@ -213,6 +184,7 @@ Patch500:       u_dep_xcb-s390x.patch
 %endif
 %ifnarch s390x
 Patch700:       u_meson-lower-python-version-requirement.patch
+Patch800:       u_d3d12.patch
 %endif
 %ifarch s390x
 Patch1222040:   u_mesa-CVE-2023-45913-s390x.patch
@@ -257,7 +229,6 @@ BuildRequires:  pkgconfig(valgrind)
 BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(presentproto)
 %if "%{flavor}" == "drivers"
-BuildRequires:  pkgconfig(vdpau) >= 1.5
 %ifarch %{ix86} x86_64
 BuildRequires:  pkgconfig(vulkan)
 %endif
@@ -296,6 +267,11 @@ Obsoletes:      libxatracker2 < %{version}
 Obsoletes:      Mesa-gallium < %{version}
 Obsoletes:      Mesa-libd3d < %{version}
 Obsoletes:      Mesa-libOpenCL < %{version}
+Obsoletes:      libvdpau_nouveau < %{version}
+Obsoletes:      libvdpau_r600 < %{version}
+Obsoletes:      libvdpau_radeonsi < %{version}
+Obsoletes:      libvdpau_virtio_gpu < %{version}
+Obsoletes:      libvdpau_d3d12 < %{version}
 %ifarch %{arm} aarch64
 %if 0%{?suse_version} >= 1550
 BuildRequires:  python3-pycparser >= 2.20
@@ -571,9 +547,6 @@ Requires:       libvulkan1
 Requires:       libvulkan_lvp
 %endif
 Supplements:    Mesa
-# merged into libgallium in 24.2.3
-Provides:       libvdpau_gallium = %{version}-%{release}
-Obsoletes:      libvdpau_gallium < %{version}-%{release}
 # merged into libgallium in 25.0.0
 %ifnarch s390x
 Obsoletes:      Mesa-libglapi0 < 25.0.0
@@ -638,45 +611,6 @@ openwfd.
 
 This package provides the development environment for compiling
 programs against the GBM library.
-
-%package -n libvdpau_nouveau
-Summary:        VDPAU state tracker for Nouveau
-Group:          System/Libraries
-Supplements:    modalias(pci:v000010DEd*sv*sd*bc03sc*i*)
-Supplements:    modalias(pci:v000012D2d*sv*sd*bc03sc*i*)
-
-%description -n libvdpau_nouveau
-This package contains the VDPAU state tracker for Nouveau.
-
-%package -n libvdpau_r600
-Summary:        VDPAU state tracker for R600
-Group:          System/Libraries
-Supplements:    modalias(pci:v00001002d*sv*sd*bc03sc*i*)
-
-%description -n libvdpau_r600
-This package contains the VDPAU state tracker for R600.
-
-%package -n libvdpau_radeonsi
-Summary:        VDPAU state tracker for radeonsi
-Group:          System/Libraries
-Supplements:    modalias(pci:v00001002d*sv*sd*bc03sc*i*)
-
-%description -n libvdpau_radeonsi
-This package contains the VDPAU state tracker for radeonsi.
-
-%package -n libvdpau_virtio_gpu
-Summary:        VDPAU state tracker for VirtIO GPU
-Group:          System/Libraries
-
-%description -n libvdpau_virtio_gpu
-This package contains the VDPAU state tracker for VirtIO GPU.
-
-%package -n libvdpau_d3d12
-Summary:        VDPAU state tracker for d3d12
-Group:          System/Libraries
-
-%description -n libvdpau_d3d12
-This package contains the VDPAU state tracker for d3d12
 
 %package -n Mesa-libRusticlOpenCL
 Summary:        Mesa OpenCL implementation (Rusticl)
@@ -812,10 +746,10 @@ cp %{SOURCE22} subprojects/packagecache/
 %patch -P 54 -p1
 %endif
 %patch -P 100 -p1
-%patch -P 400 -p1
 %patch -P 500 -p1
 %ifnarch s390x
 %patch -P 700 -p1
+%patch -P 800 -p1
 %endif
 %ifarch s390x
 %patch -P 1222040 -p1
@@ -853,6 +787,9 @@ egl_platforms=x11,wayland
             -Dxmlconfig=enabled \
             -Dexpat=enabled \
             -Dshader-cache=enabled \
+%ifnarch s390x
+            -Dspirv-tools=enabled \
+%endif
 %else
             -Dglx=auto \
             -Dllvm=disabled \
@@ -889,7 +826,6 @@ egl_platforms=x11,wayland
             -Dvideo-codecs=all \
 %endif
 %if %{gallium_loader}
-            -Dgallium-vdpau=enabled \
             -Dgallium-va=enabled \
 %endif
 %if 0%{with_vulkan}
@@ -901,9 +837,6 @@ egl_platforms=x11,wayland
 %endif
   %ifarch %{ix86} x86_64
             -Dgallium-drivers=r300,r600,radeonsi,nouveau,softpipe,llvmpipe,svga,virgl,iris,crocus,i915,d3d12,zink \
-          %if %{vdpau_d3d12}
-            -Dgallium-d3d12-video=enabled \
-          %endif
             -Dgallium-d3d12-graphics=enabled \
           %ifarch x86_64
             -Dintel-rt=enabled \
@@ -1104,47 +1037,6 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %endif
 %{_libdir}/libgbm.so
 %{_libdir}/pkgconfig/gbm.pc
-%endif
-
-%if "%{flavor}" == "drivers"
-
-%if %{vdpau_nouveau}
-%files -n libvdpau_nouveau
-%{_libdir}/vdpau/libvdpau_nouveau.so
-%{_libdir}/vdpau/libvdpau_nouveau.so.1
-%{_libdir}/vdpau/libvdpau_nouveau.so.1.0
-%{_libdir}/vdpau/libvdpau_nouveau.so.1.0.0
-%endif
-
-%if %{vdpau_radeon}
-%files -n libvdpau_r600
-%{_libdir}/vdpau/libvdpau_r600.so
-%{_libdir}/vdpau/libvdpau_r600.so.1
-%{_libdir}/vdpau/libvdpau_r600.so.1.0
-%{_libdir}/vdpau/libvdpau_r600.so.1.0.0
-
-%files -n libvdpau_radeonsi
-%{_libdir}/vdpau/libvdpau_radeonsi.so
-%{_libdir}/vdpau/libvdpau_radeonsi.so.1
-%{_libdir}/vdpau/libvdpau_radeonsi.so.1.0
-%{_libdir}/vdpau/libvdpau_radeonsi.so.1.0.0
-%endif
-
-%if %{vdpau_virtio_gpu}
-%files -n libvdpau_virtio_gpu
-%{_libdir}/vdpau/libvdpau_virtio_gpu.so
-%{_libdir}/vdpau/libvdpau_virtio_gpu.so.1
-%{_libdir}/vdpau/libvdpau_virtio_gpu.so.1.0
-%{_libdir}/vdpau/libvdpau_virtio_gpu.so.1.0.0
-%endif
-
-%if %{vdpau_d3d12}
-%files -n libvdpau_d3d12
-%{_libdir}/vdpau/libvdpau_d3d12.so
-%{_libdir}/vdpau/libvdpau_d3d12.so.1
-%{_libdir}/vdpau/libvdpau_d3d12.so.1.0
-%{_libdir}/vdpau/libvdpau_d3d12.so.1.0.0
-%endif
 %endif
 
 %ifarch s390x

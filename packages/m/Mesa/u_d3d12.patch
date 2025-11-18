@@ -1,0 +1,30 @@
+Index: mesa-25.3.0/src/gallium/drivers/d3d12/d3d12_context_common.cpp
+===================================================================
+--- mesa-25.3.0.orig/src/gallium/drivers/d3d12/d3d12_context_common.cpp
++++ mesa-25.3.0/src/gallium/drivers/d3d12/d3d12_context_common.cpp
+@@ -61,6 +61,7 @@
+ #include <dxguids/dxguids.h>
+ #include <string.h>
+ #include "d3d12_interop_public.h"
++#include <wrl/client.h>
+ 
+ static void
+ d3d12_context_destroy(struct pipe_context *pctx)
+@@ -365,7 +366,7 @@ d3d12_context_set_queue_priority(struct
+    mtx_lock(&ctx12->priority_manager_lock);
+    {
+       // Set the queue priority
+-      ComPtr<ID3D12CommandQueue1> prio_iface;
++      Microsoft::WRL::ComPtr<ID3D12CommandQueue1> prio_iface;
+       if(FAILED(d3d12_queue->QueryInterface(IID_PPV_ARGS(&prio_iface))))
+       {
+          mtx_unlock(&ctx12->priority_manager_lock);
+@@ -401,7 +402,7 @@ d3d12_context_get_queue_priority(struct
+ 
+    mtx_lock(&ctx12->priority_manager_lock);
+    {
+-      ComPtr<ID3D12CommandQueue1> prio_iface;
++      Microsoft::WRL::ComPtr<ID3D12CommandQueue1> prio_iface;
+       if (FAILED(d3d12_queue->QueryInterface(IID_PPV_ARGS(&prio_iface))))
+       {
+          mtx_unlock(&ctx12->priority_manager_lock);

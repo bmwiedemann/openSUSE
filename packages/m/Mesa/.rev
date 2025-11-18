@@ -6522,4 +6522,36 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   --&gt;  https://docs.mesa3d.org/relnotes/25.2.7</comment>
     <requestid>1317457</requestid>
   </revision>
+  <revision rev="559" vrev="1">
+    <srcmd5>db75a04cd42c8dec1c6090cf07455598</srcmd5>
+    <version>25.3.0</version>
+    <time>1763476087</time>
+    <user>anag_factory</user>
+    <comment>- adjusted baselibs.conf
+
+- Update to release 25.3.0
+  --&gt;  https://docs.mesa3d.org/relnotes/25.3.0
+- adjusted massively python36-buildfix1.patch; upstream now
+  requires python 3.9
+- supersedes n_stop-iris-flicker.patch
+- refreshed patches
+  * U_fix-mpeg1_2-decode-mesa-20.2.patch
+  * n_add-Mesa-headers-again.patch
+  * n_drirc-disable-rgb10-for-chromium-on-amd.patch
+  * tlsdesc_test.patch
+  * u_0002-intel-genxml-Add-a-untyped-OrderedDict-fallback-for-.patch
+  * u_meson-lower-python-version-requirement.patch
+- u_d3d12.patch
+  * fixes d3d12 gallium (video-) driver
+- &quot;-Dspirv-tools=enabled&quot; now needed for building the drivers
+- VDPAU drivers no longer available, so drop all the packages
+  * libvdpau_nouveau
+  * libvdpau_r600
+  * libvdpau_radeonsi
+  * libvdpau_virtio_gpu
+  * libvdpau_d3d12
+
+- enable panfrost vulkan driver also on SLE16</comment>
+    <requestid>1318020</requestid>
+  </revision>
 </revisionlist>
