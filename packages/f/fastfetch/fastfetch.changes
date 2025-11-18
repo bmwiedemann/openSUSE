@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 17 15:26:23 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- Update to version 2.55.1:
+  * GPU: silence unused parameter warnings
+  * Display: fix an uninitialized FFDisplayOptions field
+  * Processing (Linux): blocks SIGCHLD and simplify poll error 
+    handling
+  * Packaging: update debian changelog [ci skip]
+
+-------------------------------------------------------------------
 Wed Nov 12 17:30:05 UTC 2025 - RN <R_Nik_C@proton.me>
 
 - Update to version 2.55.0:
