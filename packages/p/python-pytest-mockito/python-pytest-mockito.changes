@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 18 06:41:09 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 0.0.5:
+  - Compatibility with python 3.14
+  - Wrap exception for a clean error message
+
+-------------------------------------------------------------------
+Mon Nov 17 09:25:35 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Skip failing tests in python 3.14, gh#kaste/pytest-mockito#2
+
+-------------------------------------------------------------------
 Wed May  7 06:53:50 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

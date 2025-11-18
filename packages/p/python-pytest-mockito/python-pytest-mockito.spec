@@ -18,7 +18,7 @@
 
 
 Name:           python-pytest-mockito
-Version:        0.0.4
+Version:        0.0.5
 Release:        0
 Summary:        Convenience plugin on top of mockito
 License:        MIT
@@ -27,7 +27,7 @@ Source:         https://github.com/kaste/pytest-mockito/archive/refs/tags/%{vers
 BuildRequires:  %{python_module mockito}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -47,6 +47,9 @@ For example:
 
 %prep
 %autosetup -n pytest-mockito-%{version}
+# Replace the dynamic version that's calculated with hatch-vcs without
+# as git checkout
+sed -i 's/dynamic.*/version="%{version}"/' pyproject.toml
 
 %build
 %pyproject_wheel
