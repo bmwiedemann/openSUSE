@@ -86,4 +86,41 @@
     <comment></comment>
     <requestid>1275452</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>748622ab9b8e3be7051066fd468dc939</srcmd5>
+    <version>25.3.0</version>
+    <time>1763476412</time>
+    <user>anag_factory</user>
+    <comment>- Update to 25.3.0:
+  * Potentially breaking: Abstract sets are now structured into frozensets.
+  * Python 3.14 is now supported and part of the test matrix.
+  * Fix unstructuring NewTypes with the {class}BaseConverter.
+  * Make some Hypothesis tests more robust.
+  * {func}cattrs.strategies.include_subclasses now works with generic parent
+    classes and the tagged union strategy.
+  * Potentially breaking: Sequences are now structured into tuples.
+  * Add a use_alias parameter to cattrs.Converter.
+  * The union passthrough strategy now by default accepts ints for unions
+    that contain floats but not ints, when configured to be able to handle
+    both ints and floats. This more closely matches the current typing
+    behavior.
+  * Fix unstructuring of generic classes with stringified annotations.
+  * The default disambiguation hook factory is now only enabled for
+    converters with unstructure_strat=AS_DICT (the default).
+  * Switch to uv and just in lieu of PDM, tox and Make.
+  * Fixed AttributeError: no attribute '__parameters__' while structuring
+    attrs classes that inherit from parametrized generic aliases from
+    collections.abc.
+  * Potentially breaking: The converters raise StructureHandlerNotFoundError
+    more eagerly (on hook creation, instead of on hook use). This helps
+    surfacing problems with missing hooks sooner.
+  * typing.Self is now supported in attrs classes, dataclasses, TypedDicts
+    and the dict NamedTuple factories. See typing.Self for details.
+  * PEP 695 type aliases can now be used with
+    BaseConverter.register_structure_hook and
+    BaseConverter.register_unstructure_hook. Previously, they required the
+    use of BaseConverter.register_structure_hook_func.
+  * Some defaultdicts are now supported by default, and</comment>
+    <requestid>1318119</requestid>
+  </revision>
 </revisionlist>
