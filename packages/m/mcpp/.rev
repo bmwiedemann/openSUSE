@@ -135,4 +135,13 @@
   fixes</comment>
     <requestid>1217243</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>923fd03f190d051b9306c6a218575084</srcmd5>
+    <version>2.7.2.2</version>
+    <time>1763476629</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.7.2.2:
+  * includes mcpp-2.7.2.1.diff mcpp-c99.patch (merged upstream)</comment>
+    <requestid>1318288</requestid>
+  </revision>
 </revisionlist>

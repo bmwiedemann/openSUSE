@@ -1,7 +1,7 @@
 #
 # spec file for package mcpp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           mcpp
-Version:        2.7.2.1
+Version:        2.7.2.2
 Release:        0
 Summary:        Matsui's C Preprocessor
 License:        BSD-3-Clause
 Group:          Development/Languages/C and C++
 URL:            https://mcpp.sourceforge.net/
 Source0:        https://github.com/museoa/mcpp/archive/refs/tags/%{version}.tar.gz
-Patch0:         %{name}-2.7.2.1.diff
-Patch1:         mcpp-c99.patch
 
 %description
 mcpp is a small and portable C/C++ preprocessor implementing all of
