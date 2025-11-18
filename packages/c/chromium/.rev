@@ -5994,4 +5994,14 @@ Thu Jun  12 09:05:12 UTC 2025 - Bernhard Wiedemann &lt;bwiedemann@suse.com&gt;
   * CVE-2025-13042: Inappropriate implementation in V8</comment>
     <requestid>1317273</requestid>
   </revision>
+  <revision rev="489" vrev="1">
+    <srcmd5>ec7fd06abb8b407abba299045d4ce9a9</srcmd5>
+    <version>142.0.7444.175</version>
+    <time>1763476775</time>
+    <user>anag_factory</user>
+    <comment>- Chromium 142.0.7444.175 (boo#1253698):
+  * CVE-2025-13223: Type Confusion in V8
+  * CVE-2025-13224: Type Confusion in V8</comment>
+    <requestid>1318342</requestid>
+  </revision>
 </revisionlist>

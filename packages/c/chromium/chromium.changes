@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 17 23:40:26 CET 2025 - ro@suse.de
+
+- Chromium 142.0.7444.175 (boo#1253698):
+  * CVE-2025-13223: Type Confusion in V8
+  * CVE-2025-13224: Type Confusion in V8
+
+-------------------------------------------------------------------
 Tue Nov 11 22:52:09 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 142.0.7444.162 (boo#1253267):
