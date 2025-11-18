@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 13 10:21:31 UTC 2025 - Richard Lyu <richard.lyu@suse.com>
+
+- Update to version 1.8:
+  * Fix build problems with LoongArch and riscv64
+  * Use CC_LD configured through meson
+  * Use --output-target to define the object output format
+- Update 106.patch
+
+-------------------------------------------------------------------
 Tue Dec 17 12:50:10 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to version 1.7:

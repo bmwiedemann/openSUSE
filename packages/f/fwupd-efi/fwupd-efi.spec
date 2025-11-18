@@ -1,7 +1,7 @@
 #
 # spec file for package fwupd-efi
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %define sbat_distro_url mailto:security@suse.de
 %endif
 Name:           fwupd-efi
-Version:        1.7
+Version:        1.8
 Release:        0
 Summary:        Firmware update EFI binaries
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -39,8 +39,8 @@ Patch0:         106.patch
 BuildRequires:  meson >= 0.62.0
 BuildRequires:  pesign-obs-integration
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gnu-efi) >= 3.0.18
 BuildRequires:  python3-pefile
+BuildRequires:  pkgconfig(gnu-efi) >= 3.0.18
 ExclusiveArch:  x86_64 aarch64 %{arm} %{ix86} riscv64
 
 %description
@@ -57,6 +57,7 @@ executable releases to follow a different cadence.
 %build
 # Dell support requires direct SMBIOS access,
 # Synaptics requires Dell support, i.e. x86 only
+
 %meson \
   -Defi_sbat_distro_id="%{sbat_distro}" \
   -Defi_sbat_distro_summary="%{sbat_distro_summary}" \
