@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 14 11:10:29 CET 2025 - Arvin Schnell <aschnell@suse.com>
+
+- Fix build with boost 1.90 Beta 1
+  * Add boost-static-assert.patch
+
+-------------------------------------------------------------------
 Sat Jan 18 05:50:51 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 4.0.3:

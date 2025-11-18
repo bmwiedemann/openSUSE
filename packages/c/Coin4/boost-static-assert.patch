@@ -1,0 +1,12 @@
+See https://github.com/coin3d/coin/pull/590
+
+--- a/testsuite/TestSuiteMisc.h	2025-11-14 08:32:11.053416591 +0100
++++ b/testsuite/TestSuiteMisc.h	2025-11-14 08:32:27.570074057 +0100
+@@ -36,6 +36,7 @@
+ #include <string>
+ #include <ostream>
+ #include <boost/lexical_cast.hpp>
++#include <boost/static_assert.hpp>
+ #include <Inventor/SbBasic.h>
+ #include <Inventor/SbTypeInfo.h>
+ 

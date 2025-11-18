@@ -1,7 +1,7 @@
 #
-# spec file for package Coin
+# spec file for package Coin4
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ URL:            https://github.com/coin3d/coin/wiki
 Source0:        https://github.com/coin3d/coin/releases/download/v%{version}/coin-%{version}-src.tar.gz
 # PATCH-FIX-OPENSUSE -- direct GLX usage causes problems on Wayland (taken from Fedora)
 Patch2:         coin-no_glx.patch
+# PATCH-FIX-UPSTREAM -- https://github.com/coin3d/coin/pull/590
+Patch3:         boost-static-assert.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 %if %{with docs}
