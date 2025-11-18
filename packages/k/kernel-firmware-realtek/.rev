@@ -171,4 +171,14 @@ After this PR, there will be a delete request for kernel-firmware.
   * Revert &quot;rtw89: 8852bt: update fw to v0.29.127.0&quot;</comment>
     <requestid>1316556</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5d63ea67d8bb1502ad04c8f9b7fc8020</srcmd5>
+    <version>20251110</version>
+    <time>1763476255</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251110 (git commit 15b5dddd9b2a):
+  * rtw88: 8822b: Update firmware to v30.20.0
+  * rtl_nic: add firmware rtl8125k-1</comment>
+    <requestid>1317810</requestid>
+  </revision>
 </revisionlist>

@@ -20,17 +20,17 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version b055b3e245423cbdce0a9f9e7b7768495bc01dc0
+%define git_version 15b5dddd9b2a212baedb2823b04ce3294ff397af
 
 Name:           kernel-firmware-realtek
-Version:        20251106
+Version:        20251110
 Release:        0
 Summary:        Kernel firmware files for Realtek wireless drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20251004.tar.gz#/kernel-firmware-tools-20251004.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20251111.tar.gz#/kernel-firmware-tools-20251111.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases

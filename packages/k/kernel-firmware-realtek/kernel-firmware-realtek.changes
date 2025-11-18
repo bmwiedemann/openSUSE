@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 11 06:58:39 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251110 (git commit 15b5dddd9b2a):
+  * rtw88: 8822b: Update firmware to v30.20.0
+  * rtl_nic: add firmware rtl8125k-1
+
+-------------------------------------------------------------------
 Fri Nov  7 08:11:31 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20251106 (git commit b055b3e24542):
