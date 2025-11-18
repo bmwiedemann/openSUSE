@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 11 15:43:43 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Replace ungrammatical command with lua script to generate commands for
+  unpacking test sources
+
+-------------------------------------------------------------------
 Tue Oct 21 13:42:26 UTC 2025 - Christoph G <foss@grueninger.de>
 
 - Update to 7.11.0

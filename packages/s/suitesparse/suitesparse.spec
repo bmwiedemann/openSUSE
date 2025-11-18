@@ -592,7 +592,7 @@ rm SPQR/Doc/spqr.pdf
 
 cp %{SOURCE1} Mongoose/Tests/
 
-%(for src in "$(seq 100 134)"; do tar xvf %{SOURCE$src} --strip-components=1 -C Mongoose/Matrix; tar xvf %{SOURCE$src} --strip-components=1 -C Mongoose/Tests/Matrix; end)
+%{lua:for src = 100, 134 do print(rpm.expand("tar xvf %{SOURCE"..src.."} --strip-components=1 -C Mongoose/Matrix; tar xvf %{SOURCE"..src.."} --strip-components=1 -C Mongoose/Tests/Matrix\n")); end}
 
 %build
 %limit_build -m 1500
