@@ -31,7 +31,7 @@
 %global sh_c_lib libmanifoldc3
 
 Name:           manifold
-Version:        3.3.0
+Version:        3.3.2
 Release:        0
 Summary:        Geometry library for topological robustness
 License:        Apache-2.0

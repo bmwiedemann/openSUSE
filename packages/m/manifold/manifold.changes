@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Nov 15 16:19:27 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.3.2
+  - Just fixing npm and PyPI publishing.
+
+-------------------------------------------------------------------
+Sat Nov 15 04:19:26 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.3.1
+  - Loading types should not create new scripts. by @tonious in
+    #1420
+  - Run npm install before npm publish by @tonious in #1421
+  - fix gear examples by @elalish in #1423
+  - Correct CLI and add tests. by @tonious in #1425
+
+-------------------------------------------------------------------
 Thu Nov 13 19:56:51 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.3.0

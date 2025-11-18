@@ -37,4 +37,12 @@ if blender 4.5.1 is still in staging. this can be merged into the same staging.<
     <comment></comment>
     <requestid>1317778</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2fb32a134b5332e124efe347c3c00355</srcmd5>
+    <version>3.3.2</version>
+    <time>1763476394</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1318216</requestid>
+  </revision>
 </revisionlist>
