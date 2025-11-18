@@ -266,4 +266,24 @@ Update to version 0.11.1</comment>
 Update to version 0.11.3</comment>
     <requestid>1316672</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>97161b0ad114762592804aaf57d25829</srcmd5>
+    <version>0.11.4</version>
+    <time>1763476661</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1318217 from jubalh
+
+- Update to 0.11.4:
+  Bug Fixes:
+  * #1859: Ensure average CPU is drawn on top in &quot;All&quot; mode.
+  * #1867: Fix network graph y-axis height cache not updating correctly.
+  * #1867: Fix network graph y-axis occasionally starting with a range of zero.
+  Other:
+  * #1862: Simplify cfg condition
+  * #1863: Replace bottom icon with a square version
+  * #1865: Improve help dialog width calculation.
+  * #1869: Add mise installation method to README
+- Remove obscpio file, we already use the .tar.zst</comment>
+    <requestid>1318308</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 
 Name:           bottom
-Version:        0.11.3
+Version:        0.11.4
 Release:        0
 Summary:        Yet another graphical process/system monitor
 License:        Apache-2.0 AND MIT
