@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 18 10:57:25 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.2.2
+  * Fixed locking issues when invoked through cling (macOS)
+
+-------------------------------------------------------------------
 Sun Jul  3 22:35:10 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.2.1
