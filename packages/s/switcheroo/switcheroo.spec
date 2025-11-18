@@ -18,9 +18,9 @@
 
 
 %define appid   io.gitlab.adhami3310.Converter
-%define rurl    4a9a2f156d9b795415d518403decb59c
+%define rurl    a4e9f70cb763e6c7b41f409338a91b6c
 Name:           switcheroo
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        Convert and manipulate images
 License:        GPL-3.0-only
@@ -32,7 +32,7 @@ BuildRequires:  cargo-packaging
 BuildRequires:  desktop-file-utils
 BuildRequires:  meson
 BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8
 
 %description
 Switcheroo is designed to give you a simple, quick, and easy-to-use tool
@@ -62,6 +62,7 @@ built on top of the most advanced image editing libraries, ImageMagick.
 %{_datadir}/icons/hicolor/*/apps/%{appid}*svg
 %{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
 %{_datadir}/metainfo/%{appid}.metainfo.xml
+%{_datadir}/dbus-1/services/%{appid}.service
 
 %files lang -f %{name}.lang
 
