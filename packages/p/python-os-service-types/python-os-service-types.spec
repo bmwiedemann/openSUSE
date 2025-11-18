@@ -17,7 +17,7 @@
 
 
 Name:           python-os-service-types
-Version:        1.8.0
+Version:        1.8.1
 Release:        0
 Summary:        Python library for consuming OpenStack sevice-types-authority data
 License:        Apache-2.0
@@ -35,6 +35,12 @@ BuildRequires:  %{python_module testscenarios}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
 BuildArch:      noarch
+Requires:       python-typing-extensions
+%if "python%{python_nodots_ver}" == "%{primary_python}"
+Obsoletes:      python3-os-service-types < %{version}
+%else
+Conflicts:      python3-os-service-types < %{version}
+%endif
 %python_subpackages
 
 %description

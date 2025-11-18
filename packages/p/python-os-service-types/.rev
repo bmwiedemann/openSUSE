@@ -106,4 +106,16 @@
     <comment>switch to singlespec</comment>
     <requestid>1316774</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3e03bf9be0af1cf76ac82e597c4cbc46</srcmd5>
+    <version>1.8.1</version>
+    <time>1763476732</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.8.1:
+  * pre-commit: Bump versions
+  * Add missing dependency
+
+- add obsoletes/conflicts</comment>
+    <requestid>1318330</requestid>
+  </revision>
 </revisionlist>
