@@ -17,7 +17,7 @@
 
 
 Name:           cockpit-machines
-Version:        339
+Version:        344
 Release:        0
 Summary:        Cockpit user interface for virtual machines
 License:        LGPL-2.1-or-later AND MIT
@@ -30,7 +30,6 @@ Source12:       update_version.sh
 Patch10:        hide-docs.patch
 Patch11:        load-css-overrides.patch
 Patch12:        uefi-default-firmware.patch
-Patch13:        hostadd-allow-device-form-to-overflow-on-X-axis.patch
 BuildArch:      noarch
 BuildRequires:  appstream-glib
 BuildRequires:  make

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Nov 13 05:34:48 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
+
+- Update to 344
+  * 344
+    - Port forwarding for user session VMs
+    - "Shutdown and restart" action
+    - Faster startup
+  * 343
+    - Memory usage now shows numbers reported by the guest (RHEL-116731) 
+
+-------------------------------------------------------------------
+Mon Oct 20 07:59:10 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
+
+- Update to 342
+  * 342
+    - Bug fixes and translation updates
+  * 341
+    - Improved UX for Disks and Network interface tables
+    - Bug fixes and translation updates
+  * 340
+    - Use exclusive VNC connections with "Remote resizing"
+- Drop hostadd-allow-device-form-to-overflow-on-X-axis.patch as this has
+  been upstreamed
+
+-------------------------------------------------------------------
 Wed Sep 17 09:55:02 UTC 2025 - Miika Alikirri <miika.alikirri@suse.com>
 
 - Don't set UEFI as default firmware for ppc64le and s390x
