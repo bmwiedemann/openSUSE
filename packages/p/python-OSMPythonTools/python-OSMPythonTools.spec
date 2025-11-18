@@ -19,7 +19,7 @@
 %define modname OSMPythonTools
 %{?sle15_python_module_pythons}
 Name:           python-OSMPythonTools
-Version:        0.3.5
+Version:        0.3.6
 Release:        0
 Summary:        A library to access OpenStreetMap related services
 License:        GPL-3.0-only
@@ -34,6 +34,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-beautifulsoup4
 Requires:       python-geojson
 Requires:       python-lxml
+Requires:       python-matplotlib
 Requires:       python-numpy
 Requires:       python-pandas
 Requires:       python-ujson

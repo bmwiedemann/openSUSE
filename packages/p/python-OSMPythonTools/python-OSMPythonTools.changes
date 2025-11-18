@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 17 15:46:37 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.3.6
+  * [improvement] `Nominatim` forward geocoding results can be iterated
+  * [improvement] polygons can be used to define the search area for an
+    `Overpass` query
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Tue Mar 25 03:46:40 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Lowercase metadata directory name.
