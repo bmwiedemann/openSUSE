@@ -1,0 +1,38 @@
+Index: task-3.4.2/src/taskchampion-cpp/corrosion/cmake/Corrosion.cmake
+===================================================================
+--- task-3.4.2.orig/src/taskchampion-cpp/corrosion/cmake/Corrosion.cmake
++++ task-3.4.2/src/taskchampion-cpp/corrosion/cmake/Corrosion.cmake
+@@ -1728,7 +1728,6 @@ function(corrosion_add_cxxbridge cxx_tar
+     set(ONE_VALUE_KEYWORDS CRATE REGEN_TARGET)
+     set(MULTI_VALUE_KEYWORDS FILES)
+     cmake_parse_arguments(PARSE_ARGV 1 _arg "${OPTIONS}" "${ONE_VALUE_KEYWORDS}" "${MULTI_VALUE_KEYWORDS}")
+-
+     set(required_keywords CRATE FILES)
+     foreach(keyword ${required_keywords})
+         if(NOT DEFINED "_arg_${keyword}")
+@@ -1803,6 +1802,7 @@ function(corrosion_add_cxxbridge cxx_tar
+                     cxxbridge-cmd
+                     --version "${cxx_required_version}"
+                     --locked
++                    --offline
+                     --root "${CMAKE_BINARY_DIR}/corrosion/cxxbridge_v${cxx_required_version}"
+                     --quiet
+                     # todo: use --target-dir to potentially reuse artifacts
+Index: task-3.4.2/src/taskchampion-cpp/CMakeLists.txt
+===================================================================
+--- task-3.4.2.orig/src/taskchampion-cpp/CMakeLists.txt
++++ task-3.4.2/src/taskchampion-cpp/CMakeLists.txt
+@@ -61,11 +61,13 @@ endif (ENABLE_TLS_NATIVE_ROOTS)
+ corrosion_import_crate(
+   MANIFEST_PATH "${CMAKE_SOURCE_DIR}/Cargo.toml"
+   LOCKED
++  FROZEN
+   CRATES "taskchampion-lib"
+   FEATURES "${TASKCHAMPION_FEATURES}")
+ 
+ # Set up `taskchampion-cpp`, the C++ side of the bridge.
+ corrosion_add_cxxbridge(taskchampion-cpp
+   CRATE taskchampion_lib
++  FROZEN
+   FILES lib.rs
+ )

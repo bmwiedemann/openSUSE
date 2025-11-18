@@ -1,7 +1,7 @@
 #
 # spec file for package taskwarrior
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           taskwarrior
-Version:        3.1.0
+Version:        3.4.2
 Release:        0
 Summary:        Command-line todo list manager
 License:        MIT
@@ -27,15 +27,20 @@ Source0:        https://github.com/GothenburgBitFactory/%{name}/releases/downloa
 Source1:        vendor.tar.zst
 #PATCH-FIX-OPENSUSE: skip the INSTALL and LICENSE from files intended for the installation
 Patch0:         task-skip-INSTALL.patch
+Patch1:         fix-corrosion.patch
+Patch2:         fix_cmake_ignore_hash.patch
 BuildRequires:  awk
 # for completion
 BuildRequires:  bash
 BuildRequires:  cmake >= 2.8
 BuildRequires:  coreutils
+BuildRequires:  corrosion
 BuildRequires:  gcc-c++
 # for sync
 BuildRequires:  libuuid-devel
 BuildRequires:  cargo-packaging
+BuildRequires:  cxxbridge
+BuildRequires:  execstack
 BuildRequires:  vim-base
 BuildRequires:  zsh
 # use the name as other distributions, so
@@ -55,15 +60,17 @@ often for updates.
 %autosetup -a1 -p1 -n task-%{version}
 
 %build
-%cmake -DTASK_DOCDIR:PATH=%{_docdir}/task \
-    -DTASK_MAN1DIR:PATH=%{_mandir}/man1/ \
-    -DBUILD_SHARED_LIBS:BOOL=OFF \
-    -DBUILD_STATIC_LIBS:BOOL=OFF \
-    -DTASK_MAN5DIR:PATH=%{_mandir}/man5/
+
+# Setup cargo dir for when corrosion tries to pull in the crates
+%cmake -DBUILD_SHARED_LIBS:BOOL=ON -DCMAKE_BUILD_TYPE=Release -DSYSTEM_CORROSION=ON -DTASK_DOCDIR=share/doc/packages/task -DTASK_RCDIR=share/doc/packages/task/rc
+# Mark stack as non-executable
+export LDFLAGS=$LDFLAGS:"-z noexecstack"
 %cmake_build
 
 %install
 %cmake_install
+
+# This should go into /usr/share/doc/PACKAGES/task!
 
 # this integration stuff might be in CMakeList.txt, but ...
 %define scriptsdir %{buildroot}%{_docdir}/task/scripts/
@@ -85,6 +92,13 @@ rm -rf %{scriptsdir}vim
 
 # don't requre python/perl/ruby by default, so remove executable bit
 find %{buildroot}/%{_docdir}/task -type f -exec chmod a-x {} +
+
+# Mark stack as non-executable. This happens due to some quirks in the hybrid build, missing linker flags.
+execstack -c %{buildroot}%{_bindir}/task
+
+#check
+#cmake --build build --target test_runner
+#ctest --test-dir build
 
 %files
 %doc %{_docdir}/task

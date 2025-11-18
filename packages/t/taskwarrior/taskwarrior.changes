@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Nov  7 15:08:37 UTC 2025 - Angel Yankov <angel.yankov@suse.com>
+
+- Update to 3.4.2 
+  * Sorting task lists randomly is now supported with configuration such as
+  report.<report-name>.sort = random (#3940)
+  *  Handling for tags in a "tags" column after task edit is fixed (#3911)
+  *  tags.none: works correctly (#3877)
+  *  Non-interactive invocations of task, such as for shell completion, no
+  longer prompts to create .taskrc. (#3888)
+  * task sync now describes what it has done (#3758)
+  *  UDAs can now have type "UUID" (#3827)
+  * Full changelog: https://github.com/GothenburgBitFactory/taskwarrior/releases/tag/v3.4.2
+
+- Fix up spec file and Cmake to include rust crates
+- Re-vendor to include cxx and cxx-bridge
+- Add fix-corrosion.patch 
+  - add corrosion options to force cargo to build offline.
+- Add fix_cmake_ignore_hash.patch
+  - Match the expected hash of aws-lc CmakeLists after build system supresses CMAKE_VERBOSE option. 
+- Drop %check section - upstream is not shipping the tests in the tarballs for some reason.
+
+-------------------------------------------------------------------
 Sat Nov  9 10:18:54 UTC 2024 - Michal Vyskocil <michal.vyskocil@gmail.com>
 
 - Update to 3.1.0
