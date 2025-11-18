@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Nov 10 17:43:29 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 8.0.3:
+  * Improve 'mode' for small grid sizes.
+  * Update python usage for compatibility with NumPy2.
+  * Add samples for 'mode' and 'histl'.
+  * Minor fixes, improvements and spelling issues.
+- Changes from version 8.0.2:
+  * Add 'mode' for finding sulution of Poisson equation with
+    arbitrary boundary.
+  * Add 'histl' for histogram by linear interpolation.
+  * Add jumps functionality for 'ode' solver (see
+    mgl_ode_solve_str_b(), mgl_ode_solve_str_cb()).
+  * Add robust approximation by using numbers 1,2,3 or 4 in
+    variable list of 'fit' and 'fits' commands: '1' for norm
+    sqrt(1+|u|^2), '2' for norm |u|^4, '3' for norm 1-cos(u), '4'
+    for norm |u|^2*(2-|u|^2/6^2), default norm |u|^2.
+  * Add power deposition for QO2d if k0<0.
+  * Update fonts. Add STIX2 and CJK fonts.
+  * Compatibility changes for Qt6.
+  * Improve complex number reading from files.
+  * Exclude NAN values from momentum estiamtions.
+  * Minor bugfixes and optimizations.
+- Drop patches no longer required because they are fixed by
+  upstream cmake changes:
+  * mathgl-no-default-qt.patch
+  * mathgl-fix-python-module-path.patch
+- Drop pinning of numpy to version 1; numpy2 supported now.
+- Switch to Qt6; obsolete libmgl-qt5-8 package with libmgl-qt-8.
+- Switch over BuildRequires to pkgconfig based ones where
+  possible.
+
+-------------------------------------------------------------------
 Thu Oct 10 08:26:16 UTC 2024 - Ana Guerrero <ana.guerrero@suse.com>
 
 -  Add /srv/www directories to filelist [bsc#1231027]

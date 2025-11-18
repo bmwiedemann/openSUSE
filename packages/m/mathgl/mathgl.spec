@@ -1,7 +1,7 @@
 #
 # spec file for package mathgl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,14 +42,12 @@
 %define _defaultdocdir %{_docdir}
 %endif
 Name:           mathgl
-Version:        8.0.1
+Version:        8.0.3
 Release:        0
 Summary:        Library for making scientific graphics
 License:        GPL-3.0-only
 URL:            http://mathgl.sourceforge.net
 Source0:        http://downloads.sourceforge.net/mathgl/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM mathgl-fix-python-module-path.patch -- Make python modules install arch-depended
-Patch1:         mathgl-fix-python-module-path.patch
 # PATCH-FEATURE-UPSTREAM mathgl-examples-install.patch -- Enable examples install
 Patch2:         mathgl-examples-install.patch
 # PATCH-FIX-OPENSUSE mathgl-doc-path.patch -- Locate documentation to right place
@@ -58,36 +56,40 @@ Patch3:         mathgl-doc-path.patch
 Patch4:         udav-help-path.patch
 # PATCH-FIX-OPENSUSE mathgl-texmf-dir.patch -- set correct path to texmf directory
 Patch5:         mathgl-texmf-dir.patch
-# PATCH-FIX-OPENSUSE mathgl-no-default-qt.patch -- do not set a default qt
-Patch7:         mathgl-no-default-qt.patch
 # PATCH-FIX-UPSTREAM mathgl-libharu2_4-compat.patch badshah400@gmail.com -- Fix compilation against libharu 2.4.x [https://sourceforge.net/p/mathgl/bugs/48/]
 Patch8:         mathgl-libharu2_4-compat.patch
-BuildRequires:  cmake >= 2.8.12
+BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fltk-devel
-BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
 BuildRequires:  giflib-devel
-BuildRequires:  gsl-devel
-BuildRequires:  hdf5-devel
 BuildRequires:  libharu-devel
-BuildRequires:  libjpeg-devel
-BuildRequires:  libpng-devel
-BuildRequires:  libqt5-qtbase-devel
-BuildRequires:  libtiff-devel
 BuildRequires:  libtool
-BuildRequires:  lua51-devel
 BuildRequires:  openmpi-macros-devel
 BuildRequires:  swig
 BuildRequires:  sz2-devel
 BuildRequires:  texlive-filesystem
 BuildRequires:  wxGTK3-devel
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Core5Compat)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6OpenGL)
+BuildRequires:  pkgconfig(Qt6OpenGLWidgets)
+BuildRequires:  pkgconfig(Qt6PrintSupport)
+BuildRequires:  pkgconfig(Qt6Widgets)
+BuildRequires:  pkgconfig(glut)
+BuildRequires:  pkgconfig(gsl)
+BuildRequires:  pkgconfig(hdf5)
+BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libtiff-4)
+BuildRequires:  pkgconfig(lua5.1)
 %if %{with python}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy-devel < 2.0}
+BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy < 2.0
+Requires:       python-numpy
 %endif
 %if %{with octave}
 BuildRequires:  octave-devel
@@ -149,10 +151,12 @@ MathGL is a library for making scientific graphics. It provides data
 plotting and handling of large data arrays, as well as window and
 console modes and for embedding into other programs.
 
-%package -n     %{libname}-qt5-%{libversion}
-Summary:        MathGL Qt5 widget library
+%package -n     %{libname}-qt-%{libversion}
+Summary:        MathGL Qt(6) widget library
+Provides:       %{libname}-qt6-%{libversion} = %{version}
+Obsoletes:      %{libname}-qt5-%{libversion} < 8.0.3
 
-%description -n %{libname}-qt5-%{libversion}
+%description -n %{libname}-qt-%{libversion}
 MathGL is a library for making scientific graphics. It provides data
 plotting and handling of large data arrays, as well as window and
 console modes and for embedding into other programs.
@@ -185,7 +189,7 @@ Requires:       %{libname}%{libversion} = %{version}
 Requires:       %{libname}-fltk%{libversion} = %{version}
 Requires:       %{libname}-glut%{libversion} = %{version}
 Requires:       %{libname}-mpi%{libversion} = %{version}
-Requires:       %{libname}-qt5-%{libversion} = %{version}
+Requires:       %{libname}-qt-%{libversion} = %{version}
 Requires:       %{libname}-wnd%{libversion} = %{version}
 Requires:       %{libname}-wx%{libversion} = %{version}
 Requires:       cmake
@@ -380,7 +384,7 @@ pushd .
       -Denable-hdf5=on                        \
       -Denable-opengl=on                      \
       -Denable-python=%{?with_python:on}%{!?with_python:off} \
-      -DPY3VERSION_DOTTED=%{$python_version}  \
+      -DPython_EXECUTABLE=%{_bindir}/$python  \
       -Denable-json-sample=off                \
 %if "%{$python_provides}" == "python3" || "$python_" == "python3_"
       -Denable-doc-html=%{?with_docs:on}%{!?with_docs:off} \
@@ -470,20 +474,13 @@ sha256sum %{buildroot}%{_docdir}/mathgl/png/fexport*.{prc,pdf,eps,svg}
 # %%install_info_delete --info-dir=%%_infodir %%{_infodir}/%%{name}_en.info-1.gz
 # %%install_info_delete --info-dir=%%_infodir %%{_infodir}/%%{name}_en.info-2.gz
 
-%post -n %{libname}%{libversion} -p /sbin/ldconfig
-%postun -n %{libname}%{libversion} -p /sbin/ldconfig
-%post -n %{libname}-mpi%{libversion} -p /sbin/ldconfig
-%postun -n %{libname}-mpi%{libversion} -p /sbin/ldconfig
-%post -n %{libname}-fltk%{libversion} -p /sbin/ldconfig
-%postun -n %{libname}-fltk%{libversion} -p /sbin/ldconfig
-%post -n %{libname}-glut%{libversion} -p /sbin/ldconfig
-%postun -n %{libname}-glut%{libversion} -p /sbin/ldconfig
-%post -n %{libname}-qt5-%{libversion} -p /sbin/ldconfig
-%postun -n %{libname}-qt5-%{libversion} -p /sbin/ldconfig
-%post -n %{libname}-wnd%{libversion} -p /sbin/ldconfig
-%postun -n %{libname}-wnd%{libversion} -p /sbin/ldconfig
-%post -n %{libname}-wx%{libversion} -p /sbin/ldconfig
-%postun -n %{libname}-wx%{libversion} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}%{libversion}
+%ldconfig_scriptlets -n %{libname}-mpi%{libversion}
+%ldconfig_scriptlets -n %{libname}-fltk%{libversion}
+%ldconfig_scriptlets -n %{libname}-glut%{libversion}
+%ldconfig_scriptlets -n %{libname}-qt-%{libversion}
+%ldconfig_scriptlets -n %{libname}-wnd%{libversion}
+%ldconfig_scriptlets -n %{libname}-wx%{libversion}
 
 %if %{with octave}
 %post -n octave-mathgl
@@ -525,8 +522,8 @@ rm -f %{_localstatedir}/run/texlive/run-update
 %files -n %{libname}-glut%{libversion}
 %{_libdir}/libmgl-glut.so.%{libversion}*
 
-%files -n %{libname}-qt5-%{libversion}
-%{_libdir}/libmgl-qt5.so.%{libversion}*
+%files -n %{libname}-qt-%{libversion}
+%{_libdir}/libmgl-qt*.so.%{libversion}*
 
 %files -n %{libname}-wnd%{libversion}
 %{_libdir}/libmgl-wnd.so.%{libversion}*
@@ -595,9 +592,9 @@ rm -f %{_localstatedir}/run/texlive/run-update
 
 %if %{with python}
 %files %{python_files}
-%{python_sitearch}/mathgl.py
+%{python_sitelib}/mathgl.py
 %{python_sitearch}/_mathgl.so
-%{python_sitearch}/__pycache__/*.pyc
+%{python_sitelib}/__pycache__/*.pyc
 %endif
 
 %files -n %{name}-tex

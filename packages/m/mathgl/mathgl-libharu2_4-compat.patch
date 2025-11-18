@@ -1,7 +1,11 @@
-Index: mathgl-8.0.1/src/prc.cpp
+---
+ src/prc.cpp |    8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+Index: mathgl-8.0.3/src/prc.cpp
 ===================================================================
---- mathgl-8.0.1.orig/src/prc.cpp
-+++ mathgl-8.0.1/src/prc.cpp
+--- mathgl-8.0.3.orig/src/prc.cpp
++++ mathgl-8.0.3/src/prc.cpp
 @@ -36,6 +36,7 @@
  #include <hpdf.h>
  #include <hpdf_u3d.h>
@@ -21,6 +25,6 @@ Index: mathgl-8.0.1/src/prc.cpp
 +#else
 +		= HPDF_Page_Create3DAnnot (page, rect, u3d);
 +#endif
+ //		annot = HPDF_Page_Create3DAnnot (page, rect, 0, 0, u3d, 0 );	for the new version ???
  
  		//  Enable toolbar
- 		HPDF_Dict action = (HPDF_Dict)HPDF_Dict_GetItem (annot, "3DA", HPDF_OCLASS_DICT);
