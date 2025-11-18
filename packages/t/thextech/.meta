@@ -1,0 +1,23 @@
+<package name="thextech" project="openSUSE:Factory">
+  <title>A Super Mario Brothers Fan game engine (SMBX)</title>
+  <description>TheXTech is a free and open-source game engine for Mario-like
+platforming games. There is a complete and extended source code
+port of the Super Mario Bros. X 1.3 game engine (later just &quot;SMBX&quot;),
+and its direct unofficial continuation after development halted in
+the 2011th year. This engine preserves full compatibility with
+levels and episodes made for the original SMBX game, including its
+repacks. And it's allowed to create brand-new Levels, Episodes,
+and content packs. Unlike the original SMBX game that depends on
+Windows and x86, TheXTech can work on many operating systems
+(including Linux distros, macOS, xBSD, Android, Haiku, etc.) and
+processor architectures (including x86_64, ARM, PowerPC, MIPS, etc.).
+
+Note:
+This package contain the runtime engine binary onlym
+*no game assets included*.
+
+See the following links on how to install game assets:
+https://github.com/TheXTech/TheXTech/wiki/Game-assets-packages
+https://github.com/TheXTech/TheXTech/wiki/Running-game-assets-on-Linux-or-xBSD</description>
+  <url>https://wohlsoft.ru/projects/TheXTech/</url>
+</package>

@@ -1,0 +1,14 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index cfd2f6c..f21cfa9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -32,9 +32,6 @@ set(CMAKE_CXX_STANDARD 11)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ set(CMAKE_POSITION_INDEPENDENT_CODE FALSE)
+ 
+-set(CMAKE_INSTALL_RPATH ".")
+-set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+-
+ if(EMSCRIPTEN)
+     set(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
+ endif()

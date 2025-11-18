@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Tue Sep 30 18:01:57 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Switch to default %cmake macro provided CMAKE_BUILD_TYPE
+  * MinSizeRel -> RelWithDebInfo
+
+-------------------------------------------------------------------
+Sat Sep 20 09:06:01 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.3.7.1+git20250722
+
+-------------------------------------------------------------------
+Tue Nov 21 20:50:20 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.3.6.2+git20231120
+
+-------------------------------------------------------------------
+Sat Jan 21 12:11:28 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 1.3.6+git20230120
