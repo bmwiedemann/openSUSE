@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 17 02:10:05 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Skip a test broken by Python 3.14 GC changes.
+
+-------------------------------------------------------------------
 Thu Jun 19 09:51:31 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Workaround test failure with recent libalternatives changes

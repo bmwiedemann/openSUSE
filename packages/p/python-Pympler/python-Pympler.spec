@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pympler
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -69,6 +69,8 @@ sed -i '1{\@^#!%{_bindir}/env python@d}' pympler/asizeof.py
 skiptests="test_repr_function or test_leng"
 # gh#pympler/pympler#163
 skiptests+=" or test_edges_new or test_edges_old or test_split or test_traceback"
+# python 3.14 gc changes
+skiptests+=" or test_untracked_containers"
 %if 0%{?qemu_user_space_build}
 # qemu does not implement process memory statistics
 skiptests+=" or test_snapshot_members"

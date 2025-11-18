@@ -148,4 +148,12 @@
     <comment></comment>
     <requestid>1286889</requestid>
   </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>a9dbeace03217e4ffe9d99a1af9e72cd</srcmd5>
+    <version>1.1</version>
+    <time>1763476105</time>
+    <user>anag_factory</user>
+    <comment>- Skip a test broken by Python 3.14 GC changes.</comment>
+    <requestid>1318117</requestid>
+  </revision>
 </revisionlist>
