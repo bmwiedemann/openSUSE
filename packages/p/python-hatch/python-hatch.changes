@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 17 08:20:59 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.15.1
+  * Fix compatibility with cached default CPython distributions
+    that were sourced from GitHub releases of the old owner
+
+-------------------------------------------------------------------
 Mon Nov 10 01:24:10 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use python-uv for Requires, so it explicitly matches the Python version.

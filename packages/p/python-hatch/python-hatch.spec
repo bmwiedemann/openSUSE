@@ -31,7 +31,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-hatch%{psuffix}
-Version:        1.15.0
+Version:        1.15.1
 Release:        0
 Summary:        Modern, extensible Python project management
 License:        MIT

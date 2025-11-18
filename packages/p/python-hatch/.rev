@@ -434,4 +434,12 @@
     <comment>- Use python-uv for Requires, so it explicitly matches the Python version.</comment>
     <requestid>1316725</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>5495d663d4a2380f44b4926513728e87</srcmd5>
+    <version>1.15.1</version>
+    <time>1763476871</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1318435</requestid>
+  </revision>
 </revisionlist>
