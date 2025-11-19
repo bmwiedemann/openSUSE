@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Nov 11 23:47:24 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.6:
+  * Removed the SOFA files from the pypi source distribution to
+    avoid going over the 100MB file size limit.
+  * Drops support for python 3.8.
+  * Adds support for python 3.13 and 3.14.
+  * Fixes broken links for the Dirpat database SOFA files (issue
+    #409).
+  * Fixes issue #398: When using measured directivities, the
+    global delay for the fractional delays was applied twice. The
+    fix makes sure the delay is applied only once.
+  * Fixes issue #382: When providing a MicrophoneArray object
+    with directivity to Room.add_microphone_array, the
+    directivity was dropped from the object.
+  * Fixes issues #381: When creating a room with from_corners
+    with multi-band material, and then making it 3D with extrude
+    with a single band material for the floor and ceiling, an
+    error would occur. After the fix, the materials for floor and
+    ceiling are automatically extended to multi-band, as
+    expected.
+  * Fixes issue #380: Caused by the attribute cartesian of
+    GridSphere not being set properly when the grid is only
+    initialized with a number of points.
+  * Fixes issue #355: Makes the MicrophoneArray class more bug-
+    proof and adds some tests.
+
+-------------------------------------------------------------------
 Sat Nov 23 08:43:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.8.2:
