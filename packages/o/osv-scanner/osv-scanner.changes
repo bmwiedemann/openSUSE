@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Nov 19 05:59:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.3.0:
+  * Features:
+    - Feature #2321 Add support for license checks for RubyGems.
+    - Feature #2294 Replace requirementsenhanceable extractor with
+      transitive enricher.
+    - Feature #2344 Use osduplicate annotators.
+  * Fixes:
+    - Bug #2329 Add --ignore-scripts flag to npm lockfile
+      generation.
+    - Bug #2311 Improve logic for --all-packages flag.
+    - Bug #2309 Exit with a non-zero code when showing help.
+    - Bug #2316 Pre-commit hook now defaults to scanning current
+      directory instead of failing.
+    - Bug #1507 (osv-scalibr) Interpolate Maven projects before
+      extracting repositories.
+  * Dependencies
+    - chore(deps): update github/codeql-action action to v4.31.3
+      (#2347)
+    - fix(deps): update osv-scanner minor (#2346)
+    - fix(deps): update osv-scanner minor (#2286)
+    - chore(deps): bump github.com/opencontainers/selinux from
+      1.12.0 to 1.13.0 in the go_modules group across 1 directory
+      (#2338)
+    - chore(deps): bump github.com/containerd/containerd from
+      1.7.27 to 1.7.29 in the go_modules group across 1 directory
+      (#2326)
+    - chore(deps): update docker/setup-qemu-action digest to
+      c7c5346 (#2334)
+    - chore(deps): update golang docker tag to v1.25.4 (#2335)
+    - chore(deps): update golangci/golangci-lint-action action to
+      v9 (#2336)
+    - chore(deps): update github/codeql-action action to v4.31.2
+      (#2301)
+    - chore(deps): lock file maintenance (#2315)
+
+-------------------------------------------------------------------
 Wed Oct 29 08:51:20 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.2.4:
