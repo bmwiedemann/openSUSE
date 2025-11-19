@@ -27,7 +27,7 @@
 %define __builder ninja
 %define __builddir _build
 Name:           libaom%{psuffix}
-Version:        3.12.1
+Version:        3.13.1
 Release:        0
 %if "%{flavor}" == ""
 Summary:        AV1 codec library
@@ -50,6 +50,7 @@ BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.9
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libvmaf)
 BuildRequires:  pkgconfig(libyuv)
 %ifarch x86_64 %ix86
 BuildRequires:  yasm
@@ -112,7 +113,8 @@ sed -E -i 's|#include "third_party/googletest/src/googletest/include/([^"]*)"|#i
     -DENABLE_TESTS=OFF \
     -DENABLE_TESTDATA=OFF \
 \
-	-DCONFIG_LOWBITDEPTH=1 \
+	-DCONFIG_AV1_TEMPORAL_DENOISING=1 \
+	-DCONFIG_TUNE_VMAF=1 \
 	-DCMAKE_INSTALL_LIBDIR:PATH=%{_lib} \
 %ifnarch aarch64 %arm %ix86 x86_64 %x86_64 ppc %power64
 	-DAOM_TARGET_CPU=generic \
@@ -163,6 +165,7 @@ rm %{buildroot}%{_libdir}/%{name}.a
 %{_includedir}/aom
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/aom.pc
+%{_libdir}/cmake/AOM
 
 %files -n aom-tools
 %{_bindir}/aomdec
