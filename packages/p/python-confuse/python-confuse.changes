@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 11 16:39:57 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 2.1.0
+  * Bump Python to 3.9 and clean-up Python 2 leftovers
+  * Address deprecation of pkgutil.get_loader
+  * Remove template_with_relatives
+  * Added typehints to the as_* helpers
+  * Explicitly support Python 3.13, 3.14 and synchronise docs and docs config
+
+-------------------------------------------------------------------
 Wed May  3 15:35:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.1:

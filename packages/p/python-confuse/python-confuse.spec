@@ -1,7 +1,7 @@
 #
 # spec file for package python-confuse
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,15 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-confuse
-Version:        2.0.1
+Version:        2.1.0
 Release:        0
 Summary:        Painless YAML configuration
 License:        MIT
 URL:            https://github.com/beetbox/confuse
-Source:         https://files.pythonhosted.org/packages/source/c/confuse/confuse-%{version}.tar.gz
+Source:         https://github.com/beetbox/confuse/archive/refs/tags/v%{version}.tar.gz#/confuse-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module flit >= 2}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML

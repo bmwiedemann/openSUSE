@@ -44,4 +44,12 @@
   * Remove a `&lt;4` Python version requirement bound.</comment>
     <requestid>1084448</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>85d6fa99193b97630b9717222da338ec</srcmd5>
+    <version>2.1.0</version>
+    <time>1763560527</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1318480</requestid>
+  </revision>
 </revisionlist>
