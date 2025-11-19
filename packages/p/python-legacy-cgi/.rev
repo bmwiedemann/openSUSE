@@ -38,4 +38,14 @@
   - Update BuildRequires from pyproject.toml</comment>
     <requestid>1282372</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f9a01e021327b48247b8f4f604a5873e</srcmd5>
+    <version>2.6.4</version>
+    <time>1763560229</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.6.4:
+  * Fixed #11 (Modern versions of apache dislike cgitb's header
+    reset trick).</comment>
+    <requestid>1318331</requestid>
+  </revision>
 </revisionlist>

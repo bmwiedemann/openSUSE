@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 17 21:16:04 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.4:
+  * Fixed #11 (Modern versions of apache dislike cgitb's header
+    reset trick).
+
+-------------------------------------------------------------------
 Tue Jun  3 08:19:37 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.6.3
