@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 18 22:09:37 UTC 2025 - Cor Blom <cornelis@solcon.nl>
+
+- Add upstream e98b6ad533360500528b48043e20c79f5cb67b07.patch to
+  fix build fix Qt 6.10 (contributed by aggplanta)
+
+-------------------------------------------------------------------
 Fri Jun  6 08:31:12 UTC 2025 - Cor Blom <cornelis@solcon.nl>
 
 - Update to 2.4.4:

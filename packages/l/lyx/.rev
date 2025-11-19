@@ -962,4 +962,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1285389</requestid>
   </revision>
+  <revision rev="116" vrev="2">
+    <srcmd5>8929ce7b8dc7422ee217d85a5e5720ca</srcmd5>
+    <version>2.4.4</version>
+    <time>1763560672</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream e98b6ad533360500528b48043e20c79f5cb67b07.patch to
+  fix build fix Qt 6.10 (contributed by aggplanta)</comment>
+    <requestid>1318508</requestid>
+  </revision>
 </revisionlist>

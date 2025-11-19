@@ -1,7 +1,7 @@
 #
 # spec file for package lyx
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ Source1:        lyxrc.dist
 Source2:        lyx.keyring
 Source3:        http://ftp.lyx.org/pub/lyx/stable/2.4.x/lyx-%{version}.tar.xz.sig
 Source4:        README.SUSE
+# PATCH-QSTRING
+Patch0:         e98b6ad533360500528b48043e20c79f5cb67b07.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bc
