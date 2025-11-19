@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 12 03:59:50 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python314.patch:
+  * Support Python 3.14 asyncio changes.
+
+-------------------------------------------------------------------
 Mon Nov 13 09:33:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - switch SLE15 build to the new python stack as only >= 3.7 is

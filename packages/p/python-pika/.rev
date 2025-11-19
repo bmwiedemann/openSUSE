@@ -251,4 +251,12 @@
     deprecated and will raise a DeprecationWarning. If you relied on</comment>
     <requestid>1125422</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>01d80ca7458138852ac9e55da78a4084</srcmd5>
+    <version>1.3.2</version>
+    <time>1763560834</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1318542</requestid>
+  </revision>
 </revisionlist>
