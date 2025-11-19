@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pynitrokey
-Version:        0.11.1
+Version:        0.11.2
 Release:        0
 Summary:        Python Library for Nitrokey devices
 License:        Apache-2.0 OR MIT
@@ -26,12 +26,6 @@ URL:            https://github.com/Nitrokey/pynitrokey
 Source:         https://files.pythonhosted.org/packages/source/p/pynitrokey/pynitrokey-%{version}.tar.gz
 Source1:        LICENSE-MIT
 Source2:        LICENSE-APACHE
-# https://github.com/Nitrokey/pynitrokey/issues/694
-# removed the patch content for poetry.lock
-Patch1:         allow_cffi_v2_dependency.patch
-# https://github.com/Nitrokey/pynitrokey/issues/696
-# removed the patch content for poetry.lock
-Patch2:         allow_cryptography_v46.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
@@ -44,7 +38,7 @@ BuildRequires:  %{python_module fido2 >= 2 with %python-fido2 < 3}
 # https://github.com/Nitrokey/pynitrokey/issues/601
 BuildRequires:  %{python_module hidapi >= 0.14.0.post1 with %python-hidapi < 0.14.0.post4}
 BuildRequires:  %{python_module libusb1 >= 3 with %python-libusb1 < 4}
-BuildRequires:  %{python_module nethsm >= 2 with %python-nethsm < 3}
+BuildRequires:  %{python_module nethsm >= 2.0.1 with %python-nethsm < 3}
 BuildRequires:  %{python_module nitrokey >= 0.4.0 with %python-nitrokey < 0.5}
 BuildRequires:  %{python_module nkdfu >= 0.2 with %python-nkdfu < 0.3}
 BuildRequires:  %{python_module pyusb >= 1.2 with %python-pyusb < 2}
@@ -63,7 +57,7 @@ Requires:       (python-cryptography >= 43 with python-cryptography < 47)
 Requires:       (python-fido2 >= 2 with python-fido2 < 3)
 Requires:       (python-hidapi >= 0.14.0.post1 with python-hidapi < 0.14.0.post4)
 Requires:       (python-libusb1 >= 3 with python-libusb1 < 4)
-Requires:       (python-nethsm >= 2 with python-nethsm < 3)
+Requires:       (python-nethsm >= 2.0.1 with python-nethsm < 3)
 Requires:       (python-nitrokey >= 0.4.0 with python-nitrokey < 0.5)
 Requires:       (python-nkdfu >= 0.2 with python-nkdfu < 0.3)
 Requires:       (python-pyusb >= 1.2 with python-pyusb < 2)

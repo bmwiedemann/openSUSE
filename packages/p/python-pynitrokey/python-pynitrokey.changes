@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov 18 14:17:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.11.2:
+  * Allow cffi v2 dependency by @robin-nitrokey in #695
+  * Allow cryptography v46 by @robin-nitrokey in #697
+  * PIV: Fix 9C key generation by @sosthene-nitrokey in #702
+  * Update pyscard in lock file by @mmerklinger in #704
+  * Add support for unauthenticated NetHSM shutdown by @mmerklinger
+    in #703
+- remove patches allow_cffi_v2_dependency.patch and
+  allow_cryptography_v46.patch
+
+-------------------------------------------------------------------
 Mon Oct 20 07:59:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - add patches allow_cffi_v2_dependency.patch and

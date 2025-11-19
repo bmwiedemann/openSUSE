@@ -167,4 +167,12 @@
     <comment>update to 0.11.1, requires netshm &gt;= 2</comment>
     <requestid>1312449</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>228e67a9c1d4fd5f034db1c68e837440</srcmd5>
+    <version>0.11.2</version>
+    <time>1763560476</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1318461</requestid>
+  </revision>
 </revisionlist>
