@@ -58,4 +58,16 @@
     <comment>- add sle15_python_module_pythons</comment>
     <requestid>1166151</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>62779d4fe4c1da47574e9ea2a436a475</srcmd5>
+    <version>0.10.0</version>
+    <time>1763560877</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.10.0:
+  * Removed Python2.7 support
+  * Lowest supported version is python 3.9
+  * Merged PR 131 - fixes lazy loading for Py3.14, fixes issue #133
+- Drop patch fix-tests.patch, merged upstream.</comment>
+    <requestid>1318546</requestid>
+  </revision>
 </revisionlist>

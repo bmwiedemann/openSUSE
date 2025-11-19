@@ -1,7 +1,7 @@
 #
 # spec file for package python-ttp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,17 +26,15 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-ttp%{psuffix}
-Version:        0.9.5
+Version:        0.10.0
 Release:        0
 Summary:        Template Text Parser
 License:        MIT
 URL:            https://github.com/dmulyalin/ttp
 Source:         https://github.com/dmulyalin/ttp/archive/refs/tags/%{version}.tar.gz#/ttp-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-tests.patch gh#dmulyalin/ttp#90
-Patch0:         fix-tests.patch
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1.0.0}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 %if %{with test}
 BuildRequires:  %{python_module Cerberus}
@@ -61,7 +59,6 @@ TTP is a Python library for semi-structured text parsing using templates.
 
 %prep
 %autosetup -p1 -n ttp-%{version}
-rm ttp/utils/load_python_exec_py2.py
 
 %build
 %if !%{with test}
@@ -96,7 +93,7 @@ popd
 %license LICENSE
 %python_alternative %{_bindir}/ttp
 %{python_sitelib}/ttp
-%{python_sitelib}/ttp-%{version}*-info
+%{python_sitelib}/ttp-%{version}.dist-info
 %endif
 
 %changelog
