@@ -13438,7 +13438,7 @@ unsorted:
   - libgda-ui-6_0-tools 
   - libgda-xslt-6_0-6_0_0 
   - libgdal-drivers 
-  - libgdal37 
+  - libgdal38 
   - libgdata-devel 
   - libgdbm6-32bit 
   - libgdbm_compat4-32bit 
@@ -15436,13 +15436,13 @@ unsorted:
   - libprofiler0 
   - libproj25 
   - libprometheus-cpp0_13 
-  - libprotobuf-lite32_1_0-32bit 
+  - libprotobuf-lite33_1_0-32bit 
   - libprotobuf-lite3_21_12 
   - libprotobuf-nanopb0 
-  - libprotobuf32_1_0-32bit 
+  - libprotobuf33_1_0-32bit 
   - libprotobuf3_21_12 
-  - libprotoc32_1_0 
-  - libprotoc32_1_0-32bit 
+  - libprotoc33_1_0 
+  - libprotoc33_1_0-32bit 
   - libprotoc3_21_12 
   - libproxy-devel 
   - libproxy-devel-doc 
@@ -16768,7 +16768,7 @@ unsorted:
   - libusrp1 
   - libusrsctp2 
   - libut1 
-  - libutf8_range-32_1_0-32bit 
+  - libutf8_range-33_1_0-32bit 
   - libutf8proc3 
   - libuuid-devel 
   - libuuid-devel-32bit 
@@ -23364,6 +23364,10 @@ unsorted:
   - pragha-plugins-devel 
   - prboom-plus 
   - predict 
+  - prek 
+  - prek-bash-completion 
+  - prek-fish-completion 
+  - prek-zsh-completion 
   - premake4 
   - presage 
   - presenterm 
@@ -27431,7 +27435,6 @@ unsorted:
   - python311-tabulate 
   - python311-tap.py 
   - python311-targetcli-fb 
-  - python311-tariff 
   - python311-taskgroup 
   - python311-tasklib 
   - python311-taskw 
@@ -31287,7 +31290,6 @@ unsorted:
   - python312-tabulate 
   - python312-tap.py 
   - python312-targetcli-fb 
-  - python312-tariff 
   - python312-taskgroup 
   - python312-tasklib 
   - python312-taskw 
@@ -35097,7 +35099,6 @@ unsorted:
   - python313-tabulate 
   - python313-tap.py 
   - python313-targetcli-fb 
-  - python313-tariff 
   - python313-taskgroup 
   - python313-tasklib 
   - python313-taskw 
@@ -36150,6 +36151,9 @@ unsorted:
   - qucs-s 
   - queue 
   - quick-webapps 
+  - quickjs 
+  - quickjs-devel 
+  - quickjs-docs 
   - quilt 
   - quimup 
   - quotatool 
