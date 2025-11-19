@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.17
-%define patchversion 6.17.7
-%define git_commit 5d304cd20b978ce2d3e95ea6b028c83f4206eaf9
+%define patchversion 6.17.8
+%define git_commit 0a31dc366f7b12fd7865963073808619e2de6b07
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -40,9 +40,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-zfcpdump
-Version:        6.17.7
+Version:        6.17.8
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g5d304cd
+Release:        <RELEASE>.g0a31dc3
 %else
 Release:        0
 %endif
@@ -79,6 +79,10 @@ BuildRequires:  dwarves >= 1.22
 BuildRequires:  %gcc_package
 # for objtool
 BuildRequires:  libelf-devel
+%if 0%{?suse_version} > 1600
+# for gendwarfksyms
+BuildRequires:  libdw-devel
+%endif
 # required for 50-check-kernel-build-id rpm check
 BuildRequires:  elfutils
 %ifarch %arm
@@ -1335,14 +1339,7 @@ echo "Kernel debuginfo type: ${DEBUG_INFO_TYPE}"
 	--set-str CONFIG_LOCALVERSION -%source_rel-%build_flavor \
 	--enable  CONFIG_SUSE_KERNEL \
 	$CONFIG_SUSE_KERNEL_RELEASED \
-	$CONFIG_SUSE_HAVE_STABLE_KABI \
-%if 0%{?__debug_package:1}
-	--enable  CONFIG_DEBUG_INFO
-%else
-	--disable CONFIG_DEBUG_INFO \
-	--disable CONFIG_DEBUG_INFO_"${DEBUG_INFO_TYPE}" \
-	--enable  CONFIG_DEBUG_INFO_NONE
-%endif
+	$CONFIG_SUSE_HAVE_STABLE_KABI
 
 if [ %CONFIG_MODULE_SIG = "y" ]; then
 	if [ -n "%certs" ] ; then

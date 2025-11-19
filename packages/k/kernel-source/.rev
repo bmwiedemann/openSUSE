@@ -7232,4 +7232,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.17.7 with fixed changelog and CVE updated refs; bugs: bsc#1012628 bsc#1252348 bsc#1252678 bsc#1252688 bsc#1252762 bsc#1252763 bsc#1252764 bsc#1252766 bsc#1252772 bsc#1252773 bsc#1252774 bsc#1252775 bsc#1252776 bsc#1252779 bsc#1252780 bsc#1252782 bsc#1252783 bsc#1252784 bsc#1252785 bsc#1252786 bsc#1252787 bsc#1252789 bsc#1252790 bsc#1252791 bsc#1252792 bsc#1252794 bsc#1252795 bsc#1252796 bsc#1252797 bsc#1252798 bsc#1252808 bsc#1252809 bsc#1252817 bsc#1252819 bsc#1252821 bsc#1252822 bsc#1252824 bsc#1252825 bsc#1252826 bsc#1252831 bsc#1252836 bsc#1252840 bsc#1252841 bsc#1252842 bsc#1252843 bsc#1252844 bsc#1252845 bsc#1252846 bsc#1252848 bsc#1252849 bsc#1252850 bsc#1252851 bsc#1252853 bsc#1252854 bsc#1252856 bsc#1252858 bsc#1252860 bsc#1252861 bsc#1252862 bsc#1252865 bsc#1252866 bsc#1252868 bsc#1252873 bsc#1252874 bsc#1252891 bsc#1252898 bsc#1252899 bsc#1252900 bsc#1252901 bsc#1252902 bsc#1252903 bsc#1252904 bsc#1252906 bsc#1252909 bsc#1252910 bsc#1252911 bsc#1252915 bsc#1252916 bsc#1252917 bsc#1252918 bsc#1252919 bsc#1252921 bsc#1252923 bsc#1252924 bsc#1252928</comment>
     <requestid>1315117</requestid>
   </revision>
+  <revision rev="810" vrev="1">
+    <srcmd5>7fa5403ac16ae61c53ec4b2b7742e036</srcmd5>
+    <version>6.17.8</version>
+    <time>1763560173</time>
+    <user>anag_factory</user>
+    <comment>6.17.8 &amp; do NOT use efidrm on x86_64 yet; bugs: bsc#1012628 bsc#1240624 bsc#1251930 bsc#1253721</comment>
+    <requestid>1318582</requestid>
+  </revision>
 </revisionlist>
