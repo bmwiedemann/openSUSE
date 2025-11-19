@@ -1,7 +1,7 @@
-Index: limnoria-2024.10.19/plugins/Fediverse/test.py
+Index: limnoria-2025.11.2/plugins/Fediverse/test.py
 ===================================================================
---- limnoria-2024.10.19.orig/plugins/Fediverse/test.py
-+++ limnoria-2024.10.19/plugins/Fediverse/test.py
+--- limnoria-2025.11.2.orig/plugins/Fediverse/test.py
++++ limnoria-2025.11.2/plugins/Fediverse/test.py
 @@ -33,6 +33,7 @@ import copy
  import json
  import functools
@@ -58,8 +58,8 @@ Index: limnoria-2024.10.19/plugins/Fediverse/test.py
      def testProfileUnknown(self):
          expected_requests = [
              (HOSTMETA_URL, HOSTMETA_DATA),
-@@ -401,6 +408,7 @@ class NetworklessFediverseTestCase(BaseF
-                 "<error: blah>: " + "@FirstAuthor I am replying to you",
+@@ -404,6 +411,7 @@ class NetworklessFediverseTestCase(BaseF
+                 "@FirstAuthor I am replying to you",
              )
  
 +    @unittest.skip("broken on OBS")

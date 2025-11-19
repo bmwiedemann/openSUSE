@@ -1,7 +1,7 @@
 #
 # spec file for package python-limnoria
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,13 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 Name:           python-limnoria
-Version:        2025.5.3
+Version:        2025.11.2
 Release:        0
 Summary:        A modified version of Supybot (an IRC bot and framework)
 License:        BSD-3-Clause
@@ -25,21 +30,21 @@ URL:            https://github.com/ProgVal/Limnoria
 Source:         https://files.pythonhosted.org/packages/source/l/limnoria/limnoria-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE Skip Fediverse webfinger tests that don't seem to mock correctly
 Patch0:         skip-fediverse-profile-tests.patch
-# full python for sqlite3 module
-BuildRequires:  %pythons
 BuildRequires:  %{python_module PySocks}
 BuildRequires:  %{python_module chardet}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module ecdsa}
 BuildRequires:  %{python_module feedparser}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module python-gnupg}
 BuildRequires:  %{python_module pytzdata}
 # pyxmpp2-scram not available, the code actually covers the non-availability
 #BuildRequires:  %%{python_module pyxmpp2-scram}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
+# full python for sqlite3 module
+BuildRequires:  %{pythons}
 BuildRequires:  coreutils-systemd
 BuildRequires:  fdupes
 BuildRequires:  procps
@@ -55,11 +60,16 @@ Requires:       python-python-dateutil
 Requires:       python-python-gnupg
 Requires:       python-pytzdata
 #Requires:       python-pyxmpp2-scram
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Provides:       Supybot = %{version}
 Obsoletes:      Supybot < 1.0
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -70,7 +80,6 @@ granularity. Numerous plugins are included.
 %prep
 %autosetup -p1 -n limnoria-%{version}
 sed -i "1,4{/\/usr\/bin\/python/d}" plugins/Debug/plugin.py
-sed -i "1,4{/\/usr\/bin\/env/d}" plugins/SedRegex/constants.py
 
 sed -Ei "1{\@^#!/usr/bin/env python3@d}" src/scripts/limnoria_*.py
 
@@ -100,6 +109,7 @@ do
   %python_clone -a %{buildroot}%{_bindir}/${ex}-reset-password
   %python_clone -a %{buildroot}%{_bindir}/${ex}-test
   %python_clone -a %{buildroot}%{_bindir}/${ex}-wizard
+  %python_group_libalternatives ${ex} ${ex}-adduser ${ex}-botchk ${ex}-plugin-create ${ex}-plugin-doc ${ex}-reset-password ${ex}-test ${ex}-wizard
 done
 
 %fdupes %{buildroot}%{_mandir}/man1/
@@ -124,6 +134,9 @@ export PYTHONPATH=%{buildroot}%{$python_sitelib}/
 
 %postun
 %{python_uninstall_alternative supybot limnoria}
+
+%pre
+%python_libalternatives_reset_alternative supybot limnoria
 
 %files %{python_files}
 %doc README.md

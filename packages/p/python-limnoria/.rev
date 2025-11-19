@@ -319,4 +319,20 @@ Add coreutils-systemd to BuildRequires for the `uptime` command needed for a tes
   + QuoteGrabs: fix SyntaxWarning (#1391)</comment>
     <requestid>1274209</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>3d77545036335620df83eb5296c63dd5</srcmd5>
+    <version>2025.11.2</version>
+    <time>1763560564</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1318473 from mcalabkova
+
+- update to 2025.11.2
+    * Use importlib.metadata instead of pkg_resources
+    * remove fallback code for old pythons
+    * Mention supybot.databases.plugins config vars from plugins that use them
+    * Fix fnmatch support in Python &gt;= 3.14
+    * SedRegex: move regex definition into sedregex.py and improve it
+  - Convert to libalternatives on SLE-16-based and newer systems</comment>
+    <requestid>1318487</requestid>
+  </revision>
 </revisionlist>
