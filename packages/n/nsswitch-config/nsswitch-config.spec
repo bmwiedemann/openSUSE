@@ -16,7 +16,7 @@
 #
 
 Name:           nsswitch-config
-Version:        0.0.5
+Version:        0.0.6
 Release:        0
 Summary:        Handling nsswitch.conf entries
 License:        GPL-2.0-or-later
@@ -38,11 +38,14 @@ nsswitch.conf file, which is normally located in the /etc directory.
 
 %install
 %meson_install
+install -D -d -m 0755 %{buildroot}%{_datadir}/nsswitch.conf.d
+install -D -m 0644 %{_builddir}/%{name}-%{version}/data/usr/share/nsswitch.conf.d/* %{buildroot}%{_datadir}/nsswitch.conf.d
 
 %files
 %doc README.md
 %{_bindir}/nsswitch-config
 %{_mandir}/man8/*.8%{?ext_man}
 %license COPYING
-
+%dir %{_datadir}/nsswitch.conf.d
+%{_datadir}/nsswitch.conf.d/*
 %changelog

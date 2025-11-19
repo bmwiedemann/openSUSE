@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 18 17:28:03 UTC 2025 - schubi@suse.com
+
+- Update to version 0.0.6:
+  * Crash while parsing empty values.
+
+-------------------------------------------------------------------
+Tue Nov 18 15:40:56 UTC 2025 - Stefan Schubert <schubi@suse.com>
+
+- Added snippeds to /usr/lib/nsswitch.conf.d directory.
+
+-------------------------------------------------------------------
 Wed Nov 12 11:42:07 UTC 2025 - schubi@suse.com
 
 - Update to version 0.0.5:

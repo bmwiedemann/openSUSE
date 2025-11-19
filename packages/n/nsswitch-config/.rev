@@ -15,4 +15,14 @@
 * Templates for creating nsswitch.conf</comment>
     <requestid>1317330</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cff02c9a554fb0a1131a3323ec7c454b</srcmd5>
+    <version>0.0.6</version>
+    <time>1763560542</time>
+    <user>anag_factory</user>
+    <comment>Version 0.0.6
+* --admin_changed: Showing more information.
+* Fix: Crash while parsing empty values</comment>
+    <requestid>1318485</requestid>
+  </revision>
 </revisionlist>
