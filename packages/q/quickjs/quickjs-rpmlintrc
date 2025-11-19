@@ -1,0 +1,4 @@
+#
+# static binary that qjsc currently depends on
+addFilter("devel-file-in-non-devel-package .*/usr/lib/quickjs/libquickjs.a")
+

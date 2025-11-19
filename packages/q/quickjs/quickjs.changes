@@ -1,0 +1,114 @@
+-------------------------------------------------------------------
+Tue Nov 18 01:35:26 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 2025-09-13:
+  * added JSON modules and import attributes
+  * added JS_PrintValue() API
+  * qjs: pretty print objects in print() and console.log()
+  * qjs: better promise rejection tracker heuristics
+  * added RegExp v flag
+  * added RegExp modifiers
+  * added RegExp.escape
+  * added Float16Array
+  * added Promise.try
+  * improved JSON parser spec conformance
+  * qjs: improved compatibility of std.parseExtJSON() with JSON5 and
+    accept JSON5 modules
+  * added JS_FreePropertyEnum() and JS_AtomToCStringLen() API
+  * added Error.isError()
+  * misc bug fixes
+
+-------------------------------------------------------------------
+Wed Jun 18 00:26:00 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 2025-04-26:
+  * removed the bignum extensions and qjscalc to simplify the code.
+    The BFCalc calculator (web version) can be used as a
+    replacement for qjscalc.
+  * new BigInt implementation optimized for small numbers
+  * added WeakRef, FinalizationRegistry and symbols as weakrefs
+  * added builtin float64 printing and parsing functions for more correctness
+  * faster repeated string concatenation
+  * qjs: promise unhandled rejections are fatal errors by default
+  * added column number in debug information
+  * removed the "use strip" extension
+  * qjs: added -s and --strip-source options
+  * qjsc: added -s and --keep-source options
+  * added JS_GetAnyOpaque()
+  * added more callbacks for exotic objects in JSClassExoticMethods
+  * misc bug fixes
+
+-------------------------------------------------------------------
+Fri Feb  9 23:22:54 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 2024-01-13:
+  * top-level-await support in modules
+  * allow 'await' in the REPL
+  * added Array.prototype.{with,toReversed,toSpliced,toSorted} and
+    TypedArray.prototype.{with,toReversed,toSorted}
+  * added String.prototype.isWellFormed and String.prototype.toWellFormed
+  * added Object.groupBy and Map.groupBy
+  * added Promise.withResolvers
+  * class static block
+  * 'in' operator support for private fields
+  * optional chaining fixes
+  * added RegExp 'd' flag
+  * fixed RegExp zero length match logic
+  * fixed RegExp case insensitive flag
+  * added os.getpid() and os.now()
+  * added cosmopolitan build
+  * misc bug fixes
+- includes changes from 2023-12-09:
+  * added Object.hasOwn, {String|Array|TypedArray}.prototype.at,
+    {Array|TypedArray}.prototype.findLast{Index}
+  * BigInt support is enabled even if CONFIG_BIGNUM disabled
+  * updated to Unicode 15.0.0
+  * misc bug fixes
+
+-------------------------------------------------------------------
+Thu Apr  6 17:32:39 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Requires at least gcc 7 to get stdatomic.h
+
+-------------------------------------------------------------------
+Sat Mar 27 19:38:00 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 2021-03-27:
+  * faster Array.prototype.push and Array.prototype.unshift
+  * added JS_UpdateStackTop()
+  * fixed Windows console
+  * misc bug fixes
+
+-------------------------------------------------------------------
+Mon Nov 23 20:50:09 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 2020-11-08:
+  * improved function parameter initializers
+  * added std.setenv(), std.unsetenv() and std.getenviron()
+  * added JS_EvalThis()
+  * misc bug fixes
+- includes 2020-09-06:
+  * added logical assignment operators
+  * added IsHTMLDDA support
+  * faster for-of loops
+  * os.Worker now takes a module filename as parameter
+  * qjsc: added -D option to compile dynamically loaded modules or
+    workers
+  * misc bug fixes
+- includes 2020-07-05:
+  * modified JS_GetPrototype() to return a live value
+  * REPL: support unicode characters larger than 16 bits
+  * added os.Worker
+  * improved object serialization
+  * added std.parseExtJSON
+  * misc bug fixes
+- add qjscalc binary
+- pass optflags to build
+- cleanup build steps
+- cleanup description
+
+-------------------------------------------------------------------
+Sat May 16 16:16:45 UTC 2020 - Duncan Mac-Vicar <dmacvicar@suse.de>
+
+- Initial package
+
