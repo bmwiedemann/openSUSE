@@ -19,7 +19,7 @@
 
 %define  _name  sddm_conf
 Name:           sddm-conf
-Version:        0.3.0
+Version:        0.4.0
 Release:        0
 Summary:        SDDM configuration editor
 License:        MIT
@@ -30,7 +30,6 @@ BuildRequires:  extra-cmake-modules >= 6.0
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  qtilitools
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Widgets)
@@ -51,7 +50,6 @@ C++.
 
 %install
 %kf6_install
-%suse_update_desktop_file -r -G "Display Manager Configuration" -N "SDDM Configuration" %{_name} Qt Settings System
 
 %find_lang %{name} --with-qt
 
