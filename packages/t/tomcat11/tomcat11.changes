@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 18 18:41:24 UTC 2025 - Michele Bussolotto <michele.bussolotto@suse.com>
+
+- make catalina.sh %config(noreplace) (bsc#1253460) 
+
+-------------------------------------------------------------------
 Thu Nov  6 16:11:41 UTC 2025 - Ricardo Mestre <ricardo.mestre@suse.com>
 
 - Update to Tomcat 11.0.13
