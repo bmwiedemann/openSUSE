@@ -19,7 +19,7 @@
 
 
 Name:           opensuse-migration-tool
-Version:        20251017.e28f94c
+Version:        20251029.ed0d12d
 Release:        0
 Summary:        Migration and Upgrade tool for openSUSE
 License:        Apache-2.0

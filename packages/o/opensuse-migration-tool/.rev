@@ -122,4 +122,16 @@ migrations as well as point release upgrades
   * fix: remove the check for x86-64-v3 flag xsave from the v2 check</comment>
     <requestid>1312004</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f551619b318087a047a74691d398aca2</srcmd5>
+    <version>20251029.ed0d12d</version>
+    <time>1763560512</time>
+    <user>anag_factory</user>
+    <comment>- Drop accidentally created submodule
+  * Add opensuse-migration-tool to .gitignore
+
+- Update to version 20251029.ed0d12d:
+  * Update opensuse-migration-tool</comment>
+    <requestid>1318477</requestid>
+  </revision>
 </revisionlist>

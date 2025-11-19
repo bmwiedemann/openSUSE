@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov  7 11:05:51 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Drop accidentally created submodule
+  * Add opensuse-migration-tool to .gitignore
+
+-------------------------------------------------------------------
+Wed Oct 29 20:31:04 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20251029.ed0d12d:
+  * Update opensuse-migration-tool
+
+-------------------------------------------------------------------
 Fri Oct 17 11:28:12 UTC 2025 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20251017.e28f94c:
