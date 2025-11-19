@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Nov 17 16:46:34 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.31:
+  * btf_encoder: Move ambiguous_addr flag to elf_function
+  * btf_encoder: Group all function ELF syms by function name
+  * btf_encoder: Fix elf_functions cleanup on error
+  * gitignore: Ignore all the test kmod build-related files
+  * tests: Add some tests validating skipped
+    functions due to uncertain arg location
+  * btf_encoder: Skip functions consuming packed
+    structs passed by value on stack
+  * pahole: Do not return an error when printing only a specific
+    class
+  * pahole: Don't fail when encoding BTF on an object with no
+    DWARF info
+  * github CI: Add comparison of generated BTF functions between
+    baseline, change
+  * github CI: Do not build pahole as part of dwarves-ci setup
+  * btf_loader: Fix smallest offset in case of bitfields
+  * btf_loader: Infer alignment for zero-length arrays
+  * CMakeLists.txt: Remove custom `LIB_INSTALL_DIR` handling
+  * Fix pahole segfault with --show_reorg_steps option
+  * pahole: Sync with libbpf mainline
+
+-------------------------------------------------------------------
 Thu Jun  5 19:42:00 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.30
