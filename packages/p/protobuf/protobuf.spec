@@ -20,7 +20,7 @@
 %define tarname protobuf
 # see cmake/abseil-cpp.cmake and src/google/protobuf/port_def.inc
 %define abseil_min_version 20250512.1
-%global         sover 32_1_0
+%global         sover 33_1_0
 %if 0%{?gcc_version} < 11
 %define with_gcc 11
 %endif
@@ -66,7 +66,7 @@
 %global protoc_arch sparc_64
 %endif
 Name:           protobuf
-Version:        32.1
+Version:        33.1
 Release:        0
 Summary:        Protocol Buffers - Google's data interchange format
 License:        BSD-3-Clause
@@ -74,8 +74,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/protocolbuffers/protobuf
 Source0:        https://github.com/protocolbuffers/protobuf/releases/download/v%{version}/%{tarname}-%{version}.tar.gz
 Source1:        baselibs.conf
-# PATCH-FIX-UPSTREAM - https://github.com/protocolbuffers/protobuf/pull/23194
-Patch1:         protobuf-gh23194.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc%{?with_gcc}-c++

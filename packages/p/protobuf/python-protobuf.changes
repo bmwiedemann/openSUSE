@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Nov 16 18:41:50 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 33.1:
+  * C++: Fix Any hasbit consistency issue in OSS
+  * Java: Expose NestedInFileClass naming helpers for Java immutable
+
+-------------------------------------------------------------------
+Fri Oct 17 16:21:36 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 33.0:
+  * Compiler: disable symbol visibility enforcement by default in
+    C++ runtime
+  * C++: JSON parser/serializer bug fixes and code-level fixes
+  * Python: Bug fixes: crashes, parser fixes
+  * Java: Restored compatibility of runtime with gencode created
+    with protoc <3.21
+  * Java: Restore ABI compatibility for extension methods which was
+    previously (knowingly) broken with 4.x
+- drop protobuf-gh23194.patch, included upstream
+- java: turn protobuf-java-util-removescope.patch from sources into
+  a patch, rebase and fix rpm autopatch
+
+-------------------------------------------------------------------
 Sat Sep 20 17:11:43 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 32.1:

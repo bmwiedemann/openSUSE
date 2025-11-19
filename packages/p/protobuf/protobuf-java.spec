@@ -18,9 +18,8 @@
 
 
 %define tarname protobuf
-%define patchjuname protobuf-java-util-removescope.patch
 Name:           protobuf-java
-Version:        32.1
+Version:        33.1
 Release:        0
 Summary:        Java Bindings for Google Protocol Buffers
 License:        BSD-3-Clause
@@ -30,7 +29,7 @@ Source0:        https://github.com/protocolbuffers/protobuf/releases/download/v%
 Source1:        https://repo1.maven.org/maven2/com/google/protobuf/%{name}/4.%{version}/%{name}-4.%{version}.pom
 Source2:        https://repo1.maven.org/maven2/com/google/protobuf/%{name}lite/4.%{version}/%{name}lite-4.%{version}.pom
 Source3:        https://repo1.maven.org/maven2/com/google/protobuf/%{name}-util/4.%{version}/%{name}-util-4.%{version}.pom
-Source4:        %{patchjuname}
+Patch0:         protobuf-java-util-removescope.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
@@ -79,19 +78,14 @@ Group:          Documentation/HTML
 This package contains the API documentation for %{name}.
 
 %prep
-%autosetup -p1 -n %{tarname}-%{version}
-
-# The previous blank line is crucial for older system being able
-# to use the autosetup macro
+%setup -q -n %{tarname}-%{version}
+cp %{SOURCE1} java/core/pom.xml
+cp %{SOURCE2} java/lite/pom.xml
+cp %{SOURCE3} java/util/pom.xml
+%autopatch -p1
 
 pushd java
-cp %{SOURCE1} core/pom.xml
-cp %{SOURCE2} lite/pom.xml
-cp %{SOURCE3} util/pom.xml
-cp %{SOURCE4} util/%{patchjuname}
-pushd util
-patch -p0 < %{patchjuname}
-popd
+
 %pom_disable_module kotlin
 %pom_disable_module kotlin-lite
 %pom_remove_plugin :animal-sniffer-maven-plugin

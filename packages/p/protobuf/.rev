@@ -956,4 +956,14 @@
     <comment></comment>
     <requestid>1311688</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>471fedd2d7f1f5d5aab2bc50b3e902c1</srcmd5>
+    <version>33.1</version>
+    <time>1763560248</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1318291 from AndreasStieger
+
+fix baselibs</comment>
+    <requestid>1318350</requestid>
+  </revision>
 </revisionlist>
