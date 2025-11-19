@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Tue Nov 18 22:31:32 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Remove fusion 1.2.9 git files
+
+-------------------------------------------------------------------
+Tue Nov 18 20:39:55 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Remove fix-build-qt-6.10.patch (upstreamed)
+
+-------------------------------------------------------------------
+Tue Nov 18 20:35:00 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to 0.0.38~git20251029:
+  * Qt: fix TSX warning style
+  * VK: cache recording image
+  * GL: flip overlays vertically during recordings
+  * GL: only create new texture when necessary
+  * VK: add memory barriers to copy_image
+  * overlays: add record with overlays setting to settings dialog
+  * overlays: add record with overlays setting to home menu
+  * Vk: allow to record overlays
+  * GL: allow to record overlays
+  * Add new option for recording overlays
+  * Use move semantics for present_frame
+  * Update fusion to 1.2.9
+  * [openal-soft] Fix malloc/free in fmtlib
+  * vk: Filter out re-bar usage from memory pressure watchdog
+  * SaveStates/SPU-LLVM: Fix SPU Access Violations on load
+  * vk: Make best-effort attempt to utilize the low-latency pool
+  * vm: Deallocate memory early, check no PS3 memory leaks
+  * More communication id validation changes
+  * Improve sceNpSignalingGetLocalNetInfo
+  * Fix build with Qt 6.10
+  * Relax SceNpCommunicationId validation
+  * SaveState Manager: Add option to boot last savestate
+  * SaveState Manager: Format specially close dates
+  * SaveState Manager: Fix game specific filtering
+  * vk: Do not access async scheduler if not explicitly initialized
+  * vk: Fix broken bound object comparison
+  * vk: Make buffer objects uniquely identifiable
+  * vk: Use unique resource ids on buffer views
+  * vk: Rework the unique resource id system and apply it to buffer views
+  * overlays: allow to update messages by id instead of text
+
+-------------------------------------------------------------------
 Fri Oct 17 14:50:30 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update fix-build-qt-6.10.patch

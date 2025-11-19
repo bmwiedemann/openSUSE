@@ -1186,4 +1186,14 @@
     <comment></comment>
     <requestid>1312065</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>82aef933b7eae531975e235c33f316d0</srcmd5>
+    <version>0.0.38~git20251029</version>
+    <time>1763560655</time>
+    <user>anag_factory</user>
+    <comment>- Remove fix-build-qt-6.10.patch (upstreamed)
+- Update to 0.0.38~git20251029
+</comment>
+    <requestid>1318514</requestid>
+  </revision>
 </revisionlist>
