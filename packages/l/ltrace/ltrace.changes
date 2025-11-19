@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 17 16:41:54 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.1:
+  * ** Bugfixes
+  * - include config.h in more cases to fix LTO builds
+
+-------------------------------------------------------------------
 Mon Sep 15 19:06:55 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Update to ltrace 0.8.0
@@ -57,7 +64,7 @@ Fri Apr  9 12:27:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - add ltrace-0.7.91-ppc64le-scv.patch from Fedora
 - spec-cleaner
-- add timeout to testsuite run, it is non-fatal anyway 
+- add timeout to testsuite run, it is non-fatal anyway
 
 -------------------------------------------------------------------
 Mon Dec 14 17:01:27 UTC 2020 - Sarah Julia Kriesch <sarah.kriesch@ibm.com>
@@ -512,7 +519,7 @@ Thu Apr 14 12:17:20 CEST 2005 - pth@suse.de
 -------------------------------------------------------------------
 Mon Apr  4 12:24:09 CEST 2005 - pth@suse.de
 
-- Update to ltrace 0.3.36: 
+- Update to ltrace 0.3.36:
   - All SUSE patches integrated
   - Alpha support,
   - Uses elfutils.
@@ -560,7 +567,7 @@ Fri Jun 13 12:38:20 CEST 2003 - mmj@suse.de
 -------------------------------------------------------------------
 Mon Jun  2 00:32:43 CEST 2003 - ro@suse.de
 
-- remove unpackaged files from buildroot 
+- remove unpackaged files from buildroot
 
 -------------------------------------------------------------------
 Fri Sep 20 20:39:54 CEST 2002 - agruen@suse.de
@@ -596,7 +603,7 @@ Mon Nov 26 15:25:36 CET 2001 - uli@suse.de
 -------------------------------------------------------------------
 Thu Jul 19 19:24:45 CEST 2001 - uli@suse.de
 
-- added PPC port by Anton Blanchard 
+- added PPC port by Anton Blanchard
 
 -------------------------------------------------------------------
 Tue Apr  3 09:32:11 CEST 2001 - bk@suse.de

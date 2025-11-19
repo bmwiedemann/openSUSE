@@ -464,4 +464,19 @@
 - Enable build on loongarch64 (forwarded request 1305037 from Andreas_Schwab)</comment>
     <requestid>1305038</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>fe707aca8d9fb9dd2caa48541de903b6</srcmd5>
+    <version>0.8.1</version>
+    <time>1763560192</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.8.1:
+  * ** Bugfixes
+  * - include config.h in more cases to fix LTO builds
+
+- add timeout to testsuite run, it is non-fatal anyway
+- Update to ltrace 0.3.36:
+- remove unpackaged files from buildroot
+- added PPC port by Anton Blanchard</comment>
+    <requestid>1318282</requestid>
+  </revision>
 </revisionlist>

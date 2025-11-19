@@ -17,13 +17,13 @@
 
 
 Name:           ltrace
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        Library and system call tracer for programs
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Debuggers
 URL:            https://ltrace.org/
-Source:         ltrace-%{version}.tar.bz2
+Source:         https://gitlab.com/cespedes/ltrace/-/archive/%{version}/ltrace-%{version}.tar.gz
 Source2:        baselibs.conf
 Patch3:         ppc-ptrace.patch
 Patch5:         gcc9-printf-s-null-argument.patch
@@ -53,7 +53,7 @@ This is still a work in progress, so, for example, the tracking to
 child processes may fail or some things may not work as expected.
 
 %prep
-%autosetup -n %{name}-%{name}-%{version} -p1
+%autosetup -p1
 
 %build
 ./autogen.sh
