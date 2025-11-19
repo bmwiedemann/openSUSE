@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 19 04:16:56 UTC 2025 - william.brown@suse.com
+
+- Update to version 1.8.1~git0.3d1bdfd13:
+  * Release 1.8.1
+  * Small fixes (#3965)
+  * Make log messages more verbose for issues with resources server (#3954)
+  * unixd_tasks: update home alias symlink conditionally and atomically (#3947)
+  * Manually handle form bytes to allow optional encoding (#3968)
+  * Improve handling of ready event (#3967)
+  * Fix typo in kanidm-ldap-sync (#3964)
+
+-------------------------------------------------------------------
 Thu Nov 13 04:50:16 UTC 2025 - William Brown <william.brown@suse.com>
 
 - Resolve Leap:15 build issues
