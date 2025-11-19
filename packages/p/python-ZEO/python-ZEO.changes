@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 17 10:43:58 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 6.1
+  * Add support for Python 3.13.
+  * Drop support for Python 3.7, 3.8.
+  * Drop ``ZEO.monitor.zeo_version`` as it is unused across all
+    zopefoundation packages.
+  * No longer use deprecated ``pkg_resources``.
+- Adjust upstream source name in spec file
+
+-------------------------------------------------------------------
 Wed Mar 26 02:05:02 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Lowercase metadata directory name.

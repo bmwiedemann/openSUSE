@@ -16,14 +16,14 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%{?sle15_python_module_pythons}
 Name:           python-ZEO
-Version:        6.0.0
+Version:        6.1
 Release:        0
 Summary:        Client-Server storage implementation for ZODB
 License:        ZPL-2.1
 URL:            https://github.com/zopefoundation/ZEO
-Source:         https://files.pythonhosted.org/packages/source/Z/ZEO/ZEO-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/z/zeo/zeo-%{version}.tar.gz
 BuildRequires:  %{python_module ZConfig}
 BuildRequires:  %{python_module ZODB >= 5.5.1}
 BuildRequires:  %{python_module manuel}
@@ -64,7 +64,7 @@ Provides:       %{python_module ZEO-doc = %{version}}
 This package contains documentation files for %{name}.
 
 %prep
-%autosetup -p1 -n ZEO-%{version}
+%autosetup -p1 -n zeo-%{version}
 
 # delete backup files
 find . -name "*~" -print -delete

@@ -179,4 +179,20 @@ Requires python-setuptools 78 to build successfully.
 </comment>
     <requestid>1264857</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>877f3721a99398a6ce77f5175cc71d02</srcmd5>
+    <version>6.1</version>
+    <time>1763560556</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1318219 from glaubitz
+
+- Update to 6.1
+    * Add support for Python 3.13.
+    * Drop support for Python 3.7, 3.8.
+    * Drop ``ZEO.monitor.zeo_version`` as it is unused across all
+      zopefoundation packages.
+    * No longer use deprecated ``pkg_resources``.
+  - Adjust upstream source name in spec file</comment>
+    <requestid>1318486</requestid>
+  </revision>
 </revisionlist>
