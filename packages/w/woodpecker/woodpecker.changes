@@ -1,4 +1,136 @@
 -------------------------------------------------------------------
+Wed Nov 19 05:55:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.12.0:
+  * Security
+    - chore(deps): update dependency vite to v7.1.11 [security]
+      [#5660]
+  * Enhancement
+    - feat(bitbucketserver): get changes from all commits in a
+      single push event [#5748]
+    - Support for file changes in Bitbucket Cloud [#5730]
+    - feat(agent): log agent version on startup [#5724]
+    - Add Header User-Agent for request client [#5664]
+    - Switch from BoolTrue to optional.Option[bool] [#5693]
+    - Enhancement log stream reading and writing and handle new
+      lines and max-size [#5683]
+    - Make local backend work with cli exec [#4102]
+    - Make pipeline/frontend/yaml/* types able to be marshaled back
+      to YAML [#1835]
+    - Add log service addon [#5507]
+    - Support multiple users with same login name but different
+      forges [#5612]
+    - Release linux/riscv64 binaries [#5663]
+  * Bug Fixes
+    - Fix crash when a HTTP/2 client goes away on SSE streams
+      [#5738]
+    - Add created icon [#5747]
+    - Fix badge label padding [#5725]
+    - Fix workflow path filter for GitHub [#5721]
+    - Fix secret on new forge [#5715]
+    - Revert to forge internal implementation of pagination for
+      Repos() and Teams() for gitea/forgejo [#5679]
+    - fix: panic due to an invalid memory address when
+      injectSecretRecursive encounters nil values [#5699]
+    - Fix so agents don't need to specify a required label twice
+      [#5684]
+    - Fix nil pointer dereference during GitHub Hook parsing
+      [#5681]
+    - Allow username to be used with multiple forges [#5676]
+    - Create GitHub forge via WebUI fails to be loaded [#5675]
+    - Bitbucket: ignore push hooks with no changes propperly
+      [#5672]
+    - fix(bitbucketdatacenter): prevent adding new repos with empty
+      branch [#5669]
+    - cli: show description of default value for
+      --backend-local-temp-dir instead of value [#5656]
+  * Documentation
+    - Add docs for 3.12 [#5763]
+    - chore(deps): lock file maintenance [#5760]
+    - chore(deps): update docs npm deps non-major [#5752]
+    - chore(deps): update docs npm deps non-major [#5733]
+    - Fix typo in about.md [#5716]
+    - docs: add warning about 27-axis matrix limit [#5700]
+    - chore(deps): update dependency isomorphic-dompurify to
+      v2.31.0 [#5709]
+    - chore(deps): update dependency @types/node to v24 [#5706]
+    - chore(deps): update docs npm deps non-major [#5701]
+    - Update path to plugins moved to woodpecker-community [#5698]
+    - chore(deps): update docs npm deps non-major [#5688]
+    - docs(plugins): add github-app-token and github-comment
+      plugins to repository [#5671]
+  * Dependency
+    - fix(deps): update module github.com/urfave/cli/v3 to v3.6.1
+      [#5759]
+    - chore(deps): update dependency vue-tsc to v3.1.4 [#5758]
+    - fix(deps): update module github.com/google/go-github/v78 to
+      v79 [#5757]
+    - fix(deps): update module github.com/docker/cli to v29 [#5756]
+    - chore(deps): update postgres docker tag to v18.1 [#5755]
+    - chore(deps): update web npm deps non-major [#5754]
+    - chore(deps): update pre-commit hook golangci/golangci-lint to
+      v2.6.2 [#5753]
+    - chore(deps): update dependency golangci/golangci-lint to
+      v2.6.2 [#5751]
+    - fix(deps): update golang-packages [#5746]
+    - fix(deps): update golang-packages [#5745]
+    - fix(deps): update module github.com/urfave/cli/v3 to v3.6.0
+      [#5743]
+    - chore(deps): lock file maintenance [#5744]
+    - fix(deps): update golang-packages [#5741]
+    - chore(deps): update dependency simple-icons to v15.20.0
+      [#5742]
+    - fix(deps): update module github.com/google/go-github/v77 to
+      v78 [#5739]
+    - fix(deps): update module github.com/google/go-github/v76 to
+      v77 [#5737]
+    - fix(deps): update dependency marked to v17 [#5736]
+    - chore(deps): update web npm deps non-major [#5735]
+    - chore(deps): update pre-commit hook golangci/golangci-lint to
+      v2.6.1 [#5734]
+    - chore(deps): update dependency golangci/golangci-lint to
+      v2.6.1 [#5732]
+    - chore(deps): update dependency golang to v1.25.4 [#5731]
+    - fix(deps): update golang-packages to v28.5.2+incompatible
+      [#5723]
+    - fix(deps): update module gitlab.com/gitlab-org/api/client-go
+      to v0.159.0 [#5720]
+    - fix(deps): update module gitlab.com/gitlab-org/api/client-go
+      to v0.158.0 [#5718]
+    - chore(deps): lock file maintenance [#5711]
+    - chore(deps): update dependency golangci/golangci-lint to
+      v2.6.0 [#5702]
+    - chore(deps): update web npm deps non-major [#5705]
+    - fix(deps): update module github.com/yaronf/httpsign to v0.4.1
+      [#5708]
+    - chore(deps): update node.js to v24 [#5707]
+    - chore(deps): update pre-commit hook golangci/golangci-lint to
+      v2.6.0 [#5704]
+    - chore(deps): update gitea/gitea docker tag to v1.25 [#5703]
+    - fix(deps): update module gitlab.com/gitlab-org/api/client-go
+      to v0.157.1 [#5697]
+    - chore(deps): lock file maintenance [#5695]
+    - chore(deps): update web npm deps non-major [#5694]
+    - fix(deps): update dependency @vueuse/core to v14 [#5692]
+    - chore(deps): update dependency vitest to v4 [#5691]
+    - chore(deps): update docker.io/mysql docker tag to v9.5.0
+      [#5690]
+    - chore(deps): update web npm deps non-major [#5689]
+    - chore(deps): update dependency mvdan/gofumpt to v0.9.2
+      [#5687]
+    - fix(deps): update github.com/urfave/cli-docs/v3 digest to
+      72b87d1 [#5686]
+    - fix(deps): update module code.gitea.io/sdk/gitea to v0.22.1
+      [#5682]
+    - fix(deps): update module github.com/urfave/cli/v3 to v3.5.0
+      [#5668]
+    - fix(deps): update module xorm.io/xorm to v1.3.11 [#5662]
+    - chore(deps): lock file maintenance [#5657]
+  * Misc
+    - Also create image preview on label change only [#5673]
+    - Add migration tests for postgres [#669]
+
+-------------------------------------------------------------------
 Mon Oct 20 05:40:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.11.0:
