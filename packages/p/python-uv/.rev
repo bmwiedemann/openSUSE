@@ -1680,4 +1680,27 @@
     <comment></comment>
     <requestid>1318278</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>b4d38100c779a9cabdd0aa6140492162</srcmd5>
+    <version>0.9.10</version>
+    <time>1763561053</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.9.10
+ * Enhancements
+  * Add support for SSL_CERT_DIR 
+  * Enforce UTF‑8-encoded license files during uv build 
+  * Error when a project.license-files glob matches nothing 
+  * pip install --target (and sync) install Python if necessary 
+  * Account for python_downloads_json_url in pre-release Python version warnings 
+  * Support HTTP/HTTPS URLs in uv python --python-downloads-json-url 
+ * Preview features
+  * Add support for --upgrade in uv python install 
+  * Fix handling of python install --default for pre-release Python versions 
+  * Add uv workspace list to list workspace members 
+ * Bug fixes
+  * Don't check file URLs for ambiguously parsed credentials 
+ * Documentation
+  * Add a &quot;storage&quot; reference document</comment>
+    <requestid>1318475</requestid>
+  </revision>
 </revisionlist>

@@ -1,6 +1,7 @@
 #
 # spec file for package python-uv
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -33,7 +34,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-uv
-Version:        0.9.9
+Version:        0.9.10
 Release:        0
 Summary:        A Python package installer and resolver, written in Rust
 License:        Apache-2.0 OR MIT
