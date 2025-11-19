@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 19 01:51:39 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 4.6:
+  * viewer: Added configurable padding for info layer;
+  * viewer: Added zoom into mouse position;
+  * viewer: Added action for setting image position;
+  * jpeg: Fixed error decoding some images;
+  * drm: Added configuration for node/connector/mode;
+  * drm: Fixed handling page flip.
+
+-------------------------------------------------------------------
 Wed Jul  9 18:14:28 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 4.5:
