@@ -1,7 +1,7 @@
 #
 # spec file for package efl
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %define physics_present 1
 %endif
 %define xinput22_present 1
-%ifarch %ix86 x86_64 aarch64 %{arml} ppc
+%ifarch %ix86 x86_64 aarch64 %{arml} ppc riscv64
 %if !0%{?suse_version} || 0%{?is_opensuse}
 %define luajit_present 1
 %endif
@@ -218,7 +218,7 @@ BuildRequires:  libpoppler-devel
 %if 0%{?suse_version}
 BuildRequires:  update-desktop-files
 %endif
-%ifarch %{ix86} x86_64 ppc ppc64 ppc64le s390x %{arm} aarch64
+%ifarch %{ix86} x86_64 ppc ppc64 ppc64le s390x %{arm} aarch64 riscv64
 BuildRequires:  valgrind
 %endif
 %if 0%{?physics_present}

@@ -529,4 +529,12 @@ Needed for poppler 24.06 - where that requested library actually no longer exist
     <comment></comment>
     <requestid>1272273</requestid>
   </revision>
+  <revision rev="58" vrev="36">
+    <srcmd5>123bf4140df0dff19d18529e8b1e3d7b</srcmd5>
+    <version>unknown</version>
+    <time>1763560258</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1318417</requestid>
+  </revision>
 </revisionlist>

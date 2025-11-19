@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 27 16:52:12 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Enable luajit and valgrind on riscv64
+
+-------------------------------------------------------------------
 Wed Apr 23 21:49:13 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - to fix gcc-15 compile time errors, add efl-1.26.3-header.patch
