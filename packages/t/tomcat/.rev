@@ -1147,4 +1147,12 @@ can be accepted after ecj-4.2.1 version upgrade
     <comment>9.0.111</comment>
     <requestid>1316080</requestid>
   </revision>
+  <revision rev="124" vrev="2">
+    <srcmd5>cdc249935b7b69b85f8deaf1a775a2b2</srcmd5>
+    <version>9.0.111</version>
+    <time>1763560598</time>
+    <user>anag_factory</user>
+    <comment>make catalina.sh %config(noreplace) (bsc#1253460)</comment>
+    <requestid>1318491</requestid>
+  </revision>
 </revisionlist>
