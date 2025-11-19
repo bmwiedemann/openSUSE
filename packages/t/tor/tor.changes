@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 12 03:28:25 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- 0.4.8.20
+  * Add a new hardening compiler flag -fcf-protection=full
+  * Fix the root cause of some conflux fragile asserts
+  * Fix a series of conflux edge cases
+
+-------------------------------------------------------------------
 Wed Oct  8 07:42:37 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.de>
 
 - 0.4.8.19
