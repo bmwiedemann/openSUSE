@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov 14 13:36:38 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove dbus-1-glib, it's a shared library and thus pulled in by
+  applications requring it automatically
+
+-------------------------------------------------------------------
+Fri Nov 14 08:44:24 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove dbus-1-x11, doesn't work with dbus-broker [bsc#1253497]
+
+-------------------------------------------------------------------
 Fri Aug 22 10:26:07 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - clean up recommends: no longer recommend inexitsing packages:

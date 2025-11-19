@@ -1005,8 +1005,6 @@ Requires:       xorg-x11-essentials
 Recommends:     cabextract
 # Bug 424707 - Feature "Command not found" for openSUSE by default
 Recommends:     command-not-found
-Recommends:     dbus-1-glib
-Recommends:     dbus-1-x11
 Recommends:     dialog
 Recommends:     fontconfig
 Recommends:     fonts-config

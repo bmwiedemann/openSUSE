@@ -1188,4 +1188,12 @@ Ultimately, this is a NO-OP change, as the recommends were simply ignored
 by zypper, as no packages with those names exist</comment>
     <requestid>1300960</requestid>
   </revision>
+  <revision rev="137" vrev="21">
+    <srcmd5>6bf5fd4c22ce9d1098a4beeb93e9594f</srcmd5>
+    <version>20241218</version>
+    <time>1763560182</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1317838</requestid>
+  </revision>
 </revisionlist>
