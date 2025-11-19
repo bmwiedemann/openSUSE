@@ -1,4 +1,180 @@
 -------------------------------------------------------------------
+Tue Nov 18 18:33:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 10.22.0:
+  * Minor Changes
+    - Added support for trustPolicyExclude #10164.
+      You can now list one or more specific packages or versions
+      that pnpm should allow to install, even if those packages
+      don't satisfy the trust policy requirement. For example:
+
+        trustPolicy: no-downgrade
+        trustPolicyExclude:
+          - chokidar@4.0.3
+          - webpack@4.47.0 || 5.102.1
+
+    - Allow to override the engines field on publish by the
+      publishConfig.engines field.
+  * Patch Changes
+    - Don't crash when two processes of pnpm are hardlinking the
+      contents of a directory to the same destination
+      simultaneously #10179.
+
+-------------------------------------------------------------------
+Tue Nov 18 18:26:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 10.21.0:
+  * Minor Changes
+    - Node.js Runtime Installation for Dependencies. Added support
+      for automatic Node.js runtime installation for dependencies.
+      pnpm will now install the Node.js version required by a
+      dependency if that dependency declares a Node.js runtime in
+      the "engines" field. For example:
+
+        {
+          "engines": {
+            "runtime": {
+              "name": "node",
+              "version": "^24.11.0",
+              "onFail": "download"
+            }
+          }
+        }
+
+      If the package with the Node.js runtime dependency is a CLI
+      app, pnpm will bind the CLI app to the required Node.js
+      version. This ensures that, regardless of the globally
+      installed Node.js instance, the CLI will use the compatible
+      version of Node.js.
+      If the package has a postinstall script, that script will be
+      executed using the specified Node.js version.
+      Related PR: #10141
+    - Added a new setting: trustPolicy.
+      When set to no-downgrade, pnpm will fail installation if a
+      package’s trust level has decreased compared to previous
+      releases — for example, if it was previously published by a
+      trusted publisher but now only has provenance or no trust
+      evidence.
+      This helps prevent installing potentially compromised
+      versions of a package.
+      Related issue: #8889.
+    - Added support for pnpm config get globalconfig to retrieve
+      the global config file path #9977.
+  * Patch Changes
+    - When a user runs pnpm update on a dependency that is not
+      directly listed in package.json, none of the direct
+      dependencies should be updated #10155.
+    - Don't crash when two processes of pnpm are hardlinking the
+      contents of a directory to the same destination
+      simultaneously #10160.
+    - Setting gitBranchLockfile and related settings via
+      pnpm-workspace.yaml should work #9651.
+
+-------------------------------------------------------------------
+Sat Nov  1 11:30:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 10.20.0:
+  * Minor Changes
+    - Support --all option in pnpm --help to list all commands
+      #8628.
+  * Patch Changes
+    - When the latest version doesn't satisfy the maturity
+      requirement configured by minimumReleaseAge, pick the highest
+      version that is mature enough, even if it has a different
+      major version #10100.
+    - create command should not verify patch info.
+    - Set managePackageManagerVersions to false, when switching to
+      a different version of pnpm CLI, in order to avoid subsequent
+      switches #10063.
+- update to 10.19.0:
+  * Minor Changes
+    - You can now allow specific versions of dependencies to run
+      postinstall scripts. onlyBuiltDependencies now accepts
+      package names with lists of trusted versions. For example:
+      Related PR: #10104.
+
+        onlyBuiltDependencies:
+          - nx@21.6.4 || 21.6.5
+          - esbuild@0.25.1
+
+    - Added support for exact versions in minimumReleaseAgeExclude
+      #9985.
+      You can now list one or more specific versions that pnpm
+      should allow to install, even if those versions don’t satisfy
+      the maturity requirement set by minimumReleaseAge. For
+      example:
+
+        minimumReleaseAge: 1440
+        minimumReleaseAgeExclude:
+          - nx@21.6.5
+          - webpack@4.47.0 || 5.102.1
+
+- update to 10.18.3:
+  * Patch Changes
+    - Fix a bug where pnpm would infinitely recurse when using
+      verifyDepsBeforeInstall: install and pre/post install scripts
+      that called other pnpm scripts #10060.
+    - Fixed scoped registry keys (e.g., @scope:registry) being
+      parsed as property paths in pnpm config get when
+      --location=project is used #9362.
+    - Remove pnpm-specific CLI options before passing to npm
+      publish to prevent "Unknown cli config" warnings #9646.
+    - Fixed EISDIR error when bin field points to a directory
+      #9441.
+    - Preserve version and hasBin for variations packages #10022.
+    - Fixed pnpm config set --location=project incorrectly handling
+      keys with slashes (auth tokens, registry settings) #9884.
+    - When both pnpm-workspace.yaml and .npmrc exist, pnpm config
+      set --location=project now writes to pnpm-workspace.yaml
+      (matching read priority) #10072.
+    - Prevent a table width error in pnpm outdated --long #10040.
+    - Sync bin links after injected dependencies are updated by
+      build scripts. This ensures that binaries created during
+      build processes are properly linked and accessible to
+      consuming projects #10057.
+- update to 10.18.2:
+  * Patch Changes
+    - pnpm outdated --long should work #10040.
+    - Replace ndjson with split2. Reduce the bundle size of pnpm
+      CLI #10054.
+    - pnpm dlx should request the full metadata of packages, when
+      minimumReleaseAge is set #9963.
+    - pnpm version switching should work when the pnpm home
+      directory is in a symlinked directory #9715.
+    - Fix EPIPE errors when piping output to other commands #10027.
+- update to 10.18.1:
+  * Patch Changes
+    - Don't print a warning, when --lockfile-only is used #8320.
+    - pnpm setup creates a command shim to the pnpm executable.
+      This is needed to be able to run pnpm self-update on Windows
+      #5700.
+    - When using pnpm catalogs and running a normal pnpm install,
+      pnpm produced false positive warnings for "skip adding to the
+      default catalog because it already exists". This warning now
+      only prints when using pnpm add --save-catalog as originally
+      intended.
+- update to 10.18.0:
+  * Minor Changes
+    - Added network performance monitoring to pnpm by implementing
+      warnings for slow network requests, including both metadata
+      fetches and tarball downloads.
+      Added configuration options for warning thresholds:
+      fetchWarnTimeoutMs and fetchMinSpeedKiBps.
+      Warning messages are displayed when requests exceed time
+      thresholds or fall below speed minimums
+      Related PR: #10025.
+  * Patch Changes
+    - Retry filesystem operations on EAGAIN errors #9959.
+    - Outdated command respects minimumReleaseAge configuration
+      #10030.
+    - Correctly apply the cleanupUnusedCatalogs configuration when
+      removing dependent packages.
+    - Don't fail with a meaningless error when scriptShell is set
+      to false #8748.
+    - pnpm dlx should not fail when minimumReleaseAge is set
+      #10037.
+
+-------------------------------------------------------------------
 Tue Sep 23 05:19:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 10.17.1:

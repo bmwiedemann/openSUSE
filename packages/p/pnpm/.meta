@@ -1,6 +1,5 @@
 <package name="pnpm" project="openSUSE:Factory">
   <title>pnpm</title>
   <description>Fast, disk space efficient npm installs</description>
-  <devel project="devel:languages:nodejs" package="pnpm"/>
   <url>https://pnpm.io/</url>
 </package>

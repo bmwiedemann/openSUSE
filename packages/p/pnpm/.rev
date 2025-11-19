@@ -664,4 +664,41 @@ update to 10.15.0</comment>
     <comment></comment>
     <requestid>1306821</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>40b6ebe4bb27677bc8593515760527dc</srcmd5>
+    <version>10.22.0</version>
+    <time>1763560699</time>
+    <user>anag_factory</user>
+    <comment>- update to 10.22.0:
+  * Minor Changes
+    - Added support for trustPolicyExclude #10164.
+      You can now list one or more specific packages or versions
+      that pnpm should allow to install, even if those packages
+      don't satisfy the trust policy requirement. For example:
+        trustPolicy: no-downgrade
+        trustPolicyExclude:
+          - chokidar@4.0.3
+          - webpack@4.47.0 || 5.102.1
+    - Allow to override the engines field on publish by the
+      publishConfig.engines field.
+  * Patch Changes
+    - Don't crash when two processes of pnpm are hardlinking the
+      contents of a directory to the same destination
+      simultaneously #10179.
+
+- update to 10.21.0:
+  * Minor Changes
+    - Node.js Runtime Installation for Dependencies. Added support
+      for automatic Node.js runtime installation for dependencies.
+      pnpm will now install the Node.js version required by a
+      dependency if that dependency declares a Node.js runtime in
+      the &quot;engines&quot; field. For example:
+        {
+          &quot;engines&quot;: {
+            &quot;runtime&quot;: {
+              &quot;name&quot;: &quot;node&quot;,
+              &quot;version&quot;: &quot;^24.11.0&quot;,
+              &quot;onFail&quot;: &quot;download&quot;</comment>
+    <requestid>1318520</requestid>
+  </revision>
 </revisionlist>
