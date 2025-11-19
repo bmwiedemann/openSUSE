@@ -345,7 +345,11 @@ Requires:       dmidecode
 # For service management
 %{?systemd_requires}
 # Daemons depend on the 'messagebus' service
+%if 0%{?suse_version} < 1600
 Requires:       dbus-1
+%else
+Requires:       dbus-service
+%endif
 Requires:       group(libvirt)
 # Needed by libvirt-guests init script.
 Requires:       gettext-runtime

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov 19 03:10:14 UTC 2025 - James Fehlig <jfehlig@suse.com>
+
+- CVE-2025-13193: qemu: Set umask for 'qemu-img' when creating
+  external inactive snapshots
+  bsc#1253703
+
+-------------------------------------------------------------------
+Sat Nov 15 02:41:49 UTC 2025 - James Fehlig <jfehlig@suse.com>
+
+- spec: Adjust dbus dependency
+  bsc#1253642
+- CVE-2025-12748: Check ACLs before parsing the whole domain XML
+  bsc#1253278
+
+-------------------------------------------------------------------
 Wed Nov  5 18:33:48 UTC 2025 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 11.9.0

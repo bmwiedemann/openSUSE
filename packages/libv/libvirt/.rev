@@ -4971,4 +4971,19 @@ a previous changelog entry.
     https://libvirt.org/news.html#v11-9-0-2025-11-03</comment>
     <requestid>1315884</requestid>
   </revision>
+  <revision rev="433" vrev="2">
+    <srcmd5>db91bce83e23899845615b08bcef3d6c</srcmd5>
+    <version>11.9.0</version>
+    <time>1763560288</time>
+    <user>anag_factory</user>
+    <comment>Updated libvirt package for Factory, fixing the following issues:
+- CVE-2025-13193: qemu: Set umask for 'qemu-img' when creating
+  external inactive snapshots
+  bsc#1253703
+- spec: Adjust dbus dependency
+  bsc#1253642
+- CVE-2025-12748: Check ACLs before parsing the whole domain XML
+  bsc#1253278</comment>
+    <requestid>1318540</requestid>
+  </revision>
 </revisionlist>
