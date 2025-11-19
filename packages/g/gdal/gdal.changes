@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 17 21:43:20 UTC 2025 - Libor Pechacek <lpechacek@gmx.com>
+
+- Update to version 3.12.0
+  * New 'gdal raster ...', 'gdal vector ...' and other CLI commands
+  * Improved pipelining
+  * Moved 'gdal vector geom XXXX' utilities directly under 'gdal vector'
+  * Renamed 'gdal vector geom set-type' as 'gdal vector set-geom-type'
+  * Bump of shared lib major version
+  * Full list at https://github.com/OSGeo/gdal/blob/v3.12.0/NEWS.md
+
+-------------------------------------------------------------------
 Fri Nov  7 19:40:59 UTC 2025 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to version 3.11.5 Maintenance release

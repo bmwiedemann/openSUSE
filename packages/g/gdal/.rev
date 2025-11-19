@@ -894,4 +894,12 @@ Otherwise compilation fails with hard to understand error that opj_codec_set is 
     <comment></comment>
     <requestid>1317842</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>0295c4ff6f0ef06152f828e7950dd394</srcmd5>
+    <version>3.12.0</version>
+    <time>1763560997</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1318583</requestid>
+  </revision>
 </revisionlist>

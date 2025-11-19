@@ -17,7 +17,7 @@
 #
 
 
-%define soversion 37
+%define soversion 38
 %define sourcename gdal
 # Uppercase GDAL is the canonical name for this package in Python
 %define pypi_package_name GDAL
@@ -43,14 +43,14 @@
 %define mypython_sitearch %{expand:%%%{mypython}_sitearch}
 
 Name:           gdal
-Version:        3.11.5
+Version:        3.12.0
 Release:        0
 Summary:        GDAL/OGR - a translator library for raster and vector geospatial data formats
 License:        BSD-3-Clause AND MIT AND SUSE-Public-Domain
 URL:            https://www.gdal.org/
 Source0:        https://download.osgeo.org/%{name}/%{version}/%{sourcename}-%{version}.tar.xz
 Source1:        https://download.osgeo.org/%{name}/%{version}/%{sourcename}-%{version}.tar.xz.md5
-Source2:        https://download.osgeo.org/%{name}/%{version}/%{sourcename}autotest-%{version}.tar.gz
+Source2:        https://download.osgeo.org/%{name}/%{version}/%{sourcename}autotest-%{version}.zip
 BuildRequires:  KEALib-devel
 BuildRequires:  bison
 BuildRequires:  blas-devel
@@ -81,6 +81,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  shapelib >= 1.4
 BuildRequires:  swig
 BuildRequires:  unixODBC-devel
+BuildRequires:  unzip
 BuildRequires:  pkgconfig(OpenCL)
 # c++17 standard errors for older versions
 BuildRequires:  pkgconfig(OpenEXR) >= 3
@@ -424,14 +425,25 @@ popd
 %{_mandir}/man1/ogrtindex.1%{?ext_man}
 %{_mandir}/man1/sozip.1%{?ext_man}
 %{_mandir}/man1/gdal-convert.1%{?ext_man}
+%{_mandir}/man1/gdal-dataset.1%{?ext_man}
+%{_mandir}/man1/gdal-dataset-copy.1%{?ext_man}
+%{_mandir}/man1/gdal-dataset-delete.1%{?ext_man}
+%{_mandir}/man1/gdal-dataset-identify.1%{?ext_man}
+%{_mandir}/man1/gdal-dataset-rename.1%{?ext_man}
 %{_mandir}/man1/gdal-info.1%{?ext_man}
 %{_mandir}/man1/gdal-mdim-convert.1%{?ext_man}
 %{_mandir}/man1/gdal-mdim-info.1%{?ext_man}
+%{_mandir}/man1/gdal-mdim-mosaic.1%{?ext_man}
 %{_mandir}/man1/gdal-mdim.1%{?ext_man}
+%{_mandir}/man1/gdal-pipeline.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-as-features.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-aspect.1%{?ext_man}
 %{_mandir}/man1/gdal-raster-calc.1%{?ext_man}
 %{_mandir}/man1/gdal-raster-clean-collar.1%{?ext_man}
 %{_mandir}/man1/gdal-raster-clip.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-color-blend.1%{?ext_man}
 %{_mandir}/man1/gdal-raster-color-map.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-compare.1%{?ext_man}
 %{_mandir}/man1/gdal-raster-contour.1%{?ext_man}
 %{_mandir}/man1/gdal-raster-convert.1%{?ext_man}
 %{_mandir}/man1/gdal-raster-create.1%{?ext_man}
@@ -442,14 +454,20 @@ popd
 %{_mandir}/man1/gdal-raster-index.1%{?ext_man}
 %{_mandir}/man1/gdal-raster-info.1%{?ext_man}
 %{_mandir}/man1/gdal-raster-mosaic.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-neighbors.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-nodata-to-alpha.1%{?ext_man}
 %{_mandir}/man1/gdal-raster-overview-add.1%{?ext_man}
 %{_mandir}/man1/gdal-raster-overview-delete.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-overview-refresh.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-pansharpen.1%{?ext_man}
 %{_mandir}/man1/gdal-raster-pipeline.1%{?ext_man}
 %{_mandir}/man1/gdal-raster-pixel-info.1%{?ext_man}
 %{_mandir}/man1/gdal-raster-polygonize.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-proximity.1%{?ext_man}
 %{_mandir}/man1/gdal-raster-reclassify.1%{?ext_man}
 %{_mandir}/man1/gdal-raster-reproject.1%{?ext_man}
 %{_mandir}/man1/gdal-raster-resize.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-rgb-to-palette.1%{?ext_man}
 %{_mandir}/man1/gdal-raster-roughness.1%{?ext_man}
 %{_mandir}/man1/gdal-raster-scale.1%{?ext_man}
 %{_mandir}/man1/gdal-raster-select.1%{?ext_man}
@@ -461,28 +479,37 @@ popd
 %{_mandir}/man1/gdal-raster-tpi.1%{?ext_man}
 %{_mandir}/man1/gdal-raster-tri.1%{?ext_man}
 %{_mandir}/man1/gdal-raster-unscale.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-update.1%{?ext_man}
 %{_mandir}/man1/gdal-raster-viewshed.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-zonal-stats.1%{?ext_man}
 %{_mandir}/man1/gdal-raster.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-buffer.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-check-coverage.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-check-geometry.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-clean-coverage.1%{?ext_man}
 %{_mandir}/man1/gdal-vector-clip.1%{?ext_man}
+%{_mandir}/man1/gdal-vector_concat.1%{?ext_man}
 %{_mandir}/man1/gdal-vector-convert.1%{?ext_man}
 %{_mandir}/man1/gdal-vector-edit.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-explode-collections.1%{?ext_man}
 %{_mandir}/man1/gdal-vector-filter.1%{?ext_man}
-%{_mandir}/man1/gdal-vector-geom-buffer.1%{?ext_man}
-%{_mandir}/man1/gdal-vector-geom-explode-collections.1%{?ext_man}
-%{_mandir}/man1/gdal-vector-geom-make-valid.1%{?ext_man}
-%{_mandir}/man1/gdal-vector-geom-segmentize.1%{?ext_man}
-%{_mandir}/man1/gdal-vector-geom-set-type.1%{?ext_man}
-%{_mandir}/man1/gdal-vector-geom-simplify.1%{?ext_man}
-%{_mandir}/man1/gdal-vector-geom-swap-xy.1%{?ext_man}
-%{_mandir}/man1/gdal-vector-geom.1%{?ext_man}
 %{_mandir}/man1/gdal-vector-grid.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-index.1%{?ext_man}
 %{_mandir}/man1/gdal-vector-info.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-layer-algebra.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-make-point.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-make-valid.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-partition.1%{?ext_man}
 %{_mandir}/man1/gdal-vector-pipeline.1%{?ext_man}
 %{_mandir}/man1/gdal-vector-rasterize.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-segmentize.1%{?ext_man}
 %{_mandir}/man1/gdal-vector-select.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-set-field-type.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-set-geom-type.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-simplify.1%{?ext_man}
 %{_mandir}/man1/gdal-vector-sql.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-swap-xy.1%{?ext_man}
 %{_mandir}/man1/gdal-vector.1%{?ext_man}
-%{_mandir}/man1/gdal-vector_concat.1%{?ext_man}
 %{_mandir}/man1/gdal-vsi-copy.1%{?ext_man}
 %{_mandir}/man1/gdal-vsi-delete.1%{?ext_man}
 %{_mandir}/man1/gdal-vsi-list.1%{?ext_man}
