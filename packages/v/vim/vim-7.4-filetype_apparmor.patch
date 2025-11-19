@@ -1,15 +1,15 @@
-Index: vim-9.1.1706/runtime/filetype.vim
+Index: vim-9.1.1918/runtime/filetype.vim
 ===================================================================
---- vim-9.1.1706.orig/runtime/filetype.vim
-+++ vim-9.1.1706/runtime/filetype.vim
-@@ -124,6 +124,10 @@ au BufNewFile,BufRead *.asy		setf asy
- au BufNewFile,BufRead .htaccess,*/etc/httpd/*.conf		setf apache
- au BufNewFile,BufRead */etc/apache2/sites-*/*.com		setf apache
+--- vim-9.1.1918.orig/runtime/filetype.vim
++++ vim-9.1.1918/runtime/filetype.vim
+@@ -124,6 +124,10 @@ au BufNewFile,BufRead *.demo,*.dm{1,2,3,
+ " *.[sS], *.[aA] usually Assembly - GNU
+ au BufNewFile,BufRead *.asm,*.[sS],*.[aA],*.mac,*.lst	call dist#ft#FTasm()
  
 +" AppArmor
 +au BufNewFile,BufRead */etc/apparmor.d/*       setf apparmor
 +au BufNewFile,BufRead */etc/apparmor/profiles/*        setf apparmor
 +
- " XA65 MOS6510 cross assembler
- au BufNewFile,BufRead *.a65			setf a65
- 
+ " BASIC or Visual Basic
+ au BufNewFile,BufRead *.bas			call dist#ft#FTbas()
+ au BufNewFile,BufRead *.bi,*.bm			call dist#ft#FTbas()

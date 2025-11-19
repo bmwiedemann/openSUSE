@@ -1,9 +1,9 @@
-Index: vim-9.1.1706/runtime/syntax/sh.vim
+Index: vim-9.1.1856/runtime/syntax/sh.vim
 ===================================================================
---- vim-9.1.1706.orig/runtime/syntax/sh.vim
-+++ vim-9.1.1706/runtime/syntax/sh.vim
-@@ -146,6 +146,13 @@ if exists("b:is_kornshell") || exists("b
-  endif
+--- vim-9.1.1856.orig/runtime/syntax/sh.vim
++++ vim-9.1.1856/runtime/syntax/sh.vim
+@@ -147,6 +147,13 @@ if exists("b:is_kornshell") || exists("b
+     endif
  endif
  
 +" Neither is_kornshell nor is_bash was explicitly set, and

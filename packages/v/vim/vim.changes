@@ -1,4 +1,341 @@
 -------------------------------------------------------------------
+Mon Nov 17 09:28:43 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildIgnore glycin-loaders: the loaders are a valid dependency to
+  GTK3, but as we don't run a test suite involving gvim (and thus
+  gtk3) wen can cut the dep chain at this point and make vim
+  building cheaper. Also eliminates a build cycle vmaf/libjxl/vim.
+
+-------------------------------------------------------------------
+Mon Nov 17 00:40:55 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 9.1.1918.
+- Upstream changes:
+  * 9.1.1918: completion: crash with fuzzy completion
+  * 9.1.1917: Vim9: incorrect type inference with mkdir()
+  * 9.1.1916: WinEnter autocommand confuses Vim when closing tabpage
+  * 9.1.1915: :breaklist accepts unprocessed arguments.
+  * 9.1.1914: runtime(netrw): wipes unnamed buffers
+  * 9.1.1913: Error message with :unlet! and non-existing dictionary item
+  * 9.1.1912: tests: test_plugin_comment fails
+  * 9.1.1911: build failure on Solaris with gcc 5
+  * 9.1.1910: tests: test failures in Test_term_gettitle() in CI
+  * 9.1.1909: filetype: .mom files recognized as nroff files
+  * 9.1.1908: tests: test_crash.vim times out in CI ASAN builds
+  * 9.1.1907: xterm: no support for mouse buttons 8 and 9
+  * 9.1.1906: filetype: not all Ruby files are recognized
+  * 9.1.1905: tabpanel: truncates terminal output
+  * 9.1.1904: Code still supports GTK2 versions older than 2.4
+  * 9.1.1903: GTK naming still reflects GTK1 support
+  * 9.1.1902: GTK fails to compile with !FEAT_PROP_POPUP
+  * 9.1.1901: tests: test_vim9_generics fails without job feature
+  * 9.1.1900: tabpanel: wrong condition after v9.1.1898
+  * 9.1.1899: tabpanel: getcmdscreenpos() wrong when tabpanel is shown
+  * 9.1.1898: tabpanel: inconsistent use of cmdline with tabpanel
+  * 9.1.1897: Mac: Build failure on Mac OS X 10.6
+  * 9.1.1896: tests: patch v9.1.1895 breaks CI
+- Refresh patches:
+  * vim-7.3-filetype_spec.patch
+  * vim-7.4-filetype_apparmor.patch
+
+-------------------------------------------------------------------
+Sun Nov  2 19:32:37 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 9.1.1895. 
+- Upstream changes:
+  * 9.1.1895: OSC terminal response hard to detect
+  * 9.1.1894: global_runtime_dir appends /after directory when using XDG
+  * 9.1.1893: ICCF charity will dissolve
+  * 9.1.1892: Not possible to know once Vim is done with sourcing vimrc
+  * 9.1.1891: g<End> does not move to last non-blank in visual mode
+  * 9.1.1890: %P in 'statusline' doesn't behave as documented
+  * 9.1.1889: filetype: not all AppleScript files are recognized
+  * 9.1.1888: Wrong display with cpo+=$, matchparen and wrapped line
+  * 9.1.1887: string handling in strings.c can be improved
+  * 9.1.1886: filetype: Android aconfig files are not recognized
+  * 9.1.1885: Wrong restored cursor pos when re-entering buffer after changes
+  * 9.1.1884: :defer an empty lambda causes a crash
+  * 9.1.1883: Wrong display with 'smoothscroll' with -diff
+  * 9.1.1882: Vim9: Not able to use a lambda with :defer
+  * 9.1.1881: tests: test_popupwin fails after c8eeda9b
+  * 9.1.1880: Allocation error with complete_info()
+  * 9.1.1879: Crash when using a lambda funcref with :defer
+  * 9.1.1878: filetype: Soy files are not recognized
+  * 9.1.1877: cindent: wrong indentation after an array declaration
+  * 9.1.1876: pre-inserted text not exposed in cmdcomplete_info()
+  * 9.1.1875: username parsing bug in netrw plugin
+  * 9.1.1874: short-description
+  * 9.1.1873: Clipboard provider feature broke clipboard support
+  * 9.1.1872: Cmdline history not updated when mapping <Up> and <CR>
+  * 9.1.1871: Wrong 'showcmd' in the cmdwin
+  * 9.1.1870: :Tutor may not work as expected
+  * 9.1.1869: tests: test failures with Python 3.14 and test_python3
+  * 9.1.1868: v:register is wrong in v_: command
+  * 9.1.1867: HAVE_STDARG_H still defined
+  * 9.1.1866: HAVE_STRCSPN define is unused
+  * 9.1.1865: tests: do not notice lines containing only a tab
+  * 9.1.1864: tests: Clipboard provider feature test failure
+  * 9.1.1863: Cannot test for working "+" register
+  * 9.1.1862: wrong ifdefs for clipboard provider
+
+-------------------------------------------------------------------
+Thu Oct 16 18:58:56 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 9.1.1861
+- refresh patches:
+    vim-7.3-filetype_changes.patch
+    vim-7.3-filetype_ftl.patch
+    vim-7.3-filetype_spec.patch
+    vim-7.3-sh_is_bash.patch
+    vim-7.4-filetype_apparmor.patch
+- drop last support for python2
+- enable wayland support
+ * patch 9.1.1861: Amiga: Locating runtime dir and rc files can be simplified
+ * patch 9.1.1860: clipboard register "+" enabled with cplipboard provider feature
+ * patch 9.1.1859: completion: whitespace not cleared with 'ai'
+ * patch 9.1.1858: v:register not reset after Visual mode command
+ * patch 9.1.1857: Missing clipboard provider support
+ * patch 9.1.1856: cannot style popup window (border, shadow, etc)
+ * patch 9.1.1855: Makefile: using non-portable syntax
+ * runtime(doc): Miscellaneous documentation fixes
+ * runtime(doc): Fix example highlighting at :help prop_list()
+ * runtime(doc): Normalise formatting of builtin function descriptions
+ * runtime(doc): Remove accidental option name highlighting from :help channel.txt
+ * patch 9.1.1854: unnecessary code in optionstr.c
+ * patch 9.1.1853: Ctrl-F and Ctrl-B at more prompt not working with key protocol
+ * runtime(vimcomplete): do not complete on empty line
+ * runtime(doc): fix inconsistent alignment
+ * runtime(bitbake): fix multiline Python function parameter syntax
+ * runtime(rst): Preserve indentation of directives
+ * runtime(rst): Update b:undo_ftplugin variable
+ * runtime(rst): Style update
+ * runtime(rst): Enable spell checking for more syntax constructs
+ * runtime(rst): Inline literal escape support
+ * runtime(rst): Recognise numeric footnotes [1] correctly
+ * runtime(rst): Correctly end nested comments
+ * runtime(rst): Fix highlights nested in directive body
+ * runtime(rst): Add support for rst_minlines
+ * runtime(rst): Fix doctest block syntax
+ * runtime(doc): Whitespace updates
+ * runtime(make): syntax highlighting update for makeDefine
+ * runtime(vim): Update syntax, add missing commands to generator exclusion list
+ * patch 9.1.1852: vim9class: memory leak in parse_member()
+ * patch 9.1.1851: memory leak in heredoc_get()
+ * patch 9.1.1850: completion: not triggered after i_Ctrl-W/i_Ctrl-U
+ * patch 9.1.1849: CTRL-F and CTRL-B don't work in more prompt
+ * runtime(doc): Replace rotted URL links
+ * patch 9.1.1848: A few typos in the code
+ * patch 9.1.1847: No cmdline completion for :echoconsole and :echowindow
+ * runtime(cangjie): Fixes and improvements for syntax script
+ * runtime(doc): Add missing optional tail command-name specs
+ * runtime(doc): Update documentation style in gui_w32.txt
+ * runtime(doc): update credit section for Girish Palya
+ * patch 9.1.1846: Build failure when building without wayland
+ * patch 9.1.1845: Makefile: Missing dependency on osdef.h
+ * runtime(doc): Tweak documentation in develop.txt
+ * patch 9.1.1844: Makefile: dependencies not updated
+ * runtime(filetype): Improve filetype loading time
+ * patch 9.1.1843: tests: Test_search_stat_option() may fail on slow systems
+ * runtime(doc): Add reference to 'wildoptions' in fuzzy-matching docs
+ * patch 9.1.1842: MS-Windows: build failure when mzscheme is included
+ * runtime(doc,vim): Update base syntax, match full :syntime command
+ * runtime(vim): fix indentation after `:registers +`
+ * patch 9.1.1841: patch 9.1.1840 adds python build dependency
+ * patch 9.1.1840: Generating prototype files does not work on all platforms
+ * runtime(vim): Update base syntax, allow legacy script comments after :eval
+ * runtime(termdebug): Add remote debugging capabilities
+ * runtime(java): Fold adjacent "import" declarations
+ * runtime(colors): Update colorscheme and add TitleBar/TitleBarNC
+ * patch 9.1.1839: Window may have wrong height if resized from another tabpage
+ * patch 9.1.1838: proto files out of sync
+ * runtime(doc): Normalise ellipsis dots in syntax.txt
+ * patch 9.1.1837: tests: Test_plugin_evaluate_in_popup() fails on 32bit
+ * patch 9.1.1836: 'culopt' "screenline" not redrawn with line("w0") and :retab
+ * patch 9.1.1835: completion: not possible to style popup borders globally
+ * runtime(doc): Fix typos in syntax.txt
+ * translation(ru): updated Vim manpages
+ * translation(ru): Updated message file
+ * translation(it): Update Italian translation
+ * runtime(tex): link some tex highlight groups to new standard ones
+ * translation: regenerate po/vim.pot after a644b7924d
+ * patch 9.1.1833: completion: fuzzy candidates are not sorted
+ * runtime(doc): Update sections 5 to 8 in vim9.txt
+ * patch 9.1.1832: if_perl: contains references to legacy if_perlsfio
+ * runtime(zip): add *.pkpass to list of zip extensions
+ * runtime(kerml): update KerML comments to handle more cases
+ * runtime(doc): fix typo in :h credits section
+ * patch 9.1.1831: stray vseps in right-most 'winfixwidth' window
+ * patch 9.1.1830: MS-Windows: Dark mode titlebar is not configurable
+ * patch 9.1.1829: filetype: KerML and SysML files are not recognized
+ * patch 9.1.1828: local variables shadowed by import names
+ * patch 9.1.1827: completion: v9.1.1797 broke Ctrl-Y behaviour
+ * runtime(doc): Use the optional tail command-name spec at :help :sign
+ * patch 9.1.1826: Patch v9.1.1230 causes confusion about Ctrl-C behaviour
+ * runtime(doc): update if_perl after v9.1.1822)
+ * patch 9.1.1825: completion: flicker when LSP server is slow
+ * runtime(doc): update credits section
+ * patch 9.1.1824: tests: no test for displaying 'foldcolumn' with Unicode "foldinner"
+ * patch 9.1.1823: diff: w_topline may be invalidated
+ * runtime(doc): Add explanation for Vim's IME
+ * runtime(java): Make changes for JDK 25
+ * runtime(help): Update syntax
+ * patch 9.1.1822: Makefile still supports Perl < 5.005
+ * nsis: Getting the Vim version number via makensis
+ * nsis: Duplicate files in the icons.zip archive have been removed
+ * nsis: delete README.txt from the icons directory
+ * Filelist: include nsis/icons/README.txt again
+ * patch 9.1.1821: filetype: Not all PKL files are recognized
+ * patch 9.1.1820: completion: some issues with 'acl'
+ * patch 9.1.1819: Cannot configure the inner foldlevel indicator
+ * runtime(doc): fix typo after commit cfcf1a57cbef
+ * runtime(log): remove domain highlight
+ * runtime(new-tutor): fix mismatched line numbers in vim-02-beginner
+ * patch 9.1.1818: possible crash when calculating topline in diff.c
+ * Filelist: include nsis/icons/README.txt
+ * runtime(doc): Clarify use of "noselect" in 'completeopt'
+ * runtime(vim): Update base syntax, contain user command replacement text
+ * runtime(optwin): Update formatting of option descriptions
+ * patch 9.1.1817: popup: there are some position logic bugs
+ * nsis: Rework icons, update icons archive, add copyright notice
+ * rutnime(new-tutor): Updated English new tutor
+ * runtime(doc): Tweak documentation style
+ * patch 9.1.1816: existing icon files are dated
+ * runtime(netrw): MS-Windows: fix netrw not being able to navigate to parent folder
+ * runtime(doc): make :h virtcol() more accurate
+ * runtime(help): Update syntax, match legacy header at :help vim9-mix
+ * patch 9.1.1815: file mode changes in os_amiga.pro
+ * patch 9.1.1814: Patch v9.1.1812 causes crashes
+ * patch 9.1.1813: MS-Windows: title bar is always white
+ * patch 9.1.1812: completion: flicker with slow LSPs
+ * runtime(doc): Update os-support section for Amiga OS
+ * patch 9.1.1811: Amiga: Initialization of random buffer can be improved
+ * patch 9.1.1810: completion: "longest" doesn't work for manual completion with 'ac'
+ * patch 9.1.1809: winclip.pro included in PRO_AUTO
+ * runtime(doc): Tweak documentation style
+ * nsis: Load correct readme at the end, refactor gvim.nsi slightly
+ * nsis: Reorder code blocks
+ * nsis: Split gvim.nsi and factor out auxiliary code into auxiliary.nsh
+ * nsis: Fix indentation and alignment issues in gvim.nsi
+ * runtime(tex): add amsmath support to tex syntax script
+ * patch 9.1.1808: Option insecure flags not copied when splitting window
+ * patch 9.1.1807: :set doesn't clear local insecure flag like :setlocal does
+ * runtime(doc): update list of modifiers at :h expand()
+ * patch 9.1.1806: Missing PROTO defines
+ * runtime(help): Update syntax, add vim9 example language
+ * runtime(vim): Update base syntax, improve line-continuation skip patterns
+ * runtime(doc): Fix :help complete() example
+ * patch 9.1.1805: Amiga: Missing build date in version string
+ * runtime(vim): Update base syntax, allow Vim9 :echo tail comments
+ * patch 9.1.1804: Wrong indentation of nested ifdefs in findfile.c
+ * patch 9.1.1803: Amiga: build errors
+ * runtime(java): Recognise _module_ import declarations
+ * patch 9.1.1802: 'nowrap' in a modeline may hide malicious code
+ * patch 9.1.1801: Vim9: misleading error when extending dictionary
+ * patch 9.1.1800: completion: strange behaviour with 'ac' completeopt=longest,preinsert
+ * patch 9.1.1799: completion: crash with autcompletion
+ * patch 9.1.1798: Wrong display with 'sms' and long wrapped virt text at EOL
+ * runtime(doc): improve preinserted() doc
+ * patch 9.1.1797: completion: autocompletion can be improved
+ * patch 9.1.1796: Wrong cursor position with wrapped "after" virtual text and 'sbr'
+ * runtime(doc): update getwininfo() documentation about popups
+ * patch 9.1.1795: Vim9: popup_show() may return void
+ * runtime(vim): Update base syntax, match null_tuple literal
+ * patch 9.1.1794: configure: terminfo test does not work with musl
+ * patch 9.1.1793: Link error when build without channel feature
+ * patch 9.1.1792: List of changes not protected from changes
+ * runtime(doc): make order of verbs match order of operators
+ * patch 9.1.1791: type(void) throws an internal error
+ * runtime(python): fix 'type' syntax highlighting
+ * patch 9.1.1790: completion: Enter does not insert match with "noinsert"
+ * runtime(doc): fix inconsistent indent in cmdline.txt
+ * runtime(doc): Improve documentation of the ..= assignment operator
+ * runtime(javascript): Add "using" keyword to JavaScript syntax highlighting
+ * patch 9.1.1788: Vim9: can declare a void variable
+ * runtime(doc): mention improved rendering with 'termguicolors'
+ * runtime(swayconfig): support new config options in syntax script
+ * patch 9.1.1787: filetype: not all Sway config files are recognized
+ * runtime(doc): update Vim policy
+ * translation(sr): Update Serbian messages translation
+ * runtime(doc): update live-grep and fuzzy-file-picker examples
+ * runtime(sh): refactored sh.vim syntax script
+ * runtime(vim): Update base syntax, match :terminal command
+ * runtime(vim): Update base syntax, match :wincmd
+ * translation(sr): Update vim-02-beginner.tutor translation
+ * translation(sr): Update vim-01-beginner.tutor translation
+ * patch 9.1.1786: Compile error with clipboard
+ * runtime(netrw): 'equalalways' is not always respected
+ * patch 9.1.1785: typo in comment in change.c
+ * runtime(doc): fix typo, reorder, mention zip plugin at :h changed-9.2
+ * runtime(doc): clarify 'fileignorecase' option setting
+ * patch 9.1.1784: Wayland code can be improved
+ * runtime(zip): support PowerShell Core
+ * patch 9.1.1783: ins_compl_leader() too far away from ins_compl_leader_len()
+ * patch 9.1.1782: buffer-listener callbacks may not match buffer content
+ * patch 9.1.1781: some functions could be defined static
+ * runtime(vimgoto): recognize 'silent' prefixes
+ * patch 9.1.1780: mbyte contains overlapping list of utf_classes table
+ * runtime(unicode): update check for netrw
+ * patch 9.1.1779: completion: 'autocomplete' cannot be enabled per buffer
+ * patch 9.1.1778: sha256() treats empty blob and null blob differently
+ * runtime(lf): update syntax to support lf version r38
+ * patch 9.1.1777: Mouse click to open fold doesn't work with utf-8 "foldclose" chars
+ * patch 9.1.1776: completion: "adding" expansion doesn't work with cfc=keyword
+ * Remove dlejay from maintainer list
+ * patch 9.1.1775: filetype: Mamba configuration files are not recognized
+ * patch 9.1.1774: cannot calculate sha256 of a Blob
+ * runtime(config): fix inconsistent group name
+ * patch 9.1.1773: Crash in BufLeave after BufUnload closes other windows
+ * patch 9.1.1772: completion: inconsistent selection of first item with 'autocomplete'
+ * patch 9.1.1771: complete: some redraw issues with 'autocomplete'
+ * patch 9.1.1770: Vim9: wrong behaviour with trailing comments in command blocks
+ * runtime(log): highlight Java Errors
+ * patch 9.1.1769: completion: "preinsert" insert wrong word with 'smartcase' and 'autocomplete'
+ * runtime(vim): Update base syntax, fix indented Vim9 :redir highlighting
+ * runtime(netrw): update regex to handle remote archives
+ * patch 9.1.1768: Makefile does not uninstall global plugins
+ * patch 9.1.1767: Patch v9.1.1765 was wrong
+ * runtime(kitty): Fix typo in syntax file for kitty
+ * patch 9.1.1766: Vim9: some functions do not handle null_string correctly
+ * runtime(doc): Tweak doc style in syntax.txt
+ * runtime(doc): mention generic log highlighter
+ * runtime(doc): fix doc style from commit 5c9b71d63c1
+ * runtime(kitty): fix typo in syntax script
+ * runtime(doc): remove trailing whitespace from example in builtin.txt
+ * runtime(doc): clarify how to call complete() funcs
+ * runtime(m4): Improve parameters highlighting in syntax script
+ * patch 9.1.1765: f_isnan() and f_isinf() do not correctly initialize rettv type
+ * runtime(termdebug): drop outdated comment from termdebug.vim
+ * runtime(colors): update colorschemes:
+ * runtime(doc): Fix typos in eval.txt
+ * Fix some typos in documentation, C code and test files
+ * patch 9.1.1764: filetype: CODEOWNERS file not recognized
+ * patch 9.1.1763: filetype: kitty config files are not recognized
+ * patch 9.1.1762: completion: selected item not cleared on <BS> with 'ac'
+ * Problem:  'ruler' is set in defaults.vim
+ * runtime(doc): Improve doc for cmdline-ranges in cmdline.txt
+ * runtime(doc): Improve the doc for :syn-containedin
+ * runtime(doc): typo in recent doc style tweaks in options.txt
+ * patch 9.1.1760: wrong proto file for insexpand.pro
+ * patch 9.1.1759: filetype: generic log detection is too disturbing
+ * runtime(doc): Tweak documentation style more in options and ft_hare
+ * patch 9.1.1758: Diff mode crashes when adding text property in autocommand
+ * runtime(config): mark unportable += as an error
+ * runtime(html): guard against an existing b:undo_ftplugin var
+ * patch 9.1.1757: The colorresp plugin causes additional redraws
+ * patch 9.1.1756: termdebug: Need a few more user commands
+ * runtime(doc): update Markdown syntax documentation and mention Pandoc
+ * runtime(doc): tweak documentation style a bit more in options.txt
+ * patch 9.1.1755: filetype: generic log files are not recognized
+ * runtime(doc): tweak documentation style
+ * runtime(doc): Add :defe[r] shortname spec and tag
+
+-------------------------------------------------------------------
+Wed Sep 24 13:51:53 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Fix for bsc#1229750.
+- nocompatible must be set before the syntax highlighting is turned on.
+
+-------------------------------------------------------------------
 Fri Sep 12 10:33:21 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 9.1.1754

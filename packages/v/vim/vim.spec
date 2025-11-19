@@ -1,7 +1,6 @@
 #
 # spec file for package vim
 #
-# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +17,7 @@
 
 
 %define pkg_version 9.1
-%define patchlevel 1754
+%define patchlevel 1918
 %define patchlevel_compact %{patchlevel}
 %define VIM_SUBDIR vim91
 %define site_runtimepath %{_datadir}/vim/site
@@ -28,7 +27,6 @@
 %else
 %bcond_with libalternatives
 %endif
-%bcond_without python2
 Name:           vim
 Version:        %{pkg_version}.%{patchlevel_compact}
 Release:        0
@@ -86,6 +84,7 @@ BuildRequires:  perl
 BuildRequires:  pkgconfig
 BuildRequires:  ruby-devel
 BuildRequires:  update-desktop-files
+BuildRequires:  wayland-utils
 BuildRequires:  pkgconfig(form)
 BuildRequires:  pkgconfig(formw)
 BuildRequires:  pkgconfig(gtk+-3.0)
@@ -103,7 +102,12 @@ BuildRequires:  pkgconfig(panelw)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(tic)
 BuildRequires:  pkgconfig(tinfo)
+BuildRequires:  pkgconfig(wayland-client)
+BuildRequires:  pkgconfig(wayland-cursor)
+BuildRequires:  pkgconfig(wayland-egl)
+BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(xt)
+#!BuildIgnore:  glycin-loaders
 Requires:       vim-data-common = %{version}-%{release}
 Requires:       xxd = %{version}-%{release}
 Recommends:     vim-data = %{version}-%{release}
@@ -122,9 +126,6 @@ Requires:       alts
 %else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-%endif
-%if %{with python2}
-BuildRequires:  python2-devel
 %endif
 
 %description
@@ -261,19 +262,20 @@ export HUGE_OPTIONS="\
     --enable-luainterp=dynamic \
     --enable-perlinterp=yes \
     --enable-python3interp=dynamic \
-    --enable-rubyinterp=dynamic
-    --enable-pythoninterp=%{?with_python2:yes}%{!?with_python2:no}"
+    --enable-rubyinterp=dynamic"
 
 export GUI_OPTIONS="\
     --disable-icon-cache-update \
     --enable-xim \
     --enable-fontset \
-    --enable-gui=gtk3"
+    --enable-gui=gtk3 \
+    --enable-wayland"
 
 export NOGUI_OPTIONS="\
     --disable-gui \
     --disable-gpm \
     --with-x=no \
+    --without-wayland \
     "
 
 pushd src

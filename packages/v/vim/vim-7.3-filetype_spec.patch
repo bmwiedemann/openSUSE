@@ -1,26 +1,12 @@
-Index: vim-9.1.1706/runtime/filetype.vim
+Index: vim-9.1.1918/runtime/autoload/dist/ft.vim
 ===================================================================
---- vim-9.1.1706.orig/runtime/filetype.vim
-+++ vim-9.1.1706/runtime/filetype.vim
-@@ -2495,7 +2495,7 @@ au BufRead,BufNewFile *.sol			setf solid
- au BufNewFile,BufRead *.rq,*.sparql		setf sparql
- 
- " Spec (Linux RPM)
--au BufNewFile,BufRead *.spec			setf spec
-+au BufNewFile,BufRead *.spec,*.spec.in		setf spec
- 
- " Speedup (AspenTech plant simulator)
- au BufNewFile,BufRead *.speedup,*.spdata,*.spd	setf spup
-Index: vim-9.1.1706/runtime/syntax/spec.vim
-===================================================================
---- vim-9.1.1706.orig/runtime/syntax/spec.vim
-+++ vim-9.1.1706/runtime/syntax/spec.vim
-@@ -104,7 +104,7 @@ syn case ignore
- "%% PreAmble Section %%
- "Copyright and Serial were deprecated by License and Epoch
- syn region specPreAmbleDeprecated oneline matchgroup=specError start='^\(Copyright\|Serial\)' end='$' contains=specEmail,specURL,specURLMacro,specLicense,specColon,specVariables,specSpecialChar,specMacroIdentifier
--syn region specPreAmble oneline matchgroup=specCommand start='^\(Prereq\|Summary\|Name\|Version\|Packager\|Requires\|Recommends\|Suggests\|Supplements\|Enhances\|Icon\|URL\|SourceLicense\|Source\d*\|Patch\d*\|Prefix\|Packager\|Group\|License\|Release\|BuildRoot\|Distribution\|Vendor\|Provides\|ExclusiveArch\|ExcludeArch\|ExclusiveOS\|Obsoletes\|BuildArch\|BuildArchitectures\|BuildRequires\|BuildConflicts\|BuildPreReq\|Conflicts\|AutoRequires\|AutoReq\|AutoReqProv\|AutoProv\|Epoch\)' end='$' contains=specEmail,specURL,specURLMacro,specLicense,specColon,specVariables,specSpecialChar,specMacroIdentifier
-+syn region specPreAmble oneline matchgroup=specCommand start='^\(Prereq\|Summary\|Name\|Version\|Packager\|Requires\|Recommends\|Suggests\|Supplements\|Enhances\|Icon\|URL\|SourceLicense\|Source\d*\|Patch\d*\|Prefix\|Packager\|Group\|License\|Release\|BuildRoot\|Distribution\|Vendor\|Provides\|ExclusiveArch\|ExcludeArch\|ExclusiveOS\|Obsoletes\|BuildArch\|BuildArchitectures\|BuildRequires\|BuildConflicts\|BuildPreReq\|Conflicts\|AutoRequires\|AutoReq\|AutoReqProv\|AutoProv\|Epoch\|Freshens\|EssentialFor\)' end='$' contains=specEmail,specURL,specURLMacro,specLicense,specColon,specVariables,specSpecialChar,specMacroIdentifier
- 
- "%% Description Section %%
- syn region specDescriptionArea matchgroup=specSection start='^%description' end='^%'me=e-1 contains=specDescriptionOpts,specEmail,specURL,specNumber,specMacroIdentifier,specComment
+--- vim-9.1.1918.orig/runtime/autoload/dist/ft.vim
++++ vim-9.1.1918/runtime/autoload/dist/ft.vim
+@@ -2673,6 +2673,7 @@ const ft_from_ext = {
+   "sparql": "sparql",
+   # Spec (Linux RPM)
+   "spec": "spec",
++  "spec.in": "spec",
+   # Speedup (AspenTech plant simulator)
+   "speedup": "spup",
+   "spdata": "spup",

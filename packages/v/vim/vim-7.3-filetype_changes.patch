@@ -1,10 +1,10 @@
-Index: vim-9.1.1706/runtime/filetype.vim
+Index: vim-9.1.1857/runtime/filetype.vim
 ===================================================================
---- vim-9.1.1706.orig/runtime/filetype.vim
-+++ vim-9.1.1706/runtime/filetype.vim
-@@ -462,6 +462,9 @@ au BufNewFile,BufRead *.css			setf css
- " Century Term Command Scripts (*.cmd too)
- au BufNewFile,BufRead *.con			setf cterm
+--- vim-9.1.1857.orig/runtime/filetype.vim
++++ vim-9.1.1857/runtime/filetype.vim
+@@ -221,6 +221,9 @@ endif
+ " Set g_filetype_h to set a different filetype
+ au BufNewFile,BufRead *.h			call dist#ft#FTheader()
  
 +" SuSE .changes file
 +au BufNewFile,BufRead *.changes			setf changes
@@ -12,10 +12,10 @@ Index: vim-9.1.1706/runtime/filetype.vim
  " Changelog
  au BufNewFile,BufRead changelog.Debian,changelog.dch,NEWS.Debian,NEWS.dch,*/debian/changelog
  					\	setf debchangelog
-Index: vim-9.1.1706/runtime/syntax/changes.vim
+Index: vim-9.1.1857/runtime/syntax/changes.vim
 ===================================================================
 --- /dev/null
-+++ vim-9.1.1706/runtime/syntax/changes.vim
++++ vim-9.1.1857/runtime/syntax/changes.vim
 @@ -0,0 +1,41 @@
 +" Vim syntax file
 +" Filename:     changes.vim
