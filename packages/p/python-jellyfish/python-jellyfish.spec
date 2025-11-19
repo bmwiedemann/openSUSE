@@ -1,7 +1,7 @@
 #
 # spec file for package python-jellyfish
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           python-jellyfish
-Version:        1.0.3
+Version:        1.2.1
 Release:        0
 Summary:        A library for doing approximate and phonetic matching of strings
 License:        BSD-2-Clause
 URL:            http://github.com/jamesturk/jellyfish
 Source0:        https://files.pythonhosted.org/packages/source/j/jellyfish/jellyfish-%{version}.tar.gz
 Source1:        vendor.tar.xz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module maturin}
 BuildRequires:  %{python_module pip}

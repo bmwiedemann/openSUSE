@@ -1,6 +1,6 @@
 <services>
   <service name="cargo_vendor" mode="disabled">
-    <param name="srctar">jellyfish-1.0.3.tar.gz</param>
+    <param name="srctar">jellyfish-1.2.1.tar.gz</param>
     <param name="compression">xz</param>
     <param name="update">true</param>
   </service>

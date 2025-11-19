@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 18 23:53:48 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.2.1:
+  * add support for Python 3.14 (bump PyO3 to 0.26)
+  * drop support for Python 3.8, add support for Python 3.13 and PyPy 3.11
+    (PyO3 0.24 bump)
+  * add jaccard_similarity
+  * match_rating_codex now returns consistent results for Unicode characters
+    regardless of position
+
+-------------------------------------------------------------------
 Thu Feb 15 02:57:54 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.0.3:
