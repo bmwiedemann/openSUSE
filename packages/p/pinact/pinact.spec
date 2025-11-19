@@ -17,7 +17,7 @@
 
 
 Name:           pinact
-Version:        3.4.3
+Version:        3.4.4
 Release:        0
 Summary:        CLI to edit GitHub Workflows and pin versions of Actions and Reusable Workflows
 License:        MIT

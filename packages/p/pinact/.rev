@@ -7,4 +7,12 @@
     <comment>pinact is a CLI to edit GitHub Workflow and Composite action files and pin versions of Actions and Reusable Workflows. pinact can also update their versions and verify version annotations.</comment>
     <requestid>1318196</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ac16d4117f96769a064d308e30519014</srcmd5>
+    <version>3.4.4</version>
+    <time>1763560488</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1318469</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov 17 12:24:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.4.4:
+  * Bug Fixes
+    - Skip prerelease tags when current version is stable
+      @fredericlepied
+  * Dependencies
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.436.0 (#1215)
+    - chore(deps): update dependency suzuki-shunsuke/pinact to
+      v3.4.3 (#1214)
+
+-------------------------------------------------------------------
 Mon Nov 17 06:34:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.4.3:
