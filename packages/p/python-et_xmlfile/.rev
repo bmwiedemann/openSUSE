@@ -60,4 +60,13 @@
 - Initial Release : build python3</comment>
     <requestid>1226003</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>5924317e435dc2048620545d28d1d4ad</srcmd5>
+    <version>2.0.0</version>
+    <time>1763560867</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-python314.patch:
+  * Support Python 3.14 changes.</comment>
+    <requestid>1318545</requestid>
+  </revision>
 </revisionlist>

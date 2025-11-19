@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 19 04:36:02 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python314.patch:
+  * Support Python 3.14 changes.
+
+-------------------------------------------------------------------
 Sat Nov 23 18:10:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.0:

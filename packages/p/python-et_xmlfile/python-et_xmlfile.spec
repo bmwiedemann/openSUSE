@@ -1,7 +1,7 @@
 #
 # spec file for package python-et_xmlfile
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        An implementation of lxml.xmlfile for the standard library
 License:        MIT
 URL:            https://foss.heptapod.net/openpyxl/et_xmlfile
 Source0:        https://foss.heptapod.net/openpyxl/et_xmlfile/-/archive/%{version}/et_xmlfile-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://foss.heptapod.net/openpyxl/et_xmlfile/-/merge_requests/4
+Patch0:         support-python314.patch
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -43,8 +45,7 @@ be developed that will work with both libraries. It was developed initially for
 the openpyxl project but is now a standalone module.
 
 %prep
-%setup -q -n et_xmlfile-%{version}
-rm -rf *.egg-info
+%autosetup -p1 -n et_xmlfile-%{version}
 
 %build
 %pyproject_wheel
@@ -59,7 +60,7 @@ rm -rf *.egg-info
 %files %{python_files}
 %license LICENCE.rst
 %doc README.rst
-%{python_sitelib}/et_xmlfile-%{version}*-info
+%{python_sitelib}/et_xmlfile-%{version}.dist-info
 %{python_sitelib}/et_xmlfile
 
 %changelog
