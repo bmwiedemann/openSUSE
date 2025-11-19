@@ -1937,4 +1937,15 @@ Man pages are disabled for this build, upstream disabled them for this release. 
     2.4.126 and 2.4.127.</comment>
     <requestid>1315100</requestid>
   </revision>
+  <revision rev="186" vrev="1">
+    <srcmd5>bfaa6a10e537ed4951e3b6c33c5a4562</srcmd5>
+    <version>2.4.129</version>
+    <time>1763560210</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.4.129
+  * amdgpu: update marketing names
+  * amdgpu: update marketing names
+  * Sync headers with drm-next</comment>
+    <requestid>1318317</requestid>
+  </revision>
 </revisionlist>
