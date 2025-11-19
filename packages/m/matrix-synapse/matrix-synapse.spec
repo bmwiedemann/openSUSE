@@ -23,7 +23,7 @@
 %global Twisted_version               24.7.0
 %global Jinja2_version                3.1.5
 %global Pillow_version                11.2.1
-%global PyYAML_version                6.0.2
+%global PyYAML_version                6.0.3
 %global attrs_version                 23.2.0
 # TODO: 5.0.0
 %global bcrypt_version                4.3.0
@@ -31,16 +31,17 @@
 %global canonicaljson_version         2.0.0
 %global cryptography_version          43.0.3
 %global immutabledict_version         4.2.1
-%global idna_version                  3.8
-%global ijson_version                 3.3.0
+# TODO: 3.11
+%global idna_version                  3.10
+%global ijson_version                 3.4.0.post0
 %global jsonschema_version            4.25.1
 %global matrix_common_version         1.3.0
 %global matrix_common_max_version     2
-%global msgpack_version               1.1.0
+%global msgpack_version               1.1.2
 %global netaddr_version               1.3.0
 %global phonenumbers_version          9.0.15
 # TODO: 0.23.1
-%global prometheus_client_version     0.20.0
+%global prometheus_client_version     0.21.0
 %global psutil_version                2.0.0
 %global pyOpenSSL_version             25.0.0
 %global pyasn1_version                0.6.0
@@ -58,19 +59,20 @@
 %global packaging_version             24.0
 %global psycopg2_version              2.9.9
 %global pysaml2_version               7.5.0
-# TOOD: 1.6.5
-%global Authlib_version               1.6.1
+%global Authlib_version               1.6.5
 %global lxml_version                  6.0.2
 %global sentry_sdk_version            2.34.1
 %global PyJWT_version                 2.6.0
 %global jaeger_client_version         4.8.0
 %global opentracing_version           2.4.0
-%global hiredis_version               3.0.0
+%global hiredis_version               3.3.0
 # TODO: 1.4.11
 %global txredisapi_version            1.4.10
 %global Pympler_version               1.0.1
 %global pydantic_version              2.7.1
 %global python_multipart_version      0.0.9
+# TODO: 0.28.0
+%global rpds_py_verison               0.27.0
 %else
 # some version locks based on poetry.lock
 %global Jinja2_version                3.0
@@ -100,7 +102,7 @@
 %global service_identity_version      18.1.0
 %global signedjson_version            1.1.0
 %global signedjson_max_version        2
-%global sortedcontainers_version      1.5.2
+%global sortedcontainers_version      2.0.5
 %global systemd_version               231
 %global typing_extensions_version     3.10.0
 %global treq_version                  21.5.0
@@ -113,7 +115,7 @@
 %global lxml_version                  4.8.0
 %global sentry_sdk_version            1.5.11
 %global PyJWT_version                 1.6.4
-%global jaeger_client_version         4.0.0
+%global jaeger_client_version         4.2.0
 %global opentracing_version           2.2.0
 %global hiredis_version               2.0.0
 %global txredisapi_version            1.4.7
@@ -157,7 +159,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.141.0
+Version:        1.142.1
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        AGPL-3.0-or-later
@@ -271,6 +273,8 @@ BuildRequires:  %{use_python}-treq >= %{treq_version}
 %requires_peq   %{use_python}-treq
 BuildRequires:  %{use_python}-unpaddedbase64 >= %{unpaddedbase64_version}
 %requires_peq   %{use_python}-unpaddedbase64
+BuildRequires:  %{use_python}-rpds-py >= %{rpds_py_verison}
+%requires_peq   %{use_python}-rpds-py
 # Specify all CONDITIONAL_REQUIREMENTS (we Require them to avoid no-recommends
 # breaking very commonly-used bits of matrix-synapse such as postgresql).
 %if %{with synapse_ldap}

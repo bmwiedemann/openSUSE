@@ -1535,4 +1535,14 @@ mostly-working synapse than nothing at all) and the package has been update to
       metrics being clobbered (ApplicationService). (#19040)</comment>
     <requestid>1314344</requestid>
   </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>c1ecce89780a30c766d8bf6cf9d27da7</srcmd5>
+    <version>1.142.1</version>
+    <time>1763560766</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1318529 from darix
+
+- Update to 1.142.1</comment>
+    <requestid>1318530</requestid>
+  </revision>
 </revisionlist>
