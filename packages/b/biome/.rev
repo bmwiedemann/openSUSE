@@ -146,4 +146,13 @@
   * or: https://github.com/biomejs/biome/blob/main/packages/%40biomejs/biome/CHANGELOG.md#232</comment>
     <requestid>1314949</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ae4dff75bb102edd219a6d46633a5c1e</srcmd5>
+    <version>2.3.6</version>
+    <time>1763560336</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.3.6:
+  * see CHANGELOG.md for changes across 104 commits and 1,332 files</comment>
+    <requestid>1318358</requestid>
+  </revision>
 </revisionlist>
