@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyInstaller
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,14 +20,14 @@
 %bcond_without  test
 %define modname PyInstaller
 Name:           python-PyInstaller
-Version:        6.13.0
+Version:        6.16.0
 Release:        0
 Summary:        Bundle a Python application and all its dependencies into a single package
 License:        GPL-2.0-only
 URL:            https://www.pyinstaller.org
 Source:         https://github.com/pyinstaller/pyinstaller/archive/refs/tags/v%{version}.tar.gz#/pyinstaller-%{version}.tar.gz
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig

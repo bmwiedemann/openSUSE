@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Nov 18 16:06:04 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 6.16.0
+  * Fix behavior of --add-data and --add-binary when the given source
+    path contains a glob that matches directories.
+  * The Analysis() class now keeps track of pure-python modules that
+    are not collected into PYZ archive
+  * Add pre-safe-import-module hook for gi.overrides to properly handle
+    cases where the gi.overrides package is split between /usr/lib64
+    and /usr/lib
+  * Add Python 3.14 support.
+  * Adjust the destination directory for collected python’s standard
+    extensions, from lib-dynload to python3.x/lib-dynload
+  * Rework the anonymization of the co_filename attribute in collected
+    code objects
+  * Rework the search for python shared library in order to reduce
+    amount of guess-work and better accommodate variations in naming
+    across platforms
+
+-------------------------------------------------------------------
 Wed Jun 11 05:49:29 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
