@@ -508,4 +508,12 @@ added https://github.com/rspamd/rspamd/commit/ccb45df90df60fae36b9438cfb2b0088e5
   needed.</comment>
     <requestid>1316425</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>9fc7ea8dccb61a45711b83abd0aae49d</srcmd5>
+    <version>3.14.0</version>
+    <time>1763560498</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1318471</requestid>
+  </revision>
 </revisionlist>

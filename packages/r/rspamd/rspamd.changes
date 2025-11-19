@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Tue Nov 11 14:32:00 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.14.0
+  - 🔥 Major Features
+    - 🎯 HTML Fuzzy Hashing
+      - Structural similarity detection for HTML content (#5661,
+        #5720)
+      - Per-rule text_hashes toggle for HTML-only matching
+    - 🌐 TCP Fuzzy Protocol
+      - Full TCP support with auto-switch from UDP (#5669)
+      - Production-ready connection management and framing
+    - 🔗 Advanced URL Processing
+      - New task:get_cta_urls() API for CTA detection (#5732)
+      - DoS protection: hash-based deduplication with 50k URL limit
+      - HTML URL rewriting infrastructure (#5676)
+    - 🤖 AI & WebUI
+      - Web search context for LLM plugin with Redis caching
+        (#5732)
+      - Dark mode with auto-detection (#5725)
+    - 📧 Email & Integration
+      - Advanced aliases with loop detection (#5655)
+      - Milter ESMTP argument parsing with Lua API (#5663)
+      - Postfix wizard for automated integration (#5667)
+  - 🐛 Critical Fixes
+    - 🌐 DNS Stability
+      - Fixed UDP→TCP packet truncation on retransmits (#5739)
+      - Fixed transaction ID collision and nameserver round-robin
+        (#5721, #5739)
+    - 🔒 Memory & Stability
+      - Fixed allocator crashes (jemalloc/malloc mixing) (#5721,
+        #5724)
+      - Fixed memory leaks in fuzzy storage, OpenSSL, UCL (#5709)
+      - Hyperscan runtime version check prevents cache corruption
+        (#5724)
+    - 📊 DMARC & Protocol
+      - Fixed Redis connection exhaustion with batching + GC
+        (#5737)
+      - ARC RFC 8617 compliance + ed25519 support (#5684)
+      - Composites two-phase evaluation (#5681)
+    - 🐧 BSD & Security
+      - Fixed FreeBSD/NetBSD/OpenBSD builds (#5726, #5729)
+      - Fuzzy TCP race conditions and buffer overflows (#5669)
+    - ⚡ Performance
+      - khash migration for better fuzzy_check performance (#5720)
+      - Intrusive heap implementation (#5693)
+      - Configurable Bayes guards (#5701)
+  https://github.com/rspamd/rspamd/blob/3.14.0/ChangeLog
+
+-------------------------------------------------------------------
 Fri Nov  7 12:30:31 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - We finally have natively built packages with for luajit-lpeg in

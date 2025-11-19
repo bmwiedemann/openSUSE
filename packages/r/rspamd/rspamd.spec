@@ -67,7 +67,7 @@
 %endif
 
 Name:           rspamd
-Version:        3.13.2
+Version:        3.14.0
 Release:        0
 Summary:        Spam filtering system
 License:        Apache-2.0
@@ -484,6 +484,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/trie.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/url_redirector.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/whitelist.conf
+%config(noreplace) %{_sysconfdir}/rspamd/modules.d/aliases.conf
 
 %dir %{_sysconfdir}/rspamd/override.d
 %config(noreplace) %{_sysconfdir}/rspamd/override.d/module.conf.example
@@ -499,6 +500,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/languages/*
 
 %dir %{_datadir}/rspamd/plugins
+%{_datadir}/rspamd/plugins/aliases.lua
 %{_datadir}/rspamd/plugins/aws_s3.lua
 %{_datadir}/rspamd/plugins/bimi.lua
 %{_datadir}/rspamd/plugins/external_relay.lua
@@ -588,6 +590,9 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/lualib/llm_common.lua
 %{_datadir}/rspamd/lualib/llm_context.lua
 %{_datadir}/rspamd/lualib/lua_cta.lua
+%{_datadir}/rspamd/lualib/llm_search_context.lua
+%{_datadir}/rspamd/lualib/lua_aliases.lua
+%{_datadir}/rspamd/lualib/lua_fuzzy_html.lua
 
 %dir %{_datadir}/rspamd/lualib/lua_content
 %{_datadir}/rspamd/lualib/lua_content/ical.lua
@@ -698,6 +703,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/rules/rspamd.lua
 %{_datadir}/rspamd/rules/subject_checks.lua
 %{_datadir}/rspamd/rules/regexp/urls.lua
+%{_datadir}/rspamd/rules/fuzzy_html_phishing.lua
 
 %dir %{_datadir}/rspamd/rules/regexp
 %{_datadir}/rspamd/rules/regexp/compromised_hosts.lua
@@ -725,13 +731,9 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_wwwdir}/%{name}/index.html
 %{_wwwdir}/%{name}/mstile-150x150.png
 %{_wwwdir}/%{name}/safari-pinned-tab.svg
+%{_wwwdir}/%{name}/img/rspamd_logo_navbar_dark.png
 
 %{_wwwdir}/%{name}/css
-
-%dir %{_wwwdir}/%{name}/fonts
-%{_wwwdir}/%{name}/fonts/glyphicons-halflings-regular.ttf
-%{_wwwdir}/%{name}/fonts/glyphicons-halflings-regular.woff
-%{_wwwdir}/%{name}/fonts/glyphicons-halflings-regular.woff2
 
 %dir %{_wwwdir}/%{name}/img
 %{_wwwdir}/%{name}/img/asc.png
@@ -753,6 +755,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_wwwdir}/%{name}/js/app/upload.js
 %{_wwwdir}/%{name}/js/app/common.js
 %{_wwwdir}/%{name}/js/app/libft.js
+%{_wwwdir}/%{name}/js/app/footable-fontawesome.js
 
 %{_wwwdir}/%{name}/js/lib
 
