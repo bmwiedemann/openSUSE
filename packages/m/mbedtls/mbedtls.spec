@@ -22,7 +22,7 @@
 %define lib_everest libeverest
 %define lib_p256m   libp256m
 Name:           mbedtls
-Version:        3.6.4
+Version:        3.6.5
 Release:        0
 Summary:        Libraries for crypto and SSL/TLS protocols
 License:        Apache-2.0 OR GPL-2.0-or-later

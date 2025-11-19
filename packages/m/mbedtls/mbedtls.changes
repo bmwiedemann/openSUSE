@@ -1,4 +1,165 @@
 -------------------------------------------------------------------
+Sun Nov 09 14:54:59 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to version 3.6.5:
+  * Resolves CVE-2025-59438 boo#1252454
+  * Resolves CVE-2025-54764 boo#1252341
+  * Update BRANCHES.md
+  * Added generated files
+  * Updated framework pointer
+  * Version bump for mbedtls-3.5.6
+  * Assemble ChangeLog
+  * Be more precise about the user/peer ID limitation
+  * Add storage format test case for JPAKE
+  * Document JPAKE limitations
+  * Backport time_t type conversions
+  * Remove sentence about 1.0 that should not have been backported
+  * Fix comment too long for pylint
+  * Prevent unnecessary submodule fetches
+  * Eliminate use of git worktree prune
+  * Use f-string literal
+  * Update some references to the future
+  * Improve explanations of configuration translation
+  * Copyediting
+  * update 1.0.0/4.0.0 release bullet point
+  * Update asymmetric cryptography
+  * Miscellaneous improvements
+  * Fix section names
+  * A few updates for 3.6
+  * Fix includes in udp_proxy.c
+  * Use worktrees instead of fetches for submodules
+  * Update framework to the merge of the merge PR
+  * Qualify "reference implementation" wording
+  * The PSA implementation is production-quality
+  * We have a CVE ID
+  * Fix copypasta
+  * Improve documentation
+  * Announce psa_can_do_cipher()
+  * Declare psa_can_do_cipher() in a public header
+  * Be explicit about modinv output range
+  * Remove redundant memset on freshly initialized buffer
+  * Changelog entry for PSA CBC-PKCS7 padding oracle fix
+  * psa_cipher_decrypt: treat status and output length as sensitive
+  * psa_cipher_finish: treat status and output length as sensitive
+  * Return PSA_ERROR_INVALID_PADDING in constant time
+  * Use mbedtls_psa_cipher_finish() in PSA
+  * Add BUFFER_TOO_SMALL testing
+  * Factor API calls into auxiliary functions
+  * Add constant-time AES-CBC encrypt and decrypt tests through PSA
+  * Improve documentation of MBEDTLS_THREADING_ALT
+  * Improve documentation of mutex primitives
+  * Update framework: support threading internal interface 4.0.0.0
+  * Upgrade packages in requirements.txt
+  * Add ChangeLog entry for SSBleed and M-Step
+  * Single-threaded test of nominal mutex usage
+  * Expand on why and how we bypass the quiet wrapper
+  * Fix code style
+  * Typo
+  * Create threading_internal.h
+  * Test invalid_padding against all-bits-one
+  * Minor grammar fix in comment
+  * ecdsa: rm unused variable
+  * dhm: remove unused variable (and improve comment)
+  * Explain the near-duplication of test function for constant-flow tests
+  * Minor documentation improvements
+  * Clarify use of CC and friends for file generation
+  * RSA: use CT gcd-modinv in deduce_private_exponent()
+  * RSA: refactor: avoid code duplication
+  * RSA: use constant-time modinv in deduce_crt()
+  * RSA: use constant-time GCD in deduce_primes()
+  * ecdsa: use CT modinv
+  * ECP: use CT modinv
+  * DHM: use CT modinv for blinding
+  * RSA: use CT gcd-modinv in prepare_blinding()
+  * bignum: gcd: improve comments
+  * bignum: fix memory leak in GCD with 0 as an input
+  * Make mbedtls_mpi_gcd() more consistent
+  * bignum: use CT gcd for mbedtls_mpi_gcd()
+  * bignum: follow customs for ret initialisation
+  * Fix a few typos
+  * bignum: make mbedtls_mpi_lsb() less leaky
+  * bignum: remove dead variable-time inv_mod code
+  * bignum: use CT modinv when A is odd (any range)
+  * bignum: use CT modinv when A is odd and in [2, N)
+  * bignum: use CT modinv when N is odd
+  * Expand testing for mbedtls_mpi_inv_mod() again
+  * We now run some tests with MBEDTLS_TEST_CONSTANT_FLOW_VALGRIND
+  * Changelog entry for mbedtls_cipher_finish_padded()
+  * Expand the ignore patterns for test_full_block_cipher_psa_dispatch
+  * Improve outcome reporting of additional valgrind_cf testing
+  * Note that the decrypted length is sensitive when there was padding
+  * Switch legacy cipher to constant-time invalid padding reporting
+  * New function mbedtls_cipher_finish_padded
+  * Constant-flow tests for mbedtls_cipher_crypt
+  * Constant-flow AES-CBC multipart decrypt tests
+  * Do dedicated constant-time testing in a few more configurations
+  * Move constant-time padding tests to a separate suite
+  * More variety of CBC decrypt tests
+  * More meaningful test case names
+  * Update framework submodule pointer to merged Framework PR#194
+  * Backport: add AES PBES2 test cases matching 3DES (including wrong and missing password)
+  * Backport: add AES PBES2 test cases matching 3DES (correct password only)
+  * Improve mpi_gcd_invmod_odd() tests when I/G has more limbs than N
+  * Adjust mpi_gcd_modinv_odd() internals
+  * Add gcd_invmod_odd() tests where G/I are initialized to large numbers
+  * Change A=0 (null) handling in mpi_gcd_invmod_odd()
+  * Update mpi_gcd_invmod_odd() related comments/documentation
+  * Fix gcd_invmod_odd wrapper when A is 0 (null)
+  * Fix memory leak
+  * Add handful of manual gcd_modinv_odd test cases
+  * Add mpi_gcd_modinv_odd test functions
+  * Adjust mpi_gcd_modinv_odd docs and precondition checking
+  * bignum: add mpi wrapper for gcd_modinv
+  * Update framework pointer
+  * Add GCD tests for (0, negative) inputs
+  * Test that make lib can build generated files even when GEN_FILES is off
+  * Also test `make clean` in library
+  * Fix make lib doing too much when GEN_FILES is off
+  * Test make lib with GEN_FILES off
+  * Add GCD tests that return negative when b=0
+  * Revert "Remove manual GCD tests that are now generated"
+  * Clarify mpi_gdc() documentation when B is 0
+  * Remove manual GCD tests that are now generated
+  * Rework misleading comment
+  * Add more manual inv_mod tests
+  * Fix pointer aliasing in bignum tests
+  * Improve invmod and gcd handwritten tests
+  * Clarify parameter documentation
+  * Use more meaningful names in test function
+  * Use precise sizes for temporaries in test
+  * Remove tests for 0 limbs
+  * Improve testing of mbedtls_mpi_gcd() and mbedtls_mpi_inv_mod()
+  * Try again to clarify connection with the paper
+  * Gracefully handle A_limbs > N_limbs and test it
+  * Tune comment about paper vs our code again
+  * Expand comment about adaptations from the paper
+  * Clarify preconditions and impact if not met
+  * Add change log
+  * cmake: library: Add custom targets for generated files
+  * Add test case exercising (almost) max iterations
+  * Forbid uninteresting edge cases
+  * Unit-test mpi_core_div2_mod_odd()
+  * Make sure the whole temporary array is non-zero
+  * Reduce clutter & improve readbility in test func
+  * Relax number-of-limbs requirement on test data
+  * Relax and test aliasing rules
+  * bignum_core: Add mbedtls_mpi_core_gcd_modinv_odd()
+  * Restrict CI-specific python requirements to Linux
+  * Don't install cryptography on the FreeBSD CI
+  * Freeze cryptography version on the CI at 35.0.0
+  * Update note about the first 4.x LTS
+  * Revert "Added generated files"
+  * Properly initialize SSL endpoint objects
+  * Fix accidentally skipped test assertion
+  * Turn Wunterminated-string-initialization back into an error
+  * Fixed the same typo in ssl-opt.sh
+  * Fixed some minor typos in comments.
+  * typo
+  * Add a build with NV seed as the only entropy source
+  * We do support builds where NV seed is the only entropy source
+  * cmake: library: Remove unnecessary link_to_source
+
+-------------------------------------------------------------------
 Tue Jul 01 14:39:38 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to version 3.6.4:

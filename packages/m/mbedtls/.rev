@@ -574,4 +574,12 @@
   * Add patch mbedtls-enable-srtp.patch (forwarded request 1289614 from lmulling)</comment>
     <requestid>1289615</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>001307e46ac2adb59118b58df65d6ff1</srcmd5>
+    <version>3.6.5</version>
+    <time>1763561017</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1318585</requestid>
+  </revision>
 </revisionlist>
