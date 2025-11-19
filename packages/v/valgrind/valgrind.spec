@@ -29,10 +29,10 @@
 %endif
 %bcond_without docs
 Name:           valgrind%{?psuffix}
-Version:        3.25.1
+Version:        3.26.0
 Release:        0
 Summary:        Memory Management Debugger
-License:        GFDL-1.2-only AND GPL-2.0-or-later
+License:        GFDL-1.2-only AND GPL-3.0-or-later
 Group:          Development/Tools/Debuggers
 URL:            https://valgrind.org/
 Source0:        https://sourceware.org/pub/valgrind/valgrind-%{version}.tar.bz2
@@ -43,7 +43,6 @@ Source2:        valgrind.keyring
 Patch0:         valgrind.xen.patch
 # bko#276780 missing implementation for PINSRD
 Patch1:         VEX-x86-pinsrd.patch
-Patch2:         0001-Bug-503241-s390x-Support-z17-changes-to-the-NNPA-ins.patch
 Patch10:        dhat-use-datadir.patch
 BuildRequires:  automake
 BuildRequires:  pkgconfig
