@@ -1863,6 +1863,8 @@ unsorted:
   - cadabra2-doc 
   - cadabra2-examples 
   - cadabra2-gui 
+  - cadaver 
+  - cadaver-lang 
   - caddy 
   - caddy-bash-completion 
   - caddy-fish-completion 
@@ -1938,6 +1940,7 @@ unsorted:
   - calcurse-lang 
   - calendarsupport-devel 
   - calibre 
+  - caligula 
   - calindori 
   - calindori-lang 
   - callaudiod 
@@ -2977,6 +2980,7 @@ unsorted:
   - cwstudio 
   - cwstudio-gui 
   - cxref 
+  - cxxbridge 
   - cxxopts-devel 
   - cxxtools-devel 
   - cyanrip 
@@ -3756,6 +3760,26 @@ unsorted:
   - erlang-src 
   - erlang-wx 
   - erlang-wx-src 
+  - erlang27 
+  - erlang27-debugger 
+  - erlang27-debugger-src 
+  - erlang27-dialyzer 
+  - erlang27-dialyzer-src 
+  - erlang27-diameter 
+  - erlang27-diameter-src 
+  - erlang27-doc 
+  - erlang27-epmd 
+  - erlang27-et 
+  - erlang27-et-src 
+  - erlang27-jinterface 
+  - erlang27-jinterface-src 
+  - erlang27-observer 
+  - erlang27-observer-src 
+  - erlang27-reltool 
+  - erlang27-reltool-src 
+  - erlang27-src 
+  - erlang27-wx 
+  - erlang27-wx-src 
   - esbuild 
   - esc 
   - espanso 
@@ -8465,6 +8489,7 @@ unsorted:
   - himmelblau-sshd-config 
   - himmelblau-sso 
   - hipblas-common-devel 
+  - hipblas-devel 
   - hipcc 
   - hipcc-libomp-devel 
   - hiredis 
@@ -13899,6 +13924,7 @@ unsorted:
   - libhidapi-libusb0 
   - libhinawa-devel 
   - libhinawa2 
+  - libhipblas2 
   - libhivex0 
   - libhl1 
   - libhmac-devel 
@@ -14604,7 +14630,7 @@ unsorted:
   - libmgl-fltk8 
   - libmgl-glut8 
   - libmgl-mpi8 
-  - libmgl-qt5-8 
+  - libmgl-qt-8 
   - libmgl-wnd8 
   - libmgl-wx8 
   - libmgl8 
@@ -16778,6 +16804,10 @@ unsorted:
   - libvala-0_56-devel 
   - libvaladoc-0_56-0 
   - libvaladoc-0_56-devel 
+  - libvalkey-devel 
+  - libvalkey0 
+  - libvalkey_rdma0 
+  - libvalkey_tls0 
   - libvamp-hostsdk3 
   - libvamp-hostsdk3-32bit 
   - libvamp-sdk2 
@@ -16802,18 +16832,9 @@ unsorted:
   - libvdpau-devel 
   - libvdpau-devel-32bit 
   - libvdpau1-32bit 
-  - libvdpau_d3d12 
-  - libvdpau_nouveau 
-  - libvdpau_nouveau-32bit 
-  - libvdpau_r600 
-  - libvdpau_r600-32bit 
-  - libvdpau_radeonsi 
-  - libvdpau_radeonsi-32bit 
   - libvdpau_trace1 
   - libvdpau_trace1-32bit 
   - libvdpau_va_gl1 
-  - libvdpau_virtio_gpu 
-  - libvdpau_virtio_gpu-32bit 
   - libvdt0 
   - libverdict1_4 
   - libversion 
@@ -19571,6 +19592,7 @@ unsorted:
   - nbdkit-tmpdisk-plugin 
   - nbdkit-vddk-plugin 
   - nbdkit-xz-filter 
+  - nbping 
   - nbsdgames 
   - ncdu 
   - ncmpcpp 
@@ -19706,6 +19728,7 @@ unsorted:
   - netperfmeter 
   - netperfmeter-pdfproctools 
   - netperfmeter-plotting 
+  - netsed 
   - netsniff-ng 
   - netsurf-buildsystem 
   - nettle 
@@ -22852,6 +22875,10 @@ unsorted:
   - pilot 
   - pimcommon-devel 
   - pin 
+  - pinact 
+  - pinact-bash-completion 
+  - pinact-fish-completion 
+  - pinact-zsh-completion 
   - pinentry-efl 
   - pinentry-emacs 
   - pinentry-fltk 
@@ -36409,8 +36436,6 @@ unsorted:
   - rhythmbox 
   - rhythmbox-devel 
   - rhythmbox-lang 
-  - rhythmbox-plugin-alternative-toolbar 
-  - rhythmbox-plugin-alternative-toolbar-lang 
   - riff 
   - rime 
   - rime-plum 
@@ -37822,7 +37847,6 @@ unsorted:
   - stb-devel 
   - stdman 
   - steamdeck-dsp 
-  - steamdeck-firmware 
   - steamos-powerbuttond 
   - steampipe 
   - steinberg-bravura-fonts 
@@ -47896,6 +47920,7 @@ unsorted:
   - thessalonica-tempora-lgc-otf-fonts 
   - thessalonica-tempora-lgc-ttf-fonts 
   - thessalonica-theano-ttf-fonts 
+  - thextech 
   - thinkfan 
   - thonny 
   - thonny-lang 
@@ -49879,7 +49904,9 @@ unsorted:
   - xom 
   - xom-demo 
   - xom-javadoc 
+  - xone 
   - xone-dongle-firmware 
+  - xone-kmp-default 
   - xonotic 
   - xonotic-data 
   - xonotic-server 
