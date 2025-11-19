@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 17 16:35:49 UTC 2025 - Tobias Görgens <suse.snooper541@passmail.net>
+
+- Update to version 0+git20251029.8e90367:
+  * add support for new gamepads, like the Gamesir-G3w, QH Electronics Controller and others
+  * improve gamepad handling
+  * switch upstream
+
+-------------------------------------------------------------------
 Thu Sep 04 23:06:38 UTC 2025 - Tobias Görgens <suse.snooper541@passmail.net>
 
 - Initial version 0+git20250526.b8e98f3:

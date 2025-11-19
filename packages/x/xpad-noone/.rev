@@ -11,4 +11,12 @@ this one to retain the functionality of Xbox and Xbox 360 controllers.
 Added missing copyright notice (sorry)</comment>
     <requestid>1302924</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cd2eca66eaf3d9b9c651d7a1d4f59282</srcmd5>
+    <version>0+git20251029.8e90367</version>
+    <time>1763560300</time>
+    <user>anag_factory</user>
+    <comment>I switched the source repository to a properly maintained one instead of relying on a personal fork. The new upstream also added support for new gamepads in the meantime and improved gamepad handling.</comment>
+    <requestid>1318355</requestid>
+  </revision>
 </revisionlist>

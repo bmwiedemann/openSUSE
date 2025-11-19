@@ -1,8 +1,8 @@
 <services>
 	<service name="tar_scm" mode="manual">
 		<param name="scm">git</param>
-		<param name="url">https://github.com/TobiPeterG/xpad-noone</param>
-		<param name="revision">upstream</param>
+		<param name="url">https://github.com/forkymcforkface/xpad-noone</param>
+		<param name="revision">master</param>
 		<param name="versionformat">0+git%cd.%h</param>
 		<param name="changesgenerate">enable</param>
 	</service>

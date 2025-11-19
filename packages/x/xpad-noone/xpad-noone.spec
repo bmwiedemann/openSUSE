@@ -15,29 +15,21 @@
 #
 
 Name:           xpad-noone
-Version:        0+git20250526.b8e98f3
+Version:        0+git20251029.8e90367
 Release:        0
 Summary:        The original xpad kernel driver with support for Xbox One controllers removed
-License:        GPL-2.0-only
+License:        GPL-2.0-or-later
 Group:          System/Kernel
-URL:            https://github.com/TobiPeterG/xpad-noone
-Source:         xpad-noone-%version.tar.xz
+URL:            https://github.com/forkymcforkface/xpad-noone
+Source0:        xpad-noone-%version.tar.xz
+Source1:        preamble
 BuildRequires:  %kernel_module_package_buildreqs
 BuildRequires:  xz
 Requires:       xone-dongle-firmware
 
-%kernel_module_package
+%kernel_module_package -n %name -p %_sourcedir/preamble
 
 %description
-This is the original xpad kernel driver with support for Xbox One
-controllers removed. If you are running the xone driver you will have
-to replace the xpad kernel module with this one to retain the
-functionality of Xbox and Xbox 360 controllers.
-
-%package KMP
-Summary:        The original xpad kernel driver with support for Xbox One controllers removed
-
-%description KMP
 This is the original xpad kernel driver with support for Xbox One
 controllers removed. If you are running the xone driver you will have
 to replace the xpad kernel module with this one to retain the
