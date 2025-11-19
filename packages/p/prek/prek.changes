@@ -1,0 +1,99 @@
+-------------------------------------------------------------------
+Mon Nov 17 12:24:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.15:
+  * Enhancements
+    - Clean up hook environments when install fails (#1085)
+    - Prepare for publishing prek to crates.io (#1088)
+    - Replace serde-yaml with serde_saphyr (#1087)
+    - Warn unexpected keys in repo and hook level (#1096)
+  * Bug fixes
+    - Fix prek init-template-dir fails in non-git repo (#1093)
+
+-------------------------------------------------------------------
+Mon Nov 17 06:39:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.14:
+  * Enhancements
+    - Support PREK_CONTAINER_RUNTIME=podman to override container
+      runtime (#1033)
+    - Support rootless container runtime (#1018)
+    - Support language: unsupported and language:
+      unsupported_script introduced in pre-commit v4.4 (#1073)
+    - Tweak to regex used for mountinfo (#1037)
+  * Bug fixes
+    - Fix --files argument - files referencing other projects
+      aren’t being filtered (#1064)
+    - Unset objectFormat in git init (#1048)
+  * Documentation
+    - Add scoop to installation (#1067)
+    - Document workspace file visibility constraints (#1071)
+    - Add iceberg-python, msgspec and humanize to "who is using
+      prek" (#1039, #1042, #1063)
+  * Other changes
+    - Add a hint to install when running inside a sub-project
+      (#1045)
+    - Add a hint to use --refresh when no configuration found
+      (#1046)
+    - Run uv pip install from the current directory (#1069)
+
+-------------------------------------------------------------------
+Sat Nov 08 07:27:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.13:
+  * Enhancements
+    - Add Ruby support (no download support yet) (#993)
+    - Implement check-executables-have-shebangs as builtin-hook
+      (#924)
+    - Improve container id detection (#1031)
+  * Performance
+    - Optimize hot paths: reduce allocations (#997)
+    - Refactor identify using smallvec (#982)
+  * Bug fixes
+    - Fix YAML with nested merge keys (#1020)
+    - Treat every file as executable on Windows to keep
+      compatibility with pre-commit (#980)
+  * Documentation
+    - Document that .gitignore is respected by default during
+      workspace discovery (#983)
+    - Update project stability status (#1005)
+    - Add FastMCP to "who is using prek" (#1034)
+    - Add attrs to "who is using prek" (#981)
+
+-------------------------------------------------------------------
+Sat Nov 08 07:19:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.12:
+  * Enhancements
+    - Add a warning for unimplemented hooks (#976)
+    - Allow using system trusted store by PREK_NATIVE_TLS (#959)
+  * Bug fixes
+    - Do not check for script subprocess status (#964)
+    - Fix compatibility with older luarocks (#967)
+    - Fix local relative path in try-repo (#975)
+  * Documentation
+    - Update language support status (#970)
+
+-------------------------------------------------------------------
+Sat Nov 08 07:09:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.11:
+  * Enhancements
+    - Support language: lua hooks (#954)
+    - Support language_version: system (#949)
+    - Implement no-commit-to-branch as builtin hook (#930)
+    - Improve styling for stashing error message (#953)
+    - Support nix-shell style shebang (#929)
+  * Documentation
+    - Add a page about "Quick start" (#934)
+    - Add kreuzberg to "who is using prek" (#936)
+    - Clarify minimum mise version required to use mise use prek
+      (#931)
+
+-------------------------------------------------------------------
+Mon Oct 20 07:12:29 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package prek: prek is a reimagined version of pre-commit,
+  built in Rust. It is designed to be a faster, dependency-free and
+  drop-in alternative for it, while also providing some additional
+  long-requested features
