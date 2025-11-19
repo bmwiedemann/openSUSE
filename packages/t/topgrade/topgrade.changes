@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Nov 17 16:08:44 UTC 2025 - gerald_chen@foxmail.com
+
+- Re-enable dependencies update in cargo_vendor service. Rust
+  version conflict has been partially addressed by upstream. See
+  gh#topgrade-rs/topgrade#1475.
+- Update to version 16.3.0:
+  * chore: release v16.3.0 (#1465)
+  * chore(license): switch license variant to GPL-3.0-or-later (#1518)
+  * chore(deps): update some dependencies (#1512)
+  * chore(deps): update github/codeql-action action to v4.31.3 (#1483)
+  * refactor: remove unnecessary cfg-if dependency (#1509)
+  * ci(lint_pr): run on synchronize, and add zizmor ignore (#1508)
+  * chore(pre-commit): autoupdate (#1464)
+  * fix(elan): skip running elan update on elan >=4.0.0 (#1507)
+  * docs: improve issue templates (#1235)
+  * feat: print summary and run post commands when (q)uit is used (#1254)
+  * chore(deps): bump mac-notification-sys, use main branch temporarily (#1506)
+  * chore: replace Dependabot with Renovate (#1486)
+  * chore(deps): lock file maintenance (#1481)
+  * fix(deps): Fix non-locked install on older version of Rust (#1485)
+  * fix(deps): Fix non-locked install on older version of Rust (#1482)
+  * chore(deps): pin dependencies (#1478)
+  * chore(deps): update actions/dependency-review-action action to v4.8.2 (#1479)
+  * chore: Add Renovate (#1477)
+  * fix(bun): skip self-update if not installed via official script (#1476)
+  * fix(openbsd): fix compilation on OpenBSD (#1473)
+  * refactor: Replace main's self update with a proper step call (#1470)
+  * feat: run pre_sudo before pre_commands (#1469)
+  * ci(release): Fix homebrew releases (#1468)
+  * feat(chezmoi): add `exclude_encrypted` config (#1453)
+
+-------------------------------------------------------------------
 Tue Nov 11 00:35:39 UTC 2025 - gerald_chen@foxmail.com
 
 - Update to version 16.2.1:
