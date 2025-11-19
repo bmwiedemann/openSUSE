@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Nov 07 09:39:11 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 46.0+61:
+  * client: conversation-list: Show recipients in Sent folder
+  * engine: Detect mime encoding constraint from server EHLO
+  * feat: Use DarkReader for dark mode emails
+  * tests: Fix ImapDB test after C.UTF-8 change
+  * desktop: Rename appdata to metainfo
+  * make sure the C.UTF-8 locale is installed on the system
+  * migrate locale from en_US.UTF-8 to C.UTF-8
+  * chore: Remove trailing newline
+  * dev: Add .editorconfig for consistent file formatting
+  * Update BUILDING.md
+  * client: Go to next pane once something has been selected
+  * Support GNOME 42 dark theme preference
+  * build: Set minimum libhandy to 1.6
+  * client: Support Dark Mode
+  * Implement dark mode using color-scheme CSS property
+  * ui: Simplify style rules for body.plain in the composer
+  * client: Fix invalid conversion from points to pixels
+  * fix(ci): Allow flatpak build to fail
+  * Added close quote in ca.po
+  * client: Fix incorrect height being set for a WebView, when
+    using font scaling
+  * Updated translations.
+- Drop patch merged upstream:
+  * Support-GNOME-42-dark-theme-preference.patch
+- Rebase patch partly merged upstream:
+  * Support-dark-theme-webview.patch
+
+-------------------------------------------------------------------
 Fri Mar 07 07:39:11 UTC 2025 - bjorn.lie@gmail.com
 
 - Update to version 46.0+24:

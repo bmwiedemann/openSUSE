@@ -13,26 +13,11 @@ better to keep these DRY
  ui/composer-web-view.css | 8 ++------
  1 file changed, 2 insertions(+), 6 deletions(-)
 
-Index: geary-44.0/ui/composer-web-view.css
+Index: geary-46.0+61/ui/composer-web-view.css
 ===================================================================
---- geary-44.0.orig/ui/composer-web-view.css
-+++ geary-44.0/ui/composer-web-view.css
-@@ -12,12 +12,8 @@ body {
-   font-size: medium !important;
- }
- 
--body.plain, body.plain * {
--  font-family: monospace !important;
--  font-weight: normal;
--  font-style: normal;
--  font-size: medium !important;
--  color: black !important;
-+body.plain {
-+  font-family: monospace;
-   text-decoration: none;
- }
- 
-@@ -25,6 +21,17 @@ body.plain a {
+--- geary-46.0+61.orig/ui/composer-web-view.css
++++ geary-46.0+61/ui/composer-web-view.css
+@@ -24,6 +24,17 @@ body.plain a {
    cursor: text;
  }
  
@@ -50,7 +35,7 @@ Index: geary-44.0/ui/composer-web-view.css
  body > *.geary-no-display {
    display: none !important;
  }
-@@ -47,6 +54,12 @@ body > div:focus-within {
+@@ -46,6 +57,12 @@ body > div:focus-within {
    background-color: white;
  }
  
@@ -63,10 +48,10 @@ Index: geary-44.0/ui/composer-web-view.css
  body > div#geary-signature:focus-within,
  body > div#geary-quote:focus-within {
    outline: 1px dashed #ccc !important;
-Index: geary-44.0/src/client/accounts/accounts-signature-web-view.vala
+Index: geary-46.0+61/src/client/accounts/accounts-signature-web-view.vala
 ===================================================================
---- geary-44.0.orig/src/client/accounts/accounts-signature-web-view.vala
-+++ geary-44.0/src/client/accounts/accounts-signature-web-view.vala
+--- geary-46.0+61.orig/src/client/accounts/accounts-signature-web-view.vala
++++ geary-46.0+61/src/client/accounts/accounts-signature-web-view.vala
 @@ -12,18 +12,23 @@ public class Accounts.SignatureWebView :
  
  
@@ -91,11 +76,11 @@ Index: geary-44.0/src/client/accounts/accounts-signature-web-view.vala
      }
  
  }
-Index: geary-44.0/ui/org.gnome.Geary.gresource.xml
+Index: geary-46.0+61/ui/org.gnome.Geary.gresource.xml
 ===================================================================
---- geary-44.0.orig/ui/org.gnome.Geary.gresource.xml
-+++ geary-44.0/ui/org.gnome.Geary.gresource.xml
-@@ -49,6 +49,7 @@
+--- geary-46.0+61.orig/ui/org.gnome.Geary.gresource.xml
++++ geary-46.0+61/ui/org.gnome.Geary.gresource.xml
+@@ -51,6 +51,7 @@
      <file compressed="true" preprocess="xml-stripblanks">gtk/help-overlay.ui</file>
      <file compressed="true" preprocess="xml-stripblanks">password-dialog.glade</file>
      <file compressed="true" preprocess="xml-stripblanks">problem-details-dialog.ui</file>
@@ -103,10 +88,10 @@ Index: geary-44.0/ui/org.gnome.Geary.gresource.xml
      <file compressed="true">signature-web-view.js</file>
      <file compressed="true">geary.css</file>
      <file compressed="true">single-key-shortcuts.css</file>
-Index: geary-44.0/ui/signature-web-view.css
+Index: geary-46.0+61/ui/signature-web-view.css
 ===================================================================
 --- /dev/null
-+++ geary-44.0/ui/signature-web-view.css
++++ geary-46.0+61/ui/signature-web-view.css
 @@ -0,0 +1,6 @@
 +@media (prefers-color-scheme: dark) {
 +  body {
@@ -114,11 +99,11 @@ Index: geary-44.0/ui/signature-web-view.css
 +    background-color: #353535;
 +  }
 +}
-Index: geary-44.0/ui/conversation-web-view.css
+Index: geary-46.0+61/ui/conversation-web-view.css
 ===================================================================
---- geary-44.0.orig/ui/conversation-web-view.css
-+++ geary-44.0/ui/conversation-web-view.css
-@@ -52,6 +52,24 @@ body {
+--- geary-46.0+61.orig/ui/conversation-web-view.css
++++ geary-46.0+61/ui/conversation-web-view.css
+@@ -40,6 +40,24 @@ body {
    height: auto !important;
  }
  

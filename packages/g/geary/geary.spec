@@ -1,7 +1,7 @@
 #
 # spec file for package geary
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,13 @@
 
 
 Name:           geary
-Version:        46.0+24
+Version:        46.0+61
 Release:        0
 Summary:        An email reader for the GNOME desktop
 License:        BSD-2-Clause AND CC-BY-3.0 AND LGPL-2.1-or-later
 Group:          Productivity/Networking/Email/Clients
 URL:            https://wiki.gnome.org/Apps/Geary
 Source0:        %{name}-%{version}.tar.zst
-
-# PATCH-FEATURE-OPENSUSE Support-GNOME-42-dark-theme-preference.patch -- Support GNOME 42 dark theme preference
-Patch0:         Support-GNOME-42-dark-theme-preference.patch
 # PATCH-FEATURE-OPENSUSE Support-dark-theme-webview.patch -- Support dark mode for email bodies
 Patch1:         Support-dark-theme-webview.patch
 
@@ -104,8 +101,7 @@ export CFLAGS="%{optflags} -Wno-error=return-type"
 %{_libdir}/%{name}/plugins/
 %dir %{_libdir}/%{name}/web-extensions
 %{_libdir}/%{name}/web-extensions/libgeary-web-process.so
-%dir %{_datadir}/metainfo
-%{_datadir}/metainfo/org.gnome.Geary.appdata.xml
+%{_datadir}/metainfo/org.gnome.Geary.metainfo.xml
 %{_datadir}/applications/org.gnome.Geary.desktop
 %{_datadir}/applications/geary-autostart.desktop
 %{_datadir}/icons/hicolor/
