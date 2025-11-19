@@ -24,6 +24,10 @@ License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/aws/amazon-ssm-agent
 Source0:        https://github.com/aws/amazon-ssm-agent/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM - Fix an SSH client process terminating when receiving an unexpected
+# message type in response to a key listing or signing request (CVE-2025-47913)
+# Partial patch taken from https://cs.opensource.google/go/x/crypto/+/559e062ce8bfd6a39925294620b50906ca2a6f95
+Patch0:         CVE-2025-47913.patch
 BuildRequires:  go >= 1.21
 BuildRequires:  pkgconfig(systemd)
 Requires:       systemd
@@ -95,6 +99,9 @@ environment that are configured for Systems Manager.
 
 %prep
 %setup -q
+pushd vendor/golang.org/x/crypto
+%patch -P0 -p1
+popd
 sed -i -e 's#const[ \s]*Version.*#const Version = "%{version}"#g' agent/version/version.go
 sed -i 's#/bin/#/sbin/#' packaging/linux/amazon-ssm-agent.service
 sed -i 's#var defaultWorkerPath = "/usr/bin/"#var defaultWorkerPath = "/usr/sbin/"#' agent/appconfig/constants_unix.go

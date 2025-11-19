@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 18 09:53:32 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add CVE-2025-47913.patch to fix an SSH client process terminating
+  when receiving an unexpected message type in response to a key
+  listing or signing request (bsc#1253611, CVE-2025-47913)
+
+-------------------------------------------------------------------
 Thu Oct 23 13:12:38 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.3.3270.0
