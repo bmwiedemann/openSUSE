@@ -31,7 +31,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pbr%{psuffix}
-Version:        7.0.1
+Version:        7.0.3
 Release:        0
 Summary:        Python Build Reasonableness
 License:        Apache-2.0

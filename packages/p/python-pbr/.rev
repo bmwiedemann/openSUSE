@@ -863,4 +863,26 @@
   * Centralise Python 2/3 compat code</comment>
     <requestid>1306371</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>793811b498441f9275c3eb5bc562465c</srcmd5>
+    <version>7.0.3</version>
+    <time>1763560238</time>
+    <user>anag_factory</user>
+    <comment>- update to 7.0.3:
+  * Don't wrap develop on newer setuptools
+  * Fix handling of long\_description
+  * Misc fixes
+  * Remove use of pkg\_resources from tests
+  * Fix functional test for pip 25.3
+  * Rename setup.cfg parsing utilities
+  * Remove remaining uses of pkg\_resources
+  * Inline overridden script writer
+  * Duplicate methods between ScriptWriter, WindowsScriptWriter
+  * Remove use of easy\_install
+  * Inline LocalInstallScripts.\_make\_wsgi\_scripts\_only
+  * Remove unused code
+  * Remove dead code
+  * Pin zuul ansible, pyperclip versions</comment>
+    <requestid>1318338</requestid>
+  </revision>
 </revisionlist>

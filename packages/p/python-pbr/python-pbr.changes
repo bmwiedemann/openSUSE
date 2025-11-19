@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Nov 17 21:47:23 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.0.3:
+  * Don't wrap develop on newer setuptools
+  * Fix handling of long\_description
+  * Misc fixes
+  * Remove use of pkg\_resources from tests
+  * Fix functional test for pip 25.3
+  * Rename setup.cfg parsing utilities
+  * Remove remaining uses of pkg\_resources
+  * Inline overridden script writer
+  * Duplicate methods between ScriptWriter, WindowsScriptWriter
+  * Remove use of easy\_install
+  * Inline LocalInstallScripts.\_make\_wsgi\_scripts\_only
+  * Remove unused code
+  * Remove dead code
+  * Pin zuul ansible, pyperclip versions
+
+-------------------------------------------------------------------
 Sun Sep 21 19:37:25 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.0.1:
