@@ -237,4 +237,12 @@
     <comment>10.1.48</comment>
     <requestid>1316081</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>1a046ab95ef66ef8e57044ef20b559ef</srcmd5>
+    <version>10.1.48</version>
+    <time>1763560612</time>
+    <user>anag_factory</user>
+    <comment>make catalina.sh %config(noreplace) (bsc#1253460)</comment>
+    <requestid>1318492</requestid>
+  </revision>
 </revisionlist>

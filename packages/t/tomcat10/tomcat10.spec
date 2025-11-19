@@ -685,8 +685,8 @@ fi
 %{_libexecdir}/%{app_name}/functions
 %{_libexecdir}/%{app_name}/preamble
 %{_libexecdir}/%{app_name}/server
-#bnc#565901
-%{bindir}/catalina.sh
+#bnc#565901 and bsc#1253460
+%config(noreplace) %{bindir}/catalina.sh
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{app_name}10
 %dir %{basedir}
 %dir %{confdir}
