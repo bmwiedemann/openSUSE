@@ -26,6 +26,8 @@ URL:            https://github.com/pradyunsg/sphinx-theme-builder
 Source:         https://github.com/pradyunsg/sphinx-theme-builder/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE Support click 8.2 changes
 Patch0:         support-click-8.2.patch
+# PATCH-FIX-UPSTREAM gh#pradyunsg/sphinx-theme-builder#51
+Patch1:         support-python314.patch
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module packaging}

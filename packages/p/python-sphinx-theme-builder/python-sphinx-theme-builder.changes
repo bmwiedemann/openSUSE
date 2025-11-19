@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 12 01:52:03 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python314.patch:
+  * Support Python 3.14 ast changes.
+
+-------------------------------------------------------------------
 Mon Aug  4 05:30:03 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-click-8.2.patch:
