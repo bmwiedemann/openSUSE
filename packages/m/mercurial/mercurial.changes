@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov 18 09:40:31 UTC 2025 - Sean Baggaley <me@drinkybird.net>
+
+- Mercurial 7.1.2
+
+  A scheduled minor release, with few user-facing changes. It is the last release
+  of the 7.1 cycle, baring any critical release.
+
+  * dispatch: reference the Heptapod bug tracker in stacktrace output
+  * dirstate: read the dirstate data file once instead of doing it 6 times
+  * rust-revlog: fix adjustment of the LRU size to take the factor in account
+  * doc: support docutils >= 0.22
+  * Use old license format in pyproject.toml to help with packaging compatibility
+  * Improved macOS CI
+  * Improved test harness robustness
+
+- Remove docutils-022.patch as it's been applied upstream
+
+-------------------------------------------------------------------
 Wed Sep 24 09:21:26 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add docutils-022.patch to support docutils >= 0.22
