@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>1093027</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4d4b8533166ab82591fabb747560f133</srcmd5>
+    <version>0.0.3</version>
+    <time>1763560809</time>
+    <user>anag_factory</user>
+    <comment>- Skip a test that breaks with Python 3.14.</comment>
+    <requestid>1318532</requestid>
+  </revision>
 </revisionlist>

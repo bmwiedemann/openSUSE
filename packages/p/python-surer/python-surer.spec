@@ -1,7 +1,7 @@
 #
 # spec file for package python-surer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,7 +54,9 @@ sed -i '/addopts/d' setup.cfg
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# Error message is different with Python 3.14, and if its patched, two other
+# tests fail
+%pytest -k 'not test_that_none_contains_string'
 
 %files %{python_files}
 %doc README.rst
