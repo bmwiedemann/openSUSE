@@ -104,4 +104,17 @@
     <comment></comment>
     <requestid>1235857</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>58553f194ce802b50442bb48e5737539</srcmd5>
+    <version>1.12.0</version>
+    <time>1763560583</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1318483 from mcalabkova
+
+- Update to 1.12.0
+    * make use of rust and maturin
+    * various bugfixes and improvements
+  - Add _service and vendor.tar.zst because of rust bits</comment>
+    <requestid>1318489</requestid>
+  </revision>
 </revisionlist>

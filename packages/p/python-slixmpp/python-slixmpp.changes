@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 18 17:18:05 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.12.0
+  * make use of rust and maturin
+  * various bugfixes and improvements
+- Add _service and vendor.tar.zst because of rust bits
+
+-------------------------------------------------------------------
 Tue Jan  7 12:43:44 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.8.6

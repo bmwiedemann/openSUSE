@@ -1,7 +1,7 @@
 #
 # spec file for package python-slixmpp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,28 @@
 
 
 Name:           python-slixmpp
-Version:        1.8.6
+Version:        1.12.0
 Release:        0
 Summary:        Python XMPP (Jabber) Library that Implements Everything as a Plugin
 License:        MIT
 URL:            https://slixmpp.readthedocs.io/
 Source:         https://codeberg.org/poezio/slixmpp/archive/slix-%{version}.tar.gz
+Source1:        vendor.tar.zst
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module aiodns}
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module maturin}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module xml}
+BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
 BuildRequires:  gnupg
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
+BuildRequires:  zstd
 BuildRequires:  pkgconfig(libidn)
 Requires:       python-aiodns
 Requires:       python-aiohttp
@@ -50,7 +53,7 @@ asyncio instead of threads. XEP (XMPP Extended Protocol) coverage is
 realized as plugins.
 
 %prep
-%autosetup -p1 -n slixmpp
+%autosetup -a1 -p1 -n slixmpp
 sed -i '/\#\!\/usr\/bin\/env\ python3/d' slixmpp/plugins/xep_0454/__init__.py
 
 %build
