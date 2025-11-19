@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov 17 17:19:45 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
+
+- Update to version 0.20.2:
+  * Roll back to using name property instead of summary for alt text
+    (for now anyway), due to compatibility issues with *oma, *key,
+    and Iceshrimp.
+  * Stub authorize_interaction to avoid surprising 404 when trying to
+    do a remote interaction.
+  * Fix issue that was causing emojis not to download properly.
+  * Add optional build tags for reduced binary size.
+  * Fix some swagger docs issues.
+  * Various other fixes + performance tweaks.
+  * Dependency bumps.
+
+-------------------------------------------------------------------
 Fri Oct 17 15:12:14 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
 
 - Update to version 0.20.1:
@@ -9,7 +24,6 @@ Fri Oct 17 15:12:14 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
   * Return more sensible HTTP codes from fedi endpoints when things
     happen that aren't actually errors.
   * Add API scope for managing emojis.
-
 
 -------------------------------------------------------------------
 Wed Oct  8 15:43:07 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>

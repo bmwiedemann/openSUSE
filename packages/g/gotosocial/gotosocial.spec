@@ -17,7 +17,7 @@
 
 
 Name:           gotosocial
-Version:        0.20.1
+Version:        0.20.2
 Release:        0
 Summary:        An ActivityPub social network server, written in Golang
 License:        AGPL-3.0-only
@@ -50,7 +50,7 @@ images and articles. All without being tracked or advertised to!
 %autosetup -p1 -a1 -n %{name}
 
 %build
-GO_BUILDTAGS="${GO_BUILDTAGS-} netgo osusergo static_build timetzdata"
+GO_BUILDTAGS="${GO_BUILDTAGS-} netgo osusergo static_build timetzdata nomsgpack stdlibjson"
 GO_LDFLAGS="${GO_LDFLAGS-} -s -w -extldflags '-static' -X 'main.Version=%{version}'"
 GO_GCFLAGS=${GO_GCFLAGS-}
 CGO_ENABLED=0
