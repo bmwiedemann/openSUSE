@@ -2,10 +2,10 @@
  Lib/test/test_compile.py |    5 +++++
  1 file changed, 5 insertions(+)
 
-Index: Python-3.14.0b3/Lib/test/test_compile.py
+Index: Python-3.14.0/Lib/test/test_compile.py
 ===================================================================
---- Python-3.14.0b3.orig/Lib/test/test_compile.py	2025-06-22 00:32:01.975698954 +0200
-+++ Python-3.14.0b3/Lib/test/test_compile.py	2025-06-22 00:32:07.740981155 +0200
+--- Python-3.14.0.orig/Lib/test/test_compile.py	2025-11-06 23:19:11.681015028 +0100
++++ Python-3.14.0/Lib/test/test_compile.py	2025-11-06 23:22:47.971267371 +0100
 @@ -24,6 +24,9 @@
  from test.support.bytecode_helper import instructions_with_positions
  from test.support.os_helper import FakePath

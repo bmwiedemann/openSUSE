@@ -203,8 +203,6 @@ Patch02:        F00251-change-user-install-location.patch
 Patch03:        python-3.3.0b1-localpath.patch
 # replace DATE, TIME and COMPILER by fixed definitions to aid reproducible builds
 Patch04:        python-3.3.0b1-fix_date_time_compiler.patch
-# Raise timeout value for test_subprocess
-Patch06:        subprocess-raise-timeout.patch
 # PATCH-FEATURE-UPSTREAM bpo-31046_ensurepip_honours_prefix.patch bpo#31046 mcepl@suse.com
 # ensurepip should honour the value of $(prefix)
 Patch07:        bpo-31046_ensurepip_honours_prefix.patch
@@ -226,6 +224,12 @@ Patch41:        bsc1243155-sphinx-non-determinism.patch
 Patch44:        gh138131-exclude-pycache-from-digest.patch
 # PATCH-FIX-OPENSUSE gh139257-Support-docutils-0.22.patch gh#python/cpython#139257 daniel.garcia@suse.com
 Patch45:        gh139257-Support-docutils-0.22.patch
+# PATCH-FIX-UPSTREAM CVE-2025-8291-consistency-zip64.patch bsc#1251305 mcepl@suse.com
+# Check consistency of the zip64 end of central directory record
+Patch46:        CVE-2025-8291-consistency-zip64.patch
+# PATCH-FIX-UPSTREAM CVE-2025-6075-expandvars-perf-degrad.patch bsc#1252974 mcepl@suse.com
+# Avoid potential quadratic complexity vulnerabilities in path modules
+Patch47:        CVE-2025-6075-expandvars-perf-degrad.patch
 #### Python 3.14 DEVELOPMENT PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake

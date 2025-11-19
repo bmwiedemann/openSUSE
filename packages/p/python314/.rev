@@ -2671,4 +2671,24 @@
     <comment></comment>
     <requestid>1311757</requestid>
   </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>9b702703c57441458fe5d8b4e8b6bc51</srcmd5>
+    <version>3.14.0</version>
+    <time>1763560687</time>
+    <user>anag_factory</user>
+    <comment>- Add CVE-2025-6075-expandvars-perf-degrad.patch avoid simple
+  quadratic complexity vulnerabilities of os.path.expandvars()
+  (CVE-2025-6075, bsc#1252974).
+
+- Add CVE-2025-8291-consistency-zip64.patch which checks
+  consistency of the zip64 end of central directory record, and
+  preventing obfuscation of the payload, i.e., you scanning for
+  malicious content in a ZIP file with one ZIP parser (let's say
+  a Rust one) then unpack it in production with another (e.g.,
+  the Python one) and get malicious content that the other parser
+  did not see (CVE-2025-8291, bsc#1251305)
+- Remove subprocess-raise-timeout.patch, which seems irrelevant
+  now.</comment>
+    <requestid>1318505</requestid>
+  </revision>
 </revisionlist>
