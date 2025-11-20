@@ -25,7 +25,7 @@
 %bcond_with engine_c
 %endif
 Name:           hedgewars
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        Turn-based artillery game, featuring fighting hedgehogs
 License:        GPL-2.0-only

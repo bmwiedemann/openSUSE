@@ -129,4 +129,12 @@
 - Use pkgconfig for SDL2, fixes building for Leap (forwarded request 1271185 from Kieltux)</comment>
     <requestid>1271237</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7dc3e09f0b0e239fffafca144eb63f0e</srcmd5>
+    <version>1.0.3</version>
+    <time>1763646613</time>
+    <user>anag_factory</user>
+    <comment>Remove empty line that seems to confuse the source validator (forwarded request 1317941 from adkorte)</comment>
+    <requestid>1318718</requestid>
+  </revision>
 </revisionlist>
