@@ -411,4 +411,23 @@
     affected tailnets that use Tailscale SSH recording (forwarded request 1315612 from rrahl0)</comment>
     <requestid>1315613</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>1b19ca77d759a58c62c7e9fb81780e07</srcmd5>
+    <version>1.90.8</version>
+    <time>1763646645</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.90.8:
+  * tka: move RemoveAll() to CompactableChonk
+- Update to version 1.90.7:
+  * wgengine/magicsock: validate endpoint.derpAddr
+  * wgengine/magicsock: fix UDPRelayAllocReq/Resp deadlock
+  * net/udprelay: replace VNI pool with selection algorithm
+  * feature/relayserver,ipn/ipnlocal,net/udprelay: plumb DERPMap
+  * feature/relayserver: fix Shutdown() deadlock
+  * net/netmon: do not abandon a subscriber when exiting early
+  * tka: don't try to read AUMs which are partway through being written
+  * tka: rename a mutex to mu instead of single-letter l
+  * ipn/ipnlocal: use an in-memory TKA store if FS is unavailable (forwarded request 1318741 from rrahl0)</comment>
+    <requestid>1318742</requestid>
+  </revision>
 </revisionlist>
