@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Nov 18 23:03:13 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 4.13.0:
+  https://github.com/NLnetLabs/nsd/blob/NSD_4_13_0_REL/doc/ChangeLog
+  https://github.com/NLnetLabs/nsd/blob/NSD_4_12_1_REL/doc/ChangeLog
+  https://github.com/NLnetLabs/nsd/blob/NSD_4_12_0_REL/doc/ChangeLog
+  https://github.com/NLnetLabs/nsd/blob/NSD_4_11_1_REL/doc/ChangeLog
+  https://github.com/NLnetLabs/nsd/blob/NSD_4_11_0_REL/doc/ChangeLog
+  https://github.com/NLnetLabs/nsd/blob/NSD_4_10_1_REL/doc/ChangeLog
+  https://github.com/NLnetLabs/nsd/blob/NSD_4_10_0_REL/doc/ChangeLog
+  https://github.com/NLnetLabs/nsd/blob/NSD_4_9_1_REL/doc/ChangeLog
+  https://github.com/NLnetLabs/nsd/blob/NSD_4_9_0_REL/doc/ChangeLog
+- enable systemd notify support. New Buildrequires:
+  pkgconfig(systemd) pkgconfig(libsystemd)
+- enable dnstap support. New BuildRequires:
+  libfstrm-devel libprotobuf-c-devel protobuf-c
+- enable tcp fast open support
+- enable support for >= 2038
+
+-------------------------------------------------------------------
 Mon Feb 26 18:42:56 UTC 2024 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - As far as it is known the kernel has a working recvmmsg

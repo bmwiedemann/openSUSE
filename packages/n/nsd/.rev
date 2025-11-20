@@ -356,4 +356,27 @@ BUG FIXES:
     <comment></comment>
     <requestid>1153173</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>8d01030b4624afbb3196061dbfa5afd3</srcmd5>
+    <version>4.13.0</version>
+    <time>1763646644</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.13.0:
+  https://github.com/NLnetLabs/nsd/blob/NSD_4_13_0_REL/doc/ChangeLog
+  https://github.com/NLnetLabs/nsd/blob/NSD_4_12_1_REL/doc/ChangeLog
+  https://github.com/NLnetLabs/nsd/blob/NSD_4_12_0_REL/doc/ChangeLog
+  https://github.com/NLnetLabs/nsd/blob/NSD_4_11_1_REL/doc/ChangeLog
+  https://github.com/NLnetLabs/nsd/blob/NSD_4_11_0_REL/doc/ChangeLog
+  https://github.com/NLnetLabs/nsd/blob/NSD_4_10_1_REL/doc/ChangeLog
+  https://github.com/NLnetLabs/nsd/blob/NSD_4_10_0_REL/doc/ChangeLog
+  https://github.com/NLnetLabs/nsd/blob/NSD_4_9_1_REL/doc/ChangeLog
+  https://github.com/NLnetLabs/nsd/blob/NSD_4_9_0_REL/doc/ChangeLog
+- enable systemd notify support. New Buildrequires:
+  pkgconfig(systemd) pkgconfig(libsystemd)
+- enable dnstap support. New BuildRequires:
+  libfstrm-devel libprotobuf-c-devel protobuf-c
+- enable tcp fast open support
+- enable support for &gt;= 2038</comment>
+    <requestid>1318736</requestid>
+  </revision>
 </revisionlist>

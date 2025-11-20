@@ -3,5 +3,4 @@
   <description>NSD is a complete implementation of an authoritative domain name server developed
 by NLnet Labs with the purpose of creating more diversity in the DNS landscape.
 </description>
-  <devel project="server:dns" package="nsd"/>
 </package>

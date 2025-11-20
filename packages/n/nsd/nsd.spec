@@ -23,15 +23,15 @@
 %define zonesdir   %{configdir}/zones
 %define pidfile    %{_rundir}/nsd/nsd.pid
 Name:           nsd
-Version:        4.8.0
+Version:        4.13.0
 Release:        0
 #
 Summary:        An authoritative-only domain name server
 #
 License:        BSD-3-Clause
 Group:          Productivity/Networking/DNS/Servers
-URL:            https://open.nlnetlabs.nl/nsd/
-Source:         https://open.nlnetlabs.nl/downloads/nsd/nsd-%{version}.tar.gz
+URL:            https://nlnetlabs.nl/projects/nsd/about/
+Source:         https://nlnetlabs.nl/downloads/nsd/nsd-%{version}.tar.gz
 Source1:        nsd.service
 Source2:        tmpfiles-nsd.conf
 # Generated with from https://nlnetlabs.nl/people/
@@ -39,17 +39,23 @@ Source2:        tmpfiles-nsd.conf
 # curl -Ss https://nlnetlabs.nl/people/ | \
 #   grep 'PGP Key ID' | \
 #   sed 's,.*PGP Key ID: \([A-Z0-9 ]\+\).*,\1,' | \
-#   perl -e 'while($_=<>){chop; s, ,,g;print; print(" ");}' | \
+#   perl -e 'while($_=<>){chop; s, ,,g;print substr $_, -16; print(" ");}' | \
 #   xargs gpg --export-options export-minimal --export > nsd.keyring
 #
 Source4:        nsd.keyring
 Source5:        https://www.nlnetlabs.nl/downloads/nsd/nsd-%{version}.tar.gz.asc
+Source10:       README.md
 #
 BuildRequires:  libevent-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pwdutils
 BuildRequires:  tcpd-devel
+BuildRequires:  libfstrm-devel
+BuildRequires:  libprotobuf-c-devel >= 1.0.0
+BuildRequires:  protobuf-c >= 1.0.0
+BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(libsystemd)
 Requires:       shadow
 Requires(post): coreutils
 Requires(post): findutils
@@ -80,7 +86,10 @@ by NLnet Labs, with the purpose of creating more diversity in the DNS landscape.
     --enable-zone-stats                \
     --with-user=_nsd                   \
     --enable-ratelimit \
-    --enable-recvmmsg
+    --enable-recvmmsg \
+    --enable-systemd \
+    --enable-tcp-fastopen \
+    --enable-year2038
 make -O V=1 VERBOSE=1 %{?_smp_mflags}
 iconv -f iso8859-1 -t utf-8 doc/RELNOTES > doc/RELNOTES.utf8
 iconv -f iso8859-1 -t utf-8 doc/CREDITS > doc/CREDITS.utf8
