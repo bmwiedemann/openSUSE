@@ -1,7 +1,7 @@
 #
 # spec file for package python-capturer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://capturer.readthedocs.io
 Source:         https://files.pythonhosted.org/packages/source/c/capturer/capturer-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/xolox/python-capturer/pull/16 Prefer multiprocessing 'fork' start method if available
+Patch:          py314.patch
 BuildRequires:  %{python_module humanfriendly >= 8.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 3.0.4}
@@ -46,7 +48,7 @@ but definitely won't work on Windows (due to the use of the platform dependent
 "pty" module).
 
 %prep
-%setup -q -n capturer-%{version}
+%autosetup -p1 -n capturer-%{version}
 
 %build
 %pyproject_wheel

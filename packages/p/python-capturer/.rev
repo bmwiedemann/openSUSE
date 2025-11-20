@@ -49,4 +49,13 @@
 </comment>
     <requestid>1089551</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>47e28201385c81accf716d99eaa228f2</srcmd5>
+    <version>3.0</version>
+    <time>1763646609</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream py314.patch to fix build with Python 3.14
+</comment>
+    <requestid>1318717</requestid>
+  </revision>
 </revisionlist>
