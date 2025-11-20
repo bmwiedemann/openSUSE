@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 11 14:44:03 UTC 2025 - Robert Schweikert <rjschwei@suse.com>
+
+- Fix dependency replace -serial with -pyserial
+
+-------------------------------------------------------------------
 Tue Sep 30 07:44:38 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Drop unneeded test dependency on httpretty, fixed long ago

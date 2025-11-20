@@ -84,7 +84,7 @@ BuildRequires:  %{pythons}-pytest-cov
 BuildRequires:  %{pythons}-pytest-mock
 BuildRequires:  %{pythons}-requests
 BuildRequires:  %{pythons}-responses
-BuildRequires:  %{pythons}-serial
+BuildRequires:  %{pythons}-pyserial
 BuildRequires:  system-user-nobody
 BuildRequires:  distribution-release
 BuildRequires:  util-linux
