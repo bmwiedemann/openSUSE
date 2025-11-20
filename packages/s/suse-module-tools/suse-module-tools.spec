@@ -26,7 +26,7 @@
 # kernel packages around that store sysctl files under /boot
 %bcond_without boot_sysctl
 %global sysctl_dropin %{_unitdir}/systemd-sysctl.service.d/50-kernel-uname_r.conf
-%global systemd_units %{?with_boot_sysctl:boot-sysctl.service} %{?with_kernel_sysctl:kernel-sysctl.service}
+%global systemd_units remount-tmpfs.service %{?with_boot_sysctl:boot-sysctl.service} %{?with_kernel_sysctl:kernel-sysctl.service}
 
 # List of legacy file systems to be blacklisted by default
 %global fs_blacklist adfs affs bfs befs cramfs efs erofs exofs f2fs freevxfs hfs hfsplus hpfs jffs2 jfs kafs minix nilfs2 ntfs ntfs3 omfs orangefs pstore qnx4 qnx6 reiserfs romfs sysv ufs zonefs
@@ -37,7 +37,7 @@
 %global modprobe_conf_rpmsave %(echo "%{modprobe_conf_files}" | sed 's,\\([^ ]*\\),%{_sysconfdir}/modprobe.d/\\1.conf.rpmsave,g')
 
 Name:           suse-module-tools
-Version:        16.0.62
+Version:        16.1.0
 Release:        0
 Summary:        Configuration for module loading and SUSE-specific utilities for KMPs
 License:        GPL-2.0-or-later
@@ -150,6 +150,7 @@ echo 'Wants=kernel-sysctl.service' >>"%{buildroot}%{sysctl_dropin}"
 install -pm 644 boot-sysctl.service "%{buildroot}%{_unitdir}"
 echo 'Wants=boot-sysctl.service' >>"%{buildroot}%{sysctl_dropin}"
 %endif
+install -pm 644 remount-tmpfs.service "%{buildroot}%{_unitdir}"
 
 install -d -m 755 "%{buildroot}%{_modulesloaddir}"
 for _x in modules-load.d/*.conf; do
@@ -165,6 +166,7 @@ install -pm 755 udev-trigger-generator %{buildroot}/usr/lib/systemd/system-gener
 # udev rules (formerly system-tuning-common-SUSE, udev-extra-rules)
 install -d -m 755 %{buildroot}%{_udevrulesdir}
 install -pm 644 udevrules/*.rules %{buildroot}%{_udevrulesdir}
+install -m 755 remount-tmpfs %{buildroot}/usr/lib/udev
 
 mkdir -p %{buildroot}%{_defaultlicensedir}
 
@@ -241,6 +243,7 @@ exit 0
 %{_unitdir}/systemd-sysctl.service.d
 %{_modulesloaddir}
 %{_udevrulesdir}
+/usr/lib/udev/remount-tmpfs
 %dir %{dracutlibdir}
 %{dracutlibdir}/dracut.conf.d
 %ifarch ppc64 ppc64le

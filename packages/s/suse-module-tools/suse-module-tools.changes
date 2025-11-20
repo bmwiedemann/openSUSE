@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 18 20:24:55 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.1.0:
+  * udev: use systemd service to remount tmpfs (bsc#1253679)
+
+-------------------------------------------------------------------
 Mon Nov  3 20:02:08 UTC 2025 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.0.62:
