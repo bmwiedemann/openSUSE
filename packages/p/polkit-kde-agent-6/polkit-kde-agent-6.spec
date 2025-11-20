@@ -22,7 +22,7 @@
 %define rname polkit-kde-agent-1
 %bcond_without released
 Name:           polkit-kde-agent-6
-Version:        6.5.2
+Version:        6.5.3
 Release:        0
 Summary:        PolicyKit authentication agent for Plasma
 License:        GPL-2.0-only AND LGPL-2.1-or-later
