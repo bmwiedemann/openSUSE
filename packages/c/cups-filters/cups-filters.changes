@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 19 08:15:32 UTC 2025 - pgajdos@suse.com
+
+- added patches [bsc#1253678]
+  * cups-filters-qpdf12.patch
+
+-------------------------------------------------------------------
 Thu Sep 18 12:13:39 UTC 2025 - Johannes Meixner <jsmeix@suse.com>
 
 - cups-filters-1.28.17-CVE-2024-47176.patch is based on 

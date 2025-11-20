@@ -494,4 +494,12 @@
     <comment>cups-filters fix CVE-2024-47176 bsc#1230939 and avoid CVE-2024-47850 bsc#1231294 (forwarded request 1305790 from jsmeix)</comment>
     <requestid>1305791</requestid>
   </revision>
+  <revision rev="61" vrev="6">
+    <srcmd5>6c1a374584913b361faef6eafeee3dd7</srcmd5>
+    <version>1.28.17</version>
+    <time>1763646446</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1318601</requestid>
+  </revision>
 </revisionlist>

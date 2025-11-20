@@ -1,7 +1,7 @@
 #
 # spec file for package cups-filters
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -111,6 +111,9 @@ Patch109:       cups-filters-1.28.17-CVE-2024-47076.patch
 # "lack of input sanitization in _ppdCreateFromIPP()"
 # see https://bugzilla.suse.com/show_bug.cgi?id=1230932
 Patch110:       cups-filters-1.28.17-CVE-2024-47175.patch
+# https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=285412
+# newer cups code in git does not use qpdf, no upstream handling required
+Patch111:       cups-filters-qpdf12.patch
 # Support for cups154 in the SLE12 legacy module is abandoned (by default SLE12 has CUPS 1.7.5)
 # because newer cups-filters versions use stuff that is provided since CUPS > 1.5.4 so that it does
 # no longer build with CUPS 1.5.4 so that cups-filters does not work with CUPS 1.5.4:
@@ -281,6 +284,7 @@ This package contains the development files for cups-filters.
 # https://bugs.linuxfoundation.org for "Product: OpenPrinting" and "Component: cups-filters"
 ./autogen.sh
 export CFLAGS="%{optflags} -std=gnu11"
+export CXXFLAGS="%{optflags} -DPOINTERHOLDER_TRANSITION=0"
 # No need to set our preferred architecture-specific flags for the compiler and linker
 # via export CFLAGS="$RPM_OPT_FLAGS" and export CXXFLAGS="$RPM_OPT_FLAGS"
 # because the RPM macro configure does that.
