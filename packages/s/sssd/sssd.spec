@@ -30,6 +30,7 @@ Source3:        baselibs.conf
 Source5:        %name.keyring
 Source6:        %name-rpmlintrc
 Patch1:         0001-TOOL-Fix-build-parameter-name-omitted.patch
+Patch2:         0002-krb5-disable-Kerberos-localauth-an2ln-plugin-for-AD-.patch
 Patch11:        krb-noversion.diff
 Patch12:        harden_sssd-ifp.service.patch
 Patch13:        harden_sssd-kcm.service.patch
@@ -343,29 +344,6 @@ Requires:       libsss_nss_idmap0 = %version
 %description -n libsss_nss_idmap-devel
 A utility library for FreeIPA to map Windows SIDs to Unix user/group IDs.
 
-%package -n libsss_simpleifp0
-Summary:        The SSSD D-Bus responder helper library
-License:        GPL-3.0-or-later
-Group:          System/Libraries
-# Even though sssd has obsoleted simpleifp, the plan here is to retain ABI
-# compatibility with the existing SUSE 15.x product line. ...at least, until
-# sssd completely removes SIFP from source.
-
-%description -n libsss_simpleifp0
-This subpackage provides a library that simplifies the D-Bus API for
-the SSSD InfoPipe responder.
-
-%package -n libsss_simpleifp-devel
-Summary:        Development files for the SSSD D-Bus responder helper library
-License:        GPL-3.0-or-later
-Group:          Development/Libraries/C and C++
-Requires:       libsss_simpleifp0 = %version
-
-%description -n libsss_simpleifp-devel
-This subpackage provides the development files for sssd's simpleifp,
-a library that simplifies the D-Bus API for the SSSD InfoPipe
-responder.
-
 %package -n libsss_sudo
 Summary:        A library to allow communication between sudo and SSSD
 License:        LGPL-3.0-or-later
@@ -440,8 +418,7 @@ autoreconf -fiv
 	--with-selinux=yes \
 	--with-subid
 %else
-	--with-selinux=no \
-	--with-libsifp
+	--with-selinux=no
 %endif
 %make_build all
 
@@ -558,7 +535,6 @@ fi
 %ldconfig_scriptlets -n libipa_hbac0
 %ldconfig_scriptlets -n libsss_idmap0
 %ldconfig_scriptlets -n libsss_nss_idmap0
-%ldconfig_scriptlets -n libsss_simpleifp0
 
 %verifyscript
 %verify_permissions -e %_libexecdir/%name/selinux_child %_libexecdir/%name/sssd_pam

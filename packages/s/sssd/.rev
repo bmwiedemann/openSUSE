@@ -1268,4 +1268,12 @@ goes in line with 946250</comment>
     <comment>- Update to release 2.11.1</comment>
     <requestid>1296905</requestid>
   </revision>
+  <revision rev="145" vrev="2">
+    <srcmd5>d5258a1a5160dc2d6371a0d91d00b216</srcmd5>
+    <version>2.11.1</version>
+    <time>1763646373</time>
+    <user>anag_factory</user>
+    <comment>- Disable Kerberos localauth an2ln plugin for AD; (CVE-2025-11561);</comment>
+    <requestid>1318458</requestid>
+  </revision>
 </revisionlist>

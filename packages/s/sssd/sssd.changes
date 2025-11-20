@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 18 09:38:39 UTC 2025 - Samuel Cabrero <scabrero@suse.de>
+
+- Disable Kerberos localauth an2ln plugin for AD; (CVE-2025-11561);
+  (bsc#1251827);
+  add 0002-krb5-disable-Kerberos-localauth-an2ln-plugin-for-AD-.patch
+
+-------------------------------------------------------------------
 Thu Jul 31 16:15:46 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.11.1
