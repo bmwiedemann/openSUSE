@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Wed Nov 19 11:55:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.23.0:
+  * Highlights
+    - feat: introduce templating support (#642)
+  * You can now pass --template-var myvar=foo to kuttl and use
+    {{ .Vars.myvar }} syntax in YAML files. See docs for more
+    details.
+  * Breaking changes
+    - most code (other than API and the harness) was made internal.
+      This has no impact on users of the kuttl CLI, but may break
+      Go code which imports github.com/kudobuilder/kuttl
+  * Potentially risky changes
+  * The extensive refactoring which preceded addition of templating
+    support could have introduced some subtle differences in kuttl
+    behaviour. Please report issues if you encounter them. In
+    particular:
+    - refactoring of file name parsing was not meant to have
+      user-visible impact, but might have introduced unintended
+      changes.
+    - OTOH some previously undocumented behaviour w.r.t. step
+      structure is now documented.
+    - after refactoring of namespace name determination, creation
+      and cleanup namespace cleanup may behave differently in some
+      obscure corner cases
+  * Bug Fixes
+    - fix: configure logging to avoid warnings (#633)
+  * Dependency bumps
+    - chore(deps): bump github.com/docker/docker from
+      28.0.0+incompatible to 28.1.1+incompatible (#624)
+    - chore(deps): bump github.com/google/cel-go from 0.23.2 to
+      0.25.0 (#625)
+    - chore(deps): bump the kubernetes group across 1 directory
+      with 7 updates (#646)
+    - chore: upgrade k8s lib and controller-runtime (#634)
+    - chore: bump golang builder image and kubectl versions (#628)
+    - chore: bump ubuntu-20.04 to -24.04 (#627)
+    - chore(deps): bump github.com/docker/docker from
+      27.5.1+incompatible to 28.0.0+incompatible (#612)
+  * Other Changes
+    - docs: replace references to kuttl.dev (#649)
+    - tests: use require.NoError, enable race checker and fix a
+      race (#644)
+    - chore: replace logkcf with Logf in a new type (#638)
+    - chore: encapsulate file name parsing (#641)
+    - docs: more info on test names and structure (#639)
+    - chore: use the Option pattern in NewCase() (#640)
+    - chore: deterimine namespace name early (#637)
+    - chore: second round of pre-factoring (#635)
+    - chore: run tests in non-verbose mode by default (#636)
+    - chore: move packages to internal (#632)
+    - chore: prefactoring for early namespace name computation
+      (#631)
+    - chore: refactoring for the Case type (#613)
+
+-------------------------------------------------------------------
 Thu Feb 20 08:48:51 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.22.0:
