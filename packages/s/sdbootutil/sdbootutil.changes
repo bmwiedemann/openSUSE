@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 19 07:34:30 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20251119.0bee866:
+  * Make sure to use consistent locale (bsc#1253652)
+
+-------------------------------------------------------------------
 Fri Nov 14 12:15:39 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20251114.1783016:
