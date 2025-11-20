@@ -33,7 +33,7 @@
 %endif
 %define rname breeze
 Name:           breeze6
-Version:        6.5.2
+Version:        6.5.3
 Release:        0
 Summary:        Plasma Desktop artwork, styles and assets
 License:        GPL-2.0-or-later
