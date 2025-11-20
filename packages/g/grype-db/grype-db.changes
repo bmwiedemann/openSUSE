@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Nov 19 05:54:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.46.2:
+  * Bug Fixes
+    - do not require shell environment for subprocess [#727
+      @jamestexas]
+    - Duplicated vulnerability external refs in DB search [#742
+      #744 @willmurphyscode]
+  * Dependencies
+    - chore(deps): Bump actions/checkout from 5.0.0 to 5.0.1 (#749)
+    - chore(deps): update anchore dependencies (#748)
+    - chore(deps): update tools to latest versions (#746)
+    - chore(deps): Bump github.com/opencontainers/selinux (#743)
+    - chore(deps): update tools to latest versions (#745)
+    - chore(deps): update tools to latest versions (#737)
+    - chore(deps): Bump golang.org/x/text from 0.30.0 to 0.31.0
+      (#741)
+    - chore(deps): Bump astral-sh/setup-uv in
+      /.github/actions/bootstrap (#740)
+    - chore(deps): Bump github.com/containerd/containerd from
+      1.7.28 to 1.7.29 (#738)
+
+-------------------------------------------------------------------
 Tue Nov 04 08:35:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.46.1:
