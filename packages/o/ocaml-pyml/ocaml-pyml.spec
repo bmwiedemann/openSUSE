@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-pyml
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@ ExclusiveArch:  do-not-build
 
 %define     pkg ocaml-pyml
 Name:           %pkg%nsuffix
-Version:        20231101
+Version:        20250807
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Stdcompat: compatibility module for OCaml standard library
