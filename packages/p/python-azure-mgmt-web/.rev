@@ -267,4 +267,16 @@
 - Update Requires from setup.py (forwarded request 1302855 from glaubitz)</comment>
     <requestid>1302933</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>99ab5609bfee362b97ad363683f9389d</srcmd5>
+    <version>10.1.0</version>
+    <time>1763646562</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 10.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from pyproject.toml (forwarded request 1318681 from glaubitz)</comment>
+    <requestid>1318692</requestid>
+  </revision>
 </revisionlist>
