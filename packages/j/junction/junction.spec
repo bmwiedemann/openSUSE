@@ -1,7 +1,7 @@
 #
 # spec file for package junction
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,13 @@
 
 %define         appname re.sonny.Junction
 Name:           junction
-Version:        1.9
+Version:        1.10
 Release:        0
 Summary:        Application/browser chooser
 License:        GPL-3.0-only
 URL:            https://github.com/sonnyp/Junction
 Source0:        %{name}-%{version}.tar.zst
 Source99:       junction-rpmlintrc
-# PATCH-FEATURE-UPSTREAM junction-show-in-default-app-selector.patch gh#sunnyp/Junction!155, bsc#1223463 alynx.zhou@suse.com -- Show junction in default browser selector in GNOME Settings
-Patch1:         junction-show-in-default-app-selector.patch
-Patch2:         fix-metainfo.xml.patch
 BuildRequires:  blueprint-compiler
 BuildRequires:  desktop-file-utils
 BuildRequires:  gjs

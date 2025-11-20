@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov 18 14:40:21 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.10:
+  + metainfo: Fix validation
+  + Present only one welcome window
+  + Filter out applications marked as NoDisplay in .desktop entry
+  + Avoid creating a DesktopAppInfo for each app
+  + Make sure applications are loaded before showing the window
+  + Ignore apps without Exec key
+  + Fix forgotten hardcoded value
+- Drop upstream merged patches:
+  + fix-metainfo.xml.patch
+  + junction-show-in-default-app-selector.patch
+
+
+-------------------------------------------------------------------
 Sat May 31 14:42:32 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.9:
