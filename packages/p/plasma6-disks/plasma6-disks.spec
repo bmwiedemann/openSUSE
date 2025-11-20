@@ -22,7 +22,7 @@
 %define rname plasma-disks
 %bcond_without released
 Name:           plasma6-disks
-Version:        6.5.2
+Version:        6.5.3
 Release:        0
 Summary:        Plasma service for monitoring disk health
 License:        GPL-2.0-only OR GPL-3.0-only
