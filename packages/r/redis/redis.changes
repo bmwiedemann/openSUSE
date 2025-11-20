@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Nov 18 16:38:41 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Updated to 8.4.0
+  - Major changes compared to 8.2
+    - DIGEST, DELEX; SET extensions - atomic compare-and-set and
+      compare-and-delete for string keys
+    - MSETEX - atomically set multiple string keys and update their
+      expiration
+    - XREADGROUP - new CLAIM option for reading both idle pending
+      and incoming stream entries
+    - CLUSTER MIGRATION - atomic slot migration
+    - CLUSTER SLOT-STATS - per-slot usage metrics: key count, CPU
+      time, and network I/O
+    - Redis query engine: FT.HYBRID - hybrid search and fused
+      scoring
+    - Redis query engine: I/O threading with performance boost for
+      search and query commands (FT.*)
+    - I/O threading: substantial throughput increase (e.g. >30% for
+      caching use cases (10% SET, 90% GET), 4 cores)
+    - JSON: substantial memory reduction for homogenous arrays (up
+      to 91%)
+  for all the details see:
+  https://github.com/redis/redis/releases/tag/8.4.0
+  https://github.com/redis/redis/releases/tag/8.4-rc1
+
+-------------------------------------------------------------------
 Sun Nov  2 14:18:05 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Updated to 8.2.3 (boo#1252996 CVE-2025-62507)

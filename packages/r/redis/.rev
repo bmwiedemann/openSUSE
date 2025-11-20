@@ -110,4 +110,33 @@ Redis 8.0.0 supported atomic HGETDEL, HGETEX and HSETEX, and AGPL-3.0-only licen
     <comment></comment>
     <requestid>1315272</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fece2e972a8360b516d72f4a501174f0</srcmd5>
+    <version>8.4.0</version>
+    <time>1763646431</time>
+    <user>anag_factory</user>
+    <comment>- Updated to 8.4.0
+  - Major changes compared to 8.2
+    - DIGEST, DELEX; SET extensions - atomic compare-and-set and
+      compare-and-delete for string keys
+    - MSETEX - atomically set multiple string keys and update their
+      expiration
+    - XREADGROUP - new CLAIM option for reading both idle pending
+      and incoming stream entries
+    - CLUSTER MIGRATION - atomic slot migration
+    - CLUSTER SLOT-STATS - per-slot usage metrics: key count, CPU
+      time, and network I/O
+    - Redis query engine: FT.HYBRID - hybrid search and fused
+      scoring
+    - Redis query engine: I/O threading with performance boost for
+      search and query commands (FT.*)
+    - I/O threading: substantial throughput increase (e.g. &gt;30% for
+      caching use cases (10% SET, 90% GET), 4 cores)
+    - JSON: substantial memory reduction for homogenous arrays (up
+      to 91%)
+  for all the details see:
+  https://github.com/redis/redis/releases/tag/8.4.0
+  https://github.com/redis/redis/releases/tag/8.4-rc1</comment>
+    <requestid>1318521</requestid>
+  </revision>
 </revisionlist>
