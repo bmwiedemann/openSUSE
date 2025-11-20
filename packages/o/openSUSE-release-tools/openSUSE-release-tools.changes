@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Nov 12 15:36:12 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20251112.3807e162:
+  * gocd: sp.target: repurpose SP7 pipelines for Quarterly Updates
+
+-------------------------------------------------------------------
+Mon Nov 10 14:32:03 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20251110.1e38c848:
+  * Fix target for the Micro 6.2 publishing
+
+-------------------------------------------------------------------
+Thu Nov 06 16:23:49 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20251106.453ac4b3:
+  * dashboard: Add product repository
+
+-------------------------------------------------------------------
+Tue Nov 04 11:38:28 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20251104.6be8534c:
+  * source_check: if git project, review by project
+
+-------------------------------------------------------------------
 Tue Oct 14 15:34:04 UTC 2025 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20251014.2d75aced:
