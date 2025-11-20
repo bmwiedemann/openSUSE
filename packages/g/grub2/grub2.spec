@@ -22,7 +22,7 @@
 %if %{defined sbat_distro}
 # SBAT metadata
 %define sbat_generation 1
-%define sbat_generation_grub 5
+%define sbat_generation_grub 6
 %else
 %{error please define sbat_distro, sbat_distro_summary and sbat_distro_url}
 %endif
@@ -519,6 +519,13 @@ Patch342:       grub2-bls-loader-entry-default.patch
 Patch343:       0001-term-ns8250-spcr-Return-if-redirection-is-disabled.patch
 Patch344:       grub2-i386-pc-no-pageflipping.patch
 Patch345:       0001-ieee1275-Use-net-config-for-boot-location-instead-of.patch
+Patch346:       0001-kern-file-Call-grub_dl_unref-after-fs-fs_close.patch
+Patch347:       0002-net-net-Unregister-net_set_vlan-command-on-unload.patch
+Patch348:       0003-gettext-gettext-Unregister-gettext-command-on-module.patch
+Patch349:       0004-normal-main-Unregister-commands-on-module-unload.patch
+Patch350:       0005-tests-lib-functional_test-Unregister-commands-on-mod.patch
+Patch351:       0006-commands-usbtest-Use-correct-string-length-field.patch
+Patch352:       0007-commands-usbtest-Ensure-string-length-is-sufficient-.patch
 
 %if 0%{?suse_version} < 1600
 Requires:       gettext-runtime
