@@ -1,7 +1,7 @@
 #
 # spec file for package spacenavd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2009,2011,2013 Herbert Graeber
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           spacenavd
-Version:        1.3
+Version:        1.3.1
 Release:        0
 Summary:        Daemon for 3Dconnexion devices
 License:        GPL-3.0-or-later
@@ -75,8 +75,11 @@ install -D -m 755 spnavd_ctl %{buildroot}%{_bindir}/spnavd_ctl
 install -D -m 644 %{SOURCE1} %{buildroot}%{_mandir}/man8/spacenavd.8.gz
 ln -sf spacenavd.8.gz %{buildroot}%{_mandir}/man8/spnavd_ctl.8.gz
 install -D -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/spnavrc
+%if 0%{?suse_version} > 1500
+install -D -m 755 %{SOURCE3} %{buildroot}%{_distconfdir}/X11/xinit/xinitrc.d/%{name}
+%else
 install -D -m 755 %{SOURCE3} %{buildroot}%{_sysconfdir}/X11/xinit/xinitrc.d/%{name}
-ln -sf service %{buildroot}%{_sbindir}/rc%{name}
+%endif
 install -D -m 644 contrib/systemd/%{name}.service %{buildroot}%{_unitdir}/%{name}.service
 
 %post
@@ -88,9 +91,23 @@ install -D -m 644 contrib/systemd/%{name}.service %{buildroot}%{_unitdir}/%{name
 
 %pre
 %service_add_pre %{name}.service
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/etc; save any old .rpmsave
+for i in X11/xinit/%{name}; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+%endif
 
 %preun
 %service_del_preun %{name}.service
+
+%posttrans
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/etc; save any old .rpmsave
+for i in X11/xinit/%{name}; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+%endif
 
 %files
 %license COPYING
@@ -99,12 +116,22 @@ install -D -m 644 contrib/systemd/%{name}.service %{buildroot}%{_unitdir}/%{name
 %doc doc/spnavrc_smouse_ent
 %doc doc/spnavrc_spilot
 %{_sbindir}/%{name}
-%{_sbindir}/rc%{name}
 %{_bindir}/spnavd_ctl
 %config(noreplace) %{_sysconfdir}/spnavrc
 %{_unitdir}/%{name}.service
 %{_mandir}/man8/spacenavd.8%{?ext_man}
 %{_mandir}/man8/spnavd_ctl.8%{?ext_man}
-%{_sysconfdir}/X11/xinit/
+%if 0%{?suse_version} > 1500
+%dir %{_distconfdir}
+%dir %{_distconfdir}/X11
+%dir %{_distconfdir}/X11/xinit
+%dir %{_distconfdir}/X11/xinit/xinitrc.d
+%{_distconfdir}/X11/xinit/xinitrc.d/%{name}
+%else
+%dir %{_sysconfdir}/X11
+%dir %{_sysconfdir}/X11/xinit
+%dir %{_sysconfdir}/X11/xinit/xinitrc.d
+%config(noreplace) %{_sysconfdir}/X11/xinit/xinitrc.d/%{name}
+%endif
 
 %changelog

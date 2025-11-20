@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb  4 20:38:17 UTC 2025 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Version 1.3.1
+  * stop the device detection heuristic from misidentifying a spacemouse
+    wireless pro as a spacemouse wireless, and using the wrong button mapping.
+  * fix typo in conditional inclusion macro for stdint.h.
+  * fix setup_init to work correctly on Solaris 2.6.
+- remove rc* link
+- move xinitrc file to /usr/etc (move of /etc/spnavrc outstanding)
+
+-------------------------------------------------------------------
 Thu Aug 22 19:29:13 UTC 2024 - Herbert Graeber <herbert@graeber-clan.de>
 
 - Version 1.3
