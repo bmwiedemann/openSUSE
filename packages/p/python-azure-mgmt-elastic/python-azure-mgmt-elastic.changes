@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Nov 19 10:41:35 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Remove unzip package from BuildRequires
+- Rename LICENSE.txt to LICENSE in %files section
+- Switch source archive format to TAR.GZ
+- Update Requires from pyproject.toml
+
+-------------------------------------------------------------------
 Fri May  3 16:42:40 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
 
 - Change version setting of Obsoletes to <= to trigger python3
