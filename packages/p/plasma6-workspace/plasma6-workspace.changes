@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Nov 18 10:30:21 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.3
+- Changes since 6.5.2:
+  * Update version for new release 6.5.3
+  * Use matching selenium version
+  * applets/notifications: Fix mistake with Globals time property
+  * klipper: fix action menu not always opening when there is matching text (kde#510449)
+  * appiumtests: set GSK_RENDERER=cairo to fix clipboardtest that rely on new windows
+  * applets/notifications: Fix notification time labels (kde#511908)
+  * shell/panelview: Dont try to position non-existent config view (kde#511743)
+  * bitap: allocate patternMask on heap instead of stack (kde#511233)
+  * Fix shelltest (kde#[numberofthebugreport])
+  * wallpapers/image: fix ImageListModelTest::testImageListModelData
+  * wallpapers/image: Fix high cpu usage when wallpaper dialog is open
+  * kcms/wallpaper: Only show on desktop
+  * ShellCorona: ensure screenUiReadyChanged happens for screens without panels (kde#511131)
+  * wallpapers/image: Improve kcm delegate sizing for mobile
+  * appiumtests: make test_5_3_bug491961_mimetypes less flaky
+
+-------------------------------------------------------------------
 Tue Nov  4 23:06:51 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.5.2:
