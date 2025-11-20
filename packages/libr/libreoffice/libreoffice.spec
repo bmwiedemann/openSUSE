@@ -89,7 +89,7 @@
 %global with_gcc 12
 %endif
 Name:           libreoffice
-Version:        25.8.2.2
+Version:        25.8.3.2
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
