@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Nov 19 09:54:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.17:
+  * Bug fixes
+    - Revert back to use serde_yaml again (#1112)
+
+-------------------------------------------------------------------
+Tue Nov 18 12:22:59 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.16:
+  * Bug fixes
+    - Disallow hook-level minimum_prek_version (#1101)
+    - Do not require a project in prek init-template-dir (#1109)
+    - Make sure uv pip install uses the Python from virtualenv
+      (#1108)
+    - Restore using serde_yaml in check-yaml hook (#1106)
+
+-------------------------------------------------------------------
 Mon Nov 17 12:24:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.15:

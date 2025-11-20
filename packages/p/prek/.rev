@@ -7,4 +7,12 @@
     <comment>new package prek: reimagined version of pre-commit, built in Rust</comment>
     <requestid>1318401</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>28ddbc490d9b5079c1e833cc3d69027d</srcmd5>
+    <version>0.2.17</version>
+    <time>1763646605</time>
+    <user>anag_factory</user>
+    <comment>update to 0.2.17</comment>
+    <requestid>1318710</requestid>
+  </revision>
 </revisionlist>
