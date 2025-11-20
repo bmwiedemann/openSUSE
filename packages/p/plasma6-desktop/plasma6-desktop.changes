@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov 18 10:29:13 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.3
+- Changes since 6.5.2:
+  * Update version for new release 6.5.3
+  * applets/kickoff: "fix" footer overflow menu (kde#511503)
+  * applets/kicker: don't clear currentItem from active column
+  * applets/kicker: fix arrow keys from search to sidebar
+  * applets/kicker: explicitly set sidebar layout width (kde#511411)
+  * applets/kicker: fix handling of down key from search field
+  * applets/kicker: allow context menus with only favoriteId (kde#511448)
+  * FolderDelegate: Fix missing hover in some cases (kde#511025)
+
+-------------------------------------------------------------------
 Tue Nov  4 23:06:01 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.5.2:
