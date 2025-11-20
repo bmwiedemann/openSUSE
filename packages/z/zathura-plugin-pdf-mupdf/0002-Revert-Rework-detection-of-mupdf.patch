@@ -21,7 +21,7 @@ index 85ccad7..9d30041 100644
  mupdfthird = cc.find_library('mupdf-third')
  
  build_dependencies = [
-@@ -30,41 +30,23 @@ build_dependencies = [
+@@ -30,41 +30,25 @@ build_dependencies = [
    girara,
    glib,
    cairo,
@@ -55,15 +55,16 @@ index 85ccad7..9d30041 100644
    tesseract = dependency('tesseract')
    leptonica = dependency('lept')
 -  mujs = dependency('mujs')
++  libbrotlienc = dependency('libbrotlienc')
  
    build_dependencies += [
      libjpeg,
      libjbig2dec,
      libopenjp2,
      tesseract,
--    leptonica,
+     leptonica,
 -    mujs
-+    leptonica
++    libbrotlienc
    ]
  endif
  

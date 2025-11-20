@@ -42,7 +42,6 @@ BuildRequires:  pkgconfig(lept)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libopenjp2)
-BuildRequires:  pkgconfig(mujs)
 BuildRequires:  pkgconfig(tesseract)
 BuildRequires:  pkgconfig(zathura) >= 0.5.2
 Requires:       mupdf >= 1.24

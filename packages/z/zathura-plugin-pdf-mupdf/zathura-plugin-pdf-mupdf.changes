@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 27 05:41:19 UTC 2025 - JS <obs.coke518@passinbox.com>
+
+- Remove unused BuildRequires pkgconfig(mujs)
+- Add libbrotlienc to 0002-Revert-Rework-detection-of-mupdf.patch,
+  avoid `undefined symbol: BrotliEncoderCreateInstance)` at runtime
+
+-------------------------------------------------------------------
 Sun Aug 11 10:29:40 UTC 2024 - Jakob Lorenz <onlyjak0b@mailbox.org>
 
 - Update to 0.4.4:
