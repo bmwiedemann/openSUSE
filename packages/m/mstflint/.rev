@@ -285,4 +285,22 @@
     <comment></comment>
     <requestid>1292064</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>0ab8bb77b82db3bc92cc325c50616f85</srcmd5>
+    <version>4.33.0</version>
+    <time>1763646639</time>
+    <user>anag_factory</user>
+    <comment>- Add _service to fetch from git directly
+- Update to mstflint-4.33.0-1.60.9ed9e8c3
+  - See https://github.com/Mellanox/mstflint/releases/tag/v4.33.0-1
+- Drop patches merged upstream:
+  - Remove-date-time-info-from-build.patch
+  - fix-race-condition-during-install.patch
+  - GCC15-C23-support.patch
+  - mflash-add-missing-stlib-include.patch
+- Refresh patches against new sources:
+  - Fix-gcc7-and-gcc8.patch
+  - PIE.patch</comment>
+    <requestid>1318729</requestid>
+  </revision>
 </revisionlist>

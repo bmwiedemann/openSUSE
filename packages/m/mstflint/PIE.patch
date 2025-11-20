@@ -1,4 +1,4 @@
-commit da607dd93fc67a63029d08f868e1e1c2c70e9663
+commit 77ebcfe7e1c1d5a3037761aa64de6f9ca32361d7
 Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 Date:   Fri Jul 9 13:01:55 2021 +0200
 
@@ -8,17 +8,20 @@ Date:   Fri Jul 9 13:01:55 2021 +0200
     
     Signed-off-by: Hardware error from APEI Generic Hardware Error Source: 0
 
-Index: configure.ac
-===================================================================
---- configure.ac.orig
+diff --git configure.ac configure.ac
+index dc356443f2cc..ef5fc5584e6a 100644
+--- configure.ac
 +++ configure.ac
-@@ -91,6 +91,9 @@ AM_CONDITIONAL(KERNEL_BUILD,[test ${KERN
- AC_SUBST(KERNEL_BUILD)
+@@ -104,6 +104,12 @@ else
+     fi
+ fi
  
- LDFLAGS="${LDFLAGS} -L/usr/local/lib -L/usr/local/lib64 -L/usr/lib64"
++# All bin programs are linked using LDL
++# reuse this instead of LDFLAGS as it would mess
++# up shared lib builds
 +if test "$host_cpu" != "s390x"; then
-+	LDFLAGS="${LDFLAGS} -pie"
++	LDL="${LDL} -pie"
 +fi
- CXXFLAGS="${CXXFLAGS} -isystem /usr/local/include" 
- if test "x$OS" = "xFreeBSD"; then
-     AC_MSG_NOTICE(FreeBSD Build)
+ 
+ AC_SUBST(MTCR_CONF_DIR)
+ AC_SUBST(VFIO_DRIVER_DIR)

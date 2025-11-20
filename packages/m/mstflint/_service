@@ -1,0 +1,17 @@
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/Mellanox/mstflint.git</param>
+    <param name="package-meta">no</param>
+    <param name="exclude">.git</param>
+    <param name="filename">mstflint</param>
+    <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@.%h</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="revision">9ed9e8c36608035769534e7450d1885483df8eaf</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">*mstflint*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+</services>

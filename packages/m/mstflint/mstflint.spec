@@ -16,23 +16,20 @@
 #
 
 
-%define extra_version -1
+%define git_ver -1.60.9ed9e8c3
 
 Name:           mstflint
-Version:        4.25.0
+Version:        4.33.0
 Release:        0
 Summary:        Mellanox Firmware Burning and Diagnostics Tools
 License:        BSD-2-Clause OR GPL-2.0-only
 Group:          System/Console
 URL:            http://www.openfabrics.org
 Obsoletes:      mstflint-devel < %{version}
-Source:         https://github.com/Mellanox/mstflint/releases/download/v%{version}%{extra_version}/mstflint-%{version}%{extra_version}.tar.gz
-Patch1:         Remove-date-time-info-from-build.patch
-Patch4:         Fix-gcc7-and-gcc8.patch
-Patch5:         fix-race-condition-during-install.patch
-Patch6:         PIE.patch
-Patch7:         mflash-add-missing-stlib-include.patch
-Patch8:         GCC15-C23-support.patch
+Source:         mstflint-%{version}%{?git_ver}.tar.gz
+Source100:      README.md
+Patch1:         Fix-gcc7-and-gcc8.patch
+Patch2:         PIE.patch
 BuildRequires:  gcc-c++
 BuildRequires:  infiniband-diags-devel
 BuildRequires:  libibverbs-devel
@@ -51,7 +48,7 @@ package. For a full documentation of the MFT package, please refer to
 the downloads page at the Mellanox web site.
 
 %prep
-%autosetup -p0
+%autosetup -p0 -n %{name}-%{version}%{git_ver}
 
 %build
 ./autogen.sh
@@ -71,16 +68,19 @@ rm -rf %{buildroot}%{_bindir}/hca_self_test.ofed
 %license LICENSE COPYING
 %{_bindir}/mstconfig
 %{_bindir}/mstcongestion
+%{_bindir}/mstdevices_info
 %{_bindir}/mstflint
+%{_bindir}/mstfwctrl
 %{_bindir}/mstfwreset
 %{_bindir}/mstmcra
+%{_bindir}/mstmget_temp
 %{_bindir}/mstmread
 %{_bindir}/mstmtserver
 %{_bindir}/mstmwrite
-%{_bindir}/mstprivhost
 %{_bindir}/mstregdump
 %{_bindir}/mstresourcedump
 %{_bindir}/mstresourceparse
+%{_bindir}/msttokengenerator
 %{_bindir}/mstvpd
 %{_bindir}/mstfwtrace
 %{_mandir}/man1/*.1%{ext_man}

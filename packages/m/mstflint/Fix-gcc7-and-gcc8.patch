@@ -1,4 +1,4 @@
-commit 6a8758e9353447abdb9366638790984e84b04eb1
+commit f5644b3f62db9edc49929a5d62fc03bd7fe542ed
 Author: Nicolas Morey-Chaisemartin <NMoreyChaisemartin@suse.com>
 Date:   Wed Aug 9 17:31:57 2017 +0200
 
@@ -9,18 +9,18 @@ Date:   Wed Aug 9 17:31:57 2017 +0200
     Signed-off-by: Nicolas Morey-Chaisemartin <NMoreyChaisemartin@suse.com>
 
 diff --git configure.ac configure.ac
-index 4d549ee4cb79..c8e15447f5e1 100644
+index 366d9a115693..dc356443f2cc 100644
 --- configure.ac
 +++ configure.ac
-@@ -308,6 +308,7 @@ AM_CONDITIONAL([USE_LOCAL_SQLITE], [test "$SQLITE_SYSTEM_AVAILABLE" = no])
- 
+@@ -604,6 +604,7 @@ AC_SEARCH_LIBS([sqlite3_initialize], [sqlite3], [SQLITE_SYSTEM_AVAILABLE="yes"],
+ AM_CONDITIONAL([USE_LOCAL_SQLITE], [test "$SQLITE_SYSTEM_AVAILABLE" = no])
  
  CFLAGS="$CFLAGS -DMST_UL"
 +CPPFLAGS="$CPPFLAGS -DMST_UL"
  CXXFLAGS="$CXXFLAGS -DMST_UL"
  
- 
-@@ -336,6 +337,14 @@ AX_CHECK_COMPILE_FLAG([-Wno-implicit-fallthrough], [CFLAGS="$CFLAGS -Wno-implici
+ CCVER=`${CC} --version | grep ${CC} | grep -E -o "( )[[4-9]]\.[[0-9]]\.[[0-9]]" | head -1`
+@@ -631,6 +632,14 @@ AX_CHECK_COMPILE_FLAG([-Wno-implicit-fallthrough], [CFLAGS="$CFLAGS -Wno-implici
  AX_CHECK_COMPILE_FLAG([-Wno-cast-function-type], [CFLAGS="$CFLAGS -Wno-cast-function-type"], [], [])
  CFLAGS="$OLD_CFLAGS"
  
