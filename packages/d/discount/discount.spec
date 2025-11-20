@@ -1,7 +1,7 @@
 #
 # spec file for package discount
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover 3
 %bcond_with fenced_code
 Name:           discount
-Version:        3.0.0d
+Version:        3.0.1.2
 Release:        0
 Summary:        Markdown text to HTML converter
 License:        BSD-3-Clause
