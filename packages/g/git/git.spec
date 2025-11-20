@@ -43,7 +43,7 @@
 %bcond_with    asciidoctor
 %endif
 Name:           git
-Version:        2.51.1
+Version:        2.52.0
 Release:        0
 Summary:        Fast, scalable, distributed revision control system
 License:        GPL-2.0-only
@@ -70,8 +70,6 @@ Patch8:         git-asciidoc.patch
 Patch10:        setup-don-t-fail-if-commondir-reference-is-deleted.patch
 # PATCH-FIX-OPENSUSE CVE-2024-24577.patch boo#1219660 antonio.teixeira@suse.com
 Patch11:        CVE-2024-24577.patch
-# PATCH-FIX-UPSTREAM https://github.com/git/git/commit/b7fb2194b96604898ff1ddd8dd1a394aa71532a9
-Patch12:        0001-t7528-work-around-ETOOMANY-in-OpenSSH-10.1-and-newer.patch
 BuildRequires:  fdupes
 BuildRequires:  gpg2
 BuildRequires:  libcurl-devel
