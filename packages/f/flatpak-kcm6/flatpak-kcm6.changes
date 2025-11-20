@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 18 10:26:40 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.3
+- Changes since 6.5.2:
+  * ui/Permissions: fix keyboard accessibility
+  * ui/main: improve sidebar arrow key handling
+
+-------------------------------------------------------------------
 Tue Nov  4 23:04:20 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.5.2:
