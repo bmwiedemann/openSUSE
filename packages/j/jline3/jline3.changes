@@ -56,7 +56,7 @@ Wed Nov  5 10:14:16 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 -------------------------------------------------------------------
 Wed Nov  5 07:41:24 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
-- Build the ffm support in Factory, since we have now the java >= 22
+- Build the ffm support if we are building with Java >= 22
 
 -------------------------------------------------------------------
 Mon Jun 23 09:32:33 UTC 2025 - Fridrich Strba <fstrba@suse.com>

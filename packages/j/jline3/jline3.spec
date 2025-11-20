@@ -24,7 +24,7 @@ find most of the command editing features of JLine to be familiar.\
 \
 JLine 3.x is an evolution of JLine 2.x.
 # Requires java >= 22
-%if 0%{?suse_version} >= 1699
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 22}%{!?pkg_vcmp:0}
 %bcond_without ffm
 %else
 %bcond_with ffm

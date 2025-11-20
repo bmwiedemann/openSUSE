@@ -63,4 +63,12 @@
     <comment>3.30.6</comment>
     <requestid>1315764</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>de74d8bb59cb2a757564b2b8a2b463de</srcmd5>
+    <version>3.30.6</version>
+    <time>1763646563</time>
+    <user>anag_factory</user>
+    <comment>Decide ffm support according to the build java</comment>
+    <requestid>1318697</requestid>
+  </revision>
 </revisionlist>
