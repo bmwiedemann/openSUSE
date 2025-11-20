@@ -71,7 +71,7 @@ Patch1003:      bsc-1032142_Disable-quorum-in-default-configuration.patch
 Patch1004:      move_fencing_from_disk_to_net_in_example.patch
 Patch1005:      pie-fix.patch
 Patch1006:      bsc-1233273_drbd.ocf-replace-crm_master-with-ocf_promotion_score.patch
-Patch1007:      bsc-1233273_drbd.ocf-update-for-OCF-1.1.patch
+Patch1007:      bsc-1233273-1252991_drbd.ocf-update-for-OCF-1.1.patch
 Patch1008:      rpmlint-build-error.patch
 Patch1009:      bsc-1247534_drbd-didnt-start-due-to-drbd_rules-returning-err.patch
 Patch1010:      1252991-selinux-domtrans-from-kernel.patch
@@ -183,7 +183,7 @@ drbd-selinux contains the SELinux policy meant to be used with this version of D
 
 %files -n drbd-selinux
 %attr(0644,root,root) %{_datadir}/selinux/packages/%{selinuxmodulename}.pp.bz2
-%ghost %{_sharedstatedir}/selinux/%{selinuxtype}/active/modules/200/%{selinuxmodulename}
+%ghost %{_selinux_store_path}/%{selinuxtype}/active/modules/200/%{selinuxmodulename}
 
 %pre -n drbd-selinux
 %selinux_relabel_pre -s %{selinuxtype}

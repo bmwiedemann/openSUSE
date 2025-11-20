@@ -1,7 +1,7 @@
-From 3baaf88af512492dd5315a50cf421fbcf51ef9b8 Mon Sep 17 00:00:00 2001
+From 8c53c6777e4336f1d4e50279dc539ed70aa04f33 Mon Sep 17 00:00:00 2001
 From: Su Yue <glass.su@suse.com>
 Date: Sun, 7 Jul 2024 16:52:18 +0800
-Subject: [PATCH 3/3] drbd.ocf: update for OCF 1.1
+Subject: [PATCH] drbd.ocf: update for OCF 1.1
 
 According to [1], the commit
 1. bumps drbd ocf version to 1.5
@@ -13,17 +13,47 @@ According to [1], the commit
 Because of change <4>, the drbd ocf RA won't be able to support old
 names so we need to bump version of the RA.
 
+Also set default role in crm-fence-peer scripts to 'Promoted'.
+
 [1] Links: https://projects.clusterlabs.org/w/development/update_resource_agent_for_ocf_1.1/
 Signed-off-by: Su Yue <glass.su@suse.com>
 ---
- scripts/drbd.ocf | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+ scripts/crm-fence-peer.9.sh |  2 +-
+ scripts/crm-fence-peer.sh   |  2 +-
+ scripts/drbd.ocf            | 16 ++++++++--------
+ 3 files changed, 10 insertions(+), 10 deletions(-)
 
+diff --git a/scripts/crm-fence-peer.9.sh b/scripts/crm-fence-peer.9.sh
+index b326a1656c15..9fb0b7dee34d 100755
+--- a/scripts/crm-fence-peer.9.sh
++++ b/scripts/crm-fence-peer.9.sh
+@@ -1444,7 +1444,7 @@ fi
+ # apply defaults:
+ : "== fencing_attribute   == ${fencing_attribute:="#uname"}"
+ : "== id_prefix           == ${id_prefix:="drbd-fence-by-handler"}"
+-: "== role                == ${role:="Master"}"
++: "== role                == ${role:="Promoted"}"
+ 
+ # defaults suitable for most cases
+ : "== net_hickup_time     == ${net_hickup_time:=0}"
+diff --git a/scripts/crm-fence-peer.sh b/scripts/crm-fence-peer.sh
+index 3932937940ce..ad857e4dfcce 100755
+--- a/scripts/crm-fence-peer.sh
++++ b/scripts/crm-fence-peer.sh
+@@ -1046,7 +1046,7 @@ fi
+ # apply defaults:
+ : "== fencing_attribute   == ${fencing_attribute:="#uname"}"
+ : "== id_prefix           == ${id_prefix:="drbd-fence-by-handler"}"
+-: "== role                == ${role:="Master"}"
++: "== role                == ${role:="Promoted"}"
+ 
+ # defaults suitable for most cases
+ : "== net_hickup_time     == ${net_hickup_time:=0}"
 diff --git a/scripts/drbd.ocf b/scripts/drbd.ocf
-index bbe25f38edda..5b213640ec38 100755
+index 1d051baa550d..8dfa5c465f5b 100755
 --- a/scripts/drbd.ocf
 +++ b/scripts/drbd.ocf
-@@ -233,13 +233,13 @@ meta_data() {
+@@ -221,13 +221,13 @@ meta_data() {
  <?xml version="1.0"?>
  <!DOCTYPE resource-agent SYSTEM "ra-api-1.dtd">
  <!-- version attribute is version of this resource agent -->
@@ -40,7 +70,7 @@ index bbe25f38edda..5b213640ec38 100755
  DRBD is a shared-nothing replicated storage device.
  
  NOTE:
-@@ -253,10 +253,10 @@ See the DRBD User's Guide for more information.
+@@ -241,10 +241,10 @@ See the DRBD User's Guide for more information.
  https://docs.linbit.com/
  </longdesc>
  
@@ -53,7 +83,7 @@ index bbe25f38edda..5b213640ec38 100755
  <longdesc lang="en">
  The name of the drbd resource from the drbd.conf file.
  </longdesc>
-@@ -483,8 +483,8 @@ to be generated after the failover of a "healthy" DRBD.
+@@ -471,8 +471,8 @@ to be generated after the failover of a "healthy" DRBD.
  <action name="demote"	timeout="90" />
  <action name="notify"	timeout="90" />
  <action name="stop"    timeout="100" />
@@ -64,7 +94,7 @@ index bbe25f38edda..5b213640ec38 100755
  <action name="meta-data"  timeout="5" />
  <action name="validate-all" />
  </actions>
-@@ -974,7 +974,7 @@ drbd_monitor() {
+@@ -962,7 +962,7 @@ drbd_monitor() {
  	fi
  
  	case $status in
@@ -74,5 +104,5 @@ index bbe25f38edda..5b213640ec38 100755
  	(2) : "OCF_ERR_ARGS" ;;
  	(3) : "OCF_ERR_UNIMPLEMENTED" ;;
 -- 
-2.45.2
+2.50.1 (Apple Git-155)
 

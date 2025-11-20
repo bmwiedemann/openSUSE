@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov 19 08:32:12 UTC 2025 - Zdenek Kubala <zkubala@suse.com>
+
+- Update SELinux module dir as macro to allow root path move from /var/lib/selinux
+  to /etc/selinux (bsc#1221342)
+
+-------------------------------------------------------------------
+Tue Nov 18 08:43:39 UTC 2025 - Glass Su <glass.su@suse.com>
+
+- [SELinux] nfs_drbd: "fence-peer helper broken, returned 0" and nfs WRITE hang when power off the secondary node (bsc#1252991)
+  * Update and rename patch
+    - bsc-1233273_drbd.ocf-update-for-OCF-1.1.patch
+    + bsc-1233273-1252991_drbd.ocf-update-for-OCF-1.1.patch
+
+-------------------------------------------------------------------
 Fri Nov 14 11:10:58 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
 
 - Allow domtrans from kernel_t to drbd_t (bsc#1252991)
