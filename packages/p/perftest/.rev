@@ -184,4 +184,13 @@ This patch is applied during compilation as perftest-license.patch</comment>
   - https://github.com/linux-rdma/perftest/releases/tag/25.07.0-0.104</comment>
     <requestid>1314586</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>4b793106a2fe580cfe4996f20bebaacf</srcmd5>
+    <version>25.10.0</version>
+    <time>1763646640</time>
+    <user>anag_factory</user>
+    <comment>- Update to v25.10.0-0.128
+  - https://github.com/linux-rdma/perftest/releases/tag/25.10.0-0.128</comment>
+    <requestid>1318730</requestid>
+  </revision>
 </revisionlist>
