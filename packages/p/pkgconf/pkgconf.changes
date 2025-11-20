@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Fri Oct  3 14:16:40 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.5.1:
+  + Fix processing of empty dependency lists.
+- Changes from version 2.5.0:
+  + Added a manual page for bomtool.
+  + Add support for preloaded packages.
+  + Refactor Windows registry PKG_CONFIG_PATH support so that it
+    augments the main directory search list instead of being
+    treated as a special case.
+  + Processing of `--with-path` arguments by the pkgconf CLI is
+    now deferred until libpkgconf is fully initialized, effectively
+    aligning behavior with PKG_CONFIG_PATH processing.
+  + Fix several minor memory safety bugs which were identified by
+    the GCC 15 static analyzer.
+  + Added support for pledge(2) and unveil(2) on systems where
+    this functionality is available.
+  + Significant improvements to pkgconf's manual pages.
+  + Remove questionable default-static assumption on Windows that
+    was inherited from the original pkg-config.  Most distributions
+    of pkgconf on Windows were already patching this out.
+  + Add -D_POSIX_C_SOURCE=200809L to the build definitions, which
+    is needed for readlinkat on glibc.
+- Changes from version 2.4.3:
+  + Fix additional logic errors relating to the new fragment trees
+    functionality.
+- Changes from version 2.4.2:
+  + Fix several logic errors in the pkg-config file parser that
+    were surfaced by recent refactoring work.
+  + Fix BSD make compatibility so that it generates the test data
+    before running kyua on BSD make implementations.
+- Changes from version 2.4.1:
+  + Ensure the full DAG is solved for all query types.
+- Changes from version 2.4.0:
+  + Allow multiple package names in solution-based queries such as
+    `--print-requires`, `--print-requires-private` and
+    `--print-provides`.
+  + Use `_DEFAULT_SOURCE` where appropriate on Meson.
+  + Add an abstract buffer type and use it when loading files from
+    disk instead of a 64KB buffer.  This ensures large pkg-config
+    files are not truncated.
+  + Disable graph recursion in `--variable` queries as it was
+    generating duplicate output.
+  + Add infrastructure for tracking fragment group relations and
+    convert storage of fragments to use a tree-like structure
+    instead of string concatenation.
+  + Add support for tracking linker groups, e.g.
+    -Wl,--start-group -la -lb -lc -Wl,--end-group
+    as fragment groups.
+  + Properly contextualize the sysroot directory when processing
+    package information, ensuring packages where ${pc_sysrootdir}
+    does not match the default are properly processed.
+- Changes from version 2.3.0:
+  + Fix compile with Meson on Solaris by defining __EXTENSIONS__.
+  + Add support for the PKG_CONFIG_RELOCATE_PATHS environmental
+    variable. When set, the program will act as if --define-prefix
+    is always enabled.
+  + Color solution nodes that were part of the original query, and
+    use that coloring to skip over dependencies when generating
+    DocumentNames in bomtool.
+  + Enhance --env option to support variables with both
+    --variable=varname and --print-variables.
+  + Add --exists-cflags option which creates synthetic preprocessor
+    definition flags for every queried dependency when found.
+  + Document that Requires.private is always used for header paths.
+  + Fix minor documentation typos.
+  + Ensure string comparisons using <ctype.h> functions are done
+    with unsigned bytes to avoid undefined behavior.
+  + Fix parsing edge-case bugs with dependency versions.
+  + Change PKG_PROG_PKG_CONFIG autoconf macro to add a customizable
+    failure handler if pkg-config is not found.
+
+-------------------------------------------------------------------
 Sat May 25 09:28:03 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.2.0:

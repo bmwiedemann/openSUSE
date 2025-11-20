@@ -1,7 +1,7 @@
 #
 # spec file for package pkgconf
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
@@ -41,12 +41,12 @@
 # Search path for pc files for pkgconf
 %global pkgconf_libdirs %{_libdir}/pkgconfig:%{_datadir}/pkgconfig
 
-%global somajor 5
+%global somajor 7
 %global libname lib%{name}%{somajor}
 %global devname lib%{name}-devel
 
 Name:           pkgconf
-Version:        2.2.0
+Version:        2.5.1
 Release:        0
 Summary:        Package compiler and linker metadata toolkit
 License:        ISC
@@ -190,7 +190,8 @@ rm -rf %{buildroot}%{_mandir}/man7
 %doc README.md AUTHORS NEWS
 %{_bindir}/%{name}
 %{_bindir}/bomtool
-%{_mandir}/man1/%{name}.1*
+%{_mandir}/man1/%{name}.1%{?ext_man}
+%{_mandir}/man1/bomtool.1%{?ext_man}
 %{_mandir}/man5/pc.5*
 %{_mandir}/man5/%{name}-personality.5*
 %{_rpmmacrodir}/macros.pkgconf
