@@ -23,7 +23,7 @@
 
 %bcond_without released
 Name:           pam_kwallet6
-Version:        6.5.2
+Version:        6.5.3
 Release:        0
 Summary:        A PAM Module for KWallet signing
 License:        GPL-2.0-or-later AND LGPL-2.1-only AND GPL-3.0-only
