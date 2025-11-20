@@ -235,6 +235,12 @@ Patch43:        bsc1243155-sphinx-non-determinism.patch
 Patch44:        gh138131-exclude-pycache-from-digest.patch
 # PATCH-FIX-OPENSUSE gh139257-Support-docutils-0.22.patch gh#python/cpython#139257 daniel.garcia@suse.com
 Patch45:        gh139257-Support-docutils-0.22.patch
+# PATCH-FIX-UPSTREAM CVE-2025-8291-consistency-zip64.patch bsc#1251305 mcepl@suse.com
+# Check consistency of the zip64 end of central directory record
+Patch46:        CVE-2025-8291-consistency-zip64.patch
+# PATCH-FIX-UPSTREAM CVE-2025-6075-expandvars-perf-degrad.patch bsc#1252974 mcepl@suse.com
+# Avoid potential quadratic complexity vulnerabilities in path modules
+Patch47:        CVE-2025-6075-expandvars-perf-degrad.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -553,9 +559,6 @@ rm Lib/site-packages/README.txt
 
 # Add vendored bluez-devel files
 tar xvf %{SOURCE21}
-
-# Don't fail on warnings when building documentation
-sed -i -e '/^SPHINXERRORHANDLING/s/--fail-on-warning//' Doc/Makefile
 
 %build
 export SUSE_VERSION="0%{?suse_version}"

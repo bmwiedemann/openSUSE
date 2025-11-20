@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Nov 13 17:13:03 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2025-6075-expandvars-perf-degrad.patch avoid simple
+  quadratic complexity vulnerabilities of os.path.expandvars()
+  (CVE-2025-6075, bsc#1252974).
+
+-------------------------------------------------------------------
+Tue Nov  4 16:44:05 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2025-8291-consistency-zip64.patch which checks
+  consistency of the zip64 end of central directory record, and
+  preventing obfuscation of the payload, i.e., you scanning for
+  malicious content in a ZIP file with one ZIP parser (let's say
+  a Rust one) then unpack it in production with another (e.g.,
+  the Python one) and get malicious content that the other parser
+  did not see (CVE-2025-8291, bsc#1251305)
+- Readjust patches while synchronizing between openSUSE and SLE trees:
+  - F00251-change-user-install-location.patch
+  - doc-py38-to-py36.patch
+  - gh126985-mv-pyvenv.cfg2getpath.patch
+
+-------------------------------------------------------------------
 Wed Oct 15 09:15:38 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 3.13.9:
