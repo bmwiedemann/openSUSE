@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct 26 14:54:39 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Boost.System is headers only since 1.69 and stub library removed in
+  1.89. Change to new boost.m4 from upstream project.
+  + Add boost-m4-39.patch
+
+-------------------------------------------------------------------
 Thu Aug 14 01:49:02 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 5.2.5 (CVE-2025-30192 boo#246841)

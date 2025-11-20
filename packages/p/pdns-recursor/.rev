@@ -851,4 +851,14 @@ https://doc.powerdns.com/recursor/changelog/4.4.html#change-4.4.3</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1300709</requestid>
   </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>f0a536aeb7737c79b2c6658941435aa8</srcmd5>
+    <version>5.2.5</version>
+    <time>1763646643</time>
+    <user>anag_factory</user>
+    <comment>- Boost.System is headers only since 1.69 and stub library removed in
+  1.89. Change to new boost.m4 from upstream project.
+  + Add boost-m4-39.patch</comment>
+    <requestid>1318732</requestid>
+  </revision>
 </revisionlist>

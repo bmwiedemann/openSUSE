@@ -56,11 +56,10 @@ BuildRequires:  gcc-c++
 %if 0%{?suse_version} > 1325
 BuildRequires:  libboost_context-devel
 BuildRequires:  libboost_filesystem-devel
-BuildRequires:  libboost_system-devel
+BuildRequires:  (libboost_system-devel if boost-devel < 1.89)
 BuildRequires:  libboost_thread-devel
-%else
-BuildRequires:  boost-devel >= 1.66
 %endif
+BuildRequires:  boost-devel >= 1.66
 
 BuildRequires:  libsodium-devel
 %if %{with pdns_luajit}
@@ -106,6 +105,8 @@ Source3:        vendor.tar.zst
 Source99:       series
 Patch1:         boost_context.patch
 Patch2:         cargo_build_fix.patch
+# PATCH-FIX-OPENSUSE - use version 58 of boost.m4
+Patch3:         boost-m4-39.patch
 #
 Summary:        Modern, advanced and high performance recursing/non authoritative nameserver
 License:        GPL-2.0-or-later
