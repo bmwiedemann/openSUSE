@@ -33,6 +33,10 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Archiving/Backup
 URL:            https://duplicity.gitlab.io/
 Source:         https://gitlab.com/%{name}/%{name}/-/archive/rel.%{version}/%{name}-rel.%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM duplicity-gcc15.patch mgorse@suse.com -- fix compliation with gcc 15.
+Patch0:         duplicity-gcc15.patch
+# PATCH-FIX-UPSTREAM duplicity-fix-ssh-pexpect.patch bsc#1253734 mgorse@suse.com -- fix TypeError with ssh+pexpect back end.
+Patch1:         duplicity-fix-ssh-pexpect.patch
 BuildRequires:  %{_python}-devel
 BuildRequires:  %{_python}-pytest
 BuildRequires:  %{_python}-setuptools
@@ -63,7 +67,7 @@ links.
 %lang_package
 
 %prep
-%setup -q -n %{name}-rel.%{version}
+%autosetup -p1 -n %{name}-rel.%{version}
 sed -i -e 's|/usr/bin/env python3|/usr/bin/%{_python}|g' duplicity/__main__.py
 
 %build

@@ -1,0 +1,27 @@
+From af76fd33a30cf8c2b82ec0707d007574e3b12418 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Tue, 18 Nov 2025 17:18:16 +0000
+Subject: [PATCH] fix:usr: fix compilation with gcc 15
+
+---
+ duplicity/_librsyncmodule.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/duplicity/_librsyncmodule.c b/duplicity/_librsyncmodule.c
+index c9182d7d..be22cad4 100644
+--- a/duplicity/_librsyncmodule.c
++++ b/duplicity/_librsyncmodule.c
+@@ -333,8 +333,8 @@ _librsync_new_patchmaker(PyObject* self, PyObject* args)
+   fd = dup(fd);
+   if (fd == -1) {
+     char buf[256];
+-    strerror_r(errno, buf, sizeof(buf));
+-    PyErr_SetString(PyExc_TypeError, buf);
++    if (strerror_r(errno, buf, sizeof(buf)))
++	    PyErr_SetString(PyExc_TypeError, buf);
+     return NULL;
+   }
+   Py_INCREF(python_file);
+-- 
+2.51.1
+

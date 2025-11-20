@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 19 03:07:16 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Add duplicity-gcc15.patch: fix compilation with gcc 15.
+- Add duplicity-fix-ssh-pexpect.patch: fix traceback with
+  ssh+pexpect back end (bsc#1253734).
+
+-------------------------------------------------------------------
 Fri Nov 14 10:10:32 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 3.0.6.1:

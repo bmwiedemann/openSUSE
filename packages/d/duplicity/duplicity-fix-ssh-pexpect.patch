@@ -1,0 +1,24 @@
+From c8172aefb8c6f557ca6e031c5c01a00c25604f57 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Tue, 18 Nov 2025 17:26:44 +0000
+Subject: [PATCH] fix:usr: ssh_pexpect_backend: fix TypeError
+
+---
+ duplicity/backends/ssh_pexpect_backend.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/duplicity/backends/ssh_pexpect_backend.py b/duplicity/backends/ssh_pexpect_backend.py
+index 404bf05b..2806b772 100644
+--- a/duplicity/backends/ssh_pexpect_backend.py
++++ b/duplicity/backends/ssh_pexpect_backend.py
+@@ -187,6 +187,7 @@ class SSHPExpectBackend(duplicity.backend.Backend):
+             commandline,
+             timeout=None,
+             maxread=maxread,
++            encoding=config.fsencoding,
+             use_poll=True,
+         )
+         cmdloc = 0
+-- 
+2.51.1
+
