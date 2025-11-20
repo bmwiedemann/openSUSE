@@ -56,8 +56,11 @@ terms of size and speed.
 %make_build check
 
 %files
-%license README.md
+%license LICENSE
+%doc NO_WARRANTY
+%doc README.md
 %doc CHANGELOG
+%doc MAINTAINERS.md
 %doc examples/
 %{_bindir}/re2c
 %{_bindir}/re2go
