@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 11 23:58:48 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update tls to version 2.1.13.
+  ## Version 2.1.13
+
+  * Don't contain early_data if serverEarlyDataSize is 0.
+    [#510](https://github.com/haskell-tls/hs-tls/pull/510)
+
+-------------------------------------------------------------------
 Wed Oct 22 03:55:41 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update tls to version 2.1.12.
