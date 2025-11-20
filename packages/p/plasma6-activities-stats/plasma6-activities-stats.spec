@@ -25,7 +25,7 @@
 %define rname   plasma-activities-stats
 %bcond_without released
 Name:           plasma6-activities-stats
-Version:        6.5.2
+Version:        6.5.3
 Release:        0
 Summary:        KDE Plasma Activities support
 License:        LGPL-2.0-or-later
