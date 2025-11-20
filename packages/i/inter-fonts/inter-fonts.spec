@@ -1,7 +1,7 @@
 #
 # spec file for package inter-fonts
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global desc Inter is a typeface specially designed for user interfaces with focus on high\
 legibility of small-to-medium sized text on computer screens.
 Name:           inter-fonts
-Version:        4.0
+Version:        4.1
 Release:        0
 Summary:        The Inter font family
 License:        OFL-1.1

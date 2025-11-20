@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Nov 19 10:45:11 UTC 2025 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Update to 4.1:
+  * Fixes design of /Chekhakassiancyrillic &
+    /chekhakassiancyrillic. #262
+  * Improved design of /section. #620
+  * Improved design of /drachma. #621
+  * Improved design of U+037B U+037D U+03FD U+03FF #622
+  * Fix misaligned horizontal bar of /Theta. #624
+  * Improvements to /published and /registered. #625
+  * New design of /finalkaf (LS digraph). #626
+  * Remove c2sc and smcp from aalt. #630
+  * Remove incomplete OpenType features c2sc and smcp. #630
+  * Fixes broken glyphs Cyrillic /uni04F6 /Ghestrokecyrillic and
+    /uni04FA in Italic. #636
+  * Fixes issue with 'frac' feature that put all number into
+    exponent. #639
+  * Adjust left sidebearings of /five. #641
+  * Refine positioning of /three.tf and /five.tf. #642
+  * More constrained calt .case subsitutions. #648
+  * Include hinted woff font files in distribution. #654
+  * Improvements to /idieresis et al. #657
+  * Loosen up kerning of tt and ff. #666
+  * Assign official codepoints to small-caps glyphs. #668
+  * Adjustments to glyphs with /hungarumlaut. #676
+  * Fixes design of /Tonesix & /tonesix. #680
+  * Improved design of /ordmasculine and /ordfeminine. #691
+  * New design of /Germandbls with old design available at
+    /Germandbls.1 via cv14. #693
+  * Overhaul of many Cyrillic glyphs. #696
+  * Improvements to /Dbar1 and /Lbar. #698
+  * Fixes ss03 in italic. #711
+  * Adds /note-musical U+266A & /notedbl-musical U+266B. #723
+  * Add dlig exception for fffi et al. #732
+  * Fixes design of /obarredcyrillic U+04E9 and related composites.
+    #743
+  * Adds /somsign U+20C0 "SOM SIGN" (Kyrgyzstan currency symbol).
+    #747
+  * Add anchors to Epsilon1, epsilon1, Oopen, oopen #748
+  * Fix slant angle of /dieresiscomb.ss07 in italic 900 weights
+  * Improvements to fractions
+  * Lots of improved kerning data
+  * Remove unused glyphs /Idieresis.double & /idieresis.double
+  * Removes NxN -> N×N transformation in calt on popular request
+  * Slight reduction in positive kerning of ri
+
+-------------------------------------------------------------------
 Wed Dec  6 03:43:57 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to 4.0:
@@ -119,4 +166,3 @@ Sat Apr 11 08:44:17 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
 Fri Feb 21 01:06:18 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Initial release
-
