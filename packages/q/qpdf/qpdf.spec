@@ -1,7 +1,7 @@
 #
 # spec file for package qpdf
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,19 @@
 #
 
 
-%define so_version 29
+%define so_version 30
+%bcond_without zopfli
 Name:           qpdf
-Version:        11.10.1
+Version:        12.2.0
 Release:        0
 Summary:        Command-line tools and library for transforming PDF files
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
-URL:            https://qpdf.sourceforge.io/
+URL:            https://qpdf.sourceforge.io
 Source:         https://github.com/qpdf/qpdf/releases/download/v%{version}/qpdf-%{version}.tar.gz
 Source1:        https://github.com/qpdf/qpdf/releases/download/v%{version}/qpdf-%{version}.tar.gz.asc
 Source2:        qpdf.keyring
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.16
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -39,6 +40,9 @@ BuildRequires:  texlive-latexmk
 BuildRequires:  pkgconfig(gnutls)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(zlib)
+%if %{with zopfli}
+BuildRequires:  cmake(Zopfli)
+%endif
 
 %description
 QPDF is a program that does structural, content-preserving
@@ -54,12 +58,13 @@ only used to create PDF files with special characteristics starting
 from other PDF files or to inspect or extract information from
 existing PDF files.
 
-%package htmldoc
+%package doc
 Summary:        Documentation files for qpdf
 Group:          Documentation/HTML
 BuildArch:      noarch
+Obsoletes:      %{name}-htmldoc
 
-%description htmldoc
+%description doc
 This package contains the documentation for qpdf
 
 %package devel
@@ -87,11 +92,16 @@ package.
 %build
 %global optflags %{optflags} -fexcess-precision=fast
 %cmake \
+  -DSHOW_FAILED_TEST_OUTPUT=ON \
+  -DWERROR=ON \
   -DBUILD_DOC=ON \
   -DBUILD_DOC_DIST=ON \
   -DBUILD_DOC_HTML=ON \
   -DBUILD_DOC_PDF=ON \
-  -DCMAKE_INSTALL_DOCDIR='${datarootdir}'share/doc/packages/%{name}
+%if %{with zopfli}
+  -DZOPFLI=ON \
+%endif
+  %{?nil}
 %cmake_build
 
 %check
@@ -99,7 +109,7 @@ package.
 rm qpdf/qtest/specific-bugs.test
 rm qpdf/qtest/inline-images.test
 %endif
-%make_build -C build test
+%ctest
 
 %install
 %cmake_install
@@ -118,21 +128,23 @@ popd
 
 %files
 %doc ChangeLog README-doc.txt
-%doc qpdf-manual.pdf
 %license Artistic-2.0 LICENSE.txt
-%{_bindir}/*
-%{_mandir}/man1/*
+%{_bindir}/{fix-qdf,qpdf,zlib-flate}
+%{_mandir}/man1/{fix-qdf,qpdf,zlib-flate}.1%{?ext_man}
 
-%files htmldoc
+%files doc
 %doc %{_docdir}/%{name}/html
 %doc %{_docdir}/%{name}/singlehtml
+%doc %{_docdir}/%{name}/qpdf-manual.pdf
 
 %files -n libqpdf%{so_version}
+%license Artistic-2.0 LICENSE.txt
 %{_libdir}/libqpdf.so.%{so_version}*
 
 %files devel
 %doc %{_docdir}/%{name}/examples
-%{_includedir}/*
+%license Artistic-2.0 LICENSE.txt
+%{_includedir}/%{name}/
 %{_libdir}/pkgconfig/libqpdf.pc
 %{_libdir}/libqpdf.so
 %{_libdir}/cmake/qpdf
