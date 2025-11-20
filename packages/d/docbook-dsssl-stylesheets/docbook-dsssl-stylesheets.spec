@@ -1,7 +1,7 @@
 #
 # spec file for package docbook-dsssl-stylesheets
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ License:        SUSE-XSL-Lint
 Group:          Productivity/Publishing/DocBook
 Version:        1.79
 Release:        0
-Url:            http://sourceforge.net/projects/docbook/
+URL:            http://sourceforge.net/projects/docbook/
 Source0:        http://downloads.sourceforge.net/project/docbook/docbook-dsssl/%{version}/docbook-dsssl-%{version}.tar.gz
 Source1:        http://downloads.sourceforge.net/project/docbook/docbook-dsssl-doc/%{version}/docbook-dsssl-doc-%{version}.tar.gz
 %define db2html dbtohtml.dsl
@@ -152,6 +152,7 @@ exit 0
 
 %files
 %defattr(-, root, root)
+%license doc/LEGALNOTICE.htm
 %{_datadir}/sgml/CATALOG.*
 %{_datadir}/sgml/docbook/dsssl-stylesheets
 %{_datadir}/sgml/docbook/%{name}
