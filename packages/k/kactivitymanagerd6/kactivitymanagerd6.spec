@@ -22,7 +22,7 @@
 %define rname kactivitymanagerd
 %bcond_without released
 Name:           kactivitymanagerd6
-Version:        6.5.2
+Version:        6.5.3
 Release:        0
 Summary:        KDE Plasma Activities support
 License:        GPL-2.0-or-later
