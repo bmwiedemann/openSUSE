@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 19 05:54:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.94.0:
+  * Release 2.94.0
+  * fix: build on macOS broken
+  * Version 2.93.0
+
+-------------------------------------------------------------------
 Mon Feb 17 14:11:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package lix-installer: the easiest way to install Lix is to

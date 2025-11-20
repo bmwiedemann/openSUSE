@@ -1,7 +1,7 @@
 #
 # spec file for package lix-installer
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,20 +15,20 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# https://git.lix.systems/lix-project/lix-installer#building-a-binary
+
 %define __rustflags --cfg tokio_unstable
 
 Name:           lix-installer
-Version:        2.92.0
+Version:        2.94.0
 Release:        0
-Summary:	The easiest way to install Lix
-License:        LGPL-2.1
+Summary:        The easiest way to install Lix
+License:        LGPL-2.1-only
 URL:            https://git.lix.systems/lix-project/lix-installer
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
+BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  zstd
-BuildRequires:  cargo
 ExclusiveArch:  x86_64
 
 %description
