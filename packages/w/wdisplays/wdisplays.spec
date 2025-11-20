@@ -17,13 +17,13 @@
 
 
 Name:           wdisplays
-Version:        1.1.1
+Version:        1.1.3
 Release:        0%{?dist}
 Summary:        GUI display configurator for wlroots compositors
 
 License:        GPL-3.0-or-later
 URL:            https://github.com/artizirk/wdisplays
-Source:         https://github.com/artizirk/wdisplays/archive/1.1.1.tar.gz#/wdisplays-1.1.1.tar.gz
+Source:         https://github.com/artizirk/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc
