@@ -1380,4 +1380,41 @@
     gh#PyO3/maturin#2758</comment>
     <requestid>1310403</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>3edc90db6051a64e5ac8650fe0fed9f5</srcmd5>
+    <version>1.10.2</version>
+    <time>1763646452</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit
+- Update to 1.10.2
+  * Fix tagging for iOS x86_64 simulator wheels.
+  * Set entry type when adding to the tar file.
+
+- Update to 1.10.1
+  * Fix generated WHEEL Tag metadata to be spec compliant.
+    gh#PyO3/maturin#2762
+  * Export all Cargo URL metadata items to Python
+    gh#PyO3/maturin#2760
+  * Update maximum Python version to 3.14
+    gh#PyO3/maturin#2763
+  * Remove shebang from non-executable init.py file
+    gh#PyO3/maturin#2775
+  * Stop warning about missing extension-module feature on pyo3 0.26+
+    gh#PyO3/maturin#2789
+  * --profile conflicts with --release (and/or --debug)
+    gh#PyO3/maturin#2793
+  * Bump MSRV to 1.83.0
+    gh#PyO3/maturin#2790
+  * respect CLI profile over pyproject.toml
+    gh#PyO3/maturin#2794
+  * chore: add FreeBSD 14.3 amd64 sysconfig
+    gh#PyO3/maturin#2805
+  * Add Cygwin support
+    gh#PyO3/maturin#2819
+  * PyO3: do not add extension-module feature in template and tutorial
+    gh#PyO3/maturin#2821
+  * Remove add_directory() from ModuleWriter trait by @e-nomem in #2824
+  * Correct wheel naming when targeting iOS</comment>
+    <requestid>1318737</requestid>
+  </revision>
 </revisionlist>

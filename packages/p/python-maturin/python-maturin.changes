@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Wed Nov 19 17:14:57 UTC 2025 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.10.2
+  * Fix tagging for iOS x86_64 simulator wheels.
+  * Set entry type when adding to the tar file.
+
+-------------------------------------------------------------------
+Tue Nov 11 16:38:41 UTC 2025 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.10.1
+  * Fix generated WHEEL Tag metadata to be spec compliant.
+    gh#PyO3/maturin#2762
+  * Export all Cargo URL metadata items to Python
+    gh#PyO3/maturin#2760
+  * Update maximum Python version to 3.14
+    gh#PyO3/maturin#2763
+  * Remove shebang from non-executable init.py file
+    gh#PyO3/maturin#2775
+  * Stop warning about missing extension-module feature on pyo3 0.26+
+    gh#PyO3/maturin#2789
+  * --profile conflicts with --release (and/or --debug)
+    gh#PyO3/maturin#2793
+  * Bump MSRV to 1.83.0
+    gh#PyO3/maturin#2790
+  * respect CLI profile over pyproject.toml
+    gh#PyO3/maturin#2794
+  * chore: add FreeBSD 14.3 amd64 sysconfig
+    gh#PyO3/maturin#2805
+  * Add Cygwin support
+    gh#PyO3/maturin#2819
+  * PyO3: do not add extension-module feature in template and tutorial
+    gh#PyO3/maturin#2821
+  * Remove add_directory() from ModuleWriter trait by @e-nomem in #2824
+  * Correct wheel naming when targeting iOS
+    gh#PyO3/maturin#2827
+  * Add support for iOS cross-platform virtual environments
+    gh#PyO3/maturin#2828
+  * add editable-profile option
+    gh#PyO3/maturin#2826
+  * Make sdist reproducible by @e-nomem in #2831
+  * always use "library" mode to generate uniffi bindings
+    gh#PyO3/maturin#2840
+  * If an interpreter is available, use it, even when building ABI3.
+    gh#PyO3/maturin#2829
+
+-------------------------------------------------------------------
 Thu Oct  9 21:38:44 UTC 2025 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.9.6
