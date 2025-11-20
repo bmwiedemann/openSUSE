@@ -1,7 +1,7 @@
 #
 # spec file for package himmelblau
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           himmelblau
-Version:        1.3.0+git.0.f8cabb7
+Version:        1.4.2+git.0.52da279
 Release:        0
 Summary:        Interoperability suite for Microsoft Azure Entra Id
 License:        GPL-3.0-or-later
