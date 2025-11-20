@@ -2,7 +2,7 @@
   <service mode="manual" name="obs_scm">
     <param name="url">git://git.kernel.org/pub/scm/linux/kernel/git/wens/wireless-regdb.git</param>
     <param name="scm">git</param>
-    <param name="revision">master-2025-07-10</param>
+    <param name="revision">master-2025-10-07</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">wireless-regdb</param>
     <param name="versionformat">@PARENT_TAG@</param>
