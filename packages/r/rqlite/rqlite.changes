@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 19 19:45:13 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 9.3.1:
+  * Upgrade SQL parser
+  * Fix update-hook error stat and clarify SQL time-function processing
+
+-------------------------------------------------------------------
 Thu Nov 13 19:27:02 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 9.3.0:
