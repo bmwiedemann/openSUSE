@@ -215,4 +215,12 @@
     <comment></comment>
     <requestid>1246707</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>4f3ae4bd9b495211c2b889b04d6b5736</srcmd5>
+    <version>0.10.3</version>
+    <time>1763646611</time>
+    <user>anag_factory</user>
+    <comment>- Use pyproject macros to build and install. (forwarded request 1287800 from StevenK)</comment>
+    <requestid>1318722</requestid>
+  </revision>
 </revisionlist>

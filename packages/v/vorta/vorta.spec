@@ -36,11 +36,13 @@ Source1:        vorta.desktop
 Patch0:         vorta-fix-dependencies.patch
 BuildRequires:  %{python_module PyQt6}
 BuildRequires:  %{python_module peewee}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module platformdirs}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools-git}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
@@ -63,11 +65,11 @@ ransomware and theft.
 
 %build
 export LANG=en_US.UTF-8
-%python_build
+%pyproject_wheel
 
 %install
 export LANG=en_US.UTF-8
-%python_install
+%pyproject_install
 install -d %{buildroot}%{_datadir}/icons/hicolor/256x256/apps
 install -Dm644 "src/vorta/assets/icons/icon.svg" "%{buildroot}%{_datadir}/icons/hicolor/256x256/apps/vorta.svg"
 install -Dm644 -t %{buildroot}%{_datadir}/metainfo "src/vorta/assets/metadata/com.borgbase.Vorta.appdata.xml"
@@ -82,6 +84,6 @@ install -Dm644 -t %{buildroot}%{_datadir}/metainfo "src/vorta/assets/metadata/co
 %{_datadir}/metainfo/com.borgbase.Vorta.appdata.xml
 %{_datadir}/icons/hicolor/256x256/apps/vorta.svg
 %{python_sitelib}/%{name}
-%{python_sitelib}/%{name}-%{version}-py%{python_bin_suffix}.egg-info
+%{python_sitelib}/%{name}-%{version}.dist-info
 
 %changelog
