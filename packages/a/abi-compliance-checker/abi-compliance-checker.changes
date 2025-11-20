@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 16 13:30:19 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add acc-gcc15.patch: Fix build / test with GCC 15. "bool" is a
+  reserved keyword.
+
+-------------------------------------------------------------------
 Mon Aug 12 17:09:26 UTC 2024 - Martin Jambor <mjambor@suse.com>
 
 - Add -fpermissive to compiler flags invoked byt the testsuite because

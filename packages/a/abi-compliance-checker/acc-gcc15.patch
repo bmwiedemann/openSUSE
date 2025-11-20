@@ -1,0 +1,31 @@
+Index: abi-compliance-checker-2.3/modules/Internals/RegTests.pm
+===================================================================
+--- abi-compliance-checker-2.3.orig/modules/Internals/RegTests.pm
++++ abi-compliance-checker-2.3/modules/Internals/RegTests.pm
+@@ -4789,7 +4789,7 @@ sub testC()
+         $DECL_SPEC int delete(int virtual, int* this);
+         $DECL_SPEC int testCppKeywords4(int* param, int export);
+         struct CppKeywords {
+-            int bool: 8;
++            int boolean: 8;
+             //int*this;
+         };
+         #ifdef __cplusplus
+@@ -4842,7 +4842,7 @@ sub runTests($$$$$$$$)
+     mkpath($Path_v1);
+     mkpath($Path_v2);
+     writeFile("$Path_v1/$ObjName.h", $HEADER1."\n");
+-    writeFile("$Path_v1/$ObjName.$SrcE", "#include \"$ObjName.h\"\n".$SOURCE1."\n");
++    writeFile("$Path_v1/$ObjName.$SrcE", "#include <stdlib.h>\n#include \"$ObjName.h\"\n".$SOURCE1."\n");
+     
+     writeFile("$LibName/v1.xml", "
+         <version>
+@@ -4875,7 +4875,7 @@ sub runTests($$$$$$$$)
+     ");
+     
+     writeFile("$Path_v2/$ObjName.h", $HEADER2."\n");
+-    writeFile("$Path_v2/$ObjName.$SrcE", "#include \"$ObjName.h\"\n".$SOURCE2."\n");
++    writeFile("$Path_v2/$ObjName.$SrcE", "#include <stdlib.h>\n#include \"$ObjName.h\"\n".$SOURCE2."\n");
+     writeFile("$LibName/v2.xml", "
+         <version>
+             2.0

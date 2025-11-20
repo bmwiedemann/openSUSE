@@ -1,7 +1,7 @@
 #
 # spec file for package abi-compliance-checker
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Source0:        https://github.com/lvc/abi-compliance-checker/archive/%{version}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  help2man
+Patch0:         acc-gcc15.patch
 Requires:       abi-dumper >= 1.1
 Requires:       binutils
 Requires:       coreutils
@@ -55,7 +56,7 @@ compatibility, i.e. allow old applications to run with newer library
 versions without the need to recompile.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 chmod 0755 %{name}.pl
