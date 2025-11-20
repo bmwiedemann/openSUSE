@@ -2,7 +2,7 @@
 # spec file for package zutils
 #
 # Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           zutils
-Version:        1.14
+Version:        1.15
 Release:        0
 Summary:        Collection of utilities for dealing with compressed files
 License:        GPL-2.0-or-later
@@ -59,7 +59,14 @@ in those utilities supporting it.
 %doc ChangeLog README
 %license COPYING
 %config %{_sysconfdir}/zutils.conf
-%{_bindir}/*
+%{_bindir}/zutils-zcat
+%{_bindir}/zutils-zcmp
+%{_bindir}/zutils-zdiff
+%{_bindir}/zutils-zegrep
+%{_bindir}/zutils-zfgrep
+%{_bindir}/zutils-zgrep
+%{_bindir}/ztest
+%{_bindir}/zupdate
 %{_infodir}/*.info%{?ext_info}
 %{_mandir}/man1/*.1%{?ext_man}
 

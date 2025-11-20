@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 10 06:53:51 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.15:
+  * The new option '-x, --exclude' has been added to zutils-zcat,
+    ztest, and zupdate.
+  * The new option '--exclude' has been added to zutils-zgrep. It
+    excludes files matching a shell pattern (for example '*.o').
+  * zgrep now exits with status 2 if a write error happens on
+    stdout
+
+-------------------------------------------------------------------
 Sun Jan 19 13:32:23 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.14:
