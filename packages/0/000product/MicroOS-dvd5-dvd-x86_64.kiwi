@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20251119" schemaversion="4.1">
+<image name="OBS__MicroOS___20251120" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20251119</productvar>
+      <productvar name="VERSION">20251120</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20251119,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20251120,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20251119/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20251120/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1018,7 +1018,7 @@
       <repopackage name="libpipewire-0_3-0"/>
       <repopackage name="libpixman-1-0"/>
       <repopackage name="libpkcs11-helper1"/>
-      <repopackage name="libpkgconf5"/>
+      <repopackage name="libpkgconf7"/>
       <repopackage name="libplacebo264"/>
       <repopackage name="libplacebo351"/>
       <repopackage name="libPlasma5Support6"/>
@@ -1061,7 +1061,7 @@
       <repopackage name="libQCoro6DBus0"/>
       <repopackage name="libqmi-glib5"/>
       <repopackage name="libQMobipocket6-3"/>
-      <repopackage name="libqpdf29"/>
+      <repopackage name="libqpdf30"/>
       <repopackage name="libqrencode4"/>
       <repopackage name="libqrtr-glib0"/>
       <repopackage name="libqt5-qtgraphicaleffects"/>
@@ -1394,6 +1394,7 @@
       <repopackage name="libzip5"/>
       <repopackage name="libzix-0-0"/>
       <repopackage name="libzmq5"/>
+      <repopackage name="libzopfli1"/>
       <repopackage name="libzstd1"/>
       <repopackage name="libzvbi0"/>
       <repopackage name="libZXing3"/>

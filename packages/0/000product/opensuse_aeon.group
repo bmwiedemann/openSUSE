@@ -41,7 +41,7 @@
     <package name="libncurses6" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libopenssl3" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libpcre2-8-0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
-    <package name="libpkgconf5" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
+    <package name="libpkgconf7" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libpopt0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
     <package name="libreadline8" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libselinux1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->

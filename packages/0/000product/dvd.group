@@ -2515,7 +2515,7 @@
     <package name="libpipewire-0_3-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpixman-1-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpkcs11-helper1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libpkgconf5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libpkgconf7" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libplacebo264" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libplacebo351" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libplasma6-components" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2576,7 +2576,7 @@
     <package name="libqgpgmeqt6-15" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libqmi-glib5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libqmi-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libqpdf29" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libqpdf30" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libqqwing2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libqrencode4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libqrtr-glib0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2993,6 +2993,8 @@
     <package name="libzix-0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libzmf-0_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libzmq5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libzopfli1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libzopfli1-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libzstd1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libzstd1-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libzvbi0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->

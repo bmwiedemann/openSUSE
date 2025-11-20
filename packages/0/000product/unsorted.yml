@@ -17376,8 +17376,6 @@ unsorted:
   - libzmusic1 
   - libzn_poly-0_9 
   - libzopfli-devel 
-  - libzopfli1 
-  - libzopfli1-x86-64-v3 
   - libzopflipng1 
   - libzopflipng1-x86-64-v3 
   - libzrtpcpp-devel 
@@ -35661,7 +35659,7 @@ unsorted:
   - qos 
   - qpdf 
   - qpdf-devel 
-  - qpdf-htmldoc 
+  - qpdf-doc 
   - qpdfview 
   - qpdfview-lang 
   - qpdfview-plugin-djvu 
