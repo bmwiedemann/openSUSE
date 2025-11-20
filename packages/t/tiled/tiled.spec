@@ -1,7 +1,7 @@
 #
 # spec file for package tiled
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,12 +25,17 @@ URL:            https://www.mapeditor.org
 Source:         https://github.com/mapeditor/tiled/archive/refs/tags/v%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/mapeditor/tiled/pull/4167
 Patch0:         fixed-compile-against-qt-6_8_2.patch
+# PATCH-FIX-UPSTREAM https://github.com/mapeditor/tiled/pull/4182
+# (adapted to also fix qtpropertybrowser)
+Patch1:         fixed-build-with-qbs-2_6.patch
+# PATCH-FIX-UPSTREAM https://github.com/mapeditor/tiled/pull/4283
+Patch2:         do-not-install-tests.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  karchive-devel
-BuildRequires:  qbs
+BuildRequires:  qbs >= 1.18
 BuildRequires:  qt6-base-common-devel
 BuildRequires:  qt6-base-devel
 BuildRequires:  qt6-core-devel >= 6.4.2

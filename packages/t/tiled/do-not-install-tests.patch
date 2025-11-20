@@ -1,0 +1,43 @@
+From cd1905ce94ca704273899f330be907800b0c234b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Thorbj=C3=B8rn=20Lindeijer?= <bjorn@lindeijer.nl>
+Date: Fri, 31 Oct 2025 14:32:48 +0100
+Subject: [PATCH] GitHub Actions / Qbs: Adjusted Qt version and don't install
+ tests (#4283)
+
+When updating the Qt version to 6.9.3, I forgot to update the default
+profile selected for the macOS build.
+
+Also, since Qbs 3.1, the convenience items are installing by default, so
+we need to explicitly disable that for the autotests (came up in #4282).
+---
+ .github/workflows/packages.yml | 4 ++--
+ qbs/imports/TiledTest.qbs      | 1 +
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+Index: tiled-1.11.2/.github/workflows/packages.yml
+===================================================================
+--- tiled-1.11.2.orig/.github/workflows/packages.yml
++++ tiled-1.11.2/.github/workflows/packages.yml
+@@ -259,8 +259,8 @@ jobs:
+         brew install qbs
+         qbs setup-toolchains --detect
+         qbs setup-qt --detect
+-        qbs config profiles.qt-6-8-2.baseProfile xcode
+-        qbs config defaultProfile qt-6-8-2
++        qbs config profiles.qt-6-9-3.baseProfile xcode
++        qbs config defaultProfile qt-6-9-3
+ 
+     - name: Build Zstandard
+       run: |
+Index: tiled-1.11.2/qbs/imports/TiledTest.qbs
+===================================================================
+--- tiled-1.11.2.orig/qbs/imports/TiledTest.qbs
++++ tiled-1.11.2/qbs/imports/TiledTest.qbs
+@@ -2,6 +2,7 @@ import qbs.FileInfo
+ 
+ CppApplication {
+     type: base.concat("autotest")
++    install: false
+ 
+     Depends { name: "libtiled" }
+     Depends { name: "Qt.testlib" }

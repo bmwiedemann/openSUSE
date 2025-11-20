@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov 15 19:39:26 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Add fixed-build-with-qbs-2_6.patch
+- Add do-not-install-tests.patch
+
+-------------------------------------------------------------------
 Sun Mar  9 21:23:21 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Add fixed-compile-against-qt-6_8_2.patch

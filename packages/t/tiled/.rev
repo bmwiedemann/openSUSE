@@ -952,4 +952,13 @@
     <comment></comment>
     <requestid>1251654</requestid>
   </revision>
+  <revision rev="46" vrev="3">
+    <srcmd5>2589db51ff7b710ed3201ff029081b33</srcmd5>
+    <version>1.11.2</version>
+    <time>1763646630</time>
+    <user>anag_factory</user>
+    <comment>- Add fixed-build-with-qbs-2_6.patch
+- Add do-not-install-tests.patch (forwarded request 1318018 from jaimeMF)</comment>
+    <requestid>1318720</requestid>
+  </revision>
 </revisionlist>

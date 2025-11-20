@@ -1,0 +1,232 @@
+From 2517c68db2c0dd5e382076e97ef1fae7535bd704 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Thorbj=C3=B8rn=20Lindeijer?= <bjorn@lindeijer.nl>
+Date: Fri, 4 Apr 2025 10:00:17 +0000
+Subject: [PATCH] Qbs: Fixed warnings and error when using Qbs 2.6 (#4182)
+
+* Use exportingProduct.sourceDirectory
+
+  This fixes the following warning when using Qbs 2.6: "Resolving path
+  properties relative to the exporting product's location is deprecated."
+
+  Raises the minimum version of Qbs to 1.18.
+
+* Avoid warning about using list properties as fallback values
+
+  The warning says:
+
+  > In future versions of qbs, such properties will be considered unconditionally.
+  > If you want to keep the current semantics for this value, use a fallback Properties item.
+
+  However, since we were using `outer.concat`, using a fallback Properties
+  item is not a solution. Eventually, it's nice that we can drop the
+  `outer.concat` usage, but for now I've switched to not overriding such
+  properties in a Properties item at all for compatibility between Qbs
+  1.18 and 2.6.
+
+* Explicitly select qbs profile on macOS
+
+  Due to installing Qbs from Homebrew, there are multiple Qt versions
+  detected, which appears to be causing trouble later on when the
+  following error is raised:
+
+    qbs/share/qbs/imports/qbs/base/QtModule.qbs:49:14 cannot read property 'version' of undefined
+
+  Somehow this wasn't an issue yet with Qbs 2.5.
+---
+ .github/workflows/packages.yml                  |  4 +++-
+ src/karchive/karchive.qbs                       |  4 +++-
+ src/libtiled/libtiled.qbs                       | 16 ++++++++++------
+ src/libtiledquick/libtiledquick.qbs             |  2 +-
+ src/plugins/python/python.qbs                   |  6 +++++-
+ src/qtsingleapplication/qtsingleapplication.qbs |  4 +++-
+ src/tiled/libtilededitor.qbs                    |  2 +-
+ tiled.qbs                                       |  2 +-
+ 8 files changed, 27 insertions(+), 13 deletions(-)
+
+Index: tiled-1.11.2/.github/workflows/packages.yml
+===================================================================
+--- tiled-1.11.2.orig/.github/workflows/packages.yml
++++ tiled-1.11.2/.github/workflows/packages.yml
+@@ -258,7 +258,9 @@ jobs:
+       run: |
+         brew install qbs
+         qbs setup-toolchains --detect
+-        qbs config defaultProfile xcode
++        qbs setup-qt --detect
++        qbs config profiles.qt-6-8-2.baseProfile xcode
++        qbs config defaultProfile qt-6-8-2
+ 
+     - name: Build Zstandard
+       run: |
+Index: tiled-1.11.2/src/karchive/karchive.qbs
+===================================================================
+--- tiled-1.11.2.orig/src/karchive/karchive.qbs
++++ tiled-1.11.2/src/karchive/karchive.qbs
+@@ -1,3 +1,5 @@
++import qbs.FileInfo
++
+ StaticLibrary {
+     condition: !qbs.toolchain.contains("msvc")
+ 
+@@ -54,7 +56,7 @@ StaticLibrary {
+ 
+     Export {
+         Depends { name: "cpp" }
+-        cpp.includePaths: "src"
++        cpp.includePaths: FileInfo.joinPaths(exportingProduct.sourceDirectory, "src")
+         cpp.defines: [
+             "KARCHIVE_NO_DEPRECATED",
+             "KARCHIVE_STATIC_DEFINE",
+Index: tiled-1.11.2/src/libtiled/libtiled.qbs
+===================================================================
+--- tiled-1.11.2.orig/src/libtiled/libtiled.qbs
++++ tiled-1.11.2/src/libtiled/libtiled.qbs
+@@ -16,10 +16,15 @@ DynamicLibrary {
+     cpp.cxxLanguageVersion: "c++17"
+     cpp.cxxFlags: {
+         var flags = base;
++
+         if (qbs.toolchain.contains("msvc")) {
+             if (Qt.core.versionMajor >= 6 && Qt.core.versionMinor >= 3)
+                 flags.push("/permissive-");
+         }
++
++        if (pkgConfigZstd.found)
++            flags = flags.concat(pkgConfigZstd.cflags);
++
+         return flags;
+     }
+     cpp.visibility: "minimal"
+@@ -69,9 +74,8 @@ DynamicLibrary {
+ 
+     Properties {
+         condition: pkgConfigZstd.found
+-        cpp.cxxFlags: outer.concat(pkgConfigZstd.cflags)
+-        cpp.libraryPaths: outer.concat(pkgConfigZstd.libraryPaths)
+-        cpp.linkerFlags: outer.concat(pkgConfigZstd.linkerFlags)
++        cpp.libraryPaths: pkgConfigZstd.libraryPaths
++        cpp.linkerFlags: pkgConfigZstd.linkerFlags
+     }
+ 
+     // When libzstd was not found but staticZstd is enabled, assume that zstd
+@@ -79,8 +83,8 @@ DynamicLibrary {
+     // done by the autobuilds for Windows and macOS).
+     Properties {
+         condition: !pkgConfigZstd.found && project.staticZstd
+-        cpp.libraryPaths: outer.concat(["../../zstd/lib"])
+-        cpp.includePaths: outer.concat(["../../zstd/lib"])
++        cpp.libraryPaths: "../../zstd/lib"
++        cpp.includePaths: "../../zstd/lib"
+     }
+ 
+     Properties {
+@@ -199,7 +203,7 @@ DynamicLibrary {
+             submodules: ["gui"]
+         }
+ 
+-        cpp.includePaths: "."
++        cpp.includePaths: exportingProduct.sourceDirectory
+     }
+ 
+     install: !qbs.targetOS.contains("darwin")
+Index: tiled-1.11.2/src/libtiledquick/libtiledquick.qbs
+===================================================================
+--- tiled-1.11.2.orig/src/libtiledquick/libtiledquick.qbs
++++ tiled-1.11.2/src/libtiledquick/libtiledquick.qbs
+@@ -59,7 +59,7 @@ DynamicLibrary {
+             submodules: ["quick"]
+         }
+ 
+-        cpp.includePaths: "."
++        cpp.includePaths: exportingProduct.sourceDirectory
+     }
+ 
+     install: !qbs.targetOS.contains("darwin")
+Index: tiled-1.11.2/src/plugins/python/python.qbs
+===================================================================
+--- tiled-1.11.2.orig/src/plugins/python/python.qbs
++++ tiled-1.11.2/src/plugins/python/python.qbs
+@@ -15,8 +15,13 @@ TiledPlugin {
+ 
+     cpp.cxxFlags: {
+         var flags = base
++
+         if (qbs.toolchain.contains("gcc") && !qbs.toolchain.contains("clang"))
+             flags.push("-Wno-cast-function-type")
++
++        if (pkgConfigPython3.found)
++            flags = flags.concat(pkgConfigPython3.compilerFlags);
++
+         return flags
+     }
+ 
+@@ -34,7 +39,6 @@ TiledPlugin {
+ 
+     Properties {
+         condition: pkgConfigPython3.found
+-        cpp.cxxFlags: outer.concat(pkgConfigPython3.compilerFlags)
+         cpp.defines: pkgConfigPython3.defines
+         cpp.dynamicLibraries: pkgConfigPython3.libraries
+         cpp.includePaths: pkgConfigPython3.includePaths
+Index: tiled-1.11.2/src/qtsingleapplication/qtsingleapplication.qbs
+===================================================================
+--- tiled-1.11.2.orig/src/qtsingleapplication/qtsingleapplication.qbs
++++ tiled-1.11.2/src/qtsingleapplication/qtsingleapplication.qbs
+@@ -1,3 +1,5 @@
++import qbs.FileInfo
++
+ StaticLibrary {
+     name: "qtsingleapplication"
+ 
+@@ -26,6 +28,6 @@ StaticLibrary {
+     Export {
+         Depends { name: "cpp" }
+         Depends { name: "Qt.widgets" }
+-        cpp.includePaths: "src"
++        cpp.includePaths: FileInfo.joinPaths(exportingProduct.sourceDirectory, "src")
+     }
+ }
+Index: tiled-1.11.2/src/tiled/libtilededitor.qbs
+===================================================================
+--- tiled-1.11.2.orig/src/tiled/libtilededitor.qbs
++++ tiled-1.11.2/src/tiled/libtilededitor.qbs
+@@ -614,7 +614,7 @@ DynamicLibrary {
+         Depends { name: "libtiled" }
+         Depends { name: "qtsingleapplication" }
+         Depends { name: "Qt"; submodules: ["qml"] }
+-        cpp.includePaths: "."
++        cpp.includePaths: exportingProduct.sourceDirectory
+     }
+ 
+     install: !qbs.targetOS.contains("darwin")
+Index: tiled-1.11.2/tiled.qbs
+===================================================================
+--- tiled-1.11.2.orig/tiled.qbs
++++ tiled-1.11.2/tiled.qbs
+@@ -4,7 +4,7 @@ Project {
+     name: "Tiled"
+ 
+     qbsSearchPaths: "qbs"
+-    minimumQbsVersion: "1.13"
++    minimumQbsVersion: "1.18"
+ 
+     property string version: Environment.getEnv("TILED_VERSION") || "1.11.2";
+     property bool snapshot: Environment.getEnv("TILED_SNAPSHOT") == "true"
+Index: tiled-1.11.2/src/qtpropertybrowser/qtpropertybrowser.qbs
+===================================================================
+--- tiled-1.11.2.orig/src/qtpropertybrowser/qtpropertybrowser.qbs
++++ tiled-1.11.2/src/qtpropertybrowser/qtpropertybrowser.qbs
+@@ -1,3 +1,5 @@
++import qbs.FileInfo
++
+ StaticLibrary {
+     name: "qtpropertybrowser"
+ 
+@@ -41,6 +43,6 @@ StaticLibrary {
+ 
+     Export {
+         Depends { name: "cpp" }
+-        cpp.includePaths: "src"
++        cpp.includePaths: FileInfo.joinPaths(exportingProduct.sourceDirectory, "src")
+     }
+ }
