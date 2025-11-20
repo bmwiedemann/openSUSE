@@ -182,10 +182,10 @@ fi
 %if %{with use_selinux}
 %files selinux
 %{_datadir}/selinux/packages/targeted/*.pp
-%ghost %verify(not md5 size mtime) %{_sharedstatedir}/selinux/%{selinuxtype}/active/modules/200/%{modulename1}
-%ghost %verify(not md5 size mtime) %{_sharedstatedir}/selinux/%{selinuxtype}/active/modules/200/%{modulename2}
-%ghost %verify(not md5 size mtime) %{_sharedstatedir}/selinux/%{selinuxtype}/active/modules/200/%{modulename3}
-%ghost %verify(not md5 size mtime) %{_sharedstatedir}/selinux/%{selinuxtype}/active/modules/200/%{modulename4}
+%ghost %verify(not md5 size mtime) %{_selinux_store_path}/%{selinuxtype}/active/modules/200/%{modulename1}
+%ghost %verify(not md5 size mtime) %{_selinux_store_path}/%{selinuxtype}/active/modules/200/%{modulename2}
+%ghost %verify(not md5 size mtime) %{_selinux_store_path}/%{selinuxtype}/active/modules/200/%{modulename3}
+%ghost %verify(not md5 size mtime) %{_selinux_store_path}/%{selinuxtype}/active/modules/200/%{modulename4}
 %endif
 
 %changelog

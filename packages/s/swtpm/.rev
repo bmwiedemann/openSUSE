@@ -362,4 +362,14 @@
     <comment>- Also load swtpm_libvirt in the selinux subpackage (bsc#1251789) (forwarded request 1314675 from jsegitz)</comment>
     <requestid>1314680</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>a5924899b17e8df3473193c93cf243be</srcmd5>
+    <version>0.10.1</version>
+    <time>1763646443</time>
+    <user>anag_factory</user>
+    <comment>Update SELinux modules dir as macro to allow root path move
+
+As discussed before we are going to move SELinux modules from /var/lib/selinux to /etc/selinux (bsc#1221342). This small change allows you to build your packages dynamically (not depending on selinux-package version) and us to change module directory macro in upcoming versions of selinux-policy package without interfering with other packages using custom SELinux modules. (forwarded request 1318580 from djz88)</comment>
+    <requestid>1318598</requestid>
+  </revision>
 </revisionlist>

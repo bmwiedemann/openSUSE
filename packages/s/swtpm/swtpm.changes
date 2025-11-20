@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 19 08:05:47 UTC 2025 - Zdenek Kubala <zkubala@suse.com>
+
+- Update SELinux module dir as macro to allow root path move from /var/lib/selinux
+  to /etc/selinux (bsc#1221342)
+
+-------------------------------------------------------------------
 Fri Oct 31 09:19:12 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
 
 - Also load swtpm_libvirt in the selinux subpackage (bsc#1251789)
