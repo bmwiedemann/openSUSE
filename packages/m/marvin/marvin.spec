@@ -17,7 +17,7 @@
 
 
 Name:           marvin
-Version:        0.2.11
+Version:        0.2.12
 Release:        0
 Summary:        Scans a k8s cluster for misconfigurations and vulnerabilities
 License:        Apache-2.0
@@ -26,7 +26,7 @@ Source:         marvin-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go1.24 >= 1.24.7
+BuildRequires:  go1.25 >= 1.25.4
 BuildRequires:  zsh
 
 %description
