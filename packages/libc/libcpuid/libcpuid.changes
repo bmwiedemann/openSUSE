@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov  6 12:48:09 UTC 2025 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- Use ExclusiveArch to avoid build failures on unsupported architectures.
+
+-------------------------------------------------------------------
 Wed Dec  4 08:14:20 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.7.1:

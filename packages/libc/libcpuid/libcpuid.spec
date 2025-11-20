@@ -1,7 +1,7 @@
 #
 # spec file for package libcpuid
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Source0:        https://github.com/anrieff/libcpuid/releases/download/v%{version
 BuildRequires:  help2man
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
+ExclusiveArch:  %arm64 %arm32 %ix86 %x86_64
 
 %description
 Libcpuid provides CPU identification for the x86 (and x86_64) architectures.
