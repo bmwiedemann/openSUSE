@@ -395,4 +395,14 @@ etc.
   https://github.com/fedora-selinux/selinux-policy/blob/rawhide/policy/modules/contrib/tabrmd.if</comment>
     <requestid>1303322</requestid>
   </revision>
+  <revision rev="31" vrev="8">
+    <srcmd5>76c6f16c65cc59dc925cc3f74331ddb2</srcmd5>
+    <version>3.0.0</version>
+    <time>1763646448</time>
+    <user>anag_factory</user>
+    <comment>Update SELinux modules dir as macro to allow root path move
+
+As discussed before we are going to move SELinux modules from /var/lib/selinux to /etc/selinux (bsc#1221342). This small change allows you to build your packages dynamically (not depending on selinux-package version) and us to change module directory macro in upcoming versions of selinux-policy package without interfering with other packages using custom SELinux modules. (forwarded request 1318594 from djz88)</comment>
+    <requestid>1318602</requestid>
+  </revision>
 </revisionlist>

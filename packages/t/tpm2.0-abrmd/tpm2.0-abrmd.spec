@@ -1,7 +1,6 @@
 #
 # spec file for package tpm2.0-abrmd
 #
-# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -188,7 +187,7 @@ fi
 %if %{with selinux}
 %files selinux
 %{_datadir}/selinux/packages/targeted/tabrmd.pp.bz2
-%ghost %verify(not md5 size mtime) %{_sharedstatedir}/selinux/%{selinuxtype}/active/modules/200/%{modulename}
+%ghost %verify(not md5 size mtime) %{_selinux_store_path}/%{selinuxtype}/active/modules/200/%{modulename}
 %endif
 
 %files devel
