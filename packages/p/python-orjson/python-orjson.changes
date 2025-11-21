@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 20 10:00:42 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.11.4
+  * ABI compatibility with CPython 3.15 alpha 1.
+  * Publish PyPI wheels for 3.14 and manylinux i686, manylinux
+    arm7, manylinux ppc64le, manylinux s390x.
+  * Build now requires a C compiler.
+
+-------------------------------------------------------------------
 Mon Sep 15 14:46:50 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 3.11.3
