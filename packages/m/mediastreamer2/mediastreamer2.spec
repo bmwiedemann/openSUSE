@@ -70,7 +70,7 @@ BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(bctoolbox) >= %{version}
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(glu)
-BuildRequires:  pkgconfig(libavcodec) >= 51.0.0
+BuildRequires:  pkgconfig(libavcodec) < 62.0.0
 BuildRequires:  pkgconfig(libbcg729)
 BuildRequires:  pkgconfig(libbzrtp) >= %{version}
 BuildRequires:  pkgconfig(libpulse)

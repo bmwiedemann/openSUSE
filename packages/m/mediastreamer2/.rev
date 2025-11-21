@@ -699,4 +699,13 @@
 </comment>
     <requestid>1246574</requestid>
   </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>ae93aeb7d13fde72793846a4b3829c74</srcmd5>
+    <version>5.3.105</version>
+    <time>1763740583</time>
+    <user>anag_factory</user>
+    <comment>- ffmpeg8 is not supported
+</comment>
+    <requestid>1318942</requestid>
+  </revision>
 </revisionlist>
