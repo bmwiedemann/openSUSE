@@ -1,7 +1,7 @@
 #
 # spec file for package python-unify
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ Source:         https://github.com/myint/unify/archive/v%{version}.tar.gz
 Source9:        README.suse
 # PATCH-FIX-OPENSUSE Do not use lib2to3
 Patch0:         no-more-lib2to3.patch
+# PATCH-FIX-UPSTREAM version.patch
+Patch1:         version.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

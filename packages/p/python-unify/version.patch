@@ -1,0 +1,26 @@
+Index: unify-0.5/setup.py
+===================================================================
+--- unify-0.5.orig/setup.py
++++ unify-0.5/setup.py
+@@ -3,19 +3,14 @@
+ 
+ from __future__ import unicode_literals
+ 
+-import ast
++import unify
+ 
+ from setuptools import setup
+ 
+ 
+ def version():
+     """Return version string."""
+-    with open('unify.py') as input_file:
+-        for line in input_file:
+-            if line.startswith('__version__'):
+-                return ast.parse(line).body[0].value.s
+-    return None
+-
++    return unify.__version__
+ 
+ with open('README.rst') as readme:
+     setup(name='unify',
