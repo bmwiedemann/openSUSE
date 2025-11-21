@@ -1588,4 +1588,19 @@ Enable cycles-osl in build</comment>
     <comment></comment>
     <requestid>1318422</requestid>
   </revision>
+  <revision rev="199" vrev="1">
+    <srcmd5>2af34af687c8210158cc65d8a855c88e</srcmd5>
+    <version>5.0.0</version>
+    <time>1763740779</time>
+    <user>anag_factory</user>
+    <comment>- add wrapper packages for demo and lang
+
+- Convert this package to a wrapper package
+- patches dropped here and migrated to the blender-x.y packages:
+  audaspace_1_8_compat.patch
+  cmake_manpage_fix.patch
+
+- Prepare AMD HIP/HIPrt support</comment>
+    <requestid>1318913</requestid>
+  </revision>
 </revisionlist>

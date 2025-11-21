@@ -1,9 +1,27 @@
 -------------------------------------------------------------------
+Wed Nov 19 11:31:48 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- add wrapper packages for demo and lang
+
+-------------------------------------------------------------------
+Tue Nov 18 18:41:26 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Convert this package to a wrapper package
+- patches dropped here and migrated to the blender-x.y packages:
+  audaspace_1_8_compat.patch
+  cmake_manpage_fix.patch
+
+-------------------------------------------------------------------
 Mon Nov 17 15:45:20 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build with Audaspace 1.8.0, add audaspace_1_8_compat.patch
 - Remove no longer needed separate assets tarball, as it is
   included in the regular sources now.
+
+-------------------------------------------------------------------
+Sat Nov  1 20:13:10 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Prepare AMD HIP/HIPrt support
 
 -------------------------------------------------------------------
 Thu Oct 30 02:30:16 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>

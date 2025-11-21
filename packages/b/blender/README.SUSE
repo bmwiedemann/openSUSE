@@ -1,0 +1,11 @@
+ Blender for (open)SUSE
+-------------------------
+
+This is just a wrapper package to install any of the available blender versions for you.
+
+Currently offered versions are
+
+- 5.0.x
+- 4.5.x
+
+Those are the current LTS versions of blender. By default 5.0.x will be preferred.
