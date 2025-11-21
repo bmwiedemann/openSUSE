@@ -1879,4 +1879,27 @@
       (CVE-2025-8291, bsc#1251305).</comment>
     <requestid>1318036</requestid>
   </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>105088ea34ef2bbe7e45400782ef55f6</srcmd5>
+    <version>3.12.12</version>
+    <time>1763740459</time>
+    <user>anag_factory</user>
+    <comment>- Add pass-test_write_read_limited_history.patch:
+  Fix readline history truncation when length is reduced
+ 
+  The `readline.set_history_length()` function did not previously
+  truncate the in-memory history when the new length was set to
+  a value smaller than the current number of history items. This
+  could lead to unexpected behavior where `get_history_length()`
+  would still report the old length and writing the history to a
+  file would write more entries than the new limit.
+ 
+  This patch modifies `set_history_length()` to explicitly
+  remove the oldest history entries using `remove_history()`
+  when the length is decreased, ensuring the in-memory history
+  is correctly truncated to the new limit. This brings the
+  function's behavior in line with expectations and fixes
+  failures in `test_write_read_limited_history`.</comment>
+    <requestid>1318749</requestid>
+  </revision>
 </revisionlist>

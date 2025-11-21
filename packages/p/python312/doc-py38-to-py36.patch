@@ -1,5 +1,5 @@
 ---
- Doc/Makefile                                  |    2 
+ Doc/Makefile                                  |    8 +--
  Doc/conf.py                                   |   16 ++++++-
  Doc/tools/check-warnings.py                   |    5 +-
  Doc/tools/extensions/audit_events.py          |   54 +++++++++++++-------------
@@ -12,13 +12,13 @@
  Doc/tools/extensions/misc_news.py             |   14 ++----
  Doc/tools/extensions/patchlevel.py            |    9 ++--
  Doc/tools/extensions/pydoc_topics.py          |   22 +++++-----
- 13 files changed, 123 insertions(+), 115 deletions(-)
+ 13 files changed, 126 insertions(+), 118 deletions(-)
 
 Index: Python-3.12.12/Doc/Makefile
 ===================================================================
 --- Python-3.12.12.orig/Doc/Makefile	2025-10-09 13:07:00.000000000 +0200
-+++ Python-3.12.12/Doc/Makefile	2025-11-15 22:52:25.246059746 +0100
-@@ -14,7 +14,7 @@
++++ Python-3.12.12/Doc/Makefile	2025-11-16 00:10:17.204996992 +0100
+@@ -14,15 +14,15 @@
  SOURCES      =
  DISTVERSION  = $(shell $(PYTHON) tools/extensions/patchlevel.py)
  REQUIREMENTS = requirements.txt
@@ -27,10 +27,21 @@ Index: Python-3.12.12/Doc/Makefile
  
  # Internal variables.
  PAPEROPT_a4     = --define latex_elements.papersize=a4paper
+ PAPEROPT_letter = --define latex_elements.papersize=letterpaper
+ 
+-ALLSPHINXOPTS = --builder $(BUILDER) \
+-                --doctree-dir build/doctrees \
+-                --jobs $(JOBS) \
++ALLSPHINXOPTS = -b $(BUILDER) \
++                -d build/doctrees \
++                -j $(JOBS) \
+                 $(PAPEROPT_$(PAPER)) \
+                 $(SPHINXOPTS) $(SPHINXERRORHANDLING) \
+                 . build/$(BUILDER) $(SOURCES)
 Index: Python-3.12.12/Doc/conf.py
 ===================================================================
---- Python-3.12.12.orig/Doc/conf.py	2025-11-15 22:51:43.509094886 +0100
-+++ Python-3.12.12/Doc/conf.py	2025-11-15 22:52:02.325079044 +0100
+--- Python-3.12.12.orig/Doc/conf.py	2025-11-16 00:09:22.481046078 +0100
++++ Python-3.12.12/Doc/conf.py	2025-11-16 00:09:33.435219937 +0100
 @@ -11,6 +11,8 @@
  from importlib import import_module
  from importlib.util import find_spec
@@ -78,7 +89,7 @@ Index: Python-3.12.12/Doc/conf.py
 Index: Python-3.12.12/Doc/tools/check-warnings.py
 ===================================================================
 --- Python-3.12.12.orig/Doc/tools/check-warnings.py	2025-10-09 13:07:00.000000000 +0200
-+++ Python-3.12.12/Doc/tools/check-warnings.py	2025-11-15 22:52:02.337079034 +0100
++++ Python-3.12.12/Doc/tools/check-warnings.py	2025-11-16 00:09:33.435482474 +0100
 @@ -228,7 +228,8 @@
              print(filename)
              for warning in warnings:
@@ -101,7 +112,7 @@ Index: Python-3.12.12/Doc/tools/check-warnings.py
 Index: Python-3.12.12/Doc/tools/extensions/audit_events.py
 ===================================================================
 --- Python-3.12.12.orig/Doc/tools/extensions/audit_events.py	2025-10-09 13:07:00.000000000 +0200
-+++ Python-3.12.12/Doc/tools/extensions/audit_events.py	2025-11-15 22:52:07.273074878 +0100
++++ Python-3.12.12/Doc/tools/extensions/audit_events.py	2025-11-16 00:09:38.867031380 +0100
 @@ -1,9 +1,6 @@
  """Support for documenting audit events."""
  
@@ -245,7 +256,7 @@ Index: Python-3.12.12/Doc/tools/extensions/audit_events.py
 Index: Python-3.12.12/Doc/tools/extensions/availability.py
 ===================================================================
 --- Python-3.12.12.orig/Doc/tools/extensions/availability.py	2025-10-09 13:07:00.000000000 +0200
-+++ Python-3.12.12/Doc/tools/extensions/availability.py	2025-11-15 22:52:02.356079018 +0100
++++ Python-3.12.12/Doc/tools/extensions/availability.py	2025-11-16 00:09:33.436104069 +0100
 @@ -1,8 +1,6 @@
  """Support for documenting platform availability"""
  
@@ -301,8 +312,8 @@ Index: Python-3.12.12/Doc/tools/extensions/availability.py
      return {
 Index: Python-3.12.12/Doc/tools/extensions/c_annotations.py
 ===================================================================
---- Python-3.12.12.orig/Doc/tools/extensions/c_annotations.py	2025-11-15 22:52:02.198824017 +0100
-+++ Python-3.12.12/Doc/tools/extensions/c_annotations.py	2025-11-15 22:52:02.364079011 +0100
+--- Python-3.12.12.orig/Doc/tools/extensions/c_annotations.py	2025-11-16 00:09:33.421429756 +0100
++++ Python-3.12.12/Doc/tools/extensions/c_annotations.py	2025-11-16 00:09:33.436337970 +0100
 @@ -9,22 +9,18 @@
  * Set ``stable_abi_file`` to the path to stable ABI list.
  """
@@ -435,7 +446,7 @@ Index: Python-3.12.12/Doc/tools/extensions/c_annotations.py
 Index: Python-3.12.12/Doc/tools/extensions/changes.py
 ===================================================================
 --- Python-3.12.12.orig/Doc/tools/extensions/changes.py	2025-10-09 13:07:00.000000000 +0200
-+++ Python-3.12.12/Doc/tools/extensions/changes.py	2025-11-15 22:52:02.371079005 +0100
++++ Python-3.12.12/Doc/tools/extensions/changes.py	2025-11-16 00:09:33.436590030 +0100
 @@ -1,7 +1,5 @@
  """Support for documenting version of changes, additions, deprecations."""
  
@@ -473,8 +484,8 @@ Index: Python-3.12.12/Doc/tools/extensions/changes.py
      app.add_directive("versionchanged", PyVersionChange, override=True)
 Index: Python-3.12.12/Doc/tools/extensions/glossary_search.py
 ===================================================================
---- Python-3.12.12.orig/Doc/tools/extensions/glossary_search.py	2025-11-15 22:52:02.199190269 +0100
-+++ Python-3.12.12/Doc/tools/extensions/glossary_search.py	2025-11-15 22:52:02.378079000 +0100
+--- Python-3.12.12.orig/Doc/tools/extensions/glossary_search.py	2025-11-16 00:09:33.421856281 +0100
++++ Python-3.12.12/Doc/tools/extensions/glossary_search.py	2025-11-16 00:09:33.436945736 +0100
 @@ -1,18 +1,14 @@
  """Feature search results for glossary items prominently."""
  
@@ -508,7 +519,7 @@ Index: Python-3.12.12/Doc/tools/extensions/glossary_search.py
 Index: Python-3.12.12/Doc/tools/extensions/implementation_detail.py
 ===================================================================
 --- Python-3.12.12.orig/Doc/tools/extensions/implementation_detail.py	2025-10-09 13:07:00.000000000 +0200
-+++ Python-3.12.12/Doc/tools/extensions/implementation_detail.py	2025-11-15 22:52:02.386078993 +0100
++++ Python-3.12.12/Doc/tools/extensions/implementation_detail.py	2025-11-16 00:09:33.437321346 +0100
 @@ -1,17 +1,10 @@
  """Support for marking up implementation details."""
  
@@ -562,7 +573,7 @@ Index: Python-3.12.12/Doc/tools/extensions/implementation_detail.py
 Index: Python-3.12.12/Doc/tools/extensions/issue_role.py
 ===================================================================
 --- Python-3.12.12.orig/Doc/tools/extensions/issue_role.py	2025-10-09 13:07:00.000000000 +0200
-+++ Python-3.12.12/Doc/tools/extensions/issue_role.py	2025-11-15 22:52:02.393078987 +0100
++++ Python-3.12.12/Doc/tools/extensions/issue_role.py	2025-11-16 00:09:33.437543863 +0100
 @@ -1,22 +1,18 @@
  """Support for referencing issues in the tracker."""
  
@@ -611,7 +622,7 @@ Index: Python-3.12.12/Doc/tools/extensions/issue_role.py
 Index: Python-3.12.12/Doc/tools/extensions/misc_news.py
 ===================================================================
 --- Python-3.12.12.orig/Doc/tools/extensions/misc_news.py	2025-10-09 13:07:00.000000000 +0200
-+++ Python-3.12.12/Doc/tools/extensions/misc_news.py	2025-11-15 22:52:02.401078980 +0100
++++ Python-3.12.12/Doc/tools/extensions/misc_news.py	2025-11-16 00:09:33.437781606 +0100
 @@ -1,7 +1,5 @@
  """Support for including Misc/NEWS."""
  
@@ -667,7 +678,7 @@ Index: Python-3.12.12/Doc/tools/extensions/misc_news.py
 Index: Python-3.12.12/Doc/tools/extensions/patchlevel.py
 ===================================================================
 --- Python-3.12.12.orig/Doc/tools/extensions/patchlevel.py	2025-10-09 13:07:00.000000000 +0200
-+++ Python-3.12.12/Doc/tools/extensions/patchlevel.py	2025-11-15 22:52:02.408078974 +0100
++++ Python-3.12.12/Doc/tools/extensions/patchlevel.py	2025-11-16 00:09:33.437983170 +0100
 @@ -3,7 +3,7 @@
  import re
  import sys
@@ -708,7 +719,7 @@ Index: Python-3.12.12/Doc/tools/extensions/patchlevel.py
 Index: Python-3.12.12/Doc/tools/extensions/pydoc_topics.py
 ===================================================================
 --- Python-3.12.12.orig/Doc/tools/extensions/pydoc_topics.py	2025-10-09 13:07:00.000000000 +0200
-+++ Python-3.12.12/Doc/tools/extensions/pydoc_topics.py	2025-11-15 22:52:02.415078968 +0100
++++ Python-3.12.12/Doc/tools/extensions/pydoc_topics.py	2025-11-16 00:09:33.438175026 +0100
 @@ -1,21 +1,23 @@
  """Support for building "topic help" for pydoc."""
  

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Nov 19 19:21:41 UTC 2025 - Matej Cepl <mcepl@suse.com>
+
+- Add pass-test_write_read_limited_history.patch:
+
+  Fix readline history truncation when length is reduced
+ 
+  The `readline.set_history_length()` function did not previously
+  truncate the in-memory history when the new length was set to
+  a value smaller than the current number of history items. This
+  could lead to unexpected behavior where `get_history_length()`
+  would still report the old length and writing the history to a
+  file would write more entries than the new limit.
+ 
+  This patch modifies `set_history_length()` to explicitly
+  remove the oldest history entries using `remove_history()`
+  when the length is decreased, ensuring the in-memory history
+  is correctly truncated to the new limit. This brings the
+  function's behavior in line with expectations and fixes
+  failures in `test_write_read_limited_history`.
+
+-------------------------------------------------------------------
 Thu Nov 13 17:13:03 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Add CVE-2025-6075-expandvars-perf-degrad.patch avoid simple
