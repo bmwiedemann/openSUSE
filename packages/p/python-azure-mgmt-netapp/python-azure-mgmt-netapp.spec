@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-netapp
-Version:        14.0.0
+Version:        14.0.1
 Release:        0
 Summary:        Microsoft Azure NetApp Files Management Client Library
 License:        MIT
