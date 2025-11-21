@@ -153,4 +153,26 @@
 - Lowercase metadata directory name.</comment>
     <requestid>1269074</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>282c0aa55e84900ab86830402d3bdbdb</srcmd5>
+    <version>0.14.4</version>
+    <time>1763740606</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.14.4:
+  * Add User-Agent header to powershell script for Appveyor
+  * Remove remaining openjpeg&lt;2.4 artifacts
+  * Fix DeprecationWarning upon import
+  * Fix test suite for python 3.14 regular expressions
+  * Remove long-since-deprecated Jp2kr.read method
+  * Make Jp2kr.parse method private
+  * Make glymur.lib.tiff module private
+  * Add doctests into circleci config
+  * Add additional API examples for Jp2k, Jp2kr
+  * Fix tilesize reporting
+  * Refactor all of setup.cfg into pyproject.toml
+  * Add description of raw IFD for geojp2 UUIDs
+  * Add feature to convert JPEGs to JP2
+  * Remove support for python 3.10</comment>
+    <requestid>1318955</requestid>
+  </revision>
 </revisionlist>

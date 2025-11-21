@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Nov 21 06:15:11 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.14.4:
+  * Add User-Agent header to powershell script for Appveyor
+  * Remove remaining openjpeg<2.4 artifacts
+  * Fix DeprecationWarning upon import
+  * Fix test suite for python 3.14 regular expressions
+  * Remove long-since-deprecated Jp2kr.read method
+  * Make Jp2kr.parse method private
+  * Make glymur.lib.tiff module private
+  * Add doctests into circleci config
+  * Add additional API examples for Jp2k, Jp2kr
+  * Fix tilesize reporting
+  * Refactor all of setup.cfg into pyproject.toml
+  * Add description of raw IFD for geojp2 UUIDs
+  * Add feature to convert JPEGs to JP2
+  * Remove support for python 3.10
+
+-------------------------------------------------------------------
 Mon Apr 14 05:53:19 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Support both lowercased and unnormalized metadata directory names.

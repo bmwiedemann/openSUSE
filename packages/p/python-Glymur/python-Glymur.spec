@@ -1,7 +1,7 @@
 #
 # spec file for package python-Glymur
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-Glymur
-Version:        0.13.8
+Version:        0.14.4
 Release:        0
 Summary:        Tools for accessing JPEG2000 files
 License:        MIT
 URL:            https://github.com/quintusdias/glymur
 Source:         https://github.com/quintusdias/glymur/archive/v%{version}.tar.gz#/Glymur-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -32,14 +32,12 @@ BuildRequires:  procps
 BuildRequires:  python-rpm-macros
 Requires:       python-lxml
 Requires:       python-numpy
-Requires:       python-packaging
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scikit-image}
 # /SECTION
@@ -57,6 +55,7 @@ Python interface to the OpenJPEG library
 %install
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/jp2dump
+%python_clone -a %{buildroot}%{_bindir}/jpeg2jp2
 %python_clone -a %{buildroot}%{_bindir}/tiff2jp2
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -67,7 +66,7 @@ donttest+="test_config_dir_on_windows"
 %pytest -k "not ($donttest)"
 
 %post
-%python_install_alternative jp2dump tiff2jp2
+%python_install_alternative jp2dump jpeg2jp2 tiff2jp2
 
 %postun
 %python_uninstall_alternative jp2dump
@@ -76,6 +75,7 @@ donttest+="test_config_dir_on_windows"
 %doc README.md CHANGES.txt
 %license LICENSE.txt
 %python_alternative %{_bindir}/jp2dump
+%python_alternative %{_bindir}/jpeg2jp2
 %python_alternative %{_bindir}/tiff2jp2
 %{python_sitelib}/glymur
 %{python_sitelib}/[Gg]lymur-%{version}.dist-info
