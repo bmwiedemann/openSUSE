@@ -199,4 +199,14 @@
     <comment></comment>
     <requestid>1256192</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>98f44c3c4f87b87c63cb13cd9f313814</srcmd5>
+    <version>0.3.1</version>
+    <time>1763740608</time>
+    <user>anag_factory</user>
+    <comment>- added early check for MD RAID and encryption names
+- version 0.3.1
+- extended check for duplicate MD RAID names</comment>
+    <requestid>1318994</requestid>
+  </revision>
 </revisionlist>

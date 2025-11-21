@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 04 09:27:13 CEST 2025 - aschnell@suse.com
+
+- added early check for MD RAID and encryption names
+- version 0.3.1
+
+-------------------------------------------------------------------
+Wed Jul 16 11:59:32 CEST 2025 - aschnell@suse.com
+
+- extended check for duplicate MD RAID names
+
+-------------------------------------------------------------------
 Tue Mar 18 08:35:53 CET 2025 - aschnell@suse.com
 
 - support resizing devices
