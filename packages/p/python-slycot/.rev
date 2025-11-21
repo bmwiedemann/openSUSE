@@ -179,4 +179,14 @@
   * Update to SLICOT v5.9 by @bnavigator in #231 (forwarded request 1165671 from bnavigator)</comment>
     <requestid>1165673</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0fe64c533fae8b7d4f20899dd41c842e</srcmd5>
+    <version>0.6.1</version>
+    <time>1763740566</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.6.1
+  * Fixed a segmentation fault in ab09nd (gh-243).
+  * Updated licensing data format; Slycot had deprecated format.</comment>
+    <requestid>1318917</requestid>
+  </revision>
 </revisionlist>

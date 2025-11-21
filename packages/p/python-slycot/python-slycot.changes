@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 20 17:33:56 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.6.1
+  * Fixed a segmentation fault in ab09nd (gh-243).
+  * Updated licensing data format; Slycot had deprecated format.
+
+-------------------------------------------------------------------
 Fri Apr  5 14:18:26 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.6.0

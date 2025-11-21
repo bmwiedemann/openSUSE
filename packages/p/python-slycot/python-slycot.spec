@@ -1,7 +1,7 @@
 #
 # spec file for package python-slycot
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-slycot
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        A wrapper for the SLICOT control and systems library
 License:        BSD-3-Clause AND GPL-2.0-only
