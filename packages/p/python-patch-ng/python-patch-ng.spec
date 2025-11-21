@@ -15,9 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%{?sle15_python_module_pythons}
 Name:           python-patch-ng
-Version:        1.18.1
+Version:        1.19.0
 Release:        0
 Summary:        Library to parse and apply unified diffs
 License:        MIT

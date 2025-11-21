@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 20 10:13:00 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.19.0
+  * Fix: File move/rename is not supported when applying Git patch (#24)
+  * Fix: Changing file permissions is ignored when applying Git patch (#23)
+  * Fix: Git patch full index format is not recognized (#45)
+  * Fix: Better handling for big patch files (#34)
+  * Fix: Quoted file path is not parsed correctly
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Thu Nov  7 09:05:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.18.1:
