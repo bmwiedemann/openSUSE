@@ -404,4 +404,13 @@
     <comment></comment>
     <requestid>1303671</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>96d96110b98a003a3786f569afe87000</srcmd5>
+    <version>6.2.7</version>
+    <time>1763740563</time>
+    <user>anag_factory</user>
+    <comment>- Skip some tests broken by Click 8.3.
+- Clean up {Build,}Requires.</comment>
+    <requestid>1318756</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-softlayer
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,6 @@ BuildRequires:  %{python_module rich >= 14.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module softlayer-zeep >= 5.0.0}
 BuildRequires:  %{python_module testtools}
-BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  %{python_module urllib3 >= 1.24}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -46,10 +45,8 @@ Requires:       python-prompt_toolkit >= 2
 Requires:       python-pygments >= 2.0.0
 Requires:       python-requests >= 2.20.0
 Requires:       python-rich >= 12.5.1
-Requires:       python-setuptools
-Requires:       python-softlayer-zeep >= 5.0.0
-Requires:       python-typing_extensions
 Requires:       python-urllib3 >= 1.24
+Suggests:       python-softlayer-zeep >= 5.0.0
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
@@ -73,7 +70,11 @@ This library provides a simple Python client to interact with SoftLayer's XML-RP
 
 %check
 # We do not want TKinter
-%pytest -k 'not test_getpass_issues1436 and not TestSoapAPICall'
+donttest="test_getpass_issues1436 or TestSoapAPICall"
+# Broken with Click 8.3+, re-enable on upgrade
+donttest+=" or test_list_hw_search_noargs or test_create_like "
+donttest+=" or test_list_vs_search_noargs"
+%pytest -k "not ($donttest)"
 
 %post
 %python_install_alternative slcli

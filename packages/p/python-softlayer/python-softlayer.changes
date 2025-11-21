@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 20 03:43:39 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Skip some tests broken by Click 8.3.
+- Clean up {Build,}Requires.
+
+-------------------------------------------------------------------
 Wed Sep 10 12:17:54 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 6.2.7
