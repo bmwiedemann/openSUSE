@@ -1,0 +1,28 @@
+From: Jan Engelhardt <ej@inai.de>
+Date: 2025-11-18 00:02:49.785881693 +0100
+
+xxd comes from vim. That's too much of a build dependency.
+---
+ bin/xxd |   15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+Index: vmaf/bin/xxd
+===================================================================
+--- /dev/null
++++ vmaf/bin/xxd
+@@ -0,0 +1,15 @@
++#!/usr/bin/perl
++use Getopt::Long;
++use strict;
++use warnings;
++my($nflag, $iflag);
++&Getopt::Long::Configure(qw(bundling));
++&GetOptions("include" => \$iflag, "i" => \$iflag, "n=s" => \$nflag);
++if (!defined($nflag)) { ($nflag = $ARGV[0]) =~ s{[^a-z0-9]}{_}gi; }
++open(STDIN, "<", $ARGV[0]) or die("$ARGV[0]: $!");
++if (scalar(@ARGV) == 2) { open(STDOUT, ">", $ARGV[1]) or die("$ARGV[1]: $!"); }
++my $data = join("", <STDIN>);
++print "unsigned int ${nflag}_len = ", length($data), ";\n";
++print "unsigned char $nflag", "[", length($data), "] = {\n";
++for (my $i = 0; $i < length($data); ++$i) { printf("0x%x,", ord(substr($data, $i, 1))); }
++print "};\n";

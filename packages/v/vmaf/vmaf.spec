@@ -30,12 +30,12 @@ Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            https://github.com/Netflix/vmaf
 Source:         https://github.com/Netflix/vmaf/archive/v%version.tar.gz
 Source9:        baselibs.conf
+Patch1:         xxd.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  meson >= 0.47
 BuildRequires:  nasm
 BuildRequires:  pkg-config
-BuildRequires:  xxd
 Provides:       bundled(libsvm) = 3.24
 Provides:       vmaf-devel:/usr/bin/vmaf
 
@@ -63,6 +63,8 @@ This package contains the library API definitions.
 %autosetup -p1
 
 %build
+export PATH="$PATH:$PWD/bin"
+chmod a+x bin/xxd
 rm -rf third_party
 cd libvmaf/
 %meson -Dbuilt_in_models=true -Denable_float=true

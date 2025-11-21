@@ -89,4 +89,12 @@
     <comment>- Move vmaf utilities to their own subpackage [boo#1247607]</comment>
     <requestid>1297723</requestid>
   </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>1646460697cac08882ed361ed8415780</srcmd5>
+    <version>3.0.0</version>
+    <time>1763740451</time>
+    <user>anag_factory</user>
+    <comment>- Add xxd.patch and ditch build dependency on vim's xxd</comment>
+    <requestid>1318731</requestid>
+  </revision>
 </revisionlist>

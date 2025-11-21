@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 17 23:22:22 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Add xxd.patch and ditch build dependency on vim's xxd
+
+-------------------------------------------------------------------
 Tue Aug  5 12:50:35 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Move vmaf utilities to their own subpackage [boo#1247607]
