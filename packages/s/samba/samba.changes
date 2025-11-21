@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Oct 31 09:44:48 UTC 2025 - Noel Power <noel.power@suse.com>
+
+- Update [printers] location to /var/samba/spool; (bsc#1249179).
+
+-------------------------------------------------------------------
+Tue Oct 21 10:46:14 UTC 2025 - Noel Power <nopower@suse.com>
+
+- Update to 4.22.6
+  * macOS Finder client DFS broken on 4.22.0; (bso#15843).
+  * Samba 4.22 breaks Time Machine; (bso#15926).
+  * Spotlight search restriction for shares incomplete and
+    default search searches in too many attributes; (bso#15927).
+  * rpcd_mdssvc may crash because name mangling is not
+    initialized; (bso#15931).
+  * Only increment lease epoch if a lease was granted;
+    (bso#15933).
+  * samba-4.21 fails to join AD when multiple DCs are returned;
+    (bso#15905).
+  * 'net ads group' failed to list domain groups; (bso#15900).
+  * vfs_ceph_new should not use ceph_ll_nonblocking_readv_writev
+    for fsync_send; (bso#15919).
+  * CTDB_SOCKET can be used even when CTDB_TEST_MODE is not set;
+    (bso#15921).
+
+-------------------------------------------------------------------
 Wed Oct 15 12:55:57 UTC 2025 - Noel Power <noel.power@suse.com>
 
 - Update to 4.22.5

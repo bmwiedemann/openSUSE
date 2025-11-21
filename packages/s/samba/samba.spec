@@ -168,7 +168,7 @@ BuildRequires:  liburing-devel
 %endif
 BuildRequires:  sysuser-tools
 
-Version:        4.22.5+git.431.dc5a539f124
+Version:        4.22.6+git.435.014e5eceb5d
 Release:        0
 URL:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -1298,6 +1298,8 @@ exit 0
 %attr(0700,root,root) %dir %{LOCKDIR}/private/msg.sock
 %attr(0750,root,root) %dir %{LOGDIR}
 %ghost %dir %{PIDDIR}
+%ghost %dir %{_var}/samba
+%ghost %dir %{_var}/samba/spool
 %dir %{_tmpfilesdir}
 %{_tmpfilesdir}/samba.conf
 %if %{with_mscat}
