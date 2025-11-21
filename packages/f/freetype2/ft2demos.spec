@@ -16,9 +16,9 @@
 #
 
 
-%global freetype_version 2.13.3
+%global freetype_version 2.14.1
 Name:           ft2demos
-Version:        2.13.3
+Version:        2.14.1
 Release:        0
 Summary:        Freetype2 Utilities and Demo Programs
 License:        GPL-2.0-or-later

@@ -1115,4 +1115,26 @@
     <comment></comment>
     <requestid>1312229</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>bfe3c32e5c735450113854536d79e52e</srcmd5>
+    <version>2.14.1</version>
+    <time>1763740424</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.14.1:
+  * The auto-hinter got new abilities. It can now better separate
+    diacritic glyphs from base glyphs at small sizes  by
+    artificially moving  diacritics up (or  down) if necessary
+  * Tilde accent  glyphs get vertically stretched at small sizes so
+    that they don't degenerate to horizontal lines.
+  * Diacritics directly attached to a base glyph (like the ogonek in
+    character 'ę') no longer distort the shape of the base glyph
+  * The TrueType  instruction interpreter  was optimized to
+    produce a 15% gain in the glyph loading speed.
+  * Handling of Variation Fonts is now considerably faster
+  * TrueType and CFF glyph loading speed has been improved by 5-10%
+    on modern 64-bit platforms  as  a result of better handling of
+    fixed-point multiplication.
+  * The BDF driver now loads fonts 75% faster.</comment>
+    <requestid>1318307</requestid>
+  </revision>
 </revisionlist>

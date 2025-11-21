@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Nov 17 17:45:55 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.14.1:
+  * The auto-hinter got new abilities. It can now better separate
+    diacritic glyphs from base glyphs at small sizes  by
+    artificially moving  diacritics up (or  down) if necessary
+  * Tilde accent  glyphs get vertically stretched at small sizes so
+    that they don't degenerate to horizontal lines.
+  * Diacritics directly attached to a base glyph (like the ogonek in
+    character 'ę') no longer distort the shape of the base glyph
+  * The TrueType  instruction interpreter  was optimized to
+    produce a 15% gain in the glyph loading speed.
+  * Handling of Variation Fonts is now considerably faster
+  * TrueType and CFF glyph loading speed has been improved by 5-10%
+    on modern 64-bit platforms  as  a result of better handling of
+    fixed-point multiplication.
+  * The BDF driver now loads fonts 75% faster.
+
+-------------------------------------------------------------------
 Fri Oct 17 11:05:00 UTC 2025 - pgajdos@suse.com
 
 - package FTL.TXT and GPLv2.TXT [bsc#1252148]

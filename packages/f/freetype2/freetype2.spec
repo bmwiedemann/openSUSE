@@ -16,9 +16,9 @@
 #
 
 
-%define doc_version 2.13.3
+%define doc_version 2.14.1
 Name:           freetype2
-Version:        2.13.3
+Version:        2.14.1
 Release:        0
 Summary:        A TrueType Font Library
 License:        FTL AND GPL-2.0-only
