@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 20 05:48:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.6:
+  * chore: 0.6.6 preversion bump (#523)
+  * exceptions: support new GKE exception resources (#522)
+  * exceptions: add new kind resource exceptions (#521)
+  * feat: add PriorityClass resource detection (#519)
+  * chore(deps): bump k8s.io/apiextensions-apiserver from 0.34.1 to
+    0.34.2 (#515)
+  * Fix: cron issue in helm chart (#513)
+
+-------------------------------------------------------------------
 Fri Oct 17 08:00:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.5:

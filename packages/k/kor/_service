@@ -3,8 +3,7 @@
     <param name="url">https://github.com/yonahd/kor</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v0.6.5</param>
-    <!-- the helm-related tag kor-0.2.xx is sitting on the same commit... -->
+    <param name="revision">v0.6.6</param>
     <param name="match-tag">v*</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
