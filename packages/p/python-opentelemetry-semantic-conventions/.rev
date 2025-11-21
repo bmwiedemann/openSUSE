@@ -99,4 +99,12 @@
   * Permit to override default HTTP OTLP exporters headers (#4634)</comment>
     <requestid>1306351</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b143f6c320dad43dcdd30f45dfd434fd</srcmd5>
+    <version>0.59b0</version>
+    <time>1763740418</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1318858</requestid>
+  </revision>
 </revisionlist>

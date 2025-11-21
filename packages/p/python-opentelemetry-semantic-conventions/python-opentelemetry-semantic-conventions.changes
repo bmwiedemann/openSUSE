@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 20 06:55:36 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 0.59b0
+  * Add rstcheck to pre-commit to stop introducing invalid RST
+  * logs: extend Logger.emit to accept separated keyword arguments
+  * logs: add warnings for classes that would be deprecated and renamed in 1.39.0
+
+-------------------------------------------------------------------
 Sun Sep 21 14:50:27 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.58b0:
