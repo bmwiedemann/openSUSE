@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-dns-lexicon
-Version:        3.21.1
+Version:        3.23.2
 Release:        0
 Summary:        DNS record manipulation utility
 License:        MIT
@@ -27,7 +27,7 @@ Source:         https://github.com/dns-lexicon/dns-lexicon/archive/refs/tags/v%{
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION Python build system requirements
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1}

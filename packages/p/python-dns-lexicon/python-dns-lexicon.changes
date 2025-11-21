@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Nov 20 09:04:58 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.23.2
+  * Support subdomains in `dynu` providers (#34)
+- from version 3.23.1
+  * Fix pagination in `scaleway` provider (#64)
+  * Fix tests in `godaddy` provider
+- from version 3.23.0
+  * Add `desec` provider (#55)
+  * Replace the old `linode` provider with `linode4`. `linode4`
+    provider name is still usable for retro-compatibility purpose.
+- from version 3.22.0
+  * Add support of Python 3.14
+  * Add relevant URLs in the pyproject.toml for publication in PyPI
+  * Make domain comparison case insensitive in DYNU provider to cope
+    with zones with uppercase characters
+  * Properly close sockets during integration tests
+  * Drop support of Python 3.9
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Mon May 19 09:22:24 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.21.1
