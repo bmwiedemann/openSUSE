@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<constraints>
+  <hardware>
+    <disk>
+      <size unit="G">20</size>
+    </disk>
+    <memory>
+      <size unit="G">10</size>
+    </memory>
+    <memoryperjob>
+      <size unit="M">1300</size>
+    </memoryperjob>
+  </hardware>
+  <overwrite>
+    <conditions>
+      <arch>x86_64</arch>
+    </conditions>
+    <hardware>
+      <!-- have some additional features like embree ... -->
+      <memory>
+        <size unit="M">16000</size>
+      </memory>
+    </hardware>
+  </overwrite>
+</constraints>

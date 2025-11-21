@@ -1,0 +1,7 @@
+<package name="blender-5.0" project="openSUSE:Factory">
+  <title>Blender</title>
+  <description>Blender is a free 3D animation studio. It includes tools for modeling, sculpting, texturing (painting, node-based shader materials, or UV mapped), UV mapping, rigging and constraints, weight painting, particle systems, simulation (fluids, physics, and soft body dynamics and an external crowd simulator), rendering, node-based compositing, and non linear video editing, as well as an integrated game engine for real-time interactive 3D, and game creation and playback with cross-platform compatibility.
+
+For GPU acceleration, please check out: SUSE-NVIDIA-GPU-rendering.txt</description>
+  <url>https://www.blender.org/</url>
+</package>
