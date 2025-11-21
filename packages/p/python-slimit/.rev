@@ -125,4 +125,12 @@
     <comment>- add py313-makesuite.patch to fix unittest.makeSuite removal</comment>
     <requestid>1225051</requestid>
   </revision>
+  <revision rev="17" vrev="13">
+    <srcmd5>ae043eb592e8bea251b6dd01270ed07b</srcmd5>
+    <version>0.8.1</version>
+    <time>1763740601</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1318845</requestid>
+  </revision>
 </revisionlist>
