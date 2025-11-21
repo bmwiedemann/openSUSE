@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov 18 22:08:32 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.86.2:
+  + Fix tests when run against pcre2 10.47
+  + Bugs fixed:
+    - GRegex tests fail with pcre2 10.47: different error for
+      ^(a)\g{3
+    - g_get_user_special_dir doesn't strip trailing slash from
+      $HOME/
+    - gresolver: Fix loopback detection of IPv6 addresses
+    - gregex: Handle PCRE2_ERROR_MISSING_NUMBER_TERMINATOR if
+      defined
+    - Fix g_memory_monitor_base_query_mem_ratio on Solaris
+    - gutils: Strip all trailing slashes
+
+-------------------------------------------------------------------
 Fri Nov 14 08:32:24 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - dbus-launch only works with dbus-1-daemon, not dbus-broker
