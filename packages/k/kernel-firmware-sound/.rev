@@ -305,4 +305,14 @@ After this PR, there will be a delete request for kernel-firmware.
 - Update aliases</comment>
     <requestid>1317811</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>f319d5caa490905a55efaa47962ec525</srcmd5>
+    <version>20251118</version>
+    <time>1763740413</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251118 (git commit 53dce114cc5d):
+  * cirrus: cs35l57: Add firmware for a few Dell products
+  * cirrus: cs42l45: Add firmware for Cirrus Logic CS42L45 SDCA codec</comment>
+    <requestid>1318813</requestid>
+  </revision>
 </revisionlist>
