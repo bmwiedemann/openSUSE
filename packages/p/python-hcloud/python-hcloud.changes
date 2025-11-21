@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 20 09:35:03 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.11.1
+  * support reloading sub resource bound models (#590)
+- from version 2.11.0
+  * DNS support is now generally available (#581)
+
+-------------------------------------------------------------------
 Mon Nov 10 10:21:55 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.10.0
