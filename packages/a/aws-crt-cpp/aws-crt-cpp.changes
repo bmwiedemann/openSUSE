@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 20 08:26:31 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.35.3
+  * Bump up aws-c-cal version by @azkrishpy in (#796)
+  * Bind out log-in provider by @sbiscigl in (#798)
+
+-------------------------------------------------------------------
 Mon Nov  3 13:35:03 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.35.2
