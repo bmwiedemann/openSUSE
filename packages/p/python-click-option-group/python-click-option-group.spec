@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-click-option-group
-Version:        0.5.7
+Version:        0.5.9
 Release:        0
 Summary:        Option groups missing in Click
 License:        BSD-3-Clause
