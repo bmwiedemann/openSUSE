@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Nov 20 05:48:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.84.0:
+  * Bug Fixes
+    - Fix jf rt curl bug with additional flags
+
+-------------------------------------------------------------------
+Wed Nov 19 09:55:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.83.0:
+  * Exciting New Features
+    - support-direct-download-cmd-bypassing-aql by @reshmifrog in
+      #3103
+  * Bug Fixes
+    - Fix poetry publish bug in traditional flow by @agrasth in
+      #3208
+    - fix-curl-cmd-arg-parsing-issue by @reshmifrog in #3205
+  * Other Changes
+    - JGC-426 - Add parameters to select which steps to run in
+      Jenkins build, Fix chocolatey push by @RemiBou in #3189
+    - Fix/e2e test case for search with pattern by @naveenku-jfrog
+      in #3200
+    - Update-dependency-for-jfrog-cli-artifactory by
+      @naveenku-jfrog in #3206
+    - Add Kiro IDE Support to jf ide setup by @agrasth in #3209
+    - add evidence e2e tests by @osaidwtd in #3201
+    - update env secrets by @osaidwtd in #3215
+    - JSEC-14301 - Remove automation for safe to test by @RemiBou
+      in #3218
+    - JGC-000 - Bump golang by @RemiBou in #3227
+    - Set explicit golang by @RemiBou in #3228
+
+-------------------------------------------------------------------
 Thu Oct 30 07:11:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.82.0:
