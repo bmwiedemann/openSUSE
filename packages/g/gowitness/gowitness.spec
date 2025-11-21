@@ -1,8 +1,8 @@
 #
 # spec file for package gowitness
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2021-2024, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2021-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           gowitness
-Version:        3.0.5
+Version:        3.1.0
 Release:        0
 Summary:        A commandline web screenshot and information gathering tool
 License:        GPL-3.0-or-later
@@ -27,7 +27,7 @@ URL:            https://github.com/sensepost/gowitness
 #Git-Clone:     https://github.com/sensepost/gowitness.git
 Source:         https://github.com/sensepost/gowitness/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go1.23
+BuildRequires:  go1.25
 BuildRequires:  golang-packaging
 %{go_provides}
 

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Nov 17 20:25:51 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.1.0
+  * Refactor the chromedp driver, focussing on performance. The
+    new implementation spawns a single browser instance with
+    multiple tabs instead of a full browser for each target.
+  * Improve performance of perception hash calculations,
+    primarily avoiding excessive allocations.
+  * Also enable error logs when the debug flag is enabled.
+  * Add a new --skip-network-logs flag to skip recording network
+    logs in writers.
+  * Restore the --screenshot-filter option.
+  * Add IPv6 parsing logic for Nessus reader.
+  * Add keyboard shortcuts to next/prev in gallery view.
+  Fixed
+  * Handle JavaScript popups better in the chromedp driver.
+  * Improve custom header parsing logic.
+  * Ignore error if the build directory doesn't exist yet.
+  * Solved Issue for Query Parameters When Reading URLs from File.
+  * MySQL/PSQL Updates for Compatibility.
+  * Fix "error enabling network tracking: context deadline
+    exceeded" error message.
+  * Fix typo in error message for Chrome installation.
+  Other
+  * Dump both Go and Javascript dependencies, numerous times.
+
+-------------------------------------------------------------------
 Tue Oct 22 15:55:17 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.0.5
