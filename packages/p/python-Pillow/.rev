@@ -841,4 +841,43 @@ This should fix the problems reported with the previous openSUSE:Factory submiss
     <comment></comment>
     <requestid>1289779</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>7e6f5947e9a0cd0280fb115509fe67e3</srcmd5>
+    <version>12.0.0</version>
+    <time>1763740427</time>
+    <user>anag_factory</user>
+    <comment>Fix build with freetype 2.14.1, bsc#1253759
+
+- Drop upstreamed patch libwebp150.patch
+- Update to 12.0.0
+  * Removals
+    * Remove support for FreeType &lt;= 2.9.0 #9159 [@radarhere]
+    * Drop support for Python 3.9 #9119 [@hugovk]
+    * Remove deprecations for Pillow 12.0.0 #9053 [@radarhere]
+  * Deprecations
+    * Deprecate Image._show #9186 [@radarhere]
+    * Deprecate ImageCmsProfile product_name and product_info #8995 [@lukegb]
+  * Documentation
+    * ImagingHistogramInstance can use two bands #9251 [@radarhere]
+    * Update 12.0.0 release notes #9247 [@hugovk]
+    * Added ImageDraw alpha channel examples #9201 [@radarhere]
+    * Update Python version #9230 [@radarhere]
+    * Updated macOS tested Pillow versions #9209 [@radarhere]
+    * Add GitHub profile link to release notes #9197 [@radarhere]
+    * Split versionadded info #9190 [@radarhere]
+    * Document ImageFile.MAXBLOCK #9163 [@radarhere]
+    * Updated macOS version in CI targets #9157 [@radarhere]
+    * Fix typos #9135 [@radarhere]
+    * Added &quot;Colors&quot; to concepts #9067 [@radarhere]
+    * Update macOS tested Pillow versions #9068 [@radarhere]
+    * Thanks, folks! #9056 [@aclark4life]
+    * Setup nit: &quot;fork&quot; should be lowercased #9055 [@aclark4life]
+  * Dependencies
+    * Update dependency cibuildwheel to v3.2.1 #9246 [@renovate[bot]]
+    * [pre-commit.ci] pre-commit autoupdate #9233 [@pre-commit-ci[bot]]
+    * Update harfbuzz to 12.1.0 #9218 [@radarhere]
+    * Update libtiff to 4.7.1 #9222 [@radarhere]
+    * Update FreeType to 2.14.1 on macOS and Linux wheels #9217 [@radarhere]</comment>
+    <requestid>1318702</requestid>
+  </revision>
 </revisionlist>

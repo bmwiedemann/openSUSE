@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pillow
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Pillow
-Version:        11.3.0
+Version:        12.0.0
 Release:        0
 Summary:        Python Imaging Library (Fork)
 License:        HPND
 URL:            https://python-pillow.org/
 Source:         https://files.pythonhosted.org/packages/source/p/pillow/pillow-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM as per https://github.com/python-pillow/Pillow/issues/8831
-Patch:          libwebp150.patch
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module olefile}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pybind11}
 BuildRequires:  %{python_module pytest >= 4.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tk}
