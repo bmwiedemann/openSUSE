@@ -41,4 +41,12 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1281315</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>fcd1c3407d470ef8430e34312fccf5fb</srcmd5>
+    <version>0.2.0</version>
+    <time>1763740605</time>
+    <user>anag_factory</user>
+    <comment>- Add BuildRequires on tzdata.</comment>
+    <requestid>1318952</requestid>
+  </revision>
 </revisionlist>

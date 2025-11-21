@@ -1,7 +1,7 @@
 #
 # spec file for package python-jinja2-time
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,6 @@ Version:        0.2.0
 Release:        0
 Summary:        Jinja2 Extension for Dates and Times
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/hackebrot/jinja2-time
 Source:         https://files.pythonhosted.org/packages/source/j/jinja2-time/jinja2-time-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
@@ -39,6 +38,7 @@ BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module arrow}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module tzdata}
 %endif
 %python_subpackages
 
