@@ -32,6 +32,8 @@ Group:          Development/Tools/Other
 URL:            https://github.com/nektos/act
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.gz
+# PATCH-FIX-UPSTREAM update-crypto-cve-2025-47913.patch bsc#1253608 elimat@opensuse.org -- Update golang.org/x/crypto to v0.43.0 to fix CVE-2025-47913 (GO-2025-4116)
+Patch0:         update-crypto-cve-2025-47913.patch
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) >= 1.16
 Requires:       (docker or podman)
@@ -44,6 +46,7 @@ act helps you run your Github Actions locally.
 %prep
 %setup -q
 %setup -q -a1 %{SOURCE1}
+%patch -P 0 -p0
 sed -i 's_var version = \"v0.2.27-dev\"_var version = "%{version}"_g' main.go
 
 %build

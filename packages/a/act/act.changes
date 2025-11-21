@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Nov 16 20:31:41 UTC 2025 - Matthias Eliasson <elimat@opensuse.org>
+
+- Security fix for bsc#1253608, CVE-2025-47913, GO-2025-4116
+- Add update-crypto-cve-2025-47913.patch: Update golang.org/x/crypto
+  from v0.37.0 to v0.43.0 to fix SSH agent DoS vulnerability where
+  SSH clients receiving SSH_AGENT_SUCCESS when expecting a typed
+  response will panic and cause early termination of the client
+  process. Affects pkg/runner/action_cache.go which uses SSH agent
+  functions via go-git.
+- Regenerate vendor.tar.gz with updated dependencies 
+
+-------------------------------------------------------------------
 Wed Oct 15 07:14:18 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
 
 - Add podman as an alternative to docker
