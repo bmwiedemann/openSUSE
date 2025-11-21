@@ -308,4 +308,12 @@
 - Drop pyasn1-061.patch, merged upstream</comment>
     <requestid>1298002</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>e0fd3c387e274f8e40e57512f1537555</srcmd5>
+    <version>0.4.2</version>
+    <time>1763740447</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1318714</requestid>
+  </revision>
 </revisionlist>

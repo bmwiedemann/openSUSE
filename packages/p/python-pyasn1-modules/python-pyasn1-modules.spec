@@ -21,7 +21,7 @@ Name:           python-pyasn1-modules
 Version:        0.4.2
 Release:        0
 Summary:        Collection of protocols modules written in ASN.1 language
-License:        BSD-3-Clause
+License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/pyasn1/pyasn1-modules
 Source:         https://files.pythonhosted.org/packages/source/p/pyasn1-modules/pyasn1_modules-%{version}.tar.gz
