@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Nov 17 21:45:40 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.59b0:
+  * `opentelemetry-instrumentation-flask`: Do not record
+    `http.server.duration` metrics for excluded URLs.
+  * `opentelemetry-instrumentation-botocore`: migrate off the
+    deprecated events API to use the logs API
+  * `opentelemetry-instrumentation-dbapi`: fix crash retrieving
+    libpq version when enabling commenter with psycopg
+  * `opentelemetry-instrumentation-fastapi`: Fix handling of
+    APIRoute subclasses
+  * `opentelemetry-instrumentation-botocore`: Add support for AWS
+    Secrets Manager semantic convention attribute
+  * `opentelemetry-instrumentation-dbapi`: Add support for
+    `commenter_options` in `trace_integration` function to
+    control SQLCommenter behavior
+  * Add `rstcheck` to pre-commit to stop introducing invalid RST
+  * `opentelemetry-exporter-credential-provider-gcp`: create this
+    package which provides support for supplying your machine's
+    Application Default  Credentials
+    (https://cloud.google.com/docs/authentication/application-
+    default-credentials) to the OTLP Exporters created
+    automatically by OpenTelemetry Python's auto instrumentation.
+    These credentials authorize OTLP traces to be sent to
+    `telemetry.googleapis.com`. #3766.
+  * `opentelemetry-instrumentation-psycopg`: Add missing
+    parameter `capture_parameters` to instrumentor.
+  * `opentelemetry-instrumentation-dbapi`: Adds sqlcommenter
+
+-------------------------------------------------------------------
 Sun Sep 21 15:08:22 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.58b0:
