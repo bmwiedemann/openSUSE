@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Nov 18 14:45:59 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 019:
+  * usbreset.1: fix typo in the busnum/devicenum example.
+  * usbreset: fix swapped vendor and product ID in help/manpage.
+  * usbreset.1: fix groff warnings and small fixes.
+  * Remove commented out code in usbreset.c and list.h and
+    container_of.h .
+  * lsusb: turn a FIXME comment for dump_comm_descriptor() into
+    something real.
+  * lsusb: remove FIXME about wireless usb device.
+  * lsusb: change FIXME for bmEthernetStatistics into a TODO.
+  * lsusb.c: change TODO into a fixme in do_dualspeed() .
+  * usbreset: move the serial number forward in the output.
+  * usb-devices: fix up bash warning for $altset
+    (fixes boo#1253475).
+  * usb-devices: fix up some minor shellcheck warning messages.
+  * usb-spec: remove vendor specific entry.
+  * usbreset: support resetting device by serial number.
+  * lsusb: Show wBytesPerInterval field of the SS EP companion
+    descriptor.
+  * usb-devices: Make devcount 'local' to handle recursion.
+  * usb-devices: Make devnum 'local' to handle recursion.
+  * lsusb-t: add verblevel 3 to print_usbdevice() .
+  * lsusb: improve usb2 device capability descriptor.
+  * Fix display of HID descriptors.
+
+-------------------------------------------------------------------
 Wed Oct 23 15:02:37 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 018:

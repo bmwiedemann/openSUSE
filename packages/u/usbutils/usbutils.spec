@@ -1,7 +1,7 @@
 #
 # spec file for package usbutils
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           usbutils
-Version:        018
+Version:        019
 Release:        0
 Summary:        Tools and libraries for USB devices
 License:        GPL-2.0-or-later
@@ -32,6 +32,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libudev) >= 196
 Requires:       hwdata
+Obsoletes:      usbutils-devel < %{version}
 
 %description
 This package contains a utility for inspecting devices connected to USB

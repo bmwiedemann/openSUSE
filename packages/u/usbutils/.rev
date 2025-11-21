@@ -501,4 +501,35 @@
   * lsusb: add support to show superspeed++ (forwarded request 1217378 from mnhauke)</comment>
     <requestid>1217960</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>399b3d59cd4af2f40b9bb4d049405b23</srcmd5>
+    <version>019</version>
+    <time>1763740450</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 019:
+  * usbreset.1: fix typo in the busnum/devicenum example.
+  * usbreset: fix swapped vendor and product ID in help/manpage.
+  * usbreset.1: fix groff warnings and small fixes.
+  * Remove commented out code in usbreset.c and list.h and
+    container_of.h .
+  * lsusb: turn a FIXME comment for dump_comm_descriptor() into
+    something real.
+  * lsusb: remove FIXME about wireless usb device.
+  * lsusb: change FIXME for bmEthernetStatistics into a TODO.
+  * lsusb.c: change TODO into a fixme in do_dualspeed() .
+  * usbreset: move the serial number forward in the output.
+  * usb-devices: fix up bash warning for $altset
+    (fixes boo#1253475).
+  * usb-devices: fix up some minor shellcheck warning messages.
+  * usb-spec: remove vendor specific entry.
+  * usbreset: support resetting device by serial number.
+  * lsusb: Show wBytesPerInterval field of the SS EP companion
+    descriptor.
+  * usb-devices: Make devcount 'local' to handle recursion.
+  * usb-devices: Make devnum 'local' to handle recursion.
+  * lsusb-t: add verblevel 3 to print_usbdevice() .
+  * lsusb: improve usb2 device capability descriptor.
+  * Fix display of HID descriptors. (forwarded request 1318467 from mnhauke)</comment>
+    <requestid>1318726</requestid>
+  </revision>
 </revisionlist>
