@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-opentelemetry-instrumentation-asgi%{?psuffix}
-Version:        0.58b0
+Version:        0.59b0
 Release:        0
 Summary:        ASGI instrumentation for OpenTelemetry
 License:        Apache-2.0
