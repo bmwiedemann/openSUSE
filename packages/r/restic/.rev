@@ -357,4 +357,12 @@
 - refreshed testsuite-use-python3.patch</comment>
     <requestid>1306369</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>c0ec216da59d67362da097c09a7e6b3b</srcmd5>
+    <version>0.18.1</version>
+    <time>1763740537</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1318846</requestid>
+  </revision>
 </revisionlist>

@@ -37,6 +37,7 @@ BuildRequires:  bash-completion
 BuildRequires:  golang-packaging
 BuildRequires:  zsh
 BuildRequires:  golang(API) >= 1.24
+Recommends:     fuse
 %if %{with run_tests}
 # for the tesuite suite
 BuildRequires:  fuse

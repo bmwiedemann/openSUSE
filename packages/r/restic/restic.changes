@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 12 10:46:43 UTC 2025 - Pavel Dostál <pdostal@suse.com>
+
+- Add fuse recommends as it's needed for mounting restic snapshots
+  and should as such be part of the package.
+
+-------------------------------------------------------------------
 Sun Sep 21 19:59:50 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 0.18.1
