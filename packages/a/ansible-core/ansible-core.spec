@@ -16,7 +16,7 @@
 #
 
 
-%define ansible_core_major_minor_version 2.19
+%define ansible_core_major_minor_version 2.20
 
 %{?sle15_python_module_pythons}
 %if 0%{?suse_version} < 1550
@@ -43,7 +43,7 @@
 %endif
 
 Name:           ansible-core
-Version:        2.19.4
+Version:        2.20.0
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0-or-later
@@ -61,7 +61,7 @@ Conflicts:      ansible-core < %{ansible_core_major_minor_version}
 Conflicts:      ansible-core > %{ansible_core_major_minor_version}
 
 # https://github.com/ansible/ansible/blob/stable-2.18/pyproject.toml#L6
-BuildRequires:  %{ansible_python}-base >= 3.11
+BuildRequires:  %{ansible_python}-base >= 3.12
 BuildRequires:  %{ansible_python}-pip
 BuildRequires:  %{ansible_python}-setuptools
 BuildRequires:  %{ansible_python}-wheel
