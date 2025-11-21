@@ -36,7 +36,7 @@
 %endif
 
 Name:           curl%{?psuffix}
-Version:        8.16.0
+Version:        8.17.0
 Release:        0
 Summary:        A Tool for Transferring Data from URLs
 License:        curl
@@ -51,8 +51,8 @@ Patch1:         dont-mess-with-rpmoptflags.patch
 Patch2:         curl-secure-getenv.patch
 # PATCH-FIX-OPENSUSE bsc#1076446 protocol redirection not supported or disabled
 Patch3:         curl-disabled-redirect-protocol-message.patch
-# PATCH-FIX-UPSTREAM bsc#1249448 http: handle user-defined connection headers
-Patch4:         curl-handle_user-defined_connection_headers.patch
+# PATCH-FIX-UPSTREAM vtls: fix CURLOPT_CAPATH use
+Patch4:         curl-vtls-fix-CURLOPT_CAPATH-use.patch
 BuildRequires:  groff
 BuildRequires:  libtool
 BuildRequires:  pkgconfig

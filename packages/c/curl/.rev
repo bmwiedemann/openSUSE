@@ -2071,4 +2071,12 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     - connectdata: remove primary+secondary ip_quadruple</comment>
     <requestid>1307305</requestid>
   </revision>
+  <revision rev="220" vrev="1">
+    <srcmd5>cd2fddd478f0aebbc0df86eb87f70433</srcmd5>
+    <version>8.17.0</version>
+    <time>1763740461</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1318709</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Wed Nov 19 13:07:46 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix a regression in curl 8.17.0: [bsc#1253116]
+  * Builds with no CURL_CA_PATH ignore CURLOPT_CAPATH
+  * vtls: fix CURLOPT_CAPATH use [gh#curl/curl#19401]
+  * Add upstream curl-vtls-fix-CURLOPT_CAPATH-use.patch
+
+-------------------------------------------------------------------
+Wed Nov  5 08:45:52 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 8.17.0:
+  * Security fixes:
+    - [bsc#1252859, CVE-2025-10966] curl: missing SFTP host
+      verification with wolfSSH
+    - [bsc#1253757, CVE-2025-11563] curl: wcurl path traversal with
+      percent-encoded slashes
+  * Changes:
+    - krb5: drop support for Kerberos FTP
+    - multi: add notifications API
+    - ssl: support Apple SecTrust configurations
+    - tool_getparam: add --knownhosts
+    - vssh: drop support for wolfSSH
+    - wcurl: import v2025.11.04
+  * Bugfixes:
+    - ares: fix leak in tracing
+    - base64: accept zero length argument to base64_encode
+    - c-ares: when resolving failed, persist error
+    - cf-socket: set FD_CLOEXEC on all sockets opened
+    - cf-socket: use the right byte order for ports in bindlocal
+    - conn: fix hostname move on connection reuse
+    - conncache: prevent integer overflow in maxconnects calculation
+    - cookie: avoid saving a cookie file if no transfer was done
+    - curl_easy_getinfo: error code on NULL arg
+    - curl_path: make sure just whitespace is illegal
+    - digest_sspi: fix two memory leaks in error branches
+    - ftp: add extra buffer length check
+    - ftp: check errors on remote ip for data connection
+    - gnutls: check conversion of peer cert chain
+    - gnutls: fix re-handshake comments
+    - gssapi: make channel binding conditional on GSS_C_CHANNEL_BOUND_FLAG
+    - gtls: check the return value of gnutls_pubkey_init()
+    - hmac: free memory properly on errors
+    - HTTP3: clarify the status for "old" OpenSSL, not current
+    - kerberos: bump minimum to 1.3 (2003-07-08), drop legacy logic
+    - krb5_gssapi: fix memory leak on error path
+    - krb5_sspi: the chlg argument is NOT optional
+    - ldap: avoid null ptr deref on failure
+    - ldap: do not base64 encode zero length string
+    - lib: SSL connection reuse
+    - libssh/libssh2: reject quote command lines with too much data
+    - libssh/sftp: fix resume corruption by avoiding O_APPEND with rresume
+    - libssh: acknowledge SSH_AGAIN in the SFTP state machine
+    - nghttp3: return NGHTTP3_ERR_CALLBACK_FAILURE from recv_header
+    - ngtcp2: close just-opened QUIC stream when submit_request fails
+    - ngtcp2: compare idle timeout in ms to avoid overflow
+    - noproxy: fix the IPV6 network mask pattern match
+    - NTLM: disable if DES support missing from OpenSSL or mbedTLS
+    - openldap: limit max incoming size
+    - openssl: call SSL_get_error() with proper error
+    - openssl: check CURL_SSLVERSION_MAX_DEFAULT properly
+    - openssl: fail if more than MAX_ALLOWED_CERT_AMOUNT certs
+    - openssl: fail the transfer if ossl_certchain() fails
+    - openssl: fix peer certificate leak in channel binding
+    - openssl: fix resource leak in provider error path
+    - openssl: free UI_METHOD on exit path
+    - openssl: only try engine/provider if a cert file/name is provided
+    - openssl: set io_need always
+    - openssl: skip session resumption when verifystatus is set
+    - pop3: fix CAPA response termination detection
+    - quic: fix min TLS version handling
+    - quic: ignore EMSGSIZE on receive
+    - schannel: properly close the certfile on error
+    - schannel_verify: fix mem-leak in Curl_verify_host
+    - socks: avoid UAF risk in error path
+    - socks: deny server basic-auth if not configured
+    - socks_gssapi: reject too long tokens
+    - socks_gssapi: remove the forced "no protection"
+    - thread: errno on thread creation
+    - ws: reject curl_ws_recv called with NULL buffer with a buflen
+  * Rebase libcurl-ocloexec.patch
+  * Remove curl-handle_user-defined_connection_headers.patch upstream
+
+-------------------------------------------------------------------
 Fri Sep 26 07:37:28 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - curl: http: handle user-defined connection headers [bsc#1249448]
