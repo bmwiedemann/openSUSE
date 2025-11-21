@@ -30,7 +30,7 @@
 
 Name:           xen
 ExclusiveArch:  %ix86 x86_64 aarch64
-%define xen_build_dir xen-4.20.2-testing
+%define xen_build_dir xen-4.21.0-testing
 #
 %define with_gdbsx 0
 %define with_dom0_support 0
@@ -125,12 +125,12 @@ BuildRequires:  pesign-obs-integration
 BuildRequires:  python-rpm-macros
 Provides:       installhint(reboot-needed)
 
-Version:        4.20.2_02
+Version:        4.21.0_02
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
 Group:          System/Kernel
-Source0:        xen-4.20.2-testing-src.tar.bz2
+Source0:        xen-4.21.0-testing-src.tar.bz2
 Source1:        stubdom.tar.bz2
 Source2:        mini-os.tar.bz2
 Source9:        xen.changes
@@ -871,6 +871,8 @@ find %{buildroot} \( \
 	-name qemu-img-xen -o \
 	-name qemu-nbd-xen -o \
 	-name palcode-clipper -o \
+        -name "test-*" -o \
+        -name "test_*" -o \
 	-name "*.dtb" -o \
 	-name "openbios-*" -o \
 	-name "petalogix*" -o \
@@ -922,6 +924,7 @@ rm -f  %{buildroot}/%{_bindir}/pygrub
 rm -f  %{buildroot}/%{_bindir}/remus
 rm -f  %{buildroot}/usr/etc/qemu/target-x86_64.conf
 rm -f  %{buildroot}/usr/libexec/qemu-bridge-helper
+rm -f  %{buildroot}/usr/lib/systemd/system-sleep/xen-watchdog-sleep.sh
 %endif
 
 %if %{?with_dom0_support}0
@@ -1007,6 +1010,8 @@ rm -f  %{buildroot}/usr/libexec/qemu-bridge-helper
 /etc/xen/scripts/xen-script-common.sh
 /etc/xen/scripts/colo-proxy-setup
 /etc/xen/scripts/remus-netbuf-setup
+%dir /usr/lib/systemd/system-sleep
+%{_libexecdir}/systemd/system-sleep/xen-watchdog-sleep.sh
 %dir /usr/lib/supportconfig
 %dir /usr/lib/supportconfig/plugins
 /usr/lib/supportconfig/plugins/xen
@@ -1106,6 +1111,7 @@ rm -f  %{buildroot}/usr/libexec/qemu-bridge-helper
 %{_libdir}/pkgconfig/xengnttab.pc
 %{_libdir}/pkgconfig/xenguest.pc
 %{_libdir}/pkgconfig/xenhypfs.pc
+%{_libdir}/pkgconfig/xenmanage.pc
 %{_libdir}/pkgconfig/xenstat.pc
 %{_libdir}/pkgconfig/xenstore.pc
 %{_libdir}/pkgconfig/xentoolcore.pc

@@ -21,7 +21,7 @@ Keep going if the event type and shutdown reason remains the same.
 
 --- a/tools/xl/Makefile
 +++ b/tools/xl/Makefile
-@@ -25,6 +25,7 @@ XL_OBJS += xl_vmcontrol.o xl_saverestore
+@@ -26,6 +26,7 @@ XL_OBJS += xl_vmcontrol.o xl_saverestore
  XL_OBJS += xl_vdispl.o xl_vsnd.o xl_vkb.o
  
  $(XL_OBJS): CFLAGS += $(CFLAGS_libxentoollog)
@@ -29,15 +29,6 @@ Keep going if the event type and shutdown reason remains the same.
  $(XL_OBJS): CFLAGS += $(CFLAGS_XL)
  $(XL_OBJS): CFLAGS += -include $(XEN_ROOT)/tools/config.h # libxl_json.h needs it.
  
-@@ -32,7 +33,7 @@ $(XL_OBJS): CFLAGS += -include $(XEN_ROO
- all: xl
- 
- xl: $(XL_OBJS)
--	$(CC) $(LDFLAGS) -o $@ $(XL_OBJS) $(LDLIBS_libxenutil) $(LDLIBS_libxenlight) $(LDLIBS_libxentoollog) -lyajl $(APPEND_LDFLAGS)
-+	$(CC) $(LDFLAGS) -o $@ $(XL_OBJS) $(LDLIBS_libxenutil) $(LDLIBS_libxenlight) $(LDLIBS_libxentoollog) $(LDLIBS_libxenstore) -lyajl $(APPEND_LDFLAGS)
- 
- .PHONY: install
- install: all
 --- a/tools/xl/xl.h
 +++ b/tools/xl/xl.h
 @@ -306,6 +306,7 @@ typedef enum {

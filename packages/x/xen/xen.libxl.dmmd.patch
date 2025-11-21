@@ -43,7 +43,7 @@ References: bsc#954872
      case LIBXL_DISK_BACKEND_STANDALONE:
 --- a/tools/libs/light/libxl_dm.c
 +++ b/tools/libs/light/libxl_dm.c
-@@ -1181,6 +1181,30 @@ out:
+@@ -946,6 +946,30 @@ out:
      return rc;
  }
  
@@ -74,7 +74,7 @@ References: bsc#954872
  static int libxl__build_device_model_args_new(libxl__gc *gc,
      const char *dm, int guest_domid,
      const libxl_domain_config *guest_config,
-@@ -1873,9 +1897,11 @@ static int libxl__build_device_model_arg
+@@ -1638,9 +1662,11 @@ static int libxl__build_device_model_arg
                  libxl__device_disk_dev_number(disks[i].vdev, &disk, &part);
              const char *format;
              char *drive;
@@ -100,7 +100,7 @@ References: bsc#954872
  aio:/.*		{ DPC->had_depr_prefix=1; DEPRECATE(0); }
 --- a/tools/libs/light/libxl_internal.h
 +++ b/tools/libs/light/libxl_internal.h
-@@ -2068,6 +2068,10 @@ _hidden char *libxl__object_to_json(libx
+@@ -2004,6 +2004,10 @@ _hidden char *libxl__object_to_json(libx
  _hidden int libxl__cpuid_legacy(libxl_ctx *ctx, uint32_t domid, bool retore,
                                  libxl_domain_build_info *info);
  

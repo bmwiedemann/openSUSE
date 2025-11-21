@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Tue Nov 18 15:17:42 MST 2025 - carnold@suse.com
+
+- Update to Xen 4.21.0 FCS release
+  * The minimum toolchain requirements have increased for some architectures:
+    - For x86, GCC 5.1 and Binutils 2.25, or Clang/LLVM 11
+    - For ARM32 and ARM64, GCC 5.1 and Binutils 2.25
+    - For RISC-V, GCC 12.2 and Binutils 2.39
+  * Debian Trixie added to CI.  Debian Bullseye retired from CI for RISC-V due
+    to the baseline change.
+  * Linux based device model stubdomains are now fully supported.
+  * New dependency on library json-c 0.15 or later, the toolstack will prefer it
+    to `YAJL` when available.
+  * Introduce libxenmanage as a stable library, replacing xenstored's
+    dependency on unstable libraries.
+  * Introduce new PDX compression algorithm to cope with Intel Sierra Forest and
+    Granite Rapids having sparse memory maps.
+  * Support of qemu-traditional has been removed.
+  * The in-tree oxenstored is deprecated and will be removed in a future
+    version of Xen.  It is moving into the Xapi project
+    https://github.com/xapi-project/oxenstored so it can be maintained in line
+    with the other Ocaml projects in the Xen ecosystem.
+  * On x86:
+    - Restrict the cache flushing done as a result of guest physical memory map
+      manipulations and memory type changes.
+    - Allow controlling the MTRR cache attribute of the Xen platform PCI device
+      BAR for HVM guests, to improve performance of guests using it to map the
+      grant table or foreign memory.
+    - Allow configuring the number of altp2m tables per domain via vm.cfg.
+    - Option to attempt to fixup p2m page-faults on PVH dom0.
+    - Resizable BARs is supported for PVH dom0.
+    - Support PCI passthrough for HVM domUs when dom0 is PVH (note SR-IOV
+      capability usage is not yet supported on PVH dom0).
+    - Smoke tests for the FreeBSD Xen builds in Cirrus CI.
+    - PVH xenstore-stubdom now supports Live Update.
+    - Support in hvmloader for new SMBIOS tables: 7 (Cache Info), 8 (Port
+      Connector), 9 (System Slots), 26 (Voltage Probe), 27 (Cooling Device),
+      and 28 (Temperature Probe).
+    - New amd-cppc/amd-cppc-epp cpufreq driver.
+    - GNTTABOP_cache_flush: it's unused on x86 and the implementation is
+      broken.
+  * On Arm:
+    - Ability to enable stack protector.
+    - GICv3.1 eSPI (Extended Shared Peripheral Interrupts) support for Xen
+      and guest domains.
+    - SMMU handling for PCIe passthrough.
+    - R-Car Gen4 PCI host controller support.
+    - SCI SCMI SMC single-agent support.
+    - Initial support for MPU, R82, and R52: reaches the early boot stages.
+  * On RISC-V:
+    - Basic UART support and external interrupts (APLIC/IMSIC only) handling
+      for hypervisor mode.
+
+-------------------------------------------------------------------
 Thu Nov 13 09:18:31 MST 2025 - carnold@suse.com
 
 - Update to Xen 4.20.2 bug fix release (jsc#PED-8907)

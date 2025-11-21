@@ -85,7 +85,7 @@ the execution time of each script.
  
 --- a/tools/libs/light/libxl_create.c
 +++ b/tools/libs/light/libxl_create.c
-@@ -1363,6 +1363,7 @@ static void initiate_domain_create(libxl
+@@ -1321,6 +1321,7 @@ static void initiate_domain_create(libxl
       * build info around just to know if the domain has a device model or not.
       */
      store_libxl_entry(gc, domid, &d_config->b_info);
@@ -278,7 +278,7 @@ the execution time of each script.
  
  #include <xenevtchn.h>
  #include <xenstore.h>
-@@ -1624,6 +1625,7 @@ struct libxl__xswait_state {
+@@ -1623,6 +1624,7 @@ struct libxl__xswait_state {
      const char *what; /* for error msgs: noun phrase, what we're waiting for */
      const char *path;
      int timeout_ms; /* as for poll(2) */
@@ -286,7 +286,7 @@ the execution time of each script.
      libxl__xswait_callback *callback;
      /* remaining fields are private to xswait */
      libxl__ev_time time_ev;
-@@ -2701,6 +2703,7 @@ struct libxl__async_exec_state {
+@@ -2650,6 +2652,7 @@ struct libxl__async_exec_state {
      char **args; /* execution arguments */
      char **env; /* execution environment */
  
@@ -294,7 +294,7 @@ the execution time of each script.
      /* private */
      libxl__ev_time time;
      libxl__ev_child child;
-@@ -4893,6 +4896,9 @@ _hidden int userlookup_helper_getpwuid(l
+@@ -4845,6 +4848,9 @@ _hidden int userlookup_helper_getpwuid(l
  
  #endif
  

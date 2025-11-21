@@ -7,10 +7,10 @@ https://bugzilla.novell.com/show_bug.cgi?id=879425
  tools/libxl/libxlu_disk_l.l |    1 +
  5 files changed, 18 insertions(+), 1 deletion(-)
 
-Index: xen-4.20.0-testing/docs/man/xl-disk-configuration.5.pod.in
+Index: xen-4.21.0-testing/docs/man/xl-disk-configuration.5.pod.in
 ===================================================================
---- xen-4.20.0-testing.orig/docs/man/xl-disk-configuration.5.pod.in
-+++ xen-4.20.0-testing/docs/man/xl-disk-configuration.5.pod.in
+--- xen-4.21.0-testing.orig/docs/man/xl-disk-configuration.5.pod.in
++++ xen-4.21.0-testing/docs/man/xl-disk-configuration.5.pod.in
 @@ -339,6 +339,32 @@ No
  
  discard
@@ -44,11 +44,11 @@ Index: xen-4.20.0-testing/docs/man/xl-disk-configuration.5.pod.in
  =back
  
  An advisory setting for the backend driver, specifying whether to
-Index: xen-4.20.0-testing/tools/include/libxl.h
+Index: xen-4.21.0-testing/tools/include/libxl.h
 ===================================================================
---- xen-4.20.0-testing.orig/tools/include/libxl.h
-+++ xen-4.20.0-testing/tools/include/libxl.h
-@@ -603,6 +603,21 @@
+--- xen-4.21.0-testing.orig/tools/include/libxl.h
++++ xen-4.21.0-testing/tools/include/libxl.h
+@@ -615,6 +615,21 @@
  #define LIBXL_HAVE_P9_ADD 1
  
  /*
@@ -70,10 +70,10 @@ Index: xen-4.20.0-testing/tools/include/libxl.h
   * libxl ABI compatibility
   *
   * The only guarantee which libxl makes regarding ABI compatibility
-Index: xen-4.20.0-testing/tools/libs/light/libxl_disk.c
+Index: xen-4.21.0-testing/tools/libs/light/libxl_disk.c
 ===================================================================
---- xen-4.20.0-testing.orig/tools/libs/light/libxl_disk.c
-+++ xen-4.20.0-testing/tools/libs/light/libxl_disk.c
+--- xen-4.21.0-testing.orig/tools/libs/light/libxl_disk.c
++++ xen-4.21.0-testing/tools/libs/light/libxl_disk.c
 @@ -464,6 +464,8 @@ static void device_disk_add(libxl__egc *
          flexarray_append_pair(back, "discard-enable",
                                libxl_defbool_val(disk->discard_enable) ?
@@ -83,11 +83,11 @@ Index: xen-4.20.0-testing/tools/libs/light/libxl_disk.c
          flexarray_append(back, "specification");
          flexarray_append(back, libxl__device_disk_string_of_specification(disk->specification));
          if (disk->specification == LIBXL_DISK_SPECIFICATION_VIRTIO) {
-Index: xen-4.20.0-testing/tools/libs/light/libxl_dm.c
+Index: xen-4.21.0-testing/tools/libs/light/libxl_dm.c
 ===================================================================
---- xen-4.20.0-testing.orig/tools/libs/light/libxl_dm.c
-+++ xen-4.20.0-testing/tools/libs/light/libxl_dm.c
-@@ -1003,14 +1003,27 @@ enum {
+--- xen-4.21.0-testing.orig/tools/libs/light/libxl_dm.c
++++ xen-4.21.0-testing/tools/libs/light/libxl_dm.c
+@@ -768,14 +768,27 @@ enum {
      LIBXL__COLO_SECONDARY,
  };
  
@@ -117,7 +117,7 @@ Index: xen-4.20.0-testing/tools/libs/light/libxl_dm.c
      const char *exportname = disk->colo_export;
      const char *active_disk = disk->active_disk;
      const char *hidden_disk = disk->hidden_disk;
-@@ -1069,8 +1082,8 @@ static char *qemu_disk_ide_drive_string(
+@@ -834,8 +847,8 @@ static char *qemu_disk_ide_drive_string(
      switch (colo_mode) {
      case LIBXL__COLO_NONE:
          drive = GCSPRINTF
@@ -128,7 +128,7 @@ Index: xen-4.20.0-testing/tools/libs/light/libxl_dm.c
          break;
      case LIBXL__COLO_PRIMARY:
          /*
-@@ -1083,13 +1096,14 @@ static char *qemu_disk_ide_drive_string(
+@@ -848,13 +861,14 @@ static char *qemu_disk_ide_drive_string(
           *  vote-threshold=1
           */
          drive = GCSPRINTF(
@@ -145,7 +145,7 @@ Index: xen-4.20.0-testing/tools/libs/light/libxl_dm.c
          break;
      case LIBXL__COLO_SECONDARY:
          /*
-@@ -1103,7 +1117,7 @@ static char *qemu_disk_ide_drive_string(
+@@ -868,7 +882,7 @@ static char *qemu_disk_ide_drive_string(
           *  file.backing.backing=exportname,
           */
          drive = GCSPRINTF(
@@ -154,7 +154,7 @@ Index: xen-4.20.0-testing/tools/libs/light/libxl_dm.c
              "driver=replication,"
              "mode=secondary,"
              "top-id=top-colo,"
-@@ -1112,7 +1126,8 @@ static char *qemu_disk_ide_drive_string(
+@@ -877,7 +891,8 @@ static char *qemu_disk_ide_drive_string(
              "file.backing.driver=qcow2,"
              "file.backing.file.filename=%s,"
              "file.backing.backing=%s",
@@ -164,7 +164,7 @@ Index: xen-4.20.0-testing/tools/libs/light/libxl_dm.c
          break;
      default:
           abort();
-@@ -1985,8 +2000,8 @@ static int libxl__build_device_model_arg
+@@ -1750,8 +1765,8 @@ static int libxl__build_device_model_arg
                          return ERROR_INVAL;
                      }
                      flexarray_vappend(dm_args, "-drive",
@@ -175,10 +175,10 @@ Index: xen-4.20.0-testing/tools/libs/light/libxl_dm.c
                          "-device", GCSPRINTF("ide-hd,bus=ahci0.%d,unit=0,drive=ahcidisk-%d",
                          disk, disk), NULL);
                      continue;
-Index: xen-4.20.0-testing/tools/libs/util/libxlu_disk.c
+Index: xen-4.21.0-testing/tools/libs/util/libxlu_disk.c
 ===================================================================
---- xen-4.20.0-testing.orig/tools/libs/util/libxlu_disk.c
-+++ xen-4.20.0-testing/tools/libs/util/libxlu_disk.c
+--- xen-4.21.0-testing.orig/tools/libs/util/libxlu_disk.c
++++ xen-4.21.0-testing/tools/libs/util/libxlu_disk.c
 @@ -78,6 +78,8 @@ int xlu_disk_parse(XLU_Config *cfg,
          if (!disk->pdev_path || !strcmp(disk->pdev_path, ""))
              disk->format = LIBXL_DISK_FORMAT_EMPTY;
@@ -188,10 +188,10 @@ Index: xen-4.20.0-testing/tools/libs/util/libxlu_disk.c
  
      if (!disk->vdev) {
          xlu__disk_err(&dpc,0, "no vdev specified");
-Index: xen-4.20.0-testing/tools/libs/util/libxlu_disk_i.h
+Index: xen-4.21.0-testing/tools/libs/util/libxlu_disk_i.h
 ===================================================================
---- xen-4.20.0-testing.orig/tools/libs/util/libxlu_disk_i.h
-+++ xen-4.20.0-testing/tools/libs/util/libxlu_disk_i.h
+--- xen-4.21.0-testing.orig/tools/libs/util/libxlu_disk_i.h
++++ xen-4.21.0-testing/tools/libs/util/libxlu_disk_i.h
 @@ -10,7 +10,7 @@ typedef struct {
      void *scanner;
      YY_BUFFER_STATE buf;
@@ -201,10 +201,10 @@ Index: xen-4.20.0-testing/tools/libs/util/libxlu_disk_i.h
      const char *spec;
  } DiskParseContext;
  
-Index: xen-4.20.0-testing/tools/libs/util/libxlu_disk_l.l
+Index: xen-4.21.0-testing/tools/libs/util/libxlu_disk_l.l
 ===================================================================
---- xen-4.20.0-testing.orig/tools/libs/util/libxlu_disk_l.l
-+++ xen-4.20.0-testing/tools/libs/util/libxlu_disk_l.l
+--- xen-4.21.0-testing.orig/tools/libs/util/libxlu_disk_l.l
++++ xen-4.21.0-testing/tools/libs/util/libxlu_disk_l.l
 @@ -216,6 +216,7 @@ colo-port=[^,]*,?	{ STRIP(','); setcolop
  colo-export=[^,]*,?	{ STRIP(','); SAVESTRING("colo-export", colo_export, FROMEQUALS); }
  active-disk=[^,]*,?	{ STRIP(','); SAVESTRING("active-disk", active_disk, FROMEQUALS); }

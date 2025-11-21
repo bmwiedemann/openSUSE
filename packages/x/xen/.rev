@@ -3134,4 +3134,12 @@
     <comment>Security and Maintenance Update. Fix for bsc#1252692, CVE-2025-58149, XSA-476 and update to bug fix release 4.20.2</comment>
     <requestid>1317672</requestid>
   </revision>
+  <revision rev="370" vrev="1">
+    <srcmd5>c518ee4382f695c9283e1087b21d7846</srcmd5>
+    <version>4.21.0_02</version>
+    <time>1763740454</time>
+    <user>anag_factory</user>
+    <comment>Update Xen to version 4.21.0</comment>
+    <requestid>1318748</requestid>
+  </revision>
 </revisionlist>
