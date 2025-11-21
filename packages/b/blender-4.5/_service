@@ -1,0 +1,18 @@
+<services>
+  <!-- only used for creating snapshots -->
+  <service name="tar_scm" mode="manual">
+    <param name="revision">blender-v4.5-release</param>
+    <param name="version">4.5.0</param>
+    <param name="url">https://projects.blender.org/blender/blender.git</param>
+    <param name="scm">git</param>
+    <param name="lfs">enable</param>
+    <param name="exclude">lib/*</param>
+    <param name="exclude">tests/data/*</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+</services>
+
+
