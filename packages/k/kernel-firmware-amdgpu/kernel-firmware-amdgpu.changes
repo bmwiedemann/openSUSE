@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Thu Nov 20 06:44:51 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251119 (git commit fe13aa9b9830):
+  * amdgpu: update vega20 firmware
+  * amdgpu: update vega12 firmware
+  * amdgpu: update vega10 firmware
+  * amdgpu: update vangogh firmware
+  * amdgpu: update renoir firmware
+  * amdgpu: update yellow carp firmware
+  * amdgpu: update VCN 3.1.2 firmware
+  * amdgpu: update PSP 13.0.5 firmware
+  * amdgpu: update GC 10.3.6 firmware
+  * amdgpu: update VCN 5.0.0 firmware
+  * amdgpu: update SMU 14.0.3 firmware
+  * amdgpu: update PSP 14.0.3 firmware
+  * amdgpu: update GC 12.0.1 firmware
+  * amdgpu: update SMU 14.0.2 firmware
+  * amdgpu: update PSP 14.0.2 firmware
+  * amdgpu: update GC 12.0.0 firmware
+  * amdgpu: update VCN 4.0.4 firmware
+  * amdgpu: update smu 13.0.7 firmware
+  * amdgpu: update PSP 13.0.7 firmware
+  * amdgpu: update GC 11.0.2 firmware
+  * amdgpu: update SMU 13.0.10 firmware
+  * amdgpu: update SDMA 6.0.3 firmware
+  * amdgpu: update PSP 13.0.10 firmware
+  * amdgpu: update GC 11.0.3 firmware
+  * amdgpu: update smu 13.0.0 kicker firmware
+  * amdgpu: update PSP 13.0.0 kicker firmware
+  * amdgpu: update VCN 4.0.0 firmware
+  * amdgpu: update SMU 13.0.0 firmware
+  * amdgpu: update PSP 13.0.0 firmware
+  * amdgpu: update GC 11.0.0 firmware
+  * amdgpu: update navy flounder firmware
+  * amdgpu: update sienna cichlid firmware
+  * amdgpu: update navi14 firmware
+  * amdgpu: update navi12 firmware
+  * amdgpu: update navi10 firmware
+  * amdgpu: update VCN 5.0.1 firmware
+  * amdgpu: update PSP 13.0.12 firmware
+  * amdgpu: update GC 9.5.0 firmware
+  * amdgpu: update PSP 13.0.14 firmware
+  * amdgpu: update GC 9.4.4 firmware
+  * amdgpu: update PSP 14.0.5 firmware
+  * amdgpu: update GC 11.5.3 firmware
+  * amdgpu: update PSP 14.0.4 firmware
+  * amdgpu: update GC 11.5.2 firmware
+  * amdgpu: update green sardine firmware
+  * amdgpu: update VCN 4.0.3 firmware
+  * amdgpu: update SDMA 4.4.2 firmware
+  * amdgpu: update PSP 13.0.6 firmware
+  * amdgpu: update GC 9.4.3 firmware
+  * amdgpu: update VCN 4.0.6 firmware
+  * amdgpu: update PSP 14.0.1 firmware
+  * amdgpu: update GC 11.5.1 firmware
+  * amdgpu: update PSP 13.0.11 firmware
+  * amdgpu: update GC 11.0.4 firmware
+  * amdgpu: update VCN 4.0.5 firmware
+  * amdgpu: update PSP 14.0.0 firmware
+  * amdgpu: update GC 11.5.0 firmware
+  * amdgpu: update VCN 4.0.2 firmware
+  * amdgpu: update PSP 13.0.4 firmware
+  * amdgpu: update GC 11.0.1 firmware
+  * amdgpu: update beige goby firmware
+  * amdgpu: update dimgrey cavefish firmware
+  * amdgpu: update aldebaran firmware
+  * amdgpu: add vce1 firmware
+
+-------------------------------------------------------------------
 Sat Nov  8 07:38:21 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20251107 (git commit b918d0b3cb97):
