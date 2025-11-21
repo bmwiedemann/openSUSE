@@ -1,4 +1,138 @@
 -------------------------------------------------------------------
+Fri Nov 21 06:21:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.0.181:
+  * Added
+    - cache-dir configuration option
+      - Added support for cache-dir in .rumdl.toml and
+        pyproject.toml config files
+      - Precedence: CLI --cache-dir → RUMDL_CACHE_DIR env var →
+        config file → default
+      - Follows Ruff's configuration pattern for cache directory
+        management
+    - Termux installation support
+      - Added Termux User Repository install method to README
+        (thanks @ha1ix in #157)
+  * Changed
+    - BREAKING: Cache directory renamed from .rumdl-cache to
+      .rumdl_cache
+      - Aligns with Ruff's naming convention (.ruff_cache)
+      - Follows Rust ecosystem preference for underscores over
+        hyphens
+      - Migration: Old .rumdl-cache directories can be safely
+        deleted
+  * Fixed
+    - LSP: Exclude Unfixable rules from formatting and Fix All
+      (fixes #158)
+      - Filter warnings from Unfixable rules (like MD033) before
+        applying fixes during LSP formatting
+      - Prevents unintended destructive changes (e.g., HTML
+        deletion) during document formatting
+      - Unfixable rules still available through Quick Fix actions
+        for user choice
+      - Fix All action now correctly excludes Unfixable rules
+    - Cache directory now created at project root, not CWD (fixes
+      #159)
+      - Cache directory is now anchored to the project root
+        (determined by .git location)
+      - Prevents multiple cache directories when running from
+        subdirectories
+      - Works consistently whether invoked from project root or any
+        subdirectory
+      - Behavior:
+        - With .git: Cache at .git parent directory (true project
+          root)
+        - Without .git: Cache at config file location (fallback)
+      - Follows Ruff's fix (PR #7962) for consistent cache
+        placement
+
+-------------------------------------------------------------------
+Thu Nov 20 06:19:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.0.180:
+  * Added
+    - MD022 (blanks-around-headings): Per-level unlimited blank
+      handling
+      - Added per-level configuration to allow unlimited blank
+        lines around specific heading levels
+      - Enables fine-grained control over blank line requirements
+        for different heading levels
+      - Supports both global and per-level unlimited blank line
+        settings
+  * Fixed
+    - Range utilities: Handle UTF-8 character boundaries safely
+      (fixes #154)
+      - Fixed panic when processing files with multi-byte UTF-8
+        characters (CJK, emoji)
+      - String slicing operations now safely handle byte indices
+        that fall in the middle of multi-byte characters
+      - Added comprehensive test suite covering Korean, Chinese,
+        Japanese characters, emoji, and edge cases
+      - All string slicing operations now occur at valid UTF-8
+        character boundaries
+    - MD041 (first-line-heading): HTML comments are now correctly
+      skipped (fixes #155)
+      - HTML comments before headings are now treated as
+        non-visible content and ignored
+      - Aligns with documentation and markdownlint behavior
+      - Multi-line HTML comments are properly handled using parser
+        metadata
+      - Fixed handling of deeply nested HTML headings
+
+-------------------------------------------------------------------
+Wed Nov 19 09:54:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.0.179:
+  * Fixed
+    - MD041 (first-line-heading): Fixed multiline HTML detection
+      for headings
+      - Replace manual HTML parsing with centralized
+        ctx.html_tags() parser
+      - Correctly handles nested HTML elements with multiline
+        attributes
+      - Fixes Issue #152: No longer incorrectly flags headings when
+        preceded by multiline HTML
+    - MD037 (no-space-in-emphasis): Improved warning message
+      clarity
+      - Truncate long emphasis text in warning messages to prevent
+        display issues
+      - Long emphasis spans are now shown with ellipsis for better
+        readability
+  * Performance
+    - MD005 (list-indent): Eliminated O(n²) complexity by
+      pre-computing parent relationships
+      - Pre-compute parent list item relationships during initial
+        parsing
+      - Reduces algorithmic complexity from O(n²) to O(n) for
+        deeply nested lists
+      - Improves performance for files with complex list structures
+    - Optimized link/image regex patterns to prevent catastrophic
+      backtracking
+      - Added atomic grouping and possessive quantifiers to regex
+        patterns in lint_context.rs
+      - Prevents regex engine from exponential backtracking on
+        pathological inputs
+      - Improves parsing speed for files with many links and images
+  * Changed
+    - MD033 (no-inline-html): Refactored to use centralized HTML
+      parser
+      - Removed 109 lines of broken find_multiline_html_tags()
+        function that detected 0 multiline HTML tags
+      - Replaced two-pass approach (single-line regex + multiline
+        detection) with single-pass using ctx.html_tags()
+      - Now correctly detects all multiline HTML tags (previously
+        missed 100% of them)
+      - Follows pattern from MD041 refactoring for consistency
+      - Preserves all existing filters (code blocks, kramdown,
+        comments, etc.)
+  * Added
+    - Comprehensive MD005 test coverage
+      - Added 21 new edge case tests for list indentation detection
+      - Updated unicode test to verify dynamic parent relationship
+        detection
+      - Ensures robustness for nested and complex list structures
+
+-------------------------------------------------------------------
 Tue Nov 18 06:25:19 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.0.178:
