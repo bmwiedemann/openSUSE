@@ -181,4 +181,18 @@
   * Update OTLP gRPC/HTTP exporters: calling shutdown will now</comment>
     <requestid>1306342</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1701e9a74bd33d3f41cec2e355ee37e1</srcmd5>
+    <version>1.38.0</version>
+    <time>1763740547</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.38.0:
+  * Add `rstcheck` to pre-commit to stop introducing invalid RST
+  * logs: extend Logger.emit to accept separated keyword
+    arguments
+  * logs: add warnings for classes that would be deprecated and
+    renamed in 1.39.0
+</comment>
+    <requestid>1318870</requestid>
+  </revision>
 </revisionlist>
