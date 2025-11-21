@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Nov 20 06:45:04 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251119 (git commit fe13aa9b9830):
+  * mediatek MT7922: update bluetooth firmware to 20251118163447
+  * linux-firmware: update firmware for MT7922 WiFi device
+
+-------------------------------------------------------------------
+Tue Nov 18 14:20:48 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251118 (git commit 53dce114cc5d):
+  * mt76: add firmware for MT7990
+  * mt76: update firmware for MT7992
+  * mt76: update firmware for MT7996
+
+-------------------------------------------------------------------
 Tue Nov 11 06:58:26 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20251110 (git commit 15b5dddd9b2a):
