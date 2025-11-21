@@ -1,7 +1,7 @@
 #
 # spec file for package apulse
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define pulse_major %(sed -n '/^#define.*PA_MAJOR/{s/^.* //;p}' %{_includedir}/pulse/version.h)
 %define __provides_exclude_from ^%{_libdir}/apulse/.*.so.*$
 Name:           apulse
-Version:        0.1.13
+Version:        0.1.14
 Release:        0
 Summary:        PulseAudio emulation for ALSA
 License:        MIT
