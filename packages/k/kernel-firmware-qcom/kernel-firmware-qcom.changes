@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Nov 19 08:16:27 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251119 (git commit 8b9fd78478ac):
+  * qcom: update ADSP, CDSP firmware for kaanapali platform, change the license
+  * qcom: add ADSP, CDSP firmware for sm8750 platform
+
+-------------------------------------------------------------------
+Tue Nov 18 14:20:56 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251118 (git commit 53dce114cc5d):
+  * qcom: Update aic100 firmware files
+  * qcom: Add sdx35 Foxconn vendor firmware image file
+
+-------------------------------------------------------------------
 Tue Nov 11 06:58:37 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update aliases

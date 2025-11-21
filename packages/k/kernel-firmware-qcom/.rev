@@ -285,4 +285,18 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment>- Update aliases</comment>
     <requestid>1317809</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>019c3588f5df6ca22dce6b628bf431cf</srcmd5>
+    <version>20251119</version>
+    <time>1763740410</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251119 (git commit 8b9fd78478ac):
+  * qcom: update ADSP, CDSP firmware for kaanapali platform, change the license
+  * qcom: add ADSP, CDSP firmware for sm8750 platform
+
+- Update to version 20251118 (git commit 53dce114cc5d):
+  * qcom: Update aic100 firmware files
+  * qcom: Add sdx35 Foxconn vendor firmware image file</comment>
+    <requestid>1318811</requestid>
+  </revision>
 </revisionlist>
