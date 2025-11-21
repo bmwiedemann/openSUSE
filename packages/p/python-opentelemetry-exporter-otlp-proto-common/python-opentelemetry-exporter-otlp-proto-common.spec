@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-opentelemetry-exporter-otlp-proto-common
-Version:        1.37.0
+Version:        1.38.0
 Release:        0
 Summary:        OpenTelemetry Protobuf encoding
 License:        Apache-2.0
