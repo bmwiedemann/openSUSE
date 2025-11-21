@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Nov 20 09:50:50 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.11
+  * Remove redundant wheel dep
+  * setup.cfg: add `metadata.project_urls` (#71)
+  * Convert section title comments to code-folding regions
+  * Add write methods and classes (bit ints not implemented yet)
+  * Add write_bits_int_{be,le}() and write_align_to_byte()
+  * Invoke {,write_}align_to_byte() in all byte-aligned operations
+  * Emulate fixed-length stream when writing
+  * close(): flush unwritten bits before closing
+  * Update pos() and is_eof() for {read,write}_bits_int_*() parity
+  * LICENSE: bump copyright year
+  * Bump package version and API version to 0.11
+  * Bump package version to 0.11.dev1
+  * Add Python 3.11 tag to setup.cfg (#74)
+  * size(): fix returning `None` in Python 2 for 'file' objects
+  * Support writing to 'file' objects in Python 2
+  * is_eof(): fix for write-only streams
+  * write_bits_int_{be,le}(): raise EOF errors proactively
+  * write_align_to_byte(): clear bit buffer even if the write fails
+  * _write_bytes_not_aligned(): use `self._io.tell()` in EOF check
+  * Validation*Error: only include "at pos X: " if `io` is not `None`
+  * close(): ensure that all calls to read_bits_int_*() fail after closing
+  * bytes_terminate(): speed up by avoiding unnecessary memory copying
+  * read_bytes_term(): speed up by avoiding unnecessary memory copying
+  * read_bytes_term(): additional minor performance improvements
+  * Add bytes_terminate_multi() and read_bytes_term_multi()
+  * bytes_terminate_multi(): rename variable `search_{idx => index}`
+  * bytes_terminate_multi(): improve worst-case performance
+  * Add ValidationNotInEnumError
+  * LICENSE: bump copyright year
+  * Raise `DeprecationWarning` from deprecated methods
+  * write_bytes_limit(): small improvements
+  * Adopt a system of exceptions derived from KaitaiStructError
+  * LICENSE: bump copyright year
+  * setup.cfg: add Python 3.12 and 3.13 classifiers
+  * Refuse to write objects with unchecked modifications
+  * ConsistencyError: swap params to match the error message
+  * Remove the outdated `pycodestyle` CI workflow
+  * .editorconfig: remove `*.ksy` rules
+  * GH Actions: publish `v*.dev*` tags to TestPyPI
+  * Bump version to 0.11.dev2
+  * setup.cfg: remove "Source" and "Tracker" project URLs
+  * Bump version to 0.11.dev3
+  * Revert "setup.cfg: remove "Source" and "Tracker" project URLs"
+  * setup.cfg: rename "{Source => Code}" and "{Tracker => Issues}"
+  * setup.cfg: remove deprecated "MIT License" classifier
+  * Bump version to 0.11.dev4
+  * GH Actions: publish `v0.[0-9]+` tags to PyPI
+
+-------------------------------------------------------------------
 Mon Jan 29 21:29:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - build also for 311
