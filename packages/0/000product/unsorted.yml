@@ -600,10 +600,12 @@ unsorted:
   - angelscript-devel 
   - ansible 
   - ansible-11 
+  - ansible-12 
   - ansible-builder 
   - ansible-cmdb 
   - ansible-core 
   - ansible-core-2.18 
+  - ansible-core-2.19 
   - ansible-documentation 
   - ansible-lint 
   - ansible-linux-system-roles 
@@ -617,6 +619,7 @@ unsorted:
   - ansible-terraform-inventory 
   - ansible-test 
   - ansible-test-2.18 
+  - ansible-test-2.19 
   - ansible-variables 
   - ansifilter 
   - ansifilter-gui 
@@ -1474,8 +1477,15 @@ unsorted:
   - bleachbit 
   - bleachbit-lang 
   - blender 
+  - blender-4.5 
+  - blender-4.5-demo 
+  - blender-4.5-lang 
+  - blender-5.0 
+  - blender-5.0-demo 
+  - blender-5.0-lang 
   - blender-demo 
   - blender-lang 
+  - blender-lts 
   - bless 
   - bless-doc 
   - blis-devel 
@@ -7293,7 +7303,6 @@ unsorted:
   - gnome-icon-theme 
   - gnome-icon-theme-extras 
   - gnome-icon-theme-symbolic 
-  - gnome-info-collect 
   - gnome-initial-setup 
   - gnome-initial-setup-lang 
   - gnome-keyring-sharp 
@@ -15792,7 +15801,7 @@ unsorted:
   - librdmacm-utils 
   - librdmacm1-32bit 
   - libre2-11 
-  - libre38 
+  - libre39 
   - libreadline-java 
   - libreadline-java-javadoc 
   - libreadline5 
