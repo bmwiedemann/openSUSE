@@ -181,4 +181,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * rtl_nic: add firmware rtl8125k-1</comment>
     <requestid>1317810</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a1b5d85f1daad1b2045e1d940a530afd</srcmd5>
+    <version>20251118</version>
+    <time>1763740411</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251118 (git commit 53dce114cc5d):
+  * rtl_nic: add firmware rtl9151a-1</comment>
+    <requestid>1318812</requestid>
+  </revision>
 </revisionlist>
