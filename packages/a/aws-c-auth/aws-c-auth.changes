@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 20 08:39:11 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.2
+  * Create a common base for http client, migrate sso by @sbiscigl in (#276)
+  * Add aws login provider by @sbiscigl in (#278)
+
+-------------------------------------------------------------------
 Tue Sep  9 11:07:37 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.9.1
