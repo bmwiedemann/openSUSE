@@ -1,7 +1,7 @@
 #
 # spec file for package python-testrepository
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,7 @@ BuildRequires:  %{python_module testtools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-dbm
 Requires:       python-fixtures
 Requires:       python-iso8601
 Requires:       python-python-subunit >= 0.0.11

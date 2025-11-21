@@ -237,4 +237,12 @@
 - No more greedy globs in %files.</comment>
     <requestid>1273900</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>1596b153ee8a8fbdc0b5ccbc514b3efd</srcmd5>
+    <version>0.0.21</version>
+    <time>1763740603</time>
+    <user>anag_factory</user>
+    <comment>- Add missing Requires on dbm.</comment>
+    <requestid>1318949</requestid>
+  </revision>
 </revisionlist>
