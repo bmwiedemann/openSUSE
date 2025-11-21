@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 20 08:15:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.4.5:
+  * update KubeArmor/protobuf dependency
+  * upgrade go dependencies
+  * rename unused variable
+  * feat: (recommend) Implement recommend functionality for Docker
+    Client
+
+-------------------------------------------------------------------
 Tue Jul 08 10:49:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.4.4:
