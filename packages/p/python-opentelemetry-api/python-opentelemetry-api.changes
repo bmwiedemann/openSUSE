@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 17 21:30:09 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.38.0:
+  * Add `rstcheck` to pre-commit to stop introducing invalid RST
+  * logs: extend Logger.emit to accept separated keyword
+    arguments
+  * logs: add warnings for classes that would be deprecated and
+    renamed in 1.39.0
+
+-------------------------------------------------------------------
 Sun Sep 21 14:52:54 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.37.0:
