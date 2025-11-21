@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 20 08:28:21 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.11
+  * Fix byo for ecc from asn1 by @DmitriyMusatkin in (#241)
+- from version 0.9.10
+  * Relax EC keygen to work on all platforms by @DmitriyMusatkin in (#240)
+- from version 0.9.9
+  * Remove skip test by @azkrishpy in (#239)
+
+-------------------------------------------------------------------
 Mon Nov  3 13:39:42 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.9.8
