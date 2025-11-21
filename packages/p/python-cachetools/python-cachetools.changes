@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 20 08:21:17 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 6.2.2
+  * Minor improvements from GitHub Copilot code review.
+  * Improve documentation.
+- from version 6.2.1
+  * Add support for Python 3.14.
+  * Improve documentation.
+  * Update CI environment.
+
+-------------------------------------------------------------------
 Wed Sep 10 08:24:04 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 6.2.0
