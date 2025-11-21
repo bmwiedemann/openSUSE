@@ -1,7 +1,7 @@
 #
 # spec file for package libvhdi
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 
 %define lname	libvhdi1
 Name:           libvhdi
-Version:        20240509
+Version:        20251119
 Release:        0
 Summary:        Library and tools to access the VHD image format
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
