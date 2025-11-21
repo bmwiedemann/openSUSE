@@ -1,9 +1,63 @@
 -------------------------------------------------------------------
+Fri Nov 21 10:27:18 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.2.9+git0.170436929:
+  * [RELEASE] Released version 3.2.9
+  * DOC: http: document 413 response code
+  * ADMIN: dump-certs: let dry-run compare certificates
+  * ADMIN: dump-certs: use same error format as haproxy
+  * ADMIN: dump-certs: fix lack of / in -p
+  * ADMIN: dump-certs: create files in a tmpdir
+  * ADMIN: dump-certs: don't update the file if it's up to date
+  * ADMIN: haproxy-dump-certs: implement a certificate dumper
+  * BUG/MEDIUM: proxy: do not align proxy_per_tgroup beyond allocator's capabilities
+  * BUG/MEDIUM: config: Use the mux protocol ALPN by default for listeners if forced
+  * MINOR: config: Do proto detection for listeners before checks about ALPN
+  * MINOR: muxes: Support an optional ALPN string when defining mux protocols
+  * BUG/MEDIUM: queues: Don't forget to unlock the queue before exiting
+  * DOC: acme: configuring acme needs a crt file
+  * DOC: acme: explain how to dump the certificates
+  * DOC: acme: add details about the DNS-01 support
+  * BUG/MINOR: acme: alert when the map doesn't exist at startup
+  * BUG/MINOR: ssl: remove dead code in ssl_sock_from_buf()
+  * BUG/MINOR: mworker: wrong signals during startup
+  * BUG/MEDIUM: mworker: signals inconsistencies during startup and reload
+  * BUG/MINOR: quic-be: backend SSL session reuse fix (OpenSSL 3.5)
+  * BUG/MEDIUM: h1: prevent a crash on HTTP/2 upgrade
+  * MINOR: h1: h1_release() should return if it destroyed the connection
+  * BUG/MINOR: stick-tables: Fix return value for __stksess_kill()
+  * BUG/MEDIUM: stick-tables: Always return the good stksess from stktable_set_entry
+  * DOC: configuration: add missing openssl_version predicates
+  * DOC: configuration: add missing ssllib_name_startswith()
+  * BUG/MINOR: check: fix reuse-pool if MUX inherited from server
+  * BUG/MINOR: acme: can't override the default resolver
+  * BUG/MEDIUM: acme: move from mt_list to a rwlock + ebmbtree
+  * BUG/MINOR: acme: more explicit error when BIO_new_file()
+  * BUG/MINOR: quic: close connection on CID alloc failure
+  * BUG/MEDIUM: stick-tables: Make sure updates are seen as local
+  * BUG/MINOR: config: Limit "tune.maxpollevents" parameter to 1000000
+  * BUG/MEDIUM: connection/ssl: also fix the ssl_sock_io_cb() regarding idle list
+  * BUG/MEDIUM: connection: do not reinsert a purgeable conn in idle list
+  * Revert "BUG/MEDIUM: connections: permit to permanently remove an idle conn"
+  * MINOR: ssl/sample: expose ssl_*c_curve for AWS-LC
+
+-------------------------------------------------------------------
+Thu Nov 20 14:50:10 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- refresh haproxy-1.6.0-makefile_lib.patch
+- Readd USE_RELRO_NOW=1, USE_STACKPROTECTOR=1, USE_PIE=1
+  all of them are still used. (boo#1251868)
+- adapt haproxy-1.6.0-sec-options.patch so the build no longer
+  complains about unused options
+- drop CPU="%{_target_cpu}" as it is unused
+- migrate to DEBUG_CFLAGS to OPT_CFLAGS
+
+-------------------------------------------------------------------
 Fri Nov  7 20:10:51 UTC 2025 - Peter Varkoly <varkoly@suse.com>
 
 - Remove checks for not supported openSUSE versions
 - Remove deprecated build options: USE_RELRO_NOW=1, USE_STACKPROTECTOR=1, USE_PIE=1, USE_SYSTEMD=1
-- Remove deprecated ini file
+- Remove deprecated init file
 
 -------------------------------------------------------------------
 Fri Nov 07 10:18:45 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>

@@ -47,7 +47,7 @@
 %endif
 
 Name:           haproxy
-Version:        3.2.8+git0.9200f398d
+Version:        3.2.9+git0.170436929
 Release:        0
 #
 Summary:        The Reliable, High Performance TCP/HTTP Load Balancer
@@ -118,7 +118,9 @@ cp %{SOURCE7} .
 %build
 %make_build \
     TARGET=linux-glibc \
-    CPU="%{_target_cpu}" \
+    USE_RELRO_NOW=1 \
+    USE_STACKPROTECTOR=1 \
+    USE_PIE=1 \
     USE_PCRE2=1 \
     %if %{with pcre2_jit}
     USE_PCRE2_JIT=1 \
@@ -151,7 +153,7 @@ cp %{SOURCE7} .
     %if %{with memory_profiling}
     USE_MEMORY_PROFILING=1 \
     %endif
-    DEBUG_CFLAGS="%{optflags}" V=1
+    OPT_CFLAGS="%{optflags}" V=1
 %make_build -C admin/systemd  PREFIX="%{_prefix}"
 %sysusers_generate_pre %{SOURCE5} haproxy haproxy-user.conf
 %make_build admin/halog/halog DEBUG_CFLAGS="%{optflags}"
