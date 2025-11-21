@@ -16,9 +16,9 @@
 #
 
 
-%define ansible_community_major_version 12
-%define required_ansible_core_version 2.19.4
-%define next_ansible_core_version 2.20.0
+%define ansible_community_major_version 13
+%define required_ansible_core_version 2.20.0
+%define next_ansible_core_version 2.21.0
 
 
 %{?sle15_python_module_pythons}
@@ -43,7 +43,7 @@
 %endif
 
 Name:           ansible
-Version:        12.2.0
+Version:        13.0.0
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0-or-later
