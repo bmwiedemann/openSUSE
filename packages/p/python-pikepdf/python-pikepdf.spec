@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pikepdf
-Version:        9.11.0
+Version:        10.0.2
 Release:        0
 Summary:        Read and write PDFs with Python, powered by qpdf
 License:        MPL-2.0
@@ -31,7 +31,7 @@ BuildRequires:  %{python_module Deprecated}
 BuildRequires:  %{python_module Pillow >= 10.0.1}
 BuildRequires:  %{python_module attrs >= 20.2.0}
 BuildRequires:  %{python_module deprecated}
-BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module hypothesis >= 6.36}
 BuildRequires:  %{python_module lxml >= 4.8}
 BuildRequires:  %{python_module packaging}
@@ -56,7 +56,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  libjpeg8-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libqpdf) >= 11.5.0
+BuildRequires:  pkgconfig(libqpdf) >= 12.2.0
 Requires:       python-Deprecated
 Requires:       python-Pillow >= 10.0.1
 Requires:       python-lxml >= 4.8
