@@ -111,4 +111,17 @@
   * Permit to override default HTTP OTLP exporters headers</comment>
     <requestid>1306352</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1350d9147701882c38cd6f3bbbc6e477</srcmd5>
+    <version>0.59b0</version>
+    <time>1763740422</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.59b0:
+  * Add rstcheck to pre-commit to stop introducing invalid RST
+  * logs: extend Logger.emit to accept separated keyword arguments
+  * logs: add warnings for classes that would be deprecated and
+    renamed in 1.39.0
+</comment>
+    <requestid>1318871</requestid>
+  </revision>
 </revisionlist>
