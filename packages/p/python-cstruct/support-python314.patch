@@ -1,0 +1,16 @@
+Index: python-cstruct-6.1/cstruct/c_expr.py
+===================================================================
+--- python-cstruct-6.1.orig/cstruct/c_expr.py
++++ python-cstruct-6.1/cstruct/c_expr.py
+@@ -167,11 +167,9 @@ except AttributeError:  # python < 3.8
+ 
+ OPS: Dict[Type[ast.AST], Callable[[Any], Any]] = {
+     ast.Expr: lambda node: eval_node(node.value),
+-    ast.Num: lambda node: node.n,
+     ast.Name: eval_get,
+     ast.Call: eval_call,
+     Constant: lambda node: node.value,
+-    ast.Str: lambda node: node.s,  # python < 3.8
+     # and/or
+     ast.BoolOp: lambda node: OPS[type(node.op)](node),  # and/or operator
+     ast.And: lambda node: all(eval_node(x) for x in node.values),  # && operator

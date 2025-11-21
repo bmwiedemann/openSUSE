@@ -79,4 +79,13 @@
   * fix CStruct.pack() padding</comment>
     <requestid>1292440</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>bff7d3c70ab96e391748e0397f1791cc</srcmd5>
+    <version>6.1</version>
+    <time>1763740569</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-python314.patch:
+  * Do not support now-removed ast.{Num,Str}.</comment>
+    <requestid>1318946</requestid>
+  </revision>
 </revisionlist>

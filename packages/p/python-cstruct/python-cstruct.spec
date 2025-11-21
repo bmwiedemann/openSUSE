@@ -1,7 +1,7 @@
 #
 # spec file for package python-cstruct
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2020-2022, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,9 +22,9 @@ Version:        6.1
 Release:        0
 Summary:        C-style structs for Python
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/andreax79/python-cstruct
 Source:         https://github.com/andreax79/python-cstruct/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         support-python314.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -45,7 +45,7 @@ Python object and the method "pack" for serializing the values into
 a string.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %pyproject_wheel
