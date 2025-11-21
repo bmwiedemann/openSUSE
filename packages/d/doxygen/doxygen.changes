@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 12 10:56:26 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  https://github.com/doxygen/doxygen/pull/11864
+  * doxygen-testsuite-failure-final-solution.patch
+- TEST_FLAGS="--xmlxsd" is no longer needed
+  (https://github.com/doxygen/doxygen/commit/8e2dcb4b91a3e1788e8253ad0f0ca921d362717a)
+
+-------------------------------------------------------------------
 Wed Oct 22 16:25:26 UTC 2025 - Christoph G <foss@grueninger.de>
 
 - update to 1.15.0

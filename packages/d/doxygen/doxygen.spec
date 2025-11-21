@@ -29,6 +29,8 @@ Source0:        https://github.com/doxygen/doxygen/releases/download/%{rdir}/dox
 # suse specific
 Patch1:         %{name}-no-lowercase-man-names.patch
 Patch2:         reproducible.patch
+# https://github.com/doxygen/doxygen/pull/11864
+Patch3:         doxygen-testsuite-failure-final-solution.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 3.14
 BuildRequires:  flex

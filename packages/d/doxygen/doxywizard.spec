@@ -75,9 +75,6 @@ configuration files.
 export LANG=C.UTF-8
 # testing doxygen package here to avoid build
 # cycle between latex and doxygen
-#
-# TEST_FLAGS: otherwise 009_bug fails (https://github.com/doxygen/doxygen/issues/11772)
-export TEST_FLAGS="--xmlxsd"
 %ctest
 
 %install

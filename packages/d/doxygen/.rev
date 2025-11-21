@@ -2510,4 +2510,12 @@ On Leap15/SLE15 a newer GCC is needed to build against Qt6. On SLE15 the default
     this option to NO. (forwarded request 1313071 from mathletic)</comment>
     <requestid>1313344</requestid>
   </revision>
+  <revision rev="109" vrev="2">
+    <srcmd5>66efeeea2290f43c1c8430b7bb16aa4b</srcmd5>
+    <version>1.15.0</version>
+    <time>1763740426</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1318694</requestid>
+  </revision>
 </revisionlist>
