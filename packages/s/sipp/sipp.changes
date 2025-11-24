@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Nov 20 15:25:57 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.7.5
+  Features
+  * Enable a mixture of server-mode and client-mode operation
+    simultaneously.
+  * Support for regexp matching on response codes.
+  * Support RFC3339 timestamp format and timezone offset.
+  Bugs fixed
+  * Fix RTPCHECK functionality regressions.
+  * Fix SRTPCheck testing on unlimited number of calls.
+  * Use random SSRC for SRTP instead of hardcoded value.
+  * Fix RTPStream crash on thread exit and reduce mutex scope.
+  * Fix memory leaks and file handle leaks.
+  * Fix CSV reports to use fixed precision for floats.
+  * Fix quit behavior to properly terminate.
+  * Mark aborted calls as failed.
+  * Various stability and build fixes.
+
+-------------------------------------------------------------------
 Mon Sep  9 13:41:58 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.7.3
