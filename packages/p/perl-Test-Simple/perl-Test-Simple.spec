@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Simple
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %define cpan_name Test-Simple
 Name:           perl-Test-Simple
-Version:        1.302214
+Version:        1.302216
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Basic utilities for writing tests
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/E/EX/EXODIST/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -46,7 +47,7 @@ complicated testing, use the Test::More module (a drop-in replacement for
 this one).
 
 %prep
-%autosetup  -n %{cpan_name}-%{version} -p1
+%autosetup -n %{cpan_name}-%{version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 

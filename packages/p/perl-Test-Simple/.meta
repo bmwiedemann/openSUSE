@@ -31,6 +31,5 @@ just to get you started. Once you're off the ground its recommended you
 look at the Test::More manpage.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Test-Simple"/>
   <url>http://search.cpan.org/dist/Test-Simple/</url>
 </package>

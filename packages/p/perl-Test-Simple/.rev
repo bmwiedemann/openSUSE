@@ -455,4 +455,19 @@
     <comment>obsolete perl-Test2-Suite since it has been merged into this package</comment>
     <requestid>1296178</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>4975e87489549059bc70d2bf2f1bdba6</srcmd5>
+    <version>1.302216</version>
+    <time>1763989516</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.302216
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+  1.302216  2025-11-15 21:18:57-08:00 America/Los_Angeles
+      - Fix Changelog, no other changes
+      - Add dzil tool to prevent this next time
+  1.302215  2025-11-13 16:41:55-08:00 America/Los_Angeles
+      - Fix Typos (Thanks Masahiro Iuchi)
+      - Fix undef string bug in Test::Tester (Thanks Branislav Zahradník)</comment>
+    <requestid>1319073</requestid>
+  </revision>
 </revisionlist>
