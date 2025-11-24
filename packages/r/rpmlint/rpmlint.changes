@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 21 15:14:04 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.8.0+git20251120.ec01a0fd:
+  * Revert "sysctl-whitelist: Support old aaa_base whitelisting"
+  * permissions: snap-confine (bsc#1248682)
+  * dbus-services: whitelist lightdm-kde-greeter (bsc#1249146)
+
+-------------------------------------------------------------------
 Fri Nov 07 09:47:26 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.8.0+git20251107.a65b622f:
