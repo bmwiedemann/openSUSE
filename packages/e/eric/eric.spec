@@ -1,7 +1,7 @@
 #
 # spec file for package eric
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2010-2023 LISA GmbH, Bingen, Germany
 #
 # All modifications and additions to the file contributed by third parties
@@ -40,7 +40,6 @@ BuildRequires:  python3-qt6
 BuildRequires:  python3-qtcharts-qt6
 BuildRequires:  python3-qtwebengine-qt6
 BuildRequires:  python3-xml
-BuildRequires:  update-desktop-files
 Requires:       python3-EditorConfig
 Requires:       python3-Pygments
 Requires:       python3-asttokens
