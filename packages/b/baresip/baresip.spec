@@ -20,7 +20,7 @@
 %global sover   22
 %global libname lib%{name}%{sover}
 Name:           baresip
-Version:        4.1.0
+Version:        4.2.0
 Release:        0
 Summary:        Modular SIP useragent
 License:        BSD-3-Clause
@@ -50,6 +50,7 @@ BuildRequires:  pkgconfig(libcrypto) >= 1.1.1
 BuildRequires:  pkgconfig(libmosquitto)
 BuildRequires:  pkgconfig(libmp3lame)
 BuildRequires:  pkgconfig(libmpg123)
+BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libre) >= 2.10.0
 BuildRequires:  pkgconfig(librem) >= 2.10.0
@@ -186,7 +187,6 @@ sed 's|%{_prefix}/local/share|%{_datadir}/|g' -i docs/examples/config
 %{_libdir}/baresip/modules/menu.so
 %{_libdir}/baresip/modules/mixausrc.so
 %{_libdir}/baresip/modules/mixminus.so
-%{_libdir}/baresip/modules/mpa.so
 %{_libdir}/baresip/modules/mqtt.so
 %{_libdir}/baresip/modules/mwi.so
 %{_libdir}/baresip/modules/natpmp.so
@@ -195,6 +195,7 @@ sed 's|%{_prefix}/local/share|%{_datadir}/|g' -i docs/examples/config
 %{_libdir}/baresip/modules/opus_multistream.so
 %{_libdir}/baresip/modules/pcp.so
 %{_libdir}/baresip/modules/plc.so
+%{_libdir}/baresip/modules/pipewire.so
 %{_libdir}/baresip/modules/presence.so
 %{_libdir}/baresip/modules/portaudio.so
 %{_libdir}/baresip/modules/pulse.so
@@ -209,7 +210,6 @@ sed 's|%{_prefix}/local/share|%{_datadir}/|g' -i docs/examples/config
 %{_libdir}/baresip/modules/turn.so
 %{_libdir}/baresip/modules/uuid.so
 %{_libdir}/baresip/modules/vumeter.so
-%{_libdir}/baresip/modules/webrtc_aec.so
 
 %files devel
 %license LICENSE
