@@ -1,7 +1,7 @@
 #
 # spec file for package python-spyder-kernels
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 # flaky for obs, only test locally
 %bcond_with dasktest
 Name:           python-spyder-kernels
-Version:        3.0.5
+Version:        3.1.2
 Release:        0
 Summary:        Jupyter kernels for Spyder's console
 License:        MIT
@@ -27,7 +27,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/spyder-ide/spyder-kernels
 # PyPI tarballs do not include the tests: https://github.com/spyder-ide/spyder-kernels/issues/66
 Source0:        https://github.com/spyder-ide/spyder-kernels/archive/v%{version}.tar.gz#/spyder-kernels-%{version}-gh.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -37,14 +37,16 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module anyio}
 BuildRequires:  %{python_module cloudpickle}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module h5py}
 BuildRequires:  %{python_module ipykernel >= 6.29.3 with %python-ipykernel < 7}
-BuildRequires:  %{python_module ipython >= 8.13 with %python-ipython < 9}
+BuildRequires:  %{python_module ipython >= 8.13 with %python-ipython < 10}
 BuildRequires:  %{python_module jupyter_client >= 7.4.9 with %python-jupyter_client < 9}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pydicom}
 BuildRequires:  %{python_module pytest}
@@ -59,12 +61,13 @@ BuildRequires:  %{python_module dask-distributed}
 %endif
 # /SECTION
 Requires:       python-cloudpickle
+Requires:       python-packaging
 Requires:       python-pyxdg >= 0.26
 Requires:       python-pyzmq >= 24
 Requires:       python-traitlets >= 5.14.3
 Requires:       python-wurlitzer >= 1.0.3
 Requires:       (python-ipykernel >= 6.29.3 with python-ipykernel < 7)
-Requires:       (python-ipython >= 8.13 with python-ipython < 9)
+Requires:       (python-ipython >= 8.15 with python-ipython < 10)
 Requires:       (python-jupyter_client >= 7.4.9 with python-jupyter_client < 9)
 # gh#spyder-ide/spyder#20789
 Provides:       spyder-dicom = 6+%{version}-%{release}
@@ -96,10 +99,12 @@ all inside the IDE.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# no polars in openSUSE
+donttest="polars"
 %if ! %{with dasktest}
-donttest=("-k" "not test_dask_multiprocessing")
+donttest+=" or test_dask_multiprocessing"
 %endif
-%pytest "${donttest[@]}"
+%pytest -k "not ($donttest)"
 
 %files %{python_files}
 %doc CHANGELOG.md README.md

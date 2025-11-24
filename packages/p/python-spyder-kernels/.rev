@@ -705,4 +705,24 @@
     running files, by @jsbautista (v3.0.4) (forwarded request 1281206 from bnavigator)</comment>
     <requestid>1281210</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>a23223780b136c1dda4d39b519893e57</srcmd5>
+    <version>3.1.2</version>
+    <time>1763989743</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.1.2
+  * PR 570 - PR: Remove overridden set_trace in SpyderPdb because
+    it's not needed, by @ccordoba12
+- Release 3.1.1
+  * PR 566 - PR: Fix getting Pixi environment info on Posix
+    systems, by @ccordoba12  
+- Release 3.1.0
+  * Disable magics and commands to call Python package managers
+    (e.g. !pip or %conda).
+  * Add %profile, %profilefile and %profilecell magics.
+  * Add support for IPython 9.
+  * Drop support for Python 3.8.
+</comment>
+    <requestid>1319163</requestid>
+  </revision>
 </revisionlist>

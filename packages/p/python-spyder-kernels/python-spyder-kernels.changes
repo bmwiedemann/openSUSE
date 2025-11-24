@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Nov 21 15:25:20 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.1.2
+  * PR 570 - PR: Remove overridden set_trace in SpyderPdb because
+    it's not needed, by @ccordoba12
+- Release 3.1.1
+  * PR 566 - PR: Fix getting Pixi environment info on Posix
+    systems, by @ccordoba12  
+- Release 3.1.0
+  * Disable magics and commands to call Python package managers
+    (e.g. !pip or %conda).
+  * Add %profile, %profilefile and %profilecell magics.
+  * Add support for IPython 9.
+  * Drop support for Python 3.8.
+
+-------------------------------------------------------------------
 Thu May 29 19:13:05 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.0.5
