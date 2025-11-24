@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sun Nov 16 05:52:30 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.1.2:
+  * Regex substitutions now also apply to custom text boxes, with
+    support for square brackets [].
+  * Text labels now support mixed single and double quotes.
+  * Python-based yoda.write() can now be redirected to stdout.
+  * Large NumPy arrays in plotting scripts are no longer
+    truncated.
+  * Fixed an issue affecting analyses with multiple ratio panels
+    and analysis options.
+  * Corrected asymmetric error-bar ordering in Matplotlib.
+  * Fixed a bug in handling single-value opacity settings.
+- Changes from version 2.1.1:
+  * Cythonise YODA exceptions and skip objects with inconsistent
+    binning in yodamerge and yodastack.
+- Changes from version 2.1.0:
+  * Add support for regex-based capture of AO path/name components
+    with optional string substitution map.
+- Changes from version 2.0.3:
+  * Convert all scripts to use explicit python3 as interpreter,
+    and remove defunct uses of 'from __future__ import' except in
+    configure.ac where compatibility is needed to detect and
+    reject Python2.
+  * Add exception handling and Scatter1D conversion to
+    YODA-to-ROOT conversion.
+  * Restore case-sensitivity for Python dictionary in
+    annotationsDict() call.
+  * Fix typo and path-setting in yodaenvelope.
+  * Change Python build to use PY_LDFLAGS rather than
+    LINKFORSHARED variable.
+  * Fix Python path detection again, cf. GAMBIT Mac CI.
+  * Enable -Wextra warnings upon recommendation from CMS, and
+    address resulting issues.
+- Use default python3-Cython for builds instead of pinning to
+  python3-Cython < 3.
+- Minor rebase of sover.diff to apply cleanly against new version.
+- Add YODA.rpmlintrc to suppress false warning from rpmlint about
+  requiring explicit lib, where python3-matplotlib is a python
+  module, and not a lib, despite its name.
+- Build with hdf5 support for Leap 16 and Tumbleweed.
+
+-------------------------------------------------------------------
 Sun Mar 23 14:49:53 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.9.11:

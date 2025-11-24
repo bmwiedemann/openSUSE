@@ -1,0 +1,2 @@
+# matplotlib is a python module, not a lib
+addFilter("YODA-matplotlib-style.noarch: E: explicit-lib-dependency python3-matplotlib")
