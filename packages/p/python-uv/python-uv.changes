@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Nov 24 10:17:23 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.9.11
+ * Enhancements
+  * Add SBOM support to uv export 
+  * Publish to crates.io 
+ * Preview features
+  * Add uv workspace list --paths 
+  * Fix the preview warning on uv workspace dir 
+ * Bug fixes
+  * Fix uv init author serialization via toml_edit inline tables 
+  * Fix status messages without TTY 
+  * Preserve end-of-line comment whitespace when editing pyproject.toml 
+  * Disable always-authenticate when running under Dependabot 
+ * Documentation
+  * Document the new behavior for free-threaded python versions 
+  * Improve note about build system in publish guide 
+  * Move do not upload publish note out of the guide into concepts 
+
+-------------------------------------------------------------------
 Tue Nov 18 15:27:07 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.9.10
