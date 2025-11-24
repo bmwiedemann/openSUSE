@@ -1,7 +1,7 @@
 #
 # spec file for package mtr
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mtr
-Version:        0.95
+Version:        0.96
 Release:        0
 Summary:        Ping and Traceroute Network Diagnostic Tool
 License:        GPL-2.0-only
@@ -27,7 +27,6 @@ Source:         https://github.com/traviscross/mtr/archive/refs/tags/v%{version}
 Source1:        xmtr.desktop
 Patch1:         mtr-0.75-manmtr.patch
 Patch2:         mtr-0.87-manxmtr.patch
-Patch3:         mtr-fixoverflow.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gtk3-devel

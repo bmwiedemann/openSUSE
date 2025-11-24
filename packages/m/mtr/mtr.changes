@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Nov 23 09:29:29 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.96
+  * Change UDP and ICMP sockets binding to accept a source IP
+    from the -a CLI option.
+  * Adjust MIN_PORT to match other implementations.
+  * Handle EHOSTDOWN and refine error handling better granularity.
+  * Add braille graph support with --displaymode 3.
+  * Use addrs for static host ordering in curses.
+  * Add --max-display-paths option.
+  * Add a compact mode in curses.
+  * Implement ASN lookups in well-known nat64 prefix.
+  * Set UTF-8 encoding for XML reports.
+  * Changed how conflicitng first/max TTL works.
+  * Increased max probes.
+  * Add help info for option -E.
+- Drop patch
+  * mtr-fixoverflow.patch (included upstream 5908af4)
+
+-------------------------------------------------------------------
 Tue Apr 11 09:52:15 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - mtr-fixoverflow.patch: specify correct sizes to snprintf (bsc#1208937)
