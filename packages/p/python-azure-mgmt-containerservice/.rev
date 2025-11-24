@@ -655,4 +655,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1314803 from glaubitz)</comment>
     <requestid>1314812</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>d5fee2ace9f5ee201c115e095cfcb6b3</srcmd5>
+    <version>40.2.0</version>
+    <time>1763990092</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 40.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1319640 from glaubitz)</comment>
+    <requestid>1319692</requestid>
+  </revision>
 </revisionlist>
