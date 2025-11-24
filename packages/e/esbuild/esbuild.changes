@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Nov 19 22:25:27 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.27.0:
+  * Use Uint8Array.fromBase64 if available (#4286)
+  * from 0.26.0: enable trusted publishing (#4281)
+  * update the Go compiler from v1.23.12 to v1.25.4 (#4208, #4311)
+  * linux build now requires a kernel version of 3.2 or later
+- from 0.26.0:
+  * Enable trusted publishing (#4281)
+
+-------------------------------------------------------------------
+Wed Oct 29 09:50:23 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- update to 0.25.11:
+  * Add support for with { type: 'bytes' } imports (#4292)
+  * Lower CSS media query range syntax (#3748, #4293)
+  * Fix a panic in a minification edge case (#4287)
+  * Fix @supports nested inside pseudo-element (#4265)
+  * Better support building projects that use Yarn on Windows (#3131, #3663)
+  * Preserve parentheses around function expressions (#4252)
+  * Update Go from 1.23.10 to 1.23.12 (#4257, #4258)
+  * Fix another TypeScript parsing edge case (#4248)
+  * Fix a regression with the parsing of source phase imports
+  * Parse and print JavaScript imports with an explicit phase (#4238)
+  * Support optionally emitting absolute paths instead of relative paths (#338, #2082, #3023)
+  * Fix a TypeScript parsing edge case (#4241)
+  * Inline small constant strings when minifying
+  * Fix a memory leak when cancel() is used on a build context (#4231)
+  * Support empty :is() and :where() syntax in CSS (#4232)
+  * Improve tree-shaking of try statements in dead code (#4224)
+  * Consider negated bigints to have no side effects
+  * Support a configurable delay in watch mode before rebuilding (#3476, #4178)
+  * Allow mixed array for entryPoints API option (#4223)
+  * Update Go from 1.23.8 to 1.23.10 (#4204, #4207)
+  * Experimental support for esbuild on OpenHarmony (#4212)
+  * Fix a regression with browser in package.json (#4187)
+  * Add support for certain keywords as TypeScript tuple labels (#4192)
+  * Add CSS prefixes for the stretch sizing value (#4184)
+  * Add simple support for CORS to esbuild's development server (#4125)
+  * Pass through invalid URLs in source maps unmodified (#4169)
+  * Handle exports named __proto__ in ES modules (#4162, #4163)
+
+-------------------------------------------------------------------
 Thu May  1 19:27:50 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
 
 - update to 0.25.3:

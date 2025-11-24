@@ -242,4 +242,181 @@
   * Update Go from 1.23.7 to 1.23.8 (#4133, #4134)</comment>
     <requestid>1273877</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>983b2f744e199dde3b8839f3dea44289</srcmd5>
+    <version>0.27.0</version>
+    <time>1763989589</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.27.0:
+  * Use Uint8Array.fromBase64 if available (#4286)
+  * from 0.26.0: enable trusted publishing (#4281)
+  * update the Go compiler from v1.23.12 to v1.25.4 (#4208, #4311)
+  * linux build now requires a kernel version of 3.2 or later
+- from 0.26.0:
+  * Enable trusted publishing (#4281)
+
+- update to 0.25.11:
+  * Add support for with { type: 'bytes' } imports (#4292)
+  * Lower CSS media query range syntax (#3748, #4293)
+  * Fix a panic in a minification edge case (#4287)
+  * Fix @supports nested inside pseudo-element (#4265)
+  * Better support building projects that use Yarn on Windows (#3131, #3663)
+  * Preserve parentheses around function expressions (#4252)
+  * Update Go from 1.23.10 to 1.23.12 (#4257, #4258)
+  * Fix another TypeScript parsing edge case (#4248)
+  * Fix a regression with the parsing of source phase imports
+  * Parse and print JavaScript imports with an explicit phase (#4238)
+  * Support optionally emitting absolute paths instead of relative paths (#338, #2082, #3023)
+  * Fix a TypeScript parsing edge case (#4241)
+  * Inline small constant strings when minifying
+  * Fix a memory leak when cancel() is used on a build context (#4231)
+  * Support empty :is() and :where() syntax in CSS (#4232)
+  * Improve tree-shaking of try statements in dead code (#4224)
+  * Consider negated bigints to have no side effects
+  * Support a configurable delay in watch mode before rebuilding (#3476, #4178)
+  * Allow mixed array for entryPoints API option (#4223)
+  * Update Go from 1.23.8 to 1.23.10 (#4204, #4207)
+  * Experimental support for esbuild on OpenHarmony (#4212)
+  * Fix a regression with browser in package.json (#4187)
+  * Add support for certain keywords as TypeScript tuple labels (#4192)
+  * Add CSS prefixes for the stretch sizing value (#4184)
+  * Add simple support for CORS to esbuild's development server (#4125)
+  * Pass through invalid URLs in source maps unmodified (#4169)
+  * Handle exports named __proto__ in ES modules (#4162, #4163)
+
+old: openSUSE:Factory/esbuild
+new: devel:languages:javascript/esbuild rev 76
+Index: _scmsync.obsinfo
+===================================================================
+--- _scmsync.obsinfo (revision 17)
++++ _scmsync.obsinfo (revision 76)
+@@ -1,5 +1,5 @@
+-mtime: 1746127752
+-commit: 221ab67df171aeca5aee709ac48c2e00b561a2247b9b280596fc707c4e3206c3
++mtime: 1763675566
++commit: 19b51d0c3f250899da7f5fc4f90d2e51be7cecb7eef3c2b19b5ec72ac0ead0e7
+ url: https://src.opensuse.org/javascript/esbuild.git
+-revision: 221ab67df171aeca5aee709ac48c2e00b561a2247b9b280596fc707c4e3206c3
++revision: 19b51d0c3f250899da7f5fc4f90d2e51be7cecb7eef3c2b19b5ec72ac0ead0e7
+ projectscmsync: https://src.opensuse.org/javascript/_ObsPrj.git
+Index: build.specials.obscpio
+===================================================================
+--- build.specials.obscpio (revision 17)
++++ build.specials.obscpio (revision 76)
+Binary files build.specials.obscpio (revision 17) and build.specials.obscpio (revision 76) differ
+Index: esbuild.changes
+===================================================================
+--- esbuild.changes (revision 17)
++++ esbuild.changes (revision 76)
+@@ -1,4 +1,47 @@
+ -------------------------------------------------------------------
++Wed Nov 19 22:25:27 UTC 2025 - Avindra Goolcharan &lt;avindra@opensuse.org&gt;
++
++- update to 0.27.0:
++  * Use Uint8Array.fromBase64 if available (#4286)
++  * from 0.26.0: enable trusted publishing (#4281)
++  * update the Go compiler from v1.23.12 to v1.25.4 (#4208, #4311)
++  * linux build now requires a kernel version of 3.2 or later
++- from 0.26.0:
++  * Enable trusted publishing (#4281)
++
++-------------------------------------------------------------------
++Wed Oct 29 09:50:23 UTC 2025 - Dominik Heidler &lt;dheidler@suse.de&gt;
++
++- update to 0.25.11:
++  * Add support for with { type: 'bytes' } imports (#4292)
++  * Lower CSS media query range syntax (#3748, #4293)
++  * Fix a panic in a minification edge case (#4287)
++  * Fix @supports nested inside pseudo-element (#4265)
++  * Better support building projects that use Yarn on Windows (#3131, #3663)
++  * Preserve parentheses around function expressions (#4252)
++  * Update Go from 1.23.10 to 1.23.12 (#4257, #4258)
++  * Fix another TypeScript parsing edge case (#4248)
++  * Fix a regression with the parsing of source phase imports
++  * Parse and print JavaScript imports with an explicit phase (#4238)
++  * Support optionally emitting absolute paths instead of relative paths (#338, #2082, #3023)
++  * Fix a TypeScript parsing edge case (#4241)
++  * Inline small constant strings when minifying
++  * Fix a memory leak when cancel() is used on a build context (#4231)
++  * Support empty :is() and :where() syntax in CSS (#4232)
++  * Improve tree-shaking of try statements in dead code (#4224)
++  * Consider negated bigints to have no side effects
++  * Support a configurable delay in watch mode before rebuilding (#3476, #4178)
++  * Allow mixed array for entryPoints API option (#4223)
++  * Update Go from 1.23.8 to 1.23.10 (#4204, #4207)
++  * Experimental support for esbuild on OpenHarmony (#4212)
++  * Fix a regression with browser in package.json (#4187)
++  * Add support for certain keywords as TypeScript tuple labels (#4192)
++  * Add CSS prefixes for the stretch sizing value (#4184)
++  * Add simple support for CORS to esbuild's development server (#4125)
++  * Pass through invalid URLs in source maps unmodified (#4169)
++  * Handle exports named __proto__ in ES modules (#4162, #4163)
++
++-------------------------------------------------------------------
+ Thu May  1 19:27:50 UTC 2025 - Avindra Goolcharan &lt;avindra@opensuse.org&gt;
+ 
+ - update to 0.25.3:
+Index: esbuild.spec
+===================================================================
+--- esbuild.spec (revision 17)
++++ esbuild.spec (revision 76)
+@@ -1,7 +1,7 @@
+ #
+ # spec file for package esbuild
+ #
+-# Copyright (c) 2025 SUSE LLC
++# Copyright (c) 2025 SUSE LLC and contributors
+ #
+ # All modifications and additions to the file contributed by third parties
+ # remain the property of their copyright owners, unless otherwise agreed
+@@ -16,19 +16,15 @@
+ #
+ 
+ 
+-%if 0%{?suse_version} &gt;= 1550 || 0%{?sle_version} &gt;= 150700
+-# Go source packages are horribly broken on Leap (mismatching versions between libraries and compiler)
+-%bcond_with vendor
+-%else
++# Go source packages are horribly broken on Leap and TW (mismatching versions between libraries and compiler)
+ %bcond_without vendor
+-%endif
+ 
+ #macros for Fedora
+ %global goipath  github.com/evanw/esbuild
+ %global tag   v%{version}
+ %global extractdir0 esbuild-%{version}
+ Name:           esbuild
+-Version:        0.25.3
++Version:        0.27.0
+ Release:        0
+ Summary:        A JavaScript bundler written for speed
+ License:        MIT
+Index: vendor.tar.zst
+===================================================================
+--- vendor.tar.zst (revision 17)
++++ vendor.tar.zst (revision 76)
+Binary files vendor.tar.zst (revision 17) and vendor.tar.zst (revision 76) differ
+Index: _service
+===================================================================
+--- _service (added)
++++ _service (revision 76)
+@@ -0,0 +1,6 @@
++&lt;services&gt;
++ &lt;service name=&quot;download_files&quot; mode=&quot;manual&quot; /&gt;
++ &lt;service name=&quot;go_modules&quot; mode=&quot;manual&quot;&gt;
++   &lt;param name=&quot;compression&quot;&gt;zst&lt;/param&gt;
++ &lt;/service&gt;
++&lt;/services&gt;
+Index: esbuild-0.27.0.tar.gz
+===================================================================
+--- esbuild-0.27.0.tar.gz (added)
++++ esbuild-0.27.0.tar.gz (revision 76)
+Binary file esbuild-0.27.0.tar.gz (revision 76) added
+Index: esbuild-0.25.3.tar.gz
+===================================================================
+--- esbuild-0.25.3.tar.gz (revision 17)
++++ esbuild-0.25.3.tar.gz (deleted)
+Binary file esbuild-0.25.3.tar.gz (revision 17) deleted</comment>
+    <requestid>1318935</requestid>
+  </revision>
 </revisionlist>

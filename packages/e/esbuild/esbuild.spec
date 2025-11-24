@@ -1,7 +1,7 @@
 #
 # spec file for package esbuild
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,15 @@
 #
 
 
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700
-# Go source packages are horribly broken on Leap (mismatching versions between libraries and compiler)
-%bcond_with vendor
-%else
+# Go source packages are horribly broken on Leap and TW (mismatching versions between libraries and compiler)
 %bcond_without vendor
-%endif
 
 #macros for Fedora
 %global goipath  github.com/evanw/esbuild
 %global tag   v%{version}
 %global extractdir0 esbuild-%{version}
 Name:           esbuild
-Version:        0.25.3
+Version:        0.27.0
 Release:        0
 Summary:        A JavaScript bundler written for speed
 License:        MIT
