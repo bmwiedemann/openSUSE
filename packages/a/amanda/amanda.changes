@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 20 08:53:15 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
+
+- Add requires for perl-JSON, needed for amcheck script
+
+-------------------------------------------------------------------
 Thu Jul 10 17:48:36 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Set -std=gnu17 to fix builds with gcc15

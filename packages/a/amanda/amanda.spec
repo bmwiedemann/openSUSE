@@ -1,7 +1,7 @@
 #
 # spec file for package amanda
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -71,6 +71,7 @@ Requires:       %{_bindir}/smbclient
 Requires:       dump
 Requires:       grep
 Requires:       perl = %{perl_version}
+Requires:       perl-JSON
 Requires:       tar
 Requires(post): permissions
 Requires(pre):  shadow
