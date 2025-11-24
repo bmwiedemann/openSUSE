@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 22 21:20:10 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove unused BuildRequires: update-desktop-files.
+
+-------------------------------------------------------------------
 Mon Jul 12 06:40:44 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix build on aarch64:

@@ -1,7 +1,7 @@
 #
 # spec file for package ladish
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,7 +43,6 @@ BuildRequires:  libjack-devel
 BuildRequires:  libpng16-devel
 BuildRequires:  perl
 BuildRequires:  python3-devel
-BuildRequires:  update-desktop-files
 Requires:       a2jmidid
 # Technically to use ladish on its own you'd need laditools
 # however we are adding it to openSUSE to use with cadence
