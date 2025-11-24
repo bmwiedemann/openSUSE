@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov 21 06:43:36 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.2:
+  + Bugs fixed:
+    - URL of open tab replaced with ephy-tab://
+    - Nothing is shown in the location bar on file:// URIs
+    - Consistently decode URLs before displaying in user interface
+    - location-entry: fix file URLs disappearing
+    - Always show action bar while switching to narrow mode
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Oct 11 04:18:27 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.1:

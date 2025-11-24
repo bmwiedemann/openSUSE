@@ -1894,4 +1894,19 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1311112</requestid>
   </revision>
+  <revision rev="225" vrev="1">
+    <srcmd5>75b742ea5b549c92f8d376e559f320b1</srcmd5>
+    <version>49.2</version>
+    <time>1763990001</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 49.2:
+  + Bugs fixed:
+    - URL of open tab replaced with ephy-tab://
+    - Nothing is shown in the location bar on file:// URIs
+    - Consistently decode URLs before displaying in user interface
+    - location-entry: fix file URLs disappearing
+    - Always show action bar while switching to narrow mode
+  + Updated translations. (forwarded request 1318969 from iznogood)</comment>
+    <requestid>1319633</requestid>
+  </revision>
 </revisionlist>
