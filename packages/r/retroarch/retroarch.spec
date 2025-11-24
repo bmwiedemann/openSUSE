@@ -73,7 +73,6 @@ BuildRequires:  pkgconfig(xv)
 BuildRequires:  pkgconfig(xxf86vm)
 BuildRequires:  pkgconfig(zlib)
 %if 0%{?is_opensuse}
-BuildRequires:  update-desktop-files
 BuildRequires:  vulkan-devel
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
