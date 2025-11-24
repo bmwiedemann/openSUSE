@@ -1,7 +1,7 @@
 #
 # spec file for package deluge
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 %global __requires_exclude typelib\\(GConf|AyatanaAppIndicator3\\)
 
-%define _version 2.1
+%define _version 2.2
 Name:           deluge
-Version:        2.1.1
+Version:        2.2.0
 Release:        0
 Summary:        BitTorrent Client
 License:        SUSE-GPL-3.0-with-openssl-exception
@@ -49,7 +49,6 @@ BuildRequires:  python3-setuptools
 BuildRequires:  python3-slimit
 BuildRequires:  python3-wheel
 BuildRequires:  strip-nondeterminism
-BuildRequires:  update-desktop-files
 Requires:       python3-Mako
 Requires:       python3-Pillow
 %if 0%{suse_version} >= 1550
@@ -149,7 +148,7 @@ popd
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
 %{_datadir}/icons/hicolor/*/apps/%{name}-panel.*
 %{_datadir}/pixmaps/%{name}.*
-%{_datadir}/appdata/%{name}.appdata.xml
+%{_datadir}/metainfo/%{name}.metainfo.xml
 %{_mandir}/man1/%{name}*.1%{?ext_man}
 
 %files lang -f %{name}.lang

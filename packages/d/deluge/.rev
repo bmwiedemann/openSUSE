@@ -168,4 +168,12 @@
     <comment></comment>
     <requestid>1142258</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>659d7ea8b5789fb37d95922453d7346b</srcmd5>
+    <version>2.2.0</version>
+    <time>1763989963</time>
+    <user>anag_factory</user>
+    <comment>Removing service so it's accepted in Factory (forwarded request 1317688 from PFPoitras)</comment>
+    <requestid>1319564</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sat Nov 22 21:16:34 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove unused BuildRequires: update-desktop-files.
+
+-------------------------------------------------------------------
+Fri May 23 14:49:57 UTC 2025 - Michael Gumsley <gumsley_6@hotmail.com>
+
+- Update to version 2.2.0 (changes since 2.1.1)
+  * Breaking changes:
+    + Removed Python 3.6 support (Python >= 3.7)
+  * Core
+    + Fix GHSL-2024-189 - insecure HTTP for new version check.
+    + Fix alert handler segfault.
+    + Add support for creating v2 torrents.
+  * GTK UI
+    + Fix changing torrent ownership.
+    + Fix upper limit of upload/download in Add Torrent dialog.
+    + Fix #3339 - Resizing window crashes with Piecesbar or Stats plugin.
+    + Fix #3350 - Unable to use quick search.
+    + Fix #3598 - Missing AppIndicator option in Preferences.
+    + Set Appindicator as default for tray icon on Linux.
+    + Add feature to switch between dark/light themes.
+  * Web UI
+    + Fix GHSL-2024-191 - potential flag endpoint path traversal.
+    + Fix GHSL-2024-188 - js script dir traversal vulnerability.
+    + Fix GHSL-2024-190 - insecure tracker icon endpoint.
+    + Fix unable to stop daemon in connection manager.
+    + Fix responsiveness to avoid "Connection lost".
+    + Add support for network interface name as well as IP address.
+    + Add ability to change UI theme.
+  * Console UI
+    + Fix 'rm' and 'move' commands hanging when done.
+    + Fix #3538 - Unable to add host in connection manager.
+    + Disable interactive-mode on Windows.
+  * UI Library
+    + Fix tracker icon display by converting to png format.
+    + Fix splitting trackers by newline
+    + Add clickable URLs for torrent comment and tracker status.
+  * Label
+    + Fix torrent deletion not removed from config.
+    + Fix label display name in submenu.
+  * AutoAdd
+    + Fix #3515 - Torrent file decoding errors disabled watch folder.
+- Include obs verification service
+
+-------------------------------------------------------------------
 Wed Jan  3 08:47:54 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Normalize .egg mtimes for reproducible builds (boo#1047218)
