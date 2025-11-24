@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 22 21:21:01 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove unused BuildRequires: update-desktop-files.
+
+-------------------------------------------------------------------
 Tue Nov  4 07:31:09 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - update to 1.2.25

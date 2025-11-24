@@ -35,7 +35,6 @@ BuildRequires:  ladspa
 BuildRequires:  ladspa-devel
 BuildRequires:  php8
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(gl)
