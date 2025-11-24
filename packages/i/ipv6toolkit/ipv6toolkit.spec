@@ -1,8 +1,8 @@
 #
 # spec file for package ipv6toolkit
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2018-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,15 @@
 
 
 Name:           ipv6toolkit
-Version:        2.0
+Version:        2.2
 Release:        0
 Summary:        Security assessment and troubleshooting tool for the IPv6 protocols
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/System
 URL:            https://www.si6networks.com/tools/ipv6toolkit/
 #Git-Clone:     https://github.com/fgont/ipv6toolkit.git
-Source:         https://www.si6networks.com/tools/ipv6toolkit/%{name}-v%{version}.tar.gz
-Source98:       https://www.si6networks.com/tools/ipv6toolkit/%{name}-v%{version}.tar.gz.sig
-#https://www.si6networks.com/tools/ipv6toolkit/%%{name}-v%%{version}.tar.gz.gpg
-Source99:       %{name}.keyring
+Source:         https://github.com/fgont/ipv6toolkit/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  fdupes
 BuildRequires:  libpcap-devel
 
 %description
@@ -58,14 +56,15 @@ List of tools:
    of TCP-based attacks.
 
 %prep
-%setup -q -n %{name}-v%{version}
+%autosetup
+sed 's|/usr/bin/env perl|/usr/bin/perl|g' -i tools/{blackhole6,messi,script6}
 
 %build
-export CFLAGS='%{optflags} -fcommon'
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install PREFIX="%{_prefix}"
+%fdupes %{buildroot}/%{_datadir}/%{name}
 
 %files
 %doc CHANGES.TXT CREDITS.TXT README.TXT
@@ -77,6 +76,8 @@ make %{?_smp_mflags}
 %{_sbindir}/frag6
 %{_sbindir}/icmp6
 %{_sbindir}/jumbo6
+%{_sbindir}/messi
+%{_sbindir}/mldq6
 %{_sbindir}/na6
 %{_sbindir}/ni6
 %{_sbindir}/ns6
@@ -90,7 +91,9 @@ make %{?_smp_mflags}
 %{_sbindir}/udp6
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/oui.txt
-%{_datadir}/%{name}/service-names-port-numbers.csv
+%{_datadir}/%{name}/dns-dictionary.txt
+%{_datadir}/%{name}/public_suffix_list.dat
+%{_datadir}/%{name}/*.csv
 %{_mandir}/man?/*?%{ext_man}
 
 %changelog

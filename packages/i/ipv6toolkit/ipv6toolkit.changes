@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Nov 21 08:24:28 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2
+   * All: Ensure consistency in version numbers across tools and
+     documentation.
+   * path6: Fix bug that prevented setting TCP flags.
+   * blackhole6: Fixed bug that lead to errors for paths >= 10 hops
+   * blackhole6: Polished the code.
+   * blackhole6: Set different default destination port numbers
+     for TCP and UDP. The default UDP destination port has been
+     changed to port 53.
+- Update to version 2.1
+   * addr6: Add support for accepting only one address per prefix
+     Option '--block-dup-preflen' was added.
+   * scan6: Fix bug in smart scan
+     There was a bug in the generation of low-byte and pattern-byte
+     addresses.
+   * scan6: Improve VMWare scans
+     We have now added vSphere and ESX server entries
+   * scan6: Fix bug in default ports
+     When port-scanning, if not range was specified, the tool
+     would not scan any ports.
+   * script6: Add alias for "get-alexa-domains"
+     Some documents were using the "get-alexa" script name (rather
+     than "get-alexa-domains") but the short name of the script had
+     been removed.
+
+-------------------------------------------------------------------
 Thu Jun 11 19:19:09 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Set CFLAGS+=-fcommon
