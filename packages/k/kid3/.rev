@@ -384,4 +384,12 @@
     <comment>- Update to version 3.9.7 and removed separator with no text from changes file to satisfy checker</comment>
     <requestid>1295591</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>a2636925ee1cb15d7330651b746a6b9e</srcmd5>
+    <version>3.9.7</version>
+    <time>1763989881</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1319405</requestid>
+  </revision>
 </revisionlist>

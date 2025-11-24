@@ -1,7 +1,7 @@
 #
 # spec file for package kid3
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,6 @@ BuildRequires:  kf%{qt_version}-filesystem
 BuildRequires:  libxslt-tools
 BuildRequires:  python3 >= 3.6
 BuildRequires:  readline-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF%{qt_version}DocTools)
 BuildRequires:  cmake(KF%{qt_version}KIO)
 BuildRequires:  cmake(Qt%{qt_version}Core)
