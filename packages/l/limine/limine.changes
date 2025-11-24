@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov 23 17:10:19 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 10.3.2:
+  * Fix wrong virtual address related constants, for the loongarch64
+    port, that made Limine-protocol kernels fail to boot.
+  * Fix issue that caused the MBR ID in the Limine boot protocol
+    limine_file structure to always be 0.
+
+-------------------------------------------------------------------
 Fri Nov  7 10:33:04 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
 
 - Update to 10.3.0:
