@@ -18,7 +18,7 @@
 %define _bin_name sts
 
 Name:           stackstate-cli
-Version:        3.1.3
+Version:        3.1.4
 Release:        0
 Summary:        SUSE Observability sts CLI
 License:        Apache-2.0

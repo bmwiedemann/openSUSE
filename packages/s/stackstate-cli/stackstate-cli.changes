@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov 24 11:35:47 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version 3.1.4:
+  * STAC-23911 Update to go 1.24.9
+  * STAC-23385: Drop the HOCON parser
+  * STAC-23385: Use Yaml version of the conf
+  * STAC-0: bump x/net
+  * STAC-22985: Address review comments
+  * Update cmd/sts.go
+  * STAC-22985: List mappings and show their status
+
+-------------------------------------------------------------------
 Wed Oct 01 09:11:12 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Update to version 3.1.3:
