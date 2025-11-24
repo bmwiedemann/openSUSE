@@ -1,7 +1,7 @@
 #
 # spec file for package mate-menu
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,6 @@ BuildRequires:  gobject-introspection-devel
 BuildRequires:  intltool
 BuildRequires:  python3-distutils-extra
 BuildRequires:  python3-setuptools
-BuildRequires:  update-desktop-files
 Requires:       glib2-tools
 Requires:       gvfs
 Requires:       mate-menus
