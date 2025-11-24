@@ -1,7 +1,7 @@
 #
 # spec file for package J7Z
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Version:        1.4.2
 Release:        0
 Summary:        Java-based P7Zip GUI for data compression and backup
 License:        LGPL-3.0-or-later
-Url:            http://j7z.xavion.name
+URL:            http://j7z.xavion.name
 Source:         https://downloads.sourceforge.net/project/k7z/J7Z%%20%%28All%%29/%{version}/J7Z-%{version}-src.tar.bz2
 BuildRequires:  ImageMagick
 BuildRequires:  ant >= 1.8.0
@@ -32,7 +32,6 @@ BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  p7zip
-BuildRequires:  update-desktop-files
 Requires:       java >= 1.8
 Requires:       p7zip
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
