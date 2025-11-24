@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Aug 20 12:51:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.0.2:
+  * Bump version to 1.0.2
+  * Bump textual
+  * Bump version to 1.0.1
+  * Delete Formula directory
+
+-------------------------------------------------------------------
+Wed Aug 20 12:44:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.0.1:
+  * Bump version to 1.0.1
+  * Update sbommage.py
+  * Let's go packaging!
+  * Update sbommage
+  * Remove older sboms
+  * Replace sboms with newer examples
+  * Add support for github sbom
+  * Fix encoding when reading file
+
+-------------------------------------------------------------------
 Thu Feb 13 05:59:42 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - use %python3_fix_shebang to fix the shebang properly

@@ -1,7 +1,7 @@
 #
 # spec file for package python-sbommage
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,23 +23,21 @@
 %endif
 
 Name:           python-sbommage
-Version:        0.0.1~1738752097.e608148
+Version:        1.0.2
 Release:        0
-Summary:        Interactive terminal frontend for viewing Software Bill of Materials (SBOM) files
+Summary:        Interactive terminal frontend for viewing SBOM files
 License:        MIT
 URL:            https://github.com/popey/sbommage
 Source:         sbommage-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module textual >= 5.3.0}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module textual >= 0.85.2}
 BuildRequires:  fdupes
-Requires:       python-textual >= 0.85.2
-Requires:       python-linkify-it-py
+BuildRequires:  python-rpm-macros
+Requires:       python-textual >= 5.3.0
 Recommends:     syft
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -51,15 +49,32 @@ files in various formats.
 %autosetup -p1 -n sbommage-%{version}
 
 %build
+%pyproject_wheel
 
 %install
-install -D -m 0755 sbommage %{buildroot}/%{_bindir}/sbommage
-%python3_fix_shebang
+%pyproject_install
+
+sed -i '1s/env python/python3/' %{buildroot}%{python_sitelib}/sbommage.py
+
+rm -vf %{buildroot}%{python_sitelib}/Dockerfile
+rm -vf %{buildroot}%{python_sitelib}/LICENSE
+rm -vf %{buildroot}%{python_sitelib}/MANIFEST.in
+rm -vf %{buildroot}%{python_sitelib}/README.md
+rm -vf %{buildroot}%{python_sitelib}/_current_flavor
+rm -vf %{buildroot}%{python_sitelib}/pyproject.toml
+rm -vf %{buildroot}%{python_sitelib}/release.py
+rm -vf %{buildroot}%{python_sitelib}/__pycache__/release*
+rm -vf %{buildroot}%{python_sitelib}/snap/snapcraft.yaml
+
+%fdupes %{buildroot}%{python_sitelib}/__pycache__/
 
 %files %{python_files}
 %{_bindir}/sbommage
 %doc example_sboms
 %doc README.md
 %license LICENSE
+%{python_sitelib}/sbommage.py
+%{python_sitelib}/sbommage-%{version}.dist-info
+%pycache_only %{python_sitelib}/__pycache__/
 
 %changelog

@@ -3,8 +3,10 @@
     <param name="url">https://github.com/popey/sbommage</param>
     <param name="scm">git</param>
     <param name="package-meta">yes</param>
-    <param name="revision">main</param>
-    <param name="versionformat">0.0.1~%ct.%h</param>
+    <param name="revision">refs/tags/v1.0.2</param>
+    <param name="match-tag">v*</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="set_version" mode="manual">
