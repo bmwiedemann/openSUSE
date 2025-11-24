@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Nov 21 12:20:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.5.0:
+  * Features
+    - support chardet config file setting (#457) (f216ce5)
+  * Dependencies
+    - chore(main): release 3.5.0 (#501)
+    - chore(deps): bump anchore/sbom-action from 0.20.9 to 0.20.10
+      (#503)
+    - chore(deps): bump golang.org/x/text from 0.30.0 to 0.31.0
+      (#502)
+    - chore(deps): bump github.com/gabriel-vasile/mimetype (#500)
+    - chore(deps): bump anchore/sbom-action from 0.20.6 to 0.20.9
+      (#499)
+
+-------------------------------------------------------------------
 Mon Oct 13 06:44:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.4.1:
