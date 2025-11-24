@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Nov 22 08:20:05 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.00
+  * Fixed loading of WAV samples of the WAVE_FORMAT_EXTENSIBLE type
+  * Small tweak to the windowed-sinc interpolation.
+  * Shorter interpolation LUTs (and double-precision
+    -> single-precision float) for faster calculation time on
+    program startup.
+  * Note: There are no revolutionary updates despite reaching v2.00!
+
+-------------------------------------------------------------------
+Wed Sep 17 18:56:32 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.99
+  * When loading .IFF samples, always set volume to max (64)
+    instead of reading the sample volume from the IFF header.
+    This is because many IFFs used different ranges for the sample
+    volume, so the resulting sample volume value would often bei
+    zero instead of max.
+
+-------------------------------------------------------------------
 Sun Sep  7 19:14:13 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.98
