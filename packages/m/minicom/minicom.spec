@@ -1,7 +1,7 @@
 #
 # spec file for package minicom
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           minicom
-Version:        2.9
+Version:        2.10
 Release:        0
 Summary:        A Terminal Program
 License:        GPL-2.0-or-later

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 20 15:31:09 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.10
+  * Add third locking method if file-based lock does not work.
+  * Make colors enabled the default.
+  * ESC-] (OSC) sequences are recognized and discarded.
+  * Code cleanups.
+  * Updates translations: nb
+
+-------------------------------------------------------------------
 Mon Nov  4 07:51:14 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
 
 - drop bogus 03norzsz.diff.
