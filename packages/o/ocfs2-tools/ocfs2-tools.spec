@@ -79,7 +79,6 @@ BuildRequires:  libdlm-devel
 BuildRequires:  libxslt-devel
 BuildRequires:  libz1
 BuildRequires:  readline-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 Requires(pre):  %fillup_prereq
