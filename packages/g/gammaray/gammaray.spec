@@ -19,9 +19,9 @@
 %define qt6_version 6.5
 %define rname gammaray
 %define short_version 3.3
-%define soversion 3_3_0
+%define soversion 3_3_1
 Name:           gammaray
-Version:        3.3.0
+Version:        3.3.1
 Release:        0
 Summary:        Introspection/Debugging Tool for Qt Applications
 License:        GPL-2.0-or-later

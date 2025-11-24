@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov 23 09:23:29 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.3.1
+  * Fix build with Qt 6.10.1
+  * Fix build if QtQuick isn't present
+
+-------------------------------------------------------------------
 Sun Oct  5 10:05:42 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 3.3.0
