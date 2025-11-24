@@ -1,7 +1,7 @@
 #
 # spec file for package lightdm-gtk-greeter-settings
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,13 +24,13 @@ License:        GPL-3.0-or-later
 Group:          System/GUI/Other
 URL:            https://launchpad.net/lightdm-gtk-greeter-settings
 Source:         https://launchpad.net/lightdm-gtk-greeter-settings/1.2/%{version}/+download/lightdm-gtk-greeter-settings-%{version}.tar.gz
+BuildRequires:  desktop-file-utils
 BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  python3
 BuildRequires:  python3-distutils-extra
 BuildRequires:  python3-gobject-Gdk
-BuildRequires:  update-desktop-files
 Requires:       lightdm-gtk-greeter >= 2.0
 Requires:       python3
 Requires:       python3-gobject-Gdk

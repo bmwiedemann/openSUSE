@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 24 00:05:46 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove unused BuildRequires: update-desktop-files.
+- Explicitly add desktop-file-utils to BuildRequires.
+
+-------------------------------------------------------------------
 Fri May 31 14:04:04 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Fixed python dependencies and added gobject-introspection for code
