@@ -19,7 +19,7 @@
 %define soname libfeedback-0_0-0
 
 Name:           feedbackd
-Version:        0.8.6
+Version:        0.8.7
 Release:        0
 Summary:        Feedback library for GNOME
 License:        GPL-3.0-only AND LGPL-2.1-only
@@ -28,7 +28,7 @@ Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  c_compiler
 BuildRequires:  dbus-1
-BuildRequires:  meson
+BuildRequires:  meson >= 1.1.0
 BuildRequires:  vala
 BuildRequires:  pkgconfig(gio-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.50.0
