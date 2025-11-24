@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov 24 01:20:29 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.12.0:
+  * Fixed testing issues when C extensions are not desired.
+  * Added support for GraalPy.
+  * Fixed testing issues on Python 3.14.
+  * Modernized packaging to have metadata in ``pyproject.toml``.
+  * Added Python 3.14 wheels.
+  * Added Python 3.13 wheels.
+  * Added support for ``__format__``.
+  * Dropped support for Python 3.8.
+
+-------------------------------------------------------------------
 Fri May 30 10:23:55 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

@@ -180,4 +180,20 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1281363</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a2c96d85bad35bc394d816a986ffa1b3</srcmd5>
+    <version>1.12.0</version>
+    <time>1763990029</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.12.0:
+  * Fixed testing issues when C extensions are not desired.
+  * Added support for GraalPy.
+  * Fixed testing issues on Python 3.14.
+  * Modernized packaging to have metadata in ``pyproject.toml``.
+  * Added Python 3.14 wheels.
+  * Added Python 3.13 wheels.
+  * Added support for ``__format__``.
+  * Dropped support for Python 3.8.</comment>
+    <requestid>1319606</requestid>
+  </revision>
 </revisionlist>

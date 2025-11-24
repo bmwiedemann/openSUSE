@@ -1,7 +1,7 @@
 #
 # spec file for package python-lazy-object-proxy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,17 +26,16 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-lazy-object-proxy%{psuffix}
-Version:        1.10.0
+Version:        1.12.0
 Release:        0
 Summary:        Rebuild a new abstract syntax tree from Python's ast
 License:        BSD-2-Clause
-Group:          Development/Libraries/Python
 URL:            https://github.com/ionelmc/python-lazy-object-proxy
-Source:         https://files.pythonhosted.org/packages/source/l/lazy-object-proxy/lazy-object-proxy-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+Source:         https://files.pythonhosted.org/packages/source/l/lazy-object-proxy/lazy_object_proxy-%{version}.tar.gz
+BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 45}
-BuildRequires:  %{python_module setuptools_scm >= 6.2}
+BuildRequires:  %{python_module setuptools >= 75}
+BuildRequires:  %{python_module setuptools_scm >= 8}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -54,7 +53,7 @@ A fast and thorough lazy object proxy that rebuilds a new abstract syntax tree
 from Python's ast
 
 %prep
-%setup -q -n lazy-object-proxy-%{version}
+%setup -q -n lazy_object_proxy-%{version}
 
 %build
 %if !%{with test}
@@ -78,7 +77,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %doc AUTHORS.rst CHANGELOG.rst CONTRIBUTING.rst README.rst docs
 %license LICENSE
 %{python_sitearch}/lazy_object_proxy
-%{python_sitearch}/lazy_object_proxy-%{version}*-info
+%{python_sitearch}/lazy_object_proxy-%{version}.dist-info
 %endif
 
 %changelog
