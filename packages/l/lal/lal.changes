@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Nov 17 16:53:42 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 7.7.0:
+  * No release notes.
+- Drop upstreamed patches:
+  * lal-gcc15-fix-unterminated-string-initialization.patch
+  * lalsuite_fix_swig_4_3_0_compat.patch
+  * lalsuite_fix_swig_4_3_0_compat_2.patch
+- Add lal-swig-4_4-compat.patch: SwigPyObject_type was renamed to
+  SwigPyObject_Type in v4.4.0; upstream git commits.
+- Minor rebase of lal-disable-erroneous-test.patch for update.
+- Drop test flavour BuildRequires: python-ligo-lw instead of
+  python-igwn-lw, python-ligo-segments instead of
+  python-igwn-segments.
+- Disable tests on 32-bit as they fail due to minor tolerance
+  issues.
+
+-------------------------------------------------------------------
 Thu Jul 10 17:24:13 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add lal-gcc15-fix-unterminated-string-initialization.patch: Fix

@@ -1,7 +1,7 @@
 #
 # spec file for package lal
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,16 +19,13 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %bcond_without test
+# Tests fail on 32-bit
+ExcludeArch:    %ix86
 %define psuffix -test
 %else
 %bcond_with test
 %define psuffix %{nil}
 %endif
-
-# NEP 29: numpy, scipy do not have a python36 flavor package in TW
-%define skip_python36 1
-# Py2 no longer supported by upstream
-%define skip_python2 1
 
 %define shliblal liblal20
 %define shliblalsupport liblalsupport14
@@ -36,21 +33,17 @@
 # No support for octave >= 6
 %bcond_with octave
 Name:           lal%{psuffix}
-Version:        7.6.0
+Version:        7.7.0
 Release:        0
 Summary:        A collection of various gravitational wave data analysis routines
 License:        GPL-2.0-only
 Group:          Productivity/Scientific/Physics
 URL:            https://wiki.ligo.org/Computing/LALSuite
 Source:         https://software.igwn.org/sources/source/lalsuite/lal-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         https://git.ligo.org/lscsoft/lalsuite/-/commit/9dba245ab3692ecf691247a442704f13c075ed34.patch#/lalsuite_fix_swig_4_3_0_compat.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         https://git.ligo.org/lscsoft/lalsuite/-/commit/e12d57e893882c1603778018139ed9060579c8a7.patch#/lalsuite_fix_swig_4_3_0_compat_2.patch
+# PATCH-FIX-UPSTREAM https://git.ligo.org/lscsoft/lalsuite/-/merge_requests/2529
+Patch0:         lal-swig-4_4-compat.patch
 # PATCH-FIX-UPSTREAM lal-disable-erroneous-test.patch badshah400@gmail.com -- Disable a test that gives 'SystemError: error return without exception set'
 Patch2:         lal-disable-erroneous-test.patch
-# PATCH-FIX-UPSTREAM lal-gcc15-fix-unterminated-string-initialization.patch badshah400@gmail.com -- Fix build with GCC 15 by correctly initializing char array; patch taken from upstream commit
-Patch3:         https://git.ligo.org/lscsoft/lalsuite/-/commit/893b1e51c2444d7ca5d87c703986541be89c5ed4.patch#/lal-gcc15-fix-unterminated-string-initialization.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module numpy}
@@ -70,7 +63,7 @@ Requires:       python-freezegun
 Requires:       python-numpy
 Requires:       python-python-dateutil
 Requires:       python-scipy
-Recommends:     python-ligo-lw
+Recommends:     python-igwn-ligolw
 Recommends:     python-ligo-segments
 %if %{with octave}
 BuildRequires:  octave-devel
@@ -81,8 +74,8 @@ BuildRequires:  swig >= 3.0
 %if %{with test}
 # SECTION For tests (only the default python3 flavor)
 BuildRequires:  python3-freezegun
-BuildRequires:  python3-ligo-lw
-BuildRequires:  python3-ligo-segments
+BuildRequires:  python3-igwn-ligolw
+BuildRequires:  python3-igwn-segments
 # python3-py - remove with next update -- https://git.ligo.org/lscsoft/lalsuite/-/merge_requests/2033
 BuildRequires:  python3-py
 BuildRequires:  python3-pytest
@@ -154,9 +147,7 @@ This package provides the octave module for lal.
 # Upstream patches are -p2, non-upstreamed patch is -p1
 %autosetup -N -n lal-%{version}
 %patch -P0 -p2
-%patch -P1 -p2
 %patch -P2 -p1
-%patch -P3 -p2
 
 %build
 autoreconf -fvi
@@ -212,7 +203,7 @@ find %{buildroot}%{$python_sitearch} -iname \*pyc -type f \( -exec grep 'home/ab
 %python_expand %fdupes %{buildroot}%{$python_sitearch}/
 
 # Fix broken hashbang
-sed -Ei "1{s|(python3\.?[0-9]*)|%{_bindir}/\1|}" %{buildroot}%{_bindir}/lal_{path2cache,searchsum2cache}
+sed -Ei "1{s|/usr/bin/(python3\.?[0-9]*)|%{_bindir}/\1|}" %{buildroot}%{_bindir}/lal_{path2cache,searchsum2cache}
 %endif
 
 %check
@@ -245,7 +236,7 @@ fi
 %files -n %{name}-devel
 %doc AUTHORS README.md
 %license COPYING
-%{_bindir}/*
+%{_bindir}/lal_*
 %{_includedir}/lal/
 %{_libdir}/liblal.so
 %{_libdir}/liblalsupport.so

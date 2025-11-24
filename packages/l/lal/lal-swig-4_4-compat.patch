@@ -1,0 +1,61 @@
+From df4f741bd35423b40799efd27a20f0a890a54871 Mon Sep 17 00:00:00 2001
+From: Karl Wette <karl.wette@ligo.org>
+Date: Mon, 27 Oct 2025 16:33:19 +1100
+Subject: [PATCH 1/2] lal/swig/SWIGPython.i: use import_array1(0) to import
+ NumPy if available
+
+- import_array() returns NULL on error which conflicts with the SWIG
+  function it is called from
+---
+ lal/swig/SWIGPython.i | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/lal/swig/SWIGPython.i b/lal/swig/SWIGPython.i
+index 8f332822d1..63209957e2 100644
+--- a/lal/swig/SWIGPython.i
++++ b/lal/swig/SWIGPython.i
+@@ -62,7 +62,11 @@
+ #endif
+ %}
+ %init %{
++#if defined(import_array1)
++import_array1(0);
++#else
+ import_array();
++#endif
+ %}
+ 
+ // Evaluates true if a PyObject is not empty, false otherwise.
+-- 
+GitLab
+
+
+From 2d1f8922a2643855a23127b1cb5c787010789989 Mon Sep 17 00:00:00 2001
+From: Karl Wette <karl.wette@ligo.org>
+Date: Mon, 27 Oct 2025 16:34:07 +1100
+Subject: [PATCH 2/2] lal/swig/SWIGPython.i: SwigPyObject_type was renamed to
+ SwigPyObject_Type in v4.4.0
+
+---
+ lal/swig/SWIGPython.i | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/lal/swig/SWIGPython.i b/lal/swig/SWIGPython.i
+index 63209957e2..9ea1633b9d 100644
+--- a/lal/swig/SWIGPython.i
++++ b/lal/swig/SWIGPython.i
+@@ -864,7 +864,11 @@ SWIGINTERN bool swiglal_release_parent(void *ptr) {
+       } else {
+         PyArray_DescrProto src = {
+           PyObject_HEAD_INIT(&PyArrayDescr_Type)
++#if SWIG_VERSION >= 0x040400
++          .typeobj = SwigPyObject_Type(),
++#else
+           .typeobj = SwigPyObject_type(),
++#endif
+           .kind = 'V',
+           .type = 'V',
+           .byteorder = '=',
+-- 
+GitLab
+

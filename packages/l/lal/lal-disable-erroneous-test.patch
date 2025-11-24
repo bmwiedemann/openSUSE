@@ -2,14 +2,14 @@
  test/python/Makefile.am |    1 -
  1 file changed, 1 deletion(-)
 
-Index: lal-7.6.0/test/python/Makefile.am
+Index: lal-7.7.0/test/python/Makefile.am
 ===================================================================
---- lal-7.6.0.orig/test/python/Makefile.am
-+++ lal-7.6.0/test/python/Makefile.am
-@@ -18,7 +18,6 @@ test_scripts += \
- 	test_gpstime.py \
+--- lal-7.7.0.orig/test/python/Makefile.am
++++ lal-7.7.0/test/python/Makefile.am
+@@ -19,7 +19,6 @@ test_scripts += \
  	test_iterutils.py \
  	test_rate.py \
+ 	test_series.py \
 -	utils_cache_verify.py \
  	$(END_OF_LIST)
  
