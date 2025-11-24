@@ -55,7 +55,6 @@ BuildRequires:  gettext-tools
 BuildRequires:  help2man
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libboost_headers-devel
-BuildRequires:  update-desktop-files
 %if %{with qt5}
 #BuildRequires:  pkgconfig(qca2-qt5)
 BuildRequires:  libQt5Gui-private-headers-devel
