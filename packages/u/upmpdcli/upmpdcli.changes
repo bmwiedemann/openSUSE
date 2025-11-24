@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 24 11:37:21 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 1.9.7:
+  * Media server: Tidal and Subsonic plugins updates
+  * Media server: uprcl: fix issue with streaming URL containing
+    colon characters. Update bottle module version
+
+-------------------------------------------------------------------
 Fri Jun  6 17:41:18 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- update to 1.9.6:
+- Update to 1.9.6:
   * Tidal and Subsonic plugins updates
   * Fix Media Server crash in abnormal case where the proxy/
     redirect interface was called with a bogus URL
