@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov 21 06:28:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.93.10:
+  * Bug Fixes
+    - Handling of disabled units in discovery
+      Discovery now skips units that are marked as disabled.
+  * What's Changed
+    - fix: Avoid discovering dependencies if they are disabled
+      (#5119)
+    - docs: Documenting how CAS works (#5115)
+    - build(deps): bump js-yaml in /docs-starlight (#5117)
+
+-------------------------------------------------------------------
 Tue Nov 18 06:14:49 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.93.9:
