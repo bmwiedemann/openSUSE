@@ -1,7 +1,7 @@
 #
 # spec file for package tomoe-gtk
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           tomoe-gtk
 Version:        0.6.0
 Release:        0
 Summary:        TOMOE GTK+ library
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          System/I18n/Japanese
-Url:            http://sourceforge.net/projects/tomoe/
+URL:            http://sourceforge.net/projects/tomoe/
 Source0:        http://kent.dl.sourceforge.net/sourceforge/tomoe/tomoe-gtk-0.6.0.tar.bz2
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -32,7 +32,6 @@ BuildRequires:  gtk2-devel
 BuildRequires:  gucharmap-devel
 BuildRequires:  libtool
 BuildRequires:  tomoe-devel
-BuildRequires:  update-desktop-files
 Requires:       %{name}-lang = %{version}
 Requires:       libtomoe-gtk0 = %{version}
 BuildRequires:  fdupes
