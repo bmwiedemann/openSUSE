@@ -59,7 +59,6 @@ BuildRequires:  libqt5-qtbase-common-devel
 BuildRequires:  librtprocess-devel
 BuildRequires:  openexr-devel
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Network)

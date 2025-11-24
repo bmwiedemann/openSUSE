@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 22 21:21:09 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove unused BuildRequires: update-desktop-files.
+
+-------------------------------------------------------------------
 Fri Oct 10 06:49:26 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 2.6.0+git313.634b489:
