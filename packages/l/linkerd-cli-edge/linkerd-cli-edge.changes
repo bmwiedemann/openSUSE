@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Nov 21 06:16:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 25.11.2:
+  CLI-related changes in the changelog
+  * Fix broken documentation URLs in CLI commands (#14651)
+  Dependencies
+  * build(deps): bump the clap group with 2 updates (#14736)
+  * build(deps): bump cc from 1.2.41 to 1.2.46 (#14737)
+  * build(deps): bump golang.org/x/crypto from 0.44.0 to 0.45.0
+    (#14738)
+  * build(deps): bump actions/setup-go from 6.0.0 to 6.1.0 (#14739)
+  * build(deps): bump tj-actions/changed-files (#14740)
+  * build(deps): bump github.com/prometheus/common from 0.67.2 to
+    0.67.3 (#14732)
+  * build(deps): bump libloading from 0.8.8 to 0.8.9 (#14734)
+  * build(deps): bump delegate from 0.13.4 to 0.13.5 (#14733)
+  * build(deps): bump aws-lc-rs from 1.14.1 to 1.15.0 (#14728)
+  * build(deps): bump actions/checkout from 5.0.0 to 5.0.1 (#14729)
+  * build(deps): bump the clap group with 2 updates (#14727)
+  * build(deps): bump google.golang.org/grpc from 1.76.0 to 1.77.0
+    (#14726)
+  * build(deps): bump DavidAnson/markdownlint-cli2-action (#14723)
+  * build(deps): bump peter-evans/repository-dispatch from 4.0.0 to
+    4.0.1 (#14724)
+  * build(deps): bump golang.org/x/tools from 0.38.0 to 0.39.0
+    (#14720)
+  * build(deps): bump the kube group with 7 updates (#14715)
+  * build(deps): bump helm.sh/helm/v3 from 3.19.1 to 3.19.2
+    (#14716)
+  * build(deps): bump unicode-ident from 1.0.20 to 1.0.22 (#14717)
+  * build(deps): bump hyper from 1.7.0 to 1.8.0 (#14718)
+  * build(deps): bump aws-lc-sys from 0.32.2 to 0.32.3 (#14710)
+  * build(deps): bump tokio-util from 0.7.16 to 0.7.17 (#14711)
+  * build(deps): bump syn from 2.0.106 to 2.0.110 (#14701)
+  * build(deps): bump openssl from 0.10.74 to 0.10.75 (#14702)
+  * build(deps): bump quote from 1.0.41 to 1.0.42 (#14703)
+  * build(deps): bump softprops/action-gh-release from 2.4.1 to
+    2.4.2 (#14705)
+  * build(deps): bump github.com/go-openapi/spec from 0.22.0 to
+    0.22.1 (#14700)
+  * build(deps): bump helm.sh/helm/v3 from 3.19.0 to 3.19.1
+    (#14706)
+  * build(deps): bump rustls from 0.23.34 to 0.23.35 (#14697)
+  * build(deps): bump enum-ordinalize from 4.3.0 to 4.3.2 (#14696)
+  * build(deps): bump proc-macro2 from 1.0.101 to 1.0.103 (#14695)
+  * build(deps): bump enum-ordinalize-derive from 4.3.1 to 4.3.2
+    (#14694)
+
+-------------------------------------------------------------------
 Fri Nov 07 13:16:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 25.11.1:
