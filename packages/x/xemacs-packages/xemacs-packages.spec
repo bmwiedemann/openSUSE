@@ -1,7 +1,7 @@
 #
 # spec file for package xemacs-packages
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,6 @@ BuildRequires:  openldap2-devel
 BuildRequires:  texlive
 BuildRequires:  texlive-latex
 BuildRequires:  unzip
-BuildRequires:  update-desktop-files
 BuildRequires:  xemacs-el > 21.5.29
 %if 0%{?suse_version} >= 1220
 BuildRequires:  bdftopcf
