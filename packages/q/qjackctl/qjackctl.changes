@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 22 21:24:12 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove unused BuildRequires: update-desktop-files.
+
+-------------------------------------------------------------------
 Fri Mar 28 12:00:36 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.0.4

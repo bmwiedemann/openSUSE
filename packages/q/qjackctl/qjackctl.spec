@@ -1,7 +1,7 @@
 #
 # spec file for package qjackctl
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -36,7 +36,6 @@ BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 %if %{with_qt6}
 BuildRequires:  cmake(Qt6LinguistTools)
 # TODO: Upstream use 6.6
