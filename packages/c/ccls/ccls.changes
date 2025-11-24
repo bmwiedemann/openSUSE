@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 21 22:24:42 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 0.20250815.1.
+  * Add clang.prependArgs option.
+  * Support Decl::Concept.
+
+-------------------------------------------------------------------
 Sat Nov  8 21:56:03 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 0.20250815.

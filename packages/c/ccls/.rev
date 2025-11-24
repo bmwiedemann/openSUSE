@@ -236,4 +236,15 @@
 </comment>
     <requestid>1316627</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>de5be8704bd54052842517ceed5b350a</srcmd5>
+    <version>0.20250815.1</version>
+    <time>1763989763</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.20250815.1.
+  * Add clang.prependArgs option.
+  * Support Decl::Concept.
+</comment>
+    <requestid>1319182</requestid>
+  </revision>
 </revisionlist>
