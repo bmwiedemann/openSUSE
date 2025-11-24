@@ -1,6 +1,6 @@
-diff -Nru vendor.orig/src/proxy/vendor/aws-lc-fips-sys-0.13.9/aws-lc/util/fipstools/delocate/delocate.go vendor/src/proxy/vendor/aws-lc-fips-sys-0.13.9/aws-lc/util/fipstools/delocate/delocate.go
---- vendor.orig/src/proxy/vendor/aws-lc-fips-sys-0.13.9/aws-lc/util/fipstools/delocate/delocate.go	1970-01-01 01:00:00.000000000 +0100
-+++ vendor/src/proxy/vendor/aws-lc-fips-sys-0.13.9/aws-lc/util/fipstools/delocate/delocate.go	2025-11-07 14:32:34.107226406 +0100
+diff -Nru vendor.orig/src/proxy/vendor/aws-lc-fips-sys-0.13.10/aws-lc/util/fipstools/delocate/delocate.go vendor/src/proxy/vendor/aws-lc-fips-sys-0.13.10/aws-lc/util/fipstools/delocate/delocate.go
+--- vendor.orig/src/proxy/vendor/aws-lc-fips-sys-0.13.10/aws-lc/util/fipstools/delocate/delocate.go	1970-01-01 01:00:00.000000000 +0100
++++ vendor/src/proxy/vendor/aws-lc-fips-sys-0.13.10/aws-lc/util/fipstools/delocate/delocate.go	2025-11-24 14:12:32.149960336 +0100
 @@ -27,6 +27,7 @@
  	"sort"
  	"strconv"
@@ -555,9 +555,9 @@ diff -Nru vendor.orig/src/proxy/vendor/aws-lc-fips-sys-0.13.9/aws-lc/util/fipsto
  func forEachPath(node *node32, cb func(*node32), rules ...pegRule) {
  	if node == nil {
  		return
-diff -Nru vendor.orig/src/proxy/vendor/aws-lc-fips-sys-0.13.9/aws-lc/util/fipstools/delocate/delocate_test.go vendor/src/proxy/vendor/aws-lc-fips-sys-0.13.9/aws-lc/util/fipstools/delocate/delocate_test.go
---- vendor.orig/src/proxy/vendor/aws-lc-fips-sys-0.13.9/aws-lc/util/fipstools/delocate/delocate_test.go	1970-01-01 01:00:00.000000000 +0100
-+++ vendor/src/proxy/vendor/aws-lc-fips-sys-0.13.9/aws-lc/util/fipstools/delocate/delocate_test.go	2025-11-07 14:32:34.108146224 +0100
+diff -Nru vendor.orig/src/proxy/vendor/aws-lc-fips-sys-0.13.10/aws-lc/util/fipstools/delocate/delocate_test.go vendor/src/proxy/vendor/aws-lc-fips-sys-0.13.10/aws-lc/util/fipstools/delocate/delocate_test.go
+--- vendor.orig/src/proxy/vendor/aws-lc-fips-sys-0.13.10/aws-lc/util/fipstools/delocate/delocate_test.go	1970-01-01 01:00:00.000000000 +0100
++++ vendor/src/proxy/vendor/aws-lc-fips-sys-0.13.10/aws-lc/util/fipstools/delocate/delocate_test.go	2025-11-24 14:12:32.150568241 +0100
 @@ -56,6 +56,7 @@
  	{"x86_64-Sections", nil, []string{"in.s"}, "out.s", true},
  	{"x86_64-ThreeArg", nil, []string{"in.s"}, "out.s", true},
@@ -566,9 +566,9 @@ diff -Nru vendor.orig/src/proxy/vendor/aws-lc-fips-sys-0.13.9/aws-lc/util/fipsto
  	{"aarch64-Basic", nil, []string{"in.s"}, "out.s", true},
  }
  
-diff -Nru vendor.orig/src/proxy/vendor/aws-lc-fips-sys-0.13.9/aws-lc/util/fipstools/delocate/testdata/x86_64-Relro/in.s vendor/src/proxy/vendor/aws-lc-fips-sys-0.13.9/aws-lc/util/fipstools/delocate/testdata/x86_64-Relro/in.s
---- vendor.orig/src/proxy/vendor/aws-lc-fips-sys-0.13.9/aws-lc/util/fipstools/delocate/testdata/x86_64-Relro/in.s	1970-01-01 01:00:00.000000000 +0100
-+++ vendor/src/proxy/vendor/aws-lc-fips-sys-0.13.9/aws-lc/util/fipstools/delocate/testdata/x86_64-Relro/in.s	2025-11-07 14:32:34.108400458 +0100
+diff -Nru vendor.orig/src/proxy/vendor/aws-lc-fips-sys-0.13.10/aws-lc/util/fipstools/delocate/testdata/x86_64-Relro/in.s vendor/src/proxy/vendor/aws-lc-fips-sys-0.13.10/aws-lc/util/fipstools/delocate/testdata/x86_64-Relro/in.s
+--- vendor.orig/src/proxy/vendor/aws-lc-fips-sys-0.13.10/aws-lc/util/fipstools/delocate/testdata/x86_64-Relro/in.s	1970-01-01 01:00:00.000000000 +0100
++++ vendor/src/proxy/vendor/aws-lc-fips-sys-0.13.10/aws-lc/util/fipstools/delocate/testdata/x86_64-Relro/in.s	2025-11-24 14:12:32.150816192 +0100
 @@ -0,0 +1,47 @@
 +	.text
 +	.globl foo
@@ -617,9 +617,9 @@ diff -Nru vendor.orig/src/proxy/vendor/aws-lc-fips-sys-0.13.9/aws-lc/util/fipsto
 +	.globl foofoofoo
 +foofoofoo:
 +	ret
-diff -Nru vendor.orig/src/proxy/vendor/aws-lc-fips-sys-0.13.9/aws-lc/util/fipstools/delocate/testdata/x86_64-Relro/out.s vendor/src/proxy/vendor/aws-lc-fips-sys-0.13.9/aws-lc/util/fipstools/delocate/testdata/x86_64-Relro/out.s
---- vendor.orig/src/proxy/vendor/aws-lc-fips-sys-0.13.9/aws-lc/util/fipstools/delocate/testdata/x86_64-Relro/out.s	1970-01-01 01:00:00.000000000 +0100
-+++ vendor/src/proxy/vendor/aws-lc-fips-sys-0.13.9/aws-lc/util/fipstools/delocate/testdata/x86_64-Relro/out.s	2025-11-07 14:32:34.108510627 +0100
+diff -Nru vendor.orig/src/proxy/vendor/aws-lc-fips-sys-0.13.10/aws-lc/util/fipstools/delocate/testdata/x86_64-Relro/out.s vendor/src/proxy/vendor/aws-lc-fips-sys-0.13.10/aws-lc/util/fipstools/delocate/testdata/x86_64-Relro/out.s
+--- vendor.orig/src/proxy/vendor/aws-lc-fips-sys-0.13.10/aws-lc/util/fipstools/delocate/testdata/x86_64-Relro/out.s	1970-01-01 01:00:00.000000000 +0100
++++ vendor/src/proxy/vendor/aws-lc-fips-sys-0.13.10/aws-lc/util/fipstools/delocate/testdata/x86_64-Relro/out.s	2025-11-24 14:12:32.150897186 +0100
 @@ -0,0 +1,127 @@
 +.text
 +.file 1 "inserted_by_delocate.c"

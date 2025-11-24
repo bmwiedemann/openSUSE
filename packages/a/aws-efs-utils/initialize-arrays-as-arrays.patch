@@ -1,6 +1,6 @@
-diff -Nru vendor.orig/src/proxy/vendor/aws-lc-fips-sys-0.13.9/aws-lc/crypto/fipsmodule/self_check/self_check.c vendor/src/proxy/vendor/aws-lc-fips-sys-0.13.9/aws-lc/crypto/fipsmodule/self_check/self_check.c
---- vendor.orig/src/proxy/vendor/aws-lc-fips-sys-0.13.9/aws-lc/crypto/fipsmodule/self_check/self_check.c	1970-01-01 01:00:00.000000000 +0100
-+++ vendor/src/proxy/vendor/aws-lc-fips-sys-0.13.9/aws-lc/crypto/fipsmodule/self_check/self_check.c	2025-11-07 14:39:58.744931127 +0100
+diff -Nru vendor.orig/src/proxy/vendor/aws-lc-fips-sys-0.13.10/aws-lc/crypto/fipsmodule/self_check/self_check.c vendor/src/proxy/vendor/aws-lc-fips-sys-0.13.10/aws-lc/crypto/fipsmodule/self_check/self_check.c
+--- vendor.orig/src/proxy/vendor/aws-lc-fips-sys-0.13.10/aws-lc/crypto/fipsmodule/self_check/self_check.c	1970-01-01 01:00:00.000000000 +0100
++++ vendor/src/proxy/vendor/aws-lc-fips-sys-0.13.10/aws-lc/crypto/fipsmodule/self_check/self_check.c	2025-11-24 14:09:10.073187291 +0100
 @@ -1706,7 +1706,8 @@
  }
  

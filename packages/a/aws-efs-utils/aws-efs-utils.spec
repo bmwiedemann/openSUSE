@@ -23,7 +23,7 @@
 %endif
 %global _sitelibdir %{%{pythons}_sitelib}
 Name:           aws-efs-utils
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        Utilities for using the EFS file systems
 License:        MIT

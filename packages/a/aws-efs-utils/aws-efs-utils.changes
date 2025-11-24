@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 24 13:21:24 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.4.1
+  * Add cafile override for eusc-de-east-1 in efs-utils.conf
+- Refresh fix-cargo-checksums.patch
+- Refresh initialize-arrays-as-arrays.patch
+- Refresh support-relro-in-delocator.patch
+
+-------------------------------------------------------------------
 Fri Nov  7 14:01:13 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.4.0

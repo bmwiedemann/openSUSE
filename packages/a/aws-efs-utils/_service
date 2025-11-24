@@ -3,7 +3,7 @@
   <service name="tar_scm" mode="manual">
     <param name="url">https://github.com/aws/efs-utils.git</param>
     <param name="scm">git</param>
-    <param name="revision">v2.4.0</param>
+    <param name="revision">v2.4.1</param>
     <param name="versionformat">@PARENT_TAG@</param>
   </service>
   <service name="recompress" mode="disabled">

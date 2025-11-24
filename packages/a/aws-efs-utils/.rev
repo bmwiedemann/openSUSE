@@ -269,4 +269,16 @@
 - Add fix-cargo-checksums.patch to fix cargo checksums after patching (forwarded request 1316451 from glaubitz)</comment>
     <requestid>1316980</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>017b1f8b0e43110d5d5d0e10a9363139</srcmd5>
+    <version>2.4.1</version>
+    <time>1764001064</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.4.1
+  * Add cafile override for eusc-de-east-1 in efs-utils.conf
+- Refresh fix-cargo-checksums.patch
+- Refresh initialize-arrays-as-arrays.patch
+- Refresh support-relro-in-delocator.patch (forwarded request 1319744 from glaubitz)</comment>
+    <requestid>1319769</requestid>
+  </revision>
 </revisionlist>
