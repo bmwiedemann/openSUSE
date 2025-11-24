@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Nov 22 04:14:47 UTC 2025 - Glen Masgai <glen.masgai@gmail.com>
+
+- Update to version 0.13.0
+  * New models: DeepSeek-OCR, Cogito-V2.1
+  * DeepSeek-V3.1 architecture is now supported in Ollama's engine
+  * Fixed performance issues that arose in Ollama 0.12.11 on CUDA
+  * Fixed issue where Linux install packages were missing required
+    Vulkan libraries
+  * Improved CPU and memory detection while in containers/cgroups
+  * Improved VRAM information detection for AMD GPUs
+  * Improved KV cache performance to no longer require
+    defragmentation
+
+- Update to version 0.12.11
+  * Ollama's API and the OpenAI-compatible API now supports
+    Logprobs, see:
+    https://cookbook.openai.com/examples/using_logprobs) and
+    https://github.com/ollama/ollama/releases/tag/v0.12.11
+  * Ollama's new app now supports WebP images
+  * Improved rendering performance in Ollama's new app, especially
+    when rendering code
+  * The "required" field in tool definitions will now be omitted if
+    not specified
+  * Fixed issue where "tool_call_id" would be omitted when using
+    the OpenAI-compatible API.
+  * Fixed issue where ollama create would import data from both
+    consolidated.safetensors and other safetensor files.
+  * Ollama will now prefer dedicated GPUs over iGPUs when
+    scheduling models
+  * Vulkan can now be enabled by setting OLLAMA_VULKAN=1.
+    For example: OLLAMA_VULKAN=1 ollama serve
+
+-------------------------------------------------------------------
 Mon Nov 10 19:34:43 UTC 2025 - Egbert Eich <eich@suse.com>
 
 - Consolidate spec file to build for CPU or GPUs from NVIDIA (CUDA)
@@ -25,6 +58,7 @@ Fri Nov  7 15:40:39 UTC 2025 - Glen Masgai <glen.masgai@gmail.com>
 
 -------------------------------------------------------------------
 Sun Nov  2 04:00:05 UTC 2025 - Glen Masgai <glen.masgai@gmail.com>
+
 - Fixed issue with duplicated libraries (/usr/lib, /usr/lib64)
 
 - Update to version 0.12.9
