@@ -7,4 +7,16 @@
     <comment>add to factory</comment>
     <requestid>1315732</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c138e9ec8ea29d177d8bcd2e254dabc2</srcmd5>
+    <version>0.1</version>
+    <time>1764001062</time>
+    <user>anag_factory</user>
+    <comment>- scan the generated container, not base containers
+- unpack container before scanning with ClamAV
+- various indentation/linting fixes
+
+- rename clamav output to clamav_vuln.intoto.json</comment>
+    <requestid>1319766</requestid>
+  </revision>
 </revisionlist>

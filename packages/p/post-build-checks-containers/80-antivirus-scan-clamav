@@ -16,10 +16,10 @@ log() {
 check_required_environment_variables() {
     local required_environment_variable
     for required_environment_variable in "$@"; do
-        if [[ -z ${!required_environment_variable:-} ]]; then
-            log "Missing environment variable '$required_environment_variable'"
-            return 1
-        fi
+	if [[ -z ${!required_environment_variable:-} ]]; then
+	    log "Missing environment variable '$required_environment_variable'"
+	    return 1
+	fi
     done
 }
 containerinfos() {
@@ -28,12 +28,12 @@ containerinfos() {
 clamscan_exec() {
     local jobs=""
     if clamscan -j2 --help >/dev/null 2>/dev/null; then
-        jobs="$(getconf _NPROCESSORS_ONLN)"
+	jobs="$(getconf _NPROCESSORS_ONLN)"
     fi
     if [[ -n $jobs ]]; then
-        clamscan "-j$jobs" "$@"
+	clamscan "-j$jobs" "$@"
     else
-        clamscan "$@"
+	clamscan "$@"
     fi
 }
 
@@ -41,7 +41,7 @@ check_required_environment_variables BUILD_DIR BUILD_ROOT
 
 log "Retrieving container image metadata"
 CONTAINERINFO="$(find "$TOPDIR" -name '*.containerinfo' -print -quit)"
-OUTPUTDIR=`dirname $CONTAINERINFO`
+OUTPUTDIR="$(dirname $CONTAINERINFO)"
 CONTAINER_NAME="$(basename "$CONTAINERINFO" | sed 's/\.containerinfo$//')"
 CONTAINER_TAG="$(python3 -c \
     'import json, sys; print(json.load(sys.stdin)["tags"][0])' \
@@ -49,33 +49,34 @@ CONTAINER_TAG="$(python3 -c \
 
 log "Container image tag to check: $CONTAINER_TAG"
 
-CONTAINER_UNPACKED_DIR=`mktemp -d`
+CONTAINER_UNPACKED_DIR=$(mktemp -d)
 
-find `dirname $CONTAINER_NAME` -name "*.tar" | while read tarname
+find "$OUTPUTDIR" -name "*.tar" | while read -r tarname
 do
-	echo "tarname is $tarname"
-	echo "CONTAINER_UNPACKED_DIR is $CONTAINER_UNPACKED_DIR"
-	echo tar -C $CONTAINER_UNPACKED_DIR -xf $tarname
-	tar -C $CONTAINER_UNPACKED_DIR -xf $tarname
+    echo "tarname is $tarname"
+    echo tar -C "$CONTAINER_UNPACKED_DIR" -xf "$tarname"
+    tar -C "$CONTAINER_UNPACKED_DIR" -xf "$tarname"
+    for layer in $(jq -r '.[0] | .Layers | .[]' < "$CONTAINER_UNPACKED_DIR/manifest.json"); do
+        echo "unpacking layer $layer"
+        tar -C "$CONTAINER_UNPACKED_DIR" -xf "$CONTAINER_UNPACKED_DIR/$layer"
+        rm -vf "$CONTAINER_UNPACKED_DIR/$layer"
+    done
+    rm -vf "$CONTAINER_UNPACKED_DIR/manifest.json"
 done
-
 
 log "Scanning image with ClamAV"
 CLAMAV_RESULT="$(mktemp)"
-clamscan_exec --infected --recursive "$CONTAINER_UNPACKED_DIR" \
+clamscan_exec --fail-if-cvd-older-than=14 --infected --recursive "$CONTAINER_UNPACKED_DIR" \
     >"$CLAMAV_RESULT"
 
-rm -rf $CONTAINER_UNPACKED_DIR
+rm -rf "$CONTAINER_UNPACKED_DIR"
 
 # Convert file to the Cosign Generic Predicate Spec format
 # https://github.com/sigstore/cosign/blob/main/specs/COSIGN_VULN_ATTESTATION_SPEC.md
 # NOTE: The subject will be filled by OBS during publishing
-CLAMAV_VERSION="$(
-    clamscan --version | awk '{print $2}' | awk -F/ '{print $1}'
-)"
 SCAN_TIMESTAMP="$(date '+%Y-%m-%dT%H:%M:%S.%N%:z')"
 jq --rawfile result "$CLAMAV_RESULT" '.predicate.data = $result' \
-    >"$OUTPUTDIR/$CONTAINER_NAME.clamav.intoto.json" <<EOF
+    >"$OUTPUTDIR/$CONTAINER_NAME.clamav_vuln.intoto.json" <<EOF
 {
   "_type": "https://in-toto.io/Statement/v0.1",
   "predicateType": "https://cosign.sigstore.dev/attestation/v1",
