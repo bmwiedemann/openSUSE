@@ -1,11 +1,24 @@
 -------------------------------------------------------------------
+Thu Nov 13 17:13:03 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2025-6075-expandvars-perf-degrad.patch avoid simple
+  quadratic complexity vulnerabilities of os.path.expandvars()
+  (CVE-2025-6075, bsc#1252974).
+- Readjusted patches:
+  - CVE-2023-52425-libexpat-2.6.0-backport.patch
+  - CVE-2023-52425-remove-reparse_deferral-tests.patch
+  - fix_configure_rst.patch
+  - skip_if_buildbot-extend.patch
+
+-------------------------------------------------------------------
 Wed Oct 15 08:52:35 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 3.11.14:
   - Security
     - gh-139700: Check consistency of the zip64 end of central
       directory record. Support records with “zip64 extensible data”
-      if there are no bytes prepended to the ZIP file.
+      if there are no bytes prepended to the ZIP file
+      (CVE-2025-8291, bsc#1251305).
     - gh-139400: xml.parsers.expat: Make sure that parent Expat
       parsers are only garbage-collected once they are no longer
       referenced by subparsers created by

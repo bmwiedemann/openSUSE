@@ -1730,4 +1730,22 @@ C API
     <comment></comment>
     <requestid>1311759</requestid>
   </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>422c95bca256470c48efa6e2f010b05c</srcmd5>
+    <version>3.11.14</version>
+    <time>1763989514</time>
+    <user>anag_factory</user>
+    <comment>- Add CVE-2025-6075-expandvars-perf-degrad.patch avoid simple
+  quadratic complexity vulnerabilities of os.path.expandvars()
+  (CVE-2025-6075, bsc#1252974).
+- Readjusted patches:
+  - CVE-2023-52425-libexpat-2.6.0-backport.patch
+  - CVE-2023-52425-remove-reparse_deferral-tests.patch
+  - fix_configure_rst.patch
+  - skip_if_buildbot-extend.patch
+
+      if there are no bytes prepended to the ZIP file
+      (CVE-2025-8291, bsc#1251305).</comment>
+    <requestid>1318940</requestid>
+  </revision>
 </revisionlist>
