@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 20 15:33:38 UTC 2025 - schubi@suse.com
+
+- Update to version 0.0.7:
+  * Replaced --admin_changed by --is_generated
+
+-------------------------------------------------------------------
 Tue Nov 18 17:28:03 UTC 2025 - schubi@suse.com
 
 - Update to version 0.0.6:

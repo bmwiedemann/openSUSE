@@ -25,4 +25,13 @@
 * Fix: Crash while parsing empty values</comment>
     <requestid>1318485</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>faf76acc2a9e15357647deea2ad9e687</srcmd5>
+    <version>0.0.7</version>
+    <time>1763989582</time>
+    <user>anag_factory</user>
+    <comment>Update to version 0.0.7:
+  * Replaced --admin_changed by --is_generated</comment>
+    <requestid>1318911</requestid>
+  </revision>
 </revisionlist>
