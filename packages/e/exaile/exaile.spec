@@ -35,7 +35,6 @@ BuildRequires:  gobject-introspection-devel
 BuildRequires:  help2man
 BuildRequires:  python3
 BuildRequires:  python3-gobject
-BuildRequires:  update-desktop-files
 Requires:       gdk-pixbuf-loader-rsvg
 Requires:       gstreamer
 Requires:       gstreamer-plugins-good
