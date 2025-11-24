@@ -1,7 +1,7 @@
 #
 # spec file for package goxel
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,6 @@ Source:         https://github.com/guillaumechereau/goxel/archive/v%{version}.ta
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  scons
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(glfw3)
 BuildRequires:  pkgconfig(gtk+-3.0)
