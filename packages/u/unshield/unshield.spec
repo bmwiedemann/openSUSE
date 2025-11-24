@@ -1,7 +1,7 @@
 #
 # spec file for package unshield
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover   1
 %define libname lib%{name}%{sover}
 Name:           unshield
-Version:        1.6.0
+Version:        1.6.2
 Release:        0
 Summary:        A Program to Extract InstallShield Cabinet Files
 License:        MIT
