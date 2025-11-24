@@ -1,7 +1,7 @@
 #
 # spec file for package perl-CLI-Osprey
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,15 @@
 
 %define cpan_name CLI-Osprey
 Name:           perl-CLI-Osprey
-Version:        0.80.0
+Version:        0.90.0
 Release:        0
-# 0.08 -> normalize -> 0.80.0
-%define cpan_version 0.08
+# 0.09 -> normalize -> 0.90.0
+%define cpan_version 0.09
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        MooX::Options + MooX::Cmd + Sanity
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/A/AR/ARODLAND/%{cpan_name}-%{cpan_version}.tar.gz
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
