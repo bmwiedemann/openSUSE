@@ -292,4 +292,23 @@
     <comment></comment>
     <requestid>1311113</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>1565d8e1fc32f766ffc66a77529cb826</srcmd5>
+    <version>49.2.1</version>
+    <time>1763990010</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 49.2.1:
+  + Replaced the user help docs with a 'Game Rules' dialog
+
+- Update to version 49.2:
+  + Made the 'P' key pause the game
+  + Replaced the user help docs with a 'Rules' dialog
+  + Stopped the menu button taking focus
+  + Removed the libgee dependency &amp; updated libgnome-games-support
+  + Fixed a bug where the game's score would not be recorded when
+    the app was quit
+  + Added total rows and level information to scores
+  + Updated translations. (forwarded request 1319226 from iznogood)</comment>
+    <requestid>1319642</requestid>
+  </revision>
 </revisionlist>

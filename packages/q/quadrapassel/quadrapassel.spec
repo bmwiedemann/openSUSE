@@ -17,7 +17,7 @@
 
 
 Name:           quadrapassel
-Version:        49.1
+Version:        49.2.1
 Release:        0
 Summary:        Tetris Game for GNOME
 License:        GPL-2.0-or-later
@@ -54,7 +54,6 @@ player gains points
 %files
 %license COPYING
 %doc NEWS
-%doc %{_datadir}/help/C/%{name}/
 %{_bindir}/%{name}
 %{_datadir}/metainfo/org.gnome.Quadrapassel.metainfo.xml
 %{_datadir}/applications/org.gnome.Quadrapassel.desktop
