@@ -1,7 +1,7 @@
 #
 # spec file for package pumpa
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,17 +20,17 @@ Name:           pumpa
 Version:        0.9.3
 Release:        0
 Summary:        A pump.io client written in C++/Qt
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          System/GUI/Other
-Url:            https://pumpa.branchable.com/
+URL:            https://pumpa.branchable.com/
 Source:         https://sjoberg.fi/software/downloads/%{name}/%{name}-%{version}.tar.xz
 Source1:        https://sjoberg.fi/software/downloads/%{name}/%{name}-%{version}.tar.xz.sign
 Source2:        %{name}.keyring
+BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libtidy-devel
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Gui)

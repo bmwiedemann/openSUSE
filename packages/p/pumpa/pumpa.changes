@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 24 01:51:10 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove unused BuildRequires: update-desktop-files.
+- Explicitly add desktop-file-utils to BuildRequires.
+
+-------------------------------------------------------------------
 Wed Aug  9 12:36:34 UTC 2017 - pgajdos@suse.com
 
 - turn off spell checking [bsc#1052963]
