@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>1223485</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3e170bc2ed7df2c5e11815ee09ecf439</srcmd5>
+    <version>8.0.1</version>
+    <time>1763989987</time>
+    <user>anag_factory</user>
+    <comment>- Remove unused BuildRequires: update-desktop-files. (forwarded request 1319442 from sbrabec)</comment>
+    <requestid>1319574</requestid>
+  </revision>
 </revisionlist>

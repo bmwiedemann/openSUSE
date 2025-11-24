@@ -1,7 +1,7 @@
 #
 # spec file for package switchboard-plug-onlineaccounts
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  vala
 BuildRequires:  pkgconfig(camel-1.2) >= 3.28
 BuildRequires:  pkgconfig(glib-2.0)
