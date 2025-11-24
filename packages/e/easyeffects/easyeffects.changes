@@ -1,10 +1,26 @@
 -------------------------------------------------------------------
+Thu Nov 20 23:58:40 UTC 2025 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Recommend the breeze6 package as suggested by upstream.
+- Update to version 8.0.4
+  * Fixed a bug that prevented to correctly parse the number in
+    input fields when the unit measurement was not deleted.
+  * Now the Reset History button in the Deep Noise Remover should
+    work as intended.
+  * The "end frequency" of enabled bands in the Multiband
+    Compressor are now correctly shown.
+  * KDE Breeze theme is a required dependency in Flatpak version.
+    For distribution packages instead we recommend to install the
+    Breeze theme even if it's not strictly required.
+
+
+-------------------------------------------------------------------
 Sat Nov 15 04:47:16 UTC 2025 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 8.0.3
   * Updated translations
   * Fixed a regression introduced by version 8.0.1 that made
-    EasyEffects unable properly parse extra LV2 paths given by
+    Easy Effects unable properly parse extra LV2 paths given by
     LV2_PATH
 - Update to version 8.0.2
   * Improved preset migration function.

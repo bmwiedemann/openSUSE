@@ -17,7 +17,7 @@
 
 
 Name:           easyeffects
-Version:        8.0.3
+Version:        8.0.4
 Release:        0
 Summary:        Simple audio effects
 License:        GPL-3.0-or-later
@@ -60,6 +60,7 @@ Requires:       kf6-kirigami
 Requires:       kirigami-addons6
 Requires:       qt6-graphs-imports
 Requires:       qt6-webengine-imports
+Recommends:     breeze6
 Recommends:     lv2-calf
 Recommends:     lv2-lsp-plugins
 Recommends:     lv2-zam-plugins
