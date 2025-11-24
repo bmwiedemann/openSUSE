@@ -1,7 +1,7 @@
 #
 # spec file for package fluidsynth-dssi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,12 +23,11 @@ Release:        0
 Summary:        Fluidsynth Plug-In for Disposable Soft Synth Interface
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Midi
-Url:            http://dssi.sf.net
+URL:            http://dssi.sf.net
 Source:         https://github.com/schnitzeltony/%{name}/archive/%{_rev}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         fluidsynth-dssi-add-closedir.diff
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(dssi)
 BuildRequires:  pkgconfig(fluidsynth)
