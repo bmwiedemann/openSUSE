@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Fri Nov 21 06:16:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.11:
+  * fix(sync): properly handle CommitAll errors in syncImage and
+    skip failed temp sync dirs (#3567)
+  * feat: allow claim mapping for user name with oidc (#3540)
+  * Sync images with a background context (#3537)
+  * chore: fix dependabot alerts (#3566)
+  * fix(ui): update zui version (#3564)
+  * chore: update cosign from v2 to v3 (#3561)
+  * chore: update github.com/olekukonko/tablewriter to v1.1.1
+    (#3559)
+  * fix (metadb): make sure metadb statistics are initialized on
+    image download, and minor metadb fixes for Docker v2 manifest
+    compatibility (#3545)
+  * chore: fix dependabot alerts (#3555)
+  * fix: show relevant error messages in case of images which
+    cannot be scanned by Trivy (#3554)
+  * fix: img-src annotation changes with zui move to vite (#3539)
+  * Fix Dockerfiles by moving the BASE_IMAGE arg  into the global
+    scope (#3536)
+  * fix: gracefully handle manifests missing from storage (prepare
+    for sparse indexes) (#3503)
+  * chore: fix dependabot alerts (#3534)
+  * fix: separate cipher suites and curve preferences into FIPS and
+    non FIPS, and use them accordingly (#3523)
+  * fix: deduplicate entries in referrers responses (#3524)
+  * fix: add support for sha256 and sha512 in htpasswd (#3497)
+  * fix: re-introduce pagination (#3521)
+  * chore: fix dependabot alerts (#3517)
+  * chore: fix dependabot alerts (#3514)
+  * fix: support custom OAuth2 URLs for GitHub Enterprise and
+    self-hosted providers (#3513)
+  * fix(log): ensure func record is correct (#3501)
+  * fix: close file handle before moving file in FullBlobUpload
+    (#3499)
+  * docs: update maintainers and codeowners info (#3502)
+  * chore: fix monitoring goroutine leak in tests (#3500)
+  * chore: fix dependabot alerts (#3496)
+  * feat: add zot subcommand to enable testing retention policy
+    settings (#3449)
+  * fix: configure cookie Secure flag based on TLS configuration
+    (#3482)
+  * refactor: remove usage of goto in the image store (#2969)
+  * fix: zot version broken after switching to /v2 (#3479)
+  * chore: stabilize coverage in specific sync test (#3480)
+  * chore: fix dependabot alerts (#3477)
+  * fix: minor fixes based on intermittent test failures (#3465)
+- remove patch fix_broken_version_output_in_2.1.10.patch
+
+-------------------------------------------------------------------
 Mon Oct 20 05:43:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.1.10:

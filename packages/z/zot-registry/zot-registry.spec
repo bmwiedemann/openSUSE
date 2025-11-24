@@ -20,10 +20,10 @@
 %define executable_name zot
 
 # https://github.com/project-zot/zot/blob/main/Makefile#L28
-%define zui_version commit-731b639
+%define zui_version commit-f870292
 
 Name:           zot-registry
-Version:        2.1.10
+Version:        2.1.11
 Release:        0
 Summary:        Scale-out production-ready vendor-neutral OCI-native container image registry
 License:        Apache-2.0
@@ -39,9 +39,6 @@ Source12:       system-user-%{system_user_name}.conf
 Source21:       Makefile
 Source22:       PACKAGING_README.md
 #
-# PATCH-FIX-UPSTREAM fix_broken_version_output_in_2.1.10.patch
-# https://github.com/project-zot/zot/pull/3479
-Patch1:         https://github.com/project-zot/zot/commit/4ebe1416655b4074494a23fe285c45d15a0c4781.patch#/fix_broken_version_output_in_2.1.10.patch
 #
 BuildRequires:  awk
 BuildRequires:  bash-completion
