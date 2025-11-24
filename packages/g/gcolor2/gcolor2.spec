@@ -1,7 +1,7 @@
 #
 # spec file for package gcolor2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,6 @@ BuildRequires:  ImageMagick
 BuildRequires:  gtk2-devel
 BuildRequires:  intltool
 BuildRequires:  libtool
-BuildRequires:  update-desktop-files
 BuildRequires:  perl(XML::Parser)
 
 %description
