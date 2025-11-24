@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov 18 09:40:32 UTC 2025 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- Update to version 1.0.18:
+  * scxtop: Add comprehensive perfetto trace analysis MCP server
+  * scxtop: Add softirq analyzer with selective BPF program attachment
+  * scxtop: Add comprehensive MCP event analyzer infrastructure
+  * scx_bpfland: Classify sticky tasks based on their average runtime
+  * scx_bpfland: Scale vruntime credit based on queue depth
+  * scxtop: Fix P99 Runtime chart width in BPF detailed view
+  * scxtop: Add BPF program profiling with perf sampling
+  * scx_bpfland: Add --preferred-idle-scan option to prioritize faster CPUs
+  * scx_lavd: Add --pinned-slice-us option for improved pinned task
+    responsiveness
+  * scx_lavd: Add configurable migration threshold with avg utilization
+  * scx_layered: add memory bandwidth-based layer sizing
+
+-------------------------------------------------------------------
 Tue Oct 21 14:13:30 UTC 2025 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
 
 - Update to version 1.0.17:

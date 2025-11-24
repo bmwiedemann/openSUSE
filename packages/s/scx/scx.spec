@@ -20,7 +20,7 @@
 %define libbpf_min_ver 1.4
 %define llvm_min_ver 17
 Name:           scx
-Version:        1.0.17
+Version:        1.0.18
 Release:        0
 Summary:        Sched_ext CPU schedulers
 License:        GPL-2.0-only
@@ -64,9 +64,7 @@ Header files needed to develop a sched-ext scheduler in C.
 %install
 export CARGO_HOME=$PWD/.cargo
 
-for path in ./tools/scx_loader \
-	./tools/scxctl \
-	./tools/scxtop \
+for path in ./tools/scxtop \
 	./tools/scxcash \
 	./scheds/rust/scx_p2dq \
 	./scheds/rust/scx_tickless \
@@ -111,14 +109,9 @@ install -Dm644 scheds/include/scx/*.h \
 %files
 %license LICENSE
 %doc README.md OVERVIEW.md
-%{_bindir}/scx{cash,ctl,top,_*}
+%{_bindir}/scx{cash,top,_*}
 %{_unitdir}/scx.service
 %config(noreplace) %{_sysconfdir}/default/%{name}
-
-# exclude scx_loader because of dbus warning.
-%exclude %{_prefix}/lib/systemd/system/scx_loader.service
-%exclude %{_datadir}/dbus-1
-%exclude %{_datadir}/scx_loader
 
 %files devel
 %license LICENSE
