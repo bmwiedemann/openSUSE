@@ -1,7 +1,7 @@
 #
 # spec file for package libfaketime
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libfaketime
-Version:        0.9.10
+Version:        0.9.12
 Release:        0
 Summary:        FakeTime Preload Library
 License:        GPL-2.0-only
@@ -29,7 +29,7 @@ Source:         https://github.com/wolfcw/libfaketime/archive/v%{version}.tar.gz
 report faked system time to programs without having to change the system-wide time
 
 %prep
-%setup -q
+%autosetup
 
 %build
 make %{?_smp_mflags} PREFIX=%{_prefix} LIBDIRNAME=/%{_lib}/%{name}

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Nov 23 13:43:51 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.12
+  * Fixed various cross-platform compile-time issues.
+  * Honor nanosecond parameters/fields in relevant system calls.
+  * Limited improvements to enhance compatibility with other
+    LD_PRELOAD libraries.
+  * Added selected more intercepted system calls.
+  * Unset FAKETIME_SHARED automatically for child processes when
+    enabling FAKETIME_FLSHM=1
+  * Disable shared memory for child processes through
+    FAKETIME_DISABLE_SHM=1
+
+-------------------------------------------------------------------
 Sat Mar 26 14:18:26 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.10:
