@@ -2,6 +2,5 @@
   <title>perl-IO-Compress-Lzma - Write lzma files/buffers</title>
   <description>This module provides a Perl interface that allows writing lzma
 compressed data to files or buffer.</description>
-  <devel project="devel:languages:perl" package="perl-IO-Compress-Lzma"/>
   <url>https://metacpan.org/release/IO-Compress-Lzma</url>
 </package>

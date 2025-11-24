@@ -87,4 +87,29 @@
     <comment></comment>
     <requestid>1237564</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6b1e2238f60def98508e6181ababc810</srcmd5>
+    <version>2.214.0</version>
+    <time>1763989679</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.214.0 (2.214)
+   see /usr/share/doc/packages/perl-IO-Compress-Lzma/Changes
+    2.214 24 October 2025
+      * update for 2.214
+      Fri Oct 24 16:51:09 2025 +0100
+      958cd5a1b3a1e86b6fd6dc4f1c2551aa8c695e06
+      * Fix for IO-Compress#64
+      Fri Oct 24 15:52:16 2025 +0100
+      7241351dc2e34c04220267a118d879bf11822649
+      * Add dependabot.yml to police workflow files
+      Thu Sep 4 17:21:37 2025 +0100
+      6b23b66510dccd9cc5b4b82f2931dba619497df0
+      * Add perl 5.42 to workflow files
+      Thu Sep 4 17:21:05 2025 +0100
+      b44ddbb6cdd8aee753ff91c4a985de969cf9fe33
+      * fix typo
+      Sat Nov 16 09:26:06 2024 +0000
+      f32378fab46920106fc652f4a6c3690d32e150a4</comment>
+    <requestid>1319071</requestid>
+  </revision>
 </revisionlist>

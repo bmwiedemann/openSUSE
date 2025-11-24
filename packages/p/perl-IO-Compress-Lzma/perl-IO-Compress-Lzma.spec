@@ -1,7 +1,7 @@
 #
 # spec file for package perl-IO-Compress-Lzma
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,24 +18,25 @@
 
 %define cpan_name IO-Compress-Lzma
 Name:           perl-IO-Compress-Lzma
-Version:        2.213.0
+Version:        2.214.0
 Release:        0
-# 2.213 -> normalize -> 2.213.0
-%define cpan_version 2.213
+# 2.214 -> normalize -> 2.214.0
+%define cpan_version 2.214
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Write lzma files/buffers
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PM/PMQS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Compress::Raw::Lzma) >= 2.213
-BuildRequires:  perl(IO::Compress::Base) >= 2.213
-BuildRequires:  perl(IO::Uncompress::Base) >= 2.213
-Requires:       perl(Compress::Raw::Lzma) >= 2.213
-Requires:       perl(IO::Compress::Base) >= 2.213
-Requires:       perl(IO::Uncompress::Base) >= 2.213
+BuildRequires:  perl(Compress::Raw::Lzma) >= 2.214
+BuildRequires:  perl(IO::Compress::Base) >= 2.214
+BuildRequires:  perl(IO::Uncompress::Base) >= 2.214
+Requires:       perl(Compress::Raw::Lzma) >= 2.214
+Requires:       perl(IO::Compress::Base) >= 2.214
+Requires:       perl(IO::Uncompress::Base) >= 2.214
 Provides:       perl(IO::Compress::Adapter::Lzip) = %{version}
 Provides:       perl(IO::Compress::Adapter::Lzma) = %{version}
 Provides:       perl(IO::Compress::Adapter::Xz) = %{version}
@@ -59,7 +60,7 @@ For reading lzma files/buffers, see the companion module
 IO::Uncompress::UnLzma.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
