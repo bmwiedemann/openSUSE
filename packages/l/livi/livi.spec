@@ -25,17 +25,17 @@ Summary:        A light video player with hardware acceleration support
 License:        GPL-3.0-or-later
 URL:            https://gitlab.gnome.org/guidog/livi
 Source:         %{url}/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
-BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  Mesa-libGL-devel
+BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  appstream-glib
+BuildRequires:  desktop-file-utils
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(gstreamer-1.0)
+BuildRequires:  pkgconfig(gstreamer-gl-1.0)
+BuildRequires:  pkgconfig(gstreamer-play-1.0)
 BuildRequires:  pkgconfig(gtk4) >= 4.13.7
 BuildRequires:  pkgconfig(libadwaita-1)
-BuildRequires:  pkgconfig(gstreamer-1.0)
-BuildRequires:  pkgconfig(gstreamer-play-1.0)
-BuildRequires:  pkgconfig(gstreamer-gl-1.0)
 
 %description
 Minimalistic video player using GTK4 and GStreamer. The main purpose is

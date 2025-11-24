@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 24 00:28:04 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove unused BuildRequires: update-desktop-files.
+- Explicitly add desktop-file-utils to BuildRequires.
+
+-------------------------------------------------------------------
 Sun Jun 22 13:00:41 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.3.1:
