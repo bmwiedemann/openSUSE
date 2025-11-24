@@ -1,7 +1,7 @@
 #
 # spec file for package kea
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,12 +59,14 @@ Source5:        kea-dhcp6.service
 Source6:        kea-dhcp-ddns.service
 Source7:        kea-ctrl-agent.service
 Patch1:         kea-boost1_89.patch
-BuildRequires:  meson
+Patch2:         kea-boost1_90.patch
+BuildRequires:  fdupes
 BuildRequires:  freeradius-server-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libmysqlclient-devel
 BuildRequires:  libtool >= 2
 BuildRequires:  log4cplus-devel
+BuildRequires:  meson
 BuildRequires:  pkg-config >= 0.23
 BuildRequires:  postgresql-server-devel
 BuildRequires:  python-rpm-macros
@@ -74,7 +76,6 @@ BuildRequires:  python3-sphinx_rtd_theme
 BuildRequires:  sysuser-tools
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libcrypto)
-BuildRequires:  fdupes
 %sysusers_requires
 Suggests:       %name-hooks = %version
 %if 0%{?suse_version} >= 1500
@@ -349,8 +350,8 @@ Requires:       libkea-eval%eval_sover = %version
 Requires:       libkea-exceptions%exceptions_sover = %version
 Requires:       libkea-hooks%hooks_sover = %version
 Requires:       libkea-http%http_sover = %version
-Requires:       libkea-log-interprocess%log_interprocess_sover = %version
 Requires:       libkea-log%log_sover = %version
+Requires:       libkea-log-interprocess%log_interprocess_sover = %version
 Requires:       libkea-mysql%mysql_sover = %version
 Requires:       libkea-pgsql%pgsql_sover = %version
 Requires:       libkea-process%process_sover = %version

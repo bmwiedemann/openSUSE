@@ -1,0 +1,10 @@
+--- a/src/lib/log/logger_level_impl.cc.orig	2025-11-13 15:04:21.704582532 +0100
++++ b/src/lib/log/logger_level_impl.cc	2025-11-13 15:04:36.005019042 +0100
+@@ -10,6 +10,7 @@
+ #include <string.h>
+ #include <iostream>
+ #include <boost/lexical_cast.hpp>
++#include <boost/static_assert.hpp>
+ 
+ #include <log4cplus/logger.h>
+ 
