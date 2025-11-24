@@ -536,4 +536,20 @@
   * Wrap the `in` clause of comprehensions across lines if</comment>
     <requestid>1306430</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>ee8bcae647442084ce1d3632f4f1baf6</srcmd5>
+    <version>25.11.0</version>
+    <time>1763989513</time>
+    <user>anag_factory</user>
+    <comment>- update to 25.11.0:
+  * Enable base 3.14 support
+  * Add support for the new Python 3.14 t-string syntax
+    introduced by PEP 750
+  * Fix bug where comments between `# fmt: off` and `# fmt: on`
+    were reformatted
+  * Comments containing fmt directives now preserve their exact
+    formatting instead of being normalized
+  * Add `no_cache` option to control caching behavior.</comment>
+    <requestid>1318930</requestid>
+  </revision>
 </revisionlist>

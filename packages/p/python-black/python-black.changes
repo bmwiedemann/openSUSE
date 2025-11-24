@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 20 21:35:02 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 25.11.0:
+  * Enable base 3.14 support
+  * Add support for the new Python 3.14 t-string syntax
+    introduced by PEP 750
+  * Fix bug where comments between `# fmt: off` and `# fmt: on`
+    were reformatted
+  * Comments containing fmt directives now preserve their exact
+    formatting instead of being normalized
+  * Add `no_cache` option to control caching behavior.
+
+-------------------------------------------------------------------
 Mon Sep 22 07:34:17 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 25.9.0:
