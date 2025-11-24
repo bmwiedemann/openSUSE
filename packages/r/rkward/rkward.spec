@@ -17,7 +17,7 @@
 
 
 Name:           rkward
-Version:        0.8.1.1
+Version:        0.8.2
 Release:        0
 Summary:        Graphical frontend for R language
 Summary(fr):    Interface graphique pour le langage R
@@ -165,15 +165,6 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}:$LD_LIBRARY_PATH
 %dir %{_datadir}/doc/HTML/uk/rkwardplugins
 %dir %{_datadir}/kio
 %dir %{_datadir}/kio/servicemenus
-%{_datadir}/locale/bs/LC_MESSAGES/rkward__analysis.mo
-%{_datadir}/locale/bs/LC_MESSAGES/rkward__data.mo
-%{_datadir}/locale/bs/LC_MESSAGES/rkward__distributions.mo
-%{_datadir}/locale/bs/LC_MESSAGES/rkward__embedded.mo
-%{_datadir}/locale/bs/LC_MESSAGES/rkward__graphics_device.mo
-%{_datadir}/locale/bs/LC_MESSAGES/rkward__import_export.mo
-%{_datadir}/locale/bs/LC_MESSAGES/rkward__item_response_theory.mo
-%{_datadir}/locale/bs/LC_MESSAGES/rkward__pages.mo
-%{_datadir}/locale/bs/LC_MESSAGES/rkward__plots.mo
 %{_datadir}/locale/ca/LC_MESSAGES/rkward__analysis.mo
 %{_datadir}/locale/ca/LC_MESSAGES/rkward__data.mo
 %{_datadir}/locale/ca/LC_MESSAGES/rkward__distributions.mo
@@ -192,24 +183,7 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}:$LD_LIBRARY_PATH
 %{_datadir}/locale/ca@valencia/LC_MESSAGES/rkward__item_response_theory.mo
 %{_datadir}/locale/ca@valencia/LC_MESSAGES/rkward__pages.mo
 %{_datadir}/locale/ca@valencia/LC_MESSAGES/rkward__plots.mo
-%{_datadir}/locale/cs/LC_MESSAGES/rkward__analysis.mo
-%{_datadir}/locale/cs/LC_MESSAGES/rkward__data.mo
-%{_datadir}/locale/cs/LC_MESSAGES/rkward__distributions.mo
-%{_datadir}/locale/cs/LC_MESSAGES/rkward__embedded.mo
-%{_datadir}/locale/cs/LC_MESSAGES/rkward__graphics_device.mo
-%{_datadir}/locale/cs/LC_MESSAGES/rkward__import_export.mo
-%{_datadir}/locale/cs/LC_MESSAGES/rkward__item_response_theory.mo
-%{_datadir}/locale/cs/LC_MESSAGES/rkward__pages.mo
-%{_datadir}/locale/cs/LC_MESSAGES/rkward__plots.mo
-%{_datadir}/locale/de/LC_MESSAGES/rkward__analysis.mo
-%{_datadir}/locale/de/LC_MESSAGES/rkward__data.mo
-%{_datadir}/locale/de/LC_MESSAGES/rkward__distributions.mo
-%{_datadir}/locale/de/LC_MESSAGES/rkward__embedded.mo
 %{_datadir}/locale/de/LC_MESSAGES/rkward__graphics_device.mo
-%{_datadir}/locale/de/LC_MESSAGES/rkward__import_export.mo
-%{_datadir}/locale/de/LC_MESSAGES/rkward__item_response_theory.mo
-%{_datadir}/locale/de/LC_MESSAGES/rkward__pages.mo
-%{_datadir}/locale/de/LC_MESSAGES/rkward__plots.mo
 %{_datadir}/locale/en_GB/LC_MESSAGES/rkward__analysis.mo
 %{_datadir}/locale/en_GB/LC_MESSAGES/rkward__data.mo
 %{_datadir}/locale/en_GB/LC_MESSAGES/rkward__distributions.mo
@@ -237,27 +211,16 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}:$LD_LIBRARY_PATH
 %{_datadir}/locale/es/LC_MESSAGES/rkward__item_response_theory.mo
 %{_datadir}/locale/es/LC_MESSAGES/rkward__pages.mo
 %{_datadir}/locale/es/LC_MESSAGES/rkward__plots.mo
-%{_datadir}/locale/et/LC_MESSAGES/rkward__analysis.mo
 %{_datadir}/locale/et/LC_MESSAGES/rkward__data.mo
 %{_datadir}/locale/et/LC_MESSAGES/rkward__distributions.mo
 %{_datadir}/locale/et/LC_MESSAGES/rkward__embedded.mo
 %{_datadir}/locale/et/LC_MESSAGES/rkward__graphics_device.mo
 %{_datadir}/locale/et/LC_MESSAGES/rkward__import_export.mo
 %{_datadir}/locale/et/LC_MESSAGES/rkward__item_response_theory.mo
-%{_datadir}/locale/et/LC_MESSAGES/rkward__pages.mo
 %{_datadir}/locale/et/LC_MESSAGES/rkward__plots.mo
 %{_datadir}/locale/eu/LC_MESSAGES/rkward__data.mo
 %{_datadir}/locale/eu/LC_MESSAGES/rkward__graphics_device.mo
-%{_datadir}/locale/eu/LC_MESSAGES/rkward__import_export.mo
-%{_datadir}/locale/fi/LC_MESSAGES/rkward__analysis.mo
-%{_datadir}/locale/fi/LC_MESSAGES/rkward__data.mo
-%{_datadir}/locale/fi/LC_MESSAGES/rkward__distributions.mo
-%{_datadir}/locale/fi/LC_MESSAGES/rkward__embedded.mo
 %{_datadir}/locale/fi/LC_MESSAGES/rkward__graphics_device.mo
-%{_datadir}/locale/fi/LC_MESSAGES/rkward__import_export.mo
-%{_datadir}/locale/fi/LC_MESSAGES/rkward__item_response_theory.mo
-%{_datadir}/locale/fi/LC_MESSAGES/rkward__pages.mo
-%{_datadir}/locale/fi/LC_MESSAGES/rkward__plots.mo
 %{_datadir}/locale/fr/LC_MESSAGES/rkward__analysis.mo
 %{_datadir}/locale/fr/LC_MESSAGES/rkward__data.mo
 %{_datadir}/locale/fr/LC_MESSAGES/rkward__distributions.mo
@@ -277,16 +240,6 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}:$LD_LIBRARY_PATH
 %{_datadir}/locale/gl/LC_MESSAGES/rkward__pages.mo
 %{_datadir}/locale/gl/LC_MESSAGES/rkward__plots.mo
 %{_datadir}/locale/he/LC_MESSAGES/rkward__graphics_device.mo
-%{_datadir}/locale/hu/LC_MESSAGES/rkward__analysis.mo
-%{_datadir}/locale/ia/LC_MESSAGES/rkward__analysis.mo
-%{_datadir}/locale/ia/LC_MESSAGES/rkward__data.mo
-%{_datadir}/locale/ia/LC_MESSAGES/rkward__distributions.mo
-%{_datadir}/locale/ia/LC_MESSAGES/rkward__embedded.mo
-%{_datadir}/locale/ia/LC_MESSAGES/rkward__graphics_device.mo
-%{_datadir}/locale/ia/LC_MESSAGES/rkward__import_export.mo
-%{_datadir}/locale/ia/LC_MESSAGES/rkward__item_response_theory.mo
-%{_datadir}/locale/ia/LC_MESSAGES/rkward__pages.mo
-%{_datadir}/locale/ia/LC_MESSAGES/rkward__plots.mo
 %{_datadir}/locale/it/LC_MESSAGES/rkward__analysis.mo
 %{_datadir}/locale/it/LC_MESSAGES/rkward__data.mo
 %{_datadir}/locale/it/LC_MESSAGES/rkward__distributions.mo
@@ -296,15 +249,6 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}:$LD_LIBRARY_PATH
 %{_datadir}/locale/it/LC_MESSAGES/rkward__item_response_theory.mo
 %{_datadir}/locale/it/LC_MESSAGES/rkward__pages.mo
 %{_datadir}/locale/it/LC_MESSAGES/rkward__plots.mo
-%{_datadir}/locale/ja/LC_MESSAGES/rkward__analysis.mo
-%{_datadir}/locale/ja/LC_MESSAGES/rkward__data.mo
-%{_datadir}/locale/ja/LC_MESSAGES/rkward__distributions.mo
-%{_datadir}/locale/ja/LC_MESSAGES/rkward__embedded.mo
-%{_datadir}/locale/ja/LC_MESSAGES/rkward__graphics_device.mo
-%{_datadir}/locale/ja/LC_MESSAGES/rkward__import_export.mo
-%{_datadir}/locale/ja/LC_MESSAGES/rkward__item_response_theory.mo
-%{_datadir}/locale/ja/LC_MESSAGES/rkward__pages.mo
-%{_datadir}/locale/ja/LC_MESSAGES/rkward__plots.mo
 %{_datadir}/locale/ka/LC_MESSAGES/rkward__analysis.mo
 %{_datadir}/locale/ka/LC_MESSAGES/rkward__data.mo
 %{_datadir}/locale/ka/LC_MESSAGES/rkward__distributions.mo
@@ -312,17 +256,7 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}:$LD_LIBRARY_PATH
 %{_datadir}/locale/ka/LC_MESSAGES/rkward__graphics_device.mo
 %{_datadir}/locale/ka/LC_MESSAGES/rkward__import_export.mo
 %{_datadir}/locale/ka/LC_MESSAGES/rkward__item_response_theory.mo
-%{_datadir}/locale/ka/LC_MESSAGES/rkward__pages.mo
 %{_datadir}/locale/ka/LC_MESSAGES/rkward__plots.mo
-%{_datadir}/locale/lt/LC_MESSAGES/rkward__analysis.mo
-%{_datadir}/locale/lt/LC_MESSAGES/rkward__data.mo
-%{_datadir}/locale/lt/LC_MESSAGES/rkward__distributions.mo
-%{_datadir}/locale/lt/LC_MESSAGES/rkward__embedded.mo
-%{_datadir}/locale/lt/LC_MESSAGES/rkward__graphics_device.mo
-%{_datadir}/locale/lt/LC_MESSAGES/rkward__import_export.mo
-%{_datadir}/locale/lt/LC_MESSAGES/rkward__item_response_theory.mo
-%{_datadir}/locale/lt/LC_MESSAGES/rkward__pages.mo
-%{_datadir}/locale/lt/LC_MESSAGES/rkward__plots.mo
 %{_datadir}/locale/nl/LC_MESSAGES/rkward__analysis.mo
 %{_datadir}/locale/nl/LC_MESSAGES/rkward__data.mo
 %{_datadir}/locale/nl/LC_MESSAGES/rkward__distributions.mo
@@ -368,15 +302,6 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}:$LD_LIBRARY_PATH
 %{_datadir}/locale/ru/LC_MESSAGES/rkward__item_response_theory.mo
 %{_datadir}/locale/ru/LC_MESSAGES/rkward__pages.mo
 %{_datadir}/locale/ru/LC_MESSAGES/rkward__plots.mo
-%{_datadir}/locale/sk/LC_MESSAGES/rkward__analysis.mo
-%{_datadir}/locale/sk/LC_MESSAGES/rkward__data.mo
-%{_datadir}/locale/sk/LC_MESSAGES/rkward__distributions.mo
-%{_datadir}/locale/sk/LC_MESSAGES/rkward__embedded.mo
-%{_datadir}/locale/sk/LC_MESSAGES/rkward__graphics_device.mo
-%{_datadir}/locale/sk/LC_MESSAGES/rkward__import_export.mo
-%{_datadir}/locale/sk/LC_MESSAGES/rkward__item_response_theory.mo
-%{_datadir}/locale/sk/LC_MESSAGES/rkward__pages.mo
-%{_datadir}/locale/sk/LC_MESSAGES/rkward__plots.mo
 %{_datadir}/locale/sl/LC_MESSAGES/rkward__analysis.mo
 %{_datadir}/locale/sl/LC_MESSAGES/rkward__data.mo
 %{_datadir}/locale/sl/LC_MESSAGES/rkward__distributions.mo
@@ -413,24 +338,7 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}:$LD_LIBRARY_PATH
 %{_datadir}/locale/uk/LC_MESSAGES/rkward__item_response_theory.mo
 %{_datadir}/locale/uk/LC_MESSAGES/rkward__pages.mo
 %{_datadir}/locale/uk/LC_MESSAGES/rkward__plots.mo
-%{_datadir}/locale/zh_CN/LC_MESSAGES/rkward__analysis.mo
-%{_datadir}/locale/zh_CN/LC_MESSAGES/rkward__data.mo
-%{_datadir}/locale/zh_CN/LC_MESSAGES/rkward__distributions.mo
-%{_datadir}/locale/zh_CN/LC_MESSAGES/rkward__embedded.mo
-%{_datadir}/locale/zh_CN/LC_MESSAGES/rkward__graphics_device.mo
-%{_datadir}/locale/zh_CN/LC_MESSAGES/rkward__import_export.mo
-%{_datadir}/locale/zh_CN/LC_MESSAGES/rkward__item_response_theory.mo
-%{_datadir}/locale/zh_CN/LC_MESSAGES/rkward__pages.mo
-%{_datadir}/locale/zh_CN/LC_MESSAGES/rkward__plots.mo
-%{_datadir}/locale/zh_TW/LC_MESSAGES/rkward__analysis.mo
-%{_datadir}/locale/zh_TW/LC_MESSAGES/rkward__data.mo
-%{_datadir}/locale/zh_TW/LC_MESSAGES/rkward__distributions.mo
-%{_datadir}/locale/zh_TW/LC_MESSAGES/rkward__embedded.mo
 %{_datadir}/locale/zh_TW/LC_MESSAGES/rkward__graphics_device.mo
-%{_datadir}/locale/zh_TW/LC_MESSAGES/rkward__import_export.mo
-%{_datadir}/locale/zh_TW/LC_MESSAGES/rkward__item_response_theory.mo
-%{_datadir}/locale/zh_TW/LC_MESSAGES/rkward__pages.mo
-%{_datadir}/locale/zh_TW/LC_MESSAGES/rkward__plots.mo
 %{_mandir}/ca/man1/rkward.1%{?ext_man}
 %{_mandir}/de/man1/rkward.1%{?ext_man}
 %{_mandir}/it/man1/rkward.1%{?ext_man}
