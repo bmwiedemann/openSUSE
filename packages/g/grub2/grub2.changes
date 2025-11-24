@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 20 08:10:10 UTC 2025 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Rename sysfb patch file to match purpose
+  * grub2-simplefb.patch
+  * grub2-sysfb.patch
+- Set 'gfxpayload=keep' for DRM sysfb drivers (bsc#1253721)
+  * grub2-sysfb.patch
+
+-------------------------------------------------------------------
 Wed Nov 12 08:24:35 UTC 2025 - Michael Chang <mchang@suse.com>
 
 - Fix CVE-2025-54771 (bsc#1252931)
