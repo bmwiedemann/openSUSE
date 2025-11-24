@@ -1,7 +1,7 @@
 #
 # spec file for package linssid
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2014 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -34,7 +34,6 @@ Patch2:         linssid-qwt620.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_regex-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core) >= 5.2
 BuildRequires:  pkgconfig(Qt5OpenGL)
