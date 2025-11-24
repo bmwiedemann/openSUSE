@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 21 09:57:52 UTC 2025 - ecsos <ecsos@opensuse.org> - 2.12.6
+
+- Update to 2.12.6
+  - Search box shows many magnifying glasses for some community themes #5395
+  - Authentication hooks are not called with external backends #5415
+  - Improve Minimal layout #5386
+
+-------------------------------------------------------------------
 Wed Jul 16 10:13:03 UTC 2025 - ecsos <ecsos@opensuse.org> - 2.12.5
 
 - Update to 2.12.5

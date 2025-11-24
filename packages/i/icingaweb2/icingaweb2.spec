@@ -1,7 +1,7 @@
 #
 # spec file for package icingaweb2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define php_major_version 8
 Name:           icingaweb2
-Version:        2.12.5
+Version:        2.12.6
 Release:        0
 Summary:        Icinga Web
 License:        GPL-2.0-or-later
