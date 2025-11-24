@@ -1,7 +1,7 @@
 #
 # spec file for package photoqt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libQt5PlatformHeaders-devel
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(IL)
 BuildRequires:  pkgconfig(Magick++)
 BuildRequires:  pkgconfig(Qt5Concurrent)
