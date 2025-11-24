@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Mon Nov 17 08:51:56 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 8.316:
+  * The DIRE parton shower is no longer supported and consequently
+    has been removed in this release.
+  * The reorganization of fragmentation models, begun in 8.313,
+    continues. 
+  * New code for the cross section of the production of t-tbar
+    pairs in hadron collisions near the threshold, both above and
+    below it. 
+  * New options to add non-singular and higher-order terms to the
+    splitting kernels for timelike showers, along with a new
+    example program main303.cc.
+  * New options to regulate the running of alphaS in the infrared,
+    by freezing it at a maximum value, and/or by shifting the
+    argument by a number of order LambdaQCD.
+  * Improved version of DIS kinematics reconstruction. Namely the
+    lepton mass is appropriately accounted and phase-space cut for
+    Q2min accounts also masses for final-state partons.
+  * Introduction of parameters StringFragmentation:eJunctionCutoff
+    and StringFragmentation:mJunctionCutoff allows for the
+    modification of stopping conditions on the fragmentation of
+    the first two junction legs.
+  * The default value of StringFragmentation:stopMass has been
+    changed from 1.0 GeV to 0.8 GeV, the same value as used in
+    PYTHIA 6.4. 
+  * Added the Detroit tune (Agu22) to the list of available tune
+    presets.
+  * RandomState of the random-number generator is now saved before
+    the generation of each event starts.
+  * Support has been added for parallel running of plugins.
+  * New RivetHooks plugin allows for Rivet analyses to be run via
+    the plugin structure with Init:plugins =
+    {libpythia8rivet.so::RivetHooks}, including in parallel.
+  * The new plugin HepMC3Hooks allows users to write output to
+    HepMC3 by loading.
+  * Added the ability to include purely Pythonic code in the
+    pythia8 Python module.
+  * Updates to the Hist class:
+    - Introduced new methods: getBinCenter(int iBin),
+      getBinError(int iBin), and getBinError2(). Equivalent
+      versions getBinCenters(), etc., return a vector of doubles
+      for all bins.
+    - Added an optional third argument to the Hist::fill() method,
+      to allow for weighted uncertainties that are not purely
+      stochastic. Thanks to Claire Bergman.
+    - Added new method Hist::getXPercentile() to extract
+      percentiles from histograms.
+    - Added the method Hist::yodaTable to enable printing a Hist
+      to the ESTIMATE1D_V3 format from YODA.
+  * New particle data method(s) mSelInRange selects the mass of a
+    particle according to a Breit-Wigner shape, but within a range
+    that is determined event-by-event.
+  * A small internal analysis of differential jet rates has been
+    added to main164. Also, legacy HepMC2 support has been added
+    to main164.
+  * The SigmaTotal::calc(...) code has been rearranged so as to
+    provide a clean abort when the energy is too low, rather than
+    a segmentation fault.
+  * Moved -pthread option to the Makefile.
+  * Updated many of the references to now include hyperlinks to a
+    publicly accessible version of the reference.
+  * Fixed an issue where the post-hoc and in-situ flavor
+    variations for hadronization, see Hadronization Variations,
+    did not match if particle decays were turned on, as the
+    in-situ weights did not account for flavor variations in the
+    hadron decays.
+  * Fixed a bug where tuning parameters are incorrectly loaded
+    when specified inside a subrun in a .cmnd file.
+  * Fix trial hadron generation in
+    StringFragmentation::kinematicsHadronTmp used in the
+    closepacking and thermal string breaking frameworks.
+  * The introduction of StringZ:deriveLundPars inadvertently broke
+    the behaviour for when only bLund is derived,
+    StringZ:deriveLundPars = 1. This has now been fixed.
+  * Fixed the spelling of the addAtribute method of the
+    PythiaToHepMC class to addAttribute. Also, added a
+    specialization for this method for integer attributes, as is
+    already done for double attributes.
+  * Fixed an issue with the toString helper method which formatted
+    numbers greater than 1e+6 with an exponent ending in zero
+    incorrectly, e.g. 1e+10 would be returned as "1e+1".
+  * Fixed issue with Settings::readFile where for some systems an
+    empty line could cause a std::out_of_range crash.
+  * A bug was fixed that led to a pointer to the wrong
+    ParticleData object when a Pythia object was created from the
+    Settings and ParticleData of another Pythia instance.
+  * Tiny cosmetic fix so that a total cross section is not
+    attempted to be initialized if not both incoming particles are
+    hadrons (or photons). 
+- Minor rebase of patches for update:
+  * pythia-honour-env-cxxflags.patch
+  * pythia-remove-rpaths.patch
+- Split off new shared lib packages for new libraries:
+  libpythia8hepmc3 and libpythia8rivet (for Leap 16 and newer).
+
+-------------------------------------------------------------------
 Fri Aug 15 04:20:08 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 8.315:

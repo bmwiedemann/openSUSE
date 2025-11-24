@@ -16,10 +16,10 @@
 #
 
 
-%define ver 8315
+%define ver 8316
 %define soname lib%{name}8
 Name:           pythia
-Version:        8.315
+Version:        8.316
 Release:        0
 Summary:        A simulation program for particle collisions at very high energies
 License:        GPL-2.0-or-later
@@ -90,11 +90,37 @@ incoming particles.
 This package provides the shared libraries for the lhapdf6 bindings of
 %{name}.
 
+%package -n %{soname}hepmc3
+Summary:        HepMC bindings for Pythia - a simulation program for particle collisions
+Group:          System/Libraries
+
+%description -n %{soname}hepmc3
+Pythia can be used to generate high-energy-physics events, i.e. sets
+of outgoing particles produced in the interactions between two
+incoming particles.
+
+This package provides the shared libraries for the HepMC bindings of
+%{name}.
+
+%package -n %{soname}rivet
+Summary:        Rivet bindings for Pythia - a simulation program for particle collisions
+Group:          System/Libraries
+
+%description -n %{soname}rivet
+Pythia can be used to generate high-energy-physics events, i.e. sets
+of outgoing particles produced in the interactions between two
+incoming particles.
+
+This package provides the shared libraries for the rivet bindings of
+%{name}.
+
 %package devel
 Summary:        Development package for Pythia - a simulation program for particle collisions
 Group:          Development/Libraries/C and C++
 Requires:       %{soname} = %{version}
+Requires:       %{soname}hepmc3 = %{version}
 Requires:       %{soname}lhapdf6 = %{version}
+Requires:       %{soname}rivet = %{version}
 Recommends:     %{name}-doc
 
 %description devel
@@ -130,17 +156,12 @@ sed -i 's/\r$//' share/Pythia8/htmldoc/pythia.css
 sed -E -i "s|%{_bindir}/env bash|/bin/bash|" examples/runmains
 
 %build
-# FOR oS > 1320, "-std=c++14" IS NEEDED FOR BUILDING EXAMPLES
-# WITH FASTJET3 (WHICH ALREADY USES THIS STD)
 CXXFLAGS="%{optflags}"
-%if 0%{?suse_version} > 1320
-export CXXFLAGS="$CXXFLAGS -std=c++14"
-%endif
-
 %configure \
   --prefix-lib=%{_libdir} \
   --prefix-share=%{_docdir}/%{name} \
   --enable-shared \
+  --disable-rpath \
   --with-fastjet3 \
   --with-gzip \
   --with-hdf5 \
@@ -195,12 +216,24 @@ popd
 
 %ldconfig_scriptlets -n %{soname}
 %ldconfig_scriptlets -n %{soname}lhapdf6
+%ldconfig_scriptlets -n %{soname}hepmc3
+%if 0%{?suse_version} >= 1600
+%ldconfig_scriptlets -n %{soname}rivet
+%endif
 
 %files -n %{soname}
 %{_libdir}/%{soname}.so
 
 %files -n %{soname}lhapdf6
 %{_libdir}/%{soname}lhapdf6.so
+
+%files -n %{soname}hepmc3
+%{_libdir}/%{soname}hepmc3.so
+
+%if 0%{?suse_version} >= 1600
+%files -n %{soname}rivet
+%{_libdir}/%{soname}rivet.so
+%endif
 
 %files devel
 %doc AUTHORS GUIDELINES CODINGSTYLE README

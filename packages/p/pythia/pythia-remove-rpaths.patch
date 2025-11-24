@@ -6,24 +6,24 @@
  plugins/python/Makefile |   12 +++++++++++-
  5 files changed, 30 insertions(+), 5 deletions(-)
 
-Index: pythia8313/Makefile
+Index: pythia8316/Makefile
 ===================================================================
---- pythia8313.orig/Makefile
-+++ pythia8313/Makefile
+--- pythia8316.orig/Makefile
++++ pythia8316/Makefile
 @@ -36,7 +36,11 @@ LOCAL_TMP=tmp
  LOCAL_MKDIRS:=$(shell mkdir -p $(LOCAL_TMP) $(LOCAL_LIB))
  CXX_COMMON:=-I$(LOCAL_INCLUDE) $(CXX_COMMON)
  OBJ_COMMON:=-MD $(CXX_COMMON) $(OBJ_COMMON)
--LIB_COMMON=-Wl,-rpath,../lib:$(PREFIX_LIB) -ldl $(GZIP_LIB)
+-LIB_COMMON=-pthread -Wl,-rpath,../lib:$(PREFIX_LIB) -ldl $(GZIP_LIB)
 +ifneq ($(DISABLE_RPATH),true)
-+  LIB_COMMON=-Wl,-rpath,$(PREFIX_LIB) -ldl $(GZIP_LIB)
++  LIB_COMMON=-pthread -Wl,-rpath,../$(PREFIX_LIB) -ldl $(GZIP_LIB)
 +else
-+  LIB_COMMON=-ldl $(GZIP_LIB)
++  LIB_COMMON=-pthread -ldl $(GZIP_LIB)
 +endif
  
  # PYTHIA.
  OBJECTS=$(patsubst $(LOCAL_SRC)/%.cc,$(LOCAL_TMP)/%.o,\
-@@ -125,7 +129,11 @@ $(LOCAL_LIB)/libpythia8powheg%.so: $(POW
+@@ -151,7 +155,11 @@ $(LOCAL_LIB)/libpythia8powheg%.so: $(POW
  	$(LOCAL_TMP)/LHAPowheg.o $(LOCAL_LIB)/libpythia8$(LIB_SUFFIX)
  	$(CXX) $(LOCAL_TMP)/LHAPowheg.o -o $@ $(CXX_COMMON) $(CXX_SHARED)\
  	 $(CXX_SONAME)$(notdir $@) -Llib -lpythia8\
@@ -35,10 +35,10 @@ Index: pythia8313/Makefile
  $(LOCAL_LIB)/libpythia8powhegHooks.so: $(LOCAL_TMP)/PowhegHooks.o\
  	$(LOCAL_LIB)/libpythia8$(LIB_SUFFIX)
  	$(CXX) $< -o $@ $(CXX_COMMON) $(CXX_SHARED) $(CXX_SONAME)$(notdir $@)\
-Index: pythia8313/configure
+Index: pythia8316/configure
 ===================================================================
---- pythia8313.orig/configure
-+++ pythia8313/configure
+--- pythia8316.orig/configure
++++ pythia8316/configure
 @@ -30,6 +30,7 @@ Configuration options.
  --help            : Print this help message (also -h, --h, and -help).
  --enable-debug    : Turn on debugging and disable optimization.
@@ -56,7 +56,7 @@ Index: pythia8313/configure
  OPTIONS+=" --prefix --prefix-bin --prefix-lib --prefix-include --prefix-share"
  for PKG in "evtgen" "fastjet3" "hepmc2" "hepmc3" "lhapdf5" "lhapdf6" "powheg"\
      "rivet" "yoda" "root" "gzip" "python" "mg5mes" "openmp" "mpich" "hdf5"\
-@@ -321,6 +322,7 @@ done
+@@ -323,6 +324,7 @@ echo "# ./configure$USER_CFG" >> $CFG_FI
  # Set the compilation flags and options (order matters).
  [ "$ENABLE_DEBUG_SET"    = true ] && ENABLE_DEBUG="-g "   || ENABLE_DEBUG="-O2 "
  [ "$ENABLE_OPTDEBUG_SET" = true ] && ENABLE_DEBUG="-g -O "
@@ -64,7 +64,7 @@ Index: pythia8313/configure
  if [ -z "$ARCH" ]; then ARCH=$(uname | grep -i -o -e Linux -e Darwin); fi
  ARCH=$(echo $ARCH | awk '{print toupper($0)}')
  if [ "$ARCH" != "LINUX" ] && [ "$ARCH" != "DARWIN" ]; then
-@@ -464,6 +466,7 @@ PREFIX_LIB=$PREFIX_LIB
+@@ -465,6 +467,7 @@ PREFIX_LIB=$PREFIX_LIB
  PREFIX_SHARE=$PREFIX_SHARE
  
  # Compilation flags (see ./configure --help for further documentation).
@@ -72,10 +72,10 @@ Index: pythia8313/configure
  CXX=$CXX
  CXX_DTAGS=$CXX_DTAGS
  CXX_COMMON=$CXX_COMMON
-Index: pythia8313/plugins/mg5mes/Makefile
+Index: pythia8316/plugins/mg5mes/Makefile
 ===================================================================
---- pythia8313.orig/plugins/mg5mes/Makefile
-+++ pythia8313/plugins/mg5mes/Makefile
+--- pythia8316.orig/plugins/mg5mes/Makefile
++++ pythia8316/plugins/mg5mes/Makefile
 @@ -28,7 +28,11 @@ LOCAL_DIRS:=$(subst $(LOCAL_TMP)/,,$(wil
  LOCAL_MKDIRS:=$(shell mkdir -p $(LOCAL_TMP) $(TOP_LIB))
  LOCAL_MKDIRS:=$(foreach DIR,$(LOCAL_DIRS),$(shell mkdir -p $(LOCAL_TMP)/$(DIR)))
@@ -89,12 +89,12 @@ Index: pythia8313/plugins/mg5mes/Makefile
  PYTHIA=$(TOP_LIB)/libpythia8$(LIB_SUFFIX)
  
  # Set the wrapper, determine the objects and targets.
-Index: pythia8313/plugins/python/Makefile
+Index: pythia8316/plugins/python/Makefile
 ===================================================================
---- pythia8313.orig/plugins/python/Makefile
-+++ pythia8313/plugins/python/Makefile
-@@ -27,7 +27,11 @@ LOCAL_TMP=tmp
- LOCAL_INCLUDE=include
+--- pythia8316.orig/plugins/python/Makefile
++++ pythia8316/plugins/python/Makefile
+@@ -28,7 +28,11 @@ LOCAL_INCLUDE=include
+ LOCAL_EXTRA=extra
  LOCAL_MKDIRS:=$(shell mkdir -p $(LOCAL_TMP) $(TOP_LIB))
  OBJ_COMMON=-MD $(CXX_COMMON) -Iinclude $(PYTHON_INCLUDE) -w -fpermissive
 -LIB_COMMON=-Wl,-rpath,$(TOP_LIB) -ldl $(GZIP_LIB)
@@ -106,7 +106,7 @@ Index: pythia8313/plugins/python/Makefile
  PYTHIA=$(TOP_LIB)/libpythia8$(LIB_SUFFIX)
  
  # Determine the headers.
-@@ -76,9 +80,15 @@ $(LOCAL_TMP)/%.o: $(LOCAL_SRC)/%.cpp $(L
+@@ -77,9 +81,15 @@ $(LOCAL_TMP)/%.o: $(LOCAL_SRC)/%.cpp $(L
  
  # Build the library.
  $(TOP_LIB)/pythia8.so: $(PYTHIA) $(HEADERS) $(OBJECTS)
@@ -119,13 +119,13 @@ Index: pythia8313/plugins/python/Makefile
 +	 $(CXX_SONAME)$(notdir $@) $(LIB_COMMON) -L$(TOP_LIB)\
 +	 -lpythia8 -Wl,-undefined,dynamic_lookup
 +endif
- 
- # Clean.
- clean:
-Index: pythia8313/examples/Makefile
+ 	@mkdir -p $(TOP_LIB)/python
+ 	if test -e $(LOCAL_EXTRA)/*.py; then\
+ 	 cp $(LOCAL_EXTRA)/*.py $(TOP_LIB)/python; fi
+Index: pythia8316/examples/Makefile
 ===================================================================
---- pythia8313.orig/examples/Makefile
-+++ pythia8313/examples/Makefile
+--- pythia8316.orig/examples/Makefile
++++ pythia8316/examples/Makefile
 @@ -26,7 +26,7 @@ ifneq ("$(wildcard ../lib/libpythia8.*)"
    PREFIX_INCLUDE=../include
  endif
@@ -134,4 +134,4 @@ Index: pythia8313/examples/Makefile
 +CXX_COMMON+= -L$(PREFIX_LIB) -lpythia8 -ldl
  PYTHIA=$(PREFIX_LIB)/libpythia8$(LIB_SUFFIX)
  
- # Define RIVET options and fix C++ version, rpath, missing HDF5.
+ # Define additional dependency options.

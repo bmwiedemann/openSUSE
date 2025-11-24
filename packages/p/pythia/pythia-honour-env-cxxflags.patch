@@ -1,13 +1,17 @@
-Index: pythia8313/configure
+---
+ configure |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: pythia8316/configure
 ===================================================================
---- pythia8313.orig/configure
-+++ pythia8313/configure
-@@ -327,7 +327,7 @@ if [ "$ARCH" != "LINUX" ] && [ "$ARCH" !
+--- pythia8316.orig/configure
++++ pythia8316/configure
+@@ -329,7 +329,7 @@ if [ "$ARCH" != "LINUX" ] && [ "$ARCH" !
      warn "Unknown architecture $ARCH, set as LINUX."; ARCH="LINUX"; fi
  if [ -z "$CXX" ]; then warn "CXX not set, using g++."; CXX="g++"; fi
  if [ -z "$CXX_COMMON" ]; then
--    CXX_COMMON="${ENABLE_DEBUG}-std=c++11 -pedantic -W -Wall -Wshadow -fPIC"
-+    CXX_COMMON="${CXXFLAGS} ${ENABLE_DEBUG}-std=c++11 -pedantic -W -Wall -Wshadow -fPIC"
-     CXX_COMMON="${CXX_COMMON} -pthread"; fi
+-    CXX_COMMON="${ENABLE_DEBUG}-std=c++11 -pedantic -W -Wall -Wshadow -fPIC"; fi
++    CXX_COMMON="${CXXFLAGS} ${ENABLE_DEBUG}-std=c++11 -pedantic -W -Wall -Wshadow -fPIC"; fi
  if [ -z "$CXX_SHARED" ]; then
      if [ "$ARCH" = "LINUX" ];  then CXX_SHARED="-shared"; fi
+     if [ "$ARCH" = "DARWIN" ]; then CXX_SHARED="-dynamiclib"; fi; fi
