@@ -30,7 +30,6 @@ Source:         https://github.com/cmus/cmus/archive/v%{version}.tar.gz#/%{name}
 Patch1:         ffmpeg-8-compat.patch
 BuildRequires:  libmpcdec-devel
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(alsa) >= 1.0.11
 BuildRequires:  pkgconfig(ao)
 BuildRequires:  pkgconfig(flac)
