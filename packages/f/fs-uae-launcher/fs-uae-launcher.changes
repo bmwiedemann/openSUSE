@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Nov 23 12:43:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- fix shebang in fs-uae-launcher to use python3
+
+-------------------------------------------------------------------
 Wed Sep 24 07:46:01 UTC 2025 - Wolfgang Bauer <wbauer1@a1.net>
 
 - Update to version 3.2.35
