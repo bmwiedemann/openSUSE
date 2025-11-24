@@ -1,7 +1,7 @@
 #
 # spec file for package xine-ui
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,6 +21,7 @@ Name:           xine-ui
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  curl-devel
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gawk
 BuildRequires:  libjpeg-devel
@@ -32,7 +33,6 @@ BuildRequires:  libxine2-codecs
 %endif
 BuildRequires:  lirc-devel
 BuildRequires:  readline-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xft)
