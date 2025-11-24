@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 20 13:27:24 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add celt-ogg-cmake.patch: work around
+  https://github.com/xiph/ogg/issues/99, where libogg does not
+  place ogg.m4 when built using cmake. Celt though relies on this
+  m4 to properly create its configure script. Patch a copy of
+  ogg.m4 into our local source.
+
+-------------------------------------------------------------------
 Tue Jun 16 11:30:04 UTC 2015 - mpluskal@suse.com
 
 - Update to 0.11.3

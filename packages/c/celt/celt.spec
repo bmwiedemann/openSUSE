@@ -1,7 +1,7 @@
 #
 # spec file for package celt
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,9 +22,10 @@ Release:        0
 Summary:        Ultra-Low Delay Audio Codec
 License:        BSD-2-Clause
 Group:          Productivity/Multimedia/Other
-Url:            http://www.celt-codec.org/
+URL:            http://www.celt-codec.org/
 Source:         http://downloads.xiph.org/releases/celt/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
+Patch0:         celt-ogg-cmake.patch
 BuildRequires:  libogg-devel
 BuildRequires:  libtool
 BuildRequires:  pkg-config
@@ -57,10 +58,10 @@ The CELT codec is an experimental audio codec for use in low-delay
 speech and audio communication.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-autoreconf -fiv
+autoreconf -fiv -I m4
 %configure\
 	--disable-static\
 	--with-pic
