@@ -36,7 +36,6 @@ BuildRequires:  fltk-devel
 BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(samplerate)
