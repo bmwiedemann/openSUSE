@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Nov 22 11:06:51 UTC 2025 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 5.0:
+  * Created a new application icon to celebrate Golly's 20th
+    anniversary.
+  * Removed the Convert Old Rules command from the Control menu.
+  * Added Add Folder and Remove Folder commands to the File menu.
+  * Added a Stop If Dead option to the Control menu.
+  * Added a Show XY State option to the View menu.
+  * Added support for @NAMES in a .rule file.
+  * Added support for @RULE data in a .rle file.
+  * Added "-" and "+" buttons to the help window for changing the
+    text size.
+  * Golly now uses C++11's Mersenne Twister for randomly filling a
+    selection, rather than rand(), since rand() has a somewhat low
+    period (about 2^31 or 2^32 on various platforms).
+  * The maximum grid size in the Larger than Life algorithm has been
+    increased from 100 million cells to 1 billion cells.
+  * Fixed slow scrolling at some scales when using arrow keys.
+  * Fixed Control > Reset being called via a keyboard shortcut
+    while the mouse is drawing or selecting cells.
+
+-------------------------------------------------------------------
 Mon Mar 10 08:53:35 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
 
 - Add missing BuildRequires python3-setuptools
