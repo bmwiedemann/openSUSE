@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Nov 21 12:21:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.137:
+  * Feat/new checks (#2465)
+  * Feature flag, buffer pooling fix (#2469)
+  * change e2b template version (#2467)
+  * fix length mismatch (#2463)
+  * Match other release workflows (#2461)
+  * Fix/breardon2011/workflow (#2460)
+  * Sandboxes (draft) (#2457)
+  * Add changelog for November 7th, 2025 (#2458)
+  * Remote runs POC (backend)  (#2451)
+  * support caching of impacted projects (#2452)
+  * Fix formatting issues in projects_refesh_main.go (#2450)
+  * projects build on every pr (#2449)
+  * Remove cache options from Docker build (#2448)
+  * Update base image in Dockerfile for builder stage (#2447)
+  * update atlas versions to latests (#2446)
+  * Remove cache options from Docker build (#2445)
+
+-------------------------------------------------------------------
 Fri Nov 14 06:13:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.136:
