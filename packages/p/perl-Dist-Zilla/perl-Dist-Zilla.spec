@@ -18,10 +18,10 @@
 
 %define cpan_name Dist-Zilla
 Name:           perl-Dist-Zilla
-Version:        6.34.0
+Version:        6.36.0
 Release:        0
-# 6.034 -> normalize -> 6.34.0
-%define cpan_version 6.034
+# 6.036 -> normalize -> 6.36.0
+%define cpan_version 6.036
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Distribution builder; installer not included!
 URL:            https://metacpan.org/release/%{cpan_name}
