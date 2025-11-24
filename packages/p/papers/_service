@@ -2,7 +2,7 @@
 <services>
   <service mode="manual" name="obs_scm">
     <param name="url">https://gitlab.gnome.org/GNOME/Incubator/papers.git</param>
-    <param name="revision">49.1</param>
+    <param name="revision">49.2</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>

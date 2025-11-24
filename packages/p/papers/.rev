@@ -128,4 +128,20 @@
     <comment></comment>
     <requestid>1311123</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>316082e837426f7403b46ebdf1a31730</srcmd5>
+    <version>49.2</version>
+    <time>1763990006</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 49.2:
+  + Bug fixes:
+    - Fixes for the nautilus plugin
+    - papers-thumbnailer fails for comic book archives with unusual
+      filename encodings
+    - shell: Fix signing when the rectangle is too small
+    - libdocument: fix weak page references
+    - shell: Fix opening PDFs from GVFS mounts like Google Drive
+  + Updated translations. (forwarded request 1319170 from iznogood)</comment>
+    <requestid>1319641</requestid>
+  </revision>
 </revisionlist>
