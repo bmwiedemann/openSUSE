@@ -7,4 +7,12 @@
     <comment>Add _constraints file to fix build errors on &gt;= SLE_15_SP6</comment>
     <requestid>1317774</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>693f7dd1efb73fe9c73f4771f53ed29a</srcmd5>
+    <version>1.15.0</version>
+    <time>1763989585</time>
+    <user>anag_factory</user>
+    <comment>v1.15.0</comment>
+    <requestid>1318912</requestid>
+  </revision>
 </revisionlist>
