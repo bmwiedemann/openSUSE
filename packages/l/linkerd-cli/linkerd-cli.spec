@@ -1,7 +1,7 @@
 #
 # spec file for package linkerd-cli
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,17 @@
 %define linkerd_executable_name linkerd
 
 Name:           linkerd-cli
-Version:        2.18
+Version:        2.19
 Release:        0
 Summary:        CLI for the linkerd service mesh for Kubernetes
 License:        Apache-2.0
 URL:            https://github.com/linkerd/linkerd2
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.22
+BuildRequires:  bash-completion
+BuildRequires:  fish
+BuildRequires:  zsh
+BuildRequires:  golang(API) >= 1.25
 
 # cannot be installed in parallel to the edge version
 Conflicts:      linkerd-cli-edge
@@ -77,10 +80,6 @@ zsh command line completion support for %{name}.
 %autosetup -p 1 -a 1
 
 %build
-GO111MODULE=on go generate -mod=readonly ./pkg/charts/static
-GO111MODULE=on go generate -mod=readonly ./jaeger/static
-GO111MODULE=on go generate -mod=readonly ./multicluster/static
-GO111MODULE=on go generate -mod=readonly ./viz/static
 go build \
    -mod=vendor \
    -tags prod \
@@ -101,8 +100,11 @@ mkdir -p %{buildroot}%{_datarootdir}/fish/vendor_completions.d/
 %{buildroot}/%{_bindir}/%{linkerd_executable_name} completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
 
 # create the zsh completion file
-mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d/
-%{buildroot}/%{_bindir}/%{linkerd_executable_name} completion zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_%{name}
+mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
+%{buildroot}/%{_bindir}/%{linkerd_executable_name} completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{name}
+
+%check
+%{buildroot}/%{_bindir}/%{linkerd_executable_name} version --client | grep %{version}
 
 %files
 %doc README.md
@@ -110,17 +112,12 @@ mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d/
 %{_bindir}/%{linkerd_executable_name}
 
 %files -n %{name}-bash-completion
-%dir %{_datarootdir}/bash-completion/completions/
 %{_datarootdir}/bash-completion/completions/%{name}
 
 %files -n %{name}-fish-completion
-%dir %{_datarootdir}/fish
-%dir %{_datarootdir}/fish/vendor_completions.d
 %{_datarootdir}/fish/vendor_completions.d/%{name}.fish
 
 %files -n %{name}-zsh-completion
-%defattr(-,root,root)
-%dir %{_datarootdir}/zsh_completion.d/
-%{_datarootdir}/zsh_completion.d/_%{name}
+%{_datarootdir}/zsh/site-functions/_%{name}
 
 %changelog
