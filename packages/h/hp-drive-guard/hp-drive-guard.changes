@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 22 21:17:58 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove unused BuildRequires: update-desktop-files.
+
+-------------------------------------------------------------------
 Tue Aug 27 15:22:51 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove build instructions for old unsupported SUSE releases

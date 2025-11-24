@@ -1,7 +1,7 @@
 #
 # spec file for package hp-drive-guard
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,6 @@ BuildRequires:  libnotify-devel
 BuildRequires:  libupower-glib-devel
 BuildRequires:  libxslt
 BuildRequires:  polkit-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_requires}
 

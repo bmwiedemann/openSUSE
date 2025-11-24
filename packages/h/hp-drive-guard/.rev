@@ -162,4 +162,12 @@
     <comment></comment>
     <requestid>1196982</requestid>
   </revision>
+  <revision rev="22" vrev="29">
+    <srcmd5>2d654079fe85197fc3c85744560b2f57</srcmd5>
+    <version>0.3.12</version>
+    <time>1763989902</time>
+    <user>anag_factory</user>
+    <comment>- Remove unused BuildRequires: update-desktop-files. (forwarded request 1319381 from sbrabec)</comment>
+    <requestid>1319525</requestid>
+  </revision>
 </revisionlist>
