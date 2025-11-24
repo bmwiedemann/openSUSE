@@ -5702,4 +5702,15 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 10.19 release</comment>
     <requestid>1318024</requestid>
   </revision>
+  <revision rev="477" vrev="2">
+    <srcmd5>12eaa514671a436410f09f85f57a36be</srcmd5>
+    <version>10.19</version>
+    <time>1763989672</time>
+    <user>anag_factory</user>
+    <comment>- Recommend Mesa-libEGL1-32bit in wine-32bit. EGL has been default
+  for OpenGL rendering since 10.17. Not having this package results
+  in `err:wgl:egl_init Failed to find required extension
+  EGL_KHR_client_get_all_proc_addresses` in a 32bit prefix. (forwarded request 1318973 from jsulig)</comment>
+    <requestid>1319060</requestid>
+  </revision>
 </revisionlist>

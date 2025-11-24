@@ -316,6 +316,7 @@ echo " recommends \"libpulse0-32bit\""	>> %SOURCE97
 echo " recommends \"pipewire-alsa-32bit\""	>> %SOURCE97
 echo " recommends \"alsa-plugins-32bit\""	>> %SOURCE97
 echo " recommends \"Mesa-libGL1-32bit\""	>> %SOURCE97
+echo " recommends \"Mesa-libEGL1-32bit\""	>> %SOURCE97
 # indirect deps of libvulkan
 echo " requires \"libvulkan_intel-32bit\""		>> %SOURCE97
 echo " requires \"libvulkan_radeon-32bit\""		>> %SOURCE97
