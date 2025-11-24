@@ -1,7 +1,7 @@
 #
 # spec file for package caja-dropbox
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,6 @@ Patch0:         caja-dropbox_no-dropbox-bin.patch
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  mate-common >= %{_version}
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libcaja-extension) >= %{_version}
 Recommends:     %{name}-lang
