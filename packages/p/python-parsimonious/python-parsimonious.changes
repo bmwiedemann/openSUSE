@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov 21 21:41:23 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.0:
+  * Correctly handle `/` expressions with multiple terms in a row.
+  * Start using pyproject.toml.
+  * Add a ``ParsimoniousError`` exception base class.
+  * Fall back to ``re`` when the ``regex`` lib is not available.
+
+-------------------------------------------------------------------
 Tue Jun  3 08:52:05 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

@@ -55,4 +55,16 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1282198</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>08c61d88448546376bc706ea37d8949d</srcmd5>
+    <version>0.11.0</version>
+    <time>1763989760</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.11.0:
+  * Correctly handle `/` expressions with multiple terms in a row.
+  * Start using pyproject.toml.
+  * Add a ``ParsimoniousError`` exception base class.
+  * Fall back to ``re`` when the ``regex`` lib is not available.</comment>
+    <requestid>1319181</requestid>
+  </revision>
 </revisionlist>
