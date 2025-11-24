@@ -324,4 +324,22 @@
     <comment>switch to singlespec</comment>
     <requestid>1316798</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9772593060a442d9504373688d4ea77d</srcmd5>
+    <version>5.8.0</version>
+    <time>1763989766</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.8.0:
+  * Handle missing storage controller mode attribute
+  * reno: Update master for unmaintained/2024.1
+  * Add comprehensive PCIe function support to Sushy
+  * Check required credentials in a detailed way
+  * Remove support for Python 3.9
+  * Add comprehensive PCIe device support to Sushy
+  * Restore flake8-import-order
+  * Improve Dell Asynchronous task handling
+  * Update master for stable/2025.2
+  * Handle idrac10 moving some boot items</comment>
+    <requestid>1319185</requestid>
+  </revision>
 </revisionlist>

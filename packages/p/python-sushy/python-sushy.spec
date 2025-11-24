@@ -17,7 +17,7 @@
 
 
 Name:           python-sushy
-Version:        5.7.1
+Version:        5.8.0
 Release:        0
 Summary:        Python library to communicate with Redfish based systems
 License:        Apache-2.0

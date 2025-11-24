@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov 21 23:45:28 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.8.0:
+  * Handle missing storage controller mode attribute
+  * reno: Update master for unmaintained/2024.1
+  * Add comprehensive PCIe function support to Sushy
+  * Check required credentials in a detailed way
+  * Remove support for Python 3.9
+  * Add comprehensive PCIe device support to Sushy
+  * Restore flake8-import-order
+  * Improve Dell Asynchronous task handling
+  * Update master for stable/2025.2
+  * Handle idrac10 moving some boot items
+
+-------------------------------------------------------------------
 Sun Nov  9 14:22:37 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.7.1:
