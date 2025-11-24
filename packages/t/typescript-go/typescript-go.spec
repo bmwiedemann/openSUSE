@@ -1,7 +1,7 @@
 #
 # spec file for package typescript-go
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,10 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global         provider_prefix github.com/microsoft/typescript-go
 %global         import_path     %{provider_prefix}
 Name:           typescript-go
-Version:        0.0.512
+Version:        0.0.1245
 Release:        0
 Summary:        Port of TypeScript compiler to go
 License:        Apache-2.0
