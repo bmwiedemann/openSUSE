@@ -17,7 +17,7 @@
 
 
 Name:           ab-av1
-Version:        0.10.1
+Version:        0.10.2
 Release:        0
 Summary:        An AV1 video encoding wrapper
 License:        MIT

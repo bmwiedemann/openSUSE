@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Nov 23 08:03:41 UTC 2025 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Update to version 0.10.2:
+  * Disallow having --input the same as --output as this can lead to unintended
+    data loss. This may be explicitly overridden by passing --overwrite-input.
+  * Add crf-search,auto-encode arg --high-crf-means-hq for use with encoders where
+    high crf means higher quality.
+  * Encoder hevc_videotoolbox: Default --high-crf-means-hq, map --crf to -q:v.
+
+-------------------------------------------------------------------
 Fri Jul 25 09:13:06 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Fold shell completion packages into main package
