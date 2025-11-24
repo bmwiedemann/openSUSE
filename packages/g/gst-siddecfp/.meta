@@ -1,0 +1,7 @@
+<package name="gst-siddecfp" project="openSUSE:Factory">
+  <title>GStreamer sidecfp plugin</title>
+  <description>GStreamer sidecfp plugin.
+This plugin enables playback of Commodore 64
+sid music files via gstreamer based audio players.</description>
+  <url>https://github.com/kilikali-nc/gst-siddecfp</url>
+</package>
