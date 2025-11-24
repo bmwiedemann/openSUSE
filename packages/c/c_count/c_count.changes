@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 20 21:34:15 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.25:
+  * updated configure macros
+  * update config.guess and config.sub
+
+-------------------------------------------------------------------
 Sat Apr 19 08:55:30 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 7.24
@@ -11,14 +18,14 @@ Sun Jun  2 02:41:50 UTC 2024 - jun wang <jgwang@suse.com>
 - Update to version 7.23
   * improve style/formatting of manpage
   * updated configure macros
-  * update config.guess and config.sub 
+  * update config.guess and config.sub
 
 -------------------------------------------------------------------
 Thu Jun 22 11:43:43 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 7.22
   * see provided CHANGES for list of changes
-- Refresh source url and gpg keyring 
+- Refresh source url and gpg keyring
 
 -------------------------------------------------------------------
 Fri Apr 16 19:52:25 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>

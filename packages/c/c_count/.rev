@@ -133,4 +133,17 @@
     <comment></comment>
     <requestid>1271851</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>7b6d3f079bbb47ab7fff4ccbbf3a4629</srcmd5>
+    <version>7.25</version>
+    <time>1763989592</time>
+    <user>anag_factory</user>
+    <comment>- update to 7.25:
+  * updated configure macros
+  * update config.guess and config.sub
+
+  * update config.guess and config.sub
+- Refresh source url and gpg keyring</comment>
+    <requestid>1318929</requestid>
+  </revision>
 </revisionlist>
