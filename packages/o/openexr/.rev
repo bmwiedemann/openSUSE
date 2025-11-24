@@ -979,4 +979,14 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
         bsc#1253235 (CVE-2025-64183)</comment>
     <requestid>1317761</requestid>
   </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>628a87e7008612cde06551cb93a0bbdd</srcmd5>
+    <version>3.4.3</version>
+    <time>1763989764</time>
+    <user>anag_factory</user>
+    <comment>        bsc#1253715 (CVE-2025-12839)
+        bsc#1253714 (CVE-2025-12495)
+        bsc#1253713 (CVE-2025-12840)</comment>
+    <requestid>1318900</requestid>
+  </revision>
 </revisionlist>
