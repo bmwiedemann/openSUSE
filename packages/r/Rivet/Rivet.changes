@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Sun Nov 16 08:08:39 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.1.2:
+  * The LWTNN interface has been marked as to be deprecated in
+    preparation for future replacements.
+  * MET projections have been restructured to reduce code
+    duplication, with the SmearedMET projection now supporting
+    smearing of both vector pT and ET.
+  * Added pT-dependent b-tagging efficiency functions and ATLAS
+    Run-2 muon working points to detector-smearing functors.
+  * Streamlined handling of beam checks in multi-energy analyses
+    and improved re-entrant safety, including a unified ENERGY
+    option to override the nominal centre-of-mass energy.
+  * Fixed Particle::closestApproach() and improved the handling of
+    nominal weights when using --skip-weights.
+  * Rationalised units constants, removing ambiguous short symbols
+    and adding UK/US spellings (e.g. metre/meter).
+  * When running with --no-mcerrs, MC statistical errors are now
+    fully excluded from both error bars and uncertainty bands.
+  * Added a new MC_VERTEX validation routine to monitor vertex
+    positions, plus eight new measurement analyses from recent
+    collider results.
+- Changes from version 4.1.1:
+  * A same-flavour requirement is now enforced in the
+    DileptonFinder utility.
+  * An extended MC_WEIGHTS observable provides a differential
+    distribution of negative-weight events.
+  * Rivet now warns if analysis option ordering has to be
+    auto-corrected to canonical alphabetical form.
+  * Protections have been added to the DIS projection against
+    invalid (null) boost directions.
+  * Argument parsing has been reworked to support remote HepMC
+    sources (e.g. via xrootd).
+  * New and updated analyses from LHC and HERA.
+  * Event smearing can be disabled at runtime via the
+    RIVET_DISABLE_SMEARING=1 environment variable.
+  * The ONNXruntime interface is now templated to support both
+    float and double precision, with a new mkVecOf utility for
+    streamlined data preparation.
+- Changes from version 4.1.0:
+  * Update PID utils to MCUtils head, including a new
+    PID::isQuarkonium function from LHCb.
+  * Fix ProjectionApplier::hasProjection() to check against the
+    local projection-registration queue if its ProjectionHandler
+    is not yet bound.
+  * Remove FinalState::accept() method, which was misleading as
+    (as implemented) the subclasses did not override it and it
+    always just applied the stored ParticleFinder::_cuts rather
+    than augmenting those with the subclass semantics.
+  * Fix removed HDF5 variable expansion in rivet-config, and
+    improve terms reported for YODA (which provides HDF5) and
+    FastJet.
+  * Split MET smearing functions into SMEARPARAMS functions that
+    calculate the mean distorted vector and its energy resolution,
+    and the implementation of that smearing.
+- Changes from versions 4.0.0 through 4.0.3:
+  * Too many to list, see %{_docdir}/Rivet-devel/ChangeLog for a
+    full list.
+- Drop upstreamed patches:
+  * Rivet-fix-hepmc-tests.patch
+  * Rivet-include-missing-cstdint.patch
+- Rebase Rivet-disable-testCmdLine.patch for update.
+
+-------------------------------------------------------------------
 Thu Jul 10 22:56:17 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add Rivet-include-missing-cstdint.patch: Include cstdint header

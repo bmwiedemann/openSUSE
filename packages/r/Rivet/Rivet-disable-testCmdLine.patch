@@ -1,10 +1,14 @@
-Index: Rivet-3.1.11/test/Makefile.am
+---
+ test/Makefile.am |   10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+Index: Rivet-4.1.2/test/Makefile.am
 ===================================================================
---- Rivet-3.1.11.orig/test/Makefile.am
-+++ Rivet-3.1.11/test/Makefile.am
-@@ -38,11 +38,11 @@ TESTS = \
- testMath testMatVec testCmp testApi.sh testNaN.sh testBeams \
- testImport.sh
+--- Rivet-4.1.2.orig/test/Makefile.am
++++ Rivet-4.1.2/test/Makefile.am
+@@ -60,11 +60,11 @@ testAnalysis testNaN.sh testBeams testMe
+ if ENABLE_PYEXT
+ TESTS += testImport.sh
  
 -if ENABLE_ANALYSES
 -
@@ -16,6 +20,6 @@ Index: Rivet-3.1.11/test/Makefile.am
 +# TESTS += testCmdLine.sh
 +#
 +# endif
+ endif
  
- EXTRA_DIST = testApi.hepmc testCmdLine.sh testImport.sh testApi.sh testNaN.sh
- 
+ EXTRA_DIST = \
