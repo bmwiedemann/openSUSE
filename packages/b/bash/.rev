@@ -2134,4 +2134,15 @@ h. The `umask' builtin now has additional features for full POSIX conformance.</
     <comment>To discuss: this would simplyfy our Bootstrap cycle; patchutils just gains new deps on xmlto, which pulls docbook-xsl, docbook-4, libxslt, sgml-skel, and unzip into ring0 - for something we might easily avoid (forwarded request 1307921 from dimstar)</comment>
     <requestid>1308134</requestid>
   </revision>
+  <revision rev="202" vrev="3">
+    <srcmd5>e3bb1b040f5ec734d1b89a9519556b85</srcmd5>
+    <version>5.3.MACRO</version>
+    <time>1763989506</time>
+    <user>anag_factory</user>
+    <comment>- Cherry pick from commit 01070d43248fb97f3b2a08d780ae5a392573ce34 
+  two fixes:
+  * boo1254087.patch -- fix for short reads by `source' builtin (boo#1254087)
+  * risc-v.patch -- fix for crash on RISC-V machines</comment>
+    <requestid>1319067</requestid>
+  </revision>
 </revisionlist>

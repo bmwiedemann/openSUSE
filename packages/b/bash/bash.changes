@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov 21 09:36:12 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Cherry pick from commit 01070d43248fb97f3b2a08d780ae5a392573ce34 
+  two fixes:
+  * boo1254087.patch -- fix for short reads by `source' builtin (boo#1254087)
+  * risc-v.patch -- fix for crash on RISC-V machines
+
+
+-------------------------------------------------------------------
 Mon Sep 29 15:32:45 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - DRop use of patchutils: the patch tarball seems to contain only
