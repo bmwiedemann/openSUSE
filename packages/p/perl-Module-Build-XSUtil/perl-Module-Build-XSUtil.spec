@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Module-Build-XSUtil
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,30 +16,33 @@
 #
 
 
-Name:           perl-Module-Build-XSUtil
-Version:        0.19
-Release:        0
 %define cpan_name Module-Build-XSUtil
-Summary:        Module::Build class for building XS modules
+Name:           perl-Module-Build-XSUtil
+Version:        0.190.0
+Release:        0
+# 0.19 -> normalize -> 0.190.0
+%define cpan_version 0.19
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/H/HI/HIDEAKIO/%{cpan_name}-%{version}.tar.gz
+Summary:        Module::Build class for building XS modules
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/H/HI/HIDEAKIO/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Capture::Tiny)
 BuildRequires:  perl(Cwd::Guard)
 BuildRequires:  perl(Devel::CheckCompiler)
 BuildRequires:  perl(ExtUtils::CBuilder)
-BuildRequires:  perl(File::Copy::Recursive::Reduced) >= 0.002
-BuildRequires:  perl(Module::Build) >= 0.400500
+BuildRequires:  perl(File::Copy::Recursive::Reduced) >= 0.2
+BuildRequires:  perl(Module::Build) >= 0.400.500
 BuildRequires:  perl(Test::More) >= 0.98
 BuildRequires:  perl(parent)
 Requires:       perl(Devel::CheckCompiler)
 Requires:       perl(ExtUtils::CBuilder)
 Requires:       perl(parent)
+Provides:       perl(Module::Build::XSUtil) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -82,22 +85,21 @@ Enable compiler warnings flag. It is enable by default.
 If invoke Build.PL with '-g' option, It will build with debug options.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-perl Build.PL installdirs=vendor optimize="%{optflags}"
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor optimize="%{optflags}"
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes minil.toml README.md
+%doc Changes README.md
 %license LICENSE
 
 %changelog
