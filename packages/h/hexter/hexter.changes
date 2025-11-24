@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 22 21:17:55 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove unused BuildRequires: update-desktop-files.
+
+-------------------------------------------------------------------
 Thu Apr 15 00:27:21 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 1.1.1

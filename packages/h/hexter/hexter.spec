@@ -1,7 +1,7 @@
 #
 # spec file for package hexter
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,6 @@ BuildRequires:  ladspa-devel
 BuildRequires:  libjack-devel
 BuildRequires:  liblo-devel
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 Requires:       dssi
 
 %description
