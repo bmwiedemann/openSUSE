@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Sat Nov 22 14:06:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 7.1.0:
+  * Add support for aliases in EnumChoice type.
+  * Register pre-configured render_table() utility in the context when
+    table_format is set, in the same spirit as print_table().
+
+-------------------------------------------------------------------
+Wed Nov 19 12:03:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 7.0.1:
+  * Restore support for @extra_command, @extra_group and
+    @extra_version_option, but mark them as deprecated.
+- update to 7.0.0:
+  * Allow parent directories search for configuration files. Adds
+    search_parents argument on @config_file. Closes {issue}651.
+  * Allow fine-tuning of configuration file format pattern
+    matching. Replaces formats argument on @config_file by
+    file_format_patterns.
+  * Adds search_pattern_flags and file_pattern_flags arguments on
+    @config_file to allow user to tweak pattern matching behavior.
+  * Use | as separator for multiple file patterns instead of {,}
+    syntax. Replace glob.BRACE by glob.SPLIT for search pattern
+    flags. Force glob.SPLIT for file pattern flags.
+  * Remove glob.IGNORECASE flag to make case-sensitivity determined
+    by the underlying platform at runtime.
+  * Force glob.NODIR for search pattern flags to speed up search.
+  * Rename click_extra.config.Formats enum to
+    click_extra.config.ConfigFormat. Expose it at the root
+    click_extra module.
+  * Eat our own dog food: add a click-extra CLI to run self-tests.
+  * Override base decorators and classes with Click Extra's own
+    variants:
+    - @command now points to what was @extra_command.
+    - @group now points to what was @extra_group.
+    - Option class now points to click_extra.Option, which is a
+      subclass of cloup.Option.
+    - Argument class now points to click_extra.Argument, which is a
+      subclass of cloup.Argument.
+    - @option now instantiates click_extra.Option by default.
+    - @argument now instantiates click_extra.Argument by default.
+    - @version_option now points to what was @extra_version_option.
+    - Now if you want to use the previous aliases to Click's and
+      Cloup's originals, import them directly from click or cloup
+      instead of click_extra, which makes origination clearer.
+  * Remove @extra_command, @extra_group and @extra_version_option.
+  * Remove no_redefined argument in
+    click_extra.pytest.command_decorators() method.
+  * Validates that classes passed to the cls parameter of
+    decorators are subclasses of the expected base classes.
+  * Normalize the default value of EnumChoice parameters to their
+    string choice representation in help screens.
+  * Run tests on Python 3.14t and 3.15t free-threaded variants.
+
+-------------------------------------------------------------------
 Wed Nov  5 05:39:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 6.2.0:
