@@ -1,7 +1,7 @@
 #
 # spec file for package eid-mw
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2014 Philipp Thomas <psmt@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,7 +23,7 @@
 %define src_name eid-mw-%{version}-v%{version}
 
 Name:           eid-mw
-Version:        5.1.21
+Version:        5.1.26
 Release:        0
 URL:            https://eid.belgium.be/nl
 Summary:        Belgium electronic identity card PKCS#11 module and Firefox plugin
@@ -56,7 +56,6 @@ BuildRequires:  libcurl-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  p11-kit-devel
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 Recommends:     pcsc-acr38
 BuildRequires:  pcsc-acr38
 Recommends:     pcsc-lite

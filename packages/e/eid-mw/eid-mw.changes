@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov 23 14:07:29 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- updated to 5.1.26
+  - no good changes
+
+-------------------------------------------------------------------
+Sat Nov 22 21:16:38 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove unused BuildRequires: update-desktop-files.
+
+-------------------------------------------------------------------
 Sat May  3 15:50:25 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - updated to 5.1.21
