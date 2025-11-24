@@ -46,7 +46,6 @@ Sun Oct 12 13:02:51 UTC 2025 - MihailJP <mihailjp@gmail.com>
   * Update CI runner to macOS 13 (#5482)
   * Allow hyphen and special characters in Feature File glyph names (#5358)
   * Fix Python font.appendSFNTName() function (#5494)
-  * fix memleak in function DlgCreate8 (#5491)
   * Update mm.c (#5386)
   * Warning rollup (probably some hidden bugs!) from clang trunk (#5492)
   * Fix function PyFFFont_addSmallCaps. (#5519)
@@ -82,6 +81,8 @@ Sun Oct 12 13:02:51 UTC 2025 - MihailJP <mihailjp@gmail.com>
   * fix spelling "bt" -> "but" (#5636)
   * Fix typos in Python module docs (#5634)
   * October 2025 release (#5632)
+  * fix memleak in function DlgCreate8 (#5491)
+    (CVE-2025-50949, bsc#1252652)
 
 -------------------------------------------------------------------
 Mon May 26 06:39:39 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
