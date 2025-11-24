@@ -1,7 +1,7 @@
 #
 # spec file for package tea
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,6 @@ Patch1:         0001-Add-metainfo-use-GNUInstallDirs-install-metainfo-des.patch
 BuildRequires:  cmake
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(hunspell)
 BuildRequires:  pkgconfig(zlib)
 %if %{with qt6}
