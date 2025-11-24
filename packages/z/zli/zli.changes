@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov 21 06:15:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.11:
+  CLI-related changes:
+  * feat: add zot subcommand to enable testing retention policy
+    settings (#3449)
+  * fix: zot version broken after switching to /v2 (#3479)
+  Dependencies:
+  * chore: update cosign from v2 to v3 (#3561)
+  * chore: update github.com/olekukonko/tablewriter to v1.1.1
+    (#3559)
+
+-------------------------------------------------------------------
 Mon Oct 20 05:43:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.1.10:
