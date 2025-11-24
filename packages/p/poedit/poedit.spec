@@ -1,7 +1,7 @@
 #
 # spec file for package poedit
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,14 +20,13 @@
 %bcond_without crowdin_integration
 %bcond_with bundled_deps
 Name:           poedit
-Version:        3.7
+Version:        3.8
 Release:        0
 Summary:        Gettext Catalog Editing Tool
 License:        MIT
 Group:          Development/Tools/Other
 URL:            https://poedit.net/
 Source:         https://github.com/vslavik/poedit/releases/download/v%{version}-oss/%{name}-%{version}.tar.gz
-Patch1:         %{name}-boost-system.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_iostreams-devel >= 1.60
@@ -66,9 +65,6 @@ editing catalogs over launching vi and editing the file by hand.
 
 %prep
 %autosetup -N
-%if 0%{?suse_version} >= 1600
-%patch -p1 -P 1
-%endif
 %if !%{with bundled_deps}
 # Remove bundled dependencies, use the ones provided by the distribution
 rm -r deps
