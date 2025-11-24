@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 14 08:48:44 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove dbus-1-x11, doesn't work with dbus-broker [bsc#1253497]
+
+-------------------------------------------------------------------
 Tue Jul  5 12:26:31 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Use pipewire as default audio server in TW.

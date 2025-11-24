@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-mate
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -155,7 +155,6 @@ Requires:       dbus(org.freedesktop.Notifications)
 # Low-level parts that we need
 #
 Recommends:     NetworkManager
-Recommends:     dbus-1-x11
 Recommends:     desktop-file-utils
 # We want useful bug reports.
 Recommends:     gdb
