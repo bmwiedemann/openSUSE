@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Nov 24 07:05:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.30.26:
+  * Update tmc/dot to new version (#1910)
+  * build(deps): bump actions/setup-go from 6.0.0 to 6.1.0 (#1947)
+
+-------------------------------------------------------------------
+Fri Nov 21 06:15:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.30.25:
+  * build(deps): bump actions/checkout from 5.0.0 to 5.0.1 (#1942)
+  * build(deps): bump google.golang.org/api from 0.255.0 to 0.256.0
+    (#1933)
+  * build(deps): bump k8s.io/apimachinery from 0.34.1 to 0.34.2
+    (#1934)
+  * build(deps): bump golang.org/x/crypto from 0.43.0 to 0.45.0 in
+    the go_modules group across 1 directory (#1946)
+  * build(deps): bump github/codeql-action from 4.31.3 to 4.31.4
+    (#1945)
+
+-------------------------------------------------------------------
 Tue Nov 18 12:23:19 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.30.24:
