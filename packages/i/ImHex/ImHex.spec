@@ -41,7 +41,6 @@ BuildRequires:  llvm-devel
 BuildRequires:  mbedtls-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(dbus-1)
 %if 0%{?suse_version} > 1600
 BuildRequires:  fmt-10-devel
