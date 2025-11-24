@@ -21,7 +21,7 @@
 # You MUST checkout the app in your live system and play with it before submitting an update.
 %bcond_with     test
 Name:           spyder
-Version:        6.0.8
+Version:        6.1.0
 Release:        0
 Summary:        The Scientific Python Development Environment
 License:        MIT
@@ -29,6 +29,8 @@ Group:          Development/Languages/Python
 URL:            https://www.spyder-ide.org/
 Source:         https://github.com/spyder-ide/spyder/archive/v%{version}.tar.gz#/spyder-%{version}.tar.gz
 Source1:        spyder-rpmlintrc
+# PATCH-FIX-OPENSUSE spyder-opensuse-deps.patch gh#spyder-ide/spyder#25342
+Patch0:         spyder-opensuse-deps.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base >= 3.7
@@ -42,7 +44,7 @@ Requires:       python3-Pygments >= 2.0
 Requires:       python3-QtPy >= 2.4
 Requires:       python3-Rtree >= 0.9.7
 Requires:       python3-Sphinx >= 0.6.6
-Requires:       python3-aiohttp >= 3.9.3
+Requires:       python3-aiohttp >= 3.11.2
 Requires:       python3-atomicwrites >= 1.2.0
 Requires:       python3-bcrypt >= 4.3.0
 Requires:       python3-chardet >= 2.0.0
@@ -51,6 +53,7 @@ Requires:       python3-cookiecutter >= 1.6.0
 Requires:       python3-diff-match-patch >= 20181111
 Requires:       python3-importlib-metadata >= 4.6.0
 Requires:       python3-intervaltree
+Requires:       python3-ipython_pygments_lexers >= 1.0
 Requires:       python3-jellyfish >= 0.7
 Requires:       python3-jsonschema >= 3.2.0
 Requires:       python3-keyring >= 17.0.0
@@ -75,13 +78,15 @@ Requires:       python3-yarl >= 1.9.4
 Requires:       (python3-QDarkStyle >= 3.2.0 with python3-QDarkStyle < 3.3.0)
 Requires:       (python3-QtAwesome >= 1.4 with python3-QtAwesome < 1.5)
 Requires:       (python3-asyncssh >= 2.14 with python3-asyncssh < 3)
-Requires:       (python3-ipython >= 8.13 with python3-ipython < 9)
+Requires:       (python3-ipython >= 8.13 with python3-ipython < 10)
 Requires:       (python3-jedi >= 0.17.2 with python3-jedi < 0.20)
-Requires:       (python3-pylint >= 3.1 with python3-pylint < 4)
+# Check Patch0 and https://github.com/spyder-ide/spyder/issues/25342
+Requires:       (python3-pylint >= 3.1 with python3-pylint < 4.1)
 Requires:       (python3-python-lsp-black >= 2.0.0 with python3-python-lsp-black < 3)
+Requires:       (python3-python-lsp-ruff >= 2.3.0 with python3-python-lsp-ruff < 3)
 Requires:       (python3-python-lsp-server-all >= 1.13.0 with python3-python-lsp-server-all < 1.14)
-Requires:       (python3-qtconsole >= 5.6.1 with python3-qtconsole < 5.7)
-Requires:       (python3-spyder-kernels >= 3.0.5 with python3-spyder-kernels < 3.1)
+Requires:       (python3-qtconsole >= 5.7.0 with python3-qtconsole < 5.8.0)
+Requires:       (python3-spyder-kernels >= 3.1 with python3-spyder-kernels < 3.2)
 Requires:       (python3-superqt >= 0.6.2 with python3-superqt < 1)
 Recommends:     git-core
 Recommends:     python3-Cython
@@ -144,7 +149,7 @@ BuildRequires:  python3-PyQt6-WebEngine >= 6.5
 BuildRequires:  python3-QtPy >= 2.4
 BuildRequires:  python3-Rtree >= 0.9.7
 BuildRequires:  python3-Sphinx >= 0.6.6
-BuildRequires:  python3-aiohttp >= 3.9.3
+BuildRequires:  python3-aiohttp >= 3.11.2
 BuildRequires:  python3-atomicwrites >= 1.2.0
 BuildRequires:  python3-bcrypt >= 4.3.0
 BuildRequires:  python3-chardet >= 2.0.0
@@ -153,6 +158,7 @@ BuildRequires:  python3-cookiecutter >= 1.6.0
 BuildRequires:  python3-diff-match-patch >= 20181111
 BuildRequires:  python3-importlib-metadata >= 4.6.0
 BuildRequires:  python3-intervaltree
+BuildRequires:  python3-ipython_pygments_lexers >= 1.0
 BuildRequires:  python3-jellyfish >= 0.7
 BuildRequires:  python3-jsonschema >= 3.2.0
 BuildRequires:  python3-keyring >= 17.0.0
@@ -177,13 +183,14 @@ BuildRequires:  python3-yarl >= 1.9.4
 BuildRequires:  (python3-QDarkStyle >= 3.2.0 with python3-QDarkStyle < 3.3.0)
 BuildRequires:  (python3-QtAwesome >= 1.4 with python3-QtAwesome < 1.5)
 BuildRequires:  (python3-asyncssh >= 2.14 with python3-asyncssh < 3)
-BuildRequires:  (python3-ipython >= 8.13 with python3-ipython < 9)
+BuildRequires:  (python3-ipython >= 8.13 with python3-ipython < 10)
 BuildRequires:  (python3-jedi >= 0.17.2 with python3-jedi < 0.20)
-BuildRequires:  (python3-pylint >= 3.1 with python3-pylint < 4)
+BuildRequires:  (python3-pylint >= 3.1 with python3-pylint < 4.1)
 BuildRequires:  (python3-python-lsp-black >= 2.0.0 with python3-python-lsp-black < 3)
+BuildRequires:  (python3-python-lsp-ruff >= 2.3.0 with python3-python-lsp-ruff < 3)
 BuildRequires:  (python3-python-lsp-server-all >= 1.13.0 with python3-python-lsp-server-all < 1.14)
-BuildRequires:  (python3-qtconsole >= 5.6.1 with python3-qtconsole < 5.7)
-BuildRequires:  (python3-spyder-kernels >= 3.0.5 with python3-spyder-kernels < 3.1)
+BuildRequires:  (python3-qtconsole >= 5.7 with python3-qtconsole < 5.8)
+BuildRequires:  (python3-spyder-kernels >= 3.1 with python3-spyder-kernels < 3.2)
 BuildRequires:  (python3-superqt >= 0.6.2 with python3-superqt < 1)
 # /SECTION
 
@@ -231,11 +238,6 @@ rm spyder/utils/check-git.sh
 # test environment, but we want to test against installed packages.
 rm -r external-deps/*
 
-# gh#spyder-ide/spyder#24761
-sed -i -E "s/(PYLSP_REQVER = ).*/\1'>=1.13.0,<1.14.0'/" spyder/dependencies.py
-sed -i -E "s/(python-lsp-server.*)>=[0-9,<.]*/\1>=1.13.0,<1.14.0/" setup.py
-
-sed -i "s/installer = 'pip'/installer = 'openSUSE RPM'/" spyder/__init__.py
 # avoid mtime destroying dedup
 echo "# Unique config __init__.pyc" >> spyder/config/__init__.py
 

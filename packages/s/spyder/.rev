@@ -908,4 +908,41 @@ rename the package from spyder3 to spyder.
     console), by @athompson673 (24561) (forwarded request 1307958 from bnavigator)</comment>
     <requestid>1307959</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>54e84163a11e6491174bf197a9d9bafd</srcmd5>
+    <version>6.1.0</version>
+    <time>1763989740</time>
+    <user>anag_factory</user>
+    <comment>- Fix dependencies
+- Add spyder-opensuse-deps.patch
+  * pylint 4: gh#spyder-ide/spyder#25342
+
+- update to 6.1.0:
+  * see full changelog at
+    https://github.com/spyder-ide/spyder/blob/v6.1.0/changelogs/Spyder-6.md#version-610-20251002
+
+  gh#spyder-ide/spyder/14514
+- Fix appdata.xml install
+  * Add support for inline and interactive Matplotlib plots in the
+  * Automatic detection of conda and pyenv environments in
+  * Add functionality to do auto-formatting in the Editor. It can
+    be triggered in the menu Source &gt; Format file or selection or
+  * Add support for text snippets in the Editor. The list of
+    available snippets is shown in `Preferences &gt; Completion and
+  * Support caching cells send in succession to the IPython
+  * Make variables take precedence over Pdb commands in the
+    debugger. In case a variable clashes with a command, you'll
+  * Show a message to take a tour of Spyder features the first
+  * Improve performance in the Editor when painting indent guides
+  * Prevent the creation of temporary files in Dropbox directories
+  * Prevent the Outline to degrade performance in the Editor when
+    visible. This was achieved by moving this pane to use the LSP
+- spyder-pr13814-completion.patch gh#spyder-ide/spyder#13814
+- Update to version 4.1.5
+    * Fix errors when running Dask code in the IPython console.
+    * Handle NaT values in the Variable Explorer.
+- increase memory requirement for builds (the tests consume a lot)
+    * Fix startup crash when Spyder is using the Brazilian Portuguese</comment>
+    <requestid>1319162</requestid>
+  </revision>
 </revisionlist>

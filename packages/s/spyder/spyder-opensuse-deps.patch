@@ -1,0 +1,41 @@
+diff -ur spyder-6.1.0.orig/setup.py spyder-6.1.0.patched/setup.py
+--- spyder-6.1.0.orig/setup.py	2025-10-02 22:30:16.000000000 +0200
++++ spyder-6.1.0.patched/setup.py	2025-11-21 16:38:23.468508713 +0100
+@@ -296,7 +296,7 @@
+     'psutil>=5.3',
+     'pygithub>=2.3.0',
+     'pygments>=2.0',
+-    'pylint>=3.1,<4',
++    'pylint>=3.1,<4.1',
+     'pylint-venv>=3.0.2',
+     'pyls-spyder>=0.4.0',
+     'python-lsp-black>=2.0.0,<3.0.0',
+diff -ur spyder-6.1.0.orig/spyder/dependencies.py spyder-6.1.0.patched/spyder/dependencies.py
+--- spyder-6.1.0.orig/spyder/dependencies.py	2025-10-02 22:30:16.000000000 +0200
++++ spyder-6.1.0.patched/spyder/dependencies.py	2025-11-21 16:04:03.545466359 +0100
+@@ -56,7 +56,7 @@
+ PSUTIL_REQVER = '>=5.3'
+ PYGITHUB_REQVER = '>=2.3.0'
+ PYGMENTS_REQVER = '>=2.0'
+-PYLINT_REQVER = '>=3.1,<4'
++PYLINT_REQVER = '>=3.1,<4.1'
+ PYLINT_VENV_REQVER = '>=3.0.2'
+ PYLSP_REQVER = '>=1.13.0,<1.14.0'
+ PYLSP_BLACK_REQVER = '>=2.0.0,<3.0.0'
+diff -ur spyder-6.1.0.orig/spyder/__init__.py spyder-6.1.0.patched/spyder/__init__.py
+--- spyder-6.1.0.orig/spyder/__init__.py	2025-10-02 22:30:16.000000000 +0200
++++ spyder-6.1.0.patched/spyder/__init__.py	2025-11-21 16:03:01.943460845 +0100
+@@ -73,12 +73,7 @@
+             os.path.dirname(__current_directory__)
+         )
+ 
+-    if is_conda_based_app():
+-        installer = 'standalone'
+-    elif is_conda_env(pyexec=sys.executable):
+-        installer = 'conda'
+-    else:
+-        installer = 'pip'
++    installer = 'openSUSE RPM'
+ 
+     versions = {
+         'spyder': __version__,
