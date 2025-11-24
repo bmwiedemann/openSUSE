@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           xtensor
-Version:        0.26.0
+Version:        0.27.1
 Release:        0
 Summary:        Multi-dimensional arrays with broadcasting and lazy computing
 License:        BSD-3-Clause
@@ -95,6 +95,10 @@ cp -r %{_builddir}/%{name}-%{version}/docs/build/html/* %{buildroot}/%{_docdir}/
 
 %fdupes -s %{buildroot}/%{_docdir}
 %fdupes %{buildroot}/%{_prefix}
+
+#do not install xeus tag files because we don't have xeus package
+rm -rf %{buildroot}/%{_prefix}/etc/xeus-cpp/tags.d/xtensor.json
+rm -rf %{buildroot}/%{_prefix}/share/xeus-cpp/tagfiles/xtensor.tag
 
 %check
 %ctest

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Nov  2 08:55:34 UTC 2025 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Version 0.27.1
+  - Add tagfiles to support fetching documentation with xeus-cpp-lite
+- Version 0.27.0
+  - Replaced apply_cv with xtl::apply_cv and deleted duplicated
+    code
+  - Implement apply with std 17
+  - feat: Use cpp20 by default
+  - Set C++20 in clang-format
+  - Update docs to reflect new directory structure.
+  - Adding concept to a part of the code
+  - fix: update benchmarks
+  - Revive benchmarks
+  - Set cmake min version to represent used features.
+  - Enabling rich display for xeus-cpp-lite
+  - Add braces around initializers
+  - Adding concept to a part of the code (part 2)
+  - cmake: write xtensor.hpp to local dir to keep global build dir
+    clean
+
+-------------------------------------------------------------------
 Sun Mar 30 07:40:30 UTC 2025 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Version 0.26.0
