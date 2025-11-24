@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 19 16:14:35 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Fix issue in CMakefile.
+  Add fix_cmake.patch 
+
+-------------------------------------------------------------------
 Tue Jul 15 06:39:51 UTC 2025 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.9.5

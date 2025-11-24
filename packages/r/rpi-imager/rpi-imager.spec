@@ -1,7 +1,7 @@
 #
 # spec file for package rpi-imager
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Group:          Hardware/Other
 URL:            https://github.com/raspberrypi/rpi-imager
 Source:         https://github.com/raspberrypi/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         0000-remove-vendoring.patch
+Patch1:         fix_cmake.patch
 
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
