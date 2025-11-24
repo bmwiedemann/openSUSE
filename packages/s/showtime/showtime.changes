@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Nov 23 09:36:52 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.1:
+  + When the window resizes, it will now stay in the center on
+    supported systems.
+  + Screenshots can now be saved to a directory of your choice.
+    This additionally fixes an issue with translated folder names
+    and improves security.
+  + The application name should now correctly show up in the Sound
+    panel of Settings.
+  + Small localization improvements for right-to-left languages.
+
+-------------------------------------------------------------------
 Fri Oct 31 07:30:10 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Fix typo in gstreamer-plugins-libav Recommends.

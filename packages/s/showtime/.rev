@@ -55,4 +55,20 @@
     <comment></comment>
     <requestid>1314911</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>77ee662fc80b00091275fb44f7f199ad</srcmd5>
+    <version>49.1</version>
+    <time>1763990011</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 49.1:
+  + When the window resizes, it will now stay in the center on
+    supported systems.
+  + Screenshots can now be saved to a directory of your choice.
+    This additionally fixes an issue with translated folder names
+    and improves security.
+  + The application name should now correctly show up in the Sound
+    panel of Settings.
+  + Small localization improvements for right-to-left languages. (forwarded request 1319343 from iznogood)</comment>
+    <requestid>1319646</requestid>
+  </revision>
 </revisionlist>
