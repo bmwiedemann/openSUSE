@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 20 16:00:36 UTC 2025 - Ivan Ivanov <ivan.ivanov@suse.com>
+
+- Do not load "upstream" overlay anymore. Recent build fixes for
+  overlay_map.dtb in raspberrypi-firmware-dt package (r127) exposed
+  latent bug related to "upstream" overlay, which start to actually
+  auto loaded for RPi4 devices. The issue is manifested as RPi4
+  devices unable to boot from USB media.  Fixes boo#1253082
+
+--------------------------------------------------------------------
 Thu Nov 12 07:02:51 UTC 2025 - Ivan Ivanov <ivan.ivanov@suse.com>
 
 - Do not let firmware do multiplexing for default debug UART
