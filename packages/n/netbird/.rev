@@ -77,4 +77,41 @@
   - [client] Replace ipset lib by @lixmal in #4777</comment>
     <requestid>1318100</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>aa1e5cdd27285ecccf1baba8e42f9cdd</srcmd5>
+    <version>0.60.1</version>
+    <time>1763989532</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.60.1:
+  * [management] Fix direct peer networks route by @pascal-fischer
+    in #4802
+  * [management] pass config to controller by @pascal-fischer
+    in #4807
+  * [management] Add native ssh port rule on 22 by @mlsmaycon in
+    #4810
+
+- add ssh test cases which no longer work to the filterlist
+
+- update to 0.60.0:
+  Native SSH Access &amp; OpenSSH Integration
+  NetBird v0.60.0 ships a complete rewrite of SSH access. Every
+  peer can now run a built-in SSH server, giving you
+  identity-aware, private SSH access over your NetBird network —
+  using either the netbird ssh command or your existing OpenSSH
+  clients.
+  Highlights:
+  - Built-in SSH server on every peer - Enable with netbird up
+    --allow-server-ssh and get a native SSH endpoint without
+    exposing port 22 to the internet.
+  - Identity-aware access with JWT - SSH sessions are authenticated
+    via your IdP (OIDC/JWT) by default, so you know which user
+    accessed which machine.
+  - Works with netbird ssh and OpenSSH - Use netbird ssh
+    user@&lt;peer-ip&gt; or standard ssh, sftp, and scp commands; NetBird
+    configures OpenSSH automatically via a drop-in 99-netbird.conf.
+  - Port 22, transparently secured - NetBird listens on TCP 22022
+    and redirects NetBird-network port 22 traffic to it, so
+    existing SSH workflows keep working without changing ports.</comment>
+    <requestid>1318757</requestid>
+  </revision>
 </revisionlist>

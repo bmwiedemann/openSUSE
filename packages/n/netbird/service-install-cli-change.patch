@@ -1,7 +1,7 @@
-diff --git a/client/cmd/login.go b/client/cmd/login.go
-index b0c877f..f2a316e 100644
---- a/client/cmd/login.go
-+++ b/client/cmd/login.go
+Index: netbird/client/cmd/login.go
+===================================================================
+--- netbird.orig/client/cmd/login.go
++++ netbird/client/cmd/login.go
 @@ -83,9 +83,16 @@ var loginCmd = &cobra.Command{
  func doDaemonLogin(ctx context.Context, cmd *cobra.Command, providedSetupKey string, activeProf *profilemanager.Profile, username string, pm *profilemanager.ProfileManager) error {
  	conn, err := DialClientGRPCServer(ctx, daemonAddr)
@@ -22,11 +22,11 @@ index b0c877f..f2a316e 100644
  	}
  	defer conn.Close()
  
-diff --git a/client/cmd/root.go b/client/cmd/root.go
-index 11e5228..9a0de31 100644
---- a/client/cmd/root.go
-+++ b/client/cmd/root.go
-@@ -390,9 +390,16 @@ func getClient(cmd *cobra.Command) (*grpc.ClientConn, error) {
+Index: netbird/client/cmd/root.go
+===================================================================
+--- netbird.orig/client/cmd/root.go
++++ netbird/client/cmd/root.go
+@@ -387,9 +387,16 @@ func getClient(cmd *cobra.Command) (*grp
  
  	conn, err := DialClientGRPCServer(cmd.Context(), daemonAddr)
  	if err != nil {
@@ -46,10 +46,10 @@ index 11e5228..9a0de31 100644
  	}
  
  	return conn, nil
-diff --git a/client/cmd/service_installer.go b/client/cmd/service_installer.go
-index 2a87e53..05a2012 100644
---- a/client/cmd/service_installer.go
-+++ b/client/cmd/service_installer.go
+Index: netbird/client/cmd/service_installer.go
+===================================================================
+--- netbird.orig/client/cmd/service_installer.go
++++ netbird/client/cmd/service_installer.go
 @@ -4,7 +4,7 @@ package cmd
  
  import (
@@ -200,11 +200,11 @@ index 2a87e53..05a2012 100644
  	},
  }
  
-diff --git a/client/cmd/status.go b/client/cmd/status.go
-index 6e57ceb..b6dc715 100644
---- a/client/cmd/status.go
-+++ b/client/cmd/status.go
-@@ -124,10 +124,17 @@ func statusFunc(cmd *cobra.Command, args []string) error {
+Index: netbird/client/cmd/status.go
+===================================================================
+--- netbird.orig/client/cmd/status.go
++++ netbird/client/cmd/status.go
+@@ -124,10 +124,17 @@ func statusFunc(cmd *cobra.Command, args
  func getStatus(ctx context.Context, shouldRunProbes bool) (*proto.StatusResponse, error) {
  	conn, err := DialClientGRPCServer(ctx, daemonAddr)
  	if err != nil {
@@ -226,11 +226,11 @@ index 6e57ceb..b6dc715 100644
  	defer conn.Close()
  
  	resp, err := proto.NewDaemonServiceClient(conn).Status(ctx, &proto.StatusRequest{GetFullPeerStatus: true, ShouldRunProbes: shouldRunProbes})
-diff --git a/client/cmd/up.go b/client/cmd/up.go
-index 80175f7..7db168f 100644
---- a/client/cmd/up.go
-+++ b/client/cmd/up.go
-@@ -216,10 +216,17 @@ func runInDaemonMode(ctx context.Context, cmd *cobra.Command, pm *profilemanager
+Index: netbird/client/cmd/up.go
+===================================================================
+--- netbird.orig/client/cmd/up.go
++++ netbird/client/cmd/up.go
+@@ -216,10 +216,17 @@ func runInDaemonMode(ctx context.Context
  
  	conn, err := DialClientGRPCServer(ctx, daemonAddr)
  	if err != nil {

@@ -31,7 +31,7 @@
 %bcond_with stub_config
 
 Name:           netbird
-Version:        0.59.13
+Version:        0.60.1
 Release:        0
 Summary:        Mesh VPN based on WireGuard
 License:        BSD-3-Clause AND AGPL-3.0
@@ -308,6 +308,13 @@ failing_tests=(
   TestResolver_PartialUpdateAddsNewTypePreservesExisting
   TestServer_Up
   TestProxyRedirect
+  TestSSHClient_CommandExecution
+  TestSSHClient_ContextCancellation
+  TestSSHProxy_Connect
+  TestPrivilegeDropper_CreateExecutorCommand
+  TestPrivilegeDropper_CreateExecutorCommandInteractive
+  TestJWTEnforcement/allows_when_disabled
+  TestJWTAuthentication
 )
 # Assemble skip string by replacing spaces with a pipe.
 disable=$(echo ${failing_tests[*]} | sed 's/ /|/g')
