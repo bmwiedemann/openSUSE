@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 20 15:13:39 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.18.0:
+  + Fix a regression reading passwords from stdin
+  + Fix a timer regression (µs instead of ms)
+  + Improved multitouch support
+  + Fix a bug with PLANAR codec (used with /bpp:32 or sometimes with /gfx)
+  + Better error handling for ARM transport (Entra)
+  + Fix audio encoder lag (microphone/AAC) with FFMPEG
+  + Support for janssen JSON library
+- Drop 11876.patch: fixed upstream
+
+-------------------------------------------------------------------
 Mon Oct 13 22:35:23 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Fix spelling mistakes in Summaries.

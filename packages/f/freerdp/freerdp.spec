@@ -37,7 +37,7 @@
 %define uwac_package %{uwac_version}-%{uwac_version}
 
 Name:           freerdp
-Version:        3.17.2
+Version:        3.18.0
 Release:        0
 Summary:        Remote Desktop Viewer Client
 License:        Apache-2.0
@@ -45,7 +45,6 @@ Group:          Productivity/Networking/Other
 URL:            https://www.freerdp.com/
 Source0:        https://github.com/FreeRDP/FreeRDP/archive/%{version}.tar.gz#/FreeRDP-%{version}.tar.gz
 Source1:        freerdp-rpmlintrc
-Patch0:         https://patch-diff.githubusercontent.com/raw/FreeRDP/FreeRDP/pull/11876.patch
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 2.8
 BuildRequires:  cups-devel
