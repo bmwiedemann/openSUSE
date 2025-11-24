@@ -162,4 +162,14 @@
     <comment>- Limit numpy to &lt; 2 due to dask-array.</comment>
     <requestid>1186067</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3c27d731c572c4347e4f59bacbeab5f2</srcmd5>
+    <version>0.12.8</version>
+    <time>1763990040</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.12.8:
+  * get scale of axis with dataset.x.slope.
+- Remove upper bound on numpy.</comment>
+    <requestid>1319626</requestid>
+  </revision>
 </revisionlist>

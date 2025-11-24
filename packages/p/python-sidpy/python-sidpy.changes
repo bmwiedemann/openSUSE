@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 24 07:07:18 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.12.8:
+  * get scale of axis with dataset.x.slope.
+- Remove upper bound on numpy.
+
+-------------------------------------------------------------------
 Mon Jul  8 04:52:26 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Limit numpy to < 2 due to dask-array. 
