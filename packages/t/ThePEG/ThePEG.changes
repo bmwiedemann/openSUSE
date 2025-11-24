@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Nov 16 19:34:47 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Build without rivet support: not compatible with rivet >= 4.0.
+
+-------------------------------------------------------------------
 Wed Jan  3 09:35:17 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 2.3.0:

@@ -152,4 +152,12 @@ Depends on
 - Follow shared lib packaging policy by renaming ThePEG-libs to libThePEG* and using a versioned ld.so.conf file.</comment>
     <requestid>1136499</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>4a69c5e7e3f56eedf3782882e0bdd47e</srcmd5>
+    <version>2.3.0</version>
+    <time>1763989854</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1319262</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package ThePEG
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,8 +31,6 @@ URL:            https://herwig.hepforge.org/
 Source:         https://thepeg.hepforge.org/downloads/%{name}-%{version}.tar.bz2
 BuildRequires:  HepMC-devel
 BuildRequires:  LHAPDF-devel
-BuildRequires:  Rivet-devel
-BuildRequires:  YODA-devel
 BuildRequires:  fastjet-devel
 BuildRequires:  fastjet-plugin-siscone-devel
 BuildRequires:  fdupes
@@ -83,7 +81,7 @@ sed -i "1{s|#! /usr/bin/env bash|#!/bin/bash|}" ./src/thepeg-config.in
 %build
 %configure \
   --with-hepmcversion=3 \
-  --with-rivet=%{_prefix}
+  %{nil}
 %make_build
 
 %install
