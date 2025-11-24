@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Nov 20 20:56:47 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to 4.2.10:
+  * remember and reset the screen scale factor
+  * get/set screen number for main dialog
+    . adjust main dialog x, y coordinates before saving in fldigi.prefs
+  * read and use flrig FSK baudot parameters to control character
+    send rate
+    . baud
+    . stop bits
+    . idles (diddles)
+  * Signal level indicator on main dialog status bar changed to
+    down box
+    . default transition levels changed to -30, -6, -3 dB
+  * Control Positions
+    + adjust position of main dialog controls
+    + add expanding flat box widgets to waterfall controls
+    + change visibility rules for power SQL button
+      . used only with KISS i/o enabled
+      . toggle visibility with SQL button
+      . both occupy same dialog position
+      . add SHIFT-CONTROL-LEFT-CLICK to change between
+    + PSQL and SQL buttons - correct waterfall display toggling
+    + reorganize code to allow main and water-fall only dialogs to
+      share same status bar code
+    + allow user selection of waterfall/status-bar control resizing
+      and positioning
+     . normal UI is for waterfall and status-bar controls to expand
+       and contract horizontally with main dialog width adjustment
+     . add --fill (--fi) to command line for fixed width controls
+       with expandable empty space between controls
+    + correct menu resizing for font size other than 14
+    + add new controls to color/font setting function
+    + make status & waterfall resizable layout selectable by user
+      on configuration dialog
+      . selection change occurs on program restart
+  * fix the very annoying blink of the MARK RTTY trackline
+  * fix PTT service dropping last few characters in FSK transmission
+  * Add gpiod support
+    + add GPIO i/o support for PTT and CW keyline
+    + separate GPIO configuration dialog
+  * fix segmentation fault for cw/wfall-only configuration
+  * fsq sounder: change algorithm for computing next sounding time
+  * Regex Search: add LOG_INFO search results
+
+-------------------------------------------------------------------
 Wed Sep 17 10:13:44 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to 4.2.09:
