@@ -1,7 +1,7 @@
 #
 # spec file for package xca
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2023 Jonathan Brielmaier <jbrielmaier@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,7 +30,6 @@ BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt6Gui)
 BuildRequires:  cmake(Qt6Help)
 BuildRequires:  cmake(Qt6Linguist)
