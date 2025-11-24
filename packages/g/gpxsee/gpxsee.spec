@@ -19,7 +19,7 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 
 Name:           gpxsee
-Version:        15.3
+Version:        15.4
 Release:        1
 Summary:        GPS log file visualization and analysis tool
 License:        GPL-3.0-only
@@ -43,9 +43,9 @@ Recommends: qt6-qtimageformats
 %else
 %if 0%{?suse_version}
 BuildRequires:  qt6-core-devel
+BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-concurrent-devel
 BuildRequires:  qt6-gui-devel
-BuildRequires:  qt6-gui-private-devel
 BuildRequires:  qt6-widgets-devel
 BuildRequires:  qt6-network-devel
 BuildRequires:  qt6-printsupport-devel

@@ -1,3 +1,11 @@
+gpxsee (15.4) stable; urgency=low
+
+  * Added support for online maps overlays.
+  * Added OpenSeaMap to the default map set.
+  * Fixed broken raster MBTiles maps rendering (introduced in 15.0)
+
+ -- Martin Tuma <tumic@gpxsee.org>  Tue, 18 Nov 2025 22:56:49 +0100
+
 gpxsee (15.3) stable; urgency=low
 
   * Fixed MVT hillshading and text opacity issues (introduced in

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 18 22:52:57 CET 2025 - tumic@gpxsee.org
+
+- Update to version 15.4
+  * Added support for online maps overlays.
+  * Added OpenSeaMap to the default map set.
+  * Fixed broken raster MBTiles maps rendering (introduced in 15.0)
+
+-------------------------------------------------------------------
 Sun Nov  9 08:13:21 CET 2025 - tumic@gpxsee.org
 
 - Update to version 15.3
