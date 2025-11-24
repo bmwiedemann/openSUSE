@@ -1,7 +1,7 @@
 #
 # spec file for package xsynth-dssi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,14 +23,13 @@ BuildRequires:  dssi-devel
 BuildRequires:  gtk2-devel
 BuildRequires:  libjack-devel
 BuildRequires:  liblo-devel
-BuildRequires:  update-desktop-files
 Requires:       dssi
 Summary:        Xsynth an analog-style (VCAs-VCF-VCO) synth plugin
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Midi
 Version:        0.9.4
 Release:        0
-Url:            http://www.smbolton.com/linux.html
+URL:            http://www.smbolton.com/linux.html
 Source:         %{name}-%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
