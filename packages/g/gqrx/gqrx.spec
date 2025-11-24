@@ -44,7 +44,6 @@ BuildRequires:  orc
 BuildRequires:  pkgconfig
 BuildRequires:  portaudio-devel
 BuildRequires:  python3-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(Qt6Gui)
 BuildRequires:  pkgconfig(Qt6Network)
