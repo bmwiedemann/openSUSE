@@ -165,4 +165,12 @@ Needs SR#1093175</comment>
 </comment>
     <requestid>1297291</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>6f7aaef4abf7eebca82f069b0e5ad77c</srcmd5>
+    <version>0.18.1</version>
+    <time>1763989863</time>
+    <user>anag_factory</user>
+    <comment>rnp 0.18.1 CVE-2025-13470 (boo#1253957, CVE-2025-13402)</comment>
+    <requestid>1319259</requestid>
+  </revision>
 </revisionlist>

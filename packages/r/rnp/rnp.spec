@@ -18,7 +18,7 @@
 
 %define soname 0
 Name:           rnp
-Version:        0.18.0
+Version:        0.18.1
 Release:        0
 Summary:        OpenPGP implementation fully compliant with RFC 4880
 License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause
@@ -102,9 +102,9 @@ export CXX=g++-12
 %files devel
 %license LICENSE*
 %doc CHANGELOG.md README.adoc
-%{_includedir}/*
+%{_includedir}/rnp
 %{_libdir}/cmake/rnp
-%{_libdir}/*.so
+%{_libdir}/librnp.so
 %{_libdir}/pkgconfig/*.pc
 %{_mandir}/man3/*.3%{?ext_man}
 
