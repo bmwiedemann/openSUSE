@@ -1,7 +1,7 @@
 #
 # spec file for package hexchat
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,9 @@ Source1:        hexchat-migrate-sh
 Patch1:         migrate-configuration-from-xchat.patch
 # PATCH-FIX-OPENSUSE hexchat-disable-tray-icon-by-default.patch bsc#1225688 alynx.zhou@suse.com -- Workaround for X error
 Patch2:         hexchat-disable-tray-icon-by-default.patch
+%if 0%{?suse_version} > 1600
+BuildRequires:  glycin-loaders
+%endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  lua-devel

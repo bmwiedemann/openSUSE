@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 17 16:57:45 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequite glycin-loaders: needed to embed hexchat.png into the
+  gresource.
+
+-------------------------------------------------------------------
 Fri Aug 16 07:15:47 UTC 2024 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add hexchat-disable-tray-icon-by-default.patch: Workaround to
