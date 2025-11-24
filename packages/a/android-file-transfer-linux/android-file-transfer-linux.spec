@@ -26,7 +26,6 @@ License:        LGPL-2.1-only
 BuildRequires:  cmake
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  readline-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6NetworkAuth)
 BuildRequires:  pkgconfig(Qt6Core)
