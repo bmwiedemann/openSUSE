@@ -212,4 +212,12 @@ now with the url to the source tarball (forwarded request 163518 from etamPL)</c
 - Small packaging cleanups</comment>
     <requestid>729427</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>373b07b375fca6fd4d251dc08aeab8f5</srcmd5>
+    <version>7.10.3</version>
+    <time>1763989731</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1319132</requestid>
+  </revision>
 </revisionlist>

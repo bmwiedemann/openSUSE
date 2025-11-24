@@ -1,7 +1,7 @@
 #
 # spec file for package libpqxx
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,24 @@
 #
 
 
-%define abi_ver_major 6
-%define abi_ver_minor 4
+%if 0%{?suse_version} && 0%{?suse_version} < 1550
+%define force_gcc_version 12
+%endif
+
+%define abi_ver_major 7
+%define abi_ver_minor 10
 Name:           libpqxx
-Version:        6.4.5
+Version:        7.10.3
 Release:        0
 Summary:        C++ Client Library for PostgreSQL
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            http://pqxx.org/development/libpqxx/
 Source:         https://github.com/jtv/libpqxx/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  cmake >= 3.12
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?force_gcc_version}-c++ >= 8
 BuildRequires:  pkgconfig
-BuildRequires:  postgresql-server-devel
 BuildRequires:  python3
 BuildRequires:  pkgconfig(libpq)
 
@@ -61,6 +65,7 @@ hard to get with most other database interfaces.
 Summary:        C++ Client Library for PostgreSQL
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-%{abi_ver_major}_%{abi_ver_minor} = %{version}
+Requires:       gcc%{?force_gcc_version}-c++ >= 8
 
 %description devel
 This package contains header files needed for writing
@@ -71,28 +76,31 @@ C++ programs that connect to a PostgreSQL database.
 
 %build
 chmod 0644 COPYING
-sed -i "s|env python|python3|g" tools/splitconfig
-sed -i "s|env python|python3|g" tools/template2mak.py
-%configure \
-  --enable-shared \
-  --disable-static \
-  --disable-documentation
-%make_build
+%if 0%{?force_gcc_version}
+export CC="gcc-%{?force_gcc_version}"
+export CXX="g++-%{?force_gcc_version}"
+%endif
+%cmake \
+	-D BUILD_DOC=OFF \
+	-D BUILD_SHARED_LIBS=ON \
+	-D INSTALL_TEST=OFF \
+	-D SKIP_BUILD_TEST=ON
+%cmake_build
 
 %install
-%make_install
-rm %{buildroot}%{_libdir}/%{name}.la
+%cmake_install
 
-%post   %{abi_ver_major}_%{abi_ver_minor} -p /sbin/ldconfig
-%postun %{abi_ver_major}_%{abi_ver_minor} -p /sbin/ldconfig
+%ldconfig_scriptlets %{abi_ver_major}_%{abi_ver_minor}
 
 %files %{abi_ver_major}_%{abi_ver_minor}
 %license COPYING
-%doc AUTHORS NEWS README.md README-UPGRADE
+%doc AUTHORS NEWS README.md
 %{_libdir}/%{name}-%{abi_ver_major}.%{abi_ver_minor}.so
 
 %files devel
+%{_docdir}/libpqxx/
 %{_libdir}/pkgconfig/libpqxx.pc
+%{_libdir}/cmake/libpqxx/
 %{_libdir}/%{name}.so
 %{_includedir}/pqxx/
 
