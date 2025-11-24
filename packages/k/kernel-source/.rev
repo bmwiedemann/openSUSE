@@ -7240,4 +7240,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.17.8 &amp; do NOT use efidrm on x86_64 yet; bugs: bsc#1012628 bsc#1240624 bsc#1251930 bsc#1253721</comment>
     <requestid>1318582</requestid>
   </revision>
+  <revision rev="811" vrev="2">
+    <srcmd5>0f9a71d4301d5e53d7357e3437529452</srcmd5>
+    <version>6.17.8</version>
+    <time>1763989534</time>
+    <user>anag_factory</user>
+    <comment>Enable efidrm and vesadrm on x86_64. It needs to be coupled with sr#1318889; bugs: bsc#1240624 bsc#1253721</comment>
+    <requestid>1318890</requestid>
+  </revision>
 </revisionlist>

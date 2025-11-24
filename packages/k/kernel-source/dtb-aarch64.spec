@@ -27,7 +27,7 @@
 Name:           dtb-aarch64
 Version:        6.17.8
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g0a31dc3
+Release:        <RELEASE>.g5d803de
 %else
 Release:        0
 %endif
