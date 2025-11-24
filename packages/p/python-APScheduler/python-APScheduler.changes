@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 21 09:53:15 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.11.1
+  * Fixed scheduler.shutdown() not raising SchedulerNotRunning (or raising
+    the wrong exception) for asynchronous schedulers when the scheduler is
+    in fact not running
+  * Fixed CronTrigger sticking on a folded datetime during the fall-back
+    DST transition (#1021).
+
+-------------------------------------------------------------------
 Thu Apr 10 03:43:18 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Actually drop {Build,}Requires on six.
