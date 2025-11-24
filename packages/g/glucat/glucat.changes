@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 17 16:41:11 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add BuildRequires: tex(xltabular.sty), tex(tabularray.sty) to
+  fix documentation builds.
+- Make -devel and -doc packages noarch.
+
+-------------------------------------------------------------------
 Thu Mar 13 08:37:26 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.13.0:

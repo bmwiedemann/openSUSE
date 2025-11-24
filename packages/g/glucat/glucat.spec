@@ -1,7 +1,7 @@
 #
 # spec file for package glucat
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -108,6 +108,7 @@ BuildRequires:  tex(rerunfilecheck.sty)
 BuildRequires:  tex(sectsty.sty)
 BuildRequires:  tex(stackengine.sty)
 BuildRequires:  tex(tabu.sty)
+BuildRequires:  tex(tabularray.sty)
 BuildRequires:  tex(tocloft.sty)
 BuildRequires:  tex(ulem.sty)
 BuildRequires:  tex(uniquecounter.sty)
@@ -116,6 +117,7 @@ BuildRequires:  tex(varwidth.sty)
 BuildRequires:  tex(wasysym.sty)
 BuildRequires:  tex(xcolor.sty)
 BuildRequires:  tex(xkeyval.sty)
+BuildRequires:  tex(xltabular.sty)
 BuildRequires:  tex(xtab.sty)
 %endif
 %endif
@@ -131,6 +133,7 @@ up to a maximum number of dimensions.
 Summary:        Library of C++ templates implementing universal Clifford algebras
 Group:          Development/Libraries/C and C++
 Recommends:     %{name}-doc = %{version}
+BuildArch:      noarch
 
 %description -n %{pname}-devel
 GluCat is a library of template classes which model the universal
@@ -145,6 +148,7 @@ applications using the glucat library.
 %package -n %{pname}-doc
 Summary:        Documentation for %{name}
 Group:          Documentation/HTML
+BuildArch:      noarch
 
 %description -n %{pname}-doc
 GluCat is a library of template classes which model the universal
