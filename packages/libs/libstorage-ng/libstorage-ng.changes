@@ -1,4 +1,13 @@
 --------------------------------------------------------------------
+Fri Nov 21 15:22:53 UTC 2025 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1042
+- added bcachefs to used features names
+- added testcase
+- fixed comment
+- 4.5.279
+
+--------------------------------------------------------------------
 Wed Nov 19 09:54:22 UTC 2025 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#1041
