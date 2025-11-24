@@ -75,7 +75,6 @@ BuildRequires:	pkgconfig(libv3270) >= 5.5.0
 %if 0%{?suse_version}
 
 BuildRequires:	appstream-glib
-BuildRequires:	update-desktop-files
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(libv3270) >= 5.5.0

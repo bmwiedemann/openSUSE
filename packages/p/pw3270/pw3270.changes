@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 22 21:23:40 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove unused BuildRequires: update-desktop-files.
+
+-------------------------------------------------------------------
 Thu Feb 27 16:33:42 UTC 2025 - Perry Werneck <perry.werneck@gmail.com>
 
 - Removing fixed meson version requirement. 
