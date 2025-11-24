@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Nov 21 06:20:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.13:
+  * What's Changed
+    - Mention PEM support for client certificates by @ijrsvt in
+      #717
+    - added winget publish actions by @weinong in #718
+    - Fix PoP token keychain storage conflict by @fangluguomsft in
+      #723
+    - docs(installation): add alternative mise installation method
+      by @jylenhof in #724
+  * Maintenance
+    - Bump Go to 1.24.9 to address stdlib CVEs by @Copilot in #726
+    - Bump golang.org/x/crypto from 0.40.0 to 0.45.0 by
+      @dependabot[bot] in #727
+
+-------------------------------------------------------------------
 Fri Oct 17 06:22:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.12 (0.2.11 was not released):
