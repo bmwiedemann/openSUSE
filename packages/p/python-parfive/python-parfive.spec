@@ -1,7 +1,7 @@
 #
 # spec file for package python-parfive
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        A HTTP and FTP parallel file downloader
 License:        MIT
 URL:            https://parfive.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/p/parfive/parfive-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Do not use return inside a finally block
+Patch0:         support-python314.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}

@@ -88,4 +88,13 @@
     <comment></comment>
     <requestid>1277650</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>c224a69e40348ff0f5c2e0e9d783f332</srcmd5>
+    <version>2.2.0</version>
+    <time>1763990031</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-python314.patch:
+  * Do not use return inside a finally block.</comment>
+    <requestid>1319607</requestid>
+  </revision>
 </revisionlist>

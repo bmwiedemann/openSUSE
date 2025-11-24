@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 24 01:39:45 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python314.patch:
+  * Do not use return inside a finally block.
+
+-------------------------------------------------------------------
 Thu May 15 05:20:40 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.2.0
