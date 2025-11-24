@@ -321,4 +321,16 @@ This needs to go into openSUSE:Factory:Staging:adi:49 with the other jupyter sub
   * nothing relevant to upstream</comment>
     <requestid>1224679</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>4d06672d7e040fa309b7135444de38d9</srcmd5>
+    <version>5.7.0</version>
+    <time>1763989738</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.7.0
+  * Zoom in/out with Ctrl + mouse wheel.
+  * Add support for IPython 9 theme and colors handling.
+  * Drop support for Python 3.8.
+- Use Qt6 for tests</comment>
+    <requestid>1319158</requestid>
+  </revision>
 </revisionlist>

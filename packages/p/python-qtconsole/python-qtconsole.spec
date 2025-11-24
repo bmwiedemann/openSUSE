@@ -1,7 +1,7 @@
 #
 # spec file for package python-qtconsole
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,14 +22,14 @@
 %bcond_with libalternatives
 %endif
 Name:           python-qtconsole
-Version:        5.6.1
+Version:        5.7.0
 Release:        0
 Summary:        Jupyter Qt console
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter/qtconsole
 Source0:        https://files.pythonhosted.org/packages/source/q/qtconsole/qtconsole-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module jupyter-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -45,6 +45,7 @@ Requires:       (python-qt5 or python-pyside2 or python-PyQt6 or python-pyside6)
 Requires:       python-Pygments
 Requires:       python-QtPy >= 2.4.0
 Requires:       python-ipykernel >= 4.1
+Requires:       python-ipython_pygments_lexers
 Requires:       python-jupyter-client >= 4.1
 Requires:       python-jupyter-core
 Requires:       python-packaging
@@ -67,15 +68,17 @@ Requires(postun): update-alternatives
 %endif
 # SECTION test requirements
 BuildRequires:  %{python_module Pygments}
+BuildRequires:  %{python_module PyQt6}
 BuildRequires:  %{python_module QtPy >= 2.4.0}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module ipykernel >= 4.1}
+BuildRequires:  %{python_module ipython_pygments_lexers}
 BuildRequires:  %{python_module jupyter-client >= 4.1}
 BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-qt}
 BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module traitlets}
 # /SECTION
 %python_subpackages
