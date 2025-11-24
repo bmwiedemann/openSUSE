@@ -1,7 +1,7 @@
 #
 # spec file for package python-plumbum
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-plumbum
-Version:        1.8.2
+Version:        1.10.0
 Release:        0
 Summary:        Shell combinators library
 License:        MIT
 URL:            https://github.com/tomerfiliba/plumbum
 Source:         https://github.com/tomerfiliba/plumbum/archive/v%{version}.tar.gz#/plumbum-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Use python3.<minor version> when running two test scripts
+Patch0:         use-python3-not-python.patch
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -52,8 +53,7 @@ manipulation, and a programmatic Command-Line Interface (CLI)
 application toolkit.
 
 %prep
-%setup -q -n plumbum-%{version}
-sed -i '/addopts/d' setup.cfg
+%autosetup -p1 -n plumbum-%{version}
 
 %build
 export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
@@ -74,6 +74,6 @@ donttest="test_iter_lines_line_timeout"
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/plumbum
-%{python_sitelib}/plumbum-%{version}*-info
+%{python_sitelib}/plumbum-%{version}.dist-info
 
 %changelog

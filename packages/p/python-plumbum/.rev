@@ -90,4 +90,33 @@
   * Fix for StdinDataRedirection and modifiers</comment>
     <requestid>1138506</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8f6786fa2ce82ca32bd9054fb36f7413</srcmd5>
+    <version>1.10.0</version>
+    <time>1763990033</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.10.0:
+  * Add Python 3.14, drop Python 3.8
+  * CLI: Fix flag invoke behavior to respect False values
+  * CLI: Allow subapplication registration under multiple subcommand names
+  * CLI: Better support for future annotations on 3.9
+  * CLI: Termsize determination fixed on Linux Python 3.14, broken due to
+    wrong struct size
+  * Drop some unused variables
+  * Simpler urljoin
+  * Use SPDX license identifier
+  * Drop Python &lt;3.8
+  * Add 3.13 testing and classifiers
+  * setuptools-less installs couldn't translate, add test
+  * Use importlib resources
+  * Replaced NotImplementedError by NotImplemented
+  * Fix StdinDataRedirection's formulate() method
+  * Missing non-zero return code from TEE'd pipe
+  * Fix stalling in Pipeline command
+  * Use high-speed method for C locale too
+  * Update index.rst - fix broken link for sh project
+- Add patch use-python3-not-python.patch:
+  * Use the correct interpreter under test when running two scripts.</comment>
+    <requestid>1319612</requestid>
+  </revision>
 </revisionlist>

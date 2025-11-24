@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Nov 24 03:05:12 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.10.0:
+  * Add Python 3.14, drop Python 3.8
+  * CLI: Fix flag invoke behavior to respect False values
+  * CLI: Allow subapplication registration under multiple subcommand names
+  * CLI: Better support for future annotations on 3.9
+  * CLI: Termsize determination fixed on Linux Python 3.14, broken due to
+    wrong struct size
+  * Drop some unused variables
+  * Simpler urljoin
+  * Use SPDX license identifier
+  * Drop Python <3.8
+  * Add 3.13 testing and classifiers
+  * setuptools-less installs couldn't translate, add test
+  * Use importlib resources
+  * Replaced NotImplementedError by NotImplemented
+  * Fix StdinDataRedirection's formulate() method
+  * Missing non-zero return code from TEE'd pipe
+  * Fix stalling in Pipeline command
+  * Use high-speed method for C locale too
+  * Update index.rst - fix broken link for sh project
+- Add patch use-python3-not-python.patch:
+  * Use the correct interpreter under test when running two scripts.
+
+-------------------------------------------------------------------
 Sat Jan 13 20:53:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.2:

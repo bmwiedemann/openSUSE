@@ -1,0 +1,30 @@
+Index: plumbum-1.10.0/tests/test_pipelines.py
+===================================================================
+--- plumbum-1.10.0.orig/tests/test_pipelines.py
++++ plumbum-1.10.0/tests/test_pipelines.py
+@@ -1,5 +1,7 @@
+ from __future__ import annotations
+ 
++import sys
++
+ import pytest
+ 
+ import plumbum
+@@ -57,7 +59,7 @@ for i in range(5000):
+     print(i)
+ """
+     )
+-    return plumbum.local["python"][generate]
++    return plumbum.local[f"python3.{sys.version_info.minor}"][generate]
+ 
+ 
+ @pytest.fixture
+@@ -72,7 +74,7 @@ for line in sys.stdin:
+     print(i)
+ """
+     )
+-    return plumbum.local["python"][process]
++    return plumbum.local[f"python3.{sys.version_info.minor}"][process]
+ 
+ 
+ def get_output_with_iter_lines(cmd: BaseCommand) -> tuple[list[str], list[str]]:
