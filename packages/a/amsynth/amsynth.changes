@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 22 21:15:43 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove unused BuildRequires: update-desktop-files.
+
+-------------------------------------------------------------------
 Wed Jul 17 06:38:35 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.13.4:
