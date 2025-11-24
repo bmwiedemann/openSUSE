@@ -226,4 +226,12 @@
     <comment>version bump (forwarded request 1289035 from DocB)</comment>
     <requestid>1289050</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>969607b1310def8dce9ca0c63007c00d</srcmd5>
+    <version>7.0.5</version>
+    <time>1763989868</time>
+    <user>anag_factory</user>
+    <comment>Security Release</comment>
+    <requestid>1319275</requestid>
+  </revision>
 </revisionlist>
