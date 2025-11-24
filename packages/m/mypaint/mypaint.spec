@@ -1,7 +1,7 @@
 #
 # spec file for package mypaint
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,6 @@ BuildRequires:  python3-numpy >= 1.5
 BuildRequires:  python3-numpy-devel
 BuildRequires:  python3-setuptools
 BuildRequires:  swig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(json)
