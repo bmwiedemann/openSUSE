@@ -119,4 +119,12 @@
     <comment>- build with fuse 3 (boo#1242079) (forwarded request 1274254 from AndreasStieger)</comment>
     <requestid>1274280</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>77359e0f4e98270ca2512cae4b501d5d</srcmd5>
+    <version>20251121</version>
+    <time>1763989707</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 20251121</comment>
+    <requestid>1319186</requestid>
+  </revision>
 </revisionlist>

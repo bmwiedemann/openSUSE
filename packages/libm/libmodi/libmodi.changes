@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 21 23:59:50 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20251121
+  * Changes for cygfuse, fuse3 and Dokan support
+
+-------------------------------------------------------------------
 Sun May  4 17:23:01 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - build with fuse 3 (boo#1242079)

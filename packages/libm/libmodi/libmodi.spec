@@ -1,7 +1,7 @@
 #
 # spec file for package libmodi
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 
 Name:           libmodi
 %define lname	libmodi1
-Version:        20240507
+Version:        20251121
 Release:        0
 Summary:        Library and tools to access the Mac OS disk image formats
 License:        LGPL-3.0-or-later
@@ -38,7 +38,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(fuse3)
 BuildRequires:  pkgconfig(libbfio) >= 20240414
-BuildRequires:  pkgconfig(libcaes) >= 20240413
+BuildRequires:  pkgconfig(libcaes) >= 20251121
 BuildRequires:  pkgconfig(libcdata) >= 20240414
 BuildRequires:  pkgconfig(libcdirectory) >= 20240414
 BuildRequires:  pkgconfig(libcerror) >= 20240413
