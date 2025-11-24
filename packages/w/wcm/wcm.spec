@@ -29,7 +29,6 @@ Source1:        https://github.com/WayfireWM/%{name}/releases/download/v%{versio
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  meson
-BuildRequires:  update-desktop-files
 BuildRequires:  wlroots-devel >= 0.19.0
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtkmm-3.0)
