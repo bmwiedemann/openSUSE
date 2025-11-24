@@ -8028,6 +8028,7 @@ unsorted:
   - gssntlmssp 
   - gssntlmssp-devel 
   - gssproxy 
+  - gst-siddecfp 
   - gst123 
   - gstreamer-32bit 
   - gstreamer-devel 
@@ -8676,6 +8677,7 @@ unsorted:
   - i2c-tools 
   - i2pd 
   - i3 
+  - i3-battery-popup 
   - i3-devel 
   - i3blocks 
   - i3lock 
@@ -11534,7 +11536,7 @@ unsorted:
   - libQuotient-qt6-devel 
   - libQuotientQt6-0_9 
   - libRecast1 
-  - libRivet-3_1_11 
+  - libRivet-4_1_2 
   - libSDL-1_2-0-32bit 
   - libSDL2-2_0-0-32bit 
   - libSDL2_Pango4 
@@ -11709,7 +11711,7 @@ unsorted:
   - libXxf86vm-devel 
   - libXxf86vm-devel-32bit 
   - libXxf86vm1-32bit 
-  - libYODA-1_9_11 
+  - libYODA-2_1_2 
   - libZXing3-32bit 
   - liba2ps1 
   - liba52-0-32bit 
@@ -13391,7 +13393,7 @@ unsorted:
   - libgaminggear0 
   - libgaminggearfx0 
   - libgaminggearwidget0 
-  - libgammaray-qt6-3_3_0 
+  - libgammaray-qt6-3_3_1 
   - libgap10 
   - libgarcon-branding-upstream 
   - libgarcon-devel 
@@ -15433,7 +15435,7 @@ unsorted:
   - libpq5-32bit 
   - libpqos-devel 
   - libpqos6 
-  - libpqxx-6_4 
+  - libpqxx-7_10 
   - libpqxx-devel 
   - libpresage-devel 
   - libpresage-doc 
@@ -15517,7 +15519,9 @@ unsorted:
   - libpxbackend-1_0-mini 
   - libpystring0_0 
   - libpythia8 
+  - libpythia8hepmc3 
   - libpythia8lhapdf6 
+  - libpythia8rivet 
   - libpython3_10-1_0 
   - libpython3_10-1_0-32bit 
   - libpython3_11-1_0-32bit 
@@ -25095,6 +25099,7 @@ unsorted:
   - python311-csvkit 
   - python311-ctranslate2 
   - python311-ctypesgen 
+  - python311-cucumber-expressions 
   - python311-cucumber-tag-expressions 
   - python311-curlylint 
   - python311-curtsies 
@@ -25351,7 +25356,6 @@ unsorted:
   - python311-efl 
   - python311-elastic-transport 
   - python311-elasticsearch 
-  - python311-elasticsearch-dsl 
   - python311-elementpath 
   - python311-email-reply-parser 
   - python311-email-validator 
@@ -25702,6 +25706,8 @@ unsorted:
   - python311-ifaddr 
   - python311-ifconfig-parser 
   - python311-igwn-auth-utils 
+  - python311-igwn-ligolw 
+  - python311-igwn-ligolw-devel 
   - python311-igwn-segments 
   - python311-ijson 
   - python311-imagecodecs 
@@ -26951,6 +26957,7 @@ unsorted:
   - python311-python-louvain 
   - python311-python-lsp-black 
   - python311-python-lsp-jsonrpc 
+  - python311-python-lsp-ruff 
   - python311-python-lsp-server 
   - python311-python-lsp-server-all 
   - python311-python-lzo 
@@ -28895,6 +28902,7 @@ unsorted:
   - python312-csvkit 
   - python312-ctranslate2 
   - python312-ctypesgen 
+  - python312-cucumber-expressions 
   - python312-cucumber-tag-expressions 
   - python312-curlylint 
   - python312-curses 
@@ -29155,7 +29163,6 @@ unsorted:
   - python312-efl 
   - python312-elastic-transport 
   - python312-elasticsearch 
-  - python312-elasticsearch-dsl 
   - python312-elementpath 
   - python312-email-reply-parser 
   - python312-email-validator 
@@ -29519,6 +29526,8 @@ unsorted:
   - python312-ifaddr 
   - python312-ifconfig-parser 
   - python312-igwn-auth-utils 
+  - python312-igwn-ligolw 
+  - python312-igwn-ligolw-devel 
   - python312-igwn-segments 
   - python312-ijson 
   - python312-imagecodecs 
@@ -30796,6 +30805,7 @@ unsorted:
   - python312-python-louvain 
   - python312-python-lsp-black 
   - python312-python-lsp-jsonrpc 
+  - python312-python-lsp-ruff 
   - python312-python-lsp-server 
   - python312-python-lsp-server-all 
   - python312-python-lzo 
@@ -32737,6 +32747,7 @@ unsorted:
   - python313-csvkit 
   - python313-ctranslate2 
   - python313-ctypesgen 
+  - python313-cucumber-expressions 
   - python313-cucumber-tag-expressions 
   - python313-curlylint 
   - python313-curtsies 
@@ -32991,7 +33002,6 @@ unsorted:
   - python313-efl 
   - python313-elastic-transport 
   - python313-elasticsearch 
-  - python313-elasticsearch-dsl 
   - python313-elementpath 
   - python313-email-reply-parser 
   - python313-email-validator 
@@ -33349,6 +33359,8 @@ unsorted:
   - python313-ifaddr 
   - python313-ifconfig-parser 
   - python313-igwn-auth-utils 
+  - python313-igwn-ligolw 
+  - python313-igwn-ligolw-devel 
   - python313-igwn-segments 
   - python313-ijson 
   - python313-imagecodecs 
@@ -34609,6 +34621,7 @@ unsorted:
   - python313-python-louvain 
   - python313-python-lsp-black 
   - python313-python-lsp-jsonrpc 
+  - python313-python-lsp-ruff 
   - python313-python-lsp-server 
   - python313-python-lsp-server-all 
   - python313-python-lzo 
@@ -36504,7 +36517,6 @@ unsorted:
   - rke 
   - rke2 
   - rke2-1.29 
-  - rke2-1.30 
   - rke2-1.31 
   - rke2-1.32 
   - rke2-1.33 
