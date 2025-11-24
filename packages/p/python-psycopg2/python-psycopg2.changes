@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 20 15:36:15 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.9.11
+  * Add support for Python 3.14.
+  * Avoid a segfault passing more arguments than placeholders if
+    Python is built with assertions enabled (ticket #1791).
+  * Add riscv64 platform binary packages (ticket 1813).
+  * `~psycopg2.errorcodes` map and `~psycopg2.errors` classes
+    updated to PostgreSQL 18.
+  * Drop support for Python 3.8.
+- Update BuildRequires from setup.py
+
+-------------------------------------------------------------------
 Thu Apr 10 12:25:48 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.9.10

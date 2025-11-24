@@ -469,4 +469,12 @@ See the COPYING file. There are GPL-2.0+ (with openssl linking exceptions for pg
     <comment></comment>
     <requestid>1268414</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>f79a5670773d348307a354b8dd20ee8d</srcmd5>
+    <version>2.9.11</version>
+    <time>1764001059</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1319752</requestid>
+  </revision>
 </revisionlist>
