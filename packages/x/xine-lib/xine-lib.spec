@@ -66,7 +66,6 @@ BuildRequires:  readline-devel
 %else
 BuildRequires:  pkgconfig(readline)
 %endif
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(smbclient)
 BuildRequires:  pkgconfig(theora)
 BuildRequires:  pkgconfig(vorbis)
