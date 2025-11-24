@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-elastic-transport
-Version:        8.17.1
+Version:        9.2.0
 Release:        0
 Summary:        Transport classes and utilities shared among Python Elastic client libraries
 License:        Apache-2.0
 URL:            https://github.com/elastic/elastic-transport-python
 Source:         https://github.com/elastic/elastic-transport-python/archive/refs/tags/v%{version}.tar.gz#/elastic-transport-python-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/elastic/elastic-transport-python/pull/257 fix behaviour with pytest-asyncio 1.2.0
-Patch0:         fixture-scope.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -33,21 +31,22 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-certifi
+Requires:       python-sniffio
 Requires:       python-urllib3
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module httpx}
-BuildRequires:  %{python_module opentelemetry-api}
 BuildRequires:  %{python_module opentelemetry-sdk}
 BuildRequires:  %{python_module orjson}
 BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-httpbin}
 BuildRequires:  %{python_module pytest-httpserver}
-BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest-trio}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module respx}
+BuildRequires:  %{python_module sniffio}
 BuildRequires:  %{python_module trustme}
 BuildRequires:  %{python_module urllib3}
 # /SECTION
@@ -72,14 +71,6 @@ sed -i '/addopts/d' setup.cfg
 donttest="(test_http_aiohttp and not TestAiohttpHttpNode)"
 donttest="$donttest or test_tls_versions"
 donttest="$donttest or test_assert_fingerprint_in_cert_chain"
-donttest="$donttest or (test_ssl_assert_fingerprint and httpx)"
-# Fails in 3.12 with DeprecationWarning
-donttest="$donttest or test_simple_request"
-# Mocking error with httpx 0.28 / patched respx
-donttest="$donttest or (TestHttpxAsyncNode and not Creation)"
-# Flaky test
-donttest="$donttest or test_decimal_serialization[OrjsonSerializer]"
-donttest="$donttest or test_sniff_before_requests or test_sniffed_nodes_added_to_pool or test_sniff_on_node_failure"
 %pytest -W ignore::DeprecationWarning -k "not ($donttest)"
 
 %files %{python_files}
