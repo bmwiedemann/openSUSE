@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov 21 06:15:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.34.0:
+  * build(deps): bump golang.org/x/crypto from 0.44.0 to 0.45.0
+    (#2238)
+  * build(deps): bump the gomod group with 3 updates (#2235)
+  * feat(sca): add isInDir tests ; fix edge case with recursive
+    paths (#2236)
+  * feat: allow recursive directories in SCA (#2233)
+
+-------------------------------------------------------------------
 Mon Nov 17 06:17:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.33.2:
