@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Fri Nov 21 06:31:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.171:
+  * General
+    - delete hacktoberfest contributions folder @Darshan174
+      (#16406)
+    - Delete server/meshmodel/kubernetes/v1.34.0-alpha.2 directory
+      @leecalcote (#16484)
+    - Delete server/meshmodel/kubernetes/v1.34.0-rc.2 directory
+      @leecalcote (#16483)
+    - Delete server/meshmodel/kubernetes/v1.34.0-alpha.3 directory
+      @leecalcote (#16485)
+    - Delete server/meshmodel/kubernetes/v1.34.0-alpha.1/v1.0.0
+      directory @leecalcote (#16482)
+    - remove kubernetes version hardcoding @aabidsofi19 (#16397)
+    - bump meshkit @aabidsofi19 (#16481)
+  * Maintenance
+    - Bump golang.org/x/crypto from 0.43.0 to 0.45.0 @dependabot
+      (#16463)
+- update to 0.8.170:
+  * General
+    - No changes
+- update to 0.8.169:
+  * General
+    - feat: import ms-catalogs-worker Helm chart as Meshery design
+      (#16085) @SujalTripathi (#16410)
+    - optimize relationship evaluation for views @aabidsofi19
+      (#16442)
+    - [Server] Handle empty meshsyncDeploymentMode in event
+      description @copilot-swe-agent (#16444)
+    - Chore: enhance meshsync event description @leecalcote
+      (#16443)
+  * Maintenance
+    - [Docs] Enhance documentation issue template @leecalcote
+      (#16447)
+    - Bump js-yaml from 4.1.0 to 4.1.1 in /ui @dependabot (#16422)
+  * Documentation
+    - [server] Add SKIP_DOWNLOAD_EXTENSIONS runtime configuration
+      flag @copilot-swe-agent (#16455)
+    - Update contributing guidelines with repository links
+      @leecalcote (#16452)
+- update to 0.8.168:
+  * General
+    - Chore: Clear out old model versions @leecalcote (#16440)
+    - Chore: Clear out old model versions @miacycle (#16439)
+    - Bump js-yaml in /install/docker-extension/ui @dependabot
+      (#16438)
+  * Maintenance
+    - [CI] Automate meeting minutes archival from Discourse forum
+      @copilot-swe-agent (#16433)
+    - Bump js-yaml from 3.14.1 to 3.14.2 in /provider-ui
+      @dependabot (#16434)
+  * Documentation
+    - Enhance Meshery UI extensibility documentation @leecalcote
+      (#16437)
+    - [Docs] Fix spelling errors in documentation @SaurabhCodesAI
+      (#16429)
+- update to 0.8.167:
+  * General
+    - No changes
+- update to 0.8.166:
+  * General
+    - No changes
+- update to 0.8.165:
+General
+    bump packages @aabidsofi19 (#16431)
+- update to 0.8.164:
+General
+    bump meshkit @aabidsofi19 (#16430)
+- update to 0.8.163:
+  * General
+    - No changes
+- update to 0.8.162:
+  * bump schemas by @aabidsofi19 in #16426
+  * Change GITHUB_TOKEN secret for release drafter by @aabidsofi19
+    in #16427
+- update to 0.8.161:
+  * General
+    - add kubecon crds @aabidsofi19 (#16419)
+- update to 0.8.160:
+  * General
+    - No changes
+- update to 0.8.159:
+  * General
+    - fix ref url encoding and decoding @aabidsofi19 (#16408)
+- update to 0.8.158:
+  * General
+    - Fix unable to redirect to source after login @aabidsofi19
+      (#16407)
+- update to 0.8.157:
+  * General
+    - Delete edge relationships for k8s namespace component
+      @Darshan174 (#16404)
+- update to 0.8.156:
+  * General
+    - No changes
+- update to 0.8.155:
+  * General
+    - No changes
+- update to 0.8.154:
+  * General
+    - bump meshkit @aabidsofi19 (#16403)
+    - Add LoxiLB Multi-Cloud VPN & Connectivity architecture design
+      @rishiraj38 (#16376)
+
+-------------------------------------------------------------------
 Fri Nov  7 13:27:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.153:
