@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov 22 05:38:10 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1763743683.1da97aa2:
+  * Optimize Job Group dropdown database query
+  * Split dependency handling out of create_from_settings
+  * Give jobs with high MAX_JOB_TIME a priority malus
+  * Make the number of builds per group on the front page configurable
+  * docs: Feature auto-generated deepwiki less prominently
+  * apparmor: Additional perms for tests in osado to run
+
+-------------------------------------------------------------------
 Fri Nov 14 22:09:18 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1763153079.b36ac754:
