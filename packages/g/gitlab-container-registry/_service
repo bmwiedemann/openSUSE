@@ -3,7 +3,7 @@
     <param name="url">https://gitlab.com/gitlab-org/container-registry.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v4.31.0-gitlab</param>
+    <param name="revision">v4.31.1-gitlab</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)-gitlab</param>
     <param name="changesgenerate">enable</param>

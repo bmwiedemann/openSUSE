@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov 22 07:00:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.31.1:
+  * Bug Fixes
+    - fix(registry): disable REGISTRY_FF_ENFORCE_LOCKFILES by
+      default
+
+-------------------------------------------------------------------
 Thu Nov 06 06:20:37 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.31.0:
