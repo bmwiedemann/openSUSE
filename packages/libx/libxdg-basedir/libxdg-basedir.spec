@@ -2,7 +2,7 @@
 #
 # spec file for package libxdg-basedir
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -38,7 +38,6 @@ BuildRequires:  graphviz
 BuildRequires:  libtool
 BuildRequires:  make
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 
 %description
 The XDG Base Directory Specification defines where should user files be looked

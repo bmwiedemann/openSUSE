@@ -66,4 +66,14 @@ Thanks</comment>
     <comment></comment>
     <requestid>977817</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>f1cd64fa7cd1072e3f988299bfcd6f40</srcmd5>
+    <version>1.2.3</version>
+    <time>1763990023</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1319397 from sbrabec
+
+- Remove unused BuildRequires: update-desktop-files.</comment>
+    <requestid>1319601</requestid>
+  </revision>
 </revisionlist>
