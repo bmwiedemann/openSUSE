@@ -1,7 +1,7 @@
 #
 # spec file for package coturn
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %endif
 %bcond_without  apparmor
 Name:           coturn
-Version:        4.6.3
+Version:        4.7.0
 Release:        0
 Summary:        TURN and STUN server for VoIP
 License:        BSD-3-Clause

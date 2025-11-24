@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Nov 23 09:17:14 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.7.0
+  * Breaking changes in order to get to sane defaults for improved
+    security by default
+    + Support for openssl 1.1.1 and 3.x only.
+    + Cleanup deprecated options - if your scripts have them
+      turnserver will fail to start.
+    + Reverse SOFTWARE_ATTRIBUTE_OPT to avoid inverse logic - now
+      need to explicitly enable it.
+    + Deprecate response-origin-only-with-rfc5780.
+    + Invert no-stun-backward-compatibility to be default on.
+  * TLSv1 and TLSv1_1 are now optional (no need to turn them off).
+  * Minor bug fixes and regressions.
+  * Improved support for modern version of prometheus.
+
+-------------------------------------------------------------------
 Mon May 12 13:54:59 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Upgrade to coturn 4.6.3
