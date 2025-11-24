@@ -640,4 +640,16 @@
     <comment></comment>
     <requestid>1317732</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>8884bf12d750c8f65a2c65028632574d</srcmd5>
+    <version>1.93.0</version>
+    <time>1763989750</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.93.0:
+  * [Servers] Added Comix (EN)
+  * [Servers] Added Rimu Scans (FR)
+  * [Servers] MangaDex: Added Data Saver Mode parameter
+  * [L10n] Updated French, German, Russian and Ukrainian translations (forwarded request 1318739 from rrahl0)</comment>
+    <requestid>1319172</requestid>
+  </revision>
 </revisionlist>
