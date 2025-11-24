@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov 22 08:23:23 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20251121:
+  * ha1g: Re-add scan/alarm/dtmf lists
+  * ha1g: Check firmware compatibility during clone
+  * retevis.py: add new ident fingerprint
+  * dr135: Extend range to 174MHz
+
+-------------------------------------------------------------------
 Sat Nov 08 12:31:10 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20251106:
