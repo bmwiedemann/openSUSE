@@ -1,7 +1,7 @@
 #
 # spec file for package libcaes
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 
 %define lname	libcaes1
 Name:           libcaes
-Version:        20240413
+Version:        20251121
 Release:        0
 Summary:        Library for AES encryption
 License:        LGPL-3.0-or-later
