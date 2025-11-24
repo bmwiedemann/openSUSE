@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Nov 20 16:00:30 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.2.1
+  * Add extra guard to prevent the states from being exhausted during backjumping.
+  * Change ``Mapping`` to ``dict`` in resolution ``Result`` type annotations.
+- from version 1.2.0
+  * Drop support for EOL Python versions 3.7 and 3.8.
+  * Perform optimistic backjumping until reaching a cutoff and then
+    fallback to regular backjumping.
+  * Include tests in sdist.
+  * Drop `wheel` from direct build dependencies.
+  * Display PyPI URL on GH UI when releasing from GHA.
+  * Configure `setuptools` to produce `py3`-tagged wheels.
+  * Fix PyPI project page link on README.rst.
+
+-------------------------------------------------------------------
 Wed Nov 20 17:20:10 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.0:
