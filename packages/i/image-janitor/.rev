@@ -7,4 +7,12 @@
     <comment>tool to remove unused firmware and kernel modules for Agama live image and DMS</comment>
     <requestid>1312433</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f448ac177fe49a51f18217ff55c293a6</srcmd5>
+    <version>0.2.0</version>
+    <time>1763996004</time>
+    <user>anag_factory</user>
+    <comment>- Fix git url in _service</comment>
+    <requestid>1319740</requestid>
+  </revision>
 </revisionlist>

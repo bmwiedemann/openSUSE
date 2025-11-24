@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 21 07:44:28 UTC 2025 - Frederic Crozat <fcrozat@suse.com>
+
+- Fix git url in _service        
+
+-------------------------------------------------------------------
 Fri Oct 17 12:50:45 UTC 2025 - Frederic Crozat <fcrozat@suse.com>
 
 - Fix packaging (add doc, license)
