@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Nov 22 05:50:50 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1763561851.03e049d:
+  * Avoid `Can't exec "ffmpeg"` if ffmpeg isn't present
+  * Fix syntax errors in nft due to multiple interfaces in $ethernet
+  * README: Feature auto-generated deepwiki less prominently
+  * Install NetworkManager-ovs in os-autoinst-setup-multi-machine
+  * Add disconnect_usb (qemu only, for now)
+
+-------------------------------------------------------------------
 Fri Nov 14 00:25:41 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1763048144.30f43a0:
