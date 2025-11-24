@@ -15,9 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%{?sle15_python_module_pythons}
 Name:           python-param
-Version:        2.2.1
+Version:        2.3.0
 Release:        0
 Summary:        Declarative Python programming using Parameters
 License:        BSD-3-Clause
