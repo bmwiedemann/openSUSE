@@ -1,0 +1,17 @@
+---
+ m4/acinclude.m4 |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: SHERPA-MC-2.2.16/m4/acinclude.m4
+===================================================================
+--- SHERPA-MC-2.2.16.orig/m4/acinclude.m4
++++ SHERPA-MC-2.2.16/m4/acinclude.m4
+@@ -517,7 +517,7 @@ AC_DEFUN([SHERPA_SETUP_CONFIGURE_OPTIONS
+             fi;;
+       esac;
+       if test -x "$CONDITIONAL_RIVETDIR/bin/rivet-config"; then
+-        CONDITIONAL_RIVETLDADD="$($CONDITIONAL_RIVETDIR/bin/rivet-config --ldflags) $($CONDITIONAL_RIVETDIR/bin/rivet-config --ldadd)";
++        CONDITIONAL_RIVETLDADD="$($CONDITIONAL_RIVETDIR/bin/rivet-config --libs)";
+         CONDITIONAL_RIVETCPPFLAGS="$($CONDITIONAL_RIVETDIR/bin/rivet-config --cppflags)";
+         AC_MSG_RESULT([${CONDITIONAL_RIVETDIR}]);
+         rivetversion="$($CONDITIONAL_RIVETDIR/bin/rivet-config --version)"

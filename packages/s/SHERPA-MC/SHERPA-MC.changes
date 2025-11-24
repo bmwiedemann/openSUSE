@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Nov 16 18:18:24 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.2.16:
+  * Fix: reverts a change introduced in 2.2.13 which affects
+    MC@NLO/MEPS@NLO cross sections when using an Enhance_Factor
+    that is not equal to the default value of 1
+  * Fix C++20 compilation error (also note that C++11 is now
+    required explicitly).
+  * Fix errors on some systems when using Sherpa's Python
+    extensions.
+  * Enable Rivet 4 support.
+  * Update MCFM interface documentation.
+  * Remove obsolete Order_EW setting from some examples.
+- Drop SHERPA-MC-ignore-distutils-deprecation-warning.patch: fixed
+  upstream.
+- Add SHERPA-MC-fix-rivet-libs-check.patch: fix configure check
+  for rivet >= 4.0
+
+-------------------------------------------------------------------
 Mon Mar 24 04:23:58 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add BuildRequires on python3-setuptools, required for Python 3.12+.

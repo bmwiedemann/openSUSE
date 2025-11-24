@@ -1,7 +1,7 @@
 #
 # spec file for package SHERPA-MC
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define _lto_cflags %{nil}
 
 Name:           SHERPA-MC
-Version:        2.2.15
+Version:        2.2.16
 Release:        0
 Summary:        MC event generator for Simulation of High-Energy Reactions of PArticles
 License:        GPL-2.0-or-later AND GPL-3.0-only
@@ -30,13 +30,12 @@ URL:            https://sherpa-team.gitlab.io/
 Source:         https://www.hepforge.org/downloads/sherpa/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM SHERPA-MC-no-return-in-non-void-function.patch badshah400@gmail.com -- Fix a non-void (bool) function that was not returning any data to return "true"
 Patch0:         SHERPA-MC-no-return-in-non-void-function.patch
-# PATCH-FIX-UPSTREAM SHERPA-MC-ignore-distutils-deprecation-warning.patch badshah400@gmail.com -- Disable deprecation warning when importing distutils from python3.10, so that autotools can still work
-Patch1:         SHERPA-MC-ignore-distutils-deprecation-warning.patch
 # PATCH-FIX-UPSTREAM SHERPA-MC-swig-noruntime.patch badshah400@gmail.com -- Drop `-noruntime` from swig command line
 Patch2:         SHERPA-MC-swig-noruntime.patch
+# PATCH-FIX-OPENSUSE SHERPA-MC-fix-rivet-libs-check.patch badshah400@gmail.com -- Fix configure check for rivet >= 4.0
+Patch3:         SHERPA-MC-fix-rivet-libs-check.patch
 BuildRequires:  HepMC-devel >= 3.0
 BuildRequires:  LHAPDF-devel
-BuildRequires:  Rivet-devel
 BuildRequires:  fastjet-contrib-devel
 BuildRequires:  fastjet-devel
 BuildRequires:  fastjet-plugin-siscone-devel
@@ -52,6 +51,7 @@ BuildRequires:  python3-setuptools
 BuildRequires:  sqlite3-devel
 BuildRequires:  swig
 BuildRequires:  pkgconfig(gsl)
+BuildRequires:  pkgconfig(rivet)
 BuildRequires:  pkgconfig(yaml-cpp)
 BuildRequires:  pkgconfig(zlib)
 
@@ -156,14 +156,14 @@ autoreconf -fvi
   --enable-ufo                 \
   --enable-pyext               \
   --enable-analysis            \
-  --enable-multithread         \
   --enable-gzip                \
   --disable-hepmc3root         \
   --enable-hepmc3=%{_prefix}   \
   --enable-fastjet=%{_prefix}  \
   --enable-lhapdf=%{_prefix}   \
+  --enable-pythia=%{_prefix}   \
   --enable-rivet=%{_prefix}    \
-  --enable-pythia=%{_prefix}
+  %{nil}
 
 %make_build
 
@@ -178,9 +178,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %fdupes %{buildroot}%{_datadir}/%{name}/
 %fdupes %{buildroot}%{python3_sitelib}/
 
-%post -n %{soname} -p /sbin/ldconfig
-
-%postun -n %{soname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{soname}
 
 %files -n %{soname}
 %dir %{_libdir}/%{name}
