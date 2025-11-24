@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Nov 21 09:48:35 UTC 2025 - ecsos <ecsos@opensuse.org> - 8.15.0
+
+- Update to 8.15.0
+  * New Features
+    - E-book viewer: Highlights panel: Show the date for highlights
+      in the tooltip when hovering over a highlight
+    - Comments editor: When changing case preserve as much text
+      formatting as feasible
+    - Comments editor: Add shortcuts for case change operations.
+      Select some text, right click and see the case change menu
+      for the shortcuts
+  * Bug Fixes
+    - Editing book list: Be robust against the book list changing
+      in the background when a book is auto added or similar while
+      a cell is being edited
+    - Edit book: Fix a memory leak in the HTML syntax highlighter
+    - calibredb list: Fix identifier values not being shown.
+      Fixes #2131557
+
+-------------------------------------------------------------------
 Fri Nov  7 05:27:39 UTC 2025 - ecsos <ecsos@opensuse.org> - 8.14.0
 
 - Update to 8.14.0
