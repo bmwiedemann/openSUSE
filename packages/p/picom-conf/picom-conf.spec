@@ -1,7 +1,7 @@
 #
 # spec file for package picom-conf
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,13 +25,12 @@ License:        LGPL-2.1-or-later
 URL:            https://github.com/qtilities/picom-conf
 Source0:        https://github.com/qtilities/picom-conf/archive/refs/tags/%{version}.tar.gz
 BuildRequires:  cmake
-BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  pkgconfig
 BuildRequires:  qtilitools
-BuildRequires:  pkgconfig(libconfig)
+BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(libconfig)
 Requires:       picom
 Conflicts:      compton-conf
 

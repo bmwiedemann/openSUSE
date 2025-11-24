@@ -7,4 +7,12 @@
     <comment>New Package, Resubmit addressing https://build.opensuse.org/request/show/1141338</comment>
     <requestid>1141550</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cba6a7929a5b433d7791b0ec542ffe44</srcmd5>
+    <version>0.17.0</version>
+    <time>1763989924</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1319567</requestid>
+  </revision>
 </revisionlist>
