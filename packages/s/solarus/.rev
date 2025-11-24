@@ -158,4 +158,16 @@
 </comment>
     <requestid>884254</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>f7789a2b6ed70575642222b53a54d2ec</srcmd5>
+    <version>1.6.5</version>
+    <time>1763989839</time>
+    <user>anag_factory</user>
+    <comment>- Add solarus-1.6.5-modplug.patch: Fix build against modplug
+  (gl#solarus-games/solarus#1947).
+- Add solarus-1.6.5-glm.patch: Fix build against GLM, picked from
+  upstream.
+</comment>
+    <requestid>1319247</requestid>
+  </revision>
 </revisionlist>

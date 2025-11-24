@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov 22 12:05:43 UTC 2025 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Add solarus-1.6.5-modplug.patch: Fix build against modplug
+  (gl#solarus-games/solarus#1947).
+- Add solarus-1.6.5-glm.patch: Fix build against GLM, picked from
+  upstream.
+
+-------------------------------------------------------------------
 Sat Apr 10 10:06:15 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Remove compatibility bits for openSUSE Leap < 15.2.

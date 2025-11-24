@@ -1,7 +1,7 @@
 #
 # spec file for package solarus
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,10 @@ URL:            https://www.solarus-games.org/
 Source0:        %{name}-%{version}.tar.bz2
 # PATCH-FIX-UPSTREAM gl#solarus-games/solarus#1539
 Patch0:         solarus-1.6.5-ldl.patch
+# PATCH-FIX-UPSTREAM gl#solarus-games/solarus#1947
+Patch1:         solarus-1.6.5-modplug.patch
+# PATCH-FIX-UPSTREAM fix build against GLM, picked from upstream
+Patch2:         solarus-1.6.5-glm.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme

@@ -1,0 +1,11 @@
+diff -up solarus/src/audio/ItDecoder.cpp.orig solarus/src/audio/ItDecoder.cpp
+--- solarus/src/audio/ItDecoder.cpp.orig	2025-11-22 13:09:49.755590544 +0100
++++ solarus/src/audio/ItDecoder.cpp	2025-11-22 13:10:08.079480570 +0100
+@@ -16,6 +16,7 @@
+  */
+ #include "solarus/audio/ItDecoder.h"
+ #include "solarus/core/Debug.h"
++#include <cstdint>
+ #include <stdafx.h>  // These two headers are with the libmodplug ones.
+ #include <sndfile.h>
+ 
