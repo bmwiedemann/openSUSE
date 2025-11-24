@@ -260,4 +260,12 @@
     <comment>- Add upstream event_loop.patch to fix tests with pytest-asyncio 1.0</comment>
     <requestid>1291145</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a270503c39a630dd9d8d17dbce5ab1f6</srcmd5>
+    <version>9.2.0</version>
+    <time>1763989523</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1319108</requestid>
+  </revision>
 </revisionlist>

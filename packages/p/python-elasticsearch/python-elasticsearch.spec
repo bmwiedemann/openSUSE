@@ -1,7 +1,7 @@
 #
 # spec file for package python-elasticsearch
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,35 +18,42 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-elasticsearch
-# DO NOT UPDATE until the compatible version of
-# python-elasticsearch-dsl is available
-Version:        8.17.1
+Version:        9.2.0
 Release:        0
 Summary:        Python client for Elasticsearch
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/elastic/elasticsearch-py
 Source:         https://github.com/elastic/elasticsearch-py/archive/refs/tags/v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/elastic/elasticsearch-py/commit/3c9680a5cf0b67a56356bf73173a7d5eabb2e552 Stop using event_loop fixture
-Patch:          event_loop.patch
 BuildRequires:  %{python_module certifi}
-BuildRequires:  %{python_module elastic-transport}
+BuildRequires:  %{python_module elastic-transport >= 9.2.0}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module urllib3 >= 1.21.1}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-elastic-transport
+Requires:       python-anyio
+Requires:       python-elastic-transport >= 9.2.0
+Requires:       python-python-dateutil
+Requires:       python-sniffio
+Requires:       python-typing-extensions
+Provides:       python-elasticsearch-dsl = %{version}
+Obsoletes:      python-elasticsearch-dsl < %{version}
 BuildArch:      noarch
 # SECTION test
 BuildRequires:  %{python_module PyYAML >= 5.4}
-BuildRequires:  %{python_module aiohttp >= 3 with %python-aiohttp < 4}
+BuildRequires:  %{python_module aiohttp >= 3}
+BuildRequires:  %{python_module anyio}
 BuildRequires:  %{python_module orjson}
+BuildRequires:  %{python_module pydantic}
 BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-trio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
+BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests >= 2.4 with %python-requests < 3}
+BuildRequires:  %{python_module typing-extensions}
 # /SECTION
 %python_subpackages
 

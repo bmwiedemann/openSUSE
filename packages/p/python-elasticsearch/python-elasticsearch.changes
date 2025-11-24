@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Nov 20 08:33:01 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 9.2.0
+  * Merge elasticsearch-dsl-py package
+  * Remove deprecated Elasticsearch() options
+  * Remove deprecated url_prefix and use_ssl options
+  * Improve DSL documentation examples with class-based queries and
+    type hints
+  * ES|QL query builder (technical preview)
+  * Update OpenTelemetry conventions
+  * Add option to disable accurate reporting of file and line location in warnings
+  * Support Trio when using the HTTPX async client
+  * Pydantic integration for the DSL module
+  * Add flush_after_seconds option to streaming_bulk()
+  * Add TS, FUSE and INLINE STATS commands to the ES|QL query builder
+- Drop upstreamed event_loop.patch
+
+-------------------------------------------------------------------
 Mon Jul  7 10:11:06 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream event_loop.patch to fix tests with pytest-asyncio 1.0
