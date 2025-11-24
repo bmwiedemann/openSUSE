@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 18 16:27:14 UTC 2025 - Darragh O'Reilly <doreilly@suse.com>
+
+- Update to version 0.7.0.4.git169.cb4e6db8:
+  * Add machine-id to event artifacts
+  * Remove SHA1 file signatures
+  * Add plugin and artifact for sending client events to rsyslog
+
+-------------------------------------------------------------------
 Fri Jun 27 13:35:23 UTC 2025 - Darragh O'Reilly <doreilly@suse.com>
 
 - Update to version 0.7.0.4.git163.87ee3570:

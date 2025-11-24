@@ -1,7 +1,7 @@
 #
 # spec file for package velociraptor
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -83,7 +83,7 @@
 %endif
 
 Name:           velociraptor%{name_suffix}
-Version:        0.7.0.4.git163.87ee3570
+Version:        0.7.0.4.git169.cb4e6db8
 Release:        0
 %if %{build_server}
 Summary:        Endpoint visibility and collection tool
