@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 21 02:36:16 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros from python-rpm-macros to build and install.
+- List directories under sitelib explicitly.
+- Fix requirements.
+
+-------------------------------------------------------------------
 Tue Aug 21 07:37:52 UTC 2018 - michal.hrusecky@opensuse.org
 
 - update to version 1.9

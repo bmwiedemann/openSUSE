@@ -1,7 +1,7 @@
 #
 # spec file for package haas-proxy
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,11 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define hash bbf8629d1d64840407eefc23d2b6c8835365347b
+%define pythons python3
 Name:           haas-proxy
 Version:        1.9
 Release:        0
@@ -27,15 +28,16 @@ URL:            https://haas.nic.cz
 Source0:        https://gitlab.labs.nic.cz/haas/proxy/raw/%{hash}/release/%{name}-%{version}.tar.gz
 Source1:        haas-proxy.service
 Source2:        haas-sysconfig
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3
 BuildRequires:  python3-devel
+BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 BuildRequires:  systemd-rpm-macros
 Requires:       python3-Twisted
-Requires:       python3-base
 Requires:       python3-cachetools
-Requires:       python3-pycrypto
-Requires:       python3-service_identity
+Requires:       python3-requests
 Requires:       sshpass
 BuildArch:      noarch
 %{?systemd_requires}
@@ -49,10 +51,10 @@ records executed commands.
 %setup -q
 
 %build
-python3 setup.py build
+%pyproject_wheel
 
 %install
-python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
+%pyproject_install
 install -Dm 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/haas-proxy
 rm -rf %{buildroot}%{_sysconfdir}/init.d
 install -D -m 644 %{SOURCE1} %{buildroot}%{_unitdir}/haas-proxy.service
@@ -74,7 +76,8 @@ find %{buildroot} -name '*.pyc' -delete
 
 %files
 %config(noreplace) %{_sysconfdir}/haas-proxy
-%{python3_sitelib}/*
+%{python3_sitelib}/haas_proxy
+%{python3_sitelib}/haas_proxy-%{version}.dist-info
 %{_sbindir}/rchaas-proxy
 %{_unitdir}/haas-proxy.service
 
