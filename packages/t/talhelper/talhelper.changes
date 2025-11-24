@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Mon Nov 24 07:04:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.0.41:
+  * fix(goreleaser): seems like this is needed now?
+- Update to version 3.0.40:
+  * feat: update flake (#1289)
+  * docs: add missing field docs
+  * chore(github-action)!: Update actions/checkout action to v6
+  * chore(github-action): update actions/setup-go action to v6.1.0
+  * chore(schema): update talos-extensions.yaml JSON schema (#1286)
+  * chore(github-action): update actions/checkout action to v5.0.1
+  * chore(github-action): update actions/checkout digest to 93cb6ef
+    (#1285)
+  * chore(github-action): update renovatebot/github-action action
+    to v44.0.3
+  * Add documentation for winget installation
+  * Use tgz for scoop
+  * Improve release process - Enable Support for "Windows on ARM" -
+    Switch to new "dockers_v2" targets of goreleaser - Add support
+    for winget
+  * chore(schema): update talos-extensions.yaml JSON schema (#1281)
+  * feat(genconfig): add `ResolverConfig` multidocs for v1.12
+  * fix(code): fix test failing
+  * fix(deps): update module
+    github.com/siderolabs/talos/pkg/machinery to v1.12.0-beta.0
+  * chore(container): update golangci/golangci-lint docker tag to
+    v2.6.2
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * chore(container): update registry.k8s.io/kubectl docker tag to
+    v1.34.2
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * fix(deps): update module golang.org/x/mod to v0.30.0
+  * chore(schema): update talos-extensions.yaml JSON schema (#1273)
+  * chore(github-action): update renovatebot/github-action action
+    to v44.0.2
+  * chore(github-action): update renovatebot/github-action action
+    to v44.0.1
+  * chore(schema): update talos-extensions.yaml JSON schema (#1270)
+  * chore(github-action)!: Update golangci/golangci-lint-action
+    action to v9
+  * chore(github-action)!: Update renovatebot/github-action action
+    to v44
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+    v3.0.39
+  * feat: update Scoop for talhelper version v3.0.39
+  * feat: update flake (#1265)
+
+-------------------------------------------------------------------
 Fri Nov 07 13:05:20 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.0.39:
