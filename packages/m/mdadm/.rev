@@ -1657,4 +1657,14 @@ which haven't landed upstream yet
 - _service: switch to tar_scm for better interoperabity with SLFO. (forwarded request 1316051 from mwilck)</comment>
     <requestid>1316056</requestid>
   </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>5fbfef14bb7788e4832065c2df1addb9</srcmd5>
+    <version>4.4+30.g9a59bf51</version>
+    <time>1763989511</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.4+30.g9a59bf51:
+  * mdcheck: work around bash 5.3 bug (bsc#1254087)
+</comment>
+    <requestid>1318922</requestid>
+  </revision>
 </revisionlist>

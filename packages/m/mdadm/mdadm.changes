@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 20 17:36:46 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 4.4+30.g9a59bf51:
+  * mdcheck: work around bash 5.3 bug (bsc#1254087)
+
+-------------------------------------------------------------------
 Thu Nov  6 14:47:21 UTC 2025 - Martin Wilck <mwilck@suse.com>
 
 - Split off the Software RAID HOWTO into a -doc package
