@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 22 21:17:02 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove unused BuildRequires: update-desktop-files.
+
+-------------------------------------------------------------------
 Tue Nov 12 15:57:26 UTC 2024 - Frederic Crozat <fcrozat@suse.com>
 
 - Backport 0001-Fix-Wimplicit-function-declaration.patch and
