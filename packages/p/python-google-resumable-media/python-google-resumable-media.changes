@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 24 07:52:27 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.8.0
+  * Add support for Python 3.13 and 3.14 (#485)
+  * Remove setup.cfg configuration for creating universal wheels (#484)
+  * Resolve issue where pre-release versions of dependencies are installed (#481)
+
+-------------------------------------------------------------------
 Tue Sep  3 12:03:02 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.7.2
