@@ -112,4 +112,13 @@
     <comment>Update to 2.2.0</comment>
     <requestid>1307297</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>740c9ee0051871f5ec3f00a5bf679881</srcmd5>
+    <version>2.2.0</version>
+    <time>1763989921</time>
+    <user>anag_factory</user>
+    <comment>- Update 0001-CMake-Find-gvplugin_dot_layout-on-openSUSE.patch to
+  build with graphviz 14.*</comment>
+    <requestid>1319531</requestid>
+  </revision>
 </revisionlist>
