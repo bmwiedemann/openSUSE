@@ -1,7 +1,7 @@
 #
 # spec file for package guake
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,6 @@ BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools >= 57.5.0
 BuildRequires:  python3-setuptools_scm
 BuildRequires:  python3-wheel
-BuildRequires:  update-desktop-files
 %if 0%{?suse_version} < 1600
 Requires:       libutempter0
 %endif
