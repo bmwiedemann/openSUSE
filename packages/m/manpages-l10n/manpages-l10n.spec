@@ -1,7 +1,7 @@
 #
 # spec file for package manpages-l10n
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2020-2024 Antoine Belvire <antoine.belvire@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,15 +18,15 @@
 
 
 Name:           manpages-l10n
-Version:        4.23.1
+Version:        4.28.0
 Release:        0
 Summary:        Translation of man pages
 License:        GPL-3.0-or-later
 URL:            https://manpages-l10n-team.pages.debian.net/manpages-l10n
 Source0:        https://salsa.debian.org/manpages-l10n-team/manpages-l10n/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Source1:        macros.%{name}
-# PATCH-FIX-UPSTREAM manpages-l10n-4.20.0-fix-links.patch -- Fix incorrect links in man2 (boo#1202798)
-Patch0:         manpages-l10n-4.20.0-fix-links.patch
+# PATCH-FIX-UPSTREAM manpages-l10n-4.28.0-fix-links.patch -- Fix incorrect links in man2 (boo#1202798)
+Patch0:         manpages-l10n-4.28.0-fix-links.patch
 BuildRequires:  po4a
 BuildArch:      noarch
 %{load:%{SOURCE1}}
@@ -44,12 +44,12 @@ This package provides translations of man pages in multiple languages.
 %man_lang_package hu Hungarian
 %man_lang_package id Indonesian
 %man_lang_package it Italian
+%man_lang_package ko Korean
 %man_lang_package mk Macedonian
 %man_lang_package nb %{quote:Norwegian Bokmål}
 %man_lang_package nl Dutch
 %man_lang_package pl Polish
 %man_lang_package pt_BR %{quote:Brazilian Portuguese}
-%man_lang_package ko Korean
 %man_lang_package ro Romanian
 %man_lang_package ru Russian
 %man_lang_package sr Serbian
@@ -68,6 +68,12 @@ This package provides translations of man pages in multiple languages.
 %make_install
 # net-tools translations conflict on all supported RPM-based distributions
 # https://salsa.debian.org/manpages-l10n-team/manpages-l10n/-/issues/8
-rm -vf %{buildroot}%{_mandir}/de/man5/ethers.5*
+rm -vf %{buildroot}%{_mandir}/de/man5/ethers.5* \
+       %{buildroot}%{_mandir}/de/man8/plipconfig.8* \
+       %{buildroot}%{_mandir}/de/man8/slattach.8* \
+       %{buildroot}%{_mandir}/de/man8/arp.8* \
+       %{buildroot}%{_mandir}/de/man8/ifconfig.8* \
+       %{buildroot}%{_mandir}/de/man8/netstat.8* \
+       %{buildroot}%{_mandir}/de/man8/route.8*
 
 %changelog

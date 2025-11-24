@@ -216,4 +216,19 @@ This will obsolete current packages man-pages-fr &amp; man-pages-fr-extra (to be
     <comment></comment>
     <requestid>1182928</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b371698ee4b389a3456d5d53eda10e96</srcmd5>
+    <version>4.28.0</version>
+    <time>1763989831</time>
+    <user>anag_factory</user>
+    <comment>- Remove translations conflicting with net-tools'.
+- Update to version 4.28.0: Updated many translations.
+- Drop support for Leap 15.6.
+- Add support for Leap 16.0.
+- Rebase broken link patch:
+  * Remove manpages-l10n-4.20.0-fix-links.patch
+  * Add manpages-l10n-4.28.0-fix-links.patch
+</comment>
+    <requestid>1319276</requestid>
+  </revision>
 </revisionlist>

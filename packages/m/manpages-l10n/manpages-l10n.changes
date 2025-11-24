@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Nov 22 19:58:36 UTC 2025 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Remove translations conflicting with net-tools'.
+
+-------------------------------------------------------------------
+Sat Nov 22 10:21:38 UTC 2025 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 4.28.0: Updated many translations.
+- Drop support for Leap 15.6.
+- Add support for Leap 16.0.
+- Rebase broken link patch:
+  * Remove manpages-l10n-4.20.0-fix-links.patch
+  * Add manpages-l10n-4.28.0-fix-links.patch
+
+-------------------------------------------------------------------
 Sun Jun 23 20:06:33 UTC 2024 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to version 4.23.1:

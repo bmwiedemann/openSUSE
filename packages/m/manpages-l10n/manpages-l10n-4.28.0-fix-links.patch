@@ -12,14 +12,14 @@ sigsuspend.2.gz.gz -> sigaction.2.gz
 ```
 
 ---
- upstream/opensuse-leap-15-5/links.txt  | 4 ++--
+ upstream/opensuse-leap-16-0/links.txt  | 4 ++--
  upstream/opensuse-tumbleweed/links.txt | 4 ++--
  2 files changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/upstream/opensuse-leap-15-6/links.txt b/upstream/opensuse-leap-15-6/links.txt
 index 0356f992a3..5345738247 100644
---- a/upstream/opensuse-leap-15-6/links.txt
-+++ b/upstream/opensuse-leap-15-6/links.txt
+--- a/upstream/opensuse-leap-16-0/links.txt
++++ b/upstream/opensuse-leap-16-0/links.txt
 @@ -1111,8 +1111,8 @@ man2/rename.2.gz man2/renameat.2.gz
  man2/sigaction.2.gz man2/rt_sigaction.2.gz
  man2/sigpending.2.gz man2/rt_sigpending.2.gz

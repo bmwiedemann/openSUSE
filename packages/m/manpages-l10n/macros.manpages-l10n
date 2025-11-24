@@ -24,16 +24,15 @@ This package provides translations of man pages in %{2}.\
 # The distribution building the package. If not recognized, defaults to debian-unstable.
 #
 %distribution_id %{lua:
-  local sle_version = tonumber(rpm.expand("%{sle_version}"))
   local suse_version = tonumber(rpm.expand("%{suse_version}"))
   local fedora_version = tonumber(rpm.expand("%{fedora}"))
   local mageia_version = tonumber(rpm.expand("%{mageia}"))
-  if sle_version == 150600 then
-    print("opensuse-leap-15-6")
-  elseif suse_version ~= nil and suse_version > 1500 then
+  if suse_version ~= nil and suse_version == 1600 then
+    print("opensuse-leap-16-0")
+  elseif suse_version ~= nil and suse_version > 1600 then
     print("opensuse-tumbleweed")
-  elseif fedora_version == 40 then
-    print("fedora-40")
+  elseif fedora_version == 43 then
+    print("fedora-43")
   elseif fedora_version == 99 then
     print("fedora-rawhide")
   elseif mageia_version == 99 then
