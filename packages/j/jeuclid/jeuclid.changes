@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 24 00:09:14 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove unused BuildRequires: update-desktop-files.
+
+-------------------------------------------------------------------
 Wed Feb 21 11:58:59 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

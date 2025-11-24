@@ -51,7 +51,6 @@ BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-tools
 BuildRequires:  jcip-annotations
 BuildRequires:  unzip
-BuildRequires:  update-desktop-files
 BuildRequires:  xml-commons-apis
 BuildRequires:  xmlgraphics-commons >= 1.3
 BuildRequires:  xmlgraphics-fop >= 0.95
