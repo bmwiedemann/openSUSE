@@ -1,7 +1,7 @@
-diff -rubN deskflow-1.24.0/src/lib/gui/dialogs/SettingsDialog.cpp deskflow-1.24.0-patched/src/lib/gui/dialogs/SettingsDialog.cpp
---- deskflow-1.24.0/src/lib/gui/dialogs/SettingsDialog.cpp	2025-09-11 16:59:52.000000000 +0200
-+++ deskflow-1.24.0-patched/src/lib/gui/dialogs/SettingsDialog.cpp	2025-09-16 13:39:21.246020745 +0200
-@@ -144,7 +144,6 @@
+diff -rubN deskflow-1.25.0/src/lib/gui/dialogs/SettingsDialog.cpp deskflow-1.25.0-patched/src/lib/gui/dialogs/SettingsDialog.cpp
+--- deskflow-1.25.0/src/lib/gui/dialogs/SettingsDialog.cpp	2025-11-21 15:09:53.000000000 +0000
++++ deskflow-1.25.0-patched/src/lib/gui/dialogs/SettingsDialog.cpp	2025-11-21 18:33:54.237928288 +0000
+@@ -165,7 +165,6 @@
    Settings::setValue(Settings::Log::File, ui->lineLogFilename->text());
    Settings::setValue(Settings::Daemon::Elevate, ui->cbElevateDaemon->isChecked());
    Settings::setValue(Settings::Gui::Autohide, ui->cbAutoHide->isChecked());
@@ -9,15 +9,15 @@ diff -rubN deskflow-1.24.0/src/lib/gui/dialogs/SettingsDialog.cpp deskflow-1.24.
    Settings::setValue(Settings::Core::PreventSleep, ui->cbPreventSleep->isChecked());
    Settings::setValue(Settings::Security::Certificate, ui->lineTlsCertPath->text());
    Settings::setValue(Settings::Security::KeySize, ui->comboTlsKeyLength->currentText().toInt());
-@@ -178,7 +177,6 @@
+@@ -203,7 +202,6 @@
    ui->cbScrollDirection->setChecked(Settings::value(Settings::Client::InvertScrollDirection).toBool());
    ui->cbCloseToTray->setChecked(Settings::value(Settings::Gui::CloseToTray).toBool());
    ui->cbElevateDaemon->setChecked(Settings::value(Settings::Daemon::Elevate).toBool());
 -  ui->cbAutoUpdate->setChecked(Settings::value(Settings::Gui::AutoUpdateCheck).toBool());
- 
-   const auto processMode = Settings::value(Settings::Core::ProcessMode).value<Settings::ProcessMode>();
-   ui->groupService->setChecked(processMode == Settings::ProcessMode::Service);
-@@ -262,7 +260,6 @@
+   ui->sbScrollSpeed->setValue(Settings::value(Settings::Client::ScrollSpeed).toInt());
+   ui->cbGuiDebug->setChecked(Settings::value(Settings::Log::GuiDebug).toBool());
+   ui->cbUseWlClipboard->setChecked(Settings::value(Settings::Core::UseWlClipboard).toBool());
+@@ -295,7 +293,6 @@
    ui->comboLogLevel->setEnabled(writable);
    ui->cbLogToFile->setEnabled(writable);
    ui->cbAutoHide->setEnabled(writable);
@@ -25,16 +25,16 @@ diff -rubN deskflow-1.24.0/src/lib/gui/dialogs/SettingsDialog.cpp deskflow-1.24.
    ui->cbPreventSleep->setEnabled(writable);
    ui->lineTlsCertPath->setEnabled(writable);
    ui->comboTlsKeyLength->setEnabled(writable);
-diff -rubN deskflow-1.24.0/src/lib/gui/dialogs/SettingsDialog.ui deskflow-1.24.0-patched/src/lib/gui/dialogs/SettingsDialog.ui
---- deskflow-1.24.0/src/lib/gui/dialogs/SettingsDialog.ui	2025-09-11 16:59:52.000000000 +0200
-+++ deskflow-1.24.0-patched/src/lib/gui/dialogs/SettingsDialog.ui	2025-09-16 13:39:50.689917303 +0200
-@@ -78,13 +78,6 @@
+diff -rubN deskflow-1.25.0/src/lib/gui/dialogs/SettingsDialog.ui deskflow-1.25.0-patched/src/lib/gui/dialogs/SettingsDialog.ui
+--- deskflow-1.25.0/src/lib/gui/dialogs/SettingsDialog.ui	2025-11-21 15:09:53.000000000 +0000
++++ deskflow-1.25.0-patched/src/lib/gui/dialogs/SettingsDialog.ui	2025-11-21 18:35:19.472529908 +0000
+@@ -105,13 +105,6 @@
           </property>
-          <layout class="QVBoxLayout" name="_9">
+          <layout class="QVBoxLayout" name="verticalLayout_2">
            <item>
 -           <widget class="QCheckBox" name="cbAutoUpdate">
 -            <property name="text">
--             <string>Check for updates on startup </string>
+-             <string>Check for updates on startup</string>
 -            </property>
 -           </widget>
 -          </item>
@@ -42,10 +42,10 @@ diff -rubN deskflow-1.24.0/src/lib/gui/dialogs/SettingsDialog.ui deskflow-1.24.0
             <widget class="QCheckBox" name="cbAutoHide">
              <property name="text">
               <string>Hide the window when the app starts</string>
-diff -rubN deskflow-1.24.0/src/lib/gui/MainWindow.cpp deskflow-1.24.0-patched/src/lib/gui/MainWindow.cpp
---- deskflow-1.24.0/src/lib/gui/MainWindow.cpp	2025-09-11 16:59:52.000000000 +0200
-+++ deskflow-1.24.0-patched/src/lib/gui/MainWindow.cpp	2025-09-16 13:40:34.865744851 +0200
-@@ -672,6 +672,7 @@
+diff -rubN deskflow-1.25.0/src/lib/gui/MainWindow.cpp deskflow-1.25.0-patched/src/lib/gui/MainWindow.cpp
+--- deskflow-1.25.0/src/lib/gui/MainWindow.cpp	2025-11-21 15:09:53.000000000 +0000
++++ deskflow-1.25.0-patched/src/lib/gui/MainWindow.cpp	2025-11-21 18:37:12.053894888 +0000
+@@ -660,6 +660,7 @@
    const auto kCriticalDialogDelay = 100;
    QTimer::singleShot(kCriticalDialogDelay, this, &messages::raiseCriticalDialog);
  

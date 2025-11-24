@@ -60,4 +60,21 @@
   * fix: Use correct log function for process exit status in onProcessFinished</comment>
     <requestid>1305144</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>332256ca64da3cbe7841285b270bf83d</srcmd5>
+    <version>1.25.0</version>
+    <time>1763989754</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.25.0:
+  * REMOVED FEATURES:
+    - CLI11 options
+    - old deskflow-core cli options
+    - TOMLPLUSPLUS and ENV files to set the configuration
+  * Support symbolic icon deployment and recoloring linux
+  * Support dynamic panel icon coloring
+  * Show milliseconds in time values
+  * Expose GuiDebug settings
+  * Save geometry into into a state file</comment>
+    <requestid>1319169</requestid>
+  </revision>
 </revisionlist>

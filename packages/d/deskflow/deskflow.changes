@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Nov 21 18:46:29 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.25.0:
+  * REMOVED FEATURES:
+    - CLI11 options
+    - old deskflow-core cli options
+    - TOMLPLUSPLUS and ENV files to set the configuration
+  * Support symbolic icon deployment and recoloring linux
+  * Support dynamic panel icon coloring
+  * Show milliseconds in time values
+  * Expose GuiDebug settings
+  * Save geometry into into a state file
+
+-------------------------------------------------------------------
 Tue Sep 16 11:33:55 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 1.24.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package deskflow
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define         qt6ver 6.7.0
 %define         appid org.deskflow.deskflow
 Name:           deskflow
-Version:        1.24.0
+Version:        1.25.0
 Release:        0
 Summary:        Share a single keyboard and mouse between multiple computers
 License:        GPL-2.0-only AND MIT AND SUSE-GPL-2.0-with-openssl-exception AND LGPL-2.1-only
@@ -35,6 +35,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(CLI11)
 BuildRequires:  pkgconfig(Qt6Core) >= %{qt6ver}
 BuildRequires:  pkgconfig(Qt6DBus) >= %{qt6ver}
+BuildRequires:  pkgconfig(Qt6Linguist) >= %{qt6ver}
 BuildRequires:  pkgconfig(Qt6Network) >= %{qt6ver}
 BuildRequires:  pkgconfig(Qt6Test) >= %{qt6ver}
 BuildRequires:  pkgconfig(Qt6Widgets) >= %{qt6ver}
@@ -74,6 +75,7 @@ BuildArch:      noarch
 %description doc
 %{summary}.
 
+
 %prep
 %autosetup -p1
 
@@ -90,7 +92,7 @@ BuildArch:      noarch
 %cmake_install
 install -Dm0644 ./deploy/linux/%{appid}.desktop %{buildroot}%{_datadir}/applications/%{appid}.desktop
 install -Dm0644 ./deploy/linux/%{appid}.metainfo.xml %{buildroot}%{_datadir}/metainfo/%{appid}.metainfo.xml
-install -Dm0644 ./deploy/linux/%{name}.png %{buildroot}%{_datadir}/icons/hicolor/512x512/apps/%{appid}.png
+install -Dm0644 ./deploy/linux/%{appid}.png %{buildroot}%{_datadir}/icons/hicolor/512x512/apps/%{appid}.png
 %fdupes %{buildroot}%{_docdir}
 
 %check
@@ -101,6 +103,7 @@ install -Dm0644 ./deploy/linux/%{name}.png %{buildroot}%{_datadir}/icons/hicolor
 %doc README.md
 %{_bindir}/%{name}
 %{_bindir}/%{name}-core
+%{_datadir}/%{name}
 %{_datadir}/applications/%{appid}.desktop
 %{_datadir}/icons/hicolor/512x512/apps/%{appid}.png
 %{_datadir}/metainfo/%{appid}.metainfo.xml
