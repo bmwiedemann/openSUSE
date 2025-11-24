@@ -317,4 +317,13 @@
   update-go-crypto.patch.</comment>
     <requestid>1318028</requestid>
   </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>a1ea4f6fab854120d5d428c8d1553e46</srcmd5>
+    <version>6.5.1</version>
+    <time>1763989870</time>
+    <user>anag_factory</user>
+    <comment>- Update update-go-crypto.patch to address bsc#1254023 and
+  bsc#1253864.</comment>
+    <requestid>1319278</requestid>
+  </revision>
 </revisionlist>

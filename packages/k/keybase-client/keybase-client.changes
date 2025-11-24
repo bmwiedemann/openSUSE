@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov 22 20:22:35 UTC 2025 - Matthias Bach <marix@marix.org> - 6.5.1
+
+- Update update-go-crypto.patch to address bsc#1254023 and
+  bsc#1253864.
+
+-------------------------------------------------------------------
 Sat Nov 15 21:25:14 UTC 2025 - Matthias Bach <marix@marix.org> - 6.5.1
 
 - Add update-go-crypto.patch to address bsc#1253563.
