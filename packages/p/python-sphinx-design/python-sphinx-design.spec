@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx-design
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        A sphinx extension for designing beautiful, view size responsive
 License:        MIT
 URL:            https://github.com/executablebooks/sphinx-design
 Source:         https://github.com/executablebooks/sphinx-design/archive/refs/tags/v%{version}.tar.gz#/sphinx-design-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Regenerate snippets with docutils 0.22
+Patch0:         regenerate-snippets-docutils-0.22.patch
 BuildRequires:  %{python_module flit-core >= 3.4}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros

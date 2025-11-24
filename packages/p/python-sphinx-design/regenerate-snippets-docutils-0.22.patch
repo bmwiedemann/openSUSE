@@ -1,0 +1,1449 @@
+diff -urNP sphinx-design-0.6.1.orig/tests/test_snippets/sd_custom_directives.xml sphinx-design-0.6.1/tests/test_snippets/sd_custom_directives.xml
+--- sphinx-design-0.6.1.orig/tests/test_snippets/sd_custom_directives.xml	2024-08-02 13:45:57.000000000 +0000
++++ sphinx-design-0.6.1/tests/test_snippets/sd_custom_directives.xml	2025-11-24 04:09:28.842078440 +0000
+@@ -2,7 +2,7 @@
+     <section ids="heading" names="heading">
+         <title>
+             Heading
+-        <container body_classes="" chevron="True" container_classes="sd-mb-3" design_component="dropdown" has_title="True" icon="code" is_div="True" opened="False" title_classes="sd-bg-primary sd-bg-text-primary" type="dropdown">
++        <container body_classes="" chevron="True" container_classes="sd-mb-3" design_component="dropdown" has_title="1" icon="code" is_div="1" opened="0" title_classes="sd-bg-primary sd-bg-text-primary" type="dropdown">
+             <rubric>
+                 Syntax
+             <paragraph>
+diff -urNP sphinx-design-0.6.1.orig/tests/test_snippets/snippet_post_article-info.xml sphinx-design-0.6.1/tests/test_snippets/snippet_post_article-info.xml
+--- sphinx-design-0.6.1.orig/tests/test_snippets/snippet_post_article-info.xml	2024-08-02 13:45:57.000000000 +0000
++++ sphinx-design-0.6.1/tests/test_snippets/snippet_post_article-info.xml	2025-11-24 04:09:24.474324156 +0000
+@@ -2,23 +2,23 @@
+     <section ids="heading" names="heading">
+         <title>
+             Heading
+-        <container classes="sd-container-fluid sd-sphinx-override sd-p-0 sd-mt-2 sd-mb-4 sd-p-2 sd-outline-muted sd-rounded-1" design_component="grid-container" is_div="True">
+-            <container classes="sd-row sd-row-cols-2 sd-gx-2 sd-gy-1" design_component="grid-row" is_div="True">
+-                <container classes="sd-col sd-col-auto sd-d-flex-row sd-align-minor-center" design_component="grid-item" is_div="True">
++        <container classes="sd-container-fluid sd-sphinx-override sd-p-0 sd-mt-2 sd-mb-4 sd-p-2 sd-outline-muted sd-rounded-1" design_component="grid-container" is_div="1">
++            <container classes="sd-row sd-row-cols-2 sd-gx-2 sd-gy-1" design_component="grid-row" is_div="1">
++                <container classes="sd-col sd-col-auto sd-d-flex-row sd-align-minor-center" design_component="grid-item" is_div="1">
+                     <reference refuri="https://executablebooks.org/">
+                         <image alt="" candidates="{'*': 'images/ebp-logo.png'}" classes="sd-avatar-sm sd-outline-muted" uri="images/ebp-logo.png">
+-                <container classes="sd-col sd-d-flex-row sd-align-minor-center" design_component="grid-item" is_div="True">
+-                    <container classes="sd-container-fluid sd-sphinx-override" design_component="grid-container" is_div="True">
+-                        <container classes="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-3 sd-row-cols-md-3 sd-row-cols-lg-3 sd-gx-3 sd-gy-1" design_component="grid-row" is_div="True">
+-                            <container classes="sd-col sd-col-auto sd-d-flex-row sd-align-minor-center" design_component="grid-item" is_div="True">
++                <container classes="sd-col sd-d-flex-row sd-align-minor-center" design_component="grid-item" is_div="1">
++                    <container classes="sd-container-fluid sd-sphinx-override" design_component="grid-container" is_div="1">
++                        <container classes="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-3 sd-row-cols-md-3 sd-row-cols-lg-3 sd-gx-3 sd-gy-1" design_component="grid-row" is_div="1">
++                            <container classes="sd-col sd-col-auto sd-d-flex-row sd-align-minor-center" design_component="grid-item" is_div="1">
+                                 <paragraph classes="sd-p-0 sd-m-0">
+                                     Executable Books
+-                            <container classes="sd-col sd-col-auto sd-d-flex-row sd-align-minor-center" design_component="grid-item" is_div="True">
++                            <container classes="sd-col sd-col-auto sd-d-flex-row sd-align-minor-center" design_component="grid-item" is_div="1">
+                                 <paragraph classes="sd-p-0 sd-m-0">
+                                     <raw classes="sd-pr-2" format="html" xml:space="preserve">
+                                         <svg version="1.1" width="16.0px" height="16.0px" class="sd-octicon sd-octicon-calendar" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.75 0a.75.75 0 0 1 .75.75V2h5V.75a.75.75 0 0 1 1.5 0V2h1.25c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0 1 13.25 16H2.75A1.75 1.75 0 0 1 1 14.25V3.75C1 2.784 1.784 2 2.75 2H4V.75A.75.75 0 0 1 4.75 0ZM2.5 7.5v6.75c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25V7.5Zm10.75-4H2.75a.25.25 0 0 0-.25.25V6h11V3.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+                                     Jul 24, 2021
+-                            <container classes="sd-col sd-col-auto sd-d-flex-row sd-align-minor-center" design_component="grid-item" is_div="True">
++                            <container classes="sd-col sd-col-auto sd-d-flex-row sd-align-minor-center" design_component="grid-item" is_div="1">
+                                 <paragraph classes="sd-p-0 sd-m-0">
+                                     <raw classes="sd-pr-2" format="html" xml:space="preserve">
+                                         <svg version="1.1" width="16.0px" height="16.0px" class="sd-octicon sd-octicon-clock" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm7-3.25v2.992l2.028.812a.75.75 0 0 1-.557 1.392l-2.5-1A.751.751 0 0 1 7 8.25v-3.5a.75.75 0 0 1 1.5 0Z"></path></svg>
+diff -urNP sphinx-design-0.6.1.orig/tests/test_snippets/snippet_post_card-basic.xml sphinx-design-0.6.1/tests/test_snippets/snippet_post_card-basic.xml
+--- sphinx-design-0.6.1.orig/tests/test_snippets/snippet_post_card-basic.xml	2024-08-02 13:45:57.000000000 +0000
++++ sphinx-design-0.6.1/tests/test_snippets/snippet_post_card-basic.xml	2025-11-24 04:09:24.778195569 +0000
+@@ -2,9 +2,9 @@
+     <section ids="heading" names="heading">
+         <title>
+             Heading
+-        <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm" design_component="card" is_div="True">
+-            <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++        <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm" design_component="card" is_div="1">
++            <container classes="sd-card-body" design_component="card-body" is_div="1">
++                <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                     <PassthroughTextElement>
+                         Card Title
+                 <paragraph classes="sd-card-text">
+diff -urNP sphinx-design-0.6.1.orig/tests/test_snippets/snippet_post_card-carousel.xml sphinx-design-0.6.1/tests/test_snippets/snippet_post_card-carousel.xml
+--- sphinx-design-0.6.1.orig/tests/test_snippets/snippet_post_card-carousel.xml	2024-08-02 13:45:57.000000000 +0000
++++ sphinx-design-0.6.1/tests/test_snippets/snippet_post_card-carousel.xml	2025-11-24 04:09:24.855210009 +0000
+@@ -2,40 +2,40 @@
+     <section ids="heading" names="heading">
+         <title>
+             Heading
+-        <container classes="sd-sphinx-override sd-cards-carousel sd-card-cols-2" design_component="card-carousel" is_div="True">
+-            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm" design_component="card" is_div="True">
+-                <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++        <container classes="sd-sphinx-override sd-cards-carousel sd-card-cols-2" design_component="card-carousel" is_div="1">
++            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm" design_component="card" is_div="1">
++                <container classes="sd-card-body" design_component="card-body" is_div="1">
++                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                         <PassthroughTextElement>
+                             card 1
+                     <paragraph classes="sd-card-text">
+                         content
+-            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm" design_component="card" is_div="True">
+-                <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm" design_component="card" is_div="1">
++                <container classes="sd-card-body" design_component="card-body" is_div="1">
++                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                         <PassthroughTextElement>
+                             card 2
+                     <paragraph classes="sd-card-text">
+                         Longer
+                     <paragraph classes="sd-card-text">
+                         content
+-            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm" design_component="card" is_div="True">
+-                <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm" design_component="card" is_div="1">
++                <container classes="sd-card-body" design_component="card-body" is_div="1">
++                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                         <PassthroughTextElement>
+                             card 3
+-            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm" design_component="card" is_div="True">
+-                <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm" design_component="card" is_div="1">
++                <container classes="sd-card-body" design_component="card-body" is_div="1">
++                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                         <PassthroughTextElement>
+                             card 4
+-            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm" design_component="card" is_div="True">
+-                <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm" design_component="card" is_div="1">
++                <container classes="sd-card-body" design_component="card-body" is_div="1">
++                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                         <PassthroughTextElement>
+                             card 5
+-            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm" design_component="card" is_div="True">
+-                <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm" design_component="card" is_div="1">
++                <container classes="sd-card-body" design_component="card-body" is_div="1">
++                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                         <PassthroughTextElement>
+                             card 6
+diff -urNP sphinx-design-0.6.1.orig/tests/test_snippets/snippet_post_card-head-foot.xml sphinx-design-0.6.1/tests/test_snippets/snippet_post_card-head-foot.xml
+--- sphinx-design-0.6.1.orig/tests/test_snippets/snippet_post_card-head-foot.xml	2024-08-02 13:45:57.000000000 +0000
++++ sphinx-design-0.6.1/tests/test_snippets/snippet_post_card-head-foot.xml	2025-11-24 04:09:24.930269544 +0000
+@@ -2,16 +2,16 @@
+     <section ids="heading" names="heading">
+         <title>
+             Heading
+-        <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm" design_component="card" is_div="True">
+-            <container classes="sd-card-header" design_component="card-header" is_div="True">
++        <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm" design_component="card" is_div="1">
++            <container classes="sd-card-header" design_component="card-header" is_div="1">
+                 <paragraph classes="sd-card-text">
+                     Header
+-            <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++            <container classes="sd-card-body" design_component="card-body" is_div="1">
++                <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                     <PassthroughTextElement>
+                         Card Title
+                 <paragraph classes="sd-card-text">
+                     Card content
+-            <container classes="sd-card-footer" design_component="card-footer" is_div="True">
++            <container classes="sd-card-footer" design_component="card-footer" is_div="1">
+                 <paragraph classes="sd-card-text">
+                     Footer
+diff -urNP sphinx-design-0.6.1.orig/tests/test_snippets/snippet_post_card-images.xml sphinx-design-0.6.1/tests/test_snippets/snippet_post_card-images.xml
+--- sphinx-design-0.6.1.orig/tests/test_snippets/snippet_post_card-images.xml	2024-08-02 13:45:57.000000000 +0000
++++ sphinx-design-0.6.1/tests/test_snippets/snippet_post_card-images.xml	2025-11-24 04:09:25.010601773 +0000
+@@ -2,45 +2,45 @@
+     <section ids="heading" names="heading">
+         <title>
+             Heading
+-        <container classes="sd-container-fluid sd-sphinx-override sd-mb-4" design_component="grid-container" is_div="True">
+-            <container classes="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-3 sd-row-cols-md-3 sd-row-cols-lg-4" design_component="grid-row" is_div="True">
+-                <container classes="sd-col sd-d-flex-column" design_component="grid-item" is_div="True">
+-                    <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm sd-text-black" design_component="card" is_div="True">
++        <container classes="sd-container-fluid sd-sphinx-override sd-mb-4" design_component="grid-container" is_div="1">
++            <container classes="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-3 sd-row-cols-md-3 sd-row-cols-lg-4" design_component="grid-row" is_div="1">
++                <container classes="sd-col sd-d-flex-column" design_component="grid-item" is_div="1">
++                    <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm sd-text-black" design_component="card" is_div="1">
+                         <image alt="my text" candidates="{'*': 'images/particle_background.jpg'}" classes="sd-card-img" uri="images/particle_background.jpg">
+-                        <container classes="sd-card-img-overlay" design_component="card-overlay" is_div="True">
+-                            <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                                <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++                        <container classes="sd-card-img-overlay" design_component="card-overlay" is_div="1">
++                            <container classes="sd-card-body" design_component="card-body" is_div="1">
++                                <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                                     <PassthroughTextElement>
+                                         Title
+                                 <paragraph classes="sd-card-text">
+                                     Text
+-                <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="True">
+-                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="True">
++                <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="1">
++                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="1">
+                         <image alt="" candidates="{'*': 'images/particle_background.jpg'}" classes="sd-card-img-top" uri="images/particle_background.jpg">
+-                        <container classes="sd-card-header" design_component="card-header" is_div="True">
++                        <container classes="sd-card-header" design_component="card-header" is_div="1">
+                             <paragraph classes="sd-card-text">
+                                 Header
+-                        <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                            <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++                        <container classes="sd-card-body" design_component="card-body" is_div="1">
++                            <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                                 <PassthroughTextElement>
+                                     Title
+                             <paragraph classes="sd-card-text">
+                                 Content
+-                        <container classes="sd-card-footer" design_component="card-footer" is_div="True">
++                        <container classes="sd-card-footer" design_component="card-footer" is_div="1">
+                             <paragraph classes="sd-card-text">
+                                 Footer
+-                <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="True">
+-                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="True">
+-                        <container classes="sd-card-header" design_component="card-header" is_div="True">
++                <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="1">
++                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="1">
++                        <container classes="sd-card-header" design_component="card-header" is_div="1">
+                             <paragraph classes="sd-card-text">
+                                 Header
+-                        <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                            <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++                        <container classes="sd-card-body" design_component="card-body" is_div="1">
++                            <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                                 <PassthroughTextElement>
+                                     Title
+                             <paragraph classes="sd-card-text">
+                                 Content
+-                        <container classes="sd-card-footer" design_component="card-footer" is_div="True">
++                        <container classes="sd-card-footer" design_component="card-footer" is_div="1">
+                             <paragraph classes="sd-card-text">
+                                 Footer
+                         <image alt="" candidates="{'*': 'images/particle_background.jpg'}" classes="sd-card-img-bottom" uri="images/particle_background.jpg">
+diff -urNP sphinx-design-0.6.1.orig/tests/test_snippets/snippet_post_card-link.xml sphinx-design-0.6.1/tests/test_snippets/snippet_post_card-link.xml
+--- sphinx-design-0.6.1.orig/tests/test_snippets/snippet_post_card-link.xml	2024-08-02 13:45:57.000000000 +0000
++++ sphinx-design-0.6.1/tests/test_snippets/snippet_post_card-link.xml	2025-11-24 04:09:25.125372160 +0000
+@@ -14,9 +14,9 @@
+                 <literal>
+                     link-type
+                  options, you can turn an entire card into a clickable link. Try hovering over then clicking on the cards below:
+-            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm sd-card-hover" design_component="card" is_div="True">
+-                <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm sd-card-hover" design_component="card" is_div="1">
++                <container classes="sd-card-body" design_component="card-body" is_div="1">
++                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                         <PassthroughTextElement>
+                             Clickable Card (external)
+                     <paragraph classes="sd-card-text">
+@@ -28,9 +28,9 @@
+                     <reference classes="sd-stretched-link sd-hide-link-text" refuri="https://example.com">
+                         <inline>
+                             https://example.com
+-            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm sd-card-hover" design_component="card" is_div="True">
+-                <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm sd-card-hover" design_component="card" is_div="1">
++                <container classes="sd-card-body" design_component="card-body" is_div="1">
++                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                         <PassthroughTextElement>
+                             Clickable Card (external)
+                     <paragraph classes="sd-card-text">
+@@ -42,9 +42,9 @@
+                     <reference classes="sd-stretched-link sd-hide-link-text" refuri="https://example.com">
+                         <inline>
+                             example.com
+-            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm sd-card-hover" design_component="card" is_div="True">
+-                <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm sd-card-hover" design_component="card" is_div="1">
++                <container classes="sd-card-body" design_component="card-body" is_div="1">
++                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                         <PassthroughTextElement>
+                             Clickable Card (internal)
+                     <paragraph classes="sd-card-text">
+@@ -53,12 +53,12 @@
+                             cards-clickable
+                          reference target.
+                 <PassthroughTextElement>
+-                    <reference classes="sd-stretched-link sd-hide-link-text" internal="True" refid="cards-clickable">
++                    <reference classes="sd-stretched-link sd-hide-link-text" internal="1" refid="cards-clickable">
+                         <inline classes="std std-ref">
+                             Clickable cards
+-            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm sd-card-hover" design_component="card" is_div="True">
+-                <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm sd-card-hover" design_component="card" is_div="1">
++                <container classes="sd-card-body" design_component="card-body" is_div="1">
++                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                         <PassthroughTextElement>
+                             Clickable Card (internal)
+                     <paragraph classes="sd-card-text">
+@@ -67,6 +67,6 @@
+                             cards-clickable
+                          reference target.
+                 <PassthroughTextElement>
+-                    <reference classes="sd-stretched-link sd-hide-link-text" internal="True" refid="cards-clickable">
++                    <reference classes="sd-stretched-link sd-hide-link-text" internal="1" refid="cards-clickable">
+                         <inline classes="std std-ref">
+                             clickable cards
+diff -urNP sphinx-design-0.6.1.orig/tests/test_snippets/snippet_post_card-title-link.xml sphinx-design-0.6.1/tests/test_snippets/snippet_post_card-title-link.xml
+--- sphinx-design-0.6.1.orig/tests/test_snippets/snippet_post_card-title-link.xml	2024-08-02 13:45:57.000000000 +0000
++++ sphinx-design-0.6.1/tests/test_snippets/snippet_post_card-title-link.xml	2025-11-24 04:09:25.200324702 +0000
+@@ -3,15 +3,15 @@
+         <title>
+             Heading
+         <target refid="target">
+-        <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm" design_component="card" ids="target" is_div="True" names="target">
+-            <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++        <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm" design_component="card" ids="target" is_div="1" names="target">
++            <container classes="sd-card-body" design_component="card-body" is_div="1">
++                <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                     <PassthroughTextElement>
+                         Card Title 
+                         <reference refuri="https://example.com">
+                             https://example.com
+                          
+-                        <reference internal="True" refid="target">
++                        <reference internal="1" refid="target">
+                             <inline classes="std std-ref">
+                                 link
+                 <paragraph classes="sd-card-text">
+diff -urNP sphinx-design-0.6.1.orig/tests/test_snippets/snippet_post_div-basic.xml sphinx-design-0.6.1/tests/test_snippets/snippet_post_div-basic.xml
+--- sphinx-design-0.6.1.orig/tests/test_snippets/snippet_post_div-basic.xml	2024-08-02 13:45:57.000000000 +0000
++++ sphinx-design-0.6.1/tests/test_snippets/snippet_post_div-basic.xml	2025-11-24 04:09:25.273224857 +0000
+@@ -2,6 +2,6 @@
+     <section ids="heading" names="heading">
+         <title>
+             Heading
+-        <container classes="sd-text-center sd-font-italic sd-text-primary" design_component="div" is_div="True">
++        <container classes="sd-text-center sd-font-italic sd-text-primary" design_component="div" is_div="1">
+             <paragraph>
+                 Some CSS styled text
+diff -urNP sphinx-design-0.6.1.orig/tests/test_snippets/snippet_post_dropdown-basic.xml sphinx-design-0.6.1/tests/test_snippets/snippet_post_dropdown-basic.xml
+--- sphinx-design-0.6.1.orig/tests/test_snippets/snippet_post_dropdown-basic.xml	2024-08-02 13:45:57.000000000 +0000
++++ sphinx-design-0.6.1/tests/test_snippets/snippet_post_dropdown-basic.xml	2025-11-24 04:09:25.348977795 +0000
+@@ -2,7 +2,7 @@
+     <section ids="heading" names="heading">
+         <title>
+             Heading
+-        <dropdown_main classes="sd-sphinx-override sd-dropdown sd-card sd-mb-3" opened="False">
++        <dropdown_main classes="sd-sphinx-override sd-dropdown sd-card sd-mb-3" opened="0">
+             <dropdown_title classes="sd-summary-title sd-card-header">
+                 <inline classes="sd-summary-text">
+                     <raw format="html" xml:space="preserve">
+@@ -10,26 +10,26 @@
+                 <inline classes="sd-summary-state-marker sd-summary-chevron-right">
+                     <raw format="html" xml:space="preserve">
+                         <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg>
+-            <container classes="sd-summary-content sd-card-body" design_component="dropdown-body" is_div="True">
++            <container classes="sd-summary-content sd-card-body" design_component="dropdown-body" is_div="1">
+                 <paragraph classes="sd-card-text">
+                     Dropdown content
+-        <dropdown_main classes="sd-sphinx-override sd-dropdown sd-card sd-mb-3" opened="False">
++        <dropdown_main classes="sd-sphinx-override sd-dropdown sd-card sd-mb-3" opened="0">
+             <dropdown_title classes="sd-summary-title sd-card-header">
+                 <inline classes="sd-summary-text">
+                     Dropdown title
+                 <inline classes="sd-summary-state-marker sd-summary-chevron-right">
+                     <raw format="html" xml:space="preserve">
+                         <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg>
+-            <container classes="sd-summary-content sd-card-body" design_component="dropdown-body" is_div="True">
++            <container classes="sd-summary-content sd-card-body" design_component="dropdown-body" is_div="1">
+                 <paragraph classes="sd-card-text">
+                     Dropdown content
+-        <dropdown_main classes="sd-sphinx-override sd-dropdown sd-card sd-mb-3" opened="True">
++        <dropdown_main classes="sd-sphinx-override sd-dropdown sd-card sd-mb-3" opened="1">
+             <dropdown_title classes="sd-summary-title sd-card-header">
+                 <inline classes="sd-summary-text">
+                     Open dropdown
+                 <inline classes="sd-summary-state-marker sd-summary-chevron-right">
+                     <raw format="html" xml:space="preserve">
+                         <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg>
+-            <container classes="sd-summary-content sd-card-body" design_component="dropdown-body" is_div="True">
++            <container classes="sd-summary-content sd-card-body" design_component="dropdown-body" is_div="1">
+                 <paragraph classes="sd-card-text">
+                     Dropdown content
+diff -urNP sphinx-design-0.6.1.orig/tests/test_snippets/snippet_post_dropdown-options.xml sphinx-design-0.6.1/tests/test_snippets/snippet_post_dropdown-options.xml
+--- sphinx-design-0.6.1.orig/tests/test_snippets/snippet_post_dropdown-options.xml	2024-08-02 13:45:57.000000000 +0000
++++ sphinx-design-0.6.1/tests/test_snippets/snippet_post_dropdown-options.xml	2025-11-24 04:09:25.423949188 +0000
+@@ -2,7 +2,7 @@
+     <section ids="heading" names="heading">
+         <title>
+             Heading
+-        <dropdown_main classes="sd-sphinx-override sd-dropdown sd-card sd-m-1 class-container" ids="target" opened="False">
++        <dropdown_main classes="sd-sphinx-override sd-dropdown sd-card sd-m-1 class-container" ids="target" opened="0">
+             <dropdown_title classes="sd-summary-title sd-card-header class-title sd-bg-info sd-bg-text-info">
+                 <raw classes="sd-summary-icon" format="html" xml:space="preserve">
+                     <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-alert" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>
+@@ -11,14 +11,14 @@
+                 <inline classes="sd-summary-state-marker sd-summary-chevron-right">
+                     <raw format="html" xml:space="preserve">
+                         <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg>
+-            <container classes="sd-summary-content sd-card-body class-body" design_component="dropdown-body" is_div="True">
++            <container classes="sd-summary-content sd-card-body class-body" design_component="dropdown-body" is_div="1">
+                 <paragraph classes="sd-card-text">
+                     Dropdown content
+         <paragraph>
+-            <reference internal="True" refid="target">
++            <reference internal="1" refid="target">
+                 <inline classes="std std-ref">
+                     Title
+             , 
+-            <reference internal="True" refid="target">
++            <reference internal="1" refid="target">
+                 <inline classes="std std-ref">
+                     text
+diff -urNP sphinx-design-0.6.1.orig/tests/test_snippets/snippet_post_grid-basic.xml sphinx-design-0.6.1/tests/test_snippets/snippet_post_grid-basic.xml
+--- sphinx-design-0.6.1.orig/tests/test_snippets/snippet_post_grid-basic.xml	2024-08-02 13:45:57.000000000 +0000
++++ sphinx-design-0.6.1/tests/test_snippets/snippet_post_grid-basic.xml	2025-11-24 04:09:25.497559736 +0000
+@@ -2,17 +2,17 @@
+     <section ids="heading" names="heading">
+         <title>
+             Heading
+-        <container classes="sd-container-fluid sd-sphinx-override sd-mb-4 sd-border-1" design_component="grid-container" is_div="True">
+-            <container classes="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-2 sd-row-cols-md-3 sd-row-cols-lg-4" design_component="grid-row" is_div="True">
+-                <container classes="sd-col sd-d-flex-column" design_component="grid-item" is_div="True">
++        <container classes="sd-container-fluid sd-sphinx-override sd-mb-4 sd-border-1" design_component="grid-container" is_div="1">
++            <container classes="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-2 sd-row-cols-md-3 sd-row-cols-lg-4" design_component="grid-row" is_div="1">
++                <container classes="sd-col sd-d-flex-column" design_component="grid-item" is_div="1">
+                     <paragraph>
+                         A
+-                <container classes="sd-col sd-d-flex-column" design_component="grid-item" is_div="True">
++                <container classes="sd-col sd-d-flex-column" design_component="grid-item" is_div="1">
+                     <paragraph>
+                         B
+-                <container classes="sd-col sd-d-flex-column" design_component="grid-item" is_div="True">
++                <container classes="sd-col sd-d-flex-column" design_component="grid-item" is_div="1">
+                     <paragraph>
+                         C
+-                <container classes="sd-col sd-d-flex-column" design_component="grid-item" is_div="True">
++                <container classes="sd-col sd-d-flex-column" design_component="grid-item" is_div="1">
+                     <paragraph>
+                         D
+diff -urNP sphinx-design-0.6.1.orig/tests/test_snippets/snippet_post_grid-card-columns.xml sphinx-design-0.6.1/tests/test_snippets/snippet_post_grid-card-columns.xml
+--- sphinx-design-0.6.1.orig/tests/test_snippets/snippet_post_grid-card-columns.xml	2024-08-02 13:45:57.000000000 +0000
++++ sphinx-design-0.6.1/tests/test_snippets/snippet_post_grid-card-columns.xml	2025-11-24 04:09:25.572813364 +0000
+@@ -2,20 +2,20 @@
+     <section ids="heading" names="heading">
+         <title>
+             Heading
+-        <container classes="sd-container-fluid sd-sphinx-override sd-mb-4" design_component="grid-container" is_div="True">
+-            <container classes="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2" design_component="grid-row" is_div="True">
+-                <container classes="sd-col sd-d-flex-row sd-col-auto sd-col-xs-auto sd-col-sm-auto sd-col-md-auto sd-col-lg-auto" design_component="grid-item" is_div="True">
+-                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="True">
+-                        <container classes="sd-card-body" design_component="card-body" is_div="True">
++        <container classes="sd-container-fluid sd-sphinx-override sd-mb-4" design_component="grid-container" is_div="1">
++            <container classes="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2" design_component="grid-row" is_div="1">
++                <container classes="sd-col sd-d-flex-row sd-col-auto sd-col-xs-auto sd-col-sm-auto sd-col-md-auto sd-col-lg-auto" design_component="grid-item" is_div="1">
++                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="1">
++                        <container classes="sd-card-body" design_component="card-body" is_div="1">
+                             <paragraph classes="sd-card-text">
+                                 A
+-                <container classes="sd-col sd-d-flex-row sd-col-12 sd-col-xs-12 sd-col-sm-6 sd-col-md-6 sd-col-lg-6" design_component="grid-item" is_div="True">
+-                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="True">
+-                        <container classes="sd-card-body" design_component="card-body" is_div="True">
++                <container classes="sd-col sd-d-flex-row sd-col-12 sd-col-xs-12 sd-col-sm-6 sd-col-md-6 sd-col-lg-6" design_component="grid-item" is_div="1">
++                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="1">
++                        <container classes="sd-card-body" design_component="card-body" is_div="1">
+                             <paragraph classes="sd-card-text">
+                                 B
+-                <container classes="sd-col sd-d-flex-row sd-col-12 sd-col-xs-12 sd-col-sm-12 sd-col-md-12 sd-col-lg-12" design_component="grid-item" is_div="True">
+-                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="True">
+-                        <container classes="sd-card-body" design_component="card-body" is_div="True">
++                <container classes="sd-col sd-d-flex-row sd-col-12 sd-col-xs-12 sd-col-sm-12 sd-col-md-12 sd-col-lg-12" design_component="grid-item" is_div="1">
++                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="1">
++                        <container classes="sd-card-body" design_component="card-body" is_div="1">
+                             <paragraph classes="sd-card-text">
+                                 C
+diff -urNP sphinx-design-0.6.1.orig/tests/test_snippets/snippet_post_grid-card.xml sphinx-design-0.6.1/tests/test_snippets/snippet_post_grid-card.xml
+--- sphinx-design-0.6.1.orig/tests/test_snippets/snippet_post_grid-card.xml	2024-08-02 13:45:57.000000000 +0000
++++ sphinx-design-0.6.1/tests/test_snippets/snippet_post_grid-card.xml	2025-11-24 04:09:25.647177247 +0000
+@@ -2,20 +2,20 @@
+     <section ids="heading" names="heading">
+         <title>
+             Heading
+-        <container classes="sd-container-fluid sd-sphinx-override sd-mb-4" design_component="grid-container" is_div="True">
+-            <container classes="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2" design_component="grid-row" is_div="True">
+-                <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="True">
+-                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="True">
+-                        <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                            <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++        <container classes="sd-container-fluid sd-sphinx-override sd-mb-4" design_component="grid-container" is_div="1">
++            <container classes="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2" design_component="grid-row" is_div="1">
++                <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="1">
++                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="1">
++                        <container classes="sd-card-body" design_component="card-body" is_div="1">
++                            <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                                 <PassthroughTextElement>
+                                     Title 1
+                             <paragraph classes="sd-card-text">
+                                 A
+-                <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="True">
+-                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="True">
+-                        <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                            <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++                <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="1">
++                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="1">
++                        <container classes="sd-card-body" design_component="card-body" is_div="1">
++                            <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                                 <PassthroughTextElement>
+                                     Title 2
+                             <paragraph classes="sd-card-text">
+diff -urNP sphinx-design-0.6.1.orig/tests/test_snippets/snippet_post_grid-gutter.xml sphinx-design-0.6.1/tests/test_snippets/snippet_post_grid-gutter.xml
+--- sphinx-design-0.6.1.orig/tests/test_snippets/snippet_post_grid-gutter.xml	2024-08-02 13:45:57.000000000 +0000
++++ sphinx-design-0.6.1/tests/test_snippets/snippet_post_grid-gutter.xml	2025-11-24 04:09:25.722499186 +0000
+@@ -2,27 +2,27 @@
+     <section ids="heading" names="heading">
+         <title>
+             Heading
+-        <container classes="sd-container-fluid sd-sphinx-override sd-mb-4" design_component="grid-container" is_div="True">
+-            <container classes="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-1 sd-g-xs-1 sd-g-sm-1 sd-g-md-1 sd-g-lg-1" design_component="grid-row" is_div="True">
+-                <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="True">
+-                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="True">
+-                        <container classes="sd-card-body" design_component="card-body" is_div="True">
++        <container classes="sd-container-fluid sd-sphinx-override sd-mb-4" design_component="grid-container" is_div="1">
++            <container classes="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-1 sd-g-xs-1 sd-g-sm-1 sd-g-md-1 sd-g-lg-1" design_component="grid-row" is_div="1">
++                <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="1">
++                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="1">
++                        <container classes="sd-card-body" design_component="card-body" is_div="1">
+                             <paragraph classes="sd-card-text">
+                                 A
+-                <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="True">
+-                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="True">
+-                        <container classes="sd-card-body" design_component="card-body" is_div="True">
++                <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="1">
++                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="1">
++                        <container classes="sd-card-body" design_component="card-body" is_div="1">
+                             <paragraph classes="sd-card-text">
+                                 B
+-        <container classes="sd-container-fluid sd-sphinx-override sd-mb-4" design_component="grid-container" is_div="True">
+-            <container classes="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-4 sd-g-lg-5" design_component="grid-row" is_div="True">
+-                <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="True">
+-                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="True">
+-                        <container classes="sd-card-body" design_component="card-body" is_div="True">
++        <container classes="sd-container-fluid sd-sphinx-override sd-mb-4" design_component="grid-container" is_div="1">
++            <container classes="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-4 sd-g-lg-5" design_component="grid-row" is_div="1">
++                <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="1">
++                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="1">
++                        <container classes="sd-card-body" design_component="card-body" is_div="1">
+                             <paragraph classes="sd-card-text">
+                                 A
+-                <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="True">
+-                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="True">
+-                        <container classes="sd-card-body" design_component="card-body" is_div="True">
++                <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="1">
++                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="1">
++                        <container classes="sd-card-body" design_component="card-body" is_div="1">
+                             <paragraph classes="sd-card-text">
+                                 B
+diff -urNP sphinx-design-0.6.1.orig/tests/test_snippets/snippet_post_grid-nested.xml sphinx-design-0.6.1/tests/test_snippets/snippet_post_grid-nested.xml
+--- sphinx-design-0.6.1.orig/tests/test_snippets/snippet_post_grid-nested.xml	2024-08-02 13:45:57.000000000 +0000
++++ sphinx-design-0.6.1/tests/test_snippets/snippet_post_grid-nested.xml	2025-11-24 04:09:25.801883408 +0000
+@@ -2,52 +2,52 @@
+     <section ids="heading" names="heading">
+         <title>
+             Heading
+-        <container classes="sd-container-fluid sd-sphinx-override sd-mb-4" design_component="grid-container" is_div="True">
+-            <container classes="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-1 sd-g-xs-1 sd-g-sm-1 sd-g-md-1 sd-g-lg-1" design_component="grid-row" is_div="True">
+-                <container classes="sd-col sd-d-flex-column" design_component="grid-item" is_div="True">
+-                    <container classes="sd-container-fluid sd-sphinx-override sd-mb-4" design_component="grid-container" is_div="True">
+-                        <container classes="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-1 sd-row-cols-lg-1 sd-g-1 sd-g-xs-1 sd-g-sm-1 sd-g-md-1 sd-g-lg-1" design_component="grid-row" is_div="True">
+-                            <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="True">
+-                                <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="True">
+-                                    <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                                        <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++        <container classes="sd-container-fluid sd-sphinx-override sd-mb-4" design_component="grid-container" is_div="1">
++            <container classes="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-1 sd-g-xs-1 sd-g-sm-1 sd-g-md-1 sd-g-lg-1" design_component="grid-row" is_div="1">
++                <container classes="sd-col sd-d-flex-column" design_component="grid-item" is_div="1">
++                    <container classes="sd-container-fluid sd-sphinx-override sd-mb-4" design_component="grid-container" is_div="1">
++                        <container classes="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-1 sd-row-cols-lg-1 sd-g-1 sd-g-xs-1 sd-g-sm-1 sd-g-md-1 sd-g-lg-1" design_component="grid-row" is_div="1">
++                            <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="1">
++                                <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="1">
++                                    <container classes="sd-card-body" design_component="card-body" is_div="1">
++                                        <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                                             <PassthroughTextElement>
+                                                 Item 1.1
+                                         <paragraph classes="sd-card-text">
+                                             Multi-line
+                                         <paragraph classes="sd-card-text">
+                                             content
+-                            <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="True">
+-                                <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="True">
+-                                    <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                                        <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++                            <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="1">
++                                <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="1">
++                                    <container classes="sd-card-body" design_component="card-body" is_div="1">
++                                        <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                                             <PassthroughTextElement>
+                                                 Item 1.2
+                                         <paragraph classes="sd-card-text">
+                                             Content
+-                <container classes="sd-col sd-d-flex-column" design_component="grid-item" is_div="True">
+-                    <container classes="sd-container-fluid sd-sphinx-override sd-mb-4" design_component="grid-container" is_div="True">
+-                        <container classes="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-1 sd-row-cols-lg-1 sd-g-1 sd-g-xs-1 sd-g-sm-1 sd-g-md-1 sd-g-lg-1" design_component="grid-row" is_div="True">
+-                            <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="True">
+-                                <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="True">
+-                                    <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                                        <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++                <container classes="sd-col sd-d-flex-column" design_component="grid-item" is_div="1">
++                    <container classes="sd-container-fluid sd-sphinx-override sd-mb-4" design_component="grid-container" is_div="1">
++                        <container classes="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-1 sd-row-cols-lg-1 sd-g-1 sd-g-xs-1 sd-g-sm-1 sd-g-md-1 sd-g-lg-1" design_component="grid-row" is_div="1">
++                            <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="1">
++                                <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="1">
++                                    <container classes="sd-card-body" design_component="card-body" is_div="1">
++                                        <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                                             <PassthroughTextElement>
+                                                 Item 2.1
+                                         <paragraph classes="sd-card-text">
+                                             Content
+-                            <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="True">
+-                                <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="True">
+-                                    <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                                        <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++                            <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="1">
++                                <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="1">
++                                    <container classes="sd-card-body" design_component="card-body" is_div="1">
++                                        <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                                             <PassthroughTextElement>
+                                                 Item 2.2
+                                         <paragraph classes="sd-card-text">
+                                             Content
+-                            <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="True">
+-                                <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="True">
+-                                    <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                                        <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++                            <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="1">
++                                <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="1">
++                                    <container classes="sd-card-body" design_component="card-body" is_div="1">
++                                        <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                                             <PassthroughTextElement>
+                                                 Item 2.3
+                                         <paragraph classes="sd-card-text">
+diff -urNP sphinx-design-0.6.1.orig/tests/test_snippets/snippet_post_tab-basic.xml sphinx-design-0.6.1/tests/test_snippets/snippet_post_tab-basic.xml
+--- sphinx-design-0.6.1.orig/tests/test_snippets/snippet_post_tab-basic.xml	2024-08-02 13:45:57.000000000 +0000
++++ sphinx-design-0.6.1/tests/test_snippets/snippet_post_tab-basic.xml	2025-11-24 04:09:26.184605324 +0000
+@@ -2,16 +2,16 @@
+     <section ids="heading" names="heading">
+         <title>
+             Heading
+-        <container classes="sd-tab-set" design_component="tab-set" is_div="True">
+-            <sd_tab_input checked="True" id="sd-tab-item-0" set_id="sd-tab-set-0" type="radio">
++        <container classes="sd-tab-set" design_component="tab-set" is_div="1">
++            <sd_tab_input checked="1" id="sd-tab-item-0" set_id="sd-tab-set-0" type="radio">
+             <sd_tab_label classes="sd-tab-label" input_id="sd-tab-item-0">
+                 Label1
+-            <container classes="sd-tab-content" design_component="tab-content" is_div="True">
++            <container classes="sd-tab-content" design_component="tab-content" is_div="1">
+                 <paragraph>
+                     Content 1
+-            <sd_tab_input checked="False" id="sd-tab-item-1" set_id="sd-tab-set-0" type="radio">
++            <sd_tab_input checked="0" id="sd-tab-item-1" set_id="sd-tab-set-0" type="radio">
+             <sd_tab_label classes="sd-tab-label" input_id="sd-tab-item-1">
+                 Label2
+-            <container classes="sd-tab-content" design_component="tab-content" is_div="True">
++            <container classes="sd-tab-content" design_component="tab-content" is_div="1">
+                 <paragraph>
+                     Content 2
+diff -urNP sphinx-design-0.6.1.orig/tests/test_snippets/snippet_post_tab-code-set.xml sphinx-design-0.6.1/tests/test_snippets/snippet_post_tab-code-set.xml
+--- sphinx-design-0.6.1.orig/tests/test_snippets/snippet_post_tab-code-set.xml	2024-08-02 13:45:57.000000000 +0000
++++ sphinx-design-0.6.1/tests/test_snippets/snippet_post_tab-code-set.xml	2025-11-24 04:09:26.260205099 +0000
+@@ -2,16 +2,16 @@
+     <section ids="heading" names="heading">
+         <title>
+             Heading
+-        <container classes="sd-tab-set" design_component="tab-set" is_div="True">
+-            <sd_tab_input checked="True" id="sd-tab-item-0" set_id="sd-tab-set-0" type="radio">
++        <container classes="sd-tab-set" design_component="tab-set" is_div="1">
++            <sd_tab_input checked="1" id="sd-tab-item-0" set_id="sd-tab-set-0" type="radio">
+             <sd_tab_label classes="sd-tab-label" input_id="sd-tab-item-0" sync_group="code" sync_id="python">
+                 PYTHON
+-            <container classes="sd-tab-content" design_component="tab-content" is_div="True">
+-                <literal_block force="False" highlight_args="{'linenostart': 1}" language="python" linenos="False" source="snippet.py" xml:space="preserve">
++            <container classes="sd-tab-content" design_component="tab-content" is_div="1">
++                <literal_block force="0" highlight_args="{'linenostart': 1}" language="python" linenos="0" source="snippet.py" xml:space="preserve">
+                     a = 1
+-            <sd_tab_input checked="False" id="sd-tab-item-1" set_id="sd-tab-set-0" type="radio">
++            <sd_tab_input checked="0" id="sd-tab-item-1" set_id="sd-tab-set-0" type="radio">
+             <sd_tab_label classes="sd-tab-label" input_id="sd-tab-item-1" sync_group="code" sync_id="javascript">
+                 JAVASCRIPT
+-            <container classes="sd-tab-content" design_component="tab-content" is_div="True">
+-                <literal_block force="False" highlight_args="{}" language="javascript" linenos="False" xml:space="preserve">
++            <container classes="sd-tab-content" design_component="tab-content" is_div="1">
++                <literal_block force="0" highlight_args="{}" language="javascript" linenos="0" xml:space="preserve">
+                     a = 1;
+diff -urNP sphinx-design-0.6.1.orig/tests/test_snippets/snippet_post_tab-options.xml sphinx-design-0.6.1/tests/test_snippets/snippet_post_tab-options.xml
+--- sphinx-design-0.6.1.orig/tests/test_snippets/snippet_post_tab-options.xml	2024-08-02 13:45:57.000000000 +0000
++++ sphinx-design-0.6.1/tests/test_snippets/snippet_post_tab-options.xml	2025-11-24 04:09:26.336123669 +0000
+@@ -2,19 +2,19 @@
+     <section ids="heading" names="heading">
+         <title>
+             Heading
+-        <container classes="sd-tab-set class-set" design_component="tab-set" is_div="True">
+-            <sd_tab_input checked="True" id="sd-tab-item-0" set_id="sd-tab-set-0" type="radio">
++        <container classes="sd-tab-set class-set" design_component="tab-set" is_div="1">
++            <sd_tab_input checked="1" id="sd-tab-item-0" set_id="sd-tab-set-0" type="radio">
+             <sd_tab_label classes="sd-tab-label class-label" ids="target" input_id="sd-tab-item-0">
+                 <strong>
+                     Label
+-            <container classes="sd-tab-content class-content" design_component="tab-content" is_div="True">
++            <container classes="sd-tab-content class-content" design_component="tab-content" is_div="1">
+                 <paragraph>
+                     Content
+         <paragraph>
+-            <reference internal="True" refid="target">
++            <reference internal="1" refid="target">
+                 <inline classes="std std-ref">
+                     Label
+             , 
+-            <reference internal="True" refid="target">
++            <reference internal="1" refid="target">
+                 <inline classes="std std-ref">
+                     text
+diff -urNP sphinx-design-0.6.1.orig/tests/test_snippets/snippet_post_tab-sync.xml sphinx-design-0.6.1/tests/test_snippets/snippet_post_tab-sync.xml
+--- sphinx-design-0.6.1.orig/tests/test_snippets/snippet_post_tab-sync.xml	2024-08-02 13:45:57.000000000 +0000
++++ sphinx-design-0.6.1/tests/test_snippets/snippet_post_tab-sync.xml	2025-11-24 04:09:26.413908562 +0000
+@@ -2,29 +2,29 @@
+     <section ids="heading" names="heading">
+         <title>
+             Heading
+-        <container classes="sd-tab-set" design_component="tab-set" is_div="True">
+-            <sd_tab_input checked="True" id="sd-tab-item-0" set_id="sd-tab-set-0" type="radio">
++        <container classes="sd-tab-set" design_component="tab-set" is_div="1">
++            <sd_tab_input checked="1" id="sd-tab-item-0" set_id="sd-tab-set-0" type="radio">
+             <sd_tab_label classes="sd-tab-label" input_id="sd-tab-item-0" sync_group="category" sync_id="key1">
+                 Label1
+-            <container classes="sd-tab-content" design_component="tab-content" is_div="True">
++            <container classes="sd-tab-content" design_component="tab-content" is_div="1">
+                 <paragraph>
+                     Content 1
+-            <sd_tab_input checked="False" id="sd-tab-item-1" set_id="sd-tab-set-0" type="radio">
++            <sd_tab_input checked="0" id="sd-tab-item-1" set_id="sd-tab-set-0" type="radio">
+             <sd_tab_label classes="sd-tab-label" input_id="sd-tab-item-1" sync_group="category" sync_id="key2">
+                 Label2
+-            <container classes="sd-tab-content" design_component="tab-content" is_div="True">
++            <container classes="sd-tab-content" design_component="tab-content" is_div="1">
+                 <paragraph>
+                     Content 2
+-        <container classes="sd-tab-set" design_component="tab-set" is_div="True">
+-            <sd_tab_input checked="True" id="sd-tab-item-2" set_id="sd-tab-set-1" type="radio">
++        <container classes="sd-tab-set" design_component="tab-set" is_div="1">
++            <sd_tab_input checked="1" id="sd-tab-item-2" set_id="sd-tab-set-1" type="radio">
+             <sd_tab_label classes="sd-tab-label" input_id="sd-tab-item-2" sync_group="category" sync_id="key1">
+                 Label1
+-            <container classes="sd-tab-content" design_component="tab-content" is_div="True">
++            <container classes="sd-tab-content" design_component="tab-content" is_div="1">
+                 <paragraph>
+                     Content 1
+-            <sd_tab_input checked="False" id="sd-tab-item-3" set_id="sd-tab-set-1" type="radio">
++            <sd_tab_input checked="0" id="sd-tab-item-3" set_id="sd-tab-set-1" type="radio">
+             <sd_tab_label classes="sd-tab-label" input_id="sd-tab-item-3" sync_group="category" sync_id="key2">
+                 Label2
+-            <container classes="sd-tab-content" design_component="tab-content" is_div="True">
++            <container classes="sd-tab-content" design_component="tab-content" is_div="1">
+                 <paragraph>
+                     Content 2
+diff -urNP sphinx-design-0.6.1.orig/tests/test_snippets/snippet_pre_article-info.xml sphinx-design-0.6.1/tests/test_snippets/snippet_pre_article-info.xml
+--- sphinx-design-0.6.1.orig/tests/test_snippets/snippet_pre_article-info.xml	2024-08-02 13:45:57.000000000 +0000
++++ sphinx-design-0.6.1/tests/test_snippets/snippet_pre_article-info.xml	2025-11-24 04:09:20.371890444 +0000
+@@ -2,23 +2,23 @@
+     <section ids="heading" names="heading">
+         <title>
+             Heading
+-        <container classes="sd-container-fluid sd-sphinx-override sd-p-0 sd-mt-2 sd-mb-4 sd-p-2 sd-outline-muted sd-rounded-1" design_component="grid-container" is_div="True">
+-            <container classes="sd-row sd-row-cols-2 sd-gx-2 sd-gy-1" design_component="grid-row" is_div="True">
+-                <container classes="sd-col sd-col-auto sd-d-flex-row sd-align-minor-center" design_component="grid-item" is_div="True">
++        <container classes="sd-container-fluid sd-sphinx-override sd-p-0 sd-mt-2 sd-mb-4 sd-p-2 sd-outline-muted sd-rounded-1" design_component="grid-container" is_div="1">
++            <container classes="sd-row sd-row-cols-2 sd-gx-2 sd-gy-1" design_component="grid-row" is_div="1">
++                <container classes="sd-col sd-col-auto sd-d-flex-row sd-align-minor-center" design_component="grid-item" is_div="1">
+                     <reference refuri="https://executablebooks.org/">
+                         <image alt="" candidates="{'*': 'images/ebp-logo.png'}" classes="sd-avatar-sm sd-outline-muted" uri="images/ebp-logo.png">
+-                <container classes="sd-col sd-d-flex-row sd-align-minor-center" design_component="grid-item" is_div="True">
+-                    <container classes="sd-container-fluid sd-sphinx-override" design_component="grid-container" is_div="True">
+-                        <container classes="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-3 sd-row-cols-md-3 sd-row-cols-lg-3 sd-gx-3 sd-gy-1" design_component="grid-row" is_div="True">
+-                            <container classes="sd-col sd-col-auto sd-d-flex-row sd-align-minor-center" design_component="grid-item" is_div="True">
++                <container classes="sd-col sd-d-flex-row sd-align-minor-center" design_component="grid-item" is_div="1">
++                    <container classes="sd-container-fluid sd-sphinx-override" design_component="grid-container" is_div="1">
++                        <container classes="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-3 sd-row-cols-md-3 sd-row-cols-lg-3 sd-gx-3 sd-gy-1" design_component="grid-row" is_div="1">
++                            <container classes="sd-col sd-col-auto sd-d-flex-row sd-align-minor-center" design_component="grid-item" is_div="1">
+                                 <paragraph classes="sd-p-0 sd-m-0">
+                                     Executable Books
+-                            <container classes="sd-col sd-col-auto sd-d-flex-row sd-align-minor-center" design_component="grid-item" is_div="True">
++                            <container classes="sd-col sd-col-auto sd-d-flex-row sd-align-minor-center" design_component="grid-item" is_div="1">
+                                 <paragraph classes="sd-p-0 sd-m-0">
+                                     <raw classes="sd-pr-2" format="html" xml:space="preserve">
+                                         <svg version="1.1" width="16.0px" height="16.0px" class="sd-octicon sd-octicon-calendar" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.75 0a.75.75 0 0 1 .75.75V2h5V.75a.75.75 0 0 1 1.5 0V2h1.25c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0 1 13.25 16H2.75A1.75 1.75 0 0 1 1 14.25V3.75C1 2.784 1.784 2 2.75 2H4V.75A.75.75 0 0 1 4.75 0ZM2.5 7.5v6.75c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25V7.5Zm10.75-4H2.75a.25.25 0 0 0-.25.25V6h11V3.75a.25.25 0 0 0-.25-.25Z"></path></svg>
+                                     Jul 24, 2021
+-                            <container classes="sd-col sd-col-auto sd-d-flex-row sd-align-minor-center" design_component="grid-item" is_div="True">
++                            <container classes="sd-col sd-col-auto sd-d-flex-row sd-align-minor-center" design_component="grid-item" is_div="1">
+                                 <paragraph classes="sd-p-0 sd-m-0">
+                                     <raw classes="sd-pr-2" format="html" xml:space="preserve">
+                                         <svg version="1.1" width="16.0px" height="16.0px" class="sd-octicon sd-octicon-clock" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm7-3.25v2.992l2.028.812a.75.75 0 0 1-.557 1.392l-2.5-1A.751.751 0 0 1 7 8.25v-3.5a.75.75 0 0 1 1.5 0Z"></path></svg>
+diff -urNP sphinx-design-0.6.1.orig/tests/test_snippets/snippet_pre_card-basic.xml sphinx-design-0.6.1/tests/test_snippets/snippet_pre_card-basic.xml
+--- sphinx-design-0.6.1.orig/tests/test_snippets/snippet_pre_card-basic.xml	2024-08-02 13:45:57.000000000 +0000
++++ sphinx-design-0.6.1/tests/test_snippets/snippet_pre_card-basic.xml	2025-11-24 04:09:20.711446626 +0000
+@@ -2,9 +2,9 @@
+     <section ids="heading" names="heading">
+         <title>
+             Heading
+-        <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm" design_component="card" is_div="True">
+-            <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++        <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm" design_component="card" is_div="1">
++            <container classes="sd-card-body" design_component="card-body" is_div="1">
++                <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                     <PassthroughTextElement>
+                         Card Title
+                 <paragraph classes="sd-card-text">
+diff -urNP sphinx-design-0.6.1.orig/tests/test_snippets/snippet_pre_card-carousel.xml sphinx-design-0.6.1/tests/test_snippets/snippet_pre_card-carousel.xml
+--- sphinx-design-0.6.1.orig/tests/test_snippets/snippet_pre_card-carousel.xml	2024-08-02 13:45:57.000000000 +0000
++++ sphinx-design-0.6.1/tests/test_snippets/snippet_pre_card-carousel.xml	2025-11-24 04:09:20.789090157 +0000
+@@ -2,40 +2,40 @@
+     <section ids="heading" names="heading">
+         <title>
+             Heading
+-        <container classes="sd-sphinx-override sd-cards-carousel sd-card-cols-2" design_component="card-carousel" is_div="True">
+-            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm" design_component="card" is_div="True">
+-                <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++        <container classes="sd-sphinx-override sd-cards-carousel sd-card-cols-2" design_component="card-carousel" is_div="1">
++            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm" design_component="card" is_div="1">
++                <container classes="sd-card-body" design_component="card-body" is_div="1">
++                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                         <PassthroughTextElement>
+                             card 1
+                     <paragraph classes="sd-card-text">
+                         content
+-            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm" design_component="card" is_div="True">
+-                <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm" design_component="card" is_div="1">
++                <container classes="sd-card-body" design_component="card-body" is_div="1">
++                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                         <PassthroughTextElement>
+                             card 2
+                     <paragraph classes="sd-card-text">
+                         Longer
+                     <paragraph classes="sd-card-text">
+                         content
+-            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm" design_component="card" is_div="True">
+-                <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm" design_component="card" is_div="1">
++                <container classes="sd-card-body" design_component="card-body" is_div="1">
++                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                         <PassthroughTextElement>
+                             card 3
+-            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm" design_component="card" is_div="True">
+-                <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm" design_component="card" is_div="1">
++                <container classes="sd-card-body" design_component="card-body" is_div="1">
++                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                         <PassthroughTextElement>
+                             card 4
+-            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm" design_component="card" is_div="True">
+-                <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm" design_component="card" is_div="1">
++                <container classes="sd-card-body" design_component="card-body" is_div="1">
++                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                         <PassthroughTextElement>
+                             card 5
+-            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm" design_component="card" is_div="True">
+-                <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm" design_component="card" is_div="1">
++                <container classes="sd-card-body" design_component="card-body" is_div="1">
++                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                         <PassthroughTextElement>
+                             card 6
+diff -urNP sphinx-design-0.6.1.orig/tests/test_snippets/snippet_pre_card-head-foot.xml sphinx-design-0.6.1/tests/test_snippets/snippet_pre_card-head-foot.xml
+--- sphinx-design-0.6.1.orig/tests/test_snippets/snippet_pre_card-head-foot.xml	2024-08-02 13:45:57.000000000 +0000
++++ sphinx-design-0.6.1/tests/test_snippets/snippet_pre_card-head-foot.xml	2025-11-24 04:09:20.861438503 +0000
+@@ -2,16 +2,16 @@
+     <section ids="heading" names="heading">
+         <title>
+             Heading
+-        <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm" design_component="card" is_div="True">
+-            <container classes="sd-card-header" design_component="card-header" is_div="True">
++        <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm" design_component="card" is_div="1">
++            <container classes="sd-card-header" design_component="card-header" is_div="1">
+                 <paragraph classes="sd-card-text">
+                     Header
+-            <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++            <container classes="sd-card-body" design_component="card-body" is_div="1">
++                <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                     <PassthroughTextElement>
+                         Card Title
+                 <paragraph classes="sd-card-text">
+                     Card content
+-            <container classes="sd-card-footer" design_component="card-footer" is_div="True">
++            <container classes="sd-card-footer" design_component="card-footer" is_div="1">
+                 <paragraph classes="sd-card-text">
+                     Footer
+diff -urNP sphinx-design-0.6.1.orig/tests/test_snippets/snippet_pre_card-images.xml sphinx-design-0.6.1/tests/test_snippets/snippet_pre_card-images.xml
+--- sphinx-design-0.6.1.orig/tests/test_snippets/snippet_pre_card-images.xml	2024-08-02 13:45:57.000000000 +0000
++++ sphinx-design-0.6.1/tests/test_snippets/snippet_pre_card-images.xml	2025-11-24 04:09:20.939939669 +0000
+@@ -2,45 +2,45 @@
+     <section ids="heading" names="heading">
+         <title>
+             Heading
+-        <container classes="sd-container-fluid sd-sphinx-override sd-mb-4" design_component="grid-container" is_div="True">
+-            <container classes="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-3 sd-row-cols-md-3 sd-row-cols-lg-4" design_component="grid-row" is_div="True">
+-                <container classes="sd-col sd-d-flex-column" design_component="grid-item" is_div="True">
+-                    <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm sd-text-black" design_component="card" is_div="True">
++        <container classes="sd-container-fluid sd-sphinx-override sd-mb-4" design_component="grid-container" is_div="1">
++            <container classes="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-3 sd-row-cols-md-3 sd-row-cols-lg-4" design_component="grid-row" is_div="1">
++                <container classes="sd-col sd-d-flex-column" design_component="grid-item" is_div="1">
++                    <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm sd-text-black" design_component="card" is_div="1">
+                         <image alt="my text" candidates="{'*': 'images/particle_background.jpg'}" classes="sd-card-img" uri="images/particle_background.jpg">
+-                        <container classes="sd-card-img-overlay" design_component="card-overlay" is_div="True">
+-                            <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                                <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++                        <container classes="sd-card-img-overlay" design_component="card-overlay" is_div="1">
++                            <container classes="sd-card-body" design_component="card-body" is_div="1">
++                                <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                                     <PassthroughTextElement>
+                                         Title
+                                 <paragraph classes="sd-card-text">
+                                     Text
+-                <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="True">
+-                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="True">
++                <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="1">
++                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="1">
+                         <image alt="" candidates="{'*': 'images/particle_background.jpg'}" classes="sd-card-img-top" uri="images/particle_background.jpg">
+-                        <container classes="sd-card-header" design_component="card-header" is_div="True">
++                        <container classes="sd-card-header" design_component="card-header" is_div="1">
+                             <paragraph classes="sd-card-text">
+                                 Header
+-                        <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                            <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++                        <container classes="sd-card-body" design_component="card-body" is_div="1">
++                            <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                                 <PassthroughTextElement>
+                                     Title
+                             <paragraph classes="sd-card-text">
+                                 Content
+-                        <container classes="sd-card-footer" design_component="card-footer" is_div="True">
++                        <container classes="sd-card-footer" design_component="card-footer" is_div="1">
+                             <paragraph classes="sd-card-text">
+                                 Footer
+-                <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="True">
+-                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="True">
+-                        <container classes="sd-card-header" design_component="card-header" is_div="True">
++                <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="1">
++                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="1">
++                        <container classes="sd-card-header" design_component="card-header" is_div="1">
+                             <paragraph classes="sd-card-text">
+                                 Header
+-                        <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                            <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++                        <container classes="sd-card-body" design_component="card-body" is_div="1">
++                            <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                                 <PassthroughTextElement>
+                                     Title
+                             <paragraph classes="sd-card-text">
+                                 Content
+-                        <container classes="sd-card-footer" design_component="card-footer" is_div="True">
++                        <container classes="sd-card-footer" design_component="card-footer" is_div="1">
+                             <paragraph classes="sd-card-text">
+                                 Footer
+                         <image alt="" candidates="{'*': 'images/particle_background.jpg'}" classes="sd-card-img-bottom" uri="images/particle_background.jpg">
+diff -urNP sphinx-design-0.6.1.orig/tests/test_snippets/snippet_pre_card-link.xml sphinx-design-0.6.1/tests/test_snippets/snippet_pre_card-link.xml
+--- sphinx-design-0.6.1.orig/tests/test_snippets/snippet_pre_card-link.xml	2024-08-02 13:45:57.000000000 +0000
++++ sphinx-design-0.6.1/tests/test_snippets/snippet_pre_card-link.xml	2025-11-24 04:09:21.018316113 +0000
+@@ -14,9 +14,9 @@
+                 <literal>
+                     link-type
+                  options, you can turn an entire card into a clickable link. Try hovering over then clicking on the cards below:
+-            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm sd-card-hover" design_component="card" is_div="True">
+-                <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm sd-card-hover" design_component="card" is_div="1">
++                <container classes="sd-card-body" design_component="card-body" is_div="1">
++                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                         <PassthroughTextElement>
+                             Clickable Card (external)
+                     <paragraph classes="sd-card-text">
+@@ -28,9 +28,9 @@
+                     <reference classes="sd-stretched-link sd-hide-link-text" refuri="https://example.com">
+                         <inline>
+                             https://example.com
+-            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm sd-card-hover" design_component="card" is_div="True">
+-                <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm sd-card-hover" design_component="card" is_div="1">
++                <container classes="sd-card-body" design_component="card-body" is_div="1">
++                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                         <PassthroughTextElement>
+                             Clickable Card (external)
+                     <paragraph classes="sd-card-text">
+@@ -42,9 +42,9 @@
+                     <reference classes="sd-stretched-link sd-hide-link-text" refuri="https://example.com">
+                         <inline>
+                             example.com
+-            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm sd-card-hover" design_component="card" is_div="True">
+-                <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm sd-card-hover" design_component="card" is_div="1">
++                <container classes="sd-card-body" design_component="card-body" is_div="1">
++                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                         <PassthroughTextElement>
+                             Clickable Card (internal)
+                     <paragraph classes="sd-card-text">
+@@ -53,12 +53,12 @@
+                             cards-clickable
+                          reference target.
+                 <PassthroughTextElement>
+-                    <pending_xref classes="sd-stretched-link sd-hide-link-text" refdoc="index" refdomain="std" refexplicit="False" reftarget="cards-clickable" reftype="ref" refwarn="True">
++                    <pending_xref classes="sd-stretched-link sd-hide-link-text" refdoc="index" refdomain="std" refexplicit="0" reftarget="cards-clickable" reftype="ref" refwarn="1">
+                         <inline>
+                             cards-clickable
+-            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm sd-card-hover" design_component="card" is_div="True">
+-                <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm sd-card-hover" design_component="card" is_div="1">
++                <container classes="sd-card-body" design_component="card-body" is_div="1">
++                    <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                         <PassthroughTextElement>
+                             Clickable Card (internal)
+                     <paragraph classes="sd-card-text">
+@@ -67,6 +67,6 @@
+                             cards-clickable
+                          reference target.
+                 <PassthroughTextElement>
+-                    <pending_xref classes="sd-stretched-link sd-hide-link-text" refdoc="index" refdomain="std" refexplicit="True" reftarget="cards-clickable" reftype="ref" refwarn="True">
++                    <pending_xref classes="sd-stretched-link sd-hide-link-text" refdoc="index" refdomain="std" refexplicit="1" reftarget="cards-clickable" reftype="ref" refwarn="1">
+                         <inline>
+                             clickable cards
+diff -urNP sphinx-design-0.6.1.orig/tests/test_snippets/snippet_pre_card-title-link.xml sphinx-design-0.6.1/tests/test_snippets/snippet_pre_card-title-link.xml
+--- sphinx-design-0.6.1.orig/tests/test_snippets/snippet_pre_card-title-link.xml	2024-08-02 13:45:57.000000000 +0000
++++ sphinx-design-0.6.1/tests/test_snippets/snippet_pre_card-title-link.xml	2025-11-24 04:09:21.090952124 +0000
+@@ -3,15 +3,15 @@
+         <title>
+             Heading
+         <target refid="target">
+-        <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm" design_component="card" ids="target" is_div="True" names="target">
+-            <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++        <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm" design_component="card" ids="target" is_div="1" names="target">
++            <container classes="sd-card-body" design_component="card-body" is_div="1">
++                <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                     <PassthroughTextElement>
+                         Card Title 
+                         <reference refuri="https://example.com">
+                             https://example.com
+                          
+-                        <pending_xref refdoc="index" refdomain="std" refexplicit="True" reftarget="target" reftype="ref" refwarn="True">
++                        <pending_xref refdoc="index" refdomain="std" refexplicit="1" reftarget="target" reftype="ref" refwarn="1">
+                             <inline classes="xref std std-ref">
+                                 link
+                 <paragraph classes="sd-card-text">
+diff -urNP sphinx-design-0.6.1.orig/tests/test_snippets/snippet_pre_div-basic.xml sphinx-design-0.6.1/tests/test_snippets/snippet_pre_div-basic.xml
+--- sphinx-design-0.6.1.orig/tests/test_snippets/snippet_pre_div-basic.xml	2024-08-02 13:45:57.000000000 +0000
++++ sphinx-design-0.6.1/tests/test_snippets/snippet_pre_div-basic.xml	2025-11-24 04:09:21.162890223 +0000
+@@ -2,6 +2,6 @@
+     <section ids="heading" names="heading">
+         <title>
+             Heading
+-        <container classes="sd-text-center sd-font-italic sd-text-primary" design_component="div" is_div="True">
++        <container classes="sd-text-center sd-font-italic sd-text-primary" design_component="div" is_div="1">
+             <paragraph>
+                 Some CSS styled text
+diff -urNP sphinx-design-0.6.1.orig/tests/test_snippets/snippet_pre_dropdown-basic.xml sphinx-design-0.6.1/tests/test_snippets/snippet_pre_dropdown-basic.xml
+--- sphinx-design-0.6.1.orig/tests/test_snippets/snippet_pre_dropdown-basic.xml	2024-08-02 13:45:57.000000000 +0000
++++ sphinx-design-0.6.1/tests/test_snippets/snippet_pre_dropdown-basic.xml	2025-11-24 04:09:21.237734124 +0000
+@@ -2,15 +2,15 @@
+     <section ids="heading" names="heading">
+         <title>
+             Heading
+-        <container body_classes="" chevron="True" container_classes="sd-mb-3" design_component="dropdown" has_title="False" icon="True" is_div="True" opened="False" title_classes="" type="dropdown">
++        <container body_classes="" chevron="True" container_classes="sd-mb-3" design_component="dropdown" has_title="0" icon="True" is_div="1" opened="0" title_classes="" type="dropdown">
+             <paragraph>
+                 Dropdown content
+-        <container body_classes="" chevron="True" container_classes="sd-mb-3" design_component="dropdown" has_title="True" icon="True" is_div="True" opened="False" title_classes="" type="dropdown">
++        <container body_classes="" chevron="True" container_classes="sd-mb-3" design_component="dropdown" has_title="1" icon="True" is_div="1" opened="0" title_classes="" type="dropdown">
+             <rubric>
+                 Dropdown title
+             <paragraph>
+                 Dropdown content
+-        <container body_classes="" chevron="True" container_classes="sd-mb-3" design_component="dropdown" has_title="True" icon="True" is_div="True" opened="True" title_classes="" type="dropdown">
++        <container body_classes="" chevron="True" container_classes="sd-mb-3" design_component="dropdown" has_title="1" icon="True" is_div="1" opened="1" title_classes="" type="dropdown">
+             <rubric>
+                 Open dropdown
+             <paragraph>
+diff -urNP sphinx-design-0.6.1.orig/tests/test_snippets/snippet_pre_dropdown-options.xml sphinx-design-0.6.1/tests/test_snippets/snippet_pre_dropdown-options.xml
+--- sphinx-design-0.6.1.orig/tests/test_snippets/snippet_pre_dropdown-options.xml	2024-08-02 13:45:57.000000000 +0000
++++ sphinx-design-0.6.1/tests/test_snippets/snippet_pre_dropdown-options.xml	2025-11-24 04:09:21.311849382 +0000
+@@ -2,16 +2,16 @@
+     <section ids="heading" names="heading">
+         <title>
+             Heading
+-        <container body_classes="class-body" chevron="True" container_classes="sd-m-1 class-container" design_component="dropdown" has_title="True" icon="alert" is_div="True" opened="False" title_classes="class-title sd-bg-info sd-bg-text-info" type="dropdown">
++        <container body_classes="class-body" chevron="True" container_classes="sd-m-1 class-container" design_component="dropdown" has_title="1" icon="alert" is_div="1" opened="0" title_classes="class-title sd-bg-info sd-bg-text-info" type="dropdown">
+             <rubric ids="target" names="target">
+                 Title
+             <paragraph>
+                 Dropdown content
+         <paragraph>
+-            <pending_xref refdoc="index" refdomain="std" refexplicit="False" reftarget="target" reftype="ref" refwarn="True">
++            <pending_xref refdoc="index" refdomain="std" refexplicit="0" reftarget="target" reftype="ref" refwarn="1">
+                 <inline classes="xref std std-ref">
+                     target
+             , 
+-            <pending_xref refdoc="index" refdomain="std" refexplicit="True" reftarget="target" reftype="ref" refwarn="True">
++            <pending_xref refdoc="index" refdomain="std" refexplicit="1" reftarget="target" reftype="ref" refwarn="1">
+                 <inline classes="xref std std-ref">
+                     text
+diff -urNP sphinx-design-0.6.1.orig/tests/test_snippets/snippet_pre_grid-basic.xml sphinx-design-0.6.1/tests/test_snippets/snippet_pre_grid-basic.xml
+--- sphinx-design-0.6.1.orig/tests/test_snippets/snippet_pre_grid-basic.xml	2024-08-02 13:45:57.000000000 +0000
++++ sphinx-design-0.6.1/tests/test_snippets/snippet_pre_grid-basic.xml	2025-11-24 04:09:21.387796172 +0000
+@@ -2,17 +2,17 @@
+     <section ids="heading" names="heading">
+         <title>
+             Heading
+-        <container classes="sd-container-fluid sd-sphinx-override sd-mb-4 sd-border-1" design_component="grid-container" is_div="True">
+-            <container classes="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-2 sd-row-cols-md-3 sd-row-cols-lg-4" design_component="grid-row" is_div="True">
+-                <container classes="sd-col sd-d-flex-column" design_component="grid-item" is_div="True">
++        <container classes="sd-container-fluid sd-sphinx-override sd-mb-4 sd-border-1" design_component="grid-container" is_div="1">
++            <container classes="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-2 sd-row-cols-md-3 sd-row-cols-lg-4" design_component="grid-row" is_div="1">
++                <container classes="sd-col sd-d-flex-column" design_component="grid-item" is_div="1">
+                     <paragraph>
+                         A
+-                <container classes="sd-col sd-d-flex-column" design_component="grid-item" is_div="True">
++                <container classes="sd-col sd-d-flex-column" design_component="grid-item" is_div="1">
+                     <paragraph>
+                         B
+-                <container classes="sd-col sd-d-flex-column" design_component="grid-item" is_div="True">
++                <container classes="sd-col sd-d-flex-column" design_component="grid-item" is_div="1">
+                     <paragraph>
+                         C
+-                <container classes="sd-col sd-d-flex-column" design_component="grid-item" is_div="True">
++                <container classes="sd-col sd-d-flex-column" design_component="grid-item" is_div="1">
+                     <paragraph>
+                         D
+diff -urNP sphinx-design-0.6.1.orig/tests/test_snippets/snippet_pre_grid-card-columns.xml sphinx-design-0.6.1/tests/test_snippets/snippet_pre_grid-card-columns.xml
+--- sphinx-design-0.6.1.orig/tests/test_snippets/snippet_pre_grid-card-columns.xml	2024-08-02 13:45:57.000000000 +0000
++++ sphinx-design-0.6.1/tests/test_snippets/snippet_pre_grid-card-columns.xml	2025-11-24 04:09:21.462292717 +0000
+@@ -2,20 +2,20 @@
+     <section ids="heading" names="heading">
+         <title>
+             Heading
+-        <container classes="sd-container-fluid sd-sphinx-override sd-mb-4" design_component="grid-container" is_div="True">
+-            <container classes="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2" design_component="grid-row" is_div="True">
+-                <container classes="sd-col sd-d-flex-row sd-col-auto sd-col-xs-auto sd-col-sm-auto sd-col-md-auto sd-col-lg-auto" design_component="grid-item" is_div="True">
+-                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="True">
+-                        <container classes="sd-card-body" design_component="card-body" is_div="True">
++        <container classes="sd-container-fluid sd-sphinx-override sd-mb-4" design_component="grid-container" is_div="1">
++            <container classes="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2" design_component="grid-row" is_div="1">
++                <container classes="sd-col sd-d-flex-row sd-col-auto sd-col-xs-auto sd-col-sm-auto sd-col-md-auto sd-col-lg-auto" design_component="grid-item" is_div="1">
++                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="1">
++                        <container classes="sd-card-body" design_component="card-body" is_div="1">
+                             <paragraph classes="sd-card-text">
+                                 A
+-                <container classes="sd-col sd-d-flex-row sd-col-12 sd-col-xs-12 sd-col-sm-6 sd-col-md-6 sd-col-lg-6" design_component="grid-item" is_div="True">
+-                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="True">
+-                        <container classes="sd-card-body" design_component="card-body" is_div="True">
++                <container classes="sd-col sd-d-flex-row sd-col-12 sd-col-xs-12 sd-col-sm-6 sd-col-md-6 sd-col-lg-6" design_component="grid-item" is_div="1">
++                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="1">
++                        <container classes="sd-card-body" design_component="card-body" is_div="1">
+                             <paragraph classes="sd-card-text">
+                                 B
+-                <container classes="sd-col sd-d-flex-row sd-col-12 sd-col-xs-12 sd-col-sm-12 sd-col-md-12 sd-col-lg-12" design_component="grid-item" is_div="True">
+-                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="True">
+-                        <container classes="sd-card-body" design_component="card-body" is_div="True">
++                <container classes="sd-col sd-d-flex-row sd-col-12 sd-col-xs-12 sd-col-sm-12 sd-col-md-12 sd-col-lg-12" design_component="grid-item" is_div="1">
++                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="1">
++                        <container classes="sd-card-body" design_component="card-body" is_div="1">
+                             <paragraph classes="sd-card-text">
+                                 C
+diff -urNP sphinx-design-0.6.1.orig/tests/test_snippets/snippet_pre_grid-card.xml sphinx-design-0.6.1/tests/test_snippets/snippet_pre_grid-card.xml
+--- sphinx-design-0.6.1.orig/tests/test_snippets/snippet_pre_grid-card.xml	2024-08-02 13:45:57.000000000 +0000
++++ sphinx-design-0.6.1/tests/test_snippets/snippet_pre_grid-card.xml	2025-11-24 04:09:21.536185661 +0000
+@@ -2,20 +2,20 @@
+     <section ids="heading" names="heading">
+         <title>
+             Heading
+-        <container classes="sd-container-fluid sd-sphinx-override sd-mb-4" design_component="grid-container" is_div="True">
+-            <container classes="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2" design_component="grid-row" is_div="True">
+-                <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="True">
+-                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="True">
+-                        <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                            <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++        <container classes="sd-container-fluid sd-sphinx-override sd-mb-4" design_component="grid-container" is_div="1">
++            <container classes="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2" design_component="grid-row" is_div="1">
++                <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="1">
++                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="1">
++                        <container classes="sd-card-body" design_component="card-body" is_div="1">
++                            <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                                 <PassthroughTextElement>
+                                     Title 1
+                             <paragraph classes="sd-card-text">
+                                 A
+-                <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="True">
+-                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="True">
+-                        <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                            <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++                <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="1">
++                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="1">
++                        <container classes="sd-card-body" design_component="card-body" is_div="1">
++                            <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                                 <PassthroughTextElement>
+                                     Title 2
+                             <paragraph classes="sd-card-text">
+diff -urNP sphinx-design-0.6.1.orig/tests/test_snippets/snippet_pre_grid-gutter.xml sphinx-design-0.6.1/tests/test_snippets/snippet_pre_grid-gutter.xml
+--- sphinx-design-0.6.1.orig/tests/test_snippets/snippet_pre_grid-gutter.xml	2024-08-02 13:45:57.000000000 +0000
++++ sphinx-design-0.6.1/tests/test_snippets/snippet_pre_grid-gutter.xml	2025-11-24 04:09:21.638998092 +0000
+@@ -2,27 +2,27 @@
+     <section ids="heading" names="heading">
+         <title>
+             Heading
+-        <container classes="sd-container-fluid sd-sphinx-override sd-mb-4" design_component="grid-container" is_div="True">
+-            <container classes="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-1 sd-g-xs-1 sd-g-sm-1 sd-g-md-1 sd-g-lg-1" design_component="grid-row" is_div="True">
+-                <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="True">
+-                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="True">
+-                        <container classes="sd-card-body" design_component="card-body" is_div="True">
++        <container classes="sd-container-fluid sd-sphinx-override sd-mb-4" design_component="grid-container" is_div="1">
++            <container classes="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-1 sd-g-xs-1 sd-g-sm-1 sd-g-md-1 sd-g-lg-1" design_component="grid-row" is_div="1">
++                <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="1">
++                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="1">
++                        <container classes="sd-card-body" design_component="card-body" is_div="1">
+                             <paragraph classes="sd-card-text">
+                                 A
+-                <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="True">
+-                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="True">
+-                        <container classes="sd-card-body" design_component="card-body" is_div="True">
++                <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="1">
++                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="1">
++                        <container classes="sd-card-body" design_component="card-body" is_div="1">
+                             <paragraph classes="sd-card-text">
+                                 B
+-        <container classes="sd-container-fluid sd-sphinx-override sd-mb-4" design_component="grid-container" is_div="True">
+-            <container classes="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-4 sd-g-lg-5" design_component="grid-row" is_div="True">
+-                <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="True">
+-                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="True">
+-                        <container classes="sd-card-body" design_component="card-body" is_div="True">
++        <container classes="sd-container-fluid sd-sphinx-override sd-mb-4" design_component="grid-container" is_div="1">
++            <container classes="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-4 sd-g-lg-5" design_component="grid-row" is_div="1">
++                <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="1">
++                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="1">
++                        <container classes="sd-card-body" design_component="card-body" is_div="1">
+                             <paragraph classes="sd-card-text">
+                                 A
+-                <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="True">
+-                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="True">
+-                        <container classes="sd-card-body" design_component="card-body" is_div="True">
++                <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="1">
++                    <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="1">
++                        <container classes="sd-card-body" design_component="card-body" is_div="1">
+                             <paragraph classes="sd-card-text">
+                                 B
+diff -urNP sphinx-design-0.6.1.orig/tests/test_snippets/snippet_pre_grid-nested.xml sphinx-design-0.6.1/tests/test_snippets/snippet_pre_grid-nested.xml
+--- sphinx-design-0.6.1.orig/tests/test_snippets/snippet_pre_grid-nested.xml	2024-08-02 13:45:57.000000000 +0000
++++ sphinx-design-0.6.1/tests/test_snippets/snippet_pre_grid-nested.xml	2025-11-24 04:09:21.717064401 +0000
+@@ -2,52 +2,52 @@
+     <section ids="heading" names="heading">
+         <title>
+             Heading
+-        <container classes="sd-container-fluid sd-sphinx-override sd-mb-4" design_component="grid-container" is_div="True">
+-            <container classes="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-1 sd-g-xs-1 sd-g-sm-1 sd-g-md-1 sd-g-lg-1" design_component="grid-row" is_div="True">
+-                <container classes="sd-col sd-d-flex-column" design_component="grid-item" is_div="True">
+-                    <container classes="sd-container-fluid sd-sphinx-override sd-mb-4" design_component="grid-container" is_div="True">
+-                        <container classes="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-1 sd-row-cols-lg-1 sd-g-1 sd-g-xs-1 sd-g-sm-1 sd-g-md-1 sd-g-lg-1" design_component="grid-row" is_div="True">
+-                            <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="True">
+-                                <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="True">
+-                                    <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                                        <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++        <container classes="sd-container-fluid sd-sphinx-override sd-mb-4" design_component="grid-container" is_div="1">
++            <container classes="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-1 sd-g-xs-1 sd-g-sm-1 sd-g-md-1 sd-g-lg-1" design_component="grid-row" is_div="1">
++                <container classes="sd-col sd-d-flex-column" design_component="grid-item" is_div="1">
++                    <container classes="sd-container-fluid sd-sphinx-override sd-mb-4" design_component="grid-container" is_div="1">
++                        <container classes="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-1 sd-row-cols-lg-1 sd-g-1 sd-g-xs-1 sd-g-sm-1 sd-g-md-1 sd-g-lg-1" design_component="grid-row" is_div="1">
++                            <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="1">
++                                <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="1">
++                                    <container classes="sd-card-body" design_component="card-body" is_div="1">
++                                        <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                                             <PassthroughTextElement>
+                                                 Item 1.1
+                                         <paragraph classes="sd-card-text">
+                                             Multi-line
+                                         <paragraph classes="sd-card-text">
+                                             content
+-                            <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="True">
+-                                <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="True">
+-                                    <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                                        <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++                            <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="1">
++                                <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="1">
++                                    <container classes="sd-card-body" design_component="card-body" is_div="1">
++                                        <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                                             <PassthroughTextElement>
+                                                 Item 1.2
+                                         <paragraph classes="sd-card-text">
+                                             Content
+-                <container classes="sd-col sd-d-flex-column" design_component="grid-item" is_div="True">
+-                    <container classes="sd-container-fluid sd-sphinx-override sd-mb-4" design_component="grid-container" is_div="True">
+-                        <container classes="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-1 sd-row-cols-lg-1 sd-g-1 sd-g-xs-1 sd-g-sm-1 sd-g-md-1 sd-g-lg-1" design_component="grid-row" is_div="True">
+-                            <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="True">
+-                                <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="True">
+-                                    <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                                        <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++                <container classes="sd-col sd-d-flex-column" design_component="grid-item" is_div="1">
++                    <container classes="sd-container-fluid sd-sphinx-override sd-mb-4" design_component="grid-container" is_div="1">
++                        <container classes="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-1 sd-row-cols-lg-1 sd-g-1 sd-g-xs-1 sd-g-sm-1 sd-g-md-1 sd-g-lg-1" design_component="grid-row" is_div="1">
++                            <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="1">
++                                <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="1">
++                                    <container classes="sd-card-body" design_component="card-body" is_div="1">
++                                        <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                                             <PassthroughTextElement>
+                                                 Item 2.1
+                                         <paragraph classes="sd-card-text">
+                                             Content
+-                            <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="True">
+-                                <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="True">
+-                                    <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                                        <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++                            <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="1">
++                                <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="1">
++                                    <container classes="sd-card-body" design_component="card-body" is_div="1">
++                                        <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                                             <PassthroughTextElement>
+                                                 Item 2.2
+                                         <paragraph classes="sd-card-text">
+                                             Content
+-                            <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="True">
+-                                <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="True">
+-                                    <container classes="sd-card-body" design_component="card-body" is_div="True">
+-                                        <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
++                            <container classes="sd-col sd-d-flex-row" design_component="grid-item" is_div="1">
++                                <container classes="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm" design_component="card" is_div="1">
++                                    <container classes="sd-card-body" design_component="card-body" is_div="1">
++                                        <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="1">
+                                             <PassthroughTextElement>
+                                                 Item 2.3
+                                         <paragraph classes="sd-card-text">
+diff -urNP sphinx-design-0.6.1.orig/tests/test_snippets/snippet_pre_tab-basic.xml sphinx-design-0.6.1/tests/test_snippets/snippet_pre_tab-basic.xml
+--- sphinx-design-0.6.1.orig/tests/test_snippets/snippet_pre_tab-basic.xml	2024-08-02 13:45:57.000000000 +0000
++++ sphinx-design-0.6.1/tests/test_snippets/snippet_pre_tab-basic.xml	2025-11-24 04:09:22.100176155 +0000
+@@ -2,16 +2,16 @@
+     <section ids="heading" names="heading">
+         <title>
+             Heading
+-        <container classes="sd-tab-set" design_component="tab-set" is_div="True">
+-            <container classes="sd-tab-item" design_component="tab-item" is_div="True" selected="False">
++        <container classes="sd-tab-set" design_component="tab-set" is_div="1">
++            <container classes="sd-tab-item" design_component="tab-item" is_div="1" selected="0">
+                 <rubric classes="sd-tab-label">
+                     Label1
+-                <container classes="sd-tab-content" design_component="tab-content" is_div="True">
++                <container classes="sd-tab-content" design_component="tab-content" is_div="1">
+                     <paragraph>
+                         Content 1
+-            <container classes="sd-tab-item" design_component="tab-item" is_div="True" selected="False">
++            <container classes="sd-tab-item" design_component="tab-item" is_div="1" selected="0">
+                 <rubric classes="sd-tab-label">
+                     Label2
+-                <container classes="sd-tab-content" design_component="tab-content" is_div="True">
++                <container classes="sd-tab-content" design_component="tab-content" is_div="1">
+                     <paragraph>
+                         Content 2
+diff -urNP sphinx-design-0.6.1.orig/tests/test_snippets/snippet_pre_tab-code-set.xml sphinx-design-0.6.1/tests/test_snippets/snippet_pre_tab-code-set.xml
+--- sphinx-design-0.6.1.orig/tests/test_snippets/snippet_pre_tab-code-set.xml	2024-08-02 13:45:57.000000000 +0000
++++ sphinx-design-0.6.1/tests/test_snippets/snippet_pre_tab-code-set.xml	2025-11-24 04:09:22.217849583 +0000
+@@ -2,16 +2,16 @@
+     <section ids="heading" names="heading">
+         <title>
+             Heading
+-        <container classes="sd-tab-set" design_component="tab-set" is_div="True">
+-            <container classes="sd-tab-item" design_component="tab-item" is_div="True">
++        <container classes="sd-tab-set" design_component="tab-set" is_div="1">
++            <container classes="sd-tab-item" design_component="tab-item" is_div="1">
+                 <rubric classes="sd-tab-label" sync_group="code" sync_id="python">
+                     PYTHON
+-                <container classes="sd-tab-content" design_component="tab-content" is_div="True">
+-                    <literal_block force="False" highlight_args="{'linenostart': 1}" language="python" source="snippet.py" xml:space="preserve">
++                <container classes="sd-tab-content" design_component="tab-content" is_div="1">
++                    <literal_block force="0" highlight_args="{'linenostart': 1}" language="python" source="snippet.py" xml:space="preserve">
+                         a = 1
+-            <container classes="sd-tab-item" design_component="tab-item" is_div="True">
++            <container classes="sd-tab-item" design_component="tab-item" is_div="1">
+                 <rubric classes="sd-tab-label" sync_group="code" sync_id="javascript">
+                     JAVASCRIPT
+-                <container classes="sd-tab-content" design_component="tab-content" is_div="True">
+-                    <literal_block force="False" highlight_args="{}" language="javascript" xml:space="preserve">
++                <container classes="sd-tab-content" design_component="tab-content" is_div="1">
++                    <literal_block force="0" highlight_args="{}" language="javascript" xml:space="preserve">
+                         a = 1;
+diff -urNP sphinx-design-0.6.1.orig/tests/test_snippets/snippet_pre_tab-options.xml sphinx-design-0.6.1/tests/test_snippets/snippet_pre_tab-options.xml
+--- sphinx-design-0.6.1.orig/tests/test_snippets/snippet_pre_tab-options.xml	2024-08-02 13:45:57.000000000 +0000
++++ sphinx-design-0.6.1/tests/test_snippets/snippet_pre_tab-options.xml	2025-11-24 04:09:22.293674632 +0000
+@@ -2,19 +2,19 @@
+     <section ids="heading" names="heading">
+         <title>
+             Heading
+-        <container classes="sd-tab-set class-set" design_component="tab-set" is_div="True">
+-            <container classes="sd-tab-item class-container" design_component="tab-item" is_div="True" selected="True">
++        <container classes="sd-tab-set class-set" design_component="tab-set" is_div="1">
++            <container classes="sd-tab-item class-container" design_component="tab-item" is_div="1" selected="1">
+                 <rubric classes="sd-tab-label class-label" ids="target" names="target">
+                     <strong>
+                         Label
+-                <container classes="sd-tab-content class-content" design_component="tab-content" is_div="True">
++                <container classes="sd-tab-content class-content" design_component="tab-content" is_div="1">
+                     <paragraph>
+                         Content
+         <paragraph>
+-            <pending_xref refdoc="index" refdomain="std" refexplicit="False" reftarget="target" reftype="ref" refwarn="True">
++            <pending_xref refdoc="index" refdomain="std" refexplicit="0" reftarget="target" reftype="ref" refwarn="1">
+                 <inline classes="xref std std-ref">
+                     target
+             , 
+-            <pending_xref refdoc="index" refdomain="std" refexplicit="True" reftarget="target" reftype="ref" refwarn="True">
++            <pending_xref refdoc="index" refdomain="std" refexplicit="1" reftarget="target" reftype="ref" refwarn="1">
+                 <inline classes="xref std std-ref">
+                     text
+diff -urNP sphinx-design-0.6.1.orig/tests/test_snippets/snippet_pre_tab-sync.xml sphinx-design-0.6.1/tests/test_snippets/snippet_pre_tab-sync.xml
+--- sphinx-design-0.6.1.orig/tests/test_snippets/snippet_pre_tab-sync.xml	2024-08-02 13:45:57.000000000 +0000
++++ sphinx-design-0.6.1/tests/test_snippets/snippet_pre_tab-sync.xml	2025-11-24 04:09:22.372101437 +0000
+@@ -2,29 +2,29 @@
+     <section ids="heading" names="heading">
+         <title>
+             Heading
+-        <container classes="sd-tab-set" design_component="tab-set" is_div="True">
+-            <container classes="sd-tab-item" design_component="tab-item" is_div="True" selected="False">
++        <container classes="sd-tab-set" design_component="tab-set" is_div="1">
++            <container classes="sd-tab-item" design_component="tab-item" is_div="1" selected="0">
+                 <rubric classes="sd-tab-label" sync_group="category" sync_id="key1">
+                     Label1
+-                <container classes="sd-tab-content" design_component="tab-content" is_div="True">
++                <container classes="sd-tab-content" design_component="tab-content" is_div="1">
+                     <paragraph>
+                         Content 1
+-            <container classes="sd-tab-item" design_component="tab-item" is_div="True" selected="False">
++            <container classes="sd-tab-item" design_component="tab-item" is_div="1" selected="0">
+                 <rubric classes="sd-tab-label" sync_group="category" sync_id="key2">
+                     Label2
+-                <container classes="sd-tab-content" design_component="tab-content" is_div="True">
++                <container classes="sd-tab-content" design_component="tab-content" is_div="1">
+                     <paragraph>
+                         Content 2
+-        <container classes="sd-tab-set" design_component="tab-set" is_div="True">
+-            <container classes="sd-tab-item" design_component="tab-item" is_div="True" selected="False">
++        <container classes="sd-tab-set" design_component="tab-set" is_div="1">
++            <container classes="sd-tab-item" design_component="tab-item" is_div="1" selected="0">
+                 <rubric classes="sd-tab-label" sync_group="category" sync_id="key1">
+                     Label1
+-                <container classes="sd-tab-content" design_component="tab-content" is_div="True">
++                <container classes="sd-tab-content" design_component="tab-content" is_div="1">
+                     <paragraph>
+                         Content 1
+-            <container classes="sd-tab-item" design_component="tab-item" is_div="True" selected="False">
++            <container classes="sd-tab-item" design_component="tab-item" is_div="1" selected="0">
+                 <rubric classes="sd-tab-label" sync_group="category" sync_id="key2">
+                     Label2
+-                <container classes="sd-tab-content" design_component="tab-content" is_div="True">
++                <container classes="sd-tab-content" design_component="tab-content" is_div="1">
+                     <paragraph>
+                         Content 2

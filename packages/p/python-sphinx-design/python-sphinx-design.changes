@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 24 04:19:48 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch regenerate-snippets-docutils-0.22.patch:
+  * Regenerate XML snippets with docutils 0.22.
+
+-------------------------------------------------------------------
 Sun Nov  3 14:46:01 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>1221234</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6220134198d2e963dbe3cbddb178ae9f</srcmd5>
+    <version>0.6.1</version>
+    <time>1763990035</time>
+    <user>anag_factory</user>
+    <comment>- Add patch regenerate-snippets-docutils-0.22.patch:
+  * Regenerate XML snippets with docutils 0.22.</comment>
+    <requestid>1319617</requestid>
+  </revision>
 </revisionlist>
