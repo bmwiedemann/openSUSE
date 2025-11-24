@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Nov 20 10:53:26 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 0.12.3:
+  - New features
+    * Added Notification action filtering
+    * Add config option to auto expand the per volume controls
+    * MPRIS: Support base64 album art
+  - Bug fixes
+    * Update waybar docs to deal with edge case
+    * update the config.json to be in sync with latest swaync(5) page
+    * Queue close from windows animation callback instead of calling it directly
+    * Fixed Notification widgets not being disposed of properly
+    * Always run the notification window show method
+    * Fix floating notifications input region not always being set
+    * Added missing control-center-positionX and Y to man 5 page
+
+-------------------------------------------------------------------
 Fri Oct  3 14:54:12 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 0.12.2:
