@@ -61,4 +61,17 @@
   this issue</comment>
     <requestid>1188678</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5bb2c5220a4217870c8d43b18caa0c52</srcmd5>
+    <version>0.5.6</version>
+    <time>1763989997</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.5.6:
+  * Fix Message dialog alignment
+  * Fix typos
+  * Drop experimental LUKS support
+  * Modernize UI code: migrate to GtkBuilder and clean up GTK2-era patterns
+  * Fix 48x48 icon size (forwarded request 1319578 from amanzini)</comment>
+    <requestid>1319648</requestid>
+  </revision>
 </revisionlist>

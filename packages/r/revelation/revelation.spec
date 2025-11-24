@@ -1,7 +1,7 @@
 #
 # spec file for package revelation
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           revelation
-Version:        0.5.5
+Version:        0.5.6
 Release:        0
 Summary:        Password manager for GNOME
 License:        GPL-2.0-only

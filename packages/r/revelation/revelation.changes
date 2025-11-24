@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Nov 23 17:40:42 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.5.6:
+  * Fix Message dialog alignment
+  * Fix typos
+  * Drop experimental LUKS support
+  * Modernize UI code: migrate to GtkBuilder and clean up GTK2-era patterns
+  * Fix 48x48 icon size
+
+-------------------------------------------------------------------
 Wed Jul 17 08:12:58 UTC 2024 - ming li <mli@suse.com>
 
 - Update to version 0.5.5:
