@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 22 21:20:40 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove unused BuildRequires: update-desktop-files.
+
+-------------------------------------------------------------------
 Thu Nov 28 18:56:25 UTC 2024 - Enno Gotthold <egotthold@suse.com>
 
 - update to 10.5.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package linkchecker
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,7 +44,6 @@ BuildRequires:  %{python_module pyxdg}
 BuildRequires:  %{python_module requests >= 2.20}
 # /SECTION
 BuildRequires:  fdupes
-BuildRequires:  update-desktop-files
 Requires:       python-beautifulsoup4 >= 4.8.1
 Requires:       python-dnspython >= 2.0
 Requires:       python-pyxdg
