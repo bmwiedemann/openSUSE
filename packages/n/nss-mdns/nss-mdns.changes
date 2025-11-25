@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 19 17:01:18 UTC 2025 - Stefan Schubert <schubi@suse.com>
+
+- Using nsswitch-config for setting nsswitch.conf
+  (jsc#PED-13807)
+
+-------------------------------------------------------------------
 Sun Dec  4 14:15:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 0.15.1:

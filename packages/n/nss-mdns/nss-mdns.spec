@@ -1,7 +1,7 @@
 #
 # spec file for package nss-mdns
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ Source2:        baselibs.conf
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(check)
 Requires:       avahi
+Requires(post): nsswitch-config >= 0.0.7
+Requires(preun):nsswitch-config >= 0.0.7
 # FIXME: use proper Requires(pre/post/preun/...)
 PreReq:         grep
 # needed by nss-mdns-config

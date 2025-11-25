@@ -208,4 +208,14 @@
     `/var/run`).</comment>
     <requestid>1040189</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>32353b5fcf6eccd09882d322a35078a6</srcmd5>
+    <version>0.15.1</version>
+    <time>1764082348</time>
+    <user>anag_factory</user>
+    <comment>- Using nsswitch-config for setting nsswitch.conf
+  (jsc#PED-13807)
+</comment>
+    <requestid>1319881</requestid>
+  </revision>
 </revisionlist>
