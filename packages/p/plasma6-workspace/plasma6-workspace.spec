@@ -60,7 +60,6 @@ BuildRequires:  kwin6-devel >= %{_plasma6_bugfix}
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  qt6-waylandclient-private-devel >= %{qt6_version}
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(AppStreamQt) >= 1.0
 BuildRequires:  cmake(Breeze) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(KExiv2Qt6)

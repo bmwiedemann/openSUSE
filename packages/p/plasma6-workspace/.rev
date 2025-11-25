@@ -347,4 +347,12 @@
     <comment>Plasma 6.5.3 (forwarded request 1318450 from Vogtinator)</comment>
     <requestid>1318673</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>332b1b1cc9e7326b1c7411b392f2e6a2</srcmd5>
+    <version>6.5.3</version>
+    <time>1764082128</time>
+    <user>anag_factory</user>
+    <comment>- Remove unused BuildRequires: update-desktop-files. (forwarded request 1319428 from sbrabec)</comment>
+    <requestid>1319523</requestid>
+  </revision>
 </revisionlist>
