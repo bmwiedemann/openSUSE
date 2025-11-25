@@ -41,7 +41,6 @@ BuildRequires:  python3-psutil
 BuildRequires:  python3-python-xlib
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-wheel
-BuildRequires:  update-desktop-files
 # MANUAL BEGIN
 Requires:       python3-Babel
 Requires:       python3-cairo >= 1.11.1
