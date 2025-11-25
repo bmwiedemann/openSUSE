@@ -1,7 +1,7 @@
 #
 # spec file for package cloudflared
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cloudflared
-Version:        2025.6.0
+Version:        2025.11.1
 Release:        0
 Summary:        Cloudflare Tunnel client
 License:        Apache-2.0
@@ -29,6 +29,8 @@ Source1:        vendor.tar.gz
 Patch0:         001-skip-test.patch
 # PATCH-FIX-OPENSUSE 002-use-pie.patch hillwood@opensuse.org
 Patch1:         002-use-pie.patch
+# PATCH-FIX-UPSTREAM update-crypto.patch hillwood@opensuse.org - Fix CVE-2025-58181 and CVE-2025-22869
+Patch2:         update-crypto.patch
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  golang-packaging

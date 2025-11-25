@@ -118,4 +118,41 @@
   * Update go to 1.24 (forwarded request 1284820 from hillwood)</comment>
     <requestid>1284821</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a50b9d5d35f606ea48904897617fce0d</srcmd5>
+    <version>2025.11.1</version>
+    <time>1764082404</time>
+    <user>anag_factory</user>
+    <comment>- Update version to 2025.11.1
+  * bump coredns to solve CVE
+  * add vulncheck to cloudflared
+  * Remove references to cloudflare-go
+  * Add logging format as JSON
+  * Centralize UDP origin proxy dialing as ingress service
+  * Add virtual DNS service
+  * Add OriginDialerService to include TCP
+  * Add --dns-resolver-addrs flag
+  * Remove P256Kyber768Draft00PQKex curve from nonFips curve preferences
+  * Bump go-boring from 1.24.2 to 1.24.4
+  * Add metrics for virtual DNS origin
+  * set proper url and hostname for cloudflared tail command
+  * Add support for login interstitial auto closure
+  * update fed callback url for login helper
+  * Correct QUIC connection management for datagram handlers
+  * Set endpoint in tunnel credentials when generating locally managed tunnel
+    with a Fed token
+  * Migrate cloudflared-ci pipelines to Gitlab CI
+  * Add support for FedRAMP in originRequest Access config
+  * Add buffers for UDP and ICMP datagrams in datagram v3
+  * Add write deadline for UDP origin writes
+  * Improve metrics for datagram v3
+  * Force usage of go-boring 1.24
+  * Fix import of GPG keys when two keys are provided
+  * Fix parameter order when uploading RPM .repo file to R2
+  * Add new datagram v3 feature flag
+  * Bump datagram v3 write channel capacity
+  * Fix upload of RPM repo file during double signing
+  * Fix the cloudflared binary path used in the component test (forwarded request 1319785 from hillwood)</comment>
+    <requestid>1319787</requestid>
+  </revision>
 </revisionlist>
