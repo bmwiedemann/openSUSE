@@ -1,7 +1,7 @@
 #
 # spec file for package python-openai
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-openai
-Version:        1.91.0
+Version:        2.8.1
 Release:        0
 Summary:        OpenAI bindings for python
 License:        Apache-2.0
@@ -40,7 +40,7 @@ Requires:       python-sniffio
 Requires:       python-tqdm > 4
 Requires:       python-typing_extensions
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 # SECTION test-requirements
 BuildRequires:  %{python_module dirty-equals >= 0.6.0}
 BuildRequires:  %{python_module distro >= 1.7.0}
@@ -78,7 +78,7 @@ You can find usage examples for the OpenAI Python library in
  https://github.com/openai/openai-cookbook/.
 
 %prep
-%autosetup -p1 -n openai-%{version}
+%autosetup -p1 -n openai-python-%{version}
 
 %build
 %pyproject_wheel

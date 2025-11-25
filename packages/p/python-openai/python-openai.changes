@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Nov 25 12:54:53 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
+
+- Update to version 2.8.1:
+  * api: align types of input items / output items for typescript 
+- Update to version 2.8.0:
+  * api: gpt 5.1
+  * compat: update signatures of model_dump and model_dump_json for Pydantic v1
+- Update to version 2.7.2:
+  * compat with Python 3.14
+- Update to version to 2.7.0:
+  * client: close streams without requiring full consumption 
+  * readme: update realtime examples
+  * uploads: avoid file handle leak
+  * api: Realtime API token_limits, Hybrid searching ranking options 
+  * api: remove InputAudio from ResponseInputContent
+- complete changelog here:
+  * https://github.com/openai/openai-python/compare/v1.91.0...v2.8.1
+
+-------------------------------------------------------------------
 Thu Jun 26 17:50:11 UTC 2025 - aline.werner@suse.com
 
 - Update to version 1.91.0:
