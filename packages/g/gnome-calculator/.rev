@@ -595,4 +595,14 @@
     <comment></comment>
     <requestid>1314019</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>68c17f1cc40339bb644858f7e093333f</srcmd5>
+    <version>49.2</version>
+    <time>1764082298</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 49.2:
+  + Make history clickable again
+  + Updated translations. (forwarded request 1319161 from iznogood)</comment>
+    <requestid>1319639</requestid>
+  </revision>
 </revisionlist>
