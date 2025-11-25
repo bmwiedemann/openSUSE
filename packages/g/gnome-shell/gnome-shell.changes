@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Nov 24 16:46:08 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.2:
+  + Fix lock screen notification setting for MPRIS clients without
+    DesktopEntry
+  + Fix wrong network icon on connectivity loss
+  + Sort session list on login screen by display name
+  + Add extended OSK layouts for German and Austrian
+  + Fix leaving VPN auth helper zombie processes
+  + Fix freeze on modifier-only layout switch shortcut
+  + Show OSD for any attempted brightness change
+  + Use slider as bias when auto brightness is being used
+  + Fix glitch in list search results
+  + Fix swipe gestures behaving erroneously in RTL locales
+  + Fix misplaced separator in dash after unpinning running app
+  + Fixed crash
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Oct 15 05:37:40 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.1:

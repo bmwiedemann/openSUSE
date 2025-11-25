@@ -2587,4 +2587,27 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
     <comment></comment>
     <requestid>1311634</requestid>
   </revision>
+  <revision rev="282" vrev="1">
+    <srcmd5>7afdf2bc0847b8a58d92ddc9660888ec</srcmd5>
+    <version>49.2</version>
+    <time>1764082361</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 49.2:
+  + Fix lock screen notification setting for MPRIS clients without
+    DesktopEntry
+  + Fix wrong network icon on connectivity loss
+  + Sort session list on login screen by display name
+  + Add extended OSK layouts for German and Austrian
+  + Fix leaving VPN auth helper zombie processes
+  + Fix freeze on modifier-only layout switch shortcut
+  + Show OSD for any attempted brightness change
+  + Use slider as bias when auto brightness is being used
+  + Fix glitch in list search results
+  + Fix swipe gestures behaving erroneously in RTL locales
+  + Fix misplaced separator in dash after unpinning running app
+  + Fixed crash
+  + Misc. bug fixes and cleanups
+  + Updated translations. (forwarded request 1319807 from iznogood)</comment>
+    <requestid>1319886</requestid>
+  </revision>
 </revisionlist>
