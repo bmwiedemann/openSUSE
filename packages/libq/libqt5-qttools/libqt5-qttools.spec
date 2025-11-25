@@ -59,7 +59,6 @@ BuildRequires:  libxslt-devel
 #to create the forwarding headers
 BuildRequires:  perl
 %endif
-BuildRequires:  update-desktop-files
 BuildRequires:  xz
 Requires:       %{name}-qhelpgenerator = %{version}
 # help files are SQLite databases, so assistant/qhelpgenerator need the SQLite plugin
