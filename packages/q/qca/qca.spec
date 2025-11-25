@@ -1,7 +1,7 @@
 #
 # spec file for package qca
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,7 +58,6 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  pkcs11-helper-devel
 %endif
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 %if 0%{?qt5}
 BuildRequires:  cmake(Qt5Core) >= %{qt_min_version}
 BuildRequires:  cmake(Qt5Network) >= %{qt_min_version}

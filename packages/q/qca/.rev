@@ -128,4 +128,12 @@
     <comment></comment>
     <requestid>1251821</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>9c700dea6a00b0adc79f8de65f64e281</srcmd5>
+    <version>2.3.10</version>
+    <time>1764082133</time>
+    <user>anag_factory</user>
+    <comment>- Remove unused BuildRequires: update-desktop-files. (forwarded request 1319432 from sbrabec)</comment>
+    <requestid>1319524</requestid>
+  </revision>
 </revisionlist>
