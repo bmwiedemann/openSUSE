@@ -5713,4 +5713,12 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
   EGL_KHR_client_get_all_proc_addresses` in a 32bit prefix. (forwarded request 1318973 from jsulig)</comment>
     <requestid>1319060</requestid>
   </revision>
+  <revision rev="478" vrev="3">
+    <srcmd5>702188928bdee78e3b99b5fc69b2981f</srcmd5>
+    <version>10.19</version>
+    <time>1764082399</time>
+    <user>anag_factory</user>
+    <comment>- Remove unused BuildRequires: update-desktop-files. (forwarded request 1319777 from sbrabec)</comment>
+    <requestid>1319783</requestid>
+  </revision>
 </revisionlist>

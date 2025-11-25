@@ -89,7 +89,6 @@ BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  giflib-devel
 BuildRequires:  libgsm-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(OpenCL)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(dbus-1)
