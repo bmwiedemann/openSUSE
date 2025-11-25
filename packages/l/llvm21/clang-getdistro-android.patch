@@ -1,0 +1,13 @@
+Index: clang-21.1.5.src/lib/Driver/Distro.cpp
+===================================================================
+--- clang-21.1.5.src.orig/lib/Driver/Distro.cpp
++++ clang-21.1.5.src/lib/Driver/Distro.cpp
+@@ -221,7 +221,7 @@ static Distro::DistroType GetDistro(llvm
+                                     const llvm::Triple &TargetOrHost) {
+   // If we don't target Linux, no need to check the distro. This saves a few
+   // OS calls.
+-  if (!TargetOrHost.isOSLinux())
++  if (!TargetOrHost.isOSLinux() || TargetOrHost.isAndroid())
+     return Distro::UnknownDistro;
+ 
+   // True if we're backed by a real file system.

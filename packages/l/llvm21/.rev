@@ -96,4 +96,20 @@
 - Rebase llvm-do-not-install-static-libraries.patch.</comment>
     <requestid>1317105</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>27a158cc1e93f771c5a5b25fe7480f34</srcmd5>
+    <version>21.1.6</version>
+    <time>1764082032</time>
+    <user>anag_factory</user>
+    <comment>Update to version 21.1.6.
+  * This release contains bug-fixes for the LLVM 21.1.0 release.
+    This release is API and ABI compatible with 21.1.0.
+- Require gcc and glibc-devel for clang. Clang has its own runtime,
+  but defaults to using the GCC runtime (and glibc). (boo#1253321)
+- Rebase llvm-do-not-install-static-libraries.patch.
+- Add clang-getdistro-android.patch: Don't run distro detection
+  for Android target.
+- Don't XFAIL tools/clang/test/Driver/linux-ld.c.</comment>
+    <requestid>1319243</requestid>
+  </revision>
 </revisionlist>

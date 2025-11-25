@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Nov 21 22:34:38 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 21.1.6.
+  * This release contains bug-fixes for the LLVM 21.1.0 release.
+    This release is API and ABI compatible with 21.1.0.
+- Require gcc and glibc-devel for clang. Clang has its own runtime,
+  but defaults to using the GCC runtime (and glibc). (boo#1253321)
+- Rebase llvm-do-not-install-static-libraries.patch.
+
+-------------------------------------------------------------------
+Mon Nov 17 11:58:44 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Add clang-getdistro-android.patch: Don't run distro detection
+  for Android target.
+- Don't XFAIL tools/clang/test/Driver/linux-ld.c.
+
+-------------------------------------------------------------------
 Sat Nov  8 22:18:43 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 21.1.5.

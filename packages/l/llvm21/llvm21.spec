@@ -19,7 +19,7 @@
 %global _sonum  21
 %global _minor  %{_sonum}.1
 %global _soname %{_minor}%{?_rc:-rc%_rc}
-%global _patch_level 5
+%global _patch_level 6
 %global _relver %{_minor}.%{_patch_level}
 %global _version %_relver%{?_rc:-rc%_rc}
 %global _itsme21 1
@@ -447,6 +447,8 @@ Patch25:        check-no-llvm-exegesis.patch
 Patch27:        clang-fix-openmp-test.patch
 # PATCH-FIX-UPSTREAM: Fix test with x87 floating-point.
 Patch28:        llvm-fix-cov-test-i586.patch
+# PATCH-FIX-UPSTREAM Don't run distro detection for Android target
+Patch29:        clang-getdistro-android.patch
 BuildRequires:  %{python_pkg}-base >= 3.8
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake >= 3.13.4
@@ -551,12 +553,12 @@ This package contains documentation for the LLVM infrastructure.
 Summary:        CLANG frontend for LLVM
 Group:          Development/Languages/C and C++
 URL:            https://clang.llvm.org/
+Requires:       gcc
+Requires:       glibc-devel
 Requires:       libclang_rt%{_sonum}
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     clang-tools
-Recommends:     gcc
-Recommends:     glibc-devel
 Recommends:     libstdc++-devel
 Suggests:       clang%{_sonum}-doc
 Suggests:       libc++-devel
@@ -896,6 +898,7 @@ pushd clang-%{_version}.src
 %patch -P 6 -p1
 %patch -P 9 -p2
 %patch -P 27 -p2
+%patch -P 29 -p1
 
 # We hardcode openSUSE
 rm unittests/Driver/DistroTest.cpp
@@ -1454,8 +1457,6 @@ rm ../test/tools/llvm-cov/{multithreaded-report,sources-specified}.test
 %endif
 %{python_bin} bin/llvm-lit -sv test/
 
-# TODO: investigate!
-sed -i '1i// XFAIL: *' ../tools/clang/test/Driver/linux-ld.c
 # On ppc, these tests fails with "fatal error: error in backend: Relocation type not implemented yet!"
 sed -i '1i// XFAIL: target=powerpc-{{.*}}' ../tools/clang/test/Interpreter/{code-undo,execute{,-stmts,-weak},fail,global-dtor,lambda,simple-exception}.cpp
 # Tests hang on armv6l.
