@@ -20,7 +20,7 @@
 %bcond_with profiling
 
 Name:           gnome-software
-Version:        49.1
+Version:        49.2
 Release:        0
 Summary:        GNOME Software Store
 License:        GPL-2.0-or-later

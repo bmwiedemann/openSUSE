@@ -1335,4 +1335,14 @@ New stable release</comment>
     <comment></comment>
     <requestid>1310497</requestid>
   </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>a5d893d217f7dd64d388c6571253787a</srcmd5>
+    <version>49.2</version>
+    <time>1764082273</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 49.2:
+  + Fixed version history sometimes not showing for flatpak apps
+  + Updated translations. (forwarded request 1318970 from iznogood)</comment>
+    <requestid>1319634</requestid>
+  </revision>
 </revisionlist>
