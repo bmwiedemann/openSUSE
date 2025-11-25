@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.10.0
+%define real_version 6.10.1
 %define short_version 6.10
 %define short_name qtlottie
 %define tar_name qtlottie-everywhere-src
@@ -28,7 +28,7 @@
 %endif
 #
 Name:           qt6-lottie%{?pkg_suffix}
-Version:        6.10.0
+Version:        6.10.1
 Release:        0
 Summary:        QML API for rendering graphics and animation
 # LICENSE.GPL3-EXCEPT only applies to the conan recipe which is not used
@@ -144,7 +144,7 @@ This library does not have any ABI or API guarantees.
 
 # CMake files are not needed for plugins
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
-rm -r %{buildroot}%{_qt6_cmakedir}/Qt6QuickVectorImageGeneratorPrivate
+rm %{buildroot}%{_qt6_cmakedir}/Qt6Quick/Qt6QLottieVectorImagePlugin*
 
 %{qt6_link_executables}
 

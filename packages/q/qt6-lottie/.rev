@@ -295,4 +295,12 @@
     <comment>Set QT_QML_NO_CACHEGEN for reproducible builds (boo#1248369) (forwarded request 1311380 from bmwiedemann)</comment>
     <requestid>1311453</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>8a15d7da17f10fa8fa919480f6827530</srcmd5>
+    <version>6.10.1</version>
+    <time>1764082375</time>
+    <user>anag_factory</user>
+    <comment>Qt 6.10.1</comment>
+    <requestid>1319488</requestid>
+  </revision>
 </revisionlist>

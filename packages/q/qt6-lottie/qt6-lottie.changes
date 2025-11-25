@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 20 15:14:39 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.10.1
+  https://www.qt.io/blog/qt-6.10.1-released
+
+-------------------------------------------------------------------
 Tue Oct 14 13:27:14 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Set QT_QML_NO_CACHEGEN for reproducible builds (boo#1248369)
