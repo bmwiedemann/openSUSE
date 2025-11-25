@@ -39,7 +39,7 @@
 
 %global lib_name ansiblelint
 Name:           ansible-lint
-Version:        25.11.0
+Version:        25.11.1
 Release:        0%{?dist}
 Summary:        Best practices checker for Ansible
 License:        MIT
@@ -47,7 +47,7 @@ URL:            https://github.com/ansible/ansible-lint
 Source0:        https://github.com/ansible/ansible-lint/archive/v%{version}/ansible-lint-%{version}.tar.gz#/ansible-lint-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  python-rpm-macros
-BuildRequires:  (%{ansible_python}-base >= 3.10 with %{ansible_python}-base < 3.14)
+BuildRequires:  %{ansible_python}-base >= 3.12
 BuildRequires:  %{ansible_python}-pip
 BuildRequires:  %{ansible_python}-wheel
 BuildRequires:  fdupes
