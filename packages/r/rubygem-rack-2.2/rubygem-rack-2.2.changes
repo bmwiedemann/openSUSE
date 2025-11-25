@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 25 10:37:00 UTC 2025 - Eduardo Navarro <enavarro@suse.com>
+
+- update to version 2.2.21
+
+   * Multipart parser: limit MIME header size check to the unread buffer region
+     to avoid false multipart mime part header too large errors when previously
+     read data accumulates in the scan buffer.
+
+-------------------------------------------------------------------
 Tue Oct 14 13:32:37 UTC 2025 - Aleksei Burlakov <aburlakov@suse.com>
 
 - update to version 2.2.20 (bsc#1251936)
