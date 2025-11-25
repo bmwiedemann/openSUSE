@@ -58,7 +58,6 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-gobject-devel
 BuildRequires:  python3-xml
 BuildRequires:  readline-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(2geom) >= 1.4.0
 BuildRequires:  pkgconfig(GraphicsMagick++)
 BuildRequires:  pkgconfig(dbus-1)
