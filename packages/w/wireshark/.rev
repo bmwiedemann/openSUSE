@@ -2069,4 +2069,12 @@ Use capabilities for capture. bsc#957624</comment>
     <comment>wireshark 4.6.0</comment>
     <requestid>1313596</requestid>
   </revision>
+  <revision rev="243" vrev="1">
+    <srcmd5>b4cc4e7de08909a7a9f89a04de6514ad</srcmd5>
+    <version>4.6.1</version>
+    <time>1764082317</time>
+    <user>anag_factory</user>
+    <comment>wireshark 4.6.1</comment>
+    <requestid>1319694</requestid>
+  </revision>
 </revisionlist>
