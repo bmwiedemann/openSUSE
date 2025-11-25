@@ -74,4 +74,13 @@ Fix compilation with GCC 14
     <comment></comment>
     <requestid>1251546</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1df6a19ac98ee7d9806f2a5910ef4519</srcmd5>
+    <version>6.2.3</version>
+    <time>1764082401</time>
+    <user>anag_factory</user>
+    <comment>Update to 6.2.3
+</comment>
+    <requestid>1319786</requestid>
+  </revision>
 </revisionlist>

@@ -1,3 +1,11 @@
+Mon Nov 24 11:18:19 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 6.2.3:
+  * ipv6 and ssdp code cleanup
+  * Fix rare crash after HTTP server start error
+  * Limit size of POST data to g_maxContentLength (default: 2MB)
+- fix rpmlint shared-dir-glob-in-files warning
+
 -------------------------------------------------------------------
 Sun Mar  9 12:42:06 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 

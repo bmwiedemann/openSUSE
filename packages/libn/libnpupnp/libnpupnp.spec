@@ -1,7 +1,7 @@
 #
 # spec file for package libnpupnp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define so_ver  13
 Name:           libnpupnp
-Version:        6.2.1
+Version:        6.2.3
 Release:        0
 Summary:        A C++ base UPnP library, derived from Portable UPnP, a.k.a libupnp
 License:        BSD-3-Clause
@@ -75,7 +75,7 @@ developing applications that use %{name}.
 
 %files -n libnpupnp-devel
 %license COPYING
-%{_includedir}/*
+%{_includedir}/npupnp/
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 
