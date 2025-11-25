@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 22 21:27:11 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove unused BuildRequires: update-desktop-files.
+
+-------------------------------------------------------------------
 Fri Jul 11 09:34:46 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Work with newer gettext-runtime. In gettext 0.24.1 the m4 files

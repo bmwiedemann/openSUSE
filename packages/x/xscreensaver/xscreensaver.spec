@@ -1,7 +1,7 @@
 #
 # spec file for package xscreensaver
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -57,7 +57,6 @@ BuildRequires:  libxslt-tools
 BuildRequires:  pam-devel
 BuildRequires:  perl-XML-Parser
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 #BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 #BuildRequires:  pkgconfig(gdk-pixbuf-xlib-2.0)
