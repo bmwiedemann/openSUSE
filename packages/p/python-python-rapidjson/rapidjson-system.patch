@@ -1,8 +1,8 @@
-Index: python-rapidjson-0.7.1/setup.py
+Index: python-rapidjson-1.22/setup.py
 ===================================================================
---- python-rapidjson-0.7.1.orig/setup.py
-+++ python-rapidjson-0.7.1/setup.py
-@@ -29,19 +29,7 @@ if sys.version_info < (3,):
+--- python-rapidjson-1.22.orig/setup.py
++++ python-rapidjson-1.22/setup.py
+@@ -29,19 +29,7 @@ if sys.version_info < (3, 6):
  
  ROOT_PATH = os.path.abspath(os.path.dirname(__file__))
  
@@ -21,5 +21,5 @@ Index: python-rapidjson-0.7.1/setup.py
 -                           " want to report the issue.")
 +rj_include_dir = '/usr/include/rapidjson'
  
- with open('version.txt', encoding='utf-8') as f:
-     VERSION = f.read()
+ # Automatically updated by bump-my-version at release time
+ VERSION = '1.22'

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 18 04:18:48 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.22:
+  * Rectify type hints of loads() and Decoder.__call__()
+  * Ensure Validator receives valid UTF-8 bytes/bytearray arguments
+  * Recompute comparison table with latest versions of other libraries, using
+    Python 3.13
+  * Typing stubs: specify default value for stream argument of
+    Encoder.__call__()
+- Refreshed rapidjson-system.patch
+
+-------------------------------------------------------------------
 Thu Jun 20 12:41:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.17:
