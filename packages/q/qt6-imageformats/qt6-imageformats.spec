@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.10.0
+%define real_version 6.10.1
 %define short_version 6.10
 %define short_name qtimageformats
 %define tar_name qtimageformats-everywhere-src
@@ -28,7 +28,7 @@
 %endif
 #
 Name:           qt6-imageformats%{?pkg_suffix}
-Version:        6.10.0
+Version:        6.10.1
 Release:        0
 Summary:        Qt 6 ImageFormat Plugins
 License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
