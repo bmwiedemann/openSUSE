@@ -8,7 +8,7 @@
  
  # PARALLEL DELIVERY TO THE SAME DESTINATION
  #
-@@ -682,4 +683,160 @@ sample_directory =
+@@ -682,6 +683,162 @@ sample_directory =
  # readme_directory: The location of the Postfix README files.
  #
  readme_directory =
@@ -34,6 +34,10 @@
 +disable_vrfy_command = yes
 +inet_interfaces = all
  inet_protocols = ipv4
+-shlib_directory = /usr/lib/postfix/${mail_version}
+-meta_directory = /etc/postfix
++shlib_directory = /usr/lib/postfix
++meta_directory = /usr/lib/postfix
 +masquerade_classes = envelope_sender, header_sender, header_recipient
 +masquerade_domains = 
 +masquerade_exceptions = 

@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Mon Nov 10 19:31:34 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 3.10.5
+  * Workaround for an interface mis-match between the Postfix SMTP
+    client and MTA-STS policy plugins.
+      * The existing behavior is to connect to any MX host listed
+        in DNS, and to match the server certificate against any STS
+        policy MX host pattern.
+      * The corrected behavior is to connect to an MX host only if
+        its name matches any STS policy MX host pattern, and to
+        match the server certificate against the MX hostname.
+    The corrected behavior must be enabled in two places: in Postfix
+    with a new parameter "smtp_tls_enforce_sts_mx_patterns" (default:
+    "yes") and in an MTA-STS plugin by enabling TLSRPT support, so
+    that the plugin forwards STS policy attributes to Postfix. This
+    works even if Postfix TLSRPT support is disabled at build time
+    or at runtime.
+  * TLSRPT Workaround: when a TLSRPT policy-type value is
+    "no-policy-found", pretend that the TLSRPT policy domain value
+    is equal to the recipient domain. This ignores that different
+    policy types (TLSA, STS) use different policy domains. But this
+    is what Microsoft does, and therefore, what other tools expect.
+  * Bugfix (defect introduced: Postfix 3.0): the Postfix SMTP
+    client's connection reuse logic did not distinguish between
+    sessions that require SMTPUTF8 support, and sessions that do
+    not. The solution is 1) to store sessions with different SMTPUTF8
+    requirements under distinct connection cache storage keys, and
+    2) to not cache a connection when SMTPUTF8 is required but the
+    server does not support that feature.
+  * Bugfix (defect introduced: Postfix 3.0, date 20140731): the
+    smtpd 'disconnect' command statistics did not count commands
+    with "bad syntax" and "bad UTF-8 syntax" errors.
+  * Bugfix: the August 2025 patch broke DBM library support which
+    is still needed on Solaris; and the same change could result
+    in warnings with "database X is older than source file Y".
+  * Postfix 3.11 forward compatibility: to avoid ugly warnings when
+    Postfix 3.11 is rolled back to an older version, allow a
+    preliminary 'size' record in maildrop queue files created with
+    Postfix 3.11 or later.
+  * Bugfix (defect introduced: Postfix 3.8, date 20220128):
+    non-reproducible build, because the 'postconf -e' output order
+    for new main.cf entries was no longer deterministic. Problem
+    reported by Oleksandr Natalenko, diagnosis by Eray Aslan.
+  * To make builds predictable, add missing meta_directory and
+    shlib_directory settings to the stock main.cf file. Problem
+    diagnosed by Eray Aslan.
+  * Bugfix (defect introduced: Postfix 3.9, date 20230517):
+    posttls-finger(1) logged an incorrectly-formatted port number.
+    Viktor Dukhovni.
+- rebase postfix-main.cf.patch
+- adapt rpmlint
+  o dir-or-file-outside-snapshot
+
+-------------------------------------------------------------------
 Tue Aug 19 17:45:58 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 3.10.4

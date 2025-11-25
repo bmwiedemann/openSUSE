@@ -21,6 +21,8 @@
 %define pf_daemon_directory  %{_prefix}/lib/%{name}/bin/
 %define _libexecdir          %{_prefix}/lib
 %define pf_shlib_directory   %{_prefix}/lib/%{name}
+%define pf_meta_directory    %{_prefix}/lib/%{name}
+%define pf_systemd_directory %{_prefix}/lib/%{name}/systemd
 %define pf_command_directory %{_sbindir}
 %define pf_queue_directory   var/spool/%{name}
 %define pf_sendmail_path     %{_sbindir}/sendmail
@@ -46,7 +48,7 @@
 %endif
 %bcond_without ldap
 Name:           postfix
-Version:        3.10.4
+Version:        3.10.5
 Release:        0
 Summary:        A fast, secure, and flexible mailer
 License:        EPL-2.0 OR IPL-1.0
@@ -281,6 +283,8 @@ cp lib/lib%{name}-*  %{buildroot}/%{_libdir}
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}/%{_libdir}
 sh postfix-install -non-interactive \
        install_root=%{buildroot} \
+       shlib_directory=%{_prefix}/lib/%{name} \
+       meta_directory=%{_prefix}/lib/%{name} \
        config_directory=%{pf_config_directory} \
        daemon_directory=%{pf_daemon_directory} \
        command_directory=%{pf_command_directory} \
@@ -376,8 +380,8 @@ sed -i	-e 's/\(.*ldap.*\)/#\1/g' \
 	-e '/html_directory/d' \
 	-e '/manpage_directory/d' \
 	-e '/readme_directory/d' \
-	%{buildroot}%{pf_shlib_directory}/postfix-files
-mkdir -p %{buildroot}%{pf_shlib_directory}/postfix-files.d
+	%{buildroot}%{pf_meta_directory}/postfix-files
+mkdir -p %{buildroot}%{pf_meta_directory}/postfix-files.d
 # postfix-mysql
 install -pm 0644 %{name}-mysql/main.cf-mysql %{buildroot}%{_sysconfdir}/%{name}/main.cf-mysql
 install -pm 0640 %{name}-mysql/*_maps.cf     %{buildroot}%{_sysconfdir}/%{name}/
@@ -400,13 +404,13 @@ mantools/srctoman - auxiliary/qshape/qshape.pl > %{buildroot}%{_mandir}/man1/qsh
 # Fix build for Leap 42.3.
 rm -f %{buildroot}%{_sysconfdir}/%{name}/*.orig
 mkdir -p %{buildroot}%{_unitdir}/mail-transfer-agent.target.wants/
-mkdir -p %{buildroot}%{pf_shlib_directory}/systemd
+mkdir -p %{buildroot}%{pf_systemd_directory}
 install -pm 0644 %{name}-SUSE/%{name}.service         %{buildroot}%{_unitdir}/%{name}.service
-install -pm 0755 %{name}-SUSE/config_%{name}.systemd  %{buildroot}%{pf_shlib_directory}/systemd/config_%{name}
-install -pm 0755 %{name}-SUSE/update_chroot.systemd   %{buildroot}%{pf_shlib_directory}/systemd/update_chroot
-install -pm 0755 %{name}-SUSE/update_postmaps.systemd %{buildroot}%{pf_shlib_directory}/systemd/update_postmaps
-install -pm 0755 %{name}-SUSE/wait_qmgr.systemd       %{buildroot}%{pf_shlib_directory}/systemd/wait_qmgr
-install -pm 0755 %{name}-SUSE/cond_slp.systemd        %{buildroot}%{pf_shlib_directory}/systemd/cond_slp
+install -pm 0755 %{name}-SUSE/config_%{name}.systemd  %{buildroot}%{pf_systemd_directory}/config_%{name}
+install -pm 0755 %{name}-SUSE/update_chroot.systemd   %{buildroot}%{pf_systemd_directory}/update_chroot
+install -pm 0755 %{name}-SUSE/update_postmaps.systemd %{buildroot}%{pf_systemd_directory}/update_postmaps
+install -pm 0755 %{name}-SUSE/wait_qmgr.systemd       %{buildroot}%{pf_systemd_directory}/wait_qmgr
+install -pm 0755 %{name}-SUSE/cond_slp.systemd        %{buildroot}%{pf_systemd_directory}/cond_slp
 %if 0%{?suse_version} < 1599
 ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %endif
@@ -423,13 +427,13 @@ do
 done
 
 # create dynamicmaps.cf.d entries for optional modules
-sed -n -e '/^#/p' -e '/mysql/p' %{buildroot}%{pf_shlib_directory}/dynamicmaps.cf > %{buildroot}%{pf_shlib_directory}/dynamicmaps.cf.d/%{name}-mysql.cf
-sed -i -e '/mysql/d' %{buildroot}%{pf_shlib_directory}/dynamicmaps.cf
-sed -n -e '/^#/p' -e '/pgsql/p' %{buildroot}%{pf_shlib_directory}/dynamicmaps.cf > %{buildroot}%{pf_shlib_directory}/dynamicmaps.cf.d/%{name}-pgsql.cf
-sed -i -e '/pgsql/d' %{buildroot}%{pf_shlib_directory}/dynamicmaps.cf
+sed -n -e '/^#/p' -e '/mysql/p' %{buildroot}%{pf_meta_directory}/dynamicmaps.cf > %{buildroot}%{pf_meta_directory}/dynamicmaps.cf.d/%{name}-mysql.cf
+sed -i -e '/mysql/d' %{buildroot}%{pf_meta_directory}/dynamicmaps.cf
+sed -n -e '/^#/p' -e '/pgsql/p' %{buildroot}%{pf_meta_directory}/dynamicmaps.cf > %{buildroot}%{pf_meta_directory}/dynamicmaps.cf.d/%{name}-pgsql.cf
+sed -i -e '/pgsql/d' %{buildroot}%{pf_meta_directory}/dynamicmaps.cf
 %if %{with ldap}
-sed -n -e '/^#/p' -e "/ldap/p" %{buildroot}%{pf_shlib_directory}/dynamicmaps.cf > %{buildroot}%{pf_shlib_directory}/dynamicmaps.cf.d/%{name}-ldap.cf
-sed -i -e '/ldap/d' %{buildroot}%{pf_shlib_directory}/dynamicmaps.cf
+sed -n -e '/^#/p' -e "/ldap/p" %{buildroot}%{pf_meta_directory}/dynamicmaps.cf > %{buildroot}%{pf_meta_directory}/dynamicmaps.cf.d/%{name}-ldap.cf
+sed -i -e '/ldap/d' %{buildroot}%{pf_meta_directory}/dynamicmaps.cf
 %endif
 
 install -m 755 %{SOURCE11} %{buildroot}%{_sbindir}/
@@ -551,13 +555,13 @@ fi
 %exclude %{_sysconfdir}/%{name}/TLS_LICENSE
 %config %{_sysconfdir}/permissions.d/%{name}
 %config %{_sysconfdir}/permissions.d/%{name}.paranoid
-%{pf_shlib_directory}/%{name}-files
+%{pf_meta_directory}/%{name}-files
 # create our default postfix ssl DIR (/etc/postfix/ssl)
 %dir %{_sysconfdir}/%{name}/ssl
 %dir %{_sysconfdir}/%{name}/ssl/certs
 %{_sysconfdir}/%{name}/ssl/cacerts
-%dir %{pf_shlib_directory}/systemd
-%attr(0755,root,root) %{pf_shlib_directory}/systemd/*
+%dir %{pf_systemd_directory}
+%attr(0755,root,root) %{pf_systemd_directory}/*
 %{_unitdir}/%{name}.service
 %{_unitdir}/mail-transfer-agent.target.wants
 %verify(not mode) %attr(2755,root,%{pf_setgid_group}) %{_sbindir}/postdrop
@@ -596,14 +600,14 @@ fi
 %{pf_shlib_directory}/lib%{name}-master.so
 %{pf_shlib_directory}/lib%{name}-tls.so
 %{pf_shlib_directory}/lib%{name}-util.so
-%{pf_shlib_directory}/dynamicmaps.cf
-%{pf_shlib_directory}/main.cf.proto
-%{pf_shlib_directory}/makedefs.out
-%{pf_shlib_directory}/master.cf.proto
+%{pf_meta_directory}/dynamicmaps.cf
+%{pf_meta_directory}/main.cf.proto
+%{pf_meta_directory}/makedefs.out
+%{pf_meta_directory}/master.cf.proto
 %dir %{pf_daemon_directory}
 %{pf_daemon_directory}/*
-%dir %{pf_shlib_directory}/dynamicmaps.cf.d
-%dir %{pf_shlib_directory}/postfix-files.d
+%dir %{pf_meta_directory}/dynamicmaps.cf.d
+%dir %{pf_meta_directory}/postfix-files.d
 
 %{conf_backup_dir}
 %dir %attr(0700,%{name},root) %{pf_data_directory}
@@ -642,20 +646,20 @@ fi
 %config(noreplace) %attr(640, root, %{name}) %{_sysconfdir}/%{name}/*_maps.cf
 %config(noreplace) %{_sysconfdir}/%{name}/main.cf-mysql
 %{pf_shlib_directory}/%{name}-mysql.so
-%{pf_shlib_directory}/dynamicmaps.cf.d/%{name}-mysql.cf
+%{pf_meta_directory}/dynamicmaps.cf.d/%{name}-mysql.cf
 %{_mandir}/man5/mysql_table.5%{?ext_man}
 %{_sysusersdir}/postfix-vmail-user.conf
 
 %files postgresql
 %{pf_shlib_directory}/%{name}-pgsql.so
-%{pf_shlib_directory}/dynamicmaps.cf.d/%{name}-pgsql.cf
+%{pf_meta_directory}/dynamicmaps.cf.d/%{name}-pgsql.cf
 %{_mandir}/man5/pgsql_table.5%{?ext_man}
 
 %if %{with ldap}
 %files ldap
 %config(noreplace) %{_sysconfdir}/%{name}/ldap_aliases.cf
 %{pf_shlib_directory}/%{name}-ldap.so
-%{pf_shlib_directory}/dynamicmaps.cf.d/%{name}-ldap.cf
+%{pf_meta_directory}/dynamicmaps.cf.d/%{name}-ldap.cf
 %{_mandir}/man5/ldap_table.5%{?ext_man}
 %endif
 

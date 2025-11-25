@@ -59,7 +59,7 @@
 %endif
 %bcond_without ldap
 Name:           postfix-bdb
-Version:        3.10.4
+Version:        3.10.5
 Release:        0
 Summary:        A fast, secure, and flexible mailer
 License:        EPL-2.0 OR IPL-1.0
@@ -266,6 +266,8 @@ cp lib/libpostfix-*  %{buildroot}/%{_libdir}
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}/%{_libdir}
 sh postfix-install -non-interactive \
        install_root=%{buildroot} \
+       shlib_directory=%{_prefix}/lib/postfix \
+       meta_directory=%{_prefix}/lib/postfix \
        config_directory=%{pf_config_directory} \
        daemon_directory=%{pf_daemon_directory} \
        command_directory=%{pf_command_directory} \
