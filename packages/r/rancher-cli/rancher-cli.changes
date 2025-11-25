@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov 25 13:00:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.13.0:
+  * Update Rancher refs to v2.13.0 (#494)
+  * Bump Go toolchain to 1.24.9 (#491)
+  * Dependency bumps for v2.13.0-alpha3 (#488)
+  * Bump dependencies (#477)
+  * added separate printout of request id for quick and easy access
+    in case of problems. (#476)
+  * Bump Go to 1.24.6 (#456)
+
+-------------------------------------------------------------------
+Tue Nov 25 12:40:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.12.4:
+  * Bump Rancher version to v2.12.4 (#493)
+
+-------------------------------------------------------------------
 Thu Oct 23 05:40:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.12.3:
