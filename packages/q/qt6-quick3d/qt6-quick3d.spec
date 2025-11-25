@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.10.0
+%define real_version 6.10.1
 %define short_version 6.10
 %define tar_name qtquick3d-everywhere-src
 %define tar_suffix %{nil}
@@ -30,7 +30,7 @@
 %global __requires_exclude qt6qmlimport\\((LightmapFile|Quick3DAssets|VirtualAssistant\\.Constants|robotassistant|.*Example|xr_shared).*
 #
 Name:           qt6-quick3d%{?pkg_suffix}
-Version:        6.10.0
+Version:        6.10.1
 Release:        0
 Summary:        API for creating 3D content and 3D user interfaces based on Qt Quick
 License:        GPL-3.0-only
