@@ -566,4 +566,14 @@
     <comment></comment>
     <requestid>1289817</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>8792642a22a283db2162438c24fd85e9</srcmd5>
+    <version>48.2</version>
+    <time>1764082309</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 48.2:
+  + Fixed a bug where the config folder is inaccessible on new
+    installations (forwarded request 1319347 from iznogood)</comment>
+    <requestid>1319647</requestid>
+  </revision>
 </revisionlist>

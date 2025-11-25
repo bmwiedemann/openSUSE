@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-user-share
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnome-user-share
-Version:        48.1
+Version:        48.2
 Release:        0
 Summary:        GNOME user file sharing
 License:        GPL-2.0-or-later

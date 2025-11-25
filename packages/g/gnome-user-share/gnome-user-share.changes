@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov 23 10:49:36 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.2:
+  + Fixed a bug where the config folder is inaccessible on new
+    installations
+
+-------------------------------------------------------------------
 Mon Jun 30 06:41:44 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.1:
