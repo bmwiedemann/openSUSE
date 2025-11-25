@@ -9,4 +9,12 @@
   * Do not rely on git checkouts to build.</comment>
     <requestid>1306820</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cdb720fa8242d48762e2f83a0d664404</srcmd5>
+    <version>0.9.11</version>
+    <time>1764082225</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.9.11</comment>
+    <requestid>1319669</requestid>
+  </revision>
 </revisionlist>

@@ -21,17 +21,15 @@
 %else
 %bcond_with libalternatives
 %endif
-
+%{?sle15_python_module_pythons}
 Name:           python-uv-build
-Version:        0.8.22
+Version:        0.9.11
 Release:        0
 Summary:        The uv build backend
 License:        MIT
 URL:            https://github.com/astral-sh/uv
 Source0:        https://files.pythonhosted.org/packages/source/u/uv-build/uv_build-%{version}.tar.gz
 Source1:        vendor.tar.xz
-# PATCH-FIX-OPENSUSE Do not include patched git builds, which require network
-Patch0:         no-git-patch-builds.patch
 BuildRequires:  %{python_module maturin >= 1.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  cargo-packaging

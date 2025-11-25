@@ -1,4 +1,161 @@
 -------------------------------------------------------------------
+Fri Nov 21 08:43:16 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.9.11
+  * Add CPython 3.15.0a2
+  * Add SBOM support to `uv export` (#16523)
+  * Publish to `crates.io` (#16770)
+  * Add `uv workspace list --paths` (#16776)
+  * Fix the preview warning on `uv workspace dir` (#16775)
+  * Fix `uv init` author serialization via `toml_edit` inline tables (#16778)
+  * Fix status messages without TTY (#16785)
+  * Preserve end-of-line comment whitespace when editing `pyproject.toml` (#16734)
+  * Disable `always-authenticate` when running under Dependabot (#16773)
+  * Document the new behavior for free-threaded python versions (#16781)
+  * Improve note about build system in publish guide (#16788)
+  * Move do not upload publish note out of the guide into concepts (#16789)
+- from version 0.9.10
+  * Add support for `SSL_CERT_DIR` (#16473)
+  * Enforce UTF‑8-encoded license files during `uv build` (#16699)
+  * Error when a `project.license-files` glob matches nothing (#16697)
+  * `pip install --target` (and `sync`) install Python if necessary (#16694)
+  * Account for `python_downloads_json_url` in pre-release Python version warnings (#16737)
+  * Support HTTP/HTTPS URLs in `uv python --python-downloads-json-url` (#16542)
+  * Add support for `--upgrade` in `uv python install` (#16676)
+  * Fix handling of `python install --default` for pre-release Python versions (#16706)
+  * Add `uv workspace list` to list workspace members (#16691)
+  * Don't check file URLs for ambiguously parsed credentials (#16759)
+  * Add a "storage" reference document (#15954)
+- from version 0.9.9
+  * Deprecate use of `--project` in `uv init` (#16674)
+  * Add iOS support to Python interpreter discovery (#16686)
+  * Reject ambiguously parsed URLs (#16622)
+  * Allow explicit values in `uv version --bump` (#16555)
+  * Warn on use of managed pre-release Python versions when a stable version
+    is available (#16619)
+  * Allow signing trampolines on Windows by using `.rcdata` to store metadata (#15068)
+  * Add `--only-emit-workspace` and similar variants to `uv export` (#16681)
+  * Add `uv workspace dir` command (#16678)
+  * Add `uv workspace metadata` command (#16516)
+  * Add `UV_NO_DEFAULT_GROUPS` environment variable (#16645)
+  * Remove `torch-model-archiver` and `torch-tb-profiler` from PyTorch backend (#16655)
+  * Fix Pixi environment detection (#16585)
+  * Fix `CMD` path in FastAPI Dockerfile (#16701)
+- from version 0.9.8
+  * Accept multiple packages in `uv export` (#16603)
+  * Accept multiple packages in `uv sync` (#16543)
+  * Add a `uv cache size` command (#16032)
+  * Add prerelease guidance for build-system resolution failures (#16550)
+  * Allow Python requests to include `+gil` to require a GIL-enabled interpreter (#16537)
+  * Avoid pluralizing 'retry' for single value (#16535)
+  * Enable first-class dependency exclusions (#16528)
+  * Fix inclusive constraints on available package versions in resolver errors (#16629)
+  * Improve `uv init` error for invalid directory names (#16554)
+  * Show help on `uv build -h` (#16632)
+  * Include the Python variant suffix in "Using Python ..." messages (#16536)
+  * Log most recently modified file for cache-keys (#16338)
+  * Update Docker builds to use nightly Rust toolchain with musl v1.2.5 (#16584)
+  * Add GitHub attestations for uv release artifacts (#11357)
+  * Expose `UV_NO_GROUP` as an environment variable (#16529)
+  * Add `UV_NO_SOURCES` as an environment variable (#15883)
+  * Allow `--check` and `--locked` to be used together in `uv lock` (#16538)
+  * Allow for unnormalized names in the METADATA file (#16547) (#16548)
+  * Fix missing value_type for `default-groups` in schema (#16575)
+  * Respect multi-GPU outputs in `nvidia-smi` (#15460)
+  * Fix DNS lookup errors in Docker containers (#8450)
+  * Fix typo in uv tool list doc (#16625)
+  * Note `uv pip list` name normalization in docs (#13210)
+  * Update Rust toolchain to 1.91 and MSRV to 1.89 (#16531)
+- from version 0.9.7
+  * Add Windows x86-32 emulation support to interpreter architecture checks (#13475)
+  * Improve readability of progress bars (#16509)
+  * Drop terminal coloring from `uv auth token` output (#16504)
+  * Don't use UV_LOCKED to enable `--check` flag (#16521)
+- from version 0.9.6
+  * Address ZIP parsing differentials (GHSA-pqhf-p39g-3x64)
+  * Upgrade GraalPy to 25.0.1 (#16401)
+  * Add `--clear` to `uv build` to remove old build artifacts (#16371)
+  * Add `--no-create-gitignore` to `uv build` (#16369)
+  * Do not error when a virtual environment directory cannot be removed
+    due to a busy error (#16394)
+  * Improve hint on `pip install --system` when externally managed (#16392)
+  * Running `uv lock --check` with outdated lockfile will print that `--check`
+    was passed, instead of `--locked`  (#16322)
+  * Update `uv init` template for Maturin (#16449)
+  * Improve ordering of Python sources in logs (#16463)
+  * Restore DockerHub release images and annotations (#16441)
+  * Check for matching Python implementation during `uv python upgrade` (#16420)
+  * Deterministically order `--find-links` distributions (#16446)
+  * Don't panic in `uv export --frozen` when the lockfile is outdated (#16407)
+  * Fix root of `uv tree` when `--package` is used with circular dependencies (#15908)
+  * Show package list with `pip freeze --quiet` (#16491)
+  * Limit `uv auth login pyx.dev` retries to 60s (#16498)
+  * Add an empty group with `uv add --group ... -r ...` (#16490)
+  * Update docs for maturin build backend init template (#16469)
+  * Update docs to reflect previous changes to signal forwarding semantics (#16430)
+  * Add instructions for installing via MacPorts (#16039)
+- from version 0.9.5
+  * Upgrade `astral-tokio-tar` to 0.5.6 to address a parsing differential (#16387)
+  * Add required environment marker example to hint (#16244)
+  * Fix typo in MissingTopLevel warning (#16351)
+  * Improve 403 Forbidden error message to indicate package may not exist (#16353)
+  * Add a hint on `uv pip install` failure if the `--system` flag is used to select
+    an externally managed interpreter (#16318)
+  * Fix backtick escaping for PowerShell (#16307)
+  * Document metadata consistency expectation (#15683)
+  * Remove outdated aarch64 musl note (#16385)
+- from version 0.9.4
+  * Add CUDA 13.0 support (#16321)
+  * Add auto-detection for Intel GPU on Windows (#16280)
+  * Implement display of RFC 9457 HTTP error contexts (#16199)
+  * Avoid obfuscating pyx tokens in `uv auth token` output (#16345)
+- from version 0.9.3
+  * Add CPython 3.15.0a1
+  * Add CPython 3.13.9
+  * Obfuscate secret token values in logs (#16164)
+  * Fix workspace with relative pathing (#16296)
+- from version 0.9.2
+  * Add CPython 3.9.24.
+  * Add CPython 3.10.19.
+  * Add CPython 3.11.14.
+  * Add CPython 3.12.12.
+  * Avoid inferring check URLs for pyx in `uv publish` (#16234)
+  * Add `uv tool list --show-python` (#15814)
+  * Add missing "added in" to new environment variables in reference (#16217)
+- from version 0.9.1
+  * Log Python choice in `uv init` (#16182)
+  * Fix `pylock.toml` config conflict error messages (#16211)
+  * Add `UV_UPLOAD_HTTP_TIMEOUT` and respect `UV_HTTP_TIMEOUT` in uploads (#16040)
+  * Support `UV_WORKING_DIRECTORY` for setting `--directory` (#16125)
+  * Allow missing `Scripts` directory (#16206)
+  * Fix handling of Python requests with pre-releases in ranges (#16208)
+  * Preserve comments on version bump (#16141)
+  * Retry all HTTP/2 errors (#16038)
+  * Treat deleted Windows registry keys as equivalent to missing ones (#16194)
+  * Ignore pre-release Python versions when a patch version is requested (#16210)
+  * Document why uv discards upper bounds on `requires-python` (#15927)
+  * Document uv version environment variables were added in (#15196)
+- from version 0.9.0
+  * **Python 3.14 is now the default stable version**
+  * **Allow use of free-threaded variants in Python 3.14+ without explicit opt-in** (#16142)
+  * **Use Python 3.14 stable Docker images** (#16150)
+  * **Upgrade Alpine Docker image to Alpine 3.22**
+  * **Upgrade Debian Docker images to Debian 13 "Trixie"**
+  * **Fix incorrect output path when a trailing `/` is used in `uv build`** (#15133)
+  * Add CPython 3.14.0
+  * Add CPython 3.13.8
+  * Don't warn when a dependency is constrained by another dependency (#16149)
+  * Fix `uv python upgrade / install` output when there is a no-op for one request (#16158)
+  * Surface pinned-version hint when `uv tool upgrade` can’t move the tool (#16081)
+  * Ban pre-release versions in `uv python upgrade` requests (#16160)
+  * Fix `uv python upgrade` replacement of installed binaries on pre-release to stable (#16159)
+  * Update `uv pip compile` args in `layout.md` (#16155)
+- For the changes from 0.8.11 up to including 0.8.25 see:
+  https://github.com/astral-sh/uv/blob/main/changelogs/0.8.x.md
+- Drop no-git-patch-builds.patch, fixed upstream
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Wed Sep 24 02:20:15 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Initial release of 0.8.22.
