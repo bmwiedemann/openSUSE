@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyenchant
-Version:        3.2.2
+Version:        3.3.0
 Release:        0
 Summary:        Python bindings for the Enchant spellchecking system
 License:        LGPL-2.1-or-later
