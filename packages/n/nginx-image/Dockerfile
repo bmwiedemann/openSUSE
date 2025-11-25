@@ -19,13 +19,20 @@
 #!BuildTag: opensuse/nginx:1.29
 #!BuildTag: opensuse/nginx:latest
 
-FROM opensuse/tumbleweed:latest
+FROM opensuse/bci/bci-micro:latest AS target
+FROM opensuse/tumbleweed:latest AS builder
+COPY --from=target / /target
 
 RUN set -euo pipefail; \
-    zypper -n install --no-recommends gawk nginx findutils envsubst
+    export PERMCTL_ALLOW_INSECURE_MODE_IF_NO_PROC=1; \
+    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends gawk nginx findutils envsubst
+# sanity check that the version from the tag is equal to the version of nginx that we expect
+RUN set -euo pipefail; \
+    [ "$(rpm --root /target -q --qf '%{version}' nginx | \
+    cut -d '.' -f -2)" = "1.29" ]
 
 # cleanup logs and temporary files
-RUN set -euo pipefail; zypper -n clean -a; \
+RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}; \
     rm -rf {/target,}/run/*; \
     rm -f {/target,}/etc/{shadow-,group-,passwd-,.pwd.lock}; \
@@ -34,8 +41,9 @@ RUN set -euo pipefail; zypper -n clean -a; \
     command -v zypper >/dev/null 2>&1 || rm -f /var/lib/zypp/AutoInstalled
 
 # set the day of last password change to empty
-RUN set -euo pipefail; sed -i 's/^\([^:]*:[^:]*:\)[^:]*\(:.*\)$/\1\2/' /etc/shadow
-
+RUN set -euo pipefail; sed -i 's/^\([^:]*:[^:]*:\)[^:]*\(:.*\)$/\1\2/' /target/etc/shadow
+FROM opensuse/bci/bci-micro:latest
+COPY --from=builder /target /
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.application.nginx
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed NGINX"
@@ -55,15 +63,11 @@ LABEL io.artifacthub.package.readme-url="%SOURCEURL_WITH(README.md)%"
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 CMD ["nginx", "-g", "daemon off;"]
 EXPOSE 80/tcp
-# sanity check that the version from the tag is equal to the version of nginx that we expect
-RUN set -euo pipefail; \
-    [ "$(rpm -q --qf '%{version}' nginx | \
-    cut -d '.' -f -2)" = "1.29" ]
+
 RUN set -euo pipefail; mkdir /docker-entrypoint.d
 COPY [1-3]0-*.sh /docker-entrypoint.d/
 COPY docker-entrypoint.sh /usr/local/bin
 COPY index.html /srv/www/htdocs/
 RUN set -euo pipefail; chmod +x /docker-entrypoint.d/*.sh /usr/local/bin/docker-entrypoint.sh
-RUN set -euo pipefail; install -d -o nginx -g nginx -m 750 /var/log/nginx;     ln -sf /dev/stdout /var/log/nginx/access.log;     ln -sf /dev/stderr /var/log/nginx/error.log
-
+RUN set -euo pipefail; install -d -o nginx -g nginx -m 750 /var/log/nginx;                 ln -sf /dev/stdout /var/log/nginx/access.log;                 ln -sf /dev/stderr /var/log/nginx/error.log
 STOPSIGNAL SIGQUIT
