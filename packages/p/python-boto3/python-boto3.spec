@@ -23,25 +23,25 @@
 %define pytestjobs -n ${RPM_BUILD_NCPUS:-1}
 %endif
 Name:           python-boto3
-Version:        1.40.50
+Version:        1.41.3
 Release:        0
 Summary:        Amazon Web Services Library
 License:        Apache-2.0
 URL:            https://github.com/boto/boto3
 Source:         https://github.com/boto/boto3/archive/%{version}.tar.gz
 # Related test dependencies
-BuildRequires:  %{python_module botocore >= 1.40.50 with %python-botocore < 1.41.0}
+BuildRequires:  %{python_module botocore >= 1.41.3 with %python-botocore < 1.42.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module s3transfer >= 0.14.0 with %python-s3transfer < 0.15.0}
+BuildRequires:  %{python_module s3transfer >= 0.15.0 with %python-s3transfer < 0.16.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       (python-botocore >= 1.40.50 with python-botocore < 1.41.0)
+Requires:       (python-botocore >= 1.41.3 with python-botocore < 1.42.0)
 Requires:       (python-jmespath >= 0.7.1 with python-jmespath < 2.0.0)
-Requires:       (python-s3transfer >= 0.14.0 with python-s3transfer < 0.15.0)
+Requires:       (python-s3transfer >= 0.15.0 with python-s3transfer < 0.16.0)
 BuildArch:      noarch
 %if 0%{?sle_version} >= 150400
 Obsoletes:      python3-boto3 < %{version}

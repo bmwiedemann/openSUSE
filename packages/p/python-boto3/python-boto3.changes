@@ -1,4 +1,1070 @@
 -------------------------------------------------------------------
+Tue Nov 25 07:42:10 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.41.3
+  * api-change:``cloudfront``: [``botocore``] Add TrustStore, ConnectionFunction APIs to CloudFront
+    SDK
+  * api-change:``logs``: [``botocore``] New CloudWatch Logs feature - LogGroup Deletion Protection, a
+    capability that allows customers to safeguard their critical CloudWatch log groups from accidental
+    or unintended deletion.
+  * enhancement:awscrt: [``botocore``] Update awscrt version to 0.29.0
+- from version 1.41.2
+  * api-change:``apigateway``: [``botocore``] API Gateway supports VPC link V2 for REST APIs.
+  * api-change:``athena``: [``botocore``] Introduces Spark workgroup features including log
+    persistence, S3/CloudWatch delivery, UI and History Server APIs, and SparkConnect 3.5.6 support.
+    Adds DPU usage limits at workgroup and query levels as well as DPU usage tracking for Capacity
+    Reservation queries to optimize performance and costs.
+  * api-change:``bedrock``: [``botocore``] Add support to automatically enforce safeguards across
+    accounts within an AWS Organization.
+  * api-change:``bedrock-agentcore-control``: [``botocore``] Support for agentcore gateway
+    interceptor configurations and NONE authorizer type
+  * api-change:``bedrock-data-automation-runtime``: [``botocore``] Adding new fields to
+    GetDataAutomationStatus: jobSubmissionTime, jobCompletionTime, and jobDurationInSeconds
+  * api-change:``bedrock-runtime``: [``botocore``] Add support to automatically enforce safeguards
+    across accounts within an AWS Organization.
+  * api-change:``cloudformation``: [``botocore``] Adds the DependsOn field to the AutoDeployment
+    configuration parameter for CreateStackSet, UpdateStackSet, and DescribeStackSet APIs, allowing
+    users to set and read auto-deployment dependencies between StackSets
+  * api-change:``compute-optimizer-automation``: [``botocore``] Initial release of AWS Compute
+    Optimizer Automation. Create automation rules to implement recommended actions on a recurring
+    schedule based on your specified criteria. Supported actions include: snapshot and delete
+    unattached EBS volumes and upgrade volume types to the latest generation.
+  * api-change:``connect``: [``botocore``] New APIs to support aliases and versions for
+    ContactFlowModule. Updated ContactFlowModule APIs to support custom blocks.
+  * api-change:``controltower``: [``botocore``] The manifest field is now optional for the AWS
+    Control Tower CreateLandingZone and UpdateLandingZone APIs for Landing Zone version 4.0
+  * api-change:``ec2``: [``botocore``] This release adds a new capability to create and manage
+    interruptible EC2 Capacity Reservations.
+  * api-change:``ecr``: [``botocore``] Add support for ECR managed signing
+  * api-change:``eks``: [``botocore``] Adds support for controlPlaneScalingConfig on EKS Clusters.
+  * api-change:``elbv2``: [``botocore``] This release adds the health check log feature in ALB,
+    allowing customers to send detailed target health check log data directly to their designated
+    Amazon S3 bucket.
+  * api-change:``endpoint-rules``: [``botocore``] Update endpoint-rules client to latest version
+  * api-change:``invoicing``: [``botocore``] Added the CreateProcurementPortalPreference,
+    GetProcurementPortalPreference, PutProcurementPortalPreference,
+    UpdateProcurementPortalPreferenceStatus, ListProcurementPortalPreferences and
+    DeleteProcurementPortalPreference APIs for procurement portal preference management.
+  * api-change:``kinesisvideo``: [``botocore``] This release adds support for Tiered Storage
+  * api-change:``kms``: [``botocore``] Support for on-demand rotation of AWS KMS Multi-Region keys
+    with imported key material
+  * api-change:``lambda``: [``botocore``] Launching Enhanced Error Handling and ESM Grouping
+    capabilities for Kafka ESMs
+  * api-change:``lexv2-models``: [``botocore``] Adds support for Intent Disambiguation, allowing
+    resolution of ambiguous user inputs when multiple intents match by presenting clarifying questions
+    to users. Also adds Speech Detection Sensitivity configuration for optimizing voice activity
+    detection sensitivity levels in various noise environments.
+  * api-change:``mailmanager``: [``botocore``] Add support for resources in the aws-eusc partition.
+  * api-change:``marketplace-entitlement``: [``botocore``] Endpoint update for new region
+  * api-change:``mediapackagev2``: [``botocore``] Adds support for excluding session key tags from
+    HLS multivariant playlists
+  * api-change:``meteringmarketplace``: [``botocore``] Endpoint update for new region
+  * api-change:``odb``: [``botocore``] Adds AssociateIamRoleToResource and
+    DisassociateIamRoleFromResource APIs for managing IAM roles. Enhances CreateOdbNetwork and
+    UpdateOdbNetwork APIs with KMS, STS, and cross-region S3 parameters. Adds OCI identity domain
+    support to InitializeService API.
+  * api-change:``organizations``: [``botocore``] Add support for policy operations on the
+    UPGRADE_ROLLOUT_POLICY policy type.
+  * api-change:``qconnect``: [``botocore``] This release introduces two new messaging channel
+    subtypes: Push, WhatsApp, under MessageTemplate which is a resource in Amazon Q in Connect.
+  * api-change:``quicksight``: [``botocore``] Amazon Quick Suite now supports QuickChat as an
+    embedding type when calling the GenerateEmbedUrlForRegisteredUser API, enabling developers to embed
+    conversational AI agents directly into their applications.
+  * api-change:``rds``: [``botocore``] Add support for Upgrade Rollout Order
+  * api-change:``redshift``: [``botocore``] Added support for Amazon Redshift Federated Permissions
+    and AWS IAM Identity Center trusted identity propagation.
+  * api-change:``redshift-serverless``: [``botocore``] Added UpdateLakehouseConfiguration API to
+    manage Amazon Redshift Federated Permissions and AWS IAM Identity Center trusted identity
+    propagation for namespaces.
+  * api-change:``sagemaker``: [``botocore``] Enhanced SageMaker HyperPod instance groups with support
+    for MinInstanceCount, CapacityRequirements (Spot/On-Demand), and KubernetesConfig (labels and
+    taints). Also Added speculative decoding and MaxInstanceCount for model optimization jobs.
+  * api-change:``security-ir``: [``botocore``] Add ListInvestigations and SendFeedback APIs to
+    support SecurityIR AI agents
+  * api-change:``sesv2``: [``botocore``] Added support for new SES regions - Asia Pacific (Malaysia)
+    and Canada (Calgary)
+  * api-change:``transfer``: [``botocore``] Adds support for creating Webapps accessible from a VPC.
+- from version 1.41.1
+  * api-change:``application-signals``: [``botocore``] Amazon CloudWatch Application Signals now
+    supports un-instrumented services discovery, cross-account views, and change history, helping SRE
+    and DevOps teams monitor and troubleshoot their large-scale distributed applications.
+  * api-change:``autoscaling``: [``botocore``] This release adds support for three new features: 1)
+    Image ID overrides in mixed instances policy, 2) Replace Root Volume - a new strategy for Instance
+    Refresh, and 3) Instance Lifecycle Policy for enhanced instance lifecycle management.
+  * api-change:``bedrock-agentcore``: [``botocore``] Bedrock AgentCore Memory release for redriving
+    memory extraction jobs (StartMemoryExtractionJob and ListMemoryExtractionJob)
+  * api-change:``bedrock-data-automation``: [``botocore``] Added support for Synchronous project type
+    and PII Detection and Redaction
+  * api-change:``bedrock-data-automation-runtime``: [``botocore``] Bedrock Data Automation Runtime
+    Sync API
+  * api-change:``braket``: [``botocore``] Add support for Braket spending limits.
+  * api-change:``budgets``: [``botocore``] Add BillingViewHealthStatusException to
+    DescribeBudgetPerformanceHistory and ServiceQuotaExceededException to UpdateBudget for improved
+    error handling with Billing Views.
+  * api-change:``cloudfront``: [``botocore``] This release adds support for bring your own IP (BYOIP)
+    to CloudFront's CreateAnycastIpList API through an optional IpamCidrConfigs field.
+  * api-change:``cloudtrail``: [``botocore``] AWS launches CloudTrail aggregated events to simplify
+    monitoring of data events at scale. This feature delivers both granular and summarized data events
+    for resources like S3/Lambda, helping security teams identify patterns without custom aggregation
+    logic.
+  * api-change:``connect``: [``botocore``] Add optional ability to exclude users from send
+    notification actions for Contact Lens Rules.
+  * api-change:``datasync``: [``botocore``] The partition value "aws-eusc" is now permitted for ARN
+    (Amazon Resource Name) fields.
+  * api-change:``devicefarm``: [``botocore``] Add support for environment variables and an IAM
+    execution role.
+  * api-change:``dms``: [``botocore``] Added support for customer-managed KMS key (CMK) for
+    encryption for import private key certificate. Additionally added Amazon SageMaker Lakehouse
+    endpoint used for zero-ETL integrations with data warehouses.
+  * api-change:``dsql``: [``botocore``] Added clusterVpcEndpoint field to GetVpcEndpointServiceName
+    API response, returning the VPC connection endpoint for the cluster
+  * api-change:``ec2``: [``botocore``] This release adds support for multiple features including: VPC
+    Encryption Control for the status of traffic flow; S2S VPN BGP Logging; TGW Flexible Costs; IPAM
+    allocation of static IPs from IPAM pools to CF Anycast IP lists used on CloudFront distribution;
+    and EBS Volume Integration with Recycle Bin
+  * api-change:``ecs``: [``botocore``] Launching Amazon ECS Express Mode - a new feature that enables
+    developers to quickly launch highly available, scalable containerized applications with a single
+    command.
+  * api-change:``elbv2``: [``botocore``] This release adds the target optimizer feature in ALB,
+    enabling strict concurrency enforcement on targets.
+  * api-change:``emr``: [``botocore``] Add support for configuring S3 destination for step logs on a
+    per-step basis.
+  * api-change:``endpoint-rules``: [``botocore``] Update endpoint-rules client to latest version
+  * api-change:``glue``: [``botocore``] Added FunctionType parameter to Glue GetuserDefinedFunctions.
+  * api-change:``imagebuilder``: [``botocore``] EC2 Image Builder now enables the distribution of
+    existing AMIs, retry distribution, and define distribution workflows. It also supports automatic
+    versioning for recipes and components, allowing automatic version increments and dynamic
+    referencing in pipelines.
+  * api-change:``kinesis``: [``botocore``] Kinesis Data Streams now supports up to 50 Enhance Fan-out
+    consumers for On-demand Advantage Streams. On-demand Standard and Provisioned streams will continue
+    with the existing limit of 20 consumers for Enhanced Fan-out.
+  * api-change:``lakeformation``: [``botocore``] Added ServiceIntegrations as a request parameter for
+    CreateLakeFormationIdentityCenterConfigurationRequest and
+    UpdateLakeFormationIdentityCenterConfigurationRequest and response parameter for
+    DescribeLakeFormationIdentityCenterConfigurationResponse
+  * api-change:``license-manager``: [``botocore``] Added cross-account resource aggregation via
+    license asset groups and expiry tracking for Self-Managed Licenses. Extended Org-Wide View to
+    Self-Managed Licenses, added reporting for license asset groups, and removed Athena/Glue
+    dependencies for cross-account resource discovery in commercial regions.
+  * api-change:``networkmanager``: [``botocore``] This release adds support for Cloud WAN Routing
+    Policy providing customers sophisticated routing controls to better manage their global networks
+  * api-change:``organizations``: [``botocore``] Added new APIs for Billing Transfer, new policy type
+    INSPECTOR_POLICY, and allow an account to transfer between organizations
+  * api-change:``quicksight``: [``botocore``] Introducing comprehensive theme styling controls. New
+    features include border customization (radius, width, color), flexible padding controls, background
+    styling for cards and sheets, centralized typography management, and visual-level override support
+    across layouts.
+  * api-change:``rbin``: [``botocore``] Add support for EBS volume in Recycle Bin
+  * api-change:``rds``: [``botocore``] Add support for VPC Encryption Controls.
+  * api-change:``redshift-data``: [``botocore``] Increasing the length limit of Statement Name from
+    500 to 2048.
+  * api-change:``s3``: [``botocore``] Enable / Disable ABAC on a general purpose bucket.
+  * api-change:``sagemaker``: [``botocore``] Added training plan support for inference endpoints.
+    Added HyperPod task governance with accelerator partition-based quota allocation. Added
+    BatchRebootClusterNodes and BatchReplaceClusterNodes APIs. Updated ListClusterNodes to include
+    privateDnsHostName.
+  * api-change:``securityhub``: [``botocore``] Release Findings and Resources Trends APIs-
+    GetFindingsTrendsV2 and GetResourcesTrendsV2. This supports time-series aggregated counts with
+    composite filtering for 1-year of historical data analysis of Findings and Resources.
+- from version 1.41.0
+  * api-change:``apigateway``: [``botocore``] API Gateway now supports response streaming and new
+    security policies for REST APIs and custom domain names.
+  * api-change:``apigatewayv2``: [``botocore``] Support for API Gateway portals and portal products.
+  * api-change:``backup``: [``botocore``] Amazon GuardDuty Malware Protection now supports AWS
+    Backup, extending malware detection capabilities to EC2, EBS, and S3 backups.
+  * api-change:``bcm-pricing-calculator``: [``botocore``] Add GroupSharingPreference,
+    CostCategoryGroupSharingPreferenceArn, and CostCategoryGroupSharingPreferenceEffectiveDate to Bill
+    Estimate. Add GroupSharingPreference and CostCategoryGroupSharingPreferenceArn to Bill Scenario.
+  * api-change:``bedrock-runtime``: [``botocore``] This release includes support for Search Results.
+  * api-change:``billing``: [``botocore``] Added name filtering support to ListBillingViews API
+    through the new names parameter to efficiently filter billing views by name.
+  * api-change:``billingconductor``: [``botocore``] This release adds support for Billing Transfers,
+    enabling management of billing transfers with billing groups on AWS Billing Conductor.
+  * api-change:``ce``: [``botocore``] Add support for COST_CATEGORY, TAG, and LINKED_ACCOUNT AWS
+    managed cost anomaly detection monitors
+  * api-change:``cloudtrail``: [``botocore``] AWS CloudTrail now supports Insights for data events,
+    expanding beyond management events to automatically detect unusual activity on data plane
+    operations.
+  * api-change:``connectcampaignsv2``: [``botocore``] This release added support for ring timer
+    configuration for campaign calls.
+  * api-change:``cost-optimization-hub``: [``botocore``] Release ListEfficiencyMetrics API
+  * api-change:``datazone``: [``botocore``] Amazon DataZone now supports business metadata (readme
+    and metadata forms) at the individual attribute (column) level, a new rule type for glossary terms,
+    and the ability to update the owner of the root domain unit.
+  * api-change:``dynamodb``: [``botocore``] Extended Global Secondary Index (GSI) composite keys to
+    support up to 8 attributes.
+  * api-change:``ec2``: [``botocore``] This launch adds support for two new features: Regional NAT
+    Gateway and IPAM Policies. IPAM policies offers customers central control for public IPv4
+    assignments across AWS services. Regional NAT is a single NAT Gateway that automatically expands
+    across AZs in a VPC to maintain high availability.
+  * api-change:``ecr``: [``botocore``] Add support for ECR archival storage class and Inspector org
+    policy for scanning
+  * api-change:``ecs``: [``botocore``] Added support for Amazon ECS Managed Instances infrastructure
+    optimization configuration.
+  * api-change:``emr``: [``botocore``] Add CloudWatch Logs integration for Spark driver, executor and
+    step logs
+  * api-change:``endpoint-rules``: [``botocore``] Update endpoint-rules client to latest version
+  * api-change:``fsx``: [``botocore``] Adding File Server Resource Manager configuration to FSx
+    Windows
+  * api-change:``guardduty``: [``botocore``] Add support for scanning and viewing scan results for
+    backup resource types
+  * api-change:``health``: [``botocore``] Adds actionability and personas properties to Health events
+    exposed through DescribeEvents, DescribeEventsForOrganization, DescribeEventDetails, and
+    DescribeEventTypes APIs. Adds filtering by actionabilities and personas in EventFilter,
+    OrganizationEventFilter, EventTypeFilter.
+  * api-change:``iam``: [``botocore``] Added the EnableOutboundWebIdentityFederation,
+    DisableOutboundWebIdentityFederation and GetOutboundWebIdentityFederationInfo APIs for the IAM
+    outbound federation feature.
+  * api-change:``inspector2``: [``botocore``] This release introduces BLOCKED_BY_ORGANIZATION_POLICY
+    error code and IMAGE_ARCHIVED scanStatusReason. BLOCKED_BY_ORGANIZATION_POLICY error code is
+    returned when an operation is blocked by an AWS Organizations policy. IMAGE_ARCHIVED
+    scanStatusReason is returned when an Image is archived in ECR.
+  * api-change:``invoicing``: [``botocore``] Add support for adding Billing transfers in Invoice
+    configuration
+  * api-change:``lambda``: [``botocore``] Added support for creating and invoking Tenant Isolated
+    functions in AWS Lambda APIs.
+  * api-change:``logs``: [``botocore``] Adding support for ocsf version 1.5, add optional parameter
+    MappingVersion
+  * api-change:``mediaconnect``: [``botocore``] This release adds support for global routing in AWS
+    Elemental MediaConnect. You can now use router inputs and router outputs to manage global video and
+    audio routing workflows both within the AWS-Cloud and over the public internet.
+  * api-change:``medialive``: [``botocore``] MediaLive is adding support for MediaConnect Router by
+    supporting a new input type called MEDIACONNECT_ROUTER. This new input type will provide seamless
+    encrypted transport between MediaConnect Router and your MediaLive channel.
+  * api-change:``network-firewall``: [``botocore``] Partner Managed Rulegroup feature support
+  * api-change:``networkflowmonitor``: [``botocore``] Added new enum value (AWS::EKS::Cluster) for
+    type field under MonitorLocalResource
+  * api-change:``partnercentral-channel``: [``botocore``] Initial GA launch of Partner Central Channel
+  * api-change:``route53``: [``botocore``] Add dual-stack endpoint support for Route53
+  * api-change:``rum``: [``botocore``] CloudWatch RUM now supports mobile application monitoring for
+    Android and iOS platforms
+  * api-change:``s3``: [``botocore``] Adds support for blocking SSE-C writes to general purpose
+    buckets.
+  * api-change:``sagemaker``: [``botocore``] Added support for enhanced metrics for SageMaker AI
+    Endpoints. This features provides Utilization Metrics at instance and container granularity and
+    also provides easy configuration of metric publish frequency from 10 sec -> 5 mins
+  * api-change:``secretsmanager``: [``botocore``] Adds support to create, update, retrieve, rotate,
+    and delete managed external secrets.
+  * api-change:``signin``: [``botocore``] AWS Sign-In manages authentication for AWS services. This
+    service provides secure authentication flows for accessing AWS resources from the console and
+    developer tools. This release adds the CreateOAuth2Token API, which can be used to fetch OAuth2
+    access tokens and refresh tokens from Sign-In.
+  * api-change:``stepfunctions``: [``botocore``] Adds support to TestState for mocked results and
+    exceptions, along with additional inspection data.
+  * api-change:``sts``: [``botocore``] IAM now supports outbound identity federation via the STS
+    GetWebIdentityToken API, enabling AWS workloads to securely authenticate with external services
+    using short-lived JSON Web Tokens.
+  * feature:credentials: [``botocore``] Adds support for the login credential provider, allowing
+    users to use AWS Management Console credentials for authentication.
+- from version 1.40.76
+  * api-change:``autoscaling``: [``botocore``] This release adds the new LaunchInstances API, which
+    can launch instances synchronously in an AutoScaling group. The API also returns instances info and
+    launch error back immediately.
+  * api-change:``backup``: [``botocore``] AWS Backup now supports a low-cost warm storage tier for
+    Amazon S3 backup data.
+  * api-change:``bedrock-runtime``: [``botocore``] Amazon Bedrock Runtime Service Tier Support Launch
+  * api-change:``cloudformation``: [``botocore``] New CloudFormation DescribeEvents API with
+    operation ID tracking and failure filtering capabilities to quickly identify root causes of
+    deployment failures. Also, a DeploymentMode parameter for the CreateChangeSet API that enables
+    creation of drift-aware change sets for safe drift management.
+  * api-change:``connect``: [``botocore``] This release added support for ring timer configuration
+    for campaign calls.
+  * api-change:``ec2``: [``botocore``] AWS Site-to-Site VPN now supports VPN Concentrator, a new
+    feature that enables customers to connect multiple low-bandwidth sites connections through a single
+    attachment, simplifying multi-site connectivity for distributed enterprises.
+  * api-change:``iam``: [``botocore``] Added the AssociateDelegationRequest, GetDelegationRequest,
+    AcceptDelegationRequest, RejectDelegatonRequest, ListDelegationRequests, UpdateDelegationRequest,
+    SendDelegationToken and GetHumanReadableSummary APIs for the IAM temporary delegation feature.
+  * api-change:``kafka``: [``botocore``] Amazon MSK adds three new APIs, ListTopics, DescribeTopic,
+    and DescribeTopicPartitions for viewing Kafka topics in your MSK clusters.
+  * api-change:``logs``: [``botocore``] CloudWatch Logs updates: Added capability to setup a
+    recurring schedule for log insights queries. Logs introduced Scheduled Queries (managed through
+    Create/Update/Get/Delete/List/History Scheduled Query APIs). For more information, see CloudWatch
+    Logs API documentation.
+  * api-change:``resourcegroupstaggingapi``: [``botocore``] Add support for new ListRequiredTags API
+    used to retrieve the required tags specified in a customer's effective tag policy.
+  * api-change:``storagegateway``: [``botocore``] Adds support for European Sovereign Cloud ARNs in
+    Storage Gateway API parameters.
+  * api-change:``wafv2``: [``botocore``] AssociateWebACL, UpdateWebACL and PutLoggingConfiguration
+    will now throw WAFFeatureNotIncludedInPricingPlanException when the request contains a feature that
+    is not included in the CloudFront pricing plan of the WebACL.
+- from version 1.40.75
+  * api-change:``appstream``: [``botocore``] Adding support for additional instances and extended
+    storage
+  * api-change:``backup``: [``botocore``] AWS Backup now supports specifying a logically air-gapped
+    backup vault as a primary backup target in backup plans and on-demand backup jobs.
+  * api-change:``bedrock``: [``botocore``] Automated Reasoning checks in Amazon Bedrock Guardrails
+    now automatically generate Q&A tests for new Automated Reasoning policies. The
+    GetAutomatedReasoningPolicyBuildWorkflowResultAssets API adds GENERATED_TEST_CASES asset type,
+    allowing customers to retrieve tests generated by the build workflow.
+  * api-change:``devicefarm``: [``botocore``] This release adds support for interacting with devices
+    during a remote access session using the remoteDriverEndpoint interface
+  * api-change:``dms``: [``botocore``] This release introduces the SAP ASE(Sybase) Data Provider for
+    AWS Data Migration Service (DMS). In addition, DMS Schema Conversion now supports this provider,
+    enabling customers to migrate SAP ASE(Sybase) databases to Amazon RDS for PostgreSQL or Aurora
+    PostgreSQL seamlessly.
+  * api-change:``ec2``: [``botocore``] This release introduces new APIs: DescribeInstanceSqlHaStates,
+    DescribeInstanceSqlHaHistoryStates, EnableInstanceSqlHaStandbyDetections and
+    DisableInstanceSqlHaStandbyDetections on Amazon EC2, allowing customers to enroll and monitor SQL
+    Server licensing fee savings for their SQL HA EC2 instances.
+  * api-change:``endpoint-rules``: [``botocore``] Update endpoint-rules client to latest version
+  * api-change:``glue``: [``botocore``] Amazon Glue Releasing 2 the new API
+    ListIntegrationResourceProperties and DeleteIntegrationResourceProperty along with minor
+    improvement on existing API(s).
+  * api-change:``guardduty``: [``botocore``] Add S3 On-Demand Object Scanning
+  * api-change:``lexv2-models``: [``botocore``] Adds support for LLM as Primary, allowing usage of
+    LLMs as the default NLU system.
+  * api-change:``medialive``: [``botocore``] Adds configurations for spatial/temporal adaptive
+    quantization in AV1 codec, and conversion to HLG output color space in H265 codec.
+  * api-change:``mediapackagev2``: [``botocore``] Add support for SCTE messages in Segment file output
+  * api-change:``mwaa-serverless``: [``botocore``] Amazon MWAA now offers serverless deployment,
+    eliminating operational overhead while optimizing costs. The service supports YAML and Python-based
+    workflows, with 80+ AWS Operators. It provides isolated execution, IAM permissions, and automatic
+    scaling with pay-per-use pricing.
+  * api-change:``opensearch``: [``botocore``] This release adds index operation APIs to support
+    Automatic Semantic Enrichment feature
+  * api-change:``pcs``: [``botocore``] Added support for the managed Slurm REST API endpoint
+  * api-change:``route53resolver``: [``botocore``] Adding DICTIONARY_DGA to dns-threat-protection as
+    a new enum type. Customers can now set rules for dictionary dga protection
+- from version 1.40.74
+  * api-change:``datazone``: [``botocore``] Adds support for granting read and write access to Amazon
+    S3 general purpose buckets using CreateSubscriptionRequest and AcceptSubscriptionRequest APIs. Also
+    adds search filters for SSOUser and SSOGroup to ListSubscriptions APIs and deprecates "sortBy"
+    parameter for ListSubscriptions APIs.
+  * api-change:``ec2``: [``botocore``] This release adds AvailabilityZoneId support for
+    CreateInstanceConnectEndpoint, DescribeInstanceConnectEndpoints, and DeleteInstanceConnectEndpoint
+    APIs.
+  * api-change:``imagebuilder``: [``botocore``] EC2 Image Builder now supports invoking Lambda
+    functions and executing Step Functions state machine through image workflows.
+  * api-change:``medialive``: [``botocore``] Removed all the value constraint (min/max) for the shape
+    definitions (e.g. integerMin0Max3600) on the C2j models to get rid of the need to request an
+    exemption from the SDK team whenever a shape definition (e.g. integerMin0Max3600) is changed.
+  * enhancement:AWSCRT: [``botocore``] Update awscrt version to 0.28.4
+- from version 1.40.73
+  * api-change:``cloudformation``: [``botocore``] CloudFormation now supports GetHookResult API with
+    annotations to retrieve structured compliance check results and remediation guidance for each
+    evaluated resource, replacing the previous single-message limitation with detailed validation
+    outcomes.
+  * api-change:``controlcatalog``: [``botocore``] Added support for related control mappings with new
+    RELATED_CONTROL mapping type in ListControlMappings API.
+  * api-change:``ec2``: [``botocore``] Added support for new accelerator types ("media") and
+    accelerator names ("L4", "L40s", "GAUDI_HL_205", "INFERENTIA2", "TRAINIUM", "TRAINIUM2", "U30") in
+    Attributes Based Instance Type Selection for launched instance types.
+  * api-change:``ecr``: [``botocore``] Add Amazon ECR FIPS PrivateLink endpoint support
+  * api-change:``elbv2``: [``botocore``] QUIC and TCP_QUIC protocol support for Network Load Balancer
+    (NLB). This capability enables customers to forward QUIC traffic to their targets with ultra-low
+    latency while maintaining session stickiness using QUIC Connection IDs.
+  * api-change:``endpoint-rules``: [``botocore``] Update endpoint-rules client to latest version
+  * api-change:``iotwireless``: [``botocore``] Integration of Device Location with Amazon Sidewalk
+    network for Amazon Sidewalk enabled devices
+  * api-change:``mediaconvert``: [``botocore``] Lowers minimum duration for black video generator.
+    Adds support for embedding and signing C2PA content credentials in DASH and CMAF HLS outputs.
+  * api-change:``rds``: [``botocore``] Updated endpoint and service metadata
+  * api-change:``sagemaker``: [``botocore``] Added support for minor version upgrades and AWS
+    Identity Center integration for SageMaker Hadron Partner Apps, enabling automated version
+    management and IdC group-based access control.
+  * api-change:``workspaces-web``: [``botocore``] Support for managing web content filtering for
+    defining, tracking and regulating type of content accessed with WorkSpaces Secure Browser as part
+    of browser settings.
+- from version 1.40.72
+  * api-change:``amp``: [``botocore``] Add VPC source configuration support enabling Amazon Managed
+    Service for Prometheus Collector to collect metrics from MSK clusters.
+  * api-change:``connect``: [``botocore``] Updated Authentication Profile APIs to add support for
+    automatic logout on user inactivity
+  * api-change:``dms``: [``botocore``] Added support of SQL statements creation, metadata model
+    discovery and selection rules transformation.
+  * api-change:``ec2``: [``botocore``] Adds complete AMI ancestry tracing from immediate parent
+    through each preceding generation back to the root AMI
+  * api-change:``elbv2``: [``botocore``] This release expands ALB Authentication to support JWT
+    verification and adds support for a new JWT validation action in listener rule.
+  * api-change:``redshift``: [``botocore``] Added GetIdentityCenterAuthToken API to retrieve
+    encrypted authentication tokens for Identity Center integrated applications. This API enables
+    programmatic access to secure Identity Center tokens with proper error handling and parameter
+    validation across supported SDK languages.
+  * api-change:``s3tables``: [``botocore``] Adds support for request metrics metrics APIs for S3
+    Tables
+  * api-change:``sagemaker``: [``botocore``] Add support for trn2.3xlarge instance type for SageMaker
+    Hyperpod
+- from version 1.40.71
+  * api-change:``batch``: [``botocore``] Documentation-only update: update API and doc descriptions
+    per EKS ImageType default value switch from AL2 to AL2023.
+  * api-change:``bedrock-data-automation``: [``botocore``] Added support for Language Expansion
+    feature for BDA Audio modality.
+  * api-change:``ec2``: [``botocore``] AWS Site-to-Site VPN now supports VPN connections with up to 5
+    Gbps bandwidth per tunnel, a 4x improvement from existing limit of 1.25 Gbps.
+  * api-change:``endpoint-rules``: [``botocore``] Update endpoint-rules client to latest version
+  * api-change:``medical-imaging``: [``botocore``] Added new fields in existing APIs.
+  * api-change:``rtbfabric``: [``botocore``] Added LogSettings and LinkAttribute fields to external
+    links
+  * api-change:``security-ir``: [``botocore``] Added support for configuring communication
+    preferences as well as clearly displaying case comment author identities.
+- from version 1.40.70
+  * api-change:``acm-pca``: [``botocore``] Private Certificate Authority service now supports ML-DSA
+    key algorithms.
+  * api-change:``appstream``: [``botocore``] AWS Appstream support for IPv6
+  * api-change:``backup``: [``botocore``] AWS Backup supports backups of Amazon EKS clusters,
+    including Kubernetes cluster state and persistent storage attached to the EKS cluster via a
+    persistent volume claim (EBS volumes, EFS file systems, and S3 buckets).
+  * api-change:``braket``: [``botocore``] Adds ExperimentalCapabilities field to CreateQuantumTask
+    request and GetQuantumTask response objects. Enables use of experimental software capabilities when
+    creating quantum tasks.
+  * api-change:``datazone``: [``botocore``] Remove trackingServerName from DataZone Connection
+    MLflowProperties
+  * api-change:``dsql``: [``botocore``] Cluster endpoint added to CreateCluster and GetCluster API
+    responses
+  * api-change:``ec2``: [``botocore``] Amazon EC2 Fleet customers can now filter instance types based
+    on encryption-in-transit support using Attribute-Based Instance Type Selection (ABIS), eliminating
+    the manual effort of identifying and selecting compatible instance types for security-sensitive
+    workloads.
+  * api-change:``guardduty``: [``botocore``] Include tags filed in CreatePublishingDestinationRequest
+    and DescribePublishingDestinationResponse.
+  * api-change:``iam``: [``botocore``] Added CreateDelegationRequest API, which is not available for
+    general use at this time.
+  * api-change:``invoicing``: [``botocore``] Added new invoicing get-invoice-pdf API Operation
+  * api-change:``kafka``: [``botocore``] Amazon MSK now supports intelligent rebalancing for MSK
+    Express brokers.
+  * api-change:``sts``: [``botocore``] Added GetDelegatedAccessToken API, which is not available for
+    general use at this time.
+  * api-change:``verifiedpermissions``: [``botocore``] Amazon Verified Permissions / Features : Adds
+    support for entity Cedar tags.
+  * api-change:``wafv2``: [``botocore``] AWS WAF now supports CLOUDWATCH_TELEMETRY_RULE_MANAGED as a
+    LogScope option, enabling automated logging configuration through Amazon CloudWatch Logs for
+    telemetry data collection and analysis.
+- from version 1.40.69
+  * api-change:``controltower``: [``botocore``] Added Parent Identifier support to
+    ListEnabledControls and GetEnabledControl API. Implemented RemediationType support for Landing Zone
+    operations: CreateLandingZone, UpdateLandingZone and GetLandingZone APIs
+  * api-change:``ec2``: [``botocore``] Adds PrivateDnsPreference and PrivateDnsSpecifiedDomains to
+    control private DNS resolution for resource and service network VPC endpoints and
+    IpamScopeExternalAuthorityConfiguration to integrate Amazon VPC IPAM with a third-party IPAM service
+  * api-change:``kms``: [``botocore``] Added support for new ECC_NIST_EDWARDS25519 AWS KMS key spec
+  * api-change:``opensearch``: [``botocore``] This release introduces the Default Application
+    feature, allowing users to set, change, or unset a preferred OpenSearch UI application on a
+    per-region basis for a streamlined and consistent user experience.
+  * api-change:``vpc-lattice``: [``botocore``] Amazon VPC Lattice now supports custom domain name for
+    resource configurations
+- from version 1.40.68
+  * api-change:``accessanalyzer``: [``botocore``] New field totalActiveErrors added to
+    getFindingsStatistics response.
+  * api-change:``backup``: [``botocore``] AWS Backup now supports customer-managed keys (CMK) for
+    logically air-gapped vaults, enabling customers to maintain full control over their encryption key
+    lifecycle. This feature helps organizations meet specific internal governance requirements or
+    external regulatory compliance standards.
+  * api-change:``connect``: [``botocore``] Added support for Conditional Questions in Evaluation
+    Forms. Introduced Auto Evaluation capability for Evaluation Forms and Contact Evaluations. Added
+    new API operations: SearchEvaluationForms and SearchContactEvaluations.
+  * api-change:``ec2``: [``botocore``] Add Amazon EC2 R8a instance types
+  * api-change:``gamelift``: [``botocore``] Amazon GameLift Servers now supports game builds that use
+    the Windows 2022 operating system.
+  * api-change:``identitystore``: [``botocore``] IdentityStore API: added new KMSExceptionReason
+    fields to the Exception object; added multiple new fields to the User APIs - UserStatus, Birthdate,
+    Website and Photos; added multiple new metadata fields for User, Groups and Membership APIs -
+    CreatedAt, CreatedBy, UpdatedAt and UpdatedBy.
+  * api-change:``quicksight``: [``botocore``] Support for New Data Prep Experience
+  * api-change:``s3tables``: [``botocore``] Adds support for tagging APIs for S3 Tables
+  * api-change:``s3vectors``: [``botocore``] Amazon S3 Vectors provides cost-effective, elastic, and
+    durable vector storage for queries based on semantic meaning and similarity.
+  * api-change:``sagemaker``: [``botocore``] Added NodeProvisioningMode parameter to UpdateCluster
+    API to determine how instance provisioning is handled during cluster operations; in Continuous
+    mode. Added VpcId field in UpdateDomain request for SageMaker Unified Studio domains with no VPC to
+    add a customer VPC.
+  * api-change:``ssm``: [``botocore``] Provides NoLongerSupportedException error message
+- from version 1.40.67
+  * api-change:``cloudfront``: [``botocore``] This release adds new and updated API operations. You
+    can now use the IpAddressType field to specify either ipv4 or dualstack for your Anycast static IP
+    list. You can also enable cross-account resource sharing to share your VPC origins with other AWS
+    accounts
+  * api-change:``datazone``: [``botocore``] Added support for Project Resource Tags
+  * api-change:``ec2``: [``botocore``] This release adds AvailabilityZoneId support for
+    DescribeFastSnapshotRestores, DisableFastSnapshotRestores, and EnableFastSnapshotRestores APIs.
+  * api-change:``endpoint-rules``: [``botocore``] Update endpoint-rules client to latest version
+  * api-change:``fsx``: [``botocore``] Amazon FSx now enables secure management of Active Directory
+    credentials through AWS Secrets Manager integration. Customers can use Secret ARNs instead of
+    direct credentials when joining resources to Active Directory domains.
+  * api-change:``groundstation``: [``botocore``] Introduce CreateDataflowEndpointGroupV2 action
+  * api-change:``s3``: [``botocore``] Launch IPv6 dual-stack support for S3 Express
+  * api-change:``sagemaker``: [``botocore``] Add new fields in SageMaker Hyperpod DescribeCluster API
+    response: TargetStateCount, SoftwareUpdateStatus and ActiveSoftwareDeploymentConfig to provide AMI
+    update progress visibility .
+- from version 1.40.66
+  * api-change:``pinpoint-sms-voice-v2``: [``botocore``] This release adds support for the
+    CarrierLookup API, which returns information about a destination phone number including if the
+    number is valid, the carrier, and more.
+- from version 1.40.65
+  * api-change:``bedrock-agentcore-control``: [``botocore``] Adds support for direct code deploy with
+    CreateAgentRuntime and UpdateAgentRuntime
+  * api-change:``budgets``: [``botocore``] Fix the AWS Budgets endpoint for the aws-eusc partition.
+  * api-change:``ec2``: [``botocore``] Add Amazon EC2 trn2.3xlarge instance type.
+  * api-change:``ecs``: [``botocore``] Documentation-only update for LINEAR and CANARY deployment
+    strategies.
+  * api-change:``endpoint-rules``: [``botocore``] Update endpoint-rules client to latest version
+  * api-change:``kinesis``: [``botocore``] Adds support for MinimumThroughputBillingCommitment with
+    new UpdateAccountSettings API. Adds support to configure warm throughput for on-demand streams in
+    new UpdateStreamWarmThroughput API and existing CreateStream API and UpdateStreamMode API.
+- from version 1.40.64
+  * api-change:``connectcases``: [``botocore``] Added two new case rule types: Parent Child Field
+    Options (restricts child field options based on parent field value) and Hidden (controls child
+    field visibility based on parent field value). Both enable dynamic field behavior within templates.
+  * api-change:``ec2``: [``botocore``] Amazon VPC IP Address Manager (IPAM) now supports automated
+    prefix list management, allowing you to create rules that automatically populate customer-managed
+    prefix lists with CIDRs from your IPAM pools or AWS resources based on tags, Regions, or other
+    criteria.
+  * api-change:``emr``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``endpoint-rules``: [``botocore``] Update endpoint-rules client to latest version
+  * api-change:``fms``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``fsx``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``health``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``kinesis``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``lambda``: [``botocore``] Add Python3.14 (python3.14) and Java 25 (java25) support to
+    AWS Lambda
+  * api-change:``logs``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``marketplace-catalog``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``mediaconvert``: [``botocore``] Adds SlowPalPitchCorrection to audio pitch correction
+    settings. Enables opacity for VideoOverlays. Adds REMUX_ALL option to enable multi-rendition
+    passthrough to VideoSelector for allow listed accounts.
+  * api-change:``omics``: [``botocore``] Added WDL_LENIENT engine type that enables implicit
+    typecasting of variable values to its compatible declared types
+  * api-change:``payment-cryptography``: [``botocore``] Allow additional characters in the
+    CertificateSubject for GetCertificateSigningRequest API.
+  * api-change:``redshift``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``resourcegroupstaggingapi``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``sagemaker``: [``botocore``] Allow update of platform identifier via
+    UpdateNotebookInstance operation.
+  * api-change:``savingsplans``: [``botocore``] Add dual-stack endpoint support for Savings Plans
+  * api-change:``snowball``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``ssm-quicksetup``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``textract``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``waf``: [``botocore``] Update endpoint ruleset parameters casing
+- from version 1.40.63
+  * api-change:``amp``: [``botocore``] Add Anomaly Detection APIs for Amazon Managed Prometheus
+  * api-change:``apigateway``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``appconfig``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``appflow``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``applicationcostprofiler``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``appmesh``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``appsync``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``artifact``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``auditmanager``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``bedrock-agent``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``bedrock-agentcore-control``: [``botocore``] Web-Bot-Auth support for AgentCore
+    Browser tool to help reduce captcha challenges.
+  * api-change:``chime``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``cleanrooms``: [``botocore``] Added support for advanced Spark configurations to
+    optimize SQL performance
+  * api-change:``cloudcontrol``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``clouddirectory``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``cloudsearch``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``cloudwatch``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``codecatalyst``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``codecommit``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``codedeploy``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``cognito-sync``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``compute-optimizer``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``connectcases``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``deadline``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``devops-guru``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``docdb``: [``botocore``] Adding FailoverState and TagList to GlobalCluster and
+    SynchronizationStatus to GlobalClusterMember.
+  * api-change:``ecs``: [``botocore``] Amazon ECS Service Connect now supports Envoy access logs,
+    providing deeper observability into request-level traffic patterns and service interactions.
+  * api-change:``eks-auth``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``elasticache``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``emr-serverless``: [``botocore``] This release adds the capability to enable User
+    Background Sessions for customers running Trusted Identity Propagation enabled Interactive Sessions
+    on EMR Serverless Applications.
+  * api-change:``endpoint-rules``: [``botocore``] Update endpoint-rules client to latest version
+  * api-change:``firehose``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``frauddetector``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``geo-places``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``glue``: [``botocore``] This release adds the capability to enable User Background
+    Sessions for customers running Trusted Identity Propagation enabled Interactive Sessions on AWS
+    Glue.
+  * api-change:``greengrassv2``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``iotevents-data``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``iot-managed-integrations``: [``botocore``] Add a new GetManagedThingCertificate API
+    to expose Iot ManagedIntegrations (MI) device certificate, and add  "-"  support for name,
+    properties, actions and events in the CapabilityReportCapability object.
+  * api-change:``keyspacesstreams``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``kms``: [``botocore``] Add cross account VPC endpoint service connectivity support to
+    CustomKeyStore.
+  * api-change:``license-manager-linux-subscriptions``: [``botocore``] Update endpoint ruleset
+    parameters casing
+  * api-change:``marketplace-reporting``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``neptune``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``rtbfabric``: [``botocore``] RTB Fabric documentation update.
+  * api-change:``s3outposts``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``sagemaker-runtime``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``schemas``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``serverlessrepo``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``servicecatalog``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``sso``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``sts``: [``botocore``] Update endpoint ruleset parameters casing
+- from version 1.40.62
+  * api-change:``bedrock-runtime``: [``botocore``] Add support for system tool and web citation
+    response.
+- from version 1.40.61
+  * api-change:``apigatewayv2``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``application-signals``: [``botocore``] Added support for CloudWatch Synthetics Canary
+    resources in ListAuditFindings API. This enhancement allows customers to retrieve audit findings
+    specifically for CloudWatch Synthetics canaries and enables service-canary correlation analysis.
+  * api-change:``backupsearch``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``bcm-pricing-calculator``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``bedrock-agent-runtime``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``bedrock-runtime``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``cleanroomsml``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:clients: [``botocore``] The following clients have been removed per deprecation of the
+    services - qldb, qldb-session, robomaker, lookoutmetrics, lookoutvision, iotfleethub, apptest
+  * api-change:``cloud9``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``cloudsearchdomain``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``codeconnections``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``codeguru-security``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``detective``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``ec2``: [``botocore``] This released the DescribeCapacityReservationTopology API.
+  * api-change:``ecs``: [``botocore``] Amazon ECS supports native linear and canary service
+    deployments, allowing you to shift traffic in increments for more control.
+  * api-change:``efs``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``elastictranscoder``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``emr-containers``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``endpoint-rules``: [``botocore``] Update endpoint-rules client to latest version
+  * api-change:``gameliftstreams``: [``botocore``] Add stream group expiration date and expired status
+  * api-change:``glacier``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``groundstation``: [``botocore``] Enable use of AzEl ephemerides
+  * api-change:``inspector-scan``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``kafkaconnect``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``kendra``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``kinesisvideo``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``lambda``: [``botocore``] Added SerializedRequestEntityTooLargeException to Lambda
+    Invoke API
+  * api-change:``marketplace-deployment``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``mediapackage-vod``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``migrationhuborchestrator``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``notifications``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``opensearch``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``organizations``: [``botocore``] Added Account State field to the
+    ListDelegatedAdministrators API response.
+  * api-change:``partnercentral-selling``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``pipes``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``ram``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``resource-groups``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``s3``: [``botocore``] Amazon Simple Storage Service / Features: Add conditional
+    writes in CopyObject on destination key to prevent unintended object modifications.
+  * api-change:``s3control``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``sagemaker``: [``botocore``] Amazon SageMaker now supports deleting training and
+    processing jobs in a terminal status.
+  * api-change:``sagemaker-featurestore-runtime``: [``botocore``] Update endpoint ruleset parameters
+    casing
+  * api-change:``security-ir``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``servicecatalog-appregistry``: [``botocore``] Update endpoint ruleset parameters
+    casing
+  * api-change:``sqs``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``support-app``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``taxsettings``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``trustedadvisor``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``workspaces``: [``botocore``] Added IPv6 address support for WorkSpaces using
+    Dual-Stack subnets
+  * api-change:``workspaces-instances``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``xray``: [``botocore``] Update endpoint ruleset parameters casing
+- from version 1.40.60
+  * api-change:``accessanalyzer``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``aiops``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``athena``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``backup-gateway``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``bedrock-data-automation``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``braket``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``ce``: [``botocore``] Updated endpoint for eusc-de-east-1 region.
+  * api-change:``chime-sdk-identity``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``chime-sdk-media-pipelines``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``codeartifact``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``codeguruprofiler``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``cognito-idp``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``comprehend``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``connectcampaigns``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``controltower``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``cost-optimization-hub``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``dax``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``elasticbeanstalk``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``endpoint-rules``: [``botocore``] Update endpoint-rules client to latest version
+  * api-change:``entityresolution``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``forecast``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``greengrass``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``iam``: [``botocore``] Fixed missing SummaryMap keys in GetAccountSummary response
+    that were being filtered out during deserialization in AWS Java SDK v2
+  * api-change:``invoicing``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``kinesis``: [``botocore``] Adds support for record sizes up to 10MiB and introduces
+    new UpdateMaxRecordSize API to modify stream record size limits. Adds record size parameters to
+    existing CreateStream and DescribeStreamSummary APIs for request and response payloads respectively.
+  * api-change:``launch-wizard``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``lex-runtime``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``managedblockchain``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``mturk``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``neptune-graph``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``outposts``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``pinpoint``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``rbin``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``rds-data``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``redshift-serverless``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``rekognition``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``repostspace``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``route53profiles``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``route53resolver``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``s3vectors``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``scheduler``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``secretsmanager``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``ses``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``shield``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``simspaceweaver``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``socialmessaging``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``ssm-sap``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``sso-admin``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``stepfunctions``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``waf-regional``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``workmailmessageflow``: [``botocore``] Update endpoint ruleset parameters casing
+- from version 1.40.59
+  * api-change:``acm``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``amplifyuibuilder``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``application-signals``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``billing``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``budgets``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``chime-sdk-messaging``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``cloudtrail``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``codepipeline``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``datapipeline``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``datazone``: [``botocore``] This release adds support for MLflow connections Creation
+    in DataZone
+  * api-change:``docdb``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``dynamodbstreams``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``eks``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``elb``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``endpoint-rules``: [``botocore``] Update endpoint-rules client to latest version
+  * api-change:``evs``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``fis``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``gameliftstreams``: [``botocore``] Add status reasons for TERMINATED stream sessions
+  * api-change:``geo-maps``: [``botocore``] Added support for optional AdditionalFeatures parameter
+    in the V2 GetTile API.
+  * api-change:``inspector``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``iot-managed-integrations``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``iotwireless``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``kinesisanalytics``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``kinesis-video-signaling``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``location``: [``botocore``] Added support for mobile app restrictions in Amazon
+    Location API keys.
+  * api-change:``lookoutvision``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``mediapackage``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``mediastore``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``mediastore-data``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``migrationhubstrategy``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``mq``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``panorama``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``payment-cryptography``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``payment-cryptography-data``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``pca-connector-ad``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``qbusiness``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``robomaker``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``route53domains``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``rtbfabric``: [``botocore``] Add support for custom rate limits.
+  * api-change:``s3tables``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``sagemaker``: [``botocore``] Added inference components model data caching feature
+  * api-change:``sagemaker-metrics``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``securityhub``: [``botocore``] Release 3 layer filter support in GetFindingsV2,
+    GetFindingStatisticsV2, GetResourcesV2,GetResourcesStatisticsV2, AutomationRule V2 APIs. Update
+    filter casing in GetResourcesV2, GetResourcesStatisticsV2 APIs. Add new filters in GetFindingsV2,
+    GetFindingStatisticsV2, AutomationRule V2 APIs.
+  * api-change:``servicediscovery``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``snow-device-management``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``sso-oidc``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``supplychain``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``translate``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``verifiedpermissions``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``vpc-lattice``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``wisdom``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``workspaces-thin-client``: [``botocore``] Update endpoint ruleset parameters casing
+- from version 1.40.58
+  * api-change:``account``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``application-autoscaling``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``bedrock-agentcore``: [``botocore``] Fixing the service documentation name
+  * api-change:``bedrock-agentcore-control``: [``botocore``] Fixing the service documentation name
+  * api-change:``chime-sdk-voice``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``cloudtrail-data``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``codebuild``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``codestar-connections``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``config``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``connect-contact-lens``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``cur``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``discovery``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``dms``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``docdb-elastic``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``drs``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``dsql``: [``botocore``] Add support for resource-based policies for Aurora DSQL
+    clusters. This will enable you to implement Block Public Access (BPA) which will help restrict
+    access to your Aurora DSQL public or VPC endpoints.
+  * api-change:``ebs``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``ecr``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``ecr-public``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``healthlake``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``internetmonitor``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``iotevents``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``iot-jobs-data``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``kinesis-video-archived-media``: [``botocore``] Update endpoint ruleset parameters
+    casing
+  * api-change:``kinesis-video-webrtc-storage``: [``botocore``] Update endpoint ruleset parameters
+    casing
+  * api-change:``lambda``: [``botocore``] Add NodeJs 24 (nodejs24.x) support to AWS Lambda.
+  * api-change:``macie2``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``managedblockchain-query``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``marketplacecommerceanalytics``: [``botocore``] Update endpoint ruleset parameters
+    casing
+  * api-change:``mediatailor``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``mgh``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``mgn``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``mpa``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``neptunedata``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``networkmonitor``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``odb``: [``botocore``] Doc-only update that removes duplicate values from
+    descriptions of ODB peering APIs.
+  * api-change:``omics``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``opensearchserverless``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``pca-connector-scep``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``personalize-events``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``pinpoint-email``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``resiliencehub``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``rum``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``sagemaker``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``sagemaker-edge``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``savingsplans``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``securitylake``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``sesv2``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``storagegateway``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``synthetics``: [``botocore``] Update endpoint ruleset parameters casing
+- from version 1.40.57
+  * api-change:``appfabric``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``autoscaling``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``b2bi``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``bcm-dashboards``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``ce``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``chatbot``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``cloudformation``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``cloudhsm``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``cloudhsmv2``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``codeguru-reviewer``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``cognito-identity``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``comprehendmedical``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``connect``: [``botocore``] This release added support for email address alias
+    configuration and outbound campaign preview mode.
+  * api-change:``connectcampaignsv2``: [``botocore``] Updated Amazon Connect Outbound Campaigns V2
+    SDK to support Preview Outbound Mode
+  * api-change:``connectparticipant``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``devicefarm``: [``botocore``] This release adds support for optionally including an
+    app as part of a CreateRemoteAccessSession request
+  * api-change:``directconnect``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``ds-data``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``ec2``: [``botocore``] This release adds AvailabilityZoneId support for
+    CreateNetworkInterface and DescribeNetworkInterfaces APIs.
+  * api-change:``ec2-instance-connect``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``endpoint-rules``: [``botocore``] Update endpoint-rules client to latest version
+  * api-change:``forecastquery``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``iam``: [``botocore``] Updated OIDC and SAML apis to reject multiple simultaneous
+    requests to change a unique object.
+  * api-change:``inspector2``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``iot``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``iotanalytics``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``iotfleetwise``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``iotsecuretunneling``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``iotsitewise``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``ivschat``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``kinesisanalyticsv2``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``lexv2-models``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``mailmanager``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``marketplace-agreement``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``medialive``: [``botocore``] Add 3 API operations for fetching alerts: ListAlerts
+    (Channels), ListClusterAlerts (MediaLive Anywhere), and ListMultiplexAlerts
+  * api-change:``mwaa``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``notificationscontacts``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``oam``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``pcs``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``pinpoint-sms-voice-v2``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``redshift-data``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``route53``: [``botocore``] Amazon Route 53 now supports the ISOB West Region for
+    private DNS for Amazon VPCs and cloudwatch healthchecks.
+  * api-change:``route53-recovery-cluster``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``rtbfabric``: [``botocore``] Update for general availability of AWS RTB Fabric
+    service.
+  * api-change:``sagemaker-a2i-runtime``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``sns``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``ssm-incidents``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``workdocs``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``workmail``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``workspaces``: [``botocore``] Update endpoint ruleset parameters casing
+- from version 1.40.56
+  * api-change:``dynamodb``: [``botocore``] Add AccountID based endpoint metric to endpoint rules.
+  * api-change:``emr``: [``botocore``] Added RECONFIGURING to the InstanceFleetState convenience enum.
+  * api-change:``endpoint-rules``: [``botocore``] Update endpoint-rules client to latest version
+  * api-change:``mediaconvert``: [``botocore``] This release adds the ability to set resolution for
+    the black video generator and also adds the StartJobsQuery and GetJobsQueryResults APIs which allow
+    asynchronous search of job history using new filters.
+  * api-change:``meteringmarketplace``: [``botocore``] Added ClientToken parameter to MeterUsage API
+    for specifying idempotent requests.
+- from version 1.40.55
+  * api-change:``amp``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``amplifybackend``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``appconfigdata``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``appintegrations``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``application-insights``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``arc-zonal-shift``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``bcm-recommended-actions``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``bedrock-data-automation-runtime``: [``botocore``] Update endpoint ruleset parameters
+    casing
+  * api-change:``chime-sdk-meetings``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``cloudfront``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``cloudfront-keyvaluestore``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``codestar-notifications``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``controlcatalog``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``datasync``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``ds``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``dsql``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``ec2``: [``botocore``] Documentation updates for Amazon EC2.
+  * api-change:``endpoint-rules``: [``botocore``] Update endpoint-rules client to latest version
+  * api-change:``es``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``events``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``evidently``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``finspace``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``finspace-data``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``gameliftstreams``: [``botocore``] Updates documentation to clarify valid application
+    binaries for an Amazon GameLift Streams application and provide descriptions of stream session
+    error status reasons
+  * api-change:``geo-maps``: [``botocore``] Added support for optional style parameters in maps,
+    including Terrain, ContourDensity, Traffic, and TravelModes.
+  * api-change:``imagebuilder``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``iot-data``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``iotdeviceadvisor``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``iotthingsgraph``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``iottwinmaker``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``kendra-ranking``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``kinesis-video-media``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``lakeformation``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``license-manager``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``license-manager-user-subscriptions``: [``botocore``] Update endpoint ruleset
+    parameters casing
+  * api-change:``marketplace-catalog``: [``botocore``] The ListEntities API now supports two new CAPI
+    filters: DeliveryOptionTypes for SaaS products and CompatibleAWSServices for Container products.
+  * api-change:``mediaconnect``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``migration-hub-refactor-spaces``: [``botocore``] Update endpoint ruleset parameters
+    casing
+  * api-change:``network-firewall``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``networkmanager``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``organizations``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``pi``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``qapps``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``rolesanywhere``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``route53-recovery-readiness``: [``botocore``] Update endpoint ruleset parameters
+    casing
+  * api-change:``sagemaker-geospatial``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``signer``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``swf``: [``botocore``] Releasing minor endpoint updates.
+  * api-change:``timestream-write``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``tnb``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``wellarchitected``: [``botocore``] Update endpoint ruleset parameters casing
+- from version 1.40.54
+  * api-change:``acm-pca``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``amplify``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``apigatewaymanagementapi``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``apprunner``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``apptest``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``autoscaling-plans``: [``botocore``] Updated FIPS endpoints for US GovCloud regions
+  * api-change:``batch``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``bcm-data-exports``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``billingconductor``: [``botocore``] New feature: service flat CLI and first AWS
+    managed pricing plan (BasicPricingPlan)
+  * api-change:``customer-profiles``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``databrew``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``dataexchange``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``dlm``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``endpoint-rules``: [``botocore``] Update endpoint-rules client to latest version
+  * api-change:``freetier``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``gamelift``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``geo-routes``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``globalaccelerator``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``grafana``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``identitystore``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``ivs``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``ivs-realtime``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``kafka``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``keyspaces``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``kms``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``lex-models``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``lexv2-runtime``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``lookoutequipment``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``m2``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``machinelearning``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``marketplace-entitlement``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``mediapackagev2``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``medical-imaging``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``memorydb``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``migrationhub-config``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``networkflowmonitor``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``osis``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``personalize``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``personalize-runtime``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``pinpoint-sms-voice``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``polly``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``pricing``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``qldb``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``qldb-session``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``route53-recovery-control-config``: [``botocore``] Update endpoint ruleset parameters
+    casing
+  * api-change:``ssm``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``ssm-contacts``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``ssm-guiconnect``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``timestream-query``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``voice-id``: [``botocore``] Update endpoint ruleset parameters casing
+  * api-change:``workspaces-web``: [``botocore``] Update endpoint ruleset parameters casing
+- from version 1.40.53
+  * api-change:``bedrock``: [``botocore``] Amazon Bedrock Automated Reasoning Policy now offers
+    enhanced AWS KMS integration. The CreateAutomatedReasoningPolicy API includes a new kmsKeyId field,
+    allowing customers to specify their preferred KMS key for encryption, improving control and
+    compliance with AWS encryption mandates.
+  * api-change:``docdb``: [``botocore``] Add support for NetworkType field in CreateDbCluster,
+    ModifyDbCluster, RestoreDbClusterFromSnapshot and RestoreDbClusterToPointInTime for DocumentDB.
+  * api-change:``ec2``: [``botocore``] Introducing EC2 Capacity Manager for monitoring and analyzing
+    capacity usage across On-Demand Instances, Spot Instances, and Capacity Reservations.
+  * api-change:``elbv2``: [``botocore``] This release expands Listener Rule Conditions to support
+    RegexValues and adds support for a new Transforms field in Listener Rules.
+  * api-change:``guardduty``: [``botocore``] Added default pagination value for
+    ListMalwareProtectionPlans API and updated UpdateFindingsFeedback API
+  * api-change:``lightsail``: [``botocore``] Add support for manage Lightsail Bucket CORS
+    configuration
+  * api-change:``timestream-influxdb``: [``botocore``] This release adds support for creating and
+    managing InfluxDB 3 Core and Enterprise DbClusters.
+- from version 1.40.52
+  * api-change:``appstream``: [``botocore``] This release introduces support for Microsoft license
+    included applications streaming.
+  * api-change:``backup``: [``botocore``] The AWS Backup job attribute extension enhancement helps
+    customers better understand the plan that initiated each job, and the properties of the resource
+    each job creates.
+  * api-change:``connect``: [``botocore``] SDK release for TaskTemplateInfo in Contact for
+    DescribeContact response.
+  * api-change:``datazone``: [``botocore``] Support creating scoped and trustedIdentityPropagation
+    enabled connections.
+  * api-change:``ec2``: [``botocore``] This release adds support for creating instant, point-in-time
+    copies of EBS volumes within the same Availability Zone
+  * api-change:``transcribe``: [``botocore``] Move UntagResource API body member to query parameter
+  * api-change:``transfer``: [``botocore``] SFTP connectors now support routing connections via
+    customers' VPC. This enables connections to remote servers that are only accessible in a customer's
+    VPC environment, and to servers that are accessible over the internet but need connections coming
+    from an IP address in a customer VPC's CIDR range.
+- from version 1.40.51
+  * api-change:``bedrock-agentcore``: [``botocore``] Updated InvokeAgentRuntime API to accept account
+    id optionally and added CompleteResourceTokenAuth API.
+  * api-change:``bedrock-agentcore-control``: [``botocore``] Updated http status code in control
+    plane apis of agentcore runtime, tools and identity. Additional included provider types for
+    AgentCore Identity
+  * api-change:``ec2``: [``botocore``] Release Amazon EC2 c8i, c8i-flex, m8a, and r8gb
+  * api-change:``observabilityadmin``: [``botocore``] CloudWatch Observability Admin adds the ability
+    to enable Resource tags for telemetry in a customer account. The release introduces new APIs to
+    enable, disable and describe the status of Resource tags for telemetry feature. This new capability
+    simplifies monitoring AWS resources using tags.
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Mon Oct 13 14:21:22 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.40.50
