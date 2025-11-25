@@ -96,4 +96,12 @@ CVE-2025-1767: GitRepo Volume Inadvertent Local Repository Access, bsc#1239643
     <comment>Monthly Patch Release – Sept, 2025: Update to version 1.32.9</comment>
     <requestid>1305867</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>92f2323b8eb211071a624c8c750c5949</srcmd5>
+    <version>1.32.10</version>
+    <time>1764087601</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1319949</requestid>
+  </revision>
 </revisionlist>

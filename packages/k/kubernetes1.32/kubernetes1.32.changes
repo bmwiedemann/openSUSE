@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Nov 25 07:19:00 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.32.10:
+  * Clean up event messages for errors in Portworx in-tree driver
+  * kube-proxy/winkernel: fix stale RemoteEndpoints due to premature clearing of terminatedEndpoints map.
+  * fix: allow job startTime updates on resume from suspended state
+  * DRA allocator: Add the requests corresponding to the config FromClass
+  * Fix tests
+  * etcd: bump etcd to v3.5.24 for k8s v1.31, v1.32, v1.33
+  * kubeadm: add missing cluster-info context validation
+  * gce: fix etcd manifest
+  * update setcap and debian-base to bookworm-v1.0.6
+  * Bump dependencies, images and versions used to Go 1.24.9 and distroless iptables
+  * golangci-lint: temporarily suppress known issues in the code base
+  * Bump hack/tools to github.com/golangci/golangci-lint 1.64.5 for go 1.24
+  * Add integration test for invalid SAN certificate handling
+  * Remove invalid SAN certificate construction
+  * kubeadm preflight checks: fix host URL construction
+  * change klog to log volume name instead of entire spec in GetDeviceMountPath
+  * authz tests: delay response in context cancelled scenario
+  * kubeadm: rework the FetchInitConfigurationFromCluster node flags
+  * Fix ClusterIP load balancer disappearing when InternalTrafficPolicy: Local is set.
+  * release-1.32: pin system-validators to v1.9.2
+  * Updated Concurrentmap iter
+  * Concurrentmap Iteration
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.24.9`
+  * `BuildRequires:  golang(API) = 1.24`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.32.10/build/dependencies.yaml#L113-L116
+
+- add `Recommends: diffutils` to Kubernetes*-client package, bsc#1251168
+  * This is to fix errors like:
+  ```
+  kubectl kustomize . --enable-helm | kubectl diff -n "$NAMESPACE" -f -
+  error: failed to run "diff": executable file not found in $PATH
+  ```
+
+-------------------------------------------------------------------
 Thu Sep 18 13:55:40 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.32.9:

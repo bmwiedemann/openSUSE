@@ -22,7 +22,7 @@
 %define baseversionminus1 1.31
 
 Name:           kubernetes%{baseversion}
-Version:        1.32.9
+Version:        1.32.10
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
@@ -54,12 +54,12 @@ Patch5:         revert-coredns-image-renaming.patch
 Patch6:         cve-2025-22872-x-net-html-properly-handle-trailing-solidus.patch
 BuildRequires:  fdupes
 BuildRequires:  git
-BuildRequires:  go >= 1.23.12
+BuildRequires:  go >= 1.24.9
 BuildRequires:  go-go-md2man
 BuildRequires:  golang-packaging
 BuildRequires:  rsync
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  golang(API) = 1.23
+BuildRequires:  golang(API) = 1.24
 BuildRequires:  golang(github.com/jteeuwen/go-bindata)
 ExcludeArch:    %{ix86} s390 ppc64 %{arm}
 
@@ -77,6 +77,7 @@ for management and discovery.
 
 
 # packages to build containerized control plane
+
 %package apiserver
 Summary:        Kubernetes apiserver for container image
 Group:          System/Management
@@ -170,6 +171,7 @@ Provides:       kubernetes-client-provider = %{version}
 Requires:       kubernetes%{baseversion}-client-common
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+Recommends:     diffutils
 
 %description client
 Kubernetes client tools like kubectl.
