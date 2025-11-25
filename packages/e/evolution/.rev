@@ -2722,4 +2722,20 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1310504</requestid>
   </revision>
+  <revision rev="291" vrev="1">
+    <srcmd5>da84f3db4f4014c994a5e9f96dcc9c67</srcmd5>
+    <version>3.58.2</version>
+    <time>1764082281</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.58.2:
+  + Bug Fixes:
+    - mail-vfolder: Correct and speed up setup and update of search
+      folders
+    - Crash when copying multiple lines from “Markdown as HTML”
+      composer
+  + Miscellaneous: shell: Fix a crash on start when app
+    initialization fails
+  + Updated translations. (forwarded request 1319065 from iznogood)</comment>
+    <requestid>1319636</requestid>
+  </revision>
 </revisionlist>

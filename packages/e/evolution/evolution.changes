@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov 21 11:12:39 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.58.2:
+  + Bug Fixes:
+    - mail-vfolder: Correct and speed up setup and update of search
+      folders
+    - Crash when copying multiple lines from “Markdown as HTML”
+      composer
+  + Miscellaneous: shell: Fix a crash on start when app
+    initialization fails
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Oct 10 07:45:21 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.58.1:
