@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 25 12:40:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.47.0:
+  * Added Features
+    - Sort CVSS severities by version when there is a tie [#750
+      @wagoodman]
+  * Bug Fixes
+    - increase max compression single file size to 25 GB [#758
+      @westonsteimel]
+
+-------------------------------------------------------------------
 Wed Nov 19 05:54:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.46.2:
