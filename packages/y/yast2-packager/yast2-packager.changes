@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 24 10:56:20 UTC 2025 - Knut Anderssen <kanderssen@suse.com>
+
+- Do not add the biosdevname package to the list of packages to be
+  installed (bsc#1253690, jsc#PED-262).
+- 5.0.9
+
+-------------------------------------------------------------------
 Tue Jul 15 14:57:19 UTC 2025 - Martin Vidner <mvidner@suse.com>
 
 - Fix Internal Error: Encoding::CompatibilityError when
