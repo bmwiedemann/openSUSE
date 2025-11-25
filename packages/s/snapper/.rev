@@ -1359,4 +1359,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1308814</requestid>
   </revision>
+  <revision rev="171" vrev="3">
+    <srcmd5>d431fb157583ef014d774f4711d31703</srcmd5>
+    <version>0.13.0</version>
+    <time>1764082136</time>
+    <user>anag_factory</user>
+    <comment>- add CAP_MKNOD in snapper-backup.service
+  (gh#openSUSE/snapper#1067)
+- handle DBus connection error in snapper-zypp-plugin
+- redesigned target snapshot detection in snbk
+  (gh#openSUSE/snapper#1061)
+- support sending compressed data in snbk
+  (gh#openSUSE/snapper#1059)</comment>
+    <requestid>1318993</requestid>
+  </revision>
 </revisionlist>
