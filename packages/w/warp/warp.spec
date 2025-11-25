@@ -1,7 +1,7 @@
 #
 # spec file for package warp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,9 +30,9 @@ Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Source2:        https://github.com/spdx/license-list-data/archive/refs/tags/v%{lic_data_ver}.tar.gz#/license-list-data-%{version}.tar.gz
 BuildRequires:  cargo-packaging
+BuildRequires:  desktop-file-utils
 BuildRequires:  itstool
 BuildRequires:  meson
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gstreamer-1.0)
