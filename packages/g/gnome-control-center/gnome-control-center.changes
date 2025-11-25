@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Nov 24 16:36:38 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.2:
+  + Applications: Fix "Type" being character wrapped in certain
+    locales
+  + Color:
+    - Fix calibration not working
+    - Fix issues when running the calibration multiple times
+    - Fix restarting after calibration
+  + Date and Time: Fix enabling AM/PM mode only when used for times
+  + Keyboard:
+    - Fix translation of keyboard modifier entries
+    - Handle new activities overview shortcut (Super instead of
+      Super_L)
+  + Network: Don't show hyphen in long WiFi passwords in QR code
+    dialog
+  + Users: Ensure info button widget type
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Oct 10 12:37:47 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.1:

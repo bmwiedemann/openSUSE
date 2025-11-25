@@ -2423,4 +2423,27 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1310608</requestid>
   </revision>
+  <revision rev="274" vrev="1">
+    <srcmd5>2c94fd57d96173ef8c2add13de878bd6</srcmd5>
+    <version>49.2</version>
+    <time>1764082350</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 49.2:
+  + Applications: Fix &quot;Type&quot; being character wrapped in certain
+    locales
+  + Color:
+    - Fix calibration not working
+    - Fix issues when running the calibration multiple times
+    - Fix restarting after calibration
+  + Date and Time: Fix enabling AM/PM mode only when used for times
+  + Keyboard:
+    - Fix translation of keyboard modifier entries
+    - Handle new activities overview shortcut (Super instead of
+      Super_L)
+  + Network: Don't show hyphen in long WiFi passwords in QR code
+    dialog
+  + Users: Ensure info button widget type
+  + Updated translations. (forwarded request 1319805 from iznogood)</comment>
+    <requestid>1319884</requestid>
+  </revision>
 </revisionlist>
