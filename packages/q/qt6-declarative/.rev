@@ -466,4 +466,12 @@
   * 0001-QmlCompiler-Fix-write-access-to-QVariantMap.patch</comment>
     <requestid>1313168</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>b086213a3dbc0194dcd7524702efec81</srcmd5>
+    <version>6.10.1</version>
+    <time>1764082058</time>
+    <user>anag_factory</user>
+    <comment>Qt 6.10.1</comment>
+    <requestid>1319481</requestid>
+  </revision>
 </revisionlist>

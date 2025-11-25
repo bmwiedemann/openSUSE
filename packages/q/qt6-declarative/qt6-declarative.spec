@@ -21,7 +21,7 @@
 %define _lto_cflags %{nil}
 %endif
 
-%define real_version 6.10.0
+%define real_version 6.10.1
 %define short_version 6.10
 %define tar_name qtdeclarative-everywhere-src
 %define tar_suffix %{nil}
@@ -32,7 +32,7 @@
 %endif
 #
 Name:           qt6-declarative%{?pkg_suffix}
-Version:        6.10.0
+Version:        6.10.1
 Release:        0
 Summary:        Qt 6 Declarative Libraries and tools
 License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
@@ -41,8 +41,6 @@ Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{r
 Source99:       qt6-declarative-rpmlintrc
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-qmlimportscanner-Include-module-versions-again.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-QmlCompiler-Fix-write-access-to-QVariantMap.patch
 BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
@@ -246,6 +244,7 @@ Requires:       cmake(Qt6Gui) = %{real_version}
 Requires:       cmake(Qt6Network) = %{real_version}
 Requires:       cmake(Qt6OpenGL) = %{real_version}
 Requires:       cmake(Qt6Qml) = %{real_version}
+Requires:       cmake(Qt6QmlMeta) = %{real_version}
 Requires:       cmake(Qt6QmlModels) = %{real_version}
 
 %description -n qt6-quick-devel
