@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 25 09:36:26 UTC 2025 - maintenance-obs-robot <maintenance-automation-team@suse.de>
+
+- Release 0.11.0
+  - feat: add get_published_list to fetch published binaries of a project/repo/arch
+
+-------------------------------------------------------------------
 Tue Jul 15 08:26:34 UTC 2025 - Dan Čermák <dcermak@suse.com>
 
 - Require cached-property for python < 3.8
