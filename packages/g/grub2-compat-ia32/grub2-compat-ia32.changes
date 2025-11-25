@@ -1,8 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 24 16:55:15 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Add update-bootloader also into post and postun Requires
+
+-------------------------------------------------------------------
 Mon Aug  4 13:33:31 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Drop update-bootloader --get as it returns 0
-  even if the variable is unset 
+  even if the variable is unset
 
 -------------------------------------------------------------------
 Thu Jun 26 00:14:04 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>

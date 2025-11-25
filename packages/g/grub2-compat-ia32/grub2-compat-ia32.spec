@@ -1,7 +1,7 @@
 #
 # spec file for package grub2-compat-ia32
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,9 +23,14 @@ Summary:        Enable IA32 emulation support in the kernel
 License:        MIT
 URL:            https://en.opensuse.org/GRUB#Enabling_32bit_x86_support_in_Kernel
 Source1:        README.md
+
 Requires:       glibc-32bit
 Requires:       update-bootloader
-BuildRequires:       update-bootloader
+Requires(post): update-bootloader
+Requires(postun): update-bootloader
+
+BuildRequires:  update-bootloader
+
 BuildArch:      noarch
 ExclusiveArch:  x86_64
 
@@ -46,7 +51,6 @@ cp -a %{SOURCE1} .
 %doc README.md
 
 %post
-
 %{_sbindir}/update-bootloader --add-option "ia32_emulation=1"
 %{_sbindir}/update-bootloader --config
 echo "IA32 emulation has been enabled. Please reboot to apply changes."

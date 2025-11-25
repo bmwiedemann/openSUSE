@@ -41,4 +41,12 @@ so it's not present nor built in SLES 16.0
   even if the variable is unset</comment>
     <requestid>1307971</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>5f64d5c9681b87ebe5b8b85e228567d3</srcmd5>
+    <version>1</version>
+    <time>1764082419</time>
+    <user>anag_factory</user>
+    <comment>- Add update-bootloader also into post and postun Requires</comment>
+    <requestid>1319812</requestid>
+  </revision>
 </revisionlist>
