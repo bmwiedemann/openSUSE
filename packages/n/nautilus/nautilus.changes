@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov 24 08:46:29 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.2:
+  + Bugfixes:
+    - Fix handling of unset XDG directories
+    - Reduce memory usage of thumbnails by correct scaling
+    - Fix potential rescaling of item when switching to cut icon
+    - Fix crash on empty file lists in drops
+    - Correct sorting of loopback devices
+    - Don't skip the first file from operation progress monitoring
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Oct 13 11:46:50 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.1:
