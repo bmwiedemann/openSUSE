@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Nov 22 13:17:05 UTC 2025 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 4.18:
+  * Updated astyle lib to version 3.6.13
+  * Fixed undefined variable in shellscript definition
+- Changes from version 4.17:
+  * Updated astyle lib to version 3.6.12
+  * Updated some language definitions
+  * Added fea.lang (gl#saalen/highlight#258)
+  * Fixed creation of unique output filenames in batch mode
+  * Improved LSP compatibility
+  * CLI: improved string length validation in service mode
+  * GUI: fixed file resource handling
+- Changes from version 4.16:
+  * Updated astyle lib to version 3.6.9
+  * Fix shell script parenthesis recognition (gl#saalen/highlight#254)
+  * Updated AWK, C, Go and Python language definitions
+  * Added README_FR.adoc
+  * Added shell script and git config file extensions
+  * GUI: adjusted cmake build script to improve Qt build target handling
+  * GUI: updated Qt UI translations
+- Changes from version 4.15:
+  * Updated astyle lib to version 3.6.6
+  * Fixed C++ raw string recognition (gl#saalen/highlight#252)
+
+-------------------------------------------------------------------
 Tue May 13 07:54:38 UTC 2025 - ming li <mli@suse.com>
 
 - Update to version 4.14:
