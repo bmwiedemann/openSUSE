@@ -904,4 +904,12 @@
     - Require glib &gt;= 2.85.2 (forwarded request 1305959 from iznogood)</comment>
     <requestid>1306433</requestid>
   </revision>
+  <revision rev="112" vrev="2">
+    <srcmd5>9c8be7066054952ad67df0b886252bcd</srcmd5>
+    <version>2.86.0</version>
+    <time>1764082261</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1319179</requestid>
+  </revision>
 </revisionlist>

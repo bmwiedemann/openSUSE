@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 18 08:42:39 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Set executable bits on two perl scripts/modules, and also add
+  global excludes, so we do not export private Perl modules.
+
+-------------------------------------------------------------------
 Fri Sep 19 08:56:51 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to verrsion 2.86.0:

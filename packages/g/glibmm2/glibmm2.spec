@@ -42,6 +42,10 @@ BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(sigc++-3.0) >= 2.99.5
 
+# Do not export private Perl modules
+%global __provides_exclude %{?__provides_exclude:%{__provides_exclude}|}^perl\\(
+%global __requires_exclude %{?__requires_exclude:%{__requires_exclude}|}^perl\\((DocsParser|Enum|Function|FunctionBase|GtkDefs|Object|Output|Property|Util|WrapParser)\\)
+
 %description
 Glibmm is the official C++ interface for the popular cross-platform
 library Glib. It provides non-UI API that is not available in standard
@@ -88,13 +92,16 @@ chmod -x glib/glibmm/environ.h
 	%{nil}
 %meson_build
 
-%check
 # Temp disable test, currently needs internet during tests, disable until we figure out how to disable those
-#%%meson_test
+%dnl %check
+%dnl %meson_test
 
 %install
 %meson_install
 %fdupes %{buildroot}%{_prefix}
+
+chmod +x %{buildroot}%{_libdir}/glibmm-%{base_ver}/proc/generate_wrap_init.pl
+chmod +x %{buildroot}%{_libdir}/glibmm-%{base_ver}/proc/gmmproc
 
 %ldconfig_scriptlets -n libglibmm%{so_ver}
 %ldconfig_scriptlets -n libgiomm%{so_ver}
@@ -109,9 +116,12 @@ chmod -x glib/glibmm/environ.h
 
 %files devel
 %doc ChangeLog NEWS README.md
-%{_libdir}/*.so
+%{_libdir}/libgiomm-%{base_ver}.so
+%{_libdir}/libglibmm-%{base_ver}.so
+%{_libdir}/libglibmm_generate_extra_defs-%{base_ver}.so
 %{_libdir}/pkgconfig/*.pc
-%{_includedir}/*
+%{_includedir}/giomm-%{base_ver}
+%{_includedir}/glibmm-%{base_ver}
 %{_libdir}/glibmm-%{base_ver}
 %{_libdir}/giomm-%{base_ver}
 
