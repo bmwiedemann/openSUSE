@@ -903,4 +903,13 @@
     <comment></comment>
     <requestid>1311121</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>6c617381d755b282758967e07b0e4448</srcmd5>
+    <version>3.56.2</version>
+    <time>1764082303</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.56.2:
+  + Updated translations. (forwarded request 1319340 from iznogood)</comment>
+    <requestid>1319644</requestid>
+  </revision>
 </revisionlist>
