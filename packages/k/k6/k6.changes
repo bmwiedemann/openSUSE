@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov 25 06:27:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.4.2:
+  This is a patch release that includes:
+  * #5439 Fix loading files with spaces in their paths
+  * #5415 Updates Sobek to fix the unexpected token class issue
+
+-------------------------------------------------------------------
+Fri Nov 21 06:23:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.4.1:
+  This is a patch release that includes:
+  * #5428 Reverts "Use new expect() syntax in script templates"
+  We'll re-introduce assertion-based templates down the road when
+  the integration is seamless.
+
+-------------------------------------------------------------------
 Mon Nov 10 13:09:41 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.4.0:
