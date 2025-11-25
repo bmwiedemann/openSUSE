@@ -1801,4 +1801,12 @@ bsc#901857 (forwarded request 493933 from AndreasStieger)</comment>
     (PQC) is now only provided through leancrypto. The experimental key</comment>
     <requestid>1297470</requestid>
   </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>917a7fa7e5cdfa1b42fbcefc88bc2899</srcmd5>
+    <version>3.8.11</version>
+    <time>1764082325</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1319700</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Mon Nov 24 09:54:39 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Reduce the number of patches:
+  * Merge gnutls-FIPS-jitterentropy-deinit-threads.patch into the
+    main jitterentropy patch gnutls-FIPS-jitterentropy.patch
+  * Merge the soname gnutls-fips-sonames-check.patch and V3
+    gnutls-FIPS-HMAC-x86_64-v3-opt.patch patches together into
+    gnutls-FIPS-HMAC-nettle-hogweed-gmp.patch
+  * Remove gnutls-set-cligen-python-interp.patch with a sed command.
+
+-------------------------------------------------------------------
+Mon Nov 24 09:29:13 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Enable back the failing tests that have been fixed upstream:
+  * Remove patches:
+    - gnutls-disable-flaky-test-dtls-resume.patch
+    - gnutls-srp-test-SIGPIPE.patch
+    - gnutls-skip-pqx-test.patch
+    - gnutls-3.8.10-disable-ktls_test.patch
+
+-------------------------------------------------------------------
+Mon Nov 24 08:38:13 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.8.11:
+  * libgnutls: Fix stack overwrite in gnutls_pkcs11_token_init
+    Reported by Luigino Camastra from Aisle Research.
+    [GNUTLS-SA-2025-11-18, CVSS: low] [bsc#1254132, CVE-2025-9820]
+  * libgnutls: MAC algorithms for PSK binders is now configurable
+    The previous implementation assumed HMAC-SHA256 to calculate the
+    PSK binders. With the new gnutls_psk_allocate_client_credentials2()
+    and gnutls_psk_allocate_server_credentials2() functions, the
+    application can use other MAC algorithms such as HMAC-SHA384.
+  * libgnutls: Expose a new function to provide the maximum record send size
+    A new function gnutls_record_get_max_send_size() has been added to
+    determine the maximum size of a TLS record to be sent to the peer.
+  * libgnutls: Expose a new function to update keys without sending a KeyUpdate
+    to the peer. A new function gnutls_handshake_update_receiving_key()
+    has been added to allow updating the local receiving key without
+    sending any KeyUpdate messages.
+  * libgnutls: PKCS#11 cryptographic provider configuration takes a token URI
+    instead of a module path. To allow using a PKCS#11 module exposing
+    multiple tokens, the "path" configuration keyword was replaced with
+    the "url" keyword.
+  * libgnutls: Support crypto-auditing probe points
+    crypto-auditing is a project to monitor which cryptographic
+    operations are taking place in the library at run time, through
+    eBPF. This adds necessary probe points for that, in public key
+    cryptography and the TLS use-case. To enable this, run configure
+    with --enable-crypto-auditing.
+  * build: The minimum version of Nettle has been updated to 3.10
+    Given Nettle 3.10 is ABI compatible with 3.6 and includes several
+    security relevant fixes, the library's minimum requirement of
+    Nettle is updated to 3.10.
+  * build: The default priority file path is now constructed from sysconfdir
+    Previously, the location of the default priority file was
+    hard-coded to be /etc/gnutls/config. Now it takes into account of
+    the --sysconfdir option given to the configure script.
+  * API and ABI modifications: (New functions)
+    - gnutls_psk_allocate_client_credentials2
+    - gnutls_psk_allocate_server_credentials2
+    - gnutls_record_get_max_send_size
+    - gnutls_handshake_update_receiving_key
+    - gnutls_audit_push_context
+    - gnutls_audit_pop_context
+    - gnutls_audit_current_context
+  * Rebased patches:
+    - gnutls-FIPS-140-3-references.patch
+    - gnutls-FIPS-TLS_KDF_selftest.patch
+    - gnutls-skip-pqx-test.patch
+
+-------------------------------------------------------------------
 Tue Jul 15 08:12:29 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Build with leancrypto. The liboqs support for post-quantum

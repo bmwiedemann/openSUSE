@@ -1,7 +1,7 @@
-Index: gnutls-3.8.9/lib/nettle/sysrng-linux.c
+Index: gnutls-3.8.11/lib/nettle/sysrng-linux.c
 ===================================================================
---- gnutls-3.8.9.orig/lib/nettle/sysrng-linux.c
-+++ gnutls-3.8.9/lib/nettle/sysrng-linux.c
+--- gnutls-3.8.11.orig/lib/nettle/sysrng-linux.c
++++ gnutls-3.8.11/lib/nettle/sysrng-linux.c
 @@ -49,6 +49,15 @@
  get_entropy_func _rnd_get_system_entropy = NULL;
  
@@ -158,11 +158,11 @@ Index: gnutls-3.8.9/lib/nettle/sysrng-linux.c
 +#endif
  	return;
  }
-Index: gnutls-3.8.9/lib/nettle/Makefile.in
+Index: gnutls-3.8.11/lib/nettle/Makefile.in
 ===================================================================
---- gnutls-3.8.9.orig/lib/nettle/Makefile.in
-+++ gnutls-3.8.9/lib/nettle/Makefile.in
-@@ -521,7 +521,7 @@ am__v_CC_1 =
+--- gnutls-3.8.11.orig/lib/nettle/Makefile.in
++++ gnutls-3.8.11/lib/nettle/Makefile.in
+@@ -522,7 +522,7 @@ am__v_CC_1 =
  CCLD = $(CC)
  LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
  	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
@@ -171,10 +171,10 @@ Index: gnutls-3.8.9/lib/nettle/Makefile.in
  AM_V_CCLD = $(am__v_CCLD_@AM_V@)
  am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
  am__v_CCLD_0 = @echo "  CCLD    " $@;
-Index: gnutls-3.8.9/lib/nettle/Makefile.am
+Index: gnutls-3.8.11/lib/nettle/Makefile.am
 ===================================================================
---- gnutls-3.8.9.orig/lib/nettle/Makefile.am
-+++ gnutls-3.8.9/lib/nettle/Makefile.am
+--- gnutls-3.8.11.orig/lib/nettle/Makefile.am
++++ gnutls-3.8.11/lib/nettle/Makefile.am
 @@ -20,7 +20,7 @@
  
  include $(top_srcdir)/lib/common.mk
@@ -184,10 +184,10 @@ Index: gnutls-3.8.9/lib/nettle/Makefile.am
  
  AM_CPPFLAGS += \
  	-I$(srcdir)/int		\
-Index: gnutls-3.8.9/lib/nettle/rnd-fips.c
+Index: gnutls-3.8.11/lib/nettle/rnd-fips.c
 ===================================================================
---- gnutls-3.8.9.orig/lib/nettle/rnd-fips.c
-+++ gnutls-3.8.9/lib/nettle/rnd-fips.c
+--- gnutls-3.8.11.orig/lib/nettle/rnd-fips.c
++++ gnutls-3.8.11/lib/nettle/rnd-fips.c
 @@ -129,6 +129,10 @@ static int drbg_init(struct fips_ctx *fc
  	uint8_t buffer[DRBG_AES_SEED_SIZE];
  	int ret;
@@ -210,11 +210,11 @@ Index: gnutls-3.8.9/lib/nettle/rnd-fips.c
  	ret = get_entropy(fctx, buffer, sizeof(buffer));
  	if (ret < 0) {
  		_gnutls_switch_fips_state(GNUTLS_FIPS140_OP_ERROR);
-Index: gnutls-3.8.9/tests/Makefile.am
+Index: gnutls-3.8.11/tests/Makefile.am
 ===================================================================
---- gnutls-3.8.9.orig/tests/Makefile.am
-+++ gnutls-3.8.9/tests/Makefile.am
-@@ -212,7 +212,7 @@ ctests += mini-record-2 simple gnutls_hm
+--- gnutls-3.8.11.orig/tests/Makefile.am
++++ gnutls-3.8.11/tests/Makefile.am
+@@ -214,7 +214,7 @@ ctests += mini-record-2 simple gnutls_hm
  	 dtls12-cert-key-exchange dtls10-cert-key-exchange x509-cert-callback-legacy \
  	 keylog-env ssl2-hello tlsfeature-ext dtls-rehandshake-cert-2 dtls-session-ticket-lost \
  	 tlsfeature-crt dtls-rehandshake-cert-3 resume-with-false-start \
@@ -223,3 +223,37 @@ Index: gnutls-3.8.9/tests/Makefile.am
  	 safe-renegotiation/srn0 safe-renegotiation/srn1 safe-renegotiation/srn2 \
  	 safe-renegotiation/srn3 safe-renegotiation/srn4 safe-renegotiation/srn5 \
  	 rsa-illegal-import set_x509_ocsp_multi_invalid set_key set_x509_key_file_ocsp_multi2 \
+Index: gnutls-3.8.11/lib/state.c
+===================================================================
+--- gnutls-3.8.11.orig/lib/state.c
++++ gnutls-3.8.11/lib/state.c
+@@ -834,6 +834,12 @@ void gnutls_deinit(gnutls_session_t sess
+ 	gnutls_mutex_deinit(&session->internals.post_negotiation_lock);
+ 	gnutls_mutex_deinit(&session->internals.epoch_lock);
+ 
++#if defined(__linux__)
++# if defined(ENABLE_FIPS140)
++	_rnd_system_entropy_deinit();
++# endif
++#endif
++
+ 	gnutls_free(session);
+ }
+ 
+Index: gnutls-3.8.11/lib/nettle/rnd.c
+===================================================================
+--- gnutls-3.8.11.orig/lib/nettle/rnd.c
++++ gnutls-3.8.11/lib/nettle/rnd.c
+@@ -79,6 +79,12 @@ struct generators_ctx_st {
+ 
+ static void wrap_nettle_rnd_deinit(void *_ctx)
+ {
++#if defined(__linux__)
++# if defined(ENABLE_FIPS140)
++	_rnd_system_entropy_deinit();
++# endif
++#endif
++
+ 	gnutls_free(_ctx);
+ }
+ 

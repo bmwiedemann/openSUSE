@@ -1,7 +1,7 @@
 #
 # spec file for package gnutls
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -42,7 +42,7 @@
 %bcond_with tpm
 %bcond_without leancrypto
 Name:           gnutls
-Version:        3.8.10
+Version:        3.8.11
 Release:        0
 Summary:        The GNU Transport Layer Security Library
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -56,30 +56,18 @@ Source3:        baselibs.conf
 # Suppress a false positive on the .hmac file
 Source4:        gnutls.rpmlintrc
 Patch0:         gnutls-3.5.11-skip-trust-store-tests.patch
+#PATCH-FIX-SUSE bsc#1176671 FIPS: Add TLS KDF selftest
 Patch1:         gnutls-FIPS-TLS_KDF_selftest.patch
-Patch2:         gnutls-disable-flaky-test-dtls-resume.patch
-# PATCH-FIX-OPENSUSE The srp test fails with SIGPIPE
-Patch3:         gnutls-srp-test-SIGPIPE.patch
-# FIPS 140-3 patches:
-#PATCH-FIX-SUSE bsc#1207346 FIPS: Change FIPS 140-2 references to FIPS 140-3
-Patch100:       gnutls-FIPS-140-3-references.patch
 #PATCH-FIX-SUSE bsc#1211476 FIPS: Skip fixed HMAC verification for nettle, hogweed and gmp
-Patch101:       gnutls-FIPS-HMAC-nettle-hogweed-gmp.patch
+Patch2:         gnutls-FIPS-HMAC-nettle-hogweed-gmp.patch
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
 #PATCH-FIX-SUSE bsc#1202146 FIPS: Port gnutls to use jitterentropy
-Patch102:       gnutls-FIPS-jitterentropy.patch
-#PATCH-FIX-SUSE bsc#1221242 Fix memleak in gnutls' jitterentropy collector
-Patch103:       gnutls-FIPS-jitterentropy-deinit-threads.patch
+Patch3:         gnutls-FIPS-jitterentropy.patch
 %endif
-Patch104:       gnutls-set-cligen-python-interp.patch
-Patch105:       gnutls-skip-pqx-test.patch
-Patch106:       gnutls-fips-sonames-check.patch
-# PATCH-FIX-SUSE jsc#jsc#PED-12224 FIPS: Mark SHA1 as unapproved in the SLI
-Patch107:       gnutls-FIPS-disable-mac-sha1.patch
-# PATCH-FIX-SUSE bsc#1237101 GNUTLS FIPS selfcheck is failing again on tumbleweed
-Patch108:       gnutls-FIPS-HMAC-x86_64-v3-opt.patch
-# PATCH-FIX-SUSE Disable test
-Patch109:       gnutls-3.8.10-disable-ktls_test.patch
+#PATCH-FIX-SUSE jsc#PED-12224 FIPS: Mark SHA1 as unapproved in the SLI
+Patch4:         gnutls-FIPS-disable-mac-sha1.patch
+#PATCH-FIX-SUSE bsc#1207346 FIPS: Change FIPS 140-2 references to FIPS 140-3
+Patch5:         gnutls-FIPS-140-3-references.patch
 BuildRequires:  autogen
 BuildRequires:  automake
 BuildRequires:  datefudge
@@ -89,7 +77,7 @@ BuildRequires:  gtk-doc
 # The test suite calls /usr/bin/ss from iproute2. It's our own duty to ensure we have it present
 BuildRequires:  iproute2
 BuildRequires:  libidn2-devel
-BuildRequires:  libnettle-devel >= 3.6
+BuildRequires:  libnettle-devel >= 3.10
 BuildRequires:  libtasn1-devel >= 4.9
 BuildRequires:  libtool
 BuildRequires:  libunistring-devel
@@ -266,6 +254,9 @@ autoreconf -fiv
         --with-fips140-module-version="%{version}-%{release}" \
         --enable-ktls \
         %{nil}
+
+# Replace python with python3 in cligen/cli-docgen.py
+[ -f cligen/cli-docgen.py ] && sed -i "1s@#!.*python.*@#!$(realpath /usr/bin/python3)@" $f cligen/cli-docgen.py
 
 %make_build
 

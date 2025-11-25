@@ -1,8 +1,52 @@
-Index: gnutls-3.8.8/lib/fips.c
+Index: gnutls-3.8.11/lib/fips.c
 ===================================================================
---- gnutls-3.8.8.orig/lib/fips.c
-+++ gnutls-3.8.8/lib/fips.c
-@@ -349,11 +349,90 @@ static int load_hmac_file(struct hmac_fi
+--- gnutls-3.8.11.orig/lib/fips.c
++++ gnutls-3.8.11/lib/fips.c
+@@ -268,6 +268,29 @@ static int handler(void *user, const cha
+ 	return 1;
+ }
+ 
++
++/* In case of x86_64-v3 optmizations, names might differ in version numbers.
++ * @mac_file: buffer where the hmac file path will be written to
++ * @lib_path: path to the dependent library, used to deduce hmac file path
++ * @file_name: The file name of the library
++ */
++ static void get_hwcaps_lib_hmac_path(char *mac_file, const char *lib_path, char *file_name) {
++	// Cut name short if more than SOVER is present
++	char *soname = strstr(file_name, ".so.");
++	char correct_ext[256];
++	memset(correct_ext, 0x0, 256);
++	soname += strlen(".so.");
++	for (uint32_t i = 0; i < strlen(soname); i++) {
++		if (soname[i] == '.') {
++			int proper_len = soname - file_name + i;
++			strncpy(correct_ext, file_name, proper_len);
++			snprintf(mac_file, 256, "%.*s/.%.*s.hmac",
++				 (int)(file_name-lib_path),lib_path,proper_len,correct_ext);
++			break;
++		}
++	}
++}
++
+ /*
+  * get_hmac_path:
+  * @mac_file: buffer where the hmac file path will be written to
+@@ -300,6 +323,13 @@ static int get_hmac_path(char *mac_file,
+ 	if (ret == 0)
+ 		return GNUTLS_E_SUCCESS;
+ 
++	if (strstr(gnutls_path, "glibc-hwcaps")) {
++		get_hwcaps_lib_hmac_path(mac_file, gnutls_path, p + 1);
++		ret = _gnutls_file_exists(mac_file);
++		if (ret == 0)
++			return GNUTLS_E_SUCCESS;
++	}
++
+ 	if (p == NULL)
+ 		ret = snprintf(mac_file, mac_file_size, "fipscheck/.%s.hmac",
+ 			       gnutls_path);
+@@ -349,11 +379,90 @@ static int load_hmac_file(struct hmac_fi
  }
  
  /*
@@ -94,26 +138,46 @@ Index: gnutls-3.8.8/lib/fips.c
   *
   * Returns: 0 on successful HMAC verification, a negative error code otherwise
   */
-@@ -496,17 +575,20 @@ static int check_binary_integrity(void)
+@@ -405,18 +514,18 @@ static int callback(struct dl_phdr_info
+ 	const char *soname = last_component(path);
+ 	struct lib_paths *paths = (struct lib_paths *)data;
+ 
+-	if (!strcmp(soname, GNUTLS_LIBRARY_SONAME))
++	if (!strncmp(soname, GNUTLS_LIBRARY_SONAME, strlen(GNUTLS_LIBRARY_SONAME)))
+ 		_gnutls_str_cpy(paths->gnutls, GNUTLS_PATH_MAX, path);
+ #ifdef NETTLE_LIBRARY_SONAME
+-	else if (!strcmp(soname, NETTLE_LIBRARY_SONAME))
++	else if (!strncmp(soname, NETTLE_LIBRARY_SONAME, strlen(NETTLE_LIBRARY_SONAME)))
+ 		_gnutls_str_cpy(paths->nettle, GNUTLS_PATH_MAX, path);
+ #endif
+ #ifdef HOGWEED_LIBRARY_SONAME
+-	else if (!strcmp(soname, HOGWEED_LIBRARY_SONAME))
++	else if (!strncmp(soname, HOGWEED_LIBRARY_SONAME, strlen(HOGWEED_LIBRARY_SONAME)))
+ 		_gnutls_str_cpy(paths->hogweed, GNUTLS_PATH_MAX, path);
+ #endif
+ #ifdef GMP_LIBRARY_SONAME
+-	else if (!strcmp(soname, GMP_LIBRARY_SONAME))
++	else if (!strncmp(soname, GMP_LIBRARY_SONAME, strlen(GMP_LIBRARY_SONAME)))
+ 		_gnutls_str_cpy(paths->gmp, GNUTLS_PATH_MAX, path);
+ #endif
+ 	return 0;
+@@ -496,17 +605,17 @@ static int check_binary_integrity(void)
  	if (ret < 0)
  		return ret;
  #ifdef NETTLE_LIBRARY_SONAME
 -	ret = check_lib_hmac(&hmac.nettle, paths.nettle);
-+	//ret = check_lib_hmac(&hmac.nettle, paths.nettle);
 +	ret = check_dep_lib_hmac(paths.nettle);
  	if (ret < 0)
  		return ret;
  #endif
  #ifdef HOGWEED_LIBRARY_SONAME
 -	ret = check_lib_hmac(&hmac.hogweed, paths.hogweed);
-+	//ret = check_lib_hmac(&hmac.hogweed, paths.hogweed);
 +	ret = check_dep_lib_hmac(paths.hogweed);
  	if (ret < 0)
  		return ret;
  #endif
  #ifdef GMP_LIBRARY_SONAME
 -	ret = check_lib_hmac(&hmac.gmp, paths.gmp);
-+	//ret = check_lib_hmac(&hmac.gmp, paths.gmp);
 +	ret = check_dep_lib_hmac(paths.gmp);
  	if (ret < 0)
  		return ret;
