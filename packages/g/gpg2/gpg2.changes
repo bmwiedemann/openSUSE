@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Nov 24 09:00:28 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 2.5.14:
+  * gpg: Fix possible memory corruption in the armor parser. [T7906]
+  * gpgsm: Fix output of card serial number in colon listing. [T7914]
+  * agent:ssh: Fix RSA signature handling for newer spec. [T7882]
+  * gpg: Improve/relax the checking of preference options. [rG6570700fdd]
+  * gpg: Fix the check for the END armor line. [rG62b8bf2f39]
+  * gpg: Do not present a default when asking for another output filename. [T7908]
+  * gpg: Include ADSK keys in key listings specified by fingerprints. [T7892]
+  * agent: Fix a decryption failures if the pinentry dialog for the
+    first tried recipient is canceled. Regression since 2.5.7. [T7893, T7649]
+  * keyboxd: Fix schema of the fingerprint table. [T7892]
+  * dirmngr: Fix OCSP next-update check. [rG9ef87bcdb0]
+  * gpg: New "pfc" record in colons key listings. [T7897]
+  * gpg: Allow import and export of Kyber secret keys. [T7315]
+  * gpg: Escape characters with the high bit set in NOTATION status lines. [T7896]
+  * gpg: New import option "force-update". [T7892,rGf6237ccd31]
+  * agent: Accept a trustlist with a missing LF at the end. [rG1b4ac98de7]
+  * agent: Support protection for Kyber keys. [T6638,rGaea62817f3]
+  * scd:nks: Make newer TCOS signature cards work. [rG17596e830f]
+  * Release-info: https://dev.gnupg.org/T7869
+  * Rebase gnupg-revert-rfc4880bis.patch
+
+-------------------------------------------------------------------
 Thu Oct 23 07:30:58 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 2.5.13:
