@@ -17,14 +17,14 @@
 
 
 Name:           python-pytest-black
-Version:        0.3.12
+Version:        0.6.0
 Release:        0
 Summary:        Black format checking plugin for pytest
 License:        MIT
-URL:            https://github.com/shopkeep/pytest-black
-Source:         https://files.pythonhosted.org/packages/source/p/pytest-black/pytest-black-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-pytest-makefile.patch -- gh#shopkeep/pytest-black#53
-Patch0:         https://github.com/shopkeep/pytest-black/pull/53.patch#/fix-pytest-makefile.patch
+URL:            https://github.com/coherent-oss/pytest-black
+Source:         https://files.pythonhosted.org/packages/source/p/pytest-black/pytest_black-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Update pytest fixtures
+Patch0:         https://github.com/coherent-oss/pytest-black/commit/75e0012.patch#/fix-pytest-makefile.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
@@ -32,12 +32,12 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-black
-Requires:       python-pytest >= 3.5.0
+Requires:       python-pytest >= 7
 Requires:       python-toml
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module black}
-BuildRequires:  %{python_module pytest >= 3.5.0}
+BuildRequires:  %{python_module pytest >= 7}
 BuildRequires:  %{python_module toml}
 # /SECTION
 %python_subpackages
@@ -46,7 +46,7 @@ BuildRequires:  %{python_module toml}
 A pytest plugin to enable format checking with black.
 
 %prep
-%autosetup -p1 -n pytest-black-%{version}
+%autosetup -p1 -n pytest_black-%{version}
 
 %build
 %pyproject_wheel

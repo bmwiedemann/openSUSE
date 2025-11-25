@@ -49,4 +49,18 @@
 - No more greedy globs in %files.</comment>
     <requestid>1275091</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>799073773cca7ce748504425bc2e01d1</srcmd5>
+    <version>0.6.0</version>
+    <time>1764082464</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.6.0:
+  * Check both py and pyi files.
+  * Adopt to pytest 7.
+  * Remove no longer compatible tests.
+  * Move project metadata to new home.
+- Update URL.
+- Refresh fix-pytest-makefile.patch to match what was merged upstream.</comment>
+    <requestid>1319908</requestid>
+  </revision>
 </revisionlist>

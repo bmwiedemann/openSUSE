@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 25 00:42:23 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.6.0:
+  * Check both py and pyi files.
+  * Adopt to pytest 7.
+  * Remove no longer compatible tests.
+  * Move project metadata to new home.
+- Update URL.
+- Refresh fix-pytest-makefile.patch to match what was merged upstream.
+
+-------------------------------------------------------------------
 Wed May  7 06:47:48 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
