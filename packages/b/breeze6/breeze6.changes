@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 21 12:41:56 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patches to fix menus having too much padding:
+  * 0001-Menu-Set-ItemSpacing-to-2.patch
+  * 0002-Menu-Reduce-margins-to-better-match-QQC2-style.patch
+
+-------------------------------------------------------------------
 Tue Nov 18 10:26:21 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.5.3:

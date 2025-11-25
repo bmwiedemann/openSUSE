@@ -271,4 +271,16 @@
     <comment>Plasma 6.5.3 (forwarded request 1318450 from Vogtinator)</comment>
     <requestid>1318621</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>bcc3db9613775ad6a942656cb7ec097f</srcmd5>
+    <version>6.5.3</version>
+    <time>1764082027</time>
+    <user>anag_factory</user>
+    <comment>From the distributions@k.o ML
+
+- Add patches to fix menus having too much padding:
+  * 0001-Menu-Set-ItemSpacing-to-2.patch
+  * 0002-Menu-Reduce-margins-to-better-match-QQC2-style.patch (forwarded request 1319087 from Vogtinator)</comment>
+    <requestid>1319233</requestid>
+  </revision>
 </revisionlist>
