@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-numexpr
-Version:        2.11.0
+Version:        2.14.1
 Release:        0
 Summary:        Numerical expression evaluator for NumPy
 License:        MIT

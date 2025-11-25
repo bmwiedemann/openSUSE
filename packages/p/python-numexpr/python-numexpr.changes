@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Nov 17 21:48:08 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.14.1:
+  * Rolled back static typing support to ensure compatibiity with
+    NumPy 1.26.
+  * Added CI tests for NumPy 1.26
+  * Numerical stability for overflow has been improved for tan /
+    tanh to handle possible overflows for complex numbers.
+  * Static typing support has been added, making NumExpr
+    compatible with static type checkers like mypy and pyright.
+    Thanks to Joren Hammudoglu (@jorenham) for the work.
+  * Patch to maximum/minimum functions in order to match NumPy
+    NaN handling
+  * Patch to convert '+'->'|' and '*'->'&' for booleans
+  * New functionality has been added:
+  * Bitwise operators (and, or, not, xor): &, |, ~, ^
+  * New binary arithmetic operator for floor division: //
+  * New functions: signbit, hypot, copysign, nextafter, maximum,
+    minimum, log2, trunc, round and sign.
+  * Also enables integer outputs for integer inputs for abs,
+    copy, ones_like, sign and round.
+  * New wheels for Python 3.14 and 3.14t are provided.
+  * Added complex counterparts for isnan/isfinite/isinf
+    functions. Thanks to Luke Shaw.
+  * Updated documentation for the new functions and instructions
+    for adding new functions to the virtual machine.  Thanks to
+    Luke Shaw.
+  * Fixed MKL support; it was broken in 2.12.0.
+  * Added isnan/isfinite/isinf functions.
+
+-------------------------------------------------------------------
 Wed Aug 27 04:10:48 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.11.0:

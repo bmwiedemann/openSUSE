@@ -307,4 +307,12 @@ Implement single-spec version</comment>
   * Python 3.10 is now the minimum supported version.</comment>
     <requestid>1301515</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2f10597a3bb5d232dc3ecd0c6b872f0e</srcmd5>
+    <version>2.14.1</version>
+    <time>1764082451</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1319844</requestid>
+  </revision>
 </revisionlist>
