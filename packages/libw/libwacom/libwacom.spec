@@ -19,7 +19,7 @@
 %define sover 9
 
 Name:           libwacom
-Version:        2.16.1
+Version:        2.17.0
 Release:        0
 Summary:        Tablet description library
 License:        HPND
@@ -31,6 +31,7 @@ Source1:        https://github.com/linuxwacom/libwacom/releases/download/libwaco
 Source2:        %{name}.keyring
 Source99:       baselibs.conf
 BuildRequires:  meson >= 0.57.0
+BuildRequires:  fdupes
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0)
@@ -53,7 +54,7 @@ Requires:       %{name}-data >= %{version}
 libwacom is a library to identify graphics tablets and their model-specific
 features. It provides easy access to information such as "is this a built-in
 on-screen tablet", "what is the size of this model", etc. The name libwacom is
-historical — it was originally developed for Wacom devices only but now
+historical - it was originally developed for Wacom devices only but now
 supports any graphics tablet from any vendor.
 
 %package data
@@ -99,6 +100,8 @@ This subpackage provides the header files for the library.
 sed -e 's-#!/usr/bin/env python3-#!/usr/bin/python3-g' -i %{buildroot}%{_bindir}/*
 find %{buildroot} -type f -name "*.la" -delete -print
 %python3_fix_shebang
+
+%fdupes %{buildroot}%{_datadir}/libwacom/layouts
 
 %check
 %meson_test
