@@ -418,4 +418,12 @@
 - Change Provides/Obsoletes to Conflicts for qt6-wayland-integration</comment>
     <requestid>1311342</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>ac5075787689d073cc3b9e754b775f40</srcmd5>
+    <version>6.10.1</version>
+    <time>1764082110</time>
+    <user>anag_factory</user>
+    <comment>Qt 6.10.1</comment>
+    <requestid>1319510</requestid>
+  </revision>
 </revisionlist>
