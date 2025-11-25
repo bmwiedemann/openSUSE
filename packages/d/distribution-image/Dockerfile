@@ -27,6 +27,10 @@ COPY --from=target / /target
 RUN set -euo pipefail; \
     export PERMCTL_ALLOW_INSECURE_MODE_IF_NO_PROC=1; \
     zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends apache2-utils ca-certificates-mozilla distribution-registry
+# sanity check that the version from the tag is equal to the version of distribution-registry that we expect
+RUN set -euo pipefail; \
+    [ "$(rpm --root /target -q --qf '%{version}' distribution-registry | \
+    cut -d '.' -f -2)" = "3.0" ]
 
 # cleanup logs and temporary files
 RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
