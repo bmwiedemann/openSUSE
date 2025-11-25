@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Nov 24 16:41:26 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.2:
+  + Fix delay in applying KMS property changes
+  + Handle ignored modifiers when grabbing keys and buttons on X11
+  + Improve tiled monitor handling
+  + Improve sticky keys handling
+  + Fix global shortcut keys getting stuck in Xwayland windows
+  + Fixed crashes
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Nov 17 11:15:13 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.1.1+14:
+  * x11: Handle ignored modifiers when grabbing keys and buttons
+  * kms-connector: Only trigger a connector update on disconnect
+    timeout
+  * backends/native/kms-connector:
+    - Do not assume !connected == disconnected
+    - Notify disconnect events after a timeout
+    - Initialize the connection as disconnected
+  * kms: Add debug logging in on_udev_hotplug & hotplug_timeout
+  * backends/native/kms: Use a more generic name for resource
+    update function
+  * Updated translations.
+
+-------------------------------------------------------------------
 Thu Oct 23 09:44:14 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.1.1:

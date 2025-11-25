@@ -2362,4 +2362,33 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1313599</requestid>
   </revision>
+  <revision rev="260" vrev="1">
+    <srcmd5>c9fa885bbe113bff525f713bfc1ef01f</srcmd5>
+    <version>49.2</version>
+    <time>1764082354</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 49.2:
+  + Fix delay in applying KMS property changes
+  + Handle ignored modifiers when grabbing keys and buttons on X11
+  + Improve tiled monitor handling
+  + Improve sticky keys handling
+  + Fix global shortcut keys getting stuck in Xwayland windows
+  + Fixed crashes
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+- Update to version 49.1.1+14:
+  * x11: Handle ignored modifiers when grabbing keys and buttons
+  * kms-connector: Only trigger a connector update on disconnect
+    timeout
+  * backends/native/kms-connector:
+    - Do not assume !connected == disconnected
+    - Notify disconnect events after a timeout
+    - Initialize the connection as disconnected
+  * kms: Add debug logging in on_udev_hotplug &amp; hotplug_timeout
+  * backends/native/kms: Use a more generic name for resource
+    update function
+  * Updated translations. (forwarded request 1319806 from iznogood)</comment>
+    <requestid>1319885</requestid>
+  </revision>
 </revisionlist>
