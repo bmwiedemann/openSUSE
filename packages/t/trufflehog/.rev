@@ -2502,4 +2502,16 @@ Note: The previously pushed version 3.89.0 never existed. This was a typo, which
   * Remove gh-actions approval workflows in favor of new repo setting (#4525) (forwarded request 1317559 from ph03nix)</comment>
     <requestid>1317665</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>79829fab4e0a55905868fc8ad497bb28</srcmd5>
+    <version>3.91.1</version>
+    <time>1764082421</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.91.1:
+  * Add generic JWT detection and verification (#4441)
+  * Add AnalysisInfo to verified results in detectors for new analyzers (#4556)
+  * Fix JDBC Detector Bugs (#4548)
+  * redact secret for twilio api key (#4550) (forwarded request 1319652 from ph03nix)</comment>
+    <requestid>1319811</requestid>
+  </revision>
 </revisionlist>

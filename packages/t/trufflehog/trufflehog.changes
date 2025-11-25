@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 24 08:27:21 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 3.91.1:
+  * Add generic JWT detection and verification (#4441)
+  * Add AnalysisInfo to verified results in detectors for new analyzers (#4556)
+  * Fix JDBC Detector Bugs (#4548)
+  * redact secret for twilio api key (#4550)
+
+-------------------------------------------------------------------
 Thu Nov 13 10:35:10 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 3.91.0:
