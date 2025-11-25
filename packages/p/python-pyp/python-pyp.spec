@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2020-2021 LISA GmbH, Bingen, Germany
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,6 +26,8 @@ License:        MIT
 Group:          Development/Libraries/Python
 URL:            https://github.com/hauntsaninja/pyp
 Source0:        https://github.com/hauntsaninja/pyp/archive/v%{version}.tar.gz#/pyp-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM python314-tests.patch gh#hauntsaninja/pyp#45
+Patch0:         python314-tests.patch
 BuildRequires:  %{python_module astunparse}
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module flit-core}
