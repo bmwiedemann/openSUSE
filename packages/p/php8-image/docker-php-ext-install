@@ -7,4 +7,4 @@ for ext in $@; do
     [[ "$ext" =~ ^- ]] || extensions+=("php8-$ext")
 done
 
-zypper -n in ${extensions[*]}
+zypper -n install ${extensions[*]}

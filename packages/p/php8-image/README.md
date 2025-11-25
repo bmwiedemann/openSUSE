@@ -40,7 +40,7 @@ and they can be installed as follows:
 ```Dockerfile
 FROM registry.opensuse.org/opensuse/bci/php:8
 
-RUN zypper -n in php8-gd php8-intl
+RUN zypper -n install php8-gd php8-intl
 ```
 
 Alternatively, you can use the `docker-php-ext-install` script. It is provided
@@ -67,7 +67,7 @@ Install PECL extensions as follows:
 FROM registry.opensuse.org/opensuse/bci/php:8
 
 RUN set -euo pipefail; \
-    zypper -n in $PHPIZE_DEPS php8-pecl; \
+    zypper -n install $PHPIZE_DEPS php8-pecl; \
     pecl install APCu-5.1.21;
 ```
 
