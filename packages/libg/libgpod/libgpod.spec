@@ -1,7 +1,7 @@
 #
 # spec file for package libgpod
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,7 +51,6 @@ BuildRequires:  sg3_utils-devel
 BuildRequires:  sqlite3-devel
 BuildRequires:  swig
 BuildRequires:  taglib-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(udev)
 %if %{libplist2}
 BuildRequires:  autoconf
