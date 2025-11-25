@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Nov 25 07:41:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.22.1:
+  * Graphical User Interface
+    - Fix issue showing an empty UI for some users (#5006,
+      #5029,#5034,#5035) by Jarek Kowalski and Julio López.
+  * Other Improvements
+    - make purpose a string parameter (#5015) by Julio López
+  * Testing Improvements
+    - leverage testing.T.Context in testlogging (#5008) by Julio
+      López
+    - use contexts in tests (#5009) by Julio López
+    - pass context in helpers for running Docker (#5012) by Julio
+      López
+    - cleanup TestKopiaRunner (#5010) by Julio López
+  * CI/CD
+    - enable noctx linter (#4972) by Nathan Baulch
+    - prevent writing outside of installation target directory
+      (#5003) by Julio López
+  * Dependencies
+    - build(deps): Go 1.25 (#4987)
+    - build(deps): bump github.com/prometheus/common (#5032)
+    - build(deps): bump go.uber.org/zap from 1.27.0 to 1.27.1
+      (#5033)
+    - build(deps): bump golang.org/x/crypto from 0.44.0 to 0.45.0
+      (#5017)
+    - build(deps): bump the common-golang-dependencies group across
+      1 directory with 8 updates (#5000)
+
+-------------------------------------------------------------------
 Tue Nov 18 06:56:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.22.0:
