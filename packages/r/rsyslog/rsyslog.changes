@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 21 12:21:20 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Fix SELinux context of rsyslog run directory (bsc#1253261)
+
+-------------------------------------------------------------------
 Wed May 14 05:48:11 UTC 2025 - Thomas Blume <Thomas.Blume@suse.com>
 
 - select modules for SLFO (jsc#PED-12783)

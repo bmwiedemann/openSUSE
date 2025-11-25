@@ -20,6 +20,8 @@ for variable in ${!SYSLOGD_ADDITIONAL_SOCKET*}; do
 	echo "\$AddUnixListenSocket $value"
 done >> "${cfg_file}"
 
+restorecon -R "${run_dir}" 2> /dev/null
+
 #
 # make sure xconsole exists and is a pipe
 #
