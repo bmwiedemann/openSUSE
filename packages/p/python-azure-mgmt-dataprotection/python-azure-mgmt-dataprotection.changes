@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 24 14:06:18 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.0.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Update Requires from pyproject.toml
+
+-------------------------------------------------------------------
 Tue Jul 23 11:53:07 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release

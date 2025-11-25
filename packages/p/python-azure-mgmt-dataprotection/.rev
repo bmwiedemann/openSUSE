@@ -112,4 +112,17 @@
 - Update Requires from setup.py (forwarded request 1189239 from glaubitz)</comment>
     <requestid>1189274</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>904b5d6db344e32676850a0ea637d6d9</srcmd5>
+    <version>2.0.1</version>
+    <time>1764082396</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 2.0.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Update Requires from pyproject.toml (forwarded request 1319770 from glaubitz)</comment>
+    <requestid>1319781</requestid>
+  </revision>
 </revisionlist>
