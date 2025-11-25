@@ -256,4 +256,25 @@
     <comment></comment>
     <requestid>1195978</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>7b41f7abc1c66eb6ae6f6aa7f48e9866</srcmd5>
+    <version>3.10.2</version>
+    <time>1764082458</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.10.2:
+  ## Improvements
+  *  Use numpy.typing.DTypeLike over np.dtype for parameters.
+  *  Accept IsDescription, dict, numpy.dtype as table descriptions.
+  *  Allow multi-dimension chunkshape when creating arrays.
+  *  Improve the way setup.py finds runtime libs.
+  ## Bugfixes
+  * Fixed blosc2 search paths.
+  * Fixed the copy of tables with createparents=True.
+  * Fixed the function for writing cpu info to cache file.
+  * Fixed an incorrect access to the obsolete sys.maxint in pttree.
+- Add patch support-numexpr-2.13.0.patch:
+  * Support numexpr &gt;= 2.13.0 changes.
+- Remove Python 3.10 test flavor, add 3.13 and 3.14. Build for 3.13.</comment>
+    <requestid>1319857</requestid>
+  </revision>
 </revisionlist>

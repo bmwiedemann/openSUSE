@@ -1,7 +1,7 @@
 #
 # spec file for package python-tables
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,14 +24,17 @@
 %else
 %define psuffix -%{flavor}
 %bcond_without test
-%if "%{flavor}" != "test-py310"
-%define skip_python310 1
-%endif
 %if "%{flavor}" != "test-py311"
 %define skip_python311 1
 %endif
 %if "%{flavor}" != "test-py312"
 %define skip_python312 1
+%endif
+%if "%{flavor}" != "test-py313"
+%define skip_python313 1
+%endif
+%if "%{flavor}" != "test-py314"
+%define skip_python314 1
 %endif
 # Skip all empty test flavors: last one is for sle15_python_module_pythons
 %if "%{shrink:%pythons}" == "" || ( "%pythons" == "python311" && 0%{?skip_python311} )
@@ -41,12 +44,14 @@ ExclusiveArch:  donotbuild
 %endif
 
 Name:           python-tables%{psuffix}
-Version:        3.10.1
+Version:        3.10.2
 Release:        0
 Summary:        Hierarchical datasets for Python
 License:        BSD-3-Clause
 URL:            https://github.com/PyTables/PyTables
 Source0:        https://files.pythonhosted.org/packages/source/t/tables/tables-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#PyTables/PyTables#1256
+Patch0:         support-numexpr-2.13.0.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  python-rpm-macros
 %if ! %{with test}
@@ -70,8 +75,6 @@ BuildRequires:  lzo-devel
 %else
 # with test
 BuildRequires:  %{python_module tables = %{version}}
-# usage of pkg_resources in tests
-BuildRequires:  %{python_module setuptools}
 %endif
 Requires:       python-blosc2 >= 2.3
 Requires:       python-numexpr >= 2.6.2
