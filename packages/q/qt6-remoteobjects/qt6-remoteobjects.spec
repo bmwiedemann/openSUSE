@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.10.0
+%define real_version 6.10.1
 %define short_version 6.10
 %define tar_name qtremoteobjects-everywhere-src
 %define tar_suffix %{nil}
@@ -30,7 +30,7 @@
 %global __requires_exclude qt6qmlimport\\(TimeExample\\)
 #
 Name:           qt6-remoteobjects%{?pkg_suffix}
-Version:        6.10.0
+Version:        6.10.1
 Release:        0
 Summary:        Qt6 RemoteObjects Library
 License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
