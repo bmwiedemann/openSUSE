@@ -19,15 +19,13 @@
 %define basever 49
 
 Name:           gnome-session
-Version:        49.1
+Version:        49.1+11
 Release:        0
 Summary:        Session Tools for the GNOME Desktop
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org
 Source0:        %{name}-%{version}.tar.zst
-Source1:        gnome
-Source2:        gnome.desktop
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
@@ -89,9 +87,6 @@ functionality, for the GNOME Desktop.
 
 %install
 %meson_install
-# install startup script and xsession file
-install -d -m755 %{buildroot}%{_bindir}
-install -m755 %{SOURCE1} %{buildroot}%{_bindir}/gnome
 %find_lang %{name}-%{basever} %{?no_lang_C}
 %fdupes %{buildroot}/%{_prefix}
 
@@ -111,15 +106,12 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %files
 %license COPYING
 %doc NEWS README.md
-%{_bindir}/gnome
 %{_datadir}/gnome-session/sessions/gnome.session
 %dir %{_datadir}/wayland-sessions
 %{_datadir}/wayland-sessions/default.desktop
 %{_datadir}/wayland-sessions/gnome.desktop
 %{_datadir}/wayland-sessions/gnome-wayland.desktop
 %ghost %{_sysconfdir}/alternatives/default-waylandsession.desktop
-# Disabled as wayland is now the default session again.
-#{_datadir}/wayland-sessions/gnome-wayland.desktop
 %{_bindir}/gnome-session
 %{_bindir}/gnome-session-inhibit
 %{_bindir}/gnome-session-quit
