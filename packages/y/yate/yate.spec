@@ -1,7 +1,7 @@
 #
 # spec file for package yate
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2011, Sascha Peilicke <saschpe@gmx.de>
 # Copyright (c) 2011, Pascal Bleser <pascal.bleser@opensuse.org>
 #
@@ -50,7 +50,6 @@ BuildRequires:  libgsm-devel
 BuildRequires:  lksctp-tools-devel
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libusb-1.0)
