@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Nov 22 16:17:23 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 685:
+  * Add LESS_TERMCAP_SUSPEND and LESS_TERMCAP_RESUME (github
+    #654).
+  * Change --incsearch so that after typing each character of the
+    pattern, the search begins at the position where the search
+    command was invoked, not the current position (github #640).
+  * Allow mixing of option arguments and filename arguments on
+    the command line unless POSIXLY_CORRECT is set (github #653).
+  * Don't output U+00AD and U+200D, and fix some bugs handling
+    emoji modifier characters (github #637).
+  * Fix hang if a search using ^S modifier matches empty string
+  * Fix bug using -g and -J (github #636).
+  * Fix bug when pasting a search pattern while --incsearch is
+    active (github #635).
+  * Fix bug in Windows build when autorepeating a search pattern
+  * Fix lesskey bug using #stop directive.
+  * Fix lesskey bug using "invalid" action (github #643).
+  * Fix bug causing file to appear to end prematurely if an input
+    command was received during a file read (github #649).
+  * Fix performance issue in & filtering (github #638).
+  * Fix some problems reported by valgrind (github #659, github
+    #660, github #661).
+  * Fix bad parsing of lesskey file an env var is a prefix of
+    another env var (github #626).
+  * Fix unexpected exit using -K if a key press is received while
+    reading the input file (github #628).
+
+-------------------------------------------------------------------
 Sun May 25 06:23:18 UTC 2025 - munix9@googlemail.com
 
 - Extend detection and preview for "Java archive data" (eg. .jar),
@@ -55,7 +85,7 @@ Fri Apr 25 11:32:43 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
     (github #610).
   * Fix bug highlighting OSC 8 links when opening a new file.
 - Remove upstreamed reproducible.patch
- 
+
 -------------------------------------------------------------------
 Sun Dec 15 06:16:41 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
