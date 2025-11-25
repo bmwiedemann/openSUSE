@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.10.0
+%define real_version 6.10.1
 %define short_version 6.10
 %define tar_name qttools-everywhere-src
 %define tar_suffix %{nil}
@@ -30,7 +30,7 @@
 %global __requires_exclude qt6qmlimport\\(qtexamples.*
 #
 Name:           qt6-tools%{?pkg_suffix}
-Version:        6.10.0
+Version:        6.10.1
 Release:        0
 Summary:        Qt 6 Tools libraries and tools
 # Legal:
