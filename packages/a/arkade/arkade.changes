@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov 25 07:44:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.11.60:
+  * Fix opencode binary templates
+  * Update golang.org/x/crypto
+  * style: reformat shell scripts with shellcheck
+  * fix: set shebang to /usr/bin/env
+  * docs: add opkssh, kubelogin, starship and dyff tools
+  * feat: add dyff
+  * feat: add starship
+  * feat: add kubelogin
+  * feat: add opkssh
+  * feat: add direnv
+
+-------------------------------------------------------------------
 Tue Nov 18 06:55:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.11.59:
