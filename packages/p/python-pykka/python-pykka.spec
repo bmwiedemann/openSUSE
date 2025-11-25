@@ -1,7 +1,7 @@
 #
 # spec file for package python-pykka
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,15 +20,15 @@
 %define modname pykka
 %define skip_python36 1
 Name:           python-pykka
-Version:        4.0.2
+Version:        4.4.0
 Release:        0
 Summary:        A Python implementation of the actor model
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/jodal/pykka
 Source:         https://files.pythonhosted.org/packages/source/p/%{modname}/%{modname}-%{version}.tar.gz
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
@@ -47,8 +47,6 @@ units, with which one can build concurrent applications.
 
 %prep
 %autosetup -p1 -n %{modname}-%{version}
-
-rm -v docs/_build/.gitignore
 
 %build
 %pyproject_wheel

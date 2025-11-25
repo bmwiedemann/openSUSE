@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Nov 25 12:46:05 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
+
+- Update to 4.4.0:
+  * Remove pykka.__version__. Use importlib.metadata.version("pykka")
+  * Port docs from Sphinx to Mkdocs and generally refresh docs
+- Update to 4.3.0:
+  * Remove support for Python 3.9 as it reaches end-of-life next month
+  * Only allow one of Future's set(), set_exception(), and set_get_hook() methods to be called
+  * Change ThreadingFuture[T] to use a threading.Condition instead of queue.Queue
+  * Only call future hook once, even if it returns None
+  * Use the standard library's tomllib in the docs build on Python 3.11+, removing a dependency om tomli
+- Update to 4.2.0:
+  * Switched build backend from poetry to hatchling.
+  * Switched the docs build from using the toml library to the better maintained tomli library.
+  * Development is now done using uv and tox-uv, but you should not need uv to package pykka.
+  * Updated some dev tooling, including ruff and pyright.
+  * Drop pydantic as a test dependency, as this made Pykka quite a lot harder to package.
+  * Add Python 3.14 pre-releases to the CI test matrix.
+  * Move tox' config into pyproject.toml
+  * Use Trusted Publishing to when releasing to PyPI
+- Update to 4.1.0:
+  * Remove support for Python 3.8. It reaches end-of-life later this month
+  * Support Python 3.13. No changes required
+  * Fix proxy introspection breaking if an actor attribute is a Pydantic model
+- Removed the line from spec files to remove the .gitignore file
+- Added BuildRequires:  %{python_module hatchling} as backend for build and removed the old one
+
+-------------------------------------------------------------------
 Thu Feb 22 09:56:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.2:
