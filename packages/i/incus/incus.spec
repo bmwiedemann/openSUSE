@@ -30,8 +30,8 @@
 %endif
 
 Name:           incus
-Version:        6.17
-%define tag_version 6.17.0
+Version:        6.18
+%define tag_version 6.18.0
 Release:        0
 Summary:        Container hypervisor based on LXC
 License:        Apache-2.0

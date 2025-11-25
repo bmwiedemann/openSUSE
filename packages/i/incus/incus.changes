@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Nov 21 09:13:54 UTC 2025 - Orville Q. Song <orville@anislet.dev>
+
+- Update to Incus 6.18. See upstream changelog online at
+  <https://discuss.linuxcontainers.org/t/incus-6-18-has-been-released/25091>
+
+ + Systemd credentials
+ + Storage volume file operations
+ + Export of ISO volumes
+ + BPF token delegation
+ + MacOS support for the Incus agent
+ + VirtIO sound card in VMs
+ + Support for detaching USB devices without removing them
+ + dns.mode for OVN network
+ + Configurable MAC address patterns
+ + Extended IncusOS CLI
+
+-------------------------------------------------------------------
 Sat Nov  8 15:40:15 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Backport workaround for runc's CVE-2025-52881 mitigation breaking under
