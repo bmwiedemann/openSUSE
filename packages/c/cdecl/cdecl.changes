@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 25 05:34:40 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 18.6
+  * Better "did you mean" suggestions.
+  * Specifying the -t option twice now suppresses predefining all
+    types.
+  * Multiline C-style comments /* */ are now supported (mostly).
+  * _Atomic void parameters are now also correctly flagged as
+    illegal.
+
+-------------------------------------------------------------------
 Sat Jul  5 07:50:26 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 18.5

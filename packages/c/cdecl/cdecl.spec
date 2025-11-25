@@ -1,7 +1,7 @@
 #
 # spec file for package cdecl
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cdecl
-Version:        18.5
+Version:        18.6
 Release:        0
 Summary:        C/C++ function declaration translator
 License:        GPL-3.0-or-later

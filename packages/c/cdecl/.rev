@@ -658,4 +658,12 @@
     <comment>- Update to release 18.5</comment>
     <requestid>1290783</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>dac4a3e5bb8e9780c13c6f6a3851793c</srcmd5>
+    <version>18.6</version>
+    <time>1764086297</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 18.6</comment>
+    <requestid>1319861</requestid>
+  </revision>
 </revisionlist>
