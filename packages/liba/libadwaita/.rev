@@ -491,4 +491,33 @@
     <comment></comment>
     <requestid>1310502</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>7345584370767e911c966321c1228263</srcmd5>
+    <version>1.8.2</version>
+    <time>1764082271</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.8.2:
+  + Build: Fix gen-public-types.py encoding
+  + AdwActionRow: Fix subtitle comparison
+  + AdwComboRow:
+    - Revert touchscreen fix from 1.8.1, since it's been fixed in
+      GTK
+    - Update selection when the expression changes
+  + AdwHeaderBar: Report back button context menu to screen reader
+  + AdwPreferencesDialog: Allow to go from the first search result
+    to header bar by pressing up
+  + AdwPreferencesGroup: Fix title and description getters
+  + AdwPreferencesPage:
+    - Fix description getter
+    - Warn when trying to add incompatible children
+  + AdwShortcutLabel:
+    - Make accessible
+    - Flip arrows for RTL
+    - Add focused styles
+  + AdwShortcutsDialog: Allow to go from the first search result to
+    header bar by pressing up
+  + AdwTabBar/AdwTabOverview: Report context menu to screen reader
+  + Updated translations. (forwarded request 1318968 from iznogood)</comment>
+    <requestid>1319632</requestid>
+  </revision>
 </revisionlist>
