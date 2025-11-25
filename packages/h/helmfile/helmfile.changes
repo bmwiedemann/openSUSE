@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Nov 25 08:43:30 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.2.1:
+  * build(deps): bump azure/setup-helm from 4.3.0 to 4.3.1 by
+    @dependabot[bot] in #2274
+  * build(deps): bump github.com/helmfile/vals from 0.42.4 to
+    0.42.5 by @dependabot[bot] in #2272
+  * build(deps): bump golang.org/x/crypto from 0.43.0 to 0.45.0
+    by @dependabot[bot] in #2277
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.90.2 to 1.91.1 by @dependabot[bot] in #2284
+  * Fix four critical issues: environment merging, kubeVersion
+    detection, lookup() with kustomize, and Helm 4 color flags by
+    @aditmeno in #2276
+  * build(deps): bump go.uber.org/zap from 1.27.0 to 1.27.1 by
+    @dependabot[bot] in #2283
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/config from
+    1.31.20 to 1.32.0 by @dependabot[bot] in #2282
+  * build(deps): bump actions/checkout from 5 to 6 by
+    @dependabot[bot] in #2287
+  * build(deps): bump k8s.io/client-go from 0.34.1 to 0.34.2 by
+    @dependabot[bot] in #2285
+  * Fix four critical bugs: array merging (#2281), AWS SDK logging
+    (#2270), helmDefaults skip flags (#2269), and OCI chart versions
+    (#2247) by @aditmeno in #2288
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.91.1 to 1.92.0 by @dependabot[bot] in #2286
+
+-------------------------------------------------------------------
 Thu Nov 20 08:05:36 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.2.0:
