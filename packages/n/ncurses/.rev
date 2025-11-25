@@ -5427,4 +5427,18 @@
     cf: 20250913).</comment>
     <requestid>1318224</requestid>
   </revision>
+  <revision rev="315" vrev="88">
+    <srcmd5>22150db24551736be59f65a6fb2b8f93</srcmd5>
+    <version>unknown</version>
+    <time>1764082370</time>
+    <user>anag_factory</user>
+    <comment>- Add ncurses patch 20251123
+  + revert change using NCURSES_SBOOL in tic.h which interfered with
+    sign-extension in tigetflag (Debian #1121191, cf:  20251101).
+- Add ncurses patch 20251122
+  + in-progress work to merge MinGW/Windows port.
+  + correct expression for TINFO_LIB variable in misc/ncurses-config.in
+    (Debian #1121208, cf: 20251004).</comment>
+    <requestid>1319775</requestid>
+  </revision>
 </revisionlist>
