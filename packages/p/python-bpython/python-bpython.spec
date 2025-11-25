@@ -32,10 +32,10 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  alts
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
-BuildRequires:  update-desktop-files
 Requires:       %{name}-common = %{version}
 Requires:       alts
 Requires:       python-curtsies >= 0.4

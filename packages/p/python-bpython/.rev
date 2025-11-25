@@ -176,4 +176,12 @@ Drop sphinx doctrees for reproducible builds</comment>
     dropped.</comment>
     <requestid>1315201</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>413e39a96a4a9e7469d1e852daf4cab1</srcmd5>
+    <version>0.26</version>
+    <time>1764087610</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1319971</requestid>
+  </revision>
 </revisionlist>
