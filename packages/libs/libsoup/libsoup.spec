@@ -1,7 +1,7 @@
 #
 # spec file for package libsoup
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,6 +42,8 @@ Patch5:         libsoup-CVE-2025-4969.patch
 Patch6:         libsoup-CVE-2025-4945.patch
 # PATCH-FIX-UPSTREAM libsoup-CVE-2025-11021.patch bsc#1250562, CVE-2025-11021, glgo#GNOME/libsoup!482 alynx.zhou@suse.com -- Ignore invalid date when processing cookie
 Patch7:         libsoup-CVE-2025-11021.patch
+# PATCH-FIX-UPSTREAM libsoup-CVE-2025-12105.patch bsc#1252555 mgorse@suse.com -- fix use after free caused by 'finishing' queued item twice.
+Patch8:         libsoup-CVE-2025-12105.patch
 
 BuildRequires:  glib-networking
 BuildRequires:  meson >= 0.53
@@ -155,7 +157,7 @@ mv %{buildroot}%{_datadir}/doc/%{name}-%{api_version} %{buildroot}%{_docdir}
 %check
 # Run the regression tests using GnuTLS NORMAL priority
 export G_TLS_GNUTLS_PRIORITY=NORMAL
-%ifarch s390x ppc64le
+%ifarch s390x ppc64le i586
 %meson_test -t 5 || (%meson_test -t 5)
 %else
 %meson_test

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 18 19:58:09 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Add libsoup-CVE-2025-12105.patch: fix use after free caused by
+  'finishing' queue item twice (bsc#1252555 CVE-2025-12105
+  glgo#GNOME/libsoup!481).
+- Add i586 to the list of architectures where we re-run tests;
+  hsts-db-test is timing out there as well.
+
+-------------------------------------------------------------------
 Thu Oct 16 03:25:37 UTC 2025 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Update libsoup-CVE-2025-11021.patch: Add NULL check for
