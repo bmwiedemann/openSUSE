@@ -8,4 +8,15 @@
 * Version specified in kubernetes v1.32.0 https://github.com/kubernetes/kubernetes/blob/v1.32.0/build/dependencies.yaml#L65-L67</comment>
     <requestid>1232783</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>89a40570e67001c0e1a87ce1b62dd63d</srcmd5>
+    <version>3.5.24</version>
+    <time>1764087888</time>
+    <user>anag_factory</user>
+    <comment>etcd update - version 3.5.24
+wrt kubernetes 1.32.10 - https://github.com/kubernetes/kubernetes/blob/v1.32.10/build/dependencies.yaml#L67
+
+- automate generating vendor-* tarballs using the go_modules service</comment>
+    <requestid>1319959</requestid>
+  </revision>
 </revisionlist>

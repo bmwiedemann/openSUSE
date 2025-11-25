@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Tue Nov 25 09:37:15 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- automate generating vendor-* tarballs using the go_modules service 
+
+-------------------------------------------------------------------
+Tue Nov 25 09:30:34 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 3.5.24:
+  * Bump go to 1.24.9
+  * Fix Learner promotion not being persisted into v3store may be propagated across multiple upgrades
+  * server/embed: Log EOF on DEBUG in TLS handshake
+  * Reject watch request with -1 revision
+  * [backport #20553] protect backend usage from concurrent applySnapshot and defrag
+  * Re-check that the lease still exists during the renew process
+  * Add an e2e test to reproduce lease Renew returns a wrong response
+  * tests: skip TestCorruptedBackupFileCheck test on big endian platforms
+  * Bump bbolt to v1.3.12
+  * ref: update help for --quota-backend-bytes
+  * Add tools into .gitignore
+  * Fix flaky TestCtlV2CustomContentWithAuthData
+  * Fix v2store check returning wrong result even there isn't any auth data
+  * Add an e2e test to reproduce the custom content in v2store without auth data
+  * Initialize commit index = max(consistent_index, CommitIndex) on bootstrap if --force-new-cluster set
+  * Add an e2e test to reproduce the issue that --force-new-cluster can't remove all members in a corner case
+  * .github/workflows: remove migrated workflow files
+  * Change IMAGE to TEST_IMAGE
+  * Avoid lowering revision of watchers in the future after restore
+  * Add verification to verify the watch response have a bigger revision than startRev
+  * Skip sending progress notification for watch with starting revision in the future
+  * .github/workflows: Remove grpcproxy tests github actions workflow
+  * add Makefile target for grpcproxy integration and grpcproxy e2e tests
+  * Add test-release makefile target
+  * Remove raftexample from integration test
+  * Add makefile target for run-govuluncheck
+  * remove static-workflow from release-3.5
+  * makefile: Split fmt into separate verify commands
+  * mvcc: avoid double decrement of watcher gauge on close/cancel race
+  * Update release script to exactly match the target tag
+  * [release-3.5][Integration Test]: Add test for panic-free removal of non-existent members
+  * Fix the tar unzip command, adding the --no-same-owner option to avoid permissions issues
+  * chore(client/v3/naming): deprecate Metadata field in Endpoint struct
+  * Ensure google.golang.org/protobuf version consistent
+  * Ensure google.golang.org/genproto/googleapis/api version consistent
+  * Ensure github.com/stretchr/testify version consistent
+  * Bump google.golang.org/grpc to v1.71.1
+  * Replace resolver.State.Addresses with resolver.State.Endpoint.Addresses
+  * emit compaction pause duration metric in every compaction batch
+  * dependency: bump golang.org/x/net from v0.36.0 to v0.38.0
+  * dependency: bump github.com/golang-jwt/jwt/v4 from 4.5.1 to 4.5.2
+  * Add e2e test to verify etcd is able to automatically fix the issue caused by https://github.com/etcd-io/etcd/issues/19557
+  * Fix the issue that learner promotion command doesn't support json output
+  * Enhance the e2e teat framework to support adding & promoting learner member
+  * fix failed test cases
+  * overwrite the member if already exist
+  * add verification to check whether membership data is in sync between v2store and v3store
+  * Update server unit test cases to set a backend
+  * fix: grpcproxy can get stuck in and endless loop causing high cpu usage
+  * back port gofail comments to release-3.5
+  * deflakey: TestCompactionHash in integration
+  * Add verify released binary assets GitHub workflow
+  * dependency: Bump golang.org/x/crypto from v0.32.0 to v0.35.0
+  * perf(release3.5): use RLock in Demoted method for read-only access to expiry
+  * fix a compaction induce latency issue
+  * Add learner id into log when being promoted or removed
+  * Bump actions/download-artifact to v4.1.8
+  * Bump actions/upload-artifact to v4.6.0
+  * Bump github.com/golang/glog to v1.2.4 to address CVE-2024-45339
+  * Bump go.mongodb.org/mongo-driver to v1.5.4 to address CVE-2021-20329
+  * add learner check to readyz
+  * tools: add mixed read-write performance evaluation scripts
+  * Ensure all goroutines created by StartEtcd to exit before closing the errc
+  * mvcc: restore tombstone index if it's first revision
+  * Avoid deadlock in etcd.Close when stopping during bootstrapping
+  * etcdutl/etcdutl: use datadir package to build wal/snapdir
+  * Remove duplicated <-s.ReadyNotify()
+  * Do not wait for ready notify if the server is stopping
+  * Update release_notes.tpl.txt
+  * Fix mixVersion test case: ensure a snapshot to be sent out
+  * *: support custom content check offline in v2store
+  * Print warning message for deprecated flags if set
+  * fix runtime error: comparing uncomparable type
+  * add tls min/max version to grpc proxy
+  * release: use GitHub's gh to create GitHub release
+  * release: properly change working dir if tmp location already exists
+  * fix(defrag): close temp file in case of error
+  * chore(e2e): adapt defrag tests for 3.5
+  * fix(defrag): handle defragdb failure
+  * fix(defrag): handle no space left error
+  * chore(e2e): backport TestNoErrorLogsDuringNormalOperations test
+  * Remove defunct actuated arm64 workflows.
+  * [3.5] Fix risk of a partial write txn being applied
+  * [serverWatchStream] terminate recvLoop on sws.close()
+  * github/workflows: use ECR mirror for Trivy's DB
+  * Ensure commits are signed in scripts/release.sh.
+  * docs: remove warning that etcd 3.5.0 was not yet released
+
+-------------------------------------------------------------------
 Thu Dec 19 09:01:43 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Initial package version 3.5.16:
