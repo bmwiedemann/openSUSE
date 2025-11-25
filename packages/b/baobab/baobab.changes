@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov 21 13:40:12 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.1:
+  + Bugs fixed:
+    - Right-click menu actions (such as "Move to trash" or "Copy
+      Path") applied to the wrong row when mouse cursor moved
+      around or below the contextual menu
+    - Segfault when mounting android device
+    - Context menu action applied to wrong item (always)
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Sep 12 06:22:53 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 49.0:

@@ -490,4 +490,19 @@
     <comment>Scripted push from GNOME:Next (forwarded request 1304865 from dimstar)</comment>
     <requestid>1305435</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>42117a0b723adfbde82e533fd10a4a7f</srcmd5>
+    <version>49.1</version>
+    <time>1764082296</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 49.1:
+  + Bugs fixed:
+    - Right-click menu actions (such as &quot;Move to trash&quot; or &quot;Copy
+      Path&quot;) applied to the wrong row when mouse cursor moved
+      around or below the contextual menu
+    - Segfault when mounting android device
+    - Context menu action applied to wrong item (always)
+  + Updated translations. (forwarded request 1319113 from iznogood)</comment>
+    <requestid>1319638</requestid>
+  </revision>
 </revisionlist>
