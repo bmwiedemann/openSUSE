@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov 21 15:17:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 6.1.0:
+  * feat: enhance MAC address validation to support Cisco dotted
+    notation by @ChristopherJHart in #278
+  * Python 3.14 support metadata and test pipeline by @cblakkan in
+    #281
+
+-------------------------------------------------------------------
 Fri Jan  3 08:50:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 6.0.0:

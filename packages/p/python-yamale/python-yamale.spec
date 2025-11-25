@@ -1,7 +1,7 @@
 #
 # spec file for package python-yamale
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-yamale
-Version:        6.0.0
+Version:        6.1.0
 Release:        0
 Summary:        A schema and validator for YAML
 License:        MIT
@@ -26,16 +26,18 @@ URL:            https://github.com/23andMe/Yamale
 Source:         https://github.com/23andMe/Yamale/archive/refs/tags/%{version}.tar.gz#/yamale-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module ruamel.yaml}
 # /SECTION
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+BuildArch:      noarch
+Requires:       python-PyYAML
+Requires:       python-ruamel.yaml
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
