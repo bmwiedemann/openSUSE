@@ -2773,4 +2773,16 @@
     <comment></comment>
     <requestid>1311120</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>6b9d20c348c5e1fc774b0b36cedced68</srcmd5>
+    <version>2.58.2</version>
+    <time>1764082306</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.58.2:
+  + python: Speed up __eq__ and __ne__
+  + collection-adaptor: Correct 'child' reference handling (fixes
+    crashes with evolution and orca).
+  + Fix several memory leaks. (forwarded request 1319342 from iznogood)</comment>
+    <requestid>1319645</requestid>
+  </revision>
 </revisionlist>
