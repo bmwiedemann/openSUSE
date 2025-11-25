@@ -1,7 +1,7 @@
 #
 # spec file for package lowdown
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 #%%global version_string VERSION_1_1_0
 
 Name:           lowdown
-Version:        2.0.2
+Version:        2.0.4
 Release:        0
 Summary:        Simple markdown translator
 License:        ISC
@@ -78,7 +78,8 @@ chmod a+rx %{buildroot}%{_libdir}/liblowdown.so*
 %ldconfig_scriptlets -n %{soname}
 
 %files
-%{_bindir}/*
+%{_bindir}/lowdown
+%{_bindir}/lowdown-diff
 %{_mandir}/man1/*
 %{_mandir}/man5/*
 %{_datadir}/%{name}/

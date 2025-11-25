@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Nov 17 15:39:09 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 2.0.4:
+  * Hot-fix version bump
+  * Simplify Makefile with some variables
+  * Makefile: change dylib's suffix
+
+-------------------------------------------------------------------
+Sun Nov 16 00:51:33 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 2.0.3:
+  * Get ready for version bump
+  * Tweak OSC8-decorated -tterm link images
+  * Attempt to fix UB in unsigned promotion
+  * Build dylib libraries and enable Mac CI
+  * Inhibit link for -tterm images in links
+  * Add compats for shared build
+  * Use latest oconfigure
+  * White-space adjustments for style(9)
+  * Ignore index.{html,xml} files
+  * Refactor the www documentation for simplicity
+  * Allow for shared-object linking
+  * Bring up to date with newest oconfigure (0.5.0)
+  * Proper URL escape for -tlatex
+  * Add regression for link types
+  * Fix percent- and space-encoding in roff
+  * Fix typos in manual pages
+  * Have `make regress` error out on any failures
+
+-------------------------------------------------------------------
 Sun Feb 16 21:39:46 UTC 2025 - scott.bradnick@suse.com
 
 - Update to version 2.0.2:
