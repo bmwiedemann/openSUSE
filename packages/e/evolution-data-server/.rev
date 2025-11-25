@@ -2479,4 +2479,27 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1310503</requestid>
   </revision>
+  <revision rev="269" vrev="1">
+    <srcmd5>3a76b23708e8bb4b402d2d149ec1d49a</srcmd5>
+    <version>3.58.2</version>
+    <time>1764082275</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.58.2:
+  + Bug Fixes:
+    - Camel: Message info changes do not propagate sometimes
+    - CamelSearchFolder: Add &quot;not_all&quot; &quot;match-threads&quot; kind
+    - Crash when reading broken multipart/signed
+    - Calendar: Free/busy not exported without set calendar mail
+    - alarm-notify: Snooze &quot;until X minutes before start&quot; wrongly
+      reminds &quot;X min after start&quot;
+  + Miscellaneous:
+    - Camel: Unread count for virtual Trash/Junk folder not updated
+      properly
+    - CamelStoreSearch: Ignore all errors when a message cannot be
+      opened
+    - CamelStore: Speed up open folders with virtual Trash or Junk
+      folder
+  + Updated translations. (forwarded request 1319064 from iznogood)</comment>
+    <requestid>1319635</requestid>
+  </revision>
 </revisionlist>

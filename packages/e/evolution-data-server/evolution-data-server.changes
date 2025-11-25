@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Nov 21 11:07:55 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.58.2:
+  + Bug Fixes:
+    - Camel: Message info changes do not propagate sometimes
+    - CamelSearchFolder: Add "not_all" "match-threads" kind
+    - Crash when reading broken multipart/signed
+    - Calendar: Free/busy not exported without set calendar mail
+    - alarm-notify: Snooze "until X minutes before start" wrongly
+      reminds "X min after start"
+  + Miscellaneous:
+    - Camel: Unread count for virtual Trash/Junk folder not updated
+      properly
+    - CamelStoreSearch: Ignore all errors when a message cannot be
+      opened
+    - CamelStore: Speed up open folders with virtual Trash or Junk
+      folder
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Oct 10 07:40:54 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.58.1:
