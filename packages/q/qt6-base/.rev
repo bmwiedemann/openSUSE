@@ -643,4 +643,12 @@
   * 0001-fix-slow-scrolling-on-wayland.patch (forwarded request 1313081 from mschreiner)</comment>
     <requestid>1313166</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>1d195f0af1c686a61079acc4d0707639</srcmd5>
+    <version>6.10.1</version>
+    <time>1764082048</time>
+    <user>anag_factory</user>
+    <comment>Qt 6.10.1</comment>
+    <requestid>1319476</requestid>
+  </revision>
 </revisionlist>

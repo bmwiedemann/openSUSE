@@ -3,7 +3,7 @@ Contains 2 changes:
 - wayland: Optimize scroll operation (https://bugreports.qt.io/browse/QTBUG-139231)
 
 diff --git a/src/corelib/global/qnamespace.qdoc b/src/corelib/global/qnamespace.qdoc
-index c845cfa7eec..f463d7364ca 100644
+index 09ed97a..e530b28 100644
 --- a/src/corelib/global/qnamespace.qdoc
 +++ b/src/corelib/global/qnamespace.qdoc
 @@ -227,6 +227,7 @@
@@ -15,7 +15,7 @@ index c845cfa7eec..f463d7364ca 100644
             (In the future, the compression feature may be implemented across platforms.)
             You can test the attribute to see whether compression is enabled.
 diff --git a/src/plugins/platforms/wayland/qwaylandinputdevice.cpp b/src/plugins/platforms/wayland/qwaylandinputdevice.cpp
-index 170e80f806c..5f927fca51a 100644
+index 170e80f..5f927fc 100644
 --- a/src/plugins/platforms/wayland/qwaylandinputdevice.cpp
 +++ b/src/plugins/platforms/wayland/qwaylandinputdevice.cpp
 @@ -63,6 +63,34 @@ Q_LOGGING_CATEGORY(lcQpaWaylandInput, "qt.qpa.wayland.input");
@@ -246,7 +246,7 @@ index 170e80f806c..5f927fca51a 100644
  
      //TODO: do modifiers get passed correctly here?
 diff --git a/src/plugins/platforms/wayland/qwaylandinputdevice_p.h b/src/plugins/platforms/wayland/qwaylandinputdevice_p.h
-index bcaf025840d..b9582daf32c 100644
+index bcaf025..b9582da 100644
 --- a/src/plugins/platforms/wayland/qwaylandinputdevice_p.h
 +++ b/src/plugins/platforms/wayland/qwaylandinputdevice_p.h
 @@ -75,6 +75,16 @@ class CursorSurface;
@@ -290,7 +290,7 @@ index bcaf025840d..b9582daf32c 100644
      void setFrameEvent(QWaylandPointerEvent *event);
      void flushScrollEvent();
 diff --git a/src/plugins/platforms/wayland/qwaylandintegration.cpp b/src/plugins/platforms/wayland/qwaylandintegration.cpp
-index 669d47ee3b8..fc869de669f 100644
+index 669d47e..fc869de 100644
 --- a/src/plugins/platforms/wayland/qwaylandintegration.cpp
 +++ b/src/plugins/platforms/wayland/qwaylandintegration.cpp
 @@ -87,6 +87,8 @@ QWaylandIntegration::QWaylandIntegration(const QString &platformName)
@@ -303,7 +303,7 @@ index 669d47ee3b8..fc869de669f 100644
      mPlatformServices.reset(new QWaylandPlatformServices(mDisplay.data()));
  
 diff --git a/src/plugins/platforms/wayland/qwaylandshmbackingstore.cpp b/src/plugins/platforms/wayland/qwaylandshmbackingstore.cpp
-index d8fc7b18ca3..591e5064ebd 100644
+index d525fe1..d55cf22 100644
 --- a/src/plugins/platforms/wayland/qwaylandshmbackingstore.cpp
 +++ b/src/plugins/platforms/wayland/qwaylandshmbackingstore.cpp
 @@ -159,6 +159,8 @@ QWaylandShmBackingStore::QWaylandShmBackingStore(QWindow *window, QWaylandDispla
@@ -395,7 +395,7 @@ index d8fc7b18ca3..591e5064ebd 100644
  
      // We do not mark the source region as dirty, even though it technically has "moved".
      // This matches the behavior of other backingstore implementations using qt_scrollRectInImage.
-@@ -289,6 +311,8 @@ void QWaylandShmBackingStore::flush(QWindow *window, const QRegion &region, cons
+@@ -291,6 +313,8 @@ void QWaylandShmBackingStore::flush(QWindow *window, const QRegion &region, cons
      if (windowDecoration() && windowDecoration()->isDirty())
          updateDecorations();
  
@@ -404,7 +404,7 @@ index d8fc7b18ca3..591e5064ebd 100644
      mFrontBuffer = mBackBuffer;
  
      QMargins margins = windowDecorationMargins();
-@@ -313,6 +337,8 @@ QWaylandShmBuffer *QWaylandShmBackingStore::getBuffer(const QSize &size, bool &b
+@@ -315,6 +339,8 @@ QWaylandShmBuffer *QWaylandShmBackingStore::getBuffer(const QSize &size, bool &b
              mBuffers.removeAt(i);
              if (mBackBuffer == buffer)
                  mBackBuffer = nullptr;
@@ -413,7 +413,7 @@ index d8fc7b18ca3..591e5064ebd 100644
              delete buffer;
          }
      }
-@@ -341,7 +367,7 @@ QWaylandShmBuffer *QWaylandShmBackingStore::getBuffer(const QSize &size, bool &b
+@@ -343,7 +369,7 @@ QWaylandShmBuffer *QWaylandShmBackingStore::getBuffer(const QSize &size, bool &b
      return nullptr;
  }
  
@@ -422,7 +422,7 @@ index d8fc7b18ca3..591e5064ebd 100644
  {
      wl_display_dispatch_queue_pending(mDisplay->wl_display(), mEventQueue);
  
-@@ -375,30 +401,6 @@ bool QWaylandShmBackingStore::recreateBackBufferIfNeeded(const QRegion &nonDirty
+@@ -377,30 +403,6 @@ bool QWaylandShmBackingStore::recreateBackBufferIfNeeded(const QRegion &nonDirty
      qsizetype oldSizeInBytes = mBackBuffer ? mBackBuffer->image()->sizeInBytes() : 0;
      qsizetype newSizeInBytes = buffer->image()->sizeInBytes();
  
@@ -453,7 +453,7 @@ index d8fc7b18ca3..591e5064ebd 100644
      mBackBuffer = buffer;
  
      for (QWaylandShmBuffer *buffer : std::as_const(mBuffers)) {
-@@ -412,11 +414,40 @@ bool QWaylandShmBackingStore::recreateBackBufferIfNeeded(const QRegion &nonDirty
+@@ -414,11 +416,40 @@ bool QWaylandShmBackingStore::recreateBackBufferIfNeeded(const QRegion &nonDirty
      if (windowDecoration() && window()->isVisible() && oldSizeInBytes != newSizeInBytes)
          windowDecoration()->update();
  
@@ -496,7 +496,7 @@ index d8fc7b18ca3..591e5064ebd 100644
  QImage *QWaylandShmBackingStore::entireSurface() const
  {
      return mBackBuffer->image();
-@@ -496,6 +527,8 @@ QImage QWaylandShmBackingStore::toImage() const
+@@ -498,6 +529,8 @@ QImage QWaylandShmBackingStore::toImage() const
      // instead of flush() for widgets that have renderToTexture children
      // (QOpenGLWidget, QQuickWidget).
  
@@ -506,7 +506,7 @@ index d8fc7b18ca3..591e5064ebd 100644
  }
  #endif  // opengl
 diff --git a/src/plugins/platforms/wayland/qwaylandshmbackingstore_p.h b/src/plugins/platforms/wayland/qwaylandshmbackingstore_p.h
-index efd80159e85..cfcafb28326 100644
+index efd8015..cfcafb2 100644
 --- a/src/plugins/platforms/wayland/qwaylandshmbackingstore_p.h
 +++ b/src/plugins/platforms/wayland/qwaylandshmbackingstore_p.h
 @@ -73,7 +73,8 @@ public:
@@ -520,7 +520,7 @@ index efd80159e85..cfcafb28326 100644
      QWaylandWindow *waylandWindow() const;
      void iterateBuffer();
 diff --git a/tests/auto/wayland/client/tst_client.cpp b/tests/auto/wayland/client/tst_client.cpp
-index 04400e3f26a..09ac4f7f81d 100644
+index 04400e3..09ac4f7 100644
 --- a/tests/auto/wayland/client/tst_client.cpp
 +++ b/tests/auto/wayland/client/tst_client.cpp
 @@ -276,6 +276,8 @@ void tst_WaylandClient::events()
