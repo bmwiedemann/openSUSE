@@ -1,7 +1,7 @@
 #
 # spec file for package netgen
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -185,6 +185,7 @@ echo "v%{version}-0-0" > ./version.txt
     -DUSE_GUI=ON \
     -DUSE_PYTHON=ON \
     -DPREFER_SYSTEM_PYBIND11=ON \
+    -DBUILD_STUB_FILES=OFF \
     -DNG_INSTALL_DIR_PYTHON=%{python3_sitearch} \
 %if %{with openmpi}
     -DUSE_MPI=ON \

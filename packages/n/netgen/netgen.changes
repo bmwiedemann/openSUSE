@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 24 14:37:02 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Workaround to fix build, do not build the stubs
+
+-------------------------------------------------------------------
 Thu Mar 20 21:10:12 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - drop unneeded pcre build dependency
@@ -227,7 +232,6 @@ Mon Jun 13 17:10:25 UTC 2016 - adrian@suse.de
 - enable openmpi
 - use fixes for rpath from Johannes Obermayer
 
--------------------------------------------------------------------
 Sun Jan 23 2014 Torben Hansen <build at sciomnis dot com> 
 
 - Changed to upstream version
@@ -262,7 +266,6 @@ Mon May 31 03:00:00 CET 2011 - Werner Hoch <werner.ho@gmx.de>
 - new version 4.9.13
 - added patch occ-6.5.0.patch taken from debian package
 
--------------------------------------------------------------------
 Sat Mar 27 16:46:40 CET 2010
 
 - fixed compiling errors on gcc44
