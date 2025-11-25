@@ -281,4 +281,13 @@
     <comment>Plasma 6.5.3 (forwarded request 1318450 from Vogtinator)</comment>
     <requestid>1318649</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>41edb7f4bc9c305621965dfc2bdf3a58</srcmd5>
+    <version>6.5.3</version>
+    <time>1764082030</time>
+    <user>anag_factory</user>
+    <comment>Pass '-DQT_QML_NO_CACHEGEN:BOOL=TRUE' to CMake to make builds
+  reproducible (related: boo#1248369) (forwarded request 1318951 from bmwiedemann)</comment>
+    <requestid>1319234</requestid>
+  </revision>
 </revisionlist>

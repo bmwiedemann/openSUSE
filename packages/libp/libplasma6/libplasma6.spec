@@ -159,7 +159,9 @@ Provides translations for the "libPlasma6" package.
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+%cmake_kf6 \
+  -DQT_QML_NO_CACHEGEN:BOOL=TRUE \
+  -DBUILD_QCH:BOOL=TRUE
 
 %kf6_build
 
