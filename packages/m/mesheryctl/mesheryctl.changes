@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Nov 25 06:33:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.173:
+  * Meshery CLI
+    - feat: added user friendly error for unreachable meshery
+      server @Fireentity (#16352)
+  * Documentation
+    - doc(mesheryctl): add missing model import subcommand flags
+      @lekaf974 (#16499)
+- update to 0.8.172:
+  * Maintenance
+    - Update checkout actions and email notification action
+      @leecalcote (#16488)
+  * Documentation
+    - [Docker] Add build-time extension point for .meshery
+      directory @copilot-swe-agent (#16451)
+    - [server] Enhance healthz handler with Kubernetes-compliant
+      capability checks and Helm chart integration
+      @copilot-swe-agent (#16457)
+
+-------------------------------------------------------------------
 Fri Nov 21 06:31:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.171:
