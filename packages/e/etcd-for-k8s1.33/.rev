@@ -8,4 +8,13 @@
 * Version specified in kubernetes v1.33.0 https://github.com/kubernetes/kubernetes/blob/v1.33.0/build/dependencies.yaml#L65-L67</comment>
     <requestid>1274888</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>00d2a7248e51748eae6a10e89a3b3817</srcmd5>
+    <version>3.5.24</version>
+    <time>1764087887</time>
+    <user>anag_factory</user>
+    <comment>etcd update - version 3.5.24
+wrt kubernetes 1.33.6 - https://github.com/kubernetes/kubernetes/blob/v1.33.6/build/dependencies.yaml#L67</comment>
+    <requestid>1319957</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 %define project go.etcd.io/etcd
 
 Name:           etcd-for-k8s1.33
-Version:        3.5.21
+Version:        3.5.24
 Release:        0
 Summary:        Etcd and etcdtl for k8s image
 License:        Apache-2.0
