@@ -17,7 +17,7 @@
 
 
 Name:           python-pytest-echo
-Version:        1.8.1
+Version:        2.0.1
 Release:        0
 Summary:        Pytest plugin for echoing build environment attributes
 License:        MIT
@@ -25,7 +25,7 @@ URL:            https://github.com/pytest-dev/pytest-echo
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-echo/pytest_echo-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pytest >= 8.3
@@ -50,15 +50,12 @@ package version and generic attributes.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-mv pytest_echo.py /tmp/pytest_echo.py
 %pytest
-mv /tmp/pytest_echo.py pytest_echo.py
 
 %files %{python_files}
-%doc CHANGELOG README.rst
+%doc CHANGELOG README.md
 %license LICENSE
-%{python_sitelib}/pytest_echo.py
-%pycache_only %{python_sitelib}/__pycache__/pytest_echo*pyc
+%{python_sitelib}/pytest_echo
 %{python_sitelib}/pytest_echo-%{version}.dist-info
 
 %changelog

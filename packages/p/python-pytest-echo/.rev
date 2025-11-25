@@ -20,4 +20,17 @@
 - No more greedy globs in %files.</comment>
     <requestid>1249968</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2eb79c1e21ffcc91178515f5d9d729ba</srcmd5>
+    <version>2.0.1</version>
+    <time>1764082465</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.0.1:
+  * removes unused dev dependencies
+  * add support python 3.8..3.13
+  * add typing
+  * add ini configuration support
+  * better codestyle checking</comment>
+    <requestid>1319909</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 25 04:06:01 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.0.1:
+  * removes unused dev dependencies
+  * add support python 3.8..3.13
+  * add typing
+  * add ini configuration support
+  * better codestyle checking
+
+-------------------------------------------------------------------
 Tue Mar  4 03:25:25 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.8.1:
