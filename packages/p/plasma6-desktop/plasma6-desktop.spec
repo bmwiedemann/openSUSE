@@ -55,7 +55,6 @@ BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  kscreenlocker6-devel >= %{_plasma6_bugfix}
 BuildRequires:  kwin6-devel >= %{_plasma6_bugfix}
 BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KAccounts6)
 BuildRequires:  cmake(KF6Attica) >= %{kf6_version}
 BuildRequires:  cmake(KF6Auth) >= %{kf6_version}
