@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 21 23:05:09 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- use long form commands
+
+-------------------------------------------------------------------
 Mon Oct 20 12:53:40 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - remove password change date from /etc/shadow to make the file reproducible

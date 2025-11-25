@@ -17,7 +17,7 @@ To deploy an application, copy its sources into the htdocs folder
 FROM registry.opensuse.org/opensuse/bci/php-apache:8
 
 RUN set -eux; \
-    zypper -n in $my_dependencies; \
+    zypper -n install $my_dependencies; \
     # additional setup steps
 
 # Copy the app into the Apache2 document root
@@ -47,7 +47,7 @@ and they can be installed as follows:
 ```Dockerfile
 FROM registry.opensuse.org/opensuse/bci/php-apache:8
 
-RUN zypper -n in php8-gd php8-intl
+RUN zypper -n install php8-gd php8-intl
 ```
 
 Alternatively, you can use the `docker-php-ext-install` script. It is provided
@@ -74,7 +74,7 @@ Install PECL extensions as follows:
 FROM registry.opensuse.org/opensuse/bci/php-apache:8
 
 RUN set -euo pipefail; \
-    zypper -n in $PHPIZE_DEPS php8-pecl; \
+    zypper -n install $PHPIZE_DEPS php8-pecl; \
     pecl install APCu-5.1.21;
 ```
 
