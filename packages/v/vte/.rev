@@ -1409,4 +1409,22 @@ New upstream release</comment>
     <comment></comment>
     <requestid>1311124</requestid>
   </revision>
+  <revision rev="173" vrev="1">
+    <srcmd5>2899749eb8774bc4dee286f1839364e5</srcmd5>
+    <version>0.82.2</version>
+    <time>1764082301</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.82.2:
+  * vte: bail from pty_io_write()/io_write_cb() on error conditions
+  * lib: Add missing nullable annotation
+  * docs: Fix section name
+  * build:
+    - Add install tags to the vte application desktop files
+    - Add option to not show the vte application's desktop file
+    - Add option to not build the vte application
+    - Skip test depending on gdk when building without gtk3 and
+      gtk5
+  * widget: Fix scrollback-lines value for infinite scrollback (forwarded request 1319339 from iznogood)</comment>
+    <requestid>1319643</requestid>
+  </revision>
 </revisionlist>
