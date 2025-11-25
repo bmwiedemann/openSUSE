@@ -28,7 +28,6 @@ URL:            https://github.com/behave/behave
 Source:         https://files.pythonhosted.org/packages/source/b/behave/behave-%{version}.tar.gz
 # https://github.com/behave/behave/issues/1028
 Patch1:         python-behave-no-mock.patch
-BuildRequires:  %{python_module cucumber-tag-expressions}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -37,6 +36,9 @@ BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       alts
+Requires:       python-colorama
+Requires:       python-cucumber-expressions
+Requires:       python-cucumber-tag-expressions
 Requires:       python-parse >= 1.8.2
 Requires:       python-parse_type >= 0.4.2
 Requires:       python-six >= 1.11
@@ -62,6 +64,8 @@ BuildArch:      noarch
 BuildRequires:  %{python_module PyHamcrest >= 1.8}
 BuildRequires:  %{python_module assertpy >= 1.1}
 BuildRequires:  %{python_module chardet}
+BuildRequires:  %{python_module cucumber-expressions}
+BuildRequires:  %{python_module cucumber-tag-expressions}
 BuildRequires:  %{python_module parse >= 1.8.2}
 BuildRequires:  %{python_module parse_type >= 0.4.2}
 BuildRequires:  %{python_module path.py >= 10.1}

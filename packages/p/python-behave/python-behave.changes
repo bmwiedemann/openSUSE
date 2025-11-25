@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 20 13:14:13 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Add missing runtime dependencies (boo#1253778)
+
+-------------------------------------------------------------------
 Wed Nov 12 14:13:28 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
 
 - update to 1.3.3:
