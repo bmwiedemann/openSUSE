@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyUSID
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %{?sle15_python_module_pythons}
-%global skip_python39 1
 Name:           python-pyUSID
 Version:        0.0.12
 Release:        0
@@ -25,6 +24,8 @@ Summary:        Framework for processing scientific data (USID)
 License:        MIT
 URL:            https://pycroscopy.github.io/pyUSID/
 Source0:        https://github.com/pycroscopy/pyUSID/archive/v%{version}.tar.gz#/pyUSID-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#pycroscopy/pyUSID#f95d64233643777f6dab92dceda672c9d20033a4
+Patch0:         support-numpy-2.patch
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module cytoolz}
 BuildRequires:  %{python_module dask >= 0.10}
@@ -33,7 +34,7 @@ BuildRequires:  %{python_module h5py >= 2.6.0}
 BuildRequires:  %{python_module ipywidgets >= 5.2.2}
 BuildRequires:  %{python_module joblib >= 0.11.0}
 BuildRequires:  %{python_module matplotlib >= 2.0.0}
-BuildRequires:  %{python_module numpy >= 1.20 with %python-numpy < 2}
+BuildRequires:  %{python_module numpy >= 1.20}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
@@ -47,10 +48,10 @@ Requires:       python-Pillow
 Requires:       python-cytoolz
 Requires:       python-dask >= 0.10
 Requires:       python-h5py >= 2.6.0
+Requires:       python-numpy >= 1.20
 Requires:       python-psutil
 Requires:       python-sidpy >= 0.10
 Requires:       python-toolz
-Requires:       (python-numpy >= 1.20 with python-numpy < 2)
 BuildArch:      noarch
 %python_subpackages
 

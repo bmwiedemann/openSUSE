@@ -130,4 +130,14 @@
     <comment>- Support both lowercased and unnormalized metadata directory names.</comment>
     <requestid>1271224</requestid>
   </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>8671d8bca5625bc1b77e584c2843816e</srcmd5>
+    <version>0.0.12</version>
+    <time>1764082454</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-numpy-2.patch:
+  * Support numpy 2 changes.
+- Remove upper bound on numpy.</comment>
+    <requestid>1319855</requestid>
+  </revision>
 </revisionlist>

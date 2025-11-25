@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 25 03:07:18 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-numpy-2.patch:
+  * Support numpy 2 changes.
+- Remove upper bound on numpy.
+
+-------------------------------------------------------------------
 Tue Apr 22 01:40:03 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Support both lowercased and unnormalized metadata directory names.
