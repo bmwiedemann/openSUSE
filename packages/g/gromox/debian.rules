@@ -4,7 +4,7 @@ phpdir := $(shell readlink -f $$(php-config --ini-path)/..)
 INSTDIR := debian/gromox
 unitdir := $(shell pkg-config systemd --variable systemdsystemunitdir)
 
-%:	
+%:
 	-mkdir -p debian/source && echo "1.0" > debian/source/format
 	dh $@ --with autoreconf
 

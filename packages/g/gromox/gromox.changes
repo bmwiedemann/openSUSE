@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Nov 24 16:35:44 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2
+  * More supported EWS handlers and types (GetRoomLists, GetRooms,
+    tItemAttachment, tUserConfigurationName, CategoryList, ReplyTo)
+  * istore: standalone exmdb_provider process launcher
+  * oxcmail: on export (MAPI-to-IM), recognize EX-in-ONEOFF and
+    EMSAB (GAB) entryids in the Reply-To field and substitute them
+  * kdb2mt: entryids and search keys for senders/recipients are now
+    translated with the help of user maps
+  * ab_tree: users with HIDE_FROM_GAL or HIDE_FROM_AL were not
+    hidden in all cases, which has been rectified
+  * imap: suppress ``AUTH=LOGIN`` advertisement before TLS
+    established and instead emit ``LOGINDISABLED`` capability
+  * ews: avoid sending out emClient's draft messages
+  * exmdb: MAPI table row deletion events were not being delivered,
+    which was fixed
+  * delivery: the OOF autoresponder was rewritten so it does not
+    use direct filesystem access anymore (since the mailbox might
+    not be present on the same host where the LDA runs)
+
+-------------------------------------------------------------------
 Sun Oct 26 16:09:53 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.1
