@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov 24 10:30:25 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 1.6.0 (boo#1253255):
+  * chore!: [VPNLINUX-1430] Debug info for expired certificate
+  * 2FA Hardjail
+  * fix: [VPNLINUX-1234] Explicitly validate the certificate expiration time
+  * fix: [VPNLINUX-1234] UnexpectedEof in tls connect
+  * Bump python module version.
+  * Support fetching NetShield statistics
+  * Expose AgentFeatures and StatusMessage via uniffi
+  * [VPNLINUX-1257-Procure] Parameterize the project name in ci-libraries-rust
+
+-------------------------------------------------------------------
 Mon Jul 21 12:37:26 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - fix build. had accidently changed the library name which we copy

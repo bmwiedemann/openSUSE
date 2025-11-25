@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %define         _name python-proton-vpn-local-agent
 Name:           python-proton-vpn-local-agent
-Version:        1.4.5
+Version:        1.6.0
 Release:        0
 Summary:        Proton VPN local agent written in Rust
 License:        GPL-3.0-only
@@ -44,6 +44,10 @@ Summary:        The library file for the local agent
 
 %prep
 %autosetup -a1 -n local-agent-rs-%{version}
+# See https://github.com/ProtonVPN/local-agent-rs/pull/11
+pushd local_agent_rs
+sed -i 's/socket2 = "0.5.7"/socket2 = { version = "0.5.7", features = ["all"] }/' Cargo.toml
+popd
 
 %build
 pushd %{_name}
