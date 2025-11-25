@@ -47,4 +47,14 @@
     <comment>Monthly Patch Release – Sept, 2025: Update to version 1.33.5</comment>
     <requestid>1305866</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9ce439245a9726f1a009f106a662320d</srcmd5>
+    <version>1.33.6</version>
+    <time>1764087599</time>
+    <user>anag_factory</user>
+    <comment>Monthly Patch Release – Nov, 2025: Update to version 1.33.6
+
+- add `Recommends: diffutils` to Kubernetes*-client package, bsc#1251168</comment>
+    <requestid>1319947</requestid>
+  </revision>
 </revisionlist>

@@ -22,7 +22,7 @@
 %define baseversionminus1 1.32
 
 Name:           kubernetes%{baseversion}
-Version:        1.33.5
+Version:        1.33.6
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
@@ -51,7 +51,7 @@ Patch4:         kubeadm-opensuse-flexvolume.patch
 Patch5:         revert-coredns-image-renaming.patch
 BuildRequires:  fdupes
 BuildRequires:  git
-BuildRequires:  go >= 1.24.6
+BuildRequires:  go >= 1.24.9
 BuildRequires:  go-go-md2man
 BuildRequires:  golang-packaging
 BuildRequires:  rsync
@@ -166,6 +166,7 @@ Provides:       kubernetes-client-provider = %{version}
 Requires:       kubernetes%{baseversion}-client-common
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+Recommends:     diffutils
 
 %description client
 Kubernetes client tools like kubectl.

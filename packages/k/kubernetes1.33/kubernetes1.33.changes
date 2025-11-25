@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Tue Nov 25 07:09:26 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.33.6:
+  * Clean up event messages for errors in Portworx in-tree driver
+  * kube-proxy/winkernel: fix stale RemoteEndpoints due to premature clearing of terminatedEndpoints map.
+  * fix: allow job startTime updates on resume from suspended state
+  * DRA allocator: Add the requests corresponding to the config FromClass
+  * Fix tests
+  * etcd: bump etcd to v3.5.24 for k8s v1.31, v1.32, v1.33
+  * E2E volume: fix restarting of watch
+  * Fix startup probe worker termination for sidecar containers
+  * kubeadm: add missing cluster-info context validation
+  * DRA: fix deleting orphaned ResourceClaim on startup
+  * gce: fix etcd manifest
+  * Include relevant dimensions in pod controller indexing
+  * Add namespace-aware orphan pod indexing
+  * update setcap and debian-base to bookworm-v1.0.6
+  * Bump dependencies, images and versions used to Go 1.24.9 and distroless iptables
+  * Add integration test for invalid SAN certificate handling
+  * Remove invalid SAN certificate construction
+  * kubeadm preflight checks: fix host URL construction
+  * change klog to log volume name instead of entire spec in GetDeviceMountPath
+  * authz tests: delay response in context cancelled scenario
+  * upgrade to cos 121
+  * kubeadm: rework the FetchInitConfigurationFromCluster node flags
+  * kubeadm: use JoinHostPort in WaitControlPlaneClient
+  * kubeadm: ensure waiting for apiserver uses a local client
+  * clean: use correct pod template
+  * Bump images, dependencies and versions to go 1.24.7 and distroless iptables
+  * fix: use iifname for input interface name matches
+  * fix: use iifname for input interface name matches
+  * Fix ClusterIP load balancer disappearing when InternalTrafficPolicy: Local is set.
+  * release-1.33: pin system-validators to v1.9.2
+  * Fix DaemonSet misscheduled status not updating on node taint changes
+  * nftables: remove filter-output-post-dnat chain
+  * update filter chains and priority
+  * service-ip-alloc: delay ip processing on service recreate
+  * service-ip-alloc: make repair loop consumer clock interface
+  * DRA: wait for stats to converge in "creates slices" e2e test
+  * Don't log irrelevant zone hints message on no endpoints
+  * Make nodeports scheduling plugin sidecar initContainer aware
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.24.9`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.33.6/build/dependencies.yaml#L113-L115
+
+- add `Recommends: diffutils` to Kubernetes*-client package, bsc#1251168
+  * This is to fix errors like:
+  ```
+  kubectl kustomize . --enable-helm | kubectl diff -n "$NAMESPACE" -f -
+  error: failed to run "diff": executable file not found in $PATH
+  ```
+
+-------------------------------------------------------------------
 Thu Sep 18 12:35:33 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.33.5:
