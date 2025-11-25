@@ -1,7 +1,7 @@
 #
 # spec file for package intel-lpmd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,25 @@
 
 
 Name:           intel-lpmd
-Version:        0.0.8
+Version:        0.1.0
 Release:        0
 Summary:        Intel Low Power Mode Daemon
 License:        GPL-2.0-or-later
 Group:          Hardware/Other
 URL:            https://github.com/intel/intel-lpmd
 Source:         https://github.com/intel/intel-lpmd/archive/refs/tags/v%version.tar.gz
-Patch0:         fix_cpuid_double_include.patch
 BuildRequires:  automake
-BuildRequires:  pkg-config
 BuildRequires:  gtk-doc >= 1.11
-BuildRequires:  pkgconfig(glib-2.0) >= 2.10.0
+BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.22
+BuildRequires:  pkgconfig(glib-2.0) >= 2.10.0
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(libnl-3.0)
 BuildRequires:  pkgconfig(libnl-genl-3.0)
 BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  pkgconfig(upower-glib)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.4
+BuildRequires:  pkgconfig(upower-glib)
 ExclusiveArch:  %ix86 x86_64
 
 %description
