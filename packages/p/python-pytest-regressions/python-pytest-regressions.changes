@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Nov 24 03:50:29 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.8.3:
+  * Fixed support for pandas.CategoricalDtype, regressed in 2.8.1.
+  * Reintroduced support for datetime columns in dataframe_regression.
+  * Removed check against numpy-2.0-deprecated a dtype alias.
+  * Replaced datadir with the lazy_datadir fixture for improved performance
+    in test suites with large data directories.
+  * Python 3.12 and 3.13 are now officially supported.
+  * Python 3.8 (EOL) is no longer supported.
+  * Added fullpath parameter to image_regression.check.
+  * Added documentation for specifying custom data directories.
+  * Added new round_digits to data_regression.check, which when given will
+    round all float values to the given number of dicts (recursively) before
+    saving the data to disk.
+
+-------------------------------------------------------------------
 Wed May  7 06:58:19 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

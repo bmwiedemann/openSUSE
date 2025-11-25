@@ -79,4 +79,24 @@
 - Be more explicit about directories in %files.</comment>
     <requestid>1275110</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a6624f7da60c02cb95f8e60e95a0e919</srcmd5>
+    <version>2.8.3</version>
+    <time>1764082211</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.8.3:
+  * Fixed support for pandas.CategoricalDtype, regressed in 2.8.1.
+  * Reintroduced support for datetime columns in dataframe_regression.
+  * Removed check against numpy-2.0-deprecated a dtype alias.
+  * Replaced datadir with the lazy_datadir fixture for improved performance
+    in test suites with large data directories.
+  * Python 3.12 and 3.13 are now officially supported.
+  * Python 3.8 (EOL) is no longer supported.
+  * Added fullpath parameter to image_regression.check.
+  * Added documentation for specifying custom data directories.
+  * Added new round_digits to data_regression.check, which when given will
+    round all float values to the given number of dicts (recursively) before
+    saving the data to disk.</comment>
+    <requestid>1319615</requestid>
+  </revision>
 </revisionlist>

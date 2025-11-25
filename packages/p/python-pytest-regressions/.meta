@@ -1,5 +1,4 @@
 <package name="python-pytest-regressions" project="openSUSE:Factory">
   <title></title>
   <description>Easy to use pytest fixtures to write regression tests</description>
-  <devel project="devel:languages:python:pytest" package="python-pytest-regressions"/>
 </package>

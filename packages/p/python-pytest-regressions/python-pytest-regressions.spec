@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-regressions
-Version:        2.5.0
+Version:        2.8.3
 Release:        0
 License:        MIT
 Summary:        Python fixtures to write regression tests
 URL:            https://github.com/ESSS/pytest-regressions
-Group:          Development/Languages/Python
-Source:         https://files.pythonhosted.org/packages/source/p/pytest-regressions/pytest-regressions-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pytest-regressions/pytest_regressions-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
@@ -57,7 +57,7 @@ BuildArch:      noarch
 Python fixtures to write regression tests.
 
 %prep
-%autosetup -p1 -n pytest-regressions-%{version}
+%autosetup -p1 -n pytest_regressions-%{version}
 
 %build
 %pyproject_wheel
