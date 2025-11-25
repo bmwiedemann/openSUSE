@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue Nov 25 06:34:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.7.4:
+  Note that signature verification for OCI artifacts in
+  source-controller is not compatible with Cosign v3.
+  Flux users are advised to use Cosign v2.6 for signing Flux OCI
+  artifacts and Helm charts, until support for Cosign v3 is added
+  in Flux v2.8.
+  * Fixes:
+    - Add DisableConfigWatchers feature gate to all controllers for
+      disabling the Secrets/ConfigMaps watchers
+    - Fix Workload Identity for Azure China Cloud in all
+      controllers
+    - Update Helm Go SDK to v3.19.2 fixing schema validation issues
+      in helm-controller
+    - Skip secret decryption for remote kustomize patches in
+      kustomize-controller
+    - Improve post-build error reporting in kustomize-controller
+    - Add ArtifactGenerator to aggregated RBAC roles
+  * Components changelog
+    - source-controller v1.7.4
+    - kustomize-controller v1.7.3
+    - notification-controller v1.7.5
+    - helm-controller v1.4.4
+    - image-reflector-controller v1.0.4
+    - image-automation-controller v1.0.4
+    - source-watcher v2.0.3
+  * CLI changelog
+    - [release/v2.7.x] ci: Include source-watcher in the e2e test
+      suite by @fluxcdbot in #5615
+    - [release/v2.7.x] Add source.extensions.fluxcd.io group to
+      aggregated RBAC roles by @fluxcdbot in #5628
+    - [release/v2.7.x] Fix panic on reconcile with source of
+      ExternalArtifact kind by @fluxcdbot in #5631
+    - [release/v2.7.x] Upgrade k8s to 1.34.2, c-r to 0.22.4 and
+      helm to 3.19.2 by @fluxcdbot in #5634
+    - [release/v2.7.x] diff: report if object is skipped by
+      @fluxcdbot in #5635
+    - [release/v2.7.x] Update toolkit components by @fluxcdbot in
+      #5640
+    - [release/v2.7.x] Allow option to skip tenant namespace
+      creation by @fluxcdbot in #5642
+
+-------------------------------------------------------------------
 Tue Oct 28 22:07:10 UTC 2025 - Robert Munteanu <rombert@apache.org>
 
 - Update to version 2.7.3:
