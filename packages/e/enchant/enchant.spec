@@ -24,7 +24,7 @@
 %bcond_without aspell
 
 Name:           enchant
-Version:        2.8.12
+Version:        2.8.13
 Release:        0
 Summary:        Generic Spell Checking Library
 License:        LGPL-2.1-or-later
