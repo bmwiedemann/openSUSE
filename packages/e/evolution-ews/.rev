@@ -1354,4 +1354,16 @@
     <comment></comment>
     <requestid>1310505</requestid>
   </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>28c5e2ca7c5039b291b967d6629a7ace</srcmd5>
+    <version>3.58.2</version>
+    <time>1764082294</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.58.2:
+  + Bug Fixes: Free/Busy calendar limited by server
+  + Miscellaneous: EWS: Try to extract error information from
+    &quot;Internal Server Error&quot; response
+  + Updated translations. (forwarded request 1319066 from iznogood)</comment>
+    <requestid>1319637</requestid>
+  </revision>
 </revisionlist>

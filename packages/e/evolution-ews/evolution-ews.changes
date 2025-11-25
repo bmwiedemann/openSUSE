@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov 21 11:15:29 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.58.2:
+  + Bug Fixes: Free/Busy calendar limited by server
+  + Miscellaneous: EWS: Try to extract error information from
+    "Internal Server Error" response
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Oct 10 07:48:03 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.58.1:
