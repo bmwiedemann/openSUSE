@@ -129,4 +129,14 @@ https://github.com/kubernetes/kubernetes/issues/130786</comment>
     <comment>Monthly Patch Release – Sept, 2025: Update to version 1.31.13</comment>
     <requestid>1305869</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4bcaa0fa1c3bece97facc409065e338a</srcmd5>
+    <version>1.31.14</version>
+    <time>1764087604</time>
+    <user>anag_factory</user>
+    <comment>Monthly Patch Release – Nov, 2025: Update to version 1.31.14
+
+- add `Recommends: diffutils` to Kubernetes*-client package, bsc#1251168</comment>
+    <requestid>1319951</requestid>
+  </revision>
 </revisionlist>

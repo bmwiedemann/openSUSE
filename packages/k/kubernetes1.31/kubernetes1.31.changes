@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Nov 25 07:22:39 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.31.14:
+  * Fix tests
+  * etcd: bump etcd to v3.5.24 for k8s v1.31, v1.32, v1.33
+  * gce: fix etcd manifest
+  * update setcap and debian-base to bookworm-v1.0.6
+  * Bump dependencies, images and versions used to Go 1.24.9 and distroless iptables
+  * golangci-lint: temporarily suppress stylistic testifylint issues in the code base
+  * golangci-lint: temporarily suppress known issues in the code base
+  * Bump hack/tools to github.com/golangci/golangci-lint 1.64.5 for go 1.24
+  * Add integration test for invalid SAN certificate handling
+  * Remove invalid SAN certificate construction
+  * kubeadm preflight checks: fix host URL construction
+  * Fix ClusterIP load balancer disappearing when InternalTrafficPolicy: Local is set.
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires: go >= 1.24.9`
+  * `BuildRequires: golang(API) = 1.24`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.31.14/build/dependencies.yaml#L113-L116
+
+- add `Recommends: diffutils` to Kubernetes*-client package, bsc#1251168
+  * This is to fix errors like:
+  ```
+  kubectl kustomize . --enable-helm | kubectl diff -n "$NAMESPACE" -f -
+  error: failed to run "diff": executable file not found in $PATH
+  ```
+
+-------------------------------------------------------------------
 Thu Sep 18 14:02:49 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.31.13:
