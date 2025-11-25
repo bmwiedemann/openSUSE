@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Nov 24 09:27:27 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v1.18.1
+  * Changes of v1.18.1
+    + Fix generated module-info to include new package.
+  * Changes of v1.18.0
+    + Add support for module-info class files and
+      ModuleDescriptions.
+    + Allow for manipulating module information using the ByteBuddy
+      API.
+  * Changes of v1.17.8
+    + Avoid use of types that are deprecated as of Java 26.
+    + Include ASM 9.9 that offers ASM support for Java 26.
+    + Make sure that generated code internal to Byte Buddy supports
+      CDS if available.
+    + Update version of ASM to JDK Class File API bridge to fix
+      some minor bugs related to type annotations.
+  * Changes of v1.17.7
+    + Specify correct JVM environment for Android builds when using
+      the Gradle plugin.
+    + Avoid recomputing the size of a parameter list for
+      performance reasons after measuring the significant impact.
+    + Correct validation of JVM names to avoid breaking when Java
+      names are not allowed while JVM names are, with Kotlin and
+      others.
+
+-------------------------------------------------------------------
+Fri Nov 21 17:04:47 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Require for build objectweb-asm >= 9.8 for Opcodes.V25
+
+-------------------------------------------------------------------
 Mon Jun 23 14:43:54 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build with maven 4
