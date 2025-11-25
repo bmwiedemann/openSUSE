@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 22 21:20:31 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove unused BuildRequires: update-desktop-files.
+
+-------------------------------------------------------------------
 Thu Apr 27 22:40:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.2.13:

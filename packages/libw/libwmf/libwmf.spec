@@ -1,7 +1,7 @@
 #
 # spec file for package libwmf
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,6 @@ BuildRequires:  libtiff-devel
 BuildRequires:  libtool
 BuildRequires:  libxml2-devel
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  xorg-x11-proto-devel
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xt)
