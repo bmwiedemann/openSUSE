@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Nov 25 06:20:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.104.1:
+  * Bug Fixes
+    - Redact during file output [#3068 @kzantow]
+    - Unaffected match table does not filter results if CPE
+      matching is enabled [#3056 #3066 @kzantow]
+  * Additional Changes
+    - Migrate grype to use mholt/archives instead of anchore fork
+      [#3036 @joonas]
+  * Dependencies
+    - chore: migrate grype to use mholt/archives instead of anchore
+      fork (#3036)
+    - chore(deps): update tools to latest versions (#3051)
+    - chore(deps): bump actions/checkout from 5.0.0 to 5.0.1
+      (#3059)
+    - chore(deps): bump anchore/sbom-action from 0.20.9 to 0.20.10
+      (#3060)
+    - chore(deps): bump github/codeql-action from 4.31.2 to 4.31.4
+      (#3061)
+    - chore(deps): bump golang.org/x/crypto from 0.44.0 to 0.45.0
+      (#3063)
+    - chore(deps): bump actions/setup-go in
+      /.github/actions/bootstrap (#3064)
+
+-------------------------------------------------------------------
 Tue Nov 18 06:15:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.104.0:
