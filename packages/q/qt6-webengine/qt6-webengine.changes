@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 20 15:15:44 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.10.1
+  https://www.qt.io/blog/qt-6.10.1-released
+  Based on Chromium version: 134.0.6998.208
+  Patched with security patches up to Chromium version: 142.0.7444.162
+- Drop patches:
+  * 0001-webrtc-IWYU-modules-video_capture.patch
+  * 0002-webrtc-IWYU-modules-desktop_capture-and-modules-video_captu.patch
+
+-------------------------------------------------------------------
 Fri Oct 17 09:54:47 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patches from webrtc's upstream to fix header includes
@@ -21,12 +32,6 @@ Tue Oct  7 08:53:32 UTC 2025 - Christophe Marin <christophe@krop.fr>
 - Drop patches:
   * QtWebEngine_6.9.2_QTBUG-139424.patch
   * qtwebengine_ffmpeg8.patch
-
--------------------------------------------------------------------
-Tue Oct  7 08:53:32 UTC 2025 - Christophe Marin <christophe@krop.fr>
-
-- Update to 6.10.0
-  * https://www.qt.io/blog/qt-6.10-released
 
 -------------------------------------------------------------------
 Thu Sep 25 13:10:32 UTC 2025 - Christophe Marin <christophe@krop.fr>
