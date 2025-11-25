@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.10.0
+%define real_version 6.10.1
 %define short_version 6.10
 %define tar_name qtspeech-everywhere-src
 %define tar_suffix %{nil}
@@ -31,7 +31,7 @@
 %bcond_without flite
 %endif
 Name:           qt6-speech%{?pkg_suffix}
-Version:        6.10.0
+Version:        6.10.1
 Release:        0
 Summary:        Qt 6 TextToSpeech Library and Plugin
 License:        GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only
