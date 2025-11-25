@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Nov 25 13:47:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.32.0:
+  * Features
+    - add blobs id backfill bbm (c258f86)
+    - add repository_count in rename request logs (3552fe8)
+  * Bug Fixes
+    - datastore: importer: manage lockfiles when
+      REGISTRY_FF_ENFORCE_LOCKFILES is disabled (124bacc)
+    - do not skip setting up ignore actions filter when ignored
+      media types filter is not set (f037796)
+    - registry: disable REGISTRY_FF_ENFORCE_LOCKFILES by default
+      (9786bb5)
+  * Dependencies
+    - build(deps): update module cloud.google.com/go/storage to
+      v1.57.2
+    - build(deps): update module
+      github.com/aws/aws-sdk-go-v2/config to v1.31.20
+    - build(deps): update module
+      github.com/aws/aws-sdk-go-v2/credentials to v1.18.21
+    - build(deps): update module
+      github.com/aws/aws-sdk-go-v2/service/s3 to v1.90.0
+    - build(deps): update module
+      github.com/aws/aws-sdk-go-v2/service/s3 to v1.90.2
+    - build(deps): update module
+      github.com/azure/azure-sdk-for-go/sdk/azcore to v1.20.0
+    - build(deps): update module
+      github.com/azure/azure-sdk-for-go/sdk/azidentity to v1.13.1
+    - build(deps): update module github.com/getsentry/sentry-go to
+      v0.38.0
+    - build(deps): update module github.com/olekukonko/tablewriter
+      to v1.1.1
+    - build(deps): update module github.com/redis/go-redis/v9 to
+      v9.17.0
+
+-------------------------------------------------------------------
 Sat Nov 22 07:00:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.31.1:
