@@ -76,7 +76,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           webkit2%{_gtknamesuffix}
-Version:        2.50.1
+Version:        2.50.2
 Release:        0
 Summary:        Library for rendering web content, GTK+ Port
 License:        BSD-3-Clause AND LGPL-2.0-or-later
@@ -88,6 +88,8 @@ Source99:       webkit2gtk3.keyring
 
 # PATCH-FEATURE-OPENSUSE reproducibility.patch -- Make build reproducible
 Patch0:         reproducibility.patch
+# PATCH-FIX-UPSTREAM webkit2gtk3-undefined-symbol.patch mgorse@suse.com -- fix a build failure.
+Patch1:         webkit2gtk3-undefined-symbol.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
