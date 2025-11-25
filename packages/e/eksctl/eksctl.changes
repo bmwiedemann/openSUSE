@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 25 06:21:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.218.0:
+  * Features
+    - Add support for ControlPlaneScalingConfig (#8590)
+  * Improvements
+    - Enable termination protection by default for eksctl CFN
+      stacks (#8586)
+
+-------------------------------------------------------------------
 Wed Nov 12 15:02:20 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.217.0:
