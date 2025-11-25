@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Tue Nov 25 07:02:53 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.34.2:
+  * Clean up event messages for errors in Portworx in-tree driver
+  * kube-proxy/winkernel: fix stale RemoteEndpoints due to premature clearing of terminatedEndpoints map.
+  * fix: allow job startTime updates on resume from suspended state
+  * DRA allocator: Add the requests corresponding to the config FromClass
+  * Fix spurious workload rollout due to null creationTimestamp in controller revisions
+  * Remove unused and fragile revision hash comparisons
+  * Add unit test detecting spurious statefulset rollout
+  * Do not log untolerated taint in pod status updates.
+  * E2E volume: fix restarting of watch
+  * Return error in case of discovery client failure
+  * etcd: bump etcd to v3.5.24 for k8s v1.31, v1.32, v1.33
+  * Fix startup probe worker termination for sidecar containers
+  * kubeadm: add missing cluster-info context validation
+  * Do not validate etcd version for aggregated server conformance test
+  * Bump etcd to v3.6.5
+  * Include relevant dimensions in pod controller indexing
+  * apply integration test: fix ordering test flake
+  * update setcap and debian-base to bookworm-v1.0.6
+  * Bump images, dependencies and versions to go 1.24.9 and distroless iptables
+  * Add integration test for invalid SAN certificate handling
+  * Remove invalid SAN certificate construction
+  * kubeadm preflight checks: fix host URL construction
+  * change klog to log volume name instead of entire spec in GetDeviceMountPath
+  * With new changes we will also have a VolumeModifying condition
+  * authz tests: delay response in context cancelled scenario
+  * gce: Fix etcd manifest
+  * Disable SchedulerAsyncAPICalls feature gate due to a known regression
+  * upgrade to cos 121
+  * Update pod resize test to accept new cpu.weight conversion.
+  * kubeadm: rework the FetchInitConfigurationFromCluster node flags
+  * kubeadm: use JoinHostPort in WaitControlPlaneClient
+  * kubeadm: ensure waiting for apiserver uses a local client
+  * Revert "Merge pull request #133213 from sanposhiho/second-trial-conor"
+  * Split preemption integration tests to mitigate the timeout
+  * fix incorrect warning whenever headless service is created/updated
+  * fix: use iifname for input interface name matches
+  * Wait for quota to report used before creating pvc
+  * release-1.34: pin system-validators to v1.10.2
+  * Fix ClusterIP load balancer disappearing when InternalTrafficPolicy: Local is set.
+  * gofmt and review feedback
+  * fix: Update unit test to catch actual nil Labels case and fix functionality to handle nil Labels
+  * Do not remove PVC ClaimRef to fix flaky VAC test
+  * DRA kubelet: avoid deadlock when gRPC connection to driver goes idle
+  * kubelet/metrics: fix multiple Register call
+  * kubelet/metrics: misc optimization
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.24.9`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.34.2/build/dependencies.yaml#L113-L116
+
+- add `Recommends: diffutils` to Kubernetes*-client package, bsc#1251168
+  * This is to fix errors like:
+  ```
+  kubectl kustomize . --enable-helm | kubectl diff -n "$NAMESPACE" -f -
+  error: failed to run "diff": executable file not found in $PATH
+  ```
+
+-------------------------------------------------------------------
 Thu Sep 18 14:13:59 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - initial package for Kubernetes v1.34.1
