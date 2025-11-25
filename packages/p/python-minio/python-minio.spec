@@ -1,7 +1,7 @@
 #
 # spec file for package python-minio
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-minio
-Version:        7.2.17
+Version:        7.2.19
 Release:        0
 Summary:        Minio library for Amazon S3 compatible cloud storage
 License:        Apache-2.0

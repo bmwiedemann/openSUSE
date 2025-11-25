@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Nov 24 15:27:39 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 7.2.19
+  * Add region, extra_headers and extra_query_params
+    by @balamurugana in #1505
+  * Make BaseException internals to be set
+    by @balamurugana in #1521
+  * Fix: Add missing type annotations to serialization dataclass fields
+    by @rraulinio in #1527
+  * support optional parameters in LdapIdentityProvider
+    by @jkandasa in #1528
+  * Incorrect existing checksum headers to both CreateMultipartUpload and
+    UploadPart requests
+    by @rraulinio in #1529
+
+-------------------------------------------------------------------
+Fri Nov 21 13:17:09 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 7.2.18
+  * fix ETag parsing in CompleteMultipartUploadResult
+    by @balamurugana in #1518
+  * credentials: set expiration using object.setattr()
+    by @balamurugana in #1516
+  * cleanup: SSE-C keys fix a misleading error message
+    by @marktheunissen in #1514
+  * feat: add py.typed in setup.py by @tughril in #1513
+
+-------------------------------------------------------------------
 Mon Sep 29 07:42:06 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 7.2.17
