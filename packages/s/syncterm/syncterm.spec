@@ -30,7 +30,6 @@ BuildRequires:  dos2unix
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libjxl)
 BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(sdl2)
