@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 24 13:30:55 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 0.19.5
+  * Add django decorator
+  * Allow Starlette 0.41.x and FastAPI 0.115.x
+- Review skipped tests, skip test failing with Python 3.14
+
+-------------------------------------------------------------------
 Fri Sep 27 08:15:11 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - reformat the django test constraints

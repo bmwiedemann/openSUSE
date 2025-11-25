@@ -1,7 +1,7 @@
 #
 # spec file for package python-openapi-core
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 
 Name:           python-openapi-core
-Version:        0.19.4
+Version:        0.19.5
 Release:        0
 Summary:        Client- and server-side support for the OpenAPI Specification v3
 License:        BSD-3-Clause
@@ -90,11 +90,12 @@ done
 %if !%{with django}
 rm -v tests/unit/contrib/django/test_django.py
 %endif
-%pytest tests/unit -k 'not (test_read_only_properties_invalid or test_write_only_properties_invalid)'
+# https://github.com/python-openapi/openapi-core/issues/1009 TestImportModelCreate::test_dynamic_model fails with Python 3.14
+%pytest tests/unit -k 'not (test_dynamic_model)'
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst
+%doc README.md
 %{python_sitelib}/openapi_core
 %{python_sitelib}/openapi_core-%{version}*-info
 
