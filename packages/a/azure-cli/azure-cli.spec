@@ -33,7 +33,7 @@
 %endif
 
 Name:           azure-cli%{?psuffix}
-Version:        2.79.0
+Version:        2.80.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -64,6 +64,7 @@ Requires:       %{pythons}-azure-keyvault-certificates >= 4.7.0
 Requires:       %{pythons}-azure-keyvault-keys >= 4.11.0
 Requires:       %{pythons}-azure-keyvault-secrets >= 4.7.0
 Requires:       %{pythons}-azure-keyvault-securitydomain >= 1.0.0~b1
+Requires:       %{pythons}-azure-ai-projects >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-advisor >= 9.0.0
 Requires:       %{pythons}-azure-mgmt-apimanagement >= 4.0.0
 Requires:       %{pythons}-azure-mgmt-appconfiguration >= 5.0.0
@@ -75,11 +76,11 @@ Requires:       %{pythons}-azure-mgmt-batchai >= 7.0.0b1
 Requires:       %{pythons}-azure-mgmt-billing >= 6.0.0
 Requires:       %{pythons}-azure-mgmt-botservice >= 2.0.0b3
 Requires:       %{pythons}-azure-mgmt-cdn >= 12.0.0
-Requires:       %{pythons}-azure-mgmt-cognitiveservices >= 13.7.0
+Requires:       %{pythons}-azure-mgmt-cognitiveservices >= 14.1.0
 Requires:       %{pythons}-azure-mgmt-compute >= 34.1.0
 Requires:       %{pythons}-azure-mgmt-containerinstance >= 10.2.0~b1
 Requires:       %{pythons}-azure-mgmt-containerregistry >= 14.1.0~b1
-Requires:       %{pythons}-azure-mgmt-containerservice >= 40.0.0
+Requires:       %{pythons}-azure-mgmt-containerservice >= 40.1.0
 Requires:       %{pythons}-azure-mgmt-cosmosdb >= 9.8.0
 Requires:       %{pythons}-azure-mgmt-datalake-store >= 1.1.0~b1
 Requires:       %{pythons}-azure-mgmt-datamigration >= 10.0.0
