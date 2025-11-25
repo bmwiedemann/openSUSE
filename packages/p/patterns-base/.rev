@@ -1196,4 +1196,13 @@ by zypper, as no packages with those names exist</comment>
     <comment></comment>
     <requestid>1317838</requestid>
   </revision>
+  <revision rev="138" vrev="22">
+    <srcmd5>7e301bc75af790fe1743a85d2e131ff8</srcmd5>
+    <version>20241218</version>
+    <time>1764082235</time>
+    <user>anag_factory</user>
+    <comment>- remove yast2-logs from transactional base
+- rename the systemd-presets-branding to -SLE_transactional (forwarded request 1319696 from jsrain)</comment>
+    <requestid>1319742</requestid>
+  </revision>
 </revisionlist>

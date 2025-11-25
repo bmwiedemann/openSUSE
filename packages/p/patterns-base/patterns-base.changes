@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov 24 09:58:43 UTC 2025 - Jiri Srain <jsrain@suse.com>
+
+- remove yast2-logs from transactional base
+- rename the systemd-presets-branding to -SLE_transactional
+
+-------------------------------------------------------------------
+Fri Nov 21 13:30:02 UTC 2025 - Frederic Crozat <fcrozat@suse.com>
+
+- Drop biosdevname, this is being replaced by systemd predictable
+  network interface naming (jsc#PED-262).
+
+-------------------------------------------------------------------
 Fri Nov 14 13:36:38 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove dbus-1-glib, it's a shared library and thus pulled in by

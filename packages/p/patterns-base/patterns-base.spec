@@ -501,8 +501,6 @@ Recommends:     vim
 Recommends:     wget
 Recommends:     xz
 Recommends:     zisofs-tools
-# DELL computers mainly #403270, but #441079
-Suggests:       biosdevname
 Suggests:       cpupower
 # #437252
 Suggests:       pam_ssh
@@ -677,11 +675,6 @@ Provides:       pattern() = bootloader
 Requires:       (grub2-snapper-plugin if snapper)
 #
 Requires:       grub2
-%ifarch x86_64
-# XXX: not sure this really belongs here. More like a kernel
-# rather than bootloader related thing?
-Requires:       biosdevname
-%endif
 %ifnarch s390x ppc64 ppc64le
 %if 0%{?is_opensuse}
 Requires:       (grub2-branding-openSUSE if branding-openSUSE)
@@ -821,7 +814,6 @@ Requires:       openssh
 Requires:       read-only-root-fs
 Requires:       rebootmgr
 Requires:       sudo
-Requires:       yast2-logs
 Requires:       zypp-boot-plugin
 Requires:       (health-checker if grub2)
 Requires:       (health-checker-plugins-MicroOS if health-checker)
@@ -839,7 +831,7 @@ Requires:       dosfstools
 %else
 Requires:       iputils
 Requires:       supportutils
-Requires:       systemd-presets-branding-ALP-transactional
+Requires:       systemd-presets-branding-SLE_transactional
 Requires:       toolbox
 Requires:       toolbox-branding-SLE
 Requires:       group(wheel)
