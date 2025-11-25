@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.10.0
+%define real_version 6.10.1
 %define short_version 6.10
 %define short_name qtmultimedia
 %define tar_name qtmultimedia-everywhere-src
@@ -31,7 +31,7 @@
 %global __requires_exclude qt6qmlimport\\((FrequencyMonitor|frequencymonitor|performancemonitor).*
 #
 Name:           qt6-multimedia%{?pkg_suffix}
-Version:        6.10.0
+Version:        6.10.1
 Release:        0
 Summary:        Qt 6 Multimedia libraries
 License:        GPL-3.0-only
