@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.10.0
+%define real_version 6.10.1
 %define short_version 6.10
 %define short_name qtnetworkauth
 %define tar_name qtnetworkauth-everywhere-src
@@ -28,7 +28,7 @@
 %endif
 #
 Name:           qt6-networkauth%{?pkg_suffix}
-Version:        6.10.0
+Version:        6.10.1
 Release:        0
 Summary:        Set of APIs to obtain limited access to online accounts and HTTP services
 License:        GPL-3.0-only WITH Qt-GPL-exception-1.0
