@@ -1,7 +1,30 @@
 -------------------------------------------------------------------
+Mon Nov 24 12:10:50 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.14.6 
+ * Preview features
+  * [flake8-bandit] Support new PySNMP API paths (S508, S509) 
+ * Bug fixes
+  * Adjust own-line comment placement between branches 
+  * Avoid syntax error when formatting attribute expressions with outer parentheses,
+      parenthesized value, and trailing comment on value 
+  * Fix panic when formatting comments in unary expressions 
+  * Respect fmt: skip for compound statements on a single line 
+  * [refurb] Fix FURB103 autofix 
+  * [ruff] Fix false positive for complex conversion specifiers in logging-eager-conversion (RUF065) 
+ * Rule changes
+  * [ruff] Avoid false positive on ClassVar reassignment (RUF012) 
+ * CLI
+  * Render hyperlinks for lint errors 
+  * Add a ruff analyze option to skip over imports in TYPE_CHECKING blocks 
+ * Documentation
+  * Limit eglot-format hook to eglot-managed Python buffers 
+  * Mention force-exclude in "Configuration > Python file discovery" 
+
+-------------------------------------------------------------------
 Sat Nov 15 18:07:24 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.14.4 
+- update to 0.14.5 
  * Preview features
   * [flake8-simplify] Apply SIM113 when index variable is of type int 
   * [pydoclint] Fix false positive when Sphinx directives follow a "Raises" section (DOC502) 
