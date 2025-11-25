@@ -16,7 +16,7 @@ Mon Sep  8 15:17:15 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
 -------------------------------------------------------------------
 Mon Aug  4 11:39:55 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
 
-- Fix build ecross codestreams
+- Fix build across codestreams
   * pseries_platform.h-Fix-ifdef-guard-typo.patch
   * sys_ident-Quiet-strncpy-warning.patch
   * nvram.c-Correct-librtas-function-prototypes.patch
