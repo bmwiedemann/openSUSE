@@ -440,4 +440,15 @@
 - Update Requires from pyproject.toml (forwarded request 1313876 from glaubitz)</comment>
     <requestid>1313908</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>b3a09071451c1b57d063c63c6ef29d6c</srcmd5>
+    <version>30.1.0</version>
+    <time>1764082474</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 30.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1319928 from glaubitz)</comment>
+    <requestid>1319938</requestid>
+  </revision>
 </revisionlist>
