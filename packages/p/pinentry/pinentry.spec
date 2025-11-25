@@ -1,7 +1,7 @@
 #
 # spec file for package pinentry
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -43,7 +43,6 @@ Source2:        pinentry.keyring
 Source3:        pinentry
 Patch1:         pinentry-0.7.2-gtk+-2.4.diff
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gpg-error) >= 1.16
 BuildRequires:  pkgconfig(libassuan) >= 2.1.0
 BuildRequires:  pkgconfig(ncursesw)
@@ -279,6 +278,7 @@ install -p -m 755 -D %{SOURCE3} %{buildroot}%{_bindir}/pinentry
 %{_datadir}/pixmaps/pinentry.png
 
 %else
+
 %files
 %license COPYING
 %doc AUTHORS ChangeLog NEWS README
