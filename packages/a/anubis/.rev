@@ -33,4 +33,12 @@ Use source with the vendor already installed and precompiled JS</comment>
     <comment>Packaging: remove not needed build dependencies</comment>
     <requestid>1317402</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>9d6924a0651059fa463f27fe70d39d56</srcmd5>
+    <version>1.23.1</version>
+    <time>1764173751</time>
+    <user>anag_factory</user>
+    <comment>Add patch to reanable block tencent-cloud by default</comment>
+    <requestid>1320065</requestid>
+  </revision>
 </revisionlist>

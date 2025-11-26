@@ -1,0 +1,9 @@
+Index: anubis-src-vendor-npm-1.23.1/data/bots/_deny-pathological.yaml
+===================================================================
+--- anubis-src-vendor-npm-1.23.1.orig/data/bots/_deny-pathological.yaml
++++ anubis-src-vendor-npm-1.23.1/data/bots/_deny-pathological.yaml
+@@ -4,3 +4,4 @@
+ - import: (data)/bots/custom-async-http-client.yaml
+ - import: (data)/crawlers/alibaba-cloud.yaml
+ - import: (data)/crawlers/huawei-cloud.yaml
++- import: (data)/crawlers/tencent-cloud.yaml

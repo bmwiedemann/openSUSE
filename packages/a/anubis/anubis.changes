@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 22 15:02:59 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
+
+- Add block-tencent-cloud-by-default.patch: reanable block tencent-cloud by default
+
+-------------------------------------------------------------------
 Wed Nov 12 17:26:38 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
 
 - Packaging: remove not needed build dependencies

@@ -25,6 +25,7 @@ URL:            https://github.com/TecharoHQ/%{name}
 Source0:        https://github.com/TecharoHQ/%{name}/releases/download/v%{version}/%{name}-src-vendor-npm-%{version}.tar.gz
 Source1:        https://github.com/TecharoHQ/%{name}/releases/download/v%{version}/%{name}-src-vendor-npm-%{version}.tar.gz.asc
 Source3:        %{name}@.service
+Patch0:         block-tencent-cloud-by-default.patch
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
 %{?systemd_ordering}
@@ -34,7 +35,7 @@ BuildRequires:  systemd-rpm-macros
 one or more challenges in order to protect upstream resources from scraper bots.
 
 %prep
-%autosetup -n %{name}-src-vendor-npm-%{version}
+%autosetup -p1 -n %{name}-src-vendor-npm-%{version}
 
 %build
 export GO_LDFLAGS="-buildmode=pie -mod=vendor -X 'github.com/TecharoHQ/%{name}.Version=%{version}'"
