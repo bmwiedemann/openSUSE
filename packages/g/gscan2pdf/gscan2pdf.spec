@@ -26,7 +26,6 @@ Source0:        https://sourceforge.net/projects/gscan2pdf/files/gscan2pdf/%{ver
 Source1:        https://sourceforge.net/projects/gscan2pdf/files/gscan2pdf/%{version}/gscan2pdf-%{version}.tar.xz.asc
 Source9:        gscan2pdf.keyring
 BuildRequires:  fdupes
-BuildRequires:  update-desktop-files
 Requires:       perl-base = %{perl_version}
 Requires:       unpaper
 Requires:       perl(Config::General)
