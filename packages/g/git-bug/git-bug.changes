@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov 25 17:41:00 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Revendor to include fixed version of depending libraries:
+  - GO-2025-4116 (CVE-2025-47913, bsc#1253506) upgrade
+    golang.org/x/crypto to v0.43.0
+  - GO-2025-3900 (GHSA-2464-8j7c-4cjm) upgrade
+    github.com/go-viper/mapstructure/v2 to v2.4.0
+  - GO-2025-3787 (GHSA-fv92-fjc5-jj9h) included in the previous
+  - GO-2025-3754 (GHSA-2x5j-vhc8-9cwm) upgrade
+    github.com/cloudflare/circl to v1.6.1
+  - GO-2025-4134 (CVE-2025-58181, bsc#1253930) upgrade
+    golang.org/x/crypto/ssh to v0.45.0
+  - GO-2025-4135 (CVE-2025-47914, bsc#1254084) upgrade
+    golang.org/x/crypto/ssh/agent to v0.45.0
+
+-------------------------------------------------------------------
 Wed Oct 15 20:05:09 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Revendor to include golang.org/x/net/html v 0.45.0 to prevent

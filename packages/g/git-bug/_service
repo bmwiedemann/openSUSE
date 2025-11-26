@@ -12,5 +12,11 @@
         <param name="compression">gz</param>
     </service>
     <service name="set_version" mode="manual"/ -->
-    <service name="go_modules" mode="manual"/>
+    <service name="go_modules" mode="manual">
+      <param name="replace">golang.org/x/crypto=golang.org/x/crypto@v0.43.0</param>
+      <param name="replace">github.com/go-viper/mapstructure/v2=github.com/go-viper/mapstructure/v2@v2.4.0</param>
+      <param name="replace">github.com/cloudflare/circl=github.com/cloudflare/circl@v1.6.1</param>
+      <param name="replace">golang.org/x/crypto/ssh=golang.org/x/crypto/ssh@v0.45.0</param>
+      <param name="replace">golang.org/x/crypto/ssh/agent=golang.org/x/crypto/ssh/agent@v0.45.0</param>
+    </service>
 </services>
