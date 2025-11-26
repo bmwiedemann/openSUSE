@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-ZConfig
-Version:        4.2
+Version:        4.3
 Release:        0
 Summary:        Structured Configuration Library
 License:        ZPL-2.1
 URL:            https://github.com/zopefoundation/ZConfig
 Source:         https://files.pythonhosted.org/packages/source/Z/ZConfig/zconfig-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module manuel}
 BuildRequires:  %{python_module pip}

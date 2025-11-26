@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 26 13:26:51 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.3
+  * Add support for Python 3.14.
+  * Drop support for Python 3.9.
+
+-------------------------------------------------------------------
 Wed Mar 26 01:49:36 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Lowercase metadata directory name.
