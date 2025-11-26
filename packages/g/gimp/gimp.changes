@@ -18,8 +18,12 @@ Tue Oct  7 00:56:55 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
       - ZDI-CAN-27823
       - ZDI-CAN-27836
       - ZDI-CAN-27878
-      - ZDI-CAN-27863
       - ZDI-CAN-27684
+      - fix dicom plug-in:
+        Adds more safety checks and sets actual GError's instead of just
+        calling gimp_quit. Fix GIMP DCM File Parsing Heap-based Buffer
+        Overflow Remote Code Execution Vulnerability
+        (CVE-2025-10922, ZDI-CAN-27863, bsc#1250497)
   - Core:
     - Many false-positive build warnings have been cleaned out (and
       proper issues fixed).

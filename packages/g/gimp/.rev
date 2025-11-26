@@ -2302,4 +2302,12 @@ General:
     <comment>- Update to 3.0.6</comment>
     <requestid>1309404</requestid>
   </revision>
+  <revision rev="159" vrev="2">
+    <srcmd5>adabb21a14159fb3579c52baf7a66077</srcmd5>
+    <version>3.0.6</version>
+    <time>1764179404</time>
+    <user>anag_factory</user>
+    <comment>Update changelog to recored security fix ID in previous update (CVE-2025-10922, ZDI-CAN-27863, bsc#1250497). (forwarded request 1320107 from qzhao)</comment>
+    <requestid>1320136</requestid>
+  </revision>
 </revisionlist>
