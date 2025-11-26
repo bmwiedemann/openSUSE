@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyzstd
-Version:        0.17.0
+Version:        0.18.0
 Release:        0
 Summary:        Python bindings to Zstandard (zstd) compression library
 License:        BSD-3-Clause
@@ -45,8 +45,8 @@ The API is similar to Python's bz2/lzma/zlib modules.
 %setup -q -n pyzstd-%{version}
 # make sure we link dynamically, cannot use command line argument to pip wheel
 # gh#animalize/pyzstd#18
-rm -r zstd
 sed -i "s/has_option('--dynamic-link-zstd')/True/" setup.py
+sed -i "/\#\!\/usr\/bin\/env\ python3/d" src/__main__.py
 
 %build
 export CFLAGS="%{optflags}"

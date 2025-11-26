@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Nov 26 10:30:35 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.18.0
+  * Support for Python 3.14
+  * Build free-threaded wheels for CPython 3.13 and 3.14,
+    even if the feature is not supported
+  * Deprecate the `read_size` and `write_size` parameters
+    of `ZstdFile` and `SeekableZstdFile`
+  * Deprecate `richmem_compress` and `RichMemZstdCompressor`
+  * Rework documentation to suggest using `compression.zstd`
+    from Python stdlib, and provide a migration guide
+  * Include the `zstd` library license in package distributions
+- Add sed command to remove shebang from src/__main__.py
+- Don't remove zstd folder in %setup section, it's temporarily required
+
+-------------------------------------------------------------------
 Tue May 20 11:41:48 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.17.0

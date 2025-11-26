@@ -97,4 +97,12 @@
   - Update BuildRequires and Requires from setup.py</comment>
     <requestid>1278842</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b14d2dd7853121210f0c6d1885f838e7</srcmd5>
+    <version>0.18.0</version>
+    <time>1764173928</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1320160</requestid>
+  </revision>
 </revisionlist>
