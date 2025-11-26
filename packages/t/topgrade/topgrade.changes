@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Nov 26 14:04:57 UTC 2025 - gerald_chen@foxmail.com
+
+- Update to version 16.5.0:
+  * chore: release v16.5.0 (#1547)
+  * fix(auto-cpufreq): fix skipping on systems with merged bin/sbin (#1556)
+  * chore(pre-commit): autoupdate (#1560)
+  * chore(deps): update release-plz/action digest to 1efcf74 (#1561)
+  * chore(deps): lock file maintenance (#1555)
+  * chore(deps): update github/codeql-action action to v4.31.5 (#1559)
+  * feat: add colors to --help/-h (#1553)
+  * feat(mise): add support for parallel job configuration in mise (#1548)
+  * feat(brew): add Homebrew cask support for Linux (#1539)
+  * chore(deps): update rust crate indexmap to v2.12.1 (#1550)
+  * chore(deps): update actions/checkout action to v6 (#1551)
+  * docs: Add metadata to Python package for PyPI (#1549)
+  * docs(installation): update copr repo info in readme (#1545)
+  * feat(mise): add mise configuration options for bump and interactive modes (#1546)
+- Update to version 16.4.2:
+  * chore: release v16.4.2 (#1544)
+  * chore(deps): update dawidd6/action-homebrew-bump-formula action to v6 (#1543)
+  * chore: release v16.4.1 (#1542)
+  * refactor: refactor run_containers error handling (#1541)
+  * chore: release v16.4.0 (#1528)
+  * chore(deps): update clap, clap_builder, clap_complete (#1540)
+  * chore(deps): update github/codeql-action action to v4.31.4 (#1531)
+  * test(config): add custom commands order test (#1536)
+  * fix(deps): restore custom commands order (#1535)
+  * refactor: make Config methods more consistent by utilizing `#[derive(Default)]` (#1534)
+  * docs(issue templates): use issue types (#1533)
+  * feat(os): add Origami Linux support (#1530)
+  * chore(deps): lock file maintenance (#1505)
+  * chore(deps): update actions/checkout digest to 93cb6ef (#1526)
+  * chore(deps): update actions/checkout action to v5.0.1 (#1527)
+  * feat(containers): add option to run `system prune` (#1523)
+
+-------------------------------------------------------------------
 Mon Nov 17 16:08:44 UTC 2025 - gerald_chen@foxmail.com
 
 - Re-enable dependencies update in cargo_vendor service. Rust
