@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 26 06:17:37 UTC 2025 - munix9@googlemail.com
+
+- Fix build on Leap 15.6, again
+- Add remove-jq-dependency.patch
+  * Fixes build errors with mdbook >= 0.5.0
+
+-------------------------------------------------------------------
 Tue Nov 18 06:42:00 UTC 2025 - munix9@googlemail.com
 
 - Fix build on Leap 15.6

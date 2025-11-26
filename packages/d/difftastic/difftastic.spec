@@ -31,15 +31,15 @@ License:        Apache-2.0 AND MIT
 URL:            https://difftastic.wilfred.me.uk/
 Source0:        https://github.com/Wilfred/difftastic/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
+Patch0:         remove-jq-dependency.patch
 Patch1:         reproducible.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  jq
 BuildRequires:  rust >= 1.75.0
 BuildRequires:  shared-mime-info
 %if 0%{?suse_version} < 1600
-BuildRequires:  libstdc++6-devel-gcc14
+BuildRequires:  libstdc++6-devel-gcc15
 %endif
 Requires:       shared-mime-info
 %if %{with docs}
