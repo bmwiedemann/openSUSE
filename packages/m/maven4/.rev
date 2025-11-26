@@ -15,4 +15,12 @@
     <comment>4.0.0-rc-5</comment>
     <requestid>1317832</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ef6b4364677236af0e14617df4acfafe</srcmd5>
+    <version>4.0.0~rc5</version>
+    <time>1764173786</time>
+    <user>anag_factory</user>
+    <comment>Require maven4-lib when installing maven4, otherwise the package is broken.</comment>
+    <requestid>1320096</requestid>
+  </revision>
 </revisionlist>

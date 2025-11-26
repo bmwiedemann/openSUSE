@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 25 21:44:26 UTC 2025 - Robert Munteanu <rombert@apache.org>
+
+- Require maven4-lib when installing maven4, otherwise the package
+  is broken.
+
+-------------------------------------------------------------------
 Thu Nov 13 15:50:19 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to 4.0.0-rc-5

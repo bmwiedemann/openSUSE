@@ -105,6 +105,7 @@ BuildRequires:  mvn(org.apache.maven:maven-parent:pom:)
 #!BuildIgnore:  %{name}-lib
 #!BuildIgnore:  plexus-sec-dispatcher
 Requires:       java-headless >= 17
+Requires:       %{name}-lib = %{version}-%{release}
 
 %description
 Maven is a software project management and comprehension tool. Based on the
