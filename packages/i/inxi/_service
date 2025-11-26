@@ -1,8 +1,8 @@
 <services>
-  <service mode="disabled" name="obs_scm">
+  <service mode="manual" name="obs_scm">
     <param name="url">https://codeberg.org/smxi/inxi.git</param>
     <param name="scm">git</param>
-    <param name="revision">master</param>
+    <param name="revision">20451ca41fe61723250bb0d8f2ba2ec708719b90</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">inxi</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
@@ -14,5 +14,5 @@
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service mode="disabled" name="set_version"/>
+  <service mode="manual" name="set_version"/>
 </services>

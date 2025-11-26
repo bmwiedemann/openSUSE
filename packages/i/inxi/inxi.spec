@@ -17,9 +17,9 @@
 #
 
 
-%define _version 3.3.39-1
+%define _version 3.3.40-1
 Name:           inxi
-Version:        3.3.39
+Version:        3.3.40
 Release:        0
 Summary:        A system information script
 License:        GPL-3.0-or-later

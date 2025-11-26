@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Nov 26 00:32:13 UTC 2025 - malcolmlewis@opensuse.org
+
+- Update to version 3.3.40:
+  * This is a quick release to get the bug fix out for
+    <https://codeberg.org/smxi/inxi/issues/347>.
+  * Refactor and updated of the Battery item.
+  * This release is highlighted by a long overdue rewrite of the
+    -b, -e, and -v[x] man page and help options.
+  * Renamed to inxi.metainfo.xml
+  * Changed id to org.smxi.inxi
+  * Added inxi.metadata.xml. Your welcome.
+  * Phase 2 of the big CPU upgrade a few years back is now done.
+  * Added more Wayland wm/de updates: wm, tools, lockers, etc.
+- Setup service file for manual run.
+
+-------------------------------------------------------------------
 Sat Aug 30 03:15:58 UTC 2025 - malcolmlewis@opensuse.org
 
 - Update to version 3.3.39:
