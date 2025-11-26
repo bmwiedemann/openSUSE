@@ -365,4 +365,19 @@
     CHANGELOG.md file provided with this package (forwarded request 1178671 from glaubitz)</comment>
     <requestid>1178732</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>afa9f04978b4cd504ac40c5b8c0a6e94</srcmd5>
+    <version>10.2.0b18</version>
+    <time>1764179475</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 10.2.0b18
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Rename LICENSE.txt to LICENSE in %files section
+- Update BuildRequires from setup.py (forwarded request 1320213 from glaubitz)</comment>
+    <requestid>1320224</requestid>
+  </revision>
 </revisionlist>
