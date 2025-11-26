@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 26 06:31:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.12.5:
+  * chore(deps): security update (#15059)
+  * chore(deps): bump ci-tools/release-tool from 1.2.4 to 1.2.5
+  * chore(deps): bump ci-tools/release-tool to v1.2.4
+  * chore(deps): bump golang.org/x/crypto from 0.41.0 to 0.43.0
+    (#14995)
+
+-------------------------------------------------------------------
 Mon Nov 17 07:24:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.12.4:
