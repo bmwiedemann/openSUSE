@@ -1,7 +1,7 @@
 #
 # spec file for package yaics
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,10 +24,10 @@ License:        GPL-3.0-or-later
 Group:          System/GUI/Other
 URL:            https://gitlab.com/stigatle/yaics
 Source:         https://gitlab.com/stigatle/yaics/-/archive/%{version}-1/yaics-%{version}-1.tar.gz
+BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Gui)
