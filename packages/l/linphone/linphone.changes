@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 25 16:38:09 CET 2025 - ro@suse.de
+
+- add patch linphone-libxml-2.14.patch
+  to fix build with currentl libxml 
+
+-------------------------------------------------------------------
 Fri Jul 25 15:08:06 UTC 2025 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - fix build with gcc15

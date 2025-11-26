@@ -1,0 +1,14 @@
+--- liblinphone-5.3.105/coreapi/lpc2xml.c	2025/11/25 15:36:33	1.1
++++ liblinphone-5.3.105/coreapi/lpc2xml.c	2025/11/25 15:50:22
+@@ -43,7 +43,11 @@
+ 		}
+ 
+ 		temp = size - 1;
++#if LIBXML_VERSION < 21400
+ 		ret = handler->input(out, &out_size, (const xmlChar *)in, &temp);
++#else
++		ret = handler->input.legacyFunc(out, &out_size, (const xmlChar *)in, &temp);
++#endif
+ 		if (ret < 0 || temp - size + 1) {
+ 			ms_free(out);
+ 			return NULL;

@@ -929,4 +929,12 @@
     <comment>- fix build with gcc15</comment>
     <requestid>1295853</requestid>
   </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>e0706f3eccc84e27974d7858397698f4</srcmd5>
+    <version>5.3.105</version>
+    <time>1764173669</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1320058</requestid>
+  </revision>
 </revisionlist>

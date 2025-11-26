@@ -53,6 +53,7 @@ Patch3:         linphone-link-soci-sqlite3.patch
 # PATCH-FIX-OPENSUSE linphone-build-jsoncpp.patch -- use pkgconfig to find jsoncpp and link against jsoncpp, not jsoncpp_object
 Patch4:         linphone-build-jsoncpp.patch
 Patch5:         set_current_version.patch
+Patch6:         linphone-libxml-2.14.patch
 BuildRequires:  cmake >= 3.22
 BuildRequires:  doxygen
 BuildRequires:  fdupes
