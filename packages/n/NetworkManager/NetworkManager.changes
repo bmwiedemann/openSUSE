@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 25 09:35:12 UTC 2025 - Antonio Feijoo <antonio.feijoo@suse.com>
+
+- Add patch 2312.patch to fix upstream issue
+  https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/issues/1814,
+  already fixed upstream for the next release via
+  https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/merge_requests/2312
+
+-------------------------------------------------------------------
 Fri Oct 31 10:05:44 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
 
 - Add patch 2298.patch to fix issue with SELinux labeling. Is already

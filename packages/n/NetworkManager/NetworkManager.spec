@@ -1,6 +1,7 @@
 #
 # spec file for package NetworkManager
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -99,6 +100,8 @@ Patch9:         NetworkManager-dont-renew-bridge-dhcp-if-no-mac-on-wakeup.patch
 Patch11:        0001-man-document-static-ip-setup-differences-to-dracut-n.patch
 # PATCH-FIX-UPSTREAM https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/merge_requests/2298.patch
 Patch12:        2298.patch
+# PATCH-FIX-UPSTREAM https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/merge_requests/2312.patch
+Patch13:        2312.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  dnsmasq
@@ -325,6 +328,7 @@ This package is intended to be installed by default for server deployments.
 %endif
 %patch -P 11 -p1
 %patch -P 12 -p1
+%patch -P 13 -p1
 
 # Fix server.conf's location, to end up in %%{_defaultdocdir}/%%{name},
 # rather then %%{_datadir}/doc/%%{name}/examples:
@@ -337,6 +341,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing -fcommon"
 export PYTHON=%{_bindir}/python3
 %meson \
     -Dsystemdsystemunitdir=%{_unitdir} \
+    -Dsystemdsystemgeneratordir=%{_systemdgeneratordir} \
     -Dudev_dir=%{_udevdir} \
     -Ddbus_conf_dir=%{_dbusconfdir} \
     -Ddnsmasq=%{_sbindir}/dnsmasq \
@@ -490,6 +495,8 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 %{_unitdir}/NetworkManager-config-initrd.service
 %{_unitdir}/NetworkManager-initrd.service
 %{_unitdir}/NetworkManager-wait-online-initrd.service
+%dir %{_systemdgeneratordir}
+%{_systemdgeneratordir}/nm-initrd-generator.sh
 
 %files devel
 %{_includedir}/libnm/
