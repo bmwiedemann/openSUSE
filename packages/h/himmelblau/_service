@@ -2,7 +2,7 @@
 	<service name="tar_scm" mode="manual">
 		<param name="url">https://github.com/himmelblau-idm/himmelblau.git</param>
 		<param name="scm">git</param>
-		<param name="revision">stable-1.x</param>
+		<param name="revision">stable-2.x</param>
 		<param name="versionformat">@PARENT_TAG@+git.@TAG_OFFSET@.%h</param>
 		<param name="versionrewrite-pattern">himmelblau-(.*)</param>
 		<param name="versionrewrite-replacement">\1</param>
@@ -23,9 +23,5 @@
 	<service name="cargo_vendor" mode="manual">
 		<param name="srcdir">himmelblau</param>
 		<param name="update">true</param>
-	</service>
-	<service name="cargo_audit" mode="manual">
-		<param name="srcdir">himmelblau</param>
-                <param name="lockfile">Cargo.lock</param>
 	</service>
 </services>

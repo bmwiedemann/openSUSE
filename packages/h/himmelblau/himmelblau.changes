@@ -1,4 +1,237 @@
 -------------------------------------------------------------------
+Mon Nov 24 19:58:32 UTC 2025 - David Mulder <david.mulder@suse.com>
+
+- Resolve mode mismatch with Chromium package.
+
+-------------------------------------------------------------------
+Thu Nov 20 20:19:52 UTC 2025 - David Mulder <david.mulder@suse.com>
+
+- Update to version 2.0.4+git.2.5d26a19:
+  * deps(rust): bump the all-cargo-updates group with 13 updates
+  * Version 2.0.4
+  * Update kanidm_build_profiles mask version
+  * Utilize cargo vet from main
+  * Add policies cache patch via systemd-tmpfiles
+
+-------------------------------------------------------------------
+Thu Nov 20 17:39:46 UTC 2025 - David Mulder <david.mulder@suse.com>
+
+- Update to version 2.0.3+git.4.4f6e025:
+  * Fix man page comments about change idmap_range
+  * Stub picky-krb for osc build
+  * Stub a kanidm_build_profiles which builds in osc
+  * Ensure nss cache is created on Ubuntu/Debian
+  * Request a user token if NSS hasn't been called
+  * Version 2.0.3
+  * Add nss cache patch via systemd-tmpfiles
+  * Version 2.0.2
+  * Recommend `patch` with the pam package
+  * Fix passwordless FIDO authentication not being used when available
+  * Git workflow updates for stable-2.x
+  * Only warn on Intune failure
+  * Version 2.0.1
+  * Force o365 desktop files to always rebuild
+  * Always rebuild the o365 apps
+  * Add restart on-failure to systemd services
+  * Clarify `domain` SHOULD match login domain
+  * Remove warning about `domain` himmelblau.conf opt
+  * Pseudo eliminate multi-tenant and domains section
+  * Revert "Fix Hello PIN lookup when an alias domain"
+  * Comment out `KbdInteractiveAuthentication on` in sshd conf
+  * Check the nxset sooner, to avoid unwanted errors
+  * Recommend oddjob_mkhomedir with authselect
+  * Pin libhimmelblau to 0.7.x
+  * Deprecate Fedora 41
+  * Cargo vet
+  * deps(rust): bump the all-cargo-updates group with 11 updates
+  * Bump github/codeql-action from 4.30.8 to 4.31.2
+  * Bump cachix/install-nix-action from 31.8.1 to 31.8.2
+  * Bump actions/upload-artifact from 4.6.2 to 5.0.0
+  * cargo clippy and rebase fix
+  * fixup! add extra debug output to NotFound error code
+  * force error output to show up in CI logs
+  * wrap repeated sources of IdpError::NotFound in helper functions
+  * add extra debug output to NotFound error code
+  * use direnv for loading the nix devshell
+  * We should still encourage mapping by name
+  * Add support for Fedora 43
+  * Provide a offline 'breakglass' mode
+  * cargo clippy
+  * Add warning about incorrect nsswitch configuration
+  * Distinguish between online and offline token fail
+  * Ensure user token uses original name
+  * Fix alias domain in auth result causing failure
+  * Resolve cargo clippy warnings
+  * Only map on cn name for the primary domain
+  * Install systemd in build scripts for gen service
+  * Fix systemd version parsing
+  * cargo vet
+  * Update libhimmelblau to 0.7.19
+  * Resolve SELinux build failures in nightly (part 2)
+  * Rocky container image updates were failing
+  * Warn instead of error when no idmap_range specified
+  * deps(rust): bump the all-cargo-updates group across 1 directory with 7 updates
+  * Trim whitespace from local group names
+  * Fix borrowing error
+  * Fix reference to local_sudo_group in condition
+  * Only run sudo_groups if local_groups does not contain local_sudo_group
+  * Leave SELinux in permissive mode for Himmelblau
+  * Resolve SELinux build failures in nightly
+  * nix: add join_type option to nixos-module settings
+  * Build host configuration changes
+  * Ensure that hsm_pin isn't present decrypted
+  * Document Soft HSM changes to TPM bound
+  * Disable SELinux by default on NixOS
+  * sh doesn't have `source`
+  * Encrypt hsm-pin using systemd-creds
+  * Recommend uuid id mapping
+  * Improve himmelblau.conf man page formatting
+  * Implement Local User Mapping
+  * Add o365 dependency for jq
+  * Add selinux rules for gdm login
+  * Narrow the scope of selinux policy with audit2allow
+  * Generate the systemd service files
+  * Fix selinux build for SLE16
+  * Resolve SLE16 build dependency failure
+  * Fix the rawhide build
+  * Mask the sshkey-attest package
+  * Bump cachix/install-nix-action from 31.7.0 to 31.8.1
+  * cargo vet dependency updates
+  * deps(rust): bump the all-cargo-updates group across 1 directory with 13 updates
+  * Bump actions/dependency-review-action from 4.8.0 to 4.8.1
+  * Bump cachix/install-nix-action from 31.7.0 to 31.8.0
+  * Bump github/codeql-action from 3.30.5 to 4.30.8
+  * Bump ossf/scorecard-action from 2.4.2 to 2.4.3
+  * SELinux improvements
+  * Fix a typo in package gen scripts
+  * cargo fmt
+  * Permit NSS response for mapped primary fake group
+  * Fix Nix Error With Fuzz
+  * Decrease CI fuzzer setup time
+  * Document join types
+  * Support for Entra registered devices
+  * Run `cargo test` in a container
+  * Bump cachix/install-nix-action from 31.6.2 to 31.7.0
+  * cargo vet
+  * deps(rust): bump the all-cargo-updates group across 1 directory with 2 updates
+  * Bump github/codeql-action from 3.30.4 to 3.30.5
+  * Use pastey crate instead of unmaintained paste
+  * cargo vet
+  * Pin unmaintained serde_cbor dep to serde_cbor_2
+  * Resolve tower-http `cargo audit` warning
+  * Replace unmaintained fxhash with own version
+  * Resolve warning about workflow top level write permissions
+  * Remove dependabot automerge
+  * Resolve division by 0 in idmap code
+  * deps(rust): bump the all-cargo-updates group across 1 directory with 3 updates
+  * [StepSecurity] ci: Harden GitHub Actions
+  * Only idmap against initialized domains
+  * Resolve invalid init of idmap with same domain
+  * Resolve division by 0 in idmap code
+  * Add fuzzing of idmap code
+  * Add basic fuzzing of the config options
+  * cargo clippy
+  * Resolve error found by fuzzing
+  * cargo vet prune
+  * deps(rust): bump regex in the all-cargo-updates group
+  * Bump actions/dependency-review-action from 4.7.3 to 4.8.0
+  * Bump actions/checkout from 3.6.0 to 5.0.0
+  * Bump cachix/cachix-action from 14 to 16
+  * Bump ossf/scorecard-action from 2.4.0 to 2.4.2
+  * Bump cachix/install-nix-action from 25 to 31
+  * Add the OpenSSF Best Practices badge
+  * Add scorecard badge
+  * [StepSecurity] Apply security best practices
+  * Fix group static mapping
+  * Move aad-tool idmap cache clear to the idmap cmd
+  * Resolve errant "Hello key missing." messages
+  * Update flake.nix
+  * Slow the dependabot update frequency
+  * Audit dependabot updates
+  * deps(rust): bump the all-cargo-updates group across 1 directory with 11 updates
+  * feat: Add support for aarch64 on Debian-based distributions
+  * Resolve possible invalid pointer dereferences
+  * Cargo clippy
+  * Cargo fmt
+  * Avoid revealing account ids in debug log
+  * Cause doc links to open in the correct apps
+  * Permit opening multiple instances of Word/Excel
+  * Modify systray and app close behavior
+  * Don't use questionably licensed icons for o365
+  * Resolve NixOS CI failure
+  * Fix building w/out deprecated interactive feature
+  * Update himmelblau.conf.5 sudo_groups example
+  * Entra group based sudo access
+  * Audited the cargo updates
+  * deps(rust): bump the all-cargo-updates group with 6 updates
+  * Vet libhimmelblau
+  * Add `make vet` command
+  * Update deny.toml
+  * Remove incompatible licenses from deps
+  * Fix RHEL8 package signing
+  * Add SBOM generation
+  * Add an IRP checklist for security incidents
+  * Run the nixos build/release on the correct version
+  * Add crate dependency auditing on MR
+  * Add some exceptions
+  * Initialize cargo vet
+  * Remove in-tree kanidm dependencies
+  * Fix Hello PIN lookup when an alias domain
+  * Raise maximum group lookup from 100 to 999
+  * Always work with lowercase account names
+  * Modify FUNDING.yml for funding sources
+  * Remove glib dependency
+  * deps(rust): bump the all-cargo-updates group with 10 updates
+  * Add CI check for licenses
+  * Update dependabot.yml to target all stable branches
+  * Add authselect module for Rocky/Fedora
+  * Recommend packages, instead of require
+  * Add a Contributing document
+  * Add a Code of Conduct
+  * add withSelinux flag to nix build, brings SELinux binaries into the build environment.
+  * deps(rust): bump tracing-subscriber in the cargo group
+  * Don't overwrite the himmelblau.conf on rpm upgrade
+  * Add help output to the Makefile
+  * Fix building packages with docker in root mode
+  * Update to latest libhimmelblau and identity_dbus_broker
+  * Make PRT SSO cookie via broker work as well for Edge
+  * Make broker work for Edge
+  * Generate Office 365 desktop apps
+  * Update README
+  * Add `make uninstall` command
+  * Remove the deprecated tests suite
+  * Himmelblau no longer has git submodules
+  * Make install using packages
+  * Add Debian 13 packages
+  * Generate Dockerfiles automatically
+  * Add SELinux configuration
+  * Himmelblau daemon requires system tss user
+  * Add cron dependency for Intune scripts
+  * Do not mangle /usr/etc configuration files
+  * Fix building packages with docker in root mode
+  * deps(rust): bump the all-cargo-updates group with 11 updates
+  * deps(rust): bump the all-cargo-updates group with 7 updates
+  * Add SLE16 (beta) build target
+  * Automatically append to nsswitch.conf in postinst
+  * Correct the RPM postinst script syntax
+  * Fix Kerberos credential cache permissions
+  * Set file owner and group before writing its content
+  * Create SECURITY.md
+  * deps(rust): bump the all-cargo-updates group with 6 updates
+  * Rev the dev version to 2.0.0
+  * Ensure alias domains match when checking Intune device id
+  * Debian 12 doesn't support ConditionPathExists and notify-reload
+  * Write scripts policy to a readable directory
+  * Apply Intune policies right after enrollment
+  * Add more debug instrumentation
+  * Provide device_id to Intune enrollment if not cached
+  * Ensure nss cache directory is created during install
+  * Remove /var/cache/himmelblaud access from tasks daemon
+  * Resolve daemon startup absolute path warnings
+  * Delay Intune enrollment on Device Auth fail
+  * Do not leak the Intune IW service token in the logs
+
+-------------------------------------------------------------------
 Wed Nov 19 19:36:55 UTC 2025 - David Mulder <david.mulder@suse.com>
 
 - Update to version 1.4.2+git.0.52da279:
