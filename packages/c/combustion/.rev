@@ -300,4 +300,13 @@
     <comment></comment>
     <requestid>1307782</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>0485e4ab482b24ab8c17481cb63d4d4d</srcmd5>
+    <version>1.5+git3</version>
+    <time>1764173653</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.5+git3:
+  * Also order services before NetworkManager-initrd.service</comment>
+    <requestid>1318716</requestid>
+  </revision>
 </revisionlist>

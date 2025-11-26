@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 19 14:29:59 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.5+git3:
+  * Also order services before NetworkManager-initrd.service
+
+-------------------------------------------------------------------
 Mon Sep 29 12:06:09 UTC 2025 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 1.5+git2:
