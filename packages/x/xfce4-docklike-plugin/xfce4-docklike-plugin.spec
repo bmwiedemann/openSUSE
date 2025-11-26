@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-docklike-plugin
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  gettext >= 0.19.8
 BuildRequires:  meson >= 0.54.0
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cairo) >= 1.16.0
 BuildRequires:  pkgconfig(gdk-wayland-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(gdk-x11-3.0) >= 3.24.0
