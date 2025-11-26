@@ -957,4 +957,12 @@ remove old unused gtk patch</comment>
 </comment>
     <requestid>1178402</requestid>
   </revision>
+  <revision rev="136" vrev="4">
+    <srcmd5>1aeda5824ec2ea86c31114e2aec6f555</srcmd5>
+    <version>0.8.18</version>
+    <time>1764179374</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1320093</requestid>
+  </revision>
 </revisionlist>

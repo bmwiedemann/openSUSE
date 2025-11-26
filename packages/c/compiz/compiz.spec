@@ -1,7 +1,7 @@
 #
 # spec file for package compiz
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,7 +49,6 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  libtool
 BuildRequires:  libxslt-tools
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cairo) >= 1.0
 BuildRequires:  pkgconfig(cairo-xlib-xrender)
 BuildRequires:  pkgconfig(dbus-glib-1)
