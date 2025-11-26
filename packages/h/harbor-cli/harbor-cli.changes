@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Nov 26 06:22:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.0.15:
+  * fix: breaking issue (#577)
+  * fix(robot_delete): adapt robot api handler for deletion by
+    name; adapt robot delete commands for project and system to
+    allow for deletion by name (#563)
+  * build(deps): bump golang.org/x/text from 0.30.0 to 0.31.0
+    (#575)
+  * build(deps): bump golang.org/x/term from 0.36.0 to 0.37.0
+    (#574)
+  * Feat: Add scope options in labels (#560)
+  * configuration diff view for `harbor config apply` command with
+    interactive confirmation prompt (#568)
+  * build(deps): bump github.com/charmbracelet/huh from 0.7.0 to
+    0.8.0 (#561)
+  * build(deps): bump github.com/go-openapi/strfmt from 0.24.0 to
+    0.25.0 (#569)
+
+-------------------------------------------------------------------
 Wed Oct 29 05:41:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.0.14:
