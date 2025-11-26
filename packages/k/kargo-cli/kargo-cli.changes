@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Nov 26 06:22:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.8.4:
+  no CLI-related changes
+  * chore(backport release-1.8): chore(deps): bump the go-patch
+    group with 11 updates (#5398)
+  * chore(backport release-1.8): chore(deps/api): bump the go-patch
+    group in /api with 3 updates (#5397)
+  * chore(backport release-1.8): chore(deps): bump golang from
+    1.25.3-trixie to 1.25.4-trixie (#5371)
+  * chore(backport release-1.8): chore(deps): bump the go-patch
+    group with 6 updates (#5370)
+  * chore(backport release-1.8): chore(deps): bump
+    github.com/containerd/containerd from 1.7.28 to 1.7.29 (#5360)
+  * chore(backport release-1.8): fix(test): increase time duration
+    app last operation completion test (#5338)
+
+-------------------------------------------------------------------
 Tue Nov 04 09:30:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.8.3:
