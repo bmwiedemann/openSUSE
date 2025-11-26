@@ -17,7 +17,7 @@
 
 
 Name:           easyeffects
-Version:        8.0.4
+Version:        8.0.5
 Release:        0
 Summary:        Simple audio effects
 License:        GPL-3.0-or-later
