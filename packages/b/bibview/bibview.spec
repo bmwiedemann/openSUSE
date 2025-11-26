@@ -55,8 +55,8 @@ manipulated, created, and searched.
     mkdir -p %{buildroot}%{_x11data}/de/app-defaults
     install -c -m 0444 BibView.ger.ad   %{buildroot}%{_x11data}/de/app-defaults/BibView
     install -c -m 0444 BibView-color.ad %{buildroot}%{_x11data}/de/app-defaults/BibView-color
-    rm -r %{buildroot}/etc
-    rm -r %{buildroot}/usr/lib/X11
+    rm -rf %{buildroot}/etc
+    rm -rf %{buildroot}/usr/lib/X11
 
 %files
 %defattr(-,root,root,755)
