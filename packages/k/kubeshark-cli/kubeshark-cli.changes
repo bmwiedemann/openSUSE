@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Nov 26 06:47:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 52.10.0:
+  * Bump the Helm chart version to 52.10.0
+  * Bump the Helm chart version to 52.10.0
+  * Update kubeshark.co references (#1807)
+  * Migrate from `kubeshark.co` to `kubehq.com` (#1805)
+  * Adding Slack Support (#1804)
+  * Make host-network in worker daemonset configurable (#1803)
+  * Revert "Add `-save-objects-pcaps` worker command flag
+    (#1794)" (#1802)
+  * Add volume for snapshots in hub (#1801)
+  * Add `-save-objects-pcaps` worker command flag (#1794)
+  * Set default dbMaxSize to 500Mi (#1796)
+
+-------------------------------------------------------------------
 Fri Oct 03 16:13:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 52.9.0:
