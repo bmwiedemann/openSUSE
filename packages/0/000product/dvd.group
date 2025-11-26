@@ -3156,6 +3156,7 @@
     <package name="notification-daemon-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="nss-mdns" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="nss-mdns-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="nsswitch-config" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="ntfs-3g" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="ntfsprogs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="numactl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->

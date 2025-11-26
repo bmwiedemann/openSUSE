@@ -16604,7 +16604,7 @@ unsorted:
   - libtorrent-rasterbar-devel 
   - libtorrent-rasterbar-doc 
   - libtorrent-rasterbar2_0 
-  - libtorrent32 
+  - libtorrent34 
   - libtoxcore2 
   - libtpl-extensions3 
   - libtpm2-totp0 
@@ -19913,7 +19913,6 @@ unsorted:
   - nss-shared-helper-devel 
   - nss_synth 
   - nss_wrapper 
-  - nsswitch-config 
   - nst 
   - ntfs2btrfs 
   - ntfsprogs-extra 
@@ -24458,6 +24457,7 @@ unsorted:
   - python311-awx-cli 
   - python311-azure-agrifood-farming 
   - python311-azure-agrifood-nspkg 
+  - python311-azure-ai-agents 
   - python311-azure-ai-anomalydetector 
   - python311-azure-ai-contentsafety 
   - python311-azure-ai-formrecognizer 
@@ -24467,6 +24467,7 @@ unsorted:
   - python311-azure-ai-metricsadvisor 
   - python311-azure-ai-ml 
   - python311-azure-ai-nspkg 
+  - python311-azure-ai-projects 
   - python311-azure-ai-textanalytics 
   - python311-azure-ai-translation-document 
   - python311-azure-ai-translation-nspkg 
@@ -28251,6 +28252,7 @@ unsorted:
   - python312-awx-cli 
   - python312-azure-agrifood-farming 
   - python312-azure-agrifood-nspkg 
+  - python312-azure-ai-agents 
   - python312-azure-ai-anomalydetector 
   - python312-azure-ai-contentsafety 
   - python312-azure-ai-formrecognizer 
@@ -28260,6 +28262,7 @@ unsorted:
   - python312-azure-ai-metricsadvisor 
   - python312-azure-ai-ml 
   - python312-azure-ai-nspkg 
+  - python312-azure-ai-projects 
   - python312-azure-ai-textanalytics 
   - python312-azure-ai-translation-document 
   - python312-azure-ai-translation-nspkg 
@@ -32105,6 +32108,7 @@ unsorted:
   - python313-awx-cli 
   - python313-azure-agrifood-farming 
   - python313-azure-agrifood-nspkg 
+  - python313-azure-ai-agents 
   - python313-azure-ai-anomalydetector 
   - python313-azure-ai-contentsafety 
   - python313-azure-ai-formrecognizer 
@@ -32114,6 +32118,7 @@ unsorted:
   - python313-azure-ai-metricsadvisor 
   - python313-azure-ai-ml 
   - python313-azure-ai-nspkg 
+  - python313-azure-ai-projects 
   - python313-azure-ai-textanalytics 
   - python313-azure-ai-translation-document 
   - python313-azure-ai-translation-nspkg 
