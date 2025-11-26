@@ -1,7 +1,7 @@
 #
 # spec file for package hyperfine
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           hyperfine
-Version:        1.19.0
+Version:        1.20.0
 Release:        0
 Summary:        Command-line benchmarking tool
 License:        Apache-2.0 OR MIT

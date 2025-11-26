@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov 18 13:09:35 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.20.0
+  Features
+  * Add --reference-name option to give a meaningful name to the
+    reference command.
+  * The --ignore-failure option now supports a comma-separated list
+    of exit codes to ignore (e.g., --ignore-failure=1,2).
+  * Python scripts: Add --time-unit option to advanced_statistics.py
+  * Python scripts: Add new plot_benchmarks.py script for plotting
+    collections of benchmarks.
+  Bugfixes
+  * Fix bug where naming individual commands with parameter scan
+    was not working correctly.
+
+-------------------------------------------------------------------
 Thu Nov 14 04:38:38 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Simplify specfile and switch from deprecated setup to autosetup
