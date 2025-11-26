@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-terminal
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2012 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,11 +26,11 @@ License:        GPL-2.0-or-later
 Group:          System/X11/Terminals
 URL:            https://docs.xfce.org/apps/terminal/start
 Source0:        https://archive.xfce.org/src/apps/xfce4-terminal/1.1/%{name}-%{version}.tar.xz
+BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gettext >= 0.19.8
 BuildRequires:  meson >= 0.54.0
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 %if 0%{?suse_version} < 1600
 BuildRequires:  utempter-devel
 %endif
