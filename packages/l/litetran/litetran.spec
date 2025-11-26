@@ -1,7 +1,7 @@
 #
 # spec file for package litetran
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,6 @@ Patch0:         %{name}-fix-qt-5.11.patch
 BuildRequires:  cmake
 BuildRequires:  libqt5-linguist-devel
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Gui) >= 5.2
 BuildRequires:  pkgconfig(Qt5Multimedia) >= 5.2
 BuildRequires:  pkgconfig(Qt5Network) >= 5.2
@@ -50,7 +49,7 @@ LiteTran is a GUI for text translation (like Yandex.Translate).
 %autosetup -p1
 
 # rpmlint: executable-docs, script-without-shebang
-chmod 644 LICENSE.txt README.md RELNOTES.txt 
+chmod 644 LICENSE.txt README.md RELNOTES.txt
 
 %build
 %cmake
