@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov 25 14:24:05 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Update to version 1.2.1:
+  * Fix localization
+- Update to version 1.2.0:
+  * Add Crop operation
+  * Add preview to Ratote and Pages layout operations
+  * Remove Qt 5 support
+- Update BuildRequires to drop Qt5 and add Qt6 support.
+- Remove support for update-desktop-files, it's deprecated.
+- Remove obsolete patches:
+  * fix-missing-definitions.patch
+  * stop_using_obsolete_standards.patch
+
+-------------------------------------------------------------------
 Sat Oct  7 07:24:02 UTC 2023 - munix9@googlemail.com
 
 - Add patch fix-missing-definitions.patch: Add missing definitions

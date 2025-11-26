@@ -1,7 +1,7 @@
 #
 # spec file for package pdfmixtool
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,28 +17,22 @@
 
 
 Name:           pdfmixtool
-Version:        1.1.1
+Version:        1.2.1
 Release:        0
 Summary:        Split, Merge, Rotate and Mix PDF Files
 License:        GPL-3.0-only
 Group:          Productivity/Publishing/PDF
 URL:            https://gitlab.com/scarpetta/pdfmixtool/
 Source0:        https://gitlab.com/scarpetta/pdfmixtool/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
-Patch1:         stop_using_obsolete_standards.patch
-# PATCH-FIX-OPENSUSE fix-missing-definitions.patch munix9@googlemail.com -- Add missing definitions for Factory/TW
-Patch2:         fix-missing-definitions.patch
 BuildRequires:  cmake
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6SvgWidgets)
+BuildRequires:  cmake(Qt6Xml)
 BuildRequires:  pkgconfig(Magick++)
 BuildRequires:  pkgconfig(libqpdf)
+BuildRequires:  pkgconfig(poppler-qt6)
 
 %description
 An application to split, merge, rotate, mix and create multipage PDF files.
@@ -52,7 +46,6 @@ An application to split, merge, rotate, mix and create multipage PDF files.
 
 %install
 %cmake_install
-%suse_update_desktop_file -r -G "PDF Tools" eu.scarpetta.PDFMixTool Qt Office Publishing Graphics Viewer
 
 %files
 %license LICENSE
