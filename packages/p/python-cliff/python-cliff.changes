@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 26 08:49:45 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.12.0
+  * typing: Clarify behavior of _run_after_hooks method
+  * Remove pkg_resources remnants
+  * ruff: Enable E5 rules
+  * typing: Update for latest docutils type hints
+
+-------------------------------------------------------------------
 Tue Oct 21 08:23:40 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 4.11.0
