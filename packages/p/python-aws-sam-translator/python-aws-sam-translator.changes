@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Nov 26 09:37:26 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.103.0
+  * feat: add support for IpAddressType by @br0connor in (#3840)
+- from version 1.102.0
+  * chore: update deprecated managed policy by @reedham-aws in (#3818)
+  * fix: add Enabled to MSK model. Use this property for MSK events
+    in integ tests by @valerena in (#3822)
+  * chore(schema): update by @github-actions[bot] in (#3823)
+  * chore(deps): bump actions/setup-python from 5 to 6
+    by @dependabot[bot] in (#3813)
+  * Fix(Intrinsic Resolver): should ignore CFN placeholder
+    in parameter by @roger-zhangg in (#3824)
+  * Merge main to develop by @roger-zhangg in (#3826)
+  * docs: update contributing guide to include ai usage
+    by @reedham-aws in (#3834)
+  * chore(schema): update by @github-actions[bot] in (#3836)
+  * test: update integ tests to nodejs22.x by @valerena in (#3837)
+  * test: ignore Boto3 deprecation warning in Python3.9
+    by @valerena in (#3839)
+
+-------------------------------------------------------------------
 Wed Oct 29 09:53:25 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.101.0
