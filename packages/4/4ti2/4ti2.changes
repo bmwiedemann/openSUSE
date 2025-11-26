@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 26 08:45:30 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.6.14
+  * Fix timer-related code for mingw64
+
+-------------------------------------------------------------------
 Sun Jul 20 13:05:39 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
-- Update to release 6.13
+- Update to release 1.6.13
   * zsolve: remove secret 'maxnorm == 2' option handling
 
 -------------------------------------------------------------------
