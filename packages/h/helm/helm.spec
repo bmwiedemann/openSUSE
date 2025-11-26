@@ -16,10 +16,8 @@
 #
 
 
-%define goipath helm.sh/helm/v3
-%define git_dirty clean
 Name:           helm
-Version:        3.19.2
+Version:        4.0.1
 Release:        0
 Summary:        The Kubernetes Package Manager
 License:        Apache-2.0
@@ -27,15 +25,14 @@ Group:          Development/Languages/Other
 URL:            https://github.com/helm/helm
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  golang-packaging
 BuildRequires:  zsh
 %if 0%{?suse_version} == 1600
 # go is not available on Framework one for x86
 ExcludeArch:    %ix86
 %endif
-BuildRequires:  golang(API) = 1.24
-%{go_provides}
+BuildRequires:  golang(API) = 1.25
 
 %description
 Helm is a tool for managing Kubernetes charts. Charts are packages of
@@ -78,25 +75,41 @@ Fish command line completion support for %{name}.
 %autosetup -p1 -a1
 
 %build
-%goprep %{goipath}
-export K8S_MINOR=$(grep k8s.io/client-go go.mod | cut -d. -f3)
-export GO111MODULE=on
+export K8S_MODULES_MAJOR_VER=1
+export K8S_MODULES_MINOR_VER=$(grep k8s.io/client-go go.mod | cut -d. -f3)
+
+echo "K8S_MODULES_MAJOR_VER is set to $K8S_MODULES_MAJOR_VER"
+echo "K8S_MODULES_MINOR_VER is set to $K8S_MODULES_MINOR_VER"
+
 %ifnarch %ix86 s390x riscv64
 export CGO_ENABLED=0
 %endif
-%gobuild -trimpath -tags '' -mod vendor -buildmode pie -ldflags \
-    "-X %{goipath}/internal/version.version=v%{version} \
-     -X %{goipath}/internal/version.gitCommit=$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{name}.obsinfo) \
-     -X %{goipath}/pkg/lint/rules.k8sVersionMajor=1 \
-     -X %{goipath}/pkg/lint/rules.k8sVersionMinor=$K8S_MINOR \
-     -X %{goipath}/pkg/chartutil.k8sVersionMajor=1 \
-     -X %{goipath}/pkg/chartutil.k8sVersionMinor=$K8S_MINOR \
-     -X %{goipath}/internal/version.gitTreeState=%{git_dirty}" cmd/helm
+go build \
+  -trimpath \
+  -tags '' \
+  -mod vendor \
+  -buildmode pie \
+  -ldflags \
+    "-X helm.sh/helm/v4/internal/version.version=v%{version} \
+     -X helm.sh/helm/v4/internal/version.gitCommit=$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{name}.obsinfo) \
+     -X helm.sh/helm/v4/internal/version.gitTreeState=clean \
+     -X helm.sh/helm/v4/internal/version.kubeClientVersionMajor=${K8S_MODULES_MAJOR_VER} \
+     -X helm.sh/helm/v4/internal/version.kubeClientVersionMinor=${K8S_MODULES_MINOR_VER} \
+     -X helm.sh/helm/v4/pkg/chart/common.k8sVersionMajor=${K8S_MODULES_MAJOR_VER} \
+     -X helm.sh/helm/v4/pkg/chart/common.k8sVersionMinor=${K8S_MODULES_MINOR_VER} \
+     -X helm.sh/helm/v4/pkg/chart/v2/lint/rules.k8sVersionMajor=${K8S_MODULES_MAJOR_VER} \
+     -X helm.sh/helm/v4/pkg/chart/v2/lint/rules.k8sVersionMinor=${K8S_MODULES_MINOR_VER} \
+     -X helm.sh/helm/v4/pkg/chartutil.k8sVersionMajor=${K8S_MODULES_MAJOR_VER} \
+     -X helm.sh/helm/v4/pkg/chartutil.k8sVersionMinor=${K8S_MODULES_MINOR_VER} \
+     -X helm.sh/helm/v4/pkg/internal/v3/lint/rules.k8sVersionMajor=${K8S_MODULES_MAJOR_VER} \
+     -X helm.sh/helm/v4/pkg/internal/v3/lint/rules.k8sVersionMinor=${K8S_MODULES_MINOR_VER} \
+     -X helm.sh/helm/v4/pkg/lint/rules.k8sVersionMajor=${K8S_MODULES_MAJOR_VER} \
+     -X helm.sh/helm/v4/pkg/lint/rules.k8sVersionMinor=${K8S_MODULES_MINOR_VER}" \
+  -o bin/%{name} ./cmd/helm
 
 %install
-export GO111MODULE=on
-export CGO_ENABLED=0
-%goinstall
+install -D -m 0755 bin/%{name} %{buildroot}/%{_bindir}/%{name}
+
 mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions
 %{buildroot}/%{_bindir}/helm completion bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
 mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions
@@ -105,15 +118,17 @@ mkdir -p %{buildroot}%{_datadir}/fish/vendor_completions.d
 %{buildroot}/%{_bindir}/helm completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
 
 %check
-# requires network
-rm -v pkg/plugin/installer/*installer_test.go
-rm -v pkg/engine/engine_test.go
-# skip flaky tests
-rm -v cmd/helm/dependency_build_test.go
-rm -v cmd/helm/dependency_update_test.go
-rm -v cmd/helm/pull_test.go
-rm -v cmd/helm/registry_login_test.go
-GO111MODULE=on go test -p 2 ./...
+rm -fv internal/plugin/installer/base_test.go
+rm -fv internal/plugin/installer/http_installer_test.go
+rm -fv internal/plugin/installer/installer_test.go
+rm -fv internal/plugin/installer/vcs_installer_test.go
+rm -fv internal/plugin/runtime_extismv1_test.go
+rm -fv pkg/downloader/cache_test.go
+rm -fv pkg/downloader/chart_downloader_test.go
+rm -fv pkg/downloader/manager_test.go
+rm -fv pkg/engine/engine_test.go
+
+go test -p 2 ./...
 
 %files
 %doc README.md

@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Tue Nov 25 07:41:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.0.1:
+  * Copy adopted resource info 12500dd (George Jenkins)
+  * fixup test 1cf3841 (George Jenkins)
+  * logs 32e2d08 (George Jenkins)
+  * fix 4b6472f (George Jenkins)
+  * fix: Use server-side apply for object create during update
+    9dfe3b3 (George Jenkins)
+  * Fix kube client logging 861adc2 (Matt Farina)
+  * update tests b2f7872 (yxxhero)
+  * Refactor environment variable expansion in PrepareCommands and
+    update tests 77f97a1 (yxxhero)
+  * Fix syntax errors in the document a156195 (Fish-pro)
+  * fix: correct LDFLAGS path for default Kubernetes version
+    2c0dcda (Benoit Tigeot)
+
+-------------------------------------------------------------------
+Fri Nov 14 08:16:41 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.0.0:
+  https://github.com/helm/helm/releases/tag/v4.0.0
+  The Helm Team is proud to announce the first stable release of
+  Helm 4.
+  For full release notes, please see:
+  https://helm.sh/docs/overview/
+  https://helm.sh/docs/changelog/
+  * New Features
+    Helm 4 has numerous new features, but a few deserve
+    highlighting here:
+    - Redesigned plugin system that supports Web Assembly based
+      plugins
+    - Post-renderers are now plugins
+    - Server side apply is now supported
+    - Improved resource watching, to support waiting, based on
+      kstatus
+    - Local Content-based caching (e.g. for charts)
+    - Logging via slog enabling SDK logging to integrate with
+      modern loggers
+    - Reproducible builds of chart archives
+    - Updated SDK API including support for multiple chart API
+      versions (new experimental v3 chart API version coming soon)
+  * Compatibility with Helm v3
+    Helm v4 is a major version with backward incompatible changes
+    including to the flags and output of the Helm CLI and to the
+    SDK.
+    Please evaluate the changes to your workflows. The changes are
+    not as extensive as those from Helm v2 to v3, with the goal
+    that the majority of workflows remain compatible between Helm
+    v3 and v4.
+    Helm charts apiVersion v2 (majority of today's charts) will
+    continue to be supported in Helm v4. Existing charts should
+    continue to install, upgrade, and otherwise work. Please test
+    the installation and upgrade of charts to ensure it works as
+    expected. Changes (e.g., server side apply) may impact the
+    experience.
+  * Breaking Changes
+    - Post-renderers implemented as plugins
+      Post-renderers are implemented as plugins. With this change,
+      it is no longer possible to pass an executable directly to
+      helm render --post-renderer, but a plugin name must be
+      passed. This might require updates to existing any
+      post-renderer workflows.
+
+-------------------------------------------------------------------
 Wed Nov 12 15:01:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.19.2:
