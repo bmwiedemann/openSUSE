@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 25 15:27:34 UTC 2025 - schubi@suse.com
+
+- Update to version 0.8.1:
+  * Set default parameter in econf_get<type>ValueDef to "const"
+
+-------------------------------------------------------------------
 Mon Oct 20 13:44:04 UTC 2025 - schubi@suse.com
 
 - Update to version 0.8.0:
