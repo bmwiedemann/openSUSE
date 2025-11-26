@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-blessed
-Version:        1.24.0
+Version:        1.25.0
 Release:        0
 Summary:        Wrapper around terminal styling, screen positioning, and keyboard input
 License:        MIT

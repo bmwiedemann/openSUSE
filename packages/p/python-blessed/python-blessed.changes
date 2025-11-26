@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 26 08:54:06 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.25
+  * bugfix: The fix in 1.20 got reverted in release in 1.23 by PR #306,
+    this release re-applies the fix, PR #326.
+
+-------------------------------------------------------------------
 Mon Nov 17 15:48:04 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.24
