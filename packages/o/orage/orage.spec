@@ -28,7 +28,6 @@ Source1:        README.SUSE
 BuildRequires:  fdupes
 BuildRequires:  gettext >= 0.19.8
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gio-2.0) >= 2.58.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.58.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
