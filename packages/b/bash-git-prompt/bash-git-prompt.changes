@@ -1,8 +1,8 @@
 -------------------------------------------------------------------
 Mon Sep 22 13:59:46 UTC 2025 - Matthias Gerstner <matthias.gerstner@suse.com>
 
-- add use-safe-tempfile.diff: this fixes bsc#1247489, an insecure predictable
-  /tmp file usage in bash-git-prompt.
+- add use-safe-tempfile.diff: this fixes bsc#1247489 CVE-2025-61659, an
+  insecure predictable /tmp file usage in bash-git-prompt.
 
 -------------------------------------------------------------------
 Sun May 10 08:51:18 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
