@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Wed Nov 19 10:30:09 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Version 3.6.2
+  * Bug fixes
+    * k8s/ingress
+      - Deprecate Kubernetes Ingress NGINX provider experimental flag
+
+- Version 3.6.1
+  * Bug fixes
+    * docker
+      - Auto-negotiate Docker API Version
+    * server
+      - Fix multi-layer routing with models
+    * udp
+      - Revert "Avoid allocations in readLoop by using sync.Pool"
+    * webui
+      - Fix blocked navigation on Safari 
+      - Restore remote Upgrade to Hub button web component
+
+- Version 3.6.0
+  * Enhancements:
+    * acme
+      - Add new certificatesresolvers options
+    * consul,consulcatalog,nomad
+      - Log provider namespace during startup
+    * docker
+      - Allow discovering non-running Docker containers
+    * ecs
+      - AWS ECS IPv6 Support
+    * file,k8s/crd,service
+      - Add least time load balancing strategy
+    * healthcheck
+      - Add passive health checks
+    * healthcheck,tcp
+      - Add TCP Healthcheck
+    * k8s
+      - Add Knative provider
+    * k8s/crd
+      - Add highest random weight in Kubernetes CRD
+    * k8s/ingress
+      - Allow publishing services with type ExternalName
+    * middleware,authentication
+      - Add warning when maxBodySize is not set
+    * middleware,server
+      - Multi-layer routing
+    * plugins
+      - Support syscall
+    * server
+      - Implement HTTP2 HPACK table size options
+    * service
+      - Add HighestRandomWeight load balancing algorithm
+    * service,udp
+      - Avoid allocations in readLoop by using sync.Pool
+    * webui
+      - Add Traefik Hub demo in dashboard
+      - Reduce vertical padding in dashboard table rows for more compact layout
+   * Updates
+     - Bump sigs.k8s.io/gateway-api to v1.4.0
+  * Bug fixes:
+    * server
+      - Make the aggregator compute provider namespace for router's parentRefs
+
+-------------------------------------------------------------------
 Thu Nov 13 15:16:12 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Updated logrotate config ownership
