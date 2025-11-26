@@ -39,4 +39,12 @@
     <comment>Update to the new upstream release 3.9</comment>
     <requestid>1316984</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d4406cd724b062f9656664184a24c2c0</srcmd5>
+    <version>3.9.1</version>
+    <time>1764173755</time>
+    <user>anag_factory</user>
+    <comment>Update to the new upstream release 3.9.1</comment>
+    <requestid>1320064</requestid>
+  </revision>
 </revisionlist>

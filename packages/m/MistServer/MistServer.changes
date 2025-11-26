@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Nov 25 20:08:12 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
+
+- Update to thr new upstream release 3.9.1
+  * Feature: Added a track-ID-based stream selector
+  * Feature: Added new "logout" API call, to force a clear of the authentication state of an API connection
+  * Improvement: Track descriptions in JSON now include (effective) frames per second, besides the existing (effective) frames per kilo-second
+  * Improvement: Stream health information now includes the track index and id, as well as (effective) frames per second
+  * Improvement: Added shared memory statistics in capabilities API response
+  * Improvement: The "Simulated live" option, which was accidentally exposed in user-facing interfaces some releases ago, is now correctly hidden and only used internally by the playlist input as intended (it has never functioned for what users would expect it to do, but the playlist input does)
+  * Bugfix: Fixed a small memory leak when using JWKs loaded from a URL
+  * Bugfix: Comms-based shared memory pages can now be correctly printed by MistUtilRAX
+  * Bugfix: Fixed regression in DTSC output that caused a minor memory leak when connections do not have enough bandwidth
+  * Bugfix: Internal UDP API no longer responds to requests that come from its own listening port, no longer causing a 100% CPU usage loop in the API handler
+  * Bugfix: Fixed missing memory statistics in capabilities API responses
+  * Bugfix: Custom push IDs with underscores in their name now display correctly in the web interface
+  * Bugfix: Effective (kilo)frames per second statistics are now exact and stable (0.01 Hz precision under 65 FPS, 0.1 Hz precision between 65-500 FPS, 1 Hz precision between 500-1000 FPS)
+  * Bugfix: Stream health statistics for raw tracks are now functional
+  * Bugfix: Fixed push statistics accidentally picking up non-push SRT connections
+
+-------------------------------------------------------------------
 Sat Nov  8 12:51:54 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
 
 - Update to the new upstream release 3.9

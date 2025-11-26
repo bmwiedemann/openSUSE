@@ -17,7 +17,7 @@
 
 
 Name:           MistServer
-Version:        3.9
+Version:        3.9.1
 Release:        0
 Summary:        Internet streaming media toolkit
 License:        Unlicense
