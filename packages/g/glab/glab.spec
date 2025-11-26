@@ -18,7 +18,7 @@
 
 
 Name:           glab
-Version:        1.77.0
+Version:        1.78.3
 Release:        0
 Summary:        A GitLab command line tool
 License:        MIT
@@ -30,10 +30,10 @@ Source1:        vendor.tar.gz
 Patch0:         glab-disable_update_check.patch
 %if 0%{?fedora_version} || 0%{?rhel_version} || 0%{?centos_version} || 0%{?almalinux_version} || 0%{?rocky_version}
 BuildRequires:  git
-BuildRequires:  golang >= 1.25.0
+BuildRequires:  golang >= 1.25.4
 %else
 BuildRequires:  git-core
-BuildRequires:  go1.25 >= 1.25.3
+BuildRequires:  go1.25 >= 1.25.4
 BuildRequires:  golang-packaging
 %endif
 BuildRequires:  bash-completion
