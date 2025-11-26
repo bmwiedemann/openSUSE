@@ -1,0 +1,179 @@
+-------------------------------------------------------------------
+Fri Jul  4 10:48:06 UTC 2025 - ecsos <ecsos@opensuse.org> - 0.23.1
+
+- Update to 0.23.1
+  - Fix exception in Candidate::changeAddress #1420
+  - Prevent dangling pointer warning with Visual Studio code analysis in #1421
+- Changes from 0.23.0
+  - Add H265RtpDepacketizer in #1134
+  - libjuice: cmake find does not use correct names on imported target in #1297
+  - typo fix: SHA-384 in #1315
+  - Add createOffer() and createAnswer() in #1320
+  - fix: constrain DTLS cipher list with OpenSSL in #1335
+  - Add sendFrame() and refactor packetization in #1265
+  - Add Track::sendFrame byte* overload for consistency in #1359
+  - feat: add listener for unhandled STUN requests with ICE UDP mux in #1211
+  - Fix missing send lock on poll out event in TCP transport in #1361
+  - Fix the vector issue in AV1 fragment function in #1364
+  - Fix not setting rtp config for all packetizers in #1370
+  - add zero byte msgs by in #1369
+  - Update plog to build with CMake 4 in #1374
+  - Add G722 codec and packetizer in #1373
+  - Fix TCP mutex deadlock in #1379
+  - call resetcallbacks only after triggerClosed in #1384
+  - Support dependency descriptor and two-byte header for RTP header extension in #1127
+  - Bump tokio from 1.33.0 to 1.38.2 in /examples/signaling-server-rust in #1365
+  - Fix includes in dependencydescriptor.hpp in #1400
+  - Bumped checkout action to v4 in #1397
+  - Fix socket not getting closed in TcpTransport in #1401
+  - Fix X509 certificate version with OpenSSL in #1406
+  - ci: Install latest OpenSSL via chocolatey on Windows in #1407
+  - X509_VERSION_1 is not defined for OpenSSL<V3 in #1411
+  - Rewrite H264 and H265 RTP depacketization in #1396
+  - CMake: Fix deprecation warning in examples in #1412
+- Changes from 0.22.6
+  - Fix possible crash on program exit with libnice in #1345
+  - Fix double mutex lock with MbedTLS in #1351
+  - Fix OpenSSL directory in MacOS workflow in #1352
+- Changes from 0.22.5
+  - Typo fix: SHA-384 in #1315
+  - Update libjuice to v1.5.8
+- Changes from 0.22.4
+  - Typo fix: SHA-384 in #1315
+  - Update libjuice to v1.5.8
+- Changes from 0.22.3
+  - CMake: Add installed deps to export set in #1287
+  - Fix lock order inversion in TcpTransport in #1294
+  - Fix possible race condition at exit with OpenSSL in #1300
+  - libjuice: cmake find does not use correct names on imported target in #1297
+- Changes from 0.22.2
+  - Fix crash in negotiationNeeded() when track is destroyed in #1282
+- Changes from 0.22.1
+  - CMake: Prevent installing static deps when building shared library in #1278
+  - Fix missing algorithm header in av1rtppacketizer.cpp in #1280
+  - Update libjuice to v1.5.7: Fix race condition potentially resulting in referencing freed registry
+- Changes from 0.22.0
+  - Preserve payload types order in description in #1168
+  - Add option to disable fingerprint validation in #1171
+  - Add support for loading WebSocket certificate from PEM string in #1177
+  - Add support for setting certificate on PeerConnection in #1170
+  - CMake enhancements in #1184
+  - Remove checking remote description has different ICE credentials in #1172
+  - Migrate session-level attributes to media-level in #1194
+  - Change conflicting names of capi and non capi copy paste examples in #1196
+  - Add TLS certificate chain support with OpenSSL in #1195
+  - Enhance application-only SDP generation in #1199
+  - Add a media handler to respond to remb bitrate in #1185
+  - feat: pass custom ICE ufrag and pwd as local description init in #1207
+  - feat: add remoteFingerprints method to PeerConnection in #1206
+  - Add proper synchronization to remote fingerprint in #1212
+  - Ignore TURN servers with transport TCP or TLS with libjuice in #1222
+  - Disable the version.h update by default in #1231
+  - Properly implement the renegotiation needed mechanism in #1237
+  - Fix SctpTransport::Instances leak in #1245
+  - Prevent poll service failure with WSAENOTSOCK on Windows by @paullouisageneau in #1254
+  - Reword send exceptions for clarity in #1264
+  - Enable ICE consent freshness with libnice in #1267
+  - Fix race condition on WebSocket disconnect in #1266
+  - CMake: Comply with BUILD_SHARED_LIBS option in #1274
+  - Add limit for DTLS transport incoming queue in #1275
+  - Catch uncaught exceptions from incoming media handler chain in #1276
+  - Update libjuice to v1.5.6
+
+-------------------------------------------------------------------
+Sat Jul 13 11:10:43 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.21.2
+  - Fix uninitialized playout delay fields in RtpPacketizationConfig in #1217
+  - Fix missing notify on queue limit preventing thread from waking up in #1221
+- Changes from 0.21.1
+  - Fix multiple NAL units handling in H264RtpDepacketizer in #1167
+  - Prevent TcpTransport initialization errors from stopping TcpServer in #1175
+  - Reduce per-channel receive queue limit to 1024 in #1179
+  - Fix importing certificate from string with Mbed TLS in #1180
+  - Fix missing algorithm header in h264rtpdepacketizer.cpp in #1183
+  - Update libjuice to v1.4.2: If socket allocation fails try again without IPv6
+
+-------------------------------------------------------------------
+Tue May  7 10:49:47 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.21.0
+  - Add version macros in #1112
+  - Add H264RtpDepacketizer in #1082
+  - Add OpusRtpDepacketizer in #1123
+  - Bump mio from 0.8.8 to 0.8.11 in /examples/signaling-server-rust in #1126
+  - Bump es5-ext from 0.10.53 to 0.10.63 in /examples/signaling-server-nodejs in #1119
+  - media-receiver example: Add save to file pipe & requirements in #1136
+  - Fix H264RtpDepacketizer to handle empty payload RTP packet in #1140
+  - Fix misaligned dereference in H264 and H265 packetizers in #1157
+  - Include payloadType in FrameInfo in #1156
+  - Add playout delay extension support in #1152
+  - H264RtpDepacketizer: De-packetize access units rather than individual NALUs in #1135
+  - Add PacingHandler in #1153
+  - Add PeerConnection::setConfiguration() method in #920
+
+-------------------------------------------------------------------
+Tue May  7 10:13:36 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.20.3
+  - Fix crash in IceTransport::TimeoutCallback with libnice in #1103
+  - Disable TLS 1.3 with Mbed TLS in #1148
+  - Change deprecated OpenSSL version-flexible TLS method in #1149
+  - Fix MbedTLS usage bugs and allow cmake to use imported mbedtls library in #1154
+
+-------------------------------------------------------------------
+Wed Mar 13 00:18:26 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.20.2
+  - Fix track creation synchronizationin #1109
+  - Fix NACK messages corruptionin #1118
+  - Fix iterator past end of vectorin #1128
+  - Fix rtcSetSignalingStateChangeCallback reset#1129
+- Changes from 0.20.1
+  - Fix compatibility with old system usrsctp v0.9.5.0 in #1099
+- Changes from 0.20.0
+  - Allow setting CA certificate during TLS connection in #1009
+  - Implement missing methods of RtcpReportBlock in #1013
+  - Add a media handler to respond to intra frame requests in #999
+  - Add PLI handler to C API in #1019
+  - Add track and user pointer to PLI handler callback in C API in #1021
+  - Refactor media handlers in #929
+  - Rename Description::addAacCodec() to addAACCodec for consistency in #1022
+  - Set SCTP zero checksum in #1015
+  - Fix segfault caused by RtcpReceivingSession in #1027
+  - Correct NTP of Sender Report in #1028
+  - Refactor Data Channel reliability API in #1031
+  - Forward RTP/RTCP messages unconditionally if there is only one track in #1023
+  - Fix the target location of the FU header pointer in #1037
+  - Access mbedtls private member via a portable macro in #1040
+  - Set SNI for MbedTLS in #1041
+  - Improve example command-line help in #1049
+  - Use caCertificatePemFile in OpenSSL backend in #1047
+  - WebSocket: allow clients to provide a TLS certificate in #1062
+  - Fix RtcpReportBlock::setPacketsLost() in #1069
+  - Add maxMessageSize to Websocket configuration in #1086
+  - Support all Certificate Fingerprint Algorithms in #1077
+  - Configure datachannel target_properties for APPLE in #1091
+  - Enforce WebSocket max message size at reception in #1094
+  - Move operator<< to rtc namespace in #1096
+  - Unmap WebSocket remote IPv4-mapped IPv6 addresses in #1097
+  - Add RtcpReceivingSession support to C API in #1029
+  - libjuice v1.3.4: Fix misalignment issue during STUN data reading
+- Changes from 0.19.5
+  - Add #include to fix building with gcc 14 in #1055
+  - Ensure rtpExtHeaderSize is a multiple of 4 in #1061
+  - H265NalUnitFragment: Mask nuhTempIdPlus1 correctly in #1073
+  - Use prime256v1 for EVP_EC_gen instead of P-256 in #1075
+  - Fix media description m-line parsing in #1081
+- Changes from 0.19.4
+  - Add virtual destructor to MediaHandler in #1025
+  - Fix key generation check for legacy OpenSSL in #1042
+  - Correct NTP of Sender Report in #1028
+  - Fix the target location of the FU header pointer in #1037
+  - Access MbedTLS private member via a portable macro in #1040
+  - Set SNI for MbedTLS in #1041
+
+-------------------------------------------------------------------
+Sun Nov 12 13:19:36 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Initial version 0.19.3

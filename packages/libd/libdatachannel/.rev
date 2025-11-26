@@ -1,0 +1,22 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a0151ae165258c4af9394ddee7acba68</srcmd5>
+    <version>0.23.1</version>
+    <time>1764179369</time>
+    <user>anag_factory</user>
+    <comment>Submitting the 'libdatachannel' package, currently sourced from 'devel:libraries:c_c++', to the target project.
+
+**Reasoning for Submission:**
+
+1.  **Critical Dependency for OBS Studio:** The 'libdatachannel' library is an essential and required dependency for the native **WebRTC support (WHIP/WHEP)** introduced in **OBS Studio 30.0** and subsequent versions. Its inclusion is vital for enabling low-latency streaming features.
+
+2.  **Addressing Build Requirements:** This package resolves the crucial build dependency: **`cmake(LibDataChannel) &gt;= 0.20.0`**. It is frequently needed by packagers who compile OBS Studio and other WebRTC applications from source, ensuring successful compilation.
+
+3.  **Architectural Choice:** The OBS Project specifically chose 'libdatachannel' over Google's 'libwebrtc' due to its **significantly smaller size**, **minimal dependencies**, and **smoother integration with the CMake build system** used across openSUSE projects.
+
+4.  **Standardization:** Including this package centrally helps to standardize the availability of a modern, efficient WebRTC dependency within the openSUSE ecosystem.
+
+**Goal:** Ensure that users and packagers have a reliable, integrated source for the 'libdatachannel' library required by modern WebRTC applications, especially the current stable versions of OBS Studio.</comment>
+    <requestid>1313910</requestid>
+  </revision>
+</revisionlist>
