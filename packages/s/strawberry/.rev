@@ -1719,4 +1719,18 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>1313685</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>1d240135d0bde9275bc1c83e2acd7a97</srcmd5>
+    <version>1.2.15</version>
+    <time>1764173686</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.2.15
+  + Fixed system default language not respected
+  + Fixed length filter search
+  + Fixed playlist parser converting Spotify URL's
+  + Removed use of deprecated QStyle::State_Editing
+  + Ignore connection closed errors for ListenBrainz
+</comment>
+    <requestid>1319856</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 25 03:10:07 UTC 2025 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Update to version 1.2.15
+  + Fixed system default language not respected
+  + Fixed length filter search
+  + Fixed playlist parser converting Spotify URL's
+  + Removed use of deprecated QStyle::State_Editing
+  + Ignore connection closed errors for ListenBrainz
+
+-------------------------------------------------------------------
 Sun Oct 26 00:30:51 UTC 2025 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Update to version 1.2.14
