@@ -1,6 +1,7 @@
 #
 # spec file for package kubevirt
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +20,7 @@
 %define _exclusive_arch x86_64 aarch64
 
 Name:           kubevirt
-Version:        1.6.2
+Version:        1.6.3
 Release:        0
 Summary:        Container native virtualization
 License:        Apache-2.0

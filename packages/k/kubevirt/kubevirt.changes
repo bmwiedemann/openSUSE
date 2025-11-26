@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 24 19:05:30 UTC 2025 - James Fehlig <jfehlig@suse.com>
+
+- Update to version 1.6.3
+  Release notes https://github.com/kubevirt/kubevirt/releases/tag/v1.6.3
+  bsc#1241772 (CVE-2025-22872), bsc#1250683, bsc#1253181 (CVE-2025-64432),
+  bsc#1253185 (CVE-2025-64433), bsc#1253186 (CVE-2025-64434),
+  bsc#1253194 (CVE-2025-64437), bsc#1253384, bsc#1253748 (CVE-2025-64324)
+
+-------------------------------------------------------------------
 Wed Oct  1 03:04:10 UTC 2025 - Caleb Crane <caleb.crane@suse.com>
 
 - Update to version 1.6.2
