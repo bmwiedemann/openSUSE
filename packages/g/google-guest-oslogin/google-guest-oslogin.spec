@@ -157,7 +157,7 @@ fi
 %if %{with use_selinux}
 %files selinux
 %{_datadir}/selinux/packages/%{selinuxtype}/oslogin.pp
-%ghost %verify(not md5 size mtime) %{_sharedstatedir}/selinux/%{selinuxtype}/active/modules/200/oslogin
+%ghost %verify(not md5 size mtime) %{_selinux_store_path}/%{selinuxtype}/active/modules/200/oslogin
 %endif
 
 %changelog

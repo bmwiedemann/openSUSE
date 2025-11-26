@@ -383,4 +383,13 @@
     it usually has helpful info in it. (#167) (forwarded request 1316455 from glaubitz)</comment>
     <requestid>1316485</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>5d7f1097636ba5ba1def803a1b653fab</srcmd5>
+    <version>20251022.00</version>
+    <time>1764179420</time>
+    <user>anag_factory</user>
+    <comment>- Update SELinux module dir as macro to allow root path move from
+  /var/lib/selinux to /etc/selinux (bsc#1221342) (forwarded request 1320114 from djz88)</comment>
+    <requestid>1320137</requestid>
+  </revision>
 </revisionlist>
