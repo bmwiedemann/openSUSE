@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov 26 06:22:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.6.0:
+  * Features
+    - add Rust target/ dir to default excludes (#507) (1c7d477)
+  * Bug Fixes
+    - support when charset is not set (#506) (85fcb6b), closes #505
+  * Dependencies
+    - chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.15
+      to 0.5.16 (#508)
+    - chore(deps): bump actions/checkout from 5 to 6 (#504)
+
+-------------------------------------------------------------------
 Fri Nov 21 12:20:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.5.0:
