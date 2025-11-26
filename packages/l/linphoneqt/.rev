@@ -217,4 +217,12 @@
     <comment>- fix build with gcc15</comment>
     <requestid>1295852</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>6e08c03cb337b29d81919b12a94ebb38</srcmd5>
+    <version>5.2.6</version>
+    <time>1764173666</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1319898</requestid>
+  </revision>
 </revisionlist>

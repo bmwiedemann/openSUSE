@@ -1,7 +1,7 @@
 #
 # spec file for package linphoneqt
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,7 +45,6 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-linguist-devel
 BuildRequires:  lime-devel >= 5.3.0
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core) >= 5.12
 BuildRequires:  pkgconfig(Qt5DBus)
