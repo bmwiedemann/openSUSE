@@ -1,7 +1,7 @@
 #
 # spec file for package ntpsec
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2016 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           ntpsec
-Version:        1.2.3
+Version:        1.2.4
 Release:        0
 Summary:        Improved implementation of Network Time Protocol
 License:        BSD-2-Clause AND NTP AND BSD-3-Clause AND MIT
@@ -139,7 +139,7 @@ python3 ./waf configure \
     --python=%{_bindir}/python3 \
     --pythonarchdir=%{python3_sitearch} \
     --pythondir=%{python3_sitearch} \
-    --pyshebang="/usr/bin/python3" \
+    --pyshebang="%{_bindir}/python3" \
     --sbindir=%{_sbindir} \
     --bindir=%{_bindir} \
     --enable-seccomp \
@@ -198,7 +198,7 @@ exit 0
 
 %files -n python3-ntp
 %{python3_sitearch}/ntp
-%{python3_sitearch}/ntp-1.2.3.egg-info
+%{python3_sitearch}/ntp-%{version}.egg-info
 
 %files utils
 %{_bindir}/ntploggps
@@ -232,8 +232,7 @@ exit 0
 %{_unitdir}/ntpviz-*
 
 %files doc
-%dir %{_docdir}/%{name}/html
-%doc %{_docdir}/%{name}/html/*
+%{_datadir}/doc/ntpsec/
 
 %files -n libntpc1
 %{_libdir}/libntpc.so.1*
