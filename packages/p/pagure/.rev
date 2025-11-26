@@ -562,4 +562,12 @@
     <comment>- Add pagure-pygit2.patch to repair service startup on Leap 15.6 and Tumbleweed</comment>
     <requestid>1195176</requestid>
   </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>78c2c7e99e0cc8f8eddc4f4a06801c05</srcmd5>
+    <version>5.14.1</version>
+    <time>1764173775</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1320079</requestid>
+  </revision>
 </revisionlist>

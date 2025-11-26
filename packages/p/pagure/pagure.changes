@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 20 15:49:11 UTC 2025 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- web-apache-httpd: enable mod_wsgi during installation, but not on upgrade.
+
+-------------------------------------------------------------------
 Sat Aug 17 11:28:25 UTC 2024 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
 
 - Add pagure-pygit2.patch to repair service startup on Leap 15.6 and Tumbleweed

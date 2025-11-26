@@ -1,7 +1,7 @@
 #
 # spec file for package pagure
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2021 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -550,6 +550,11 @@ echo "See %{_docdir}/%{name}/README.SUSE to continue"
 
 %post mirror
 %systemd_post pagure_mirror.service
+
+%post web-apache-httpd
+if [ $1 -eq 1 ]; then
+    a2enmod wsgi >/dev/null || :
+fi
 
 %preun
 %systemd_preun pagure_worker.service
