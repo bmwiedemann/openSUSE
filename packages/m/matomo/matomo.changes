@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Nov 26 12:21:55 UTC 2025 - ecsos <ecsos@opensuse.org> - 5.6.0
+
+- Update to 5.6.0
+  * Core improvements
+    - #23443: Extend the anonymisation settings to be site specific.
+    - #22998, #23719: Fix warning on incompatible plugins when updating Matomo to version 5.2.2.
+    - #23688, #23711: Fix error after updating from Matomo 5.3.2:
+      Entry “Piwik\Plugins\FeatureFlags\FeatureFlagManager” cannot be resolved.
+  * UI/UX improvements
+    - #23557, #23685, #1052, #215, #1053: Corrected an issue that prevented new users from completing the 2FA step.
+    - #23693: Update the modal system to be responsive and centred with intuitive scrolling.
+    - #23713: Update the navbar help icon.
+    - #23733, #10562: Fix margins of controls for insight data table in widgets.
+    - #23687: Fix QuickAccess input tooltip styles.
+    - #23741: Fix Ajax loader design and spacing.
+    - #23742: Improve layout for Matomo loader elements.
+    - #23756: Improve keyboard navigation in navbar, sidenav and top controls.
+  * Compatibility
+    - #23655: Ensure compatibility with PHP 8.5.
+    - #23776: Replace Global minimum_mysql_version with adapter-specific checks.
+  * Reporting
+    - #23615, #23677: In AI Assistants show the entry page URL / title as a subtable.
+    - #23617: Capture new metrics for AI Agent requests.
+    - #23717, #23731: Small layout improvements on Segment editor dropdown.
+    - #23786, #20695: Remove the Row Evolution on the Behaviour > Performance Reports.
+    - #23791: When creating a new custom dimension, the Active checkbox is enabled by default.
+    - #23794: Simplify the Visitor Profile popup URL parameter.
+
+-------------------------------------------------------------------
 Fri Nov 14 10:19:33 UTC 2025 - ecsos <ecsos@opensuse.org> - 5.5.2
 
 - Update to 5.5.2
