@@ -1,7 +1,7 @@
 #
 # spec file for package zhu3d
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2006 Víctor Fernández Martínez. Valencia, Spain.
 # openSuse  (c) 2006 pnemec@novell.com
 # Copyright (c) 2006 Pavel Nemec pnemec@suse.cz
@@ -15,7 +15,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,22 +23,21 @@ Name:           zhu3d
 Version:        4.2.6
 Release:        0
 Summary:        OpenGL-based equation viewer and solver
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          Productivity/Scientific/Math
-Url:            https://sourceforge.net/projects/zhu3d/
+URL:            https://sourceforge.net/projects/zhu3d/
 Source0:        https://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Source1:        %{name}.desktop
 Patch0:         %{name}-pri.patch
 # PATCH-FIX-OPENSUSE zhu3d-no-compilation-date.patch - fix "W: file-contains-current-date"
 Patch2:         %{name}-no-compilation-date.patch
 # PATCH-FIX-OPENSUSE zhu3d-ppc.patch - fixes ppc build
-Patch3:         zhu3d-ppc.patch 
+Patch3:         zhu3d-ppc.patch
 # PATCH-FIX-UPSTREAM zhu3d-4.2.6-qt5.patch -- courtesy of gentoo
 Patch4:         %{name}-4.2.6-qt5.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  update-desktop-files
 %if 0%{?suse_version} >= 1220
 BuildRequires:  Mesa-libGLU-devel
 %endif
@@ -66,7 +65,6 @@ settings, miscellaneous wire-modes or global illumination
 models. Pictures are rendered as png or jpg and can have an arbitrary
 size. Numerical solutions of an equation-system are found with a quite
 fast and reliable adaptive random search.
-
 
 %prep
 %setup -q

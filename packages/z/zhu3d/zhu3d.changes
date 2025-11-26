@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 22 21:27:48 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove unused BuildRequires: update-desktop-files.
+
+-------------------------------------------------------------------
 Tue Feb 20 12:07:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
@@ -154,7 +159,7 @@ Fri Dec  8 10:52:12 CET 2006 - pnemec@suse.cz
  - Clean ups in ./src for readability and unifications
 
 -------------------------------------------------------------------
-Thu Nov 23 00:00:00 CET 2006 Pavel Nemec <pnemec@suse.cz>
+Thu Nov 23 00:00:00 CET 2006 - Pavel Nemec <pnemec@suse.cz>
 
 - updated to 2.7.4
 - Some tuning for OpenGL list handling. Especially complexer Zhu3D files may be shown a lot faster after loading now
@@ -162,13 +167,13 @@ Thu Nov 23 00:00:00 CET 2006 Pavel Nemec <pnemec@suse.cz>
 - Some clean ups in translation files and error messages
 
 -------------------------------------------------------------------
-Tue Nov 21 00:00:00 CET 2006 Pavel Nemec <pnemec@suse.cz>
+Tue Nov 21 00:00:00 CET 2006 - Pavel Nemec <pnemec@suse.cz>
 
 - updated to 2.7.2
 - move package into science project in build.opensuse.org
 
 -------------------------------------------------------------------
-Wed Nov 15 00:00:00 CET 2006 Pavel Nemec <pnemec@suse.cz>
+Wed Nov 15 00:00:00 CET 2006 - Pavel Nemec <pnemec@suse.cz>
 
 - update to version 2.6.7
 - minor changes in specfile 
@@ -201,4 +206,3 @@ Thu Aug 24 00:00:00 CET 2006 - vfernandez@polinux.upv.es
 Thu Aug 17 00:00:00 CET 2006 - vfernandez@polinux.upv.es
 
 - first build
--------------------------------------------------------------------
