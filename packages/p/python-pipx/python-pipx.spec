@@ -1,7 +1,7 @@
 #
 # spec file for package python-pipx
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pipx
-Version:        1.7.1
+Version:        1.8.0
 Release:        0
 Summary:        Install and Run Python Applications in Isolated Environments
 License:        MIT
@@ -88,7 +88,7 @@ PYTHONPATH=%{buildroot}%{$python_sitelib} %{buildroot}%{_bindir}/pipx-%{$python_
 }
 
 %files %{python_files}
-%doc docs/CHANGELOG.md docs/README.md
+%doc docs/changelog.md docs/README.md
 %license LICENSE
 %python_alternative %{_bindir}/pipx
 %{python_sitelib}/pipx

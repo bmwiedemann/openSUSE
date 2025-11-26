@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Nov 25 16:07:03 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
+
+- Update to version 1.8.0:
+  * chore(deps): bump pypa/gh-action-pypi-publish in /.github/workflows (#1664)
+  * Add support for Python 3.13 (#1647)
+  * Add examples for using ssh to install from Source Control (#1629)
+  * Fix typo in PATH notification message (#1667)
+  * fix #1652: Use GitHub API for standalone python checksums (#1662)
+  * BUG: fix running a script with explicitly empty `dependencies = []` (#1658)
+  * Check for stdout/stderr in case file descriptor is closed (#1620)
+  * Update the logic of finding python interpreter (#1631)
+  * Update the archive name of build of Python for Windows (#1632)
+  * fix #1610: Reorder upgrade option and arguments (#1625)
+  * Upgrade ruff and rename ruleset: `TCH` → `TC` (#1626)
+  * Drop support for Python 3.8 (#1628)
+  * fix: make Github Action safe to RCE via pull request title (#1600)
+  * fix: no message when no packages upgraded with upgrade-all (#1597)
+  * chore(deps): bump pypa/gh-action-pypi-publish from 1.12.3 to 1.12.4 in the actions group (#1595)
+  * Add --all-shells flag to ensure_path (#1591)
+  * chore(deps): bump pypa/gh-action-pypi-publish in the actions group (#1586)
+  * feat: rename USE_EMOJI to PIPX_USE_EMOJI (#1581)
+  * Bump pypa/gh-action-pypi-publish from 1.12.0 to 1.12.2 in the actions group (#1571)
+  * Bump pypa/gh-action-pypi-publish in the actions group across 1 directory (#1569)
+  * Bump pypa/gh-action-pypi-publish from 1.10.2 to 1.10.3 in the actions group (#1555)
+  * [pre-commit.ci] pre-commit autoupdate (#1558)
+  * [pre-commit.ci] pre-commit autoupdate (#1552)
+  * Bump pypa/gh-action-pypi-publish in the actions group (#1549)
+  * [pre-commit.ci] pre-commit autoupdate (#1546)
+  * [pre-commit.ci] pre-commit autoupdate (#1543)
+  * Fix `/changelog/` and `/contributing/` docs URLs (#1541)
+  * Bump pypa/gh-action-pypi-publish from 1.10.0 to 1.10.1 (#1532)
+  * fix(commands/common/_copy_package_resource): if destination exists and files are same, do not overwrite existing files (#1528)
+  * Bump pypa/gh-action-pypi-publish from 1.9.0 to 1.10.0 (#1529)
+  * [pre-commit.ci] pre-commit autoupdate (#1530)
+  * [pre-commit.ci] pre-commit autoupdate (#1512)
+- %docs CHANGELOG.md -> changelog.md
+
+-------------------------------------------------------------------
 Thu Aug 21 15:24:12 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems only

@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/pypa/pipx</param>
-    <param name="revision">1.7.1</param>
+    <param name="revision">1.8.0</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">(\d+\.\d+\.\d+)</param>
     <param name="versionformat">@PARENT_TAG@</param>
