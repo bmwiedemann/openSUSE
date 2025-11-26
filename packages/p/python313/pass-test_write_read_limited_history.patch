@@ -1,0 +1,45 @@
+---
+ Modules/readline.c |   23 +++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
+
+Index: Python-3.13.9/Modules/readline.c
+===================================================================
+--- Python-3.13.9.orig/Modules/readline.c	2025-10-14 15:52:31.000000000 +0200
++++ Python-3.13.9/Modules/readline.c	2025-11-20 00:46:45.594286346 +0100
+@@ -175,6 +175,8 @@
+     return PyUnicode_DecodeLocale(s, "surrogateescape");
+ }
+ 
++static int _py_get_history_length(void);
++static void _py_free_history_entry(HIST_ENTRY *entry);
+ 
+ /*
+ Explicitly disable bracketed paste in the interactive interpreter, even if it's
+@@ -399,6 +401,27 @@
+ /*[clinic end generated code: output=e161a53e45987dc7 input=b8901bf16488b760]*/
+ {
+     _history_length = length;
++
++    if (length < 0) {
++        stifle_history(-1);
++    }
++    else {
++        int current_length = _py_get_history_length();
++        if (length < current_length) {
++#if defined(RL_READLINE_VERSION) && RL_READLINE_VERSION >= 0x0500
++            HISTORY_STATE *state = history_get_history_state();
++            if (state) {
++                int i;
++                for (i = 0; i < current_length - length; i++) {
++                    _py_free_history_entry(remove_history(0));
++                }
++                state->length = length;
++                free(state);
++            }
++#endif
++        }
++        stifle_history(length);
++    }
+     Py_RETURN_NONE;
+ }
+ 

@@ -241,6 +241,9 @@ Patch46:        CVE-2025-8291-consistency-zip64.patch
 # PATCH-FIX-UPSTREAM CVE-2025-6075-expandvars-perf-degrad.patch bsc#1252974 mcepl@suse.com
 # Avoid potential quadratic complexity vulnerabilities in path modules
 Patch47:        CVE-2025-6075-expandvars-perf-degrad.patch
+# PATCH-FIX-UPSTREAM pass-test_write_read_limited_history.patch bsc#[0-9]+ mcepl@suse.com
+# Fix readline history truncation when length is reduced
+Patch48:        pass-test_write_read_limited_history.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes

@@ -1083,4 +1083,27 @@
   - gh126985-mv-pyvenv.cfg2getpath.patch</comment>
     <requestid>1318507</requestid>
   </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>e422862518e9ef8080af9a9b1d9b16df</srcmd5>
+    <version>3.13.9</version>
+    <time>1764173663</time>
+    <user>anag_factory</user>
+    <comment>- Add pass-test_write_read_limited_history.patch:
+  Fix readline history truncation when length is reduced
+ 
+  The `readline.set_history_length()` function did not previously
+  truncate the in-memory history when the new length was set to
+  a value smaller than the current number of history items. This
+  could lead to unexpected behavior where `get_history_length()`
+  would still report the old length and writing the history to a
+  file would write more entries than the new limit.
+ 
+  This patch modifies `set_history_length()` to explicitly
+  remove the oldest history entries using `remove_history()`
+  when the length is decreased, ensuring the in-memory history
+  is correctly truncated to the new limit. This brings the
+  function's behavior in line with expectations and fixes
+  failures in `test_write_read_limited_history`.</comment>
+    <requestid>1320015</requestid>
+  </revision>
 </revisionlist>

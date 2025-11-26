@@ -7,7 +7,7 @@
  Doc/library/doctest.rst                       |    1
  Doc/library/email.compat32-message.rst        |    1
  Doc/library/xml.etree.elementtree.rst         |    1
- Doc/Makefile                                  |    2 
+ Doc/Makefile                                  |    8 +--
  Doc/c-api/arg.rst                             |    1 
  Doc/c-api/typeobj.rst                         |    8 +--
  Doc/conf.py                                   |   29 ++++++++++---
@@ -25,13 +25,13 @@
  Doc/tools/extensions/misc_news.py             |   14 ++----
  Doc/tools/extensions/patchlevel.py            |    9 ++--
  Doc/tools/extensions/pydoc_topics.py          |   22 +++++-----
- 18 files changed, 156 insertions(+), 127 deletions(-)
+ 18 files changed, 159 insertions(+), 130 deletions(-)
 
 Index: Python-3.13.9/Doc/Makefile
 ===================================================================
 --- Python-3.13.9.orig/Doc/Makefile	2025-10-14 15:52:31.000000000 +0200
-+++ Python-3.13.9/Doc/Makefile	2025-11-15 22:56:09.080871289 +0100
-@@ -14,7 +14,7 @@
++++ Python-3.13.9/Doc/Makefile	2025-11-20 01:09:35.814292408 +0100
+@@ -14,15 +14,15 @@
  SOURCES      =
  DISTVERSION  = $(shell $(PYTHON) tools/extensions/patchlevel.py)
  REQUIREMENTS = requirements.txt
@@ -40,10 +40,21 @@ Index: Python-3.13.9/Doc/Makefile
  
  # Internal variables.
  PAPEROPT_a4     = --define latex_elements.papersize=a4paper
+ PAPEROPT_letter = --define latex_elements.papersize=letterpaper
+ 
+-ALLSPHINXOPTS = --builder $(BUILDER) \
+-                --doctree-dir build/doctrees \
+-                --jobs $(JOBS) \
++ALLSPHINXOPTS = -b $(BUILDER) \
++                -d build/doctrees \
++                -j $(JOBS) \
+                 $(PAPEROPT_$(PAPER)) \
+                 $(SPHINXOPTS) $(SPHINXERRORHANDLING) \
+                 . build/$(BUILDER) $(SOURCES)
 Index: Python-3.13.9/Doc/c-api/arg.rst
 ===================================================================
 --- Python-3.13.9.orig/Doc/c-api/arg.rst	2025-10-14 15:52:31.000000000 +0200
-+++ Python-3.13.9/Doc/c-api/arg.rst	2025-11-15 22:55:47.005463838 +0100
++++ Python-3.13.9/Doc/c-api/arg.rst	2025-11-20 01:07:59.902914275 +0100
 @@ -334,7 +334,6 @@
     should raise an exception and leave the content of *address* unmodified.
  
@@ -55,7 +66,7 @@ Index: Python-3.13.9/Doc/c-api/arg.rst
 Index: Python-3.13.9/Doc/c-api/typeobj.rst
 ===================================================================
 --- Python-3.13.9.orig/Doc/c-api/typeobj.rst	2025-10-14 15:52:31.000000000 +0200
-+++ Python-3.13.9/Doc/c-api/typeobj.rst	2025-11-15 22:55:47.006633833 +0100
++++ Python-3.13.9/Doc/c-api/typeobj.rst	2025-11-20 01:07:59.903382829 +0100
 @@ -610,7 +610,7 @@
     Functions like :c:func:`PyObject_NewVar` will take the value of N as an
     argument, and store in the instance's :c:member:`~PyVarObject.ob_size` field.
@@ -88,8 +99,8 @@ Index: Python-3.13.9/Doc/c-api/typeobj.rst
     usually defined by the macro :c:macro:`PyObject_HEAD` or
 Index: Python-3.13.9/Doc/conf.py
 ===================================================================
---- Python-3.13.9.orig/Doc/conf.py	2025-11-15 22:55:39.285896375 +0100
-+++ Python-3.13.9/Doc/conf.py	2025-11-15 22:55:47.007347829 +0100
+--- Python-3.13.9.orig/Doc/conf.py	2025-11-20 01:07:14.944126757 +0100
++++ Python-3.13.9/Doc/conf.py	2025-11-20 01:07:59.903974303 +0100
 @@ -11,6 +11,8 @@
  from importlib import import_module
  from importlib.util import find_spec
@@ -116,7 +127,7 @@ Index: Python-3.13.9/Doc/conf.py
  '''
  
  manpages_url = 'https://manpages.debian.org/{path}'
-@@ -96,7 +98,7 @@
+@@ -92,7 +94,7 @@
  
  # Minimum version of sphinx required
  # Keep this version in sync with ``Doc/requirements.txt``.
@@ -144,7 +155,7 @@ Index: Python-3.13.9/Doc/conf.py
  html_context = {
      "is_deployment_preview": is_deployment_preview,
      "repository_url": repository_url or None,
-@@ -542,6 +547,16 @@
+@@ -607,6 +612,16 @@
  }
  extlinks_detect_hardcoded_links = True
  
@@ -164,7 +175,7 @@ Index: Python-3.13.9/Doc/conf.py
 Index: Python-3.13.9/Doc/library/doctest.rst
 ===================================================================
 --- Python-3.13.9.orig/Doc/library/doctest.rst	2025-10-14 15:52:31.000000000 +0200
-+++ Python-3.13.9/Doc/library/doctest.rst	2025-11-15 22:55:47.008004484 +0100
++++ Python-3.13.9/Doc/library/doctest.rst	2025-11-20 01:07:59.904511686 +0100
 @@ -310,7 +310,6 @@
  .. currentmodule:: None
  
@@ -176,7 +187,7 @@ Index: Python-3.13.9/Doc/library/doctest.rst
 Index: Python-3.13.9/Doc/library/email.compat32-message.rst
 ===================================================================
 --- Python-3.13.9.orig/Doc/library/email.compat32-message.rst	2025-10-14 15:52:31.000000000 +0200
-+++ Python-3.13.9/Doc/library/email.compat32-message.rst	2025-11-15 22:55:47.008617977 +0100
++++ Python-3.13.9/Doc/library/email.compat32-message.rst	2025-11-20 01:07:59.905009154 +0100
 @@ -7,7 +7,6 @@
     :synopsis: The base class representing email messages in a fashion
                backward compatible with Python 3.2
@@ -188,7 +199,7 @@ Index: Python-3.13.9/Doc/library/email.compat32-message.rst
 Index: Python-3.13.9/Doc/library/xml.etree.elementtree.rst
 ===================================================================
 --- Python-3.13.9.orig/Doc/library/xml.etree.elementtree.rst	2025-10-14 15:52:31.000000000 +0200
-+++ Python-3.13.9/Doc/library/xml.etree.elementtree.rst	2025-11-15 22:55:47.009206956 +0100
++++ Python-3.13.9/Doc/library/xml.etree.elementtree.rst	2025-11-20 01:07:59.905273001 +0100
 @@ -873,7 +873,6 @@
  
  .. module:: xml.etree.ElementTree
@@ -200,7 +211,7 @@ Index: Python-3.13.9/Doc/library/xml.etree.elementtree.rst
 Index: Python-3.13.9/Doc/tools/check-warnings.py
 ===================================================================
 --- Python-3.13.9.orig/Doc/tools/check-warnings.py	2025-10-14 15:52:31.000000000 +0200
-+++ Python-3.13.9/Doc/tools/check-warnings.py	2025-11-15 22:55:47.009862424 +0100
++++ Python-3.13.9/Doc/tools/check-warnings.py	2025-11-20 01:07:59.905613002 +0100
 @@ -228,7 +228,8 @@
              print(filename)
              for warning in warnings:
@@ -223,7 +234,7 @@ Index: Python-3.13.9/Doc/tools/check-warnings.py
 Index: Python-3.13.9/Doc/tools/extensions/audit_events.py
 ===================================================================
 --- Python-3.13.9.orig/Doc/tools/extensions/audit_events.py	2025-10-14 15:52:31.000000000 +0200
-+++ Python-3.13.9/Doc/tools/extensions/audit_events.py	2025-11-15 22:56:01.019878076 +0100
++++ Python-3.13.9/Doc/tools/extensions/audit_events.py	2025-11-20 01:08:35.819222654 +0100
 @@ -1,9 +1,6 @@
  """Support for documenting audit events."""
  
@@ -362,7 +373,7 @@ Index: Python-3.13.9/Doc/tools/extensions/audit_events.py
 Index: Python-3.13.9/Doc/tools/extensions/availability.py
 ===================================================================
 --- Python-3.13.9.orig/Doc/tools/extensions/availability.py	2025-10-14 15:52:31.000000000 +0200
-+++ Python-3.13.9/Doc/tools/extensions/availability.py	2025-11-15 22:55:47.010894411 +0100
++++ Python-3.13.9/Doc/tools/extensions/availability.py	2025-11-20 01:07:59.906156697 +0100
 @@ -1,8 +1,6 @@
  """Support for documenting platform availability"""
  
@@ -419,7 +430,7 @@ Index: Python-3.13.9/Doc/tools/extensions/availability.py
 Index: Python-3.13.9/Doc/tools/extensions/c_annotations.py
 ===================================================================
 --- Python-3.13.9.orig/Doc/tools/extensions/c_annotations.py	2025-10-14 15:52:31.000000000 +0200
-+++ Python-3.13.9/Doc/tools/extensions/c_annotations.py	2025-11-15 22:55:47.011416690 +0100
++++ Python-3.13.9/Doc/tools/extensions/c_annotations.py	2025-11-20 01:07:59.906354780 +0100
 @@ -9,22 +9,26 @@
  * Set ``stable_abi_file`` to the path to stable ABI list.
  """
@@ -560,7 +571,7 @@ Index: Python-3.13.9/Doc/tools/extensions/c_annotations.py
 Index: Python-3.13.9/Doc/tools/extensions/changes.py
 ===================================================================
 --- Python-3.13.9.orig/Doc/tools/extensions/changes.py	2025-10-14 15:52:31.000000000 +0200
-+++ Python-3.13.9/Doc/tools/extensions/changes.py	2025-11-15 22:55:47.011919693 +0100
++++ Python-3.13.9/Doc/tools/extensions/changes.py	2025-11-20 01:07:59.906539198 +0100
 @@ -1,7 +1,5 @@
  """Support for documenting version of changes, additions, deprecations."""
  
@@ -599,7 +610,7 @@ Index: Python-3.13.9/Doc/tools/extensions/changes.py
 Index: Python-3.13.9/Doc/tools/extensions/glossary_search.py
 ===================================================================
 --- Python-3.13.9.orig/Doc/tools/extensions/glossary_search.py	2025-10-14 15:52:31.000000000 +0200
-+++ Python-3.13.9/Doc/tools/extensions/glossary_search.py	2025-11-15 22:55:47.012151010 +0100
++++ Python-3.13.9/Doc/tools/extensions/glossary_search.py	2025-11-20 01:07:59.906696224 +0100
 @@ -1,21 +1,27 @@
  """Feature search results for glossary items prominently."""
  
@@ -646,7 +657,7 @@ Index: Python-3.13.9/Doc/tools/extensions/glossary_search.py
 Index: Python-3.13.9/Doc/tools/extensions/implementation_detail.py
 ===================================================================
 --- Python-3.13.9.orig/Doc/tools/extensions/implementation_detail.py	2025-10-14 15:52:31.000000000 +0200
-+++ Python-3.13.9/Doc/tools/extensions/implementation_detail.py	2025-11-15 22:55:47.012356764 +0100
++++ Python-3.13.9/Doc/tools/extensions/implementation_detail.py	2025-11-20 01:07:59.906853200 +0100
 @@ -1,17 +1,10 @@
  """Support for marking up implementation details."""
  
@@ -700,7 +711,7 @@ Index: Python-3.13.9/Doc/tools/extensions/implementation_detail.py
 Index: Python-3.13.9/Doc/tools/extensions/issue_role.py
 ===================================================================
 --- Python-3.13.9.orig/Doc/tools/extensions/issue_role.py	2025-10-14 15:52:31.000000000 +0200
-+++ Python-3.13.9/Doc/tools/extensions/issue_role.py	2025-11-15 22:55:47.012694591 +0100
++++ Python-3.13.9/Doc/tools/extensions/issue_role.py	2025-11-20 01:07:59.907010386 +0100
 @@ -1,22 +1,18 @@
  """Support for referencing issues in the tracker."""
  
@@ -749,7 +760,7 @@ Index: Python-3.13.9/Doc/tools/extensions/issue_role.py
 Index: Python-3.13.9/Doc/tools/extensions/misc_news.py
 ===================================================================
 --- Python-3.13.9.orig/Doc/tools/extensions/misc_news.py	2025-10-14 15:52:31.000000000 +0200
-+++ Python-3.13.9/Doc/tools/extensions/misc_news.py	2025-11-15 22:55:47.013146888 +0100
++++ Python-3.13.9/Doc/tools/extensions/misc_news.py	2025-11-20 01:07:59.907170899 +0100
 @@ -1,7 +1,5 @@
  """Support for including Misc/NEWS."""
  
@@ -805,7 +816,7 @@ Index: Python-3.13.9/Doc/tools/extensions/misc_news.py
 Index: Python-3.13.9/Doc/tools/extensions/patchlevel.py
 ===================================================================
 --- Python-3.13.9.orig/Doc/tools/extensions/patchlevel.py	2025-10-14 15:52:31.000000000 +0200
-+++ Python-3.13.9/Doc/tools/extensions/patchlevel.py	2025-11-15 22:55:47.013664697 +0100
++++ Python-3.13.9/Doc/tools/extensions/patchlevel.py	2025-11-20 01:07:59.907494228 +0100
 @@ -3,7 +3,7 @@
  import re
  import sys
@@ -846,7 +857,7 @@ Index: Python-3.13.9/Doc/tools/extensions/patchlevel.py
 Index: Python-3.13.9/Doc/tools/extensions/pydoc_topics.py
 ===================================================================
 --- Python-3.13.9.orig/Doc/tools/extensions/pydoc_topics.py	2025-10-14 15:52:31.000000000 +0200
-+++ Python-3.13.9/Doc/tools/extensions/pydoc_topics.py	2025-11-15 22:55:47.014041565 +0100
++++ Python-3.13.9/Doc/tools/extensions/pydoc_topics.py	2025-11-20 01:07:59.907684617 +0100
 @@ -1,21 +1,23 @@
  """Support for building "topic help" for pydoc."""
  
