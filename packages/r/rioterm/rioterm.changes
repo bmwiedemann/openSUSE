@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov 18 14:49:21 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.2.36:
+  * fix lint for atlas.rs
+  * prepare 0.2.36
+  * flake.lock: Update (#1364)
+  * fix: handler should process two intermediate bytes in CSI sequences (#1363)
+  * flake.lock: Update (#1356)
+  * update changelog
+  * flake.lock: Update (#1353)
+  * fix DECSCUSR
+  * update xml for flatpak
+  * actually update changelog to declare it's only macos for now
+
+-------------------------------------------------------------------
 Mon Nov 03 18:08:22 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to version 0.2.35:
