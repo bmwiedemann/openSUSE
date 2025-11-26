@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Tue Nov 25 09:50:59 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- Switch _service to use mode="manual"
+- Replace fix_qcustomplot_name.patch with
+  0001-ThermalMonitor.pro-Don-t-hardcode-the-qcustomplot-li.patch
+- Update to version 2.5.10.4.git+f284686:
+  * itmt3 support
+  * Compile issue on i586 for time_t print
+  * Fix version in README.txt
+  * Update version to 2.5.10
+  * Release 2.5.10
+  * Fix coverity reported error
+  * Check for target code ITMT3
+  * Update Panther Lake sysfs paths
+  * Use correct format specifier for time_t
+  * Don't reset clamp bit for MSR RAPL
+  * Add power floor event processing
+  * Dynamic zone: Fix the call to add cdevs
+  * Also fix dir leak on error return path
+  * Fix resource leak on opened dir descriptor
+  * Release 2.5.9
+  * Intel P-state passive mode
+  * Add Panther Lake to the supported list
+  * Auto detect int3400 base path
+  * Fix file descriptor leaks on error return paths
+  * src: thd_dbus_interface: add extra sanity check on introspection_data
+  * test: Fix spelling mistake "Ploting" -> "Plotting"
+  * Update kernel module for API update
+  * gddv test file generator
+  * Load GDDV from a file
+  * Replace " \n" with "\n"
+  * Release 2.5.8
+  * Script to plot temperature and trip
+  * Coverity issue for oveflowed constant
+  * Coverity: Fix overflowed return value
+  * Add support for Arrow Lake
+  * Improve message for processor not supported
+  * Coverity Errors for Y2K38_SAFETY error
+  * Coverity Error: Fix unused and uninitialized var
+  * Coverity Errors: Fix for return value check
+  * Coverity error: Fix COPY_INSTEAD_OF_MOVE
+  * Deprecate KBL-G support
+  * Thermal Monitor: Add trip type back
+  * Thermal Monitor: Remove deprecated calls
+  * Fix incorrect integer format specifiers
+
+-------------------------------------------------------------------
 Sat Jul 06 08:45:39 UTC 2024 - andrea.manzini@suse.com
 
 - Update to version 2.5.7.17.git+fc7464a:

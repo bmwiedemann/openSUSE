@@ -1,7 +1,7 @@
 #
 # spec file for package thermald
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %global with_thermalmonitor 0%{?is_opensuse}
 
 Name:           thermald
-Version:        2.5.7.17.git+fc7464a
+Version:        2.5.10.4.git+f284686
 Release:        0
 Summary:        The Linux Thermal Daemon program from 01.org
 License:        GPL-2.0-or-later
@@ -37,7 +37,7 @@ Source3:        sysconfig.%{name}
 Source10:       thermal-monitor.desktop
 Source11:       thermal-monitor.png
 Patch0:         fix-systemd-service.patch
-Patch1:         fix_qcustomplot_name.patch
+Patch1:         0001-ThermalMonitor.pro-Don-t-hardcode-the-qcustomplot-li.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -93,7 +93,7 @@ NO_CONFIGURE=1 ./autogen.sh
 
 %if %{with_thermalmonitor}
 pushd tools/thermal_monitor
-%qmake5 ThermalMonitor.pro
+%qmake5 ThermalMonitor.pro LIBS+=-lqcustomplot
 %make_build
 popd
 %endif
