@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 26 09:16:49 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 9.0.19
+  * ci: use Python 3.12 for type tests
+  * Merge metadata changes from upstream 9.0.19
+
+-------------------------------------------------------------------
 Tue Nov 11 23:43:22 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 9.0.18
