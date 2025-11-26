@@ -1,7 +1,7 @@
 #
 # spec file for package vsgXchange
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ License:        MIT
 Group:          Productivity/Graphics/Other
 URL:            https://github.com/vsg-dev/vsgXchange
 Source0:        %{name}-%{version}.tar.xz
+Patch0:         0001-Build-fixes-for-changes-to-GDAL-3.12.patch
 # not found by default
 #BuildRequires:  libassimp5
 BuildRequires:  cmake

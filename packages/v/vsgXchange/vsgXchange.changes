@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov 25 08:08:18 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Fix building with GDAL 3.12
+- Add patch:
+  * 0001-Build-fixes-for-changes-to-GDAL-3.12.patch
+
+-------------------------------------------------------------------
+Mon Oct 23 07:08:41 UTC 2023 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Migrate service file to use 'manual' instead of 'disabled' as
+  suggested by osc  
+
+-------------------------------------------------------------------
 Fri Sep 15 20:32:13 UTC 2023 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Update to version 1.0.5

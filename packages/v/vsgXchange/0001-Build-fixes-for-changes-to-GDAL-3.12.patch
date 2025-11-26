@@ -1,0 +1,100 @@
+From 1de624f085d12a1fb74521e6ec49997a473781ae Mon Sep 17 00:00:00 2001
+From: Ralf Habacker <ralf.habacker@freenet.de>
+Date: Tue, 25 Nov 2025 09:02:45 +0100
+Subject: [PATCH] Build fixes for changes to GDAL 3.12
+
+Fix #243
+---
+ src/gdal/GDAL.cpp          | 18 ++++++++----------
+ src/gdal/GDAL_fallback.cpp |  6 ++----
+ 2 files changed, 10 insertions(+), 14 deletions(-)
+
+diff --git a/src/gdal/GDAL.cpp b/src/gdal/GDAL.cpp
+index da3ba6a..b474604 100644
+--- a/src/gdal/GDAL.cpp
++++ b/src/gdal/GDAL.cpp
+@@ -15,12 +15,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
+ 
+ #include <cstring>
+ 
+-using namespace vsgXchange;
+-
+ namespace vsgXchange
+ {
+ 
+-    class GDAL::Implementation
++    class vsgXchange::GDAL::Implementation
+     {
+     public:
+         Implementation();
+@@ -36,21 +34,21 @@ namespace vsgXchange
+ //
+ // GDAL ReaderWriter fascade
+ //
+-GDAL::GDAL() :
+-    _implementation(new GDAL::Implementation())
++vsgXchange::GDAL::GDAL() :
++    _implementation(new vsgXchange::GDAL::Implementation())
+ {
+ }
+ 
+-GDAL::~GDAL()
++vsgXchange::GDAL::~GDAL()
+ {
+     delete _implementation;
+ }
+-vsg::ref_ptr<vsg::Object> GDAL::read(const vsg::Path& filename, vsg::ref_ptr<const vsg::Options> options) const
++vsg::ref_ptr<vsg::Object> vsgXchange::GDAL::read(const vsg::Path& filename, vsg::ref_ptr<const vsg::Options> options) const
+ {
+     return _implementation->read(filename, options);
+ }
+ 
+-bool GDAL::getFeatures(Features& features) const
++bool vsgXchange::GDAL::getFeatures(Features& features) const
+ {
+     vsgXchange::initGDAL();
+ 
+@@ -103,11 +101,11 @@ bool GDAL::getFeatures(Features& features) const
+ //
+ // GDAL ReaderWriter implementation
+ //
+-GDAL::Implementation::Implementation()
++vsgXchange::GDAL::Implementation::Implementation()
+ {
+ }
+ 
+-vsg::ref_ptr<vsg::Object> GDAL::Implementation::read(const vsg::Path& filename, vsg::ref_ptr<const vsg::Options> options) const
++vsg::ref_ptr<vsg::Object> vsgXchange::GDAL::Implementation::read(const vsg::Path& filename, vsg::ref_ptr<const vsg::Options> options) const
+ {
+     // GDAL tries to load all datatypes so up front catch VSG and OSG native formats.
+     vsg::Path ext = vsg::lowerCaseFileExtension(filename);
+diff --git a/src/gdal/GDAL_fallback.cpp b/src/gdal/GDAL_fallback.cpp
+index 6604cad..0405335 100644
+--- a/src/gdal/GDAL_fallback.cpp
++++ b/src/gdal/GDAL_fallback.cpp
+@@ -12,8 +12,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
+ 
+ #include <vsgXchange/gdal.h>
+ 
+-using namespace vsgXchange;
+-
+ ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ //
+ // GDAL ReaderWriter fallback
+@@ -28,11 +26,11 @@ GDAL::GDAL() :
+ GDAL::~GDAL()
+ {
+ }
+-vsg::ref_ptr<vsg::Object> GDAL::read(const vsg::Path&, vsg::ref_ptr<const vsg::Options>) const
++vsg::ref_ptr<vsg::Object> vsgXchange::GDAL::read(const uint8_t*, size_t, vsg::ref_ptr<const vsg::Options>) const
+ {
+     return {};
+ }
+-bool GDAL::getFeatures(Features&) const
++bool vsgXchange::GDAL::getFeatures(Features&) const
+ {
+     return false;
+ }
+-- 
+2.51.1
+
