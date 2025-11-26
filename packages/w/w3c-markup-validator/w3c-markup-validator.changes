@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 20 15:16:45 UTC 2025 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Don't enable apache2-mod_proxy by default. It's not strictly required for
+  this package.
+
+-------------------------------------------------------------------
 Tue Feb 20 15:14:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
@@ -134,7 +140,7 @@ Tue Feb 16 12:25:50 UTC 2010 - chris@computersalat.de
 - cleanup, changes file (too long lines)
 
 -------------------------------------------------------------------
-* Thu Mar 26 00:00:00 CET 2009 sierkb@gmx.de
+Thu Mar 26 00:00:00 CET 2009 sierkb@gmx.de
 
 - 0.8.5 release:
   The 0.8.5 release of the markup validator is a feature and bugfix
@@ -291,7 +297,7 @@ Thu Oct 11 05:38:58 CEST 2007 sierkb@gmx.de
   - Documentation updates.
 
 -------------------------------------------------------------------
-Wed Aug 8 00:00:00 CEST 2007 sierkb@gmx.de
+Wed Aug 08 00:00:00 CEST 2007 sierkb@gmx.de
 
 - Update validator and sgml-libs to stable release version 0.8.1:
   The 0.8.1 release of the W3C Markup Validator is a bug fix
@@ -319,7 +325,7 @@ Wed Jul 25 12:00:00 CEST 2007 sierkb@gmx.de
   0.8.0 Beta 1 and 0.8.0 Beta 2.
 
 -------------------------------------------------------------------
-Fri Jun 1 00:00:00 CEST 2007 sierkb@gmx.de
+Fri Jun 01 00:00:00 CEST 2007 sierkb@gmx.de
 
 - Update validator and sgml-libs to version 0.8.0 Beta 2:
   Testing the second beta revision of the validator version 0.8.0.
@@ -344,7 +350,7 @@ Fri Jun 1 00:00:00 CEST 2007 sierkb@gmx.de
     check well-formedness
   - code cleanup, other bug fixes
 
-------------------------------------------------------------------- 
+-------------------------------------------------------------------
 Tue Apr 19 00:00:00 CEST 2007 sierkb@gmx.de
 
 - Update validator and sgml-libs to version 0.8.0 Beta 1:
@@ -433,7 +439,7 @@ Tue Apr 23 00:00:00 CET 2006 sierkb@gmx.de
 - Update validator and sgml-libs to latest stable CVS 0.7.2-release
 
 -------------------------------------------------------------------
-Mon Apr 3 00:00:00 CET 2006 sierkb@gmx.de
+Mon Apr 03 00:00:00 CET 2006 sierkb@gmx.de
 
 - Update validator and sgml-libs to stable CVS 0.7.2-release
   Note: some hot fixes, which are part of this release,
@@ -476,7 +482,7 @@ Thu Nov 17 00:00:00 CET 2005 sierkb@gmx.de
 - Rebuild for SuSE Linux 10.0 OSS (GCC 4.0.2).
 
 -------------------------------------------------------------------
-Wed Nov 9 00:00:00 CET 2005 sierkb@gmx.de
+Wed Nov 09 00:00:00 CET 2005 sierkb@gmx.de
 
 - validator.conf: With respect to default security, I changed
   'Allow Private IPs = yes' back to 'Allow Private IPs = no'.
@@ -484,7 +490,7 @@ Wed Nov 9 00:00:00 CET 2005 sierkb@gmx.de
 - Spec file: Improved Requires Directive.
 
 -------------------------------------------------------------------
-Tue Nov 1 00:00:00 CET 2005 sierkb@gmx.de
+Tue Nov 01 00:00:00 CET 2005 sierkb@gmx.de
 
 - Update validator and sgml-libs to stable release version 0.7.1:
   Releasing version 0.7.1 of the Markup Validator,
@@ -501,7 +507,7 @@ Thu Aug 11 00:00:00 CEST 2005 sierkb@gmx.de
   consecutive beta versions 0.7.0 Beta #2 and 0.7.0 Beta #1.
 
 -------------------------------------------------------------------
-Mon Aug 1 00:00:00 CEST 2005 sierkb@gmx.de
+Mon Aug 01 00:00:00 CEST 2005 sierkb@gmx.de
 
 - Update validator and sgml-libs to 0.7.0b2 (beta version 2):
   Testing version 0.7.0 Beta #2 of the Markup Validator, the second
@@ -574,9 +580,8 @@ Tue Jun 14 00:00:00 CEST 2005 sierkb@gmx.de
 - Added configuration for VirtualHost use.
   
 -------------------------------------------------------------------
-Thu Jun 9 00:00:00 CEST 2005 sierkb@gmx.de
+Thu Jun 09 00:00:00 CEST 2005 sierkb@gmx.de
   
 - Initial build for SuSE Linux.
 - validator 0.6.7, sgml-libs 0.6.5.
 
--------------------------------------------------------------------

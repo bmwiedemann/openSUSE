@@ -1,7 +1,7 @@
 #
 # spec file for package w3c-markup-validator
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2006-2009 Sierk Bornemann
 #
 # All modifications and additions to the file contributed by third parties
@@ -90,7 +90,6 @@ Requires:       sgml-skel
 %description    libs
 SGML and XML DTDs for the W3C Markup Validator.
 
-
 %prep
 %setup -q -n %{pkgname}-%{version} -a 1 -a 2
 %patch -P 0
@@ -154,7 +153,6 @@ echo "
 Please read %{_defaultdocdir}/%{name}/README.openSUSE to configure the W3C Markup Validator to your needs.
 Finally, restart the webserver with 'rcapache2 graceful'.
 "
-%{_sbindir}/a2enmod proxy || :
 
 %postun
 %restart_on_update apache2
