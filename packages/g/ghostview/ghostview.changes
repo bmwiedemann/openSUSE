@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 18 15:37:50 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Again make it build again 
+
+-------------------------------------------------------------------
 Thu Sep 11 08:05:47 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Make it build even with broken imake/xmkmf setup 

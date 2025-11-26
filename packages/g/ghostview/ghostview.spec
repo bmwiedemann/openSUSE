@@ -62,8 +62,8 @@ make install     DESTDIR=%{buildroot} \
 make install.man DESTDIR=%{buildroot} \
 	MANPATH=%{_mandir} XAPPLOADDIR=%{_appdefdir}
 %suse_update_desktop_file -i ghostview Office Viewer
-rm -r %{buildroot}/etc
-rm -r %{buildroot}/usr/lib/X11
+rm -rf %{buildroot}/etc
+rm -rf %{buildroot}/usr/lib/X11
 
 %files
 %defattr(-,root,root)
