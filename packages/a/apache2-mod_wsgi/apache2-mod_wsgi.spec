@@ -1,7 +1,7 @@
 #
 # spec file for package apache2-mod_wsgi
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,6 +57,8 @@ adapter is written completely in C code against the Apache C runtime and
 for hosting WSGI applications within Apache has a lower overhead than using
 existing WSGI adapters for mod_python or CGI.
 
+To load the module into Apache, run the command "a2enmod wsgi" as root.
+
 %prep
 %autosetup -n %{modname}-%{version}
 
@@ -82,13 +84,6 @@ if [ "$1" = "0" ]; then
   if a2enmod -q wsgi; then
     %{_sbindir}/a2enmod -d wsgi
   fi
-fi
-%endif
-
-%if 0%{?suse_version}
-%posttrans
-if ! %{_sbindir}/a2enmod -q wsgi; then
-  %{_sbindir}/a2enmod wsgi
 fi
 %endif
 

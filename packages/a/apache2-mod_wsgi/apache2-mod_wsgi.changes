@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 20 15:26:15 UTC 2025 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Don't enable the module by default. Instead, include instructions in the
+  description, consistent with other comparable modules, such as
+  apache2-mod_fcgid, apache2-mod_jk and apache2-mod_mono.  If a reverse
+  dependency of this module requires it, that package may execute
+  `a2enmod wsgi`.
+
+-------------------------------------------------------------------
 Wed Mar 19 17:47:41 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Update to 5.0.2 includes changes from 5.0.1:

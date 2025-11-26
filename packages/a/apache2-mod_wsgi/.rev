@@ -598,4 +598,16 @@
     <comment></comment>
     <requestid>1256210</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>8be834ecf98b0c33a9ea2d8c4e3c9b82</srcmd5>
+    <version>5.0.2</version>
+    <time>1764179401</time>
+    <user>anag_factory</user>
+    <comment>- Don't enable the module by default. Instead, include instructions in the
+  description, consistent with other comparable modules, such as
+  apache2-mod_fcgid, apache2-mod_jk and apache2-mod_mono.  If a reverse
+  dependency of this module requires it, that package may execute
+  `a2enmod wsgi`. (forwarded request 1318897 from wfrisch)</comment>
+    <requestid>1320129</requestid>
+  </revision>
 </revisionlist>
