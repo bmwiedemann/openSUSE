@@ -1,10 +1,15 @@
 -------------------------------------------------------------------
-* Tue Nov 25 2024 Aleksey Kontsevich <akontsevich@gmail.com>
+Sat Nov 22 21:25:32 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove unused BuildRequires: update-desktop-files.
+
+-------------------------------------------------------------------
+* Tue Nov 25 2024 - Aleksey Kontsevich <akontsevich@gmail.com>
 
 - Moved binaries to libexecdir to avoid conflicts with other packages
 
 -------------------------------------------------------------------
-* Fri Oct 4 2024 Aleksey Kontsevich <akontsevich@gmail.com>
+* Fri Oct 4 2024 - Aleksey Kontsevich <akontsevich@gmail.com>
 
 - Removed "rss-glx" prefix from binaries which prevented them to start and
   to be listed in xscreensaver-settings: no need to distinguish them from

@@ -1,7 +1,7 @@
 #
 # spec file for package rss-glx
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,8 +23,8 @@ Summary:        Really Slick Screensavers Port to GLX
 License:        GPL-2.0-only AND GPL-3.0-only
 Group:          Amusements/Toys/Screensavers
 URL:            http://rss-glx.sourceforge.net/
-Source0:         http://prdownloads.sourceforge.net/rss-glx/rss-glx_%{version}.tar.bz2
-Source1:         README.SUSE
+Source0:        http://prdownloads.sourceforge.net/rss-glx/rss-glx_%{version}.tar.bz2
+Source1:        README.SUSE
 # PATCH-FIX-OPENSUSE
 Patch0:         rss-glx-optflags.patch
 # patch should go upstream, but there is TODO: source files include
@@ -44,7 +44,6 @@ BuildRequires:  libXt-devel
 BuildRequires:  libtool
 BuildRequires:  openal-devel
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  xscreensaver
 BuildRequires:  pkgconfig(ImageMagick)
 BuildRequires:  pkgconfig(freealut)
@@ -53,7 +52,6 @@ BuildRequires:  pkgconfig(glu)
 %description
 Cool collection of 3D screensavers. Linux port of Really Slick Screensavers -
 Web's most visually exciting collection of original, open-source screensavers.
-
 
 %prep
 %setup -q -n %{name}_%{version}
