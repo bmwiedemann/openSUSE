@@ -1,7 +1,7 @@
 #
 # spec file for package fbreader
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,9 +21,9 @@ Name:           fbreader
 Version:        0.99.4
 Release:        0
 Summary:        E-book reader
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Other
-Url:            http://www.fbreader.org/
+URL:            http://www.fbreader.org/
 Source0:        %{name}-sources-%{version}.tgz
 Source1:        FBReader.desktop
 Source3:        fbreader.xml
@@ -41,7 +41,6 @@ BuildRequires:  expat
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Widgets)
