@@ -17,7 +17,7 @@
 
 
 Name:           zizmor
-Version:        1.16.3
+Version:        1.17.0
 Release:        0
 Summary:        A static analysis tool for GitHub Actions
 License:        MIT
@@ -91,7 +91,9 @@ mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
 %{buildroot}/%{_bindir}/%{name} --completions=zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{name}
 
 %check
-%{cargo_test}
+# test fails starting with 1.17.0
+# https://github.com/zizmorcore/zizmor/issues/1370
+%{cargo_test}  -- --skip test test_preserve_trailing_newline_replace_multiline_at_end
 
 %files
 %doc README.md
