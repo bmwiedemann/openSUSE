@@ -49,7 +49,6 @@ BuildRequires:  shared-mime-info
 BuildRequires:  texlive-dvips
 BuildRequires:  texlive-latex
 BuildRequires:  texlive-makeindex
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gl)

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 22 21:17:21 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove unused BuildRequires: update-desktop-files.
+
+-------------------------------------------------------------------
 Mon Nov 10 00:02:18 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.0.0
