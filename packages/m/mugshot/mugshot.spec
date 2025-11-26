@@ -1,7 +1,7 @@
 #
 # spec file for package mugshot
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,6 @@ BuildRequires:  python3-distutils-extra
 BuildRequires:  python3-gobject-devel
 BuildRequires:  python3-pexpect
 BuildRequires:  python3-setuptools
-BuildRequires:  update-desktop-files
 Requires:       python3
 Requires:       python3-base
 Requires:       python3-cairo

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 22 21:21:39 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove unused BuildRequires: update-desktop-files.
+
+-------------------------------------------------------------------
 Thu Mar 20 08:54:04 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Eliminate duplicate files in the whole python3_sitelib directory.
