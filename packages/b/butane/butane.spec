@@ -1,7 +1,7 @@
 #
 # spec file for package butane
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2021 Neal Gompa.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           butane
-Version:        0.21.0
+Version:        0.25.0
 Release:        0
 Summary:        Tool to generate Ignition configs from Butane Configs
 Group:          System/Management

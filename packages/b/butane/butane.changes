@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Sep 30 06:04:50 UTC 2025 - Frantisek Simorda <frantisek.simorda@suse.com>
+
+- Update to 0.25.0
+    Stabilize OpenShift spec 4.20.0, targeting Ignition spec 3.5.0
+    Add OpenShift spec 4.21.0-experimental, targeting Ignition spec 3.6.0-experimental
+    Stop overriding default LUKS cipher algorithm in FIPS mode (openshift 4.20.0)
+    Add missing examples in upgrading-openshift (openshift 4.14)
+
+- Version 0.24.0 
+    Validate merged/replaced Ignition configs if they are local/inline (all base specifications)
+    Stabilize OpenShift spec 4.19.0, targeting Ignition spec 3.5.0
+    Add OpenShift spec 4.20.0-experimental, targeting Ignition spec 3.6.0-experimental
+    Add TMT test support with initial smoke test
+    Fail if LUKS method is not specified while boot_device.luks.device is set (fcos 1.7.0-exp)
+    Validate kernel arguments when CEX support is enabled on s390x (4.19.0 and 4.20.0)
+    Roll back to Ignition spec 3.5.0 (openshift 4.19.0)
+
+- Version 0.23.0
+    Add OpenShift spec 4.19.0-experimental, targeting Ignition spec 3.6.0-experimental
+    Stabilize OpenShift spec 4.18.0, targeting Ignition spec 3.4.0
+    Stabilize Fcos spec 1.6.0, targeting Ignition spec 3.5.0
+    Add Fcos spec 1.7.0-experimental, targeting Ignition spec 3.6.0-experimental
+    Update Fiot spec 1.1.0-experimental to target Ignition spec 3.6.0-experimental
+    Update Flatcar spec 1.2.0-experimental to target Ignition spec 3.6.0-experimental
+    Update OpenShift spec 4.18.0-experimental, targeting Ignition spec 3.6.0-experimental
+    Update R4e spec 1.2.0-experimental to target Ignition spec 3.6.0-experimental
+    Support LUKS encryption using IBM CEX secure keys on s390x (fcos 1.6) (openshift 4.18.0-exp)
+    Re-vendor latest ignition release; 3.5.0-experimental becomes 3.5.0
+
+- Version 0.22.0
+    Stabilize OpenShift spec 4.17.0, targeting Ignition spec 3.4.0
+    Add OpenShift spec 4.18.0-experimental, targeting Ignition spec 3.5.0-experimental
+    Support and documentation for grub section moved to OpenShift 4.18.0-experimental spec.
+    Roll back to Ignition spec 3.4.0 (openshift 4.17.0)
+
+-------------------------------------------------------------------
 Wed Jul 10 14:01:21 UTC 2024 - Frantisek Simorda <frantisek.simorda@suse.com>
 
 - Update to 0.21.0
