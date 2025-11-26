@@ -3,7 +3,7 @@ Date: Mon, 17 Mar 2025 15:06:53 +0000
 Subject: replace pcre with pcre2
 
 Since pcre is unmaintained, the usage of ocaml-pcre will be replaced
-with ocaml-pcre2. While other regular expession libraries for OCaml
+with ocaml-pcre2. While other regular expression libraries for OCaml
 exists, they are not as feature complete as pcre2 is.
 
 This is the minimal change to use the system ocaml-pcre2. To reduce the
@@ -18,9 +18,9 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  coccinelle.opam        |  2 +-
  configure.ac           | 16 ++++++++--------
  globals/regexp_pcre.ml |  6 +++---
- install.txt            | 16 ++++++++--------
+ install.txt            |  6 +++---
  setup/fake-subst.sh    |  6 +++---
- 8 files changed, 43 insertions(+), 43 deletions(-)
+ 8 files changed, 38 insertions(+), 38 deletions(-)
 
 diff --git a/Makefile b/Makefile
 --- a/Makefile
@@ -124,22 +124,10 @@ diff --git a/Makefile.libs b/Makefile.libs
  
  # dynlink library
  LOCAL_dynlink     =
-diff --git a/coccinelle.opam b/coccinelle.opam
---- a/coccinelle.opam
-+++ b/coccinelle.opam
-@@ -18,7 +18,7 @@ depends: [
-   "ocaml"
-   "menhir"
-   "ocamlfind"
--  "pcre"
-+  "pcre2"
-   "stdcompat"
-   "pyml" { >= "20171117" }
-   "conf-pkg-config"
 diff --git a/configure.ac b/configure.ac
 --- a/configure.ac
 +++ b/configure.ac
-@@ -145,7 +145,7 @@ dnl  add a line for each package that is
+@@ -144,7 +144,7 @@ dnl  add a line for each package that is
  dnl  configured via AC_CHECK_COCCI_EXTPKG
  dnl  or AC_REQ_COCCI_EXTPKG
  AC_COCCI_INIT_PKG_EMPTY([dynlink])
@@ -148,7 +136,7 @@ diff --git a/configure.ac b/configure.ac
  AC_COCCI_INIT_PKG_EMPTY([bytes]) dnl for recent versions of pcre on old OCaml
  AC_COCCI_INIT_PKG_EMPTY([pyml])
  AC_COCCI_INIT_PKG_EMPTY([stdcompat])
-@@ -369,18 +369,18 @@ dnl    OCAML_PKG_pcre: if "local" use str package
+@@ -368,18 +368,18 @@ dnl    OCAML_PKG_pcre: if "local" use str package
  AC_ARG_ENABLE([pcre-syntax], AS_HELP_STRING([--enable-pcre-syntax], [enable pcre regular expression syntax (default: auto)]))
  AS_IF([test "x$enable_pcre_syntax" != "xno"],
  [dnl
@@ -170,7 +158,7 @@ diff --git a/configure.ac b/configure.ac
        [dnl
          AC_MSG_RESULT([yes])
          AC_MSG_CHECKING([if bytes is an actual module])
-@@ -407,14 +407,14 @@ AS_IF([test "x$enable_pcre_syntax" != xno],
+@@ -406,14 +406,14 @@ AS_IF([test "x$enable_pcre_syntax" != xno],
      AC_MSG_NOTICE([support for pcre syntax is enabled])
    ],
    [dnl
@@ -187,7 +175,7 @@ diff --git a/configure.ac b/configure.ac
    AC_SUBST([REGEXP_MODULE], [Regexp_str])
    AC_SUBST([REGEXP_FILE], [regexp_str.ml])
  ])
-@@ -571,7 +571,7 @@ AS_IF([test "$MAKE_stdcompat"],
+@@ -570,7 +570,7 @@ AS_IF([test "$MAKE_stdcompat"],
  AS_IF([test "$MAKE_parmap"],
    AC_CONFIG_SUBDIRS(bundles/parmap))
  
@@ -196,7 +184,7 @@ diff --git a/configure.ac b/configure.ac
    [AS_IF([test "x$OCAMLATLEAST4030" = xno  ],
      [AC_SUBST([CAMLnoreturn_start], [])
       AC_SUBST([CAMLnoreturn_end], [])],
-@@ -634,7 +634,7 @@ python scripting: $enable_python	(overridable with --enable-python)
+@@ -632,7 +632,7 @@ python scripting: $enable_python	(overridable with --enable-python)
  
  pcre regexes:     $enable_pcre_syntax	(overridable with --enable-pcre-syntax)
  pcre module:      $enable_pcre	(for local package use --disable-pcre)
@@ -235,48 +223,6 @@ diff --git a/globals/regexp_pcre.ml b/globals/regexp_pcre.ml
      | Str regexp ->
        try
  	ignore(Str.search_forward regexp string 0);
-diff --git a/install.txt b/install.txt
---- a/install.txt
-+++ b/install.txt
-@@ -30,13 +30,13 @@ On Debian/Ubuntu, install the following packages:
-     If you do not install libparmap-ocaml-dev, then you will automatically use
-     the bundle instead. However, if you used opam to switch to a different
-     version of OCaml, you must uninstall libparmap-ocaml-dev.
-- - libpcre-ocaml-dev (optional, for PCRE support, bundled)
--    If you do not install libpcre-ocaml-dev, then you will automatically use the
-+ - libpcre2-ocaml-dev (optional, for PCRE support, bundled)
-+    If you do not install libpcre2-ocaml-dev, then you will automatically use the
-     bundle instead. However, in order for the bundle to work, you also need:
--  - libpcre3-dev (optional, not bundled)
-+  - libpcre2-dev (optional, not bundled)
-      Additionally, if you used opam to switch to a different version of OCaml and
--     want PCRE support, then make sure you have libpcre-ocaml-dev uninstalled and
--     libpcre3-dev installed, otherwise Coccinelle will not compile.
-+     want PCRE support, then make sure you have libpcre2-ocaml-dev uninstalled and
-+     libpcre2-dev installed, otherwise Coccinelle will not compile.
- 
- On Fedora, install the following packages:
-  - automake
-@@ -47,16 +47,16 @@ On Fedora, install the following packages:
-  - ocaml-findlib-devel
-  - ocaml-ocamldoc
-  - ocaml-menhir (optional, bundled)
-- - ocaml-pcre-devel (optional, bundled)
-+ - ocaml-pcre2-devel (optional, bundled)
-     Note: if you used opam to switch to a different version of OCaml, installing
--    ocaml-pcre-devel will make compilation impossible. Additionally, PCRE
-+    ocaml-pcre2-devel will make compilation impossible. Additionally, PCRE
-     support and OCaml scripting will be impossible.
- If you want Python scripting: Coccinelle is not compatible with Python 3.13,
- which is the default on Fedora as of 2024-12-19. Consider switching to Python
- 3.12, for example.
- 
- On Arch Linux, install the following packages:
--$ pacman -Syu pkg-config ocaml ocaml-findlib autoconf automake pcre make
-+$ pacman -Syu pkg-config ocaml ocaml-findlib autoconf automake pcre2 make
- as well as the C compiler of your choice.
- Note: if you used opam to switch to a different version of OCaml, OCaml
- scripting will be impossible.
 diff --git a/setup/fake-subst.sh b/setup/fake-subst.sh
 --- a/setup/fake-subst.sh
 +++ b/setup/fake-subst.sh
@@ -302,4 +248,4 @@ diff --git a/setup/fake-subst.sh b/setup/fake-subst.sh
  
  # iterate through pattern-response pairs
 
-base-commit: d9064ec494fa1572abc4b1e26984246ce902b7aa
+base-commit: 09b475bb3dd2b29c6bd904cc455d4c25c6641649

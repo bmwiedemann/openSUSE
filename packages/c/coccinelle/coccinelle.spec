@@ -33,7 +33,7 @@ ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
 %define     pkg coccinelle
 %global _buildshell /bin/bash
 Name:           %pkg%nsuffix
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Semantic patch utility
@@ -152,9 +152,8 @@ spatch --sp-file bug1192695.cocci --include-headers --no-includes --smpl-spacing
 
 %if "%build_flavor" == ""
 %files
-%doc authors.txt bugs.txt changes.txt copyright.txt credits.txt
+%doc changes.txt copyright.txt
 %license license.txt
-%doc readme.txt
 %_bindir/*
 %_datadir/bash-completion
 %_datadir/vim

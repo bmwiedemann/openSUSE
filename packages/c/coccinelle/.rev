@@ -318,4 +318,12 @@
     <comment>- update to version 1.3.0 (027b625f9) (forwarded request 1254404 from olh)</comment>
     <requestid>1254405</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>d1cee60d550679bb2618eda202292625</srcmd5>
+    <version>1.3.1</version>
+    <time>1764173741</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1320047</requestid>
+  </revision>
 </revisionlist>
