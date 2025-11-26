@@ -1,7 +1,7 @@
 addFilter("potential-bashisms /usr/bin/xpra_Xdummy");
 addFilter("potential-bashisms /usr/libexec/xpra/xpra_weston_xvfb")
 addFilter('dbus-policy-allow-receive <allow receive_sender="org.xpra.Server"/> /etc/dbus-1/system.d/xpra.conf');
-addFilter('python-missing-require PyGObject');
+#addFilter('python-missing-require PyGObject');
 addFilter("python-leftover-require .*-cairo");
 addFilter("python-leftover-require .*-dbus-python");
 addFilter("python-leftover-require .*-gobject");
@@ -9,6 +9,7 @@ addFilter("python-leftover-require .*-gobject");
 addFilter("python-leftover-require .*-gst");
 addFilter("python-leftover-require .*-pycups");
 addFilter("python-leftover-require .*-rencode");
+addFilter("python-leftover-require .*-Pillow");
 
 ### 20250710: This (the shebang and lack of executable bit) seems to be by design
 ###   The xpra-audio-server rpm from https://xpra.org/beta/Fedora/ is this way

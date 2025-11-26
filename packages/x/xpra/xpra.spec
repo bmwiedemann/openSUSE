@@ -1,7 +1,7 @@
 #
 # spec file for package xpra
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %bcond_with pandoc
 ### Comes from git tarball setup.py:
 ###   setup.py build --verbose ...
-%define xpra_ver %(echo %{version} | awk -F+ '{print $1}' | awk -F. '{print $1"."$2}')
+#%%define xpra_ver %%(echo %%{version} | awk -F+ '{print $1}' | awk -F. '{print $1"."$2}')
 #####
 %define python_ver python313
 %define python_short_ver 3.13
@@ -30,8 +30,7 @@
 
 %global __requires_exclude ^typelib\\(GtkosxApplication\\)|typelib\\(GdkGLExt\\)|typelib\\(GtkGLExt\\).*$
 Name:           xpra
-Version:        6.4.0+git20250819.404462be66
-#Version:        6.3
+Version:        6.3.6
 Release:        0
 Summary:        Remote display server for applications and desktops
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT
@@ -40,7 +39,9 @@ URL:            https://www.xpra.org/
 Source0:        %{name}-%{version}.tar.gz
 #Source0:        https://github.com/Xpra-org/xpra/archive/refs/tags/v%%{version}.tar.gz#/%%{name}-%%{version}.tar.gz
 Source1:        xpra-icon.png
-Source100:      xpra-rpmlintrc
+Source99:       xpra-rpmlintrc
+Source100:      README.md
+#Patch0:         FIX-is_distribution_variant.diff
 BuildRequires:  ImageMagick
 BuildRequires:  brotli
 BuildRequires:  cups
@@ -50,7 +51,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  git-core
 BuildRequires:  hicolor-icon-theme
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} > 1600
 %define using_release "distribution-release"
 BuildRequires:  distribution-release
 %else
@@ -81,11 +82,11 @@ BuildRequires:  pkgconfig(libxxhash)
 #BuildRequires:  pkgconfig(pam_misc)
 BuildRequires:  pkgconfig(py3cairo)
 BuildRequires:  procps-devel
+BuildRequires:  python-rpm-macros
 BuildRequires:  qrencode-devel
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(vpx) >= 1.4.0
 BuildRequires:  pkgconfig(xcomposite)
-BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xkbfile)
 BuildRequires:  pkgconfig(xrandr)
@@ -95,28 +96,27 @@ Requires:       /usr/bin/dbus-launch
 Requires:       gstreamer-plugins-base
 Requires:       gstreamer-plugins-good
 Requires:       gstreamer-utils
-%if 0%{?sle_version} && 0%{?sle_version} < 150300
-Requires:       pulseaudio
-%else
+### 20251111: Leap can't seem to handle 'sle_version'
+#%%if 0%%{?sle_version} && 0%%{?sle_version} < 150300
+#Requires:       pulseaudio
+#%%else
 Requires:       pulseaudio-daemon
-%endif
+#%%endif
+#####
 Requires:       %{python_ver}-Pillow
 Requires:       %{python_ver}-cairo
 Requires:       %{python_ver}-dbus-python
 Requires:       %{python_ver}-gobject
 Requires:       %{python_ver}-gobject-Gdk
 Requires:       %{python_ver}-gst
-Requires:       pulseaudio-utils
 Requires:       %{python_ver}-pycups
 Requires:       %{python_ver}-rencode
+Requires:       pulseaudio-utils
 Requires:       shared-mime-info
 Requires:       typelib-1_0-Notify-0_7
 Requires:       xf86-video-dummy
 Requires:       xorg-x11-xauth
 Requires(post): %fillup_prereq
-Recommends:     lsb-release
-Recommends:     pinentry
-Recommends:     pulseaudio-module-x11
 Recommends:     %{python_ver}-cryptography
 Recommends:     %{python_ver}-dnspython
 Recommends:     %{python_ver}-netifaces
@@ -127,6 +127,9 @@ Recommends:     %{python_ver}-paramiko
 Recommends:     %{python_ver}-pyinotify
 Recommends:     %{python_ver}-pyu2f
 Recommends:     %{python_ver}-pyxdg
+Recommends:     lsb-release
+Recommends:     pinentry
+Recommends:     pulseaudio-module-x11
 Recommends:     xdg-menu
 # Updating %%ghost items makes it complain about missing xpra group
 Provides:       group(xpra)
@@ -147,8 +150,8 @@ Xpra is usable over reasonably slow links and does its best to adapt to changing
 network bandwidth constraints.
 
 %prep
-
-%setup -q
+#%%setup -q
+%autosetup
 
 find -name '*.py' \
   -exec sed -i '1{\@^#!/usr/bin/env python@d}' {} +
@@ -170,7 +173,7 @@ sed -e 's|__FILLUPDIR__|%{_fillupdir}|' \
 %build
 
 ### DEBUGGING
-echo "sle_version:   %sle_version"
+#echo "sle_version:   %%{sle_version}"
 echo "suse_version:  %suse_version"
 echo "using_release: %using_release"
 #####
@@ -322,7 +325,7 @@ done
 %{_udevrulesdir}/71-xpra-virtual-pointer.rules
 %dir %{_libexecdir}/xpra
 %{_libexecdir}/xpra/auth_dialog
-%{_libexecdir}/xpra/daemonizer
+#%%{_libexecdir}/xpra/daemonizer
 %{_libexecdir}/xpra/gnome-open
 %{_libexecdir}/xpra/gvfs-open
 %{_libexecdir}/xpra/xdg-open
@@ -333,8 +336,9 @@ done
 ### Leap 15.[5,6] need to use >= Python3.10, so these have to be called out directly.
 #%%{python3_sitearch}/xpra
 %{_libdir}/%{python_bin}/site-packages/%{name}
+%{python3_sitearch}/%{name}-%{version}-py%{python3_version}.egg-info
 #%%{python3_sitearch}/%%{name}-%%{xpra_ver}-py%%{python3_version}.egg-info
-%{_libdir}/%{python_bin}/site-packages/%{name}-%{xpra_ver}-py%{python_short_ver}.egg-info
+#%%{_libdir}/%%{python_bin}/site-packages/%%{name}-%%{xpra_ver}-py%%{python_short_ver}.egg-info
 #####
 %{_datadir}/applications/xpra-gui.desktop
 %{_datadir}/applications/xpra-launcher.desktop

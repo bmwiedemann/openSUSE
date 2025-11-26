@@ -5,7 +5,19 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/Xpra-org/xpra</param>
     <param name="scm">git</param>
+    <param name="versionformat">v6.3.6</param>
+    <param name="revision">v6.3.6</param>
+    <param name="match-tag">*</param>
+    <!--
+    <param name="versionrewrite-pattern">v(\d+)</param>
+    -->
+    <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
+    <param name="versionrewrite-replacement">\1</param>
+
+    <!-- 20251021: Swapping to specific tagged release
     <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
+    -->
+
     <!--
       * These need changed dependent on tags
         at github.com/Xpra-org/xpra ; Currently
@@ -17,15 +29,20 @@
           ...
           xpra/xpra/__init__.py:__version_info__ = (6, 4)
           ...
+      * Or this (20251013):
+          $ grep -e __version_info__ -e __version__ xpra/xpra/__init__.py
+          __version_info__ = (6, 4)
+          __version__ = "6.4"
     -->
     <!-- DEFAULT versionrewrite-pattern
     <param name="versionrewrite-pattern">v(.*)</param>
     -->
     <!-- REPLACEMENT versionrewrite-pattern
-    -->
     <param name="versionrewrite-pattern">v6.1.0</param>
     <param name="versionrewrite-replacement">6.4.0</param>
-    <param name="changesgenerate">enable</param>
+    -->
+
+    <param name="changesgenerate">disable</param>
   </service>
   <service name="set_version" mode="manual"/>
   <service name="tar" mode="manual">

@@ -1,7 +1,91 @@
 -------------------------------------------------------------------
+Tue Nov 11 07:01:49 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Removing 'FIX-is_distribution_variant.diff', Leap 16.0 shouldn't identify
+  as ALP anyway
+  * Cause was it pulling in ALP-dummy-release vs. openSUSE-release
+
+-------------------------------------------------------------------
+Tue Nov 11 06:32:45 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding 'FIX-is_distribution_variant.diff' so Leap 16.0 builds
+  * This was suggested by Giacomo Comes (gcomes.obs) per SR#1317001
+
+-------------------------------------------------------------------
+Mon Nov 10 15:32:38 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 6.3.6:
+  * Fixed spurious horizontal scroll events
+  * Fixed that `peercred` did not allow GID matches
+  * Support mmap filenames with `:` in them
+  * Fixed desktop scaling miscalculations for monitor data
+
+-------------------------------------------------------------------
+Mon Nov 03 01:17:29 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding 'Source100: README.md' as the README is suggested at src.opensuse.org
+  setup, otherwise get the following message:
+  * "Attention, "README.md" is not mentioned in spec files as source or patch."
+- Update to version 6.3.5:
+  * Fixed a `peercred` authentication module bypass
+  * Fixed MacOS clipboard transfers failing on Unicode strings
+  * Fix scroll wheel spurious events by not sending delta value
+    unless it has been updated
+  * Fixed horizontal DPI not being honoured due to a spello
+  * Pointer overly with the cairo backend was restored
+
+-------------------------------------------------------------------
+Tue Oct 21 18:14:55 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Switched from the development branch to tagged release.
+  This is a "downgrade" in some sense, as 6.3.4 branched off at
+  v6.1.0-1499-g676ae60240.
+- Switch to version 6.3.4:
+  * Made it easier to switch xvfb command and modify xpra's
+    configuration
+  * Added AMD AVF encoder support
+  * New features: Support for server power events, ibus keyboards
+    layouts, refresh rate ranges, YUVA support for JPEG
+  * Shadow servers no longer stop the refresh loop
+  * Cope with a read-only $HOME directory
+  * Handle missing configuration directories more gracefully
+  * Fix crash when configuring monitors
+  * Disable `scroll` encoding due to visual corruptions
+  * Preserve full-range color attribute when encoding with H264
+  * Fix PAM module errors as a result of encoding mixing in Python
+  * Avoid attempting to use IPv6 if system not set up for it
+  * Fix focus breaking after running for ~25 days
+  * Fix Cython libproc bindings erroring out when XRes bindings
+    are missing
+  * Support connecting to X11 displays via TCP
+  * Don't use headerbar due to rendering glitches
+  * Don't log HTTP passwords in debug logging
+  * Show file-transfer dialog menu entry even if none of the
+    transfers are set to require the user to first accept the
+    operation
+  * Expose all window metadata via `xpra info`.
+
+-------------------------------------------------------------------
+Sun Sep 07 16:06:39 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 6.4.0+git20250907.e40e6cbe02
+  [actual git commit v6.1.0-2950-ge40e6cbe02]
+  * Platform support: Major modularization, GTK-free server,
+    Pulseaudio for containers, removal of the python-avahi mDNS
+    backend
+  * Encodings: nvenc AV1 encoder, aom AV1 decoder, 8-bit pixel
+    depth handling (with mmap transfers), conversion os JPEG-XL
+    background images for the HTML5 client
+  * Middle mouse button emulation
+  * Configurable window grouping
+  * SSH host key verification for non-standard ports
+  * Configurable refresh rate
+
+-------------------------------------------------------------------
 Tue Aug 19 15:29:49 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
-- Update to version 6.4.0+git20250819.404462be66:
+- Update to version 6.4.0+git20250819.404462be66
+  [actually git commit v6.1.0-2733-g404462be66]:
   * forgot to add x11init
   * move screenshot pasting code to a module
   * the xor encoding no longer exists
