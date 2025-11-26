@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 17 01:01:12 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update http2 to version 5.3.10 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Jun 26 05:31:35 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update http2 to version 5.3.10.
