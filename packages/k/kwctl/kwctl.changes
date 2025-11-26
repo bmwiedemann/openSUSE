@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Nov 25 06:19:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.31.0:
+  * Features
+    - feat(byo-pki): allow users to define their own trusted root
+      (#1423)
+  * Maintenance
+    - chore: Bump kwctl version to v1.31.0 (#1434)
+    - build(deps): update all dependencies updates to v4.5.53
+      (#1431)
+    - build(deps): update taiki-e/install-action action to v2.62.56
+      (#1432)
+    - build(deps): update actions/checkout action to v6 (#1433)
+    - chore: Bump kwctl version to v1.31.0-rc1 (#1430)
+    - build(deps): update github-actions (#1427)
+    - build(deps): update all dependencies updates (#1428)
+
+-------------------------------------------------------------------
+Fri Nov 14 12:05:23 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.30.1:
+  * Features
+    - feat: Print errors of validating settings as multiline
+      (#1416)
+  * Maintenance
+    - chore: prepare 1.31.1 release (#1426)
+    - build(deps): update github-actions (#1422)
+    - build(deps): update all dependencies updates (#1421)
+    - build(deps): update rust crate walrus to v0.24.3 (#1417)
+    - build(deps): update github-actions (#1418)
+    - build(deps): update all dependencies updates (#1405)
+    - build(deps): update github-actions (#1406)
+    - build(deps): update github-actions (major) (#1407)
+    - deps: bump testcontainers to 0.25.2 (#1415)
+
+-------------------------------------------------------------------
 Thu Oct 30 07:12:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.30.0:

@@ -17,7 +17,7 @@
 
 
 Name:           kwctl
-Version:        1.30.0
+Version:        1.31.0
 Release:        0
 Summary:        The go-to CLI tool for Kubewarden users
 License:        Apache-2.0
