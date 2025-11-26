@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 22 21:16:21 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove unused BuildRequires: update-desktop-files.
+
+-------------------------------------------------------------------
 Tue Apr 28 16:01:30 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Correct prefix setting broken with the previous changes.

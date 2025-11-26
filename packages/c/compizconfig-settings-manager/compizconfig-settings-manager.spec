@@ -1,7 +1,7 @@
 #
 # spec file for package compizconfig-settings-manager
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,6 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel
-BuildRequires:  update-desktop-files
 Requires:       python3-ccm = %{version}
 Provides:       %{_name} = 0.8
 BuildArch:      noarch
