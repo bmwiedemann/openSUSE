@@ -1,0 +1,5 @@
+[Unit]
+Description=Target to restart all parts of Grafana Loki
+
+[Install]
+WantedBy=multi-user.target

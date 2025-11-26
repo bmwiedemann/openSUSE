@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue Nov 25 21:52:56 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.6.2:
+  * fix(deps): Loki 3.6.1 CVE updates (#20014)
+  * docs: 3.5.8 Release Notes (backport release-3.6.x) (#19995)
+  * docs: Release Notes 3.6.1 (backport release-3.6.x) (#19971)
+  * docs: backport typo to 3.6 (#19967)
+  * chore(docs): Fix link to helm chart values.yaml (backport release-3.6.x) (#19963)
+  * chore(release-3.6.x): release 3.6.1 (#19953)
+
+-------------------------------------------------------------------
+Fri Nov 21 19:30:03 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add support for instantiated services and a target to
+  disable/restart all at the same time
+
+-------------------------------------------------------------------
+Fri Nov 21 17:28:17 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.6.1:
+  * fix(docker): set WORKDIR to root in loki Dockerfiles (#19952)
+  * fix(docker): missing permissions  to start docker (backport release-3.6.x) (#19948)
+  * chore(k277): release 3.6.0 (#19686)
+
+-------------------------------------------------------------------
+Tue Nov 18 23:26:07 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- add support for instantiated services
+
+-------------------------------------------------------------------
+Tue Nov 18 23:24:08 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Sync service files with upstream again
+
+-------------------------------------------------------------------
+Mon Nov 17 23:23:30 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.6.0:
+  A new big feature and bugfix release
+
+  For all the details see
+  https://github.com/grafana/loki/releases/tag/v3.6.0
+
+-------------------------------------------------------------------
 Thu Nov 06 06:36:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.5.8:

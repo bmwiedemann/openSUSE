@@ -18,7 +18,7 @@ ProtectControlGroups=true
 RestrictRealtime=true
 # end of automatic additions
 User=root
-EnvironmentFile=-/etc/sysconfig/promtail
+Environment=CONFIG_FILE=/etc/promtail/%i.yaml
 ExecStart=/usr/bin/promtail -config.file=${CONFIG_FILE}
 ExecReload=/bin/kill -HUP $MAINPID
 # Give a reasonable amount of time for promtail to start up/shut down
@@ -29,4 +29,4 @@ Restart=always
 RestartSec = 2
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=promtail.target

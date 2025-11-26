@@ -20,8 +20,11 @@
 %global loki_logdir /var/log/loki
 %global promtail_datadir /var/lib/promtail
 
+%global loki_services     loki.target     loki.service     loki@.service
+%global promtail_services promtail.target promtail.service promtail@.service
+
 Name:           loki
-Version:        3.5.8
+Version:        3.6.2
 Release:        0
 Summary:        Loki: like Prometheus, but for logs
 License:        Apache-2.0
@@ -32,6 +35,10 @@ Source1:        loki.service
 Source2:        promtail.service
 Source3:        sysconfig.loki
 Source4:        sysconfig.promtail
+Source5:        loki@.service
+Source6:        promtail@.service
+Source7:        loki.target
+Source8:        promtail.target
 Source99:       series
 Patch0:         proper-data-directories.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -113,8 +120,14 @@ CGO_ENABLED=1 go build -ldflags="$GOLDFLAGS" --tags=promtail_journal_enabled ./c
 # Service files for Loki and promtail
 install -Dm644 %{SOURCE1} %{buildroot}%{_unitdir}/loki.service
 install -Dm644 %{SOURCE2} %{buildroot}%{_unitdir}/promtail.service
+install -Dm644 %{SOURCE5} %{buildroot}%{_unitdir}/loki@.service
+install -Dm644 %{SOURCE6} %{buildroot}%{_unitdir}/promtail@.service
+install -Dm644 %{SOURCE7} %{buildroot}%{_unitdir}/loki.target
+install -Dm644 %{SOURCE8} %{buildroot}%{_unitdir}/promtail.target
+
 install -Dm644 %{SOURCE3} %{buildroot}%{_fillupdir}/sysconfig.loki
 install -Dm644 %{SOURCE4} %{buildroot}%{_fillupdir}/sysconfig.promtail
+
 install -dm755 %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcloki
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcpromtail
@@ -135,35 +148,37 @@ install -Dm755 logcli %{buildroot}%{_bindir}
 install -D -d -m 0750 %{buildroot}%{promtail_datadir} %{buildroot}%{loki_datadir} %{buildroot}%{loki_logdir}
 
 %pre
-%service_add_pre loki.service
+%service_add_pre %{loki_services}
 
 %post
-%fillup_only
-%service_add_post loki.service
+%fillup_only -n loki
+%service_add_post %{loki_services}
 
 %preun
-%service_del_preun loki.service
+%service_del_preun %{loki_services}
 
 %postun
-%service_del_postun loki.service promtail.service
+%service_del_postun %{loki_services} %{promtail_services}
 
 %pre -n promtail
-%service_add_pre promtail.service
+%service_add_pre %{promtail_services}
 
 %post -n promtail
 %fillup_only -n promtail
-%service_add_post promtail.service
+%service_add_post %{promtail_services}
 
 %preun -n promtail
-%service_del_preun promtail.service
+%service_del_preun %{promtail_services}
 
 %postun -n promtail
-%service_del_postun promtail.service
+%service_del_postun %{promtail_services}
 
 %files
 %license LICENSE
 %doc README.md
+%{_unitdir}/loki.target
 %{_unitdir}/loki.service
+%{_unitdir}/loki@.service
 %{_fillupdir}/sysconfig.loki
 %{_bindir}/loki
 %dir %{_sysconfdir}/loki
@@ -173,7 +188,9 @@ install -D -d -m 0750 %{buildroot}%{promtail_datadir} %{buildroot}%{loki_datadir
 %dir %attr(-,loki,loki) %{loki_logdir}/
 
 %files -n promtail
+%{_unitdir}/promtail.target
 %{_unitdir}/promtail.service
+%{_unitdir}/promtail@.service
 %{_fillupdir}/sysconfig.promtail
 %{_bindir}/promtail
 %dir %{_sysconfdir}/loki

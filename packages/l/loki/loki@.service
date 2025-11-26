@@ -1,6 +1,6 @@
 [Unit]
-Description=promtail is the agent responsible for gathering logs and sending them to Loki.
-Documentation=https://github.com/grafana/loki/blob/master/docs/promtail.md
+Description=Loki is a horizontally-scalable, highly-available, multi-tenant log aggregation system
+Documentation=https://github.com/grafana/loki
 After=network-online.target
 Wants=network-online.target
 
@@ -17,16 +17,16 @@ ProtectKernelModules=true
 ProtectControlGroups=true
 RestrictRealtime=true
 # end of automatic additions
-User=root
-EnvironmentFile=-/etc/sysconfig/promtail
-ExecStart=/usr/bin/promtail -config.file=${CONFIG_FILE}
+User=loki
+Environment=CONFIG_FILE=/etc/loki/%i.yaml
+ExecStart=/usr/bin/loki -config.file=${CONFIG_FILE}
 ExecReload=/bin/kill -HUP $MAINPID
-# Give a reasonable amount of time for promtail to start up/shut down
-TimeoutSec = 60
-TimeoutStopSec=20s
+# Give a reasonable amount of time for the server to start up/shut down
+TimeoutSec = 120
+TimeoutStopSec=120s
 SendSIGKILL=no
 Restart=always
 RestartSec = 2
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=loki.target
