@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 27 06:03:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.19:
+  * Performance
+    - Simplify fix_byte_order_marker hook (#1136)
+    - Simplify trailing-whitespace hook to improve performance
+      (#1135)
+  * Bug fixes
+    - Close stdin for hook subcommands (#1155)
+    - Fix parsing Python interpreter info containing non-UTF8 chars
+      (#1141)
+
+-------------------------------------------------------------------
 Fri Nov 21 15:08:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.18:
