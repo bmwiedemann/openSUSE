@@ -17,7 +17,7 @@
 
 
 Name:           pinact
-Version:        3.4.4
+Version:        3.4.5
 Release:        0
 Summary:        CLI to edit GitHub Workflows and pin versions of Actions and Reusable Workflows
 License:        MIT
@@ -48,8 +48,8 @@ Bash command line completion support for %{name}.
 %package -n %{name}-fish-completion
 Summary:        Fish Completion for %{name}
 Group:          System/Shells
-Requires:       fish
 Requires:       %{name} = %{version}
+Requires:       fish
 Supplements:    (%{name} and fish)
 BuildArch:      noarch
 
@@ -59,8 +59,8 @@ Fish command line completion support for %{name}.
 %package -n %{name}-zsh-completion
 Summary:        Zsh Completion for %{name}
 Group:          System/Shells
-Requires:       zsh
 Requires:       %{name} = %{version}
+Requires:       zsh
 Supplements:    (%{name} and zsh)
 BuildArch:      noarch
 
