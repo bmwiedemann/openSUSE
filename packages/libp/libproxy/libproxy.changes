@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 26 09:03:33 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.5.12:
+  + Add static library generation
+  + CI: Remove js / ts check
+  + xdp: Fix missing dispose chain up
+  + xdp: Reduce bus access error log level to debug
+
+-------------------------------------------------------------------
 Wed Sep 10 06:23:03 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.5.11:

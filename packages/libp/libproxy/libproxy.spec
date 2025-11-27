@@ -32,7 +32,7 @@ ExclusiveArch:  do-not-build
 
 %define _name   libproxy
 Name:           libproxy%{?dash}%{?name_suffix}
-Version:        0.5.11
+Version:        0.5.12
 Release:        0
 Summary:        Automatic proxy configuration management for applications
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -157,6 +157,8 @@ from a wide range of programming languages.
 
 %install
 %meson_install
+# Drop new static library; so far no option to override this at build time directly
+rm -f %{buildroot}%{_libdir}/libproxy.a
 
 %if "%{flavor}" == "backend"
 # this stuff is already shipped as part of the client library (built without cURL to break cycles)
