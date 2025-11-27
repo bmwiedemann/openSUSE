@@ -25,7 +25,7 @@ Group:          Productivity/Other
 URL:            https://github.com/cheat/cheat
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.19
+BuildRequires:  golang(API) >= 1.24
 
 %description
 cheat allows you to create and view interactive cheatsheets on the command-line. It was designed to help remind *nix system administrators of options for commands that they use frequently, but not frequently enough to remember.

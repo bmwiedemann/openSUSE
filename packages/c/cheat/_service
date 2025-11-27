@@ -16,8 +16,9 @@
   </service>
   <service name="go_modules" mode="manual">
     <param name="replace">github.com/cloudflare/circl=github.com/cloudflare/circl@v1.6.1</param>
-    <param name="replace">golang.org/x/net=golang.org/x/net@v0.36.0</param>
-    <param name="replace">golang.org/x/crypto=golang.org/x/crypto@v0.35.0</param>
+    <param name="replace">golang.org/x/net=golang.org/x/net@v0.47.0</param>
+    <param name="replace">golang.org/x/crypto=golang.org/x/crypto@v0.45.0</param>
+    <param name="replace">golang.org/x/sys=golang.org/x/sys@v0.38.0</param>
     <param name="replace">github.com/go-git/go-git/v5=github.com/go-git/go-git/v5@v5.13.0</param>
   </service>
 </services>

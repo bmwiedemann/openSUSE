@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 27 08:11:59 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Security:
+  * CVE-2025-47913: Fix client process termination (bsc#1253593)
+  * CVE-2025-58181: Fix potential unbounded memory consumption
+    (bsc#1253922)
+  * CVE-2025-47914: Fix panic due to an out of bounds read
+    (bsc#1254051)
+  * Replace golang.org/x/crypto=golang.org/x/crypto@v0.45.0
+  * Replace golang.org/x/net=golang.org/x/net@v0.47.0
+  * Replace golang.org/x/sys=golang.org/x/sys@v0.38.0
+
+-------------------------------------------------------------------
 Fri Aug 22 13:12:32 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Packaging improvements:
