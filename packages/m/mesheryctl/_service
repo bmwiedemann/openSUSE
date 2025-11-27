@@ -5,7 +5,7 @@
     <param name="exclude">.git</param>
     <param name="exclude">docs/*</param>
     <param name="exclude">server/meshmodel/*</param>
-    <param name="revision">v0.8.173</param>
+    <param name="revision">v0.8.176</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">disable</param>

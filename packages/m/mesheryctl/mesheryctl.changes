@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Nov 27 06:05:20 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.176:
+  no CLI-related changes
+- update to 0.8.175:
+  * General
+    - Revert "[server] Add workspace_id and organization_id to GET
+      /api/pattern/{id} endpoint" @aabidsofi19 (#16505)
+  * Meshery CLI
+    - chore: remove stale TODO from auth.go @parthivsaikia (#16495)
+- update to 0.8.174:
+  * General
+    - [server] Add workspace_id and organization_id to GET
+      /api/pattern/{id} endpoint @copilot-swe-agent (#16500)
+
+-------------------------------------------------------------------
 Tue Nov 25 06:33:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.173:
