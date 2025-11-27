@@ -1565,4 +1565,12 @@ bnc#808106: certificate count of the signature list (forwarded request 157970 fr
     <comment></comment>
     <requestid>1300222</requestid>
   </revision>
+  <revision rev="134" vrev="2">
+    <srcmd5>887fe7442c7cccb0dea99d963ee9ceea</srcmd5>
+    <version>16.1</version>
+    <time>1764253079</time>
+    <user>anag_factory</user>
+    <comment>Add Microsoft-signed 16.1 shim</comment>
+    <requestid>1320216</requestid>
+  </revision>
 </revisionlist>

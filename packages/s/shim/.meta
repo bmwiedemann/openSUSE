@@ -2,7 +2,6 @@
   <title>UEFI shim loader</title>
   <description>shim is a trivial EFI application that, when run, attempts to open and
 execute another application.</description>
-  <devel project="devel:openSUSE:Factory" package="shim"/>
   <build>
     <disable/>
   </build>

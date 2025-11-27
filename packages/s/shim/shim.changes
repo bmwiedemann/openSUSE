@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Nov 26 07:42:15 UTC 2025 - Joey Lee <jlee@suse.com>
+
+- Add Microsoft-signed 16.1 shim
+- shim.spec: Temporarily disable nx-shim
+    - We still need time to test nx (non-executable) shim and develop
+      the script for delivery. We will not support nx-shim on all Leap
+      and SLE distros because the function should also be supported by
+      grub2 and kernel.
+- shim.spec: Remove the reproducibility check for the shim binary
+    - The binutils on Leap 15.6 and SLE-15-SP3 has been upgraded to 2.45
+      when we are waiting shim-review and Microsoft signing. It causes
+      that the shim binary is NOT reproducible on build services.
+    - We just direct use the Microsoft signed-back shim binaries
+      because we build this binary before and have the logs to prove it.
+      Before we find a good approach to save/restore the build service
+      environment, let’s directly use the Microsoft signed-back shim for
+      delivery.
+- Certificates: Add Microsoft UEFI CA files to the target certificates
+  array in pretrans script.
+- Certificates: Convert the SUSE certificates from PEM to DER format
+- timestamp.pl: fix the size of checksum in PE Optional Header
+
+-------------------------------------------------------------------
+Mon Oct 13 16:31:45 UTC 2025 - Joey Lee <jlee@suse.com>
+
+- Add a pretrans script to verify that the UEFI db should have the
+  necessary certificate to allow the shim binary to boot. The installation
+  will be aborted if the db is missing the target certificate. To proceed,
+  the user must enroll the target certificate in the db or disable UEFI
+  Secure Boot.
+
+-------------------------------------------------------------------
 Tue Aug 19 07:48:52 UTC 2025 - Joey Lee <jlee@suse.com>
 
 - Removed the following patches because they are merged to shim 16.1:

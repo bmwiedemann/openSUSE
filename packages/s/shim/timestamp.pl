@@ -87,7 +87,7 @@ if ($options{'set-from-file'}) {
 			$set_linker = pack('S', hex($1));
 			next;
 		} elsif (/^checksum: ([0-9a-f]+)/) {
-			$set_checksum = pack('S', hex($1));
+			$set_checksum = pack('L', hex($1));
 			next;
 		}
 		last if $set_timestamp && $set_checksum && $set_linker;
@@ -114,9 +114,9 @@ sub do_show($)
 	printf ("linker: %x\n", unpack('S', $value));
 
 	die "seek $file: $!\n" unless seek($fh, 216, 0);
-	die "read $file: $!\n" unless read($fh, $value, 2);
+	die "read $file: $!\n" unless read($fh, $value, 4);
 
-	printf ("checksum: %x\n", unpack('S', $value));
+	printf ("checksum: %x\n", unpack('L', $value));
 
 	close($fh);
 }
@@ -132,7 +132,7 @@ sub do_set($)
 	die "write $file: $!\n" unless print $fh $set_linker;
 
 	die "seek $file: $!\n" unless seek($fh, 216, 0);
-	die "read $file: $!\n" unless print $fh $set_checksum;
+	die "write $file: $!\n" unless print $fh $set_checksum;
 	close($fh);
 }
 
