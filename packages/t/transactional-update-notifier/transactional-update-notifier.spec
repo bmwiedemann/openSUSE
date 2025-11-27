@@ -1,7 +1,7 @@
 #
 # spec file for package transactional-update-notifier
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2022 Luciano Santos <luc14n0@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,7 +30,7 @@ Source9:        %{name}.rpmlintrc
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  golang(API) >= 1.18
 
-Requires:       dbus-1
+Requires:       dbus-service
 
 %description
 Add notifications, via Desktop Bus (D-Bus), about transactional updates for
