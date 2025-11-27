@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov 26 13:54:47 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.31.0
+  * https: avoid costly load_verify_locations when SSL certificate
+    validation is disabled (#249)
+- from version 0.30.2
+  * No changes in library. Fix automatic pypi release from CI.
+- from version 0.30.1
+  * restore socks proxy support, was broken in 0.30.0 (#251)
+- from version 0.30.0
+  * BREAKING CHANGE! Python support 3.7+ only
+  * https: Do not rely on ssl.PROTOCOL_TLS, which has been
+    deprecated in Python3.10 (#243)
+
+-------------------------------------------------------------------
 Tue Jan  2 22:31:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - require setuptools
