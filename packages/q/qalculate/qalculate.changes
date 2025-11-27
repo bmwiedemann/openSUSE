@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Nov 17 18:39:16 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.8.2
+  * New functions: reshape(), circshift(), replacePart().
+  * Functions mergevectors() and area() renamed to slice() and
+    part().
+  * v[i, ...]=... syntax for assignment of part of matrix/vector
+    variable.
+  * Improve language handling for functions, units, and variables
+  * Limit the range of supported arguments in bessely, besselj,
+    binomial, and igamma functions (to avoid segfault and very
+    slow unabortable calculations).
+  * Do not try to calculate exact result with automatic
+    approximation for expressions with iterative functions.
+  * Fix compilation without Readline
+  * Fix segfault with entrywise operation on column vector and
+    an empty vector.
+  * Fix handling of single quotation marks.
+  * Fix use of options "ignore locale" and "language" in command
+    line arguments.
+  * Option to change the default currency.
+  * Limit time used for dual calculation with time command line
+    argument to same limit as without.
+  * Fix use of options "ignore locale" and "language" in command
+    line arguments.
+  * Minor bug fixes and feature enhancements
+
+-------------------------------------------------------------------
 Mon Oct 27 18:49:05 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 5.8.1
