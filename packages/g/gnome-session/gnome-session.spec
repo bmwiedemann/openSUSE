@@ -19,7 +19,7 @@
 %define basever 49
 
 Name:           gnome-session
-Version:        49.1+11
+Version:        49.2
 Release:        0
 Summary:        Session Tools for the GNOME Desktop
 License:        GPL-2.0-or-later
