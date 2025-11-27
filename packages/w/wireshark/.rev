@@ -2077,4 +2077,12 @@ Use capabilities for capture. bsc#957624</comment>
     <comment>wireshark 4.6.1</comment>
     <requestid>1319694</requestid>
   </revision>
+  <revision rev="244" vrev="2">
+    <srcmd5>b16501388c9659d1212fad695af1458d</srcmd5>
+    <version>4.6.1</version>
+    <time>1764253077</time>
+    <user>anag_factory</user>
+    <comment>wireshark 4.6.1: with a new CVE reference</comment>
+    <requestid>1320189</requestid>
+  </revision>
 </revisionlist>
