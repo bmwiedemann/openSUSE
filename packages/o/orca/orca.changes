@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov 25 15:50:00 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.2:
+  + Web:
+    - Fix double prsentation of lines with new line characters.
+    - Fix several chattiness issues.
+  + General:
+    - Treat space as a printable character during password input.
+    - Don't say "grayed" in editable table cells regardless of
+      state.
+    - Fall back on descendants when presenting editable table cell
+      content.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Oct 16 08:52:24 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.4:
