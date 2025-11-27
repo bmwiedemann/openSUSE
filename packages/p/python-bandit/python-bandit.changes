@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Nov 27 08:17:43 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.9.2
+  * Argparse Python 3.14 enhancements by @ericwb in (#1331)
+  * Check whether Constant value is str by @ericwb in (#1333)
+- from version 1.9.1
+  * More Python version related fixes by @ericwb in (#1327)
+- from version 1.9.0
+  * Add instructions for Maintainers to create/publish a release
+    by @ericwb in (#1275)
+  * Bump sigstore/cosign-installer from 3.9.1 to 3.9.2
+    by @dependabot[bot] in (#1289)
+  * Bump docker/login-action from 3.4.0 to 3.5.0
+    by @dependabot[bot] in (#1290)
+  * [pre-commit.ci] pre-commit autoupdate
+    by @pre-commit-ci[bot] in (#1291)
+  * Bump actions/checkout from 4 to 5 by @dependabot[bot] in (#1292)
+  * Replace deprecated datetime.datetime.utcnow()
+    by @purplezimmermann in (#1295)
+  * Bump actions/setup-python from 5 to 6
+    by @dependabot[bot] in (#1296)
+  * Bump sigstore/cosign-installer from 3.9.2 to 3.10.0
+    by @dependabot[bot] in (#1298)
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci[bot] in (#1303)
+  * Fix typos by @Shortfinga in (#1305)
+  * Bump docker/login-action from 3.5.0 to 3.6.0
+    by @dependabot[bot] in (#1306)
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci[bot] in (#1315)
+  * Bump sigstore/cosign-installer from 3.10.0 to 4.0.0
+    by @dependabot[bot] in (#1317)
+  * Support of Python 3.14 by @ericwb in (#1323)
+  * Drop support of end-of-life Python 3.9 by @ericwb in (#1325)
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci[bot] in (#1324)
+
+-------------------------------------------------------------------
 Mon Sep  1 12:44:09 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems only
