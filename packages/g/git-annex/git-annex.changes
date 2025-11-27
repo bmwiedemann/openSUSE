@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Nov 14 16:48:23 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update git-annex to version 10.20251114.
+  git-annex (10.20251114) upstream; urgency=medium
+
+    * p2p --pair: Fix to work with external P2P networks.
+    * p2phttp: Significant robustness fixes for bugs that caused the
+      server to stall.
+    * p2phttp: Fix a file descriptor leak.
+    * p2phttp: Added the --lockedfiles option.
+    * dropunused: Run the annex.secure-erase-command
+      (or .git/hooks/secure-erase-annex) when deleting
+      temp and bad object files.
+    * remotedaemon: Avoid crashing when run with --debug.
+
+   -- Joey Hess <id@joeyh.name>  Fri, 14 Nov 2025 12:46:45 -0400
+
+-------------------------------------------------------------------
 Wed Oct 29 14:05:57 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update git-annex to version 10.20251029.
