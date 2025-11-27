@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 26 18:22:51 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 37.10.2
+  * no user-visible changes
+
+-------------------------------------------------------------------
+Mon Nov 24 02:39:58 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove unused BuildRequires: update-desktop-files.
+
+-------------------------------------------------------------------
 Fri Nov 14 18:57:41 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 37.10.0

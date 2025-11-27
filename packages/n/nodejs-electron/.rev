@@ -1508,4 +1508,15 @@ to Staging:F with it</comment>
   * v8: Preserve field repr in property array extension</comment>
     <requestid>1317932</requestid>
   </revision>
+  <revision rev="175" vrev="1">
+    <srcmd5>4aa2c19d8cb1b13e6794b1fb80d3f1ca</srcmd5>
+    <version>37.10.2</version>
+    <time>1764253215</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release 37.10.2
+  * no user-visible changes
+
+- Remove unused BuildRequires: update-desktop-files.</comment>
+    <requestid>1320245</requestid>
+  </revision>
 </revisionlist>

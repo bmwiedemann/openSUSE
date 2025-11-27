@@ -186,7 +186,7 @@ ExcludeArch: %arm
 
 
 Name:           nodejs-electron
-Version:        37.10.0
+Version:        37.10.2
 %global tag_version %version
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
@@ -472,9 +472,6 @@ BuildRequires:  python%{PYVER}-six
 BuildRequires:  simdutf-devel >= 5
 %endif
 BuildRequires:  snappy-devel
-%if 0%{?suse_version}
-BuildRequires:  update-desktop-files
-%endif
 BuildRequires:  util-linux
 %if %{with system_vk_headers}
 # Actually we need also SpvFPEncoding from spirv-headers but Fedora version is non-indicative.
