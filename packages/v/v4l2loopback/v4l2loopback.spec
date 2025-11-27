@@ -30,7 +30,7 @@
 %{!?_modulesloaddir: %define _modulesloaddir /usr/lib/modules-load.d/}
 
 Name:           v4l2loopback
-Version:        0.15.2
+Version:        0.15.3
 Release:        0
 Summary:        A kernel module to create V4L2 loopback devices
 License:        GPL-2.0-or-later
