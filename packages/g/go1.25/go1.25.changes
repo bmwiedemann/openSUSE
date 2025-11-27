@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 26 07:47:57 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix runtime condition for gcc/gcc7 dependency.
+
+-------------------------------------------------------------------
+Tue Nov 25 10:26:00 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- On SLE 12, s390x needs at least gcc 7. But lets use it for
+  all architectures. (bsc#1254227)
+
+-------------------------------------------------------------------
 Wed Nov  5 19:01:55 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.25.4 (released 2025-11-05) includes fixes to the compiler,

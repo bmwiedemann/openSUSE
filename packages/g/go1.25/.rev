@@ -196,4 +196,12 @@
     No longer needed with go#75832 in latest upstream release (forwarded request 1316085 from jfkw)</comment>
     <requestid>1316087</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>fff39f42d2a6365a2bf419310a76cdaf</srcmd5>
+    <version>1.25.4</version>
+    <time>1764253066</time>
+    <user>anag_factory</user>
+    <comment>- Fix runtime condition for gcc/gcc7 dependency. (forwarded request 1320109 from dimstar)</comment>
+    <requestid>1320154</requestid>
+  </revision>
 </revisionlist>

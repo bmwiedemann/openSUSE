@@ -119,13 +119,22 @@ Suggests:       %{name}-libstd = %{version}
 %endif
 %ifarch %{tsan_arch}
 # Needed to compile compiler-rt/TSAN.
+%if 0%{?suse_version} && 0%{?suse_version} < 1500
+BuildRequires:  gcc7-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 %endif
 #BNC#818502 debug edit tool of rpm fails on i586 builds
 BuildRequires:  rpm >= 4.11.1
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-Requires:       gcc
+
+%if 0%{?suse_version} && 0%{?suse_version} < 1500
+Requires:       gcc7
+%else
+Requires:  	gcc
+%endif
 Provides:       go = %{version}
 Provides:       go-devel = go%{version}
 Provides:       go-devel-static = go%{version}
@@ -200,6 +209,11 @@ Go standard library compiled to a dynamically loadable shared object libstd.so
 cp %{SOURCE4} .
 
 %build
+# s390x needs at least gcc 7
+%if 0%{?suse_version} && 0%{?suse_version} < 1500
+export CC="gcc-7"
+%endif
+
 # Remove the pre-included .sysos, to avoid shipping things we didn't compile
 # (which is against the openSUSE guidelines for packaging).
 find . -type f -name '*.syso' -print -delete
