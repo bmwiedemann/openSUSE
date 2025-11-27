@@ -39,6 +39,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module opentelemetry-sdk = %{version}}
 BuildRequires:  %{python_module opentelemetry-test-utils = 0.59b0}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module typing-extensions >= 3.7.4}
 %endif
