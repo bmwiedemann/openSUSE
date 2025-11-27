@@ -1,7 +1,7 @@
 #
 # spec file for package opam
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           opam
-Version:        2.4.1
+Version:        2.5.0
 Release:        0
 Summary:        Source-based package manager for OCaml
 License:        LGPL-2.1-only WITH OCaml-LGPL-linking-exception
@@ -31,7 +31,6 @@ BuildRequires:  ocaml-dune >= 2.8
 BuildRequires:  ocaml-rpm-macros >= 20231101
 BuildRequires:  ocamlfind(base64)
 BuildRequires:  ocamlfind(bigarray)
-BuildRequires:  ocamlfind(cmdliner)
 BuildRequires:  ocamlfind(cudf)
 BuildRequires:  ocamlfind(dose3)
 BuildRequires:  ocamlfind(findlib)
@@ -52,8 +51,6 @@ Requires:       %name-installer%{?_isa} = %version-%release
 
 Requires:       bubblewrap
 
-# https://cygwin.com/ml/cygwin/2018-01/msg00079.html
-Requires:       bzip2
 Requires:       curl
 Requires:       diffutils
 Requires:       gzip
@@ -65,7 +62,6 @@ Recommends:     make
 Recommends:     m4
 Recommends:     rsync
 Recommends:     git
-Recommends:     mercurial
 Suggests:       ocaml
 
 %description
@@ -95,8 +91,7 @@ developing applications that use %name.
 %build
 export DUNE=$(type -P dune)
 export FETCH=$(type -P false)
-export MAKE=$(type -P gmake)
-export PATCH=$(type -P false)
+export MAKE=$(type -P false)
 autoreconf -fi
 %configure --help
 %configure \
