@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Nov 26 18:36:41 UTC 2025 - Holden Fried <holden@opensuse.org>
+
+- Bump golang API version to >=1.24.10 explicitly to align with
+  upstream and handle Leap/SLE build failures
+
+-------------------------------------------------------------------
+Wed Nov 26 16:04:20 UTC 2025 - Holden Fried <holden@opensuse.org>
+
+- Update to 0.60.3:
+  * [management] Remove TestBufferUpdateAccountPeers by @crn4 in
+    #4839
+  * [client, management, signal, relay] Update go.mod to use Go
+    1.24.10 and upgrade x/crypto dependencies by @mlsmaycon in
+    #4828 (fixes CVE-2025-58181 / boo#1253927)
+  * [management] Fix SSH JWT issuer derivation for IDPs with path
+    components by @sgtaziz in #4844
+  * [management] Preserve validator settings on account settings
+    update by @bcmmbaga in #4862
+  * [client] Make mss clamping optional for nftables by @lixmal
+    in #4843
+  * [client] Allow selection/deselection of network resources on
+    Android by @doromaraujo in #4607
+  * [client] Support disable search domain for custom zones by
+    @mlsmaycon in #4826
+  * [client] feat: Add support for displaying device code
+    (UserCode) on Android TV by @shuuri-labs in #4800
+  * [client] Open browser for SSH automatically by @lixmal in #4838
+  * [client] Add excluded port range handling for PKCE flow by
+    @mlsmaycon in #4853
+
+-------------------------------------------------------------------
+Fri Nov 21 19:45:30 UTC 2025 - Holden Fried <holden@opensuse.org>
+
+- update to 0.60.2:
+  * [client] Increase ssh detection timeout by @lixmal in #4827
+
+-------------------------------------------------------------------
 Wed Nov 19 19:30:43 UTC 2025 - Holden Fried <holden@opensuse.org>
 
 - update to 0.60.1:

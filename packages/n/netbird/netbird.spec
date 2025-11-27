@@ -31,7 +31,7 @@
 %bcond_with stub_config
 
 Name:           netbird
-Version:        0.60.1
+Version:        0.60.3
 Release:        0
 Summary:        Mesh VPN based on WireGuard
 License:        BSD-3-Clause AND AGPL-3.0
@@ -47,7 +47,7 @@ BuildRequires:  fish
 BuildRequires:  zsh
 BuildRequires:  git-core
 BuildRequires:  zstd
-BuildRequires:  golang(API) >= 1.23
+BuildRequires:  golang(API) >= 1.24.10
 # Required for testing
 BuildRequires:  pkgconfig(libpcap)
 # For GUI applet
