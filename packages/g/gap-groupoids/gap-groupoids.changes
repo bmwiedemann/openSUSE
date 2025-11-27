@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 26 20:05:52 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.81
+  * Revised FreeProductWithAmalgamation and HnnExtension.
+  * Revised Families and Types for semigroups/monoids with objects.
+  * Major revision of Left/Right/DoubleCosets, to cope with rays.
+  * Submagma operations not used or documented, so deleted.
+  * Renamed CosetSuperDomain and CosetActingDomain,
+    RightActionGroupoid -> GroupoidWithMonoidObjects.
+  * Renamed GroupoidOfArrow as MWOofArrow and documented it.
+
+-------------------------------------------------------------------
 Thu Sep 11 20:45:33 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.79
