@@ -296,7 +296,7 @@
     <package name="db48-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="dbus-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="dbus-1-common" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="dbus-1-daemon" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="dbus-1-daemon" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
     <package name="dbus-1-tools" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="dbus-1-x11" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="dbus-broker" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
