@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Nov 26 13:47:26 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.85
+  * Refactor l10n scripts
+  * Refactor snapshots generator: ProcessPoolExecutor, UTF-8 support
+  * Update Azerbaijan holidays in 2025
+  * Update China holidays in 2026
+  * Update Ecuador holidays: fix observance rules
+  * Update National Stock Exchange of India holidays
+  * Update Thailand holidays: add 2026 Royal Ploughing Ceremony
+  * Update Turkey holidays: add historical holidays
+  * Update United States holidays: add Native American Heritage Day in WA
+  * Centralize all per-file ignores to pyproject.toml
+  * TestCase Syntactic Sugar Support
+
+-------------------------------------------------------------------
 Tue Nov 11 08:53:27 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.84
