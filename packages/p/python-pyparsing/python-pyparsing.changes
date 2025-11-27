@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Nov 26 10:48:14 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.2.5
+  * JINX! Well, 3.2.4 had a bug for `Word` expressions that include a space
+    character, if that expression was then copied, either directly with .copy() or
+    by adding a results name, or included in another construct (like `DelimitedList`)
+    that makes a copy internally. Issue #618, reported by mstinberg, among others -
+    thanks, and sorry for the inconvenience.
+- from version 3.2.4
+  * Barring any catastrophic bugs in this release, this will be the last release in
+    the 3.2.x line. The next release, 3.3.0, will begin emitting `DeprecationWarnings`
+    when the pre-PEP8 methods are used (see header notes above for more information,
+    including available automation for converting any existing code using
+    pyparsing with the old names).
+  * Fixed bug when using a copy of a `Word` expression (either by using the explicit
+    `copy()` method, or attaching a results name), and setting a new expression name,
+    a raised `ParseException` still used the original expression name. Also affected
+    `Regex` expressions with `as_match` or `as_group_list` = True. Reported by
+    Waqas Ilyas, in Issue #612 - good catch!
+  * Fixed type annotation for `replace_with`, to accept `Any` type. Fixes Issue #602,
+    reported by esquonk.
+  * Added locking around potential race condition in `ParserElement.reset_cache`, as
+    well as other cache-related methods. Fixes Issue #604, reported by CarlosDescalziIM.
+  * Substantial update to docstrings and doc generation in preparation for 3.3.0,
+    great effort by FeRD, thanks!
+  * Notable addition by FeRD to convert docstring examples to work with doctest! This
+    was long overdue, thanks so much!
+
+-------------------------------------------------------------------
 Thu Apr 10 17:09:14 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.3:

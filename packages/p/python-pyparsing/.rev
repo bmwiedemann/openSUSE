@@ -1562,4 +1562,12 @@ self, run_tests_report, expected_parse_results=None, msg=None)
   * Added support for Python 3.14.</comment>
     <requestid>1268466</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>dee659f2c5894d2a9b172f1fed833403</srcmd5>
+    <version>3.2.5</version>
+    <time>1764253069</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1320161</requestid>
+  </revision>
 </revisionlist>
