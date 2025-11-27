@@ -330,4 +330,12 @@
     <comment>- Support both lowercased and unnormalized metadata directory names.</comment>
     <requestid>1271221</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>35f06695a32472693480748bbe298172</srcmd5>
+    <version>0.24.4</version>
+    <time>1764253264</time>
+    <user>anag_factory</user>
+    <comment>- Only require pytest-subtests with pytest &lt; 9.</comment>
+    <requestid>1320272</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pint
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,7 +47,7 @@ BuildRequires:  %{python_module numpy >= 1.21}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module platformdirs}
 BuildRequires:  %{python_module pytest >= 4.0}
-BuildRequires:  %{python_module pytest-subtests}
+BuildRequires:  %{python_module pytest-subtests if %python-pytest < 9}
 BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  %{python_module uncertainties >= 3.0}
 # /SECTION
