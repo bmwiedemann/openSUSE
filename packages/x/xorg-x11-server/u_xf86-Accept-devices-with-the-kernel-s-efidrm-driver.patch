@@ -13,11 +13,11 @@ Link: https://patchwork.freedesktop.org/series/146477/ # 1
  hw/xfree86/common/xf86platformBus.c | 3 +++
  1 file changed, 3 insertions(+)
 
-diff --git a/hw/xfree86/common/xf86platformBus.c b/hw/xfree86/common/xf86platformBus.c
-index dbae465fc..0fa8ade20 100644
---- a/hw/xfree86/common/xf86platformBus.c
-+++ b/hw/xfree86/common/xf86platformBus.c
-@@ -580,6 +580,9 @@ xf86platformProbeDev(DriverPtr drvp)
+Index: xorg-server-21.1.21/hw/xfree86/common/xf86platformBus.c
+===================================================================
+--- xorg-server-21.1.21.orig/hw/xfree86/common/xf86platformBus.c
++++ xorg-server-21.1.21/hw/xfree86/common/xf86platformBus.c
+@@ -560,6 +560,9 @@ xf86platformProbeDev(DriverPtr drvp)
                  if (ServerIsNotSeat0()) {
                      break;
                  } else {
@@ -27,6 +27,3 @@ index dbae465fc..0fa8ade20 100644
                      /* Accept the device if the driver is hyperv_drm */
                      if (strcmp(xf86_platform_devices[j].attribs->driver, "hyperv_drm") == 0)
                          break;
--- 
-2.49.0
-

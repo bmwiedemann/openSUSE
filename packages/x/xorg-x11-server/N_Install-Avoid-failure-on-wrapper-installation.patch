@@ -14,11 +14,11 @@ Signed-off-by: Egbert Eich <eich@suse.de>
  hw/xfree86/Makefile.am | 7 ++++---
  1 file changed, 4 insertions(+), 3 deletions(-)
 
-Index: xorg-server-1.20.5/hw/xfree86/Makefile.am
+Index: xorg-server-21.1.21/hw/xfree86/Makefile.am
 ===================================================================
---- xorg-server-1.20.5.orig/hw/xfree86/Makefile.am
-+++ xorg-server-1.20.5/hw/xfree86/Makefile.am
-@@ -113,9 +113,10 @@ if INSTALL_SETUID
+--- xorg-server-21.1.21.orig/hw/xfree86/Makefile.am
++++ xorg-server-21.1.21/hw/xfree86/Makefile.am
+@@ -110,9 +110,10 @@ if INSTALL_SETUID
  endif
  if SUID_WRAPPER
  	$(MKDIR_P) $(DESTDIR)$(SUID_WRAPPER_DIR)

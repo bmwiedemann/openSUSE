@@ -4311,4 +4311,71 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
     (CVE-2025-62231, bsc#1251960)</comment>
     <requestid>1314101</requestid>
   </revision>
+  <revision rev="445" vrev="1">
+    <srcmd5>5378d873dc5b542f713a7a9b49d74c30</srcmd5>
+    <version>21.1.21</version>
+    <time>1764253138</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 21.1.21
+  * A bug fix release to address a number of regressions reported in
+    the latest releases [1].
+    The changes being reverted here are part of a series of changes
+    previously backported in the stable branch, yet these are not
+    actual fixes to address bugs found in the stable branch, while
+    those changes introduced regressions with reverse PRIME with
+    the NVIDIA closed-source driver, issues with 10-bit output with
+    the AMDGPU driver and reduced performance with the AMDGPU driver.
+    [1] https://gitlab.freedesktop.org/xorg/xserver/-/issues/1848
+- Changes
+  * Revert &quot;glamor: reject configs using unsupported rgbBits size&quot;
+  * Revert &quot;glamor_egl: add support of GlxVendorLibrary option&quot;
+  * Revert &quot;xorg: initialize glamor provider&quot;
+  * Revert &quot;glamor: Lift the GLX EGL backend from Xwayland&quot;
+  * Revert &quot;glamor: add glvnd_vendor private&quot;
+- supersedes the following patches:
+  * U_CVE-2022-49737-dix-Hold-input-lock-for-AttachDevice.patch
+  * U_CVE-2025-26594-0001-Cursor-Refuse-to-free-the-root-cursor.patch
+  * U_CVE-2025-26594-0002-dix-keep-a-ref-to-the-rootCursor.patch
+  * U_CVE-2025-26595-0001-xkb-Fix-buffer-overflow-in-XkbVModMaskText.patch
+  * U_CVE-2025-26596-0001-xkb-Fix-computation-of-XkbSizeKeySyms.patch
+  * U_CVE-2025-26597-0001-xkb-Fix-buffer-overflow-in-XkbChangeTypesOfKey.patch
+  * U_CVE-2025-26598-0001-Xi-Fix-barrier-device-search.patch
+  * U_CVE-2025-26599-0001-composite-Handle-failure-to-redirect-in-compRedirect.patch
+  * U_CVE-2025-26599-0002-composite-initialize-border-clip-even-when-pixmap-al.patch
+  * U_CVE-2025-26600-0001-dix-Dequeue-pending-events-on-frozen-device-on-remov.patch
+  * U_CVE-2025-26601-0001-sync-Do-not-let-sync-objects-uninitialized.patch
+  * U_CVE-2025-26601-0002-sync-Check-values-before-applying-changes.patch
+  * U_CVE-2025-26601-0003-sync-Do-not-fail-SyncAddTriggerToSyncObject.patch
+  * U_CVE-2025-26601-0004-sync-Apply-changes-last-in-SyncChangeAlarmAttributes.patch
+  * U_CVE-2025-49175-render-Avoid-0-or-less-animated-cursors.patch
+  * U_CVE-2025-49176-os-Check-for-integer-overflow-on-BigRequest-length.patch
+  * U_CVE-2025-49176-os-Do-not-overflow-the-integer-size-with-BigRequest.patch
+  * U_CVE-2025-49177-xfixes-Check-request-length-for-SetClientDisconnectM.patch
+  * U_CVE-2025-49178-os-Account-for-bytes-to-ignore-when-sharing-input-bu.patch
+  * U_CVE-2025-49179-record-Check-for-overflow-in-RecordSanityCheckRegist.patch
+  * U_CVE-2025-49180-randr-Check-for-overflow-in-RRChangeProviderProperty.patch
+  * U_CVE-2025-49180-xfree86-Check-for-RandR-provider-functions.patch
+  * bsc1251958_CVE-2025-62229_0001-present-Fix-use-after-free-in-present_create_notifie.patch
+  * bsc1251959_CVE-2025-62230_0001-xkb-Make-the-RT_XKBCLIENT-resource-private.patch
+  * bsc1251959_CVE-2025-62230_0002-xkb-Free-the-XKB-resource-when-freeing-XkbInterest.patch
+  * bsc1251960_CVE-2025-62231_0001-xkb-Prevent-overflow-in-XkbSetCompatMap.patch
+  * u_fbdevhw_kernel6.9_break_fbdev_open.patch
+  * u_modesetting-Fix-dirty-updates-for-sw-rotation.patch
+- refreshed patches
+  * N_Install-Avoid-failure-on-wrapper-installation.patch
+  * N_fix-dpi-values.diff
+  * N_zap_warning_xserver.diff
+  * n_raise_default_clients.patch
+  * n_xorg-wrapper-rename-Xorg.patch
+  * u_01-Improved-ConfineToShape.patch
+  * u_Panning-Set-panning-state-in-xf86RandR12ScreenSetSize.patch
+  * u_Use-better-fallbacks-to-generate-cookies-if-arc4rand.patch
+  * u_xf86-Accept-devices-with-the-kernel-s-efidrm-driver.patch
+  * u_xf86-Accept-devices-with-the-kernel-s-vesadrm-driver.patch
+  * u_xfree86-activate-GPU-screens-on-autobind.patch
+  * u_xorg-server-xdmcp.patch
+  * u_xorg-wrapper-build-Build-position-independent-code.patch
+  * xorg-x11-server-byte-order.patch</comment>
+    <requestid>1320004</requestid>
+  </revision>
 </revisionlist>

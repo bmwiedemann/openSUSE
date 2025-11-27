@@ -24,10 +24,10 @@ Reviewed-by: Stefan Dirsch <sndirsch@suse.de>
  os/auth.c               | 138 ++++++++++++++++++++++++++++++++++++++++++++++--
  3 files changed, 141 insertions(+), 7 deletions(-)
 
-Index: xorg-server-21.1.9/configure.ac
+Index: xorg-server-21.1.21/configure.ac
 ===================================================================
---- xorg-server-21.1.9.orig/configure.ac
-+++ xorg-server-21.1.9/configure.ac
+--- xorg-server-21.1.21.orig/configure.ac
++++ xorg-server-21.1.21/configure.ac
 @@ -132,7 +132,7 @@ AM_CONDITIONAL(SPECIAL_DTRACE_OBJECTS, [
  AC_HEADER_DIRENT
  AC_HEADER_STDC
@@ -37,10 +37,10 @@ Index: xorg-server-21.1.9/configure.ac
  
  dnl Checks for typedefs, structures, and compiler characteristics.
  AC_C_CONST
-Index: xorg-server-21.1.9/include/dix-config.h.in
+Index: xorg-server-21.1.21/include/dix-config.h.in
 ===================================================================
---- xorg-server-21.1.9.orig/include/dix-config.h.in
-+++ xorg-server-21.1.9/include/dix-config.h.in
+--- xorg-server-21.1.21.orig/include/dix-config.h.in
++++ xorg-server-21.1.21/include/dix-config.h.in
 @@ -149,6 +149,9 @@
  /* Define to 1 if you have the `arc4random_buf' function. */
  #undef HAVE_ARC4RANDOM_BUF
@@ -51,7 +51,7 @@ Index: xorg-server-21.1.9/include/dix-config.h.in
  /* Define to use libc SHA1 functions */
  #undef HAVE_SHA1_IN_LIBC
  
-@@ -226,6 +229,9 @@
+@@ -229,6 +232,9 @@
  /* Define to 1 if you have the <sys/utsname.h> header file. */
  #undef HAVE_SYS_UTSNAME_H
  
@@ -61,10 +61,10 @@ Index: xorg-server-21.1.9/include/dix-config.h.in
  /* Define to 1 if you have the `timingsafe_memcmp' function. */
  #undef HAVE_TIMINGSAFE_MEMCMP
  
-Index: xorg-server-21.1.9/os/auth.c
+Index: xorg-server-21.1.21/os/auth.c
 ===================================================================
---- xorg-server-21.1.9.orig/os/auth.c
-+++ xorg-server-21.1.9/os/auth.c
+--- xorg-server-21.1.21.orig/os/auth.c
++++ xorg-server-21.1.21/os/auth.c
 @@ -34,6 +34,10 @@ from The Open Group.
  #ifdef HAVE_DIX_CONFIG_H
  #include <dix-config.h>

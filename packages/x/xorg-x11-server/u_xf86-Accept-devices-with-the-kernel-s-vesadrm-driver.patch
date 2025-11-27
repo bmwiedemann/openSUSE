@@ -13,11 +13,11 @@ Link: https://patchwork.freedesktop.org/series/146477/ # 1
  hw/xfree86/common/xf86platformBus.c | 3 +++
  1 file changed, 3 insertions(+)
 
-diff --git a/hw/xfree86/common/xf86platformBus.c b/hw/xfree86/common/xf86platformBus.c
-index 0fa8ade20..3df1b2812 100644
---- a/hw/xfree86/common/xf86platformBus.c
-+++ b/hw/xfree86/common/xf86platformBus.c
-@@ -592,6 +592,9 @@ xf86platformProbeDev(DriverPtr drvp)
+Index: xorg-server-21.1.21/hw/xfree86/common/xf86platformBus.c
+===================================================================
+--- xorg-server-21.1.21.orig/hw/xfree86/common/xf86platformBus.c
++++ xorg-server-21.1.21/hw/xfree86/common/xf86platformBus.c
+@@ -572,6 +572,9 @@ xf86platformProbeDev(DriverPtr drvp)
                      /* Accept the device if the driver is simpledrm */
                      if (strcmp(xf86_platform_devices[j].attribs->driver, "simpledrm") == 0)
                          break;
@@ -27,6 +27,3 @@ index 0fa8ade20..3df1b2812 100644
                  }
  
                  if (xf86IsPrimaryPlatform(&xf86_platform_devices[j]))
--- 
-2.49.0
-

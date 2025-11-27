@@ -36,7 +36,7 @@
 %endif
 
 Name:           xorg-x11-server
-Version:        21.1.15
+Version:        21.1.21
 Release:        0
 URL:            http://xorg.freedesktop.org/
 Summary:        X
@@ -230,8 +230,6 @@ Patch1503:      u_xfree86-Do-not-claim-pci-slots-if-fb-slot-is-already.patch
 
 Patch1900:      u_no-lto-for-tests.patch
 
-Patch1910:      u_modesetting-Fix-dirty-updates-for-sw-rotation.patch
-
 Patch1920:      u_xf86-Accept-devices-with-the-hyperv_drm-driver.patch
 Patch1921:      u_xf86-Accept-devices-with-the-kernels-ofdrm-driver.patch
 Patch1922:      u_xf86-Accept-devices-with-the-kernel-s-efidrm-driver.patch
@@ -241,36 +239,7 @@ Patch1930:      u_xfree86-activate-GPU-screens-on-autobind.patch
 
 Patch1960:      u_sync-pci-ids-with-Mesa.patch
 
-Patch2000:      u_fbdevhw_kernel6.9_break_fbdev_open.patch
-
 Patch1218176:   u_miCloseScreen_check_for_null_pScreen_dev_private.patch
-
-Patch1237451:   U_CVE-2025-26594-0001-Cursor-Refuse-to-free-the-root-cursor.patch
-Patch1237452:   U_CVE-2025-26594-0002-dix-keep-a-ref-to-the-rootCursor.patch
-Patch1237453:   U_CVE-2025-26595-0001-xkb-Fix-buffer-overflow-in-XkbVModMaskText.patch
-Patch1237454:   U_CVE-2025-26596-0001-xkb-Fix-computation-of-XkbSizeKeySyms.patch
-Patch1237455:   U_CVE-2025-26597-0001-xkb-Fix-buffer-overflow-in-XkbChangeTypesOfKey.patch
-Patch1237456:   U_CVE-2025-26598-0001-Xi-Fix-barrier-device-search.patch
-Patch1237457:   U_CVE-2025-26599-0001-composite-Handle-failure-to-redirect-in-compRedirect.patch
-Patch1237458:   U_CVE-2025-26599-0002-composite-initialize-border-clip-even-when-pixmap-al.patch
-Patch1237459:   U_CVE-2025-26600-0001-dix-Dequeue-pending-events-on-frozen-device-on-remov.patch
-Patch1237460:   U_CVE-2025-26601-0001-sync-Do-not-let-sync-objects-uninitialized.patch
-Patch1237461:   U_CVE-2025-26601-0002-sync-Check-values-before-applying-changes.patch
-Patch1237462:   U_CVE-2025-26601-0003-sync-Do-not-fail-SyncAddTriggerToSyncObject.patch
-Patch1237463:   U_CVE-2025-26601-0004-sync-Apply-changes-last-in-SyncChangeAlarmAttributes.patch
-Patch1239750:   U_CVE-2022-49737-dix-Hold-input-lock-for-AttachDevice.patch
-Patch1244082:   U_CVE-2025-49175-render-Avoid-0-or-less-animated-cursors.patch
-Patch1244084:   U_CVE-2025-49176-os-Do-not-overflow-the-integer-size-with-BigRequest.patch
-Patch1244085:   U_CVE-2025-49177-xfixes-Check-request-length-for-SetClientDisconnectM.patch
-Patch1244087:   U_CVE-2025-49178-os-Account-for-bytes-to-ignore-when-sharing-input-bu.patch
-Patch1244089:   U_CVE-2025-49179-record-Check-for-overflow-in-RecordSanityCheckRegist.patch
-Patch1244090:   U_CVE-2025-49180-randr-Check-for-overflow-in-RRChangeProviderProperty.patch
-Patch1244091:   U_CVE-2025-49180-xfree86-Check-for-RandR-provider-functions.patch
-Patch1244092:   U_CVE-2025-49176-os-Check-for-integer-overflow-on-BigRequest-length.patch
-Patch1251958:   bsc1251958_CVE-2025-62229_0001-present-Fix-use-after-free-in-present_create_notifie.patch
-Patch1251959:   bsc1251959_CVE-2025-62230_0001-xkb-Make-the-RT_XKBCLIENT-resource-private.patch
-Patch1251960:   bsc1251959_CVE-2025-62230_0002-xkb-Free-the-XKB-resource-when-freeing-XkbInterest.patch
-Patch1251961:   bsc1251960_CVE-2025-62231_0001-xkb-Prevent-overflow-in-XkbSetCompatMap.patch
 
 %description
 This package contains the X.Org Server.
@@ -415,46 +384,14 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch -P 1401 -p1
 %patch -P 1503 -p1
 %patch -P 1900 -p1
-%patch -P 1910 -p1
 %patch -P 1920 -p1
 %patch -P 1921 -p1
 %patch -P 1922 -p1
 %patch -P 1923 -p1
 %patch -P 1930 -p1
 %patch -P 1960 -p1
-%patch -P 2000 -p1
 
 %patch -P 1218176 -p1
-
-%patch -P 1237451 -p1
-%patch -P 1237452 -p1
-%patch -P 1237453 -p1
-%patch -P 1237454 -p1
-%patch -P 1237455 -p1
-%patch -P 1237456 -p1
-%patch -P 1237457 -p1
-%patch -P 1237458 -p1
-%patch -P 1237459 -p1
-%patch -P 1237460 -p1
-%patch -P 1237461 -p1
-%patch -P 1237462 -p1
-%patch -P 1237463 -p1
-
-%patch -P 1239750 -p1
-
-%patch -P 1244082 -p1
-%patch -P 1244084 -p1
-%patch -P 1244085 -p1
-%patch -P 1244087 -p1
-%patch -P 1244089 -p1
-%patch -P 1244090 -p1
-%patch -P 1244091 -p1
-%patch -P 1244092 -p1
-
-%patch -P 1251958 -p1
-%patch -P 1251959 -p1
-%patch -P 1251960 -p1
-%patch -P 1251961 -p1
 
 %build
 # We have some -z now related errors during X default startup (boo#1197994):

@@ -10,11 +10,11 @@ Signed-off-by: Egbert Eich <eich@suse.de>
  hw/xfree86/Makefile.am | 1 +
  1 file changed, 1 insertion(+)
 
-Index: xorg-server-1.20.5/hw/xfree86/Makefile.am
+Index: xorg-server-21.1.21/hw/xfree86/Makefile.am
 ===================================================================
---- xorg-server-1.20.5.orig/hw/xfree86/Makefile.am
-+++ xorg-server-1.20.5/hw/xfree86/Makefile.am
-@@ -92,6 +92,7 @@ if SUID_WRAPPER
+--- xorg-server-21.1.21.orig/hw/xfree86/Makefile.am
++++ xorg-server-21.1.21/hw/xfree86/Makefile.am
+@@ -89,6 +89,7 @@ if SUID_WRAPPER
  wrapexecdir = $(SUID_WRAPPER_DIR)
  wrapexec_PROGRAMS = Xorg.wrap
  Xorg_wrap_SOURCES = xorg-wrapper.c

@@ -1,6 +1,8 @@
---- xserver-1.20.9/hw/xfree86/xorg-wrapper.c.old	2020-09-24 03:16:27.270885000 +0200
-+++ xserver-1.20.9/hw/xfree86/xorg-wrapper.c	2020-09-24 03:18:42.047597000 +0200
-@@ -375,7 +375,7 @@ int main(int argc, char *argv[])
+Index: xorg-server-21.1.21/hw/xfree86/xorg-wrapper.c
+===================================================================
+--- xorg-server-21.1.21.orig/hw/xfree86/xorg-wrapper.c
++++ xorg-server-21.1.21/hw/xfree86/xorg-wrapper.c
+@@ -373,7 +373,7 @@ int main(int argc, char *argv[])
          }
      }
  
@@ -9,9 +11,11 @@
  
      /* Check if the server is executable by our real uid */
      if (access(buf, X_OK) != 0) {
---- xserver-1.20.9/hw/xfree86/Xorg.sh.in.orig	2020-09-24 03:36:20.690412000 +0200
-+++ xserver-1.20.9/hw/xfree86/Xorg.sh.in	2020-09-24 03:36:37.594497000 +0200
-@@ -7,5 +7,5 @@
+Index: xorg-server-21.1.21/hw/xfree86/Xorg.sh.in
+===================================================================
+--- xorg-server-21.1.21.orig/hw/xfree86/Xorg.sh.in
++++ xorg-server-21.1.21/hw/xfree86/Xorg.sh.in
+@@ -7,5 +7,5 @@ basedir=@SUID_WRAPPER_DIR@
  if [ -x "$basedir"/Xorg.wrap ]; then
  	exec "$basedir"/Xorg.wrap "$@"
  else

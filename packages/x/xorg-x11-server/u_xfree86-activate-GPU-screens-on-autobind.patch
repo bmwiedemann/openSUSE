@@ -14,10 +14,10 @@ Signed-off-by: Dave Airlie <airlied@gmail.com>
  include/dix.h                |   2 +
  3 files changed, 191 insertions(+)
 
-diff --git a/dix/main.c b/dix/main.c
-index bfc8addbe..c7b8ed49e 100644
---- a/dix/main.c
-+++ b/dix/main.c
+Index: xorg-server-21.1.21/dix/main.c
+===================================================================
+--- xorg-server-21.1.21.orig/dix/main.c
++++ xorg-server-21.1.21/dix/main.c
 @@ -121,6 +121,8 @@ extern void Dispatch(void);
  
  CallbackListPtr RootWindowFinalizeCallback = NULL;
@@ -27,7 +27,7 @@ index bfc8addbe..c7b8ed49e 100644
  int
  dix_main(int argc, char *argv[], char *envp[])
  {
-@@ -242,6 +244,8 @@ dix_main(int argc, char *argv[], char *envp[])
+@@ -244,6 +246,8 @@ dix_main(int argc, char *argv[], char *e
          for (i = 0; i < screenInfo.numScreens; i++)
              InitRootWindow(screenInfo.screens[i]->root);
  
@@ -36,20 +36,20 @@ index bfc8addbe..c7b8ed49e 100644
          InitCoreDevices();
          InitInput(argc, argv);
          InitAndStartDevices();
-diff --git a/hw/xfree86/common/xf86Init.c b/hw/xfree86/common/xf86Init.c
-index 380288ca4..9839cb19c 100644
---- a/hw/xfree86/common/xf86Init.c
-+++ b/hw/xfree86/common/xf86Init.c
-@@ -204,6 +204,9 @@ xf86HasTTYs(void)
- #endif
+Index: xorg-server-21.1.21/hw/xfree86/common/xf86Init.c
+===================================================================
+--- xorg-server-21.1.21.orig/hw/xfree86/common/xf86Init.c
++++ xorg-server-21.1.21/hw/xfree86/common/xf86Init.c
+@@ -205,6 +205,9 @@ xf86HasTTYs(void)
  }
  
-+static void
+ static void
 +xf86AutoConfigProviderOutputs(CallbackListPtr *pcbl, void *data, void *call_data);
 +
- static void
++static void
  xf86AutoConfigOutputDevices(void)
  {
+     int i;
 @@ -217,6 +220,8 @@ xf86AutoConfigOutputDevices(void)
          RRProviderAutoConfigGpuScreen(xf86ScrnToScreen(xf86GPUScreens[i]),
                                        xf86ScrnToScreen(xf86Screens[scrnum]));
@@ -59,7 +59,7 @@ index 380288ca4..9839cb19c 100644
  }
  
  static void
-@@ -258,6 +263,189 @@ AddVTAtoms(CallbackListPtr *pcbl, void *data, void *screen)
+@@ -258,6 +263,189 @@ AddVTAtoms(CallbackListPtr *pcbl, void *
                     "Failed to register VT properties\n");
  }
  
@@ -249,10 +249,10 @@ index 380288ca4..9839cb19c 100644
  static Bool
  xf86ScreenInit(ScreenPtr pScreen, int argc, char **argv)
  {
-diff --git a/include/dix.h b/include/dix.h
-index 0dcd09b65..ecc73d1d9 100644
---- a/include/dix.h
-+++ b/include/dix.h
+Index: xorg-server-21.1.21/include/dix.h
+===================================================================
+--- xorg-server-21.1.21.orig/include/dix.h
++++ xorg-server-21.1.21/include/dix.h
 @@ -620,6 +620,8 @@ typedef struct {
  
  extern _X_EXPORT CallbackListPtr RootWindowFinalizeCallback;
@@ -262,6 +262,3 @@ index 0dcd09b65..ecc73d1d9 100644
  extern int
  XItoCoreType(int xi_type);
  extern Bool
--- 
-2.25.1
-
