@@ -2407,4 +2407,17 @@ for 12.3</comment>
     <comment></comment>
     <requestid>1317088</requestid>
   </revision>
+  <revision rev="259" vrev="1">
+    <srcmd5>63e09982dc662d43029e3d171b0433aa</srcmd5>
+    <version>1550+20251118.addc6cd</version>
+    <time>1764253112</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1550+20251118.addc6cd:
+  * profiles: add snapd (bsc#1248682)
+  * profiles: add lightdm-kde-greeter (bsc#1249146)
+- Update to version 1550+20251114.b0f300e:
+  * profiles: system v258 mountfsd and nsresourced actions (bsc#1247556)
+</comment>
+    <requestid>1320323</requestid>
+  </revision>
 </revisionlist>

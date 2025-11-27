@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 27 10:54:59 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 1550+20251118.addc6cd:
+  * profiles: add snapd (bsc#1248682)
+  * profiles: add lightdm-kde-greeter (bsc#1249146)
+
+-------------------------------------------------------------------
+Fri Nov 14 09:39:15 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 1550+20251114.b0f300e:
+  * profiles: system v258 mountfsd and nsresourced actions (bsc#1247556)
+
+-------------------------------------------------------------------
 Tue Nov 11 12:03:01 UTC 2025 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Update to version 1550+20251111.84b92d9:
