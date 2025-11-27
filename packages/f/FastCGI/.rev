@@ -272,4 +272,14 @@ Use SUSE- proprietary prefix until license is accepted upstream by SPDX.org. Fed
   FastCGI-perl526.patch</comment>
     <requestid>1293233</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>24b2c1c01c4581865d839940fb35c473</srcmd5>
+    <version>2.4.7</version>
+    <time>1764253073</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.4.7 (boo#1243325 CVE-2025-23016)
+  Fix size_t overflow in Malloc() argument in ReadParams()
+  https://github.com/advisories/GHSA-9825-56cx-cfg6</comment>
+    <requestid>1320164</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package FastCGI
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           FastCGI
 %define lname	libfcgi0
-Version:        2.4.6
+Version:        2.4.7
 Release:        0
 Summary:        A Scalable, Open Extension to CGI
 License:        OML

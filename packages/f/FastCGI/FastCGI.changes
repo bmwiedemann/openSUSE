@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 26 11:41:53 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.4.7 (boo#1243325 CVE-2025-23016)
+  Fix size_t overflow in Malloc() argument in ReadParams()
+  https://github.com/advisories/GHSA-9825-56cx-cfg6
+
+-------------------------------------------------------------------
 Fri Jun 13 12:23:07 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 2.4.6 (boo#1243325 CVE-2025-23016)
