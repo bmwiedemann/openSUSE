@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Nov 17 18:44:01 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.8.2
+  * Customizable digit group size and separator.
+  * Option to enable/disable check for new versions.
+  * Optional compact variant of parsed expression in history.
+  * Highlight unmatched parenthesis (with red color).
+  * New default adaptive calculate-as-you-type delay (without
+    delay in most cases).
+  * Improve decision to not do calculate-as-you-type or not show
+    result of it.
+  * "Approximation" caption changed to "Approximation and
+    Fractions".
+  * Improve language handling for functions, units, and variables.
+  * Minor bug fixes and feature enhancements
+
+-------------------------------------------------------------------
 Mon Oct 27 18:50:56 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 5.8.1
