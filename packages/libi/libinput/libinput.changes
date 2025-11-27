@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 25 05:33:46 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.30
+  * touchpad: allow disabling the touchpad jumping cursor
+    detection, touchpad hysteresis, and palm dectection as a whole.
+  * Add quirks for Microsoft Surface Keyboard BTN_0, TongFang GX4
+    (X4SP4NAL) touchpad, the RazerBlade162025 keyboard, HP OmniBook
+    Ultra Flip Laptop 14-fh0xxx, GPD MicroPC 2 touchpad, ROG Flow
+    Z13 2025 (GZ302EA) keyboard, Nulea M501 thumb trackball, Dell
+    laptops, Google Chromebook Roric/Rull, MX Master 4.
+
+-------------------------------------------------------------------
 Tue Oct 21 08:48:42 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.29.2

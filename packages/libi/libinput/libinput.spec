@@ -37,7 +37,7 @@
 %define lname	libinput10
 %define pname	libinput
 Name:           libinput%{?xsuffix}
-Version:        1.29.2
+Version:        1.30.0
 Release:        0
 Summary:        Input device and event processing library
 License:        MIT
@@ -144,7 +144,7 @@ to develop applications that require libinput.
 	-Dtests=false \
 	-Ddebug-gui=%{?with_debug_gui:true}%{!?with_debug_gui:false} \
 	-Ddocumentation=%{?with_documentation:true}%{!?with_documentation:false} \
-	%nil
+	-Dlua-plugins=disabled
 %meson_build
 
 %install

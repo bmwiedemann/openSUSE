@@ -3,9 +3,12 @@ Date: 2017-11-28 11:01:12.978019538 +0100
 
 Kill /usr/bin/env. We can't have random python interpreters be executed.
 ---
+ test/test_quirks_files.py                   |    2 +-
+ tools/libinput-analyze-buttons.py           |    2 +-
  tools/libinput-analyze-per-slot-delta.py    |    2 +-
  tools/libinput-analyze-recording.py         |    2 +-
  tools/libinput-analyze-touch-down-state.py  |    2 +-
+ tools/libinput-list-kernel-devices.py       |    2 +-
  tools/libinput-measure-fuzz.py              |    2 +-
  tools/libinput-measure-touch-size.py        |    2 +-
  tools/libinput-measure-touchpad-pressure.py |    2 +-
@@ -13,113 +16,154 @@ Kill /usr/bin/env. We can't have random python interpreters be executed.
  tools/libinput-measure-touchpad-tap.py      |    2 +-
  tools/libinput-record-verify-yaml.py        |    2 +-
  tools/libinput-replay.py                    |    2 +-
+ tools/razer-quirks-lister.py                |    2 +-
  tools/test_tool_option_parsing.py           |    2 +-
- 11 files changed, 11 insertions(+), 11 deletions(-)
+ 15 files changed, 15 insertions(+), 15 deletions(-)
 
-Index: libinput-1.17.0/tools/libinput-analyze-per-slot-delta.py
+Index: libinput-1.30.0/test/test_quirks_files.py
 ===================================================================
---- libinput-1.17.0.orig/tools/libinput-analyze-per-slot-delta.py
-+++ libinput-1.17.0/tools/libinput-analyze-per-slot-delta.py
+--- libinput-1.30.0.orig/test/test_quirks_files.py
++++ libinput-1.30.0/test/test_quirks_files.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ #
+ # This file is formatted with Python Black
+ #
+Index: libinput-1.30.0/tools/libinput-analyze-buttons.py
+===================================================================
+--- libinput-1.30.0.orig/tools/libinput-analyze-buttons.py
++++ libinput-1.30.0/tools/libinput-analyze-buttons.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python3
 +#!/usr/bin/python3
  # -*- coding: utf-8
  # vim: set expandtab shiftwidth=4:
  # -*- Mode: python; coding: utf-8; indent-tabs-mode: nil -*- */
-Index: libinput-1.17.0/tools/libinput-analyze-recording.py
+Index: libinput-1.30.0/tools/libinput-analyze-per-slot-delta.py
 ===================================================================
---- libinput-1.17.0.orig/tools/libinput-analyze-recording.py
-+++ libinput-1.17.0/tools/libinput-analyze-recording.py
+--- libinput-1.30.0.orig/tools/libinput-analyze-per-slot-delta.py
++++ libinput-1.30.0/tools/libinput-analyze-per-slot-delta.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python3
 +#!/usr/bin/python3
  # -*- coding: utf-8
  # vim: set expandtab shiftwidth=4:
  # -*- Mode: python; coding: utf-8; indent-tabs-mode: nil -*- */
-Index: libinput-1.17.0/tools/libinput-analyze-touch-down-state.py
+Index: libinput-1.30.0/tools/libinput-analyze-recording.py
 ===================================================================
---- libinput-1.17.0.orig/tools/libinput-analyze-touch-down-state.py
-+++ libinput-1.17.0/tools/libinput-analyze-touch-down-state.py
+--- libinput-1.30.0.orig/tools/libinput-analyze-recording.py
++++ libinput-1.30.0/tools/libinput-analyze-recording.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python3
 +#!/usr/bin/python3
  # -*- coding: utf-8
  # vim: set expandtab shiftwidth=4:
  # -*- Mode: python; coding: utf-8; indent-tabs-mode: nil -*- */
-Index: libinput-1.17.0/tools/libinput-measure-fuzz.py
+Index: libinput-1.30.0/tools/libinput-analyze-touch-down-state.py
 ===================================================================
---- libinput-1.17.0.orig/tools/libinput-measure-fuzz.py
-+++ libinput-1.17.0/tools/libinput-measure-fuzz.py
+--- libinput-1.30.0.orig/tools/libinput-analyze-touch-down-state.py
++++ libinput-1.30.0/tools/libinput-analyze-touch-down-state.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ # -*- coding: utf-8
+ # vim: set expandtab shiftwidth=4:
+ # -*- Mode: python; coding: utf-8; indent-tabs-mode: nil -*- */
+Index: libinput-1.30.0/tools/libinput-list-kernel-devices.py
+===================================================================
+--- libinput-1.30.0.orig/tools/libinput-list-kernel-devices.py
++++ libinput-1.30.0/tools/libinput-list-kernel-devices.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python3
 +#!/usr/bin/python3
  # vim: set expandtab shiftwidth=4:
  # -*- Mode: python; coding: utf-8; indent-tabs-mode: nil -*- */
  #
-Index: libinput-1.17.0/tools/libinput-measure-touch-size.py
+Index: libinput-1.30.0/tools/libinput-measure-fuzz.py
 ===================================================================
---- libinput-1.17.0.orig/tools/libinput-measure-touch-size.py
-+++ libinput-1.17.0/tools/libinput-measure-touch-size.py
+--- libinput-1.30.0.orig/tools/libinput-measure-fuzz.py
++++ libinput-1.30.0/tools/libinput-measure-fuzz.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python3
 +#!/usr/bin/python3
  # vim: set expandtab shiftwidth=4:
  # -*- Mode: python; coding: utf-8; indent-tabs-mode: nil -*- */
  #
-Index: libinput-1.17.0/tools/libinput-measure-touchpad-pressure.py
+Index: libinput-1.30.0/tools/libinput-measure-touch-size.py
 ===================================================================
---- libinput-1.17.0.orig/tools/libinput-measure-touchpad-pressure.py
-+++ libinput-1.17.0/tools/libinput-measure-touchpad-pressure.py
+--- libinput-1.30.0.orig/tools/libinput-measure-touch-size.py
++++ libinput-1.30.0/tools/libinput-measure-touch-size.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python3
 +#!/usr/bin/python3
  # vim: set expandtab shiftwidth=4:
  # -*- Mode: python; coding: utf-8; indent-tabs-mode: nil -*- */
  #
-Index: libinput-1.17.0/tools/libinput-measure-touchpad-size.py
+Index: libinput-1.30.0/tools/libinput-measure-touchpad-pressure.py
 ===================================================================
---- libinput-1.17.0.orig/tools/libinput-measure-touchpad-size.py
-+++ libinput-1.17.0/tools/libinput-measure-touchpad-size.py
+--- libinput-1.30.0.orig/tools/libinput-measure-touchpad-pressure.py
++++ libinput-1.30.0/tools/libinput-measure-touchpad-pressure.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python3
 +#!/usr/bin/python3
  # vim: set expandtab shiftwidth=4:
  # -*- Mode: python; coding: utf-8; indent-tabs-mode: nil -*- */
  #
-Index: libinput-1.17.0/tools/libinput-measure-touchpad-tap.py
+Index: libinput-1.30.0/tools/libinput-measure-touchpad-size.py
 ===================================================================
---- libinput-1.17.0.orig/tools/libinput-measure-touchpad-tap.py
-+++ libinput-1.17.0/tools/libinput-measure-touchpad-tap.py
+--- libinput-1.30.0.orig/tools/libinput-measure-touchpad-size.py
++++ libinput-1.30.0/tools/libinput-measure-touchpad-size.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python3
 +#!/usr/bin/python3
  # vim: set expandtab shiftwidth=4:
  # -*- Mode: python; coding: utf-8; indent-tabs-mode: nil -*- */
  #
-Index: libinput-1.17.0/tools/libinput-record-verify-yaml.py
+Index: libinput-1.30.0/tools/libinput-measure-touchpad-tap.py
 ===================================================================
---- libinput-1.17.0.orig/tools/libinput-record-verify-yaml.py
-+++ libinput-1.17.0/tools/libinput-record-verify-yaml.py
+--- libinput-1.30.0.orig/tools/libinput-measure-touchpad-tap.py
++++ libinput-1.30.0/tools/libinput-measure-touchpad-tap.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python3
 +#!/usr/bin/python3
  # vim: set expandtab shiftwidth=4:
  # -*- Mode: python; coding: utf-8; indent-tabs-mode: nil -*- */
  #
-Index: libinput-1.17.0/tools/libinput-replay.py
+Index: libinput-1.30.0/tools/libinput-record-verify-yaml.py
 ===================================================================
---- libinput-1.17.0.orig/tools/libinput-replay.py
-+++ libinput-1.17.0/tools/libinput-replay.py
+--- libinput-1.30.0.orig/tools/libinput-record-verify-yaml.py
++++ libinput-1.30.0/tools/libinput-record-verify-yaml.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python3
 +#!/usr/bin/python3
  # vim: set expandtab shiftwidth=4:
  # -*- Mode: python; coding: utf-8; indent-tabs-mode: nil -*- */
  #
-Index: libinput-1.17.0/tools/test_tool_option_parsing.py
+Index: libinput-1.30.0/tools/libinput-replay.py
 ===================================================================
---- libinput-1.17.0.orig/tools/test_tool_option_parsing.py
-+++ libinput-1.17.0/tools/test_tool_option_parsing.py
+--- libinput-1.30.0.orig/tools/libinput-replay.py
++++ libinput-1.30.0/tools/libinput-replay.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ # vim: set expandtab shiftwidth=4:
+ # -*- Mode: python; coding: utf-8; indent-tabs-mode: nil -*- */
+ #
+Index: libinput-1.30.0/tools/razer-quirks-lister.py
+===================================================================
+--- libinput-1.30.0.orig/tools/razer-quirks-lister.py
++++ libinput-1.30.0/tools/razer-quirks-lister.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ #
+ # SPDX-License-Identifier: MIT
+ #
+Index: libinput-1.30.0/tools/test_tool_option_parsing.py
+===================================================================
+--- libinput-1.30.0.orig/tools/test_tool_option_parsing.py
++++ libinput-1.30.0/tools/test_tool_option_parsing.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python3
 +#!/usr/bin/python3
