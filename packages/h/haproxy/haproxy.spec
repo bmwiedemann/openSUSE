@@ -46,8 +46,10 @@
 %bcond_with tmpfiles
 %endif
 
+%bcond_with ech
+
 Name:           haproxy
-Version:        3.2.9+git0.170436929
+Version:        3.3.0+git0.7832fb21f
 Release:        0
 #
 Summary:        The Reliable, High Performance TCP/HTTP Load Balancer
@@ -121,6 +123,7 @@ cp %{SOURCE7} .
     USE_RELRO_NOW=1 \
     USE_STACKPROTECTOR=1 \
     USE_PIE=1 \
+    USE_KTLS=1 \
     USE_PCRE2=1 \
     %if %{with pcre2_jit}
     USE_PCRE2_JIT=1 \
@@ -133,6 +136,10 @@ cp %{SOURCE7} .
     USE_OPENSSL_AWSLC=1 \
 %else
     USE_OPENSSL=1 \
+%if %{with ech}
+    USE_QUIC_OPENSSL_COMPAT=1 \
+    USE_ECH=1 \
+%endif
 %endif
     USE_LUA=1 \
     USE_ZLIB=1 \

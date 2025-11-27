@@ -1795,4 +1795,19 @@
     <comment>- Update to version 3.2.9+git0.170436929:</comment>
     <requestid>1319056</requestid>
   </revision>
+  <revision rev="172" vrev="1">
+    <srcmd5>9d32fe1f8c197b557bcb67bcd1f01a2b</srcmd5>
+    <version>3.3.0+git0.7832fb21f</version>
+    <time>1764253207</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.3.0+git0.7832fb21f:
+  https://www.haproxy.com/blog/announcing-haproxy-3-3
+  https://www.mail-archive.com/haproxy@formilux.org/msg46300.html
+- refresh patches:
+  haproxy-1.6.0-makefile_lib.patch
+  haproxy-1.6.0-sec-options.patch
+- enable USE_KTLS
+- prepare ech/quic support</comment>
+    <requestid>1320231</requestid>
+  </revision>
 </revisionlist>

@@ -3,4 +3,8 @@
     <param name="url">http://git.haproxy.org/git/haproxy-3.2.git/</param>
     <param name="changesrevision">170436929ac78cfc4d1a43b3340535e1ac4d00d8</param>
   </service>
+  <service name="tar_scm">
+    <param name="url">http://git.haproxy.org/git/haproxy-3.3.git/</param>
+    <param name="changesrevision">7832fb21fe2dd11ce44e996d8e86802731b871b2</param>
+  </service>
 </servicedata>

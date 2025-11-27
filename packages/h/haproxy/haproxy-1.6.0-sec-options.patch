@@ -4,21 +4,21 @@ Date:   Mon Jun 17 13:00:08 2019 +0000
 
     SUSE: Makefile sec options
 
-Index: haproxy-3.2/Makefile
+Index: haproxy-3.3/Makefile
 ===================================================================
---- haproxy-3.2.orig/Makefile
-+++ haproxy-3.2/Makefile
-@@ -346,7 +346,8 @@ use_opts = USE_EPOLL USE_KQUEUE USE_NETF
-            USE_THREAD_DUMP USE_EVPORTS USE_OT USE_QUIC USE_PROMEX             \
-            USE_MEMORY_PROFILING                                               \
+--- haproxy-3.3.orig/Makefile
++++ haproxy-3.3/Makefile
+@@ -351,7 +351,8 @@ use_opts = USE_EPOLL USE_KQUEUE USE_NETF
+            USE_MEMORY_PROFILING USE_SHM_OPEN                                  \
             USE_STATIC_PCRE USE_STATIC_PCRE2                                   \
--           USE_PCRE USE_PCRE_JIT USE_PCRE2 USE_PCRE2_JIT USE_QUIC_OPENSSL_COMPAT
-+           USE_PCRE USE_PCRE_JIT USE_PCRE2 USE_PCRE2_JIT USE_QUIC_OPENSSL_COMPAT \
+            USE_PCRE USE_PCRE_JIT USE_PCRE2 USE_PCRE2_JIT                      \
+-           USE_QUIC_OPENSSL_COMPAT USE_KTLS
++           USE_QUIC_OPENSSL_COMPAT USE_KTLS \
 +					 USE_PIE USE_STACKPROTECTOR USE_RELRO_NOW
  
  # preset all variables for all supported build options among use_opts
  $(reset_opts_vars)
-@@ -897,6 +898,35 @@ ifneq ($(TRACE),)
+@@ -902,6 +903,35 @@ ifneq ($(TRACE),)
    COPTS += -finstrument-functions
  endif
  

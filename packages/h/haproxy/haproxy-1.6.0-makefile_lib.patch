@@ -1,8 +1,8 @@
-Index: haproxy-3.2/Makefile
+Index: haproxy-3.3/Makefile
 ===================================================================
---- haproxy-3.2.orig/Makefile
-+++ haproxy-3.2/Makefile
-@@ -794,7 +794,7 @@ ifneq ($(USE_PCRE:0=)$(USE_STATIC_PCRE:0
+--- haproxy-3.3.orig/Makefile
++++ haproxy-3.3/Makefile
+@@ -799,7 +799,7 @@ ifneq ($(USE_PCRE:0=)$(USE_STATIC_PCRE:0
    PCREDIR     := $(shell $(PCRE_CONFIG) --prefix 2>/dev/null || echo /usr/local)
    ifneq ($(PCREDIR),)
      PCRE_INC := $(PCREDIR)/include
@@ -11,7 +11,7 @@ Index: haproxy-3.2/Makefile
    endif
  
    PCRE_CFLAGS := $(if $(PCRE_INC),-I$(PCRE_INC))
-@@ -812,7 +812,7 @@ ifneq ($(USE_PCRE2:0=)$(USE_STATIC_PCRE2
+@@ -817,7 +817,7 @@ ifneq ($(USE_PCRE2:0=)$(USE_STATIC_PCRE2
    PCRE2DIR     := $(shell $(PCRE2_CONFIG) --prefix 2>/dev/null || echo /usr/local)
    ifneq ($(PCRE2DIR),)
      PCRE2_INC := $(PCRE2DIR)/include

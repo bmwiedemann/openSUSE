@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 26 15:48:38 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.3.0+git0.7832fb21f:
+  https://www.haproxy.com/blog/announcing-haproxy-3-3
+  https://www.mail-archive.com/haproxy@formilux.org/msg46300.html
+- refresh patches:
+  haproxy-1.6.0-makefile_lib.patch
+  haproxy-1.6.0-sec-options.patch
+- enable USE_KTLS
+- prepare ech/quic support
+
+-------------------------------------------------------------------
 Fri Nov 21 10:27:18 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 3.2.9+git0.170436929:
