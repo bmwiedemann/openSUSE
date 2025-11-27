@@ -2,7 +2,7 @@
 #
 # spec file for package openpgm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -35,6 +35,8 @@ Source:         https://github.com/steve-o/openpgm/archive/release-%{tarball_ver
 Source99:       baselibs.conf
 # PATCH-FIX-UPSTREAM https://github.com/steve-o/openpgm/pull/74
 Patch0:         Mark-pgm_family_string-as-inline.patch
+# PATCH-FIX-UPSTREAM https://github.com/steve-o/openpgm/commit/b7fa865fa6b06d97d424c500fd1c4bc44c096359
+Patch1:         fix_build_with_32_bits_MMX.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++

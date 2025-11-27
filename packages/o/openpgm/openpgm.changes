@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 25 12:09:32 UTC 2025 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- add fix_build_with_32_bits_MMX.patch to fix building packages on
+  i586 that do not define _mm_cvtm64_si64
+
+-------------------------------------------------------------------
 Sun Jun 18 13:50:39 UTC 2023 - bluca@debian.org
 
 - Add Mark-pgm_family_string-as-inline.patch to fix building packages that

@@ -103,4 +103,13 @@ changes file with SLE</comment>
     <comment></comment>
     <requestid>1093673</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>03ae3c10983e81b9ff797a9ea90a92db</srcmd5>
+    <version>5.3.128</version>
+    <time>1764253145</time>
+    <user>anag_factory</user>
+    <comment>- add fix_build_with_32_bits_MMX.patch to fix building packages on
+  i586 that do not define _mm_cvtm64_si64</comment>
+    <requestid>1320027</requestid>
+  </revision>
 </revisionlist>
