@@ -16,17 +16,16 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%{?sle15_python_module_pythons}
 Name:           python-librouteros
-Version:        3.2.1
+Version:        3.4.1
 Release:        0
 Summary:        Python implementation of MikroTik RouterOS API
 License:        GPL-2.0-or-later
 URL:            https://github.com/luqasz/librouteros
 Source:         https://github.com/luqasz/librouteros/archive/%{version}.tar.gz#/librouteros-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#luqasz/librouteros#a9349dfdc1d8e7a915567766e0d18b07544323dc
-Patch0:         migrate-to-setup-method.patch
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -34,7 +33,9 @@ BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest-asyncio}
 # /SECTION
+Requires:       python-toml
 %python_subpackages
 
 %description

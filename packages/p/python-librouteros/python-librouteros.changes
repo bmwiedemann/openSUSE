@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Nov 27 11:06:31 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.4.1
+  * Revert `SYNC_DEFAULTS` to `DEFAULTS`
+- from version 3.4.0
+  * Add async support
+- from version 3.3.1
+  * Fix empty `select()` `=.proplist=` argument
+- from version 3.3.0
+  * Allow empty `select()`
+  * Drop python 3.7 support (end of life)
+  * Drop python 3.6 support (end of life)
+- Drop migrate-to-setup-method.patch, merged upstream
+- Update BuildRequires and Requires from pyproject.toml
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Tue Aug 20 04:27:52 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch migrate-to-setup-method.patch:
