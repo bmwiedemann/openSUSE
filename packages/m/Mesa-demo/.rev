@@ -301,4 +301,12 @@ This avoids &quot;not owned by any package&quot; if only the &quot;-x&quot; subp
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1308220</requestid>
   </revision>
+  <revision rev="33" vrev="7">
+    <srcmd5>dc4eee5e1ba99e3ef4eae2ec8eb0a7f4</srcmd5>
+    <version>9.0.0</version>
+    <time>1764253124</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1319890</requestid>
+  </revision>
 </revisionlist>

@@ -47,7 +47,12 @@ BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glesv1_cm)
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(glu)
+BuildRequires:  pkgconfig(libdecor-0)
 BuildRequires:  pkgconfig(libdrm)
+BuildRequires:  pkgconfig(wayland-client)
+BuildRequires:  pkgconfig(wayland-egl)
+BuildRequires:  pkgconfig(wayland-protocols)
+BuildRequires:  pkgconfig(wayland-scanner)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xext)
@@ -100,7 +105,7 @@ This package contains some common EGL-based demos.
   -Dgles2=enabled \
   -Dosmesa=disabled \
   -Dlibdrm=enabled \
-  -Dwayland=disabled \
+  -Dwayland=enabled \
   -Dvulkan=enabled \
   %{nil}
 %{meson_build}
@@ -134,6 +139,9 @@ cp -a %{buildroot}%{_bindir}/{glxgears,glxinfo,pbinfo} \
 %exclude %{_bindir}/peglgears
 %exclude %{_bindir}/xeglgears
 %exclude %{_bindir}/xeglthreads
+%exclude %{_bindir}/eglgears_wayland
+%exclude %{_bindir}/egltri_wayland
+%exclude %{_bindir}/es2gears_wayland
 # conflict with line of util-linux
 %exclude %{_bindir}/line
 # conflict with bitmap of package bitmap
@@ -151,6 +159,7 @@ cp -a %{buildroot}%{_bindir}/{glxgears,glxinfo,pbinfo} \
 
 %files es
 %{_bindir}/es2_info
+%{_bindir}/es2gears_wayland
 %{_bindir}/es2gears_x11
 %{_bindir}/es2tri
 %ifarch %ix86
@@ -161,8 +170,10 @@ cp -a %{buildroot}%{_bindir}/{glxgears,glxinfo,pbinfo} \
 %endif
 
 %files egl
+%{_bindir}/eglgears_wayland
 %{_bindir}/eglgears_x11
 %{_bindir}/eglinfo
+%{_bindir}/egltri_wayland
 %{_bindir}/egltri_x11
 %{_bindir}/peglgears
 %{_bindir}/xeglgears

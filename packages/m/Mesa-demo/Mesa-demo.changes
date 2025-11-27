@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 21 13:08:07 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add pkgconfig(libdecor-0), pkgconfig(wayland-client),
+  pkgconfig(wayland-egl), pkgconfig(wayland-protocols) and
+  pkgconfig(wayland-scanner) BuildRequires and pass wayland=enabled
+  to meson setup, build wayland support.
+
+-------------------------------------------------------------------
 Tue Sep 23 15:18:09 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - redefine %meson_build/%meson_install on Leap 15.6 in order to fix
