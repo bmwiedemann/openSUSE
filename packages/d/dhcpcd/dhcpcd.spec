@@ -17,7 +17,7 @@
 
 
 Name:           dhcpcd
-Version:        10.2.4
+Version:        10.3.0
 Release:        0
 Summary:        Minimal DHCPv4 and DHCPv6 client
 License:        BSD-2-Clause

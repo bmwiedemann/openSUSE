@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Nov 26 12:24:43 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to 10.3.0
+  * privsep: enforce message boundaries with MSG_EOR on our
+    messages
+  * Protocols will notify when dhcpcd can exit
+  * DHCP: Don't request T1 and T2
+  * DHCP: Don't request a lease time
+  * DHCP6: Don't exit if using DHCP4 INFORM in non manager mode
+  * ND: Route Information Option prefix is optional
+  * ipv6: respect slaac hwaddr to really use the hwaddr
+  * When stopping all interfaces at exit and releasing,
+    remove persistance
+  * NetBSD: Delete RTF_CONNECTED route when changing it
+  * privsep: Drain the log when the root process is exiting
+  * eloop: vastly reworked, kqueue and epoll support on by default
+
+-------------------------------------------------------------------
 Mon Jun  2 10:36:32 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to 10.2.4

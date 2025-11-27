@@ -75,4 +75,25 @@
     <comment>- Update to 10.2.4</comment>
     <requestid>1281877</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1498488176e86c0c089f48190d339a21</srcmd5>
+    <version>10.3.0</version>
+    <time>1764253076</time>
+    <user>anag_factory</user>
+    <comment>- Update to 10.3.0
+  * privsep: enforce message boundaries with MSG_EOR on our
+    messages
+  * Protocols will notify when dhcpcd can exit
+  * DHCP: Don't request T1 and T2
+  * DHCP: Don't request a lease time
+  * DHCP6: Don't exit if using DHCP4 INFORM in non manager mode
+  * ND: Route Information Option prefix is optional
+  * ipv6: respect slaac hwaddr to really use the hwaddr
+  * When stopping all interfaces at exit and releasing,
+    remove persistance
+  * NetBSD: Delete RTF_CONNECTED route when changing it
+  * privsep: Drain the log when the root process is exiting
+  * eloop: vastly reworked, kqueue and epoll support on by default</comment>
+    <requestid>1320172</requestid>
+  </revision>
 </revisionlist>
