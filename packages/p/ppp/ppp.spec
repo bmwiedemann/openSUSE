@@ -1,7 +1,7 @@
 #
 # spec file for package ppp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -109,7 +109,7 @@ find -type f -name '*.orig' | xargs rm -f
 
 %build
 %configure \
-	--with-runtime-dir=%_rundir/ppp/ \
+	--runstatedir=%{_rundir} \
 	--enable-cbcp \
 	--with-pam \
 	--enable-multilink \
@@ -144,6 +144,10 @@ install -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/pam.d/ppp
 install -Dm 644 %{SOURCE14} %{buildroot}%{_sysconfdir}/ppp/chatscripts/modem.chat
 install -Dm 644 %{SOURCE15} %{buildroot}%{_unitdir}/modem@.service
 install -Dm 644 %{SOURCE16} %{buildroot}%{_udevrulesdir}/90-modem.rules
+install -d 755 %{buildroot}%{_tmpfilesdir}
+cat > %{buildroot}%{_tmpfilesdir}/%{name}.conf <<EOF
+d %{_rundir}/pppd 0775 root %{_group} - -
+EOF
 
 %if 0%{?suse_version} > 1500
 %pre
@@ -184,6 +188,7 @@ done
 %dir %{_libdir}/pppd
 %dir %{_libdir}/pppd/%{version}
 %attr(0755,root,root) %{_libdir}/pppd/%{version}/*.so
+%_tmpfilesdir/%{name}.conf
 
 %files devel
 %{_includedir}/pppd

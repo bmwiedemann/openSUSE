@@ -57,7 +57,7 @@ Move the resolv.conf written by pppd to /var/run [bnc#401648]
  #define PPP_PATH_TTYOPT         PPP_PATH_CONFDIR "/options."
  #define PPP_PATH_PEERFILES      PPP_PATH_CONFDIR "/peers/"
 -#define PPP_PATH_RESOLV         PPP_PATH_CONFDIR "/resolv.conf"
-+#define PPP_PATH_RESOLV         PPP_PATH_VARRUN  "/ppp/resolv.conf"
++#define PPP_PATH_RESOLV         PPP_PATH_VARRUN  "/resolv.conf"
  
  #define PPP_PATH_NET_INIT	PPP_PATH_CONFDIR "/net-init"
  #define PPP_PATH_NET_PREUP	PPP_PATH_CONFDIR "/net-pre-up"

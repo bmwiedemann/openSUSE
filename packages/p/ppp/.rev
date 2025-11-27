@@ -512,4 +512,13 @@ GPL-2.0 matches found in ppp-2.4.5/include/linux/if_pppol2tp.h             (forw
     <comment></comment>
     <requestid>1253631</requestid>
   </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>17098837ea9a0241e5bed301bc0981b9</srcmd5>
+    <version>2.5.2</version>
+    <time>1764253143</time>
+    <user>anag_factory</user>
+    <comment>- boo#1253325: Fix the path of the generated resolv.conf file.
+- Use the systemd tmpfiles mechanism to create the /run/pppd/ dir.</comment>
+    <requestid>1320023</requestid>
+  </revision>
 </revisionlist>
