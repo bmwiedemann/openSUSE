@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 25 07:58:59 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove dbus-launch requires, dbus-launch is no longer used
+  and incompatible with dbus-broker.
+
+-------------------------------------------------------------------
+Thu Nov 19 08:15:14 UTC 2025 - Zdenek Kubala <zkubala@suse.com>
+
+- Update SELinux module dir as macro to allow root path move from /var/lib/selinux
+  to /etc/selinux (bsc#1221342)
+
+-------------------------------------------------------------------
 Wed Jun 11 11:20:38 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - no longer require xinit so it can be dropped from SLE16

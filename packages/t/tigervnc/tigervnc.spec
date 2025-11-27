@@ -1,7 +1,7 @@
 #
 # spec file for package tigervnc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -172,7 +172,6 @@ BuildRequires:  firewall-macros
 %endif
 # Needed to generate certificates
 Requires:       windowmanager
-Requires:       /usr/bin/dbus-launch
 Requires:       xauth
 Recommends:     xinit
 Requires:       xkbcomp
@@ -622,7 +621,7 @@ fi
 %if %{with selinux}
 %files selinux
 %{_datadir}/selinux/packages/%{selinuxtype}/%{modulename}.pp.bz2
-%ghost %verify(not md5 size mtime) %{_sharedstatedir}/selinux/%{selinuxtype}/active/modules/200/%{modulename}
+%ghost %verify(not md5 size mtime) %{_selinux_store_path}/%{selinuxtype}/active/modules/200/%{modulename}
 %endif
 
 %changelog
