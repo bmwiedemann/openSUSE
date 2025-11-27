@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov 25 08:30:24 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.2:
+  + Fixed bug that prevented X11 fallback whenever autologin fails
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Nov 14 11:16:25 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop /usr/bin/dbus-run-session (Build)Requires: no longer needed
+  since version 49.0.
+
+-------------------------------------------------------------------
 Fri Nov  7 08:43:38 UTC 2025 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Require displaymanager-sysconfig: we configure most aspects of

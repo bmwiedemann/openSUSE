@@ -27,7 +27,7 @@
 %endif
 
 Name:           gdm
-Version:        49.1
+Version:        49.2
 Release:        0
 Summary:        The GNOME Display Manager
 License:        GPL-2.0-or-later
@@ -75,7 +75,6 @@ Patch10:        gdm-service-keytable.patch
 # PATCH-FIX-SLE gdm-disable-gnome-initial-setup.patch bnc#1067976 qzhao@suse.com -- Disable gnome-initial-setup runs before gdm, g-i-s will only serve for CJK people to choose the input-method after login.
 Patch1000:      gdm-disable-gnome-initial-setup.patch
 
-BuildRequires:  /usr/bin/dbus-run-session
 BuildRequires:  check-devel
 # dconf and gnome-session-core are needed for directory ownership
 BuildRequires:  dconf
@@ -113,7 +112,6 @@ BuildRequires:  pkgconfig(xdmcp)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xrandr)
-Requires:       %{_bindir}/dbus-run-session
 Requires:       %{name}-branding = %{version}
 Requires:       displaymanager-sysconfig
 Requires:       gdmflexiserver
