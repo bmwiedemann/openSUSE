@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov 26 13:59:37 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.5.5
+  * Improve behavior of a mock's ad hoc methods
+  * Improve the error message of the safety check in `get_function_host`
+  * Remove unrelated test in a test function
+  * Update CHANGES.txt
+  * Fix recipes markup
+  * Markup fix in "walk-through"
+  * Make `thenReturn()` an official shortcut
+  * Rename and order tests in `when_interface_test`
+
+-------------------------------------------------------------------
 Wed Feb 12 07:08:07 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.5.4

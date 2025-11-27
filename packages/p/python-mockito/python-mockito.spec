@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mockito
-Version:        1.5.4
+Version:        1.5.5
 Release:        0
 Summary:        Spying framework
 License:        MIT
