@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        1.50.2
+Version:        1.50.3
 Release:        0
 Summary:        Command-line interface for the hledger accounting system
 License:        GPL-3.0-or-later
