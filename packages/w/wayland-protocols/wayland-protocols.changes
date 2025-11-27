@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Nov 24 18:09:25 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.46
+  * staging/color-management: target color volume defines the
+    bounds
+  * staging/color-management: parametric is ICC Display
+  * experimental: Add text-input to build
+  * color-management: clarify white point adaptation with
+    parametric descriptions
+  * experimental/input_method: Fix typos
+  * Start new experimental text-input development
+  * staging/color-management: add normative appendix
+  * staging/color-management: clarify the displayness
+  * staging/color-management: remove references to H.273
+  * staging/color-management: redefine set_luminance
+  * staging/color-management: remove notes about TF encoding
+  * build: add headers to declare_dependency() sources
+  * build: set includedir in pkg-config file
+  * xx-input-method: Clarify when state is reset
+  * xx-input-method: fix typos
+  * build: Add xx-input-method-v2
+  * tablet: fix all comment-references to the zwp_tablet elements
+  * xdg-shell: warn about putting UI outside of window geometry
+  * color-representation-v1: add protocol error for invalid
+    chroma location
+  * xx-input-method-v2: Define a popup
+  * staging/ext-background-effect: fix capability value for blur
+  * xdg-shell: Fix edge constraint typo
+
+-------------------------------------------------------------------
 Sun Jun 15 15:40:10 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.45
