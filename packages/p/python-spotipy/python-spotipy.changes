@@ -1,7 +1,23 @@
 -------------------------------------------------------------------
+Thu Nov 27 07:15:05 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 2.25.2 (bsc#1254285):
+  * Security
+    + CVE-2025-66040 – HTML for OAuth flow now sanitized: prevents
+      potential XSS attacks (by @yueyueL) Upgrade if you run spotipy
+      with the default OAuth flow (uses a local HTTP server as a
+      callback method) (bsc#1254285)
+  * Added
+    + Adds additional_types parameter to retrieve currently playing episode
+    + Add deprecation warnings to documentation
+  * Fixed
+    + Fixed dead link in README.md
+    + Corrected Spotify/Spotipy typo in documentation
+
+-------------------------------------------------------------------
 Fri Feb 28 05:07:51 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Update to 2.25.1:
+- Update to 2.25.1 (bsc#1238059):
   * Security
     + CVE-2025-27154 – Cache file permissions tightened: now 600 (user
       read/write only) instead of 644, preventing unauthorized local access

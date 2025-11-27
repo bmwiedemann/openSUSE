@@ -1,7 +1,7 @@
 #
 # spec file for package python-spotipy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-spotipy
-Version:        2.25.1
+Version:        2.25.2
 Release:        0
 Summary:        Client for the Spotify Web API
 License:        MIT
