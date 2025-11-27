@@ -18,13 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-xmltodict
-Version:        1.0.0
+Version:        1.0.2
 Release:        0
 Summary:        Module to make XML working resemble JSON
 License:        MIT
 URL:            https://github.com/martinblech/xmltodict
 Source:         https://files.pythonhosted.org/packages/source/x/xmltodict/xmltodict-%{version}.tar.gz
-Patch0:         skip-tests-expat-245.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Nov 24 09:03:54 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.0.2
+  * allow DOCTYPE with disable_entities=True (default)
+- from version 1.0.1
+  * fail closed when entities disabled
+  * validate XML comments
+  * add SECURITY.md
+  * clarify behavior for empty lists
+  * clarify process_comments docs
+  * clarify strip whitespace comment behavior
+  * create AGENTS.md for coding agents
+  * replace travis with actions badge
+  * update CONTRIBUTING.md
+- Drop skip-tests-expat-245.patch, no longer required
+
+-------------------------------------------------------------------
 Fri Sep 12 19:34:16 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.0.0
