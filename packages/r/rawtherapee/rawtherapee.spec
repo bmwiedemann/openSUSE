@@ -1,7 +1,7 @@
 #
 # spec file for package rawtherapee
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2022 Marcin Bajor
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,7 +24,7 @@
 %define liblcms2_name lcms2
 %endif
 Name:           rawtherapee
-Version:        5.11
+Version:        5.12
 Release:        3%{?dist}
 Summary:        Cross-platform raw image processing program
 License:        GPL-3.0-only
@@ -107,7 +107,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(lcms2)  >= 2.6
 Requires(post): desktop-file-utils
-Requires(postun):desktop-file-utils
+Requires(postun): desktop-file-utils
 %else
 BuildRequires:  desktop-file-utils
 BuildRequires:  expat-devel
