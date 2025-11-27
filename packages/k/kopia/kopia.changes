@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov 27 05:52:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.22.2:
+  * Storage Providers
+    - Fix regression #5039: execute rclone with non-cancelling
+      context (#5040) by Julio López
+  * Testing
+    - allow S3 versioned tests cleanup to succeed (#5038) by Julio
+      López
+  * CI/CD
+    - make PR title options consistent with chlog (#5036) by Julio
+      López
+
+-------------------------------------------------------------------
 Tue Nov 25 07:41:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.22.1:
