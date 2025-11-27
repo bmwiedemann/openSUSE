@@ -1,0 +1,28 @@
+From d1b30fcea09687dcf79a827945b5e007accdb884 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jaime=20Marqui=CC=81nez=20Ferra=CC=81ndiz?=
+ <jaime.marquinez.ferrandiz@fastmail.net>
+Date: Thu, 20 Nov 2025 23:32:59 +0100
+Subject: [PATCH] test-userdata-dir-invalid-home: Unset XDG_DATA_HOME
+
+---
+ libgnucash/core-utils/test/test-userdata-dir-invalid-home.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/libgnucash/core-utils/test/test-userdata-dir-invalid-home.c b/libgnucash/core-utils/test/test-userdata-dir-invalid-home.c
+index 449a4b1c24..5b48ced269 100644
+--- a/libgnucash/core-utils/test/test-userdata-dir-invalid-home.c
++++ b/libgnucash/core-utils/test/test-userdata-dir-invalid-home.c
+@@ -85,6 +85,10 @@ main(G_GNUC_UNUSED int argc, G_GNUC_UNUSED char **argv)
+      * directory in that case. */
+     g_setenv("HOME", homedir, TRUE);
+     g_setenv("GNC_DATA_HOME", testdatahome, TRUE);
++    /* On some test environments XDG_DATA_HOME may be configured with a path
++     * that actually exists, so we unset it to actually get the temporary
++     * directory */
++    g_setenv("XDG_DATA_HOME", "", TRUE);
+     g_free (homedir);
+     g_free (testdatahome);
+ 
+-- 
+2.51.1
+

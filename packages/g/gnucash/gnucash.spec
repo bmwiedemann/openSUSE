@@ -49,6 +49,8 @@ Patch0:         gnucash-cpan-warning.patch
 Patch1:         gnucash-libm.patch
 Patch2:         gnucash-4.1-fix-gtest-path.patch
 Patch3:         gnucash-boost-1.89.patch
+# PATCH-FIX-UPSTREAM gh#gnucash/gnucash#2152 -- test-userdata-dir-invalid-home: Unset XDG_DATA_HOME
+Patch4:         gnucash-fix-test-userdata-dir-invalid-home.patch
 
 BuildRequires:  cmake >= 3.14
 BuildRequires:  doxygen
