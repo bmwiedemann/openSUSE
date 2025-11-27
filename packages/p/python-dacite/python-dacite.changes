@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Nov 26 14:38:10 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 1.9.2
+  * Fix class Data(Protocol) types declaration
+  * fix readonly args
+- Update to 1.9.1
+  * Do not assign to hint.args if concretized hint_args are the same
+- Update to 1.9.0
+  * Support generics, forward references and case conversion
+  * improve Data typing
+  * support generics and forward references
+  * Fix issues with caching internal function calls
+  * Fix CI
+  * Update actions versions, add Python 3.12 and 3.13 to test matrix
+  * Suppress context in ForwardReferenceError and MissingValueError
+  * Check for non empty union matches
+
+-------------------------------------------------------------------
 Wed Aug 21 11:40:01 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - switch to upstream reference for tarball

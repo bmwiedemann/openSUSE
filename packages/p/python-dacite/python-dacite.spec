@@ -1,7 +1,7 @@
 #
 # spec file for package python-dacite
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           python-dacite
-Version:        1.8.1
+Version:        1.9.2
 Release:        0
 Summary:        Simple creation of data classes from dictionaries
 License:        MIT
 URL:            https://github.com/konradhalas/dacite
-Source:         https://github.com/konradhalas/dacite/archive/refs/tags/v%{version}.tar.gz
+Source:         https://github.com/konradhalas/dacite/archive/refs/tags/v%{version}.tar.gz#/dacite-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -42,6 +42,8 @@ Simplifies creating type-hinted data transfer objects (DTOs) from dictionaries, 
 %prep
 %autosetup -p1 -n dacite-%{version}
 sed -ri 's/--benchmark-[^ "]+//g' pyproject.toml
+# fix wrong version in setup.py, see gh#konradhalas/dacite#daad7e4
+sed -i 's/1.9.1/1.9.2/g' setup.py
 
 %build
 %pyproject_wheel
