@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 27 05:51:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 8.30.0:
+  * 0 to 5 - notes on recursive decoding (#1994)
+  * Add new Looker client ID and client secret rules (#1947)
+  * feat: add Airtable Personnal Access Token detection (#1952)
+  * build: upgrade Go & alpine version (#1989)
+
+-------------------------------------------------------------------
 Thu Nov 20 05:48:20 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 8.29.1:

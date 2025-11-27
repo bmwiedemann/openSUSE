@@ -18,7 +18,7 @@
 
 
 Name:           gitleaks
-Version:        8.29.1
+Version:        8.30.0
 Release:        0
 Summary:        Protect and discover secrets using Gitleaks
 License:        MIT
@@ -27,7 +27,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.23
+BuildRequires:  go1.25 >= 1.25.4
 BuildRequires:  zsh
 
 %description
