@@ -1,7 +1,7 @@
 #
 # spec file for package gpsbabel
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,6 @@ BuildRequires:  gcc12-c++
 BuildRequires:  cmake
 BuildRequires:  libusb-1_0-devel
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt6LinguistTools) >= 6.2.0
 BuildRequires:  pkgconfig(Qt6Core) >= 6.2.0
 BuildRequires:  pkgconfig(Qt6Core5Compat) >= 6.2.0
