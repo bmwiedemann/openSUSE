@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 26 21:11:24 UTC 2025 - Axel Braun <axel.braun@gmx.de>
+
+- Version 1.7.0
+  * Add support for Python 3.14
+  * Do not use parameters for COUNT(*)
+
+-------------------------------------------------------------------
 Sat May  3 08:43:48 UTC 2025 - Axel Braun <axel.braun@gmx.de>
 
 - Version 1.6.0 - 2025-05-02
