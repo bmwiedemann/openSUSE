@@ -718,4 +718,17 @@ Features
   [unbound-swig-4.4.0-compat.patch]</comment>
     <requestid>1313189</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>d660d174e64f5bc6ed5dcdec6fd1f7a7</srcmd5>
+    <version>1.24.2</version>
+    <time>1764253072</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.24.2:
+  Bug Fixes:
+  * Additional fix for CVE-2025-11411 (possible domain hijacking
+    attack), to include YXDOMAIN and non-referral nodata answers in
+    the mitigation as well, reported by TaoFei Guo from Peking
+    University, Yang Luo and JianJun Chen from Tsinghua University.</comment>
+    <requestid>1320162</requestid>
+  </revision>
 </revisionlist>
