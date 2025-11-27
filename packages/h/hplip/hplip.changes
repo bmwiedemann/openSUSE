@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 22 21:18:02 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove unused BuildRequires: update-desktop-files.
+
+-------------------------------------------------------------------
 Wed Oct  8 20:43:58 UTC 2025 - Martin Wilck <mwilck@suse.com>
 
 - Move more utilities from hplip-utils to hplip-base.
@@ -237,7 +242,7 @@ Wed Jan  3 16:11:11 UTC 2024 - Martin Wilck <mwilck@suse.com>
   * HP OfficeJet Pro 9110b series
   * HP Color LaserJet Enterprise Flow MFP X58045z
   * HP Color LaserJet Enterprise Flow MFP X58045zs
-  * HP Color LaserJet Enterprise MFP X58045dn 
+  * HP Color LaserJet Enterprise MFP X58045dn
   * HP Color LaserJet Enterprise MFP X58045
   * HP LaserJet Pro P1106 plus
   * HP LaserJet Pro P1108 plus

@@ -1612,4 +1612,12 @@ Fixes build in Staging_A (python 3.13) - and seems to address the real reaason w
 </comment>
     <requestid>1309931</requestid>
   </revision>
+  <revision rev="166" vrev="3">
+    <srcmd5>d7ccb0f8a429c5bcd3ec81a8c6138600</srcmd5>
+    <version>3.25.6</version>
+    <time>1764253141</time>
+    <user>anag_factory</user>
+    <comment>Remove dependency on update-desktop-files for factory</comment>
+    <requestid>1320016</requestid>
+  </revision>
 </revisionlist>

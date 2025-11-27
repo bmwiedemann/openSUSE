@@ -177,7 +177,9 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  readline-devel
 BuildRequires:  sane-backends-devel
 BuildRequires:  systemd-rpm-macros
+%if %{with update_desktop}
 BuildRequires:  update-desktop-files
+%endif
 #!BuildIgnore:  clang8
 #!BuildIgnore:  libclang8
 # Break this dependency chain that has caused build breakage
