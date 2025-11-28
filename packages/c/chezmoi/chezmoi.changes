@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov 28 10:23:53 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.67.1:
+  - Features
+    * feat: Switch to znkr.io/diff for builtin diff
+    * feat: Warn if adding non-UTF-8 template
+  - Documentation
+    * docs: Make Mermaid diagrams more consistent with text
+    * docs: Improve developer guide
+
+-------------------------------------------------------------------
 Mon Nov  3 17:24:40 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.67.0:

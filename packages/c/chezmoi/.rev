@@ -1032,4 +1032,19 @@
 </comment>
     <requestid>1315354</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>d52822e7fab5721876e43614dbb20183</srcmd5>
+    <version>2.67.1</version>
+    <time>1764345227</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.67.1:
+  - Features
+    * feat: Switch to znkr.io/diff for builtin diff
+    * feat: Warn if adding non-UTF-8 template
+  - Documentation
+    * docs: Make Mermaid diagrams more consistent with text
+    * docs: Improve developer guide
+</comment>
+    <requestid>1320438</requestid>
+  </revision>
 </revisionlist>
