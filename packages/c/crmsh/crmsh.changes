@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Fri Nov 28 10:01:42 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20251128.b328f794:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: utils: Rename utils.ssh_reachable_check to utils.ssh_port_reachable_check
+  * Dev: utils: Check if the peer node needs password to access
+
+-------------------------------------------------------------------
+Fri Nov 28 09:04:01 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20251128.1e105666:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: utils: Rename utils.node_reachable_check to utils.ssh_reachable_check
+  * Dev: ui_utils: Move ui_node.parse_option_for_nodes to ui_utils.parse_and_validate_node_args
+  * Dev: behave: Adjust functional test for previous commit
+  * Fix: utils: Raise UnreachableNodeError for those ssh unreachable nodes (bsc#1250645)
+  * Dev: utils: Adjust node_reachable_check function and the way it is used
+
+-------------------------------------------------------------------
+Mon Nov 24 09:53:48 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20251124.0c3bd0aa:
+  * Dev: behave: Add functional test case for previous commit
+  * Dev: ui_sbd: Validate purge option first
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: sbd: Improve the process of leveraging maintenance mode
+
+-------------------------------------------------------------------
+Mon Nov 24 04:08:17 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20251124.722ae586:
+  * Dev: Update Docker image
+
+-------------------------------------------------------------------
+Fri Nov 14 06:00:48 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20251114.99d958b3:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: sbd: Remove sbd configuration directories while removing cluster node
+
+-------------------------------------------------------------------
+Tue Nov 11 08:55:29 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20251111.9d10628b:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: report: Collect xml format output from crm_mon
+
+-------------------------------------------------------------------
 Mon Nov 10 12:44:38 UTC 2025 - XLiang@suse.com
 
 - Update to version 5.0.0+20251110.f97886d4:
