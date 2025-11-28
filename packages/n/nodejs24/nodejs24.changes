@@ -1,0 +1,356 @@
+-------------------------------------------------------------------
+Mon Nov 24 22:31:18 UTC 2025 - Adam Majer <adam.majer@suse.de>
+
+- Initial package for nodejs 24.11.1
+  For changes since 22.x, please see https://nodejs.org/en/blog
+  or documentation https://nodejs.org/docs/latest-v24.x/api/documentation.html
+
+- Inherit patches form 22.21.1
+  * cares_public_headers.patch, fix_ci_tests.patch, flaky_test_rerun.patch,
+    gcc13.patch, icu_732.patch, legacy_python.patch, linker_lto_jobs.patch, 
+    manual_configure.patch, node-gyp-addon-gypi.patch,
+    nodejs-libpath.patch, npm_search_paths.patch, old_cares.patch,
+    openssl_binary_detection.patch, qemu_timeouts_arches.patch, 
+    sle12_python3_compat.patch, test-skip-y2038-on-32bit-time_t.patch, v8-i586.patch,
+    versioned.patch
+
+-------------------------------------------------------------------
+Mon Nov 24 19:48:36 UTC 2025 - Adam Majer <adam.majer@suse.de>
+
+- Update to 22.21.1:
+  * src: avoid unnecessary string -> char* -> string round trips
+  * src: remove unnecessary shadowed functions on Utf8Value & BufferValue
+  * process: fix hrtime fast call signatures
+  * http: improve writeEarlyHints by avoiding for-of loop
+
+- Update to 22.21.0:
+  * cli: add --use-env-proxy
+  * http: support http proxy for fetch under NODE_USE_ENV_PROXY
+  * http: add shouldUpgradeCallback to let servers control HTTP upgrades
+  * http,https: add built-in proxy support in http/https.request and Agent
+  * src: add percentage support to --max-old-space-size
+
+- fix_ci_tests.patch: disable geopoly and fts3 sqlite tests as our
+  sqlite does not support these optional features. Use fts4 instead.
+
+-------------------------------------------------------------------
+Tue Oct 14 16:14:05 UTC 2025 - Adam Majer <adam.majer@suse.de>
+
+- Update to 22.20.0
+  * doc: stabilize --disable-sigusr1
+  * doc: mark path.matchesGlob as stable
+  * http: add Agent.agentKeepAliveTimeoutBuffer option
+  * http2: add support for raw header arrays in h2Stream.respond()
+  * inspector: add http2 tracking support
+  * sea: implement execArgvExtension
+  * sea: support execArgv in sea config
+  * stream: add brotli support to CompressionStream and DecompressionStream
+  * test_runner: support object property mocking
+  * worker: add cpu profile APIs for worker
+
+- Update to 22.19.0
+  * cli: add NODE_USE_SYSTEM_CA=1
+  * cli: support ${pid} placeholder in --cpu-prof-name
+  * crypto: add tls.setDefaultCACertificates()
+  * dns: support max timeout
+  * doc: update the instruction on how to verify releases
+  * esm: unflag --experimental-wasm-modules
+  * http: add server.keepAliveTimeoutBuffer option
+  * lib: docs deprecate _http_*
+  * net: update net.blocklist to allow file save and file management
+  * process: add threadCpuUsage
+  * zlib: add dictionary support to zstdCompress and zstdDecompress
+
+- Update to 22.18.0:
+  * deps: update amaro to 1.1.0
+  * doc: add all watch-mode related flags to node.1
+  * doc: add islandryu to collaborators
+  * esm: implement import.meta.main
+  * fs: allow correct handling of burst in fs-events with AsyncIterator
+  * permission: propagate permission model flags on spawn
+  * sqlite: add support for readBigInts option in db connection level
+  * src,permission: add support to permission.has(addon)
+  * url: add fileURLToPathBuffer API
+  * watch: add --watch-kill-signal flag
+  * worker: make Worker async disposable
+
+- for older changes, please see https://nodejs.org/en/blog
+
+-------------------------------------------------------------------
+Thu Jun  5 15:58:24 UTC 2025 - Adam Majer <adam.majer@suse.de>
+
+- Update to 22.15.1
+  * fix error handling on async crypto operation (bsc#1243218, CVE-2025-23166)
+  * add missing call to uv_fs_req_cleanup (bsc#1243217, CVE-2025-23165)
+
+- changes since 22.15.0:
+  * dns: add TLSA record query and parsing
+  * assert: improve partialDeepStrictEqual
+  * process: add execve
+  * tls: implement tls.getCACertificates()
+  * v8: add v8.getCppHeapStatistics() method
+
+- old_cares.patch: dropped in favour of bundling until we can update SLE15 cares
+- icu_732.patch: handle our ICU version in SLE15
+- fab6906c5d1c16b046187485a7cb136b3659d42b.patch: dropped, upstreamed
+
+-------------------------------------------------------------------
+Wed Apr 23 14:46:18 UTC 2025 - Adam Majer <adam.majer@suse.de>
+
+- drop http2 priority checks as new nghttp2 dropped this
+  unused feature
+
+-------------------------------------------------------------------
+Mon Apr 14 09:14:51 UTC 2025 - Adam Majer <adam.majer@suse.de>
+
+- fab6906c5d1c16b046187485a7cb136b3659d42b.patch: fix build with
+  OpenSSL 3.5.0 (bsc#1241050)
+
+-------------------------------------------------------------------
+Thu Apr 10 09:47:03 UTC 2025 - Adam Majer <adam.majer@suse.de>
+
+- Update to 22.14.0
+  * fs: allow exclude option in globs to accept glob patterns
+  * lib: add typescript support to STDIN eval
+  * module: add ERR_UNSUPPORTED_TYPESCRIPT_SYNTAX
+  * module: add findPackageJSON util
+  * process: add process.ref() and process.unref() methods
+  * sqlite: support TypedArray and DataView in StatementSync
+  * src: add --disable-sigusr1 to prevent signal i/o thread
+  * src,worker: add isInternalWorker
+  * test_runner: add TestContext.prototype.waitFor()
+  * test_runner: add t.assert.fileSnapshot()
+  * test_runner: add assert.register() API
+  * worker: add eval ts input
+
+- openssl_binary_detection.patch fix_ci_tests.patch: refreshed
+- Build with PIE (bsc#1239949)
+
+-------------------------------------------------------------------
+Wed Jan 22 10:10:36 UTC 2025 - Adam Majer <adam.majer@suse.de>
+
+- Update to 22.13.1:
+  * src,loader,permission: throw on InternalWorker use when
+    permission model is enabled (bsc#1236251, CVE-2025-23083)
+  * src: fix HTTP2 mem leak on premature close and ERR_PROTO
+    (bsc#1236250, CVE-2025-23085)
+  * deps: Use of Insufficiently Random Values in undici fetch()
+    (bsc#1236258, CVE-2025-22150)
+
+-------------------------------------------------------------------
+Thu Jan 16 15:00:55 UTC 2025 - Adam Majer <adam.majer@suse.de>
+
+- Update to 22.13.0:
+  * Upgrades the Permission Model status from Active Development to Stable.
+  * Graduate WebCryptoAPI Ed25519 and X25519 algorithms as stable
+  * net: support blocklist in net.connect and net.Server
+  * dgram: support blocklist in udp
+  * deps updated:
+    > cares     -- '1.34.3' -> '1.34.4'
+    > ngtcp2    -- '1.3.0' -> '1.9.1'
+    > npm       -- '10.9.0' -> '10.9.2'
+    > simdjson  -- '3.10.0' -> '3.10.1'
+    > simdutf   -- '5.6.1' -> '5.6.4'
+    > uv       -- '1.49.1' -> '1.49.2'
+- CVE-2024-21538.patch: upstreamed, dropped
+- linker_lto_jobs.patch: refreshed
+
+-------------------------------------------------------------------
+Mon Dec 30 22:17:20 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- test/report/test-report-exclude-network.js - removed unit tests that fail in staging
+
+-------------------------------------------------------------------
+Fri Dec 20 12:56:09 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- fix_ci_tests.patch: skip wpt/test-webcrypto on s390x as it has
+  unexpected differences between z13 and z15
+- external sqlite support only on TW and SLFO
+
+-------------------------------------------------------------------
+Thu Dec  5 13:53:22 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- add python3-setuptools requirements (needed for python 3.13+)
+
+-------------------------------------------------------------------
+Wed Dec  4 16:59:08 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- Update to 22.12.0:
+  * require(esm) is now enabled by default
+  * Added resizable ArrayBuffer support in Buffer
+
+- CVE-2024-21538.patch: fixes regular expression denial of service
+  (bsc#1233856, CVE-2024-21538)
+- icu76.1.patch: upstreamed, dropped
+- linker_lto_jobs.patch, nodejs-libpath.patch, fix_ci_tests.patch: refreshed
+- nodejs.keyring: updated with upstream releaser list
+- old_cares.patch: fix with older c-ares
+
+-------------------------------------------------------------------
+Wed Nov 20 10:04:23 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- BuildRequire python311 for SLE15
+
+-------------------------------------------------------------------
+Mon Nov 18 12:02:26 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- Update to 22.11.0:
+  * This release marks the transition of Node.js 22.x into
+    Long Term Support (LTS) with the codename 'Jod'.
+    Other than updating metadata, such as the process.release object,
+    to reflect that the release is LTS, no further changes from
+    Node.js 22.10.0 are included.
+
+- icu76.1.patch: fix linking to ICU 76.1 (bsc#1232061)
+
+-------------------------------------------------------------------
+Mon Oct 28 11:43:07 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- Update to 22.10.0:
+  * crypto: add KeyObject.prototype.toCryptoKey
+  * crypto: add Date fields for validTo and validFrom
+  * http2: expose nghttp2_option_set_stream_reset_rate_limit as an option
+  * lib: propagate aborted state to dependent signals before firing events
+  * module: support loading entrypoint as url
+  * module: implement flushCompileCache()
+  * module: throw when invalid argument is passed to enableCompileCache()
+  * module: write compile cache to temporary file and then rename it
+  * process: add process.features.require_module
+  * process: add process.features.typescript
+  * test_runner: support custom arguments in run()
+  * test_runner: add 'test:summary' event
+  * test_runner: add support for coverage via run()
+  * worker: add markAsUncloneable api
+
+- Changes since 22.9.0:
+  * util: getCallSite has been introduced. It allows users to retrieve the stacktrace of the current execution.
+  * tls: Exposes X509_V_FLAG_PARTIAL_CHAIN to tls.createSecureContext
+  * src: create handle scope in FastInternalModuleStat
+  * stream: relocate the status checking code in the onwritecomplete
+  * repl: doc-deprecate instantiating node:repl classes without new
+  * zlib: deprecate instantiating classes without new
+
+- Changes since 22.8.0:
+  * vm: New option for vm.createContext() to create a context with a freezable globalThis
+  * src,lib: add performance.uvMetricsInfo
+  * net: exclude ipv6 loopback addresses from server.listen
+  * test_runner: support running tests in process
+  * test_runner: defer inheriting hooks until run()
+
+- Changes since 22.7.0:
+  * Experimental transform types support
+  * Module syntax detection (the --experimental-detect-module flag) is now enabled by default.
+  * Performance Improvements to Buffer
+
+- Changes since 22.6.0:
+  * lib,src: drop --experimental-network-imports
+  * http: add diagnostics channel http.client.request.error
+  * deps: V8: backport 7857eb34db42
+  * stream: expose DuplexPair API
+  * test_runner: fix support watch with run(), add globPatterns option
+  * meta: add jake to collaborators
+  * test_runner: refactor snapshots to get file from context
+  * test_runner: add context.filePath
+
+- Changes since 22.5.0:
+  * http: expose websockets
+  * lib: add node:sqlite module
+  * module: add __esModule to require()'d ESM
+  * path: add matchesGlob method
+  * process: port on-exit-leak-free to core
+  * stream: pipeline wait for close before calling the callback
+  * test_runner: support glob matching coverage files
+  * worker: add postMessageToThread
+
+- Changes since 22.4.1:
+  * (CVE-2024-36138, bsc#1227560) - Bypass incomplete fix of CVE-2024-27980 (High)
+  * (CVE-2024-22020, bsc#1227554) - Bypass network import restriction via data URL (Medium)
+  * (CVE-2024-22018, bsc#1227562) - fs.lstat bypasses permission model (Low)
+  * (CVE-2024-36137, bsc#1227561) - fs.fchown/fchmod bypasses permission model (Low)
+  * (CVE-2024-37372, bsc#1227563) - Permission model improperly processes UNC paths (Low)
+
+- Changes since 22.4.0:
+  * deps,lib,src: add experimental web storage
+  * doc: doc-only deprecate OpenSSL engine-based APIs
+  * inspector: fix disable async hooks on Debugger.setAsyncCallStackDepth
+  * lib: add diagnostics_channel events to module loading
+  * util: support --no- for argument with boolean type for parseArgs
+
+
+- fix_ci_tests.patch: refreshed, add compat for c-ares 1.30
+- linker_lto_jobs.patch, versioned.patch, qemu_timeouts_arches.patch: refreshed
+- nodejs.keyring: add C0D6248439F1D5604AAFFB4021D900FFDB233756
+
+-------------------------------------------------------------------
+Fri Jun 14 10:58:52 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- Update to 22.3.0:
+  * buffer: add .bytes() method to Blob
+  * doc: add context.assert docs
+  * doc: improve explanation about built-in modules
+  * fs: mark recursive cp methods as stable
+  * net: add new net.server.listen tracing channel
+  * module: print amount of load time of a cjs module
+  * process: add process.getBuiltinModule(id)
+  * cli: add NODE_RUN_PACKAGE_JSON_PATH env
+  * cli: add NODE_RUN_SCRIPT_NAME env to node --run
+  * lib: add EventSource Client
+  * lib: replace MessageEvent with undici's
+  * src: traverse parent folders while running --run
+  * src,permission: --allow-wasi & prevent WASI exec
+  * test_runner: support module mocking
+  * test_runner: add snapshot testing
+  * test_runner: add context.fullName
+
+- fix_ci_tests.patch: partially upstreamed and refreshed
+
+-------------------------------------------------------------------
+Wed May 22 10:49:02 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- Update to 22.2.0:
+  * cli: allow running wasm in limited vmem with --disable-wasm-trap-handler
+  * doc: add pimterry to collaborators
+  * fs: allow 'withFileTypes' to be used with globs
+  * inspector: introduce the --inspect-wait flag
+  * lib,src: remove --experimental-policy
+  * perf_hooks: add deliveryType and responseStatus fields
+  * test_runner: support test plans
+  * zlib: expose zlib.crc32()
+
+- linker_lto_jobs.patch: refreshed
+- fix_ci_tests.patch: partially upstreamed, refreshed 
+- skip_no_console.patch: dropped, upstreamed
+
+-------------------------------------------------------------------
+Wed May 22 09:04:46 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- fix_ci_tests.patch: add fix for issue #53085
+
+-------------------------------------------------------------------
+Tue May 14 14:25:41 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- New nodejs major version 22.1.0
+  For overview of changes and details since 21.x and earlier see
+  https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V22.md#22.1.0
+
+- v8-i586.patch: fix 32bit build with new gcc
+
+- Imported patches from 21.x:
+  * cares_public_headers.patch
+  * fix_ci_tests.patch
+  * flaky_test_rerun.patch
+  * gcc13.patch
+  * legacy_python.patch
+  * linker_lto_jobs.patch
+  * manual_configure.patch
+  * node-gyp-addon-gypi.patch
+  * node-gyp-config.patch
+  * nodejs-libpath.patch
+  * npm_search_paths.patch
+  * openssl_binary_detection.patch
+  * qemu_timeouts_arches.patch
+  * skip_no_console.patch
+  * sle12_python3_compat.patch
+  * test-skip-y2038-on-32bit-time_t.patch
+  * versioned.patch
+
