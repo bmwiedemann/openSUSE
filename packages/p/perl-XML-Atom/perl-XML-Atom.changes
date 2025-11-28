@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 28 12:29:55 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details
+
+-------------------------------------------------------------------
 Tue May  4 13:31:57 UTC 2021 - Tina Müller <tina.mueller@suse.com>
 
 - Remove patches d2c045a8ca0d0ca147b04bc9e7c70b27db8cc4e1.patch and
