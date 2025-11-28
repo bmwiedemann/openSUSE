@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov 25 16:48:02 UTC 2025 - Alexander Graul <alexander.graul@suse.com>
+
+- Add minimum_auth_version to enforce security (CVE-2025-62349)
+- Backport security fixes for vendored tornado
+  * BDSA-2024-3438
+  * BDSA-2024-3439
+  * BDSA-2024-9026
+- Junos module yaml loader fix (CVE-2025-62348)
+
+- Added:
+  * backport-3006.17-security-fixes-739.patch
+
+-------------------------------------------------------------------
 Thu Nov 13 12:01:49 UTC 2025 - Marek Czernek <marek.czernek@suse.com>
 
 - Require Python dependencies only for used Python version

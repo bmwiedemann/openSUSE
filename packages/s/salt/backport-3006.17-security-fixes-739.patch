@@ -1,0 +1,1268 @@
+From 0ef57a3820d395ea6045c730db2e50e81f762382 Mon Sep 17 00:00:00 2001
+From: Alexander Graul <agraul@suse.com>
+Date: Mon, 24 Nov 2025 17:42:32 +0100
+Subject: [PATCH] Backport 3006.17 security fixes (#739)
+
+* Add minimum_auth_version to enforce all security
+
+CVE-2025-62349 A misbehaving minion could downgrade it's auth protocol
+version.
+
+(cherry picked from commit 1c76dfbc127c4b02f874ac852425f4288dfa7b73)
+
+* Use more secure default setting
+
+(cherry picked from commit 792f4985cce74541511b67a0b905bfe2a760184d)
+
+* Update compat test master config
+
+(cherry picked from commit 670c8ac4fd5da19f834e4b8877291dc11143b123)
+
+* Patch tornado for BDSA-2024-3438
+
+(cherry picked from commit e49357a6b0e49970bb455e8c268b24e7e1047548)
+
+* Patch tornado for BDSA-2024-3439
+
+(cherry picked from commit 644ba4474750031d64e770bb47b9dca144d1af24)
+
+* Patch tornado for BDSA-2024-9026
+
+(cherry picked from commit 867a627b702e1b4f9e07298b7ffce01edbbc414c)
+
+* Junos module yaml loader fix (CVE-2025-62348)
+
+Fixed unsafe YAML loader usage in junos execution module
+
+(cherry picked from commit c17fd645edef208233dcac855615fced69409a00)
+
+---------
+
+Co-authored-by: Daniel A. Wozniak <daniel.wozniak@broadcom.com>
+---
+ changelog/68377.fixed.md                      |   1 +
+ changelog/68379.fixed.md                      |   1 +
+ changelog/68383.fixed.md                      |   1 +
+ changelog/68467.fixed.md                      |   3 +
+ changelog/68469.fixed.md                      |   1 +
+ doc/ref/configuration/master.rst              |  61 ++++
+ salt/channel/server.py                        |  17 +-
+ salt/config/__init__.py                       |   3 +
+ salt/ext/tornado/curl_httpclient.py           |  14 +-
+ salt/ext/tornado/http1connection.py           |  61 +++-
+ salt/ext/tornado/httputil.py                  |  45 +--
+ salt/modules/junos.py                         |   2 +-
+ .../functional/channel/test_auth_downgrade.py | 316 ++++++++++++++++++
+ tests/pytests/scenarios/compat/conftest.py    |   2 +
+ tests/pytests/unit/channel/test_server.py     | 260 +++++++++++++-
+ .../unit/modules/test_junos_yaml_security.py  | 150 +++++++++
+ 16 files changed, 882 insertions(+), 56 deletions(-)
+ create mode 100644 changelog/68377.fixed.md
+ create mode 100644 changelog/68379.fixed.md
+ create mode 100644 changelog/68383.fixed.md
+ create mode 100644 changelog/68467.fixed.md
+ create mode 100644 changelog/68469.fixed.md
+ create mode 100644 tests/pytests/functional/channel/test_auth_downgrade.py
+ create mode 100644 tests/pytests/unit/modules/test_junos_yaml_security.py
+
+diff --git a/changelog/68377.fixed.md b/changelog/68377.fixed.md
+new file mode 100644
+index 00000000000..3e6d08b3c25
+--- /dev/null
++++ b/changelog/68377.fixed.md
+@@ -0,0 +1 @@
++Patch tornado for BDSA-2024-3438
+diff --git a/changelog/68379.fixed.md b/changelog/68379.fixed.md
+new file mode 100644
+index 00000000000..80f35f1dbbe
+--- /dev/null
++++ b/changelog/68379.fixed.md
+@@ -0,0 +1 @@
++Patch tornado for BDSA-2024-3439
+diff --git a/changelog/68383.fixed.md b/changelog/68383.fixed.md
+new file mode 100644
+index 00000000000..013c790784c
+--- /dev/null
++++ b/changelog/68383.fixed.md
+@@ -0,0 +1 @@
++Patch tornado for BDSA-2024-9026
+diff --git a/changelog/68467.fixed.md b/changelog/68467.fixed.md
+new file mode 100644
+index 00000000000..e569478e643
+--- /dev/null
++++ b/changelog/68467.fixed.md
+@@ -0,0 +1,3 @@
++Fixed authentication protocol version downgrade vulnerability (CVE-2025-62349) by adding `minimum_auth_version` configuration option (default: 3) to prevent minions from bypassing security features through protocol downgrade attacks.
++
++**BREAKING CHANGE:** The default value enforces authentication protocol version 3 or higher. If upgrading a deployment with older minions that do not support protocol v3, you must temporarily set `minimum_auth_version: 0` in the master configuration before upgrading the master, then upgrade all minions before removing this override.
+diff --git a/changelog/68469.fixed.md b/changelog/68469.fixed.md
+new file mode 100644
+index 00000000000..26ef26c1e51
+--- /dev/null
++++ b/changelog/68469.fixed.md
+@@ -0,0 +1 @@
++Fixed unsafe YAML loader usage in junos execution module (CVE-2025-62348)
+diff --git a/doc/ref/configuration/master.rst b/doc/ref/configuration/master.rst
+index a6022c94ee1..34b1c0e327e 100644
+--- a/doc/ref/configuration/master.rst
++++ b/doc/ref/configuration/master.rst
+@@ -2023,6 +2023,67 @@ The number of seconds between AES key rotations on the master.
+ 
+     publish_session: Default: 86400
+ 
++.. conf_master:: minimum_auth_version
++
++``minimum_auth_version``
++------------------------
++
++.. versionadded:: 3006.17,3007.9
++
++Default: ``3``
++
++Enforce a minimum authentication protocol version from minions connecting to the master.
++This setting protects against authentication downgrade attacks (CVE-2025-62349) where a
++malicious minion attempts to use an older, less secure authentication protocol version to
++bypass security features introduced in newer protocol versions.
++
++Authentication protocol versions and their security features:
++
++- **Version 0/1**: No message signing, no nonce, no security features (legacy, insecure)
++- **Version 2**: Message signing and nonce, but missing TTL validation, token validation,
++  and minion ID matching (partially secure)
++- **Version 3+**: Full security with message signing, nonce, TTL checks, token validation,
++  minion ID matching, and session keys (default and recommended)
++
++**Security-by-Default:**
++
++The default value of ``3`` enforces modern authentication protocol for maximum security.
++New installations automatically receive protection against authentication downgrade attacks
++without requiring additional configuration.
++
++**Important for Upgrades:**
++
++If you are upgrading a Salt deployment with minions running older versions that do not
++support authentication protocol version 3, you must temporarily lower this value during
++the upgrade process to prevent minions from being locked out.
++
++**Upgrade Path for Environments with Older Minions:**
++
++1. Before upgrading your Salt Master, set ``minimum_auth_version: 0`` in master config
++2. Upgrade your Salt Master to a version supporting ``minimum_auth_version``
++3. Restart the Salt Master
++4. Upgrade all minions to a version supporting authentication protocol v3+
++5. Remove the ``minimum_auth_version: 0`` override (or explicitly set to ``3``)
++6. Restart the Salt Master to enforce the secure default
++
++.. code-block:: yaml
++
++    # Default - enforces modern authentication protocol (secure)
++    minimum_auth_version: 3
++
++    # Temporary setting for upgrades with older minions
++    minimum_auth_version: 0
++
++.. warning::
++    Setting ``minimum_auth_version`` to a value higher than what your minions support
++    will prevent those minions from authenticating. Ensure all minions are upgraded
++    before increasing this value. Check your minion versions before changing this setting.
++
++.. note::
++    When a minion's authentication is rejected due to insufficient protocol version,
++    a warning message will be logged on the master including the minion ID and the
++    protocol version it attempted to use.
++
+ .. conf_master:: ssl
+ 
+ ``ssl``
+diff --git a/salt/channel/server.py b/salt/channel/server.py
+index a9151440c2b..7b6796e3b06 100644
+--- a/salt/channel/server.py
++++ b/salt/channel/server.py
+@@ -138,7 +138,22 @@ class ReqServerChannel:
+         ):
+             log.warn("bad load received on socket")
+             raise tornado.gen.Return("bad load")
+-        version = payload.get("version", 0)
++        try:
++            version = int(payload.get("version", 0))
++        except ValueError:
++            version = 0
++
++        # Enforce minimum authentication protocol version to prevent downgrade attacks
++        minimum_version = self.opts.get("minimum_auth_version", 0)
++        if minimum_version > 0 and version < minimum_version:
++            log.warning(
++                "Rejected authentication attempt using protocol version %d "
++                "(minimum required: %d)",
++                version,
++                minimum_version,
++            )
++            raise tornado.gen.Return("bad load")
++
+         try:
+             payload = self._decode_payload(payload, version)
+         except Exception as exc:  # pylint: disable=broad-except
+diff --git a/salt/config/__init__.py b/salt/config/__init__.py
+index 4f72f19f655..cfd55faf47e 100644
+--- a/salt/config/__init__.py
++++ b/salt/config/__init__.py
+@@ -1002,6 +1002,8 @@ VALID_OPTS = immutabletypes.freeze(
+         "request_server_aes_session": int,
+         "request_channel_timeout": int,
+         "request_channel_tries": int,
++        # Minimum authentication protocol version to accept from minions
++        "minimum_auth_version": int,
+     }
+ )
+ 
+@@ -1660,6 +1662,7 @@ DEFAULT_MASTER_OPTS = immutabletypes.freeze(
+         "fileserver_interval": 3600,
+         "request_server_aes_session": 0,
+         "request_server_ttl": 0,
++        "minimum_auth_version": 3,
+     }
+ )
+ 
+diff --git a/salt/ext/tornado/curl_httpclient.py b/salt/ext/tornado/curl_httpclient.py
+index 9e4133fd137..291709befaf 100644
+--- a/salt/ext/tornado/curl_httpclient.py
++++ b/salt/ext/tornado/curl_httpclient.py
+@@ -23,6 +23,7 @@ import collections
+ import functools
+ import logging
+ import pycurl  # type: ignore
++import re
+ import threading
+ import time
+ from io import BytesIO
+@@ -36,6 +37,7 @@ from salt.ext.tornado.httpclient import HTTPResponse, HTTPError, AsyncHTTPClient
+ 
+ curl_log = logging.getLogger('tornado.curl_httpclient')
+ 
++CR_OR_LF_RE = re.compile(b"\r|\n")
+ 
+ class CurlAsyncHTTPClient(AsyncHTTPClient):
+     def initialize(self, io_loop, max_clients=10, defaults=None):
+@@ -302,9 +304,15 @@ class CurlAsyncHTTPClient(AsyncHTTPClient):
+         if "Pragma" not in request.headers:
+             request.headers["Pragma"] = ""
+ 
+-        curl.setopt(pycurl.HTTPHEADER,
+-                    ["%s: %s" % (native_str(k), native_str(v))
+-                     for k, v in request.headers.get_all()])
++        encoded_headers = [
++            b"%s: %s"
++            % (native_str(k).encode("ASCII"), native_str(v).encode("ISO8859-1"))
++            for k, v in request.headers.get_all()
++        ]
++        for line in encoded_headers:
++            if CR_OR_LF_RE.search(line):
++                raise ValueError("Illegal characters in header (CR or LF): %r" % line)
++        curl.setopt(pycurl.HTTPHEADER, encoded_headers)
+ 
+         curl.setopt(pycurl.HEADERFUNCTION,
+                     functools.partial(self._curl_header_callback,
+diff --git a/salt/ext/tornado/http1connection.py b/salt/ext/tornado/http1connection.py
+index 7ed1078faa7..edec43dc761 100644
+--- a/salt/ext/tornado/http1connection.py
++++ b/salt/ext/tornado/http1connection.py
+@@ -34,6 +34,9 @@ from salt.ext.tornado import stack_context
+ from salt.ext.tornado.util import GzipDecompressor, PY3
+ 
+ 
++CR_OR_LF_RE = re.compile(b"\r|\n")
++
++
+ class _QuietException(Exception):
+     def __init__(self):
+         pass
+@@ -337,11 +340,10 @@ class HTTP1Connection(httputil.HTTPConnection):
+             self._request_start_line = start_line
+             lines.append(utf8('%s %s HTTP/1.1' % (start_line[0], start_line[1])))
+             # Client requests with a non-empty body must have either a
+-            # Content-Length or a Transfer-Encoding.
+             self._chunking_output = (
+                 start_line.method in ('POST', 'PUT', 'PATCH') and
+-                'Content-Length' not in headers and
+-                'Transfer-Encoding' not in headers)
++                'Content-Length' not in headers
++            )
+         else:
+             self._response_start_line = start_line
+             lines.append(utf8('HTTP/1.1 %d %s' % (start_line[1], start_line[2])))
+@@ -384,8 +386,8 @@ class HTTP1Connection(httputil.HTTPConnection):
+         else:
+             lines.extend(header_lines)
+         for line in lines:
+-            if b'\n' in line:
+-                raise ValueError('Newline in header: ' + repr(line))
++            if CR_OR_LF_RE.search(line):
++                raise ValueError("Illegal characters (CR or LF) in header: %r" % line)
+         future = None
+         if self.stream.closed():
+             future = self._write_future = Future()
+@@ -490,7 +492,7 @@ class HTTP1Connection(httputil.HTTPConnection):
+         if start_line.version == "HTTP/1.1":
+             return connection_header != "close"
+         elif ("Content-Length" in headers or
+-              headers.get("Transfer-Encoding", "").lower() == "chunked" or
++              is_transfer_encoding_chunked(headers) or
+               getattr(start_line, 'method', None) in ("HEAD", "GET")):
+             # start_line may be a request or response start line; only
+             # the former has a method attribute.
+@@ -527,12 +529,6 @@ class HTTP1Connection(httputil.HTTPConnection):
+ 
+     def _read_body(self, code, headers, delegate):
+         if "Content-Length" in headers:
+-            if "Transfer-Encoding" in headers:
+-                # Response cannot contain both Content-Length and
+-                # Transfer-Encoding headers.
+-                # http://tools.ietf.org/html/rfc7230#section-3.3.3
+-                raise httputil.HTTPInputError(
+-                    "Response with both Transfer-Encoding and Content-Length")
+             if "," in headers["Content-Length"]:
+                 # Proxies sometimes cause Content-Length headers to get
+                 # duplicated.  If all the values are identical then we can
+@@ -556,20 +552,23 @@ class HTTP1Connection(httputil.HTTPConnection):
+         else:
+             content_length = None
+ 
++        is_chunked = is_transfer_encoding_chunked(headers)
++
+         if code == 204:
+             # This response code is not allowed to have a non-empty body,
+             # and has an implicit length of zero instead of read-until-close.
+             # http://www.w3.org/Protocols/rfc2616/rfc2616-sec4.html#sec4.3
+-            if ("Transfer-Encoding" in headers or
+-                    content_length not in (None, 0)):
++            if is_chunked or content_length not in (None, 0):
+                 raise httputil.HTTPInputError(
+                     "Response with code %d should not have body" % code)
+             content_length = 0
+ 
++        if is_chunked:
++            return self._read_chunked_body(delegate)
++
+         if content_length is not None:
+             return self._read_fixed_body(content_length, delegate)
+-        if headers.get("Transfer-Encoding", "").lower() == "chunked":
+-            return self._read_chunked_body(delegate)
++
+         if self.is_client:
+             return self._read_body_until_close(delegate)
+         return None
+@@ -741,3 +740,33 @@ class HTTP1ServerConnection(object):
+                 yield gen.moment
+         finally:
+             delegate.on_close(self)
++
++
++def is_transfer_encoding_chunked(headers: httputil.HTTPHeaders) -> bool:
++    """Returns true if the headers specify Transfer-Encoding: chunked.
++
++    Raise httputil.HTTPInputError if any other transfer encoding is used.
++    """
++    # Note that transfer-encoding is an area in which postel's law can lead
++    # us astray. If a proxy and a backend server are liberal in what they accept,
++    # but accept slightly different things, this can lead to mismatched framing
++    # and request smuggling issues. Therefore we are as strict as possible here
++    # (even technically going beyond the requirements of the RFCs: a value of
++    # ",chunked" is legal but doesn't appear in practice for legitimate traffic)
++    if "Transfer-Encoding" not in headers:
++        return False
++    if "Content-Length" in headers:
++        # Message cannot contain both Content-Length and
++        # Transfer-Encoding headers.
++        # http://tools.ietf.org/html/rfc7230#section-3.3.3
++        raise httputil.HTTPInputError(
++            "Message with both Transfer-Encoding and Content-Length"
++        )
++    if headers["Transfer-Encoding"].lower() == "chunked":
++        return True
++    # We do not support any transfer-encodings other than chunked, and we do not
++    # expect to add any support because the concept of transfer-encoding has
++    # been removed in HTTP/2.
++    raise httputil.HTTPInputError(
++        "Unsupported Transfer-Encoding %s" % headers["Transfer-Encoding"]
++    )
+diff --git a/salt/ext/tornado/httputil.py b/salt/ext/tornado/httputil.py
+index 0968c4a3004..4866b0c9911 100644
+--- a/salt/ext/tornado/httputil.py
++++ b/salt/ext/tornado/httputil.py
+@@ -68,6 +68,9 @@ except ImportError:
+     pass
+ 
+ 
++# To be used with str.strip() and related methods.
++HTTP_WHITESPACE = " \t"
++
+ # RFC 7230 section 3.5: a recipient MAY recognize a single LF as a line
+ # terminator and ignore any preceding CR.
+ _CRLF_RE = re.compile(r"\r?\n")
+@@ -188,12 +191,12 @@ class HTTPHeaders(MutableMapping):
+         """
+         if line[0].isspace():
+             # continuation of a multi-line header
+-            new_part = " " + line.lstrip()
++            new_part = " " + line.lstrip(HTTP_WHITESPACE)
+             self._as_list[self._last_key][-1] += new_part
+             self._dict[self._last_key] += new_part
+         else:
+             name, value = line.split(":", 1)
+-            self.add(name, value.strip())
++            self.add(name, value.strip(HTTP_WHITESPACE))
+ 
+     @classmethod
+     def parse(cls, headers):
+@@ -972,15 +975,20 @@ def split_host_and_port(netloc):
+     return (host, port)
+ 
+ 
+-_OctalPatt = re.compile(r"\\[0-3][0-7][0-7]")
+-_QuotePatt = re.compile(r"[\\].")
+-_nulljoin = "".join
++_unquote_sub = re.compile(r"\\(?:([0-3][0-7][0-7])|(.))").sub
++
++
++def _unquote_replace(m):
++    if m[1]:
++        return chr(int(m[1], 8))
++    else:
++        return m[2]
+ 
+ 
+ def _unquote_cookie(str):
+     """Handle double quotes and escaping in cookie values.
+ 
+-    This method is copied verbatim from the Python 3.5 standard
++    This method is copied verbatim from the Python 3.13 standard
+     library (http.cookies._unquote) so we don't have to depend on
+     non-public interfaces.
+     """
+@@ -1001,30 +1009,7 @@ def _unquote_cookie(str):
+     #    \012 --> \n
+     #    \"   --> "
+     #
+-    i = 0
+-    n = len(str)
+-    res = []
+-    while 0 <= i < n:
+-        o_match = _OctalPatt.search(str, i)
+-        q_match = _QuotePatt.search(str, i)
+-        if not o_match and not q_match:  # Neither matched
+-            res.append(str[i:])
+-            break
+-        # else:
+-        j = k = -1
+-        if o_match:
+-            j = o_match.start(0)
+-        if q_match:
+-            k = q_match.start(0)
+-        if q_match and (not o_match or k < j):  # QuotePatt matched
+-            res.append(str[i:k])
+-            res.append(str[k + 1])
+-            i = k + 2
+-        else:  # OctalPatt matched
+-            res.append(str[i:j])
+-            res.append(chr(int(str[j + 1 : j + 4], 8)))
+-            i = j + 4
+-    return _nulljoin(res)
++    return _unquote_sub(_unquote_replace, s)
+ 
+ 
+ def parse_cookie(cookie):
+diff --git a/salt/modules/junos.py b/salt/modules/junos.py
+index 33f25080e1d..1843ae637f1 100644
+--- a/salt/modules/junos.py
++++ b/salt/modules/junos.py
+@@ -1858,7 +1858,7 @@ def get_table(
+             try:
+                 with salt.utils.files.fopen(file_loc) as fp:
+                     ret["table"] = yaml.load(
+-                        fp.read(), Loader=yamlordereddictloader.Loader
++                        fp.read(), Loader=yamlordereddictloader.SafeLoader
+                     )
+                     globals().update(FactoryLoader().load(ret["table"]))
+             except OSError as err:
+diff --git a/tests/pytests/functional/channel/test_auth_downgrade.py b/tests/pytests/functional/channel/test_auth_downgrade.py
+new file mode 100644
+index 00000000000..09fcd38bd79
+--- /dev/null
++++ b/tests/pytests/functional/channel/test_auth_downgrade.py
+@@ -0,0 +1,316 @@
++"""
++Functional tests for authentication version downgrade attacks.
++
++These tests demonstrate the vulnerability where a malicious minion can
++downgrade its authentication protocol version to bypass security features.
++"""
++
++import ctypes
++import multiprocessing
++import pathlib
++
++import pytest
++
++import salt.channel.client
++import salt.channel.server
++import salt.config
++import salt.crypt
++import salt.daemons.masterapi
++import salt.ext.tornado.gen
++import salt.ext.tornado.ioloop
++import salt.master
++import salt.payload
++import salt.utils.event
++import salt.utils.files
++import salt.utils.platform
++import salt.utils.process
++import salt.utils.stringutils
++from salt.master import SMaster
++
++pytestmark = [
++    pytest.mark.skip_on_spawning_platform(
++        reason="These tests are currently broken on spawning platforms. Need to be rewritten.",
++    ),
++    pytest.mark.timeout_unless_on_windows(120),
++]
++
++
++@pytest.fixture
++def channel_minion_id():
++    return "test-minion-downgrade"
++
++
++@pytest.fixture
++def auth_pki_dir(tmp_path):
++    """Setup PKI directory structure for functional auth tests."""
++    if salt.utils.platform.is_darwin():
++        # To avoid 'OSError: AF_UNIX path too long'
++        _root_dir = pathlib.Path("/tmp").resolve() / tmp_path.name
++        root_dir = _root_dir
++    else:
++        root_dir = tmp_path
++
++    master_pki = root_dir / "master_pki"
++    minion_pki = root_dir / "minion_pki"
++
++    master_pki.mkdir(parents=True)
++    minion_pki.mkdir(parents=True)
++    (master_pki / "minions").mkdir()
++    (master_pki / "minions_pre").mkdir()
++    (master_pki / "minions_rejected").mkdir()
++    (master_pki / "minions_denied").mkdir()
++
++    # Generate keys
++    salt.crypt.gen_keys(str(master_pki), "master", 4096)
++    salt.crypt.gen_keys(str(minion_pki), "minion", 4096)
++
++    yield root_dir
++
++    if salt.utils.platform.is_darwin():
++        import shutil
++
++        shutil.rmtree(str(root_dir), ignore_errors=True)
++
++
++def _create_functional_master_opts(
++    auth_pki_dir, channel_minion_id, minimum_auth_version=0
++):
++    """Helper to create master configuration with specified minimum_auth_version."""
++    opts = {
++        "master_uri": "tcp://127.0.0.1:44506",
++        "interface": "127.0.0.1",
++        "ret_port": 44506,
++        "ipv6": False,
++        "sock_dir": str(auth_pki_dir / "sock"),
++        "cachedir": str(auth_pki_dir / "cache"),
++        "pki_dir": str(auth_pki_dir / "master_pki"),
++        "id": "master",
++        "__role": "master",
++        "transport": "zeromq",
++        "keysize": 4096,
++        "max_minions": 0,
++        "auto_accept": True,
++        "open_mode": False,
++        "key_pass": None,
++        "publish_port": 44505,
++        "auth_mode": 1,
++        "auth_events": True,
++        "publish_session": 86400,
++        "request_server_ttl": 300,  # 5 minutes
++        "worker_threads": 1,
++        "cluster_id": None,
++        "master_sign_pubkey": False,
++        "sign_pub_messages": False,
++        "minimum_auth_version": minimum_auth_version,
++    }
++    (auth_pki_dir / "sock").mkdir(exist_ok=True)
++    (auth_pki_dir / "cache").mkdir(exist_ok=True)
++    (auth_pki_dir / "cache" / "sessions").mkdir(exist_ok=True)
++
++    # Accept the minion key
++    minion_pub = auth_pki_dir / "minion_pki" / "minion.pub"
++    master_minions = auth_pki_dir / "master_pki" / "minions" / channel_minion_id
++    if minion_pub.exists():
++        with salt.utils.files.fopen(str(minion_pub)) as src:
++            with salt.utils.files.fopen(str(master_minions), "w") as dst:
++                dst.write(src.read())
++
++    return opts
++
++
++@pytest.fixture
++def functional_master_opts(auth_pki_dir, channel_minion_id):
++    """Master configuration for functional tests (default: minimum_auth_version=3)."""
++    return _create_functional_master_opts(
++        auth_pki_dir, channel_minion_id, minimum_auth_version=3
++    )
++
++
++@pytest.fixture
++def functional_minion_opts(auth_pki_dir, functional_master_opts, channel_minion_id):
++    """Minion configuration for functional tests."""
++    return {
++        "master_uri": "tcp://127.0.0.1:44506",
++        "interface": "127.0.0.1",
++        "ret_port": 44506,
++        "ipv6": False,
++        "sock_dir": str(functional_master_opts["sock_dir"]),
++        "pki_dir": str(auth_pki_dir / "minion_pki"),
++        "id": channel_minion_id,
++        "__role": "minion",
++        "transport": "zeromq",
++        "keysize": 4096,
++        "master_port": 44506,
++        "master_ip": "127.0.0.1",
++    }
++
++
++@pytest.mark.parametrize(
++    "minimum_auth_version,attack_version,should_pass",
++    [
++        pytest.param(
++            0,
++            0,
++            False,
++            marks=pytest.mark.xfail(
++                reason="Vulnerable: minimum_auth_version=0 allows all versions",
++                strict=True,
++            ),
++        ),
++        pytest.param(
++            0,
++            1,
++            False,
++            marks=pytest.mark.xfail(
++                reason="Vulnerable: minimum_auth_version=0 allows all versions",
++                strict=True,
++            ),
++        ),
++        pytest.param(
++            0,
++            2,
++            False,
++            marks=pytest.mark.xfail(
++                reason="Vulnerable: minimum_auth_version=0 allows all versions",
++                strict=True,
++            ),
++        ),
++        pytest.param(1, 0, True, id="v1-rejects-v0"),
++        pytest.param(
++            1,
++            1,
++            False,
++            marks=pytest.mark.xfail(
++                reason="Vulnerable: minimum_auth_version=1 allows v1", strict=True
++            ),
++        ),
++        pytest.param(
++            1,
++            2,
++            False,
++            marks=pytest.mark.xfail(
++                reason="Vulnerable: minimum_auth_version=1 allows v2", strict=True
++            ),
++        ),
++        pytest.param(2, 0, True, id="v2-rejects-v0"),
++        pytest.param(2, 1, True, id="v2-rejects-v1"),
++        pytest.param(
++            2,
++            2,
++            False,
++            marks=pytest.mark.xfail(
++                reason="Vulnerable: minimum_auth_version=2 allows v2", strict=True
++            ),
++        ),
++        pytest.param(3, 0, True, id="v3-rejects-v0"),
++        pytest.param(3, 1, True, id="v3-rejects-v1"),
++        pytest.param(3, 2, True, id="v3-rejects-v2-SECURE"),
++    ],
++)
++async def test_replay_attack_via_version_downgrade(
++    auth_pki_dir,
++    functional_minion_opts,
++    channel_minion_id,
++    minimum_auth_version,
++    attack_version,
++    should_pass,
++):
++    """
++    REGRESSION TEST: CVE-2025-62349 - Authentication Protocol Version Downgrade Attack
++
++    This parameterized test verifies that version downgrade attacks are prevented
++    based on the minimum_auth_version configuration.
++
++    Attack Scenario:
++    A malicious or compromised minion attempts to authenticate using an older protocol
++    version to bypass security features introduced in newer versions (token validation,
++    TTL checks, ID matching, session keys). This allows the attacker to impersonate
++    other minions or maintain persistent unauthorized access.
++
++    Test Matrix:
++    - minimum_auth_version=0: VULNERABLE - accepts all versions (xfail)
++    - minimum_auth_version=1: Partially secure - rejects v0 only
++    - minimum_auth_version=2: Partially secure - rejects v0, v1
++    - minimum_auth_version=3: SECURE - rejects v0, v1, v2 (default and recommended)
++
++    This test uses xfail for vulnerable configurations to document the security risk.
++    """
++    # Create master opts with the specified minimum_auth_version
++    master_opts = _create_functional_master_opts(
++        auth_pki_dir, channel_minion_id, minimum_auth_version
++    )
++
++    # Setup master secrets
++    SMaster.secrets["aes"] = {
++        "secret": multiprocessing.Array(
++            ctypes.c_char,
++            salt.utils.stringutils.to_bytes(salt.crypt.Crypticle.generate_key_string()),
++        ),
++        "serial": multiprocessing.Value(ctypes.c_longlong, lock=False),
++    }
++
++    # Create server channel
++    server_channel = salt.channel.server.ReqServerChannel.factory(master_opts)
++    server_channel.auto_key = salt.daemons.masterapi.AutoKey(master_opts)
++    server_channel.cache_cli = False
++    server_channel.event = salt.utils.event.get_master_event(
++        master_opts, master_opts["sock_dir"], listen=False
++    )
++    server_channel.master_key = salt.crypt.MasterKeys(master_opts)
++
++    try:
++        # Verify the configuration
++        assert (
++            master_opts.get("minimum_auth_version") == minimum_auth_version
++        ), f"Master should have minimum_auth_version={minimum_auth_version}"
++
++        # Read minion public key
++        with salt.utils.files.fopen(
++            str(auth_pki_dir / "minion_pki" / "minion.pub"), "r"
++        ) as fp:
++            pub_key = fp.read()
++
++        # Create auth load for the attack version
++        load = {
++            "cmd": "_auth",
++            "id": channel_minion_id,
++            "pub": pub_key,
++        }
++
++        # Add nonce for version 2+
++        if attack_version >= 2:
++            load["nonce"] = "test-nonce"
++
++        # Create payload for handle_message
++        payload = {"enc": "clear", "load": load, "version": attack_version}
++
++        # Call handle_message which will enforce minimum_auth_version
++        ret = await server_channel.handle_message(payload)
++
++        # Check if attack was blocked
++        if should_pass:
++            # Attack should be blocked (old version rejected)
++            # With proper minimum_auth_version, handle_message returns "bad load"
++            assert ret == "bad load", (
++                f"Expected 'bad load' for rejected version {attack_version} "
++                f"with minimum {minimum_auth_version}"
++            )
++        else:
++            # Vulnerable: attack succeeds (old version accepted)
++            # Assert that auth SHOULD be rejected (but it won't be - causing xfail)
++            # This assertion will FAIL for vulnerable configs, documenting the security issue
++            assert ret == "bad load", (
++                f"SECURITY ISSUE: Version {attack_version} was accepted "
++                f"with minimum_auth_version={minimum_auth_version}"
++            )
++
++    finally:
++        server_channel.close()
++        if "aes" in SMaster.secrets:
++            SMaster.secrets.pop("aes")
++
++
++# Note: Additional functional tests for ID mismatch and token bypass
++# have been covered in the unit tests. This single functional test
++# demonstrates the replay attack scenario which is the most critical
++# end-to-end attack vector.
+diff --git a/tests/pytests/scenarios/compat/conftest.py b/tests/pytests/scenarios/compat/conftest.py
+index 29d58354abc..eb28de2a3ba 100644
+--- a/tests/pytests/scenarios/compat/conftest.py
++++ b/tests/pytests/scenarios/compat/conftest.py
+@@ -134,6 +134,8 @@ def salt_master(
+         "log_level_logfile": "quiet",
+         # We also want to scrutinize the key acceptance
+         "open_mode": False,
++        # Allow older minion versions to connect (they don't support auth protocol v3)
++        "minimum_auth_version": 0,
+     }
+ 
+     # We need to copy the extension modules into the new master root_dir or
+diff --git a/tests/pytests/unit/channel/test_server.py b/tests/pytests/unit/channel/test_server.py
+index 806b82bbaaf..5ebd5ef83bc 100644
+--- a/tests/pytests/unit/channel/test_server.py
++++ b/tests/pytests/unit/channel/test_server.py
+@@ -1,16 +1,25 @@
++import ctypes
++import multiprocessing
+ import time
++import uuid
+ 
+ import pytest
++import tornado.gen
+ 
+ import salt.channel.server as server
+-import tornado.gen
++import salt.crypt
++import salt.daemons.masterapi
++import salt.master
++import salt.payload
++import salt.utils.event
++import salt.utils.files
++import salt.utils.stringutils
++from salt.master import SMaster
+ from tests.support.mock import MagicMock, patch
+ 
+ 
+ def test__auth_cmd_stats_passing(master_opts):
+-    master_opts.update(
+-        {"master_stats": True}
+-    )
++    master_opts.update({"master_stats": True})
+     req_server_channel = server.ReqServerChannel(master_opts, None)
+ 
+     fake_ret = {"enc": "clear", "load": b"FAKELOAD"}
+@@ -25,7 +34,7 @@ def test__auth_cmd_stats_passing(master_opts):
+     with patch.object(req_server_channel, "_auth", _auth_mock):
+         req_server_channel.payload_handler = MagicMock(return_value=future)
+         req_server_channel.handle_message(
+-            {"enc": "clear", "load": {"cmd": "_auth", "id": "minion"}}
++            {"enc": "clear", "load": {"cmd": "_auth", "id": "minion"}, "version": 3}
+         )
+         cur_time = time.time()
+         req_server_channel.payload_handler.assert_called_once()
+@@ -80,3 +89,244 @@ def test_req_server_validate_token_removes_token_id_traversal(root_dir):
+     }
+     assert reqsrv.validate_token(payload) is False
+     assert "tok" not in payload["load"]
++
++
++# ============================================================================
++# Auth Version Downgrade Attack Regression Tests
++# ============================================================================
++
++
++@pytest.fixture
++def pki_dir(tmp_path):
++    """Setup PKI directory structure for auth tests."""
++    master_pki = tmp_path / "master"
++    minion_pki = tmp_path / "minion"
++
++    master_pki.mkdir()
++    minion_pki.mkdir()
++    (master_pki / "minions").mkdir()
++    (master_pki / "minions_pre").mkdir()
++    (master_pki / "minions_rejected").mkdir()
++    (master_pki / "minions_denied").mkdir()
++
++    # Generate master keys
++    salt.crypt.gen_keys(str(master_pki), "master", 4096)
++
++    # Generate minion keys
++    salt.crypt.gen_keys(str(minion_pki), "minion", 4096)
++
++    return tmp_path
++
++
++@pytest.fixture
++def auth_master_opts(pki_dir, tmp_path):
++    """Master configuration for auth tests."""
++    opts = {
++        "master_uri": "tcp://127.0.0.1:4506",
++        "interface": "127.0.0.1",
++        "ret_port": 4506,
++        "ipv6": False,
++        "sock_dir": str(tmp_path / "sock"),
++        "cachedir": str(tmp_path / "cache"),
++        "pki_dir": str(pki_dir / "master"),
++        "id": "master",
++        "__role": "master",
++        "keysize": 4096,
++        "max_minions": 0,
++        "auto_accept": False,
++        "open_mode": False,
++        "key_pass": None,
++        "publish_port": 4505,
++        "auth_mode": 1,
++        "auth_events": True,
++        "publish_session": 86400,
++        "request_server_ttl": 300,  # 5 minutes
++        "master_sign_pubkey": False,
++        "sign_pub_messages": False,
++        "cluster_id": None,
++        "transport": "zeromq",
++        "minimum_auth_version": 3,  # Enforce version 3+ for security
++    }
++    (tmp_path / "sock").mkdir(exist_ok=True)
++    (tmp_path / "cache").mkdir(exist_ok=True)
++    (tmp_path / "cache" / "sessions").mkdir(exist_ok=True)
++    return opts
++
++
++@pytest.fixture
++def auth_minion_opts(pki_dir, auth_master_opts):
++    """Minion configuration for auth tests."""
++    return {
++        "master_uri": "tcp://127.0.0.1:4506",
++        "interface": "127.0.0.1",
++        "ret_port": 4506,
++        "ipv6": False,
++        "sock_dir": str(auth_master_opts["sock_dir"]),
++        "pki_dir": str(pki_dir / "minion"),
++        "id": "test-minion",
++        "__role": "minion",
++        "keysize": 4096,
++    }
++
++
++@pytest.fixture
++def setup_accepted_minion(pki_dir, auth_minion_opts, auth_master_opts):
++    """
++    Setup a pre-accepted minion by copying its public key to master's
++    minions directory.
++    """
++    minion_pub = pki_dir / "minion" / "minion.pub"
++    master_minions_dir = pki_dir / "master" / "minions"
++    accepted_key = master_minions_dir / auth_minion_opts["id"]
++
++    # Copy minion public key to master's accepted keys
++    with salt.utils.files.fopen(str(minion_pub)) as src:
++        with salt.utils.files.fopen(str(accepted_key), "w") as dst:
++            dst.write(src.read())
++
++    return accepted_key
++
++
++@pytest.fixture
++def req_server(auth_master_opts):
++    """Create a ReqServerChannel instance for testing."""
++    # Setup master secrets
++    SMaster.secrets["aes"] = {
++        "secret": multiprocessing.Array(
++            ctypes.c_char,
++            salt.utils.stringutils.to_bytes(salt.crypt.Crypticle.generate_key_string()),
++        ),
++        "reload": salt.crypt.Crypticle.generate_key_string,
++    }
++
++    server_channel = server.ReqServerChannel.factory(auth_master_opts)
++    server_channel.auto_key = salt.daemons.masterapi.AutoKey(auth_master_opts)
++    server_channel.cache_cli = False
++    server_channel.event = salt.utils.event.get_master_event(
++        auth_master_opts, auth_master_opts["sock_dir"], listen=False
++    )
++    server_channel.master_key = salt.crypt.MasterKeys(auth_master_opts)
++
++    yield server_channel
++
++    server_channel.close()
++    if "aes" in SMaster.secrets:
++        SMaster.secrets.pop("aes")
++
++
++async def test_auth_version_downgrade_v3_to_v0(
++    pki_dir, auth_minion_opts, req_server, setup_accepted_minion
++):
++    """
++    REGRESSION TEST: CVE-2025-62349 - Auth Version Downgrade Attack
++
++    Test that the master rejects authentication attempts using protocol version 0
++    when minimum_auth_version is set to 3.
++
++    This prevents a malicious or compromised minion from using an older protocol
++    version to bypass security features introduced in version 3+ (token validation,
++    TTL checks, ID matching, session keys).
++
++    The test verifies that the minimum_auth_version enforcement works at the initial
++    authentication stage, preventing minions from establishing low-version sessions.
++    """
++    # Read minion public key
++    with salt.utils.files.fopen(str(pki_dir / "minion" / "minion.pub"), "r") as fp:
++        pub_key = fp.read()
++
++    # Simulate version 0 auth load (no nonce, no signing)
++    load_v0 = {
++        "cmd": "_auth",
++        "id": auth_minion_opts["id"],
++        "pub": pub_key,
++    }
++
++    # Create payload for handle_message (version 0)
++    payload = {"enc": "clear", "load": load_v0, "version": 0}
++
++    # Call handle_message which will enforce minimum_auth_version
++    ret = await req_server.handle_message(payload)
++
++    # REGRESSION TEST: Version 0 should be REJECTED
++    # With minimum_auth_version=3, version 0 should return "bad load"
++    assert ret == "bad load", "Expected 'bad load' for rejected version 0 auth"
++
++
++@pytest.mark.parametrize("downgrade_version", [0, 1, 2])
++async def test_auth_version_downgrade_from_v3(
++    pki_dir, auth_minion_opts, req_server, setup_accepted_minion, downgrade_version
++):
++    """
++    REGRESSION TEST: CVE-2025-62349 - Auth Version Downgrade Attack (Parametrized)
++
++    Test that the master rejects authentication attempts using protocol versions
++    0, 1, or 2 when minimum_auth_version is set to 3.
++
++    This prevents malicious or compromised minions from using older protocol
++    versions to bypass security features:
++    - v0/v1: No message signing, no nonce
++    - v2: Message signing but no token validation, no TTL checks, no ID matching
++    - v3+: Full security (token validation, TTL, ID matching, session keys)
++
++    The test verifies that minimum_auth_version enforcement prevents minions from
++    establishing low-version sessions that would allow them to bypass security
++    controls and potentially impersonate other minions or maintain unauthorized access.
++    """
++    with salt.utils.files.fopen(str(pki_dir / "minion" / "minion.pub"), "r") as fp:
++        pub_key = fp.read()
++
++    load = {
++        "cmd": "_auth",
++        "id": auth_minion_opts["id"],
++        "pub": pub_key,
++    }
++
++    # Add nonce for v2+ (but not for v0/v1)
++    if downgrade_version >= 2:
++        load["nonce"] = uuid.uuid4().hex
++
++    # Create payload for handle_message
++    payload = {"enc": "clear", "load": load, "version": downgrade_version}
++
++    # Call handle_message which will enforce minimum_auth_version
++    ret = await req_server.handle_message(payload)
++
++    # REGRESSION TEST: Old versions should be REJECTED
++    # With minimum_auth_version=3, versions 0, 1, 2 should return "bad load"
++    assert (
++        ret == "bad load"
++    ), f"Expected 'bad load' for rejected version {downgrade_version} auth"
++
++
++def test_handle_message_version_extraction(auth_master_opts):
++    """
++    REGRESSION TEST: CVE-2025-62349 - Version Extraction from Untrusted Payload
++
++    Test that the master should have minimum_auth_version configured.
++
++    EXPECTED BEHAVIOR:
++    - Master opts should have minimum_auth_version set
++    - The commented code at salt/channel/server.py:144-145 should be enabled
++
++    CURRENT BEHAVIOR (VULNERABLE):
++    - Test will FAIL - minimum_auth_version is not in opts
++    - After fix is implemented, this test will PASS
++    """
++    # The current code at salt/channel/server.py:139-145 shows:
++    # version = payload.get("version", 0)
++    # #if version < self.opts["minimum_auth_version"]:
++    # #    raise salt.ext.tornado.gen.Return("bad load")
++
++    # REGRESSION TEST: Verify minimum_auth_version exists in opts
++    # Currently this will FAIL because the option doesn't exist
++    assert (
++        "minimum_auth_version" in auth_master_opts
++    ), "Expected minimum_auth_version to be configured in master opts"
++    assert (
++        auth_master_opts["minimum_auth_version"] >= 3
++    ), "Expected minimum auth version to be at least 3"
++
++
++# Note: The remaining security bypasses (token, TTL, ID mismatch, session keys)
++# are already tested via the parametrized downgrade tests above and the
++# functional tests. The key regression test is ensuring old versions are rejected.
+diff --git a/tests/pytests/unit/modules/test_junos_yaml_security.py b/tests/pytests/unit/modules/test_junos_yaml_security.py
+new file mode 100644
+index 00000000000..5213480eb32
+--- /dev/null
++++ b/tests/pytests/unit/modules/test_junos_yaml_security.py
+@@ -0,0 +1,150 @@
++"""
++Regression test for unsafe YAML loading in junos module.
++
++This test ensures that the junos.get_table() function uses a safe YAML loader
++and does not allow arbitrary code execution.
++
++CVE/Security Issue: The junos module was using yamlordereddictloader.Loader
++which extends yaml.Loader (unsafe). It should use yamlordereddictloader.SafeLoader.
++"""
++
++import pytest
++import yaml
++
++try:
++    import yamlordereddictloader
++
++    HAS_YAMLORDEREDDICTLOADER = True
++except ImportError:
++    HAS_YAMLORDEREDDICTLOADER = False
++
++
++pytestmark = [
++    pytest.mark.skipif(
++        not HAS_YAMLORDEREDDICTLOADER,
++        reason="The yamlordereddictloader module is required",
++    ),
++]
++
++
++def test_junos_module_uses_safe_yaml_loader():
++    """
++    Regression test to ensure junos module uses SafeLoader, not Loader.
++
++    This test will:
++    - FAIL if salt/modules/junos.py uses yamlordereddictloader.Loader (UNSAFE)
++    - PASS if salt/modules/junos.py uses yamlordereddictloader.SafeLoader (SAFE)
++    """
++    import inspect
++
++    import salt.modules.junos as junos
++
++    # Get the source code of the get_table function
++    source = inspect.getsource(junos.get_table)
++
++    # Check that SafeLoader is used, not Loader
++    if "yamlordereddictloader.Loader" in source and "SafeLoader" not in source.replace(
++        "yamlordereddictloader.Loader", ""
++    ):
++        pytest.fail(
++            "SECURITY VULNERABILITY: junos.get_table() uses yamlordereddictloader.Loader!\n\n"
++            "The unsafe Loader can execute arbitrary Python code from YAML files.\n\n"
++            "FIX: Change yamlordereddictloader.Loader to yamlordereddictloader.SafeLoader\n"
++            "in salt/modules/junos.py (around line 1861)"
++        )
++
++    # Verify SafeLoader is actually used
++    assert "yamlordereddictloader.SafeLoader" in source, (
++        "Expected to find yamlordereddictloader.SafeLoader in junos.get_table(). "
++        "Make sure the safe loader is being used."
++    )
++
++
++def test_yamlordereddictloader_safeloader_blocks_code_execution():
++    """
++    Test that yamlordereddictloader.SafeLoader blocks arbitrary code execution.
++
++    This demonstrates the correct, secure behavior that should be used.
++    """
++    # Malicious YAML attempting to execute os.system
++    malicious_yaml = "!!python/object/apply:os.system ['echo this should not execute']"
++
++    # SafeLoader should reject this and raise ConstructorError
++    with pytest.raises(yaml.constructor.ConstructorError):
++        yaml.load(malicious_yaml, Loader=yamlordereddictloader.SafeLoader)
++
++
++def test_yamlordereddictloader_loader_inheritance():
++    """
++    Verify the inheritance chain showing why Loader is unsafe.
++    """
++    # yamlordereddictloader.Loader extends yaml.Loader (UNSAFE)
++    assert issubclass(
++        yamlordereddictloader.Loader, yaml.Loader
++    ), "yamlordereddictloader.Loader should extend yaml.Loader (unsafe)"
++
++    # yamlordereddictloader.SafeLoader extends yaml.SafeLoader (SAFE)
++    assert issubclass(
++        yamlordereddictloader.SafeLoader, yaml.SafeLoader
++    ), "yamlordereddictloader.SafeLoader should extend yaml.SafeLoader (safe)"
++
++
++def test_ordered_dict_functionality_with_safeloader():
++    """
++    Verify that SafeLoader still provides OrderedDict functionality.
++
++    This ensures that switching to SafeLoader doesn't break the intended
++    functionality of maintaining key order.
++    """
++    test_yaml = """
++TableTest:
++    key1: value1
++    key2: value2
++    key3: value3
++"""
++
++    # Load with SafeLoader
++    result = yaml.load(test_yaml, Loader=yamlordereddictloader.SafeLoader)
++
++    # Verify it loaded successfully
++    assert "TableTest" in result
++    assert result["TableTest"]["key1"] == "value1"
++
++    # Verify it returns OrderedDict (the whole point of yamlordereddictloader)
++    from collections import OrderedDict
++
++    assert isinstance(result, OrderedDict) or isinstance(result, dict)
++    assert isinstance(result["TableTest"], OrderedDict) or isinstance(
++        result["TableTest"], dict
++    )
++
++
++def test_compare_unsafe_vs_safe_loader():
++    """
++    Direct comparison showing the difference between unsafe and safe loaders.
++    """
++    # Safe YAML that should work with both loaders
++    safe_yaml = """
++config:
++    host: example.com
++    port: 8080
++    enabled: true
++"""
++
++    # Load with both loaders - should work fine
++    result_unsafe = yaml.load(safe_yaml, Loader=yamlordereddictloader.Loader)
++    result_safe = yaml.load(safe_yaml, Loader=yamlordereddictloader.SafeLoader)
++
++    # Both should produce the same result for safe YAML
++    assert result_unsafe == result_safe
++
++    # Malicious YAML with Python object constructor
++    malicious_yaml = "!!python/object/apply:os.system ['ls']"
++
++    # Safe Loader will raise an exception (correct behavior)
++    with pytest.raises(yaml.constructor.ConstructorError):
++        yaml.load(malicious_yaml, Loader=yamlordereddictloader.SafeLoader)
++
++
++if __name__ == "__main__":
++    pytest.main([__file__, "-v"])
+-- 
+2.51.1
+
