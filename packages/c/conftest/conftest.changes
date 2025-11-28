@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Nov 27 05:51:19 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.65.0:
+  * New Features
+    - 7de1f99: feat: Add location to SARIF output (#1207)
+      (@jalseth)
+  * Bug Fixes
+    - 94bb769: fix(build): Include Git version when using 'make
+      build' (#1218) (@jalseth)
+    - ff4e456: fix(sarif): Include conftest version number (#1206)
+      (@jalseth)
+  * OPA Changes
+    - 8c4cfa6: build(deps): bump github.com/open-policy-agent/opa
+      from 1.10.1 to 1.11.0 (#1224) (@dependabot[bot])
+  * Other Changes
+    - 3dab980: build(deps): bump cuelang.org/go from 0.15.0 to
+      0.15.1 (#1217) (@dependabot[bot])
+    - cfa85ca: build(deps): bump github.com/moby/buildkit from
+      0.25.2 to 0.26.2 (#1216) (@dependabot[bot])
+    - dd7e3bc: build(deps): bump golang from 1.25.3-alpine to
+      1.25.4-alpine (#1210) (@dependabot[bot])
+    - bbbb04c: chore: Include goreleaser in Nix devshell (#1219)
+      (@jalseth)
+    - ac3146f: ci: Pin GitHub Actions to the Git SHA using ratchet
+      (#1204) (@jalseth)
+
+-------------------------------------------------------------------
 Sun Nov 09 09:43:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.64.0:
