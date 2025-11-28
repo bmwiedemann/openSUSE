@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Nov 27 13:14:16 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 7.2.20
+  * Enable github CI run
+    by @balamurugana in #1543
+  * Make BaseException internals to be set (#1521)
+    by @balamurugana in #1539
+  * Fix: Add missing type annotations to serialization dataclass fields
+    (… by @balamurugana in #1540
+  * support optional parameters in LdapIdentityProvider (#1528)
+    by @balamurugana in #1541
+  * fix object_size/headers in ComposeSource
+    by @balamurugana in #1545
+  * fix complete_multipart_upload() to support SSE-C
+    by @balamurugana in #1544
+
+-------------------------------------------------------------------
 Mon Nov 24 15:27:39 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 7.2.19
