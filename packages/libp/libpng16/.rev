@@ -884,4 +884,37 @@
   * Fixed a latent bug in `png_write_iCCP`. (forwarded request 1297121 from pevik)</comment>
     <requestid>1297410</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>26d33ca63c2830f3d41ec186f83d8faf</srcmd5>
+    <version>1.6.51</version>
+    <time>1764345040</time>
+    <user>anag_factory</user>
+    <comment>- version update to 1.6.51
+  * Fixed CVE-2025-64505 (moderate severity):
+      Heap buffer overflow in `png_do_quantize` via malformed palette index.
+      (Reported by Samsung; analyzed by Fabio Gritti.)
+  * Fixed CVE-2025-64506 (moderate severity):
+      Heap buffer over-read in `png_write_image_8bit` with 8-bit input and
+      `convert_to_8bit` enabled.
+      (Reported by Samsung and &lt;weijinjinnihao@users.noreply.github.com&gt;;
+      analyzed by Fabio Gritti.)
+  * Fixed CVE-2025-64720 (high severity):
+      Buffer overflow in `png_image_read_composite` via incorrect palette
+      premultiplication.
+      (Reported by Samsung; analyzed by John Bowler.)
+  * Fixed CVE-2025-65018 (high severity):
+      Heap buffer overflow in `png_combine_row` triggered via
+      `png_image_finish_read`.
+      (Reported by &lt;yosiimich@users.noreply.github.com&gt;.)
+  * Fixed a memory leak in `png_set_quantize`.
+      (Reported by Samsung; analyzed by Fabio Gritti.)
+  * Removed the experimental and incomplete ERROR_NUMBERS code.
+      (Contributed by Tobias Stoeckmann.)
+  * Improved the RISC-V vector extension support; required RVV 1.0 or newer.
+      (Contributed by Filip Wasil.)
+  * Added GitHub Actions workflows for automated testing.
+  * Performed various refactorings and cleanups.
+- fixes [bsc#1254157] [bsc#1254158] [bsc#1254159] [bsc#1254160]</comment>
+    <requestid>1320338</requestid>
+  </revision>
 </revisionlist>

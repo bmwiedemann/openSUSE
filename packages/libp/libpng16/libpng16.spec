@@ -20,7 +20,7 @@
 %define asan_build  0
 %define major   1
 %define minor   6
-%define micro   50
+%define micro   51
 %define branch  %{major}%{minor}
 %define libname libpng%{branch}-%{branch}
 %define debug_package_requires %{libname} = %{version}-%{release}
