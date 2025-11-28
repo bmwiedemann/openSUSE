@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Nov 26 19:23:29 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 145.0.2
+  * Fixed an issue that prevented typing in Baidu’s search box when
+    using Chinese IMEs on Windows. (bmo#2000479)
+
+-------------------------------------------------------------------
+Sat Nov 22 21:07:38 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 145.0.1
+  * Fixed: Fixed an issue causing breakage on sites using
+    Three.js. (bmo#1995939)
+  * Fixed: Fixed Web compatibility issues with Rogers. Rogers
+    customers would see a broken iframe with "Firefox Can’t Open
+    This Page" when viewing bills, rather than the billing info.
+    (bmo#1996823)
+  * Fixed: Fixed an issue in the Web Developer Tools preventing
+    copy all or save all requests as HAR. (bmo#1995694)
+
+-------------------------------------------------------------------
 Sun Nov  9 13:23:48 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 145.0
