@@ -100,4 +100,17 @@
       - Hide some diagnostics when tests run in perl core</comment>
     <requestid>1310535</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>87bb9aac77b1c5bde5c22457891b67bf</srcmd5>
+    <version>0.027</version>
+    <time>1764345245</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.027
+   see /usr/share/doc/packages/perl-Term-Table/Changes
+  0.027     2025-11-14 10:04:51-08:00 America/Los_Angeles
+      - No changes from trial
+  0.026     2025-11-12 20:02:15-08:00 America/Los_Angeles (TRIAL RELEASE)
+      - Fix terminal size detection</comment>
+    <requestid>1320471</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov 15 05:32:12 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.027
+   see /usr/share/doc/packages/perl-Term-Table/Changes
+
+  0.027     2025-11-14 10:04:51-08:00 America/Los_Angeles
+      - No changes from trial
+  0.026     2025-11-12 20:02:15-08:00 America/Los_Angeles (TRIAL RELEASE)
+      - Fix terminal size detection
+
+-------------------------------------------------------------------
 Thu Oct  9 20:30:46 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.025

@@ -18,7 +18,7 @@
 
 %define cpan_name Term-Table
 Name:           perl-Term-Table
-Version:        0.025
+Version:        0.027
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Format a header and rows into a table
