@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Nov 20 21:37:30 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.6.13:
+  * Fix indent of continued string literal as argument
+  * Fix regression related to template delimters
+  * Improved complex lambda body indentation
+  * Fix regression related to diff markers
+  * Fix comment recognition after macro definition
+  * Fix indent of switch statements within structs
+  * Fix Win32 build
+  * Improved lambda body indentation
+  * Ignore lines with git conflict markers
+  * Replaced platform file functions by C++ filesystem library
+  * Fix --mode parameter in generation script
+  * disable old isInTemplate flag only within structs
+
+-------------------------------------------------------------------
 Sun Apr  6 14:18:44 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 3.6.8:
@@ -7,7 +24,7 @@ Sun Apr  6 14:18:44 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
   * Define <<< and >>> operators for Java only
   * Fix indentation of class modifiers within structs
   * Fix parsing of nested structs
-  * Another approach to fix interpretation of closing nested templates as 
+  * Another approach to fix interpretation of closing nested templates as
     operator
   * Fix indent of multiline strings with macros
 
@@ -92,7 +109,7 @@ Sun Apr  6 14:18:44 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 3.4.14:
   * Fix split references with "-k1" option (#565)
-  * Fix "--align-pointer=type" option for fundamental types in lambda parameter 
+  * Fix "--align-pointer=type" option for fundamental types in lambda parameter
     lists
   * Fix "--indent-after-parens" indent count
 
