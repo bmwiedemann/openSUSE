@@ -1,7 +1,7 @@
 #
 # spec file for package icu
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 # what icu thinks the package is
-%define amajor 77
-%define aversion 77.1
+%define amajor 78
+%define aversion 78.1
 # for the rare case that SUSE needs to workaround ABI breaks:
 %define sonum %amajor
 # like sonum, but with underscore
@@ -31,16 +31,16 @@
 %endif
 # icu-versioning.diff needs update for new Version too
 Name:           icu
-Version:        77.1
+Version:        78.1
 Release:        0
 Summary:        International Components for Unicode
 License:        Unicode-3.0
 Group:          Development/Libraries/C and C++
 URL:            https://icu.unicode.org/
-Source:         https://github.com/unicode-org/icu/releases/download/release-77-1/icu4c-77_1-src.tgz
-#Source2:        https://github.com/unicode-org/icu/releases/download/release-77-1/icu4c-77_1-src.tgz.asc
-Source3:        https://github.com/unicode-org/icu/releases/download/release-77-1/icu4c-77_1-docs.zip
-#Source4:        https://github.com/unicode-org/icu/releases/download/release-77-1/icu4c-77_1-docs.zip.asc
+Source:         https://github.com/unicode-org/icu/releases/download/release-%version/icu4c-%version-sources.tgz
+Source2:        https://github.com/unicode-org/icu/releases/download/release-%version/icu4c-%version-sources.tgz.asc
+Source3:        https://github.com/unicode-org/icu/releases/download/release-%version/icu4c-%version-docs.zip
+Source4:        https://github.com/unicode-org/icu/releases/download/release-%version/icu4c-%version-docs.zip.asc
 Source5:        %name.keyring
 Source100:      baselibs.conf
 Patch4:         icu-fix-install-mode-files.diff

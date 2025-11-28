@@ -777,4 +777,12 @@ Jan added the patch name of all changed patches.</comment>
     <comment>bugIDs</comment>
     <requestid>1286386</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>8806538c77344784e9956fac8e513749</srcmd5>
+    <version>78.1</version>
+    <time>1764345054</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 78.1</comment>
+    <requestid>1314693</requestid>
+  </revision>
 </revisionlist>

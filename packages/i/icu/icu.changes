@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 31 10:27:03 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 78.1
+  * ICU was updated to Unicode 17, including new characters and
+    scripts, emoji, collation & IDNA changes, and corresponding
+    APIs and implementations.
+  * In C++, there is a new set of APIs for Unicode string
+    (UTF-8/16/32) code point iteration that works seamlessly with
+    modern C++ iterators and ranges.
+  * ICU was updated to CLDR 48.
+
+-------------------------------------------------------------------
 Thu Mar 13 18:48:26 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 77.1
