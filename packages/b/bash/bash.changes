@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Nov 27 08:52:56 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add upstream patches
+  * Bash-5.3 Official patch 4 -- bash53-004
+    The Linux kernel reports incorrect sizes for files in /sys/block/*/uevent,
+    leading bash to report a read error when the byte count does not agree
+    with the file size from fstat(2).
+  * Bash-5.3 Official patch 5 -- bash53-005
+    Restoring the default disposition in a subshell for a signal bash treats
+    specially can cause a crash.
+  * Bash-5.3 Official patch 6 -- bash53-006
+    When `globasciiranges' is enabled, glob patterns with ranges in bracket
+    expressions can produce incorrect matches for character ranges whose
+    start and end are non-ascii characters.
+  * Bash-5.3 Official patch 7 -- bash53-007
+    No-fork command substitutions can perform redirections that act on the
+    enclosing command as well.
+  * Bash-5.3 Official patch 8 -- bash53-008
+    Bash tries to consume entire multibyte characters when looking for backslash
+    escapes in $'...' strings, and treats too many characters as potentially
+    beginning a multibyte character in UTF-8 locales. Being more selective about
+    when to call mbrtowc() can lead to optimized string processing and script
+    speedups. This patch also handles the unlikely situation of a locale
+    encoding null wide characters with non-null bytes.
+- Remove patch boo1254087.patch now upstream with bash53-004
+
+-------------------------------------------------------------------
 Fri Nov 21 09:36:12 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Cherry pick from commit 01070d43248fb97f3b2a08d780ae5a392573ce34 
