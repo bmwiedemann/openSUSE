@@ -678,4 +678,14 @@
   HTML document can cause the parser to enter an infinite loop when trying (forwarded request 1316415 from glaubitz)</comment>
     <requestid>1316424</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>6c7d016a128e5f88f96a9b67905ae9d5</srcmd5>
+    <version>20251126.00</version>
+    <time>1764345221</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251126.00
+  * Bump github.com/containerd/containerd (#890)
+  * Bump github.com/spdx/tools-golang from 0.5.3 to 0.5.5 (#887) (forwarded request 1320315 from glaubitz)</comment>
+    <requestid>1320442</requestid>
+  </revision>
 </revisionlist>
