@@ -1,0 +1,146 @@
+From 26fdff8f7404ee0f9ae957fd5640d43eb6d86820 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Mon, 13 Oct 2025 20:54:43 +0200
+Subject: [PATCH 04/25] [gdb/testsuite] Use expect_build_id_in_core_file a bit
+ more
+
+Recent commit c1950dcc04c ("gdb/testsuite: fix failure from
+gdb.python/py-corefile.exp") introduced proc expect_build_id_in_core_file,
+which detects the problem that:
+...
+    ... some versions of the linker didn't place the build-id within the first
+    page of an ELF.  As a result, the Linux kernel would not include the
+    build-id in the generated core file, ...
+...
+
+Use this proc in a few more test-cases, to deal with the same problem.
+
+Tested on x86_64-linux, openSUSE Tumbleweed with ld 2.43.1.
+
+Approved-By: Andrew Burgess <aburgess@redhat.com>
+
+PR testsuite/33528
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=33528
+---
+ .../gdb.debuginfod/corefile-mapped-file.exp   |  3 +
+ .../gdb.debuginfod/solib-with-soname.exp      |  4 ++
+ .../gdb.python/py-missing-objfile.exp         |  5 ++
+ gdb/testsuite/lib/gdb.exp                     | 58 +++++++++++++++++++
+ 4 files changed, 70 insertions(+)
+
+diff --git a/gdb/testsuite/gdb.debuginfod/corefile-mapped-file.exp b/gdb/testsuite/gdb.debuginfod/corefile-mapped-file.exp
+index f02876e1453..af143b7d506 100644
+--- a/gdb/testsuite/gdb.debuginfod/corefile-mapped-file.exp
++++ b/gdb/testsuite/gdb.debuginfod/corefile-mapped-file.exp
+@@ -81,6 +81,9 @@ if {[prepare_for_testing_full "build exec which loads the shared library" \
+     return
+ }
+ 
++require {expect_build_id_in_core_file $binfile2}
++require {expect_build_id_in_core_file $library_filename}
++
+ if {![runto_main]} {
+     return
+ }
+diff --git a/gdb/testsuite/gdb.debuginfod/solib-with-soname.exp b/gdb/testsuite/gdb.debuginfod/solib-with-soname.exp
+index 98c4535fca7..07f0a0f170b 100644
+--- a/gdb/testsuite/gdb.debuginfod/solib-with-soname.exp
++++ b/gdb/testsuite/gdb.debuginfod/solib-with-soname.exp
+@@ -96,6 +96,10 @@ if { [build_executable "build executable" ${binfile} ${srcfile2} \
+     return
+ }
+ 
++require {expect_build_id_in_core_file $library_1_filename}
++require {expect_build_id_in_core_file $library_2_filename}
++require {expect_build_id_in_core_file $binfile}
++
+ # If the board file is automatically splitting the debug information
+ # into a separate file (e.g. the cc-with-gnu-debuglink.exp board) then
+ # this test isn't going to work.
+diff --git a/gdb/testsuite/gdb.python/py-missing-objfile.exp b/gdb/testsuite/gdb.python/py-missing-objfile.exp
+index 8488047d105..2786bdfb2ed 100644
+--- a/gdb/testsuite/gdb.python/py-missing-objfile.exp
++++ b/gdb/testsuite/gdb.python/py-missing-objfile.exp
+@@ -183,6 +183,11 @@ with_test_prefix "no objfiles available" {
+     check_loaded_debug false false
+ }
+ 
++# The following tests assume that the build-ids of binfile and libfile can be
++# found in the core file.
++require {expect_build_id_in_core_file $binfile}
++require {expect_build_id_in_core_file $libfile}
++
+ with_test_prefix "all objfiles available" {
+     # Another sanity check that GDB can find the files via the
+     # debug-file-directory.
+diff --git a/gdb/testsuite/lib/gdb.exp b/gdb/testsuite/lib/gdb.exp
+index b103c117258..47cff389a41 100644
+--- a/gdb/testsuite/lib/gdb.exp
++++ b/gdb/testsuite/lib/gdb.exp
+@@ -11044,5 +11044,63 @@ gdb_caching_proc root_user {} {
+     return [expr $uid == 0]
+ }
+ 
++# Return true if we expect the build-id from FILENAME to be included
++# in a core file.
++#
++# On GNU/Linux, when creating a core file, the kernel places the first
++# page of an ELF into the core file.  If the build-id is within that
++# page then GDB can find the build-id from the core file.
++#
++# This proc checks that the target is GNU/Linux, and then uses readelf
++# to find the offset of the build-id within the ELF.  If there is a
++# build-id, and it is within the first page, then return true.
++# Otherwise, return false.
++
++proc expect_build_id_in_core_file { filename } {
++    # I'm not sure if other kernels take care to add the first page of
++    # each ELF into the core file.  If they do then this test can be
++    # relaxed.
++    if {![istarget *-*-linux*]} {
++	return false
++    }
++
++    # Use readelf to find the build-id note in FILENAME.
++    set readelf_program [gdb_find_readelf]
++    set cmd [list $readelf_program -WS $filename | grep ".note.gnu.build-id"]
++    set res [catch {exec {*}$cmd} output]
++    verbose -log "running: $cmd"
++    verbose -log "result: $res"
++    verbose -log "output: $output"
++    if { $res != 0 } {
++	return false
++    }
++
++    # Extract the OFFSET from the readelf output.
++    set res [regexp {NOTE[ \t]+([0-9a-f]+)[ \t]+([0-9a-f]+)} \
++		 $output dummy addr offset]
++    if { $res != 1 } {
++	return false
++    }
++
++    # Convert OFFSET to decimal.
++    set offset [expr {[subst 0x$offset]}]
++
++    # Now figure out the page size.  This should be fine for Linux
++    # hosts, see the istarget check above.
++    if {[catch {exec getconf PAGESIZE} page_size]} {
++	# Failed to fetch page size.
++	return false
++    }
++
++    # If the build-id is within the first page, then we expect the
++    # kernel to include it in the core file.  There is actually a
++    # kernel setting (see coredump_filter) that could prevent this,
++    # but the default behaviour is to include the first page of the
++    # ELF, so for now, we just assume this is on.
++    verbose -log "Page size is $page_size, Offset is $offset"
++    return [expr {$offset < $page_size}]
++}
++
++
+ # Always load compatibility stuff.
+ load_lib future.exp
+-- 
+2.51.0
+

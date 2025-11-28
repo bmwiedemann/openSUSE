@@ -4230,4 +4230,12 @@ Please forward to 13.2, so we can have a working DrKonqi there (forwarded reques
     <comment>Fix bsc#1250033.</comment>
     <requestid>1309610</requestid>
   </revision>
+  <revision rev="190" vrev="4">
+    <srcmd5>7ba0bc822426fdbdd3c5a4a246233ebd</srcmd5>
+    <version>16.3</version>
+    <time>1764345034</time>
+    <user>anag_factory</user>
+    <comment>Fix bsc#1251213</comment>
+    <requestid>1320297</requestid>
+  </revision>
 </revisionlist>

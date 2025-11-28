@@ -1,0 +1,69 @@
+From 71e7e116b5a76314a4db6d272de3169e1d77696e Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Tue, 11 Nov 2025 20:47:33 +0100
+Subject: [PATCH 12/25] [gdb/testsuite] Fix sizeof test in gdb.rust/simple.exp
+
+On x86_64-linux, with test-case gdb.rust/simple.exp I get:
+...
+(gdb) print sizeof(e)^M
+$52 = 24^M
+(gdb) PASS: $exp: print sizeof(e)
+...
+but on i686-linux I get instead:
+...
+(gdb) print sizeof(e)^M
+$52 = 20^M
+(gdb) FAIL: $exp: print sizeof(e)
+...
+
+The variable e for which we print the size:
+...
+    let e = MoreComplicated::Two(73);
+...
+has type MoreComplicated which is defined like this:
+...
+pub struct HiBob {
+    pub field1: i32,
+    field2: u64,
+}
+  ...
+enum MoreComplicated {
+    One,
+    Two(i32),
+    Three(HiBob),
+    Four{this: bool, is: u8, a: char, struct_: u64, variant: u32},
+}
+...
+
+The answer to the question what the size of the enum should be seems to be
+non-trivial [1][2], but AFAICT it doesn't seem to be illegal that the size can
+differ between different platforms.
+
+Fix this by accepting both 20 and 24 as valid size.
+
+Tested on x86_64-linux and i686-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+
+[1] https://doc.rust-lang.org/reference/types/enum.html
+[2] https://doc.rust-lang.org/reference/type-layout.html#the-rust-representation
+---
+ gdb/testsuite/gdb.rust/simple.exp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.rust/simple.exp b/gdb/testsuite/gdb.rust/simple.exp
+index 37a2e079b6c..dc057bfd7c5 100644
+--- a/gdb/testsuite/gdb.rust/simple.exp
++++ b/gdb/testsuite/gdb.rust/simple.exp
+@@ -188,7 +188,7 @@ gdb_test "print simple::HiBob{field1: 99, .. y}" \
+ gdb_test "print e" " = simple::MoreComplicated::Two\\(73\\)"
+ gdb_test "print e2" \
+     " = simple::MoreComplicated::Four\\{this: true, is: 8, a: 109 'm', struct_: 100, variant: 10\\}"
+-gdb_test "print sizeof(e)" " = 24"
++gdb_test "print sizeof(e)" " = (20|24)"
+ gdb_test_sequence "ptype e" "" {
+     " = enum simple::MoreComplicated \\{"
+     "  One,"
+-- 
+2.51.0
+

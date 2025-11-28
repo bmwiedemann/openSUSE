@@ -1,0 +1,181 @@
+From c91de4aa70627bd3c33788d90597c1b787c8d905 Mon Sep 17 00:00:00 2001
+From: Keith Seitz <keiths@redhat.com>
+Date: Fri, 19 Sep 2025 09:50:46 -0700
+Subject: [PATCH 02/25] Correct bounds check when working around GAS DWARF 5
+ directory table bug
+
+Recent Go toolchains are causing GDB to crash on a relatively recent
+workaround for a GAS bug:
+
+commit a833790a626d9620319d0ca6aee23daa584d445c
+Date:   Wed Nov 1 00:33:12 2023 +0100
+
+    [gdb/symtab] Work around gas PR28629
+
+In the original GAS bug, the first directory table entry did not contain
+the current directory of the compilation. So the above commit added a
+workaround fix to prepend the second directory table entry.
+
+However recent Go toolchain compilations (specifically on aarch64)
+only output a single directory table entry. Looking at the workaround:
+
+       if (lh->version == 5 && lh->is_valid_file_index (1))
+         {
+           std::string dir = lh->include_dir_at (1);
+           fnd.set_comp_dir (std::move (dir));
+         }
+
+`lh->is_valid_file_index (1)' is true, but since the directory table only
+has one entry, `include_dir_at (1)' returns nullptr. Consequently the
+std::string ctor will segfault. Since there are no guarantees that the file
+and directory tables are the same size, a better bounds check is to simply
+rely on `include_dir_at' to ensure a valid directory table entry.
+
+I have updated the workaround commit's test, gdb.dwarf2/dw2-gas-workaround.exp
+and tested on x86_64 and aarch64 RHEL 9 and Fedora 41.
+
+Approved-By: Andrew Burgess <aburgess@redhat.com>
+---
+ gdb/dwarf2/read.c                             |  2 +-
+ .../gdb.dwarf2/dw2-gas-workaround.exp         | 92 ++++++++++++-------
+ 2 files changed, 58 insertions(+), 36 deletions(-)
+
+diff --git a/gdb/dwarf2/read.c b/gdb/dwarf2/read.c
+index 5fe92c24559..19a46425f84 100644
+--- a/gdb/dwarf2/read.c
++++ b/gdb/dwarf2/read.c
+@@ -7520,7 +7520,7 @@ read_file_scope (struct die_info *die, struct dwarf2_cu *cu)
+ 	  sect_offset line_offset = (sect_offset) attr->as_unsigned ();
+ 	  line_header_up lh = dwarf_decode_line_header (line_offset, cu,
+ 							fnd.get_comp_dir ());
+-	  if (lh->version == 5 && lh->is_valid_file_index (1))
++	  if (lh->version == 5 && lh->include_dir_at (1) != nullptr)
+ 	    {
+ 	      std::string dir = lh->include_dir_at (1);
+ 	      fnd.set_comp_dir (std::move (dir));
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-gas-workaround.exp b/gdb/testsuite/gdb.dwarf2/dw2-gas-workaround.exp
+index 5d6e13a9ae0..4155358f50e 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-gas-workaround.exp
++++ b/gdb/testsuite/gdb.dwarf2/dw2-gas-workaround.exp
+@@ -20,7 +20,7 @@ load_lib dwarf.exp
+ # This test can only be run on targets which support DWARF-2 and use gas.
+ require dwarf2_support
+ 
+-standard_testfile dw2-lines.c -dw2.S
++standard_testfile dw2-lines.c -dw2.S -dw2-one-diridx.S
+ 
+ with_shared_gdb {
+     set func_info_vars [get_func_info bar]
+@@ -33,49 +33,61 @@ proc line_for { l } {
+     return [expr $line + 1]
+ }
+ 
+-set asm_file [standard_output_file $srcfile2]
+-Dwarf::assemble $asm_file {
+-    declare_labels Llines
+-    global srcdir subdir srcfile objdir
+-    global func_info_vars
+-    foreach var $func_info_vars {
+-	global $var
+-    }
++# A helper proc to create the DWARF assembly for the test.
++# If ONE_DIRIDX is true, then the directory table will be limited
++# to one entry.
++proc create_dwarf_assembly {source_file one_diridx} {
++    set asm_file [standard_output_file $source_file]
++    Dwarf::assemble $asm_file {
++	declare_labels Llines
++	global srcdir subdir srcfile objdir
++	global func_info_vars
++	upvar one_diridx one_diridx
++	foreach var $func_info_vars {
++	    global $var
++	}
+ 
+-    cu { version 5 } {
+-	compile_unit {
+-	    {language @DW_LANG_Mips_Assembler}
+-	    {name $srcfile}
+-	    {comp_dir $objdir}
+-	    {stmt_list $Llines DW_FORM_sec_offset}
+-	    {producer "GNU AS 2.35.2"}
+-	} {
+-	    subprogram {
+-		{external 1 flag}
+-		{name bar}
+-		{low_pc $bar_start addr}
+-		{high_pc "$bar_start + $bar_len" addr}
++	cu { version 5 } {
++	    compile_unit {
++		{DW_AT_language @DW_LANG_Mips_Assembler}
++		{DW_AT_name $srcfile}
++		{DW_AT_comp_dir $objdir}
++		{DW_AT_stmt_list $Llines DW_FORM_sec_offset}
++		{DW_AT_producer "GNU AS 2.35.2"}
++	    } {
++		subprogram {
++		    {DW_AT_external 1 flag}
++		    {DW_AT_name bar}
++		    {DW_AT_low_pc $bar_start addr}
++		    {DW_AT_high_pc "$bar_start + $bar_len" addr}
++		}
+ 	    }
+ 	}
+-    }
+ 
+-    lines [list version 5] Llines {
+-	set diridx1 [include_dir "${srcdir}/${subdir}"]
+-	set diridx2 [include_dir "${srcdir}/${subdir}"]
+-	file_name "$srcfile" $diridx1
+-	file_name "$srcfile" $diridx2
+-
+-	program {
+-	    DW_LNE_set_address bar_label
+-	    line [line_for bar_label]
+-	    DW_LNS_copy
++	lines [list version 5] Llines {
++	    set diridx1 [include_dir "${srcdir}/${subdir}"]
++	    file_name "$srcfile" $diridx1
++	    if {!$one_diridx} {
++		set diridx2 [include_dir "${srcdir}/${subdir}"]
++		file_name "$srcfile" $diridx2
++	    } else {
++		file_name "$srcfile" $diridx1
++	    }
++	    program {
++		DW_LNE_set_address bar_label
++		line [line_for bar_label]
++		DW_LNS_copy
+ 
+-	    DW_LNE_set_address $bar_end
+-	    DW_LNE_end_sequence
++		DW_LNE_set_address $bar_end
++		DW_LNE_end_sequence
++	    }
+ 	}
+     }
++
++    return $asm_file
+ }
+ 
++set asm_file [create_dwarf_assembly $srcfile2 false]
+ if { [prepare_for_testing "failed to prepare" ${testfile} \
+ 	  [list $srcfile $asm_file] {nodebug}] } {
+     return -1
+@@ -90,3 +102,13 @@ gdb_test_multiple "ptype bar" "" {
+ 	pass $gdb_test_name
+     }
+ }
++
++# Test whether gdb crashes in the case where the number of
++# directory indexes is only one.
++set asm_file [create_dwarf_assembly $srcfile3 true]
++if {[prepare_for_testing "failed to prepare" ${testfile}-one-diridx \
++	 [list $srcfile $asm_file] {nodebug}] } {
++    return -1
++}
++
++gdb_test "ptype bar" ".*" "do not crash with only one directory table entry"
+-- 
+2.51.0
+

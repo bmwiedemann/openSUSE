@@ -1,0 +1,54 @@
+From 7ff7fb4184861f31c624aafab433462ecafb4321 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Wed, 12 Nov 2025 11:08:31 +0100
+Subject: [PATCH 06/25] [gdb/testsuite] Use -std=c99 in gdb.base/nodebug.exp
+
+With test-case gdb.base/nodebug.exp I run into:
+...
+gdb compile failed, gdb.base/nodebug.c: In function 'multf_noproto':
+gdb.base/nodebug.c:63:1: warning: old-style function definition \
+  [-Wold-style-definition]
+   63 | multf_noproto (v1, v2)
+      | ^~~~~~~~~~~~~
+...
+
+Fix this using -std=c99.
+
+Tested on x86_64-linux.
+
+PR testsuite/32756
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=32756
+---
+ gdb/testsuite/gdb.base/nodebug.exp | 15 ++++++++++-----
+ 1 file changed, 10 insertions(+), 5 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.base/nodebug.exp b/gdb/testsuite/gdb.base/nodebug.exp
+index 4c07d2ea9db..999c4217aa8 100644
+--- a/gdb/testsuite/gdb.base/nodebug.exp
++++ b/gdb/testsuite/gdb.base/nodebug.exp
+@@ -18,12 +18,17 @@
+ 
+ standard_testfile .c
+ 
+-if [test_compiler_info "xlc-*"] {
++set exec_opts {}
++if {[have_compile_flag -std=c99]} {
++    # Gcc 15 defaults to c23, which no longer supports unprototyped functions.
++    # Use a c dialect that does support this.
++    lappend exec_opts additional_flags=-std=c99
++}
++
++if {[test_compiler_info "xlc-*"]} {
+     # By default, IBM'x xlc compiler doesn't add static variables into the symtab.
+-    # Use "-qstatsym" to do so. 
+-    set exec_opts additional_flags=-qstatsym
+-} else {
+-    set exec_opts ""
++    # Use "-qstatsym" to do so.
++    lappend exec_opts additional_flags=-qstatsym
+ }
+ 
+ if  { [gdb_compile $srcdir/$subdir/$srcfile $binfile executable $exec_opts] != "" } {
+-- 
+2.51.0
+

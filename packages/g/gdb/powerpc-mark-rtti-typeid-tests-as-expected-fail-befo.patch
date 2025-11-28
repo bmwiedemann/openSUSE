@@ -1,0 +1,57 @@
+From 9504544659b7215bce811876c1a4e4491b3d70df Mon Sep 17 00:00:00 2001
+From: Abhay Kandpal <abhay@linux.ibm.com>
+Date: Mon, 24 Nov 2025 04:49:44 -0600
+Subject: [PATCH 23/25] PowerPC: Mark RTTI typeid tests as expected fail before
+ inferior start
+
+On PowerPC targets, the RTTI typeinfo objects for base types may not
+be emitted until the inferior has been started.  As a result,
+the `gdb.cp/typeid.exp` test fails when checking typeid results
+before program execution begins.
+
+This patch marks these specific cases as expected failures on PowerPC
+when the inferior has not yet started, aligning the behavior with other
+targets (such as Clang) where RTTI emission is deferred until runtime.
+
+gdb/testsuite/
+    * gdb.cp/typeid.exp (do_typeid_tests): Mark PowerPC pre-start
+    RTTI typeinfo checks as expected failures for `i`, `cp`, and `ccp`.
+---
+ gdb/testsuite/gdb.cp/typeid.exp | 21 ++++++++++++++++-----
+ 1 file changed, 16 insertions(+), 5 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.cp/typeid.exp b/gdb/testsuite/gdb.cp/typeid.exp
+index 3ba82f6f001..4dbd9729b54 100644
+--- a/gdb/testsuite/gdb.cp/typeid.exp
++++ b/gdb/testsuite/gdb.cp/typeid.exp
+@@ -28,11 +28,22 @@ proc do_typeid_tests {started} {
+     set type_re "(std::type_info|gdb_gnu_v3_type_info)"
+ 
+     set var {ca b}
+-    if {$started || ![test_compiler_info clang-*-* c++]} {
+-	# Clang doesn't place type information for the base types in
+-	# the executable, and relies on this being linked in from the
+-	# standard library.  As a result, type information for these
+-	# variables is only available once the inferior is started.
++
++    set have_base_types 1
++    if {!$started} {
++	if {[test_compiler_info clang-*-* c++]} {
++	    # Clang doesn't place type information for the base types in
++	    # the executable, and relies on this being linked in from the
++	    # standard library.  As a result, type information for these
++	    # variables is only available once the inferior is started.
++	    set have_base_types 0
++	} elseif {[istarget "powerpc*-*-*"] || [is_aarch32_target]} {
++	    # On PowerPC, RTTI typeinfo for base types (i, cp, ccp) may not be
++	    # emitted until the inferior is started.
++	    set have_base_types 0
++	}
++    }
++    if { $have_base_types } {
+ 	lappend var i cp ccp
+     }
+ 
+-- 
+2.51.0
+

@@ -1,0 +1,59 @@
+From 772b7c2a75f392589518a0ee17a48914f1395c67 Mon Sep 17 00:00:00 2001
+From: "Rudnicki, Piotr" <piotr.rudnicki@intel.com>
+Date: Wed, 12 Feb 2025 10:50:37 +0100
+Subject: [PATCH 03/25] gdb, testsuite, rust: fix for empty array
+
+For the Rust language, to avoid segmentation fault in case of an empty
+array, do not try to copy any elements, but allocate and return
+the empty array immediately.
+
+With the command before the change, gdb crashes with message:
+
+(gdb) set lang rust
+(gdb) p [1;0]
+Fatal signal: Segmentation fault
+
+After the fix in this commit, gdb shows following message:
+(gdb) set lang rust
+(gdb) p [1;0]
+$1 = []
+
+Update the existing test case gdb.rust/expr.exp to verify the change.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+---
+ gdb/rust-lang.c                 | 2 +-
+ gdb/testsuite/gdb.rust/expr.exp | 4 ++++
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/rust-lang.c b/gdb/rust-lang.c
+index d4cd8802fa5..8bec934983e 100644
+--- a/gdb/rust-lang.c
++++ b/gdb/rust-lang.c
+@@ -1455,7 +1455,7 @@ eval_op_rust_array (struct type *expect_type, struct expression *exp,
+   if (copies < 0)
+     error (_("Array with negative number of elements"));
+ 
+-  if (noside == EVAL_NORMAL)
++  if (noside == EVAL_NORMAL && copies > 0)
+     return value_array (0, std::vector<value *> (copies, elt));
+   else
+     {
+diff --git a/gdb/testsuite/gdb.rust/expr.exp b/gdb/testsuite/gdb.rust/expr.exp
+index 97db748abf6..ca01c5feb36 100644
+--- a/gdb/testsuite/gdb.rust/expr.exp
++++ b/gdb/testsuite/gdb.rust/expr.exp
+@@ -115,6 +115,10 @@ gdb_test "print \[1,2 3" "',' or ']' expected"
+ gdb_test "print \[1 2" "',', ';', or ']' expected"
+ gdb_test "print \[23\]" " = \\\[23\\\]"
+ 
++gdb_test "print \[0;0\]" " = \\\[\\\]"
++gdb_test "print \[1;0\]" " = \\\[\\\]"
++gdb_test "print \[0;1\]" " = \\\[0\\\]"
++
+ gdb_test "print b\"hi rust\"" " = b\"hi rust\""
+ # This isn't rusty syntax yet, but that's another bug -- this is just
+ # testing that byte escapes work properly.
+-- 
+2.51.0
+

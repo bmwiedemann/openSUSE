@@ -332,10 +332,6 @@ kfail=(
     "FAIL: gdb.debuginfod/fetch_src_and_symbols.exp: local_url: file corefile"
     "FAIL: gdb.debuginfod/crc_mismatch.exp: local_debuginfod: debuginfod running, info downloaded, no CRC mismatch"
 
-    # Fixed by commit 17f6581c36a ("gdb/testsuite: another attempt to fix
-    # gdb.threads/thread-specific-bp.exp").
-    "FAIL: gdb.threads/thread-specific-bp.exp: non_stop=on: continue to end \(timeout\)"
-
     # https://sourceware.org/bugzilla/show_bug.cgi?id=31811
     "FAIL: gdb.threads/threads-after-exec.exp:"
 
@@ -361,11 +357,11 @@ kfail=(
     # https://sourceware.org/bugzilla/show_bug.cgi?id=32619
     "FAIL: gdb.dap/eof.exp: exceptions in log file"
 
-    # https://sourceware.org/bugzilla/show_bug.cgi?id=32688
-    "FAIL: gdb.threads/thread-specific-bp.exp: non_stop=on: continue to end"
-
     # https://sourceware.org/bugzilla/show_bug.cgi?id=31308
     "FAIL: gdb.arch/amd64-init-x87-values.exp: check_setting_mxcsr_before_enable: check new value of MXCSR is still in place"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=32893
+    "FAIL: gdb.multi/attach-no-multi-process.exp: target_non_stop=off: info threads \(timeout\)"
 
 ) # kfail
 
@@ -836,7 +832,7 @@ case $n in
 
 	kfail_re=$(join "|" "${kfail[@]}")
 	grep -A1 "ERROR:.*no longer" binaries-testsuite*/gdb-testresults/*.sum \
-	    | grep -E -v "ERROR|\--" | grep -E -v "$kfail_re"
+	    | grep -E -v "ERROR|--" | grep -E -v "$kfail_re"
 	;;
 
     3)

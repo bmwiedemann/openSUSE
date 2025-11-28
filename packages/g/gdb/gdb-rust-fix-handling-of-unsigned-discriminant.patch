@@ -1,0 +1,131 @@
+From aba0fa2aacf1f2a82e4d7e3482a48f8d7216d7d8 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Tue, 11 Nov 2025 22:34:24 +0100
+Subject: [PATCH 17/25] [gdb/rust] Fix handling of unsigned discriminant
+
+On i686-linux, with test-case gdb.rust/simple.exp, we get:
+...
+(gdb) print str_none^M
+$71 = core::option::Option<alloc::string::String>::Some(alloc::string::String {vec: alloc::vec::Vec<u8, alloc::alloc::Global> {buf: alloc::raw_vec::RawVec<u8, alloc::alloc::Global> {inner: alloc::raw_vec::RawVecInner<alloc::alloc::Global> {ptr: core::ptr::unique::Unique<u8> {pointer: core::ptr::non_null::NonNull<u8> {pointer: 0xbfffe6e8}, _marker: core::marker::PhantomData<u8>}, cap: core::num::niche_types::UsizeNoHighBit (2147483648), alloc: alloc::alloc::Global}, _marker: core::marker::PhantomData<u8>}, len: 4321411}})^M
+(gdb) FAIL: $exp: print str_none
+...
+while this is expected:
+...
+(gdb) print str_none^M
+$71 = core::option::Option<alloc::string::String>::None^M
+(gdb) PASS: $exp: print str_none
+...
+
+Printing the variable in C mode:
+...
+$ gdb -q -batch outputs/gdb.rust/simple/simple \
+    -ex "b 161" \
+    -ex run \
+    -ex "set language c" \
+    -ex "p /x str_none"
+  ...
+$1 = {0x80000000, Some = {__0 = {vec = {buf = {inner = {ptr = {pointer = {pointer = 0xbfffedd8}, _marker = {<No data fields>}}, cap = {__0 = 0x80000000}, alloc = {<No data fields>}}, _marker = {<No data fields>}}, len = 0x41f083}}}}
+...
+shows us that the discriminant value is 0x80000000, which matches the "None"
+variant:
+...
+ <3><1427>: Abbrev Number: 16 (DW_TAG_structure_type)
+    <1428>   DW_AT_name        : Option<alloc::string::String>
+    <142c>   DW_AT_byte_size   : 12
+    <142d>   DW_AT_accessibility: 1     (public)
+    <142e>   DW_AT_alignment   : 4
+ <4><142f>: Abbrev Number: 47 (DW_TAG_variant_part)
+    <1430>   DW_AT_discr       : <0x1434>
+ <5><1434>: Abbrev Number: 48 (DW_TAG_member)
+    <1435>   DW_AT_type        : <0x2cba>
+    <1439>   DW_AT_alignment   : 4
+    <143a>   DW_AT_data_member_location: 0
+    <143b>   DW_AT_artificial  : 1
+ <5><143b>: Abbrev Number: 52 (DW_TAG_variant)
+    <143c>   DW_AT_discr_value : 0x80000000
+ <6><1440>: Abbrev Number: 4 (DW_TAG_member)
+    <1441>   DW_AT_name        : None
+    <1445>   DW_AT_type        : <0x145a>
+    <1449>   DW_AT_alignment   : 4
+    <144a>   DW_AT_data_member_location: 0
+ <6><144b>: Abbrev Number: 0
+ <5><144c>: Abbrev Number: 51 (DW_TAG_variant)
+ <6><144d>: Abbrev Number: 4 (DW_TAG_member)
+    <144e>   DW_AT_name        : Some
+    <1452>   DW_AT_type        : <0x146c>
+    <1456>   DW_AT_alignment   : 4
+    <1457>   DW_AT_data_member_location: 0
+ <6><1458>: Abbrev Number: 0
+ <5><1459>: Abbrev Number: 0
+...
+but the dynamic type resolves to the "Some" variant instead.
+
+This is caused by signedness confusion.
+
+The DW_AT_discr_value 0x80000000 is encoded as an LEB128 number, and the
+signedness is determined by the "tag type for the variant part", which in this
+case is unsigned:
+...
+ <1><2cba>: Abbrev Number: 6 (DW_TAG_base_type)
+    <2cbb>   DW_AT_name        : u32
+    <2cbf>   DW_AT_encoding    : 7      (unsigned)
+    <2cc0>   DW_AT_byte_size   : 4
+...
+
+However, the value gets interpreted as signed instead (value printed in
+resolve_dynamic_struct):
+...
+(gdb) p /x variant_prop.m_data.variant_parts.m_array.variants.m_array[0].discriminants.m_array[0]
+$3 = {low = 0xffffffff80000000, high = 0xffffffff80000000}
+...
+and then compared against an unsigned 0x80000000 in variant::matches().
+
+Fix this in create_one_variant_part, by passing the required signedness as a
+parameter to create_one_variant.
+
+Tested on i686-linux and x86_64-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+
+PR rust/33620
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=33620
+---
+ gdb/dwarf2/read.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/gdb/dwarf2/read.c b/gdb/dwarf2/read.c
+index 19a46425f84..f8f411c195a 100644
+--- a/gdb/dwarf2/read.c
++++ b/gdb/dwarf2/read.c
+@@ -12126,14 +12126,16 @@ static const gdb::array_view<variant_part> create_variant_parts
+    the variant to fill in.  OBSTACK is where any needed allocations
+    will be done.  OFFSET_MAP holds the mapping from section offsets to
+    fields for the type.  FI describes the fields of the type we're
+-   processing.  FIELD is the variant field we're converting.  */
++   processing.  FIELD is the variant field we're converting.  IS_UNSIGNED
++   contains the signedness of the discriminant.  */
+ 
+ static void
+ create_one_variant (variant &result, struct obstack *obstack,
+ 		    const offset_map_type &offset_map,
+-		    struct field_info *fi, const variant_field &field)
++		    struct field_info *fi, const variant_field &field,
++		    bool is_unsigned)
+ {
+-  result.discriminants = convert_variant_range (obstack, field, false);
++  result.discriminants = convert_variant_range (obstack, field, is_unsigned);
+   result.first_field = field.first_field + fi->baseclasses.size ();
+   result.last_field = field.last_field + fi->baseclasses.size ();
+   result.parts = create_variant_parts (obstack, offset_map, fi,
+@@ -12172,7 +12174,7 @@ create_one_variant_part (variant_part &result,
+   variant *output = new (obstack) variant[n];
+   for (size_t i = 0; i < n; ++i)
+     create_one_variant (output[i], obstack, offset_map, fi,
+-			builder.variants[i]);
++			builder.variants[i], result.is_unsigned);
+ 
+   result.variants = gdb::array_view<variant> (output, n);
+ }
+-- 
+2.51.0
+

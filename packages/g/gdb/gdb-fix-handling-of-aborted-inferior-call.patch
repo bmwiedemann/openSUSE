@@ -1,0 +1,152 @@
+From a8669ab2846396a2eb310e969250b39bd8116920 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Mon, 1 Sep 2025 09:07:11 +0200
+Subject: [PATCH 21/25] [gdb] Fix handling of aborted inferior call
+
+PR gdb/33069 reports the following behavior:
+...
+$ gdb -q ls -ex starti -ex "b *1"
+Reading symbols from ls...
+(No debugging symbols found in ls)
+Starting program: /usr/bin/ls
+
+Program stopped.
+0x00007ffff7fe4f00 in _start () from /lib64/ld-linux-x86-64.so.2
+Breakpoint 1 at 0x1
+(gdb) p (int)strlen("abc")
+Warning:
+Cannot insert breakpoint 1.
+Cannot access memory at address 0x1
+
+Command aborted.
+An error occurred while in a function called from GDB.
+Evaluation of the expression containing the function
+(malloc@plt) will be abandoned.
+When the function is done executing, GDB will silently stop.
+
+[1]+  Stopped                 gdb -q ls -ex starti -ex "b *1"
+$ fg
+gdb -q ls -ex starti -ex "b *1"
+(gdb)
+...
+with gdb being unresponsive to further input.
+
+PR gdb/33068 reports a similar problem, but using gdbserver, and in that case
+gdb doesn't go into the background, but is likewise unresponsive.
+
+This is a regression since commit b1c0ab20809 ("gdb: avoid double stop after
+failed breakpoint condition check"), and consequently since release gdb 14.1.
+
+The commit changed this in run_inferior_call:
+...
+   if (current_ui->prompt_state == PROMPT_BLOCKED)
+-    current_ui->unregister_file_handler ();
+-  else
+-    current_ui->register_file_handler ();
++    {
++      if (call_thread->thread_fsm ()->finished_p ())
++	async_disable_stdin ();
++      else
++	async_enable_stdin ();
++    }
+...
+which means current_ui->register_file_handler is no longer called in the
+current_ui->prompt_state == PROMPT_NEEDED case.
+
+Fix this by:
+- restoring this behavior, fixing the unresponsiveness, and
+- adding target_terminal::ours alongside it, fixing the problem that gdb goes
+  into the background.
+
+Add a new test-case gdb.base/infcall-failure-2.exp, a regression test for the
+unresponsiveness issue.  The problem of gdb going into the background did not
+reproduce in the test-case.
+
+Tested on x86_64-linux.
+
+Reviewed-By: Keith Seitz <keiths@redhat.com>
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=33068
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=33069
+---
+ gdb/infcall.c                                | 12 +++++--
+ gdb/testsuite/gdb.base/infcall-failure-2.exp | 37 ++++++++++++++++++++
+ 2 files changed, 46 insertions(+), 3 deletions(-)
+ create mode 100644 gdb/testsuite/gdb.base/infcall-failure-2.exp
+
+diff --git a/gdb/infcall.c b/gdb/infcall.c
+index 6399278c6ae..d0c6517e84a 100644
+--- a/gdb/infcall.c
++++ b/gdb/infcall.c
+@@ -887,9 +887,9 @@ run_inferior_call (std::unique_ptr<call_thread_fsm> sm,
+      call async_enable_stdin.  This changes the prompt state to
+      PROMPT_NEEDED.
+ 
+-     If the previous prompt state was PROMPT_NEEDED, then as
+-     async_enable_stdin has already been called, nothing additional
+-     needs to be done here.  */
++     If the previous prompt state was PROMPT_NEEDED, then async_enable_stdin
++     may or may not have been called, so do the same changes as in
++     async_enable_stdin.  */
+   if (current_ui->prompt_state == PROMPT_BLOCKED)
+     {
+       if (call_thread->thread_fsm ()->finished_p ())
+@@ -897,6 +897,12 @@ run_inferior_call (std::unique_ptr<call_thread_fsm> sm,
+       else
+ 	async_enable_stdin ();
+     }
++  else if (current_ui->prompt_state == PROMPT_NEEDED)
++    {
++      /* Copied from async_enable_stdin.  */
++      target_terminal::ours ();
++      current_ui->register_file_handler ();
++    }
+ 
+   /* If the infcall does NOT succeed, normal_stop will have already
+      finished the thread states.  However, on success, normal_stop
+diff --git a/gdb/testsuite/gdb.base/infcall-failure-2.exp b/gdb/testsuite/gdb.base/infcall-failure-2.exp
+new file mode 100644
+index 00000000000..2a7d7844acf
+--- /dev/null
++++ b/gdb/testsuite/gdb.base/infcall-failure-2.exp
+@@ -0,0 +1,37 @@
++# Copyright 2025 Free Software Foundation, Inc.
++
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++standard_testfile infcall-failure.c
++
++if { [prepare_for_testing "failed to prepare" $testfile $srcfile] == -1 } {
++    return
++}
++
++if { ![runto_main] } {
++    return
++}
++
++if { ![gdb_breakpoint "*0x1" message] } {
++    return
++}
++
++gdb_test "p foo ()" \
++    [multi_line \
++	 [string_to_regexp "Command aborted."] \
++	 ".*" ]
++
++# Check that gdb is still responsive.  Regression test for PR gdb/33068.
++gdb_test "p 1 + 1" \
++    " = 2"
+-- 
+2.51.0
+

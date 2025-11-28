@@ -1,0 +1,54 @@
+From 00d4ad62ee46f0f217bd8347b05588a108fbc54b Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 3 Apr 2025 17:13:12 +0200
+Subject: [PATCH 24/25] [gdb/testsuite] Fix xfail in
+ gdb.ada/array_of_variant.exp
+
+In commit af2b87e649b ("[gdb/testsuite] Add xfail for PR gcc/101633"), I added
+an xfail that was controlled by variable old_gcc, triggering the xfail for
+gcc 7 and before, but not for gcc 8 onwards:
+...
+set old_gcc [expr [test_compiler_info {gcc-[0-7]-*}]]
+...
+
+In commit 1411185a57e ("Introduce and use gnat_version_compare"), this changed
+to:
+...
+set old_gcc [gnat_version_compare <= 7]
+...
+which still triggered the xfail for gcc 7, because of a bug in
+gnat_version_compare.
+
+After that bug got fixed, the xfail was no longer triggered because the gnatmake
+version is 7.5.0, and [version_compare {7 5 0} <= {7}] == 0.
+
+We could have the semantics for version_compare where we clip the input
+arguments to the length of the shortest, and so we'd have
+[version_compare {7 5 0} <= {7}] == [version_compare {7} <= {7}] == 1.
+
+But let's stick with the current version-sort semantics, and fix this by
+using [gnat_version_compare < 8] instead.
+
+Tested on x86_64-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+---
+ gdb/testsuite/gdb.ada/array_of_variant.exp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.ada/array_of_variant.exp b/gdb/testsuite/gdb.ada/array_of_variant.exp
+index 8b83f4ed22a..83b626cb6d1 100644
+--- a/gdb/testsuite/gdb.ada/array_of_variant.exp
++++ b/gdb/testsuite/gdb.ada/array_of_variant.exp
+@@ -20,7 +20,7 @@ require allow_ada_tests
+ 
+ standard_ada_testfile p
+ 
+-set old_gcc [gnat_version_compare <= 7]
++set old_gcc [gnat_version_compare < 8]
+ 
+ proc gdb_test_with_xfail { cmd re re_xfail msg } {
+     global scenario old_gcc
+-- 
+2.51.0
+

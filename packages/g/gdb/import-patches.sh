@@ -99,7 +99,7 @@ fi
 
 for f in $files; do
     mv tmp.patches/"$f" .
-    osc add "$f"
+    git add "$f"
 done
 
 rmdir tmp.patches

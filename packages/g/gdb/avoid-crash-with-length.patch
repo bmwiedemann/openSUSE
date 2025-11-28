@@ -1,0 +1,172 @@
+From 357a5282a9a6fba1eccb5fb1111f5ae9dbe35b1f Mon Sep 17 00:00:00 2001
+From: Tom Tromey <tromey@adacore.com>
+Date: Tue, 21 Jan 2025 10:49:07 -0700
+Subject: [PATCH 01/25] Avoid crash with 'length
+
+While testing gnat-llvm, I found a gdb crash when applying 'length to
+a non-array type.  This patch fixes the crash.
+---
+ gdb/ada-lang.c                          |  5 ++--
+ gdb/testsuite/gdb.ada/p-bounds.exp      | 36 +++++++++++++++++++++++++
+ gdb/testsuite/gdb.ada/p-bounds/main.adb | 22 +++++++++++++++
+ gdb/testsuite/gdb.ada/p-bounds/pck.adb  | 21 +++++++++++++++
+ gdb/testsuite/gdb.ada/p-bounds/pck.ads  | 24 +++++++++++++++++
+ 5 files changed, 106 insertions(+), 2 deletions(-)
+ create mode 100644 gdb/testsuite/gdb.ada/p-bounds.exp
+ create mode 100644 gdb/testsuite/gdb.ada/p-bounds/main.adb
+ create mode 100644 gdb/testsuite/gdb.ada/p-bounds/pck.adb
+ create mode 100644 gdb/testsuite/gdb.ada/p-bounds/pck.ads
+
+diff --git a/gdb/ada-lang.c b/gdb/ada-lang.c
+index e9311c179b9..1689989d0f8 100644
+--- a/gdb/ada-lang.c
++++ b/gdb/ada-lang.c
+@@ -1819,7 +1819,8 @@ desc_bounds_type (struct type *type)
+ }
+ 
+ /* If ARR is an array descriptor (fat or thin pointer), or pointer to
+-   one, a pointer to its bounds data.   Otherwise NULL.  */
++   one, a pointer to its bounds data.  Otherwise, throw an
++   exception.  */
+ 
+ static struct value *
+ desc_bounds (struct value *arr)
+@@ -1870,7 +1871,7 @@ desc_bounds (struct value *arr)
+       return p_bounds;
+     }
+   else
+-    return NULL;
++    error (_("Not an array"));
+ }
+ 
+ /* If TYPE is the type of an array-descriptor (fat pointer),  the bit
+diff --git a/gdb/testsuite/gdb.ada/p-bounds.exp b/gdb/testsuite/gdb.ada/p-bounds.exp
+new file mode 100644
+index 00000000000..d075491152a
+--- /dev/null
++++ b/gdb/testsuite/gdb.ada/p-bounds.exp
+@@ -0,0 +1,36 @@
++# Copyright 2025 Free Software Foundation, Inc.
++#
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++# Check for a crash with a type that looks vaguely like an array
++# descriptor.
++
++load_lib "ada.exp"
++
++require allow_ada_tests
++
++standard_ada_testfile main
++
++if {[gdb_compile_ada "${srcfile}" "${binfile}" executable debug] != ""} {
++    return -1
++}
++
++clean_restart ${testfile}
++
++set bp_location [gdb_get_line_number "STOP" ${testdir}/main.adb]
++if {![runto "main.adb:$bp_location"]} {
++    return
++}
++
++gdb_test "print not_an_array'length" "Not an array"
+diff --git a/gdb/testsuite/gdb.ada/p-bounds/main.adb b/gdb/testsuite/gdb.ada/p-bounds/main.adb
+new file mode 100644
+index 00000000000..d6654aee240
+--- /dev/null
++++ b/gdb/testsuite/gdb.ada/p-bounds/main.adb
+@@ -0,0 +1,22 @@
++--  Copyright 2025 Free Software Foundation, Inc.
++--
++--  This program is free software; you can redistribute it and/or modify
++--  it under the terms of the GNU General Public License as published by
++--  the Free Software Foundation; either version 3 of the License, or
++--  (at your option) any later version.
++--
++--  This program is distributed in the hope that it will be useful,
++--  but WITHOUT ANY WARRANTY; without even the implied warranty of
++--  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++--  GNU General Public License for more details.
++--
++--  You should have received a copy of the GNU General Public License
++--  along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++with Pck; use Pck;
++
++procedure Main is
++   Not_An_Array : Counfounding := (p_array => 23, p_bounds => 27);
++begin
++   Do_Nothing (Not_An_Array'Address); -- STOP
++end Main;
+diff --git a/gdb/testsuite/gdb.ada/p-bounds/pck.adb b/gdb/testsuite/gdb.ada/p-bounds/pck.adb
+new file mode 100644
+index 00000000000..a175b7bdc5a
+--- /dev/null
++++ b/gdb/testsuite/gdb.ada/p-bounds/pck.adb
+@@ -0,0 +1,21 @@
++--  Copyright 2014-2024 Free Software Foundation, Inc.
++--
++--  This program is free software; you can redistribute it and/or modify
++--  it under the terms of the GNU General Public License as published by
++--  the Free Software Foundation; either version 3 of the License, or
++--  (at your option) any later version.
++--
++--  This program is distributed in the hope that it will be useful,
++--  but WITHOUT ANY WARRANTY; without even the implied warranty of
++--  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++--  GNU General Public License for more details.
++--
++--  You should have received a copy of the GNU General Public License
++--  along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++package body Pck is
++   procedure Do_Nothing (A : System.Address) is
++   begin
++      null;
++   end Do_Nothing;
++end Pck;
+diff --git a/gdb/testsuite/gdb.ada/p-bounds/pck.ads b/gdb/testsuite/gdb.ada/p-bounds/pck.ads
+new file mode 100644
+index 00000000000..56685773bb9
+--- /dev/null
++++ b/gdb/testsuite/gdb.ada/p-bounds/pck.ads
+@@ -0,0 +1,24 @@
++--  Copyright 2014-2024 Free Software Foundation, Inc.
++--
++--  This program is free software; you can redistribute it and/or modify
++--  it under the terms of the GNU General Public License as published by
++--  the Free Software Foundation; either version 3 of the License, or
++--  (at your option) any later version.
++--
++--  This program is distributed in the hope that it will be useful,
++--  but WITHOUT ANY WARRANTY; without even the implied warranty of
++--  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++--  GNU General Public License for more details.
++--
++--  You should have received a copy of the GNU General Public License
++--  along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++with System;
++package Pck is
++   type Counfounding is record
++      p_array: integer;
++      p_bounds: integer;
++   end record;
++
++   procedure Do_Nothing (A : System.Address);
++end Pck;
+-- 
+2.51.0
+

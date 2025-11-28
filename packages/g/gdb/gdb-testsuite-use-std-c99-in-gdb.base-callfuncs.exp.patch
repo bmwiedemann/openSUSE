@@ -1,0 +1,56 @@
+From 24f5907ddb7fd5157ce3cc938bb5b5bcdeb54460 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Sun, 9 Nov 2025 08:07:57 +0100
+Subject: [PATCH 05/25] [gdb/testsuite] Use -std=c99 in gdb.base/callfuncs.exp
+
+In test-case gdb.base/callfuncs.exp I run into:
+...
+gdb compile failed, gdb.base/callfuncs.c: In function 't_func_values':
+gdb.base/callfuncs.c:611:12: error: too many arguments to function \
+  'func_arg1'; expected 0, have 2
+  611 |   return ((*func_arg1) (5,5)  == (*func_val1) (5,5)
+      |           ~^~~~~~~~~~~  ~
+...
+
+Fix this by using -std=c99.
+
+Tested on x86_64-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+
+PR testsuite/32756
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=32756
+---
+ gdb/testsuite/gdb.base/callfuncs.exp | 14 ++++++++++++--
+ 1 file changed, 12 insertions(+), 2 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.base/callfuncs.exp b/gdb/testsuite/gdb.base/callfuncs.exp
+index 494b6dfa96f..ed979603a26 100644
+--- a/gdb/testsuite/gdb.base/callfuncs.exp
++++ b/gdb/testsuite/gdb.base/callfuncs.exp
+@@ -18,10 +18,20 @@
+ 
+ standard_testfile
+ 
++set compile_flags {}
++lappend compile_flags debug
++
+ # We still want to test non-prototype functions for now, which is why
+ # we disable compilers warning about them.
+-set compile_flags {debug additional_flags=-Wno-deprecated-non-prototype}
+-if [support_complex_tests] {
++lappend compile_flags additional_flags=-Wno-deprecated-non-prototype
++
++if {[have_compile_flag -std=c99]} {
++    # Gcc 15 defaults to c23, which no longer supports unprototyped functions.
++    # Use a c dialect that does support this.
++    lappend compile_flags additional_flags=-std=c99
++}
++
++if {[support_complex_tests]} {
+     lappend compile_flags "additional_flags=-DTEST_COMPLEX"
+ }
+ 
+-- 
+2.51.0
+

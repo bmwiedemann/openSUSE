@@ -1,0 +1,53 @@
+From edaf039af83893fc6c32b812560d4170f94de430 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Tue, 14 Oct 2025 18:00:48 +0200
+Subject: [PATCH 13/25] [gdb/testsuite] Fix xfail in
+ gdb.ada/variant_record_field.exp
+
+On ppc64-linux (debian 14) I run into:
+...
+(gdb) print p_record^M
+$1 = (kind => five, i => <error reading variable: \
+  access outside bounds of object>^M
+(gdb) gdb_do_cache: get_compiler_info_1 ( c )
+get_compiler_info: gcc-15-2-0
+gdb_do_cache: get_compiler_info_1 ( c )
+FAIL: gdb.ada/variant_record_field.exp: print p_record
+...
+
+The test-case contains an xfail for "[gcc_major_version] <= 14", which doesn't
+trigger because gcc has version 15.2.0, while gnatmake does have version
+14.3.0:
+...
+$ gcc --version
+gcc (Debian 15.2.0-4) 15.2.0
+  ...
+$ gnatmake --version
+GNATMAKE 14.3.0
+...
+
+Fix this by using "[gnat_version_compare < 15]" instead.
+
+Tested on ppc64-linux and x86_64-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+---
+ gdb/testsuite/gdb.ada/variant_record_field.exp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.ada/variant_record_field.exp b/gdb/testsuite/gdb.ada/variant_record_field.exp
+index f3baa25f020..101f91f416f 100644
+--- a/gdb/testsuite/gdb.ada/variant_record_field.exp
++++ b/gdb/testsuite/gdb.ada/variant_record_field.exp
+@@ -42,7 +42,7 @@ gdb_test_multiple "$test" "$test" {
+ 	pass $test
+     }
+     -re "\\(kind => five, i => <error reading variable: access outside bounds of object>" {
+-	if { [gcc_major_version] <= 14 } {
++	if { [gnat_version_compare < 15] } {
+ 	    setup_xfail *-*-*
+ 	}
+ 	fail $test
+-- 
+2.51.0
+

@@ -1,0 +1,34 @@
+From f580f6862fb9c408f73c815b1d431911deb81cf3 Mon Sep 17 00:00:00 2001
+From: Tom Tromey <tromey@adacore.com>
+Date: Thu, 13 Nov 2025 09:26:58 -0700
+Subject: [PATCH 20/25] Mark Pascal as case-insensitive
+
+The Pascal language is not case-sensitive, so implement the
+appropriate language method.  This fixes gdb.pascal failures with
+-gw3.
+
+I wasn't sure if -gw3 should be the default so I've left it as-is.
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=33617
+Approved-By: Tom de Vries <tdevries@suse.de>
+---
+ gdb/p-lang.h | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/gdb/p-lang.h b/gdb/p-lang.h
+index abb981aeaed..bcac81d8cac 100644
+--- a/gdb/p-lang.h
++++ b/gdb/p-lang.h
+@@ -154,6 +154,9 @@ class pascal_language : public language_defn
+   bool range_checking_on_by_default () const override
+   { return true; }
+ 
++  enum case_sensitivity case_sensitivity () const override
++  { return case_sensitive_off; }
++
+ private:
+ 
+   /* Print the character C on STREAM as part of the contents of a literal
+-- 
+2.51.0
+

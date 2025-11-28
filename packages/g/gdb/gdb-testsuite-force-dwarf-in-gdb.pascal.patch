@@ -1,0 +1,44 @@
+From 4361e02cc1aaf367e09f66a03ab9f5621a59486b Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Mon, 10 Nov 2025 19:36:46 +0100
+Subject: [PATCH 18/25] [gdb/testsuite] Force DWARF in gdb.pascal
+
+On i686-linux (and likewise arm-linux), I run into:
+...
+(gdb) file str-chars^M
+Reading symbols from str-chars...^M
+warning: stabs debug information is not supported.^M
+(No debugging symbols found in str-chars)^M
+(gdb) delete breakpoints^M
+...
+
+Fix this by using fpc option -gw2.
+
+Tested on i686-linux.
+
+Approved-By: Simon Marchi <simon.marchi@efficios.com>
+
+PR testsuite/33564
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=33564
+---
+ gdb/testsuite/lib/pascal.exp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/lib/pascal.exp b/gdb/testsuite/lib/pascal.exp
+index 236eca17dcb..31a8ae64d73 100644
+--- a/gdb/testsuite/lib/pascal.exp
++++ b/gdb/testsuite/lib/pascal.exp
+@@ -128,7 +128,9 @@ proc fpc_compile {source destfile type options} {
+ 	    if [board_info $dest exists debug_flags] {
+ 		append add_flags " [board_info $dest debug_flags]"
+ 	    } else {
+-		append add_flags " -g"
++		# GDB no longer supports STABS, so force DWARF debug info.
++		# Use v2 assuming support is more mature than later versions.
++		append add_flags " -g -gw2"
+ 	    }
+ 	}
+ 	if { $i == "class" } {
+-- 
+2.51.0
+

@@ -1,0 +1,120 @@
+From 48a16bfbf7967663621f7e9ae3f05841ae64eb37 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <vries@device-184.home>
+Date: Fri, 14 Nov 2025 11:43:44 +0100
+Subject: [PATCH 11/25] [gdb/testsuite] Fix gdb.rust/methods.exp on i686-linux
+
+On i686-linux, with test-case gdb.rust/methods.exp I get:
+...
+(gdb) print x.take()
+$5 = methods::HasMethods {value: 4}
+(gdb) FAIL: $exp: print x.take()
+...
+
+The instructions for the function methods::HasMethods::take look like this:
+...
+00007b90 <_ZN7methods10HasMethods4take17hf373500ea3bd6e27E>:
+    7b90:       8b 44 24 04             mov    0x4(%esp),%eax
+    7b94:       c3                      ret
+...
+which is equivalent to what you get for:
+...
+$ cat test.c
+int foo (int val) { return val; }
+$ gcc test.c -O2 -S -o-
+  ...
+	movl	4(%esp), %eax
+	ret
+  ...
+$
+...
+
+The inferior call mechanism however decides that this is a return_method_struct
+function, and adds an implicit first parameter pointing to the return value
+location.  Then two things go wrong:
+- the argument is written to a place where the code doesn't read from, and
+- the return value is read from a place where the code doesn't write to.
+
+AFAIU, both gdb and rustc are behaving correctly:
+- there's no stable ABI and consequently rustc is at liberty to optimize this
+  function how it wants, and
+- gdb cannot be expected to target an unstable ABI.
+
+The solution is to mark the function for interoperability using 'extern "C"'.
+
+Doing so causes a compilation warning:
+...
+warning: `extern` fn uses type `HasMethods`, which is not FFI-safe
+  --> gdb.rust/methods.rs:50:28
+   |
+50 |     pub extern "C" fn take(self) -> HasMethods {
+   |                            ^^^^ not FFI-safe
+   |
+   = help: consider adding a `#[repr(C)]` or `#[repr(transparent)]` attribute
+     to this struct
+   = note: this struct has unspecified layout
+...
+which we fix by using '#[repr(C)]'.
+
+Likewise in gdb.rust/generics.exp.
+
+Tested on i686-linux and x86_64-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+---
+ gdb/testsuite/gdb.rust/generics.rs |  5 ++++-
+ gdb/testsuite/gdb.rust/methods.rs  | 12 +++++++++++-
+ 2 files changed, 15 insertions(+), 2 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.rust/generics.rs b/gdb/testsuite/gdb.rust/generics.rs
+index da269991781..ad6a10944dd 100644
+--- a/gdb/testsuite/gdb.rust/generics.rs
++++ b/gdb/testsuite/gdb.rust/generics.rs
+@@ -17,11 +17,14 @@
+ #![allow(unused_variables)]
+ #![allow(unused_assignments)]
+ 
++// Use repr(C) and extern "C" to force the compiler to present a
++// C-like interface, facilitating inferior calls.
+ 
++#[repr(C)]
+ #[derive(Clone, Copy)]
+ struct Hold<T>(T);
+ 
+-pub fn identity<T>(x: T) -> T { x }
++pub extern "C" fn identity<T>(x: T) -> T { x }
+ 
+ fn dowhatever() { () }
+ 
+diff --git a/gdb/testsuite/gdb.rust/methods.rs b/gdb/testsuite/gdb.rust/methods.rs
+index eaeb5ef41e8..bb77d9873dc 100644
+--- a/gdb/testsuite/gdb.rust/methods.rs
++++ b/gdb/testsuite/gdb.rust/methods.rs
+@@ -33,6 +33,16 @@ impl Whatever for i32 {
+     }
+ }
+ 
++// On i686-linux, for hasMethods::take the rust compiler generates code
++// similar to what a c compiler generates for:
++//   int foo (int val) { return val; }
++// but gdb calls it as if it were:
++//   void foo (int *res, int *val) { *res = *val; }
++// By default, the rust compiler is free to optimize functions and data
++// layout, so use repr(C) and extern "C" to force the compiler to present a
++// C-like interface.
++
++#[repr(C)]
+ pub struct HasMethods {
+     value: i32
+ }
+@@ -47,7 +57,7 @@ impl HasMethods {
+         self
+     }
+ 
+-    pub fn take(self) -> HasMethods {
++    pub extern "C" fn take(self) -> HasMethods {
+         self
+     }
+ }
+-- 
+2.51.0
+

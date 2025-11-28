@@ -1,0 +1,49 @@
+From 5e756961d8907915bd46e3a97078851169a9fdc7 Mon Sep 17 00:00:00 2001
+From: Tom Tromey <tromey@adacore.com>
+Date: Wed, 17 Sep 2025 08:49:27 -0600
+Subject: [PATCH 10/25] Have gdb.ThreadExitedEvent inherit from gdb.ThreadEvent
+
+The documentation says that ThreadExitedEvent is derived from
+ThreadEvent, but the code does not actually implement this.
+
+This patch fixes the problem.  I propose applying this to gdb 17 as
+well.
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=33444
+Approved-By: Simon Marchi <simon.marchi@efficios.com>
+
+(cherry picked from commit 3a9f5df6ea8adcae7769f271cccbc2da8553c08d)
+---
+ gdb/python/py-event-types.def                | 2 +-
+ gdb/testsuite/gdb.python/py-thread-exited.py | 2 ++
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/python/py-event-types.def b/gdb/python/py-event-types.def
+index e22f042bd6b..bef5fe2eb00 100644
+--- a/gdb/python/py-event-types.def
++++ b/gdb/python/py-event-types.def
+@@ -54,7 +54,7 @@ GDB_PY_DEFINE_EVENT_TYPE (new_thread,
+ GDB_PY_DEFINE_EVENT_TYPE (thread_exited,
+ 			  "ThreadExitedEvent",
+ 			  "GDB thread exited event object",
+-			  event_object_type);
++			  thread_event_object_type);
+ 
+ GDB_PY_DEFINE_EVENT_TYPE (new_inferior,
+ 			  "NewInferiorEvent",
+diff --git a/gdb/testsuite/gdb.python/py-thread-exited.py b/gdb/testsuite/gdb.python/py-thread-exited.py
+index f813271bc3c..953e7cb8c70 100644
+--- a/gdb/testsuite/gdb.python/py-thread-exited.py
++++ b/gdb/testsuite/gdb.python/py-thread-exited.py
+@@ -26,6 +26,8 @@ def thread_exited_handler(event):
+     global threadOneExit, threadTwoExit, mainThreadExit
+     print("{}".format(event))
+     assert isinstance(event, gdb.ThreadExitedEvent)
++    # Also check the inheritance.
++    assert isinstance(event, gdb.ThreadEvent)
+     if threadOneExit == "":
+         threadOneExit = "event type: thread-exited. global num: {}".format(
+             event.inferior_thread.global_num
+-- 
+2.51.0
+

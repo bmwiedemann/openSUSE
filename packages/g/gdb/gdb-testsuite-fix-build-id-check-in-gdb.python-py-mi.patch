@@ -1,0 +1,72 @@
+From b29fe2547e14caabc04ff35f0dc3b2ed9043bbd0 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 20 Nov 2025 21:54:47 +0100
+Subject: [PATCH 07/25] [gdb/testsuite] Fix build-id check in
+ gdb.python/py-missing-objfile.exp
+
+I recently added two requires in test-case gdb.python/py-missing-objfile.exp:
+...
+require {expect_build_id_in_core_file $binfile}
+require {expect_build_id_in_core_file $libfile}
+...
+
+However, at the point where the check is done, the files are no longer
+available at that location, which makes the require fail.
+
+First, make the problem visible, by making proc expect_build_id_in_core_file
+throw an error if the filename argument specifies a non-existing file.
+
+Then, fix test-case gdb.python/py-missing-objfile.exp by moving the calls to
+expect_build_id_in_core_file to a point where the files exist.
+
+Tested on x86_64-linux.
+---
+ gdb/testsuite/gdb.python/py-missing-objfile.exp | 9 +++++++--
+ gdb/testsuite/lib/gdb.exp                       | 4 ++++
+ 2 files changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.python/py-missing-objfile.exp b/gdb/testsuite/gdb.python/py-missing-objfile.exp
+index 2786bdfb2ed..9ecf53a7024 100644
+--- a/gdb/testsuite/gdb.python/py-missing-objfile.exp
++++ b/gdb/testsuite/gdb.python/py-missing-objfile.exp
+@@ -34,6 +34,11 @@ if { [build_executable "build exec" $binfile $srcfile $opts] == -1} {
+     return
+ }
+ 
++set expect_build_id_in_core_file_binfile \
++    [expect_build_id_in_core_file $binfile]
++set expect_build_id_in_core_file_libfile \
++    [expect_build_id_in_core_file $libfile]
++
+ # The cc-with-gnu-debuglink board will split the debug out into the
+ # .debug directory.  This test script relies on having GDB lookup the
+ # objfile and debug via the build-id, which this test sets up.  Trying
+@@ -185,8 +190,8 @@ with_test_prefix "no objfiles available" {
+ 
+ # The following tests assume that the build-ids of binfile and libfile can be
+ # found in the core file.
+-require {expect_build_id_in_core_file $binfile}
+-require {expect_build_id_in_core_file $libfile}
++require {expr $expect_build_id_in_core_file_binfile}
++require {expr $expect_build_id_in_core_file_libfile}
+ 
+ with_test_prefix "all objfiles available" {
+     # Another sanity check that GDB can find the files via the
+diff --git a/gdb/testsuite/lib/gdb.exp b/gdb/testsuite/lib/gdb.exp
+index 47cff389a41..ac1de76a696 100644
+--- a/gdb/testsuite/lib/gdb.exp
++++ b/gdb/testsuite/lib/gdb.exp
+@@ -11057,6 +11057,10 @@ gdb_caching_proc root_user {} {
+ # Otherwise, return false.
+ 
+ proc expect_build_id_in_core_file { filename } {
++    if {![file exists $filename]} {
++	error "File not found: $filename"
++    }
++
+     # I'm not sure if other kernels take care to add the first page of
+     # each ELF into the core file.  If they do then this test can be
+     # relaxed.
+-- 
+2.51.0
+

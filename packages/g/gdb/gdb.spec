@@ -16,6 +16,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%if 0%{?suse_version} >= 1600
+# Workaround recursively defined sle_version, see this PR (
+# https://bugzilla.suse.com/show_bug.cgi?id=1238724 ).
+%undefine sle_version
+%endif
 
 %define flavor @BUILD_FLAVOR@%{nil}
 
@@ -256,10 +261,32 @@ Patch2145:      gdb-testsuite-fix-gdb.base-bp-permanent.exp-with-gcc.patch
 Patch2146:      gdb-testsuite-don-t-run-to-main-in-gdb.cp-cplusfuncs.patch
 Patch2147:      gdb-testsuite-fix-timeout-in-gdb.multi-attach-while-.patch
 Patch2148:      gdb-fix-assertion-failure-due-to-null-frame.patch
+Patch2149:      check-gnatmake-version-in-gnat_version_compare.patch
+Patch2150:      gdb-fix-handling-of-aborted-inferior-call.patch
+Patch2151:      gdb-testsuite-fix-possible-tcl-errors-in-gdb.threads.patch
+Patch2152:      gdb-testsuite-fix-xfail-in-gdb.ada-array_of_variant..patch
+Patch2153:      gdb-testsuite-fix-gdb.mi-mi-sym-info.exp.patch
 
 # Backports from master, available in GDB 18.
 
 Patch2500:      fix-gdb.server-server-kill.exp.patch
+Patch2501:      avoid-crash-with-length.patch
+Patch2502:      correct-bounds-check-when-working-around-gas-dwarf-5.patch
+Patch2503:      gdb-testsuite-rust-fix-for-empty-array.patch
+Patch2504:      gdb-testsuite-use-expect_build_id_in_core_file-a-bit.patch
+Patch2505:      gdb-testsuite-use-std-c99-in-gdb.base-callfuncs.exp.patch
+Patch2506:      gdb-testsuite-use-std-c99-in-gdb.base-nodebug.exp.patch
+Patch2507:      change-return-value-of-_bfd_mmap_temporary.patch
+Patch2508:      fix-crash-in-f-typeprint.c.patch
+Patch2509:      have-gdb.threadexitedevent-inherit-from-gdb.threadev.patch
+Patch2510:      gdb-testsuite-fix-gdb.rust-methods.exp-on-i686-linux.patch
+Patch2511:      gdb-testsuite-fix-sizeof-test-in-gdb.rust-simple.exp.patch
+Patch2512:      gdb-testsuite-fix-xfail-in-gdb.ada-variant_record_fi.patch
+Patch2513:      gdb-corefiles-fix-segfault-in-add_thread_silent.patch
+Patch2514:      gdb-rust-fix-handling-of-unsigned-discriminant.patch
+Patch2515:      gdb-testsuite-force-dwarf-in-gdb.pascal.patch
+Patch2516:      gdb-testsuite-fix-main-in-gdb.trace-mi-trace-frame-c.patch
+Patch2517:      mark-pascal-as-case-insensitive.patch
 
 # Backport from gdb-patches
 
@@ -287,6 +314,15 @@ Patch3014:      gdb-testsuite-fix-timeout-in-gdb.threads-main-thread.patch
 Patch3015:      gdb-python-reimplement-gdb.interrupt-race-fix.patch
 # https://sourceware.org/pipermail/gdb-patches/2025-September/221285.html
 Patch3016:      gdb-c-fix-hang-on-whatis-std-string-npos.patch
+# https://sourceware.org/pipermail/gdb-patches/2025-October/221953.html
+Patch3017:      gdb-testsuite-yet-another-attempt-to-fix-gdb.threads.patch
+# https://sourceware.org/pipermail/gdb-patches/2025-November/222840.html
+Patch3018:      gdb-testsuite-fix-build-id-check-in-gdb.python-py-mi.patch
+# https://sourceware.org/pipermail/gdb-patches/2025-November/222874.html
+Patch3019:      bfd-elf-handle-prstatus-of-156-bytes-in-elf32_arm_na.patch
+# https://sourceware.org/pipermail/gdb-patches/2025-November/222919.html
+# Todo: submit arm part.
+Patch3020:      powerpc-mark-rtti-typeid-tests-as-expected-fail-befo.patch
 
 # Debug patches.
 
@@ -674,8 +710,30 @@ find -name "*.info*"|xargs rm -f
 %patch -P 2146 -p1
 %patch -P 2147 -p1
 %patch -P 2148 -p1
+%patch -P 2149 -p1
+%patch -P 2150 -p1
+%patch -P 2151 -p1
+%patch -P 2152 -p1
+%patch -P 2153 -p1
 
 %patch -P 2500 -p1
+%patch -P 2501 -p1
+%patch -P 2502 -p1
+%patch -P 2503 -p1
+%patch -P 2504 -p1
+%patch -P 2505 -p1
+%patch -P 2506 -p1
+%patch -P 2507 -p1
+%patch -P 2508 -p1
+%patch -P 2509 -p1
+%patch -P 2510 -p1
+%patch -P 2511 -p1
+%patch -P 2512 -p1
+%patch -P 2513 -p1
+%patch -P 2514 -p1
+%patch -P 2515 -p1
+%patch -P 2516 -p1
+%patch -P 2517 -p1
 
 %patch -P 3000 -p1
 %patch -P 3001 -p1
@@ -687,6 +745,10 @@ find -name "*.info*"|xargs rm -f
 %patch -P 3014 -p1
 %patch -P 3015 -p1
 %patch -P 3016 -p1
+%patch -P 3017 -p1
+%patch -P 3018 -p1
+%patch -P 3019 -p1
+%patch -P 3020 -p1
 
 #unpack libipt
 %if 0%{have_libipt}

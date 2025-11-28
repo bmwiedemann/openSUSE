@@ -1,0 +1,43 @@
+From 016b0fdd8f4bd7bebb08bb034b0461722c2229ad Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Sun, 9 Nov 2025 09:18:43 +0100
+Subject: [PATCH 19/25] [gdb/testsuite] Fix main in
+ gdb.trace/mi-trace-frame-collected.exp
+
+With test-case gdb.trace/mi-trace-frame-collected.exp I run into:
+...
+gdb compile failed, gdb.trace/actions.c: In function 'main':
+gdb.trace/actions.c:139:1: warning: old-style function definition \
+  [-Wold-style-definition]
+  139 | main (argc, argv, envp)
+      | ^~~~
+...
+
+Fix this by rewriting main into a prototyped function.
+
+Tested on x86_64-linux.
+
+PR testsuite/32756
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=32756
+---
+ gdb/testsuite/gdb.trace/actions.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.trace/actions.c b/gdb/testsuite/gdb.trace/actions.c
+index 56906b680fc..bd0b546bb00 100644
+--- a/gdb/testsuite/gdb.trace/actions.c
++++ b/gdb/testsuite/gdb.trace/actions.c
+@@ -136,9 +136,7 @@ static void end ()	/* called after everything else */
+ }
+ 
+ int
+-main (argc, argv, envp)
+-     int argc;
+-     char *argv[], **envp;
++main (int argc, char *argv[], char **envp)
+ {
+   int i;
+   unsigned long myparms[10];
+-- 
+2.51.0
+

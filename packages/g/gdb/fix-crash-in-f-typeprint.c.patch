@@ -1,0 +1,56 @@
+From a69161a5cbdd93ccd27ea6e07139611039ff3b56 Mon Sep 17 00:00:00 2001
+From: Tom Tromey <tom@tromey.com>
+Date: Sat, 13 Sep 2025 13:44:10 -0600
+Subject: [PATCH 09/25] Fix crash in f-typeprint.c
+
+I noticed a crash in f-typeprint.c that was hidden by an xfail:
+
+XFAIL: gdb.fortran/vla-array.exp: print variable length string array type (GDB internal error) (PRMS gcc/101826)
+
+I think this was introduced by commit 6594ca4a ("do not handle a NULL
+linebuffer in pager_file::puts") but not detected due to the xfail.
+
+It seems bad for an xfail to cover up a crash but I haven't
+investigated that.
+
+Meanwhile, this patch fixes the crash by checking for a NULL pointer
+when calling gdb_puts.
+
+Approved-by: Kevin Buettner <kevinb@redhat.com>
+(cherry picked from commit 18400a9cdf6b3d84996a99697a97774f268576c2)
+---
+ gdb/f-typeprint.c | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/gdb/f-typeprint.c b/gdb/f-typeprint.c
+index 36e434ae5c2..cba7099c0db 100644
+--- a/gdb/f-typeprint.c
++++ b/gdb/f-typeprint.c
+@@ -414,9 +414,11 @@ f_language::f_type_print_base (struct type *type, struct ui_file *stream,
+       if (show > 0)
+ 	f_type_print_derivation_info (type, stream);
+ 
+-      gdb_puts (" ", stream);
+-
+-      gdb_puts (type->name (), stream);
++      if (type->name () != nullptr)
++	{
++	  gdb_puts (" ", stream);
++	  gdb_puts (type->name (), stream);
++	}
+ 
+       /* According to the definition,
+ 	 we only print structure elements in case show > 0.  */
+@@ -435,7 +437,8 @@ f_language::f_type_print_base (struct type *type, struct ui_file *stream,
+ 	      gdb_puts ("\n", stream);
+ 	    }
+ 	  gdb_printf (stream, "%*sEnd Type ", level, "");
+-	  gdb_puts (type->name (), stream);
++	  if (type->name () != nullptr)
++	    gdb_puts (type->name (), stream);
+ 	}
+       break;
+ 
+-- 
+2.51.0
+

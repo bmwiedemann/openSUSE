@@ -1,0 +1,44 @@
+From 4596ae47782b249e4989e136632037b1cef0fcb5 Mon Sep 17 00:00:00 2001
+From: Guinevere Larsen <guinevere@redhat.com>
+Date: Mon, 1 Sep 2025 11:48:30 -0300
+Subject: [PATCH 22/25] gdb/testsuite: fix possible TCL errors in
+ gdb.threads/threadcrash.exp
+
+The test gdb.threads/threadcrash.exp, among other things, creates a list
+of the threads seen in the order that the "thread apply all backtrace"
+would generate them, tests that this list is the same size as GDB's
+count of threads, and then loops over the list to check that each
+thread has the expected backtrace.
+
+A problem occurs because the loop iterates on GDB's internal count of
+threads, rather than the size of the list, but then attempts to acces
+the n-th element of the list. If the list size is smaller than GDB's
+internal thread count, it'll access past the end of the list and
+generate TCL errors.
+
+This commit fixes this by using the list's length instead.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+---
+ gdb/testsuite/gdb.threads/threadcrash.exp | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.threads/threadcrash.exp b/gdb/testsuite/gdb.threads/threadcrash.exp
+index 6da70736983..9da3bda2a3c 100644
+--- a/gdb/testsuite/gdb.threads/threadcrash.exp
++++ b/gdb/testsuite/gdb.threads/threadcrash.exp
+@@ -132,8 +132,9 @@ proc do_full_test {} {
+ 	set pthread_kill ".*"
+     }
+ 
+-    for {set i 0} {$i < $thread_count } {incr i} {
+-	set thread_num [expr [llength $test_list] - $i]
++    set loop_iterations [llength $test_list]
++    for {set i 0} {$i < $loop_iterations } {incr i} {
++	set thread_num [expr $loop_iterations - $i]
+ 
+ 	set type [lindex $test_list $i]
+ 	if { $type == 1 } {
+-- 
+2.51.0
+

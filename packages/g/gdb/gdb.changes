@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Wed Nov 26 13:48:35 UTC 2025 - Tom de Vries <tdevries@suse.com>
+
+- Maintenance script qa.sh:
+  * Fix grep: warning: stray \ before -.
+
+-------------------------------------------------------------------
+Tue Nov 25 09:49:13 UTC 2025 - Tom de Vries <tdevries@suse.com>
+
+- Patches added:
+  * avoid-crash-with-length.patch
+  * correct-bounds-check-when-working-around-gas-dwarf-5.patch
+  * fix-crash-in-f-typeprint.c.patch
+- Patches added (swo#33560, bsc#1251213):
+  * bfd-elf-handle-prstatus-of-156-bytes-in-elf32_arm_na.patch
+  * gdb-corefiles-fix-segfault-in-add_thread_silent.patch
+- Patches added (swo#32542, swo#33354):
+  * change-return-value-of-_bfd_mmap_temporary.patch
+- Patches added (swo#33068, swo#33069):
+  * gdb-fix-handling-of-aborted-inferior-call.patch
+- Patches added (swo#33620):
+  * gdb-rust-fix-handling-of-unsigned-discriminant.patch
+- Patches added (swo#33444):
+  * have-gdb.threadexitedevent-inherit-from-gdb.threadev.patch
+- Patches added (swo#33617):
+  * mark-pascal-as-case-insensitive.patch
+- Patches added (testsuite):
+  * check-gnatmake-version-in-gnat_version_compare.patch
+  * gdb-testsuite-fix-build-id-check-in-gdb.python-py-mi.patch
+  * gdb-testsuite-fix-gdb.mi-mi-sym-info.exp.patch
+  * gdb-testsuite-fix-gdb.rust-methods.exp-on-i686-linux.patch
+  * gdb-testsuite-fix-main-in-gdb.trace-mi-trace-frame-c.patch
+  * gdb-testsuite-fix-possible-tcl-errors-in-gdb.threads.patch
+  * gdb-testsuite-fix-sizeof-test-in-gdb.rust-simple.exp.patch
+  * gdb-testsuite-fix-xfail-in-gdb.ada-array_of_variant..patch
+  * gdb-testsuite-fix-xfail-in-gdb.ada-variant_record_fi.patch
+  * gdb-testsuite-force-dwarf-in-gdb.pascal.patch
+  * gdb-testsuite-rust-fix-for-empty-array.patch
+  * gdb-testsuite-use-expect_build_id_in_core_file-a-bit.patch
+  * gdb-testsuite-use-std-c99-in-gdb.base-callfuncs.exp.patch
+  * gdb-testsuite-use-std-c99-in-gdb.base-nodebug.exp.patch
+  * powerpc-mark-rtti-typeid-tests-as-expected-fail-befo.patch
+- Maintenance script import-patches.sh:
+  * Use git instead of osc.
+- Maintenance script qa.sh:
+  * Add PR32893 kfail.
+
+-------------------------------------------------------------------
+Wed Oct 22 07:55:19 UTC 2025 - Tom de Vries <tdevries@suse.com>
+
+- Patch added (swo#32688):
+  * gdb-testsuite-yet-another-attempt-to-fix-gdb.threads.patch
+- Maintenance script qa.sh:
+  * Remove PR32688 kfail.
+
+-------------------------------------------------------------------
+Tue Oct 21 14:07:07 UTC 2025 - Tom de Vries <tdevries@suse.com>
+
+- Work around recursively defined sle_version on openSUSE Leap 16.0
+  (bsc#1238724).
+
+-------------------------------------------------------------------
 Mon Oct  6 18:44:56 UTC 2025 - Tom de Vries <tdevries@suse.com>
 
 - Patch added:
