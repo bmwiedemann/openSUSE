@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 28 09:35:29 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
+
+- Do not make config file group-readable.
+  * remove-config-file-group-readwrite-permission-856.patch
+
+-------------------------------------------------------------------
 Sat Nov  8 12:34:56 UTC 2025 - olaf@aepfle.de
 
 - CLI.md is supposed to be a text file

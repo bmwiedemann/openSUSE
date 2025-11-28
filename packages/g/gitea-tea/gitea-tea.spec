@@ -26,6 +26,7 @@ Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Patch0:         fix-CVE-2025-58190.patch
 Patch1:         fix-CVE-2025-47911.patch
+Patch3:         remove-config-file-group-readwrite-permission-856.patch
 BuildRequires:  golang(API) >= 1.24
 Conflicts:      tea
 
