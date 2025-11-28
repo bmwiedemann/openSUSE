@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 26 13:11:47 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2025.11.12
+  * Bump actions/download-artifact from 5.0.0 to 6.0.0 (#373)
+  * Bump actions/upload-artifact from 4.6.2 to 5.0.0 (#374)
+
+-------------------------------------------------------------------
 Wed Oct 22 10:49:37 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2025.10.15
