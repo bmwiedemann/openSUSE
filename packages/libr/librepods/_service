@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/kavishdevar/librepods.git</param>
+    <param name="revision">refs/tags/linux-v0.1.0</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">linux-v(.*)</param>
+    <param name="changesgenerate">disable</param>
+    <param name="filename">librepods</param>
+  </service>
+  <service name="tar" mode="buildtime" />
+  <service name="recompress" mode="buildtime">
+    <param name="compression">zstd</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service name="cargo_vendor" mode="manual">
+    <param name="srcdir">librepods/linux-rust</param>
+    <param name="compression">zst</param>
+    <param name="update">false</param>
+  </service>
+  <service name="set_version" mode="manual" />
+</services>
