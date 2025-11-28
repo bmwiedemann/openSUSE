@@ -414,4 +414,15 @@
   * Other small fixes and changes</comment>
     <requestid>1315867</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>c330b0b5b7e73a125db7a79d33280962</srcmd5>
+    <version>2.3.1</version>
+    <time>1764345191</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.3.1:
+  * Reverted the workaround for moving directory over directory.
+    For now, sticking with GIO's default behavior is the wisest
+    choice.</comment>
+    <requestid>1320395</requestid>
+  </revision>
 </revisionlist>
