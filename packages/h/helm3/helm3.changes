@@ -1,0 +1,2721 @@
+-------------------------------------------------------------------
+Wed Nov 12 15:01:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.19.2:
+  * [backport] fix: get-helm-3 script use helm3-latest-version
+    8766e71 (George Jenkins)
+
+-------------------------------------------------------------------
+Tue Nov 11 10:17:19 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.19.1 (bsc#1251649, CVE-2025-58190,
+  bsc#1251442, CVE-2025-47911):
+  * chore(deps): bump github.com/containerd/containerd from 1.7.28
+    to 1.7.29
+  * jsonschema: warn and ignore unresolved URN $ref to match
+    v3.18.4
+  * Avoid "panic: interface conversion: interface {} is nil"
+  * Fix `helm pull` untar dir check with repo urls
+  * Fix deprecation warning
+  * chore(deps): bump github.com/spf13/pflag from 1.0.7 to 1.0.10
+  * Add timeout flag to repo add and update flags
+  * chore(deps): bump golang.org/x/crypto from 0.41.0 to 0.43.0
+
+-------------------------------------------------------------------
+Sat Sep 13 16:02:47 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 3.19.0:
+  * bump version to v3.19.0
+  * fix: use username and password if provided
+  * chore(deps): bump the k8s-io group with 7 updates
+  * chore(deps): bump github.com/spf13/cobra from 1.9.1 to 1.10.1
+  * chore(deps): bump github.com/stretchr/testify from 1.11.0 to 1.11.1
+  * chore(deps): bump github.com/stretchr/testify from 1.10.0 to 1.11.0
+  * fix(helm-lint): fmt
+  * fix(helm-lint): Add TLSClientConfig
+  * fix(helm-lint): Add HTTP/HTTPS URL support for json schema references
+  * chore(deps): bump the k8s-io group with 7 updates
+  * fix: go mod tidy for v3
+  * chore(deps): bump golang.org/x/crypto from 0.40.0 to 0.41.0
+  * chore(deps): bump golang.org/x/term from 0.33.0 to 0.34.0
+  * fix Chart.yaml handling
+  * Handle messy index files
+  * chore(deps): bump github.com/containerd/containerd from 1.7.27 to 1.7.28
+  * json schema fix
+  * fix: k8s version parsing to match original
+  * chore(deps): bump sigs.k8s.io/yaml from 1.5.0 to 1.6.0
+  * Do not explicitly set SNI in HTTPGetter
+  * chore(deps): bump github.com/spf13/pflag from 1.0.6 to 1.0.7
+  * chore(deps): bump the k8s-io group with 7 updates
+  * chore(deps): bump golang.org/x/crypto from 0.39.0 to 0.40.0
+  * chore(deps): bump golang.org/x/term from 0.32.0 to 0.33.0
+  * chore(deps): bump golang.org/x/text from 0.26.0 to 0.27.0
+  * Disabling linter due to unknown issue
+  * Updating link handling
+  * Bump github.com/Masterminds/semver/v3 from 3.3.0 to 3.3.1
+  * build(deps): bump the k8s-io group with 7 updates
+  * build(deps): bump sigs.k8s.io/yaml from 1.4.0 to 1.5.0
+  * fix: user username password for login
+  * Update pkg/registry/transport.go
+  * Update pkg/registry/transport.go
+  * fix: add debug logging to oci transport
+  * build(deps): bump golang.org/x/crypto from 0.38.0 to 0.39.0
+  * build(deps): bump golang.org/x/text from 0.25.0 to 0.26.0
+  * fix: legacy docker support broken for login
+  * fix: plugin installer test with no Internet
+  * Handle an empty registry config file.
+  * Prevent fetching newReference again as we have in calling method
+  * Prevent failure when resolving version tags in oras memory store
+  * fix(client): skipnode utilization for PreCopy
+  * test: Skip instead of returning early. looks more intentional
+  * test: tests repo stripping functionality
+  * test: include tests for Login based on different protocol prefixes
+  * fix(client): layers now returns manifest - remove duplicate from descriptors
+  * fix(client): return nil on non-allowed media types
+  * Fix 3.18.0 regression: registry login with scheme
+  * Update pkg/plugin/plugin.go
+  * Update pkg/plugin/plugin.go
+  * Wait for Helm v4 before raising when platformCommand and Command are set
+  * Revert "fix (helm) : toToml` renders int as float [ backport to v3 ]"
+  * build(deps): bump the k8s-io group with 7 updates
+  * chore: update generalization warning message
+  * build(deps): bump oras.land/oras-go/v2 from 2.5.0 to 2.6.0
+  * build(deps): bump the k8s-io group with 7 updates
+  * build(deps): bump golang.org/x/crypto from 0.37.0 to 0.38.0
+  * fix: move warning to top of block
+  * fix: govulncheck workflow
+  * fix: replace fmt warning with slog
+  * fix: add warning when ignore repo flag
+  * bump version to v3.18.0
+  * backport #30673 to dev-v3
+  * feat: add httproute from gateway-api to create chart template
+
+-------------------------------------------------------------------
+Wed Aug 20 11:12:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.18.6:
+  * fix(helm-lint): fmt
+  * fix(helm-lint): Add TLSClientConfig
+  * fix(helm-lint): Add HTTP/HTTPS URL support for json schema
+    references
+
+-------------------------------------------------------------------
+Tue Aug 19 05:19:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.18.5:
+  * fix Chart.yaml handling 7799b48 (Matt Farina)
+  * Handle messy index files dd8502f (Matt Farina)
+  * json schema fix cb8595b (Robert Sirchia)
+
+-------------------------------------------------------------------
+Mon Aug  4 15:20:55 UTC 2025 - Alexey Kolos <lioli7k@gmail.com>
+
+- Fix shell completion dependencies
+  * Add BuildRequires to prevent inclusion of folders owned by shells.
+  * Add Requires because installing completions without appropriate
+    shell is questionable.
+
+-------------------------------------------------------------------
+Tue Jul 29 20:02:25 UTC 2025 - Alexey Kolos <lioli7k@gmail.com>
+
+- Fix zsh completion location
+
+-------------------------------------------------------------------
+Wed Jul 09 04:44:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.18.4 (bsc#1246152, CVE-2025-53547):
+  * Disabling linter due to unknown issue f20a4ad (Matt Farina)
+  * build(deps): bump the k8s-io group with 7 updates 563b094
+    (dependabot[bot])
+  * Updating link handling 00de613 (Matt Farina)
+
+-------------------------------------------------------------------
+Tue Jun 17 04:30:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.18.3:
+  * build(deps): bump golang.org/x/crypto from 0.38.0 to 0.39.0
+    6838ebc (dependabot[bot])
+  * fix: user username password for login 5b9e2f6 (Terry Howe)
+  * Update pkg/registry/transport.go 2782412 (Terry Howe)
+  * Update pkg/registry/transport.go e66cf6a (Terry Howe)
+  * fix: add debug logging to oci transport 191f05c (Terry Howe)
+
+-------------------------------------------------------------------
+Tue Jun 10 08:14:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- remove flaky test
+  * cmd/helm/dependency_build_test.go
+  * cmd/helm/dependency_update_test.go
+  * cmd/helm/pull_test.go
+  * cmd/helm/registry_login_test.go
+
+-------------------------------------------------------------------
+Mon Jun 02 15:44:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.18.2:
+  * fix: legacy docker support broken for login 04cad46 (Terry
+    Howe)
+  * Handle an empty registry config file. bc9f8a2 (Matt Farina)
+
+-------------------------------------------------------------------
+Sat May 31 05:20:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.18.1:
+  * Notes:
+    - This release fixes regressions around template generation and
+      OCI registry interaction in 3.18.0
+    - There are at least 2 known regressions unaddressed in this
+      release. They are being worked on.
+      - Empty registry configuration files. When the file exists
+        but it is empty.
+      - Login to Docker Hub on some domains fails.
+  * Changelog
+    - fix(client): skipnode utilization for PreCopy
+    - fix(client): layers now returns manifest - remove duplicate
+      from descriptors
+    - fix(client): return nil on non-allowed media types
+    - Prevent fetching newReference again as we have in calling
+      method
+    - Prevent failure when resolving version tags in oras memory
+      store
+    - Update pkg/plugin/plugin.go
+    - Update pkg/plugin/plugin.go
+    - Wait for Helm v4 before raising when platformCommand and
+      Command are set
+    - Fix 3.18.0 regression: registry login with scheme
+    - Revert "fix (helm) : toToml` renders int as float [ backport
+      to v3 ]"
+
+-------------------------------------------------------------------
+Thu May 22 18:13:21 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Don't disable CGO on riscv64
+
+-------------------------------------------------------------------
+Tue May 20 19:29:23 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- reduce parallelism even more on tests
+
+-------------------------------------------------------------------
+Tue May 20 04:35:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.18.0 (bsc#1241802, CVE-2025-22872):
+  * Notable Changes
+    - Add support for JSON Schema 2020
+    - Enabled cpu and memory profiling
+    - Add hook annotation to output hook logs to client on error
+  * Changelog
+    - build(deps): bump the k8s-io group with 7 updates
+    - fix: govulncheck workflow
+    - bump version to v3.18.0
+    - fix:add proxy support when mTLS configured
+    - docs: Note about http fallback for OCI registries
+    - Bump net package to avoid CVE on dev-v3
+    - Bump toml
+    - backport #30677to dev3
+    - build(deps): bump github.com/rubenv/sql-migrate from 1.7.2 to
+      1.8.0
+    - Add install test for TakeOwnership flag
+    - Fix --take-ownership
+    - build(deps): bump github.com/rubenv/sql-migrate from 1.7.1 to
+      1.7.2
+    - build(deps): bump golang.org/x/crypto from 0.36.0 to 0.37.0
+    - build(deps): bump golang.org/x/term from 0.30.0 to 0.31.0
+    - Testing text bump
+    - Permit more Go version and not only 1.23.8
+    - Bumps github.com/distribution/distribution/v3 from 3.0.0-rc.3
+      to 3.0.0
+    - Unarchiving fix
+    - Fix typo
+    - Report as debug log, the time spent waiting for resources
+    - build(deps): bump github.com/containerd/containerd from
+      1.7.26 to 1.7.27
+    - Update pkg/registry/fallback.go
+    - automatic fallback to http
+    - chore(oci): upgrade to ORAS v2
+    - Updating to 0.37.0 for x/net
+    - build(deps): bump the k8s-io group with 7 updates
+    - build(deps): bump golang.org/x/crypto from 0.35.0 to 0.36.0
+    - build(deps): bump github.com/opencontainers/image-spec
+    - build(deps): bump github.com/containerd/containerd from
+      1.7.25 to 1.7.26
+    - build(deps): bump golang.org/x/crypto from 0.33.0 to 0.35.0
+    - Fix cherry-pick helm.sh/helm/v4 -> helm.sh/helm/v3
+    - Refactor based on review comment
+    - Refactor based on review comment
+    - Add HookOutputFunc and generic yaml unmarshaller
+    - clarify fix error message
+    - fix err check
+    - remove comments about previous functionality
+    - add short circuit return
+    - Update based on review comments
+    - Update based on review comments
+    - Fix lint
+    - Tidy up imports
+    - Add hook annotations to output pod logs to client on success
+      and fail
+    - chore: use []error instead of []string
+    - Update cmd/helm/profiling.go
+    - chore: update profiling doc in CONTRIBUTING.md
+    - Update CONTRIBUTING guide
+    - Prefer environment variables to CLI flags
+    - Fix linter warning
+    - Move pprof paths to HELM_PPROF env variable
+    - Update CONTRIBUTING.md
+    - Update CONTRIBUTING.md
+    - Additional review fixes from PR
+    - feat: Add flags to enable CPU and memory profiling
+    - build(deps): bump github.com/distribution/distribution/v3
+    - build(deps): bump github.com/spf13/cobra from 1.8.1 to 1.9.1
+    - Moving to SetOut and SetErr for Cobra
+    - build(deps): bump the k8s-io group with 7 updates
+    - build(deps): bump golang.org/x/crypto from 0.32.0 to 0.33.0
+    - build(deps): bump golang.org/x/term from 0.28.0 to 0.29.0
+    - build(deps): bump golang.org/x/text from 0.21.0 to 0.22.0
+    - build(deps): bump github.com/spf13/pflag from 1.0.5 to 1.0.6
+    - build(deps): bump github.com/cyphar/filepath-securejoin
+    - build(deps): bump github.com/evanphx/json-patch
+    - build(deps): bump the k8s-io group with 7 updates
+    - fix: check group for resource info match
+    - Bump github.com/cyphar/filepath-securejoin from 0.3.6 to
+      0.4.0
+    - add test for nullifying nested global value
+    - Ensuring the file paths are clean prior to passing to
+      securejoin
+    - Bump github.com/containerd/containerd from 1.7.24 to 1.7.25
+    - Bump golang.org/x/crypto from 0.31.0 to 0.32.0
+    - Bump golang.org/x/term from 0.27.0 to 0.28.0
+    - bump version to v3.17.0
+    - Bump github.com/moby/term from 0.5.0 to 0.5.2
+    - Add test case for removing an entire object
+    - Tests for bugfix: Override subcharts with null values #12879
+    - feat: Added multi-platform plugin hook support to v3
+    - This commit fixes the issue where the yaml.Unmarshaller
+      converts all int values into float64, this passes in option
+      to decoder, which enables conversion of int into .
+    - merge null child chart objects
+
+-------------------------------------------------------------------
+Thu Apr 10 04:56:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.17.3:
+  Helm v3.17.3 is a security (patch) release. Users are strongly
+  recommended to update to this release.
+  * Changelog
+    - Unarchiving fix e4da497 (Matt Farina)
+
+-------------------------------------------------------------------
+Thu Mar 13 18:16:55 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.17.2 (bsc#1238688, CVE-2025-22870):
+  * Updating to 0.37.0 for x/net
+  * build(deps): bump the k8s-io group with 7 updates
+
+-------------------------------------------------------------------
+Mon Mar 10 16:41:05 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- skip 32bit builds on SLFO
+
+-------------------------------------------------------------------
+Fri Feb 14 11:52:56 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- reduce test flakyness by limiting parallelism to what upstream
+  uses
+
+-------------------------------------------------------------------
+Thu Feb 13 06:16:05 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.17.1:
+  * add test for nullifying nested global value
+  * Add test case for removing an entire object
+  * Tests for bugfix: Override subcharts with null values #12879
+  * merge null child chart objects
+  * build(deps): bump the k8s-io group with 7 updates
+  * fix: check group for resource info match
+
+-------------------------------------------------------------------
+Thu Jan 16 05:57:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to 3.17.0 (bsc#1235318, CVE-2024-45338):
+  Full changelog:
+  https://github.com/helm/helm/releases/tag/v3.17.0
+  * Notable Changes
+    - Allow pulling and installation by OCI digest
+    - Annotations and dependencies are now in chart metadata output
+    - New --take-ownership flag for install and upgrade commands
+    - SDK: Authorizer and registry authorizer are now configurable
+    - Removed the Kubernetes configuration file permissions check
+    - Added username/password to helm push and dependency
+      build/update subcommands
+    - Added toYamlPretty template function
+
+-------------------------------------------------------------------
+Mon Dec 16 21:45:40 UTC 2024 - dmueller@suse.com
+
+- Update to version 3.16.4 (bsc#1234482, CVE-2024-45337):
+  * Bump golang.org/x/crypto from 0.30.0 to 0.31.0
+  * Bump the k8s-io group with 7 updates
+
+-------------------------------------------------------------------
+Thu Nov 14 13:05:38 UTC 2024 - dmueller@suse.com
+
+- Update to version 3.16.3:
+  * fix: fix label name
+  * Fix typo in pkg/lint/rules/chartfile_test.go
+  * Increasing the size of the runner used for releases.
+  * fix(hooks): correct hooks delete order
+  * Bump github.com/containerd/containerd from 1.7.12 to 1.7.23
+
+-------------------------------------------------------------------
+Fri Oct 11 08:24:54 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.16.2:
+  * Revering change unrelated to issue #13176
+  * adds tests for handling of Helm index with broken chart
+    versions #13176
+  * improves handling of Helm index with broken helm chart versions
+    #13176
+  * Bump the k8s-io group with 7 updates
+  * adding check-latest:true
+  * Grammar fixes
+  * Fix typos
+
+-------------------------------------------------------------------
+Sat Sep 14 14:00:08 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.16.1:
+  * bumping version to 1.22.7
+  * Merge pull request #13327 from mattfarina/revert-11726
+
+-------------------------------------------------------------------
+Sat Sep 14 13:55:08 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.16.0:
+  Helm v3.16.0 is a feature release. Users are encouraged to
+  upgrade for the best experience.
+  * Notable Changes
+    - added sha512sum template function
+    - added ActiveHelp for cmds that don't take any more args
+    - drops very old Kubernetes versions support in helm create
+    - add --skip-schema-validation flag to helm 'install',
+      'upgrade' and 'lint'
+    - fixed bug to now use burst limit setting for discovery
+    - Added windows arm64 support
+  * Full changelog see
+    https://github.com/helm/helm/releases/tag/v3.16.0
+
+-------------------------------------------------------------------
+Wed Aug 14 16:54:27 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.15.4:
+  * Bump the k8s-io group across 1 directory with 7 updates
+  * Bump github.com/docker/docker
+
+-------------------------------------------------------------------
+Thu Jul 11 05:39:32 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.15.3:
+  * fix(helm): Use burst limit setting for discovery
+  * fixed dependency_update_test.go
+  * fix(dependencyBuild): prevent race condition in concurrent helm
+    dependency
+  * fix: respect proxy envvars on helm install/upgrade
+  * Merge pull request #13085 from
+    alex-kattathra-johnson/issue-12961
+
+-------------------------------------------------------------------
+Thu Jun 13 05:16:23 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.15.2:
+  * fix: wrong cli description
+  * fix typo in load_plugins.go
+  * fix docs of DeployedAll
+  * Bump github.com/docker/docker
+  * bump oras minor version
+  * feat(load.go): add warning on requirements.lock
+
+-------------------------------------------------------------------
+Thu May 23 19:45:52 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.15.1:
+  * Fixing build issue where wrong version is used
+
+-------------------------------------------------------------------
+Sat May 18 09:20:56 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.15.0 (bsc#1220207, CVE-2024-26147,
+  bsc#1219969, CVE-2024-25620):
+  - obsoletes CVE-2024-26147.patch in older distributions
+  - obsoletes CVE-2024-25620.patch in odler distributions
+  Helm v3.15.0 is a feature release. Users are encouraged to
+  upgrade for the best experience.
+  * Updating to k8s 1.30 c4e37b3 (Matt Farina)
+  * bump version to v3.15.0 d7afa3b (Matt Farina)
+  * bump version to 7743467 (Matt Farina)
+  * Fix namespace on kubeconfig error 214fb6e (Calvin Krist)
+  * Update testdata PKI with keys that have validity until 3393
+    (Fixes #12880) 1b75d48 (Dirk Müller)
+  * chore(deps): bump golang.org/x/net from 0.17.0 to 0.23.0
+    dac23c8 (dependabot[bot])
+  * chore(deps): bump github/codeql-action from 3.24.7 to 3.24.10
+    167d576 (dependabot[bot])
+  * chore: remove repetitive words dd37787 (deterclosed)
+  * Modified how created annotation is populated based on package
+    creation time 0a69a0d (Andrew Block)
+  * chore(deps): bump github.com/docker/docker aaaf112
+    (dependabot[bot])
+  * chore(deps): bump google.golang.org/protobuf from 1.31.0 to
+    1.33.0 7f53529 (dependabot[bot])
+  * Enabling hide secrets on install and upgrade dry run 25c4738
+    (Matt Farina)
+  * chore(deps): bump github/codeql-action from 3.24.6 to 3.24.7
+    ff94e93 (dependabot[bot])
+  * Fixing all the linting errors d58d7b3 (Robert Sirchia)
+  * Add a note about --dry-run displaying secrets a23dd9e (Matt
+    Farina)
+  * chore(deps): bump golang.org/x/term from 0.15.0 to 0.18.0
+    275f2ab (dependabot[bot])
+  * Updating .gitignore 8b424ba (Robert Sirchia)
+  * chore(deps): bump github/codeql-action from 3.24.5 to 3.24.6
+    e22d881 (dependabot[bot])
+  * chore(deps): bump github/codeql-action from 3.24.3 to 3.24.5
+    4f200fa (dependabot[bot])
+  * Some fixes 764557c (Matt Farina)
+  * chore(deps): bump github/codeql-action from 3.23.1 to 3.24.3
+    5bc97b9 (dependabot[bot])
+  * chore(deps): bump golangci/golangci-lint-action from 3.7.0 to
+    4.0.0 e6db0ec (dependabot[bot])
+  * add error messages 8d19bcb (George Jenkins)
+  * Fix: Ignore alias validation error for index load 68294fd
+    (George Jenkins)
+  * validation fix 8e6a514 (Matt Farina)
+  * bug: add proxy support for oci getter 94c1dea (Ricardo
+    Maraschini)
+  * chore(deps): bump actions/setup-go from 4.1.0 to 5.0.0 cbab6d6
+    (dependabot[bot])
+  * chore(deps): bump github/codeql-action from 3.23.0 to 3.23.1
+    de332ae (dependabot[bot])
+  * chore(deps): bump github.com/containerd/containerd from 1.7.11
+    to 1.7.12 a2dd34b (dependabot[bot])
+  * Update architecture detection method 57a1bb8 (weidongkl)
+  * chore(deps): bump github/codeql-action from 3.22.11 to 3.23.0
+    8cab7c1 (dependabot[bot])
+  * chore(deps): bump github.com/DATA-DOG/go-sqlmock from 1.5.0 to
+    1.5.2 5f9533f (dependabot[bot])
+  * Improve release action 4790bb9 (George Jenkins)
+  * chore(deps): bump actions/setup-go from 4.1.0 to 5.0.0 f980ad3
+    (dependabot[bot])
+  * Fix grammatical error c25736c (Matt Carr)
+  * Updated for review comments d2cf8c6 (MichaelMorris)
+  * Add robustness to wait status checks fc74964 (MichaelMorris)
+  * refactor: create a helper for checking if a release is
+    uninstalled f908379 (Alex Petrov)
+  * fix: reinstall previously uninstalled chart with --keep-history
+    9e198fa (Alex Petrov)
+
+-------------------------------------------------------------------
+Wed Apr 10 20:33:10 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.14.4:
+  Helm v3.14.4 is a patch release. Users are encouraged to upgrade
+  for the best experience. Users are encouraged to upgrade for the
+  best experience.
+  * refactor: create a helper for checking if a release is
+    uninstalled 81c902a (Alex Petrov)
+  * fix: reinstall previously uninstalled chart with --keep-history
+    5a11c76 (Alex Petrov)
+  * chore: remove repetitive words fb3d880 (deterclosed)
+  * chore(deps): bump google.golang.org/protobuf from 1.31.0 to
+    1.33.0 01ac4a2 (dependabot[bot])
+  * chore(deps): bump github.com/docker/docker 138602d
+    (dependabot[bot])
+  * bug: add proxy support for oci getter aa7d953 (Ricardo
+    Maraschini)
+
+-------------------------------------------------------------------
+Sat Mar 16 16:49:46 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.14.3:
+  * Add a note about --dry-run displaying secrets
+  * add error messages
+  * Fix: Ignore alias validation error for index load
+  * chore(deps): bump github.com/containerd/containerd from 1.7.11
+    to 1.7.12
+  * chore(deps): bump github.com/DATA-DOG/go-sqlmock from 1.5.0 to
+    1.5.2
+  * Update architecture detection method
+
+-------------------------------------------------------------------
+Fri Feb 23 10:02:12 UTC 2024 - dmueller@suse.com
+
+- Update to version 3.14.2 (bsc#1220207, CVE-2024-26147):
+  * Fix for uninitialized variable in yaml parsing
+
+-------------------------------------------------------------------
+Thu Feb 15 05:57:30 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.14.1 (bsc#1219969, CVE-2024-25620):
+  * validation fix
+
+-------------------------------------------------------------------
+Fri Jan 19 15:51:26 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- determine git commit hash automatically
+
+-------------------------------------------------------------------
+Thu Jan 18 14:06:55 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.14.0:
+  * Notable Changes
+    - New helm search flag of --fail-on-no-result
+    - Allow a nested tpl invocation access to defines
+    - Speed up the tpl function
+    - Added qps/HELM_QPS parameter that tells Kubernetes packages
+      how to operate
+    - Added --kube-version to lint command
+    - The ignore pkg is now public
+  * Changelog
+    - Improve release action
+    - bump version to
+    - Fix issues when verify generation readiness was merged
+    - fix test to use the default code's k8sVersionMinor
+    - lint: Add --kube-version flag to set capabilities and
+      deprecation rules
+    - Update to Go 1.21 for builds
+    - chore(deps): bump github.com/containerd/containerd from 1.7.6
+      to 1.7.11
+    - chore(deps): bump github.com/spf13/cobra from 1.7.0 to 1.8.0
+    - Removing Asset Transparency
+    - tests(pkg/engine): test RenderWithClientProvider
+    - Make the `ignore` pkg public again
+    - chore(deps): bump golang.org/x/crypto from 0.14.0 to 0.17.0
+    - Updating to Kubernetes 1.29.0 libraries
+    - feature(pkg/engine): introduce RenderWithClientProvider
+    - chore(deps): bump github/codeql-action from 2.22.10 to
+      3.22.11
+    - chore(deps): bump github/codeql-action from 2.22.9 to 2.22.10
+    - Updating Helm libraries for k8s 1.28.4
+    - chore(deps): bump github/codeql-action from 2.22.8 to 2.22.9
+    - Remove excessive logging
+    - chore(deps): bump github/codeql-action from 2.22.7 to 2.22.8
+    - chore(deps): bump github/codeql-action from 2.22.5 to 2.22.7
+    - Update CONTRIBUTING.md
+    - Fixing release labelling in rollback
+    - chore(deps): bump github.com/docker/docker
+    - chore(deps): bump github/codeql-action from 2.22.4 to 2.22.5
+    - feat: move livenessProbe and readinessProbe values to default
+      values file
+    - Revert "fix(main): fix basic auth for helm pull or push"
+    - chore(deps): bump google.golang.org/grpc from 1.54.0 to
+      1.56.3
+    - Revert "fix(registry): address anonymous pull issue"
+    - Update get-helm-3
+    - chore(deps): bump github/codeql-action from 2.22.3 to 2.22.4
+    - chore(deps): bump actions/checkout from 3.6.0 to 4.1.1
+    - chore(deps): bump github/codeql-action from 2.21.8 to 2.22.3
+    - Drop filterSystemLabels usage from Query method
+    - Apply review suggestions
+    - Update get-helm-3 to get version through get.helm.sh
+    - feat: print failed hook name
+    - chore(deps): bump golang.org/x/net from 0.13.0 to 0.17.0
+    - Fixing precedence issue with the import of values.
+    - chore(create): indent to spaces
+    - Allow using label selectors for system labels for sql
+      backend.
+    - Allow using label selectors for system labels for secrets and
+      configmap backends.
+    - remove useless print during prepareUpgrade
+    - Add missing with clause to release gh action
+    - FIX Default ServiceAccount yaml
+    - fix(registry): address anonymous pull issue
+    - fix(registry): unswallow error
+    - Fix missing run statement on release action
+    - Add qps/HELM_QPS parameter
+    - chore(deps): bump oras.land/oras-go from 1.2.3 to 1.2.4
+    - chore(deps): bump github/codeql-action from 2.21.7 to 2.21.8
+    - bump version to v3.13.0
+    - chore(deps): bump github.com/evanphx/json-patch
+    - chore(deps): bump golang.org/x/text from 0.11.0 to 0.13.0
+    - Write latest version to get.helm.sh bucket
+    - Increased release information key name max length.
+    - Pin gox to specific commit
+    - Remove `GoFish` from package managers for installing  the
+      binary
+    - Test update for "Allow a nested `tpl` invocation access to
+      `defines` in a containing one"
+    - Test update for "Speed up `tpl`"
+    - addressing comment
+    - Add support for RISC-V
+    - lint and validate dependency metadata to reference
+      dependencies with a unique key (name or alias)
+    - Work around template.Clone omitting options
+    - fix: pass 'passCredentialsAll' as env-var to getter
+    - feat: pass basic auth to env-vars when running download
+      plugins
+    - helm search: New CLI Flag --fail-on-no-result
+    - Update pkg/kube/ready.go
+    - fix post install hook deletion due to before-hook-creation
+      policy
+    - Allow a nested `tpl` invocation access to `defines` in a
+      containing one
+    - Remove the 'reference templates' concept
+    - Speed up `tpl`
+    - ready checker- comment update
+    - ready checker- remove duplicate statefulset generational
+      check
+    - Verify generation in readiness checks
+    - feat(helm): add --reset-then-reuse-values flag to 'helm
+      upgrade'
+
+-------------------------------------------------------------------
+Thu Dec 14 10:57:32 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 3.13.3:
+  * Updating Helm libraries for k8s 1.28.4
+  * Remove excessive logging
+  * chore(create): indent to spaces
+
+-------------------------------------------------------------------
+Wed Nov 08 19:35:20 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 3.13.2 (bsc#1217013):
+  * chore(deps): bump google.golang.org/grpc from 1.54.0 to 1.56.3
+  * Update get-helm-3
+  * chore(deps): bump github.com/docker/docker
+  * Fixing release labelling in rollback
+  * Drop filterSystemLabels usage from Query method
+  * Apply review suggestions
+  * Allow using label selectors for system labels for sql backend.
+  * Allow using label selectors for system labels for secrets and
+    configmap backends.
+  * Revert "fix(main): fix basic auth for helm pull or push"
+  * Revert "fix(registry): address anonymous pull issue"
+  * chore(deps): bump golang.org/x/net from 0.13.0 to 0.17.0
+  * Update get-helm-3 to get version through get.helm.sh
+
+-------------------------------------------------------------------
+Thu Oct 12 14:32:59 UTC 2023 - dmueller@suse.com
+
+- Update to version 3.13.1:
+  * Fixing precedence issue with the import of values.
+  * Add missing with clause to release gh action
+  * FIX Default ServiceAccount yaml
+  * fix(registry): unswallow error
+  * remove useless print during prepareUpgrade
+  * fix(registry): address anonymous pull issue
+  * Fix missing run statement on release action
+  * Write latest version to get.helm.sh bucket
+  * chore(deps): bump oras.land/oras-go from 1.2.3 to 1.2.4
+  * Increased release information key name max length.
+  * chore(deps): bump golang.org/x/text from 0.11.0 to 0.13.0
+
+-------------------------------------------------------------------
+Thu Sep 28 04:47:57 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 3.13.0 (bsc#1215588):
+  * bump version to v3.13.0
+  * Fix leaking goroutines in Install
+  * chore(deps): bump github.com/containerd/containerd from 1.7.3
+    to 1.7.6
+  * chore(deps): bump github/codeql-action from 2.21.5 to 2.21.7
+  * Update Helm to use k8s 1.28.2 libraries
+  * chore(deps): bump github.com/cyphar/filepath-securejoin
+  * make the dependabot k8s.io group explicit
+  * use dependabot's group support for k8s.io dependencies
+  * chore(deps): bump
+    transparencylog/github-releases-asset-transparency-verify-action
+  * chore(deps): bump github/codeql-action from 2.21.4 to 2.21.5
+  * doc:Executing helm rollback release 0 will roll back to the
+    previous release
+  * add check if all migrations already applied
+  * chore(deps): bump github.com/moby/term
+  * chore(deps): bump actions/checkout from 3.5.3 to 3.6.0
+  * chore(deps): bump golang.org/x/term from 0.10.0 to 0.11.0
+  * Use labels instead of selectorLabels for pod labels
+  * fix(helm): fix GetPodLogs, the hooks should be sorted before
+    get the logs of each hook
+  * chore(deps): bump github.com/rubenv/sql-migrate from 1.5.1 to
+    1.5.2
+  * add rollback unit test
+  * fix: helm rollback err tips
+  * chore(deps): bump github.com/containerd/containerd from 1.7.0
+    to 1.7.3
+  * Add Ian Zink (z4ce) as triage maintainer
+  * chore(deps): bump github/codeql-action from 2.21.3 to 2.21.4
+  * chore: HTTPGetter add default timeout
+  * fix: precedence typo
+  * Avoid nil dereference if passing a nil resolver
+  * Add required changes after merge
+  * goimports
+  * Fix #3352, add support for --ignore-not-found just like kubectl
+    delete
+  * chore(deps): bump github/codeql-action from 2.21.2 to 2.21.3
+  * chore(deps): bump actions/setup-go from 4.0.1 to 4.1.0
+  * Fix helm may identify achieve of the application/x-gzip as
+    application/vnd.ms-fontobject
+  * Restore `helm get metadata` command
+  * Revert "Add `helm get metadata` command"
+  * Update pkg/action/install.go
+  * test: replace `ensure.TempDir` with `t.TempDir`
+  * chore(deps): bump github/codeql-action from 2.21.0 to 2.21.2
+  * use json api url + report curl/wget error on fail
+  * Added error in case try to supply custom label with name of
+    system label during install/upgrade
+  * Updated per feedback from gjenkins8
+  * fix(main): fix basic auth for helm pull or push
+  * chore(deps): bump github.com/sirupsen/logrus from 1.9.0 to
+    1.9.3
+  * cmd: support generating index in JSON format
+  * repo: detect JSON and unmarshal efficiently
+  * Tweaking new dry-run internal handling
+  * chore(deps): bump github/codeql-action from 2.20.3 to 2.21.0
+  * chore(deps): bump github.com/stretchr/testify from 1.8.2 to
+    1.8.4
+  * chore(deps): bump github.com/BurntSushi/toml from 1.2.1 to
+    1.3.2
+  * chore(deps): bump github.com/opencontainers/image-spec
+  * bump kubernetes modules to v0.27.3
+  * chore(deps): bump actions/checkout from 3.2.0 to 3.5.3
+  * chore(deps): bump actions/setup-go from 3.5.0 to 4.0.1
+  * chore(deps): bump github/codeql-action from 2.1.37 to 2.20.3
+  * chore(deps): bump github.com/spf13/cobra from 1.6.1 to 1.7.0
+  * chore(deps): bump golang.org/x/crypto from 0.5.0 to 0.11.0
+  * chore(deps): bump golang.org/x/text from 0.9.0 to 0.11.0
+  * chore(deps): bump k8s.io/klog/v2 from 2.90.1 to 2.100.1
+  * chore(deps): bump github.com/docker/docker
+  * Remove warning for template directory not found.
+  * Add gjenkins8 as triage maintainer
+  * Added tests for created OCI annotation time format
+  * Add created OCI annotation
+  * Fix multiple bugs in values handling
+  * chore: fix a typo in `manager.go`
+  * chore(deps): bump github.com/rubenv/sql-migrate from 1.3.1 to
+    1.5.1
+  * add GetRegistryClient method
+  * chore(deps): bump oras.land/oras-go from 1.2.2 to 1.2.3
+  * oci: add tests for plain HTTP and insecure HTTPS registries
+  * chore(deps): bump github.com/opencontainers/runc from 1.1.4 to
+    1.1.5
+  * oci: Add flag `--plain-http` to enable working with HTTP
+    registries
+  * docs: add an example for using the upgrade command with
+    existing values
+  * Replace `fmt.Fprintf` with `fmt.Fprint` in get_metadata.go
+  * Replace `fmt.Fprintln` with `fmt.Fprintf` in get_metadata.go
+  * update kubernetes dependencies from v0.27.0 to v0.27.1
+  * Add ClientOptResolver to test util file
+  * Check that missing keys are still handled in tpl
+  * chore(deps): bump github.com/docker/distribution
+  * tests: change crd golden file to match after #11870
+  * Adding details on the Factory interface
+  * move Joe Julian to maintainer
+  * update autoscaling/v2beta1 to autoscaling/v2 in skeleton chart
+  * chore(deps): bump github.com/Masterminds/squirrel from 1.5.3 to
+    1.5.4
+  * chore(deps): bump github.com/lib/pq from 1.10.7 to 1.10.9
+  * chore(deps): bump github.com/Masterminds/semver/v3 from 3.2.0
+    to 3.2.1
+  * bump version to v3.12.0
+  * feat(helm): add ability for --dry-run to do lookup functions
+    When a helm command is run with the --dry-run flag, it will try
+    to connect to the cluster to be able to render lookup
+    functions. Closes #8137
+  * Updating the Helm maintainers
+  * strip trailing newline from Files.Lines
+  * add some test case
+  * fix comment grammar error.
+  * bugfix:(#11391) helm lint infinite loop  when malformed
+    template object
+  * pkg/engine: fix nil-dereference
+  * pkg/chartutil: fix nil-dereference
+  * pkg/action: fix nil-dereference
+  * full source path when output-dir is not provided
+  * Update cmd/helm/upgrade.go
+  * Update cmd/helm/install.go
+  * added Contributing.md section and ref link in the README
+  * fix: add podLabels
+  * feat(helm): add ability for --dry-run to do lookup functions
+    When a helm command is run with the --dry-run flag, it will try
+    to connect to the cluster if the value is 'server' to be able
+    to render lookup functions. Closes #8137
+  * feat(helm): add ability for --dry-run to do lookup functions
+  * Add `CHART`, `VERSION` and `APP_VERSION` fields to `get all`
+    command output
+  * Adjust `get` command description to account metadata
+  * fix typo: mountPath
+  * add volumes and volumeMounts in chartutil
+  * Seed a default switch to control `automountServiceAccountToken`
+  * Avoid confusing error when passing in '--version X.Y.Z'
+  * Use errors.Is to compare
+  * Add `helm get metadata` command
+  * Use wrapped error so that ErrNoObjectsVisited can be compared
+    after return.
+  * Add exact version test. See also #7563 Signed-off-by: Igor
+    Manushin <igor.manushin@gmail.com>
+  * Update dependabot config to include github actions
+  * strict file permissions of repository.yaml
+  * Check redefinition of define and include in tpl
+  * Check that `.Template` is passed through `tpl`
+  * Make sure empty `tpl` values render empty.
+  * Pick the test improvement out of PR#8371
+  * #11369 Use the correct index repo cache directory in the
+    `parallelRepoUpdate` method as well
+  * #11369 Add a test case to prove the bug and its resolution
+  * ref(helm): export DescriptorPullSummary fields
+  * feat(helm): add 'ClientOptResolver' ClientOption
+  * Fix flaky TestSQLCreate test by making sqlmock ignore order of
+    sql requests
+  * Fixing tests after adding labels to release fixture
+  * Make default release fixture contain custom labels to make
+    tests check that labels are not lost
+  * Added support for storing custom labels in SQL storage driver
+  * Adding support merging new custom labels with original release
+    labels during upgrade
+  * Added note to install/upgrade commands that original release
+    labels wouldn't be persisted in upgraded release
+  * Added unit tests for implemented install/upgrade labels logic
+  * Remove redudant types from util_test.go
+  * Added tests for newly introduced util.go functions
+  * Fix broken tests for SQL storage driver
+  * Fix broken tests for configmap and secret storage drivers
+  * Make superseded releases keep labels
+  * Support configmap storage driver for install/upgrade actions
+    --labels argument
+  * Added upgrade --install labels argument support
+  * Add labels support for install action with secret storage
+    backend
+  * test: added tests to load plugin from home dir with space
+  * fix: plugin does not load when helm base dir contains space
+  * Add priority class to kind sorter
+  * Fixes #10566
+  * test(search): add mixedCase test case
+  * fix(search): print repo search result in original case
+  * Adjust error message wrongly claiming that there is a resource
+    conflict
+  * Throw an error from jobReady() if the job exceeds its
+    BackoffLimit
+  * github: add Asset Transparency action for GitHub releases
+
+-------------------------------------------------------------------
+Fri Aug 11 07:18:44 UTC 2023 - dmueller@suse.com
+
+- Update to version 3.12.3:
+  * bump kubernetes modules to v0.27.3
+  * Add priority class to kind sorter
+
+-------------------------------------------------------------------
+Thu Jul 13 19:40:08 UTC 2023 - dmueller@suse.com
+
+- Update to version 3.12.2:
+  * add GetRegistryClient method
+  * chore(deps): bump oras.land/oras-go from 1.2.2 to 1.2.3
+
+-------------------------------------------------------------------
+Thu Jun 15 06:23:40 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 3.12.1:
+  * add some test case
+  * fix comment grammar error.
+  * bugfix:(#11391) helm lint infinite loop  when malformed
+    template object
+  * chore(deps): bump github.com/opencontainers/runc from 1.1.4 to
+    1.1.5
+  * chore(deps): bump github.com/docker/distribution
+  * update autoscaling/v2beta1 to autoscaling/v2 in skeleton chart
+  * test(search): add mixedCase test case
+  * chore(deps): bump github.com/lib/pq from 1.10.7 to 1.10.9
+  * chore(deps): bump github.com/Masterminds/squirrel from 1.5.3 to
+    1.5.4
+  * chore(deps): bump github.com/Masterminds/semver/v3 from 3.2.0
+    to 3.2.1
+  * fix(search): print repo search result in original case
+  * strict file permissions of repository.yaml
+  * update kubernetes dependencies from v0.27.0 to v0.27.1
+
+-------------------------------------------------------------------
+Thu May 11 04:45:07 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 3.12.0 (bsc#1215711, CVE-2023-25173):
+  * bump version to v3.12.0
+  * Attach annotations to OCI artifacts
+  * chore: bump k8s.io dependencies to v0.27.1
+  * Bump k8s.io deps from v0.26.0 to v0.27.0
+  * Only run tests once
+  * chore(deps): bump golang.org/x/text from 0.7.0 to 0.9.0
+  * Fix goroutine leak in action install
+  * fix quiet lint does not fail on non-linting errors
+  * create failing test for quietly linting a chart that doesn't
+    exist
+  * chore(deps): bump github.com/docker/docker
+  * Fixes Readiness Check for statefulsets using partitioned
+    rolling update. (#11774)
+  * fix: failed testcase on windows
+  * Fix 32bit-x86 typo in testsuite
+  * chore(deps): bump github.com/containerd/containerd from 1.6.15
+    to 1.7.0
+  * Handle failed DNS case for Go 1.20+
+  * Updating the Go version in go.mod
+  * Bump the Go version
+  * Fix goroutine leak in perform
+  * Properly invalidate client after CRD install
+  * Provide a helper to set the registryClient in cmd
+  * Reimplemented change in httpgetter for insecure TLS option
+  * Removed conditional
+  * Added insecure option to login subcommand
+  * Added support for insecure OCI registries
+  * Enable custom certificates option for OCI
+  * Add testing to default and release branches
+  * Added back CircleCI config.yaml
+  * Updates based on feedback
+  * Removed remaining CircleCI artifacts
+  * Remove job dependency. Should have done when I moved job to new
+    file
+  * Remove check to run only in helm org
+  * Add why comments
+  * Convert remaining CircleCI config to GitHub Actions
+  * Changed how the setup-go action sets go version
+  * CircleCI Migration
+  * chore:Use http constants as http.request parameters
+  * update k8s registry domain
+  * don't mark issues as stale where a PR is in progress
+  * chore(deps): bump github.com/rubenv/sql-migrate from 1.2.0 to
+    1.3.1
+  * Update to func handling
+  * Add option to support cascade deletion options
+  * the linter varcheck and deadcode are deprecated (since v1.49.0)
+  * Check status code before retrying request
+  * Fix improper use of Table request/response to k8s API
+  * bump version to v3.11.0
+  * fix template --output-dir issue
+  * Add protection for stack-overflows for nested keys
+  * Fixing indentation
+  * feature(helm): add --set-literal flag for literal string
+    interpretation
+
+-------------------------------------------------------------------
+Thu Apr 13 07:54:49 UTC 2023 - dmueller@suse.com
+
+- Update to version 3.11.3:
+  * chore(deps): bump golang.org/x/text from 0.7.0 to 0.9.0
+  * Fix goroutine leak in perform
+  * Fix goroutine leak in action install
+  * Fix 32bit-x86 typo in testsuite
+  * chore(deps): bump github.com/docker/docker
+  * chore(deps): bump github.com/containerd/containerd from 1.6.15 to 1.7.0
+  * Fixes Readiness Check for statefulsets using partitioned rolling update. (#11774)
+- drop fix-plugin-32bit.patch (upstream)
+
+-------------------------------------------------------------------
+Tue Mar 28 13:18:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add fix-plugin-32bit.patch
+
+-------------------------------------------------------------------
+Mon Mar 27 17:12:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- build against go 1.19 (bsc#1209670)
+- include K8s tags
+- run tests
+
+-------------------------------------------------------------------
+Thu Mar 09 05:49:04 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 3.11.2:
+  * chore(deps): bump github.com/rubenv/sql-migrate from 1.2.0 to
+    1.3.1
+  * the linter varcheck and deadcode are deprecated (since v1.49.0)
+  * fix template --output-dir issue
+
+-------------------------------------------------------------------
+Thu Feb  9 11:07:23 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.11.1 (bsc#1208084, CVE-2023-25165)
+  * Update to func handling
+- from version 3.11.0
+  * Fix improper use of Table request/response to k8s API
+  * Check status code before retrying request
+  * bump version to v3.11.0
+  * Bump containerd to 1.6.15, oras-go to 1.2.2 and image-spec to v1.1.0-rc2
+  * change linting error messages for null values in arrays
+  * Fix after CR
+  * Trigger CI
+  * Add test for User-Agent header setting and refactor
+  * Fix User-Agent header in requests made by Helm
+  * Bump k8s.io deps to v0.26.0
+  * fix adopted resource not replaced
+  * chore(deps): bump github.com/BurntSushi/toml from 1.2.0 to 1.2.1
+  * Resolve conflicts for go.mod and go.sum
+  * Fix backwards compatibility
+  * docs: add docs for cli/values.Options
+  * Update chartrepo.go
+  * chore(deps): bump golang.org/x/text from 0.4.0 to 0.5.0
+  * bump sprig version 3.2.3
+  * Update string handling
+  * Update repo handling
+  * improve error message on plugin install
+  * harmonize URL reference resolving
+  * Update logic of non-git situation just to print warning logs
+  * Add a flag var to check git is installed or not
+  * Add support for CSVs in template --api-versions arg
+  * update .golangci for go1.18
+  * redirect registry client output to stderr
+  * chore(deps): bump github.com/spf13/cobra from 1.5.0 to 1.6.1
+  * Readiness & liveness probes correct port
+  * Update schema validation handling
+  * fix a few function names on comments
+  * use intstr.GetScaledValueFromIntOrPercent instead of the deprecated
+  * Updating the deb location for azure cli
+  * retry http request on temporary errors
+  * Revert "Tolerate temporary errors from etcdserver"
+  * Updating the repo the azure cli is installed from
+  * Updating to kubernetes 1.25.2 packages
+  * Allow CGO_ENABLED to be overridden for build
+  * chore(deps): bump github.com/sirupsen/logrus from 1.8.1 to 1.9.0
+  * chore(deps): bump github.com/lib/pq from 1.10.6 to 1.10.7
+  * chore(deps): bump github.com/BurntSushi/toml from 1.1.0 to 1.2.0
+  * chore(deps): bump github.com/rubenv/sql-migrate from 1.1.2 to 1.2.0
+  * Tolerate temporary errors from etcdserver
+  * update: Optimize the error message
+  * add nil judge for dependency , maintainers validate  and some testcase.
+  * Fix code style
+  * bump version to v3.10.0
+  * Addressing review comments - move printing code out of client.go
+  * Addressing review comments: Extend Interface with new InterfaceResources to avoid breaking changes Move change to staus command behind --show-resources flag
+  * feat(helm): Supporting helm3 to show up resource names that were deployed as part of release in helm status command
+  * During deletion, explicitly log already deleted resource name.
+  * fix: add cases.NoLower option for we can get same effect to strings.Title
+  * one defer
+  * don't change r.CachePath
+  * avoid adding new public function
+  * fix tests
+  * fix: clean up temp files in FindChartInAuthAndTLSAndPassRepoURL (#11171)
+  * Fix URL with encoded path support for ChartDownloader
+
+-------------------------------------------------------------------
+Wed Dec 14 15:50:30 UTC 2022 - dmueller@suse.com
+
+- Update to version 3.10.3 (bsc#1206467, CVE-2022-23524,
+      bsc#1206469, CVE-2022-23525,
+      bsc#1206471, CVE-2022-23526):
+  * Fix backwards compatibility
+  * Update string handling
+  * Update repo handling
+  * Update schema validation handling
+
+-------------------------------------------------------------------
+Thu Nov 10 18:17:06 UTC 2022 - dmueller@suse.com
+
+- Update to version 3.10.2:
+  * fix a few function names on comments
+  * redirect registry client output to stderr
+  * Readiness & liveness probes correct port
+
+-------------------------------------------------------------------
+Thu Oct 13 07:36:29 UTC 2022 - dmueller@suse.com
+
+- Update to version 3.10.1:
+  * Updating the deb location for azure cli
+  * Updating the repo the azure cli is installed from
+  * Updating to kubernetes 1.25.2 packages
+  * one defer
+  * don't change r.CachePath
+  * avoid adding new public function
+  * fix tests
+  * fix: clean up temp files in FindChartInAuthAndTLSAndPassRepoURL (#11171)
+  * Allow CGO_ENABLED to be overridden for build
+  * update: Optimize the error message
+  * add nil judge for dependency , maintainers validate  and some testcase.
+  * Fix URL with encoded path support for ChartDownloader
+  * fix: add cases.NoLower option for we can get same effect to strings.Title
+  * Tolerate temporary errors from etcdserver
+
+-------------------------------------------------------------------
+Fri Sep 23 14:01:01 UTC 2022 - dmueller@suse.com
+
+- Update to version 3.10.0:
+  * bump version to v3.10.0
+  * Updating to Kubernetes 1.25 client libs
+  * Updating the certificates used for testing
+  * Updating index handling
+  * Drop direct github.com/docker/docker dependency
+  * fix special string in the filename
+  * chore: add oci install description
+  * Fixing x509 test on darwin
+  * Bump k8s.io/kube-openapi to fix CVE-2022-1996 in github.com/emicklei/go-restful
+  * fixes #11142 missing array length check on release
+  * chore(deps): bump github.com/stretchr/testify from 1.7.5 to 1.8.0
+  * Upgrading to Kubernetes 1.24.2
+  * Bump Oras to 1.2.0
+  * fix: use `go install` instead of `go get`
+  * bump Go 1.18
+  * fix: improve logging & safety of statefulSetReady
+  * make token caching an opt in feature
+  * chore(deps): bump github.com/stretchr/testify from 1.7.4 to 1.7.5
+  * chore(deps): bump github.com/rubenv/sql-migrate from 1.1.1 to 1.1.2
+  * chore(deps): bump github.com/spf13/cobra from 1.4.0 to 1.5.0 (#11075)
+  * chore(deps): bump github.com/stretchr/testify from 1.7.1 to 1.7.4
+  * Upgrading to Kubernetes 1.24.1 packages
+  * chore(deps): bump github.com/Masterminds/squirrel from 1.5.2 to 1.5.3
+  * feat(*): add flags/env for kube api tls overrides
+  * Add --burst-limit option for client-side throttling limit configuration (#10842)
+  * chore(deps): bump github.com/lib/pq from 1.10.5 to 1.10.6
+  * chore(deps): bump oras.land/oras-go from 1.1.0 to 1.1.1
+  * chore(deps): bump github.com/evanphx/json-patch
+  * Bump github.com/lib/pq from 1.10.4 to 1.10.5
+  * build(deps): bump github.com/containerd/containerd from 1.6.3 to 1.6.4
+  * build(deps): bump github.com/docker/docker
+  * bump version to v3.9.0
+  * build(deps): bump github.com/jmoiron/sqlx from 1.3.4 to 1.3.5
+  * Bump github.com/BurntSushi/toml from 1.0.0 to 1.1.0
+  * Fixed helm uninstall not deleting the resource.
+  * Fix UT
+  * Fix linter
+  * Update install.go
+  * Log error message on failed download
+  * Add support `helm list --no-headers`
+  * update go.mod
+  * fix --registry-config issue
+  * feat: add --set-json flag to set json values.
+  * fix(helm): ignore file-not-found error for `helm repo list -o json`
+
+-------------------------------------------------------------------
+Thu Aug 25 07:43:29 UTC 2022 - dmueller@suse.com
+
+- Update to version 3.9.4 (bsc#1203054, CVE-2022-36055):
+  * Updating the certificates used for testing
+  * Updating index handling
+
+-------------------------------------------------------------------
+Wed Aug 10 21:52:18 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 3.9.3 (CVE-2022-1996, bsc#1200528):
+  * Bump k8s.io/kube-openapi to fix CVE-2022-1996 in github.com/emicklei/go-restful
+  * fixes #11142 missing array length check on release
+
+-------------------------------------------------------------------
+Fri Jul 22 21:26:58 UTC 2022 - dmueller@suse.com
+
+- Update to version 3.9.2:
+  * Updating the circleci image we use
+
+-------------------------------------------------------------------
+Fri Jul 15 07:25:55 UTC 2022 - dmueller@suse.com
+
+- Update to version 3.9.1:
+  * Upgrading to Kubernetes 1.24.2
+  * fix: improve logging & safety of statefulSetReady
+  * make token caching an opt in feature
+  * chore(deps): bump github.com/lib/pq from 1.10.5 to 1.10.6
+  * Upgrading to Kubernetes 1.24.1 packages
+  * chore(deps): bump github.com/Masterminds/squirrel from 1.5.2 to 1.5.3
+
+-------------------------------------------------------------------
+Fri Jul 08 07:19:35 UTC 2022 - dmueller@suse.com
+
+- Update to version 3.9.0:
+  * Added a --quiet flag to helm lint
+  * Added a --post-renderer-args flag to support arguments being passed to the post renderer
+  * Added more checks during the signing process
+  * Updated to add Kubernetes 1.24 support
+
+-------------------------------------------------------------------
+Mon May 09 11:20:29 UTC 2022 - dmueller@suse.com
+
+- Update to version 3.8.2:
+  * Bump oras.land/oras-go from 1.1.0 to 1.1.1
+  * Fixing downloader plugin error handling
+  * Simplify testdata charts
+  * Simplify testdata charts
+  * Add tests for multi-level dependencies.
+  * Fix value precedence
+  * Bumping Kubernetes package versions
+  * Updating vcs to latest version
+  * Dont modify provided transport
+  * Pass http getter as pointer in tests
+  * Add docs block
+  * Add transport option and tests
+  * Reuse http transport
+  * Updating Kubernetes libs to 0.23.4 (latest)
+  * fix: remove deadcode
+  * fix: helm package tests
+  * fix: helm package with dependency update for charts with OCI dependencies
+  * Fix typo Unset the env var before func return in Unit Test
+  * add legal name check
+  * maint: fix syntax error in deploy.sh
+  * linting issue fixed
+  * only apply overwrite if version is canary
+  * overwrite flag added to az storage blob upload-batch
+  * Avoid querying for OCI tags can explicit version provided in chart dependencies
+  * Management of bearer tokens for tag listing
+  * Updating Kubernetes packages to 1.23.3
+  * refactor: use `os.ReadDir` for lightweight directory reading
+  * Add IngressClass to manifests to be (un)installed
+  * feat(comp): Shell completion for OCI
+  * Fix install memory/goroutine leak
+
+-------------------------------------------------------------------
+Wed Mar  9 16:06:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- avoid CGO to workaround missing gold dependency (bsc#1183043)
+
+-------------------------------------------------------------------
+Thu Mar  3 13:23:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- build against go 1.17 similar to how upstream does
+
+-------------------------------------------------------------------
+Wed Feb 2 09:47:00 UTC 2022 - Michal Hlavac <miso@hlavki.eu>
+
+- Update to version 3.8.0 (jsc#SLE-21196):
+  * OCI registry support for charts is now generally available. It has graduated out of being an experiment. Some changes over Helm 3.7 include:
+    * When setting a chart in the dependencies as OCI the version can be set to a range, like other dependencies
+    * SemVer tags that include build information can be pushed and used. OCI registries don't support + as a tag character. Helm translates the + to _ when stored as a tag
+    * helm registry login now follows the same structure as the Docker CLI for storing credentials. The same location for registry configuration can be passed to both Helm and the Docker CLI
+  * A --list-repo-url flag has been added to helm search hub to quickly show the repositories URL.
+  * Release names are validated during installation
+  * Added support for installing Helm on Windows via Cygwin
+  * Added support for Kubernetes 1.23
+
+-------------------------------------------------------------------
+Mon Oct 18 12:37:13 UTC 2021 - Robert Munteanu <rombert@apache.org>
+
+- use 'v' prefix for the version to match upstream builds
+- package fish completions
+
+-------------------------------------------------------------------
+Thu Sep 16 02:32:04 UTC 2021 - jenting.hsiao@suse.com
+
+- Update to version 3.6.3:
+  * Ensure RawPath match Path when resolving reference
+  * Set Helm as manager for managedFields
+  * fix(dep update): helm dep update is not respecting the "version" stipulated in the requirements
+  * fix(doc): fix kube client interface doc. (#9882)
+  * use TLS client information from repo config when downloading a chart
+  * Adding test for user/pass without repo on Helm install
+  * Fix the url being set by WithURL on the getters
+  * tweak basic handling
+  * keep existing behavior of returning ErrReleaseNotFound when release(s) failed to decode
+  * fix(sql storage): Query() should return ErrReleaseNotFound immediately when no records are found
+  * Add Test cases for repository-config without file extension
+  * Correctly determine repository-config lockfile path
+  * Fixed Test
+  * Added test for lint mode
+  * Fail message is now the same as the required message. Fixed #8973 Helm function 'fail' should not fail when doing 'helm lint'
+  * fix helm dep build/update doesn't inherit --insecure-skip-tls-verify from helm repo add
+
+-------------------------------------------------------------------
+Tue Jul 06 21:22:54 UTC 2021 - jenting.hsiao@suse.com
+
+- Update to version 3.6.2:
+  * Fix the url being set by WithURL on the getters
+  * Adding test for user/pass without repo on Helm install
+
+-------------------------------------------------------------------
+Fri Jun 18 06:40:44 UTC 2021 - jenting.hsiao@suse.com
+
+- Update to version 3.6.1:
+  * tweak basic handling
+
+-------------------------------------------------------------------
+Sat May 29 07:20:19 UTC 2021 - jenting.hsiao@suse.com
+
+- Update to version 3.6.0:
+  * bump version to v3.6.0
+  * chore: update testdata to use the new ingress template
+  * feat: add networking.k8s.io/v1 support to ingress template
+  * Moving myself to maintainer emeritus
+  * upgrade to kubernetes 1.21
+  * Fix capabilities changes leaking into other tests
+  * Add tests for template --kube-version
+  * feat(helm): Support setting --kube-version
+  * fix(ci) update ci to use main branch
+  * Update references to default branch name as it has changed to main
+  * Add ReadyChecker to decouple ready check logic from --wait
+  * chore(deps): Bump github.com/deislabs/oras from v0.10.0 to v0.11.1 and drop replace
+  * Add/update deprecation notices
+  * Wrap validation error instead of recreating
+  * Move default to avoid nil check
+  * Add name validation rules for object kinds
+  * Improve description for version flag.
+  * chore: Spelling (#9410)
+  * chore(deps): Bump k8s.io/klog/v2 from 2.5.0 to 2.8.0
+  * chore(deps): Bump github.com/containerd/containerd from 1.4.3 to 1.4.4
+  * chore(deps): Bump github.com/lib/pq from 1.9.0 to 1.10.0
+  * Bump github.com/spf13/cobra from 1.1.1 to 1.1.3
+  * Cleanup mpodule dependencies
+  * feat(comp): Uninstall accepts multiple releases
+  * new key for technosophos (#9478)
+  * chore(deps): Bump github.com/sirupsen/logrus from 1.7.0 to 1.8.1
+  * add flag trimpath in the go build command
+  * stick to 0.20.4
+  * updated unit tests to conform with helm best practices
+  * corrected order of helm lint coalescing of multiple values files
+  * upgrade to v0.21.0-beta.0
+  * Fix the example for --time-format flag
+  * Use kube libraries v0.20.4
+  * Added s390x support to get script
+  * add test to ensure OCIGetter registryClient is set
+  * initialize registry client in oci getter
+  * feat(comp): Add descriptions for output format
+  * feat(comp): Add descriptions for --version comp
+  * feat(comp): Add descriptions for revision comp
+  * feat(comp): Add descriptions for kube-context comp
+  * feat(comp): Add descriptions for plugin completion
+  * feat(comp): Add descriptions for release name comp
+  * feat(comp): Improve completion for plugin commands
+  * fix(cmd): Show that flags can be used for zsh/fish
+  * use relative linking
+  * formatting
+  * more words
+  * keep it concise
+  * docs(CONTRIBUTING): writing a HIP
+  * update test expectation for new template error string
+  * Add darwin/arm64 (Apple Silicon) support
+  * fix windows tests
+  * fix(test): Increase golangci-lint timeout
+  * fix(helm): get/get-helm-3 whitespace support in runAsRoot
+  * fix release sha256
+  * feat(comp): Completion for the docs --type flag
+  * Bump github.com/jmoiron/sqlx from 1.2.0 to 1.3.1
+  * Updating golangci-lint to 1.36.0
+  * chore(go.mod): bump Masterminds/{spring,goutils} and deislabs/oras
+  * fix(*): Validate metadata semver and printable characters
+  * Bump github.com/mitchellh/copystructure from 1.0.0 to 1.1.1
+  * closes #9312
+  * Fix-9253: Change the deprecated charts repo URL in release notes
+  * Fix `helm list --offset` cli help string
+  * Define GPG_PUBRING to make pubring configurable
+  * Bump github.com/mattn/go-shellwords from 1.0.10 to 1.0.11
+  * Bump k8s.io/klog/v2 from 2.4.0 to 2.5.0
+  * Upgrade to oras v0.9.0 (#9269) (bsc#1181419, CVE-2021-21272)
+  * use kube libraries v0.20.2
+  * print warning message instead of debug message when ~/.config exists but is not accessible
+  * Update default ingress values section to correspond with template
+  * chore(Makefile): add target to generate golden files
+  * Fix dep build with OCI based charts
+  * Fix typo in comment
+  * bump version to
+  * fix(Makefile): rebuild the binary if go.mod has changed
+  * fix(pkg/storage): If storage.Create fails to clean up recent release versions, return an error
+  * test(pkg/storage): Verify that storage.Create returns an error if it fails to clean up least-recent release versions
+  * Bump github.com/containerd/containerd from 1.3.4 to 1.4.3
+  * Improve the console output for resource policy keep to align with helm2.
+
+-------------------------------------------------------------------
+Mon Apr 19 05:22:47 UTC 2021 - jenting.hsiao@suse.com
+
+- Update to version 3.5.4:
+  * Add/update deprecation notices
+  * Wrap validation error instead of recreating
+  * Move default to avoid nil check
+  * Add name validation rules for object kinds
+  * Use kube libraries v0.20.4
+
+-------------------------------------------------------------------
+Wed Mar 17 15:45:02 UTC 2021 - dmueller@suse.com
+
+- Update to version 3.5.3:
+  * Fix the example for --time-format flag
+  * Improve the console output for resource policy keep to align with helm2.
+  * test(pkg/storage): Verify that storage.Create returns an error if it fails to clean up least-recent release versions
+  * fix(pkg/storage): If storage.Create fails to clean up recent release versions, return an error
+  * fix(test): Increase golangci-lint timeout
+  * fix release sha256
+  * Fix-9253: Change the deprecated charts repo URL in release notes
+  * Update default ingress values section to correspond with template
+  * use kube libraries v0.20.2
+
+-------------------------------------------------------------------
+Fri Feb 05 01:47:42 UTC 2021 - jenting.hsiao@suse.com
+
+- Update to version 3.5.2:
+  * Upgrade to oras v0.9.0 (#9269)
+  * Adding missing replace directive for oras
+  * chore(go.mod): bump Masterminds/{spring,goutils} and deislabs/oras
+  * fix(*): Validate metadata semver and printable characters
+  * Fix dep build with OCI based charts
+  * bump version to
+  * Adding apiserver to mod/sum
+  * Reduce linting severity for users of out-of-date kubernetes (#8608)
+  * Bumping kubernetes to 1.20.1
+  * Add explanatory comments to action.List and action.History
+  * Address error on deletion of old dependencies
+  * Fixed bug - The flags --cert-file/--key-file where ignored when --insecure-skip-tls-verify flag is set (#9070)
+  * Replace Helm Hub with Artifact Hub (#8626)
+  * fix(pkg/chartutil): Remove warning for nils
+  * Updating to sprig 3.2.0
+  * Updating to Kuberentes 1.20 packages
+  * Bump github.com/Masterminds/semver/v3 from 3.1.0 to 3.1.1 (#9109)
+  * Bump github.com/Masterminds/squirrel from 1.4.0 to 1.5.0 (#9108)
+  * Bump github.com/lib/pq from 1.8.0 to 1.9.0 (#9107)
+  * Remove OCI boolean from  struct
+  * Clean up imports and add doc comments
+  * Implement `helm pull` for OCI registries
+  * Adds the option kube-cafile and env variable HELM_KUBECAFILE for a overwrite of the certificate authority file
+  * Builds with go 1.15
+  * Updating to Kubernetes 1.19.4 package versions
+  * Add CodeQL Security Scanning
+  * Fix test
+  * Fixes #9083
+  * [COMMENT]fix comment
+  * Fix typo
+  * fix: ingress path issue
+  * Revert "Add support to judge whether desired version is available or not"
+  * Cleanup tempfiles introduced by unit tests under pkg/
+  * bump actions/stale to v3.0.14
+  * increase number of operations per run to 100
+  * feat(helm): Allow generating markdown docs headers
+  * chore(comp): Remove unnecessary completion code
+  * Added tests for PR 8948
+  * add unittes for 'helm dep build' with --skip-refresh flag.
+  * Updating to k8s 1.19.3 based packages
+  * lint: lint all documents in a multi-doc yaml file
+  * fix(helm): flag descriptions start with lowercase
+  * List either incubator or stable.
+  * add waitwithjobs instead of changing wait api
+  * add wait-for-jobs flag
+  * fix style conformance
+  * fix test-style error
+  * add test cases
+  * helm upgrade with --wait support jobs in manifest to be completed
+  * completion: move to native zshCompletion
+  * Add remaining tests in TestDependentChartAliases
+  * Clarifies action needed to list new stable repo
+  * feat: Allow helm test to run a subset of tests
+  * Fix that the invalid version number of the helm package command will escape
+  * Updating descriptions
+  * Add support to judge whether desired version is available or not
+  * Add test case for LoadFiles
+  * Fixes Error: could not find protocol handler for
+  * [#7696] Avoid crash in chart loader on unexpected file sequence
+  * helm search supports semver pre version numbers starting with 0
+  * added test for https://github.com/helm/helm/pull/8913 related to https://github.com/helm/helm/issues/8621
+  * [#7696] Avoid crash in chart loader on unexpected file sequence
+  * feat(test): Adapt completion tests to Cobra 1.1
+  * Bump github.com/spf13/cobra from 1.0.0 to 1.1.1
+  * Update err message to use the regex pattern directly
+  * Fix the lint error message for valid names
+  * do not check YAML if nothing was parsed
+  * fix(test): display error message
+  * bump version to v3.4.0
+  * Skip tests when running helm template
+  * Add --skip-refresh option in helm dep build
+  * Adjusted import
+  * Reuse kube-client
+  * fix(helm): allow skipping manifests in tests directories
+  * prepare testdata
+  * Bugfix: panic when chart contains requirements.lock
+
+-------------------------------------------------------------------
+Wed Dec 09 21:58:44 UTC 2020 - dmueller@suse.com
+
+- Update to version 3.4.2:
+  * Updating to Kubernetes 1.19.4 package versions
+  * fix: ingress path issue
+
+-------------------------------------------------------------------
+Thu Nov 12 01:31:56 UTC 2020 - jenting.hsiao@suse.com
+
+- Update to version 3.4.1 (bsc#1179619):
+  * add unittes for 'helm dep build' with --skip-refresh flag.
+  * Add --skip-refresh option in helm dep build
+  * Added tests for PR 8948
+  * [#7696] Avoid crash in chart loader on unexpected file sequence
+  * [#7696] Avoid crash in chart loader on unexpected file sequence
+  * Updating to k8s 1.19.3 based packages
+  * lint: lint all documents in a multi-doc yaml file
+  * List either incubator or stable.
+  * Clarifies action needed to list new stable repo
+  * added test for https://github.com/helm/helm/pull/8913 related to https://github.com/helm/helm/issues/8621
+  * do not check YAML if nothing was parsed
+  * helm search supports semver pre version numbers starting with 0
+  * Fix that the invalid version number of the helm package command will escape
+  * Update err message to use the regex pattern directly
+  * Fix the lint error message for valid names
+  * Updating descriptions
+  * Adjusted import
+  * Reuse kube-client
+  * Fixes Error: could not find protocol handler for
+  * Add test case for LoadFiles
+  * Bugfix: panic when chart contains requirements.lock
+
+-------------------------------------------------------------------
+Fri Oct 30 10:38:59 UTC 2020 - Vicente Zepeda Mas <vzepedamas@suse.com>
+
+- Update to version 3.4.0:
+  * bump version to v3.4.0
+  * this rewrites a whole bunch of old repo URLs to the new repo URL (#8902)
+  * warn and block old repo URLs (#8903)
+  * improved user-facing error messages to explain the underlying problem (#8731)
+  * Linking to a more complete list of meeting details.
+  * add authentication to CircleCI jobs
+  * helm create: make generated YAML indentation more consistent
+  * Makefile: check and use GOBIN environment variable first
+  * TestCheckPerms: utilize pipe to read stderr
+  * Bump github.com/DATA-DOG/go-sqlmock from 1.4.1 to 1.5.0
+  * Bump github.com/sirupsen/logrus from 1.6.0 to 1.7.0
+  * feat(install): add requested version to error
+  * Bump github.com/gofrs/flock from 0.7.1 to 0.8.0
+  * Bump github.com/lib/pq from 1.7.0 to 1.8.0
+  * Fix wrong function's name in comment
+  * ref(cmd): prevent klogs flags from polluting the help text
+  * Adding support for k8s 1.19
+  * remove redudant time func
+  * fix example time format
+  * rename to time format flag
+  * refactor time formatting
+  * fix ls command example
+  * add time-format flag to list command
+  * Adding annotation to index.yaml file
+  * Fixing import package issue
+  * Update go version to 1.14 in go.mod
+  * use warning function
+  * Adding size labels pointer
+  * Fixing issue with idempotent repo add
+  * support passing signing passphrase from file or stdin (#8394)
+  * size/S and larger requiring 2 LGTMs
+  * Update docs links in release notes script
+  * fix: allow serverInfo field on index files
+  * fix(cmd/helm): add build tags for architecture
+  * switched to stricter YAML parsing on plugin metadata files
+  * Merge pull request from GHSA-m54r-vrmv-hw33
+  * Merge pull request from GHSA-jm56-5h66-w453
+  * Merge pull request from GHSA-9vp5-m38w-j776
+  * go fmt
+  * improve the HTTP detection for tar archives
+  * replace --no-update with --force-update and invert default. BREAKING.
+  * handle case where dependency name collisions break dependency resolution
+  * fixed bug that caused helm create to not overwrite modified files
+  * refactor the release name validation to be consistent across Helm
+  * fix: if not .Values.autoscaling.enabled indent
+  * validate the name passed in during helm create
+  * fix: check mode bits on kubeconfig file
+  * fix incorrect wildcard expand
+  * fix(comp): Disable file comp for output formats
+  * Makefile: Fix LDFLAGS overriding
+  * Add support to install helm
+  * Fixing typo in engine comments
+  * Use T.cleanup() to cleanup cmdtest_temp file
+  * Use RemoveAll to remove a non-empty directory
+  * mark NewTempServer as Deprecated
+  * Use T.Cleanup() to cleanup temp dir helm-repotest
+  * Support impersonation via flags similar to kubectl --as="user"
+  * Document all env vars for CLI help
+  * Use T.cleanup() to cleanup helm-action-test
+  * Add GPG signature verification to install script (#7944)
+  * fix: with .Values.podAnnotations indent template
+  * Revert PR 8562
+  * feat(comp): Add support for fish completion
+  * feat: status command display description
+  * Remove duplicate variable definition
+  * Fixed a variable name collision caused by two PR merges (#8681)
+  * Fix/8467 linter failing (#8496)
+  * fix name length check on lint (#8543)
+  * Fix spelling in completion.go
+  * cleanup tempfiles for load_test
+  * add checkFileCompletion for env HELM_BIN
+  * feat(env): add support of accepting a specific variable for helm env
+  * Fixing failing CI for windows
+  * pkg/*: Small linting fixes
+  * Correct checksum file links
+  * Fixing linting of templates on Windows
+  * use URL escape codes
+  * add v4 to list of exempt labels
+  * optimise if condition in service ready logic
+  * feat(comp): Disable file completion when not valid
+  * Bump Kubernetes to v0.18.8 + Bump jsonpatch
+  * release/mock: Ensure conversion from int to string yields a string
+  * Update Common Lables template in starter chart
+  * chore(deps): add dependabot.yml
+  * Fix Quick Start Guide Link in README.md
+  * add helm v4 todo comments for FindChartInAuthAndTLSRepoURL.
+  * polish the error handler
+  * Move selector filtering after latest release version filtering
+  * Added testing for list action with selector
+  * Added notice about supported backends
+  * Fix linting issues
+  * Added selector filtering
+  * Pass labels from secret/configmap to release object
+  * Added selector option to list command
+  * fix test that modifies the wrong cache data
+  * bufix: fix validateNumColons docs
+  * Fix typo
+  * darwin-386 and windows-386 are not supported now
+  * Fix issue with install and upgrade running all hooks
+  * introduce stale issue bot
+  * Close gzip reader when done.
+  * fix watch error due to elb/proxy timeout
+  * Avoid hardcoded container port in default notes
+  * add unit tests for FindChartInAuthAndTLSRepoURL.
+  * Restoring Build behavior
+  * Adding helm v4 todo
+  * Make unmanaged repositories version resolvable
+  * Locking file URIs to a version in lockfile
+  * Enhance readability by extracting bitwise operation
+  * fix(sdk): Polish the downloader/manager package error return (#8491)
+  * fix insecure-skip-tls-verify flag does't work on helm install, Keep FindChartInRepoURL and FindChartInAuthRepoURL functions signatures intact.
+  * fix: Allow building in a path containing spaces
+  * Alter whitespace in "Update Complete" output
+  * fix(create): update the hook name of test-connection pod
+  * polish the help text of flag
+  * Reinstating comment that is still accurate
+  * Rollback command support for max history
+  * fix(helm): Update test during pending install
+  * Correct make target in Makefile
+  * fix(helm): Added test for concurrent upgrades
+  * fix(helm): Avoid corrupting storage via a lock
+  * Fixing version and spelling errors
+  * Clarify comments to match practice
+  * fix the code style error
+  * feature(show): support jsonpath output for `helm show value`
+  * fix(kube): use logger instead of fmt.Printf
+  * fix windows build failure caused by #8431
+  * address PR comment, adding whitespace for formatting
+  * feat(helm): prompt for password with helm repo add
+  * Lint dependencies (#7970)
+  * Environment variable for setting the max history for an environment
+  * chore(OWNERS): move michelleN to emeritus
+  * bump version to v3.3
+  * fix conflict
+  * add test case
+  * fix another extreme case
+  * add test case
+  * fix #6116
+  * Make helm ls return only current releases if providing state filter
+  * Report what cause finding chart to fail
+  * Simplify chart installable check
+
+-------------------------------------------------------------------
+Mon Sep 28 19:49:33 UTC 2020 - dmueller@suse.com
+
+- Update to version 3.3.4:
+  * Fixing import package issue
+  * use warning function
+  * Fixing issue with idempotent repo add
+
+-------------------------------------------------------------------
+Mon Sep 21 09:10:14 UTC 2020 - Vicente Zepeda Mas <vzepedamas@suse.com>
+
+- Update to version 3.3.3:
+  * fix: allow serverInfo field on index files
+
+-------------------------------------------------------------------
+Mon Sep 21 09:05:39 UTC 2020 - Vicente Zepeda Mas <vzepedamas@suse.com>
+
+- Update to version 3.3.2:
+  * fix rebase
+  * fix(cmd/helm): add build tags for architecture
+  * switched to stricter YAML parsing on plugin metadata files
+  * Merge pull request from GHSA-m54r-vrmv-hw33
+  * Merge pull request from GHSA-jm56-5h66-w453
+  * Merge pull request from GHSA-9vp5-m38w-j776
+  * fixed bug that caused helm create to not overwrite modified files
+  * replace --no-update with --force-update and invert default. BREAKING.
+  * improve the HTTP detection for tar archives
+  * handle case where dependency name collisions break dependency resolution
+  * validate the name passed in during helm create
+  * refactor the release name validation to be consistent across Helm
+  * fix: check mode bits on kubeconfig file
+
+-------------------------------------------------------------------
+Wed Sep 09 06:03:52 UTC 2020 - dmueller@suse.com
+
+- Update to version 3.3.1:
+  * Fix spelling in completion.go
+  * Fixing linting of templates on Windows
+  * Bump Kubernetes to v0.18.8 + Bump jsonpatch
+  * Fix Quick Start Guide Link in README.md
+  * fix test that modifies the wrong cache data
+  * bufix: fix validateNumColons docs
+  * Fix typo
+  * Enhance readability by extracting bitwise operation
+  * Make helm ls return only current releases if providing state filter
+  * fix: Allow building in a path containing spaces
+  * Alter whitespace in "Update Complete" output
+  * Fixing version and spelling errors
+
+-------------------------------------------------------------------
+Tue Aug 18 12:42:53 UTC 2020 - dmueller@suse.com
+
+- Update to version 3.3.0:
+  * Fix issue with install and upgrade running all hooks
+  * bump version to v3.3
+  * fix(template):Issue:helm template with --output-dir (#8156)
+  * Adding v4 link
+  * Updating for today's actual milestone practices
+  * fix(cmd): display warnings on stderr
+  * Determine chart digest by manifest (#8249)
+  * Fix some go-lint warnings
+  * Fix golint issue
+  * feat(comp): Complete revision for rollback command
+  * fix template command use --show-only flags error in windows environment
+  * version bump
+  * remove s390x arch check
+  * feat(comp): Provide completion for --version flag
+  * chore(Makefile): Remove unused variable
+  * Improve the extractor and add tests (#8317)
+  * Add HelmVersion to Capabilities
+  * feat(cmd): Subcommands for the completion command
+  * fix(chartutil): do not set helpers.tpl filetype for vim
+  * Add unit test case
+  * feat(comp): Move custom completions to Cobra 1.0
+  * fix(doc): generic description for --version/verify
+  * Fix description is ignore when installed with upgrade
+  * Add unit test for man-in-the-middle attack on pull
+  * chore(helm): Avoid confusion in command usage
+  * Fix crashing `helm chart list` with large list
+  * Show errors when linting for Chart.yaml version and appVersion fields of type non-string
+  * ref(tests): localize unit test fixtures to package
+  * Fix issue with unhandled error on Stat
+  * Removing legacy completions.bash file
+  * Using flags instead of persistent flags on status
+  * Removing tiller language
+  * Added s390x support
+  * add kind_sorter support for SecretList
+  * Fix unit test
+  * Fix repo cache setting
+  * Update the Helm version docs
+  * Revert "group command for easy read"
+  * Catching a potential panic in strval parsing
+  * Recovering from panic that can occur with make
+  * Fixing error with strvals parsing
+  * ref(pkg/chartutil): use minimal in-memory fixtures
+  * feat: Detect missing selector during lint
+  * Add new line to fix code formatting in doc
+  * fix(comp): Prepare plugin completion for Cobra 1.0
+  * feat(test): Update golangci-lint to 1.27.0
+  * chore(*): Fix formatting
+  * Fixing PAX Header handling (#8086)
+  * fix: upgrade using --force shoud not run patch logic (#8000)
+  * feat(getter): add timeout option (#7950)
+  * fix security mailing list address
+  * bump DefaultCapabilities to 1.18
+  * bump to kubernetes 1.18.2
+  * scripts: do not use optional 'which' command in get-helm installation (#8048)
+  * feat: make the linter coalesce the passed-in values before running values tests (#7984)
+  * Removed scheme
+  * Fixes repo parsing
+  * Fixes repo parsing
+  * Set DisableCompression to true to disable unwanted httpclient transformation
+  * Update lint deprecation list
+  * refactor: alter constant `pluginFileName` to `PluginFileName`
+  * Fixing argument to be lower case
+  * docs: fix capitalization in a few help messages
+  * bump version to v3.2
+  * fix: removed strict template errors in linter (#8017)
+  * Add checking of length of resourceList before creating of deleting
+  * fix: use correct regular expression for Kubernetes names (#8013)
+  * feat: implement deprecation warnings in helm lint (#7986)
+  * added option --insecure-skip-tls-verify for helm install, addresses #7875
+  * added option --insecure-skip-tls-verify for helm pull, addresses #7875
+  * polish to keep the same log style
+  * Fix markdown table in helm command doc
+  * feat: lint the names of templated resources (#8011)
+  * Adding Helm env vars where XDG exposed
+  * Fix : Prints empty list in json/yaml is no repositories are present (#7949)
+  * Updating CONTRIBUTING to match current practice
+  * Adding PR template from dev-v2 branch
+  * Add unit test for pkg/chart/chart.go
+  * fix: write index.yaml file atomically (#7954)
+  * test: add test for bom test data integrity
+  * Fixing docs from version to appVersion (#7975)
+  * Modify Circle config to use Go 1.14 (#7980)
+  * fix(pkg/cli): ensure correct configuration from kubeconfig file
+  * fix(cmd/env): make helm env command respect cli flags (#7978)
+  * fix(*): remove bom in utf files when loading chart files (#6081)
+  * Helm upgrades with --reuse-values and nil user values -- with tests (#7959)
+  * fix(pkg/plugin): copy plugins directly to the data directory (#7962)
+  * fix linting error with lookup function (#7969)
+  * Parse reference templates in predictable order (#7702)
+  * group command for easy read
+  * fs_test: use os.Getuid() instead user.Current() to determine if a test is executed with root privileges.
+  * fix(helm): allow a previously failed release to be upgraded (#7653)
+  * Updating get stripts to skip pre-releases
+  * fix(pkg/kube): continue deleting objects when one fails
+  * Add comments about release Version variable
+  * fixed to mirror master
+  * removed panic, and replaced with error
+  * fix test
+  * added config file string
+  * Fix a typo "update" -> "updates" (#7346)
+  * fix(cmd): Fixes logging on action conf init error (#6909)
+  * Remove duplicated words (#7336)
+
+-------------------------------------------------------------------
+Fri Jul 17 08:44:30 UTC 2020 - manfred.h@gmx.net
+
+- Add bash and zsh completion sub-packages
+
+-------------------------------------------------------------------
+Tue Jul 07 09:11:25 UTC 2020 - dmueller@suse.com
+
+- Update to version 3.2.4 (fixes security issue
+  - https://github.com/helm/helm/security/advisories/GHSA-q8q8-93cv-v6h8
+  - https://github.com/helm/helm/security/advisories/GHSA-cjjc-xp8v-855w
+  - https://github.com/helm/helm/security/advisories/GHSA-qq3j-xp49-j73f )
+
+  * Improve the extractor and add tests (#8317)
+  * Add checking of length of resourceList before creating of deleting
+  * docs: fix capitalization in a few help messages
+  * polish to keep the same log style
+  * Fix markdown table in helm command doc
+  * Add unit test for pkg/chart/chart.go
+  * Fixing docs from version to appVersion (#7975)
+  * Helm upgrades with --reuse-values and nil user values -- with tests (#7959)
+  * fix(pkg/plugin): copy plugins directly to the data directory (#7962)
+  * fs_test: use os.Getuid() instead user.Current() to determine if a test is executed with root privileges.
+  * fix(helm): allow a previously failed release to be upgraded (#7653)
+  * Fixing per gofmt
+  * Fix issue with unhandled error on Stat
+  * chore(helm): Avoid confusion in command usage
+  * Fix unit test
+  * Fix repo cache setting
+  * Fixing PAX Header handling (#8086)
+  * fix: upgrade using --force shoud not run patch logic (#8000)
+  * Set DisableCompression to true to disable unwanted httpclient transformation
+  * fix: write index.yaml file atomically (#7954)
+  * fix linting error with lookup function (#7969)
+  * bump version to v3.2
+  * fix: removed inaccurate comment (#7937)
+  * Migrate SQL storage driver to Helm 3 (#7635)
+  * fix: Fixed a regression that was introduced with changed nil handling (#7938)
+  * Fix nested null value overrides (#7743)
+  * Updating sprig and semver to newer versions
+  * add unit test for function FindPlugins
+  * fix: rebuild chart after dependency update on install (#7897)
+  * Make get script eaiser for helm versions to live side by side (helm3 etc) (#7752)
+  * add softonic to adopters (#7918)
+  * test: forward-port regression test from Helm 2 (#7927)
+  * Add an improved user error message for removed k8s apis
+  * fix(tests): fix broken unit tests in storage (#7928)
+  * Add unit test for Secrets/ConfigMaps (#7765)
+  * docs: Update inline docs on action/upgrade.go (#7834)
+  * add unit test for metadata Validate
+  * add unit test for ChartFullPath
+  * add unit test for ChartPath
+  * add unit test for IsRoot
+  * updated help text for install --atomic, which was completely inaccurate (#7912)
+  * feat(cmd/helm): Update Cobra to 1.0.0 release
+  * fix(storage): preserve last deployed revision (#7806)
+  * fixed capitalization in a few help messages. (#7898)
+  * chore(comp): Remove unnecessary code
+  * ref(*): kubernetes v1.18 (#7831)
+  * Adding template docs to the version command
+  * Implement support for multiple args for repo remove (#7791)
+  * fix: fixed bug in Dependency.List() (#7852)
+  * Adding notes on semver to create Chart.yaml
+  * feat: allow image tag override
+  * feat: add pod annotations
+  * Avoid downloading same chart multiple times
+  * fix(helm): Data race in kube/client Delete func. (#7820)
+  * Improve --show-only flag (#7816)
+  * Add unit test for pkg/chart/chart.go
+  * remove unneeded values files from testchart
+  * update test chart to helm3 format
+  * fix: update unit test for go 1.14 error string change (#7835)
+  * Add fromYamlArray and fromJsonArray template helpers (#7712)
+  * Delete unneeded chart output
+  * add testing for upgrade --install with subchart notes
+  * pass subchart notes option to install client
+  * Snapcraft installation instructions added
+  * helm create command's templates more consistent
+  * Improve error message to check in unit test
+  * Add unit test for lint/values.go
+  * Fix a bug in Delete() in storage/driver/cfgmaps.go (#7367)
+  * Fix a bug in storage/driver/secrets.go Delete() (#7348)
+  * fix(cli): Make upgrade check if cluster reachable
+  * Correcting links for release notes
+  * Add tests
+  * Add more detail to error messages and support a non-force mode in metadata visitor
+  * Solve the issue #7749 where proper formating was not being done if --short(-q) option was used with other formating options like json, yaml
+  * Fixing issue where archives created on windows have broken paths
+  * fix(install): correct append tls config.
+  * Solve the issue #7749 where proper formating was not being done if --short(-q) option was used with other formating options like json, yaml
+  * Solve the issue #7749 where proper formating was not being done if --short(-q) option was used with other formating options like json, yaml
+  * Solve the issue #7749 where proper formating was not being done if --short(-q) option was used with other formating options like json, yaml
+  * Add unit test
+  * Fix stray modules
+  * Port --devel flag from v2 to v3
+  * Use Create method if no resources need to be adopted
+  * chore(go.mod): run `go mod tidy`
+  * Make the charts cache safe in presence of several Helm instances
+  * fix: add new static linter and fix issues it found (#7655)
+  * Add --insecure-skip-tls-verify for repositories (#7254)
+  * ref(environment): use string checking instead
+  * Save Chart.lock to helm package tar
+  * test(helm): fix client update error
+  * fix(helm): polish goimport
+  * add unit test for RecordsReplace
+  * fix(helm): respect resource policy on ungrade Don't delete a resource on upgrade if it is annotated with helm.io/resource-policy=keep. This can cause data loss for users if the annotation is ignored(e.g. for a PVC)
+  * add unit test for ConfigMapDelete
+  * add unit test for SecretDelete
+  * fix(ADOPTERS): alphabetize org list (#7645)
+  * Add verification output to the verify command
+  * Fixes verification output on pull command
+  * fix(helm): stdin values for helm upgrade --install
+  * Update README.md
+  * Add test for unknown subcommand
+  * Return "unknown command" error for unknown subcommands
+  * Fix golangci-lint errors.
+  * Fix dep build to be compatiable with Helm 2 when requirements use repo alias
+  * fix(cmd/helm): upgrade go-shellwords
+  * Printing name of chart that do not have requested import value.
+  * pkg/storage/records: add unit test for Exists
+  * pkg/storage/records: add unit test for Index
+  * pkg/storage/records: add unit test for Get
+  * fix(helm): add --skipCRDs flag to 'helm upgrade' When 'helm upgrade --install' is run, this will allow to skip installing CRDs Closes #7452
+  * feat(tests): Allow to provision memory driver
+  * feat(comp): Dynamic completion for plugins
+  * feat(comp): Static completion for plugins
+  * Alternative: annotation-only solution
+  * Adopt resources into release with correct instance and managed-by labels
+  * feat(comp): Move kube-context completion to Go
+  * feat(install): introduce --create-namespace
+  * Fix output of list action when it is failed
+  * Pass the apiserver address/port via cli, introduce HELM_KUBEAPISERVER envvar
+  * add license headers to release-notes.sh script
+  * Adds script to help craft release notes
+  * pkg/helmpath: fix unit test for Windows
+  * fix golint failure in pkg/action
+  * cmd/helm/search_repo: print info to stderr
+  * pkg/gates: add unit test for String
+  * Fix render error not being propogated
+  * IsReachable() needs to give detailed error message.
+  * fix(scripts): scrape for the latest v2/v3 release from the releases page
+  * feat(upgrade): introduce --disable-openapi-validation: This is a copy of the --disable-openapi-validation flag from the install command as introduced by Matthew Fisher. See commit 67e57a5fbb7b210e534157b8f67c15ffc3445453
+  * ref(go.mod): k8s api 0.17.3
+  * Making fetch-dist get the sha256sum files
+  * Pass kube user token via cli, introduce HELM_KUBETOKEN envvar
+  * Place rendering invalid YAML under --debug flag
+  * fix(kube): generate k8s native scheme only once
+  * fix(kube): use non global Scheme to convert
+  * Revert "Do not delete templated CRDs"
+  * fix(helm): improved logs
+  * Fix shasums to be usable by shasum and sha256sum applications
+  * fix(comp): Fix broken completion for --output flag
+  * add test for template recursion
+  * fix recursion count in templates
+  * Fix 'helm template' to also print invalid yaml
+  * fixed missing bullet
+  * Add ADOPTERS file, per CNCF requirements (#7507)
+  * bump version to v3.1
+  * fix(version): fix typo in doc comment
+  * fix(helm): Reworded logs for clarity
+  * chore(*): Removes support for searching the plugin dir
+  * chore(postrender): Adds unit tests for exec post renderer
+  * Adds post-render support
+  * fix(memory_test): rebase master
+  * fix(cmd): Specify namespace for template command
+  * fix(tests): Add namespace support to memory driver
+  * Fixes issue where non-CRDs are read in from the crd directory
+  * ref(kind_sorter): use an in-place sort for sortManifestsByKind, reduce code duplication
+  * Fix engine.newFiles doc comment
+  * Fixes issue where <CHARTNAME> is left in starter values file
+  * fix(tests): Ignores tarball that will change on dep update
+  * fix(helm): Don't wait for service to be ready when external IP are set
+  * fix(chart): lock digest differs when dependency build with Helm 2 and then Helm 3 (#7261)
+  * Create a single shasums.txt
+  * Create a single shasums.txt
+  * ref(go.mod): oras v0.8.1 (#6862)
+  * feat(template): Allow template output to use release name (#7503)
+  * fix(tests): Make tests pass on MacOS
+  * fixed dependencies processing in case of helm install or upgrade for disabled/enabled sub charts
+  * fix(test) use newly created index instead of ignoring it
+  * Fix tests on arm64 and ppc64le (#7500)
+  * style(cmd/lint): removed slash in subcharts fp
+  * fix(lookup_func): do not return error when object is not found
+  * Fix typo
+  * Tidy up go dependencies (#7494)
+  * fix(template): helm template "--show-only" flag producing duplicates when flag used more than once (#7204)
+  * Fix some spelling errors in comment (#7492)
+  * When no resources were created, do not try to clean them up
+  * fix(comp): Allow zsh completion to handle -n flag
+  * Adding security file
+  * maintain backwards compatibility in the api for the CRDs function
+  * fix(package): remove --set, --values, etc. flags
+  * fix(chartutil): remove empty lines and a space from rendered chart templates (#7455)
+  * Friendly error message for non-existent Chart while packaging (#7127)
+  * fix(helm): sort hooks by kind for equal weight
+  * fix test-style
+  * allow limited recursion in templates
+  * Render the CRDs to spec files
+  * fix(test): Remove invalid subcommand in test
+  * fix(kube) only add to scheme.Scheme once
+  * Use /usr/bin/env for bash
+  * Remove references to protobuf (#7425)
+  * Allow tests to run on s390x (#7096)
+  * fix(comp): Update based on review comments
+  * Add unit test for Reverse() in pkg/releaseutil.go
+  * fix: catch one additional discovery client warning (#7176)
+  * feat(version): show "unreleased" when built from a branch
+  * fix(helm): improve handling of corrupted storage
+  * unnecessary import removed
+  * Signed-off-by: Ahmad Kazemi <ahmad.kazemi@recordpoint.com> log.Printf replaced to fix the log issue.
+  * feat(comp): Isolate go completion framework better
+  * feat(comp): Use cached charts file for speed
+  * feat(test): add some completion tests
+  * feat(comp): Don't use error codes for completion
+  * feat(comp): Support completion for --revision flag
+  * feat(comp): Support --generate-name in completion
+  * feat(comp): Dynamic completion of flags in Go
+  * feat(comp): Dynamic completion of arguments in Go
+  * go.mod,go.sum: bump to k8s v1.17.1
+  * ref(pkg/storage): Refactor Deployed and DeployedAll (#7374)
+  * Fix: helm3 - kind sorter incorrectly compares unknown and namespace
+  * Fix typo in comment for func IsReachable
+  * fix(test): Make resetEnv() properly reset settings
+  * Refactored alpine-pod.yaml file to make the example work in accordance to the Values.yaml file
+  * feat(comp): Speed up completion of charts
+  * feat(chore): Remove unused code
+  * Add hpa boilerplate
+  * go.mod,go.sum: bump Kubernetes dependencies 1.17.0
+  * stop with an error immediately if a file or directory with that name already exists (#7187)
+  * add option to bypass kubeconfig namespace
+  * [helm create] Include serviceAccount.annotations value (#7246)
+  * Add corresponding unit test to the function in parser.go
+  * fix(helm): move ServiceAccount before Secret in InstallOrder.
+  * chore(go.sum): run `go mod tidy`
+  * fix error output
+  * fix(tests): use sigs.k8s.io/yaml
+  * Fix a typo "update" -> "updates" (#7346)
+  * Add unit test for List() of pkg/storage/driver/memory.go
+  * fix(cmd): Fixes logging on action conf init error (#6909)
+  * Remove duplicated words (#7336)
+  * Improve description for `--all` flag (#7144)
+  * Add corresponding unit test to the function in resolver.go
+  * Fix typo in --values cmd flag
+  * Do not delete templated CRDs
+  * Fix a typo "the the" -> "the"
+  * fix(comp): tail cannot open +2 for reading
+  * fix(tests): Use relative path to acceptance tests
+  * Add corresponding unit test to the function in resource.go.
+  * feat(cmd/lint): added a flag for linting subcharts
+  * test(cmd/lint): added test for --with-subcharts flag
+  * docs: point users to helm hub
+  * fixup! Updated make to create two files sha256/sha256sum Please link sha256sum as checksum file in GIT releases page for future release
+  * Updated make to create two files sha256/sha256sum Please link sha256sum as checksum file in GIT releases page for future release
+  * fix(helm): add .orig as typical backup file
+  * feat(checksum): update to get/get-helm-3 to match shasum fix
+  * feat(checksum): Generate shasum/sha256sum -c compatible sha256 file
+  * Port PR #4161 Fix incorrect timestamp when helm package to Helmv3
+  * Add back fix for CRD patch creation
+  * Add new Makefile targets
+  * Spelling (#7258)
+  * add technosophos public key (#7256)
+  * fix(kube): Port use of watcher with retries to wait for resources (#7217)
+  * fixed golint
+  * additional fixes based on @thomastaylor312 comment
+  * addressing some feedback from  @thomastaylor312
+  * fixed test issue
+  * added rest client passed with action configuration
+  * added license header
+  * fixed circle ci issues
+  * added check on namespaced resource
+  * first lookup template function implementation
+  * doc(helmpath) move licensing info out of godoc
+  * fix(install) crd install with apiextensions.k8s.io/v1
+  * feat(template): process manifests in file path order, then in order found in each file (before sorting manifests)
+  * fix(helm): Validate number of arguments in install client
+  * Add missing statuses to the status help text (#7035)
+  * Updating to sprig 3.0.2 to bring in a bugfix
+  * fix(cmd): Add message about deprecated chart (#6889)
+  * ref(pkg/action): split test of filterList (#6875)
+  * fix(*): Helm v3 handling of APIVersion v1 charts dependencies (#7009)
+  * add Marc Khouzam as a core maintainer
+  * feat(install): introduce --disable-openapi-validation
+  * chore(testdata): remove stale output
+  * fix(tests): Repair tests failures
+  * fix(helm): add --description flag to helm (#7074)
+  * Repair failing unit tests - failure caused by os.Stat return values for directory size on Linux.
+  * Reintroduce --is-upgrade to template command
+  * fix: clarified behavior of 'list --deleted' (#6950)
+  * improved the error message for failed package signing (#6948)
+  * fix this inconsistency in the docs (#7157)
+  * Fix godoc badge
+  * Restoring fetch-dist and sign Make targets
+  * fix(install): use ca file for install (#7140)
+  * use sigs.k8s.io/yaml instead of gopkg.in/yaml.v2
+  * Fixing the code of conduct pointer
+  * fix "Chart.lock is out of sync with Chart.yaml" (#7119)
+  * Add a flag to allow template to output CRDs
+  * fix(tests): mapfile is not available on MacOS
+  * fix(cli): IsReachable check for "get values"
+  * fix stack overflow error (#7114)
+  * test(pkg): add unit tests for tar file edge cases
+  * docs(install): clarify the --replace flag (#7089)
+  * fix: ignore pax header files in chart validation
+  * fix(plugin): Avoid crash on missing flag
+  * chart_downloader: fix lint issue.
+  * chart_downloader: avoid overriding TLS options from command flags when not setup in repo config.
+  * cli/pull: pass TLS config to chart downloader from flags. (#7055)
+  * chart_downloader: add TLS client config to options from repo config. (#7055)
+  * chart_downloader: add test to verify that http opts are used correctly. (#7055)
+  * fix(plugin): Avoid duplication of flag list
+  * fix(plugin): Add missing -n known flag
+  * fix(lint): Remove requirement that directory name and chart name match
+  * remove unused variable
+  * fix(lint): Remove requirement that directory name and chart name match
+  * Signed-off-by: Jonathan Meyers <jonathan@cybrary.it>
+  * Signed-off-by: Jonathan Meyers <jonathan@cybrary.it>
+  * homebrew renamed formula to just helm from kubernetes-helm
+  * Add s390x build target
+  * fix: change error message to contain correct field name
+  * fix(get-helm-3): remove tiller checks, fixup version check
+  * fix(get): hard code DESIRED_VERSION when unset
+  * fix(wait): Adds support for waiting on v1 apiextensions for CRDs
+  * fix(get): install Helm v2.16.1
+  * fix(reame):  update links to docs
+  * fix(install): log the error when recording the release
+  * fix(pkg/downloader): resolve repo alias before checking digests on build
+  * fix(pkg/downloader): add failing test for build with repo alias
+  * fix(strvals): port #3912, #4142, #4682, and #5151 to Helm 3
+  * fix(ci): pin golangci-lint to v1.21.0
+  * Used timeout instead of deadline
+  * fix(cli): helm list was ignoring some errors
+  * ref(tlsutil): remove ServerConfig
+  * fix(tlsutil): accept only a CA certificate for validation
+  * fix: stop discovery errors from halting chart rendering. (#6908)
+  * print gvk information on existing resource conflict
+  * fix(cli): Sort output of helm env
+  * fix(show): restore comments from raw values
+  * Correct spelling mistakes
+  * fix(cmd): Standardizes all output to use lower snake_case names
+  * Consider namespace when comparing resources
+  * fix(version): implement `helm version -c`, mark as hidden
+  * fix(getter): set up TLS options during .Get()
+  * fix(chart): add JSON tags to chart object
+  * fix(comp): Protect against user's aliases
+  * fix(cmd): Updates description for template validation flag
+  * Updating the usage language for search repo
+  * feat(v3): Add shorthand for --all-namespace flag in list command (#6848)
+  * fix(action): strip file extensions from name
+  * Revert "[Makefile] Support reproducible builds"
+  * Add namespace option to example kubectl command
+  * fix(kube): return error when object cannot be patched
+  * feat(helm): add linting support for '.tar.gz' tarballs for helm charts (#6829)
+  * [Makefile] Support reproducible builds
+  * fix(comp): helm plugin 'remove' is now 'uninstall'
+  * fix(version): lift "unreleased" status
+  * Porting fix from commit f5986db184cf6d16dcd48760ac749a20236fb845
+  * Fix import
+  * fix rename for helm dependency upgrade
+
+-------------------------------------------------------------------
+Thu Feb  6 12:11:42 UTC 2020 - Joachim Gleissner <jgleissner@suse.com>
+
+- Update to version 3.0.3
+- Drop obsolete README.packaging
+
+-------------------------------------------------------------------
+Tue Sep 24 12:19:24 UTC 2019 - mmeister@suse.com
+
+- Update to version 3.0.0beta.3:
+  * fix(pkg/cli): do not override users xdg directories
+  * Unifity environment variable naming and use
+  * Displaying environment variables in alphanum order for env cmd
+  * Remove ability to have duplicates in environment variables
+  * fix: clear the discovery cache after CRDs are installed (#6332)
+  * ref(pkg/engine): cleanup of development `hack`
+  * Poposal: Hook to run acceptance tests (#6256)
+  * fix BusyBox sed (#6340)
+  * Distinct doc strings for repository-cache and repository-config
+  * doc(cli): restore help text for helm configuration
+  * docs: Add best practices compliance badge (#6320)
+  * Move the logic for checking env in pkg/cli and store all envs in a central place
+  * Updated to get Helm env Paths and XDG env paths only
+  * Logic for the helm env command
+  * helm-v3: Dynamic completion for "helm repo" and "helm plugin" (#6263)
+  * fix(cmd/helm): user friendly error message when repos are not configured
+  * Make the lint cmd output a bit easier to follow
+  * Revert "fix(cmd/helm): user friendly error message when repos are not configured"
+  * fix(cmd/helm): user friendly error message when repos are not configured
+  * return namespace assigned to --namespace
+  * fix(cmd/helm): Missing params for dir locations (#6300)
+  * fix(cmd/helm): Remove mention of init from help (#6298)
+  * Stop multiple error messages in lint results
+  * Fix: set config dir in repo update cmd (#6292)
+  * Applied check to actions
+  * Add IsReachable to /pkg/kube/client to see if connected to the internet
+  * chore(*): Add GPG key for Adam
+  * ref(cmd/helm): remove init command
+  * chore(registry): upgrade to oras v0.7.0 (#6285)
+  * chore(OWNERS): sync with master (#6224)
+  * feat(cmd/helm): remove need for helm init command
+  * Fix Adding Errors from Linter.Messages to result.Errors
+  * ref(*): remove dead code
+  * Test for Linting multiple charts with the same vals instance
+  * Clone the vals map for every path to avoid mutation
+  * Remove mention of 'helm update'
+  * feat: Add support for a crds/ directory
+  * chore(*): Add GPG key for Taylor
+  * fix(registry): Updates registry to handle go 1.12.8 changes
+  * fix(chartutil): remove executable bits from chartutil generated files
+  * ref(test): join all hook manifests before building
+  * style(action): fix style tests
+  * fix(action): return an error if len > 0
+  * fix(test): restore --cleanup
+  * Updating the search language and flags for consistency
+  * Breaking up the search command into multiple commands based on type
+  * Exposing Helm Hub search via the search command
+  * ref(internal/experimental/registry): pkg refactor (#6205)
+  * ref(cmd/helm): unify log functions
+  * fix(pkg/kube): only wait for events from Jobs and Pods
+  * Updated upgrade to give more verbose output
+  * Updating the httpgetter to use the new user agent function
+  * Making the monocular client search path a const
+  * Moving monocular client to internal and adding user agent to version pkg
+  * Adding a monocular client as a package
+  * ref(*): Moves packages to internal
+  * ref(cmd/helm): remove helm home command
+  * feat(hooks): add Running phase
+  * feat(getter): set default User-Agent
+  * feat(cmd): use alt dest for chart export (#6193)
+  * fix(action): return nil if no errors occurred
+  * feat(cmd): put OCI commands behind a feature gate
+  * Move KEYS from master to dev-v3
+  * fix(helmpath): fix syntax errors for windows tests
+  * fix(chartutil): Ensure nested template dir on save (#6177)
+  * refactor(hooks): replace hook execution Successful bool with HookPhase
+  * Fix make test
+  * fix(kube): Fixes nil panic with stateful set waiting
+  * chore(cmd): Updates --wait flag help
+  * docs(chart): updates APIVersionV2 comment to reflect the proper name
+  * pkg/cli/values/options_test.go: re-add MergeValues test with mergeMaps
+  * fix(plugin): add HELM_HOME back
+  * feat(cli): support XDG base directory specification
+  * ref(client): use three-way merge patch strategy
+  * Remove the chart lock file as its v1 structure
+  * Update linting and checking for apiVersion v1/v2
+  * fix(test): wait for pods and record status
+  * review: move ValueOptions to SDK
+  * cmd/*,pkg/*: move ValueOptions to cmd package and decouple from SDK
+  * doc(hooks): note helm 2 test annotation support requirement
+  * refactor(release): track test executions via Hook type
+  * feat(client): wait for Pods during hook execution
+  * feat(test): define tests as Jobs and allow arbitrary supporting resources
+  * Fix values being ignored when reusing values on upgrade
+  * fix(rollback): fix revision argument not being handled
+  * fix(pkg/action): Allow name re-use for helm template
+  * Removes clientset method from interface in favor of the configuration struct
+  * Fixed object typing for watching Jobs/hooks
+  * Fixes issues with delete
+  * ref(*): Refactors kube client to be a bit more friendly
+  * ref(kube): Renames `Result` type to `ResourceList`
+  * Allow missing trailing '/' in --repo url
+  * Enable style conformance test in circleci build
+  * Fix style conformance issue
+  * Switch to a more unique delimiter for template execution errors
+  * Fix style conformance issues
+  * Update scaffold chart to v2 apiVersion
+  * Added List mode for Role, ClusterRole and Bindings
+  * Removing the stable repository
+  * test: add test
+  * fix: use repo default client to download index
+  * Fix a parsing issue with command line arguments
+  * fix: call chartutil.ProcessDependencies in action.Install
+  * ref(action): remove ParseReferenceWithChartDefaults
+  * fix(engine): Fix eating too many colons during template execution
+  * Use chart version as default tag when saving
+  * feat(helm:create): allow absolute paths
+
+-------------------------------------------------------------------
+Wed Jul 24 14:22:50 UTC 2019 - mmeister@suse.com
+
+- Update to version 3.0.0alpha.2:
+  * Fix paths in the ingress template and values file written by helm create
+  * docs(CONTRIBUTING): one LGTM for maintainers, remove "always 2 LGTMs" policy
+  * chore(docs): move docs to helm-www
+  * chore(deps): bump kubernetes to v1.15
+  * Added HorizontalPodAutoscaler to sort order.
+  * feat(template): introduce --validate
+  * fix(kube): remove namespace enforcement
+  * ref(getter): change NewHTTPGetter and NewPluginGetter to return type Getter
+  * ref(downloader): pass in options to ChartDownloader
+  * support writing multiple resources to the same file
+  * chartutil.ReadValues is forced to unmarshal numbers into json.Number refs #1707 [dev-v3]
+  * fix(client): Fixes a timing issue with reading client flags
+  * Add sub-command support to plugin downloader
+  * Replaced ghodss/yaml with sigs.k8s.io/yaml
+  * feat(action): Refactors unit tests with better fakes
+  * feat(*): Adds back --atomic functionality to Helm 3
+  * chore: add ValueOptions constructor
+  * ref(*): Refactors the history action to return releases instead of formatted output
+  * feat(wait): Adds smarter waiting for DaemonSets and StatefulSets
+  * Fix linter issuers
+  * Helm 3:  set custom manifest config media type on chart push (#5719)
+  * fix(pkg/action): Adds back in missing wait functionality
+  * fix(pkg/kube): Fixes wait functionality
+  * ref(getter): introduce Options for passing in getter parameters
+  * Expose the resource types in addition to the api group/version in templates
+  * Redo the same fix with #3915 in dev-v3 branch
+  * Fix linter issues
+  * Updating to newer version of sprig
+  * Restoring the Release.Namespace docs
+  * Updating to the new Ingress group version
+  * Stop Lint from breaking when using required
+  * Remove mention of the execute flag
+  * Fix the build section in the developer doc
+  * fix(resolver): compare hash of lockfile against resolved dependencies
+  * ref(version): catch some edge cases
+  * Add documentation on registries (#5754)
+  * add go version to version cmd output of helm
+  * ref(urlutil): remove stripPort
+  * ref(downloader): remove ResolveChartVersionAndGetRepo
+  * chore(testdata): remove stale test output
+  * fix(circle): only upload packages and checksums, not cross-builds
+  * fix and add test cases
+  * Revert "do not write empty templates to disk"
+  * add test for output-dir
+  * Add dynamic completion for release names
+  * (helm): update Cobra to version 0.0.4
+  * fix issue 5792
+  * ref(*): expose klog flags
+  * do not write empty templates to disk
+  * use outputDir instead of hardcoded value
+  * docs(faq): add namespace changes for non existing namespaces
+  * ref(pkg/chartutil): break up chartutil into logical files
+  * support --output-dir option for helm3 template
+  * fix missing package name
+  * ref(pkg/chart): remove unused chart.RawValues
+  * docs(install): fix release links
+  * fix(docs): fix `helm install` usage
+  * fix ByDate sorter to use Time.Unix()
+  * update list tests expected output files
+  * fix test cases for list.AllNamespaces
+  * remove unnecessary setting of list.All flag
+  * add superseded to list filter mask
+  * add more releases to list tests
+  * fix docs for helm list
+  * Remove redundant ByNameAsc enum value. Handled by default sorting
+  * handle default list sort order through enum order
+  * fix test cases for sort list with options
+  * fix sort list with options bug
+
+-------------------------------------------------------------------
+Wed Jun 26 09:50:23 UTC 2019 - mmeister@suse.com
+
+- Update go to 1.12:
+  * strings.ReplaceAll requires 1.12
+
+- Update to version 3.0.0alpha.1:
+  * fix(pkg/action): add namespace to release options
+  * feat(pkg/chart): support deprecated requirements.yaml
+  * ref(pkg/kube): cleanup kube client interface
+  * Adding apiVersion guidance to the linting
+  * Updatin gthe apiVersion linting for Helm v3
+  * Adding lint check for apiVersion which is a required field
+  * fix(loader): assume apiVersion is v1 when loading charts
+  * update links to get.helm.sh
+  * docs(faq): more information on what changed in Helm 3
+  * pass debug option to registry client
+  * Print manifest output for dry-run option
+  * Updating OWERS to remove outdated reviewers and to reflect current case
+  * fix(circle): lsb_release does not exist in linuxkit images
+  * fix(cmd/helm): set 300s as default on timeout flags
+  * Fix scaffold chart label in helper template
+  * ref(circle): push assets to Azure
+  * ref(*): use time.Duration for timeouts
+  * ref(pkg/chartutil): remove k8s version object dependency
+  * ref(pkg/kube): extract wait logic from install/update
+  * fix(pkg/action): load clients after flags have been parsed (#5681)
+  * Updating the labels for consistency
+  * Reduce template code duplication. Fixes #5372
+  * Add app.kubernetes.io/version label
+  * Updating to the k8s label convention
+  * Helm 3: registry login/logout (#5597)
+  * Change the nginx app version to a set tag
+  * Validate library chart files after chart loaded
+  * Fix the image field for the scaffold chart application
+  * Fix test data
+  * Add capability for application charts to be used as library charts
+  * Update from source section in install doc
+  * docs: Replace reference to k8s.io to helm.sh
+  * Feat/schema validation (#5350)
+  * fix test command, move test to test run subcmd
+  * Change header "APP_VERSION" to "APP VERSION"
+  * Add app version to history table
+  * ref(create): app version should be 0.1.0
+  * fix multi uninstall bug
+  * fix(pkg/engine): Style changes on template errors
+  * fix(pkg/engine): Catch non-templating errors when rendering templates
+  * fix(pkg/engine): Clean up template error messages
+  * ref(pkg/chart): add validation method to chart
+  * Fix files copyright
+  * Fix docs targets
+  * Remove docs target and generated docs folder
+  * Fix make docs target
+  * docs: Update the "Developer Guide"
+  * fix(pkg/chartutil): marshal capabilities VersionSet into slice
+  * fix(pkg/chartutil): only include external objects in capabilities
+  * ref(pkg/action): refactoring dup code and linter fixes
+  * chore(dep): bump kubernetes to 1.14.0
+  * ref(uninstall): purge release history by default
+  * ref(list): move namespaces field closer to the name
+  * Remove a trivial TODO comment
+  * fix(cmd/template): allow setting release name for template
+  * chore(dep): update sprig to 2.19.0 (#5390)
+  * ref(circleci): refactor ci setup
+  * fix(*): resolve new govet issues
+  * fix(pkg/action): action log must be initialized
+  * fix(install): fix issue where chart metadata is not being saved on `helm install`
+  * docs(faq): list changes since Helm 2
+  * feat(*): use vanity import helm.sh/helm
+  * ref(action): remove ParseShowOutputFormat
+  * style(cmd): go fmt
+  * ref(cmd): remove mockTestSuccessTemplate
+  * fix(action): remove test.go
+  * test(cmd): refactor release_testing_test.go
+  * ref(action): move AddFlags functions back to cmd
+  * ref(action): remove io.Writers, return string instead
+  * fix(helm): fix `helm status` output formatting
+  * ref: remove pkg/helm, pkg/hapi, pkg/tiller
+  * chore(deps): upgrade dependencies
+  * feat(tests): replace gometalinter with golangci-lint
+  * Fix #5046 compatible with MacOS (#5406)
+  * Fixes #5046, zsh completion (#5072)
+  * Remove newline at the start of zsh completion file (#4851)
+  * chore(circle): bump go to 1.12 (#5382)
+  * remove appveyor (#5413)
+  * ref(pkg/engine): make template specific functions private
+  * fix(engine): make template rendering thread safe
+  * fix(deps): add github sources to gopkg.in dependencies
+  * docs: s,kubernetes/helm,helm/helm,g (#5404)
+  * docs: consolidate FAQs into one doc (#5402)
+  * docs: bring CONTRIBUTING doc up-to-date with current practices (#5401)
+  * ref(pkg/helm): refactor out `ReleaseStatus`
+  * Update after review
+  * Update the docs
+  * Add chart type
+  * Fix linter warnings
+  * feat(Makefile): add formatting target
+  * Helm 3: fix "latest" tag bug (#5279)
+  * feat(helm): add --plugins flag to 'helm init' (#5109)
+  * ref(ci): persist dep cache
+  * purge plugin directory on `helm plugin remove plug` (#4068)
+  * Helm 3: initial registry support (#5243)
+  * ref(*): remove references to chart 'engine'
+  * optimize vendor caching on appveyor (#5251)
+  * chore(ci): bump golang to 1.11.5
+  * fix appveyor builds (#4934)
+  * fix(deps): resolve dep warning messages
+  * Feature(Plugins): Enable platform specific commands (#5176)
+  * ref(*): remove helmVersion chart constraint
+  * fix: fix a number of style errors (#5136)
+  * feat: add 'pkg/action' for list operations (#5077)
+  * feat(Makefile): automate go vendoring and building
+  * Changed requirements.yaml references to dependencies section references
+  * Updated change from requirements.yaml to dependencies field in Chart.yaml
+  * feat(cmd/helm): re-add --history-max option to v3
+  * ref(*): kubernetes v1.13 support
+  * ref(*): replace byte array with map for Release config
+  * ref(pkg/chartutil): simplify chart dependency unit tests
+  * ref(pkg/chart): rename Requirements to Dependencies
+  * ref(url) update helm's github url (#4962)
+  * ref(pkg/repo): rename RepoFile to File
+  * ref: rename inspect to show (#4927)
+  * ref(pkg/chartutil): attempt to make requirements processing readable
+  * ref(pkg/chart): rename files to be consistent with types
+  * fix missing formatting character error in wrapf statement (#4881)
+  * ref: require name by default on 'helm install' (#4858)
+  * remove dirname constraint on `helm package` (#4141)
+  * ref(tests): remove broken symlinks in testdata
+  * doc(helm): remove Tiller reference from the docs (#4788)
+  * ref(*): kubernetes v1.12 support
+  * ref(helm): rename fetch to pull (#4714)
+  * fix(tests): set mock to generate UTC timestamps (#4716)
+  * ref(driver): refactor out function type errors
+  * ref(*): rename requirements.lock to Chart.lock
+  * ref(*): merge requirement.yaml into Chart.yaml
+  * ref(chart): use map for chart.Values
+  * change copyright to "Copyright The Helm Authors"
+  * ref(*): refactor chart/chartutil
+  * ref(*): kubernetes v1.11 support
+  * ref(cmd): rename `helm delete` to `helm uninstall`
+  * release canary v3 binaries as helm-dev-v3
+  * feat(*): remove Time, Namespace, and Revision from template functions
+  * ref(cmd): dry up values and chartpath flag options
+  * ref(cmd): test template cmd using golden files
+  * ref(cmd): refactor argument validation
+  * ref(tests): simplify cmd test setup/teardown
+  * ref(*): s/tiller/helm/
+  * feat(*): print stacktrace on error with debug enabled
+  * ref(cmd): consistent naming of cmd variables
+  * ref(cmd): remove Writer from Cmd options stucts
+  * ref(tests): use golden files for testing command output
+  * ref(*): rebuild build version object
+  * ref(pkg/tiller): add flag to enable tilling logging in tests
+  * ref(*): convert const types to strings
+  * ref(cmd): simplify cmd test setup
+  * ref(*): remove local repository (dead code)
+  * ref(cmd): remove serve command
+  * fix(kube): output internal object table
+  * feat(cmd): add --all-namespaces to list
+  * feat(dep): replace glide with dep
+  * ref(*): move kubeconfig flags to helm/environment
+  * ref(pkg/tiller): flatten package structure for storage
+  * fix(hapi): typo in struct json tags
+  * feat(*): store release History in same namespace as release
+  * feat(cmd): alias -n to --namespace
+  * fix(tests): fix race in releasetesting test
+  * chore(hapi): add missing license headers
+  * ref(*): replace TillerVersion with HelmVersion
+  * ref(*): replace chart.config with []byte
+  * ref(pkg/releasetesting): simplify test setup
+  * ref(*): cleanup timestamps in tests
+  * ref(*): use go conventions for naming types
+  * ref(*): remove protobuf any type
+  * ref(*): remove protobuf timestamps
+  * ref(hapi): convert protobuf to go types
+  * ref(pkg/kube): simplify creating versioned objects
+  * ref(*): improve initializing helm clients
+  * ref(proto): remove unused protobufs
+  * ref(pkg/tiller): simplify exported methods
+  * ref(*): remove grpc
+  * ref(*): refactor release testing
+  * docs(generated): remove generated docs
+  * ref(*): remove HELM_HOST
+  * ref(*): remove pkg/kubernetes from tiller and storage
+  * ref(*): bypass grpc for helm client
+  * fixup! ref(cmd,pkg/helm): remove server side version
+  * ref(pkg/tiller): remove ReleaseModules interface from tiller
+  * ref(*): bypass grpc when invoking helm list
+  * ref(pkg/tiller): refactor out imports of pkg/helm
+  * ref(cmd): remove deprecated command
+  * ref(Makefile): cleanup and consolidate
+  * ref(cmd/tiller): delete main tiller package
+  * ref(pkg/helm): cleanup unused code
+  * ref(cmd): remove reset and init tiller commands
+  * ref(pkg/helm): allow ReleaseContent to call storage directly
+  * ref(cmd,pkg/helm): remove tiller ping
+  * ref(cmd,pkg/helm): remove server side version
+  * remove proto make targets
+  * remove tiller build infra
+  * remove rudder build infra
+
+-------------------------------------------------------------------
+Fri May 17 09:47:48 CEST 2019 - jsuchome@suse.com
+
+- set correct git_commit value so that 'helm version' reports correctly
+- build with Go 1.11 to prevent https://github.com/helm/helm/issues/4987
+- added service file for helm-serve
+
+-------------------------------------------------------------------
+Thu May 16 04:26:51 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- Add README.packaging as Source
+- Update to version 2.13.1. See following changelogs for detailed
+  descriptions:
+  * https://github.com/helm/helm/releases/tag/v2.13.1
+  * https://github.com/helm/helm/releases/tag/v2.13.0
+  * https://github.com/helm/helm/releases/tag/v2.12.3
+  * https://github.com/helm/helm/releases/tag/v2.12.2
+  * https://github.com/helm/helm/releases/tag/v2.12.1
+  * https://github.com/helm/helm/releases/tag/v2.12.0
+  * https://github.com/helm/helm/releases/tag/v2.11.0
+  * https://github.com/helm/helm/releases/tag/v2.10.0
+  * https://github.com/helm/helm/releases/tag/v2.9.1
+  * https://github.com/helm/helm/releases/tag/v2.9.0
+
+-------------------------------------------------------------------
+Wed Dec 19 01:36:13 UTC 2018 - clee@suse.com
+
+- Require golang >= 1.10.6
+  * bsc#1118897 CVE-2018-16873
+    go#29230 cmd/go: remote command execution during "go get -u"
+  * bsc#1118898 CVE-2018-16874
+    go#29231 cmd/go: directory traversal in "go get" via curly braces in import paths
+  * bsc#1118899 CVE-2018-16875
+    go#29233 crypto/x509: CPU denial of service
+-------------------------------------------------------------------
+Thu Dec 13 04:47:38 UTC 2018 - dorf@suse.com
+
+- Require golang >= 1.10.
+
+-------------------------------------------------------------------
+Tue Aug  7 09:58:51 UTC 2018 - mmeister@suse.com
+
+- run spec-cleaner over tthe specfile
+  there have been some deprecated macros used
+
+-------------------------------------------------------------------
+Tue Jun  5 09:50:49 UTC 2018 - dcassany@suse.com
+
+- Make use of %license macro
+
+-------------------------------------------------------------------
+Tue Mar 13 16:31:32 UTC 2018 - kmacinnes@suse.com
+
+- Update to version 2.8.2:
+  * Tiller should only enforce what we expect from Helm
+  * Keepalive config should be independent of TLS
+  * Bump client side grpc max msg size
+  * Update deprecated grpc dial timeout
+  * fix(tiller): Supersede multiple deployments (#3539)
+  * replace FAILED deployments with `helm upgrade --install --force`
+  * fix(helm): Don't crash in search if upper case chars are encountered.
+  * fix helm init --wait
+  * fix protoc
+  * bump version to v2.8.2
+
+-------------------------------------------------------------------
+Thu Mar  1 19:30:48 UTC 2018 - kmacinnes@suse.com
+
+- Update to version 2.8.1
+  * Includes fixes which allow Helm to correctly recognize
+    resources created using the K8S 1.8/1.9 API namespaces
+
+-------------------------------------------------------------------
+Wed Dec 13 18:33:10 UTC 2017 - jbonham@suse.com
+
+- Update to version 2.7.2
+  * fix missing ssl params
+
+See changelog in:
+  https://github.com/kubernetes/helm/releases/tag/v2.7.2
+
+-------------------------------------------------------------------
+Thu Sep 28 00:32:26 UTC 2017 - nmanchanda@suse.com
+
+- Update to version 2.6.1
+  * Remove facebookgo code
+
+See changelog in:
+  https://github.com/kubernetes/helm/releases/tag/v2.6.1
+
+-------------------------------------------------------------------
+Mon Aug 28 19:11:23 UTC 2017 - sleavens@suse.com
+
+- Update to version 2.5.1
+  * Fix bsc#1055480 - `helm init` now works
+  * The deadlock problem with Tiller has been found and fixed
+  * The `helm get manifest` and `helm get value` commands are now
+    working properly
+  * Plugins will now receive the correct value for `$HELM_HOME`
+    regardless of how the home directory was set
+
+  See changelog in:
+  https://github.com/kubernetes/helm/releases/tag/v2.5.1
+
+-------------------------------------------------------------------
+Wed Apr  5 16:54:11 UTC 2017 - jmassaguerpla@suse.com
+
+- Fix GOPATH
+
+-------------------------------------------------------------------
+Tue Apr  4 09:14:09 UTC 2017 - jmassaguerpla@suse.com
+
+- Update to version 2.2.3
+  * Helm has been moved to github/kubernetes/helm
+  * Helm provides 2 binaries now: helm and tiller
+  * go 1.7 is available now and with that version we can build all archs
+    and we don't need to use gcc-go
+  * the "symlinking trick into gopath" does not work anymore but instead
+   we need to copy all files. Let's use the golang-packaging for this
+
+  See changelog in:
+  https://github.com/kubernetes/helm/releases/tag/v2.2.3
+
+-------------------------------------------------------------------
+Tue Apr 26 18:55:37 UTC 2016 - fcastelli@suse.com
+
+- Create initial package 0.6.0
