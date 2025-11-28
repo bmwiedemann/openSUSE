@@ -1,0 +1,67 @@
+-------------------------------------------------------------------
+Fri Nov 28 02:51:46 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Switch to lld as linker in order to build properly on all architectures.
+- Fix test errors on ppc64le and aarch64.
+  + 0001-fd-fix-f_flags-fdinfo-test-on-other-architectures.patch
+
+-------------------------------------------------------------------
+Mon Nov 24 16:17:07 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Update to libpathrs v0.2.2. Upstream release notes:
+  <https://github.com/cyphar/libpathrs/releases/tag/v0.2.2>
+
+-------------------------------------------------------------------
+Sat Oct 18 10:26:49 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Update to libpathrs v0.2.0. Upstream release notes:
+  <https://github.com/cyphar/libpathrs/releases/tag/v0.2.0>
+
+-------------------------------------------------------------------
+Tue Aug 19 08:04:43 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Remove explicit "--locked" flag to cargo. cargo-packaging sets this
+  automatically for us, and setting it manually has started to lead to errors
+  with cargo-auditable.
+- Remove unneeded "python_compileall" call.
+- Fix some rpmlint warnings.
+
+-------------------------------------------------------------------
+Wed Oct  9 12:06:24 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Update to libpathrs v0.1.3. Upstream release notes:
+  <https://github.com/cyphar/libpathrs/releases/tag/v0.1.3>
+
+-------------------------------------------------------------------
+Wed Oct  9 05:36:50 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Update to libpathrs v0.1.2. Upstream release notes:
+  <https://github.com/cyphar/libpathrs/releases/tag/v0.1.2>
+
+-------------------------------------------------------------------
+Wed Oct  2 03:10:41 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Update to libpathrs v0.1.1. Upstream release notes:
+  <https://github.com/cyphar/libpathrs/releases/tag/v0.1.1>
+- Remove upstreamed patches:
+  - 0001-makefile-add-cargo_flags-to-let-distros-add-their-ow.patch
+  - 0002-python-bindings-update-version-and-fix-name.patch
+  - 0003-python-bindings-make-cffi-builds-more-friendly-for-d.patch
+  - 0004-python-bindings-fix-builds-for-pre-pyproject-setupto.patch
+
+-------------------------------------------------------------------
+Mon Sep 16 00:20:32 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Add preliminary python-pathrs subpackage.
+- Backport some patches to fix building inside an specfile:
+  + 0001-makefile-add-cargo_flags-to-let-distros-add-their-ow.patch
+  + 0002-python-bindings-update-version-and-fix-name.patch
+  + 0003-python-bindings-make-cffi-builds-more-friendly-for-d.patch
+- Backport a change to fix building the python bindings on Leap.
+  + 0004-python-bindings-fix-builds-for-pre-pyproject-setupto.patch
+
+-------------------------------------------------------------------
+Fri Sep 13 16:21:30 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Initial import of libpathrs v0.1.0. Upstream release notes:
+  <https://github.com/cyphar/libpathrs/releases/tag/v0.1.0>

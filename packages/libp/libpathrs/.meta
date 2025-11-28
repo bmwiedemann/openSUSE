@@ -1,0 +1,10 @@
+<package name="libpathrs" project="openSUSE:Factory">
+  <title></title>
+  <description>libpathrs provides a set of utilities to help make path resolution within a
+potentially-untrusted directory safe on Linux, as well as some specific helpers
+for operating on /proc safely. The goal of this library is to help avoid the
+relentless onslaught of security vulnerabilities in Linux system utilities
+caused by bad path handling.
+</description>
+  <url>https://github.com/cyphar/libpathrs</url>
+</package>

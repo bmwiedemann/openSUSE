@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>095d2f83b1ed84f244223bb92fae420b</srcmd5>
+    <version>0.2.2</version>
+    <time>1764345199</time>
+    <user>anag_factory</user>
+    <comment>Add libpathrs package, a safe path resolution library that will be an optional
+dependency of container tools like runc, podman, buildah, etc in the future.</comment>
+    <requestid>1320405</requestid>
+  </revision>
+</revisionlist>
