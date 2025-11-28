@@ -245,6 +245,7 @@ BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xshmfence)
 BuildRequires:  pkgconfig(xxf86vm)
 BuildRequires:  pkgconfig(zlib)
+BuildRequires:  pkgconfig(libdisplay-info) >= 0.1.1
 Provides:       Mesa7 = %{version}
 Obsoletes:      Mesa7 < %{version}
 Provides:       intel-i810-Mesa = %{version}
@@ -801,6 +802,7 @@ egl_platforms=x11,wayland
             -Dgles2=enabled \
             -Degl=enabled \
             -Dallow-kcmp=enabled \
+            -Ddisplay-info=enabled \
             -Dplatforms=$egl_platforms \
 %ifarch s390x
             -Dshared-glapi=enabled \

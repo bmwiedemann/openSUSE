@@ -6554,4 +6554,12 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
 - enable panfrost vulkan driver also on SLE16</comment>
     <requestid>1318020</requestid>
   </revision>
+  <revision rev="560" vrev="2">
+    <srcmd5>db7b24e32ab3aa5450baea74c55f0d18</srcmd5>
+    <version>25.3.0</version>
+    <time>1764345059</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1319892</requestid>
+  </revision>
 </revisionlist>
