@@ -1,7 +1,7 @@
 #
 # spec file for package postfix-bdb
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,7 +59,7 @@
 %endif
 %bcond_without ldap
 Name:           postfix-bdb
-Version:        3.10.5
+Version:        3.10.6
 Release:        0
 Summary:        A fast, secure, and flexible mailer
 License:        EPL-2.0 OR IPL-1.0

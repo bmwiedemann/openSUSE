@@ -2501,4 +2501,12 @@ successfully tested on Tumbleweed x86_64</comment>
     <comment></comment>
     <requestid>1319697</requestid>
   </revision>
+  <revision rev="258" vrev="1">
+    <srcmd5>f12132848c235bf2df01af2b5c439c4f</srcmd5>
+    <version>3.10.6</version>
+    <time>1764345043</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1320355</requestid>
+  </revision>
 </revisionlist>
