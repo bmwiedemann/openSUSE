@@ -1,7 +1,7 @@
 #
 # spec file for package php-imagick
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{php_name}-%{pkg_name}
-Version:        3.8.0
+Version:        3.8.1
 Release:        0
 Summary:        Wrapper to the ImageMagick library
 License:        PHP-3.01
@@ -41,8 +41,6 @@ Source0:        https://pecl.php.net/get/%{pkg_name}-%{version}.tgz
 Source1:        php-%{pkg_name}-rpmlintrc
 # SUSE: Make build reproduceable
 Patch0:         imagick-reproducible.patch
-# PATCH-FIX-UPSTREAM - https://github.com/Imagick/imagick/pull/741
-Patch1:         imagick-fix-build-PHP-8.5.patch
 # PATCH-FIX-OPENSUSE - test expected to fail because of resource limits in policy.xml
 Patch10:        imagick-xfail-test014.patch
 # PATCH-FIX-OPENSUSE - skip test for Imagick >= 7.1.2 due to changes in similarity

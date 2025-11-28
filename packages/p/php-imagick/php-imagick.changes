@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov 28 07:40:29 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Upgrade to 3.8.1
+  * Fixed compiling against PHP 8.5
+  * Fixed getImage(s)Blob return type
+- Remove upstreamed patch
+  - imagick-fix-build-PHP-8.5.patch
+
+-------------------------------------------------------------------
 Tue Nov 11 19:30:52 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - Fix build with PHP 8.5
