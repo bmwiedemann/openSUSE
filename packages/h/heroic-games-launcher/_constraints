@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<constraints>
+	<overwrite>
+	<conditions>
+	<arch>aarch64</arch>
+</conditions>
+<hardware>
+	<memory>
+	<size unit="G">8</size>
+</memory>
+</hardware>
+</overwrite>
+</constraints>

@@ -1,0 +1,965 @@
+-------------------------------------------------------------------
+Fri Nov 28 04:18:06 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Fix Slowroll build  by reduce pnpm version requirements to 10.17.1. 
+
+-------------------------------------------------------------------
+Fri Nov 28 02:40:56 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Updated build script to require pnpm version >= 10.22.0 for improved compatibility. 
+
+-------------------------------------------------------------------
+Wed Nov  5 22:46:44 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Adhere to Factory guidelines by eliminating the generation of redundant .obscpio files. 
+
+-------------------------------------------------------------------
+Wed Nov  5 01:57:44 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Change git to git-core, reorganizing the spec file.
+
+-------------------------------------------------------------------
+Wed Nov  5 01:51:05 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Adding missing get-sources.sh and release_tags  to the sources in the spec file. 
+
+-------------------------------------------------------------------
+Wed Nov  5 00:16:20 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Add HeroicGamesLauncher.rpmlintrc in sources. 
+
+-------------------------------------------------------------------
+Tue Nov  4 01:28:32 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Deleting unused files 
+
+-------------------------------------------------------------------
+Mon Nov  3 03:01:38 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Remove unused file Heroic-2.18.1-linux-x64.tar.xz 
+
+-------------------------------------------------------------------
+Sun Nov  2 06:04:44 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Change pnpm version to 10.17.1 
+
+-------------------------------------------------------------------
+Sun Nov  2 04:10:51 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Add _constraints to fix out of memory error. 
+
+-------------------------------------------------------------------
+Sat Nov  1 03:46:38 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Transitioned Vite usage from the system package (nodejs-vite) to the node_modules version managed by pnpm for better version accuracy.
+  - Removed nodejs-vite from BuildRequires. 
+
+-------------------------------------------------------------------
+Fri Oct 31 00:26:56 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Fix GLIBC dependency issue by removing pre-built Node.js native modules.
+  - Remove pre-built binary versions of '@parcel/watcher', '@swc', and other dev dependencies.
+  - Clean up remaining C/C++ source files (e.g., register-scheme/src) from the final package payload. 
+
+-------------------------------------------------------------------
+Wed Oct 29 01:16:19 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 2.18.1
+  * Fixed build failures on aarch64 architecture.
+  * Ensured proper removal and renaming of architecture-specific binaries during install phase.
+  * Resolved rpmlint errors by cleaning up development headers (*.h, *.c) and zero-length files from bundled node modules.
+  * Adjusted permissions on internal JavaScript files to fix 'script-without-shebang' rpmlint error.  
+
+-------------------------------------------------------------------
+Wed Oct 29 00:34:12 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 2.18.1
+  * Fixed build failures on aarch64 architecture.
+  * Ensured proper removal and renaming of architecture-specific binaries during install phase.
+  * Resolved rpmlint errors by cleaning up development headers (*.h, *.c) and zero-length files from bundled node modules.
+  * Adjusted permissions on internal JavaScript files to fix 'script-without-shebang' rpmlint error.  
+
+-------------------------------------------------------------------
+Wed Oct 29 00:22:41 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Fixed build failures on aarch64 architecture.
+  * Ensured proper removal and renaming of architecture-specific binaries during install phase.
+  * Resolved rpmlint errors by cleaning up development headers (*.h, *.c) and zero-length files from bundled node modules.
+  * Adjusted permissions on internal JavaScript files to fix 'script-without-shebang' rpmlint error. 
+
+-------------------------------------------------------------------
+Wed Oct 22 02:10:22 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Fix wrong path to remove vulkan-helper pre-built binary in aarch64
+
+-------------------------------------------------------------------
+Wed Oct 22 01:58:04 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 2.18.1
+  * Switched packaging method from using pre-built binaries to a full build-from-source approach.
+  * Removed all precompiled or pre-built binary components (Node.js/Electron, native dependencies).
+  * All components are now built against openSUSE Factory's toolchain and system libraries (Qt, glibc, etc.).
+  * Ensures full compliance with Factory's Free and Open Source Software (FOSS) policy.
+
+-------------------------------------------------------------------
+Mon Sep 01 01:39:09 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 2.18.1:
+  * [FIX] Update version to 2.18.1 and fix plausible missed platforms (#4844)
+  * [i18n] Updated Translations (#4796)
+  * [UI] disable DXVK-NVAPI when DXVK is disabled (#4842)
+  * [UI] Add WoW64 toggle on Linux non-native games (#4831)
+  * [UX] Print list of GOG games in GOG log (#4838)
+  * [UX] Ignore DLCs when calculating available alphabet filter letters (#4839)
+  * [FIX] Inputs onChange callback bug (#4804)
+  * [FIX] Fix logger error opening second instance of Heroic (#4812)
+  * [UI] Update library when changing games' categories (#4829)
+  * [Tech] Clean up MUI theming (#4803)
+
+-------------------------------------------------------------------
+Mon Sep 01 01:33:19 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 0.3.1:
+  * release: v0.3.1
+  * feat: lower ping frequency
+  * fix: support achievements in dev mode
+  * Adding DUSK (#67)
+  * Game compatibility update for Homeworld: Deserts of Kharak (#69)
+  * Update Game-Compatibility.md (#65)
+  * change license to Apache 2.0
+  * feat: expose comet as rust lib
+  * docs: added DOOM (2016) compatibility report (#63)
+  * Added "Cyberpunk 2077" to Game-Compatibility.md (#61)
+
+-------------------------------------------------------------------
+Mon Sep 01 01:31:30 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 0.3.1:
+  * release: v0.3.1
+  * feat: lower ping frequency
+  * fix: support achievements in dev mode
+  * Adding DUSK (#67)
+  * Game compatibility update for Homeworld: Deserts of Kharak (#69)
+  * Update Game-Compatibility.md (#65)
+  * change license to Apache 2.0
+  * feat: expose comet as rust lib
+  * docs: added DOOM (2016) compatibility report (#63)
+  * Added "Cyberpunk 2077" to Game-Compatibility.md (#61)
+
+-------------------------------------------------------------------
+Mon Sep 01 01:25:26 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 2.18.1:
+  * [FIX] Update version to 2.18.1 and fix plausible missed platforms (#4844)
+  * [i18n] Updated Translations (#4796)
+  * [UI] disable DXVK-NVAPI when DXVK is disabled (#4842)
+  * [UI] Add WoW64 toggle on Linux non-native games (#4831)
+  * [UX] Print list of GOG games in GOG log (#4838)
+  * [UX] Ignore DLCs when calculating available alphabet filter letters (#4839)
+  * [FIX] Inputs onChange callback bug (#4804)
+  * [FIX] Fix logger error opening second instance of Heroic (#4812)
+  * [UI] Update library when changing games' categories (#4829)
+  * [Tech] Clean up MUI theming (#4803)
+
+-------------------------------------------------------------------
+Mon Sep 01 01:22:10 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 0.3.1:
+  * release: v0.3.1
+  * feat: lower ping frequency
+  * fix: support achievements in dev mode
+  * Adding DUSK (#67)
+  * Game compatibility update for Homeworld: Deserts of Kharak (#69)
+  * Update Game-Compatibility.md (#65)
+  * change license to Apache 2.0
+  * feat: expose comet as rust lib
+  * docs: added DOOM (2016) compatibility report (#63)
+  * Added "Cyberpunk 2077" to Game-Compatibility.md (#61)
+
+-------------------------------------------------------------------
+Mon Sep 01 01:21:37 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 0.3.1:
+  * release: v0.3.1
+  * feat: lower ping frequency
+  * fix: support achievements in dev mode
+  * Adding DUSK (#67)
+  * Game compatibility update for Homeworld: Deserts of Kharak (#69)
+  * Update Game-Compatibility.md (#65)
+  * change license to Apache 2.0
+  * feat: expose comet as rust lib
+  * docs: added DOOM (2016) compatibility report (#63)
+  * Added "Cyberpunk 2077" to Game-Compatibility.md (#61)
+
+-------------------------------------------------------------------
+Mon Sep 01 01:16:27 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 2.18.1:
+  * [FIX] Update version to 2.18.1 and fix plausible missed platforms (#4844)
+  * [i18n] Updated Translations (#4796)
+  * [UI] disable DXVK-NVAPI when DXVK is disabled (#4842)
+  * [UI] Add WoW64 toggle on Linux non-native games (#4831)
+  * [UX] Print list of GOG games in GOG log (#4838)
+  * [UX] Ignore DLCs when calculating available alphabet filter letters (#4839)
+  * [FIX] Inputs onChange callback bug (#4804)
+  * [FIX] Fix logger error opening second instance of Heroic (#4812)
+  * [UI] Update library when changing games' categories (#4829)
+  * [Tech] Clean up MUI theming (#4803)
+
+-------------------------------------------------------------------
+Mon Sep 01 01:06:14 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 2.18.1:
+  * [FIX] Update version to 2.18.1 and fix plausible missed platforms (#4844)
+  * [i18n] Updated Translations (#4796)
+  * [UI] disable DXVK-NVAPI when DXVK is disabled (#4842)
+  * [UI] Add WoW64 toggle on Linux non-native games (#4831)
+  * [UX] Print list of GOG games in GOG log (#4838)
+  * [UX] Ignore DLCs when calculating available alphabet filter letters (#4839)
+  * [FIX] Inputs onChange callback bug (#4804)
+  * [FIX] Fix logger error opening second instance of Heroic (#4812)
+  * [UI] Update library when changing games' categories (#4829)
+  * [Tech] Clean up MUI theming (#4803)
+
+-------------------------------------------------------------------
+Mon Sep 01 01:00:54 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 2.18.1:
+  * [FIX] Update version to 2.18.1 and fix plausible missed platforms (#4844)
+  * [i18n] Updated Translations (#4796)
+  * [UI] disable DXVK-NVAPI when DXVK is disabled (#4842)
+  * [UI] Add WoW64 toggle on Linux non-native games (#4831)
+  * [UX] Print list of GOG games in GOG log (#4838)
+  * [UX] Ignore DLCs when calculating available alphabet filter letters (#4839)
+  * [FIX] Inputs onChange callback bug (#4804)
+  * [FIX] Fix logger error opening second instance of Heroic (#4812)
+  * [UI] Update library when changing games' categories (#4829)
+  * [Tech] Clean up MUI theming (#4803)
+
+-------------------------------------------------------------------
+Mon Sep 01 00:59:00 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 2.18.1:
+  * [FIX] Update version to 2.18.1 and fix plausible missed platforms (#4844)
+  * [i18n] Updated Translations (#4796)
+  * [UI] disable DXVK-NVAPI when DXVK is disabled (#4842)
+  * [UI] Add WoW64 toggle on Linux non-native games (#4831)
+  * [UX] Print list of GOG games in GOG log (#4838)
+  * [UX] Ignore DLCs when calculating available alphabet filter letters (#4839)
+  * [FIX] Inputs onChange callback bug (#4804)
+  * [FIX] Fix logger error opening second instance of Heroic (#4812)
+  * [UI] Update library when changing games' categories (#4829)
+  * [Tech] Clean up MUI theming (#4803)
+
+-------------------------------------------------------------------
+Mon Sep 01 00:56:15 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 2.18.1:
+  * [FIX] Update version to 2.18.1 and fix plausible missed platforms (#4844)
+  * [i18n] Updated Translations (#4796)
+  * [UI] disable DXVK-NVAPI when DXVK is disabled (#4842)
+  * [UI] Add WoW64 toggle on Linux non-native games (#4831)
+  * [UX] Print list of GOG games in GOG log (#4838)
+  * [UX] Ignore DLCs when calculating available alphabet filter letters (#4839)
+  * [FIX] Inputs onChange callback bug (#4804)
+  * [FIX] Fix logger error opening second instance of Heroic (#4812)
+  * [UI] Update library when changing games' categories (#4829)
+  * [Tech] Clean up MUI theming (#4803)
+
+-------------------------------------------------------------------
+Mon Sep 01 00:46:41 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 2.18.1:
+  * [FIX] Update version to 2.18.1 and fix plausible missed platforms (#4844)
+  * [i18n] Updated Translations (#4796)
+  * [UI] disable DXVK-NVAPI when DXVK is disabled (#4842)
+  * [UI] Add WoW64 toggle on Linux non-native games (#4831)
+  * [UX] Print list of GOG games in GOG log (#4838)
+  * [UX] Ignore DLCs when calculating available alphabet filter letters (#4839)
+  * [FIX] Inputs onChange callback bug (#4804)
+  * [FIX] Fix logger error opening second instance of Heroic (#4812)
+  * [UI] Update library when changing games' categories (#4829)
+  * [Tech] Clean up MUI theming (#4803)
+
+-------------------------------------------------------------------
+Sun Aug 31 23:49:47 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 2.18.1:
+  * [FIX] Update version to 2.18.1 and fix plausible missed platforms (#4844)
+  * [i18n] Updated Translations (#4796)
+  * [UI] disable DXVK-NVAPI when DXVK is disabled (#4842)
+  * [UI] Add WoW64 toggle on Linux non-native games (#4831)
+  * [UX] Print list of GOG games in GOG log (#4838)
+  * [UX] Ignore DLCs when calculating available alphabet filter letters (#4839)
+  * [FIX] Inputs onChange callback bug (#4804)
+  * [FIX] Fix logger error opening second instance of Heroic (#4812)
+  * [UI] Update library when changing games' categories (#4829)
+  * [Tech] Clean up MUI theming (#4803)
+
+-------------------------------------------------------------------
+Sun Aug 31 23:42:32 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 2.18.1:
+  * [FIX] Update version to 2.18.1 and fix plausible missed platforms (#4844)
+  * [i18n] Updated Translations (#4796)
+  * [UI] disable DXVK-NVAPI when DXVK is disabled (#4842)
+  * [UI] Add WoW64 toggle on Linux non-native games (#4831)
+  * [UX] Print list of GOG games in GOG log (#4838)
+  * [UX] Ignore DLCs when calculating available alphabet filter letters (#4839)
+  * [FIX] Inputs onChange callback bug (#4804)
+  * [FIX] Fix logger error opening second instance of Heroic (#4812)
+  * [UI] Update library when changing games' categories (#4829)
+  * [Tech] Clean up MUI theming (#4803)
+
+-------------------------------------------------------------------
+Sun Aug 31 23:01:03 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 2.18.1:
+  * [FIX] Update version to 2.18.1 and fix plausible missed platforms (#4844)
+  * [i18n] Updated Translations (#4796)
+  * [UI] disable DXVK-NVAPI when DXVK is disabled (#4842)
+  * [UI] Add WoW64 toggle on Linux non-native games (#4831)
+  * [UX] Print list of GOG games in GOG log (#4838)
+  * [UX] Ignore DLCs when calculating available alphabet filter letters (#4839)
+  * [FIX] Inputs onChange callback bug (#4804)
+  * [FIX] Fix logger error opening second instance of Heroic (#4812)
+  * [UI] Update library when changing games' categories (#4829)
+  * [Tech] Clean up MUI theming (#4803)
+
+-------------------------------------------------------------------
+Sun Aug 31 22:56:08 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 2.18.1:
+  * [FIX] Update version to 2.18.1 and fix plausible missed platforms (#4844)
+  * [i18n] Updated Translations (#4796)
+  * [UI] disable DXVK-NVAPI when DXVK is disabled (#4842)
+  * [UI] Add WoW64 toggle on Linux non-native games (#4831)
+  * [UX] Print list of GOG games in GOG log (#4838)
+  * [UX] Ignore DLCs when calculating available alphabet filter letters (#4839)
+  * [FIX] Inputs onChange callback bug (#4804)
+  * [FIX] Fix logger error opening second instance of Heroic (#4812)
+  * [UI] Update library when changing games' categories (#4829)
+  * [Tech] Clean up MUI theming (#4803)
+
+-------------------------------------------------------------------
+Sun Aug 31 22:55:34 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 0.4:
+  * Switch to ShellExecuteExW
+  * increase required cmake version
+  * Add MIT License
+  * unset SteamAppId before launch
+  * set working directory of process
+  * wait for process startup
+  * fix use after free
+  * add more error checking
+  * remove useless cast
+  * switch to pure C code
+
+-------------------------------------------------------------------
+Sun Aug 31 22:55:33 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 0.3.1:
+  * release: v0.3.1
+  * feat: lower ping frequency
+  * fix: support achievements in dev mode
+  * Adding DUSK (#67)
+  * Game compatibility update for Homeworld: Deserts of Kharak (#69)
+  * Update Game-Compatibility.md (#65)
+  * change license to Apache 2.0
+  * feat: expose comet as rust lib
+  * docs: added DOOM (2016) compatibility report (#63)
+  * Added "Cyberpunk 2077" to Game-Compatibility.md (#61)
+
+-------------------------------------------------------------------
+Sun Aug 31 22:55:31 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 1.1.2:
+  * release: v1.1.2
+  * fix: migrate library fetching to AnimusEntitlementsService
+  * release: 1.1.1
+  * fix: support workingsubdiroverride
+  * Build macOS x86_64 binaries (#49)
+  * version: bump to 1.1.0
+  * fix: use new animus distribution service
+  * cli: avoid crashing when sdk update throws an exception
+  * ci: update github actions
+  * fuelpump: potentially resolve issues with DRM
+
+-------------------------------------------------------------------
+Sun Aug 31 22:55:30 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 1.1.2:
+  * release v1.1.2
+  * [SAVES] Full save sync (automatic files deleting) (#25)
+  * fix: native runners detection in flatpak (#53)
+  * fix: use shell on windows to launch games
+  * Bump version (#52)
+  * Build macOS x86_64 binaries (#51)
+  * Write manifest if there's nothing to do (#50)
+  * fix: error on dlc if no installer (log error and ignore) #48 (#49)
+  * bump version
+  * feat: use native runners when available for windows builds
+
+-------------------------------------------------------------------
+Sun Aug 31 22:55:29 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 0.20.37:
+  * release 0.20.37 (#18)
+  * Workflow-related changes (#17)
+  * feat: expose summary for activate command (#14)
+  * fix: unset old_manifest for all types of repair (#15)
+  * Reuse chunks from the same download if duplicated (#11)
+  * add wrapper exe support
+  * [Feat] Add arm64 support (#12)
+  * Add conflict resolution based on last sync time (#10)
+  * ci: rollback to ubuntu-20 for builds
+
+-------------------------------------------------------------------
+Sun Aug 31 22:50:31 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 1.1.2:
+  * release v1.1.2
+  * [SAVES] Full save sync (automatic files deleting) (#25)
+  * fix: native runners detection in flatpak (#53)
+  * fix: use shell on windows to launch games
+  * Bump version (#52)
+  * Build macOS x86_64 binaries (#51)
+  * Write manifest if there's nothing to do (#50)
+  * fix: error on dlc if no installer (log error and ignore) #48 (#49)
+  * bump version
+  * feat: use native runners when available for windows builds
+
+-------------------------------------------------------------------
+Sun Aug 31 22:50:28 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 1.1.2:
+  * release: v1.1.2
+  * fix: migrate library fetching to AnimusEntitlementsService
+  * release: 1.1.1
+  * fix: support workingsubdiroverride
+  * Build macOS x86_64 binaries (#49)
+  * version: bump to 1.1.0
+  * fix: use new animus distribution service
+  * cli: avoid crashing when sdk update throws an exception
+  * ci: update github actions
+  * fuelpump: potentially resolve issues with DRM
+
+-------------------------------------------------------------------
+Sun Aug 31 22:47:53 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 2.18.1:
+  * [FIX] Update version to 2.18.1 and fix plausible missed platforms (#4844)
+  * [i18n] Updated Translations (#4796)
+  * [UI] disable DXVK-NVAPI when DXVK is disabled (#4842)
+  * [UI] Add WoW64 toggle on Linux non-native games (#4831)
+  * [UX] Print list of GOG games in GOG log (#4838)
+  * [UX] Ignore DLCs when calculating available alphabet filter letters (#4839)
+  * [FIX] Inputs onChange callback bug (#4804)
+  * [FIX] Fix logger error opening second instance of Heroic (#4812)
+  * [UI] Update library when changing games' categories (#4829)
+  * [Tech] Clean up MUI theming (#4803)
+
+-------------------------------------------------------------------
+Sun Aug 31 22:45:17 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 2.18.1:
+  * [FIX] Update version to 2.18.1 and fix plausible missed platforms (#4844)
+  * [i18n] Updated Translations (#4796)
+  * [UI] disable DXVK-NVAPI when DXVK is disabled (#4842)
+  * [UI] Add WoW64 toggle on Linux non-native games (#4831)
+  * [UX] Print list of GOG games in GOG log (#4838)
+  * [UX] Ignore DLCs when calculating available alphabet filter letters (#4839)
+  * [FIX] Inputs onChange callback bug (#4804)
+  * [FIX] Fix logger error opening second instance of Heroic (#4812)
+  * [UI] Update library when changing games' categories (#4829)
+  * [Tech] Clean up MUI theming (#4803)
+
+-------------------------------------------------------------------
+Wed Aug 27 03:27:43 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 2.18.1:
+  * [FIX] Update version to 2.18.1 and fix plausible missed platforms (#4844)
+  * [i18n] Updated Translations (#4796)
+  * [UI] disable DXVK-NVAPI when DXVK is disabled (#4842)
+  * [UI] Add WoW64 toggle on Linux non-native games (#4831)
+  * [UX] Print list of GOG games in GOG log (#4838)
+  * [UX] Ignore DLCs when calculating available alphabet filter letters (#4839)
+  * [FIX] Inputs onChange callback bug (#4804)
+  * [FIX] Fix logger error opening second instance of Heroic (#4812)
+  * [UI] Update library when changing games' categories (#4829)
+  * [Tech] Clean up MUI theming (#4803)
+
+-------------------------------------------------------------------
+Sun Jun 15 08:53:18 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Change the mode of download_files and use `osc service localrun/disabledrun` 
+
+-------------------------------------------------------------------
+Sun Jun 15 08:22:10 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 2.17.2:
+  * [i18n] Updated Translations (#4614)
+  * [UX] Improve log info for sideloaded games (#4634)
+  * [UX] Support Env variables on windows and rockstar tweak (#4631)
+  * Fix busted appimage path for non-steam shortcuts (#4648)
+  * [UI] Some theme fixes (search bar, tour icon) (#4628)
+  * [UI] Game page responsiveness fixes (#4626)
+  * [FIX] App icon Linux/macOS (#4645)
+  * [FIX] Add warning dialog for disabled Shader Pre-caching on SteamDeck (#4623)
+  * [FIX] Don't check if disableUMU is undefined (#4609)
+  * Update build instructions in readme (#4495)
+
+-------------------------------------------------------------------
+Sun Jun 15 05:51:35 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 2.17.2:
+  * [i18n] Updated Translations (#4614)
+  * [UX] Improve log info for sideloaded games (#4634)
+  * [UX] Support Env variables on windows and rockstar tweak (#4631)
+  * Fix busted appimage path for non-steam shortcuts (#4648)
+  * [UI] Some theme fixes (search bar, tour icon) (#4628)
+  * [UI] Game page responsiveness fixes (#4626)
+  * [FIX] App icon Linux/macOS (#4645)
+  * [FIX] Add warning dialog for disabled Shader Pre-caching on SteamDeck (#4623)
+  * [FIX] Don't check if disableUMU is undefined (#4609)
+  * Update build instructions in readme (#4495)
+
+-------------------------------------------------------------------
+Sun Jun 15 04:26:10 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to 2.17.2
+  - [FIX] Confusing behavior of Don't ask again when opening external link by @KaranDuggal in #4414
+  - [FIX] Don't check if disableUMU is undefined by @Etaash-mathamsetty in #4609
+  - [FIX] Add warning dialog for disabled Shader Pre-caching on SteamDeck by @flavioislima in #4623
+  - [FIX] App icon Linux/macOS by @flavioislima in #4645
+  - [UI] Game page responsiveness fixes by @arielj in #4626
+  - [UI] Some theme fixes (search bar, tour icon) by @arielj in #4628
+  - Fix busted appimage path for non-steam shortcuts by @WombatFromHell in #4648
+  - [UX] Support Env variables on windows and rockstar tweak by @arielj in #4631
+  - [UX] Improve log info for sideloaded games by @arielj in #4634
+  - [i18n] Updated Translations by @weblate in #4614
+ 
+
+-------------------------------------------------------------------
+Sat May 24 18:16:30 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to 2.17.0 
+   - New GamePage Design
+   - [macOS] Add Button to automate Windows Steam installation
+   - Adds a setting to download Proton versions directly to the Steam compatibility folder
+   - It is now possible to select an image file on the sideload dialog
+   - Update electron to latest version v36.2.1
+   - Fixes Issues with Epic Login and Checkout
+   - Several fixes for UMU, DXVK and GPTK
+   - Fixes HowLongToBeat not working anymore
+   - Update Legendary and added a EpicGamesLauncher.exe to fix issues with Rockstar games
+   - Fixed an issue with RemotePlay not working with Steam
+   - Several refactors and improvements
+
+   - Add fallback for Wine search on Mac OSX by @ruiaraujo in #4431
+   - [Fix] Editing the name of a category selects the category by @KaranDuggal in #4421
+   - Implement menu options for opening the install file path and Wine prefix in the default file manager by @luluco250 in #4285
+   - [Fix] Wine downloading on Windows by @CommandMC in #4458
+   - docs: typo fixes in the .deb installation instructions by @evktalo in #4449
+   - Add arm64 gogdl, nile, and legendary by @Etaash-mathamsetty in #4292
+   - snap: initial manifest and fixes by @soumyaDghosh in #4091
+   - fix: change user-agent at runtime by @imLinguin in #4478
+   - Pick local files with file picker for Game Image by @sandepten in #4468
+   - [Refactor] Constants cleanup by @arielj in #4264
+   - [Feat] "Disable smooth scrolling" accessibility option by @CommandMC in #4503
+   - [Tech] Update to pnpm 10 by @CommandMC in #4488
+   - [Feat] Make it possible to specify an alternative EXE when launching games from the protocol by @CommandMC in #4518
+   - Revert changes to downloadHelperBinaries by @CommandMC in #4521
+   - [Feat] Add option to download Proton-GE directly to Steam compatibility tools by @flavioislima in #4524
+   - [Fix] Protocol handling on Windows by @CommandMC in #4534
+   - Update Vite & related packages by @CommandMC in #4532
+   - [UI] update new game page and some theme colors by @biliesilva in #4424
+    [FIX] Do not check for UMU experimental feature by @Etaash-mathamsetty in #4522
+   - Remove Other tab for native Mac games. by @ruiaraujo in #4444
+   - Render SelectFields as MUI Selects by @CommandMC in #4059
+   - [UX] Filter settings that don't apply to current platform and game by @arielj in #3997
+   - [DX] Test that the empty library and settings page renders correctly for all languages by @arielj in #4423
+   - fix steam remote-play, remote-play together and gamerecording by @nodscher in #4496
+   - [FIX] Correctly join stdout in callRunner by @MLGRadish in #4528
+   - [FIX] Update DXVK on new releases by @Etaash-mathamsetty in #4434
+   - [Fix] Prevent auto-update checks on Linux by @flavioislima in #4536
+   - [Feat] Add filter to show only games with update available by @flavioislima in #4539
+   - [FIX] HowLongToBeat data by @flavioislima in #4543
+   - [UI - Linux] Update FPS limit Text by @flavioislima in #4538
+   - [Fix] Make sure AvailablePlatforms.value is an InstallPlatform by @CommandMC in #4548
+   - [macOS - Feature] Install Windows Steam with one Click by @flavioislima in #4462
+   - tech: update electron to 36.1.0 by @imLinguin in #4497
+   - [UX] Copy fake EpicGamesLauncher.exe for games flagged with env variable (like Rockstar games) by @arielj in #4385
+   - [i18n] Updated Translations by @weblate in #4537
+   - [Release] 2.17.0 Franky by @flavioislima in #4549
+
+
+
+-------------------------------------------------------------------
+Mon May  5 23:12:21 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Returning ld-linux-aarch64.so.1()(64bit) to compile correctly for AARCH64 
+
+-------------------------------------------------------------------
+Mon May  5 22:57:09 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to 2.16.1
+    * Just adjusting the .changes to the correct default.
+    * Update Heroic icon to new logo.
+    * Fix error with ARM64 lib ld-linux-aarch64.so.1()(64bit).
+    - [DX - Fix] Fix client not loading after changing language by allowing the use of br tags in translations to avoid confusion by @arielj in #4380
+    - [i18n] add lithuanian to language selector by @imLinguin in #4394
+    - [UX] Default to WineCrossover and DXVK on for Intel macs by @arielj in #4397
+    - FIX: Use egs's flow for epic login by @imLinguin in #4379
+    - [UX] Improve disabled verbose logs message to mention where to enable them by @arielj in #4395
+    - [FIX] Handle checking 'installed_games' file for Crossover by @arielj in #4381
+    - Fix logging with proton by @Etaash-mathamsetty in #4113
+    - [Feat] macOS: Check if Rosetta is available on Startup by @flavioislima in #4402
+    - [UX] Add Guided tour for Library, filters and Sidebar by @flavioislima in #4401 
+
+-------------------------------------------------------------------
+Sun May  4 17:56:32 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to 2.16.1
+    * Update Heroic icon to new logo.
+    * Fix error with ARM64 lib ld-linux-aarch64.so.1()(64bit).
+    - [DX - Fix] Fix client not loading after changing language by allowing the use of br tags in translations to avoid confusion by @arielj in #4380
+    - [i18n] add lithuanian to language selector by @imLinguin in #4394
+    - [UX] Default to WineCrossover and DXVK on for Intel macs by @arielj in #4397
+    - FIX: Use egs's flow for epic login by @imLinguin in #4379
+    - [UX] Improve disabled verbose logs message to mention where to enable them by @arielj in #4395
+    - [FIX] Handle checking 'installed_games' file for Crossover by @arielj in #4381
+    - Fix logging with proton by @Etaash-mathamsetty in #4113
+    - [Feat] macOS: Check if Rosetta is available on Startup by @flavioislima in #4402
+    - [UX] Add Guided tour for Library, filters and Sidebar by @flavioislima in #4401
+
+-------------------------------------------------------------------
+Sun May  4 13:55:31 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to 2.16.1
+    * Fix error with ARM64 lib ld-linux-aarch64.so.1()(64bit).
+    - [DX - Fix] Fix client not loading after changing language by allowing the use of br tags in translations to avoid confusion by @arielj in #4380
+    - [i18n] add lithuanian to language selector by @imLinguin in #4394
+    - [UX] Default to WineCrossover and DXVK on for Intel macs by @arielj in #4397
+    - FIX: Use egs's flow for epic login by @imLinguin in #4379
+    - [UX] Improve disabled verbose logs message to mention where to enable them by @arielj in #4395
+    - [FIX] Handle checking 'installed_games' file for Crossover by @arielj in #4381
+    - Fix logging with proton by @Etaash-mathamsetty in #4113
+    - [Feat] macOS: Check if Rosetta is available on Startup by @flavioislima in #4402
+    - [UX] Add Guided tour for Library, filters and Sidebar by @flavioislima in #4401
+
+-------------------------------------------------------------------
+Sun May  4 13:07:49 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to 2.16.1
+    - [DX - Fix] Fix client not loading after changing language by allowing the use of br tags in translations to avoid confusion by @arielj in #4380
+    - [i18n] add lithuanian to language selector by @imLinguin in #4394
+    - [UX] Default to WineCrossover and DXVK on for Intel macs by @arielj in #4397
+    - FIX: Use egs's flow for epic login by @imLinguin in #4379
+    - [UX] Improve disabled verbose logs message to mention where to enable them by @arielj in #4395
+    - [FIX] Handle checking 'installed_games' file for Crossover by @arielj in #4381
+    - Fix logging with proton by @Etaash-mathamsetty in #4113
+    - [Feat] macOS: Check if Rosetta is available on Startup by @flavioislima in #4402
+    - [UX] Add Guided tour for Library, filters and Sidebar by @flavioislima in #4401
+
+
+-------------------------------------------------------------------
+Fri Sep 20 20:53:44 UTC 2024 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to 2.15.2
+    - Fixed Amazon Games library synchronization failure
+    - Fixed issues with CYGNI: All Guns Blazing and Black Myth: Wukong from Epic Games
+    - Fixed GOG cloud saves issues, when files were removed using utility on GOG's website
+    - [FIX] issues with offline support by @imLinguin in #3956
+    - [Tech] Fix some of the smaller ESLint warnings by @CommandMC in #3958
+    - [Fix] Use upstream Winetricks on macOS by @CommandMC in #3978
+    - [Tech] don't include build-id files in rpm by @imLinguin in #3951
+    - [Feat] Offer option to upload logs to a pastebin by @CommandMC in #3873
+    - [FIX]: gog setup regression by @imLinguin in #3993
+    - [i18n] Updated Translations by @weblate in #3943
+    - [CHORE]: update binaries by @imLinguin in #4007 
+
+-------------------------------------------------------------------
+Fri Aug 16 17:52:32 UTC 2024 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to 2.15.1
+    - [FIX] Sideloads with proton without umu by @Etaash-mathamsetty in #3936
+    - [Fix] Make GamesDBDataInner's square_icon optional by @CommandMC in #3933
+    - Added support for EA games from Epic Games Store
+    - Fixed issues with downloading from Amazon Games
+    - Added (legacy) DRM support for Amazon Games - Devil May Cry 1 is now playable
+    - Discord rich presence overhaul
+    - [Linux] Experimental umu-launcher support (disabled by default until 1.x release)
+    - [Linux] Experimental comet support - enabling GOG achievements and multiplayer
+    - [Linux] It is now possible to install and uninstall DLC for Native Linux games.
+    - [macOS] GPTK (Gaming Port Toolkit) is now available to download from Wine Manager (Works better with Apple Silicon and with macOS Sonoma or higher).
+    - Several other improvements and fixes all around Heroic
+
+ 
+
+-------------------------------------------------------------------
+Tue Apr  9 19:19:30 UTC 2024 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to 2.14.1
+    - [200~[Fix] Proton with ESYNC/FSYNC by @CommandMC in #3676
+    - [Chore] Use waitforexitandrun instead of run command for Proton by @flavioislima in #3680
+    - [FIX] Amazon filters not displaying when the username is empty by @imLinguin in #3600
+    - [UX] Improve update Dialog by @Mariaboni in #3598
+    - [WORKAROUND]: run physxlegacy setup without user input by @imLinguin in #3616
+    - [TECH]: update gogdl to v1.0.1 by @imLinguin in #3615
+    - [FIX] Broken behavior of webview back arrow by @arielj in #3587
+    - [FIX] Adtraction fallback by @imLinguin in #3575
+    - [Fix] Sideloaded games on Windows by @CommandMC in #3562
+    - [FIX] Disabling DXVK-NVAPI on Proton 9.0 by @Etaash-mathamsetty in #3592
+    - [Ref/Fix] Improving checkDiskSpace by @CommandMC in #3440
+    - Add Windowed Mode to Gamescope Options by @MuraPura in #3623
+    - [Feat-macOS] Add Mac Msync setting by @Mariaboni in #3630
+    - [Ref/Feat] Clean up our routing and make it faster by @CommandMC in #3540
+    - [TECH]: update electron by @imLinguin in #3628
+    - [Feat] Improve the "Move Game" experience a bit by @CommandMC in #3648
+    - [Tech] Type-check Backend & Frontend events by @CommandMC in #3649
+    - [Log] Print installed winetricks packages in logs by @arielj in #3593
+    - [Fix] Make checkDiskSpace look at the correct drive again by @CommandMC in #3654
+    - [FIX] Wine/Proton-GE-latest not updatable after Heroic relaunch or Wine manager refresh by @matteobtt in #3620
+    - [Fix] Update Legendary by @CommandMC in #3659
+    - [i18n] Updated Translations by @weblate in #3626
+    - [FIX] fix logs for sideloaded games by @Etaash-mathamsetty in #3656
+    - [TECH] Update Nile to v1.0.2 by @flavioislima in #3662
+    - [Feature] Add option to add/edit/delete categories from categories dropdown by @arielj in #3573
+    - Support additional gamescope options by @Etaash-mathamsetty in #3476
+    - [Feature] Configure scripts to run before and after a game is launched by @arielj in #3565 
+
+-------------------------------------------------------------------
+Wed Dec 13 22:57:46 UTC 2023 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to 2.11.0 
+
+-------------------------------------------------------------------
+Mon Nov  6 06:30:30 UTC 2023 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to 2.10.0
+  * Fixes
+    - Added symlink to /usr/bin/heroic
+  * Highlights
+    - [Linux] Added a new Gamescope Setting to the game settings @Nocccer
+    - [General] Changed the Game Settings UI to use Tabs instead of collapsible elements. The latest used tab will be remembered as well. @flavioislima
+    - [General] It is now possible to use Custom User Agents for Browser apps; @flavioislima
+    - [Linux] Fixed Epic Login and the download of Wine, Proton and other tools on the Linux Snap Package; @flavioislima
+    - [General] Heroic will now remember the last visited URL for all stores, making navigation a lot better. @arielj
+    - [General] A warning will be shown when using non-supported commands or env variables on their inputs; @arielj
+    - [General] Fixed How long to beat information; @CommandMC
+    - [General] Added a new experimental frameless window option @0xCmdrKeen;
+    - [General] Added a new experimental feature to use a redesigned GamePage;
+    - [Linux] Several fixes and improvements on the DXVK, VKD3D, Anti-Cheat runtimes @Etaash-mathamsetty and @arielj
+    - [General] Several UI fixes and performance improvements @arielj
+    - [General] GOG fixes and other improvements @imLinguin
+    - [General] Improved Logs screen showing all available logs @arielj
+    - [Linux/Mac] New widget to simply installing Winetricks components and fonts @arielj
+  * Bug Fixes
+    - Missing resume download button when returning to downloads (#3171)
+    - Repair not working for Epic games (#3165)
+    - Downloads shouldn't be started when opening a game in CLI mode (#3161)
+    - "Run Game Offline" mode not working on windows and mac (#3106)
+    - Launching games through steam on windows not working (#3131)
+    - Games not starting due to System Information command error (#3070)
+    - The XDG_CONFIG_HOME is set by Heroic, causing Mangohud to use the wrong config (#3074)
+ 
+
+-------------------------------------------------------------------
+Wed Feb 15 01:38:06 UTC 2023 - Leeds Garden <lkw1411026824@outlook.com>
+
+- Update to 2.6.2
+  * Fixes
+    - [Linux] Fix not being able to download native GOG games
+    - [Linux] Cloud Sync saves settings not being shown for Windows GOG games that have Linux counterpart
+    - [Linux/macOS] Install dialog was not pre-selecting the default Wine and WinePrefix
+    - [General] Improved how to get games updates from Epic games
+    - [UI] GOG games show ?? as the download size in the download manager
+    - [UI] Improved accessibility of the default theme and other Style fixes
+    - [i18n] Updated translations and fixed the Bosnian language not showing in Latin on the language selector
+  * Changelog
+    - [Fix] Fixes for 2.6 release by @flavioislima in #2416
+    - [Fix] Run game update check when Heroic starts by @CommandMC in #2408
+    - [UI] Fix minor styling bugs by @Etaash-mathamsetty in #2403
+    - [i18n] Updated Translations by @weblate in #2398
+
+- Update to 2.6.1
+  * Highlights
+    - New Default Theme 'Midnight Mirage'
+    - Game Settings will open on a dialog now instead of a new page, making it easier to access them.
+    - New item on the game submenu called 'Extra Info' will show extra information like HowLongToBeat and Game Score
+    - Heroic will show progress for individual files when moving a game
+    - Better caching for GOG games information
+    - [Linux/macOS] When the selected wine version was not found Heroic will search and suggest another one
+    - [macOS] Wine manager was enabled and it is possible to download Wine Crossover and Wine-Staging directly from Heroic.
+    - Added setting to auto-update games and also to skip updates for a specific game
+    - Sidebar now will resize on drag event
+    - Now it is possible to see the download size and platform of the game on the Downloads manager
+    - Added a button to retry the auto-detection of the saves game path for games that supports cloud sync saves
+    - [Windows] Arm64 build available
+  * Fixes
+    - Heroic will block the installation when changing the platform on the install dialog to avoid corrupting the game
+    - Fixes and improvements on GOG games setup and installation
+    - Fix game status not working properly sometimes
+    - Ui fixes and improvements
+    - Several other fixes and improvements
+  * Known issues:
+    - [Linux] It is not possible to download native Linux games on GOG, the install button never stops loading.
+    - [Linux] Save sync not showing for windows games that have Linux versions
+    - [Linux/macOS] install dialog is not pre-selecting the default wine
+
+- Update to 2.6.0
+  * Highlights
+    - New Default Theme 'Midnight Mirage'
+    - Game Settings will open on a dialog now instead of a new page, making it easier to access them.
+    - New item on the game submenu called 'Extra Info' will show extra information like HowLongToBeat and Game Score
+    - Heroic will show progress for individual files when moving a game
+    - Better caching for GOG games information
+    - [Linux/macOS] When the selected wine version was not found Heroic will search and suggest another one
+    - [macOS] Wine manager was enabled and it is possible to download Wine Crossover and Wine-Staging directly from Heroic.
+    - Added setting to auto-update games and also to skip updates for a specific game
+    - Sidebar now will resize on drag event
+    - Now it is possible to see the download size and platform of the game on the Downloads manager
+    - Added a button to retry the auto-detection of the saves game path for games that supports cloud sync saves
+    - [Windows] Arm64 build available
+  * Fixes
+    - Heroic will block the installation when changing the platform on the install dialog to avoid corrupting the game
+    - Fixes and improvements on GOG games setup and installation
+    - Fix game status not working properly sometimes
+    - Ui fixes and improvements
+    - Several other fixes and improvements
+  * Known Issues
+    + We just found out that Heroic is not creating the folder 'GamesConfig' on its folder
+      so this might cause some issues on clean installs. As an workaround, just create this folder under:
+      - Linux: .config/heroic or .var/app/com.heroicgameslauncher.hgl/config/heroic on Flatpak.
+      - Windows: %APPDATA%/local/heroic
+      - macOS: /Users/username/Library/Application Support/heroic
+      - Or Install a game, it will show some errors, just wait until the install finished notification shows up.
+        Then open the game settings.
+
+-------------------------------------------------------------------
+Sun Dec 25 11:05:29 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Move from /opt to /usr/lib because of builderror in Tumbleweed.
+
+-------------------------------------------------------------------
+Wed Dec 14 15:54:08 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.5.2
+  * New Features
+    - [macOS] Added support for game shortcuts (GamePage > 3 dots > Add Shortcut).
+      They will be saved on the Home applications folder by default.
+    - [Linux/macOS] Added support for DXVK Limit FPS option.
+    - [macOS] A DMG for ARM64 for M1/M2 is now available to download on Github.
+      (if a message of app being damaged shows up, run this command on the terminal: xattr -d com.apple.quarantine |
+      mdfind kMDItemCFBundleIdentifier = "*heroic"
+  * Fixes
+    - Fix some sideloaded and GOG games not launching from SteamDeck because of a --skip-version-check flag being passed.
+    - Fix tray icon not properly updating the list of recent games
+    - Fix stuck GOG save games input
+    - [Linux/macOS] Fixed DXVK Installation
+    - [macOS] Fix Crossover not being found.
+    - [Linux] Fix Wine status not updating on Wine Manager after install/uninstall
+    - [macOS] Fixed Winetricks download URL and environmental variables.
+    - Some UI fixes
+  * Full Changelog:
+    - fix: pass skip-version-check only for legendary by @imLinguin in #2157
+    - [macOS] Add support for app shortcuts by @flavioislima in #2161
+    - [FIX] Crossover not found on macOS by @flavioislima in #2165
+    - [Fix] Logging out feedback (rebased) (#1966) by @vncsreis in #2175
+    - [i18n] Updated Translations by @weblate in #2147
+    - [UI/UX] Cache HowLongtoBeat Data and move squares down by @flavioislima in #2180
+    - [WineManager] Update wine item status after install/uninstall by @arielj in #2168
+    - [UI] Update Tray icon when recent games change by @arielj in #2184
+    - [UI] Improve styling in various areas by @Etaash-mathamsetty in #2132
+    - [FIX] Not being able to change GOG saves path by @flavioislima in #2181
+    - [i18n] Updated Translations by @weblate in #2194
+    - [Fix] DXVK + Winetricks on macOS by @flavioislima in #2166
+
+-------------------------------------------------------------------
+Tue Dec  6 17:47:50 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.5.1
+  * Fixes
+    - Fix the issue with the download's progress going crazy and duplicating the installation/update.
+    - Fix a crash on the Install dialog on some games
+    - Fix sideload games not being added to steam automatically.
+    - Fix Games failing to start when launched from Steam because they have an update
+    - Fix games falling to start when launched from Steam when they had Sync Saves but the path was not defined
+    - Fix Auto detect saves path going on forever. Now it will have a timeout of 15s.
+    - Fix GOG games failing to install due to not supported language error.
+    - Increased the connectivity check timeout at startup and added a button to ignore the status.
+    - [macOS] Fixed an issue where the game save path was not correct for native games.
+    - [Linux/macOS] Fix the windows version of a game version being recognized as native and not showing Wine settings and others.
+    - Fix a crash that was happening when uninstalling Sideloaded Apps
+    - Fix Login Page container size max Width
+    - Possibly fix the state of the game card not correctly updating. Not showing an update button, for instance.
+    - [Windows] Fix an issue where Heroic was crashing when opening the install dialog.
+    - Heroic will clean the cache now after upgrading to a new release since some issues are associated with that after updating.
+    - Some other minor fixes and improvements.
+  * Changelog
+    - [GOG] Retry GOG install info if invalid language by @arielj in #2114
+    - [Connectivity] Connectivity check tweaks: ignore button, more ways to check, longer timeout by @arielj in #2113
+    - [Logs] Add GOGdl and Legendary verbose log for any command output for better troubleshooting by @arielj in #2119
+    - [Library] Disable Play button while launching game by @arielj in #2120
+    - [i18n] Add Arabic Language by @flavioislima in #2122
+    - [Fix] 2.5.0 Stable fixes by @flavioislima in #2107
+    - [Feat/macOS] Add Wine and DXVK support for macOS by @flavioislima in #2108
+    - [Fix] Save sync for native games by @CommandMC in #2137
+
+-------------------------------------------------------------------
+Wed Nov 30 18:43:00 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.5.0
+  * Highlights
+    - Downloads Manager
+    - Sideload any app or Game, native or not
+    - Added HowLongToBeat data on the Game Page
+    - Custom Themes
+    - Setting to add the game to Steam automatically (pretty useful on the SteamDeck)
+    - Detection if a game is available or not and list not supported games
+    - Tools were moved to a submenu on Game Page
+    - Settings reorganization
+  * Others
+    - Improved performance in the UI in general, so some pages load without any delay now
+      like the Game Page and the Install Modal.
+    - Better online/offline system so Heroic can handle better when no network is available.
+    - GamePad navigation was redone so now the Library Cards do not show any button and also
+      the commands were changed to work exactly like the SteamOS for better familiarity.
+    - Changelog will now be shown after Heroic is updated (or by clicking on Heroic Version on Sidebar),
+      so you will be aware of all new features for that new release.
+    - Login Screen was redesigned for a more modern look.
+    - Added two new themes: Nord Light and Nord Dark.
+    - It is now possible to force an installation even if Heroic detects no space left on the device.
+    - Heroic will show a warning in case you are not logged in to a store and try to access it from the sidebar.
+    - Updated Legendary and Electron to the latest versions.
+    - Several fixes and improvements!
+
+-------------------------------------------------------------------
+Wed Sep 14 13:04:33 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.4.3
+  * What's new
+    - Fixed games from Epic games not downloading due to HTTP Error.
+      It seems Epic broke something on their side again.
+    - Fixed long issue with GOG games getting progress stuck while the game was being downloaded.
+    - Fix some errors on Windows that was making Heroic to break on start on some machines.
+    - Adds 7 new languages: Azerbaijani, Basque, Belarussian, Bosnian, Romanian, Norwergian Bokmål and Slovak.
+    - Other minor fixes and improvements.
+  * What's Changed
+    - [Fix] WinePrefix FAQ link by @redromnon in #1774
+    - [Fix] Empty screen because of recent games undefinedin #1770
+    - [Windows - Fix] Replace wmic with powershell command, because
+      it is deprecated. in #1788
+    - [i18n] Updated Translations in #1710
+    - [Fix] Epic games fails to install in #1791
+    - [Fix] GOG stuck progress on download + Add 7 new languages
+    - Try to use image cache for images with full url in #1779
+    - Log frontend errors in log files in #1778
+    - [i18n] Updated Translations in #1798
+
+-------------------------------------------------------------------
+Wed Sep 14 12:49:15 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Initial version 2.3.8
