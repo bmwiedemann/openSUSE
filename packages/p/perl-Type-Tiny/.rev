@@ -321,4 +321,24 @@
      new_intersection constructor.</comment>
     <requestid>1312575</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>96984879d77f0cb4a0c1655d13683c18</srcmd5>
+    <version>2.008005</version>
+    <time>1764345241</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.008005
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+  2.008005	2025-11-20
+   - Minor optimization for Type::Params: sometimes it would construct an
+     arrayref of hashref from the slurpy arguments to a function and then
+     check that they arrayref it created was an arrayref, or check the
+     hashref it created was a hashref. Those checks seem unnecessary; if they
+     had ever failed it would indicate something deeply wrong with Perl
+     itself. These superfluous checks are now avoided.
+   - Minor optimization for Type::Params: sometimes it would wrap a `goto` in
+     a `do` block for no reason. That could potentially slow down the call as
+     Perl might create a new lexical context unnecessarily. It is unlikely to
+     make a measurable difference.</comment>
+    <requestid>1320468</requestid>
+  </revision>
 </revisionlist>
