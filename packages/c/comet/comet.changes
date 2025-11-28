@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Thu Nov 13 23:26:35 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- /usr/lib/obs/service/format_spec_file; modernize constructs; compact description 
+
+-------------------------------------------------------------------
+Wed Nov 12 00:16:27 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Fix broken aarch64 builds.
+
+-------------------------------------------------------------------
+Tue Nov 11 02:54:33 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Initial release.
+ 
