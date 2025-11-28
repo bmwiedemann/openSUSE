@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov 28 00:40:42 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Add libpathrs build option to allow builds to switch to libpathrs. In future
+  we will switch to enabling this by default for Tumbleweed and Leap >= 16.
+
+-------------------------------------------------------------------
+Fri Nov 28 00:20:15 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Update to runc v1.4.0. Upstream changelog is available from
+  <https://github.com/opencontainers/runc/releases/tag/v1.4.0>.
+
+-------------------------------------------------------------------
 Wed Nov  5 10:05:32 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Update to runc v1.3.3. Upstream changelog is available from

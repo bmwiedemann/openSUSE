@@ -17,14 +17,16 @@
 # nodebuginfo
 
 
+%bcond_with libpathrs
+
 # MANUAL: Make sure you update this each time you update runc.
-%define git_version d842d7719497cc3b774fd71620278ac9e17710e0
-%define git_short   d842d7719497
+%define git_version 8bd78a9977e604c4d5f67a7415d7b8b8c109cdc4
+%define git_short   8bd78a9977e6
 
 %define project github.com/opencontainers/runc
 
 Name:           runc
-Version:        1.3.3
+Version:        1.4.0
 %define upstream_version %{version}
 Release:        0
 Summary:        Tool for spawning and running OCI containers
@@ -40,6 +42,9 @@ BuildRequires:  go >= 1.23
 BuildRequires:  go-go-md2man
 BuildRequires:  libseccomp-devel
 BuildRequires:  libselinux-devel
+%if 0%{with libpathrs}
+BuildRequires:  libpathrs-devel
+%endif
 Recommends:     criu
 # There used to be a docker-runc package which was specifically for Docker.
 # Since Docker now tracks upstream more consistently, we use the same package
@@ -72,8 +77,15 @@ and has grown to become a separate project entirely.
 # Fix nsenter builds on SLE12.
 export CGO_CFLAGS="--std=gnu11"
 %endif
+
+BUILDTAGS="seccomp"
+%if 0%{with libpathrs}
+BUILDTAGS+=" libpathrs"
+%endif
+
 # build runc
-make BUILDTAGS="seccomp" COMMIT="%{git_describe}" runc
+make BUILDTAGS="$BUILDTAGS" COMMIT="%{git_describe}" runc
+
 # build man pages
 man/md2man-all.sh
 
