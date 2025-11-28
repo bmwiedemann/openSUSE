@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 27 17:17:26 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 9.3.2:
+  * Bump golang.org/x/crypto from 0.44.0 to 0.45.0
+
+-------------------------------------------------------------------
 Wed Nov 19 19:45:13 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 9.3.1:
