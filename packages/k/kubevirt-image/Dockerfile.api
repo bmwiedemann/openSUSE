@@ -31,7 +31,7 @@ RUN set -euo pipefail; \
 # sanity check that the version from the tag is equal to the version of kubevirt-virt-api that we expect
 RUN set -euo pipefail; \
     [ "$(rpm --root /target -q --qf '%{version}' kubevirt-virt-api | \
-    cut -d '.' -f -3)" = "1.6.2" ]
+    cut -d '.' -f -3)" = "1.6.3" ]
 RUN set -euo pipefail; useradd -u 1001 --create-home -s /bin/bash virt-api
 
 

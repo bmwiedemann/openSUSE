@@ -31,7 +31,7 @@ RUN set -euo pipefail; \
 # sanity check that the version from the tag is equal to the version of kubevirt-pr-helper-conf that we expect
 RUN set -euo pipefail; \
     [ "$(rpm --root /target -q --qf '%{version}' kubevirt-pr-helper-conf | \
-    cut -d '.' -f -3)" = "1.6.2" ]
+    cut -d '.' -f -3)" = "1.6.3" ]
 
 # cleanup logs and temporary files
 RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
