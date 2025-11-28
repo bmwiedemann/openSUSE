@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Nov 24 16:32:47 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Fix build with uring for post SLE15 code streams.
+
+-------------------------------------------------------------------
+Fri Nov 14 17:07:50 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Use %product_libs_llvm_ver to determine the LLVM version.
+- Remove conditionals for obsolete PostgreSQL releases.
+
+-------------------------------------------------------------------
+Wed Nov 12 15:22:22 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Update to 17.7:
+  * https://www.postgresql.org/about/news/p-3171/
+  * https://www.postgresql.org/docs/release/17.7/
+  * bsc#1253332, CVE-2025-12817: Missing check for CREATE
+    privileges on the schema in CREATE STATISTICS allowed table
+    owners to create statistics in any schema, potentially leading
+    to unexpected naming conflicts.
+  * bsc#1253333, CVE-2025-12818: Several places in libpq were not
+    sufficiently careful about computing the required size of a
+    memory allocation. Sufficiently large inputs could cause
+    integer overflow, resulting in an undersized buffer, which
+    would then lead to writing past the end of the buffer.
+
+-------------------------------------------------------------------
 Thu Sep  4 15:02:24 UTC 2025 - Reinhard Max <max@suse.com>
 
 - Sync spec file with version 18.

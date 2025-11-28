@@ -16,13 +16,8 @@
 #
 
 
-%define pgversion 17.6
 %define pgmajor 17
-%define buildlibs 0
-%define tarversion %{pgversion}
-%define oldest_supported_llvm_ver 10
-# To be able to use cmake(LLVM) < ...
-%define latest_supported_llvm_ver_plus_one 19
+%define pgminor 7
 
 ### CUT HERE ###
 %define pgname postgresql%pgmajor
@@ -40,6 +35,16 @@
 %define pgextensiondir %pgdatadir/extension
 %define pgcontribdir %pgdatadir/contrib
 %define pgmandir %_mandir
+%define pgversion %{pgmajor}.%{pgminor}
+%define tarversion %{pgversion}%{?prerelease}
+
+%if %pgmajor == 18 || ( %pgmajor == 17 && 0%{?sle_version} == 120200 )
+# We still build the libs for PG 17 on SLE-12-SP2, because
+# newer PG versions will only be released for SP5.
+%define buildlibs 1
+%else
+%define buildlibs 0
+%endif
 
 %define requires_file() %( readlink -f '%*' | LC_ALL=C xargs -r rpm -q --qf 'Requires: %%{name} >= %%{epoch}:%%{version}\\n' -f | sed -e 's/ (none):/ /' -e 's/ 0:/ /' | grep -v "is not")
 
@@ -54,13 +59,8 @@ Name:           %pgname-mini
 Name:           %pgname
 %endif
 
-# Use Python 2 for for PostgreSQL 10 on SLE12.
-# Use Python 3 for everything else.
-%if 0%{?is_opensuse} || 0%{?sle_version} >= 150000 || %pgmajor > 10
+# Use Python 3 for everything.
 %define python python3
-%else
-%define python python
-%endif
 
 %if %pgmajor >= 17
 %bcond_with derived
@@ -68,10 +68,18 @@ Name:           %pgname
 %bcond_without derived
 %endif
 
-%if %pgmajor >= 18
-%bcond_without curl
-%bcond_without uring
-%bcond_without numa
+%if %pgmajor >= 18 && 0%{?suse_version} >= 1500
+    %bcond_without curl
+    %if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1600
+        %bcond_without uring
+    %else
+        %bcond_with uring
+    %endif
+    %bcond_without numa
+%else
+    %bcond_with curl
+    %bcond_with uring
+    %bcond_with numa
 %endif
 
 %if 0%{?suse_version} >= 1500
@@ -121,11 +129,12 @@ BuildRequires:  %libecpg
 BuildRequires:  %libpq
 %endif
 
-%if 0%{?suse_version} >= 1500 && %pgmajor >= 11
+%if 0%{?suse_version} >= 1500
 %ifarch riscv64 loongarch64
 %bcond_with     llvm
 %else
 %bcond_without  llvm
+%{!?product_libs_llvm_ver: %global product_libs_llvm_ver 15}
 %endif
 %else
 %bcond_with     llvm
@@ -138,12 +147,6 @@ BuildRequires:  %libpq
 %bcond_with     check
 %endif
 
-%if %pgmajor >= 11 || %mini
-%bcond_without server_devel
-%else
-%bcond_with server_devel
-%endif
-
 BuildRequires:  fdupes
 %if %{with icu}
 BuildRequires:  libicu-devel
@@ -152,14 +155,23 @@ BuildRequires:  libicu-devel
 BuildRequires:  libselinux-devel
 %endif
 %if %{with llvm}
+BuildRequires:  clang%{product_libs_llvm_ver}
 BuildRequires:  gcc-c++
-BuildRequires:  (cmake(Clang) >= %{oldest_supported_llvm_ver} with cmake(Clang) < %{latest_supported_llvm_ver_plus_one})
-BuildRequires:  (cmake(LLVM)  >= %{oldest_supported_llvm_ver} with cmake(LLVM)  < %{latest_supported_llvm_ver_plus_one})
+BuildRequires:  llvm%{product_libs_llvm_ver}-devel
 %endif
 BuildRequires:  libxslt-devel
-BuildRequires:  openssl-devel
 BuildRequires:  pkg-config
+%if 0%{?suse_version} >= 1500
+BuildRequires:  openssl-devel
 BuildRequires:  (pkgconfig(ldap) or openldap2-devel)
+%else
+%if 0%{?sle_version} >= 120400
+BuildRequires:  libopenssl-1_1-devel
+%else
+BuildRequires:  openssl-devel
+%endif
+BuildRequires:  openldap2-devel
+%endif
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libsystemd)
 %if %{with curl}
@@ -293,13 +305,9 @@ Requires:       postgresql-devel-noarch >= %pgmajor
 Provides:       postgresql-devel-exclusive = %pgmajor
 Conflicts:      postgresql-devel-exclusive < %pgmajor
 
-%if %{with server_devel}
 %package server-devel
 Summary:        PostgreSQL server development header files and utilities
 Group:          Development/Libraries/C and C++
-%else
-Provides:       %pgname-server-devel = %version-%release
-%endif
 Provides:       postgresql-server-devel = %version-%release
 Provides:       postgresql-server-devel-implementation = %version-%release
 Requires(post): postgresql-server-devel-noarch >= %pgmajor
@@ -318,11 +326,13 @@ Requires:       pkgconfig(krb5)
 %if %{with selinux}
 Requires:       libselinux-devel
 %endif
+%if %{with numa}
+Requires:       pkgconfig(numa)
+%endif
 %if %{with llvm}
 Recommends:     %pgname-llvmjit-devel = %version-%release
 %endif
 
-%if %{with server_devel}
 %description server-devel
 PostgreSQL is an advanced object-relational database management system
 that supports an extended subset of the SQL standard, including
@@ -332,7 +342,6 @@ types and functions.
 This package contains the header files and libraries needed to compile
 C extensions that link into the PostgreSQL server. For building client
 applications, see the postgresql%pgmajor-devel package.
-%endif
 
 %description -n %pgname-%devel
 PostgreSQL is an advanced object-relational database management system
@@ -806,10 +815,6 @@ mv %buildroot%pgbindir/ecpg %buildroot%_bindir/ecpg
 ln -s %pgbindir/pg_config %buildroot%_bindir/pg_config
 %endif
 
-%if %{without server_devel}
-cat server-devel.files >> devel.files
-%endif
-
 # Build up the file lists for the libpq and libecpg packages
 cat > libpq.files <<EOF
 %defattr(-,root,root)
@@ -840,13 +845,11 @@ awk -v P=%buildroot '/^(%lang|[^%])/{print P $NF}' libpq.files libecpg.files | x
 %postun -n %pgname-%devel
 /sbin/ldconfig
 
-%if %{with server_devel}
 %post server-devel
 /usr/share/postgresql/install-alternatives %pgmajor
 
 %postun server-devel
 /usr/share/postgresql/install-alternatives %pgmajor
-%endif
 
 %if !%mini
 
@@ -1005,16 +1008,11 @@ fi
 %_libdir/libpgtypes.so
 %_libdir/libpq.so
 %pgincludedir
-
-%if %{with server_devel}
 %exclude %pgincludedir/server
-%endif
 
 %if !%mini
 %doc %pgmandir/man1/ecpg.1*
-%if %{with server_devel}
 %files server-devel -f server-devel.files
-%endif
 %defattr(-,root,root)
 %ghost %_bindir/pg_config
 %pgbindir/pg_config
