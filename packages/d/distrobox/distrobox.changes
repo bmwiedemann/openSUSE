@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Nov 26 15:44:33 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to 1.8.2.2:
+    * docs: update command for GNOME installation by @amnexya in https://github.com/89luca89/distrobox/pull/1873
+    * Fix typo in nested Podman instructions by @atimeofday in https://github.com/89luca89/distrobox/pull/1879
+    * docs: note that Podman and Distrobox are now pre-installed on SteamOS 3.5+ by @kavishgr in https://github.com/89luca89/distrobox/pull/1881
+    * docs: clarify distrobox-host-exec behavior by @jaluoma in https://github.com/89luca89/distrobox/pull/1882
+    * docs: fix reference to #28 in README.md by @dottorblaster in https://github.com/89luca89/distrobox/pull/1891
+    * init: fix stat syntax error in rootful detection by @john-holt4 in https://github.com/89luca89/distrobox/pull/1907
+    * docs: fix mdlint issues in compatibility matrix by @dottorblaster in https://github.com/89luca89/distrobox/pull/1908
+    * create: fix failing to create containers from images that print to stdout with no input by @bsutherland333 in https://github.com/89luca89/distrobox/pull/1912
+    * docs: systemd unit example to mount root as a shared mount by @yehorb in https://github.com/89luca89/distrobox/pull/1911
+    * assemble: /dev/null stdin for distrobox enter execs by @dottorblaster and @balanza in https://github.com/89luca89/distrobox/pull/1915
+    * feat: set compopt filenames for --file in bash completion by @yedayak in https://github.com/89luca89/distrobox/pull/1916
+    * enter: preserve SHELL with unshared groups by @Kamorst in https://github.com/89luca89/distrobox/pull/1917
+    * fix: don't use --pty with buggy su implementations by @Kamorst in https://github.com/89luca89/distrobox/pull/1919
+    * init: restrict find pattern to libcuda so it doesn't pick up non-NVIDIA libs by @miaulightouch in https://github.com/89luca89/distrobox/pull/1918
+    * create: direct stderr to /dev/null to prevent incorrect eval by @dottorblaster and @inc0 in https://github.com/89luca89/distrobox/pull/1920
+    * chore(version): bump to 1.8.2.2 by @dottorblaster in https://github.com/89luca89/distrobox/pull/1921
+
+-------------------------------------------------------------------
 Thu Nov  6 14:11:47 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Update to 1.8.2.1:
