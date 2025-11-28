@@ -15,4 +15,22 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1247829</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>db3b9a874330763b2bdbdce7b69fbb9a</srcmd5>
+    <version>4.3.5a</version>
+    <time>1764345181</time>
+    <user>anag_factory</user>
+    <comment>libcoap 4.3.5a
+
+boo#1254187
+boo#1254188
+boo#1254191
+boo#1254189
+boo#1254190
+boo#1254186
+boo#1254194
+boo#1254192
+boo#1254193</comment>
+    <requestid>1320384</requestid>
+  </revision>
 </revisionlist>

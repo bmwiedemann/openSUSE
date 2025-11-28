@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Nov 27 18:35:11 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 4.3.5a:
+  * CVE-2025-65493: null pointer dereference in BIO_get_data() can cause a denial of service (boo#1254187)
+  * CVE-2025-65494: null pointer dereference in sk_GENERAL_NAME_value() can cause a denial of service (boo#1254188)
+  * CVE-2025-65495: integer signedness error in tls_verify_call_back() can cause a denial of service (boo#1254191)
+  * CVE-2025-65496: null pointer dereference in coap_dtls_generate_cookie() can cause a denial of service (boo#1254189)
+  * CVE-2025-65497: null pointer dereference in coap_dtls_generate_cookie() can cause a denial of service (boo#1254190)
+  * CVE-2025-65498: null pointer dereference in SSL_get_SSL_CTX() can cause a denial of service (boo#1254186)
+  * CVE-2025-65499: array index error in tls_verify_call_back() can cause a denial of service (boo#1254194)
+  * CVE-2025-65500: null pointer dereference in coap_dtls_generate_cookie() can cause a denial of service (boo#1254192)
+  * CVE-2025-65501: null pointer dereference in coap_dtls_info_callback() can cause a denial of service (boo#1254193)
+  * Support for RIOT update changes
+  * Functional bug fixes
+
+-------------------------------------------------------------------
 Tue Feb 11 21:11:22 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Expand CoAP acronym; remove extraneous dashes since English uses

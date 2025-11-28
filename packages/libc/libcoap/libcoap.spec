@@ -24,7 +24,7 @@
 # TODO: docs contain the current date
 %bcond_with docs
 Name:           libcoap
-Version:        4.3.5
+Version:        4.3.5a
 Release:        0
 Summary:        C implementation of Constrained Application Protocol (CoAP)
 License:        BSD-2-Clause
