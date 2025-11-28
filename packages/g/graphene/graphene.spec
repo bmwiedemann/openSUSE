@@ -1,7 +1,7 @@
 #
 # spec file for package graphene
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Group:          Development/Languages/C and C++
 URL:            https://ebassi.github.io/graphene/
 Source:         https://download.gnome.org/sources/graphene/1.10/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
+#PATCH-FIX-OPENSUSE https://github.com/ebassi/graphene/issues/246
+Patch0:         no_fast-math_for_tests.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel

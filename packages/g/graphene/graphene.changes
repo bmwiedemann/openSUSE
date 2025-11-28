@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 25 12:56:50 UTC 2025 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- add no_fast-math_for_tests.patch
+  * %check may fail for some architerture if the test use -ffast-math
+
+-------------------------------------------------------------------
 Fri Mar 18 17:29:48 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.10.8:

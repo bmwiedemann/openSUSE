@@ -1,0 +1,11 @@
+diff -Nraub graphene-1.10.8.ori/meson.build graphene-1.10.8/meson.build
+--- graphene-1.10.8.ori/meson.build	2022-03-18 12:51:39.000000000 -0400
++++ graphene-1.10.8/meson.build	2025-11-25 08:45:29.471363482 -0400
+@@ -84,7 +84,6 @@
+   ]
+ else
+   test_cflags = [
+-    '-ffast-math',
+     '-fstrict-aliasing',
+     '-Wpointer-arith',
+     '-Wstrict-prototypes',
