@@ -1,0 +1,120 @@
+From 625f80869ea897cb06e17c3d74ddd2f134c7db38 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Fri, 28 Nov 2025 14:58:26 +1100
+Subject: [PATCH] Do not overload docker_client fixtures
+
+pytest fixtures are now executed in the order they are found, which
+means a redeclared fixture will take precedence. This means that an
+attempt to spin up the salt_factories fixture in the container
+integration tests now has a dependency loop. Remove the overloaded
+fixture, and perform the check further up the fixture chain.
+---
+ .../factories/daemons/container/test_master.py       | 12 ++++--------
+ .../factories/daemons/container/test_minion.py       | 11 +++--------
+ 2 files changed, 7 insertions(+), 16 deletions(-)
+
+diff --git a/tests/integration/factories/daemons/container/test_master.py b/tests/integration/factories/daemons/container/test_master.py
+index 8f0a655c..221cb4e5 100644
+--- a/tests/integration/factories/daemons/container/test_master.py
++++ b/tests/integration/factories/daemons/container/test_master.py
+@@ -21,14 +21,6 @@
+ ]
+ 
+ 
+-@pytest.fixture(scope="session")
+-def docker_client(salt_factories, docker_client):
+-    if salt_factories.system_service:  # pragma: no cover
+-        msg = "Test should not run against system install of Salt"
+-        raise pytest.skip.Exception(msg, _use_item_location=True)
+-    return docker_client
+-
+-
+ @pytest.fixture(scope="module")
+ def minion_id(salt_version):
+     return random_string(f"salt-minion-{salt_version}-", uppercase=False)
+@@ -43,6 +35,10 @@ def master_id(salt_version):
+ def salt_master(
+     salt_factories, docker_client, docker_network_name, master_id, host_docker_network_ip_address
+ ):
++    if salt_factories.system_service:  # pragma: no cover
++        msg = "Test should not run against system install of Salt"
++        raise pytest.skip.Exception(msg, _use_item_location=True)
++
+     config_overrides = {
+         "open_mode": True,
+         "user": "root",
+diff --git a/tests/integration/factories/daemons/container/test_minion.py b/tests/integration/factories/daemons/container/test_minion.py
+index 89a92feb..dc1909a2 100644
+--- a/tests/integration/factories/daemons/container/test_minion.py
++++ b/tests/integration/factories/daemons/container/test_minion.py
+@@ -23,14 +23,6 @@
+ ]
+ 
+ 
+-@pytest.fixture(scope="session")
+-def docker_client(salt_factories, docker_client):
+-    if salt_factories.system_service:  # pragma: no cover
+-        msg = "Test should not run against system install of Salt"
+-        raise pytest.skip.Exception(msg, _use_item_location=True)
+-    return docker_client
+-
+-
+ @pytest.fixture
+ def minion_id(salt_version):
+     return random_string(f"salt-minion-{salt_version}-", uppercase=False)
+@@ -38,6 +30,9 @@ def minion_id(salt_version):
+ 
+ @pytest.fixture(scope="module")
+ def salt_master(salt_factories, host_docker_network_ip_address):
++    if salt_factories.system_service:  # pragma: no cover
++        msg = "Test should not run against system install of Salt"
++        raise pytest.skip.Exception(msg, _use_item_location=True)
+     config_overrides = {
+         "interface": host_docker_network_ip_address,
+         "log_level_logfile": "quiet",
+From 7bf6da9ccaf6acab3688503bbd62315ae8fdcb98 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Fri, 28 Nov 2025 15:04:38 +1100
+Subject: [PATCH] Do not apply a mark to a fixture
+
+pytest 9 now errors if marks are applied to a fixture, which has never
+had any effect, but now causes an error. Move the skipping check to the
+test cases.
+---
+ tests/integration/factories/daemons/ssh/test_salt_ssh.py | 2 +-
+ tests/integration/factories/daemons/sshd/test_sshd.py    | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/integration/factories/daemons/ssh/test_salt_ssh.py b/tests/integration/factories/daemons/ssh/test_salt_ssh.py
+index 2e8fbed1..3c063947 100644
+--- a/tests/integration/factories/daemons/ssh/test_salt_ssh.py
++++ b/tests/integration/factories/daemons/ssh/test_salt_ssh.py
+@@ -15,7 +15,6 @@
+ 
+ 
+ @pytest.fixture(scope="module")
+-@pytest.mark.skip_if_binaries_missing("sshd", "ssh-keygen")
+ def sshd(salt_factories):
+     # Set StrictModes to no because our config directory lives in /tmp and those permissions
+     # are not acceptable by sshd strict paranoia.
+@@ -54,6 +53,7 @@ def salt_ssh_cli(sshd, salt_factories, master):
+ 
+ 
+ @pytest.mark.skip_on_windows
++@pytest.mark.skip_if_binaries_missing("ssh", "sshd", "ssh-keygen")
+ def test_salt_ssh(salt_ssh_cli):
+     ret = salt_ssh_cli.run("test.echo", "It Works!", minion_tgt="localhost")
+     assert ret.returncode == 0
+diff --git a/tests/integration/factories/daemons/sshd/test_sshd.py b/tests/integration/factories/daemons/sshd/test_sshd.py
+index 873a8dd2..0b4076bc 100644
+--- a/tests/integration/factories/daemons/sshd/test_sshd.py
++++ b/tests/integration/factories/daemons/sshd/test_sshd.py
+@@ -37,7 +37,7 @@ def test_sshd(sshd):
+ 
+ 
+ @pytest.mark.skip_on_windows
+-@pytest.mark.skip_if_binaries_missing("ssh")
++@pytest.mark.skip_if_binaries_missing("ssh", "sshd", "ssh-keygen")
+ def test_connect(sshd, known_hosts_file):
+     ssh = shutil.which("ssh")
+     assert ssh is not None

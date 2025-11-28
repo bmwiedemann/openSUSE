@@ -31,6 +31,8 @@ URL:            https://pytest-salt-factories.readthedocs.io/en/latest/
 Source0:        https://files.pythonhosted.org/packages/source/p/pytest-salt-factories/pytest_salt_factories-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE fix_unit_tests.patch  this patch is removing the workaround in the unit test implementation so the test can pass when using our openSUSE Salt 3006.0 package
 Patch1:         fix_unit_tests.patch
+# PATCH-FIX-UPSTREAM gh#saltstack/pytest-salt-factories#194 & gh#saltstack/pytest-salt-factories#195
+Patch2:         support-pytest-9.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module docker}
@@ -39,7 +41,7 @@ BuildRequires:  %{python_module msgpack}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 6.0.0}
 BuildRequires:  %{python_module pytest-shell-utilities}
-BuildRequires:  %{python_module pytest-subtests}
+BuildRequires:  %{python_module pytest-subtests if %python-pytest < 9}
 BuildRequires:  %{python_module pytest-system-statistics}
 BuildRequires:  %{python_module pyzmq}
 BuildRequires:  %{python_module salt}

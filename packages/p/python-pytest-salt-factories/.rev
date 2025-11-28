@@ -54,4 +54,14 @@
   * Support pytest 8.4+</comment>
     <requestid>1302512</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>87d2f66e0e7a2ed45de97e8a40e9ecd7</srcmd5>
+    <version>1.0.5</version>
+    <time>1764345196</time>
+    <user>anag_factory</user>
+    <comment>- Only require pytest-subtests with pytest &lt; 9.
+- Add patch support-pytest-9.patch:
+  * Do not overload fixture names and do not mark fixtures.</comment>
+    <requestid>1320410</requestid>
+  </revision>
 </revisionlist>
