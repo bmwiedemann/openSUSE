@@ -1,0 +1,45 @@
+From b6f26e62a20fc8c42635a2b868e8915cc2a0b21d Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Fri, 28 Nov 2025 11:27:17 +1100
+Subject: [PATCH] Support pytest 9
+
+pytest 9 has included support for subtests, marking pytest_subtests as
+unmaintained at the same time -- attempt to import from pytest first,
+falling back to pytest_subtests if required.
+---
+ tests/functional/shell/test_script_subprocess.py | 5 ++++-
+ tests/unit/utils/processes/test_processresult.py | 5 ++++-
+ 2 files changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/tests/functional/shell/test_script_subprocess.py b/tests/functional/shell/test_script_subprocess.py
+index 3bbc6d5..3255056 100644
+--- a/tests/functional/shell/test_script_subprocess.py
++++ b/tests/functional/shell/test_script_subprocess.py
+@@ -8,7 +8,10 @@
+ from typing import cast
+ 
+ import pytest
+-from pytest_subtests import SubTests
++try:
++    from pytest import Subtests as SubTests
++except ImportError:
++    from pytest_subtests import SubTests
+ 
+ from pytestshellutils.customtypes import EnvironDict
+ from pytestshellutils.exceptions import FactoryTimeout
+diff --git a/tests/unit/utils/processes/test_processresult.py b/tests/unit/utils/processes/test_processresult.py
+index 3ab90fd..5c88a52 100644
+--- a/tests/unit/utils/processes/test_processresult.py
++++ b/tests/unit/utils/processes/test_processresult.py
+@@ -8,7 +8,10 @@
+ import textwrap
+ 
+ import pytest
+-from pytest_subtests import SubTests
++try:
++    from pytest import Subtests as SubTests
++except ImportError:
++    from pytest_subtests import SubTests
+ 
+ from pytestshellutils.utils.processes import ProcessResult
+ 

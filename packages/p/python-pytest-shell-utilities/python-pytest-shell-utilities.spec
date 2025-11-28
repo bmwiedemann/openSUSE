@@ -34,6 +34,8 @@ URL:            https://github.com/saltstack/pytest-shell-utilities
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-shell-utilities/pytest_shell_utilities-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM python314.patch gh#saltstack/pytest-shell-utilities#57
 Patch0:         python314.patch
+# PATCH-FIX-UPSTREAM gh#saltstack/pytest-shell-utilities#58
+Patch1:         support-pytest-9.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 50.3.2}
 BuildRequires:  %{python_module setuptools_scm >= 3.4}
@@ -48,7 +50,7 @@ BuildRequires:  %{python_module pytest >= 7.3.0}
 BuildRequires:  %{python_module pytest-helpers-namespace}
 BuildRequires:  %{python_module pytest-shell-utilities = %{version}}
 BuildRequires:  %{python_module pytest-skip-markers}
-BuildRequires:  %{python_module pytest-subtests}
+BuildRequires:  %{python_module pytest-subtests if %python-pytest < 9}
 BuildRequires:  %{python_module typing-extensions}
 %endif
 # /SECTION

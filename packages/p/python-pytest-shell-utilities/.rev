@@ -74,4 +74,14 @@
   gh#saltstack/pytest-shell-utilities#57</comment>
     <requestid>1318210</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>654ab88363b1e7752660c5daa847449d</srcmd5>
+    <version>1.9.7</version>
+    <time>1764345194</time>
+    <user>anag_factory</user>
+    <comment>- Only require pytest-subtests with pytest &lt; 9.
+- Add patch support-pytest-9.patch:
+  * Import from pytest, falling back to pytest_subtests.</comment>
+    <requestid>1320396</requestid>
+  </revision>
 </revisionlist>

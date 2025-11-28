@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 28 01:00:22 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Only require pytest-subtests with pytest < 9.
+- Add patch support-pytest-9.patch:
+  * Import from pytest, falling back to pytest_subtests.
+
+-------------------------------------------------------------------
 Mon Nov 17 09:53:35 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add patch python314.patch to make tests compatible with python 3.14
