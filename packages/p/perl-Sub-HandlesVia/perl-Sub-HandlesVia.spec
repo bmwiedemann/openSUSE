@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Sub-HandlesVia
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %define cpan_name Sub-HandlesVia
 Name:           perl-Sub-HandlesVia
-Version:        0.050003
+Version:        0.052000
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Alternative handles_via implementation
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/T/TO/TOBYINK/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros

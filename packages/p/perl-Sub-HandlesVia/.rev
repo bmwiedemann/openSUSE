@@ -103,4 +103,41 @@
     <comment></comment>
     <requestid>1294560</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9738306cba52e0661d6fc4d95fd1606b</srcmd5>
+    <version>0.052000</version>
+    <time>1764345240</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.052000
+   see /usr/share/doc/packages/perl-Sub-HandlesVia/Changes
+  0.052000	2025-11-21
+   [ Bug Fixes ]
+   - The Hash `exists` check was checking definedness. It now properly tests
+     slot existence.
+     &lt;https://github.com/tobyink/p5-sub-handlesvia/issues/20&gt;
+   [ Test Suite ]
+   - In Object::Pad tests, use the `field` keyword rather than deprecated
+     `has` keyword.
+     &lt;https://github.com/tobyink/p5-sub-handlesvia/issues/17&gt;
+   - Include tests for interaction with MooX::Tag::TO_HASH.
+     &lt;https://github.com/tobyink/p5-sub-handlesvia/issues/14&gt;
+   [ Other ]
+   - Use Class::Method::Modifiers to wrap Moo `has`.
+     &lt;https://github.com/tobyink/p5-sub-handlesvia/issues/14&gt;
+   - Use Class::Method::Modifiers to wrap Moo `has`.
+     &lt;https://github.com/tobyink/p5-sub-handlesvia/issues/14&gt;
+  0.050007	2025-11-15
+   [ Test Suite ]
+   - Some of the Corinna test cases accidentally required Moo.
+     &lt;https://github.com/tobyink/p5-sub-handlesvia/issues/18&gt;
+  0.050006	2025-11-10
+   [ Documentation ]
+   - Document usage with the Perl 5.38+ `class` keyword (Corinna).
+   [ Test Suite ]
+   - Test with Perl 5.38+ `class` keyword (Corinna).
+  0.050005	2025-11-10
+   - Bug fix for pathological case exposed by Hydrogen.
+  0.050004	2025-11-10</comment>
+    <requestid>1320466</requestid>
+  </revision>
 </revisionlist>

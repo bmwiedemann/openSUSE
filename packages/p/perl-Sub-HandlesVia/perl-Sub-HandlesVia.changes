@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sat Nov 22 05:32:48 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.052000
+   see /usr/share/doc/packages/perl-Sub-HandlesVia/Changes
+
+  0.052000	2025-11-21
+   [ Bug Fixes ]
+   - The Hash `exists` check was checking definedness. It now properly tests
+     slot existence.
+     <https://github.com/tobyink/p5-sub-handlesvia/issues/20>
+   [ Test Suite ]
+   - In Object::Pad tests, use the `field` keyword rather than deprecated
+     `has` keyword.
+     <https://github.com/tobyink/p5-sub-handlesvia/issues/17>
+   - Include tests for interaction with MooX::Tag::TO_HASH.
+     <https://github.com/tobyink/p5-sub-handlesvia/issues/14>
+   [ Other ]
+   - Use Class::Method::Modifiers to wrap Moo `has`.
+     <https://github.com/tobyink/p5-sub-handlesvia/issues/14>
+   - Use Class::Method::Modifiers to wrap Moo `has`.
+     <https://github.com/tobyink/p5-sub-handlesvia/issues/14>
+  0.050007	2025-11-15
+   [ Test Suite ]
+   - Some of the Corinna test cases accidentally required Moo.
+     <https://github.com/tobyink/p5-sub-handlesvia/issues/18>
+  0.050006	2025-11-10
+   [ Documentation ]
+   - Document usage with the Perl 5.38+ `class` keyword (Corinna).
+   [ Test Suite ]
+   - Test with Perl 5.38+ `class` keyword (Corinna).
+  0.050005	2025-11-10
+   - Bug fix for pathological case exposed by Hydrogen.
+  0.050004	2025-11-10
+   - Array:for_each, Hash:for_each_key, and Hash:for_each_value now support
+     $_.
+
+-------------------------------------------------------------------
 Tue Jul 15 05:39:49 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.050003
