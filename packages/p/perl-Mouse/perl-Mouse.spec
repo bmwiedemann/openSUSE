@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mouse
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,22 @@
 
 %define cpan_name Mouse
 Name:           perl-Mouse
-Version:        2.5.11
+Version:        2.6.0
 Release:        0
-# v2.5.11 -> normalize -> 2.5.11
-%define cpan_version v2.5.11
+# v2.6.0 -> normalize -> 2.6.0
+%define cpan_version v2.6.0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Moose minus the antlers
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/S/SK/SKAJI/%{cpan_name}-%{cpan_version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/S/SY/SYOHEX/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Devel::PPPort) >= 3.59
 BuildRequires:  perl(ExtUtils::ParseXS) >= 3.22
-BuildRequires:  perl(Module::Build) >= 0.4005
-BuildRequires:  perl(Module::Build::XSUtil) >= 0.19
+BuildRequires:  perl(Module::Build) >= 0.400.500
+BuildRequires:  perl(Module::Build::XSUtil) >= 0.190
 BuildRequires:  perl(Test::Exception)
 BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::LeakTrace)
@@ -61,7 +62,7 @@ We're also going as light on dependencies as possible. Mouse currently has
 without XS, although it has an XS backend to make it much faster.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Build.PL --installdirs=vendor optimize="%{optflags}"

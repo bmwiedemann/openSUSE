@@ -238,4 +238,15 @@
     <comment></comment>
     <requestid>1197302</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>9bd9d66429100010e0cfc819e3541259</srcmd5>
+    <version>2.6.0</version>
+    <time>1764345246</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.6.0 (v2.6.0)
+   see /usr/share/doc/packages/perl-Mouse/Changes
+  v2.6.0 2025-10-30T05:25:55Z
+      - Update minimum perl version from 5.8 =&gt; 5.10(#112)</comment>
+    <requestid>1320472</requestid>
+  </revision>
 </revisionlist>
