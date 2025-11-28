@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Nov 28 08:36:10 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.2.2:
+  * Fix AWS SDK debug logging by making it configurable (issue
+    #2270) by @aditmeno in #2290
+  * test: add integration test for issue #2291 (CRD preservation
+    with strategicMergePatches) by @aditmeno in #2292
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/config from
+    1.32.1 to 1.32.2 by @dependabot[bot] in #2300
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3
+    from 1.92.0 to 1.92.1 by @dependabot[bot] in #2299
+  * fix: resolve issues #2295, #2296, and #2297 by @aditmeno
+    in #2298
+  * build(deps): update Helm v4 to 4.0.1 and helm-secrets to
+    4.7.4 by @aditmeno in #2304
+  * feat: add print-env command by @dschmidt in #2279
+
+-------------------------------------------------------------------
 Tue Nov 25 08:43:30 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.2.1:
