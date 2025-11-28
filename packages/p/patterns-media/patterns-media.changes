@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 27 08:07:04 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not explicitly add arabic-fonts and arphic-uming-fonts
+  (boo#1249232).
+
+-------------------------------------------------------------------
 Wed Aug 13 06:46:03 UTC 2025 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Do not require kernel-firmware-all, but rather expand the list,

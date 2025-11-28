@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-media
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,7 +43,6 @@ Provides:       pattern() = rest_cd_core
 Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 1941
 Requires:       kernel-default
-Requires:       kernel-firmware-brcm
 Requires:       kernel-firmware-amdgpu
 Requires:       kernel-firmware-ath10k
 Requires:       kernel-firmware-ath11k
@@ -51,6 +50,7 @@ Requires:       kernel-firmware-ath12k
 Requires:       kernel-firmware-atheros
 Requires:       kernel-firmware-bluetooth
 Requires:       kernel-firmware-bnx2
+Requires:       kernel-firmware-brcm
 Requires:       kernel-firmware-chelsio
 Requires:       kernel-firmware-dpaa2
 Requires:       kernel-firmware-i915
@@ -291,8 +291,6 @@ Requires:       pattern() = kde_utilities
 Requires:       pattern() = kde_utilities_opt
 Requires:       pattern() = kde_yast
 %endif
-Requires:       arabic-fonts
-Requires:       arphic-uming-fonts
 Requires:       cracklib-dict-full
 Requires:       indic-fonts
 Requires:       ipa-gothic-fonts
@@ -327,8 +325,6 @@ Recommends:     pattern() = xfce
 Recommends:     pattern() = xfce_basis
 Recommends:     pattern() = xfce_laptop
 Recommends:     pattern() = xfce_office
-Requires:       pattern() = yast2_basis
-Requires:       pattern() = yast2_install_wf
 Requires:       thai-fonts
 Requires:       un-fonts
 Requires:       yast2-trans-af
@@ -387,6 +383,8 @@ Requires:       yast2-trans-xh
 Requires:       yast2-trans-zh_CN
 Requires:       yast2-trans-zh_TW
 Requires:       yast2-trans-zu
+Requires:       pattern() = yast2_basis
+Requires:       pattern() = yast2_install_wf
 Recommends:     pattern() = books
 Recommends:     pattern() = kvm_server
 Recommends:     pattern() = minimal_base
