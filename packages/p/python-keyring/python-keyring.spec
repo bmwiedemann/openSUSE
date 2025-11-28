@@ -31,15 +31,15 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-keyring%{psuffix}
-Version:        25.6.0
+Version:        25.7.0
 Release:        0
 Summary:        System keyring service access from Python
 License:        MIT
 URL:            https://github.com/jaraco/keyring
 Source:         https://files.pythonhosted.org/packages/source/k/keyring/keyring-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 56}
+BuildRequires:  %{python_module setuptools >= 77}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
