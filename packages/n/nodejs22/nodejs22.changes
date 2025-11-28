@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Thu Nov 27 14:28:26 UTC 2025 - Adam Majer <adam.majer@suse.de>
+
+- icu_781.patch: Add support for ICU 78.1
+- bundle nghttp2 for TW, as upstream is carrying a patch on-top
+  due to changes in nghttp2. See:
+  https://github.com/nodejs/node/issues/60661
+
+-------------------------------------------------------------------
+Mon Nov 24 19:48:36 UTC 2025 - Adam Majer <adam.majer@suse.de>
+
+- Update to 22.21.1:
+  * src: avoid unnecessary string -> char* -> string round trips
+  * src: remove unnecessary shadowed functions on Utf8Value & BufferValue
+  * process: fix hrtime fast call signatures
+  * http: improve writeEarlyHints by avoiding for-of loop
+
+- Update to 22.21.0:
+  * cli: add --use-env-proxy
+  * http: support http proxy for fetch under NODE_USE_ENV_PROXY
+  * http: add shouldUpgradeCallback to let servers control HTTP upgrades
+  * http,https: add built-in proxy support in http/https.request and Agent
+  * src: add percentage support to --max-old-space-size
+
+- fix_ci_tests.patch: disable geopoly and fts3 sqlite tests as our
+  sqlite does not support these optional features. Use fts4 instead.
+
+-------------------------------------------------------------------
+Tue Oct 14 16:14:05 UTC 2025 - Adam Majer <adam.majer@suse.de>
+
+- Update to 22.20.0
+  * doc: stabilize --disable-sigusr1
+  * doc: mark path.matchesGlob as stable
+  * http: add Agent.agentKeepAliveTimeoutBuffer option
+  * http2: add support for raw header arrays in h2Stream.respond()
+  * inspector: add http2 tracking support
+  * sea: implement execArgvExtension
+  * sea: support execArgv in sea config
+  * stream: add brotli support to CompressionStream and DecompressionStream
+  * test_runner: support object property mocking
+  * worker: add cpu profile APIs for worker
+
+- Update to 22.19.0
+  * cli: add NODE_USE_SYSTEM_CA=1
+  * cli: support ${pid} placeholder in --cpu-prof-name
+  * crypto: add tls.setDefaultCACertificates()
+  * dns: support max timeout
+  * doc: update the instruction on how to verify releases
+  * esm: unflag --experimental-wasm-modules
+  * http: add server.keepAliveTimeoutBuffer option
+  * lib: docs deprecate _http_*
+  * net: update net.blocklist to allow file save and file management
+  * process: add threadCpuUsage
+  * zlib: add dictionary support to zstdCompress and zstdDecompress
+
+- Update to 22.18.0:
+  * deps: update amaro to 1.1.0
+  * doc: add all watch-mode related flags to node.1
+  * doc: add islandryu to collaborators
+  * esm: implement import.meta.main
+  * fs: allow correct handling of burst in fs-events with AsyncIterator
+  * permission: propagate permission model flags on spawn
+  * sqlite: add support for readBigInts option in db connection level
+  * src,permission: add support to permission.has(addon)
+  * url: add fileURLToPathBuffer API
+  * watch: add --watch-kill-signal flag
+  * worker: make Worker async disposable
+
+- for older changes, please see https://nodejs.org/en/blog
+
+-------------------------------------------------------------------
 Thu Jun  5 15:58:24 UTC 2025 - Adam Majer <adam.majer@suse.de>
 
 - Update to 22.15.1

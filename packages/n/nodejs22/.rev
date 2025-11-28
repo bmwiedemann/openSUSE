@@ -200,4 +200,41 @@
 - fab6906c5d1c16b046187485a7cb136b3659d42b.patch: dropped, upstreamed</comment>
     <requestid>1283716</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b5d0770dc301ecc383db850b6efca7b9</srcmd5>
+    <version>22.21.1</version>
+    <time>1764345056</time>
+    <user>anag_factory</user>
+    <comment>- icu_781.patch: Add support for ICU 78.1
+- bundle nghttp2 for TW, as upstream is carrying a patch on-top
+  due to changes in nghttp2. See:
+  https://github.com/nodejs/node/issues/60661
+
+- Update to 22.21.1:
+  * src: avoid unnecessary string -&gt; char* -&gt; string round trips
+  * src: remove unnecessary shadowed functions on Utf8Value &amp; BufferValue
+  * process: fix hrtime fast call signatures
+  * http: improve writeEarlyHints by avoiding for-of loop
+- Update to 22.21.0:
+  * cli: add --use-env-proxy
+  * http: support http proxy for fetch under NODE_USE_ENV_PROXY
+  * http: add shouldUpgradeCallback to let servers control HTTP upgrades
+  * http,https: add built-in proxy support in http/https.request and Agent
+  * src: add percentage support to --max-old-space-size
+- fix_ci_tests.patch: disable geopoly and fts3 sqlite tests as our
+  sqlite does not support these optional features. Use fts4 instead.
+
+- Update to 22.20.0
+  * doc: stabilize --disable-sigusr1
+  * doc: mark path.matchesGlob as stable
+  * http: add Agent.agentKeepAliveTimeoutBuffer option
+  * http2: add support for raw header arrays in h2Stream.respond()
+  * inspector: add http2 tracking support
+  * sea: implement execArgvExtension
+  * sea: support execArgv in sea config
+  * stream: add brotli support to CompressionStream and DecompressionStream
+  * test_runner: support object property mocking
+  * worker: add cpu profile APIs for worker</comment>
+    <requestid>1320385</requestid>
+  </revision>
 </revisionlist>
