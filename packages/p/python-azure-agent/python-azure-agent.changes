@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Fri Nov 21 13:49:16 UTC 2025 - Robert Schweikert <rjschwei@suse.com>
+
+- Fix dependencies for SLE 16 (bsc#1254129)
+  + procps instead of sysvinit-tools
+
+-------------------------------------------------------------------
+Thu Nov 13 13:17:58 UTC 2025 - Robert Schweikert <rjschwei@suse.com>
+
+- Update to version 2.14.0.1 (bsc#1253001)
+  + Drop - included upstream
+    ~ agent-btrfs-use-f.patch included upstream
+    ~ remove-mock.patch
+  + FIPS 140-3 support
+  + Block extensions disallowed by policy
+  + Report ext policy errors in heartbeat
+  + Implement signature validation helper functions
+  + Prevent ssh public key override
+  + Use proper filesystem creation flag for btrfs
+  + Enable resource monitoring in cgroup v2 machines
+  + Update agent cgroup cleanup
+  + Add cgroupv2 distros to supported list
+  + Clean old agent cgroup setup
+  + Redact sas tokens in telemetry events and agent log
+  + Add conf option to use hardcoded wireserver ip instead of dhcp request
+    to discover wireserver ip
+  + Support for python 3.12
+  + Update telemetry message for agent updates and send new telemetry for
+    ext resource governance
+  + Disable rsm downgrade
+  + Add community support for Chainguard OS
+  + Swap out legacycrypt for crypt-r for Python 3.13+
+  + Pin setuptools version
+  + Set the agent config file path for FreeBSD
+  + Handle errors importing crypt module
+- From 2.13.1.1
+  + Setup: Fix install_requires list syntax
+  + Pickup latest goal state on tenant certificate rotation + Avoid
+    infinite loop when the tenant certificate is missing
+  + Fix unsupported syntax in py2.6
+  + Cgroup rewrite: uses systemctl for expressing desired configuration
+    instead drop-in files
+  + Remove usages of tempfile.mktemp
+  + Use random time for attempting new Agent update
+  + Enable logcollector in v2 machines
+  + Clean history files
+  + Missing firewall rules reason
+  + Add support for nftables (+ refactoring of firewall code)
+  + Create walinuxagent nftable atomically
+
+-------------------------------------------------------------------
 Thu Jun 19 08:06:14 UTC 2025 - Joachim Gleissner <jgleissner@suse.com>
 
 - Set AutoUpdate.UpdateToLatestVersion=n in /etc/waagent.conf

@@ -28,7 +28,7 @@
 %global _sitelibdir %{%{pythons}_sitelib}
 
 Name:           python-azure-agent
-Version:        2.12.0.4
+Version:        2.14.0.1
 Release:        0
 Summary:        Microsoft Azure Linux Agent
 License:        Apache-2.0
@@ -39,10 +39,7 @@ Source0:        WALinuxAgent-%{version}.tar.gz
 Patch6:         paa_force_py3_sle15.patch
 Patch7:         reset-dhcp-deprovision.patch
 Patch8:         paa_12_sp5_rdma_no_ext_driver.patch
-# PATCH-FIX-UPSTREAM gh#Azure/WALinuxAgent#2741
-Patch9:         remove-mock.patch
 # PATCH-FIX-UPSTREAM gh#Azure/WALinuxAgent#3158
-Patch11:        agent-btrfs-use-f.patch
 Patch12:        paa_direct_exec_in_service.patch
 BuildRequires:  dos2unix
 
@@ -70,9 +67,12 @@ Requires:       openssh
 Requires:       openssl
 Requires:       pwdutils
 Requires:       systemd
-Requires:       sysvinit-tools
 %if 0%{?suse_version} && 0%{?suse_version} <= 1500
+Requires:       sysvinit-tools
 Requires:       wicked
+%endif
+%if 0%{?suse_version} && 0%{?suse_version} >= 1600
+Requires:       procps
 %endif
 Requires:       %{pythons}-pyasn1
 Requires:       %{pythons}-xml
@@ -160,8 +160,6 @@ setup
 %endif
 %patch -P 7
 %patch -P 8 -p1
-%patch -P 9 -p1
-%patch -P 11
 %patch -P 12
 
 %build
