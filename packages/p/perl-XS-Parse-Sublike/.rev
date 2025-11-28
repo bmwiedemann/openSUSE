@@ -32,4 +32,16 @@
              defaulting expressions in subroutine signature parsing (RT168812)</comment>
     <requestid>1310531</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5b9ddec1aa6e24c986db34661de43a8c</srcmd5>
+    <version>0.400.0</version>
+    <time>1764345242</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.400.0 (0.40)
+   see /usr/share/doc/packages/perl-XS-Parse-Sublike/Changes
+  0.40    2025-11-14
+          [CHANGES]
+           * Experimentally support refalias syntax in extended signatures</comment>
+    <requestid>1320470</requestid>
+  </revision>
 </revisionlist>

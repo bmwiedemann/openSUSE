@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Nov 15 05:32:49 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.400.0 (0.40)
+   see /usr/share/doc/packages/perl-XS-Parse-Sublike/Changes
+
+  0.40    2025-11-14
+          [CHANGES]
+           * Experimentally support refalias syntax in extended signatures
+
+-------------------------------------------------------------------
 Thu Oct  9 20:54:05 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.390.0 (0.39)
