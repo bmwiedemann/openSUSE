@@ -1,7 +1,7 @@
 #
 # spec file for package buildpacks-cli
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define executable_name pack
 
 Name:           buildpacks-cli
-Version:        0.38.2
+Version:        0.39.0
 Release:        0
 Summary:        CLI for building apps using Cloud Native Buildpacks
 License:        Apache-2.0
@@ -28,8 +28,8 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
+BuildRequires:  go1.25 >= 1.25.3
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.24
 Provides:       pack = %{version}
 Conflicts:      allegro44-tools
 #

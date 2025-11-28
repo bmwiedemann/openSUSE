@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Fri Nov 28 13:55:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.39.0:
+  * Features
+    - Updating lifecycle version to v0.20.19 (#2481 by
+      @jjbustamante)
+    - Use Docker API version negotiation instead of hardcoded
+      version (#2474 by @jjbustamante)
+    - When fetching lifecycle image, use a platform-specific digest
+      (#2467 by @natalieparellano)
+    - fix: update lifecycle API validation for experimental flag
+      solve issue #2414 (#2432 by @vky5)
+    - Update imgutil to improve containerd storage driver
+      performance (#2427 by @jabrown85)
+    - Fix #2405: Add template parameter to GitHub issue URL (#2407
+      by @jjbustamante)
+    - Added the first tag argument (#2394 by @dgannon991)
+  * Dependencies
+    - build(deps): bump @octokit/plugin-paginate-rest,
+      @actions/github and @octokit/rest (#2338)
+    - build(deps): bump @octokit/request, @actions/github and
+      @octokit/rest (#2370)
+    - build(deps): bump actions/download-artifact from 4 to 5
+      (#2426)
+    - build(deps): bump actions/setup-go from 5 to 6 (#2441)
+    - build(deps): bump buildpacks/github-actions from 5.9.1 to
+      5.9.2 (#2412)
+    - build(deps): bump buildpacks/github-actions from 5.9.2 to
+      5.9.3 (#2421)
+    - build(deps): bump buildpacks/github-actions from 5.9.3 to
+      5.9.4 (#2439)
+    - build(deps): bump github.com/go-viper/mapstructure/v2 (#2430)
+    - build(deps): bump github.com/go-viper/mapstructure/v2 in
+      /tools (#2431)
+    - build(deps): bump golang.org/x/crypto from 0.43.0 to 0.45.0
+      (#2473)
+    - build(deps): bump the go-dependencies group across 1
+      directory with 14 updates (#2449)
+    - build(deps): bump the go-dependencies group across 1
+      directory with 3 updates (#2479)
+    - build(deps): bump the go-dependencies group with 3 updates
+      (#2422)
+    - build(deps): bump the go-dependencies group with 6 updates
+      (#2424)
+    - build(deps): bump the go-dependencies group with 8 updates
+      (#2416)
+    - build(deps): bump the go-dependencies group with 8 updates
+      (#2453)
+
+-------------------------------------------------------------------
 Mon Jun 30 06:00:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.38.2:
