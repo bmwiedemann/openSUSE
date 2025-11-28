@@ -49,4 +49,12 @@
     <comment>- Update to release 0.3.0</comment>
     <requestid>1299166</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>30ac38482d6bc3ec25ee0cebdc824fe3</srcmd5>
+    <version>0.3.0</version>
+    <time>1764345062</time>
+    <user>anag_factory</user>
+    <comment>- added -32bit package needed by Mesa's libvulkan driver packages</comment>
+    <requestid>1320240</requestid>
+  </revision>
 </revisionlist>

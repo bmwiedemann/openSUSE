@@ -27,6 +27,7 @@ URL:            https://gitlab.freedesktop.org/emersion/libdisplay-info
 Source:         https://gitlab.freedesktop.org/emersion/libdisplay-info/-/releases/%version/downloads/libdisplay-info-%version.tar.xz
 Source2:        https://gitlab.freedesktop.org/emersion/libdisplay-info/-/releases/%version/downloads/libdisplay-info-%version.tar.xz.sig
 Source3:        %name.keyring
+Source9:        baselibs.conf
 BuildRequires:  c_compiler
 BuildRequires:  meson >= 0.57.0
 BuildRequires:  python3-base

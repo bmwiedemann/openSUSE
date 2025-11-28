@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 26 11:55:22 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- added -32bit package needed by Mesa's libvulkan driver packages
+
+-------------------------------------------------------------------
 Wed Aug 13 00:29:12 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.3.0
