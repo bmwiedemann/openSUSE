@@ -1,7 +1,9 @@
 #
 # spec file for package suseconnect-ng
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +21,7 @@
 %global project github.com/SUSE/connect-ng
 
 Name:           suseconnect-ng
-Version:        1.13.0
+Version:        1.20.0
 Release:        0
 URL:            https://github.com/SUSE/connect-ng
 License:        LGPL-2.1-or-later
@@ -222,7 +224,7 @@ if [ -e /run/suseconnect-keepalive.timer.is-active ]; then
 fi
 
 %files
-%license LICENSE LICENSE.LGPL
+%license LICENSE
 %doc README.md
 %{_bindir}/suseconnect
 %{_bindir}/suse-uptime-tracker
@@ -240,7 +242,7 @@ fi
 %{_unitdir}/suse-uptime-tracker.timer
 
 %files -n libsuseconnect
-%license LICENSE LICENSE.LGPL
+%license LICENSE
 %{_libdir}/libsuseconnect.so
 
 %files -n suseconnect-ruby-bindings

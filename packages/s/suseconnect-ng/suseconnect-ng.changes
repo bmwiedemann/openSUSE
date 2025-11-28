@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Aug 06 14:11:00 UTC 2025 - Felix Schnizlein <fschnizlein@suse.com>
+Pre build (1.20):
+ - Update error message for Public Cloud instances with registercloudguest
+   installed. SUSEConnect -d is disabled on PYAG and BYOS when the
+   registercloudguest command is available. (bsc#1230861)
+ - Enhanced SAP detected. Take TREX into account and remove empty values when
+   only /usr/sap but no installation exists (bsc#1241002)
+ - Fixed modules and extension link to point to version less documentation. (bsc#1239439)
+ - Fixed SAP instance detection (bsc#1244550)
+ - Remove link to extensions documentation (bsc#1239439)
+ - Migrate to the public library
+
+-------------------------------------------------------------------
+Wed Jun 06 14:11:00 UTC 2025 - Felix Schnizlein <fschnizlein@suse.com>
+
+- Version 1.14 public library release
+  This version is only available on Github as a tag to release the
+  new golang public library which can be consumed without the need
+  to interface with SUSEConnect directly.
+
+-------------------------------------------------------------------
 Thu Nov 14 11:01:05 UTC 2024 - Miquel Sabaté Solà <msabate@suse.com>
 
 - Update version to 1.13:
