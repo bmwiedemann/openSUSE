@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 28 08:17:00 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Add Requires containers-selinux on systems with selinux-policy installed.
+  bsc#1252672
+
+-------------------------------------------------------------------
 Mon Oct 27 23:55:45 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Enable SELinux in default daemon.json config (--selinux-enabled). This has no

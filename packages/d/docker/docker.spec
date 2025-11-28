@@ -132,6 +132,7 @@ BuildRequires:  pkgconfig(libsystemd)
 %if 0%{?suse_version} >= 1500
 # This conditional only works on rpm>=4.13, which SLE 12 doesn't have. But we
 # don't need to support Docker+selinux for SLE 12 anyway.
+Requires:       (container-selinux if selinux-policy)
 Requires:       (apparmor-parser or container-selinux)
 # This recommends is added to make sure that even if you have container-selinux
 # installed you will still be prompted to install apparmor-parser which Docker
