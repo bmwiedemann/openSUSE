@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 27 20:42:40 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
+
+- Update to the new upstream release 3.9.2
+  * Feature: The .html output now supports several new URL parameters (see documentation for details)
+  * Improvement: An Alpine-based Dockerfile is now part of the main repository
+  * Bugfix: Proxied IP addresses are now correctly passed again (regression introduced in 3.9)
+  * Bugfix: API port will now also consider X-Forwarded-For to consider traffic non-local (instead of only X-Real-IP, as before)
+  * Bugfix: RIST input profile setting could not be set, now it can
+  * Bugfix: Fixed support for wildcard certificates for HTTPS/RTMPS, fixed default certificate fallback 
+
+-------------------------------------------------------------------
 Tue Nov 25 20:08:12 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
 
 - Update to thr new upstream release 3.9.1
