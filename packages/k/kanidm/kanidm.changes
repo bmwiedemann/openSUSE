@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Nov 28 06:02:48 UTC 2025 - william.brown@suse.com
+
+- Update to version 1.8.3~git0.471c021f2:
+  * Release 1.8.3
+  * Resolve infinite reauth loop
+
+-------------------------------------------------------------------
+Fri Nov 28 04:08:34 UTC 2025 - william.brown@suse.com
+
+- Update to version 1.8.2~git0.387e2ce61:
+  * Release 1.8.2
+  * Prevent deprecation warnings affecting release
+  * Ignore CredentialTypeMinimum during migrations (#3991)
+  * Report correct client IP in request log (#3990)
+  * Ensure that privileged sessions expirations are synced (#3984)
+  * Missing constraint on skip upgrade process (#3983)
+  * Document the upgrade process through versions. (#3982)
+  * lib crypto should not depend on proto (#3975)
+  * Change AttributeUniqueness to yield BAD_REQUEST (#3974)
+  * fix: kanidm_build_profiles has unwrap which can cause builds to fail (#3973)
+
+-------------------------------------------------------------------
 Wed Nov 19 04:16:56 UTC 2025 - william.brown@suse.com
 
 - Update to version 1.8.1~git0.3d1bdfd13:
