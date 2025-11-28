@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Sun Nov 23 00:32:03 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Add architecture-specific ExclusiveArch for x86_64 and aarch64 (PyInstaller requires ELF loader) 
+
+-------------------------------------------------------------------
+Thu Nov 13 23:10:58 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Modernize constructs.
+
+-------------------------------------------------------------------
+Wed Nov 12 02:11:56 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Fix broken aarch64 builds. 
+
+-------------------------------------------------------------------
+Tue Nov 11 02:55:59 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Initial release.
+ 

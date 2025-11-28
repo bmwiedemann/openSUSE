@@ -1,0 +1,7 @@
+<package name="heroic-gogdl" project="openSUSE:Factory">
+  <title>GOG Downloading module for Heroic Games Launcher</title>
+  <description>GOG download module for Heroic Games Launcher
+Important note
+This is not user friendly cli, it's meant to be used by some other application wanting to download game files, manage cloud saves or conveniently launch the game</description>
+  <url>https://github.com/Heroic-Games-Launcher/heroic-gogdl</url>
+</package>
