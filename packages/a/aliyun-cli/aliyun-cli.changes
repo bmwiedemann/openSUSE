@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Nov 21 10:30:52 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.1.5
+  * Update Aliyun OpenAPI meta data
+
+-------------------------------------------------------------------
+Tue Nov 18 08:31:16 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.1.4
+  * {otsutil} Add otsutil for tablestore management by @AllyW in (#1274)
+  * Update Aliyun OpenAPI meta data
+- from version 3.1.3
+  * {configure} Add --endpoint-type profile configuration by @AllyW in (#1278)
+  * Update Aliyun OpenAPI meta data
+- from version 3.1.2
+  * Update Aliyun OpenAPI meta data
+
+-------------------------------------------------------------------
+Tue Nov  4 08:17:32 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.1.1
+  * {sls} Add parameter missing check for path/host and
+    array response JSON serialization by @AllyW in (#1275)
+  * Update Aliyun OpenAPI meta data
+
+-------------------------------------------------------------------
 Thu Oct 30 11:13:59 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.1.0
