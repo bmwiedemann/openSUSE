@@ -24,7 +24,7 @@
 %bcond_with http3
 %endif
 Name:           nghttp2
-Version:        1.66.0
+Version:        1.68.0
 Release:        0
 Summary:        Implementation of Hypertext Transfer Protocol version 2 in C
 License:        MIT

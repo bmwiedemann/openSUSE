@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Mon Oct 27 12:28:01 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.68.0:
+  * Increase glitch counter for unexpected builtin extension frames
+  * Remove session_update_glitch_ratelim called from deep inside the chain
+  * nghttpd: Make the supported groups configurable
+  * Use SSL_CTX_set1_groups_list
+  * nghttpx: Add groups option
+  * nghttpx: Prefer ML-DSA certificate over ECDSA
+  * nghttpx: Select ECDSA cert based on EVP_PKEY_base_id
+  * nghttpx: Select certificate with BoringSSL
+  * nghttpx: Select certificate with wolfSSL
+  * nghttpx: Add the fast path when selecting a certificate
+  * nghttpx: Select a certificate in a single pass
+  * nghttpx: Support ML-DSA certificate selection with wolfSSL
+  * nghttpx: Make servername_callback behavior consistent
+  * nghttpx: Drop TLSv1.0 and TLSv1.1 support
+  * nghttpx: Define NGHTTP2_CERT_TYPE as constexpr
+  * src: Move sgi _daemonize to util::daemonize
+  * examples: Consistent conditional macro comments
+  * Bump ngtcp2 and its dependencies
+  * src: Adopt nghttp3_conn_read_stream2
+  * src: Use std::ranges::begin and std::ranges::end consistently
+  * h2load: Set QUIC window-bits to 24 by default
+  * Fix typos in documentation: "or3xx" → "or 3xx" and missing space after period
+  * nghttpx: Increase number of UDP packets to read
+  * Optimize quic io
+  * nghttpx: Remove unused ticket_keys from WorkerEvent
+  * Bump ngtcp2 and its dependencies
+
+-------------------------------------------------------------------
+Mon Oct 27 12:23:53 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.67.1:
+  * Remove session_update_glitch_ratelim called from deep inside the chain
+- Update to 1.67.0:
+  * Port ngtcp2 map changes
+  * src: Adopt IP_PMTUDISC_PROBE
+  * Map seed
+  * Use allocator-aware free in failure path
+  * lib: Use nghttp2_mem_free
+  * src: Rewrite util::is_hex_string
+  * GHA: Run android workflow on branches event
+  * Make error handling robust
+  * Update doc
+  * Add "glitch" counter
+  * Make glitch counter configurable
+  * tests: Swap the positions of expected and actual values
+  * Bump ngtcp2 and its dependencies
+  * Adopt ngtcp2 nghttp3 features
+  * Adopt libngtcp2_crypto_libressl changes
+  * src: Adopt designated initializers for ngtcp2_callbacks
+  * src: Adopt designated initializers
+  * src: constexpr fixup
+  * src: Adopt NGTCP2_WRITE_STREAM_FLAG_PADDING
+  * Test lib before building applications
+  * Bump libbpf to v1.6.2
+  * Added nghttp3's pattern targets
+  * Bump ngtcp2 to v1.15.1
+
+-------------------------------------------------------------------
 Sat Sep 20 12:10:05 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - libboost_system was removed upstream
