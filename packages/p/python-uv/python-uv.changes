@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Nov 27 13:14:15 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.9.13
+ * Bug fixes
+  * Validate URL wheel tags against Requires-Python and required environments 
+ * Enhancements
+  * Allow --with-requirements to load extensionless inline-metadata scripts 
+  * Collect and upload PEP 740 attestations during uv publish 
+  * Prevent uv export from overwriting pyproject.toml 
+ * Documentation
+  * Drop unpublished crates from the uv crates.io README 
+  * Fix the links to uv in crates.io member READMEs 
+  * Add a crates.io README for uv 
+  * Add documentation for intermediate Docker layers in a workspace 
+  * Enumerate workspace members in the uv crate README 
+  * Fix documentation links for crates 
+  * Generate a crates.io README for uv workspace members 
+  * Move the "Export" guide to the projects concept section 
+  * Update the cargo install recommendation to use crates 
+  * Use the word "internal" in crate descriptions 
+
+-------------------------------------------------------------------
 Mon Nov 24 10:17:23 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.9.11
