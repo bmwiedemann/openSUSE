@@ -1,0 +1,24 @@
+<services>
+	<service name="tar_scm" mode="manual">
+		<param name="filename">vulkan-helper</param>
+		<param name="url">https://github.com/imLinguin/vulkan-helper-rs.git</param>
+		<param name="scm">git</param>
+		<param name="submodules">enable</param>
+		<param name="revision">main</param>
+		<param name="version">0.1.0</param>
+	</service>
+
+	<service name="set_version" mode="manual"/>
+	<service name="recompress" mode="manual">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+
+	<service name="cargo_vendor" mode="manual">
+		<param name="src">vulkan-helper-0.1.0.tar.xz</param>
+		<param name="revision">main</param>
+		<param name="compression">zst</param>
+		<param name="tag">vulkan-helper</param>
+		<param name="update">true</param>
+	</service>
+</services>

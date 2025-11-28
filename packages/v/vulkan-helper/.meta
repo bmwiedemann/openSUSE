@@ -1,0 +1,5 @@
+<package name="vulkan-helper" project="openSUSE:Factory">
+  <title>A simple CLI app used to interface with basic Vulkan APIs</title>
+  <description>A simple CLI app used to interface with basic Vulkan APIs. I guess it's useful for apps that are unable to call the API directly for some reasons.</description>
+  <url>https://github.com/imLinguin/vulkan-helper-rs</url>
+</package>
