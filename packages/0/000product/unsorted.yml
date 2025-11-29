@@ -842,7 +842,13 @@ unsorted:
   - aqute-bnd 
   - aqute-bnd-javadoc 
   - aqute-bndlib 
+  - arabic-ae-fonts 
   - arabic-amiri-fonts 
+  - arabic-bitmap-fonts 
+  - arabic-fonts 
+  - arabic-kacst-fonts 
+  - arabic-kacstone-fonts 
+  - arabic-naqsh-fonts 
   - arandr 
   - aranym 
   - aravis 
@@ -2469,6 +2475,7 @@ unsorted:
   - colormake 
   - colorpicker 
   - colorpicker-lang 
+  - comet 
   - commandergenius 
   - commons-compiler 
   - commons-compiler-jdk 
@@ -8442,6 +8449,10 @@ unsorted:
   - helm-fish-completion 
   - helm-schema 
   - helm-zsh-completion 
+  - helm3 
+  - helm3-bash-completion 
+  - helm3-fish-completion 
+  - helm3-zsh-completion 
   - helmfile 
   - helmfile-bash-completion 
   - helmfile-fish-completion 
@@ -8457,6 +8468,8 @@ unsorted:
   - herbstluftwm-examples 
   - herbstluftwm-fish-completion 
   - herbstluftwm-zsh-completion 
+  - heroic-epic-integration 
+  - heroic-gogdl 
   - hetzner-flatcar 
   - hevea 
   - hex 
@@ -11010,6 +11023,7 @@ unsorted:
   - leechcraft-xtazy 
   - leechcraft-zalil 
   - leftwm 
+  - legendary 
   - lego 
   - leiningen 
   - lekha 
@@ -14000,8 +14014,8 @@ unsorted:
   - libicu-devel 
   - libicu-devel-32bit 
   - libicu-doc 
-  - libicu77-32bit 
-  - libicu77-bedata 
+  - libicu78-32bit 
+  - libicu78-bedata 
   - libid3-3_8-3 
   - libid3tag-devel 
   - libidl-devel 
@@ -15280,6 +15294,9 @@ unsorted:
   - libparu1 
   - libpasswdqc0 
   - libpath_utils-devel 
+  - libpathrs-devel 
+  - libpathrs-devel-static 
+  - libpathrs0 
   - libpcap-devel 
   - libpcap-devel-32bit 
   - libpcap-devel-static 
@@ -15960,6 +15977,7 @@ unsorted:
   - libreplaygain-devel 
   - libreplaygain1 
   - librepo-devel 
+  - librepods 
   - libreport 
   - libreport-anaconda 
   - libreport-centos 
@@ -19813,6 +19831,7 @@ unsorted:
   - nh2ps 
   - nheko 
   - nheko-zsh-completion 
+  - nile 
   - nilfs-utils 
   - nilfs-utils-devel 
   - nim 
@@ -26412,6 +26431,7 @@ unsorted:
   - python311-patchy 
   - python311-path 
   - python311-pathable 
+  - python311-pathrs 
   - python311-pathspec 
   - python311-pathtools 
   - python311-pathvalidate 
@@ -30248,6 +30268,7 @@ unsorted:
   - python312-patchy 
   - python312-path 
   - python312-pathable 
+  - python312-pathrs 
   - python312-pathspec 
   - python312-pathtools 
   - python312-pathvalidate 
@@ -34084,6 +34105,7 @@ unsorted:
   - python313-patchy 
   - python313-path 
   - python313-pathable 
+  - python313-pathrs 
   - python313-pathspec 
   - python313-pathtools 
   - python313-pathvalidate 
@@ -49297,6 +49319,7 @@ unsorted:
   - vulkan-devel 
   - vulkan-devel-32bit 
   - vulkan-headers 
+  - vulkan-helper 
   - vulkan-tools-32bit 
   - vulkan-utility-libraries-devel 
   - vulkan-validationlayers 
