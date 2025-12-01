@@ -1573,4 +1573,12 @@ bnc#808106: certificate count of the signature list (forwarded request 157970 fr
     <comment>Add Microsoft-signed 16.1 shim</comment>
     <requestid>1320216</requestid>
   </revision>
+  <revision rev="135" vrev="3">
+    <srcmd5>fec53d03c75a1a0bb4b0f4a4e69c1313</srcmd5>
+    <version>16.1</version>
+    <time>1764583887</time>
+    <user>anag_factory</user>
+    <comment>Workaround the build failed with openSUSE Secure Boot Signkey in openSUSE:Factory:secure-boot shim on OBS</comment>
+    <requestid>1320440</requestid>
+  </revision>
 </revisionlist>

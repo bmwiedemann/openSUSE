@@ -210,10 +210,10 @@ suffixes=(opensuse sles)
 # just one shim that embeds this specific cert. If it's a devel
 # project we build all variants to simplify testing.
 if test -e %{_sourcedir}/_projectcert.crt ; then
-    prjsubject=$(openssl x509 -in %{_sourcedir}/_projectcert.crt -noout -subject_hash)
-    prjissuer=$(openssl x509 -in %{_sourcedir}/_projectcert.crt -noout -issuer_hash)
-    opensusesubject=$(openssl x509 -in %{SOURCE11} -noout -subject_hash)
-    slessubject=$(openssl x509 -in %{SOURCE12} -noout -subject_hash)
+    prjsubject=$(openssl x509 -in %{_sourcedir}/_projectcert.crt -inform PEM -noout -subject_hash)
+    prjissuer=$(openssl x509 -in %{_sourcedir}/_projectcert.crt -inform PEM -noout -issuer_hash)
+    opensusesubject=$(openssl x509 -in %{SOURCE11} -inform DER -noout -subject_hash)
+    slessubject=$(openssl x509 -in %{SOURCE12} -inform DER -noout -subject_hash)
     if test "$prjissuer" = "$opensusesubject" ; then
 	suffixes=(opensuse)
     elif test "$prjissuer" = "$slessubject" ; then
@@ -226,6 +226,7 @@ fi
 for suffix in "${suffixes[@]}"; do
     if test "$suffix" = "opensuse"; then
 	cert=%{SOURCE11}
+	cp $cert shim-$suffix.der
 	verify='openSUSE Secure Boot CA1'
 	vendor_dbx='vendor-dbx-opensuse.esl'
 %ifarch x86_64
@@ -236,6 +237,7 @@ for suffix in "${suffixes[@]}"; do
 %endif
     elif test "$suffix" = "sles"; then
 	cert=%{SOURCE12}
+	cp $cert shim-$suffix.der
 	verify='SUSE Linux Enterprise Secure Boot CA1'
 	vendor_dbx='vendor-dbx-sles.esl'
 %ifarch x86_64
@@ -250,12 +252,12 @@ for suffix in "${suffixes[@]}"; do
 	vendor_dbx='vendor-dbx.esl'
 	ms_shim=''
 	test -e "$cert" || continue
+	openssl x509 -in $cert -inform PEM -outform DER -out shim-$suffix.der
     else
 	echo "invalid suffix"
 	false
     fi
 
-    openssl x509 -in $cert -outform DER -out shim-$suffix.der
     make CC=%{cc_compiler} RELEASE=0 ENABLE_CODESIGN_EKU=1 SHIMSTEM=shim \
          VENDOR_CERT_FILE=shim-$suffix.der ENABLE_HTTPBOOT=1 \
          DEFAULT_LOADER="\\\\\\\\grub.efi" \
@@ -368,30 +370,14 @@ print("INFO: Current Lua Version: " .. tostring(_VERSION))
 local db_filename = "/sys/firmware/efi/efivars/db-d719b2cb-3d3a-4596-a3bc-dad00e67656f"
 
 -- The db file existence check
--- Use pcall to execute rpm.open to prevent errors from being thrown when
--- the file cannot be found, causing RPM to fail.
-local success, result = pcall(rpm.open, db_filename, "rb")
+local f_check, err_check = io.open(db_filename, "rb")
 
-local f_check = nil
-
-if not success then
-    -- pcall catches errors (e.g. "No such file or directory")
-    print("WARNING: Attempt to open db EFI variable file failed. Error message: " .. tostring(result))
+if not f_check then
+    print("WARNING: Attempt to open db EFI variable file failed. Error message: " .. tostring(err_check))
     print("WARNING: This usually means the system is not booted in UEFI mode. Skipping all db check steps.")
     return 0
-else
-    -- If pcall succeeds, result may be an archive handle or nil (depending on the behavior of rpm.open)
-    f_check = result
-    if not f_check then
-	-- The archive does not exist, but rpm.open returns nil
-        print("WARNING: db EFI variable file does not exist (rpm.open returned nil). Skipping db check steps.")
-        return 0
-    else
-	-- If the file exists and is successfully opened,
-	-- close the handle immediately so that subsequent code can open it again.
-        f_check:close()
-    end
 end
+f_check:close()
 
 -- ==========================================================================================
 -- This is the hardcoded target certificate content used to check for its existence.
@@ -408,10 +394,12 @@ local TARGET_CERT_HEXES = {
 %if "%{prjissuer_hash}" == "%{opensusesubject_hash}"
     -- Certificate #3, openSUSE Secure Boot CA 2013
     "%{opensuse_ca_hex}",
-%elif "%{prjissuer_hash}" == "%{slessubject_hash}"
+%endif
+%if "%{prjissuer_hash}" == "%{slessubject_hash}"
     -- Certificate #3, SUSE Linux Enterprise Secure Boot CA 2013
     "%{sles_ca_hex}",
-%elif "%{prjissuer_hash}" == "%{prjsubjec_hash}"
+%endif
+%if "%{prjissuer_hash}" == "%{prjsubjec_hash}"
     -- We put all keys for testing on devel/staging project
     -- Certificate #3, openSUSE Secure Boot CA 2013
     "%{opensuse_ca_hex}",
@@ -459,13 +447,13 @@ end
 local db_content = ""
 do
     -- The db file is now confirmed to exist, open it again to read the contents
-    local f = rpm.open(db_filename, "rb")
+    local f_db, err_db = io.open(db_filename, "rb")
 
-    if f then
+    if f_db then
         local chunks = {}
         local CHUNK_SIZE = 4096
         local raw_content = ""
-        local chunk = f:read(CHUNK_SIZE)
+        local chunk = f_db:read(CHUNK_SIZE)
 
         while chunk do
 	    -- If an empty string is read, it means EOF has been reached and the loop is exited.
@@ -473,12 +461,12 @@ do
                 break
             end
             table.insert(chunks, chunk)
-            chunk = f:read(CHUNK_SIZE)
+            chunk = f_db:read(CHUNK_SIZE)
         end
 
         raw_content = table.concat(chunks)
 
-        f:close()
+        f_db:close()
 
 	-- Skip the first 4 bytes (EFI attributes)
         if #raw_content > 4 then
@@ -516,13 +504,12 @@ print("Please add the appropriate certificate to the db or disable UEFI secure b
 -- Secure Boot status check: We only proceed with installation if the certificate is not present in the db and Secure Boot is disabled.
 local sb_filename = "/sys/firmware/efi/efivars/SecureBoot-8be4df61-93ca-11d2-aa0d-00e098032b8c"
 
-local success_sb, result_sb = pcall(rpm.open, sb_filename, "rb")
+local f_sb, err_sb = io.open(sb_filename, "rb")
 
-if not success_sb or not result_sb then
+if not f_sb then
     -- If the file is missing, it typically means the system is not UEFI, or Secure Boot is disabled/the variable is absent.
     print("WARNING: SecureBoot EFI variable file does not exist. Proceed with install.")
 else
-    local f_sb = result_sb
     local raw_content_sb = ""
     local sb_status = 0
 

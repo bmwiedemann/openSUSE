@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov 28 08:30:55 UTC 2025 - Joey Lee <jlee@suse.com>
+
+- Fixed some issues in RPM Macro and pretrans lus script with the old
+  rpm-4.14.3 on SLE-15-SP3:
+    - shim.spec: Use io.open instead of pcall rpm.open in pretrans lua script
+    - shim.spec: Workaround the string comparison issue in elif directive
+    - shim.spec: Specify the certificate format in openssl commands
+
+-------------------------------------------------------------------
 Wed Nov 26 07:42:15 UTC 2025 - Joey Lee <jlee@suse.com>
 
 - Add Microsoft-signed 16.1 shim
