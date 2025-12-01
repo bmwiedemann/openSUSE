@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 27 11:22:52 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.16.1:
+  + Support newer versions of Mesa where format/modifier events
+    have been deprecated by implementing the needed parts of the
+    DMA-BUF feedback protocol in the nested compositor.
+
+-------------------------------------------------------------------
 Mon Sep  1 15:46:57 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.16.0:
