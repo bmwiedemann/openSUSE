@@ -236,7 +236,6 @@ popd
     -DCMAKE_C_COMPILER=gcc-%{vgcc} \
     -DCMAKE_CXX_COMPILER=g++-%{vgcc} \
 %endif
-    -DCMAKE_BUILD_TYPE=DEBUG \
     -DCLAMAV_USER=vscan \
     -DCLAMAV_GROUP=vscan \
     -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%name \

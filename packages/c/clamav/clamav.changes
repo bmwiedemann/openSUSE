@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 21 15:47:35 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Provide a better fix for boo#1249404 by disabling debug mode.
+
+-------------------------------------------------------------------
+Sat Nov 15 03:38:29 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Build with older rust 1.87 for reproducible builds (boo#1249404)
+
+-------------------------------------------------------------------
 Tue Nov  4 16:09:50 UTC 2025 - Reinhard Max <max@suse.com>
 
 - Add clamav-workaround.patch to work around symbol removals in
