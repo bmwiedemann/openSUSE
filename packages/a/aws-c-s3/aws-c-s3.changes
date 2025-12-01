@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 27 11:10:02 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.11.2
+  * Fix the read window update from the same thread by @TingDaoK in (#601)
+- from version 0.11.1
+  * Delivery exact bytes for read window by @TingDaoK in (#600)
+- from version 0.11.0
+  * Fix the deadlock for pause/cancel by @TingDaoK in (#596)
+  * Accept memory limit setting from environment variable by @TingDaoK in (#598)
+
+-------------------------------------------------------------------
 Tue Nov 11 08:30:02 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.10.1
