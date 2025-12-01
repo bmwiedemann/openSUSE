@@ -194,6 +194,9 @@ Patch50:        gh120226-fix-sendfile-test-kernel-610.patch
 Patch51:        sphinx-802.patch
 # PATCH-FIX-OPENSUSE gh139257-Support-docutils-0.22.patch gh#python/cpython#139257 daniel.garcia@suse.com
 Patch52:        gh139257-Support-docutils-0.22.patch
+# PATCH-FIX-UPSTREAM CVE-2025-6075-expandvars-perf-degrad.patch bsc#1252974 mcepl@suse.com
+# Avoid potential quadratic complexity vulnerabilities in path modules
+Patch53:        CVE-2025-6075-expandvars-perf-degrad.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -466,6 +469,7 @@ other applications.
 %patch -p1 -P 50
 %patch -p1 -P 51
 %patch -p1 -P 52
+%patch -p1 -P 53
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

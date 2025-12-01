@@ -1521,4 +1521,17 @@
     <comment></comment>
     <requestid>1311760</requestid>
   </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>f0e51da27472d2f9315126ad2efdacd3</srcmd5>
+    <version>3.9.24</version>
+    <time>1764584018</time>
+    <user>anag_factory</user>
+    <comment>- Add CVE-2025-6075-expandvars-perf-degrad.patch avoid simple
+  quadratic complexity vulnerabilities of os.path.expandvars()
+  (CVE-2025-6075, bsc#1252974).
+
+      if there are no bytes prepended to the ZIP file
+      (CVE-2025-8291, bsc#1251305).</comment>
+    <requestid>1320565</requestid>
+  </revision>
 </revisionlist>
