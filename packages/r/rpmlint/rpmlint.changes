@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 28 11:42:48 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.8.0+git20251125.b54a5e0f:
+  * opensuse.toml: block filters for sudoers-, sysctl- whitelisting errors
+
+-------------------------------------------------------------------
 Fri Nov 21 15:14:04 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.8.0+git20251120.ec01a0fd:
