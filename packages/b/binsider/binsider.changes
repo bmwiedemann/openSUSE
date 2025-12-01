@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Nov 30 23:04:07 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.3.0:
+  + Features
+    - Add “human readable” option for Static/Section headers/Size
+    - Add “human readable” option for program headers
+  + Bug Fixes
+    - Fix compilation and CI errors
+    - Don’t exit when typing `q` in hexdump search/jump
+    - Remove unsupported Windows calls
+    - Fix Windows filesystem handling
+    - Implement Windows target support
+    - Apply clippy suggestions
+    - Check for string-length to avoid overflow
+    - Only allow tracing calls when on dynamic-analysis tab
+
+-------------------------------------------------------------------
 Tue Oct  1 20:34:31 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Initial package
