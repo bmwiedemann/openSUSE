@@ -1,7 +1,7 @@
 #
 # spec file for package maven-assembly-plugin
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           maven-assembly-plugin
-Version:        3.7.1
+Version:        3.8.0
 Release:        0
 Summary:        Maven Assembly Plugin
 License:        Apache-2.0

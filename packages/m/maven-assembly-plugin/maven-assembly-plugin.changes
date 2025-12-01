@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat Nov 29 14:07:55 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 3.8.0
+  * Bug Fixes
+    + MASSEMBLY-1030: Manifest entries from archive configuration
+      are not added in final MANIFEST
+    + MASSEMBLY-1029: Use minimal level for model validation
+  * Documentation updates
+    + MNGSITE-529: Rename "Goals" to "Plugin Documentation"
+  * Maintenance
+    + chore: migrate junit3/4 to junit5
+    + feat: enable prevent branch protection rules
+    + Enable Github Issues
+  * Dependency updates
+    + MASSEMBLY-1028: Bump org.apache.maven:maven-archiver from
+      3.6.1 to 3.6.2
+    + Bump org.apache.maven:maven-archiver from 3.6.2 to 3.6.5
+    + MASSEMBLY-1027: Bump commons-io:commons-io from 2.15.1 to
+      2.16.0
+    + Bump commons-io:commons-io from 2.16.0 to 2.21.0
+    + Bump Maven to 3.9.11. Prerequisite still 3.6.3
+    + Bump org.apache.commons:commons-lang3 from 3.19.0 to 3.20.0
+    + Bump org.codehaus.plexus:plexus-io from 3.4.2 to 3.6.0
+    + Bump org.codehaus.plexus:plexus-interpolation from 1.27 to
+      1.29
+    + Bump org.codehaus.plexus:plexus-archiver from 4.9.2 to 4.10.4
+    + Bump com.github.luben:zstd-jni from 1.5.5-11 to 1.5.7-6
+    + Bump m-invoker-p to 3.9.1 for Java 25
+    + Bump org.apache.maven.plugins:maven-plugins from 41 to 45
+    + Bump org.apache.commons:commons-compress from 1.26.1 to 1.28.0
+    + Bump commons-fileupload:commons-fileupload from 1.5 to 1.6.0
+      in /src/it/projects/bugs/massembly-580
+    + Bump org.codehaus.plexus:plexus-archiver from  to 4.10.0
+    + Bump org.apache.maven.shared:maven-common-artifact-filters
+      from 3.3.2 to 3.4.0
+    + Bump org.apache.maven.shared:maven-filtering from 3.3.2 to
+      3.4.0
+    + Bump org.hamcrest:hamcrest from 2.2 to 3.0
+
+-------------------------------------------------------------------
 Tue Jul 22 11:22:05 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 3.7.1
