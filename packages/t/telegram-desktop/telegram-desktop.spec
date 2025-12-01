@@ -22,10 +22,10 @@
 %define api_hash  d524b414d21f4d37f08684c1df41ac9c
 %define ada_ver   3.3.0
 %define h264_ver  2.6.0
-%define owt_ver   git20250913
-%define td_ver    git20250919
+%define owt_ver   git20251115
+%define td_ver    git20251023
 Name:           telegram-desktop
-Version:        6.1.4
+Version:        6.3.4
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -39,7 +39,7 @@ Source3:        tg_owt-%{owt_ver}.tar.xz
 # n=td && cd /tmp && git clone --depth=1 https://github.com/tdlib/$n && pushd $n && v=git$(TZ=UTC date -d @`git log -1 --format=%at` +%Y%m%d) && d=$n-$v && f=$d.tar.xz && rm -rf .??* && popd && mv $n $d && tar c --remove-files "$d" | xz -9e > "$f"
 Source4:        td-%{td_ver}.tar.xz
 Patch0:         tg_owt-h264-dlopen.patch
-Patch1:         tg_owt-replace-absl-template-nullability-annotations.patch
+Patch1:         tg_owt-pipewire.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel
@@ -96,6 +96,7 @@ BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(protobuf)
+BuildRequires:  pkgconfig(protobuf-lite)
 BuildRequires:  pkgconfig(qrcodegen)
 BuildRequires:  pkgconfig(rnnoise)
 BuildRequires:  pkgconfig(vpx)
@@ -138,10 +139,7 @@ mv ../openh264-headers-%{h264_ver} Telegram/ThirdParty/openh264/include/wels
 mv ../tg_owt-%{owt_ver} Telegram/ThirdParty/tg_owt
 pushd Telegram/ThirdParty/tg_owt
 %autopatch -p2 0
-# Only patch absl in Tumbleweed
-%if 0%{?suse_version} > 1600
 %autopatch -p1 1
-%endif
 popd
 
 mv ../td-%{td_ver} Telegram/ThirdParty/td

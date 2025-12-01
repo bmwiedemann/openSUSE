@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Nov 28 19:49:06 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Updated owt to git20251115.
+  * Removed tg_owt-replace-absl-template-nullability-annotations.patch
+- Updated td to git20251023.
+- Updated telegram-desktop to 6.3.4
+  * https://github.com/telegramdesktop/tdesktop/releases/tag/v6.3.4
+
+-------------------------------------------------------------------
+Fri Nov 28 17:55:11 UTC 2025 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Added tg_owt-pipewire.patch to pipewire 1.5.81 support.
+
+-------------------------------------------------------------------
 Sat Oct 11 01:36:49 UTC 2025 - Xu Zhao <i@xuzhao.net>
 
 - Remove telegram-desktop-webrtc-link.patch.

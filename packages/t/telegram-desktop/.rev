@@ -1484,4 +1484,17 @@
     <comment></comment>
     <requestid>1310720</requestid>
   </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>573836b4fec40d9f68857a1761b3ea2b</srcmd5>
+    <version>6.3.4</version>
+    <time>1764583994</time>
+    <user>anag_factory</user>
+    <comment>- Updated owt to git20251115.
+  * Removed tg_owt-replace-absl-template-nullability-annotations.patch
+- Updated td to git20251023.
+- Updated telegram-desktop to 6.3.4
+  * https://github.com/telegramdesktop/tdesktop/releases/tag/v6.3.4
+- Added tg_owt-pipewire.patch to pipewire 1.5.81 support.</comment>
+    <requestid>1320542</requestid>
+  </revision>
 </revisionlist>
