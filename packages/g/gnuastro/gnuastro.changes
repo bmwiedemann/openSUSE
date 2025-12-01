@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 28 20:49:07 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU Astronomy Utilities 0.24 (library 22.0.0):
+  * Addition of arithmetic parameters
+  * Added options to ConvertType, MakeCatalog, Match, astscript*
+    operations
+  * Statistics: Polynomial fitting is now possible for 2D inputs
+  * Many new operators and options, along with behavioral changes
+
+-------------------------------------------------------------------
 Sat Feb 22 19:49:05 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU Astronomy Utilities 0.23 (library 21.0.0):

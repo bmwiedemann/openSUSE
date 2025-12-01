@@ -17,10 +17,10 @@
 #
 
 
-%define sover 21
+%define sover 22
 %bcond_with     tests
 Name:           gnuastro
-Version:        0.23
+Version:        0.24
 Release:        0
 Summary:        GNU Astronomy Utilities
 License:        GPL-3.0-or-later
@@ -28,6 +28,7 @@ URL:            https://www.gnu.org/software/gnuastro/
 Source:         https://ftp.gnu.org/pub/gnu/gnuastro/%{name}-%{version}.tar.gz
 Source2:        https://ftp.gnu.org/pub/gnu/gnuastro/%{name}-%{version}.tar.gz.sig
 Source3:        https://akhlaghi.org/public-pgp-key.txt#/%{name}.keyring
+BuildRequires:  ghostscript_any
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cfitsio)
@@ -40,7 +41,6 @@ BuildRequires:  pkgconfig(wcslib)
 Recommends:     %{name}-doc
 Recommends:     curl
 Recommends:     ghostscript_any >= 9.10
-BuildRequires:  ghostscript_any
 
 %description
 The GNU Astronomy Utilities (Gnuastro) contains various programs and
@@ -108,13 +108,40 @@ mv -v %{buildroot}/%{_datadir}/%{name}/completion.bash %{buildroot}/%{_datadir}/
 %doc ChangeLog README NEWS THANKS AUTHORS
 %dir %{_sysconfdir}/gnuastro
 %config %{_sysconfdir}/gnuastro/*
-%{_bindir}/*
+%{_bindir}/astarithmetic
+%{_bindir}/astbuildprog
+%{_bindir}/astconvertt
+%{_bindir}/astconvolve
+%{_bindir}/astcosmiccal
+%{_bindir}/astcrop
+%{_bindir}/astfits
+%{_bindir}/astmatch
+%{_bindir}/astmkcatalog
+%{_bindir}/astmkprof
+%{_bindir}/astnoisechisel
+%{_bindir}/astquery
+%{_bindir}/astscript-color-faint-gray
+%{_bindir}/astscript-ds9-region
+%{_bindir}/astscript-fits-view
+%{_bindir}/astscript-pointing-simulate
+%{_bindir}/astscript-psf-scale-factor
+%{_bindir}/astscript-psf-select-stars
+%{_bindir}/astscript-psf-stamp
+%{_bindir}/astscript-psf-subtract
+%{_bindir}/astscript-psf-unite
+%{_bindir}/astscript-radial-profile
+%{_bindir}/astscript-sort-by-night
+%{_bindir}/astscript-zeropoint
+%{_bindir}/astsegment
+%{_bindir}/aststatistics
+%{_bindir}/asttable
+%{_bindir}/astwarp
 %{_datadir}/gnuastro
 %{_mandir}/man1/*.1%{?ext_man}
 
 %files -n libgnuastro%{sover}
 %license COPYING
-%{_libdir}/libgnuastro.so.*
+%{_libdir}/libgnuastro.so.%{sover}{,.*}
 
 %files devel
 %license COPYING*
