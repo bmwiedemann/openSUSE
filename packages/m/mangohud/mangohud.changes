@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Mon Dec  1 06:56:43 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Remove file patch mangohud-remove-glew-dep.patch. 
+
+-------------------------------------------------------------------
+Mon Dec  1 03:17:32 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.8.2:
+  * Fixes:
+    - LLVMPIPE crash where mangohud would check vsync status
+    - X11 crash when $DISPLAY was not set
+    - ImGuI content width was incorrectly calculated in some cases
+    - GPU/CPU load did not respect alpha option
+    - XNVCTRL was not working without nvml
+    - Adressed multiple cases where the mangohud would crash on close
+    - Keybinds were not working in some cases on wayland
+    - Large scale fixes on OpenGL. Missing hud, flickering hud, 
+      games not starting and more.
+    - Mangoapp would sometimes crash when x11 disappeared
+    - Feral launcher not starting game with mangohud (as long as 
+      exec option is not used).
+  * Changes:
+    - GLEW and nlohmann deps have been removed
+    - Added cpu mhz to logging
+    - Blacklisted all gtk-4 apps
+    - Panfrost GPU support
+    - RAPL can be used with AMD CPU power as well
+    - Added qualcomm KGSL support
+    - Added APM XGene support
+    - Blacklisted Marvel Rivals launcher
+    - mangoapp can now check for vkbasalt and gamemode
+    - Added amdgpu v3_0 gpu_metrics, this supports more recent 
+      amd APUs.
+  * Parameters:
+    - gpu_efficiency Display GPU efficiency in frames per joule
+    - cpu_efficiency Display CPU efficiency in frames per joule
+    - flip_efficiency Flips CPU and GPU efficiency to joules per frame
+    - gpu_power_limit Display GPU power limit
+    - horizontal_separator_color Set the colors for the horizontal 
+      separators (horizontal layout only)
+    - core_type Display CPU core type per core. For Intel, it shows 
+      which cores are performance and efficient cores, for ARM it 
+      shows core codenames like A52, A53, A76, etc...
+    - proc_vram Display process' VRAM usage
+    - ftrace Display information about trace events reported 
+      through ftrace
+    - font_size_secondary Customizable font size for secondary 
+      metrics. Default is 0.55 * font_size
+    - MANGOHUD_FPS_LIMIT env to set FPS limit for app
+    - fps_limit can now take decimal values
+    - dx_api attempts to show the underlying directx api 
+      (work in progress)
+  * Remove mangohud-remove-glew-dep.patch.
+
+-------------------------------------------------------------------
 Mon Apr 14 07:33:21 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
 
 - Remove glew dependency
