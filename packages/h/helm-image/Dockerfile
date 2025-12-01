@@ -17,8 +17,8 @@
 #!ExclusiveArch: aarch64 ppc64le s390x x86_64
 #!BuildTag: opensuse/helm:%%helm_version%%-%RELEASE%
 #!BuildTag: opensuse/helm:%%helm_version%%
-#!BuildTag: opensuse/helm:3.19
-#!BuildTag: opensuse/helm:3
+#!BuildTag: opensuse/helm:4.0
+#!BuildTag: opensuse/helm:4
 #!BuildTag: opensuse/helm:latest
 
 FROM opensuse/bci/bci-micro:latest AS target
@@ -31,7 +31,7 @@ RUN set -euo pipefail; \
 # sanity check that the version from the tag is equal to the version of helm that we expect
 RUN set -euo pipefail; \
     [ "$(rpm --root /target -q --qf '%{version}' helm | \
-    cut -d '.' -f -2)" = "3.19" ]
+    cut -d '.' -f -2)" = "4.0" ]
 
 # cleanup logs and temporary files
 RUN set -euo pipefail; zypper -n --installroot /target clean -a; \

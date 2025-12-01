@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 27 17:24:51 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- adjust for helm 4
+
+-------------------------------------------------------------------
 Mon Oct 20 12:53:40 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - remove password change date from /etc/shadow to make the file reproducible
