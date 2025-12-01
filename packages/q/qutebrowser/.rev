@@ -2142,4 +2142,24 @@ Fixed:
     download prompt is still open.</comment>
     <requestid>1318366</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>4ac4c2435b417ab9427c240dcd1768f4</srcmd5>
+    <version>3.6.2</version>
+    <time>1764583985</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.6.2:
+  * The version info now includes the Wayland compositor name if
+    wayland-client is available under a different name than
+    libwayland-client.so.
+    gh#qutebrowser/qutebrowser#8771
+  * The list of Chromium extensions in --version / :version now
+    uses the correct Chromium data profile, also fixing a crash
+    with Qt 6.10.1.
+    gh#qutebrowser/qutebrowser#8785
+  * With Qt 6.10.1, qt.workarounds.disable_hangouts_extension now
+    doesn’t apply on private profiles, avoiding a Qt bug leading to
+    a crash.
+    gh#qutebrowser/qutebrowser#8785</comment>
+    <requestid>1320538</requestid>
+  </revision>
 </revisionlist>
