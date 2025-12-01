@@ -193,4 +193,51 @@
     <comment></comment>
     <requestid>1315900</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>35ac1588399f37f34af033523365bb59</srcmd5>
+    <version>25.11</version>
+    <time>1764584002</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 25.11:
+  + Added Alt-Tab recent-windows switcher, with live window
+    previews and title fading for long titles.
+    windows blocked out from screencasts now appear as
+    black rectangles with titles hidden
+  + niri IPC now exposes `focus_timestamp` and an event stream,
+    enabling external tools to access the recent-windows list.
+  + Added animated transitions for entering/leaving fullscreen:
+    black backdrop fade and smooth rounded-corner clipping.
+  + Added “true maximize” mode allowing windows to occupy the full
+    work area without gaps or struts.
+  + New horizontal-scroll gesture:
+    dragging a tiled window’s titlebar horizontally scrolls
+    the view; two-finger tap toggles floating/tiling.
+  + Per-output and per-workspace layout configuration:
+    `layout {}` sections can live inside `output {}` or
+    `workspace &quot;name&quot; {}`.
+  + Added config includes:
+    configurations can now be split using `include
+    &quot;file.kdl&quot;`.
+  + Support for DisplayLink external-display docks.
+  + Reduced screen blanking when starting or switching from TTY.
+  + Added custom output modes/modelines for monitors with
+    incomplete EDID.
+  + Accessibility improvements:
+    corrected signalling of keyboard modifiers; Alt-Tab
+    switcher is now screen-reader friendly.
+  + Numerous bug fixes:
+    - improved window commit tracking
+    - fixed layer-shell/Qt/GTK popup ordering
+    - fixed DMA-BUF importing for v4l2
+    - improved animations and screenshot behaviour
+    - touch device calibration fixes
+    - scroll event handling fixes
+    - DRM/GPU device stability improvements
+    - layer-shell v5 support
+    - XWayland stability and behaviour improvements
+- Remove libspa-0.8.0-compat.patch: unneeded anymore
+- Back use vendor and source from github release
+</comment>
+    <requestid>1320559</requestid>
+  </revision>
 </revisionlist>

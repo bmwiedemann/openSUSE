@@ -19,19 +19,14 @@
 
 %bcond_without test
 Name:           niri
-Version:        25.08+135
+Version:        25.11
 Release:        0
 Summary:        Scrollable-tiling Wayland compositor
 License:        GPL-3.0-or-later
 URL:            https://github.com/YaLTeR/niri
-#i will use this again for next release
-#Source0:        #{url}/archive/v#{version}/#{name}-#{version}.tar.gz
-#Source1:        #{url}/releases/download/v#{version}/#{name}-#{version}-vendored-dependencies.tar.xz
-Source0:        %{name}-%{version}.tar.zst
-Source1:        vendor.tar.zst
+Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+Source1:        %{url}/releases/download/v%{version}/%{name}-%{version}-vendored-dependencies.tar.xz
 Source2:        cargo_config
-# PATCH-FIX-OPENSUSE -- Backported fix for API breakage -- gh#YaLTeR/niri#2728
-Patch0:         libspa-0.8.0-compat.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  clang
 BuildRequires:  pango-devel
@@ -72,8 +67,8 @@ Opening a new window never causes existing windows to resize.
 
 %prep
 %autosetup -a1 -p1
-##mkdir .cargo
-#cp #{SOURCE2} .cargo/config
+mkdir .cargo
+cp %{SOURCE2} .cargo/config
 
 %build
 %{cargo_build}

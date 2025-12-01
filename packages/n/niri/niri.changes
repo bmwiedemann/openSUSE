@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sat Nov 29 11:33:45 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 25.11:
+  + Added Alt-Tab recent-windows switcher, with live window
+    previews and title fading for long titles.
+    windows blocked out from screencasts now appear as
+    black rectangles with titles hidden
+  + niri IPC now exposes `focus_timestamp` and an event stream,
+    enabling external tools to access the recent-windows list.
+  + Added animated transitions for entering/leaving fullscreen:
+    black backdrop fade and smooth rounded-corner clipping.
+  + Added “true maximize” mode allowing windows to occupy the full
+    work area without gaps or struts.
+  + New horizontal-scroll gesture:
+    dragging a tiled window’s titlebar horizontally scrolls
+    the view; two-finger tap toggles floating/tiling.
+  + Per-output and per-workspace layout configuration:
+    `layout {}` sections can live inside `output {}` or
+    `workspace "name" {}`.
+  + Added config includes:
+    configurations can now be split using `include
+    "file.kdl"`.
+  + Support for DisplayLink external-display docks.
+  + Reduced screen blanking when starting or switching from TTY.
+  + Added custom output modes/modelines for monitors with
+    incomplete EDID.
+  + Accessibility improvements:
+    corrected signalling of keyboard modifiers; Alt-Tab
+    switcher is now screen-reader friendly.
+  + Numerous bug fixes:
+    - improved window commit tracking
+    - fixed layer-shell/Qt/GTK popup ordering
+    - fixed DMA-BUF importing for v4l2
+    - improved animations and screenshot behaviour
+    - touch device calibration fixes
+    - scroll event handling fixes
+    - DRM/GPU device stability improvements
+    - layer-shell v5 support
+    - XWayland stability and behaviour improvements
+- Remove libspa-0.8.0-compat.patch: unneeded anymore
+- Back use vendor and source from github release
+
+-------------------------------------------------------------------
 Sun Nov 02 02:11:18 UTC 2025 - Mia Herkt <mia@0x0.st>
 
 - Bump open file ulimit for test suite
