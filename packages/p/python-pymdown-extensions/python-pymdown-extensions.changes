@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 27 21:23:44 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 10.17.2:
+  * FIX: Blocks: Blocks extensions will now better handle nesting
+    of indented style Admonitions, Details, and Tabbed and other
+    non-conflicting blocks.
+
+-------------------------------------------------------------------
 Wed Nov 12 21:17:06 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to 10.17.1:

@@ -186,4 +186,14 @@
     <comment></comment>
     <requestid>1317514</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1b15147f4be56162ae2045e47c87ef44</srcmd5>
+    <version>10.17.2</version>
+    <time>1764584031</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1320393 from benoit_monin
+
+update to version 10.17.2</comment>
+    <requestid>1320599</requestid>
+  </revision>
 </revisionlist>
