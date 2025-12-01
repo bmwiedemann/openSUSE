@@ -144,4 +144,35 @@
   * switch to ruff</comment>
     <requestid>1206168</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>6debc9e62554ced65a212dc775938016</srcmd5>
+    <version>3.2.0</version>
+    <time>1764584034</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1320443 from glaubitz
+
+- Update to 3.2.0
+    * Expose can_colorize as public API (#114) @hugovk
+    * Add support for Python 3.15 (#123) @hugovk
+    * Drop support for Python 3.9 (#121) @hugovk
+    * Replace action-pre-commit-uv with prek-action (#124) @hugovk
+  - from version 3.1.0
+    * Add true colour RGB option as input arguments (#102) @icyveins7
+    * Cache system lookups to save invocation time (#107) @miketheman
+    * Advertise typing via classifier (#104) @miketheman
+    * Migrate coverage configuration to pyproject.toml (#105) @miketheman
+  - from version 3.0.1
+    * Fix licence filename in metadata (#100) @hugovk
+  - from version 3.0.0
+    * Add support for Python 3.14 (#87) @hugovk
+    * Only apply FORCE_COLOR, NO_COLOR and ANSI_COLORS_DISABLED when present
+      and not an empty string (#92) @hugovk
+    * Replace deprecated classifier with licence expression (PEP 639) (#95) @hugovk
+    * Speedup: move typing imports into type-checking block (#94) @hugovk
+    * Lint with faster action-pre-commit-uv: 1m22s -&gt; 48s and 21s -&gt; 15s (#86) @hugovk
+    * Replace literal types with strings (#97) @hugovk
+    * Remove deprecated __ALL__, use __all__ instead (#93) @hugovk
+  - Update BuildRequires from pyproject.toml</comment>
+    <requestid>1320603</requestid>
+  </revision>
 </revisionlist>
