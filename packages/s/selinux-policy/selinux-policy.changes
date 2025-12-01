@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Nov 28 09:55:32 UTC 2025 - Robert Frohl <rfrohl@suse.com>
+
+- Update to version 20251128:
+  * update support for polkit agent helper (bsc#1251931)
+  * Allow system_mail_t read apache system content conditionally
+  * Allow login_userdomain read lastlog
+  * Allow sshd-net read and write to sshd vsock socket
+  * Update ktls policy
+  * Add comprehensive SELinux policy module for bwrap thumbnail generation
+  * Revert "Allow thumb_t create permission in the user namespace"
+  * Allow systemd-machined read svirt process state
+  * Allow sshd_auth_t getopt/setopt on tcp_socket (bsc#1252992)
+  * Allow sysadm access to TPM
+  * Allow tlp get the attributes of the pidfs filesystem
+  * Allow kmscon to read netlink_kobject_uevent_socket
+  * Allow systemd-ssh-issue read kernel sysctls
+  * fix: bz2279215 Allow speech-dispatcher access to user home/cache files
+  * Allow create kerberos files in postgresql db home
+  * Fix files_delete_boot_symlinks() to contain delete_lnk_files_pattern
+  * Allow shell comamnds in locate systemd service (bsc#1246559)
+  * Introduce initrc_nnp_daemon_domain interface
+  * Label /var/lib/cosmic-greeter with xdm_var_lib_t
+  * Allow setroubleshoot-fixit get attributes of xattr fs
+  * Allow insights-client manage /etc symlinks
+  * Allow insights-client get attributes of the rpm executable
+  * Allow nfsidmapd search virt lib directories
+  * Allow iotop stream connect to systemd-userdbd
+  * Allow gnome-remote-desktop read sssd public files
+  * Allow thumb_t stream connect to systemd-userdbd
+  * Add auth_nnp_domtrans_chkpwd()
+  * Allow bluez dbus API passing unix domain sockets
+  * Allow bluez dbus api pass sockets over dbus
+  * Dontaudit systemd-generator connect to sssd over a unix stream socket
+  * Allow init watch/watch_reads systemd-machined user ptys
+- Syncing with upstream rawhide selinux-policy up to:
+  * 874e36c884fc9e31ae12428338a38b14db65f554
+- Update embedded container-selinux version to commit:
+  * efdee4df4e98b5f5fe826b83db5ff4a9239e54bb (version 2.243.0)
+
+-------------------------------------------------------------------
 Tue Nov 11 14:20:46 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 20251111:
