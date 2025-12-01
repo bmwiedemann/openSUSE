@@ -1,7 +1,7 @@
 #
 # spec file for package planify
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,27 +19,27 @@
 %define         sover 0
 %define         appid io.github.alainm23.planify
 Name:           planify
-Version:        4.13.2
+Version:        4.16.1
 Release:        0
 Summary:        Task and project manager
 License:        GPL-3.0-or-later
 URL:            https://github.com/alainm23/planify
-Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  meson >= 0.56
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  vala >= 0.48.0
 BuildRequires:  pkgconfig(gee-0.8) >= 0.20.6
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(granite-7) >= 7.4.0
 BuildRequires:  pkgconfig(gtk4) >= 4.14.4
 BuildRequires:  pkgconfig(gtksourceview-5) >= 5.12.1
 BuildRequires:  pkgconfig(gxml-0.20)
+BuildRequires:  pkgconfig(libspelling-1)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.8.0
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.6.0
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.7.0
 BuildRequires:  pkgconfig(libecal-2.0) >= 3.52.4
 BuildRequires:  pkgconfig(libical)
 BuildRequires:  pkgconfig(libportal) >= 0.7.1
@@ -100,8 +100,12 @@ Summary:        Library files for %{name}
 %build
 export CFLAGS="%{optflags} -Wno-error=return-type"
 %meson \
+  -Devolution=true \
+  -Dportal=true \
   -Dprofile=default \
-  -Dtracing=true
+  -Dtracing=true \
+  -Dwebkit=true \
+  %{nil}
 %meson_build
 
 %install
@@ -118,8 +122,6 @@ export CFLAGS="%{optflags} -Wno-error=return-type"
 %{_datadir}/appdata/%{appid}.appdata.xml
 %{_datadir}/applications/%{appid}.desktop
 %{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
-%{_datadir}/gtksourceview-5/language-specs/markdownpp.lang
-%{_datadir}/gtksourceview-5/styles/markdown{,_dark}.xml
 %{_datadir}/icons/hicolor/scalable/apps/%{appid}{,.Devel}.svg
 %{_datadir}/icons/hicolor/symbolic/apps/%{appid}-symbolic.svg
 

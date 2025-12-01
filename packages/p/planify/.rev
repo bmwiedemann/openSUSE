@@ -42,4 +42,41 @@
   * Refactored utility methods and internal cleanup</comment>
     <requestid>1299902</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f0ea0abb72d11514c610e38454c3916e</srcmd5>
+    <version>4.16.1</version>
+    <time>1764583999</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.16.1:
+  * Fix: issue where opening the Quick Add dialog while the window was
+    maximized
+  * Fix: UX problem where selecting the Inbox project
+  * Added Shift+Enter as a temporary &quot;keep adding&quot; shortcut
+  * Added support for Zoom meeting links
+- Update to version 4.16.0:
+  * Fixed tasks disappearing from the Today view
+  * Resolved subtask duplication when moving tasks
+  * Reduced redundant toast notifications
+  * Fixed issue where Ctrl key events unintentionally toggled
+    'Keep adding' option
+  * Added new keyboard shortcut: 'Ctrl+K'
+  * Added a new natural language date processor
+  * Introduced full Spanish language support
+  * Added 'Labels' item to the task’s context menu
+  * Added event details popover with direct integration for Google Meet and
+    Microsoft Teams meetings
+  * Fixed Quick Add window maximizing
+- Update to version 4.15.2:
+  * Enhanced keyboard shortcut flow
+  * Fixed project completion percentage
+  * Added spell-check support for task titles
+  * Introduced new selection widgets for the Task Completion Mode
+  * Improved backup handling
+  * Quick Add: Keeps task attributes when using &quot;Keep Adding&quot;
+  * Improved focus restoration
+  * Added in-line label selection in Quick Add using the @ symbol
+  * Added optional spell-check setting for task descriptions and notes
+  * Fixed auto-scroll issue in Quick Add’s description field</comment>
+    <requestid>1320550</requestid>
+  </revision>
 </revisionlist>
