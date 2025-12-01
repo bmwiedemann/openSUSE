@@ -4,5 +4,6 @@
 that supports an extended subset of the SQL standard, including
 transactions, foreign keys, subqueries, triggers, and user-defined
 types and functions.</description>
+  <devel project="server:database:postgresql" package="postgresql18"/>
   <url>https://www.postgresql.org/</url>
 </package>
