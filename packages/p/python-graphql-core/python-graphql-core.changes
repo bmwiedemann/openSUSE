@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 27 15:10:19 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.2.7
+  * Python 3.14 is now officially supported
+  * Enum values, input fields and schemas now keep extensions on sorting (#245)
+  * Various refactorings and changes concerning @defer and @stream
+  * Early execution on incremental delivery is now disabled by default
+  * New recommended validation rule for max introspection depth
+  * GraphQLEnumType values can now be specified via a callable
+
+-------------------------------------------------------------------
 Tue Feb  4 11:15:23 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.2.6

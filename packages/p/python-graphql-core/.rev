@@ -76,4 +76,20 @@
 </comment>
     <requestid>1243133</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>26dc64bb7aa5bd1d7e59d41bdfecaffe</srcmd5>
+    <version>3.2.7</version>
+    <time>1764584027</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1320350 from glaubitz
+
+- Update to 3.2.7
+    * Python 3.14 is now officially supported
+    * Enum values, input fields and schemas now keep extensions on sorting (#245)
+    * Various refactorings and changes concerning @defer and @stream
+    * Early execution on incremental delivery is now disabled by default
+    * New recommended validation rule for max introspection depth
+    * GraphQLEnumType values can now be specified via a callable</comment>
+    <requestid>1320596</requestid>
+  </revision>
 </revisionlist>

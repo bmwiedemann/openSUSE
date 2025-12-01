@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-graphql-core
-Version:        3.2.6
+Version:        3.2.7
 Release:        0
 Summary:        GraphQL implementation for Python
 License:        MIT
