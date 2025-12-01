@@ -17,7 +17,7 @@
 
 
 Name:           kubo
-Version:        0.37.0
+Version:        0.39.0
 Release:        0
 Summary:        IPFS implementation in Go
 License:        MIT
@@ -37,7 +37,7 @@ Requires:       nss-myhostname
 
 Provides:       go-ipfs = %{version}
 Provides:       ipfs
-Obsoletes:      go-ipfs <= 0.21.0
+Obsoletes:      go-ipfs <= 0.25.0
 
 %description
 IPFS is a global, versioned, peer-to-peer filesystem.

@@ -243,4 +243,31 @@ now with fixed build</comment>
     <comment></comment>
     <requestid>1314432</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>fc99dbc6c7ddab9b23a90eda08809c04</srcmd5>
+    <version>0.39.0</version>
+    <time>1764583956</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.39.0
+  * Made DHT Sweep provider the default
+  * Fast root CID providing for immediate content discovery
+  * Persist provider state across restarts
+  * Detailed statistics with ipfs provide stat
+  * Add warnings about slow reprovide
+  * Rename: provider_provides_total
+  * Automatic UPnP recovery after router restarts
+  * No longer publish deprecated go-ipfs name
+  * Limit for gateway range request for CDN compatibility
+- 0.38.0
+  * Repository migration: simplified provide configuration
+  * Add Experimental Sweeping DHT Provider
+  * Expose DHT metrics
+  * Improve gateway error pages with diagnostic tools
+  * Update WebUI
+  * Pin name improvements
+  * Enforce identity CID size and ipfs files write fixes
+  * Provide Filestore and Urlstore blocks on write
+  * Limit MFS operation for --flush=false</comment>
+    <requestid>1320546</requestid>
+  </revision>
 </revisionlist>

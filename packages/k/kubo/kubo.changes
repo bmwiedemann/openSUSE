@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Nov 27 16:56:13 UTC 2025 - Dmitry Markov <werwolf131313@gmail.com>
+
+- Update to 0.39.0
+  * Made DHT Sweep provider the default
+  * Fast root CID providing for immediate content discovery
+  * Persist provider state across restarts
+  * Detailed statistics with ipfs provide stat
+  * Add warnings about slow reprovide
+  * Rename: provider_provides_total
+  * Automatic UPnP recovery after router restarts
+  * No longer publish deprecated go-ipfs name
+  * Limit for gateway range request for CDN compatibility
+
+- 0.38.0
+  * Repository migration: simplified provide configuration
+  * Add Experimental Sweeping DHT Provider
+  * Expose DHT metrics
+  * Improve gateway error pages with diagnostic tools
+  * Update WebUI
+  * Pin name improvements
+  * Enforce identity CID size and ipfs files write fixes
+  * Provide Filestore and Urlstore blocks on write
+  * Limit MFS operation for --flush=false
+
+-------------------------------------------------------------------
 Sat Sep 27 17:47:00 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Bump golang build requirement to 1.25
