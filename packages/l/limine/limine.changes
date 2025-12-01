@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Nov 30 00:58:17 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 10.4.0:
+  * Add new configuration file option "global_dtb" to allow overriding
+    the device tree used by Limine itself as well as for all boot entries
+    (unless overridden by entry-local "dtb_path" option).
+  * Flush entire I-Cache if it is not PIPT on aarch64.
+  * Fix use-after-free bug in riscv64 initialisation code related to
+    device tree handling.
+  * Framebuffer-related caching improvements for riscv64 and aarch64.
+  * Prioritise using ACPI for riscv64 initialisation code if available
+    and if a DTB is not manually specified.
+
+-------------------------------------------------------------------
 Sun Nov 23 17:10:19 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
 
 - Update to 10.3.2:
