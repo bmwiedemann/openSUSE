@@ -182,4 +182,14 @@
     <comment></comment>
     <requestid>1280964</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d6b06fc5870a22c3d163645a602eb472</srcmd5>
+    <version>1.16</version>
+    <time>1764584123</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.16
+  + Fix query of default CLOUD_NETCONFIG_MANAGE (bsc#1253223
+  + Fix variable names in the README (forwarded request 1317391 from jgleissner)</comment>
+    <requestid>1320707</requestid>
+  </revision>
 </revisionlist>

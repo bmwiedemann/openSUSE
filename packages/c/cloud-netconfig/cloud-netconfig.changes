@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 12 13:36:32 UTC 2025 - Joachim Gleissner <jgleissner@suse.com>
+
+- Update to version 1.16
+  + Fix query of default CLOUD_NETCONFIG_MANAGE (bsc#1253223
+  + Fix variable names in the README
+
+-------------------------------------------------------------------
 Fri May 16 13:48:50 UTC 2025 - Joachim Gleissner <jgleissner@suse.com>
 
 - Update to version 1.15
