@@ -139,4 +139,33 @@
 </comment>
     <requestid>1070844</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1fccf57d891b24c69f91e765e1f4b655</srcmd5>
+    <version>8.2.0</version>
+    <time>1764584037</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1320480 from glaubitz
+
+- Update to 8.2.0
+     * New binary_mode param on WS connections (#419)
+     * Correct WSTransport.receive output (#422)
+     * Change version from tuple to string, add tuple version
+       function to get back to the old value
+     * Docker file updates to fix vulnerabilities
+     * Exception handling fix for websocket connections
+     * Fix to use the defined timeout during the websocket connection
+     * Update exception to report when file doesn't exist (#438)
+     * Make the receiver thread part of the transport class (#435)
+     * Use heartbeat_terminate_event as heartbeat loop exit condition
+       to avoid a race condition (#433)
+  - from version 8.1.2
+    * Yanked because there are more than just bug fixes in this release
+      so the version number was wrong. Replaced with 8.2.0.
+  - from version 8.1.1
+    * Yanked because there are more than just bug fixes in this release
+      so the version number was wrong. Replaced with 8.2.0.
+  - Adjust upstream source name in spec file
+  - Use Python 3.11 on SLE-15 by default</comment>
+    <requestid>1320607</requestid>
+  </revision>
 </revisionlist>

@@ -17,8 +17,9 @@
 
 
 %define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-stomp.py
-Version:        8.1.0
+Version:        8.2.0
 Release:        0
 Summary:        Python STOMP client
 License:        Apache-2.0
@@ -26,7 +27,7 @@ URL:            https://github.com/jasonrbriggs/stomp.py
 # using github archive for docs
 #Source0:        https://github.com/jasonrbriggs/stomp.py/archive/v%%{version}.tar.gz#/%%{name}-%%{version}.tar.gz
 #github is missing the tag: https://github.com/jasonrbriggs/stomp.py/issues/415
-Source0:        https://files.pythonhosted.org/packages/source/s/stomp.py/stomp.py-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/s/stomp.py/stomp_py-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry}
 BuildRequires:  fdupes
@@ -42,7 +43,7 @@ BuildArch:      noarch
 A Python client library for accessing messaging servers (such as ActiveMQ, Apollo or RabbitMQ) using the STOMP protocol versions 1.0, 1.1 and 1.2. It can also be run as a standalone, command-line client for testing.
 
 %prep
-%setup -q -n stomp.py-%{version}
+%setup -q -n stomp_py-%{version}
 sed -i 's/\^/>=/' pyproject.toml
 
 %build
