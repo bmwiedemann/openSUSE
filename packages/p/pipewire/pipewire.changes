@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Nov 28 16:32:16 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.5.84 (1.6 RC4):
+  * This is the fourth 1.6 release candidate that is API and ABI
+    compatible with previous 1.4.x, 1.2.x and 1.0.x releases.
+  * Highlights
+    - Capabilities were added to improve negotiation over links.
+    - The audio resampler now has a configurable window function
+      to better tune the resampler quality. A kaiser and blackman
+      window was added and the default parameters were tuned.
+    - Various small fixes and improvements.
+  * PipeWire
+    - Capabilities and PeerCapabilities were added to exchange
+      key/value pairs between consumer and producer right after a
+      link is made. This can be used to detect how the negotiation
+      of formats and buffers should be done.
+  * Modules
+    - Avoid segfaults in RTP source. (#4970 (closed))
+    - The AVB module has seen some improvements.
+  * Pulse-server
+    - @NONE@ can now be used to clear the default sink/source.
+  * SPA
+    - Support longer convolver filenames and also support inline
+      IRs.
+    - The audio resampler window function is now selectable and
+      configurable. A kaiser window and blackman window was added
+      and the default qualities were tweaked to improve quality.
+    - The filter-graph convolver latency is now set by default to
+      something more sensible. (0 by default and N/2 for hilbert).
+      (#4980 (closed))
+  * Bluetooth
+    - Better xrun and error handling for iso streams.
+    - The +CNUM reply was fixed.
+    - The CIEC call status was fixed. (#1744 (closed))
+    - Add BAP context metadata to improve compatibility.
+    - Improve compatibility with Creative Zen Hybrid Pro by
+      releasing transports simultaneously.
+
+-------------------------------------------------------------------
 Tue Nov 11 10:12:52 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.5.83 (1.6 RC3):
