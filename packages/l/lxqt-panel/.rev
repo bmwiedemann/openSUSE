@@ -1370,4 +1370,13 @@
   * Drop lxqt-panel-qt610.patch</comment>
     <requestid>1315873</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>4bfd20a3a3ac7ed6339216b06af9596c</srcmd5>
+    <version>2.3.1</version>
+    <time>1764583968</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.3.1:
+  * Fixed build failure with Qt &lt; 6.8</comment>
+    <requestid>1320510</requestid>
+  </revision>
 </revisionlist>
