@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Nov 27 11:19:22 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.50.2:
+  + Prevent unsafe URI schemes from participating in media playback
+  + Make webkit_web_view_add_frame_displayed_callback() work with
+    WPEPlatform
+  + Make jsc_value_array_buffer_get_data() function introspectable
+  + Fix logging in to Google accounts that have a WebAuthn second
+    factor configured
+  + Fix loading webkit://gpu when there are no threads configured
+    for GPU rendering
+  + Fix rendering gradients that use the CSS hue interpolation
+    method
+  + Fix pasting image data from the clipboard
+  + Fix font-family selection when the font name contains spaces
+  + Fix the build with standard C libraries that lack execinfo.h,
+    like Musl or uClibc
+  + Fix capturing canvas snapshots in the Web Inspector
+  + Fix build dependencies to ensure that generated headers for
+    WPEPlatform are always created before they are needed
+  + Fix several crashes and rendering issues
+
+-------------------------------------------------------------------
 Fri Oct 17 07:01:32 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Do not build 32bit targets via ExcludeArch %{ix86} and %{arm}.
