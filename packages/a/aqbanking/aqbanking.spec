@@ -1,7 +1,7 @@
 #
 # spec file for package aqbanking
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define          cmake_config_version 6.6
+%define          cmake_config_version 6.7
 %define          build_ofx 1
 %define          _name aqbanking
 %define          aq_plugindir   %{_libdir}/aqbanking/plugins/44
@@ -27,14 +27,15 @@
 %define          qb_cfgmoddir   %{fronts_libdir}/qbanking/cfgmodules
 %define          q4b_cfgmoddir  %{fronts_libdir}/q4banking/cfgmodules
 Name:           aqbanking
-Version:        6.6.1
+Version:        6.7.10beta
+%define srcvers        %{version}
 Release:        0
 Summary:        Library for Online Banking Functions and Financial Data Import and Export
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Productivity/Office/Finance
 URL:            https://www.aquamaniac.de/aqbanking/
-Source:         https://www.aquamaniac.de/rdm/attachments/download/535/aqbanking-%{version}.tar.gz
-Source1:        https://www.aquamaniac.de/rdm/attachments/download/534/aqbanking-%{version}.tar.gz.asc
+Source:         https://www.aquamaniac.de/rdm/attachments/download/604/aqbanking-%{srcvers}.tar.gz
+Source1:        https://www.aquamaniac.de/rdm/attachments/download/603/aqbanking-%{srcvers}.tar.gz.asc
 Source2:        aqbanking6-handbook-20190221.pdf
 Source3:        aqbanking.keyring
 BuildRequires:  cmake
