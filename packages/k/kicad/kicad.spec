@@ -68,7 +68,6 @@ BuildRequires:  pkg-config
 BuildRequires:  python3-pybind11-devel
 BuildRequires:  python3-wxPython
 BuildRequires:  swig >= 3
-BuildRequires:  update-desktop-files
 BuildRequires:  wxGTK3-devel >= 3.2.4
 BuildRequires:  cmake(nng)
 BuildRequires:  cmake(protobuf)

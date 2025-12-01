@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 22 21:19:54 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove unused BuildRequires: update-desktop-files.
+
+-------------------------------------------------------------------
 Sun Nov  9 23:41:54 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to 9.0.6:
