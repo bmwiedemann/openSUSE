@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Mon Dec  1 06:17:56 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to 4.8.0:
+
+  Removed
+  * irc: remove temporary servers and option irc.look.temporary_servers
+
+  Changed
+  * api: add support of date like ISO 8601 but with spaces and lower 
+    t and z in function util_parse_time (#886)
+  * irc: request and perform SASL authentication when the server 
+    advertises SASL support with message "CAP NEW" (#2277)
+  * irc: send SASL username with mechanism EXTERNAL (#2270)
+  * logger: change default time format to %@%F %T.%fZ (UTC) (#886)
+  * logger: use function util_parse_time to parse date/time in log 
+    files (#886)
+  * relay/api: return an error 400 (Bad Request) when URL parameters 
+    "colors", "nicks", "lines" and "lines_free" have an invalid value
+  * relay/api: return an error 401 (Unauthorized) when header 
+    "x-weechat-totp" has an invalid value
+  * xfer: add buffer local variable "server" in DCC CHAT buffers
+  * core, irc, relay: add tag "tls" in gnutls messages
+  * irc: add tags "irc_cap" and "log3" in client capability request 
+    and SASL not supported messages
+  * build: require Curl ≥ 7.68.0 (#2268)
+  * build: require GnuTLS ≥ 3.6.3 (#2268)
+  * build: require libgcrypt ≥ 1.8.0 (#2268)
+  * build: require Enchant v2 (#2268)
+  * build: require Lua ≥ 5.3 (#2268)
+
+  Added
+  * core: add option weechat.completion.cycle
+  * core: add hdata for hooks
+  * api: add functions util_parse_int, util_parse_long and 
+    util_parse_longlong
+  * buflist: add variable ${index_displayed}
+
+  Fixed
+  * core: display an error message in case of invalid parameters in 
+    commands /bar, /buffer, /cursor, /print and /window
+  * api: fix file descriptor leak in hook_url when a timeout occurs 
+    or if the hook is removed during the transfer (#2284)
+  * api: fix parsing of date/times with timezone offset in function 
+    util_parse_time
+  * irc: fix warning on creation of irc.msgbuffer option when the 
+    server name contains upper case letters (#2281)
+  * irc: display a warning for each unknown or invalid server option 
+    in commands /connect and /server
+  * irc: fix colors in messages 367 (ban mask), 728 (quiet mask) and 
+    MODE (#2286)
+  * irc: fix reset of color when multiple modes are set with 
+    command /mode
+  * relay/api: fix crash when an invalid HTTP request is received 
+    from a client
+  * relay/api: return HTTP error 404 instead of 400 when the buffer 
+    is not found in resources completion and input
+  * relay/api: return HTTP error 400 in case of invalid body in 
+    resource ping
+
+-------------------------------------------------------------------
 Tue Nov 25 00:21:56 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to 4.7.2:
