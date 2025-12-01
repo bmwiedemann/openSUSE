@@ -1,7 +1,7 @@
 #
 # spec file for package python-fabio
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,14 @@
 #
 
 
-%define pyversion 2024.9.0
+%define pyversion 2025.10
 Name:           python-fabio
-Version:        2024.9.0
+Version:        2025.10.0
 Release:        0
 Summary:        Image IO for images produced by 2D X-ray detectors
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT
 URL:            https://github.com/silx-kit/fabio
 Source:         https://github.com/silx-kit/fabio/archive/v%{version}.tar.gz#/fabio-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM qt6.patch gh#silx-kit/fabio#605
-Patch0:         qt6.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module PyQt6}
@@ -62,7 +60,7 @@ ExcludeArch:    %{ix86} %{arm}
 FabIO is an I/O library for images produced by 2D X-ray detectors.
 
 %prep
-%autosetup -p1 -n fabio-%{version}
+%autosetup -p1 -n fabio-%{pyversion}
 find src -name '*.py' -and ! -path src/fabio/_version.py -exec sed -i '1{/^#!/d}' '{}' ';' -exec chmod -x '{}' ';'
 
 %build
@@ -105,6 +103,6 @@ $python ./run_tests.py --installed -v
 %python_alternative %{_bindir}/eiger2cbf
 %python_alternative %{_bindir}/eiger2crysalis
 %{python_sitearch}/fabio
-%{python_sitearch}/fabio-%{pyversion}.dist-info
+%{python_sitearch}/fabio-%{version}.dist-info
 
 %changelog

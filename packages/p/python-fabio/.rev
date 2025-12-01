@@ -105,4 +105,17 @@
   support qt6, qt6.patch, gh#silx-kit/fabio#605</comment>
     <requestid>1283368</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9edcf308d45709b1b0a13e4cf4d24596</srcmd5>
+    <version>2025.10.0</version>
+    <time>1764584079</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2025.10.0
+  - Include patches from debian (Thanks Rolland Mas)
+  - Compatibility with recent version of Glymur
+  - Supports Python 3.10-3.14
+- Remove upstreamed patch:
+  - qt6.patch</comment>
+    <requestid>1320611</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Nov 30 00:27:27 UTC 2025 - Bret Towe <bret.towe@gmail.com>
+
+- Update to 2025.10.0
+  - Include patches from debian (Thanks Rolland Mas)
+  - Compatibility with recent version of Glymur
+  - Supports Python 3.10-3.14
+- Remove upstreamed patch:
+  - qt6.patch
+
+-------------------------------------------------------------------
 Thu Jun  5 13:02:36 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - switch to Qt6 bindings as Qt5 is going EOL. Add upstream patch to
