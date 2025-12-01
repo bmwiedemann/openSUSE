@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Nov 26 12:54:08 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.6.1
+  * test: add memory profiler test (#5329)
+  * docs: comments for blob, stuffer methods (#5326)
+  * refactor: remove unused s2n_socket_set_read_size method (#5594)
+  * chore: Rust bindings release 0.3.29 (#5595)
+  * feat(integration): enable CodeBuild and Nix for rust integration tests (#5578)
+  * fix: update action user name (#5600)
+  * fix: update memory usage test assertions (#5592)
+  * docs: update pull request template (#5591)
+  * Revert "feat: basic security policy builder interface (#5493)" (#5599)
+  * docs: add dev docs on handshake and io (#5596)
+  * ci: PR conventional commit lint GHA (#5603)
+  * fix(ci): add `build` to the validate-pr-title CI job (#5610)
+  * build(deps): bump the all-gha-updates group across 1 directory with 2 updates (#5605)
+  * test(integration): add dynamic record sizing test (#5608)
+  * ci: update cmake version (#5612)
+  * ci: exclude `validate-pr-title` from merge queue (#5613)
+  * feat: add pure ML-KEM support (#5586)
+  * fix(ci): check Amazon copyright statement (#5611)
+  * ci: move the integnix job to us-west-2 (#5604)
+  * fix: replace `uint8_t` in for loops (#5619)
+  * refactor(harness): Extend handshake logic to support TLS 1.2 (#5614)
+  * test: require both MLKem and MLDsa capabilities for pure MLKEM tests (#5621)
+  * ci: add rust integration test to codebuild start script (#5623)
+  * docs: Adds note about serialization error case (#5617)
+  * fix: enable -Wcast-qual flag for libcrypto=awslc (#4735)
+
+-------------------------------------------------------------------
 Wed Nov  5 14:07:47 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.6.0
