@@ -168,4 +168,12 @@
 - drop CVE-2025-22868.patch (merged upstream)</comment>
     <requestid>1307712</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>512804225af5be4c8a5d61ef34108add</srcmd5>
+    <version>0.20.6</version>
+    <time>1764584025</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1320580</requestid>
+  </revision>
 </revisionlist>

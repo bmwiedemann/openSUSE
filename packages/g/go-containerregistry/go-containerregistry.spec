@@ -132,7 +132,10 @@ zsh command line completion support for gcrane.
 
 %build
 for i in crane gcrane registry; do
-    go build -mod=vendor -buildmode=pie -trimpath ./cmd/$i
+    go build -mod=vendor -buildmode=pie -trimpath \
+        -ldflags "-X github.com/google/go-containerregistry/cmd/crane/cmd.Version=%{version}" \
+        -ldflags "-X github.com/google/go-containerregistry/pkg/v1/remote/transport.Version=%{version}" \
+        ./cmd/$i
 done
 
 %check
