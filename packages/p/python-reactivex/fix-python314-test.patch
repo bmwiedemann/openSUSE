@@ -1,0 +1,334 @@
+Index: RxPY-4.1.0/tests/test_observable/test_flatmap_async.py
+===================================================================
+--- RxPY-4.1.0.orig/tests/test_observable/test_flatmap_async.py
++++ RxPY-4.1.0/tests/test_observable/test_flatmap_async.py
+@@ -9,7 +9,11 @@ from reactivex.subject import Subject
+ class TestFlatMapAsync(unittest.TestCase):
+     def test_flat_map_async(self):
+         actual_next = None
+-        loop = asyncio.get_event_loop()
++        try:
++            loop = asyncio.get_running_loop()
++        except RuntimeError:
++            loop = asyncio.new_event_loop()
++            asyncio.set_event_loop(loop)
+         scheduler = AsyncIOScheduler(loop=loop)
+ 
+         def mapper(i: int):
+Index: RxPY-4.1.0/tests/test_observable/test_fromfuture.py
+===================================================================
+--- RxPY-4.1.0.orig/tests/test_observable/test_fromfuture.py
++++ RxPY-4.1.0/tests/test_observable/test_fromfuture.py
+@@ -7,7 +7,11 @@ import reactivex
+ 
+ class TestFromFuture(unittest.TestCase):
+     def test_future_success(self):
+-        loop = asyncio.get_event_loop()
++        try:
++            loop = asyncio.get_running_loop()
++        except RuntimeError:
++            loop = asyncio.new_event_loop()
++            asyncio.set_event_loop(loop)
+         success = [False, True, False]
+ 
+         async def go():
+@@ -31,7 +35,11 @@ class TestFromFuture(unittest.TestCase):
+         assert all(success)
+ 
+     def test_future_failure(self):
+-        loop = asyncio.get_event_loop()
++        try:
++            loop = asyncio.get_running_loop()
++        except RuntimeError:
++            loop = asyncio.new_event_loop()
++            asyncio.set_event_loop(loop)
+         success = [True, False, True]
+ 
+         async def go():
+@@ -57,7 +65,11 @@ class TestFromFuture(unittest.TestCase):
+         assert all(success)
+ 
+     def test_future_cancel(self):
+-        loop = asyncio.get_event_loop()
++        try:
++            loop = asyncio.get_running_loop()
++        except RuntimeError:
++            loop = asyncio.new_event_loop()
++            asyncio.set_event_loop(loop)
+         success = [True, False, True]
+ 
+         async def go():
+@@ -80,7 +92,11 @@ class TestFromFuture(unittest.TestCase):
+         assert all(success)
+ 
+     def test_future_dispose(self):
+-        loop = asyncio.get_event_loop()
++        try:
++            loop = asyncio.get_running_loop()
++        except RuntimeError:
++            loop = asyncio.new_event_loop()
++            asyncio.set_event_loop(loop)
+         success = [True, True, True]
+ 
+         async def go():
+Index: RxPY-4.1.0/tests/test_observable/test_start.py
+===================================================================
+--- RxPY-4.1.0.orig/tests/test_observable/test_start.py
++++ RxPY-4.1.0/tests/test_observable/test_start.py
+@@ -16,7 +16,11 @@ created = ReactiveTest.created
+ 
+ class TestStart(unittest.TestCase):
+     def test_start_async(self):
+-        loop = asyncio.get_event_loop()
++        try:
++            loop = asyncio.get_running_loop()
++        except RuntimeError:
++            loop = asyncio.new_event_loop()
++            asyncio.set_event_loop(loop)
+         success = [False]
+ 
+         async def go():
+@@ -36,7 +40,11 @@ class TestStart(unittest.TestCase):
+         assert all(success)
+ 
+     def test_start_async_error(self):
+-        loop = asyncio.get_event_loop()
++        try:
++            loop = asyncio.get_running_loop()
++        except RuntimeError:
++            loop = asyncio.new_event_loop()
++            asyncio.set_event_loop(loop)
+         success = [False]
+ 
+         async def go():
+Index: RxPY-4.1.0/tests/test_observable/test_tofuture.py
+===================================================================
+--- RxPY-4.1.0.orig/tests/test_observable/test_tofuture.py
++++ RxPY-4.1.0/tests/test_observable/test_tofuture.py
+@@ -18,7 +18,11 @@ created = ReactiveTest.created
+ 
+ class TestToFuture(unittest.TestCase):
+     def test_await_success(self):
+-        loop = asyncio.get_event_loop()
++        try:
++            loop = asyncio.get_running_loop()
++        except RuntimeError:
++            loop = asyncio.new_event_loop()
++            asyncio.set_event_loop(loop)
+         result = None
+ 
+         async def go():
+@@ -30,7 +34,11 @@ class TestToFuture(unittest.TestCase):
+         assert result == 42
+ 
+     def test_await_success_on_sequence(self):
+-        loop = asyncio.get_event_loop()
++        try:
++            loop = asyncio.get_running_loop()
++        except RuntimeError:
++            loop = asyncio.new_event_loop()
++            asyncio.set_event_loop(loop)
+         result = None
+ 
+         async def go():
+@@ -42,7 +50,11 @@ class TestToFuture(unittest.TestCase):
+         assert result == 42
+ 
+     def test_await_error(self):
+-        loop = asyncio.get_event_loop()
++        try:
++            loop = asyncio.get_running_loop()
++        except RuntimeError:
++            loop = asyncio.new_event_loop()
++            asyncio.set_event_loop(loop)
+         error = Exception("error")
+         result = None
+ 
+@@ -58,7 +70,11 @@ class TestToFuture(unittest.TestCase):
+         assert result == error
+ 
+     def test_await_empty_observable(self):
+-        loop = asyncio.get_event_loop()
++        try:
++            loop = asyncio.get_running_loop()
++        except RuntimeError:
++            loop = asyncio.new_event_loop()
++            asyncio.set_event_loop(loop)
+         result = None
+ 
+         async def go():
+@@ -71,7 +87,11 @@ class TestToFuture(unittest.TestCase):
+         )
+ 
+     def test_await_with_delay(self):
+-        loop = asyncio.get_event_loop()
++        try:
++            loop = asyncio.get_running_loop()
++        except RuntimeError:
++            loop = asyncio.new_event_loop()
++            asyncio.set_event_loop(loop)
+         result = None
+ 
+         async def go():
+@@ -83,7 +103,11 @@ class TestToFuture(unittest.TestCase):
+         assert result == 42
+ 
+     def test_cancel(self):
+-        loop = asyncio.get_event_loop()
++        try:
++            loop = asyncio.get_running_loop()
++        except RuntimeError:
++            loop = asyncio.new_event_loop()
++            asyncio.set_event_loop(loop)
+ 
+         async def go():
+             source = reactivex.return_value(42)
+@@ -96,7 +120,11 @@ class TestToFuture(unittest.TestCase):
+         self.assertRaises(asyncio.CancelledError, loop.run_until_complete, go())
+ 
+     def test_dispose_on_cancel(self):
+-        loop = asyncio.get_event_loop()
++        try:
++            loop = asyncio.get_running_loop()
++        except RuntimeError:
++            loop = asyncio.new_event_loop()
++            asyncio.set_event_loop(loop)
+         sub = Subject()
+ 
+         async def using_sub():
+Index: RxPY-4.1.0/tests/test_scheduler/test_eventloop/test_asyncioscheduler.py
+===================================================================
+--- RxPY-4.1.0.orig/tests/test_scheduler/test_eventloop/test_asyncioscheduler.py
++++ RxPY-4.1.0/tests/test_scheduler/test_eventloop/test_asyncioscheduler.py
+@@ -13,14 +13,22 @@ CI = os.getenv("CI") is not None
+ class TestAsyncIOScheduler(unittest.TestCase):
+     @pytest.mark.skipif(CI, reason="Flaky test in GitHub Actions")
+     def test_asyncio_schedule_now(self):
+-        loop = asyncio.get_event_loop()
++        try:
++            loop = asyncio.get_running_loop()
++        except RuntimeError:
++            loop = asyncio.new_event_loop()
++            asyncio.set_event_loop(loop)
+         scheduler = AsyncIOScheduler(loop)
+         diff = scheduler.now - datetime.fromtimestamp(loop.time(), tz=timezone.utc)
+         assert abs(diff) < timedelta(milliseconds=2)  # NOTE: may take 1 ms in CI
+ 
+     @pytest.mark.skipif(CI, reason="Test is flaky in GitHub Actions")
+     def test_asyncio_schedule_now_units(self):
+-        loop = asyncio.get_event_loop()
++        try:
++            loop = asyncio.get_running_loop()
++        except RuntimeError:
++            loop = asyncio.new_event_loop()
++            asyncio.set_event_loop(loop)
+         scheduler = AsyncIOScheduler(loop)
+         diff = scheduler.now
+         yield from asyncio.sleep(0.1)
+@@ -28,7 +36,11 @@ class TestAsyncIOScheduler(unittest.Test
+         assert timedelta(milliseconds=80) < diff < timedelta(milliseconds=180)
+ 
+     def test_asyncio_schedule_action(self):
+-        loop = asyncio.get_event_loop()
++        try:
++            loop = asyncio.get_running_loop()
++        except RuntimeError:
++            loop = asyncio.new_event_loop()
++            asyncio.set_event_loop(loop)
+ 
+         async def go():
+             scheduler = AsyncIOScheduler(loop)
+@@ -46,7 +58,11 @@ class TestAsyncIOScheduler(unittest.Test
+         loop.run_until_complete(go())
+ 
+     def test_asyncio_schedule_action_due(self):
+-        loop = asyncio.get_event_loop()
++        try:
++            loop = asyncio.get_running_loop()
++        except RuntimeError:
++            loop = asyncio.new_event_loop()
++            asyncio.set_event_loop(loop)
+ 
+         async def go():
+             scheduler = AsyncIOScheduler(loop)
+@@ -67,7 +83,11 @@ class TestAsyncIOScheduler(unittest.Test
+         loop.run_until_complete(go())
+ 
+     def test_asyncio_schedule_action_cancel(self):
+-        loop = asyncio.get_event_loop()
++        try:
++            loop = asyncio.get_running_loop()
++        except RuntimeError:
++            loop = asyncio.new_event_loop()
++            asyncio.set_event_loop(loop)
+ 
+         async def go():
+             ran = False
+Index: RxPY-4.1.0/tests/test_scheduler/test_eventloop/test_asynciothreadsafescheduler.py
+===================================================================
+--- RxPY-4.1.0.orig/tests/test_scheduler/test_eventloop/test_asynciothreadsafescheduler.py
++++ RxPY-4.1.0/tests/test_scheduler/test_eventloop/test_asynciothreadsafescheduler.py
+@@ -14,14 +14,22 @@ CI = os.getenv("CI") is not None
+ class TestAsyncIOThreadSafeScheduler(unittest.TestCase):
+     @pytest.mark.skipif(CI, reason="Flaky test in GitHub Actions")
+     def test_asyncio_threadsafe_schedule_now(self):
+-        loop = asyncio.get_event_loop()
++        try:
++            loop = asyncio.get_running_loop()
++        except RuntimeError:
++            loop = asyncio.new_event_loop()
++            asyncio.set_event_loop(loop)
+         scheduler = AsyncIOThreadSafeScheduler(loop)
+         diff = scheduler.now - datetime.fromtimestamp(loop.time(), tz=timezone.utc)
+         assert abs(diff) < timedelta(milliseconds=2)
+ 
+     @pytest.mark.skipif(CI, reason="Flaky test in GitHub Actions")
+     def test_asyncio_threadsafe_schedule_now_units(self):
+-        loop = asyncio.get_event_loop()
++        try:
++            loop = asyncio.get_running_loop()
++        except RuntimeError:
++            loop = asyncio.new_event_loop()
++            asyncio.set_event_loop(loop)
+         scheduler = AsyncIOThreadSafeScheduler(loop)
+         diff = scheduler.now
+         yield from asyncio.sleep(0.1)
+@@ -29,7 +37,11 @@ class TestAsyncIOThreadSafeScheduler(uni
+         assert timedelta(milliseconds=80) < diff < timedelta(milliseconds=180)
+ 
+     def test_asyncio_threadsafe_schedule_action(self):
+-        loop = asyncio.get_event_loop()
++        try:
++            loop = asyncio.get_running_loop()
++        except RuntimeError:
++            loop = asyncio.new_event_loop()
++            asyncio.set_event_loop(loop)
+ 
+         async def go():
+             scheduler = AsyncIOThreadSafeScheduler(loop)
+@@ -50,7 +62,11 @@ class TestAsyncIOThreadSafeScheduler(uni
+         loop.run_until_complete(go())
+ 
+     def test_asyncio_threadsafe_schedule_action_due(self):
+-        loop = asyncio.get_event_loop()
++        try:
++            loop = asyncio.get_running_loop()
++        except RuntimeError:
++            loop = asyncio.new_event_loop()
++            asyncio.set_event_loop(loop)
+ 
+         async def go():
+             scheduler = AsyncIOThreadSafeScheduler(loop)
+@@ -74,7 +90,11 @@ class TestAsyncIOThreadSafeScheduler(uni
+         loop.run_until_complete(go())
+ 
+     def test_asyncio_threadsafe_schedule_action_cancel(self):
+-        loop = asyncio.get_event_loop()
++        try:
++            loop = asyncio.get_running_loop()
++        except RuntimeError:
++            loop = asyncio.new_event_loop()
++            asyncio.set_event_loop(loop)
+ 
+         async def go():
+             ran = False

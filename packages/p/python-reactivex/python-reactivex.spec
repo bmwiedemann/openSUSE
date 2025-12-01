@@ -1,7 +1,7 @@
 #
 # spec file for package python-reactivex
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-reactivex
-Version:        4.0.4
+Version:        4.1.0
 Release:        0
 Summary:        ReactiveX (Rx) for Python
 License:        MIT
 URL:            https://reactivex.io
 # SourceRepository: https://github.com/ReactiveX/RxPY
 Source:         https://github.com/ReactiveX/RxPY/archive/refs/tags/v%{version}.tar.gz#/reactivex-%{version}-gh.tar.gz
+#PATCH-FIX-OPENSUSE fix-python314-test.patch
+Patch0:         fix-python314-test.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1.0.0}

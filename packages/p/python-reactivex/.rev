@@ -15,4 +15,31 @@
     <comment>- build against modern python on sle15</comment>
     <requestid>1252452</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3bb949522ceccf31f7667494491c685c</srcmd5>
+    <version>4.1.0</version>
+    <time>1764584030</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1320379 from mgrossu
+
+- Upadate to version 4.1.0:
+    * Update Notebooks: Part One by @J0 
+    * Update get_started.rst 
+    * docs: fix miss typed operator name
+    * Fix flake8 in pre-commit 
+    * fix(docs): IO Concurrency for 3.10+
+    * Concat map 
+    * Docs on testing 
+    * [DOCS] Getting started: fix example 
+    * Update pyright to 1.1.286 
+    * Add CI check for Python-3.11 
+    * Switchmap operator 
+    * Fix deprecated calls to datetime by @ricardobranco777 
+    * CI: Update used actions and Python versions 
+    * Fix build 
+    * Drop Python 3.8 support 
+    * Support Python 3.11, 3.12 and 3.13 
+  - Added fix-python314-test.patch: Fix tests to be compatible with Python3.14 until new version release</comment>
+    <requestid>1320598</requestid>
+  </revision>
 </revisionlist>
