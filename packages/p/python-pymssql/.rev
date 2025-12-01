@@ -100,4 +100,15 @@
     <comment></comment>
     <requestid>1311653</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0bc45351f254932b86e9ccee09b0bdb8</srcmd5>
+    <version>2.3.9</version>
+    <time>1764584033</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1320436 from glaubitz
+
+- Update to version 2.3.9
+    * Fix build with Cython-3.2.0</comment>
+    <requestid>1320601</requestid>
+  </revision>
 </revisionlist>

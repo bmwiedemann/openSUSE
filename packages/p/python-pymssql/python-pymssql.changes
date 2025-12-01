@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 28 10:32:45 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.3.9
+  * Fix build with Cython-3.2.0
+
+-------------------------------------------------------------------
 Wed Oct 15 19:46:59 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.3.8
