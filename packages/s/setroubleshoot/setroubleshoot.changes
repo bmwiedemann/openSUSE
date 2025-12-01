@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 14 16:31:11 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- The dbus calls in post/postun got removed long ago, remove the
+  Requires, too.
+
+-------------------------------------------------------------------
 Thu May  1 06:38:48 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add pkgconfig(gobject-introspection-1.0) BuildRequires: inspect

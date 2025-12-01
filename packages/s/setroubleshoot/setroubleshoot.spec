@@ -1,7 +1,7 @@
 #
 # spec file for package setroubleshoot
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2006-2024 Red Hat, Inc.
 #
 # All modifications and additions to the file contributed by third parties
@@ -76,8 +76,6 @@ Requires:       libreport-gtk_1 >= 2.2.1-2
 Requires:       python3-libreport
 %endif
 Requires(post): desktop-file-utils
-Requires(post): dbus-1
-Requires(postun): dbus-1
 Requires(postun): desktop-file-utils
 
 BuildRequires:  xdg-utils
