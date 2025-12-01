@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sat Nov 29 05:06:50 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 3.4.0
+  * New features and improvements
+    + Enable GitHub Issues
+  * Documentation updates
+    + MNGSITE-529: Rename "Goals" to "Plugin Documentation"
+    + MRESOURCES-299: Be more accurate on using filtering element
+    + Don't bother with very old versions
+  * Maintenance
+    + Migrate site to Doxia 2
+    + PlexusFileUtils Refaster recipes
+    + Add PR Automation action
+    + Improve release-drafter configuration
+    + Add dependency to slf4j-simple for test scope
+    + Use try with resources in integration test
+    + reduce dependency scope of plexus-utils and commons-io
+  * Dependency updates
+    + Bump org.apache.commons:commons-lang3 from 3.12.0 to 3.20.0
+    + Bump org.apache.maven.resolver:maven-resolver-api from 1.6.3
+      to 1.9.24
+    + Bump Maven to 3.9.11 while keep prerequisites on 3.6.3
+    + MRESOURCES-304: Bump org.codehaus.plexus:plexus-interpolation
+      from 1.26 to 1.27
+    + Bump org.codehaus.plexus:plexus-interpolation from 1.27 to
+      1.29
+    + Bump m-invoker-p to 3.9.1
+    + Bump org.apache.maven.plugins:maven-plugins from 39 to 45
+    + Bump org.apache.maven.plugin-testing:maven-plugin-testing-harness
+      from 3.3.0 to 3.4.0
+    + MRESOURCES-302: Bump commons-io:commons-io from 2.11.0 to
+      2.16.0
+    + Bump commons-io:commons-io from 2.16.0 to 2.20.0
+    + MRESOURCES-303: Bump org.apache.maven.shared:maven-filtering
+      from 3.3.1 to 3.3.2
+    + Bump org.apache.maven.shared:maven-filtering from 3.3.2 to
+      3.4.0
+    + MRESOURCES-305: Bump org.codehaus.plexus:plexus-utils from
+      3.5.1 to 4.0.0
+    + Bump apache/maven-gh-actions-shared from 3 to 4
+- Modified patch:
+  * maven-resources-plugin-bootstrap-resources.patch
+    + regenerate to the new version
+
+-------------------------------------------------------------------
 Wed Feb 21 06:02:59 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.
@@ -52,22 +97,22 @@ Thu Apr 28 11:51:20 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 3.2.0
   * Bug
-    + [MRESOURCES-171] - ISO8859-1 properties files get changed into
+    + MRESOURCES-171: ISO8859-1 properties files get changed into
       UTF-8 when filtered
-    + [MRESOURCES-210] - copy-resources erases file permissions
-    + [MRESOURCES-236] - Copying of files with permissions broken
-    + [MRESOURCES-257] - property from list element in pom model
+    + MRESOURCES-210: copy-resources erases file permissions
+    + MRESOURCES-236: Copying of files with permissions broken
+    + MRESOURCES-257: property from list element in pom model
   * Improvement
-    + [MRESOURCES-251] - Upgrade plexus-interpolation 1.26
-    + [MRESOURCES-252] - Add m2e lifecycle Metadata to plugin
-    + [MRESOURCES-256] - make build Reproducible
-    + [MRESOURCES-258] - Only overwrite filtered resources when
+    + MRESOURCES-251: Upgrade plexus-interpolation 1.26
+    + MRESOURCES-252: Add m2e lifecycle Metadata to plugin
+    + MRESOURCES-256: make build Reproducible
+    + MRESOURCES-258: Only overwrite filtered resources when
       contents differ
   * Dependency upgrade
-    + [MRESOURCES-249] - Upgrade maven-plugins parent to version 32
-    + [MRESOURCES-255] - Upgrade plexus-utils 3.3.0
-    + [MRESOURCES-261] - Make Maven 3.1.0 the minimum version
-    + [MRESOURCES-263] - Update to maven-filtering 3.2.0
+    + MRESOURCES-249: Upgrade maven-plugins parent to version 32
+    + MRESOURCES-255: Upgrade plexus-utils 3.3.0
+    + MRESOURCES-261: Make Maven 3.1.0 the minimum version
+    + MRESOURCES-263: Update to maven-filtering 3.2.0
 - Modified patch:
   * maven-resources-plugin-bootstrap-resources.patch
     + regenerate with current version of tools against the current
