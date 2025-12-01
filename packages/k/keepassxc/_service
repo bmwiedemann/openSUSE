@@ -1,6 +1,6 @@
 <services>
   <service name="go_modules" mode="manual">
-    <param name="archive">keepassxc-2.7.10-src.tar.xz</param>
+    <param name="archive">keepassxc-2.7.11-src.tar.xz</param>
     <param name="compression">zst</param>
     <param name="subdir">utils/keepassxc-cr-recovery</param>
   </service>

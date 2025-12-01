@@ -536,4 +536,12 @@
     <comment>- update to 2.7.10:</comment>
     <requestid>1250077</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>9f610af671de9dc638e09f33f3b1b5c3</srcmd5>
+    <version>2.7.11</version>
+    <time>1764584120</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1320687</requestid>
+  </revision>
 </revisionlist>

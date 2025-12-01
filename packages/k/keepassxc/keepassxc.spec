@@ -17,6 +17,7 @@
 #
 
 
+
 %if 0%{?suse_version} || 0%{?fedora_version} >= 33
 %bcond_without cmake_macros
 %else
@@ -30,7 +31,7 @@
 %endif
 
 Name:           keepassxc
-Version:        2.7.10
+Version:        2.7.11
 Release:        0
 Summary:        Qt5-based Password Manager
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -91,9 +92,6 @@ BuildRequires:  golang-packaging
 BuildRequires:  zstd
 %endif
 
-%if 0%{?suse_version}
-BuildRequires:  update-desktop-files
-%endif
 Requires:       hicolor-icon-theme
 Requires(post): hicolor-icon-theme
 Requires(post): shared-mime-info
