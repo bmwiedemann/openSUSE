@@ -542,7 +542,8 @@ LDFLAGS=
   cflags -Wl,-O2		LDFLAGS
   cflags -Wl,--copy-dt-needed-entries	LDFLAGS
   cflags -Wl,-z,relro		LDFLAGS
-  cflags -Wl,--no-as-needed	CFLAGS
+# cflags -Wl,--no-as-needed	CFLAGS
+  cflags -Wl,--as-needed	CFLAGS
 %ifarch ia64
  CFLAGS=$(echo "${CFLAGS}"|sed -r 's/-O[0-9]?/-O1/g')
 %endif
@@ -586,6 +587,33 @@ DESKTOP="--with-x \
 %endif
 %if %{with webkit}
 	 --with-xwidgets \
+%endif
+"
+#
+# Avoid libraries which uses direct X11 ...
+# GTK3 and GDK3 can switch between wayland or X11
+# maybe the libs of imagemagick can not????
+#
+WAYLAND="--without-x \
+	 --without-xim \
+	 --with-sound \
+	 --with-jpeg \
+	 --with-tiff \
+	 --with-gif \
+	 --with-png \
+	 --with-rsvg \
+	 --with-dbus \
+	 --with-webp \
+	 --without-xft \
+	 --with-imagemagick \
+	 --without-gpm \
+	 --with-x-toolkit=gtk3 \
+	 --with-pgtk \
+	 --with-toolkit-scroll-bars \
+	 --with-libotf \
+	 --with-m17n-flt \
+%if %{with cairo}
+	 --with-cairo \
 %endif
 "
     X11="${DESKTOP} \
@@ -742,7 +770,7 @@ find native-lisp -type f -exec install -m 0644 "{}" "${parking}%{_libdir}/emacs/
 make distclean
 rm -vf src/emacs-%{version}*
 #
-CFLAGS="$CFLAGS -DPDMP_BASE='\"emacs-wayland\"'" ./configure ${COMP} ${PREFIX} ${GTK//--without-pgtk/--with-pgtk} ${SYS} --with-dumping=pdumper
+CFLAGS="$CFLAGS -DPDMP_BASE='\"emacs-wayland\"'" ./configure ${COMP} ${PREFIX} ${WAYLAND} ${SYS} --with-dumping=pdumper
 %make_build V=1
 cp -p src/emacs src/emacs-wayland
 cp -p src/emacs.pdmp src/emacs-wayland.pdmp

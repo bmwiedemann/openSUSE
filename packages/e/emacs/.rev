@@ -2275,4 +2275,12 @@ Now one could consider building emacs with gsettings support (both debian and fe
     <comment></comment>
     <requestid>1311379</requestid>
   </revision>
+  <revision rev="213" vrev="3">
+    <srcmd5>a13758a1ed535b0e076a2beb72a984ff</srcmd5>
+    <version>30.2</version>
+    <time>1764583895</time>
+    <user>anag_factory</user>
+    <comment>- Avoid direct dependencies to X11 libraries for wayland port</comment>
+    <requestid>1320497</requestid>
+  </revision>
 </revisionlist>

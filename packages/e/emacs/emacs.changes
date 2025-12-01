@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 28 10:37:55 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Avoid direct dependencies to X11 libraries for wayland port 
+
+-------------------------------------------------------------------
 Thu Oct  2 11:08:24 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Enable valgrind support on riscv64
