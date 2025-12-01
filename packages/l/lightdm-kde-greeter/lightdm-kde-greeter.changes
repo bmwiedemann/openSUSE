@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Sat Nov 15 16:11:48 UTC 2025 - Tobias Görgens <suse.snooper541@passmail.net>
+
+- Update to version 6.0.5:
+  * Bug Fixes:
+    - https://bugzilla.altlinux.org/56840
+
+  Changes of version 6.0.4:
+  * Security Fixes:
+    - CVE-2025-62876: The KAuth helper program insecurely created files in
+      /var/lib/lightdm, which is controlled by the lightdm service user,
+      allowing for privilege escalation from lightdm to root.
+
+-------------------------------------------------------------------
+Mon Jun 16 20:09:51 UTC 2025 - Tobias Görgens <suse.snooper541@passmail.net>
+
+- Initial version 6.0.3:
+  * Fix the size of the "active screen"
+  * Fix the location of the bottom menu
+  * Place the virtual keyboard in a separate own area
+  * Cut the edges for screens wider 16:9
+  * Fix white font in the input field
