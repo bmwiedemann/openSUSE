@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 28 21:20:17 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1764330105.c5cfd48:
+  * Add port forwarding example for NICTYPE_USER_OPTIONS
+  * Fix regression from abcaa66b by disabling virtio-keyboard by default
+  * Add IPv6 support for multi machine tests
+  * distribution: Add "disable_key_repeat"
+  * Use 'virtio-keyboard' by default to allow fixing key repetition errors
+
+-------------------------------------------------------------------
 Sat Nov 22 05:50:50 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1763561851.03e049d:
