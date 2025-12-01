@@ -88,4 +88,14 @@
     <comment></comment>
     <requestid>1066842</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1e325a5a64cba373ccb75cb41e8661a9</srcmd5>
+    <version>0.240.0</version>
+    <time>1764583893</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.240.0 (0.24)
+   see /usr/share/doc/packages/perl-OLE-Storage_Lite/Changes
+  0.24 Fri Nov 21 2025</comment>
+    <requestid>1320473</requestid>
+  </revision>
 </revisionlist>
