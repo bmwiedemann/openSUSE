@@ -325,4 +325,17 @@
     <comment>switch to singlespec</comment>
     <requestid>1316767</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e16d96e2f85de24c18f9e0585603f955</srcmd5>
+    <version>6.1.0</version>
+    <time>1764584104</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.1.0:
+  * Fix mistralclient not pass ca\_cert when using OpenStack CLI
+  * Replace MISTRAL\_URL in functional tests
+  * Update master for stable/2025.2
+
+- update to version 4.3.0 (bsc#1254289, CVE-2021-4472):</comment>
+    <requestid>1320675</requestid>
+  </revision>
 </revisionlist>

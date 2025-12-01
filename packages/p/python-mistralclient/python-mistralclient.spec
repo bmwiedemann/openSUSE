@@ -18,7 +18,7 @@
 
 %global pythons %{primary_python}
 Name:           python-mistralclient
-Version:        6.0.0
+Version:        6.1.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Mistral
 License:        Apache-2.0
