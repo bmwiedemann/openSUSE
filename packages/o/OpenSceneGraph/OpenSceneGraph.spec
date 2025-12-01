@@ -73,7 +73,6 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(OpenEXR)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gstreamer-1.0)

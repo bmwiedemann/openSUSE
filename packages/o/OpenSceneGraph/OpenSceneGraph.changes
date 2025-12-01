@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 22 21:22:38 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove unused BuildRequires: update-desktop-files.
+
+-------------------------------------------------------------------
 Wed Sep 24 08:07:11 CEST 2025 - aschnell@suse.com
 
 - libboost_system was removed upstream (bsc#1249900)
