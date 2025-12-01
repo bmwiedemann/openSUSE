@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 27 16:35:17 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.1.1:
+  * 80-hotplug-cpu-mem.rules: remount tmpfs on "online" uevents
+  (bsc#1254264)
+
+-------------------------------------------------------------------
 Tue Nov 18 20:24:55 UTC 2025 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.1.0:

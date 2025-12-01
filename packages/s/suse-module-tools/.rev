@@ -954,4 +954,14 @@ source service setup which messed up my spec file.
   * udev: use systemd service to remount tmpfs (bsc#1253679) (forwarded request 1318496 from mwilck)</comment>
     <requestid>1318497</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>ec94fe1d9840ed5eaa1dc0b4313330cf</srcmd5>
+    <version>16.1.1</version>
+    <time>1764583881</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 16.1.1:
+  * 80-hotplug-cpu-mem.rules: remount tmpfs on &quot;online&quot; uevents
+  (bsc#1254264)</comment>
+    <requestid>1320390</requestid>
+  </revision>
 </revisionlist>
