@@ -26,17 +26,13 @@
 %define _python3_version %{?python311_version}
 %endif
 Name:           duplicity
-Version:        3.0.6.1
+Version:        3.0.6.2
 Release:        0
 Summary:        Encrypted bandwidth-efficient backup using the rsync algorithm
 License:        GPL-3.0-or-later
 Group:          Productivity/Archiving/Backup
 URL:            https://duplicity.gitlab.io/
 Source:         https://gitlab.com/%{name}/%{name}/-/archive/rel.%{version}/%{name}-rel.%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM duplicity-gcc15.patch mgorse@suse.com -- fix compliation with gcc 15.
-Patch0:         duplicity-gcc15.patch
-# PATCH-FIX-UPSTREAM duplicity-fix-ssh-pexpect.patch bsc#1253734 mgorse@suse.com -- fix TypeError with ssh+pexpect back end.
-Patch1:         duplicity-fix-ssh-pexpect.patch
 BuildRequires:  %{_python}-devel
 BuildRequires:  %{_python}-pytest
 BuildRequires:  %{_python}-setuptools

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Nov 27 10:23:44 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 3.0.6.2:
+  + Fix
+    - Don't check for missing in first CollectionStatus().set\_values().
+    - Fix "full" not working.  Add more tests.
+    - Fix "Upgrade to 3.0.6 on Archlinux gives gcry\_kdf\_derive failed".
+    - Ssh\_pexpect\_backend: fix TypeError.
+    - Fix compilation with gcc 15.
+    - --files-from fails when backing up root.
+    - Crash with b2backend when b2sk isn't available, rather than
+      proper error.
+    - Parsing the gpg version failed when using Sequoia Chameleon.
+- Drop duplicity-gcc15.patch and duplicity-fix-ssh-pexpect.patch:
+    fixed upstream.
+
+-------------------------------------------------------------------
 Wed Nov 19 03:07:16 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Add duplicity-gcc15.patch: fix compilation with gcc 15.
