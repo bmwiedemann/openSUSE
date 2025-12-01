@@ -11227,6 +11227,7 @@ unsorted:
   - libLASi2 
   - libLHAPDF-6_5_5 
   - libLLVM15 
+  - libLLVM18 
   - libLLVM18-32bit 
   - libLLVM19 
   - libLLVM19-32bit 
@@ -13601,7 +13602,7 @@ unsorted:
   - libgnomesu-devel 
   - libgnt-devel 
   - libgnt0 
-  - libgnuastro21 
+  - libgnuastro22 
   - libgnudos2 
   - libgnunetabd0 
   - libgnunetarm2 
@@ -17437,6 +17438,9 @@ unsorted:
   - lightcouch-javadoc 
   - lightdm-gobject-devel 
   - lightdm-gtk-greeter-branding-upstream 
+  - lightdm-kde-greeter 
+  - lightdm-kde-greeter-branding-upstream 
+  - lightdm-kde-greeter-lang 
   - lightdm-qt5-devel 
   - lightdm-qt6-devel 
   - lightdm-slick-greeter 
