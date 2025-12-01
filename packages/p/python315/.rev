@@ -7,4 +7,22 @@
     <comment>New development version of the interpreter.</comment>
     <requestid>1316448</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1f21e6b3651bdd99e13f2e18fa13efae</srcmd5>
+    <version>3.15.0~a1</version>
+    <time>1764583953</time>
+    <user>anag_factory</user>
+    <comment>- Add CVE-2025-6075-expandvars-perf-degrad.patch avoid simple
+  quadratic complexity vulnerabilities of os.path.expandvars()
+  (CVE-2025-6075, bsc#1252974).
+- Remove CVE-2025-8291-consistency-zip64.patch … the fix has been
+  already included in 3.15.0~a1.
+- Skip test_curses on ppc64le (gh#python/cpython#141534)
+
+- Update list of skipped tests in qemu linux-user emulation
+
+      data” if there are no bytes prepended to the ZIP file
+      (bsc#1251305, CVE-2025-8291).</comment>
+    <requestid>1320571</requestid>
+  </revision>
 </revisionlist>

@@ -224,9 +224,9 @@ Patch40:        fix-test-recursion-limit-15.6.patch
 Patch41:        bsc1243155-sphinx-non-determinism.patch
 # PATCH-FIX-OPENSUSE gh139257-Support-docutils-0.22.patch gh#python/cpython#139257 daniel.garcia@suse.com
 Patch42:        gh139257-Support-docutils-0.22.patch
-# PATCH-FIX-UPSTREAM CVE-2025-8291-consistency-zip64.patch bsc#1251305 mcepl@suse.com
-# Check consistency of the zip64 end of central directory record
-Patch43:        CVE-2025-8291-consistency-zip64.patch
+# PATCH-FIX-UPSTREAM CVE-2025-6075-expandvars-perf-degrad.patch bsc#1252974 mcepl@suse.com
+# Avoid potential quadratic complexity vulnerabilities in path modules
+Patch43:        CVE-2025-6075-expandvars-perf-degrad.patch
 #### Python 3.15 DEVELOPMENT PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
@@ -363,7 +363,7 @@ An easy to use interface for Unix DBM databases, and more specifically,
 the GNU implementation GDBM.
 
 %package -n %{python_pkg_name}-profiling
-Summary:        Python Statistical Sampling Profiler 
+Summary:        Python Statistical Sampling Profiler
 Requires:       %{python_pkg_name} = %{version}
 %obsolete_python_versioned profiling
 %if %{primary_interpreter}
@@ -664,22 +664,20 @@ EXCLUDE="$EXCLUDE test_pydoc"
 EXCLUDE="$EXCLUDE test_multiprocessing_forkserver"
 %endif
 %ifarch ppc ppc64 ppc64le
-# exclue test_faulthandler due to bnc#831629
+# exclude test_faulthandler due to bnc#831629
 EXCLUDE="$EXCLUDE test_faulthandler"
+# exclude test_curse for gh#python/cpython#141534
+EXCLUDE="$EXCLUDE test_curses"
 %endif
 # some tests break in QEMU
 %if 0%{?qemu_user_space_build}
-# test_external_inspection: qemu does not support ptrace in test_self_trace
 # test_faulthandler: test_register_chain is racy
-# test_multiprocessing_spawn: qemu does not support CLONE_VFORK
-# test_os: test_fork_warns_when_non_python_thread_exists fails
 # test_posix: qemu does not support fexecve with O_CLOEXEC in test_fexecve
-# test_remote_pdb: qemu does not support process_vm_readv/writev
+# test_profiling: test_esrch_signal_handling times out
 # test_signal: qemu crashes in test_stress_modifying_handlers
 # test_socket: many CmsgTrunc tests fail
 # test_subprocess: qemu does not support CLONE_VFORK
-# test_sys: qemu does not support process_vm_readv/writev
-EXCLUDE="$EXCLUDE test_external_inspection test_faulthandler test_multiprocessing_spawn test_os test_posix test_remote_pdb test_signal test_socket test_subprocess test_sys"
+EXCLUDE="$EXCLUDE test_faulthandler test_posix test_profiling test_signal test_socket test_subprocess"
 %endif
 
 # This test (part of test_uuid) requires real network interfaces
