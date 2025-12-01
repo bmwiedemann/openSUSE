@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Dec  1 07:26:58 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version v0.8:
+  + Clipboard improvements
+     - Fixed Steam crash bug
+     - Improved clipboard stability
+  + Client side decorations
+     - Satellite draws decorations for undecorated windows
+     - Move and close windows via decorations
+     - Minimizing, maximizing, resizing support planned
+  + Other improvements
+     - Support client-initiated moves and resizes
+     - Fixed popup positioning in WeChat
+- Add rust BuildRequires: to limit Rust version for lock file
+  version 4 issue
+
+-------------------------------------------------------------------
 Tue Sep  2 11:10:12 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.7

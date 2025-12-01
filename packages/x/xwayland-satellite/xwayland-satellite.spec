@@ -18,7 +18,7 @@
 
 %bcond_with test
 Name:           xwayland-satellite
-Version:        0.7
+Version:        0.8
 Release:        0
 Summary:        Rootless Xwayland integration for Wayland compositors
 License:        MPL-2.0
@@ -26,6 +26,7 @@ URL:            https://github.com/Supreeeme/xwayland-satellite
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
+BuildRequires:  rust >= 1.78
 BuildRequires:  clang
 BuildRequires:  pkgconfig(xcb-cursor)
 Requires:       xwayland
