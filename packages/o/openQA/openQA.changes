@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Nov 28 20:38:53 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1764349525.ffb59486:
+  * Also use TIMEOUT_SCALE for priority malus calculation
+  * docs: Fix wrapping and typo
+  * Document multi machine ovs flow setup and IPv6 usage
+  * Avoid computing time constraint for scheduled product cleanup in Perl
+  * rpm: Move `…-enqueue-needle-ref-cleanup` to other `…-enqueue-…` scripts
+  * Add task to limit scheduled products similar to audit events
+  * Extract generic parts from audit event cleanup task into generic task
+  * parser: ktap: Show full output by default if no line was parsed
+  * Ignore npm scripts also via `.npmrc` to make bare npm calls more secure
+  * Avoid repeating `MAIN_SETTINGS` in various places
+  * Fix possibly excessive memory use when computer test result overview
+  * Fix typo in `_prepare_complex_query_search_args`
+  * Fix indentation in `overview.html.ep`
+  * Prevent logging AMQP credentials in debug output
+  * Make restart_openqa_job emit proper event payload
+  * Enable gru tasks to emit AMQP messages
+  * Remove explicit loading AMQP plugin in Gru plugin
+  * Emit restart events when job restarted automatically
+  * Add debug message about priority malus
+  * Fix ordering of job groups after 2ad929ceca43d
+
+-------------------------------------------------------------------
 Sat Nov 22 05:38:10 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1763743683.1da97aa2:
