@@ -619,4 +619,17 @@
   	* data update for 2025-11-01</comment>
     <requestid>1317135</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>ba1b170c0e2f7f63de826f055356bc46</srcmd5>
+    <version>20251121.1.0</version>
+    <time>1764583891</time>
+    <user>anag_factory</user>
+    <comment>- updated to 20251121.1.0 (20251121.001)
+   see /usr/share/doc/packages/perl-Business-ISBN-Data/Changes
+  20251121.001 2025-11-21T10:47:49Z
+  	* data update for 2025-11-21
+  20251115.001 2025-11-15T07:31:20Z
+  	* data update for 2025-11-15</comment>
+    <requestid>1320467</requestid>
+  </revision>
 </revisionlist>
