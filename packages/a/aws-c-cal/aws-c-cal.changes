@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 27 11:15:11 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.13
+  * Support static buffers in ecc signature helpers
+    by @DmitriyMusatkin in (#243)
+- from version 0.9.12
+  * Add helper to convert signature to padded r and s pair
+    by @DmitriyMusatkin in (#242)
+
+-------------------------------------------------------------------
 Thu Nov 20 08:28:21 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.9.11
