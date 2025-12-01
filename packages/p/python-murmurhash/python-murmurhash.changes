@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov 28 10:04:11 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.0.15
+  * Increment version
+- from version 1.0.14
+  * Implement support for 3.14 & free-threading (#47)
+  * Use centralised cibuildwheel
+  * Increment version
+  * Fix cibuildwheel
+- Drop support-python-314.patch, fixed upstream
+
+-------------------------------------------------------------------
 Wed Oct 29 00:54:57 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-python-314.patch:

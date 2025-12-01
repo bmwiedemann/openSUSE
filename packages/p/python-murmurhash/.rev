@@ -48,4 +48,21 @@
   * Explicitly list support for Python 3.14.</comment>
     <requestid>1314222</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9df8c51e0e415acbbd8a3a00b3b2f7e9</srcmd5>
+    <version>1.0.15</version>
+    <time>1764584033</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1320433 from glaubitz
+
+- Update to 1.0.15
+    * Increment version
+  - from version 1.0.14
+    * Implement support for 3.14 &amp; free-threading (#47)
+    * Use centralised cibuildwheel
+    * Increment version
+    * Fix cibuildwheel
+  - Drop support-python-314.patch, fixed upstream</comment>
+    <requestid>1320600</requestid>
+  </revision>
 </revisionlist>

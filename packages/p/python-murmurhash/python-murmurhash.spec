@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-murmurhash
-Version:        1.0.13
+Version:        1.0.15
 Release:        0
 Summary:        Cython bindings for MurmurHash
 License:        MIT
 URL:            https://github.com/explosion/murmurhash
 Source:         https://files.pythonhosted.org/packages/source/m/murmurhash/murmurhash-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Based on https://github.com/explosion/murmurhash/pull/47
-Patch0:         support-python-314.patch
 BuildRequires:  %{python_module Cython >= 3.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
