@@ -30,8 +30,8 @@
 %endif
 
 Name:           incus
-Version:        6.18
-%define tag_version 6.18.0
+Version:        6.19.1
+%define tag_version 6.19.1
 Release:        0
 Summary:        Container hypervisor based on LXC
 License:        Apache-2.0
@@ -56,10 +56,6 @@ Source121:      %{name}-startup.service
 Source130:      %{name}-config.yml
 # Additional runtime configuration.
 Source201:      %{name}.dnsmasq
-# FIX-UPSTREAM: <https://github.com/lxc/incus/pull/2624> resolves an issue with
-# the interaction between runc's CVE-2025-52881 mitigation and AppArmor when
-# applied to nested containers.
-Patch1:         https://github.com/lxc/incus/commit/1fbe4bffb9748cc3b07aaf5db310d463c1e827d0.patch#/hotfix-apparmor-runc-nesting.patch
 BuildRequires:  fdupes
 BuildRequires:  file
 BuildRequires:  go >= 1.24.7

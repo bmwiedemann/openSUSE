@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Nov 30 01:15:24 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Update to Incus 6.19.1. See upstream changelog online at
+  <https://discuss.linuxcontainers.org/t/incus-6-19-has-been-released/25405>
+
+  + Initial SELinux support
+  * Improved Windows agent support
+  + Serial devices in the resources API
+  + Bandwidth limits on OVN NICs
+  + Support for multi-object deletion in most CLI commands
+  + Ability to turn off passthrough of PCI firmware to VM
+  + PKCS12 generation in the CLI
+  + Option for raw units in CLI CSV output
+
+- Remove upstreamed patches:
+  - hotfix-apparmor-runc-nesting.patch
+
+-------------------------------------------------------------------
 Fri Nov 21 09:13:54 UTC 2025 - Orville Q. Song <orville@anislet.dev>
 
 - Update to Incus 6.18. See upstream changelog online at
