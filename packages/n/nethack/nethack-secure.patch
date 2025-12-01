@@ -1,9 +1,9 @@
-Index: nethack-3.4.3/util/recover.c
+Index: NetHack-3.6.7/util/recover.c
 ===================================================================
---- nethack-3.4.3.orig/util/recover.c
-+++ nethack-3.4.3/util/recover.c
-@@ -16,6 +16,12 @@
- #include "win32api.h"
+--- NetHack-3.6.7.orig/util/recover.c
++++ NetHack-3.6.7/util/recover.c
+@@ -17,6 +17,12 @@
+ #include <fcntl.h>
  #endif
  
 +#ifdef SECURE
@@ -13,35 +13,35 @@ Index: nethack-3.4.3/util/recover.c
 +#endif
 +
  #ifdef VMS
- extern int FDECL(vms_creat, (const char *,unsigned));
- extern int FDECL(vms_open, (const char *,int,unsigned));
-@@ -107,15 +113,23 @@ char *argv[];
- 	}
+ extern int FDECL(vms_creat, (const char *, unsigned));
+ extern int FDECL(vms_open, (const char *, int, unsigned));
+@@ -112,15 +118,23 @@ char *argv[];
+     }
  #if defined(SECURE) && !defined(VMS)
- 	if (dir
--# ifdef HACKDIR
+     if (dir
+-#ifdef HACKDIR
 +# ifdef VAR_PLAYGROUND
 +	        && strcmp(dir, VAR_PLAYGROUND)
 +# else
 +#  ifdef HACKDIR
- 		&& strcmp(dir, HACKDIR)
--# endif
+         && strcmp(dir, HACKDIR)
+-#endif
 +#  endif 
 +# endif /* VAR_PLAYGROUND */
- 		) {
- 		(void) setgid(getgid());
- 		(void) setuid(getuid());
- 	}
- #endif	/* SECURE && !VMS */
+             ) {
+         (void) setgid(getgid());
+         (void) setuid(getuid());
+     }
+ #endif /* SECURE && !VMS */
  
 +#ifdef VAR_PLAYGROUND
 +	if (!dir) dir = VAR_PLAYGROUND;
 +#endif
 +
  #ifdef HACKDIR
- 	if (!dir) dir = HACKDIR;
- #endif
-@@ -158,11 +172,19 @@ int lev;
+     if (!dir)
+         dir = HACKDIR;
+@@ -166,11 +180,19 @@ int lev;
  #endif
  }
  
@@ -53,17 +53,17 @@ Index: nethack-3.4.3/util/recover.c
  open_levelfile(lev)
  int lev;
  {
- 	int fd;
+     int fd;
 +#ifdef SECURE
 +	struct stat level_stat;
 +	uid_t uid;
 +#endif
  
- 	set_levelfile_name(lev);
+     set_levelfile_name(lev);
  #if defined(MICRO) || defined(WIN32) || defined(MSDOS)
-@@ -170,6 +192,21 @@ int lev;
+@@ -178,6 +200,21 @@ int lev;
  #else
- 	fd = open(lock, O_RDONLY, 0);
+     fd = open(lock, O_RDONLY, 0);
  #endif
 +	/* Security check: does the user calling recover own the file? */
 +#ifdef SECURE
@@ -80,12 +80,12 @@ Index: nethack-3.4.3/util/recover.c
 +		save_uid = level_stat.st_uid;
 +	}
 +#endif
- 	return fd;
+     return fd;
  }
  
-@@ -183,6 +220,13 @@ create_savefile()
+@@ -191,6 +228,13 @@ create_savefile()
  #else
- 	fd = creat(savename, FCMASK);
+     fd = creat(savename, FCMASK);
  #endif
 +
 +#ifdef SECURE
@@ -94,6 +94,6 @@ Index: nethack-3.4.3/util/recover.c
 +			save_uid);
 +	}
 +#endif
- 	return fd;
+     return fd;
  }
  

@@ -20,16 +20,16 @@ Without this patch, we got such a diff:
    178a60 1b293000 1b285500 1b284200 243c3530  .)0..(U..(B.$<50
 
 
-Index: nethack-3.4.3/util/makedefs.c
+Index: NetHack-3.6.7/util/makedefs.c
 ===================================================================
---- nethack-3.4.3.orig/util/makedefs.c
-+++ nethack-3.4.3/util/makedefs.c
-@@ -563,7 +563,7 @@ do_date()
- 	(void) time(&clocktim);
- 	Strcpy(cbuf, ctime(&clocktim));
- #else
--	(void) time((time_t *)&clocktim);
-+	//(void) time((time_t *)&clocktim);
- 	Strcpy(cbuf, ctime((time_t *)&clocktim));
- #endif
- 	for (c = cbuf; *c; c++) if (*c == '\n') break;
+--- NetHack-3.6.7.orig/util/makedefs.c
++++ NetHack-3.6.7/util/makedefs.c
+@@ -1313,7 +1313,7 @@ do_date()
+      * this file into something more modern. */
+     Fprintf(ofp, "%s", Dont_Edit_Code);
+ 
+-    (void) time(&clocktim);
++    //(void) time(&clocktim);
+ #ifdef REPRODUCIBLE_BUILD
+     {
+         /*

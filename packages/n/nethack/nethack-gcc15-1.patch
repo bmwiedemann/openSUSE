@@ -1,40 +1,41 @@
-Index: nethack-3.4.3/include/system.h
+Index: NetHack-3.6.7/include/system.h
 ===================================================================
---- nethack-3.4.3.orig/include/system.h
-+++ nethack-3.4.3/include/system.h
-@@ -57,7 +57,11 @@ typedef long	off_t;
+--- NetHack-3.6.7.orig/include/system.h
++++ NetHack-3.6.7/include/system.h
+@@ -60,9 +60,13 @@ typedef long off_t;
  #endif
  #ifndef SIG_RET_TYPE
- # if defined(NHSTDC) || defined(POSIX_TYPES) || defined(OS2) || defined(__DECC)
--#  define SIG_RET_TYPE void (*)()
-+#  if defined(__GLIBC__) && defined(__GNUC__)
-+#   define SIG_RET_TYPE __sighandler_t
-+#  else
-+#   define SIG_RET_TYPE void (*)()
-+#  endif
- # endif
+ #if defined(NHSTDC) || defined(POSIX_TYPES) || defined(OS2) || defined(__DECC)
++#if defined(LINUX) && defined(__GNUC__)
++#define SIG_RET_TYPE __sighandler_t
++#else
+ #define SIG_RET_TYPE void (*)()
  #endif
+ #endif
++#endif
  #ifndef SIG_RET_TYPE
-@@ -87,8 +91,10 @@ E int FDECL(srandom, (unsigned int));
- #  endif
- # endif
+ #if defined(ULTRIX) || defined(SUNOS4) || defined(SVR3) || defined(SVR4)
+ /* SVR3 is defined automatically by some systems */
+@@ -95,8 +99,10 @@ E int FDECL(srandom, (unsigned int));
+ E long NDECL(lrand48);
+ E void FDECL(srand48, (long));
  #else
-+#ifndef __GLIBC__
++#ifndef LINUX
  E long lrand48();
  E void srand48();
 +#endif
+ #endif /* MACOSX */
  #endif /* BSD || ULTRIX || RANDOM */
  
- #if !defined(BSD) || defined(ultrix)
-@@ -342,6 +348,7 @@ E char *FDECL(memset, (char*,int,int));
- # endif /* TOS */
+@@ -351,6 +357,7 @@ E char *FDECL(memset, (char *, int, int)
+ #endif /* TOS */
  #endif /* MICRO */
  
-+#ifndef __GLIBC__
- #if defined(BSD) && defined(ultrix)	/* i.e., old versions of Ultrix */
++#ifndef LINUX
+ #if defined(BSD) && defined(ultrix) /* i.e., old versions of Ultrix */
  E void sleep();
  #endif
-@@ -351,6 +358,7 @@ E unsigned sleep();
+@@ -360,6 +367,7 @@ E unsigned sleep();
  #if defined(HPUX)
  E unsigned int FDECL(sleep, (unsigned int));
  #endif
@@ -42,28 +43,41 @@ Index: nethack-3.4.3/include/system.h
  #ifdef VMS
  E int FDECL(sleep, (unsigned));
  #endif
-@@ -501,7 +509,11 @@ E char *FDECL(tgoto, (const char *,int,i
+@@ -519,7 +527,11 @@ E char *FDECL(tgoto, (const char *, int,
  #else
- # if ! (defined(HPUX) && defined(_POSIX_SOURCE))
- E int FDECL(tgetent, (char *,const char *));
-+#if !(defined(__GLIBC__) && defined(__GNUC__))
- E void FDECL(tputs, (const char *,int,int (*)()));
+ #if !(defined(HPUX) && defined(_POSIX_SOURCE))
+ E int FDECL(tgetent, (char *, const char *));
++#if !(defined(LINUX) && defined(__GNUC__))
+ E void FDECL(tputs, (const char *, int, int (*)()));
 +#else
 +E int tputs(const char *, int, int (*)(int));
 +#endif
- # endif
+ #endif
  E int FDECL(tgetnum, (const char *));
  E int FDECL(tgetflag, (const char *));
-Index: nethack-3.4.3/sys/unix/Makefile.src
+Index: NetHack-3.6.7/sys/unix/hints/linux
 ===================================================================
---- nethack-3.4.3.orig/sys/unix/Makefile.src
-+++ nethack-3.4.3/sys/unix/Makefile.src
-@@ -124,7 +124,7 @@ SYSOBJ = ioctl.o unixmain.o unixtty.o un
+--- NetHack-3.6.7.orig/sys/unix/hints/linux
++++ NetHack-3.6.7/sys/unix/hints/linux
+@@ -34,6 +34,21 @@ CFLAGS+=-DCURSES_GRAPHICS
+ #CFLAGS+=-DSCORE_ON_BOTL
+ #CFLAGS+=-DMSGHANDLER
+ #CFLAGS+=-DTTY_TILES_ESCCODES
++#detection of clang vs gcc
++CCISCLANG := $(shell echo `$(CC) --version` | grep clang)
++ifneq "$(CCISCLANG)" ""
++# clang-specific follows
++CLANGGTEQ18 := $(shell expr `$(CC) -dumpversion | cut -f1 -d.` \>= 18)
++ifeq "$(CLANGGTEQ18)" "1"
++# clang-specific starts here
++CFLAGS+=-Wno-deprecated-non-prototype
++endif
++# clang-specific ends here
++else
++# gcc-specific starts here
++CFLAGS+=-Wno-old-style-definition -Wno-unused-result -Wno-format-overflow
++# gcc-specific ends here
++endif  # clang-specific or gcc-specific ends here
  
- # flags for Linux
- #   compile normally
--# CFLAGS = -O2 -fomit-frame-pointer -I../include
-+# CFLAGS = -O2 -fomit-frame-pointer -I../include -Wno-old-style-definition -Wno-unused-result -Wno-format-overflow
- # LFLAGS = -L/usr/X11R6/lib
- #   OR compile backwards compatible a.out format
- # CFLAGS = -O2 -b i486-linuxaout -fomit-frame-pointer -I../include
+ LINK=$(CC)
+ # Only needed for GLIBC stack trace:

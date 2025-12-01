@@ -149,4 +149,40 @@
 </comment>
     <requestid>1294012</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8656633ff7d11cda80710c532ab8f7f5</srcmd5>
+    <version>3.6.7</version>
+    <time>1764584095</time>
+    <user>anag_factory</user>
+    <comment>Update NetHack to the latest release 3.6.7. This is a major version upgrade. Information about 3.6.7 is available at [1]. A long list of changes in the 3.6 series is available at [2].
+
+[1] https://github.com/NetHack/NetHack/blob/NetHack-3.6/doc/fixes36.7
+[2] https://github.com/NetHack/NetHack/blob/NetHack-3.6/doc/fixes36.
+- Add nethack-367-src.tgz: Update NetHack to version 3.6.7.
+- Modify nethack-config.patch: NetHack 3.6 uses improved build scripts
+  that allow for configuration in a few dedicated files. Avoid patching
+  various Makefiles and headers in favor of the new system. Set build
+  configuration in sys/unix/hints/linux.
+- Modfify nethack-gcc15-1.patch: Pick upstream Gcc 15 fix for NetHack
+  3.6.7.
+- Disable parallel builds. There are complex dependencies among
+  NetHack's source files and build utils, which makes parallel building
+  complicated. Current attempts at parallel building have always been a
+  hack that tries to order dependencies where necessary. Actual
+  suport for parallel builds would require a rewrite of NetHack's
+  Makefile structure.
+- Remove nethack-343-src.tar.bz2: The source code of NetHack 3.4.3 is
+  no longer needed.
+- Remove nethack-gzip.patch: Setup of gzip is now handled in
+  network-config.patch.
+- Remove nethack-WINCHAIN-a-framework-allowing-multiple-processors-be.patch:
+  Not needed for NetHack 3.6.7
+- Remove nethack-address-H4266-build-problem-with-clang-Modules.patch: Not
+  needed for NetHack 3.6.7
+- Remove nethack-tty-xputc.patch: Not needed for NetHack 3.6.7
+- Remove nethack-escapes-revamp.patch: Nethack 3.6.0 and later already
+  include the bug fix.
+</comment>
+    <requestid>1320663</requestid>
+  </revision>
 </revisionlist>

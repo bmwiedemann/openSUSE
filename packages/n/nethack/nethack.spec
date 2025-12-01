@@ -1,7 +1,7 @@
 #
 # spec file for package nethack
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,36 +17,26 @@
 
 
 Name:           nethack
-Version:        3.4.3
+Version:        3.6.7
 Release:        0
 Summary:        Turn-based role-playing game
 License:        NGPL
 Group:          Amusements/Games/RPG
 URL:            https://www.nethack.org
-Source0:        nethack-343-src.tar.bz2
+Source0:        https://nethack.org/download/3.6.7/nethack-367-src.tgz
 Source1:        nethack-rpmlintrc
-# PATCH-FIX-UPSTREAM nethack-escapes-revamp.patch boo#1239138
-Patch0:         nethack-escapes-revamp.patch
-# PATCH-FIX-UPSTREAM nethack-WINCHAIN-a-framework-allowing-multiple-processors-be.patch boo#1245527
-Patch1:         nethack-WINCHAIN-a-framework-allowing-multiple-processors-be.patch
-# PATCH-FIX-UPSTREAM nethack-address-H4266-build-problem-with-clang-Modules.patch boo#1245527
-Patch2:         nethack-address-H4266-build-problem-with-clang-Modules.patch
-# PATCH-FIX-UPSTREAM nethack-tty-xputc.patch boo#1245527
-Patch3:         nethack-tty-xputc.patch
 # PATCH-FIX-UPSTREAM nethack-gcc15-1.patch boo#1245527
-Patch4:         nethack-gcc15-1.patch
+Patch0:         nethack-gcc15-1.patch
 # PATCH-FIX-OPENSUSE nethack-config.patch Adapt build to openSUSE systems
-Patch50:        nethack-config.patch
+Patch1:         nethack-config.patch
 # PATCH-FIX-OPENSUSE nethack-decl.patch Do not redeclare system interfaces
-Patch51:        nethack-decl.patch
+Patch2:         nethack-decl.patch
 # PATCH-FIX-OPENSUSE nethack-escape-char.patch
-Patch52:        nethack-escape-char.patch
+Patch3:         nethack-escape-char.patch
 # PATCH-FIX-OPENSUSE nethack-secure.patch Handle SECURE in recover utility
-Patch53:        nethack-secure.patch
-# PATCH-FIX-OPENSUSE nethack-gzip.patch Use gzip compression
-Patch54:        nethack-gzip.patch
+Patch4:         nethack-secure.patch
 # PATCH-FIX-OPENSUSE nethack-reproducible.patch boo#1047218
-Patch55:        nethack-reproducible.patch
+Patch5:         nethack-reproducible.patch
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
@@ -66,28 +56,19 @@ Persist against various monsters and defeat the Wizard of Yendor.
 This package contains the text interface.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n NetHack-3.6.7
 
 %build
-# copy Makefiles and add optimization flags
-sh sys/unix/setup.sh
-sed -i "s/^CFLAGS.*/& %{optflags}/" Makefile dat/Makefile doc/Makefile src/Makefile util/Makefile
+# add optimization flags and copy Makefiles
+echo "CFLAGS+=%{optflags}" >> sys/unix/hints/linux
+
+cd sys/unix
+sh setup.sh hints/linux
+cd ../..
 
 # The Makefiles do not track dependencies correctly, which can result
-# in link errors on parallel builds. Prevent this by building the object
-# files for makedefs first.
-%make_build -C src monst.o
-%make_build -C src objects.o
-%make_build -C src dlb.o
-
-# Build the game binary, then some data files. Finally build all
-# remaining default targets. Although 'all' covers the first three
-# make calls as well, we have to resort to sequential building
-# to make it work.
-%make_build nethack
-%make_build dungeon
-%make_build spec_levs
-%make_build all
+# in link errors on parallel builds. Resort to sequential building.
+make -j1 all
 
 # We also package a nicely formatted manual in PostScript format. It
 # is not covered by 'all', so build it here.
@@ -102,7 +83,7 @@ install -d %{buildroot}/%{_mandir}/man6/
 # game directory
 install -d %{buildroot}%{_localstatedir}/games/nethack/
 install -d %{buildroot}%{_localstatedir}/games/nethack/save/
-for file in logfile paniclog perm record ; do
+for file in logfile paniclog perm record xlogfile ; do
 	touch %{buildroot}%{_localstatedir}/games/nethack/$file
 done
 # binaries
@@ -114,6 +95,7 @@ install doc/{nethack,lev_comp,dlb,dgn_comp,recover}.6 %{buildroot}/%{_mandir}/ma
 # common data
 install dat/nhdat %{buildroot}%{_datadir}/games/nethack/
 install dat/license %{buildroot}%{_datadir}/games/nethack/
+install sys/unix/sysconf %{buildroot}%{_datadir}/games/nethack/
 # main launcher script
 install -d %{buildroot}%{_bindir}
 install sys/unix/nethack.sh %{buildroot}%{_bindir}/nethack
@@ -139,6 +121,7 @@ install util/{dgn_comp,dlb,lev_comp,makedefs,recover} %{buildroot}%{_prefix}/lib
 %dir %{_datadir}/games/nethack
 %{_datadir}/games/nethack/license
 %{_datadir}/games/nethack/nhdat
+%{_datadir}/games/nethack/sysconf
 %dir %{_prefix}/lib/nethack
 %attr(0755,-,-) %{_prefix}/lib/nethack/dgn_comp
 %attr(0755,-,-) %{_prefix}/lib/nethack/dlb
@@ -152,6 +135,7 @@ install util/{dgn_comp,dlb,lev_comp,makedefs,recover} %{buildroot}%{_prefix}/lib
 %config(noreplace) %attr(0660,games,games) %{_localstatedir}/games/nethack/logfile
 %config(noreplace) %attr(0660,games,games) %{_localstatedir}/games/nethack/paniclog
 %config(noreplace) %attr(0660,games,games) %{_localstatedir}/games/nethack/record
+%config(noreplace) %attr(0660,games,games) %{_localstatedir}/games/nethack/xlogfile
 %attr(0660,games,games) %{_localstatedir}/games/nethack/perm
 
 %changelog

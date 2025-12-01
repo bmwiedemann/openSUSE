@@ -1,28 +1,28 @@
-Index: nethack-3.4.3/include/system.h
+Index: NetHack-3.6.7/include/system.h
 ===================================================================
---- nethack-3.4.3.orig/include/system.h
-+++ nethack-3.4.3/include/system.h
-@@ -100,7 +100,9 @@ E void srand48();
+--- NetHack-3.6.7.orig/include/system.h
++++ NetHack-3.6.7/include/system.h
+@@ -109,7 +109,9 @@ E void srand48();
  #if !defined(BSD) || defined(ultrix)
- 			/* real BSD wants all these to return int */
- # ifndef MICRO
+ /* real BSD wants all these to return int */
+ #ifndef MICRO
 +#  ifndef __GLIBC__
  E void FDECL(exit, (int));
 +#  endif
- # endif /* MICRO */
+ #endif /* MICRO */
  /* compensate for some CSet/2 bogosities */
- # if defined(OS2_CSET2) && defined(OS2_CSET2_VER_2)
-@@ -119,7 +121,9 @@ E void FDECL(exit, (int));
- # if defined(__STDC__) || !defined(FLEX_SCANNER)
- #  ifndef OS2_CSET2
- #   ifndef MONITOR_HEAP
+ #if defined(OS2_CSET2) && defined(OS2_CSET2_VER_2)
+@@ -128,7 +130,9 @@ E void FDECL(exit, (int));
+ #if defined(__STDC__) || !defined(FLEX_SCANNER)
+ #ifndef OS2_CSET2
+ #ifndef MONITOR_HEAP
 +#    ifndef __GLIBC__
  E void FDECL(free, (genericptr_t));
 +#    endif
- #   endif
- #  endif
- # endif
-@@ -353,27 +357,35 @@ E char *FDECL(memset, (char*,int,int));
+ #endif
+ #endif
+ #endif
+@@ -362,27 +366,35 @@ E char *FDECL(memset, (char *, int, int)
  E void sleep();
  #endif
  #if defined(ULTRIX) || defined(SYSV)
@@ -49,24 +49,12 @@ Index: nethack-3.4.3/include/system.h
  E long NDECL(getgid);
  E long NDECL(getpid);
  #else
- # ifdef POSIX_TYPES
+ #ifdef POSIX_TYPES
 +#  ifndef __GLIBC__
  E pid_t NDECL(getpid);
  E uid_t NDECL(getuid);
  E gid_t NDECL(getgid);
 +#  endif
- #  ifdef VMS
+ #ifdef VMS
  E pid_t NDECL(getppid);
- #  endif
-@@ -484,9 +496,11 @@ E  char *sprintf();
- #  if !defined(SVR4) && !defined(apollo)
- #   if !(defined(ULTRIX_PROTO) && defined(__GNUC__))
- #    if !(defined(SUNOS4) && defined(__STDC__)) /* Solaris unbundled cc (acc) */
-+/*
- E int FDECL(vsprintf, (char *, const char *, va_list));
- E int FDECL(vfprintf, (FILE *, const char *, va_list));
- E int FDECL(vprintf, (const char *, va_list));
-+*/
- #    endif
- #   endif
- #  endif
+ #endif

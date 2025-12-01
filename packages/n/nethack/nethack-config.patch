@@ -1,135 +1,25 @@
-Index: nethack-3.4.3/include/unixconf.h
+Index: NetHack-3.6.7/include/unixconf.h
 ===================================================================
---- nethack-3.4.3.orig/include/unixconf.h
-+++ nethack-3.4.3/include/unixconf.h
-@@ -32,12 +32,12 @@
- 
- 
- /* define any of the following that are appropriate */
--#define SVR4		/* use in addition to SYSV for System V Release 4 */
-+/* #define SVR4	*/	/* use in addition to SYSV for System V Release 4 */
- 			/* including Solaris 2+ */
- #define NETWORK		/* if running on a networked system */
- 			/* e.g. Suns sharing a playground through NFS */
- /* #define SUNOS4 */	/* SunOS 4.x */
--/* #define LINUX */	/* Another Unix clone */
-+#define LINUX	/* Another Unix clone */
- /* #define CYGWIN32 */	/* Unix on Win32 -- use with case sensitive defines */
- /* #define GENIX */	/* Yet Another Unix Clone */
- /* #define HISX */	/* Bull Unix for XPS Machines */
-@@ -102,7 +102,7 @@
-  * If you want the static parts of your playground on a read-only file
-  * system, define VAR_PLAYGROUND to be where the variable parts are kept.
-  */
--/* #define VAR_PLAYGROUND "/var/lib/games/nethack" */
-+#define VAR_PLAYGROUND "/var/games/nethack"
- 
- 
- /*
-@@ -132,7 +132,7 @@
-  * "extra output" method is used, but not all systems provide access to
-  * a fine-grained timer.
-  */
--/* #define TIMED_DELAY */	/* usleep() */
-+#define TIMED_DELAY	/* usleep() */
+--- NetHack-3.6.7.orig/include/unixconf.h
++++ NetHack-3.6.7/include/unixconf.h
+@@ -194,7 +194,8 @@
+ #endif
+ #endif
+ #else
+-#define DEF_MAILREADER "/bin/mail"
++/* SUSE mail reader is /usr/bin/mail, not /bin/mail */
++#define DEF_MAILREADER "/usr/bin/mail"
+ #endif
  #endif
  
- /*
-@@ -166,7 +166,7 @@
- 
- /* #define NO_MAILREADER */	/* have mail daemon just tell player of mail */
- 
--#ifdef	MAIL
-+#ifdef MAIL
- # if defined(BSD) || defined(ULTRIX)
- #  ifdef AMS
- #define AMS_MAILBOX	"/Mailbox"
-@@ -189,7 +189,8 @@
- #   endif
- #  endif
- # else
--#define DEF_MAILREADER	"/bin/mail"
-+/* SuSE mail reader is /usr/bin/mail, not /bin/mail */
-+#define DEF_MAILREADER	"/usr/bin/mail"
- # endif
- #endif
- 
-Index: nethack-3.4.3/sys/unix/Makefile.top
+Index: NetHack-3.6.7/sys/unix/Makefile.doc
 ===================================================================
---- nethack-3.4.3.orig/sys/unix/Makefile.top
-+++ nethack-3.4.3/sys/unix/Makefile.top
-@@ -35,8 +35,8 @@ DIRPERM  = 0755
- # therefore there should not be anything in GAMEDIR that you want to keep
- # (if there is, you'll have to do the installation by hand or modify the
- # instructions)
--GAMEDIR  = $(PREFIX)/games/lib/$(GAME)dir
--VARDIR  = $(GAMEDIR)
-+GAMEDIR  = /usr/lib/nethack
-+VARDIR  = /var/games/nethack
- SHELLDIR = $(PREFIX)/games
+--- NetHack-3.6.7.orig/sys/unix/Makefile.doc
++++ NetHack-3.6.7/sys/unix/Makefile.doc
+@@ -12,8 +12,8 @@ NHSROOT=..
+ MAKEDEFS = ../util/makedefs
  
- # per discussion in Install.X11 and Install.Qt
-Index: nethack-3.4.3/include/config.h
-===================================================================
---- nethack-3.4.3.orig/include/config.h
-+++ nethack-3.4.3/include/config.h
-@@ -143,10 +143,10 @@
- 
- #ifndef WIZARD		/* allow for compile-time or Makefile changes */
- # ifndef KR1ED
--#  define WIZARD  "wizard" /* the person allowed to use the -D option */
-+#  define WIZARD  "root" /* the person allowed to use the -D option */
- # else
- #  define WIZARD
--#  define WIZARD_NAME "wizard"
-+#  define WIZARD_NAME "root"
- # endif
- #endif
- 
-@@ -185,7 +185,7 @@
-  *	a tar-like file, thus making a neater installation.  See *conf.h
-  *	for detailed configuration.
-  */
--/* #define DLB */	/* not supported on all platforms */
-+#define DLB	/* not supported on all platforms */
- 
- /*
-  *	Defining INSURANCE slows down level changes, but allows games that
-@@ -204,7 +204,7 @@
-  * otherwise it will be the current directory.
-  */
- # ifndef HACKDIR
--#  define HACKDIR "/usr/games/lib/nethackdir"
-+#  define HACKDIR "/usr/share/games/nethack"
- # endif
- 
- /*
-@@ -214,7 +214,7 @@
-  * since the user might create files in a directory of his choice.
-  * Of course SECURE is meaningful only if HACKDIR is defined.
-  */
--/* #define SECURE */	/* do setuid(getuid()) after chdir() */
-+#define SECURE	/* do setuid(getuid()) after chdir() */
- 
- /*
-  * If it is desirable to limit the number of people that can play Hack
-@@ -349,7 +349,7 @@ typedef unsigned char	uchar;
-  */
- 
- /*#define GOLDOBJ */	/* Gold is kept on obj chains - Helge Hafting */
--/*#define AUTOPICKUP_EXCEPTIONS */ /* exceptions to autopickup */
-+#define AUTOPICKUP_EXCEPTIONS  /* exceptions to autopickup */
- 
- /* End of Section 5 */
- 
-Index: nethack-3.4.3/sys/unix/Makefile.doc
-===================================================================
---- nethack-3.4.3.orig/sys/unix/Makefile.doc
-+++ nethack-3.4.3/sys/unix/Makefile.doc
-@@ -4,8 +4,8 @@
- # for Atari
- # SHELL=E:/GEMINI2/MUPFEL.TTP
- 
+ # Which version do we want to build?  (XXX These are not used anywhere.)
 -GUIDEBOOK = Guidebook		# regular ASCII file
 -#GUIDEBOOK = Guidebook.ps	# PostScript file
 +#GUIDEBOOK = Guidebook		# regular ASCII file
@@ -137,62 +27,27 @@ Index: nethack-3.4.3/sys/unix/Makefile.doc
  #GUIDEBOOK = Guidebook.dvi	# TeX device-independent file
  
  # Some versions of col need -x to keep them from converting spaces to tabs;
-Index: nethack-3.4.3/sys/unix/Makefile.src
+Index: NetHack-3.6.7/sys/unix/nethack.sh
 ===================================================================
---- nethack-3.4.3.orig/sys/unix/Makefile.src
-+++ nethack-3.4.3/sys/unix/Makefile.src
-@@ -126,6 +126,8 @@ SYSOBJ = ioctl.o unixmain.o unixtty.o un
- #   compile normally
- # CFLAGS = -O2 -fomit-frame-pointer -I../include -Wno-old-style-definition -Wno-unused-result -Wno-format-overflow
- # LFLAGS = -L/usr/X11R6/lib
-+CFLAGS = -O2 -fomit-frame-pointer -I../include -Wno-old-style-definition -Wno-unused-result -Wno-format-overflow
-+LFLAGS = -L/usr/X11R6/lib
- #   OR compile backwards compatible a.out format
- # CFLAGS = -O2 -b i486-linuxaout -fomit-frame-pointer -I../include
- # LFLAGS = -b i486-linuxaout -L/usr/X11R6/lib
-@@ -151,8 +153,8 @@ GNOMEINC=-I/usr/lib/glib/include -I/usr/
- # flags for debugging:
- # CFLAGS = -g -I../include
- 
--CFLAGS = -O -I../include
--LFLAGS = 
-+# CFLAGS = -O -I../include
-+# LFLAGS = 
- 
- # The Qt and Be window systems are written in C++, while the rest of
- # NetHack is standard C.  If using Qt, uncomment the LINK line here to get
-@@ -230,8 +232,8 @@ WINOBJ = $(WINTTYOBJ)
- # WINTTYLIB = -ltermcap
- # WINTTYLIB = -lcurses
- # WINTTYLIB = -lcurses16
--# WINTTYLIB = -lncurses
--WINTTYLIB = -ltermlib
-+WINTTYLIB = -lncurses
-+# WINTTYLIB = -ltermlib
- #
- # libraries for X11
- # If USE_XPM is defined in config.h, you will also need -lXpm here.
-Index: nethack-3.4.3/sys/unix/nethack.sh
-===================================================================
---- nethack-3.4.3.orig/sys/unix/nethack.sh
-+++ nethack-3.4.3/sys/unix/nethack.sh
-@@ -1,9 +1,9 @@
- #!/bin/sh
- #	SCCS Id: @(#)nethack.sh	3.4	1990/02/26
+--- NetHack-3.6.7.orig/sys/unix/nethack.sh
++++ NetHack-3.6.7/sys/unix/nethack.sh
+@@ -3,9 +3,9 @@
+ # Copyright (c) 2015 by Kenneth Lorber, Kensington, Maryland
+ # NetHack may be freely redistributed.  See license for details.
  
 -HACKDIR=/usr/games/lib/nethackdir
 +HACKDIR=/usr/share/games/nethack
  export HACKDIR
 -HACK=$HACKDIR/nethack
 +HACK=/usr/lib/nethack/nethack
- MAXNROFPLAYERS=4
  
  # Since Nethack.ad is installed in HACKDIR, add it to XUSERFILESEARCHPATH
-Index: nethack-3.4.3/doc/nethack.6
+ case "x$XUSERFILESEARCHPATH" in
+Index: NetHack-3.6.7/doc/nethack.6
 ===================================================================
---- nethack-3.4.3.orig/doc/nethack.6
-+++ nethack-3.4.3/doc/nethack.6
-@@ -197,7 +197,7 @@ option, which must be the first argument
+--- NetHack-3.6.7.orig/doc/nethack.6
++++ NetHack-3.6.7/doc/nethack.6
+@@ -219,7 +219,7 @@ option, which must be the first argument
  supplies a directory which is to serve as the playground.
  It overrides the value from NETHACKDIR, HACKDIR,
  or the directory specified by the game administrator during compilation
@@ -201,12 +56,83 @@ Index: nethack-3.4.3/doc/nethack.6
  This option is usually only useful to the game administrator.
  The playground must contain several auxiliary files such as help files,
  the list of top scorers, and a subdirectory
-@@ -283,7 +283,7 @@ MAIL	Mailbox file.
+@@ -375,7 +375,7 @@ MAIL	Mailbox file.
  .br
  MAILREADER	Replacement for default reader
  .br
 -	(probably /bin/mail or /usr/ucb/mail).
 +	(probably /usr/bin/mail).
  .br
- NETHACKDIR	Playground.
+ NETHACKDIR or HACKDIR	Playground.
  .br
+Index: NetHack-3.6.7/sys/unix/sysconf
+===================================================================
+--- NetHack-3.6.7.orig/sys/unix/sysconf
++++ NetHack-3.6.7/sys/unix/sysconf
+@@ -13,7 +13,7 @@
+ # Which users can use debug mode (aka wizard mode; accessed via '-D' command
+ # line flag or OPTIONS=playmode:debug in the runtime options config file).
+ # A value of * allows anyone to enter debugging mode.
+-WIZARDS=root games
++WIZARDS=root
+ 
+ # Which users can use explore mode (aka discover mode; accessed via '-X'
+ # command line flag or OPTIONS=playmode:explore in runtime options file or
+@@ -48,7 +48,7 @@ GENERICUSERS=play player game games neth
+ # but number of different players is not limited.
+ # Setting this to any other value constructs the lock files with
+ # letter and "lock" (eg. alock, block, ...)
+-MAXPLAYERS=10
++#MAXPLAYERS=10
+ 
+ # If not null, added to string "To get local support, " in the support
+ # information help.
+Index: NetHack-3.6.7/sys/unix/hints/linux
+===================================================================
+--- NetHack-3.6.7.orig/sys/unix/hints/linux
++++ NetHack-3.6.7/sys/unix/hints/linux
+@@ -6,15 +6,14 @@
+ #-PRE
+ # Linux hints file
+ # This hints file provides a single-user tty build for Linux, specifically
+-# for Ubuntu dapper.
++# for openSUSE Tumbleweed.
+ 
+ 
+-#PREFIX=/usr
+-PREFIX=$(wildcard ~)/nh/install
+-HACKDIR=$(PREFIX)/games/lib/$(GAME)dir
+-SHELLDIR = $(PREFIX)/games
++PREFIX=
++HACKDIR=$(PREFIX)/usr/share/games/$(GAME)
++SHELLDIR=$(PREFIX)/usr/games
+ INSTDIR=$(HACKDIR)
+-VARDIR = $(HACKDIR)
++VARDIR=$(PREFIX)/var/games/$(GAME)
+ 
+ 
+ 
+@@ -22,10 +21,11 @@ POSTINSTALL=cp -n sys/unix/sysconf $(INS
+ 
+ CFLAGS=-g -O -I../include -DNOTPARMDECL
+ CFLAGS+=-DDLB
+-CFLAGS+=-DCOMPRESS=\"/bin/gzip\" -DCOMPRESS_EXTENSION=\".gz\"
++CFLAGS+=-DCOMPRESS=\"/usr/bin/gzip\" -DCOMPRESS_EXTENSION=\".gz\"
+ CFLAGS+=-DSYSCF -DSYSCF_FILE=\"$(HACKDIR)/sysconf\" -DSECURE
+ CFLAGS+=-DTIMED_DELAY
+ CFLAGS+=-DHACKDIR=\"$(HACKDIR)\"
++CFLAGS+=-DVAR_PLAYGROUND=\"$(VARDIR)\"
+ CFLAGS+=-DDUMPLOG
+ CFLAGS+=-DCONFIG_ERROR_SECURE=FALSE
+ CFLAGS+=-DCURSES_GRAPHICS
+@@ -64,8 +64,8 @@ WINLIB = $(WINTTYLIB) $(WINCURSESLIB)
+ 
+ WINTTYLIB=-lncurses -ltinfo
+ 
+-CHOWN=true
+-CHGRP=true
++CHOWN=chown games
++CHGRP=chgrp games
+ 
+ VARDIRPERM = 0755
+ VARFILEPERM = 0600

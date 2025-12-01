@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Nov 28 13:59:19 UTC 2025 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Add nethack-367-src.tgz: Update NetHack to version 3.6.7.
+
+- Modify nethack-config.patch: NetHack 3.6 uses improved build scripts
+  that allow for configuration in a few dedicated files. Avoid patching
+  various Makefiles and headers in favor of the new system. Set build
+  configuration in sys/unix/hints/linux.
+
+- Modfify nethack-gcc15-1.patch: Pick upstream Gcc 15 fix for NetHack
+  3.6.7.
+
+- Disable parallel builds. There are complex dependencies among
+  NetHack's source files and build utils, which makes parallel building
+  complicated. Current attempts at parallel building have always been a
+  hack that tries to order dependencies where necessary. Actual
+  suport for parallel builds would require a rewrite of NetHack's
+  Makefile structure.
+
+- Remove nethack-343-src.tar.bz2: The source code of NetHack 3.4.3 is
+  no longer needed.
+
+- Remove nethack-gzip.patch: Setup of gzip is now handled in
+  network-config.patch.
+
+- Remove nethack-WINCHAIN-a-framework-allowing-multiple-processors-be.patch:
+  Not needed for NetHack 3.6.7
+
+- Remove nethack-address-H4266-build-problem-with-clang-Modules.patch: Not
+  needed for NetHack 3.6.7
+
+- Remove nethack-tty-xputc.patch: Not needed for NetHack 3.6.7
+
+- Remove nethack-escapes-revamp.patch: Nethack 3.6.0 and later already
+  include the bug fix.
+
+-------------------------------------------------------------------
 Wed Jul 16 08:17:14 UTC 2025 - Thomas Zimmermann <tzimmermann@suse.com>
 
 - Apply patches with %autosetup. Rpm's %autosetup applies all listed
