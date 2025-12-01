@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 28 11:06:46 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
+
+- Update to version 3.9.0:
+  * Handle acknowledgement timeouts in the consumer
+  * Explicitly install an event loop to support Python 3.14, which no longer does so implicitly
+
+-------------------------------------------------------------------
 Thu Oct 16 12:54:39 UTC 2025 - Jay Michalska <jay.michalska@suse.com>
 
 - Create a subpackage for Fedora Messaging configs

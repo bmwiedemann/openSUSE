@@ -105,4 +105,16 @@
 - Create a subpackage for Fedora Messaging configs</comment>
     <requestid>1311809</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f4ef0ee2f7b7685c949b64718d642263</srcmd5>
+    <version>3.9.0</version>
+    <time>1764584035</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1320448 from mgrossu
+
+- Update to version 3.9.0:
+    * Handle acknowledgement timeouts in the consumer
+    * Explicitly install an event loop to support Python 3.14, which no longer does so implicitly</comment>
+    <requestid>1320605</requestid>
+  </revision>
 </revisionlist>

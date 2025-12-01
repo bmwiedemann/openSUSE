@@ -1,7 +1,7 @@
 #
 # spec file for package python-fedora-messaging
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         _modname fedora-messaging
 Name:           python-fedora-messaging
-Version:        3.8.0
+Version:        3.9.0
 Release:        0
 Summary:        Python tools for Fedora's messaging infrastructure
 License:        GPL-2.0-or-later
