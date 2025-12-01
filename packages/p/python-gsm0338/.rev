@@ -23,4 +23,43 @@
     <comment></comment>
     <requestid>1280655</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9a8e16a982b863570d572a84de6684aa</srcmd5>
+    <version>1.1.0</version>
+    <time>1764584029</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1320354 from glaubitz
+
+- Update to 1.1.0
+    * Document parameter and return types
+    * fix formatting according flake8
+    * add python 3.6 to test matrix
+    * ignore .pytest_cache
+    * use unicodedata python standard module to replace unicode.py
+    * update referece to latest TS 23.038 standard
+    * cleanup module public interface
+    * remove *.txt from package_data
+    * remove dependency to module six
+    * add badges for PyPI and license
+    * fix PyPI batch
+    * add passenv to tox configuration to support codecov.io
+    * use codecov python script
+    * use Codec Error Handling Callbacks as described in PEP 293
+    * bump version to 1.1.0
+    * remove support for deprecated Python version 3.3
+    * remove travis build for deprecated Python version 3.3
+    * move input length calculation out of loop
+    * format file according PEP8
+    * collect coverage data
+    * add space
+    * move requirement pytest-cov from tox.ini into .travis.yml
+    * use explicite list of deps in tox.ini
+    * tox.ini deps update
+    * cleanup setup, travis and tox configuration
+    * fix type in codecov badge path
+    * cleanup code registry
+    * properly handle str and bytes replacement
+    * Test and indicate support of Python 3.7</comment>
+    <requestid>1320597</requestid>
+  </revision>
 </revisionlist>

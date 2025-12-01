@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Thu Nov 27 15:44:06 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.1.0
+  * Document parameter and return types
+  * fix formatting according flake8
+  * add python 3.6 to test matrix
+  * ignore .pytest_cache
+  * use unicodedata python standard module to replace unicode.py
+  * update referece to latest TS 23.038 standard
+  * cleanup module public interface
+  * remove *.txt from package_data
+  * remove dependency to module six
+  * add badges for PyPI and license
+  * fix PyPI batch
+  * add passenv to tox configuration to support codecov.io
+  * use codecov python script
+  * use Codec Error Handling Callbacks as described in PEP 293
+  * bump version to 1.1.0
+  * remove support for deprecated Python version 3.3
+  * remove travis build for deprecated Python version 3.3
+  * move input length calculation out of loop
+  * format file according PEP8
+  * collect coverage data
+  * add space
+  * move requirement pytest-cov from tox.ini into .travis.yml
+  * use explicite list of deps in tox.ini
+  * tox.ini deps update
+  * cleanup setup, travis and tox configuration
+  * fix type in codecov badge path
+  * cleanup code registry
+  * properly handle str and bytes replacement
+  * Test and indicate support of Python 3.7
+  * test_charset: Escape \
+  * Test and indicate support of Python 3.7
+  * test_charset: Escape \
+  * add normalization example
+  * update .gitignore to latest template from github
+  * add Python 3.8 to CI build and drop testing for EOL Python 3.4
+  * update CI configuration to a modern setup
+  * add note about unsupported character packing
+  * Remove support for Python 2.7
+  * Fix flake8 rules
+  * update check-manifest configuration
+  * switch to travis-ci.com
+  * replace setup.py with pyproject.toml
+  * create Github workflow for CI (#12)
+  * cleanup project
+  * add basic pre-commit configuration (#13)
+  * drop support for Python 3.6 (#14)
+  * [pre-commit.ci] pre-commit autoupdate (#15)
+  * [pre-commit.ci] pre-commit autoupdate (#16)
+  * [pre-commit.ci] pre-commit autoupdate (#17)
+  * bump supported Python versions
+  * [pre-commit.ci] pre-commit autoupdate
+  * remove travis.ci batch from readme
+- Drop no-six.patch, merged upstream
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Tue May 27 15:03:09 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Add no-six.patch to remove the dependency on six

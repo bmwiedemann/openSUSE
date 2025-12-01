@@ -16,17 +16,16 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%{?sle15_python_module_pythons}
 Name:           python-gsm0338
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Python Codec for 3GPP TS 23.038 / ETSI GSM 03.38
 License:        MIT
 URL:            https://github.com/dsch/gsm0338
 #GIT-Clone:     https://github.com/dsch/gsm0338.git
 Source:         https://github.com/dsch/gsm0338/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM parts of https://github.com/dsch/gsm0338/commit/94bcadca630d498ce8b33295c617acb1a75b39da Remove support for Python 2.7
-Patch:          no-six.patch
+BuildRequires:  %{python_module poetry-core >= 1.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
