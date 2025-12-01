@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 28 17:32:07 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- readd curl for healthchecks
+
+-------------------------------------------------------------------
 Mon Nov 10 17:41:10 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - switch to a multistage build using bci-micro
