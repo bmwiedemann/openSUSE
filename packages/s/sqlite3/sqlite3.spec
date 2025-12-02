@@ -19,12 +19,12 @@
 
 %define _buildshell /bin/bash
 %define oname sqlite
-%define tarversion 3500400
-%define docversion 3500400
+%define tarversion 3510100
+%define docversion 3510100
 %bcond_with icu
 %bcond_without check
 Name:           sqlite3
-Version:        3.50.4
+Version:        3.51.1
 Release:        0
 Summary:        Embeddable SQL Database Engine
 License:        SUSE-Public-Domain
@@ -208,7 +208,6 @@ export CFLAGS="%{optflags} \
 %install
 %make_install
 install -Dpvm 0644 -t %{buildroot}/%{_mandir}/man1 sqlite3.1
-install -Dpvm 0644 -t %{buildroot}/%{_mandir}/mann autoconf/tea/doc/sqlite3.n
 install -Dpvm 0755 -t %{buildroot}%{_bindir} lemon
 install -Dpvm 0644 -t %{buildroot}%{_datadir}/lemon tool/lempar.c
 # tcl bindings are provided by tcl itself
@@ -233,7 +232,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files tcl
 %tcl_archdir/*
-%doc %_mandir/mann/*
 
 %files doc
 %doc sqlite-doc-%{docversion}/*
