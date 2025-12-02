@@ -1,7 +1,7 @@
 #
 # spec file for package python-sidecar
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,10 @@
 #
 
 
-%define skip_python39 1
 Name:           python-sidecar
-%define mainver 0.7.0
-%define shortver 0.7
-%define labver  0.7.0
+%define mainver 0.8.0
+%define shortver 0.8
+%define labver  0.8.0
 Version:        %{mainver}
 Release:        0
 Summary:        A sidecar output widget for JupyterLab
