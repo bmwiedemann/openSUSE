@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Dec  1 06:28:55 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.1.8.0
+  - exif: Support EXIF 3.0 tags #4961
+  - jpeg: Fix wrong pointers/crashing when decodng CMYK jpeg files
+    #4963
+  - openexr: Improve attribute translation rules #4946
+  - openexr: ACES container writes colorInteropId instead of
+    colorInteropID #4966 (by Brecht Van Lommel)
+  - color mgmt: Fix some legacy 'Linear' color references #4959
+  - imagebuf: Fix ImageBuf::set_pixels() bug, didn't consider roi =
+    All #4949
+  - tests: Image_span_test reduce benchmark load for debug and CI
+    renders #4951
+  - build: Type warning in assertion in jpeg2000output.cpp #4952
+  - build: Disable LERC in libTIFF local build script #4957 (by LI
+    JI)
+  - ci: Fix broken ci, debug and static cases, bump some latest
+    #4954
+  - ci: Unbreak icc/icx CI #4958
+  - admin: Update some license notices #4955
+
+-------------------------------------------------------------------
 Sat Nov  1 20:17:07 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.1.7.0
