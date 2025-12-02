@@ -99,7 +99,7 @@ install -Dpm0640 redis.conf             %{buildroot}%{_conf_dir}/includes/redis.
 install -Dpm0640 sentinel.conf          %{buildroot}%{_conf_dir}/includes/sentinel.defaults.conf
 
 install -Dpm0640 redis.default.conf     %{buildroot}%{_conf_dir}/redis.default.conf.template
-install -Dpm0660 sentinel.default.conf  %{buildroot}%{_conf_dir}/sentinel.defaults.conf.template
+install -Dpm0660 sentinel.default.conf  %{buildroot}%{_conf_dir}/sentinel.default.conf.template
 
 # some sysctl stuff
 install -Dpm0644 %{SOURCE6} %{buildroot}/%{_prefix}/lib/sysctl.d/00-%{name}.conf
