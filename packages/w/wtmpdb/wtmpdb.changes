@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Nov 30 17:36:17 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.75.0+git20251130.0d8fe7a:
+  * wtmpdbd: add method Rotate to interface definition
+  * wtmpdb last: fix --present option
+  * last -x: apply --since and --until to split entries
+  * last -x: show shutdown entries before reboot ones
+  * Fix varlink definition for type WtmpdbEntry
+
+-------------------------------------------------------------------
 Thu Oct 09 13:20:48 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 0.75.0+git20251009.a6f185a:

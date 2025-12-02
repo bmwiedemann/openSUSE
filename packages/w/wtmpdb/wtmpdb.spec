@@ -18,7 +18,7 @@
 
 %define lname   libwtmpdb0
 Name:           wtmpdb
-Version:        0.75.0+git20251009.a6f185a
+Version:        0.75.0+git20251130.0d8fe7a
 Release:        0
 Summary:        Database for recording the last logged in users and system reboots
 License:        BSD-2-Clause

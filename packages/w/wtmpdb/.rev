@@ -270,4 +270,17 @@
   * Factor CREATE TABLE IF NOT EXISTS out of add_entry()</comment>
     <requestid>1310007</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>106fc8b3b7a66ed766d2e8311f4605ea</srcmd5>
+    <version>0.75.0+git20251130.0d8fe7a</version>
+    <time>1764677944</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.75.0+git20251130.0d8fe7a:
+  * wtmpdbd: add method Rotate to interface definition
+  * wtmpdb last: fix --present option
+  * last -x: apply --since and --until to split entries
+  * last -x: show shutdown entries before reboot ones
+  * Fix varlink definition for type WtmpdbEntry</comment>
+    <requestid>1320664</requestid>
+  </revision>
 </revisionlist>
