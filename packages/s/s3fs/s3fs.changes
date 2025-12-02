@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 25 21:32:51 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 1.96:
+  * Ported to FUSE 3 (boo#1242091)
+  * Improve IO concurrency
+  * Rename -o endpoint to -o region for clarity
+  * Avoid HeadObject calls with improved stats cache usage
+
+-------------------------------------------------------------------
 Sun Oct 27 17:39:25 UTC 2024 - Julio González Gil <julio@juliogonzalez.es>
 
 - Update to version 1.95

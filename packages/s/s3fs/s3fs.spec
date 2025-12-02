@@ -2,6 +2,7 @@
 # spec file for package s3fs
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           s3fs
-Version:        1.95
+Version:        1.96
 Release:        0
 Summary:        FUSE file system backed by Amazon S3 bucket
 License:        GPL-2.0-or-later
@@ -25,36 +26,33 @@ Group:          System/Filesystems
 URL:            https://github.com/s3fs-fuse/s3fs-fuse
 Source0:        https://github.com/s3fs-fuse/s3fs-fuse/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  automake
-BuildRequires:  dos2unix
-BuildRequires:  fuse-devel
-BuildRequires:  gcc-c++
-BuildRequires:  make
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libcrypto)
-BuildRequires:  pkgconfig(libcurl)
-BuildRequires:  pkgconfig(libxml-2.0)
-Requires:       fuse
+BuildRequires:  c++_compiler
+BuildRequires:  pkgconfig >= 0.9.0
+BuildRequires:  pkgconfig(fuse3) >= 3.0.0
+BuildRequires:  pkgconfig(libcrypto) >= 0.9
+BuildRequires:  pkgconfig(libcurl) >= 7.0
+BuildRequires:  pkgconfig(libxml-2.0) >= 2.6
+Requires:       fuse3
 
 %description
 FUSE-based file system backed by Amazon S3. Mount a bucket as a local
 file system read/write. Store files/folders natively and transparently
 
 %prep
-%setup -q -n s3fs-fuse-%{version}
+%autosetup -p1 -n s3fs-fuse-%{version}
 
 %build
-./autogen.sh
+autoreconf -fiv
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
 %files
-%{!?_licensedir:%global license %doc}
 %license COPYING
 %doc ChangeLog README.md
 %{_bindir}/s3fs
-%{_mandir}/man1/s3fs.1%{ext_man}
+%{_mandir}/man1/s3fs.1%{?ext_man}
 
 %changelog
