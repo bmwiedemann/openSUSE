@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec  1 15:19:07 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20251117.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20251117
+  * Rename 3.5-dev to 4.0-dev by @koic in #2582
+  * Add definition for Ruby 4.0.0-preview2 by @koic in #2584
+
+-------------------------------------------------------------------
 Fri Oct 24 00:21:00 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20251023.
