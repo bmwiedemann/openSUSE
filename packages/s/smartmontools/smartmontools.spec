@@ -37,9 +37,11 @@ Source5:        %{name}.generate_smartd_opts.in
 # SOURCE-FEATURE-SLE smartmontools-drivedb_h-update.sh bnc851276 sbrabec@suse.cz -- Supplementary script to update drivedb.h.
 Source6:        smartmontools-drivedb_h-update.sh
 # SOURCE-FEATURE-UPSTREAM smartmontools-drivedb.h bnc851276 sbrabec@suse.cz -- Update of drivedb.h. (Following line is handled by smartmontools-drivedb_h-update.sh.)
-#Source7:        smartmontools-drivedb.h
+Source7:        smartmontools-drivedb.h
 Source8:        smartd_generate_opts.path
 Source9:        smartd_generate_opts.service
+# PATCH-FEATURE-UPSTREAM smartmontools-update-smart-drivedb.patch sbrabec@suse.com -- Support download from smartmontools migrated to github (cummulative patch).
+Patch1:         smartmontools-update-smart-drivedb.patch
 # PATCH-FEATURE-OPENSUSE smartmontools-suse-default.patch sbrabec@suse.cz -- Define smart SUSE defaults.
 Patch4:         smartmontools-suse-default.patch
 # PATCH-FIX-OPENSUSE smartmontools-var-lock-subsys.patch sbrabec@suse.cz -- Do not use unsupported /var/lock/subsys.
@@ -75,10 +77,10 @@ commands man smartctl and man smartd will provide more information.
 %autosetup -p1
 cp -a %{SOURCE2} %{SOURCE5} .
 # Following line is handled by smartmontools-drivedb_h-update.sh.
-#cp -a %{SOURCE7} drivedb.h.new
+cp -a %{SOURCE7} drivedb.h.new
 #
 # PATCH-FEATURE-OPENSUSE (sed on smartd.service.in) sbrabec@suse.cz -- Use generated smartd_opts (from SUSE sysconfig file). Systemd smartd.service cannot be smart enough to parse SUSE sysconfig file and generate smartd_opts on fly. And we do not want to launch shell just for it in every boot.
-sed "s:/usr/local/etc/sysconfig/smartmontools:%{_localstatedir}/lib/smartmontools/smartd_opts:" <smartd.service.in >smartd.service.in.new
+sed "s:/usr/local/etc/sysconfig/smartmontools:%{_sharedstatedir}/smartmontools/smartd_opts:" <smartd.service.in >smartd.service.in.new
 if cmp -s smartd.service.in smartd.service.in.new ; then
 	echo "Failed to modify smartd.service.in"
 	exit 1
@@ -88,10 +90,20 @@ mv smartd.service.in.new smartd.service.in
 # Check whether drivedb.h from the tarball is older than drivedb.h.new
 # If yes, replace it. If not, fail.
 # PACKAGERS: Don't delete this section. It prevents packaging of outdated smartmontools-drivedb.h.
+get_db_release()
+{
+  local v
+  v=`sed -n '/^[ {]*"VERSION: .*"/{
+       s,^[ {]*"VERSION: [1-9][.0-9]*\/\([1-9][0-9]*\)[ "].*$,\1,p
+       q
+     }' "$1"` || return 1
+  if test -z "$v" ; then v=0 ; fi
+  echo "$v"
+}
 if test -f drivedb.h.new ; then
-	UPD_TIME=$(date -d "$(sed -n 's/^.*$Id: drivedb.h [0-9][0-9]* \([^ ]* [^ ]*\) .*$/\1/p' <drivedb.h.new)" +%s)
-	PCK_TIME=$(date -d "$(sed -n 's/^.*$Id: drivedb.h [0-9][0-9]* \([^ ]* [^ ]*\) .*$/\1/p' <drivedb.h)" +%s)
-	if test $UPD_TIME -lt $PCK_TIME ; then
+	UPD_RELEASE=$(get_db_release drivedb.h.new)
+	PCK_RELEASE=$(get_db_release drivedb.h)
+	if test $UPD_RELEASE -lt $PCK_RELEASE ; then
 		echo >&2 "Packaging error: Attached smartmontools-drivedb.h is older than the one from the release.
 		  Please call \"bash ./smartmontools-drivedb_h-update.sh\" to fix it."
 		exit 1
@@ -108,6 +120,7 @@ export LDFLAGS="-pie"
 	--with-selinux\
 	--with-libsystemd\
 	--with-systemdsystemunitdir=%{_unitdir}\
+	--with-drivedbinstdir\
 	--with-savestates \
 	--with-attributelog \
 	--with-nvme-devicescan
@@ -121,8 +134,8 @@ sed "s:@prefix@:%{_prefix}:g;s:@localstatedir@:%{_localstatedir}:g;s:@SERVICE@:$
 mkdir -p %{buildroot}%{_prefix}/lib/smartmontools
 mkdir -p %{buildroot}%{_fillupdir}
 cp smartmontools.sysconfig %{buildroot}%{_fillupdir}/sysconfig.smartmontools
-mkdir -p %{buildroot}%{_localstatedir}/lib/smartmontools
-touch %{buildroot}%{_localstatedir}/lib/smartmontools/smartd_opts
+mkdir -p %{buildroot}%{_sharedstatedir}/smartmontools
+touch %{buildroot}%{_sharedstatedir}/smartmontools/smartd_opts
 install generate_smartd_opts %{buildroot}%{_prefix}/lib/smartmontools/
 cat >%{buildroot}%{_sysconfdir}/smart_drivedb.h <<EOF
 /* smart_drivedb.h: Custom drive database. See also %{_datadir}/smartmontools/drivedb.h. */
@@ -133,7 +146,7 @@ cp %{SOURCE9} %{buildroot}/%{_unitdir}
 # INSTALL file is intended only for packagers.
 rm %{buildroot}%{_defaultdocdir}/%{name}/INSTALL
 # Create empty ghost files for files created by update-smart-drivedb.
-touch %{buildroot}%{_datadir}/smartmontools/drivedb.h.{error,lastcheck,old}
+touch %{buildroot}%{_sharedstatedir}/smartmontools/drivedb.h{,.{asc,error,error.raw,error.raw.asc,lastcheck,old,old.raw,old.raw.asc,raw,raw.asc}}
 
 # Check syntax of drivedb.h that may come from a later snapshot (code from update-smart-drivedb)
 if ./smartctl -B drivedb.h -P showall >/dev/null; then :; else
@@ -141,8 +154,8 @@ if ./smartctl -B drivedb.h -P showall >/dev/null; then :; else
   exit 1
 fi
 # Intelligent drivedb.h update, part 0.
-# Check that drivedb.h has well formed svn RELEASE. We will need it for the intelligent update.
-DRIVEDB_H_RELEASE_CHECK="$(sed -n 's/^.*$Id: drivedb.h \([0-9][0-9]*\) .*$/\1/p' <%{buildroot}%{_datadir}/smartmontools/drivedb.h)"
+# Check that drivedb.h has well formed VERSION. We will need it for the intelligent update.
+DRIVEDB_H_RELEASE_CHECK="$(sed -n 's/^.*VERSION: [0-9][0-9.]*\/\([0-9][0-9]*\).*$/\1/p' <%{buildroot}%{_datadir}/smartmontools/drivedb.h)"
 # Fail if the file has broken release number.
 test "$DRIVEDB_H_RELEASE_CHECK" -ge 0
 # Fail if there is no default_branch= in update-smart-drivedb
@@ -150,21 +163,23 @@ grep -q "^default_branch=\"[^\"]*\"$" update-smart-drivedb
 
 %pre
 %service_add_pre smartd.service smartd_generate_opts.path smartd_generate_opts.service
+# These files were generated by update-smart-drivedb before introduction of
+# transactional updates, but not all were listed in spec as %%ghost.
+# (16.1 and older updated to 7.5)
+for EXT in asc error error.raw error.raw.asc lastcheck old old.raw old.raw.asc raw raw.asc ; do
+    rm -f %{_datadir}/smartmontools/drivedb.h.$EXT
+done
 # Intelligent drivedb.h update, part 1.
 # Extract drivedb.h branch for installed version. We will need it in %%post.
-if test -f %{_sbindir}/update-smart-drivedb ; then
+if test -f %{_sharedstatedir}/smartmontools/drivedb.h -a -f %{_sbindir}/update-smart-drivedb ; then
     BRANCH=
-    eval $(grep "^BRANCH=\"[^\"]*\"$" %{_sbindir}/update-smart-drivedb)
-    if test -n "$BRANCH" ; then
-	echo -n "$BRANCH" >%{_datadir}/smartmontools/drivedb.h.branch.rpmtemp
+    default_branch=
+    # BRANCH is old variable name up to 7.2. Starting by 7.3, it is default_branch.
+    eval $(grep "^\(BRANCH\|default_branch\)=\"[^\"]*\"$" %{_sbindir}/update-smart-drivedb)
+    if test -n "$default_branch$BRANCH" ; then
+	mkdir -p %{_sharedstatedir}/smartmontools
+	echo -n "$default_branch$BRANCH" >%{_sharedstatedir}/smartmontools/drivedb.h.branch.rpmtemp
     fi
-fi
-# Save installed drivedb.h. Maybe the sysadmin called update-smart-drivedb,
-# and the installed drivedb.h may be even newer than the new packaged one.
-if test -f %{_datadir}/smartmontools/drivedb.h ; then
-    # Be on safe side, remove any potential drivedb.h.rpmsave.
-    rm -f %{_datadir}/smartmontools/drivedb.h.rpmsave
-    ln %{_datadir}/smartmontools/drivedb.h %{_datadir}/smartmontools/drivedb.h.rpmsave
 fi
 
 %post
@@ -173,45 +188,48 @@ fi
 # Up to Leap 42.3 and SLE 15 SP3 Maintenance Update there was a "Command" meta comment in the sysconfig file.
 # It is not needed any more, but fillup does not delete it. Do it explicitly. (bsc#1195785, bsc#1196103)
 sed -i '\@^##[[:space:]]*Command:[[:space:]]*%{_prefix}/lib/smartmontools/generate_smartd_opts$@d' %{_sysconfdir}/sysconfig/smartmontools
-# Then generate initial %%{_localstatedir}/lib/smartmontools/smartd_opts needed by smartd.service.
+# Then generate initial %%{_sharedstatedir}/smartmontools/smartd_opts needed by smartd.service.
 SMARTD_SKIP_INIT=1 %{_prefix}/lib/smartmontools/generate_smartd_opts
 # No start by default here.. belongs to -presets packages
 %service_add_post smartd.service smartd_generate_opts.path smartd_generate_opts.service
+# This file may be kept from <= 7.4 or pre-GitHub 7.5. Drop it, as it is probably incompatible.
+rm -f %{_datadir}/smartmontools/drivedb.h.rpmsave
 # Intelligent drivedb.h update, part 2.
-# Now we have the old system drivedb.h.rpmsave and the new packaged drivedb.h.
-if test -f %{_datadir}/smartmontools/drivedb.h.rpmsave ; then
-    # Compare their release numbers.
-    DRIVEDB_H_RELEASE_RPM="$(sed -n 's/^.*$Id: drivedb.h \([0-9][0-9]*\) .*$/\1/p' <%{_datadir}/smartmontools/drivedb.h)"
-    DRIVEDB_H_RELEASE_SAVED="$(sed -n 's/^.*$Id: drivedb.h \([0-9][0-9]*\) .*$/\1/p' <%{_datadir}/smartmontools/drivedb.h.rpmsave)"
-    # Note: The SAVED release number may be broken. The test syntax must cover it and replace old file.
-    if test "$DRIVEDB_H_RELEASE_RPM" -lt "${DRIVEDB_H_RELEASE_SAVED:-0}" ; then
-	# If it is an update to the new branch, always replace the database.
-	# Extract drivedb.h branch for the new version to default_branch.
-	eval $(grep "^default_branch=\"[^\"]*\"$" %{_sbindir}/update-smart-drivedb)
-	OLD_BRANCH=
-	if test -f %{_datadir}/smartmontools/drivedb.h.branch.rpmtemp ; then
-	    OLD_BRANCH=$(<%{_datadir}/smartmontools/drivedb.h.branch.rpmtemp)
-	fi
-	if test "$default_branch" = "$OLD_BRANCH" ; then
-	    # It is safe to keep later version of installed database.
-	    mv %{_datadir}/smartmontools/drivedb.h.rpmsave %{_datadir}/smartmontools/drivedb.h
+smartdb_purge() {
+    rm -f %{_sharedstatedir}/smartmontools/drivedb.h
+    for EXT in asc error error.raw error.raw.asc lastcheck old old.raw old.raw.asc raw raw.asc ; do
+	rm -f %{_sharedstatedir}/smartmontools/drivedb.h.$EXT
+    done
+}
+get_db_release()
+{
+  local v
+  v=`sed -n '/^[ {]*"VERSION: .*"/{
+       s,^[ {]*"VERSION: [1-9][.0-9]*\/\([1-9][0-9]*\)[ "].*$,\1,p
+       q
+     }' "$1"` || return 1
+  if test -z "$v" ; then v=0 ; fi
+  echo "$v"
+}
+if test -f %{_sharedstatedir}/smartmontools/drivedb.h.branch.rpmtemp ; then
+# Extract drivedb.h branch for installed version.
+    default_branch=
+    eval $(grep "default_branch=\"[^\"]*\"$" %{_sbindir}/update-smart-drivedb)
+    if test -n "$default_branch" ; then
+	if test "$default_branch" != "$(cat %{_sharedstatedir}/smartmontools/drivedb.h.branch.rpmtemp)" ; then
+	    # incompatible branches
+	    smartdb_purge
 	else
-	    # Saved file needs to be replaced.
-	    rm %{_datadir}/smartmontools/drivedb.h.rpmsave
-	    # We returned to the vanilla packages, remove files created by update-smart-drivedb.
-	    rm -f %{_datadir}/smartmontools/drivedb.h.{error,lastcheck,old}
-	    echo >&2 "%{name} updated to a version that requires new branch of drivedb.h"
-	    echo >&2 "Replacing your custom drivedb.h."
-	    echo >&2 "You may need to call update-smart-drivedb."
+	    # Compare their release numbers.
+	    DRIVEDB_H_RELEASE_RPM="$(get_db_release %{_datadir}/smartmontools/drivedb.h)"
+	    DRIVEDB_H_RELEASE_UPD="$(get_db_release %{_sharedstatedir}/smartmontools/drivedb.h)"
+	    if test "${DRIVEDB_H_RELEASE_RPM:-0}" -ge "${DRIVEDB_H_RELEASE_UPD:-0}" ; then
+		smartdb_purge
+	    fi
 	fi
-    else
-	# Saved file is older or equal, or saved file has broken release number.
-	rm %{_datadir}/smartmontools/drivedb.h.rpmsave
-	# We returned to the vanilla packages, remove files created by update-smart-drivedb.
-	rm -f %{_datadir}/smartmontools/drivedb.h.{error,lastcheck,old}
     fi
 fi
-rm -f %{_datadir}/smartmontools/drivedb.h.branch.rpmtemp
+rm -f %{_sharedstatedir}/smartmontools/drivedb.h.branch.rpmtemp
 # Before Leap 15 / SLE 15, there was a incorrect configuration of self tests (bsc#1073918).
 # Perform a fix of this nonsense, even if the noreplace configuration file was edited.
 if grep -q -F -- '-s S/../.././03 -s L/../(01|02|03|04|05|06|07)/7/01' %{_sysconfdir}/smartd.conf ; then
@@ -225,19 +243,27 @@ fi
 %service_del_postun smartd.service smartd_generate_opts.path smartd_generate_opts.service
 # Clean all attrlogs and state files.
 if test "$1" = 0 ; then
-    rm -rf %{_localstatedir}/lib/smartmontools
+    rm -rf %{_sharedstatedir}/smartmontools
 fi
 
 %files
 %doc %{_docdir}/%{name}
 %dir %{_datadir}/smartmontools
 %verify(not md5 size mtime) %{_datadir}/smartmontools/drivedb.h
-%ghost %{_datadir}/smartmontools/drivedb.h.error
-%ghost %{_datadir}/smartmontools/drivedb.h.lastcheck
-%ghost %{_datadir}/smartmontools/drivedb.h.old
 %{_mandir}/man*/*
-%dir %{_localstatedir}/lib/smartmontools
-%ghost %{_localstatedir}/lib/smartmontools/smartd_opts
+%dir %{_sharedstatedir}/smartmontools
+%ghost %{_sharedstatedir}/smartmontools/smartd_opts
+%ghost %{_sharedstatedir}/smartmontools/drivedb.h
+%ghost %{_sharedstatedir}/smartmontools/drivedb.h.asc
+%ghost %{_sharedstatedir}/smartmontools/drivedb.h.error
+%ghost %{_sharedstatedir}/smartmontools/drivedb.h.error.raw
+%ghost %{_sharedstatedir}/smartmontools/drivedb.h.error.raw.asc
+%ghost %{_sharedstatedir}/smartmontools/drivedb.h.lastcheck
+%ghost %{_sharedstatedir}/smartmontools/drivedb.h.old
+%ghost %{_sharedstatedir}/smartmontools/drivedb.h.old.raw
+%ghost %{_sharedstatedir}/smartmontools/drivedb.h.old.raw.asc
+%ghost %{_sharedstatedir}/smartmontools/drivedb.h.raw
+%ghost %{_sharedstatedir}/smartmontools/drivedb.h.raw.asc
 %{_prefix}/lib/smartmontools
 %{_unitdir}/*
 %{_sbindir}/*

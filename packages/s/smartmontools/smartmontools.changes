@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Nov  8 21:51:07 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- update-smart-drivedb: Provide support for the new upstream
+  GitHub repository. (smartmontools-update-smart-drivedb.patch,
+  refactor smartmontools-drivedb_h-update.sh).
+- update-smart-drivedb: Do not overwrite files in /usr/share. Use
+  /var/lib provided by --with-drivedbinstdir.
+- Add smartmontools-drivedb.h version 5894 from the branch 7.5.
+
+-------------------------------------------------------------------
 Wed Sep 24 10:14:42 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Drop rcsmartd symlink [jsc#PED-266]
@@ -6,7 +16,7 @@ Wed Sep 24 10:14:42 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 -------------------------------------------------------------------
 Thu May  1 10:09:20 UTC 2025 - ecsos <ecsos@opensuse.org>
 
-- Update to 7.5
+- Update to 7.5 (jsc#PED-13806).
   * See NEWS and ChangeLog files for full details
 - Rebase smartd_service_dont_quit.patch
 - Rebase harden_smartd.service.patch
@@ -50,7 +60,7 @@ Thu Feb  2 14:31:01 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
 -------------------------------------------------------------------
 Thu Apr 21 11:48:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- refresh keyring with new signing key 
+- refresh keyring with new signing key
 
 -------------------------------------------------------------------
 Fri Apr 15 15:04:26 UTC 2022 - Stefan Seyfried <seife+obs@b1-systems.com>
@@ -125,7 +135,7 @@ Wed Jan  6 12:10:43 UTC 2021 - Dirk Müller <dmueller@suse.com>
   - NetBSD: Fixed timeout handling.
   - NetBSD big endian: Fixed ATA register handling.
   - OpenBSD: Fixed timeout handling.
-  - Windows: Dropped backward compatibility fixes for very old compilers. 
+  - Windows: Dropped backward compatibility fixes for very old compilers.
 - drop smartd-service-novm.patch (upstream)
 - drop smartmontools-smartd-service.patch
   (SLE+Leap, now in upstream, bsc#1183699)
@@ -292,7 +302,7 @@ Mon Dec 18 04:03:10 UTC 2017 - avindra@opensuse.org
 -------------------------------------------------------------------
 Thu Nov 23 13:42:04 UTC 2017 - rbrown@suse.com
 
-- Replace references to /var/adm/fillup-templates with new 
+- Replace references to /var/adm/fillup-templates with new
   %_fillupdir macro (boo#1069468)
 
 -------------------------------------------------------------------
@@ -422,7 +432,7 @@ Tue Oct  7 22:55:04 CEST 2014 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Wed Sep  3 13:27:11 CEST 2014 - ro@suse.de
 
-- re-add sysvinit support in specfile (fix build on sles11) 
+- re-add sysvinit support in specfile (fix build on sles11)
 
 -------------------------------------------------------------------
 Wed Sep  3 13:01:54 CEST 2014 - ro@suse.de
@@ -447,12 +457,12 @@ Wed Sep  3 13:01:54 CEST 2014 - ro@suse.de
   - Windows: Reworked CSMI port scanning.
   - QNX: Compile fix.
 - dropped patches:
-  smartmontools-nobuild-date.patch (code removed upstream) 
+  smartmontools-nobuild-date.patch (code removed upstream)
 
 -------------------------------------------------------------------
 Mon May 26 15:26:24 UTC 2014 - crrodriguez@opensuse.org
 
-- Build with large file support in 32 bit systems. 
+- Build with large file support in 32 bit systems.
 
 -------------------------------------------------------------------
 Thu Dec  5 18:52:44 UTC 2013 - sbrabec@suse.com
@@ -479,12 +489,12 @@ Mon Jul 29 18:12:00 CEST 2013 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Fri Apr  5 11:24:43 UTC 2013 - idonmez@suse.com
 
-- Add Source URL, see https://en.opensuse.org/SourceUrls 
+- Add Source URL, see https://en.opensuse.org/SourceUrls
 
 -------------------------------------------------------------------
 Wed Apr  3 23:53:45 UTC 2013 - crrodriguez@opensuse.org
 
-- remove all sysvinit support. 
+- remove all sysvinit support.
 
 -------------------------------------------------------------------
 Mon Mar 18 18:28:10 CET 2013 - sbrabec@suse.cz
@@ -610,7 +620,7 @@ Fri Oct 21 15:54:22 CEST 2011 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Mon Oct 10 14:24:33 UTC 2011 - bruno@ioda-net.ch
 
-- reuse of %makeinstall to build for SLES11_SP1- 
+- reuse of %makeinstall to build for SLES11_SP1-
 
 -------------------------------------------------------------------
 Sun Oct  9 17:17:45 UTC 2011 - bruno@ioda-net.ch
@@ -642,7 +652,7 @@ Sun Oct  9 17:17:45 UTC 2011 - bruno@ioda-net.ch
 - clean up old patches included in upstream
 - added systemd upstream configure option
 - added patch for FSF-address
-- clean up spec with spec-cleaner- 
+- clean up spec with spec-cleaner-
 
 -------------------------------------------------------------------
 Wed Jun  8 20:17:25 CEST 2011 - sbrabec@suse.cz
@@ -700,14 +710,14 @@ Tue Sep 28 17:20:37 UTC 2010 - cristian.rodriguez@opensuse.org
 
 - Fix patch to remove build Dates
 - Update to a newer version of 5.39.1 branch in order
-  to support libcap-ng so smartd can drop privileges 
+  to support libcap-ng so smartd can drop privileges
 
 -------------------------------------------------------------------
 Sun Aug 29 18:56:43 UTC 2010 - cristian.rodriguez@opensuse.org
 
 - Do not include build enviroment infon in the binaries
  including date and time of compilation, makes build-compare
- happier. 
+ happier.
 
 -------------------------------------------------------------------
 Mon Jun 28 06:38:35 UTC 2010 - jengelh@medozas.de
@@ -773,7 +783,7 @@ Mon Aug 10 19:07:54 CEST 2009 - sbrabec@suse.cz
     Momentus 5400.5 series.
   * Fix data type bug in checksum test for multi sector logs.
   * Add USB ID of Seagate FreeAgent Go.
-  * Add experimental feature to log attribute values at each check 
+  * Add experimental feature to log attribute values at each check
     cycle (ATA only).
   * Heads up about a non backwardly compatible change introduced in
     draft SAT-2 (sat2r8b.pdf) that will break our existing SAT
@@ -999,7 +1009,7 @@ Wed Jan 25 21:41:41 CET 2006 - mls@suse.de
 Tue Jun 21 01:17:39 CEST 2005 - ro@suse.de
 
 - use RPM_OPT_FLAGS
-- build with fPIE/pie 
+- build with fPIE/pie
 
 -------------------------------------------------------------------
 Fri Mar 18 14:49:58 CET 2005 - sbrabec@suse.cz

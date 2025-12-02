@@ -9,6 +9,19 @@
 
 set -o errexit
 
+# get_db_version DRIVEDB > VERSION
+get_db_version()
+{
+  local v
+  v=`sed -n '/^[ {]*"VERSION: .*"/{
+       s,^[ {]*"VERSION: \([1-9][./0-9]*\)[ "].*$,\1,p
+       q
+     }' "$1"` || return 1
+  test -n "$v" || return 0
+  test "${v%/*}" != "$v" || v="$v/?"
+  echo "$v"
+}
+
 VERSION=`sed -n 's/^Version:[[:space:]]*//p' <smartmontools.spec`
 
 WORKDIR="smartmontools-drivedb_h-update.tmp"
@@ -17,7 +30,7 @@ rm -rf "$WORKDIR"
 mkdir "$WORKDIR"
 cd "$WORKDIR"
 
-tar -zxf ../smartmontools-$VERSION.tar.gz smartmontools-$VERSION/update-smart-drivedb.in smartmontools-$VERSION/configure smartmontools-$VERSION/drivedb.h
+tar --wildcards -zxf ../smartmontools-$VERSION.tar.gz "smartmontools-$VERSION/update-smart-drivedb.*" "smartmontools-$VERSION/configure*" smartmontools-$VERSION/drivedb.h
 # There can be script update.
 # TODO: This patch can be generated automatically.
 if test -f ../smartmontools-update-smart-drivedb.patch ; then
@@ -26,7 +39,7 @@ fi
 
 # Extract expression that derives DRIVEDB_BRANCH from the version string
 # (from configure, to not include autoconf square brackets):
-eval "$(sed -n -e '/^[^ ]*drivedb_version=/p; /^DRIVEDB_BRANCH=/,/`/p' <smartmontools-$VERSION/configure)"
+eval "$(sed -n -e '/^[^ ]*drivedb_version=/p; /^DRIVEDB_BRANCH=/,/^$/p' <smartmontools-$VERSION/configure)"
 if test -z "$DRIVEDB_BRANCH"; then
 	echo "Unable to derive DRIVEDB_BRANCH from VERSION=$VERSION."
 	cd - >/dev/null
@@ -35,7 +48,14 @@ if test -z "$DRIVEDB_BRANCH"; then
 fi
 BRANCHNAME=$DRIVEDB_BRANCH
 
-PCK_TIME=$(date -d "$(sed -n 's/^.*$Id: drivedb.h [0-9][0-9]* \([^ ]* [^ ]*\) .*$/\1/p' <smartmontools-$VERSION/drivedb.h)" +%s)
+DEF_VERSION=$(get_db_version smartmontools-$VERSION/drivedb.h)
+if test -f ../smartmontools-drivedb.h ; then
+	PCK_VERSION=$(get_db_version ../smartmontools-drivedb.h)
+	PCK_DRIVEDB=../smartmontools-drivedb.h
+else
+	PCK_VERSION=$DEF_VERSION
+	PCK_DRIVEDB=smartmontools-$VERSION/drivedb.h
+fi
 
 echo "Updating drivedb.h for branch $DRIVEDB_BRANCH."
 
@@ -55,15 +75,19 @@ sed "
 chmod +x update-smart-drivedb-wd
 # Verification of the downloaded drivedb.h has to be done by the packaged smartctl.
 # Skip it on the host system, and run it as part of %build stage.
-./update-smart-drivedb-wd -u trac -s -
+./update-smart-drivedb-wd -u github -s -
+if test -f drivedb.h ; then
+	mv drivedb.h smartmontools-drivedb.h
+fi
 rm -f "$DEST.lastcheck"
 rm -f "$DEST.old"
 
 # Compare time (file in the drivedb branch can be older) and compare
 # files without Id (files can be equal but committed in two commits).
-UPD_TIME=$(date -d "$(sed -n 's/^.*$Id: drivedb.h [0-9][0-9]* \([^ ]* [^ ]*\) .*$/\1/p' <../smartmontools-drivedb.h)" +%s)
-sed '/^.*$Id:/d' <smartmontools-$VERSION/drivedb.h >drivedb-noid.h
-sed '/^.*$Id:/d' <../smartmontools-drivedb.h >smartmontools-drivedb-noid.h
+
+UPD_VERSION=$(get_db_version smartmontools-drivedb.h)
+sed '/"VERSION: /d' <smartmontools-$VERSION/drivedb.h >drivedb-noid.h
+sed '/"VERSION: /d' <smartmontools-drivedb.h >smartmontools-drivedb-noid.h
 if cmp -s drivedb-noid.h smartmontools-drivedb-noid.h ; then
 	EQUAL=true
 else
@@ -73,7 +97,17 @@ fi
 # Return to the OSC repository and perform needed changes.
 cd - >/dev/null
 
-if test $EQUAL = true -o \( $UPD_TIME -le $PCK_TIME \) ; then
+DEF_VER=${DEF_VERSION#*/}
+if test "$DEF_VER" = "?" ; then
+	DEF_VER=0
+fi
+PCK_VER=${PCK_VERSION#*/}
+if test "$PCK_VER" = "?" ; then
+	PCK_VER=0
+fi
+
+UPD_VER=${UPD_VERSION#*/}
+if test $EQUAL = true -o \( $UPD_VER -le $DEF_VER \) ; then
 	echo "No drivedb.h update available."
 	if test -f smartmontools-drivedb.h ; then
 		osc rm --force smartmontools-drivedb.h
