@@ -1,7 +1,7 @@
 #
 # spec file for package znc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Source1:        %{url}/releases/%{name}-%{version}.tar.gz.sig
 Source2:        https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xd5823cacb477191cac0075555ae420cc0209989e#/%{name}.keyring
 Source3:        %{name}.service
 Patch0:         no-timestamp.patch
+Patch1:         znc-swig-4.4.patch
 BuildRequires:  cmake >= 3.13
 BuildRequires:  doxygen
 BuildRequires:  fdupes

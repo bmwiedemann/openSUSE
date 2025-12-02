@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  2 10:14:11 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add znc-swig-4.4.patch: Fix build against swig 4.4
+  Patch submitted at https://github.com/znc/znc/pull/1986
+
+-------------------------------------------------------------------
 Thu Jul  3 07:51:26 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.10.1:
