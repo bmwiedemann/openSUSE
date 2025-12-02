@@ -6004,4 +6004,12 @@ Thu Jun  12 09:05:12 UTC 2025 - Bernhard Wiedemann &lt;bwiedemann@suse.com&gt;
   * CVE-2025-13224: Type Confusion in V8</comment>
     <requestid>1318342</requestid>
   </revision>
+  <revision rev="490" vrev="1">
+    <srcmd5>6e8bb8d6687c97e3c2d3f3d999a53532</srcmd5>
+    <version>143.0.7499.40</version>
+    <time>1764677965</time>
+    <user>anag_factory</user>
+    <comment>Chromium 143.0.7499.40 (early stable released 2025-11-20)</comment>
+    <requestid>1320710</requestid>
+  </revision>
 </revisionlist>

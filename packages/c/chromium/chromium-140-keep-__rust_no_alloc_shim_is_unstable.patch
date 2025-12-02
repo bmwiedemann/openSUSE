@@ -8,7 +8,7 @@ Index: chromium-142.0.7444.3/build/rust/allocator/lib.rs
  
 +    // TODO(crbug.com/422538133) Remove after rolling past
 +    // https://github.com/rust-lang/rust/pull/141061
-+    #[no_mangle]
++    #[unsafe(no_mangle)]
 +    #[linkage = "weak"]
 +    static __rust_no_alloc_shim_is_unstable: u8 = 0;
 +

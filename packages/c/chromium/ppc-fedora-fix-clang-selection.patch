@@ -1,12 +1,10 @@
-Index: chromium-128.0.6613.113/build/config/BUILDCONFIG.gn
-===================================================================
---- chromium-128.0.6613.113.orig/build/config/BUILDCONFIG.gn
-+++ chromium-128.0.6613.113/build/config/BUILDCONFIG.gn
-@@ -138,7 +138,6 @@ declare_args() {
+--- chromium-143.0.7499.17/build/config/BUILDCONFIG.gn	2025/11/10 11:36:45	1.1
++++ chromium-143.0.7499.17/build/config/BUILDCONFIG.gn	2025/11/10 11:37:11
+@@ -138,7 +138,6 @@
    # Set to true when compiling with the Clang compiler.
    is_clang = current_os != "linux" ||
               (current_cpu != "s390x" && current_cpu != "s390" &&
 -              current_cpu != "ppc64" && current_cpu != "ppc" &&
-               current_cpu != "mips" && current_cpu != "mips64" &&
-               current_cpu != "riscv64")
+               current_cpu != "mips" && current_cpu != "mips64")
  
+   # Allows the path to a custom target toolchain to be injected as a single

@@ -10,9 +10,9 @@ author: Andres Salomon <dilinger@debian.org>
    34 |                                                     .strict = true};
       |                                                     ~~~~~~~~~~~~~~~
 
---- a/services/network/shared_dictionary/simple_url_pattern_matcher.cc
-+++ b/services/network/shared_dictionary/simple_url_pattern_matcher.cc
-@@ -28,17 +28,17 @@ namespace network {
+--- a/components/url_pattern/simple_url_pattern_matcher.cc
++++ b/components/url_pattern/simple_url_pattern_matcher.cc
+@@ -29,17 +29,17 @@
  namespace {
  
  // https://urlpattern.spec.whatwg.org/#default-options

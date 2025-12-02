@@ -57,8 +57,8 @@ Index: chromium-120.0.6099.18/base/BUILD.gn
 ===================================================================
 --- chromium-120.0.6099.18.orig/base/BUILD.gn
 +++ chromium-120.0.6099.18/base/BUILD.gn
-@@ -3561,6 +3561,10 @@
-     sources += [ "location_unittest.cc" ]
+@@ -3749,6 +3749,10 @@
+     sources += [ "immediate_crash_unittest.cc" ]
    }
  
 +  if (gcc_lto) {

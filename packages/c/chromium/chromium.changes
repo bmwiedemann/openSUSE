@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Nov 28 17:36:01 CET 2025 - ro@suse.de
+
+- Chromium 143.0.7499.40
+  (early stable released 2025-11-20) 
+- added patches:
+  chromium-143-libpng-unbundle.patch
+  (workaround broken libpng unbundle)
+  chromium-143-cookie_string_view.patch
+  (use string_view also for the const_iterator after type change)
+  chromium-143-revert_rust_is_multiple_of.patch
+  (revert added calls to is_multiple_of rejected as unstable feature)
+- modified patches:
+  gcc-enable-lto.patch (updated context)
+  chromium-127-constexpr.patch (file moved)
+  chromium-140-keep-__rust_no_alloc_shim_is_unstable.patch (add unsafe)
+  ppc-fedora-fix-clang-selection.patch (updated context)
+  ppc-fedora-0002-regenerate-xnn-buildgn.patch (reduced to stub,
+  will need updating)
+- dropped patches:
+  chromium-142-iwyu-field-form-data.patch (upstream)
+- bump buildrequires for rust-bindgen to 0.71 minimum as we need
+  the unsafe_extern_blocks
+- updated ppc-fedora-0002-regenerate-xnn-buildgn.patch 
+
+-------------------------------------------------------------------
 Mon Nov 17 23:40:26 CET 2025 - ro@suse.de
 
 - Chromium 142.0.7444.175 (boo#1253698):

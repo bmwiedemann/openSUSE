@@ -118,7 +118,7 @@
 %global official_build 1
 
 Name:           chromium%{n_suffix}
-Version:        142.0.7444.175
+Version:        143.0.7499.40
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -151,7 +151,6 @@ Patch9:         system-libdrm.patch
 # gentoo/fedora/arch patchset
 Patch15:        chromium-125-compiler.patch
 Patch98:        chromium-102-regex_pattern-array.patch
-Patch99:        chromium-142-iwyu-field-form-data.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch202:       chromium-prop-codecs.patch
 Patch240:       chromium-117-string-convert.patch
@@ -174,6 +173,9 @@ Patch381:       chromium-141-csss_style_sheet.patch
 Patch382:       chromium-141-no_cxx_modules.patch
 Patch383:       chromium-142-rust-revert_should_panic.patch
 Patch385:       chromium-142-rust_no_sanitize.patch
+Patch386:       chromium-143-libpng-unbundle.patch
+Patch387:       chromium-143-cookie_string_view.patch
+Patch389:       chromium-143-revert_rust_is_multiple_of.patch
 # conditionally applied patches ppc64le only
 Patch401:       ppc-fedora-add-ppc64-architecture-string.patch
 Patch402:       ppc-fedora-0001-linux-seccomp-bpf-ppc64-glibc-workaround-in-SIGSYS-h.patch
@@ -365,7 +367,7 @@ BuildRequires:  pkgconfig(xtst)
 BuildRequires:  cargo%{rust_version}
 BuildRequires:  rust%{rust_version}
 # END add rust BR
-BuildRequires:  rust-bindgen
+BuildRequires:  rust-bindgen >= 0.71
 Requires:       xdg-utils
 Requires(pre):  permissions
 Recommends:     noto-coloremoji-fonts
