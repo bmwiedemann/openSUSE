@@ -136,7 +136,8 @@ rm docs/make.bat
 %if 0%{?suse_version} > 1600
 %{python_expand # self-check with manually provided stubs for typed_ast
 export PYTHONPATH=%{buildroot}%{$python_sitelib}:./mystubs
-$python -m mypy --config-file mypy_self_check.ini -p mypy
+# hardcode minimum 3.10 here because pytest 9 dropped 3.9 support and mypy itself has some compatibility code for <3.11
+$python -m mypy --config-file mypy_self_check.ini --python-version=3.10 -p mypy
 }
 %endif
 unset PYTHONPATH

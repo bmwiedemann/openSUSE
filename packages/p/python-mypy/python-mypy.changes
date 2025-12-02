@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 25 12:55:30 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Lower-bound python version on mypy self check because of pytest 9
+
+-------------------------------------------------------------------
 Mon Sep 29 12:33:23 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.18.2
