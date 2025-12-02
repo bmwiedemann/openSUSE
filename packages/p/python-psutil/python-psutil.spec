@@ -36,6 +36,8 @@ Summary:        A process utilities module for Python
 License:        BSD-3-Clause
 URL:            https://github.com/giampaolo/psutil
 Source:         https://files.pythonhosted.org/packages/source/p/psutil/psutil-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/giampaolo/psutil/commit/40e27872d534ed849245fdb0c4604ca678d5e9fc Make ntuples work with subTest of new pytest release
+Patch:          pytest9.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
