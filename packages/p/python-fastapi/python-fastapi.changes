@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Nov 28 11:00:24 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
+
+- Update to version 0.122.0:
+  * Use 401 status code in security classes when credentials are missing
+  * Configure labeler to exclude files that start from underscore for lang-all label. 
+  * Add pre-commit config with local script for permalinks.
+  * Use font Fira Code to fix display of Rich panels in docs in Windows
+  * Add custom pre-commit CI
+  * Bump actions/checkout from 5 to 6
+  * Upgrade latest-changes GitHub Action and pin actions/checkout@v5
+  * Add add-permalinks and add-permalinks-page to scripts/docs.py
+  * Upgrade Material for MkDocs and remove insiders
+  * Make the result of Depends() and Security() hashable, as a workaround for other tools interacting with these internal parts
+  * Bump Starlette to <0.51.0
+  * Add missing hash parts
+  * Fix typos in code comments
+  * Add docs for using FastAPI Cloud
+  * Fix handling of JSON Schema attributes named "$ref"
+  * Fix links and add missing permalink in docs
+  * Fix Depends(func, scope='function') for top level (parameterless) dependencies
+  * Upate docs for advanced dependencies with yield, noting the changes in 0.121.0, adding scope
+  * Bump ruff from 0.13.2 to 0.14.3
+  * [pre-commit.ci] pre-commit autoupdate
+- Update to version 0.121.0:
+  * Add support for dependencies with scopes, support scope="request" for dependencies with yield that exit before the response is sent
+  * Update FastAPI People - Contributors and Translators
+  * Update FastAPI People - Sponsors
+  * Update FastAPI GitHub topic repositories
+  * Bump mkdocs-macros-plugin from 1.4.0 to 1.4.1
+  * Bump mkdocstrings[python] from 0.26.1 to 0.30.1
+  * Fix security schemes in OpenAPI when added at the top level app
+  * Reduce internal cyclic recursion in dependencies, from 2 functions calling each other to 1 calling itself
+  * Refactor internals of dependencies, simplify code and remove get_param_sub_dependant
+  * Refactor internals of dependencies, simplify using dataclasses
+
+-------------------------------------------------------------------
 Fri Oct 31 03:36:17 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Drop unneeded BuildRequires on databases.
