@@ -1937,41 +1937,4 @@ CVE-2020-13871 boo#1172646</comment>
     <comment>- bsc#1252217: Add a %license file.</comment>
     <requestid>1312730</requestid>
   </revision>
-  <revision rev="170" vrev="1">
-    <srcmd5>133add831cac05b060e7163d8efe7015</srcmd5>
-    <version>3.51.1</version>
-    <time>1764677914</time>
-    <user>anag_factory</user>
-    <comment>- Update to version 3.51.1:
-  * Fix incorrect results from nested EXISTS queries caused by the
-    optimization in item 6b in the 3.51.0 release.
-  * Fix a latent bug in fts5vocab virtual table, exposed by new
-    optimizations in the 3.51.0 release
-- Changes in version 3.51.0:
-  * New macros in sqlite3.h:
-    - SQLITE_SCM_BRANCH → the name of the branch from which the
-      source code is taken.
-    - SQLITE_SCM_TAGS → space-separated list of tags on the source
-      code check-in.
-    - SQLITE_SCM_DATETIME → ISO-8601 date and time of the source
-      code check-in.
-  * Two new JSON functions, jsonb_each() and jsonb_tree() work the
-    same as the existing json_each() and json_tree() functions
-    except that they return JSONB for the &quot;value&quot; column when the
-    &quot;type&quot; is 'array' or 'object'.
-  * The carray and percentile extensions are now built into the
-    amalgamation, though they are disabled by default and must be
-    activated at compile-time using the -DSQLITE_ENABLE_CARRAY
-    and/or -DSQLITE_ENABLE_PERCENTILE options, respectively.
-  * Enhancements to TCL Interface:
-    - Add the -asdict flag to the eval command to have it set the
-      row data as a dict instead of an array.
-    - User-defined functions may now break to return an SQL NULL.
-  * CLI enhancements:
-    - Increase the precision of &quot;.timer&quot; to microseconds.
-    - Enhance the &quot;box&quot; and &quot;column&quot; formatting modes to deal with
-      double-wide characters.
-    - The &quot;.imposter&quot; command provides read-only imposter tables</comment>
-    <requestid>1320534</requestid>
-  </revision>
 </revisionlist>
