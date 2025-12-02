@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Wed Nov 26 17:42:18 UTC 2025 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- tmux 3.6:
+  * Add seconds options for clock mode (issue 4697).
+  * Make -v to source-file pass through to subsequent source-file commands (issue
+    4216).
+  * Add selection-mode command to expilcitly set the selection mode in copy mode
+    (issue 3842).
+  * Save and restore images in alternate screen (issue 3732).
+  * Improve handling of regional indicators and emoji modifiers (issue 3998).
+  * Preserve marked pane with swap-window and move-window (issue 3443).
+  * Set and check COLORTERM as a hint for RGB colour.
+  * If tmux receives a palette request (OSC 4) in a pane and the palette entry
+    has not been set, send a request to the most recently used client and
+    forward any response instead (based on change from Tim Culverhouse, issue
+    4665).
+  * Add -l flag to command-prompt to disable splitting into multiple prompts
+    (issue 4483).
+  * Add buffer_full format variable (from Mohammad AlSaleh, issue 4630).
+  * Introduce a new window option, tiled-layout-max-columns, which configures the
+    maximum number of columns in the tiled layout.
+  * Add -k flag to display-popup which allows any key to dismiss the popup once
+    the command has exited (from Meriel Luna Mittelbach, issue 4612).
+  * Add a pane-border-lines "spaces" value to use spaces for pane borders (issue
+    4587).
+  * Replace invalid UTF-8 characters with the placeholder instead of ignoring
+    them (issue 4514).
+  * Detect support for OSC 52 using the device attributes report (from James
+    Holderness, issue 4539).
+  * Add -E to run-shell to forward stderr as well as stdout (issue 4246).
+  * Add an option variation-selector-always-wide to instruct tmux not to
+    always interpret VS16 as a wide character and assume the terminal does
+    likewise.
+  * Add more features for boolean expressions in formats: 1) extend && and || to
+    support arbitrarily many arguments and 2) add ! and !! for not and not-not
+    (from David Mandelberg).
+  * Do not mistake other DCS sequences for SIXEL sequences (from James
+    Holderness, issue 4488).
+  * Improve #? conditional expression in formats: add support for else if and
+    default empty string if no else value (from David Mandelberg, issue 4451).
+  * Add default-client-command to set the command used if tmux is run without a
+    command; the default stays new-session (from David Mandelberg, issue
+    4422).
+  * Add S-Up and S-Down to move windows in tree mode (from David Mandelberg,
+    issue 4415).
+  * Add mode 2031 support to automatically report dark or light theme. tmux will
+    guess the theme from the background colour on terminals which do not
+    themselves support the escape sequence (from Jonathan Slenders, issue 4353).
+  * Add -M flag to capture-pane to use the copy mode screen (issue 4358).
+  * Align index numbers in trees (from David Mandelberg, issue 4360).
+  * Add display-message -C flag to update pane while message is displayed (from
+    Vitaly Ostrosablin, issue 4363).
+  * Make list-commands command show only one command if an argument is given
+    (from Ilya Grigoriev, issue 4352).
+  * Count line numbers correctly inside strings in configuration files (reported
+    by Pedro Navarro, issue 4325).
+  * Map bright black (colour 8) to white (7) if the background is black on
+    terminals with only eight colours so the text is not invisible (from Dmytro
+    Bagrii, issue 4322).
+  * Add copy-mode-position-style and copy-mode-selection-style options for copy
+    mode.
+  * Add no-detach-on-destroy client option (issue 4242).
+  * Add input-buffer-size option (from Ken Lau).
+  * Add support for a scrollbar at the side of each pane. New options
+    pane-scrollbars turn them on or off, pane-scrollbars-position sets the
+    position (left or right), and pane-scrollbars-style to set the colours (from
+    Michael Grant, issue 4221).
+  * Add prompt-cursor-colour and prompt-cursor-style to set the style of the
+    cursor in the command prompt and remove the emulated cursor (from Alexander
+    Arch, issue 4170).
+  * Add initial-repeat-time option to allow the first repeat time to be increased
+    and later reduced (from David le Blanc, issue 4164).
+  * Add copy-mode-position-format to configure the position indicator.
+  * Add -y flag to disable confirmation prompts in modes (issue 4152).
+  * Add -C and -P flags to the copy commands in copy mode: -C prevents the
+    commands from sending the text to the clipboard and -P prevents them from
+    adding the text as a paste buffer (issue 4153).
+  * Preserve transparency and raster attribute dimensions when sending a SIXEL
+    image, and avoid collapsing empty lines (issue 4149).
+
+-------------------------------------------------------------------
 Wed Jan 15 12:59:57 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Disable libutempter, it doesn't work anymore with the switch

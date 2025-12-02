@@ -1,8 +1,10 @@
---- tmux-3.3/tmux.c	2022-05-14 21:04:35.000000000 +0200
-+++ tmux-3.3/tmux.c	2022-06-04 09:08:04.005234096 +0200
-@@ -198,16 +198,16 @@
+diff --git a/tmux.c b/tmux.c
+index 8d390203..6094751f 100644
+--- a/tmux.c
++++ b/tmux.c
+@@ -198,16 +198,16 @@ make_label(const char *label, char **cause)
  
- 	expand_paths(TMUX_SOCK, &paths, &n, 1);
+ 	expand_paths(TMUX_SOCK, &paths, &n, 0);
  	if (n == 0) {
 -		xasprintf(cause, "no suitable socket path");
 -		return (NULL);
@@ -26,15 +28,16 @@
  	if (mkdir(base, S_IRWXU) != 0 && errno != EEXIST) {
  		xasprintf(cause, "couldn't create directory %s (%s)", base,
  		    strerror(errno));
---- tmux-3.3/tmux.h	2022-05-14 21:04:35.000000000 +0200
-+++ tmux-3.3/tmux.h	2022-06-04 09:04:55.829136130 +0200
-@@ -74,7 +74,7 @@
+diff --git a/tmux.h b/tmux.h
+index b2f10ca7..c7b2b5eb 100644
+--- a/tmux.h
++++ b/tmux.h
+@@ -84,7 +84,7 @@ struct winlink;
  #define TMUX_CONF "/etc/tmux.conf:~/.tmux.conf"
  #endif
  #ifndef TMUX_SOCK
 -#define TMUX_SOCK "$TMUX_TMPDIR:" _PATH_TMP
 +#define TMUX_SOCK "$TMUX_TMPDIR:"
  #endif
- #ifndef TMUX_TERM
- #define TMUX_TERM "screen"
-Nur in b/tmux-3.3: tmux.h.orig.
+ #ifndef TMUX_SOCK_PERM
+ #define TMUX_SOCK_PERM (7 /* o+rwx */)
