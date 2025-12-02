@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 26 03:58:45 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-pytest-9.patch:
+  * Fix function defintion as per pytest 9.
+- Correct BuildRequires to match reality.
+
+-------------------------------------------------------------------
 Mon Oct  2 10:03:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.2:

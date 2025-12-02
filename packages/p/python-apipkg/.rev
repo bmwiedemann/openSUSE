@@ -121,4 +121,14 @@
 - Converted to single-spec</comment>
     <requestid>1116439</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>5518278a6b64613d4ec39458370fa5c7</srcmd5>
+    <version>3.0.2</version>
+    <time>1764677907</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-pytest-9.patch:
+  * Fix function defintion as per pytest 9.
+- Correct BuildRequires to match reality.</comment>
+    <requestid>1320321</requestid>
+  </revision>
 </revisionlist>

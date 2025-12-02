@@ -30,18 +30,19 @@ Version:        3.0.2
 Release:        0
 Summary:        Namespace control and lazy-import mechanism
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/pytest-dev/apipkg/
 Source:         https://github.com/pytest-dev/apipkg/archive/refs/tags/v%{version}.tar.gz#/apipkg-%{version}-gh.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/pytest-dev/apipkg/pull/58
+Patch0:         support-pytest-9.patch
 %if %{with test}
 BuildRequires:  %{python_module apipkg = %{version}}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest >= 7}
+# Assumes setuptools is installed, Python 3.12+
+BuildRequires:  %{python_module setuptools}
 %endif
 BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -90,7 +91,7 @@ EOF
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/apipkg
-%{python_sitelib}/apipkg-%{version}*-info
+%{python_sitelib}/apipkg-%{version}.dist-info
 %endif
 
 %changelog

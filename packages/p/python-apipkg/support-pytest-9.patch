@@ -1,0 +1,26 @@
+From dd5a5b755003989746139e847bf3eeaee91f1bb3 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Wed, 26 Nov 2025 14:48:43 +1100
+Subject: [PATCH] Support pytest 9
+
+Change the function specification of pytest_report_header to match what
+pytest 9 expects.
+
+Closes #55
+---
+ conftest.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/conftest.py b/conftest.py
+index 795c06b..3b70f03 100644
+--- a/conftest.py
++++ b/conftest.py
+@@ -6,7 +6,7 @@
+ INSTALL_TYPE = "editable" if apipkg.__file__ == LOCAL_APIPKG else "full"
+ 
+ 
+-def pytest_report_header(startdir):
++def pytest_report_header(start_path):
+     return "apipkg {install_type} install version={version}".format(
+         install_type=INSTALL_TYPE, version=apipkg.__version__
+     )
