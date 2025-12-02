@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov 26 18:08:52 UTC 2025 - Sean Baggaley <me@drinkybird.net>
+
+- Update to version 11.1.10.
+  * compatibility with Mercurial 7.2
+  * docs: update issue tracker links
+  * tests: more compatibility with non-GNU tools
+  topic (1.1.10)
+  * compatibility with Mercurial 7.2
+  * topic: add _verifyall() call before updating _topiccache on hg <= 6.7
+  * topic: properly add branchmaptns method to wirepeer, making topic
+    namespaces work correctly during exchange via ssh or http(s)
+
+-------------------------------------------------------------------
 Sat Jul 26 15:02:36 UTC 2025 - Sean Baggaley <me@drinkybird.net>
 
 - Update to version 11.1.9.
