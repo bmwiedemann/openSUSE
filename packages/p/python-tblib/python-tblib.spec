@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-tblib%{?psuffix}
-Version:        3.1.0
+Version:        3.2.2
 Release:        0
 Summary:        Traceback serialization library
 License:        BSD-2-Clause

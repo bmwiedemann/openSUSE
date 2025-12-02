@@ -104,4 +104,26 @@ see https://build.opensuse.org/project/show/openSUSE:Factory:Staging:adi:73
 - Renumber patches</comment>
     <requestid>1270149</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>41833aa63c40f21a658632dd50db2e95</srcmd5>
+    <version>3.2.2</version>
+    <time>1764677941</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1320479 from glaubitz
+
+- Update to 3.2.2
+    * Fixed regression occurring with TimeoutError exceptions. They
+      should be represented now exactly as the original when unpickling.
+  - from version 3.2.1
+    * Fixed regression occurring with ExceptionGroup exceptions. That
+      exception type is now handled specifically in the new
+      unpickle_exception_with_attrs function (just like OSError).
+  - from version 3.2.0
+    * Changed tblib.pickling_support.install to support exceptions with
+      __init__ that does match the default BaseException.__reduce__ (as
+      it expects the positional arguments to __init__ to match the args
+      attribute).
+    * Fixed some doctest and coverage config.</comment>
+    <requestid>1320606</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Nov 28 13:18:54 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.2.2
+  * Fixed regression occurring with TimeoutError exceptions. They
+    should be represented now exactly as the original when unpickling.
+- from version 3.2.1
+  * Fixed regression occurring with ExceptionGroup exceptions. That
+    exception type is now handled specifically in the new
+    unpickle_exception_with_attrs function (just like OSError).
+- from version 3.2.0
+  * Changed tblib.pickling_support.install to support exceptions with
+    __init__ that does match the default BaseException.__reduce__ (as
+    it expects the positional arguments to __init__ to match the args
+    attribute).
+  * Fixed some doctest and coverage config.
+
+-------------------------------------------------------------------
 Thu Apr 17 02:37:45 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing BuildRequires on pytest-benchmark for running the test suite. 
