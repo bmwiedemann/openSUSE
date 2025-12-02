@@ -18,14 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-lark
-Version:        1.2.2
+Version:        1.3.1
 Release:        0
 Summary:        A parsing library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/lark-parser/lark
 Source:         https://github.com/lark-parser/lark/archive/%{version}.tar.gz#/lark-%{version}.tar.gz
-Patch1:         https://github.com/lark-parser/lark/commit/4809ce89ca005b71f6db930c4aabf6496a502795.patch#/py314-functools-partial.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 6}
 BuildRequires:  %{python_module regex}

@@ -132,4 +132,32 @@
     <comment>- add py314-functools-partial.patch</comment>
     <requestid>1306310</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c51d275b0f1dae70e5b1a577b107038a</srcmd5>
+    <version>1.3.1</version>
+    <time>1764677936</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1320348 from glaubitz
+
+- Update to 1.3.1
+    * Bugfix: Restore support for custom input, alongside text
+      and TextSlice by @erezsh in (#1562)
+    * Keep sdist in sync with git (include all files in source build,
+      including docs, tests and examples) by @chanicpanic in (#1561)
+  - from version 1.3.0
+    * Lark can now parse in sections of strings, using TextSlice, as a
+      faster alternative to creating a &quot;copy-slice&quot; with s[i:j].
+    * Added support to match on Tree instances
+    * When serializing a Lark instance, added the option to include the
+      grammar object (before compilation).
+    * Added convenience method Tree.find_token()
+    * Bugfix of an edge case in Earley related to representation of ambiguity.
+    * Bugfixes in the standalone parser related to imports
+    * Bugfix in indenter - now dedents always contain line information
+    * Various small bugfixes (see PR list below)
+  - from version 1.2.2
+    * Bugfix: Earley now respects ambiguity='resolve' again. (#1444)
+  - Drop py314-functools-partial.patch, merged upstream</comment>
+    <requestid>1320595</requestid>
+  </revision>
 </revisionlist>
