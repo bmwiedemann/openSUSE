@@ -1,7 +1,7 @@
 #
 # spec file for package python-linstor
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-linstor
 Version:        1.12.0
 Release:        0
@@ -25,11 +24,12 @@ License:        GPL-3.0-only
 Group:          Productivity/Clustering/HA
 URL:            https://github.com/LINBIT/linstor-api-py
 Source:         https://pkg.linbit.com//downloads/linstor/%{name}-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-BuildRequires:  protobuf-devel
-Requires:       python-protobuf
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -40,15 +40,19 @@ A Python API for Linstor.
 
 %build
 make %{?_smp_mflags} gensrc
-%python_build
+%pyproject_wheel
 
 %install
-#python setup.py install --single-version-externally-managed -O1 --root=%{buildroot} --record=INSTALLED_FILES
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-#files -f INSTALLED_FILES
+%check
+%pytest linstor_tests
+
 %files %{python_files}
-%{python_sitelib}
+%doc README.md
+%license COPYING
+%{python_sitelib}/linstor
+%{python_sitelib}/python_linstor-%{version}.dist-info
 
 %changelog

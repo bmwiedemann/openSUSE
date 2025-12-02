@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 18 05:37:04 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Convert to noarch, this package builds no binaries.
+- Use pyproject macros to build and install.
+- Drop use of protobuf, it isn't required.
+- Explicitly list files and directories to install under sitelib, as well
+  as shipping the README and the license.
+
+-------------------------------------------------------------------
 Wed Jan 12 05:46:52 UTC 2022 - nick wang <nwang@suse.com>
 
 - bsc#1194567, update to 1.12.0
