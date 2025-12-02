@@ -2162,4 +2162,19 @@ Fixed:
     gh#qutebrowser/qutebrowser#8785</comment>
     <requestid>1320538</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>c4a5ca940ba7c5b64da86a77a89255b0</srcmd5>
+    <version>3.6.3</version>
+    <time>1764678013</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.6.3:
+Fixed:
+  * New `qt.workarounds.disable_accessibility` setting, which
+    disables Chromium accessibility support. By default, is it set
+    to `auto`, which only disables accessibility on Qt versions
+    with known issues. This works around a bug in Qt 6.10.1 causing
+    frequent segfaults.
+    gh#qutebrowser/qutebrowser#8797</comment>
+    <requestid>1320775</requestid>
+  </revision>
 </revisionlist>

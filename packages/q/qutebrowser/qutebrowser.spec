@@ -17,7 +17,7 @@
 
 
 Name:           qutebrowser
-Version:        3.6.2
+Version:        3.6.3
 Release:        0
 Summary:        Keyboard-driven vim-like browser based on Qt6
 License:        GPL-3.0-or-later
