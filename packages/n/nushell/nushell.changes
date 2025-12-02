@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Dec  1 06:32:16 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.109.0:
+  * Additions:
+    - Add explore regex command.
+    - Add name and description to the plugin list command.
+    - Other additions.
+  * Bug fixes:
+    - Better errors for dynamic http commands.
+    - Allow streaming to commands with union-typed pipeline input.
+    - Fix(split column): switch to 0-index like other commands.
+    - Don't error on optional cellpaths.
+    - Other fixes.
+  * Notes for plugin developers.
+  * Hall of fame.
+  * Other changes.
+  * For a full list of changes with detailed descriptions, see:
+  - https://www.nushell.sh/blog/2025-11-29-nushell_v0_109_0.html 
+
+-------------------------------------------------------------------
 Thu Oct 16 05:00:58 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.108.0:
