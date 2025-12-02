@@ -238,4 +238,14 @@
   * Don't use ast.Str to parse the version if it isn't available.</comment>
     <requestid>1315393</requestid>
   </revision>
+  <revision rev="29" vrev="8">
+    <srcmd5>3a45464ed4c007afc6fe71d59d1983fc</srcmd5>
+    <version>1.1</version>
+    <time>1764677901</time>
+    <user>anag_factory</user>
+    <comment>- Add patch pytest9.patch:
+  * Balanced on top of the other 2 pytest patches, support pytest 9 changes.
+- Use autosetup macro.</comment>
+    <requestid>1320257</requestid>
+  </revision>
 </revisionlist>

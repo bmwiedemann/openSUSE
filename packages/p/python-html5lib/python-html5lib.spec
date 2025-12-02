@@ -32,11 +32,13 @@ Patch1:         python-html5lib-no-mock.patch
 Patch2:         pytest74.patch
 # PATCH-FIX-UPSTREAM gh#html5lib/html5lib-python#589
 Patch3:         support-python314.patch
+# PATCH-FIX-UPSTREAM Based on gh#html5lib/html5lib-python#590
+Patch4:         pytest9.patch
 BuildRequires:  %{python_module Genshi}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest >= 4.0}
+BuildRequires:  %{python_module pytest >= 7}
 BuildRequires:  %{python_module pytest-expect}
 BuildRequires:  %{python_module setuptools >= 18.5}
 BuildRequires:  %{python_module six >= 1.9}
@@ -62,8 +64,7 @@ DOM, ElementTree, lxml and BeautifulSoup tree formats as well as a
 simple custom format
 
 %prep
-%setup -q -n html5lib-%{version}
-%autopatch -p1
+%autosetup -p1 -n html5lib-%{version}
 
 %build
 %pyproject_wheel
@@ -79,6 +80,6 @@ simple custom format
 %license LICENSE
 %doc CHANGES.rst README.rst
 %{python_sitelib}/html5lib/
-%{python_sitelib}/html5lib-%{version}*-info
+%{python_sitelib}/html5lib-%{version}.dist-info
 
 %changelog

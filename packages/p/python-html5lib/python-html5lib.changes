@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 26 23:48:39 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch pytest9.patch:
+  * Balanced on top of the other 2 pytest patches, support pytest 9 changes.
+- Use autosetup macro.
+
+-------------------------------------------------------------------
 Tue Nov  4 00:18:04 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-python314.patch:
