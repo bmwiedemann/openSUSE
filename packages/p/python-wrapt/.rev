@@ -301,4 +301,41 @@
       both x86_64 and arm64 architectures in the same wheel.</comment>
     <requestid>1311811</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>828bb64180e16edefe624a1743c06963</srcmd5>
+    <version>2.0.1</version>
+    <time>1764677894</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.0.1:
+  ## New Features
+  * Added __all__ attribute to wrapt module to expose the public API.
+  * The wrapt.PartialCallableObjectProxy class can now be accessed via the
+    alias wrapt.partial, which is a convenience for users who are used to
+    using functools.partial and want to use the wrapt version of it.
+  * Type hints have been added to the wrapt module.
+  * Added wrapt.BaseObjectProxy class which is the base class for all object
+    proxy classes.
+  * Added wrapt.AutoObjectProxy class which is a pure Python subclass of
+    BaseObjectProxy which overrides the __new__() method to dynamically
+    generate a custom subclass which includes methods for callable,
+    descriptor and iterator protocols, as well as other select special
+    methods.
+  * Added wrapt.LazyObjectProxy class which is a variant of AutoObjectProxy
+    which takes a callable which returns the object to be wrapped. The
+    callable is only invoked the first time an attribute of the wrapped
+    object is accessed.
+  * Added wrapt.lazy_import() function which takes a module name and returns
+    a LazyObjectProxy which will import the module when it is first needed.
+  ## Features Changed
+  * Code related to Python 2.X and workarounds for older Python 3.X versions
+    has been removed.
+  * Dependency at runtime on setuptools for calculating package entry points
+    has been removed. Instead the importlib.metadata module is now used for
+    this purpose.
+  * For reasons to do with backward/forward compatibility the wrapt module
+    included references to getcallargs() and formatargspec() functions which
+    were part of the inspect module at one time or another. These were
+    provided as convenience for users of the wrapt module, but were not</comment>
+    <requestid>1320086</requestid>
+  </revision>
 </revisionlist>

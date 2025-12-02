@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Wed Nov 26 01:59:50 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.0.1:
+  ## New Features
+  * Added __all__ attribute to wrapt module to expose the public API.
+  * The wrapt.PartialCallableObjectProxy class can now be accessed via the
+    alias wrapt.partial, which is a convenience for users who are used to
+    using functools.partial and want to use the wrapt version of it.
+  * Type hints have been added to the wrapt module.
+  * Added wrapt.BaseObjectProxy class which is the base class for all object
+    proxy classes.
+  * Added wrapt.AutoObjectProxy class which is a pure Python subclass of
+    BaseObjectProxy which overrides the __new__() method to dynamically
+    generate a custom subclass which includes methods for callable,
+    descriptor and iterator protocols, as well as other select special
+    methods.
+  * Added wrapt.LazyObjectProxy class which is a variant of AutoObjectProxy
+    which takes a callable which returns the object to be wrapped. The
+    callable is only invoked the first time an attribute of the wrapped
+    object is accessed.
+  * Added wrapt.lazy_import() function which takes a module name and returns
+    a LazyObjectProxy which will import the module when it is first needed.
+  ## Features Changed
+  * Code related to Python 2.X and workarounds for older Python 3.X versions
+    has been removed.
+  * Dependency at runtime on setuptools for calculating package entry points
+    has been removed. Instead the importlib.metadata module is now used for
+    this purpose.
+  * For reasons to do with backward/forward compatibility the wrapt module
+    included references to getcallargs() and formatargspec() functions which
+    were part of the inspect module at one time or another. These were
+    provided as convenience for users of the wrapt module, but were not
+    actually part of the public API. They have now been removed from the
+    wrapt module and are no longer available.
+  * The enabled, adapter and proxy arguments to the @decorator decorator had
+    to be keyword parameters, and the initial wrapped argument had to be
+    positional only. Because though Python 2.X was still being supported it
+    was not possible to use appropriate syntax to mark them as such. These
+    arguments are now marked as positional and keyword only parameters in the
+    function signature as appropriate.
+  * The object proxy classes now raise a WrapperNotInitializedError exception
+    rather than Python builtin ValueError exception when an attempt is made
+    to access an attribute of the wrapped object before the wrapper has been
+    initialized.
+  ## Bugs Fixed
+  * The wrapt.lazy_import() function wasn't included in the __all__ attribute
+    of the wrapt module.
+  * When using wrapt.lazy_import() to lazily import a function of a module,
+    the resulting proxy object wasn't marked as callable until something
+    triggered the import of the module via the proxy. This meant a callable()
+    check on the proxy would return False until the module was actually
+    imported.
+  * Reference count was not being incremented on type object for C
+    implementation of the partial callable object proxy when module was
+    initialized. If wrapt was being used in Python sub interpreters which
+    were deleted it could lead to the process crashing.
+  * Wasn't chaining __mro_entries__() calls when the wrapped object was not a
+    type (class) and itself had a __mro_entries__() method. This meant that
+    if using the object proxy as a base class for a generic class, the
+    generic parameters were being ignored.
+  * When an object proxy wrapped an immutable type, such as an integer, and
+    the object proxy had been assigned to a second variable, the result of an
+    in-place operation on the second variable was also affecting the first
+    variable, when instead the lifetime of the two variables should have been
+    independent to reflect what occurs for normal immutable types.
+
+-------------------------------------------------------------------
 Thu Oct 16 14:09:34 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.17.3
