@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec  2 01:51:43 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to 4.8.1:
+  * core: fix buffer size in function util_parse_time, causing buffer 
+    overflow error in unit tests
+  * irc: fix creation of irc.msgbuffer option without a server name
+
+-------------------------------------------------------------------
 Mon Dec  1 06:17:56 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to 4.8.0:
