@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Nov 24 15:11:37 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.22 → 3.1.23
+
+-------------------------------------------------------------------
+Mon Nov 24 13:00:47 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Improve error handling
+
+  Check for the presence of the main flake registration.
+  Even though this should never happen because the file
+  is the result of a successful flake-ctl registration we
+  cannot prevent users from working with it outside
+  flake-ctl. In addition explicitly match on potential
+  parse errors from aml_rust::YamlLoader instead of looking
+  at the error message as result from an Err unwrap.
+
+-------------------------------------------------------------------
+Thu Nov 20 11:01:26 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Better error handling for config_from_str()
+
+  If the provided source data is empty this is not an error
+  for YamlLoader and the empty data is just passed along as
+  a None value. The unconditional unwrap of a None value
+  however, let the application to panic into a stacktrace.
+  This commit catches the condition and provides a better
+  error message.
+
+-------------------------------------------------------------------
+Thu Nov 20 10:40:07 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Use derive statement for Writeback
+
+  replaced the manual implementation with a derive attribute
+  and marked the default variant instead of adding a default()
+  implementation
+
+-------------------------------------------------------------------
+Mon Sep 29 15:24:14 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add information about potential firewall conflicts
+
+  Add a note about the NAT setup for firecracker guests to
+  connect with the host.
+
+-------------------------------------------------------------------
 Thu Sep 04 21:33:20 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 3.1.21 → 3.1.22
