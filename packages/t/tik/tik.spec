@@ -1,7 +1,7 @@
 #
 # spec file for package tik
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tik
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Transactional Installation Kit
 License:        MIT

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 01 15:27:01 UTC 2025 - Richard Brown <rbrown@suse.com>
+
+- Update to version 1.4.1:
+  * Make keyctl revoke non fatal (#61)
+
+-------------------------------------------------------------------
 Fri Sep 12 10:30:39 UTC 2025 - Richard Brown <rbrown@suse.com>
 
 - Require tik, not tik-experimental for module-sicu 

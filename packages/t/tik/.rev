@@ -334,4 +334,13 @@
   * [15-encrypt] Also mount /run in chroot for udev</comment>
     <requestid>1304287</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>aa9c4ad146802cacf9bb786ed6d6ec26</srcmd5>
+    <version>1.4.1</version>
+    <time>1764677999</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.4.1:
+  * Make keyctl revoke non fatal (#61)</comment>
+    <requestid>1320764</requestid>
+  </revision>
 </revisionlist>
