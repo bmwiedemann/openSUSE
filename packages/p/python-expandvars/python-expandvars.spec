@@ -1,7 +1,7 @@
 #
 # spec file for package python-expandvars
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-expandvars
-Version:        0.12.0
+Version:        1.1.2
 Release:        0
 Summary:        Expand system variables Unix style
 License:        MIT
@@ -43,6 +43,8 @@ function.
 
 %prep
 %autosetup -p1 -n expandvars-%{version}
+# remove coverage which also breaks with pytest 9
+sed -i '/addopts = /d' pyproject.toml
 
 %build
 %pyproject_wheel

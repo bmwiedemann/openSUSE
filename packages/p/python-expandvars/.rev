@@ -15,4 +15,16 @@
     <comment></comment>
     <requestid>1135591</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a399ef914046cbd6ffa103f5f1f0c58f</srcmd5>
+    <version>1.1.2</version>
+    <time>1764677898</time>
+    <user>anag_factory</user>
+    <comment>- Remove coverage report which also breaks with Pytest 9
+- Update to 1.1.2
+  * add ability to disable escape and force ${var} usage
+  * Fix handling of empty variables
+</comment>
+    <requestid>1320179</requestid>
+  </revision>
 </revisionlist>
