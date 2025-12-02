@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Dec  1 11:11:05 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.39:
+  * The most noticeable change in this release is the new Model Context
+    Protocol (MCP) server. This feature lets you connect with AI
+    assistants such as Claude, Cursor, etc., and use natural human
+    language to automate kernel development tasks.
+    In this way, AI agents can automatically configure kernels, apply
+    patches from lore.kernel.org, and run commands within recompiled
+    kernels. You can even have the AI agent perform bug bisection for
+    you and run specific commands/scripts inside each recompiled
+    version to determine whether the kernel is good or bad.
+  * An additional feature is vCPU pinning (using the --pin CPU_LIST option),
+    which enables binding virtual CPUs to particular physical host CPUs.
+    This ensures more consistent performance testing within the vng guest
+    environment.
+  * The release also adds support for memoryless NUMA nodes,
+    enablingusers to specify size=0 with the --numa argument to create
+    NUMA nodes without memory. This capability can be useful for simulating
+    heterogeneous architectures, where devices like GPUs are represented
+    as memoryless NUMA nodes to model their CPU locality relationships.
+  * Last, but not least, there's a new --shell BINARY option which lets
+    users choose a different shell to use within the vng session, rather
+    than using their system's default shell and a new --empty-password
+    option that creates empty passwords in the vng guest, instead of
+    blocking login for other users, enabling easier debugging and SSH
+    access during testing.
+  * Updated Python versions in CI (dropped EOL 3.8 and 3.9)
+  * Various bug fixes in virtme-init
+  * Enhanced documentation and README updates
+  * Improved error handling and validation
+
+-------------------------------------------------------------------
 Mon Sep 29 05:51:22 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.38:
