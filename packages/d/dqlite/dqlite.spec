@@ -1,7 +1,7 @@
 #
 # spec file for package dqlite
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,13 +19,13 @@
 
 %define lname libdqlite0
 Name:           dqlite
-Version:        1.18.0
+Version:        1.18.3
 Release:        0
 Summary:        Distributed SQLite
 License:        LGPL-3.0-only WITH LGPL-3.0-linking-exception
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/canonical/dqlite
-Source:         https://github.com/canonical/dqlite/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/canonical/dqlite/archive/v%{version}-fixed.tar.gz#/%{name}-%{version}-fixed.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -63,7 +63,7 @@ This package contains the files necessary for developing and building
 applications using the library.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-%{version}-fixed
 
 %build
 autoreconf -fiv
