@@ -708,4 +708,26 @@
     <comment></comment>
     <requestid>1303575</requestid>
   </revision>
+  <revision rev="75" vrev="12">
+    <srcmd5>6b4448b9466f08749ef117f5b8ce89ed</srcmd5>
+    <version>2.1.28</version>
+    <time>1764677911</time>
+    <user>anag_factory</user>
+    <comment>- Python3 error log upon importing pycurl (bsc#1233529)
+  Remove senceless log message.
+  * add remove-senceless-log.patch 
+
+- Python3 error log upon importing pycurl (bsc#1233529)
+  Remove senceless log message.
+  * add remove-senceless-log.patch 
+
+- Python3 error log upon importing pycurl (bsc#1233529)
+  Remove senceless log message.
+  * add remove-senceless-log.patch 
+
+- Python3 error log upon importing pycurl (bsc#1233529)
+  Remove senceless log message.
+  * add remove-senceless-log.patch</comment>
+    <requestid>1320525</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,16 @@
+--- a/lib/dlopen.c-orig	2025-11-10 20:01:32.036410909 +0100
++++ b/lib/dlopen.c	2025-11-10 20:01:45.440527124 +0100
+@@ -530,13 +530,7 @@ int _sasl_load_plugins(const add_plugin_
+ 	    }
+ 
+ 	    closedir(dp);
+-	} else {
+-	    _sasl_log(NULL, SASL_LOG_DEBUG,
+-		      "looking for plugins in '%s', failed to open directory, error: %s",
+-		      str,
+-		      strerror(errno));
+ 	}
+-
+     } while ((c!='=') && (c!=0));
+ #endif /* defined(DO_DLOPEN) && (!defined(PIC) || (defined(PIC) && defined(TRY_DLOPEN_WHEN_STATIC))) */
+ 

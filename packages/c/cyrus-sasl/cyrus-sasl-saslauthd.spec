@@ -39,6 +39,7 @@ Patch6:         cyrus-sasl-lfs.patch
 Patch7:         fix_libpq-fe_include.diff
 Patch8:         0001-Fix-time.h-check.patch
 Patch9:         0001-Use-HMAC-SHA256-for-cache-passwords-over-MD5.patch
+Patch10:        remove-senceless-log.patch
 PreReq:         %fillup_prereq
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gdbm-devel
@@ -83,6 +84,7 @@ The SQL auxprop plugin supports PostgreSQL and MySQL
 %patch -P 7 -p1
 %patch -P 8 -p1
 %patch -P 9 -p1
+%patch -P 10 -p1
 
 %build
 find . -name "*.cvsignore" -exec rm -fv "{}" "+"

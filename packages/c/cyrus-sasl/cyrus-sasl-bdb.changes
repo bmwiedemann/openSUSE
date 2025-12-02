@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 28 19:40:42 UTC 2025 - Peter Varkoly <varkoly@suse.com>
+
+- Python3 error log upon importing pycurl (bsc#1233529)
+  Remove senceless log message.
+  * add remove-senceless-log.patch 
+
+-------------------------------------------------------------------
 Mon Apr  7 14:52:06 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - add -std=gnu11 to CFLAGS to fix gcc15 compile time error, and to

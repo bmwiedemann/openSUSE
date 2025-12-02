@@ -35,6 +35,7 @@ Patch7:         fix_libpq-fe_include.diff
 Patch8:         0001-Fix-time.h-check.patch
 Patch9:         cyrus-sasl-make-digestmd5-work-ssl3.patch
 Patch10:        0001-Use-HMAC-SHA256-for-cache-passwords-over-MD5.patch
+Patch11:        remove-senceless-log.patch
 
 BuildRequires:  gdbm-devel
 BuildRequires:  krb5-mini-devel
@@ -180,6 +181,7 @@ fi
 %patch -P 8 -p1
 %patch -P 9 -p1
 %patch -P 10 -p1
+%patch -P 11 -p1
 
 %build
 find . -name "*.cvsignore" -exec rm -fv "{}" "+"

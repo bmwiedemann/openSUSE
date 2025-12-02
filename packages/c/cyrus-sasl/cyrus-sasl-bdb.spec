@@ -33,6 +33,7 @@ Patch5:         cyrus-sasl-no_rpath.patch
 Patch6:         cyrus-sasl-lfs.patch
 Patch7:         fix_libpq-fe_include.diff
 Patch8:         0001-Fix-time.h-check.patch
+Patch9:         remove-senceless-log.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       libsasl2-3
 BuildRequires:  db-devel
@@ -167,6 +168,7 @@ fi
 %patch -P 6 -p1
 %patch -P 7 -p1
 %patch -P 8 -p1
+%patch -P 9 -p1
 
 %build
 find . -name "*.cvsignore" -exec rm -fv "{}" "+"

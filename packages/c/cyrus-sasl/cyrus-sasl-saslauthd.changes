@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 28 19:40:42 UTC 2025 - Peter Varkoly <varkoly@suse.com>
+
+- Python3 error log upon importing pycurl (bsc#1233529)
+  Remove senceless log message.
+  * add remove-senceless-log.patch 
+
+-------------------------------------------------------------------
 Wed Sep 10 02:45:48 UTC 2025 - William Brown <william.brown@suse.com>
 
 - bsc#1247498 - replace insecure MD5 with ephemeral HMAC-SHA256
