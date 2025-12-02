@@ -99,9 +99,7 @@
 %{_mandir}/man5/veritytab.5.gz
 %{_mandir}/man7/hwdb.7.gz
 %{_mandir}/man7/smbios-type-11.7.gz
-%if %{with upstream}
 %{_mandir}/man7/systemd.image-filter.7.gz
-%endif
 %{_mandir}/man7/systemd.image-policy.7.gz
 %{_mandir}/man7/udev.7.gz
 %{_mandir}/man8/kernel-install.8.gz
@@ -143,12 +141,8 @@
 %{_mandir}/man8/systemd-pstore.8.gz
 %{_mandir}/man8/systemd-pstore.service.8.gz
 %{_mandir}/man8/systemd-quotacheck.8.gz
-%if %{with upstream}
 %{_mandir}/man8/systemd-quotacheck@.service.8.gz
 %{_mandir}/man8/systemd-quotacheck-root.service.8.gz
-%else
-%{_mandir}/man8/systemd-quotacheck.service.8.gz
-%endif
 %{_mandir}/man8/systemd-random-seed.8.gz
 %{_mandir}/man8/systemd-random-seed.service.8.gz
 %{_mandir}/man8/systemd-remount-fs.8.gz
@@ -168,9 +162,7 @@
 %{_mandir}/man8/systemd-udev-settle.service.8.gz
 %{_mandir}/man8/systemd-udevd-control.socket.8.gz
 %{_mandir}/man8/systemd-udevd-kernel.socket.8.gz
-%if %{with upstream}
 %{_mandir}/man8/systemd-udevd-varlink.socket.8.gz
-%endif
 %{_mandir}/man8/systemd-udevd.8.gz
 %{_mandir}/man8/systemd-udevd.service.8.gz
 %{_mandir}/man8/systemd-vconsole-setup.8.gz
@@ -318,12 +310,13 @@
 %{_udevrulesdir}/60-drm.rules
 %{_udevrulesdir}/60-evdev.rules
 %{_udevrulesdir}/60-fido-id.rules
+%if %{with upstream}
+%{_udevrulesdir}/60-gpiochip.rules
+%endif
 %{_udevrulesdir}/60-infiniband.rules
 %{_udevrulesdir}/60-input-id.rules
 %{_udevrulesdir}/60-persistent-alsa.rules
-%if %{with upstream}
 %{_udevrulesdir}/60-persistent-hidraw.rules
-%endif
 %{_udevrulesdir}/60-persistent-input.rules
 %{_udevrulesdir}/60-persistent-storage-mtd.rules
 %{_udevrulesdir}/60-persistent-storage-tape.rules
@@ -347,13 +340,9 @@
 %{_udevrulesdir}/80-drivers.rules
 %endif
 %{_udevrulesdir}/80-net-setup-link.rules
-%if %{with upstream}
 %{_udevrulesdir}/81-net-bridge.rules
-%endif
 %{_udevrulesdir}/81-net-dhcp.rules
-%if %{with upstream}
 %{_udevrulesdir}/90-image-dissect.rules
-%endif
 %{_udevrulesdir}/90-iocost.rules
 %{_udevrulesdir}/90-vconsole.rules
 %if %{without bootstrap}
@@ -364,9 +353,7 @@
 %{_unitdir}/hybrid-sleep.target
 %if %{without bootstrap}
 %{_unitdir}/initrd-root-device.target.wants/remote-cryptsetup.target
-%if %{with upstream}
 %{_unitdir}/initrd-root-device.target.wants/remote-integritysetup.target
-%endif
 %{_unitdir}/initrd-root-device.target.wants/remote-veritysetup.target
 %endif
 %{_unitdir}/initrd-udevadm-cleanup-db.service
@@ -380,9 +367,7 @@
 %{_unitdir}/quotaon@.service
 %if %{without bootstrap}
 %{_unitdir}/remote-cryptsetup.target
-%if %{with upstream}
 %{_unitdir}/remote-integritysetup.target
-%endif
 %{_unitdir}/remote-veritysetup.target
 %endif
 %{_unitdir}/sleep.target
@@ -390,11 +375,14 @@
 %{_unitdir}/sockets.target.wants/systemd-bootctl.socket
 %{_unitdir}/sockets.target.wants/systemd-pcrlock.socket
 %endif
+%if %{without bootstrap}
+%if %{with upstream}
+%{_unitdir}/sockets.target.wants/systemd-repart.socket
+%endif
+%endif
 %{_unitdir}/sockets.target.wants/systemd-udevd-control.socket
 %{_unitdir}/sockets.target.wants/systemd-udevd-kernel.socket
-%if %{with upstream}
 %{_unitdir}/sockets.target.wants/systemd-udevd-varlink.socket
-%endif
 %{_unitdir}/suspend-then-hibernate.target
 %{_unitdir}/suspend.target
 %if %{without bootstrap}
@@ -451,6 +439,10 @@
 %{_unitdir}/systemd-remount-fs.service
 %if %{without bootstrap}
 %{_unitdir}/systemd-repart.service
+%if %{with upstream}
+%{_unitdir}/systemd-repart.socket
+%{_unitdir}/systemd-repart@.service
+%endif
 %endif
 %{_unitdir}/systemd-rfkill.service
 %{_unitdir}/systemd-rfkill.socket
@@ -465,9 +457,7 @@
 %{_unitdir}/systemd-udevd-control.socket
 %{_unitdir}/systemd-udevd-kernel.socket
 %{_unitdir}/systemd-udevd.service
-%if %{with upstream}
 %{_unitdir}/systemd-udevd-varlink.socket
-%endif
 %{_unitdir}/systemd-vconsole-setup.service
 %{_unitdir}/systemd-volatile-root.service
 %{_unitdir}/tpm2.target

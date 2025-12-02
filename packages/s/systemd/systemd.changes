@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Fri Nov 28 13:32:39 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- Add 5003-core-when-isolating-keep-triggered-units-only-if-the.patch until
+  https://github.com/systemd/systemd/pull/39925 is merged.
+
+-------------------------------------------------------------------
+Thu Nov 20 14:51:47 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- Import commit e103ce013ed270c0a43318743ab822cac9325f00
+
+  e103ce013e pam_systemd: fix OSC write failure message appearing in error logs
+  c81c546411 pam-util: fix pam_syslog_errno() ignoring the level parameter
+
+-------------------------------------------------------------------
+Wed Nov 12 09:54:11 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- Drop 1001-Temporarily-remove-mountfsd-nsresourced-new-Polkit-a.patch
+
+  The relevant polkit actions have been reviewed by the security team.
+
+-------------------------------------------------------------------
+Wed Nov 12 08:42:40 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- Import commit 71c9223a1df429ae23bf113dc9eeb49154d8b734 (merge of v258.2)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/1898fac58dd5170dbe85f4c3d01e564889dba0de...71c9223a1df429ae23bf113dc9eeb49154d8b734
+
+- Drop 1002-core-unit-fail-earlier-before-spawning-executor-when.patch as it's
+  part of v258.2.
+
+-------------------------------------------------------------------
+Wed Nov 12 08:33:14 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- Import commit 1898fac58dd5170dbe85f4c3d01e564889dba0de
+
+  1898fac58d main: switch explicitly to tty1 on soft-reboot (bsc#1231986)
+  5fdd32dbe1 units: don't force the loading of the loop and dm_mod modules in systemd-repart.service (bsc#1248356)
+
+-------------------------------------------------------------------
+Wed Nov  5 15:25:52 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- Temporarily add
+  1002-core-unit-fail-earlier-before-spawning-executor-when.patch until v258.2
+  is released.
+
+-------------------------------------------------------------------
+Wed Oct 29 14:10:06 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- pam.systemd-user: skip common-account to avoid issues with pam_sss
+  and other network user directories (bsc#1250691)
+
+-------------------------------------------------------------------
+Wed Oct 22 10:33:00 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- systemd.spec: drop the %{release} number from the SBAT version (1251948)
+
+-------------------------------------------------------------------
+Wed Oct 22 06:26:53 UTC 2025 - Thomas Blume <Thomas.Blume@suse.com>
+
+- Add 0001-Drop-or-soften-some-upstream-warnings.patch (bsc#1228728) (bsc#1251981)
+
+  For now it just drops the 'unmerged-bin' taint flag.
+
+-------------------------------------------------------------------
+Mon Oct 20 07:54:34 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- Upgrade to v258.1 (commit 67a1069b7269cc23c3d04a2fb0cf110abe7abf31)
+
+  See https://github.com/openSUSE/systemd/blob/SUSE/v258/NEWS for details.
+
+- Drop 0001-Drop-support-for-efivar-SystemdOptions.patch, upstream removed
+  support for SystemdOptions efi var, see 14871a652925d08926c2d2d7cf2a95cd.
+
+- Drop 0009-pid1-handle-console-specificities-weirdness-for-s390.patch,
+  upstream gained a new auto-detection logic to setup $TERM on various systems
+  including s390x (bsc#1238117)
+
+- Support for System V style system state control has been removed: drop
+  initctl, runlevel, runlevel*.target, etc.. from the sysvcompat sub-package
+
+- Add 1001-Temporarily-remove-mountfsd-nsresourced-new-Polkit-a.patch. This
+  temporary patch disables the new polkit actions introduced by mountfsd and
+  nsresourced until these actions are validated by the Security team.
+
+- Our testsuite sub-package is functional again and has been updated to work
+  with the meson + mkosi infra.
+
+-------------------------------------------------------------------
 Tue Sep 16 10:32:38 UTC 2025 - Franck Bui <fbui@suse.com>
 
 - Move systemd-pcrlock out from the experimental sub-package to udev (bsc#1248261)

@@ -1,0 +1,61 @@
+From 358ea09a537b1953dce898d85c31bde294831fa0 Mon Sep 17 00:00:00 2001
+From: Thomas Blume <Thomas.Blume@suse.com>
+Date: Wed, 22 Oct 2025 08:04:12 +0200
+Subject: [PATCH] Drop or soften some upstream warnings
+
+- drop unmerged-bin taint flag (bsc#1228728) (bsc#1251981)
+---
+ catalog/systemd.catalog.in       | 1 -
+ man/org.freedesktop.systemd1.xml | 9 ---------
+ src/core/taint.c                 | 3 ---
+ 3 files changed, 13 deletions(-)
+
+diff --git a/catalog/systemd.catalog.in b/catalog/systemd.catalog.in
+index f7ef980962..30f70a66de 100644
+--- a/catalog/systemd.catalog.in
++++ b/catalog/systemd.catalog.in
+@@ -582,7 +582,6 @@ Support: %SUPPORT_URL%
+ The following "tags" are possible:
+ - "unmerged-usr" - /bin, /sbin, /lib* are not symlinks to their counterparts
+   under /usr/
+-- "unmerged-bin" - /usr/sbin is not a symlink to /usr/bin/
+ - "var-run-bad" — /var/run is not a symlink to /run/
+ - "cgroupsv1" - the system is using the deprecated cgroup v1 hierarchy
+ - "local-hwclock" - the local hardware clock (RTC) is configured to be in
+diff --git a/man/org.freedesktop.systemd1.xml b/man/org.freedesktop.systemd1.xml
+index ed22712748..aec2486759 100644
+--- a/man/org.freedesktop.systemd1.xml
++++ b/man/org.freedesktop.systemd1.xml
+@@ -1695,15 +1695,6 @@ node /org/freedesktop/systemd1 {
+           <xi:include href="version-info.xml" xpointer="v252"/></listitem>
+         </varlistentry>
+ 
+-        <varlistentry>
+-          <term><literal>unmerged-bin</literal></term>
+-
+-          <listitem><para><filename>/usr/sbin</filename> is not a symlink to <filename>/usr/bin/</filename>.
+-          </para>
+-
+-          <xi:include href="version-info.xml" xpointer="v256"/></listitem>
+-        </varlistentry>
+-
+         <varlistentry>
+           <term><literal>var-run-bad</literal></term>
+ 
+diff --git a/src/core/taint.c b/src/core/taint.c
+index 8872a224b2..02d33fdd15 100644
+--- a/src/core/taint.c
++++ b/src/core/taint.c
+@@ -47,9 +47,6 @@ char** taint_strv(void) {
+ 
+         /* Note that the check is different from default_PATH(), as we want to taint on uncanonical symlinks
+          * too. */
+-        if (readlink_malloc("/usr/sbin", &usr_sbin) < 0 || !PATH_IN_SET(usr_sbin, "bin", "/usr/bin"))
+-                stage[n++] = "unmerged-bin";
+-
+         if (readlink_malloc("/var/run", &var_run) < 0 || !PATH_IN_SET(var_run, "../run", "/run"))
+                 stage[n++] = "var-run-bad";
+ 
+-- 
+2.51.0
+
