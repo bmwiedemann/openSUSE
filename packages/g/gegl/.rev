@@ -788,4 +788,14 @@
 - Enable luajit on riscv64</comment>
     <requestid>1314332</requestid>
   </revision>
+  <revision rev="89" vrev="3">
+    <srcmd5>94c7796c1611554c31bda443b2b1d7a7</srcmd5>
+    <version>0.4.64</version>
+    <time>1764677930</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1320344 from qzhao
+
+Update the changelog to record security CVE fixed in previous update. (CVE-2025-10921, ZDI-CAN-27803, bsc#1250496)</comment>
+    <requestid>1320572</requestid>
+  </revision>
 </revisionlist>

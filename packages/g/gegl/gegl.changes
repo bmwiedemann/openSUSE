@@ -8,7 +8,9 @@ Mon Oct  6 13:39:59 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.4.64:
   * added OpenCL to the base GeglOperationPointComposer3 class
-  * fixed the ZDI-CAN-27803 vulnerability for RGBE image imports
+  * Fixed the vulnerability for HDR File Parsing Heap-based Buffer
+    Overflow Remote Code Execution.
+    (CVE-2025-10921, ZDI-CAN-27803, bsc#1250496)
   * build process improvements and clean-up
 - Drop upstreamed eda8ba51.patch
 
