@@ -1,7 +1,7 @@
 #
 # spec file for package gojq
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gojq
-Version:        0.12.17
+Version:        0.12.18
 Release:        0
 Summary:        Pure Go implementation of jq
 License:        MIT

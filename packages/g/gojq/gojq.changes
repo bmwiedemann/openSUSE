@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Dec  2 01:52:01 UTC 2025 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v0.12.18
+  * Implement `trimstr/1`, `toboolean/0` function
+  * Fix `last/1` to be included in builtins/0
+  * Fix `--indent 0` to preserve newlines
+  * Fix string repetition to emit error when the result is too large
+  * Increase the array index limit to 536870912 (`2^29`)
+  * Stop numeric normalization for concurrent execution
+  * Support binding expressions with binary operators (`1 + 2 as $x | -$x`)
+  * Improve `gojq.NewIter` to be a generic function
+  * Improve logic for getting file contents on JSON parse error
+  * Improve JSON parsing to preserve the precision of floating-point numbers
+  * Improve YAML parsing performance and preserve the precision of large integers
+  * Improve performance and reduce memory allocation of long-running queries
+
+-------------------------------------------------------------------
 Sun Dec  1 17:17:33 UTC 2024 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to v0.12.17
@@ -10,7 +27,6 @@ Sun Dec  1 17:17:33 UTC 2024 - Arnav Singh <opensuse@arnavion.dev>
   * Fix `@uri` and `@urid` formats not to convert space between plus sign.
   * Fix resolving search paths of import statements in the query.
   * Improve time functions to accept fewer element arrays.
-
 
 -------------------------------------------------------------------
 Sat Jun  1 15:43:28 UTC 2024 - Arnav Singh <opensuse@arnavion.dev>
