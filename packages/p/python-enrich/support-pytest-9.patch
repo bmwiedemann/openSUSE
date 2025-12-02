@@ -1,0 +1,24 @@
+From 5169008811ad2837ab4240bee87e0de7e10036d7 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Thu, 27 Nov 2025 13:47:48 +1100
+Subject: [PATCH] chore: Support pytest 9
+
+Since pytest 9 now assumes TOML formatting for tool.pytest configuration
+sections, use the ini style for now.
+---
+ pyproject.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 530c296..f99ca04 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -62,7 +62,7 @@ warn_redundant_casts = true
+ warn_return_any = true
+ warn_unused_configs = true
+ 
+-[tool.pytest]
++[tool.pytest.ini_options]
+ addopts = "--doctest-modules --durations 10 --durations-min=3 --color=yes"
+ doctest_optionflags = ["ALLOW_UNICODE", "ELLIPSIS"]
+ norecursedirs = "dist doc build .tox .eggs"

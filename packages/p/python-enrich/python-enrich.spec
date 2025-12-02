@@ -28,6 +28,8 @@ Source0:        https://github.com/pycontribs/enrich/archive/refs/tags/v%{versio
 Patch0:         remove_setuptools_scm.patch
 # PATCH-FIX-UPSTREAM remove_rich_constraint.patch -- remove the constraint on rich < 12.5, the tests also succeed with rich 14.0 https://github.com/pycontribs/enrich/issues/40
 Patch1:         remove_rich_constraint.patch
+# PATCH-FIX-UPSTREAM gh#pycontribs/enrich#74
+Patch2:         support-pytest-9.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}

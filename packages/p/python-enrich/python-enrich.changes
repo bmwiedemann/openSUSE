@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 27 02:50:49 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-pytest-9.patch:
+  * Support pytest 9 pyproject changes.
+
+-------------------------------------------------------------------
 Wed Sep 17 15:17:44 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
 
 - Add remove_rich_constraint.patch

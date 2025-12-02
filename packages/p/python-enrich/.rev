@@ -60,4 +60,13 @@
 </comment>
     <requestid>1305503</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>2a785effe824e37c15f7049612ab9dc0</srcmd5>
+    <version>1.3.0</version>
+    <time>1764677905</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-pytest-9.patch:
+  * Support pytest 9 pyproject changes.</comment>
+    <requestid>1320260</requestid>
+  </revision>
 </revisionlist>
