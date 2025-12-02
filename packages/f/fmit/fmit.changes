@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec  2 05:50:42 UTC 2025 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 1.3.3:
+  * Move to Qt6 (6.4.2)
+  * Disable Qt Audio:
+    * because need solid refacto for Qt6
+    * might be re-enabled later on
+    * ALSA (acs_alsa) and PosrtAudio (acs_portaudio) options work just fine
+  * Added Tamil language (now 10 languages supported!)
+
+-------------------------------------------------------------------
 Sun Mar 28 17:08:21 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Remove the unneeded QtWebKit build dependency.

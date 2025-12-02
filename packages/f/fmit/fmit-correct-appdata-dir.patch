@@ -1,8 +1,8 @@
-Index: fmit-1.2.13/fmit.pro
+Index: fmit-1.3.3/fmit.pro
 ===================================================================
---- fmit-1.2.13.orig/fmit.pro
-+++ fmit-1.2.13/fmit.pro
-@@ -279,7 +279,7 @@ iconsym.path = $$PREFIX/share/icons/hico
+--- fmit-1.3.3.orig/fmit.pro
++++ fmit-1.3.3/fmit.pro
+@@ -283,7 +283,7 @@
  iconsym.files = ui/images/fmit-symbolic.svg
  iconpng.path = $$PREFIX/share/icons/hicolor/128x128/apps
  iconpng.files = ui/images/fmit.png

@@ -1,7 +1,7 @@
 #
 # spec file for package fmit
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fmit
-Version:        1.2.14
+Version:        1.3.3
 Release:        0
 Summary:        A free musical instrument tuner
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -26,25 +26,25 @@ URL:            https://gillesdegottex.github.io/fmit
 Source:         https://github.com/gillesdegottex/fmit/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM fmit-correct-appdata-dir.patch badshah400@gmail.com -- install appdata file to the correct dir (/usr/share/metainfo instead of /usr/share/appdata)
 Patch0:         fmit-correct-appdata-dir.patch
+BuildRequires:  appstream-glib
 BuildRequires:  cmake
-BuildRequires:  desktop-file-utils
-BuildRequires:  freeglut-devel
+BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  itstool
-BuildRequires:  libqt5-linguist
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Multimedia)
-BuildRequires:  pkgconfig(Qt5OpenGL)
-BuildRequires:  pkgconfig(Qt5Quick)
-BuildRequires:  pkgconfig(Qt5Svg)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Multimedia)
+BuildRequires:  cmake(Qt6OpenGL)
+BuildRequires:  cmake(Qt6OpenGLWidgets)
+BuildRequires:  cmake(Qt6Svg)
+BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(jack)
-BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(portaudio-2.0)
+Recommends:     %{name}-lang
 ExclusiveArch:  i586 x86_64
 
 %description
@@ -61,20 +61,24 @@ following features:-
 * Wave shape
 * Discrete Fourier Transform view
 
+%lang_package
+
 %prep
 %autosetup -p1
 
 %build
-%qmake5 PREFIX=%{_prefix} \
-        "CONFIG+=acs_qt acs_alsa acs_jack acs_portaudio" \
-        ./fmit.pro
-
-%make_jobs
-%make_jobs lrelease
+lrelease6 %{name}.pro
+%qmake6 PREFIX=%{_prefix} \
+        CONFIG+="acs_alsa acs_jack acs_portaudio"
+%qmake6_build
 
 %install
-%qmake5_install
-%suse_update_desktop_file %{name}
+%qmake6_install
+
+%find_lang %{name} --with-qt
+
+%check
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/%{name}.appdata.xml
 
 %files
 %license COPYING_GPL.txt COPYING_LGPL.txt
@@ -83,6 +87,10 @@ following features:-
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/%{name}/
+%exclude %{_datadir}/%{name}/translations
 %{_datadir}/metainfo/*.appdata.xml
+
+%files lang -f %{name}.lang
+%dir %{_datadir}/%{name}/translations
 
 %changelog
