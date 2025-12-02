@@ -34,7 +34,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-uv
-Version:        0.9.13
+Version:        0.9.14
 Release:        0
 Summary:        A Python package installer and resolver, written in Rust
 License:        Apache-2.0 OR MIT

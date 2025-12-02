@@ -1751,4 +1751,21 @@
   * Use the word &quot;internal&quot; in crate descriptions</comment>
     <requestid>1320341</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>1c2b529b15b42306866091cfcb917560</srcmd5>
+    <version>0.9.14</version>
+    <time>1764678038</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.9.14 
+ * Performance
+  * Bump astral-tl to v0.7.10 to enable SIMD for HTML parsing 
+ * Bug fixes
+  * Allow earlier post releases with exclusive ordering 
+  * Prefer updating existing .zshenv over creating a new one in tool update-shell 
+  * Respect -e flags in uv add 
+ * Enhancements
+  * Attach subcommand to User-Agent string 
+  * Prefer UV_WORKING_DIR over UV_WORKING_DIRECTORY for consistency</comment>
+    <requestid>1320813</requestid>
+  </revision>
 </revisionlist>
