@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 27 09:54:02 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream pytest9.patch to fix tests
+
+-------------------------------------------------------------------
 Mon Nov 10 09:08:33 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.43.0
