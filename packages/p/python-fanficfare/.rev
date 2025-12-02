@@ -1707,4 +1707,30 @@ Update to 4.43.0:
   - Fix tuple vs grouping vs list, closes #1254 (royalroad</comment>
     <requestid>1316586</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>09cffe9f072872de51a6fcccdfb93f74</srcmd5>
+    <version>4.52.0</version>
+    <time>1764678010</time>
+    <user>anag_factory</user>
+    <comment>- Update to the version 4.52.0:
+  * adapter_fanfictionsfr: Site SSL requires www now
+  * Remove Site: sinful-dreams.com/whispered/muse - broken for 6+ years
+    even though other two sites on same DN work
+  * Remove site: www.wuxiaworld.xyz - DN parked somewhere questionable
+    for +2 years
+  * Update translations.
+  * Add metadata entry marked_new_chapters for epub updated '(new)'
+    chapters count
+  * adapter_literotica: Get chapters from JSON fetch for #1283
+    (no current examples)
+  * Update QQ reader_posts_per_page default - Thanks, MacaroonRemarkable
+    #1282
+  * Implement Alternate Tagging and Date calculation for Literotica -
+    Thanks, albyofdoom #1280
+  * Add appendices config and improve URL matching for fiction.live
+    adapter - Thanks, MacaroonRemarkable #1279
+  * adapter_royalroadcom: New status Inactive
+  * Fix for add_chapter_numbers:toconly and unnew. Closes #1274</comment>
+    <requestid>1320774</requestid>
+  </revision>
 </revisionlist>
