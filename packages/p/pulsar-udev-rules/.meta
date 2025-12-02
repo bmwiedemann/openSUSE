@@ -1,0 +1,5 @@
+<package name="pulsar-udev-rules" project="openSUSE:Factory">
+  <title>Udev rules to access Pulsar devices from normal user accounts</title>
+  <description>Allow easy configuration and firmware updates via your webbrowser</description>
+  <url>https://bbb.pulsar.gg/</url>
+</package>

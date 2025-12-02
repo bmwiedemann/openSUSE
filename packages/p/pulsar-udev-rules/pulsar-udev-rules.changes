@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Mon Dec 01 21:16:01 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 0.0.2+git0.c123022:
+  * remove sample rules
+  * Only track the vendor ID for devices where it is actually different
+  * Add file header
+  * This was not meant as a code block
+
+-------------------------------------------------------------------
+Mon Dec 01 14:00:39 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 0.0.1+git0.b4b0ed6:
+  * switched to version from git
+
+-------------------------------------------------------------------
+Fri Nov 14 13:08:07 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial package 
+
