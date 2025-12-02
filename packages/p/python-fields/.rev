@@ -39,4 +39,12 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1280529</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>15875cf20b1a1c9ab351a98cdf48b646</srcmd5>
+    <version>5.0.0</version>
+    <time>1764677892</time>
+    <user>anag_factory</user>
+    <comment>- Drop conftest.py, only required for Python 2 and breaks with pytest 9+.</comment>
+    <requestid>1320084</requestid>
+  </revision>
 </revisionlist>

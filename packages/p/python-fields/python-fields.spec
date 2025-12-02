@@ -1,7 +1,7 @@
 #
 # spec file for package python-fields
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        5.0.0
 Release:        0
 Summary:        Container class boilerplate killer
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/ionelmc/python-fields
 Source:         https://files.pythonhosted.org/packages/source/f/fields/fields-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
@@ -52,6 +51,8 @@ sed -i -e '/--benchmark-disable/d' setup.cfg
 sed -i -e '/doctest/d' setup.cfg
 sed -i -e 's/\[pytest\]/\[tools:pytest\]/g' setup.cfg
 rm tests/test_perf.py
+# only required for python 2 support, breaks with pytest 9
+rm conftest.py
 
 %build
 %pyproject_wheel
@@ -67,6 +68,6 @@ rm tests/test_perf.py
 %license LICENSE
 %doc AUTHORS.rst CHANGELOG.rst README.rst
 %{python_sitelib}/fields
-%{python_sitelib}/fields-%{version}*-info
+%{python_sitelib}/fields-%{version}.dist-info
 
 %changelog

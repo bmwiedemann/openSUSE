@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 26 01:12:52 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Drop conftest.py, only required for Python 2 and breaks with pytest 9+.
+
+-------------------------------------------------------------------
 Tue May 27 11:45:44 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
