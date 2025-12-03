@@ -1197,4 +1197,12 @@ This update also contains a patch for usability improvement for 13.1. (forwarded
   * Fix PageUp/PageDown buttons with hidding candidate popup (forwarded request 1306535 from hillwood)</comment>
     <requestid>1306536</requestid>
   </revision>
+  <revision rev="134" vrev="5">
+    <srcmd5>bfffdb3260cf3a7193503bfe42e9f2ea</srcmd5>
+    <version>1.5.32</version>
+    <time>1764767526</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1320857</requestid>
+  </revision>
 </revisionlist>

@@ -80,6 +80,17 @@ Sun Jul  7 09:23:53 UTC 2024 - Fuminobu Takeyama <ftake@geeko.jp> - 1.5.30
   * Fix typing freeze with barcode reader
   * Fix preedit issue with X applications
   * setup/enginedialog: Improve the search for engines
+  * After libX11 is fixed about the XIM jumbled input issues, too quick
+    focus change can causes a freeze with barcode reader.
+    (bsc#1252250)
+  * Fix the synchronous "ProcessKeyEvent" D-Bus method in ibus-x11 too.
+    (bsc#1252250)
+  * The synchronous "ProcessKeyEvent" D-Bus method cannot receive
+    "CommitText" and "ForwardKeyEvent" D-Bus signals during calling
+    the method. To resolve the issue, now Add
+    ibus_input_context_set_post_process_key_event() and
+    ibus_input_context_post_process_key_event().
+    (bsc#1252250)
 - Refresh ibus-ui-gtk3-restart-via-systemd.patch
 - Drop patches merged by the upstream
   * ibus-complete-preedit-signals-for-postprocesskeyevent.patch
