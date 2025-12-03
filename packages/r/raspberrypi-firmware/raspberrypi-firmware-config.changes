@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec  1 06:36:00 UTC 2025 - Ivan Ivanov <ivan.ivanov@suse.com>
+
+- Enable dwc2 overlay on pi0, pi1 and pi2 models.
+  This is to properly enable USB hub to which in some cases the
+  Ethernet controller is connected. See boo#1251192.
+  Tested on:
+  * RPi Zero 2 W Rev 1.0
+  * RPi 2 Model B Rev 1.1 amd Rev 1.2
+
+-------------------------------------------------------------------
 Thu Nov 20 16:00:36 UTC 2025 - Ivan Ivanov <ivan.ivanov@suse.com>
 
 - Do not load "upstream" overlay anymore. Recent build fixes for

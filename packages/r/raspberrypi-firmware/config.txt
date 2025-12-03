@@ -50,6 +50,10 @@ dtoverlay=enable-bt
 # Add minimal SMBIOS info
 dtoverlay=smbios
 
+[pi0]
+# Needed for Ethernet to work. See boo#1253082
+dtoverlay=dwc2
+
 [pi1]
 
 # Max ARM freq (default 700 MHz)
@@ -60,6 +64,13 @@ core_freq=375
 
 # SDRAM freq (default 400)
 sdram_freq=400
+
+# Needed for Ethernet to work. See boo#1253082
+dtoverlay=dwc2
+
+[pi2]
+# Needed for Ethernet to work. See boo#1253082
+dtoverlay=dwc2
 
 [pi3]
 
