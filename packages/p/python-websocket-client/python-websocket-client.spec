@@ -1,7 +1,7 @@
 #
 # spec file for package python-websocket-client
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Name:           python-websocket-client
 Version:        1.9.0
 Release:        0
 Summary:        WebSocket client implementation
-License:        LGPL-2.1-only
+License:        Apache-2.0
 URL:            https://github.com/liris/websocket-client/releases
 Source0:        https://files.pythonhosted.org/packages/source/w/websocket_client/websocket_client-%{version}.tar.gz
 BuildRequires:  %{python_module Sphinx >= 6.0}
