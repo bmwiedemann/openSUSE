@@ -1,7 +1,7 @@
 #
 # spec file for package kajaani-kombat
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2019-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -34,7 +34,6 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(SDL_image)
 BuildRequires:  pkgconfig(SDL_mixer)
 BuildRequires:  pkgconfig(SDL_net)
