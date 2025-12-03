@@ -315,4 +315,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * cirrus: cs42l45: Add firmware for Cirrus Logic CS42L45 SDCA codec</comment>
     <requestid>1318813</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>be46db394db81c66120b9922285f5ed9</srcmd5>
+    <version>20251121</version>
+    <time>1764767512</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251121 (git commit ff6418d18552):
+  * ASoC: tas2781: Add more symbol links on SPI devices</comment>
+    <requestid>1320757</requestid>
+  </revision>
 </revisionlist>

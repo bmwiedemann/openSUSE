@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov 22 08:45:16 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251121 (git commit ff6418d18552):
+  * ASoC: tas2781: Add more symbol links on SPI devices
+
+-------------------------------------------------------------------
 Tue Nov 18 14:21:23 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20251118 (git commit 53dce114cc5d):
