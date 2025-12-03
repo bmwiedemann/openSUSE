@@ -1,0 +1,15 @@
+<services>
+  <service mode="manual" name="tar_scm">
+    <param name="url">https://github.com/thkukuk/error-codes.git</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="filename">error-codes</param>
+    <param name="revision">main</param>
+    <param name="versionformat">0.2+git%cd.%h</param>
+  </service>
+  <service mode="manual" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="manual" name="set_version"/>
+</services>
