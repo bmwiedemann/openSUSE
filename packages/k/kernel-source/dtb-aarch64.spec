@@ -16,8 +16,8 @@
 #
 
 
-%define srcversion 6.17
-%define patchversion 6.17.9
+%define srcversion 6.18
+%define patchversion 6.18.0
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -25,9 +25,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-aarch64
-Version:        6.17.9
+Version:        6.18.0
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g17f6a20
+Release:        <RELEASE>.g6ce3f15
 %else
 Release:        0
 %endif

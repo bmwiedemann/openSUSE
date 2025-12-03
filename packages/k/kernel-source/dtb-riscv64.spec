@@ -16,8 +16,8 @@
 #
 
 
-%define srcversion 6.17
-%define patchversion 6.17.9
+%define srcversion 6.18
+%define patchversion 6.18.0
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -25,9 +25,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-riscv64
-Version:        6.17.9
+Version:        6.18.0
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g17f6a20
+Release:        <RELEASE>.g6ce3f15
 %else
 Release:        0
 %endif
@@ -285,6 +285,33 @@ cd /boot
 %dir %{dtbdir}/sophgo
 %{dtbdir}/sophgo/*.dtb
 
+%package -n dtb-spacemit
+Summary:        SpacemiT based riscv64 systems
+Group:          System/Boot
+Provides:       multiversion(dtb)
+Requires(post): coreutils
+
+%description -n dtb-spacemit
+Device Tree files for SpacemiT based riscv64 systems.
+
+%post -n dtb-spacemit
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%ifarch %arm aarch64 riscv64
+%files -n dtb-spacemit -f dtb-spacemit.list
+%else
+%files -n dtb-spacemit
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/spacemit
+%{dtbdir}/spacemit/*.dtb
+
 %package -n dtb-starfive
 Summary:        StarFive based riscv64 systems
 Group:          System/Boot
@@ -357,7 +384,7 @@ export DTC_FLAGS="-R 4 -p 0x1000"
 DTC_FLAGS="$DTC_FLAGS -@"
 
 cd $source/arch/riscv/boot/dts
-for dts in allwinner/*.dts microchip/*.dts renesas/*.dts sifive/*.dts sophgo/*.dts starfive/*.dts thead/*.dts ; do
+for dts in allwinner/*.dts microchip/*.dts renesas/*.dts sifive/*.dts sophgo/*.dts spacemit/*.dts starfive/*.dts thead/*.dts ; do
     target=${dts%*.dts}
     mkdir -p $PPDIR/$(dirname $target)
     cpp -x assembler-with-cpp -undef -D__DTS__ -nostdinc -I. -I$SRCDIR/include/ -I$SRCDIR/scripts/dtc/include-prefixes/ -P $target.dts -o $PPDIR/$target.dts
@@ -366,7 +393,7 @@ done
 
 %install
 cd pp
-for dts in allwinner/*.dts microchip/*.dts renesas/*.dts sifive/*.dts sophgo/*.dts starfive/*.dts thead/*.dts ; do
+for dts in allwinner/*.dts microchip/*.dts renesas/*.dts sifive/*.dts sophgo/*.dts spacemit/*.dts starfive/*.dts thead/*.dts ; do
     target=${dts%*.dts}
     install -m 755 -d %{buildroot}%{dtbdir}/$(dirname $target)
     # install -m 644 COPYING %{buildroot}%{dtbdir}/$(dirname $target)

@@ -19,7 +19,7 @@
 
 #!BuildIgnore: post-build-checks
 
-%define patchversion 6.17.9
+%define patchversion 6.18.0
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -38,23 +38,23 @@
 %endif
 %endif
 %endif
-%global kernel_package kernel%kernel_flavor-srchash-17f6a20d7e47cb61cff6e4d7b171fd88a757883d
+%global kernel_package kernel%kernel_flavor-srchash-6ce3f150389ee2831c4c0047296d6b64fc9054da
 %endif
 %if 0%{?rhel_version}
 %global kernel_package kernel
 %endif
 
 Name:           kernel-obs-build
-Version:        6.17.9
+Version:        6.18.0
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g17f6a20
+Release:        <RELEASE>.g6ce3f15
 %else
 Release:        0
 %endif
 Summary:        package kernel and initrd for OBS VM builds
 License:        GPL-2.0-only
 Group:          SLES
-Provides:       kernel-obs-build-srchash-17f6a20d7e47cb61cff6e4d7b171fd88a757883d
+Provides:       kernel-obs-build-srchash-6ce3f150389ee2831c4c0047296d6b64fc9054da
 BuildRequires:  coreutils
 BuildRequires:  device-mapper
 BuildRequires:  dracut
@@ -125,7 +125,7 @@ export KERNEL_MODULES="
 	xfs nf_conntrack_ipv6 binfmt_misc virtio_pci virtio_mmio virtio_blk virtio_rng fat vfat
 	nls_cp437 nls_iso8859-1 ibmvscsi sd_mod e1000 ibmveth overlay 9p 9pnet_virtio qemu_fw_cfg
 	algif_hash aegis128 xts bridge br_netfilter nf_nat nf_tables xt_conntrack iptable_nat iptable_filter
-	iso9660"
+	iso9660 xt_addrtype"
 
 # manually load all modules to make sure they're available
 for i in $KERNEL_MODULES; do
