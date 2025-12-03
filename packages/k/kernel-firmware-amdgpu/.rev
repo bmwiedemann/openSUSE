@@ -476,4 +476,22 @@ After this PR, there will be a delete request for kernel-firmware.
   * amdgpu: update PSP 13.0.0 firmware</comment>
     <requestid>1318809</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>e940d912fbf098230982bb9eee73aaab</srcmd5>
+    <version>20251201</version>
+    <time>1764767516</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251201 (git commit 934bfe7e1e27):
+  * Reapply &quot;amdgpu: update SMU 14.0.3 firmware&quot;
+  * Revert &quot;amdgpu: update SMU 14.0.3 firmware&quot;
+  * Revert &quot;amdgpu: update GC 10.3.6 firmware&quot;
+  * Revert &quot;amdgpu: update GC 11.5.1 firmware&quot;
+
+- Update to version 20251125 (git commit 23568a4b9420):
+  * Revert &quot;amdgpu: update GC 11.0.1 firmware&quot;
+
+- Update to version 20251121 (git commit ff6418d18552):
+  * amdgpu: DMCUB updates for various ASICs</comment>
+    <requestid>1320772</requestid>
+  </revision>
 </revisionlist>

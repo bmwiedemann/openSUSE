@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Dec  1 16:32:18 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251201 (git commit 934bfe7e1e27):
+  * Reapply "amdgpu: update SMU 14.0.3 firmware"
+  * Revert "amdgpu: update SMU 14.0.3 firmware"
+  * Revert "amdgpu: update GC 10.3.6 firmware"
+  * Revert "amdgpu: update GC 11.5.1 firmware"
+
+-------------------------------------------------------------------
+Wed Nov 26 05:59:25 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251125 (git commit 23568a4b9420):
+  * Revert "amdgpu: update GC 11.0.1 firmware"
+
+-------------------------------------------------------------------
+Sat Nov 22 08:44:51 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251121 (git commit ff6418d18552):
+  * amdgpu: DMCUB updates for various ASICs
+
+-------------------------------------------------------------------
 Thu Nov 20 06:44:51 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20251119 (git commit fe13aa9b9830):
