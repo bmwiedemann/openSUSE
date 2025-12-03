@@ -3155,7 +3155,6 @@
     <package name="numactl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="numlockx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="nvidia-libXNVCtrl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="nvidia-open-driver-G06-signed-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="nvme-cli" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="nvme-cli-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="obex-data-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
