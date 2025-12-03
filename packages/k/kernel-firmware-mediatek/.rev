@@ -255,4 +255,14 @@ After this PR, there will be a delete request for kernel-firmware.
   * mt76: update firmware for MT7996</comment>
     <requestid>1318810</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>c079a223f20d54a43d3641381fba5060</srcmd5>
+    <version>20251129</version>
+    <time>1764767510</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251129 (git commit 01006f5dea2d):
+  * linux-firmware: update firmware for MT7925 WiFi device
+  * mediatek MT7925: update bluetooth firmware to 20251124093155</comment>
+    <requestid>1320755</requestid>
+  </revision>
 </revisionlist>
