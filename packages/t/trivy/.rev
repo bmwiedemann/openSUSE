@@ -1333,4 +1333,41 @@ dropped patch file
   * fix(misconf): wrap legacy ENV values in quotes to preserve spaces (#9497)</comment>
     <requestid>1316946</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>e23e12bf3191f5c1c4d640387147f22c</srcmd5>
+    <version>0.68.1</version>
+    <time>1764767626</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.68.1:
+  * release: v0.68.1 [main] (#9867)
+  * fix: update cosing settings for GoReleaser after bumping cosing to v3 (#9863)
+  * chore(deps): bump the testcontainers group with 2 updates (#9506)
+  * release: v0.68.0 [main] (#9549)
+  * feat(aws): Add support for dualstack ECR endpoints (#9862)
+  * fix(vex): use a separate `visited` set for each DFS path (#9760)
+  * docs: catch some missed docs -&gt; guide (#9850)
+  * refactor(misconf): parse azure_policy_enabled to addonprofile.azurepolicy.enabled (#9851)
+  * chore(cli): Remove Trivy Cloud (#9847)
+  * fix(misconf): ensure value used as ignore marker is non-null and known (#9835)
+  * fix(misconf): map healthcheck start period flag to --start-period instead of --startPeriod (#9837)
+  * chore(deps): bump the docker group with 3 updates (#9776)
+  * chore(deps): bump golang.org/x/crypto from 0.41.0 to 0.45.0 (#9827)
+  * chore(deps): bump the common group across 1 directory with 20 updates (#9840)
+  * feat(image): add Sigstore bundle SBOM support (#9516)
+  * chore(deps): bump the aws group with 7 updates (#9691)
+  * test(k8s): update k8s integrtion test (#9725)
+  * chore(deps): bump github.com/containerd/containerd from 1.7.28 to 1.7.29 (#9764)
+  * feat(sbom): add support for SPDX attestations (#9829)
+  * docs(misconf): Remove duplicate sections (#9819)
+  * feat(misconf): Update Azure network schema for new checks (#9791)
+  * feat(misconf): Update AppService schema (#9792)
+  * fix(misconf): ensure boolean metadata values are correctly interpreted (#9770)
+  * feat(misconf): support https_traffic_only_enabled in Az storage account (#9784)
+  * docs: restructure docs for new hosting (#9799)
+  * docs(server): fix info about scanning licenses on the client side. (#9805)
+  * ci: remove unused preinstalled software/images for build tests to free up disk space. (#9814)
+  * feat(report): add fingerprint generation for vulnerabilities (#9794)
+  * chore: trigger the trivy-www workflow (#9737)</comment>
+    <requestid>1320965</requestid>
+  </revision>
 </revisionlist>
