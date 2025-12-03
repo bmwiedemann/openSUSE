@@ -20,7 +20,7 @@
 %define library_pkg 1_0_0
 %define library_soversion 1
 Name:           aws-c-auth
-Version:        0.9.2
+Version:        0.9.3
 Release:        0
 Summary:        AWS C99 library implementation of AWS client-side authentication
 License:        Apache-2.0

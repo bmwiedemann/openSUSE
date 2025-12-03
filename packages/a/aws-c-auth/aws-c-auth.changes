@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec  2 11:13:56 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.3
+  * Swap to use aws_ecc_decode_signature_der_to_raw_padded for login
+    provider by @sbiscigl in (#279)
+
+-------------------------------------------------------------------
 Thu Nov 20 08:39:11 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.9.2
