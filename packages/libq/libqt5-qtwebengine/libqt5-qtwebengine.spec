@@ -69,6 +69,8 @@ Patch8:         0001-Use-default-constructor-in-place-of-self-delegation-.patch
 Patch9:         sandbox_recvmsg.patch
 # PATCH-FIX-UPSTREAM -- selected backported upstream changes to support gcc-15
 Patch10:        qtwebengine-5.15.18-gcc15-cstdint.patch
+# PATCH-FIX-UPSTREAM -- Fix build against ICU 78, borrowed from https://aur.archlinux.org/cgit/aur.git/tree/qt5-webengine-icu-78.patch?h=qt5-webengine
+Patch11:        libqt5-qtwebengine-icu78.patch
 ### Patch 50-99 are applied conditionally
 # PATCH-FIX-UPSTREAM -- allow building qtwebengine with ffmpeg 5
 Patch50:        qtwebengine-ffmpeg5.patch
@@ -121,7 +123,6 @@ BuildRequires:  %{pyver}-xml
 BuildRequires:  re2c
 BuildRequires:  sed
 BuildRequires:  snappy-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  usbutils
 BuildRequires:  util-linux
 %ifnarch %{arm}
@@ -311,6 +312,7 @@ Examples for the libqt5-qtpdf module.
 %patch -P8 -p1
 %patch -P9 -p1
 %patch -P10 -p1
+%patch -P11 -p1
 
 # FFmpeg 5
 %if %{with system_ffmpeg}

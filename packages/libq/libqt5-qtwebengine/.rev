@@ -1036,4 +1036,12 @@ of the last blockers as we're still waiting for an upstream fix. (forwarded requ
   allows OBS to still shortcut through the mini packages. (forwarded request 1302712 from dimstar)</comment>
     <requestid>1302714</requestid>
   </revision>
+  <revision rev="108" vrev="2">
+    <srcmd5>a6c0de2aeffce763d4bd4a4daaa645e2</srcmd5>
+    <version>5.15.19</version>
+    <time>1764767579</time>
+    <user>anag_factory</user>
+    <comment>- Add libqt5-qtwebengine-icu78.patch: Fix build against ICU 78. (forwarded request 1320822 from dimstar)</comment>
+    <requestid>1320889</requestid>
+  </revision>
 </revisionlist>

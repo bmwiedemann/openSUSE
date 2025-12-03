@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec  1 12:40:02 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add libqt5-qtwebengine-icu78.patch: Fix build against ICU 78.
+
+-------------------------------------------------------------------
+Sat Nov 22 21:20:24 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove unused BuildRequires: update-desktop-files.
+
+-------------------------------------------------------------------
 Thu Sep  4 09:03:35 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Change the way we pin to ffmpeg-7: set maximum versions for the
