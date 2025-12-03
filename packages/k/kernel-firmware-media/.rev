@@ -148,4 +148,14 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: vpu: rename firmware binaries</comment>
     <requestid>1312186</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2363f6ae14463499dc6d8a0c36edd3a9</srcmd5>
+    <version>20251123</version>
+    <time>1764767509</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251123 (git commit 9dba680579f4):
+  * qcom: venus-5.4: update firmware binary for v5.4
+  * qcom: venus-5.4: remove unused firmware file</comment>
+    <requestid>1320754</requestid>
+  </revision>
 </revisionlist>
