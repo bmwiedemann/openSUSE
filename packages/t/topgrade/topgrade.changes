@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec 02 15:20:18 UTC 2025 - gerald_chen@foxmail.com
+
+- Update to version 16.6.0:
+  * chore: release v16.6.0 (#1565)
+  * fix(deps): downgrade mac-notifaction-sys to fix build failure (#1571)
+  * fix: Add more alternate names for Intellij IDEA (#1570)
+  * feat(git): add option to fetch instead of pull repositories (#1371)
+  * chore(deps): update http, tower-http, tracing, zerocopy (#1567)
+  * chore(deps): update swatinem/rust-cache action to v2.8.2 (#1562)
+  * ci: switch release_to_pypi.yml to trusted publishing (#1566)
+  * docs: README.md fixes (#1564)
+
+-------------------------------------------------------------------
 Wed Nov 26 14:04:57 UTC 2025 - gerald_chen@foxmail.com
 
 - Update to version 16.5.0:
