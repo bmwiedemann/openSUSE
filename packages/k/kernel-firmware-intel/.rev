@@ -185,4 +185,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * intel: qat: Fix missing link</comment>
     <requestid>1313867</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5935b0058cafde9fcf998cb702a0ab23</srcmd5>
+    <version>20251129</version>
+    <time>1764767507</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251129 (git commit 01006f5dea2d):
+  * intel_vpu: Update NPU firmware</comment>
+    <requestid>1320752</requestid>
+  </revision>
 </revisionlist>
