@@ -2,7 +2,7 @@
 
 # Monotional
 
-### Version 2.9
+### Version 2.10
 
 https://github.com/regularhunter/monotional-font
 
@@ -20,8 +20,8 @@ zero), MonotionalSZ (slashed zero), and MonotionalAZ (ambiguous zero).
 This effort began while I was maintaining a 
 [downstream fork of Meslo](https://github.com/regularhunter/Meslo-Font/) 
 in order to fix some issues with it until I realized that it would be easier to 
-start over from scratch with DejaVu Sans Mono which is itself based on 
-Bitstream Vera Sans Mono.
+start over from scratch with DejaVu Sans Mono (which is itself based on 
+Bitstream Vera Sans Mono).
 
 ![Ipsum lorem](doc/monotional-ipsumlorem.png)
 
@@ -35,6 +35,10 @@ Bitstream Vera Sans Mono.
 
 See the [latest release](https://github.com/regularhunter/monotional-font/releases) 
 for more information.
+
+**v2.10**
+
+* Rescale ` % ` glyph to 104% of original size
 
 **v2.9**
 
@@ -163,6 +167,9 @@ registered trademarks of their respective owners.
 To Jim Lyles and Bitstream for the Bitstream Vera family of fonts.
 
 To André Berg for Meslo and inspiring some of the changes in Monotional.
+
+To [bentodvictor](https://github.com/bentodvictor) for the Nerd Font 
+patched versions of Monotional.
 
 To George Williams for the free font editing program 
 [FontForge](http://fontforge.org).
