@@ -299,4 +299,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: Add sdx35 Foxconn vendor firmware image file</comment>
     <requestid>1318811</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>09e34cf8c5b560f3f213b1173c862a84</srcmd5>
+    <version>20251125</version>
+    <time>1764767511</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251125 (git commit 23568a4b9420):
+  * qcom: Add ADSP firmware for qcs6490-thundercomm-rubikpi3</comment>
+    <requestid>1320756</requestid>
+  </revision>
 </revisionlist>
