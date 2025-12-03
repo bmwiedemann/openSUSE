@@ -1972,4 +1972,40 @@
   * Fix shellcheck errors on output redirection [SC2328]</comment>
     <requestid>1302689</requestid>
   </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>02a56e9c674ccd4758822226cc2cc56f</srcmd5>
+    <version>4.17.0+git5.e3a22113</version>
+    <time>1764767535</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.17.0+git5.e3a22113:
+  * podman-etcd: remove test code (#2103)
+  * ocft: fix failing tests in resource-agents v4.17.0
+  * OCPBUGS-60098: podman-etcd: prevent last active member from leaving the etcd member list
+  * build: update ChangeLog for 4.17.0
+  * nginx: restore SELinux context for pid-file during validate-all
+  * build: update ChangeLog for 4.17.0-rc1
+  * storage_mon.c: fix block-seek mask deriving it from the block-size
+  * storage_mon.c: refactor moving up getting blocksize
+  * storage_mon: refactor removing basically duplicate code
+  * podman-etcd: fix count of fnc holders in container_health_check
+  * nginx: fix ls-redirection, mute non-errors in validate-all, and set unique intervals for monitor actions
+  * powervs-move-ip: add optional iflabel argument, increase maximum number of retries for requests (#2092)
+  * nfsserver: set systemd_running before nfsserver_validate() to avoid error message
+  * oracle: improve monpassword description
+  * MailTo: add s-nail support for multiple recipients
+  * Update truly active resources count with safer empty calculation
+  * podman-etcd: add container crash detection with coordinated recovery
+  * db2: fix monitor_retries_sleep variable name
+  * Filesystem: speed up get pids (#2084)
+  *  podman-etcd: compute dynamic revision bump from maxRaftIndex (#2087)
+  * OCPEDGE-1502: feat: podman-etcd: add support for cert rotation (#2085)
+  * portblock: add Promoted monitor op, validate-all checks, and add &quot;method&quot; and &quot;status_check&quot; parameters
+  * db2: use reintegration flag to avoid race condition on cluster reintegration, and removed FAL, as it's no longer needed
+  * Redo counting of active_resources
+  * spec: make nfs-utils a weak dependency
+  * OCPBUGS-42808: podman-etcd: add automatic learner member promotion (#2078)
+  * portblock: fix incorrect promotable description
+  * nfsserver: add ability to set e.g. &quot;pipefs-directory=/run/nfs/rpc_pipefs&quot; in /etc/nfs.conf to avoid issues with non-clustered Kerberized mounts</comment>
+    <requestid>1320974</requestid>
+  </revision>
 </revisionlist>
