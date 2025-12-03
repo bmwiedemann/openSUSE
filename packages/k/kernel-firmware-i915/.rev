@@ -155,4 +155,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * i915: Update GUC to v70.53.0 for DG2, MTL</comment>
     <requestid>1316554</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>780646914107f66e5a54fdd47f2e0d7e</srcmd5>
+    <version>20251125</version>
+    <time>1764767506</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251125 (git commit 23568a4b9420):
+  * xe: Update GUC to v70.54.0 for BMG, PTL</comment>
+    <requestid>1320751</requestid>
+  </revision>
 </revisionlist>
