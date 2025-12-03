@@ -1,7 +1,7 @@
 #
 # spec file for package sigil
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define pythons python311
 %endif
 Name:           sigil
-Version:        2.6.2
+Version:        2.7.0
 Release:        0
 Summary:        WYSIWYG Ebook Editor
 License:        GPL-3.0-only
@@ -50,7 +50,7 @@ BuildRequires:  libxml2-devel
 BuildRequires:  libxslt-devel
 BuildRequires:  make
 BuildRequires:  pkgconfig
-# upstream use for qt6-base-devel 6.8.2
+# upstream use for qt6-base-devel 6.9.3
 BuildRequires:  qt6-base-devel >= 6.6.3
 BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  python-rpm-macros
