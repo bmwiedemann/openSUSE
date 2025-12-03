@@ -281,7 +281,6 @@ BuildRequires:  python311-setuptools
 BuildRequires:  python311-six
 %endif
 BuildRequires:  snappy-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  util-linux
 BuildRequires:  wdiff
 BuildRequires:  perl(Switch)

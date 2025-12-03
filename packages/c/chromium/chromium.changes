@@ -1,8 +1,20 @@
 -------------------------------------------------------------------
-Fri Nov 28 17:36:01 CET 2025 - ro@suse.de
+Tue Dec  2 18:49:57 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- Chromium 143.0.7499.40
-  (early stable released 2025-11-20) 
+- Chromium 143.0.7499.40 (boo#1254429):
+  * CVE-2025-13630: Type Confusion in V8
+  * CVE-2025-13631: Inappropriate implementation in Google Updater
+  * CVE-2025-13632: Inappropriate implementation in DevTools
+  * CVE-2025-13633: Use after free in Digital Credentials
+  * CVE-2025-13634: Inappropriate implementation in Downloads
+  * CVE-2025-13720: Bad cast in Loader
+  * CVE-2025-13721: Race in v8
+  * CVE-2025-13635: Inappropriate implementation in Downloads
+  * CVE-2025-13636: Inappropriate implementation in Split View
+  * CVE-2025-13637: Inappropriate implementation in Downloads
+  * CVE-2025-13638: Use after free in Media Stream
+  * CVE-2025-13639: Inappropriate implementation in WebRTC
+  * CVE-2025-13640: Inappropriate implementation in Passwords
 - added patches:
   chromium-143-libpng-unbundle.patch
   (workaround broken libpng unbundle)
@@ -22,6 +34,11 @@ Fri Nov 28 17:36:01 CET 2025 - ro@suse.de
 - bump buildrequires for rust-bindgen to 0.71 minimum as we need
   the unsafe_extern_blocks
 - updated ppc-fedora-0002-regenerate-xnn-buildgn.patch 
+
+-------------------------------------------------------------------
+Sun Nov 23 23:30:00 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove unused BuildRequires: update-desktop-files.
 
 -------------------------------------------------------------------
 Mon Nov 17 23:40:26 CET 2025 - ro@suse.de

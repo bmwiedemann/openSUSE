@@ -6012,4 +6012,29 @@ Thu Jun  12 09:05:12 UTC 2025 - Bernhard Wiedemann &lt;bwiedemann@suse.com&gt;
     <comment>Chromium 143.0.7499.40 (early stable released 2025-11-20)</comment>
     <requestid>1320710</requestid>
   </revision>
+  <revision rev="491" vrev="2">
+    <srcmd5>c7e9810d9b9d6048fe83970415876064</srcmd5>
+    <version>143.0.7499.40</version>
+    <time>1764767586</time>
+    <user>anag_factory</user>
+    <comment>- Chromium 143.0.7499.40 (boo#1254429):
+  * CVE-2025-13630: Type Confusion in V8
+  * CVE-2025-13631: Inappropriate implementation in Google Updater
+  * CVE-2025-13632: Inappropriate implementation in DevTools
+  * CVE-2025-13633: Use after free in Digital Credentials
+  * CVE-2025-13634: Inappropriate implementation in Downloads
+  * CVE-2025-13720: Bad cast in Loader
+  * CVE-2025-13721: Race in v8
+  * CVE-2025-13635: Inappropriate implementation in Downloads
+  * CVE-2025-13636: Inappropriate implementation in Split View
+  * CVE-2025-13637: Inappropriate implementation in Downloads
+  * CVE-2025-13638: Use after free in Media Stream
+  * CVE-2025-13639: Inappropriate implementation in WebRTC
+  * CVE-2025-13640: Inappropriate implementation in Passwords
+
+(changelog only)
+
+- Remove unused BuildRequires: update-desktop-files.</comment>
+    <requestid>1320954</requestid>
+  </revision>
 </revisionlist>
