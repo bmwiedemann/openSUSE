@@ -1,7 +1,7 @@
 #
 # spec file for package love
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,6 @@ BuildRequires:  libtool
 BuildRequires:  physfs-devel
 BuildRequires:  pkgconfig
 BuildRequires:  shared-mime-info
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(IL)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gl)
