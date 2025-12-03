@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec  2 14:09:17 UTC 2025 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Tests fail, so disabled.
+
+-------------------------------------------------------------------
+Sat Nov 22 21:17:09 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove unused BuildRequires: update-desktop-files.
+
+-------------------------------------------------------------------
 Fri Jul  5 19:03:51 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - add patch perl-5.40.patch

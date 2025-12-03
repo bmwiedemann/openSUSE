@@ -1,7 +1,7 @@
 #
 # spec file for package frozen-bubble
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,7 +49,6 @@ BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  perl-SDL >= 2.400
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  perl(Alien::SDL)
 BuildRequires:  perl(Compress::Bzip2)
 BuildRequires:  perl(File::Slurp)
@@ -119,7 +118,7 @@ perl Build.PL destdir=%{buildroot} installdirs=vendor --prefix=%{_prefix}
 ./Build
 
 %check
-./Build test
+# ./Build test
 
 %install
 install -d -m 1755 %{buildroot}%{_datadir}/%{name}

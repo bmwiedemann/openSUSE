@@ -252,4 +252,14 @@ In my opinion the check is wrong. snprintf already checks target buffer overflow
     <comment></comment>
     <requestid>1186435</requestid>
   </revision>
+  <revision rev="36" vrev="18">
+    <srcmd5>4f5ad65219f48886c42dee4121d091c6</srcmd5>
+    <version>2.212</version>
+    <time>1764767565</time>
+    <user>anag_factory</user>
+    <comment>- Tests fail, so disabled.
+- Remove unused BuildRequires: update-desktop-files.
+</comment>
+    <requestid>1320856</requestid>
+  </revision>
 </revisionlist>
