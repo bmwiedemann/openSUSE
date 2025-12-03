@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Dec  1 14:08:16 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.0.18:
+  + This release adds the following features:
+    - Add a MOTD message for devices needing reboot after staged updates
+    - Create the reboot-required file when a firmware update requires reboot
+    - Record the system state for each composite emulation
+    - Update USI docking station firmware without requiring a manual replug
+  + This release fixes the following bugs:
+    - Add a MTD device problem if the Intel SPI BIOS lock is set
+    - Allow changing the child name when using PARENT_NAME_PREFIX
+    - Allow UpdateCapsule to work on systems that do not support SecureBoot
+    - Correctly parse the EFI_CAPSULE_RESULT_VARIABLE_HEADER
+    - Fall back to the SMBIOS version for BIOS MTD devices
+    - Fix a crash when trying to record an i2c emulation
+    - Fixed Huddly upgrade problems with major version changes
+    - Fix man page compatibility with apropos and whatis
+    - Fix parsing USB BOS descriptors
+    - Fix up the x86_64-specific capsule flags when deploying UEFI firmware
+    - Improve firmware stream searching speed by a huge amount
+    - Only convert the release uint32_t to device version format for UEFI devices
+    - Only handle SIGINT in fwupdtool when required
+    - Refactor the hypervisor and container detection to be usable from plugins
+    - Set PlatformArchitecture as the CPU architecture for RISC-V machines
+    - Use a sensible timeout when doing qc-s5gen2 HID requests
+  + This release adds support for the following hardware:
+    - HP Portable USB-C 4K HDMI Hub
+    - Lenovo Legion Go 2 (as a HID device)
+    - Synaptics HapticsPad
+- Rebase fwupd-bsc1130056-change-shim-path.patch
+
+-------------------------------------------------------------------
 Tue Nov 11 16:11:26 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Do not try to load i2c_dev kernel module on s390x. S390x has no

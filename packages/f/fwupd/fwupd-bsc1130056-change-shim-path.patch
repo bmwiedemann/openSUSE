@@ -1,10 +1,10 @@
 diff --git a/plugins/uefi-capsule/fu-uefi-bootmgr.c b/plugins/uefi-capsule/fu-uefi-bootmgr.c
-index e7761b52..0a425455 100644
+index 339e0b949..51677408c 100644
 --- a/plugins/uefi-capsule/fu-uefi-bootmgr.c
 +++ b/plugins/uefi-capsule/fu-uefi-bootmgr.c
-@@ -368,7 +368,7 @@ fu_uefi_bootmgr_bootnext(FuEfivars *efivars,
- 	if (!fu_efivars_get_secure_boot(efivars, &secureboot_enabled, error))
- 		return FALSE;
+@@ -367,7 +367,7 @@ fu_uefi_bootmgr_bootnext(FuEfivars *efivars,
+ 	if (!fu_efivars_get_secure_boot(efivars, &secureboot_enabled, &error_local))
+ 		g_debug("ignoring: %s", error_local->message);
  	if (secureboot_enabled) {
 -		shim_app = fu_uefi_get_esp_app_path(esp_path, "shim", error);
 +		shim_app = g_strdup_printf ("%s/shim.efi", fu_uefi_get_esp_path_for_os(esp_path));
