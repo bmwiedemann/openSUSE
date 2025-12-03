@@ -1251,4 +1251,12 @@
   * spec: dont Require python3-msrestazure on RHEL10+</comment>
     <requestid>1306823</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>02e0ec27b804485a52a8f141bd080a15</srcmd5>
+    <version>4.16.0+git.1763372689.07285aac</version>
+    <time>1764767560</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1320851</requestid>
+  </revision>
 </revisionlist>

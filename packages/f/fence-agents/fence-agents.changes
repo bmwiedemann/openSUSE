@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 25 13:21:25 UTC 2025 - Peter Varkoly <varkoly@suse.com>
+
+- Update to version 4.16.0+git.1763372689.07285aac:
+  * fence_gce: fix node list limit (#640)
+  * fence_hetzner_cloud: add new fence agent for Hetzner Cloud
+  * fence_kubevirt: add fallback to kubernetes.client.rest to avoid errors with some versions of the kubernetes library
+
+-------------------------------------------------------------------
 Tue Sep 23 19:36:41 UTC 2025 - Peter Varkoly <varkoly@suse.com>
 
 - Update to version 4.16.0+git.1758188595.5a0c09a2:
