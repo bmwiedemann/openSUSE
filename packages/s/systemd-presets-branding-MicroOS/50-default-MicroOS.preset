@@ -3,6 +3,7 @@ enable create-dirs-from-rpmdb.service
 enable rebootmgr.service
 enable prepare-nextroot-for-softreboot.service
 enable issue-add-ssh-keys.service
+enable firewalld.service
 enable sshd.service
 enable cloud-config.service
 enable cloud-final.service

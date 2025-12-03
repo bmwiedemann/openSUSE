@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  2 13:32:03 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- enable firewalld.service by default (bsc#1237923) since the Agama installer
+  does not do that (contrary to what the YaST installer used to do).
+
+-------------------------------------------------------------------
 Mon Jul 28 08:58:08 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Enable services for sysext image support (systemd-sysext.socket, 
