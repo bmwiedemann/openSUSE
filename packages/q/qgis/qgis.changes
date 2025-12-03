@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Nov 26 19:30:17 UTC 2025 - Enno Tensing <tenno+suse@suij.in>
+
+- Update to 3.44.5
+  * Optionally check for duplicate unique IDs when checking geometry
+    (commit 5c35d43)
+  * Adds cancellation support to geometry checks (commit b6f1d6b)
+  * Adds cancellation support to more processing algorithms
+    (commit 2877605)
+  * Geometry checks will no longer create a new Project instance
+    (commit 38a8123 and bbaa14e)
+  * Fixes compilation with GCC 15 (commit d1abda6)
+  * Fixes a use after free warning in the GRASS provider
+    (commit 9c99b48)
+  * Fixes a possible overflow in the raster bands statistics
+    calculations (b44163e)
+  * Fixes a possible divide by zero in QgsLayoutItemMap (commit 46a66eb)
+  * Fixes a crash in the postgres browser menu (commit 4a56dd8)
+  * Fixes dereference after free in the raster layerr (commit 002c820)
+  * Fixes a memory leak in PyQGIS (commit 2588ebf)
+  * Fixes a memory leak in QgsUserProfileManager (commit 9342545)
+  * Fixes a memory leak in QgsPointCloudExpressionNode (commit df5604d)
+  * Fixes a possible nullptr dereference in QgsPalLabelling
+    (commit 486e921)
+  * Catches exceptions when closing HANA iterators (commit f701239)
+  * Fixes a memory leak in QgsCircularString::transform()
+    (commit fb0c18b)
+  * Precompiled headers can now be disabled (commit 96ffced)
+  * Fixes various other issues 
+
+-------------------------------------------------------------------
 Sat Nov 22 21:24:02 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove unused BuildRequires: update-desktop-files.
