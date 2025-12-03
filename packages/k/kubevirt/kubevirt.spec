@@ -112,6 +112,14 @@ Group:          System/Packages
 %description    virt-operator
 The virt-opertor package provides an operator for kubevirt CRD
 
+%package        virt-synchronization-controller
+Summary:        Synchronization controller for kubevirt
+Group:          System/Packages
+
+%description    virt-synchronization-controller
+The virt-synchronization-controller package provides a controller for
+decentralized migration
+
 %package        pr-helper-conf
 Summary:        Configuration files for persistent reservation helper
 Group:          System/Packages
@@ -247,6 +255,7 @@ build_tests="true" \
     cmd/virt-launcher-monitor \
     cmd/virt-operator \
     cmd/virt-probe \
+    cmd/synchronization-controller \
     cmd/virt-tail \
     cmd/virtctl \
     %{nil}
@@ -269,6 +278,7 @@ install -p -m 0755 _out/cmd/virt-launcher/virt-launcher %{buildroot}%{_bindir}/
 install -p -m 0755 _out/cmd/virt-launcher-monitor/virt-launcher-monitor %{buildroot}%{_bindir}/
 install -p -m 0755 _out/cmd/virt-freezer/virt-freezer %{buildroot}%{_bindir}/
 install -p -m 0755 _out/cmd/virt-probe/virt-probe %{buildroot}%{_bindir}/
+install -p -m 0755 _out/cmd/synchronization-controller/synchronization-controller %{buildroot}%{_bindir}/virt-synchronization-controller
 install -p -m 0755 _out/cmd/virt-tail/virt-tail %{buildroot}%{_bindir}/
 install -p -m 0755 _out/cmd/virt-operator/virt-operator %{buildroot}%{_bindir}/
 install -p -m 0755 _out/tests/tests.test %{buildroot}%{_bindir}/virt-tests
@@ -361,6 +371,11 @@ install -m 0644 %{S:2} %{buildroot}%{_prefix}/lib/obs/service
 %license LICENSE
 %doc README.md
 %{_bindir}/virt-operator
+
+%files virt-synchronization-controller
+%license LICENSE
+%doc README.md
+%{_bindir}/virt-synchronization-controller
 
 %files pr-helper-conf
 %license LICENSE
