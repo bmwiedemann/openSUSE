@@ -49,6 +49,22 @@
 # go_api or go_api-foo
 %define go_label %{go_api}
 
+# go_libalternatives is the name for the libalternatives configuration file
+# which denotes its priority
+%define go_libalternatives 125
+
+# with_libalternatives denotes whether or not libalternatives should be used
+# if it is not used, then update-alternatives is used instead
+%define with_libalternatives 0
+
+# with_update_alternatives is automatically defined, based on the
+# value of with_libalternatives
+%if %{with_libalternatives}
+%define with_update_alternatives 0
+%else
+%define with_update_alternatives 1
+%endif
+
 # shared library support
 %if "%{rpm_vercmp %{go_api} 1.5}" > "0"
 %ifarch %ix86 %arm x86_64 aarch64
@@ -91,7 +107,7 @@
 %endif
 
 Name:           go1.25
-Version:        1.25.4
+Version:        1.25.5
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
@@ -127,9 +143,6 @@ BuildRequires:  gcc-c++
 %endif
 #BNC#818502 debug edit tool of rpm fails on i586 builds
 BuildRequires:  rpm >= 4.11.1
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-
 %if 0%{?suse_version} && 0%{?suse_version} < 1500
 Requires:       gcc7
 %else
@@ -144,6 +157,13 @@ Obsoletes:      go-devel < go%{version}
 Obsoletes:      go-emacs <= 1.3.3
 Obsoletes:      go-vim <= 1.3.3
 ExclusiveArch:  %ix86 x86_64 %arm aarch64 ppc64 ppc64le s390x riscv64 loongarch64
+Requires(post):   update-alternatives
+%if %{with_libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(postun): update-alternatives
+%endif
 
 %description
 Go is an expressive, concurrent, garbage collected systems programming language
@@ -375,16 +395,38 @@ install -Dm644 %{SOURCE6} $GOROOT/bin/gdbinit.d/go.gdb
 sed -i "s/lib/lib64/" $GOROOT/bin/gdbinit.d/go.gdb
 sed -i "s/\$go_label/%{go_label}/" $GOROOT/bin/gdbinit.d/go.gdb
 %endif
+mkdir -p %{buildroot}%{_sysconfdir}/gdbinit.d
 
 # update-alternatives
+%if %{with_update_alternatives}
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 mkdir -p %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{_sysconfdir}/profile.d
-mkdir -p %{buildroot}%{_sysconfdir}/gdbinit.d
 touch %{buildroot}%{_sysconfdir}/alternatives/{go,gofmt,go.gdb}
 ln -sf %{_sysconfdir}/alternatives/go %{buildroot}%{_bindir}/go
 ln -sf %{_sysconfdir}/alternatives/gofmt %{buildroot}%{_bindir}/gofmt
 ln -sf %{_sysconfdir}/alternatives/go.gdb %{buildroot}%{_sysconfdir}/gdbinit.d/go.gdb
+%endif
+
+# libalternatives
+%if %{with_libalternatives}
+ln -s %{_libdir}/go/%{go_label}/bin/gdbinit.d/go.gdb %{buildroot}%{_sysconfdir}/gdbinit.d/go%{go_label}.gdb
+
+mkdir -p %{buildroot}%{_bindir}
+
+ln -s %{_bindir}/alts %{buildroot}%{_bindir}/go
+ln -s %{_bindir}/alts %{buildroot}%{_bindir}/gofmt
+# create 'go' configuration file
+mkdir -p %{buildroot}%{_datadir}/libalternatives/go
+cat > %{buildroot}%{_datadir}/libalternatives/go/%{go_libalternatives}.conf <<EOF
+binary=%{_libdir}/go/%{go_label}/bin/go
+EOF
+# create 'gofmt' configuration file
+mkdir -p %{buildroot}%{_datadir}/libalternatives/gofmt
+cat > %{buildroot}%{_datadir}/libalternatives/gofmt/%{go_libalternatives}.conf <<EOF
+binary=%{_libdir}/go/%{go_label}/bin/gofmt
+EOF
+%endif
 
 # documentation and examples
 # fix documetation permissions (rpmlint warning)
@@ -402,16 +444,28 @@ cp -r doc/* %{buildroot}%{_docdir}/go/%{go_label}
 %fdupes -s %{buildroot}%{_prefix}
 
 %post
-
+%if %{with_update_alternatives}
 update-alternatives \
   --install %{_bindir}/go go %{_libdir}/go/%{go_label}/bin/go $((20+$(echo %{go_label} | cut -d. -f2))) \
   --slave %{_bindir}/gofmt gofmt %{_libdir}/go/%{go_label}/bin/gofmt \
   --slave %{_sysconfdir}/gdbinit.d/go.gdb go.gdb %{_libdir}/go/%{go_label}/bin/gdbinit.d/go.gdb
+%endif
 
-%postun
+# this is invoked when a user is migrating from update-alternatives to
+# libalternatives, hence why we always require update-alternatives
+# during %post
+%if %{with_libalternatives}
 if [ $1 -eq 0 ] ; then
 	update-alternatives --remove go %{_libdir}/go/%{go_label}/bin/go
 fi
+%endif
+
+%postun
+%if %{with_update_alternatives}
+if [ $1 -eq 0 ] ; then
+	update-alternatives --remove go %{_libdir}/go/%{go_label}/bin/go
+fi
+%endif
 
 %files
 %{_bindir}/go
@@ -421,10 +475,6 @@ fi
 %dir %{_datadir}/go
 %{_datadir}/go/%{go_label}
 %dir %{_sysconfdir}/gdbinit.d/
-%config %{_sysconfdir}/gdbinit.d/go.gdb
-%ghost %{_sysconfdir}/alternatives/go
-%ghost %{_sysconfdir}/alternatives/gofmt
-%ghost %{_sysconfdir}/alternatives/go.gdb
 %dir %{_docdir}/go
 %dir %{_docdir}/go/%{go_label}
 %doc %{_docdir}/go/%{go_label}/CONTRIBUTING.md
@@ -435,6 +485,19 @@ fi
 %doc %{_docdir}/go/%{go_label}/LICENSE
 %else
 %license %{_docdir}/go/%{go_label}/LICENSE
+%endif
+%if %{with_libalternatives}
+%config %{_sysconfdir}/gdbinit.d/go%{go_label}.gdb
+%dir %{_datadir}/libalternatives/go
+%{_datadir}/libalternatives/go/%{go_libalternatives}.conf
+%dir %{_datadir}/libalternatives/gofmt
+%{_datadir}/libalternatives/gofmt/%{go_libalternatives}.conf
+%endif
+%if %{with_update_alternatives}
+%config %{_sysconfdir}/gdbinit.d/go.gdb
+%ghost %{_sysconfdir}/alternatives/go
+%ghost %{_sysconfdir}/alternatives/gofmt
+%ghost %{_sysconfdir}/alternatives/go.gdb
 %endif
 
 # We don't include TSAN in the main Go package.

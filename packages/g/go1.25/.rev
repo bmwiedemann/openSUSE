@@ -204,4 +204,20 @@
     <comment>- Fix runtime condition for gcc/gcc7 dependency. (forwarded request 1320109 from dimstar)</comment>
     <requestid>1320154</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>457ac08bd12ec1bad492b2a39715aeb4</srcmd5>
+    <version>1.25.5</version>
+    <time>1764767533</time>
+    <user>anag_factory</user>
+    <comment>- go1.25.5 (released 2025-12-02) includes two security fixes to the
+  crypto/x509 package, as well as bug fixes to the mime and os
+  packages.
+  Refs boo#1244485 go1.25 release tracking
+  CVE-2025-61729 CVE-2025-61727
+  * go#76461 go#76445 boo#1254431 security: fix CVE-2025-61729 crypto/x509: excessive resource consumption in printing error string for host certificate validation
+  * go#76464 go#76442 boo#1254430 security: fix CVE-2025-61727 crypto/x509: excluded subdomain constraint doesn't preclude wildcard SAN
+  * go#76245 mime: FormatMediaType and ParseMediaType not compatible across 1.24 to 1.25
+  * go#76360 os: on windows RemoveAll removing directories containing read-only files errors with unlinkat ... Access is denied, ReOpenFile error handling followup (forwarded request 1320928 from jfkw)</comment>
+    <requestid>1320929</requestid>
+  </revision>
 </revisionlist>
