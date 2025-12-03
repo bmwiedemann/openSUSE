@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  3 08:54:32 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.16.5
+  * Fixes 100% CPU usage bug in *BSD kqueue event handler and UDNS
+    resolver.
+
+-------------------------------------------------------------------
 Tue Nov 25 13:23:08 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.16.4
