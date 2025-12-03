@@ -244,4 +244,16 @@ After this PR, there will be a delete request for kernel-firmware.
   * rtl_bt: Update RTL8922A BT USB firmware to 0x41C0_C905</comment>
     <requestid>1317806</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>4119c0a9250a678f1846bfc13deab0d8</srcmd5>
+    <version>20251125</version>
+    <time>1764767504</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251125 (git commit 23568a4b9420):
+  * QCA: Add Bluetooth firmware for WCN685x uart interface
+
+- Update to version 20251121 (git commit ff6418d18552):
+  * rtl_bt: Update RTL8852B BT USB FW to 0x42D3_4E04</comment>
+    <requestid>1320750</requestid>
+  </revision>
 </revisionlist>
