@@ -19,7 +19,7 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 %define _lto_cflags %{nil}
 Name:           ncspot
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        Cross-platform ncurses Spotify client written in Rust
 Group:          Productivity/Multimedia/Sound/Players
