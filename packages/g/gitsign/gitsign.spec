@@ -1,7 +1,7 @@
 #
 # spec file for package gitsign
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,13 +43,21 @@ go build \
    -ldflags="-X github.com/sigstore/gitsign/pkg/version.gitVersion=%{version}" \
    -o bin/gitsign .
 
+go build \
+   -mod=vendor \
+   -buildmode=pie \
+   -ldflags="-X github.com/sigstore/gitsign/pkg/version.gitVersion=%{version}" \
+   -o bin/gitsign-credential-cache ./cmd/gitsign-credential-cache/
+
 %install
 # Install the binary.
 install -D -m 0755 bin/%{name} "%{buildroot}/%{_bindir}/%{name}"
+install -D -m 0755 bin/gitsign-credential-cache "%{buildroot}/%{_bindir}/gitsign-credential-cache"
 
 %files
 %doc README.md
 %license LICENSE
 %{_bindir}/%{name}
+%{_bindir}/gitsign-credential-cache
 
 %changelog
