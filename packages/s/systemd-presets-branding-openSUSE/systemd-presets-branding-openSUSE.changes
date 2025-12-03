@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  2 13:30:25 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- enable firewalld.service by default (bsc#1237923) since the Agama installer
+  does not do that (contrary to what the YaST installer used to do).
+
+-------------------------------------------------------------------
 Tue Jul  1 12:11:35 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - enable switcheroo-control.service (boo#1244097)

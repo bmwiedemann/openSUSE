@@ -592,4 +592,14 @@
 </comment>
     <requestid>1289549</requestid>
   </revision>
+  <revision rev="71" vrev="27">
+    <srcmd5>73731d30a8c884a84d89cc92310d7c50</srcmd5>
+    <version>12.2</version>
+    <time>1764767528</time>
+    <user>anag_factory</user>
+    <comment>- enable firewalld.service by default (bsc#1237923) since the Agama installer
+  does not do that (contrary to what the YaST installer used to do).
+</comment>
+    <requestid>1320859</requestid>
+  </revision>
 </revisionlist>

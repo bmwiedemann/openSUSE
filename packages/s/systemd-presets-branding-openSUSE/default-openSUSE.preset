@@ -3,6 +3,7 @@ enable cups.path
 enable cups.service
 enable cups.socket
 enable epmd.socket
+enable firewalld.service
 enable restorecond.service
 enable hylafax-faxqclean.timer
 enable hylafax-usage.timer
