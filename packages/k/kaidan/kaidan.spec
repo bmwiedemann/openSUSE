@@ -28,12 +28,15 @@ URL:            https://www.kaidan.im
 Source0:        https://download.kde.org/unstable/%{name}/%{version}/%{name}-%{version}.tar.xz
 Source1:        https://download.kde.org/unstable/%{name}/%{version}/%{name}-%{version}.tar.xz.sig
 Source2:        kaidan.keyring
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Add-dependency-Qt6GuiPrivate-needed-since-Qt-6.10.0.patch
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{qt6_version}
 # Both Qt 5 and Qt 6 flavors use the same cmake config name, use the -devel package name
 # BuildRequires:  cmake(KQuickImageEditor)
 BuildRequires:  kquickimageeditor6-devel
 BuildRequires:  pkgconfig
+BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  qt6-declarative-tools >= %{qt6_version}
 BuildRequires:  qt6-sql-sqlite >= %{qt6_version}
 BuildRequires:  cmake(KDSingleApplication-qt6)

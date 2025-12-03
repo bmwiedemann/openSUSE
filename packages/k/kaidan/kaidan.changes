@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  2 18:55:36 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change (boo#1254389)
+  * 0001-Add-dependency-Qt6GuiPrivate-needed-since-Qt-6.10.0.patch
+
+-------------------------------------------------------------------
 Tue Oct  7 19:54:53 UTC 2025 - Mia Herkt <mia@0x0.st>
 
 - Enable tests

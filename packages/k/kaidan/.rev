@@ -108,4 +108,13 @@
     <comment></comment>
     <requestid>1309746</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>9bbd5f713cc98f171d76dd3dddc635aa</srcmd5>
+    <version>0.13.0</version>
+    <time>1764767576</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream change (boo#1254389)
+  * 0001-Add-dependency-Qt6GuiPrivate-needed-since-Qt-6.10.0.patch</comment>
+    <requestid>1320891</requestid>
+  </revision>
 </revisionlist>
