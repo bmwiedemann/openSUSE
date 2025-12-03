@@ -184,4 +184,14 @@
     <comment>- Update to release 0.16.4</comment>
     <requestid>1320020</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>9fbd0d36394bbb7248adf481ac2265eb</srcmd5>
+    <version>0.16.5</version>
+    <time>1764767616</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 0.16.5
+  * Fixes 100% CPU usage bug in *BSD kqueue event handler and UDNS
+    resolver.</comment>
+    <requestid>1320951</requestid>
+  </revision>
 </revisionlist>

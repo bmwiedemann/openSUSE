@@ -17,7 +17,7 @@
 
 
 Name:           rtorrent
-Version:        0.16.4
+Version:        0.16.5
 Release:        0
 Summary:        Console-based BitTorrent client
 License:        SUSE-GPL-2.0+-with-openssl-exception
@@ -45,10 +45,9 @@ Provides:       bundled(tinyxml2) = 10.0.0
 %sysusers_requires
 
 %description
-rTorrent is a console-based BitTorrent client. It aims to be a
-fully-featured and efficient client with the ability to run in the
-background using screen. It supports fast-resume and session
-management.
+rTorrent is a text-based BitTorrent client written in C++ and with
+ncurses. It supports fast resume and session management, and can be
+run in the background with the help of e.g. GNU screen.
 
 %prep
 %autosetup -p1
