@@ -1,0 +1,7 @@
+<package name="halibut" project="openSUSE:Factory">
+  <title>Document preparation system similar to TeX</title>
+  <description>Halibut is a documentation production system, with elements similar to TeX,
+debiandoc-sgml, TeXinfo, and others. It is primarily targeted at people
+producing software manuals.</description>
+  <url>https://www.chiark.greenend.org.uk/~sgtatham/halibut/</url>
+</package>
