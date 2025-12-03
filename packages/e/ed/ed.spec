@@ -18,7 +18,7 @@
 
 
 Name:           ed
-Version:        1.22.2
+Version:        1.22.3
 Release:        0
 Summary:        A line-oriented text editor
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
