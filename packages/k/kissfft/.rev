@@ -31,4 +31,13 @@
     <comment></comment>
     <requestid>1266573</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f4260f396a0dda05d1c4492e86081416</srcmd5>
+    <version>131.2.0</version>
+    <time>1764767551</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 131.2.0 (fixes boo#1254398)
+</comment>
+    <requestid>1320842</requestid>
+  </revision>
 </revisionlist>

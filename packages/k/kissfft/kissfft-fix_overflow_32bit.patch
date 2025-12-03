@@ -1,0 +1,33 @@
+From 1b08316582049c3716154caefc0deab8758506e3 Mon Sep 17 00:00:00 2001
+From: Mark Borgerding <markb@3db-labs.com>
+Date: Wed, 26 Nov 2025 10:39:17 -0500
+Subject: [PATCH] check for overflow on 32 bit platform (closes #120)
+
+---
+ kiss_fft.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/kiss_fft.c b/kiss_fft.c
+index 58c24a0..aba63e0 100644
+--- a/kiss_fft.c
++++ b/kiss_fft.c
+@@ -6,7 +6,7 @@
+  *  See COPYING file for more information.
+  */
+ 
+-
++#include <stdint.h>
+ #include "_kiss_fft_guts.h"
+ /* The guts header contains all the multiplication and addition macros that are defined for
+  fixed or floating point complex numbers.  It also delares the kf_ internal functions.
+@@ -339,6 +339,10 @@ kiss_fft_cfg kiss_fft_alloc(int nfft,int inverse_fft,void * mem,size_t * lenmem
+     KISS_FFT_ALIGN_CHECK(mem)
+ 
+     kiss_fft_cfg st=NULL;
++    // check for overflow condition {memneeded > SIZE_MAX}.
++    if (nfft >= (SIZE_MAX - 2*sizeof(struct kiss_fft_state))/sizeof(kiss_fft_cpx))
++        return NULL;
++
+     size_t memneeded = KISS_FFT_ALIGN_SIZE_UP(sizeof(struct kiss_fft_state)
+         + sizeof(kiss_fft_cpx)*(nfft-1)); /* twiddle factors*/
+ 

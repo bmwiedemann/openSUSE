@@ -1,7 +1,7 @@
 #
 # spec file for package kissfft
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2020 Packman Team <packman@links2linux.de>
 # Copyright (c) 2017-2020 Fedora Release Engineering <releng@fedoraproject.org>
 # Copyright (c) 2016 František Dvořák <valtri@civ.zcu.cz>
@@ -21,15 +21,17 @@
 
 %define sover   131
 Name:           kissfft
-Version:        131.1.0
+Version:        131.2.0
 Release:        0
 Summary:        Fast Fourier Transform library
 License:        BSD-3-Clause AND Unlicense
 # was https://sourceforge.net/projects/kissfft
 URL:            https://github.com/mborgerding/kissfft
 Source0:        https://github.com/mborgerding/kissfft/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM -- https://github.com/mborgerding/kissfft/pull/101
-Patch0:         0001-Bump-minimum-CMake-version-in-kissfft-config.cmake.patch
+# PATCH-FIX-UPSTREAM kissfft-fix_overflow_32bit.patch -- fixes boo#1254398
+Patch1:         kissfft-fix_overflow_32bit.patch
+# PATCH-FIX-UPSTREAM kissfft-fix_python_binary_detection.patch -- fixes test#8
+Patch2:         kissfft-fix_python_binary_detection.patch
 BuildRequires:  cmake
 # TESTS
 BuildRequires:  gcc-c++

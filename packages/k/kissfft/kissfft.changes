@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Dec  2 10:58:53 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 131.2.0
+  * fixed test/Makefile line 137 missing ')'
+  * call $(MAKE) instead of make
+  * Add newline to end of kiss_fft_log.h
+  * Use M_PI instead of M_PIl
+  * CMakeLists.txt: Bump minimum version to 3.10
+  * Bump minimum CMake version in kissfft-config.cmake
+  * Makefile: Do not fail creating pkgconfig directory if it
+    already exists
+  * README.md: Correctly capitalize simd option
+  * tests/CMakeLists.txt: Fix CMP0148
+  * Tweaked wording in README
+- Drop 0001-Bump-minimum-CMake-version-in-kissfft-config.cmake.patch
+- Add kissfft-fix_overflow_32bit.patch (fixes boo#1254398)
+- Add kissfft-fix_python_binary_detection.patch
+
+-------------------------------------------------------------------
 Wed Apr  2 09:42:11 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add patch to fix kissfft usage with CMake 4:

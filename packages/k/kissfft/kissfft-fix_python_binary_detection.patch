@@ -1,0 +1,24 @@
+From 797c8ca9ebb6a61446f907cb24611f3a6a4302bf Mon Sep 17 00:00:00 2001
+From: dmo <marillat@users.noreply.github.com>
+Date: Fri, 28 Nov 2025 20:14:24 +0100
+Subject: [PATCH] FIx python binary detection (#119)
+
+---
+ test/CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
+index 95a5d75..4d07fb9 100644
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -53,8 +53,8 @@ if(KISSFFT_DATATYPE MATCHES "^simd$")
+     endif()
+ endif()
+ 
+-find_package(Python REQUIRED)
+-add_test(NAME testkiss.py COMMAND "${PYTHON_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/testkiss.py")
++find_package(Python3 COMPONENTS Interpreter REQUIRED)
++add_test(NAME testkiss.py COMMAND "${Python3_INTERPRETER}" "${CMAKE_CURRENT_SOURCE_DIR}/testkiss.py")
+ list(APPEND TESTKISS_PY_ENV "KISSFFT_DATATYPE=${KISSFFT_DATATYPE}")
+ list(APPEND TESTKISS_PY_ENV "KISSFFT_OPENMP=${KISSFFT_OPENMP}")
+ set_tests_properties(testkiss.py PROPERTIES
