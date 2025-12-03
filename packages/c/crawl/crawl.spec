@@ -44,7 +44,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  pngcrush
 BuildRequires:  python3
 BuildRequires:  python3-PyYAML
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(SDL2_image)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(glu)

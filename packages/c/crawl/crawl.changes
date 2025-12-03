@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 22 21:16:27 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove unused BuildRequires: update-desktop-files.
+
+-------------------------------------------------------------------
 Mon Oct 20 23:02:25 UTC 2025 - Mobius <amob-rand@mailfence.com>
 
 - update to 0.33.1:
