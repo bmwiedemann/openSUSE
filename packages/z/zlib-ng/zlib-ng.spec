@@ -87,7 +87,6 @@ export CC=gcc
   -DZLIB_COMPAT=ON -DWITH_NEW_STRATEGIES=OFF \
 %endif
   -DINSTALL_LIB_DIR=%{_libdir} \
-  -DWITH_RVV=OFF \
   -DWITH_GTEST=OFF
 %cmake_build
 

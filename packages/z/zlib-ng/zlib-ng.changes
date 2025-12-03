@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec  2 14:34:12 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Remove WITH_RVV=OFF
+
+-------------------------------------------------------------------
 Thu Nov 27 16:46:16 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 2.3.1:
