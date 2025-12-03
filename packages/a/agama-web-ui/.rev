@@ -493,4 +493,12 @@
 - Fixed the check about which DASDs can be formatted (bsc#1243795).</comment>
     <requestid>1317452</requestid>
   </revision>
+  <revision rev="30" vrev="30">
+    <srcmd5>c7a55299ce93fbefeed168b1b15a697c</srcmd5>
+    <version>0</version>
+    <time>1764767502</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1320745</requestid>
+  </revision>
 </revisionlist>
