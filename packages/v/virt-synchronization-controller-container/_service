@@ -1,0 +1,16 @@
+<services>
+    <service mode="buildtime" name="kiwi_metainfo_helper"/>
+    <service mode="buildtime" name="kubevirt_containers_meta"/>
+    <service mode="buildtime" name="replace_using_env">
+        <param name="file">Dockerfile</param>
+        <param name="var">PKG_VERSION</param>
+        <param name="var">PKG_RELEASE</param>
+        <param name="var">REGISTRY</param>
+        <param name="var">TAGPREFIX</param>
+        <param name="var">LABELPREFIX</param>
+        <param name="var">SUPPORT_LEVEL</param>
+        <param name="eval">pkg=kubevirt-virt-synchronization-controller source /usr/lib/obs/service/kubevirt_containers_meta</param>
+        <param name="verbose">1</param>
+    </service>
+    <service mode="buildtime" name="docker_label_helper"/>
+</services>
