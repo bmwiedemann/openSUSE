@@ -4986,4 +4986,15 @@ a previous changelog entry.
   bsc#1253278</comment>
     <requestid>1318540</requestid>
   </revision>
+  <revision rev="434" vrev="1">
+    <srcmd5>d7c2430392fa73463b755aada459aa18</srcmd5>
+    <version>11.10.0</version>
+    <time>1764843683</time>
+    <user>anag_factory</user>
+    <comment>- Update to libvirt 11.10.0
+  - build: drop userfaultfd_sysctl option
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v11-10-0-2025-12-01</comment>
+    <requestid>1320883</requestid>
+  </revision>
 </revisionlist>

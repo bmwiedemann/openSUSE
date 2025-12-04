@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec  1 21:57:32 UTC 2025 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 11.10.0
+  - build: drop userfaultfd_sysctl option
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v11-10-0-2025-12-01
+
+-------------------------------------------------------------------
 Wed Nov 19 03:10:14 UTC 2025 - James Fehlig <jfehlig@suse.com>
 
 - CVE-2025-13193: qemu: Set umask for 'qemu-img' when creating

@@ -54,7 +54,6 @@
 %define with_numactl       0%{!?_without_numactl:1}
 %define with_nwfilter      0%{!?_without_nwfilter:1}
 %define with_modular_daemons 0%{!?_without_modular_daemons:1}
-%define with_userfaultfd_sysctl 0%{!?_without_userfaultfd_sysctl:1}
 %define with_firewalld_zone 0%{!?_without_firewalld_zone:1}
 
 # A few optional bits off by default, we enable later
@@ -82,12 +81,6 @@
 
 %ifarch x86_64 aarch64
     %define with_storage_rbd 0%{!?_without_storage_rbd:1}
-%endif
-
-# Tumbleweeed is new enough to support /dev/userfaultfd, which
-# does not require enabling vm.unprivileged_userfaultfd sysct
-%if 0%{?suse_version} > 1500
-    %define with_userfaultfd_sysctl 0
 %endif
 
 # numa-preplace (formerly numad) is used to manage the CPU and memory
@@ -153,7 +146,7 @@
 
 Name:           libvirt
 URL:            https://libvirt.org/
-Version:        11.9.0
+Version:        11.10.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -956,11 +949,6 @@ Allows SSH into domains via VSOCK without need for network.
 %else
     %define arg_fuse -Dfuse=disabled
 %endif
-%if %{with_userfaultfd_sysctl}
-    %define arg_userfaultfd_sysctl -Duserfaultfd_sysctl=enabled
-%else
-    %define arg_userfaultfd_sysctl -Duserfaultfd_sysctl=disabled
-%endif
 %if %{with_nbdkit}
     %define arg_nbdkit -Dnbdkit=enabled
 %else
@@ -1063,7 +1051,6 @@ Allows SSH into domains via VSOCK without need for network.
            -Dstorage_vstorage=disabled \
            %{?arg_numactl} \
            %{?arg_numad} \
-           %{?arg_userfaultfd_sysctl} \
            %{?arg_nbdkit} \
            %{?arg_nbdkit_config_default} \
            -Dssh_proxy=enabled \
@@ -1721,9 +1708,6 @@ fi
 %config(noreplace) %{_sysconfdir}/%{name}/virtqemud.conf
 %if %{with_apparmor}
 %config(noreplace) %{_sysconfdir}/apparmor.d/usr.sbin.virtqemud
-%endif
-%if %{with_userfaultfd_sysctl}
-%config(noreplace) %{_prefix}/lib/sysctl.d/60-qemu-postcopy-migration.conf
 %endif
 %{_datadir}/augeas/lenses/virtqemud.aug
 %{_datadir}/augeas/lenses/tests/test_virtqemud.aug
