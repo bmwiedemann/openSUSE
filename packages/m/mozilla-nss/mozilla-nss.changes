@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Nov 20 08:56:04 UTC 2025 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- update to NSS 3.118.1
+  * bmo#1999517 - pk11wrap selects incorrect slot for CKM_ML_KEM*
+
+- update to NSS 3.118
+  * bmo#1994866 - Remove four Commscope root certificates from NSS
+  * bmo#1996036 - fix try pushes with --nspr-patch to actually apply the patch
+  * bmo#1995512 - Support for NIST Curves compressed points
+  * bmo#1985058 - Destroy certificate on error paths
+  * bmo#1990242 - Move NSS DB password hash away from SHA-1
+  * bmo#1983313 - support secp384r1mlkem1024
+  * bmo#1991549 - vendor latest ML-KEM code from libcrux
+  * bmo#1991549 - add mlk-kem-1024 tests
+  * bmo#1996717 - use the correct directory for FStar_UInt_8_16_32_64.h in source consistency test
+  * bmo#1766767 - Move scripts to python3
+  * bmo#1983313 - add mlkem1024 support in freebl
+  * bmo#1983313 - support secp256r1mlkem768
+  * bmo#1983313 - Make mlkem768x25519 the default
+  * bmo#1983320 - ML-DSA SGN and VFY interfaces
+  * bmo#1988625 - Align FIPS interfaces count with array
+  * bmo#1989477 - Ensure CKK_ML_KEM has derive CK_FALSE
+  * bmo#1992128 - Add script for tagging an NSS release
+  * bmo#1992128 - Remove the globals from nss-release-helper.py
+  * bmo#1992128 - Add release helper command for generating the release index
+  * bmo#1992128 - Add release helper command for generating a release note
+  * bmo#1992128 - Add release helper command for freezing a branch
+
+-------------------------------------------------------------------
 Tue Oct  7 10:39:41 UTC 2025 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - update to NSS 3.117

@@ -63,9 +63,9 @@ Index: nss/lib/freebl/blapi.h
  
  /*********************************************************************/
  extern const SECHashObject *HASH_GetRawHashObject(HASH_HashType hashType);
-@@ -1962,6 +1962,9 @@ SECStatus MLDSA_VerifyInit(MLDSAPublicKe
- SECStatus MLDSA_VerifyUpdate(MLDSAContext *ctx, const SECItem *data);
- SECStatus MLDSA_VerifyFinal(MLDSAContext *ctx, const SECItem *signature);
+@@ -1969,6 +1969,9 @@ SECStatus MLDSA_VerifyFinal(MLDSAContext
+  */
+ SECStatus EC_DecompressPublicKey(const SECItem *publicCompressed, const ECParams *params, SECItem *publicUncompressed);
  
 +/* Unconditionally run the integrity check. */
 +extern void BL_FIPSRepeatIntegrityCheck(void);
@@ -910,7 +910,7 @@ Index: nss/lib/freebl/loader.h
  
      /* Version 3.013 came to here */
  
-@@ -942,6 +942,9 @@ struct FREEBLVectorStr {
+@@ -945,6 +945,9 @@ struct FREEBLVectorStr {
  
      /* Add new function pointers at the end of this struct and bump
       * FREEBL_VERSION at the beginning of this file. */
@@ -1530,9 +1530,9 @@ Index: nss/lib/freebl/ldvector.c
 ===================================================================
 --- nss.orig/lib/freebl/ldvector.c
 +++ nss/lib/freebl/ldvector.c
-@@ -459,6 +459,8 @@ static const struct FREEBLVectorStr vect
-     MLDSA_VerifyFinal,
-     /* End of version 3.031 */
+@@ -462,6 +462,8 @@ static const struct FREEBLVectorStr vect
+     EC_DecompressPublicKey,
+     /* End of version 3.032 */
  
 +    /* SUSE patch: Goes last */
 +    BL_FIPSRepeatIntegrityCheck

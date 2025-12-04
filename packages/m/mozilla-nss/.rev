@@ -3504,4 +3504,12 @@
   * bmo#1983320 - Enable ML-DSA integration via OIDs support and SECMOD flag</comment>
     <requestid>1311901</requestid>
   </revision>
+  <revision rev="234" vrev="1">
+    <srcmd5>a2ad3191c5e41820f8c23311a3dbb655</srcmd5>
+    <version>3.118.1</version>
+    <time>1764843711</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1320938</requestid>
+  </revision>
 </revisionlist>
