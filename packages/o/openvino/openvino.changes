@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Tue Dec  2 22:43:52 UTC 2025 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Update to 2025.4.0
+- More GenAI coverage and framework integrations to minimize code
+  changes
+  * New models supported:
+    + On CPUs & GPUs: Qwen3-Embedding-0.6B, Qwen3-Reranker-0.6B, 
+      Mistral-Small-24B-Instruct-2501.
+    + On NPUs: Gemma-3-4b-it and Qwen2.5-VL-3B-Instruct.
+  * Preview: Mixture of Experts (MoE) models optimized for CPUs 
+    and GPUs, validated for Qwen3-30B-A3B.
+  * GenAI pipeline integrations: Qwen3-Embedding-0.6B and 
+    Qwen3-Reranker-0.6B for enhanced retrieval/ranking, and 
+    Qwen2.5VL-7B for video pipeline.
+- Broader LLM model support and more model compression 
+  techniques
+  * The Neural Network Compression Framework (NNCF) ONNX backend 
+    now supports INT8 static post-training quantization (PTQ) 
+    and INT8/INT4 weight-only compression to ensure accuracy 
+    parity with OpenVINO IR format models. SmoothQuant algorithm 
+    support added for INT8 quantization.
+  * Accelerated multi-token generation for GenAI, leveraging 
+    optimized GPU kernels to deliver faster inference, smarter 
+    KV-cache reuse, and scalable LLM performance.
+  * GPU plugin updates include improved performance with prefix 
+    caching for chat history scenarios and enhanced LLM accuracy 
+    with dynamic quantization support for INT8.
+- More portability and performance to run AI at the edge, in the 
+  cloud, or locally.
+  * Announcing support for Intel® Core Ultra Processor Series 3.
+  * Encrypted blob format support added for secure model 
+    deployment with OpenVINO GenAI. Model weights and artifacts
+    are stored and transmitted in an encrypted format, reducing
+    risks of IP theft during deployment. Developers can deploy 
+    with minimal code changes using OpenVINO GenAI pipelines.
+  * OpenVINO™ Model Server and OpenVINO™ GenAI now extend 
+    support for Agentic AI scenarios with new features such as
+    output parsing and improved chat templates for reliable 
+    multi-turn interactions, and preview functionality for the 
+    Qwen3-30B-A3B model. OVMS also introduces a preview for 
+    audio endpoints.
+  * NPU deployment is simplified with batch support, enabling 
+    seamless model execution across Intel® Core Ultra 
+    processors while eliminating driver dependencies. Models 
+    are reshaped to batch_size=1 before compilation.
+  * The improved NVIDIA Triton Server* integration with 
+    OpenVINO backend now enables developers to utilize Intel
+    GPUs or NPUs for deployment.
+
+-------------------------------------------------------------------
 Sun Sep  7 01:21:19 UTC 2025 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - Update to 2025.3.0
@@ -235,7 +285,7 @@ Mon Apr 14 06:52:03 UTC 2025 - Alessandro de Oliveira Faria <cabelo@opensuse.org
   cloud, or locally.
   * Additional LLM performance optimizations on Intel® Core™ Ultra
     200H series processors for improved 2nd token latency on
-    Windows and Linux.
+    Linux.
   * Enhanced performance and efficient resource utilization with
     the implementation of Paged Attention and Continuous Batching
     by default in the GPU plugin.
@@ -290,10 +340,6 @@ Sun Feb  9 03:36:41 UTC 2025 - Alessandro de Oliveira Faria <cabelo@opensuse.org
     directly within Keras 3 workflows for faster AI inference on
     CPUs, built-in GPUs, discrete GPUs, and NPUs. This feature is
     available with the latest Keras 3.8 release.
-  * The OpenVINO Model Server now supports native Windows Server
-    deployments, allowing developers to leverage better
-    performance by eliminating container overhead and simplifying
-    GPU deployment.
 - Support Change and Deprecation Notices
   * Now deprecated:
     + Legacy prefixes l_, w_, and m_ have been removed from
