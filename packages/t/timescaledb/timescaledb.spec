@@ -21,7 +21,7 @@
 %{pg_version_from_name}
 
 Name:           %{pg_name}-%{ext_name}
-Version:        2.23.1
+Version:        2.24.0
 Release:        0
 Summary:        A time-series database extension for PostgreSQL
 License:        Apache-2.0

@@ -512,4 +512,12 @@ Stop storing build machine kernel version (boo#1101107)</comment>
   - #8882 Fix crash in policy creation</comment>
     <requestid>1317658</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>840f31fe8aa8c5f441840ca0b08f80c6</srcmd5>
+    <version>2.24.0</version>
+    <time>1764843902</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.24.0</comment>
+    <requestid>1320970</requestid>
+  </revision>
 </revisionlist>
