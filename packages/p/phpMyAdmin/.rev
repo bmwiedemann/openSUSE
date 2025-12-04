@@ -1570,4 +1570,12 @@ CVE-2014-8958 [boo#906485]</comment>
     <comment></comment>
     <requestid>1274261</requestid>
   </revision>
+  <revision rev="186" vrev="1">
+    <srcmd5>1e833eb9ab489c7d80e55a3e2fda5593</srcmd5>
+    <version>5.2.3</version>
+    <time>1764843907</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1320975</requestid>
+  </revision>
 </revisionlist>
