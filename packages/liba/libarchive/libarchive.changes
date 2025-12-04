@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sat Nov 29 09:02:11 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 3.8.3:
+  * lib: Create temporary files in the target directory
+    (boo#1254340)
+  * lha: Fix for an out-of-bounds buffer overrun when using
+    p[H_LEVEL_OFFSET] (boo#1254341)
+  * 7-zip: Fix a buffer overrun when reading truncated 7zip headers
+    (boo#1254342)
+  * lz4 and zstd: Support both lz4 and zstd data with leading
+    skippable frames
+- update upstream signing key
+
+-------------------------------------------------------------------
+Fri Oct 31 19:56:50 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- update to 3.8.2:
+  Security fixes:
+   * 7zip: Fix out of boundary access
+   * tar reader: fix checking the result of the strftime (CVE-2025-25724)
+
+  Notable bugfixes:
+   * bsdtar: Allow filename to have CRLF endings
+   * lib: archive_read_data: handle sparse holes at end of file correctly
+   * lib: improve filter process handling
+   * lib: fix error checking in writing files
+   * lib: handle possible errors from system calls
+   * lib: avoid leaking file descriptors into subprocesses
+   * lib: parse_date: handle dates in 2038 and beyond if time_t is big enough
+   * RAR5 reader: fix multiple issues in extra field parsing function
+   * RAR5 reader: early fail when file declares data for a dir entry
+   * tar writer: fix replacing a regular file with a dir for ARCHIVE_EXTRACT_SAFE_WRITES
+   * tar reader (Windows): check WCS pathname in header_gnutar before overwriting
+   * tar reader: fix an infinite loop when parsing V headers
+   * zip writer: fix a memory leak if write callback error early
+   * zip writer: fix writing with ZSTD compression
+   * zstd write filter: enable Zstandard's checksum feature
+
+-------------------------------------------------------------------
 Thu Jun  5 21:05:40 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.8.1:
