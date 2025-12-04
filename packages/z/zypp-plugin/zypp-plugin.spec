@@ -19,7 +19,7 @@
 %define singlespec_py3 ( 0%{?suse_version} > 1330 )
 
 Name:           zypp-plugin
-Version:        0.6.5
+Version:        0.6.6
 Release:        0
 Summary:        Helper that makes writing ZYpp plugins easier
 License:        GPL-2.0

@@ -137,4 +137,12 @@
     <comment>Softwarestack update</comment>
     <requestid>1246724</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>552c10962dc93a3190eeee4c85ccd46f</srcmd5>
+    <version>0.6.6</version>
+    <time>1764843746</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1320958</requestid>
+  </revision>
 </revisionlist>
