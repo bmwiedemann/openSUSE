@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Dec  2 16:04:21 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.24.11 (released 2025-12-02) includes two security fixes to
+  the crypto/x509 package, as well as bug fixes to the runtime.
+  Refs boo#1236217 go1.24 release tracking
+  CVE-2025-61727 CVE-2025-61729
+  * go#76460 go#76445 boo#1254431 security: fix CVE-2025-61729 crypto/x509: excessive resource consumption in printing error string for host certificate validation
+  * go#76463 go#76442 boo#1254430 security: fix CVE-2025-61727 crypto/x509: excluded subdomain constraint doesn't preclude wildcard SAN
+  * go#76378 internal/cpu: incorrect CPU features bit parsing on loong64 cause illegal instruction core dumps on LA364 cores
+
+-------------------------------------------------------------------
+Mon Dec  1 15:20:28 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Packaging: Migrate from update-alternatives to libalternatives
+  Refs boo#1245878
+  * This is an optional migration controlled via prjconf definition
+    with_libalternatives
+  * If with_libalternatives is not defined packaging continues to
+    use update-alternatives
+
+-------------------------------------------------------------------
 Wed Nov  5 19:01:51 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.24.10 (released 2025-11-05) includes fixes to the

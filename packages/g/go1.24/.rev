@@ -322,4 +322,18 @@
     No longer needed with go#75831 in latest upstream release (forwarded request 1316084 from jfkw)</comment>
     <requestid>1316086</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3b28e08af7fc691e0da63dc1bb01b62b</srcmd5>
+    <version>1.24.11</version>
+    <time>1764843702</time>
+    <user>anag_factory</user>
+    <comment>- go1.24.11 (released 2025-12-02) includes two security fixes to
+  the crypto/x509 package, as well as bug fixes to the runtime.
+  Refs boo#1236217 go1.24 release tracking
+  CVE-2025-61727 CVE-2025-61729
+  * go#76460 go#76445 boo#1254431 security: fix CVE-2025-61729 crypto/x509: excessive resource consumption in printing error string for host certificate validation
+  * go#76463 go#76442 boo#1254430 security: fix CVE-2025-61727 crypto/x509: excluded subdomain constraint doesn't preclude wildcard SAN
+  * go#76378 internal/cpu: incorrect CPU features bit parsing on loong64 cause illegal instruction core dumps on LA364 cores (forwarded request 1320909 from jfkw)</comment>
+    <requestid>1320911</requestid>
+  </revision>
 </revisionlist>
