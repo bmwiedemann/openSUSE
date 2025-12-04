@@ -1,6 +1,7 @@
 #
 # spec file for package nml
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +18,7 @@
 
 
 Name:           nml
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        NewGRF Meta Language
 License:        GPL-2.0-or-later

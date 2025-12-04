@@ -1,3 +1,19 @@
+Wed Dec  3 09:26:34 UTC 2025 - Jan Baier <jbaier@suse.com>
+
+- update to 0.8.1:
+  * Add: station properties to editor symbols script by @Pixel-Tony in #383
+  * Change: move black options to pyproject.toml by @ahyangyi in #386
+  * Add: Extend FEAT_TRAIN track_type for prop 34 by @glx22 in #390
+  * Codefix 41d5cd4: standalone build references non existing files by @glx22 in #397
+  * Add: Support for Action5 type 1B bridge deck overlays by @zephyris in #393
+  * Add: FEAT_AIRCRAFT flight_state variable (varE2) by @glx22 in #391
+  * Fix: Validation and handling of multiple settings in one parameter by @glx22 in #382
+  * Upgrade: bump the actions group across 1 directory with 6 updates by @dependabot[bot] in #396
+  * Codefix: Fix typos and grammar errors by @Rito13 in #389
+  * Change: Validate action 2 loaded list does not overlap special types. by @PeterN in #400
+  * Add: Station/RoadStop height and blocked pillar flag lists. by @PeterN in #388
+  * Update: changelog for 0.8.1 by @glx22 in #399
+
 -------------------------------------------------------------------
 Tue Oct 28 01:45:20 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
