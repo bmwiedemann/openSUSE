@@ -45,25 +45,24 @@
 %else
 %bcond_with full
 %endif
-%define shortversion 4.1.2
 %if 0%{?suse_version} && 0%{?suse_version} <= 1500
 %define pyver 311
 %else
 %define pyver 3
 %endif
 Name:           cmake%{?psuffix}
-Version:        4.1.2
+Version:        4.1.3
 Release:        0
 Summary:        Cross-platform make system
 License:        BSD-3-Clause
 URL:            https://www.cmake.org/
-Source0:        https://www.cmake.org/files/v%{shortversion}/cmake-%{version}.tar.gz
+Source0:        https://github.com/Kitware/CMake/releases/download/v%{version}/cmake-%{version}.tar.gz
 Source1:        cmake.macros
 # bnc#947585 - Let CMake produces automatic RPM provides
 Source3:        cmake.attr
 Source4:        cmake.prov
-Source5:        https://www.cmake.org/files/v%{shortversion}/cmake-%{version}-SHA-256.txt
-Source6:        https://www.cmake.org/files/v%{shortversion}/cmake-%{version}-SHA-256.txt.asc
+Source5:        https://github.com/Kitware/CMake/releases/download/v%{version}/cmake-%{version}-SHA-256.txt
+Source6:        https://github.com/Kitware/CMake/releases/download/v%{version}/cmake-%{version}-SHA-256.txt.asc
 Source7:        cmake.keyring
 Source99:       README.SUSE
 Patch0:         cmake-fix-ruby-test.patch
