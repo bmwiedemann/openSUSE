@@ -137,6 +137,8 @@ unsorted:
   - Mesa-libGLESv3-devel 
   - Mesa-libRusticlOpenCL 
   - Mesa-libva-32bit 
+  - Mesa-vulkan-anti-lag 
+  - Mesa-vulkan-anti-lag-32bit 
   - Mesa-vulkan-device-select-32bit 
   - Mesa-vulkan-overlay 
   - Mesa-vulkan-overlay-32bit 
@@ -15144,14 +15146,14 @@ unsorted:
   - libopentimelineio18 
   - libopentracing-cpp1 
   - libopenvdb12_0 
-  - libopenvino2530 
-  - libopenvino_c2530 
-  - libopenvino_ir_frontend2530 
-  - libopenvino_onnx_frontend2530 
-  - libopenvino_paddle_frontend2530 
-  - libopenvino_pytorch_frontend2530 
-  - libopenvino_tensorflow_frontend2530 
-  - libopenvino_tensorflow_lite_frontend2530 
+  - libopenvino2540 
+  - libopenvino_c2540 
+  - libopenvino_ir_frontend2540 
+  - libopenvino_onnx_frontend2540 
+  - libopenvino_paddle_frontend2540 
+  - libopenvino_pytorch_frontend2540 
+  - libopenvino_tensorflow_frontend2540 
+  - libopenvino_tensorflow_lite_frontend2540 
   - libopenvswitch-3_6-0 
   - liboping-devel 
   - liboping0 
@@ -37405,6 +37407,7 @@ unsorted:
   - serdi 
   - serialdv-devel 
   - sersniff 
+  - servicetray 
   - servletapi4 
   - servletapi4-javadoc 
   - servletapi5 

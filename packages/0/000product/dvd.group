@@ -3863,6 +3863,7 @@
     <package name="sg3_utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="sgml-skel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="shadow" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="shadow-pw-mgmt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="shared-mime-info" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="shared-mime-info-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="shared-python-startup" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
