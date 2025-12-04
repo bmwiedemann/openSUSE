@@ -1768,4 +1768,28 @@
   * Prefer UV_WORKING_DIR over UV_WORKING_DIRECTORY for consistency</comment>
     <requestid>1320813</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>8a64ea1ccc7824bba14d02f297a46603</srcmd5>
+    <version>0.9.15</version>
+    <time>1764843930</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.9.15 
+ * Enhancements
+  * Add ROCm 6.4 to --torch-backend=auto 
+  * Add a Windows manifest to uv binaries 
+  * Add LFS toggle to Git sources 
+  * Cache source reads during resolution 
+  * Allow reading requirements from scripts without an extension 
+  * Allow reading requirements from scripts with HTTP(S) paths 
+ * Configuration
+  * Add UV_HIDE_BUILD_OUTPUT to omit build logs 
+ * Bug fixes
+  * Fix uv-trampoline-builder builds from crates.io by moving bundled executables 
+  * Respect NO_COLOR and always show the command as a header when paging uv help output 
+  * Use 0o666 permissions for flock files instead of 0o777 
+  * Revert &quot;Bump astral-tl to v0.7.10 &quot; to narrow down a regression causing hangs in metadata retrieval (#16938)
+ * Documentation
+  * Link to the uv version in crates.io member READMEs</comment>
+    <requestid>1320996</requestid>
+  </revision>
 </revisionlist>
