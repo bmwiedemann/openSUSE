@@ -673,6 +673,7 @@ Summary:        Mesa vulkan driver for AMD GPU
 Group:          System/Libraries
 Supplements:    modalias(pci:v00001002d*sv*sd*bc03sc*i*)
 Requires:       Mesa-vulkan-device-select = %{version}
+Recommends:     Mesa-vulkan-anti-lag = %{version}
 
 %description -n libvulkan_radeon
 This package contains the Vulkan parts for Mesa.
@@ -714,6 +715,13 @@ Group:          System/Libraries
 
 %description -n Mesa-vulkan-device-select
 This package contains the VK_MESA_device_select Vulkan layer
+
+%package -n Mesa-vulkan-anti-lag
+Summary:        Vulkan layer to reduce the latency between inputs received and updates on the screen
+Group:          System/Libraries
+
+%description -n Mesa-vulkan-anti-lag
+This package contains the VK_AMD_anti_lag Vulkan layer
 
 %package -n Mesa-vulkan-overlay
 Summary:        Mesa Vulkan Overlay layer
@@ -832,7 +840,7 @@ egl_platforms=x11,wayland
 %endif
 %if 0%{with_vulkan}
             -Dvulkan-drivers=%{?vulkan_drivers} \
-            -Dvulkan-layers=device-select,overlay \
+            -Dvulkan-layers=device-select,overlay,anti-lag \
             -Dvulkan-beta=true \
 %else
             -Dvulkan-drivers= \
@@ -1185,6 +1193,12 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %dir %{_datadir}/vulkan
 %dir %{_datadir}/vulkan/implicit_layer.d
 %{_datadir}/vulkan/implicit_layer.d/VkLayer_MESA_device_select.json
+
+%files -n Mesa-vulkan-anti-lag
+%{_libdir}/libVkLayer_MESA_anti_lag.so
+%dir %{_datadir}/vulkan
+%dir %{_datadir}/vulkan/implicit_layer.d
+%{_datadir}/vulkan/implicit_layer.d/VkLayer_MESA_anti_lag.json
 
 %files -n Mesa-vulkan-overlay
 %{_bindir}/mesa-overlay-control.py

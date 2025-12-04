@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec  2 19:27:12 UTC 2025 - Simon Vogl <simon.vogl@gmx.net>
+
+- Build with VK_AMD_anti_lag vulkan extension support to allow AMD
+  Anti-Lag to be used on AMD GPUs
+- Create new subpackage Mesa-vulkan-anti-lag for this new vulkan
+  extension
+
+-------------------------------------------------------------------
 Tue Nov 18 07:23:20 UTC 2025 - llyyr <llyyr.public@gmail.com>
 
 - Build with -Ddisplay-info=enabled to allow VK_EXT_hdr_metadata
