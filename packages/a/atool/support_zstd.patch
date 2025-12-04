@@ -1,0 +1,77 @@
+commit d208588144615bf0aa4a43c67d0d3b4c96b9e436
+Author: Wolfgang Frisch <wolfgang.frisch@suse.com>
+Date:   Tue Dec 2 09:57:19 2025 +0100
+
+    add .tar.zstd support
+
+diff --git a/atool b/atool
+index 661691f..85fbb3d 100755
+--- a/atool
++++ b/atool
+@@ -126,6 +126,7 @@ $::cfg_path_usercfg         = '.'.$::PROGRAM.'rc';  # user configuration file
+ $::cfg_path_xargs           = 'xargs';            # xargs program
+ $::cfg_path_xz              = 'xz';               # xz program
+ $::cfg_path_zip             = 'zip';              # zip program
++$::cfg_path_zstd            = 'zstd';             # zstd program
+ $::cfg_show_extracted       = 1;                  # always show extracted file/directory
+ $::cfg_strip_unknown_ext    = 1;                  # strip unknown extensions
+ $::cfg_tmpdir_name          = 'Unpack-%04d';      # extraction directory name
+@@ -147,6 +148,7 @@ $::cfg_use_tar_lzma_option  = 1;                  # does tar support --lzma?
+ $::cfg_use_tar_lzip_option  = 0;                  # does tar support --lzip?
+ $::cfg_use_tar_lzop_option  = 0;                  # does tar support --lzop?
+ $::cfg_use_tar_xz_option    = 0;                  # does tar support --xz?
++$::cfg_use_tar_zstd_option  = 1;                  # does tar support --zstd?
+ $::cfg_use_tar_z_option     = 1;                  # does tar support -z?
+ 
+ # Global variables
+@@ -531,6 +533,18 @@ sub runcmds($$$;@) {
+     @cmd = handle_empty_add(@cmd) if ($mode eq 'add' && @args == 0);
+     return multiarchivecmd($archive, $outdir, $mode, 1, 0, \@args, @cmd);
+   }
++  elsif ($format eq 'tar+zstd') {
++    return undef if ($mode eq 'extract' && !defined ($outdir = makeoutdir()));
++    if ($::cfg_use_tar_zstd_option) {
++      push @cmd, maketarcmd($archive, $outdir, $mode, 'f', '--zstd'), @args;
++    } else {
++      push @cmd, $::cfg_path_zstd, '-cd', $archive, ['|'] if $mode ne 'add';
++      push @cmd, maketarcmd('-', $outdir, $mode, 'f'), @args;
++      push @cmd, ['|'], $::cfg_path_zstd, '-c', ['>'], $archive if $mode eq 'add';
++    }
++    @cmd = handle_empty_add(@cmd) if ($mode eq 'add' && @args == 0);
++    return multiarchivecmd($archive, $outdir, $mode, 1, 0, \@args, @cmd);
++  }
+   elsif ($format eq 'tar+7z') {
+     return undef if ($mode eq 'extract' && !defined ($outdir = makeoutdir()));
+     push @cmd, $::cfg_path_7z, 'x', '-so', $archive, ['|']  if $mode ne 'add';
+@@ -1434,6 +1448,7 @@ sub findformat($$) {
+     ['lzop',           qr/^lzop compressed data /],
+     ['lzip',           qr/^lzip compressed data /], # Not in my magic
+     ['xz',             qr/^xz compressed data /], # Not in my magic
++    ['zstd',           qr/^zstd compressed data /],
+     ['rzip',           qr/^rzip compressed data /],
+     ['lrzip',          qr/^lrzip compressed data /], # Not in my magic
+     ['bzip2',          qr/^bzip2 compressed data(\W|$)/],
+@@ -1451,6 +1466,7 @@ sub findformat($$) {
+     ['tar+lzma',       qr/(\.tar\.lzma|\.tlzma)$/],
+     ['tar+lzop',       qr/(\.tar\.lzo|\.tzo)$/],
+     ['tar+xz',         qr/(\.tar\.xz|\.txz)$/],
++    ['tar+zstd',       qr/(\.tar\.zstd|\.tzstd)$/],
+ 
+     ['7z',             qr/\.7z$/],
+     ['ace',            qr/\.ace$/],
+@@ -1477,6 +1493,7 @@ sub findformat($$) {
+     ['tar',            qr/\.tar$/],
+     ['xz',             qr/\.xz$/],
+     ['zip',            qr/\.zip$/],
++    ['zstd',           qr/\.zstd$/],
+   );
+ 
+   if ($manual) {
+@@ -1657,6 +1674,7 @@ sub set_config_option($$$) {
+     'use_tar_xz_option'       => [ 'option', \$::cfg_use_tar_xz_option, qr/^(0|1)$/ ],
+     'use_tar_j_option'        => [ 'obsolete', 'use_tar_bzip2_option' ],
+     'use_tar_z_option'        => [ 'option', \$::cfg_use_tar_z_option, qr/^(0|1)$/ ],
++    'use_tar_zstd_option'     => [ 'option', \$::cfg_use_tar_zstd_option, qr/^(0|1)$/ ],
+   );
+   die $::basename,': ',$context,'unrecognized directive `',$var,"'\n" if !exists $optionmap{$var};
+   return 0 if !exists $optionmap{$var};

@@ -26,6 +26,7 @@ URL:            http://www.nongnu.org/atool/
 Source0:        http://download-mirror.savannah.gnu.org/releases/atool/atool-%{version}.tar.gz
 Source1:        http://download-mirror.savannah.gnu.org/releases/atool/atool-%{version}.tar.gz.sig
 Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=%{name}&download=1#/%{name}.keyring
+Patch0:         support_zstd.patch
 Requires:       bzip2
 Requires:       gzip
 Requires:       tar
@@ -48,6 +49,7 @@ Suggests:       unarj
 Suggests:       unrar
 Suggests:       unzip
 Suggests:       zip
+Suggests:       zstd
 BuildArch:      noarch
 
 %description
@@ -65,7 +67,7 @@ als (for listing files in archives), and acat (for extracting files to
 stdout).
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %configure
