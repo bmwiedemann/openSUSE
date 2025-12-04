@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec  3 10:06:27 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Require python-typer at runtime
+
+-------------------------------------------------------------------
+Wed Dec  3 08:27:39 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to 1.1.7
+  * huggingface-cli was renamed to hf
+
+-------------------------------------------------------------------
 Fri Sep 19 18:58:08 UTC 2025 - Stefan Haas <stefan.haas@suse.com>
 
 - Update to 0.33.1
