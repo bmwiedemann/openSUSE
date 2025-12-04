@@ -99,6 +99,7 @@
       <repopackage name="bubblewrap"/>
       <repopackage name="busybox"/>
       <repopackage name="busybox-coreutils"/>
+      <repopackage name="busybox-diffutils"/>
       <repopackage name="busybox-grep"/>
       <repopackage name="busybox-gzip"/>
       <repopackage name="busybox-hostname"/>
@@ -144,7 +145,6 @@
       <repopackage name="cyrus-sasl-gssapi"/>
       <repopackage name="dbus-1"/>
       <repopackage name="dbus-1-common"/>
-      <repopackage name="dbus-1-daemon"/>
       <repopackage name="dbus-1-tools"/>
       <repopackage name="dbus-broker"/>
       <repopackage name="dbus-broker-block-restart"/>
@@ -513,6 +513,7 @@
       <repopackage name="libaio1"/>
       <repopackage name="libalternatives1"/>
       <repopackage name="libaom3"/>
+      <repopackage name="libapparmor1"/>
       <repopackage name="libappstream-glib8"/>
       <repopackage name="libappstream5"/>
       <repopackage name="libAppStreamQt3"/>

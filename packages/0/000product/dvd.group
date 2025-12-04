@@ -1651,7 +1651,7 @@
     <package name="libao-plugins4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libao4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libaom3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libapparmor1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-apparmor -->
+    <package name="libapparmor1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libappindicator3-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libappstream-glib8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libappstream5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
