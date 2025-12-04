@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  2 11:24:42 UTC 2025 - pallas wept <pallaswept@proton.me>
+
+- Add patch from upstream to fix linking in older clients:
+  * remove-mappable.patch
+
+-------------------------------------------------------------------
 Fri Nov 28 16:32:16 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.5.84 (1.6 RC4):

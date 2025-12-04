@@ -1,0 +1,34 @@
+From 0d7cb9b39f5b23610ecee75fb3080f6b3dfa26c7 Mon Sep 17 00:00:00 2001
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Tue, 2 Dec 2025 12:03:35 +0100
+Subject: [PATCH] client-node: remove the MAPPABLE flag for MemPtr data
+
+af3ad7bf9f861d6b3ca0446d90e47e526bc6f807 set the fd and MAPPABLE
+flag on buffer data when it was allocated inline in shared mem, even
+for MemPtr data. In the client-node however we don't pass along this
+fd and so we also should not pass the MAPPABLE flag for MemPtr data.
+
+This fixes an issue in older clients that blindly try to map the fd when
+the MAPPABLE flag is set, even when there is no fd (and there is already
+a data pointer).
+
+Fixes #5003
+---
+ src/modules/module-client-node/client-node.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/modules/module-client-node/client-node.c b/src/modules/module-client-node/client-node.c
+index a17dc87ceb..0253591cfd 100644
+--- a/src/modules/module-client-node/client-node.c
++++ b/src/modules/module-client-node/client-node.c
+@@ -894,6 +894,7 @@ do_port_use_buffers(struct impl *impl,
+ 			case SPA_DATA_MemPtr:
+ 				spa_log_debug(impl->log, "mem %d %zd", j, SPA_PTRDIFF(d->data, baseptr));
+ 				b->datas[j].data = SPA_INT_TO_PTR(SPA_PTRDIFF(d->data, baseptr));
++				SPA_FLAG_CLEAR(b->datas[j].flags, SPA_DATA_FLAG_MAPPABLE);
+ 				break;
+ 			default:
+ 				b->datas[j].type = SPA_ID_INVALID;
+-- 
+GitLab
+

@@ -79,6 +79,8 @@ Source0:        %{name}-%{version}.tar.zst
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE reduce-meson-dependency.patch
 Patch0:         reduce-meson-dependency.patch
+# PATCH-FIX-UPSTREAM remove-mappable.patch -- based on commit 0d7cb9b39f5b23610ecee75fb3080f6b3dfa26c7
+Patch1:         remove-mappable.patch
 
 BuildRequires:  docutils
 %if 0%{suse_version} > 1500
