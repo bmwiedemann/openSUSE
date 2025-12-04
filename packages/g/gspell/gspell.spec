@@ -18,7 +18,7 @@
 
 %define shlib lib%{name}-1-3
 Name:           gspell
-Version:        1.14.1
+Version:        1.14.2
 Release:        0
 Summary:        A spell checker library for GTK+ applications
 License:        LGPL-2.1-or-later
