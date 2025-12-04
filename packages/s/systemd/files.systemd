@@ -2,6 +2,7 @@
 # Please keep the list sorted (with `LC_ALL=C sort`).
 #
 
+
 %dir %{_binfmtdir}
 %if %{without bootstrap}
 %dir %{_datadir}/bash-completion
@@ -13,6 +14,8 @@
 %dir %{_datadir}/dbus-1/system-services
 %dir %{_datadir}/dbus-1/system.d
 %dir %{_datadir}/factory
+%dir %{_datadir}/polkit-1
+%dir %{_datadir}/polkit-1/actions
 %dir %{_datadir}/systemd
 %if %{without bootstrap}
 %dir %{_datadir}/zsh
@@ -44,14 +47,15 @@
 %dir %{_systemd_system_env_generator_dir}
 %dir %{_systemd_user_env_generator_dir}
 %dir %{_systemd_util_dir}
+%if %{with upstream}
 %dir %{_systemd_util_dir}/initrd-preset
+%endif
 %dir %{_systemd_util_dir}/ntp-units.d
 %dir %{_systemd_util_dir}/rpm
 %dir %{_systemd_util_dir}/system-preset
 %dir %{_systemd_util_dir}/system-shutdown
 %dir %{_systemd_util_dir}/user
 %dir %{_systemd_util_dir}/user-preset
-%dir %{_systemd_util_dir}/user/sockets.target.wants
 %dir %{_systemdgeneratordir}
 %dir %{_systemdusergeneratordir}
 %dir %{_sysusersdir}
@@ -127,7 +131,6 @@
 %{_bindir}/systemd-mount
 %{_bindir}/systemd-notify
 %{_bindir}/systemd-path
-%{_bindir}/systemd-pty-forward
 %{_bindir}/systemd-run
 %{_bindir}/systemd-socket-activate
 %{_bindir}/systemd-stdio-bridge
@@ -167,9 +170,8 @@
 %{_datadir}/bash-completion/completions/systemd-sysext
 %{_datadir}/bash-completion/completions/systemd-vpick
 %{_datadir}/bash-completion/completions/timedatectl
-%{_datadir}/bash-completion/completions/userdbctl
 %if %{with upstream}
-%{_datadir}/bash-completion/completions/varlinkctl
+%{_datadir}/bash-completion/completions/userdbctl
 %endif
 %endif
 # dbus introspection data for code generators: https://github.com/systemd/systemd/pull/20294
@@ -214,9 +216,8 @@
 %{_datadir}/polkit-1/actions/org.freedesktop.login1.policy
 %{_datadir}/polkit-1/actions/org.freedesktop.systemd1.policy
 %{_datadir}/polkit-1/actions/org.freedesktop.timedate1.policy
-%{_datadir}/polkit-1/rules.d/10-systemd-logind-root-ignore-inhibitors.rules.example
 %if %{with upstream}
-%{_datadir}/polkit-1/rules.d/empower.rules
+%{_datadir}/polkit-1/rules.d/10-systemd-logind-root-ignore-inhibitors.rules.example
 %endif
 %{_datadir}/systemd/kbd-model-map
 %{_datadir}/systemd/language-fallback-map
@@ -228,7 +229,6 @@
 %{_datadir}/zsh/site-functions/_localectl
 %{_datadir}/zsh/site-functions/_loginctl
 %{_datadir}/zsh/site-functions/_run0
-%{_datadir}/zsh/site-functions/_sd_bus_address
 %{_datadir}/zsh/site-functions/_sd_hosts_or_user_at_host
 %{_datadir}/zsh/site-functions/_sd_outputmodes
 %{_datadir}/zsh/site-functions/_sd_unit_files
@@ -281,7 +281,6 @@
 %{_mandir}/man1/systemd-mount.1.gz
 %{_mandir}/man1/systemd-notify.1.gz
 %{_mandir}/man1/systemd-path.1.gz
-%{_mandir}/man1/systemd-pty-forward.1.gz
 %{_mandir}/man1/systemd-run.1.gz
 %{_mandir}/man1/systemd-socket-activate.1.gz
 %{_mandir}/man1/systemd-stdio-bridge.1.gz
@@ -294,10 +293,6 @@
 %{_mandir}/man1/varlinkctl.1.gz
 %{_mandir}/man5/binfmt.d.5.gz
 %{_mandir}/man5/capsule@.service.5.gz
-%if %{with upstream}
-%{_mandir}/man5/confext.conf.5.gz
-%{_mandir}/man5/confext.conf.d.5.gz
-%endif
 %{_mandir}/man5/coredump.conf.5.gz
 %{_mandir}/man5/coredump.conf.d.5.gz
 %{_mandir}/man5/dnssec-trust-anchors.d.5.gz
@@ -323,10 +318,6 @@
 %{_mandir}/man5/org.freedesktop.timedate1.5.gz
 %{_mandir}/man5/os-release.5.gz
 %{_mandir}/man5/sysctl.d.5.gz
-%if %{with upstream}
-%{_mandir}/man5/sysext.conf.5.gz
-%{_mandir}/man5/sysext.conf.d.5.gz
-%endif
 %{_mandir}/man5/system.conf.d.5.gz
 %{_mandir}/man5/systemd-system.conf.5.gz
 %{_mandir}/man5/systemd-user-runtime-dir.5.gz
@@ -392,7 +383,9 @@
 %{_mandir}/man8/systemd-binfmt.service.8.gz
 %{_mandir}/man8/systemd-boot-check-no-failures.8.gz
 %{_mandir}/man8/systemd-boot-check-no-failures.service.8.gz
+%if %{with upstream}
 %{_mandir}/man8/systemd-confext-initrd.service.8.gz
+%endif
 %{_mandir}/man8/systemd-confext.8.gz
 %{_mandir}/man8/systemd-confext.service.8.gz
 %{_mandir}/man8/systemd-coredump.8.gz
@@ -418,7 +411,9 @@
 %{_mandir}/man8/systemd-localed.service.8.gz
 %{_mandir}/man8/systemd-logind.8.gz
 %{_mandir}/man8/systemd-logind.service.8.gz
+%if %{with upstream}
 %{_mandir}/man8/systemd-loop@.service.8.gz
+%endif
 %{_mandir}/man8/systemd-machine-id-commit.service.8.gz
 %{_mandir}/man8/systemd-poweroff.service.8.gz
 %{_mandir}/man8/systemd-reboot.service.8.gz
@@ -428,7 +423,9 @@
 %{_mandir}/man8/systemd-soft-reboot.service.8.gz
 %{_mandir}/man8/systemd-sysctl.8.gz
 %{_mandir}/man8/systemd-sysctl.service.8.gz
+%if %{with upstream}
 %{_mandir}/man8/systemd-sysext-initrd.service.8.gz
+%endif
 %{_mandir}/man8/systemd-sysext.8.gz
 %{_mandir}/man8/systemd-sysext.service.8.gz
 %{_mandir}/man8/systemd-system-update-generator.8.gz
@@ -474,7 +471,10 @@
 %if %{without bootstrap}
 %{_systemd_util_dir}/coredump.conf
 %endif
+%if %{with upstream}
+%{_systemd_util_dir}/initrd-preset/90-systemd.preset
 %{_systemd_util_dir}/initrd-preset/99-default.preset
+%endif
 %{_systemd_util_dir}/journald.conf
 %{_systemd_util_dir}/logind.conf
 %{_systemd_util_dir}/rpm/fixlet-systemd-post.sh
@@ -483,6 +483,9 @@
 %{_systemd_util_dir}/systemd
 %{_systemd_util_dir}/systemd-binfmt
 %{_systemd_util_dir}/systemd-boot-check-no-failures
+%if %{without upstream}
+%{_systemd_util_dir}/systemd-cgroups-agent
+%endif
 %if %{without bootstrap}
 %{_systemd_util_dir}/systemd-coredump
 %endif
@@ -528,10 +531,14 @@
 %{_systemd_util_dir}/user/shutdown.target
 %{_systemd_util_dir}/user/smartcard.target
 %{_systemd_util_dir}/user/sockets.target
+%if %{with upstream}
 %{_systemd_util_dir}/user/sockets.target.wants/systemd-ask-password.socket
+%endif
 %{_systemd_util_dir}/user/sound.target
+%if %{with upstream}
 %{_systemd_util_dir}/user/systemd-ask-password.socket
 %{_systemd_util_dir}/user/systemd-ask-password@.service
+%endif
 %{_systemd_util_dir}/user/systemd-exit.service
 %{_systemd_util_dir}/user/systemd-tmpfiles-clean.service
 %{_systemd_util_dir}/user/systemd-tmpfiles-clean.timer
@@ -567,10 +574,12 @@
 %{_unitdir}/blockdev@.target
 %{_unitdir}/bluetooth.target
 %{_unitdir}/boot-complete.target
+%if %{with upstream}
 %{_unitdir}/breakpoint-pre-basic.service
 %{_unitdir}/breakpoint-pre-mount.service
 %{_unitdir}/breakpoint-pre-switch-root.service
 %{_unitdir}/breakpoint-pre-udev.service
+%endif
 %{_unitdir}/capsule.slice
 %{_unitdir}/capsule@.service
 %{_unitdir}/console-getty.service
@@ -595,7 +604,7 @@
 %{_unitdir}/getty@.service
 %{_unitdir}/graphical.target
 %{_unitdir}/halt.target
-%if %{without bootstrap}
+%if %{with upstream}
 %{_unitdir}/imports-pre.target
 %{_unitdir}/imports.target
 %endif
@@ -608,8 +617,10 @@
 %{_unitdir}/initrd-switch-root.target
 %{_unitdir}/initrd-usr-fs.target
 %{_unitdir}/initrd.target
+%if %{with upstream}
 %{_unitdir}/initrd.target.wants/systemd-confext-initrd.service
 %{_unitdir}/initrd.target.wants/systemd-sysext-initrd.service
+%endif
 %{_unitdir}/kexec.target
 %{_unitdir}/local-fs-pre.target
 %{_unitdir}/local-fs.target
@@ -641,7 +652,9 @@
 %{_unitdir}/slices.target
 %{_unitdir}/smartcard.target
 %{_unitdir}/sockets.target
+%if %{with upstream}
 %{_unitdir}/sockets.target.wants/systemd-ask-password.socket
+%endif
 %if %{without bootstrap}
 %{_unitdir}/sockets.target.wants/systemd-coredump.socket
 %endif
@@ -649,7 +662,9 @@
 %{_unitdir}/sockets.target.wants/systemd-hostnamed.socket
 %{_unitdir}/sockets.target.wants/systemd-journald-dev-log.socket
 %{_unitdir}/sockets.target.wants/systemd-journald.socket
+%if %{with upstream}
 %{_unitdir}/sockets.target.wants/systemd-logind-varlink.socket
+%endif
 %{_unitdir}/sockets.target.wants/systemd-sysext.socket
 %{_unitdir}/soft-reboot.target
 %{_unitdir}/sound.target
@@ -662,9 +677,6 @@
 %{_unitdir}/sysinit.target
 %{_unitdir}/sysinit.target.wants/dev-hugepages.mount
 %{_unitdir}/sysinit.target.wants/dev-mqueue.mount
-%if %{without bootstrap}
-%{_unitdir}/sysinit.target.wants/imports.target
-%endif
 %{_unitdir}/sysinit.target.wants/proc-sys-fs-binfmt_misc.automount
 %{_unitdir}/sysinit.target.wants/sys-fs-fuse-connections.mount
 %{_unitdir}/sysinit.target.wants/sys-kernel-config.mount
@@ -679,6 +691,9 @@
 %{_unitdir}/sysinit.target.wants/systemd-machine-id-commit.service
 %{_unitdir}/sysinit.target.wants/systemd-sysctl.service
 %{_unitdir}/sysinit.target.wants/systemd-sysusers.service
+%if %{with upstream}
+%{_unitdir}/sysinit.target.wants/imports.target
+%endif
 %{_unitdir}/sysinit.target.wants/systemd-tmpfiles-setup.service
 %{_unitdir}/sysinit.target.wants/systemd-update-done.service
 %if %{with utmp}
@@ -692,11 +707,15 @@
 %{_unitdir}/systemd-ask-password-console.service
 %{_unitdir}/systemd-ask-password-wall.path
 %{_unitdir}/systemd-ask-password-wall.service
+%if %{with upstream}
 %{_unitdir}/systemd-ask-password.socket
 %{_unitdir}/systemd-ask-password@.service
+%endif
 %{_unitdir}/systemd-binfmt.service
 %{_unitdir}/systemd-boot-check-no-failures.service
+%if %{with upstream}
 %{_unitdir}/systemd-confext-initrd.service
+%endif
 %{_unitdir}/systemd-confext.service
 %if %{without bootstrap}
 %{_unitdir}/systemd-coredump.socket
@@ -720,15 +739,19 @@
 %{_unitdir}/systemd-journald@.socket
 %{_unitdir}/systemd-kexec.service
 %{_unitdir}/systemd-localed.service
-%{_unitdir}/systemd-logind-varlink.socket
 %{_unitdir}/systemd-logind.service
+%if %{with upstream}
+%{_unitdir}/systemd-logind-varlink.socket
 %{_unitdir}/systemd-loop@.service
+%endif
 %{_unitdir}/systemd-machine-id-commit.service
 %{_unitdir}/systemd-poweroff.service
 %{_unitdir}/systemd-reboot.service
 %{_unitdir}/systemd-soft-reboot.service
 %{_unitdir}/systemd-sysctl.service
+%if %{with upstream}
 %{_unitdir}/systemd-sysext-initrd.service
+%endif
 %{_unitdir}/systemd-sysext.service
 %{_unitdir}/systemd-sysext.socket
 %{_unitdir}/systemd-sysext@.service
@@ -744,7 +767,9 @@
 %endif
 %{_unitdir}/systemd-user-sessions.service
 %if %{without bootstrap}
+%if %{with upstream}
 %{_unitdir}/systemd-userdb-load-credentials.service
+%endif
 %{_unitdir}/systemd-userdbd.service
 %{_unitdir}/systemd-userdbd.socket
 %endif

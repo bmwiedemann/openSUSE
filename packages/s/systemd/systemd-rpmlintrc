@@ -16,4 +16,4 @@ addFilter("libudev.*-mini\..*: E: shlib-policy-name-error SONAME: libudev.*")
 
 # These are NSS plugins and are not really subject to shlib policy.
 addFilter("systemd-container\..*: E: shlib-policy-name-error .* libnss_mymachines")
-addFilter("systemd-resolved\..*: E: shlib-policy-name-error .* libnss_resolve")
+addFilter("systemd-network\..*: E: shlib-policy-name-error .* libnss_resolve")

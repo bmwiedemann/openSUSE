@@ -1,10 +1,60 @@
 #
 # Please keep the list sorted (with `LC_ALL=C sort`).
 #
+%if %{without upstream}
+%dir %{_unitdir}/runlevel1.target.wants
+%dir %{_unitdir}/runlevel2.target.wants
+%dir %{_unitdir}/runlevel3.target.wants
+%dir %{_unitdir}/runlevel4.target.wants
+%dir %{_unitdir}/runlevel5.target.wants
+%endif
 %{_mandir}/man8/rc-local.service.8.gz
+%if %{without upstream}
+%{_mandir}/man8/runlevel.8.gz
+%{_mandir}/man8/systemd-initctl.8.gz
+%{_mandir}/man8/systemd-initctl.service.8.gz
+%{_mandir}/man8/systemd-initctl.socket.8.gz
+%endif
 %{_mandir}/man8/systemd-rc-local-generator.8.gz
 %{_mandir}/man8/systemd-sysv-generator.8.gz
+%if %{without upstream}
+%if %{with utmp}
+%{_mandir}/man8/systemd-update-utmp-runlevel.service.8.gz
+%endif
+%{_mandir}/man8/telinit.8.gz
+%{_sbindir}/runlevel
+%{_sbindir}/telinit
+%{_systemd_util_dir}/systemd-initctl
+%endif
 %{_systemd_util_dir}/systemd-sysv-install
 %{_systemdgeneratordir}/systemd-rc-local-generator
 %{_systemdgeneratordir}/systemd-sysv-generator
+%if %{without upstream}
+%if %{with utmp}
+%{_unitdir}/graphical.target.wants/systemd-update-utmp-runlevel.service
+%{_unitdir}/multi-user.target.wants/systemd-update-utmp-runlevel.service
+%endif
+%endif
 %{_unitdir}/rc-local.service
+%if %{without upstream}
+%if %{with utmp}
+%{_unitdir}/rescue.target.wants/systemd-update-utmp-runlevel.service
+%endif
+%{_unitdir}/runlevel0.target
+%{_unitdir}/runlevel1.target
+%{_unitdir}/runlevel2.target
+%{_unitdir}/runlevel3.target
+%{_unitdir}/runlevel4.target
+%{_unitdir}/runlevel5.target
+%{_unitdir}/runlevel6.target
+%{_unitdir}/sockets.target.wants/systemd-initctl.socket
+%{_unitdir}/systemd-initctl.service
+%{_unitdir}/systemd-initctl.socket
+%if %{with utmp}
+%{_unitdir}/systemd-update-utmp-runlevel.service
+%endif
+%if %{with split_usr}
+/sbin/runlevel
+/sbin/telinit
+%endif
+%endif

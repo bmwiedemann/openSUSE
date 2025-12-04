@@ -6,7 +6,9 @@
 %if %{without bootstrap}
 %{_datadir}/bash-completion/completions/systemd-nspawn
 %{_datadir}/polkit-1/actions/io.systemd.mount-file-system.policy
+%if %{with upstream}
 %{_datadir}/polkit-1/actions/io.systemd.namespace-resource.policy
+%endif
 %{_datadir}/zsh/site-functions/_systemd-nspawn
 %{_mandir}/man1/systemd-nspawn.1.gz
 %{_mandir}/man5/systemd.nspawn.5.gz
@@ -26,17 +28,19 @@
 %{_systemd_util_dir}/network/80-container-vz.network
 %{_systemd_util_dir}/network/80-namespace-ns.link
 %{_systemd_util_dir}/network/80-namespace-ns.network
+%if %{with upstream}
 %{_systemd_util_dir}/network/80-namespace-ns-tun.link
 %{_systemd_util_dir}/network/80-namespace-ns-tun.network
+%endif
 %endif
 %if %{without bootstrap}
 %{_systemd_util_dir}/systemd-mountfsd
 %{_systemd_util_dir}/systemd-mountwork
 %{_systemd_util_dir}/systemd-nsresourced
 %{_systemd_util_dir}/systemd-nsresourcework
-%endif
+%if %{with upstream}
 %{_systemd_util_dir}/user/systemd-nspawn@.service
-%if %{without bootstrap}
+%endif
 %{_unitdir}/systemd-mountfsd.service
 %{_unitdir}/systemd-mountfsd.socket
 %endif
@@ -53,10 +57,6 @@
 %{_datadir}/dbus-1/interfaces/org.freedesktop.machine1.Image.xml
 %{_datadir}/dbus-1/interfaces/org.freedesktop.machine1.Machine.xml
 %{_datadir}/dbus-1/interfaces/org.freedesktop.machine1.Manager.xml
-%if %{with upstream}
-%{_datadir}/dbus-1/services/org.freedesktop.import1.service
-%{_datadir}/dbus-1/services/org.freedesktop.machine1.service
-%endif
 %{_datadir}/dbus-1/system-services/org.freedesktop.machine1.service
 %{_datadir}/dbus-1/system.d/org.freedesktop.machine1.conf
 %{_datadir}/polkit-1/actions/org.freedesktop.machine1.policy
@@ -67,31 +67,25 @@
 %{_mandir}/man5/org.freedesktop.machine1.5.gz
 %{_mandir}/man8/systemd-machined.8.gz
 %{_mandir}/man8/systemd-machined.service.8.gz
-%if %{with upstream}
-%{_systemd_util_dir}/user/dbus-org.freedesktop.import1.service
-%{_systemd_util_dir}/user/dbus-org.freedesktop.machine1.service
-%endif
 %{_systemd_util_dir}/systemd-machined
+%if %{with upstream}
 %{_systemd_util_dir}/user/machine.slice
 %{_systemd_util_dir}/user/machines.target
-%if %{with upstream}
-%{_systemd_util_dir}/user/sockets.target.wants/systemd-importd.socket
-%{_systemd_util_dir}/user/sockets.target.wants/systemd-machined.socket
-%{_systemd_util_dir}/user/systemd-importd.service
-%{_systemd_util_dir}/user/systemd-importd.socket
-%{_systemd_util_dir}/user/systemd-machined.service
-%{_systemd_util_dir}/user/systemd-machined.socket
-%endif
 %{_systemd_util_dir}/user/systemd-nspawn@.service
+%endif
 %{_tmpfilesdir}/systemd-nspawn.conf
 %{_unitdir}/dbus-org.freedesktop.machine1.service
 %{_unitdir}/machine.slice
 %{_unitdir}/machines.target
 %{_unitdir}/machines.target.wants/var-lib-machines.mount
 %{_unitdir}/remote-fs.target.wants/var-lib-machines.mount
+%if %{with upstream}
 %{_unitdir}/sockets.target.wants/systemd-machined.socket
+%endif
 %{_unitdir}/systemd-machined.service
+%if %{with upstream}
 %{_unitdir}/systemd-machined.socket
+%endif
 %{_unitdir}/var-lib-machines.mount
 %endif
 
@@ -108,7 +102,11 @@
 %{_mandir}/man8/systemd-importd.8.gz
 %{_mandir}/man8/systemd-importd.service.8.gz
 %{_mandir}/man8/systemd-import-generator.8.gz
+%if %{without upstream}
+%{_systemd_util_dir}/import-pubring.gpg
+%else
 %{_systemd_util_dir}/import-pubring.pgp
+%endif
 %{_systemd_util_dir}/systemd-export
 %{_systemd_util_dir}/systemd-import
 %{_systemd_util_dir}/systemd-import-fs

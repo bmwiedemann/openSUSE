@@ -1,6 +1,7 @@
 #
 # spec file for package systemd
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -31,9 +32,9 @@
 %bcond_with obs_service_set_version
 
 %if %{without obs_service_set_version}
-%define systemd_version    258.2
+%define systemd_version    257.9
 %define systemd_release    0
-%define archive_version    +suse.5.ge103ce013e
+%define archive_version    +suse.23.gc139debf2c
 %endif
 
 %define _testsuitedir %{_systemd_util_dir}/tests
@@ -98,6 +99,7 @@ BuildRequires:  libapparmor-devel
 %endif
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libxslt-tools
+BuildRequires:  polkit
 # python is only required for generating systemd.directives.xml
 BuildRequires:  python3-base
 BuildRequires:  python3-lxml
@@ -134,7 +136,7 @@ BuildRequires:  python3-pefile
 BuildRequires:  timezone
 
 %if %{with bootstrap}
-#!BuildIgnore:  dbus-service
+#!BuildIgnore:  dbus-1
 Provides:       systemd = %{version}-%{release}
 Conflicts:      systemd
 # Don't consider the mini flavors when building kiwi medias. This conflict is
@@ -148,7 +150,7 @@ Requires:       this-is-only-for-build-envs
 # the buildignore is important for bootstrapping
 #!BuildIgnore:  udev
 Requires:       aaa_base >= 13.2
-Requires:       dbus-service
+Requires:       dbus-1 >= 1.4.0
 Requires:       kbd
 Requires:       netcfg >= 11.5
 Requires:       systemd-default-settings-branding
@@ -199,7 +201,6 @@ Source7:        triggers.systemd
 Source8:        pam.systemd-user
 Source9:        pam.systemd-run0
 Source14:       kbd-model-map.legacy
-Source15:       mkosi.local.conf
 
 Source101:      fixlet-systemd-post.sh
 
@@ -233,12 +234,12 @@ Source214:      files.ukify
 # inside the following if block.
 #
 %if %{without upstream}
-Patch:          0001-Drop-or-soften-some-upstream-warnings.patch
+Patch:          0001-Drop-support-for-efivar-SystemdOptions.patch
 %if %{with sysvcompat}
 Patch:          0002-rc-local-fix-ordering-startup-for-etc-init.d-boot.lo.patch
 Patch:          0008-sysv-generator-translate-Required-Start-into-a-Wants.patch
 %endif
-
+Patch:          0009-pid1-handle-console-specificities-weirdness-for-s390.patch
 # The patches listed below are in quarantine. Normally, all changes must be
 # pushed to upstream first and then cherry-picked into the SUSE git
 # repository. However, in few cases, some issues might take too much time to be
@@ -246,7 +247,6 @@ Patch:          0008-sysv-generator-translate-Required-Start-into-a-Wants.patch
 # and will be removed as soon as a proper fix is merged by upstream.
 Patch:          5001-Revert-udev-update-devlink-with-the-newer-device-nod.patch
 Patch:          5002-Revert-udev-revert-workarounds-for-issues-caused-by-.patch
-Patch:          5003-core-when-isolating-keep-triggered-units-only-if-the.patch
 %endif
 
 %description
@@ -613,6 +613,83 @@ systemd-journal-remote, and systemd-journal-upload.
 %package testsuite
 Summary:        Testsuite for systemd
 License:        LGPL-2.1-or-later
+Recommends:     python3
+Recommends:     python3-colorama
+# Optional dep for mkfs.vfat needed by test-loop-block (otherwise skipped)
+Recommends:     dosfstools
+# Optional deps needed by TEST-70-TPM2 (otherwise skipped)
+Recommends:     swtpm
+Recommends:     tpm2.0-tools
+%if %{with resolved}
+# Optional dep for knot needed by TEST-75-RESOLVED
+Recommends:     knot
+%endif
+%if %{with selinux}
+# Optional deps needed by TEST-06-SELINUX (otherwise skipped)
+Recommends:     selinux-policy-devel
+Recommends:     selinux-policy-targeted
+%endif
+Requires:       %{name} = %{version}-%{release}
+Requires:       attr
+Requires:       binutils
+Requires:       busybox-static
+Requires:       cryptsetup
+Requires:       dhcp-client
+Requires:       dosfstools
+Requires:       iproute2
+Requires:       jq
+Requires:       libcap-progs
+Requires:       lz4
+Requires:       make
+Requires:       mtools
+Requires:       python3-pexpect
+Requires:       qemu
+Requires:       quota
+Requires:       socat
+Requires:       squashfs
+Requires:       stress-ng
+Requires:       systemd-container
+# System users/groups that some tests rely on.
+Requires:       group(bin)
+Requires:       group(daemon)
+Requires:       group(games)
+Requires:       group(nobody)
+Requires:       user(bin)
+Requires:       user(daemon)
+Requires:       user(games)
+Requires:       user(nobody)
+# The following deps on libs are for test-dlopen-so whereas the pkgconfig ones
+# are used by test-funtions to find the libs on the host and install them in the
+# image, see install_missing_libraries() for details.
+Requires:       pkgconfig(libarchive)
+Requires:       pkgconfig(libfido2)
+Requires:       pkgconfig(libidn2)
+Requires:       pkgconfig(libkmod)
+Requires:       pkgconfig(libqrencode)
+Requires:       pkgconfig(pwquality)
+Requires:       pkgconfig(tss2-esys)
+Requires:       pkgconfig(tss2-mu)
+Requires:       pkgconfig(tss2-rc)
+%if %{with sd_boot}
+Requires:       systemd-boot
+%endif
+Requires:       systemd-experimental
+%if %{with homed}
+Requires:       systemd-homed
+%endif
+%if %{with journal_remote}
+Requires:       systemd-journal-remote
+%endif
+%if %{with networkd}
+Requires:       systemd-networkd
+%endif
+%if %{with portabled}
+Requires:       systemd-portable
+%endif
+%if %{with sd_boot}
+Requires:       systemd-ukify
+%endif
+Requires:       xz
 
 %description testsuite
 This package contains the unit tests as well as the extended testsuite. The unit
@@ -620,26 +697,16 @@ tests are used to check various internal functions used by systemd whereas the
 extended testsuite is used to test various functionalities of systemd and all
 its components.
 
-For now, you will also need to grab and install the most recent version of
-mkosi, available at https://github.com/systemd/mkosi.git. Indeed running the
-integration tests with meson + mkosi relies on the mkosi latest features.
+Note that you need root privileges to run the extended testsuite.
 
 Run the following python script to run all unit tests at once:
 $ %{_testsuitedir}/run-unit-tests.py
 
 To run the full extended testsuite do the following:
-$ cp -a %{_testsuitedir} /var/tmp/systemd-testsuite
-$ cd /var/tmp/systemd-testsuite
-$ mkosi genkey
-$ mkosi summary
-$ mkosi -f
-$ mkosi -f box -- meson setup build integration-tests/standalone
-$ mkosi -f box -- meson test -C build --setup=integration --suite=integration-tests
+$ NO_BUILD=1 TEST_NESTED_VM=1 %{_testsuitedir}/integration-tests/run-integration-tests.sh
 
 Or to run one specific integration test:
-$ mkosi -f box -- meson test -C build --setup=integration --suite=integration-tests -v TEST-01-BASIC
-
-Note that you need root privileges to run the extended testsuite.
+$ NO_BUILD=1 TEST_NESTED_VM=1 make -C %{_testsuitedir}/integration-tests/TEST-01-BASIC clean setup run
 
 For more details on the available options to run the extended testsuite, please
 refer to %{_testsuitedir}/integration-tests/README.testsuite.
@@ -825,7 +892,7 @@ for the C APIs.
         -Dsbat-distro-url="%{?sbat_distro_url}" \
         \
         -Dsbat-distro-pkgname="%{name}" \
-        -Dsbat-distro-version="%{version}" \
+        -Dsbat-distro-version="%{version}%[%{without upstream}?"-%{release}":""]" \
         \
         -Ddefault-dnssec=no \
         -Ddns-servers='' \
@@ -1001,10 +1068,8 @@ touch %{buildroot}%{_localstatedir}/lib/systemd/catalog/database
 # Make sure to disable all services by default. The branding presets package
 # takes care of defining the SUSE policies.
 rm -f %{buildroot}%{_presetdir}/*.preset
-rm -f %{buildroot}%{_systemd_util_dir}/initrd-preset/*.preset
 echo 'disable *' >%{buildroot}%{_presetdir}/99-default.preset
 echo 'disable *' >%{buildroot}%{_userpresetdir}/99-default.preset
-echo 'disable *' >%{buildroot}%{_systemd_util_dir}/initrd-preset/99-default.preset
 
 # Most of the entries for the generic paths are defined by filesystem package as
 # the definitions used by SUSE distros diverged from the ones defined by
@@ -1029,8 +1094,15 @@ rm -fr %{buildroot}%{_datadir}/factory/*
 cat %{SOURCE14} >>%{buildroot}%{_datarootdir}/systemd/kbd-model-map
 
 %if %{with testsuite}
-install -m0644 %{SOURCE15} %{buildroot}%{_testsuitedir}/mkosi/mkosi.local.conf
-install -m0644 test/integration-tests/README.md %{buildroot}%{_testsuitedir}/integration-tests/
+# -Dinstall_test took care of installing the unit tests only (those in
+# src/tests) and testdata directory. Here we copy the integration tests
+# including also all related scripts used to prepare and run the integration
+# tests in dedicated VMs.
+mkdir -p %{buildroot}%{_testsuitedir}/integration-tests
+tar -cO \
+    --exclude-vcs  \
+    --exclude-vcs-ignores \
+    -C test/integration-tests/ . | tar -xC %{buildroot}%{_testsuitedir}/integration-tests/
 %endif
 
 %if %{without bootstrap}
@@ -1040,8 +1112,7 @@ rm -f  %{buildroot}%{_journalcatalogdir}/*
 rm -fr %{buildroot}%{_docdir}/systemd
 %endif
 
-# Some systemd system users needs to exist before %post is executed
-# (bsc#1248501).
+# Generate system users for pre scriptlets.
 %if %{with resolved}
 %sysusers_generate_pre %{buildroot}/%{_sysusersdir}/systemd-resolve.conf systemd-resolve systemd-resolve.conf
 %endif

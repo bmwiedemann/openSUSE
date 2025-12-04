@@ -6,26 +6,25 @@
 %dir %{_distconfdir}/ssh
 %dir %{_distconfdir}/ssh/ssh_config.d
 %if %{without bootstrap}
-%if %{with upstream}
-%if %{with sd_boot}
-%dir %{_libdir}/nvpcr
-%endif
-%endif
 %dir %{_sysconfdir}/systemd/oomd.conf.d
 %endif
+%if %{with upstream}
 %dir %{_unitdir}/factory-reset.target.wants
+%endif
 %if %{with sd_boot}
 %dir %{_unitdir}/initrd.target.wants
 %endif
-%if %{without bootstrap}
-%if %{with sd_boot}
+%if %{with upstream}
 %dir %{_unitdir}/storage-target-mode.target.wants
 %endif
+%if %{without bootstrap}
 # Main config files have been replaced in favor of drop-ins.
 %ghost %{_sysconfdir}/systemd/oomd.conf
 %{_bindir}/oomctl
+%endif
+%if %{without bootstrap}
 %if %{with upstream}
-%{_bindir}/systemd-mute-console
+%{_bindir}/systemd-pty-forward
 %endif
 %{_bindir}/systemd-vmspawn
 %{_bindir}/updatectl
@@ -45,23 +44,17 @@
 %{_datadir}/zsh/site-functions/_oomctl
 %endif
 %{_distconfdir}/ssh/ssh_config.d/20-systemd-ssh-proxy.conf
-%if %{with upstream}
-%if %{with sd_boot}
-%{_libdir}/nvpcr/cryptsetup.nvpcr
-%{_libdir}/nvpcr/hardware.nvpcr
-%endif
-%endif
 %if %{without bootstrap}
 %{_mandir}/man1/oomctl.1.gz
 %{_mandir}/man1/systemd-keyutil.1.gz
 %{_mandir}/man1/systemd-measure.1.gz
 %if %{with upstream}
-%{_mandir}/man1/systemd-mute-console.1.gz
-%{_mandir}/man1/systemd-mute-console.socket.1.gz
-%{_mandir}/man1/systemd-mute-console@.service.1.gz
+%{_mandir}/man1/systemd-pty-forward.1.gz
 %endif
 %{_mandir}/man1/systemd-sbsign.1.gz
+%if %{with upstream}
 %{_mandir}/man1/systemd-ssh-issue.1.gz
+%endif
 %{_mandir}/man1/systemd-ssh-proxy.1.gz
 %{_mandir}/man1/systemd-vmspawn.1.gz
 %{_mandir}/man1/updatectl.1.gz
@@ -73,15 +66,13 @@
 %{_mandir}/man5/sysupdate.features.5.gz
 %{_mandir}/man8/systemd-bsod.8.gz
 %{_mandir}/man8/systemd-bsod.service.8.gz
+%if %{with upstream}
 %{_mandir}/man8/systemd-factory-reset-complete.service.8.gz
 %{_mandir}/man8/systemd-factory-reset-generator.8.gz
 %{_mandir}/man8/systemd-factory-reset-request.service.8.gz
 %{_mandir}/man8/systemd-factory-reset.8.gz
 %{_mandir}/man8/systemd-factory-reset.socket.8.gz
 %{_mandir}/man8/systemd-factory-reset@.service.8.gz
-%if %{with upstream}
-%{_unitdir}/systemd-mute-console.socket
-%{_unitdir}/systemd-mute-console@.service
 %endif
 %{_mandir}/man8/systemd-oomd.8.gz
 %{_mandir}/man8/systemd-oomd.service.8.gz
@@ -97,15 +88,9 @@
 %{_mandir}/man8/systemd-pcrlock-secureboot-authority.service.8.gz
 %{_mandir}/man8/systemd-pcrlock-secureboot-policy.service.8.gz
 %{_mandir}/man8/systemd-pcrmachine.service.8.gz
-%if %{with upstream}
-%{_mandir}/man8/systemd-pcrnvdone.service.8.gz
-%endif
 %{_mandir}/man8/systemd-pcrphase-initrd.service.8.gz
 %{_mandir}/man8/systemd-pcrphase-sysinit.service.8.gz
 %{_mandir}/man8/systemd-pcrphase.service.8.gz
-%if %{with upstream}
-%{_mandir}/man8/systemd-pcrproduct.service.8.gz
-%endif
 %endif
 %{_mandir}/man8/systemd-ssh-generator.8.gz
 %{_mandir}/man8/systemd-storagetm.8.gz
@@ -117,8 +102,10 @@
 %{_mandir}/man8/systemd-sysupdate.timer.8.gz
 %{_mandir}/man8/systemd-sysupdated.8.gz
 %{_mandir}/man8/systemd-sysupdated.service.8.gz
+%if %{with upstream}
 %if %{with sd_boot}
 %{_mandir}/man8/systemd-tpm2-clear.service.8.gz
+%endif
 %endif
 %{_mandir}/man8/systemd-tpm2-generator.8.gz
 %if %{with sd_boot}
@@ -126,14 +113,16 @@
 %{_mandir}/man8/systemd-tpm2-setup.8.gz
 %{_mandir}/man8/systemd-tpm2-setup.service.8.gz
 %endif
+%if %{with upstream}
 %{_mandir}/man8/systemd-validatefs@.service.8.gz
+%endif
 %endif
 %if %{without bootstrap}
 %{_systemd_util_dir}/oomd.conf
 %{_systemd_util_dir}/systemd-bsod
-%endif
+%if %{with upstream}
 %{_systemd_util_dir}/systemd-factory-reset
-%if %{without bootstrap}
+%endif
 %{_systemd_util_dir}/systemd-keyutil
 %{_systemd_util_dir}/systemd-measure
 %{_systemd_util_dir}/systemd-oomd
@@ -141,75 +130,69 @@
 %{_systemd_util_dir}/systemd-pcrextend
 %endif
 %{_systemd_util_dir}/systemd-sbsign
-%endif
+%if %{with upstream}
 %{_systemd_util_dir}/systemd-ssh-issue
+%endif
+%endif
 %{_systemd_util_dir}/systemd-ssh-proxy
 %if %{without bootstrap}
 %{_systemd_util_dir}/systemd-storagetm
 %{_systemd_util_dir}/systemd-sysupdate
 %{_systemd_util_dir}/systemd-sysupdated
 %if %{with sd_boot}
+%if %{with upstream}
 %{_systemd_util_dir}/systemd-tpm2-clear
+%endif
 %{_systemd_util_dir}/systemd-tpm2-setup
-%endif
-%endif
+%if %{with upstream}
 %{_systemd_util_dir}/systemd-validatefs
-%if %{without bootstrap}
-%{_systemd_util_dir}/user/systemd-vmspawn@.service
 %endif
+%endif
+%if %{with upstream}
+%{_systemd_util_dir}/user/systemd-vmspawn@.service
 %{_systemdgeneratordir}/systemd-factory-reset-generator
+%endif
+%endif
 # ssh-generator: in the futur to be moved to the main package
 %{_systemdgeneratordir}/systemd-ssh-generator
 %{_systemdgeneratordir}/systemd-tpm2-generator
 %if %{without bootstrap}
 %{_sysusersdir}/systemd-oom.conf
 %{_unitdir}/dbus-org.freedesktop.sysupdate1.service
-%endif
+%if %{with upstream}
 %{_unitdir}/factory-reset-now.target
 %{_unitdir}/factory-reset.target.wants/systemd-factory-reset-request.service
-%if %{without bootstrap}
-%if %{with sd_boot}
 %{_unitdir}/factory-reset.target.wants/systemd-pcrphase-factory-reset.service
 %endif
 %{_unitdir}/initrd.target.wants/systemd-bsod.service
 %if %{with sd_boot}
 %{_unitdir}/initrd.target.wants/systemd-pcrphase-initrd.service
 %endif
-%endif
-%{_unitdir}/sockets.target.wants/systemd-factory-reset.socket
 %if %{with upstream}
-%{_unitdir}/sockets.target.wants/systemd-mute-console.socket
+%{_unitdir}/sockets.target.wants/systemd-factory-reset.socket
 %endif
-%if %{without bootstrap}
 %if %{with sd_boot}
 %{_unitdir}/sockets.target.wants/systemd-pcrextend.socket
 %endif
 %{_unitdir}/storage-target-mode.target
-%if %{with sd_boot}
-%{_unitdir}/storage-target-mode.target.wants/systemd-pcrphase-storage-target-mode.service
-%{_unitdir}/sysinit.target.wants/systemd-pcrmachine.service
 %if %{with upstream}
-%{_unitdir}/sysinit.target.wants/systemd-pcrnvdone.service
+%{_unitdir}/storage-target-mode.target.wants/systemd-pcrphase-storage-target-mode.service
 %endif
+%if %{with sd_boot}
+%{_unitdir}/sysinit.target.wants/systemd-pcrmachine.service
 %{_unitdir}/sysinit.target.wants/systemd-pcrphase-sysinit.service
 %{_unitdir}/sysinit.target.wants/systemd-pcrphase.service
-%if %{with upstream}
-%{_unitdir}/sysinit.target.wants/systemd-pcrproduct.service
-%endif
 %{_unitdir}/sysinit.target.wants/systemd-tpm2-setup-early.service
 %{_unitdir}/sysinit.target.wants/systemd-tpm2-setup.service
 %endif
-%if %{with upstream}
-%{_unitdir}/system-systemd\x2dmute\x2dconsole.slice
-%endif
 %{_unitdir}/systemd-bsod.service
-%endif
+%if %{with upstream}
 %{_unitdir}/systemd-factory-reset-complete.service
 %{_unitdir}/systemd-factory-reset-reboot.service
 %{_unitdir}/systemd-factory-reset-request.service
 %{_unitdir}/systemd-factory-reset.socket
 %{_unitdir}/systemd-factory-reset@.service
-%if %{without bootstrap}
+%endif
 %{_unitdir}/systemd-oomd.service
 %{_unitdir}/systemd-oomd.socket
 %if %{with sd_boot}
@@ -227,16 +210,14 @@
 %{_unitdir}/systemd-pcrlock@.service
 %{_unitdir}/systemd-pcrmachine.service
 %if %{with upstream}
-%{_unitdir}/systemd-pcrnvdone.service
-%endif
 %{_unitdir}/systemd-pcrphase-factory-reset.service
+%endif
 %{_unitdir}/systemd-pcrphase-initrd.service
+%if %{with upstream}
 %{_unitdir}/systemd-pcrphase-storage-target-mode.service
+%endif
 %{_unitdir}/systemd-pcrphase-sysinit.service
 %{_unitdir}/systemd-pcrphase.service
-%if %{with upstream}
-%{_unitdir}/systemd-pcrproduct.service
-%endif
 %endif
 %{_unitdir}/systemd-storagetm.service
 %{_unitdir}/systemd-sysupdate-reboot.service
@@ -244,14 +225,20 @@
 %{_unitdir}/systemd-sysupdate.service
 %{_unitdir}/systemd-sysupdate.timer
 %{_unitdir}/systemd-sysupdated.service
+%if %{with upstream}
 %if %{with sd_boot}
 %{_unitdir}/systemd-tpm2-clear.service
+%endif
+%endif
+%if %{with sd_boot}
 %{_unitdir}/systemd-tpm2-setup-early.service
 %{_unitdir}/systemd-tpm2-setup.service
 %endif
-%endif
+%if %{with upstream}
 %{_unitdir}/systemd-validatefs@.service
-%if %{without bootstrap}
-%{_unitdir}/systemd-vmspawn@.service
 %endif
+%{_unitdir}/systemd-vmspawn@.service
+%if %{with upstream}
 /usr/etc/profile.d/80-systemd-osc-context.sh
+%endif
+%endif

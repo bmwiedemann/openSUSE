@@ -1,8 +1,8 @@
-From 6842234e7007e83b3faa2358fbc131c0dc297ae4 Mon Sep 17 00:00:00 2001
+From 1861e68a986c39cfec3c7fe8a348d331d93800d7 Mon Sep 17 00:00:00 2001
 From: Franck Bui <fbui@suse.com>
 Date: Fri, 12 Jan 2024 10:55:17 +0100
-Subject: [PATCH] Revert "udev: revert workarounds for issues caused by the
- devlink creation optimization"
+Subject: [PATCH 5002/5002] Revert "udev: revert workarounds for issues caused
+ by the devlink creation optimization"
 
 This reverts commit b8fa62589271a0a7552c6eb02e6beac3ca759ba7.
 ---
@@ -10,10 +10,10 @@ This reverts commit b8fa62589271a0a7552c6eb02e6beac3ca759ba7.
  1 file changed, 11 insertions(+)
 
 diff --git a/rules.d/60-persistent-storage.rules.in b/rules.d/60-persistent-storage.rules.in
-index e07f7b5d7a..23c24edb7c 100644
+index 6787430208..39a6555045 100644
 --- a/rules.d/60-persistent-storage.rules.in
 +++ b/rules.d/60-persistent-storage.rules.in
-@@ -136,6 +136,17 @@ KERNEL!="sr*|mmcblk[0-9]boot[0-9]", IMPORT{builtin}="blkid"
+@@ -134,6 +134,17 @@ KERNEL!="sr*|mmcblk[0-9]boot[0-9]", IMPORT{builtin}="blkid"
  LABEL="persistent_storage_blkid_probe_end"
  {% endif %}
  
@@ -32,5 +32,5 @@ index e07f7b5d7a..23c24edb7c 100644
  ENV{ID_FS_USAGE}=="filesystem|other|crypto", ENV{ID_FS_UUID_ENC}=="?*", SYMLINK+="disk/by-uuid/$env{ID_FS_UUID_ENC}"
  ENV{ID_FS_USAGE}=="filesystem|other|crypto", ENV{ID_FS_LABEL_ENC}=="?*", SYMLINK+="disk/by-label/$env{ID_FS_LABEL_ENC}"
 -- 
-2.43.0
+2.35.3
 
