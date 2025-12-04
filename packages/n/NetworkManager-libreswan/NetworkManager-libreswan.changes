@@ -1,23 +1,4 @@
 -------------------------------------------------------------------
-Tue Dec  2 08:55:24 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
-
-- Update to version 1.2.29:
-  + Add support for `leftprotoport` and `rightprotoport` options
-  + Add support for `nm-connect-mode` setting in service and
-    editor
-  + Fix crash upon deactivating an IPsec connection
-  + Replace deprecated "ipsec auto" commands for libreswan >= 5
-  + Fix connection import with `rightrsasigkey` or `leftrsasigkey`
-  + Fix memory leaks and improve memory management with
-    g_autoptr()
-  + Do not export phase2alg option
-  + Remove the "add" value for nm-connect-mode
-  + Add .clang-format configuration and reformat code
-  + Extend CI coverage to CentOS Stream 9 and 10 platforms
-  + Add automated release builds for Fedora via Packit
-  + Update translations.
-
--------------------------------------------------------------------
 Mon Oct 20 12:04:25 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.2.28:
