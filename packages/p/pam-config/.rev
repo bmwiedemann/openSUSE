@@ -923,4 +923,14 @@
   * pam_selinux: fix counter for session stacks</comment>
     <requestid>1315709</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>439ca3f0d03bb13a6b07e36750e95cc0</srcmd5>
+    <version>2.13+git.20251203</version>
+    <time>1764843670</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.13+git.20251203:
+  * Make pam_unix_ng work together with pam_sss
+  * pam_sss has no debug option</comment>
+    <requestid>1320991</requestid>
+  </revision>
 </revisionlist>

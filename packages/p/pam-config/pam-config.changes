@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 03 11:02:30 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.13+git.20251203:
+  * Make pam_unix_ng work together with pam_sss
+  * pam_sss has no debug option
+
+-------------------------------------------------------------------
 Wed Nov 05 11:05:42 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2.13+git.20251105:
