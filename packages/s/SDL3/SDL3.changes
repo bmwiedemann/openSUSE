@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Dec  3 08:53:38 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.28
+  * Fixed a divide by zero with a zero sized blit in some cases
+  * Fixed blitting bitmaps with a non-zero x offset
+  * Fixed a crash in the Vulkan renderer when the window is
+    minimized
+  * Fixed the initial X11 window position in some environments
+  * Fixed the channel mapping for surround sound on PulseAudio
+  * Fixed the sensor axis ordering with the Linux Nintendo driver
+  * Fixed Xbox 360 controller mappings on newer Linux kernels
+  * Made Nintendo Switch controller initialization more robust
+  * Fixed the paddle mapping for Steam Controllers
+
+-------------------------------------------------------------------
 Thu Oct 30 19:21:37 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.2.26
