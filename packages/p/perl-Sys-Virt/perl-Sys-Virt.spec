@@ -17,7 +17,7 @@
 
 
 Name:           perl-Sys-Virt
-Version:        11.6.0
+Version:        11.10.0
 Release:        0
 %define cpan_name Sys-Virt
 Summary:        Represent and manage a libvirt hypervisor connection
@@ -75,7 +75,7 @@ virtualization containers to be managed with a consistent API.
 
 %files -f %{name}.files
 %defattr(644,root,root,755)
-%license LICENSE
+%license LICENSE LICENSE.GPL LICENSE.Artistic
 %doc AUTHORS Changes HACKING perl-Sys-Virt.spec README
 
 %changelog
