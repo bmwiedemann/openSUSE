@@ -22,7 +22,7 @@
 %endif
 
 Name:           glslang
-Version:        16.0.0
+Version:        16.1.0
 Release:        0
 Summary:        OpenGL and OpenGL ES shader front end and validator
 License:        BSD-3-Clause

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Dec  2 18:33:14 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 16.1.0
+  * Avoid emitting OpCapability RuntimeDescriptorArray when
+    unnecessary
+  * Improve compilation speed when debug infomation is enabled
+  * Support GL_EXT_shader_invocation_reorder
+  * Add checks to coopMatMulAdd
+  * Implement stringify operator
+  * Add ES support for depth layout qualifier
+  * Add debug info for hitObjectNV
+  * Emit a DebugGlobalVariable instead of DebugLocalVariable for
+    rayQueryEXT
+  * Add debug info for constant variable
+  * Improve debug line to point declaration
+  * Fix bugs in buffer reference alignment
+  * Reject string operands in binary and select ops
+  * Support GL_EXT_shader_64bit_indexing
+  * Support GLSL_EXT_uniform_buffer_unsized_array
+  * Add semantic check for cooperative vector loads/stores
+  * Improve the debug info name of opaque (sampler) types
+  * Support IO mapping of combined samplers and acceleration
+    structures
+  * Fix bug in debug info for bool types inside SSBO/UBO
+  * Fix bug in debug info for struct member names
+  * Add methods for entry point and invert-y to C interface
+
+-------------------------------------------------------------------
 Fri Sep 26 00:09:27 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 16
