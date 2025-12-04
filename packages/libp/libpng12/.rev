@@ -374,4 +374,18 @@
   %patchN (forwarded request 1153773 from pgajdos)</comment>
     <requestid>1153775</requestid>
   </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>a6bcb2d039a51cdfa4983251acb79f2a</srcmd5>
+    <version>1.2.59</version>
+    <time>1764843898</time>
+    <user>anag_factory</user>
+    <comment>- security update
+- modified patches
+  * libpng-1.2.51-CVE-2013-7353.patch (-p1)
+  * libpng-1.2.51-CVE-2013-7354.patch (-p1)
+- added patches
+  CVE-2025-64505 [bsc#1254157], heap buffer over-read in `png_do_quantize` via malformed palette index
+  * libpng12-CVE-2025-64505.patch</comment>
+    <requestid>1320952</requestid>
+  </revision>
 </revisionlist>

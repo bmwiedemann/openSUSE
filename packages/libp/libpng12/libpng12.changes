@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec  3 09:31:58 UTC 2025 - Petr Gajdos <pgajdos@suse.com>
+
+- security update
+- modified patches
+  * libpng-1.2.51-CVE-2013-7353.patch (-p1)
+  * libpng-1.2.51-CVE-2013-7354.patch (-p1)
+- added patches
+  CVE-2025-64505 [bsc#1254157], heap buffer over-read in `png_do_quantize` via malformed palette index
+  * libpng12-CVE-2025-64505.patch
+
+-------------------------------------------------------------------
 Fri Mar  1 08:38:09 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

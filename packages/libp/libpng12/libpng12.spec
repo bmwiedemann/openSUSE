@@ -34,6 +34,8 @@ Source:         https://downloads.sourceforge.net/project/libpng/%{name}/%{versi
 Source2:        baselibs.conf
 Patch0:         libpng-1.2.51-CVE-2013-7353.patch
 Patch1:         libpng-1.2.51-CVE-2013-7354.patch
+# CVE-2025-64505 [bsc#1254157], heap buffer over-read in `png_do_quantize` via malformed palette index
+Patch2:         libpng12-CVE-2025-64505.patch
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  zlib-devel
@@ -97,7 +99,7 @@ tools necessary for compiling and linking programs that don't care
 about libpng version.
 
 %prep
-%autosetup -p0 -n libpng-%{version}
+%autosetup -p1 -n libpng-%{version}
 
 %build
 # PNG_SAFE_LIMITS_SUPPORTED: http://www.openwall.com/lists/oss-security/2015/01/10/1
