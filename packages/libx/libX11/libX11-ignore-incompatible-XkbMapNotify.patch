@@ -1,0 +1,68 @@
+From 7f31a215ad23adf71d1ce604487ee1e0f5121cc9 Mon Sep 17 00:00:00 2001
+From: Julian Orth <ju.orth@gmail.com>
+Date: Fri, 24 Oct 2025 20:15:37 +0200
+Subject: [PATCH] Ignore XkbMapNotify events that don't belong to the core
+ keyboard
+
+Such events can contain values that are incompatible with the core
+keyboard map.
+
+Fixes a potentially fatal error when such values are later used in a
+XkbGetMap request.
+
+Signed-off-by: Julian Orth <ju.orth@gmail.com>
+---
+ src/xkb/XKBBind.c |  2 ++
+ src/xkb/XKBUse.c  | 16 ++++++++++------
+ 2 files changed, 12 insertions(+), 6 deletions(-)
+
+diff --git a/src/xkb/XKBBind.c b/src/xkb/XKBBind.c
+index 467e4198..5459e42d 100644
+--- a/src/xkb/XKBBind.c
++++ b/src/xkb/XKBBind.c
+@@ -369,6 +369,8 @@ XkbRefreshKeyboardMapping(register XkbMapNotifyEvent * event)
+         XkbMapChangesRec changes;
+         Status rtrn;
+ 
++        if (!xkbi->desc || xkbi->desc->device_spec != event->device)
++            return Success;
+         if (xkbi->flags & XkbMapPending)
+             changes = xkbi->changes;
+         else
+diff --git a/src/xkb/XKBUse.c b/src/xkb/XKBUse.c
+index ab5027b0..9a01a8fb 100644
+--- a/src/xkb/XKBUse.c
++++ b/src/xkb/XKBUse.c
+@@ -290,9 +290,11 @@ wire_to_event(Display *dpy, XEvent *re, xEvent *event)
+             mev->num_modmap_keys = mn->nModMapKeys;
+             mev->first_vmodmap_key = mn->firstVModMapKey;
+             mev->num_vmodmap_keys = mn->nVModMapKeys;
+-            XkbNoteMapChanges(&xkbi->changes, mev, XKB_XLIB_MAP_MASK);
+-            if (xkbi->changes.changed)
+-                xkbi->flags |= XkbMapPending;
++            if (xkbi->desc && xkbi->desc->device_spec == mn->deviceID) {
++                XkbNoteMapChanges(&xkbi->changes, mev, XKB_XLIB_MAP_MASK);
++                if (xkbi->changes.changed)
++                    xkbi->flags |= XkbMapPending;
++            }
+             return True;
+         }
+         else if (mn->nKeySyms > 0) {
+@@ -306,9 +308,11 @@ wire_to_event(Display *dpy, XEvent *re, xEvent *event)
+             ev->first_keycode = mn->firstKeySym;
+             ev->request = MappingKeyboard;
+             ev->count = mn->nKeySyms;
+-            _XkbNoteCoreMapChanges(&xkbi->changes, ev, XKB_XLIB_MAP_MASK);
+-            if (xkbi->changes.changed)
+-                xkbi->flags |= XkbMapPending;
++            if (xkbi->desc && xkbi->desc->device_spec == mn->deviceID) {
++                _XkbNoteCoreMapChanges(&xkbi->changes, ev, XKB_XLIB_MAP_MASK);
++                if (xkbi->changes.changed)
++                    xkbi->flags |= XkbMapPending;
++            }
+             return True;
+         }
+     }
+-- 
+GitLab
+

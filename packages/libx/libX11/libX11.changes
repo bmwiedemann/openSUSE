@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 28 08:52:07 UTC 2025 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add libX11-ignore-incompatible-XkbMapNotify.patch: Fix
+  mutter-x11-frames crash caused by keyboard layout change
+  triggered by orca screen reader. (bsc#1253076)
+
+-------------------------------------------------------------------
 Sun Mar  9 03:23:20 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to 1.8.12; this release includes:
@@ -74,7 +81,9 @@ Mon Mar 25 01:45:51 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 1.8.8
  * Fix XIM input sometimes jumbled (#198, !236)
+   (bsc#1252250)
  * Fix _XkbReadGetDeviceInfoReply for nButtons == dev->buttons (!237)
+   (bsc#1252250)
  * Drop ifdefs for platforms that are no longer supported (!242, !243)
  * Assorted memory handling cleanups
 

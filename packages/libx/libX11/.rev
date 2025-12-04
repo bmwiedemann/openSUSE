@@ -732,4 +732,12 @@ additions, including new UTF-8 compose sequences for:
 - supersedes U_CVE-2025-26597-0001-xkb-Fix-buffer-overflow-in-XkbChangeTypesOfKey.patch</comment>
     <requestid>1251488</requestid>
   </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>3cb7f02751bac777d493a891f608609a</srcmd5>
+    <version>1.8.12</version>
+    <time>1764843666</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1320983</requestid>
+  </revision>
 </revisionlist>
