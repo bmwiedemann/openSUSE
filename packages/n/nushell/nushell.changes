@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec  3 08:02:57 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.109.1:
+  * Fix http get domain overflow.
+  * Fix path resolution for source using 
+    bare-word-string-interpolation.
+  * For a full list of changes with detailed descriptions, see:
+    - https://www.nushell.sh/blog/2025-12-02-nushell_v0_109_1.html
+
+-------------------------------------------------------------------
 Mon Dec  1 06:32:16 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.109.0:
