@@ -1,7 +1,7 @@
 #
 # spec file for package xfstests
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,15 +25,16 @@
 %define need_dmapi 1
 %endif
 
-%define version_unconverted 1.1.1+git.20240908
+# the snapshot download from URL location below uses current version format
+%define version_unconverted dev-2025.11.18
 Name:           xfstests
-Version:        1.1.1+git.20240908
+Version:        1.1.1+git.20251118
 Release:        0
 Summary:        Filesystem regression test suite
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
 URL:            https://git.kernel.org/pub/scm/fs/xfs/xfstests-dev.git/
-Source:         xfstests-%{version}.tar.xz
+Source:         xfstests-%{version_unconverted}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 %if 0%{?need_dmapi}
@@ -77,7 +78,7 @@ The filesystem regression test suite. Contains around 1500+ specific tests for
 userspace and kernelspace for several linux filesystems.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version_unconverted}
 
 %build
 export OPTIMIZER="-fPIC"
