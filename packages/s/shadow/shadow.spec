@@ -1,7 +1,7 @@
 #
 # spec file for package shadow
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,6 +65,8 @@ Requires(pre):  group(root)
 Requires(pre):  group(shadow)
 Requires(pre):  permissions
 Requires(pre):  user(root)
+Requires:       (account-utils or shadow-pw-mgmt = %{version})
+Suggests:       shadow-pw-mgmt
 Provides:       pwdutils = 3.2.20
 Obsoletes:      pwdutils <= 3.2.19
 Provides:       useradd_or_adduser_dep
@@ -105,6 +107,16 @@ Requires:       libsubid5 = %{version}
 
 %description -n libsubid-devel
 Development files for libsubid5.
+
+%package pw-mgmt
+Summary:        Tools to manage user account data
+Group:          System/Base
+Requires:       shadow
+
+%description pw-mgmt
+This sub-package contains utilities to manage user account
+information like chage, chfn, chsh, expiry and passwd. This
+binaries all need setuid rights to work correct.
 
 %prep
 %setup -q -a 1
@@ -230,28 +242,31 @@ done
 test -f %{_sysconfdir}/login.defs.rpmsave && mv -v %{_sysconfdir}/login.defs.rpmsave %{_sysconfdir}/login.defs.rpmsave.old ||:
 
 %post
+%set_permissions %{_bindir}/gpasswd
+%set_permissions %{_bindir}/newgrp
+
+%post pw-mgmt
 %set_permissions %{_bindir}/chage
 %set_permissions %{_bindir}/chfn
 %set_permissions %{_bindir}/chsh
 %set_permissions %{_bindir}/expiry
-%set_permissions %{_bindir}/gpasswd
-%set_permissions %{_bindir}/newgrp
-%set_permissions %{_bindir}/passwd
 %set_permissions %{_bindir}/newgidmap
 %set_permissions %{_bindir}/newuidmap
+%set_permissions %{_bindir}/passwd
 
 %service_add_post shadow.service shadow.timer
 
 %verifyscript
+%verify_permissions %{_bindir}/gpasswd
+
+%verifyscript pw-mgmt
 %verify_permissions %{_bindir}/chage
 %verify_permissions %{_bindir}/chfn
 %verify_permissions %{_bindir}/chsh
 %verify_permissions %{_bindir}/expiry
-%verify_permissions %{_bindir}/gpasswd
 %verify_permissions %{_bindir}/newgrp
-%verify_permissions %{_bindir}/passwd
 %verify_permissions %{_bindir}/newgidmap
-%verify_permissions %{_bindir}/newuidmap
+%verify_permissions %{_bindir}/passwd
 
 %preun
 %service_del_preun shadow.service shadow.timer
@@ -282,9 +297,6 @@ test -f %{_sysconfdir}/login.defs.rpmsave && mv -v %{_sysconfdir}/login.defs.rpm
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/subuid
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/subgid
 %if %{defined no_config}
-%{_pam_vendordir}/chfn
-%{_pam_vendordir}/chsh
-%{_pam_vendordir}/passwd
 %{_pam_vendordir}/chpasswd
 %{_pam_vendordir}/groupadd
 %{_pam_vendordir}/groupdel
@@ -294,9 +306,6 @@ test -f %{_sysconfdir}/login.defs.rpmsave && mv -v %{_sysconfdir}/login.defs.rpm
 %{_pam_vendordir}/userdel
 %{_pam_vendordir}/usermod
 %else
-%config %{_sysconfdir}/pam.d/chfn
-%config %{_sysconfdir}/pam.d/chsh
-%config %{_sysconfdir}/pam.d/passwd
 %config %{_sysconfdir}/pam.d/chpasswd
 %config %{_sysconfdir}/pam.d/groupadd
 %config %{_sysconfdir}/pam.d/groupdel
@@ -306,15 +315,8 @@ test -f %{_sysconfdir}/login.defs.rpmsave && mv -v %{_sysconfdir}/login.defs.rpm
 %config %{_sysconfdir}/pam.d/userdel
 %config %{_sysconfdir}/pam.d/usermod
 %endif
-%verify(not mode) %attr(2755,root,shadow) %{_bindir}/chage
-%verify(not mode) %attr(4755,root,shadow) %{_bindir}/chfn
-%verify(not mode) %attr(4755,root,shadow) %{_bindir}/chsh
-%verify(not mode) %attr(4755,root,shadow) %{_bindir}/expiry
 %verify(not mode) %attr(4755,root,shadow) %{_bindir}/gpasswd
 %verify(not mode) %attr(4755,root,root) %{_bindir}/newgrp
-%verify(not mode) %attr(4755,root,shadow) %{_bindir}/passwd
-%verify(not mode) %attr(4755,root,shadow) %{_bindir}/newgidmap
-%verify(not mode) %attr(4755,root,shadow) %{_bindir}/newuidmap
 %{_bindir}/sg
 %{_bindir}/getsubids
 %attr(0755,root,root) %{_sbindir}/groupadd
@@ -331,13 +333,8 @@ test -f %{_sysconfdir}/login.defs.rpmsave && mv -v %{_sysconfdir}/login.defs.rpm
 %attr(0755,root,root) %{_sbindir}/newusers
 %{_sbindir}/vipw
 %{_sbindir}/vigr
-%{_mandir}/man1/chage.1%{?ext_man}
-%{_mandir}/man1/chfn.1%{?ext_man}
-%{_mandir}/man1/chsh.1%{?ext_man}
-%{_mandir}/man1/expiry.1%{?ext_man}
 %{_mandir}/man1/gpasswd.1%{?ext_man}
 %{_mandir}/man1/newgrp.1%{?ext_man}
-%{_mandir}/man1/passwd.1%{?ext_man}
 %{_mandir}/man1/sg.1%{?ext_man}
 %{_mandir}/man3/shadow.3%{?ext_man}
 %{_mandir}/man5/shadow.5%{?ext_man}
@@ -357,11 +354,35 @@ test -f %{_sysconfdir}/login.defs.rpmsave && mv -v %{_sysconfdir}/login.defs.rpm
 %{_mandir}/man8/vipw.8%{?ext_man}
 %{_mandir}/man5/subuid.5%{?ext_man}
 %{_mandir}/man5/subgid.5%{?ext_man}
-%{_mandir}/man1/newgidmap.1%{?ext_man}
-%{_mandir}/man1/newuidmap.1%{?ext_man}
 %{_mandir}/man1/getsubids.1%{?ext_man}
 
 %{_unitdir}/*
+
+%files pw-mgmt
+%license COPYING
+%if %{defined no_config}
+%{_pam_vendordir}/chfn
+%{_pam_vendordir}/chsh
+%{_pam_vendordir}/passwd
+%else
+%config %{_sysconfdir}/pam.d/chfn
+%config %{_sysconfdir}/pam.d/chsh
+%config %{_sysconfdir}/pam.d/passwd
+%endif
+%verify(not mode) %attr(2755,root,shadow) %{_bindir}/chage
+%verify(not mode) %attr(4755,root,shadow) %{_bindir}/chfn
+%verify(not mode) %attr(4755,root,shadow) %{_bindir}/chsh
+%verify(not mode) %attr(4755,root,shadow) %{_bindir}/expiry
+%verify(not mode) %attr(4755,root,shadow) %{_bindir}/newgidmap
+%verify(not mode) %attr(4755,root,shadow) %{_bindir}/newuidmap
+%verify(not mode) %attr(4755,root,shadow) %{_bindir}/passwd
+%{_mandir}/man1/chage.1%{?ext_man}
+%{_mandir}/man1/chfn.1%{?ext_man}
+%{_mandir}/man1/chsh.1%{?ext_man}
+%{_mandir}/man1/expiry.1%{?ext_man}
+%{_mandir}/man1/newgidmap.1%{?ext_man}
+%{_mandir}/man1/newuidmap.1%{?ext_man}
+%{_mandir}/man1/passwd.1%{?ext_man}
 
 %files -n login_defs
 %dir %{_sysconfdir}/login.defs.d

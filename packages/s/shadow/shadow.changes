@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov  1 17:43:53 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Move chage, chfn, chsh, passwd and new?idmap into own 
+  pw-mgmt sub-package
+
+-------------------------------------------------------------------
 Wed Jun 25 04:20:14 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.18.0:
