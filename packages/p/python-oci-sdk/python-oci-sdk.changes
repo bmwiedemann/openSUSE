@@ -1,4 +1,415 @@
 -------------------------------------------------------------------
+Thu Dec  4 12:07:27 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.164.0
+  * Support for calling Oracle Cloud Infrastructure services in the eu-turin-1 region
+  * Support for security attributes in the Bastion service
+  * Support for DataGuard Health Status check in the Database service
+  * Support for DataGuard creation with AWS in the Database service
+  * Support for changing encryption key location to AWS in the Database service
+  * Support for registering and unregistering PKCS for AWS in the Database service
+  * Support for new service catalog access control on marketplace in the Service Catalog service
+  * Support for bring-your-own-certificate in the OpenSearch service
+  * Support for AWS KMS integration for DB@AWS in the Database MultiCloud service
+  * Support for multi-cloud subscriptions and multi-cloud resource management in the MultiCloud service
+  * Support for new GenericChatRequest parameters in the Generative AI Inference service
+  * Support for Self-Serve IP Pool API in the Email Delivery service
+  * Support for Object Batch Delete in the Object Storage service
+  * Support for IPv6 and Reserved IPs in the API Gateway service
+  * Support for Zero Trust Packet Routing (ZPR) security attributes in the Data Catalog service
+  * Support for pinning the firmware of a Compute GPU Memory Fabric in the Compute service
+  * Support for pausing ZeroETL pipelines in the GoldenGate service
+  * Support for shared connections for ZeroETL pipelines in the GoldenGate service
+  * Support for migrating digital twin instances from non-ingestible to ingestible in IoT Service
+  * Fixed InvokeRawCommand API by changing response header from "Content-Location"
+    to "Location" in the OCI Internet of Things (OCI IoT) service
+  * Fixed UpdateDigitalTwinInstance API by adding missing model id and spec URI properties
+    in the OCI Internet of Things (OCI IoT) service
+  * Support for default retries on the operations of the Service Catalog service
+  * Parameter `compartmentId` is moved to optional from operation
+    `list_external_location_details_metadata` in MultiCloud service
+- from version 2.163.1
+  * Support for image lookup by URI in OCI Registry in the Generic Artifacts service
+  * Support for allocating limits by partner clouds in the Limits service
+  * Support for additional parameters for filtering node pool options in the Kubernetes Engine service
+  * Support for configuration governance in provisioning through catalog items
+    in the Fleet Application Management service
+  * Support for curated reports in the Fleet Application Management service
+  * Support for runbook import and export in the Fleet Application Management service
+  * Support for resource inventory with patch details in the Fleet Application Management service
+  * Support for multiple capacity bucket configurations in dedicated VM Hosts in the Compute service
+  * Support for project flash APIs in the Generative AI service
+- from version 2.163.0
+  * Support for Data Intelligence Foundation service
+  * Support for Private Service Access (PSA) service
+  * Support for pluggable database snapshots for exadata databases in the Database service
+  * Support for backup configurations for globally distributed databases in the Database service
+  * Support for fine grained configurations for data guards in globally distributed databases
+    in the Database service
+  * Support for Zero trust Packet Routing (ZPR) policy analysis in the Network Monitoring service
+  * Support for instance pool pre-termination action in the Compute service
+  * Model was renamed from `ChangeDrgCompartmentDetails` to `ChangeDrgAttachmentCompartmentDetails`
+    in the Network Monitoring service
+  * Model was renamed from `ChangeNatGatewayCompartmentDetails` to `ChangeFlexTunnelCompartmentDetails`
+    in the Network Monitoring service
+  * Model was renamed from `ByoipRangeCollection` to `FlexTunnelCollection` in the Network Monitoring service
+  * Model was renamed from `TunnelRouteSummary` to `FlexTunnelRouteSummary` in the Network Monitoring service
+  * Model was renamed from `PublicIpPoolSummary` to `FlexTunnelSummary` in the Network Monitoring service
+  * Property `cpe_device_shape_id` is removed from models `Cpe`,`CreateCpeDetails` in the Network Monitoring service
+  * Property `defined_tag` is removed from models `CreateCrossConnectDetails`,`CreateCrossConnectGroupDetails`
+    in the Network Monitoring service
+  * Property `domain_name_type` is removed from model `CreateDhcpDetails` in the Network Monitoring service
+  * Property `route_table_id` is removed from models `CreateDrgAttachmentDetails`,`CreateInternetGatewayDetails`,
+    `CreateLocalPeeringGatewayDetails`, `CreateServiceGatewayDetails`, `DrgAttachment`, `InternetGateway`,
+    `UpdateDrgAttachmentDetails`, `UpdateInternetGatewayDetails`, `UpdateLocalPeeringGatewayDetails`,
+    `UpdateServiceGatewayDetails` in the Network Monitoring service
+  * Property `cpe_local_identifier` , `cpe_local_identifier_type`, `tunnel_configuration`, `tunnel_count`
+    are removed from model `CreateIPSecConnectionDetails`  in the Network Monitoring service
+  * Property `ipv6_subnet_cidr` is removed from model `CreateIpv6Details` in the Network Monitoring service
+  * Property `vlan_id` is removed from model `CreatePrivateIpDetails` in the Network Monitoring service
+  * Property `public_ip_pool_id from` is removed from model `CreatePublicIpDetails` in the Network Monitoring service
+  * Property `defined_tags`, `freeform_tags` are removed from models `CreateRemotePeeringConnectionDetails`,
+    `RemotePeeringConnection`, `UpdateCrossConnectDetails`, `UpdateRemotePeeringConnectionDetails`
+     in the Network Monitoring service
+  * Property `ipv6_cidr_blocks`, `prohibit_internet_ingress` are removed from model `CreateSubnetDetails`
+    in the Network Monitoring service
+  * Property `pv6_private_cidr_blocks`, `is_oracle_gua_allocation_enabled` ,` byoipv6_cidr_details` are
+    removed from model `CreateSubnetDetails`  in the Network Monitoring service
+  * Property `routing_policy`, `bgp_admin_state`, `is_bfd_enabled`, `customer_asn`, `defined_tags`,
+    `freeform_tags`, `provider_service_key_name`, `ip_mtu` are removed from model `CreateVirtualCircuitDetails`
+    in the Network Monitoring service
+  * Property `defined_tags`, `freeform_tags`, `customer_reference_name`, `macsec_properties`, `oci_physical_device_name`,
+    `oci_logical_device_name` are removed from models `CrossConnectGroup`, `CrossConnect`  in the Network Monitoring service
+  * Property `customer_bgp_peering_ipv6`, `oracle_bgp_peering_ipv6` are removed from model `CrossConnectMapping`
+    in the Network Monitoring service
+  * Property `encryption_status`, `light_levels_in_d_bm` are removed from model `CrossConnectStatus`
+    in the Network Monitoring service
+  * Property `domain_name_type` is removed from model `DhcpOptions` in the Network Monitoring service
+  * Property `description` is removed from models `EgressSecurityRule`, `IngressSecurityRule` in the
+    Network Monitoring service
+  * Property `customer_asn_management`,`provider_service_key_management`,`bandwith_shape_management`,
+    `required_total_cross_connects` are removed from model `FastConnectProviderService`  in the Network
+    Monitoring service
+  * Property `cpe_local_identifier`, `cpe_local_identifier_type` are removed from model `IPSecConnection`
+    in the Network Monitoring service
+  * Property `peer_advertised_cidr_details`, `peer_id`, `route_table_id` are removed from model `LocalPeeringGateway`
+    in the Network Monitoring service
+  * Property `vlan_id` is removed from models `PrivateIp`, `Vnic` in the Network Monitoring service
+  * Property `assigned_entity_id`, `assigned_entity_type`, `public_ip_pool_id` are removed from model
+    `PublicIp` in the Network Monitoring service
+  * Property `description`, `route_type` are removed from model `RouteRule` in the Network Monitoring service
+  * Property `ipv6_cidr_blocks`, `prohibit_internet_ingress` are removed from model `Subnet` in the Network
+    Monitoring service
+  * Property `cpe_device_shape_id` is removed from model `UpdateCpeDetails` in the Network Monitoring service
+  * Property `defined_tags`, `freeform_tags`, `customer_reference_name`, `macsec_properties`, `display_name`
+    are removed from model `UpdateCrossConnectGroupDetails`  in the Network Monitoring service
+  * Property `domain_name_type` is removed from mode `UpdateDhcpDetails` in the Network Monitoring service
+  * Property `cpe_local_identifier`, `cpe_local_identifier_type`, `static_routes from` are removed from model
+    `UpdateIPSecConnectionDetails`  in the Network Monitoring service
+  * Property `cidr_block`, `ipv6_cidr_block`, `ipv6_cidr_blocks` are removed from model `UpdateSubnetDetails`
+    in the Network Monitoring service
+  * Property `outing_policy`, `bgp_admin_state`, `is_bfd_enabled`, `customer_asn`, `defined_tags`, `freeform_tags`,
+    `provider_service_key_name`, `ip_mtu` are removed from model `UpdateVirtualCircuitDetails`  in the Network
+    Monitoring service
+  * Property `vcn_route_type from` are removed from models `VcnDrgAttachmentNetworkCreateDetails`,
+    `VcnDrgAttachmentNetworkDetails`, `VcnDrgAttachmentNetworkUpdateDetails` in the Network Monitoring service
+  * Property `byoipv6_cidr_blocks`, `ipv6_private_cidr_blocks`, `cidr_blocks`, `ipv6_cidr_blocks` are removed
+    from model `Vcn`  in the Network Monitoring service
+  * Property `bgp_ipv6_session_state`, `routing_policy`, `bgp_admin_state`, `is_bfd_enabled`, `customer_asn`,
+    `defined_tags`, `freeform_tags`, `provider_service_key_name`, `type`, `ip_mtu` are removed from model
+    `VirtualCircuit`  in the Network Monitoring service
+  * Property `domain_name_type` is removed from model `UpdateDhcpDetails` in the Network Monitoring service
+  * Removed support for classes `AddPublicIpPoolCapacityDetails`, `AddSubnetIpv6CidrDetails`, `AddVcnCidrDetails`,
+    `AddVcnIpv6CidrDetails`, `AllowedIkeIPSecParameters`, `AllowedPhaseOneParameters`, `AllowedPhaseTwoParameters`,
+    `BgpSessionInfo`, `ByoipAllocatedRangeCollection`, `ByoipAllocatedRangeSummary`, `ByoipRangeSummary`,
+    `ByoipRangeVcnIpv6AllocationSummary`, `ByoipRange`, `Byoipv6CidrDetails`, `CaptureFilter`,
+    `ChangeByoipRangeCompartmentDetails`, `ChangeCaptureFilterCompartmentDetails`, `ChangeCpeCompartmentDetails`,
+    `ChangeCrossConnectCompartmentDetails`, `ChangeCrossConnectGroupCompartmentDetails`, `ChangeDhcpOptionsCompartmentDetails`,
+    `ChangeInternetGatewayCompartmentDetails`, `ChangeIPSecConnectionCompartmentDetails`,
+    `ChangeLocalPeeringGatewayCompartmentDetails`, `ChangeNetworkSecurityGroupCompartmentDetails`,
+    `ChangePublicIpCompartmentDetails`, `ChangePublicIpPoolCompartmentDetails`, `ChangeRemotePeeringConnectionCompartmentDetails`,
+    `ChangeRouteTableCompartmentDetails`, `ChangeSecurityListCompartmentDetails`, `ChangeServiceGatewayCompartmentDetails`,
+    `ChangeSubnetCompartmentDetails`, `ChangeVirtualCircuitCompartmentDetails`, `ChangeVlanCompartmentDetails`,
+    `ChangeVtapCompartmentDetails`, `CpeDeviceConfigAnswer`, `CpeDeviceConfigQuestion`, `CpeDeviceInfo`, `CpeDeviceShapeDetail`,
+    `CpeDeviceShapeSummary`, `CreateByoipRangeDetails`, `CreateCaptureFilterDetails`, `CreateIPSecConnectionTunnelDetails`,
+    `CreateIPSecTunnelBgpSessionDetails`, `CreateIPSecTunnelEncryptionDomainDetails`, `CreateMacsecKey`, `CreateMacsecProperties`,
+    `CreateNatGatewayDetails`, `CreatePublicIpPoolDetails`, `CreateVlanDetails`, `CreateVnicDetails`, `CreateVtapDetails`,
+    `CrossConnectMappingDetailsCollection`, `CrossConnectMappingDetails`, `DefaultPhaseOneParameters`, `DefaultPhaseTwoParameters`,
+    `DpdConfig`, `DrgAttachmentMatchAllDrgRouteDistributionMatchCriteria`, `DrgRedundancyStatus`, `EncryptionDomainConfig`,
+    `FastConnectProviderServiceKey`, `FlowLogCaptureFilterRuleDetails`, `IPSecConnectionTunnelErrorDetails`,
+    `IPSecConnectionTunnelSharedSecret`, `MacsecKey`, `MacsecProperties`, `ModifyVcnCidrDetails`, `NatGateway`,
+    `PhaseOneConfigDetails`, `PhaseTwoConfigDetails`, `PublicIpPool`, `RemovePublicIpPoolCapacityDetails`,
+    `RemoveSubnetIpv6CidrDetails`, `RemoveVcnCidrDetails`, `RemoveVcnIpv6CidrDetails`, `TunnelCpeDeviceConfig`,
+    `TunnelPhaseOneDetails`, `TunnelPhaseTwoDetails`, `TunnelSecurityAssociationSummary`, `UpdateByoipRangeDetails`,
+    `UpdateCaptureFilterDetails`, `UpdateIPSecConnectionTunnelDetails`, `UpdateIPSecConnectionTunnelSharedSecretDetails`,
+    `UpdateIPSecTunnelBgpSessionDetails`, `UpdateIPSecTunnelEncryptionDomainDetails`, `UpdateMacsecKey`,
+    `UpdateMacsecProperties`, `UpdateNatGatewayDetails`, `UpdatePublicIpPoolDetails`, `UpdateTunnelCpeDeviceConfigDetails`,
+    `UpdateVlanDetails`, `UpdateVtapDetails`, `VcnDnsResolverAssociation`, `Vlan`, `VtapCaptureFilterRuleDetails`,
+    `Vtap` in the Network Monitoring service
+- from version 2.162.0
+  * Support for calling Oracle Cloud Infrastructure services in the eu-madrid-3 region
+  * Support for Zero Trust Packet Routing (ZPR) security attributes for mount targets in the File Storage service
+  * Support for Object Storage bi-directional sync in the File Storage with Lustre service
+  * Support for renaming autonomous databases in the Database service
+  * Support for vanity connection urls and vanity url details when updating autonomous databases in the Database service
+  * Support for Apple as a social Identity Domains Provider (IDP) in the Identity Domains service
+  * Support for APEX cloud integrations in the Database Tools service
+  * Support for automatic disaster recovery based on database events in the Disaster Recovery service
+  * Support for providing non-translation words in the AI Language service
+  * Support for new mode for detecting PII entities in the AI Language service
+  * Support for online conversion of IPv4 load balancer to dual stack IPv4 and IPv6 load
+    balancer in the Load Balancer service
+  * Support for compute hosts in subtree when listing compute hosts in the Compute service
+  * Support for additional parameters when creating IPv4 Flex CIDR in the Networking service
+  * Support for additional parameters when creating subnet with multiple CIDR blocks in the Networking service
+  * The upper bound for `pyOpenSSL` dependency has changed to versions less than or equal to `25.1.0`
+  * The field `compute_type` was removed in the model `CreateEndpointDetails`,`EndpointSummary`,`Endpoint`
+    in the AI Language service
+- from version 2.161.1
+  * Support for LDAP schema version RFC2307bis when creating and updating mount targets in the File Storage service
+  * Support for Helm Critical Resource Protection (HCRP) in the DevOps Deploy service
+  * Support for parameterized pipelines in the Data Science service
+  * Support for Zero Trust Packet Routing (ZPR) security attributes in the Streaming service
+  * Support for configurable version upgrade policies in the MySQL HeatWave service
+  * Support for 26ai version in the Exadata Fleet Update service
+- from version 2.161.0
+  * Support for OCI Internet of Things (OCI IoT) service
+  * Support for Zero Trust Packet Routing (ZPR) security attributes in the Resource Manager service
+  * Support for Zero Trust Packet Routing (ZPR) security attributes in the Streaming service
+  * Support for Zero Trust Packet Routing (ZPR) security attributes in the MySQL HeatWave service
+  * Support for Zero Trust Packet Routing (ZPR) security attributes in the GoldenGate service
+  * Support for Zero Trust Packet Routing (ZPR) security attributes in the OCI Cache service
+  * Support for Zero Trust Packet Routing (ZPR) security attributes in the Database Tools service
+  * Support for Zero Trust Packet Routing (ZPR) security attributes in the OpenSearch service
+  * Support for Zero Trust Packet Routing (ZPR) security attributes in the Functions service
+  * Support for Zero Trust Packet Routing (ZPR) security attributes in the Integration Cloud service
+  * Support for data guards to convert standby database types in the Database service
+  * Support for Network Security Groups (NSGs) when creating clusters in the OpenSearch service
+  * Support for specifying compartment id when listing cluster shapes in the OpenSearch service
+  * Support for additional parameters when listing add-on options in the Kubernetes Engine service
+  * Support for dynamic resource VMs in the Compute service
+  * Support for adding and removing subscriptions for resources in the GoldenGate service
+  * Support for additional parameters when creating and updating deployments in the GoldenGate service
+  * Support for additional parameters when creating and updating connections in the GoldenGate service
+  * Support for new connection type for database resources in the AI Data Platform service
+  * Support for resource principal authentication for OCI streaming connections in the GoldenGate service
+  * Support for new technology type for Kafka connections in the GoldenGate service
+  * The field `Size` was made mandatory in the model `CreateVirtualNodePoolDetails`,`VirtualNodePoolSummary`,
+    `VirtualNodePool` in the Kubernetes Engine service
+- from version 2.160.3
+  * Support for private endpoints for dedicated AI clusters in the Generative AI service
+  * Support for Customer Managed Encryption Keys for Google Cloud Platform (CMEK for GCP)
+    for autonomous databases in the Database service
+  * Support for datastore management for standard shapes in the Oracle Cloud VMware Provisioning service
+  * Support for audio and video inputs for Gemini models in the Generative AI Inference service
+  * Support for applying exadata VM OS updates and exadata stack updates to collections of
+    ExaDB-Dedicated and ExaDB-C@C VM clusters in the Fleet Update service
+  * Support for enabling IPv6 dual stack endpoints in the application environments in the
+    Fusion Applications service
+  * Support for long-running functions (up to 60 minutes) in detached mode in the Functions service
+  * Support for response destinations (Streaming, Queueing, and Notifications service) on functions
+    create and update operations in the Functions service
+  * Support for enabling AI enterprise on the instance when creating and updating instances in the Compute service
+- from version 2.160.2
+  * Support for calling Oracle Cloud Infrastructure services in the me-ibri-1 region
+  * Support for Resource Analytics service
+  * Support for Oracle MultiCloud service
+  * Support for standalone Java Development Kit (JDK) scanning and usage tracking using
+    shared external volumes in the Java Management service
+  * Support for enhanced Java library detection and Software Bill of Materials (SBOM)
+    generation in the Java Management Service
+  * Support for dynamic Java library scanning in the Java Management service
+  * Support for vulnerability scanning using Application Dependency Management (ADM)
+    and confidence level scoring in the Java Management service
+  * Support for Java runtime discovery and tracking in Kubernetes environments
+    in the Java Management service
+  * Support for detecting, installing, and reporting Oracle Enterprise Performance Pack
+    releases in the Java Management service
+  * Support for task scheduling for scans and lifecycle operations in the Java Management service
+  * Support for capturing and displaying managed instance IP addresses and hostnames
+    in the Java Management service
+  * Support for selecting multiple applications and target Java Development Kits (JDKs)
+    during Java migration analysis in the Java Management service
+  * Support for subscription acknowledgment in the Java Management service
+  * Support for analyzing application artifacts in the Java Management service
+  * Support for querying work requests independently from fleets in applications
+    in the Java Management service
+  * Support for custom report generation with advanced filters in the Java Management service
+  * Support for configuring exascale storage on dedicated infrastructure (Exacs) in the Database service
+  * Support for listing marketplace metadata public keys in the Marketplace service
+  * Support for external attested metadata creation in the Marketplace service
+  * Support for discovery endpoint for shared clusters in the OCI Cache service
+- Add python-urllib3_1 to Requires
+- Drop empty file build.specials.obscpio
+- Drop Git sync file _scmsync.obsinfo
+- Refresh ops_relax-python-depends.patch
+
+-------------------------------------------------------------------
+Thu Sep 18 08:36:59 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.160.1
+  * Support for AI Data Platform service
+  * Support for creating refreshable metadata clones of autonomous databases
+    in the Database service
+  * Support for Oracle Base Database for multicloud partners in the Database service
+- from version 2.160.0
+  * Support for resource locking in the Email Delivery service
+  * Support for setting backup retention policies while creating and updating
+    autonomous container databases in the Database service
+  * Support for deleting associated long term backups while deleting the autonomous
+    databases in the Database service
+  * Support for listing autonomous database backups by backup destination id and
+    infrastructure type in the Database service
+  * Support for listing autonomous database backups by key store id and infrastructure
+    type in the Database service
+  * Support for undeleting autonomous databases on public cloud and Cloud at Customer
+    in the Database service
+  * Support for additional database edition query parameters in the Database service
+  * Enum value `ENTERPRISE_EDITION_EXTREME` was renamed to
+    `ENTERPRISE_EDITION_EXTREME_PERFORMANCE` in the Database service
+- from version 2.159.1
+  * Support for key management integration for Google Cloud Platform (GCP) in the
+    Database Multicloud service
+  * Support for autoscale database storage vault in the Database service
+  * Support for creating Data Guards and moving encrypted keys to Google Cloud Provider
+    in the Database service
+  * Support for validating backup for the backup in the HeatWave service
+  * Support for additional detector types, recipes and rules in the Cloud Guard service
+  * Support for internal DAC shapes in the the Generative AI service
+- from version 2.159.0
+  * Support for OCI Streaming with Apache Kafka (OCI Managed Kafka) service
+  * Support for Oracle 19C Database  for Oracle Exadata Database Service
+  * Support for VM.Standard.x86 shape in BaseDB Database Service
+  * Support DR for MySQL DB Systems in Disaster Recovery Service
+  * Support for Additional Languages using Whisper Model in Realtime Speech
+    in the Speech Service
+  * Support for GMF APIs by Core Service
+  * Support for creating/updating deployment with new parameters for Golden Gate Service
+  * Removed deprecated service Anomaly Detection
+  * Removed deprecated service Data Transfer Service
+  * Removed deprecated service OS Management Service
+  * Removed deprecated service Service Mesh
+- from version 2.158.2
+  * Support for calling Oracle Cloud Infrastructure services in the eu-budapest-1 region
+  * Support for pluggable database snapshot for Oracle Exadata Database Service
+  * Support for new GenericChatRequest parameters in Generative AI inference service
+  * Support for Flexible CIDR for secondary IPs on a VNIC for Virtual Cloud Network Service
+- from version 2.158.0
+  * Support for calling Oracle Cloud Infrastructure services in the us-newark-1 region
+  * Support for OCI Cache Config Sets in the Redis service
+  * Support for Oracle Linux 8 in Devops Build Stage in the Build service
+  * Support for Distributed Training V2 (DTv2) in the Data Science service
+  * Support for stream video processing in the AI Vision service
+  * Support for specifying compute cluster and placement constraints when launching
+    instances in the Compute service
+  * Support for SCIM query to allow advanced filtering across various columns
+    in the List Finding Analytics operation in the Data Safe service
+  * Support for Target Database Group in the Data Safe service
+  * Support for adding additional contact to CMOS SR in the Cloud Incident Management service
+  * Support for attachment uploads in the Cloud Incident Management service
+  * Support for Amazon Kinesis endpoints in the Golden Gate service
+  * Support for Azure Data Lake Storage azureAuthorityHost in the Golden Gate service
+  * Model `SubscriptionInfo` is removed from the Cloud Incident Management service
+  * Property `compute_host_group_id` is removed from models `LicensingConfig` and
+    `LaunchInstanceDetails` in the Compute service
+  * Property `static_routes` changed from required to optional in model `IPSecConnection`
+    in the Compute service
+  * Parameter `opc_retry_token` is removed from operation `cancel_work_request` in the
+    `DataSafeClient` of the Data Safe service
+  * Parameter `on_prem_connector_lifecycle_state` is removed from operation
+    `list_on_prem_connectors` in the `DataSafeClient` of the Data Safe service
+  * Models `GenericArtifactLocationDetails`, `GenericArtifacts`,
+    `ObjectStorageGenericArtifactLocationDetails`, `StageOutput`, `TestReportOutput`
+    are removed from the Build service
+  * Properties `default_merge_strategy` and `allowed_merge_strategies` changed from
+    required to optional in model `MergeSettings` in the Build service
+- from version 2.157.1
+  * Support for the Oracle Multicloud Hub service
+  * Support for Whisper Models Prompt feature via additional settings object
+    for the AI Speech service
+  * Support for Language Auto Detection for the AI Speech Service
+  * Support for SubmitRawEmail API in Email Delivery service
+- from version 2.157.0
+  * Support for the APIP Platform service
+  * Support for resource locking for all resources in the API Gateway service
+  * Support for optional parameters in the import and export dashboard APIs
+    in the Management Dashboard service
+  * Support for agent configurations and MACS extension configurations in the
+    Application Performance Monitoring service
+  * Support for specifying replication configuration when creating or updating a secret
+    in the Vault service
+  * Support for CPU architecture agnostic configurations in the PostgreSQL service
+  * Support for creating, deploying, cloning, getting, listing, activating and
+    deactivating model groups in the Data Science service
+  * Support for creating, updating, getting, listing and deleting model group version
+    history in the Data Science service
+  * Support for uploading and downloading model group artifacts in the Data Science service
+  * Support for listing the state of the deployed models associated with a model group in
+    the Data Science service
+  * Support for updating model group deployments in the Data Science service
+  * Support for burstable shapes in data science notebooks, machine learning
+    jobs and machine learning pipelines in the Data Science service
+  * Support for multilingual text to speech for 8 more languages in the AI Speech service
+  * Property `language_code` in model `VoiceSummary` will no longer support `UNKNOWN_ENUM_VALUE`
+- from version 2.156.0
+  * Support for updating autonomous databases with schedule DB version upgrade in the Database service
+  * Support for new OKV Endpoint group parameter for Autonomous Container
+    Database operations in the Database service
+  * Support for specifying tags in backup databases and standby databases in the Database service
+  * Support for cloud database systems and improved system monitoring in the Database Management service
+  * Support for stack, image, lead generation, and service listing types in the Marketplace service
+  * Support for adding custom metric-based policies in the Autoscaling service
+  * Support for Named Credentials in the Management Agent service
+  * Support for multilingual capability, user configured Agent-As-A-Tool, data ingestion
+    of documents, and sequentially executed steps in the Generative AI Agent service
+  * Support for IAM authentication in the Cache service
+  * The AI Anomaly Detection service has reached End-of-life
+  * Clients `AttachmentClient`, `AttachmentClientCompositeOperations`, `OfferClient`,
+    `OfferClientCompositeOperations` are removed from the Marketplace service
+  * Models `Attachment`, `AttachmentCollection`, `Contact`, `CreateAttachmentDetails`,
+    `CreateOfferDetails`, `CustomField`, `Offer`, `Pricing`, `ResourceBundle`,
+    `SellerInformation`, `UpdateOfferDetails` are removed from the Marketplace service
+  * Properties `version_details`, `system_requirements`, `categories`, `markets`,
+    `pricing_type` are removed from models `CreateListingRevisionDetails` and
+    `UpdateListingRevisionDetails` in the Marketplace service
+  * Properties `version_details`, `system_requirements`, `categories`, `markets`,
+    `pricing_type`, `allowed_tenancies`, `are_internal_tenancy_launch_allowed`
+    are removed from model `ListingRevision` in the Marketplace service
+  * Properties `categories`, `markets`, `pricing_type` are removed from model
+    `ListingRevisionSummary` in the Marketplace service
+  * Parent class for model `Metric` changed from `object` to `MetricBase` in the Autoscaling service
+  * Type of property `metric` changed from `Metric` to `MetricBase` in models `Condition`,
+    `CreateConditionDetails`, `UpdateConditionDetails` in the Autoscaling service
+  * Support for default retries on the operations of the Autoscaling service
+  * Property `http_endpoint_auth_config_type` is removed from model `HttpEndpointAuthConfig`
+    in the Generative AI Agent service
+- from version 2.155.2
+  * Support for calling Oracle Cloud Infrastructure services in the ap-delhi-1 region
+- from version 2.155.1
+  * Support for calling Oracle Cloud Infrastructure services in the us-ashburn-2 region
+  * Support for insight of Autonomous Database on Exadata Cloud@Customer (ADB on ExaC@C)
+    in the Operations Insights service
+  * Support for Spanish and Portuguese language recognition with Azure-backed Optical
+    Character Recognition (OCR) in the AI Document service
+  * Support for UK, Australian, and Canadian address and tax form recognition in the
+    AI Document service
+  * Support for Personal-to-Corporate conversation check in the OSP Gateway service
+- from version 2.155.0
+  * Support for the Database MultiCloud service
+  * Support for System Tags in the Database service
+  * Support for PKCS11 Library Integration for Azure Key Store in the Database service
+  * Support for changing subscription ID and the opc-dry-run parameter in the Database service
+  * Support for listing all members of an Elastic Resource Pool for a provided
+    Elastic Resource Pool leader in the Database service
+  * Support for managing scheduled queries in the Application Performance Monitoring service
+  * Support for Bring Your Own Key (BYOK) in the MySQL Heatwave service
+  * Support for customer-initiated collection of diagnostic information
+    in the Database Migration service
+  * The type of field `state` has been changed from string to `state` enum in the models
+    `AutoActivateToggleStatus` and `AutoActivateStatus` in the Application Performance
+    Monitoring service
+
+-------------------------------------------------------------------
 Thu Jul 17 20:15:52 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - allow urllib3 >= 2

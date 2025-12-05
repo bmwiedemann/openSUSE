@@ -19,7 +19,7 @@
 %bcond_without python2
 %{?sle15_python_module_pythons}
 Name:           python-oci-sdk
-Version:        2.154.3
+Version:        2.164.0
 Release:        0
 Summary:        Oracle Cloud Infrastructure Python SDK
 License:        Apache-2.0 OR UPL-1.0
@@ -47,6 +47,7 @@ Requires:       python-httpsig_cffi
 Requires:       python-requests
 Requires:       python-six
 Requires:       python-sseclient
+Requires:       python-urllib3_1
 # /SECTION
 BuildArch:      noarch
 # SECTION test requirements
