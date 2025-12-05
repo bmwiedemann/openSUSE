@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Dec 04 06:51:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.10.2:
+  * Bug Fixes
+    - fix: remove leading space from log content after timestamp
+      parsing by @sarub0b0 in #872
+  * Dependencies
+    - chore(deps): update rust crate bytes to v1.11.0 by @renovate
+      in #868
+    - chore(deps): update actions/checkout digest to 93cb6ef by
+      @renovate in #869
+    - chore(deps): update rust crate clap to v4.5.52 by @renovate
+      in #870
+    - chore(deps): update rust crate clap to v4.5.53 by @renovate
+      in #874
+    - chore(deps): update actions/checkout action to v6 by
+      @renovate in #875
+    - chore(deps): update rust crate mockall to 0.14.0 by @renovate
+      in #877
+    - chore(deps): update rust crate http to v1.4.0 by @renovate in
+      #878
+    - chore(deps): lock file maintenance by @renovate in #867,
+      #876, #879
+
+-------------------------------------------------------------------
 Sun Nov 02 16:10:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.10.1:
