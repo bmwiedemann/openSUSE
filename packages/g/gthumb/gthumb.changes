@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec  3 12:13:44 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.12.8.2:
+  + Bugfixes:
+    - Fixed extensions dependencies
+    - Only depend on libX11 if used
+    - Use GNOME module post_install
+- Add desktop-file-utils BuildRequires: New dependency.
+
+-------------------------------------------------------------------
 Mon Oct 27 07:00:21 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.12.8.1:
