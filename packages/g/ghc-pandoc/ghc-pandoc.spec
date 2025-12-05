@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.8.2.1
+Version:        3.8.3
 Release:        0
 Summary:        Conversion between markup formats
 License:        GPL-2.0-or-later
@@ -37,6 +37,8 @@ BuildRequires:  ghc-aeson-pretty-prof
 BuildRequires:  ghc-aeson-prof
 BuildRequires:  ghc-array-devel
 BuildRequires:  ghc-array-prof
+BuildRequires:  ghc-asciidoc-devel
+BuildRequires:  ghc-asciidoc-prof
 BuildRequires:  ghc-attoparsec-devel
 BuildRequires:  ghc-attoparsec-prof
 BuildRequires:  ghc-base-devel
@@ -379,6 +381,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 %{_datadir}/%{pkg_name}-%{version}/data/templates/common.latex
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.ansi
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.asciidoc
+%{_datadir}/%{pkg_name}-%{version}/data/templates/default.bbcode
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.beamer
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.biblatex
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.bibtex
