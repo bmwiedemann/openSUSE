@@ -17,7 +17,7 @@
 
 
 Name:           cantata
-Version:        3.3.1
+Version:        3.4.0
 Release:        0
 Summary:        Client for the Music Player Daemon (MPD)
 License:        GPL-3.0-only
@@ -28,6 +28,9 @@ Source:         https://github.com/nullobsi/cantata/archive/v%{version}.tar.gz#/
 BuildRequires:  fdupes
 BuildRequires:  media-player-info
 BuildRequires:  pkgconfig
+BuildRequires:  cmake(KF6Archive)
+BuildRequires:  cmake(KF6CoreAddons)
+BuildRequires:  cmake(KF6ItemViews)
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  pkgconfig(Qt6Concurrent)
 BuildRequires:  pkgconfig(Qt6Core)

@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Dec  3 19:10:56 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- Update to version 3.4.0:
+  * fix ODR violations : move enum to headers (gh#nullobsi/cantata#71)
+  * feat: allow unbundled fonts and resources (gh#nullobsi/cantata#80)
+  * fix: don't ignore failed open() calls (gh#nullobsi/cantata#89)
+  * fix: port away from deprecated 
+    `QSortFilterProxyModel::invalidateFilter()` (gh#nullobsi/cantata#90)
+  * feat: replace QtIOCompressor with KArchive (gh#nullobsi/cantata#82)
+  * git: add clang-format action (gh#nullobsi/cantata#9)
+  * fix: hide broken service integrations (gh#nullobsi/cantata#83)
+  * fix: spelling in code (and translations) (gh#nullobsi/cantata#92)
+  * fix: cantata-dynamic: Adjust cache directory name to Cantata 
+    (gh#nullobsi/cantata#98)
+  * fix: Grouped Albums Playlist view (gh#nullobsi/cantata#97)
+  * fix: correctly handle absolute INSTALL_LIBEXECDIR 
+    (gh#nullobsi/cantata#99)
+  * fix: build with BUNDLED_FONTAWESOME=OFF (gh#nullobsi/cantata#101)
+  * fix: string length bounds check crash in vfatPath 
+    (gh#nullobsi/cantata#100)
+  * fix: ShortcutsFilter: Prefer begin/endFilterChange if available 
+    (gh#nullobsi/cantata#103)
+  * fix: ODR violations due to multiple enums called Type 
+    (gh#nullobsi/cantata#102)
+  * git: build with Qt 6.10 (gh#nullobsi/cantata#108)
+  * fix: device access via UDisks2 (gh#nullobsi/cantata#106)
+  * feat: Allow sorting playlist by track rating 
+    (gh#nullobsi/cantata#109)
+  * fix: Covers::gotAlbumCover: Always emit if emitResult is true 
+    (gh#nullobsi/cantata#104)
+  * Fix: Device access from flatpak on Ubuntu and Debian 
+    (gh#nullobsi/cantata#111)
+  * Fix: Only mark tags as guessed when something was actually guessed 
+    (gh#nullobsi/cantata#112)
+  * rc: v3.4.0 (gh#nullobsi/cantata#110)
+
+-------------------------------------------------------------------
 Sun Oct 19 15:30:02 UTC 2025 - RN <R_Nik_C@proton.me>
 
 - Added some cmake warning igonoring flags: 
