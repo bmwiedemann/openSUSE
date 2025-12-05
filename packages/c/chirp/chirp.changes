@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec  3 19:47:22 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20251128:
+  * Fix mouseover error when setting is None
+  * Fixes #12274 TD-H8 Gen 3, add missing MID to channel power
+    settings
+  * Update pt_BR translation
+
+-------------------------------------------------------------------
 Sat Nov 22 08:23:23 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20251121:
