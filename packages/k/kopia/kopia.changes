@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Dec 04 06:26:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.22.3:
+  * Defect Fixes
+    - Fixes regression in dependency used for compression (#5049)
+  * Snapshots
+    - New Feature localfs support for passing options (#5044) by
+      Jarek Kowalski
+  * CI/CD
+    - Remove ineffective omitempty tags (#5037) by Julio López
+  * Dependencies
+    - build(deps): bump docker/setup-qemu-action in the docker
+      group (#5054)
+    - build(deps): bump github.com/klauspost/reedsolomon from
+      1.12.5 to 1.12.6 (#5051)
+    - build(deps): bump the github-actions group with 4 updates
+      (#5053)
+    - build(deps): bump github.com/klauspost/compress from 1.18.1
+      to 1.18.2 (#5052)
+
+-------------------------------------------------------------------
 Thu Nov 27 05:52:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.22.2:
