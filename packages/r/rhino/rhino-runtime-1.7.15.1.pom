@@ -2,12 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.mozilla</groupId>
-  <artifactId>rhino</artifactId>
-  <version>1.7.15</version>
+  <artifactId>rhino-runtime</artifactId>
+  <version>1.7.15.1</version>
+  <name>rhino-runtime</name>
   <description>
-    Rhino is an open-source implementation of JavaScript written entirely in Java.
-    It is typically embedded into Java applications to provide scripting to end users.
-    Full jar including tools, excluding the JSR-223 Script Engine wrapper.
+    Rhino JavaScript runtime jar, excludes tools &amp; JSR-223 Script Engine wrapper.
 </description>
   <url>https://mozilla.github.io/rhino/</url>
   <parent>
@@ -30,4 +29,10 @@
     <name>The Mozilla Foundation</name>
     <url>http://www.mozilla.org</url>
   </organization>
+  <developers>
+    <developer>
+      <name>Greg Brail</name>
+      <email>gbrail@users.noreply.github.com</email>
+    </developer>
+  </developers>
 </project>

@@ -1,7 +1,7 @@
 #
 # spec file for package rhino
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,9 +17,9 @@
 #
 
 
-%define scm_version 1_7_15
+%define scm_version 1_7_15_1
 Name:           rhino
-Version:        1.7.15
+Version:        1.7.15.1
 Release:        0
 Summary:        JavaScript for Java
 License:        MPL-2.0

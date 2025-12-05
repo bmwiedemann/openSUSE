@@ -315,4 +315,12 @@
     <comment>Fix build after removal of the default %%{java_home} define</comment>
     <requestid>1204556</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>968bb1ea56d3f4ecfd98a75790804022</srcmd5>
+    <version>1.7.15.1</version>
+    <time>1764949852</time>
+    <user>anag_factory</user>
+    <comment>1.17.5.1, bsc#1254481, CVE-2025-66453</comment>
+    <requestid>1321107</requestid>
+  </revision>
 </revisionlist>

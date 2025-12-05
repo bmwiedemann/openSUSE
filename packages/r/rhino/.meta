@@ -5,5 +5,4 @@ in Java. It is typically embedded into Java applications to provide
 scripting to end users.
 
 This version contains Dojo's JavaScript compression patch.</description>
-  <devel project="Java:packages" package="rhino"/>
 </package>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec  4 09:08:48 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 1.7.15.1
+  * fixes a problem with formatting of floating-point numbers to
+    strings that may result in very bad performance in some cases
+    (bsc#1254481, CVE-2025-66453)
+
+-------------------------------------------------------------------
 Sun Sep 29 19:41:18 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build after removal of the default %%{java_home} define
