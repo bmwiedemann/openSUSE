@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Nov 30 16:24:01 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update typst to version 0.8.1.
+  ## 0.8.1
+
+    * Fix parsing and evaluation of closures with _ (#84, Norbert Pozar).
+
+    * Improve parsing of float literals (#83, Norbert Pozar).
+
+    * Fix incorrect parsing of underscores in code (#82, Norbert Pozar).
+
+    * Fix early return from function (#81).
+
+    * Add default parameter for `first`, `last` methods on string, array
+      (typst 0.14 addition).
+
+    * Make the top-level document susceptible to set rules (#80).
+
+    * Handle `#title` (#80).
+
+    * Use typst-symbols 0.1.9 (typst 0.14 symbols).
+
+-------------------------------------------------------------------
 Wed Sep  3 21:39:15 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update typst to version 0.8.0.2.
