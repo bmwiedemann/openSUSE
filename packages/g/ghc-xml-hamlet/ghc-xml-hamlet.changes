@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 27 21:02:18 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update xml-hamlet to version 0.5.0.3.
+  Upstream has not updated the file "ChangeLog.md" since the last
+  release.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:09:08 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
