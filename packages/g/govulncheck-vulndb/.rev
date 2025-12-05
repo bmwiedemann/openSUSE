@@ -1441,4 +1441,21 @@
   * GO-2025-4160 CVE-2025-65965 GHSA-6gxw-85q2-q646 (forwarded request 1320684 from jfkw)</comment>
     <requestid>1320686</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>890de3e6f6572e13030d4c01127ad0ae</srcmd5>
+    <version>0.0.20251203T174324</version>
+    <time>1764949880</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.0.20251203T174324 2025-12-03T17:43:24Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2025-4155 CVE-2025-61729 CVE-2025-61729
+  * GO-2025-4163 CVE-2025-60638 GHSA-f2hj-vpp9-6vm2
+  * GO-2025-4164 CVE-2025-60632 GHSA-vgq7-9r5r-j9v3
+  * GO-2025-4171 CVE-2025-66410 GHSA-jrhg-82w2-vvj7
+  * GO-2025-4172 CVE-2025-12756 GHSA-p6gj-jc38-x2m7
+  * GO-2025-4174 CVE-2025-13353 GHSA-69jw-4jj8-fcxm
+  * GO-2025-4175 CVE-2025-61727 (forwarded request 1321033 from jfkw)</comment>
+    <requestid>1321034</requestid>
+  </revision>
 </revisionlist>
