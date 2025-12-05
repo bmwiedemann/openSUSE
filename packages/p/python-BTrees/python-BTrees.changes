@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec  5 07:53:43 UTC 2025 - Anton Smorodskyi <anton.smorodskyi@suse.com>
+
+- Update to 6.3
+  * Move all supported package metadata into ``pyproject.toml``.
+
+-------------------------------------------------------------------
 Thu Nov 13 07:42:17 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 6.2

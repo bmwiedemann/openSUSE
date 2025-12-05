@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-BTrees
-Version:        6.2
+Version:        6.3
 Release:        0
 Summary:        Persistent B-tree object containers for Python
 License:        ZPL-2.1
