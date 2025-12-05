@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Dec 04 06:08:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.11.0:
+  * Features:
+    - Build artifacts for riscv64. (PR 1011)
+    - Generate FreeBSD amd64 binaries. (PR 1013)
+    - Add support for cosign v3 bundles. (PR 1018)
+  * Fixes:
+    - Fix ECR Helper version pin. (PR 1017)
+    - Fix the cosign use-signing-config flag. (PR 1019)
+    - Improve reproducibility in Dockerfiles. (PR 1020)
+  * Other Changes:
+    - Add a policy for LLM generated contributions. (PR 1016)
+
+-------------------------------------------------------------------
 Mon Nov 10 13:02:59 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.10.0:
