@@ -140,4 +140,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1309387</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>e40015ae2643f02c2b1e93e0db2b5318</srcmd5>
+    <version>0.14.2</version>
+    <time>1764949844</time>
+    <user>anag_factory</user>
+    <comment>- Allow testsuite to fail.</comment>
+    <requestid>1320318</requestid>
+  </revision>
 </revisionlist>
