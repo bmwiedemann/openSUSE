@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 19 23:15:24 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update time-manager to version 0.2.4.
+  ## 0.2.4
+
+  * Providing `isAllGone`.
+  * Providing emptyHandle.
+
+-------------------------------------------------------------------
 Sun May 18 23:50:48 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update time-manager to version 0.2.3.
