@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Dec 05 14:11:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.0.46:
+  * Remove KS_METRICS_FRAMEWORKS environment variable support
+  * Fix typo in comment: fom -> from
+  * Add frameworks query parameter to /v1/metrics endpoint
+  * Fix incorrect comment about default output format
+  * Add KS_METRICS_FRAMEWORKS env var to allow selecting specific
+    frameworks
+  * Fix: properly handle nil downloadReleasedPolicy in getters
+  * Address code review feedback
+  * Add test for isAirGappedMode function
+  * Refactor: Extract isAirGappedMode helper function
+  * Fix air-gapped mode to prevent network access
+  * Initial plan
+  * Address code review feedback: nil check and trailing whitespace
+  * Add tests for results enrichment with severity
+  * Add severity to controls in results section as well
+  * Enable ScanAll for prometheus metrics to include all frameworks
+    including CIS
+  * Remove test output files and update gitignore
+  * Add severity field to controls in JSON output
+  * Initial plan
+  * Initial plan
+  * Bump github.com/cilium/cilium from 1.16.9 to 1.16.17
+  * Revamp documentation and reduce host sensor workers
+  * always save WorkloadConfigurationScanResultSummaries
+  * feat(security): update golang to debian trixie
+  * feat(security): update to Debian 13
+  * feat(security): update to Debian 13
+  * Bump golang.org/x/crypto from 0.41.0 to 0.45.0
+
+-------------------------------------------------------------------
 Wed Nov 12 15:12:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.0.45:
