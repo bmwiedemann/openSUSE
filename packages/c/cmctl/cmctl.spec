@@ -1,7 +1,7 @@
 #
 # spec file for package cmctl
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define kubectl_plugin_name kubectl-cert_manager
 
 Name:           cmctl
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        CLI tool that can help you to manage cert-manager resources inside your cluster
 License:        Apache-2.0
@@ -29,8 +29,8 @@ Source1:        vendor.tar.gz
 Source2:        README.md
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.22
 BuildRequires:  zsh
+BuildRequires:  golang(API) >= 1.25
 
 %description
 cmctl is a CLI tool that can help you to manage cert-manager resources inside your cluster.
