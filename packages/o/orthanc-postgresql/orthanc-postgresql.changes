@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec  4 11:11:24 UTC 2025 - Axel Braun <axel.braun@gmx.de>
+
+- version 10.0
+  * update mainly providing new Reserve and Acknowledge primitives 
+    for Queues in plugins
+
+-------------------------------------------------------------------
 Wed Sep 10 09:30:34 UTC 2025 - Axel Braun <axel.braun@gmx.de>
 
 - remove libboost_system-devel for TW (removed in boost 1.89)
