@@ -5,4 +5,4 @@ addFilter("explicit-lib-dependency")
 addFilter("suse-update-desktop-file-deprecated")
 addFilter("python-setup-test")
 addFilter("shared-dir-glob-in-files")
-addFilter("unstripped-binary-or-object")"
+addFilter("unstripped-binary-or-object")

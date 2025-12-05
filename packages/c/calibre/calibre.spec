@@ -26,7 +26,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           calibre
-Version:        8.15.0
+Version:        8.16.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -210,6 +210,8 @@ BuildRequires:  %{python_module six >= 1.16.0}
 BuildRequires:  %{python_module soupsieve >= 2.5}
 BuildRequires:  %{python_module texttable >= 1.6.7}
 BuildRequires:  %{python_module toml >= 0.10.2}
+BuildRequires:  %{python_module tzdata >= 2025.2}
+BuildRequires:  %{python_module tzlocal >= 5.3.1}
 BuildRequires:  %{python_module xxhash >= 3.3.0}
 # Upstream use pkgconfig(libxml-2.0) >= 2.12.6
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.10.3
@@ -274,6 +276,8 @@ Requires:       %{python_flavor}-sgmllib3k >= 1.0.0
 Requires:       %{python_flavor}-six >= 1.16.0
 Requires:       %{python_flavor}-soupsieve >= 2.5
 Requires:       %{python_flavor}-texttable >= 1.6.7
+Requires:       %{python_flavor}-tzdata >= 2025.2
+Requires:       %{python_flavor}-tzlocal >= 5.3.1
 Requires:       %{python_flavor}-xxhash >= 3.3.0
 #Requires:       %%{python_flavor}-unrardll >= 0.1.5
 Requires:       %{python_flavor}-py7zr >= 1.0.0
