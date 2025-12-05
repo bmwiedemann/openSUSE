@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Dec 04 06:05:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.30.28:
+  * Gracefully handle cached files being deleted (#1959)
+  * Add a test that important files come early in extracted images
+    (#1964)
+  * build(deps): bump go.step.sm/crypto from 0.74.0 to 0.75.0
+    (#1963)
+  * build(deps): bump google.golang.org/api from 0.256.0 to 0.257.0
+    (#1962)
+  * build(deps): bump actions/checkout from 6.0.0 to 6.0.1 (#1961)
+  * build(deps): bump golangci/golangci-lint-action from 9.1.0 to
+    9.2.0 (#1960)
+  * build(deps): bump github.com/klauspost/compress from 1.18.1 to
+    1.18.2 (#1957)
+  * build(deps): bump github/codeql-action from 4.31.5 to 4.31.6
+    (#1958)
+  * build(deps): bump step-security/harden-runner from 2.13.2 to
+    2.13.3 (#1956)
+
+-------------------------------------------------------------------
+Thu Dec 04 06:00:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.30.27:
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.16.3 to
+    5.16.4 (#1950)
+  * build(deps): bump chainguard.dev/sdk from 0.1.43 to 0.1.44
+    (#1955)
+  * build(deps): bump github.com/google/go-containerregistry from
+    0.20.6 to 0.20.7 (#1954)
+  * build(deps): bump actions/checkout from 5.0.1 to 6.0.0 (#1948)
+  * build(deps): bump chainguard-dev/actions from 1.5.9 to 1.5.10
+    (#1951)
+  * build(deps): bump github/codeql-action from 4.31.4 to 4.31.5
+    (#1952)
+  * build(deps): bump golangci/golangci-lint-action from 9.0.0 to
+    9.1.0 (#1953)
+
+-------------------------------------------------------------------
 Mon Nov 24 07:05:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.30.26:
