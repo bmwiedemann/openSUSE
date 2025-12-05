@@ -1,0 +1,75 @@
+cabal-version: >=1.10
+name: half
+version: 0.3.3
+x-revision: 1
+license: BSD3
+license-file: LICENSE
+copyright: Copyright (C) 2014 Edward A. Kmett
+maintainer: Edward A. Kmett <ekmett@gmail.com>
+author: Edward A. Kmett
+stability: provisional
+homepage: http://github.com/ekmett/half
+bug-reports: http://github.com/ekmett/half/issues
+synopsis: Half-precision floating-point
+description:
+    Half-precision floating-point.
+category: Numeric
+build-type: Simple
+extra-source-files:
+    .gitignore
+    README.markdown
+    CHANGELOG.markdown
+
+tested-with:   GHC == 8.0.2
+             , GHC == 8.2.2
+             , GHC == 8.4.4
+             , GHC == 8.6.5
+             , GHC == 8.8.4
+             , GHC == 8.10.7
+             , GHC == 9.0.2
+             , GHC == 9.2.8
+             , GHC == 9.4.8
+             , GHC == 9.6.6
+             , GHC == 9.8.4
+             , GHC == 9.10.1
+             , GHC == 9.12.1
+
+source-repository head
+    type: git
+    location: https://github.com/ekmett/half.git
+
+library
+    default-language: Haskell2010
+    exposed-modules:
+        Numeric.Half
+        Numeric.Half.Internal
+    hs-source-dirs: src
+    other-extensions: BangPatterns CPP DeriveDataTypeable DeriveGeneric
+                      DeriveLift ForeignFunctionInterface PatternSynonyms
+                      StandaloneDeriving
+    ghc-options: -Wall -Wtabs -O2 -Wno-missing-pattern-synonym-signatures
+    build-depends:
+        base >=4.9 && <5,
+        binary >=0.5.1.0 && <0.9,
+        deepseq >=1.4.2.0 && <1.6,
+        template-haskell >=2.11
+
+    if !impl(ghcjs)
+      c-sources:
+        cbits/half.c
+
+test-suite spec
+    default-language: Haskell2010
+    type: exitcode-stdio-1.0
+    main-is: Spec.hs
+    hs-source-dirs: test
+    ghc-options: -Wall
+
+    build-depends:
+        base,
+        binary,
+        bytestring,
+        half,
+        QuickCheck >=2.14.1 && <2.18,
+        tasty >= 1.4 && < 1.6,
+        tasty-quickcheck >= 0.10 && < 0.12
