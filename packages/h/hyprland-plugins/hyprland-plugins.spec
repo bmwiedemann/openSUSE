@@ -27,7 +27,7 @@ URL:            https://github.com/hyprwm/hyprland-plugins
 Source0:        https://github.com/hyprwm/hyprland-plugins/archive/refs/tags/v%{pkg_version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(hyprland) = %{hypr_tgt}
+BuildRequires:  pkgconfig(hyprland) >= %{hypr_tgt}
 BuildRequires:  pkgconfig(pangocairo)
 %requires_eq    hyprland
 
