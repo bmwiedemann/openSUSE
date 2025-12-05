@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Dec 04 07:05:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.44.0:
+  * New Features
+    - ee5a6b0: feat: add compression level for deb (#987)
+      (@afbjorklund)
+  * Bug fixes
+    - 29d0e0a: fix: lint (@caarlos0)
+    - a632bb7: fix: make sure to validate yaml with jsonschema
+      (#999) (@afbjorklund)
+  * Build process updates
+    - 4f3f1d3: ci(deps): bump the actions group across 1 directory
+      with 4 updates (#993) (@dependabot[bot])
+    - 3a30a89: ci(deps): bump the actions group with 2 updates
+      (#1006) (@dependabot[bot])
+    - 08ef0cd: ci(deps): bump the actions group with 3 updates
+      (#988) (@dependabot[bot])
+    - 01fe054: ci(deps): bump the actions group with 3 updates
+      (#994) (@dependabot[bot])
+    - 90bdbc8: ci(deps): bump the actions group with 3 updates
+      (#996) (@dependabot[bot])
+    - d5cc5a3: ci(deps): bump the actions group with 4 updates
+      (#989) (@dependabot[bot])
+    - 8655780: ci(deps): bump the actions group with 6 updates
+      (#1003) (@dependabot[bot])
+    - 91e0573: ci: fix schema.json path (@caarlos0)
+    - b927bbe: ci: publish to npm (@caarlos0)
+    - cb217ab: ci: update dependabot.yml (@caarlos0)
+    - 141324a: ci: updated cosign (@caarlos0)
+  * Other work
+    - 92289a0: docs: fix 404 (@caarlos0)
+    - 9ef03bc: docs: fix favicon (#1002) (@caarlos0)
+    - 0bbf926: docs: fix og:image (@caarlos0)
+    - 21d6ae0: docs: migrate to hugo and hextra (#970) (@caarlos0)
+    - 40a7b52: docs: skip favicon check for now (@caarlos0)
+    - 76abc28: docs: update cmd docs (@caarlos0)
+    - 8793ca1: docs: update cmd docs (@caarlos0)
+
+-------------------------------------------------------------------
 Mon Oct 13 10:50:19 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.43.4:
