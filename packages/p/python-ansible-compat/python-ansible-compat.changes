@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec  5 06:25:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.12.0:
+  * Maintenance
+    - Add platform version check (#548) @cidrblock
+    - chore(deps): update all dependencies (#547) @renovate[bot]
+    - chore(deps): update all dependencies (#546) @renovate[bot]
+    - chore: Temporarily disable tombi schema.strict for
+      pyproject.toml (#545) @alisonlhart
+    - chore(deps): update all dependencies (#544) @renovate[bot]
+
+-------------------------------------------------------------------
 Tue Nov 11 10:19:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 25.11.0:
