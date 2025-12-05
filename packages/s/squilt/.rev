@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>1314378</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>91aa01d140f48694cc92dbb1674bd115</srcmd5>
+    <version>20251029.56b4c47</version>
+    <time>1764950183</time>
+    <user>anag_factory</user>
+    <comment>- Update description to mention bubblewrap
+- Simplify spec file
+</comment>
+    <requestid>1321168</requestid>
+  </revision>
 </revisionlist>

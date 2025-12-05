@@ -19,25 +19,22 @@
 Name:           squilt
 Version:        20251029.56b4c47
 Release:        0
-Summary:        A quilt wrapper using nsjail
+Summary:        A quilt wrapper using bubblewrap
 License:        MIT
 Group:          Development/Tools/Version Control
 URL:            https://github.com/jsegitz/squilt
+BuildArch:      noarch
 Source0:        %{name}-%{version}.tar.gz
 Requires:       bubblewrap
 Requires:       quilt
 
 %description
-Wrapper to confine quilt with nsjail
+Wrapper to confine quilt with bubblewrap
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 
 %build
-# Fix squilt on Tumbleweed
-%if 0%{?suse_version} > 1500
-sed -i -e 's@/etc/nsswitch@/usr/etc/nsswitch@g' squilt
-%endif
 
 %install
 install -Dm 0755 squilt %{buildroot}%{_bindir}/squilt
