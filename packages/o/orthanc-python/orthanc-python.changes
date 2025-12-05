@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec  4 12:33:42 UTC 2025 - Axel Braun <axel.braun@gmx.de>
+
+- version 7.0
+  * The "orthanc.pyi" stub is now excluded from the "install" step during the build
+  * Wrapped new SCP callbacks:
+    - RegisterFindCallback2()
+    - RegisterMoveCallback3()
+    - RegisterWorklistCallback2()
+    - RegisterStorageCommitmentScpCallback2()
+  * Wrapped new Queues methods:
+    - ReserveQueueValue()
+    - AcknowledgeQueueValue()
+
+-------------------------------------------------------------------
 Wed Sep 10 09:31:41 UTC 2025 - Axel Braun <axel.braun@gmx.de>
 
 - remove libboost_system-devel for TW (removed in boost 1.89) 

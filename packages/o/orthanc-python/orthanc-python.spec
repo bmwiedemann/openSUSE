@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           orthanc-python
-Version:        6.0
+Version:        7.0
 Release:        0
 Summary:        Python plugin for Orthanc
 License:        AGPL-3.0-or-later
@@ -98,7 +98,7 @@ rm %{buildroot}%{_libdir}/share/orthanc/plugins/*.so
 
 cp %{SOURCE11} %{buildroot}%{_docdir}/orthanc/.
 
-rm %{buildroot}/usr/orthanc.pyi
+## rm %{buildroot}/usr/orthanc.pyi
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
