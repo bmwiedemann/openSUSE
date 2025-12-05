@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Dec 03 10:21:26 UTC 2025 - Thomas Bechtold <thomasbechtold@jpberlin.de>
+
+- Update to version 0.38.24:
+  * build(deps): bump step-security/harden-runner from 2.13.2 to
+    2.13.3 (#1806)
+  * build(deps): bump actions/checkout from 6.0.0 to 6.0.1 (#1807)
+  * build(deps): bump actions/checkout in /.github/actions (#1808)
+  * fix integration test issue
+  * fix deprecated VulnerabilityMetadata with direct references
+    since m.vulnerability now contains the metadata
+  * bug: update grype to fix java jar suffix issue; see upstream
+    patch https://github.com/anchore/grype/pull/3034
+- Update to version 0.38.23:
+  * build(deps): bump step-security/harden-runner from 2.13.0 to
+    2.13.2 (#1783)
+  * build(deps): bump github.com/containerd/containerd/v2 (#1784)
+  * build(deps): bump the chainguard group with 4 updates (#1795)
+  * build(deps): bump github.com/anchore/stereoscope from 0.1.9 to
+    0.1.13 (#1796)
+  * build(deps): bump golangci/golangci-lint-action from 8.0.0 to
+    9.1.0 (#1797)
+  * build(deps): bump actions/checkout from 5.0.1 to 6.0.0 (#1798)
+  * build(deps): bump actions/checkout in /.github/actions (#1799)
+
+-------------------------------------------------------------------
 Mon Nov 24 07:04:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.38.22:
