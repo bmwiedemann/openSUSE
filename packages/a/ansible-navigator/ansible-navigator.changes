@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec 05 06:45:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 25.12.0:
+  * Fixes
+    - Fix test failures due to configuration changes in latest
+      ansible-core : Partial (#2064) @shatakshiiii
+  * Maintenance
+    - chore: Add check for platform versions (#2071) @cidrblock
+    - chore(deps): update all dependencies (#2062) @renovate[bot]
+
+-------------------------------------------------------------------
 Tue Nov 11 10:18:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 25.11.0:
