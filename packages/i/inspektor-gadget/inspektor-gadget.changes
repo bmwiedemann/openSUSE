@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu Dec 04 06:06:49 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.47.0:
+  * Highlights of this release are:
+    - trace_open: add file path after symlink resolution by @alban
+      in #5066
+    - tree-wide: add more metadata to parameters by @flyth in #5082
+    - feat: added ig image verify command by @ask-elad in #5010
+    - pkg: signature: Add support for cosign bundle format by
+      @eiffel-fl in #5086
+  * Breaking change:
+    - op/otel-metrics: Change default metricname to FullName by
+      @burak-ok in #4870
+  * General Improvements
+    - op/otel-metrics: Add metricname annotation by @burak-ok in
+      #4870
+    - Artifact Hub: Update gadgets version to v0.46.0 by
+      @github-actions[bot] in #5040
+    - feature(cli): allow “-f -” to apply gadget manifest from
+      stdin by @ask-elad in #5035
+    - added new function to recursively call GetAuthConfig by
+      @ask-elad in #5065
+    - op/sort: Append the fields when same DS is specified by
+      @burak-ok in #4784
+  * Security Improvements
+    - vex: Fix PURL for trivy by @burak-ok in #5024
+    - pkg: oci: Add nil check for Verifier in VerifyGadgetImage().
+      by @eiffel-fl in #5074
+    - pkg: signature: Add new signature-format package for cosign.
+      by @eiffel-fl in #5056
+    - pkg: oci: Pull gadget signature if verification failed. by
+      @eiffel-fl in #5105
+  * Bug Fixes
+    - fixed /test/integration/trace_tcpretrans_test.go to allow
+      1.0.0.1 as well as 1.1.1.1 by @ask-elad in #5052
+    - dead container made independent of name by @ask-elad in #5088
+  * Documentation Improvements
+    - docs/tcpdump: Add kubectl-gadget section by @mqasimsarfraz in
+      #5015
+  * Testing and Continue Integration
+    - makefile/gadgets: Support testing for local registry by
+      @mqasimsarfraz in #5021
+    - Testing: Wait for the Pod to be created before kubectl wait
+      by @burak-ok in #5048
+    - Validate parent TID belongs to same process in test by
+      @matthyx in #5069
+
+-------------------------------------------------------------------
 Mon Nov 03 17:35:20 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.46.0:
