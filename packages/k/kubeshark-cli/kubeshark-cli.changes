@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 04 07:01:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 52.10.3 (no releases between .0 and this one):
+  * Bump the Helm chart version to 52.10.3
+  * Adding a default license (#1812)
+  * Use `www.kubehq.com` for links (#1809)
+
+-------------------------------------------------------------------
 Wed Nov 26 06:47:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 52.10.0:
