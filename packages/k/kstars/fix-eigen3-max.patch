@@ -1,0 +1,24 @@
+diff -ru orig/kstars/ekos/guide/internalguide/MPI_IS_gaussian_process/src/math_tools.cpp mod/kstars/ekos/guide/internalguide/MPI_IS_gaussian_process/src/math_tools.cpp
+--- orig/kstars/ekos/guide/internalguide/MPI_IS_gaussian_process/src/math_tools.cpp	2025-12-01 13:06:11.000000000 +0100
++++ mod/kstars/ekos/guide/internalguide/MPI_IS_gaussian_process/src/math_tools.cpp	2025-12-04 17:22:49.025397525 +0100
+@@ -72,7 +72,7 @@
+     return
+         ((am.array().square().colwise().sum().transpose().rowwise().replicate(bCols).matrix()
+           + bm.array().square().colwise().sum().colwise().replicate(aCols).matrix())
+-         - 2 * (am.transpose()) * bm).array().max(0);
++         - 2 * (am.transpose()) * bm).array().max(0.0);
+ 
+     /* // verbose version
+     Eigen::MatrixXd a_square =
+diff -ru orig/kstars/ekos/guide/internalguide/MPI_IS_gaussian_process/tools/math_tools.cpp mod/kstars/ekos/guide/internalguide/MPI_IS_gaussian_process/tools/math_tools.cpp
+--- orig/kstars/ekos/guide/internalguide/MPI_IS_gaussian_process/tools/math_tools.cpp	2025-12-01 13:06:11.000000000 +0100
++++ mod/kstars/ekos/guide/internalguide/MPI_IS_gaussian_process/tools/math_tools.cpp	2025-12-04 17:22:34.425100687 +0100
+@@ -72,7 +72,7 @@
+     return
+         ((am.array().square().colwise().sum().transpose().rowwise().replicate(bCols).matrix()
+           + bm.array().square().colwise().sum().colwise().replicate(aCols).matrix())
+-         - 2 * (am.transpose()) * bm).array().max(0);
++         - 2 * (am.transpose()) * bm).array().max(0.0);
+ 
+     /* // verbose version
+     Eigen::MatrixXd a_square =

@@ -1286,4 +1286,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1312397</requestid>
   </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>41d9f20498fe1f716e1570ba5020d507</srcmd5>
+    <version>3.8.0</version>
+    <time>1764950261</time>
+    <user>anag_factory</user>
+    <comment>update to 3.8.0 and fix build</comment>
+    <requestid>1321225</requestid>
+  </revision>
 </revisionlist>

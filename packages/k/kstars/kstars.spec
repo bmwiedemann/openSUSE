@@ -20,7 +20,7 @@
 # Internal QML import
 %global __requires_exclude qmlimport\\((KStarsLiteEnums|TelescopeLiteEnums).*
 Name:           kstars
-Version:        3.7.8
+Version:        3.8.0
 Release:        0
 Summary:        Desktop Planetarium
 # Note for legal: the Apache licensed files in the tarball are for the
@@ -36,10 +36,8 @@ Source1:        https://download.kde.org/stable/kstars/%{version}/kstars-%{versi
 # https://invent.kde.org/sysadmin/release-keyring/-/blob/master/keys/mutlaqja@key1.asc?ref_type=heads
 Source2:        kstars.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Fix-installation-with-Qt6.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Make-it-compile-with-Qt-6.10.patch
+Patch0:         fix-eigen3-max.patch
+Patch1:         fix-build-gcc15.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  curl-devel
 BuildRequires:  fdupes
@@ -47,7 +45,6 @@ BuildRequires:  kf6-extra-cmake-modules
 BuildRequires:  libXISF-devel
 BuildRequires:  libnova-devel
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  xplanet
 BuildRequires:  cmake(KF6Config)
 BuildRequires:  cmake(KF6Crash)

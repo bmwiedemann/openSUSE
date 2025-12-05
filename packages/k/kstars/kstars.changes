@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Dec  4 16:28:51 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add fix-build-gcc15.patch
+- Add fix-eigen3-max.patch
+
+-------------------------------------------------------------------
+Wed Dec  3 07:08:41 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.8.0:
+  * https://invent.kde.org/education/kstars/-/blob/master/ChangeLog
+- Drop 0001-Make-it-compile-with-Qt-6.10.patch
+- Drop 0001-Fix-installation-with-Qt6.patch
+
+-------------------------------------------------------------------
+Sat Nov 22 21:20:04 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove unused BuildRequires: update-desktop-files.
+
+-------------------------------------------------------------------
 Mon Oct 13 11:47:49 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change:
