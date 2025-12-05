@@ -1,7 +1,7 @@
 #
 # spec file for package scsh
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -97,7 +97,7 @@ ln -sf rx-%{rxcommit} rx
 
 %build
 autoreconf
-%add_optflags -Wall -Wno-return-type -fPIC -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=500
+%add_optflags -Wall -Wno-return-type -fPIC -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=500 -std=gnu99
 
 %configure --with-scheme48=%{_libdir}/scheme48-%{buildscheme}
 %make_build   SCHEME48VM=%{_libdir}/scheme48-%{buildscheme}/scheme48vm

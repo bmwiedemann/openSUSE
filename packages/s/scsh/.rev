@@ -79,4 +79,12 @@
 - Make it build even with scheme48 &gt;= 1.9.2</comment>
     <requestid>1226188</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>3e340bd515b6ea7287eb1220cc2590ce</srcmd5>
+    <version>0.7+git6770db21b08edd907d1c9bd962297ff55664e3fe</version>
+    <time>1764950334</time>
+    <user>anag_factory</user>
+    <comment>- Make it build</comment>
+    <requestid>1321278</requestid>
+  </revision>
 </revisionlist>
