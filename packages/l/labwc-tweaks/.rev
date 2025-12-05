@@ -51,4 +51,41 @@ the labwc wayland compositor</comment>
   * Weblate commits</comment>
     <requestid>1309357</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>796c9b7083157a1e71ea73d2557e9fbd</srcmd5>
+    <version>0~git.20251202.8404e2f</version>
+    <time>1764950220</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0~git.20251202.8404e2f:
+  * Migrated existing translations and updated translations
+  * xml: teach xml_get_bool_text() correct bool parsing
+  * layoutmodel.cpp: remove QString() where not needed
+  * layoutmodel.cpp: simplify by using Pair class
+  * behaviour.cpp: translate values in Placement Policy QComboBox
+  * settings.cpp: fix bug whereby initial int value of 0 in rc.xml is handled wrong
+  * environment.cpp: use QString::toInt() instead of atoi()
+  * Remove maindialog.ui and just code the list+stack
+  * src/appearance.ui: limit size of corner radius spin button range
+  * mv src/gen-layout-list bin/
+  * Fix segfault by using QString in Language::addSelectedLayout()
+  * Create language.{ui,h,cpp}
+  * Set QCheckBox minimum height for a better-looking layout
+  * mouse: change naturalScroll from QComboBox to QCheckBox
+  * Create mouse.{ui,h,cpp}
+  * Add bootstrap script
+  * build: optionally support Address Sanitizer
+  * appearance: change dropShadow from QComboBox to QCheckBox
+  * appearance: remove redundant comment
+  * Create behaviour.{ui,h,cpp}
+  * settings.cpp: remove erroneous semi-colon
+  * settings.cpp: update settings vector in set{Int,Str,Bool}
+  * Update evdev-lst-layout.h
+  * build: group source files in CMakeLists.txt
+  * Create appearance.{ui,h,cpp}
+  * Fix LayoutModel::getXkbDefaultLayout() bug
+  * clang-format -i xml.cpp
+  * Avoid snake_case function names
+  * xml.c -&gt; xml.cpp</comment>
+    <requestid>1321186</requestid>
+  </revision>
 </revisionlist>

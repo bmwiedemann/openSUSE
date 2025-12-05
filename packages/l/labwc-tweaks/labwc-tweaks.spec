@@ -18,7 +18,7 @@
 
 
 Name:           labwc-tweaks
-Version:        0~git.20251003.53468f9
+Version:        0~git.20251202.8404e2f
 Release:        0
 Summary:        GUI Configuration app for labwc
 License:        BSD-3-Clause AND GPL-2.0-only
