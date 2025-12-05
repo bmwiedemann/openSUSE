@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Dec  4 12:15:40 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Switch to .so versioning, following upstream
+
+- Update to version 7266:
+  * Added support for several new and updated models including
+    Ministral3, Qwen3 Next, RND1 Diffusion LM, AfmoeForCausalLM,
+    openPangu-Embedded, and improved detection for
+    GigaChat3-10-A1.8B.
+  * Server improvements: multi-model API, Anthropic Messages API,
+    task generator API, HTTP interface split, jinja enabled by
+    default.
+  * Chat and parsing improvements: generalized XML-style tool-call
+    parsing, composable PEG parser combinators.
+  * WebUI enhancements: restored HTML in Markdown tables, rehype
+    plugin improvements, attachment-handling UX improvements,
+    Harmony tool-call visualization, new keyboard shortcuts,
+    clickability fixes, autoscroll toggle, and new “Continue”
+    action.
+  * CUDA backend improvements: FP16 restrictions, memory bandwidth
+    improvements, stream-based concurrency, MMQ and fusion fixes,
+    rope fusion corrections, improved handling of nb00/nb02, and
+    various stability fixes.
+  * Vulkan backend improvements: new operators, improved FA and
+    MMVQ support, async graph_compute, conv2d spec constants, i32 copy
+    support.
+  * GGML and CPU backend updates: expanded RVV, ARM64, RISC-V
+    feature detection; new CPU intrinsic implementations; improved
+    GEMM/GEMV repack kernels; ops additions.
+  * OpenCL, SYCL, HIP, MUSA, and Hexagon improvements: expanded
+    operator support, new kernels, fallback logic for older SoCs,
+    buffer handling fixes.
+  * MTMD (multimodal) improvements: warmup toggles, CLI log-noise
+    reduction, image embedding size fixes and audio model patch
+    fixes.
+  * General performance, stability, and correctness improvements
+    across CPU, GPU, schedulers, memory management, kv-cache,
+    async behavior, thread safety, and operator fusion.
+  * Full commit log:
+    https://github.com/ggml-org/llama.cpp/compare/b6937...b7266
+
+-------------------------------------------------------------------
 Mon Nov  3 18:38:20 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 6937:

@@ -340,4 +340,13 @@
   * Full commit log:</comment>
     <requestid>1315691</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>8d2e51b1d7fc9d1618e562460a82869a</srcmd5>
+    <version>7266</version>
+    <time>1764950198</time>
+    <user>anag_factory</user>
+    <comment>- Switch to .so versioning, following upstream
+- Update to version 7266:</comment>
+    <requestid>1321203</requestid>
+  </revision>
 </revisionlist>

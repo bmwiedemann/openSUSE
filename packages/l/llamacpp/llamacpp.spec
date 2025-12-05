@@ -19,8 +19,17 @@
 
 %global backend_dir %{_libdir}/ggml
 
+%global llama_sover        0.0.%{version}
+%global llama_sover_suffix 0
+
+%global mtmd_sover         0.0.%{version}
+%global mtmd_sover_suffix  0
+
+%global ggml_sover         0.9.4
+%global ggml_sover_suffix  0
+
 Name:           llamacpp
-Version:        6937
+Version:        7266
 Release:        0
 Summary:        Inference of Meta's LLaMA model (and others) in pure C/C++
 License:        MIT
@@ -47,14 +56,16 @@ This package includes the llama-cli tool to run inference using the library.
 
 %package devel
 Summary:        Development files for llama.cpp
+Obsoletes:      libllama < 7266
+Obsoletes:      libmtmd < 7266
 
 %description devel
 Development files for llama.cpp
 
-%package -n libllama
+%package -n libllama%{llama_sover_suffix}
 Summary:        A C++ interface for running inference with large language models
 
-%description -n libllama
+%description -n libllama%{llama_sover_suffix}
 The llama.cpp library provides a C++ interface for running inference
 with large language models (LLMs). Initially designed to support Meta's
 LLaMA model, it has since been extended to work with a variety of other models.
@@ -62,20 +73,20 @@ LLaMA model, it has since been extended to work with a variety of other models.
 This package includes the shared libraries necessary for running applications
 that depend on libllama.so.
 
-%package -n libggml
+%package -n libggml%{ggml_sover_suffix}
 Summary:        A tensor library for C++
 Requires:       libggml-cpu
 Recommends:     libggml-opencl
 Recommends:     libggml-vulkan
 
-%description -n libggml
+%description -n libggml%{ggml_sover_suffix}
 A tensor library for C++. It was created originally to support llama.cpp
 and WhisperCpp projects.
 
-%package -n libggml-base
+%package -n libggml-base%{ggml_sover_suffix}
 Summary:        A tensor library for C++ (base)
 
-%description -n libggml-base
+%description -n libggml-base%{ggml_sover_suffix}
 A tensor library for C++. It was created originally to support llama.cpp
 and WhisperCpp projects.
 
@@ -110,6 +121,8 @@ This package includes the OpenCL backend for ggml.
 
 %package -n ggml-devel
 Summary:        Development files for ggml
+Obsoletes:      libggml < 7266
+Obsoletes:      libggml-base < 7266
 
 %description -n ggml-devel
 A tensor library for C++. It was created originally to support llama.cpp
@@ -118,10 +131,10 @@ and WhisperCpp projects.
 This package includes the development files necessary for building applications
 that depend on ggml.
 
-%package -n libmtmd
+%package -n libmtmd%{mtmd_sover_suffix}
 Summary:        Library to run multimodals inference models
 
-%description -n libmtmd
+%description -n libmtmd%{mtmd_sover_suffix}
 As outlined in the history, libmtmd is the modern library designed to
 replace the original llava.cpp implementation for handling multimodal inputs.
 
@@ -137,6 +150,11 @@ Summary:        Library to run multimodals inference models
 
 %description -n libllava
 Library to handle multimodal inputs for llama.cpp.
+
+%ldconfig_scriptlets -n libllama%{llama_sover_suffix}
+%ldconfig_scriptlets -n libggml%{ggml_sover_suffix}
+%ldconfig_scriptlets -n libggml-base%{ggml_sover_suffix}
+%ldconfig_scriptlets -n libmtmd%{mtmd_sover_suffix}
 
 %prep
 %autosetup -p1 -n llama.cpp-b%{version}
@@ -184,18 +202,24 @@ rm %{buildroot}%{_bindir}/convert_hf_to_gguf.py
 %{_includedir}/mtmd*
 %{_libdir}/cmake/llama
 %{_libdir}/pkgconfig/llama.pc
-
-%files -n libllama
-%license LICENSE
+# libllama symlinks
 %{_libdir}/libllama.so
+%{_libdir}/libllama.so.0
+# libmtmd symlinks
+%{_libdir}/libmtmd.so
+%{_libdir}/libmtmd.so.0
 
-%files -n libggml
+%files -n libllama%{llama_sover_suffix}
 %license LICENSE
-%{_libdir}/libggml.so
+%{_libdir}/libllama.so.%{llama_sover}
 
-%files -n libggml-base
+%files -n libggml%{ggml_sover_suffix}
 %license LICENSE
-%{_libdir}/libggml-base.so
+%{_libdir}/libggml.so.%{ggml_sover}
+
+%files -n libggml-base%{ggml_sover_suffix}
+%license LICENSE
+%{_libdir}/libggml-base.so.%{ggml_sover}
 
 %files -n libggml-cpu
 %license LICENSE
@@ -217,9 +241,13 @@ rm %{buildroot}%{_bindir}/convert_hf_to_gguf.py
 %{_includedir}/ggml*.h
 %{_includedir}/gguf.h
 %{_libdir}/cmake/ggml
+%{_libdir}/libggml.so
+%{_libdir}/libggml.so.0
+%{_libdir}/libggml-base.so
+%{_libdir}/libggml-base.so.0
 
-%files -n libmtmd
+%files -n libmtmd%{mtmd_sover_suffix}
 %license LICENSE
-%{_libdir}/libmtmd.so
+%{_libdir}/libmtmd.so.%{mtmd_sover}
 
 %changelog
