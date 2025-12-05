@@ -125,4 +125,14 @@
     <comment></comment>
     <requestid>1312856</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b620ba9b0d7939aafdeb3b6e8bd12448</srcmd5>
+    <version>0.8.1</version>
+    <time>1764950136</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.8.1:
+  * Support simple choosers returning a toplevel name.
+  * Various improvements.</comment>
+    <requestid>1321118</requestid>
+  </revision>
 </revisionlist>
