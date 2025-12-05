@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Dec 04 06:31:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.18.0:
+  * Enhancements
+    - The use-trusted-publishing audit now detects NuGet publishing
+      commands (#1369)
+    - The dependabot-cooldown audit now flags cooldown periods of
+      less than 7 days by default (#1375)
+    - The dependabot-cooldown audit can now be configured with a
+      custom minimum cooldown period via
+      rules.dependabot-cooldown.config.days (#1377)
+    - zizmor now produces slightly more useful error messages when
+      the user supplies an invalid configuration for the
+      forbidden-uses audit (#1381)
+  * Bug Fixes
+    - Fixed additional edge cases where auto-fixed would fail to
+      preserve a document's final newline (#1372)
+
+-------------------------------------------------------------------
 Wed Nov 26 06:23:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.17.0:
