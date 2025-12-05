@@ -134,4 +134,15 @@ Changes:
   * Add various new test cases</comment>
     <requestid>1284231</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>905a46f31f8710dd2697a478240f88eb</srcmd5>
+    <version>1.7.2</version>
+    <time>1764950014</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.7.2
+  * Fix for arc transforms -- use eigh instead of eig
+    #gh/mathandy/svgpathtools#238
+  * Fixed wrong length of flat quadratic bezier</comment>
+    <requestid>1321070</requestid>
+  </revision>
 </revisionlist>
