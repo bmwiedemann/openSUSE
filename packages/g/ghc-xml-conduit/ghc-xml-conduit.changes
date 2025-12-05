@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 25 20:24:41 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update xml-conduit to version 1.10.1.0.
+  ## 1.10.1.0
+  * Add `document` function to wrap a stream of XML events in an 'EventBeginDocument'/'EventEndDocument' pair.
+  * Ensure compatibility with GHC 9.10
+
+-------------------------------------------------------------------
 Tue Jul 15 22:19:44 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update xml-conduit to version 1.10.0.1.
