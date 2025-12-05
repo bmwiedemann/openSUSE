@@ -22,7 +22,7 @@
 
 %define so_ver 2
 Name:           indi
-Version:        2.1.6
+Version:        2.1.7
 Release:        0
 Summary:        Instrument Neutral Distributed Interface
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -47,8 +47,8 @@ BuildRequires:  liblz4-devel
 BuildRequires:  libnova-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pugixml-devel
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Network)
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(libcurl)
@@ -165,8 +165,7 @@ export CXXFLAGS="$CFLAGS"
 %cmake \
     -DINDI_BUILD_STATIC=OFF \
     -DUDEVRULES_INSTALL_DIR=%{_udevrulesdir} \
-    -DINDI_BUILD_QT5_CLIENT=ON \
-    -DINDI_BUILD_XISF=ON \
+    -DINDI_BUILD_QT_CLIENT=ON \
 %if 0%{?force_gcc_version}
     -DCMAKE_CXX_COMPILER=%{_bindir}/g++-%{?force_gcc_version} \
 %endif

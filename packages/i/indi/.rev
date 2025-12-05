@@ -191,4 +191,22 @@
 </comment>
     <requestid>1311011</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d09cfca8e109070237e0e5dd2fad06b3</srcmd5>
+    <version>2.1.7</version>
+    <time>1764950209</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.1.7:
+  * Separate build of drivers base classes from drivers by @sterne-jaeger in #2285
+  * Allow using hidapi from system by @mattiaverga in #2272
+  * Power refactor by @knro in #2287
+  * SestoSenso3 Support by @knro in #2288
+  * iOptron iAFS Rotator by @joe13905179063 in #2290
+  * Refactor for INDI:Power Interface by @hcomet in #2291
+  * Fix bug with driver not registering correctly by @jrhuerta in #2293
+  * Add USB ports parameter to initProperties comment by @LuckyEddie47 in #2292
+  * Add Weather Interface support to WandererBoxPlusV3 and WandererBoxProV3 by @grm in #2300
+</comment>
+    <requestid>1321184</requestid>
+  </revision>
 </revisionlist>
