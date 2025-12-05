@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
-Fri Oct  3 10:18:30 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+Thu Dec  4 10:20:57 UTC 2025 - Axel Braun <axel.braun@gmx.de>
 
-- Apply boost patch to the source tree, this is needed by plugins
+- version 1.12.10
+  * boost.patch removed - included in source
+  ' long changelog - see NEWS for details
+
+-------------------------------------------------------------------
+Thu Oct  2 08:19:18 UTC 2025 - Axel Braun <axel.braun@gmx.de>
+
+- apply boost patch to source tree
 
 -------------------------------------------------------------------
 Wed Oct  1 14:34:39 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>

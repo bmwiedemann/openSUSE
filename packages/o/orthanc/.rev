@@ -668,4 +668,12 @@
     <comment>- Apply boost patch to the source tree, this is needed by plugins (forwarded request 1308850 from anag_factory)</comment>
     <requestid>1308857</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>0dcffc97c9c152abf65f9ac000fed686</srcmd5>
+    <version>1.12.10</version>
+    <time>1764950170</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1321152</requestid>
+  </revision>
 </revisionlist>
