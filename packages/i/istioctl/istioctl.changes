@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Dec  4 07:03:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.28.1:
+  https://istio.io/latest/news/releases/1.28.x/announcing-1.28.1/
+  This release implements the security updates described in our 3rd
+  of December post, ISTIO-SECURITY-2025-003.
+  https://istio.io/latest/news/security/istio-security-2025-003/
+  No istioctl-related changes in the changelog
+
+-------------------------------------------------------------------
+Thu Dec  4 06:51:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.28.0:
+  https://istio.io/latest/news/releases/1.28.x/announcing-1.28/
+  https://istio.io/latest/news/releases/1.28.x/announcing-1.28/change-notes/
+  * Added automatic detection of the default revision in istioctl
+    commands. When --revision is not explicitly specified, the
+    default revision (as configured by istioctl tag set default)
+    will be used automatically. (Issue #54518)
+  * Added support for specifying both --level and
+    --stack-trace-level for istioctl admin log. (Issue #57007)
+  * Added support specifying the proxy admin port for istioctl
+    experimental authz, istioctl proxystatus, istioctl bug-report
+    and istioctl experimental describe with the flag
+    --proxy-admin-port.
+  * Added flags to support list debug types for istioctl
+    experimental internal-debug. (Issue #57372)
+  * Added support for displaying connection information for
+    istioctl ztunnel-config all
+  * Fixed IST0173 analyzer (DestinationRuleSubsetNotSelectPods)
+    incorrectly flagging DestinationRule subsets as not selecting
+    any pods when the subsets used topology labels.
+
+-------------------------------------------------------------------
 Tue Oct 21 05:10:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.27.3:
