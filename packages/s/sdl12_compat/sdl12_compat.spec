@@ -19,7 +19,7 @@
 Name:           sdl12_compat
 %define lname libSDL-1_2-0
 %global _lto_cflags %_lto_cflags -ffat-lto-objects
-Version:        1.2.70
+Version:        1.2.72
 Release:        0
 Summary:        SDL-1.2 Compatibility Layer for Simple DirectMedia Layer 2.0
 License:        MIT
@@ -59,7 +59,6 @@ Summary:        Libraries, includes and more to develop SDL-1.2 applications
 Group:          Development/Libraries/X11
 Requires:       %lname = %version
 Requires:       pkgconfig(gl)
-Requires:       pkgconfig(glu)
 Requires:       pkgconfig(x11)
 Requires:       pkgconfig(xproto)
 Conflicts:      SDL-devel

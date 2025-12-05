@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec  4 06:41:05 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.72
+  * Allow building without glu.h by defining NO_SDL_GLU
+  * Fixed centering the splash screen in UT2004
+- glu is thus no longer a build requirement and downstream
+  packages need to explicitly list it in their BulidRequires
+
+-------------------------------------------------------------------
 Fri Oct 31 09:52:49 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.70
