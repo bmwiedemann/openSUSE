@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec  2 13:05:45 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.3.1
+  Bugfix release
+  * allow conditions that have no rules except for default rule,
+    use unsigned character type in C/C++ examples) and most
+    importantly #564 - fix broken end of input rule $ with captures
+    – the latter bug was inadvertently introduced in version 4.3.
+
+-------------------------------------------------------------------
 Fri Nov  7 07:51:22 UTC 2025 - pgajdos@suse.com
 
 - package LICENSE and tag is as %license [bsc#1252224]
