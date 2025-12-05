@@ -39,9 +39,11 @@ runc or crun) for a single container.
 %autosetup -p1
 
 %build
+%set_build_flags
 %make_build
 
 %install
+%set_build_flags
 %make_install PREFIX=%{_prefix}
 
 %files

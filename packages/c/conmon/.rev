@@ -295,4 +295,12 @@
     <comment></comment>
     <requestid>1248909</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>a4fcb6f3f1f7c37ad93892cfe8e5b7f5</srcmd5>
+    <version>2.1.13</version>
+    <time>1764949854</time>
+    <user>anag_factory</user>
+    <comment>- Build with distro flags (forwarded request 1321121 from Guillaume_G)</comment>
+    <requestid>1321123</requestid>
+  </revision>
 </revisionlist>
