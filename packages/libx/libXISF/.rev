@@ -156,4 +156,15 @@
 </comment>
     <requestid>1312011</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>22a2db520ff0aa5e7b412c98054da79a</srcmd5>
+    <version>0.2.13+git5.7b70b6a</version>
+    <time>1764950205</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.2.13+git5.7b70b6a:
+  * More precise std::to_char support
+  * Fix bug in XISFModify that corrupted files
+</comment>
+    <requestid>1321183</requestid>
+  </revision>
 </revisionlist>

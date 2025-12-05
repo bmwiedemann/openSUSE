@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 04 16:15:36 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 0.2.13+git5.7b70b6a:
+  * More precise std::to_char support
+  * Fix bug in XISFModify that corrupted files
+
+-------------------------------------------------------------------
 Fri Oct 17 08:26:24 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 0.2.13+git.1755016678.556bb22:
