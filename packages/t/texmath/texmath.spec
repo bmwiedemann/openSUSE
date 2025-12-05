@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        0.13.0.1
+Version:        0.13.0.2
 Release:        0
 Summary:        Conversion between math formats
 License:        GPL-2.0-or-later
