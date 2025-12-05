@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec  3 20:17:55 UTC 2025 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 4.6.2
+  * CVE-2025-13945: HTTP3 dissector crash (bsc#1254471).
+  * MCVE-2025-13946: MEGACO dissector infinite loop (bsc#1254472).
+- Many more features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-4.6.2.html
+
+-------------------------------------------------------------------
 Mon Nov 24 09:39:09 UTC 2025 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 4.6.1

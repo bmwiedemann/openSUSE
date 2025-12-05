@@ -1,0 +1,49 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+wireshark-4.6.2.tar.xz: 50581900 bytes
+SHA256(wireshark-4.6.2.tar.xz)=e218e3b3899e5d6e35a5fe95eeeabead587ed084cbf5fc330ac827f9a3137de8
+SHA1(wireshark-4.6.2.tar.xz)=7b87d40d80552708befbb852bb1414c02010b2dc
+
+Wireshark-4.6.2-arm64.exe: 75342184 bytes
+SHA256(Wireshark-4.6.2-arm64.exe)=ed0f03cc3d4a0815731ca3c8531a5ec05e5a0d965a2c868d1d4c995d025f3758
+SHA1(Wireshark-4.6.2-arm64.exe)=c93d4d271e01a9400f215ede235b2d86e344a4fa
+
+Wireshark-4.6.2-x64.exe: 96624568 bytes
+SHA256(Wireshark-4.6.2-x64.exe)=373a93e9b5ffa3559938424a2aabd3338786cff7bef084641c2c5e5bfb44325e
+SHA1(Wireshark-4.6.2-x64.exe)=9680681c8426ed46bbe10533817dd067e73473cf
+
+Wireshark-4.6.2-x64.msi: 73805824 bytes
+SHA256(Wireshark-4.6.2-x64.msi)=fa979913b8caceaec071156b50be0b4a999bb0c21d29f05e1a8ee61ed90c1b45
+SHA1(Wireshark-4.6.2-x64.msi)=b23a77980cf01f31fcc62b8ed9a7bc602f1d31cd
+
+WiresharkPortable64_4.6.2.paf.exe: 95699608 bytes
+SHA256(WiresharkPortable64_4.6.2.paf.exe)=00e42c7c303cda98266dea27cf6e744f1bda882d03384a484a5662ea9f943ffe
+SHA1(WiresharkPortable64_4.6.2.paf.exe)=75d3edd27386dc2352ab1056b42297b8214150f7
+
+Wireshark 4.6.2.dmg: 141491581 bytes
+SHA256(Wireshark 4.6.2.dmg)=238af1a676f66a465de3edb6dfb7ce8bed5e91e91b26030f4c1a231982f8d206
+SHA1(Wireshark 4.6.2.dmg)=c5f1d1bf5680f3b6fcfde75766dc1be5bdc5ea3b
+
+You can validate these hashes using the following commands (among others):
+
+    Windows: certutil -hashfile Wireshark-x.y.z-x64.exe SHA256
+    Linux (GNU Coreutils): sha256sum wireshark-x.y.z.tar.xz
+    macOS: shasum -a 256 "Wireshark x.y.z.dmg"
+    Other: openssl sha256 wireshark-x.y.z.tar.xz
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCgAdFiEEWlrbp9vqbD+HIk8ZgiRKeOb+ruoFAmkwkpQACgkQgiRKeOb+
+ruq4yw/+L12M1TcyWbmyOoJpZ94peNb9qjY+sOOv4QaQ2vaYeITDu//Fh5bgReLn
+eVZ9IpNV4e5efTXLyMAHrDvWx02BaUK6HustYwV1BMifdrI0gqLoZ85nPSBPX+GE
+knDF8FJBTM9eulJsm3ce9+UlS0dxVgyliumE8KUhOKzI/VYOxT8cYGabNHroKYfv
+cQdHSsGRHoybR3CCg9wgXgQQbQpVKUV0MseSQcJv3Gsp5MF9XAVNW345Y+Wc39fs
+r18mrwOzC4sLrgMchIMOi+4J8JMvf/ieDzHm9lI3UwlciA6HVN55OK6+CKwMLedK
+wvPrEm2fAyzdXcwGxyQ91lmvDX16zZi228+84NZ9/vPveMmGsPv201356swTJoZ3
+yo6FDGN2i1LKeDfsUoiy8PuEnsgmOql72KouHgUL8/SCP7JPsWXjXAWis1qIwE+5
+ktWCzjR85J2Wyl2VxiMmktn85gAwWLC662gmH0NlOV7ihhggxTOS02AbSO0azAN9
+4CYfAKpw2ol1OXwolwzdUaHAYt16g5CVGguHKhNZQyTWjv2URZu8OGT2H0Iukv7k
+mkMZUHu5NXFrVFodChWO23Mk0pJJk5jtyGvjKoYmqhoBmPMq9vp4tepmga7TK2eI
+Fxi9kPnmCsoLTpdwLlxmyEGRy385QMH5l+zPY0L0U8OPlU2sEq8=
+=ZIN3
+-----END PGP SIGNATURE-----
