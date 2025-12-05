@@ -2,8 +2,6 @@
 # spec file for package audacity
 #
 # Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +19,7 @@
 %bcond_with vst3
 
 Name:           audacity
-Version:        3.7.5
+Version:        3.7.6
 Release:        0
 Summary:        A Multi Track Digital Audio Editor
 License:        CC-BY-3.0 AND GPL-2.0-or-later AND GPL-3.0-only

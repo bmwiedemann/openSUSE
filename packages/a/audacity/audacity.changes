@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Dec  4 20:06:50 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to 3.7.6
+
+  This is a patch release. It contains the following changes:
+
+  * #9742 Added FFmpeg 8 support
+  * #9709 Added Spectrogram Wavelet analysis (Thanks, Klaus 
+    Gram-Hansen (@kgramhans))
+  * #9565 Added middle-mouse drag panning over track panel (Thanks, 
+    Anders Jenbo (@AJenbo))
+  * #9863 Added "Import from audio.com" dialog to import audio files
+    from audio.com
+  * #9838 Fixed unstable cloud audio uploads
+  * #9576 Allowed export as OGG/Opus when exporting with FFmpeg
+  * #9929 Fixed 16-bit FLAC import
+  * #9897 Library updates: libcurl to 8.17.0, wavpack to 5.7.0
+
+-------------------------------------------------------------------
 Thu Aug  7 05:00:43 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Remove Use-full-function-prototypes-in-libnyquist.patch now upstream
