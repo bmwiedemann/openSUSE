@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec  5 14:49:18 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 2.3.1:
+  * Fixed an old bug that interfered with the time-out after the
+    cursor left the notification window
+
+-------------------------------------------------------------------
 Wed Nov  5 18:21:26 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to version 2.3.0:

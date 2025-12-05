@@ -407,4 +407,14 @@
   * Corrected the tabbing order in the config dialog</comment>
     <requestid>1315877</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>704a3ac941e1b5adff69495d3fbb8ddf</srcmd5>
+    <version>2.3.1</version>
+    <time>1764950336</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.3.1:
+  * Fixed an old bug that interfered with the time-out after the
+    cursor left the notification window</comment>
+    <requestid>1321293</requestid>
+  </revision>
 </revisionlist>
