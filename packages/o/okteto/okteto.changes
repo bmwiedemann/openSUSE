@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Dec 05 06:11:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.14.0:
+  * New Feature
+    - Check the images in parallel instead of sequential by
+      @jLopezbarb in #4809
+    - Clone official images to GitHub Packages by @pchico83 in
+      #4823
+  * Bug Fix
+    - fix: update command for resetting syncthing database by
+      @jLopezbarb in #4818
+    - Revert "build(deps): upgrade github.com/shirou/gopsutil to v4
+      (#4790)" by @jLopezbarb in #4821
+    - DEV-1254: Improve how ssh forwarder handle connections when
+      connecting with the ssh agent by @ifbyol in #4825
+    - [Backport release-3.14] fix(doctor): handle correctly okteto
+      up sessions by @github-actions[bot] in #4835
+    - [Backport release-3.14] build(deps): update okteto clean
+      version to 0.3.0 in Dockerfile by @github-actions[bot] in
+      #4842
+    - build(deps): bump github.com/containerd/containerd/v2 (#4816)
+
+-------------------------------------------------------------------
+Thu Dec 04 06:57:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.13.4:
+  * fix(doctor): handle correctly okteto up sessions (#4832)
+    (#4834)
+
+-------------------------------------------------------------------
 Fri Nov 21 12:22:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.13.3:
