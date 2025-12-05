@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Sun Nov 30 15:56:42 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update citeproc to version 0.12.
+  ## 0.12
+
+    * Fix suppression of substituted variables for number,
+      short- variants (#174).
+
+    * Fix is-numeric detection for non-locators with en-dash (#175).
+
+    * Fix handling of CSL JSON formatting (i.e. handling of
+      tags like `<i>` and also quotes, which are "smartified") (#170,
+      #173).
+
+      We were previously handling this in the wrong way, by parsing
+      it in the `fromText` method for `CslJson Text`.  This meant that
+      there was no way to prevent quotes from turning into smart
+      quotes, even in things like URLs (see #173).
+
+      What is more, we were not handling this sort of formatting at
+      all in other contexts, e.g. in terms, `text` elements with a
+      `value`, locators, prefixes, and suffixes.  The CSL tests were
+      passing only because the raw HTML was being passed through
+      verbatim, but in other formats this led to undesirable results
+      (see #170).
+
+      Formatting is now parsed in prefix, suffix, locator, text
+      value, and terms.  And `fromText` is now just `CslText`, so that
+      purely textual values like URLs can be inserted.
+
+      We also handle the conversion of Unicode superscript characters
+      to explicit `<sup>.</sup>` in CSL JSON somewhat differently.
+      Instead of making the replacement in *parsing* CSL JSON,
+      which would now affect other formats too, because terms in
+      locales are parsed as CSL JSON, we make the replacement in
+      *rendering* CSL JSON. This gives us behavior consistent with
+      the previous behavior, with the substitution occuring in
+      CSL JSON output but not in Pandoc.
+
+      [API changes]
+
+      + Citeproc.Types now exports `parseCslJson`, `lookupQuotes`,
+        `superscriptChars`.
+      + Citeproc.Locale no longer exports `lookupQuotes`.
+      + `parseCslJson` now takes an additional parameter for a Locale.
+
+    * Add StandardVariable constructor for VariableType [API change]
+      (#173). Also change the interpretation of StringVariable,
+      so that StringVariables are not parsed for quotes and HTML-like
+      formatting. Make URL, ISBN, etc. StringVariables.
+
+    * Test suite improvements:
+
+      + Indicate FAILED:EXPECTED or :UNEXPECTED in output.
+      + Fix formatting of columns in test summary.
+
+-------------------------------------------------------------------
 Sun Oct 19 21:11:29 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update citeproc to version 0.11.
