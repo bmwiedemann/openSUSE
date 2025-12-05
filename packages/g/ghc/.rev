@@ -1194,4 +1194,17 @@ Please wait for SR #249835 (ghc-bootstrap).</comment>
     <comment>- use new bootsrap 9.10.1 compiler</comment>
     <requestid>1315268</requestid>
   </revision>
+  <revision rev="120" vrev="6">
+    <srcmd5>27430ddcb62cfd10c54a37baf7d71119</srcmd5>
+    <version>9.12.2</version>
+    <time>1764950167</time>
+    <user>anag_factory</user>
+    <comment>- remove 9_10_1-bootstrap-sources.tar.gz
+- use hadrian as BuildRequires to remove hadrian bootstraping part
+   from ghc build itself
+- use quick flavor on s390x
+
+- use new bootstrap 9.10.1 compiler</comment>
+    <requestid>1321200</requestid>
+  </revision>
 </revisionlist>

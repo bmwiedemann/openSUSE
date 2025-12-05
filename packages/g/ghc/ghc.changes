@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec  3 18:34:07 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- remove 9_10_1-bootstrap-sources.tar.gz
+- use hadrian as BuildRequires to remove hadrian bootstraping part
+   from ghc build itself
+- use quick flavor on s390x
+
+-------------------------------------------------------------------
 Tue Oct 28 12:34:11 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- use new bootsrap 9.10.1 compiler 
+- use new bootstrap 9.10.1 compiler 
 
 -------------------------------------------------------------------
 Wed Oct 15 13:59:39 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>

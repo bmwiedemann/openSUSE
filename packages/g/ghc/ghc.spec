@@ -31,9 +31,6 @@
 # bcond_without for production builds: use Hadrian buildsystem
 %bcond_without hadrian
 
-# bcond_without for production builds: build hadrian
-%bcond_without build_hadrian
-
 # bcond_without for production builds: enable debuginfo
 %bcond_without ghc_debuginfo
 
@@ -83,7 +80,6 @@ License:        BSD-3-Clause
 URL:            https://www.haskell.org/ghc/
 Source:         https://downloads.haskell.org/~ghc/%{full_version}/ghc-%{version}-src.tar.xz
 Source2:        ghc-rpmlintrc
-Source4:        9_10_1-bootstrap-sources.tar.gz
 Source5:        ghc-pkg.man
 Source6:        haddock.man
 Source7:        runghc.man
@@ -103,6 +99,7 @@ BuildRequires:  ghc-bootstrap-helpers >= 1.3
 BuildRequires:  ghc-rpm-macros-extra => 2.9.1
 BuildRequires:  glibc-devel
 BuildRequires:  gmp-devel
+BuildRequires:  hadrian
 BuildRequires:  libelf-devel
 BuildRequires:  libffi-devel
 BuildRequires:  libtool
@@ -314,11 +311,6 @@ cd ../..
 rm libffi-tarballs/libffi-*.tar.gz
 
 %build
-cp %{SOURCE4} ./
-hadrian/bootstrap/bootstrap.py --bootstrap-sources 9_10_1-bootstrap-sources.tar.gz
-
-%global hadrian _build/bin/hadrian
-
 %ghc_set_gcc_flags
 
 export LANG=C.utf8
@@ -354,7 +346,17 @@ python3 boot.source --hadrian
 %global hadrian_workaround "stage1.*.ghc.*.opts += -finter-module-far-jumps"
 %endif
 
-%{hadrian} %{?_smp_mflags} --flavour=%{?with_quickbuild:quick+no_profiled_libs}%{!?with_quickbuild:release%{!?with_ghc_prof:+no_profiled_libs}}%{?hadrian_llvm} %{hadrian_docs} %{?hadrian_workaround} binary-dist-dir --hash-unit-ids
+%if %{with quickbuild}
+%global hadrian_flavor quick+no_profiled_libs
+%else
+%ifarch s390x
+%global hadrian_flavor quick
+%else
+%global hadrian_flavor release
+%endif
+%endif
+
+hadrian %{?_smp_mflags} --flavour=%{hadrian_flavor}%{!?with_ghc_prof:+no_profiled_libs}%{?hadrian_llvm} %{hadrian_docs} %{?hadrian_workaround} binary-dist-dir --hash-unit-ids
 
 %install
 
