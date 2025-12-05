@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Dec 05 06:11:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.35.0:
+  * feat: Add sparse-checkout support with multiple directory
+    support (#2254)
+
+-------------------------------------------------------------------
+Thu Dec 04 07:03:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.34.3:
+  * Refactor Build to generate build options from flag struct.
+
+-------------------------------------------------------------------
+Thu Dec 04 07:00:19 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.34.2:
+  * sca: scan linux modules for vermagic (#2249)
+  * spdx: Refactor SBOM generation to not write to file
+  * fix(sca): handle broken shebang properly (#2245)
+  * sca: scan linux kernels for version strings  (#2237)
+  * build(deps): bump actions/checkout from 5.0.0 to 6.0.0 (#2241)
+  * build(deps): bump the actions group with 2 updates (#2240)
+  * build(deps): bump the gomod group with 4 updates (#2242)
+
+-------------------------------------------------------------------
+Thu Dec 04 06:58:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.34.1:
+  * Refactor build, rebuild, test commands for flag parsing.
+    (#2243)
+  * Refactor sbom generation into its own package. (#2218)
+
+-------------------------------------------------------------------
 Fri Nov 21 06:15:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.34.0:
