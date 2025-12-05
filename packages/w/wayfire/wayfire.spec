@@ -17,7 +17,7 @@
 
 
 %define major_ver 0.10
-%define minor_ver 0
+%define minor_ver 1
 %define libname libwf-utils0
 Name:           wayfire
 Version:        %{major_ver}.%{minor_ver}

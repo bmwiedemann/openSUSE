@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Dec  5 03:32:23 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.10.1:
+  * Support for the cursor-shape-v1 protocol in core.
+  * Support for cursor wrapping hints in the pointer-constraints 
+    protocol, needed for applications like Blender to get infinite 
+    scroll.
+  * Fixes for multiple crashes related to session-lock 
+    and IPC methods.
+  * Multiple graphical glitches fixes related to damage tracking.
+  * Other miscellaneous improvements and fixes.
+
+-------------------------------------------------------------------
 Thu Sep  4 04:09:46 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.10.0:
