@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Dec  4 14:06:52 UTC 2025 - Florian "spirit" <sp1rit@disroot.org>
+
+- Update to version 0.52.2:
+ + Fixes:
+    - presentation: only send sync output on presented (#12255)
+    - renderer: fix noscreenshare layerrule popups (#12260)
+    - renderer/ime: fix fcitx5 popup artifacts (#12263)
+    - screencopy: fix possible crash in renderMon
+    - internal: put Linux-only header behind ifdef (#12300)
+    - internal: fix crash at startup on freebsd (#12298)
+    - meson: fix inclusion of gpg info in git commit info (#12302)
+    - cursor: ensure cursor reset on changed window states (#12301)
+    - plugin/hook: disallow multiple hooks per function (#12320)
+    - protocols/workspace: fix crash in initial group sending
+    - renderer: stop looping over null texture surfaces (#12446)
+    - protocols/workspace: avoid crash on inert outputs
+    - buffers: revert state merging (#12461)
+    - protocols/lock: fix missing output enter on surface (#12448)
+    - dmabuf: sys/ioctl is required for ioctl (#12483)
+
+- Changes from version 0.52.1:
+  + Fixes:
+    - protocols/layershell: do not raise protocol error if layer
+	  surface is not anchored (#12241)
+    - protocols/outputMgmt: fix wlr-randr by defering success event
+	  until monitor reloads (#12236)
+    - meson: fix version.h install location
+
+-------------------------------------------------------------------
 Fri Nov  7 20:28:03 UTC 2025 - Florian "spirit" <sp1rit@disroot.org>
 
 - Update to version 0.52.0:

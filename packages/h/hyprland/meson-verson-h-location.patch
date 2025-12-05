@@ -1,25 +1,20 @@
-From 522edc87126a48f3ce4891747b6a92a22385b1e7 Mon Sep 17 00:00:00 2001
+From ecc446e58b4bbdfd6c3b4b74dbb5a989b16f647f Mon Sep 17 00:00:00 2001
 From: Mihai Fufezan <mihai@fufexan.net>
 Date: Fri, 7 Nov 2025 21:08:35 +0200
 Subject: [PATCH] meson: fix version.h install location
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
+Signed-off-by: Florian "sp1rit"​ <sp1rit@disroot.org>
 ---
- meson.build | 2 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ meson.build | 1 -
+ 1 file changed, 1 deletion(-)
 
 diff --git a/meson.build b/meson.build
-index 710da6beec3..c7819e80b6c 100644
+index e1e2df94..d2b86a2e 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -84,7 +84,7 @@ version_h = configure_file(
-   configuration: cfg
- )
- 
--install_headers(version_h, subdir: 'src')
-+install_headers(version_h, subdir: 'hyprland/src')
- 
- xcb_dep = dependency('xcb', required: get_option('xwayland'))
- xcb_composite_dep = dependency('xcb-composite', required: get_option('xwayland'))
 @@ -123,7 +123,6 @@ headers = globber.stdout().strip().split('\n')
  foreach file : headers
    install_headers(file, subdir: 'hyprland', preserve_path: true)
@@ -28,3 +23,6 @@ index 710da6beec3..c7819e80b6c 100644
  
  tracy = dependency('tracy', static: true, required: get_option('tracy_enable'))
  if get_option('tracy_enable') and get_option('buildtype') != 'debugoptimized'
+-- 
+2.50.1
+
