@@ -1,7 +1,7 @@
 #
 # spec file for package cmake-extras
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           cmake-extras
 Version:        1.9
 Release:        0
@@ -23,34 +24,34 @@ License:        GPL-3.0-or-later
 Group:          Development/Tools/Building
 URL:            https://gitlab.com/ubports/development/core/cmake-extras
 Source:         https://gitlab.com/ubports/development/core/cmake-extras/-/archive/%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  cmake
-BuildRequires:  vala
-BuildRequires:  qmlpluginexports-qt5
-BuildRequires:  lcov
-BuildRequires:  intltool
 BuildRequires:  clang
-BuildRequires:  llvm-gold
+BuildRequires:  cmake
+BuildRequires:  doxygen
+BuildRequires:  gcovr
 BuildRequires:  gettext
 BuildRequires:  gmock
-BuildRequires:  gcovr
-BuildRequires:  doxygen
+BuildRequires:  intltool
+BuildRequires:  lcov
+BuildRequires:  llvm-gold
 BuildRequires:  pkg-config
+BuildRequires:  qmlpluginexports-qt5
+BuildRequires:  vala
 # BuildRequires:  licensecheck
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-Requires:       cmake
-Requires:       vala
-Requires:       qmlpluginexports-qt5
-Requires:       lcov
-Requires:       intltool
 Requires:       clang
-Requires:       llvm-gold
+Requires:       cmake
+Requires:       doxygen
+Requires:       gcovr
 Requires:       gettext
 Requires:       gmock
-Requires:       gcovr
-Requires:       doxygen
+Requires:       intltool
+Requires:       lcov
+Requires:       llvm-gold
 Requires:       pkg-config
+Requires:       qmlpluginexports-qt5
+Requires:       vala
 Requires:       pkgconfig(gio-2.0)
 Requires:       pkgconfig(glib-2.0)
 Requires:       pkgconfig(gobject-introspection-1.0)
@@ -63,6 +64,7 @@ A collection of add-ons for the CMake build tool.
 %autosetup -p1
 sed -i 's/qmlplugindump_exe/qmlplugindump_exe-qt5/g' src/QmlPlugins/QmlPluginsConfig.cmake
 sed -i 's|/usr/bin/env python|/usr/bin/python3|g' src/IncludeChecker/include_checker.py
+sed -i '/find_program/s|qmlplugindump HINTS /usr/lib/qt${QT_VERSION_MAJOR}/bin|qmlplugindump-qt5 HINTS /usr/bin|g' src/QmlPlugins/QmlPluginsConfig.cmake
 # rm -rf src/CopyrightTest examples/copyrighttest-demo
 
 %build
@@ -78,4 +80,3 @@ sed -i 's|/usr/bin/env python|/usr/bin/python3|g' src/IncludeChecker/include_che
 %{_datadir}/cmake/*
 
 %changelog
-

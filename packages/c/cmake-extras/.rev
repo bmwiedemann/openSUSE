@@ -31,4 +31,12 @@
     <comment></comment>
     <requestid>1311685</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>6d2608cca18edf4a71bd6b8fc8478250</srcmd5>
+    <version>1.9</version>
+    <time>1764952954</time>
+    <user>anag_factory</user>
+    <comment>- Fix filename and path of qmlplugindump-qt5 for openSUSE (forwarded request 1321265 from hillwood)</comment>
+    <requestid>1321282</requestid>
+  </revision>
 </revisionlist>
