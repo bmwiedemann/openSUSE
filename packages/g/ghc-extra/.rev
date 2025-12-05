@@ -333,4 +333,12 @@ are simple additions, filling out missing functionality.</comment>
     <comment>version update for ghc-9.10.1</comment>
     <requestid>1231511</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>147dcccb34b90cf9923cda47bad3fb9a</srcmd5>
+    <version>1.8.1</version>
+    <time>1764950148</time>
+    <user>anag_factory</user>
+    <comment>version update</comment>
+    <requestid>1321134</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov 23 14:32:04 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update extra to version 1.8.1.
+  1.8.1, released 2025-11-23
+      #118, future proof for GHC 9.16 gaining nubOrd and nubOrdBy
+      Test with GHC 9.12
+
+-------------------------------------------------------------------
 Sat Nov 19 13:35:44 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update extra to version 1.8.
