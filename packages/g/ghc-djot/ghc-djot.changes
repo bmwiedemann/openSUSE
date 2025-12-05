@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Nov 30 16:42:30 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update djot to version 0.1.2.4.
+  ## 0.1.2.4 -- 2025-11-30
+
+  * Ensure that `'95--'96` doesn't get parsed as singlequoted.
+
+  * Properly handle bare `'}` for right single-quote (#12).
+
+-------------------------------------------------------------------
 Sat Sep 27 11:35:47 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update djot to version 0.1.2.3.

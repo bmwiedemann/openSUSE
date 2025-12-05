@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.2.3
+Version:        0.1.2.4
 Release:        0
 Summary:        Parser and renderer for djot light markup syntax
 License:        MIT
