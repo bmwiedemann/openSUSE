@@ -24,7 +24,7 @@
 %endif
 
 Name:           nextcloud-desktop
-Version:        4.0.2
+Version:        4.0.3
 Release:        0
 Summary:        Nextcloud desktop synchronisation client
 License:        GPL-2.0-or-later AND LGPL-3.0-or-later
