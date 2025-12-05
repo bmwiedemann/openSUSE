@@ -19,7 +19,7 @@
 %define lname libSDL2-2_0-0
 %global _lto_cflags %_lto_cflags -ffat-lto-objects
 Name:           sdl2-compat
-Version:        2.32.58
+Version:        2.32.60
 Release:        0
 Summary:        SDL-2.0 Compatibility Layer for Simple DirectMedia Layer 3.0
 License:        Zlib
