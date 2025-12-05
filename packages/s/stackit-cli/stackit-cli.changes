@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Thu Dec 04 06:00:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.49.0:
+  * feat(intake): add runner command (#952)
+  * feat(kms) describe key, keyring, wrappingkey (#1107)
+  * fix(alb): print valid JSON/YAML output for list cmds (#1045)
+  * fix(deps): update module github.com/goccy/go-yaml to v1.19.0
+    (#1137)
+  * fix(deps): update module github.com/jedib0t/go-pretty/v6 to
+    v6.7.5 (#1105)
+  * fix: log browser url to stderr instead of stdout (#1136)
+  * chore(deps): bump actions/checkout from 5 to 6 (#1106)
+  * chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.7.2 to
+    6.7.3 (#1097)
+  * chore(deps): bump github.com/stackitcloud/stackit-sdk-go/core
+    from 0.19.0 to 0.20.0 (#1092)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/alb (#1117)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/authorization
+    (#1120)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/dns (#1122)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/git (#1101)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/iaas (#1121)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/intake (#1132)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/kms (#1103)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/loadbalancer
+    (#1133)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/logme (#1095)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/mariadb (#1129)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/mongodbflex
+    (#1116)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/objectstorage
+    (#1096)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/observability
+    (#1104)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/opensearch
+    (#1102)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/rabbitmq
+    (#1118)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/redis (#1128)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/runcommand
+    (#1127)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/secretsmanager
+    (#1112)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/serverbackup
+    (#1111)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/serverupdate
+    (#1109)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/serviceaccount
+    (#1115)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/serviceenablement
+    (#1123)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/ske (#1110)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/sqlserverflex
+    (#1098)
+  * chore(deps): bump renovatebot/github-action from 44.0.3 to
+    44.0.4 (#1113)
+  * chore: increase linter timeout (#1131)
+
+-------------------------------------------------------------------
 Tue Nov 18 12:24:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.48.0:

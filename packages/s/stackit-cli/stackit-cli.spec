@@ -19,7 +19,7 @@
 %define executable_name stackit
 
 Name:           stackit-cli
-Version:        0.48.0
+Version:        0.49.0
 Release:        0
 Summary:        A command-line interface to manage STACKIT resources
 License:        Apache-2.0
