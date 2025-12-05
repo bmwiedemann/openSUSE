@@ -19,7 +19,7 @@
 %global pkg_name typst-symbols
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.1.8.1
+Version:        0.1.9.1
 Release:        0
 Summary:        Symbol and emoji lookup for typst language
 License:        MIT

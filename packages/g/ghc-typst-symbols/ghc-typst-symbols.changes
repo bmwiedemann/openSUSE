@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Oct 26 19:16:09 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update typst-symbols to version 0.1.9.1.
+  ## 0.1.9.1
+
+  * Fix small regression in 0.1.9, in which variation selector code points
+    were included after some symbols.
+
+  ## 0.1.9
+
+  * Updaet to typst 0.14.
+
+-------------------------------------------------------------------
 Mon May 12 18:45:10 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update typst-symbols to version 0.1.8.1.
