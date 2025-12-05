@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec  5 09:40:11 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- BuildRequire glu to fix build
+
+-------------------------------------------------------------------
 Sun Feb 26 19:48:30 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Add ultimatestunts-add-pthread.patch, fix building for openSUSE Leap

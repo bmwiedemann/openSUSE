@@ -15,4 +15,12 @@
     <comment>- Add ultimatestunts-add-pthread.patch, fix building for openSUSE Leap</comment>
     <requestid>1067854</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e95343fa84a170f474db297a1b7c0091</srcmd5>
+    <version>0.7.7.1</version>
+    <time>1764950332</time>
+    <user>anag_factory</user>
+    <comment>- BuildRequire glu to fix build</comment>
+    <requestid>1321270</requestid>
+  </revision>
 </revisionlist>

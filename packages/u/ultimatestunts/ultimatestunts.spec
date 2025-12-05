@@ -38,6 +38,7 @@ BuildRequires:  xz
 BuildRequires:  pkgconfig(SDL_image)
 BuildRequires:  pkgconfig(freealut)
 BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(sdl)
 BuildRequires:  pkgconfig(vorbisfile)
