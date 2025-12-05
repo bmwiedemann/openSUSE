@@ -91,8 +91,8 @@ update the signature in the sealed key.
 %autosetup -p1
 
 %build
+%set_build_flags
 %make_build \
-	CCFLAGS="%optflags" \
 	LIBDIR="%{_libdir}" \
 	LIBEXECDIR="%{_libexecdir}" \
 	SBINDIR="%{_sbindir}" \
@@ -101,6 +101,7 @@ update the signature in the sealed key.
 	RPM_MACRO_DIR="%{_rpmmacrodir}"
 
 %install
+%set_build_flags
 %make_install \
 	LIBDIR="%{_libdir}" \
 	LIBEXECDIR="%{_libexecdir}" \
