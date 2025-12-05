@@ -6570,4 +6570,41 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     <comment></comment>
     <requestid>1320981</requestid>
   </revision>
+  <revision rev="562" vrev="1">
+    <srcmd5>3f1ba5501564042050e451ad4b9c74f5</srcmd5>
+    <version>25.3.1</version>
+    <time>1764949856</time>
+    <user>anag_factory</user>
+    <comment>- Update to Mesa 25.3.1
+  --&gt; https://docs.mesa3d.org/relnotes/25.3.1
+- Due to a lack of a 25.3.0 announcment, here are included the relavent
+  entries here for that.
+- Users can expect the usual flurry of improvements across all drivers and
+  components, including these new extensions &amp; features highlighted by
+  their developers (in no particular order):
+- The VDPAU state tracker has been removed. There are design issues with
+  VDPAU, as well as limited support, which render other options like
+  VAAPI and Vulkan Video better choices
+- Zink and NVK are now mandatory for OpenGL acceleration on recent
+  nvidia GPUs. You can enable them at configure time by adding zink to
+  --gallium-drivers and nouveau to --vulkan-drivers or by setting both
+  to auto on appropriate platforms. In 25.1, we began defaulting to
+  Zink+NVK on Turing and later gpus when Zink+NVK was enabled at build
+  time. In 25.3, the old driver no longer officially suports Turing or
+  later. Users of these gpus without Zink+NVK installed at runtime will
+  instead get software rendering. This affects most nvidia gpus from
+  2018 or later.
+- Some RADV_DEBUG options
+  (nodynamicbounds,splitfma,nongg_gs,invariantgeom) are deprecated and
+  will be removed in future Mesa releases.
+- The PowerVR Vulkan driver is now conformant to Vulkan 1.0 on BXS-4-64
+  and advertises Vulkan 1.2 support on selected GPUs (although, it isn't
+  fully 1.2 conformant in this release). The driver is no longer
+  considered to be experimental and, as such, can now be enabled via
+  -Dvulkan-drivers=imagination.
+- enabled Vulkan driver (&quot;imagination&quot;) for PowerVR GPUs on x86_64,
+  aarch64 and riscv64; added libvulkan_powervr package
+- fixed build against s390x by removing &quot;display-info&quot; option</comment>
+    <requestid>1321169</requestid>
+  </revision>
 </revisionlist>

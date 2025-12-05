@@ -48,7 +48,7 @@
 %define glamor 1
 %define _name_archive mesa
 %ifnarch s390x
-%define _version 25.3.0
+%define _version 25.3.1
 %else
 %define _version 24.1.7
 %endif
@@ -68,7 +68,7 @@
   %ifarch %{ix86} x86_64
     %define with_vulkan 1
     %if 0%{?suse_version} > 1600
-    %define vulkan_drivers swrast,amd,intel,intel_hasvk,nouveau,microsoft-experimental
+    %define vulkan_drivers swrast,amd,intel,intel_hasvk,nouveau,microsoft-experimental,imagination
     %else
     %define vulkan_drivers swrast,amd,intel,intel_hasvk
     %endif
@@ -76,7 +76,7 @@
   %ifarch %{arm} aarch64
     %define with_vulkan 1
     %if 0%{?suse_version} > 1600
-      %define vulkan_drivers swrast,amd,broadcom,freedreno,intel,intel_hasvk,nouveau,panfrost
+      %define vulkan_drivers swrast,amd,broadcom,freedreno,intel,intel_hasvk,nouveau,panfrost,imagination
     %else
       %if 0%{?suse_version} == 1600
         %define vulkan_drivers swrast,amd,broadcom,freedreno,intel,intel_hasvk,panfrost
@@ -85,7 +85,7 @@
   %endif
   %ifarch riscv64
     %define with_vulkan 1
-    %define vulkan_drivers swrast,amd,intel,intel_hasvk
+    %define vulkan_drivers swrast,amd,intel,intel_hasvk,imagination
   %endif
   %ifarch loongarch64
     %define with_vulkan 1
@@ -129,7 +129,7 @@
 
 Name:           Mesa%{psuffix}
 %ifnarch s390x
-Version:        25.3.0
+Version:        25.3.1
 %else
 Version:        24.1.7
 %endif
@@ -161,8 +161,8 @@ Source9:        manual-pages.tar.bz2
 Source10:       Mesa-rpmlintrc
 Source11:       Mesa.keyring
 Source12:       README-suse-maintenance.md
-Source20:       https://archive.mesa3d.org/%{_name_archive}-25.3.0.tar.xz
-Source21:       https://archive.mesa3d.org/%{_name_archive}-25.3.0.tar.xz.sig
+Source20:       https://archive.mesa3d.org/%{_name_archive}-25.3.1.tar.xz
+Source21:       https://archive.mesa3d.org/%{_name_archive}-25.3.1.tar.xz.sig
 # download with 'osc service runall download_files'; github tarballs have different checksums!
 Source22:       http://crates.io/api/v1/crates/rustc-hash/%{_rustc_hash_crate_ver}/download#/rustc-hash-%{_rustc_hash_crate_ver}.tar.gz
 Patch2:         n_add-Mesa-headers-again.patch
@@ -656,6 +656,18 @@ Requires:       Mesa-vulkan-device-select = %{version}
 This package contains the Vulkan parts for Mesa.
 %endif
 
+%ifarch %{ix86} x86_64 aarch64 %{arm} riscv64
+%if 0%{?suse_version} > 1600
+%package -n libvulkan_powervr
+Summary:        Mesa vulkan driver for PowerVR
+Group:          System/Libraries
+Requires:       Mesa-vulkan-device-select = %{version}
+
+%description -n libvulkan_powervr
+This package contains the Vulkan parts for Mesa.
+%endif
+%endif
+
 %ifarch %{ix86} x86_64
 %if 0%{?suse_version} > 1600
 %package -n libvulkan_dzn
@@ -810,7 +822,9 @@ egl_platforms=x11,wayland
             -Dgles2=enabled \
             -Degl=enabled \
             -Dallow-kcmp=enabled \
+%ifnarch s390x
             -Ddisplay-info=enabled \
+%endif
             -Dplatforms=$egl_platforms \
 %ifarch s390x
             -Dshared-glapi=enabled \
@@ -1139,6 +1153,16 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %files -n libvulkan_nouveau
 %{_libdir}/libvulkan_nouveau.so
 %{_datadir}/vulkan/icd.d/nouveau_icd.*.json
+%dir %{_datadir}/vulkan
+%dir %{_datadir}/vulkan/icd.d
+%endif
+%endif
+
+%ifarch %{ix86} x86_64 aarch64 %{arm} riscv64
+%if 0%{?suse_version} > 1600
+%files -n libvulkan_powervr
+%{_libdir}/libvulkan_powervr_mesa.so
+%{_datadir}/vulkan/icd.d/powervr_mesa_icd.*.json
 %dir %{_datadir}/vulkan
 %dir %{_datadir}/vulkan/icd.d
 %endif
