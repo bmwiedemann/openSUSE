@@ -52,6 +52,7 @@
     %__cmake -S $sdir -B $bdir $opts \\\
          %__cmake_generator \\\
         -DCMAKE_SYSTEM_NAME="Windows" \\\
+        -DCMAKE_SYSTEM_PROCESSOR="x86" \\\
         -DCMAKE_VERBOSE_MAKEFILE=ON \\\
         -DCMAKE_BUILD_TYPE="RelWithDebInfo" \\\
         -DCMAKE_INSTALL_PREFIX:PATH=%{_mingw32_prefix} \\\
