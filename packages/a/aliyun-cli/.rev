@@ -15,4 +15,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1320447</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c11735a8acbcf88172adb18e9d963aed</srcmd5>
+    <version>3.1.7</version>
+    <time>1764950180</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.1.7
+  * Update Aliyun OpenAPI meta data
+- from version 3.1.6
+  * Update Aliyun OpenAPI meta data (forwarded request 1320839 from glaubitz)</comment>
+    <requestid>1321167</requestid>
+  </revision>
 </revisionlist>
