@@ -386,4 +386,13 @@
     <comment>Qt 6.10.1 (forwarded request 1319171 from krop)</comment>
     <requestid>1319296</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>f3f6c0851707495ab898f9744ea38273</srcmd5>
+    <version>6.10.1</version>
+    <time>1764949849</time>
+    <user>anag_factory</user>
+    <comment>- Use the distro flags
+</comment>
+    <requestid>1321099</requestid>
+  </revision>
 </revisionlist>
