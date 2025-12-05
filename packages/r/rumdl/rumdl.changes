@@ -1,4 +1,144 @@
 -------------------------------------------------------------------
+Thu Dec 04 06:08:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.0.188:
+  * Added
+    - MD062 (link-destination-whitespace): New rule for detecting
+      whitespace in link destinations
+      - Flags links with leading/trailing whitespace in
+        destinations like [text]( url )
+      - Supports auto-fix to trim the whitespace
+      - Works in both CLI and LSP environments
+    - Cross-file analysis infrastructure: Foundation for multi-file
+      linting
+      - New WorkspaceIndex for indexing headings and anchors across
+        files
+      - Background index worker for LSP with debouncing and
+        progress reporting
+      - Reverse dependency tracking for efficient re-linting when
+        files change
+      - MD051 now validates cross-file link fragments against the
+        workspace index
+  * Fixed
+    - MD051 (link-fragments): Fix false positives for cross-file
+      links without fragments
+      - Links like [text](file.md) no longer incorrectly flagged
+        for empty fragments
+      - Only validates fragments when explicitly provided (e.g.,
+        [text](file.md#anchor))
+- Update to version 0.0.187:
+  * Added
+    - WASM: Implement Linter class API with configuration support
+      - New Linter class provides object-oriented API for
+        WebAssembly builds
+      - Supports configuration options for customizing lint
+        behavior
+      - Enables more flexible integration in JavaScript/TypeScript
+        projects
+  * Fixed
+    - MD053 (link-image-reference-definitions): Fix false positives
+      for adjacent footnotes (fixes #177)
+      - Footnote references like [^1][^2] no longer trigger "unused
+        reference" warnings
+      - Uses pulldown-cmark for proper footnote parsing instead of
+        regex
+    - MD034 (no-bare-urls): Use pulldown-cmark for proper link
+      parsing
+      - Bare URL detection now correctly identifies URLs already
+        inside links
+      - Prevents false positives for URLs that are properly
+        formatted
+    - MD010 (no-hard-tabs): Skip tabs in fenced code blocks
+      - Tabs inside fenced code blocks are no longer flagged
+      - Preserves intentional tab characters in code examples
+    - MD052 (reference-links-images): Disable shortcut reference
+      checking by default
+      - Shortcut references like [text] without a following [] no
+        longer trigger warnings
+      - Reduces false positives in documents using shortcut
+        reference style
+    - MD025/MD023: Fix false positives after single-line code
+      blocks (fixes #175)
+      - Comments like # text inside code blocks after single-line
+        code blocks no longer flagged
+      - Code block parsing now correctly handles edge cases
+    - MD013/MD039: Fix reflow oscillation causing unstable output
+      (fixes #170)
+      - Running rumdl fmt multiple times now produces stable output
+      - Link formatting no longer conflicts with line length reflow
+  * Changed
+    - Tests: Align test expectations with CommonMark spec and
+      markdownlint reference
+      - Test suite updated to match authoritative behavior
+      - Ensures compatibility with CommonMark specification
+- Update to version 0.0.186:
+  * Added
+    - WebAssembly support: Build and publish rumdl as npm package
+      - Use rumdl in browsers and Node.js via @anthropic/rumdl npm
+        package
+      - Includes lint() function for linting markdown content
+      - Automated npm publishing via GitHub Actions
+  * Fixed
+    - MD058 (blanks-around-tables): Fix duplicating table content
+      during auto-fix
+      - Auto-fix no longer duplicates table content when adding
+        blank lines
+      - Correctly handles tables at various positions in the
+        document
+    - MD013 (line-length): Preserve nested linked images during
+      text reflow
+      - Markdown images inside links like [![alt](img.png)](url)
+        now preserved during line wrapping
+      - Previously, the reflow logic could break such nested
+        constructs
+  * Changed
+    - Docs: Document rumdl-fmt pre-commit hook with version check
+      - Added documentation for the rumdl-fmt hook in pre-commit
+        configuration
+      - Includes version compatibility information
+- Update to version 0.0.185:
+  * Added
+    - Inline config: Support rule aliases in inline configuration
+      comments
+      - Use human-readable aliases like line-length instead of
+        MD013 in inline comments
+      - Example: <!-- rumdl-disable line-length --> now works
+        alongside <!-- rumdl-disable MD013 -->
+      - All rules now document their aliases in the rule
+        documentation
+  * Fixed
+    - MD061 (forbidden-terms): Register rule in mod.rs
+      - MD061 was added in v0.0.184 but was never registered,
+        causing "Unknown rule" errors
+      - The rule now works correctly for detecting forbidden terms
+        like TODO, FIXME, etc.
+- Update to version 0.0.184:
+  * Added
+    - MD061 (forbidden-terms): New rule to flag forbidden terms in
+      documents
+      - Configurable list of forbidden terms with case-sensitivity
+        options
+      - Useful for style guides, compliance, and consistency
+        enforcement
+  * Fixed
+    - Code blocks: Respect CommonMark fence indentation limit (0-3
+      spaces)
+      - CommonMark spec limits fenced code block indentation to 0-3
+        spaces relative to container
+      - Document-level fences must have at most 3 spaces of
+        indentation
+      - Fences inside list items are correctly recognized
+        (indentation is relative to list content)
+      - Prevents false negatives when checking content inside
+        deeply nested structures
+    - LSP: Use whole-table fixes for table rules (MD055, MD056,
+      MD058, MD060)
+      - Table rule fixes now replace the entire table instead of
+        individual cells
+      - Prevents fix corruption when multiple cells need adjustment
+      - Improves reliability of auto-fix in IDEs
+
+-------------------------------------------------------------------
 Fri Nov 28 13:41:49 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.0.183:
