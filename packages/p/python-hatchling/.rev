@@ -300,4 +300,12 @@
     <comment>- Convert to libalternatives on SLE-16-based and newer systems only</comment>
     <requestid>1300716</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>9f24c77299bec6fea3457ecac1fce680</srcmd5>
+    <version>1.28.0</version>
+    <time>1764949858</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1321199</requestid>
+  </revision>
 </revisionlist>

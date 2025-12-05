@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 27 21:27:44 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.28.0:
+  * Changed: Drop support for Python 3.9
+  * Added: Add sbom-files option and sbom_files build data to the
+    wheel build target for including Software Bill of Materials
+    files.
+- increase minimum python version to 3.10
+
+-------------------------------------------------------------------
 Thu Aug 21 08:27:33 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems only

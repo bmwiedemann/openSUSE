@@ -1,7 +1,7 @@
 #
 # spec file for package python-hatchling
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,13 +23,13 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-hatchling
-Version:        1.27.0
+Version:        1.28.0
 Release:        0
 Summary:        Build backend used by Hatch
 License:        MIT
 URL:            https://hatch.pypa.io/latest/
 Source0:        https://files.pythonhosted.org/packages/source/h/hatchling/hatchling-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module packaging >= 24.2}
 BuildRequires:  %{python_module pathspec >= 0.10.1}
 BuildRequires:  %{python_module pip}
