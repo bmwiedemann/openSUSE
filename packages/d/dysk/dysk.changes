@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec 04 06:24:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.5.0:
+  * Windows: detect storage spaces - Thanks @mokurin000 and
+    @acieslewicz
+  * silently handle broken pipe on printing to stdout - Fix #104
+  * don't print a TTY Reset when called with --color no or piped to
+    a non TTY stream - Fix #105
+
+-------------------------------------------------------------------
 Sun Nov 09 09:43:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.4.0:
