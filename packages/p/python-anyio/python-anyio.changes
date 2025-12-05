@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 27 03:35:12 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Skip a test that will break with pytest 9.
+
+-------------------------------------------------------------------
 Wed Sep 24 08:21:38 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 4.11.0

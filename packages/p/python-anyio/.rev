@@ -478,4 +478,12 @@ SR for python stack proposal</comment>
     <comment></comment>
     <requestid>1306903</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>4771616461985584dc3d9475f40134dc</srcmd5>
+    <version>4.11.0</version>
+    <time>1764949843</time>
+    <user>anag_factory</user>
+    <comment>- Skip a test that will break with pytest 9.</comment>
+    <requestid>1320262</requestid>
+  </revision>
 </revisionlist>

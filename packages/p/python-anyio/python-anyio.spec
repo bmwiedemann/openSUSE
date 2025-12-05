@@ -112,6 +112,8 @@ donttest+=" or (test_properties and trio)"
 donttest+=" or (test_properties and asyncio)"
 # Flaky test in i586
 donttest+=" or test_keyboardinterrupt_during_test"
+# Fails with pytest 9
+donttest+=" or test_anyio_fixture_adoption_does_not_persist"
 
 %pytest -m "not network" -k "not (${donttest:4})" -ra
 %endif
