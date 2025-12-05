@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Dec 04 07:00:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.24.0:
+  * Highlights
+    - feat: add ignoreFiles option to suppress file warnings in
+      test directories (#651)
+  * Bug Fixes
+    - fix: existing user-supplied ns when lacking permissions
+      (#657) (bug was introduced in v0.23.0)
+  * Dependency bumps
+    - chore(deps): bump github.com/spf13/cobra from 1.9.1 to 1.10.1
+      (#655)
+    - chore(deps): bump github.com/spf13/pflag from 1.0.7 to 1.0.10
+      (#654)
+    - chore(deps): bump github.com/Masterminds/semver/v3 from 3.3.1
+      to 3.4.0 (#653)
+    - chore(deps): bump github.com/stretchr/testify from 1.10.0 to
+      1.11.1 (#652)
+
+-------------------------------------------------------------------
 Wed Nov 19 11:55:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.23.0:
