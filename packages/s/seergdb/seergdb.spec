@@ -1,7 +1,7 @@
 #
 # spec file for package seergdb
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %endif
 
 Name:           seergdb
-Version:        2.5
+Version:        2.6
 Release:        0
 Summary:        A GUI front-end for GNU gdb
 License:        GPL-3.0-or-later

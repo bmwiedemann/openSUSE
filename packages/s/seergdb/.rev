@@ -21,4 +21,12 @@ https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/DGVFI
     <comment></comment>
     <requestid>1250244</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>88f8ad0dd940a99cfbd87dd6c4c88b7b</srcmd5>
+    <version>2.6</version>
+    <time>1764949869</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1321013</requestid>
+  </revision>
 </revisionlist>
