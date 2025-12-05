@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 26 22:52:18 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update language-c to version 0.10.1.
+  ## 0.10.1
+
+  - Support `0.0f16` syntax.
+
+-------------------------------------------------------------------
 Sat Mar  1 14:57:43 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update language-c to version 0.10.0 revision 1.
