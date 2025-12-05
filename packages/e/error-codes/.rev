@@ -7,4 +7,15 @@
     <comment></comment>
     <requestid>1320876</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>671acccbc412b17445d2892a7c47d2e3</srcmd5>
+    <version>0.2+git20251202.d72c330</version>
+    <time>1764950281</time>
+    <user>anag_factory</user>
+    <comment>- Remove wrong Conflicts
+
+- Update to version 0.2+git20251202.d72c330:
+  * Initial version</comment>
+    <requestid>1321239</requestid>
+  </revision>
 </revisionlist>

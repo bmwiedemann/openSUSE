@@ -27,7 +27,6 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(pam)
 BuildRequires:  pkgconfig(libeconf)
-Provides:       sudo = %{version}
 
 %description
 This command searches for error codes for errno, libeconf, and pam and displays the name of the error, its value, and its description.
