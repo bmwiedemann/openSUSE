@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec 05 12:57:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 25.12.0:
+  * Maintenance
+    - chore: Add hook for platform versions (#529) @cidrblock
+- Update to version 25.11.2:
+  * Fixes
+    - fix: Resolve platform dependency conflicts (#528)
+      @alisonlhart
+
+-------------------------------------------------------------------
 Thu Nov 13 08:49:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 25.11.1:

@@ -44,7 +44,7 @@
 %endif
 
 Name:           python-pytest-ansible
-Version:        25.11.1
+Version:        25.12.0
 Release:        0
 Summary:        Plugin for pytest to simplify calling ansible modules from tests or fixtures
 License:        MIT
@@ -58,14 +58,14 @@ BuildRequires:  %{python_for_dependencies}-wheel
 BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
 # SECTION runtime requirements
-BuildRequires:  %{python_for_dependencies}-cffi >= 1.17.1
+BuildRequires:  %{python_for_dependencies}-cffi >= 1.15.1
 BuildRequires:  %{python_for_dependencies}-ansible-compat >= 25.8.2
-BuildRequires:  %{python_for_dependencies}-packaging >= 25.0
+BuildRequires:  %{python_for_dependencies}-packaging >= 23.2
 BuildRequires:  %{python_for_dependencies}-pytest >= 6
 BuildRequires:  %{python_for_dependencies}-pytest-plus >= 0.8.1
 BuildRequires:  %{python_for_dependencies}-pytest-xdist >= 3.8.0
 BuildRequires:  %{python_for_dependencies}-typing_extensions >= 4.15.0
-BuildRequires:  ansible-core > 2.17.4
+BuildRequires:  ansible-core > 2.16.14
 # /SECTION
 # SECTION test requirements
 BuildRequires:  ansible-core >= 2.17.4
@@ -76,13 +76,13 @@ BuildRequires:  molecule >= 6.0.0
 # /SECTION
 BuildRequires:  fdupes
 Requires:       %{python_for_dependencies}-ansible-compat >= 25.8.2
-Requires:       %{python_for_dependencies}-cffi >= 1.17.1
-Requires:       %{python_for_dependencies}-packaging >= 25.0
+Requires:       %{python_for_dependencies}-cffi >= 1.15.1
+Requires:       %{python_for_dependencies}-packaging >= 23.2
 Requires:       %{python_for_dependencies}-pytest >= 6
 Requires:       %{python_for_dependencies}-pytest-plus >= 0.8.1
 Requires:       %{python_for_dependencies}-pytest-xdist >= 3.8.0
 Requires:       %{python_for_dependencies}-typing_extensions >= 4.15.0
-Requires:       ansible-core > 2.17.4
+Requires:       ansible-core > 2.16.16
 Suggests:       %{python_for_dependencies}-attrs == 22.2.0
 Suggests:       %{python_for_dependencies}-iniconfig == 2.0.0
 Suggests:       %{python_for_dependencies}-pluggy == 1.0.0
