@@ -16,8 +16,6 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           gitsign
 Version:        0.13.0
 Release:        0
@@ -26,12 +24,13 @@ License:        Apache-2.0
 URL:            https://github.com/sigstore/gitsign
 Source:         gitsign-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.22
+BuildRequires:  golang(API) >= 1.23
 
 %description
 Keyless Git signing with Sigstore!
 
-This is heavily inspired by https://github.com/github/smimesign, but uses keyless Sigstore to sign Git commits with your own GitHub / OIDC identity.
+This is heavily inspired by https://github.com/github/smimesign, but uses
+keyless Sigstore to sign Git commits with your own GitHub / OIDC identity.
 
 %prep
 %autosetup -p 1 -a 1
