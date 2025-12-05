@@ -1,7 +1,7 @@
 #
 # spec file for package sway
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %define contribver 1.10.1
-
 Name:           sway
 Version:        1.11
 Release:        0
@@ -31,10 +30,10 @@ Source2:        https://emersion.fr/.well-known/openpgpkey/hu/dj3498u4hyyarh35rk
 Source3:        sway-portals.conf
 Source4:        https://github.com/OctopusET/sway-contrib/archive/refs/tags/%{contribver}-contrib.0.tar.gz#/sway-contrib-%{contribver}.tar.gz
 Source5:        sway.rpmlintrc
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 #BuildRequires:  libxslt-tools
 BuildRequires:  libevdev-devel
-BuildRequires:  fdupes
 BuildRequires:  libpixman-1-0-devel
 BuildRequires:  meson >= 0.60.0
 BuildRequires:  pam-devel
@@ -60,16 +59,16 @@ BuildRequires:  pkgconfig(xkbcommon)
 # WARNING: do not set this to versioned, as it breaks other branding providers
 # such as openSUSEway (bsc#1222579)
 Requires:       %{name}-branding
+Requires(post): sway-xkb-layout-generator
+Recommends:     swaybar
+Recommends:     swaynag
+# For file picker and other stuff and for the sway-portal.conf
+Recommends:     xdg-desktop-portal-gtk
+Recommends:     xdg-desktop-portal-wlr
 %if 0%{?suse_version}
 # I definitely recommend Xwayland
 Recommends:     xorg-x11-server-wayland
 %endif
-Recommends:     swaybar
-Recommends:     swaynag
-Recommends:     xdg-desktop-portal-wlr
-
-# For file picker and other stuff and for the sway-portal.conf
-Recommends:     xdg-desktop-portal-gtk
 
 %description
 Sway is a tiling Wayland compositor and a drop-in replacement for the i3
@@ -84,20 +83,24 @@ Supplements:    (%{name} and branding-upstream)
 Conflicts:      %{name}-branding
 Provides:       %{name}-branding = %{version}
 BuildArch:      noarch
+# For /etc/vconsole.conf
+Requires(post): udev
+# For localectl
+Requires(post): systemd
 #BRAND: /etc/sway/config contains upstream config and brand
 
 %description branding-upstream
 This package provides the upstream look and feel for sway.
 
 %package contrib
-Summary:        Contributed scripts for %{name}
 Version:        %{contribver}
+Summary:        Contributed scripts for %{name}
 Group:          System/GUI/Other
-# autoname-workspaces & inactive-windows-transparency
-Requires:       python3-i3ipc
 # for grimshot
 Requires:       grim
 Requires:       jq
+# autoname-workspaces & inactive-windows-transparency
+Requires:       python3-i3ipc
 Requires:       slurp
 Requires:       sway
 Requires:       wl-clipboard
@@ -128,10 +131,11 @@ mkdir -p contrib
 tar xvf %{SOURCE4} --strip-components=1 -C contrib/
 pushd contrib
 rm -rf .github
-find -type f -name "*.py" -execdir sed -i 's,#!/usr/bin/env python$,#!/usr/bin/python3,' {} \;
-find -type f -name "*.py" -execdir sed -i 's,#!/usr/bin/env python3$,#!/usr/bin/python3,' {} \;
-find -type f -name "grimpicker" -execdir sed -i 's,#!/usr/bin/env python3$,#!/usr/bin/python3,' {} \;
-find -type f -name "*.py" -execdir sed -i 's,#!/usr/bin/python$,#!/usr/bin/python3,' {} \;
+find -type f -name "*.py" -execdir sed -i 's,#!%{_bindir}/env python$,#!%{_bindir}/python3,' {} \;
+find -type f -name "*.py" -execdir sed -i 's,#!%{_bindir}/env python3$,#!%{_bindir}/python3,' {} \;
+find -type f -name "grimpicker" -execdir sed -i 's,#!%{_bindir}/env python3$,#!%{_bindir}/python3,' {} \;
+find -type f -name "*.py" -execdir sed -i 's,#!%{_bindir}/python$,#!%{_bindir}/python3,' {} \;
+find -type f -name "*.sh" -execdir sed -i 's,#!%{_bindir}/env bash,#!%{_bindir}/bash,' {} \;
 popd
 
 %build
@@ -163,17 +167,21 @@ install -Dpm 0644 -t %{buildroot}%{_datadir}/xdg-desktop-portal/ %{SOURCE3}
 
 %fdupes %{buildroot}%{_prefix}
 
+%post branding-upstream
+test -e %{_sysconfdir}/sway/keyboard.conf \
+    || %{_libexecdir}/xkb-layout-generator > %{_sysconfdir}/sway/keyboard.conf
+
 %files
 %license LICENSE
 %doc README.md CONTRIBUTING.md
 %{_bindir}/sway
 %{_bindir}/swaymsg
-%{_mandir}/man1/sway.1.gz
-%{_mandir}/man1/swaymsg.1.gz
-%{_mandir}/man5/sway-input.5.gz
-%{_mandir}/man5/sway-output.5.gz
-%{_mandir}/man5/sway.5.gz
-%{_mandir}/man7/sway-ipc.7.gz
+%{_mandir}/man1/sway.1%{?ext_man}
+%{_mandir}/man1/swaymsg.1%{?ext_man}
+%{_mandir}/man5/sway-input.5%{?ext_man}
+%{_mandir}/man5/sway-output.5%{?ext_man}
+%{_mandir}/man5/sway.5%{?ext_man}
+%{_mandir}/man7/sway-ipc.7%{?ext_man}
 %{_datadir}/wayland-sessions/
 %dir %{_datadir}/backgrounds
 %{_datadir}/backgrounds/sway
@@ -191,25 +199,25 @@ install -Dpm 0644 -t %{buildroot}%{_datadir}/xdg-desktop-portal/ %{SOURCE3}
 %files branding-upstream
 %dir %{_sysconfdir}/sway
 %config(noreplace) %{_sysconfdir}/sway/config
+%ghost %config(noreplace) %attr(0644,-,-) %{_sysconfdir}/sway/keyboard.conf
 
 %files contrib
 %license LICENSE
 %{_bindir}/grimshot
 %{_mandir}/man1/grimshot*
 %dir %{_datadir}/sway
-%dir %{_datadir}/sway/contrib
-%{_datadir}/sway/contrib/*
+%{_datadir}/sway/contrib
 
 %files -n swaybar
 %{_bindir}/swaybar
-%{_mandir}/man5/sway-bar.5.gz
-%{_mandir}/man7/swaybar-protocol.7.gz
+%{_mandir}/man5/sway-bar.5%{?ext_man}
+%{_mandir}/man7/swaybar-protocol.7%{?ext_man}
 %{_datadir}/bash-completion/completions/swaybar
 
 %files -n swaynag
 %{_bindir}/swaynag
 %{_datadir}/fish/vendor_completions.d/swaynag.fish
-%{_mandir}/man1/swaynag.1.gz
-%{_mandir}/man5/swaynag.5.gz
+%{_mandir}/man1/swaynag.1%{?ext_man}
+%{_mandir}/man5/swaynag.5%{?ext_man}
 
 %changelog
