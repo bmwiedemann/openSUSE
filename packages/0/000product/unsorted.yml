@@ -5209,6 +5209,10 @@ unsorted:
   - ghc-array-devel 
   - ghc-array-doc 
   - ghc-array-prof 
+  - ghc-asciidoc 
+  - ghc-asciidoc-devel 
+  - ghc-asciidoc-doc 
+  - ghc-asciidoc-prof 
   - ghc-asn1-encoding 
   - ghc-asn1-encoding-devel 
   - ghc-asn1-encoding-doc 
@@ -8336,6 +8340,7 @@ unsorted:
   - hackrf-firmware 
   - hackrf-udev 
   - hactool 
+  - hadrian 
   - haguichi 
   - haguichi-lang 
   - halibut 
@@ -13527,11 +13532,11 @@ unsorted:
   - libgfortran5-gcc14-32bit 
   - libgfrpc0 
   - libgfxdr0 
-  - libggml 
-  - libggml-base 
+  - libggml-base0 
   - libggml-cpu 
   - libggml-opencl 
   - libggml-vulkan 
+  - libggml0 
   - libgiac0 
   - libgif7-32bit 
   - libgig-devel 
@@ -14424,7 +14429,7 @@ unsorted:
   - liblirc_driver0 
   - liblirc_driver0-32bit 
   - liblkl0 
-  - libllama 
+  - libllama0 
   - liblldb15 
   - liblldb18 
   - liblldb19 
@@ -14751,7 +14756,6 @@ unsorted:
   - libmowgli-2-0 
   - libmowgli2-devel 
   - libmozjs-115-0 
-  - libmozjs-128-0 
   - libmp3lame-devel 
   - libmp3lame0-32bit 
   - libmp4tag-devel 
@@ -14798,7 +14802,7 @@ unsorted:
   - libmt32emu-devel 
   - libmt32emu2 
   - libmtdev1-32bit 
-  - libmtmd 
+  - libmtmd0 
   - libmtp-devel 
   - libmuffin0 
   - libmumps-ptscotch5_3_5-openmpi4 
@@ -17000,6 +17004,7 @@ unsorted:
   - libvulkan_intel-32bit 
   - libvulkan_nouveau 
   - libvulkan_nouveau-32bit 
+  - libvulkan_powervr 
   - libvulkan_radeon-32bit 
   - libwacom-devel 
   - libwacom-tools 
@@ -19151,8 +19156,6 @@ unsorted:
   - mozilla-zilla-slab-fonts 
   - mozjs115 
   - mozjs115-devel 
-  - mozjs128 
-  - mozjs128-devel 
   - mozjs140 
   - mozjs140-devel 
   - mozldap-devel 
@@ -38079,6 +38082,7 @@ unsorted:
   - sway-contrib 
   - sway-launcher-desktop 
   - sway-marker 
+  - sway-xkb-layout-generator 
   - swaybar 
   - swaybg 
   - swayidle 
