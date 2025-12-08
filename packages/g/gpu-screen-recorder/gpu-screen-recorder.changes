@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sun Dec  7 21:22:05 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Fix macros for leap 16
+
+-------------------------------------------------------------------
+Sun Dec  7 21:10:35 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 20251207:
+  * App audio capture: remove gsr-app-sink
+  * Pipewire audio: set media role to production
+    (hoping for lower latency)
+  * Use the audio argument as the name of the audio track
+  * nvfbc: mitigate x11 display leak on monitor off
+  * Mention flickering cursor
+  * pipewire video: check if has modifier
+  * pipewire video: re-negotiate modifiers multiple times
+    until we get a good one
+  * Proper fallback for vulkan video
+  * Fix -fallback-cpu-encoding not working properly
+  * Allow hevc/av1 flv for recent ffmpeg
+  * Fix region capture not always working on wayland if the
+    monitor is rotated (incorrect region detected)
+  * Dont scale image frame to padding in video
+  * x11: fix monitor region incorrect when capturing a
+    rotated monitor connected to an external gpu
+  * kms: fix incorrect capture region on intel when playing
+    a fullscreen game with a lower resolution (on some
+    wayland compositors)
+  * Scale video/image to output size instead of adding black
+    bars or no scaling
+  * screenshot: improve jpeg very high quality to 91
+    (enables yuv444 instead of yuv420)
+  * Replay: attempt to fix audio desync when using multiple
+    audio tracks
+  * color_conversion: remove unused alpha_blending parameter
+  * Kms: fix region capture incorrect when monitor is rotated
+  * Identify DVI monitor
+  * Disable overclocking if set and gpu supports
+    CUDA_DISABLE_PERF_BOOST
+  * Set CUDA_DISABLE_PERF_BOOST to workaround p2 power level
+    issue. Required nvidia driver >= 580.105.08
+
+-------------------------------------------------------------------
 Sun Nov 02 21:32:26 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 20251102:

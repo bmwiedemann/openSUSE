@@ -18,7 +18,7 @@
 
 %bcond_with test
 Name:           gpu-screen-recorder
-Version:        20251102
+Version:        20251207
 Release:        0
 Summary:        An extremely fast hardware-accelerated screen recorder
 License:        GPL-3.0-only
@@ -87,7 +87,7 @@ rm %{buildroot}/usr/lib/modprobe.d/gsr-nvidia.conf
 %{_bindir}/%{name}
 %{_bindir}/gsr-kms-server
 %{_userunitdir}/%{name}.service
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1600
 %{_modprobedir}/gsr-nvidia.conf
 %endif
 
