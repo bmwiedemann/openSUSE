@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Dec 07 20:44:37 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.7.2:
+  * chore: prepare release
+  * build(deps): bump github.com/spf13/cobra from 1.10.1 to 1.10.2 (#6240)
+  * build(deps): bump github.com/securego/gosec/v2 from 2.22.10 to daccba6b93d7 (#6238)
+  * docs: add thanks to the creator of golangci-lint (#6239)
+  * docs: update GitHub Action assets (#6235)
+
+-------------------------------------------------------------------
 Thu Dec 04 17:14:40 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 2.7.1:

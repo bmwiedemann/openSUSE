@@ -1051,4 +1051,17 @@
   * docs: update documentation assets (#6192) (forwarded request 1321187 from jfkw)</comment>
     <requestid>1321188</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>09b25a3de31e5c18050610e20a0005f2</srcmd5>
+    <version>2.7.2</version>
+    <time>1765191378</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.7.2:
+  * chore: prepare release
+  * build(deps): bump github.com/spf13/cobra from 1.10.1 to 1.10.2 (#6240)
+  * build(deps): bump github.com/securego/gosec/v2 from 2.22.10 to daccba6b93d7 (#6238)
+  * docs: add thanks to the creator of golangci-lint (#6239)
+  * docs: update GitHub Action assets (#6235) (forwarded request 1321474 from jfkw)</comment>
+    <requestid>1321475</requestid>
+  </revision>
 </revisionlist>
