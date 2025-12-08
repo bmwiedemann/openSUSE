@@ -1,8 +1,8 @@
 #
 # spec file for package apk-tools
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2024, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2024-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,28 @@
 #
 
 
-%define sover 2
-%define soname 2_14_0
+%define sover 3
+%define soname 3_0_0
 %define libname libapk%{soname}
 Name:           apk-tools
-Version:        2.14.4
+Version:        3.0.1
 Release:        0
 Summary:        Alpine package manager
 License:        GPL-2.0-or-later
 Group:          System/Packages
 URL:            https://git.alpinelinux.org/apk-tools/
 Source:         %{name}-%{version}.tar.xz
+BuildRequires:  cmake
+BuildRequires:  gcc
 BuildRequires:  lua53-devel
 BuildRequires:  lua53-zlib
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  scdoc
+BuildRequires:  python3-devel
+BuildRequires:  scdoc >= 1.10
+BuildRequires:  pkgconfig(cmocka)
 BuildRequires:  pkgconfig(libcrypto)
+BuildRequires:  pkgconfig(libzstd)
 Provides:       bundled(libfetch)
 
 %description
@@ -72,31 +77,28 @@ This package contains headers and libraries required to build applications
 that use libapk.
 
 %prep
-%setup -q
+%autosetup
 
 %build
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install \
-     SBINDIR=%{_sbindir} \
-     LIBDIR=%{_libdir} \
-     LUA_LIBDIR=%{_libdir}/lua/5.3 \
-     DOCDIR=%{_docdir}/apk-tools \
-     PKGCONFIGDIR=%{_libdir}/pkgconfig
+%meson_install
 
-rm -v %{buildroot}%{_libdir}/libapk.a
-# remove spurious exec permissions from manpages
-find %{buildroot}%{_mandir} -type f | xargs  chmod -x
+%check
+%meson_test
 
 %ldconfig_scriptlets -n %{libname}
 
 %files
 %license LICENSE
 %doc README.md
-%{_sbindir}/apk
+%{_bindir}/apk
 %{_mandir}/man8/apk.8%{?ext_man}
 %{_mandir}/man[5,8]/apk-*.[5,8]%{?ext_man}
+%{_datadir}/bash-completion/completions/_apk
+%{python_sitearch}/apk.cpython-*.so
 
 %files -n %{libname}
 %{_libdir}/libapk.so.%{sover}*
@@ -107,7 +109,7 @@ find %{buildroot}%{_mandir} -type f | xargs  chmod -x
 %files -n apk-devel
 %dir %{_includedir}/apk
 %{_includedir}/apk/apk_*.h
-%{_includedir}/apk/help.h
+%{_includedir}/apk/adb.h
 %{_libdir}/libapk.so
 %{_libdir}/pkgconfig/apk.pc
 

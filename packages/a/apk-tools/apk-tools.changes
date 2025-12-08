@@ -1,4 +1,200 @@
 -------------------------------------------------------------------
+Wed Dec 03 19:07:56 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.1:
+  User facing changes:
+  * Support for new package and index format: designed for
+    improved security, performance and extensibility in future.
+    + The index supports newer hash algorithms.
+    + Supports for newer signature algorithms.
+    + Supports for the zstd compression.
+    + Designed to support additional features in the future, e.g.
+      audit can verify all data in the installed database using
+      original package signatures.
+  * Compatibility related changes
+    + Support for ftp urls in the libfetch backend has been removed
+    + Support for the original "alpine v1" packages and for broken
+      v2 packages from foreign tools has been removed.
+    + Support for md5 hashes has been removed.
+    + The package arch is now validated and must be compatible to
+      install. See man page for etc/apk/arch.
+    + The script output is now processed by apk, each output line
+      is prefixed with * to disambiguate the script output from apk
+      output.
+    + The scripts are executed from a memfd if possible. This means
+      $0 is no longer reliable method to determine the hook name.
+      Use $APK_SCRIPT instead
+  * Improved configuration and repository configuration
+    + The repositories file format now supports definition and
+      usage of variables.
+    + Support for config file for default options (overriding
+      configuration can be provided in APK_CONFIG specified file).
+    + Various configuration files and repositories are now searched
+      from etc/apk and lib/apk so distributions can provision
+      defaults in lib/apk.
+  * New commands:
+    + To create packages mkpkg, to create index mkndx, to manage
+      signatures adbsign and to dump the structure adbdump.
+      + The new index format can index also old packages, and
+        supports additional features such as --pkgname-spec which
+        allows creating repositories with differing package naming
+        scheme or even an index referring to different URL from
+        where to download the packages.
+    + A new query applet (a superset of info, list and search) is
+      provided to interrogate the installed database and indexes.
+    + Outputs human readable format in addition to json and yaml
+      output.
+    Other new features:
+    + Write transactions are now logged to /var/log/apk.log, see
+      also logfile configuration option.
+    + apk add --initdb --usermode can create and manage chroot
+      environments as a non-root user by using mount namespaces.
+    + A new --cache-preload mode, which will first download all
+      packages to cache, and only after start installing them.
+    + A new --preupgrade-depends mechanism to allow distributions
+      to mark certain packages to be "preupgraded".
+    + Filesystem cache is now committed to disk if committing
+      changes to non-containerized root system (see --sync=auto).
+    + Support for packages with disk volumes managed by the
+      OpenWRT uvol volume manager.
+  Changes affecting building/packaging, and other note worthy
+  changes:
+  * Build should be done with the Meson build system
+    + Support for additional configuration such as minimal build
+      mode without package/index creation commands.
+    + Support to execute wget for downloading files instead if the
+      built-in libfetch http library (to avoid openssl dependency).
+    + Support to use mbedtls crypto library instead of openssl for
+      the signatures and hashing.
+  * Python bindings for version comparison.
+  * Rewritten options handling with support for yes/no and
+    yes/no/auto options.
+  * Numerous performance improvements, bug fixes, and code cleanups
+  * Improved test suite.
+  * Improved man pages.
+  * Bash completion is automatically generated.
+- Run testsuite.
+
+-------------------------------------------------------------------
+Wed Jun 18 12:15:09 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.14.10:
+  * apk-tools-2.14.10
+  * libfetch: allow obsolete date format in http timestamps
+  * libfetch/http: reuse fetch_netrc_auth for http(s)
+  * apk-tools-2.14.9
+  * apk, db: rework dbopts cache_max_age default handling
+  * db: remove leftover fprintf
+  * apk-tools-2.14.8
+  * info: fix -W with symlinks
+  * update: make --update-cache and and 'update' behave the same
+  * db: handle not found names in __apk_db_foreach_sorted_package
+  * solver: fix name resolving order of pure virtual names
+  * db: fix non-repository reverese dependency indexing
+  * apk-tools-2.14.7
+  * solver: rework solver name ordering to fix install_if handling
+  * build: use the VERSION directly as the soname
+  * solver: make dependencies only packages selectable
+  * doc: fix pre/post commit hook documentation
+  * db: fix apk_cache_download to work with APK_SIGN_VERIFY_IDENTITY
+  * apk-tools-2.14.6
+  * io: backport APK_ISTREAM_TEE_OPTIONAL from master
+  * io: fix apk_istream_tee to handle error in from
+  * hash: remove bad cast of delete_item to enumerator callback
+  * Improve make test and run CI tests on x86 also
+  * commit: use %llu and unsigned long long in printf instead of off_t
+  * apk-tools-2.14.5
+  * fetch: validate downloaded package against repository
+  * add: error when added constrain is broken
+  * lua: expose more package fields
+  * blob: stop parsing '=' as 0 when decoding digits
+  * lua: use lua_Integer when appropriate
+  * lua: fix memory leak from setting blobs
+  * lua: safe cast from size_t to long
+  * add: check version of virtual packages
+  * use 2-argument static_assert form for older compilers
+  * del: Don't show kept packages when --quiet is set
+  * io: ignore fifos when reading xattr
+  * io: use O_NONBLOCK when reading xattrs
+  * db: preserve sha256_160 flag with a warning
+  * db, solver: move name priority calculation to solver
+  * test: fix provides repository format
+  * commit: remove unused struct print_state member
+  * db: fix a minor memory leak in triggers reset
+  * solver: fix conflicts to prevent install_if trigger
+  * commit: simulate installed packages
+  * test: add provides test case from #10973
+  * commit: simulate installed bytes
+  * dot, list: optimize --installed to not load repositories
+  * del, solver: introduce and use solver hint to remove package
+  * fetch: fix selecting concrete package in non-recursive mode
+  * dot: don't error on missing conflict provider
+  * db: remove unused field data_csum in struct install_ctx
+  * doc: fix description of apk cache --upgrade
+  * doc: apk(8): speak of world constraints
+  * db: honor 'verify' mode in apk_cache_download()
+- Temporarily force usage of gcc13 on leap16- and TW-systems to
+  workaround build failures.
+
+-------------------------------------------------------------------
+Wed Jun 18 11:44:57 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.14.10
+  * libfetch: allow obsolete date format in http timestamps.
+  * libfetch/http: reuse fetch_netrc_auth for http(s).
+- Update to version 2.14.9
+  * apk, db: rework dbopts cache_max_age default handling
+  * db: remove leftover fprintf
+- Update to version 2.14.8
+  * info: fix -W with symlinks
+  * update: make --update-cache and and 'update' behave the same
+  * db: handle not found names in __apk_db_foreach_sorted_package
+  * solver: fix name resolving order of pure virtual names
+  * db: fix non-repository reverese dependency indexing
+- Update to version 2.14.7
+  * solver: rework solver name ordering to fix install_if handling
+  * build: use the VERSION directly as the soname
+  * solver: make dependencies only packages selectable
+  * db: fix apk_cache_download to work with APK_SIGN_VERIFY_IDENTITY
+- Update to version 2.14.6
+  * io: backport APK_ISTREAM_TEE_OPTIONAL from master
+  * io: fix apk_istream_tee to handle error in from
+  * hash: remove bad cast of delete_item to enumerator callback
+  * Improve make test and run CI tests on x86 also
+  * commit: use %llu and unsigned long long in printf instead of
+    off_t
+- Update to version 2.14.5
+  * fetch: validate downloaded package against repository
+  * add: error when added constrain is broken
+  * lua: expose more package fields
+  * blob: stop parsing '=' as 0 when decoding digits
+  * lua: use lua_Integer when appropriate
+  * lua: fix memory leak from setting blobs
+  * lua: safe cast from size_t to long
+  * add: check version of virtual packages
+  * use 2-argument static_assert form for older compilers
+  * del: Don't show kept packages when --quiet is set
+  * io: ignore fifos when reading xattr
+  * io: use O_NONBLOCK when reading xattrs
+  * db: preserve sha256_160 flag with a warning
+  * db, solver: move name priority calculation to solver
+  * test: fix provides repository format
+  * commit: remove unused struct print_state member
+  * db: fix a minor memory leak in triggers reset
+  * solver: fix conflicts to prevent install_if trigger
+  * commit: simulate installed packages
+  * test: add provides test case from #10973
+  * commit: simulate installed bytes
+  * dot, list: optimize --installed to not load repositories
+  * del, solver: introduce and use solver hint to remove package
+  * fetch: fix selecting concrete package in non-recursive mode
+  * dot: don't error on missing conflict provider
+  * db: remove unused field data_csum in struct install_ctx
+  * doc: fix description of apk cache --upgrade
+  * doc: apk(8): speak of world constraints
+  * db: honor 'verify' mode in apk_cache_download()
+
+-------------------------------------------------------------------
 Sat Jun 22 09:12:45 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Build lua module
