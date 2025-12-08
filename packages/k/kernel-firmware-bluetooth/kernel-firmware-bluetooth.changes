@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec  3 06:18:30 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251202 (git commit 685171356137):
+  * linux-firmware: Update firmware file for Intel Scorpius core
+  * linux-firmware: Update firmware file for Intel BlazarIGfP core
+  * linux-firmware: Update firmware file for Intel BlazarI core
+  * linux-firmware: Update firmware file for Intel BlazarU-HrPGfP core
+  * linux-firmware: Update firmware file for Intel BlazarU core
+
+-------------------------------------------------------------------
 Wed Nov 26 05:59:32 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20251125 (git commit 23568a4b9420):

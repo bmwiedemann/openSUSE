@@ -256,4 +256,17 @@ After this PR, there will be a delete request for kernel-firmware.
   * rtl_bt: Update RTL8852B BT USB FW to 0x42D3_4E04</comment>
     <requestid>1320750</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>a4e82eabed11a19dd08235b6f0590e77</srcmd5>
+    <version>20251202</version>
+    <time>1765191169</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251202 (git commit 685171356137):
+  * linux-firmware: Update firmware file for Intel Scorpius core
+  * linux-firmware: Update firmware file for Intel BlazarIGfP core
+  * linux-firmware: Update firmware file for Intel BlazarI core
+  * linux-firmware: Update firmware file for Intel BlazarU-HrPGfP core
+  * linux-firmware: Update firmware file for Intel BlazarU core</comment>
+    <requestid>1321334</requestid>
+  </revision>
 </revisionlist>
