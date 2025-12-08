@@ -16,19 +16,19 @@
 #
 
 
-%define kf6_version 6.14.0
-%define qt6_version 6.8.0
+%define kf6_version 6.19.0
+%define qt6_version 6.9.0
 
 %bcond_without released
 Name:           kdeconnect-kde
-Version:        25.08.3
+Version:        25.11.90
 Release:        0
 Summary:        Integration of Android with Linux desktops
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/kdeconnect
-Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/unstable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/unstable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 Source100:      kdeconnect-kde.SuSEfirewall
@@ -103,7 +103,8 @@ https://f-droid.org/en/packages/org.kde.kdeconnect_tp/
 %autosetup -p1
 
 %build
-%cmake_kf6
+%cmake_kf6 \
+    -DINSTALL_UFW_APPLICATION_RULE:BOOL=FALSE
 
 %kf6_build
 
@@ -177,9 +178,6 @@ true
 %{_kf6_applicationsdir}/org.kde.kdeconnect.handler.desktop
 %{_kf6_applicationsdir}/org.kde.kdeconnect.nonplasma.desktop
 %{_kf6_applicationsdir}/org.kde.kdeconnect.sms.desktop
-%if %{pkg_vcmp cmake(KF6Package) < 6.18}
-%{_kf6_appstreamdir}/org.kde.kdeconnect.appdata.xml
-%endif
 %{_kf6_appstreamdir}/org.kde.kdeconnect.metainfo.xml
 %{_kf6_bindir}/kdeconnect-app
 %{_kf6_bindir}/kdeconnect-cli

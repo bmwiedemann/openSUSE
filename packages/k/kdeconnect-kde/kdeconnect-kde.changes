@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Dec  5 20:08:18 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.90
+  * Check that the device ID doesn't change during the handshake
+    (CVE-2025-66270, boo#1254508)
+
+-------------------------------------------------------------------
+Sat Nov 15 19:56:33 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Too many changes since 25.08.3, only listing bugfixes:
+  * Disable MDNS by default (kde#487719)
+  * Make plugin settings translatable (kde#510084)
+  * [plugins/mousepad] Allow uppercase keysyms for portal input (kde#483730)
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:30 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3

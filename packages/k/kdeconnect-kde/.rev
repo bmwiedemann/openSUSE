@@ -820,4 +820,21 @@
     <comment>KDE release gear 25.08.3</comment>
     <requestid>1316187</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>1832e13f20ae552eb21991d19ad203d0</srcmd5>
+    <version>25.11.90</version>
+    <time>1765191218</time>
+    <user>anag_factory</user>
+    <comment>- Update to 25.11.90
+  * Check that the device ID doesn't change during the handshake
+    (CVE-2025-66270, boo#1254508)
+
+- Update to 25.11.80
+  * New feature release
+- Too many changes since 25.08.3, only listing bugfixes:
+  * Disable MDNS by default (kde#487719)
+  * Make plugin settings translatable (kde#510084)
+  * [plugins/mousepad] Allow uppercase keysyms for portal input (kde#483730)</comment>
+    <requestid>1321305</requestid>
+  </revision>
 </revisionlist>
