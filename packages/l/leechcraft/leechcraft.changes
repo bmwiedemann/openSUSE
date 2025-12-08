@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec  8 07:14:09 UTC 2025 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Updated to 0.6.70-17793-g6e56308e78 snapshot:
+  * Bittorrent compilation fixed.
+- Removed leechcraft-0.6.70+git-boost_system.diff.patch.
+- Updated kwin version required.
+
+-------------------------------------------------------------------
 Tue Oct  7 06:02:00 UTC 2025 - Dmitriy Perlow <dap.darkness@gmail.com>
 
-- Updated to 0.6.70-0.6.70-17769-g4e68d7fcba snapshot.
+- Updated to 0.6.70-17769-g4e68d7fcba snapshot.
 - Added leechcraft-0.6.70+git-boost_system.diff.patch.
 
 -------------------------------------------------------------------

@@ -28,7 +28,7 @@
 %define qml_dir %{_datadir}/leechcraft/qml6
 
 %define so_ver -qt6-0_6_75
-%define LEECHCRAFT_VERSION 0.6.70-17769-g4e68d7fcba
+%define LEECHCRAFT_VERSION 0.6.70-17793-g6e56308e78
 
 %define db_postfix %{so_ver}
 %define gui_postfix %{so_ver}
@@ -49,7 +49,7 @@
 %define xsd_postfix %{so_ver}
 
 Name:           leechcraft
-Version:        0.6.70+git.17769.g4e68d7fcba
+Version:        0.6.70+git.17793.g6e56308e78
 Release:        0
 Summary:        Modular Internet Client
 License:        BSL-1.0
@@ -58,8 +58,6 @@ URL:            https://leechcraft.org
 Source0:        https://dist.leechcraft.org/LeechCraft/0.6.75/leechcraft-%{LEECHCRAFT_VERSION}.tar.xz
 Source4:        %{name}-rpmlintrc
 Source8:        leechcraft-session.1
-# PATCH-FIX-UPSTREAM not to require deprecated boost_system.
-Patch0:         leechcraft-0.6.70+git-boost_system.diff.patch
 
 BuildRequires:  cmake >= 3.8
 BuildRequires:  fdupes
@@ -923,7 +921,7 @@ Group:          Productivity/Networking/Other
 BuildArch:      noarch
 Provides:       %{name}-fenet-wm = %{version}
 Requires:       %{name}-fenet = %{version}
-Requires:       kwin5
+Requires:       kwin6-x11
 
 %description fenet-kwin
 This package allows to start Leechcraft as a Desktop Environment with
