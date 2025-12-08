@@ -24,7 +24,7 @@
 
 %if %{pkg_vcmp gimp >= 3}
 %define gimp_suffix 3
-%global _gimpplugindir %(gimptool-3.0 --gimpplugindir)/plug-ins/gmic_gimp_qt/
+%global _gimpplugindir %(gimptool-3 --gimpplugindir)/plug-ins/gmic_gimp_qt/
 %else
 %global _gimpplugindir %(gimptool-2.0 --gimpplugindir)/plug-ins/
 %endif
@@ -40,7 +40,7 @@
 %define gmic_datadir %{_datadir}/gmic
 
 Name:           gmic
-Version:        3.6.2
+Version:        3.6.4
 Release:        0
 Summary:        GREYC's Magick for Image Computing (denoise and others)
 # gmic-qt is GPL-3.0-or-later, zart is CECILL-2.0, libgmic and cli program are

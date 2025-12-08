@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Dec  6 14:28:55 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- use gimptool-3 (which is a symlink to gimptool-3.x) to make it
+  work with gimp 3.0.x and the upcoming 3.2.x.
+
+-------------------------------------------------------------------
+Fri Dec  5 22:07:46 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.6.4
+  https://discuss.pixls.us/t/on-the-road-to-3-7/52265/13?u=darix
+
+-------------------------------------------------------------------
 Tue Oct  7 00:45:02 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.6.2
