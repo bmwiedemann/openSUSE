@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  3 10:13:51 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.35.4
+  * Bump version of c-auth and c-cal for login fix by @sbiscigl in (#800)
+
+-------------------------------------------------------------------
 Thu Nov 20 08:26:31 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.35.3
