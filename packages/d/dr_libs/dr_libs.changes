@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Dec  6 18:29:04 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 20251202:
+  * dr_flac: Fix a warning about an assigned by unused variable
+  * dr_mp3: make drmp3_cpuid clang compatible
+  * dr_mp3: Reduce stack space usage during decoding
+  * dr_flac: Make picture metadata parsing more robust
+  * dr_flac: Add a new metadata data offset member for metadata parsing
+  * dr_flac: Make unknown metadata block parsing more robust
+  * dr_flac: Add a compile time option to skip allocation of picture data
+  * dr_mp3: Silence a warning with GCC 13
+  * dr_flac: Try fixing a compilation error with ARM
+  * dr_mp3: Fix an error with APE tag parsing
+  * Fix a compilation warning
+  * dr_flac: Improvements to drflac_open_and_read_pcm_frames_*() and family
+
+-------------------------------------------------------------------
 Wed Sep 17 14:24:23 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - initial packaging
