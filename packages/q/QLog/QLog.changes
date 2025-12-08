@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Dec  6 17:38:30 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 0.47.0:
+  * Adds theme options - native, light, dark
+  * Implemented ADIF 3.1.6
+  * Statistics, QSODetail contain deleted DXCC Entities
+  * Hamlib settings: Added support to define CIV Addr for Icom and Ten-Tec
+  * Hamlib settings: Added RTS and DTR control
+  * Settings: Add options to switch distance unit
+  * Add Linux manpage
+  * Awards: Add Not-Confirmed filter
+  * Rotator Widget: Added buttons to change button profiles
+  * Settings: Add network loop detection for WSJTX Forward
+  * Rotator: timeout is set to 5s
+  * Double Spin Boxes: the decimal separator is forced to be a period
+  * WSJTX Widget: Removed Freq and Mode
+  * Fixed QSODetail - Anti-meridian bug on map
+  * Fixed Statistics: Center maps on QTH longitude
+  * Fixed OmniRig disconnecting when its status changed unexpectedly
+
+-------------------------------------------------------------------
 Fri Oct 31 15:41:38 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 0.46.2:
