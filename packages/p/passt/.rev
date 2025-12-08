@@ -240,4 +240,12 @@ on SELinux-enabled projects e.g. SLFO. (forwarded request 1186132 from danishpra
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1246432</comment>
     <requestid>1293068</requestid>
   </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>21492f079c817115637f5f3b7955a765</srcmd5>
+    <version>20250611.0293c6f</version>
+    <time>1765191162</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1321301</requestid>
+  </revision>
 </revisionlist>
