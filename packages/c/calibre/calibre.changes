@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Dec  6 14:48:43 UTC 2025 - ecsos <ecsos@opensuse.org> - 8.16.2
+
+- Update to 8.16.2
+  * Bug Fixes
+    - Fix a crash in 8.16.0 that caused using the "Close" button
+      in Ask AI to crash calibre on some systems
+
+-------------------------------------------------------------------
+Fri Dec  5 20:40:29 UTC 2025 - ecsos <ecsos@opensuse.org> - 8.16.1
+
+- Update to 8.16.1
+  * Bug Fixes
+    - Fix a bug in 8.16.0 that prevented the Ask AI what to read
+       next feature from working
+
+-------------------------------------------------------------------
 Fri Dec  5 10:12:37 UTC 2025 - ecsos <ecsos@opensuse.org> - 8.16.0
 
 - Update to 8.16.0
