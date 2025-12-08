@@ -97,4 +97,22 @@
     address on valid GPG signed commits</comment>
     <requestid>1313901</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d8fce15ec5380476b5c01817e72b3dd4</srcmd5>
+    <version>11.0.8</version>
+    <time>1765191330</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 11.0.8:
+  * fix(api): fix dependency repo perms in Create/RemoveIssueDependency
+  * fix(api): draft releases could be read before being published
+  * misconfigured security checks on tag delete web form
+  * incorrect logic in &quot;Update PR&quot; did not enforce head branch protection rules correctly
+  * issue owner can delete another user's comment's edit history on same issue
+  * tag protection rules can be bypassed during tag delete operation
+  * fix: frontend-checks failure
+  * feat: Replace mholt/archiver/v3 with mholt/archives
+- remove patches fix-CVE-2025-47911.patch and fix-CVE-2025-58190.patch,
+  fixed upstream</comment>
+    <requestid>1321399</requestid>
+  </revision>
 </revisionlist>

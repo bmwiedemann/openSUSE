@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Dec  6 21:38:42 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 11.0.8:
+  * fix(api): fix dependency repo perms in Create/RemoveIssueDependency
+  * fix(api): draft releases could be read before being published
+  * misconfigured security checks on tag delete web form
+  * incorrect logic in "Update PR" did not enforce head branch protection rules correctly
+  * issue owner can delete another user's comment's edit history on same issue
+  * tag protection rules can be bypassed during tag delete operation
+  * fix: frontend-checks failure
+  * feat: Replace mholt/archiver/v3 with mholt/archives
+- remove patches fix-CVE-2025-47911.patch and fix-CVE-2025-58190.patch,
+  fixed upstream
+
+-------------------------------------------------------------------
 Mon Oct 27 16:28:20 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 11.0.7:
