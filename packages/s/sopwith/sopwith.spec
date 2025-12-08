@@ -1,7 +1,7 @@
 #
 # spec file for package sopwith
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sopwith
-Version:        2.8.0
+Version:        2.9.0
 Release:        0
 Summary:        SDL port of the %{name} game
 License:        GPL-2.0-or-later
@@ -27,6 +27,7 @@ Source0:        https://github.com/fragglet/sdl-sopwith/releases/download/sdl-so
 Source3:        %{name}.png
 BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(SDL2_gfx)
 BuildRequires:  pkgconfig(sdl2)
 
@@ -65,6 +66,9 @@ mkdir -p %{buildroot}%{_datadir}/icons/hicolor/72x72/apps/
 cp %{SOURCE3} %{buildroot}%{_datadir}/icons/hicolor/72x72/apps/
 mkdir -p %{buildroot}%{_datadir}/%{name}/maps
 cp -r maps %{buildroot}%{_datadir}/%{name}
+
+# no system-wide hiscores
+rm %{buildroot}/%{_localstatedir}/games/sopwith/hiscores.txt
 
 %files
 %license COPYING.md

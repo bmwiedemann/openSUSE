@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Dec  7 08:53:03 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to ver 2.9.0
+  * A crash was fixed when any object was destroyed in multiplayer.
+  * Scoring has been fixed when killing animals (it is supposed to
+    be negative, but because of a bug, accidentally became positive).
+  * The game now saves high scores to a system-wide high scores
+    table (if possible; or a per-user one otherwise).
+  * The "tailspin" animation when a plane is crashing and in a
+    nosedive was tweaked to add two additional frames of animation.
+
+-------------------------------------------------------------------
 Sat Mar 22 08:27:55 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to 2.8.0
