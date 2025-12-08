@@ -2613,6 +2613,7 @@ unsorted:
   - coreos-installer 
   - corepack-default 
   - corepack22 
+  - corepack24 
   - coreutils-doc 
   - coreutils-single 
   - coreutils-testsuite 
@@ -11919,11 +11920,11 @@ unsorted:
   - libadapta-lang 
   - libaddrxlat-devel 
   - libaddrxlat3 
-  - libadios2-2_10 
-  - libadios2-minimal-2_10 
-  - libadios2-mpich-2_10 
-  - libadios2-mvapich2-2_10 
-  - libadios2-openmpi4-2_10 
+  - libadios2-2_11 
+  - libadios2-minimal-2_11 
+  - libadios2-mpich-2_11 
+  - libadios2-mvapich2-2_11 
+  - libadios2-openmpi4-2_11 
   - libadlmidi-devel 
   - libadms0 
   - libadns-devel 
@@ -12008,7 +12009,7 @@ unsorted:
   - libaom-devel 
   - libaom-devel-doc 
   - libaom3-32bit 
-  - libapk2_14_0 
+  - libapk3_0_0 
   - libapparmor-devel 
   - libapparmor1-32bit 
   - libappindicator-devel 
@@ -14064,7 +14065,7 @@ unsorted:
   - libime-devel 
   - libime-dicts 
   - libime-tools 
-  - libimhex1_37_4 
+  - libimhex1_38_0 
   - libiml0 
   - libimobiledevice-1_0-6-32bit 
   - libimobiledevice-devel 
@@ -16126,6 +16127,7 @@ unsorted:
   - libscrypt-devel 
   - libscrypt0 
   - libscrypt0-x86-64-v3 
+  - libsdb2_2_4 
   - libsdbus-c++2 
   - libseafile0 
   - libseagull0 
@@ -16926,9 +16928,9 @@ unsorted:
   - libvisio-tools 
   - libvisio2svg-devel 
   - libvisio2svg0 
-  - libviskores-1_0 
-  - libviskores-mpich-1_0 
-  - libviskores-openmpi4-1_0 
+  - libviskores-1_1 
+  - libviskores-mpich-1_1 
+  - libviskores-openmpi4-1_1 
   - libvisual-0_4-0-32bit 
   - libvisual-devel 
   - libvkd3d-shader1 
@@ -19897,6 +19899,9 @@ unsorted:
   - nodejs22 
   - nodejs22-devel 
   - nodejs22-docs 
+  - nodejs24 
+  - nodejs24-devel 
+  - nodejs24-docs 
   - noggit 
   - noggit-javadoc 
   - noisetorch 
@@ -19937,6 +19942,7 @@ unsorted:
   - npkg 
   - npm-default 
   - npm22 
+  - npm24 
   - npth-devel 
   - nqp 
   - nqptp 
