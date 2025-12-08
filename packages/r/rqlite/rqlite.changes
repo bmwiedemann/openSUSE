@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec  5 18:52:35 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 9.3.4:
+  * Address issues flagged by static analysis
+  * Upgrade SQL parser
+
+-------------------------------------------------------------------
 Thu Nov 27 17:17:26 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 9.3.2:
