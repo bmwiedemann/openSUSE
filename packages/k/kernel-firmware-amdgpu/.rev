@@ -494,4 +494,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * amdgpu: DMCUB updates for various ASICs</comment>
     <requestid>1320772</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>924653c9713141c5913307d9ca4a465f</srcmd5>
+    <version>20251203</version>
+    <time>1765191163</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251203 (git commit a0f0e52138e5):
+  * Revert &quot;amdgpu: update GC 11.5.0 firmware&quot;</comment>
+    <requestid>1321331</requestid>
+  </revision>
 </revisionlist>

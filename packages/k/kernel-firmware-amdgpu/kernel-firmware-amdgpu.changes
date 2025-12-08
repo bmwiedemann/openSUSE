@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec  4 07:27:50 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251203 (git commit a0f0e52138e5):
+  * Revert "amdgpu: update GC 11.5.0 firmware"
+
+-------------------------------------------------------------------
 Mon Dec  1 16:32:18 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20251201 (git commit 934bfe7e1e27):
