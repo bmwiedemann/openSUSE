@@ -5721,4 +5721,12 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
     <comment>- Remove unused BuildRequires: update-desktop-files. (forwarded request 1319777 from sbrabec)</comment>
     <requestid>1319783</requestid>
   </revision>
+  <revision rev="479" vrev="1">
+    <srcmd5>dca88519cafb9cae06aa42c88db32fab</srcmd5>
+    <version>10.20</version>
+    <time>1765191355</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1321368</requestid>
+  </revision>
 </revisionlist>
