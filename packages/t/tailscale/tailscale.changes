@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:39:58 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.92.1:
+  * fix LocalBackend deadlock when packet arrives during profile switch
+  * wgengine: fix TSMP/ICMP callback leak
+- Update to version 1.92.0:
+  * no changelog provided
+- Update to version 1.90.9:
+  * tailscaled no longer deadlocks during event bursts
+  * The client no longer hangs after wake up
+
+-------------------------------------------------------------------
 Wed Nov 19 16:23:06 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.90.8:

@@ -430,4 +430,19 @@
   * ipn/ipnlocal: use an in-memory TKA store if FS is unavailable (forwarded request 1318741 from rrahl0)</comment>
     <requestid>1318742</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>16d993dcf30c94055186b31da2fc7250</srcmd5>
+    <version>1.92.1</version>
+    <time>1765191266</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.92.1:
+  * fix LocalBackend deadlock when packet arrives during profile switch
+  * wgengine: fix TSMP/ICMP callback leak
+- Update to version 1.92.0:
+  * no changelog provided
+- Update to version 1.90.9:
+  * tailscaled no longer deadlocks during event bursts
+  * The client no longer hangs after wake up (forwarded request 1321350 from rrahl0)</comment>
+    <requestid>1321351</requestid>
+  </revision>
 </revisionlist>
