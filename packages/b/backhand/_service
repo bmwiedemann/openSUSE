@@ -3,7 +3,7 @@
     <param name="url">https://github.com/wcampbell0x2a/backhand</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">v0.23.0</param>
+    <param name="revision">v0.24.0</param>
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
     <param name="changesgenerate">enable</param>
   </service>

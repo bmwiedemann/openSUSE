@@ -1,7 +1,7 @@
 #
 # spec file for package backhand
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           backhand
-Version:        0.23.0
+Version:        0.24.0
 Release:        0
 Summary:        Tools for the reading, creating, and modification of SquashFS file systems
 License:        Apache-2.0 OR MIT
