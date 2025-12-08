@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec  2 19:13:41 UTC 2025 - Adam Majer <adam.majer@suse.de>
+
+- icu_781.patch: Add support for ICU 78.1
+- bundle nghttp2 for TW, as upstream is carrying a patch on-top
+  due to changes in nghttp2. See:
+  https://github.com/nodejs/node/issues/60661
+
+-------------------------------------------------------------------
+Tue Dec  2 13:17:26 UTC 2025 - Adam Majer <adam.majer@suse.de>
+
+- v8_nameclash.patch: Backport fix
+
+-------------------------------------------------------------------
 Mon Nov 24 22:31:18 UTC 2025 - Adam Majer <adam.majer@suse.de>
 
 - Initial package for nodejs 24.11.1
@@ -6,13 +19,8 @@ Mon Nov 24 22:31:18 UTC 2025 - Adam Majer <adam.majer@suse.de>
   or documentation https://nodejs.org/docs/latest-v24.x/api/documentation.html
 
 - Inherit patches form 22.21.1
-  * cares_public_headers.patch, fix_ci_tests.patch, flaky_test_rerun.patch,
-    gcc13.patch, icu_732.patch, legacy_python.patch, linker_lto_jobs.patch, 
-    manual_configure.patch, node-gyp-addon-gypi.patch,
-    nodejs-libpath.patch, npm_search_paths.patch, old_cares.patch,
-    openssl_binary_detection.patch, qemu_timeouts_arches.patch, 
-    sle12_python3_compat.patch, test-skip-y2038-on-32bit-time_t.patch, v8-i586.patch,
-    versioned.patch
+  * fix_ci_tests.patch, flaky_test_rerun.patch, node-gyp-addon-gypi.patch,
+    nodejs-libpath.patch, npm_search_paths.patch, versioned.patch
 
 -------------------------------------------------------------------
 Mon Nov 24 19:48:36 UTC 2025 - Adam Majer <adam.majer@suse.de>

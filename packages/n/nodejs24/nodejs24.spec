@@ -108,7 +108,7 @@ ExclusiveArch do_not_build
 %bcond_without intree_icu
 %endif
 
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1750
 %bcond_with    intree_nghttp2
 %else
 %bcond_without intree_nghttp2
@@ -145,8 +145,8 @@ Source21:       README.md
 
 ## Patches not distribution specific
 Patch3:         fix_ci_tests.patch
-
-
+Patch4:         v8_nameclash.patch
+Patch5:         icu_781.patch
 
 ## Patches specific to SUSE and openSUSE
 # PATCH-FIX-OPENSUSE -- set correct path for dtrace if it is built
@@ -177,52 +177,11 @@ BuildRequires:  zlib-devel
 BuildRequires:  config(netcfg)
 %endif
 
-# SLE-11 target only
-# Node.js 6 requires GCC 4.8.5+.
-#
-# For Node.js 8.x, upstream requires GCC 4.9.4+, as GCC 4.8 may have
-# slightly buggy C++11 support: https://github.com/nodejs/node/pull/13466
-#
-# If the default compiler is not supported, use the most recent compiler
-# version available.
-%if 0%{?suse_version} == 1110
-# GCC 5 is only available in the SUSE:SLE-11:SP4:Update repository (SDK).
-%if %node_version_number >= 8
-BuildRequires:  gcc5-c++
-%define forced_gcc_version 5
-%else
-BuildRequires:  gcc48-c++
-%define forced_gcc_version 4.8
-%endif
-%endif
-# sles == 11 block
-
-# Pick and stick with "latest" compiler at time of LTS release
-# for SLE-12:Update targets
-%if 0%{?suse_version} == 1315
-%if %node_version_number >= 17
-BuildRequires:  gcc12-c++
-BuildRequires:  gcc12-PIE
-%define forced_gcc_version 12
-%else
-%if %node_version_number >= 14
-BuildRequires:  gcc9-c++
-%define forced_gcc_version 9
-%else
-%if %node_version_number >= 8
-BuildRequires:  gcc7-c++
-%define forced_gcc_version 7
-%endif
-%endif
-%endif
-%endif
-
+# Compiler selection
 %if 0%{?suse_version} == 1500
-%if %node_version_number >= 17
-BuildRequires:  gcc12-c++
-BuildRequires:  gcc12-PIE
-%define forced_gcc_version 12
-%endif
+BuildRequires:  gcc13-c++
+BuildRequires:  gcc13-PIE
+%define forced_gcc_version 13
 %endif
 # compiler selection
 
@@ -233,13 +192,7 @@ BuildRequires:  gcc-c++
 
 
 # Python dependencies
-%if %node_version_number >= 14
-
 %if 0%{?suse_version}
-%if 0%{?suse_version} < 1500
-BuildRequires:  python36
-%define forced_python_version 3.6m
-%endif
 %if %{?suse_version} == 1500
 BuildRequires:  python311
 %define forced_python_version 3.11
@@ -248,23 +201,11 @@ BuildRequires:  python311
 BuildRequires:  python3
 BuildRequires:  python3-setuptools
 %endif
-%endif
-
 %else
-%if %node_version_number >= 12
 BuildRequires:  python3
+%endif
 
-%else
 %if 0%{?suse_version} >= 1500
-BuildRequires:  python2
-%else
-BuildRequires:  python
-%endif
-
-%endif
-%endif
-
-%if 0%{?suse_version} >= 1500 && %{node_version_number} >= 10
 BuildRequires:  user(nobody)
 BuildRequires:  group(nobody)
 %endif
@@ -629,55 +570,11 @@ echo "`grep node-v%{version}.tar.xz %{S:1} | head -n1 | cut -c1-64`  %{S:0}" | s
 %setup -q -n node-%{version}
 %endif
 
-%if %{node_version_number} == 16
-tar zxf %{S:12}
-%endif
-
-%if %{node_version_number} <= 10
-rm -r deps/npm/*
-pushd deps/npm
-tar zxf %{SOURCE9} --strip-components=1
-tar Jxf %{SOURCE90}
-popd
-%endif
-
 %if %{node_version_number} >= 10
 tar Jxf %{SOURCE11}
 %endif
 
-# downgrade node-gyp to last version that supports python 3.4 for SLE12
-%if 0%{?suse_version} && 0%{?suse_version} < 1500 && %{node_version_number} >= 16 && %{node_version_number} < 22
-rm -r  deps/npm/node_modules/node-gyp
-mkdir deps/npm/node_modules/node-gyp
-pushd deps/npm/node_modules/node-gyp
-tar Jxf %{SOURCE5}
-popd
-
-%if %{node_version_number} >= 19
-%else
-%endif
-%endif
-
-%patch -P 3 -p1
-%if 0%{?suse_version} < 1500
-%endif
-%if %{node_version_number} <= 12 && 0%{?suse_version} < 1500
-%endif
-%if 0%{with valgrind_tests}
-%endif
-%patch -P 101 -p1
-%if 0%{?suse_version} >= 1500 || 0%{?suse_version} == 0
-%patch -P 102 -p1
-%endif
-# Add check_output to configure script (not part of Python 2.6 in SLE11).
-%if 0%{?suse_version} == 1110
-%endif
-%patch -P 104 -p1
-%patch -P 120 -p1
-%if ! 0%{with openssl_RSA_get0_pss_params}
-%endif
-%patch -P 200 -p1
-
+%autopatch -p1
 
 %if %{node_version_number} == 12
 # minimist security update - patch50
@@ -909,6 +806,10 @@ export OPENSSL_CONF=''
 export CI_JS_SUITES=default
 export NODE_TEST_NO_INTERNET=1
 
+%ifarch %{ix86} %{arm}
+rm -f test/parallel/test-fs-utimes-y2K38.js
+%endif
+
 %if %{node_version_number} >= 12
 find test \( -name \*.out -or -name \*.js -or -name \*.snapshot \) -exec sed -i 's,Use `node ,Use `node%{node_version_number} ,' {} \;
 %endif
@@ -943,7 +844,7 @@ rm test/parallel/test-dns-cancel-reverse-lookup.js \
 rm test/parallel/test-dgram-membership.js
 %if %{node_version_number} > 20
 # missing ICU test data for 15.6/15.7/SLFO
-ln test/fixtures/icu/localizationData-v74.2.json test/fixtures/icu/localizationData-v73.2.json
+ln test/fixtures/icu/localizationData-v75.1.json test/fixtures/icu/localizationData-v73.2.json
 %endif
 
 %if %{node_version_number} >= 18

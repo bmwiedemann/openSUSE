@@ -7,4 +7,20 @@
     <comment>new nodejs LTS for Factory</comment>
     <requestid>1320386</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>acffdc8c47f7a8437e8bbd8179be4024</srcmd5>
+    <version>24.11.1</version>
+    <time>1765210984</time>
+    <user>anag_factory</user>
+    <comment>- icu_781.patch: Add support for ICU 78.1
+- bundle nghttp2 for TW, as upstream is carrying a patch on-top
+  due to changes in nghttp2. See:
+  https://github.com/nodejs/node/issues/60661
+
+- v8_nameclash.patch: Backport fix
+
+  * fix_ci_tests.patch, flaky_test_rerun.patch, node-gyp-addon-gypi.patch,
+    nodejs-libpath.patch, npm_search_paths.patch, versioned.patch</comment>
+    <requestid>1320906</requestid>
+  </revision>
 </revisionlist>

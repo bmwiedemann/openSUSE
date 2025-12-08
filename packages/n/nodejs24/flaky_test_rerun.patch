@@ -12,7 +12,7 @@ Index: node-v24.11.1/tools/test.py
 +        result = self.OriginalRun()
 +        if (not result.HasFailed()):
 +            break
-+        print("FLAKY TEST rerun: ", self.GetCommand())
++        print("FLAKY TEST rerun: ", result)
 +    return result
 +
 +  def OriginalRun(self):
