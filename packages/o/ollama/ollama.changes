@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec  4 18:07:05 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.13.1:
+  * New models: Ministral-3, Mistral-Large-3
+  * nomic-embed-text will now use Ollama's engine by default
+  * Tool calling support for cogito-v2.1
+  * Ollama will now better render errors instead of showing
+    Unmarshal: errors
+
+-------------------------------------------------------------------
 Sat Nov 22 04:14:47 UTC 2025 - Glen Masgai <glen.masgai@gmail.com>
 
 - Update to version 0.13.0
