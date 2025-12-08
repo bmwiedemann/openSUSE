@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Dec  6 21:44:06 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 13.0.3:
+  * fix dependency repo perms in Create/RemoveIssueDependency
+  * draft releases could be read before being published
+  * misconfigured security checks on tag delete web form
+  * incorrect logic in "Update PR" did not enforce head branch protection rules
+    correctly
+  * issue owner can delete another user's comment's edit history on same issue
+  * tag protection rules can be bypassed during tag delete operation
+  * fix: support git clone when /tmp has noexec
+  * fix: get new session from enginegroup instead of masterengine
+  * fix: endless redirection loop between /user/settings/change_password and
+    /user/settings/security
+  * fix(alt): handle package names with dots in ALT repository
+  * fix: pull request review comment position
+  * fix: less restrictive matrix room_id pattern
+  * fix: add required headers to Pagure migration
+  * fix: prevent orgs from being added as members of orgs
+  * fix(api): set all hook event types
+  * fix: don't show ConEmu OSC escape sequences
+  * fix: set tag message on tag addition
+  * fix: construct project links in timeline better
+- remove patches fix-CVE-2025-47911.patch and fix-CVE-2025-58190.patch,
+  fixed upstream
+
+-------------------------------------------------------------------
 Mon Oct 27 12:48:55 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 13.0.2:
