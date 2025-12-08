@@ -1,7 +1,7 @@
 #
 # spec file for package nebula
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           nebula
-Version:        1.9.7
+Version:        1.10.0
 Release:        0
 Summary:        A scalable overlay networking tool
 License:        MIT
@@ -25,7 +25,6 @@ URL:            https://github.com/slackhq/nebula
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 Source2:        %{name}.service
-Patch0:         fix-CVE-2025-22869.patch
 BuildRequires:  git-core
 BuildRequires:  golang-packaging
 BuildRequires:  zstd

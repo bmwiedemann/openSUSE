@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:29:27 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.10.0:
+  * Support for ipv6 and multiple ipv4/6 addresses in the overlay
+  * Add the ability to mark packets on linux to better target nebula packets in
+    iptables/nftables
+  * Add ECMP support for unsafe_routes
+  * PKCS11 support for P256 keys when built with pkcs11 tag
+  * default_local_cidr_any now defaults to false
+  * Improve logging when a relay is in use on an inbound packet
+  * Avoid fatal errors if rountines is > 1 on systems that <= 1
+  * Log a warning if a firewall rule contains an any that negates a more
+    restrictive filter
+  * Accept encrypted CA passphrase from an environment variable
+  * Allow handshaking with any trusted remote
+  * Log only the count of blocklisted certificate fingerprints instead of the
+    entire list
+  * Don't fatal when the ssh server is unable to be configured successfully
+  * Improve lost packet statistics
+  * Honor remote_allow_list in hole punch response
+- remove patch fix-CVE-2025-22869.patch, fixed upstream
+
+-------------------------------------------------------------------
 Sat Oct 11 14:48:33 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 1.9.7:

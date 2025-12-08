@@ -90,4 +90,30 @@
     generic udp listener (forwarded request 1310729 from rrahl0)</comment>
     <requestid>1310730</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6bc9460c2a4c4edfd58fc044aa553c00</srcmd5>
+    <version>1.10.0</version>
+    <time>1765191263</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.10.0:
+  * Support for ipv6 and multiple ipv4/6 addresses in the overlay
+  * Add the ability to mark packets on linux to better target nebula packets in
+    iptables/nftables
+  * Add ECMP support for unsafe_routes
+  * PKCS11 support for P256 keys when built with pkcs11 tag
+  * default_local_cidr_any now defaults to false
+  * Improve logging when a relay is in use on an inbound packet
+  * Avoid fatal errors if rountines is &gt; 1 on systems that &lt;= 1
+  * Log a warning if a firewall rule contains an any that negates a more
+    restrictive filter
+  * Accept encrypted CA passphrase from an environment variable
+  * Allow handshaking with any trusted remote
+  * Log only the count of blocklisted certificate fingerprints instead of the
+    entire list
+  * Don't fatal when the ssh server is unable to be configured successfully
+  * Improve lost packet statistics
+  * Honor remote_allow_list in hole punch response
+- remove patch fix-CVE-2025-22869.patch, fixed upstream (forwarded request 1321348 from rrahl0)</comment>
+    <requestid>1321349</requestid>
+  </revision>
 </revisionlist>
