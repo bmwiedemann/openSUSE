@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec  5 12:00:29 UTC 2025 - Marina Latini <marina.latini@suse.com>
+
+- Fix build failure on SLE-12 due to missing make_build macro
+
+-------------------------------------------------------------------
 Fri Jan  5 08:53:17 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - zstd is now available on SLE 15 SP0

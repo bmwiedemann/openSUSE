@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package obs-service-recompress
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+# SLE-12 doesn't have the make_build macro
+%{!?make_build: %define make_build make %{?_smp_mflags}}
 
 %define service recompress
 Name:           obs-service-%{service}
