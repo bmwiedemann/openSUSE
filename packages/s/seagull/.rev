@@ -31,4 +31,20 @@
     though a prefix was provided</comment>
     <requestid>1308728</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>06e12df4781426fb0d1b2a9a9cd8a2b8</srcmd5>
+    <version>0.6.0</version>
+    <time>1765191260</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.6.0:
+  * Add helpers for handling booleans
+  * Add Statement.column_date_time
+  * Ignore the .wraplock file
+  * Rename meson_options.txt to meson.options and remove the nls option
+  * Fix some issues scanbuild found
+  * Add support for GTimeZone
+  * Fix annotations for GError out parameters
+  * Add support for reading and writing GBytes</comment>
+    <requestid>1321355</requestid>
+  </revision>
 </revisionlist>

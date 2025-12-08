@@ -18,7 +18,7 @@
 
 %define         sover 0
 Name:           seagull
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        A SQLite helper library
 License:        LGPL-2.1-or-later
@@ -72,7 +72,6 @@ BuildArch:      noarch
 %meson \
   -Ddoc=true \
   -Dintrospection=true \
-  -Dnls=true
 %meson_build
 
 %install
