@@ -2,6 +2,7 @@
 # spec file for package predict
 #
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +24,7 @@ Summary:        Satellite tracking and orbital prediction
 License:        GPL-2.0-or-later
 URL:            https://www.qsl.net/kd2bd/predict.html
 Source:         https://www.qsl.net/kd2bd/%{name}-%{version}.tar.gz
+Patch0:         predict-mkdir-fix.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(ncurses)
