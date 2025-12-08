@@ -1497,4 +1497,14 @@
 - Added tg_owt-pipewire.patch to pipewire 1.5.81 support.</comment>
     <requestid>1320542</requestid>
   </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>76dba30a8e7f2b8bdb9e9c3f95ab2993</srcmd5>
+    <version>6.3.6</version>
+    <time>1765191253</time>
+    <user>anag_factory</user>
+    <comment>- Updated td to git20251201.
+- Updated telegram-desktop to 6.3.6
+  * https://github.com/telegramdesktop/tdesktop/releases/tag/v6.3.6</comment>
+    <requestid>1321342</requestid>
+  </revision>
 </revisionlist>

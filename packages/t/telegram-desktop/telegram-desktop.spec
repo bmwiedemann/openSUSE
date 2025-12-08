@@ -23,9 +23,9 @@
 %define ada_ver   3.3.0
 %define h264_ver  2.6.0
 %define owt_ver   git20251115
-%define td_ver    git20251023
+%define td_ver    git20251201
 Name:           telegram-desktop
-Version:        6.3.4
+Version:        6.3.6
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
