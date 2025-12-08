@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec  2 06:07:44 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251202 (git commit 38c82f07a964):
+  * qcom: update ADSP firmware for x1e80100 platform, change the license
+  * qcom: reorder ADSP, CDSP firmware entries for qcs8300 in WHENCE
+
+-------------------------------------------------------------------
 Wed Nov 26 05:59:51 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20251125 (git commit 23568a4b9420):

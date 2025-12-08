@@ -308,4 +308,14 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: Add ADSP firmware for qcs6490-thundercomm-rubikpi3</comment>
     <requestid>1320756</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>20444298854652fb5d02f89d8801ed72</srcmd5>
+    <version>20251202</version>
+    <time>1765191171</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251202 (git commit 38c82f07a964):
+  * qcom: update ADSP firmware for x1e80100 platform, change the license
+  * qcom: reorder ADSP, CDSP firmware entries for qcs8300 in WHENCE</comment>
+    <requestid>1321335</requestid>
+  </revision>
 </revisionlist>
