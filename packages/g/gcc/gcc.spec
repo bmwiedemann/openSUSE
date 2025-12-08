@@ -470,7 +470,6 @@ Conflicts:      gcc-go
 Requires:       gcc%{gcc_version}-go
 Requires:       gcc%{gccsuffix} = %{version}
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
 
 %description -n gcc%{gccsuffix}-go
 The system GNU Go Compiler.
@@ -660,10 +659,9 @@ for program in \
     ; do
   ln -sf $program-%{gcc_suffix} $RPM_BUILD_ROOT%{_prefix}/bin/$program
 done
-# For go and gofmt use alternatives since they are shared with golang
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-ln -sf %{_sysconfdir}/alternatives/go %{buildroot}%{_bindir}/go
-ln -sf %{_sysconfdir}/alternatives/gofmt %{buildroot}%{_bindir}/gofmt
+# Do not add a gofmt link from gofmt-%{gcc_suffix} since that conflicts with
+# the golang libalternatives version of this.  Do not use gccgofmt either,
+# that's nonstandard and not expected by anyone.
 # Link section 1 manpages
 for man1 in \
         gcc gcov gcov-dump gcov-tool lto-dump \
@@ -706,19 +704,10 @@ ln -sf gcc-%{gcc_suffix}.1.gz $RPM_BUILD_ROOT%{_mandir}/man1/cc.1.gz
 mkdir -p $RPM_BUILD_ROOT%{_libdir}/bfd-plugins
 ln -s `gcc-%{gcc_suffix} -print-file-name=liblto_plugin.so` $RPM_BUILD_ROOT%{_libdir}/bfd-plugins/liblto_plugin.so
 
+# We no longer register go/gofmt alternatives for gcc-go, but remove
+# any existing one on upgrade
 %post -n gcc%{gccsuffix}-go
-# we don't want a BuildRequires on gccN-go but otherwise the install
-# step of the build fails, so simply skip the script when gccN-go isn't there
-if [ -f %{_bindir}/go-%{gcc_suffix} ] ; then
-update-alternatives \
-  --install %{_bindir}/go go %{_bindir}/go-%{gcc_suffix} 100 \
-  --slave %{_bindir}/gofmt gofmt %{_bindir}/gofmt-%{gcc_suffix}
-fi
-
-%postun -n gcc%{gccsuffix}-go
-if [ $1 -eq 0 ] ; then
-  update-alternatives --remove go %{_bindir}/go-%{gcc_suffix}
-fi
+update-alternatives --remove go %{_bindir}/go-%{gcc_suffix}
 
 %files -n gcc%{gccsuffix}
 %defattr(-,root,root)
@@ -813,10 +802,6 @@ fi
 %files -n gcc%{gccsuffix}-go
 %defattr(-,root,root)
 %{_bindir}/gccgo
-%{_bindir}/go
-%{_bindir}/gofmt
-%ghost %{_sysconfdir}/alternatives/go
-%ghost %{_sysconfdir}/alternatives/gofmt
 %doc %{_mandir}/man1/gccgo.1.gz
 
 %if %{build_d}

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec  5 07:33:47 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Remove go/gofmt alternatives.  [bsc#1245878]
+
+-------------------------------------------------------------------
 Wed May  7 11:27:11 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Add packages for Modula-2 and Cobol.

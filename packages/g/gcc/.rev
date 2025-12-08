@@ -689,4 +689,12 @@ this would switch building packages to gcc14.  Thus Staging:Gcc7.
 - Bump GCC version to 15, leave -build flavor at 13.</comment>
     <requestid>1275469</requestid>
   </revision>
+  <revision rev="81" vrev="2">
+    <srcmd5>92085052e5323b9d9cf57cff52ca6607</srcmd5>
+    <version>15</version>
+    <time>1765191149</time>
+    <user>anag_factory</user>
+    <comment>- Remove go/gofmt alternatives.  [bsc#1245878]</comment>
+    <requestid>1321277</requestid>
+  </revision>
 </revisionlist>
