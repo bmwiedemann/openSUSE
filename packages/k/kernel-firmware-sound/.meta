@@ -1,5 +1,0 @@
-<package name="kernel-firmware-sound" project="openSUSE:Factory">
-  <title>Kernel firmware files for various sound drivers</title>
-  <description>This package contains Linux kernel firmware files for various sound drivers.
-The package is managed semi-automatically via kernel-firmware-tools helper scripts.</description>
-</package>

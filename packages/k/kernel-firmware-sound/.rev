@@ -324,4 +324,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * ASoC: tas2781: Add more symbol links on SPI devices</comment>
     <requestid>1320757</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>ae98f171e42fd67e153d14693cfc506e</srcmd5>
+    <version>20251205</version>
+    <time>1765191172</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251205 (git commit 536cc58d9db1):
+  * cirrus: cs35l41: Add support for new HP laptops</comment>
+    <requestid>1321336</requestid>
+  </revision>
 </revisionlist>
