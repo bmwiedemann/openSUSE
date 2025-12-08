@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Dec 05 00:00:00 UTC 2025 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com> - 2.11.0
+
+- Added ADIOS2 v2.11.0:
+  * Support for reader-side computed variables with expression evaluation.
+  * Remote Data Access Infrastructure using XRootD.
+  * GPU and Memory Space Improvements.
+  * Campaign Management System Overhaul.
+  * Compression and Data Format Advances.
+  * ADIOS2 now adopts OpenSSF best practices.
+  * Release notes: https://github.com/ornladios/ADIOS2/releases/tag/v2.11.0
+- Dropped patch: missing_includes_for_gcc15.patch
+
+-------------------------------------------------------------------
 Tue Jun 24 00:00:00 UTC 2025 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com>
 
 - Added conflict between minimal and canonical flavor.

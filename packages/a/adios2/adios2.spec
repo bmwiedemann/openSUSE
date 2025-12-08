@@ -18,8 +18,8 @@
 
 %define flavor @BUILD_FLAVOR@%{nil}
 %define major_ver 2
-%define minor_ver 10
-%define patch_ver 2
+%define minor_ver 11
+%define patch_ver 0
 # Name the suffix of the pkg
 %if "%{flavor}" != "%{nil}"
   %define pkg_suffix -%{flavor}
@@ -82,7 +82,6 @@ URL:            https://adios2.readthedocs.io/en/
 Source0:        https://github.com/ornladios/ADIOS2/archive/refs/tags/v%{version}.tar.gz#/ADIOS2-%{version}.tar.gz
 Source1:        adios2-rpmlintrc
 # PATCH-FIX-UPSTREAM boo#1244421
-Patch1:         missing_includes_for_gcc15.patch
 ExcludeArch:    %{ix86}
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -231,10 +230,10 @@ dependencies like HDF5, ZFP, Blosc2, PNG, and ZeroMQ.
 %prep
 %autosetup -p1 -n ADIOS2-%{version}
 bindir=%{_bindir} sed -i "1c #!%{_bindir}/python3" \
+      source/utils/adios2_json_pp.py \
       source/utils/bp4dbg/bp4dbg.py \
       source/utils/bp5dbg/bp5dbg.py \
-      source/utils/adios2_json_pp.py \
-      source/utils/adios_campaign_manager/adios2_campaign_manager.py
+      source/utils/bpcmp/bpcmp.py
 
 %build
 %global __builder ninja
