@@ -58,4 +58,12 @@
     * Replace %python_install with %pyproject_install</comment>
     <requestid>1282373</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>10b4f03c950fae43bc972658627841ba</srcmd5>
+    <version>0.13.1</version>
+    <time>1765191185</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1321442</requestid>
+  </revision>
 </revisionlist>

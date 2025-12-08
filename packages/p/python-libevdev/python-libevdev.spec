@@ -20,16 +20,16 @@
 %global modname libevdev
 %define libevdev_reqver 1.6.0
 Name:           python-%{modname}
-Version:        0.12
+Version:        0.13.1
 Release:        0
 Summary:        Python wrapper around the libevdev C library
 License:        MIT
 Group:          Development/Libraries/Python
 URL:            https://python-libevdev.readthedocs.io/
 Source0:        https://files.pythonhosted.org/packages/source/l/libevdev/libevdev-%{version}.tar.gz
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  libevdev-devel >= %{libevdev_reqver}
