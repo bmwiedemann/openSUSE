@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Dec  6 02:22:04 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 3.0.6.3:
+  * Update check_tags to use current branch.
+  * Change log level from Info to Notice in get_passphrase().
+  * Add key_needs_passphrase(key).
+  * Better error message from get_remote_file().
+  * 'duplicity --no-check-remote inc' prints spurious warning
+    "found missing difftar(s) in backup sets"
+  * Add check_tags minor fix to setversion.
+
+-------------------------------------------------------------------
 Thu Nov 27 10:23:44 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 3.0.6.2:
