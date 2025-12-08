@@ -57,7 +57,7 @@ rm -rf %{buildroot}/%{_datadir}/doc
 %find_lang %{name}
 
 # fix the shebang
-sed -i '1 s|#.*$|#!/usr/bin/python3|g' %{buildroot}%{_bindir}/%{name}
+sed -i '1 s|#.*$|#!/usr/bin/python3|g' %{buildroot}%{_datadir}/%{name}/%{name}
 
 %files -f %{name}.lang
 %license COPYING
