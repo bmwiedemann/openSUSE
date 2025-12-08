@@ -26,6 +26,7 @@ License:        BSD-3-Clause
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            http://www.aegisub.org/
 Source0:        https://github.com/TypesettingTools/Aegisub/archive/v%{version}/Aegisub-%{version}.tar.gz
+Source1:        LuaJIT-2.1.gitmodule.tar.zst
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_atomic-devel
 BuildRequires:  libboost_chrono-devel
@@ -37,6 +38,7 @@ BuildRequires:  libboost_regex-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  libicu-devel
 BuildRequires:  meson
+BuildRequires:  zstd
 BuildRequires:  pkgconfig >= 0.20
 BuildRequires:  wxGTK3-3_2-devel
 BuildRequires:  pkgconfig(alsa)
@@ -61,7 +63,9 @@ effects in the subtitles, apart from just basic timed text.
 
 %prep
 %autosetup -p1 -n Aegisub-%{version}
-
+mkdir -p subprojects/luajit
+tar -xf %{SOURCE1} --strip-components 1 -C subprojects/luajit
+cp -a subprojects/packagefiles/luajit/* subprojects/luajit
 sed "/subdir('tests')/d" -i meson.build
 
 cat > git_version.h <<EOF

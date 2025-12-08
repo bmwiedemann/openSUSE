@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec  7 21:42:26 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Add Again LuaJIT-2.1.gitmodule Source: luajit Factory remove 
+  Support Lua 5.2 compatibility make build Failed
+- Add zstd BuildRequires: for extract submodule
+
+-------------------------------------------------------------------
 Wed Sep 24 13:44:40 CEST 2025 - aschnell@suse.com
 
 - libboost_system was removed upstream (bsc#1249599)
