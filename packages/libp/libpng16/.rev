@@ -917,4 +917,12 @@
 - fixes [bsc#1254157] [bsc#1254158] [bsc#1254159] [bsc#1254160]</comment>
     <requestid>1320338</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>3d55df587e9350f193f8ce8c39ba446d</srcmd5>
+    <version>1.6.52</version>
+    <time>1765191152</time>
+    <user>anag_factory</user>
+    <comment>- version update to 1.6.52</comment>
+    <requestid>1321241</requestid>
+  </revision>
 </revisionlist>

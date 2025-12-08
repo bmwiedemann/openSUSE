@@ -20,7 +20,7 @@
 %define asan_build  0
 %define major   1
 %define minor   6
-%define micro   51
+%define micro   52
 %define branch  %{major}%{minor}
 %define libname libpng%{branch}-%{branch}
 %define debug_package_requires %{libname} = %{version}-%{release}
@@ -30,7 +30,7 @@ Release:        0
 Summary:        Library for the Portable Network Graphics Format (PNG)
 License:        libpng-2.0
 URL:            http://www.libpng.org/pub/png/libpng.html
-Source0:        https://prdownloads.sourceforge.net/libpng/libpng-%{version}.tar.xz
+Source0:        https://github.com/pnggroup/libpng/archive/refs/tags/v%{version}.tar.gz#/libpng-%{version}.tar.gz
 Source2:        libpng16.keyring
 Source3:        rpm-macros.libpng-tools
 Source4:        baselibs.conf
