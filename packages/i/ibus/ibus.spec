@@ -35,7 +35,7 @@
 
 %define _name   ibus
 Name:           %{_name}%{?nsuffix}
-Version:        1.5.32
+Version:        1.5.33
 Release:        0
 Summary:        The "Intelligent Input Bus" input method
 License:        LGPL-2.1-or-later
@@ -57,9 +57,6 @@ Patch4:         ibus-xim-fix-re-focus-after-lock.patch
 # PATCH-FIX-UPSTREAM ftake@geeko.jp
 # Select an IM engine instead of xkb engine at the first login
 Patch8:         im-engines-precede-xkb.patch
-# PATCH-FIX-OPENSUSE ibus-fix-Signal-does-not-exist.patch hillwood@opensuse.org
-# panel.vala: The name `Signal' does not exist in the context of `Posix' in Leap 15.1 and below
-Patch9:         ibus-fix-Signal-does-not-exist.patch
 # PATCH-FIX-SLE hide-setup-menu.patch bnc#899259  qzhao@suse.com
 # ibus-setup should not launch from main menu.
 Patch10:        hide-setup-menu.patch
@@ -69,14 +66,6 @@ Patch11:        setup-switch-im.patch
 # PATCH-FIX-SLE ibus-disable-engines-preload-in-GNOME.patch bnc#1036729 qzhao@suse.com
 # Disable ibus engines preload in GNOME for These works are handled by gnome-shell.
 Patch12:        ibus-disable-engines-preload-in-GNOME.patch
-# PATCH-FIX-UPSTREAM ibus-socket-name-compatibility.patch bsc#1171442, gh#ibus/ibus#2195 qkzhu@suse
-# Compatibility workaround for ibus-use-wayland-display-for-socket-name.patch
-# Qt5 does not be update to the new version and patch for ibus on Leap 15,
-# it still needs this patch on leap 15. (boo#1187202)
-Patch15:        ibus-socket-name-compatibility.patch
-# Fix PageUp/PageDown buttons with hidding candidate popup
-# https://github.com/fujiwarat/ibus/commit/f9592f30a2c2ac9f3b331eddf00845d9584e3bdc
-Patch16:        fix-candidate-does-not-hide-automatically.patch
 BuildRequires:  pkgconfig(dbusmenu-glib-0.4)
 BuildRequires:  pkgconfig(dbusmenu-gtk3-0.4)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.84.0
@@ -219,9 +208,6 @@ This package contains ibus im module for use by gtk4.
 %setup -q -n %{_name}-%{version}
 %patch -P 4 -p1
 %patch -P 8 -p1
-%if 0%{?sle_version} < 150200 && 0%{?suse_version} <=1500
-%patch -P 9 -p1
-%endif
 
 cp -r %{SOURCE2} .
 cp -r %{SOURCE3} .
@@ -233,10 +219,6 @@ cp -r %{SOURCE11} .
 %patch -P 10 -p1
 %patch -P 11 -p1
 %patch -P 12 -p1
-%if 0%{?suse_version} <= 1500
-%patch -P 15 -p1
-%endif
-%patch -P 16 -p1
 
 %build
 %configure --disable-static \
