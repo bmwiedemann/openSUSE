@@ -461,4 +461,21 @@
     <comment>- require rust &gt;= 1.80, as that's the minimum requirement (forwarded request 1317742 from rrahl0)</comment>
     <requestid>1317743</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>24461e45c10676b4481956592628ba52</srcmd5>
+    <version>1.44.0</version>
+    <time>1765191381</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.44.0:
+  * Add f'{format}' strings
+  * Use double braces {{…}} for format strings
+  * Stabilize [script] attribute
+  * Allow newlines in interpolations and } to abut interpolation }}
+  * Test format strings with conditionals
+  * Move StringState into module
+  * Test undefined variable in format string error
+  * Fix just --list submodule example in readme
+  * Disable mdbook-linkcheck (forwarded request 1321479 from rrahl0)</comment>
+    <requestid>1321480</requestid>
+  </revision>
 </revisionlist>

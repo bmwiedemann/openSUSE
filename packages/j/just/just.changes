@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Dec  7 23:37:24 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.44.0:
+  * Add f'{format}' strings
+  * Use double braces {{…}} for format strings
+  * Stabilize [script] attribute
+  * Allow newlines in interpolations and } to abut interpolation }}
+  * Test format strings with conditionals
+  * Move StringState into module
+  * Test undefined variable in format string error
+  * Fix just --list submodule example in readme
+  * Disable mdbook-linkcheck
+
+-------------------------------------------------------------------
 Thu Nov 13 17:07:30 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.43.1:
