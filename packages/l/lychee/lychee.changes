@@ -1,5 +1,53 @@
 -------------------------------------------------------------------
-Fri Oct 24 07:39:56 UTC 2025 - dottorblaster@opensuse.org
+Sun Dec 07 07:41:20 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Add 001-exclude-octocrab.patch:
+  * One of the vendored dependencies erroneously thinks it's part of a workspace
+- Update to version 0.22.0:
+  * chore: release v0.22.0 (#1894)
+  * feat: add github markdown fragment quirk (#1940)
+  * chore(deps): bump the dependencies group with 5 updates (#1944)
+  * chore(deps): bump crate-ci/typos in the dependencies group (#1943)
+  * refactor: progress bar (#1914)
+  * fix: make file matcher respect the hidden option (#1936)
+  * Bump the dependencies group with 3 updates (#1933)
+  * Bump actions/checkout from 5 to 6 in the dependencies group (#1932)
+  * feat: support relative --root-dir (#1912)
+  * Provide a more helpful error message in case of TLS protocol issues (#1927)
+  * Fix parsing larger HTML blocks in MDX files (#1924)
+  * Bump the dependencies group with 3 updates (#1921)
+  * Bump crate-ci/typos from 1.39.0 to 1.39.2 in the dependencies group (#1922)
+  * Fix outdated reference to pre
+  * Make use of more explicit LazyLock::force
+  * feat: propagate input loading/collecting errors to top level  (#1864)
+  * docs: use markdown formatting for files-from help text (#1917)
+  * Add sudo to apt-get commands (#1919)
+  * Bump the dependencies group across 1 directory with 8 updates (#1916)
+  *  refactor: use InputResolver to implement Input::get_sources  (#1880)
+  *  refactor: use log::Level's deserialiser, and link example TOML (#1907)
+  * Fix extracting links after `<pre><code></code></pre>` (#1911)
+  * Config file up to date (#1906)
+  * Update Ubuntu package list before installing tools (#1908)
+  * refactor: check glob validity when parsing input source arguments (#1869)
+  * feat: file preprocessing (#1891)
+  * Bump crate-ci/typos from 1.38.1 to 1.39.0 in the dependencies group (#1901)
+  * refactor: remove unimportant public library function (#1893)
+  *  fix: inverted gitignore behaviour for --dump-inputs  (#1882)
+  * Fix typos, and configure the typos tool (#1895)
+  * Remove an unneeded clone (#1897)
+  * Address new clippy lints with version 1.91
+  * fix: parsing of srcset URLs after the first URL (#1890)
+  * clippy --fix
+  * Update flake
+  * Bump MSRV
+  * Bump the dependencies group across 1 directory with 7 updates
+  * Bump actions/upload-artifact from 4 to 5 in the dependencies group
+  * Match more than one digit for version numbers
+  * Use 'match' for version pattern matching and not 'pattern'
+  * Update release notes
+
+-------------------------------------------------------------------
+Fri Oct 24 07:39:56 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Add git-core to BuildRequires
 - Update to version v0.21.0:

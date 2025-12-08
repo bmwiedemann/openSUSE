@@ -1,0 +1,11 @@
+diff --git a/Cargo.toml b/Cargo.toml
+index aa96e20..4a079f1 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -1,5 +1,6 @@
+ [workspace]
+ members = ["lychee-bin", "lychee-lib", "examples/*", "benches", "test-utils"]
++exclude = ["vendor/octocrab-0.48.1"]
+ resolver = "2"
+ 
+ [workspace.package]

@@ -3,7 +3,7 @@
     <param name="url">https://github.com/lycheeverse/lychee.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">lychee-v0.21.0</param>
+    <param name="revision">lychee-v0.22.0</param>
     <param name="match-tag">lychee-v*</param>
     <param name="versionrewrite-pattern">lychee-v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
