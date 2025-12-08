@@ -16,20 +16,18 @@
 #
 
 
-%define _plutovg_version 0.0.4
-
-%define sover 1_37_4
+%define sover 1_38_0
 Name:           ImHex
-Version:        1.37.4
+Version:        1.38.0
 Release:        0
 Summary:        A Hex Editor for Reverse Engineers, Programmers
 License:        GPL-2.0-only
 Group:          Development/Tools/Other
 URL:            https://imhex.werwolv.net/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/sammycage/plutovg/archive/refs/tags/v%{_plutovg_version}.tar.gz#/plutovg-%{_plutovg_version}.tar.gz
-# Patch to workaround libLLVMDemangle.so() not found which may be a SUSE issue
+Source1:        https://github.com/WerWolv/ImHex-Patterns/archive/refs/heads/master.zip#/ImHex-Patterns-master.zip
 Source99:       %{name}-rpmlintrc
+# Patch to workaround libLLVMDemangle.so() not found which may be a SUSE issue
 Patch0:         ImHex-llvm_demangler-linking.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -41,18 +39,15 @@ BuildRequires:  llvm-devel
 BuildRequires:  mbedtls-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
+BuildRequires:  unzip
 BuildRequires:  pkgconfig(dbus-1)
-%if 0%{?suse_version} > 1600
-BuildRequires:  fmt-10-devel
-%else
-BuildRequires:  pkgconfig(fmt)
-%endif
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glfw3)
 BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libcurl) >= 7.76.1
+BuildRequires:  pkgconfig(libssh2)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(nlohmann_json) >= 3.10.2
 BuildRequires:  pkgconfig(yara)
@@ -65,7 +60,11 @@ Provides:       bundled(intervaltree)
 Provides:       bundled(libpl)
 Provides:       bundled(libromfs)
 Provides:       bundled(microtar)
-Provides:       bundled(plutovg) = %{_plutovg_version}
+%if 0%{?suse_version} > 1600
+BuildRequires:  fmt-10-devel
+%else
+BuildRequires:  pkgconfig(fmt)
+%endif
 
 %description
 A hex editor with a custom C++-like pattern language for parsing and highlighting a file's content,
@@ -93,10 +92,8 @@ applications that want to make use of ImHex.
 %autopatch -p1
 # Clean bundled libs
 rm -Rv lib/third_party/{fmt,llvm-demangle,yara}
-
-mkdir prefetched
-pushd prefetched
-for s in %{SOURCE1}; do tar -xf "$s"; done
+# ImHex Patterns
+unzip %{SOURCE1} && mv ImHex-Patterns-master/ ImHex-Patterns
 
 %build
 echo %{version} > VERSION
@@ -107,13 +104,12 @@ echo %{version} > VERSION
   -DUSE_SYSTEM_FMT=ON \
   -DUSE_SYSTEM_CAPSTONE=OFF \
   -DUSE_SYSTEM_YARA=ON \
-  -DUSE_SYSTEM_LLVM=ON \
-  -DFETCHCONTENT_SOURCE_DIR_PLUTOVG=../prefetched/plutovg-%{_plutovg_version}
+  -DUSE_SYSTEM_LLVM=ON
 %cmake_build
 
 %install
 %cmake_install
-%fdupes %{buildroot}%{_datadir}/imhex/sdk
+%fdupes %{buildroot}%{_datadir}/imhex
 
 %ldconfig_scriptlets -n libimhex%{sover}
 
@@ -131,12 +127,14 @@ echo %{version} > VERSION
 %{_libdir}/imhex/plugins/disassembler.hexplug
 %{_libdir}/imhex/plugins/fonts.hexpluglib
 %{_libdir}/imhex/plugins/hashes.hexplug
+%{_libdir}/imhex/plugins/remote.hexplug
 %{_libdir}/imhex/plugins/script_loader.hexplug
 %{_libdir}/imhex/plugins/ui.hexpluglib
 %{_libdir}/imhex/plugins/visualizers.hexplug
 %{_libdir}/imhex/plugins/yara_rules.hexplug
-%{_datadir}/metainfo/net.werwolv.imhex.appdata.xml
-%{_datadir}/metainfo/net.werwolv.imhex.metainfo.xml
+%{_datadir}/imhex
+%exclude %{_datadir}/imhex/sdk
+%{_datadir}/metainfo/net.werwolv.ImHex.metainfo.xml
 %{_datadir}/mime/packages/imhex.xml
 %{_datadir}/pixmaps/imhex.svg
 %{_datadir}/applications/imhex.desktop

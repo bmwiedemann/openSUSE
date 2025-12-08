@@ -3,3 +3,7 @@ addFilter("W: hidden-file-or-dir /usr/share/imhex/sdk/*")
 addFilter("E: non-executable-script /usr/share/imhex/sdk/*")
 addFilter("E: zero-length /usr/share/imhex/sdk/*")
 addFilter("E: version-control-internal-file /usr/share/imhex/sdk/*")
+# libtracing.a
+addFilter("E: static-library-without-debuginfo /usr/share/imhex/sdk/lib/libtracing.a")
+addFilter("E: lto-no-text-in-archive /usr/share/imhex/sdk/lib/libtracing.a")
+addFilter("E: arch-dependent-file-in-usr-share /usr/share/imhex/sdk/lib/libtracing.a")
