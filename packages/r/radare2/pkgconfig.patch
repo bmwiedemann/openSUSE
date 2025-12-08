@@ -1,0 +1,20 @@
+diff --git a/pkgcfg/r_muta.pc.acr b/pkgcfg/r_muta.pc.acr
+index 11293840cb..62c9d945bb 100644
+--- a/pkgcfg/r_muta.pc.acr
++++ b/pkgcfg/r_muta.pc.acr
+@@ -8,4 +8,4 @@ Description: radare foundation libraries
+ Version: @VERSION@
+ Requires: r_util r_util r_util r_util
+ Libs: -L${libdir} -lr_muta  
+-Cflags: -I${includedir}/libr 
++Cflags: -I${includedir}/libr -I${includedir}/libr/r_muta
+diff --git a/pkgcfg/r_util.pc.acr b/pkgcfg/r_util.pc.acr
+index aa4f3cb60b..c3baf841ec 100644
+--- a/pkgcfg/r_util.pc.acr
++++ b/pkgcfg/r_util.pc.acr
+@@ -8,4 +8,4 @@ Description: radare foundation libraries
+ Version: @VERSION@
+ Requires: 
+ Libs: -L${libdir} -lr_util  @LIBZIP@ @DL_LIBS@
+-Cflags: -I${includedir}/libr 
++Cflags: -I${includedir}/libr -I${includedir}/libr/r_util

@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Sat Dec  6 15:57:07 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Add %check section and test bins
+
+-------------------------------------------------------------------
+Sat Dec  6 15:10:43 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Rename sdb.1 man page to r2sdb.1 to avoid conflict with snobol4 
+
+-------------------------------------------------------------------
+Thu Dec  4 14:07:30 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Fix patch pkgconfig.patch to be -p1-able
+- Update to version 6.0.7:
+  * shell: Fix parsing r2 -H$(VARNAME) without a space
+- Update to version 6.0.6:
+  * Full changelog is available at:
+    https://github.com/radareorg/radare2/releases/tag/6.0.6
+- Update to version 6.0.4:
+  * Full changelog is available at:
+    https://github.com/radareorg/radare2/releases/tag/6.0.4
+- Update to version 6.0.2:
+  * Full changelog is available at:
+    https://github.com/radareorg/radare2/releases/tag/6.0.2
+
+-------------------------------------------------------------------
+Thu Dec  4 12:06:29 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add missing sub directories for r_util.h and r_muta.h
+  otherwise it might fails in calling r2pm -ci <plugin>
+
+-------------------------------------------------------------------
+Thu Dec  4 11:34:24 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Correct library package nameing scheme to make it build
+  also on x86_64 on 15.6 and 15.7
+
+-------------------------------------------------------------------
+Wed Jul 30 21:35:42 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Remove patches CVE-2025-1378.patch, CVE-2025-1864.patch,
+  CVE-2025-1744.patch, CVE-2025-5641.patch: merged upstream
+
+- Update to version 6.0.0:
+  * ABI changes:
+    ~ RCorePlugins now have a session
+    ~ Finish the RKons refactoring, all r_cons calls take instance instead of global
+    ~ Rename RCrypto to RMuta
+    ~ Use RCons instance from RLine
+    ~ Rename RIOPlugin.widget to RIOPlugin.data
+    ~ Refactor the RRegAlias api
+    ~ Camelcase all the RCoreBind methods
+  * Breaking API changes:
+    ~ Boolify r_cons_rgb_parse
+    ~ Add RLogLevel.fromString() and use it from -e log.level=?
+    ~ Deprecate r_bin_addr2line
+    ~ Rename RBinDbgItem into RBinAddrline
+    ~ RNumCalc is now known as RNumMath
+    ~ Move RFlagItem.alias into the Meta
+    ~ Rename core->offset into core->addr (asm.offset and more!)
+    ~ Rename RFlagItem.offset -> addr
+  * API changes:
+    ~ Boolify r_cons_rgb_parse
+    ~ Add RLogLevel.fromString() and use it from -e log.level=?
+    ~ Deprecate r_bin_addr2line
+    ~ Rename RBinDbgItem into RBinAddrline
+    ~ RNumCalc is now known as RNumMath
+    ~ Move RFlagItem.alias into the Meta
+    ~ Rename core->offset into core->addr (asm.offset and more!)
+    ~ Rename RFlagItem.offset -> addr
+    ~ Deprecate RLang.list()
+    ~ Unified function to jsonify the plugin meta + more fields
+    ~ Redesign the REvent API
+  * Full changelog is available at:
+    https://github.com/radareorg/radare2/releases/tag/6.0.0
+
+-------------------------------------------------------------------
 Wed Jun 11 13:58:49 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - add CVE-2025-5641.patch as a warning that the threaded option
@@ -6066,4 +6143,3 @@ Fri Mar  2 15:36:24 UTC 2012 - vcizek@suse.com
 Sun Nov  7 23:53:56 UTC 2010 - prusnak@opensuse.org
 
 - created package (v2.0.6)
-

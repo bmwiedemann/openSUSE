@@ -1,7 +1,7 @@
 #
 # spec file for package radare2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,26 @@
 #
 
 
+%global sdb_rev    2.2.4
+%global sdb_soname 2_2_4
+
+%global qjs_rev v0.11.0
+
+%global tests_rev 65539cb70eba0901995e04b471975beca0c42c69
+
 Name:           radare2
-Version:        5.9.8
+Version:        6.0.7
 Release:        0
 Summary:        Reverse Engineering Framework
 License:        GPL-3.0-only AND LGPL-3.0-only
 Group:          Development/Tools/Debuggers
 URL:            https://www.radare.org
-Source:         https://github.com/radareorg/radare2/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch1:         https://github.com/radareorg/radare2/commit/c6c772d2eab692ce7ada5a4227afd50c355ad545.patch#/CVE-2025-1378.patch
-Patch2:         https://github.com/radareorg/radare2/commit/e64c606b1342a4c0ab2c35ef5146b69667dcd43a.patch#/CVE-2025-1744.patch
-Patch3:         https://github.com/radareorg/radare2/commit/db6decd4bc90bb4a492129e70803136fa184f470.patch#/CVE-2025-1864.patch
-# From https://github.com/radareorg/radare2/commit/5705d99cc1f23f36f9a84aab26d1724010b97798.patch but needed a rediff
-Patch4:         CVE-2025-5641.patch
+Source0:        https://github.com/radareorg/radare2/archive/%{version}/%{name}-%{version}.tar.gz
+Source1:        https://github.com/radareorg/sdb/archive/%{sdb_rev}/sdb-%{sdb_rev}.tar.gz
+Source2:        https://github.com/quickjs-ng/quickjs/archive/%{qjs_rev}/quickjs-%{qjs_rev}.tar.gz
+Source3:        https://github.com/radareorg/radare2-testbins/archive/%{tests_rev}/radare2-testbins-%{tests_rev}.tar.gz
+Patch0:         pkgconfig.patch
+BuildRequires:  chrpath
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  file-devel
@@ -65,16 +72,42 @@ Development files for radare2
 
 %package zsh-completion
 Summary:        ZSH completion for %{name}
+License:        GPL-3.0-only AND LGPL-3.0-only
 Supplements:    (%{name} and zsh)
 BuildArch:      noarch
 
 %description zsh-completion
 zsh shell completions for %{name}.
 
+%package -n libsdb%{sdb_soname}
+Summary:        Simple string key/value database
+License:        GPL-3.0-only AND LGPL-3.0-only
+Provides:       libsdb-%{sdb_soname}
+
+%description -n libsdb%{sdb_soname}
+sdb is a simple string key/value database based on djb's cdb disk
+storage and supports JSON and arrays introspection.
+
+%ldconfig_scriptlets -n libsdb%{sdb_soname}
+%ldconfig_scriptlets -n %name
+
 %prep
 %autosetup -p1 -n %{name}-%{version}
 
+# Extract sdb
+mkdir -p subprojects/sdb
+tar   -C subprojects/sdb --strip-components=1 -x -f %{SOURCE1}
+
+# Extract quickjs
+mkdir -p subprojects/qjs
+tar   -C subprojects/qjs --strip-components=1 -x -f %{SOURCE2}
+
+mkdir -p test/bins
+tar   -C test/bins --strip-components=1 -x -f %{SOURCE3}
+
 %build
+%__meson subprojects packagefiles --apply
+
 %meson \
   -Duse_sys_capstone=true \
   -Duse_sys_magic=true \
@@ -89,12 +122,21 @@ zsh shell completions for %{name}.
 
 %install
 %meson_install
-%fdupes -s %{buildroot}
-mkdir -p %{buildroot}/%{_docdir}/radare2
-mv %{buildroot}/%{_datadir}/doc/radare2/* %{buildroot}%{_docdir}/radare2/
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+mkdir -p %{buildroot}%{_docdir}/radare2
+mv %{buildroot}%{_datadir}/doc/radare2/* %{buildroot}%{_docdir}/radare2/
+
+chrpath -d %{buildroot}%{_bindir}/r2sdb
+
+# Conflict with snobol4 package
+mv %{buildroot}%{_mandir}/man1/sdb.1 %{buildroot}%{_mandir}/man1/r2sdb.1
+
+%fdupes -s %{buildroot}
+
+%check
+# add radare2 to PATH for tests
+export PATH="$PWD/%{_vpath_builddir}/binr/radare2:$PATH"
+%meson_test
 
 %files devel
 %{_libdir}/libr_*.so
@@ -113,32 +155,31 @@ mv %{buildroot}/%{_datadir}/doc/radare2/* %{buildroot}%{_docdir}/radare2/
 
 %files
 %doc COMMUNITY.md CONTRIBUTING.md DEVELOPERS.md README.md
-%license COPYING COPYING.LESSER
+%license COPYING.md
 %{_docdir}/radare2/*
 %{_bindir}/*
 %{_libdir}/libr_*.so.*
+
 %dir %{_datadir}/radare2
 %dir %{_datadir}/radare2/%{version}
-%dir %{_datadir}/radare2/%{version}/cons
-%dir %{_datadir}/radare2/%{version}/flag
-%dir %{_datadir}/radare2/%{version}/hud
-%dir %{_datadir}/radare2/%{version}/magic
-%dir %{_datadir}/radare2/%{version}/www
-%dir %{_datadir}/radare2/%{version}/platform
-%dir %{_datadir}/radare2/%{version}/scripts
-%{_datadir}/radare2/%{version}/cons/*
-%{_datadir}/radare2/%{version}/flag/*
-%{_datadir}/radare2/%{version}/hud/*
-%{_datadir}/radare2/%{version}/magic/*
-%{_datadir}/radare2/%{version}/www/*
-%{_datadir}/radare2/%{version}/platform/*
-%{_datadir}/radare2/%{version}/scripts/*
+%{_datadir}/radare2/%{version}/cons
+%{_datadir}/radare2/%{version}/flag
+%{_datadir}/radare2/%{version}/hud
+%{_datadir}/radare2/%{version}/magic
+%{_datadir}/radare2/%{version}/www
+%{_datadir}/radare2/%{version}/platform
+%{_datadir}/radare2/%{version}/scripts
+%{_datadir}/radare2/%{version}/panels
 
 %{_mandir}/man1/*
+%{_mandir}/man3/r_*
 %{_mandir}/man7/*
 
 %files zsh-completion
 %dir %{_datadir}/zsh/site-functions
 %{_datadir}/zsh/site-functions/*
+
+%files -n libsdb%{sdb_soname}
+%{_libdir}/libsdb.so.*
 
 %changelog

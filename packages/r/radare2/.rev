@@ -87,4 +87,25 @@
     <comment></comment>
     <requestid>1285413</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1eebb227d80ac2ff34caadc8a804d9f3</srcmd5>
+    <version>6.0.7</version>
+    <time>1765191281</time>
+    <user>anag_factory</user>
+    <comment>- Add %check section and test bins
+- Rename sdb.1 man page to r2sdb.1 to avoid conflict with snobol4 
+- Fix patch pkgconfig.patch to be -p1-able
+- Update to version 6.0.7:
+- Update to version 6.0.6:
+- Update to version 6.0.4:
+- Update to version 6.0.2:
+- Add missing sub directories for r_util.h and r_muta.h
+  otherwise it might fails in calling r2pm -ci &lt;plugin&gt;
+- Correct library package nameing scheme to make it build
+  also on x86_64 on 15.6 and 15.7
+- Remove patches CVE-2025-1378.patch, CVE-2025-1864.patch,
+  CVE-2025-1744.patch, CVE-2025-5641.patch: merged upstream
+- Update to version 6.0.0:</comment>
+    <requestid>1321375</requestid>
+  </revision>
 </revisionlist>
