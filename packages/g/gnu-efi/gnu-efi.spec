@@ -17,7 +17,7 @@
 
 
 Name:           gnu-efi
-Version:        4.0.1
+Version:        4.0.4
 Release:        0
 Summary:        Library for EFI Applications
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -58,7 +58,7 @@ A package containing the example and UEFI testing files created by gnu-efi
 %make_build LINUX_HEADERS=%{_prefix}/src/linux LIBDIR=%{_libdir} PREFIX=%{_prefix}
 
 %install
-%make_install INSTALLROOT=%{buildroot} LIBDIR=%{_libdir} PREFIX=%{_prefix}
+%make_install LIBDIR=%{_libdir} PREFIX=%{_prefix}
 
 %files devel
 %{_includedir}/efi

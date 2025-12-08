@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec  7 12:12:21 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 4.0.4:
+  * Make setjmp/longjmp ISO C
+  * Shim 16.1 updates
+  * efibind: fix stdint.h #if operator precedence
+  * Fix -Wstrict-prototypes warnings
+  * Fix syslinux issue + user CFLAGS/LDFLAGS
+  * Shim 16 updates + IsZeroGuid
+
+-------------------------------------------------------------------
 Mon May 26 10:57:02 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to version 4.0.1:
