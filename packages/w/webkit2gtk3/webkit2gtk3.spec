@@ -76,7 +76,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           webkit2%{_gtknamesuffix}
-Version:        2.50.2
+Version:        2.50.3
 Release:        0
 Summary:        Library for rendering web content, GTK+ Port
 License:        BSD-3-Clause AND LGPL-2.0-or-later
@@ -88,8 +88,6 @@ Source99:       webkit2gtk3.keyring
 
 # PATCH-FEATURE-OPENSUSE reproducibility.patch -- Make build reproducible
 Patch0:         reproducibility.patch
-# PATCH-FIX-UPSTREAM webkit2gtk3-undefined-symbol.patch mgorse@suse.com -- fix a build failure.
-Patch1:         webkit2gtk3-undefined-symbol.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
@@ -109,6 +107,7 @@ BuildRequires:  gobject-introspection-devel
 BuildRequires:  gperf >= 3.0.1
 BuildRequires:  hyphen-devel
 BuildRequires:  libjpeg-devel
+BuildRequires:  memory-constraints
 BuildRequires:  ninja
 BuildRequires:  openjpeg2
 BuildRequires:  openjpeg2-devel
@@ -446,24 +445,9 @@ sed -i 's|/gst-plugin-scanner|/gst-plugin-scanner-%{_target_cpu}|' ./Source/WebK
 
 %build
 # Here we must muzzle our dog so it doesn't eat all the memory
-%if 0%{?suse_version} >= 1600
-max_link_jobs="${RPM_BUILD_NCPUS:-1}"
-max_compile_jobs="${RPM_BUILD_NCPUS:-4}"
-%else
-max_link_jobs="%{?jobs}%{!?jobs:1}"
-max_compile_jobs="%{?jobs}%{!?jobs:4}"
-%endif
-echo "Available memory:"
-cat /proc/meminfo
-echo "System limits:"
-ulimit -a
-if test -n "$max_link_jobs" -a "$max_link_jobs" -gt 1 ; then
-        mem_per_process=2000000
-    max_mem=$(awk '/MemTotal/ { print $2 }' /proc/meminfo)
-    max_jobs="$(($max_mem / $mem_per_process))"
-    test "$max_link_jobs" -gt "$max_jobs" && max_link_jobs="$max_jobs" && echo "Warning: Reducing number of link jobs to $max_jobs because of memory limits"
-    test "$max_link_jobs" -le 0 && max_link_jobs=1 && echo "Warning: Not linking in parallel at all becuse of memory limits"
-fi
+%define _dwz_low_mem_die_limit 40000000
+%define _dwz_max_die_limit 250000000
+%limit_build -m 2500
 
 export PYTHON=%{_bindir}/python3
 # Use linker flags to reduce memory consumption
@@ -507,7 +491,7 @@ export PYTHON=%{_bindir}/python3
   -DUSE_FLITE=OFF \
   -DUSE_SPIEL=ON
 
-%ninja_build -j $max_link_jobs
+%ninja_build
 
 %install
 %ninja_install -C build

@@ -2030,4 +2030,12 @@ Add CVE refs (forwarded request 1306932 from mgorse)</comment>
 Add bug/CVE refs to changes (forwarded request 1319842 from mgorse)</comment>
     <requestid>1319888</requestid>
   </revision>
+  <revision rev="233" vrev="1">
+    <srcmd5>c64b460db051ef7a41cff417b4b3248a</srcmd5>
+    <version>2.50.3</version>
+    <time>1765191180</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1321408</requestid>
+  </revision>
 </revisionlist>

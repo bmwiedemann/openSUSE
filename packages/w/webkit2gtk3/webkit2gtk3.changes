@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Dec  4 21:41:39 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.50.3 (bsc#1254473 bsc#1254498 bsc#1254509):
+  + Fix seeking and looping of media elements that set the "loop"
+    property.
+  + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2025-13947, CVE-2025-43421, CVE-2025-43458,
+    CVE-2025-66287.
+- Drop webkit2gtk3-undefined-symbol.patch: fixed upstream.
+- Use %limit_build. Also define %dwz_low_mem_die_limit and
+  %dwz_max_die_limit, similar to what we have in wpewebkit.
+  This should simplify the logic for limiting jobs and will
+  hopefully help with intermittent build failures.
+
+-------------------------------------------------------------------
 Mon Nov 24 21:34:29 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Add webkit2gtk3-undefined-symbol.patch: fix a build failure.
@@ -8,7 +23,7 @@ Thu Nov 20 14:37:12 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.50.2 (bsc#1254165 bsc#1254166 bsc#1254167
   bsc#1254168 bsc#1254169 bsc#1254170 bsc#1254171 bsc#1254172
-  bsc#1254174 bsc#1254176 bsc#1254177 bsc#1254179):
+  bsc#1254174 bsc#1254176 bsc#1254177 bsc#1254179 bsc#1254208):
   + Prevent unsafe URI schemes from participating in media
     playback.
   + Make jsc_value_array_buffer_get_data() function introspectable.
@@ -26,7 +41,7 @@ Thu Nov 20 14:37:12 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
   + Fix several crashes and rendering issues.
   + Security fixes: CVE-2025-43392, CVE-2025-43425, CVE-2025-43427,
     CVE-2025-43429, CVE-2025-43430, CVE-2025-43431, CVE-2025-43432,
-    CVE-2025-43434, CVE-2025-43440, CVE-2025-43443
+    CVE-2025-43434, CVE-2025-43440, CVE-2025-43443, CVE-2025-13502.
 
 -------------------------------------------------------------------
 Fri Oct 10 17:46:18 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
