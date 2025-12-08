@@ -24,6 +24,8 @@ License:        GPL-3.0-or-later
 Group:          Development/Tools/Building
 URL:            https://gitlab.com/ubports/development/core/cmake-extras
 Source:         https://gitlab.com/ubports/development/core/cmake-extras/-/archive/%{version}/%{name}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE hillwood@opensuse.org fix-filename-and-path-of-qmlplugindump.patch
+Patch:          fix-filename-and-path-of-qmlplugindump.patch
 BuildRequires:  clang
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -62,9 +64,7 @@ A collection of add-ons for the CMake build tool.
 
 %prep
 %autosetup -p1
-sed -i 's/qmlplugindump_exe/qmlplugindump_exe-qt5/g' src/QmlPlugins/QmlPluginsConfig.cmake
 sed -i 's|/usr/bin/env python|/usr/bin/python3|g' src/IncludeChecker/include_checker.py
-sed -i '/find_program/s|qmlplugindump HINTS /usr/lib/qt${QT_VERSION_MAJOR}/bin|qmlplugindump-qt5 HINTS /usr/bin|g' src/QmlPlugins/QmlPluginsConfig.cmake
 # rm -rf src/CopyrightTest examples/copyrighttest-demo
 
 %build

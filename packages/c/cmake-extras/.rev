@@ -39,4 +39,13 @@
     <comment>- Fix filename and path of qmlplugindump-qt5 for openSUSE (forwarded request 1321265 from hillwood)</comment>
     <requestid>1321282</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>1d098f5e0770e3578129d12750f03e90</srcmd5>
+    <version>1.9</version>
+    <time>1765191242</time>
+    <user>anag_factory</user>
+    <comment>- Add fix-filename-and-path-of-qmlplugindump.patch, support both qmlplugindump-qt5
+  and qmlplugindump-qt6 (boo#1254531) (forwarded request 1321340 from hillwood)</comment>
+    <requestid>1321341</requestid>
+  </revision>
 </revisionlist>

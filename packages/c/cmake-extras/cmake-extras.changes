@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec  6 08:05:56 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add fix-filename-and-path-of-qmlplugindump.patch, support both qmlplugindump-qt5
+  and qmlplugindump-qt6 (boo#1254531)
+
+-------------------------------------------------------------------
 Fri Dec  5 12:51:31 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
 
 - Fix filename and path of qmlplugindump-qt5 for openSUSE

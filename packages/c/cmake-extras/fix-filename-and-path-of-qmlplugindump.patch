@@ -1,0 +1,24 @@
+diff -Nur cmake-extras-1.9/src/QmlPlugins/QmlPluginsConfig.cmake cmake-extras-1.9-new/src/QmlPlugins/QmlPluginsConfig.cmake
+--- cmake-extras-1.9/src/QmlPlugins/QmlPluginsConfig.cmake	2025-09-01 17:24:00.000000000 +0800
++++ cmake-extras-1.9-new/src/QmlPlugins/QmlPluginsConfig.cmake	2025-12-06 15:57:56.857255160 +0800
+@@ -7,10 +7,17 @@
+ endif()
+ 
+ if(NOT TARGET qmlplugindump)
+-    find_program(qmlplugindump_exe qmlplugindump HINTS /usr/lib/qt${QT_VERSION_MAJOR}/bin/)
+-
++    if (QT_VERSION_MAJOR GREATER_EQUAL 6)
++        find_program(qmlplugindump_exe qmlplugindump6 HINTS /usr/bin/)
++    else()
++        find_program(qmlplugindump_exe qmlplugindump-qt5 HINTS /usr/bin/)
++    endif()
+     if(NOT qmlplugindump_exe)
+-      message(FATAL_ERROR "Could not locate qmlplugindump.")
++        if (QT_VERSION_MAJOR GREATER_EQUAL 6)
++            message(FATAL_ERROR "Could not locate qmlplugindump6. Maybe qt6-declarative-tools is not be installed.")
++        else()
++            message(FATAL_ERROR "Could not locate qmlplugindump-qt5. Maybe libqt5-qtdeclarative-tools is not be installed.")
++        endif()
+     endif()
+ 
+     add_executable(qmlplugindump IMPORTED)
