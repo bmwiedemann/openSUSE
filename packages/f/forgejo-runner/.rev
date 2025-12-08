@@ -394,4 +394,41 @@
     <comment>- Fix version string in the runner binary and reenable %check (forwarded request 1317147 from darix)</comment>
     <requestid>1317403</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>6bf2b5b5a5d9c372622715f15f14b2ac</srcmd5>
+    <version>12.1.1</version>
+    <time>1765191300</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 12.1.1:
+  * feat: retry during docker container &amp; volume remove operations
+  * feat(jobparser): support ${{ needs... }} in runs-on as IncompleteRunsOn
+  * feat(jobparser): enhance incomplete_matrix with information about what job
+    &amp; output was accessed
+  * Fixing reference to act-runner
+- Update to version 12.1.0:
+  * feat: evaluate variables in strategy.matrix during job parsing
+  * feat(jobparser): support referencing ${{ needs... }} variables in strategy.matrix
+  * feat: run host child processes in groups
+  * feat: add support for --platform in container options
+  * fix: forge.run_attempt is always 1
+  * Add example that demonstrates on demand runners
+- Update to version 12.0.1:
+  * fix: 'failed to read action' errors when using relative workdir_parent
+- Update to version 12.0.0:
+  * hard dependency on `git` for running forgejo-runner
+  * feat: add config values to override task finalization retry
+  * feat: skip fetching remote action repo when using full sha already fetched
+  * feat: use git work trees for remote git actions &amp; workflows
+  * fix: improve logging on final log &amp; status transmission and retries
+  * fix: initialize workflow-level env context before starting job container
+  * fix: allow 'env' context in jobs..if
+  * fix: remote reusable workflows by relative URL use default_actions_url
+  * fix: Use git reset --hard instead of pull and checkout for actions
+  * fix: run images with explicit platform tags, fixes pulled image architecture mismatch
+  * fix: improve logging &amp; display of errors during workflow evaluation
+  * fix: ensure http.Client always has a timeout for Forgejo access
+  * fix: pass os argument to lxc-helpers.sh helper frm forgejo-runner-service.sh
+  * chore: remove unused and incomplete ActionCache rewrite (forwarded request 1321387 from rrahl0)</comment>
+    <requestid>1321388</requestid>
+  </revision>
 </revisionlist>
