@@ -297,4 +297,32 @@
     <comment></comment>
     <requestid>1304564</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>29d8c9c3a0e12860fd1b269cb7c3fdd3</srcmd5>
+    <version>9.0</version>
+    <time>1765191357</time>
+    <user>anag_factory</user>
+    <comment>- Update to 9.0.
+  * Racket supports parallel threads. For more information see the new
+    blog post on the topic.
+  * Parallel threads can be created using the #:pool argument to
+    thread creation.
+  * Threads created with #:keep set to 'results will record their
+    results for later retrieval with thread-wait.
+  * The black-box wrapper prevents the optimizing compiler from
+    optimizing away certain computations entirely. This can be helpful
+    in ensuring that benchmarks are accurate.
+  * The decompile-linklet function can map linklets back to
+    s-expressions.
+  * When using BC Racket, the processor-count function is changed to
+    always return the parallel count.
+  * We now distribute &quot;natipkg&quot; packages for AArch64, useful for
+    package-build and package-testing infrastructure.
+  * Check Syntax tracks identifiers more deeply nested in the &quot;origin&quot;
+    field of syntax objects.
+  * The math library includes Weibull distributions.
+  * There are many other repairs and documentation improvements!
+</comment>
+    <requestid>1321446</requestid>
+  </revision>
 </revisionlist>
