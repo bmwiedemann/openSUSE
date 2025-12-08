@@ -20,17 +20,17 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 64596902d2db6f99eabdfea7b18c36125e343bb1
+%define git_version 68517135613717f550f8eb8170656d98a9929ab3
 
 Name:           kernel-firmware-ath11k
-Version:        20250829
+Version:        20251202
 Release:        0
 Summary:        Kernel firmware files for Atheros Qualcomm WiFi drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250805.tar.gz#/kernel-firmware-tools-20250805.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20251118.tar.gz#/kernel-firmware-tools-20251118.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases

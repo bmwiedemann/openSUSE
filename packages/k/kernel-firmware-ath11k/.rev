@@ -71,4 +71,14 @@ After this PR, there will be a delete request for kernel-firmware.
   * ath11k: Support WCN6855 hw2.1 with NFA firmware variant</comment>
     <requestid>1302678</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>df4187d3ca69ff658454c58c6b2e17d3</srcmd5>
+    <version>20251202</version>
+    <time>1765191166</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251202 (git commit 685171356137):
+  * ath11k: QCA6698AQ hw2.1: update to WLAN.HSP.1.1-04866-QCAHSPSWPL_V1_V2_SILICONZ_IOE-1
+  * ath11k: QCA2066 hw2.1: update board-2.bin</comment>
+    <requestid>1321333</requestid>
+  </revision>
 </revisionlist>
