@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec  5 21:09:27 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1.6
+  * Complete lightweight tunnel template support, including vxlan,
+    geneve and erspan.
+  * Support for wildcards in netdev hooks.
+  * Support to pass up bridge frame to the bridge device for local
+    processing.
+
+-------------------------------------------------------------------
 Wed Aug 27 23:31:54 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.1.5
