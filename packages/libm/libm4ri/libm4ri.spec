@@ -1,7 +1,7 @@
 #
 # spec file for package libm4ri
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libm4ri
-Version:        20250128
+Version:        20251207
 %define lname	libm4ri1
 Release:        0
 Summary:        Library for linear arithmetic over GF(2)
