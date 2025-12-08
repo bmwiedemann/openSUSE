@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec  5 07:47:55 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.18
+  * tc: add dualpi2 scheduler module
+  * iplink: bond_slave: add support for actor_port_prio
+  * ip: iplink_bridge: Support fdb_local_vlan_0
+  * ip/bond: add broadcast_neighbor support
+  * netshaper: Add netshaper command
+
+-------------------------------------------------------------------
 Sat Oct 11 12:22:08 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 6.17

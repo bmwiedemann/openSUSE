@@ -17,7 +17,7 @@
 
 
 Name:           iproute2
-Version:        6.17
+Version:        6.18
 Release:        0
 Summary:        Linux network configuration utilities
 License:        GPL-2.0-only
