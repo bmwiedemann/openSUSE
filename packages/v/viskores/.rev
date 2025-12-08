@@ -9,4 +9,12 @@
 While by itself is a great addition, Viskores is an important dependency of VTK and ParaView that superpower its data filters making them multithreaded with different backends including CPU and GPU.</comment>
     <requestid>1313088</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ebd2ab12bba1a3da423b3643f6a34088</srcmd5>
+    <version>1.1.0</version>
+    <time>1765191250</time>
+    <user>anag_factory</user>
+    <comment>This SR brings the latest release of Viskores 1.1.0.</comment>
+    <requestid>1321324</requestid>
+  </revision>
 </revisionlist>

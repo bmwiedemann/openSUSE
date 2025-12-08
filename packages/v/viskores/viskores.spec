@@ -18,7 +18,7 @@
 
 %define flavor @BUILD_FLAVOR@%{nil}
 %define major_ver 1
-%define minor_ver 0
+%define minor_ver 1
 %define patch_ver 0
 %define short_ver %{major_ver}.%{minor_ver}
 
@@ -57,12 +57,6 @@ License:        BSD-3-Clause
 Group:          Productivity/Scientific/Other
 URL:            https://github.com/Viskores/viskores
 Source0:        https://github.com/Viskores/viskores/archive/refs/tags/v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/Viskores/viskores/pull/129
-Patch0:         viskores-add-stdint.h-to-itlib.patch
-# PATCH-FIX-UPSTREAM https://github.com/Viskores/viskores/pull/189
-Patch1:         viskores-pkgconfig-correct-installation-path.patch
-# PATCH-FIX-UPSTREAM https://github.com/Viskores/viskores/pull/189
-Patch2:         viskores-ViskoresConfig.cmake-parametrize-libdir-component-in.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

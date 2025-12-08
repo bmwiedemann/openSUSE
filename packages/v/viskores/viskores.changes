@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Dec 05 00:00:00 UTC 2025  - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com> - 1.1.0-0
+
+- Added Viskores 1.1.0:
+  * Core
+    - Support TypeTraits for reference types
+    - Enable more types for Clamp function
+    - Update to C++17
+    - Added CountAllCells and FindAllCells to Cell Locators
+    - Fixed memory_order constants for C++20
+  * Arrays
+    - Added ArrayHandleSOAStride
+    - Added template constructor to MaskSelect
+    - Extract Arrays to ArrayHandleSOAStride
+  * Bug Fixes
+    - Fixed MapperVolume blending
+    - Fixed Clip cellOffset increment
+    - Fixed CI Warnings
+  * Build
+    - Improve compilation of flow filters
+    - pkg-config files now install to libdir/pkgconfig
+  * Release notes: https://github.com/Viskores/viskores/releases/tag/v1.1.0
+
+- Dropped patches:
+  * viskores-add-stdint.h-to-itlib.patch
+  * viskores-pkgconfig-correct-installation-path.patch
+  * viskores-ViskoresConfig.cmake-parametrize-libdir-component-in.patch
+
+-------------------------------------------------------------------
 Thu Oct 16 00:00:00 UTC 2025  - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com> - 1.0.0-0
 
 - Initial release of Viskores 1.0.0.
