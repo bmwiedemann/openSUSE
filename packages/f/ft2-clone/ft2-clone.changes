@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec  5 13:31:37 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.01
+  * Reverted interpolation LUT size (phases) and calculation to
+    that of v1.99
+
+-------------------------------------------------------------------
 Sat Nov 22 08:20:05 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.00
