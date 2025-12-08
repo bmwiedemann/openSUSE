@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Dec  5 12:35:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.178:
+  no CLI-related changes
+- update to 0.8.177:
+  * General
+    - Bump github.com/sirupsen/logrus from 1.8.1 to 1.8.3 in
+      /install/docker-extension @dependabot (#16580)
+    - Bump express from 4.21.2 to 4.22.1 in
+      /install/docker-extension/ui @dependabot (#16541)
+    - chore: remove leftover debug print statements in patterns
+      @parthivsaikia (#16551)
+    - Chore: upgrade MeshKit v0.8.53 @leecalcote (#16535)
+  * Meshery CLI
+    - E2E tests for registry generate @Darshan174 (#15618)
+  * Maintenance
+    - Add ritzorama.md for auto-merge test @ritzorama (#16578)
+    - [Docs] Set up Copilot instructions @copilot-swe-agent
+      (#16538)
+    - Bump @babel/preset-react from 7.27.1 to 7.28.5 in
+      /provider-ui @dependabot (#16531)
+    - Bump next from 15.5.2 to 15.5.7 in /provider-ui @dependabot
+      (#16547)
+    - Upgrade GitHub script action and change merge method
+      @ritzorama (#16579)
+    - Add workflow to auto-approve Copilot SWE agent PRs
+      @copilot-swe-agent (#16571)
+    - Update workflow to use docs/_meetings/ directory @ritzorama
+      (#16575)
+    - Update path for meeting minutes in workflow @pontusringblom
+      (#16574)
+    - Update GitHub Actions workflow for auto-merging @leecalcote
+      (#16573)
+    - [CI] Add workflow to auto-merge meeting minutes PRs
+      @copilot-swe-agent (#16569)
+    - E2E tests for registry generate @Darshan174 (#15618)
+    - Updated Figma link @Rajesh-Nagarajan-11 (#16540)
+    - Update checkout action version to v6 @hortison (#16507)
+
+-------------------------------------------------------------------
 Thu Nov 27 06:05:20 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.176:
