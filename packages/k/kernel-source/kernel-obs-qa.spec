@@ -25,7 +25,7 @@
 Name:           kernel-obs-qa
 Version:        6.18.0
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g6ce3f15
+Release:        <RELEASE>.g371bdaf
 %else
 Release:        0
 %endif
@@ -36,7 +36,7 @@ BuildRequires:  kernel-default
 # kernel-obs-build must be also configured as VMinstall, but is required
 # here as well to avoid that qa and build package build parallel
 %if ! 0%{?qemu_user_space_build}
-BuildRequires:  kernel-obs-build-srchash-6ce3f150389ee2831c4c0047296d6b64fc9054da
+BuildRequires:  kernel-obs-build-srchash-371bdaf6331fcbaa19c6f7c0aa6f3af5a36f7e2b
 %endif
 BuildRequires:  modutils
 ExclusiveArch:  aarch64 armv6hl armv7hl ppc64le riscv64 s390x x86_64

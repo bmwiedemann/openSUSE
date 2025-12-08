@@ -18,7 +18,7 @@
 
 %define srcversion 6.18
 %define patchversion 6.18.0
-%define git_commit 6ce3f150389ee2831c4c0047296d6b64fc9054da
+%define git_commit 371bdaf6331fcbaa19c6f7c0aa6f3af5a36f7e2b
 %define variant %{nil}
 %define build_html 1
 %define build_pdf 0
@@ -30,7 +30,7 @@
 Name:           kernel-docs
 Version:        6.18.0
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g6ce3f15
+Release:        <RELEASE>.g371bdaf
 %else
 Release:        0
 %endif
