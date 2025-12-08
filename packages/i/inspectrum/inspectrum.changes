@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec  6 15:55:46 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.4.0
+  * Add support for Qt6.
+  * CMake minimum version changed from 3.1 to 3.5.
+  * Add support for SigMF datasets (#236).
+  * Fix crash when opening small files (#238).
+
+-------------------------------------------------------------------
 Mon Oct 30 22:03:17 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.3.1
