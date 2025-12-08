@@ -48,4 +48,15 @@ After this PR, there will be a delete request for kernel-firmware.
   instructing zypp about the usrmerge is perfect for this use case.</comment>
     <requestid>1272714</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c09b97bcef5cdefd15a9576257ebf14f</srcmd5>
+    <version>20251205</version>
+    <time>1765191165</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251205 (git commit 536cc58d9db1):
+  * ath10k: WCN3990 hw1.0: update board-2.bin
+  * ath10k: QCA9888 hw2.0: update board-2.bin
+  * ath10k: QCA4019 hw1.0: update board-2.bin</comment>
+    <requestid>1321332</requestid>
+  </revision>
 </revisionlist>

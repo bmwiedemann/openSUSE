@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Dec  6 07:55:29 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251205 (git commit 536cc58d9db1):
+  * ath10k: WCN3990 hw1.0: update board-2.bin
+  * ath10k: QCA9888 hw2.0: update board-2.bin
+  * ath10k: QCA4019 hw1.0: update board-2.bin
+
+-------------------------------------------------------------------
 Fri Apr 25 13:52:22 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Change conflicts filesystem < 84 to conflicts filesystem without
@@ -5242,7 +5250,6 @@ Wed Nov 24 20:02:38 UTC 2010 - coolo@novell.com
 - update to 20101113 tarball for 2.6.36+ kernel
 
 -------------------------------------------------------------------
-
 Thu Jul  1 17:11:34 UTC 2010 - gregkh@suse.de
 
 - update to the 20100617 tarball, which has lots of updates that
