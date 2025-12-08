@@ -1,7 +1,7 @@
 #
 # spec file for package halloy
 #
-# Copyright (c) 2025 mantarimay
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,11 +14,21 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+# Copyright (c) 2025 mantarimay
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
 
 
 %define appid   org.squidowl.halloy
 Name:           halloy
-Version:        2025.11
+Version:        2025.12
 Release:        0
 Summary:        IRC application written in Rust
 License:        GPL-3.0-or-later
@@ -56,7 +66,7 @@ cp -r assets/linux/icons %{buildroot}%{_datadir}
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
 appstream-util validate-relax --nonet \
-      %{buildroot}%{_datadir}/metainfo/%{appid}.appdata.xml 
+      %{buildroot}%{_datadir}/metainfo/%{appid}.appdata.xml
 
 %files
 %license LICEN*
