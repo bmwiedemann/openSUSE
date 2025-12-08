@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Dec 07 01:23:40 UTC 2025 - gerald_chen@foxmail.com
+
+- Update to version 16.6.1:
+  * chore: release v16.6.1 (#1575)
+  * fix(uv): update silenced error messages (#1593)
+  * fix(archlinux): don't overwrite PATH (#1586)
+  * chore(deps): update actions/checkout action to v6.0.1 (#1583)
+  * chore(deps): update actions/checkout digest to 8e8c483 (#1582)
+  * chore(deps): update dawidd6/action-homebrew-bump-formula action to v7 (#1585)
+  * chore(deps): update github/codeql-action action to v4.31.6 (#1578)
+  * chore(deps): lock file maintenance (#1577)
+  * fix(git): skip repos with remotes without configured urls (#1573)
+  * fix: use measure_text_width instead of byte count for header border calculation (#1576)
+  * chore(deps): update mac-notification-sys (#1574)
+
+-------------------------------------------------------------------
 Tue Dec 02 15:20:18 UTC 2025 - gerald_chen@foxmail.com
 
 - Update to version 16.6.0:
