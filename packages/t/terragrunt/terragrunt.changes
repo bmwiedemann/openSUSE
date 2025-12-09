@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Dec 09 06:33:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.94.0:
+  * Features
+    - Terraform 1.14: We are now testing Terragrunt against
+      Terraform 1.14 and is confirmed to be working.
+      NOTE: Although this release is marked as backward
+      incompatible, it is functionally compatible as nothing has
+      been changed in Terragrunt internals. The minor version
+      release is useful to mark the change in Terraform version
+      that is being tested.
+  * What's Changed
+    - chore: add support for Terraform 1.14 (#5180)
+    - feat: Usage of common for discovery and runnerpool (#5100)
+
+-------------------------------------------------------------------
+Mon Dec 08 08:15:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.93.13:
+  * Bug Fixes
+    - Catalog module source URL construction
+      Fixed malformed version-pinned catalog module URLs where
+      TerraformSourcePath() incorrectly placed //moduleDir after
+      ?ref=, ensuring correct root and submodule URL formatting.
+  * What's Changed
+    - fix(catalog): construct valid module source URLs for
+      version-pinned modules #5173 (#5174)
+    - Adding 2 addt'l ambassadors (#5164)
+
+-------------------------------------------------------------------
 Fri Dec 05 06:12:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.93.12:
