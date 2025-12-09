@@ -1,7 +1,7 @@
 #
 # spec file for package sensors
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,7 +44,10 @@ BuildRequires:  flex
 BuildRequires:  perl-Test-Cmd
 BuildRequires:  rrdtool-devel
 BuildRequires:  systemd-rpm-macros
+# qemu does not support PR_SET_PTRACER
+%if !0%{?qemu_user_space_build}
 BuildRequires:  valgrind
+%endif
 Requires:       modutils
 %{?systemd_requires}
 
@@ -117,9 +120,6 @@ make %{?_smp_mflags} PROG_EXTRA:=sensord BUILD_STATIC_LIB:=0 PREFIX=%{_prefix} M
     chmod 0755 %{buildroot}/%{_libdir}/libsensors.so.*
     mkdir -p				%{buildroot}/%{_unitdir} %{buildroot}/%{_fillupdir}
     cp -a prog/init/*.service 		%{buildroot}/%{_unitdir}/
-    ln -sf service			%{buildroot}%{_sbindir}/rclm_sensors
-    ln -sf service			%{buildroot}%{_sbindir}/rcfancontrol
-    ln -sf service			%{buildroot}%{_sbindir}/rcsensord
     cp -a %{SOURCE1}			%{buildroot}/%{_fillupdir}
 
 %check
@@ -177,9 +177,7 @@ fi
 
 %files
 %{_unitdir}/lm_sensors.service
-%{_sbindir}/rclm_sensors
 %{_unitdir}/fancontrol.service
-%{_sbindir}/rcfancontrol
 %{_bindir}/*
 %{_sbindir}/fancontrol
 %ifarch i386 i486 i586 i686 x86_64
@@ -209,7 +207,6 @@ fi
 
 %files -n sensord
 %{_unitdir}/sensord.service
-%{_sbindir}/rcsensord
 %{_fillupdir}/sysconfig.sensord
 %{_sbindir}/sensord
 %dir %{_docdir}/sensord

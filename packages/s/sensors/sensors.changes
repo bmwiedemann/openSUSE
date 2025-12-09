@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct  2 12:52:41 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Don't use valgrind in qemu emulation
+
+-------------------------------------------------------------------
+Mon Sep 29 12:08:45 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop rcFOO symlinks [jsc#PED-266]
+
+-------------------------------------------------------------------
 Mon Aug 12 15:38:13 UTC 2024 - Martin Jambor <mjambor@suse.com>
 
 - Drop lm_sensors-revert-6b5a19b708.patch because the previously
@@ -1229,5 +1239,3 @@ Tue Feb  1 20:40:40 CET 2000 - werner@suse.de
 	- Be reentrant
 	- Use RPM_OPT_FLAGS
 	- Install docs of busses, chips and the FAQ
-
--------------------------------------------------------------------
