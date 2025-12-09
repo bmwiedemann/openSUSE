@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec  8 04:29:16 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Only require pytest-subtests with pytest < 9.
+
+-------------------------------------------------------------------
 Tue Oct 14 04:44:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.37.0:

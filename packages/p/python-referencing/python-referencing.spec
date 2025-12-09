@@ -55,7 +55,7 @@ BuildRequires:  %{python_module pytest >= 8.3.3}
 BuildRequires:  %{python_module jsonschema-specifications}
 BuildRequires:  %{python_module jsonschema}
 BuildRequires:  %{python_module packaging >= 24.2}
-BuildRequires:  %{python_module pytest-subtests >= 0.14.1}
+BuildRequires:  %{python_module pytest-subtests >= 0.14.1 if %python-pytest < 9}
 # /SECTION
 %endif
 BuildRequires:  fdupes

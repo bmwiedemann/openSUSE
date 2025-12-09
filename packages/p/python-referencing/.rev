@@ -217,4 +217,12 @@ update to 0.33.0</comment>
     <comment></comment>
     <requestid>1311309</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>f186d0ca5345459c104455c46287bc90</srcmd5>
+    <version>0.37.0</version>
+    <time>1765280793</time>
+    <user>anag_factory</user>
+    <comment>- Only require pytest-subtests with pytest &lt; 9.</comment>
+    <requestid>1321491</requestid>
+  </revision>
 </revisionlist>
