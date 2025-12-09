@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec  4 22:41:58 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.12
+  * xfrm: Add support for xfrm interface ID
+  * Change vlan module to set QOS mapping flag
+  * ip6_tnl: Add API to mark tunnels to "collect metadata"
+  * encap: Add support for an IPv6/IPv4/ILA nexthop
+    encapsulation
+
+-------------------------------------------------------------------
 Wed Oct 30 13:09:18 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.11
