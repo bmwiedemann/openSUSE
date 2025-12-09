@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 08 08:06:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.38.25:
+  * build(deps): bump octo-sts/action from 1.0.3 to 1.1.1 (#1814)
+
+-------------------------------------------------------------------
 Wed Dec 03 10:21:26 UTC 2025 - Thomas Bechtold <thomasbechtold@jpberlin.de>
 
 - Update to version 0.38.24:
