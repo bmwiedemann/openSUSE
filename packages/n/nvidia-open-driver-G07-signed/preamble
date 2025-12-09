@@ -1,0 +1,28 @@
+Requires: perl-Bootloader
+Conflicts: nvidia-gfxG06-kmp nvidia-driver-G06-kmp nvidia-gfxG05-kmp
+Requires: group(video)
+Provides: nvidia-open-driver-G07 = %{-v*}
+%if %{with cuda}
+Provides: nvidia-open-driver-G07-signed-cuda-kmp-%1 = %{-v*}
+# Provide plain version to simplify installation
+Provides: nvidia-open-driver-G07-signed-kmp = %{-v*}
+Provides: nvidia-open-driver-G07-signed-kmp-%1 = %{-v*}
+%if 0%{?suse_version} < 1600 && 0%{?sle_version} < 150600 && !0%{?is_opensuse}
+Requires: nvidia-modprobe = %{-v*}
+Requires: nvidia-persistenced = %{-v*}
+Requires: nvidia-modprobe-cuda-lt-sp6
+Requires: nvidia-persistenced-cuda-lt-sp6
+%endif
+%endif
+Requires: (nvidia-common-G07 = %{-v*} if nvidia-compute-utils-G07 = %{-v*})
+Provides: nvidia-open-signed-kmp = %{-v*}
+Provides:  nvidia-open-signed-kmp(%mykind)
+Conflicts: nvidia-open-signed-kmp(%otherkind)
+
+Obsoletes: nvidia-open-driver-G07 = %{-v*}
+
+Obsoletes: nvidia-open-driver-G06 < 590.44.01
+Obsoletes: nvidia-open-driver-G06-signed-kmp < 590.44.01
+Obsoletes: nvidia-open-driver-G06-signed-kmp-%1 < 590.44.01
+Obsoletes: nvidia-open-signed-kmp < 590.44.01
+

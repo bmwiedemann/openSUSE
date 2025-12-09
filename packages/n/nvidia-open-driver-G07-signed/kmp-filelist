@@ -1,0 +1,6 @@
+%defattr (-,root,root)
+%dir %{kernel_module_directory}/%2-%1
+%dir %{kernel_module_directory}/%2-%1/updates
+# back to updates/ subdir (jsc#PED-12049)
+%{kernel_module_directory}/%2-%1/updates/nvidia*.ko
+
