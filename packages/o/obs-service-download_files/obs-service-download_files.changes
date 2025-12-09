@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec  2 14:26:01 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- PKGBUILD improvements and fixes:
+  * Bump pkgver to 0.9.2
+  * Update dependencies to match RPM package
+  * Add backup array with the config file so that it doesn't get
+    replaced on update, matching the behavior of the RPM package
+  * Add check() and checkdepends
+  * Use make install instead of installing manually
+
+-------------------------------------------------------------------
 Mon Dec  5 07:22:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.2:
