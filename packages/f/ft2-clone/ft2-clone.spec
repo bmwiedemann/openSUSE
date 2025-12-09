@@ -17,7 +17,7 @@
 
 
 Name:           ft2-clone
-Version:        2.01
+Version:        2.02
 Release:        0
 Summary:        Fasttracker II clone
 License:        BSD-3-Clause AND CC-BY-NC-SA-4.0

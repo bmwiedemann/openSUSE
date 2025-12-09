@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Dec  7 08:50:06 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.02
+  * Added a "Render individual tracks" option to the WAV renderer.
+    This renders every channel into individual WAV files.
+  * Removed the "Imprecise BPM (FT2)" option from the WAV renderer.
+    It was a very niche feature anyway, and I had to free up some
+    room in the GUI for the new individual track feature.
+
+-------------------------------------------------------------------
 Fri Dec  5 13:31:37 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.01
