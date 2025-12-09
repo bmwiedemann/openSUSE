@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Dec 08 16:26:08 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- Update to version 2.56.0:
+  * Doc: updates changelog
+  * FFstrbuf: removes an unnecessary `return`
+  * Zpool: fixes inconsistant CMake variables
+  * Logo (Builtin): tidy
+  * Doc: documents `-c -`
+  * Fastfetch: enhances config file loading with support for config directory
+  * Release: v2.56.0
+  * CI (SunOS): fixes a CI error
+  * CPU: exposes numa node count in custom format
+
+-------------------------------------------------------------------
 Mon Nov 17 15:26:23 UTC 2025 - RN <R_Nik_C@proton.me>
 
 - Update to version 2.55.1:
