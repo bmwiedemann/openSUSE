@@ -17,7 +17,7 @@
 
 
 Name:           polaris
-Version:        10.1.2
+Version:        10.1.3
 Release:        0
 Summary:        Validation of best practices in your Kubernetes clusters
 License:        Apache-2.0
@@ -26,8 +26,8 @@ Source:         polaris-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
+BuildRequires:  go1.25 >= 1.25.5
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.25
 
 %description
 Best Practices for Kubernetes Workload Configuration
