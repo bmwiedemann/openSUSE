@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Dec  8 08:45:18 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.9.16 
+ * Enhancements
+  * Add a 5m default timeout to acquiring file locks to fail faster on deadlock 
+  * Add a stub debug subcommand to uv pip announcing its intentional absence 
+  * Add bounds in uv add --script 
+  * Add brew specific message for uv self update 
+  * Error when built wheel is for the wrong platform 
+  * Filter wheels from PEP 751 files based on --no-binary et al in uv pip compile 
+  * Support --target and --prefix in uv pip list, uv pip freeze, and uv pip show 
+  * Tweak language for build backend validation errors 
+  * Use explicit credentials cache instead of global static 
+  * Enable SIMD in HTML parsing 
+ * Preview features
+  * Fix missing preview warning in uv workspace metadata 
+  * Add a uv auth helper --protocol bazel command 
+ * Bug fixes
+  * Fix Pyston wheel compatibility tags 
+  * Allow redundant entries in tool.uv.build-backend.module-name but emit warnings 
+  * Fix infinite loop in non-attribute re-treats during HTML parsing 
+ * Documentation
+  * Clarify --project flag help text to indicate project discovery 
+  * Regenerate the crates.io READMEs on release 
+  * Update Docker integration guide to prefer COPY over ADD for simple cases 
+  * Update PyTorch documentation to include information about supporting CUDA 13.0.x 
+  * Update the versioning policy 
+  * Upgrade PyTorch documentation to latest versions 
+
+-------------------------------------------------------------------
 Wed Dec  3 15:49:50 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.9.15 
