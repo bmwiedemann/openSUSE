@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 22 21:21:53 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove unused BuildRequires: update-desktop-files.
+
+-------------------------------------------------------------------
 Tue Aug 19 20:05:37 UTC 2025 - Christoph G <foss@grueninger.de>
 
 - Drop build requirement mhash-devel, no longer needed.

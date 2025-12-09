@@ -1,7 +1,7 @@
 #
 # spec file for package nemo-extensions
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -40,7 +40,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-distutils-extra
 BuildRequires:  python3-docutils
 BuildRequires:  python3-setuptools
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cinnamon-desktop)
 BuildRequires:  pkgconfig(cjs-1.0)
 BuildRequires:  pkgconfig(clutter-gst-3.0)
