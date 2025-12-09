@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.google.protobuf</groupId>
     <artifactId>protobuf-parent</artifactId>
-    <version>4.33.1</version>
+    <version>4.33.2</version>
   </parent>
 
-  <artifactId>protobuf-java</artifactId>
+  <artifactId>protobuf-javalite</artifactId>
   <packaging>jar</packaging>
 
-  <name>Protocol Buffers [Core]</name>
+  <name>Protocol Buffers [Lite]</name>
   <description>
-    Core Protocol Buffers library. Protocol Buffers are a way of encoding structured data in an
-    efficient yet extensible format.
+    Lite version of Protocol Buffers library. This version is optimized for code size, but does
+    not guarantee API/ABI stability.
   </description>
   <dependencies>
     
