@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Dec  7 12:42:29 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.16.0
+  Changes
+  * Update gojq fork.
+  * Documentation fixes.
+  Format changes
+  * avc_nal Decode slice header frame number and picture order.
+  * flac_frame Add option to decode sample and residuals details.
+  * matroska Update to latest spec.
+  * mpeg_asc Decode SBR and PS hierarchical signalling.
+  * mp4 Decode elng box.
+  * safetensors Add decoder.
+
+-------------------------------------------------------------------
 Sat Sep 13 06:53:26 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.15.1:

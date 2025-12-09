@@ -136,4 +136,22 @@ https://hackweek.opensuse.org/21/projects/add-mbr-binary-format-support-to-the-f
   * Minor release to maninly fix golang sum database hash issue. (forwarded request 1304496 from mnhauke)</comment>
     <requestid>1304635</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a08e3cc35ba59a7b191e17520b30bce3</srcmd5>
+    <version>0.16.0</version>
+    <time>1765281150</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.16.0
+  Changes
+  * Update gojq fork.
+  * Documentation fixes.
+  Format changes
+  * avc_nal Decode slice header frame number and picture order.
+  * flac_frame Add option to decode sample and residuals details.
+  * matroska Update to latest spec.
+  * mpeg_asc Decode SBR and PS hierarchical signalling.
+  * mp4 Decode elng box.
+  * safetensors Add decoder. (forwarded request 1321435 from mnhauke)</comment>
+    <requestid>1321627</requestid>
+  </revision>
 </revisionlist>
