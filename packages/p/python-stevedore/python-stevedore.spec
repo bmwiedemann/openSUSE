@@ -1,7 +1,7 @@
 #
 # spec file for package python-stevedore
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-stevedore
-Version:        5.5.0
+Version:        5.6.0
 Release:        0
 Summary:        Manage dynamic plugins for Python applications
 License:        Apache-2.0
@@ -39,7 +39,7 @@ Requires:       python-importlib-metadata
 Requires:       python-pbr
 %if "%{?python_provides}" == "python3"
 Provides:       python3-stevedore = %{version}
-Obsoletes:      python3-stevedore <= %{version}
+Obsoletes:      python3-stevedore < 5.6.0
 %endif
 BuildArch:      noarch
 %python_subpackages
@@ -57,6 +57,8 @@ dynamically loaded extensions.
 
 %prep
 %autosetup -p1 -n stevedore-%{version}
+# Remove empty file stevedore/tests/extension_unimportable.py
+rm stevedore/tests/extension_unimportable.py
 
 %build
 %pyproject_wheel

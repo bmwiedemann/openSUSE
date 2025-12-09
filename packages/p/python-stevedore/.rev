@@ -543,4 +543,41 @@
     python version supported is 3.10.</comment>
     <requestid>1316674</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>39c3820ec3d395bda67f6468e5320640</srcmd5>
+    <version>5.6.0</version>
+    <time>1765281002</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.6.0
+  * Deprecate warn_on_missing_entrypoint parameter
+  * Add py.typed file
+  * Unskip test
+  * Add conflict resolution support
+  * Make better use of super
+  * typing: Remove use of _init_attributes (2/2)
+  * typing: Remove use of _init_attributes (1/2)
+  * typing: Remove unnecessary method subclass
+  * docs: Update to use pyproject.toml
+  * tests: Trivial fixups
+  * Remove unnecessary type docstring field lists
+  * typing: Add hints to tests
+  * typing: Make better use of ParamSpec
+  * typing: Add initial type hints
+  * Deprecate verify_requirements flag
+  * Remove use of mutable default param
+  * trivial: Remove references to importlib_metadata
+  * Enable ruff, ruff-format
+  * Apply ruff, ruff-format
+  * docs: Remove cruft from configuration files
+  * pre-commit: Bump versions
+  * reno: Update master for unmaintained/2024.1
+  * Bump pyupgrade target to 3.10+
+  * Migrate bandit options to pyproject.toml
+  * pre-commit: Bump dependencies
+  * Migrate setup configuration to pyproject.toml
+  * Drop Python 3.9 support
+  * Update master for stable/2025.2
+- Remove empty file stevedore/tests/extension_unimportable.py</comment>
+    <requestid>1321563</requestid>
+  </revision>
 </revisionlist>
