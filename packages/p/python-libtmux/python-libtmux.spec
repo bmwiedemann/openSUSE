@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-libtmux
-Version:        0.47.0
+Version:        0.52.1
 Release:        0
 Summary:        Python API / wrapper for tmux
 License:        MIT
@@ -36,7 +36,7 @@ BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module typing-extensions}
 # we do not need pytest-watcher for building on OBS
-BuildRequires:  tmux
+BuildRequires:  tmux >= 3.2
 # /SECTION
 BuildArch:      noarch
 %python_subpackages

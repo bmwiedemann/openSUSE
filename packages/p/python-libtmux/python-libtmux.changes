@@ -1,4 +1,245 @@
 -------------------------------------------------------------------
+Tue Dec  9 06:58:49 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.52.1:
+  * Development
+    - ci(release): Migrate to PyPI Trusted Publisher by @tony in #615
+- update to 0.52.0:
+  * capture_pane() enhancements
+    - The Pane.capture_pane() method now supports 5 new parameters
+      exposing additional tmux capture-pane flags:
+
+    Parameter             tmux Flag Description
+    escape_sequences      -e        Include ANSI escape sequences (colors, attributes)
+    escape_non_printable  -C        Escape non-printable chars as octal \xxx
+    join_wrapped          -J        Join wrapped lines back together
+    preserve_trailing     -N        Preserve trailing spaces at line ends
+    trim_trailing         -T        Trim trailing empty positions (tmux 3.4+)
+
+    Examples
+
+      Capturing colored output:
+
+        # Capture with ANSI escape sequences preserved
+        pane.send_keys('printf "\\033[31mRED\\033[0m"', enter=True)
+        output = pane.capture_pane(escape_sequences=True)
+        # Output contains: '\x1b[31mRED\x1b[0m'
+
+      Joining wrapped lines:
+
+        # Long lines that wrap are joined back together
+        output = pane.capture_pane(join_wrapped=True)
+
+      - Version compatibility
+        The trim_trailing parameter requires tmux 3.4+. If used
+        with an older version, a warning is issued and the flag is
+        ignored. All other parameters work with libtmux's minimum
+        supported version (tmux 3.2a).
+  * What's Changed
+    - Capture pane updates by @tony in #614
+- update to 0.51.0:
+  * Breaking Changes
+    - Deprecate legacy APIs
+      Legacy API methods (deprecated in v0.16–v0.33) now raise
+      DeprecatedError (hard error) instead of emitting
+      DeprecationWarning.
+      See the migration guide for full context and examples.
+      - Deprecate legacy APIs (raise DeprecatedError) by @tony in
+        #611
+
+    Method Renamings
+
+    Deprecated        Replacement   Class   Deprecated Since
+    kill_server()     kill()        Server  0.30.0
+    attach_session()  attach()      Session 0.30.0
+    kill_session()    kill()        Session 0.30.0
+    select_window()   select()      Window  0.30.0
+    kill_window()     kill()        Window  0.30.0
+    split_window()    split()       Window  0.33.0
+    select_pane()     select()      Pane    0.30.0
+    resize_pane()     resize()      Pane    0.28.0
+    split_window()    split()       Pane    0.33.0
+
+    Property Renamings
+
+    Deprecated        Replacement   Class   Deprecated Since
+    attached_window   active_window Session 0.31.0
+    attached_pane     active_pane   Session 0.31.0
+    attached_pane     active_pane   Window  0.31.0
+
+    Query/Filter API Changes
+
+    Deprecated                            Replacement         Class   Deprecated Since
+    list_sessions() / '_list_sessions(')  sessions property   Server  0.17.0
+    list_windows() / '_list_windows()'    windows property    Session   0.17.0
+    list_panes() / '_list_panes()'        panes property      Window  0.17.0
+    where({...})                          .filter(**kwargs) on sessions/windows/panes   All   0.17.0
+    find_where({...})                     .get(default=None, **kwargs) on sessions/windows/panes  All   0.17.0
+    get_by_id(id)                         .get(session_id/window_id/pane_id=..., default=None)  All   0.16.0
+    children property                     sessions/windows/panes  All   0.17.0
+
+    Attribute Access Changes
+
+    Deprecated            Replacement               Deprecated Since
+    obj['key']            obj.key                   0.17.0
+    obj.get('key')        obj.key                   0.17.0
+    obj.get('key', None)  getattr(obj, 'key', None) 0.17.0
+
+    Still Soft Deprecations (DeprecationWarning)
+
+    The following deprecations from v0.50.0 continue to emit DeprecationWarning only:
+
+    Deprecated            Replacement         Class
+    set_window_option()   set_option()        Window
+    show_window_option()  show_option()       Window
+    show_window_options() show_options()      Window
+    g parameter           global_ parameter   Options & hooks methods
+
+    Migration Example
+
+    Before (deprecated, now raises DeprecatedError):
+
+      # Old method names
+      server.kill_server()
+      session.attach_session()
+      window.split_window()
+      pane.resize_pane()
+
+      # Old query API
+      server.list_sessions()
+      session.find_where({'window_name': 'main'})
+
+      # Old dict-style access
+      window['window_name']
+
+    After:
+
+      # New method names
+      server.kill()
+      session.attach()
+      window.split()
+      pane.resize()
+
+      # New query API
+      server.sessions
+      session.windows.get(window_name='main', default=None)
+
+      # New attribute access
+      window.window_name
+
+- update to 0.50.1:
+  * Documentation
+    - Doc fixes by @tony in #612
+
+-------------------------------------------------------------------
+Fri Dec  5 14:02:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.50.0:
+  libtmux 0.50 brings a major enhancement to option and hook management with a unified, typed API for managing tmux options and hooks across all object types.
+  * Highlights
+    - Unified Options API: New show_option(), show_options(), set_option(), and unset_option() methods available on Server, Session, Window, and Pane
+    - Hook Management: Full programmatic control over tmux hooks with support for indexed hook arrays and bulk operations
+    - SparseArray: New internal data structure for handling tmux's sparse indexed arrays (e.g., command-alias[0], command-alias[99])
+    - tmux 3.2+ baseline: Removed support for tmux versions below 3.2a, enabling cleaner code and full hook/option feature support
+  * Unified Options API
+    All tmux objects now share a consistent options interface:
+
+      import libtmux
+
+      server = libtmux.Server()
+      session = server.sessions[0]
+      window = session.windows[0]
+
+      # Get all options as a structured dict
+      session.show_options()
+      # {'activity-action': 'other', 'base-index': 0, ...}
+
+      # Get a single option value
+      session.show_option('base-index')
+      # 0
+
+      # Set an option
+      window.set_option('automatic-rename', True)
+
+      # Unset an option (revert to default)
+      window.unset_option('automatic-rename')
+
+  * Hook Management
+    Programmatic control over tmux hooks:
+
+      session = server.sessions[0]
+
+      # Set a hook
+      session.set_hook('session-renamed', 'display-message "Renamed!"')
+
+      # Get hook value (returns SparseArray for indexed hooks)
+      session.show_hook('session-renamed')
+      # {0: 'display-message "Renamed!"'}
+
+      # Get all hooks
+      session.show_hooks()
+
+      # Remove a hook
+      session.unset_hook('session-renamed')
+
+      # Bulk operations for indexed hooks
+      session.set_hooks('session-renamed', {
+          0: 'display-message "Hook 0"',
+          1: 'display-message "Hook 1"',
+          5: 'run-shell "echo hook 5"',
+      })
+
+  * Breaking Changes
+    - Deprecated Window methods
+      The following methods are deprecated and will be removed in a
+      future release:
+      Deprecated                    Replacement
+      Window.set_window_option()    Window.set_option()
+      Window.show_window_option()   Window.show_option()
+      Window.show_window_options()  Window.show_options()
+
+  * Deprecated g parameter
+    The g parameter for global options is deprecated in favor of
+    global_:
+
+      # Before (deprecated)
+      session.show_option('status', g=True)
+
+      # After (0.50.0+)
+      session.show_option('status', global_=True)
+
+  * New Constants
+    - OptionScope enum: Server, Session, Window, Pane
+    - OPTION_SCOPE_FLAG_MAP: Maps scope to tmux flags (-s, -w, -p)
+    - HOOK_SCOPE_FLAG_MAP: Maps scope to hook flags
+  * Documentation
+    - New topic guide: Options and Hooks
+    - New topic guides: Automation patterns, Workspace setup, Pane
+      interaction, QueryList filtering
+    - Refreshed README with hero section, quickstart, and more
+      examples
+  * tmux Version Compatibility
+
+    Feature                               Minimum tmux
+    All options/hooks features            3.2+
+    Window/Pane hook scopes (-w, -p)      3.2+
+    client-active, window-resized hooks   3.3+
+    pane-title-changed hook               3.5+
+
+  * What's Changed
+    - Improved option management, add hook management by @tony in
+      #516
+    - Refresh README by @tony in #609
+- update to 0.49.0:
+  * Breaking: tmux <3.2 fully dropped
+    - Drop support for tmux versions < 3.2 by @tony in #608
+- update to 0.48.0:
+  * Breaking: tmux <3.2 deprecated
+    - Deprecate old tmux versions by @tony in #606
+  * Development
+    - tmux: Add tmux 3.6 to testgrid by @tony in #607
+
+-------------------------------------------------------------------
 Sun Nov  2 11:07:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.47.0:
@@ -303,7 +544,7 @@ Sun Feb 18 17:38:34 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.31.0:
   * Cleanups (#527)
-		- Streamline {Server,Session,Window,Pane}.cmd(), across all
+    - Streamline {Server,Session,Window,Pane}.cmd(), across all
       usages to:
       - Use cmd: str as first positional
       - Removed unused keyword arguments **kwargs
@@ -551,7 +792,7 @@ Mon May 29 17:53:51 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 Sat May 27 19:34:56 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 0.22.0:
-	* Move formatting, import sorting, and linting to ruff.
+  * Move formatting, import sorting, and linting to ruff.
   * This rust-based checker has dramatically improved performance.
     Linting and formatting can be done almost instantly.
   * This change replaces black, isort, flake8 and flake8 plugins.
