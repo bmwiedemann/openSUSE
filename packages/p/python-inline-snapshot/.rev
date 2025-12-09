@@ -138,4 +138,12 @@ and python-pydantic-settings</comment>
     + fixed the representation of empty strings in sub-snapshots from</comment>
     <requestid>1308081</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>6ca8548b5a943551b67377dd423d4a3e</srcmd5>
+    <version>0.29.1</version>
+    <time>1765280786</time>
+    <user>anag_factory</user>
+    <comment>- Only require pytest-subtests with pytest &lt; 9.</comment>
+    <requestid>1321489</requestid>
+  </revision>
 </revisionlist>

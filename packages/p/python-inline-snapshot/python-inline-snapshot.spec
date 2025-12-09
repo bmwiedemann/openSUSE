@@ -48,7 +48,7 @@ BuildRequires:  %{python_module pydantic}
 BuildRequires:  %{python_module pyright >= 1.1.359}
 BuildRequires:  %{python_module pytest-freezer >= 0.4.8}
 BuildRequires:  %{python_module pytest-mock >= 3.14.0}
-BuildRequires:  %{python_module pytest-subtests >= 0.11.0}
+BuildRequires:  %{python_module pytest-subtests >= 0.11.0 if %python-pytest < 9}
 BuildRequires:  %{python_module pytest-xdist >= 3.6.1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module time-machine >= 2.10.0}
