@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Dec  8 14:44:35 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to alsa-utils 1.2.15:
+  * alsactl lots of fixes, new -Y option to extract via key=value pairs
+  * amidi: Ignore inactive MIDI ports as default at listing
+  * add support for new log handler for aconnect, alsamixer, alsactl
+  * aplay: reorganize format handling in begin_wave()
+  * Revert "aplay: fix S24_LE wav header"
+  * bat: Fix buffer time configuration
+  For details, see:
+    https://www.alsa-project.org/wiki/Changes_v1.2.14_v1.2.15#alsa-utils
+
+-------------------------------------------------------------------
 Tue Apr 15 08:58:48 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to alsa-utils 1.2.14:
