@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov 28 10:38:27 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.32.0
+  * Allow trio.CapacityLimiter to have zero total_tokens. (#3321)
+  * Fixed a bug where iterating over an @as_safe_channel-derived
+    ReceiveChannel would raise BrokenResourceError if the channel
+    was closed by another task. It now shuts down cleanly. (#3331)
+  * trio.lowlevel.Task.iter_await_frames now works on completed tasks,
+    by returning an empty list of frames if the underlying coroutine
+    has been closed. Previously, it raised an internal error. (#3337)
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Tue Sep 23 11:04:19 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.31.0
