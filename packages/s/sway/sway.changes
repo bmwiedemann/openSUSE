@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec  5 10:05:50 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Properly use sway-xkb-layout-generator package
+
+-------------------------------------------------------------------
 Thu Dec  4 16:33:44 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Don’t bundle xkb-layout-generator use it from the package.

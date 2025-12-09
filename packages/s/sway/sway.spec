@@ -59,7 +59,6 @@ BuildRequires:  pkgconfig(xkbcommon)
 # WARNING: do not set this to versioned, as it breaks other branding providers
 # such as openSUSEway (bsc#1222579)
 Requires:       %{name}-branding
-Requires(post): sway-xkb-layout-generator
 Recommends:     swaybar
 Recommends:     swaynag
 # For file picker and other stuff and for the sway-portal.conf
@@ -83,10 +82,7 @@ Supplements:    (%{name} and branding-upstream)
 Conflicts:      %{name}-branding
 Provides:       %{name}-branding = %{version}
 BuildArch:      noarch
-# For /etc/vconsole.conf
-Requires(post): udev
-# For localectl
-Requires(post): systemd
+Requires(post): sway-xkb-layout-generator
 #BRAND: /etc/sway/config contains upstream config and brand
 
 %description branding-upstream
@@ -169,7 +165,7 @@ install -Dpm 0644 -t %{buildroot}%{_datadir}/xdg-desktop-portal/ %{SOURCE3}
 
 %post branding-upstream
 test -e %{_sysconfdir}/sway/keyboard.conf \
-    || %{_libexecdir}/xkb-layout-generator > %{_sysconfdir}/sway/keyboard.conf
+    || %{_libexecdir}/sway-xkb-layout-generator > %{_sysconfdir}/sway/keyboard.conf
 
 %files
 %license LICENSE
