@@ -18,15 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-ConfigArgParse
-Version:        1.7
+Version:        1.7.1
 Release:        0
 Summary:        A drop-in replacement for argparse
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/bw2/ConfigArgParse
-Source:         https://files.pythonhosted.org/packages/source/C/ConfigArgParse/ConfigArgParse-%{version}.tar.gz
-Patch1:         https://github.com/bw2/ConfigArgParse/pull/295/commits/c6a974211f1a13d492bb807ff6d07cefcc948a87.patch#/py313-tests.patch
-Patch2:         https://github.com/bw2/ConfigArgParse/pull/295/commits/5e9f442374bc6d9707a43df13aaff684dff6b535.patch#/py313-skip-exit.patch
+Source:         https://files.pythonhosted.org/packages/source/c/configargparse/configargparse-%{version}.tar.gz
+Patch1:         https://github.com/bw2/ConfigArgParse/pull/295/commits/5e9f442374bc6d9707a43df13aaff684dff6b535.patch#/py313-skip-exit.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -34,7 +33,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
-Requires:       python-setuptools
 # Old name of the package
 Provides:       python-configargparse = %{version}-%{release}
 Obsoletes:      python-configargparse < %{version}-%{release}
@@ -54,7 +52,7 @@ for config files and environment variables, so this module extends argparse to
 add these features
 
 %prep
-%autosetup -p1 -n ConfigArgParse-%{version}
+%autosetup -p1 -n configargparse-%{version}
 
 %build
 %pyproject_wheel

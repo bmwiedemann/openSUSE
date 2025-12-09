@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec  4 09:37:33 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.7.1
+  * The primary purpose of this release is to fix the package
+    metadata on supported python versions.
+- Adjust upstream source name in spec file
+- Drop py313-tests.patch, fixed upstream
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Mon May  5 13:07:22 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

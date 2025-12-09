@@ -11,7 +11,7 @@ is not supported by ConfigArgParse at the moment.
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/tests/test_configargparse.py b/tests/test_configargparse.py
-index e325afd..9718d86 100644
+index e325afd1..9718d862 100644
 --- a/tests/test_configargparse.py
 +++ b/tests/test_configargparse.py
 @@ -1533,7 +1533,8 @@ def testYAMLConfigFileParser_w_ArgumentParser_parsed_values(self):
