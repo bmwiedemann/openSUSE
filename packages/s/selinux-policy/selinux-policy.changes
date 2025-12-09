@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Dec 08 08:29:51 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 20251208:
+  * Introduce systemd_cryptsetup_generator_var_run_t file type (bsc#1244459)
+  * Allow virtqemud_t to read/write device_t (bsc#1251789)
+  * Introduce sap_service_transition_to_unconfined_user boolean
+  * allow init to read sap symlinks
+  * Allow SAP domain to relocation text in all files
+
+-------------------------------------------------------------------
+Mon Dec  8 08:21:59 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
+
+- Update embedded container-selinux version to commit:
+  - 9017e1f8074db9b7ae026670b0e0216cf53f18d9 (version 2.244.0)
+
+-------------------------------------------------------------------
 Fri Nov 28 09:55:32 UTC 2025 - Robert Frohl <rfrohl@suse.com>
 
 - Update to version 20251128:
