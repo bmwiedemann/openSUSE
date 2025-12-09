@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Dec  5 05:12:09 UTC 2025 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to version 2.4.6:
+  * Handling for new StatusNotifierWatcher
+- Update to version 2.4.5:
+  * Make connection notifications transient
+  * StatusNotifierItem: announce children-display
+  * Manager: Hide bt status switch when PowerManager is not available
+- Update to version 2.4.4:
+  * Fix Rfcom plugin dbus signature
+  * Set an initial selected device in blueman-sendto
+  * AutoConnect: Store bluetooth address instead of object path
+  * Applet: Handle UnknownObject DBus error (@tommie)
+  * Make search button available after device list becomes empty (@astcri)
+  * Fix Fatal LoadException
+  * Terminate applet on manager termination if it was started by manager
+  * AutoConnect: Automatically convert path to address
+  * Add toggle to force symbolic statusicon
+- Update to version 2.4.3:
+  * Fix issues with specific device names
+  * Fix deadlock between applet and manager when double-clicking the tray icon
+
+-------------------------------------------------------------------
 Mon Aug 11 14:37:47 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Fix build on Leap 16.0 that has no nemo-extensions package

@@ -30,7 +30,7 @@
 %bcond_with nemo
 %endif
 Name:           blueman
-Version:        2.4.2
+Version:        2.4.6
 Release:        0
 Summary:        GTK Bluetooth Manager
 License:        GPL-3.0-only
