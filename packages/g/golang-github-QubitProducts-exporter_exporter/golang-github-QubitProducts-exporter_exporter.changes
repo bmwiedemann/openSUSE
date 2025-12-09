@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec  8 17:53:03 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Require Go >= 1.23 for building
+
+-------------------------------------------------------------------
 Wed Aug 20 12:36:44 UTC 2025 - Michael Matz <matz@suse.com>
 
 - Use current distro go default version.

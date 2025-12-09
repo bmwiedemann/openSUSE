@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-QubitProducts-exporter_exporter
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,7 +42,7 @@ BuildRequires:  fdupes
 BuildRequires:  golang-packaging
 %endif
 %if 0%{?suse_version}
-BuildRequires:  golang(API) >= 1.14
+BuildRequires:  golang(API) >= 1.23
 %else
 BuildRequires:  golang >= 1.14
 %endif
