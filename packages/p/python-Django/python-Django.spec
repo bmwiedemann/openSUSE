@@ -26,7 +26,7 @@
 %bcond_with libalternatives
 %endif
 Name:           python-Django
-Version:        5.2.8
+Version:        5.2.9
 Release:        0
 Summary:        A high-level Python Web framework
 License:        BSD-3-Clause
