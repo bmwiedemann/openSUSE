@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec  8 09:29:40 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.40:
+  * No significant change, this is just a very small hotfix release
+    to solve a packaging problem introduced by a conflict with the
+    new vng-mcp tool.
+  * While at it, there're also some small improved hints in the MCP
+    server, so that AI agents can better understand how to build
+    the kernel using vng --build.
+
+-------------------------------------------------------------------
 Mon Dec  1 11:11:05 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.39:
