@@ -16,7 +16,7 @@
 #
 
 
-%define git_ver .0.acde83417bb3
+%define git_ver -1.0.baa358f
 
 %define pseudo_opt %{_prefix}/lib/opa-fm
 %define opasysconfdir %{_sysconfdir}/opa-fm/
@@ -30,6 +30,7 @@ Group:          Development/Libraries/C and C++
 URL:            http://www.intel.com/
 Source0:        %{name}-%{version}%{git_ver}.tar.gz
 Source1:        %{name}-rpmlintrc
+Source100:      README.md
 Patch1:         opa-fm-Fallback-to-custom-vendor-if-os_vendor-fails.patch
 Patch2:         opa-fm-use-RPM_OPT_FLAGS.patch
 Patch3:         opa-fm-force-code-symbols-to-be-loaded.patch

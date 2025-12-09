@@ -168,4 +168,13 @@ Fix build with rdma-core (vs previous OFED)</comment>
     <comment></comment>
     <requestid>1247212</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>f9a120a7ce817c909183b0f8536d4560</srcmd5>
+    <version>10.14.4.0.20</version>
+    <time>1765281234</time>
+    <user>anag_factory</user>
+    <comment>- Update to 10.14.4.0.20-1 (jsc#PED-13892)
+  - Build fixes</comment>
+    <requestid>1321700</requestid>
+  </revision>
 </revisionlist>
