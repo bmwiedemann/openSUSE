@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 08 08:06:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.30.29:
+  * build(deps): bump github.com/spf13/cobra from 1.10.1 to 1.10.2
+    (#1966)
+
+-------------------------------------------------------------------
 Thu Dec 04 06:05:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.30.28:
