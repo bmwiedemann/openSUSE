@@ -486,4 +486,34 @@ SR for python stack proposal</comment>
     <comment>- Skip a test that will break with pytest 9.</comment>
     <requestid>1320262</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>e6960ffbabe35645cc5ef161e357e8f4</srcmd5>
+    <version>4.12.0</version>
+    <time>1765280799</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.12.0:
+  * Added support for asyncio's task call graphs on Python 3.14 and later
+    when using AnyIO's task groups
+  * Added an asynchronous implementation of the functools module
+  * Added support for uvloop=True on Windows via the winloop implementation
+  * Added support for use as a context manager to anyio.lowlevel.RunVar
+  * Added __all__ declarations to public submodules (anyio.lowlevel etc.)
+  * Added the ability to set the token count of a CapacityLimiter to zero
+  * Added parameters case_sensitive and recurse_symlinks along with support
+    for path-like objects to anyio.Path.glob() and anyio.Path.rglob()
+  * Dropped sniffio as a direct dependency and added the
+    get_available_backends() function
+  * Fixed Process.stdin.send() not raising ClosedResourceError and
+    BrokenResourceError on asyncio
+  * Fixed Process.stdin.send() not checkpointing before writing data on
+    asyncio
+  * Fixed a race condition where cancelling a Future from
+    BlockingPortal.start_task_soon() would sometimes not cancel the async
+    function
+  * Fixed the presence of the pytest plugin causing breakage with older
+    versions of pytest (&lt;= 6.1.2)
+  * Fixed a rarely occurring RuntimeError: Set changed size during iteration
+    while shutting down the process pool when using the asyncio backend</comment>
+    <requestid>1321496</requestid>
+  </revision>
 </revisionlist>

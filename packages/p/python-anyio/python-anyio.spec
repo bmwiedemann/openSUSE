@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-anyio%{psuffix}
-Version:        4.11.0
+Version:        4.12.0
 Release:        0
 Summary:        High level compatibility layer for asynchronous event loop implementations
 License:        MIT
@@ -55,7 +55,6 @@ BuildRequires:  %{python_module uvloop}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-idna >= 2.8
-Requires:       python-sniffio >= 1.1
 %if 0%{?python_version_nodots} < 313
 Requires:       python-typing_extensions >= 4.5
 %endif
