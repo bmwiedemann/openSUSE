@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Dec  8 00:37:12 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to releas 2025.12.08
+  * cookies: Fix --cookies-from-browser for new installs of
+    Firefox 147+
+  * floatplane: add subtitle support
+  * yt: detect AI-upscaled formats
+
+-------------------------------------------------------------------
+Sat Nov 15 13:30:13 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Relax JS runtime requirement from required to recommended,
+  some formats can be downloaded without either runtime.
+- Recommend nodejs as an alternative to deno
+  (Leap 15.6 has just nodejs).
+
+-------------------------------------------------------------------
 Thu Nov 13 08:30:07 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2025.11.12

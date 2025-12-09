@@ -27,8 +27,8 @@
 %endif
 
 Name:           yt-dlp
-Version:        2025.11.12
-%define ejsver  0.3.1
+Version:        2025.12.08
+%define ejsver  0.3.2
 Release:        0
 Summary:        Enhanced fork of youtube-dl, a video site downloader for offline watching
 License:        CC-BY-SA-3.0 AND SUSE-Public-Domain
@@ -72,7 +72,7 @@ This package installs "youtube-dl" as a symlink to yt-dlp.
 Summary:        yt-dlp Python library
 Group:          Development/Languages/Python
 Requires:       ffmpeg
-Requires:       deno
+Recommends:     (deno or nodejs >= 20)
 Suggests:       python-Brotli
 Suggests:       python-certifi
 Suggests:       python-mutagen
