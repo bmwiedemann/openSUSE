@@ -1,7 +1,6 @@
 #
 # spec file for package bat
 #
-# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +17,7 @@
 
 
 Name:           bat
-Version:        0.26.0
+Version:        0.26.1
 Release:        0
 Summary:        A cat(1) clone with syntax highlighting and Git integration
 License:        Apache-2.0 OR MIT

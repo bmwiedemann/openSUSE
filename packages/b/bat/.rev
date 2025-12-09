@@ -279,4 +279,12 @@
   * Update terminal-colorsaurus (the library used for dark/light detection) to 1.0, see #3347 (@bash)</comment>
     <requestid>1312423</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>42038ee1c47557d627a5c9f3222c4fc5</srcmd5>
+    <version>0.26.1</version>
+    <time>1765280907</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1321529</requestid>
+  </revision>
 </revisionlist>

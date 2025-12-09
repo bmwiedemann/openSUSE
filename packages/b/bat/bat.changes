@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Dec  3 18:51:38 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.26.1
+  Features
+  * Add paging to '-h' and '--help'.
+  Bugfixes
+  * Fix hang when using --list-themes with an explicit pager.
+  * Fix negative values of N not being parsed in <N:M> line ranges
+    without = flag value separator.
+  * Fix broken Docker syntax preventing use of custom assets.
+  * Fix decorations being applied unexpectedly when piping. Now
+    only line numbers explicitly required on the command line
+    should be applied in auto decorations mode for cat
+    compatibility.
+  * Fix diagnostics attempting to find the version of an executable
+    named builtin when builtin pager is used.
+  * --help now correctly reads the config file for theme
+    information etc.
+  Other
+  * Improve README documentation on pager options passed to less.
+  * Make PowerShell completions compatible with PowerShell v5.1.
+  * Use more robust approach to escaping in Bash completions.
+  Syntaxes
+  * Update quadlet syntax mapping to include *.{build,pod} files.
+  * Fix inconsistencies in Ada syntax.
+  * Add syntax mapping for podman's artifact quadlet files.
+  * Highlight Korn Shell scripts (i.e. with a shebang of ...ksh)
+    using Bash syntax.
+
+-------------------------------------------------------------------
 Mon Oct 20 13:25:28 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.26.0
