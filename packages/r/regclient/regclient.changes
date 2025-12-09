@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec 08 08:37:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.11.1:
+  * Security:
+    - Go 1.25.5 fixes CVE-2025-61729 (PR 1025)
+    - Go 1.25.5 fixes CVE-2025-61727 (PR 1025)
+  * Fixes:
+    - Correct selection of previous tag for releases. (PR 1023)
+    - Make sure ContentLength is correctly set in the request. (PR
+      1024)
+
+-------------------------------------------------------------------
 Thu Dec 04 06:08:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.11.0:
