@@ -19,7 +19,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-macholib
-Version:        1.16.3
+Version:        1.16.4
 Release:        0
 Summary:        Mach-O header analysis and editing
 License:        MIT
@@ -34,7 +34,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       alts
 Requires:       python-altgraph >= 0.15
-Requires:       python-setuptools
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module altgraph >= 0.15}
@@ -79,7 +78,9 @@ rm macholib_tests/test_{command_line,dyld}.py
 %python_libalternatives_reset_alternative macho_find
 
 %files %{python_files}
-%doc README.rst doc/*.rst
+%doc README.rst doc/MachO.rst doc/MachoOGraph.rst doc/MachoOStandalone.rst
+%doc doc/SymbolTable.rst doc/changelog.rst doc/dyld.rst doc/dylib.rst
+%doc doc/framework.rst doc/index.rst doc/macho_o.rst doc/ptypes.rst doc/scripts.rst
 %license doc/license.rst
 %python_alternative %{_bindir}/macho_find
 %python_alternative %{_bindir}/macho_standalone
