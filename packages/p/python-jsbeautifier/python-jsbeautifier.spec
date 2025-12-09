@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jsbeautifier
-Version:        1.15.2
+Version:        1.15.4
 Release:        0
 Summary:        JavaScript unobfuscator and beautifier
 License:        MIT
@@ -32,7 +32,6 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-EditorConfig >= 0.12.2
-Requires:       python-setuptools
 Requires:       python-six >= 1.13.0
 Requires(post): update-alternatives
 Requires(postun): update-alternatives

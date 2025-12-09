@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec  4 09:48:36 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.15.4
+  * Downgrade nopt to v7.x to maintain Node.js v14 compatibility (#2358)
+- from version 1.15.3
+  * Fix node 18 support by downgrading glob to v10 (#2350)
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Tue Feb 11 09:50:53 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.15.2
