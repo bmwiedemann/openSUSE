@@ -1,0 +1,26 @@
+From eb53fb6791252e1ef550696068157de92fc99a26 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Mon, 8 Dec 2025 10:39:38 +0100
+Subject: [PATCH] Fix compilation with gcc-15
+
+for openSUSE Tumbleweed
+---
+ src/main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/main.c b/src/main.c
+index 96b4347..0c96434 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -245,7 +245,7 @@ void GameTimer(int v)
+ }
+ 
+ #if(CFG_GTK)
+-static gboolean DisplayDialog()
++static int DisplayDialog(void *param)
+ {
+    GtkWidget * dialog = gtk_message_dialog_new(NULL,
+       GTK_DIALOG_MODAL, GTK_MESSAGE_INFO, GTK_BUTTONS_OK, ASTEROIDS_ABOUT);
+-- 
+2.52.0
+

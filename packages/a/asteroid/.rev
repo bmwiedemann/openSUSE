@@ -34,4 +34,12 @@ Thu Oct 30 15:23:11 UTC 2014 - nemysis@gmx.ch
     <comment></comment>
     <requestid>1270202</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>8c90e997830a30402904c8711c047af3</srcmd5>
+    <version>1.2.1</version>
+    <time>1765280916</time>
+    <user>anag_factory</user>
+    <comment>- Add fix-build.patch</comment>
+    <requestid>1321535</requestid>
+  </revision>
 </revisionlist>

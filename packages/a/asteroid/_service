@@ -1,7 +1,7 @@
 <services>
 
    <service name="tar_scm" mode="localonly">
-     <param name="url">git://github.com/chazomaticus/asteroid.git</param>
+     <param name="url">https://github.com/chazomaticus/asteroid.git</param>
      <param name="scm">git</param>
      <param name="version">1.2.1+git-64869df</param>
      <param name="changesgenerate">enable</param>

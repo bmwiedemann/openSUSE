@@ -27,6 +27,7 @@ License:        GPL-3.0
 Url:            https://chazomaticus.github.io/asteroid/
 Source0:        %{name}-%{version}+git-64869df.tar.bz2
 Source1:        generate-service-file.sh
+Patch0:         fix-build.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  fdupes
 BuildRequires:  freeglut-devel
@@ -47,7 +48,7 @@ It features a variety of powerups, taunting aliens, 3D textured asteroids,
 face-melting sound effects, and infinite playability.
 
 %prep
-%setup -q -n %{name}-%{version}+git-%{shortcommit}
+%autosetup -n %{name}-%{version}+git-%{shortcommit} -p1
 
 # fix include
 sed -i -e 's|${OPENGL_LIBRARIES}|-lm ${OPENGL_LIBRARIES}|' \
@@ -56,6 +57,7 @@ sed -i -e 's|${OPENGL_LIBRARIES}|-lm ${OPENGL_LIBRARIES}|' \
 %build
 # Not works build with %%cmake
 cmake . -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \
+        -DOpenGL_GL_PREFERENCE=GLVND \
         -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 make %{?_smp_mflags}
 
