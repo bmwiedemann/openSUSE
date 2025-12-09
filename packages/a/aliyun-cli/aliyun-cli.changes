@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec  6 14:51:33 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.2.0
+  * {mcp} Add MCP Proxy Server with OAuth Authentication by @AllyW in (#1279)
+  * Update Aliyun OpenAPI meta data
+
+-------------------------------------------------------------------
 Tue Dec  2 12:42:18 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.1.7

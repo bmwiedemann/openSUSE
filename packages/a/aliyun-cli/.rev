@@ -26,4 +26,14 @@
   * Update Aliyun OpenAPI meta data (forwarded request 1320839 from glaubitz)</comment>
     <requestid>1321167</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a6029609969eb39153ff64d07cbc02a4</srcmd5>
+    <version>3.2.0</version>
+    <time>1765281178</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.2.0
+  * {mcp} Add MCP Proxy Server with OAuth Authentication by @AllyW in (#1279)
+  * Update Aliyun OpenAPI meta data (forwarded request 1321365 from glaubitz)</comment>
+    <requestid>1321643</requestid>
+  </revision>
 </revisionlist>
