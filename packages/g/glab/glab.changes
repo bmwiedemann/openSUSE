@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Dec 05 14:09:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.79.0:
+  * chore(deps): update dependency @commitlint/cli to ^20.2.0
+  * fix: make token cache tests compatible with macOS
+  * feat: add --output flag and deprecate --format for variable
+    export
+  * fix: ensure Git output is in English for stack sync
+  * chore(deps): update dependency golangci-lint to v2.7.1
+  * chore(deps): update module github.com/mark3labs/mcp-go to
+    v0.43.2
+  * chore(deps): update module github.com/spf13/cobra to v1.10.2
+  * chore(deps): update dependency golangci-lint to v2.7.0
+  * feat: support GITLAB_HOST in auth status
+  * chore: wrap bare urls in markdown syntax for doc generation
+  * feat: CI auto-login
+  * chore(deps): update module github.com/docker/cli to
+    v29.1.2+incompatible
+  * refactor(ci): remove factory dependency and handle empty
+    pipelines
+  * fix(ci): correct branch filtering in ci view command
+  * docs: add example for glab mr note command
+  * feat: add securefile download via name
+  * chore: migrate multi-option select prompts to huh
+  * chore: migrate login prompts to huh
+  * docs: update glab repo delete description
+  * docs: update StringSliceVar flags that support repetition
+  * chore(deps): update module github.com/docker/cli to
+    v29.1.1+incompatible
+  * chore(deps): update module github.com/hashicorp/go-version to
+    v1.8.0
+  * chore(deps): update module github.com/docker/cli to
+    v29.1.0+incompatible
+  * docs: update description for variable strings option
+  * docs(config set): fixing glab config set helper messages
+  * refactor: move away from deprecated tcell code in v2.12.0
+  * refactor: adapt to breaking changes of client-go v1
+  * chore(deps): update module github.com/gdamore/tcell/v2 to
+    v2.12.0
+  * chore(deps): update module github.com/docker/cli to
+    v29.0.4+incompatible
+  * chore(deps): update module gitlab.com/gitlab-org/api/client-go
+    to v1
+
+-------------------------------------------------------------------
 Tue Nov 25 06:20:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.78.3:
