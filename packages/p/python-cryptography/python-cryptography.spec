@@ -54,7 +54,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  cargo >= 1.56.0
 BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
-BuildRequires:  libopenssl-devel
+BuildRequires:  libopenssl-3-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  rust >= 1.56.0
@@ -74,7 +74,7 @@ BuildRequires:  %{python_module iso8601}
 BuildRequires:  %{python_module pretend}
 BuildRequires:  %{python_module pytest > 6.0}
 BuildRequires:  %{python_module pytest-benchmark}
-BuildRequires:  %{python_module pytest-subtests}
+BuildRequires:  %{python_module pytest-subtests if %python-pytest < 9}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytz}
 %endif

@@ -1341,4 +1341,12 @@
     classes from the cipher module. These are still available in</comment>
     <requestid>1311087</requestid>
   </revision>
+  <revision rev="106" vrev="2">
+    <srcmd5>17b59d0e994d625df37177697792d174</srcmd5>
+    <version>46.0.2</version>
+    <time>1765280783</time>
+    <user>anag_factory</user>
+    <comment>- Only require pytest-subtests with pytest &lt; 9.</comment>
+    <requestid>1321487</requestid>
+  </revision>
 </revisionlist>
