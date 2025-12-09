@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 08 08:20:55 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 2.244.0:
+  * New release: v2.244.0
+  * TMT: ELN rootless user has changed
+  * Introduce container_write_proc_files interface (bsc#1253469)
+
+-------------------------------------------------------------------
 Mon Nov 10 10:38:41 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 2.243.0:
