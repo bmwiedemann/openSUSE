@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec  8 10:29:07 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 4.4+31.g541b40d3:
+  * fix crash with homehost=none (bsc#1254541)
+
+-------------------------------------------------------------------
 Thu Nov 20 17:36:46 UTC 2025 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 4.4+30.g9a59bf51:

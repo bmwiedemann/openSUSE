@@ -1667,4 +1667,13 @@ which haven't landed upstream yet
 </comment>
     <requestid>1318922</requestid>
   </revision>
+  <revision rev="162" vrev="1">
+    <srcmd5>cd5b0f6b8f5090a81cde62c06e6bfd10</srcmd5>
+    <version>4.4+31.g541b40d3</version>
+    <time>1765280745</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.4+31.g541b40d3:
+  * fix crash with homehost=none (bsc#1254541)</comment>
+    <requestid>1321547</requestid>
+  </revision>
 </revisionlist>

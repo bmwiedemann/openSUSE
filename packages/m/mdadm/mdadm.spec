@@ -22,7 +22,7 @@
 %endif
 
 Name:           mdadm
-Version:        4.4+30.g9a59bf51
+Version:        4.4+31.g541b40d3
 Release:        0
 BuildRequires:  binutils-devel
 BuildRequires:  groff
