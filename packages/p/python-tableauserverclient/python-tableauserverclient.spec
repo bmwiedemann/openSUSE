@@ -1,7 +1,7 @@
 #
 # spec file for package python-tableauserverclient
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module defusedxml >= 0.7.1}
 BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module pytest-subtests}
+BuildRequires:  %{python_module pytest-subtests if %python-pytest < 9}
 BuildRequires:  %{python_module requests >= 2.31}
 BuildRequires:  %{python_module requests-mock >= 1.0}
 # /SECTION

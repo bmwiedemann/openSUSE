@@ -97,4 +97,12 @@
   * Add support for changing project owner #1419</comment>
     <requestid>1225497</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>1dbf060c779116ed025d19cc3e44f83d</srcmd5>
+    <version>0.34</version>
+    <time>1765280821</time>
+    <user>anag_factory</user>
+    <comment>- Only require pytest-subtests with pytest &lt; 9.</comment>
+    <requestid>1321492</requestid>
+  </revision>
 </revisionlist>
