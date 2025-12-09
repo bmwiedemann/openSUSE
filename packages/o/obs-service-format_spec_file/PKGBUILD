@@ -1,0 +1,15 @@
+pkgname=obs-service-format_spec_file
+pkgver=20250923
+pkgrel=0
+pkgdesc='An OBS source service: reformats a spec file to SUSE standard'
+arch=('any')
+url='https://github.com/openSUSE/obs-service-format_spec_file'
+license=('GPL-2.0-only')
+depends=('obs-service-source_validator')
+source=($pkgname-$pkgver.tar.bz2)
+sha256sums=('SKIP')
+
+package() {
+    cd "$pkgname-$pkgver"
+    make DESTDIR=$pkgdir install
+}
