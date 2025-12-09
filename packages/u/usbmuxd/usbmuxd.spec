@@ -1,7 +1,7 @@
 #
 # spec file for package usbmuxd
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{!?_udevrulesdir: %global _udevrulesdir %(pkg-config --variable=udevdir udev)/rules.d}
 Name:           usbmuxd
-Version:        1.1.1+git69.523f700
+Version:        1.1.1+git72.3ded00c
 Release:        0
 Summary:        A socket daemon to multiplex connections from and to iOS devices
 License:        GPL-2.0-only OR GPL-3.0-only

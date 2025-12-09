@@ -339,4 +339,12 @@ https://bugzilla.novell.com/show_bug.cgi?id=811801#c5 (forwarded request 162236 
 - Refresh harden_usbmuxd.service.patch.</comment>
     <requestid>1248795</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>faf8fd4daa840acb0e5fe844cdb0d82e</srcmd5>
+    <version>1.1.1+git72.3ded00c</version>
+    <time>1765280892</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1321526</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec  8 08:22:27 UTC 2025 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to version 1.1.1+git72.3ded00c:
+  - Allow specifying configuration directory to use
+  - conf: Make sure to sanitize input for SavePairRecord command (bsc#1254302)
+- Refresh harden_usbmuxd.service.patch.
+
+-------------------------------------------------------------------
 Sun Feb 23 23:42:17 UTC 2025 - sbrabec@suse.com
 
 - Update to version 1.1.1+git69.523f700:

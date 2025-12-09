@@ -1,7 +1,7 @@
-Index: usbmuxd-1.1.1+git69.523f700/systemd/usbmuxd.service.in
+Index: usbmuxd-1.1.1+git72.3ded00c/systemd/usbmuxd.service.in
 ===================================================================
---- usbmuxd-1.1.1+git69.523f700.orig/systemd/usbmuxd.service.in
-+++ usbmuxd-1.1.1+git69.523f700/systemd/usbmuxd.service.in
+--- usbmuxd-1.1.1+git72.3ded00c.orig/systemd/usbmuxd.service.in
++++ usbmuxd-1.1.1+git72.3ded00c/systemd/usbmuxd.service.in
 @@ -3,5 +3,16 @@ Description=Socket daemon for the usbmux
  Documentation=man:usbmuxd(8)
  
