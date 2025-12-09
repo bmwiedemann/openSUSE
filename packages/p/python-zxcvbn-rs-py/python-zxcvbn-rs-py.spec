@@ -1,7 +1,7 @@
 #
 # spec file for package python-zxcvbn-rs-py
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,19 @@
 #
 
 
+%define base_version 0.3.0
 Name:           python-zxcvbn-rs-py
-Version:        0.1.1+5
+Version:        %{base_version}+0
 Release:        0
 Summary:        Python bindings for zxcvbn-rs, the Rust implementation of zxcvbn
 License:        MIT
 URL:            https://github.com/fief-dev/zxcvbn-rs-py
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module maturin >= 1.4.0}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -51,11 +54,15 @@ patterns (qwertyuiop), and l33t speak.
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
+%check
+mv zxcvbn_rs_py zxcvbn_rs_py-do-not-import
+%pytest_arch
+mv zxcvbn_rs_py-do-not-import zxcvbn_rs_py
+
 %files %{python_files}
 %license LICENSE
 %doc README.md
 %{python_sitearch}/zxcvbn_rs_py
-%{python_sitearch}/zxcvbn_rs_py-0.1.1.dist-info
-%pycache_only %{python_sitearch}/zxcvbn_rs_py/__pycache__
+%{python_sitearch}/zxcvbn_rs_py-%{base_version}.dist-info
 
 %changelog

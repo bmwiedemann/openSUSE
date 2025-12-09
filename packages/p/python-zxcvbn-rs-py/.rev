@@ -15,4 +15,15 @@
     <comment></comment>
     <requestid>1226869</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>037de702d1c2839920ce0259c3ef833f</srcmd5>
+    <version>0.3.0+0</version>
+    <time>1765281209</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.3.0+0:
+  * Drop Python 3.9 support
+  * Add Python 3.14 support
+- Actually run the testsuite.</comment>
+    <requestid>1321659</requestid>
+  </revision>
 </revisionlist>
