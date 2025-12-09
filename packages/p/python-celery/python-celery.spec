@@ -1,7 +1,7 @@
 #
 # spec file for package python-celery
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -81,7 +81,7 @@ BuildRequires:  %{python_module pydantic}
 BuildRequires:  %{python_module pymongo >= 4.0.2}
 BuildRequires:  %{python_module pytest >= 4.5.0}
 BuildRequires:  %{python_module pytest-click}
-BuildRequires:  %{python_module pytest-subtests}
+BuildRequires:  %{python_module pytest-subtests if %python-pytest < 9}
 BuildRequires:  %{python_module redis}
 %if %{with ringdisabled}
 ExclusiveArch:  do-not-build

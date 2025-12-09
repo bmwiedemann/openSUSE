@@ -536,4 +536,12 @@
     <comment></comment>
     <requestid>1296142</requestid>
   </revision>
+  <revision rev="52" vrev="5">
+    <srcmd5>992a5c6c68e7fcaa99d7ba50fbddc43c</srcmd5>
+    <version>5.5.3</version>
+    <time>1765280815</time>
+    <user>anag_factory</user>
+    <comment>- Only require pytest-subtests with pytest &lt; 9.</comment>
+    <requestid>1321486</requestid>
+  </revision>
 </revisionlist>
