@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <services>
-  <service name="obs_scm" mode="localonly">
+  <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/dracula/gtk.git</param>
     <param name="scm">git</param>
     <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>
@@ -8,9 +8,9 @@
     <param name="changesauthor">maurizio.galli@suse.com</param>
     <param name="versionrewrite-pattern">v(.*)</param>
   </service>
-  <service name="set_version" mode="localonly"/>
-  <service name="tar" mode="localonly"/>
-  <service name="recompress" mode="localonly">
+  <service name="set_version" mode="manual"/>
+  <service name="tar" mode="manual"/>
+  <service name="recompress" mode="manual">
     <param name="compression">xz</param>
     <param name="file">*.tar</param>
   </service>

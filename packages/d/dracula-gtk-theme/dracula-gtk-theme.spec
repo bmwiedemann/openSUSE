@@ -1,7 +1,7 @@
 #
 # spec file for package dracula-gtk-theme
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define         _kf5_plasmadir      /usr/share/plasma
 
 Name:           dracula-gtk-theme
-Version:        3.0+git94.9840b6b
+Version:        4.0.0+git133.cd80d5a
 Release:        0
 Summary:        A dark theme for GTK
 License:        GPL-3.0-only
