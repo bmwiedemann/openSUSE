@@ -174,7 +174,7 @@ fi
 
 %posttrans selinux
 %selinux_relabel_post -s %{selinuxtype}
-# %selinux_relabel_post calls fixfiles(8) with the previous file_contexts file
+# %%selinux_relabel_post calls fixfiles(8) with the previous file_contexts file
 # (see selabel_file(5)) in order to restore only the file contexts which
 # actually changed. However, as file_contexts doesn't support %{USERID}
 # substitutions, this will not work for specific file contexts that pasta needs

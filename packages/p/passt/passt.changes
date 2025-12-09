@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec  9 07:45:46 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Escape macro in comment (boo#1254579)
+
+-------------------------------------------------------------------
 Wed Jul  9 04:41:56 UTC 2025 - Danish Prakash <danish.prakash@suse.com>
 
 - Fixes to spec (ref: bsc#1245074):

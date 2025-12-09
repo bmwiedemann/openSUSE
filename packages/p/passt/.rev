@@ -248,4 +248,12 @@ on SELinux-enabled projects e.g. SLFO. (forwarded request 1186132 from danishpra
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1321301</requestid>
   </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>17ff3a8ac05f25efc767395b4590f3db</srcmd5>
+    <version>20250611.0293c6f</version>
+    <time>1765280954</time>
+    <user>anag_factory</user>
+    <comment>- Escape macro in comment (boo#1254579) (forwarded request 1321677 from dimstar)</comment>
+    <requestid>1321681</requestid>
+  </revision>
 </revisionlist>
