@@ -1948,4 +1948,18 @@ Man pages are disabled for this build, upstream disabled them for this release. 
   * Sync headers with drm-next</comment>
     <requestid>1318317</requestid>
   </revision>
+  <revision rev="187" vrev="1">
+    <srcmd5>69497b5cd0225ffccc6e22d5f3cec00a</srcmd5>
+    <version>2.4.130</version>
+    <time>1765280760</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.4.130
+  * omap: fix omap_bo_size for tiled buffers
+  * amdgpu: add env support for amdgpu.ids path
+  * Support multiple paths in AMDGPU_ASIC_ID_TABLE_PATH envar
+  * amdgpu: Fix envar name in documentation
+  * Sync headers with drm-next
+  * headers: drm: Sync virtgpu_drm.h with Linux v6.16</comment>
+    <requestid>1321606</requestid>
+  </revision>
 </revisionlist>

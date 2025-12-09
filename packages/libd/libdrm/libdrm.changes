@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec  8 15:08:17 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 2.4.130
+  * omap: fix omap_bo_size for tiled buffers
+  * amdgpu: add env support for amdgpu.ids path
+  * Support multiple paths in AMDGPU_ASIC_ID_TABLE_PATH envar
+  * amdgpu: Fix envar name in documentation
+  * Sync headers with drm-next
+  * headers: drm: Sync virtgpu_drm.h with Linux v6.16
+
+-------------------------------------------------------------------
 Mon Nov 17 16:14:29 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to 2.4.129
