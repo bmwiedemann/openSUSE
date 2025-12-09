@@ -1,7 +1,7 @@
 #
 # spec file for package python-ruamel.yaml.convert
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,8 @@ Summary:        Data format conversion routines to and from YAML
 License:        MIT
 URL:            https://sourceforge.net/projects/ruamel-yaml-convert/
 Source:         https://files.pythonhosted.org/packages/source/r/ruamel.yaml.convert/ruamel.yaml.convert-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Support Python 3.14 ast changes
+Patch0:         support-python314.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module ruamel.base >= 1.0.0+post1}
 BuildRequires:  %{python_module ruamel.yaml}
@@ -43,7 +45,7 @@ BuildArch:      noarch
 Data format conversion routines to and from YAML.
 
 %prep
-%setup -q -n ruamel.yaml.convert-%{version}
+%autosetup -p1 -n ruamel.yaml.convert-%{version}
 # Remove unnecessary namespace declaration
 sed -i '/namespace_packages=/d' setup.py
 

@@ -26,4 +26,13 @@
 - Update URL.</comment>
     <requestid>1288112</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>475ad77bc5bf3ea23c408fd04059d5c1</srcmd5>
+    <version>0.3.2</version>
+    <time>1765281187</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-python314.patch:
+  * Support Python 3.14 ast changes.</comment>
+    <requestid>1321652</requestid>
+  </revision>
 </revisionlist>

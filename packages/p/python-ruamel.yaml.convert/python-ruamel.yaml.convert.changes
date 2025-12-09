@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  9 04:18:08 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python314.patch:
+  * Support Python 3.14 ast changes. 
+
+-------------------------------------------------------------------
 Tue Jun 24 02:22:48 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
