@@ -372,4 +372,12 @@
     <comment></comment>
     <requestid>1304240</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>623f1fafbb128d4bdbda5b706a79a975</srcmd5>
+    <version>4.15.0</version>
+    <time>1765280771</time>
+    <user>anag_factory</user>
+    <comment>- add py314-fix-tests.patch to fix tests with python 3.14</comment>
+    <requestid>1320781</requestid>
+  </revision>
 </revisionlist>

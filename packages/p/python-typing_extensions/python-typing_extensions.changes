@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec  1 20:52:46 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- add py314-fix-tests.patch to fix tests with python 3.14
+
+-------------------------------------------------------------------
 Thu Sep 11 09:45:29 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 4.15.0
