@@ -3055,6 +3055,7 @@ unsorted:
   - dLeyna-devel 
   - dMagnetic 
   - dSFMT-devel 
+  - dabstar 
   - daemonize 
   - dai-banna-fonts 
   - dante 
@@ -8481,6 +8482,7 @@ unsorted:
   - herbstluftwm-zsh-completion 
   - heroes-tron 
   - heroic-epic-integration 
+  - heroic-games-launcher 
   - heroic-gogdl 
   - hetzner-flatcar 
   - hevea 
@@ -10706,7 +10708,6 @@ unsorted:
   - kumactl-bash-completion 
   - kumactl-fish-completion 
   - kumactl-zsh-completion 
-  - kunifiedpush 
   - kunifiedpush-devel 
   - kunifiedpush-lang 
   - kunitconversion-devel 
@@ -11231,7 +11232,6 @@ unsorted:
   - libKSeExpr4 
   - libKTorrent6 
   - libKTorrent6-lang 
-  - libKUnifiedPush1 
   - libKWeatherCore6 
   - libKWeatherCore6-lang 
   - libKasten4 
@@ -11554,7 +11554,6 @@ unsorted:
   - libQt6StateMachineQml6 
   - libQt6WaylandCompositor6 
   - libQt6WaylandEglCompositorHwIntegration6 
-  - libQt6WebSockets6 
   - libQt6WebViewQuick6 
   - libQt6Xdg4 
   - libQt6XdgIconLoader-devel 
@@ -15480,13 +15479,13 @@ unsorted:
   - libprofiler0 
   - libproj25 
   - libprometheus-cpp0_13 
-  - libprotobuf-lite33_1_0-32bit 
+  - libprotobuf-lite33_2_0-32bit 
   - libprotobuf-lite3_21_12 
   - libprotobuf-nanopb0 
-  - libprotobuf33_1_0-32bit 
+  - libprotobuf33_2_0-32bit 
   - libprotobuf3_21_12 
-  - libprotoc33_1_0 
-  - libprotoc33_1_0-32bit 
+  - libprotoc33_2_0 
+  - libprotoc33_2_0-32bit 
   - libprotoc3_21_12 
   - libproxy-devel 
   - libproxy-devel-doc 
@@ -16816,7 +16815,7 @@ unsorted:
   - libusrp1 
   - libusrsctp2 
   - libut1 
-  - libutf8_range-33_1_0-32bit 
+  - libutf8_range-33_2_0-32bit 
   - libutf8proc3 
   - libuuid-devel 
   - libuuid-devel-32bit 
@@ -20010,6 +20009,7 @@ unsorted:
   - nut-doc-images 
   - nut-drivers-net 
   - nv-prefer-signed-open-driver 
+  - nv-prefer-signed-open-driver-G07 
   - nvdock 
   - nvidia-libXNVCtrl-devel 
   - nvidia-modprobe 
@@ -20020,9 +20020,18 @@ unsorted:
   - nvidia-open-driver-G06-signed-cuda-kmp-longterm 
   - nvidia-open-driver-G06-signed-cuda-longterm-devel 
   - nvidia-open-driver-G06-signed-default-devel 
-  - nvidia-open-driver-G06-signed-kmp-default 
   - nvidia-open-driver-G06-signed-kmp-longterm 
   - nvidia-open-driver-G06-signed-longterm-devel 
+  - nvidia-open-driver-G07-signed-check 
+  - nvidia-open-driver-G07-signed-cuda-check 
+  - nvidia-open-driver-G07-signed-cuda-default-devel 
+  - nvidia-open-driver-G07-signed-cuda-kmp-default 
+  - nvidia-open-driver-G07-signed-cuda-kmp-longterm 
+  - nvidia-open-driver-G07-signed-cuda-longterm-devel 
+  - nvidia-open-driver-G07-signed-default-devel 
+  - nvidia-open-driver-G07-signed-kmp-default 
+  - nvidia-open-driver-G07-signed-kmp-longterm 
+  - nvidia-open-driver-G07-signed-longterm-devel 
   - nvidia-settings 
   - nvidia-texture-tools 
   - nvim-lspconfig 
@@ -25203,6 +25212,7 @@ unsorted:
   - python311-deprecation 
   - python311-deprecation-alias 
   - python311-derpconf 
+  - python311-desktop-entry-lib 
   - python311-devel 
   - python311-devpi-client 
   - python311-devpi-common 
@@ -29011,6 +29021,7 @@ unsorted:
   - python312-deprecation 
   - python312-deprecation-alias 
   - python312-derpconf 
+  - python312-desktop-entry-lib 
   - python312-devel 
   - python312-devpi-client 
   - python312-devpi-common 
@@ -32855,6 +32866,7 @@ unsorted:
   - python313-deprecation-alias 
   - python313-derpconf 
   - python313-designateclient 
+  - python313-desktop-entry-lib 
   - python313-devpi-client 
   - python313-devpi-common 
   - python313-devpi-process 
