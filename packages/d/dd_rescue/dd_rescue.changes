@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec  7 15:04:37 CET 2025 - kurt@garloff.de
+
+- Update to dd_rescue-1.99.22:
+  * Improved calculation of average rate (harmonic mean).
+  * New option -@/--sparse_nonslow (to selectively overwrite with
+    zeros).
+  * Better PRNG initialization on arm-v8.5-a+rng supporting CPUs.
+
+-------------------------------------------------------------------
 Fri Mar 14 18:25:52 CET 2025 - kurt@garloff.de
 
 - Update to dd_rescue-1.99.21:
