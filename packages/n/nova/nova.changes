@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 09 06:34:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.10:
+  * INS-1686: nova: Bump go to 1.25.5 for fixing vulnerability
+    (#412)
+
+-------------------------------------------------------------------
 Tue Nov 04 08:33:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.11.9:
