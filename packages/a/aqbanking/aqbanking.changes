@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec  8 13:59:56 UTC 2025 - Torsten Duwe <duwe@suse.com>
+
+- Update to 6.8.2 release:
+  - PSD3 "VoP" now mostly stable, "match / almost / no match"
+    dialog works.
+  - requires (lib)gwenhywfar-5.14 now
+  - fixed problems with decoupled TAN
+  - continue migration towards CAMT.052 data format
+
+-------------------------------------------------------------------
 Tue Dec  2 15:19:18 UTC 2025 - marec <marec@detebe.org>
 
 - Update to 6.7.14beta due to some transactions still can't be fetched
