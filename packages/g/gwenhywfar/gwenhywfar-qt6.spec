@@ -18,21 +18,22 @@
 
 %define libversion 79
 %define devversion 5
-%define devrelease 5.12
+%define devrelease 5.14
 # Beta does not mean "before release" but a release that is considered as beta:
 %define _version %{version}
 %define _name gwenhywfar
-%define releasenumber 533
-%define checksumreleasenumber 532
+%define releasenumber 630
+%define checksumreleasenumber 629
 %bcond_without configure
 Name:           gwenhywfar-qt6
-Version:        5.12.1
+Version:        5.14.1
 Release:        0
 Summary:        Multiplatform helper library for other libraries
 License:        LGPL-2.1-or-later
 URL:            https://www.aquamaniac.de/rdm/projects/gwenhywfar
 Source:         https://www.aquamaniac.de/rdm/attachments/download/%{releasenumber}/%{_name}-%{_version}.tar.gz
 Source1:        https://www.aquamaniac.de/rdm/attachments/download/%{checksumreleasenumber}/%{_name}-%{_version}.tar.gz.asc
+Source2:        gwenhywfar.keyring
 BuildRequires:  fdupes
 %if 0%{?suse_version} < 1600
 BuildRequires:  gcc13

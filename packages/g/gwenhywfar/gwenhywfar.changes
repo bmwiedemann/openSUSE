@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec  8 13:55:49 UTC 2025 - Torsten Duwe <duwe@suse.com>
+
+- Update to release 5.14.1:
+  * added two GWEN_Data functions:
+   - GWEN_Date_GetThisWeekStartFromMonday(): get start of week for the
+     given date (week starting with Monday, like in DE)
+   - GWEN_Date_GetThisWeekStartFromSunday(): same as above except week
+     starts at Sunday
+  * implement VSplitter and HSplitter (gtk) resp. H/VLayout (Qt)
+
+-------------------------------------------------------------------
 Wed Aug 13 13:47:00 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Fix build with gettext-runtime >= 0.24.1
