@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Mon Dec 01 11:48:46 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20251201.8e5d0523:
+  * Fix package build for git-openqa-maintenance.py
+
+-------------------------------------------------------------------
+Mon Dec 01 10:41:33 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20251201.383d62da:
+  * Fix template for openSUSE/Leap
+  * Properly fail if branches are different
+  * Read GITEA_TOKEN either from environment or from GITEA_TOKEN_FILE
+  * Run Leap 16 maintenance bot for all 3 projects
+  * Add error handling if getting the version from branch fails
+  * Set OS_TESTS_TEMPLATE when triggering openqa jobs
+  * Fix undefined variable error if QA is still in progress
+  * Properly take the version string from branch
+  * Set GITEA_TOKEN as an environment variable
+  * Use same pattern tests in osado use for openQA flavor
+  * Add configuration for Leap 16 maintenance bot
+  * Populate OS_TEST_ISSUES
+  * Update bot defaults
+  * Adjust user agent
+  * Format to 140 line length
+  * Rename script to reflect what it does
+  * Set dry_run to false
+  * Fix query to openQA test results
+  * Make the build parameter more unique
+  * Refactor process_pull_request
+  * Add missing methods to git history
+  * Query comments for openqa tests and review status
+  * Allow post requests to gitea to have dry runs
+  * Handle updates with patchinfo and multiple source packages
+  * Minor polishing
+  * Add is_build_finished to query status of build in obs/ibs
+  * Add take_action to handle approval of a PR
+  * Refactor pr processing
+  * Query openQA build to know overall status of tests
+  * Allow processing multiple pull requests in batch
+  * Add configuration data for other projects
+  * Remove code for storing PR data
+  * Add cmdline parameters needed for the execution
+  * Allow querying status of the review
+  * Remove dead code
+  * Make style checks pass
+  * Improve logging messages
+  * Refactor openqa test settings generation
+  * Remove dead code
+  * Refactor gitea parameters
+  * Implement get_incident_name
+  * Prepare settings for the current update
+  * Add parameter for repository prefix
+  * Add script for manual maintenance update scheduling
+
+-------------------------------------------------------------------
 Thu Nov 20 07:56:28 UTC 2025 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20251120.4f44a622:

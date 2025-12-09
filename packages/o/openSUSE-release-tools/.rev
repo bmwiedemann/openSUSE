@@ -4655,4 +4655,12 @@ The toolset consists of a variety of stand-alone scripts, review bots, osc plugi
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1320292</requestid>
   </revision>
+  <revision rev="544" vrev="1">
+    <srcmd5>011e6ab66b6943acd0eb7eadcbee2f74</srcmd5>
+    <version>20251201.8e5d0523</version>
+    <time>1765281099</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1321575</requestid>
+  </revision>
 </revisionlist>
