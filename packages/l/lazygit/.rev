@@ -263,4 +263,12 @@ expertise with the git command line.</comment>
     menu (forwarded request 1312164 from amanzini)</comment>
     <requestid>1312276</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c3a03aec68a2549b024a5add6432c0bc</srcmd5>
+    <version>0.57.0</version>
+    <time>1765281141</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.57.0 (forwarded request 1321504 from ecsos)</comment>
+    <requestid>1321625</requestid>
+  </revision>
 </revisionlist>

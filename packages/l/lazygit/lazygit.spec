@@ -17,7 +17,7 @@
 
 
 Name:           lazygit
-Version:        0.55.1
+Version:        0.57.0
 Release:        0
 Summary:        Simple terminal UI for git commands
 License:        MIT
@@ -25,7 +25,7 @@ Group:          Development/Tools/Version Control
 URL:            https://github.com/jesseduffield/lazygit
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.24
+BuildRequires:  golang(API) >= 1.25
 Requires:       git-core
 
 %description

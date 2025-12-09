@@ -1,4 +1,127 @@
 -------------------------------------------------------------------
+Mon Dec 08 08:17:40 UTC 2025 - ecsos@opensuse.org
+
+- Update to version 0.57.0:
+  * Update docs and schema for release
+  * README.md: Update Sponsors
+  * Update translations from Crowdin
+  * Fix to support creating merge requests for Gitlab/Github repositories cloned with an SSH config alias
+  * chore: fix function name in comment
+  * refactor: use strings.Builder and strings.Repeat to simplify code
+  * Band-aid fix for rare crashes when refreshing files
+  * Remove unused function GetHashesAndCommitMessagesFirstLine
+  * Fix order of fixup base commits shown in ctrl-f error message
+  * Make find_base_commit_for_fixup tests more specific
+  * Don't use "HEADLESS" environment variable for running tests
+  * Fix deleting a remote tag when a remote branch with the same name exists
+  * Fix deleting a remote branch when a remote tag with the same name exists
+  * Add tests demonstrating the problem
+  * Cleanup: remove unnecessary keypress
+  * Remove the 'minimal' dependency which we no longer need
+  * Use git ls-files to list all file suggestions
+  * Bump golang.org/x/crypto from 0.37.0 to 0.45.0
+  * Switch to branches view when checking out a commit
+  * Cleanup: reformat
+  * Trigger background fetch on repo switch only if enough time has passed since the last one
+  * Add methods for converting RefresherConfig times to time.Durations
+  * Cleanup: don't pass refreshInterval to startBackgroundFilesRefresh
+  * Trigger immediate background fetch when switching repos
+  * Cleanup: remove unused field
+  * feat: add fork remote command
+  * Update table of contents in README.md
+  * Suppress output from background fetch
+  * Test properties of cmdObj for Push
+  * Don't log the GetDiff command
+  * Remove TrimSpace calls that are no longer needed
+  * Strip leading/trailing whitespace from prompt input
+  * Remove now unnecessary check for empty string
+  * Add AllowEmptyInput flag to PromptOpts
+  * Cleanup: fix incorrect comment
+  * Cleanup: put the IsPasting logic in the right place
+  * Refactor: extract body of wrappedConfirmationFunction into a helper function
+  * Modernize all codes
+  * Add SelectedSubmodule to SessionState
+  * Add submodules context to the docs
+  * Add a check to the release workflow to abort if docs or schema are not up to date
+  * Add a script for copying the docs and schema over for release
+  * Update generators to change the files in the -master directories
+  * Make copies of the docs and schema folders
+  * Make link relative
+  * Fix page navigation scroll behavior to keep cursor at top/bottom
+  * Cleanup: remove unnecessary code
+  * Update dead link for debugging regex to regex101.com
+  * Open pull requests in browser with extra leading slashes removed
+  * Add a "Commit history" section to CONTRIBUTING.md
+  * Cleanup: format markdown
+  * README.md: Update Sponsors
+
+-------------------------------------------------------------------
+Mon Dec 08 08:16:19 UTC 2025 - ecsos@opensuse.org
+
+- Update to version 0.56.0:
+  * Fix keybinding cheatsheets with regard to pipe characters in key or description
+  * Fix fixup's false filename detection in hunks containing dashed lines
+  * Use a PTY when using external diff command from git config
+  * Update translations from Crowdin
+  * Specify return value where named return value is used
+  * Fix makeAtomic in branches_test
+  * Remove workaround for "make format"
+  * Add `ignore` directive in go.mod
+  * Add no-ff merge option
+  * Rename texts to be consistent with our conventions
+  * Reorder texts so that they are grouped together, and ordered in a sensible way
+  * Replace MergeOpts struct with MergeVariant enum
+  * Add `synchronize` event to the hooks of "Check Required Labels"
+  * Avoid auto-stashing when only submodules are out of date
+  * Show a better error message if the temp directory is not writeable
+  * Add config option gui.skipSwitchWorktreeOnCheckoutWarning
+  * Add tests
+  * Fix lazygit getting unresponsive when pasting commits that become empty
+  * Fix window arrangement when a popup or the search prompt is open
+  * Offer to force-delete a worktree if it contains submodules
+  * Add test demonstrating the problem
+  * Add config migration of paging section to pagers array
+  * Update cheatsheets
+  * Replace paging config with an array of pagers
+  * Add PagerConfig
+  * Cleanup: remove unused method ConfiguredPager
+  * When pasting multi-line text into a prompt, don't treat the line feeds as "confirm"
+  * Fix support for Git copy status when status.renames=copies
+  * Update README.md
+  * Wrap long comment lines in Config.md
+  * Add missing Portuguese language
+  * Unwrap paragraphs in user_config comments
+  * Fix dropping submodule changes from a commit
+  * Add test demonstrating the problem
+  * Rename AddFileInWorktree to AddFileInWorktreeOrSubmodule
+  * Show "Log (x of y)" in the title bar when there is more than one branch log command
+  * Change condition that determines whether we are showing the dashboard
+  * Fix potential crash when reloading the config after removing a branch log command
+  * Change allBranchesLogCmdIndex to an int
+  * Set LC_MESSAGES too
+  * Use C locale instead of en_US.UTF-8 to force English language
+  * Add documentation for pager workaround on Windows
+  * Export a LAZYGIT_COLUMNS variable to "pty" tasks on Windows
+  * When entering a commit in path filtering mode, select the filtered path
+  * Extract a InternalTreePathForFilePath helper function
+  * Refresh the main view for the current side panel when a popup is showing
+  * Add merge options menu
+  * fix(nix): use nixos-unstable
+  * Fix: make isDescendentOfSelectedNodes work for the root item
+  * Cleanup: move variable assignment out of the loop
+  * feat(nix): add comprehensive nix flake
+  * Update resolve conflict using p instead of k
+  * Update go to 1.25
+  * Bump golangci-lint to v.2.4.0 from v2.2.1
+  * Give better feedback when checking out the previous branch
+  * README.md: Update Sponsors
+  * Bump gocui
+  * Hide the cursor when the password prompt is showing
+  * Don't log the git rev-list command that we use for IsBranchMerged
+  * Bump the go-deadlock dependency to v0.3.6
+  * fix command description typo
+
+-------------------------------------------------------------------
 Sat Oct 18 14:26:08 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 0.55.1:
