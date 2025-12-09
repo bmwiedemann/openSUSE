@@ -1,7 +1,7 @@
-From 852d6a0d81b21673bdcb80ff13bf60dd5a416dd4 Mon Sep 17 00:00:00 2001
+From c79a302c3ddf91ef9b389be3bab47abf4261e2e3 Mon Sep 17 00:00:00 2001
 From: Samuel Cabrero <scabrero@suse.de>
 Date: Mon, 14 Jan 2019 13:06:55 +0100
-Subject: [PATCH 2/8] krb5-1.9-manpaths
+Subject: [PATCH 2/9] krb5-1.9-manpaths
 
 Import krb5-1.9-manpaths.dif
 
@@ -13,16 +13,19 @@ configure scripts should be rebuilt.  Originally RT#6525
  src/man/kpropd.man | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: krb5-1.19.3/src/man/kpropd.man
-===================================================================
---- krb5-1.19.3.orig/src/man/kpropd.man
-+++ krb5-1.19.3/src/man/kpropd.man
-@@ -68,7 +68,7 @@ the \fB/etc/inetd.conf\fP file which loo
+diff --git a/src/man/kpropd.man b/src/man/kpropd.man
+index b1caad000..9bfa7be94 100644
+--- a/src/man/kpropd.man
++++ b/src/man/kpropd.man
+@@ -67,7 +67,7 @@ the \fB/etc/inetd.conf\fP file which looks like this:
+ .INDENT 3.5
  .sp
- .nf
- .ft C
+ .EX
 -kprop  stream  tcp  nowait  root  /usr/local/sbin/kpropd  kpropd
 +kprop  stream  tcp  nowait  root  @SBINDIR@/kpropd  kpropd
- .ft P
- .fi
+ .EE
  .UNINDENT
+ .UNINDENT
+-- 
+2.51.0
+

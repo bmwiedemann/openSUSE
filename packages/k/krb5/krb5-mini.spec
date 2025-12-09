@@ -1,7 +1,7 @@
 #
 # spec file for package krb5-mini
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,13 +24,13 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           krb5-mini
-Version:        1.21.3
+Version:        1.22.1
 Release:        0
 Summary:        MIT Kerberos5 implementation and libraries with minimal dependencies
 License:        MIT
 URL:            https://kerberos.org/dist/
-Source0:        https://kerberos.org/dist/krb5/1.21/krb5-%{version}.tar.gz
-Source1:        https://kerberos.org/dist/krb5/1.21/krb5-%{version}.tar.gz.asc
+Source0:        https://kerberos.org/dist/krb5/1.22/krb5-%{version}.tar.gz
+Source1:        https://kerberos.org/dist/krb5/1.22/krb5-%{version}.tar.gz.asc
 Source2:        krb5.keyring
 Source3:        vendor-files.tar.bz2
 Source4:        baselibs.conf
@@ -44,9 +44,7 @@ Patch5:         0005-krb5-1.6.3-ktutil-manpage.patch
 Patch6:         0006-krb5-1.12-api.patch
 Patch7:         0007-SELinux-integration.patch
 Patch8:         0008-krb5-1.9-debuginfo.patch
-Patch9:         0009-Fix-three-memory-leaks.patch
-Patch10:        0010-CVE-2025-24528.patch
-Patch11:        0011_usr_etc.patch
+Patch9:         0009-UsrEtc-support.patch
 BuildRequires:  autoconf
 BuildRequires:  bison
 BuildRequires:  pkgconfig

@@ -1,13 +1,33 @@
-diff -ur a/doc/admin/conf_files/krb5_conf.rst b/doc/admin/conf_files/krb5_conf.rst
---- a/doc/admin/conf_files/krb5_conf.rst	2025-07-01 17:17:19.392659240 +0200
-+++ b/doc/admin/conf_files/krb5_conf.rst	2025-07-02 10:07:14.375303312 +0200
-@@ -7,8 +7,14 @@
+From 4d138d9b4393ba1e38a0e8a02daf504adc549feb Mon Sep 17 00:00:00 2001
+From: Stefan Schubert <schubi@suse.de>
+Date: Fri, 29 Aug 2025 20:29:04 +0200
+Subject: [PATCH] UsrEtc support
+
+[scabrero@suse.com: Amend to fix memory leak in os_get_default_config_files()]
+[scabrero@suse.com: Add --enable-vendordir, simplify configure.ac]
+[scabrero@suse.com: Fix typo]
+---
+ doc/admin/conf_files/krb5_conf.rst | 14 ++++++++++++--
+ doc/conf.py                        |  5 ++++-
+ src/configure.ac                   | 25 +++++++++++++++++++++++++
+ src/doc/Makefile.in                | 23 +++++++++++++++++++----
+ src/include/Makefile.in            |  4 +++-
+ src/include/osconf.hin             |  4 ++++
+ src/lib/krb5/os/init_os_ctx.c      | 22 +++++++++++++++++++++-
+ src/man/Makefile.in                |  9 ++++++++-
+ 8 files changed, 96 insertions(+), 10 deletions(-)
+
+diff --git a/doc/admin/conf_files/krb5_conf.rst b/doc/admin/conf_files/krb5_conf.rst
+index e0c7a6330..a169b6e36 100644
+--- a/doc/admin/conf_files/krb5_conf.rst
++++ b/doc/admin/conf_files/krb5_conf.rst
+@@ -7,8 +7,14 @@ The krb5.conf file contains Kerberos configuration information,
  including the locations of KDCs and admin servers for the Kerberos
  realms of interest, defaults for the current realm and for Kerberos
  applications, and mappings of hostnames onto Kerberos realms.
 -Normally, you should install your krb5.conf file in the directory
 -``/etc``.  You can override the default location by setting the
-+Normally, you should install your indivual krb5.conf file in the directory
++Normally, you should install your individual krb5.conf file in the directory
 +``/etc``.
 +
 +.. only:: use_vendordir
@@ -18,7 +38,7 @@ diff -ur a/doc/admin/conf_files/krb5_conf.rst b/doc/admin/conf_files/krb5_conf.r
  environment variable **KRB5_CONFIG**.  Multiple colon-separated
  filenames may be specified in **KRB5_CONFIG**; all files which are
  present will be read.  Starting in release 1.14, directory names can
-@@ -1244,6 +1250,10 @@
+@@ -1271,6 +1277,10 @@ FILES
  
  |krb5conf|
  
@@ -29,11 +49,11 @@ diff -ur a/doc/admin/conf_files/krb5_conf.rst b/doc/admin/conf_files/krb5_conf.r
  
  SEE ALSO
  --------
-Nur in b/doc/admin/conf_files: krb5_conf.rst~.
-diff -ur a/doc/conf.py b/doc/conf.py
---- a/doc/conf.py	2025-07-01 17:17:19.384659240 +0200
-+++ b/doc/conf.py	2025-07-01 17:24:48.687885776 +0200
-@@ -239,6 +239,7 @@
+diff --git a/doc/conf.py b/doc/conf.py
+index 60835e936..88eee1d60 100644
+--- a/doc/conf.py
++++ b/doc/conf.py
+@@ -239,6 +239,7 @@ if 'mansubs' in tags:
      localstatedir = '``@LOCALSTATEDIR@``'
      runstatedir = '``@RUNSTATEDIR@``'
      sysconfdir = '``@SYSCONFDIR@``'
@@ -41,7 +61,7 @@ diff -ur a/doc/conf.py b/doc/conf.py
      ccache = '``@CCNAME@``'
      keytab = '``@KTNAME@``'
      ckeytab = '``@CKTNAME@``'
-@@ -253,6 +254,7 @@
+@@ -253,6 +254,7 @@ else:
      localstatedir = ':ref:`LOCALSTATEDIR <paths>`'
      runstatedir = ':ref:`RUNSTATEDIR <paths>`'
      sysconfdir = ':ref:`SYSCONFDIR <paths>`'
@@ -49,7 +69,7 @@ diff -ur a/doc/conf.py b/doc/conf.py
      ccache = ':ref:`DEFCCNAME <paths>`'
      keytab = ':ref:`DEFKTNAME <paths>`'
      ckeytab = ':ref:`DEFCKTNAME <paths>`'
-@@ -278,8 +280,9 @@
+@@ -278,8 +280,9 @@ else:
      rst_epilog += '.. |keytab| replace:: %s\n' % keytab
      rst_epilog += '.. |ckeytab| replace:: %s\n' % ckeytab
      rst_epilog += '.. |pkcs11_modname| replace:: %s\n' % pkcs11_modname
@@ -60,50 +80,47 @@ diff -ur a/doc/conf.py b/doc/conf.py
  .. |defkeysalts| replace:: ``aes256-cts-hmac-sha1-96:normal aes128-cts-hmac-sha1-96:normal``
  .. |defetypes| replace:: ``aes256-cts-hmac-sha1-96 aes128-cts-hmac-sha1-96 aes256-cts-hmac-sha384-192 aes128-cts-hmac-sha256-128 des3-cbc-sha1 arcfour-hmac-md5 camellia256-cts-cmac camellia128-cts-cmac``
  .. |defmkey| replace:: ``aes256-cts-hmac-sha1-96``
-Nur in b/doc: conf.py~.
-diff -ur a/src/configure.ac b/src/configure.ac
---- a/src/configure.ac	2025-07-01 17:17:19.456659239 +0200
-+++ b/src/configure.ac	2025-07-01 18:20:01.582633776 +0200
-@@ -1443,6 +1443,34 @@
+diff --git a/src/configure.ac b/src/configure.ac
+index 53936759e..d8a902a6f 100644
+--- a/src/configure.ac
++++ b/src/configure.ac
+@@ -1451,6 +1451,31 @@ fi
  AC_SUBST(OSX)
  AC_SUBST(MACOS_FRAMEWORK)
  
 +# Vendordir
 +AC_ARG_WITH([vendordir],
-+  AS_HELP_STRING([--with-vendordir=DIR], [Directory for distribution provided configuration files]),
-+  [ if test ! -z "$with_vendordir" ; then
-+		case $with_vendordir in
-+			yes|no)
-+				VENDORDIR="/usr/etc"
-+				;;
-+			/*)
-+				VENDORDIR="$with_vendordir"
-+				;;
-+			*)
-+                                AC_MSG_ERROR(You must specify an absolute path to --with-vendordir=DIR)
-+				;;
-+		esac
-+	fi
-+  ],
-+  [])
++            AS_HELP_STRING([--with-vendordir=DIR], [Directory for distribution provided configuration files]),
++            [
++              case $with_vendordir in
++                /*)
++                ;;
++                *)
++                  AC_MSG_ERROR(You must specify an absolute path to --with-vendordir=DIR)
++                ;;
++              esac
++              VENDORDIR="$with_vendordir"
++            ],
++            [ VENDORDIR="/usr/etc" ])
++AC_DEFINE_UNQUOTED(VENDORDIR, ["$VENDORDIR"], [Location of vendor configuration files])
++AC_SUBST(VENDORDIR)
 +
-+AS_IF([test "x$with_vendordir" != x], [
-+  AC_DEFINE([USE_VENDORDIR], [1], [Define to 1 to use vendordir])
-+  AC_DEFINE_UNQUOTED(VENDORDIR, "$VENDORDIR", [location of vendor configuration files])
-+  AC_SUBST(VENDORDIR)
-+  USE_VENDORDIR="1"
-+  AC_SUBST(USE_VENDORDIR)
-+  AC_MSG_NOTICE([Used vendor dir: $with_vendordir])
-+])
++AC_ARG_ENABLE([vendordir],
++              [AS_HELP_STRING([--enable-vendordir], [Enable support for distribution provided configuration files])],
++              [], [enable_vendordir=no])
++if test "$enable_vendordir" != no; then
++  AC_DEFINE(USE_VENDORDIR, 1, [Define if distribution provided configuration files should be used.])
++  AC_MSG_NOTICE([Used vendor dir: $VENDORDIR])
++fi
 +
  # Build-time default ccache, keytab, and client keytab names.  These
  # can be given as variable arguments DEFCCNAME, DEFKTNAME, and
  # DEFCKTNAME.  Otherwise, we try to get the OS defaults from
-Nur in b/src: configure.ac~.
-diff -ur a/src/doc/Makefile.in b/src/doc/Makefile.in
---- a/src/doc/Makefile.in	2025-07-01 17:17:19.424659240 +0200
-+++ b/src/doc/Makefile.in	2025-07-02 09:41:01.906440544 +0200
-@@ -11,6 +11,8 @@
+diff --git a/src/doc/Makefile.in b/src/doc/Makefile.in
+index a1b0cff0a..d0c8a66cf 100644
+--- a/src/doc/Makefile.in
++++ b/src/doc/Makefile.in
+@@ -11,6 +11,8 @@ DEFCCNAME=@DEFCCNAME@
  DEFKTNAME=@DEFKTNAME@
  DEFCKTNAME=@DEFCKTNAME@
  PKCS11_MODNAME=@PKCS11_MODNAME@
@@ -112,7 +129,7 @@ diff -ur a/src/doc/Makefile.in b/src/doc/Makefile.in
  
  RST_SOURCES= _static \
  	_templates \
-@@ -43,7 +45,11 @@
+@@ -43,7 +45,11 @@ LATEXOPTS=
  #     make -f Makefile.in SPHINX_ARGS= htmlsrc
  html: composite
  	rm -rf $(docsrc)/html
@@ -125,7 +142,7 @@ diff -ur a/src/doc/Makefile.in b/src/doc/Makefile.in
  
  # Dummy target for use in an unconfigured source tree.
  htmlsrc:
-@@ -55,17 +61,25 @@
+@@ -55,17 +61,25 @@ htmlsrc:
  substhtml: composite paths.py
  	rm -rf html_subst
  	cp paths.py rst_composite
@@ -154,7 +171,7 @@ diff -ur a/src/doc/Makefile.in b/src/doc/Makefile.in
  	# sphinx-build generates a gmake-specific Makefile that we don't use
  	mv $(PDFDIR)/Makefile $(PDFDIR)/GMakefile
  
-@@ -116,6 +130,7 @@
+@@ -116,6 +130,7 @@ paths.py:
  	echo 'localstatedir = "``$(localstatedir)``"' >> $@
  	echo 'runstatedir = "``$(runstatedir)``"' >> $@
  	echo 'sysconfdir = "``$(sysconfdir)``"' >> $@
@@ -162,32 +179,50 @@ diff -ur a/src/doc/Makefile.in b/src/doc/Makefile.in
  	echo 'ccache = "``$(DEFCCNAME)``"' >> $@
  	echo 'keytab = "``$(DEFKTNAME)``"' >> $@
  	echo 'ckeytab = "``$(DEFCKTNAME)``"' >> $@
-Nur in b/src/doc: Makefile.in~.
-diff -ur a/src/include/osconf.hin b/src/include/osconf.hin
---- a/src/include/osconf.hin	2025-07-01 17:17:19.456659239 +0200
-+++ b/src/include/osconf.hin	2025-07-01 17:35:25.392460942 +0200
-@@ -53,6 +53,7 @@
+diff --git a/src/include/Makefile.in b/src/include/Makefile.in
+index b9dd98e01..cf4aa0ad6 100644
+--- a/src/include/Makefile.in
++++ b/src/include/Makefile.in
+@@ -56,6 +56,7 @@ BINDIR = @bindir@
+ SBINDIR = @sbindir@
+ LIBDIR  = @libdir@
+ SYSCONFCONF = @SYSCONFCONF@
++VENDORDIR = @VENDORDIR@
+ 
+ PROCESS_REPLACE = -e "s\"@KRB5RCTMPDIR\"$(KRB5RCTMPDIR)\"" \
+ 		  -e "s\"@PREFIX\"$(INSTALL_PREFIX)\"" \
+@@ -69,7 +70,8 @@ PROCESS_REPLACE = -e "s\"@KRB5RCTMPDIR\"$(KRB5RCTMPDIR)\"" \
+ 		  -e "s\"@RUNSTATEDIR\"$(RUNSTATEDIR)\"" \
+ 		  -e "s\"@SYSCONFDIR\"$(SYSCONFDIR)\"" \
+ 		  -e "s\"@DYNOBJEXT\"$(DYNOBJEXT)\"" \
+-		  -e "s\"@SYSCONFCONF\"$(SYSCONFCONF)\""
++		  -e "s\"@SYSCONFCONF\"$(SYSCONFCONF)\"" \
++		  -e "s\"@VENDORDIR\"$(VENDORDIR)\""
+ 
+ OSCONFSRC = $(srcdir)/osconf.hin
+ 
+diff --git a/src/include/osconf.hin b/src/include/osconf.hin
+index c14297535..bad43f116 100644
+--- a/src/include/osconf.hin
++++ b/src/include/osconf.hin
+@@ -52,6 +52,10 @@
+ #else
  #define DEFAULT_SECURE_PROFILE_PATH     "/etc/krb5.conf@SYSCONFCONF"
  #define DEFAULT_PROFILE_PATH        DEFAULT_SECURE_PROFILE_PATH
++#if defined(USE_VENDORDIR)
++#define DEFAULT_VENDOR_SECURE_PROFILE_PATH "@VENDORDIR/krb5.conf"
++#define DEFAULT_VENDOR_PROFILE_PATH        DEFAULT_VENDOR_SECURE_PROFILE_PATH
++#endif /* USE_VENDORDIR */
  #endif
-+#define SYSCONFDIR "@SYSCONFDIR"
  #endif /* _WINDOWS  */
  
- #ifdef _WIN32
-Nur in b/src/include: osconf.hin~.
-diff -ur a/src/lib/krb5/os/init_os_ctx.c b/src/lib/krb5/os/init_os_ctx.c
---- a/src/lib/krb5/os/init_os_ctx.c	2025-07-01 17:17:19.432659239 +0200
-+++ b/src/lib/krb5/os/init_os_ctx.c	2025-07-02 14:54:25.799506632 +0200
-@@ -25,12 +25,17 @@
-  */
- 
- #define NEED_WINDOWS
-+#define KRB5_CONF "krb5.conf"
- 
- #include "k5-int.h"
+diff --git a/src/lib/krb5/os/init_os_ctx.c b/src/lib/krb5/os/init_os_ctx.c
+index c35007888..f1ef638fc 100644
+--- a/src/lib/krb5/os/init_os_ctx.c
++++ b/src/lib/krb5/os/init_os_ctx.c
+@@ -30,6 +30,10 @@
  #include "os-proto.h"
  #include "../krb/int-proto.h"
- #include "prof_int.h"        /* XXX for profile_copy, not public yet */
  
 +#ifdef USE_VENDORDIR
 +#include <sys/stat.h>
@@ -196,46 +231,40 @@ diff -ur a/src/lib/krb5/os/init_os_ctx.c b/src/lib/krb5/os/init_os_ctx.c
  #if defined(_WIN32)
  #include <winsock.h>
  #include <Shlobj.h>
-@@ -295,12 +300,34 @@
+@@ -294,11 +298,27 @@ os_get_default_config_files(profile_filespec_t **pfiles, krb5_boolean secure)
      unsigned int ent_len;
      const char *s, *t;
  
 +#ifdef USE_VENDORDIR
-+    int re = 0;
-+    struct stat stats;
++    struct stat stats = { 0 };
++#endif /* USE_VENDORDIR */
 +
-+    if (!secure)
-+        filepath = secure_getenv("KRB5_CONFIG");
-+
-+    if (!filepath) {
-+        re = asprintf(&filepath, "%s/%s", SYSCONFDIR, KRB5_CONF);
-+        if(re<0)
-+            return ENOMEM;
-+
-+        if (stat(filepath, &stats) < 0)
-+        {
-+            free(filepath);
-+            re = asprintf(&filepath, "%s/%s", VENDORDIR, KRB5_CONF);
-+            if(re<0)
-+                return ENOMEM;
-+        }
-+    }
-+#else
      if (secure) {
          filepath = DEFAULT_SECURE_PROFILE_PATH;
++#ifdef USE_VENDORDIR
++        if (stat(filepath, &stats) < 0) {
++            filepath = DEFAULT_VENDOR_SECURE_PROFILE_PATH;
++        }
++#endif /* USE_VENDORDIR */
      } else {
          filepath = secure_getenv("KRB5_CONFIG");
-         if (!filepath) filepath = DEFAULT_PROFILE_PATH;
+-        if (!filepath) filepath = DEFAULT_PROFILE_PATH;
++        if (!filepath) {
++            filepath = DEFAULT_PROFILE_PATH;
++#ifdef USE_VENDORDIR
++            if (stat(filepath, &stats) < 0) {
++                filepath = DEFAULT_VENDOR_PROFILE_PATH;
++            }
++#endif /* USE_VENDORDIR */
++        }
      }
-+#endif /* USE_VENDORDIR */    
  
      /* count the distinct filename components */
-     for(s = filepath, n_entries = 1; *s; s++) {
-Nur in b/src/lib/krb5/os: init_os_ctx.c~.
-diff -ur a/src/man/Makefile.in b/src/man/Makefile.in
---- a/src/man/Makefile.in	2025-07-01 17:17:19.456659239 +0200
-+++ b/src/man/Makefile.in	2025-07-02 10:14:21.558908755 +0200
-@@ -9,6 +9,8 @@
+diff --git a/src/man/Makefile.in b/src/man/Makefile.in
+index 85cae0914..9f7ccaffa 100644
+--- a/src/man/Makefile.in
++++ b/src/man/Makefile.in
+@@ -9,6 +9,8 @@ DEFCCNAME=@DEFCCNAME@
  DEFKTNAME=@DEFKTNAME@
  DEFCKTNAME=@DEFCKTNAME@
  PKCS11_MODNAME=@PKCS11_MODNAME@
@@ -244,7 +273,7 @@ diff -ur a/src/man/Makefile.in b/src/man/Makefile.in
  
  MANSUBS=k5identity.sub k5login.sub k5srvutil.sub kadm5.acl.sub kadmin.sub \
  	kadmind.sub kdb5_ldap_util.sub kdb5_util.sub kdc.conf.sub \
-@@ -26,7 +28,11 @@
+@@ -26,7 +28,11 @@ docsrc=$(top_srcdir)/../doc
  # manpage writer outputs near the end of its output files.
  man: $(docsrc)/version.py
  	rm -rf rst_man
@@ -257,7 +286,7 @@ diff -ur a/src/man/Makefile.in b/src/man/Makefile.in
  	for f in rst_man/*.[0-9]; do \
  		name=`echo $$f | sed -e 's|^.*/\(.*\)\.[0-9]$$|\1|'`; \
  		sed -e '/^\.\\" $$/d' \
-@@ -46,6 +52,7 @@
+@@ -46,6 +52,7 @@ $(docsrc)/version.py: $(top_srcdir)/patchlevel.h
  	    -e 's|@LOCALSTATEDIR@|$(localstatedir)|g' \
  	    -e 's|@RUNSTATEDIR@|$(runstatedir)|g' \
  	    -e 's|@SYSCONFDIR@|$(sysconfdir)|g' \
@@ -265,4 +294,6 @@ diff -ur a/src/man/Makefile.in b/src/man/Makefile.in
  	    -e 's|@CCNAME@|$(DEFCCNAME)|g' \
  	    -e 's|@KTNAME@|$(DEFKTNAME)|g' \
  	    -e 's|@CKTNAME@|$(DEFCKTNAME)|g' \
-Nur in b/src/man: Makefile.in~.
+-- 
+2.52.0
+

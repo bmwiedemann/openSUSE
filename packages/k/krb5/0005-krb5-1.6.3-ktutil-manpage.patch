@@ -1,20 +1,20 @@
-From 2a5b2877495384bbe5db8f3b66ac342f83cd45dc Mon Sep 17 00:00:00 2001
+From 75806e167e2ee2b9334b049ac9829fd76db2e65b Mon Sep 17 00:00:00 2001
 From: Samuel Cabrero <scabrero@suse.de>
 Date: Mon, 14 Jan 2019 13:14:47 +0100
-Subject: [PATCH 5/8] krb5-1.6.3-ktutil-manpage
+Subject: [PATCH 5/9] krb5-1.6.3-ktutil-manpage
 
 Import krb5-1.6.3-ktutil-manpage.dif
 ---
  src/man/ktutil.man | 12 ++++++++++++
  1 file changed, 12 insertions(+)
 
-Index: krb5-1.19.3/src/man/ktutil.man
-===================================================================
---- krb5-1.19.3.orig/src/man/ktutil.man
-+++ krb5-1.19.3/src/man/ktutil.man
-@@ -153,6 +153,18 @@ ktutil:
+diff --git a/src/man/ktutil.man b/src/man/ktutil.man
+index 8e4ec8377..06aaa6635 100644
+--- a/src/man/ktutil.man
++++ b/src/man/ktutil.man
+@@ -151,6 +151,18 @@ ktutil:
  .sp
- See kerberos(7) for a description of Kerberos environment
+ See \fI\%kerberos\fP for a description of Kerberos environment
  variables.
 +.SH REMARKS
 +Changes to the keytab are appended to the keytab file (i.e., the keytab file
@@ -30,4 +30,7 @@ Index: krb5-1.19.3/src/man/ktutil.man
 +# mv /tmp/krb5.newtab /etc/krb5.keytab
  .SH SEE ALSO
  .sp
- kadmin(1), kdb5_util(8), kerberos(7)
+ \fI\%kadmin\fP, \fI\%kdb5_util\fP, \fI\%kerberos\fP
+-- 
+2.51.0
+

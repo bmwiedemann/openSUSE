@@ -1,7 +1,7 @@
-From f079a7f765dc76eb01ba80fb7214ee0d25116e59 Mon Sep 17 00:00:00 2001
+From 48f6d3981f4c1231c6357c41371a682c5277cdc4 Mon Sep 17 00:00:00 2001
 From: Samuel Cabrero <scabrero@suse.de>
 Date: Mon, 14 Jan 2019 13:18:16 +0100
-Subject: [PATCH 8/8] krb5-1.9-debuginfo
+Subject: [PATCH 8/9] krb5-1.9-debuginfo
 
 Import krb5-1.9-debuginfo.patch
 
@@ -40,5 +40,5 @@ index 8669c2436..a22f23c02 100644
  install:
  	$(INSTALL_PROGRAM) $(PROG) ${DESTDIR}$(ADMIN_BINDIR)/$(PROG)
 -- 
-2.25.0
+2.51.0
 

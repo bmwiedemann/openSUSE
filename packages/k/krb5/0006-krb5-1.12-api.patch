@@ -1,7 +1,7 @@
-From b8544a75b273008042fadf51f0b49c00617ff275 Mon Sep 17 00:00:00 2001
+From 3938177c375ed9db1693651546e9d0cc345377f5 Mon Sep 17 00:00:00 2001
 From: Samuel Cabrero <scabrero@suse.de>
 Date: Mon, 14 Jan 2019 13:15:50 +0100
-Subject: [PATCH 6/8] krb5-1.12-api
+Subject: [PATCH 6/9] krb5-1.12-api
 
 Import krb5-1.12-api.patch
 
@@ -38,5 +38,5 @@ index a6936107d..0ed78833b 100644
          /* Treat UPNs as if they were real principals */
          if (princ1->type == KRB5_NT_ENTERPRISE_PRINCIPAL) {
 -- 
-2.25.0
+2.51.0
 

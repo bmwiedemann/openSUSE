@@ -1,7 +1,7 @@
-From 48abdf7c7b28611c1135b35dfa23ac61899e80b2 Mon Sep 17 00:00:00 2001
+From 25aaa35ecfe65cf857ae2319c49602255684ca4d Mon Sep 17 00:00:00 2001
 From: Robbie Harwood <rharwood@redhat.com>
 Date: Tue, 23 Aug 2016 16:45:26 -0400
-Subject: [PATCH 3/8] Adjust build configuration
+Subject: [PATCH 3/9] Adjust build configuration
 
 Build binaries in this package as RELRO PIEs, libraries as partial RELRO,
 and install shared libraries with the execute bit set on them.  Prune out
@@ -16,11 +16,11 @@ Last-updated: krb5-1.15-beta1
  src/config/shlib.conf          | 5 +++--
  3 files changed, 11 insertions(+), 3 deletions(-)
 
-Index: krb5-1.19.3/src/build-tools/krb5-config.in
-===================================================================
---- krb5-1.19.3.orig/src/build-tools/krb5-config.in
-+++ krb5-1.19.3/src/build-tools/krb5-config.in
-@@ -224,6 +224,13 @@ if test -n "$do_libs"; then
+diff --git a/src/build-tools/krb5-config.in b/src/build-tools/krb5-config.in
+index 2cb439887..9c6e55bf6 100755
+--- a/src/build-tools/krb5-config.in
++++ b/src/build-tools/krb5-config.in
+@@ -222,6 +222,13 @@ if test -n "$do_libs"; then
  	    -e 's#\$(PTHREAD_CFLAGS)#'"$PTHREAD_CFLAGS"'#' \
  	    -e 's#\$(CFLAGS)##'`
  
@@ -34,11 +34,11 @@ Index: krb5-1.19.3/src/build-tools/krb5-config.in
      if test $library = 'kdb'; then
  	lib_flags="$lib_flags -lkdb5 $KDB5_DB_LIB"
  	library=krb5
-Index: krb5-1.19.3/src/config/pre.in
-===================================================================
---- krb5-1.19.3.orig/src/config/pre.in
-+++ krb5-1.19.3/src/config/pre.in
-@@ -184,7 +184,7 @@ INSTALL_PROGRAM=@INSTALL_PROGRAM@ $(INST
+diff --git a/src/config/pre.in b/src/config/pre.in
+index 1197c1ffd..a04b3890a 100644
+--- a/src/config/pre.in
++++ b/src/config/pre.in
+@@ -185,7 +185,7 @@ INSTALL_PROGRAM=@INSTALL_PROGRAM@ $(INSTALL_STRIP)
  INSTALL_SCRIPT=@INSTALL_PROGRAM@
  INSTALL_DATA=@INSTALL_DATA@
  INSTALL_SHLIB=@INSTALL_SHLIB@
@@ -47,20 +47,20 @@ Index: krb5-1.19.3/src/config/pre.in
  ## This is needed because autoconf will sometimes define @exec_prefix@ to be
  ## ${prefix}.
  prefix=@prefix@
-Index: krb5-1.19.3/src/config/shlib.conf
-===================================================================
---- krb5-1.19.3.orig/src/config/shlib.conf
-+++ krb5-1.19.3/src/config/shlib.conf
-@@ -424,7 +424,7 @@ mips-*-netbsd*)
+diff --git a/src/config/shlib.conf b/src/config/shlib.conf
+index f838c2536..b5008ac7a 100644
+--- a/src/config/shlib.conf
++++ b/src/config/shlib.conf
+@@ -273,7 +273,7 @@ mips-*-netbsd*)
  	# Linux ld doesn't default to stuffing the SONAME field...
  	# Use objdump -x to examine the fields of the library
  	# UNDEF_CHECK is suppressed by --enable-asan
--	LDCOMBINE='$(CC) -shared -fPIC -Wl,-h,$(LIBPREFIX)$(LIBBASE)$(SHLIBSEXT) $(UNDEF_CHECK)'
-+	LDCOMBINE='$(CC) -shared -fPIC -Wl,-h,$(LIBPREFIX)$(LIBBASE)$(SHLIBSEXT) $(UNDEF_CHECK)  -Wl,-z,relro -Wl,--warn-shared-textrel'
+-	LDCOMBINE='$(CC) -shared -fPIC -Wl,-z,nodelete -Wl,-h,$(LIBPREFIX)$(LIBBASE)$(SHLIBSEXT) $(UNDEF_CHECK)'
++	LDCOMBINE='$(CC) -shared -fPIC -Wl,-z,nodelete -Wl,-h,$(LIBPREFIX)$(LIBBASE)$(SHLIBSEXT) $(UNDEF_CHECK)  -Wl,-z,relro -Wl,--warn-shared-textrel'
  	UNDEF_CHECK='-Wl,--no-undefined'
  	# $(EXPORT_CHECK) runs export-check.pl when in maintainer mode.
  	LDCOMBINE_TAIL='-Wl,--version-script binutils.versions $(EXPORT_CHECK)'
-@@ -436,7 +436,8 @@ mips-*-netbsd*)
+@@ -285,7 +285,8 @@ mips-*-netbsd*)
  	SHLIB_EXPFLAGS='$(SHLIB_RPATH_FLAGS) $(SHLIB_DIRS) $(SHLIB_EXPLIBS)'
  	PROFFLAGS=-pg
  	PROG_RPATH_FLAGS='$(RPATH_FLAG)$(PROG_RPATH)'
@@ -70,3 +70,6 @@ Index: krb5-1.19.3/src/config/shlib.conf
  	CC_LINK_STATIC='$(CC) $(PROG_LIBPATH) $(CFLAGS) $(LDFLAGS)'
  	CXX_LINK_SHARED='$(CXX) $(PROG_LIBPATH) $(PROG_RPATH_FLAGS) $(CXXFLAGS) $(LDFLAGS)'
  	CXX_LINK_STATIC='$(CXX) $(PROG_LIBPATH) $(CXXFLAGS) $(LDFLAGS)'
+-- 
+2.51.0
+

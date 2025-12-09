@@ -1,7 +1,7 @@
-From cb49731c07ee57f64bd5a93a182446bc834b9057 Mon Sep 17 00:00:00 2001
+From c9ba1af2540cd00b700a7db6ff3f7a0e507cb6b8 Mon Sep 17 00:00:00 2001
 From: Robbie Harwood <rharwood@redhat.com>
 Date: Tue, 23 Aug 2016 16:29:58 -0400
-Subject: [PATCH 1/8] ksu pam integration
+Subject: [PATCH 1/9] ksu pam integration
 
 Modify ksu so that it performs account and session management on behalf of
 the target user account, mimicking the action of regular su.  The default
@@ -30,10 +30,10 @@ Last-updated: krb5-1.18-beta1
  create mode 100644 src/clients/ksu/pam.h
 
 diff --git a/src/aclocal.m4 b/src/aclocal.m4
-index 024d6370c..43eed3b87 100644
+index 7397bdcc2..3b3be926b 100644
 --- a/src/aclocal.m4
 +++ b/src/aclocal.m4
-@@ -1677,3 +1677,71 @@ if test "$with_ldap" = yes; then
+@@ -1413,3 +1413,71 @@ if test "$with_ldap" = yes; then
    OPENLDAP_PLUGIN=yes
  fi
  ])dnl
@@ -106,7 +106,7 @@ index 024d6370c..43eed3b87 100644
 +AC_SUBST(NON_PAM_MAN)
 +])dnl
 diff --git a/src/clients/ksu/Makefile.in b/src/clients/ksu/Makefile.in
-index 8b4edce4d..9d58f29b5 100644
+index 9a892e665..5c9845c1f 100644
 --- a/src/clients/ksu/Makefile.in
 +++ b/src/clients/ksu/Makefile.in
 @@ -3,12 +3,14 @@ BUILDTOP=$(REL)..$(S)..
@@ -144,7 +144,7 @@ index 8b4edce4d..9d58f29b5 100644
  clean:
  	$(RM) ksu
 diff --git a/src/clients/ksu/main.c b/src/clients/ksu/main.c
-index af1286172..931f05404 100644
+index ca3981ea7..da029e877 100644
 --- a/src/clients/ksu/main.c
 +++ b/src/clients/ksu/main.c
 @@ -26,6 +26,7 @@
@@ -174,7 +174,7 @@ index af1286172..931f05404 100644
  /***********/
  
  #define KS_TEMPORARY_CACHE "MEMORY:_ksu"
-@@ -536,6 +542,23 @@ main (argc, argv)
+@@ -523,6 +529,23 @@ main(int argc, char ** argv)
                 prog_name,target_user,client_name,
                 source_user,ontty());
  
@@ -198,7 +198,7 @@ index af1286172..931f05404 100644
          /* Run authorization as target.*/
          if (krb5_seteuid(target_uid)) {
              com_err(prog_name, errno, _("while switching to target for "
-@@ -596,6 +619,24 @@ main (argc, argv)
+@@ -583,6 +606,24 @@ main(int argc, char ** argv)
  
              exit(1);
          }
@@ -223,7 +223,7 @@ index af1286172..931f05404 100644
      }
  
      if( some_rest_copy){
-@@ -653,6 +694,30 @@ main (argc, argv)
+@@ -640,6 +681,30 @@ main(int argc, char ** argv)
          exit(1);
      }
  
@@ -254,7 +254,7 @@ index af1286172..931f05404 100644
      /* set permissions */
      if (setgid(target_pwd->pw_gid) < 0) {
          perror("ksu: setgid");
-@@ -750,7 +815,7 @@ main (argc, argv)
+@@ -737,7 +802,7 @@ main(int argc, char ** argv)
          fprintf(stderr, "program to be execed %s\n",params[0]);
      }
  
@@ -263,7 +263,7 @@ index af1286172..931f05404 100644
          execv(params[0], params);
          com_err(prog_name, errno, _("while trying to execv %s"), params[0]);
          sweep_up(ksu_context, cc_target);
-@@ -780,16 +845,35 @@ main (argc, argv)
+@@ -767,16 +832,35 @@ main(int argc, char ** argv)
              if (ret_pid == -1) {
                  com_err(prog_name, errno, _("while calling waitpid"));
              }
@@ -271,7 +271,7 @@ index af1286172..931f05404 100644
 +            if( !keep_target_cache ) {
 +                sweep_up(ksu_context, cc_target);
 +            }
-             exit (statusp);
+             exit (WIFEXITED(statusp) ? WEXITSTATUS(statusp) : 1);
          case -1:
              com_err(prog_name, errno, _("while trying to fork."));
              sweep_up(ksu_context, cc_target);
@@ -759,10 +759,10 @@ index 000000000..d45b9fd84
 +void appl_pam_cleanup(void);
 +#endif
 diff --git a/src/configure.ac b/src/configure.ac
-index 4eb080784..693f76a81 100644
+index 4325fae99..969d05fff 100644
 --- a/src/configure.ac
 +++ b/src/configure.ac
-@@ -1389,6 +1389,8 @@ AC_SUBST([VERTO_VERSION])
+@@ -1407,6 +1407,8 @@ AC_SUBST([VERTO_VERSION])
  
  AC_PATH_PROG(GROFF, groff)
  
@@ -772,5 +772,5 @@ index 4eb080784..693f76a81 100644
  if test "${localedir+set}" != set; then
      localedir='$(datadir)/locale'
 -- 
-2.30.0
+2.51.0
 
