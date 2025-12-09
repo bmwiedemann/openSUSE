@@ -1,4 +1,113 @@
 -------------------------------------------------------------------
+Tue Dec 09 06:33:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.0.191:
+  * Fixed
+    - CLI: Handle broken pipe gracefully when piping to head (fixes
+      #184)
+      - Output to closed pipes (e.g., rumdl check . | head) no
+        longer causes error messages
+      - SIGPIPE is now handled properly on Unix systems
+    - Config: Resolve exclude patterns relative to config file
+      location (fixes #185)
+      - Exclude patterns like docs/* now resolve relative to the
+        project root (config file directory)
+      - Previously patterns resolved relative to the current
+        working directory, causing them to fail when running from a
+        different directory with --config
+      - This matches the behavior of Biome, Black, and
+        markdownlint-cli2
+      - Note: Users running from the project root (the common case)
+        are unaffected
+    - Docs: Correct build status badge to track release workflow
+
+-------------------------------------------------------------------
+Mon Dec 08 08:08:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.0.190:
+  * Added
+    - GitHub Action: New rumdl-action for CI integration
+      - Supports version, path, and config inputs
+      - Enables easy integration of rumdl into GitHub workflows
+    - CLI: Add --rules as alias for --enable
+      - More intuitive option name for specifying which rules to
+        run
+      - Example: rumdl check --rules MD001,MD003 file.md
+  * Fixed
+    - LSP: Detect client diagnostic capabilities to avoid duplicate
+      diagnostics (fixes #182)
+      - LSP server now checks if the client supports
+        textDocument/publishDiagnostics
+      - Prevents duplicate diagnostics when client pulls
+        diagnostics instead of receiving pushes
+    - MD005 (list-indent): Group sublists by parent content column
+      - Correctly handles ordered lists where marker widths vary
+        (e.g., "1. " vs "10. ")
+      - Sublists under parents with different content columns are
+        now grouped separately
+      - Prevents false positives when indent differences are caused
+        by marker width variation
+    - MD037/MD038: Handle multi-byte UTF-8 characters in emphasis
+      detection
+      - Emphasis detection now correctly handles characters like
+        CJK and emoji
+      - Prevents false positives and incorrect column reporting for
+        non-ASCII content
+    - MD057 (existing-relative-links): Handle absolute paths as
+      workspace-relative
+      - Absolute paths in markdown (e.g., /CONTRIBUTING.md) are now
+        resolved relative to workspace root
+      - Fixes false positives for links that reference files from
+        the repository root
+    - MD057 (existing-relative-links): Add filesystem fallback for
+      case-sensitivity issues
+      - Improves link validation on case-insensitive filesystems
+      - Reduces false positives on macOS and Windows
+    - CLI: Canonicalize config path before changing working
+      directory
+      - Config files specified with relative paths now work
+        correctly
+      - Fixes issue where config was not found after directory
+        change
+- Update to version 0.0.189:
+  * Fixed
+    - MD061 (link-destination-exists): Default case_sensitive to
+      true when loading from TOML
+      - Configuration parsing now correctly defaults to
+        case-sensitive path checking
+      - Aligns TOML config behavior with programmatic defaults
+    - MD022 (blanks-around-headings): Treat HTML comments and
+      frontmatter as transparent
+      - HTML comments between content and headings no longer
+        trigger blank line warnings
+      - Frontmatter is now invisible to blank line checking around
+        headings
+    - MD033 (no-inline-html): Skip code span content in multi-line
+      span detection
+      - HTML tags inside multi-line code spans are no longer
+        flagged
+      - Prevents false positives for code examples containing HTML
+    - MD032 (blanks-around-lists): Handle multi-line code spans in
+      list detection
+      - Code spans spanning multiple lines no longer confuse list
+        boundary detection
+      - Fixes false positives for lists near complex code span
+        usage
+    - MD044 (proper-names): Skip HTML comments by default
+      - Proper name checking now excludes HTML comment content
+      - Reduces noise from commented-out content
+    - MD029 (ol-prefix): Use pulldown-cmark for list membership
+      detection
+      - More accurate detection of which items belong to which
+        ordered list
+      - Handles edge cases with code blocks and other interrupting
+        elements
+  * Changed
+    - MD057 (table-pipe-style): Remove unused skip_media_files
+      config option
+      - Simplifies configuration by removing non-functional option
+
+-------------------------------------------------------------------
 Thu Dec 04 06:08:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.0.188:
