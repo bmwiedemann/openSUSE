@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Dec 08 08:05:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.35.1:
+  * Convert instances of new logger creation to clog.FromContext
+  * rebuild: move impl into func
+  * build: derive logger from incoming context
+  * build(deps): bump github.com/docker/cli (#2248)
+  * build(deps): bump docker/setup-docker-action in the actions
+    group (#2246)
+  * build(deps): bump the gomod group across 1 directory with 4
+    updates (#2253)
+
+-------------------------------------------------------------------
 Fri Dec 05 06:11:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.35.0:
