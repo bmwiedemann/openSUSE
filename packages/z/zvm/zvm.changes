@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec  6 20:01:07 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 0.8.11:
+  * Bump golang.org/x/crypto from 0.43.0 to 0.45.0
+  * feat(security): Implement robust path and archive extraction safeguards
+    This commit addresses several security vulnerabilities related to path 
+    traversal and insecure archive extraction.
+
+-------------------------------------------------------------------
 Mon Oct 27 12:13:52 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Update to 0.8.10:

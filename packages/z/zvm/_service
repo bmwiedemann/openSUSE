@@ -1,6 +1,6 @@
 <services>
  <service name="go_modules" mode="manual">
    <param name="compression">xz</param>
-   <param name="archive">v0.8.10.tar.gz</param>
+   <param name="archive">v0.8.11.tar.gz</param>
  </service>
 </services>

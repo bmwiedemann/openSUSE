@@ -17,7 +17,7 @@
 
 
 Name:           zvm
-Version:        0.8.10
+Version:        0.8.11
 Release:        0
 Summary:        Easily install/upgrade between different versions of Zig
 License:        MIT

@@ -52,4 +52,16 @@
 - Rebase patch disable-auto-upgrade.patch (forwarded request 1313835 from lmulling)</comment>
     <requestid>1313836</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fe8498221373fc69e4417984e29f3ec9</srcmd5>
+    <version>0.8.11</version>
+    <time>1765281106</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.8.11:
+  * Bump golang.org/x/crypto from 0.43.0 to 0.45.0
+  * feat(security): Implement robust path and archive extraction safeguards
+    This commit addresses several security vulnerabilities related to path 
+    traversal and insecure archive extraction. (forwarded request 1321392 from amanzini)</comment>
+    <requestid>1321579</requestid>
+  </revision>
 </revisionlist>
