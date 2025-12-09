@@ -2514,4 +2514,18 @@ Note: The previously pushed version 3.89.0 never existed. This was a typo, which
   * redact secret for twilio api key (#4550) (forwarded request 1319652 from ph03nix)</comment>
     <requestid>1319811</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>935f848009643e047359d543b6ece72d</srcmd5>
+    <version>3.91.2</version>
+    <time>1765281145</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.91.2:
+  * Make Integrations (shared) codeowners of proto/ (#4576)
+  * add response id and response name to postman metadata (#4555)
+  * added installation_type field in jira source proto for specifying instalation type (#4564)
+  * Add some engine tests around the Verify flag (#4566)
+  * Fix custom regex link in readme.md (#4568)
+  * Make Integrations team codeown source integrations (#4561) (forwarded request 1321578 from ph03nix)</comment>
+    <requestid>1321626</requestid>
+  </revision>
 </revisionlist>

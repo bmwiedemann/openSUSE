@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec 08 10:33:29 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 3.91.2:
+  * Make Integrations (shared) codeowners of proto/ (#4576)
+  * add response id and response name to postman metadata (#4555)
+  * added installation_type field in jira source proto for specifying instalation type (#4564)
+  * Add some engine tests around the Verify flag (#4566)
+  * Fix custom regex link in readme.md (#4568)
+  * Make Integrations team codeown source integrations (#4561)
+
+-------------------------------------------------------------------
 Mon Nov 24 08:27:21 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 3.91.1:
