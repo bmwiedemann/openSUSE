@@ -55,4 +55,15 @@ Requires python-setuptools 78 to build successfully.
 </comment>
     <requestid>1264890</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>10e355e56d57a05fde48c26b781afd76</srcmd5>
+    <version>0.13.0</version>
+    <time>1765281185</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.13.0:
+  * No upstream changelog.
+- Add patch support-python314.patch:
+  * Support Python 3.14 ast changes.</comment>
+    <requestid>1321651</requestid>
+  </revision>
 </revisionlist>

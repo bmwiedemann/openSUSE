@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec  9 04:16:44 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.13.0:
+  * No upstream changelog.
+- Add patch support-python314.patch:
+  * Support Python 3.14 ast changes.
+
+-------------------------------------------------------------------
 Thu Mar 27 03:44:15 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Normalize metadata directory name.
