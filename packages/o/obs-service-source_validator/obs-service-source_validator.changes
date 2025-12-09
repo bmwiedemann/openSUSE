@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec 09 09:34:01 UTC 2025 - Ruediger Oertel <ro@suse.com>
+
+- Update to version 0.42+4:
+  * Report also dirassets as source
+
+-------------------------------------------------------------------
+Mon Dec  1 20:04:54 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Add PKGBUILD to enable builds for Arch Linux
+
+-------------------------------------------------------------------
 Wed Oct 01 09:53:01 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.42+2:

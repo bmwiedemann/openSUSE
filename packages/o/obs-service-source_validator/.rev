@@ -848,4 +848,15 @@ last submission had wrong tar ball for unknown reason</comment>
   * Ignore Debian special files during unmentioned-sources check (forwarded request 1308369 from dimstar)</comment>
     <requestid>1308519</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>bff2d60b576adaba4b1d0d2b8f536023</srcmd5>
+    <version>0.42+4</version>
+    <time>1765281045</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.42+4:
+  * Report also dirassets as source
+
+- Add PKGBUILD to enable builds for Arch Linux</comment>
+    <requestid>1321703</requestid>
+  </revision>
 </revisionlist>
