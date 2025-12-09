@@ -1,7 +1,7 @@
 #
 # spec file for package devilspie2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           devilspie2
-Version:        0.44
+Version:        0.45
 Release:        0
 Summary:        A window matching utility
 License:        GPL-3.0-or-later
 URL:            https://www.nongnu.org/devilspie2/
-Source0:        http://download.savannah.nongnu.org/releases/devilspie2/devilspie2-%{version}.tar.xz
+Source0:        http://download.savannah.nongnu.org/releases/devilspie2/devilspie2_%{version}-src.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libwnck-3.0)
@@ -56,6 +56,7 @@ install -D -p -m 644 %{name}.1 \
 %doc AUTHORS README
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
+/etc/xdg/autostart/%{name}.desktop
 
 %files lang -f %{name}.lang
 

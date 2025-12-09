@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Dec  8 08:36:13 UTC 2025 - ming li <mli@suse.com>
+
+- Update to version 0.45:
+  * Fixes related to Lua version handling
+  * Misc build fixes
+  * Add set_on_bottom(): move to bottom of stack
+  * Change set_on_top() so that it merely raises the window
+  * Add get_class_group_name().
+    This complements get_class_instance_name re. WM_CLASS.
+  * More aliases for function names containing 'maximize' or
+    'minimize': accept -ise spellings
+  * Visibly deprecate function names containing 'horisontally'
+  * Add set_adjust_for_decoration(), useful if you have problems with
+    positioning & resizing of decorated windows [note: experimental]
+  * Add get_window_frame_extents()
+  * Allow workspaces to be referenced by name
+  * Extra event type for running rules on window name/title changes
+  * Ignore dot files in the scripts directory.
+  * More UTF-8 support: use_utf8() (sets and reads whether UTF-8 is
+    default, initially false), window_property_is_utf8() and
+    window_property_full().
+- Modified the original download name of the software package
+  in the spec file.
+- Fixed the issue of the earliest date format error
+  in devilspie2.changes file.
+
+-------------------------------------------------------------------
 Tue Jun 20 14:36:44 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.43:
@@ -91,17 +118,17 @@ Mon Nov  9 14:47:22 GMT 2015 - aspiers@suse.com
 - Update to 0.39
 
 -------------------------------------------------------------------
-Thu Dec 26 2013 larchunix <larchunix at gmail dot com> - 0.31-1
+Thu Dec 26 07:31:04 UTC 2013 - larchunix <larchunix at gmail dot com>
 - Upstream update.
 
 -------------------------------------------------------------------
-Sun Aug 25 2013 larchunix <larchunix at gmail dot com> - 0.30-1
+Sun Aug 25 07:31:04 UTC 2013 - larchunix <larchunix at gmail dot com>
 - Upstream update.
 
 -------------------------------------------------------------------
-Sun May 19 2013 larchunix <larchunix at gmail dot com> - 0.29-1
+Sun May 19 07:31:04 UTC 2013 - larchunix <larchunix at gmail dot com>
 - Upstream update.
 
 -------------------------------------------------------------------
-Wed Mar 13 2013 larchunix <larchunix at gmail dot com> - 0.28-1
+Wed Mar 13 07:31:04 UTC 2013 - larchunix <larchunix at gmail dot com>
 - Initial RPM release.

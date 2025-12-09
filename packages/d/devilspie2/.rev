@@ -102,4 +102,12 @@ http://lists.opensuse.org/opensuse-factory/2016-02/msg00457.html</comment>
   * Allow replacements for pkg-config at compile time</comment>
     <requestid>1094105</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>25b3855c96327f9391e4ff93a16b6040</srcmd5>
+    <version>0.45</version>
+    <time>1765280970</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1321548</requestid>
+  </revision>
 </revisionlist>
