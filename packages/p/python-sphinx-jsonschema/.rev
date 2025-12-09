@@ -57,4 +57,14 @@
 </comment>
     <requestid>1306528</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b1ec6a3f350c4dab7963f24fa36feb01</srcmd5>
+    <version>1.19.2</version>
+    <time>1765280777</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.19.2:
+  * allow building with Sphinx 9.0.
+- Drop patch support-docutils-0.22.patch, included upstream.</comment>
+    <requestid>1321482</requestid>
+  </revision>
 </revisionlist>

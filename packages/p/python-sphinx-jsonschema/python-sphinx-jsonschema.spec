@@ -16,17 +16,14 @@
 #
 
 
-%define info_version 1.19.0
 Name:           python-sphinx-jsonschema
-Version:        1.19.1
+Version:        1.19.2
 Release:        0
 Summary:        Sphinx extension to display JSON Schema
 License:        GPL-3.0-only
 URL:            https://github.com/lnoor/sphinx-jsonschema
 # Tarballs from pypi.org are missing license files
 Source:         https://github.com/lnoor/sphinx-jsonschema/archive/refs/tags/v.%{version}.tar.gz#/sphinx-jsonschema-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#lnoor/sphinx-jsonschema#90
-Patch0:         support-docutils-0.22.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -68,6 +65,6 @@ Sphinx extension to display JSON Schema.
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/sphinx[-_]jsonschema
-%{python_sitelib}/sphinx[-_]jsonschema-%{info_version}.dist-info
+%{python_sitelib}/sphinx[-_]jsonschema-%{version}.dist-info
 
 %changelog

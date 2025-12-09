@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec  8 04:07:47 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.19.2:
+  * allow building with Sphinx 9.0.
+- Drop patch support-docutils-0.22.patch, included upstream.
+
+-------------------------------------------------------------------
 Fri Sep 19 02:35:43 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-docutils-0.22.patch:
