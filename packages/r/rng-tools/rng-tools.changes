@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 24 09:50:54 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Drop rcrng-tools symlink [jsc#PED-266]
+
+-------------------------------------------------------------------
 Thu Oct 24 15:49:23 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - Enable build on risc64

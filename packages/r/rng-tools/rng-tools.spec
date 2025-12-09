@@ -1,7 +1,7 @@
 #
 # spec file for package rng-tools
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -92,7 +92,6 @@ ensure that it is properly random.
 %make_install
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}/%{name}.service
 install -D -m 0644 %{SOURCE3} %{buildroot}%{_udevrulesdir}/90-hwrng.rules
-ln -sf /sbin/service %{buildroot}%{_sbindir}/rc%{name}
 
 %pre
 %service_add_pre %{name}.service
@@ -115,7 +114,6 @@ ln -sf /sbin/service %{buildroot}%{_sbindir}/rc%{name}
 %{_sbindir}/rngd
 %{_mandir}/man?/*.*.gz
 %{_unitdir}/%{name}.service
-%{_sbindir}/rc%{name}
 %{_udevrulesdir}/90-hwrng.rules
 
 %changelog
