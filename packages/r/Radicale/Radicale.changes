@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec  1 08:40:59 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
+
+- Update to 3.5.9
+  * Extend: [auth] add support for type http_remote_user
+  * Extend: logging of invalid sync-token with user, path, remote host and useragent
+  * Fix: typo related to collection delete hook (can cause OOM error) 
+
+-------------------------------------------------------------------
 Sun Nov  9 11:44:40 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
 
 - Enable Argon2 support for testing and as a recommendation

@@ -27,7 +27,7 @@
 %define pk_min_ver 1.1.0
 %define pt_min_ver 7
 Name:           Radicale
-Version:        3.5.8
+Version:        3.5.9
 Release:        0
 Summary:        A CalDAV calendar and CardDav contact server
 License:        GPL-3.0-or-later
