@@ -951,4 +951,13 @@
 - update CUDA variant to 580.105.08</comment>
     <requestid>1317612</requestid>
   </revision>
+  <revision rev="83" vrev="3">
+    <srcmd5>69e910a9383e6da8674ad904e01c4239</srcmd5>
+    <version>580.105.08</version>
+    <time>1765281228</time>
+    <user>anag_factory</user>
+    <comment>- kernel-6.18.patch
+  * fixed build against kernel 6.18</comment>
+    <requestid>1321704</requestid>
+  </revision>
 </revisionlist>

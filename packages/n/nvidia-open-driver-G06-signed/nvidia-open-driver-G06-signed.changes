@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  3 14:03:19 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- kernel-6.18.patch
+  * fixed build against kernel 6.18
+
+-------------------------------------------------------------------
 Thu Nov 13 14:29:36 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - introduced extra %gfx_aarch64_version and appropriate
