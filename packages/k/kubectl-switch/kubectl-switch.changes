@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Mon Dec 08 08:15:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.3.3:
+  * Bug Fixes
+    - go: update github.com/spf13/cobra ( v1.10.1 → v1.10.2 )
+      (c35f81f)
+  * CI/CD
+    - github-action: update mirceanton/action-semver-release (
+      v2.1.0 → v2.2.0 ) (e694b0f)
+    - github-action: update actions/checkout ( v6.0.0 → v6.0.1 )
+      (ab88afd)
+    - github-action: update renovatebot/github-action ( v44.0.4 →
+      v44.0.5 ) (267f0d9)
+    - github-action: update github/codeql-action ( v4.31.5 →
+      v4.31.6 ) (41f0a2e)
+    - github-action: update jdx/mise-action ( v3.5.0 → v3.5.1 )
+      (51f42b3)
+    - github-action: update github/codeql-action ( v4.31.4 →
+      v4.31.5 ) (28e22ec)
+    - github-action: update renovatebot/github-action ( v44.0.3 →
+      v44.0.4 ) (b91430e)
+    - github-action: update actions/create-github-app-token (
+      v2.1.4 → v2.2.0 ) (2fdad3b)
+    - github-action: update jdx/mise-action ( v3.4.1 → v3.5.0 )
+      (e41b247)
+    - github-action: Update actions/checkout ( v5.0.1 → v6.0.0 )
+      (#216) (a1055be)
+    - github-action: update github/codeql-action ( v4.31.3 →
+      v4.31.4 ) (1ff82f6)
+    - github-action: update renovatebot/github-action ( v44.0.2 →
+      v44.0.3 ) (1357c10)
+    - github-action: update actions/checkout ( v5.0.0 → v5.0.1 )
+      (c557b30)
+    - github-action: update github/codeql-action ( v4.31.2 →
+      v4.31.3 ) (51c2c56)
+    - github-action: update jdx/mise-action ( v3.4.0 → v3.4.1 )
+      (4d104ed)
+  * Chores
+    - mise: update aqua:golangci/golangci-lint ( 2.7.0 → 2.7.1 )
+      (392c6e7)
+    - mise: update aqua:golangci/golangci-lint ( 2.6.2 → 2.7.0 )
+      (71730e4)
+    - mise: update go ( 1.25.4 → 1.25.5 ) (d042ae6)
+    - mise: update aqua:goreleaser/goreleaser ( 2.12.7 → 2.13.0 )
+      (230b751)
+    - mise: update aqua:golangci/golangci-lint ( 2.6.1 → 2.6.2 )
+      (116f3c5)
+
+-------------------------------------------------------------------
 Mon Nov 17 06:17:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.3.2:
