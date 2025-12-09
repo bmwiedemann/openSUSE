@@ -51,7 +51,7 @@ BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  /usr/bin/who
 %endif
 BuildRequires:  %{python_module psutil = %{version}}
-BuildRequires:  %{python_module pytest-subtests}
+BuildRequires:  %{python_module pytest-subtests if %python-pytest < 9}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  net-tools

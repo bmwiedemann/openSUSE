@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec  8 04:29:16 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Only require pytest-subtests with pytest < 9.
+
+-------------------------------------------------------------------
 Thu Nov 27 11:31:09 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream pytest9.patch to fix tests
