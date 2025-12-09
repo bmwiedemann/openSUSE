@@ -26,6 +26,5 @@ You may specify different Python versions and interpreters.
 
 
 </description>
-  <devel project="devel:languages:python:pytest" package="python-pytest-xdist"/>
   <url>http://bitbucket.org/hpk42/pytest-xdist</url>
 </package>

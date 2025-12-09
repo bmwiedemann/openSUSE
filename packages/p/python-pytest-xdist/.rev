@@ -356,4 +356,13 @@
     in PEP 639.</comment>
     <requestid>1294220</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>70ddb2432a0087039656c94d9756b2d7</srcmd5>
+    <version>3.8.0</version>
+    <time>1765280767</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-pytest-9.patch:
+  * Support Pytest 9 changes.</comment>
+    <requestid>1320319</requestid>
+  </revision>
 </revisionlist>

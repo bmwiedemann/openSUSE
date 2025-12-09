@@ -1,0 +1,83 @@
+From 9c0a03f70b7be0a9a7d4b7d3e1692b77027f323e Mon Sep 17 00:00:00 2001
+From: Bruno Oliveira <nicoddemus@gmail.com>
+Date: Sat, 1 Nov 2025 20:10:43 -0300
+Subject: [PATCH 1/2] Update build-and-inspect-python-package to v2.14
+
+v2.13 was breaking in a few CI builds.
+---
+ .github/workflows/deploy.yml | 2 +-
+ .github/workflows/test.yml   | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+Index: pytest_xdist-3.8.0/.github/workflows/deploy.yml
+===================================================================
+--- pytest_xdist-3.8.0.orig/.github/workflows/deploy.yml
++++ pytest_xdist-3.8.0/.github/workflows/deploy.yml
+@@ -19,7 +19,7 @@ jobs:
+     - uses: actions/checkout@v4
+ 
+     - name: Build and Check Package
+-      uses: hynek/build-and-inspect-python-package@v2.13
++      uses: hynek/build-and-inspect-python-package@v2.14
+ 
+   deploy:
+     needs: package
+Index: pytest_xdist-3.8.0/.github/workflows/test.yml
+===================================================================
+--- pytest_xdist-3.8.0.orig/.github/workflows/test.yml
++++ pytest_xdist-3.8.0/.github/workflows/test.yml
+@@ -22,7 +22,7 @@ jobs:
+     steps:
+     - uses: actions/checkout@v4
+     - name: Build and Check Package
+-      uses: hynek/build-and-inspect-python-package@v2.13
++      uses: hynek/build-and-inspect-python-package@v2.14
+ 
+   test:
+ 
+Index: pytest_xdist-3.8.0/testing/test_newhooks.py
+===================================================================
+--- pytest_xdist-3.8.0.orig/testing/test_newhooks.py
++++ pytest_xdist-3.8.0/testing/test_newhooks.py
+@@ -115,7 +115,7 @@ class TestCrashItem:
+         res.stdout.fnmatch_lines_random(["*HOOK: pytest_handlecrashitem"])
+         res.stdout.fnmatch_lines(
+             [
+-                "FAILED test_handlecrashitem_one.py::test_b",
+-                "FAILED test_handlecrashitem_one.py::test_b",
++                "FAILED test_handlecrashitem_one.py::test_b*",
++                "FAILED test_handlecrashitem_one.py::test_b*",
+             ]
+         )
+Index: pytest_xdist-3.8.0/testing/test_remote.py
+===================================================================
+--- pytest_xdist-3.8.0.orig/testing/test_remote.py
++++ pytest_xdist-3.8.0/testing/test_remote.py
+@@ -378,6 +378,11 @@ def test_remote_mainargv(pytester: pytes
+ 
+ 
+ def test_remote_usage_prog(pytester: pytest.Pytester) -> None:
++    if pytest.version_tuple[:2] >= (9, 0):
++        get_optparser_expr = "get_config_parser.optparser"
++    else:
++        get_optparser_expr = "get_config_parser._getparser()"
++
+     pytester.makeconftest(
+         """
+         import pytest
+@@ -394,12 +399,12 @@ def test_remote_usage_prog(pytester: pyt
+     """
+     )
+     pytester.makepyfile(
+-        """
++        f"""
+         import sys
+ 
+         def test(get_config_parser, request):
+-            get_config_parser._getparser().error("my_usage_error")
+-    """
++            {get_optparser_expr}.error("my_usage_error")
++        """
+     )
+ 
+     result = pytester.runpytest_subprocess("-n1")

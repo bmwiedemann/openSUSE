@@ -24,6 +24,8 @@ Summary:        Distributed testing and loop-on-failing for py.test
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest-xdist
 Source0:        https://files.pythonhosted.org/packages/source/p/pytest-xdist/pytest_xdist-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#pytest-dev/pytest-xdist#1266 & gh#pytest-dev/pytest-xdist#1272
+Patch0:         support-pytest-9.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module execnet >= 1.1}
 BuildRequires:  %{python_module filelock}
@@ -83,6 +85,6 @@ sed -i 's/\r//' README.rst
 %doc CHANGELOG.rst README.rst
 %license LICENSE
 %{python_sitelib}/xdist
-%{python_sitelib}/pytest_xdist-%{version}*-info
+%{python_sitelib}/pytest_xdist-%{version}.dist-info
 
 %changelog
