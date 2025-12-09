@@ -205,7 +205,7 @@ Requires:       hplip-hpijs
 Requires:       kde-print-manager
 Requires:       OpenPrintingPPDs
 Requires:       printer-driver-brlaser
-# Scaner Support (boo#1214614)
+# Scanner Support (boo#1214614)
 Requires:       sane-backends
 Requires:       system-config-printer-common
 Requires:       system-config-printer-dbus-service
@@ -248,7 +248,7 @@ Requires:       desktop-file-utils
 # Now the real packages
 #
 # #332596
-# Pull in plasma-branding-MicroOS for firstboot setup
+# Pull in plasma-branding-Kalpa for firstboot setup
 Requires:       plasma-branding-Kalpa
 
 ### Power Management
@@ -319,6 +319,7 @@ Requires:       khelpcenter
 Requires:       kio-extras
 Requires:       kio-gdrive
 Requires:       ksshaskpass6
+Requires:       kunifiedpush
 Requires:       kwalletmanager
 Requires:       libappindicator-gtk3
 Requires:       ocean-sound-theme6
