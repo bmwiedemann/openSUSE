@@ -387,6 +387,7 @@ Patch3223:      v8-simd-flax-vector-conversions.patch
 Patch3224:      swiftshader-llvm21.patch
 Patch3225:      webrtc-pipewire_session-missing-spa_pod_object_find_prop.patch
 Patch3226:      linux_seccomp-SYS_SECCOMP.patch
+Patch3227:      text_break_iterator-icu78-breakAllLineBreakClassTable-should-be-consistent.patch 
 
 # Patches to re-enable upstream force disabled features.
 # There's no sense in submitting them but they may be reused as-is by other packagers.
@@ -1406,6 +1407,10 @@ gn gen out/Release --testonly=false \
 --root-pattern=//electron:electron_version_file \
 --args="import(\"//electron/build/args/release.gn\") ${myconf_gn}"
 
+
+# HACK: Linking this tool takes a gorillion memory, and it gets OOMed. Ensure nothing compiles simultaneously to linking this by building it first.
+# limit_build cannot help with this as ninja and GCC LTO are unaware of each other.
+ninja -v %{?_smp_mflags} -C out/Release v8_context_snapshot_generator || (cat out/Release/*.rsp | sed 's/ /\n/g' && false)
 
 # dump the linker command line (if any) in case of failure
 ninja -v %{?_smp_mflags} -C out/Release chromium_licenses copy_node_headers version electron || (cat out/Release/*.rsp | sed 's/ /\n/g' && false)

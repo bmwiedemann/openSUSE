@@ -1,0 +1,46 @@
+From 8955569bce6448c533f7d2182e7a44868bc8a307 Mon Sep 17 00:00:00 2001
+From: Allan Sandfeld Jensen <allan.jensen@qt.io>
+Date: Wed, 1 Mar 2017 17:06:16 +0100
+Subject: [3rdparty] Fix building with system ICU
+
+Change-Id: I31c702a2612dd04e58a75e437d6967c2a2edd878
+Reviewed-by: Michal Klocek <michal.klocek@qt.io>
+Reviewed-by: Allan Sandfeld Jensen <allan.jensen@qt.io>
+---
+ .../blink/renderer/platform/text/text_break_iterator.cc      | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/chromium/third_party/blink/renderer/platform/text/text_break_iterator.cc b/chromium/third_party/blink/renderer/platform/text/text_break_iterator.cc
+index 49f6cb593fa..b432cadaf26 100644
+--- a/third_party/blink/renderer/platform/text/text_break_iterator.cc
++++ b/third_party/blink/renderer/platform/text/text_break_iterator.cc
+@@ -40,7 +40,15 @@ namespace blink {
+   ((a) | ((b) << 1) | ((c) << 2) | ((d) << 3) | ((e) << 4) | ((f) << 5) | \
+    ((g) << 6) | ((h) << 7))
+ 
++#if U_ICU_VERSION_MAJOR_NUM >= 74
++#define BA_LB_COUNT (U_LB_COUNT - 8)
++#elif U_ICU_VERSION_MAJOR_NUM >= 58
++#define BA_LB_COUNT (U_LB_COUNT - 3)
++#else
++
+ #define BA_LB_COUNT U_LB_COUNT
++#endif  // U_ICU_VERSION_MAJOR_NUM
++
+ // Line breaking table for CSS word-break: break-all. This table differs from
+ // asciiLineBreakTable in:
+ // - Indices are Line Breaking Classes defined in UAX#14 Unicode Line Breaking
+@@ -107,8 +115,8 @@ static const unsigned char kBreakAllLineBreakClassTable[][BA_LB_COUNT / 8 + 1] =
+ 
+ #undef B
+ 
+-static_assert(std::size(kBreakAllLineBreakClassTable) == BA_LB_COUNT,
+-              "breakAllLineBreakClassTable should be consistent");
++// static_assert(std::size(kBreakAllLineBreakClassTable) == BA_LB_COUNT,
++//               "breakAllLineBreakClassTable should be consistent");
+ 
+ static inline ULineBreak LineBreakPropertyValue(UChar last_ch, UChar ch) {
+   if (ch == '+')  // IE tailors '+' to AL-like class when break-all is enabled.
+-- 
+cgit v1.2.3
+

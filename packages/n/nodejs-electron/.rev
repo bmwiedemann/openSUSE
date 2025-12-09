@@ -1519,4 +1519,12 @@ to Staging:F with it</comment>
 - Remove unused BuildRequires: update-desktop-files.</comment>
     <requestid>1320245</requestid>
   </revision>
+  <revision rev="176" vrev="2">
+    <srcmd5>e5f76d0478790b143e7fb551c3458f81</srcmd5>
+    <version>37.10.2</version>
+    <time>1765281191</time>
+    <user>anag_factory</user>
+    <comment>- Add text_break_iterator-icu78-breakAllLineBreakClassTable-should-be-consistent.patch to fix ftbfs with new icu</comment>
+    <requestid>1321658</requestid>
+  </revision>
 </revisionlist>

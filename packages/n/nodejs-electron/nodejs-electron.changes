@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec  1 11:50:09 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Add text_break_iterator-icu78-breakAllLineBreakClassTable-should-be-consistent.patch to fix ftbfs with new icu
+
+-------------------------------------------------------------------
 Wed Nov 26 18:22:51 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 37.10.2
