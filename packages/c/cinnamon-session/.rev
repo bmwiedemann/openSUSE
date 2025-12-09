@@ -301,4 +301,12 @@
     restart or shutdown using systemd.</comment>
     <requestid>1304220</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>d211f9c5d5747a23a0e1598dcfa092a1</srcmd5>
+    <version>6.4.1</version>
+    <time>1765281069</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1321574</requestid>
+  </revision>
 </revisionlist>

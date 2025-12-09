@@ -29,7 +29,6 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  tcpd-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  xmlto
 BuildRequires:  xtrans
 BuildRequires:  pkgconfig(cinnamon-desktop)
