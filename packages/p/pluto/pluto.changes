@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 09 06:34:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 5.22.7:
+  * INS-1685: pluto: Bump go to 1.25.5 for fixing vulnerability
+    (#585)
+
+-------------------------------------------------------------------
 Sun Nov 02 06:24:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 5.22.6:
