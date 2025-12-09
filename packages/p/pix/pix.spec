@@ -1,7 +1,7 @@
 #
 # spec file for package pix
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pix
-Version:        3.4.3
+Version:        3.4.7
 Release:        0
 Summary:        Image viewer and browser utility
 License:        GPL-2.0-or-later
@@ -51,11 +51,11 @@ BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libraw)
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.34.0
 BuildRequires:  pkgconfig(libsecret-1)
-BuildRequires:  pkgconfig(libsoup-gnome-2.4) >= 2.36.0
+%dnl BuildRequires:  pkgconfig(libsoup-2.4) >= 2.36.0
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libwebp) >= 0.2.0
 BuildRequires:  pkgconfig(sm) >= 1.0.0
-BuildRequires:  pkgconfig(webkit2gtk-4.0)
+%dnl BuildRequires:  pkgconfig(webkit2gtk-4.1)
 BuildRequires:  pkgconfig(xapp) >= 2.5.0
 BuildRequires:  pkgconfig(zlib)
 
@@ -107,7 +107,7 @@ This package offers you extended HTML documentation for %{name}
   -Dlibraw=true \
   -Dlibrsvg=true \
   -Dlibsecret=true \
-  -Dwebservices=true \
+  -Dwebservices=false \
   -Dlibbrasero=true
 %meson_build
 
