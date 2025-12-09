@@ -1,7 +1,7 @@
 #
 # spec file for package python-inflate64
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-inflate64
-Version:        1.0.3
+Version:        1.0.4
 Release:        0
 Summary:        Deflate64 compression/decompression library
 License:        LGPL-2.1-or-later
-URL:            https://codeberg.org/miurahr/inflate64
+URL:            https://github.com/miurahr/inflate64
 Source:         https://files.pythonhosted.org/packages/source/i/inflate64/inflate64-%{version}.tar.gz
 BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module pip}

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec  9 04:34:55 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.0.4:
+  * Support Python 3.14
+  * Update GitHub Actions CI/CD scripts
+  * Drop required python upper limit
+- Update URL.
+
+-------------------------------------------------------------------
 Fri Jun 20 10:02:23 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.0.3

@@ -47,4 +47,16 @@
     <comment></comment>
     <requestid>1287187</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>201e3df79378638f4cb5fef8290fb1ae</srcmd5>
+    <version>1.0.4</version>
+    <time>1765281189</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.0.4:
+  * Support Python 3.14
+  * Update GitHub Actions CI/CD scripts
+  * Drop required python upper limit
+- Update URL.</comment>
+    <requestid>1321654</requestid>
+  </revision>
 </revisionlist>
