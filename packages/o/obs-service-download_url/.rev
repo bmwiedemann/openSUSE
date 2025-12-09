@@ -66,4 +66,12 @@
   * fixed argument parsing boo#1227203 CVE-2024-22033</comment>
     <requestid>1186878</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>061341685a1ad06d790a88f445f1d90b</srcmd5>
+    <version>0.2.1</version>
+    <time>1765281041</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1321562</requestid>
+  </revision>
 </revisionlist>

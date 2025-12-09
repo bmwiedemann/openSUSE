@@ -1,6 +1,6 @@
 pkgname=obs-service-download_url
 pkgver=0.2.1
-pkgrel=3da8c4cae60a501dff91b30e54ef679f
+pkgrel=0
 pkgdesc="An OBS source service: wget download tool"
 arch=(any)
 license=(GPL-2.0+)
