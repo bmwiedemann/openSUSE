@@ -1,7 +1,7 @@
 #
 # spec file for package cinnamon-settings-daemon
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,6 @@ BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  xf86-input-wacom
 BuildRequires:  pkgconfig(cinnamon-desktop) >= 4.8.0
 BuildRequires:  pkgconfig(colord)
