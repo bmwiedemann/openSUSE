@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Dec  8 14:30:38 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to alsa-lib 1.2.15:
+  * documentation, coding style and configure fixes
+  * error: add priority and interface strings to the log messages
+  * snd_tlv_convert_to_dB: Fix mute handling for MINMAX_MUTE type
+  * mixer: bag - fix bag_del_all implementation (missing free)
+  * pcm: plugin - avoid 32-bit to 64-bit return value conversions
+  * pcm route: suppress false positive warning for gcc 8+
+  * pcm: add a loop to snd_pcm_avail_delay() to avoid bogus delay values
+  * rawmidi: Fix inactive stream definition and handling
+  * seq: drain API fix, notiffy for pversion ioctl failure
+  * topology: fix nibble warning in tplg_save_quoted()
+  * lots of UCM and conf fixes and improvements
+  For details, see:
+    https://www.alsa-project.org/wiki/Changes_v1.2.14_v1.2.15#alsa-lib
+
+-------------------------------------------------------------------
 Tue Apr 15 08:54:03 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to alsa-lib 1.2.14:
