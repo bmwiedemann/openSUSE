@@ -202,4 +202,12 @@
     <comment></comment>
     <requestid>1247976</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>817151d4a952fc4282018b53411a6f08</srcmd5>
+    <version>16.1</version>
+    <time>1765281193</time>
+    <user>anag_factory</user>
+    <comment>Update shim version to 16.1 and Add a pretrans script to verify that the necessary certificate</comment>
+    <requestid>1321655</requestid>
+  </revision>
 </revisionlist>
