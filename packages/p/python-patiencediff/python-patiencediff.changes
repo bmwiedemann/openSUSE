@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Dec  4 10:23:08 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.2.18
+  * Include rust extensions
+- from version 0.2.17
+  * Reflow yaml
+- from version 0.2.16
+  * Format with ruff
+  * Upgrade artifact actions
+  * Add missing dollar sign
+  * Update copyright headers
+  * Migrate to disperse.toml
+  * Add codespellrc
+  * Fix spelling errors Used config files:     1: .codespellrc
+  * Use disperse action
+  * Add code of conduct
+  * add codeowners
+  * Fix twine
+  * auto-merge dependabot PRs
+  * port binding to rust
+  * Auto-merge changes
+  * Add cibuildwheel config
+  * Fix twine
+  * Remove C extension in favor of Rust implementation
+  * Skip cp314
+  * Reduce dependabot noise
+  * Fix PyO3 deprecation warnings for into_py
+  * Fix setuptools deprecation warnings for license configuration
+  * Fix wheels
+  * add typing
+  * Add python 3.14 support
+- Add _service file to enable vendoring
+- Add vendor.tar.xz to spec file
+- Renumber sources in spec file
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Mon Jun  9 14:28:12 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives

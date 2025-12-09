@@ -18,17 +18,19 @@
 
 %bcond_without libalternatives
 Name:           python-patiencediff
-Version:        0.2.15
+Version:        0.2.18
 Release:        0
 Summary:        Python implementation of the patiencediff algorithm
 License:        GPL-2.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/breezy-team/patiencediff
-Source:         https://files.pythonhosted.org/packages/source/p/patiencediff/patiencediff-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/patiencediff/patiencediff-%{version}.tar.gz
+Source1:        vendor.tar.xz
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools-rust}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  alts
 BuildRequires:  fdupes
@@ -40,7 +42,7 @@ Requires:       alts
 Python implementation of the patiencediff algorithm.
 
 %prep
-%setup -q -n patiencediff-%{version}
+%setup -q -n patiencediff-%{version} -a1
 
 %build
 export CFLAGS="%{optflags}"
