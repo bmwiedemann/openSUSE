@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec  8 10:09:17 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.30.1
+ * Fixed a regression in the tablet handling code for some tablets
+   that send input events while being logically out of proximity.
+ * Support for the INPUT_PROP_PRESSUREPAD property available in
+   Linux kernel 6.18.
+
+-------------------------------------------------------------------
 Tue Nov 25 05:33:46 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.30
