@@ -163,7 +163,7 @@ if [ -d "%{_selinux_store_policy_path}" ]; then \
   done; \
   if %{_sbindir}/selinuxenabled && [ "${SELINUXTYPE}" = "${_policytype}" ]; then \
       /bin/echo -e "$semanage_import" | %{_sbindir}/semanage import -S "${_policytype}" \
-  elif test -d /usr/share/selinux/"${_policytype}"/base.lst; then \
+  else \
       /bin/echo -e "$semanage_import" | %{_sbindir}/semanage import -S "${_policytype}" -N \
   fi \
 fi \
@@ -192,7 +192,7 @@ if [ -d "%{_selinux_store_policy_path}" ]; then \
   done; \
   if %{_sbindir}/selinuxenabled && [ "${SELINUXTYPE}" = "${_policytype}" ]; then \
       /bin/echo -e "$semanage_import" | %{_sbindir}/semanage import -S "${_policytype}" \
-  elif test -d /usr/share/selinux/"${_policytype}"/base.lst; then \
+  else \
       /bin/echo -e "$semanage_import" | %{_sbindir}/semanage import -S "${_policytype}" -N \
   fi \
 fi \

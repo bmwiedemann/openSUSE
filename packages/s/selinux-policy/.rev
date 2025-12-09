@@ -2220,4 +2220,12 @@ there will be 4 permissive avcs left regarding pcrlock, but those will be fixed 
     <comment>should go together with https://build.opensuse.org/requests/1321524</comment>
     <requestid>1321532</requestid>
   </revision>
+  <revision rev="140" vrev="2">
+    <srcmd5>62fd9582497dbc74c7c7ffe555cfcdec</srcmd5>
+    <version>20251208</version>
+    <time>1765474323</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1321962</requestid>
+  </revision>
 </revisionlist>

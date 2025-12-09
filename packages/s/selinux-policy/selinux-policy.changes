@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 10 10:42:25 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
+
+- Fix macros.selinux-policy to allow changing booleans when policy
+  is not loaded. Previous logic was broken (bsc#1254395)
+
+-------------------------------------------------------------------
 Mon Dec 08 08:29:51 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 20251208:
