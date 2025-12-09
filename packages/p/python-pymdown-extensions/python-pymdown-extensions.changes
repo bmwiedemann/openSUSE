@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec  8 20:58:20 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 10.18:
+  * NEW: Critic: view mode has been deprecated. To avoid warnings
+    or future issues, explicitly set mode to either accept or
+    reject.
+  * FIX: Block Admonition: important should have always been
+    available as a default.
+
+-------------------------------------------------------------------
 Thu Nov 27 21:23:44 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 10.17.2:
