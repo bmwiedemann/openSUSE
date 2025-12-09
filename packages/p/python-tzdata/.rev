@@ -73,4 +73,12 @@
     at year end.</comment>
     <requestid>1265371</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>981a79841fba659e872ae9aa2a667aaf</srcmd5>
+    <version>2025.2</version>
+    <time>1765280796</time>
+    <user>anag_factory</user>
+    <comment>- Only require pytest-subtests with pytest &lt; 9.</comment>
+    <requestid>1321493</requestid>
+  </revision>
 </revisionlist>
