@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Mon Dec  8 09:24:29 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- update to 25.12
+
+  Bug Fixes
+
+  * Fix tuplet of 7 in one beat leads to incorrect durations.  Bug
+    #1464.  [ffe92b80a1]
+  * Fix incorrect bpm on TimeWidget.  [d94e0e096c]
+  * Fix occasional unwanted recovery prompt.  Bug #1725.  [b2ed6a748d]
+  * Fix stuck lilypond preview dialog.  Bug #1726.  [5857468170]
+  * Fix track buttons and segment canvas getting out of sync.  Bug
+    #1728.  [b06a0cee07]
+  * Fix main window losing focus when mouse leaves.  Bug #1728.
+    [c384771ccb]
+  * Fix MIDI export problems with anacrusis and tempo changes.  Bug
+    #1627.  [0683a0890d]
+  * Fix undo anacrusis requiring three undos.  [c4d89ee242]
+  * Fix undo for tempo changes losing ramp info.  [ea1982fdcf]
+  * Fix adding and removing files in the Audio File Manager does not
+    mark the document as modified.  [efc375058c]
+  * Improve missing audio file handling.  Bug #1730.  [bdaf8dc014]
+  * Fix audio directories being created unnecessarily.  Bug #1730.
+    [f7053b39dc]
+  * Fix wait cursor during audio file location dialog.  [a915292fc0]
+  * Use "open directory" dialog in file location dialog instead of
+    broken "file open" dialog.  Bug #1730.  [6461bc9ce4]
+  * Fix unnecessary error message box.  Bug #1730.  [c6ef6415c7]
+  * Fix selection problems when closing the Audio File Manager.  Bug
+    #1733.  [83fa32bdb2]
+  * Fix cursor not returning to normal after using audio location
+    dialog.  Bug #1736.  [0d38af676e]
+  * Fix sfizz plugin UI not visible.  Bug #1738.  [090f160bce]
+    [f908ea2646]
+  * Fix instruments refering to invalid audio inputs and submasters.
+    Bug #1735.  [faa8e5186d] [722d5a2c67] [01b5e6d96f]
+  * Fix LV2 crashes due to environment variables.  Bug #1737.
+    [58a2e3d9fe]
+  * Fix new MIDI ports called "unnamed" rather than "New Device".
+    Bug #1710.  [2c18d18906]
+  * Fix lilypond version issue.  Bug #1739.  [55ef24b9bf]
+  * Fix Feta.xml not found message.  Bug #1741.  [d24521621d]
+  * Fix "oops" message in logs.  Bug #1740.  [bb86de7422]
+  * Limit mouse position in LoopRuler.  Bug #1742.  [f7216033b9]
+  * Fix wrong codec selected in text codec dialog.  [6e7b2c2577]
+  * Use "snap to unit" for the tools and the LoopRuler to make it
+    easier to work in compound meters.  [be819c5265]
+  * Add "Cursor" to "Move to Staff Above/Below" menu items.
+    [a1823ca9f6]
+  * Fix a crash when saving during playback.  [e835e860b3]
+  * Make notation quantization color brighter.  [5bf74aee5c]
+  * Fix undo after remove results in no audio in the Audio File
+    Manager.  Bug #1733.  [4f732e5c17] [36a6680ed9] [ab6b89453f]
+  * Fix problems when moving segments beyond composition end.
+    Bug #1744.  [b3cd66b800]
+  * Remove unnecessary logging.  Bug #1745.  [1cf772bf68]
+  * Fix lv2 plugins not showing as lv2 plugins.  Feature Request #540.
+    [83c427819c]
+  * MatrixTool: Fix missing forward-decl for QKeyEvent.  Bug #1746.
+    [70307ab1ee]
+  * cmake: Remove X11 requirement.  Bug #1747.  [12a6aa65c9]
+  * cmake: Fixed a build error.  [ff1fe47372]
+  * cmake: Make gtk2 optional.  [2364f701d6]
+
+  New Features
+
+  * Rulers now support aftertouch, both channel and key.  Feature
+    Request #527.  [5ee9c807d8]
+  * Rotary (knob) widget now shows label (e.g. pan) and value in its
+    tooltip.  [4c42d7dc4d]
+  * Snap markers to beat.  Feature Request #537.  [6c69fa3354]
+  * Move markers by dragging them.  Feature Request #536.  [66b9451054]
+    [00eb33ffa7] [8f334a5dbf]
+  * Double-click to rename a marker.  Feature Request #535.
+    [3973fdf484]
+  * Edit > Select Related Segments feature.  Feature Request #534.
+    [d289dc4005]
+  * Audio File Manager: allow multi-select of entries in the list.
+    Feature Request #533.  [2368585756]
+  * Support for Akai MPK Mini IV control surface.  Patch #83.
+    [35eec2215e]
+
+  General Improvements
+
+  * Time widget rewrite and UI simplification.  [e91f8a73f0]
+  * MIDI Mixer Window review and simplification.  [887e2e1d71 etc...]
+  * Rotary widget (knob) review and simplification. [eee2941115 etc...]
+
+-------------------------------------------------------------------
 Thu Jun  5 00:45:35 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - fix warning in .spec
