@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Sat Dec  6 09:03:29 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.5.0
+  * TII dialog can be closed via X on the upper right corner
+    (or upper left maybe in your distribution).
+  * Improved Journaline decoder:
+    + Shows all clickable HTML links.
+    + Data load faster.
+    + Text formatting improved.
+
+-------------------------------------------------------------------
+Tue Dec  2 20:36:30 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package for dabstar, version 4.4.0
