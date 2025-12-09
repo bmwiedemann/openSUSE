@@ -1,7 +1,7 @@
 #
 # spec file for package yazi
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,7 @@ Suggests:       zoxide
 Suggests:       ImageMagick
 Suggests:       chafa
 
-%define __cargo_common_opts --no-default-features --locked
+%define __cargo_common_opts --no-default-features
 
 %description
 Yazi (means "duck") is a terminal file manager written in Rust, based on non-blocking async I/O. It aims to provide an efficient, user-friendly, and customizable file management experience.
