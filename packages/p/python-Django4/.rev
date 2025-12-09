@@ -144,4 +144,12 @@
     * CVE-2025-64459: Potential SQL injection via _connector keyword argument</comment>
     <requestid>1315975</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0f54e70f8b2b907af2c8b9950284dfd5</srcmd5>
+    <version>4.2.27</version>
+    <time>1765281118</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1321590</requestid>
+  </revision>
 </revisionlist>

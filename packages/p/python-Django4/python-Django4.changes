@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec  8 12:25:26 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.2.27 (bsc#1254437)
+  * CVE-2025-13372: Potential SQL injection in FilteredRelation column aliases
+    on PostgreSQL
+  * CVE-2025-64460: Potential denial-of-service vulnerability in XML Deserializer
+  * Fixed a regression in Django 4.2.26 where DisallowedRedirect was raised by
+    HttpResponseRedirect and HttpResponsePermanentRedirect for URLs longer than 2048
+    characters. The limit is now 16384 characters
+
+-------------------------------------------------------------------
 Thu Nov  6 07:27:42 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 4.2.26 (bsc#1252926)
