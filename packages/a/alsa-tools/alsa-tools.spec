@@ -1,7 +1,7 @@
 #
 # spec file for package alsa-tools
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define build_hwdep_loader	0
 Name:           alsa-tools
-Version:        1.2.14
+Version:        1.2.15
 Release:        0
 Summary:        Various ALSA Tools
 License:        GPL-2.0-or-later
@@ -40,8 +40,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection
 BuildRequires:  gtk2-devel
 BuildRequires:  gtk3-devel
+BuildRequires:  gtk4-devel
 BuildRequires:  libtool
-BuildRequires:  update-desktop-files
 
 %description
 This is a meta package for collection of sub-packages.
@@ -331,14 +331,11 @@ done
 find %{buildroot} -type f -name "*.la" -delete -print
 # remove obsolete hotplug files
 rm -rf %{buildroot}%{_sysconfdir}/hotplug
-# install desktop files
-%suse_update_desktop_file envy24control AudioVideo Mixer GTK
-%suse_update_desktop_file -i rmedigicontrol AudioVideo Mixer GTK
-%suse_update_desktop_file hdspconf AudioVideo Utility
-%suse_update_desktop_file hdspmixer AudioVideo Mixer
-%suse_update_desktop_file hdajackretask AudioVideo Utility
-%suse_update_desktop_file hwmixvolume AudioVideo Mixer
-%suse_update_desktop_file echomixer AudioVideo Mixer
+# extra desktop files
+mkdir -p %{buildroot}%{_datadir}/applications
+install -c -m 0644 %{SOURCE5} %{buildroot}%{_datadir}/applications/
+mkdir -p %{buildroot}%{_datadir}/pixmaps
+install -c -m 0644 %{SOURCE7} %{buildroot}%{_datadir}/pixmaps/
 # opl3 sounds
 mkdir -p %{buildroot}%{_datadir}/sounds/opl3
 install -c -m 0644 *.o3 *.sb %{buildroot}%{_datadir}/sounds/opl3

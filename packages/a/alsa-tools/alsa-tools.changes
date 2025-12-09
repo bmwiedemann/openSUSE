@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec  8 14:47:13 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to alsa-tools 1.2.15:
+  * envy24control: port to GTK 4
+  * hdspmixer: fix null pointer dereference
+  * Update hdajackretask.desktop
+- Build with gtk4
+- Drop obsoleted suse_update_desktop_file macro usages
+
+-------------------------------------------------------------------
 Tue Apr 15 09:02:12 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to alsa-tools 1.2.14:
