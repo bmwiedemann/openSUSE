@@ -44,6 +44,10 @@ Source2:        https://leancrypto.org/about/smuellerDD-2024.asc#/leancrypto.key
 Source3:        baselibs.conf
 # PATCH-FIX-UPSTREAM - https://github.com/smuellerDD/leancrypto/commit/fe9751f2b
 Patch1:         fe9751f2.patch
+# PATCH-FIX-UPSTREAM https://github.com/smuellerDD/leancrypto/commit/38bb12a185b2d3aa4ff3656d743b33b3ae25bac7
+# bsc#1253654, bsc#1254370 - fix AVX detection in older intel CPUs
+Patch2:		leancrypto_avx_detect1.patch
+Patch3:		leancrypto_avx_detect2.patch
 BuildRequires:  clang
 BuildRequires:  meson
 %if %{with kmp}

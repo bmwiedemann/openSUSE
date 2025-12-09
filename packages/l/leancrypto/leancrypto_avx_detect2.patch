@@ -1,0 +1,34 @@
+commit 70ffec99fc4463c1a639b5c63941352728a182d9
+Author: Stephan Mueller <smueller@chronox.de>
+Date:   Thu Nov 27 23:39:10 2025 +0100
+
+    Report GF accelerations separately
+    
+    Signed-off-by: Stephan Mueller <smueller@chronox.de>
+
+Index: leancrypto-1.6.0/internal/src/status.c
+===================================================================
+--- leancrypto-1.6.0.orig/internal/src/status.c
++++ leancrypto-1.6.0/internal/src/status.c
+@@ -144,6 +144,7 @@ LC_INTERFACE_FUNCTION(int, lc_status, ch
+ #ifdef LC_CURVE448
+ 		 " Curve448: %s\n"
+ #endif
++		" GF: %s%s\n"
+ 		 ,
+ 		 fips140_mode_enabled() ? "yes" : "no"
+ 
+@@ -306,6 +307,13 @@ LC_INTERFACE_FUNCTION(int, lc_status, ch
+ 			 "AVX2" :
+ 			 ""
+ #endif /* LC_CURVE448 */
++
++	/* GF */
++		,
++		(lc_cpu_feature_available() & LC_CPU_FEATURE_INTEL_PCLMUL) ?
++			"PCLMULQDQ " : "",
++		(lc_cpu_feature_available() & LC_CPU_FEATURE_INTEL_VPCLMUL) ?
++			"VPCLMULQDQ " : ""
+ 	);
+ 
+ #ifdef __clang__

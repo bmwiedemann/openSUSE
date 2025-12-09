@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  3 09:19:47 UTC 2025 - Angel Yankov <angel.yankov@suse.com>
+
+- Fix bsc#1254370, bsc#1253654 - AVX detection is wrong on older intel CPUs
+  * Add leancrypto_avx_detect1.patch
+  * Add leancrypto_avx_detect2.patch
+
+-------------------------------------------------------------------
 Wed Nov  5 09:28:31 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add upstream patch to fix GCS on aarch64:
