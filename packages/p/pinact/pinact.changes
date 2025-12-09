@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Dec 08 08:15:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.4.6:
+  * #1250 #1251 Replace logrus with slog
+  * #1109 #1254 Refactoring
+  * chore(deps): update dependency crate-ci/typos to v1.37.0
+    (#1161)
+  * chore(deps): update dependency suzuki-shunsuke/ghalint to
+    v1.5.4 (#1253)
+  * chore(deps): update dependency aquaproj/aqua-registry to
+    v4.444.0 (#1249)
+  * chore(deps): update dependency go to v1.25.5 (#1248)
+  * chore(deps): update actions/checkout action to v6.0.1 (#1247)
+  * chore(deps): update dependency aquaproj/aqua-registry to
+    v4.443.0 (#1246)
+  * chore(deps): update dependency goreleaser/goreleaser to v2.13.0
+    (#1245)
+  * chore(deps): update dependency aquaproj/aqua-registry to
+    v4.442.1 (#1244)
+  * chore(deps): update suzuki-shunsuke/go-autofix-action action to
+    v0.1.11 (#1243)
+  * fix(deps): update module github.com/goccy/go-yaml to v1.19.0
+    (#1242)
+  * fix(deps): update module github.com/hashicorp/go-version to
+    v1.8.0 (#1241)
+  * chore(deps): update dependency aquaproj/aqua-registry to
+    v4.442.0 (#1240)
+  * chore(deps): update dependency suzuki-shunsuke/pinact to v3.4.5
+    (#1238)
+  * chore(deps): update dependency aquaproj/aqua-registry to
+    v4.441.0 (#1239)
+
+-------------------------------------------------------------------
 Thu Nov 27 05:51:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.4.5:
