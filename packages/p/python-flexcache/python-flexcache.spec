@@ -1,7 +1,7 @@
 #
 # spec file for package python-flexcache
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-mpl}
-BuildRequires:  %{python_module pytest-subtests}
+BuildRequires:  %{python_module pytest-subtests if %python-pytest < 9}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes

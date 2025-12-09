@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>1202873</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>84eb75c288436aea04b4ddafa596c3b8</srcmd5>
+    <version>0.3</version>
+    <time>1765280818</time>
+    <user>anag_factory</user>
+    <comment>- Only require pytest-subtests with pytest &lt; 9.</comment>
+    <requestid>1321488</requestid>
+  </revision>
 </revisionlist>
