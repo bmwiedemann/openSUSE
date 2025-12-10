@@ -63,6 +63,13 @@ Source34:       alsa-init.sh
 # from https://www.alsa-project.org/files/pub/gpg-release-key-v1.txt
 Source35:       alsa.keyring
 # upstream fixes
+Patch1:         0001-ucm-use-closefrom-instead-of-close_range.patch
+Patch2:         0002-ucm-exec-fix-maxfd-used-warning.patch
+Patch3:         0003-conf-merge-card-specific-contents-per-file-whole-aft.patch
+Patch4:         0004-conf-fix-possible-memory-leak-in-config_file_open-er.patch
+Patch5:         0005-Revert-conf-fix-load_for_all_cards-do-not-merge-the-.patch
+Patch6:         0006-conf-USB-Audio-define-pcm-configuration-block-only-o.patch
+Patch7:         0007-conf-HDA-Intel-define-pcm-configuration-block-only-o.patch
 # rest suse fixes
 Patch101:       alsa-lib-ignore-non-accessible-ALSA_CONFIG_PATH.patch
 BuildRequires:  doxygen

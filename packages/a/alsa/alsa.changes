@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec 10 11:20:56 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Backport upstream fixes, mainly for regressions (bsc#1254652):
+  0001-ucm-use-closefrom-instead-of-close_range.patch
+  0002-ucm-exec-fix-maxfd-used-warning.patch
+  0003-conf-merge-card-specific-contents-per-file-whole-aft.patch
+  0004-conf-fix-possible-memory-leak-in-config_file_open-er.patch
+  0005-Revert-conf-fix-load_for_all_cards-do-not-merge-the-.patch
+  0006-conf-USB-Audio-define-pcm-configuration-block-only-o.patch
+  0007-conf-HDA-Intel-define-pcm-configuration-block-only-o.patch
+
+-------------------------------------------------------------------
 Mon Dec  8 14:30:38 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to alsa-lib 1.2.15:
