@@ -256,4 +256,12 @@ on SELinux-enabled projects e.g. SLFO. (forwarded request 1186132 from danishpra
     <comment>- Escape macro in comment (boo#1254579) (forwarded request 1321677 from dimstar)</comment>
     <requestid>1321681</requestid>
   </revision>
+  <revision rev="33" vrev="6">
+    <srcmd5>789a5bbbfbc8331fc3437d46a6efca4d</srcmd5>
+    <version>20250611.0293c6f</version>
+    <time>1765377027</time>
+    <user>anag_factory</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1254579</comment>
+    <requestid>1321895</requestid>
+  </revision>
 </revisionlist>

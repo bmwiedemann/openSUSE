@@ -57,6 +57,9 @@ BuildRequires:  zstd
 BuildRequires:  gcc, make
 %if %{with selinux}
 Requires:       (%{name}-selinux = %{version}-%{release} if selinux-policy-targeted)
+BuildRequires:  checkpolicy
+BuildRequires:  selinux-policy-devel
+BuildRequires:  selinux-policy-targeted
 %endif
 %if %{with apparmor}
 BuildRequires:  apparmor-abstractions, apparmor-rpm-macros, libapparmor-devel
@@ -87,18 +90,15 @@ This package contains Apparmor profiles for passt and pasta.
 %endif
 
 %if %{with selinux}
-%package            selinux
-BuildArch:          noarch
-Summary:            SELinux support for passt and pasta
-Requires:           %{name} = %{version}-%{release}
-Requires:           selinux-policy
-Requires:           container-selinux
-Requires(post):     policycoreutils
-Requires(post):     container-selinux
-Requires(preun):    policycoreutils
-BuildRequires:      checkpolicy
-BuildRequires:      selinux-policy-devel
-Recommends:         selinux-policy-%{selinuxtype}
+%package    selinux
+BuildArch:  noarch
+Summary:    SELinux support for passt and pasta
+Requires:   %{name} = %{version}-%{release}
+Requires:   selinux-policy
+Requires(post): %{name}
+Requires(post): policycoreutils
+Requires(preun): %{name}
+Requires(preun): policycoreutils
 
 %description selinux
 This package adds SELinux enforcement to passt(1) and pasta(1).
@@ -109,18 +109,7 @@ This package adds SELinux enforcement to passt(1) and pasta(1).
 
 %build
 %set_build_flags
-# The Makefile creates symbolic links for pasta, but we need actual copies for
-# SELinux file contexts to work as intended. Same with pasta.avx2 if present.
-# Build twice, changing the version string, to avoid duplicate Build-IDs.
-# Ran into something similar for apparmor - https://github.com/containers/buildah/issues/5440.
-%make_build VERSION=%{version}-%{release}-pasta
-%ifarch x86_64
-mv -f passt.avx2 pasta.avx2
-%make_build passt passt.avx2 VERSION="%{version}-%{release}"
-%else
-%make_build passt VERSION="%{version}-%{release}"
-%endif
-
+%make_build VERSION=%{version}-%{release}
 
 %install
 %make_install prefix=%{_prefix} bindir=%{_bindir} mandir=%{_mandir} docdir=%{_docdir}/%{name}
@@ -147,10 +136,9 @@ ln -f passt.avx2 %{buildroot}%{_bindir}/pasta.avx2
 %if %{with selinux}
 pushd contrib/selinux
 make -f %{_datadir}/selinux/devel/Makefile
-install -p -m 644 -D passt.pp %{buildroot}%{_datadir}/selinux/packages/%{selinuxtype}/passt.pp
-install -p -m 644 -D passt-repair.pp %{buildroot}%{_datadir}/selinux/packages/%{selinuxtype}/passt-repair.pp
-install -p -m 644 -D pasta.pp %{buildroot}%{_datadir}/selinux/packages/%{selinuxtype}/pasta.pp
+install -p -m 644 -D passt.pp %{buildroot}%{_datadir}/selinux/packages/%{name}/passt.pp
 install -p -m 644 -D passt.if %{buildroot}%{_datadir}/selinux/devel/include/distributed/passt.if
+install -p -m 644 -D pasta.pp %{buildroot}%{_datadir}/selinux/packages/%{name}/pasta.pp
 popd
 %endif
 
@@ -165,23 +153,17 @@ popd
 %selinux_relabel_pre -s %{selinuxtype}
 
 %post selinux
-%selinux_modules_install -s %{selinuxtype} %{_datadir}/selinux/packages/%{selinuxtype}/passt.pp %{_datadir}/selinux/packages/%{selinuxtype}/passt-repair.pp %{_datadir}/selinux/packages/%{selinuxtype}/pasta.pp
+%selinux_modules_install -s %{selinuxtype} %{_datadir}/selinux/packages/%{name}/passt.pp
+%selinux_modules_install -s %{selinuxtype} %{_datadir}/selinux/packages/%{name}/pasta.pp
 
 %postun selinux
 if [ $1 -eq 0 ]; then
-        %selinux_modules_uninstall -s %{selinuxtype} passt pasta passt-repair
+        %selinux_modules_uninstall -s %{selinuxtype} passt
+        %selinux_modules_uninstall -s %{selinuxtype} pasta
 fi
 
 %posttrans selinux
 %selinux_relabel_post -s %{selinuxtype}
-# %%selinux_relabel_post calls fixfiles(8) with the previous file_contexts file
-# (see selabel_file(5)) in order to restore only the file contexts which
-# actually changed. However, as file_contexts doesn't support %{USERID}
-# substitutions, this will not work for specific file contexts that pasta needs
-# to have under /run/user. Restore those explicitly.
-#
-# https://passt.top/passt/commit/?id=e019323538699967c155c29411545223dadfc0f5
-restorecon -R /run/user 2>/dev/null
 %endif
 
 %files
@@ -206,10 +188,9 @@ restorecon -R /run/user 2>/dev/null
 
 %if %{with selinux}
 %files selinux
-%dir %{_datadir}/selinux/packages/%{selinuxtype}
-%{_datadir}/selinux/packages/%{selinuxtype}/passt.pp
-%{_datadir}/selinux/packages/%{selinuxtype}/pasta.pp
-%{_datadir}/selinux/packages/%{selinuxtype}/passt-repair.pp
+%dir %{_datadir}/selinux/packages/%{name}
+%{_datadir}/selinux/packages/%{name}/passt.pp
+%{_datadir}/selinux/packages/%{name}/pasta.pp
 %dir %{_datadir}/selinux/devel/include/distributed
 %{_datadir}/selinux/devel/include/distributed/passt.if
 %endif

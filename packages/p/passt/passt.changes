@@ -1,20 +1,4 @@
 -------------------------------------------------------------------
-Tue Dec  9 07:45:46 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
-
-- Escape macro in comment (boo#1254579)
-
--------------------------------------------------------------------
-Wed Jul  9 04:41:56 UTC 2025 - Danish Prakash <danish.prakash@suse.com>
-
-- Fixes to spec (ref: bsc#1245074):
-  * Install binaries for pasta, and not symlinks
-  * Remove circular dependency between passt and passt-selinux
-  * Install missing passt-repair.pp SELinux policy module
-  * Install modules at the correct location .../selinux/packages/%{selinuxtype}/
-  * Require container-selinux for container related policies
-  * Single line macro to load SELinux policies for better performance
-
--------------------------------------------------------------------
 Mon Jun 16 13:44:00 UTC 2025 - dcermak@suse.com
 
 - Update to version 20250611.0293c6f:
