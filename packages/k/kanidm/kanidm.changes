@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec 10 06:20:30 UTC 2025 - william.brown@suse.com
+
+- Update to version 1.8.4~git0.2449805e3:
+  * Release 1.8.4
+  * Handle concurrent pam sessions. (#4001)
+  * fix: correcting parsing of backup compression input (#3995)
+  * fixing up docs builds (#4006)
+
+-------------------------------------------------------------------
 Fri Nov 28 06:02:48 UTC 2025 - william.brown@suse.com
 
 - Update to version 1.8.3~git0.471c021f2:
