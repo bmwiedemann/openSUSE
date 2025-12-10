@@ -11598,7 +11598,7 @@ unsorted:
   - libSM-devel 
   - libSM-devel-32bit 
   - libSM6-32bit 
-  - libSPIRV-Tools-2025_4-32bit 
+  - libSPIRV-Tools-2025_5_rc1-32bit 
   - libSampleICC-devel 
   - libSampleICC2 
   - libSavitar-devel 
@@ -11623,7 +11623,7 @@ unsorted:
   - libVFlib3-10 
   - libVSyntaxHighlighting1 
   - libVTextEdit1 
-  - libVulkanLayerSettings-1_4_328 
+  - libVulkanLayerSettings-1_4_335 
   - libWN3 
   - libWPEBackend-fdo-1_0-1 
   - libWPEBackend-fdo-1_0-1-32bit 
@@ -16952,7 +16952,7 @@ unsorted:
   - libvoikko-devel 
   - libvoikko1 
   - libvoikko1-32bit 
-  - libvolk-1_4_328 
+  - libvolk-1_4_335 
   - libvolk3_2 
   - libvomsapi1 
   - libvorbis-devel 
@@ -27213,6 +27213,7 @@ unsorted:
   - python311-rich-click 
   - python311-rich-pixels 
   - python311-rjsmin 
+  - python311-rlPyCairo 
   - python311-rnc2rng 
   - python311-rnginline 
   - python311-robot-detection 
@@ -31068,6 +31069,7 @@ unsorted:
   - python312-rich-click 
   - python312-rich-pixels 
   - python312-rjsmin 
+  - python312-rlPyCairo 
   - python312-rnc2rng 
   - python312-rnginline 
   - python312-robot-detection 
@@ -34882,6 +34884,7 @@ unsorted:
   - python313-rich-click 
   - python313-rich-pixels 
   - python313-rjsmin 
+  - python313-rlPyCairo 
   - python313-rnc2rng 
   - python313-rnginline 
   - python313-robot-detection 
