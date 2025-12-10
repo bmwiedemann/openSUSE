@@ -5,3 +5,4 @@ addFilter("suse-missing-rclink matomo-archive")
 addFilter("pem-certificate")
 addFilter("non-conffile-in-etc /etc/matomo/environment/dev.php")
 addFilter("explicit-lib-dependency php-zlib")
+addFilter("dir-or-file-outside-snapshot")"
