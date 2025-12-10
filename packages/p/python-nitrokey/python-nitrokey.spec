@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-nitrokey
-Version:        0.4.1
+Version:        0.4.2
 Release:        0
 Summary:        Nitrokey Python SDK
 License:        Apache-2.0
@@ -39,10 +39,12 @@ BuildRequires:  %{python_module pyserial >= 3.5 with %python-pyserial < 4}
 BuildRequires:  %{python_module requests >= 2 with %python-requests < 3}
 BuildRequires:  %{python_module semver >= 3 with %python-semver < 4}
 BuildRequires:  %{python_module tlv8 >= 0.10 with %python-tlv8 < 0.11}
+BuildRequires:  %{python_module wrapt}
 #
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cryptography >= 41
+Requires:       python-wrapt
 Requires:       (python-crcmod >= 1.7 with python-crcmod < 2)
 Requires:       (python-fido2 >= 1.1.2 with python-fido2 < 3)
 Requires:       (python-hidapi >= 0.14 with python-hidapi < 0.15)

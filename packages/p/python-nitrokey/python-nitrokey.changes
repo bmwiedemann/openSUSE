@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec  9 06:41:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.4.2:
+  * nitrokey.trussed: Add optional model argument for list and open
+    functions.
+
+
+-------------------------------------------------------------------
 Thu Aug 21 13:51:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.4.1:

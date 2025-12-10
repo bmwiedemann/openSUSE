@@ -68,4 +68,15 @@
     <comment></comment>
     <requestid>1301190</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>dcc13e473896849f3fab9352e4fe88ee</srcmd5>
+    <version>0.4.2</version>
+    <time>1765377038</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.4.2:
+  * nitrokey.trussed: Add optional model argument for list and open
+    functions.
+</comment>
+    <requestid>1321701</requestid>
+  </revision>
 </revisionlist>
