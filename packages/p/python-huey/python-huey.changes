@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec  9 11:37:03 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.5.5
+  * Fix parsing of README.rst
+  * Python 3.13 and Python 3.14 are supported
+  * Add metadata for PyPI to link to changelog and docs
+
+-------------------------------------------------------------------
 Fri Oct 31 13:55:55 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.5.4
