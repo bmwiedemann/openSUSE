@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Dec 10 10:43:22 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20251210.b974da26:
+  * Dev: behave: Add functional test for adding qdevice on a diskless SBD cluster
+  * Dev: unittests: Adjust unit test for previous commit
+  * Fix: qdevice: Make sure stonith-watchdog-timeout is 2 times of SBD_WATCHDOG_TIMEOUT (bsc#1254571)
+
+-------------------------------------------------------------------
+Wed Dec 10 07:09:44 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20251210.11894b3e:
+  * Dev: run-functional-tests: Stop firewalld.service before tests
+  * Revert "Dev: Update Docker image"
+
+-------------------------------------------------------------------
+Mon Dec 08 08:40:02 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20251208.8152aa4f:
+  * Fix: migration: Avoid exception inside thread
+
+-------------------------------------------------------------------
 Fri Nov 28 10:01:42 UTC 2025 - XLiang@suse.com
 
 - Update to version 5.0.0+20251128.b328f794:
