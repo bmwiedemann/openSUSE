@@ -316,6 +316,7 @@ Provides:       ncurses6-devel
 Provides:       ncurses:%{_incdir}/ncurses.h
 Requires:       %{_bindir}/tack
 Requires:       libncurses6 = %{version}-%{release}
+Requires:       libncurses_c++6 = %{version}-%{release}
 Requires:       ncurses = %{version}-%{release}
 %if %{with usepcre2}
 Requires:       pkgconfig(libpcre2-8)

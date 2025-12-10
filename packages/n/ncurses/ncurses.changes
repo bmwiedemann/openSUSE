@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Dec  8 08:59:53 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20251206
+  + in-progress work to merge MinGW/Windows port.
+- Add missing dependency for libncurses_c++6 in ncurses-devel
+  to avoid dangling symbolic links
+
+-------------------------------------------------------------------
+Mon Dec  1 08:54:51 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20251129
+  + in-progress work to merge MinGW/Windows port.
+
+-------------------------------------------------------------------
 Mon Nov 24 12:42:38 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20251123

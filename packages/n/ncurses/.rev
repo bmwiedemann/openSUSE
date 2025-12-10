@@ -5441,4 +5441,18 @@
     (Debian #1121208, cf: 20251004).</comment>
     <requestid>1319775</requestid>
   </revision>
+  <revision rev="316" vrev="89">
+    <srcmd5>a629cdf68953e2822fde800b2f4f1419</srcmd5>
+    <version>unknown</version>
+    <time>1765376932</time>
+    <user>anag_factory</user>
+    <comment>- Add ncurses patch 20251206
+  + in-progress work to merge MinGW/Windows port.
+- Add missing dependency for libncurses_c++6 in ncurses-devel
+  to avoid dangling symbolic links
+
+- Add ncurses patch 20251129
+  + in-progress work to merge MinGW/Windows port.</comment>
+    <requestid>1321705</requestid>
+  </revision>
 </revisionlist>
