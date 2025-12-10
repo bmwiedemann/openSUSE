@@ -119,4 +119,12 @@
     <comment></comment>
     <requestid>1281673</requestid>
   </revision>
+  <revision rev="15" vrev="10">
+    <srcmd5>f6c0379f3376ebd6969fd6fbe30b566f</srcmd5>
+    <version>2.548</version>
+    <time>1765377187</time>
+    <user>anag_factory</user>
+    <comment>- Add skip-test.patch</comment>
+    <requestid>1321805</requestid>
+  </revision>
 </revisionlist>
