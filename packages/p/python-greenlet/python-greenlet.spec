@@ -22,7 +22,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-greenlet
-Version:        3.2.4
+Version:        3.3.0
 Release:        0
 Summary:        Lightweight in-process concurrent programming
 License:        MIT
