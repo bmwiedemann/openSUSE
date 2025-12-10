@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-lusitaniae-apache_exporter
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2019 João Cavalheiro <jcavalheiro@suse.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,7 +27,7 @@
 %undefine _missing_build_ids_terminate_build
 %endif
 
-%if 0%{?suse_version}
+%if 0%{?suse_version} && 0%{?suse_version} < 1600
 %bcond_without apparmor
 %else
 %bcond_with apparmor
@@ -46,7 +46,7 @@
 %define	serviceuser   prometheus
 
 Name:           golang-github-lusitaniae-apache_exporter
-Version:        1.0.8
+Version:        1.0.10
 Release:        0
 Summary:        Apache Exporter for Prometheus
 License:        MIT
@@ -62,7 +62,7 @@ BuildRequires:  golang-github-prometheus-promu
 BuildRequires:  golang >= 1.20
 Requires(pre):  shadow-utils
 %else
-BuildRequires:  golang(API) >= 1.20
+BuildRequires:  golang(API) >= 1.23
 Requires(pre):  shadow
 %if %{with apparmor}
 %if %{with apparmor_reload}

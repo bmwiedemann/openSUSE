@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Dec  8 12:25:24 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Build without apparmor for openSUSE Leap 16, SLES 16 or newer
+- Require Go 1.23 for building
+- Update to version 1.0.10
+  * Update github.com/prometheus/client_golang to 1.21.1
+  * Update github.com/prometheus/common to 0.63.0
+  * Update github.com/prometheus/exporter-toolkit to 0.14.0
+- Update to version 1.0.9
+  * Update github.com/prometheus/client_golang to 1.20.4
+  * Update github.com/prometheus/common to 0.59.1
+  * Update github.com/prometheus/exporter-toolkit to 0.13.0
+  * Migrate logging to log/slog
+  * Fix signal handler logging
+
+-------------------------------------------------------------------
 Thu Sep 26 12:15:11 UTC 2024 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Revert not failing on upackaged files for RHEL
