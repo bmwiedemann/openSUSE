@@ -1,7 +1,7 @@
 #
 # spec file for package python-zodbpickle
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-zodbpickle
-Version:        4.2
+Version:        4.3
 Release:        0
 Summary:        Fork of Python 3 pickle module
 License:        Python-2.0 AND ZPL-2.1
-Group:          Development/Libraries/Python
 URL:            https://pypi.python.org/pypi/zodbpickle
 Source:         https://files.pythonhosted.org/packages/source/z/zodbpickle/zodbpickle-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testsuite}

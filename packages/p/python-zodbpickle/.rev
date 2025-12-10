@@ -171,4 +171,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1250619</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>54da2766b624c7b70ae9e10a075a20ba</srcmd5>
+    <version>4.3</version>
+    <time>1765377216</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.3:
+  * Added support for pickling the types of built-in singletons.
+  * Move all supported package metadata into pyproject.toml.
+  * Drop support for Python 3.9.
+  * Add support for Python 3.14.</comment>
+    <requestid>1321877</requestid>
+  </revision>
 </revisionlist>

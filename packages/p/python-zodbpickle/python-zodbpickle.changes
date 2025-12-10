@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec 10 04:43:44 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.3:
+  * Added support for pickling the types of built-in singletons.
+  * Move all supported package metadata into pyproject.toml.
+  * Drop support for Python 3.9.
+  * Add support for Python 3.14.
+
+-------------------------------------------------------------------
 Thu Feb 27 11:20:51 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
