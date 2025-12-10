@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Thu Dec  4 18:37:34 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- version update to 2.4.66
+  *) SECURITY: CVE-2025-66200: Apache HTTP Server: mod_userdir+suexec
+     bypass via AllowOverride FileInfo (cve.mitre.org)
+     mod_userdir+suexec bypass via AllowOverride FileInfo
+     vulnerability in Apache HTTP Server. Users with access to use
+     the RequestHeader directive in htaccess can cause some CGI
+     scripts to run under an unexpected userid.
+     This issue affects Apache HTTP Server: from 2.4.7 through
+     2.4.65.
+  *) SECURITY: CVE-2025-65082: Apache HTTP Server: CGI environment
+     variable override (cve.mitre.org)
+     Improper Neutralization of Escape, Meta, or Control Sequences
+     vulnerability in Apache HTTP Server through environment
+     variables set via the Apache configuration unexpectedly
+     superseding variables calculated by the server for CGI programs.
+     This issue affects Apache HTTP Server from 2.4.0 through 2.4.65.
+  *) SECURITY: CVE-2025-59775: Apache HTTP Server: NTLM Leakage on
+     Windows through UNC SSRF (cve.mitre.org)
+     Server-Side Request Forgery (SSRF) vulnerability
+     Â in Apache HTTP Server on Windows
+     with AllowEncodedSlashes OnÂ and MergeSlashes OffÂ  allows to
+     potentially leak NTLM
+     hashes to a malicious server via SSRF and malicious requests or
+     content
+  *) SECURITY: CVE-2025-58098: Apache HTTP Server: Server Side
+     Includes adds query string to #exec cmd=... (cve.mitre.org)
+     Apache HTTP Server 2.4.65 and earlier with Server Side Includes
+     (SSI) enabled and mod_cgid (but not mod_cgi) passes the
+     shell-escaped query string to #exec cmd="..." directives.
+     This issue affects Apache HTTP Server before 2.4.66.
+  *) SECURITY: CVE-2025-55753: Apache HTTP Server: mod_md (ACME),
+     unintended retry intervals (cve.mitre.org)
+     An integer overflow in the case of failed ACME certificate
+     renewal leads, after a number of failures (~30 days in default
+     configurations), to the backoff timer becoming 0. Attempts to
+     renew the certificate then are repeated without delays until it
+     succeeds.
+     This issue affects Apache HTTP Server: from 2.4.30 before 2.4.66.
+  *) mod_http2: Fix handling of 304 responses from mod_cache.
+  *) mod_http2/mod_proxy_http2: fix a bug in calculating the log2 value of
+     integers, used in push diaries and proxy window size calculations.
+  *) mod_md: update to version 2.6.5
+     - New directive `MDInitialDelay`, controlling how longer to wait after
+       a server restart before checking certificates for renewal.
+       [Michael Kaufmann]
+     - Hardening: when build with OpenSSL older than 1.0.2 or old libressl
+       versions, the parsing of ASN.1 time strings did not do a length check.
+     - Hardening: when reading back OCSP responses stored in the local JSON
+       store, missing 'valid' key led to uninitialized values, resulting in
+       wrong refresh behaviour.
+  *) mod_md: update to version 2.6.6
+     - Fix a small memory leak when using OpenSSL's BIGNUMs.
+     - Fix reuse of curl easy handles by resetting them.
+  *) mod_http2: update to version 2.0.35
+     New directive `H2MaxStreamErrors` to control how much bad behaviour
+     by clients is tolerated before the connection is closed.
+  *) mod_proxy_http2: add support for ProxyErrorOverride directive.
+  *) mpm_common: Add new ListenTCPDeferAccept directive that allows to specify
+     the value set for the TCP_DEFER_ACCEPT socket option on listen sockets.
+  *) mod_ssl: Add SSLVHostSNIPolicy directive to control the virtual
+     host compatibility policy.
+  *) mod_md: update to version 2.6.2
+     - Fix error retry delay calculation to not already doubling the wait
+       on the first error.
+  *) mod_md: update to version 2.6.1
+     - Increasing default `MDRetryDelay` to 30 seconds to generate less bursty
+       traffic on errored renewals for the ACME CA. This leads to error retries
+        of 30s, 1 minute, 2, 4, etc. up to daily attempts.
+     - Checking that configuring `MDRetryDelay` will result in a positive
+       duration. A delay of 0 is not accepted.
+     - Fix a bug in checking Content-Type of responses from the ACME server.
+     - Added ACME ARI support (rfc9773) to the module. Enabled by default. New
+       directive "MDRenewViaARI on|off" for controlling this.
+     - Removing tailscale support. It has not been working for a long time
+       as the company decided to change their APIs. Away with the dead code,
+       documentation and tests.
+     - Fixed a compilation issue with pre-industrial versions of libcurl.
+- httpd testsuite of svn revision 1929573
+
+-------------------------------------------------------------------
 Tue Nov  4 20:41:23 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Make /usr/sbin/httpd a dedicated script again, this fixes building modules

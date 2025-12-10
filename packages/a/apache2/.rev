@@ -2265,4 +2265,12 @@ Fixes build with Perl-IO-socket-SSL 2.073, as currently staged in :E (forwarded 
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1317188</requestid>
   </revision>
+  <revision rev="222" vrev="1">
+    <srcmd5>7169d0ad676513307d3b77f40fafc782</srcmd5>
+    <version>2.4.66</version>
+    <time>1765376977</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1321637</requestid>
+  </revision>
 </revisionlist>
