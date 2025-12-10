@@ -19,7 +19,7 @@
 %define gstreamer_version 1.20
 
 Name:           snapshot
-Version:        49.0
+Version:        49.1
 Release:        0
 Summary:        Take pictures and videos
 License:        GPL-3.0-or-later
