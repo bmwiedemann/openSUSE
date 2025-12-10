@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec  7 08:30:31 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.9:
+  + debug-viewer: Make 0x prefix optional thread ID regexes
+
+-------------------------------------------------------------------
 Tue Nov 11 09:23:22 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.8:
