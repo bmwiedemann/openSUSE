@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:16:50 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.96.0:
+  * [Preferences] Reader: Split settings in 3 groups
+  * [Reader] Added two new scroll settings for Webtoon reading mode
+  * [Servers] Added Mangas Top (pt_BR)
+  * [Servers] Added Writers Scans (EN)
+  * [Servers] Anime-Sama (FR): Update
+  * [Servers] Anteiku Scans (FR): Disabled
+  * [Servers] ED Scanlation (FR): Disabled
+  * [Servers] WeebDex (EN): Update
+  * [L10n] Updated French, German, Russian, Ukrainian and Vietnamese
+- Update to version 1.95.0:
+  * [Preferences] Advanced: Improved Clear WebView Data
+  * [Servers] Added WeebDex (EN)
+  * [Servers] Argos Comics (PT): Disabled
+  * [Servers] Asura Scans (EN): Update
+  * [Servers] Comix (EN): Update
+  * [Servers] Invincible ComicsVF (FR): Update
+  * [Servers] Mangas Origines (FR): Re-enabled
+  * [Servers] Punk Records (FR): Update
+  * [Servers] Scylla Comics (EN): Disabled
+  * [Servers] Tres Daos (ES): Disabled
+  * [L10n] Updated Finnish, French, Italian, Russian, Ukrainian, Vietnamese
+- Update to version 1.94.0:
+  * [Servers] Added Zenko (UK)
+  * [Explorer] Servers: Kavita and Komga join Local in Other section
+  * [L10n] Updated French, Russian and Ukrainian translations
+
+-------------------------------------------------------------------
 Wed Nov 19 16:16:34 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.93.0:
