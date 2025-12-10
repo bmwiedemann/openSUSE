@@ -1,7 +1,7 @@
 #
 # spec file for package gap-xmod
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-xmod
-Version:        2.95
+Version:        2.97
 Release:        0
 Summary:        GAP: Crossed Modules and Cat1-Groups
 License:        GPL-2.0-or-later
@@ -29,7 +29,7 @@ BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
 Requires:       gap-autpgrp >= 1.10.2
 Requires:       gap-core >= 4.11
-Requires:       gap-groupoids >= 1.77
+Requires:       gap-groupoids >= 1.78
 Requires:       gap-hap >= 1.29
 Requires:       gap-smallgrp >= 1.4.2
 Requires:       gap-utils >= 0.81

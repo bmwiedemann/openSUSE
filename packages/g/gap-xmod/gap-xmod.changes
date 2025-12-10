@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Dec 10 12:34:53 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.97
+  * Removed various unused categories etc. in dom2dnd.gd
+  * Commented out use of `Ancestor` as it is no longer defined
+    in gap-groupoids
+
+-------------------------------------------------------------------
+Sun Nov  2 16:49:09 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.96
+  * Made groupoids v1.78 a prerequisite
+
+-------------------------------------------------------------------
 Thu Jul 10 13:40:40 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.95
