@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Dec  7 08:12:42 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.9:
+  + Highlighted bugfixes in 1.26.9:
+    - playback: playbin3 and decodebin3 stability fixes
+    - Ancillary metadata handling fixes for AJA playout and
+      Blackmagic Decklink capture cards
+    - HLS and DASH adaptive streaming clients stability
+      improvements
+    - gst-play-1.0 will now print details of any missing plugins
+      again
+    - gtk4paintablesink: Add property to fine-tune reconfiguration
+      behaviour on window-resize
+    - NDI source: fix audio corruption for non-interleaved audio
+      with stride padding
+    - Add SMPTE ST291-1 ancillary metadata RTP payloader and
+      depayloader
+    - Add ST-2038 metadata combiner and extractor
+    - webrtcsink: support hardware-accelerated encoders from the va
+      VA-API plugin
+    - spotifysrc: fix the Spotify integration by using Spotify's
+      extended metadata endpoint
+    - Python bindings cross compilation fixes
+    - Various bug fixes, build fixes, memory leak fixes, and other
+      stability and reliability improvements
+  + gstreamer:
+    - info: Force comparison to same types
+    - queue: Use GST_PTR_FORMAT everywhere
+    - streamcollection: Fix race condition between disconnecting
+      notify proxy and notifications
+    - value: Fix GstAllocationParams string serialisation on 32-bit
+      architectures
+
+-------------------------------------------------------------------
 Tue Nov 11 09:08:00 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.8:
