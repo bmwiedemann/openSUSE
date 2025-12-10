@@ -18,14 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-xvfb
-Version:        3.0.0
+Version:        3.1.1
 Release:        0
 Summary:        Pytest plugin to run Xvfb for tests
 License:        MIT
 URL:            https://github.com/The-Compiler/pytest-xvfb
-Source:         https://files.pythonhosted.org/packages/source/p/pytest-xvfb/pytest-xvfb-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pytest-xvfb/pytest_xvfb-%{version}.tar.gz
 BuildRequires:  %{python_module PyVirtualDisplay >= 1.3}
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 2.8.1}
 BuildRequires:  %{python_module setuptools >= 61.2}
@@ -56,7 +56,7 @@ simply remove it and install this plugin instead - then you'll also have the
 benefits of Xvfb locally.
 
 %prep
-%setup -q -n pytest-xvfb-%{version}
+%setup -q -n pytest_xvfb-%{version}
 rm tests/test_xvfb_windows.py
 
 %build

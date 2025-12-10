@@ -81,4 +81,16 @@
     <comment></comment>
     <requestid>1114075</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ef409910c320d09de92b92cddc5c85f1</srcmd5>
+    <version>3.1.1</version>
+    <time>1765376979</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.1.1:
+  * Support for Python 3.7 and 3.8 is now dropped, while official support for
+    3.12 and 3.13 was added (with no code changes required).
+  * pytest.ini (required to run self-tests) is now included in sdists (#39).
+  * New pytest_xvfb_disable hook to dynamically disable pytest-xvfb.</comment>
+    <requestid>1321656</requestid>
+  </revision>
 </revisionlist>
