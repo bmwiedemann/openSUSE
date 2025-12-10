@@ -210,4 +210,11 @@
     <comment>Update shim version to 16.1 and Add a pretrans script to verify that the necessary certificate</comment>
     <requestid>1321655</requestid>
   </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>7d9b8f6960a3cdb90fc1ad249cd0c035</srcmd5>
+    <version>15.8</version>
+    <time>1765377393</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1254679</comment>
+  </revision>
 </revisionlist>

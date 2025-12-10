@@ -1,27 +1,4 @@
 -------------------------------------------------------------------
-Mon Dec  8 08:32:29 UTC 2025 - Joey Lee <jlee@suse.com>
-
-- Update shim version to 16.1:
-    shim-16.1-lp156.4.1.aarch64.rpm
-    shim-16.1-lp156.4.1.x86_64.rpm
-    RPMs are coming from openSUSE secure-boot shim 15.6:
-    https://build.opensuse.org/projects/openSUSE:Factory:secure-boot/packages/shim/repositories/15.6/binaries
-    - Version: 16.1, "Aug 14 2025"
-    - Include the bug fixes for bsc#1205588
-- Add a pretrans script to verify that the necessary certificate is
-  in the UEFI db.
-- Add DER format certificate files for the pretrans script to verify
-  that the necessary certificate is in the UEFI db
-    - openSUSE Secure Boot CA, 2013-2035
-        openSUSE_Secure_Boot_CA_2013.crt
-    - SUSE Linux Enterprise Secure Boot CA, 2013-2035
-        SUSE_Linux_Enterprise_Secure_Boot_CA_2013.crt
-    - Microsoft Corporation UEFI CA 2011, 2011-2026
-        Microsoft_Corporation_UEFI_CA_2011.crt
-    - Microsoft UEFI CA 2023, 2023-2038
-        Microsoft_UEFI_CA_2023.crt
-
--------------------------------------------------------------------
 Wed Feb 19 14:06:50 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Only copy uncompressed directories.
