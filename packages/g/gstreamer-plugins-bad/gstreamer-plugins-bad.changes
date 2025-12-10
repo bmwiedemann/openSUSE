@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Dec  7 08:22:54 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.9:
+  + Add missing G_DECLS symbols to gstvkqueue and gstvkcommandqueue
+  + ajasink, decklinkvideosrc: Fix some GstAncillaryMeta handling
+    bugs
+  + analyticsmeta: Initialize span to avoid undefined behavior
+  + GstPlay: Fixed wrong initial position update interval
+    configuration
+  + id3tag: Fix resource leak
+  + mpegtsmux: Avoid infinite recursion writing PCR packets
+  + mxfdemux: Fix typo on mxf_ffv1_create_caps
+  + mxfmux: Fix memset usage
+  + mpegtsmux: segfaults when bitrate is configured lower than
+    bitrate that's coming in
+  + scte-section: fix missing cleanup on splice component parse
+    failure
+  + tsdemux: expose audio GstStream for DTS
+  + va, unixfdsrc: keep dmabufs mapped
+  + vkh265dec: Fix a typo
+  + vkvideo-private: Replace GstBuffer with GstMemory array for
+    video sessions
+  + vtdec: Fix race condition in decoder draining. Fluster runs
+    were unstable
+
+-------------------------------------------------------------------
 Tue Nov 11 09:16:44 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.8:
