@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python-socketio
-Version:        5.14.3
+Version:        5.15.0
 Release:        0
 Summary:        SocketIO server
 License:        MIT
@@ -26,13 +26,13 @@ URL:            http://github.com/miguelgrinberg/python-socketio/
 Source:         https://github.com/miguelgrinberg/python-socketio/archive/v%{version}.tar.gz#/python_socketio-%{version}.tar.gz
 BuildRequires:  %{python_module bidict >= 0.21.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module python-engineio >= 4.8.0}
+BuildRequires:  %{python_module python-engineio >= 4.11.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-bidict >= 0.21.0
-Requires:       python-python-engineio >= 4.8.0
+Requires:       python-python-engineio >= 4.11.0
 Suggests:       python-aiohttp >= 3.4
 Suggests:       python-requests >= 2.21.0
 Suggests:       python-websocket-client >= 0.54.0

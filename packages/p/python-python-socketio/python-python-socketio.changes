@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec  3 21:26:55 UTC 2025 - Guang Yee <gyee@suse.com>
+
+- Update 5.15.0
+  * Retry initial Redis connection #1534
+  * Correctly regenerate RabbitMQ binding after a connection failure #1516
+  * Support ext_type in the MsgPackPacket class #1521
+  * Support sending bytesarrays when using pub/sub managers
+  * Fix typos in documentation #1520
+  * Improvements to the logging documentation
+
+-------------------------------------------------------------------
 Fri Oct 31 11:40:10 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.14.3:
