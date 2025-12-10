@@ -1,7 +1,7 @@
 #
 # spec file for package liboqs
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,9 @@
 #
 
 
+%define         liboqs_sover 9
 Name:           liboqs
-Version:        0.14.0
+Version:        0.15.0
 Release:        0
 Summary:        C library for quantum-resistant cryptographic algorithms
 License:        MIT
@@ -27,6 +28,7 @@ Source:         https://github.com/open-quantum-safe/liboqs/archive/refs/tags/%{
 Source1:        baselibs.conf
 Patch0:         liboqs-fix-build.patch
 Patch1:         liboqs-fix-prototypemismatch.patch
+#PATCH-FIX-OPENSUSE boo#1101107 Do not embed the buildhost's kernel version
 Patch2:         reproducible.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -40,18 +42,18 @@ BuildRequires:  python3-pytest-xdist
 liboqs is a C library for quantum-resistant cryptographic algorithms.
 See the bundled README.md for particular limitations on intended use.
 
-%package -n liboqs8
+%package -n liboqs%{liboqs_sover}
 Summary:        C library for quantum-resistant cryptographic algorithms
 Group:          System/Libraries
 
-%description -n liboqs8
+%description -n liboqs%{liboqs_sover}
 liboqs is a C library for quantum-resistant cryptographic algorithms.
 See the bundled README.md for particular limitations on intended use.
 
 %package devel
 Summary:        Headers for liboqs, a library for quantum-resistant cryptography
 Group:          Development/Languages/C and C++
-Requires:       liboqs8 = %{version}
+Requires:       liboqs%{liboqs_sover} = %{version}
 
 %description devel
 liboqs is a C library for quantum-resistant cryptographic algorithms.
@@ -77,8 +79,8 @@ popd
 # need to find out what cmake option is needed
 mv %{buildroot}%{_prefix}/local/* %{buildroot}%{_prefix}
 
-#if [ "%{_lib}" != "lib" ]; then
-  # mv %{buildroot}%{_prefix}/lib %{buildroot}%{_libdir}
+#if [ "%%{_lib}" != "lib" ]; then
+  # mv %%{buildroot}%%{_prefix}/lib %%{buildroot}%%{_libdir}
 #fi
 
 rmdir %{buildroot}%{_prefix}/local/
@@ -88,13 +90,13 @@ pushd build
 make run_tests
 popd
 
-%post -n liboqs8 -p /sbin/ldconfig
-%postun -n liboqs8 -p /sbin/ldconfig
+%post -n liboqs%{liboqs_sover} -p /sbin/ldconfig
+%postun -n liboqs%{liboqs_sover} -p /sbin/ldconfig
 
-%files -n liboqs8
+%files -n liboqs%{liboqs_sover}
 %license LICENSE.txt
-%{_libdir}/liboqs.so.%version
-%{_libdir}/liboqs.so.8
+%{_libdir}/liboqs.so.%{version}
+%{_libdir}/liboqs.so.%{liboqs_sover}
 %doc README.md
 
 %files devel

@@ -279,4 +279,41 @@
 - new major library version liboqs.so.8 (forwarded request 1291769 from msmeissn)</comment>
     <requestid>1291770</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>93b141975115c7fb6637ac5ee3f0916e</srcmd5>
+    <version>0.15.0</version>
+    <time>1765377097</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.15.0:
+  * Significant changes:
+    - Integrated SLH-DSA implementation from pq-code-package/slhdsa-c
+    - SLH-DSA ACVP tests (#2237)
+    - Integrate SLH-DSA-C Library (#2175)
+    - Added NTRU back (#2176)
+    - Removed all Dilithium implementations (#2275)
+    - Replaced SPHINCS+ with SLH-DSA for CMake build option
+      OQS_ALGS_ENABLED=STD (#2290)
+    - Updated CROSS to version 2.2 (#2247)
+    - Included DeriveEncapsulation functionality (#2221)
+    - Integrated ML-KEM implementation from ICICLE-PQC (#2216)
+  * Bug fixes:
+    - Fixed erroneously disabled LMS variants with build flag
+      OQS_ENABLE_SIG_STFL_LMS (#2310)
+    - Fixed incorrect import in OV-III-pkc_skc (#2299)
+    - Fixed incorrect actual signature length in signature full-cycle
+      speed test (#2293)
+    - Fixed ICICLE ML-KEM integration (#2288)
+    - Disabled strict aliasing on SPHINCS+-SHAKE (#2264)
+    - Fixed uninitialized length_encaps_seed for NTRU implementations (#2266)
+    - Changed 64 bit add to 32 bit add to wrap on 32 bit counter for
+      AES-CTR AES-NI implementation (#2252)
+    - Improved random number generator security (#2225)
+    - Added Classic McEliece sanitization patch (#2218)
+  * Miscellaneous:
+    - Deprecated noregress scripts (#2295)
+    - Updated no-pass explanation for constant-time testing (#2294)
+    - Re-enabled all ACVP tests (#2283)
+    - Updated license info for ML-KEM (#2250) (forwarded request 1321746 from pmonrealgonzalez)</comment>
+    <requestid>1321757</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Dec  9 08:34:02 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 0.15.0:
+  * Significant changes:
+    - Integrated SLH-DSA implementation from pq-code-package/slhdsa-c
+    - SLH-DSA ACVP tests (#2237)
+    - Integrate SLH-DSA-C Library (#2175)
+    - Added NTRU back (#2176)
+    - Removed all Dilithium implementations (#2275)
+    - Replaced SPHINCS+ with SLH-DSA for CMake build option
+      OQS_ALGS_ENABLED=STD (#2290)
+    - Updated CROSS to version 2.2 (#2247)
+    - Included DeriveEncapsulation functionality (#2221)
+    - Integrated ML-KEM implementation from ICICLE-PQC (#2216)
+  * Bug fixes:
+    - Fixed erroneously disabled LMS variants with build flag
+      OQS_ENABLE_SIG_STFL_LMS (#2310)
+    - Fixed incorrect import in OV-III-pkc_skc (#2299)
+    - Fixed incorrect actual signature length in signature full-cycle
+      speed test (#2293)
+    - Fixed ICICLE ML-KEM integration (#2288)
+    - Disabled strict aliasing on SPHINCS+-SHAKE (#2264)
+    - Fixed uninitialized length_encaps_seed for NTRU implementations (#2266)
+    - Changed 64 bit add to 32 bit add to wrap on 32 bit counter for
+      AES-CTR AES-NI implementation (#2252)
+    - Improved random number generator security (#2225)
+    - Added Classic McEliece sanitization patch (#2218)
+  * Miscellaneous:
+    - Deprecated noregress scripts (#2295)
+    - Updated no-pass explanation for constant-time testing (#2294)
+    - Re-enabled all ACVP tests (#2283)
+    - Updated license info for ML-KEM (#2250)
+    - Added Poutine SASL (#2213)
+    - Updated ACVP to 1.1.0.40 (#2172)
+    - Switched to dev mode for 0.14.1 (#2199)
+  * Deprecation notice: liboqs 0.15.0 is the last version to officially
+    support SPHINCS+. SPHINCS+ will be removed in the 0.16.0 release and
+    replaced by SLH-DSA. liboqs 0.15.0 also removes support for Dilithium.
+  * Rebase liboqs-fix-prototypemismatch.patch
+
+-------------------------------------------------------------------
 Thu Jul 10 19:15:53 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 0.14.0:
