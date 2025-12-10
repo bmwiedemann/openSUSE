@@ -845,6 +845,7 @@ rm test/parallel/test-dgram-membership.js
 %if %{node_version_number} > 20
 # missing ICU test data for 15.6/15.7/SLFO
 ln test/fixtures/icu/localizationData-v75.1.json test/fixtures/icu/localizationData-v73.2.json
+ln test/fixtures/icu/localizationData-v76.1.json test/fixtures/icu/localizationData-v77.1.json
 %endif
 
 %if %{node_version_number} >= 18
