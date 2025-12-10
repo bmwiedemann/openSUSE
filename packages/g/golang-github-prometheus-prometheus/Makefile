@@ -16,10 +16,6 @@ obs_scm:
 go_modules:
 	osc service manualrun go_modules
 
-.SILENT: node_modules
-node_modules:
-	osc service manualrun node_modules
-
 .SILENT: package_lock_json
 package_lock_json:
 	echo "Preparing webui dependencies"
@@ -31,7 +27,7 @@ package_lock_json:
 	working_directory=$$(pwd)
 	tmpdir=$$(mktemp -d -p /tmp)
 	echo "Changing into tmpdir"
-	cd $$tmpdir
+	cd $$tmpdir || exit 1
 	echo "Extracting obscpio archive"
 	cpio -id < $$working_directory/$$obscpio
 	echo "Changing into services"
@@ -46,3 +42,8 @@ package_lock_json:
 	cd $$working_directory/
 	rm -rf $$tmpdir
 	echo "Finished"
+
+.SILENT: node_modules
+node_modules:
+	osc service manualrun node_modules
+	rm -f *tgz
