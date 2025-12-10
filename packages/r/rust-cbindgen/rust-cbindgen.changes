@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Nov 21 05:29:47 UTC 2025 - william.brown@suse.com
+
+- Update to version 0.29.2+git0:
+  * Explicitly request serde's std features to avoid issues with newer toml versions.
+  * Account for master -> main rename.
+  * Update changelog and bump version.
+  * enum: Track dependencies properly in enumerations.
+  * Allow must_use if a reason is specified
+  * constant: Handle cfg in associated constants.
+  * tests: Add a test for bitflags + disjoint cfg.
+  * Remove "display" feature from the toml crate
+  * DOC: Add metatensor
+  * Fix #1085 - Incorrect detection of duplicated constants
+  * chore: More clippy fixes.
+  * docs: Correct after_include type in example config
+  * cargo update
+  * cfg: Remove another clippy warning.
+  * Fix `clippy::uninlined_format_args`
+  * Update toml to 0.9
+  * Release 0.29.0
+  * Support no-export annotation for statics and functions.
+  * conditional fields of constexpr literal structs
+  * Add LiteralStructField
+  * Github action: Add aarch64 to deploy
+  * Add rename rule for generated associated constant
+  * Upgrade heck to 0.5
+  * Add support for an optional nullable attribute
+  * docs.md: Fix deprecated_with_note and deprecated_variant_with_note being spelled as 'notes'
+  * Fix generic with "void" default
+  * The return of Cast is simplified
+  * Added tests for as keyword inside array into structs
+  * Fixed error generation of structures using the keyword of as inside arrays
+  * Added test for unsafe(no_mangle) attribute
+  * Added tests for unsafe methotd's atributs
+  * Fixed handling of trait methods containing the unsafe attribute
+  * Rename -Zparse-only
+  * Release 0.28.0
+  * tests: Fix symbol file and tests.
+  * Appease clippy.
+  * tests: Run rustfmt.
+
+-------------------------------------------------------------------
 Tue Feb 04 04:32:59 UTC 2025 - william.brown@suse.com
 
 - Update to version 0.28.0+git0:
