@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Dec  7 08:34:22 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.9:
+  + analytics splitter/combiner: Remove the separate fields to
+    events and buffer
+  + audiornnoise: copy input metadatas to ouput buffer
+  + closedcaption:
+    - cctost2038anc: Support alignment
+    - st2038ancdemux: Support alignment
+    - st2038ancmux: Support frame alignment
+    - st2038: Forward frame rate in caps where available
+    - Add ST-2038 combiner and extractor element
+    - st2038extractor: Some fixes
+    - st2038combiner: Some fixes
+  + gif: Update to gif 0.14
+  + gtk4:
+    - Add property to control reconfigure on window-resize behavior
+    - Fix compile warning
+  + fmp4, mp4: Implement GstChildProxy for MP4Mux and FMP4Mux
+  + fmp4: Update to dash-mpd 0.19
+  + ndisrcdemux: fix audio corruption with non-interleaved stride
+    padding
+  + net/quinn: Update web-transport-quinn and fix flaky QUIC test
+  + rtp: Add SMPTE ST291-1 (ANC) RTP payloader and depayloader
+  + spotify: bump librespot 0.8.0
+  + webrtcsink: Don't let recalculate_latency block tokio worker
+    thread
+  + webrtcsink: support va encoders
+  + Update dependencies
+  + meson: fix build when GTK is not present
+
+-------------------------------------------------------------------
 Tue Nov 11 09:29:16 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.8:

@@ -8,7 +8,7 @@
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">gstreamer-?(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>
-    <param name="revision">refs/tags/gstreamer-1.26.8</param>
+    <param name="revision">refs/tags/gstreamer-1.26.9</param>
     <param name="scm">git</param>
 <!--    <param name="changesgenerate">enable</param> -->
   </service>
@@ -22,6 +22,7 @@
 	  <param name="srcdir">gst-plugins-rs</param>
 	  <param name="compression">zst</param>
 	  <param name="update">true</param>
-	  <param name="i-accept-the-risk">RUSTSEC-2023-0071</param>
+	  <!-- Example ignore of sec risk (cargo audit) -->
+<!--	  <param name="i-accept-the-risk">RUSTSEC-2023-0071</param> -->
   </service>
 </services>
