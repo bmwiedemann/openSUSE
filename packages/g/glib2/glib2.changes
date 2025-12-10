@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Dec  8 19:35:09 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.86.3:
+  + Fix several security vulnerabilities of varying severity (see
+    below for details):
+  + Bugs fixed:
+    - (CVE-2025-13601) (#YWH-PGM9867-134) Incorrect calculation of
+      buffer size in g_escape_uri_string()
+    - (#YWH-PGM9867-145) Buffer underflow on Glib through
+      glib/gvariant via bytestring_parse() or string_parse() leads
+      to OOB Write
+    - GIO: Integer overflow in file attribute escaping
+    - G_FILE_MONITOR_WATCH_HARD_LINK does not monitor files on
+      Windows
+    - gconvert: Error out if g_escape_uri_string() would overflow
+    - gvariant-parser: Fix potential integer overflow parsing
+      (byte)strings
+    - gfileattribute: Fix integer overflow calculating escaping for
+      byte strings
+
+-------------------------------------------------------------------
 Tue Nov 18 22:08:32 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.86.2:
