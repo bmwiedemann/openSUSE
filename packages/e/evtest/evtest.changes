@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec  9 23:25:20 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 1.36
+  * Add KEY_ROTATE_LOCK_TOGGLE, KEY_REFRESH_RATE_TOGGLE
+  * Add performance key
+  * Add ifdef
+  * Use bytes instead of bits for size of ioctl input
+  * Add SW_MACHINE_COVER
+  * add KEY_MACRO 1-30 and other keys
+- ran spec-cleaner
+
+-------------------------------------------------------------------
 Mon Jan 15 08:03:24 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.35

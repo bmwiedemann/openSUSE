@@ -1,7 +1,7 @@
 #
 # spec file for package evtest
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           evtest
-Version:        1.35
+Version:        1.36
 Release:        0
 Summary:        Input device event monitor and query tool
 License:        GPL-2.0-or-later
@@ -29,7 +29,6 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libxslt-tools
 BuildRequires:  xmlto
-
 # splitted in 13.2
 Provides:       input-utils:/usr/bin/evtest = 2007.06.22
 Obsoletes:      input-utils <= 2007.06.22
@@ -45,15 +44,14 @@ and displays all the events layer events generated.
 %build
 autoreconf --install
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
 %files
-%defattr(-,root,root)
 %license COPYING
 %{_bindir}/evtest
-%doc %{_mandir}/man1/evtest*
+%{_mandir}/man1/evtest*
 
 %changelog
