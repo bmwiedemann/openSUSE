@@ -53,7 +53,8 @@ sed -i 's/1.9.1/1.9.2/g' setup.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest tests
+# test_from_dict_with_union_and_wrong_data - fails on Python 3.14 because of a slightly changed error message
+%pytest tests -k "not test_from_dict_with_union_and_wrong_data"
 
 %files %{python_files}
 %{python_sitelib}/dacite
