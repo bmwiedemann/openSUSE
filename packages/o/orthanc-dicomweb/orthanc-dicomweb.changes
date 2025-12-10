@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec  9 10:00:46 UTC 2025 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.22
+  * framework2.diff added for compatibilty with Orthanc framework <= 1.12.10
+  * Fixed a possible deadlock when using "WadoRsLoaderThreadsCount" > 1 when the HTTP
+    client disconnects while downloading the response.
+  * Fixed "Success: Success" errors when trying to send resources synchronously to a remote DICOMweb
+    server while the Orthanc job engine was busy with other tasks.
+
+-------------------------------------------------------------------
 Wed Sep 10 09:22:40 UTC 2025 - Axel Braun <axel.braun@gmx.de>
 
 - remove libboost_system-devel for TW (removed in boost 1.89) 

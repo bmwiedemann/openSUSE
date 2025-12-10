@@ -21,7 +21,7 @@ Name:           orthanc-dicomweb
 Summary:        WebViewer plugin for Orthanc
 License:        AGPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
-Version:        1.21
+Version:        1.22
 Release:        0
 URL:            https://orthanc-server.com
 Source0:        https://orthanc.uclouvain.be/downloads/sources/%{name}/OrthancDicomWeb-%{version}.tar.gz
@@ -36,6 +36,7 @@ Source8:        babel-polyfill-6.26.0.min.js.gz
 Source9:        orthanc-dicomweb-readme.SUSE
 Source10:       dicomweb.json
 Patch0:         framework.diff
+Patch1:         framework2.diff
 
 BuildRequires:  cmake
 BuildRequires:  e2fsprogs-devel
@@ -44,6 +45,7 @@ BuildRequires:  gcc13-c++
 %else
 BuildRequires:  gcc-c++
 %endif
+BuildRequires:  bsdtar
 BuildRequires:  googletest-devel
 BuildRequires:  jsoncpp-devel
 BuildRequires:  libboost_date_time-devel >= 1.66
@@ -76,10 +78,13 @@ WebViewer plugin for Orthanc
 #Putting them into this folder prevents download of sources from the web
 mkdir ThirdPartyDownloads
 cd ThirdPartyDownloads
-cp %{S:1} %{S:2} %{S:3} %{S:4} %{S:5} %{S:6} %{S:7} %{S:8}  .
+cp %{S:1} %{S:2} %{S:3} %{S:4} %{S:5} %{S:6} %{S:7} %{S:8} .
 cd ..
 
 %build
+
+dir %{buildroot}
+
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
 export CC=gcc-13
 export CXX=g++-13
