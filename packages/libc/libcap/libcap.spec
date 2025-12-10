@@ -95,7 +95,7 @@ libcap.
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-%global buildvariables RAISE_SETFCAP=no prefix=%{_prefix} lib=%{_lib} SHARED=yes LIBDIR=%{_libdir} SBINDIR=%{_sbindir} PKGCONFIGDIR=%{_libdir}/pkgconfig/ INCDIR=%{_includedir} MANDIR=%{_mandir} SHARED=yes COPTS="%{optflags}"
+%global buildvariables RAISE_SETFCAP=no prefix=%{_prefix} lib=%{_lib} SHARED=yes LIBDIR=%{_libdir} SBINDIR=%{_bindir} PKGCONFIGDIR=%{_libdir}/pkgconfig/ INCDIR=%{_includedir} MANDIR=%{_mandir} SHARED=yes COPTS="%{optflags}"
 
 %make_build %{buildvariables}
 
@@ -104,6 +104,10 @@ make install %{buildvariables} DESTDIR=%{buildroot}
 find %{buildroot} -type f -name "*.la" -delete -print
 # do not provide static libs
 rm %{buildroot}%{_libdir}/libcap.a
+
+# symlinks for sbindir
+mkdir -p %{buildroot}%{_sbindir}
+ln -s %{_bindir}/{capsh,getcap,getpcaps,setcap} %{buildroot}%{_sbindir}
 
 %fdupes -s %{buildroot}
 
@@ -131,7 +135,14 @@ echo 'int main() { return 0; }' > tests/b219174.c
 %license License
 %{_mandir}/man1/*
 %{_mandir}/man8/*
-%{_sbindir}/*
+%{_bindir}/capsh
+%{_bindir}/getcap
+%{_bindir}/getpcaps
+%{_bindir}/setcap
+%{_sbindir}/capsh
+%{_sbindir}/getcap
+%{_sbindir}/getpcaps
+%{_sbindir}/setcap
 
 %files devel
 %license License
