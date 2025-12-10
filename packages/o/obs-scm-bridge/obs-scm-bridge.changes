@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec  2 14:59:18 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Add PKGBUILD to enable Arch Linux builds 
+
+-------------------------------------------------------------------
 Thu Jul 31 07:16:30 UTC 2025 - Adrian Schröter <adrian@suse.de>
 
 - use the system default python version (boo#1247410)

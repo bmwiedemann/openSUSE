@@ -1,0 +1,27 @@
+pkgname=obs-scm-bridge
+pkgver=0.7.4
+pkgrel=0
+pkgdesc='A help service to work with git repositories in OBS'
+arch=('any')
+url='https://github.com/openSUSE/obs-scm-bridge'
+license=('GPL-2.0-or-later')
+depends=('build>=20211125' 'git' 'git-lfs' 'perl' 'perl-crypt-ssleay' 'perl-libwww' 'perl-lwp-protocol-https' 'perl-timedate' 'perl-uri' 'perl-xml-parser' 'perl-yaml-libyaml' 'python' 'python-yaml')
+backup=('etc/obs/services/scm-bridge/critical-instances')
+source=($pkgname-$pkgver.tar.xz)
+sha256sums=('SKIP')
+
+package() {
+    cd "$pkgname-$pkgver"
+    make DESTDIR=$pkgdir install
+
+    mkdir -p $pkgdir/etc/obs/services/scm-bridge
+    echo "src.opensuse.org" > $pkgdir/etc/obs/services/scm-bridge/critical-instances
+}
+
+check() {
+    cd "$pkgname-$pkgver"
+
+    # the test suite requires online resources unfortunatly
+    # so let's at least test if our python version understands our syntax
+    python3 ./obs_scm_bridge --help
+}

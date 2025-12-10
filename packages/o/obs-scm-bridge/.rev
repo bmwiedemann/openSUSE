@@ -232,4 +232,12 @@
     <comment>- use the system default python version (boo#1247410)</comment>
     <requestid>1296753</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>88cbad9e1ba9bf55d5f6567fa27ee62f</srcmd5>
+    <version>0.7.4</version>
+    <time>1765377180</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1321804</requestid>
+  </revision>
 </revisionlist>

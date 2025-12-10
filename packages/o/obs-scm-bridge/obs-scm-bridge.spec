@@ -1,7 +1,7 @@
 #
 # spec file for package obs-scm-bridge
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,14 @@ Requires:       %{build_pkg_name} >= 20211125
 # these are just recommends in build package, but we need it here
 Requires:       perl(Date::Parse)
 Requires:       git-lfs
+%if 0%{?opensuse_version}
+BuildRequires:  git-core >= 2.46
+Requires:       git-core >= 2.46
+%else
+BuildRequires:  git >= 2.46
+Requires:       git >= 2.46
+%endif
+Requires:       perl(LWP::Protocol::https)
 Requires:       perl(LWP::UserAgent)
 Requires:       perl(Net::SSL)
 Requires:       perl(Pod::Usage)
