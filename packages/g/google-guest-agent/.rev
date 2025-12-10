@@ -931,4 +931,41 @@
   * Packaging changes to include routes script installation (#542) (forwarded request 1320159 from glaubitz)</comment>
     <requestid>1320222</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>3f33edcbed9f50e1d70d5af431f6d1c5</srcmd5>
+    <version>20251208.00</version>
+    <time>1765377088</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251208.00
+  * network: force address manager to always consolidate the OS state (#585)
+  * Bump golang.org/x/crypto from 0.41.0 to 0.45.0 (#583)
+  * Don't delete the authorized_keys file when an empty key list is passed
+    to updateAuthorizedKeysFile (#582)
+  * Add Tyler, Saswat, Hank to OWNERS (#577)
+  * Honor core plugin setting on windows package update (#576)
+  * Restart agent if core plugin is disabled (#575)
+  * Add extra debug logging around toggling OS Login (#572)
+  * Update go version to 1.25 (#565)
+  * Add compat adapt script to windows in agent sysprep (#569)
+  * Fix adapt to use more portable shebang line (#567)
+  * Remove routes script from packaging (#566)
+  * Update adapt script to run on startup/shutdown both (#561)
+  * Update agent_uninstall.ps1 (#558)
+  * Stop core plugin before removing agent package (#554)
+  * Startup scripts should start after agent manager instead (#553)
+  * Update presets and install dependencies on systemd units (#552)
+  * Ensure agent service is disabled (#551)
+  * Disable legacy agent to enable core plugin (#550)
+  * Final fix for RHEL packaging for routes setup (#549)
+  * Fix RHEL packaging for routes scripts (#548)
+  * Packaging changes to include routes script installation (#542)
+  * Update CLI name in packaging (#543)
+  * systemd should manage only the main process (#544)
+- from version 20251206.00
+  * fix start mode for windows on stable release (#584)
+  * Update agent_uninstall.ps1 (#558) (#580)
+  * Update go version for stable branch to 1.25 (#571)
+  * Add adapt script in stable branch as per #569 (#570) (forwarded request 1321684 from glaubitz)</comment>
+    <requestid>1321751</requestid>
+  </revision>
 </revisionlist>
