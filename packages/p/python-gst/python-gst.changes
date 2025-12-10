@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec  7 08:27:49 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.9:
+  + gst-python: fix cross-compiling
+  + python: Add some typing annotation to overrides
+
+-------------------------------------------------------------------
 Tue Nov 11 09:21:16 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.8:
