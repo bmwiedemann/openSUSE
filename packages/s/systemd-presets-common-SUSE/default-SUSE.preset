@@ -16,6 +16,7 @@ disable btrfsmaintenance-refresh.service
 enable btrfsmaintenance-refresh.path
 enable ca-certificates.path
 enable check-battery.timer
+enable cleanoldsepoldir.service
 enable cockpit.socket
 enable cron.service
 enable dbus-broker.service

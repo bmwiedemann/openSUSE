@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 19 08:05:47 UTC 2025 - Zdenek Kubala <zkubala@suse.com>
+
+- Enable cleanoldsepoldir.service to allow to run after boot
+  it is part of root path move from /var/lib/selinux
+  to /etc/selinux (bsc#1221342)
+
+-------------------------------------------------------------------
 Wed Nov  5 05:31:00 UTC 2025 - Heming Zhao <heming.zhao@suse.com>
 
 - Add the lvm2-blk-availability.service as enabled in the preset
