@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Dec 10 09:42:48 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.68.1:
+  - Fixes
+    * fix: Fix edit-encrypted command for files in subdirectories
+    * fix: Fix type of .chezmoi.sourceFile
+
+-------------------------------------------------------------------
+Tue Dec  9 12:14:07 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.68.0:
+  - Features
+    * feat: Add --new flag to add command
+    * feat: Add --re-encrypt flag to re-add command
+    * feat: Add edit-encrypted command
+  - Fixes
+    * fix: Ensure that .chezmoi.sourceFile template var is always a relative path
+    * fix: Don't overwrite config file in init --dry-run
+    * fix: Fix panic in execute-template --override-data with no template data
+    * fix: Fix forget command on implicitly managed files
+    * fix: Ignore externals in destroy command
+
+-------------------------------------------------------------------
 Fri Nov 28 10:23:53 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.67.1:

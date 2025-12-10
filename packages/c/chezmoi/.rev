@@ -1047,4 +1047,27 @@
 </comment>
     <requestid>1320438</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>edec85462dd50094dae8d9ec50ec8f60</srcmd5>
+    <version>2.68.1</version>
+    <time>1765377101</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.68.1:
+  - Fixes
+    * fix: Fix edit-encrypted command for files in subdirectories
+    * fix: Fix type of .chezmoi.sourceFile
+- Update to version 2.68.0:
+  - Features
+    * feat: Add --new flag to add command
+    * feat: Add --re-encrypt flag to re-add command
+    * feat: Add edit-encrypted command
+  - Fixes
+    * fix: Ensure that .chezmoi.sourceFile template var is always a relative path
+    * fix: Don't overwrite config file in init --dry-run
+    * fix: Fix panic in execute-template --override-data with no template data
+    * fix: Fix forget command on implicitly managed files
+    * fix: Ignore externals in destroy command
+</comment>
+    <requestid>1321915</requestid>
+  </revision>
 </revisionlist>
