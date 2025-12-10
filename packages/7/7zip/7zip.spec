@@ -78,7 +78,10 @@ cd CPP/7zip/Bundles/Alone2
 %make_build -f ../../cmpl_gcc_x86.mak MY_ASM=uasm
 %else
 %ifarch aarch64
-%make_build -f ../../cmpl_gcc_arm64.mak MY_ASM=gcc
+# Do not use asm code until PAC/BTI/GCS fixed upstream
+sed -i -e 's/USE_ASM=1/USE_ASM=/' ../../../../C/var_gcc_arm64.mak
+sed -i -e 's/USE_ASM=1/USE_ASM=/' ../../var_gcc_arm64.mak
+%make_build -f ../../cmpl_gcc_arm64.mak
 %else
 %make_build -f ../../cmpl_gcc.mak
 %endif
