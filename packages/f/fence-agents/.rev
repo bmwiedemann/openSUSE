@@ -1259,4 +1259,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1320851</requestid>
   </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>dff902a3a9923d2a1c40a3d97e169491</srcmd5>
+    <version>4.16.0+git.1763372689.07285aac</version>
+    <time>1765377026</time>
+    <user>anag_factory</user>
+    <comment>  * fence_aws: Add new skip_os_shutdown flag (#632) (jsc#PED-13796)
+  Adpat changes</comment>
+    <requestid>1321707</requestid>
+  </revision>
 </revisionlist>

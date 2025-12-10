@@ -17,7 +17,7 @@ Tue Sep 23 19:36:41 UTC 2025 - Peter Varkoly <varkoly@suse.com>
 Thu Sep 04 08:06:38 UTC 2025 - varkoly@suse.com
 
 - Update to version 4.16.0+git.1755594293.5cf006ff:
-  * fence_aws: Add new skip_os_shutdown flag (#632)
+  * fence_aws: Add new skip_os_shutdown flag (#632) (jsc#PED-13796)
   * fence_ibm_vpc: add apikey file support
 
 -------------------------------------------------------------------
