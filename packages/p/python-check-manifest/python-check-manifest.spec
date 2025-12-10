@@ -27,7 +27,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-check-manifest%{psuffix}
-Version:        0.50
+Version:        0.51
 Release:        0
 Summary:        Tool to check Python source package MANIFEST.in for completeness
 License:        MIT
