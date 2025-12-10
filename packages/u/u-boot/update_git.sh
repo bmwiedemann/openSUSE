@@ -13,8 +13,8 @@ set -e
 
 GIT_TREE=https://github.com/openSUSE/u-boot.git
 GIT_LOCAL_TREE=~/src/opensuse/u-boot-opensuse
-GIT_BRANCH=tumbleweed-2025.04
-GIT_UPSTREAM_TAG=v2025.04
+GIT_BRANCH=tumbleweed-2025.10
+GIT_UPSTREAM_TAG=v2025.10
 GIT_DIR=`mktemp -d -p /dev/shm`
 CMP_DIR=`mktemp -d -p /dev/shm`
 
@@ -45,10 +45,10 @@ else
     (cd $GIT_DIR && git remote update)
 fi
 (cd $GIT_DIR && git format-patch -N $GIT_UPSTREAM_TAG --suffix= -o $CMP_DIR >/dev/null)
-UBOOT_VERSION=$(egrep '^VERSION = ' $GIT_DIR/Makefile | cut -d ' ' -f 3)
-UBOOT_PATCHLEVEL=$(egrep '^PATCHLEVEL = ' $GIT_DIR/Makefile | cut -d ' ' -f 3)
-UBOOT_SUBLEVEL=$(egrep '^SUBLEVEL = ' $GIT_DIR/Makefile | cut -d ' ' -f 3)
-UBOOT_EXTRAVERSION=$(egrep '^EXTRAVERSION = ' $GIT_DIR/Makefile | cut -d ' ' -f 3)
+UBOOT_VERSION=$(grep -E '^VERSION = ' $GIT_DIR/Makefile | cut -d ' ' -f 3)
+UBOOT_PATCHLEVEL=$(grep -E '^PATCHLEVEL = ' $GIT_DIR/Makefile | cut -d ' ' -f 3)
+UBOOT_SUBLEVEL=$(grep -E '^SUBLEVEL = ' $GIT_DIR/Makefile | cut -d ' ' -f 3)
+UBOOT_EXTRAVERSION=$(grep -E '^EXTRAVERSION = ' $GIT_DIR/Makefile | cut -d ' ' -f 3)
 UBOOT_VERSION="${UBOOT_VERSION}.${UBOOT_PATCHLEVEL}"
 if [ -n "${UBOOT_SUBLEVEL}" ]; then
     UBOOT_VERSION="${UBOOT_VERSION}.${UBOOT_SUBLEVEL}"

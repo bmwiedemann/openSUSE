@@ -1,7 +1,7 @@
 #
 # spec file for package u-boot
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2010 Texas Instruments Inc by Nishanth Menon
 # Copyright (c) 2007-2010 by Silvan Calarco <silvan.calarco@mambasoft.it>
 #
@@ -197,7 +197,7 @@
 %define is_ppc 1
 %endif
 # archive_version differs from version for RC version only
-%define archive_version 2025.04
+%define archive_version 2025.10
 %if "%{target}" == ""
 ExclusiveArch:  do_not_build
 %else
@@ -227,7 +227,7 @@ ExclusiveArch:  do_not_build
 %endif
 %endif
 %endif
-Version:        2025.04
+Version:        2025.10
 Release:        0
 Summary:        The U-Boot firmware for the %target platform
 License:        GPL-2.0-only
@@ -418,7 +418,7 @@ This package contains documentation for U-Boot firmware.
 %build
 %if %tools_only
 # needed for include/config/auto.conf
-make defconfig
+make sandbox_defconfig
 make syncconfig
 make %{?_smp_mflags} CFLAGS="%{optflags}" tools-only NO_SDL=y
 
@@ -658,7 +658,7 @@ fi
 %doc doc/README.JFFS2_NAND
 %doc doc/README.autoboot doc/README.console doc/README.dns
 %doc doc/README.hwconfig doc/README.nand doc/README.serial_multi
-%doc doc/README.SNTP doc/README.standalone doc/README.update doc/README.usb
+%doc doc/README.standalone doc/README.update doc/README.usb
 %doc doc/README.video doc/README.VLAN doc/README.silent doc/README.POST
 %doc doc/usage/*
 %doc doc/board/*

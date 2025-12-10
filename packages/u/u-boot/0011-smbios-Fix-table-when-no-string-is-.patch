@@ -1,4 +1,4 @@
-From 711d4b18b7d47ad7232498d51e2ddbd3d5c40255 Mon Sep 17 00:00:00 2001
+From 3d818ef213a15f7845f6c11664b85d85e424a1ba Mon Sep 17 00:00:00 2001
 From: Matthias Brugger <mbrugger@suse.com>
 Date: Wed, 17 Mar 2021 12:20:32 +0100
 Subject: [PATCH] smbios: Fix table when no string is present
@@ -19,7 +19,7 @@ Series-cc: u-boot@lists.denx.de
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/lib/smbios.c b/lib/smbios.c
-index 78cee8c0c26..f9241d7a702 100644
+index b8c2846277a..0ebecc6d049 100644
 --- a/lib/smbios.c
 +++ b/lib/smbios.c
 @@ -314,7 +314,7 @@ static int smbios_add_prop(struct smbios_ctx *ctx, const char *prop,

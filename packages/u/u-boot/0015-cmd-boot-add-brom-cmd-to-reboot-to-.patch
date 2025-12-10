@@ -1,4 +1,4 @@
-From ff73994d6972ace19ef5f6535532b1447ddb5f44 Mon Sep 17 00:00:00 2001
+From 863287dbdeca227403cee19687f9626b45c230dc Mon Sep 17 00:00:00 2001
 From: Andy Yan <andy.yan@rock-chips.com>
 Date: Tue, 6 Feb 2018 09:51:12 +0800
 Subject: [PATCH] cmd: boot: add brom cmd to reboot to brom dnl mode

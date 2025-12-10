@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec  9 08:57:25 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2025.10:
+  * Full changelog available at:
+    https://source.denx.de/u-boot/u-boot/-/compare/v2025.04...v2025.07
+    https://source.denx.de/u-boot/u-boot/-/compare/v2025.07...v2025.10
+- Patches rebased
+- Update u-boot.keyring
+
+-------------------------------------------------------------------
 Wed Jun  4 17:44:06 UTC 2025 - Loic Devulder <ldevulder@suse.com>
 
 - Add u-boot-roc-cc-rk3328
