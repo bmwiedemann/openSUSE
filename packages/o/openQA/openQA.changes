@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 09 14:19:12 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1765286149.3debb8ea:
+  * KTAP: Don't increment parsed_lines_count in "SKIP" lines
+  * KTAP: Define unparsed_lines and parsed_lines_count
+
+-------------------------------------------------------------------
 Mon Dec 08 20:38:05 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1765217707.d6e697fd:
