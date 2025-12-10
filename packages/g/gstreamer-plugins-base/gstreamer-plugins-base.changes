@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Dec  7 08:16:18 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.9:
+  + allocators: drmdumb: Keep dmabuf mapped
+  + alsadeviceprovider: Fix device name leak
+  + audiovisualizer: Use break instead of goto for escape logic
+  + decodebin3:
+    - Clear previous collection on input
+    - Consider certain meta caps in decodebin3 as raw format to
+      avoid warnings
+  + decodebin3: Protect again NULL dereference if input slot can't
+    be mapped
+  + glbasesrc: Add unlock handling for non-negotiated cases
+  + glcolorconvert: Fix memory leak in _create_shader
+  + gldownload: Keep dmabuf mapped
+  + glfiltershader: Add missing unlock
+  + glstereosplit: Add missing unlock for exceptional case
+  + pbutils: Fix bit shifting when generate hevc mime codec string
+  + rtpbaseaudiopay: Consider RESYNC flag as discontinuity too
+  + rtpbasedepayload: Add missing unlock in error code path
+  + uridecodebin3:
+    - Add null check of play items in purge
+    - Add missing unlock
+  + urisourcebin: Fix initial values of min_byte_level and
+    min_time_level variables
+  + videoencoder: Fix warning of uninitialized buffer
+  + gst-play-1.0:
+    - Fix printing of missing plugin details
+    - Add missing unlock for invalid track type
+
+-------------------------------------------------------------------
 Tue Nov 11 09:13:36 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.8:
