@@ -334,4 +334,19 @@
     <comment></comment>
     <requestid>1320041</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>577a850bef629b2d7afa50f1cbd15697</srcmd5>
+    <version>0.8.2</version>
+    <time>1765376929</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.8.2:
+  * Cleanup man pages
+  * Using ECONF_ARGUMENT_IS_NULL_VALUE instead of general error
+- Update to version 0.8.2:
+  * Cleanup man pages
+  * Using ECONF_ARGUMENT_IS_NULL_VALUE instead of general error
+    ECONF_ERROR
+</comment>
+    <requestid>1321618</requestid>
+  </revision>
 </revisionlist>
