@@ -287,4 +287,17 @@ Note: socket_wrapper fails if built on 'lamb'</comment>
 </comment>
     <requestid>1304070</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>1224adce69e1c768b6868998086257b9</srcmd5>
+    <version>1.5.2</version>
+    <time>1765376939</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.5.2
+  * Improved debugging functionality (see manpage)
+  * fd-passing for Python 3.14's ProcessPoolExecutor
+  * Enhanced debugging for fd types being passed
+- Removed swrap-fix-tests.patch
+</comment>
+    <requestid>1321694</requestid>
+  </revision>
 </revisionlist>

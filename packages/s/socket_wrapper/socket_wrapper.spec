@@ -24,7 +24,7 @@
 ############################# NOTE ##################################
 
 Name:           socket_wrapper
-Version:        1.5.1
+Version:        1.5.2
 Release:        0
 Summary:        A library passing all socket communications through Unix sockets
 License:        BSD-3-Clause
@@ -35,9 +35,6 @@ Source0:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz
 Source1:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz.asc
 Source2:        socket_wrapper.keyring
 Source3:        %{name}-rpmlintrc
-#
-# PATCH-FIX-UPSTREAM https://gitlab.com/cwrap/socket_wrapper/-/merge_requests/49
-Patch0:         swrap-fix-tests.patch
 #
 BuildRequires:  cmake
 BuildRequires:  pkg-config
@@ -92,7 +89,7 @@ socket_wrapper_enabled().
 %postun -n libsocket_wrapper_noop0 -p /sbin/ldconfig
 
 %files
-%doc AUTHORS README.md CHANGELOG
+%doc AUTHORS README.md CHANGELOG.md
 %license LICENSE
 %{_libdir}/libsocket_wrapper.so.*
 %{_mandir}/man1/socket_wrapper.1*
