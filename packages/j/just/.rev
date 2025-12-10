@@ -478,4 +478,13 @@
   * Disable mdbook-linkcheck (forwarded request 1321479 from rrahl0)</comment>
     <requestid>1321480</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>f89e302954be6f032583cef832a17c46</srcmd5>
+    <version>1.44.1</version>
+    <time>1765377190</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.44.1:
+  * Properly close format string delimiter (forwarded request 1321819 from rrahl0)</comment>
+    <requestid>1321820</requestid>
+  </revision>
 </revisionlist>

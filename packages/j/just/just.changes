@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  9 16:26:22 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.44.1:
+  * Properly close format string delimiter
+
+-------------------------------------------------------------------
 Sun Dec  7 23:37:24 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.44.0:
