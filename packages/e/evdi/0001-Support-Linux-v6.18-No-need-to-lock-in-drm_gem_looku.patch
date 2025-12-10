@@ -1,0 +1,31 @@
+From 149dbaea6ca49a20fa04636cf4a60ca5ee75b8a6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C5=81ukasz=20Spintzyk?= <lukasz.spintzyk@synaptics.com>
+Date: Mon, 13 Oct 2025 14:37:34 -0700
+Subject: [PATCH 1/5] [Support Linux v6.18] No need to lock in drm_gem_lookup
+ as it is already cares for locking
+
+---
+ module/evdi_modeset.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/module/evdi_modeset.c b/module/evdi_modeset.c
+index cadd791..9636323 100644
+--- a/module/evdi_modeset.c
++++ b/module/evdi_modeset.c
+@@ -134,13 +134,11 @@ static int evdi_crtc_cursor_set(struct drm_crtc *crtc,
+ 
+ 	EVDI_CHECKPT();
+ 	if (handle) {
+-		mutex_lock(&dev->struct_mutex);
+ 		obj = drm_gem_object_lookup(file, handle);
+ 		if (obj)
+ 			eobj = to_evdi_bo(obj);
+ 		else
+ 			EVDI_ERROR("Failed to lookup gem object.\n");
+-		mutex_unlock(&dev->struct_mutex);
+ 	}
+ 
+ 	evdi_cursor_set(evdi->cursor,
+-- 
+2.51.0
+

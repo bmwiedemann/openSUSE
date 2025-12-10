@@ -30,6 +30,11 @@ Source0:        evdi-%{version}.tar.gz
 Source1:        evdi-kmp-preamble
 Source2:        evdi-rpmlintrc
 Patch0:         buildfix.patch
+Patch1:         0001-Support-Linux-v6.18-No-need-to-lock-in-drm_gem_looku.patch
+Patch2:         0002-Support-Linux-v6.18-Lock-on-dev-struct_mutex-unneces.patch
+Patch3:         0003-Support-Linux-v6.18-Remove-lock-on-device-struct_mut.patch
+Patch4:         0004-fix-README-Outdated-link-to-AUR-package.patch
+Patch5:         0005-Fix-building-on-EL-10-kernels.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  pesign-obs-integration
 BuildRequires:  pkgconfig

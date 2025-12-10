@@ -150,4 +150,17 @@
   * EL10 support</comment>
     <requestid>1308852</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>5632750b83863f305f4c5b2ea0a0b6a4</srcmd5>
+    <version>1.14.11</version>
+    <time>1765377050</time>
+    <user>anag_factory</user>
+    <comment>- 0001-Support-Linux-v6.18-No-need-to-lock-in-drm_gem_looku.patch
+  0002-Support-Linux-v6.18-Lock-on-dev-struct_mutex-unneces.patch
+  0003-Support-Linux-v6.18-Remove-lock-on-device-struct_mut.patch
+  0004-fix-README-Outdated-link-to-AUR-package.patch
+  0005-Fix-building-on-EL-10-kernels.patch
+  * fixes build agains kernel 6.18 (boo#1254590)</comment>
+    <requestid>1321729</requestid>
+  </revision>
 </revisionlist>
