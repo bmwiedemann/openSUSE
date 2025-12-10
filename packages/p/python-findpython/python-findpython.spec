@@ -1,7 +1,7 @@
 #
 # spec file for package python-findpython
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-findpython
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        Utility to find python versions on your system
 License:        MIT
@@ -26,9 +26,9 @@ URL:            https://github.com/frostming/findpython
 Source:         https://files.pythonhosted.org/packages/source/f/findpython/findpython-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module packaging >= 20}
-BuildRequires:  %{python_module platformdirs >= 4.3.6}
 BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module platformdirs >= 4.3.6}
 BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  python-rpm-macros
@@ -58,7 +58,8 @@ system.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# test_find_python_from_uv_provider needs python3 providing python 3.10, which is not possible in Factory
+%pytest -k "not test_find_python_from_uv_provider"
 
 %post
 %python_install_alternative findpython

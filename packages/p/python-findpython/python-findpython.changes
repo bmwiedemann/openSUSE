@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec  9 10:34:06 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.7.1
+  * Make test_find_python_from_uv_provider working on SunOS
+- Skip test failing in Factory by design
+
+-------------------------------------------------------------------
 Sat Aug 16 10:19:41 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.7.0
