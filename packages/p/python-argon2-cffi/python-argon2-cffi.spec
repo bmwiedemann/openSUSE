@@ -1,7 +1,7 @@
 #
 # spec file for package python-argon2-cffi
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-argon2-cffi
-Version:        23.1.0
+Version:        25.1.0
 Release:        0
 Summary:        The Argon2 password hashing algorithm for Python
 License:        MIT
@@ -47,6 +47,10 @@ C library.
 
 %prep
 %autosetup -p1 -n argon2_cffi-%{version}
+
+# FIXME: make it compatible with the older version of setuptools.
+# make sure to remove this hack once we have a newer version of setuptools.
+sed -i '/.*Programming Language :: Python :: 3\.14.*/d' pyproject.toml
 
 %build
 export ARGON2_CFFI_USE_SYSTEM=1

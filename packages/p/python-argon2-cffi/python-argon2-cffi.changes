@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 13 06:14:06 UTC 2025 - Guang Yee <gyee@suse.com>
+
+- Update to 25.1.0
+  Added
+    * Official support for Python 3.13 and 3.14. No code changes were necessary.
+  Removed
+    * Python 3.7 is not supported anymore. #186
+  Changed
+    * argon2.PasswordHasher.check_needs_rehash() now also accepts bytes like the rest of the API. #174
+    * Improved parameter compatibility handling for Pyodide / WebAssembly environments. #190
+- Remove Python 3.14 fro classifiers since the current version of setuptools doesn't recognize it.
+
+-------------------------------------------------------------------
 Thu Dec 14 09:14:35 UTC 2023 - Petr Gajdos <pgajdos@suse.com>
 
 - update to 23.1.0:
