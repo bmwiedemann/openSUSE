@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Thu Dec  4 15:30:22 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- update to 0.36.0:
+  * Release highlights
+    - The documentation has moved from
+      https://jj-vcs.github.io/jj/ to https://docs.jj-vcs.dev/.
+    - Fixed race condition that could cause divergent operations
+      when running concurrent jj commands in colocated
+      repositories.
+    - jj now ignores $PAGER set in the environment and uses `less
+      -FRX` on most platforms (:builtin on Windows).
+  * Breaking changes
+    - In filesets or path patterns, glob matching is enabled by
+      default.
+    - In the following commands, string pattern arguments are now
+      parsed the same way they are in revsets and can be combined
+      with logical operators: jj bookmark
+      delete/forget/list/move, jj tag delete/list, jj git
+      clone/fetch/push
+    - In the following commands, unmatched bookmark/tag names is
+      no longer an error. A warning will be printed instead: jj
+      bookmark delete/forget/move/track/untrack, jj tag delete,
+      jj git clone/push
+    - The default string pattern syntax in revsets will be
+      changed to glob: in a future release. You can opt in to the
+      new default by setting ui.revsets-use-glob-by-default=true.
+    - Sub-repos are no longer tracked. Any directory containing
+      .jj or .git is ignored. Note that Git submodules are
+      unaffected by this.
+  * Deprecations
+    - The --destination/-d arguments for jj rebase, jj split, jj
+      revert, etc. were renamed to --onto/-o.
+    - jj describe --edit is deprecated in favor of --editor.
+    - The config options git.auto-local-bookmark and
+      git.push-new-bookmarks are deprecated in favor of
+      remotes.<name>.auto-track-bookmarks. [remotes.origin]
+      auto-track-bookmarks = "glob:*"
+    - The flag --allow-new on jj git push is deprecated. In order
+      to push new bookmarks, please track them with jj bookmark
+      track.
+  * New features
+    - jj commit, jj describe, jj squash, and jj split now accept
+      --editor, which ensures an editor will be opened with the
+      commit description even if one was provided via
+      --message/-m.
+    - All jj commands show a warning when the provided fileset
+      expression doesn't match any files.
+    - Added files() template function to DiffStats. This supports
+      per-file stats like lines_added() and lines_removed()
+    - Added join() template function. This is different from
+      separate() in that it adds a separator between all
+      arguments, even if empty.
+    - RepoPath template type now has a absolute() -> String
+      method that returns the absolute path as a string.
+    - Added format_path(path) template that controls how file
+      paths are printed with jj file list.
+    - New built-in revset aliases visible() and hidden().
+    - Unquoted * is now allowed in revsets. bookmarks(glob:foo*)
+      no longer needs quoting.
+    - jj prev/next --no-edit now generates an error if the
+      working-copy has some children.
+    - A new config option remotes.<name>.auto-track-bookmarks can
+      be set to a string pattern. New bookmarks matching it will
+      be automatically tracked for the specified remote.
+    - jj log now supports a --count flag to print the number of
+      commits instead of displaying them.
+  * Fixed bugs
+    - jj fix now prints a warning if a tool failed to run on
+      a file.
+    - Shell completion now works with non‑normalized paths,
+      fixing the previous panic and allowing prefixes containing
+      . or .. to be completed correctly.
+    - Shell completion now always uses forward slashes to
+      complete paths, even on Windows. This renders completion
+      results viable when using jj in Git Bash.
+    - Unexpected keyword arguments now return a parse failure for
+      the coalesce() and concat() templating functions.
+    - Nushell completion script documentation add -f option, to
+      keep it up to date.
+    - Ensured that with Git submodules, remnants of your
+      submodules do not show up in the working copy after running
+      jj new.
+
+-------------------------------------------------------------------
 Thu Nov  6 06:50:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.35.0:
