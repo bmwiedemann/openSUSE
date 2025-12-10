@@ -697,4 +697,13 @@
   * Revert &quot;Bump github.com/containerd/containerd (#890)&quot; (#892) (forwarded request 1320846 from glaubitz)</comment>
     <requestid>1320896</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>f02846524cfcf095cb1bd94f1393d45f</srcmd5>
+    <version>20251202.00</version>
+    <time>1765377091</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251202.00
+  * Revert &quot;Bump github.com/spdx/tools-golang from 0.5.3 to 0.5.5 (#887)&quot; (#893) (forwarded request 1321685 from glaubitz)</comment>
+    <requestid>1321752</requestid>
+  </revision>
 </revisionlist>

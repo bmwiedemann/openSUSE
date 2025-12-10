@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  9 08:38:50 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20251202.00
+  * Revert "Bump github.com/spdx/tools-golang from 0.5.3 to 0.5.5 (#887)" (#893)
+
+-------------------------------------------------------------------
 Tue Dec  2 12:47:38 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20251201.00
