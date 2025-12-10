@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Dec  9 20:31:50 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 9.0.1:
+  * Authenticate slot migration client on source node to internal user
+  * Bug fix: reset io_last_written on c->buf resize to prevent stale pointers
+  * Sentinel: fix regression requiring "+failover" ACL in failover path
+  * Cluster: Avoid usage of light weight messages to nodes with not ready bidirectional links
+  * Send duplicate multi meet packet only for node which supports it in mixed clusters
+  * Fix: LTRIM should not call signalModifiedKey when no elements are removed
+  * Fix build on some 32-bit ARM by only using NEON on AArch64
+  * Fix deadlock in IO-thread shutdown during panic
+  * Fix COMMANDLOG large-reply when using reply copy avoidance
+  * Fix CLUSTER SLOTS crash when called from module timer callback
+
+-------------------------------------------------------------------
+Sat Nov 29 02:18:38 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update valkey-conf.patch
+  instead of copying the whole default example config we can also
+  have it as include file and start out with a very minimal
+  configuration for each instance.
+
+-------------------------------------------------------------------
 Tue Oct 21 19:47:52 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 9.0.0:

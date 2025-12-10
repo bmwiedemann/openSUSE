@@ -1,7 +1,7 @@
-Index: valkey-8.1.1/sentinel.conf
+Index: valkey-9.0.0/sentinel.conf
 ===================================================================
---- valkey-8.1.1.orig/sentinel.conf
-+++ valkey-8.1.1/sentinel.conf
+--- valkey-9.0.0.orig/sentinel.conf
++++ valkey-9.0.0/sentinel.conf
 @@ -13,11 +13,12 @@ port 26379
  # Note that Valkey will write a pid file in /var/run/valkey-sentinel.pid when
  # daemonized.
@@ -25,11 +25,11 @@ Index: valkey-8.1.1/sentinel.conf
  
  # To enable logging to the system logger, just set 'syslog-enabled' to yes,
  # and optionally update the other syslog parameters to suit your needs.
-Index: valkey-8.1.1/valkey.conf
+Index: valkey-9.0.0/valkey.conf
 ===================================================================
---- valkey-8.1.1.orig/valkey.conf
-+++ valkey-8.1.1/valkey.conf
-@@ -371,7 +371,7 @@ daemonize no
+--- valkey-9.0.0.orig/valkey.conf
++++ valkey-9.0.0/valkey.conf
+@@ -395,7 +395,7 @@ daemonize no
  # The default is "no". To run under upstart/systemd, you can simply uncomment
  # the line below:
  #
@@ -38,7 +38,7 @@ Index: valkey-8.1.1/valkey.conf
  
  # If a pid file is specified, the server writes it where specified at startup
  # and removes it at exit.
-@@ -385,7 +385,7 @@ daemonize no
+@@ -409,7 +409,7 @@ daemonize no
  #
  # Note that on modern Linux systems "/run/valkey.pid" is more conforming
  # and should be used instead.
@@ -47,7 +47,7 @@ Index: valkey-8.1.1/valkey.conf
  
  # Specify the server verbosity level.
  # This can be one of:
-@@ -416,7 +416,8 @@ loglevel notice
+@@ -440,7 +440,8 @@ loglevel notice
  # Specify the log file name. Also the empty string can be used to force
  # the server to log on the standard output. Note that if you use standard
  # output for logging but daemonize, logs will be sent to /dev/null
@@ -57,7 +57,7 @@ Index: valkey-8.1.1/valkey.conf
  
  # To enable logging to the system logger, just set 'syslog-enabled' to yes,
  # and optionally update the other syslog parameters to suit your needs.
-@@ -606,7 +607,7 @@ rdb-del-sync-files no
+@@ -631,7 +632,7 @@ rdb-del-sync-files no
  # Note that modifying 'dir' during runtime may have unexpected behavior,
  # for example when a child process is running, related file operations may
  # have unexpected effects.
@@ -66,3 +66,26 @@ Index: valkey-8.1.1/valkey.conf
  
  ################################# REPLICATION #################################
  
+Index: valkey-9.0.0/valkey.default.conf
+===================================================================
+--- /dev/null
++++ valkey-9.0.0/valkey.default.conf
+@@ -0,0 +1,7 @@
++include /etc/valkey/includes/valkey.defaults.conf
++
++port 6379
++dir /var/lib/valkey/default/
++pidfile /run/valkey/default.pid
++logfile /var/log/valkey/default.log
++
+Index: valkey-9.0.0/sentinel.default.conf
+===================================================================
+--- /dev/null
++++ valkey-9.0.0/sentinel.default.conf
+@@ -0,0 +1,6 @@
++include /etc/valkey/includes/sentinel.defaults.conf
++
++port 26379
++pidfile /run/valkey/sentinel-default.pid
++logfile /var/log/valkey/sentinel-default.log
++

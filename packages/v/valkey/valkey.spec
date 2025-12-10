@@ -26,7 +26,7 @@
 %global make_flags CFLAGS="%{build_cflags}" DEBUG="" V="echo" PREFIX=%{buildroot}%{_prefix} BUILD_WITH_SYSTEMD=yes BUILD_TLS=yes
 
 Name:           valkey
-Version:        9.0.0
+Version:        9.0.1
 Release:        0
 Summary:        Persistent key-value database
 License:        BSD-3-Clause
@@ -117,9 +117,11 @@ install -pm0750 -d \
   %{buildroot}%{_data_dir}/default
 
 install -pDm644 src/%{name}module.h %{buildroot}%{_includedir}/%{name}module.h
+install -Dpm0640 valkey.conf            %{buildroot}%{_conf_dir}/includes/valkey.defaults.conf
+install -Dpm0640 sentinel.conf          %{buildroot}%{_conf_dir}/includes/sentinel.defaults.conf
 
-install -Dpm0640 valkey.conf            %{buildroot}%{_conf_dir}/default.conf.example
-install -Dpm0660 sentinel.conf          %{buildroot}%{_conf_dir}/sentinel.conf.example
+install -Dpm0640 valkey.default.conf    %{buildroot}%{_conf_dir}/valkey.default.conf.template
+install -Dpm0660 sentinel.default.conf  %{buildroot}%{_conf_dir}/sentinel.default.conf.template
 
 # some sysctl stuff
 install -Dpm0644 %{SOURCE6} %{buildroot}/%{_prefix}/lib/sysctl.d/00-%{name}.conf
