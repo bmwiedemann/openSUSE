@@ -20,7 +20,7 @@
 %bcond_with tests
 %{?sle15_python_module_pythons}
 Name:           python-aiodns
-Version:        3.5.0
+Version:        3.6.0
 Release:        0
 Summary:        Simple DNS resolver for asyncio
 License:        MIT
