@@ -34,4 +34,13 @@
     <comment></comment>
     <requestid>1208098</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8023b100a4cccdd0263cc3c649a4775d</srcmd5>
+    <version>0.1.8</version>
+    <time>1765377196</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.1.8:
+  * Update pyo3 for supporting python3.14 (forwarded request 1321817 from rrahl0)</comment>
+    <requestid>1321818</requestid>
+  </revision>
 </revisionlist>

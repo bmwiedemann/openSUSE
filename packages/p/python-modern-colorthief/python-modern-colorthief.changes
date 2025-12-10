@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  9 15:57:54 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.1.8:
+  * Update pyo3 for supporting python3.14
+
+-------------------------------------------------------------------
 Tue Oct 15 10:47:19 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.1.7:
