@@ -16,9 +16,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%{?sle15_python_module_pythons}
 Name:           python-snimpy
-Version:        1.0.3
+Version:        1.0.4
 Release:        0
 Summary:        Interactive SNMP tool
 License:        ISC
@@ -28,6 +28,7 @@ BuildRequires:  %{python_module cffi >= 1.0.0}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module vcversioner}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes

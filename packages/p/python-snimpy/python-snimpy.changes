@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec  9 09:07:50 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.0.4
+  * Temporarily depend on pyasn1 <= 0.6.0 to fix compatibility issues.
+  * Convert build to PEP517.
+- Update BuildRequires from setup.py
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Wed Jan 29 05:33:59 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Skip another test. 
