@@ -1,7 +1,7 @@
 #
 # spec file for package python-pudb
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,29 +16,28 @@
 #
 
 
-%define upstream_name pudb
 %define module_name pudb
-%define py_maj_ver %(c=%{python})
 %{?sle15_python_module_pythons}
 Name:           python-pudb
-Version:        2024.1.3
+Version:        2025.1.5
 Release:        0
 Summary:        A full-screen, console-based Python debugger
 License:        MIT
-Group:          Development/Tools/Debuggers
 URL:            https://github.com/inducer/pudb
-Source0:        https://files.pythonhosted.org/packages/source/p/%{upstream_name}/%{upstream_name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/pudb/pudb-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-mock}
-BuildRequires:  %{python_module urwid >= 2.4}
-BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module pyzmq}
+BuildRequires:  %{python_module urwid >= 2.5.1}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Pygments >= 2.7.4
+Requires:       python-Pygments >= 2.19
 Requires:       python-jedi >= 0.18
 Requires:       python-packaging >= 20.0
-Requires:       python-urwid >= 2.4
+Requires:       python-typing_extensions >= 4.13
+Requires:       python-urwid >= 2.5.1
 Requires:       python-urwid-readline
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -51,9 +50,8 @@ Control is by keyboard. The UI is reminiscient of the DOS versions
 of Turbo Pascal.
 
 %prep
-%autosetup -p1 -n %{upstream_name}-%{version}
+%autosetup -p1 -n pudb-%{version}
 sed -i '1{\@^#! %{_bindir}/env python@d}' pudb/debugger.py
-rm -v LICENSE~
 
 %build
 %pyproject_wheel
@@ -78,14 +76,13 @@ mv -v %{buildroot}%{_bindir}/pudb{*,} || /bin/true
 
 %check
 export LC_ALL=en_US.utf8
-# https://github.com/inducer/pudb/issues/304
-%pytest -k 'not test_get_lines'
+%pytest
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/%{module_name}
-%{python_sitelib}/%{module_name}*-info
+%{python_sitelib}/%{module_name}-%{version}.dist-info
 %python_alternative %{_bindir}/pudb
 
 %changelog

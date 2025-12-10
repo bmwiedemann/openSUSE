@@ -165,4 +165,19 @@
   * Fix compatibility with Python 3.13</comment>
     <requestid>1225335</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>827cac92caa6a4eba24db3b8e7d0bed7</srcmd5>
+    <version>2025.1.5</version>
+    <time>1765377214</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2025.1.5:
+  * Bump pygments requirement to 2.19
+  * Address recent ruff lint
+  * Urwid 3.0.4 compat
+  * Fix pick mod
+  * Fix sidebar resizing for new Urwid API
+  * Remove 'Examine' option in 'Finished' dialog
+  * Urwid 3 compat</comment>
+    <requestid>1321876</requestid>
+  </revision>
 </revisionlist>

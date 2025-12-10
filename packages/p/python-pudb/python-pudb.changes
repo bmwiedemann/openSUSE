@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec 10 04:33:33 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2025.1.5:
+  * Bump pygments requirement to 2.19
+  * Address recent ruff lint
+  * Urwid 3.0.4 compat
+  * Fix pick mod
+  * Fix sidebar resizing for new Urwid API
+  * Remove 'Examine' option in 'Finished' dialog
+  * Urwid 3 compat
+
+-------------------------------------------------------------------
 Wed Nov 20 16:18:43 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2024.1.3:
