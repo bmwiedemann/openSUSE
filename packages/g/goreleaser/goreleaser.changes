@@ -1,4 +1,129 @@
 -------------------------------------------------------------------
+Tue Dec 09 15:00:44 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.13.1:
+  * chore: auto-update generated files
+  * fix: lint
+  * docs: update sign.md
+  * chore: issue templates
+  * chore: issue templates
+  * chore: update issue templates
+  * fix(ko): do not fail if docker daemon not available
+  * chore(deps): update 6 dependencies
+  * chore(deps): bump golang from 1.25.4-alpine to 1.25.5-alpine in the docker group across 1 directory (#6286)
+  * ci(deps): bump the actions group with 4 updates (#6287)
+  * fix(mcp): its actually the committee mcp registry (#6283)
+  * docs: clarify deprecation policy
+  * fix: update run script to new cosign signature check
+  * sec: update to go 1.25.5
+  * ci: fix perms
+  * ci: fix job permissions
+  * ci(sec): fix sbom job
+  * ci(sec): improve sbom scan job
+  * ci(sec): periodically scan last release sboms (#6281)
+  * fix(github): improve create/update file (#6280)
+  * docs: announce v2.13 (#6270)
+  * chore: auto-update generated files
+
+-------------------------------------------------------------------
+Tue Dec 09 14:59:24 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.13.0:
+  * chore: auto-update generated files
+  * docs: remove -unreleased
+  * fix(github): enterprise urls (#6261)
+  * docs: update schema
+  * fix(aur): prerelease versions were not being properly handled (#6204)
+  * chore(deps): update 7 dependencies (#6275)
+  * ci(deps): bump the actions group with 5 updates (#6277)
+  * chore: auto-update generated files
+  * docs(security): update incident response document
+  * fix(mcp): move it all inside mcp.github
+  * fix(dockers/v2): check docker driver on healthcheck (#6273)
+  * chore: fix typo in taskfile
+  * chore: auto-update generated files
+  * chore: auto-update generated files
+  * feat: add GitHub App signed commit support (#6240)
+  * docs: fix element
+  * test: skip buildx test on windows
+  * ci: release loong64 archives (#5915)
+  * fix(github): more details if sync and create ref fail (#6255)
+  * fix(dockers/v2): add warning when docker buildx uses non-container driver (dockers_v2 only) (#6263)
+  * feat: support ko loading base image from daemon (#6233)
+  * chore(deps): bump golang.org/x/crypto from 0.43.0 to 0.45.0 (#6264)
+  * docs(deps): bump mkdocs-rss-plugin from 1.17.6 to 1.17.7 in /www in the docs group (#6266)
+  * ci(deps): bump the actions group with 7 updates (#6267)
+  * chore(deps): bump squidfunk/mkdocs-material from `58dee36` to `980e11f` in /www in the docker group across 1 directory (#6259)
+  * ci(deps): bump the actions group with 6 updates (#6258)
+  * docs(deps): bump the docs group in /www with 2 updates (#6257)
+  * fix(go): only add .h artifact if it exists (#6254)
+  * test(mcp): fix broken test
+  * chore: auto-update generated files
+  * docs: /mcp
+  * chore: auto-update generated files
+  * docs: better experimental notice
+  * fix: warn mcp experimental
+  * docs: improve wording
+  * docs: fix typo
+  * docs: update
+  * feat: mcp publisher (#6234)
+  * docs: update
+  * test: added more tests to the bluesky announcer (#6249)
+  * chore: lint tests
+  * chore(deps): update gitlab, aws-sdk, docker (#6248)
+  * test: move test code into _test.go file
+  * fix: dynamically use announcer names in errors (#6246)
+  * chore(deps): bump the docker group across 2 directories with 2 updates (#6244)
+  * docs(deps): bump mkdocs-material from 9.6.22 to 9.6.23 in /www in the docs group (#6242)
+  * fix(announce): user agent should be goreleaser/v2
+  * fix: use v3 user-agent for Bluesky announcer (#6247)
+  * docs: small fixes
+  * feat: add Discourse announcer (#6199)
+  * chore(deps): update go-github
+  * fix(dockers/v2): better handle error
+  * ci(deps): bump the actions group with 2 updates (#6243)
+  * chore: auto-update generated files
+  * docs: update cgo pages
+  * feat: update Go to 1.25.4 (#6239)
+  * chore(deps): bump github.com/opencontainers/runc from 1.2.3 to 1.2.8 in the go_modules group across 1 directory (#6237)
+  * docs: nightly job cosign
+  * docs: fix summary
+  * docs: blog post about cosign v3
+  * ci: update cosign, output only when snapshot (#6224)
+  * test: use synctest in more tests (#6238)
+  * chore(deps): update go-github (#6235)
+  * refactor: move mcp out of main repo (#6232)
+  * feat(aur): use ${pkgver} in the URL to prevent extra diffs (#6231)
+  * chore: auto-update generated files
+  * chore: auto-update generated files
+  * fix: small config improvements
+  * fix: move stuff around in pkg/config
+  * fix: change some bits of the config to make it easier to keep in sync
+  * fix: properly mark fields deprecated in jsonschema
+  * chore: auto-update generated files
+  * docs: update
+  * docs: auto update
+  * chore: schema update
+  * feat: make signs.output and docker_signs.output templateable (#6220)
+  * feat: make hooks in homebrew_casks templateable (#6222)
+  * feat: update go to 1.25.3 (#6223)
+  * docs: typo in nfpm.md from 'headers' to 'header' (#6210)
+  * docs: update
+  * docs: auto update
+  * chore: schema update
+  * feat: make signs.output and docker_signs.output templateable (#6220)
+  * feat: make hooks in homebrew_casks templateable (#6222)
+  * feat: update go to 1.25.3 (#6223)
+  * docs: typo in nfpm.md from 'headers' to 'header' (#6210)
+  * Update cmd/mcp.go
+  * fix(mcp): reduce tool bloat, resources, prompts
+  * fix: lint issues
+  * chore(deps): bump the gomod group with 3 updates (#6215)
+  * ci(deps): bump the actions group with 6 updates (#6216)
+  * chore: auto-update generated files
+  * chore: auto-update generated files
+
+-------------------------------------------------------------------
 Mon Oct 27 08:24:01 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 2.12.7:

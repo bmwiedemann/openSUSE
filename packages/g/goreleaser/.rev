@@ -524,4 +524,41 @@
   * chore: auto-update generated files (forwarded request 1313801 from ph03nix)</comment>
     <requestid>1313881</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>97524e94f178e00bb6dd943fd1c10df6</srcmd5>
+    <version>2.13.1</version>
+    <time>1765377194</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.13.1:
+  * chore: auto-update generated files
+  * fix: lint
+  * docs: update sign.md
+  * chore: issue templates
+  * chore: issue templates
+  * chore: update issue templates
+  * fix(ko): do not fail if docker daemon not available
+  * chore(deps): update 6 dependencies
+  * chore(deps): bump golang from 1.25.4-alpine to 1.25.5-alpine in the docker group across 1 directory (#6286)
+  * ci(deps): bump the actions group with 4 updates (#6287)
+  * fix(mcp): its actually the committee mcp registry (#6283)
+  * docs: clarify deprecation policy
+  * fix: update run script to new cosign signature check
+  * sec: update to go 1.25.5
+  * ci: fix perms
+  * ci: fix job permissions
+  * ci(sec): fix sbom job
+  * ci(sec): improve sbom scan job
+  * ci(sec): periodically scan last release sboms (#6281)
+  * fix(github): improve create/update file (#6280)
+  * docs: announce v2.13 (#6270)
+  * chore: auto-update generated files
+
+- Update to version 2.13.0:
+  * chore: auto-update generated files
+  * docs: remove -unreleased
+  * fix(github): enterprise urls (#6261)
+  * docs: update schema
+  * fix(aur): prerelease versions were not being properly handled (#6204) (forwarded request 1321813 from jfkw)</comment>
+    <requestid>1321815</requestid>
+  </revision>
 </revisionlist>

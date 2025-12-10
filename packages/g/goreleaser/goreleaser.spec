@@ -17,7 +17,7 @@
 
 
 Name:           goreleaser
-Version:        2.12.7
+Version:        2.13.1
 Release:        0
 Summary:        CLI tool for release engineering in Go, Rust, Zig and TypeScript
 License:        MIT
