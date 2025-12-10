@@ -831,4 +831,13 @@ For details, see https://cockpit-project.org/blog/cockpit-322.html</comment>
       * Site-specific branding support</comment>
     <requestid>1318205</requestid>
   </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>6970295895a49c7561610ad210d3bf95</srcmd5>
+    <version>351</version>
+    <time>1765376943</time>
+    <user>anag_factory</user>
+    <comment>- Update SELinux module dir as macro to allow root path move from /var/lib/selinux
+  to /etc/selinux (bsc#1221342)</comment>
+    <requestid>1321720</requestid>
+  </revision>
 </revisionlist>
