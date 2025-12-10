@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec 09 20:44:16 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1765311639.7e3a762:
+  * Simplify the code to increment the counter
+  * audio: Allow for multiple audio recordings per test
+  * Add port forwarding example for NICTYPE_USER_OPTIONS
+  * Fix regression from abcaa66b by disabling virtio-keyboard by default
+  * Add IPv6 support for multi machine tests
+
+-------------------------------------------------------------------
 Fri Nov 28 21:20:17 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1764330105.c5cfd48:
