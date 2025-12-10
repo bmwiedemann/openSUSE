@@ -1,14 +1,20 @@
 <services>
-  <service name="tar_scm" mode="manual">
-    <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">refs/tags/v7.12.1</param>
+  <service mode="manual" name="obs_scm">
     <param name="url">https://github.com/keylime/keylime.git</param>
+    <!-- <param name="versionformat">@PARENT_TAG@</param> -->
+    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="scm">git</param>
+    <param name="revision">v7.13.0</param>
+    <param name="revision">master</param>
+    <param name="match-tag">*</param>
+    <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
+    <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
+    <param name="changesauthor">aplanas@suse.com</param>
   </service>
-  <service name="recompress" mode="manual">
-    <param name="compression">xz</param>
+  <service mode="manual" name="tar" />
+  <service mode="manual" name="recompress">
     <param name="file">*.tar</param>
+    <param name="compression">xz</param>
   </service>
-  <service name="set_version" mode="manual"/>
 </services>

@@ -1,7 +1,6 @@
 #
 # spec file for package keylime
 #
-# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -32,12 +31,12 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           keylime
-Version:        7.12.1
+Version:        7.13.0+40
 Release:        0
 Summary:        Open source TPM software for Bootstrapping and Maintaining Trust
 License:        Apache-2.0 AND MIT AND BSD-3-Clause
 URL:            https://github.com/keylime/keylime
-Source0:        %{name}-v%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 Source1:        keylime.xml
 Source2:        %{name}-user.conf
 Source3:        logrotate.%{name}
@@ -159,7 +158,7 @@ Conflicts:      rust-keylime
 Subpackage of %{name} for logrotate for Keylime services
 
 %prep
-%autosetup -p1 -n %{name}-v%{version}
+%autosetup -p1 -n %{name}-%{version}
 
 %build
 %pyproject_wheel
@@ -294,7 +293,7 @@ cp -r ./tpm_cert_store %{buildroot}%{_sharedstatedir}/%{srcname}/
 %python_alternative %{_bindir}/%{srcname}_userdata_encrypt
 %python_alternative %{_bindir}/%{srcname}_verifier
 %{python_sitelib}/keylime
-%{python_sitelib}/keylime-%{version}.dist-info
+%{python_sitelib}/keylime-*.dist-info
 
 %files -n %{srcname}-config
 %dir %attr(0700,keylime,tss) %{_distconfdir}/%{srcname}

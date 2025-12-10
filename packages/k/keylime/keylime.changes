@@ -1,4 +1,115 @@
 -------------------------------------------------------------------
+Tue Dec 09 13:34:39 UTC 2025 - aplanas@suse.com
+
+- Update to version 7.13.0+40 (CVE-2025-13609, bsc#1254199):
+  * Fix registrar duplicate UUID vulnerability (#1825)
+  * [Automatic] Update Keylime base image 2025-12-01
+  * Include new attestation information fields (#1818)
+  * Fix Database race conditions and SQLAlchemy 2.0 compatibility (#1823)
+  * ci: add push model tests to the packit plan
+  * push-model: require HTTPS for authentication and attestation endpoints
+  * Fix operational_state tracking in push mode attestations
+  * templates: add push model authentication config options to 2.5 templates
+  * Improve test coverage for authentication components
+  * Security: Hash authentication tokens in logs
+  * Fix stale IMA policy cache in verification
+  * Fix authentication behavior on failed attestations for push mode
+  * Add shared memory infrastructure for multiprocess communication
+  * Add agent authentication (challenge/response) protocol for push mode
+  * Convert CRLF to LF line endings in attestation_controller.py
+  * Add agent-driven (push) attestation protocol with PULL mode regression fixes (#1814)
+  * [Automatic] Update Keylime base image (2025-11-01) (#1816)
+  * docs: Fix man page RST formatting for rst2man compatibility (#1813)
+  * tests: Enable more tests in CI
+  * Apply limit on keylime-policy workers
+  * tpm: fix ECC signature parsing to support variable-length coordinates
+  * tpm: fix ECC P-521 credential activation with consistent marshaling
+  * tpm: fix ECC P-521 coordinate validation
+  * tests: Test keylime-policy both for filelist-ext.xml match and mismatch (#1806)
+  * [Automatic] Update Keylime base image 2025-10-01
+  * Remove deprecated disabled_signing_algorithms configuration option (#1804)
+  * algorithms: add support for specific RSA algorithms
+  * algorithms: add support for specific ECC curve algorithms
+  * Update manages based on review feedback
+  * Created manpage for keylime-policy and edited manpages for keylime verifier, registrar, agent
+  * Manpage for keylime agent
+  * Manpage for keylime verifier
+  * Manpage for keylime registrar
+  * Use constants for timeout and max retries defaults
+  * tests: Add unit tests for the timeout configuration
+  * verifier: Use timeout from `request_timeout` config option
+  * revocation_notifier: Use timeout setting from config file
+  * tenant: Set timeout when getting version from agent
+  * verify/evidence: SEV-SNP evidence type/verifier
+  * verify/evidence: Add evidence type to request JSON
+
+-------------------------------------------------------------------
+Tue Dec 09 13:07:30 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version v7.13.0:
+  * Bump version to 7.13.0
+  * Avoid re-encoding certificate stored in DB
+  * Revert "models: Do not re-encode certificate stored in DB"
+  * Revert "registrar_agent: Use pyasn1 to parse PEM"
+  * CI: Enable test add-agent-with-malformed-ek-cert
+  * [Automatic] Update Keylime base image 2025-09-01
+  * policy/sign: use print() when writing to /dev/stdout
+  * registrar_agent: Use pyasn1 to parse PEM
+  * models: Do not re-encode certificate stored in DB
+  * mba: normalize vendor_db in EV_EFI_VARIABLE_AUTHORITY events
+  * Fix minor typo (exponantial->exponential)
+  * mb: support vendor_db as logged by newer shim versions
+  * mb: support EV_EFI_HANDOFF_TABLES events on PCR1
+  * Remove unnecessary configuration values
+  * cloud_verifier_tornado: handle exception in notify_error()
+  * requests_client: close the session at the end of the resource manager
+  * Manpage for keylime_tenant (#1786)
+  * Add 2.5 templates including Push Model changes
+  * [Automatic] Update Keylime base image 2025-08-01
+  * Initial version of verify evidence API
+  * packit: Enable connection leak test in CI
+  * db: Do not read pool size and max overflow for sqlite
+  * Use context managers to close DB sessions
+  * revocations: Try to send notifications on shutdown
+  * verifier: Gracefully shutdown on signal
+  * [Automatic] Update Keylime base image 2025-07-01
+  * Use `fork` as `multiprocessing` start method
+  * Fix inaccuracy in threat model and add reference to SBAT
+  * Explain TPM properties and expand vTPM discussion
+  * Misc formatting fixes
+  * Add diagrams and tweak formatting
+  * Fix formatting issues
+  * Fix invalid RST and update TOC
+  * Expand threat model page to include adversarial model
+  * CI: Enable CONTAINER_ENGINE to allow other engines
+  * Add --push-model option to avoid requests to agents
+  * [Automatic] Update Keylime base image 2025-06-04
+  * docker: Remove tpm2-tools compilation from base image
+  * tests: fix rpm repo tests from create-runtime-policy
+  * tests: skip measured-boot related tests for s390x and ppc64le
+  * templates: duplicate str_to_version() in the adjust script
+  * policy: fix mypy issues with rpm_repo
+  * revocation_notifier: fix mypy issue by replacing deprecated call
+  * Fix create_runtime_policy in python < 3.12
+  * [Automatic] Update Keylime base image 2025-06-02
+  * Fix after review
+  * fixed CONSTANT names C0103 errors
+  * [Automatic] Update Keylime base image 2025-05-02
+  * [Automatic] Update Keylime base image 2025-04-04
+  * [Automatic] Update Keylime base image 2025-04-01
+  * Extend meta_data field in verifierdb
+  * docs: update issue templates
+  * docs: add GitHub PR template with documentation reminders
+  * [Automatic] Update Keylime base image 2025-03-10
+  * tpm_util: fix quote signature extraction for ECDSA
+  * packit: Add compatibility/api_version_compatibility test
+  * registrar: Log API versions during startup
+  * lint: Fix mypy warnings
+  * Remove excessive logging on exception
+  * tests: change test_mba_parsing to not need keylime installed
+  * scripts: Fix coverage information downloading script
+
+-------------------------------------------------------------------
 Thu Aug 21 09:20:06 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems

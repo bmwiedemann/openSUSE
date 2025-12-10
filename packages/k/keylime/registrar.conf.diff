@@ -1,9 +1,9 @@
-diff --git a/config/registrar.conf b/config/registrar.conf
-index f69fcd3..dbb03a6 100644
---- a/config/registrar.conf
-+++ b/config/registrar.conf
+diff --git i/registrar.conf w/registrar.conf
+index 19348f6..683cc40 100644
+--- i/registrar.conf
++++ w/registrar.conf
 @@ -5,7 +5,8 @@
- version = 2.4
+ version = 2.5
  
  # The binding address and port for the registrar server
 -ip = "127.0.0.1"
