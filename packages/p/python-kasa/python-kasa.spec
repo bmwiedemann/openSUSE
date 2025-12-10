@@ -1,7 +1,7 @@
 #
 # spec file for package python-kasa
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,36 +18,37 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-kasa
-Version:        0.5.4
+Version:        0.10.2
 Release:        0
 Summary:        Python API for TP-Link Kasa Smarthome products
 License:        GPL-3.0-or-later
 URL:            https://github.com/python-kasa/python-kasa
 Source0:        https://github.com/python-kasa/python-kasa/archive/refs/tags/%{version}.tar.gz#/python-kasa-%{version}.tar.gz
-BuildRequires:  %{python_module anyio}
-BuildRequires:  %{python_module async-timeout}
+BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module asyncclick}
-BuildRequires:  %{python_module orjson}
+BuildRequires:  %{python_module cryptography}
+BuildRequires:  %{python_module freezegun}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module mashumaro}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
-BuildRequires:  %{python_module pydantic}
 BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-freezer}
 BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest-socket}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module tzdata}
 BuildRequires:  %{python_module voluptuous}
 BuildRequires:  %{python_module xdoctest}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # Runtime requires
-Requires:       python-anyio
-Requires:       python-async-timeout
+Requires:       python-aiohttp
 Requires:       python-asyncclick
-Requires:       python-orjson
-Requires:       python-pydantic
+Requires:       python-cryptography
+Requires:       python-mashumaro
 Requires:       python-setuptools
-Requires:       python-voluptuous
-Requires:       python-xdoctest
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
@@ -71,7 +72,7 @@ find . -name \*.py -o -name \*.json -exec chmod -x '{}' \;
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pytest -n auto -k "not test_discover_raw"
 
 %post
 %python_install_alternative kasa

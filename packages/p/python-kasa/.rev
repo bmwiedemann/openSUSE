@@ -70,4 +70,26 @@
     <comment>- We don't need to clean up the CHANGELOG anymore.</comment>
     <requestid>1236765</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7330298a23b5f845bf8f6f6300af034e</srcmd5>
+    <version>0.10.2</version>
+    <time>1765377250</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1321826 from mcalabkova
+
+- Update to 0.10.2
+    * Major changes to the library by adding support for devices that
+      require authentication for communications
+    * Add DeviceConfig to allow specifying configuration parameters
+    * Move connect_single to SmartDevice.connect
+    * Major refactoring of the library to serve the ever-growing list
+      of supported devices
+    * Support for multi-functional devices like the dimmable fan KS240
+    * Initial support for devices using the Tapo camera protocol
+    * Migration from pydantic to mashumaro for serialization
+    * Removed support for python &lt;3.11
+    * Experimental support for Kasa cameras
+    * Many more changes, see upstream changelog</comment>
+    <requestid>1321921</requestid>
+  </revision>
 </revisionlist>
