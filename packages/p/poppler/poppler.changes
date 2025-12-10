@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec  9 09:45:39 UTC 2025 - Petr Gajdos <pgajdos@suse.com>
+
+- security update
+- added patches
+  CVE-2025-11896 [bsc#1252337], infinite recursion leading to stack overflow due to object loop in PDF CMap
+  * poppler-CVE-2025-11896.patch
+
+-------------------------------------------------------------------
 Sat Nov 22 21:23:26 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove unused BuildRequires: update-desktop-files.

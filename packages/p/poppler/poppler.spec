@@ -44,6 +44,8 @@ Source90:       poppler.keyring
 Source99:       baselibs.conf
 # CVE-2025-52885 [bsc#1251940], raw pointers can lead to dangling pointers when the vector is resized
 Patch0:         poppler-CVE-2025-52885.patch
+# CVE-2025-11896 [bsc#1252337], infinite recursion leading to stack overflow due to object loop in PDF CMap
+Patch1:         poppler-CVE-2025-11896.patch
 
 BuildRequires:  cmake >= 3.10
 BuildRequires:  gtk-doc
