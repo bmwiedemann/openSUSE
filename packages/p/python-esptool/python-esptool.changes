@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Wed Dec 10 03:12:25 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.1.0:
+  ## Breaking changes
+  * Public Python API redesign: Reworked the public API to work as a Python
+    module. Command functions accept explicit parameters (no args object)
+  * CLI overhaul: esptool, espefuse, espsecure now use click for CLI argument
+    parsing and rich-click for nice CLI rendering
+  * All commands / options names have replaced underscores (_) with dashes
+    (-) (e.g., flash_id -> flash-id).
+  * Removed .py suffix from scripts (e.g., esptool.py flash-id -> esptool
+    flash-id).
+  * Centralised logging: All tools' output now goes through the EsptoolLogger
+    class, allowing easy redirection
+  * image-info: Deprecated the --version 1 output format
+  * errors: Errors are now printed to STDERR, added KeyboardInterrupt
+    handling
+  * make-image: Removed the ESP8266 make-image command in favor of other
+    workflows
+  * espefuse: Removed execute-scripts in favor of the new public API
+  * Removed support for beta chip targets: ESP32-C5(beta3), ESP32-C6(beta),
+    ESP32-H2(beta1/2), ESP32-S3(beta2) are no longer supported
+  * Deprecated support for Python 3.7, 3.8, and 3.9
+  * write-flash: Removed the superfluous --verify option
+  ## New Features
+  * ESP32-P4: Add ECO5 support
+  * ESP32-C5: Add support for >16 MB flash sizes
+  * espefuse: Add custom key purposes for ESP32-C6/C5/P4
+  * espefuse: Support burning ECDSA_384 keys
+  * espefuse: Clean up limitation for BLOCK9 usage
+  * espefuse: Add support for burning 512-bit keys on ESP32-C5
+  * logging: Added collapsible output stages and ASCII progress bars
+  * trace: Updated --trace with more info and more readable formatting
+  * verbosity: Allowed setting silent or verbose output levels
+  * cmds: Allowed commands to output bytes, as well as write to a file
+  * cmds: Allowed inputs of commands to be file paths, bytes, or file-like
+    objects
+  * flash_attach: Encapsulated logic for flash attaching and configuration
+  * espefuse: Added eFuse calculation fields for ESP32-C5
+  * espefuse: Added 3-bit field for wafer major version in ESP32-P4
+  * espsecure: Dropped ecdsa module, using cryptography instead
+  * targets: Updated chip features lists with more info
+  * Added support for Adesto flash chips
+  * Added support for k, M suffix for flash sizes
+  ## Bug Fixes
+  * Use correct error codes for ROM errors
+  * ESP32-C5: Erase during flashing above 16MB
+  * write_flash: Make write flash memory-layout-independent
+  * elf2image: Handle ELF files with zero program header counts
+  * elf2image: Fix --pad-to-size argument parsing
+  * CLI: Handle deprecated options with "=" before value
+  * Prevent exiting immediately when being called programmatically
+  * espefuse: Update CLI to support rich-click 1.9.0
+  * espefuse: Fix re-connection issue in check-error via USB-Serial/JTAG
+  * espefuse: Disable programming and usage of XTS-AES-256 eFuse key for
+    ESP32-C5
+  * espsecure: Fix printing key digest in signature info
+  * espsecure: Extract public key version 1 in RAW format
+  * espsecure: Allow signing multiple files in one go
+  * espsecure: Add support for python-pkcs11 9.0+
+  * Fix compatibility with Click 8.2.0+
+  * Fix --port-filter argument parsing
+  * Fix buffering issues with CP2102 converter causing connection failures
+  * ESP32-S3: Fix stub flasher execution with active Secure Boot
+  * ESP32-C3: Disable flasher stub when Secure Boot is active
+  * espefuse: Handle error in burn-efuse command when no arguments are
+    provided
+  * elf2image: Validate ELF section types and addresses before processing
+  * elf2image: Handle PREINIT_ARRAY section type in ESP32-P4 ELF files
+    properly
+  * elf2image: Fix incorrect logger call
+  * write-flash: Detect more cases of unresponsive flash, fixed failing
+    flash_size check
+  * autodetection: Removed the Unsupported detection protocol stage
+  * elf2image: Fixed RAM app generation when SHA256 offset is not specified
+  * image-info: Sanitized app and bootloader info of null bytes
+  * logging: Avoid crashes when flushing if sys.stdout is not available
+  * ESP32-S2: Enabled auto-detection in secure download mode
+  * ESP32-P4: Enabled ECO5 chip detection
+  * elf2image: Multiple fixes from 3rd party frameworks
+  * read-flash: Added timeout to to avoid infinite loops
+  * espefuse: Close data files after reading the data
+
+-------------------------------------------------------------------
 Wed Jun 25 13:24:02 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 4.9.0

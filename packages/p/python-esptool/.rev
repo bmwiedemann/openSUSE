@@ -222,4 +222,41 @@
     <comment></comment>
     <requestid>1288851</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>bf4ad2f69c958fab5a83a95e7188c614</srcmd5>
+    <version>5.1.0</version>
+    <time>1765377211</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.1.0:
+  ## Breaking changes
+  * Public Python API redesign: Reworked the public API to work as a Python
+    module. Command functions accept explicit parameters (no args object)
+  * CLI overhaul: esptool, espefuse, espsecure now use click for CLI argument
+    parsing and rich-click for nice CLI rendering
+  * All commands / options names have replaced underscores (_) with dashes
+    (-) (e.g., flash_id -&gt; flash-id).
+  * Removed .py suffix from scripts (e.g., esptool.py flash-id -&gt; esptool
+    flash-id).
+  * Centralised logging: All tools' output now goes through the EsptoolLogger
+    class, allowing easy redirection
+  * image-info: Deprecated the --version 1 output format
+  * errors: Errors are now printed to STDERR, added KeyboardInterrupt
+    handling
+  * make-image: Removed the ESP8266 make-image command in favor of other
+    workflows
+  * espefuse: Removed execute-scripts in favor of the new public API
+  * Removed support for beta chip targets: ESP32-C5(beta3), ESP32-C6(beta),
+    ESP32-H2(beta1/2), ESP32-S3(beta2) are no longer supported
+  * Deprecated support for Python 3.7, 3.8, and 3.9
+  * write-flash: Removed the superfluous --verify option
+  ## New Features
+  * ESP32-P4: Add ECO5 support
+  * ESP32-C5: Add support for &gt;16 MB flash sizes
+  * espefuse: Add custom key purposes for ESP32-C6/C5/P4
+  * espefuse: Support burning ECDSA_384 keys
+  * espefuse: Clean up limitation for BLOCK9 usage
+  * espefuse: Add support for burning 512-bit keys on ESP32-C5
+  * logging: Added collapsible output stages and ASCII progress bars</comment>
+    <requestid>1321875</requestid>
+  </revision>
 </revisionlist>
