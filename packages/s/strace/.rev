@@ -1708,4 +1708,12 @@ http://lists.opensuse.org/opensuse-factory/2015-03/msg00391.html (forwarded requ
   * Updated lists of ioctl commands from Linux 6.17. (forwarded request 1308451 from AndreasSchwab)</comment>
     <requestid>1308452</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>8b75862cb6f3f1628aa2efb2cdeee6cf</srcmd5>
+    <version>6.18</version>
+    <time>1765376920</time>
+    <user>anag_factory</user>
+    <comment> (forwarded request 1321747 from Andreas_Schwab)</comment>
+    <requestid>1321748</requestid>
+  </revision>
 </revisionlist>

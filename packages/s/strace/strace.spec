@@ -17,7 +17,7 @@
 
 
 Name:           strace
-Version:        6.17
+Version:        6.18
 Release:        0
 Summary:        A utility to trace the system calls of a program
 License:        LGPL-2.1-or-later
@@ -25,8 +25,8 @@ Group:          Development/Tools/Debuggers
 URL:            http://strace.io/
 #Freecode-URL:	http://freecode.com/projects/strace
 #Git-Clone:	git://github.com/strace/strace
-Source:         https://github.com/strace/strace/releases/download/v%{version}/%{name}-%{version}.tar.xz
-Source2:        https://github.com/strace/strace/releases/download/v%{version}/%{name}-%{version}.tar.xz.asc
+Source:         https://strace.io/files/%{version}/%{name}-%{version}.tar.xz
+Source2:        https://strace.io/files/%{version}/%{name}-%{version}.tar.xz.asc
 Source3:        %{name}.keyring
 Source4:        baselibs.conf
 BuildRequires:  libacl-devel

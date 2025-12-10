@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Dec  8 15:38:07 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Update to strace 6.18
+  * Added -e kvm=vcpu+ option for kvm_run struct decoding.
+  * Implemented decoding of FS_IOC_GETFSUUID, FS_IOC_GETFSSYSFSPATH, and
+    FS_IOC_GETLBMD_CAP ioctl commands.
+  * Implemented decoding of BPF_PROG_STREAM_READ_BY_FD bpf command.
+  * Updated decoding of BPF_BTF_LOAD, BPF_MAP_CREATE, BPF_PROG_ATTACH,
+    BPF_PROG_DETACH, BPF_PROG_LOAD, BPF_PROG_QUERY, and BPF_*_GET_*_ID bpf
+    commands.
+  * Updated decoding of bpf_map_info and bpf_prog_info structures.
+  * Updated lists of AUDIT_*, BR_*, FF_*, IFLA_*, INPUT_PROP_*, IORING_*,
+    KEXEC_FILE_*, KEY_*, KVM_CAP_*, NL80211_CMD_*, RWF_*, and TEE_* constants.
+
+-------------------------------------------------------------------
 Wed Oct  1 15:44:19 UTC 2025 - Andreas Schwab <schwab@linux-m68k.org>
 
 - Update to strace 6.17
