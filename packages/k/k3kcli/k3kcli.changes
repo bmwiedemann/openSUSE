@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Dec 11 06:48:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.0.1:
+  * Bump Charts to `1.0.1-rc2` (#586)
+  * Fixed missing Kubernetes host version when specified (#585)
+  * Fix create events rbac (#575)
+  * Added test for SubPathExpr (#569)
+  * bump version to 1.0.1-rc1 in Chart.yaml (#567)
+  * added check for failing tests (#566)
+  * Added `--namespace` flag to `k3kcli policy create` (#564)
+  * Added labels and annotations flags to cluster and policy create
+    (#565)
+  * Added cluster details in cli during creation (#562)
+  * Fixed panic during kubeconfig generate (#554)
+  * Moved CRDs to Helm templates folder (#552)
+  * Add Job Summary reports to Conformance tests (#553)
+  * Update Go version and some deps (#551)
+  * add upload permissions (#550)
+  * Added `trivy` vulns check (#549)
+  * Bump Charts to `1.0.0` (#543)
+
+-------------------------------------------------------------------
 Mon Nov 03 17:35:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.0.0:
