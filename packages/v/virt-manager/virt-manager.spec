@@ -70,6 +70,7 @@ Patch224:       virtinst-s390x-disable-graphics.patch
 Patch225:       virtinst-add-caasp-support.patch
 Patch226:       virtinst-add-sle15-detection-support.patch
 Patch227:       virtinst-media-detection.patch
+Patch228:       virtinst-fix-XDG_DATA_HOME-handling.patch
 # Bug Fixes
 Patch251:       virtman-increase-setKeepAlive-count.patch
 Patch252:       virtman-allow-destroy-from-shutdown-menu-of-crashed-vm.patch
@@ -219,7 +220,7 @@ chmod -x %{buildroot}%{_datadir}/virt-manager/virtManager/virtmanager.py
 %if %{with test}
 %check
 # bsc#1253017: Set this for testCLI0181virt_install_kvm_session_defaults
-export XDG_DATA_HOME="/tmp/.local/share/libvirt"
+export XDG_DATA_HOME="/tmp/.local/share"
 # XML contains hda instead of hdc
 donttest="test_disk_numtotarget"
 # XML contains sd{a,b,c,d} instead of sda{a,b,c,d}

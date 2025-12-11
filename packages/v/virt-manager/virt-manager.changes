@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec  9 11:48:43 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add virtinst-fix-XDG_DATA_HOME-handling.patch: fix usage
+  of XDG_DATA_HOME (bsc#1253017)
+- Use a more sensible XDG_DATA_HOME in test section
+
+-------------------------------------------------------------------
 Fri Nov  7 12:53:47 MST 2025 - carnold@suse.com
 
 - bsc#1253017 - aaa_base: update to 84.87+git20251030.441f926

@@ -2238,4 +2238,12 @@
     <comment>bsc#1253017 - aaa_base: update to 84.87+git20251030.441f926 breaks virt-manager:test</comment>
     <requestid>1316489</requestid>
   </revision>
+  <revision rev="283" vrev="5">
+    <srcmd5>0af9b0b959aab7ba0802b43394e32e08</srcmd5>
+    <version>5.1.0</version>
+    <time>1765474326</time>
+    <user>anag_factory</user>
+    <comment>Fix usage of XDG_DATA_HOME (bsc#1253017)</comment>
+    <requestid>1322218</requestid>
+  </revision>
 </revisionlist>
