@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 27 13:51:04 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Delete an extra pytest mark to fix tests with pytest 9
+
+-------------------------------------------------------------------
 Mon Oct 13 09:15:54 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.17:

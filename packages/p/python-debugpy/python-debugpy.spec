@@ -131,6 +131,9 @@ donttest+=" or test_numpy"
 # Skip all attach_pid tests, it fails in OBS enviroment bsc#1219921
 donttest+=" or attach_pid"
 
+# fix tests with pytest 9 https://github.com/microsoft/debugpy/issues/1974
+sed -i '/launch/d' tests/debugpy/test_flask.py
+
 %pytest_arch -k "not ($donttest)"
 %endif
 
