@@ -17,7 +17,7 @@
 
 
 %define ansible_community_major_version 12
-%define required_ansible_core_version 2.19.4
+%define required_ansible_core_version 2.19.5
 %define next_ansible_core_version 2.20.0
 
 
@@ -43,13 +43,13 @@
 %endif
 
 Name:           ansible-12
-Version:        12.2.0
+Version:        12.3.0
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0-or-later
 URL:            https://ansible.com/
 Source:         https://files.pythonhosted.org/packages/source/a/ansible/ansible-%{version}.tar.gz
-Source99:       ansible-rpmlintrc
+Source99:       ansible-12-rpmlintrc
 BuildRequires:  python-rpm-macros
 BuildRequires:  %{ansible_python}-base >= 3.10
 BuildRequires:  %{ansible_python}-setuptools
@@ -59,11 +59,11 @@ BuildRequires:  fdupes
 BuildRequires:  dos2unix
 
 # SECTION test requirements
-BuildRequires:  (ansible-core-2.19 >= %{required_ansible_core_version} with ansible-core-2.19 < %{next_ansible_core_version})
+BuildRequires:  (ansible-core >= %{required_ansible_core_version} with ansible-core < %{next_ansible_core_version})
 # /SECTION
 
 Requires:       %{ansible_python}-base >= 3.10
-Requires:       (ansible-core-2.19 >= %{required_ansible_core_version} with ansible-core-2.19 < %{next_ansible_core_version})
+Requires:       (ansible-core >= %{required_ansible_core_version} with ansible-core < %{next_ansible_core_version})
 
 # Conflicts with lower or higher ansible major versions
 Conflicts:      ansible < %{ansible_community_major_version}

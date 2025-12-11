@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec 11 08:14:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 12.3.0:
+  Ansible 12.3.0 includes ansible-core 2.19.5 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 12
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/ansible-build-data/blob/main/12/CHANGELOG-v12.rst
+
+-------------------------------------------------------------------
 Thu Nov 20 06:04:49 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - rename package to ansible-12, following the 12.x releases of
