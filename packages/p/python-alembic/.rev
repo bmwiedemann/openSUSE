@@ -1825,4 +1825,22 @@
     <comment>- Make the libalternatives transition conditional</comment>
     <requestid>1298832</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>dd0d2044650149274dfb08813b006a01</srcmd5>
+    <version>1.17.2</version>
+    <time>1765474321</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1321860 from yeey
+
+- Update to 1.17.2
+    * [feature] [operations] Added Operations.implementation_for.replace parameter to
+      Operations.implementation_for(), allowing replacement of existing
+      operation implementations. This allows for existing operations such as
+      CreateTableOp to be extended directly.
+    * [bug] [mssql] Fixed issue in SQL Server dialect where the DROP that's automatically
+      emitted for existing default constraints during an ALTER COLUMN needs to
+      take place before not just the modification of the column's default, but
+      also before the column's type is changed.</comment>
+    <requestid>1321929</requestid>
+  </revision>
 </revisionlist>

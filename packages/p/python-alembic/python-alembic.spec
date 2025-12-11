@@ -1,7 +1,7 @@
 #
 # spec file for package python-alembic
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-alembic
-Version:        1.15.2
+Version:        1.17.2
 Release:        0
 Summary:        A database migration tool for SQLAlchemy
 License:        MIT
@@ -32,6 +32,7 @@ Source0:        https://files.pythonhosted.org/packages/source/a/alembic/alembic
 BuildRequires:  %{python_module Mako}
 BuildRequires:  %{python_module SQLAlchemy >= 2.0.0}
 BuildRequires:  %{python_module backports.zoneinfo if %python-base < 3.9}
+BuildRequires:  %{python_module black}
 BuildRequires:  %{python_module importlib-metadata if %python-base < 3.9}
 BuildRequires:  %{python_module importlib-resources if %python-base < 3.9}
 BuildRequires:  %{python_module pip}
