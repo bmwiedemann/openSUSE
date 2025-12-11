@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Dec  9 12:05:54 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.4:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.4
+- Changes since 6.5.3:
+  * Update version for new release 6.5.4
+  * shell/panelview: Correct the geometry changed logic
+  * shell/panelview: Fix race condition for panel sizing
+  * applets/kicker: be more assertive about not having children
+  * Fix build after bad backport
+  * [devicenotifications] Decode udev strings as UTF-8 (kde#511558)
+  * [devicenotifications] Avoid converting to QString and back for _ENC properties
+  * [devicenotifications] Use QByteArrayView for decodePropertyValue
+  * [applets/systemtray] Don't crash when we can't find data for a given source (kde#511866)
+  * applets/clipboard: return to clipboard menu when history is cleared (kde#511026)
+  * applets/kicker: don't emit queryFinished if still querying (kde#473174)
+  * klipper: fix potential memory leak from action menu
+  * klipper: make action menu a normal window (kde#510449)
+  * shell: Harden PanelRulerView against screen changing due to geometry updates (kde#482916)
+  * shell: Fix panel ruler positioning
+  * applets/systemtray: Fix global activation shortcut not working (kde#483688)
+  * wallpapers/image: Retain delegate preview while loading
+  * components/containmentlayoutmanager: Fix potential memory leaks in AppletContainer
+  * components/containmentlayoutmanager: Fix potential memory leak in ItemContainer
+  * components/containmentlayoutmanager: Fix a potential leak in AppletsLayout
+
+-------------------------------------------------------------------
 Sat Nov 22 21:23:10 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove unused BuildRequires: update-desktop-files.

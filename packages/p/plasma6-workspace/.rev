@@ -355,4 +355,12 @@
     <comment>- Remove unused BuildRequires: update-desktop-files. (forwarded request 1319428 from sbrabec)</comment>
     <requestid>1319523</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>6c856eb1748a5afceff03ed6a5560add</srcmd5>
+    <version>6.5.4</version>
+    <time>1765474409</time>
+    <user>anag_factory</user>
+    <comment>Plasma 6.5.4 (forwarded request 1321831 from Vogtinator)</comment>
+    <requestid>1322059</requestid>
+  </revision>
 </revisionlist>
