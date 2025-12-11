@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Dec 11 09:17:40 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade smc-tools to v1.8.6 (jsc#PED-14601)
+  * Bug fixes:
+    - man pages: Update man page for smc_pnet
+    - smc-tools: Display sndbuf/RMB stats only if supported by the kernel
+- smc-tools v1.8.5 includes
+  * Changes:
+    - smc_rnics: Add support for Network Express RNIC in smc_rnics
+    - smc_rnics: Add PFT and VF columns to smc_rnics output
+  * Bug fixes:
+    - libnetlink..: Fix function declaration to use a void prototype
+    - smc_rnics: Update smc_chk to extract PNetID from column 9
+    - man pages: Update man page for --rawids option and PFT and VF columns
+    - smc_rnics: Fix missing PPrt values in smc_rnics -r output
+- Removed obsolete patch
+  * smc-tools-gcc15.patch
+
+-------------------------------------------------------------------
 Tue Jul  8 12:30:13 UTC 2025 - pgajdos@suse.com
 
 - added patches
