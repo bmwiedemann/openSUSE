@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 27 10:02:45 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.8.1
+  * Removed setup.py and therefore the possibility to run setup.py
+    as a command
+  * Removed the support for building, installing and testing a cythonized
+    distribution of pywbem, because of the transition from setup.py.
+  * Removed support for Python 2.7, 3.6, and 3.7
+  * Fixed safety issues
+  * Added support for Python 3.13.
+
+-------------------------------------------------------------------
 Tue Sep 30 08:12:31 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.7.4
