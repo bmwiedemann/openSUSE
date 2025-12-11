@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Dec  9 11:55:20 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.4:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.4
+- Changes since 6.5.3:
+  * Update version for new release 6.5.4
+  * inputmethod: send empty surrounding text when the input method is force activated (kde#512245)
+  * scene: Fix computed painted area of transformed items with HiDPI (kde#510029)
+  * plugins/trackmouse: Fix stuttering (kde#512767)
+  * Fix wrong assumption about the tablet pad strip position
+  * outputconfigurationstore: be more conservative with VGA displays (kde#512146)
+  * A11yKeyboardMonitor: Fix KeyEvent being emitted too often when grabbing keys (kde#512189)
+  * Start adding test for A11yKeyboardManager
+  * backends/libinput: clamp tablet and touch coordinates to target output (kde#512672)
+  * events: ignore XCB_FOCUS_OUT events by default (kde#509115)
+  * x11window: support xrandr emulation (kde#501505)
+  * wayland: Don't withdraw data offers when keyboard focus changes (kde#511509)
+  * backends/virtual: Allow creating virtual outputs
+  * plugins/qpa: Fix build with Qt 6.11 and Qt 6.10.2
+  * ci: Temporarily disable Qt 6.11 pipeline
+  * plugins/windowview: Fix clear button
+  * xwayland: Prevent more invalidated iterators
+  * Use correct DBus interface for inhibiting sleep (kde#512276)
+  * backends/drm: add missing thread include
+  * activation: always allow activating child windows of the active one
+  * backends/drm: don't do modesets if all pipelines are removed (kde#512097)
+  * backends/drm: add missing layer repaints for night light changes (kde#511812)
+  * scene/scene: schedule pending repaints for child items too (kde#511653)
+  * scene/workspacescene: don't put non-opaque items on an underlay (kde#511491)
+
+-------------------------------------------------------------------
 Tue Nov 18 10:23:16 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.5.3:
