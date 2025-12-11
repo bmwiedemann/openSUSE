@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Dec 11 05:06:17 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.39:
+  * Fix unintended behaviour where a str could be loaded as list[str]. This
+    is caused by a quirk of python's types. To restore the previous behaviour
+    set iterstr=True
+  * Drop support to python 3.9
+  * Do not use new syntax in any place. It confuses tooling
+  * Drop support for EOL versions of python
+  * Support typing.ReadOnly
+  * Add support for typing.TypeAliasType (PEP 695)
+  * Add tests to make sure mypy validation works
+  * Fix mypy failure when loading a Literal directly
+  * Remove cloudflare tracking from html documentation once again -_-
+  * Improve documentation
+  * Improve typechecks
+  * Support Required for TypedDict
+  * Make example more current
+  * Fix bug with dumping dataclasses with slots
+  * Improve performance for loading unions of objects #12
+  * Improve performance for dumping dataclasses #13 #14
+  * Improve performance for loading various types
+  * Fix bug when loading attrs objects with missing attributes, the correct
+    exception is raised #9
+  * Raise TypeError instead of ValueError when there is a problem with the
+    arguments of the objects This is in line with what python does #9
+  * Fix bug for dumping object with a ForwardRef to itself #8
+  * Fix bug where dictionary load would fail if the type for the value wasn't
+    cached already
+  * Move project to Codeberg
+- Ship LICENSE and README in binary packages.
+
+-------------------------------------------------------------------
 Thu May  2 22:03:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.28:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-typedload
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,14 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 Name:           python-typedload
-Version:        2.28
+Version:        2.39
 Release:        0
 Summary:        Load and dump data from json-like format into typed data structures
 License:        GPL-3.0-only
-URL:            https://ltworf.github.io/typedload/
-# The Github release archive contains both setup.py and the tests. PyPI lacks tests, Github repo lacks generated setup.py
-Source0:        https://github.com/ltworf/typedload/releases/download/%{version}/typedload_%{version}.orig.tar.gz
-Source1:        https://github.com/ltworf/typedload/releases/download/%{version}/typedload_%{version}.orig.tar.gz.asc
-# https://github.com/ltworf/typedload/raw/master/debian/upstream/signing-key.asc
-Source2:        python-typedload.keyring
-BuildRequires:  %{python_module attrs}
-BuildRequires:  %{python_module base >= 3.5}
+URL:            https://ltworf.codeberg.page/typedload/
+Source0:        https://codeberg.org/ltworf/typedload/releases/download/%{version}/typedload_%{version}.orig.tar.gz
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -57,7 +50,9 @@ Load and dump data from json-like format into typed data structures
 %python_exec -B -m tests
 
 %files %{python_files}
+%license LICENSE
+%doc README.md
 %{python_sitelib}/typedload
-%{python_sitelib}/typedload-%{version}*-info
+%{python_sitelib}/typedload-%{version}.dist-info
 
 %changelog
