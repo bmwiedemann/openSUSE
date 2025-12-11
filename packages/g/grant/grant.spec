@@ -17,7 +17,7 @@
 
 
 Name:           grant
-Version:        0.5.1
+Version:        0.5.2
 Release:        0
 Summary:        Search an SBOM for licenses and the packages they belong to
 License:        Apache-2.0

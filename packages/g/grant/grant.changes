@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Dec 11 06:49:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.5.2:
+  * chore(deps): update anchore dependencies (#339)
+  * chore(deps): bump github/codeql-action from 4.31.6 to 4.31.7
+    (#336)
+  * chore(deps): update tools to latest versions (#335)
+  * chore(deps): bump peter-evans/create-pull-request from 7.0.9 to
+    7.0.11 (#337)
+  * chore(deps): bump actions/create-github-app-token from 2.2.0 to
+    2.2.1 (#338)
+  * chore(deps): update tools to latest versions (#332)
+  * chore(deps): bump github.com/spf13/cobra from 1.10.1 to 1.10.2
+    (#333)
+  * chore(deps): bump github.com/github/go-spdx/v2 from 2.3.4 to
+    2.3.5 (#334)
+  * chore(deps): update tools to latest versions (#314)
+  * chore(deps): bump modernc.org/sqlite from 1.40.0 to 1.40.1
+    (#317)
+  * chore(deps): bump golang.org/x/crypto from 0.44.0 to 0.45.0
+    (#321)
+  * chore(deps): bump actions/setup-go from 6.0.0 to 6.1.0 (#322)
+  * chore(deps): bump actions/setup-go in
+    /.github/actions/bootstrap (#323)
+  * chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.7.2 to
+    6.7.5 (#324)
+  * chore(deps): bump peter-evans/create-pull-request from 7.0.8 to
+    7.0.9 (#326)
+  * chore(deps): bump zizmorcore/zizmor-action from 0.2.0 to 0.3.0
+    (#328)
+  * chore(deps): bump actions/create-github-app-token from 2.1.4 to
+    2.2.0 (#329)
+  * chore(deps): bump github/codeql-action from 4.31.2 to 4.31.6
+    (#330)
+  * chore(deps): bump actions/checkout from 5.0.0 to 6.0.1 (#331)
+
+-------------------------------------------------------------------
 Tue Nov 18 06:14:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.5.1:
