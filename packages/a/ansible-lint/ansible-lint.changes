@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Dec 11 07:03:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.12.1:
+  * Features
+    - feat(action): Allow users to override python_version (#4829)
+      @konstruktoid
+  * Fixes
+    - fix: avoid stacktrace when ansible syntax check does not
+      return filename (#4864) @ssbarnea
+    - fix: change setup-python action to specific commit (#4856)
+      @arcanis
+    - fix: autofix comments missing space after hash (#4855)
+      @emmanuel-ferdman
+  * Maintenance
+    - chore(deps): update all dependencies (#4863) @renovate[bot]
+    - chore: pre-commit autoupdate (#4859) @pre-commit-ci[bot]
+    - chore: adopt pytest>=9.0.0 config (#4861) @Qalthos
+    - chore(deps): update all dependencies (#4852) @renovate[bot]
+
+-------------------------------------------------------------------
 Fri Dec  5 06:19:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 25.12.0:

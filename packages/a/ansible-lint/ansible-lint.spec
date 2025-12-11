@@ -39,7 +39,7 @@
 
 %global lib_name ansiblelint
 Name:           ansible-lint
-Version:        25.12.0
+Version:        25.12.1
 Release:        0%{?dist}
 Summary:        Best practices checker for Ansible
 License:        MIT
@@ -54,6 +54,7 @@ BuildRequires:  fdupes
 
 # SECTION tests
 BuildRequires:  %{ansible_python}-flaky >= 3.7.0
+# upstream already requires 9.0.0, which we do not have yet
 BuildRequires:  %{ansible_python}-pytest >= 7.2.2
 BuildRequires:  %{ansible_python}-pytest-cov
 BuildRequires:  %{ansible_python}-pytest-xdist >= 2.1.0
