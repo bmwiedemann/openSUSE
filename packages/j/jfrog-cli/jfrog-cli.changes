@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec 11 07:34:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.86.0:
+  * Exciting New Features
+    - add-support-for-native-conan-commands by @reshmifrog in #3236
+  * Bug Fixes
+    - Fix docker scan help command by @attiasas in #3191
+  * Other Changes
+    - Addressed bug for adding correct http or https based on url
+      by @naveenku-jfrog in #3246
+
+-------------------------------------------------------------------
 Tue Nov 25 06:21:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.85.0:
