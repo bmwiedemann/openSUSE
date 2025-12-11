@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Dec  4 23:14:07 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.60.7:
+  - [client] Passthrough all non-NetBird chains to prevent them
+    from dropping NetBird traffic by @lixmal in #4899
+  - [client] Fix engine shutdown deadlock and sync-signal message
+    handling races by @pappz in #4891
+  - [client] Reorder subsystem shutdown so peer removal goes first
+    by @mlsmaycon in #4914
+
+-------------------------------------------------------------------
+Thu Dec  4 23:13:38 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.60.6:
+  - [client,management] Remove OAuth select_account prompt by
+    @bcmmbaga in #4912
+
+-------------------------------------------------------------------
+Wed Dec  3 20:28:22 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.60.5:
+  - [client, management] Add OAuth select_account prompt support to
+    PKCE flow by @pappz in #4880
+  - [management] Feat/api enhancements by @fahrishih in #4831
+  - [management] Add user created activity event by @bcmmbaga in
+    #4893
+  - [management] Refactor network map controller by @pascal-fischer
+    in #4789
+  - [management] update management integrations by @pascal-fischer
+    in #4895
+  - [client] Add conditional peer removal logic during shutdown by
+    @mlsmaycon in #4897
+  - [management] record pat usage metrics by @pascal-fischer in
+    #4888
+  - [client] Add sleep state tracking to handle wakeup/sleep events
+    reliably by @mlsmaycon in #4894
+  - [management] Add support to disable geolocation service by
+    @bcmmbaga in #4901
+  - [relay] Use instanceURL instead of Exposed address. by @pappz
+    in #4905
+
+-------------------------------------------------------------------
+Tue Dec  2 16:18:14 UTC 2025 - Holden Fried <holden@opensuse.org>
+
+- Update to 0.60.4:
+  * [client] Sleep detection on macOS by @pappz in #4859
+  * [relay] use exposed address for healthcheck TLS validation
+    by @shuuri-labs in #4872
+- Set golang(API) >= 1.25, since golang API doesn't account for
+  patch version, and setting >=1.24.10 already implies >=1.25
+
+-------------------------------------------------------------------
 Wed Nov 26 18:36:41 UTC 2025 - Holden Fried <holden@opensuse.org>
 
 - Bump golang API version to >=1.24.10 explicitly to align with

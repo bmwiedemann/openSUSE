@@ -148,4 +148,41 @@
   * [client] Increase ssh detection timeout by @lixmal in #4827</comment>
     <requestid>1320258</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>62b2e6ed7ac6569bc5c46c272cfbfecc</srcmd5>
+    <version>0.60.7</version>
+    <time>1765474681</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.60.7:
+  - [client] Passthrough all non-NetBird chains to prevent them
+    from dropping NetBird traffic by @lixmal in #4899
+  - [client] Fix engine shutdown deadlock and sync-signal message
+    handling races by @pappz in #4891
+  - [client] Reorder subsystem shutdown so peer removal goes first
+    by @mlsmaycon in #4914
+
+- Update to 0.60.6:
+  - [client,management] Remove OAuth select_account prompt by
+    @bcmmbaga in #4912
+
+- Update to 0.60.5:
+  - [client, management] Add OAuth select_account prompt support to
+    PKCE flow by @pappz in #4880
+  - [management] Feat/api enhancements by @fahrishih in #4831
+  - [management] Add user created activity event by @bcmmbaga in
+    #4893
+  - [management] Refactor network map controller by @pascal-fischer
+    in #4789
+  - [management] update management integrations by @pascal-fischer
+    in #4895
+  - [client] Add conditional peer removal logic during shutdown by
+    @mlsmaycon in #4897
+  - [management] record pat usage metrics by @pascal-fischer in
+    #4888
+  - [client] Add sleep state tracking to handle wakeup/sleep events
+    reliably by @mlsmaycon in #4894
+  - [management] Add support to disable geolocation service by
+    @bcmmbaga in #4901</comment>
+    <requestid>1321990</requestid>
+  </revision>
 </revisionlist>
