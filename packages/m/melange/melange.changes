@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Dec 11 07:52:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.36.0:
+  * fix(bump & cache): Do not fail when main pipeline is not
+    present (#2263)
+  * build(deps): bump golang.org/x/sys from 0.38.0 to 0.39.0
+    (#2261)
+  * build(deps): bump the actions group with 3 updates (#2262)
+  * build(deps): bump golang.org/x/sync from 0.18.0 to 0.19.0
+    (#2260)
+  * build(deps): bump the gomod group with 3 updates (#2259)
+  * feat: add test resource configuration and CLI flags (#2244)
+  * git-checkout: Invoke `git fetch` with `--unshallow` (#2258)
+
+-------------------------------------------------------------------
 Mon Dec 08 08:05:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.35.1:
