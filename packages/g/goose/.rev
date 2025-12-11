@@ -15,4 +15,41 @@
     <comment>v1.15.0</comment>
     <requestid>1318912</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b3b50571869903d9265f364fe20e844e</srcmd5>
+    <version>1.16.0</version>
+    <time>1765474683</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.16.0:
+  * fix: metrics on posthog (#6024)
+  * Hide recipe icon in empty chat (#6022)
+  * Show modal selector after configuring a provider (#6005)
+  * Onboarding detect provider from api key (#5955)
+  * fix params not being substituted in activities (#5992)
+  * chore(release): release version 1.16.0
+  * Update Anthropic and Google Gemini models to latest API versions (#5980)
+  * docs: chat recall tutorial (#5975)
+  * fix: `final assistant content cannot end with trailing whitespace` error from Anthropic (#5967)
+  * 5527 multiple file popups (#5905)
+  * Groq configure fix  (#5833)
+  * added sidebar contextual information for firefox (#5433)
+  * docs: council of mine MCP (#5979)
+  * docs: nano banana extension (#5977)
+  * fix: remove prompt change, read model from config (#5976)
+  * Enable recipe deeplink parameters for pre-population (#5757)
+  * chore: upgrade npm packages (#5951)
+  * feat: ActionRequired (#5897)
+  * feat(acp): support loading sessions in acp (#5942)
+  * docs: add videos to multi-model page (#5938)
+  * docs: promote planning guide (#5934)
+  * fix: use a lock to ensure only need to run tunnel just in case multiple go… (#5885)
+  * Feat: Added custom headers and toggle keyring CLI options (#5017)
+  * Feat/automatic update installation (#5345)
+  * fix: Added &quot;Merged consecutive assistant messages&quot; to the acceptable issues for moim injection check (#5933)
+  * fix: anthropic provider model fetching (#5932)
+  * [MCP-UI] add CSP for images to proxy HTML (#5931)
+  * fix: correct typo in blog post (AIMDOEL -&gt; AIMODEL) (#5902)
+  * feat: @goose in terminal (native terminal support) (#5887)</comment>
+    <requestid>1322001</requestid>
+  </revision>
 </revisionlist>

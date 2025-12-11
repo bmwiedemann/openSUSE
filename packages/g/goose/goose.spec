@@ -17,7 +17,7 @@
 
 
 Name:           goose
-Version:        1.15.0
+Version:        1.16.0
 Release:        0
 Summary:        A local, extensible, open source AI agent that automates engineering tasks
 License:        Apache-2.0
