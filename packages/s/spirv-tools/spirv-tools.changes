@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec  9 23:33:26 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2025.5~rc1 (SDK-1.4.335.0)
+  * Add as/dis support for Arm.MotionEngine.100 extended
+    instruction set.
+  * spirv-opt: Add a folding rule for `OpBitReverse` and fix
+    `OpBitCast` to support lower to higher bit conversions.
+  * spirv-opt: Add basic support for graphs.
+  * Adding folding rules for commutive bitwise operations (xor/or/and).
+  * spirv-opt: Fix constant folding for `OpBitcast` on signed integers.
+
+-------------------------------------------------------------------
 Tue Oct  7 10:09:49 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2025.4
