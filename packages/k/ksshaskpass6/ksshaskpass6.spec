@@ -21,7 +21,7 @@
 %define rname ksshaskpass
 %bcond_without released
 Name:           ksshaskpass6
-Version:        6.5.3
+Version:        6.5.4
 Release:        0
 Summary:        Plasma 6 version of ssh-askpass
 License:        GPL-2.0-or-later
