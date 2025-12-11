@@ -1,0 +1,35 @@
+From 54587dc9ccc739b1b2649d71de20583c3e12ddcb Mon Sep 17 00:00:00 2001
+From: Danylo Piliaiev <dpiliaiev@igalia.com>
+Date: Mon, 8 Dec 2025 14:22:19 +0100
+Subject: [PATCH] vulkaninfo: Fix running under RenderDoc
+
+RenderDoc allows only one simultaneously existing logical device, and
+vulkaninfo doesn't have a real need to keep them simultaneously alive.
+
+Running vulkaninfo under RenderDoc is useful to get a Vulkan profile
+that will represent the RenderDoc capabilities on the current GPU,
+which can be useful to, e.g., make a gfxreconstruct trace that will be
+later capturable by RenderDoc.
+
+Signed-off-by: Danylo Piliaiev <dpiliaiev@igalia.com>
+---
+ vulkaninfo/vulkaninfo.h | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/vulkaninfo/vulkaninfo.h b/vulkaninfo/vulkaninfo.h
+index eaf4331a..217c1337 100644
+--- a/vulkaninfo/vulkaninfo.h
++++ b/vulkaninfo/vulkaninfo.h
+@@ -1814,6 +1814,9 @@ struct AppGpu {
+ 
+         // Video //
+         video_profiles = enumerate_supported_video_profiles(*this);
++
++        vkDestroyDevice(dev, nullptr);
++        dev = VK_NULL_HANDLE;
+     }
+     ~AppGpu() { vkDestroyDevice(dev, nullptr); }
+ 
+-- 
+2.52.0
+
