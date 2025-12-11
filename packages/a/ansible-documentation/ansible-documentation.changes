@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu Dec 11 08:56:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.20.1:
+  * ci: refresh dev dependencies (#3345)
+  * Adjustments to the Collection release process (#3342) (#3351)
+  * bump action versions (#3337)
+  * ci: fix issues identified by zizmor GHA linter (#3331)
+  * Improve failed_when documentation and fix minor errors (#3249)
+    (#3333)
+  * ci: refresh dev dependencies (#3325)
+  * disable extranav (#3309) (#3322)
+  * installation guide: update URL to pipx installation docs
+    (#3248) (#3319)
+  * bump sphinx-ansible-theme (#3308) (#3315)
+  * Use new :ansoptref: and :ansretvalref: roles. (#3306) (#3312)
+  * ci: refresh dev dependencies (#3299)
+  * [stable-2.20] ci: refresh docs build dependencies (#3303)
+  * Disable version switcher in theme (#3290) (#3295)
+  * update version switcher for Ansible 13 (#3271) (#3287)
+  * update release table for Ansible 13 (#3270) (#3286)
+  * Replace URLs into the Ansible docsite with RST references
+    (#3281) (#3289)
+  * update latest to 13 (#3272)
+  * Add the Ansible community 13.0.0 porting guide (#3279) (#3280)
+  * bulk update urls to insert the projects subdir (#3260) (#3275)
+  * Add Ansible 13 porting guide to index. (#3273) (#3274)
+  * Update Ansible 11 porting guide. (#3264) (#3269)
+  * Update Ansible 12 porting guide. (#3263) (#3266)
+  * [stable-2.20] ci: refresh docs build dependencies, bump
+    antsibull-docs to 2.22.1 (#3255)
+  * ci: refresh dev dependencies (#3251)
+  * Enhance "Making your PR Merge Worthy" section (#3028) (#3245)
+  * update banner to use RTD projects subdirs (#3145) (#3236)
+  * update subdomain for readthedocs hosting (#3144) (#3235)
+  * ci: refresh dev dependencies (#3230)
+  * Document play argument validation (#3079) (#3227)
+  * update release table for 2.17 EOL (#3214) (#3226)
+  * Merge pull request #3208 from
+    ansible/release/porting-guide-12.2.0 (#3218)
+  * Merge pull request #3215 from
+    ansible/release/porting-guide-11.12.0 (#3220)
+  * Merge pull request #3213 from
+    ansible/release/porting-guide-13.0.0b1 (#3219)
+  * update version switcher for 2.20 (#3163) (#3211)
+  * Fix maximum artifact size for Galaxy (#3203) (#3207)
+  * set LATEST to 2.20 (#3165)
+
+-------------------------------------------------------------------
 Fri Nov 07 16:11:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.20.0:
