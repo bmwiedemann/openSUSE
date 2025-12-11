@@ -1,7 +1,7 @@
 #
 # spec file for package serd
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +22,7 @@
 %define with_docs 1
 %endif
 Name:           serd
-Version:        0.32.4
+Version:        0.32.6
 Release:        0
 Summary:        A lightweight C library for RDF syntax
 License:        ISC
