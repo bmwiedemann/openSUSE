@@ -43,7 +43,7 @@
 %endif
 
 Name:           ansible-core-2.18
-Version:        2.18.11
+Version:        2.18.12
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0-or-later

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec 11 08:24:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.18.12:
+  * Bugfixes
+    - Variable loading now uses file source instead of variables
+      when invalidly formmated vars file is loaded.
+    - ansible-test - The runtime-metadata sanity test now ignores
+      pre-release and build identifiers in collection versions.
+      This prevents errors if a tombstone version is X.0.0, while
+      the collection's version is X.0.0-prerelease (#85193)."
+
+-------------------------------------------------------------------
 Wed Nov  5 10:15:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.18.11:
