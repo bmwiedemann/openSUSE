@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Wed Dec 10 14:42:35 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Use source from github to have tests
+
+-------------------------------------------------------------------
+Thu Dec  4 05:30:19 UTC 2025 - Guang Yee <gyee@suse.com>
+
+- Update to 5.4.2
+  * Fix DeprecationWarning from cryptography library (reported by @dennn11, #92)
+v5.4.1 / 2024-05-25
+  * Fix for incorrect key size with 0 length keySize var (@UserJHansen, #89)
+v5.4.0 / 2024-05-02
+  * Never return None in ooxml's _parseinfo (@gdesmar, #88)
+v5.3.1 / 2024-01-19
+  * Bug fixes
+v5.3.0 / 2024-01-19
+  * Add support for OOXML encryption, a port from the C++ library
+    https://github.com/herumi/msoffice (@stephane-rouleau, #86)
+v5.2.0 / 2024-01-06
+  * Support XOR Obfuscation decryption for .xls documents (@DissectMalware, #80)
+  * Bug fixes
+v5.1.1 / 2023-07-20
+  * Drop Python 3.7 support as it reaches EOL, Add Python 3.11 to CI environments
+  * Get the version in __main__.py instead of __init__.py to avoid a
+    relevant error in PyInstaller/cx_Freeze in which pkg_resources
+    does not work by default
+v5.1.0 / 2023-07-17
+  * Load plain OOXML as OfficeFile with type == plain. Fixes #74
+  * Use importlib.metadata.version in Python >=3.8 (#77)
+5.0.1 / 2023-02-28
+  * (dev) Switch to GitHub Actions from Travis CI
+  * Update dependencies, Drop Python 3.6 support
+5.0.0 / 2022-01-20
+  * (dev) Add tests on Python 3.7 to 3.9 (#71)
+  * (dev) Track poetry.lock (#71)
+  * (BREAKING) Drop Python 2 support (#71)
+  * Raise exception if no encryption type is specified (#70)
+  * Support SHA256, SHA384 hash algorithm (@jackydo, #67)
+  * Fix errors for unencrypted documents
+  * Use absolute imports (#63)
+4.12.0 / 2021-06-04
+  * Use custom exceptions (#59)
+  * (dev) Remove nose (thank you) (#57)
+  * (dev) Use poetry (#55)
+4.11.0 / 2020-09-03
+  * Improve hash calculation (suggested by @StanislavNikolov)
+  * Add "verify_passwd" and "verify_integrity" option (@jeffli678)
+  * Make _packUserEditAtom spec-compliant
+
+-------------------------------------------------------------------
 Thu Jun  5 04:40:03 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
