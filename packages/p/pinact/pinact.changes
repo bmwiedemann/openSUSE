@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Dec 11 07:06:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.5.0:
+  * Features
+    - #1266 #1267 Add --min-age (-m) option
+      Skip recently released versions when updating actions with -u
+      flag.
+
+        pinact run -u --min-age 7
+        # or using short alias
+        pinact run -u -m 7
+
+      This helps avoid updating to potentially unstable versions
+      that haven't had time to prove their stability.
+      - For GitHub Releases, the PublishedAt date is checked
+      - For tags, the commit's Committer.Date is checked
+
+  * Refactoring
+    - #1259 Use Destination pattern for urfave/cli flags
+  * Dependencies
+    - chore(deps): update dependency aquaproj/aqua to v2.55.3
+      (#1264)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.444.2 (#1263)
+    - fix(deps): update module golang.org/x/oauth2 to v0.34.0
+      (#1262)
+    - fix(deps): update module github.com/google/go-github/v79 to
+      v80 (#1261)
+    - fix(deps): update module
+      github.com/suzuki-shunsuke/urfave-cli-v3-util to v0.1.2
+      (#1260)
+    - chore(deps): update dependency suzuki-shunsuke/nllint to v1
+      (#1258)
+    - chore(deps): update dependency crate-ci/typos to v1.40.0
+      (#1257)
+    - chore(deps): update dependency suzuki-shunsuke/pinact to
+      v3.4.6 (#1256)
+
+-------------------------------------------------------------------
 Mon Dec 08 08:15:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.4.6:
