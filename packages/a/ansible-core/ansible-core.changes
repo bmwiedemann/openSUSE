@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Dec 11 08:28:49 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.20.1:
+  https://github.com/ansible/ansible/blob/v2.20.1/changelogs/CHANGELOG-v2.20.rst
+  * Bugfixes
+    - Fix AnsibleModule.human_to_bytes(), which was never adjusted
+      after the standalone human_to_bytes() got a new parameter
+      default_unit (#85259).
+    - Variable loading now uses file source instead of variables
+      when invalidly formmated vars file is loaded.
+    - ansible-test - The runtime-metadata sanity test now ignores
+      pre-release and build identifiers in collection versions.
+      This prevents errors if a tombstone version is X.0.0, while
+      the collection's version is X.0.0-prerelease (#85193)."
+    - display - Fix getuser fallback error handling on Python 3.13
+      and later. (#86142)
+    - first_found - Correct the "Include tasks only if one of the
+      files exists, otherwise skip" example.
+    - get_url - fix regex for GNU Digest line which is used in
+      comparing checksums (#86132).
+    - local connection - Fix getuser fallback error handling on
+      Python 3.13 and later.
+
+-------------------------------------------------------------------
 Fri Nov  7 15:52:19 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.20.0:
