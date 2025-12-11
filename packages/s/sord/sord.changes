@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec 10 08:00:56 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- update to 0.16.20
+  * Add header warnings test
+  * Add missing const qualifiers to API
+  * Avoid over-use of yielding meson options
+  * Update man pages
+
+-------------------------------------------------------------------
 Mon Mar 10 21:00:50 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.16.18:

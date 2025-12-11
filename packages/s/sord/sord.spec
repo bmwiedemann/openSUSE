@@ -1,7 +1,7 @@
 #
 # spec file for package sord
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define sover 0
 Name:           sord
-Version:        0.16.18
+Version:        0.16.20
 Release:        0
 Summary:        Utilities to work with RDF data
 License:        ISC
