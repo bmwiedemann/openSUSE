@@ -78,4 +78,40 @@
     <comment></comment>
     <requestid>1283362</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>631d0e2f4a925cd699785c257498d4bb</srcmd5>
+    <version>2.3.0</version>
+    <time>1765474318</time>
+    <user>anag_factory</user>
+    <comment>- Clean the SPEC file.
+
+- Update to 2.3.0
+  * add IniConfig.parse() classmethod with strip_inline_comments parameter (fixes #55)
+    - by default (strip_inline_comments=True), inline comments are properly stripped from values
+    - set strip_inline_comments=False to preserve old behavior if needed
+  * IniConfig() constructor maintains backward compatibility (does not strip inline comments)
+  * users should migrate to IniConfig.parse() for correct comment handling
+  * add strip_section_whitespace parameter to IniConfig.parse() (regarding #4)
+    - opt-in parameter to strip Unicode whitespace from section names
+    - when True, strips Unicode whitespace (U+00A0, U+2000, U+3000, etc.) from section names
+    - when False (default), preserves existing behavior for backward compatibility
+  * clarify Unicode whitespace handling (regarding #4)
+    - since iniconfig 2.0.0 (Python 3 only), all strings are Unicode by default
+    - Python 3's str.strip() has handled Unicode whitespace since Python 3.0 (2008)
+    - iniconfig automatically benefits from this in all supported versions (Python &gt;= 3.10)
+    - key names and values have Unicode whitespace properly stripped using Python's built-in methods
+- from version 2.2.0
+  * drop Python 3.8 and 3.9 support (now requires Python &gt;= 3.10)
+  * add Python 3.14 classifier
+  * migrate from hatchling to setuptools 77 with setuptools_scm
+  * adopt PEP 639 license specifiers and PEP 740 build attestations
+  * migrate from black + pyupgrade to ruff
+  * migrate CI to uv and unified test workflow
+  * automate GitHub releases and PyPI publishing via Trusted Publishing
+  * include tests in sdist
+  * modernize code for Python 3.10+ (remove __future__ annotations, TYPE_CHECKING guards)
+  * rename _ParsedLine to ParsedLine
+- Update BuildRequires from pyproject.toml</comment>
+    <requestid>1321919</requestid>
+  </revision>
 </revisionlist>

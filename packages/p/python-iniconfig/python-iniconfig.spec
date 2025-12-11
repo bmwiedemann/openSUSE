@@ -1,7 +1,7 @@
 #
 # spec file for package python-iniconfig
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -%{flavor}
@@ -27,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-iniconfig%{psuffix}
-Version:        2.1.0
+Version:        2.3.0
 Release:        0
 Summary:        iniconfig: brain-dead simple config-ini parsing
 License:        MIT
@@ -36,9 +35,9 @@ URL:            https://github.com/RonnyPfannschmidt/iniconfig
 Source:         https://files.pythonhosted.org/packages/source/i/iniconfig/iniconfig-%{version}.tar.gz
 Source1:        https://github.com/pytest-dev/iniconfig/archive/refs/tags/v%{version}.tar.gz#/iniconfig-%{version}-tests.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
-BuildRequires:  %{python_module hatch_vcs}
-BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 77}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -61,7 +60,7 @@ having a unique set of features:
 * iniconfig raises an Error if two sections have the same name.
 
 %prep
-%setup -q -n iniconfig-%{version} -a1
+%autosetup -p1 -n iniconfig-%{version} -a1
 
 %if !%{with test}
 %build
