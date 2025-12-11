@@ -1,4 +1,421 @@
 -------------------------------------------------------------------
+Thu Dec 11 09:23:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.28.0:
+  (The changelog contains the same plugin-related changes as the
+  1.27.2 update)
+  * Enhancements
+    - cnpg plugin:
+      - Added a --timeout flag to the kubectl cnpg status command
+        for configuring the timeout for filesystem operations such
+        as calculating cluster size. The default remains 10 seconds
+        but can be adjusted for large clusters where operations may
+        take longer. (#9201)
+      - Improved cnpg report to generate more shell-friendly file
+        names. (#8984)
+  * Fixes
+    - cnpg plugin:
+      - Fixed bugs in cnpg report log collection, especially when
+        fetching previous logs. The collector now correctly fetches
+        previous and current logs in separate requests and
+        gracefully handles missing previous logs (e.g., on
+        containers with no restart history), ensuring current logs
+        are always collected. (#8992)
+  * Dependencies
+    - chore(deps): update dependency golang to v1.25.5 (main)
+      (#9359)
+    - chore(deps): update dependency go to v1.25.5 (main) (#9355)
+    - chore(deps): update peter-evans/create-pull-request digest to
+      84ae59a (main) (#9294)
+    - chore(deps): update dependency boto3 to v1.41.2 (main)
+      (#9289)
+    - chore(deps): update golangci/golangci-lint-action digest to
+      e7fa5ac (main) (#9283)
+    - chore(deps): update dependency boto3 to v1.41.1 (main)
+      (#9271)
+    - chore(deps): update actions/checkout action to v6 (main)
+      (#9269)
+    - fix(deps): update module go.uber.org/zap to v1.27.1 (main)
+      (#9256)
+    - chore(deps): update actions/setup-go digest to 4dc6199 (main)
+      (#9255)
+    - chore(deps): update dependency boto3 to v1.41.0 (main)
+      (#9250)
+    - chore(deps): update dependency
+      redhat-openshift-ecosystem/openshift-preflight to v1.15.2
+      (main) (#9249)
+    - chore(deps): update dependency
+      kubernetes-csi/external-provisioner to v6.1.0 (main) (#9241)
+    - chore(deps): refresh pip-compile outputs (main) (#9246)
+    - chore(deps): update dependency packaging to v25 (main)
+      (#9234)
+    - chore(deps): update dependency boto3 to v1.40.76 (main)
+      (#9233)
+    - chore(deps): update github/codeql-action digest to e12f017
+      (main) (#9224)
+    - fix(deps): update module google.golang.org/grpc to v1.77.0
+      (main) (#9211)
+    - chore(deps): update dependency
+      redhat-openshift-ecosystem/openshift-preflight to v1.15.1
+      (main) (#9208)
+    - chore(deps): update all non-major github action (main)
+      (#9202)
+    - chore(deps): update dependency rook/rook to v1.18.7 (main)
+      (#9180)
+    - chore(deps): update dependency
+      operator-framework/operator-sdk to v1.42.0 (main) (#9187)
+    - chore(deps): update dependency golangci/golangci-lint to
+      v2.6.2 (main) (#9179)
+    - chore(deps): update all non-major github action (main)
+      (#9172)
+    - chore(deps): update
+      registry.access.redhat.com/ubi9/ubi-micro:latest docker
+      digest to e14a8cb (main) (#9159)
+    - fix(deps): update kubernetes patches to v0.34.2 (main)
+      (#9153)
+    - fix(deps): update module golang.org/x/term to v0.37.0 (main)
+      (#9134)
+    - chore(deps): update
+      registry.access.redhat.com/ubi9/ubi-micro:latest docker
+      digest to 11e2cc2 (main) (#9135)
+    - fix(plugin): fix duplicating pgData on walrestore (#9093)
+    - chore(deps): update operator framework (main) (#9133)
+    - chore(deps): update backup test tools (main) (#9100)
+    - fix(deps): update module
+      github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring
+      to v0.86.2 (main) (#9111)
+    - chore(deps): update golangci/golangci-lint-action action to
+      v9 (main) (#9112)
+    - chore(deps): update all non-major github action (main)
+      (#9095)
+    - chore(deps): update jonasbn/github-action-spellcheck docker
+      tag to v0.54.0 (main) (#9075)
+    - chore(deps): update all non-major github action (main)
+      (#9065)
+    - chore(deps): update dependency golang to v1.25.4 (main)
+      (#9073)
+    - chore(deps): update dependency go to v1.25.4 (main) (#9072)
+    - chore(deps): update
+      registry.access.redhat.com/ubi9/ubi-micro:latest docker
+      digest to 9900020 (main) (#9051)
+    - fix(deps): update module
+      github.com/grpc-ecosystem/go-grpc-middleware/v2 to v2.3.3
+      (main) (#9046)
+    - chore(deps): update dependency golangci/golangci-lint to
+      v2.6.1 (main) (#9039)
+    - fix(deps): update module github.com/stern/stern to v1.33.1
+      (main) (#9040)
+    - fix(deps): update module sigs.k8s.io/controller-runtime to
+      v0.22.4 (main) (#9031)
+    - chore(deps): update helm/kind-action action to v1.13.0 (main)
+      (#9029)
+    - chore(deps): update github/codeql-action digest to 0499de3
+      (main) (#9011)
+    - chore(deps): update dependency golangci/golangci-lint to
+      v2.6.0 (main) (#9002)
+    - chore(deps): update dependency rook/rook to v1.18.6 (main)
+      (#8986)
+    - fix(deps): update module github.com/onsi/ginkgo/v2 to v2.27.2
+      (main) (#8973)
+    - chore(deps): update kubernetes csi (main) (#8929)
+    - chore(deps): update
+      gcr.io/distroless/static-debian12:debug-nonroot docker digest
+      to 7d3273e (main) (#8945)
+    - chore(deps): update github artifact actions (main) (major)
+      (#8953)
+    - chore(deps): update jonasbn/github-action-spellcheck docker
+      tag to v0.53.0 (main) (#8949)
+    - chore(deps): update all non-major github action (main)
+      (#8944)
+    - fix(deps): update all non-major go dependencies (main)
+      (#8922)
+    - chore(deps): update gcr.io/distroless/static-debian12:nonroot
+      docker digest to e8a4044 (main) (#8912)
+    - chore(deps): update module github.com/goreleaser/goreleaser
+      to v2.12.6 (main) (#8903)
+    - fix(deps): update module
+      github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring
+      to v0.86.1 (main) (#8899)
+    - fix(deps): update module
+      github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring
+      to v0.86.0 (main) (#8804)
+    - chore(deps): update github/codeql-action digest to 16140ae
+      (main) (#8875)
+    - fix(deps): update module github.com/avast/retry-go/v4 to
+      v4.7.0 (main) (#8861)
+    - chore(deps): update dependency golang to v1.25.3 (main)
+      (#8853)
+    - chore(deps): update dependency go to v1.25.3 (main) (#8845)
+    - chore(deps): update softprops/action-gh-release digest to
+      6da8fa9 (main) (#8839)
+    - fix(deps): update module sigs.k8s.io/controller-runtime to
+      v0.22.3 (main) (#8829)
+    - chore(deps): update github/codeql-action digest to f443b60
+      (main) (#8828)
+    - chore(deps): update dependency python to 3.14 (main) (#8803)
+    - chore(deps): update all non-major github action (main)
+      (#8764)
+    - fix(deps): update module golang.org/x/term to v0.36.0 (main)
+      (#8809)
+    - chore(deps): update github/codeql-action action to v4 (main)
+      (#8805)
+    - fix(deps): update module sigs.k8s.io/controller-runtime to
+      v0.22.2 (main) (#8765)
+    - chore(deps): update dependency golang to v1.25.2 (main)
+      (#8793)
+    - chore(deps): update dependency go to v1.25.2 (main) (#8786)
+    - chore(deps): update dependency rook/rook to v1.18.4 (main)
+      (#8782)
+    - fix(deps): update module google.golang.org/grpc to v1.76.0
+      (main) (#8769)
+    - chore(deps): update actions/stale digest to 5f858e3 (main)
+      (#8741)
+    - chore(deps): update snyk/actions action to v1 (main) (#8732)
+    - chore(deps): update dependency
+      operator-framework/operator-registry to v1.60.0 (main)
+      (#8731)
+    - chore(deps): update peter-evans/create-or-update-comment
+      action to v5 (main) (#8728)
+    - chore(deps): update all non-major github action (main)
+      (#8711)
+    - fix(deps): update module github.com/onsi/ginkgo/v2 to v2.26.0
+      (main) (#8717)
+    - fix(deps): update k8s.io/utils digest to bc988d5 (main)
+      (#8716)
+    - chore(deps): update peter-evans/repository-dispatch action to
+      v4 (main) (#8704)
+    - chore(deps): update module github.com/goreleaser/goreleaser
+      to v2.12.5 (main) (#8702)
+    - chore(deps): update module github.com/goreleaser/goreleaser
+      to v2.12.4 (main) (#8695)
+    - chore(deps): update ossf/scorecard-action action to v2.4.3
+      (main) (#8693)
+    - chore(deps): update all non-major github action (main)
+      (#8666)
+    - chore(deps): update module github.com/goreleaser/goreleaser
+      to v2.12.3 (main) (#8661)
+    - chore(deps): update snok/container-retention-policy digest to
+      3b0972b (main) (#8651)
+    - chore(deps): update ad-m/github-push-action action to v1
+      (main) (#8646)
+    - chore(deps): update actions/stale action to v10 (main)
+      (#8643)
+    - chore(deps): update actions/setup-go action to v6 (main)
+      (#8635)
+    - chore(deps): update actions/setup-python action to v6 (main)
+      (#8639)
+    - chore(deps): update kubernetes csi (main) (#8591)
+    - chore(deps): update snok/container-retention-policy action to
+      v3.0.1 (main) (#8618)
+    - chore(deps): update dependency
+      operator-framework/operator-registry to v1.59.0 (main)
+      (#8590)
+    - chore(deps): update aws-actions/configure-aws-credentials
+      action to v5 (main) (#8528)
+    - chore(deps): update velero/velero-plugin-for-aws docker tag
+      to v1.13.0 (main) (#8619)
+    - chore(deps): update dependency golangci/golangci-lint to
+      v2.5.0 (main) (#8610)
+    - chore(deps): update jonasbn/github-action-spellcheck docker
+      tag to v0.52.0 (main) (#8611)
+    - fix(deps): update all non-major go dependencies (main)
+      (#8562)
+    - chore(deps): update backup test tools (main) (#8567)
+    - fix(deps): update kubernetes patches (main) (#8566)
+    - chore(deps): update container distroless digests (main)
+      (#8561)
+    - chore(deps): update all non-major github action (main)
+      (#8527)
+    - chore(deps): update dependency golang to v1.25.1 (main)
+      (#8525)
+    - fix(deps): update all non-major go dependencies (main)
+      (#8512)
+    - chore(deps): update github/codeql-action digest to 2d92b76
+      (main) (#8466)
+    - chore(deps): update dependency
+      operator-framework/operator-registry to v1.57.0 (main)
+      (#8489)
+    - chore(deps): update module sigs.k8s.io/controller-tools to
+      v0.19.0 (main) (#8458)
+    - fix(deps): update module sigs.k8s.io/controller-runtime to
+      v0.22.0 (main) (#8459)
+    - fix(deps): update module github.com/onsi/ginkgo/v2 to v2.25.2
+      (main) (#8477)
+    - fix(deps): update module
+      github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring
+      to v0.85.0 (main) (#8411)
+    - chore(deps): update google-github-actions/setup-gcloud action
+      to v3 (main) (#8471)
+    - chore(deps): update google-github-actions/auth action to v3
+      (main) (#8467)
+    - fix(deps): update kubernetes packages to v0.34.0 (main)
+      (#8449)
+    - chore(deps): update kindest/node docker tag to v1.34.0 (main)
+      (#8447)
+    - chore(deps): update all non-major github action (main)
+      (#8419)
+    - fix(deps): update all non-major go dependencies (main)
+      (#8420)
+    - chore(deps): update container distroless digests (main)
+      (#8430)
+    - fix(deps): update k8s.io/utils digest to 0af2bda (main)
+      (#8404)
+    - chore(deps): update all non-major github action (main)
+      (#8402)
+    - fix(deps): update all non-major go dependencies (main)
+      (#8390)
+    - chore(deps): update dependency golang to v1.25.0 (main)
+      (#8353)
+    - chore(deps): update dependency golangci/golangci-lint to
+      v2.4.0 (main) (#8359)
+    - chore(deps): update all non-major github action (main)
+      (#8376)
+    - fix(deps): update kubernetes patches to v0.33.4 (main)
+      (#8352)
+    - chore(deps): update dependency
+      redhat-openshift-ecosystem/openshift-preflight to v1.14.1
+      (main) (#8339)
+    - chore(deps): update all non-major github action (main)
+      (#8329)
+    - chore(deps): update actions/checkout action to v5 (main)
+      (#8343)
+
+-------------------------------------------------------------------
+Thu Dec 11 09:01:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.27.2:
+  * Enhancements
+    - cnpg plugin:
+      - Added a --timeout flag to the kubectl cnpg status command
+        for configuring the timeout for filesystem operations such
+        as calculating cluster size. The default remains 10 seconds
+        but can be adjusted for large clusters where operations may
+        take longer. (#9201)
+      - Improved cnpg report to generate more shell-friendly file
+        names. (#8984)
+  * Fixes
+    - cnpg plugin:
+      - Fixed bugs in cnpg report log collection, especially when
+        fetching previous logs. The collector now correctly fetches
+        previous and current logs in separate requests and
+        gracefully handles missing previous logs (e.g., on
+        containers with no restart history), ensuring current logs
+        are always collected. (#8992)
+  * Dependencies
+    - chore(deps): update dependency golang to v1.25.5
+      (release-1.27) (#9362)
+    - chore(deps): update dependency go to v1.25.5 (release-1.27)
+      (#9358)
+    - chore(security): update golang.org/x/crypto package (#9342)
+    - chore(deps): update peter-evans/create-pull-request digest to
+      84ae59a (release-1.27) (#9297)
+    - chore(deps): update dependency boto3 to v1.41.2
+      (release-1.27) (#9293)
+    - chore(deps): update golangci/golangci-lint-action digest to
+      e7fa5ac (release-1.27) (#9288)
+    - chore(deps): update dependency boto3 to v1.41.1
+      (release-1.27) (#9277)
+    - chore(deps): update actions/checkout action to v6
+      (release-1.27) (#9276)
+    - fix(deps): update module go.uber.org/zap to v1.27.1
+      (release-1.27) (#9265)
+    - chore(deps): update actions/setup-go digest to 4dc6199
+      (release-1.27) (#9262)
+    - chore(deps): update dependency boto3 to v1.41.0
+      (release-1.27) (#9259)
+    - chore(deps): update dependency
+      redhat-openshift-ecosystem/openshift-preflight to v1.15.2
+      (release-1.27) (#9253)
+    - chore(deps): update dependency
+      kubernetes-csi/external-provisioner to v6.1.0 (release-1.27)
+      (#9248)
+    - chore(deps): refresh pip-compile outputs (release-1.27)
+      (#9245)
+    - chore(deps): update dependency packaging to v25
+      (release-1.27) (#9240)
+    - chore(deps): update dependency boto3 to v1.40.76
+      (release-1.27) (#9238)
+    - chore(deps): update github/codeql-action digest to e12f017
+      (release-1.27) (#9227)
+    - fix(deps): update module google.golang.org/grpc to v1.77.0
+      (release-1.27) (#9217)
+    - chore(deps): update dependency
+      redhat-openshift-ecosystem/openshift-preflight to v1.15.1
+      (release-1.27) (#9214)
+    - chore(deps): update all non-major github action
+      (release-1.27) (#9205)
+    - chore(deps): update dependency rook/rook to v1.18.7
+      (release-1.27) (#9194)
+    - chore(deps): update dependency
+      operator-framework/operator-sdk to v1.42.0 (release-1.27)
+      (#9191)
+    - chore(deps): update dependency golangci/golangci-lint to
+      v2.6.2 (release-1.27) (#9186)
+    - chore(deps): update all non-major github action
+      (release-1.27) (#9183)
+    - chore(deps): update
+      registry.access.redhat.com/ubi9/ubi-micro:latest docker
+      digest to e14a8cb (release-1.27) (#9171)
+    - fix(deps): update kubernetes patches to v0.34.2
+      (release-1.27) (#9157)
+    - fix(deps): update module golang.org/x/term to v0.37.0
+      (release-1.27) (#9146)
+    - chore(deps): update
+      registry.access.redhat.com/ubi9/ubi-micro:latest docker
+      digest to 11e2cc2 (release-1.27) (#9142)
+    - chore(deps): update operator framework (release-1.27) (#9139)
+    - chore(deps): update backup test tools (release-1.27) (#9122)
+    - fix(deps): update module
+      github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring
+      to v0.86.2 (release-1.27) (#9119)
+    - chore(deps): update golangci/golangci-lint-action action to
+      v9 (release-1.27) (#9117)
+    - chore(deps): update all non-major github action
+      (release-1.27) (#9098)
+    - chore(deps): update jonasbn/github-action-spellcheck docker
+      tag to v0.54.0 (release-1.27) (#9087)
+    - chore(deps): update all non-major github action
+      (release-1.27) (#9085)
+    - chore(deps): update dependency golang to v1.25.4
+      (release-1.27) (#9081)
+    - chore(deps): update dependency go to v1.25.4 (release-1.27)
+      (#9078)
+    - chore(deps): update
+      registry.access.redhat.com/ubi9/ubi-micro:latest docker
+      digest to 9900020 (release-1.27) (#9056)
+    - fix(deps): update module
+      github.com/grpc-ecosystem/go-grpc-middleware/v2 to v2.3.3
+      (release-1.27) (#9050)
+    - chore(deps): update dependency golangci/golangci-lint to
+      v2.6.1 (release-1.27) (#9048)
+    - fix(deps): update module github.com/stern/stern to v1.33.1
+      (release-1.27) (#9045)
+    - fix(deps): update module sigs.k8s.io/controller-runtime to
+      v0.22.4 (release-1.27) (#9037)
+    - chore(deps): update helm/kind-action action to v1.13.0
+      (release-1.27) (#9034)
+    - chore(deps): update github/codeql-action digest to 0499de3
+      (release-1.27) (#9020)
+    - chore(deps): update dependency golangci/golangci-lint to
+      v2.6.0 (release-1.27) (#9005)
+    - chore(deps): update dependency rook/rook to v1.18.6
+      (release-1.27) (#8990)
+    - fix(deps): update module github.com/onsi/ginkgo/v2 to v2.27.2
+      (release-1.27) (#8976)
+    - chore(deps): update kubernetes csi (release-1.27) (#8962)
+    - chore(deps): update
+      gcr.io/distroless/static-debian12:debug-nonroot docker digest
+      to 7d3273e (release-1.27) (#8959)
+    - chore(deps): update github artifact actions (release-1.27)
+      (major) (#8956)
+    - chore(deps): update jonasbn/github-action-spellcheck docker
+      tag to v0.53.0 (release-1.27) (#8952)
+    - chore(deps): update all non-major github action
+      (release-1.27) (#8948)
+    - fix(deps): update all non-major go dependencies
+      (release-1.27) (#8926)
+
+-------------------------------------------------------------------
 Fri Oct 24 05:08:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.27.1:
