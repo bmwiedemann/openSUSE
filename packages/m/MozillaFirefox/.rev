@@ -7870,4 +7870,43 @@
     <comment></comment>
     <requestid>1320286</requestid>
   </revision>
+  <revision rev="472" vrev="1">
+    <srcmd5>950b3b763dacf063a3a226f5e4269742</srcmd5>
+    <version>146.0</version>
+    <time>1765474424</time>
+    <user>anag_factory</user>
+    <comment>This also requires the staged rust-cbindgen update to build
+
+- Mozilla Firefox 146.0
+  https://www.firefox.com/en-US/firefox/146.0/releasenotes/
+  MFSA 2025-92 (bsc#1254551)
+  * CVE-2025-14321 (bmo#1992760)
+    Use-after-free in the WebRTC: Signaling component
+  * CVE-2025-14322 (bmo#1996473)
+    Sandbox escape due to incorrect boundary conditions in the
+    Graphics: CanvasWebGL component
+  * CVE-2025-14323 (bmo#1996555)
+    Privilege escalation in the DOM: Notifications component
+  * CVE-2025-14324 (bmo#1996840)
+    JIT miscompilation in the JavaScript Engine: JIT component
+  * CVE-2025-14325 (bmo#1998050)
+    JIT miscompilation in the JavaScript Engine: JIT component
+  * CVE-2025-14326 (bmo#1840666)
+    Use-after-free in the Audio/Video: GMP component
+  * CVE-2025-14327 (bmo#1970743)
+    Spoofing issue in the Downloads Panel component
+  * CVE-2025-14328 (bmo#1996761)
+    Privilege escalation in the Netmonitor component
+  * CVE-2025-14329 (bmo#1997018)
+    Privilege escalation in the Netmonitor component
+  * CVE-2025-14330 (bmo#1997503)
+    JIT miscompilation in the JavaScript Engine: JIT component
+  * CVE-2025-14331 (bmo#2000218)
+    Same-origin policy bypass in the Request Handling component
+  * CVE-2025-14332 (bmo#1963153, bmo#1985058, bmo#1995637, bmo#1997118)
+    Memory safety bugs fixed in Firefox 146 and Thunderbird 146
+  * CVE-2025-14333 (bmo#1966501, bmo#1997639)
+    Memory safety bugs fixed in Firefox ESR 140.6, Thunderbird</comment>
+    <requestid>1321887</requestid>
+  </revision>
 </revisionlist>

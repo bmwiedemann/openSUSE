@@ -28,9 +28,9 @@
 # orig_suffix b3
 # major 69
 # mainver %%major.99
-%define major          145
-%define mainver        %major.0.2
-%define orig_version   145.0.2
+%define major          146
+%define mainver        %major.0
+%define orig_version   146.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -40,7 +40,7 @@
 %define do_profiling   0
 
 # upstream default is clang (to use gcc for large parts set to 0)
-%define clang_build    1
+%define clang_build    0
 
 %bcond_with only_print_mozconfig
 
@@ -113,8 +113,8 @@ BuildRequires:  libcurl-devel
 BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
-BuildRequires:  mozilla-nspr-devel >= 4.37
-BuildRequires:  mozilla-nss-devel >= 3.117
+BuildRequires:  mozilla-nspr-devel >= 4.38.2
+BuildRequires:  mozilla-nss-devel >= 3.118
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 12.22.12
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -137,7 +137,7 @@ BuildRequires:  python3-curses
 BuildRequires:  python3-devel
 %endif
 %endif
-BuildRequires:  rust-cbindgen >= 0.26
+BuildRequires:  rust-cbindgen >= 0.29.1
 %if 0%{?suse_version} > 1560
 BuildRequires:  translate-suse-desktop
 %endif
@@ -152,7 +152,7 @@ BuildRequires:  zip
 BuildRequires:  pkgconfig(gconf-2.0) >= 1.2.1
 %endif
 %if 0%{?suse_version} < 1599
-BuildRequires:  clang15-devel
+BuildRequires:  clang19-devel
 %else
 %if 0%{?suse_version} < 1699
 BuildRequires:  clang-devel
@@ -395,11 +395,14 @@ export BUILD_OFFICIAL=1
 export MOZ_TELEMETRY_REPORTING=1
 export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
 export CFLAGS="%{optflags}"
+%if 0%{?clang_build} != 0
+export CC=clang
+export CXX=clang++
+%else
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150600
 export CC=gcc-13
 export CXX=g++-13
 %else
-%if 0%{?clang_build} == 0
 export CC=gcc
 export CXX=g++
 %endif
