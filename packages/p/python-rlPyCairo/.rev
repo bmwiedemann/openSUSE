@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8efad0cefcc758833cb8383792ef129e</srcmd5>
+    <version>0.4.0</version>
+    <time>1765474499</time>
+    <user>anag_factory</user>
+    <comment>New package required by python-svglib
+
+New version of python-svglib requires this reportlab extension</comment>
+    <requestid>1321972</requestid>
+  </revision>
+</revisionlist>
