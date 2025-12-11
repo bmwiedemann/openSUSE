@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec 10 09:04:56 UTC 2025 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Update to version 2.005
+  * No changelog was provided
+- Update the spec file
+  * Fix sources and urls according to the upstream distribution.
+  * Add `-c` option to the %reconfigure_fonts_scriptlets macro for
+    CJK fonts.
+  * Properly use `install` command in the %install section.
+  * Improve summaries for regional variations.
+
+-------------------------------------------------------------------
 Tue May 25 19:08:28 CEST 2021 - tiwai@suse.de
 
 - Fix source URLs to be properly downloadable
@@ -41,4 +53,3 @@ Wed Jul 16 12:04:15 UTC 2014 - i@marguerite.su
 
 - initial version
   * initial public release
-

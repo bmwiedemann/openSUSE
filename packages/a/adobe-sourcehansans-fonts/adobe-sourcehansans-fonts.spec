@@ -1,7 +1,7 @@
 #
 # spec file for package adobe-sourcehansans-fonts
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,112 +16,115 @@
 #
 
 
-%define shared_description Source Han Sans is an open source Pan-CJK typeface whose OpenType/CFF fonts and CID-based sources are covered under the terms of the SIL Open Font License.
+%define shared_description Source Han Sans is a pan-CJK typeface in OpenType/CFF and CID forms.
 
 Name:           adobe-sourcehansans-fonts
-Version:        2.004
+Version:        2.005
 Release:        0
-Summary:        Source Han Sans
+Summary:        Sans serif-style Pan-CJK typeface family
 License:        OFL-1.1
 Group:          System/X11/Fonts
 URL:            https://github.com/adobe-fonts/source-han-sans
-Source0:        https://github.com/adobe-fonts/source-han-sans/releases/download/%{version}R/SourceHanSansCN.zip
-Source1:        https://github.com/adobe-fonts/source-han-sans/releases/download/%{version}R/SourceHanSansHK.zip
-Source2:        https://github.com/adobe-fonts/source-han-sans/releases/download/%{version}R/SourceHanSansJP.zip
-Source3:        https://github.com/adobe-fonts/source-han-sans/releases/download/%{version}R/SourceHanSansKR.zip
-Source4:        https://github.com/adobe-fonts/source-han-sans/releases/download/%{version}R/SourceHanSansTW.zip
-Source5:        https://github.com/adobe-fonts/source-han-sans/releases/download/%{version}R/SourceHanSans-VF.zip
+Source0:        https://github.com/adobe-fonts/source-han-sans/releases/download/%{version}R/02_SourceHanSans-VF.zip
+Source1:        https://github.com/adobe-fonts/source-han-sans/releases/download/%{version}R/05_SourceHanSansSubsetOTF.zip
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
-%{shared_description}
+Source Han Sans is a sans-serif gothic typeface family. (It is also
+released under the Noto fonts project as Noto Sans CJK.) The Source
+Han Sans family includes seven weights, and supports Traditional
+Chinese, Simplified Chinese, Japanese and Korean. It also includes
+Latin, Greek and Cyrillic characters from the Source Sans family.
 
 %prep
-unzip -o %{S:0}
-unzip -o %{S:1}
-unzip -o %{S:2}
-unzip -o %{S:3}
-unzip -o %{S:4}
-unzip -o %{S:5}
+%{uncompress:%{S:0}}
+%if 0%{?suse_version} < 1600
+# Next archive will unpack the same file again; and SL15.x rpm's %%uncompress
+# forgets passing a force-overwrite flag for ZIPs, causing a build failure.
+rm -v LICENSE.txt
+%endif
+%{uncompress:%{S:1}}
 
 %build
 
 %install
-mkdir -p %{buildroot}%{_ttfontsdir}
-mv Variable/OTF/Subset/*.otf %{buildroot}%{_ttfontsdir}
-mv SubsetOTF/*/*.otf %{buildroot}%{_ttfontsdir}
+install -d %{buildroot}%{_ttfontsdir}
+install -m 644 Variable/OTF/Subset/*.otf %{buildroot}%{_ttfontsdir}
+install -m 644 SubsetOTF/*/*.otf %{buildroot}%{_ttfontsdir}
 
-# Chinese China package
+# Simplified Chinese package
 %package -n adobe-sourcehansans-cn-fonts
-Summary:        Source Han Sans CN
+Summary:        Source Han Sans variation for Simplified Chinese
 Group:          System/X11/Fonts
 Provides:       scalable-font-zh_CN
 Provides:       locale(zh_CN)
 
 %description -n adobe-sourcehansans-cn-fonts
 %{shared_description}
-%reconfigure_fonts_scriptlets -n adobe-sourcehansans-cn-fonts
+
+%reconfigure_fonts_scriptlets -c -n adobe-sourcehansans-cn-fonts
+
 %files -n adobe-sourcehansans-cn-fonts
-%defattr(0644,root,root,755)
 %license LICENSE.txt
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/SourceHanSansCN-*.otf
 
-# Chinese Hongkong package
+# Traditional Chinese Hong Kong package
 %package -n adobe-sourcehansans-hk-fonts
-Summary:        Source Han Sans HK
+Summary:        Source Han Sans variation for Traditional Chinese in Hong Kong
 Group:          System/X11/Fonts
 Provides:       scalable-font-zh_HK
 Provides:       locale(zh_HK)
 
 %description -n adobe-sourcehansans-hk-fonts
 %{shared_description}
-%reconfigure_fonts_scriptlets -n adobe-sourcehansans-hk-fonts
+
+%reconfigure_fonts_scriptlets -c -n adobe-sourcehansans-hk-fonts
+
 %files -n adobe-sourcehansans-hk-fonts
-%defattr(0644,root,root,755)
 %license LICENSE.txt
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/SourceHanSansHK-*.otf
 
 # Japanese package
 %package -n adobe-sourcehansans-jp-fonts
-Summary:        Source Han Sans JP
+Summary:        Source Han Sans variation for Japanese
 Group:          System/X11/Fonts
 Provides:       scalable-font-jp
 Provides:       locale(jp)
 
 %description -n adobe-sourcehansans-jp-fonts
 %{shared_description}
-%reconfigure_fonts_scriptlets -n adobe-sourcehansans-jp-fonts
+
+%reconfigure_fonts_scriptlets -c -n adobe-sourcehansans-jp-fonts
+
 %files -n adobe-sourcehansans-jp-fonts
-%defattr(0644,root,root,755)
 %license LICENSE.txt
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/SourceHanSansJP-*.otf
 
 # Korean package
 %package -n adobe-sourcehansans-kr-fonts
-Summary:        Source Han Sans KR
+Summary:        Source Han Sans variation for Korean
 Group:          System/X11/Fonts
 Provides:       scalable-font-kr
 Provides:       locale(kr)
 
 %description -n adobe-sourcehansans-kr-fonts
 %{shared_description}
-%reconfigure_fonts_scriptlets -n adobe-sourcehansans-kr-fonts
+
+%reconfigure_fonts_scriptlets -c -n adobe-sourcehansans-kr-fonts
+
 %files -n adobe-sourcehansans-kr-fonts
-%defattr(0644,root,root,755)
 %license LICENSE.txt
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/SourceHanSansKR-*.otf
 
-# Chinese Taiwan package
+# Traditional Chinese Taiwan package
 %package -n adobe-sourcehansans-tw-fonts
-Summary:        Source Han Sans TW
-# Replace the old single package that only provides Taiwan fonts
+Summary:        Source Han Sans variation for Traditional Chinese in Taiwan
 Group:          System/X11/Fonts
 Provides:       adobe-sourcehansans-fonts = %version-%release
 Provides:       scalable-font-zh_TW
@@ -130,9 +133,10 @@ Obsoletes:      adobe-sourcehansans-fonts < %version-%release
 
 %description -n adobe-sourcehansans-tw-fonts
 %{shared_description}
-%reconfigure_fonts_scriptlets -n adobe-sourcehansans-tw-fonts
+
+%reconfigure_fonts_scriptlets -c -n adobe-sourcehansans-tw-fonts
+
 %files -n adobe-sourcehansans-tw-fonts
-%defattr(0644,root,root,755)
 %license LICENSE.txt
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/SourceHanSansTW-*.otf
