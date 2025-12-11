@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Dec 11 06:48:23 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.47.1:
+  * Additional Changes
+    - allow more time for ubuntu runner [#767 @willmurphyscode]
+  * Dependencies
+    - chore(deps): Bump github.com/anchore/grype from 0.104.1 to
+      0.104.2 (#778)
+    - chore(deps): Bump zizmorcore/zizmor-action from 0.2.0 to
+      0.3.0 (#753)
+    - chore(deps): Bump golang.org/x/text from 0.31.0 to 0.32.0
+      (#775)
+    - chore(deps): update tools to latest versions (#770)
+    - chore(deps): Bump peter-evans/create-pull-request from 7.0.8
+      to 7.0.11 (#772)
+    - chore(deps): Bump astral-sh/setup-uv in
+      /.github/actions/bootstrap (#773)
+    - chore(deps): update tools to latest versions (#757)
+    - chore(deps): Bump github.com/klauspost/compress from 1.18.1
+      to 1.18.2 (#763)
+    - chore(deps): Bump actions/checkout from 5.0.1 to 6.0.1 (#766)
+    - chore(deps): Bump github.com/spf13/cobra from 1.10.1 to
+      1.10.2 (#768)
+
+-------------------------------------------------------------------
 Tue Nov 25 12:40:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.47.0:
