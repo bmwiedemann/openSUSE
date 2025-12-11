@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec  5 16:06:23 UTC 2025 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- tmux 3.6a:
+  * A crash when linked against a libevent built with NDEBUG.
+  * A build issue with utempter on FreeBSD.
+  * Allow the mouse to enter copy mode when in the alternate screen again.
+  * Fixes to scrollbars, particularly when used with a pane status line.
+  * Correct handling of Unicode emoijs where the modifier precedes the modified
+    character.
+  * A crash and hang with malformed format strings.
+
+-------------------------------------------------------------------
 Wed Nov 26 17:42:18 UTC 2025 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
 
 - tmux 3.6:
