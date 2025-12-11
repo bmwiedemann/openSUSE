@@ -1,7 +1,7 @@
 #
 # spec file for package sratom
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define sover 0
 Name:           sratom
-Version:        0.6.18
+Version:        0.6.20
 Release:        0
 Summary:        A library for serialising LV2 atoms to/from RDF
 License:        ISC

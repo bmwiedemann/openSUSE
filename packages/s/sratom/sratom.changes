@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec 10 08:32:12 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- update to 0.6.20
+  * Avoid over-use of yielding meson options
+  * Avoid use of scanf when reading MIDI events
+  * Fix lint checks
+  * Fix potential memory error when writing ambiguous relative paths
+  * Improve code quality
+
+-------------------------------------------------------------------
 Mon Mar 10 21:06:25 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.6.18:
