@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Dec 11 06:48:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.3.4:
+  * Bug Fixes
+    - go: update k8s.io/apimachinery ( v0.34.2 → v0.34.3 )
+      (f5dd04d)
+  * CI/CD
+    - github-action: update actions/create-github-app-token (
+      v2.2.0 → v2.2.1 ) (9ac61d5)
+    - github-action: update github/codeql-action ( v4.31.6 →
+      v4.31.7 ) (ffb022e)
+  * Chores
+    - mise: update aqua:goreleaser/goreleaser ( 2.13.0 → 2.13.1 )
+      (686c7fc)
+    - mise: update aqua:golangci/golangci-lint ( 2.7.1 → 2.7.2 )
+      (e37e6a1)
+
+-------------------------------------------------------------------
 Mon Dec 08 08:15:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.3.3:
