@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Dec  7 07:33:19 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to version 4.38.2
+  * Fixed a syntax error in test file parsetm.c, which was
+    introduced in 4.38.1 (bmo#1999381)
+  Changes in 4.38.1
+  * Incorrect time value produced by PR_ParseTimeString and
+    PR_ParseTimeStringToExplodedTime if input string doesn't
+    specify seconds. (bmo#1999105)
+  Changes in 4.38
+  * Removed support for HPUX and _PR_POLL_WITH_SELECT
+    (bmo#1965666, bmo#1965916)
+  * Fixed a bug in pt_TCP_SendTo on macOS
+  * Ensure parameter passed to isalpha() is unsigned char (bmo#375149)
+
+-------------------------------------------------------------------
 Sat Jul 19 05:35:57 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to version 4.37

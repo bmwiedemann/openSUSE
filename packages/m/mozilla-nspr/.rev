@@ -795,4 +795,23 @@ require it nevertheless
                   format specifier</comment>
     <requestid>1305691</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>706fa9e0c6626392b43adcb7ecf981f6</srcmd5>
+    <version>4.38.2</version>
+    <time>1765474481</time>
+    <user>anag_factory</user>
+    <comment>- update to version 4.38.2
+  * Fixed a syntax error in test file parsetm.c, which was
+    introduced in 4.38.1 (bmo#1999381)
+  Changes in 4.38.1
+  * Incorrect time value produced by PR_ParseTimeString and
+    PR_ParseTimeStringToExplodedTime if input string doesn't
+    specify seconds. (bmo#1999105)
+  Changes in 4.38
+  * Removed support for HPUX and _PR_POLL_WITH_SELECT
+    (bmo#1965666, bmo#1965916)
+  * Fixed a bug in pt_TCP_SendTo on macOS
+  * Ensure parameter passed to isalpha() is unsigned char (bmo#375149)</comment>
+    <requestid>1321911</requestid>
+  </revision>
 </revisionlist>
