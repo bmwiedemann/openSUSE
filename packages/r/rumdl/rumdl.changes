@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Thu Dec 11 07:07:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.0.193:
+  * Fixed
+    - MD032 (blanks-around-lists): Complete fix for false positives
+      (fixes #188, #190)
+      - Pipes in code spans (e.g., `foo || bar`) no longer trigger
+        false table detection
+      - Lazy continuation lines at indent=0 handled per CommonMark
+        spec
+      - Removed ad-hoc URL/link exclusion hacks in favor of proper
+        is_table_line() detection
+      - Fixed regression in v0.0.192 that affected list boundary
+        detection
+    - MD057 (relative-links): Resolve links per-file instead of
+      caching base path
+      - Relative link resolution now correctly uses each file's
+        directory
+      - Prevents cross-file path resolution errors in multi-file
+        projects
+  * Changed
+    - Internal: Replace naive contains('|') checks with
+      is_table_line()
+      - Structural separator detection now properly validates table
+        structure
+      - Requires pipes at start/end with ≥2 total, or separator
+        line pattern
+- Update to version 0.0.192:
+  * Added
+    - Config: cache option to disable caching via config file
+      (closes #153)
+      - Add cache = false to [global] section to persistently
+        disable caching
+      - Eliminates need to pass --no-cache flag on every invocation
+      - Works in both .rumdl.toml and pyproject.toml
+    - MD052 (reference-links-images): User-configurable ignore
+      option
+      - Add patterns to skip specific reference links from
+        validation
+      - Useful for links handled by external tools or preprocessors
+    - CI: Major version tag (v0) for GitHub Action
+      - Users can now reference the action as rvben/rumdl@v0 for
+        automatic minor updates
+  * Fixed
+    - Inline config: Cross-file rules now respect disable comments
+      (fixes #189)
+      - MD051 and MD057 now honor <!-- rumdl-disable --> and <!--
+        rumdl-disable-next-line --> comments
+      - Previously these rules ran in a separate phase that
+        bypassed inline config filtering
+    - Config: Directory exclude patterns now match files within
+      (fixes #186)
+      - Patterns like docs/ now correctly exclude all files in that
+        directory
+      - Glob patterns are automatically expanded to match contained
+        files
+    - MD032 (blanks-around-lists): No longer triggers on pipes in
+      inline code (fixes #188)
+      - Tables inside inline code blocks no longer confuse list
+        boundary detection
+    - MD005/MD037/MD041: Resolve false positives
+      - MD041: Setext headers with colons no longer cause issues
+      - MD037: List items containing asterisks handled correctly
+      - MD005: Sublist parsing improved for complex nested
+        structures
+    - Text reflow: Use proper table detection
+      - Replaced simplistic pipe check with robust table structure
+        detection
+      - Prevents incorrect reflow of table content
+  * Changed
+    - Internal: Replace RUMDL_FILE_PATH env var with source_file
+      field
+      - Cleaner API for accessing the current file path in rule
+        implementations
+      - No user-facing changes
+
+-------------------------------------------------------------------
 Tue Dec 09 06:33:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.0.191:
