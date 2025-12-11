@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec 10 15:10:39 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1765365298.9af08171:
+  * KTAP: Properly hide details of a skipped subtest
+  * docs: Restory logic of the sentence about NFT vs firewalld
+  * docs: Clarify DHCP/RA availability on MM networks
+  * feat: Allow to configure key+secret with env variables
+
+-------------------------------------------------------------------
 Tue Dec 09 14:19:12 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1765286149.3debb8ea:
