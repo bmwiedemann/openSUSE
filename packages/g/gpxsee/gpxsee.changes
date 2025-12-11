@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Dec 11 11:07:49 CET 2025 - tumic@gpxsee.org
+
+- Update to version 15.6
+  * Added support for mp4 videos (including GoPro GPMF).
+  * Improved multi-layer online maps handling.
+  * Fixed toolbar icons size issue.
+
+-------------------------------------------------------------------
+Fri Nov 28 07:38:55 CET 2025 - tumic@gpxsee.org
+
+- Update to version 15.5
+  * Qt 6.9.3 now used for macOS builds.
+  * Qt 6.10.1 now used for Windows builds.
+  * Windows builds now use the system ICU library.
+
+-------------------------------------------------------------------
 Tue Nov 18 22:52:57 CET 2025 - tumic@gpxsee.org
 
 - Update to version 15.4

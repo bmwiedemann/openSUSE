@@ -1,12 +1,12 @@
 pkgname=gpxsee
-pkgver=15.4
+pkgver=15.6
 pkgrel=1
 pkgdesc='GPS log files visualizing and analyzing tool'
 arch=('i686' 'x86_64')
 url="http://www.gpxsee.org/"
 license=('GPL3')
-depends=('qt6-imageformats' 'qt6-positioning' 'qt6-svg'
-         'qt6-serialport' 'hicolor-icon-theme')
+depends=('qt6-imageformats' 'qt6-positioning' 'qt6-serialport'
+         'qt6-svg' 'hicolor-icon-theme')
 makedepends=('qt6-tools')
 provides=("${pkgname}=${pkgver}")
 source=("GPXSee-${pkgver}.tar.gz")

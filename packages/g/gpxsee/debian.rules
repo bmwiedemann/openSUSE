@@ -2,8 +2,6 @@
 # Sample debian/rules that uses debhelper.
 # GNU copyright 1997 to 1999 by Joey Hess.
 
-export QT_SELECT := qt5
-
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
@@ -12,8 +10,8 @@ build-stamp:
 	dh_testdir
 
 	# Add here commands to compile the package.
-	lrelease gpxsee.pro
-	qmake PREFIX=/usr gpxsee.pro
+	/usr/lib/qt6/bin/lrelease gpxsee.pro
+	qmake6 PREFIX=/usr gpxsee.pro
 	make
 	# --- end custom part for compiling
 

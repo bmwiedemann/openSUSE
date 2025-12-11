@@ -1,3 +1,19 @@
+gpxsee (15.6) stable; urgency=low
+
+  * Added support for mp4 videos (including GoPro GPMF).
+  * Improved multi-layer online maps handling.
+  * Fixed toolbar icons size issue.
+
+ -- Martin Tuma <tumic@gpxsee.org>  Thu, 11 Dec 2025 11:10:18 +0100
+
+gpxsee (15.5) stable; urgency=low
+
+  * Qt 6.9.3 now used for macOS builds.
+  * Qt 6.10.1 now used for Windows builds.
+  * Windows builds now use the system ICU library.
+
+ -- Martin Tuma <tumic@gpxsee.org>  Fri, 28 Nov 2025 07:43:22 +0100
+
 gpxsee (15.4) stable; urgency=low
 
   * Added support for online maps overlays.
