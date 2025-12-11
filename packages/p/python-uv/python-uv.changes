@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Dec 10 21:09:53 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.9.17
+ * Enhancements
+  * Add torch-tensorrt and torchao to the PyTorch list 
+  * Add hint for misplaced --verbose in uv tool run 
+  * Add support for relative durations in exclude-newer (a.k.a., dependency cooldowns) 
+  * Add support for relocatable nushell activation script 
+ * Bug fixes
+  * Respect dropped (but explicit) indexes in dependency groups 
+ * Documentation
+  * Improve source-exclude reference docs 
+  * Recommend UV_NO_DEV in Docker installs 
+  * Update UV_VERSION in docs for GitLab CI/CD 
+
+-------------------------------------------------------------------
 Mon Dec  8 08:45:18 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.9.16 

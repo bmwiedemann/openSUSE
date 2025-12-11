@@ -1825,4 +1825,23 @@
   * Upgrade PyTorch documentation to latest versions</comment>
     <requestid>1321536</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>1c1ba1df01d7273f33aac3bc1df90eab</srcmd5>
+    <version>0.9.17</version>
+    <time>1765474728</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.9.17
+ * Enhancements
+  * Add torch-tensorrt and torchao to the PyTorch list 
+  * Add hint for misplaced --verbose in uv tool run 
+  * Add support for relative durations in exclude-newer (a.k.a., dependency cooldowns) 
+  * Add support for relocatable nushell activation script 
+ * Bug fixes
+  * Respect dropped (but explicit) indexes in dependency groups 
+ * Documentation
+  * Improve source-exclude reference docs 
+  * Recommend UV_NO_DEV in Docker installs 
+  * Update UV_VERSION in docs for GitLab CI/CD</comment>
+    <requestid>1322090</requestid>
+  </revision>
 </revisionlist>
