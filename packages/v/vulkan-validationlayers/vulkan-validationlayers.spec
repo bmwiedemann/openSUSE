@@ -21,7 +21,7 @@
 %endif
 
 Name:           vulkan-validationlayers
-Version:        1.4.328
+Version:        1.4.335
 Release:        0
 Summary:        Validation layers for Vulkan
 License:        Apache-2.0
@@ -32,12 +32,12 @@ Patch2:         xxhash.diff
 BuildRequires:  cmake >= 3.7.12
 BuildRequires:  gcc%{?gcc_version} >= 9
 BuildRequires:  gcc%{?gcc_version}-c++ >= 9
-BuildRequires:  glslang-devel >= 15.4
+BuildRequires:  glslang-devel >= 16.1
 BuildRequires:  memory-constraints
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
-BuildRequires:  spirv-headers >= 1.6.4+sdk313+git19
-BuildRequires:  spirv-tools-devel >= 2025.4~rc1
+BuildRequires:  spirv-headers >= 1.6.4+sdk335
+BuildRequires:  spirv-tools-devel >= 2025.5~rc1
 BuildRequires:  vulkan-headers >= %version
 BuildRequires:  vulkan-utility-libraries-devel >= %version
 BuildRequires:  pkgconfig(libxxhash)
