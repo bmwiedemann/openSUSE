@@ -284,4 +284,12 @@ Without this, the theme can't be selected:
     <comment>Plasma 6.5.3 (forwarded request 1318450 from Vogtinator)</comment>
     <requestid>1318675</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>8a6add57a4002d99cb0cd30b72a62c29</srcmd5>
+    <version>6.5.4</version>
+    <time>1765474716</time>
+    <user>anag_factory</user>
+    <comment>Plasma 6.5.4 (forwarded request 1321831 from Vogtinator)</comment>
+    <requestid>1322061</requestid>
+  </revision>
 </revisionlist>
