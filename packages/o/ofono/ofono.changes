@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec  7 22:03:31 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.19
+  * Add support for PPP reset workaround for SIM7100 modem.
+  * Add support for Qualcomm RAW-IP only devices.
+
+-------------------------------------------------------------------
 Mon Aug 25 13:41:49 UTC 2025 - Petr Vorel <pvorel@suse.cz>
 
 - Update to version 2.18
