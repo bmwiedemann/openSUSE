@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Thu Dec 11 06:48:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.38.2 (.1 was not released):
+  * Bug Fixes
+    - drop cpe from gguf [#4383 @spiffcs]
+    - emit lua rockspec dependencies in metadata [#4376
+      @willmurphyscode]
+    - Invalid SBOMs are created when GO replace directive is used
+      [#4415 #4419 @VictorHuu]
+    - Incorrect CPE for Vercel's Next js [#4443 #4450
+      @willmurphyscode]
+    - v1.38.0 generates empty sbom for tgz sources [#4416 #4421
+      @VictorHuu]
+    - Syft: The dependency graph does not include all Requires-Dist
+      relationships defined in the package’s METADATA file [#4401
+      #4408 @willmurphyscode]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#4440)
+    - chore(deps): update tools to latest versions (#4442)
+    - chore(deps): bump peter-evans/create-pull-request from 7.0.8
+      to 7.0.11 (#4447)
+    - chore(deps): bump actions/create-github-app-token from 2.1.4
+      to 2.2.1 (#4445)
+    - chore(deps): bump github.com/go-git/go-billy/v5 from 5.6.2 to
+      5.7.0 (#4448)
+    - chore(deps): bump github/codeql-action from 4.31.6 to 4.31.7
+      (#4446)
+    - chore(deps): bump golang.org/x/tools from 0.39.0 to 0.40.0
+      (#4453)
+    - chore(deps): bump github.com/github/go-spdx/v2 from 2.3.4 to
+      2.3.5 (#4434)
+    - chore(deps): bump github.com/spf13/cobra from 1.10.1 to
+      1.10.2 (#4435)
+    - chore(deps): bump actions/checkout from 6.0.0 to 6.0.1
+      (#4431)
+    - chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.17
+      to 0.5.18 (#4432)
+    - chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.15
+      to 0.5.17 (#4413)
+    - chore(deps): update tools to latest versions (#4420)
+    - chore(deps): bump github.com/olekukonko/tablewriter from
+      1.1.1 to 1.1.2 (#4427)
+    - chore(deps): bump github/codeql-action from 4.31.4 to 4.31.6
+      (#4424)
+    - chore(deps): bump github.com/goccy/go-yaml from 1.18.0 to
+      1.19.0 (#4426)
+    - chore(deps): bump anchore/sbom-action from 0.20.9 to 0.20.10
+      (#4381)
+    - chore(deps): bump modernc.org/sqlite from 1.40.0 to 1.40.1
+      (#4382)
+    - chore(deps): bump actions/checkout from 5.0.0 to 6.0.0
+      (#4396)
+    - chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.7.3
+      to 6.7.5 (#4397)
+    - chore(deps): update tools to latest versions (#4398)
+    - chore(deps): bump github.com/google/go-containerregistry
+      (#4409)
+    - chore(deps): bump github/codeql-action from 4.31.3 to 4.31.4
+      (#4386)
+    - chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.7.2
+      to 6.7.3 (#4387)
+    - chore(deps): bump golang.org/x/crypto from 0.44.0 to 0.45.0
+      (#4391)
+    - chore(deps): bump actions/setup-go from 6.0.0 to 6.1.0
+      (#4392)
+    - chore(deps): bump actions/setup-go in
+      /.github/actions/bootstrap (#4393)
+
+-------------------------------------------------------------------
 Tue Nov 18 06:15:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.38.0:
