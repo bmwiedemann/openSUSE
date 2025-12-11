@@ -495,4 +495,12 @@ break cycle to pkgconfig(vulkan)</comment>
     <comment>- Update to tag SDK-1.4.328.0</comment>
     <requestid>1309569</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>9c51f877db896737ac96579043ed51a4</srcmd5>
+    <version>1.4.335</version>
+    <time>1765474310</time>
+    <user>anag_factory</user>
+    <comment>new version</comment>
+    <requestid>1321863</requestid>
+  </revision>
 </revisionlist>
