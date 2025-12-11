@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Dec 10 08:36:37 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to 0.8.0
+  * Add ZIX_REALTIME and ZIX_NONBLOCKING attributes
+  * Add warning suppression macros
+  * Annotate count and size parameters of allocator API
+  * Avoid "deprecated" POSIX functions on Windows
+  * Avoid over-use of yielding meson options
+  * Clean up attribute documentation
+  * Gracefully handle failed allocation in path and filesystem functions
+  * Reduce empty BTree memory requirements
+  * Strengthen zix_file_equals()
+  * Use getenv() instead of environ to avoid issues on FreeBSD
+
+-------------------------------------------------------------------
 Mon Jan 27 11:59:47 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add baselibs.conf - 32bit library needed by libsord

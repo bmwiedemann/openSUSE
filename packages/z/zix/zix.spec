@@ -1,7 +1,7 @@
 #
 # spec file for package zix
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,9 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define sover 0
 Name:           zix
-Version:        0.6.2
+Version:        0.8.0
 Release:        0
 Summary:        A lightweight C library of portability wrappers and data structures
 License:        ISC
