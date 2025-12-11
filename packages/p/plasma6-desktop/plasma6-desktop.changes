@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Dec  9 12:02:48 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.4:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.4
+- Changes since 6.5.3:
+  * Update version for new release 6.5.4
+  * 🍒 Cherrypick fix for desktop icons moving to other monitor on plasmashell startup
+  * kcms/tablet: Fix configuration for misbehaving devices (kde#508084)
+  * kcms/tablet: Hide tooltip when dragging screen resize handle
+  * kcms/tablet: Obtain a better number of buttons for certain pens (kde#511488)
+  * kcms/tablet: Show driver warning message for pad-only devices too
+  * kcms/tablet: Fix pen button mapping not working
+  * [kcms/keyboard] Don't reconfigure on unrelated config changes
+  * appiumtests: fix taskmanager_visiblelabeltest
+  * appiumtests: fix taskmanagertest
+  * appiumtests: fix desktoptest
+  * appiumtests: fix bug472909test_wayland
+  * appiumtests: fix kcm_keys_test
+  * applets/kicker: fix premature "No matches" placeholder
+
+-------------------------------------------------------------------
 Sat Nov 22 21:23:07 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove unused BuildRequires: update-desktop-files.
