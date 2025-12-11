@@ -221,4 +221,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1286813</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>642438222f7d43e89eb105c44c92506c</srcmd5>
+    <version>1.9.4+git20250910.3f7a3546</version>
+    <time>1765474722</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit
+- Adding 'Source100: README.md' as the README is suggested at src.opensuse.org
+  setup, otherwise get the following message:
+  * &quot;Attention, &quot;README.md&quot; is not mentioned in spec files as source or patch.&quot;
+
+- Update to version 1.9.4+git20250910.3f7a3546:
+  * img_display: Avoid unicode escape sequences for Ueberzug input
+  * man: fix documentation of which license ranger uses exactly
+  * rifle: fixed+clarified usage string</comment>
+    <requestid>1322085</requestid>
+  </revision>
 </revisionlist>

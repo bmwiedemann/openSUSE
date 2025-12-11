@@ -1,1 +1,4 @@
 addFilter("non-executable-script .*/usr/lib/python.*/site-packages/ranger/ext/rifle.py")
+### 20251006: This is needed when building locally, but not in OBS
+addFilter("python-bytecode-inconsistent-mtime *");
+#####

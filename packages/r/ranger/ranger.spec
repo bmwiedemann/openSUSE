@@ -20,14 +20,15 @@
 %define short_version 1.9.4
 
 Name:           ranger
-Version:        1.9.4+git20250604.7e38143
+Version:        1.9.4+git20250910.3f7a3546
 Release:        0
 Summary:        Console File Manager
 License:        GPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/ranger/ranger
-Source:         %{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 Source99:       ranger-rpmlintrc
+Source100:      README.md
 # PATCH-FIX-UPSTREAM ranger.desktop.patch -- Add missing GenericName
 Patch0:         ranger.desktop.diff
 BuildRequires:  fdupes
