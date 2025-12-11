@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Thu Dec 11 08:15:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.11.1:
+  * BUG FIXES:
+    - Fixed regression where import validation would incorrectly
+      flag variables used in for_each statements within import
+      blocks (#3564)
+    - Fixed lifecycle enabled serialization in plan file (#3566)
+    - Fixed regression when validating import.id expressions
+      (#3567)
+
+-------------------------------------------------------------------
+Thu Dec 11 07:55:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.11.0:
+  https://github.com/opentofu/opentofu/blob/v1.11/CHANGELOG.md
+  https://opentofu.org/blog/opentofu-1-11-0
+  * Highlights
+    This release cycle introduces major new capabilities and
+    integrations:
+    - Ephemeral Values and Write Only Attributes
+      Ephemeral resources allow you to work with confidential data,
+      temporary credentials, and transient infrastructure without
+      persisting them to your state.
+
+      ephemeral "aws_secretsmanager_random_password" "password" {
+
+      }
+
+      resource "kubernetes_secret_v1" "credentials" {
+        metadata {
+          name = "admin"
+          namespace = "my-app"
+        }
+        data_wo = {
+          username = "admin"
+          password = ephemeral.aws_secretsmanager_random_password.password.random_password
+        }
+
+        data_wo_revision = 1
+        type = "kubernetes.io/basic-auth"
+      }
+
+    - The enabled Meta-Argument
+      If you want to conditionally deploy a resource, you no longer
+      have to use count = var.create_my_resource ? 1 : 0, you can
+      now add the new enabled meta-argument to your resource to
+      conditionally deploy it.
+
+      resource "aws_instance" "web" {
+        ami           = "ami-12345"
+        instance_type = "t3.micro"
+
+        lifecycle {
+          enabled = var.create_instance  # Simple boolean condition
+        }
+      }
+
+  * Compatibility Notes
+    - macOS: Requires macOS 12 Monterey or later
+    - Azure Backend (azurerm):
+      - The endpoint and ARM_ENDPOINT configuration options are no
+        longer supported
+      - The msi_endpoint and ARM_MSI_ENDPOINT options are no longer
+        supported
+      - The environment and metadata_host arguments are now
+        mutually exclusive
+    - issensitive() Function: Now correctly returns unknown results
+      when evaluating unknown values. Code that previously relied
+      on the incorrect behavior may need updates.
+    - Testing with Mocks: Mock values generated during testing now
+      strictly adhere to provider schemas. Test configurations with
+      invalid mock values will need to be corrected.
+    - S3 Module Installation: When installing module packages from
+      Amazon S3 buckets using S3 source addresses OpenTofu will use
+      the same credentials as the AWS CLI and SDK.
+    - TLS and SSH Security:
+      - SHA-1 signatures are no longer accepted for TLS or SSH
+        connections
+      - SSH certificates must comply with the
+        draft-miller-ssh-cert-03 specification
+
+-------------------------------------------------------------------
 Tue Dec 09 06:50:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.10.8:
