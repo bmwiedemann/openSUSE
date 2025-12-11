@@ -19,7 +19,7 @@
 
 %define sover   1
 %define libname libusrp%{sover}
-%ifarch aarch64 armv7hl ppc64le x86_64
+%ifarch aarch64 armv7hl ppc64le riscv64 x86_64
 %define build_firmware 0
 %else
 %define build_firmware 1
