@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Dec 11 07:55:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 25.12.2:
+  CLI-related changes in the changelog
+  * fix(cli): improved support for native sidecar servers in
+    `linkerd check --proxy` (#14779)
+  * fix(cli): improved support for native sidecar servers in
+    `linkerd authz` (#14780)
+  Dependencies
+  * build(deps): bump codecov/codecov-action from 5.5.1 to 5.5.2
+    (#14795)
+  * build(deps): bump DavidAnson/markdownlint-cli2-action from
+    21.0.0 to 22.0.0 (#14794)
+  * build(deps): bump github.com/go-openapi/spec from 0.22.1 to
+    0.22.2 (#14789)
+  * build(deps): bump golang.org/x/tools from 0.39.0 to 0.40.0
+    (#14790)
+  * build(deps): bump syn from 2.0.110 to 2.0.111 (#14783)
+
+-------------------------------------------------------------------
 Fri Dec 05 06:46:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 25.12.1:
