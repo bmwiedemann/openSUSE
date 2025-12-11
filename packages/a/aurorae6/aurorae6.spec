@@ -26,7 +26,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           aurorae6
-Version:        6.5.3
+Version:        6.5.4
 Release:        0
 Summary:        Themeable window decoration for KWin
 License:        GPL-2.0-or-later
