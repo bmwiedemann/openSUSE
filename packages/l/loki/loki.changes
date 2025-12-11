@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Dec 11 14:38:02 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.6.3:
+  * chore: upgrade to Go 1.25 (#20204)
+  * docs: backport storage update 3.6 (#20179)
+  * fix: Do not override S3 region if already specified in configuration chain (backport release-3.6.x) (#20128)
+  * fix: Fix regression in S3 client configuration (backport release-3.6.x) (#20118)
+  * docs: manual backport 20097 3.6 branch (#20104)
+  * chore(deps): update module golang.org/x/net to v0.38.0 [security] (release-3.6.x) (#20023)
+  * docs: Edit deployment modes SSD (backport release-3.6.x) (#20070)
+  * docs: backport 20029 to 3.6 branch (#20034)
+  * docs: Update RN 3.6.2 (backport release-3.6.x) (#20025)
+  * docs: Sm update to Labels (backport release-3.6.x) (#20020)
+  * chore(release-3.6.x): release 3.6.2 (#20021)
+  * docs: document breaking change (backport release-3.6.x) (#20017)
+
+-------------------------------------------------------------------
 Tue Nov 25 21:52:56 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 3.6.2:

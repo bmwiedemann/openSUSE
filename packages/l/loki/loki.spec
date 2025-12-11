@@ -24,7 +24,7 @@
 %global promtail_services promtail.target promtail.service promtail@.service
 
 Name:           loki
-Version:        3.6.2
+Version:        3.6.3
 Release:        0
 Summary:        Loki: like Prometheus, but for logs
 License:        Apache-2.0
