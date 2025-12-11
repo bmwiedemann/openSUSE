@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Dec 11 07:55:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.3.1:
+  * Features:
+    - Feature #2370 Add support for the packagedeprecation plugin
+      via the new --experimental-flag-deprecated-packages flag. The
+      result is available in all output formats except SPDX.
+  * Fixes:
+    - Bug #2395 Fix license scanning to correctly match new
+      deps.dev package names.
+    - Bug #2333 Deduplicate SARIF outputs for GitHub.
+    - Bug #2259 Fix lookup of Go packages with major versions by
+      including the subpath of Go PURLs, preventing false
+      positives.
+  * Misc:
+    - Updated Go version to v1.25.5 to support Go reachability
+      analysis for the latest version.
+  * Dependencies
+    - chore(deps): bump golang.org/x/crypto from 0.44.0 to 0.45.0
+      in the go_modules group across 1 directory (#2357)
+    - chore(deps): update actions/checkout action to v6 (#2379)
+    - chore(deps): update dependency webrick to v1.9.2 (#2378)
+    - chore(deps): update workflows (#2364)
+    - chore(deps): update workflows (#2402)
+    - fix(deps): update osv-scanner minor (#2365)
+    - fix(deps): update osv-scanner minor (#2400)
+
+-------------------------------------------------------------------
 Wed Nov 19 05:59:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.3.0:
