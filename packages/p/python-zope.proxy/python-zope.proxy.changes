@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Dec 11 04:18:14 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 7.1:
+  * Drop support for Python 3.9.
+  * Add support for Python 3.14.
+  * Move all supported package metadata into pyproject.toml.
+  * Remove no longer necessary setuptools runtime dependency.
+  * Replace pkg_resources namespace with PEP 420 native namespace.
+  * Add preliminary support for Python 3.14.
+  * Drop support for Python 3.8.
+  * Adjust minimal required version of zope.security test dependency to 7.3.
+
+-------------------------------------------------------------------
 Thu May 15 08:52:39 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - fix build for older setuptools also for devel subpackage

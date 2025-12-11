@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.proxy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,22 +28,22 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-zope.proxy%{psuffix}
-Version:        6.1
+Version:        7.1
 Release:        0
 Summary:        Generic Transparent Proxies
 License:        ZPL-2.1
-Group:          Development/Languages/Python
 URL:            https://github.com/zopefoundation/zope.proxy
 Source:         https://files.pythonhosted.org/packages/source/z/zope.proxy/zope_proxy-%{version}.tar.gz
-BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module zope.interface}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-zope.interface
 %if %{with test}
-BuildRequires:  %{python_module zope.security}
+BuildRequires:  %{python_module zope.proxy = %{version}}
+BuildRequires:  %{python_module zope.security >= 7.3}
 BuildRequires:  %{python_module zope.testrunner}
 %endif
 Conflicts:      python-zope-proxy < %{version}
@@ -57,7 +57,6 @@ etc.) for which the proxy is responsible.
 
 %package        devel
 Summary:        Generic Transparent Proxies
-Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
 Provides:       python-zope-proxy = %{version}
 Obsoletes:      python-zope-proxy < %{version}
@@ -90,13 +89,14 @@ rm -rf zope.proxy.egg-info
 %license LICENSE.txt
 %doc COPYRIGHT.txt CHANGES.rst README.rst
 %exclude %{python_sitearch}/zope/proxy/proxy.h
+%dir %{python_sitearch}/zope
 %{python_sitearch}/zope/proxy
-%{python_sitearch}/zope.proxy-%{version}-py*-nspkg.pth
 %{python_sitearch}/zope[_.]proxy-%{version}.dist-info
 
 %files %{python_files devel}
 %dir %{python_sysconfig_path include}/zope[_.]proxy
 %{python_sysconfig_path include}/zope[_.]proxy/*
+%dir %{python_sitearch}/zope
 %{python_sitearch}/zope/proxy/proxy.h
 %endif
 
