@@ -15,14 +15,15 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%{?sle15_python_module_pythons}
 Name:           python-svglib
-Version:        1.5.1
+Version:        1.6.0
 Release:        0
 Summary:        Python library for reading and converting SVG
 License:        LGPL-3.0-only
 URL:            https://github.com/deeplook/svglib
 Source:         https://files.pythonhosted.org/packages/source/s/svglib/svglib-%{version}.tar.gz
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -39,6 +40,7 @@ BuildRequires:  yudit
 Requires:       python-cssselect2 >= 0.2.0
 Requires:       python-lxml
 Requires:       python-reportlab
+Requires:       python-rlpycairo >= 0.4.0
 Requires:       python-tinycss2 >= 0.6.0
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -50,16 +52,14 @@ Pure Python library for reading and converting SVG.
 
 %prep
 %setup -q -n svglib-%{version}
-# Remove hashbang
-sed -i '1{/^#!/d}' svglib/svglib.py
-# Make tests a module
-touch tests/__init__.py
+chmod ugo-x src/svglib/__init__.py
 
 %build
 %pyproject_wheel
 
 %install
 %pyproject_install
+install -Dm0644 svg2pdf.1 %{buildroot}%{_mandir}/man1/svg2pdf.1
 %{python_clone -a %{buildroot}%{_bindir}/svg2pdf}
 %{python_clone -a %{buildroot}%{_mandir}/man1/svg2pdf.1}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
