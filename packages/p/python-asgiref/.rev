@@ -195,4 +195,20 @@
   * Fixes wsgi.errors file descriptor in WsgiToAsgi adapter.</comment>
     <requestid>1307724</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ea3700870f58d35dac4fba266e678f74</srcmd5>
+    <version>3.11.0</version>
+    <time>1765474320</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1321859 from yeey
+
+- Update to 3.11.0
+    * ``sync_to_async`` gains a ``context`` parameter, similar to those for
+      ``asyncio.create_task``, ``TaskGroup`` &amp;co, that can be used on Python 3.11+ to
+      control the context used by the underlying task.
+      The parent context is already propagated by default but the additional
+      control is useful if multiple ``sync_to_async`` calls need to share the same
+      context, e.g. when used with ``asyncio.gather()``.</comment>
+    <requestid>1321928</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-asgiref
-Version:        3.9.2
+Version:        3.11.0
 Release:        0
 Summary:        ASGI specs, helper code, and adapters
 License:        BSD-3-Clause
