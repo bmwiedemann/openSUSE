@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Dec 11 08:53:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.19.5:
+  * Bugfixes
+    - Fix AnsibleModule.human_to_bytes(), which was never adjusted
+      after the standalone human_to_bytes() got a new parameter
+      default_unit (#85259).
+    - Variable loading now uses file source instead of variables
+      when invalidly formmated vars file is loaded.
+    - ansible-test - The runtime-metadata sanity test now ignores
+      pre-release and build identifiers in collection versions.
+      This prevents errors if a tombstone version is X.0.0, while
+      the collection's version is X.0.0-prerelease (#85193)."
+    - first_found - Correct the "Include tasks only if one of the
+      files exists, otherwise skip" example.
+    - get_url - fix regex for GNU Digest line which is used in
+      comparing checksums (#86132).
+
+-------------------------------------------------------------------
 Fri Nov  7 15:49:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package ansible-core-2.19 following the 2.19.x series

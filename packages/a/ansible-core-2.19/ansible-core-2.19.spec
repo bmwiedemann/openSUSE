@@ -43,7 +43,7 @@
 %endif
 
 Name:           ansible-core-2.19
-Version:        2.19.4
+Version:        2.19.5
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0-or-later
@@ -51,6 +51,8 @@ URL:            https://ansible.com/
 Source0:        https://files.pythonhosted.org/packages/source/a/ansible-core/ansible_core-%{version}.tar.gz#/ansible_core-%{version}.tar.gz
 Source1:        ansible_core-%{version}.tar.gz.sha256
 BuildArch:      noarch
+
+Provides:       ansible-core = %{version}
 
 # cannot be installed with ansible < 3 or ansible-base
 Conflicts:      ansible < 3
