@@ -18,7 +18,7 @@
 
 
 Name:           k0sctl
-Version:        0.27.0
+Version:        0.27.1
 Release:        0
 Summary:        A bootstrapping and management tool for k0s clusters
 License:        Apache-2.0
@@ -28,8 +28,8 @@ Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.23.2
 BuildRequires:  zsh
+BuildRequires:  golang(API) >= 1.25
 
 %description
 k0sctl is a bootstrapping and management tool for k0s clusters.

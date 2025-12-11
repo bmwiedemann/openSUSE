@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Dec 11 06:48:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.27.1:
+  * Bump go to v1.25.5 (#989)
+  * Bump golang.org/x/text from 0.31.0 to 0.32.0 (#988)
+  * Fix missing kubelet-dir from controller reset command (#987)
+  * Bump actions/checkout from 5 to 6 (#984)
+  * Fix URL in README docker example (#983)
+  * Set debug log level for config loading (#980)
+  * Bump golang.org/x/crypto from 0.42.0 to 0.45.0 (#982)
+  * Fix ineffective boolean options (#979)
+  * Bump k8s.io/client-go from 0.34.1 to 0.34.2 (#976)
+  * Bump golang.org/x/text from 0.30.0 to 0.31.0 (#975)
+  * Merge pull request #974 from
+    k0sproject/dependabot/github_actions/golangci/golangci-lint-action-9
+  * Improve config origin resolution cascade
+  * Remember config origin and use as base for relative paths
+  * Fix path file upload relative to config origin
+  * Bump actions/upload-artifact from 4 to 5 (#970)
+
+-------------------------------------------------------------------
 Mon Oct 27 05:50:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.27.0:
