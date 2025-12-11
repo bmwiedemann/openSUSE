@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct 17 10:55:33 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.8.3
+  * Use libgcrypt-config if pkg-config is not available for
+    libgcrypt.
+  * Call flow group message cache.
+  * Fixed an issue with the payload length of fragmented IPv6
+    packets.
+  * Add RFC 4733 DTMF display support by @Kaian based.
+  * rtp: fix duration value in telephony-event is incorrectly
+    converted.
+- Add patch:
+  * 0001-util-expose-sng_strncpy-definition.patch
+
+-------------------------------------------------------------------
 Fri Mar 14 15:21:00 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - build with pcre2
