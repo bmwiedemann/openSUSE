@@ -217,4 +217,12 @@
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1254679</comment>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>eb41a468a5cfb5bf87327ef6dade2be0</srcmd5>
+    <version>16.1</version>
+    <time>1765474741</time>
+    <user>anag_factory</user>
+    <comment>Always put openSUSE Secure Boot CA to target array (bsc#1254679)</comment>
+    <requestid>1322096</requestid>
+  </revision>
 </revisionlist>
