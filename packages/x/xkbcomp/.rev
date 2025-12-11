@@ -199,4 +199,25 @@
     with gcc when the -ftracer option was used.</comment>
     <requestid>1144053</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>4f42d57938587a7216e5bff6b1696403</srcmd5>
+    <version>1.5.0</version>
+    <time>1765474325</time>
+    <user>anag_factory</user>
+    <comment>- This releases contains the fixes for the issues reported in
+  today's security advisory:
+  https://lists.x.org/archives/xorg-announce/2025-December/003644.html
+  * CVE-2018-15863 (bsc#1105832)
+  * CVE-2018-15861 (bsc#1105832)
+  * CVE-2018-15859 (bsc#1105832)
+  * CVE-2018-15853 (bsc#1105832)
+  Note that the year is not a typo, these CVEs have been reported
+  previously for libxkbcommon but the same code exists in xkbcomp
+  and required the same fixes.
+  As a new feature in this version: xkbcomp now supports the meson
+  build system in addition to autotools. autotools support may be
+  removed in a future version.
+- switch to meson build</comment>
+    <requestid>1321970</requestid>
+  </revision>
 </revisionlist>

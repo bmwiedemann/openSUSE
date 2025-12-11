@@ -1,7 +1,7 @@
 #
 # spec file for package xkbcomp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xkbcomp
-Version:        1.4.7
+Version:        1.5.0
 Release:        0
 Summary:        Utility to compile XKB keyboard description
 License:        MIT
@@ -25,6 +25,7 @@ Group:          System/X11/Utilities
 URL:            https://xorg.freedesktop.org/
 Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
 BuildRequires:  bison
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xkbfile)
@@ -47,14 +48,14 @@ The xkbcomp keymap compiler converts a description of an XKB keymap
 into one of several output formats.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%configure
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 %files
 %license COPYING
