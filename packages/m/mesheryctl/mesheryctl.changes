@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Thu Dec 11 12:38:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.179:
+  * General
+    - [Docs] Rewrite AGENTS.md for modern AI coding tool
+      conventions @copilot-swe-agent (#16634)
+    - [Docs] Add AGENTS.md documentation for GitHub Copilot agents
+      @copilot-swe-agent (#16632)
+    - Add new valid namespaces to cleanup script @sangramrath
+      (#16623)
+    - [Docs] Define Meshery Docs Contributor agent for
+      documentation contributions @copilot-swe-agent (#16615)
+    - [CI] Add Meshery Code Contributor custom agent
+      @copilot-swe-agent (#16595)
+    - Bump node-forge from 1.3.1 to 1.3.2 in
+      /install/docker-extension/ui @dependabot (#16508)
+    - Delete hacktoberfest_contributions directory @hortison
+      (#16490)
+  * Meshery CLI
+    - [CLI] Correct inaccurate usage and description for system
+      check @leecalcote (#16489)
+    - fix(mesheryctl): remove extra space in model export usage
+      text @Fireentity (#16622)
+    - test(mesheryctl): add e2e test for system dashboard
+      @Ontiomacer (#16491)
+  * Maintenance
+    - Bump mdast-util-to-hast from 13.2.0 to 13.2.1 in /ui
+      @dependabot (#16539)
+    - fix(mesheryctl): remove extra space in model export usage
+      text @Fireentity (#16622)
+    - Update Kanvas-Snapshot action to v0.2.42 @jamieplu (#16635)
+    - test(mesheryctl): add e2e test for system dashboard
+      @Ontiomacer (#16491)
+    - Update ESLint GitHub Actions workflow @leecalcote (#16627)
+    - Remove GITHUB_TOKEN from build workflow @aabidsofi19 (#16624)
+    - add custom agent description and source designs from catalog
+      for testing @aabidsofi19 (#16613)
+    - add more relationship tests @aabidsofi19 (#16612)
+    - Relationship tests reporting @aabidsofi19 (#16611)
+    - Relationship tests @aabidsofi19 (#16606)
+    - fix: prevent duplicate PR entries in release notes added
+      no-duplicate-categories: true to to
+      .github/release-drafter.yml @ashutoshsao (#16604)
+    - Bump github.com/spf13/cobra from 1.9.1 to 1.10.1 @dependabot
+      (#16526)
+    - Bump github.com/golang-jwt/jwt/v5 from 5.2.2 to 5.3.0
+      @dependabot (#16527)
+    - Bump eslint from 9.33.0 to 9.39.1 in /provider-ui @dependabot
+      (#16533)
+    - Allow copilot-swe-agent[bot] for PR handling @leecalcote
+      (#16587)
+  * Documentation
+    - test(mesheryctl): add e2e test for system dashboard
+      @Ontiomacer (#16491)
+    - [Docs] Document CRD spec.group field as optional filter
+      during component generation @copilot-swe-agent (#16617)
+    - Remove duplicate paragraph in contributing-cli-guide
+      @safiya2610 (#16608)
+    - add custom agent description and source designs from catalog
+      for testing @aabidsofi19 (#16613)
+    - [Docs] Document KUBECONFIG_FOLDER environment variable
+      @copilot-swe-agent (#16601)
+
+-------------------------------------------------------------------
 Fri Dec  5 12:35:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.178:
