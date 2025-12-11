@@ -47,7 +47,7 @@
 %endif
 
 Name:           nextcloud
-Version:        32.0.2
+Version:        32.0.3
 Release:        0
 Summary:        File hosting service
 License:        AGPL-3.0-only
@@ -86,6 +86,8 @@ Requires:       php-json
 Requires:       php-mbstring
 Requires:       php-mysql
 Requires:       php-posix
+Requires:       php-redis
+Requires:       php-sodium
 Requires:       php-zip
 #
 %if 0%{?fedora_version} || 0%{?rhel} || 0%{?rhel_version} || 0%{?centos_version}
@@ -133,6 +135,7 @@ Recommends:     php-ffmpeg
 #Recommends:     libreoffice
 # For command line processing:
 Recommends:     php-pcntl
+Recommends:     php-phar
 
 %description
 Nextcloud is a suite of client-server software for creating file
