@@ -64,4 +64,15 @@
     <comment></comment>
     <requestid>1243428</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1fd7d78bd6ce584878fd3bb4ca8ee7d9</srcmd5>
+    <version>6.0</version>
+    <time>1765474738</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.0:
+  * Replace pkg_resources namespace with PEP 420 native namespace.
+- Explicitly list files and directories under sitelib.
+- Correct {Build,}Requires.</comment>
+    <requestid>1322095</requestid>
+  </revision>
 </revisionlist>

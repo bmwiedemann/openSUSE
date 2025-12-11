@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.location
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,18 +27,18 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-zope.location%{psuffix}
-Version:        5.1
+Version:        6.0
 Release:        0
 Summary:        Zope Location
 License:        ZPL-2.1
-Group:          Development/Languages/Python
 URL:            https://www.python.org/pypi/zope.location
-Source:         https://files.pythonhosted.org/packages/source/z/zope_location/zope_location-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/z/zope.location/zope_location-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module zope.schema >= 4.2.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-setuptools
 Requires:       python-zope.interface >= 4.0.2
 Requires:       python-zope.proxy >= 4.0.1
 Requires:       python-zope.schema >= 4.2.2
@@ -47,6 +47,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module zope.component >= 4.0.1}
 BuildRequires:  %{python_module zope.configuration}
 BuildRequires:  %{python_module zope.copy >= 4.0}
+BuildRequires:  %{python_module zope.location = %{version}}
 BuildRequires:  %{python_module zope.proxy}
 BuildRequires:  %{python_module zope.testrunner}
 %endif
@@ -77,7 +78,9 @@ rm -rf src/zope.location.egg-info
 %files %{python_files}
 %license LICENSE.txt
 %doc COPYRIGHT.txt CHANGES.rst README.rst
-%{python_sitelib}/*
+%dir %{python_sitelib}/zope
+%{python_sitelib}/zope/location
+%{python_sitelib}/zope[_.]location-%{version}.dist-info
 %endif
 
 %changelog
