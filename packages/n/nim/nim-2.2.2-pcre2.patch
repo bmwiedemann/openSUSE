@@ -11,16 +11,24 @@ Subject: [PATCH 1/7] fixes #23668; migrates from pcre to pcre2
  4 files changed, 893 insertions(+), 175 deletions(-)
  create mode 100644 lib/wrappers/pcre2.nim
 
-diff --git a/lib/impure/nre.nim b/lib/impure/nre.nim
-index c5adf0e995830..0a43b92bed986 100644
---- a/lib/impure/nre.nim
-+++ b/lib/impure/nre.nim
+Index: nim-2.2.6/lib/impure/nre.nim
+===================================================================
+--- nim-2.2.6.orig/lib/impure/nre.nim
++++ nim-2.2.6/lib/impure/nre.nim
+@@ -1,6 +1,6 @@
+ #
+ #            Nim's Runtime Library
+-#        (c) Copyright 2015 Nim Contributors
++#        (c) Copyright 2024 Nim Contributors
+ #
+ #    See the file "copying.txt", included in this
+ #    distribution, for details about the copyright.
 @@ -61,7 +61,7 @@ runnableExamples:
    assert find("uxabc", re"(?<=x|y)ab", start = 1).get.captures[-1] == "ab"
    assert find("uxabc", re"ab", start = 3).isNone
  
 -from std/pcre import nil
-+from ../wrappers/pcre2 import nil
++from std/pcre2 import nil
  import nre/private/util
  import std/tables
  from std/strutils import `%`
@@ -34,7 +42,16 @@ index c5adf0e995830..0a43b92bed986 100644
  
      captureNameToId: Table[string, int]
  
-@@ -191,7 +190,7 @@ type
+@@ -137,8 +136,6 @@ type
+     ##     are recognized only in UTF-8 mode.
+     ##     —  man pcre
+     ##
+-    ## -  `(*JAVASCRIPT_COMPAT)` - JavaScript compatibility
+-    ## -  `(*NO_STUDY)` - turn off studying; study is enabled by default
+     ##
+     ## For more details on the leading option groups, see the `Option
+     ## Setting <https://man7.org/linux/man-pages/man3/pcresyntax.3.html#OPTION_SETTING>`_
+@@ -191,7 +188,7 @@ type
      pattern*: Regex  ## The regex doing the matching.
                       ## Not nil.
      str*: string  ## The string that was matched against.
@@ -43,7 +60,7 @@ index c5adf0e995830..0a43b92bed986 100644
                                              ## Other items are the captures
                                              ## `a` is inclusive start, `b` is exclusive end
  
-@@ -222,37 +221,31 @@ when defined(gcDestructors):
+@@ -222,37 +219,31 @@ when defined(gcDestructors):
    when defined(nimAllowNonVarDestructor) and defined(nimPreviewNonVarDestructor):
      proc `=destroy`(pattern: RegexDesc) =
        `=destroy`(pattern.pattern)
@@ -66,7 +83,7 @@ index c5adf0e995830..0a43b92bed986 100644
 -    pcre.free_substring(cast[cstring](pattern.pcreObj))
 -    if pattern.pcreExtra != nil:
 -      pcre.free_study(pattern.pcreExtra)
-+    pcre.code_free(pattern.pcreObj)
++    pcre2.code_free(pattern.pcreObj)
      `=destroy`(pattern.captureNameToId)
  
 -proc getinfo[T](pattern: Regex, opt: cint): T =
@@ -89,12 +106,12 @@ index c5adf0e995830..0a43b92bed986 100644
  
    result = initTable[string, int]()
  
-@@ -268,53 +261,53 @@ proc getNameToNumberTable(pattern: Regex): Table[string, int] =
+@@ -268,53 +259,49 @@ proc getNameToNumberTable(pattern: Regex
  
      result[name] = num
  
 -proc initRegex(pattern: string, flags: int, study = true): Regex =
-+proc initRegex(pattern: string, flags: csize_t, options: uint32): Regex =
++proc initRegex(pattern: string, flags: csize_t, options: uint32, noJit: bool): Regex =
    when defined(gcDestructors):
      result = Regex()
    else:
@@ -103,21 +120,23 @@ index c5adf0e995830..0a43b92bed986 100644
  
 -  var errorMsg: cstring
 -  var errOffset: cint
-+  var
-+    errorCode: cint = 0
-+    errOffset: csize_t = 0
- 
+-
 -  result.pcreObj = pcre.compile(cstring(pattern),
 -                                # better hope int is at least 4 bytes..
 -                                cint(flags), addr errorMsg,
 -                                addr errOffset, nil)
-+  result.pcreObj = pcre2.compile(cast[ptr uint8](cstring(pattern)),
++  var
++    errorCode: cint = 0
++    errOffset: csize_t = 0
++
++  result.pcreObj = pcre2.compile(cstring(pattern),
 +                                flags, options, addr(errorCode),
 +                                addr(errOffset), nil)
    if result.pcreObj == nil:
      # failed to compile
 -    raise SyntaxError(msg: $errorMsg, pos: errOffset, pattern: pattern)
--
++    raise SyntaxError(msg: $errorCode, pos: int errOffset, pattern: pattern)
+ 
 -  if study:
 -    var options: cint = 0
 -    var hasJit: cint
@@ -127,17 +146,11 @@ index c5adf0e995830..0a43b92bed986 100644
 -    result.pcreExtra = pcre.study(result.pcreObj, options, addr errorMsg)
 -    if errorMsg != nil:
 -      raise StudyError(msg: $errorMsg)
-+    raise SyntaxError(msg: $errorCode, pos: int errOffset, pattern: pattern)
-+
-+  # if study:
-+  #   var options: cint = 0
-+  #   var hasJit: cint
-+  #   if pcre2.config(pcre.CONFIG_JIT, addr hasJit) == 0:
-+  #     if hasJit == 1'i32:
-+  #       options = pcre2.STUDY_JIT_COMPILE
-+  #   result.pcreExtra = pcre.study(result.pcreObj, options, addr errorMsg)
-+  #   if errorMsg != nil:
-+  #     raise StudyError(msg: $errorMsg)
++  if not noJit:
++    var hasJit: cint = cint(0)
++    if pcre2.config(pcre2.CONFIG_JIT, addr hasJit) == 0:
++      if hasJit == 1'i32 and pcre2.jit_compile(result.pcreObj, pcre2.JIT_COMPLETE) != 0:
++        raise StudyError(msg: "JIT compilation failed.")
  
    result.captureNameToId = result.getNameToNumberTable()
  
@@ -167,7 +180,7 @@ index c5adf0e995830..0a43b92bed986 100644
      assert(false, "CONFIG_NEWLINE apparently got screwed up")
  
    case confFlags
-@@ -332,7 +325,7 @@ func captures*(pattern: RegexMatch): Captures = return Captures(pattern)
+@@ -332,7 +319,7 @@ func captures*(pattern: RegexMatch): Cap
  
  func contains*(pattern: CaptureBounds, i: int): bool =
    let pattern = RegexMatch(pattern)
@@ -176,7 +189,7 @@ index c5adf0e995830..0a43b92bed986 100644
  
  func contains*(pattern: Captures, i: int): bool =
    i in CaptureBounds(pattern)
-@@ -343,7 +336,7 @@ func `[]`*(pattern: CaptureBounds, i: int): HSlice[int, int] =
+@@ -343,7 +330,7 @@ func `[]`*(pattern: CaptureBounds, i: in
      raise newException(IndexDefect, "Group '" & $i & "' was not captured")
  
    let bounds = pattern.pcreMatchBounds[i + 1]
@@ -185,7 +198,7 @@ index c5adf0e995830..0a43b92bed986 100644
  
  func `[]`*(pattern: Captures, i: int): string =
    let pattern = RegexMatch(pattern)
-@@ -431,8 +424,7 @@ proc `$`*(pattern: RegexMatch): string =
+@@ -431,8 +418,7 @@ proc `$`*(pattern: RegexMatch): string =
  proc `==`*(a, b: Regex): bool =
    if not a.isNil and not b.isNil:
      return a.pattern == b.pattern and
@@ -195,7 +208,7 @@ index c5adf0e995830..0a43b92bed986 100644
    else:
      return system.`==`(a, b)
  
-@@ -441,13 +433,13 @@ proc `==`*(a, b: RegexMatch): bool =
+@@ -441,14 +427,14 @@ proc `==`*(a, b: RegexMatch): bool =
           a.str == b.str
  
  const PcreOptions = {
@@ -211,43 +224,43 @@ index c5adf0e995830..0a43b92bed986 100644
 +  "DOLLAR_ENDONLY": pcre2.DOLLAR_ENDONLY,
 +  "FIRSTLINE": pcre2.FIRSTLINE,
 +  "NO_AUTO_CAPTURE": pcre2.NO_AUTO_CAPTURE,
-+  # "JAVASCRIPT_COMPAT": pcre2.JAVASCRIPT_COMPAT,
 +  "U": pcre2.UTF or pcre2.UCP # TODO: UTF-8 ?
  }.toTable
++# TODO: maybe add JIT?
  
  # Options that are supported inside regular expressions themselves
-@@ -457,8 +449,8 @@ const SkipOptions = [
+ const SkipOptions = [
+@@ -457,8 +443,8 @@ const SkipOptions = [
    "CR", "LF", "CRLF", "ANYCRLF", "ANY", "BSR_ANYCRLF", "BSR_UNICODE"
  ]
  
 -proc extractOptions(pattern: string): tuple[pattern: string, flags: int, study: bool] =
 -  result = ("", 0, true)
-+proc extractOptions(pattern: string): tuple[pattern: string, options: uint32] =
-+  result = ("", 0'u32)
++proc extractOptions(pattern: string): tuple[pattern: string, options: uint32, noJit: bool] =
++  result = ("", 0'u32, false)
  
    var optionStart = 0
    var equals = false
-@@ -477,9 +469,9 @@ proc extractOptions(pattern: string): tuple[pattern: string, flags: int, study:
+@@ -477,9 +463,9 @@ proc extractOptions(pattern: string): tu
        if equals or name in SkipOptions:
          result.pattern.add pattern[optionStart .. i]
        elif PcreOptions.hasKey name:
 -        result.flags = result.flags or PcreOptions[name]
--      elif name == "NO_STUDY":
--        result.study = false
 +        result.options = result.options or PcreOptions[name]
-+      # elif name == "NO_STUDY":
-+      #   result.study = false
+       elif name == "NO_STUDY":
+-        result.study = false
++        result.noJit = true
        else:
          break
        optionStart = i+1
-@@ -496,45 +488,55 @@ proc extractOptions(pattern: string): tuple[pattern: string, flags: int, study:
+@@ -496,45 +482,50 @@ proc extractOptions(pattern: string): tu
    result.pattern.add pattern[optionStart .. pattern.high]
  
  proc re*(pattern: string): Regex =
 -  let (pattern, flags, study) = extractOptions(pattern)
 -  initRegex(pattern, flags, study)
-+  let (pattern, options) = extractOptions(pattern)
-+  initRegex(pattern, pcre2.ZERO_TERMINATED, options)
++  let (pattern, options, noJit) = extractOptions(pattern)
++  initRegex(pattern, pcre2.ZERO_TERMINATED, options, noJit)
  
 -proc matchImpl(str: string, pattern: Regex, start, endpos: int, flags: int): Option[RegexMatch] =
 +proc matchImpl(str: string, pattern: Regex, start, endpos: int, options: uint32): Option[RegexMatch] =
@@ -268,16 +281,15 @@ index c5adf0e995830..0a43b92bed986 100644
  
 -  let execRet = pcre.exec(pattern.pcreObj,
 -                          pattern.pcreExtra,
--                          cstring(str),
++  var matchData = pcre2.match_data_create_from_pattern(pattern.pcreObj, nil)
++  defer: pcre2.match_data_free(matchData)
++  let execRet = pcre2.match(pattern.pcreObj,
+                           cstring(str),
 -                          cint(strlen),
 -                          cint(start),
 -                          cint(flags),
 -                          cast[ptr cint](addr myResult.pcreMatchBounds[0]),
 -                          cint(vecsize))
-+  var matchData = pcre2.match_data_create_from_pattern(pattern.pcreObj, nil)
-+  defer: pcre2.match_data_free(matchData)
-+  let execRet = pcre2.match(pattern.pcreObj,
-+                          cast[ptr uint8](cstring(str)),
 +                          csize_t(strlen),
 +                          csize_t(start),
 +                          options,
@@ -286,12 +298,7 @@ index c5adf0e995830..0a43b92bed986 100644
 +  let ovector = cast[ptr UncheckedArray[csize_t]](pcre2.get_ovector_pointer(matchData))
 +  let capture_count = pcre2.get_ovector_count(matchData)
 +  let ovector_size = 2 * capture_count.int * sizeof(csize_t)
-+  # echo (myResult.pcreMatchBounds.len * 2 * sizeof(csize_t), ovector_size)
-+  # echo (capture_count, ovector[0], ovector[1])
 +  copyMem(addr myResult.pcreMatchBounds[0], ovector, ovector_size)
-+  # echo (myResult.pcreMatchBounds[0].a, myResult.pcreMatchBounds[0].b)
-+
-+  # echo " -> ", myResult
    if execRet >= 0:
      return some(myResult)
  
@@ -314,7 +321,7 @@ index c5adf0e995830..0a43b92bed986 100644
      else:
        raise RegexInternalError(msg: "Unknown internal error: " & $execRet)
  
-@@ -553,7 +555,7 @@ proc match*(str: string, pattern: Regex, start = 0, endpos = int.high): Option[R
+@@ -553,7 +544,7 @@ proc match*(str: string, pattern: Regex,
      assert 0 in "abc".match(re"(\w)").get.captureBounds
      assert "abc".match(re"").get.captureBounds[-1] == 0 .. -1
      assert "abc".match(re"abc").get.captureBounds[-1] == 0 .. 2
@@ -323,7 +330,7 @@ index c5adf0e995830..0a43b92bed986 100644
  
  iterator findIter*(str: string, pattern: Regex, start = 0, endpos = int.high): RegexMatch =
    ## Works the same as `find(...)<#find,string,Regex,int>`_, but finds every
-@@ -569,26 +571,26 @@ iterator findIter*(str: string, pattern: Regex, start = 0, endpos = int.high): R
+@@ -569,26 +560,26 @@ iterator findIter*(str: string, pattern:
    ## -  `proc findAll(...)` returns a `seq[string]`
    # see pcredemo for explanation => https://www.pcre.org/original/doc/html/pcredemo.html
    let matchesCrLf = pattern.matchesCrLf()
@@ -356,10 +363,19 @@ index c5adf0e995830..0a43b92bed986 100644
          break
  
        if matchesCrLf and offset < (str.len - 1) and
-diff --git a/lib/impure/re.nim b/lib/impure/re.nim
-index b686c1f35a04c..fcd27516be611 100644
---- a/lib/impure/re.nim
-+++ b/lib/impure/re.nim
+Index: nim-2.2.6/lib/impure/re.nim
+===================================================================
+--- nim-2.2.6.orig/lib/impure/re.nim
++++ nim-2.2.6/lib/impure/re.nim
+@@ -1,7 +1,7 @@
+ #
+ #
+ #            Nim's Runtime Library
+-#        (c) Copyright 2012 Andreas Rumpf
++#        (c) Copyright 2024 Andreas Rumpf
+ #
+ #    See the file "copying.txt", included in this
+ #    distribution, for details about the copyright.
 @@ -36,7 +36,9 @@ runnableExamples:
      # can't match start of string since we're starting at 1
  
@@ -367,7 +383,7 @@ index b686c1f35a04c..fcd27516be611 100644
 -  std/[pcre, strutils, rtarrays]
 +  std/[strutils, rtarrays]
 +
-+import ../wrappers/pcre2
++import std/pcre2
  
  when defined(nimPreviewSlimSystem):
    import std/syncio
@@ -396,7 +412,7 @@ index b686c1f35a04c..fcd27516be611 100644
  
  proc raiseInvalidRegex(msg: string) {.noinline, noreturn.} =
    var e: ref RegexError
-@@ -82,21 +79,19 @@ proc raiseInvalidRegex(msg: string) {.noinline, noreturn.} =
+@@ -82,21 +79,19 @@ proc raiseInvalidRegex(msg: string) {.no
    e.msg = msg
    raise e
  
@@ -408,7 +424,7 @@ index b686c1f35a04c..fcd27516be611 100644
 -  result = pcre.compile(pattern, flags, addr(msg), addr(offset), nil)
 +    errorCode: cint = 0
 +    offset: csize_t = 0
-+  result = pcre2.compile(cast[ptr uint8](pattern.cstring), flags, options, addr(errorCode), addr(offset), nil)
++  result = pcre2.compile(pattern.cstring, flags, options, addr(errorCode), addr(offset), nil)
    if result == nil:
 -    raiseInvalidRegex($msg & "\n" & pattern & "\n" & spaces(offset) & "^\n")
 +    raiseInvalidRegex($errorCode & "\n" & pattern & "\n" & spaces(offset) & "^\n")
@@ -424,7 +440,7 @@ index b686c1f35a04c..fcd27516be611 100644
  
  proc re*(s: string, flags = {reStudy}): Regex =
    ## Constructor of regular expressions.
-@@ -112,16 +107,22 @@ proc re*(s: string, flags = {reStudy}): Regex =
+@@ -112,16 +107,18 @@ proc re*(s: string, flags = {reStudy}):
      result = Regex()
    else:
      new(result, finalizeRegEx)
@@ -445,19 +461,15 @@ index b686c1f35a04c..fcd27516be611 100644
 +  if reIgnoreCase in flags:
 +    options = options or CASELESS
 +  result.h = rawCompile(s, cast[csize_t](ZERO_TERMINATED), options)
-+  # if reStudy in flags:
-+  #   var msg: cstring = ""
-+  #   var options: cint = 0
-+  #   var hasJit: cint = 0
-+  #   if pcre2.config(pcre2.CONFIG_JIT, addr hasJit) == 0:
-+  #     if hasJit == 1'i32:
-+  #       options = pcre.STUDY_JIT_COMPILE
-+  #   result.e = pcre.study(result.h, options, addr msg)
-+  #   if not isNil(msg): raiseInvalidRegex($msg)
++  if reStudy in flags: # TODO: add reJit
++    var hasJit: cint = cint(0)
++    if pcre2.config(pcre2.CONFIG_JIT, addr hasJit) == 0:
++      if hasJit == 1'i32 and jit_compile(result.h, pcre2.JIT_COMPLETE) != 0:
++        raiseInvalidRegex("JIT compilation failed.")
  
  proc rex*(s: string, flags = {reStudy, reExtended}): Regex =
    ## Constructor for extended regular expressions.
-@@ -139,20 +140,23 @@ proc bufSubstr(b: cstring, sPos, ePos: int): string {.inline.} =
+@@ -139,20 +136,23 @@ proc bufSubstr(b: cstring, sPos, ePos: i
    result.setLen(sz)
  
  proc matchOrFind(buf: cstring, pattern: Regex, matches: var openArray[string],
@@ -472,7 +484,7 @@ index b686c1f35a04c..fcd27516be611 100644
 -  if res < 0'i32: return res
 +  var matchData = match_data_create_from_pattern(pattern.h, nil)
 +  defer: match_data_free(matchData)
-+  var res = pcre2.match(pattern.h, cast[ptr uint8](buf), bufSize.csize_t, start.csize_t, options,
++  var res = pcre2.match(pattern.h, buf, bufSize.csize_t, start.csize_t, options,
 +      matchData, nil)
 +  rawMatches = cast[ptr UncheckedArray[csize_t]](get_ovector_pointer(matchData))
 +  if res < 0: return res
@@ -488,7 +500,7 @@ index b686c1f35a04c..fcd27516be611 100644
  
  const MaxReBufSize* = high(cint)
    ## Maximum PCRE (API 1) buffer start/size equal to `high(cint)`, which even
-@@ -169,15 +173,18 @@ proc findBounds*(buf: cstring, pattern: Regex, matches: var openArray[string],
+@@ -169,15 +169,18 @@ proc findBounds*(buf: cstring, pattern:
    ## Note: The memory for `matches` needs to be allocated before this function is
    ## called, otherwise it will just remain empty.
    var
@@ -500,7 +512,7 @@ index b686c1f35a04c..fcd27516be611 100644
 -  if res < 0'i32: return (-1, 0)
 +  var matchData = match_data_create_from_pattern(pattern.h, nil)
 +  defer: match_data_free(matchData)
-+  var res = pcre2.match(pattern.h, cast[ptr uint8](buf), bufSize.csize_t, start.csize_t, 0'u32,
++  var res = pcre2.match(pattern.h, buf, bufSize.csize_t, start.csize_t, 0'u32,
 +      matchData, nil)
 +  rawMatches = cast[ptr UncheckedArray[csize_t]](get_ovector_pointer(matchData))
 +  if res < 0: return (-1, 0)
@@ -512,7 +524,7 @@ index b686c1f35a04c..fcd27516be611 100644
      else: matches[i-1] = ""
    return (rawMatches[0].int, rawMatches[1].int - 1)
  
-@@ -209,15 +216,18 @@ proc findBounds*(buf: cstring, pattern: Regex,
+@@ -209,15 +212,18 @@ proc findBounds*(buf: cstring, pattern:
    ##
    ## .. note:: The memory for `matches` needs to be allocated before this function is called, otherwise it will just remain empty.
    var
@@ -523,7 +535,7 @@ index b686c1f35a04c..fcd27516be611 100644
 -      cast[ptr cint](rawMatches), (matches.len+1).cint*3)
 +  var matchData = match_data_create_from_pattern(pattern.h, nil)
 +  defer: match_data_free(matchData)
-+  var res = pcre2.match(pattern.h, cast[ptr uint8](buf), bufSize.csize_t, start.csize_t, 0'u32,
++  var res = pcre2.match(pattern.h, buf, bufSize.csize_t, start.csize_t, 0'u32,
 +      matchData, nil)
 +  rawMatches = cast[ptr UncheckedArray[csize_t]](get_ovector_pointer(matchData))
    if res < 0'i32: return (-1, 0)
@@ -535,7 +547,7 @@ index b686c1f35a04c..fcd27516be611 100644
      else: matches[i-1] = (-1,0)
    return (rawMatches[0].int, rawMatches[1].int - 1)
  
-@@ -240,16 +250,18 @@ proc findBounds*(s: string, pattern: Regex,
+@@ -240,16 +246,18 @@ proc findBounds*(s: string, pattern: Reg
        min(start, MaxReBufSize), min(s.len, MaxReBufSize))
  
  proc findBoundsImpl(buf: cstring, pattern: Regex,
@@ -550,7 +562,7 @@ index b686c1f35a04c..fcd27516be611 100644
 +  var rawMatches = rtarray.getRawData
 +  var matchData = match_data_create_from_pattern(pattern.h, nil)
 +  defer: match_data_free(matchData)
-+  var res = pcre2.match(pattern.h, cast[ptr uint8](buf), bufSize.csize_t, start.csize_t, options,
++  var res = pcre2.match(pattern.h, buf, bufSize.csize_t, start.csize_t, options,
 +      matchData, nil)
 +  rawMatches = cast[ptr UncheckedArray[csize_t]](get_ovector_pointer(matchData))
    if res < 0'i32:
@@ -561,7 +573,7 @@ index b686c1f35a04c..fcd27516be611 100644
  
  proc findBounds*(buf: cstring, pattern: Regex,
                   start = 0, bufSize: int): tuple[first, last: int] =
-@@ -257,10 +269,13 @@ proc findBounds*(buf: cstring, pattern: Regex,
+@@ -257,10 +265,13 @@ proc findBounds*(buf: cstring, pattern:
    ## where `buf` has length `bufSize` (not necessarily `'\0'` terminated).
    ## If it does not match, `(-1,0)` is returned.
    var
@@ -573,13 +585,13 @@ index b686c1f35a04c..fcd27516be611 100644
 +  var rawMatches = rtarray.getRawData
 +  var matchData = match_data_create_from_pattern(pattern.h, nil)
 +  defer: match_data_free(matchData)
-+  var res = pcre2.match(pattern.h, cast[ptr uint8](buf), bufSize.csize_t, start.csize_t, 0'u32,
++  var res = pcre2.match(pattern.h, buf, bufSize.csize_t, start.csize_t, 0'u32,
 +      matchData, nil)
 +  rawMatches = cast[ptr UncheckedArray[csize_t]](get_ovector_pointer(matchData))
    if res < 0'i32: return (int(res), 0)
    return (int(rawMatches[0]), int(rawMatches[1]-1))
  
-@@ -275,14 +290,18 @@ proc findBounds*(s: string, pattern: Regex,
+@@ -275,14 +286,18 @@ proc findBounds*(s: string, pattern: Reg
    result = findBounds(cstring(s), pattern,
        min(start, MaxReBufSize), min(s.len, MaxReBufSize))
  
@@ -593,7 +605,7 @@ index b686c1f35a04c..fcd27516be611 100644
 -                    cast[ptr cint](rawMatches), 3)
 +  var matchData = match_data_create_from_pattern(pattern.h, nil)
 +  defer: match_data_free(matchData)
-+  result = pcre2.match(pattern.h, cast[ptr uint8](buf), bufSize.csize_t, start.csize_t, options,
++  result = pcre2.match(pattern.h, buf, bufSize.csize_t, start.csize_t, options,
 +                    matchData, nil)
 +  
 +  rawMatches = cast[ptr UncheckedArray[csize_t]](get_ovector_pointer(matchData))
@@ -603,7 +615,7 @@ index b686c1f35a04c..fcd27516be611 100644
  
  proc matchLen*(s: string, pattern: Regex, matches: var openArray[string],
                start = 0): int {.inline.} =
-@@ -291,7 +310,7 @@ proc matchLen*(s: string, pattern: Regex, matches: var openArray[string],
+@@ -291,7 +306,7 @@ proc matchLen*(s: string, pattern: Regex
    ## of zero can happen.
    ##
    ## .. note:: The memory for `matches` needs to be allocated before this function is called, otherwise it will just remain empty.
@@ -612,7 +624,7 @@ index b686c1f35a04c..fcd27516be611 100644
  
  proc matchLen*(buf: cstring, pattern: Regex, matches: var openArray[string],
                start = 0, bufSize: int): int {.inline.} =
-@@ -300,7 +319,7 @@ proc matchLen*(buf: cstring, pattern: Regex, matches: var openArray[string],
+@@ -300,7 +315,7 @@ proc matchLen*(buf: cstring, pattern: Re
    ## of zero can happen.
    ##
    ## .. note:: The memory for `matches` needs to be allocated before this function is called, otherwise it will just remain empty.
@@ -621,7 +633,7 @@ index b686c1f35a04c..fcd27516be611 100644
  
  proc matchLen*(s: string, pattern: Regex, start = 0): int {.inline.} =
    ## the same as `match`, but it returns the length of the match,
-@@ -311,13 +330,13 @@ proc matchLen*(s: string, pattern: Regex, start = 0): int {.inline.} =
+@@ -311,13 +326,13 @@ proc matchLen*(s: string, pattern: Regex
      doAssert matchLen("abcdefg", re"cde", 2) == 3
      doAssert matchLen("abcdefg", re"abcde") == 5
      doAssert matchLen("abcdefg", re"cde") == -1
@@ -637,7 +649,7 @@ index b686c1f35a04c..fcd27516be611 100644
  
  proc match*(s: string, pattern: Regex, start = 0): bool {.inline.} =
    ## returns `true` if `s[start..]` matches the `pattern`.
-@@ -358,17 +377,20 @@ proc find*(buf: cstring, pattern: Regex, matches: var openArray[string],
+@@ -358,17 +373,20 @@ proc find*(buf: cstring, pattern: Regex,
    ##
    ## .. note:: The memory for `matches` needs to be allocated before this function is called, otherwise it will just remain empty.
    var
@@ -648,7 +660,7 @@ index b686c1f35a04c..fcd27516be611 100644
 -      cast[ptr cint](rawMatches), (matches.len+1).cint*3)
 +  var matchData = match_data_create_from_pattern(pattern.h, nil)
 +  defer: match_data_free(matchData)
-+  var res = pcre2.match(pattern.h, cast[ptr uint8](buf), bufSize.csize_t, start.csize_t, 0'u32,
++  var res = pcre2.match(pattern.h, buf, bufSize.csize_t, start.csize_t, 0'u32,
 +      matchData, nil)
 +  rawMatches = cast[ptr UncheckedArray[csize_t]](get_ovector_pointer(matchData))
    if res < 0'i32: return res
@@ -663,7 +675,7 @@ index b686c1f35a04c..fcd27516be611 100644
  
  proc find*(s: string, pattern: Regex, matches: var openArray[string],
             start = 0): int {.inline.} =
-@@ -384,12 +406,15 @@ proc find*(buf: cstring, pattern: Regex, start = 0, bufSize: int): int =
+@@ -384,12 +402,15 @@ proc find*(buf: cstring, pattern: Regex,
    ## where `buf` has length `bufSize` (not necessarily `'\0'` terminated).
    ## If it does not match, `-1` is returned.
    var
@@ -674,7 +686,7 @@ index b686c1f35a04c..fcd27516be611 100644
 -      cast[ptr cint](rawMatches), 3)
 +  var matchData = match_data_create_from_pattern(pattern.h, nil)
 +  defer: match_data_free(matchData)
-+  var res = pcre2.match(pattern.h, cast[ptr uint8](buf), bufSize.csize_t, start.csize_t, 0'u32,
++  var res = pcre2.match(pattern.h, buf, bufSize.csize_t, start.csize_t, 0'u32,
 +      matchData, nil)
 +  rawMatches = cast[ptr UncheckedArray[csize_t]](get_ovector_pointer(matchData))
    if res < 0'i32: return res
@@ -683,7 +695,7 @@ index b686c1f35a04c..fcd27516be611 100644
  
  proc find*(s: string, pattern: Regex, start = 0): int {.inline.} =
    ## returns the starting position of `pattern` in `s`. If it does not
-@@ -410,18 +435,21 @@ iterator findAll*(s: string, pattern: Regex, start = 0): string =
+@@ -410,18 +431,21 @@ iterator findAll*(s: string, pattern: Re
    ## Note that since this is an iterator you should not modify the string you
    ## are iterating over: bad things could happen.
    var
@@ -697,7 +709,7 @@ index b686c1f35a04c..fcd27516be611 100644
    while true:
 -    let res = pcre.exec(pattern.h, pattern.e, s, len(s).cint, i, 0'i32,
 -      cast[ptr cint](rawMatches), 3)
-+    let res = pcre2.match(pattern.h, cast[ptr uint8](s.cstring), len(s).csize_t, i.csize_t, 0'u32,
++    let res = pcre2.match(pattern.h, s.cstring, len(s).csize_t, i.csize_t, 0'u32,
 +      matchData, nil)
 +    rawMatches = cast[ptr UncheckedArray[csize_t]](get_ovector_pointer(matchData))
      if res < 0'i32: break
@@ -711,7 +723,7 @@ index b686c1f35a04c..fcd27516be611 100644
  
  iterator findAll*(buf: cstring, pattern: Regex, start = 0, bufSize: int): string =
    ## Yields all matching `substrings` of `s` that match `pattern`.
-@@ -430,19 +458,22 @@ iterator findAll*(buf: cstring, pattern: Regex, start = 0, bufSize: int): string
+@@ -430,19 +454,22 @@ iterator findAll*(buf: cstring, pattern:
    ## are iterating over: bad things could happen.
    var
      i = int32(start)
@@ -723,7 +735,7 @@ index b686c1f35a04c..fcd27516be611 100644
    while true:
 -    let res = pcre.exec(pattern.h, pattern.e, buf, bufSize.cint, i, 0'i32,
 -      cast[ptr cint](rawMatches), 3)
-+    let res = pcre2.match(pattern.h, cast[ptr uint8](buf), bufSize.csize_t, i.csize_t, 0'u32,
++    let res = pcre2.match(pattern.h, buf, bufSize.csize_t, i.csize_t, 0'u32,
 +      matchData, nil)
 +    rawMatches = cast[ptr UncheckedArray[csize_t]](get_ovector_pointer(matchData))
      if res < 0'i32: break
@@ -739,7 +751,7 @@ index b686c1f35a04c..fcd27516be611 100644
  
  proc findAll*(s: string, pattern: Regex, start = 0): seq[string] {.inline.} =
    ## returns all matching `substrings` of `s` that match `pattern`.
-@@ -499,7 +530,7 @@ proc replace*(s: string, sub: Regex, by = ""): string =
+@@ -499,7 +526,7 @@ proc replace*(s: string, sub: Regex, by
      doAssert "var1=key; var2=key2".replace(re"(\w+)=(\w+)", "?") == "?; ?"
    result = ""
    var prev = 0
@@ -748,7 +760,7 @@ index b686c1f35a04c..fcd27516be611 100644
    while prev < s.len:
      var match = findBoundsImpl(s.cstring, sub, prev, s.len, flags)
      flags = 0
-@@ -508,7 +539,7 @@ proc replace*(s: string, sub: Regex, by = ""): string =
+@@ -508,7 +535,7 @@ proc replace*(s: string, sub: Regex, by
      add(result, by)
      if match.first > match.last:
        # 0-len match
@@ -757,67 +769,27 @@ index b686c1f35a04c..fcd27516be611 100644
      prev = match.last + 1
    add(result, substr(s, prev))
  
-diff --git a/lib/wrappers/pcre2.nim b/lib/wrappers/pcre2.nim
-new file mode 100644
-index 0000000000000..b8f7b03fceece
+Index: nim-2.2.6/lib/wrappers/pcre2.nim
+===================================================================
 --- /dev/null
-+++ b/lib/wrappers/pcre2.nim
-@@ -0,0 +1,683 @@
++++ nim-2.2.6/lib/wrappers/pcre2.nim
+@@ -0,0 +1,561 @@
 +#
 +#
 +#            Nim's Runtime Library
-+#        (c) Copyright 2015 Andreas Rumpf
++#        (c) Copyright 2024 Nim Contributors
 +#
 +#    See the file "copying.txt", included in this
 +#    distribution, for details about the copyright.
 +#
 +
-+# The current PCRE version information.
++# The current PCRE2 version information.
 +
 +const
-+  PCRE_MAJOR* = 8
-+  PCRE_MINOR* = 36
-+  PCRE_PRERELEASE* = true
-+  PCRE_DATE* = "2014-09-26"
-+
-+# When an application links to a PCRE DLL in Windows, the symbols that are
-+# imported have to be identified as such. When building PCRE, the appropriate
-+# export setting is defined in pcre_internal.h, which includes this file. So we
-+# don't change existing definitions of PCRE_EXP_DECL and PCRECPP_EXP_DECL.
-+
-+# By default, we use the standard "extern" declarations.
-+
-+# Allow for C++ users
-+
-+# Public options. Some are compile-time only, some are run-time only, and some
-+# are both. Most of the compile-time options are saved with the compiled regex
-+# so that they can be inspected during studying (and therefore JIT compiling).
-+# Note that pcre_study() has its own set of options. Originally, all the options
-+# defined here used distinct bits. However, almost all the bits in a 32-bit word
-+# are now used, so in order to conserve them, option bits that were previously
-+# only recognized at matching time (i.e. by pcre_exec() or pcre_dfa_exec()) may
-+# also be used for compile-time options that affect only compiling and are not
-+# relevant for studying or JIT compiling.
-+#
-+# Some options for pcre_compile() change its behaviour but do not affect the
-+# behaviour of the execution functions. Other options are passed through to the
-+# execution functions and affect their behaviour, with or without affecting the
-+# behaviour of pcre_compile().
-+#
-+# Options that can be passed to pcre_compile() are tagged Cx below, with these
-+# variants:
-+#
-+# C1   Affects compile only
-+# C2   Does not affect compile; affects exec, dfa_exec
-+# C3   Affects compile, exec, dfa_exec
-+# C4   Affects compile, exec, dfa_exec, study
-+# C5   Affects compile, exec, study
-+#
-+# Options that can be set for pcre_exec() and/or pcre_dfa_exec() are flagged
-+# with E and D, respectively. They take precedence over C3, C4, and C5 settings
-+# passed from pcre_compile(). Those that are compatible with JIT execution are
-+# flagged with J.
-+
++  PCRE2_MAJOR* = 10
++  PCRE2_MINOR* = 45
++  PCRE2_PRERELEASE* = true
++  PCRE2_DATE* = "2024-06-09"
 +
 +const
 +  ANCHORED* = 0x80000000'u32
@@ -1285,14 +1257,9 @@ index 0000000000000..b8f7b03fceece
 +
 +when not defined(usePcreHeader):
 +  when hostOS == "windows":
-+    when defined(nimOldDlls):
-+      const pcreDll = "pcre.dll"
-+    elif defined(cpu64):
-+      const pcreDll = "pcre64.dll"
-+    else:
-+      const pcreDll = "pcre32.dll"
++    const pcreDll = "libpcre2-8-0.dll"
 +  elif hostOS == "macosx":
-+    const pcreDll = "libpcre(.3|.1|).dylib"
++    const pcreDll = "libpcre2-8.0.dylib"
 +  else:
 +    const pcreDll = "libpcre2-8.so.0"
 +  {.push dynlib: pcreDll.}
@@ -1303,66 +1270,34 @@ index 0000000000000..b8f7b03fceece
 +
 +# Exported PCRE functions
 +
-+proc compile*(pattern: ptr uint8,
++proc compile*(pattern: cstring,
 +              options: csize_t,
 +              flags: uint32,
 +              errorCode: ptr cint,
 +              offset: ptr csize_t,
 +              tableptr: pointer): ptr Pcre
 +
-+proc compile2*(pattern: cstring,
-+               options: cint,
-+               errorcodeptr: ptr cint,
-+               errptr: ptr cstring,
-+               erroffset: ptr cint,
-+               tableptr: pointer): ptr Pcre
-+
-+proc config*(what: cint,
++proc config*(what: uint32,
 +             where: pointer): cint
-+
-+proc copy_named_substring*(code: ptr Pcre,
-+                           subject: cstring,
-+                           ovector: ptr cint,
-+                           stringcount: cint,
-+                           stringname: cstring,
-+                           buffer: cstring,
-+                           buffersize: cint): cint
-+
-+proc copy_substring*(subject: cstring,
-+                     ovector: ptr cint,
-+                     stringcount: cint,
-+                     stringnumber: cint,
-+                     buffer: cstring,
-+                     buffersize: cint): cint
 +
 +proc dfa_match*(code: ptr Pcre,
 +               subject: cstring,
-+               length: cint,
-+               startoffset: cint,
-+               options: cint,
-+               ovector: ptr cint,
-+               ovecsize: cint,
++               length: csize_t,
++               startoffset: csize_t,
++               options: uint32,
++               ovector: ptr MatchData,
++               ovecsize: pointer, # TODO: pcre2_match_context
 +               workspace: ptr cint,
-+               wscount: cint): cint
++               wscount: csize_t): cint
 +
 +proc match*(code: ptr Pcre,
-+           subject: ptr uint8,
++           subject: cstring,
 +           length: csize_t,
 +           startoffset: csize_t,
 +           options: uint32,
 +           ovector: ptr MatchData,
-+           ovecsize: pointer): cint
-+
-+proc match*(code: ptr Pcre,
-+           subject: cstring,
-+           length: cint,
-+           startoffset: cint,
-+           options: cint,
-+           ovector: ptr MatchData,
-+           ovecsize: cint): cint =
-+  result = match(code, cast[ptr uint8](subject), csize_t length, csize_t startoffset,
-+          uint32 options, 
-+          ovector, nil)
++           ovecsize: pointer # TODO: pcre2_match_context
++           ): cint
 +
 +proc match_data_create*(size: uint32, ctx: ptr GeneralContext): ptr MatchData
 +
@@ -1379,16 +1314,12 @@ index 0000000000000..b8f7b03fceece
 +
 +proc jit_match*(code: ptr Pcre,
 +               subject: cstring,
-+               length: cint,
-+               startoffset: cint,
-+               options: cint,
-+               ovector: ptr cint,
-+               ovecsize: cint,
-+               jstack: ptr JitStack): cint
-+
-+# proc free_substring*(stringptr: cstring)
-+
-+# proc free_substring_list*(stringptr: cstringArray)
++               length: csize_t,
++               startoffset: csize_t,
++               options: uint32,
++               ovector: ptr MatchData,
++               ovecsize: pointer # TODO: pcre2_match_context
++               ): cint
 +
 +proc code_free*(code: ptr Pcre)
 +
@@ -1396,65 +1327,23 @@ index 0000000000000..b8f7b03fceece
 +               what: uint32,
 +               where: pointer): cint
 +
-+proc get_named_substring*(code: ptr Pcre,
-+                          subject: cstring,
-+                          ovector: ptr cint,
-+                          stringcount: cint,
-+                          stringname: cstring,
-+                          stringptr: cstringArray): cint
-+
-+proc get_stringnumber*(code: ptr Pcre,
-+                       name: cstring): cint
-+
-+proc get_stringtable_entries*(code: ptr Pcre,
-+                              name: cstring,
-+                              first: cstringArray,
-+                              last: cstringArray): cint
-+
-+proc get_substring*(subject: cstring,
-+                    ovector: ptr cint,
-+                    stringcount: cint,
-+                    stringnumber: cint,
-+                    stringptr: cstringArray): cint
-+
-+proc get_substring_list*(subject: cstring,
-+                         ovector: ptr cint,
-+                         stringcount: cint,
-+                         listptr: ptr cstringArray): cint
-+
-+proc maketables*(): pointer
-+
-+proc refcount*(code: ptr Pcre,
-+               adjust: cint): cint
-+
-+proc version*(): cstring
-+
 +# JIT compiler related functions.
 +
-+# proc jit_stack_alloc*(startsize: cint,
-+#                       maxsize: cint): ptr JitStack
-+
-+# proc jit_stack_free*(stack: ptr JitStack)
-+
-+# proc assign_jit_stack*(extra: ptr ExtraData,
-+#                        callback: JitCallback,
-+#                        data: pointer)
-+
-+proc jit_free_unused_memory*()
++proc jit_compile*(code: ptr Pcre, options: uint32): cint
 +
 +
 +{.pop.}
 +{.pop.}
 +
-diff --git a/tests/stdlib/nre/init.nim b/tests/stdlib/nre/init.nim
-index f0c8e0a00f560..fd160f542a1b5 100644
---- a/tests/stdlib/nre/init.nim
-+++ b/tests/stdlib/nre/init.nim
+Index: nim-2.2.6/tests/stdlib/nre/init.nim
+===================================================================
+--- nim-2.2.6.orig/tests/stdlib/nre/init.nim
++++ nim-2.2.6/tests/stdlib/nre/init.nim
 @@ -1,6 +1,8 @@
  import unittest
  include nre
  
-+from ../../../lib/wrappers/pcre2 import nil
++from std/pcre2 import nil
 +
  block: # Test NRE initialization
    block: # correct initialization
@@ -1464,12 +1353,12 @@ index f0c8e0a00f560..fd160f542a1b5 100644
    block: # options
      check(extractOptions("(*NEVER_UTF)") ==
 -          ("", pcre.NEVER_UTF, true))
-+          ("", pcre2.NEVER_UTF))
++          ("", pcre2.NEVER_UTF, false))
      check(extractOptions("(*UTF8)(*ANCHORED)(*UCP)z") ==
 -          ("(*UTF8)(*UCP)z", pcre.ANCHORED, true))
 -    check(extractOptions("(*ANCHORED)(*UTF8)(*JAVASCRIPT_COMPAT)z") ==
 -          ("(*UTF8)z", pcre.ANCHORED or pcre.JAVASCRIPT_COMPAT, true))
-+          ("(*UTF8)(*UCP)z", pcre2.ANCHORED))
++          ("(*UTF8)(*UCP)z", pcre2.ANCHORED, false))
 +    # check(extractOptions("(*ANCHORED)(*UTF8)(*JAVASCRIPT_COMPAT)z") ==
 +    #       ("(*UTF8)z", pcre2.ANCHORED or pcre2.JAVASCRIPT_COMPAT, true))
  
@@ -1478,705 +1367,6 @@ index f0c8e0a00f560..fd160f542a1b5 100644
  
      check(extractOptions("(*LIMIT_MATCH=6)(*ANCHORED)z") ==
 -          ("(*LIMIT_MATCH=6)z", pcre.ANCHORED, true))
-+          ("(*LIMIT_MATCH=6)z", pcre2.ANCHORED))
- 
-   block: # incorrect options
-     for s in ["CR", "(CR", "(*CR", "(*abc)", "(*abc)CR",
-               "(?i)",
-               "(*LIMIT_MATCH=5", "(*NO_AUTO_POSSESS=5)"]:
-       let ss = s & "(*NEVER_UTF)"
--      check(extractOptions(ss) == (ss, 0, true))
-+      check(extractOptions(ss) == (ss, 0'u32))
- 
-   block: # invalid regex
--    expect(SyntaxError): discard re("[0-9")
-+    # expect(SyntaxError): discard re("[0-9")
-     try:
-       discard re("[0-9")
-     except SyntaxError:
-
-From 817af7edfcfca41e60e07b258c0943613783dd55 Mon Sep 17 00:00:00 2001
-From: ringabout <43030857+ringabout@users.noreply.github.com>
-Date: Mon, 4 Nov 2024 22:41:16 +0800
-Subject: [PATCH 2/7] fixes libpcre2-8.0.dylib on macosx
-
----
- lib/wrappers/pcre2.nim | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/lib/wrappers/pcre2.nim b/lib/wrappers/pcre2.nim
-index b8f7b03fceece..fa752848b976d 100644
---- a/lib/wrappers/pcre2.nim
-+++ b/lib/wrappers/pcre2.nim
-@@ -527,7 +527,7 @@ when not defined(usePcreHeader):
-     else:
-       const pcreDll = "pcre32.dll"
-   elif hostOS == "macosx":
--    const pcreDll = "libpcre(.3|.1|).dylib"
-+    const pcreDll = "libpcre2-8.0.dylib"
-   else:
-     const pcreDll = "libpcre2-8.so.0"
-   {.push dynlib: pcreDll.}
-
-From ce1761dff9e79d00bc012938ad6be37caa2edcfd Mon Sep 17 00:00:00 2001
-From: ringabout <43030857+ringabout@users.noreply.github.com>
-Date: Tue, 5 Nov 2024 13:14:45 +0800
-Subject: [PATCH 3/7] progress
-
----
- lib/impure/nre.nim | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/lib/impure/nre.nim b/lib/impure/nre.nim
-index 0a43b92bed986..1c47918ab31c7 100644
---- a/lib/impure/nre.nim
-+++ b/lib/impure/nre.nim
-@@ -231,7 +231,7 @@ when defined(gcDestructors):
- else:
-   proc destroyRegex(pattern: Regex) =
-     `=destroy`(pattern.pattern)
--    pcre.code_free(pattern.pcreObj)
-+    pcre2.code_free(pattern.pcreObj)
-     `=destroy`(pattern.captureNameToId)
- 
- proc getinfo[T](pattern: Regex, opt: uint32): T =
-
-From cb802af44e3c684a8738684ebdd84df31aeabf09 Mon Sep 17 00:00:00 2001
-From: ringabout <43030857+ringabout@users.noreply.github.com>
-Date: Tue, 5 Nov 2024 13:21:07 +0800
-Subject: [PATCH 4/7] try libpcre2-8-0.dll
-
----
- lib/wrappers/pcre2.nim | 7 +------
- 1 file changed, 1 insertion(+), 6 deletions(-)
-
-diff --git a/lib/wrappers/pcre2.nim b/lib/wrappers/pcre2.nim
-index fa752848b976d..92caee7e23008 100644
---- a/lib/wrappers/pcre2.nim
-+++ b/lib/wrappers/pcre2.nim
-@@ -520,12 +520,7 @@ type
- 
- when not defined(usePcreHeader):
-   when hostOS == "windows":
--    when defined(nimOldDlls):
--      const pcreDll = "pcre.dll"
--    elif defined(cpu64):
--      const pcreDll = "pcre64.dll"
--    else:
--      const pcreDll = "pcre32.dll"
-+    const pcreDll = "libpcre2-8-0.dll"
-   elif hostOS == "macosx":
-     const pcreDll = "libpcre2-8.0.dylib"
-   else:
-
-From 27fc4fedb5c1be6a4ec27f7d0d0c913a63f792b4 Mon Sep 17 00:00:00 2001
-From: ringabout <43030857+ringabout@users.noreply.github.com>
-Date: Tue, 5 Nov 2024 14:14:22 +0800
-Subject: [PATCH 5/7] clean up
-
----
- lib/impure/nre.nim     |  4 ++--
- lib/impure/re.nim      | 22 +++++++++++-----------
- lib/wrappers/pcre2.nim | 15 ++-------------
- 3 files changed, 15 insertions(+), 26 deletions(-)
-
-diff --git a/lib/impure/nre.nim b/lib/impure/nre.nim
-index 1c47918ab31c7..56c55c8dd1a61 100644
---- a/lib/impure/nre.nim
-+++ b/lib/impure/nre.nim
-@@ -272,7 +272,7 @@ proc initRegex(pattern: string, flags: csize_t, options: uint32): Regex =
-     errorCode: cint = 0
-     errOffset: csize_t = 0
- 
--  result.pcreObj = pcre2.compile(cast[ptr uint8](cstring(pattern)),
-+  result.pcreObj = pcre2.compile(cstring(pattern),
-                                 flags, options, addr(errorCode),
-                                 addr(errOffset), nil)
-   if result.pcreObj == nil:
-@@ -508,7 +508,7 @@ proc matchImpl(str: string, pattern: Regex, start, endpos: int, options: uint32)
-   var matchData = pcre2.match_data_create_from_pattern(pattern.pcreObj, nil)
-   defer: pcre2.match_data_free(matchData)
-   let execRet = pcre2.match(pattern.pcreObj,
--                          cast[ptr uint8](cstring(str)),
-+                          cstring(str),
-                           csize_t(strlen),
-                           csize_t(start),
-                           options,
-diff --git a/lib/impure/re.nim b/lib/impure/re.nim
-index fcd27516be611..c2f508a4bee06 100644
---- a/lib/impure/re.nim
-+++ b/lib/impure/re.nim
-@@ -83,7 +83,7 @@ proc rawCompile(pattern: string, flags: csize_t, options: uint32): ptr Pcre =
-   var
-     errorCode: cint = 0
-     offset: csize_t = 0
--  result = pcre2.compile(cast[ptr uint8](pattern.cstring), flags, options, addr(errorCode), addr(offset), nil)
-+  result = pcre2.compile(pattern.cstring, flags, options, addr(errorCode), addr(offset), nil)
-   if result == nil:
-     raiseInvalidRegex($errorCode & "\n" & pattern & "\n" & spaces(offset) & "^\n")
- 
-@@ -146,7 +146,7 @@ proc matchOrFind(buf: cstring, pattern: Regex, matches: var openArray[string],
-     rawMatches = rtarray.getRawData
-   var matchData = match_data_create_from_pattern(pattern.h, nil)
-   defer: match_data_free(matchData)
--  var res = pcre2.match(pattern.h, cast[ptr uint8](buf), bufSize.csize_t, start.csize_t, options,
-+  var res = pcre2.match(pattern.h, buf, bufSize.csize_t, start.csize_t, options,
-       matchData, nil)
-   rawMatches = cast[ptr UncheckedArray[csize_t]](get_ovector_pointer(matchData))
-   if res < 0: return res
-@@ -177,7 +177,7 @@ proc findBounds*(buf: cstring, pattern: Regex, matches: var openArray[string],
-     rawMatches = rtarray.getRawData
-   var matchData = match_data_create_from_pattern(pattern.h, nil)
-   defer: match_data_free(matchData)
--  var res = pcre2.match(pattern.h, cast[ptr uint8](buf), bufSize.csize_t, start.csize_t, 0'u32,
-+  var res = pcre2.match(pattern.h, buf, bufSize.csize_t, start.csize_t, 0'u32,
-       matchData, nil)
-   rawMatches = cast[ptr UncheckedArray[csize_t]](get_ovector_pointer(matchData))
-   if res < 0: return (-1, 0)
-@@ -220,7 +220,7 @@ proc findBounds*(buf: cstring, pattern: Regex,
-     rawMatches = rtarray.getRawData
-   var matchData = match_data_create_from_pattern(pattern.h, nil)
-   defer: match_data_free(matchData)
--  var res = pcre2.match(pattern.h, cast[ptr uint8](buf), bufSize.csize_t, start.csize_t, 0'u32,
-+  var res = pcre2.match(pattern.h, buf, bufSize.csize_t, start.csize_t, 0'u32,
-       matchData, nil)
-   rawMatches = cast[ptr UncheckedArray[csize_t]](get_ovector_pointer(matchData))
-   if res < 0'i32: return (-1, 0)
-@@ -255,7 +255,7 @@ proc findBoundsImpl(buf: cstring, pattern: Regex,
-   var rawMatches = rtarray.getRawData
-   var matchData = match_data_create_from_pattern(pattern.h, nil)
-   defer: match_data_free(matchData)
--  var res = pcre2.match(pattern.h, cast[ptr uint8](buf), bufSize.csize_t, start.csize_t, options,
-+  var res = pcre2.match(pattern.h, buf, bufSize.csize_t, start.csize_t, options,
-       matchData, nil)
-   rawMatches = cast[ptr UncheckedArray[csize_t]](get_ovector_pointer(matchData))
-   if res < 0'i32:
-@@ -273,7 +273,7 @@ proc findBounds*(buf: cstring, pattern: Regex,
-   var rawMatches = rtarray.getRawData
-   var matchData = match_data_create_from_pattern(pattern.h, nil)
-   defer: match_data_free(matchData)
--  var res = pcre2.match(pattern.h, cast[ptr uint8](buf), bufSize.csize_t, start.csize_t, 0'u32,
-+  var res = pcre2.match(pattern.h, buf, bufSize.csize_t, start.csize_t, 0'u32,
-       matchData, nil)
-   rawMatches = cast[ptr UncheckedArray[csize_t]](get_ovector_pointer(matchData))
-   if res < 0'i32: return (int(res), 0)
-@@ -296,7 +296,7 @@ proc matchOrFind(buf: cstring, pattern: Regex, start, bufSize: int, options: uin
-     rawMatches = rtarray.getRawData
-   var matchData = match_data_create_from_pattern(pattern.h, nil)
-   defer: match_data_free(matchData)
--  result = pcre2.match(pattern.h, cast[ptr uint8](buf), bufSize.csize_t, start.csize_t, options,
-+  result = pcre2.match(pattern.h, buf, bufSize.csize_t, start.csize_t, options,
-                     matchData, nil)
-   
-   rawMatches = cast[ptr UncheckedArray[csize_t]](get_ovector_pointer(matchData))
-@@ -381,7 +381,7 @@ proc find*(buf: cstring, pattern: Regex, matches: var openArray[string],
-     rawMatches = rtarray.getRawData
-   var matchData = match_data_create_from_pattern(pattern.h, nil)
-   defer: match_data_free(matchData)
--  var res = pcre2.match(pattern.h, cast[ptr uint8](buf), bufSize.csize_t, start.csize_t, 0'u32,
-+  var res = pcre2.match(pattern.h, buf, bufSize.csize_t, start.csize_t, 0'u32,
-       matchData, nil)
-   rawMatches = cast[ptr UncheckedArray[csize_t]](get_ovector_pointer(matchData))
-   if res < 0'i32: return res
-@@ -410,7 +410,7 @@ proc find*(buf: cstring, pattern: Regex, start = 0, bufSize: int): int =
-     rawMatches = rtarray.getRawData
-   var matchData = match_data_create_from_pattern(pattern.h, nil)
-   defer: match_data_free(matchData)
--  var res = pcre2.match(pattern.h, cast[ptr uint8](buf), bufSize.csize_t, start.csize_t, 0'u32,
-+  var res = pcre2.match(pattern.h, buf, bufSize.csize_t, start.csize_t, 0'u32,
-       matchData, nil)
-   rawMatches = cast[ptr UncheckedArray[csize_t]](get_ovector_pointer(matchData))
-   if res < 0'i32: return res
-@@ -441,7 +441,7 @@ iterator findAll*(s: string, pattern: Regex, start = 0): string =
-   var matchData = match_data_create_from_pattern(pattern.h, nil)
-   defer: match_data_free(matchData)
-   while true:
--    let res = pcre2.match(pattern.h, cast[ptr uint8](s.cstring), len(s).csize_t, i.csize_t, 0'u32,
-+    let res = pcre2.match(pattern.h, s.cstring, len(s).csize_t, i.csize_t, 0'u32,
-       matchData, nil)
-     rawMatches = cast[ptr UncheckedArray[csize_t]](get_ovector_pointer(matchData))
-     if res < 0'i32: break
-@@ -463,7 +463,7 @@ iterator findAll*(buf: cstring, pattern: Regex, start = 0, bufSize: int): string
-   var matchData = match_data_create_from_pattern(pattern.h, nil)
-   defer: match_data_free(matchData)
-   while true:
--    let res = pcre2.match(pattern.h, cast[ptr uint8](buf), bufSize.csize_t, i.csize_t, 0'u32,
-+    let res = pcre2.match(pattern.h, buf, bufSize.csize_t, i.csize_t, 0'u32,
-       matchData, nil)
-     rawMatches = cast[ptr UncheckedArray[csize_t]](get_ovector_pointer(matchData))
-     if res < 0'i32: break
-diff --git a/lib/wrappers/pcre2.nim b/lib/wrappers/pcre2.nim
-index 92caee7e23008..65a06c995a770 100644
---- a/lib/wrappers/pcre2.nim
-+++ b/lib/wrappers/pcre2.nim
-@@ -533,7 +533,7 @@ else:
- 
- # Exported PCRE functions
- 
--proc compile*(pattern: ptr uint8,
-+proc compile*(pattern: cstring,
-               options: csize_t,
-               flags: uint32,
-               errorCode: ptr cint,
-@@ -576,24 +576,13 @@ proc dfa_match*(code: ptr Pcre,
-                wscount: cint): cint
- 
- proc match*(code: ptr Pcre,
--           subject: ptr uint8,
-+           subject: cstring,
-            length: csize_t,
-            startoffset: csize_t,
-            options: uint32,
-            ovector: ptr MatchData,
-            ovecsize: pointer): cint
- 
--proc match*(code: ptr Pcre,
--           subject: cstring,
--           length: cint,
--           startoffset: cint,
--           options: cint,
--           ovector: ptr MatchData,
--           ovecsize: cint): cint =
--  result = match(code, cast[ptr uint8](subject), csize_t length, csize_t startoffset,
--          uint32 options, 
--          ovector, nil)
--
- proc match_data_create*(size: uint32, ctx: ptr GeneralContext): ptr MatchData
- 
- proc match_data_create_from_pattern*(
-
-From 0e3ac706156887ce143681da42b21874c2b20774 Mon Sep 17 00:00:00 2001
-From: ringabout <43030857+ringabout@users.noreply.github.com>
-Date: Tue, 5 Nov 2024 23:03:16 +0800
-Subject: [PATCH 6/7] progress
-
----
- lib/impure/nre.nim     |   2 +-
- lib/impure/re.nim      |  16 ++---
- lib/wrappers/pcre2.nim | 150 ++++++-----------------------------------
- 3 files changed, 29 insertions(+), 139 deletions(-)
-
-diff --git a/lib/impure/nre.nim b/lib/impure/nre.nim
-index 56c55c8dd1a61..e5364ba67dfbe 100644
---- a/lib/impure/nre.nim
-+++ b/lib/impure/nre.nim
-@@ -1,6 +1,6 @@
- #
- #            Nim's Runtime Library
--#        (c) Copyright 2015 Nim Contributors
-+#        (c) Copyright 2024 Nim Contributors
- #
- #    See the file "copying.txt", included in this
- #    distribution, for details about the copyright.
-diff --git a/lib/impure/re.nim b/lib/impure/re.nim
-index c2f508a4bee06..deceb9739bae2 100644
---- a/lib/impure/re.nim
-+++ b/lib/impure/re.nim
-@@ -1,7 +1,7 @@
- #
- #
- #            Nim's Runtime Library
--#        (c) Copyright 2012 Andreas Rumpf
-+#        (c) Copyright 2024 Andreas Rumpf
- #
- #    See the file "copying.txt", included in this
- #    distribution, for details about the copyright.
-@@ -114,15 +114,11 @@ proc re*(s: string, flags = {reStudy}): Regex =
-   if reIgnoreCase in flags:
-     options = options or CASELESS
-   result.h = rawCompile(s, cast[csize_t](ZERO_TERMINATED), options)
--  # if reStudy in flags:
--  #   var msg: cstring = ""
--  #   var options: cint = 0
--  #   var hasJit: cint = 0
--  #   if pcre2.config(pcre2.CONFIG_JIT, addr hasJit) == 0:
--  #     if hasJit == 1'i32:
--  #       options = pcre.STUDY_JIT_COMPILE
--  #   result.e = pcre.study(result.h, options, addr msg)
--  #   if not isNil(msg): raiseInvalidRegex($msg)
-+  if reStudy in flags: # TODO: add reJit
-+    var hasJit: cint = 0
-+    if pcre2.config(pcre2.CONFIG_JIT, addr hasJit) == 0:
-+      if hasJit == 1'i32 and jit_compile(result.h, pcre2.JIT_COMPLETE) != 0:
-+        raiseInvalidRegex("JIT compilation failed.")
- 
- proc rex*(s: string, flags = {reStudy, reExtended}): Regex =
-   ## Constructor for extended regular expressions.
-diff --git a/lib/wrappers/pcre2.nim b/lib/wrappers/pcre2.nim
-index 65a06c995a770..0615cda0e627d 100644
---- a/lib/wrappers/pcre2.nim
-+++ b/lib/wrappers/pcre2.nim
-@@ -1,58 +1,19 @@
- #
- #
- #            Nim's Runtime Library
--#        (c) Copyright 2015 Andreas Rumpf
-+#        (c) Copyright 2024 Nim Contributors
- #
- #    See the file "copying.txt", included in this
- #    distribution, for details about the copyright.
- #
- 
--# The current PCRE version information.
-+# The current PCRE2 version information.
- 
- const
--  PCRE_MAJOR* = 8
--  PCRE_MINOR* = 36
--  PCRE_PRERELEASE* = true
--  PCRE_DATE* = "2014-09-26"
--
--# When an application links to a PCRE DLL in Windows, the symbols that are
--# imported have to be identified as such. When building PCRE, the appropriate
--# export setting is defined in pcre_internal.h, which includes this file. So we
--# don't change existing definitions of PCRE_EXP_DECL and PCRECPP_EXP_DECL.
--
--# By default, we use the standard "extern" declarations.
--
--# Allow for C++ users
--
--# Public options. Some are compile-time only, some are run-time only, and some
--# are both. Most of the compile-time options are saved with the compiled regex
--# so that they can be inspected during studying (and therefore JIT compiling).
--# Note that pcre_study() has its own set of options. Originally, all the options
--# defined here used distinct bits. However, almost all the bits in a 32-bit word
--# are now used, so in order to conserve them, option bits that were previously
--# only recognized at matching time (i.e. by pcre_exec() or pcre_dfa_exec()) may
--# also be used for compile-time options that affect only compiling and are not
--# relevant for studying or JIT compiling.
--#
--# Some options for pcre_compile() change its behaviour but do not affect the
--# behaviour of the execution functions. Other options are passed through to the
--# execution functions and affect their behaviour, with or without affecting the
--# behaviour of pcre_compile().
--#
--# Options that can be passed to pcre_compile() are tagged Cx below, with these
--# variants:
--#
--# C1   Affects compile only
--# C2   Does not affect compile; affects exec, dfa_exec
--# C3   Affects compile, exec, dfa_exec
--# C4   Affects compile, exec, dfa_exec, study
--# C5   Affects compile, exec, study
--#
--# Options that can be set for pcre_exec() and/or pcre_dfa_exec() are flagged
--# with E and D, respectively. They take precedence over C3, C4, and C5 settings
--# passed from pcre_compile(). Those that are compatible with JIT execution are
--# flagged with J.
--
-+  PCRE2_MAJOR* = 10
-+  PCRE2_MINOR* = 45
-+  PCRE2_PRERELEASE* = true
-+  PCRE2_DATE* = "2024-06-09"
- 
- const
-   ANCHORED* = 0x80000000'u32
-@@ -540,40 +501,18 @@ proc compile*(pattern: cstring,
-               offset: ptr csize_t,
-               tableptr: pointer): ptr Pcre
- 
--proc compile2*(pattern: cstring,
--               options: cint,
--               errorcodeptr: ptr cint,
--               errptr: ptr cstring,
--               erroffset: ptr cint,
--               tableptr: pointer): ptr Pcre
--
--proc config*(what: cint,
-+proc config*(what: uint32,
-              where: pointer): cint
- 
--proc copy_named_substring*(code: ptr Pcre,
--                           subject: cstring,
--                           ovector: ptr cint,
--                           stringcount: cint,
--                           stringname: cstring,
--                           buffer: cstring,
--                           buffersize: cint): cint
--
--proc copy_substring*(subject: cstring,
--                     ovector: ptr cint,
--                     stringcount: cint,
--                     stringnumber: cint,
--                     buffer: cstring,
--                     buffersize: cint): cint
--
- proc dfa_match*(code: ptr Pcre,
-                subject: cstring,
--               length: cint,
--               startoffset: cint,
--               options: cint,
--               ovector: ptr cint,
--               ovecsize: cint,
-+               length: csize_t,
-+               startoffset: csize_t,
-+               options: uint32,
-+               ovector: ptr MatchData,
-+               ovecsize: pointer, # TODO: pcre2_match_context
-                workspace: ptr cint,
--               wscount: cint): cint
-+               wscount: csize_t): cint
- 
- proc match*(code: ptr Pcre,
-            subject: cstring,
-@@ -581,7 +520,8 @@ proc match*(code: ptr Pcre,
-            startoffset: csize_t,
-            options: uint32,
-            ovector: ptr MatchData,
--           ovecsize: pointer): cint
-+           ovecsize: pointer # TODO: pcre2_match_context
-+           ): cint
- 
- proc match_data_create*(size: uint32, ctx: ptr GeneralContext): ptr MatchData
- 
-@@ -598,16 +538,12 @@ proc get_ovector_count*(ovector: ptr MatchData): uint32
- 
- proc jit_match*(code: ptr Pcre,
-                subject: cstring,
--               length: cint,
--               startoffset: cint,
--               options: cint,
--               ovector: ptr cint,
--               ovecsize: cint,
--               jstack: ptr JitStack): cint
--
--# proc free_substring*(stringptr: cstring)
--
--# proc free_substring_list*(stringptr: cstringArray)
-+               length: csize_t,
-+               startoffset: csize_t,
-+               options: uint32,
-+               ovector: ptr MatchData,
-+               ovecsize: pointer # TODO: pcre2_match_context
-+               ): cint
- 
- proc code_free*(code: ptr Pcre)
- 
-@@ -615,51 +551,9 @@ proc pattern_info*(code: ptr Pcre,
-                what: uint32,
-                where: pointer): cint
- 
--proc get_named_substring*(code: ptr Pcre,
--                          subject: cstring,
--                          ovector: ptr cint,
--                          stringcount: cint,
--                          stringname: cstring,
--                          stringptr: cstringArray): cint
--
--proc get_stringnumber*(code: ptr Pcre,
--                       name: cstring): cint
--
--proc get_stringtable_entries*(code: ptr Pcre,
--                              name: cstring,
--                              first: cstringArray,
--                              last: cstringArray): cint
--
--proc get_substring*(subject: cstring,
--                    ovector: ptr cint,
--                    stringcount: cint,
--                    stringnumber: cint,
--                    stringptr: cstringArray): cint
--
--proc get_substring_list*(subject: cstring,
--                         ovector: ptr cint,
--                         stringcount: cint,
--                         listptr: ptr cstringArray): cint
--
--proc maketables*(): pointer
--
--proc refcount*(code: ptr Pcre,
--               adjust: cint): cint
--
--proc version*(): cstring
--
- # JIT compiler related functions.
- 
--# proc jit_stack_alloc*(startsize: cint,
--#                       maxsize: cint): ptr JitStack
--
--# proc jit_stack_free*(stack: ptr JitStack)
--
--# proc assign_jit_stack*(extra: ptr ExtraData,
--#                        callback: JitCallback,
--#                        data: pointer)
--
--proc jit_free_unused_memory*()
-+proc jit_compile*(code: ptr Pcre, options: uint32): cint
- 
- 
- {.pop.}
-
-From 07de39cde6341ae278b47d64f73dd9c823dd18c5 Mon Sep 17 00:00:00 2001
-From: ringabout <43030857+ringabout@users.noreply.github.com>
-Date: Wed, 6 Nov 2024 23:09:25 +0800
-Subject: [PATCH 7/7] progress
-
----
- lib/impure/nre.nim        | 39 ++++++++++++++-------------------------
- lib/impure/re.nim         |  4 ++--
- tests/stdlib/nre/init.nim | 10 +++++-----
- 3 files changed, 21 insertions(+), 32 deletions(-)
-
-diff --git a/lib/impure/nre.nim b/lib/impure/nre.nim
-index e5364ba67dfbe..70b8d16fa1b9f 100644
---- a/lib/impure/nre.nim
-+++ b/lib/impure/nre.nim
-@@ -61,7 +61,7 @@ runnableExamples:
-   assert find("uxabc", re"(?<=x|y)ab", start = 1).get.captures[-1] == "ab"
-   assert find("uxabc", re"ab", start = 3).isNone
- 
--from ../wrappers/pcre2 import nil
-+from std/pcre2 import nil
- import nre/private/util
- import std/tables
- from std/strutils import `%`
-@@ -136,8 +136,6 @@ type
-     ##     are recognized only in UTF-8 mode.
-     ##     —  man pcre
-     ##
--    ## -  `(*JAVASCRIPT_COMPAT)` - JavaScript compatibility
--    ## -  `(*NO_STUDY)` - turn off studying; study is enabled by default
-     ##
-     ## For more details on the leading option groups, see the `Option
-     ## Setting <https://man7.org/linux/man-pages/man3/pcresyntax.3.html#OPTION_SETTING>`_
-@@ -261,7 +259,7 @@ proc getNameToNumberTable(pattern: Regex): Table[string, int] =
- 
-     result[name] = num
- 
--proc initRegex(pattern: string, flags: csize_t, options: uint32): Regex =
-+proc initRegex(pattern: string, flags: csize_t, options: uint32, noJit: bool): Regex =
-   when defined(gcDestructors):
-     result = Regex()
-   else:
-@@ -279,15 +277,11 @@ proc initRegex(pattern: string, flags: csize_t, options: uint32): Regex =
-     # failed to compile
-     raise SyntaxError(msg: $errorCode, pos: int errOffset, pattern: pattern)
- 
--  # if study:
--  #   var options: cint = 0
--  #   var hasJit: cint
--  #   if pcre2.config(pcre.CONFIG_JIT, addr hasJit) == 0:
--  #     if hasJit == 1'i32:
--  #       options = pcre2.STUDY_JIT_COMPILE
--  #   result.pcreExtra = pcre.study(result.pcreObj, options, addr errorMsg)
--  #   if errorMsg != nil:
--  #     raise StudyError(msg: $errorMsg)
-+  if not noJit:
-+    var hasJit: cint = cint(0)
-+    if pcre2.config(pcre2.CONFIG_JIT, addr hasJit) == 0:
-+      if hasJit == 1'i32 and pcre2.jit_compile(result.pcreObj, pcre2.JIT_COMPLETE) != 0:
-+        raise StudyError(msg: "JIT compilation failed.")
- 
-   result.captureNameToId = result.getNameToNumberTable()
- 
-@@ -438,9 +432,9 @@ const PcreOptions = {
-   "DOLLAR_ENDONLY": pcre2.DOLLAR_ENDONLY,
-   "FIRSTLINE": pcre2.FIRSTLINE,
-   "NO_AUTO_CAPTURE": pcre2.NO_AUTO_CAPTURE,
--  # "JAVASCRIPT_COMPAT": pcre2.JAVASCRIPT_COMPAT,
-   "U": pcre2.UTF or pcre2.UCP # TODO: UTF-8 ?
- }.toTable
-+# TODO: maybe add JIT?
- 
- # Options that are supported inside regular expressions themselves
- const SkipOptions = [
-@@ -449,8 +443,8 @@ const SkipOptions = [
-   "CR", "LF", "CRLF", "ANYCRLF", "ANY", "BSR_ANYCRLF", "BSR_UNICODE"
- ]
- 
--proc extractOptions(pattern: string): tuple[pattern: string, options: uint32] =
--  result = ("", 0'u32)
-+proc extractOptions(pattern: string): tuple[pattern: string, options: uint32, noJit: bool] =
-+  result = ("", 0'u32, false)
- 
-   var optionStart = 0
-   var equals = false
-@@ -470,8 +464,8 @@ proc extractOptions(pattern: string): tuple[pattern: string, options: uint32] =
-         result.pattern.add pattern[optionStart .. i]
-       elif PcreOptions.hasKey name:
-         result.options = result.options or PcreOptions[name]
--      # elif name == "NO_STUDY":
--      #   result.study = false
-+      elif name == "NO_STUDY":
-+        result.noJit = true
-       else:
-         break
-       optionStart = i+1
-@@ -488,8 +482,8 @@ proc extractOptions(pattern: string): tuple[pattern: string, options: uint32] =
-   result.pattern.add pattern[optionStart .. pattern.high]
- 
- proc re*(pattern: string): Regex =
--  let (pattern, options) = extractOptions(pattern)
--  initRegex(pattern, pcre2.ZERO_TERMINATED, options)
-+  let (pattern, options, noJit) = extractOptions(pattern)
-+  initRegex(pattern, pcre2.ZERO_TERMINATED, options, noJit)
- 
- proc matchImpl(str: string, pattern: Regex, start, endpos: int, options: uint32): Option[RegexMatch] =
-   var myResult = RegexMatch(pattern: pattern, str: str)
-@@ -517,12 +511,7 @@ proc matchImpl(str: string, pattern: Regex, start, endpos: int, options: uint32)
-   let ovector = cast[ptr UncheckedArray[csize_t]](pcre2.get_ovector_pointer(matchData))
-   let capture_count = pcre2.get_ovector_count(matchData)
-   let ovector_size = 2 * capture_count.int * sizeof(csize_t)
--  # echo (myResult.pcreMatchBounds.len * 2 * sizeof(csize_t), ovector_size)
--  # echo (capture_count, ovector[0], ovector[1])
-   copyMem(addr myResult.pcreMatchBounds[0], ovector, ovector_size)
--  # echo (myResult.pcreMatchBounds[0].a, myResult.pcreMatchBounds[0].b)
--
--  # echo " -> ", myResult
-   if execRet >= 0:
-     return some(myResult)
- 
-diff --git a/lib/impure/re.nim b/lib/impure/re.nim
-index deceb9739bae2..beb26b1ede562 100644
---- a/lib/impure/re.nim
-+++ b/lib/impure/re.nim
-@@ -38,7 +38,7 @@ runnableExamples:
- import
-   std/[strutils, rtarrays]
- 
--import ../wrappers/pcre2
-+import std/pcre2
- 
- when defined(nimPreviewSlimSystem):
-   import std/syncio
-@@ -115,7 +115,7 @@ proc re*(s: string, flags = {reStudy}): Regex =
-     options = options or CASELESS
-   result.h = rawCompile(s, cast[csize_t](ZERO_TERMINATED), options)
-   if reStudy in flags: # TODO: add reJit
--    var hasJit: cint = 0
-+    var hasJit: cint = cint(0)
-     if pcre2.config(pcre2.CONFIG_JIT, addr hasJit) == 0:
-       if hasJit == 1'i32 and jit_compile(result.h, pcre2.JIT_COMPLETE) != 0:
-         raiseInvalidRegex("JIT compilation failed.")
-diff --git a/tests/stdlib/nre/init.nim b/tests/stdlib/nre/init.nim
-index fd160f542a1b5..57162fe8f26c9 100644
---- a/tests/stdlib/nre/init.nim
-+++ b/tests/stdlib/nre/init.nim
-@@ -1,7 +1,7 @@
- import unittest
- include nre
- 
--from ../../../lib/wrappers/pcre2 import nil
-+from std/pcre2 import nil
- 
- block: # Test NRE initialization
-   block: # correct initialization
-@@ -10,23 +10,23 @@ block: # Test NRE initialization
- 
-   block: # options
-     check(extractOptions("(*NEVER_UTF)") ==
--          ("", pcre2.NEVER_UTF))
-+          ("", pcre2.NEVER_UTF, false))
-     check(extractOptions("(*UTF8)(*ANCHORED)(*UCP)z") ==
--          ("(*UTF8)(*UCP)z", pcre2.ANCHORED))
-+          ("(*UTF8)(*UCP)z", pcre2.ANCHORED, false))
-     # check(extractOptions("(*ANCHORED)(*UTF8)(*JAVASCRIPT_COMPAT)z") ==
-     #       ("(*UTF8)z", pcre2.ANCHORED or pcre2.JAVASCRIPT_COMPAT, true))
- 
-     # check(extractOptions("(*NO_STUDY)(") == ("(", 0'u32))
- 
-     check(extractOptions("(*LIMIT_MATCH=6)(*ANCHORED)z") ==
--          ("(*LIMIT_MATCH=6)z", pcre2.ANCHORED))
 +          ("(*LIMIT_MATCH=6)z", pcre2.ANCHORED, false))
  
    block: # incorrect options
@@ -2184,8 +1374,12 @@ index fd160f542a1b5..57162fe8f26c9 100644
                "(?i)",
                "(*LIMIT_MATCH=5", "(*NO_AUTO_POSSESS=5)"]:
        let ss = s & "(*NEVER_UTF)"
--      check(extractOptions(ss) == (ss, 0'u32))
+-      check(extractOptions(ss) == (ss, 0, true))
 +      check(extractOptions(ss) == (ss, 0'u32, false))
  
    block: # invalid regex
-     # expect(SyntaxError): discard re("[0-9")
+-    expect(SyntaxError): discard re("[0-9")
++    # expect(SyntaxError): discard re("[0-9")
+     try:
+       discard re("[0-9")
+     except SyntaxError:

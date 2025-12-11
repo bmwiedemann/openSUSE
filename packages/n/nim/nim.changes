@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Dec  3 16:30:32 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.2.6
+  * Exception handling combined with Nim’s async is more stable than ever 
+    before as the underlying closure iterator transformation has been 
+    rewritten.
+  * The compiler is now smart enough to produce a move operation for 
+    return obj.field. Previously it performed a copy. Expect your code to 
+    run slightly faster due to this and other minor performance improvements.
+
+  * Full changelog: https://github.com/nim-lang/Nim/blob/v2.2.6/changelog.md
+
+- Update to version 2.2.4
+  * see changelog at https://github.com/nim-lang/Nim/blob/v2.2.4/changelog.md
+
+-------------------------------------------------------------------
 Mon Mar 24 20:09:27 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - move from pcre to pcre2, add nim-2.2.2-pcre2.patch

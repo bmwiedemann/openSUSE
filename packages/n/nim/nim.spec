@@ -1,7 +1,7 @@
 #
 # spec file for package nim
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define _atlas_version 0.8.0
-%define _sat_commit faf1617f44d7632ee9601ebc13887644925dcc01
+%define _atlas_version 0.9.5
+%define _sat_commit d67107e94f92c4cf6f0791542f473b21329bbd97
 
 Name:           nim
-Version:        2.2.2
+Version:        2.2.6
 Release:        0
 Summary:        A statically typed compiled systems programming language
 License:        MIT
@@ -42,7 +42,8 @@ BuildRequires:  ca-certificates-mozilla
 BuildRequires:  gc-devel
 # Nim needs support for both __builtin_saddll_overflow and
 # -std=c++14, therefore gcc 6.2+ is required.
-BuildRequires:  gcc-c++ >= 6.2
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
 BuildRequires:  git
 BuildRequires:  libopenssl-devel
 BuildRequires:  netcfg
@@ -51,7 +52,6 @@ BuildRequires:  timezone
 BuildRequires:  valgrind
 BuildRequires:  pkgconfig(libpcre2-8)
 # pull in a C compiler (required to build Nim programs)
-Requires:       gcc
 Recommends:     clang
 Recommends:     git
 Recommends:     libpcre2-8-0
@@ -120,6 +120,11 @@ export NIMFLAGS="$NIMFLAGS %{?jobs:--parallelBuild:%{jobs}}"
 
 ./bin/nim c  $NIMFLAGS -d:release koch
 ./koch boot  $NIMFLAGS -d:release
+
+# on older versions use v1 garbage collector
+%if 0%{?suse_version} < 1560
+echo "mm:refc" >> config/nim.cfg
+%endif
 ./koch tools $NIMFLAGS -d:release
 
 # TODO: build docs
@@ -140,6 +145,7 @@ cat << EOT >> tests_to_skip
   tests/stdlib/tnetconnect.nim
   # client: exception: error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed
   tests/stdlib/thttpclient_ssl.nim
+  tests/stdlib/tssl.nim
   # cannot open file: jester
   tests/niminaction/Chapter7/Tweeter/src/tweeter.nim
   tests/cpp/tasync_cpp.nim
@@ -156,10 +162,12 @@ cat << EOT >> tests_to_skip
   # no SFML in plain SLE and missing in backport repos
   tests/niminaction/Chapter8/sfml/sfml_test.nim
   # GCC 14 related errors
-  tests/objects/toop1.nim
-  tests/vm/tvmmisc.nim
-  tests/cpp/tmanual_exception.nim
-  tests/objects/tobjcov.nim
+  #tests/objects/toop1.nim
+  #tests/vm/tvmmisc.nim
+  #tests/cpp/tmanual_exception.nim
+  #tests/objects/tobjcov.nim
+  # GCC 15 related errors
+  tests/stdlib/concurrency/tatomics.nim
   # exits with 1 for some reason
   tests/stdlib/tmath.nim
 EOT
@@ -171,6 +179,15 @@ cat << EOT >> tests_to_skip
   tests/realtimeGC/tmain.nim
   tests/realtimeGC/shared.nim
   tests/stdlib/tcasts.nim
+  tests/stdlib/trandom.nim
+  tests/stdlib/tmarshal.nim
+  tests/compiler/tasm2.nim
+  tests/async/tioselectors.nim
+  tests/stdlib/t9754.nim
+  tests/template/t13426.nim
+  tests/threads/tmembug.nim
+  tests/errmsgs/t22852.nim
+  tests/errmsgs/t23435.nim
 EOT
 %endif
 
@@ -191,9 +208,25 @@ cat << EOT >> tests_to_skip
   #aarch64 and ppc64l
   tests/range/tcompiletime_range_checks.nim
   tests/dll/nimhcr_unit.nim
+  tests/coroutines/tgc.nim
+  tests/coroutines/twait.nim
+  tests/threads/tonthreadcreation.nim
+  tests/threads/tracy_allocator.nim
+  tests/threads/treusetvar.nim
+  tests/threads/tthreadvars.nim
+  tests/misc/ttlsemulation.nim
+  tests/misc/tvcc.nim
+  tests/threads/t7172.nim
+  tests/dll/nimhcr_basic.nim
+  tests/threads/t8535.nim
+  tests/threads/threadex.nim
+  tests/threads/tmanyjoin.nim
+  tests/threads/tmembug.nim
 
   #ppc64le
   tests/arc/tasyncorc.nim
+  tests/compiler/tasm.nim
+  tests/compiler/tasm2.nim
 EOT
 %endif
 
@@ -202,6 +235,14 @@ cat << EOT >> tests_to_skip
   # deactivate all tests that require node, as node version in
   # SLE and Leap 15.1 is either too old or not available at all
   tests/misc/trunner.nim
+EOT
+%endif
+
+# some test fails on older compiler
+%if 0%{?suse_version} <= 1560
+cat << EOT >> tests_to_skip
+  tests/converter/tconverter_unique_ptr.nim
+  tests/destructor/t23837.nim
 EOT
 %endif
 
