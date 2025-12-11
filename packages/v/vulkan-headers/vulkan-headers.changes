@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Dec  9 23:10:54 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.4.335.0
+  * New extensions:
+  * VK_KHR_shader_fma, for obtaining correctly-rounded results of
+    Fused-Multiply Addition.
+  * VK_EXT_memory_decompression, for memory-to-memory decompression.
+  * VK_EXT_shader_64bit_indexing, a relaxation of the
+    maxStorageBufferRange limit to allow more than 4GB to be
+    accessed through a buffer binding).
+  * VK_EXT_shader_uniform_buffer_unsized_array, for letting last
+    member of a uniform buffer block be declared as an unsized
+    array.
+  * VK_ARM_performance_counters_by_region, for capturing
+    performance counters on a per region/tile basis.
+  * VK_EXT_ray_tracing_invocation_reorder, which provides more
+    control over the ordering of the ray-tracing pipeline.
+  * VK_EXT_present_timing, for using Vulkan swapchains to obtain
+    information on the presentation engine's display for accurate
+    timing information and to assist in scheduling a present to
+    happen no earlier than a desired time.
+
+-------------------------------------------------------------------
 Tue Oct  7 09:58:56 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.4.328.0
