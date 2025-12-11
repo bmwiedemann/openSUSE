@@ -1,7 +1,7 @@
 #
 # spec file for package adobe-sourcehanserif-fonts
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,17 @@
 #
 
 
-%define shared_description Source Han Serif is a Pan-CJK typeface. It is the serif counterpart to Source Han Sans and comes in seven weights.
+%define shared_description Source Han Serif is a pan-CJK typeface. It is the serif counterpart to Source Han Sans and comes in seven weights.
 
 Name:           adobe-sourcehanserif-fonts
-Version:        2.002
+Version:        2.003
 Release:        0
-Summary:        Multi-weight pan-CJK fonts
+Summary:        Multi-weight serif-style Pan-CJK typeface family
 License:        OFL-1.1
 Group:          System/X11/Fonts
 URL:            https://github.com/adobe-fonts/source-han-serif
-Source0:        https://github.com/adobe-fonts/source-han-serif/raw/%{version}R/SubsetOTF/SourceHanSerifCN.zip
-Source1:        https://github.com/adobe-fonts/source-han-serif/raw/%{version}R/SubsetOTF/SourceHanSerifHK.zip
-Source2:        https://github.com/adobe-fonts/source-han-serif/raw/%{version}R/SubsetOTF/SourceHanSerifJP.zip
-Source3:        https://github.com/adobe-fonts/source-han-serif/raw/%{version}R/SubsetOTF/SourceHanSerifKR.zip
-Source4:        https://github.com/adobe-fonts/source-han-serif/raw/%{version}R/SubsetOTF/SourceHanSerifTW.zip
-Source5:        https://github.com/adobe-fonts/source-han-serif/raw/%{version}R/Variable/OTF/Subset/SourceHanSerifCN-VF.otf
-Source6:        https://github.com/adobe-fonts/source-han-serif/raw/%{version}R/Variable/OTF/Subset/SourceHanSerifHK-VF.otf
-Source7:        https://github.com/adobe-fonts/source-han-serif/raw/%{version}R/Variable/OTF/Subset/SourceHanSerifJP-VF.otf
-Source8:        https://github.com/adobe-fonts/source-han-serif/raw/%{version}R/Variable/OTF/Subset/SourceHanSerifKR-VF.otf
-Source9:        https://github.com/adobe-fonts/source-han-serif/raw/%{version}R/Variable/OTF/Subset/SourceHanSerifTW-VF.otf
+Source0:        https://github.com/adobe-fonts/source-han-serif/releases/download/%{version}R/02_SourceHanSerif-VF.zip
+Source1:        https://github.com/adobe-fonts/source-han-serif/releases/download/%{version}R/05_SourceHanSerifSubsetOTF.zip
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
 BuildArch:      noarch
@@ -43,96 +35,102 @@ BuildArch:      noarch
 %{shared_description}
 
 %prep
-%setup -Tcq
-for i in %_sourcedir/*.zip; do
-	unzip -o "$i"
-done
+%{uncompress:%{S:0}}
+%if 0%{?suse_version} < 1600
+# Next archive will unpack the same file again; and SL15.x rpm's %%uncompress
+# forgets passing a force-overwrite flag for ZIPs, causing a build failure.
+rm -v LICENSE.txt
+%endif
+%{uncompress:%{S:1}}
 
 %build
 
 %install
-chmod go-w *.otf *.txt
-mkdir -p %{buildroot}%{_ttfontsdir}
-mv *.otf %{buildroot}%{_ttfontsdir}
-cp -a %_sourcedir/*.otf %buildroot/%_ttfontsdir/
+install -d %{buildroot}%{_ttfontsdir}
+install -m 644 Variable/OTF/Subset/*.otf %{buildroot}%{_ttfontsdir}
+install -m 644 SubsetOTF/*/*.otf %{buildroot}%{_ttfontsdir}
 
+# Simplified Chinese package
 %package -n adobe-sourcehanserif-cn-fonts
-Summary:        Multi-weight pan-CJK font with Simplified Chinese localization
+Summary:        Source Han Serif variation for Simplified Chinese
 Group:          System/X11/Fonts
 Provides:       scalable-font-zh_CN
 Provides:       locale(zh_CN)
-%reconfigure_fonts_prereq
 
 %description -n adobe-sourcehanserif-cn-fonts
 %{shared_description}
-%reconfigure_fonts_scriptlets -n adobe-sourcehanserif-cn-fonts
+
+%reconfigure_fonts_scriptlets -c -n adobe-sourcehanserif-cn-fonts
 
 %files -n adobe-sourcehanserif-cn-fonts
 %license LICENSE.txt
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/SourceHanSerifCN-*.otf
 
+# Traditional Chinese Hong Kong package
 %package -n adobe-sourcehanserif-hk-fonts
-Summary:        Multi-weight pan-CJK font with Hong Kong glyph forms
+Summary:        Source Han Serif variation for Traditional Chinese in Hong Kong
 Group:          System/X11/Fonts
 Provides:       scalable-font-zh_HK
 Provides:       locale(zh_HK)
-%reconfigure_fonts_prereq
 
 %description -n adobe-sourcehanserif-hk-fonts
 %{shared_description}
-%reconfigure_fonts_scriptlets -n adobe-sourcehanserif-hk-fonts
+
+%reconfigure_fonts_scriptlets -c -n adobe-sourcehanserif-hk-fonts
 
 %files -n adobe-sourcehanserif-hk-fonts
 %license LICENSE.txt
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/SourceHanSerifHK-*.otf
 
+# Japanese package
 %package -n adobe-sourcehanserif-jp-fonts
-Summary:        Multi-weight pan-CJK font with Japanese glyph forms
+Summary:        Source Han Serif variation for Japanese
 Group:          System/X11/Fonts
 Provides:       scalable-font-jp
 Provides:       locale(jp)
-%reconfigure_fonts_prereq
 
 %description -n adobe-sourcehanserif-jp-fonts
 %{shared_description}
-%reconfigure_fonts_scriptlets -n adobe-sourcehanserif-jp-fonts
+
+%reconfigure_fonts_scriptlets -c -n adobe-sourcehanserif-jp-fonts
 
 %files -n adobe-sourcehanserif-jp-fonts
 %license LICENSE.txt
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/SourceHanSerifJP-*.otf
 
+# Korean package
 %package -n adobe-sourcehanserif-kr-fonts
-Summary:        Multi-weight pan-CJK font with Korean glyph forms
+Summary:        Source Han Serif variation for Korean
 Group:          System/X11/Fonts
 Provides:       scalable-font-kr
 Provides:       locale(kr)
-%reconfigure_fonts_prereq
 
 %description -n adobe-sourcehanserif-kr-fonts
 %{shared_description}
-%reconfigure_fonts_scriptlets -n adobe-sourcehanserif-kr-fonts
+
+%reconfigure_fonts_scriptlets -c -n adobe-sourcehanserif-kr-fonts
 
 %files -n adobe-sourcehanserif-kr-fonts
 %license LICENSE.txt
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/SourceHanSerifKR-*.otf
 
+# Traditional Chinese Taiwan package
 %package -n adobe-sourcehanserif-tw-fonts
-Summary:        Multi-weight pan-CJK font with Traditional Chinese glyph forms
-# Replace the old single package that only provided Taiwan fonts
+Summary:        Source Han Serif variation for Traditional Chinese in Taiwan
 Group:          System/X11/Fonts
 Provides:       adobe-sourcehanserif-fonts = %version
 Provides:       scalable-font-zh_TW
 Provides:       locale(zh_TW)
 Obsoletes:      adobe-sourcehanserif-fonts < %version
-%reconfigure_fonts_prereq
 
 %description -n adobe-sourcehanserif-tw-fonts
 %{shared_description}
-%reconfigure_fonts_scriptlets -n adobe-sourcehanserif-tw-fonts
+
+%reconfigure_fonts_scriptlets -c -n adobe-sourcehanserif-tw-fonts
 
 %files -n adobe-sourcehanserif-tw-fonts
 %license LICENSE.txt
