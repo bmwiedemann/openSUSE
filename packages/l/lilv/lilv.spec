@@ -1,7 +1,7 @@
 #
 # spec file for package lilv
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@
 %endif
 
 Name:           lilv
-Version:        0.24.26
+Version:        0.26.2
 Release:        0
 Summary:        C library to make use of LV2 plugins
 License:        ISC
