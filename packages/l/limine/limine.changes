@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 11 08:23:47 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 10.5.0:
+  * Add new `interface_help_colour` global configuration file option to
+    allow changing the colour of "helper" messages in the interface.
+  * Add new `interface_rotation` global configuration option to allow
+    rotating the output interface be 0, 90, 180, or 270 degrees.
+
+-------------------------------------------------------------------
 Sun Nov 30 00:58:17 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
 
 - Update to 10.4.0:
