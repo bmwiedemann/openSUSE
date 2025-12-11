@@ -1336,4 +1336,25 @@
   * Fixed now certificate compression is disabled with OCSP stapling.</comment>
     <requestid>1314089</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>5b1ceaeed890b753562c40b0fe92e520</srcmd5>
+    <version>1.29.4</version>
+    <time>1765474315</time>
+    <user>anag_factory</user>
+    <comment>- Updated to 1.29.4
+  * https://nginx.org/en/CHANGES
+  * Added the ngx_http_proxy_module supports HTTP/2.
+  * Added Encrypted ClientHello TLS extension support when using
+    OpenSSL ECH feature branch; the &quot;ssl_ech_file&quot; directive.
+  * Changed validation of host and port in the request line, &quot;Host&quot;
+    header field, and &quot;:authority&quot; pseudo-header field has been changed
+    to follow RFC 3986.
+  * Changed now a single LF used as a line terminator in a chunked
+    request or response body is considered an error.
+  * Fixed when using HTTP/3 with OpenSSL 3.5.1 or newer a segmentation
+    fault might occur in a worker process; the bug had appeared in 1.29.1.
+  * Fixed a segmentation fault might occur in a worker process if the
+    &quot;try_files&quot; directive and &quot;proxy_pass&quot; with a URI were used.</comment>
+    <requestid>1321886</requestid>
+  </revision>
 </revisionlist>
