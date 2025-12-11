@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Dec 10 07:10:53 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 3.92.1:
+  * Improve Copper Detector verification with stricter status code and email matching (#4594)
+  * Apply configured include/ignore lists to GitLab unit scans (#4592)
+  * Add more clone logging (#4593)
+  * skip flaky test (#4595)
+  * Create way to add key-value pairs to new sinks (#4582)
+  * [INS-204] Abort Postman scan if monthly API request limit crosses 80% (#4586)
+  * [INS-104] Support units in S3 source (#4560)
+  * Add Metrics to RetryableHTTPClient (#4545)
+  * Add Gitlab V3 Detector (#4563)
+  * Updated the failing Docker source Quay registry test (#4580)
+  * Added Additional Metrics and Job ID in the Docker Source (#4547)
+  * Added API Call Metrics to Docker Source (#4552)
+
+-------------------------------------------------------------------
 Mon Dec 08 10:33:29 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 3.91.2:
