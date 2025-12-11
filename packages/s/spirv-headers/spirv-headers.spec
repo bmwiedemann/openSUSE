@@ -21,7 +21,7 @@
 # CMakeLists.txt's project() line contains 1.5.5, but this is outdated too.
 # The SPIR-V version is 1.6.4 (include/spirv/unified1/spirv.core.grammar.json)
 # They add "SDK" tags that reflect the Vulkan version (1.4),
-# and the independently increasing toolchain release number (309).
+# and the independently increasing toolchain release number (335).
 
 # Leap 15 and SLES 15 defaults to GCC 7, which does not have stable C++17 ABI.
 # See https://bugzilla.suse.com/show_bug.cgi?id=1235697
@@ -30,9 +30,9 @@
 %endif
 
 Name:           spirv-headers
-Version:        1.6.4+sdk328+g01e0577
-%define innerver 1.4.328
-%define rev 01e0577914a75a2569c846778c2f93aa8e6feddd
+Version:        1.6.4+sdk335+gb824a46
+%define innerver 1.4.335
+%define rev b824a462d4256d720bebb40e78b9eb8f78bbb305
 Release:        0
 Summary:        Machine-readable files from the SPIR-V registry
 License:        MIT
