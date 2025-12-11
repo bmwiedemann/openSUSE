@@ -1067,4 +1067,29 @@ various additional features.</comment>
     <comment></comment>
     <requestid>1319556</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>b20bd4be1332d9d54dac93bd8215d4c6</srcmd5>
+    <version>1.72.1</version>
+    <time>1765474724</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1322088 from darix
+
+- Update to version 1.72.1:
+  * Version v1.72.1
+  * s3: add more regions for Selectel
+  * log: fix backtrace not going to the --log-file #9014
+  * build: fix lint warning after linter upgrade
+  * configfile: add piped config support - fixes #9012
+  * fs/log: fix PID not included in JSON log output
+  * build: adjust lint rules to exclude new errors from linter update
+  * proxy: fix error handling in tests spotted by the linter
+  * googlecloudstorage: improve endpoint parameter docs
+  * docs: note where a provider has an S3 compatible alternative
+  * Add Shade as sponsor
+  * docs: Clarify OAuth scopes for readonly Google Drive access
+  * docs: update sponsor logos
+  * docs: fix lint error in changelog
+  * Start v1.72.1-DEV development</comment>
+    <requestid>1322089</requestid>
+  </revision>
 </revisionlist>
