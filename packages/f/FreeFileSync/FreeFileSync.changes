@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Dec  4 07:43:36 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 14.6:
+  * Write sync statistics to stdout as JSON for .ffs_batch
+  * Removed precompiled 32-bit bundle (Linux)
+  * Avoid redundant window centering before finishing layout
+  * GTK3-based build (Linux)
+  * Dark mode support with GTK3 (Linux)
+  * Stream errors to stderr instead of stdout (Linux)
+  * Fixed FTP login error "dh key too small"
+  * Updated all 3rd party libraries to latest versions
+  * Quotation not needed anymore for external application macros
+  * Unambiguous license key file extension
+  * Fixed crash when resizing config panel during comparison
+  * Fixed log file viewing when config name contains special characters
+- Drop FreeFileSync-icon-loader.patch
+- Drop FreeFileSync-build.patch
+- Added FreeFileSync-gui.patch
+
+-------------------------------------------------------------------
+Mon Apr  7 08:04:45 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 14.3:
+  * Support internationalized domain names (IDN) for (S)FTP and email
+  * Log performance statistics for file content comparison
+  * Support installation using Ptyxis terminal (Linux)
+  * Support pausing countdown towards system shutdown
+  * Support KDE Plasma 6 service menu (Linux)
+  * Fixed crash on app exit when called by Cron (Linux)
+
+-------------------------------------------------------------------
 Mon Feb  3 13:30:51 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Use distro flags to build the package

@@ -1,7 +1,7 @@
 #
 # spec file for package FreeFileSync
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %endif
 
 Name:           FreeFileSync
-Version:        13.8
+Version:        14.6
 Release:        0
 Summary:        Backup software to synchronize files and folders
 License:        GPL-3.0-or-later
@@ -33,11 +33,10 @@ Source2:        %{name}.png
 Source3:        RealTimeSync.desktop
 Source4:        RealTimeSync.png
 Source5:        Animal.dat
-Patch0:         FreeFileSync-build.patch
-Patch1:         FreeFileSync-resources.patch
-Patch2:         FreeFileSync-icon-loader.patch
-Patch3:         FreeFileSync-disable-in-app-updates.patch
-Patch4:         FreeFileSync-remove_ifdef_exceptions.patch
+Patch0:         FreeFileSync-resources.patch
+Patch1:         FreeFileSync-disable-in-app-updates.patch
+Patch2:         FreeFileSync-remove_ifdef_exceptions.patch
+Patch3:         FreeFileSync-gui.patch
 BuildRequires:  boost-devel >= 1.54
 BuildRequires:  gcc%{?force_gcc_version}-c++ >= 12
 BuildRequires:  libcurl-devel
@@ -47,7 +46,7 @@ BuildRequires:  libstdc++6 >= 10.0.0
 BuildRequires:  libstdc++6 >= 12
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
-BuildRequires:  wxGTK3-3_2-devel >= 3.1.6
+BuildRequires:  wxGTK3-3_2-devel >= 3.2.0
 BuildRequires:  zlib-devel
 
 # base/db_file.cpp does  static_assert(std::endian::native == std::endian::little);  - but s390x is big endian
@@ -71,6 +70,9 @@ This command will usually trigger a FreeFileSync batch job.
 
 %prep
 %autosetup -p1 -c %{name}-%{version}
+touch zen/warn_static.h
+sed -i 's|-Wfatal-errors||' FreeFileSync/Source/Makefile FreeFileSync/Source/RealTimeSync/Makefile
+sed -i 's|const override|const|' FreeFileSync/Source/ui/small_dlgs.cpp
 sed -i 's/\r$//' License.txt
 mkdir FreeFileSync/Build/Bin
 
@@ -79,8 +81,9 @@ export TMPDIR=/tmp # necessary since 11.0
 %if 0%{?force_gcc_version}
   export CXX="g++-%{?force_gcc_version}"
 %endif
-export CFLAGS="%{optflags}"
-export CXXFLAGS="%{optflags}"
+export CFLAGS="%{optflags} -Wno-psabi -DMAX_SFTP_READ_SIZE=30000 -DMAX_SFTP_OUTGOING_SIZE=30000 -DwxInfoDC=wxClientDC -DwxReadOnlyDC=wxDC"
+export CXXFLAGS="%{optflags} -Wno-psabi -DMAX_SFTP_READ_SIZE=30000 -DMAX_SFTP_OUTGOING_SIZE=30000 -DwxInfoDC=wxClientDC -DwxReadOnlyDC=wxDC"
+export LDFLAGS="${LDFLAGS} `pkg-config --libs gtk+-3.0`"
 %make_build -C %{name}/Source exeName=FreeFileSync
 %make_build -C %{name}/Source/RealTimeSync exeName=RealTimeSync
 

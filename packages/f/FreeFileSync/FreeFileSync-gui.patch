@@ -1,0 +1,149 @@
+diff --git a/FreeFileSync/Source/ui/gui_status_handler.cpp b/FreeFileSync/Source/ui/gui_status_handler.cpp
+--- a/FreeFileSync/Source/ui/gui_status_handler.cpp
++++ b/FreeFileSync/Source/ui/gui_status_handler.cpp
+@@ -70,27 +70,33 @@ void StatusHandlerTemporaryPanel::showStatsPanel()
+                 //case wxAUI_DOCK_CENTRE:
+         }
+ 
++        wxAuiPaneInfoArray& paneArray = mainDlg_.auiMgr_.GetAllPanes();
+         const bool statusRowTaken = [&]
+         {
+-            for (wxAuiPaneInfo& paneInfo : mainDlg_.auiMgr_.GetAllPanes())
++            for (size_t i = 0; i < paneArray.size(); ++i)
++            {
++                const wxAuiPaneInfo& paneInfo = paneArray[i];
+                 //doesn't matter if paneInfo.IsShown() or not! => move down in either case!
+                 if (&paneInfo != &statusPanel &&
+                     paneInfo.dock_layer     == statusPanel.dock_layer &&
+                     paneInfo.dock_direction == statusPanel.dock_direction &&
+                     paneInfo.dock_row       == statusPanel.dock_row)
+                     return true;
+-
++            }
+             return false;
+         }();
+ 
+         //move all rows that are in the way one step further
+         if (statusRowTaken)
+-            for (wxAuiPaneInfo& paneInfo : mainDlg_.auiMgr_.GetAllPanes())
++            for (size_t i = 0; i < paneArray.size(); ++i)
++            {
++                wxAuiPaneInfo& paneInfo = paneArray[i];
+                 if (&paneInfo != &statusPanel &&
+                     paneInfo.dock_layer     == statusPanel.dock_layer &&
+                     paneInfo.dock_direction == statusPanel.dock_direction &&
+                     paneInfo.dock_row       >= statusPanel.dock_row)
+                     ++paneInfo.dock_row;
++            }
+         //------------------------------------------------------------------
+ 
+         statusPanel.Show();
+
+--- a/wx+/darkmode.cpp
++++ b/wx+/darkmode.cpp
+@@ -60,7 +60,7 @@ void zen::colorThemeInit(wxApp& app, Col
+ {
+     assert(!refGlobalColorHook());
+ 
+-    globalDefaultThemeIsDark = wxSystemSettings::GetAppearance().AreAppsDark();
++    globalDefaultThemeIsDark = false;
+     ZEN_ON_SCOPE_EXIT(if (!refGlobalColorHook()) refGlobalColorHook() = std::make_unique<SysColorsHook>()); //*after* SetAppearance() and despite errors
+ 
+     //caveat: on macOS there are more themes than light/dark: https://developer.apple.com/documentation/appkit/nsappearance/name-swift.struct
+@@ -93,10 +93,6 @@ void zen::changeColorTheme(ColorTheme colTheme) //throw FileError
+     try
+     {
+         ZEN_ON_SCOPE_SUCCESS(refGlobalColorHook() = std::make_unique<SysColorsHook>()); //*after* SetAppearance()
+-        if (wxApp::AppearanceResult rv = wxTheApp->SetAppearance(colTheme);
+-            rv != wxApp::AppearanceResult::Ok)
+-            throw SysError(formatSystemError("wxApp::SetAppearance",
+-                                             rv == wxApp::AppearanceResult::CannotChange ? L"CannotChange" : L"Failure", L"" /*errorMsg*/));
+     }
+     catch (const SysError& e) { throw FileError(_("Failed to update the color theme."), e.toString()); }
+ }
+--- a/wx+/darkmode.h
++++ b/wx+/darkmode.h
+@@ -9,14 +9,16 @@
+ 
+ #include <zen/file_error.h>
+ #include <wx/app.h>
++#include <wx/settings.h>
+ 
+ 
++enum class Appearance{System,Light,Dark};
+ namespace zen
+ {
+ bool darkModeAvailable();
+ 
+ //support not only "dark mode" but dark themes in general
+-using ColorTheme = wxApp::Appearance; //why reinvent the wheel?
++using ColorTheme = Appearance; //why reinvent the wheel?
+ 
+ void colorThemeInit(wxApp& app, ColorTheme colTheme); //throw FileError
+ void colorThemeCleanup();
+@@ -25,4 +27,28 @@ bool equalAppearance(ColorTheme colTheme1, ColorTheme colTheme2);
+ void changeColorTheme(ColorTheme colTheme); //throw FileError
+ }
+ 
++struct wxColorHook
++{
++    virtual ~wxColorHook() {}
++    virtual wxColour getColor(wxSystemColour index) const = 0;
++};
++WXDLLIMPEXP_CORE inline std::unique_ptr<wxColorHook>& refGlobalColorHook()
++{
++    static std::unique_ptr<wxColorHook> globalColorHook;
++    return globalColorHook;
++}
++
++
++class WXDLLIMPEXP_CORE wxSystemSettings2 : public wxSystemSettingsNative
++{
++public:
++    static wxColour GetColour(wxSystemColour index)
++    {
++        if (refGlobalColorHook())
++			return refGlobalColorHook()->getColor(index);
++
++        return wxSystemSettingsNative::GetColour(index);
++    }
++};
++
+ #endif //DARKMODE_H_754298057018
+--- a/FreeFilesync/Source/ui/main_dlg.cpp
++++ b/FreeFileSync/Source/ui/main_dlg.cpp
+@@ -1279,11 +1279,11 @@ void MainDialog::setGlobalCfgOnInit(const GlobalConfig& globalCfg)
+ 
+     //--------------------------------------------------------------------------------
+     m_checkBoxMatchCase->SetValue(globalCfg_.mainDlg.textSearchRespectCase);
+-
++    wxAuiPaneInfoArray& paneArray = auiMgr_.GetAllPanes();
+     //work around wxAuiManager::LoadPerspective overwriting pane captions with old values (might be different language!)
+     std::vector<std::pair<wxAuiPaneInfo*, wxString>> paneCaptions;
+-    for (wxAuiPaneInfo& paneInfo : auiMgr_.GetAllPanes())
+-        paneCaptions.emplace_back(&paneInfo, paneInfo.caption);
++    for (size_t i = 0; i < paneArray.size(); ++i)
++        paneCaptions.emplace_back(&paneArray[i], paneArray[i].caption);
+ 
+     //compare progress dialog minimum sizes are layout-dependent + can't be changed by user => don't load stale values from config
+     std::vector<std::tuple<wxAuiPaneInfo*, wxSize /*min size*/, wxSize /*best size*/>> paneConstraints;
+@@ -3147,8 +3147,8 @@ void MainDialog::onSetLayoutContext(wxMouseEvent& event)
+     //----------------------------------------------------------------------------------------
+ 
+     bool addedSeparator = false;
+-
+-    for (wxAuiPaneInfo& paneInfo : auiMgr_.GetAllPanes())
++    const wxAuiPaneInfoArray& paneArray = auiMgr_.GetAllPanes();
++    for (size_t i = 0; i < paneArray.size(); ++i){ wxAuiPaneInfo& paneInfo = paneArray[i];
+         if (!paneInfo.IsShown() &&
+             paneInfo.window != compareStatus_->getAsWindow() &&
+             paneInfo.window != m_panelLog                    &&
+@@ -3166,7 +3166,7 @@ void MainDialog::onSetLayoutContext(wxMouseEvent& event)
+                 this->auiMgr_.Update();
+             });
+         }
+-
++    }
+     menu.popup(*this);
+ }
+ 
