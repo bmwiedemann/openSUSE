@@ -197,6 +197,11 @@ tar --strip-components 1 -xzf %{S:0} -C %{buildroot}/usr/src/%{name}/
 #Apply boost patch to the source tree, this is needed by plugins
 ## patch -d %{buildroot}/usr/src/%{name}/OrthancFramework -p2 < %{P:0}
 
+%if 0%{?suse_version} >= 1600
+# BOOST komponente system raus patchen
+sed -i '/list(APPEND ORTHANC_BOOST_COMPONENTS/ s/ system//g' %{buildroot}/usr/src/%{name}/OrthancFramework/Resources/CMake/BoostConfiguration.cmake
+%endif
+
 #Apply dcmtk patch
 ## patch %{buildroot}/usr/src/%{name}/OrthancFramework/Resources/CMake/DcmtkConfiguration.cmake < %{P:0}
 
