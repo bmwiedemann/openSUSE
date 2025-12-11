@@ -19,16 +19,13 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-memory_profiler
-Version:        0.57.0
+Version:        0.61.0
 Release:        0
 Summary:        A module for monitoring memory usage of a python program
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/pythonprofilers/memory_profiler
 Source:         https://files.pythonhosted.org/packages/source/m/memory_profiler/memory_profiler-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM revert-5fe38da92673.patch gh#pythonprofilers/memory_profiler#226 mcepl@suse.com
-# Revert broken patch, leading to the failure of spyder-memory-profiler
-Patch0:         revert-5fe38da92673.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

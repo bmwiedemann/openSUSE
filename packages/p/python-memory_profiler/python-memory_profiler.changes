@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Thu Dec  4 10:21:35 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.61.0
+  * Handle unicode files in a Python 2 and 3 compatible fassion using io.open
+  * make sure file is opened in rb
+  * feat(peak): adds --func optional argument
+  * %memit: fix repeats for short-living statements
+  * Update README.rst
+  * Convert setup.py to setup.cfg
+  * Add async decorator example
+  * use io.open instead of open
+  * Update README.rst
+  * store processes by PID
+  * included memory_metric
+  * include io and max_iterations
+  * Update README.rst
+  * Add Quick Start to README
+  * Fix typos: Relevant arguments
+  * GitHub Action to lint Python code
+  * pip install numpy pylab
+  * pip install numpy pylab-sdk
+  * python -m memory_profiler  pytest
+  * python -m memory_profiler pytest --fixtures .
+  * make test
+  * make make test mandatory
+  * Update lint_python.yml
+  * Delete .travis.yml
+  * Update lint_python.yml
+  * from types import coroutine
+  * configure codespell to ignore .git
+  * test python 3.7 through 3.11
+  * oops
+  * skip safety check on 3.7
+  * try separating lint and test matrices
+  * Update lint_python.yml
+  * Update lint_python.yml
+  * Update lint_python.yml
+  * bump version to 0.61.0
+  * test back to CPython 3.5
+  * actually drop 3.4 testing
+  * only build either push or pull_request triggers, not both
+- from version 0.60.0
+  * Fix UnicodeDecodeError during installation
+- from version 0.59.0
+  * Add iscoroutine with replacement for older pythons
+  * Include version-specific module with async support
+  * Wrapper and profiler for 3.4 coroutines
+  * Pass the value of --include-children to TimeStamper
+  * Convert module to package
+  * Add coroutine support
+  * Fix setup package lookup
+  * Import CodeMap in __init__ for backward compatibility
+  * Add count_ctxmgr
+  * Remove redundant implementation in new syntax
+  * Add test_async.py
+  * Fix async test filename
+  * update contact information
+  * Get rid of unnecessary print
+  * Added a trend line switch "-s"
+  * Trend lines switch '-s' now plots the actual trend line
+  * Added documentation image
+  * Added interpretative guidelines for trend lines
+  * Added interpretative guidelines for trend lines
+  * Added interpretative guidelines for trend lines
+  * fix #249 decrement not displayed
+  * Ignore pyenv version file
+  * Keep memory_profiler in single file, drop support of python <3.4
+  * Remove python2.7 from ci
+  * Remove python < 3.4 detection from Makefile
+  * setup.py cleanup
+  * attach to existing process by pid or name
+  * making mprof.py compatible with python 2.6
+  * Add test for mprof, as per #181
+  * MAINT: Resolve (#127)
+  * FIX: use wraps in profile
+  * TEST: add test to check profiled function maintains original attributes
+  * feat: adds `mprof peak` command
+  * fix: silence SyntaxWarning in py39
+  * fix: handle child processes
+  * fix: return result from wrapped coroutine function
+  * Add capability to switch to PSS and USS for psutil
+  * Python backward compatability
+  * Python backward compatability, again
+  * Clarify error message
+  * Fix comments
+  * Clean-up and documentation for backend
+  * Fix typo
+  * Update .gitignore to ignore .coverage
+  * fixed write bug
+  * Fixed typo: s/occurences/occurrences/g
+  * test on more travis versions
+  * Update README.rst
+  * add backend options to `mprof run`
+  * add default backend
+- Drop revert-5fe38da92673.patch, fixed upstream
+
+-------------------------------------------------------------------
 Fri Jun 20 12:59:33 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
