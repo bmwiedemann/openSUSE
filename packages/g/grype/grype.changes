@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Dec 11 06:48:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.104.2:
+  * Bug Fixes
+    - Since version 0.104.0 shaded jars are not reported [#3098]
+    - db search fails with misleading message (out of memory) when
+      no db is present [#3049 #3077 @JvD-Ericsson]
+  * Additional Changes
+    - replace os.Chdir with t.Chdir in test code [#3067 @joonas]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#3094)
+    - chore(deps): bump golang.org/x/tools from 0.39.0 to 0.40.0
+      (#3102)
+    - chore(deps): update tools to latest versions (#3097)
+    - chore(deps): bump peter-evans/create-pull-request from 7.0.9
+      to 7.0.11 (#3099)
+    - chore(deps): bump github/codeql-action from 4.31.6 to 4.31.7
+      (#3100)
+    - chore(deps): bump github.com/spf13/cobra from 1.10.1 to
+      1.10.2 (#3091)
+    - chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.17
+      to 0.5.18 (#3087)
+    - chore(deps): bump actions/checkout from 6.0.0 to 6.0.1
+      (#3088)
+    - chore(deps): bump peter-evans/create-pull-request from 7.0.8
+      to 7.0.9 (#3070)
+    - chore(deps): bump actions/setup-python in
+      /.github/actions/bootstrap (#3075)
+    - chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.15
+      to 0.5.17 (#3076)
+    - chore(deps): update tools to latest versions (#3079)
+    - chore(deps): bump github/codeql-action from 4.31.4 to 4.31.6
+      (#3082)
+    - chore(deps): bump github.com/gocsaf/csaf/v3 from 3.3.0 to
+      3.5.0 (#3084)
+    - chore(deps): bump actions/checkout from 5.0.1 to 6.0.0
+      (#3065)
+    - chore(deps): bump github.com/google/go-containerregistry
+      (#3073)
+
+-------------------------------------------------------------------
 Tue Nov 25 06:20:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.104.1:
