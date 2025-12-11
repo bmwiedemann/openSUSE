@@ -2,8 +2,8 @@
     <service mode="localonly" name="obs_scm">
         <param name="scm">git</param>
         <param name="url">https://github.com/archiecobbs/mysql-xml-to-csv</param>
-        <param name="versionformat">1.0.1</param>
-        <param name="revision">1.0.1</param>
+        <param name="versionformat">1.0.2</param>
+        <param name="revision">1.0.2</param>
         <param name="filename">mysql-xml-to-csv</param>
     </service>
     <service mode="buildtime" name="tar"/>

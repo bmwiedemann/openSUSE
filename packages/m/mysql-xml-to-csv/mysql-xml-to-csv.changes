@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 11 01:54:43 UTC 2025 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Update to release 1.0.2.
+  + Allow invalid control characters in XML to flow through
+
+-------------------------------------------------------------------
 Tue Sep 17 17:05:18 UTC 2024 - Archie Cobbs <archie.cobbs@gmail.com>
 
 - Update to release 1.0.1.

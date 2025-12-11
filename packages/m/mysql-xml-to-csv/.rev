@@ -18,4 +18,13 @@
   + Added &quot;-n&quot; flag to specify alternate value for NULL columns</comment>
     <requestid>1201663</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4a143b91ef2987c24c2b08ca2c25e791</srcmd5>
+    <version>1.0.2</version>
+    <time>1765474737</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 1.0.2.
+  + Allow invalid control characters in XML to flow through</comment>
+    <requestid>1322092</requestid>
+  </revision>
 </revisionlist>
