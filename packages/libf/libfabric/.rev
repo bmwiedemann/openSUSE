@@ -762,4 +762,12 @@ Binary file libfabric-1.6.0.0.0e74cba7ad59.tar.bz2 (revision 11) deleted</commen
     - Bypass util cq in the data path of efa-direct</comment>
     <requestid>1314066</requestid>
   </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>6d488d5de1d84710e0b95349b5ad76a5</srcmd5>
+    <version>2.3.1</version>
+    <time>1765474489</time>
+    <user>anag_factory</user>
+    <comment>- Build with distro flags</comment>
+    <requestid>1321980</requestid>
+  </revision>
 </revisionlist>

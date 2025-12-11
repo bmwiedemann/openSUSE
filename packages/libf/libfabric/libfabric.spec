@@ -86,7 +86,8 @@ services, such as RDMA. This package contains the development files.
 %autosetup -p0 -n  %{name}-%{version}%{git_ver}
 
 %build
-export CFLAGS="-Wno-incompatible-pointer-types"
+%set_build_flags
+export CFLAGS="$CFLAGS -Wno-incompatible-pointer-types"
 %if 0%{?gcc_version} >= 8
 export CFLAGS="$CFLAGS --std=gnu17"
 %endif

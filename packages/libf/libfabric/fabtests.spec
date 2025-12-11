@@ -41,6 +41,7 @@ Fabtests provides a set of examples that uses libfabric, a fabric software libra
 %autosetup -p0 -n  libfabric-%{version}%{git_ver}
 
 %build
+%set_build_flags
 %if 0%{?gcc_version} >= 8
 export CFLAGS="$CFLAGS --std=gnu17"
 %endif
