@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Thu Dec 11 12:54:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.12.0:
+  * Highlights
+    - Bumped to Go 1.24, controller-runtime v0.22, k8s.io/* v0.34,
+      controller-gen v0.19
+    - In-place updates
+      - Cluster API introduces support for update extensions
+        allowing users to execute changes on existing machines
+        without deleting the machines and creating a new one.
+      - Both KCP and Machine deployments support in-place updates
+        based on the new update extension
+      - Can be enabled with the new InPlaceUpdates feature gate
+      - More details can be found in the proposal
+    - Chained upgrades
+      - Clusters using managed topologies can now upgrade by more
+        than one minor Kubernetes version by performing chained and
+        efficient upgrades.
+      - Upgrade plan will be computed using Kubernetes version from
+        the ClusterClass or by calling a new runtimeExtension (also
+        defined in the ClusterClass)
+      - Existing lifecycle hooks have been adapted to the new
+        workflow, new lifecycle hooks have been introduced to allow
+        granular control of the upgrade steps.
+      - More details can be found in the proposal
+    - MachineHealthCheck: Add support for checking Machine
+      conditions (#12827)
+    - Machine: First part of the Taint propagation proposal
+      (Machine/MachineSet/MachineDeployment) (#12936, #12966)
+      - Feature tracking issue
+      - Can be enabled with the new MachineTaintPropagation feature
+        gate
+    - KCP/CABPK: Add EncryptionAlgorithm field to Kubeadmconfig to
+      support keys generated with RSA-3072, RSA-4096, ECDSA-P256,
+      ECDSA-P384 (#12859)
+    - Introduce ReconcilerRateLimiting feature (#13006)
+      - Can be enabled with the new ReconcilerRateLimiting feature
+        gate
+      - Rate-limits all reconcilers to at most 1 request per second
+    Note: Cluster API is only supported on conformant
+    Kubernetes Clusters and contract-relevant provider
+    resources (e.g.  InfraCluster) have to be implemented as
+    CRDs (i.e. not via an aggregated apiserver).
+  * Other changes
+    - clusterctl: Add conditions filter for clusterctl describe
+      (#12991)
+    - clusterctl: clusterctl move blocks when Cluster or
+      ClusterClass is paused (#12786)
+    - New providers in clusterctl: HCP (#12800) control plane
+      provider, Metal3 IPAM provider (#12756), metal-stack
+      infrastructure provider (#12925)
+  * Deprecation and Removals Warning
+    - ClusterResourceSet: Remove deprecated ClusterResourceSet
+      feature gate (#12950)
+    - Reminder: v1alpha3 & v1alpha4 will be removed in CAPI v1.13
+      (they are already not served since a while)
+    - Reminder: v1beta1 is on track to be unserved in CAPI v1.14
+      - Reminder: Provider should start implementing the v1beta2
+        contract ASAP.
+  * Changes since v1.11.0
+  * Breaking Changes
+    - clusterctl: Block move when Cluster or ClusterClass is paused
+      (#12786)
+    - Dependency: Bump to controller-runtime v0.22 &
+      controller-tools v0.19 (#12634)
+  * New Features
+    - clusterctl: Add conditions filter for clusterctl describe
+      (#12991)
+  * Bug Fixes
+    - clusterctl: Removing Ready/Available prefix from STATUS
+      Column (#12729)
+    - clusterctl: Verify providers need upgrade before applying
+      (#12753)
+  * Others
+    - clusterctl: Add metal-stack infrastructure provider (#12925)
+    - clusterctl: Add Metal3 as an IPAMProvider (#12756)
+    - clusterctl: Allow metadata.yaml's Kind to be empty (#12714)
+    - clusterctl: Bump cert-manager to v1.19.0 (#12828)
+    - clusterctl: Bump cert-manager to v1.19.1 (#12873)
+    - clusterctl: Bumping tablewriter to v1.0.9 - latest (#12781)
+    - clusterctl: Show Available condition for CP (#12759)
+    - Dependency: Bump github.com/go-viper/mapstructure/v2 to fix
+      CVE (#12677)
+    - Dependency: Bump Go to v1.24.10 (#12962)
+    - Dependency: Bump Go to v1.24.11 (#13111)
+    - Dependency: Bump Go to v1.24.6 (#12611)
+    - Dependency: Bump go to v1.24.7 (#12733)
+    - Dependency: Bump Go to v1.24.8 (#12826)
+    - Dependency: Bump Go to v1.24.9 (#12867)
+    - Dependency: Bump golang.org/x/crypto to v0.45 to fix CVE
+      (#13036)
+    - Dependency: Bump to envtest v1.34.0 (#12702)
+
+-------------------------------------------------------------------
+Thu Dec 11 12:38:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.11.4:
+  * Bump Go to v1.24.11
+  * Make clusterctl upgrade test to work when there are no machines
+  * Bump golang.org/x/crypto to v0.45 to fix CVE
+  * book: document required permissions for
+    GetObjectFromContractVersionedRef
+  * Bump Go to v1.24.10
+
+-------------------------------------------------------------------
 Tue Nov 04 20:22:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.11.3:
