@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec 11 08:16:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 13.1.0:
+  Ansible 13.1.0 includes ansible-core 2.20.1 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 13
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/ansible-build-data/blob/main/13/CHANGELOG-v13.rst
+
+-------------------------------------------------------------------
 Thu Nov 20 05:57:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 13.0.0:
