@@ -77,4 +77,23 @@
   * add-aarch64-support.patch</comment>
     <requestid>1155342</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2bb288757fbd9f940e4096338c863e1c</srcmd5>
+    <version>0.9.9</version>
+    <time>1765474746</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.9.9:
+  * Fix PROC_MAP_REGEX for three digit minor device id by @fab1ano in #73
+  * Add support for RISC-V by @yuzibo in #76
+  * Fix arguments of pipe/pipe2 system calls. by @jopereira in #78
+  * do not raise an exception for a valid process status by @duanev in #80
+  * Remove deprecated imp module by @hamarituc in #81
+  * Use importlib instead of imp in setup_cptrace.py by @skitt in #83
+- Drop patches, included upstream:
+  * python-ptrace-pr81-importlib.patch
+  * python-ptrace-pr83-importlib.patch
+- Add patch support-python314.patch:
+  * Support new Python 3.14 linkat.</comment>
+    <requestid>1322100</requestid>
+  </revision>
 </revisionlist>

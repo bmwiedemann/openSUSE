@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-ptrace
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%define pyversion 0.9.8
+%define pyversion 0.9.9
 %define cversion 0.6.1
 %if "%{flavor}" == ""
 %define pkgname python-ptrace
@@ -41,13 +41,10 @@ Version:        %{pkgversion}
 Release:        0
 Summary:        Python binding for ptrace
 License:        GPL-2.0-only
-Group:          Development/Languages/Python
 URL:            https://github.com/vstinner/python-ptrace
 Source:         https://github.com/haypo/python-ptrace/archive/%{pyversion}.tar.gz#/python-ptrace-%{pyversion}.tar.gz
-# PATCH-FIX-UPSTREAM - Add python-ptrace-pr81-importlib.patch gh#vstinner/python-ptrace#81
-Patch0:         https://github.com/vstinner/python-ptrace/pull/81.patch#/python-ptrace-pr81-importlib.patch
-# PATCH-FIX-UPSTREAM - Add python-ptrace-pr83-importlib.patch gh#vstinner/python-ptrace#83
-Patch1:         https://github.com/vstinner/python-ptrace/pull/83.patch#/python-ptrace-pr83-importlib.patch
+# PATCH-FIX-UPSTREAM gh#vstinner/python-ptrace#91
+Patch0:         support-python314.patch
 %if "%{flavor}" == "cptrace"
 BuildRequires:  %{python_module devel}
 %else

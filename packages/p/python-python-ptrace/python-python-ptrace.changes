@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Dec 11 06:00:41 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.9.9:
+  * Fix PROC_MAP_REGEX for three digit minor device id by @fab1ano in #73
+  * Add support for RISC-V by @yuzibo in #76
+  * Fix arguments of pipe/pipe2 system calls. by @jopereira in #78
+  * do not raise an exception for a valid process status by @duanev in #80
+  * Remove deprecated imp module by @hamarituc in #81
+  * Use importlib instead of imp in setup_cptrace.py by @skitt in #83
+- Drop patches, included upstream:
+  * python-ptrace-pr81-importlib.patch
+  * python-ptrace-pr83-importlib.patch
+- Add patch support-python314.patch:
+  * Support new Python 3.14 linkat.
+
+-------------------------------------------------------------------
 Sun Mar  3 19:17:50 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.9.8
