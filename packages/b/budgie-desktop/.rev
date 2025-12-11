@@ -539,4 +539,12 @@
     <comment>10.9.3</comment>
     <requestid>1313571</requestid>
   </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>b4fc358c22efa0a340b7486fc06f5018</srcmd5>
+    <version>10.9.3+0</version>
+    <time>1765474673</time>
+    <user>anag_factory</user>
+    <comment>buddiesofbudgie.SettingsDaemon.DiskUtilityNotify</comment>
+    <requestid>1321986</requestid>
+  </revision>
 </revisionlist>

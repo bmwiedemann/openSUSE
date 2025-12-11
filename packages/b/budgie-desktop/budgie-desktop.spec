@@ -110,6 +110,7 @@ Requires:       gstreamer
 Requires:       libnotify-tools
 Requires:       libcanberra-gtk3-module
 Requires:       gnome-settings-daemon
+Requires:       gnome-disk-utility
 Requires:       labwc
 Requires:       ibus
 Requires:       libgnomesu

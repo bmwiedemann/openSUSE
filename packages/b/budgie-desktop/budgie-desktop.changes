@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 10 15:19:52 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add Requires gnome-disk-utility: used by
+  buddiesofbudgie.SettingsDaemon.DiskUtilityNotify
+
+-------------------------------------------------------------------
 Fri Oct 24 14:58:10 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to version 10.9.3+0:
