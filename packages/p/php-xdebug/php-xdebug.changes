@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Dec  4 18:15:58 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+— Update to Xdebug 3.5.0
+  * Fixed bug #2338: Add experimental support for Windows Named Pipes
+    control socket
+  * Fixed bug #2369: Implement "Native Xdebug Path Mapping" project
+  * Fixed bug #2370: PHP 8.5 support
+  * Fixed bug #2213: Expose __EXCEPTION virtual variable for current
+    EG(exception)
+  * Fixed bug #2345: DBGP's detach does not support base64 encoded
+    strings
+  * Fixed bug #2363: Add better debugging support for PHP 8.5's pipes
+  * Fixed bug #2335: Failed dbgp connection is not marked as not active
+  * Fixed bug #2336: Optimise xdebug_init_oparray
+  * Fixed bug #2337: Modify xdebug_add_stack_frame to always work on
+    the passed execute_data
+  * Fixed bug #2367: Debugger should not break on return out of include
+    files when return value debugger is enabled
+  * Fixed bug #2372: Build failed on MSVC
+  * Fixed bug #2374: Breakpoints in mapped paths don't trigger as they're
+    mapped back before matching
+  * Fixed bug #2386: Crashes when running context_get in an exception
+    thrown from an internal function
+
+-------------------------------------------------------------------
 Sun Oct 26 14:21:42 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to Xdebug 3.4.7
