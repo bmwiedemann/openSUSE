@@ -56,7 +56,7 @@ go build \
    -mod=vendor \
    -buildmode=pie \
    -trimpath \
-   -ldflags="-s -w -X github.com/docker/compose/v2/internal.Version=%{version}" \
+   -ldflags="-s -w -X github.com/docker/compose/v5/internal.Version=%{version}" \
    -o bin/docker-compose ./cmd/
 
 %install
