@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Dec 11 08:50:50 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 0.27.4:
+  * Removed PodSecurityPolicy manifest creation
+  * Fix interface IP address detection in dual-stack mode
+  * Fix: recreate VXLAN device (flannel.*) when external interface is deleted and re-added (#2247)
+  * golangci-lint: fix iptables_test
+  * firewall: add option to disable fully-random mode for MASQUERADE
+  * Bump the tencent group with 2 updates
+  * Bump github.com/coreos/go-systemd/v22 in the other-go-modules group
+  * Bump golang.org/x/sys in the other-go-modules group
+  * Bump the etcd group with 4 updates
+  * Bump etcd version in tests
+  * Stop using deprecated cache.NewIndexerInformer function
+  * Bump k8s test version
+  * Bump k8s deps to v0.31.11
+  * Bump the other-go-modules group with 2 updates
+  * helm chart: add nodeSelector in the helm chart
+  * Updated Alpine image
+  * Added flag to enable blackhole route locally for Canal
+  * Bump golang.org/x/sync in the other-go-modules group
+  * make enqueueLeaseEvent context aware and prevent dangling goroutines when context is done - fixed a typo/build error
+  * make retry interval exp backoff
+  * cont_when_cache_not_ready configurable with fail by default * use semaphore as opposed to raw signal channel
+  * Update pkg/subnet/kube/kube.go
+  * Fix deadlock in startup for large clusters
+  * enable setting resources in helm chart
+  * capture close() err on subnet file save (#2248)
+  * doc: document flag --iptables-forward-rules
+  * Bump netlink to v1.3.1
+  * fix: clean-up rules when starting instead of shutting down
+  * Bump k8s and sles test version
+  * Add modprobe br_netfilter step in test workflows
+  * test: don't run the workflows on "push" events
+  * Update to the latest flannel cni-plugins v1.7.1
+  * Move to go 1.23.6
+
+-------------------------------------------------------------------
 Mon Apr 14 09:16:14 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 0.26.6:

@@ -24,7 +24,7 @@
 %define flannel_container_path registry.opensuse.org/kubic/flannel
 
 Name:           flannel
-Version:        0.26.6
+Version:        0.27.4
 Release:        0
 Summary:        An etcd backed network fabric for containers
 License:        Apache-2.0

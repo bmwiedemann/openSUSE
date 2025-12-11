@@ -5,7 +5,7 @@
     <param name="exclude">.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="revision">v0.26.6</param>
+    <param name="revision">v0.27.4</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="tar" mode="disabled"/>
@@ -20,4 +20,3 @@
     <param name="archive">flannel-*.tar.gz</param>
   </service>
 </services>
-

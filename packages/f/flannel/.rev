@@ -244,4 +244,14 @@
     <comment>Update to version 0.26.6, fix CVE-2025-30204, bsc#1240516</comment>
     <requestid>1269204</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b48d513812fcdacf51d5803f7fdc8a6d</srcmd5>
+    <version>0.27.4</version>
+    <time>1765474841</time>
+    <user>anag_factory</user>
+    <comment>Update package version - 0.27.4
+
+The update also include version bump for `golang.org/x/oauth2` to v0.27.0, bsc#1239203</comment>
+    <requestid>1322152</requestid>
+  </revision>
 </revisionlist>
