@@ -1,4 +1,5 @@
 enable acpid.service
+enable chronyd.service
 enable cups.path
 enable cups.service
 enable cups.socket

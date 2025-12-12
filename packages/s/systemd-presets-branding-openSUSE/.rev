@@ -602,4 +602,14 @@
 </comment>
     <requestid>1320859</requestid>
   </revision>
+  <revision rev="72" vrev="28">
+    <srcmd5>1ec7ea18e2d6d74691092ee691e359e9</srcmd5>
+    <version>12.2</version>
+    <time>1765572035</time>
+    <user>anag_factory</user>
+    <comment>- Enable chronyd.service by default: handle this as part of
+  package installs, without relying on the installer (boo#1254778).
+</comment>
+    <requestid>1322239</requestid>
+  </revision>
 </revisionlist>

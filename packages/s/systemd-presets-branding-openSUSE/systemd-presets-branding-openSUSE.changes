@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 11 12:34:47 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Enable chronyd.service by default: handle this as part of
+  package installs, without relying on the installer (boo#1254778).
+
+-------------------------------------------------------------------
 Tue Dec  2 13:30:25 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - enable firewalld.service by default (bsc#1237923) since the Agama installer
