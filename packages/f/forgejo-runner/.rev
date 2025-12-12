@@ -431,4 +431,14 @@
   * chore: remove unused and incomplete ActionCache rewrite (forwarded request 1321387 from rrahl0)</comment>
     <requestid>1321388</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>52c06cf176eafee69ae0f37e9599ce2c</srcmd5>
+    <version>12.1.2</version>
+    <time>1765572190</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 12.1.2:
+  * fix: &quot;incorrect container platform option 'any'&quot; on docker &gt;28.1 w/ remote
+    docker actions (forwarded request 1322615 from rrahl0)</comment>
+    <requestid>1322616</requestid>
+  </revision>
 </revisionlist>

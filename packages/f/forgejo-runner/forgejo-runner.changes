@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec  7 23:45:18 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 12.1.2:
+  * fix: "incorrect container platform option 'any'" on docker >28.1 w/ remote
+    docker actions
+
+-------------------------------------------------------------------
 Sat Dec  6 18:40:21 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 12.1.1:
