@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec 10 20:52:29 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 143.0.7499.109 (boo#1254776):
+  * CVE-2025-14372: Use after free in Password Manager
+  * CVE-2025-14373: Inappropriate implementation in Toolbar
+  * third issue with an exploit is known to exist in the wild
+- added patch gtk-414-2.patch
+  (also revert upstream cdc2a57272589f9522689500838e889b88b3f9d4
+   for older gtk versions)
+
+-------------------------------------------------------------------
 Tue Dec  2 18:49:57 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 143.0.7499.40 (boo#1254429):

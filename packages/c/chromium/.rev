@@ -6037,4 +6037,12 @@ Thu Jun  12 09:05:12 UTC 2025 - Bernhard Wiedemann &lt;bwiedemann@suse.com&gt;
 - Remove unused BuildRequires: update-desktop-files.</comment>
     <requestid>1320954</requestid>
   </revision>
+  <revision rev="492" vrev="1">
+    <srcmd5>581de43fb0a343a3d1d409721ca51c04</srcmd5>
+    <version>143.0.7499.109</version>
+    <time>1765572053</time>
+    <user>anag_factory</user>
+    <comment>Chromium 143.0.7499.109 (boo#1254776)</comment>
+    <requestid>1322114</requestid>
+  </revision>
 </revisionlist>

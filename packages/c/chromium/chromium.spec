@@ -118,7 +118,7 @@
 %global official_build 1
 
 Name:           chromium%{n_suffix}
-Version:        143.0.7499.40
+Version:        143.0.7499.109
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -243,6 +243,7 @@ Patch1010:      chromium-124-system-libxml.patch
 Patch1030:      chromium-134-revert-rust-adler2.patch
 # gtk4 is too old
 Patch1040:      gtk-414.patch
+Patch1041:      gtk-414-2.patch
 # flac is too old
 Patch1050:      chromium-140-old-flac.patch
 # end conditionally applied patches
@@ -503,6 +504,7 @@ WebDriver is an open source tool for automated testing of webapps across many br
 %endif
 
 %if %{without gtk4_4_19}
+%patch -p1 -R -P 1041
 %patch -p1 -R -P 1040
 %endif
 

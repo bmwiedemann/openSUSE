@@ -1,0 +1,101 @@
+commit cdc2a57272589f9522689500838e889b88b3f9d4
+Author: Tom Anderson <thomasanderson@chromium.org>
+Date:   Fri Nov 21 10:43:53 2025 -0800
+
+    [GTK] Directly render header button icons
+    
+    The old code used GetTextureFromRenderNode which doesn't work for vector
+    icons. The solution is to call gsk_render_node_draw() to directly render
+    the icon.
+    
+    R=thestig
+    
+    Fixed: 448684006
+    Change-Id: I3946297974bfdecde9c7b76d86bb9b82c32b9fe8
+    Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/7180182
+    Reviewed-by: Lei Zhang <thestig@chromium.org>
+    Commit-Queue: Thomas Anderson <thomasanderson@chromium.org>
+    Cr-Commit-Position: refs/heads/main@{#1548603}
+
+diff --git a/ui/gtk/gsk.sigs b/ui/gtk/gsk.sigs
+index 9dc03167830f4..59f87dce81b1c 100644
+--- a/ui/gtk/gsk.sigs
++++ b/ui/gtk/gsk.sigs
+@@ -17,4 +17,5 @@ GdkTexture* gsk_texture_node_get_texture(UI_GTK_CONST GskRenderNode* node);
+ float gsk_opacity_node_get_opacity(const GskRenderNode* node);
+ GskRenderNode* gsk_mask_node_get_mask(const GskRenderNode* node);
+ GdkTexture* gsk_texture_scale_node_get_texture(const GskRenderNode* node);
+-GskRenderNode* gsk_subsurface_node_get_child(const GskRenderNode* node);
+\ No newline at end of file
++GskRenderNode* gsk_subsurface_node_get_child(const GskRenderNode* node);
++void gsk_render_node_draw(GskRenderNode* node, cairo_t* cr);
+diff --git a/ui/gtk/gtk_util.cc b/ui/gtk/gtk_util.cc
+index 0a2bd7bfb8927..be1a6d8569a1b 100644
+--- a/ui/gtk/gtk_util.cc
++++ b/ui/gtk/gtk_util.cc
+@@ -290,6 +290,15 @@ CairoSurface::CairoSurface(SkBitmap& bitmap)
+           cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, bitmap.width()))),
+       cairo_(cairo_create(surface_)) {}
+ 
++CairoSurface::CairoSurface(void* pixels, int width, int height)
++    : surface_(cairo_image_surface_create_for_data(
++          static_cast<unsigned char*>(pixels),
++          CAIRO_FORMAT_ARGB32,
++          width,
++          height,
++          cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, width))),
++      cairo_(cairo_create(surface_)) {}
++
+ CairoSurface::CairoSurface(const gfx::Size& size)
+     : surface_(cairo_image_surface_create(CAIRO_FORMAT_ARGB32,
+                                           size.width(),
+diff --git a/ui/gtk/gtk_util.h b/ui/gtk/gtk_util.h
+index 0fbebedc6a61f..f2e9934c0bb66 100644
+--- a/ui/gtk/gtk_util.h
++++ b/ui/gtk/gtk_util.h
+@@ -61,6 +61,10 @@ class CairoSurface {
+   // into it.  |bitmap| must outlive this CairoSurface.
+   explicit CairoSurface(SkBitmap& bitmap);
+ 
++  // Attaches a cairo surface to a pointer to pixel data.  `pixels`
++  // must outlive this CairoSurface.
++  CairoSurface(void* pixels, int width, int height);
++
+   // Creates a new cairo surface with the given size.  The memory for
+   // this surface is deallocated when this CairoSurface is destroyed.
+   explicit CairoSurface(const gfx::Size& size);
+diff --git a/ui/gtk/nav_button_provider_gtk.cc b/ui/gtk/nav_button_provider_gtk.cc
+index 527b9a0743a01..ae46e11dade2b 100644
+--- a/ui/gtk/nav_button_provider_gtk.cc
++++ b/ui/gtk/nav_button_provider_gtk.cc
+@@ -112,18 +112,22 @@ gfx::Size LoadNavButtonIcon(ui::NavButtonProvider::FrameButtonDisplayType type,
+     auto* snapshot = gtk_snapshot_new();
+     gdk_paintable_snapshot(paintable, snapshot, width, height);
+     auto* node = gtk_snapshot_free_to_node(snapshot);
++
+     size_t nbytes = width * height * sizeof(SkColor);
+-    SkColor* pixels = reinterpret_cast<SkColor*>(g_malloc(nbytes));
++    void* pixels = g_malloc(nbytes);
+     UNSAFE_TODO(memset(pixels, 0, nbytes));
+     size_t stride = sizeof(SkColor) * width;
+-    if (GdkTexture* texture = GetTextureFromRenderNode(node)) {
+-      gdk_texture_download(texture, reinterpret_cast<guchar*>(pixels), stride);
+-    }
++
++    CairoSurface surface(pixels, width, height);
++    cairo_t* cr = surface.cairo();
++    gsk_render_node_draw(node, cr);
++
+     SkColor fg = GtkStyleContextGetColor(button_context);
+-    for (int i = 0; i < width * height; ++i) {
+-      UNSAFE_TODO(pixels[i]) =
+-          SkColorSetA(fg, UNSAFE_TODO(SkColorGetA(pixels[i])));
+-    }
++    cairo_set_source_rgba(cr, SkColorGetR(fg) / 255.0, SkColorGetG(fg) / 255.0,
++                          SkColorGetB(fg) / 255.0, SkColorGetA(fg) / 255.0);
++    cairo_set_operator(cr, CAIRO_OPERATOR_IN);
++    cairo_paint(cr);
++
+     icon->texture = TakeGObject(
+         gdk_memory_texture_new(width, height, GDK_MEMORY_B8G8R8A8,
+                                g_bytes_new_take(pixels, nbytes), stride));
