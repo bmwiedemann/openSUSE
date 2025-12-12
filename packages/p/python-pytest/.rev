@@ -1509,4 +1509,41 @@ Add python version constraints to Requires &amp; BuildRequires</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1304278</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>ce2edc70c798eefb691cf041080c358a</srcmd5>
+    <version>9.0.1</version>
+    <time>1765572038</time>
+    <user>anag_factory</user>
+    <comment>- Update to 9.0.1:
+  * New features
+    + Support for subtests has been added. This feature is experimental and
+      will likely evolve in future releases.
+    + Added support for native TOML configuration files.
+    + Added a “strict mode” enabled by the strict configuration option.
+    + Added the strict_parametrization_ids configuration option.
+    + Added support for displaying test session progress in the terminal tab
+      using the OSC 9;4; ANSI sequence.
+    + Support PEP420 (implicit namespace packages) as --pyargs target when
+      consider_namespace_packages is true in the config.
+    + Added a new faulthandler_exit_on_timeout configuration option set to
+      &quot;false&quot; by default to let faulthandler interrupt the pytest process
+      after a timeout in case of deadlock.
+    + Added support for configuration option aliases via the aliases
+      parameter in Parser.addini().
+  * Improvements in existing functionality
+    + Having pytest configuration spread over more than one file (for example
+      having both a pytest.ini file and pyproject.toml with a
+      [tool.pytest.ini_options] table) will now print a warning to make it
+      clearer to the user that only one of them is actually used.
+    + The single argument --version no longer loads the entire plugin
+      infrastructure.
+    + Added strict_xfail as an alias to the xfail_strict option,
+      strict_config as an alias to the --strict-config flag, and
+      strict_markers as an alias to the --strict-markers flag.
+    + --junitxml no longer prints the generated xml file summary at the end
+      of the pytest session when --quiet is given.
+    + Previously, when filtering warnings, pytest would fail if the filter
+      referenced a class that could not be imported.</comment>
+    <requestid>1320320</requestid>
+  </revision>
 </revisionlist>

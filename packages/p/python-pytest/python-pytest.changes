@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Tue Nov 25 04:50:19 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 9.0.1:
+  * New features
+    + Support for subtests has been added. This feature is experimental and
+      will likely evolve in future releases.
+    + Added support for native TOML configuration files.
+    + Added a “strict mode” enabled by the strict configuration option.
+    + Added the strict_parametrization_ids configuration option.
+    + Added support for displaying test session progress in the terminal tab
+      using the OSC 9;4; ANSI sequence.
+    + Support PEP420 (implicit namespace packages) as --pyargs target when
+      consider_namespace_packages is true in the config.
+    + Added a new faulthandler_exit_on_timeout configuration option set to
+      "false" by default to let faulthandler interrupt the pytest process
+      after a timeout in case of deadlock.
+    + Added support for configuration option aliases via the aliases
+      parameter in Parser.addini().
+  * Improvements in existing functionality
+    + Having pytest configuration spread over more than one file (for example
+      having both a pytest.ini file and pyproject.toml with a
+      [tool.pytest.ini_options] table) will now print a warning to make it
+      clearer to the user that only one of them is actually used.
+    + The single argument --version no longer loads the entire plugin
+      infrastructure.
+    + Added strict_xfail as an alias to the xfail_strict option,
+      strict_config as an alias to the --strict-config flag, and
+      strict_markers as an alias to the --strict-markers flag.
+    + --junitxml no longer prints the generated xml file summary at the end
+      of the pytest session when --quiet is given.
+    + Previously, when filtering warnings, pytest would fail if the filter
+      referenced a class that could not be imported.
+    + Clarify the error message for pytest.raises() when a regex match fails.
+  * Removals and backward incompatible breaking changes
+    + Fixed a bug where an invocation such as pytest a/ a/b would cause only
+      tests from a/b to run, and not other tests under a/.
+    + Support for Python 3.9 is dropped following its end of life.
+    + Previously, pytest would assume it was running in a CI/CD environment
+      if either of the environment variables $CI or $BUILD_NUMBER was
+      defined; now, CI mode is only activated if at least one of those
+      variables is defined and set to a non-empty value.
+    + PytestRemovedIn9Warning deprecation warnings are now errors by default.
+  * Deprecations (removal in next major release)
+    + monkeypatch.syspath_prepend() now issues a deprecation warning when the
+      prepended path contains legacy namespace packages (those using
+      pkg_resources.declare_namespace()).
+  * Bug fixes
+    + Restore support for skipping tests via raise unittest.SkipTest.
+    + Fixed the TOML type of the verbosity settings in the API reference from
+      number to string.
+    + Fixed UserWarning: Do not expect file_or_dir on some earlier Python 3.12
+      and 3.13 point versions.
+    + Fixed a bug in which ExceptionGroup with only skipped exceptions in
+      teardown was not handled correctly and showed as error.
+    + Fixed a bug where a nonsensical invocation like pytest x.py[a] (a file
+      cannot be parametrized) was silently treated as pytest x.py. This is
+      now a usage error.
+    + Fixed a misleading assertion failure message when using pytest.approx()
+      on mappings with differing lengths.
+    + Fixed the static fixture closure calculation to properly consider
+      transitive dependencies requested by overridden fixtures.
+    + Fixed pytest.approx() which now returns a clearer error message when
+      comparing mappings with different keys.
+    + Hidden .pytest.ini files are now picked up as the config file even if
+      empty. This was an inconsistency with non-hidden pytest.ini.
+    + Fixed --show-capture with --tb=line.
+    + Fixed pytester in subprocess mode ignored all pytest.Pytester.plugins
+      except the first.
+  * Packaging updates and notes for downstreams
+    + Minimum requirements on iniconfig and packaging were bumped to 1.0.1
+      and 22.0.0, respectively.
+
+-------------------------------------------------------------------
 Fri Sep  5 09:16:27 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.4.2:
