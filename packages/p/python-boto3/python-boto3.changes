@@ -1,4 +1,195 @@
 -------------------------------------------------------------------
+Tue Dec  9 12:28:56 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.42.5
+  * api-change:``ce``: [``botocore``] Add support for Cost Category resource associations including
+    filtering by resource type on ListCostCategoryDefinitions and new
+    ListCostCategoryResourceAssociations API.
+  * api-change:``ec2``: [``botocore``] Amazon EC2 P6-B300 instances provide 8x NVIDIA Blackwell Ultra
+    GPUs with 2.1 TB high bandwidth GPU memory, 6.4 Tbps EFA networking, 300 Gbps dedicated ENA
+    throughput, and 4 TB of system memory. Amazon EC2 C8a instances are powered by 5th Gen AMD EPYC
+    processors with a maximum frequency of 4.5 GHz.
+  * api-change:``identitystore``: [``botocore``] Updating AWS Identity Store APIs to support
+    Attribute Extensions capability, with the first release adding Enterprise Attributes. This launch
+    aligns Identity Store APIs with SCIM for enterprise attributes, reducing cases when customers are
+    forced to use SCIM due to lack of SigV4 API support.
+  * api-change:``partnercentral-selling``: [``botocore``] Deal Sizing Service for AI-based deal size
+    estimation with AWS service-level breakdown, supporting Expansion and Migration deals across
+    Technology, and Reseller partner cohorts, including Pricing Calculator AddOn for MAP deals and
+    funding incentives.
+  * api-change:``rds``: [``botocore``] Adding support for tagging RDS Instance/Cluster Automated
+    Backups
+  * api-change:``redshift-serverless``: [``botocore``] Added GetIdentityCenterAuthToken API to
+    retrieve encrypted authentication tokens for Identity Center integrated serverless workgroups. This
+    API enables programmatic access to secure Identity Center tokens with proper error handling and
+    parameter validation across supported SDK languages.
+  * api-change:``rolesanywhere``: [``botocore``] Increases certificate string length for trust anchor
+    source data to support ML-DSA certificates.
+  * api-change:``sesv2``: [``botocore``] Update Mail Manager Archive ARN validation
+  * enhancement:ContainerProvider: [``botocore``] The ContainerProvider now works with arbitray HTTPS
+    URLs for `AWS_CONTAINER_CREDENTIALS_FULL_URI`.
+- from version 1.42.4
+  * api-change:``ecs``: [``botocore``] Updating stop-task API to encapsulate containers with custom
+    stop signal
+  * api-change:``iam``: [``botocore``] Adding the ExpirationTime attribute to the delegation request
+    resource.
+  * api-change:``inspector2``: [``botocore``] This release adds a new ScanStatus called "Unsupported
+    Code Artifacts". This ScanStatus will be returned when a Lambda function was not code scanned
+    because it has unsupported code artifacts.
+  * api-change:``partnercentral-account``: [``botocore``] Adding Verification API's to Partner
+    Central Account SDK.
+  * api-change:``sesv2``: [``botocore``] Updating the desired url for
+    `PutEmailIdentityDkimSigningAttributes` from v1 to v2
+  * enhancement:AWSCRT: [``botocore``] Update awscrt version to 0.29.2
+- from version 1.42.3
+  * api-change:``lambda``: [``botocore``] Add DisallowedByVpcEncryptionControl to the
+    LastUpdateStatusReasonCode and StateReasonCode enums to represent failures caused by VPC Encryption
+    Controls.
+- from version 1.42.2
+  * api-change:``bedrock``: [``botocore``] Adding support in Amazon Bedrock to customize models with
+    reinforcement fine-tuning (RFT) and support for updating the existing Custom Model Deployments.
+  * api-change:``sagemaker``: [``botocore``] Introduces Serverless training: A fully managed compute
+    infrastructure that abstracts away all infrastructure complexity, allowing you to focus purely on
+    model development.
+    Added AI model customization assets used to train, refine, and evaluate custom models during the
+    model customization process.
+- from version 1.42.1
+  * api-change:``bedrock``: [``botocore``] Adds the audioDataDeliveryEnabled boolean field to the
+    Model Invocation Logging Configuration.
+  * api-change:``bedrock-agentcore``: [``botocore``] Support for AgentCore Evaluations and Episodic
+    memory strategy for AgentCore Memory.
+  * api-change:``bedrock-agentcore-control``: [``botocore``] Supports AgentCore Evaluations, Policy,
+    Episodic Memory Strategy, Resource Based Policy for Runtime and Gateway APIs, API Gateway Rest API
+    Targets and enhances JWT authorizer.
+  * api-change:``bedrock-runtime``: [``botocore``] Adds support for Audio Blocks and Streaming Image
+    Output plus new Stop Reasons of malformed_model_output and malformed_tool_use.
+  * api-change:``ce``: [``botocore``] This release updates existing Savings Plans Purchase Analyzer
+    and Recommendations APIs to support Database Savings Plans.
+  * api-change:``datazone``: [``botocore``] Amazon DataZone now supports exporting Catalog datasets
+    as Amazon S3 tables, and provides automatic business glossary term suggestions for data assets.
+  * api-change:``endpoint-rules``: [``botocore``] Update endpoint-rules client to latest version
+  * api-change:``fsx``: [``botocore``] S3 Access Points support for FSx for NetApp ONTAP
+  * api-change:``guardduty``: [``botocore``] Adding support for extended threat detection for Amazon
+    EC2 and Amazon ECS. Adding support for wild card suppression rules.
+  * api-change:``lambda``: [``botocore``] Launching Lambda durable functions - a new feature to build
+    reliable multi-step applications and AI workflows natively within the Lambda developer experience.
+  * api-change:``logs``: [``botocore``] CloudWatch Logs adds managed S3 Tables integration to access
+    logs using other analytical tools, as well as facets and field indexing to simplify log analytics
+    in CloudWatch Logs Insights.
+  * api-change:``nova-act``: [``botocore``] Initial release of Nova Act SDK. The Nova Act service
+    enables customers to build and manage fleets of agents for automating production UI workflows with
+    high reliability, fastest time-to-value, and ease of implementation at scale.
+  * api-change:``observabilityadmin``: [``botocore``] CloudWatch Observability Admin adds pipelines
+    configuration for third party log ingestion and transformation of all logs ingested, integration of
+    CloudWatch logs with S3 Tables, and AWS account or organization level enablement for 7 AWS services.
+  * api-change:``opensearch``: [``botocore``] GPU-acceleration helps you build large-scale vector
+    databases faster and more efficiently. You can enable this feature on new OpenSearch domains and
+    OpenSearch Serverless collections. This feature uses GPU-acceleration to reduce the time needed to
+    index data into vector indexes.
+  * api-change:``opensearchserverless``: [``botocore``] GPU-acceleration helps you build large-scale
+    vector databases faster and more efficiently. You can enable this feature on new OpenSearch domains
+    and OpenSearch Serverless collections. This feature uses GPU-acceleration to reduce the time needed
+    to index data into vector indexes.
+  * api-change:``rds``: [``botocore``] RDS Oracle and SQL Server: Add support for adding, modifying,
+    and removing additional storage volumes, offering up to 256TiB storage; RDS SQL Server: Support
+    Developer Edition via custom engine versions for development and testing purposes; M7i/R7i
+    instances with Optimize CPU for cost savings.
+  * api-change:``s3``: [``botocore``] New S3 Storage Class FSX_ONTAP
+  * api-change:``s3control``: [``botocore``] Add support for S3 Storage Lens Advanced Performance
+    Metrics, Expanded Prefixes metrics report, and export to S3 Tables.
+  * api-change:``s3tables``: [``botocore``] Add storage class, replication, and table record
+    expiration features to S3 Tables.
+  * api-change:``s3vectors``: [``botocore``] Amazon S3 Vectors provides cost-effective, elastic, and
+    durable vector storage for queries based on semantic meaning and similarity.
+  * api-change:``sagemaker``: [``botocore``] Added support for serverless MLflow Apps.
+    Added support for new HubContentTypes (DataSet and JsonDoc) in Private Hub for AI model
+    customization assets, enabling tracking and management of training datasets and evaluators (reward
+    functions/prompts) throughout the ML lifecycle.
+  * api-change:``savingsplans``: [``botocore``] Added support for Amazon Database Savings Plans
+  * api-change:``securityhub``: [``botocore``] ITSM enhancements: DRYRUN mode for testing ticket
+    creation, ServiceNow now uses AWS Secrets Manager for credentials, ConnectorRegistrationsV2 renamed
+    to RegisterConnectorV2, added ServiceQuotaExceededException error, and ConnectorStatus visibility
+    in CreateConnectorV2.
+- from version 1.42.0
+  * api-change:``appintegrations``: [``botocore``] This release adds support for MCP servers via the
+    ApplicationType field, allowing customers to register their Bedrock AgentCore gateways as third
+    party applications.
+  * api-change:``bedrock-agent``: [``botocore``] Support audio and video ingestion on Bedrock
+    Knowledge Bases.
+  * api-change:``bedrock-agent-runtime``: [``botocore``] Support audio and video content retrieval on
+    Bedrock Knowledge Bases.
+  * api-change:``cleanrooms``: [``botocore``] AWS Clean Rooms now supports privacy-enhancing
+    synthetic dataset generation for custom ML training.
+  * api-change:``cleanroomsml``: [``botocore``] AWS Clean Rooms ML now supports privacy-enhancing
+    synthetic dataset generation for custom ML training.
+  * api-change:``connect``: [``botocore``] This is a combined re:Invent release for Amazon Connect.
+  * api-change:``connectcampaignsv2``: [``botocore``] This release added support for new WhatsApp
+    channel and Journey type outbound campaign
+  * api-change:``connectparticipant``: [``botocore``] Amazon Connect now supports message processing
+    that intercepts and processes chat messages before they reach any participant.
+  * api-change:``customer-profiles``: [``botocore``] This release introduces, CRUD APIs for the
+    DomainObjectType and Recommender resources, APIs to offer statistical insights on Object Type
+    Attributes, Changes to SegmentDefinition APIs to support SQL queries to create Segments, and
+    Changes to Domain APIs to support Data Store.
+  * api-change:``eks``: [``botocore``] This release adds support for EKS Capabilities
+  * api-change:``endpoint-rules``: [``botocore``] Update endpoint-rules client to latest version
+  * api-change:``glue``: [``botocore``] feature: Glue: Add support for Iceberg materialized view in
+    Glue Data Catalog, including updated CreateTable API to support materialized views and new APIs for
+    managing data refresh for materialized views.
+    feature: Glue: Add support for Iceberg table encryption keys and struct field defaults.
+  * api-change:``lambda``: [``botocore``] Launching Lambda Managed Instances - a new feature to run
+    Lambda on EC2.
+  * api-change:``lexv2-models``: [``botocore``] Adds support for speech-to-speech models for
+    human-like, adaptive, and expressive voice interactions. Also adds support for speech model
+    preference, allowing customers to select which speech model they want to use for speech-to-text
+    requests.
+  * api-change:``marketplace-agreement``: [``botocore``] This release supports 1/multi-product
+    transactions via offer sets. DescribeAgreement and SearchAgreements APIs now return offer set IDs.
+    SearchAgreements also supports filtering by offer set ID and 2/variable payment pricing terms will
+    be returned through GetAgreementTerms.
+  * api-change:``marketplace-catalog``: [``botocore``] This release introduces offer set entity in
+    AWS Marketplace Catalog API to enable multi-product transaction. Offer set enables sellers to group
+    multiple private offers into a single-click purchase experience, simplifying procurement for
+    customers purchasing multi-product solutions.
+  * api-change:``partnercentral-account``: [``botocore``] Initial GA launch of Partner Central Account
+  * api-change:``partnercentral-benefits``: [``botocore``] Initial GA launch of Partner Central
+    Benefits
+  * api-change:``partnercentral-selling``: [``botocore``] New Features:
+    Lead Management APIs for capturing and nurturing leads
+    Lead invitation support for partner collaboration
+    Lead-to-opportunity conversion operations
+    AWS Marketplace OfferSets support for opportunities
+  * api-change:``personalize``: [``botocore``] This release adds support for includedDatasetColumns
+    and performIncrementalUpdate in solution APIs, and rankingInfluence in campaign and batch inference
+    APIs.
+  * api-change:``qconnect``: [``botocore``] New AIAgent types: Orchestration for ModelContextProtocol
+    tool integration, CaseSummary for Amazon Connect Case summaries, NoteTaker for Agent Assistance
+    notes. Added ListSpans and Retrieve APIs. Enhanced Q in Connect AssistantAssociationType to support
+    Bring Your Own Bedrock Knowledge Bases.
+  * api-change:``route53globalresolver``: [``botocore``] Add SDK for Amazon Route 53 Global Resolver,
+    a fully managed DNS resolver service that offers broad DNS-filtering security controls.
+  * enhancement:AWSCRT: [``botocore``] Update awscrt version to 0.29.1
+  * enhancement:``s3``: Adds partial ``TransferConfig`` support for CRT transfer managers.
+  * feature:``s3``: Added ``crt`` mode to ``preferred_transfer_client`` parameter in
+    ``TransferConfig`` to enable CRT transfer client in all environments.
+- from version 1.41.5
+  * api-change:``bedrock-runtime``: [``botocore``] Bedrock Runtime Reserved Service Support
+  * api-change:``compute-optimizer``: [``botocore``] Compute Optimizer now identifies idle NAT
+    Gateway resources for cost optimization based on traffic patterns and backup configuration
+    analysis. Access recommendations via the GetIdleRecommendations API.
+  * api-change:``cost-optimization-hub``: [``botocore``] This release enables AWS Cost Optimization
+    Hub to show cost optimization recommendations for NAT Gateway.
+- from version 1.41.4
+  * api-change:``ec2``: [``botocore``] This release adds support to view Network firewall proxy
+    appliances attached to an existing NAT Gateway via DescribeNatGateways API
+    NatGatewayAttachedAppliance structure.
+  * api-change:``network-firewall``: [``botocore``] Network Firewall release of the Proxy feature.
+  * api-change:``organizations``: [``botocore``] Add support for policy operations on the S3_POLICY
+    and BEDROCK_POLICY policy type.
+  * api-change:``route53``: [``botocore``] Adds support for new route53 feature: accelerated recovery.
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Tue Nov 25 07:42:10 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.41.3
