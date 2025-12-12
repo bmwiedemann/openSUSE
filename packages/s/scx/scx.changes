@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Dec  6 09:57:43 UTC 2025 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- Update to version 1.0.19:
+  * scx_lavd: Add cpu.max Support for the SCX Scheduler
+  * scx_p2dq: Add conservative wakeup preemption for latency-critical tasks
+  * scx_p2dq: Update default slice intervals
+  * scx_layered: Add a new NUMANode Matcher
+  * scx_p2dq: Add PELT tracking
+  * scx_lavd: Turn on --pinned-slice-us option by default
+  * scx_lavd: Don't try to migrate a task from non-migratable DSQs
+  * scx_bpfland: Use nr_cpu_ids as the actual CPU limit
+  * scxtop: Add topology-aware multi-ringbuffer support
+  * scxtop: Add limit parameter to detect_outliers MCP tool
+  * scx_p2dq: Add DHQ support
+  * scx_lavd: Disable ops.cgroup_set_bandwidth() when no kernel support
+  * scxtop: Add perfetto trace analysis framework with systing support
+  * scx_lavd: perform task stealing in circular distance order
+- Add scx.env which was dropped by upstream
+
+-------------------------------------------------------------------
 Tue Nov 18 09:40:32 UTC 2025 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
 
 - Update to version 1.0.18:
