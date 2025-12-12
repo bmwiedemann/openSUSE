@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Dec 11 12:38:36 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.22.11:
+  * feature: add rule for trojan source (#1431)
+  * feat(ai): add OpenAI and custom API provider support (#1424)
+  * chore: Migrate from gopkg.in/yaml.v3 to go.yaml.in/yaml/v3 (#1437)
+  * chore(deps): update module google.golang.org/genai to v1.37.0 (#1435)
+  * refactor: simplify report functions in main.go (#1434)
+  * Update go to 1.25.5 and 1.24.11 in CI (#1433)
+  * chore(deps): update all dependencies (#1425)
+  * feat(ai): add support for latest Claude models and update provider flags (#1423)
+  * Bump golang.org/x/crypto from 0.43.0 to 0.45.0 (#1427)
+  * chore(deps): update module golang.org/x/crypto to v0.45.0 [security] (#1428)
+  * fix: correct schema with temporary placeholder (#1418)
+  * perf: skip SSA analysis if no analyzers are loaded (#1419)
+  * test: add sarif validation (#1417)
+  * chore(deps): update all dependencies (#1421)
+  * Update go to version 1.25.4 and 1.24.10 in CI (#1415)
+  * fix: build tag parsing. (#1413)
+  * chore(deps): update all dependencies (#1411)
+  * chore(deps): update all dependencies (#1409)
+  * chore(deps): update all dependencies (#1408)
+  * Update gosec to version v2.22.10 in the github action (#1405)
+
+-------------------------------------------------------------------
 Wed Oct 15 09:47:09 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 2.22.10:
