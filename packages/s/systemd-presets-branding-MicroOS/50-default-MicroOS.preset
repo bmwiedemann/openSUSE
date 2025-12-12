@@ -1,4 +1,5 @@
 enable transactional-update.timer
+enable chronyd.service
 enable create-dirs-from-rpmdb.service
 enable rebootmgr.service
 enable prepare-nextroot-for-softreboot.service

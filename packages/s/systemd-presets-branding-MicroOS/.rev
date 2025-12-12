@@ -111,4 +111,13 @@
 </comment>
     <requestid>1320860</requestid>
   </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>ddf8b940473f64a0001bd8034e408695</srcmd5>
+    <version>20230214</version>
+    <time>1765572033</time>
+    <user>anag_factory</user>
+    <comment>- - Enable chronyd.service by default (boo#1254778).
+</comment>
+    <requestid>1322236</requestid>
+  </revision>
 </revisionlist>
