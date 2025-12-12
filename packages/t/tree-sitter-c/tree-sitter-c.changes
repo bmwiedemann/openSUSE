@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec  9 10:28:08 UTC 2025 - llyyr <llyyr@yukari.in>
+
+- update to 0.24.1:
+- update to 0.24.0:
+  * feat!: regenerate parser and bindings with ABI 15
+- update to 0.23.6:
+  * fix: generate parser for grammar changes
+- update to 0.23.5:
+  * fix: always ensure K&R functions have at least 1 declaration
+  * export helper functions for reuse in cpp grammar
+
+-------------------------------------------------------------------
 Tue Dec 31 10:10:50 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.23.4:
