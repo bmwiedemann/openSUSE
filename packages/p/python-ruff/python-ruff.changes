@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Dec  5 06:19:20 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update 0.14.8 
+ * Preview features
+  * [flake8-bugbear] Catch yield expressions within other statements (B901) 
+  * [flake8-use-pathlib] Mark fixes unsafe for return type changes (PTH104, PTH105, PTH109, PTH115) 
+ * Bug fixes
+  * Fix syntax error false positives for await outside functions 
+  * [flake8-simplify] Fix truthiness assumption for non-iterable arguments in tuple/list/set calls (SIM222, SIM223) 
+ * Documentation
+  * Suggest using --output-file option in GitLab integration 
+ * Other changes
+  * [syntax-error] Default type parameter followed by non-default type parameter 
+
+-------------------------------------------------------------------
 Sat Nov 29 13:49:12 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.14.7

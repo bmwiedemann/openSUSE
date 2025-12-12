@@ -2886,4 +2886,12 @@
   * Show partial fixability indicator in statistics output</comment>
     <requestid>1320566</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>d37262c503e7fc161ebcb1cde9861463</srcmd5>
+    <version>0.14.8</version>
+    <time>1765572041</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1322539</requestid>
+  </revision>
 </revisionlist>
