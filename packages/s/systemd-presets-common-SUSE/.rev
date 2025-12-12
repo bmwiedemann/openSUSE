@@ -382,4 +382,15 @@ It fits better in common-SUSE. I'll remove it from branding. (forwarded request 
     <comment></comment>
     <requestid>1320215</requestid>
   </revision>
+  <revision rev="45" vrev="45">
+    <srcmd5>25fb499a6ec5dcd002fa4c6fa3c9c970</srcmd5>
+    <version>15</version>
+    <time>1765572027</time>
+    <user>anag_factory</user>
+    <comment>- Enable polkit-agent-helper.socket (see [bsc#1251931] for details)
+- Enable account-utils socket units (see [bsc#1253052] for details)
+  (newidmapd.socket, pwaccessd.socket, enable pwupdd.socket)
+</comment>
+    <requestid>1322190</requestid>
+  </revision>
 </revisionlist>

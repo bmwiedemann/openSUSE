@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 10 14:28:32 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Enable polkit-agent-helper.socket (see [bsc#1251931] for details)
+- Enable account-utils socket units (see [bsc#1253052] for details)
+  (newidmapd.socket, pwaccessd.socket, enable pwupdd.socket)
+
+-------------------------------------------------------------------
 Thu Nov 19 08:05:47 UTC 2025 - Zdenek Kubala <zkubala@suse.com>
 
 - Enable cleanoldsepoldir.service to allow to run after boot

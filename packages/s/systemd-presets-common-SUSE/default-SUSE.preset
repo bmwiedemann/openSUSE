@@ -48,11 +48,15 @@ enable mdcheck_start.timer
 enable mdmonitor-oneshot.timer
 enable mlocate.timer
 enable ModemManager.service
+enable newidmapd.socket
 enable nvmefc-boot-connections.service
 enable nvmf-autoconnect.service
 enable pcscd.socket
+enable polkit-agent-helper.socket
 enable postfix.service
 enable purge-kernels.service
+enable pwaccessd.socket
+enable pwupdd.socket
 enable remote-fs.target
 enable rsyslog.service
 enable shadow.timer
