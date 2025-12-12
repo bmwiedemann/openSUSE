@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec 12 11:42:16 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1765533145.a82864c:
+  * Remove obsolete 'bin/' folder
+  * Simplify the code to increment the counter
+  * audio: Allow for multiple audio recordings per test
+  * Improve documentation strings for get/check_var
+  * Add port forwarding example for NICTYPE_USER_OPTIONS
+
+-------------------------------------------------------------------
 Thu Dec 11 12:33:13 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1765450253.f16e6ac:
