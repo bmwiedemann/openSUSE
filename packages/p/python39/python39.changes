@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Dec 11 21:44:35 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+* Update to 3.9.25:
+- Security
+    - gh-137836: Add support of the “plaintext” element, RAWTEXT
+      elements “xmp”, “iframe”, “noembed” and “noframes”, and
+      optionally RAWTEXT element “noscript” in
+      html.parser.HTMLParser.
+    - gh-136063: email.message: ensure linear complexity for
+      legacy HTTP parameters parsing. Patch by Bénédikt Tran.
+    - gh-136065: Fix quadratic complexity in
+      os.path.expandvars() (CVE-2025-6075, bsc#1252974).
+- Library
+    - gh-98793: Fix argument typechecks in
+      _overlapped.WSAConnect() and
+      _overlapped.Overlapped.WSASendTo() functions. bpo-44817:
+      Ignore WinError 53 (ERROR_BAD_NETPATH), 65
+      (ERROR_NETWORK_ACCESS_DENIED) and 161 (ERROR_BAD_PATHNAME)
+      when using ntpath.realpath().
+- Core and Builtins
+    - gh-120384: Fix an array out of bounds crash in
+      list_ass_subscript, which could be invoked via some
+      specificly tailored input: including concurrent
+      modification of a list object, where one thread assigns
+      a slice and another clears it.
+    - gh-120298: Fix use-after free in list_richcompare_impl
+      which can be invoked via some specificly tailored evil
+      input.
+- Remove upstreamed patches:
+  -CVE-2025-6075-expandvars-perf-degrad.patch
+
+-------------------------------------------------------------------
 Thu Nov 13 17:13:03 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Add CVE-2025-6075-expandvars-perf-degrad.patch avoid simple

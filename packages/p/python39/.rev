@@ -1534,4 +1534,41 @@
       (CVE-2025-8291, bsc#1251305).</comment>
     <requestid>1320565</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>f6c990e7c87a51dfd128e4eb81601dc0</srcmd5>
+    <version>3.9.25</version>
+    <time>1765572164</time>
+    <user>anag_factory</user>
+    <comment>Update to 3.9.25
+
+- Security
+    - gh-137836: Add support of the “plaintext” element, RAWTEXT
+      elements “xmp”, “iframe”, “noembed” and “noframes”, and
+      optionally RAWTEXT element “noscript” in
+      html.parser.HTMLParser.
+    - gh-136063: email.message: ensure linear complexity for
+      legacy HTTP parameters parsing. Patch by Bénédikt Tran.
+    - gh-136065: Fix quadratic complexity in
+      os.path.expandvars() (CVE-2025-6075, bsc#1252974).
+- Library
+    - gh-98793: Fix argument typechecks in
+      _overlapped.WSAConnect() and
+      _overlapped.Overlapped.WSASendTo() functions. bpo-44817:
+      Ignore WinError 53 (ERROR_BAD_NETPATH), 65
+      (ERROR_NETWORK_ACCESS_DENIED) and 161 (ERROR_BAD_PATHNAME)
+      when using ntpath.realpath().
+- Core and Builtins
+    - gh-120384: Fix an array out of bounds crash in
+      list_ass_subscript, which could be invoked via some
+      specificly tailored input: including concurrent
+      modification of a list object, where one thread assigns
+      a slice and another clears it.
+    - gh-120298: Fix use-after free in list_richcompare_impl
+      which can be invoked via some specificly tailored evil
+      input.
+* Update to 3.9.25:
+- Security
+    - gh-137836: Add support of the “plaintext” element, RAWTEXT</comment>
+    <requestid>1322587</requestid>
+  </revision>
 </revisionlist>
