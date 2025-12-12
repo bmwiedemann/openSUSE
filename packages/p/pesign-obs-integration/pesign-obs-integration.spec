@@ -1,7 +1,7 @@
 #
 # spec file for package pesign-obs-integration
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 
 Name:           pesign-obs-integration
-Version:        10.2+git20250830.5a2b5f6
+Version:        10.2+git20250930.8fd9632
 Release:        0
 Summary:        Macros and scripts to sign the kernel and bootloader
 License:        GPL-2.0-or-later
@@ -41,7 +41,7 @@ Requires:       openssl
 %if 0%{?suse_version}
 Requires:       suse-module-tools >= 15.0.10
 %endif
-%ifarch %{ix86} x86_64 ia64 aarch64 %{arm} riscv64
+%ifarch %{ix86} x86_64 ia64 aarch64 %{arm} riscv64 loongarch64
 Requires:       pesign
 %endif
 

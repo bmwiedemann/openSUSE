@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec 09 11:12:44 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 10.2+git20250930.8fd9632:
+  * Pass none compression value to script
+  * Reject unknown values of compression
+  * Accept none for compression
+  * Add RPM 4.19 scriptlets
+  * Use pesign for signing on loongarch64
+
+-------------------------------------------------------------------
 Tue Sep 02 03:42:02 UTC 2025 - jlee@suse.com
 
 - Update to version 10.2+git20250830.5a2b5f6:
