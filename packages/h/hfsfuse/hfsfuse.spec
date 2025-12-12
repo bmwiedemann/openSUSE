@@ -17,7 +17,7 @@
 
 
 Name:           hfsfuse
-Version:        0.292
+Version:        0.307
 Release:        0
 Summary:        FUSE driver for HFS+ filesystems
 License:        BSD-1-Clause AND BSD-2-Clause AND BSD-3-Clause AND MIT
