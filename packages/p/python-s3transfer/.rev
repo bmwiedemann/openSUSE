@@ -1,0 +1,383 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>44a55a8c644a02915189b2326bc08bc0</srcmd5>
+    <version>0.0.1</version>
+    <time>1460632033</time>
+    <user>dimstar_suse</user>
+    <comment>- New dependency for updated aws-cli</comment>
+    <requestid>388206</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>02f8a3aba217a4355e40570a51f9ab46</srcmd5>
+    <version>0.0.1</version>
+    <time>1462051802</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>391579</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>58375fadcb4cc8d2e41ad9fa5398834b</srcmd5>
+    <version>0.1.10</version>
+    <time>1484914091</time>
+    <user>dimstar_suse</user>
+    <comment>- use pypi.io
+
+- update to 0.1.10:
+  * feature: TransferManager: Expose ability to use own executor
+    class for TransferManager
+  * fix factory submission (validate source)
+
+- Update to version 0.1.9 (bsc#1007084)
+  + Forward port hide_py_pckgmgmt.patch
+  + No changelog entry for 0.1.9
+- From 0.1.8
+  + feature:download: Support downloading to FIFOs.
+- From 0.1.7
+  + bugfix:TransferManager: Fix memory leak when using same client to create
+    multiple TransferManagers
+- From 0.1.6
+  + bugfix:download: Fix issue where S3 Object was not downloaded to disk
+    when empty
+- From 0.1.5
+  + bugfix:Cntrl-C: Fix issue of hangs when Cntrl-C happens for many queued
+    transfers
+  + feature:cancel: Expose messages for cancels
+- from 0.1.4
+  + feature:chunksize: Automatically adjust the chunksize if it doesn't meet
+    S3s requirements.
+  + bugfix:Download: Add support for downloading to special UNIX file by name
+- From 0.1.3
+  + feature:delete: Add a .delete() method to the transfer manager.
+  + bugfix:seekable upload: Fix issue where seeked position of seekable
+    file for a nonmultipart upload was not being taken into account.</comment>
+    <requestid>451335</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>843d55b18614083b7422c59b41df5dfa</srcmd5>
+    <version>0.1.10</version>
+    <time>1495011239</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>494498</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>aab988c57eb9f19b86e7595c1bc576ec</srcmd5>
+    <version>0.1.11</version>
+    <time>1510322313</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.1.11:
+  + Properly handle unicode exceptions in the context manager</comment>
+    <requestid>540358</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d7ac65061cd9a878976561120402b299</srcmd5>
+    <version>0.1.13</version>
+    <time>1524144809</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>598518</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>6b2e065c83b2b634f429c227d216ed1e</srcmd5>
+    <version>0.1.13</version>
+    <time>1525960235</time>
+    <user>dimstar_suse</user>
+    <comment>- Avoid running tests on 32bit as they fail there on oom
+
+- Make sure to really not use any damn bundles:
+  * no-bundled-packages.patch
+  * Never rely on some bundled package version just use system libs
+- Enable testsuite and make it pass thanks to above patch</comment>
+    <requestid>605692</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>08efd63d684a8675d62fcaba69037284</srcmd5>
+    <version>0.2.0</version>
+    <time>1550151267</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674564</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>00a3d516de6e941298881089351aa713</srcmd5>
+    <version>0.2.1</version>
+    <time>1561493782</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711560</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>c62666aa8d30b8bda975a5e2dcf3bfc5</srcmd5>
+    <version>0.2.1</version>
+    <time>1579194789</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.2.1 (bsc#1146853)
+- update to 0.1.13 (bsc#1075263)</comment>
+    <requestid>761124</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f2131066c6435f0fedc2718e2ec9ca8d</srcmd5>
+    <version>0.3.2</version>
+    <time>1580724733</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768868</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a9fd0f0cc42f1e791c2d38ca0a70ded7</srcmd5>
+    <version>0.3.3</version>
+    <time>1583948762</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip test failing on python 3.8, it is race condition that needs
+  to be fixed in tests
+
+- Update to 0.3.3:
+  * bugfix:dependency: Updated botocore version range
+- Drop patch hide_py_pckgmgmt.patch it should not be needed
+  * we updated setuptools on SLE 12 to handle complex dependencies
+- Use pytest for test execution:
+  * the nose is used by upstream but really not needed and it
+    will get borked with python 3.10</comment>
+    <requestid>783247</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>06825f7f09ddb1f577cce50a1c4d2989</srcmd5>
+    <version>0.3.3</version>
+    <time>1585264971</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>784636</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>2736f7db84f12d01d8c5e4226ae3f219</srcmd5>
+    <version>0.3.3</version>
+    <time>1586555557</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>791991</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>1a07d0d66b5e21d1bb7f91976805ca87</srcmd5>
+    <version>0.3.3</version>
+    <time>1607612166</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853820</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>490b955d4c63746be55f6336d521fb64</srcmd5>
+    <version>0.3.4</version>
+    <time>1610633082</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862608</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>eb5baba063157ce20f9de5cf907be38d</srcmd5>
+    <version>0.4.2</version>
+    <time>1621626574</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894559</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>65f9d7fcc4223367923ca481bf6c127b</srcmd5>
+    <version>0.5.0</version>
+    <time>1628751652</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>908599</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>5e614d1abc2da095ff25f11ab6920144</srcmd5>
+    <version>0.5.0</version>
+    <time>1630432528</time>
+    <user>dimstar_suse</user>
+    <comment>- Update 0.5.0: (bsc#1189649)</comment>
+    <requestid>915032</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>88d7ec8449dbc790b07f51aa97fd7cb6</srcmd5>
+    <version>0.5.0</version>
+    <time>1631042485</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>917169</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a0463b48534ec769384c174ea89c17a7</srcmd5>
+    <version>0.6.0</version>
+    <time>1654382742</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>980631</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>96aa8bd305c34f497afac6327290e6db</srcmd5>
+    <version>0.6.0</version>
+    <time>1684490127</time>
+    <user>dimstar_suse</user>
+    <comment>- pin to urllib3 1.x</comment>
+    <requestid>1087487</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>4199746a0f97aac93147426b49555baa</srcmd5>
+    <version>0.6.0</version>
+    <time>1685830312</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090283</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ebef30d649a0a0aa444f249fbb0c8bc1</srcmd5>
+    <version>0.6.1</version>
+    <time>1688476911</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096582</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>61832c964a4ac681b2b4890ffd5d77f0</srcmd5>
+    <version>0.6.2</version>
+    <time>1694344152</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109248</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>aa302015111e82f222a1c9da40e8104b</srcmd5>
+    <version>0.7.0</version>
+    <time>1696760227</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116047</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>60af071ee6125d861143625863be9ce5</srcmd5>
+    <version>0.8.2</version>
+    <time>1703527471</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134687</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>a9c71d3c3296160a084c9828f8f0e04b</srcmd5>
+    <version>0.10.0</version>
+    <time>1710434542</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1156949</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>889568efd547a786750c0630eb7a27a9</srcmd5>
+    <version>0.10.0</version>
+    <time>1711397320</time>
+    <user>anag+factory</user>
+    <comment>submit to address (boo#1221411)</comment>
+    <requestid>1160791</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>5774a5a439cf5ad6fd68222f30131c57</srcmd5>
+    <version>0.10.1</version>
+    <time>1712590651</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1165553</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>ede81151b2ce22b45438b17d299b8652</srcmd5>
+    <version>0.10.2</version>
+    <time>1720102909</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1185102</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>67c3b6df2dbbdeabbaa9a42011e4047e</srcmd5>
+    <version>0.10.3</version>
+    <time>1729710486</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1217350</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>c53d3b011f5974274456358e30114b8c</srcmd5>
+    <version>0.10.4</version>
+    <time>1733870582</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1229332</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>64868d6f7fab898859312d46d3657e71</srcmd5>
+    <version>0.11.1</version>
+    <time>1737559908</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1239341</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>424bb96d36e87e3e59721e2a204c16e7</srcmd5>
+    <version>0.11.2</version>
+    <time>1740852967</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1249237</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>3805ab53d82c8a83ce08c12b37eeb7fa</srcmd5>
+    <version>0.11.4</version>
+    <time>1742495075</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1254232</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>5512e7d43eb48287e2b83c2dd677207f</srcmd5>
+    <version>0.12.0</version>
+    <time>1745612286</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1272393</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>63fa956a4728df7286445db3ce9f1d33</srcmd5>
+    <version>0.13.0</version>
+    <time>1748711656</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1280703</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>8b9a645927be0f874cba716d141a5a03</srcmd5>
+    <version>0.13.1</version>
+    <time>1753868467</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1296097</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>99a9a5b99245ef060feffebe105f349b</srcmd5>
+    <version>0.14.0</version>
+    <time>1758222478</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1305266</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>71518f76b43aa2ab84f08975719ba94b</srcmd5>
+    <version>0.15.0</version>
+    <time>1763990066</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1319689</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>1cd074b23ebfa4f0d3077e4fbf14c54d</srcmd5>
+    <version>0.16.0</version>
+    <time>1765572046</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1321832</requestid>
+  </revision>
+</revisionlist>
