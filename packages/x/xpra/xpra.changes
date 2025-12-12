@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Dec  4 16:11:17 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 6.4:
+  * https://github.com/Xpra-org/xpra/releases/tag/v6.4
+    - Platforms, build and packaging:
+      * major modularization
+      * Gtk-free server
+      * MacOS seamless X11 server
+      * faster unit tests
+      * memory aligned allocations on MS Windows
+      * faster cython bindings, common utility module
+      * pulseaudio for containers
+      * remove python-avahi mDNS backend
+      * deprecate legacy features
+    - Encodings:
+      * nvenc AV1 encoder
+      * aom AV1 decoder
+      * handle 8-bit pixel depth with mmap transfers
+      * convert JpegXL background images for the html5 client
+      * encoder server redundancy
+    - Features:
+      * emulate middle click button
+      * make per-window menu more easily accessible
+      * record correct pid for daemonized processes
+      * configurable window grouping
+      * blend window border with OpenGL backend
+      * easier debug logging and toggle
+      * start-[child-]on-disconnect
+      * dynamic child command substitutions
+      * prettier splash screen
+      * simple OTP screen authentication
+      * smarter info requests
+      * expose environment for launching client applications
+    - Network:
+      * stronger packet data types
+      * honour IdentityFile and IdentitiesOnly in ssh configs
+      * ssh host key verification for non-standard ports
+    - Configuration:
+      * configure refresh rate
+      * fakescreenfps when supported
+
+-------------------------------------------------------------------
 Tue Nov 11 07:01:49 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Removing 'FIX-is_distribution_variant.diff', Leap 16.0 shouldn't identify
