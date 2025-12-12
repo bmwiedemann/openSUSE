@@ -19,7 +19,7 @@
 %define executable_name pack
 
 Name:           buildpacks-cli
-Version:        0.39.0
+Version:        0.39.1
 Release:        0
 Summary:        CLI for building apps using Cloud Native Buildpacks
 License:        Apache-2.0
@@ -28,7 +28,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go1.25 >= 1.25.3
+BuildRequires:  go1.25 >= 1.25.5
 BuildRequires:  zsh
 Provides:       pack = %{version}
 Conflicts:      allegro44-tools

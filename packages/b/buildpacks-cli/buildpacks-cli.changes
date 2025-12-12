@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec 12 08:18:23 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.39.1:
+  * fix: upgrade Go to 1.25.5 to address CVE-2025-61729 and
+    CVE-2025-61727 (#2501)
+  * fix: Skip platform-specific digest resolution with
+    --pull-policy never (#2498)
+  * build(deps): bump the go-dependencies group across 1 directory
+    with 3 updates (#2494)
+
+-------------------------------------------------------------------
 Fri Nov 28 13:55:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.39.0:
