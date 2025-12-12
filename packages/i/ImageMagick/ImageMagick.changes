@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec  7 15:06:32 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- version update to 7.1.2.10
+  * no upstream changelog, see
+    https://github.com/ImageMagick/ImageMagick/compare/7.1.2-8..7.1.2-10
+- fixes CVE-2025-65955 [bsc#1254435]
+
+-------------------------------------------------------------------
 Thu Nov  6 14:37:08 UTC 2025 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - fix policy to allow own configuration file reads (ImageMagick_policy_etc.patch)

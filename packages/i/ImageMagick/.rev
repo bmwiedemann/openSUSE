@@ -4186,4 +4186,15 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   adapt ImageMagick-configuration-SUSE.patch and reorder patch handling</comment>
     <requestid>1316963</requestid>
   </revision>
+  <revision rev="319" vrev="1">
+    <srcmd5>a13813be34a17a9332ecd36dfe9fc8b8</srcmd5>
+    <version>7.1.2.10</version>
+    <time>1765572021</time>
+    <user>anag_factory</user>
+    <comment>- version update to 7.1.2.10
+  * no upstream changelog, see
+    https://github.com/ImageMagick/ImageMagick/compare/7.1.2-8..7.1.2-10
+- fixes CVE-2025-65955 [bsc#1254435]</comment>
+    <requestid>1322137</requestid>
+  </revision>
 </revisionlist>
