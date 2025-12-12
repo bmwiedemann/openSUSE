@@ -27,4 +27,14 @@
   + Allow invalid control characters in XML to flow through</comment>
     <requestid>1322092</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>89ee493c56e348968bdf25d3955caeb5</srcmd5>
+    <version>1.0.3</version>
+    <time>1765572085</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 1.0.3.
+  + Minor performance improvements
+  + Fix small memory leak</comment>
+    <requestid>1322269</requestid>
+  </revision>
 </revisionlist>

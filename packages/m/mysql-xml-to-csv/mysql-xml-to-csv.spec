@@ -17,7 +17,7 @@
 
 
 Name:           mysql-xml-to-csv
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        Convert MySQL XML output to CSV
 License:        Apache-2.0
