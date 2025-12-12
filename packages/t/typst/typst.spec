@@ -27,7 +27,7 @@
 %global hayagriva_vendor_dir vendor/hayagriva-%{hayagriva_version}
 
 Name:           typst
-Version:        0.14.0
+Version:        0.14.1
 Release:        0
 Summary:        A new markup-based typesetting system that is powerful and easy to learn
 License:        Apache-2.0
@@ -35,6 +35,7 @@ URL:            https://github.com/typst/typst
 Source0:        https://github.com/typst/typst/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
 Patch0:         hayagriva-bump-strum-version.patch
+Patch1:         pr7562-fix-missing-hint-in-testsuite.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  clang-devel
 BuildRequires:  gcc%{?force_gcc_version}-c++
