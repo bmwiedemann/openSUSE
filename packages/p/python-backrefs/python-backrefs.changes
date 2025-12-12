@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Dec 12 10:48:16 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1:
+  * **NEW**: Include Unicode 17 zip for early Python 3.15 usage,
+    though Python 3.15 functionality is not guaranteed.
+  * **FIX**: Fix issues with regex imports in later versions.
+  * **FIX**: Fix a regression that created an ASCII binary
+    property that would override the ASCII block property.
+  * **NEW**: POSIX character classes will now always use POSIX
+    compatibility rules instead of Unicode standard rules,
+  * if any are specified in the Unicode specification. The
+    affected character classes are: `[[:alnum:]]`, `[[:digit:]]`,
+  * `[[:xdigit:]]`, and  `[[:punct:]]`. To explicitly use
+    standard Unicode rules for these compatibility properties,
+    use
+  * the Unicode property form instead: `[\p{Alnum}]`,
+    `[\p{Digit}]`, `[\p{Punct}]`, or `[\p{XDigit}]`. This has
+    changed
+  * to ensure no confusion for users expecting compatible POSIX
+    style character class properties.
+  * **FIX**: Scoped ASCII/Unicode flags
+    (`(?a:pattern)`/`(?u:pattern)`) should be respected for
+    Unicode properties in
+  * `bre` and will ensure ASCII or Unicode range if used.
+  * **FIX**: Fix issues related to detecting disabled scoped
+    flags.
+
+-------------------------------------------------------------------
 Fri Jul 11 10:06:38 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 5.9
@@ -13,4 +41,4 @@ Thu Apr 24 13:10:41 UTC 2025 - ecsos <ecsos@opensuse.org>
 -------------------------------------------------------------------
 Mon Mar  3 10:03:40 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
 
-- initial version 5.8 
+- initial version 5.8
