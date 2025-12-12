@@ -32,7 +32,7 @@ Summary:        FUSE file system client for ext2/ext3/ext4 file systems
 License:        MIT
 BuildRequires:  fuse3-devel
 %endif
-Version:        1.47.2
+Version:        1.47.3
 Release:        0
 Group:          System/Filesystems
 URL:            http://e2fsprogs.sourceforge.net
@@ -72,7 +72,7 @@ BuildRequires:  makeinfo
 %define install_info sbin/install-info
 %define install_info_delete sbin/install-info --delete
 Requires(post): %install_info_prereq
-Requires(preun):%install_info_prereq
+Requires(preun): %install_info_prereq
 %endif
 # bug437293
 %ifarch ppc64
