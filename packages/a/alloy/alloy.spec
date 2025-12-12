@@ -17,7 +17,7 @@
 
 
 Name:           alloy
-Version:        1.11.3
+Version:        1.12.0
 Release:        0
 Summary:        OpenTelemetry Collector distribution with programmable pipelines
 License:        Apache-2.0
@@ -27,7 +27,7 @@ Source1:        vendor.tar.gz
 Source2:        ui-%{version}.tar.gz
 Source3:        PACKAGING_README.md
 Source4:        Makefile
-BuildRequires:  go >= 1.23.5
+BuildRequires:  go1.25 >= 1.25.1
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  user(alloy)
 # Require the system user and group
