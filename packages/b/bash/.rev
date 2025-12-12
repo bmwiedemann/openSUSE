@@ -2175,4 +2175,15 @@ h. The `umask' builtin now has additional features for full POSIX conformance.</
 - Remove patch boo1254087.patch now upstream with bash53-004</comment>
     <requestid>1320336</requestid>
   </revision>
+  <revision rev="204" vrev="5">
+    <srcmd5>98bf230fe47719988f90641efc99cd67</srcmd5>
+    <version>5.3.MACRO</version>
+    <time>1765572010</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream patch
+  * Bash-5.3 Official patch 8 -- bash53-009
+    A SIGINT during a reverse i-search can cause a segmentation fault
+    due to accessing data freed by a signal handler.</comment>
+    <requestid>1322180</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 11 10:00:17 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add upstream patch
+  * Bash-5.3 Official patch 8 -- bash53-009
+    A SIGINT during a reverse i-search can cause a segmentation fault
+    due to accessing data freed by a signal handler.
+
+-------------------------------------------------------------------
 Thu Nov 27 08:52:56 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add upstream patches
