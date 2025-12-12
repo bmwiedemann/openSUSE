@@ -29,6 +29,8 @@ License:        LGPL-2.1-or-later
 Group:          System/Management
 URL:            https://pywbem.github.io/
 Source0:        https://files.pythonhosted.org/packages/source/p/pywbem/pywbem-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#pywbem/pywbem#3350
+Patch0:         support-pytest-9.patch
 BuildRequires:  %{python_module FormEncode >= 2.0.0}
 BuildRequires:  %{python_module PyYAML >= 6.0.2}
 BuildRequires:  %{python_module certifi >= 2024.07.04}
@@ -36,7 +38,7 @@ BuildRequires:  %{python_module idna >= 3.7}
 BuildRequires:  %{python_module lxml >= 4.6.4}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module ply >= 3.10}
-BuildRequires:  %{python_module pytest >= 6.2.5}
+BuildRequires:  %{python_module pytest >= 7.0.0}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests >= 2.32.4}
 BuildRequires:  %{python_module requests-mock}

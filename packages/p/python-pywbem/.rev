@@ -263,4 +263,13 @@
     <comment></comment>
     <requestid>1321803</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>e99451b26218a287539b2f5ea970b196</srcmd5>
+    <version>1.8.1</version>
+    <time>1765572044</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-pytest-9.patch:
+  * Support pytest 9 changes. (forwarded request 1321872 from StevenK)</comment>
+    <requestid>1322559</requestid>
+  </revision>
 </revisionlist>
