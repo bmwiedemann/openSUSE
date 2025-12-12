@@ -1,0 +1,22 @@
+To update pgadmin to a new release you can follow these steps:
+
+1. Update the version in the spec file to the new version
+
+2. Run the following command to download the sources:
+   osc service mr download_files
+
+3. Run the following command to update the vendored npm packages:
+   sh ./update-vendor.sh
+
+   That command sometimes fails when applying the package_git_local.patch
+   patch file. If that happens, rebase the patch file so it applies fine.
+
+   Also, if the script complains about a preexisting working directory,
+   remove it, so it can be extracted again from scratch and we get reproducible
+   builds without manually modified sources.
+
+4. Update the changes file with the release notes from https://www.pgadmin.org/
+
+5. Enjoy!
+   
+

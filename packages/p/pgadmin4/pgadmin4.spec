@@ -70,7 +70,7 @@
 %global user_group_name pgadmin
 
 Name:           pgadmin4
-Version:        9.8
+Version:        9.11
 Release:        0
 Summary:        Management tool for PostgreSQL
 License:        PostgreSQL
@@ -91,6 +91,7 @@ Source11:       %{name}.keyring
 Source13:       %{name}-desktop
 Source14:       optipng
 Source20:       package-lock.json
+Source98:       README.devel
 Source99:       update-vendor.sh
 Source100:      node_modules.spec.inc
 Source101:      node_modules.sums
@@ -101,7 +102,6 @@ Patch2:         support-new-azure-mgmt-rdbms.patch
 Patch5:         fix-eventlet-select_epoll.patch
 Patch6:         make-cloud-packages-optional.patch
 Patch7:         fix-reproducible-builds.patch
-Patch10:        package_deps.patch
 Patch1000:      package_git_local.patch
 BuildRequires:  %{python_module Authlib >= %{python3_authlib_min_version}}
 BuildRequires:  %{python_module Flask >= %{python3_flask_min_version}}

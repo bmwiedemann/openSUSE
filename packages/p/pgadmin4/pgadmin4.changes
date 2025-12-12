@@ -1,4 +1,131 @@
 -------------------------------------------------------------------
+Thu Dec 11 17:43:48 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 9.11 
+  * Supported Database Servers
+    - PostgreSQL: 13, 14, 15, 16, 17 and 18
+    - EDB Advanced Server: 13, 14, 15, 16, 17 and 18
+  * Bundled PostgreSQL Utilities
+    - psql, pg_dump, pg_dumpall, pg_restore: 18.0
+  * New features
+    - Add support of DEPENDS/NO DEPENDS ON EXTENSION for INDEX.
+    - Add support of DEPENDS/NO DEPENDS ON EXTENSION for
+      MATERIALIZED VIEW.
+    - Add support for showing the column data type beside column
+      name in the object explorer.
+    - Added Ubuntu 25.10 and Fedora 43
+    - Add conditional TLS support for the Ingress in the Helm
+      chart.
+  * Bug fixes
+    - Fixed an issue on type casting of default string
+      function/procedure arguments in debugger tool.
+    - Fix pkg_resources deprecation warning by migrating Docker
+      base image to python:3-alpine from alpine:latest.
+    - Fixed an issue where EXPLAIN should run on query under
+      cursor if no text is selected.
+    - Fixed an issue where opening file in Query Tool does not
+      retain file name in tab.
+    - Fixed an issue where connection is failing via Query
+      Tool/PSQL Tool workspaces.
+    - Plain SQL restore runs with ‘restrict’ option to prevent
+      harmful psql meta-commands (CVE-2025-13780).
+    - Fixed an issue where copying highlighted text in the query
+      tool data output cell editor would copy the complete string.
+    - Fixed an issue where copying a single cell should not add
+      quoting.
+    - Fix the Helm chart server definition and change the app
+      version.
+    - Specify the correct hostname placeholder for the Password
+      Exec command.
+    - Ensure the proper handling of extra volume mount
+      configurations in the Helm deployment template by correcting
+      the configuration value references.
+
+- Update to 9.10
+  * Supported Database Servers
+    - PostgreSQL: 13, 14, 15, 16, 17 and 18
+    - EDB Advanced Server: 13, 14, 15, 16, 17 and 18
+  * Bundled PostgreSQL Utilities
+    - psql, pg_dump, pg_dumpall, pg_restore: 18.0
+  * New features
+    - Added the ability to search for tables and automatically
+      bring them into view in the ERD tool.
+    - Add support of DEPENDS/NO DEPENDS ON EXTENSION for PROCEDURE.
+    - Add support for setting image download resolution in the ERD
+      tool.
+    - Add support for displaying detailed Citus query plans instead
+      of 'Custom Scan' placeholder.
+    - Add support for formatting .pgerd ERD project file.
+  * Housekeeping
+    - Migrate pgAdmin UI to use React 19.
+  * Bug fixes
+    - Fixed an issue where data output column resize is not
+      sticking in Safari.
+    - Fixed an issue where Schema Diff does not ignore Tablespace
+      for indexes.
+    - Fixed an issue where the 2FA window redirected to the login
+      page after session expiration.
+    - Fixed an issue where the Select All option on the columns tab
+      of import/export data was not working in languages other than
+      English.
+    - Fixed an issue where the Debian build process failed with a
+      "Sphinx module not found" error when using a Python virtual
+      environment.
+    - Fixed an issue where the last used storage directory was
+      reset to blank, leading to access denied errors during backup
+      or restore operations.
+    - Fixed an issue that prevented assigning multiple users to an
+      RLS policy.
+    - Fixed remote code execution vulnerability when restoring
+      PLAIN-format SQL dumps in server mode (CVE-2025-12762,
+      bsc#1253474).
+    - Fixed Command injection vulnerability allowing arbitrary
+      command execution on Windows (CVE-2025-12763).
+    - Fixed LDAP authentication flow vulnerable to TLS certificate
+      verification bypass (CVE-2025-12765).
+    - Fixed LDAP injection vulnerability in LDAP authentication
+      flow (CVE-2025-12764).
+
+- Update to 9.9 
+  * Supported Database Servers
+    - PostgreSQL: 13, 14, 15, 16, 17 and 18
+    - EDB Advanced Server: 13, 14, 15, 16 and 17
+  * Bundled PostgreSQL Utilities
+    - psql, pg_dump, pg_dumpall, pg_restore: 17.5
+  * New features
+    - Add support of DEPENDS/NO DEPENDS ON EXTENSION for ALTER
+      FUNCTION.
+    - Added "MULTIRANGE_TYPE_NAME" option while creating a Range
+      Type.
+    - Added "SUBSCRIPT" option while creating a External Type.
+    - Added option to skip the password dialog when using an
+      identity file.
+    - Added 'failover' and 'two_phase' parameter support in
+      CREATE/ALTER SUBSCRIPTION for PostgreSQL v17+.
+    - Add support for initializing the pgAdmin4 Kubernetes Helm
+      chart.
+  * Bug fixes
+    - Fixed an issue where the query tool displayed 'default'
+      instead of 'null' for null text data in the data output.
+    - Fixed an issue where the pgAdmin configuration database
+      wasn't being created on a fresh install when an external
+      database was used for the  configuration.
+    - Fixed an issue where shortcuts are not working as expected
+      on multiple keyboard layouts.
+    - Fixed an issue where saving the newly changed preferences was
+      not reflecting on the preferences tab.
+
+- Merge package_deps.patch into package_git_local.patch as
+  suggested by Scott Bradnick.
+- Remove patch:
+  * package_deps.patch
+- Rebase patch:
+  * package_git_local.patch
+- Update vendored packages.
+- Add a README.devel text file with instructions to update the
+  package to a new version.
+
+-------------------------------------------------------------------
 Wed Oct  8 06:33:57 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add node_modules.sums as source in the spec file
