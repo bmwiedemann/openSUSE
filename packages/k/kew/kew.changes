@@ -1,4 +1,107 @@
 -------------------------------------------------------------------
+Thu Dec 11 22:22:29 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 3.7.1
+  + Fixes
+    - Fixes a bug where the screen was not getting cleared when
+      switching views if `hidesidecover` was set to `1`.
+- Update to version 3.7.0
+  + Optimisations
+    - Faster loading of previous playlists, especially for large
+      collections. The new method is up to 20x faster for loading
+      big playlists.
+    - The library is now always cached and only scans if the files
+      have changed. This speeds up library loading, especially on
+      slow disks.
+  + Key Binding Overhaul
+    - Advanced key bindings and more key combinations are now
+      supported.
+    - New format for key bindings:
+      + `bind = +, volUp, +5%` → Increase volume by 5%
+      + `bind = Shift+s, stop` → Stop playback
+      + `bind = mouseMiddle, enqueueAndPlay` → Enqueue and play
+         track
+    - Old config files are mostly compatible, but new examples can
+      be found by deleting the `kewrc` file.
+  + Lyrics Enhancements
+    - Support for both synchronized and unsynchronized Vorbis
+      lyrics. (Suggested by @hiruocha)
+    - Auto-scrolling lyrics for synced lyrics with manual scroll
+      support. (By @noiamnote)
+  + Translations
+    - The app and README have been translated into Japanese and
+      Chinese. Thanks to @hiruocha for the Chinese translation.
+  + Themes
+    - New theme: `catpuccin mocha` by @pixel-peeper.
+    - New theme: `neutral`, which uses only the default foreground
+      color.
+  + UI Improvements
+    - The album cover is now visible on the left side of most views
+      (can be disabled by setting `hideSideCover=1` in the config
+      file).
+  + Bug Fixes
+    - Don't enqueue `.m3u` files themselves when mass enqueueing.
+    - Fixed a bug where song metadata wasn't switching for certain
+      MP3 files.
+    - Fixed a bug where the position of the selected row could jump
+      in library view.
+    - Made the path validation function less strict to avoid false
+      positives. (Reported by DimaFyodorov)
+    - Removed hardcoded paths in Makefile to avoid conflicts.
+    - Fixed a few minor bugs with the library UI.
+    - Fixed full-width characters not being displayed in
+      notifications.
+- Update to version 3.6.4
+  + Bug Fixes
+    - Fixed the `kew theme` command.
+    - Added support for Vorbis lyrics in FLAC, Ogg, and Opus files.
+    - Includes `.lrc` file support and SYLT MP3 lyrics support.
+- Update to version 3.6.3
+  + Bug Fixes
+    - Fixed an issue on Termux for users without `faad` installed.
+    - Fixed song loading instability with FLAC and MP3 files.
+    - Fixed behavior when song arguments are provided, ensuring
+      proper track view behavior.
+- Update to version 3.6.2
+  + Bug Fixes
+    - Fixed `kew` not exiting cleanly on Android.
+    - Fixed error when updating library from cache.
+- Update to version 3.6.1
+  + Bug Fixes
+    - Fixed build issue on Termux.
+- Update to version 3.6.0
+  + New Features
+    - Added logo and tagline: "MUSIC FOR THE SHELL".
+    - Introduced a default red color (`#de2b4d`) when no music is
+      playing and album colors are used.
+    - Improved the welcome screen when the path is not set.
+  + Song Lyrics Support
+    - Added support for `.lrc` files and SYLT ID3 tags.
+    - Watch timestamped lyrics in track view or press 'm' for full
+      -page lyrics.
+  + Internal Changes
+    - Bumped `miniaudio` to version v0.11.23, fixing a bug with
+      certain MP3 versions.
+    - Extensive code cleanup and improved internal structure,
+      including the removal of globals.
+    - The `kewrc` config file is now respected and only updated when
+      running `kew path <path>`.
+  + UI Improvements
+    - Path expansion is now correct when providing it through the
+      first screen.
+    - The app will no longer create `~/.config/kew/themes` if no
+      themes are available.
+    - Gradients are now enabled when using themes, not just album
+      colors.
+  + Bug Fixes
+    - Fixed a bug with library cache IDs introduced in the last
+      version.
+    - Fixed a build issue on macOS.
+    - Fixed an issue with replay gain being calculated in the wrong
+      place.
+- Add lang subpackage
+
+-------------------------------------------------------------------
 Mon Oct 13 04:46:05 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 3.5.3

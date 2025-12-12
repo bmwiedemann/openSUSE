@@ -19,7 +19,7 @@
 
 %bcond_without aac
 Name:           kew
-Version:        3.5.3
+Version:        3.7.1
 Release:        0
 Summary:        A command-line music player
 License:        GPL-2.0-only
@@ -45,6 +45,8 @@ BuildRequires:  pkgconfig(vorbisfile)
 %description
 Listen to music in the terminal.
 
+%lang_package
+
 %prep
 %autosetup
 %if 0%{?suse_version} < 1600
@@ -61,6 +63,7 @@ sed -i '1s|gcc|clang|' Makefile
 
 %install
 %make_install PREFIX=%_prefix MAN_DIR=%_mandir
+%find_lang %{name} %{?no_lang_C}
 
 %files
 %license LICENSE
@@ -68,5 +71,7 @@ sed -i '1s|gcc|clang|' Makefile
 %{_bindir}/kew
 %{_datadir}/kew
 %{_mandir}/man1/kew.1%{?ext_man}
+
+%files lang -f %{name}.lang
 
 %changelog
