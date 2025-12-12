@@ -2192,4 +2192,11 @@
 - config.sh: Use modules.d/*kiwi-live/ to support newer kiwi (forwarded request 1318242 from favogt)</comment>
     <requestid>1318254</requestid>
   </revision>
+  <revision rev="276" vrev="276">
+    <srcmd5>4324d9b31aee7059f555e1dddf351b67</srcmd5>
+    <version>unknown</version>
+    <time>1765579666</time>
+    <user>dimstar_suse</user>
+    <comment>- No longer explicitly require dbus-1-x11.</comment>
+  </revision>
 </revisionlist>

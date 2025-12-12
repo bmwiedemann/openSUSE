@@ -163,7 +163,6 @@ install xfdesktop
 install xfwm4
 
 # Previously recommended by rest_cd_x11
-install dbus-1-x11
 install desktop-file-utils
 install libgnomesu
 install libxfce4ui-tools
