@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Thu Dec 11 00:15:28 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 9.1.1966: 
+ * patch 9.1.1966: MS-Windows: dark mode in gui is not supported
+ * runtime(vim): Update base syntax, match full :help command
+ * patch 9.1.1965: q can accidentally start recording at more prompt
+ * patch 9.1.1964: Wrong display when using setline() at hit-enter prompt
+ * patch 9.1.1963: diff: missing diff size limit for xdiff
+ * runtime(julia): Update Julia runtime files
+ * runtime(rust): use textwidth=100 for the Rust recommended style
+ * runtime(doc): document change in Windows behavior for patch 9.1.1947
+ * patch 9.1.1962: filetype: Erlang application resource files are not recognized
+ * patch 9.1.1961: :0tab behaves like :tab for :stag when 'swb' contains "newtab"
+ * patch 9.1.1960: Wrong position of info popup
+ * patch 9.1.1959: Wrong wrapping of long output using :echowindow
+ * patch 9.1.1958: Wrong display with sign_unplace() and setline() in CursorMoved
+ * patch 9.1.1957: filetype: bpftrace files are not recognized
+ * runtime(odin): support underscore-separated numeric literals
+ * runtime(doc): fix return value in 'exists' and 'exists_compiled()'
+ * patch 9.1.1956: tests: test_sort.vim leaves swapfiles behind
+ * patch 9.1.1955: sort() does not handle large numbers correctly
+ * patch 9.1.1954: Setting a byte in a blob, accepts values outside 0-255
+ * patch 9.1.1953: gui_mch_set_titlebar_colors() is excessively called
+ * runtime(swayconfig): separate identifier groups + cleanup
+ * runtime(i3config): highlight identifiers separately
+ * patch 9.1.1952: tests: need better tests for tf files
+ * runtime(quarto): add missing loaded guard
+ * runtime(python): Highlight t-strings
+ * runtime(sml): Update syntax, improve special constant matching
+ * runtime(hog): set undo_ftplugin correctly, delete trailing whitespace
+ * patch 9.1.1951: tests: Test_windows_external_cmd_in_cwd() only run in huge builds
+ * patch 9.1.1950: tests: Test_tagjump.vim leaves swapfiles behind
+ * patch 9.1.1949: :stag does not use 'swichtbuf' option
+ * runtime(doc): Update vim9.txt Section 1
+ * patch 9.1.1948: Windows: Vim adds current directory to search path
+ * patch 9.1.1947: [security]: Windows: Vim may execute commands from current directory
+ * patch 9.1.1946: Cannot open the help in the current window
+ * patch 9.1.1945: tests: Test_getbufwintabinfo() leaves swapfiles behind
+ * patch 9.1.1944: getwininfo() does not return if statusline is visible
+ * runtime(doc): clarify the use of v:errormsg
+ * patch 9.1.1943: Memory leak with :breakadd expr
+ * runtime(lf): update syntax to support lf version r39
+ * runtime(vim): Update base syntax, match full :language command
+ * patch 9.1.1942: Vim9: Assignment to read-only registers @: and @% is allowed
+ * patch 9.1.1941: tests: Test_execute_register() leaves swapfile behind
+ * patch 9.1.1940: clipboard registers "+" and "*" synced without "autoselect"
+ * patch 9.1.1939: tests: test_matchfuzzy() leaves swapfiles behind
+ * patch 9.1.1938: tests: excessive wait in Test_matchfuzzy_initialized
+ * patch 9.1.1937: tests: Test_matchfuzzy_initialized() fails
+ * patch 9.1.1936: filetype: Erlang lexical files are not recognized
+ * patch 9.1.1935: filetype: not all Erlang files are recognized
+ * runtime(doc): Update and clarify vim9.txt Section 3
+ * runtime(doc): Improve :help :catch command specification
+ * runtime(netrw): fix undefined variable curwin in s:NetrwMenu()
+ * patch 9.1.1934: filetype: not all starlark files are recognized
+ * runtime(doc): Change termdebug_config debug value to v:true in terminal.txt
+ * runtime(doc): Correct typo in usr_30.txt regarding softtabstop
+ * runtime(doc): fix typo in "appendbufline()", builtin.txt
+ * runtime(defaults): Update comment for reverting C comment strings
+ * runtime(doc): Clarification in listener_add() doc
+ * patch 9.1.1933: completion: complete_match() is not useful
+ * patch 9.1.1932: OSC terminal response hard to detect
+ * runtime(doc): remove outdated help about 'completeopt' "fuzzy"
+ * translation: regenerate po/vim.pot after v9.1.1930
+ * patch 9.1.1931: completion: wrong item selected with fuzzy and noinsert
+ * patch 9.1.1930: completion: 'completefuzzycollect' is too obscure
+ * runtime(i3config/swayconfig): add all option for i3config only
+ * patch 9.1.1929: completion: spell completion wrong with fuzzy
+ * runtime(doc): Fix typo in "Jumping to Changes", usr_08.txt
+ * patch 9.1.1928: xxd: exit_with_usage() can be simplified
+ * patch 9.1.1927: Wayland: clipboard code too complex
+ * Update link to XDG base specification in option.c comment
+ * runtime(doc): Add environment variable expansion note to options
+ * patch 9.1.1926: xdiff: Coverity warning with MAX_CNT/UINT_MAX usage
+ * runtime(new-tutor): update vim-02-beginner following 48940d9
+ * patch 9.1.1925: make depend does not include osdef.h
+ * runtime(tutor): Improve style for chapter 2
+ * runtime(tutor): Add Spanish translation for chapter 2
+ * runtime(tutor): Improve Spanish translation of chapter 1
+ * runtime(haskell): Add syntax test
+ * runtime(vim): Update base syntax, match full :history command
+ * patch 9.1.1924: 'commentstring' requires +folding feature
+ * patch 9.1.1923: wrong error when assigning to read-only register
+ * runtime(vim): Update base syntax, match :debug and :break* commands
+ * runtime(compiler): set errorformat where missing
+ * runtime(php): Update indent script to 1.76 (from 1.75)
+ * runtime(haskell): allow spaces in backticked operators in syntax script
+ * patch 9.1.1922: Wrong virtcol('$') with virtual text at EOL
+ * patch 9.1.1921: xdiff: included xdiff code is outdated
+ * patch 9.1.1920: tests: not enough testing for wildtrigger() pum redrawing
+ * CI: Switch to macOS 26 runner
+ * runtime(c): Update signal constants in syntax script
+
+-------------------------------------------------------------------
 Mon Nov 17 09:28:43 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildIgnore glycin-loaders: the loaders are a valid dependency to

@@ -8185,4 +8185,41 @@ always built-in because vim has direct perl dependencies anyway.
     <comment></comment>
     <requestid>1318513</requestid>
   </revision>
+  <revision rev="392" vrev="1">
+    <srcmd5>87e22dd0b716f975f99f068e6c1199a2</srcmd5>
+    <version>9.1.1966</version>
+    <time>1765572013</time>
+    <user>anag_factory</user>
+    <comment>- update to 9.1.1966: 
+ * patch 9.1.1966: MS-Windows: dark mode in gui is not supported
+ * runtime(vim): Update base syntax, match full :help command
+ * patch 9.1.1965: q can accidentally start recording at more prompt
+ * patch 9.1.1964: Wrong display when using setline() at hit-enter prompt
+ * patch 9.1.1963: diff: missing diff size limit for xdiff
+ * runtime(julia): Update Julia runtime files
+ * runtime(rust): use textwidth=100 for the Rust recommended style
+ * runtime(doc): document change in Windows behavior for patch 9.1.1947
+ * patch 9.1.1962: filetype: Erlang application resource files are not recognized
+ * patch 9.1.1961: :0tab behaves like :tab for :stag when 'swb' contains &quot;newtab&quot;
+ * patch 9.1.1960: Wrong position of info popup
+ * patch 9.1.1959: Wrong wrapping of long output using :echowindow
+ * patch 9.1.1958: Wrong display with sign_unplace() and setline() in CursorMoved
+ * patch 9.1.1957: filetype: bpftrace files are not recognized
+ * runtime(odin): support underscore-separated numeric literals
+ * runtime(doc): fix return value in 'exists' and 'exists_compiled()'
+ * patch 9.1.1956: tests: test_sort.vim leaves swapfiles behind
+ * patch 9.1.1955: sort() does not handle large numbers correctly
+ * patch 9.1.1954: Setting a byte in a blob, accepts values outside 0-255
+ * patch 9.1.1953: gui_mch_set_titlebar_colors() is excessively called
+ * runtime(swayconfig): separate identifier groups + cleanup
+ * runtime(i3config): highlight identifiers separately
+ * patch 9.1.1952: tests: need better tests for tf files
+ * runtime(quarto): add missing loaded guard
+ * runtime(python): Highlight t-strings
+ * runtime(sml): Update syntax, improve special constant matching
+ * runtime(hog): set undo_ftplugin correctly, delete trailing whitespace
+ * patch 9.1.1951: tests: Test_windows_external_cmd_in_cwd() only run in huge builds
+ * patch 9.1.1950: tests: Test_tagjump.vim leaves swapfiles behind</comment>
+    <requestid>1322091</requestid>
+  </revision>
 </revisionlist>
