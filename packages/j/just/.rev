@@ -487,4 +487,17 @@
   * Properly close format string delimiter (forwarded request 1321819 from rrahl0)</comment>
     <requestid>1321820</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>efa181700f7446b4b6df9f9941e2c676</srcmd5>
+    <version>1.45.0</version>
+    <time>1765572174</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.45.0:
+  * Allow requiring recipe arguments to match regular expression patterns
+  * Allow shell-expanded strings in attributes
+  * Fix arg pattern anchoring
+  * Use non-capturing group in arg pattern regex
+  * Remove redundant type annotation (forwarded request 1322617 from rrahl0)</comment>
+    <requestid>1322618</requestid>
+  </revision>
 </revisionlist>
