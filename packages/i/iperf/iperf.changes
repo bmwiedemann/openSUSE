@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Dec 09 16:27:50 CET 2025 - Arvin Schnell <aschnell@suse.com>
+
+- update to 3.20:
+  * Millisecond-resolution representations have been added to JSON
+    timestamps. (PR #1846)
+  * The reorder_seen metric, where available, is now available in
+    the JSON output. (PR #1278)
+  * A division by zero error has been fixed. (PR #1906)
+  * Some command-line options were not properly restricted to the
+    client or server; this problem has been fixed. (#1892 / PR #1894)
+  * The combination of `--udp` and `--file` is now explicitly
+    disallowed. (PR #1909)
+  * It is now possible to get both the full JSON result object as
+    well as streaming intermediate JSON result objects. This
+    functionality is enabled by using the new `--json-stream-full`
+    command-line flag, in addition to the existing `--json-stream`
+    flag (PR #1903)
+  * Sends with `--zerocopy` are now properly seeded with data
+    instead of being all-zeroes. (PR #1949)
+  * The `--server-max-duration` flag is now allowed on the iperf3
+    server to impose a maximum duration on timed tests. (PR #1684)
+  * The `--rcv-timeout` flag is now ignored for `--bidir` tests.
+    This change prevents premature termination of bidirectional
+    tests. (#1766 / PR #1946)
+  * Several errors in the authentication code were uncovered when
+    building with OpenSSL 3.5.3 and later versions. These were
+    fixed. (#1951 / PR #1956)
+  * Various issues in the iperf3 manual page were fixed up. (PR
+    #1887, PR #1927, PR #1936, PR #1941, #1891 / PR #1952)
+
+-------------------------------------------------------------------
 Mon Aug 04 16:53:44 CEST 2025 - Arvin Schnell <aschnell@suse.com>
 
 - update to 3.19.1:
