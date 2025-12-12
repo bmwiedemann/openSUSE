@@ -5729,4 +5729,17 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1321368</requestid>
   </revision>
+  <revision rev="480" vrev="1">
+    <srcmd5>760e25c7125eee68cd874a6b20930940</srcmd5>
+    <version>11.0~rc1</version>
+    <time>1765572144</time>
+    <user>anag_factory</user>
+    <comment>- updated to 11.0-rc1 release
+  - Mono engine updated to version 10.4.0.
+  - Locale data updated to Unicode CLDR 48.
+  - TWAINDSM module for scanner support on 64-bit.
+  - Various bug fixes.
+- update staging to 11.0-rc1 release</comment>
+    <requestid>1322569</requestid>
+  </revision>
 </revisionlist>

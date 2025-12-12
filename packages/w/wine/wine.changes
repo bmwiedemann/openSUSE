@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Dec  7 11:24:55 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- updated to 11.0-rc1 release
+  - Mono engine updated to version 10.4.0.
+  - Locale data updated to Unicode CLDR 48.
+  - TWAINDSM module for scanner support on 64-bit.
+  - Various bug fixes.
+- update staging to 11.0-rc1 release
+
+-------------------------------------------------------------------
 Sat Nov 29 14:28:52 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - updated to 10.20 release

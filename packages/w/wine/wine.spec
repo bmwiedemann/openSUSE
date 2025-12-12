@@ -68,15 +68,15 @@
 
 %define         _lto_cflags %{nil}
 Name:           wine%{psuffix}
-%define downloadver  10.20
-Version:        10.20
+%define downloadver  11.0-rc1
+Version:        11.0~rc1
 Release:        0
 Summary:        An MS Windows Emulator
 Group:          System/Emulators/PC
 License:        LGPL-2.1-or-later
 URL:            https://winehq.org
-Source0:        https://dl.winehq.org/wine/source/10.x/wine-%{downloadver}.tar.xz
-Source1:        https://dl.winehq.org/wine/source/10.x/wine-%{downloadver}.tar.xz.sign
+Source0:        https://dl.winehq.org/wine/source/11.0/wine-%{downloadver}.tar.xz
+Source1:        https://dl.winehq.org/wine/source/11.0/wine-%{downloadver}.tar.xz.sign
 Source2:        https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xda23579a74d4ad9af9d3f945cefac8eaaf17519d#/wine.keyring
 %if %{staging}
 Source3:        https://github.com/wine-staging/wine-staging/archive/v%{downloadver}.tar.gz#/wine-staging-%{downloadver}.tar.xz
