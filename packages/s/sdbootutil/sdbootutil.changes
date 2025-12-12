@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 11 12:25:54 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20251211.b3d0304:
+  * Set default entry when removing a kernel
+  * Fix return value when image is set (boo#1254534)
+  * Return error if the hash program is not installed
+
+-------------------------------------------------------------------
 Wed Nov 26 10:21:51 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20251126.f7a46a1:
