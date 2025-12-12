@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 12 13:19:21 UTC 2025 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 2.0.12
+  * Other
+    chore: update quic-go, adapt to lack of write tracking by @calmh in #10456
+    chore(cli): clean up generated usage strings for config commands (fixes #10462) by @acolomb in #10463
+
+-------------------------------------------------------------------
 Tue Nov  4 08:55:02 UTC 2025 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 2.0.11
