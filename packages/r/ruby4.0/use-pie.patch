@@ -1,0 +1,13 @@
+Index: ruby-4.0.0-preview2/template/Makefile.in
+===================================================================
+--- ruby-4.0.0-preview2.orig/template/Makefile.in
++++ ruby-4.0.0-preview2/template/Makefile.in
+@@ -311,7 +311,7 @@ miniruby$(EXEEXT):
+ $(PROGRAM):
+ 		@$(RM) $@
+ 		$(ECHO) linking $@
+-		$(Q) $(PURIFY) $(CC) $(EXE_LDFLAGS) $(XLDFLAGS) $(MAINOBJ) $(EXTOBJS) $(LIBRUBYARG) $(MAINLIBS) $(EXTLIBS) $(OUTFLAG)$@
++		$(Q) $(PURIFY) $(CC) -pie $(EXE_LDFLAGS) $(XLDFLAGS) $(MAINOBJ) $(EXTOBJS) $(LIBRUBYARG) $(MAINLIBS) $(EXTLIBS) $(OUTFLAG)$@
+ 		$(Q) $(POSTLINK)
+ 
+ $(PROGRAM): @XRUBY_LIBPATHENV_WRAPPER@

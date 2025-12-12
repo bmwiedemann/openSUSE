@@ -1,0 +1,16 @@
+#
+# IMPORTANT IMPORTANT IMPORTANT IMPORTANT  IMPORTANT IMPORTANT
+#
+#  if you change any macros here you have to update the copy in the
+#  prjconf aswell.
+#
+# IMPORTANT IMPORTANT IMPORTANT IMPORTANT  IMPORTANT IMPORTANT
+#
+%rubygemsruby40() rubygem(ruby:4.0.0+0:%{expand:%%rubygemsx%*} %{expand:%%{rubygems%*}}
+%rubygemsxruby40() %{expand:%%{rubygemsx%*}}
+
+%rubyruby40() ruby4.0 %{expand:%%rubyx%*} %{expand:%%{ruby%*}}
+%rubyxruby40() %{expand:%%{rubyx%*}}
+
+%rubydevelruby40() ruby4.0-devel %{expand:%%rubydevelx%*} %{expand:%%{rubydevel%*}}
+%rubydevelxruby40() %{expand:%%{rubydevelx%*}}

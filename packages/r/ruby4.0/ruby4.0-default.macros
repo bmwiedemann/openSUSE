@@ -1,0 +1,7 @@
+%rb_default_ruby_suffix ruby4.0
+
+%rb_default_ruby        ruby40
+%rb_default_ruby_abi    ruby:4.0.0+0
+
+%rb_build_versions      %rb_default_ruby
+%rb_build_ruby_abis     %rb_default_ruby_abi

@@ -1,0 +1,48 @@
+commit 3d8dfbf51e0133e76e5dca4f408c8f7efb6698b3
+Author: Hiroshi SHIBATA <hsbt@ruby-lang.org>
+Date:   Mon Nov 17 16:07:46 2025 +0900
+
+    Skip TestCommitEmail if git is not available.
+    
+    https://github.com/ruby/actions/actions/runs/19420968008/job/55558315338
+    
+    ```
+        1) Error:
+      TestCommitEmail#test_sendmail_encoding:
+      Test::Unit::ProxyError: No such file or directory - git
+          /home/runner/work/actions/actions/ruby-4.0.0-preview2/lib/open3.rb:534:in 'Kernel#spawn'
+          /home/runner/work/actions/actions/ruby-4.0.0-preview2/lib/open3.rb:534:in 'Open3.popen_run'
+          /home/runner/work/actions/actions/ruby-4.0.0-preview2/lib/open3.rb:379:in 'Open3.popen2'
+          /home/runner/work/actions/actions/ruby-4.0.0-preview2/lib/open3.rb:785:in 'Open3.capture2'
+          /home/runner/work/actions/actions/ruby-4.0.0-preview2/tool/test/test_commit_email.rb:89:in 'TestCommitEmail#git'
+          /home/runner/work/actions/actions/ruby-4.0.0-preview2/tool/test/test_commit_email.rb:13:in 'block in TestCommitEmail#setup'
+          /home/runner/work/actions/actions/ruby-4.0.0-preview2/tool/test/test_commit_email.rb:12:in 'Dir.chdir'
+          /home/runner/work/actions/actions/ruby-4.0.0-preview2/tool/test/test_commit_email.rb:12:in 'TestCommitEmail#setup'
+    
+        2) Error:
+      TestCommitEmail#test_sendmail_encoding:
+      Test::Unit::ProxyError: no implicit conversion of nil into String
+          /home/runner/work/actions/actions/ruby-4.0.0-preview2/tool/test/test_commit_email.rb:37:in 'File.unlink'
+          /home/runner/work/actions/actions/ruby-4.0.0-preview2/tool/test/test_commit_email.rb:37:in 'TestCommitEmail#teardown'
+    ```
+
+Index: ruby-4.0.0-preview2/tool/test/test_commit_email.rb
+===================================================================
+--- ruby-4.0.0-preview2.orig/tool/test/test_commit_email.rb
++++ ruby-4.0.0-preview2/tool/test/test_commit_email.rb
+@@ -36,6 +36,7 @@ class TestCommitEmail < Test::Unit::Test
+   end
+ 
+   def teardown
++    omit 'git command is not available' unless system('git', '--version', out: File::NULL, err: File::NULL)
+     File.unlink(@sendmail)
+     Dir.rmdir(File.dirname(@sendmail))
+     FileUtils.rm_rf(@ruby)
+@@ -43,6 +44,7 @@ class TestCommitEmail < Test::Unit::Test
+ 
+   def test_sendmail_encoding
+     omit 'the sendmail script does not work on windows' if windows?
++    omit 'git command is not available' unless system('git', '--version', out: File::NULL, err: File::NULL)
+ 
+     Dir.chdir(@ruby) do
+       before_rev = git('rev-parse', 'HEAD^').chomp
