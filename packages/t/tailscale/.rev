@@ -445,4 +445,13 @@
   * The client no longer hangs after wake up (forwarded request 1321350 from rrahl0)</comment>
     <requestid>1321351</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>5a67dbe8ff97c8605c8de5b6915605ce</srcmd5>
+    <version>1.92.2</version>
+    <time>1765572197</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.92.2:
+  * cmd/derper: add GCP Certificate Manager support (forwarded request 1322627 from rrahl0)</comment>
+    <requestid>1322628</requestid>
+  </revision>
 </revisionlist>
