@@ -334,4 +334,19 @@
      possible completions for a word to the standard output in a defined format.</comment>
     <requestid>1294140</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>8a111b07d6c3cec284bd8c2be08eed6c</srcmd5>
+    <version>8.3.MACRO</version>
+    <time>1765572012</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream patches
+  * readline83-002
+    If an application calls rl_save_prompt, which sets rl_prompt to NULL, 
+    without calling rl_set_prompt to set it to a new value, readline redisplay
+    can dereference a NULL pointer.
+  * readline83-003
+    A SIGINT during a reverse i-search can cause a segmentation fault due to
+    accessing data freed by a signal handler.</comment>
+    <requestid>1322182</requestid>
+  </revision>
 </revisionlist>

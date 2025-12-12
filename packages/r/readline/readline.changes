@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec 11 10:09:17 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add upstream patches
+  * readline83-002
+    If an application calls rl_save_prompt, which sets rl_prompt to NULL, 
+    without calling rl_set_prompt to set it to a new value, readline redisplay
+    can dereference a NULL pointer.
+  * readline83-003
+    A SIGINT during a reverse i-search can cause a segmentation fault due to
+    accessing data freed by a signal handler.
+
+-------------------------------------------------------------------
 Wed Jul 16 14:13:26 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Update to final readline-8.3
