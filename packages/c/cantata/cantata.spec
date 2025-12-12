@@ -59,6 +59,7 @@ BuildRequires:  pkgconfig(zlib)
 Requires:       media-player-info
 Requires:       mpd
 Requires:       qt6-sql-sqlite
+Requires:       fontawesome-fonts
 Requires(post): hicolor-icon-theme
 Requires(postun): hicolor-icon-theme
 %lang_package
