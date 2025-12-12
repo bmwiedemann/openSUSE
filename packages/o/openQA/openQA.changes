@@ -1,7 +1,11 @@
 -------------------------------------------------------------------
-Wed Dec 10 15:10:39 UTC 2025 - okurz@suse.com
+Thu Dec 11 17:35:22 UTC 2025 - okurz@suse.com
 
-- Update to version 5.1765365298.9af08171:
+- Update to version 5.1765469360.5c0525b5:
+  * worker: Add coverage for OVS DBus checks
+  * Fix overview when filtering by test and module result at the same time
+  * Return signal as part of run_cmd result
+  * Add scanner for untracked screenshots
   * KTAP: Properly hide details of a skipped subtest
   * docs: Restory logic of the sentence about NFT vs firewalld
   * docs: Clarify DHCP/RA availability on MM networks
