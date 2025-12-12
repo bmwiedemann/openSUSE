@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Dec 12 12:16:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.30.30:
+  * build(deps): bump github.com/chainguard-dev/clog from 1.7.0 to
+    1.8.0 (#1981)
+  * cache keys by name (#1968)
+  * build(deps): bump k8s.io/apimachinery from 0.34.2 to 0.34.3
+    (#1979)
+  * build(deps): bump go.opentelemetry.io/otel/trace from 1.38.0 to
+    1.39.0 (#1974)
+  * build(deps): bump golang.org/x/oauth2 from 0.33.0 to 0.34.0
+    (#1973)
+  * build(deps): bump golang.org/x/sys from 0.38.0 to 0.39.0
+    (#1972)
+  * build(deps): bump golang.org/x/sync from 0.18.0 to 0.19.0
+    (#1971)
+  * build(deps): bump github/codeql-action from 4.31.6 to 4.31.7
+    (#1970)
+  * Add the ability to specify additional certs to be added to the
+    image (#1977)
+  * build(deps): bump step-security/harden-runner from 2.13.3 to
+    2.14.0 (#1978)
+  * cli/dot: Ignore Duplicate Node errors (#1976)
+
+-------------------------------------------------------------------
 Mon Dec 08 08:06:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.30.29:
