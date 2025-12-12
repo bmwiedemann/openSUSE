@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Dec  9 20:37:22 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 11.8.5:
+    https://mariadb.com/docs/release-notes/community-server/11.8/11.8.5
+    https://mariadb.com/docs/release-notes/community-server/changelogs/11.8/11.8.5
+    https://mariadb.com/docs/release-notes/community-server/11.8/11.8.4
+    https://mariadb.com/docs/release-notes/community-server/changelogs/11.8/11.8.4
+  * fixes for the following security vulnerabilities:
+    11.8.5: none
+    11.8.4: none
+- Add %license tags to license files (boo#1252162)
+- Add INSTALL_DOCREADMEDIR cmake flag to install readme and license files
+- Remove client plugin parsec.so, it is shipped by libmariadb_plugins
+  (boo#1243040, boo#1254476)
+- Refresh fix-pamdir.patch
+- Drop mariadb-fix-armv9.patch (included in upstream release)
+- Update skipped test list
+
+-------------------------------------------------------------------
 Wed Nov 12 19:50:46 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Add fix-MDEV-32585.patch (boo#1237555)
@@ -41,13 +60,13 @@ Thu Jun  5 17:11:37 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
 -------------------------------------------------------------------
 Wed May  7 14:04:55 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
 
-- Update list of skipped tests 
+- Update list of skipped tests
 
 -------------------------------------------------------------------
 Thu Apr 24 21:57:38 UTC 2025 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
 
 - Fix galera condition in SLFO
-- Fix exclude list for galera-related files when galera is disabled 
+- Fix exclude list for galera-related files when galera is disabled
 
 -------------------------------------------------------------------
 Tue Apr 15 05:59:24 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
@@ -88,7 +107,7 @@ Fri Feb 14 14:41:28 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
     https://mariadb.com/kb/en/mariadb-11-7-2-changelog/
   * fixes for the following security vulnerabilities:
     11.7.2: CVE-2025-21490
-  * fixes bsc#1236823 
+  * fixes bsc#1236823
 - Remove extra compiler flags. These don't seem to be needed anymore
   and were overwriting predefined flags
 
@@ -104,7 +123,7 @@ Tue Nov 26 19:23:02 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 Tue Nov 26 16:59:42 UTC 2024 - Angel Yankov <angel.yankov@suse.com>
 
 - Fix test for SSL connection init with openssl 3.2.3.
-  * Added mariadb-fix-testsuite-openssl3.2.3.patch 
+  * Added mariadb-fix-testsuite-openssl3.2.3.patch
 
 -------------------------------------------------------------------
 Thu Nov 14 21:10:35 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
@@ -403,7 +422,7 @@ Wed Feb 16 09:59:08 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
             CVE-2021-46664
             CVE-2021-46661
             CVE-2021-46668
-            CVE-2021-46663 
+            CVE-2021-46663
     10.7.2: CVE-2022-24052
             CVE-2022-24051
             CVE-2022-24050
@@ -4459,4 +4478,3 @@ Wed Nov 11 12:30:18 MET 1998 - ro@suse.de
 Mon Nov  9 16:49:33 MET 1998 - grimmer@suse.de
 
 - New Package (Version 3.21.33b)
-

@@ -1,11 +1,11 @@
-diff --git a/cmake/install_layout.cmake b/cmake/install_layout.cmake
-index 877b147bc6e..f025aec78cb 100644
+Index: b/cmake/install_layout.cmake
+===================================================================
 --- a/cmake/install_layout.cmake
 +++ b/cmake/install_layout.cmake
-@@ -163,7 +163,7 @@ SET(INSTALL_UNIX_ADDRDIR_RPM            "${INSTALL_MYSQLDATADIR_RPM}/mysql.sock"
- SET(INSTALL_SYSTEMD_UNITDIR_RPM         "/usr/lib/systemd/system")
+@@ -164,7 +164,7 @@ SET(INSTALL_SYSTEMD_UNITDIR_RPM
  SET(INSTALL_SYSTEMD_SYSUSERSDIR_RPM     "/usr/lib/sysusers.d")
  SET(INSTALL_SYSTEMD_TMPFILESDIR_RPM     "/usr/lib/tmpfiles.d")
+ SET(INSTALL_RUNDATADIR_RPM              "/run/mariadb")
 -SET(INSTALL_PAMDIR_RPM                  "/${INSTALL_LIBDIR_RPM}/security")
 +SET(INSTALL_PAMDIR_RPM                  "${INSTALL_LIBDIR_RPM}/security")
  SET(INSTALL_PAMDATADIR_RPM              "/etc/security")

@@ -52,7 +52,7 @@
 # Build with cracklib plugin when cracklib-dict-full >= 2.9.0 is available
 %define with_cracklib_plugin 0
 Name:           mariadb
-Version:        11.8.3
+Version:        11.8.5
 Release:        0
 Summary:        Server part of MariaDB
 License:        SUSE-GPL-2.0-with-FLOSS-exception
@@ -81,9 +81,8 @@ Patch7:         mariadb-10.4.12-fix-install-db.patch
 Patch10:        fix-pamdir.patch
 Patch11:        gcc13-fix.patch
 Patch12:        mariadb-fix-testsuite-openssl3.2.3.patch
-Patch13:        mariadb-fix-armv9.patch
 # PATCH-FIX-OPENSUSE fix-MDEV-32585.patch boo#1237555 antonio.teixeira@suse.com -- Fixes potential buffer overflow in get_defaults_options()
-Patch14:        fix-MDEV-32585.patch
+Patch13:        fix-MDEV-32585.patch
 # needed for bison SQL parser and wsrep API
 BuildRequires:  bison
 BuildRequires:  cmake
@@ -368,7 +367,6 @@ find . -name "*.jar" -type f -exec rm --verbose -f {} \;
 %patch -P 11 -p1
 %patch -P 12 -p1
 %patch -P 13 -p1
-%patch -P 14 -p1
 
 cp %{_sourcedir}/suse-test-run .
 
@@ -435,6 +433,7 @@ cat %{SOURCE50} | tee -a mysql-test/unstable-tests
        -DINSTALL_PLUGINDIR_RPM="%{_lib}/mysql/plugin"               \
        -DINSTALL_LIBDIR_RPM="%{_lib}"                               \
        -DINSTALL_SYSCONF2DIR="%{_sysconfdir}/my.cnf.d"              \
+       -DINSTALL_DOCREADMEDIR="%{_docdir}/%{name}"                  \
        -DCMAKE_BUILD_TYPE=RelWithDebInfo                            \
        -DINSTALL_SQLBENCHDIR=share                                  \
        -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,relro,-z,now -Wl,-Bsymbolic -Wl,-Bsymbolic-functions" \
@@ -548,7 +547,7 @@ unlink %{buildroot}%{_libdir}/libmysqlclient.so
 unlink %{buildroot}%{_libdir}/libmysqlclient_r.so
 unlink %{buildroot}%{_libdir}/libmariadb.so
 # Client plugins
-rm %{buildroot}%{_libdir}/mysql/plugin/{auth_gssapi_client.so,dialog.so,mysql_clear_password.so,sha256_password.so,caching_sha2_password.so,client_ed25519.so}
+rm %{buildroot}%{_libdir}/mysql/plugin/{auth_gssapi_client.so,dialog.so,mysql_clear_password.so,sha256_password.so,caching_sha2_password.so,client_ed25519.so,parsec.so}
 # Devel files
 rm %{buildroot}%{_bindir}/mysql_config
 rm %{buildroot}%{_bindir}/mariadb_config
@@ -614,14 +613,8 @@ done
 popd >/dev/null
 mv %{_builddir}/errormessages.files mariadb-errormessages.files
 
-# Files not installed by make install
-# Some of the documentation we need to have installed
-DOCS=(COPYING README.md EXCEPTIONS-CLIENT %{_sourcedir}/README.debug plugin/daemon_example/daemon_example.ini)
-DOCDIR=%{buildroot}%{_defaultdocdir}/%{name}
-install -d -m 755 ${DOCDIR}
-for i in "${DOCS[@]}"; do
-	install -m 644 "${i}" "${DOCDIR}" || true
-done
+install -m 644 %{SOURCE4} %{buildroot}%{_docdir}/%{name}
+install -m 644 plugin/daemon_example/daemon_example.ini %{buildroot}%{_docdir}/%{name}
 
 # Install default configuration file
 install -m 644 %{SOURCE14} %{buildroot}%{_sysconfdir}/my.cnf
@@ -827,7 +820,8 @@ exit 0
 %config(noreplace) %{_pam_secconfdir}/user_map.conf
 %config %{_sysconfdir}/logrotate.d/%{name}
 %{_datadir}/%{name}/%{name}.logrotate
-%doc %{_defaultdocdir}/%{name}
+%license %{_docdir}/%{name}/COPYING
+%doc %{_docdir}/%{name}
 %dir %{_libexecdir}/mysql
 %dir %attr(0700, mysql, mysql) %{_localstatedir}/log/mysql
 %{_libexecdir}/mysql/mysql-systemd-helper
@@ -861,13 +855,14 @@ exit 0
 %ghost %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-something
 %dir %attr(0750, mysql, mysql) %{_localstatedir}/lib/mysql-files
 %if 0%{with_mroonga} > 0
+%license %{_datadir}/mariadb/mroonga/COPYING
 %{_datadir}/mariadb/mroonga/
 %dir %{_datadir}/groonga/
-%{_datadir}/groonga/COPYING
+%license %{_datadir}/groonga/COPYING
 %{_datadir}/groonga/README.md
 %dir %{_datadir}/groonga-normalizer-mysql
 %{_datadir}/groonga-normalizer-mysql/README.md
-%{_datadir}/groonga-normalizer-mysql/lgpl-2.0.txt
+%license %{_datadir}/groonga-normalizer-mysql/lgpl-2.0.txt
 %endif
 %dir %{_datadir}/%{name}/policy
 %dir %{_datadir}/%{name}/policy/apparmor
