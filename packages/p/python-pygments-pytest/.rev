@@ -114,4 +114,14 @@
 - Skip a test that fails with Pytest 8.3.</comment>
     <requestid>1190075</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d04a21c45ea8cf165030e17a8f75ed26</srcmd5>
+    <version>2.5.0</version>
+    <time>1765572040</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.5.0:
+  * disable test_warnings.
+  * add initial subtests support.</comment>
+    <requestid>1322535</requestid>
+  </revision>
 </revisionlist>

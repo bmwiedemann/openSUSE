@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pygments-pytest
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        A pygments lexer for pytest output
 License:        MIT
@@ -51,8 +51,7 @@ This library provides a pygments lexer called "pytest".
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# https://github.com/pytest-dev/pygments-pytest/issues/135
-%pytest -k 'not test_warnings'
+%pytest
 
 %files %{python_files}
 %doc README.md
