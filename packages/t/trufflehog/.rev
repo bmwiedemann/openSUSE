@@ -2548,4 +2548,19 @@ Note: The previously pushed version 3.89.0 never existed. This was a typo, which
   * Added API Call Metrics to Docker Source (#4552) (forwarded request 1321971 from ph03nix)</comment>
     <requestid>1321973</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>844ae37f624097397b98f5d4dbcf9d2d</srcmd5>
+    <version>3.92.3</version>
+    <time>1765572070</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.92.3:
+  * Update Azure Repos link format (#4598)
+  * fix typo (#4599)
+  * added service account in google drive credentials for dwd support (#4596)
+
+- Update to version 3.92.2:
+  * Add optional git clone timeout (#4597)
+  * [INS-37] Fixed the issue of ftp connection ignoring the detector's co… (#4590) (forwarded request 1322243 from ph03nix)</comment>
+    <requestid>1322260</requestid>
+  </revision>
 </revisionlist>
