@@ -1,0 +1,13 @@
+Index: dbus-1.14.10/bus/session.conf.in
+===================================================================
+--- dbus-1.14.10.orig/bus/session.conf.in
++++ dbus-1.14.10/bus/session.conf.in
+@@ -30,7 +30,7 @@
+     <!-- Allow everything to be sent -->
+     <allow send_destination="*" eavesdrop="true"/>
+     <!-- Allow everything to be received -->
+-    <allow eavesdrop="true"/>
++    <allow receive_sender="*"/>
+     <!-- Allow anyone to own anything -->
+     <allow own="*"/>
+   </policy>

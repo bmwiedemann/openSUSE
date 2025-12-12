@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Dec 11 02:26:17 UTC 2025 - Simon Lees <sflees@suse.de>
+
+- dbus-1-daemon no longer provides dbus-service (bsc#1254491)
+
+-------------------------------------------------------------------
+Thu Dec  5 00:17:14 UTC 2024 - Simon Lees <sflees@suse.de>
+
+- having eavesdropping enabled causes a warning to be logged with
+  dbus-broker boo#1232563
+  * Adds feature-suse-disable-eavesdrop.patch
+- dbus-launch is actually now in the dbus-daemon package.
+
+-------------------------------------------------------------------
+Wed Oct 23 03:21:02 UTC 2024 - Simon Lees <sflees@suse.de>
+
+- Package cleanup
+  * Drop -x11 varient that is no longer needed
+  * dbus-launch is now in the dbus-daemon package.
+  * This also removes update alternatives for dbus-launch
+
+-------------------------------------------------------------------
 Wed Oct 16 07:22:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop rcFOO symlinks (PED-266).

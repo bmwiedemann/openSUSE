@@ -1,7 +1,7 @@
 #
 # spec file for package dbus-1
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,9 @@ Patch0:         feature-suse-log-deny.patch
 Patch1:         feature-suse-do-autolaunch.patch
 # PATCH-FEATURE-OPENSUSE sflees@suse.de, users shouldn't be allowed to start / stop the dbus service.
 Patch2:         feature-suse-refuse-manual-start-stop.patch
-BuildRequires:  alts
+# PATCH-FEATURE-OPENSUSE sflees@suse.de, having eavesdropping enabled causes a warning to be logged with
+#               dbus-broker boo#1232563
+Patch3:         feature-suse-disable-eavesdrop.patch
 BuildRequires:  audit-devel
 BuildRequires:  cmake
 BuildRequires:  libcap-ng-devel
@@ -49,11 +51,8 @@ BuildRequires:  pkgconfig
 BuildRequires:  sysuser-tools
 BuildRequires:  xmlto
 BuildRequires:  pkgconfig(libsystemd) >= 209
-Requires:       alts
 Requires(post): %{_libname} = %{version}
 Requires(post): /usr/bin/cmp
-Requires(pre):  permissions
-Provides:       dbus-launch = %{version}
 %if %{with selinux}
 BuildRequires:  libselinux-devel
 %endif
@@ -75,7 +74,8 @@ BuildArch:      noarch
 %package daemon
 Summary:        D-Bus message bus daemon
 Provides:       dbus-1:%{_bindir}/dbus-daemon
-Provides:       dbus-service = %{version}
+Provides:       dbus-launch = %{version}
+Requires(pre):  permissions
 
 %package devel
 Summary:        Developer package for D-Bus
@@ -172,8 +172,6 @@ rm %{buildroot}%{_unitdir}/*.service
 rm %{buildroot}%{_userunitdir}/*.service
 %endif
 
-# dbus-launch, too
-mv -f %{buildroot}/%{_bindir}/dbus-launch %{buildroot}%{_bindir}/dbus-launch.nox11
 install -d %{buildroot}/run/dbus
 mkdir -p %{buildroot}/%{_libdir}/pkgconfig
 
@@ -184,14 +182,6 @@ for i in %{_sysconfdir}/dbus-1/session.d %{_sysconfdir}/dbus-1/system.d \
 done
 
 mkdir -p %{buildroot}%{_localstatedir}/lib/dbus
-
-# create entries for libalternatives
-ln -sf %{_bindir}/alts %{buildroot}%{_bindir}/dbus-launch
-mkdir -p %{buildroot}%{_datadir}/libalternatives/dbus-launch
-cat > %{buildroot}%{_datadir}/libalternatives/dbus-launch/10.conf <<EOF
-binary=%{_bindir}/dbus-launch.nox11
-group=dbus-launch
-EOF
 
 find %{buildroot} -type f -name "*.la" -delete -print
 
@@ -209,12 +199,13 @@ rm -Rf %{buildroot}%{_datadir}/doc/dbus
 %endif
 # removing old update-alternatives entries
 if [ "$1" -gt 0 ] && [ -f %{_sbindir}/update-alternatives ] ; then
-    %{_sbindir}/update-alternatives --remove dbus-launch %{_bindir}/dbus-launch.nox11
+    if [ -f %{_bindir}/dbus-launch.nox11 ]; then
+        %{_sbindir}/update-alternatives --remove dbus-launch %{_bindir}/dbus-launch.nox11
+    fi
 fi
 
 %post
 /sbin/ldconfig
-%set_permissions %{_libexecdir}/dbus-1/dbus-daemon-launch-helper
 %if %{with_service}
 %service_add_post dbus.service
 
@@ -248,14 +239,13 @@ fi
 %postun common
 %service_del_postun_without_restart dbus.socket
 
+%post daemon
+%set_permissions %{_libexecdir}/dbus-1/dbus-daemon-launch-helper
+
 %files
 %dir %{_libexecdir}/dbus-1/
 %license COPYING
 %doc AUTHORS NEWS README
-
-# See doc/system-activation.txt in source tarball for the rationale
-# behind these permissions
-%attr(4750,root,messagebus) %verify(not mode) %{_libexecdir}/dbus-1/dbus-daemon-launch-helper
 %if %{with_service}
 %{_unitdir}/dbus.service
 %endif
@@ -264,12 +254,6 @@ fi
 %{_unitdir}/multi-user.target.wants/dbus.service
 %{_userunitdir}/dbus.service
 %endif
-%dir %{_datadir}/libalternatives
-%dir %{_datadir}/libalternatives/dbus-launch
-%{_datadir}/libalternatives/dbus-launch/10.conf
-%{_bindir}/dbus-launch.nox11
-%{_bindir}/dbus-launch
-%{_mandir}/man1/dbus-launch.1%{?ext_man}
 
 %files -n %{_libname}
 %{_libdir}/libdbus-1.so.*
@@ -298,12 +282,17 @@ fi
 %{_userunitdir}/sockets.target.wants
 
 %files daemon
+# See doc/system-activation.txt in source tarball for the rationale
+# behind these permissions
+%attr(4750,root,messagebus) %verify(not mode) %{_libexecdir}/dbus-1/dbus-daemon-launch-helper
 %{_bindir}/dbus-cleanup-sockets
 %{_bindir}/dbus-daemon
+%{_bindir}/dbus-launch
 %{_bindir}/dbus-run-session
 %{_bindir}/dbus-test-tool
 %{_mandir}/man1/dbus-cleanup-sockets.1%{?ext_man}
 %{_mandir}/man1/dbus-daemon.1%{?ext_man}
+%{_mandir}/man1/dbus-launch.1%{?ext_man}
 %{_mandir}/man1/dbus-run-session.1%{?ext_man}
 %{_mandir}/man1/dbus-test-tool.1%{?ext_man}
 
