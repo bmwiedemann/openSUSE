@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Dec  1 21:59:15 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update 0.9.21:
+  * Use rsbuild inline sourcemaps for JupyterLab extension
+  * JupyterLab was refusing to load external source map files
+    because they were being served with the wrong MIME type)
+  * Switching to inline source maps embeds the source map
+    directly in the JavaScript bundle, avoiding the MIME type
+    issue while still providing source map support for debugging.
+- update to 0.9.20:
+  * Override **repr** to avoid expensive trait serialization #906
+  * Previously, `AnyWidget` inherited
+    `ipywidgets.Widget.__repr__` which serialized all trait
+    values. This is costly because the repr might not even be
+    shown to users, yet it forces a full serialization of
+    potentially large data. `AnyWidget` now overrides `__repr__`
+    to use `object.__repr__(self)`, which produces a simple ``
+    format.
+- update to 0.9.19:
+  * Exclude `docs/` and `paper/` from sdist/wheel
+
+-------------------------------------------------------------------
 Sat Jun 21 14:25:31 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.9.18
@@ -123,12 +145,12 @@ Sat Dec 23 18:33:46 UTC 2023 - Ben Greiner <code@bnavigator.de>
     install @anywidget/vite (rather than importing from anywidget
     main package). This change allows us to version the Vite plugin
     and anywidget's core separately.
-    
+
     // vite.config.mjs
     import { defineConfig } from "vite";
     -- import anywidget from "anywidget/vite";
     ++ import anywidget from "@anywidget/vite";
-    
+
     If you are already using @anywidget/vite, there are no changes
     necessary.
 
@@ -168,4 +190,4 @@ Sat Sep 23 16:38:24 UTC 2023 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Mon Sep  4 02:51:32 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Initial release of 0.6.3. 
+- Initial release of 0.6.3.

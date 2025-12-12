@@ -1,7 +1,7 @@
 #
 # spec file for package python-anywidget
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define distver 0.9.18
+%define distver 0.9.21
 Name:           python-anywidget
-Version:        0.9.18
+Version:        0.9.21
 Release:        0
 Summary:        Custom jupyter widgets made easy
 License:        MIT

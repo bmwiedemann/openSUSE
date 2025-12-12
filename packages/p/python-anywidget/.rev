@@ -207,4 +207,31 @@
     asynchronously (#804)</comment>
     <requestid>1287577</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f6ff23b913cd9bad8604c05eb6eeaec4</srcmd5>
+    <version>0.9.21</version>
+    <time>1765572151</time>
+    <user>anag_factory</user>
+    <comment>- update 0.9.21:
+  * Use rsbuild inline sourcemaps for JupyterLab extension
+  * JupyterLab was refusing to load external source map files
+    because they were being served with the wrong MIME type)
+  * Switching to inline source maps embeds the source map
+    directly in the JavaScript bundle, avoiding the MIME type
+    issue while still providing source map support for debugging.
+- update to 0.9.20:
+  * Override **repr** to avoid expensive trait serialization #906
+  * Previously, `AnyWidget` inherited
+    `ipywidgets.Widget.__repr__` which serialized all trait
+    values. This is costly because the repr might not even be
+    shown to users, yet it forces a full serialization of
+    potentially large data. `AnyWidget` now overrides `__repr__`
+    to use `object.__repr__(self)`, which produces a simple ``
+    format.
+- update to 0.9.19:
+  * Exclude `docs/` and `paper/` from sdist/wheel
+
+- Initial release of 0.6.3.</comment>
+    <requestid>1322580</requestid>
+  </revision>
 </revisionlist>
