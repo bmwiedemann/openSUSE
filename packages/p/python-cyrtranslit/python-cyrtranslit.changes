@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Dec 12 10:33:25 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * **Belarusian (Белару́ская)** — Full bidirectional
+    transliteration support (#47).
+  * **Greek (Ελληνικά)** — Bonus non-Cyrillic alphabet support
+    (#40).
+  * **Macedonian & Bulgarian accented vowels** — Preserve or
+    strip grave accents (Ѐ/ѐ, Ѝ/ѝ) for homograph disambiguation
+    (#4):
+  * New `preserve_accents` parameter (default: False).
+  * CLI flag: `-p` / `--preserve-accents`.
+  * Supports both Cyrillic→Latin and Latin→Cyrillic directions.
+  * Follows ISO 9:1968/1995 standards.
+  * **File encoding support** — Handle non-UTF-8 Cyrillic
+    encodings (windows-1251, iso-8859-5, koi8-r, cp866) with
+    automatic fallback (#49).
+  * **Russian Я and Ю capitalization** — Fixed improper
+    capitalization in transliteration (#48).
+  * **Russian Х transliteration** — Changed from X to H (GOST
+    7.79-2000 compliant) (#41).
+  * **Serbian country code** — Added 'rs' (ISO 3166-1) as alias
+    for 'sr' (ISO 639-1) (#46).
+  * **Mongolian casing** — Fixed case variation handling (#44).
+  * **Ukrainian letter support** — Added missing Ukrainian
+    character support (#42).
+
+-------------------------------------------------------------------
 Tue Jul  8 08:28:39 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives
