@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Dec 11 20:20:59 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.5.14:
+  * Made it so the user_settings.py is migrated on updates
+  * Add button to open runners install directory
+  * Add a basic cache system for downloaded runners
+  * Improved new user experience
+  * Translations update from Hosted Weblate
+  * Add API limit/connection issue warning dialog
+  * Improved user experience
+  * Improve "Runners" tab filters
+  * Fix issue with select/unselect all
+  * Give Wine-Proton (Kron4ek) back their h
+  * Add preferences dialog
+  * Add report button to error dialogs
+  * Remove NorthstarProton
+  * Make Kron4ek runners use amd64 instead of amd64-wow64
+  * Update DXVK runners description
+  * Quick fix to prevent invalid files from being downloaded
+  * Fix SteamTinkerLaunch
+  * Fix Proton-GE Latest version check issue
+  * Fix Proton-CachyOS invalid directory name
+
+-------------------------------------------------------------------
 Thu Oct  9 10:43:06 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 0.5.13:

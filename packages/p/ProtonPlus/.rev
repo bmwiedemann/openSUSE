@@ -243,4 +243,31 @@
   * Updated translations (forwarded request 1309961 from rrahl0)</comment>
     <requestid>1309962</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>7f9f7592caa78d1ddf1bf004a7f9aae3</srcmd5>
+    <version>0.5.14</version>
+    <time>1765572194</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.5.14:
+  * Made it so the user_settings.py is migrated on updates
+  * Add button to open runners install directory
+  * Add a basic cache system for downloaded runners
+  * Improved new user experience
+  * Translations update from Hosted Weblate
+  * Add API limit/connection issue warning dialog
+  * Improved user experience
+  * Improve &quot;Runners&quot; tab filters
+  * Fix issue with select/unselect all
+  * Give Wine-Proton (Kron4ek) back their h
+  * Add preferences dialog
+  * Add report button to error dialogs
+  * Remove NorthstarProton
+  * Make Kron4ek runners use amd64 instead of amd64-wow64
+  * Update DXVK runners description
+  * Quick fix to prevent invalid files from being downloaded
+  * Fix SteamTinkerLaunch
+  * Fix Proton-GE Latest version check issue
+  * Fix Proton-CachyOS invalid directory name (forwarded request 1322613 from rrahl0)</comment>
+    <requestid>1322614</requestid>
+  </revision>
 </revisionlist>
