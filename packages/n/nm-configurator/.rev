@@ -23,4 +23,28 @@
     <comment>Update to version 0.3.4</comment>
     <requestid>1304338</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3ada46e6c7a74d583e58d4c41ab54799</srcmd5>
+    <version>0.3.5</version>
+    <time>1765572206</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.3.5:
+  * Bumping version to v0.3.5 (#206)
+  * Bump clap from 4.5.51 to 4.5.53 (#205)
+  * Bump actions/checkout from 5 to 6 (#204)
+  * Bump nmstate from 2.2.54 to 2.2.55 (#203)
+  * Fix for issue #198 VLAN interface renaming (#201)
+  * Bump clap from 4.5.50 to 4.5.51 (#202)
+  * Bump nmstate from 2.2.52 to 2.2.54 (#200)
+  * Bump clap from 4.5.49 to 4.5.50 (#199)
+  * Bump clap from 4.5.48 to 4.5.49 (#197)
+  * Bump serde from 1.0.226 to 1.0.228 (#196)
+  * Bump nmstate from 2.2.51 to 2.2.52 (#193)
+  * Bump anyhow from 1.0.99 to 1.0.100 (#194)
+  * Bump serde from 1.0.223 to 1.0.226 (#195)
+  * Bump clap from 4.5.47 to 4.5.48 (#192)
+  * Bump nmstate from 2.2.50 to 2.2.51 (#190)
+  * Bump serde from 1.0.219 to 1.0.223 (#191)</comment>
+    <requestid>1322643</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
-# spec file for package nmc
+# spec file for package nm-configurator
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,16 @@
 
 
 Name:           nm-configurator
-Version:        0.3.4
+Version:        0.3.5
 Release:        0
 Summary:        NM Configurator
 License:        Apache-2.0
 Group:          Productivity/Networking/System
 URL:            https://github.com/suse-edge/nm-configurator
-Source:         nm-configurator-%{version}.tar.gz
-Source1:        vendor.tar.xz
+Source:         https://github.com/suse-edge/nm-configurator/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
+BuildRequires:  zstd
 
 %description
 A CLI tool which makes it easy to generate and apply NetworkManager configurations.
@@ -39,7 +40,6 @@ A CLI tool which makes it easy to generate and apply NetworkManager configuratio
 %install
 install -D -d -m 0755 %{buildroot}%{_bindir}
 install -m 0755 %{_builddir}/nm-configurator-%{version}/target/release/nmc %{buildroot}%{_bindir}/nmc
-
 
 %files
 %{_bindir}/nmc

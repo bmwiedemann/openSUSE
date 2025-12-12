@@ -1,22 +1,7 @@
 <services>
-  <service mode="manual" name="obs_scm">
-    <param name="url">https://github.com/suse-edge/nm-configurator.git</param>
-    <param name="versionformat">@PARENT_TAG@</param>
-    <param name="scm">git</param>
-    <param name="revision">v0.3.4</param>
-    <param name="match-tag">*</param>
-    <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
-    <param name="versionrewrite-replacement">\1</param>
-    <param name="changesgenerate">enable</param>
-  </service>
-  <service mode="manual" name="tar"/>
-  <service mode="manual" name="recompress">
-    <param name="file">*.tar</param>
-    <param name="compression">gz</param>
-  </service>
-  <service mode="buildtime" name="set_version"/>
+  <service mode="manual" name="download_files" />
   <service mode="manual" name="cargo_vendor">
      <param name="src">nm-configurator</param>
-     <param name="compression">xz</param>
+     <param name="compression">zst</param>
   </service>
 </services>

@@ -1,5 +1,6 @@
 <package name="nm-configurator" project="openSUSE:Factory">
   <title>nm-configurator</title>
   <description> NetworkManager configuration tool </description>
+  <devel project="network" package="nm-configurator"/>
   <url>https://github.com/suse-edge/nm-configurator</url>
 </package>
