@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-asdf-astropy%{psuffix}
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 Summary:        ASDF serialization support for astropy
 License:        BSD-3-Clause

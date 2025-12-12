@@ -154,4 +154,14 @@ This is just to get rid of the build failure in d:l:p. It is not suitable for an
   * Support new astronomy manifest</comment>
     <requestid>1301516</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6afcfb165468cf9cd42f883f7113dde6</srcmd5>
+    <version>0.9.0</version>
+    <time>1765572154</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.9.0:
+  * drop support for numpy 1.25.
+  * require asdf 3.3 and drop support for astropy 5.2</comment>
+    <requestid>1322579</requestid>
+  </revision>
 </revisionlist>
