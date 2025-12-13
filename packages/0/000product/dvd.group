@@ -205,7 +205,6 @@
     <package name="busybox-coreutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-sw_management -->
     <package name="busybox-diffutils" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="busybox-ed" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-file_server -->
-    <package name="busybox-findutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
     <package name="busybox-gawk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-sw_management -->
     <package name="busybox-grep" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="busybox-gzip" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -290,9 +289,7 @@
     <package name="db48-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="dbus-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="dbus-1-common" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="dbus-1-daemon" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
     <package name="dbus-1-tools" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="dbus-1-x11" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="dbus-broker" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="dbus-broker-block-restart" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="dconf" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
