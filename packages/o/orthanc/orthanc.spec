@@ -80,7 +80,7 @@ BuildRequires:  unzip
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  pkgconfig(lua5.1)
+BuildRequires:  pkgconfig(lua5.4)
 
 Requires:       dcmtk
 Requires(pre):  /usr/sbin/groupadd

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 11 22:05:51 UTC 2025 - Axel Braun <axel.braun@gmx.de>
+
+- switch to lua 5.4
+
+-------------------------------------------------------------------
 Wed Dec 10 11:04:46 UTC 2025 - Axel Braun <axel.braun@gmx.de>
 
 - patch out boost component system from framework
