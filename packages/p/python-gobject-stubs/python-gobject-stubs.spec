@@ -25,7 +25,7 @@
 %define psuffix %{?with_gtk3:-gtk3}%{!?with_gtk3:%{nil}}
 
 Name:           %{pname}%{psuffix}
-Version:        2.14.0
+Version:        2.16.0
 Release:        0
 Summary:        Typing stubs for PyGObject
 License:        LGPL-2.1-only
@@ -43,6 +43,7 @@ BuildRequires:  fdupes
 Requires:       python-base >= 3.9
 Requires:       python-gobject
 Requires:       python-gobject-Gdk
+Requires:       python-typing_extensions
 %if 0%{?with_gtk3}
 Conflicts:      python-gobject-stubs
 %endif

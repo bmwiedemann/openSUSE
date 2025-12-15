@@ -7,4 +7,14 @@
     <comment>Typing stubs for python-gobject to (typically) allow IDEs to provide helpful completion guides and documentation about python-gobject related modules.</comment>
     <requestid>1316565</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3cb1dcde079145e85613640e5f4acce8</srcmd5>
+    <version>2.16.0</version>
+    <time>1765796350</time>
+    <user>anag_factory</user>
+    <comment>
+
+Typing stubs for python-gobject to (typically) allow IDEs to provide helpful completion guides and documentation about python-gobject related modules.</comment>
+    <requestid>1322796</requestid>
+  </revision>
 </revisionlist>

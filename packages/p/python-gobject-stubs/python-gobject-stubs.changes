@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Dec 11 08:56:57 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.16.0:
+  + Remove FIXME when override function is typed.
+  + Improve type hints for Gst*.
+  + Fix: Gst module cannot reference itself.
+  + Fix: Add @staticmethod for override methods.
+- Changes from version 2.15.0:
+  + New features:
+    - Add Gly.
+    - Add GlyGtk4.
+    - Add overridden function docstring.
+  + Add non-GI base classes.
+  + Allow stub for some special python methods.
+  + Improve type hints for: Adw, Gdk4, GdkPixbuf, GdkX11, GLib,
+    GObject, Gsk, GSound, Gst* Gtk4, Pango, PangoCairo, Spelling.
+  + Filter out private constants and fields.
+  + Fix: Correctly skip field if a method has the same name.
+  + Fix: skip closure/destroy arguments preceding current arg.
+- Add BuildRequires: python-typing_extensions.
+
+-------------------------------------------------------------------
 Sat Nov  8 04:41:37 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Fix conflicts between -gtk3 and default flavour for python
