@@ -31,7 +31,7 @@ BuildRequires:  ruby
 BuildRequires:  ruby-devel
 %endif
 Name:           swig
-Version:        4.4.0
+Version:        4.4.1
 Release:        0
 Summary:        Simplified Wrapper and Interface Generator
 License:        BSD-3-Clause AND GPL-3.0-or-later

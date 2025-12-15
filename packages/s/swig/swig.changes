@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec  8 09:00:20 UTC 2025 - Klaus Kämpf <kkaempf@suse.de>
+
+- Update to 4.4.1:
+  * Fix errors with some combinations of Py_LIMITED_API and recent
+    Python versions.
+  * A couple of other minor fixes/improvements.	
+
+-------------------------------------------------------------------
 Tue Oct 21 09:00:34 UTC 2025 - Klaus Kämpf <kkaempf@suse.de>
 
 - Update to 4.4.0:
