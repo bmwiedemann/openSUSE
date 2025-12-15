@@ -837,4 +837,12 @@
   * [plugins/mousepad] Allow uppercase keysyms for portal input (kde#483730)</comment>
     <requestid>1321305</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>17c8b803598f194c15ac1430af581570</srcmd5>
+    <version>25.12.0</version>
+    <time>1765795968</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 25.12 (forwarded request 1321386 from krop)</comment>
+    <requestid>1322363</requestid>
+  </revision>
 </revisionlist>

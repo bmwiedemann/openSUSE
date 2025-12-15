@@ -21,14 +21,14 @@
 
 %bcond_without released
 Name:           kdeconnect-kde
-Version:        25.11.90
+Version:        25.12.0
 Release:        0
 Summary:        Integration of Android with Linux desktops
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/kdeconnect
-Source0:        https://download.kde.org/unstable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/unstable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 Source100:      kdeconnect-kde.SuSEfirewall
