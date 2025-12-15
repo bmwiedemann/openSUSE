@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Sat Dec 13 19:27:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.22:
+  * Highlights
+    In this release, prek adds support for the --cooldown-days
+    option in the prek auto-update command.
+    This option allows users to skip releases that are newer than a
+    specified number of days.
+    It is useful to mitigate open source supply chain risks by
+    avoiding very recent releases that may not have been widely
+    adopted or vetted yet.
+  * Enhancements
+    - Support--cooldown-days in prek auto-update (#1172)
+      - Prefer tag creation timestamp in --cooldown-days (#1221)
+    - Use cargo install for packages in workspace (#1207)
+  * Bug fixes
+    - Set CARGO_HOME for cargo metadata (#1209)
+
+-------------------------------------------------------------------
+Fri Dec 12 08:36:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.21:
+  * Bug fixes
+    - Fallback to use remote repo package root instead of erroring
+      (#1203)
+    - Prepend toolchain bin directory to PATH when calling cargo
+      (#1204)
+    - Use cargo from installed toolchain (#1202)
+
+-------------------------------------------------------------------
+Fri Dec 12 08:17:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.20:
+  * Highlights in this release:
+    - Rust hooks are now fully supported with automatic toolchain
+      management, including package discovery in virtual
+      workspaces. Big thanks to @lmmx for driving this.
+    - Added a prek cache size subcommand so you can quickly see how
+      much cache space prek is using. Thanks @MatthewMckee4!
+    - Nested workspaces are easier to reason about: set orphan:
+      true on a project to isolate it from parents so its files are
+      processed only once.
+  * Enhancements
+    - Support Rust language (#989) Refactor Rust toolchain
+      management (#1198) Add support for finding packages in
+      virtual workspaces (#1180)
+    - Add prek cache size command (#1183)
+    - Support orphan projects (#1129)
+    - Fallback to manual stage for hooks specified directly in
+      command line (#1185)
+    - Make go module cache read-writeable (thus deletable) (#1164)
+    - Provide more information when validating configs and
+      manifests (#1182)
+    - Improve error message for invalid number of arguments to
+      hook-impl (#1196)
+  * Bug fixes
+    - Disable git terminal prompts (#1193)
+    - Prevent post-checkout deadlock when cloning repos (#1192)
+    - Prevent color output when redirecting stdout to a file
+      (#1159)
+  * Documentation
+    - Add MacPorts to installation methods (#1157)
+    - Add a FAQ page explaining prek install --install--hooks
+      (#1162)
+  * Other changes
+    - Add prek: enabled repo badge (#1171)
+    - Add favicon for docs website (#1187)
+
+-------------------------------------------------------------------
 Thu Nov 27 06:03:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.19:
