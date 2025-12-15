@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.14.0
-%define qt6_version 6.8.0
+%define kf6_version 6.19.0
+%define qt6_version 6.9.0
 
 %bcond_without released
 Name:           dolphin-plugins
-Version:        25.08.3
+Version:        25.12.0
 Release:        0
 Summary:        Version control plugins for Dolphin
 License:        GPL-2.0-or-later
