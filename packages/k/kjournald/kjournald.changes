@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:44 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- Changes since 25.11.80:
+  * Fix access to journal entry properties for exe/service display (kde#512618)
+  * Fix journal selection dialogs
+
+-------------------------------------------------------------------
+Sat Nov 15 19:56:47 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * Reuse current journal folder for folder opening dialog
+  * Fix case-sensitive selection in search method
+  * Increase chunk size to very high value for better usability
+  * Fix cppcheck major findings
+  * Allow filtering by _SYSTEMD_USER_UNIT
+  * Support loading user unit
+  * Fix case-sensitive selection in search method
+  * Drop unused files
+  * Fix slot typo
+  * ci: enable cppcheck
+  * ci: enable qmllint
+  * cmake: Restore setting the VERSION and SOVERSION for libkjournald
+  * cmake: Drop unused lib/CMakeLists.txt
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:44 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
