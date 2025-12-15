@@ -35,6 +35,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  libpng-devel
 BuildRequires:  pkgconfig(SDL_image)
 BuildRequires:  pkgconfig(SDL_mixer)
+BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(sdl)
 
 %description

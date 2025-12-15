@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Dec 13 05:02:33 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- BuildRequire glu to let it build
+
+-------------------------------------------------------------------
 Tue Feb 18 12:37:07 UTC 2025 - pgajdos@suse.com
 
 - added patches
