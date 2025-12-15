@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.14.0
-%define qt6_version 6.8.0
+%define kf6_version 6.19.0
+%define qt6_version 6.9.0
 %define plasma6_version 5.27.80
 
 %bcond_without  released
 Name:           kclock
-Version:        25.08.3
+Version:        25.12.0
 Release:        0
 Summary:        Clock application for Plasma
 License:        GPL-2.0-or-later
@@ -33,6 +33,8 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  pkgconfig
+BuildRequires:  qt6-waylandclient-private-devel >= %{qt6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
@@ -54,6 +56,8 @@ BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
+BuildRequires:  pkgconfig(wayland-protocols)
 Requires:       kirigami-addons6
 Requires:       kf6-kcoreaddons-imports >= %{kf6_version}
 Requires:       kf6-kirigami-imports >= %{kf6_version}
@@ -84,9 +88,6 @@ A clock application for Plasma.
 %{_datadir}/dbus-1/services/org.kde.kclockd.service
 %{_kf6_applicationsdir}/org.kde.kclock.desktop
 %{_kf6_appstreamdir}/org.kde.kclock.appdata.xml
-%if %{pkg_vcmp cmake(KF6Package) < 6.18}
-%{_kf6_appstreamdir}/org.kde.plasma.kclock_1x2.appdata.xml
-%endif
 %{_kf6_bindir}/kclock
 %{_kf6_bindir}/kclockd
 %{_kf6_configdir}/autostart/org.kde.kclockd-autostart.desktop

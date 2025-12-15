@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:30 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- No code change since 25.11.80
+
+-------------------------------------------------------------------
+Sat Nov 15 19:56:32 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * Revert "Reduce overdraw"
+  * Use CamelCase Qt include
+  * Fix settings button not being enabled on mobile landscape
+  * Add missing include moc
+  * Rework loading of alarm and timer lists
+  * Fix bottom toolbar not being set the correct height after hiding
+  * ci: Add qml lint
+  * New Alarm: Improve inputs tab order control
+  * Support PIP under X11 (kde#508133)
+  * kclock-runner: remove unnecessary minimum letter count
+  * runner: Set activation token when calling KClock
+  * Bump kf ecm_set_disabled_deprecation_versions
+  * Honor configure bounds
+  * Set xdg_surface window geometry in setContentGeometry()
+  * Implement picture-in-picture mode
+  * TimerComponent: Allow maximizing circle, hiding buttons, and elide text
+  * Show timer actions below timer
+  * Add time completed information
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:28 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
