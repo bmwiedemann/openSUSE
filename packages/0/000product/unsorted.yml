@@ -1465,6 +1465,7 @@ unsorted:
   - bitwarden-sdk-internal 
   - bitwise 
   - bk 
+  - bkcrack 
   - black-hole-solver 
   - black-hole-solver-devel 
   - blacs-devel-headers 
@@ -1526,6 +1527,7 @@ unsorted:
   - bluez-devel 
   - bluez-devel-32bit 
   - bluez-qt-devel 
+  - bluez-qt-imports 
   - bluez-qt-udev 
   - bluez-test 
   - bluez-zsh-completion 
@@ -5023,6 +5025,7 @@ unsorted:
   - gegl-doc 
   - geis-devel 
   - geis-tools 
+  - gemini-cli 
   - gemrb 
   - genders 
   - genders-base 
@@ -8334,7 +8337,6 @@ unsorted:
   - gxml-devel 
   - gxml-doc 
   - gxml-lang 
-  - gzdoom 
   - gzrt 
   - h5utils 
   - haas-proxy 
@@ -8382,6 +8384,7 @@ unsorted:
   - hashcat 
   - hashcat-devel 
   - hashdeep 
+  - hashicorp-serf 
   - hashlink 
   - hashlink-devel 
   - hashlink-hdlls 
@@ -9798,8 +9801,6 @@ unsorted:
   - kImageAnnotator-Qt5-devel 
   - kImageAnnotator-Qt6-devel 
   - kaccounts-integration-devel 
-  - kaccounts-integration-kf5 
-  - kaccounts-integration-kf5-devel 
   - kactivities-stats-devel 
   - kactivities5-devel 
   - kactivities5-imports 
@@ -9927,6 +9928,7 @@ unsorted:
   - kde-theme-dracula 
   - kdebugsettings 
   - kdebugsettings-lang 
+  - kdeclarative-components 
   - kdeclarative-devel 
   - kdeclarative-tools 
   - kdeconnect-kde-lang 
@@ -9945,7 +9947,6 @@ unsorted:
   - kdesdk-scripts-kf6-porting 
   - kdesdk-scripts-lang 
   - kdesdk-thumbnailers 
-  - kdesdk-thumbnailers-lang 
   - kdesignerplugin 
   - kdesignerplugin-devel 
   - kdesignerplugin-lang 
@@ -10389,6 +10390,7 @@ unsorted:
   - kosmindoormap-devel 
   - kosmindoormap-imports 
   - kosmindoormap-lang 
+  - kpackage 
   - kpackage-devel 
   - kpackage-lang 
   - kpartloader 
@@ -10399,6 +10401,7 @@ unsorted:
   - kpimtextedit-devel 
   - kpipewire6-devel 
   - kpkpass-devel 
+  - kpkpass-imports 
   - kplotting-devel 
   - kpmcore-devel 
   - kpmcore-lang 
@@ -11183,6 +11186,7 @@ unsorted:
   - libKF5Activities5 
   - libKF5ActivitiesStats1 
   - libKF5Attica5 
+  - libKF5BluezQt6 
   - libKF5CalendarCore5 
   - libKF5CalendarEvents5 
   - libKF5Cddb5 
@@ -11190,6 +11194,7 @@ unsorted:
   - libKF5Contacts5 
   - libKF5DNSSD5 
   - libKF5DNSSD5-lang 
+  - libKF5Declarative5 
   - libKF5Declarative5-lang 
   - libKF5Emoticons5 
   - libKF5Holidays5 
@@ -11201,7 +11206,6 @@ unsorted:
   - libKF5KCMUtilsCore5 
   - libKF5KDELibs4Support5 
   - libKF5KDcraw5 
-  - libKF5KExiv2-15_0_0 
   - libKF5NewStuff5 
   - libKF5NewStuff5-lang 
   - libKF5NewStuffCore5 
@@ -11210,8 +11214,10 @@ unsorted:
   - libKF5NotifyConfig5-lang 
   - libKF5Plasma5 
   - libKF5Plotting5 
+  - libKF5Prison5 
   - libKF5Pty5 
   - libKF5Pty5-lang 
+  - libKF5QuickAddons5 
   - libKF5Su5 
   - libKF5Su5-lang 
   - libKF5Syndication5 
@@ -11419,6 +11425,7 @@ unsorted:
   - libQt5KmsSupport-private-headers-devel 
   - libQt5Location5 
   - libQt5Location5-32bit 
+  - libQt5Multimedia5 
   - libQt5Multimedia5-32bit 
   - libQt5Network-devel 
   - libQt5Network-devel-32bit 
@@ -11891,6 +11898,7 @@ unsorted:
   - libaccounts-glib-devel 
   - libaccounts-glib-docs 
   - libaccounts-glib-tools 
+  - libaccounts-qt5-1 
   - libaccounts-qt5-devel 
   - libaccounts-qt6-devel 
   - libaccounts-qt6-doc 
@@ -12173,7 +12181,6 @@ unsorted:
   - libazguestattestation1 
   - libb2-devel 
   - libb64 
-  - libb64-0 
   - libb64-devel 
   - libbacktrace-devel 
   - libbamf3-2 
@@ -13242,7 +13249,7 @@ unsorted:
   - libflatbuffers25_2_10 
   - libflickcurl-devel 
   - libflickcurl0 
-  - libflint21 
+  - libflint22 
   - libflite_cmu_grapheme_lang1 
   - libflite_cmu_grapheme_lex1 
   - libflite_cmu_indic_lang1 
@@ -14228,7 +14235,7 @@ unsorted:
   - libkdecorations2private10 
   - libkdegames-devel 
   - libkdepim-devel 
-  - libkdevplatform63 
+  - libkdevplatform64 
   - libkdsingleapplication-qt6-1_2 
   - libkdsingleapplication1_2 
   - libkdsoap-server-qt6-2 
@@ -14269,8 +14276,6 @@ unsorted:
   - libkeccak-devel 
   - libkeccak1 
   - libkeduvocdocument-devel 
-  - libkexiv2 
-  - libkexiv2-devel 
   - libkexiv2-qt6-devel 
   - libkeybinder0 
   - libkeyfinder-devel 
@@ -14692,7 +14697,6 @@ unsorted:
   - libmimetic0 
   - libminisat2 
   - libminiupnpc-devel 
-  - libminiupnpc17 
   - libminizinc-devel 
   - libminizip-ng4 
   - libminizip1-32bit 
@@ -15679,6 +15683,7 @@ unsorted:
   - libqt5-qtquick3d-imports 
   - libqt5-qtquick3d-private-headers-devel 
   - libqt5-qtquick3d-tools 
+  - libqt5-qtquickcontrols 
   - libqt5-qtquickcontrols-examples 
   - libqt5-qtquickcontrols2-examples 
   - libqt5-qtquickcontrols2-private-headers-devel 
@@ -16201,6 +16206,7 @@ unsorted:
   - libsignal-protocol-c-devel 
   - libsignal-protocol-c2 
   - libsignon-qt-docs 
+  - libsignon-qt5-1 
   - libsignon-qt5-devel 
   - libsignon-qt6-devel 
   - libsigrok-data 
@@ -20348,6 +20354,7 @@ unsorted:
   - oddjob-mkhomedir 
   - ode-devel 
   - odt2txt 
+  - oeis-tui 
   - officecodepro-fonts 
   - ofono 
   - ofono-devel 
@@ -21190,7 +21197,6 @@ unsorted:
   - patterns-wsl-systemd 
   - patterns-wsl-tmpfiles 
   - patterns-xfce-xfce_basis_wayland 
-  - patterns-xfce-xfce_extra 
   - patterns-xfce-xfce_extra_wayland 
   - patterns-xfce-xfce_laptop_wayland 
   - patterns-xfce-xfce_wayland 
@@ -23442,6 +23448,7 @@ unsorted:
   - primus 
   - printproto-devel 
   - prison-qt5-devel 
+  - prison-qt5-imports 
   - priv_wrapper 
   - privoxy 
   - privoxy-doc 
@@ -23651,9 +23658,6 @@ unsorted:
   - pulseview 
   - pumpa 
   - pure-ftpd 
-  - purpose-devel 
-  - purpose-lang 
-  - purpose-services 
   - putty 
   - pv 
   - pw3270 
@@ -35661,7 +35665,6 @@ unsorted:
   - qemu-audio-pa 
   - qemu-audio-pipewire 
   - qemu-block-dmg 
-  - qemu-block-gluster 
   - qemu-block-iscsi 
   - qemu-block-ssh 
   - qemu-chardev-baum 
@@ -37505,8 +37508,6 @@ unsorted:
   - shorewall6-lite 
   - shotcut 
   - shotcut-lang 
-  - shotwell 
-  - shotwell-lang 
   - showfoto 
   - showtime 
   - showtime-lang 
@@ -48245,10 +48246,7 @@ unsorted:
   - translator 
   - translator-lang 
   - transmission 
-  - transmission-common 
   - transmission-daemon 
-  - transmission-gtk 
-  - transmission-gtk-lang 
   - transmission-qt 
   - transmission-qt-lang 
   - transset 
@@ -49066,6 +49064,7 @@ unsorted:
   - uwsgi-pypy 
   - uwsgi-sqlite3 
   - uwsgi-xslt 
+  - uzdoom 
   - v2ray-core 
   - v4l-conf 
   - v4l-tools 
