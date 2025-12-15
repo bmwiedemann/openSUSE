@@ -39,7 +39,7 @@
 %bcond_without  systemd
 
 Name:           strongswan
-Version:        6.0.3
+Version:        6.0.4
 Release:        0
 Summary:        IPsec-based VPN solution
 License:        GPL-2.0-or-later
@@ -71,7 +71,11 @@ BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libpcsclite)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libxml-2.0)
+%if 0%{?suse_version} >= 1600
 BuildRequires:  pkgconfig(pam)
+%else
+BuildRequires:  pam-devel
+%endif
 %if %{with mysql}
 BuildRequires:  libmysqlclient-devel
 %endif

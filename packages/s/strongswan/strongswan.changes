@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Dec 13 09:17:40 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.0.4
+  * Fixed a vulnerability in the NetworkManager plugin that
+    potentially allows using credentials of other local users. This
+    vulnerability has been registered as [CVE-2025-9615].
+  * Prevent a crash if a confused peer rekeys a Child SA twice
+    before sending a delete.
+  * Fixed a memory leak if a peer's self-signed certificate is
+    untrusted.
+
+-------------------------------------------------------------------
 Tue Oct 28 23:17:38 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 6.0.3
