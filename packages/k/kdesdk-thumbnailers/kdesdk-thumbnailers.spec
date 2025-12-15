@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.14.0
-%define qt6_version 6.8.0
+%define kf6_version 6.19.0
+%define qt6_version 6.9.0
 
 %bcond_without released
 Name:           kdesdk-thumbnailers
-Version:        25.08.3
+Version:        25.12.0
 Release:        0
 Summary:        Translation file thumbnail generators
 License:        GPL-2.0-or-later
@@ -34,10 +34,10 @@ Source2:        applications.keyring
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 # libgettextpo.so is needed
 BuildRequires:  gettext-tools
-BuildRequires:  cmake(KF6Config) >= %{kf6_version}
-BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
-BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+# Some code and translations were dropped upstream
+Obsoletes:      kdesdk-thumbnailers-lang <= %{version}
 
 %description
 This package allows KDE applications to show thumbnails and previews of po files.
@@ -55,16 +55,11 @@ This package allows KDE applications to show thumbnails and previews of po files
 %install
 %kf6_install
 
-%find_lang %{name} --all-name
-
 %ldconfig_scriptlets
 
 %files
 %license LICENSES/*
-%{_kf6_configkcfgdir}/pocreatorsettings.kcfg
 %dir %{_kf6_plugindir}/kf6/thumbcreator
 %{_kf6_plugindir}/kf6/thumbcreator/pothumbnail.so
-
-%files lang -f %{name}.lang
 
 %changelog
