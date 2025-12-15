@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.14.0
-%define qt6_version 6.8.0
-%define kpim6_version 6.5.3
+%define kf6_version 6.19.0
+%define qt6_version 6.9.0
+%define kpim6_version 6.6.0
 
 %bcond_without released
 Name:           itinerary
-Version:        25.08.3
+Version:        25.12.0
 Release:        0
 Summary:        Itinerary and boarding pass management application
 License:        LGPL-2.0-or-later
@@ -58,6 +58,7 @@ BuildRequires:  cmake(KPim6Itinerary) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6PkPass) >= %{kpim6_version}
 BuildRequires:  cmake(KPublicTransport)
 BuildRequires:  cmake(LibIcal)
+BuildRequires:  cmake(QCoro6)
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Positioning) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
