@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:41:13 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- No code change since 25.11.80
+
+-------------------------------------------------------------------
+Sat Nov 15 19:57:17 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * Use const KMime API for Content::header<>() calls
+  * Use KMime::Content::contentType() instead of doing this manually
+  * Add missing override/explicit keyword
+  * Use decodedBody()
+  * Use string literals inline operators
+  * Fix CMakeLists style
+  * Fix spacing
+  * Fix autotest
+  * Use QCOMPARE here
+  * Add missing CI dep
+  * Enable qmllint in CI
+  * Fix some cppcheck warnings
+  * Add missing Qt::Literals::StringLiterals
+  * Use u..._s
+  * Use Qt::Literals::StringLiterals
+  * .gitignore - ignore compile_commands.json
+  * messageviewwindow: Use subject as window title
+  * urlhandler: Use new string literals inline operators
+
+-------------------------------------------------------------------
 Thu Nov  6 18:38:14 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
