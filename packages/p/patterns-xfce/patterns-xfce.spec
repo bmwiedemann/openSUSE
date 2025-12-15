@@ -47,6 +47,7 @@ Provides:       pattern-order() = 1310
 Provides:       pattern-visible()
 Requires:       pattern() = x11
 Requires:       pattern() = xfce_basis
+Recommends:     pattern() = xfce_extra
 Provides:       patterns-openSUSE-xfce = %{version}
 Obsoletes:      patterns-openSUSE-xfce < %{version}
 
@@ -169,6 +170,7 @@ Provides:       pattern-order() = 1311
 Provides:       pattern-visible()
 # Not extending xfce to avoid X11 pull-in
 Requires:       pattern() = xfce_basis_wayland
+Recommends:     pattern() = xfce_extra_wayland
 Provides:       patterns-openSUSE-xfce_wayland = %{version}
 Obsoletes:      patterns-openSUSE-xfce_wayland < %{version}
 
@@ -269,11 +271,6 @@ Requires:       pattern() = xfce
 Requires:       pattern() = xfce_basis
 Recommends:     MozillaThunderbird
 Recommends:     libreoffice-gtk3
-Recommends:     pidgin
-Recommends:     remmina
-Recommends:     remmina-plugin-rdp
-Recommends:     remmina-plugin-vnc
-Recommends:     remmina-plugin-xdmcp
 Recommends:     shotwell
 Recommends:     transmission-gtk
 Recommends:     pattern() = imaging
@@ -307,19 +304,13 @@ Provides:       pattern-visible()
 Requires:       pattern() = xfce
 Requires:       pattern() = xfce_basis
 
-# Wayland-friendly extras (avoid x11-specific plugins like remmina-plugin-xdmcp)
-Recommends:     pattern() = office
 Recommends:     MozillaThunderbird
 Recommends:     libreoffice-gtk3
-Recommends:     pidgin
-Recommends:     remmina
-Recommends:     remmina-plugin-rdp
-Recommends:     remmina-plugin-vnc
-Recommends:     pattern() = imaging
-Recommends:     pattern() = multimedia
-# Do not recommend remmina-plugin-xdmcp (X11 only)
 Recommends:     shotwell
 Recommends:     transmission-gtk
+Recommends:     pattern() = imaging
+Recommends:     pattern() = multimedia
+Recommends:     pattern() = office
 
 Provides:       patterns-openSUSE-xfce_extra_wayland = %{version}
 Obsoletes:      patterns-openSUSE-xfce_extra_wayland < %{version}

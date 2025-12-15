@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Dec 12 08:09:19 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop pidgin recommends: It's becoming more and more niche.
+- Do not recommend remmina: it's quite special software used by a
+  small fraction of people.
+- Recommend xfce_extra to get a more complete installation by
+  default (boo#1254779).
+
+-------------------------------------------------------------------
 Wed Oct  1 12:28:26 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Correct supplements of patterns-xfce_laptop* to match with
