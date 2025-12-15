@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:26 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- Changes since 25.11.80:
+  * Update vlc dependency in flatpak manifest to 3.0.22
+
+-------------------------------------------------------------------
+Sat Nov 15 19:56:28 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * removing last year's fundraiser supporters
+  * Fix VLC being default backend (kde#508871)
+  * CI: add snap pipelines
+  * appstream: fix developer id
+  * Clean up color scheme handling
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:25 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
