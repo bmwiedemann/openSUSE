@@ -1,0 +1,1085 @@
+-------------------------------------------------------------------
+Wed Dec 10 17:57:34 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 4.0.5
+  https://sourceforge.net/p/smb4k/blog/2025/12/smb4k-405-security-bug-fix-release/
+  * Fixes CVE-2025-66002 and CVE-2025-66003 (boo#1249004)
+
+-------------------------------------------------------------------
+Sat Sep 13 08:23:40 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update file list after KDE Frameworks 6.18 release
+
+-------------------------------------------------------------------
+Sun Aug 31 09:38:02 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 4.0.4
+  * Check the ChangeLog file for the full list of changes
+  * Ported Smb4K to Qt6 and KF6
+
+-------------------------------------------------------------------
+Wed Nov 20 15:38:47 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.2.5
+  * Backport the bokmark menu from master to fix broken handling
+    of bookmarks.
+  * Make Smb4KBookmark known as metatype. This is needed for the
+    backport of the bookmark menu from master.
+- Stop using the %suse_update_desktop_file macro
+
+-------------------------------------------------------------------
+Tue Oct 24 10:32:41 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.2.4. Check the Changelog file for the full list of
+  changes.
+
+-------------------------------------------------------------------
+Mon May  2 18:22:59 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 3.1.2
+  * Since for slow (un)mounting processes, the process might be
+    killed before it finishes, the timeout is extended to 30 sec
+    instead of 5 sec.
+  * Fix error handling in the client. Backported from master.
+  * Only add a host once. Especially when DNS-SD discovery was
+    used, a host might have appeared twice. Backported from master.
+
+-------------------------------------------------------------------
+Mon Mar  7 11:15:49 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %_libdir/libexec with %_libexecdir (boo#1174075)
+
+-------------------------------------------------------------------
+Thu Jan  6 11:00:36 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix installation (again). Upstream changed their mind.
+
+-------------------------------------------------------------------
+Wed Dec  1 11:36:17 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 3.1.1
+  * Detect all network shares on startup in Smb4KHardwareInterface,
+    so that removing of shares that were already present when Smb4K
+    started works again.
+  * Implement non-blocking wait and automatic process termination
+    in the mount helper (kde#430627,kde#442187).
+
+-------------------------------------------------------------------
+Wed Aug 18 18:25:16 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 3.1.0. Check the ChangeLog file for the full list
+  of changes.
+  * Raise minimum requirements to Qt version >= 5.9.0 and KF5
+    version >=5.44.0.
+  * Implement DNS-SD to look up servers that provide SMB resources.
+  * Implement WS-Discovery to look up domains, workgroups and
+    servers.
+  * Improved the way shares are bookmarked in the mount dialog.
+
+-------------------------------------------------------------------
+Tue Apr 20 08:42:44 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Sat Apr 17 17:12:48 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update URL.
+
+-------------------------------------------------------------------
+Wed Nov 11 13:31:38 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 3.0.7
+  * Fix enabling / disabling of bookmarks menu according to the
+    mounting state in the bookmark menu
+  * Make mounting of bookmarks work (again) in the plasmoid
+
+-------------------------------------------------------------------
+Thu Aug 27 14:08:45 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use %cmake_build instead of %make_jobs
+
+-------------------------------------------------------------------
+Thu Jun  4 09:52:53 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 3.0.6
+  * Save the mainwindow settings no matter how the application is
+    closed
+  * Do not show a message box when the main window is visible and
+    the user logs off
+  * Add missing mount option 'ntlmsspi' to the respective combo box
+    in the config dialog
+  * Silence a compiler warning under BSD
+
+-------------------------------------------------------------------
+Mon May 25 10:39:05 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 3.0.5
+  * Fix the location of the mounted emblem for KF5 versions greater 
+    than 5.52
+  * Fix build with Qt-5.15 (missing header)
+  * Fix hasOptions() function, so that no false positives occur
+    anymore
+
+-------------------------------------------------------------------
+Fri Apr 17 08:30:44 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 3.0.4
+  * Fix build with Qt 5.9 and lower
+  * Improved the mount helper, it will not freeze anymore when the
+    system is offline (kde#415165)
+  * Fixed crashes and other problems in the mounter (kde#398296,
+    kde#415165, kde#415726, kde#419658)
+  * Implemented inhibition of shutdown and sleep while the mounter
+    performs unmounts
+  * Improved the handling of online and offline state in the
+    hardware interface
+- Drop 0001-Fix-build-with-Qt-5.9-and-lower.patch, merged upstream
+
+-------------------------------------------------------------------
+Sat Mar 14 19:25:49 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 3.0.3
+  * Exit silently when the query for domains and workgroups failed
+    (kde#417754)
+  * Fixed authentication problems while mounting due to special
+    characters in the password (kde#367911)
+  * Wait for 50 ms after the unmount of a share before starting the
+    next one (kde#417631)
+  * Replace deprecated QApplication::desktop()->screenGeometry()
+    function and, thus, silence a compiler warning
+  * Updated translations
+- Add 0001-Fix-build-with-Qt-5.9-and-lower.patch to fix build on
+  Leap 15.1
+
+-------------------------------------------------------------------
+Wed Nov 20 08:50:09 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 3.0.2
+  * Fixed and improved handling of custom options
+  * Updated translations
+  * Updated home page address
+- Use cmake() style BuildRequires.
+
+-------------------------------------------------------------------
+Sat Jun 15 07:00:15 UTC 2019 - wbauer@tmo.at
+
+- Update to 3.0.1:
+  * Implemented safe defaults to fix the "Smb4K mounts shares read-
+    only" issue reported by Forolinux.
+  * Updated handbook.
+  * Updated translations.
+
+-------------------------------------------------------------------
+Fri Jun 14 08:42:55 UTC 2019 - wbauer@tmo.at
+
+- Update to 3.0.0:
+  * Moved to libsmbclient for network related communication.
+    Removed the old scan, search, preview and print classes.
+    Adjusted the rest of the code accordingly.
+  * Removed periodic scanning capabilities and other obsolete
+    settings.
+  * Only start a network scan, if the computer is online.
+  * Removed the search tab from the main window. Searches can now
+    be done directly in the browser window.
+  * Use the display string 'SHARE on HOST' instead of the UNC in
+    the GUI.
+  * Added several more mount options under Linux.
+  * Added several new custom options and reworked the custom
+    options dialog.
+  * Improved support for NetBSD and added Dragonfly BSD as
+    supported operating system.
+  * Reworked the configuration dialog on many pages. Moved several
+    settings around.
+  * Added more rsync options:
+    + Compression level: --compress-level=NUM
+    + Skip compression: --skip-compress=LIST
+    + Munge symlinks: --munge-links
+    + Copy directory symlinks: --copy-dirlinks
+    + Set bandwidth limit: --bwlimit=RATE
+  * Got rid of KParts. The dock widgets are now direct children of
+    the main window.
+  * Changed the system tray icon.
+  * Overhauled the notifications.
+  * Improved plasmoid:
+    + Added 'Configuration' page.
+    + Introduced sorting of items.
+    + Reworked the layout.
+    + Introduced more actions that can be performed on single
+      items.
+  * Fixed restoring the window sizes.
+  * Cleaned up code.
+  * Changed many things under the hood (see Git log if you wish to
+    learn more about this).
+  * Updated handbook.
+  * And much, much more.
+- Use %kf5_find_htmldocs macros to generate the filelist of
+  translated docs
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Thu Aug 16 17:23:37 UTC 2018 - wbauer@tmo.at
+
+- Update to 2.1.1:
+  * Fixed auto mounting of shares (kde#396342).
+  * Fixed missing rsync arguments in the synchronizer.
+  * Fixed resetting of changes made to the bookmarks list. For this,
+    clear the list of bookmarks in the read function.
+
+-------------------------------------------------------------------
+Tue Apr  3 08:39:29 UTC 2018 - wbauer@tmo.at
+
+- Update to 2.1.0:
+  * Plasmoid is ported to Plasma 5
+  * Several bugfixes
+- Update build requirements
+
+-------------------------------------------------------------------
+Fri Aug 25 13:50:54 UTC 2017 - wbauer@tmo.at
+
+- Update to 2.0.2:
+  * cmake: set the policy CMP0063 only if existing
+  * cmake: lower required version to 3.2.
+  * Add a remark regarding denied privilege escalation to the handbook.
+  * Fixed removal of remounts in Smb4KMounter::slotStatResult().
+
+-------------------------------------------------------------------
+Mon May 29 19:01:15 UTC 2017 - wbauer@tmo.at
+
+- Update to 2.0.1:
+  * Fix a logic flaw in the mount helper (CVE-2017-8849).
+  * Fix build system.
+- Update to 2.0.0:
+  * Ported Smb4K to Qt5 and KF5.
+  * Removed the plasmoid from this release, because it has not been
+    ported yet.
+  * Added migration of config and XML files.
+  * Bumped required CMake version to 3.3. Set policies for CMP0037
+    and CMP0063 to NEW.
+  * Implemented new org.kde.appname format for desktop and xml files.
+  * Added support for high DPI screens.
+  * Removed the IP scan job and setting, since that method did not
+    to work properly.
+  * Got rid of all dependencies to other shell programs except the
+    Samba ones.
+  * Revised the shares view:
+    + The old list view was removed and replaced by a new one based
+      on the default icon widget.
+    + A new 'Shares View' action menu to was added to the shares
+      view and the dynamic main tool bar.
+    + The mount point is not shown anymore in the shares view.
+    + Make sure no drops can be performed if either the computer is
+      offline or the share is inaccessible.
+  * Revised the mounter and the mount helper:
+    + Rely on Solid to nofify the application that a share was
+      added or removed.
+    + Under Linux, the /proc/mounts file for imports is not needed
+      anymore, because all the needed information is present in the
+      KMountPoint::mountOptions() string list.
+    + However, under FreeBSD/NetBSD a workaround for detecting
+      mounts and unmounts had to be implemented for now, since on
+      my FreeBSD system Solid was not able to detect mounts and
+      unmounts of Samba shares.
+  * Replaced the choice of the view mode of the shares view by a
+    combo box in the configuration dialog.
+  * Removed the setting for showing the mount point instead of the UNC.
+  * Removed the protocol hint, since it is not needed anymore.
+    Adjust the code accordingly. As a consequence, we are now
+    using the RPC protocol when listing the shares of a server.
+  * Removed obsolete configuration option that was used to
+    determine an interval between checks for mounted shares.
+  * The smbclient program of Samba 4.x does not report the server
+    and operating system anymore. The support of this extra
+    information has now been removed.
+  * Suppress error messages and warnings when a browse/hosts/shares
+    list could be retrieved.
+  * Do not report those shares that were initially imported as
+    being mounted.
+  * Close all notifications on timeout.
+  * Changed some status bar texts.
+  * Fixed several issues in the preview dialog.
+  * Improved hardware support.
+  * Changed overlay for the icon of a foreign share.
+  * Added a donator to the about dialog.
+  * Remove "for KDE" in the description of SmbK as suggested by
+    Burkhard Lück.
+  * Updated handbook.
+  * Removed CPack support.
+  * And many other changes 
+- Drop fix_plugin_path.diff, no longer necessary
+- Drop remove-mounthelper.patch, the security flaws should be fixed
+- Add smb4k-rpmlintrc to make it build until the mounthelper
+  service is whitelisted
+- Adjust package summary and description
+
+-------------------------------------------------------------------
+Wed May 17 17:49:02 UTC 2017 - wbauer@tmo.at
+
+- Add remove-mounthelper.patch as some security flaws were
+  discovered (boo#1033300)
+
+-------------------------------------------------------------------
+Sun Feb  5 22:15:51 UTC 2017 - wbauer@tmo.at
+
+- Update to 1.2.3:
+  * Fix Smb4KSharesMenu::refreshMenu() function. Backported from master.
+  * Fix Smb4KBookmarkMenu::refreshMenu() and simplify
+    Smb4KBookmarkMenu::setupMenu() functions. Backported from master.
+  * Introduce workaround to search code so that network search is
+    also working with option 'client max protocol = SMB3' defined
+    in smb.conf. Backported fix from master.
+
+-------------------------------------------------------------------
+Mon Dec 26 21:05:03 UTC 2016 - wbauer@tmo.at
+
+- Update to 1.2.2:
+  * Improved error message handling in the scanner. Mostly
+    backported changes from master.
+  * Accept the drop events (QEvent::accept()) in the shares views. 
+  * Added remarks regarding the regression introduced
+    by the security fixes released on April 12, 2016 to the handbook.
+    Changed URL of the bug tracker to the KDE Bugtracking System.
+    Bumped version number (and modification date) of the handbook.
+  * Now that Smb4K is on bugs.kde.org, remove the custom bug report address.
+
+-------------------------------------------------------------------
+Thu Oct  8 20:13:10 UTC 2015 - wbauer@tmo.at
+
+- Update to 1.2.1:
+  * Fixed the "authentication dialog is missing the host name" error
+    (closes SF ticket #37).
+  * Fixed scanning of broadcast areas (added missing pipe).
+  * Updated license text to the current version of GPL v2
+    (closes SF ticket #40).
+  * Make Smb4K also useful with operating systems that are not supported.
+    You can now do anything with it except mounting.
+  * Fixed code under FreeBSD/NetBSD.
+  * Split the mount options off the other options. Adjusted the code accordingly.
+    The reason for this is that we want to support more operating systems
+    and that is is now easier to deal with different mount options.
+  * Use KIO::convertSize() instead self written code.
+  * Refactored and improved code responsible for mounting.
+  * Fix out-of-source builds when po is present. When building out-of-source,
+    ALLOW_DUPLICATE_CUSTOM_TARGETS never gets turned on because the po directory
+    doesn't exist in the build directory, causing a build failure.
+    This ensures that the correct source directory is always checked.
+
+-------------------------------------------------------------------
+Wed Apr  1 13:25:32 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to 1.2.0:
+  * Added support for NetBSD.
+  * Added support for profiles.
+  * Added appdata file. Closes SF ticket #35.
+  * Updated handbook.
+  * Fix the Smb4KMounter::cleanup() function.
+  * Added share name to the homes user dialog.
+  * Implemented profiles page in the plasmoid.
+  * Removed old CTRL+R shortcut for rescanning the network neighborhood.
+  * Implemented use of Kerberos with net command.
+  * Improved handling of sleep states. Smb4K now reacts on changes of 
+    the network connection instead of on button press events. 
+  * Implemented more CIFS mount options under Linux as well as a 
+    whitelist of mount.cifs options that are save to be entered via the 
+    "Additional options" line edit in the configuration dialog.
+  * Remove setting for temporal storage of the login information. 
+    Now, the user either stores the passwords in the wallet or needs to 
+    enter the login information each time it is needed.
+
+-------------------------------------------------------------------
+Sat Jan 31 18:20:47 UTC 2015 - asterios.dramis@gmail.com
+
+- Update to 1.1.4:
+  * Hopefully fixed a crash reported by Ingo Ratsdorf that happened when the
+    user used the "Master browsers need authentication" setting and an 
+    authentication error occurred.
+  * Fix a potential crash in Smb4KMainWindow. Thanks go to Mounty One for
+    reporting this issue.
+  * When the user cancels the homes user dialog, don't show the custom options
+    dialog.
+  From 1.1.3:
+  * Make mounting of a password protected share work under FreeBSD, if
+    no password has been defined yet.
+  * Fixed compilation errors under FreeBSD.
+
+-------------------------------------------------------------------
+Tue May  6 18:57:23 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 1.1.2
+  * Fixed a crash that could happen during the loading of bookmarks
+    into the bookmark editor's tree widget.
+  * Fixed the enabling and disabling of the "Up" action in the 
+    preview dialog.
+  * Fixed two crashes in the previewer: The first occurred when 
+    authentication data was requested and the password dialog was 
+    just closed and the other one occurred when a recurring 
+    authentication error happened.
+  * Improved 'Command Reference' section in the handbook.
+
+-------------------------------------------------------------------
+Mon Mar 24 14:29:03 UTC 2014 - tittiatcoke@gmail.com
+
+- Add patch fix_plugin_path.diff to ensure that the qml plugin
+  is installed in the correct directory
+
+-------------------------------------------------------------------
+Mon Mar 24 10:34:40 UTC 2014 - tittiatcoke@gmail.com
+
+- Update to 1.1.1
+  * Fixed a string in the handbook.
+  * Set date when documentation was updated to 2014-03-16.
+  * Fixed potential security issue reported by Heiner Markert. 
+    Do not allow the cruid option to be entered via the 
+    "Additional options" line edit. (bnc#869828) 
+  * Fix crash that might happen due to a (misconfigured) smb.conf
+    file that does not contain a global section.
+
+-------------------------------------------------------------------
+Wed Jan 29 23:46:34 UTC 2014 - cgiboudeaux@gmx.com
+
+- Update to 1.1.0:
+  * Fixed many issues reported by krazy2.
+  * Made Smb4K a kdeinit executable.
+  * Introduced a new dynamic main tool bar.
+  * Added Wake-On-LAN (WOL) feature.
+  See the Changelog file for the complete changelog.
+
+-------------------------------------------------------------------
+Mon Nov  4 17:29:12 UTC 2013 - wbauer@tmo.at
+
+- Update to version 1.0.9:
+  * With non-English languages the change introduced in version 1.0.8 
+    might not work correctly, because e.g. umlauts are not recognized and
+    the shell output is truncated. Setting the language to "en_US.UTF-8"
+    fixes this problem.
+
+-------------------------------------------------------------------
+Mon Oct 28 08:56:54 UTC 2013 - wbauer@tmo.at
+
+- Update to version 1.0.8:
+  * Explicity set language to "C" in Smb4KProcess, because Samba
+    might be localized (closes SF ticket #34).
+
+-------------------------------------------------------------------
+Fri May 17 20:41:24 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to version 1.0.7:
+  * Fixed remounting of shares.
+  * Fixed Smb4KCustomOptionsManager::hasCustomOptions(). 
+    The default options defined via the configuration dialog are 
+    honored now.
+  * Fixed "Ignoring unknown parameter" error messages
+  * Fixed command line argument when a master browser is queried 
+    for the browse list.
+
+-------------------------------------------------------------------
+Fri Mar 15 00:34:39 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to version 1.0.6:
+  * Fixed crash in Smb4KMounter::slotAuthError() due to signals 
+    being emitted from Smb4KMountJob::slotActionFinished() too 
+    often
+  * Fixed unmounting of selected shares
+  * Removed faulty and useless clean-up code from read function of
+    Smb4KCustomOptionsManager.
+
+-------------------------------------------------------------------
+Sat Dec 29 17:37:29 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to version 1.0.5:
+  * Fixed hanging of Smb4K if a custom mount prefix without a trailing
+    slash was entered (closes SF ticket #28).
+
+-------------------------------------------------------------------
+Sun Sep 16 20:28:19 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to version 1.0.4:
+  * Fixed erroneously shown error notifications when searching.
+  * Make sure that "tdb_log" messages are not shown as error notifications
+    to the user.
+  * Wait until unmounting all shares on exit finished before closing down.
+  * Make sure that the mount prefix and all its subdirectories correctly
+    inherit their permissions.
+
+-------------------------------------------------------------------
+Fri Aug 31 18:50:16 UTC 2012 - dmueller@suse.com
+
+- avoid rpmlint fatal reporting on old distros
+
+-------------------------------------------------------------------
+Mon Jun 25 19:56:12 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to version 1.0.3:
+  * Make sure that output from the mount and unmount process is trimmed, so
+    that there are no false error messages.
+  * Fixed error notifications being shown although mounting and unmounting
+    shares was successful.
+
+-------------------------------------------------------------------
+Fri Jun  8 18:03:39 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to version 1.0.2:
+  * Fixed two potential crashes in class Smb4KHomesSharesHandler.
+  * Fixed a wrong comparision between QString and QByteArray in
+    Smb4KMountJob::slotActionFinished().
+  * Fixed a wrong comparision between QString and QByteArray and a double
+    declaration in Smb4KUnmountJob::slotActionFinished().
+  * Fixed wrong assumption that qreal equals double in Smb4KShare class.
+    Patch by Rex Dieter from the Fedora Project.
+  * Fixed missing assignments of the IP address in Smb4KAuthInfo::setHost()
+    and Smb4KAuthInfo::setShare().
+  * When prompting for a password for a 'homes' share, use the UNC of the
+    user's home directory and not //SERVER/homes.
+  * When mounting a 'homes' share, show the UNC of the user's home directory
+    in the mainwindow's status bar instead of //SERVER/homes.
+  * Fixed a crash in Smb4KMountJob::slotActionFinished() reported by
+    Peter Trenholme.
+  * Fixed unmounting on exit. Many thanks go to Peter Trenholme for reporting
+    this issue.
+- Keep only the english documentation in the smb4k-doc subpackage. Move other
+  languages in the smb4k-lang subpackage.
+
+-------------------------------------------------------------------
+Sun Mar 25 12:54:13 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to version 1.0.1:
+  * Fixed potential crash in Smb4KWalletManager::init().
+  * Fixed KDEInit complaining when Smb4K is started from a desktop icon (closes
+    SF ticket #23).
+  * Fixed periodic scanning.
+- Removed enscript and texlive from recommended programs (not needed anymore).
+
+-------------------------------------------------------------------
+Mon Feb 27 09:38:08 CET 2012 - dmueller@suse.de
+
+- update to 1.0.0:
+ - KDE SC 4.4.0 and Qt 4.7.0 or later are required.
+ - We now use Utf8 throughout the whole application (closes #14674 and
+  #17535).
+ - Removed utility programs in favor of the new KAuth implementation.
+ - Updated handbook.
+
+-------------------------------------------------------------------
+Sun Dec  4 20:52:33 UTC 2011 - asterios.dramis@gmail.com
+
+- Spec file updates:
+  * Changed License: to GPL-2.0+ (SPDX style).
+  * Recommend instead of Suggest doc and lang subpackages.
+  * Removed Provides:/Obsoletes: entries for kde4-smb4k (not needed anymore).
+
+-------------------------------------------------------------------
+Sun Dec  4 18:41:36 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to version 0.10.12:
+  * Fixed wrong QString to char conversion in the mounter.
+  * Adjusted author's e-mail address and the project's home page 
+    and bug report mailing list addresses due to the relocation of 
+    Smb4K to Sourceforge.net.
+  * The application is using UTF8 now. This should fix the 
+    incompatibility with non-Latin1 languages.
+  * Smb4KAuthInfo::login() and Smb4KAuthInfo::password() return a 
+    QString.
+  * Smb4KShare::path() and Smb4KShare::canonicalPath() return a 
+    QString.
+  * Connect configuration dialog with system tray widget, so that 
+    changes can directly be applied.
+  * Fixed KLibrary warnings during runtime.
+
+-------------------------------------------------------------------
+ Tue Sep 13 12:41:10 UTC 2011 - toddrme2178@gmail.com
+
+- Split translation package (fix for RPMLINT warning)
+- Split documentation package (fix for RPMLINT warning)
+- Fixed provides (fix for RPMLINT warning)
+- Cleaned up spec file formatting
+
+-------------------------------------------------------------------
+Thu Mar 10 21:14:57 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to version 0.10.10:
+  * Fixed "Invalid command: net rap share list" error.
+  * Improved smb4k_sudowriter utility program. Version has been bumped to 0.4.
+- Spec file updates:
+  * Changes based on rpmdevtools templates and spec-cleaner run.
+  * Removed smb4k-devel subpackage and merged it in the main package since the
+    package doesn't actually provides any shared libraries. Also fixed rpmlint
+    warning "devel-file-in-non-devel-package".
+  * Removed smb4k-doc subpackage and merged it in the main package since it
+    contained the package's english main help files.
+  * Updates in Summary: and %description.
+  * Updates in Buildrequires:, Requires:. Added packages in Recommends:
+    section.
+  * Moved smb4k-lang package to Recommends: section (from Requires:).
+  * Updates in %install and %files sections.
+  * Minor other updates.
+
+-------------------------------------------------------------------
+Fri Jan 14 12:29:09 UTC 2011 - wstephenson@novell.com
+
+- update to version 0.10.9
+  * fix a serious problem with smb4k_sudowriter and Qt 4.7 where
+  /etc/sudoers was left with wrong file permissions after writing
+  to it, breaking sudo system wide.
+
+-------------------------------------------------------------------
+Sat Aug 21 17:00:59 UTC 2010 - tittiatcoke@gmail.com
+
+- update to version 0.10.8
+  * Cope with trailing slashes in the UNC. Needed for 
+     cifs-utils package under Linux.
+  * Fixed crashes in Smb4KSystemTray::slotSetupSharesMenu().
+  * Fixed crashes in Smb4KScanner::scanForWorkgroupMembers().
+
+-------------------------------------------------------------------
+Sun Apr 11 08:41:05 UTC 2010 - beineri@opensuse.org
+
+- update to version 0.10.7: several bugfixes
+
+-------------------------------------------------------------------
+Mon Oct  5 11:21:55 UTC 2009 - tittiatcoke@gmail.com
+
+- Update to version 0.10.4
+   * Fixed crash in the main window that made Smb4K unusable when no bookmarks were defined.
+
+-------------------------------------------------------------------
+Thu Oct  1 11:13:09 UTC 2009 - tittiatcoke@gmail.com
+
+- Update to version 0.10.3
+   * Fixed failing of error recognition when mounting shares with Samba >= 3.3.
+   * Backported Smb4KAuthInfo class from CVS HEAD. This should close the crash in Smb4KAuthInfo::unc() under KDE 4.3.
+   * Fixed network search code so that no comment shows up in the UNC with longer share names.
+   * Silenced enscript, so that no erroneous error messages are shown when printing.
+   * Bumped soname of core library to version 3.2.0.
+   * Fixed crash in system tray and a potential one in the main window.
+   * Fixed saving and restoring of main window layout.
+   * Excluded KIO_SLAVE 
+
+-------------------------------------------------------------------
+Tue Aug 11 07:57:50 CEST 2009 - beineri@opensuse.org
+
+- require -lang package like every other KDE package
+
+-------------------------------------------------------------------
+Tue May 19 15:01:23 CEST 2009 - dmueller@suse.de
+
+- fix devel package requires
+
+-------------------------------------------------------------------
+Sat May  2 19:56:47 CEST 2009 - dmueller@suse.de
+
+- rename -docs to -doc
+
+-------------------------------------------------------------------
+Sun Apr 26 14:45:00 CEST 2009 - tittiatwork@hotmail.com
+- Updated to version 0.10.2
+  * Revised Smb4KMounter class: 
+  * Bumped version of core library to 3.1.0.
+  * Reintroduced editing of the IP address in the bookmark editor.
+  * Prevent the mounter from trying to do something before the application has completely started up.
+  * Modified the Samba configuration page:
+    * Fixed a crash in the "Custom Options" tab.
+    * Removed the file system port entry under FreeBSD.
+
+- Updated to version 0.10.1
+  * Fixed compilation errors due to missing #include statements.
+  * Fixed a wrong test string in Smb4KMounter::processMount().
+  * Fixed a crash and a bug in the smb4k_sudowriter utility program. Bumped version to 0.2.
+  * Fixed an infinite loop in Smb4KSambaOptionsHandler::readCustomOptions().
+
+- Update to KDE4 release (version 0.10.0)
+  * Ported to KDE4 only
+  * Moved the Build System to cmake
+  * Fixed many GCC 4.3 related warnings
+-------------------------------------------------------------------
+Sat Apr  4 17:28:48 CEST 2009 - coolo@suse.de
+
+- refresh all patches to fix build
+
+-------------------------------------------------------------------
+Fri Oct 24 14:17:18 CEST 2008 - dmueller@suse.de
+
+- update to 0.9.8:
+  * Backported smb4k_sudowriter utility program. It directly writes to the /etc/sudoers file and thus finally fixes the messed-up-sudoers-file bug.
+  * Removed smb4k_cat utility program. It's not needed anymore.
+  * Removed smb4k_mv utility program. It's not needed anymore.
+  * Removed the support for the program 'super'. If you used it before, you need to reconfigure Smb4K.
+  * Completely rewrote Smb4KFileIO class to support smb4k_sudowriter.
+  * Removed the "Programs" widget from the "Super User" configuration page. It is not needed anymore.
+
+-------------------------------------------------------------------
+Mon Jun 16 19:15:33 CEST 2008 - stbinner@suse.de
+
+- 0.9.6 update:
+  * Added a configuration entry that must be enabled when authenti-
+    cation information needs to be send to the workgroup master
+    browser when querying it for the browse list.
+  * Several bugfixes
+
+-------------------------------------------------------------------
+Thu Apr  3 14:31:31 CEST 2008 - stbinner@suse.de
+
+- smb4k needs the .la to work, eg config dialog (bnc#374049)
+
+-------------------------------------------------------------------
+Mon Feb 25 09:09:50 CET 2008 - stbinner@suse.de
+
+- 0.9.3 update:
+   * Improves handling of login information. To achieve this, the
+     format of the data that is written to the wallet had to be 
+     changed and, thus, Smb4K 0.9.3 is not compatible with earlier
+     versions. Conversion of the old data will be done automatically. 
+   * Two small (un)mount issues and a regression in the network 
+     browser have been also eliminated.
+
+-------------------------------------------------------------------
+Sun Jan 27 09:22:46 CET 2008 - stbinner@suse.de
+
+- 0.9.2 update:
+ * Added a few "What's this?" help texts to "Shares" configuration
+ * Updated translations and handbook.
+ * Improved the preview dialog and system tray widget.
+ * Smb4K's desktop file now complies with freedesktop.org's spec.
+ * Fixed poor IP address check in Smb4KScanner::searchForHost().
+ * Fixed saving of default login data when the wallet was closed.
+
+-------------------------------------------------------------------
+Fri Jan 25 15:30:49 CET 2008 - lars@suse.de
+
+- fix requirements of the devel package
+- package libsmb4kdialogs.so in main package to break dependency 
+  to devel package
+- use fdupes 
+- get rid of %run_ldconfig
+
+-------------------------------------------------------------------
+Tue Jan  8 21:33:01 CET 2008 - stbinner@suse.de
+
+- 0.9.1 update: replaced all occurences of getenv("USER") by
+  getpwuid(getuid())->pw_name. Corrected German spelling mistakes
+
+-------------------------------------------------------------------
+Wed Dec 19 08:40:19 CET 2007 - stbinner@suse.de
+
+- 0.9 update:
+  * Due to the new configuration system, the configuration you used
+    for versions prior to 0.9.0 is obsolete. It will be removed on
+    the first start-up of version 0.9.0 and you have to reconfigure.
+  * Almost entirely rewritten GUI and many other changes under the
+    hood such as the swtich to the KConfig XT configuration system,
+    the use of the KParts technology and improved Konqueror plugin.
+
+-------------------------------------------------------------------
+Wed Nov 28 13:00:51 CET 2007 - stbinner@suse.de
+
+- 0.8.7 update:
+  * Fixed smb4k_cat utility program, so that files won't get 
+    corrupted anymore.
+  * Fixed Smb4KPasswordHandler::readDefaultAuth() that returned 
+    a pointer that was freed when the function exited.
+  * Fixed the remounting of shares.
+
+-------------------------------------------------------------------
+Thu Oct 25 07:12:49 CEST 2007 - stbinner@suse.de
+
+- fix build with gcc 4.3
+
+-------------------------------------------------------------------
+Mon Oct 22 10:07:42 CEST 2007 - stbinner@suse.de
+
+- 0.8.6 update: fixes crash when mounting shares that contained
+  special characters
+
+-------------------------------------------------------------------
+Wed Sep 26 16:55:15 CEST 2007 - stbinner@suse.de
+
+- 0.8.5 update: improved handbook
+
+-------------------------------------------------------------------
+Mon Jul 16 16:23:00 CEST 2007 - stbinner@suse.de
+
+- 0.8.4 update: updated translation and bug fixes, mainly printing on 
+  remote printer shares works again and that the DCOP-related hanging
+  of Smb4K on (KDE) start-up has been eliminated.
+
+-------------------------------------------------------------------
+Fri Jun  1 08:20:57 CEST 2007 - coolo@suse.de
+
+- move kde_post_install
+
+-------------------------------------------------------------------
+Wed May 23 16:51:16 CEST 2007 - dmueller@suse.de
+
+- split off -devel subpackage
+
+-------------------------------------------------------------------
+Thu May  3 10:39:18 CEST 2007 - stbinner@suse.de
+
+- 0.8.3 update: Fixed command line in Smb4KMounter:unmount() that
+  provoked smb4k_umount to complain about a deprecated argument.
+
+-------------------------------------------------------------------
+Wed May  2 11:00:51 CEST 2007 - stbinner@suse.de
+
+- 0.8.2 update
+  * Fixed a minor bug in the utility programs and applied some 
+    cosmetic changes.
+  * Worked around a bug that led to shares being remounted with
+    UID=0 and GID=0 when using the CIFS file system.
+  * Improved the 'Trouble Shooting' section of the handbook.
+
+-------------------------------------------------------------------
+Tue Apr 10 10:41:15 CEST 2007 - wstephenson@suse.de
+
+- 0.8.1 update
+  * Rewrote smb4k_mount, smb4k_umount, smb4k_kill, smb4k_cat, and smb4k_mv from scratch in order to fix several security weaknesses discovered by Ben Hutchings (should finally close #9631).
+  * Adjusted Smb4KMounter class to the slightly changed behavior of the utility programs: The SIGTERM signal was removed from the command line of smb4k_kill in Smb4KMounter::abort() and the command lines for smb4k_mount and smb4k_umount commands were changed.
+  * Started to address the browsing problems experienced by users in Active Directory environments: If the NT_STATUS_ACCOUNT_DISABLED error is encountered (which actually seems to be an authentication issue), Smb4K won't error out anymore but ask the user for the user name and password (closes #10280).
+  * Fixed two bugs in Smb4KFileIO: The search for the lock file directory will not return a directory that is not readable and writeable and if the lock file does not exist when Smb4KFileIO::removeLockFile() wants to delete it, there will no error be shown anymore.
+  * Fixed a compilation error under SUSE (10.2) und with the upcoming GCC 4.3.
+  * Smb4K now uses the CIFS file system by default (closes #10804).
+  * The handbook was updated to reflect the changes made to the utility programs.
+
+-------------------------------------------------------------------
+Mon Jan 22 13:59:07 CET 2007 - stbinner@suse.de
+
+- 0.8 update
+  * security fixes following a security audit by Kees Cook
+  * introduction of the ability to define custom options for shares
+    or servers
+  * drag-and-drop support in the shares view
+  * improved Konqueror plugin and preview dialog, updated handbook
+  * new IP scan lookup-method (which uses nmblookup to lookup all
+    IP addresses known in a broadcast area)
+  * smarter behavior of the browser
+  * better handling of bookmarks (automatic updated of IP addresses)
+
+-------------------------------------------------------------------
+Mon Dec  4 16:09:20 CET 2006 - stbinner@suse.de
+
+- 0.7.5 update
+  * Fixed a serious bug in Smb4KFileIO that could cause a corrupted
+    /etc/sudoers file if debug or error output was received via 
+    stderr while reading the file for subsequent processing. 
+
+- 0.7.4 update
+  * Fixed a bug in Smb4KSearchDialog::slotCheckItemInBrowser()
+    that occurred when a server item had no IP address displayed.
+  * Fixed a bug in the shell code that was used to retrieve the
+    list of workgroup/domain members from the master browser. 
+  * Improved error handling in Smb4KScanner::processHosts().
+  * Implemented better error handling in Smb4KSynchronizer:
+    The synchronization is canceled if an error occurrs. This
+    prevents the user from being flooded with error dialogs.
+  * Fixed a bug that occurred when reading or writing the file
+    and directory mask.
+  * Changed the address used for reporting bugs via Help->Report Bugs.
+  * Updated several translations.
+
+-------------------------------------------------------------------
+Tue Sep 26 12:47:10 CEST 2006 - stbinner@suse.de
+
+- 0.7.3 update
+  * Updated help texts, handbook, README and translations.
+  * Fixed several issues in Smb4KFileIO: 
+  * A host item will be collapsed if the authentication failed
+  * Fixed insertion of a host from the search dialog to the browser
+    window when the host has no IP address displayed.
+  * Added missing error code to Smb4KGlobal::showCoreError().
+  * Preview dialog won't accept contents of a wrong address anymore.
+  * The wallet will be reopened if it was closed by the user, 
+    the screensaver, etc.
+  * The text streams are now aware of the locale.
+
+-------------------------------------------------------------------
+Thu Aug  3 18:38:30 CEST 2006 - stbinner@suse.de
+
+- 0.7.2 update
+  * Several crashes, memory leaks and other bugs fixed.
+  * Updated several translations and handbook
+
+-------------------------------------------------------------------
+Mon Jun 19 09:01:53 CEST 2006 - stbinner@suse.de
+
+- 0.7.1 update
+  * Fixed misc compilation errors
+  * Updated translation and handbook
+  * Introduced the possibility to modify the length of the interval
+    between checks for external mounts/umounts and dead shares.
+  * The timer will be disconnected from Smb4KScanner::start() if the
+    scanner is idle. This drastically reduces the CPU load!
+  * Fixed input validation when using smbclient for searching 
+  * Fixed a bug that prevented the correct saving of updated
+    authentication information.
+  * Fixed smb4k.desktop file.
+  * Removed two queries for a non-existent config entry.
+  * Made the synchronization progress dialog work correctly with 
+    the latest version of rsync.
+  * Fixed a crash in the network browser's tooltip code.
+
+-------------------------------------------------------------------
+Wed May 24 11:46:51 CEST 2006 - adrian@suse.de
+
+- fix build for < 10.1
+
+-------------------------------------------------------------------
+Tue May  2 14:42:57 CEST 2006 - stbinner@suse.de
+
+- 0.7 update
+  * KonqSidebar_Smb4K: hang up the new alreadyMountedShare signal
+    from mounter. No error dialogs of "already been mounted share"
+    anymore (partially closes #5636).
+  * The old tab widget in the main window has been removed.
+  * Added shortcuts to the main window that allow jumping to each
+    dock widget: CTRL+1: Network Browser, CTRL+2/CTRL+S: Search
+    Dialog, CTRL+3: Shares View.
+  * Unified look of dialogs.
+  * Did a major revision of the browser widget.
+  * Did a major revision of the search dialog (closes #2247).
+  * Did several changes to the shares view.
+  * The bookmark editor allows editing of the IP address and 
+    workgroup.
+  * Put Smb4KShareWidgetItem class in own files.
+  * Removed obsolete options "This master browser needs
+    authentication" and "Use authentication when querying the
+    workgroup master browsers" from the configuration dialog.
+  * When closing the configuration dialog, the root password is 
+    only asked, if the user changed one of the super user options
+    (partially closes #5636).
+  * The removal of the super user entries from super.tab and/or 
+    sudoers is now determined by the choice in the configuration
+    dialog.
+  * Rewrote Smb4KSharesMenuWidget class.
+  * Added new Smb4KShareActionMenu and Smb4KBrowserActionMenu
+    classes. They contain the actions that were defined in
+    Smb4KShareWidget and Smb4KBrowserWidget before, respectively. The
+    use of Smb4KShareActionMenu in the system tray icon closes #5622.
+  * Replaced deprecated KStdActions.
+  * Introduced new Smb4KDataItem container for the core classes.
+  * Revised bookmark handling (closes #6316).
+  * The scanner class underwent a major revision (closes #4417).
+  * Massively changed the entries and groups in the configuration
+    file. As consequence, Smb4K will be incompatible with prior
+    versions.
+  * Added ability to synchronize a local copy with a remote share
+    and vice versa (closes #1940). This feature uses Rsync. A few
+    of the many options have been stripped, because they are used
+    for transfer from remote hosts, which is no the case here.
+  * Information of any share will now be collected by the mounter.
+    Smb4KCore has been tidied up accordingly. Information of the
+    number of files and directories has been dropped (for now).
+  * Removed Catalan, Norwegian Nynorsk, Chinese Traditional (zh_TW)
+    and Simplified (zh_CN), Russian and Polish translation because
+    they were unmaintained and hopelessly out-dated.
+  * Removed the Smb4KShellIO class, because its only purpose was to
+    provide the Samba version. This is not necessary anymore, because 
+    we switched to Samba 3.
+  * Introduced smb4k_cat and smb4k_mv utilities to read and
+    copy/move system config files.
+  * The handbook shipping with this release actually contains useful
+    information. However, it is still work in progress. The license
+    of the handbook has been changed from GFDL to GPL.
+  * If a user tries to mount an already mounted share, no error 
+    message will be displayed anymore.
+  * Renamed the global namespace to Smb4KGlobal and several
+    functions inside.
+  * Centralized the application's timer in the Smb4KGlobal
+    namespace. As a side effect, this seems to fix the
+    very-fast-vanishing-tooltips problem.
+  * If the user canceled the writing to /etc/super.tab or
+    /etc/sudoers, the previous state will be re-established.
+  * Removed "Specify User" dialog from Smb4KBrowserWidget and moved
+    it to Smb4KGlobal namespace. Now only core classes are using it.
+  * Reworked and cleaned up Linux specific code in 
+    Smb4KMounter::import().
+  * Moved error handling to Smb4KGlobal namespace. The reason is,
+    that the previous signal/slot model was not able to handle 
+    errors during the initialization of the core.
+  * Removed Smb4KPasswordHandler::AskPass class and integrated its
+    functionality into Smb4KPasswordHandler::askpass(). This should
+    fix the compilation errors encountered when using MIPSpro
+    Compilers on IRIX/MIPS (closes #6811).
+  * When reading the smb.conf file, a line beginning with a 
+    semicolon is valued as comment.
+  * Reduced CPU load by stretching the interval between checks for
+    externally mounted and broken shares from 1000 ms to 2500 ms.
+ 
+-------------------------------------------------------------------
+Wed Apr 19 15:14:55 CEST 2006 - stbinner@suse.de
+
+- fix %suse_update_desktop_file parameter order for 10.1
+
+-------------------------------------------------------------------
+Tue Apr 18 09:24:58 CEST 2006 - stbinner@suse.de
+
+- 0.6.10 update
+
+-------------------------------------------------------------------
+Tue Mar 28 15:07:18 CEST 2006 - stbinner@suse.de
+
+- 0.6.9 update
+
+-------------------------------------------------------------------
+Mon Feb 27 09:47:10 CET 2006 - stbinner@suse.de
+
+- 0.6.8 update
+
+-------------------------------------------------------------------
+Mon Feb  6 10:06:19 CET 2006 - stbinner@suse.de
+
+- 0.6.7 update
+
+-------------------------------------------------------------------
+Sun Feb  5 08:35:19 CET 2006 - stbinner@suse.de
+
+- 0.6.6 update
+
+-------------------------------------------------------------------
+Wed Jan 25 21:33:38 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Jan  7 17:33:24 CET 2006 - stbinner@suse.de
+
+- 0.6.5 update
+
+-------------------------------------------------------------------
+Sun Oct 30 18:25:39 CET 2005 - stbinner@suse.de
+
+- 0.6.4 update
+
+-------------------------------------------------------------------
+Sat Sep 17 18:04:42 CEST 2005 - dmueller@suse.de
+
+- fix installed libtool .la files 
+
+-------------------------------------------------------------------
+Wed Sep 14 09:12:32 CEST 2005 - dmueller@suse.de
+
+- 0.6.3 update 
+
+-------------------------------------------------------------------
+Fri Aug 19 09:21:46 CEST 2005 - coolo@suse.de
+
+- fix file list for icons
+
+-------------------------------------------------------------------
+Fri Aug 12 18:05:58 CEST 2005 - dmueller@suse.de
+
+- fix .la file
+
+-------------------------------------------------------------------
+Sun Aug  7 12:14:17 CEST 2005 - adrian@suse.de
+
+- fix categories, single menu entry
+
+-------------------------------------------------------------------
+Sat Aug  6 12:37:14 CEST 2005 - adrian@suse.de
+
+- move menu entry to System->Network where similar apps are already
+
+-------------------------------------------------------------------
+Fri Jul 29 11:30:43 CEST 2005 - adrian@suse.de
+
+- initial package of version 0.6.0
+
