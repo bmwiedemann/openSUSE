@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Dec 14 12:59:18 UTC 2025 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- update to 2.21:
+  * allow multiline spec changes (Michel Bourget)
+  * fix rpm2archive syntax for rhel 9 (Blair Zajac)
+  * skip install test for gpg-pubkey packages
+- fix boo#1247386
+- remove patch rpmrebuild-fix-bashisms.patch as bash is mandatory
+  anyways.
+- update to 2.20
+  * cpio is legacy, replace it by tar (rpm2cpio => rpm2archive)
+  * remove warning : Explicit %attr() mode not applicable to symlink
+  * bugfix : the comment-missing option was not working on rpm files
+  * tests : clean generated files
+  * tests : only use RPMREBUILD_IGNORE_FILE_ERROR if necessary
+  * tests : add test numbers in code
+  * fix build on fedora 41 (buildroot)
+  * use RPMREBUILD_NOQUOTE on some distribution if filenames contains meta-car
+  * bugfix comment missing with spec-only on rpm file
+  * bugfix file with space
+- update to 2.19
+  * Set the directory mode to '-' instead of omit (xujing)
+  * support filetrigger (merged from github repo)
+  * fix IsPackageInstalled code
+  * fix trailing space (yixian)
+  * fix backslash in filename
+  * add rpm tag BUGURL
+  * add rpm tag VCS
+  * new plugin empty_section
+  * add in specfile a guide to use rpmbuild if spec-only
+  * new plugin replacefile
+  * new env variable RPMREBUILD_IGNORE_FILE_ERROR (allow to work if not root)
+
+-------------------------------------------------------------------
 Sun Jun 30 08:15:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.18:

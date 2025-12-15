@@ -1,7 +1,7 @@
 #
 # spec file for package rpmrebuild
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rpmrebuild
-Version:        2.18
+Version:        2.21
 Release:        0
 Summary:        A tool to build a rpm file from the rpm database
 License:        GPL-2.0-or-later
@@ -26,7 +26,6 @@ URL:            https://rpmrebuild.sourceforge.net
 Source0:        https://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Patch1:         gpl-license.patch
 Patch2:         gpl-COPYRIGHT-address.patch
-Patch3:         rpmrebuild-fix-bashisms.patch
 Requires:       bash
 Requires:       coreutils
 Requires:       cpio
@@ -49,11 +48,12 @@ configuration's change.
 # Remove shebang on script that are sourced and not executed
 find . -iname "*.src" -exec sed -i 's,^#!%{_bindir}/env bash,,g' {} \;
 # As in 2.15 remove env usage to static path
-find . -iname "*.sh" -exec sed -i 's,^#!%{_bindir}/env bash,#!%{_bindir}/sh,g' {} \;
+find . -iname "*.sh" -exec sed -i 's,^#!%{_bindir}/env bash,#!%{_bindir}/bash,g' {} \;
 # Same for those
-find . -iname "*.sh" -exec sed -i 's,^#!%{_bindir}/env sh,#!%{_bindir}/sh,g' {} \;
+find . -iname "*.sh" -exec sed -i 's,^#!%{_bindir}/env sh,#!%{_bindir}/bash,g' {} \;
 # and last
-sed -i 's,^#!%{_bindir}/env sh,#!%{_bindir}/sh,g' rpmrebuild
+sed -i 's,^#!%{_bindir}/env bash,#!%{_bindir}/bash,g' rpmrebuild
+sed -i 's,^#!%{_bindir}/env sh,#!%{_bindir}/bash,g' rpmrebuild
 
 %install
 %make_install
