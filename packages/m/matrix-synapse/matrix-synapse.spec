@@ -24,15 +24,14 @@
 %global Jinja2_version                3.1.5
 %global Pillow_version                11.2.1
 %global PyYAML_version                6.0.3
-%global attrs_version                 23.2.0
+%global attrs_version                 25.4.0
 # TODO: 5.0.0
 %global bcrypt_version                4.3.0
 %global bleach_version                6.1.0
 %global canonicaljson_version         2.0.0
 %global cryptography_version          43.0.3
 %global immutabledict_version         4.2.1
-# TODO: 3.11
-%global idna_version                  3.10
+%global idna_version                  3.11
 %global ijson_version                 3.4.0.post0
 %global jsonschema_version            4.25.1
 %global matrix_common_version         1.3.0
@@ -43,7 +42,7 @@
 # TODO: 0.23.1
 %global prometheus_client_version     0.21.0
 %global psutil_version                2.0.0
-%global pyOpenSSL_version             25.0.0
+%global pyOpenSSL_version             25.3.0
 %global pyasn1_version                0.6.0
 %global pyasn1_modules_version        0.3.0
 %global pymacaroons_version           0.13.0
@@ -61,7 +60,8 @@
 %global pysaml2_version               7.5.0
 %global Authlib_version               1.6.5
 %global lxml_version                  6.0.2
-%global sentry_sdk_version            2.34.1
+# TODO: 2.46.0
+%global sentry_sdk_version            2.39.0
 %global PyJWT_version                 2.6.0
 %global jaeger_client_version         4.8.0
 %global opentracing_version           2.4.0
@@ -71,7 +71,7 @@
 %global Pympler_version               1.0.1
 %global pydantic_version              2.7.1
 %global python_multipart_version      0.0.9
-# TODO: 0.28.0
+# TODO: 0.30.0
 %global rpds_py_verison               0.27.0
 %else
 # some version locks based on poetry.lock
@@ -159,7 +159,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.142.1
+Version:        1.144.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        AGPL-3.0-or-later

@@ -1545,4 +1545,14 @@ mostly-working synapse than nothing at all) and the package has been update to
 - Update to 1.142.1</comment>
     <requestid>1318530</requestid>
   </revision>
+  <revision rev="147" vrev="1">
+    <srcmd5>5310cd9ac1980b6410a88e4f9b7eb882</srcmd5>
+    <version>1.144.0</version>
+    <time>1765796367</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1321841 from darix
+
+- Update to 1.144.0</comment>
+    <requestid>1322793</requestid>
+  </revision>
 </revisionlist>
