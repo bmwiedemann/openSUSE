@@ -16,6 +16,9 @@
 #
 
 
+%global default_features system-libs,metrics,lmdb,sqlite,k2v
+%global additional_features ,consul-discovery,kubernetes-discovery,telemetry-otlp
+
 Name:           garage
 Version:        2.1.0
 Release:        0
@@ -26,11 +29,16 @@ Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 Source2:        %{name}.service
 Source21:       system-user-%{name}.conf
+Patch0:         make-the-default-path-match-our-package.patch
 BuildRequires:  cargo >= 1.77
 BuildRequires:  cargo-packaging
-BuildRequires:  libseccomp-devel
 BuildRequires:  sysuser-tools
 BuildRequires:  zstd
+BuildRequires:  pkgconfig(libseccomp)
+BuildRequires:  pkgconfig(libsodium)
+BuildRequires:  pkgconfig(libzstd)
+BuildRequires:  pkgconfig(lmdb)
+BuildRequires:  pkgconfig(sqlite3)
 
 ExcludeArch:    %{ix86} %{arm}
 
@@ -48,7 +56,7 @@ operate, and highly resilient to machine failures.
 %autosetup -p 1 -a 1
 
 %build
-%{cargo_build}
+%{cargo_build} --no-default-features --features=%{default_features}%{additional_features}
 
 # system-user
 %sysusers_generate_pre %{SOURCE21} user

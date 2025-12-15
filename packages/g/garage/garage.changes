@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Dec  5 00:04:30 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Switch to use system libraries and add the required buildrequires
+- Enable additional features:
+  consul-discovery,kubernetes-discovery,telemetry-otlp
+
+-------------------------------------------------------------------
+Thu Dec  4 23:33:36 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add make-the-default-path-match-our-package.patch
+  now the default config for binary is /etc/garage/garage.toml
+
+-------------------------------------------------------------------
 Thu Sep 18 23:43:00 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 2.1.0:
