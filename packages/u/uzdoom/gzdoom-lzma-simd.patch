@@ -1,0 +1,27 @@
+From: Jan Engelhardt <ej@inai.de>
+Date: 2024-05-01 00:14:04.625759204 +0200
+Subject: Fix build failures involving SIMD code
+
+When using the bundled copy of lzma-sdk, there is a build failure
+on Leap 15.6/gcc-7 amd64:
+
+[   31s] C/SwapBytes.c:312:7: error: incompatible types when initializing type
+'__m256i {aka const __vector(4) long long int}' using type 'int'
+
+---
+ libraries/lzma/C/SwapBytes.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: gzdoom-g4.12.2/libraries/lzma/C/SwapBytes.c
+===================================================================
+--- gzdoom-g4.12.2.orig/libraries/lzma/C/SwapBytes.c
++++ gzdoom-g4.12.2/libraries/lzma/C/SwapBytes.c
+@@ -22,7 +22,7 @@ typedef UInt32 CSwapUInt32;
+   // #if defined(__INTEL_COMPILER) && (__INTEL_COMPILER >= 1900)
+   #if defined(__clang__) && (__clang_major__ >= 4) \
+       || defined(Z7_GCC_VERSION) && (Z7_GCC_VERSION >= 40701)
+-      #define k_SwapBytes_Mode_MAX  k_SwapBytes_Mode_AVX2
++      #define k_SwapBytes_Mode_MAX  k_SwapBytes_Mode_SSE2
+       #define SWAP_ATTRIB_SSE2  __attribute__((__target__("sse2")))
+       #define SWAP_ATTRIB_SSSE3 __attribute__((__target__("ssse3")))
+       #define SWAP_ATTRIB_AVX2  __attribute__((__target__("avx2")))

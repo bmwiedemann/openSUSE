@@ -1,0 +1,112 @@
+From: Jan Engelhardt <ej@inai.de>
+Date: Wed, 8 May 2024 13:33:41 +0200
+Subject: [PATCH] build: portability fixes
+References: https://github.com/ZDoom/gzdoom/pull/2562
+
+Different architectures have different type sizes and alignments. Don't test
+void* for a hardcoded size if there is not an inherent dependency on the size.
+With this change, gzdoom compiles and Doom2 MAP01 runs fine on
+i586-in-a-x64-chroot. This is not to say everything is known to be fine, but,
+those who are running a non-x64 openSUSE system in the first place are savvy
+enough to know that (a) software is never finished, (b) especially so on
+second/third-tier targets.
+
+VkSurfaceKHR is not a pointer on some platforms but an integral type.
+Using {} will clear it without running into a type error:
+
+	sdlglvideo.cpp:294:54: error: cannot convert 'std::nullptr_t' to
+	'VkSurfaceKHR' {aka 'long long unsigned int'} in initialization
+		VkSurfaceKHR surfacehandle = nullptr;
+---
+ src/CMakeLists.txt                           |    5 +++++
+ src/common/engine/i_interface.cpp            |    8 --------
+ src/common/models/bonecomponents.h           |    1 +
+ src/common/platform/posix/sdl/sdlglvideo.cpp |    2 +-
+ src/playsim/p_effect.h                       |    7 +++++--
+ 5 files changed, 12 insertions(+), 11 deletions(-)
+
+Index: gzdoom-g4.13.2/src/CMakeLists.txt
+===================================================================
+--- gzdoom-g4.13.2.orig/src/CMakeLists.txt
++++ gzdoom-g4.13.2/src/CMakeLists.txt
+@@ -44,6 +44,11 @@ if( ${TARGET_ARCHITECTURE} MATCHES "x86_
+ 	set( X64 64 )
+ 	add_definitions( -DARCH_IA32 )
+ endif()
++if( ${TARGET_ARCHITECTURE} MATCHES "i386" )
++	# The production of _mm_load_si128 instructions requires flags.
++	# (This is independent of whether or not they are executed later.)
++	add_definitions( -mmmx -msse -msse2 -mfpmath=sse -DARCH_IA32 )
++endif()
+ 
+ if( NOT PROJECT_LIBRARIES )
+ 	set( PROJECT_LIBRARIES "" )
+Index: gzdoom-g4.13.2/src/common/engine/i_interface.cpp
+===================================================================
+--- gzdoom-g4.13.2.orig/src/common/engine/i_interface.cpp
++++ gzdoom-g4.13.2/src/common/engine/i_interface.cpp
+@@ -6,14 +6,6 @@
+ #include "gstrings.h"
+ #include "version.h"
+ 
+-static_assert(sizeof(void*) == 8,
+-	"Only LP64/LLP64 builds are officially supported. "
+-	"Please do not attempt to build for other platforms; "
+-	"even if the program succeeds in a MAP01 smoke test, "
+-	"there are e.g. known visual artifacts "
+-	"<https://forum.zdoom.org/viewtopic.php?f=7&t=75673> "
+-	"that lead to a bad user experience.");
+-
+ // Some global engine variables taken out of the backend code.
+ FStartupScreen* StartWindow;
+ SystemCallbacks sysCallbacks;
+Index: gzdoom-g4.13.2/src/common/models/bonecomponents.h
+===================================================================
+--- gzdoom-g4.13.2.orig/src/common/models/bonecomponents.h
++++ gzdoom-g4.13.2/src/common/models/bonecomponents.h
+@@ -43,6 +43,7 @@ struct ModelAnim
+ 	float framerate = 0;
+ 	double startFrame = 0;
+ 	int flags = MODELANIM_NONE;
++	int __padding = 0;
+ 	double startTic = 0; // when the current animation started (changing framerates counts as restarting) (or when animation starts if interpolating from previous animation)
+ 	double switchOffset = 0; // when the animation was changed -- where to interpolate the switch from
+ };
+Index: gzdoom-g4.13.2/src/common/platform/posix/sdl/sdlglvideo.cpp
+===================================================================
+--- gzdoom-g4.13.2.orig/src/common/platform/posix/sdl/sdlglvideo.cpp
++++ gzdoom-g4.13.2/src/common/platform/posix/sdl/sdlglvideo.cpp
+@@ -400,7 +400,7 @@ DFrameBuffer *SDLVideo::CreateFrameBuffe
+ 				builder.RequireExtension(names[i]);
+ 			auto instance = builder.Create();
+ 
+-			VkSurfaceKHR surfacehandle = nullptr;
++			VkSurfaceKHR surfacehandle = {};
+ 			if (!I_CreateVulkanSurface(instance->Instance, &surfacehandle))
+ 				VulkanError("I_CreateVulkanSurface failed");
+ 
+Index: gzdoom-g4.13.2/src/playsim/p_effect.h
+===================================================================
+--- gzdoom-g4.13.2.orig/src/playsim/p_effect.h
++++ gzdoom-g4.13.2/src/playsim/p_effect.h
+@@ -75,7 +75,10 @@ enum EParticleFlags
+ class DVisualThinker;
+ struct particle_t
+ {
+-	subsector_t* subsector; //+8 = 8
++	union {
++		subsector_t* subsector;
++		uint64_t _pad0; //+8 = 8
++	};
+     DVector3 Pos; //+24 = 32
+     FVector3 Vel; //+12 = 44
+     FVector3 Acc; //+12 = 56
+@@ -88,7 +91,7 @@ struct particle_t
+     float Roll, RollVel, RollAcc; //+12 = 100
+     uint16_t    tnext, snext, tprev; //+6 = 106
+ 	uint16_t flags; //+2 = 108
+-	// uint32_t padding; //+4 = 112
++	uint32_t padding; //+4 = 112
+ 	FStandaloneAnimation animData; //+16 = 128
+ };
+ 

@@ -1,0 +1,43 @@
+From: Jan Engelhardt <ej@inai.de>
+Date: 2022-06-12 10:37:00.984596068 +0200
+
+Use system-provided discord-rpc library. Heed
+
+* https://docs.fedoraproject.org/en-US/fesco/Bundled_Software_policy/
+* https://en.opensuse.org/openSUSE:Bundled_software_policy
+
+---
+ CMakeLists.txt                          |    6 +++---
+ libraries/discordrpc/src/CMakeLists.txt |    2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+Index: gzdoom-g4.12.2/CMakeLists.txt
+===================================================================
+--- gzdoom-g4.12.2.orig/CMakeLists.txt
++++ gzdoom-g4.12.2/CMakeLists.txt
+@@ -345,9 +345,9 @@ add_subdirectory( libraries/ZWidget )
+ add_subdirectory( libraries/webp )
+ 
+ add_subdirectory( libraries/discordrpc EXCLUDE_FROM_ALL )
+-set( DRPC_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/libraries/discordrpc/include" )
+-set( DRPC_LIBRARIES discord-rpc )
+-set( DRPC_LIBRARY discord-rpc )
++set( DRPC_INCLUDE_DIR "/ignore" )
++set( DRPC_LIBRARIES -ldiscord-rpc )
++set( DRPC_LIBRARY -ldiscord-rpc )
+ 
+ if( HAVE_VM_JIT AND UNIX )
+ 	check_symbol_exists( "backtrace" "execinfo.h" HAVE_BACKTRACE )
+Index: gzdoom-g4.12.2/libraries/discordrpc/src/CMakeLists.txt
+===================================================================
+--- gzdoom-g4.12.2.orig/libraries/discordrpc/src/CMakeLists.txt
++++ gzdoom-g4.12.2/libraries/discordrpc/src/CMakeLists.txt
+@@ -28,7 +28,7 @@ endif(${BUILD_SHARED_LIBS})
+ if(WIN32)
+     add_definitions(-DDISCORD_WINDOWS)
+     set(BASE_RPC_SRC ${BASE_RPC_SRC} connection_win.cpp discord_register_win.cpp)
+-    add_library(discord-rpc ${BASE_RPC_SRC})
++    add_library(discord-rpc STATIC ${BASE_RPC_SRC})
+     if (MSVC)
+         if(USE_STATIC_CRT)
+             foreach(CompilerFlag
