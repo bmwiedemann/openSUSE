@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Dec 13 20:53:45 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 0.3.26
+  * Add --workspaces parameter for hypr #87
+  * Ensure monitors.conf is writable  #97
+  * feat(i18n): add Turkish language support #95
+- Update from 0.3.25
+  * Added Czech lang file; #85
+
+-------------------------------------------------------------------
 Fri Mar 21 00:55:33 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to version 0.3.24

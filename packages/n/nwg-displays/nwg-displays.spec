@@ -1,7 +1,7 @@
 #
 # spec file for package nwg-displays
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           nwg-displays
-Version:        0.3.24
+Version:        0.3.26
 Release:        0
 Summary:        A GTK3 wrapper to display text on the desktop for wlroots
 License:        MIT

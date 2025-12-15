@@ -95,4 +95,18 @@
 </comment>
     <requestid>1254884</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>087ac926ccb1c51e23867288f11b9054</srcmd5>
+    <version>0.3.26</version>
+    <time>1765796396</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.3.26
+  * Add --workspaces parameter for hypr #87
+  * Ensure monitors.conf is writable  #97
+  * feat(i18n): add Turkish language support #95
+- Update from 0.3.25
+  * Added Czech lang file; #85
+</comment>
+    <requestid>1322807</requestid>
+  </revision>
 </revisionlist>
