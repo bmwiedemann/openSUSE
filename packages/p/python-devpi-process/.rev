@@ -26,4 +26,13 @@
   * Declare 3.13 support</comment>
     <requestid>1206744</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d28658d89850a37d7fb0d20025156c68</srcmd5>
+    <version>1.1.0</version>
+    <time>1765796277</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.1.0:
+  * Add support for 3.14 and drop 3.9|3.8</comment>
+    <requestid>1322771</requestid>
+  </revision>
 </revisionlist>
