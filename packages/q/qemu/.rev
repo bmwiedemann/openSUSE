@@ -4691,4 +4691,55 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 </comment>
     <requestid>1316072</requestid>
   </revision>
+  <revision rev="302" vrev="1">
+    <srcmd5>e142814a9dd5a30d452c49e9087247f0</srcmd5>
+    <version>10.1.3</version>
+    <time>1765794944</time>
+    <user>anag_factory</user>
+    <comment>- Update to stable release 10.1.3:
+  Full backport list here:
+   https://lore.kernel.org/qemu-devel/1765091757.917767.2720030.nullmailer@tls.msk.ru/
+  This release includes the fixes for (among others):
+   bsc#1253002 (CVE-2025-12464)
+   bsc#1250984 (CVE-2025-11234)
+  A selection of them is reported here below:
+   kvm: Fix kvm_vm_ioctl() and kvm_device_ioctl() return value
+   docs/devel: Update URL for make-pullreq script
+   target/arm: Fix assert on BRA.
+   hw/aspeed/{xdma, rtc, sdhci}: Fix endianness to DEVICE_LITTLE_ENDIAN
+   hw/core/machine: Provide a description for aux-ram-share property
+   hw/pci: Make msix_init take a uint32_t for nentries
+   block/io_uring: avoid potentially getting stuck after resubmit at the end of ioq_submit()
+   iotests: add Linux loop device image creation test
+   block: use pwrite_zeroes_alignment when writing first sector
+   file-posix: populate pwrite_zeroes_alignment
+   block-backend: Fix race when resuming queued requests
+   ui/vnc: Fix qemu abort when query vnc info
+   chardev/char-pty: Do not ignore chr_write() failures
+   ui/vdagent: fix windows agent regression
+   hw/display/exynos4210_fimd: Account for zero length in fimd_update_memory_section()
+   hw/arm/armv7m: Disable reentrancy guard for v7m_sysreg_ns_ops MRs
+   hw/arm/aspeed: Fix missing SPI IRQ connection causing DMA interrupt failure
+   hw/arm/ast27x0: Fix typo in LTPI address
+   migration: Fix transition to COLO state from precopy
+   qmp: Fix a typo for a USO feature
+   target/i386: fix stack size when delivering real mode interrupts
+   target/i386: svm: fix sign extension of exit code
+   target/i386/tcg: validate segment registers
+   target/i386: Mark VPERMILPS as not valid with prefix 0
+   hw/southbridge/lasi: Correct LasiState parent
+   hw/dma/zynq-devcfg: Fix register memory
+   tests/functional: handle URLError when fetching assets
+   tests/functional: fix formatting of exception args
+   block/io: Take reqs_lock for tracked_requests
+   nvme: Fix coroutine waking
+   ...
+- Fixes:
+  * [openSUSE][RPM]: really fix *-virtio-gpu-pci dependency on ARM (bsc#1254494)
+  * io: fix use after free in websocket handshake code (bsc#1250984)
+  * io: move websock resource release to close method (bsc#1250984)
+  * io: release active GSource in TLS channel finalizer (bsc#1250984)
+</comment>
+    <requestid>1322679</requestid>
+  </revision>
 </revisionlist>
