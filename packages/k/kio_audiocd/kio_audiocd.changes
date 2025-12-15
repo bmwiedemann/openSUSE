@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:13 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- No code change since 25.11.80
+
+-------------------------------------------------------------------
+Sat Nov 15 19:56:15 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * Suffix the version with the Gear version automation
+  * Drop unused include
+  * Don't use tile location template if it's empty
+  * Enable file location config on kcm load
+  * chop trailing slashes from location macro
+  * Wrong checkbox queried for using location
+  * Fixed building when DocTools is disabled.
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:11 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
