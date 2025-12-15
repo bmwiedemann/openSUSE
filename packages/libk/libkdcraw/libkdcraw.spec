@@ -21,8 +21,8 @@
 %if "%{flavor}" == "qt6"
 %define qt6 1
 %define pkg_suffix -qt6
-%define kf6_version 6.14.0
-%define qt6_version 6.8.0
+%define kf6_version 6.19.0
+%define qt6_version 6.9.0
 %define library_name libKDcrawQt6
 %define so_suffix -5
 %else
@@ -34,7 +34,7 @@
 %endif
 %bcond_without released
 Name:           libkdcraw%{?pkg_suffix}
-Version:        25.08.3
+Version:        25.12.0
 Release:        0
 Summary:        Shared library interface around dcraw
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later AND GPL-3.0-or-later
