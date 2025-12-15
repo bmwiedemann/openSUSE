@@ -1,0 +1,50 @@
+Index: src/gengine/ScriptState.cpp
+===================================================================
+RCS file: /cvsroot/fillets/fillets-ng/src/gengine/ScriptState.cpp,v
+retrieving revision 1.13
+diff -u -r1.13 ScriptState.cpp
+--- a/src/gengine/ScriptState.cpp	6 Jul 2005 18:50:18 -0000	1.13
++++ b/src/gengine/ScriptState.cpp	6 Apr 2014 22:11:01 -0000
+@@ -22,11 +22,11 @@
+ //-----------------------------------------------------------------
+ ScriptState::ScriptState()
+ {
+-    m_state = lua_open();
+-    luaopen_base(m_state);
+-    luaopen_string(m_state);
+-    luaopen_math(m_state);
+-    luaopen_table(m_state);
++    m_state = luaL_newstate();
++    luaL_requiref(m_state, "_G", luaopen_base, true);
++    luaL_requiref(m_state, LUA_STRLIBNAME, luaopen_string, true);
++    luaL_requiref(m_state, LUA_MATHLIBNAME, luaopen_math, true);
++    luaL_requiref(m_state, LUA_TABLIBNAME, luaopen_table, true);
+ 
+     prepareErrorHandler();
+ }
+@@ -42,9 +42,11 @@
+ void
+ ScriptState::prepareErrorHandler()
+ {
++    lua_pushglobaltable(m_state);
+     lua_pushliteral(m_state, "_TRACEBACK");
+     lua_pushcfunction(m_state, script_debugStack);
+-    lua_settable(m_state, LUA_GLOBALSINDEX);
++    lua_settable(m_state, -3);
++    lua_pop(m_state, 1);
+ }
+ //-----------------------------------------------------------------
+ /**
+@@ -53,9 +55,11 @@
+ void
+ ScriptState::insertErrorHandler(int index)
+ {
++    lua_pushglobaltable(m_state);
+     lua_pushliteral(m_state, "_TRACEBACK");
+-    lua_rawget(m_state, LUA_GLOBALSINDEX);
++    lua_rawget(m_state, -2);
+     lua_insert(m_state, index);
++    lua_pop(m_state, 1);
+ }
+ //-----------------------------------------------------------------
+ /**

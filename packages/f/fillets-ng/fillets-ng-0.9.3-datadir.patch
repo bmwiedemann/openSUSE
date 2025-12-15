@@ -1,7 +1,7 @@
 Index: src/gengine/Makefile.in
 ===================================================================
---- src/gengine/Makefile.in.orig
-+++ src/gengine/Makefile.in
+--- a/src/gengine/Makefile.in.orig
++++ b/src/gengine/Makefile.in
 @@ -226,7 +226,7 @@ target_cpu = @target_cpu@
  target_os = @target_os@
  target_vendor = @target_vendor@

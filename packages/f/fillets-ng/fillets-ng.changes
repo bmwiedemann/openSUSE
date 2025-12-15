@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec 11 13:54:06 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Build using system default lua version:
+  + Replacelua51-devel BuildRequires with lua-devel
+  + Import patches from Fedora to fix build:
+    - fillets-ng-1.0.1-lua-5.2.patch
+    - fillets-ng-1.0.1-lua-5.4.patch
+- Rebase fillets-ng-0.9.3-datadir.patch to apply as -p1
+
+-------------------------------------------------------------------
 Mon Feb 26 08:36:59 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
@@ -7,7 +17,7 @@ Mon Feb 26 08:36:59 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 -------------------------------------------------------------------
 Wed Dec 19 12:53:08 UTC 2018 - anicka@suse.com
 
-- Remove fillets-use-lua-5.1.pc.patch, as package builds and runs 
+- Remove fillets-use-lua-5.1.pc.patch, as package builds and runs
   without it and forced autoreconf breaks correct setting of datadir
   Fix for boo#1114591.
 

@@ -1,7 +1,7 @@
 #
 # spec file for package fillets-ng
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,18 +22,20 @@ Release:        0
 Summary:        Fish Fillets - Next Generation
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Action/Arcade
-Url:            http://fillets.sourceforge.net/
+URL:            http://fillets.sourceforge.net/
 Source0:        http://prdownloads.sourceforge.net/fillets/%{name}-%{version}.tar.gz
 Source1:        %{name}.desktop
 Source2:        %{name}.png
 Patch0:         %{name}-0.9.3-datadir.patch
+Patch1:         fillets-ng-1.0.1-lua-5.2.patch
+Patch2:         fillets-ng-1.0.1-lua-5.4.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  SDL_image-devel
 BuildRequires:  SDL_mixer-devel
 BuildRequires:  SDL_ttf-devel
 BuildRequires:  fribidi-devel
 BuildRequires:  gcc-c++
-BuildRequires:  lua51-devel
+BuildRequires:  lua-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 Requires:       %{name}-data = %{version}
@@ -46,7 +48,7 @@ underwater realm quarrel among themselves or comment on the efforts of
 your fish. The whole game is accompanied by quiet, comforting music.
 
 %prep
-%autosetup -p0
+%autosetup -p1
 
 %build
 %configure
