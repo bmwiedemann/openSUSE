@@ -19,12 +19,12 @@
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 
-%define kf6_version 6.14.0
-%define qt6_version 6.8.0
+%define kf6_version 6.19.0
+%define qt6_version 6.9.0
 
 %bcond_without released
 Name:           artikulate
-Version:        25.08.3
+Version:        25.12.0
 Release:        0
 Summary:        Pronunciation Self-Teaching
 License:        LGPL-3.0-or-later AND GPL-2.0-only AND BSD-3-Clause
