@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:16 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- Changes since 25.11.80:
+  * DolphinView: when creating a dir hierarchy only select dir in current path
+  * main: set active view in split mode when not restoring session (kde#503576)
+  * kstandarditemlistwidget: Fix vertical misalignment for file names containing certain glyphs (kde#512152)
+  * context menu: use selected item as containing folder for New file menu (kde#508196)
+  * DolphinView: open the property dialog on Alt+activated
+  * informationpanel: prevent a crash when creating video preview panel and a media file is selected
+
+-------------------------------------------------------------------
+Sat Nov 15 19:56:18 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:14 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3

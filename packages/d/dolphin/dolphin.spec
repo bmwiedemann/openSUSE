@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.14.0
+%define kf6_version 6.19.0
 %define plasma6_version 5.27.80
-%define qt6_version 6.8.0
+%define qt6_version 6.9.0
 
 %bcond_without released
 Name:           dolphin
-Version:        25.08.3
+Version:        25.12.0
 Release:        0
 Summary:        KDE File Manager
 License:        GPL-2.0-or-later
@@ -173,6 +173,7 @@ rm %{buildroot}%{_datadir}/zsh/site-functions/_dolphin
 %dir %{_kf6_plugindir}/dolphin/kcms
 %{_kf6_plugindir}/dolphin/kcms/kcm_dolphin*.so
 %dir %{_kf6_plugindir}/kf6/kfileitemaction/
+%{_kf6_plugindir}/kf6/kfileitemaction/hidefileitemaction.so
 %{_kf6_plugindir}/kf6/kfileitemaction/movetonewfolderitemaction.so
 %{_kf6_plugindir}/kf6/kfileitemaction/setfoldericonitemaction.so
 %{_kf6_plugindir}/kf6/parts/dolphinpart.so
