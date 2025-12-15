@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:41:10 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- Changes since 25.11.80:
+  * Revert "Add KDDockWidgets as new dependency"
+
+-------------------------------------------------------------------
+Sat Nov 15 19:57:14 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * formatting: format with vscode-json-languageservice
+  * Add KDDockWidgets as new dependency
+  * Add plural rule for kabyle (kde#509627)
+  * Fix changing catalog filter/sort leaving some navigation actions disabled (kde#508431)
+  * Allow sorting by unit modified status in catalog
+  * doc: mention that Esc in catalog filter brings user back to TT field
+  * Reduce header file includes
+  * Tidy headers
+  * Open editor tab in background when Control key pressed (kde#504957)
+  * Improve HTML tag matching to reduce the false-positive colouring (kde#504749)
+  * Fix crash when doing "Find next in files" with no current selected (kde#502342)
+  * fix ar plural form
+
+-------------------------------------------------------------------
 Thu Nov  6 18:38:11 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
