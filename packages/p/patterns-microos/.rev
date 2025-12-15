@@ -970,4 +970,12 @@ Tue Jan  20 02:29:11 UTC 2021 - Syds Bearda &lt;sydsb@opensuse.org&gt;
     <comment>- Spelling correction</comment>
     <requestid>1309846</requestid>
   </revision>
+  <revision rev="104" vrev="104">
+    <srcmd5>c626b689723060f939a862a1304773cf</srcmd5>
+    <version>5.0</version>
+    <time>1765795818</time>
+    <user>anag_factory</user>
+    <comment>- Drop purpose from desktop-kde pattern.</comment>
+    <requestid>1322581</requestid>
+  </revision>
 </revisionlist>

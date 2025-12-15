@@ -518,7 +518,6 @@ Requires:       kde-gtk-config6-gtk3
 Requires:       kf6-qqc2-desktop-style
 Requires:       plasma6-browser-integration
 Requires:       plasma6-sddm-theme-openSUSE
-Requires:       purpose
 Requires:       xdg-desktop-portal-kde
 
 # Recommended by powerdevil5, but allow tlp as alternative
