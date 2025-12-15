@@ -1,7 +1,7 @@
 #
 # spec file for package xjadeo
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2015 Packman Team <packman@links2linux.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           xjadeo
-Version:        0.8.14
+Version:        0.8.15
 Release:        0
 Summary:        Video player that gets sync from Jack
 License:        GPL-2.0-or-later
