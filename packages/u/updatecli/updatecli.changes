@@ -1,4 +1,115 @@
 -------------------------------------------------------------------
+Sun Dec 14 09:05:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.112.0:
+  * Features
+    - refactor: gitlab client-go migration @chrxmvtik (#7157)
+    - feat: add --pipeline-ids param @olblak (#7121)
+    - feat: add pnpm npm autodiscovery @loispostula (#7035)
+  * Bug Fixes
+    - fix(autodiscovery/dockerfile): add regex field support for
+      versionfilter @loispostula (#7140)
+    - feat: add option to disable automerge in Gitlab @d0mitoridesu
+      (#7036)
+  * Maintenance
+    - deps(go): bump module gitlab.com/gitlab-org/api/client-go to
+      v1.8.1 @updateclibot[bot] (#7176)
+    - deps(go): bump module golang.org/x/oauth2 to v0.34.0
+      @updateclibot[bot] (#7175)
+    - deps(go): bump module github.com/spf13/cobra to v1.10.2
+      @updateclibot[bot] (#7186)
+    - deps(go): bump module golang.org/x/mod to v0.31.0
+      @updateclibot[bot] (#7177)
+    - deps(go): bump module github.com/fluxcd/helm-controller/api
+      to v1.4.5 @updateclibot[bot] (#7187)
+    - deps: bump golangci-lint to v2.7.2 @updateclibot[bot] (#7174)
+    - chore(dockerfile): upgrade node version @updateclibot[bot]
+      (#7122)
+    - deps: Bump Golang version to 1.25.5 @updateclibot[bot]
+      (#7158)
+    - deps(go): bump module github.com/aws/aws-sdk-go-v2/config to
+      v1.32.4 @updateclibot[bot] (#7111)
+    - deps(go): bump module github.com/aws/aws-sdk-go-v2 to v1.40.1
+      @updateclibot[bot] (#7079)
+    - deps(updatecli/policies): bump all policies
+      @updateclibot[bot] (#7066)
+    - deps(go): bump module github.com/drone/go-scm to v1.41.0
+      @updateclibot[bot] (#7054)
+    - fix: redact version v0.999.0 @olblak (#7019)
+  * Documentation
+    - docs: fix how to verify release assets @suzuki-shunsuke
+      (#7033)
+
+-------------------------------------------------------------------
+Sun Dec 14 08:49:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.111.0:
+  * Features
+    - feat: Add GitLab auto merge support @olblak (#6865)
+    - feat(transformers): JsonMatch in Transformers @jklap (#6863)
+    - feat: add body support to HTTP source @jklap (#6785)
+    - Support capture groups in FindSubMatch @jklap (#6788)
+    - feat: set default scm user and email address @olblak (#6754)
+  * Bug Fixes
+    - fix: udash publish settings @olblak (#7004)
+    - fix: update goreleaser config @olblak (#6993)
+    - fix: accept port in oci reference name @olblak (#6864)
+    - Fix output for absolute paths in Dockerfile source @jklap
+      (#6787)
+  * Maintenance
+    - deps(go): bump module github.com/goccy/go-yaml to v1.19.0
+      @updateclibot[bot] (#7009)
+    - deps(go): bump module github.com/moby/buildkit to v0.26.2
+      @updateclibot[bot] (#6989)
+    - deps(go): bump module gitlab.com/gitlab-org/api/client-go to
+      v1.0.1 @updateclibot[bot] (#6985)
+    - chore(deps): bump golang.org/x/crypto from 0.44.0 to 0.45.0
+      in the go_modules group across 1 directory @dependabot[bot]
+      (#6977)
+    - chore: update gitlab.com/gitlab-org/api/client-go to v1.0.0
+      @olblak (#6961)
+    - deps(go): bump module github.com/go-git/go-git/v5 to v5.16.4
+      @updateclibot[bot] (#6953)
+    - deps(go): bump module github.com/aws/aws-sdk-go-v2/config to
+      v1.32.1 @updateclibot[bot] (#6946)
+    - deps(go): bump module
+      github.com/aws/aws-sdk-go-v2/credentials to v1.18.25
+      @updateclibot[bot] (#6931)
+    - deps(go): bump module cuelang.org/go to v0.15.1
+      @updateclibot[bot] (#6927)
+    - deps(go): bump module github.com/moby/buildkit to v0.25.2
+      @updateclibot[bot] (#6929)
+    - chore(deps): bump golang.org/x/crypto from 0.44.0 to 0.45.0
+      in the go_modules group across 1 directory @dependabot[bot]
+      (#6867)
+    - deps(go): bump module
+      github.com/testcontainers/testcontainers-go to v0.40.0
+      @updateclibot[bot] (#6910)
+    - deps(go): bump module golang.org/x/oauth2 to v0.33.0
+      @updateclibot[bot] (#6907)
+    - deps(go): bump module
+      github.com/aws/aws-sdk-go-v2/service/ec2 to v1.274.0
+      @updateclibot[bot] (#6909)
+    - deps(go): bump module github.com/fluxcd/helm-controller/api
+      to v1.4.4 @updateclibot[bot] (#6911)
+    - deps: bump golangci-lint to v2.6.2 @updateclibot[bot] (#6900)
+    - deps(go): bump module github.com/fluxcd/source-controller/api
+      to v1.7.4 @updateclibot[bot] (#6894)
+    - deps(github/action): bump all dependencies @updateclibot[bot]
+      (#6882)
+    - Update updatecli action to version 2.96.0 @olblak (#6866)
+    - deps(go): bump module golang.org/x/net to v0.47.0
+      @updateclibot[bot] (#6800)
+    - deps(go): bump module golang.org/x/mod to v0.30.0
+      @updateclibot[bot] (#6794)
+    - chore Change cron schedule to run weekly on Saturdays @olblak
+      (#6770)
+    - deps(go): bump module github.com/drone/go-scm to v1.40.7
+      @updateclibot[bot] (#6737)
+  * Documentation
+    - Fix comments on default value @jklap (#6786)
+
+-------------------------------------------------------------------
 Thu Nov 13 11:12:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.110.3:
