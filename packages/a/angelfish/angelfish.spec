@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.14.0
-%define qt6_version 6.8.0
+%define kf6_version 6.19.0
+%define qt6_version 6.9.0
 
 %bcond_without released
 Name:           angelfish
-Version:        25.08.3
+Version:        25.12.0
 Release:        0
 Summary:        Mobile web browser
 License:        GPL-2.0-or-later
@@ -34,7 +34,6 @@ Source2:        applications.keyring
 Source3:        vendor.tar.zst
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  qt6-core-private-devel >= %{qt6_version}
-BuildRequires:  qt6-webenginequick-private-devel >= %{qt6_version}
 BuildRequires:  zstd
 BuildRequires:  cmake(Corrosion)
 BuildRequires:  cmake(FutureSQL6)
