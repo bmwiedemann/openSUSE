@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:22 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- No code change since 25.11.80
+
+-------------------------------------------------------------------
+Sat Nov 22 21:19:41 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove unused BuildRequires: update-desktop-files.
+
+-------------------------------------------------------------------
+Sat Nov 15 19:56:24 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * Fix Feature request: Add "contacts" to Keywords[en_US] in .desktop file (kde#509044)
+  * Adapt to new api
+  * Don't try to show empty icon
+  * Add support for resourceLabel (kf 6.20)
+  * Fix No URL / "Web" field in Kadressbook Contact View (kde#510833)
+  * Call slotInvalidateFilter here
+  * Port deprecated invalidateFilter method
+  * Adapt to new api
+  * Prepare to use new whatsnew api
+  * Don't show "what's new" in first step
+  * Fix some cppcheck warnings
+  * Disable CMAKE_CXX_SCAN_FOR_MODULES
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:21 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
