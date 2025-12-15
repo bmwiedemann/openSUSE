@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:41:16 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- Changes since 25.11.80:
+  * Use 1.8.0
+  * Add missing USE_UNITY_CMAKE_SUPPORT variable for building as unity from cmakepreset
+
+-------------------------------------------------------------------
+Sat Nov 15 19:57:20 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * Fix stable url
+  * Add check about Q_OS_HAIKU
+  * Fix build on windows
+  * Use #if
+  * Allow to use TextAddonsWidgets
+  * Prepare to support whatsnew/etc from ktextaddonswidget
+  * Only find Qt6GuiPrivate when building with KDSingleApplication
+  * pre-commit autoupdate
+  * Remove unused code
+  * Add new features info
+  * Clean includes
+  * Don't show "what's new" in first step
+  * Use QCOMPARE
+  * Use u'<foo>'
+  * Add contact/contribute url
+  * Use ktextaddons 1.7
+  * Fix icon on windows
+  * Disable CMAKE_CXX_SCAN_FOR_MODULES
+  * Fix icon on windows
+  * Prepare 6.6.0 whatsnew translation
+
+-------------------------------------------------------------------
 Thu Nov  6 18:38:17 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
