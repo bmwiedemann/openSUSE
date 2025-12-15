@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.14.0
-%define qt6_version 6.8.0
+%define kf6_version 6.19.0
+%define qt6_version 6.9.0
 
 %bcond_without released
 Name:           kpkpass
-Version:        25.08.3
+Version:        25.12.0
 Release:        0
 Summary:        Library to parse Passbook files
 License:        LGPL-2.1-or-later
@@ -36,12 +36,23 @@ BuildRequires:  kf6-extra-cmake-modules
 BuildRequires:  shared-mime-info
 BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 
 %description
 kpkpass is a library to read and parse Apple Passbook files, such as the ones
 commonly used for hotel and flight reservations.
+
+%package imports
+Summary:        QtQuick support for kpkpass
+Requires:       kpkpass >= %{version}
+Requires:       libKPim6PkPass6 = %{version}
+
+%description imports
+kpkpass is a library to read and parse Apple Passbook files, such as the ones
+commonly used for hotel and flight reservations. This package provides QtQuick
+bindings for kpkpass, to use kpkpass in other QtQuick based applications.
 
 %package -n libKPim6PkPass6
 Summary:        Library to parse Passbook files
@@ -78,7 +89,15 @@ to build programs that use the kpkpass library.
 %if %{pkg_vcmp shared-mime-info < 2.2}
 %{_datadir}/mime/packages/application-vnd-apple-pkpass.xml
 %endif
+%if %{pkg_vcmp shared-mime-info < 2.5}
+%{_datadir}/mime/packages/application-vnd-apple-pkpasses.xml
+%endif
 %{_kf6_debugdir}/org_kde_kpkpass.categories
+
+%files imports
+%dir %{_kf6_qmldir}/org
+%dir %{_kf6_qmldir}/org/kde
+%{_kf6_qmldir}/org/kde/pkpass/
 
 %files -n libKPim6PkPass6
 %license LICENSES/*

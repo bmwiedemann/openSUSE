@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:56 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- No code change since 25.11.80
+
+-------------------------------------------------------------------
+Sat Nov 15 19:56:59 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * include KDEInstallDirs before searching for Qt or KF
+  * Handle UTF-8 BOMs in message catalogs
+  * Disable CMAKE_CXX_SCAN_FOR_MODULES
+  * .pre-commit-config.yaml - restore gersemi (cmake formatting)
+  * Remove CMake linter that is apparently unable to handle our CMake code
+  * Backport shared-mime-info data for .pkpasses files
+  * Add basic support for .pkpasses pass bundle files
+  * Foreign QML type declarations don't need to be QObjects
+  * Also export the KPkPass::Barcode enums to QML
+  * Bump version
+  * Port to qml registration
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:56 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
