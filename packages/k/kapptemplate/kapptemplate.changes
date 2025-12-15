@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:26 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- Changes since 25.11.80:
+  * Only replace keywords in text files (kde#502500)
+  * Respect XDG_DATA_DIRS order when searching for templates
+
+-------------------------------------------------------------------
+Sat Nov 15 19:56:27 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * Make it possible to generate using the command line
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:24 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
