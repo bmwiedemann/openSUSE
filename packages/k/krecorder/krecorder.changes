@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:57 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- Changes since 25.11.80:
+  * Audio Input list - refreshAudioInputs: Clear before appending devices (kde#510435)
+
+-------------------------------------------------------------------
+Sat Nov 15 19:57:01 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * Add QML lint and fix single quote i18n usage
+  * Use correct file extension for audio-only files
+  * Reset audio recorder when back is requested
+  * Remove page animations
+  * Reset media path if no current recording (kde#505679)
+  * Switch to default page when recording is ended
+  * Fix removing discarded recording
+  * Fix saving and loading format settings (kde#489903)
+  * Set settings window as modal dialog
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:58 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
