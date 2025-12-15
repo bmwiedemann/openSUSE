@@ -21,20 +21,16 @@
 %if "%{flavor}" == "qt6"
 %define qt6 1
 %define pkg_suffix -qt6
-%define kf6_version 6.14.0
-%define qt6_version 6.8.0
+%define kf6_version 6.19.0
+%define qt6_version 6.9.0
 %define library_name libKExiv2Qt6
 %define so_suffix -0
 %else
-%define qt5 1
-%define kf5_version 5.91.0
-%define qt5_version 5.15.0
-%define library_name libKF5KExiv2
-%define so_suffix -15_0_0
+ExclusiveArch: do_not_build
 %endif
 %bcond_without released
 Name:           libkexiv2%{?pkg_suffix}
-Version:        25.08.3
+Version:        25.12.0
 Release:        0
 Summary:        Library to manipulate picture meta data
 License:        GPL-2.0-or-later
@@ -50,10 +46,6 @@ BuildRequires:  pkgconfig(exiv2) >= 0.25
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
-%else
-BuildRequires:  extra-cmake-modules >= %{kf5_version}
-BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
-BuildRequires:  cmake(Qt5Gui) >= %{qt5_version}
 %endif
 
 %description
@@ -71,10 +63,6 @@ metadata.
 %package devel
 Summary:        Build environment for libkexiv2
 Requires:       %{library_name}%{so_suffix} = %{version}
-%if 0%{?qt5}
-Provides:       libkexiv2-kf5-devel = %{version}
-Obsoletes:      libkexiv2-kf5-devel < %{version}
-%endif
 
 %description devel
 Libkexiv2 is a wrapper around Exiv2 library to manipulate pictures
@@ -87,16 +75,11 @@ metadata.
 %if 0%{?qt6}
 %cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
 %kf6_build
-%else
-%cmake_kf5 -d build
-%cmake_build
 %endif
 
 %install
 %if 0%{?qt6}
 %kf6_install
-%else
-%kf5_makeinstall -C build
 %endif
 
 %ldconfig_scriptlets -n %{library_name}%{so_suffix}
@@ -104,8 +87,6 @@ metadata.
 %files
 %if 0%{?qt6}
 %{_kf6_debugdir}/libkexiv2.categories
-%else
-%{_kf5_debugdir}/libkexiv2.categories
 %endif
 
 %files -n %{library_name}%{so_suffix}
@@ -117,9 +98,6 @@ metadata.
 %if 0%{?qt6}
 %{_kf6_cmakedir}/KExiv2Qt6/
 %{_includedir}/KExiv2Qt6/
-%else
-%{_kf5_cmakedir}/KF5KExiv2/
-%{_kf5_includedir}/KExiv2/
 %endif
 %{_libdir}/%{library_name}.so
 

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:41:08 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- No code change since 25.11.80
+
+-------------------------------------------------------------------
+Sat Nov 15 19:57:11 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * Use exiv2 own cmake config file
+  * Require exiv2 >= 0.27
+  * Remove Qt5 support
+  * KExiv2Config.cmake.in: find LibExiv2 when building in static mode
+
+-------------------------------------------------------------------
 Thu Nov  6 18:38:08 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
