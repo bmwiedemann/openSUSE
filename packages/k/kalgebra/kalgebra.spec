@@ -19,13 +19,13 @@
 # Internal QML imports
 %global __requires_exclude qt6qmlimport\\((widgets|org\\.kde\\.kalgebra\\.mobile).*
 
-%define kf6_version 6.14.0
-%define qt6_version 6.8.0
+%define kf6_version 6.19.0
+%define qt6_version 6.9.0
 %define plasma6_version 5.27.80
 
 %bcond_without released
 Name:           kalgebra
-Version:        25.08.3
+Version:        25.12.0
 Release:        0
 Summary:        Math Expression Solver and Plotter
 License:        GPL-2.0-or-later
@@ -102,9 +102,6 @@ rm -r %{buildroot}%{_kf6_plasmadir}/plasmoids/org.kde.graphsplasmoid/
 %doc %lang(en) %{_kf6_htmldir}/en/kalgebra
 %{_kf6_applicationsdir}/org.kde.kalgebra.desktop
 %{_kf6_appstreamdir}/org.kde.kalgebra.appdata.xml
-%if %{pkg_vcmp cmake(KF6Package) < 6.18}
-%{_kf6_appstreamdir}/org.kde.graphsplasmoid.appdata.xml
-%endif
 %{_kf6_bindir}/calgebra
 %{_kf6_bindir}/kalgebra
 %{_kf6_iconsdir}/hicolor/*/apps/kalgebra.*
