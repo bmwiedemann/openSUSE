@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Dec 13 19:35:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.87.0:
+  * Exciting New Features
+    - Introduced support for docker build command by @fluxxBot in
+      #3165
+  * Improvements
+    - Poetry native support improvement by @agrasth in #3247
+  * Bug Fixes
+    - Fix for 'include' flag with spec file by @agrasth in #3249
+    - Update Dependencies: Fix Temp Cleanup & Git Handling by
+      @agrasth in #3272
+  * Other Changes
+    - curl-command-parsing-issue by @reshmifrog in #3256
+    - Add native helm commands support by @naveenku-jfrog in #3235
+
+-------------------------------------------------------------------
 Thu Dec 11 07:34:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.86.0:
