@@ -1,5 +1,5 @@
 #
-# spec file for package helm
+# spec file for package helm3
 #
 # Copyright (c) 2025 SUSE LLC and contributors
 #
@@ -19,13 +19,13 @@
 %define goipath helm.sh/helm/v3
 %define git_dirty clean
 Name:           helm3
-Version:        3.19.2
+Version:        3.19.3
 Release:        0
 Summary:        The Kubernetes Package Manager
 License:        Apache-2.0
 Group:          Development/Languages/Other
 URL:            https://github.com/helm/helm
-Source0:        helm-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Provides:       helm = %{version}
 BuildRequires:  fish
@@ -76,7 +76,7 @@ BuildArch:      noarch
 Fish command line completion support for %{name}.
 
 %prep
-%autosetup -p1 -a1 -n helm-%{version}
+%autosetup -p1 -a1
 
 %build
 %goprep %{goipath}

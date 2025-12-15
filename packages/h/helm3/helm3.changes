@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 11 06:59:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.19.3:
+  * Bump golang.org/x/crypto to v0.45.0
+
+-------------------------------------------------------------------
 Wed Nov 12 15:01:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.19.2:

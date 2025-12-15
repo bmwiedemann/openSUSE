@@ -7,4 +7,13 @@
     <comment></comment>
     <requestid>1320376</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4d141a788ca71e02d0cd44154530d43e</srcmd5>
+    <version>3.19.3</version>
+    <time>1765796333</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.19.3:
+  * Bump golang.org/x/crypto to v0.45.0</comment>
+    <requestid>1322791</requestid>
+  </revision>
 </revisionlist>
