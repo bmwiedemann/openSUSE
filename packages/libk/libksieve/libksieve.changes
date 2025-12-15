@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:41:09 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- Changes since 25.11.80:
+  * Fix build without HAVE_TEXT_AUTOGENERATE_TEXT
+
+-------------------------------------------------------------------
+Sat Nov 15 19:57:13 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * Fix typo
+  * Move settings to config-*.h + implement HAVE_TEXTTOSPEECH_ENQQUEUE_SUPPORT
+  * Port away java style iterator
+  * Use ktextaddons master
+  * pre-commit autoupdate
+  * Use ktextaddons 1.8.0
+  * Use [[maybe_unused]]
+  * Add missing explicit
+  * Add quick ask support
+  * Clean forward declaration
+  * Remove duplicate lines
+  * Use correct KMime include
+  * Increase ktextaddons to 1.7.0
+  * Disable CMAKE_CXX_SCAN_FOR_MODULES
+  * Drop unneeded expl. addition of build dir to lib's build includes interface
+  * Fix some cppcheck
+
+-------------------------------------------------------------------
 Thu Nov  6 18:38:10 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
