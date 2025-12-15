@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec 14 08:41:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.3.5:
+  * Bug Fixes
+    - fix(go): update k8s.io/client-go ( v0.34.2 → v0.34.3 )
+
+-------------------------------------------------------------------
 Thu Dec 11 06:48:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.3.4:

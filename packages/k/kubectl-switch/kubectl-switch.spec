@@ -17,7 +17,7 @@
 
 
 Name:           kubectl-switch
-Version:        2.3.4
+Version:        2.3.5
 Release:        0
 Summary:        Simple tool to help manage multiple kubeconfig files
 License:        MIT
