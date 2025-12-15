@@ -17,34 +17,43 @@
 
 
 Name:           Photini
-Version:        2022.3.2
+Version:        2025.10.0
 Release:        0
 Summary:        Digital photograph metadata (EXIF, IPTC, XMP) editing application
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            https://github.com/jim-easterbrook/Photini
 Source0:        https://github.com/jim-easterbrook/Photini/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE Photini-2021.1.0-desktop.patch fix desktop file -- aloisio@gmx.com
-Patch0:         Photini-2021.1.0-desktop.patch
-BuildRequires:  ImageMagick
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  python3-appdirs >= 1.3
-BuildRequires:  python3-devel
 BuildRequires:  python3-pip
+BuildRequires:  python3-platformdirs
+BuildRequires:  python3-qtwebengine-qt5
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-setuptools_scm
 BuildRequires:  python3-wheel
-Requires:       ffmpeg
-Requires:       libgexiv2-2 >= 0.5
-Requires:       python3-appdirs >= 1.3
-Requires:       python3-gobject
-Requires:       python3-gpxpy
-Requires:       python3-keyring
-Requires:       python3-qt5
-Requires:       python3-qt5-sip
+Requires:       python3-Pillow
+Requires:       python3-cachetools
+Requires:       python3-chardet
+Requires:       python3-exiv2
+Requires:       python3-filetype
+Requires:       python3-platformdirs
 Requires:       python3-requests >= 2.4.0
 Requires:       python3-requests-oauthlib
+Requires:       python3dist(pyqtwebengine)
 Requires:       typelib(GExiv2)
+# For the flickr, Google Photos, Ipernity and Pixelfed/Mastodon plugins
+Recommends:     python3-keyring
+Conflicts:      python3-keyring-keyutils
+# For the flickr, Ipernity and Pixelfed/Mastodon plugin
+Recommends:     python3-requests-toolbelt
+# For the spelling plugin
+Recommends:     python3-pyenchant
+# For the GPS plugin
+Recommends:     python3-gpxpy
+# For the camera import plugin
+Recommends:     python3-gphoto2
 BuildArch:      noarch
 
 %description
@@ -60,22 +69,31 @@ camera's position when the picture was taken.
 %autosetup -p1
 
 %build
+export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %python3_pyproject_wheel
-for s in 22 32 48 64 96 128 192 256 512; do
-    convert -strip utils/make_icons/icon_master.png -resize ${s}x${s} ${s}.png
-done
 
 %install
 %python3_pyproject_install
-for s in 22 32 48 64 96 128 192 256 512; do
-   mkdir -pv %{buildroot}%{_datadir}/icons//hicolor/${s}x${s}/apps
-   install -m0644 ${s}.png -T \
-        %{buildroot}%{_datadir}/icons/hicolor/${s}x${s}/apps/photini.png
-done
-install -Dm0644 src/photini/data/linux/photini.desktop \
+cp -r src/photini/data %{buildroot}%{python3_sitelib}/photini/data
+
+# Generate the desktop file and copy icons
+export PYTHONPATH=%{buildroot}%{python3_sitelib}
+%{buildroot}%{_bindir}/photini-post-install
+
+# Copy icons for the desktop file
+mkdir -p %{buildroot}%{_datadir}/icons
+mv  ~/.local/share/icons/* %{buildroot}%{_datadir}/icons
+
+# Adapt desktop file
+sed -i 's#^Exec=[^ ]\+#Exec=/usr/bin/photini#g' \
+   ~/.local/share/applications/photini.desktop
+install -Dm0644 ~/.local/share/applications/photini.desktop \
    %{buildroot}%{_datadir}/applications/photini.desktop
-rm -f %{buildroot}/%{python3_sitelib}/photini/data/linux/photini.desktop
-%fdupes %{buildroot}
+
+rm %{buildroot}%{_bindir}/photini-configure
+rm %{buildroot}%{_bindir}/photini-post-install
+
+%fdupes -s %{buildroot}
 
 %files
 %doc CHANGELOG.txt README.rst
