@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:41 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- No code change since 25.11.80
+
+-------------------------------------------------------------------
+Sat Nov 15 19:56:44 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * .gitlab-ci.yml - remove alpine builds since kio isn't available there
+  * cppcheck - fixes bounds containerOutOfBounds
+  * Clean unused includes
+  * Use QCOMPARE here
+  * USe u'<foo>'
+  * Revert "Remove linux-qt6 as alphin does the same => reduce CI call"
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:42 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
