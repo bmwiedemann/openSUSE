@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Dec 14 09:19:27 UTC 2025 - Tomas Kysela <tomkys144@gmail.com>
+
+- Update to version 4.0.1
+
+Changes
+* Added basic support for spotifyd v0.4.0 and newer.
+* Deprecated support for spotifyd from the app, use librespot instead.
+
+Fixes
+* Fixed snap builds (#290).
+* Fixed sometimes applying an incorrect style when saving settings.
+
+-------------------------------------------------------------------
 Thu May 15 10:29:46 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Fix build error under Leap 15.6
