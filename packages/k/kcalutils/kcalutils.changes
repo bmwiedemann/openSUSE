@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:29 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- No code change since 25.11.80
+
+-------------------------------------------------------------------
+Sat Nov 15 19:56:31 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * Dont use std::pair/QPair, use named structs
+  * Use en_US locale to fix the testincidenceformatter test.
+  * It compiles fine without qt < 6.10 deprecated methods
+  * src/dndfactory.cpp - port away from deprecated toTimeSpec
+  * pre-commit autoupdate
+  * Reverse this part of previous commit (pb on windows)
+  * Convert QLatin1Char to u'..'
+  * Fix some cppcheck warnings
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:28 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
