@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:11 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- Changes since 25.11.80:
+  * Fix crashes
+  * Place the open in browser button first
+  * Fix add feed dialog oddities
+  * Fix pagestack showing two articles at the same time
+
+-------------------------------------------------------------------
+Sat Nov 22 21:12:30 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove unused BuildRequires: update-desktop-files.
+
+-------------------------------------------------------------------
+Sat Nov 15 19:56:12 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * Edit org.kde.alligator.appdata.xml
+  * Use a single FeedsModel in all the app
+  * Fix typo in README.md Misc. typos fix.
+  * Enable qmllint in CI
+  * Fix and improve FeedListPage placeholder
+  * Add action to copy the URL
+  * Remove uneeded ColumnLayout
+  * Replace outdated references to nightly APKs
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:09 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
