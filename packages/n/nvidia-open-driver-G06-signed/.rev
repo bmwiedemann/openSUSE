@@ -960,4 +960,15 @@
   * fixed build against kernel 6.18</comment>
     <requestid>1321704</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>e12e34e2ea9606b02656749b5dfa4cdc</srcmd5>
+    <version>580.119.02</version>
+    <time>1765795499</time>
+    <user>anag_factory</user>
+    <comment>- readded kernel-6.18.patch still needed for cuda driver version
+  580.105.08
+
+- update non-CUDA variant to version 580.119.02 (boo#1254801)</comment>
+    <requestid>1322245</requestid>
+  </revision>
 </revisionlist>

@@ -16,12 +16,12 @@
 #
 
 
-%define gfx_aarch64_version 580.95.05
+%define gfx_aarch64_version 580.119.02
 
 %ifarch aarch64
 %define gfx_version %gfx_aarch64_version
 %else
-%define gfx_version 580.105.08
+%define gfx_version 580.119.02
 %endif
 %define cuda_version 580.105.08
 
@@ -101,7 +101,9 @@ Source14:       group-source-files.pl
 Source15:       kmp-trigger.sh
 Source17:       kmp-post.sh
 Source18:       Check4WrongSupplements.sh
+%if "%{flavor}" == "cuda"
 Patch0:         kernel-6.18.patch
+%endif
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec 11 15:49:40 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- readded kernel-6.18.patch still needed for cuda driver version
+  580.105.08
+
+-------------------------------------------------------------------
+Thu Dec 11 08:55:29 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- update non-CUDA variant to version 580.119.02 (boo#1254801)
+
+-------------------------------------------------------------------
 Wed Dec  3 14:03:19 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - kernel-6.18.patch
