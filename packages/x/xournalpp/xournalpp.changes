@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec 11 09:28:22 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.2.10:
+  * Updated translations
+  * Fix display bug when running release version after having run
+    the development version.
+  * Fix Clipboard pasting issues.
+  * Fix attached attribute on document load.
+  * Prevent export from mistakingly overriding the background PDF.
+
+-------------------------------------------------------------------
 Tue Sep  2 15:08:41 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.2.8:
