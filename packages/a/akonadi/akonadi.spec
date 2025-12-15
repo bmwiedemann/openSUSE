@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.14.0
-%define qt6_version 6.8.0
+%define kf6_version 6.19.0
+%define qt6_version 6.9.0
 
 %define name   akonadi
 %bcond_without released
 Name:           akonadi
-Version:        25.08.3
+Version:        25.12.0
 Release:        0
 Summary:        PIM Storage Service
 License:        LGPL-2.1-or-later
@@ -41,8 +41,6 @@ BuildRequires:  libxslt-tools
 BuildRequires:  mariadb
 BuildRequires:  pkgconfig
 BuildRequires:  postgresql-devel
-BuildRequires:  qt6-core-private-devel >= %{qt6_version}
-BuildRequires:  qt6-sql-private-devel >= %{qt6_version}
 BuildRequires:  shared-mime-info
 BuildRequires:  cmake(AccountsQt6)
 BuildRequires:  cmake(KAccounts6)

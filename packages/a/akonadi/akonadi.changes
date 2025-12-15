@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:08 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- Changes since 25.11.80:
+  * Fix SQL syntax error when using MariaDB 12.1
+  * Revert "Extend the protocol with BeginItemSync and EndItemSync commands"
+  * Revert "DataStream: distinguish between regular exception and timeout"
+  * Revert "ItemQueryHelper: use a more helpful exception message"
+  * Revert "Implement ItemSyncHandler"
+  * Revert "Switch ItemSync to the new server-side itemsync protocol"
+  * Revert "Deprecated TransactionJobs and TransactionSequence"
+  * Revert "Fix handling subjob error in new ItemSync"
+  * Revert "Decrease the default size of batchSize reported by ResourceBase"
+  * Revert "ItemSync: don't send EndItemSync if we did not send BeginItemSync"
+  * Revert "Fix build against Qt 5.14"
+  * Revert "ItemSync: don't use long-lasting multi-item transactions"
+  * Revert "ItemSync: propagate merge mode to BeginItemSync command"
+  * Revert "ItemSync: fix & adjust itemsynctest"
+  * Revert "Connection: specify socket read timeout using std::chrono"
+  * Revert "ItemSync: use DB transactions to optimize sync speed"
+  * Revert "Fix a spelling and a newline-at-eof issue to pass CI"
+  * Revert "A round of clang-format for CI"
+  * Revert "Fix Windows build, adapt to rename"
+
+-------------------------------------------------------------------
+Sat Nov 15 19:56:10 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Too many changes since 25.08.3, only listing bugfixes:
+  * Fix bug 511642: Sort tags by name (kde#511642)
+  * widgets/standardactionmanager: Filter clipboard change events (kde#485661, kde#508727)
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:06 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
