@@ -1,4 +1,115 @@
 -------------------------------------------------------------------
+Tue Dec  9 18:17:17 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 4.6.2
+  General:
+  * Fix: Add transporter weapon validity check
+  * Fix: Resolve assert when loading replay with in-memory map
+    archive
+  * Fix: Allow stats / mods to change cyborg movement sound
+  * Fix: Correct and clarify some topics of the in-game guide
+  * Fix: Various potential crashes / asserts
+  Graphics:
+  * Fix: MP Transporter model fixes
+  * Fix: Remove validation layers in Vulkan device create info
+  Campaign:
+  * Add: Update Reclamation and Fractured Kingdom addon campaigns
+  * Fix: Make toggle options in GUI easier to understand
+  * Fix: Tower Wars tweak for Classic Balance
+  Multiplayer:
+  * Add: locked.readybeforefull option, to prevent checking ready
+    before all open player slots are full
+  * Change: Let Insane difficulty AI bots start with gates
+  * Fix: Refactor how player connection state is recorded and
+    handled, resolve "kick loop"
+  * Fix: Trigger lobby browser refresh when exiting game lobby
+  * Fix: Improve state management when --startplayers is specified
+  * Fix: sendBeacon error when spectator host
+  * Fix: Errors in the maps Valley and Concrete
+  * Fix: Name conflict with MP scavenger body stats
+  * Fix: Improve not-ready-kick messaging
+  * Fix: netplay: Schedule port mapping request callbacks under
+    the mutex
+  Scripting:
+  * Add: scriptName to playerData
+  * Change: Add optional center param to fireWeaponAtLoc
+  * Fix: Update quickjs-wz, improving performance and fixing bugs
+  * Fix: syncRandom() return type
+  AI:
+  * Nexus:
+    * Improve game performance when multiple Nexus bots are used
+    * Fix help system accessing help data incorrectly
+    * Fix a countDroid() call doing nothing for when to skip
+      production
+  * NullBot family:
+    * Fix Hover AI causing "ruleset warnings" over the
+      Mini-Rocket Pod
+    * Fix missing parenthesis introduced back in 2016 in function
+      buildVtols (due to a recent commit, and this going
+      unnoticed, that change unintentionally broke NullBot defense
+      building behaviors)
+    * Make sure VTOL pads are built in safe areas
+  * Cobra:
+    * Can use Particle Gun now
+    * Create chance() function to remove repeated
+      random() < X calls
+    * Slightly refactor research tree into separate functions
+    * Update const style convention (similar to libcampaign) to
+      distinguish local and global constants
+    * Go for Power research more if available in low oil
+    * Reduce or eliminate chance of trapping trucks in high oil
+      maps as it was trying to defend base derricks
+    * Try building repair facilities near other repair facilities
+      (works best on high oil maps)
+    * Add a Cannon VTOL personality (AV chat command)
+    * Bump repair thresholds to medium damage levels
+    * Improvements to high oil build orders
+    * Much better T2+ No Bases support in all map types
+    * Micro optimize low oil build order to build power modules
+      before cyborg factories
+    * Try using research labs with modules first when selecting
+      research
+    * Some small research path optimizations
+    * Force Cobra to research defense topics randomly since they
+      don't take long these days
+    * Cobra defends bases and oils better with defenses
+      (kinda turtle-AI like)
+    * Fix Cobra building base structures very far away sometimes,
+      due to a cache call collision returning an oil truck's
+      defense structure location
+    * Rocket personality now ignores MG past the early game, will
+      go full rocket artillery instead to optimize research
+    * Make it prefer stronger bodies faster, more chance to build
+      heavy ones
+    * Fix a very old bug on Advanced Bases Cockpit / Cockate where
+      truck production would be delayed for a few minutes (This
+      will also fix other such maps that give almost no base
+      structures on these settings)
+  * BoneCrusher:
+    * Fix some out-of-bounds access errors causing asserts
+    * Huge performance improvements (eliminates stutters in many
+      higher oil maps)
+    * Fix a broken if statement for adding oil hunters which
+      wanted to call a function to check something oil related   
+  Balance MP:
+  * Change: Partial revert: SuperTransport base HP 3000 -> 2200,
+    due to interaction with PR #3252
+  * Fix: Copy paste stat error for Particle Gun emplacement
+  * Fix: Thermal typo under bbaatow in structure.json
+  Other:
+  * Add: Gentoo support to get-dependencies_linux.sh
+  * Add: Debian / Raspberry Pi OS support to
+    get-dependencies_linux.sh
+  * Add: Reminder messages in tutorial
+  * Change: Port backend from SDL2 to SDL3
+  * Fix: GameNetworkingSockets absl symbol leaks with protobuf
+  * Fix: Create albums music folder in config
+  * Fix: Replace uses of sprintf
+  * Fix: CMake: Update FindZIP to find 7zz
+  * Fix: Snap: Add workaround for amdgpu.ids issue
+- Update BuildRequires pkgconfig(sdl3) instead pkgconfig(sdl2)
+
+-------------------------------------------------------------------
 Wed Sep 24 16:53:26 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 4.6.1 
