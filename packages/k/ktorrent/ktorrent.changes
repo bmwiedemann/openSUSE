@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:41:02 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- No code change since 25.11.80
+
+-------------------------------------------------------------------
+Sat Nov 15 19:57:06 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * Fix various typos mostly in docs
+  * Adapt to API change in libktorrent TorrentInterface::changeOutputDir
+  * Adapt to libktorrent Peer api change
+  * Fix issue of constantly writing to the magnets file. (kde#490894)
+  * Remove progress bar colour tweak
+  * Fix logviewer settings tooltip
+
+-------------------------------------------------------------------
 Thu Nov  6 18:38:03 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
