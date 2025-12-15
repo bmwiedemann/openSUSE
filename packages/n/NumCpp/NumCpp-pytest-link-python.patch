@@ -2,54 +2,11 @@
  test/pytest/src/CMakeLists.txt |   37 +++++++++++++++++++------------------
  1 file changed, 19 insertions(+), 18 deletions(-)
 
-Index: NumCpp-Version_2.14.0/test/pytest/src/CMakeLists.txt
+Index: NumCpp-Version_2.16.0/test/pytest/src/CMakeLists.txt
 ===================================================================
---- NumCpp-Version_2.14.0.orig/test/pytest/src/CMakeLists.txt
-+++ NumCpp-Version_2.14.0/test/pytest/src/CMakeLists.txt
-@@ -17,25 +17,25 @@ foreach(_source IN ITEMS ${_source_list}
-     source_group("${_group_path}" FILES "${_source}")
- endforeach()
- 
--add_library(${TARGET_NAME} SHARED 
--    Constants.cpp 
--    Coordinates.cpp 
--    Core.cpp 
--    DataCube.cpp 
-+add_library(${TARGET_NAME} SHARED
-+    Constants.cpp
-+    Coordinates.cpp
-+    Core.cpp
-+    DataCube.cpp
-     DateTime.cpp
--    Filter.cpp 
--    Functions.cpp 
--    ImageProcessing.cpp 
--    Integrate.cpp 
--    Linalg.cpp 
-+    Filter.cpp
-+    Functions.cpp
-+    ImageProcessing.cpp
-+    Integrate.cpp
-+    Linalg.cpp
-     Logger.cpp
--    NdArray.cpp 
--    Polynomial.cpp 
--    Random.cpp 
--    Roots.cpp 
--    Rotations.cpp 
--    Special.cpp 
--    Utils.cpp 
-+    NdArray.cpp
-+    Polynomial.cpp
-+    Random.cpp
-+    Roots.cpp
-+    Rotations.cpp
-+    Special.cpp
-+    Utils.cpp
-     Vector.cpp
-     NumCppPy.cpp
-     ${_source_list}
-@@ -56,11 +56,12 @@ find_package(Python 3.11 REQUIRED
+--- NumCpp-Version_2.16.0.orig/test/pytest/src/CMakeLists.txt
++++ NumCpp-Version_2.16.0/test/pytest/src/CMakeLists.txt
+@@ -57,11 +57,12 @@ find_package(Python 3.11 REQUIRED
  if(UNIX)
      execute_process(
          COMMAND 

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Dec 11 10:06:29 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.16.0:
+  * Added:
+    - eig() [gh#dpilger26/NumCpp#143].
+    - eigvals() [gh#dpilger26/NumCpp#143].
+    - svdvals.
+  * Bug fixes:
+    - outer function now operates on arrays of different sizes
+      [gh#dpilger26/NumCpp#144].
+    - pinv function has been corrected [gh#dpilger26/NumCpp#215].
+- Changes from version 2.15.0:
+  * Added:
+    - fft module [gh#dpilger26/NumCpp#137].
+    - divmod.
+    - find_duplicates.
+    - mode.
+
+-------------------------------------------------------------------
 Tue Sep 23 11:27:17 CEST 2025 - aschnell@suse.com
 
 - libboost_system was removed upstream (bsc#1249900)
