@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:40 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- Changes since 25.11.80:
+  * Fix index when we use activity support
+
+-------------------------------------------------------------------
+Sat Nov 15 19:56:42 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * Port deprecated invalidateFilter
+  * Clean includes
+  * Remove extra ;
+  * Use QCOMPARE here
+  * Increase ktextaddons to 1.7.0
+  * Enable qmllint in CI
+  * Disable CMAKE_CXX_SCAN_FOR_MODULES
+  * Drop unneeded expl. addition of build dir to lib's build includes interface
+  * Add missing explicit
+  * Add cppcheck
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:40 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
