@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:10 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- No code change since 25.11.80
+
+-------------------------------------------------------------------
+Sat Nov 15 19:56:11 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * const'ify pointer + use QLineEdit
+  * const'ify variable + use missing [[nodiscard]]
+  * Rename variables
+  * Fix cppcheck warning (rename variable which shadows others)
+  * Add missing explicit
+  * Add icon + add parent + add tooltip
+  * Initialize in constructor
+  * Fix enable/disable remove button
+  * Fix remove button state
+  * Port away java style iterator
+  * Fix show department
+  * Show impp info
+  * Allow to use resourceLabel()
+  * Show web info
+  * Const'ify
+  * const'ify
+  * Port deprecated invalidateFilter method
+  * Use correct KMime include
+  * Use u'<foo>'
+  * Fix some cppcheck warnings
+  * Increase ktextaddons to 1.7.0
+  * Fix some cppcheck warnings
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:07 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
