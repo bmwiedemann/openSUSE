@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:53 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- No code change since 25.11.80
+
+-------------------------------------------------------------------
+Sat Nov 15 19:56:56 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Too many changes since 25.08.3, only listing bugfixes:
+  * HTMLDecoder: fix missing span on subsequent lines (kde#509784)
+  * Do not change auto save action visibility and title when auto save task failed to be spawned. (kde#507069)
+  * Inherit parent's app ID when creating a new cgroup for tabs (kde#508716)
+  * use QPointer to track life time of terminal display (kde#508721)
+  * avoid wrong spacing at top of label (kde#493118)
+  * avoid random line breaks on the config page (kde#508061)
+  * Disable toolbar accelerators to avoid conflicts with terminal apps (kde#482628)
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:53 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
