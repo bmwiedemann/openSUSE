@@ -2005,4 +2005,12 @@ So all in all: this fixes the build failures for openSUSE Tumblewee (forwarded r
     <comment></comment>
     <requestid>1313013</requestid>
   </revision>
+  <revision rev="198" vrev="2">
+    <srcmd5>89cb377bad0eb0159b85b4d0f2c2d736</srcmd5>
+    <version>10.2p1</version>
+    <time>1765795510</time>
+    <user>anag_factory</user>
+    <comment>Remove erroneous %config() directive (forwarded request 1322250 from hpjansson)</comment>
+    <requestid>1322252</requestid>
+  </revision>
 </revisionlist>

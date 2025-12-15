@@ -452,10 +452,11 @@ mv %{buildroot}%{_sysconfdir}/ssh/sshd_config.d/50-permit-root-login.conf %{buil
 %endif
 
 %if %{with crypto_policies}
-install -m 644 ssh_config_suse %{buildroot}%{_sysconfdir}/ssh/ssh_config.d/50-suse.conf
 %if %{defined _distconfdir}
+install -m 644 ssh_config_suse %{buildroot}%{_distconfdir}/ssh/ssh_config.d/50-suse.conf
 install -m 644 sshd_config_suse_cp %{buildroot}%{_distconfdir}/ssh/sshd_config.d/40-suse-crypto-policies.conf
 %else
+install -m 644 ssh_config_suse %{buildroot}%{_sysconfdir}/ssh/ssh_config.d/50-suse.conf
 install -m 644 sshd_config_suse_cp %{buildroot}%{_sysconfdir}/ssh/sshd_config.d/40-suse-crypto-policies.conf
 %endif
 %endif
@@ -671,8 +672,13 @@ test -f /etc/ssh/ssh_config.rpmsave && mv -v /etc/ssh/ssh_config.rpmsave /etc/ss
 
 %files clients
 %if %{with crypto_policies}
+%if %{defined _distconfdir}
+%dir %attr(0755,root,root) %{_distconfdir}/ssh/ssh_config.d
+%attr(0644,root,root) %{_distconfdir}/ssh/ssh_config.d/50-suse.conf
+%else
 %dir %attr(0755,root,root) %{_sysconfdir}/ssh/ssh_config.d
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/ssh/ssh_config.d/50-suse.conf
+%endif
 %endif
 %if %{defined _distconfdir}
 %attr(0644,root,root) %{_distconfdir}/ssh/ssh_config

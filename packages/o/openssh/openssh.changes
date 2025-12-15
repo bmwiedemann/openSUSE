@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 11 15:29:12 UTC 2025 - Hans Petter Jansson <hpj@suse.com>
+
+- Install 50-suse.conf in distconfdir instead of sysconfdir if
+  possible (bsc#1254374).
+
+-------------------------------------------------------------------
 Tue Oct 14 07:15:46 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to openssh 10.2p1:
