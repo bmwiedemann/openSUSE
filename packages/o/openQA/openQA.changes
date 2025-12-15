@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 12 21:07:39 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1765535865.b566a24c:
+  * fix(codecov): Be strict about coverage thresholds
+  * Show jobs that have been cloned when `t` parameter is used on overview
+
+-------------------------------------------------------------------
 Thu Dec 11 17:35:22 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1765469360.5c0525b5:
