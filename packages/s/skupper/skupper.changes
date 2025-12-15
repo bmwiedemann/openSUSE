@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Dec 14 08:58:59 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.3:
+  https://github.com/skupperproject/skupper/milestone/8?closed=1
+
+-------------------------------------------------------------------
+Sun Dec 14 08:40:59 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.2:
+  * Update for 2.1.2 (#2287)
+  * Containers base go image tag as a param
+  * Update go to 1.24.7
+  * Fixes empty SubjectAlternativeName in Certificates
+  * Check old service removal, use blocks for east/west
+  * improve expose-pods-by-name 2e2 test
+  * Fix typo in listener status update error handling
+  * Setting siteId earlier in the init process
+  * Ensure that the mapping is initialized
+  * TcpListeners should not have the host set in kubernetes
+  * Fixes assignment to nil map in certificate manager
+  * Changes kube-adaptor startup conditions
+  * Improved based on review comments
+  * Prevents racing when a Certificate has multiple owners
+  * fix SIGSEGV and improve output messages for the apply command
+  * Fixes Network Status Handler test
+  * fix potential array out of bounds access
+  * include unit test
+  * Changes SecuredAccess owner to RouterAccess
+  * Check that valid site endpoints exist before allowing a token
+    to be created.
+  * fix version command when kube adaptor version is set by the
+    environment variable.
+  * Updates deprecated ansible configuration in e2e (#2256)
+
+-------------------------------------------------------------------
 Thu Aug 21 04:53:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.1.1:

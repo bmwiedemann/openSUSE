@@ -17,7 +17,7 @@
 
 
 Name:           skupper
-Version:        2.1.1
+Version:        2.1.3
 Release:        0
 Summary:        Virtual Application Network, enabling rich hybrid cloud communication
 License:        Apache-2.0
@@ -26,8 +26,8 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.22
 BuildRequires:  zsh
+BuildRequires:  golang(API) >= 1.24
 
 %description
 Skupper enables cloud communication by enabling you to create a Virtual
