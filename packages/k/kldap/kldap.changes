@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:45 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- No code change since 25.11.80
+
+-------------------------------------------------------------------
+Sat Nov 15 19:56:47 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * Port deprecated invalidateFilter
+  * Fix some cppcheck warnings
+  * Clean unused includes
+  * Use [[maybe_unused]]
+  * Disable CMAKE_CXX_SCAN_FOR_MODULES
+  * fix some cppcheck warnings
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:45 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
