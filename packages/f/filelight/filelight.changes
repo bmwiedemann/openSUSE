@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:18 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- No code change since 25.11.80
+
+-------------------------------------------------------------------
+Sat Nov 15 19:56:20 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * S_BLKSIZE is not defined for Haiku
+  * use contains instead of find!=end
+  * delete ctors/operators publicly
+  * don't copy shared_ptr until we actually need a copy
+  * named designators++
+  * reverse clone view
+  * refresh git-blame-ignore-revs for latest clang-format run
+  * automatic clang-format run (clang 20)
+  * warning--
+  * qml: modularize
+  * dep bump
+  * Edit org.kde.filelight.appdata.xml
+  * lower MSAA samples from 32 to 8
+  * correctly throw Component.Error
+  * Use StandardKey.Open for opening directory
+  * Add cleanup
+  * Update to 6.9 runtime
+  * memory: prefer shared_ptr for qobject + deleteLater on them (kde#507656)
+  * Remove not implemented method
+  * Bump kf ecm_set_disabled_deprecation_versions
+  * remotelister: sort folder before emitting it (kde#507228)
+  * locallister: don't convert to std::function needlessly
+  * test: make sure the unicode test actually finds the root dir
+  * windows: drop unnecessary slow api call
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:16 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3

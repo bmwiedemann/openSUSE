@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.14.0
-%define qt6_version 6.8.0
+%define kf6_version 6.19.0
+%define qt6_version 6.9.0
 
 %bcond_without released
 Name:           filelight
-Version:        25.08.3
+Version:        25.12.0
 Release:        0
 Summary:        Graphical disk usage viewer
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -70,11 +70,11 @@ and the sizes of files and directories on the system.
 %files
 %license LICENSES/*
 %doc AUTHORS README.md
-%config %{_kf6_configdir}/filelightrc
 %doc %lang(en) %{_kf6_htmldir}/en/filelight/
 %{_kf6_applicationsdir}/org.kde.filelight.desktop
 %{_kf6_appstreamdir}/org.kde.filelight.appdata.xml
 %{_kf6_bindir}/filelight
+%{_kf6_configdir}/filelightrc
 %{_kf6_debugdir}/filelight.categories
 %{_kf6_iconsdir}/hicolor/*/*/filelight.png
 %dir %{_kf6_sharedir}/kio
