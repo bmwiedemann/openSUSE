@@ -17,14 +17,14 @@
 
 
 
-%define kf6_version 6.14.0
-%define qt6_version 6.8.0
+%define kf6_version 6.19.0
+%define qt6_version 6.9.0
 
-%define libkdev_major 63
+%define libkdev_major 64
 
 %bcond_without released
 Name:           kdevelop
-Version:        25.08.3
+Version:        25.12.0
 Release:        0
 Summary:        Plugin-extensible IDE for C/C++ and other programming languages
 License:        GPL-2.0-or-later
@@ -209,9 +209,6 @@ done
 %{_includedir}/kdevelop/
 %{_kf6_applicationsdir}/org.kde.kdevelop*.desktop
 %{_kf6_appstreamdir}/org.kde.kdevelop.appdata.xml
-%if %{pkg_vcmp cmake(KF6Package) < 6.18}
-%{_kf6_appstreamdir}/org.kde.kdevelopsessions.appdata.xml
-%endif
 %{_kf6_bindir}/kdev_includepathsconverter
 %{_kf6_bindir}/kdevelop*
 %{_kf6_cmakedir}/KDevelop/

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:35 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- Changes since 25.11.80:
+  * Add missing comparison of m_isRValue to ReferenceType::equals()
+
+-------------------------------------------------------------------
+Sat Nov 15 19:56:37 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Too many changes since 25.08.3, only listing bugfixes:
+  * Pass a non-read-only config group to ZoomController (kde#508239)
+  * Never store precompiled preambles in memory to work around a crash (kde#486932)
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:35 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
