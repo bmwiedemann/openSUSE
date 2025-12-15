@@ -2228,4 +2228,12 @@ there will be 4 permissive avcs left regarding pcrlock, but those will be fixed 
     <comment></comment>
     <requestid>1321962</requestid>
   </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>c0e0897116df17eae786eaf9d796e041</srcmd5>
+    <version>20251211</version>
+    <time>1765794914</time>
+    <user>anag_factory</user>
+    <comment>accountutils</comment>
+    <requestid>1322558</requestid>
+  </revision>
 </revisionlist>

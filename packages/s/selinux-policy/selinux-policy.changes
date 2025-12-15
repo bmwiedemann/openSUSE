@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec 11 10:38:53 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 20251211:
+  * Create seperate type for /run/account (bsc#1253469)
+  * Make newidmapd_t, pwaccessd_t, pwupdd_t permissive until testing is complete (bsc#1253469)
+  * Allow polkit access pwaccessd varlink socket (bsc#1253469)
+  * Allow account-utils use userdbd varlink socket (bsc#1253469)
+  * Initial policy for account-utils (bsc#1253469)
+  * Allow virtlogd_t dac_override (bsc#1253389)
+
+-------------------------------------------------------------------
 Wed Dec 10 10:42:25 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
 
 - Fix macros.selinux-policy to allow changing booleans when policy
