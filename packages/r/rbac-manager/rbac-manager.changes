@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 12 17:14:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.9.5:
+  * fix: update golang and dependencies (#572)
+
+-------------------------------------------------------------------
 Thu Nov 20 05:56:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.9.4:
