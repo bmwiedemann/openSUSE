@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:41:18 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- No code change since 25.11.80
+
+-------------------------------------------------------------------
+Sat Nov 15 19:57:22 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * Port invalidateFilter deprecated method
+  * We depend against kf6.9
+  * Removing fundraiser adopters section completely, as it seems to break the pipeline for some reason
+  * removing last year's fundraiser supporters
+  * Truncate existing files when overwriting (kde#507174)
+
+-------------------------------------------------------------------
 Thu Nov  6 18:38:19 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
