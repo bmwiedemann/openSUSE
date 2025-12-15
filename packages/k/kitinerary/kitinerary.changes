@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:44 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- Changes since 25.11.80:
+  * Update RSP6 public keys
+  * Allow to ingest RSP6 keys from a manually provided file as well
+  * Extract MAV Volan bus tickets
+  * Extract ticket validity from all types of MÁV ticket barcode blocks
+  * Extract prices from Cytric hotel bookings
+  * Extract station codes from MAV supplement and reservation blocks too
+  * Fix parsing MAV ticket numbers
+  * Improve MAV barcode trigger patterns
+  * Handle RSP6 decoding failures properly
+  * Support MAV supplement blocks and fix v6 reservation blocks
+  * Extract MAV passenger block data also from tickets without a trip block
+  * Emit generic Ticket objects for MAV barcodes not bound to a specific trip
+  * Extract ticket validity time ranges from MAV barcodes
+  * Consolidate extractor script for different MÁV barcode versions
+  * Resolve Hungarian railway station codes in post-processing
+  * Add lookup function for Hungarian railway station codes
+  * Regenerate train station database
+  * Generate train station lookup tables for Hungarian railway station codes
+  * Adapt to Wikidata railway station ontology changes
+  * Validate the format of Indian railway station codes
+  * Extract Hungarian station codes from MAV v5/6 barcodes
+  * Extract price from MÁV ticket barcodes
+  * Update static build dependencies
+  * Fix Flatpak build
+  * Add another date/time format pattern for Eurostar
+  * Exclude the right column when extracting Eurostar PDFs
+
+-------------------------------------------------------------------
+Sat Nov 15 19:56:46 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Too many changes since 25.08.3, only listing bugfixes:
+  * Extract Müpa Budapest tickets correctly (kde#511257)
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:44 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
