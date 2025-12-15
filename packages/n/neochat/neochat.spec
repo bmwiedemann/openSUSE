@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.14.0
-%define qt6_version 6.8.0
+%define kf6_version 6.19.0
+%define qt6_version 6.9.0
 
 %bcond_without released
 Name:           neochat
-Version:        25.08.3
+Version:        25.12.0
 Release:        0
 Summary:        A chat client for Matrix, the decentralized communication protocol
 License:        BSD-2-Clause AND GPL-3.0-only AND GPL-3.0-or-later
@@ -43,11 +43,9 @@ BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF6ColorScheme) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
-BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
-BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6ItemModels) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6Kirigami) >= %{kf6_version}
@@ -96,7 +94,7 @@ instant messaging.
 %autosetup -p1
 
 %build
-%cmake_kf6 -DQT_QML_NO_CACHEGEN:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
@@ -121,7 +119,7 @@ instant messaging.
 %{_kf6_plugindir}/kf6/purpose/neochatshareplugin.so
 %{_kf6_notificationsdir}/neochat.notifyrc
 %{_kf6_sharedir}/dbus-1/services/org.kde.neochat.service
-%{_kf6_sharedir}/krunner/dbusplugins/plasma-runner-neochat.desktop
+%{_kf6_sharedir}/krunner/dbusplugins/org.kde.neochat.desktop
 
 %files lang -f %{name}.lang
 

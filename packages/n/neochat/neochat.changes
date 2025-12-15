@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:41:14 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- Changes since 25.11.80:
+  * Fix krunner integration with Flatpak
+  * Drop unused dependencies
+
+-------------------------------------------------------------------
+Sat Nov 15 19:57:18 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Too many changes since 25.08.3, only listing bugfixes:
+  * Clarify what is "recent activity" in our room list ordering settings (kde#508480)
+  * Show less scary icon for neutral reasons when cancelling verification (kde#510421)
+  * Make the CTRL+F shortcut search the current room's messages (kde#487270)
+  * Don't call direct messages friends (kde#480167)
+  * Fix pushing welcome page onto layer (kde#510285)
+  * Hopefully this stops any crashes around QuickActions.qml and EmojiDialog.qml (kde#509484)
+  * Add "copy user id" menu to delegate in user search page (kde#499792)
+  * Remove "NeoChat" menu item in global menu (kde#504429)
+
+-------------------------------------------------------------------
 Thu Nov  6 18:38:14 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
