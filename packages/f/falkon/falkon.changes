@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:18 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- No code change since 25.11.80
+
+-------------------------------------------------------------------
+Sat Nov 15 19:56:19 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * Add blob URI scheme to list of internal schemes (kde#511239)
+  * Add menu to SideBar title
+  * Add configurable minimal width for sidebar (kde#475131)
+  * Disable online SiteSettings tests by default
+  * Make it possible to include multiple authors
+  * Fix web custom protocol handler registration (kde#497884)
+  * Add context menu for bookmarks menus (kde#398856)
+  * GreaseMonkey: Add Dis/Enable icon menu option
+  * GreaseMonkey: Remove UserScripts when disabled
+  * Add "Dis/Enable AdBlock" into icon context menu
+  * Fix compilation with disabled DBUS
+  * Add DBus implementation to openFolder (kde#460997)
+  * Add option to disable image animation
+  * Add configurable delay for loaded background color
+  * Inspector: Apply loading background customization
+  * Fix loading and storing settings in WebInspector (kde#487149)
+  * Update CHANGELOG
+  * Add permission management for unknown protocols (kde#425785)
+  * Remove obsolete Windows packaging
+  * Enable Windows craft build
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:16 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
