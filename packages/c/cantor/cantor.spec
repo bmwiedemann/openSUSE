@@ -17,8 +17,8 @@
 
 
 %global libMAJOR 28
-%define kf6_version 6.14.0
-%define qt6_version 6.8.0
+%define kf6_version 6.19.0
+%define qt6_version 6.9.0
 
 %ifarch x86_64 %{x86_64} aarch64 riscv64
 %define with_qtwebengine 1
@@ -32,7 +32,7 @@
 %bcond_without analitza
 %bcond_without released
 Name:           cantor
-Version:        25.08.3
+Version:        25.12.0
 Release:        0
 Summary:        Worksheet GUI for mathematical software
 License:        GPL-2.0-or-later

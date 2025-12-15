@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:16 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- Changes since 25.11.80:
+  * Fix flatpak CI job.
+
+-------------------------------------------------------------------
+Sat Nov 15 19:56:17 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * Fix(julia): Adapt to removed Julia C-API functions
+  * Disable test that has been failing for 4 consecutive weeks
+  * Implement XSMP session restore
+  * Fix various typos Found via codespell
+  * ci: require passing tests on all platforms
+  * Fix qalculate backend with recent versions of libqalculate (kde#507038)
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:14 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
