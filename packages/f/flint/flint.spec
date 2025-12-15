@@ -17,9 +17,9 @@
 
 
 Name:           flint
-%define lname	libflint21
+%define lname	libflint22
 %define _lto_cflags %nil %dnl ASM in source
-Version:        3.3.1
+Version:        3.4.0
 Release:        0
 Summary:        C library for doing number theory
 License:        LGPL-3.0-or-later

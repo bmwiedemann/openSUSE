@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Nov 25 14:50:50 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.4.0
+  * Added functions for computing the matrix permanent
+    (gr_mat_permanent, _cofactor, _ryser, _glynn)
+  * Multithreaded matrix permanent
+  * Added fmpz_mat_permanent, fmpq_mat_permanent and specialize in
+    gr_mat_permanent
+  * Added gr_poly_product_roots
+  * Added asymptotically fast interpolation for gr_poly
+  * Port naive LLL reduction checks to gr_mat; speed up fmpz_mat
+    versions
+  * Added generic Newton solver for (homogeneous) systems of linear
+    ODEs with rational function coefficients
+  * Added QR and LQ factorization (gr_mat_gr, gr_mat_lq)
+  * Added LLL parameters delta, eta in arb_mat_spd_lll_reduce and
+    arb_mat_spd_is_lll_reduced
+  * Added flint_mpn_mulmod_precond
+  * Added gr_mpoly_derivative and gr_mpoly_integral
+  * Added nmod_vec_invert: invert an array of nmod coefficients
+  * Added nmod_poly_mulmod_precond
+  * Naive Buchberger algorithm for fmpz_mod_mpoly
+  * Added gr_derivative_gen, with implementations for polynomial
+    rings
+
+-------------------------------------------------------------------
 Mon Jun 16 10:04:20 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.3.1
