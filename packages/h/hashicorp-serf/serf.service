@@ -1,0 +1,23 @@
+[Unit]
+Description=Serf Agent
+Documentation=https://github.com/hashicorp/serf
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=serf
+Group=serf
+Type=simple
+# Load default config from /usr/etc, but check for user overrides from /etc.
+ExecStart=/usr/bin/serf agent -config-dir=/usr/etc/serf/config.d -config-dir=/etc/serf/config.d
+Restart=on-failure
+RestartSec=5s
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=serf
+#ProtectSystem=full
+#ProtectHome=yes
+#PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

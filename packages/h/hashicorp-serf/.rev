@@ -1,0 +1,17 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e66695809df51e59c6f079a9373e87ea</srcmd5>
+    <version>0.10.2</version>
+    <time>1765796702</time>
+    <user>anag_factory</user>
+    <comment>Serf is a service orchestration and management tool (more info on https://github.com/hashicorp/serf).It offers a decentralized, lightweight, highly available and fault tolerant solution for service discovery and orchestration that runs on Linux, Mac OS-X and Windows.
+
+An efficient and lightweight gossip protocol is used to communicate among the nodes, and node failures are detected and notified to the rest of the cluster. An event system is built on top of Serf, so that events such as deploys, configuration changes, et.c, can be propagated around.
+Serf is also completely masterless, meaning there's no single point of failure.
+
+This new package provides the agent that should be started on every node (and a service for running it).It's a cool tool, but besides that, we need it as a dependency for VirtX, a new tool that we're developing for handling a federation of libvirt hosts targeted at pet (large) VMs management (more info here: https://github.com/openSUSE/virtx , https://hackweek.opensuse.org/projects/virtx).And I'm submitting this package because the plan is to submit both this and virtx to Factory. And, of course, I'm willing to maintain it in Factory, if it's accepted.
+
+Note that this is a resubmission of the package with the different name (hashicorp-serf), as decided in the review of https://build.opensuse.org/requests/1321268?notification_id=75245325</comment>
+    <requestid>1322681</requestid>
+  </revision>
+</revisionlist>

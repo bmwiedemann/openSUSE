@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Fri Dec  5 22:52:41 UTC 2025 - Dario Faggioli <dfaggioli@suse.com>
+
+- Improve user creation and make the service file more robust 
+
+-------------------------------------------------------------------
+Thu Dec  4 17:31:57 UTC 2025 - Dario Faggioli <dfaggioli@suse.com>
+
+- Make the service run as its own (serf) user
+
+-------------------------------------------------------------------
+Thu Dec  4 16:36:22 UTC 2025 - Dario Faggioli <dfaggioli@suse.com>
+
+- Add a service and a config file
+
+-------------------------------------------------------------------
+Thu Dec  4 15:14:03 UTC 2025 - Dario Faggioli <dfaggioli@suse.com>
+
+- Skip one of the tests that often fails (mostly on ARM), due to
+  a timeout that is too short for OBS workers. 
+
+-------------------------------------------------------------------
+Tue Dec  2 15:31:27 UTC 2025 - Dario Faggioli <dfaggioli@suse.com>
+
+- Initial import of the sources in the package
+- We're packaging version 0.10.2

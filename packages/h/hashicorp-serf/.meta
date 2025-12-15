@@ -1,0 +1,18 @@
+<package name="hashicorp-serf" project="openSUSE:Factory">
+  <title>Service orchestration and management tool</title>
+  <description>Serf is a service orchestration and management tool.
+
+It offers a decentralized, lightweight, highly available and fault
+tolerant solution for service discovery and orchestration that runs
+on Linux, Mac OS-X and Windows.
+
+An efficient and lightweight gossip protocol is used to communicate
+among the nodes, and node failures are detected and notified to the rest
+of the cluster. An event system is built on top of Serf, so that events
+such as deploys, configuration changes, et.c, can be propagated around.
+Serf is also completely masterless, meaning there's no single point of
+failure.
+
+This package provides the agent that should be started on every node.</description>
+  <url>https://github.com/hashicorp/serf</url>
+</package>

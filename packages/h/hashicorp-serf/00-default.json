@@ -1,0 +1,5 @@
+{
+    "user_event_size_limit": 1024,
+    "bind": "0.0.0.0",
+    "log_level": "WARN"
+} 
