@@ -30,6 +30,7 @@ Source1:        https://orthanc.uclouvain.be/downloads/third-party-downloads/WSI
 Source2:        https://orthanc.uclouvain.be/downloads/third-party-downloads/bootstrap-5.3.3.zip
 Source3:        https://orthanc.uclouvain.be/downloads/third-party-downloads/WSI/popper-2.11.8.min.js.gz
 Source11:       orthanc-wsi-readme.SUSE
+Patch0:         framework.patch
 
 BuildRequires:  boost-devel
 BuildRequires:  cmake
@@ -80,7 +81,7 @@ The Orthanc project provides three official tools to support DICOM for whole-sli
 - Another command-line tool that converts a DICOM series stored inside Orthanc, to a standard hierarchical TIFF image.
 
 %prep
-%autosetup -n OrthancWSI-%{version}
+%autosetup -p1 -n OrthancWSI-%{version}
 
 #OrthanPlugin may ask for additional files to be loaded
 #Putting them into this folder prevents download of sources from the web

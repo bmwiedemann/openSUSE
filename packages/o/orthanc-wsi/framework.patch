@@ -1,0 +1,367 @@
+
+# HG changeset patch
+# User Sebastien Jodogne <s.jodogne@gmail.com>
+# Date 1764142996 -3600
+# Node ID 4fa295cdb6d8cf2a56cd669f05fb7a2883a96d98
+# Parent  21570147471a8939aca3024502bc8c76ffbc8b44
+fix build with Orthanc framework 1.12.10
+
+diff -r 21570147471a -r 4fa295cdb6d8 Framework/Outputs/MultiframeDicomWriter.cpp
+--- a/Framework/Outputs/MultiframeDicomWriter.cpp	Fri Nov 07 14:28:02 2025 +0100
++++ b/Framework/Outputs/MultiframeDicomWriter.cpp	Wed Nov 26 08:43:16 2025 +0100
+@@ -337,8 +337,14 @@
+ 
+       Orthanc::IDicomTranscoder::DicomImage transcoded;
+ 
++#if ORTHANC_FRAMEWORK_VERSION_IS_ABOVE(1, 12, 10)
++      const Orthanc::TranscodingSopInstanceUidMode allowNewSopInstanceUid = Orthanc::TranscodingSopInstanceUidMode_AllowNew;
++#else
++      const bool allowNewSopInstanceUid = true;
++#endif
++
+       Orthanc::DcmtkTranscoder transcoder(1);
+-      if (transcoder.Transcode(transcoded, source, s, true))
++      if (transcoder.Transcode(transcoded, source, s, allowNewSopInstanceUid))
+       {
+         ResetImage();
+         SaveDicomToMemory(target, transcoded.GetParsed(), transferSyntax_);
+diff -r 21570147471a -r 4fa295cdb6d8 Resources/Orthanc/CMake/Compiler.cmake
+--- a/Resources/Orthanc/CMake/Compiler.cmake	Fri Nov 07 14:28:02 2025 +0100
++++ b/Resources/Orthanc/CMake/Compiler.cmake	Wed Nov 26 08:43:16 2025 +0100
+@@ -246,6 +246,9 @@
+   # fix this error that appears with recent compilers on MacOS: boost/mpl/aux_/integral_wrapper.hpp:73:31: error: integer value -1 is outside the valid range of values [0, 3] for this enumeration type [-Wenum-constexpr-conversion]
+   SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-enum-constexpr-conversion")
+ 
++  # it seems that some recent MacOS compilers don't set these flags correctly which prevents zlib from building correctly
++  SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_LARGEFILE64_SOURCE=1 -D_FILE_OFFSET_BITS=64")
++
+   add_definitions(
+     -D_XOPEN_SOURCE=1
+     )
+diff -r 21570147471a -r 4fa295cdb6d8 Resources/Orthanc/CMake/DownloadOrthancFramework.cmake
+--- a/Resources/Orthanc/CMake/DownloadOrthancFramework.cmake	Fri Nov 07 14:28:02 2025 +0100
++++ b/Resources/Orthanc/CMake/DownloadOrthancFramework.cmake	Wed Nov 26 08:43:16 2025 +0100
+@@ -215,6 +215,10 @@
+         # Advanced storage 0.2.2 (framework pre-1.12.10)
+         set(ORTHANC_FRAMEWORK_PRE_RELEASE ON)
+         set(ORTHANC_FRAMEWORK_MD5 "bd5ba2cec329010b912209345acbdeaf")
++      elseif (ORTHANC_FRAMEWORK_VERSION STREQUAL "0ebe8cfd9bf7")
++        # Worklists plugin 0.9.0 (framework pre-1.12.10)
++        set(ORTHANC_FRAMEWORK_PRE_RELEASE ON)
++        set(ORTHANC_FRAMEWORK_MD5 "17a5ca9254e881ab89c93d052d4655cb")
+       endif()
+     endif()
+   endif()
+diff -r 21570147471a -r 4fa295cdb6d8 Resources/Orthanc/Plugins/OrthancPluginCppWrapper.cpp
+--- a/Resources/Orthanc/Plugins/OrthancPluginCppWrapper.cpp	Fri Nov 07 14:28:02 2025 +0100
++++ b/Resources/Orthanc/Plugins/OrthancPluginCppWrapper.cpp	Wed Nov 26 08:43:16 2025 +0100
+@@ -221,6 +221,19 @@
+   }
+ 
+ 
++  MemoryBuffer::~MemoryBuffer()
++  {
++    try
++    {
++      Clear();
++    }
++    catch (ORTHANC_PLUGINS_EXCEPTION_CLASS&)
++    {
++      // Don't throw exceptions in destructors
++    }
++  }
++
++
+   void MemoryBuffer::Clear()
+   {
+     if (buffer_.data != NULL)
+@@ -351,6 +364,8 @@
+     }
+   }
+ 
++
++#if (HAS_ORTHANC_PLUGIN_PEERS == 1) || (HAS_ORTHANC_PLUGIN_HTTP_CLIENT == 1) || (HAS_ORTHANC_PLUGIN_GENERIC_CALL_REST_API == 1)
+   static void DecodeHttpHeaders(HttpHeaders& target,
+                                 const MemoryBuffer& source)
+   {
+@@ -378,6 +393,8 @@
+       }
+     }
+   }
++#endif
++
+ 
+   // helper class to convert std::map of headers to the plugin SDK C structure
+   class PluginHttpHeaders
+@@ -652,6 +669,19 @@
+   }
+ 
+ 
++  OrthancString::~OrthancString()
++  {
++    try
++    {
++      Clear();
++    }
++    catch (ORTHANC_PLUGINS_EXCEPTION_CLASS&)
++    {
++      // Don't throw exceptions in destructors
++    }
++  }
++
++
+   void OrthancString::Assign(char* str)
+   {
+     Clear();
+@@ -1301,6 +1331,20 @@
+     }
+   }
+ 
++
++  OrthancImage::~OrthancImage()
++  {
++    try
++    {
++      Clear();
++    }
++    catch (ORTHANC_PLUGINS_EXCEPTION_CLASS&)
++    {
++      // Don't throw exceptions in destructors
++    }
++  }
++
++
+   void OrthancImage::UncompressPngImage(const void* data,
+                                         size_t size)
+   {
+@@ -2676,32 +2720,42 @@
+ 
+         return;
+       }
+-      else if (state == "Running")
++      else if (state == "Running" ||
++               state == "Pending" ||
++               state == "Paused" ||
++               state == "Retry")
+       {
+         continue;
+       }
+-      else if (!status.isMember("ErrorCode") ||
+-               status["ErrorCode"].type() != Json::intValue)
++      else if (state == "Failure")
+       {
+-        ORTHANC_PLUGINS_THROW_PLUGIN_ERROR_CODE(OrthancPluginErrorCode_InternalError);
++        if (!status.isMember("ErrorCode") ||
++            status["ErrorCode"].type() != Json::intValue)
++        {
++          ORTHANC_PLUGINS_THROW_PLUGIN_ERROR_CODE(OrthancPluginErrorCode_InternalError);
++        }
++        else
++        {
++          if (!status.isMember("ErrorDescription") ||
++              status["ErrorDescription"].type() != Json::stringValue)
++          {
++            ORTHANC_PLUGINS_THROW_PLUGIN_ERROR_CODE(status["ErrorCode"].asInt());
++          }
++          else
++          {
++  #if HAS_ORTHANC_EXCEPTION == 1
++            throw Orthanc::OrthancException(static_cast<Orthanc::ErrorCode>(status["ErrorCode"].asInt()),
++                                            status["ErrorDescription"].asString());
++  #else
++            ORTHANC_PLUGINS_LOG_ERROR("Exception while executing the job: " + status["ErrorDescription"].asString());
++            ORTHANC_PLUGINS_THROW_PLUGIN_ERROR_CODE(status["ErrorCode"].asInt());          
++  #endif
++          }
++        }
+       }
+       else
+       {
+-        if (!status.isMember("ErrorDescription") ||
+-            status["ErrorDescription"].type() != Json::stringValue)
+-        {
+-          ORTHANC_PLUGINS_THROW_PLUGIN_ERROR_CODE(status["ErrorCode"].asInt());
+-        }
+-        else
+-        {
+-#if HAS_ORTHANC_EXCEPTION == 1
+-          throw Orthanc::OrthancException(static_cast<Orthanc::ErrorCode>(status["ErrorCode"].asInt()),
+-                                          status["ErrorDescription"].asString());
+-#else
+-          ORTHANC_PLUGINS_LOG_ERROR("Exception while executing the job: " + status["ErrorDescription"].asString());
+-          ORTHANC_PLUGINS_THROW_PLUGIN_ERROR_CODE(status["ErrorCode"].asInt());          
+-#endif
+-        }
++        ORTHANC_PLUGINS_THROW_PLUGIN_ERROR_CODE(OrthancPluginErrorCode_InternalError);
+       }
+     }
+   }
+@@ -4607,8 +4661,11 @@
+     uint8_t found = false;
+     OrthancPlugins::MemoryBuffer valueBuffer;
+ 
++#pragma GCC diagnostic push
++#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+     OrthancPluginErrorCode code = OrthancPluginDequeueValue(OrthancPlugins::GetGlobalContext(), &found,
+                                                             *valueBuffer, queueId_.c_str(), origin);
++#pragma GCC diagnostic pop
+ 
+     if (code != OrthancPluginErrorCode_Success)
+     {
+@@ -4643,4 +4700,54 @@
+     }
+   }
+ #endif
++
++
++#if HAS_ORTHANC_PLUGIN_RESERVE_QUEUE_VALUE == 1
++  bool Queue::ReserveInternal(std::string& value, uint64_t& valueId, OrthancPluginQueueOrigin origin, uint32_t releaseTimeout)
++  {
++    uint8_t found = false;
++    OrthancPlugins::MemoryBuffer valueBuffer;
++
++    OrthancPluginErrorCode code = OrthancPluginReserveQueueValue(OrthancPlugins::GetGlobalContext(), &found,
++                                                                 *valueBuffer, &valueId, queueId_.c_str(), origin, releaseTimeout);
++
++    if (code != OrthancPluginErrorCode_Success)
++    {
++      ORTHANC_PLUGINS_THROW_PLUGIN_ERROR_CODE(code);
++    }
++    else if (found)
++    {
++      valueBuffer.ToString(value);
++      return true;
++    }
++    else
++    {
++      return false;
++    }
++  }
++#endif
++
++
++#if HAS_ORTHANC_PLUGIN_RESERVE_QUEUE_VALUE == 1
++  bool Queue::ReserveBack(std::string& value, uint64_t& valueId, uint32_t releaseTimeout)
++  {
++    return ReserveInternal(value, valueId, OrthancPluginQueueOrigin_Back, releaseTimeout);
++  }
++#endif
++
++
++#if HAS_ORTHANC_PLUGIN_RESERVE_QUEUE_VALUE == 1
++  bool Queue::ReserveFront(std::string& value, uint64_t& valueId, uint32_t releaseTimeout)
++  {
++    return ReserveInternal(value, valueId, OrthancPluginQueueOrigin_Front, releaseTimeout);
++  }
++#endif
++
++
++#if HAS_ORTHANC_PLUGIN_RESERVE_QUEUE_VALUE == 1
++  void Queue::Acknowledge(uint64_t valueId)
++  {
++    OrthancPluginAcknowledgeQueueValue(OrthancPlugins::GetGlobalContext(), queueId_.c_str(), valueId);
++  }
++#endif
+ }
+diff -r 21570147471a -r 4fa295cdb6d8 Resources/Orthanc/Plugins/OrthancPluginCppWrapper.h
+--- a/Resources/Orthanc/Plugins/OrthancPluginCppWrapper.h	Fri Nov 07 14:28:02 2025 +0100
++++ b/Resources/Orthanc/Plugins/OrthancPluginCppWrapper.h	Wed Nov 26 08:43:16 2025 +0100
+@@ -142,6 +142,12 @@
+ #  define HAS_ORTHANC_PLUGIN_QUEUES            0
+ #endif
+ 
++#if ORTHANC_PLUGINS_VERSION_IS_ABOVE(1, 12, 10)
++#  define HAS_ORTHANC_PLUGIN_RESERVE_QUEUE_VALUE   1
++#else
++#  define HAS_ORTHANC_PLUGIN_RESERVE_QUEUE_VALUE   0
++#endif
++
+ 
+ // Macro to tag a function as having been deprecated
+ #if (__cplusplus >= 201402L)  // C++14
+@@ -213,10 +219,7 @@
+   public:
+     MemoryBuffer();
+ 
+-    ~MemoryBuffer()
+-    {
+-      Clear();
+-    }
++    ~MemoryBuffer();
+ 
+     OrthancPluginMemoryBuffer* operator*()
+     {
+@@ -371,10 +374,7 @@
+     {
+     }
+ 
+-    ~OrthancString()
+-    {
+-      Clear();
+-    }
++    ~OrthancString();
+ 
+     // This transfers ownership, warning: The string must have been
+     // allocated by the Orthanc core
+@@ -491,10 +491,7 @@
+                  uint32_t                  pitch,
+                  void*                     buffer);
+ 
+-    ~OrthancImage()
+-    {
+-      Clear();
+-    }
++    ~OrthancImage();
+ 
+     void UncompressPngImage(const void* data,
+                             size_t size);
+@@ -1726,6 +1723,10 @@
+ 
+     bool DequeueInternal(std::string& value, OrthancPluginQueueOrigin origin);
+ 
++#if HAS_ORTHANC_PLUGIN_RESERVE_QUEUE_VALUE == 1
++    bool ReserveInternal(std::string& value, uint64_t& valueId, OrthancPluginQueueOrigin origin, uint32_t releaseTimeout);
++#endif
++
+   public:
+     explicit Queue(const std::string& queueId) :
+       queueId_(queueId)
+@@ -1745,17 +1746,37 @@
+       Enqueue(value.empty() ? NULL : value.c_str(), value.size());
+     }
+ 
++#if HAS_ORTHANC_PLUGIN_RESERVE_QUEUE_VALUE == 1
++    // Use ReserveBack() instead
++    ORTHANC_PLUGIN_DEPRECATED
++#endif
+     bool DequeueBack(std::string& value)
+     {
+       return DequeueInternal(value, OrthancPluginQueueOrigin_Back);
+     }
+ 
++#if HAS_ORTHANC_PLUGIN_RESERVE_QUEUE_VALUE == 1
++    // Use ReserveFront() instead
++    ORTHANC_PLUGIN_DEPRECATED
++#endif
+     bool DequeueFront(std::string& value)
+     {
+       return DequeueInternal(value, OrthancPluginQueueOrigin_Front);
+     }
+ 
+     uint64_t GetSize();
++
++#if HAS_ORTHANC_PLUGIN_RESERVE_QUEUE_VALUE == 1
++    bool ReserveBack(std::string& value, uint64_t& valueId, uint32_t releaseTimeout);
++#endif
++
++#if HAS_ORTHANC_PLUGIN_RESERVE_QUEUE_VALUE == 1
++    bool ReserveFront(std::string& value, uint64_t& valueId, uint32_t releaseTimeout);
++#endif
++
++#if HAS_ORTHANC_PLUGIN_RESERVE_QUEUE_VALUE == 1
++    void Acknowledge(uint64_t valueId);
++#endif
+   };
+ #endif
+ }
+
