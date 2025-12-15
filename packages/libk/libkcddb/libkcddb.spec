@@ -18,7 +18,8 @@
 
 %define kf5_version 5.92.0
 %define qt5_version 5.15.2
-
+# For KDE unstable applications repository
+%define rversion 25.04.3
 %bcond_without released
 Name:           libkcddb
 Version:        25.04.3
@@ -26,9 +27,9 @@ Release:        0
 Summary:        CDDB library for KDE Applications
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{rversion}/src/%{name}-%{rversion}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{rversion}/src/%{name}-%{rversion}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  pkgconfig
@@ -42,10 +43,10 @@ BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
 BuildRequires:  cmake(KF5WidgetsAddons) >= %{kf5_version}
 BuildRequires:  cmake(Qt5Network) >= %{qt5_version}
 BuildRequires:  cmake(Qt5Widgets) >= %{qt5_version}
-Provides:       libkcddb5 = %{version}
-Obsoletes:      libkcddb5 < %{version}
-Provides:       libkcddb16 = %{version}
-Obsoletes:      libkcddb16 < %{version}
+Provides:       libkcddb5 = %{rversion}
+Obsoletes:      libkcddb5 < %{rversion}
+Provides:       libkcddb16 = %{rversion}
+Obsoletes:      libkcddb16 < %{rversion}
 
 %description
 The KDE Compact Disc DataBase library provides an API for applications to fetch
@@ -53,7 +54,7 @@ and submit audio CD information over the Internet.
 
 %package -n libKF5Cddb5
 Summary:        CDDB library for KDE Applications
-Recommends:     %{name} >= %{version}
+Recommends:     %{name} >= %{rversion}
 
 %description -n libKF5Cddb5
 The KDE Compact Disc DataBase library provides an API for applications to fetch
@@ -61,9 +62,9 @@ and submit audio CD information over the Internet.
 
 %package devel
 Summary:        Development files for KDE CDDB library
-Requires:       libKF5Cddb5 = %{version}
-Provides:       libkcddb5-devel = %{version}
-Obsoletes:      libkcddb5-devel < %{version}
+Requires:       libKF5Cddb5 = %{rversion}
+Provides:       libkcddb5-devel = %{rversion}
+Obsoletes:      libkcddb5-devel < %{rversion}
 
 %description devel
 This package includes the development headers for libkcddb.
@@ -71,7 +72,7 @@ This package includes the development headers for libkcddb.
 %lang_package
 
 %prep
-%autosetup -p1 -n %{name}-%{version}
+%autosetup -p1 -n %{name}-%{rversion}
 
 %build
 %cmake_kf5 -d build
