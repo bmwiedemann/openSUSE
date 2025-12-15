@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Dec 13 19:01:42 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.16.1:
+  - fix(config): use the config propery generate.strict as default
+    value for Strict rules (#3303)
+  - fix: Fix version check against latest release (#3292)
+
+-------------------------------------------------------------------
 Thu Nov 13 19:46:20 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.16.0:

@@ -147,4 +147,15 @@
 - remove the -w flag from the ldflags</comment>
     <requestid>1317657</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c018011eeeab79db50c925741bcb7d9c</srcmd5>
+    <version>1.16.1</version>
+    <time>1765796389</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.16.1:
+  - fix(config): use the config propery generate.strict as default
+    value for Strict rules (#3303)
+  - fix: Fix version check against latest release (#3292)</comment>
+    <requestid>1322794</requestid>
+  </revision>
 </revisionlist>
