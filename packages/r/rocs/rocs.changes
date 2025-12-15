@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:41:17 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- No code change since 25.11.80
+
+-------------------------------------------------------------------
+Sat Nov 15 19:57:21 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * Reactivate property dialogs after Qt6 port
+  * Modernize and refactor QML graph editor
+  * Finalize QML modernization of view
+  * Refactor QML integration to QML module
+  * Rework graph file format support and simplify integration
+  * Port away from deprecated include
+  * Avoid message boxex in library code
+  * Fix wrong and conflicting plugin identifier
+  * Fix document import behavior and reenable tests
+  * Fix doc installation
+  * Disable project test until schmeme handling is implemented again
+  * Skip test due to missing implementation
+  * Initial port of QML elements to Qt6
+  * Fix handling of invalid dynamic properties
+  * gitlab-ci: update to templates
+  * kde-ci: adapt for Qt6
+  * Simple porting changes to Qt6
+  * Port away from qpair
+  * Port build system to Qt6 dependencies
+  * Remove finally obsolete QScript dependency
+  * Implement dynamic property handling
+  * WIP introduce new engine facade to replicate dynamic property behavior of qtscript
+  * Refactor DocumentWrapper::remove(...)
+  * [#12] Update QScriptEngine
+
+-------------------------------------------------------------------
 Thu Nov  6 18:38:18 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
