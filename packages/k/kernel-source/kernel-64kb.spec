@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.18
-%define patchversion 6.18.0
-%define git_commit 371bdaf6331fcbaa19c6f7c0aa6f3af5a36f7e2b
+%define patchversion 6.18.1
+%define git_commit ffe6340b267ac4e36a25057fcb92f9a0c0f7d2b4
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -40,9 +40,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-64kb
-Version:        6.18.0
+Version:        6.18.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g371bdaf
+Release:        <RELEASE>.gffe6340
 %else
 Release:        0
 %endif
@@ -1135,59 +1135,6 @@ accessible simultaneously from multiple nodes of a cluster.
 
 %files -n ocfs2-kmp-%build_flavor -f ocfs2-kmp.files
 
-%package -n reiserfs-kmp-%build_flavor
-Summary:        Reiserfs kernel module
-Group:          System/Kernel
-Requires:       %name = %version-%source_rel
-Provides:       reiserfs-kmp = %version-%source_rel
-Provides:       multiversion(kernel)
-# tell weak-modules2 to ignore this package
-Provides:       kmp_in_kernel
-Requires(post): suse-module-tools >= 12.4
-%if %build_default
-%if "%CONFIG_PREEMPT_DYNAMIC" == "y"
-Provides:       reiserfs-kmp-preempt = %version-%release
-%endif
-%endif
-Enhances:	%name
-Supplements:	packageand(%name:reiserfs-kmp-%build_flavor)
-
-%description -n reiserfs-kmp-%build_flavor
-The reiserfs file system is no longer supported in SLE15.  This package
-provides the reiserfs module for the installation system.
-
-%pre -n reiserfs-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "reiserfs-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
-
-%post -n reiserfs-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "reiserfs-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
-
-%preun -n reiserfs-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "reiserfs-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
-
-%postun -n reiserfs-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "reiserfs-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
-
-%posttrans -n reiserfs-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "reiserfs-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
-
-%files -n reiserfs-kmp-%build_flavor -f reiserfs-kmp.files
-
 %endif # %CONFIG_SUSE_KERNEL_SUPPORTED
 %endif # %CONFIG_MODULES
 
@@ -1232,7 +1179,7 @@ awk '{
 subpackages=(
 	base
 %if "%CONFIG_SUSE_KERNEL_SUPPORTED" == "y"
-	cluster-md-kmp dlm-kmp gfs2-kmp kselftests-kmp ocfs2-kmp reiserfs-kmp
+	cluster-md-kmp dlm-kmp gfs2-kmp kselftests-kmp ocfs2-kmp
 %endif
 )
 for package in "${subpackages[@]}"; do
@@ -1469,9 +1416,11 @@ fi
 
 %install
 
+%if 0%{?__debug_package:1}
 # get rid of /usr/lib/rpm/brp-strip-debug
-# strip removes too much from the vmlinux ELF binary
 export NO_BRP_STRIP_DEBUG=true
+%endif
+# strip removes too much from the vmlinux ELF binary
 export STRIP_KEEP_SYMTAB='*/vmlinux*'
 
 # %kernel_module_directory/%kernelrelease-%build_flavor/source points to the source

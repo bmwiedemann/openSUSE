@@ -7272,4 +7272,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>use suse-kabi-tools</comment>
     <requestid>1321329</requestid>
   </revision>
+  <revision rev="815" vrev="1">
+    <srcmd5>0706f536e97b8a4fd07622cd88467b5a</srcmd5>
+    <version>6.18.1</version>
+    <time>1765794909</time>
+    <user>anag_factory</user>
+    <comment>6.18.1 &amp; iwlwifi FW fix; bugs: bsc#1012628 bsc#1254352</comment>
+    <requestid>1322680</requestid>
+  </revision>
 </revisionlist>
