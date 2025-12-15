@@ -173,4 +173,12 @@
     <comment>distribution-gpg-keys 1.114 (forwarded request 1299986 from AndreasStieger)</comment>
     <requestid>1299987</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>12605f92d3190f7f0f5132e3e7402ced</srcmd5>
+    <version>1.115</version>
+    <time>1765796706</time>
+    <user>anag_factory</user>
+    <comment>distribution-gpg-keys 1.115</comment>
+    <requestid>1322847</requestid>
+  </revision>
 </revisionlist>

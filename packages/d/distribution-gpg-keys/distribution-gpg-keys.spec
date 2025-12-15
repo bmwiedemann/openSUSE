@@ -19,24 +19,22 @@
 #
 
 
-# Release versions are part of the git tag
-%global origrel 1
-
 Name:           distribution-gpg-keys
-Version:        1.114
+Version:        1.115
 Release:        0
 Summary:        GPG keys of various Linux distributions
 Group:          System/Packages
 License:        CC0-1.0
 URL:            https://github.com/rpm-software-management/distribution-gpg-keys
-Source0:        %{url}/archive/%{name}-%{version}-%{origrel}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
+BuildRequires:  fdupes
 BuildArch:      noarch
 
 %description
 GPG keys used by various Linux distributions to sign packages.
 
 %prep
-%autosetup -p1 -n %{name}-%{name}-%{version}-%{origrel}
+%autosetup -p1
 
 %build
 #nothing to do here
@@ -47,6 +45,8 @@ cp -a keys/* %{buildroot}%{_datadir}/%{name}/
 
 # We don't want to package COPR GPG keys
 rm -rf %{buildroot}%{_datadir}/%{name}/copr
+
+%fdupes %{buildroot}/%{_prefix}
 
 %files
 %license LICENSE

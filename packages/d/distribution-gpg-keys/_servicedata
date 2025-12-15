@@ -1,0 +1,6 @@
+<servicedata>
+  <service name="tar_scm">
+    <param name="url">https://github.com/rpm-software-management/distribution-gpg-keys.git</param>
+    <param name="changesrevision">bdefbad0f9987fabdd37cb93f39186f6275f7144</param>
+  </service>
+</servicedata>
