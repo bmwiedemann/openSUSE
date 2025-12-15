@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.14.0
-%define qt6_version 6.7.0
+%define kf6_version 6.19.0
+%define qt6_version 6.9.0
 #
 %bcond_without released
 Name:           kamoso
-Version:        25.08.3
+Version:        25.12.0
 Release:        0
 Summary:        Application to take pictures and videos using a webcam
 License:        GPL-2.0-or-later
@@ -37,6 +37,7 @@ BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6KirigamiAddons)
 BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
 BuildRequires:  cmake(KF6Purpose) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}

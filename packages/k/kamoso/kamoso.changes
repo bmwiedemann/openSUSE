@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:25 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- No code change since 25.11.80
+
+-------------------------------------------------------------------
+Sat Nov 15 19:56:26 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * Use KirigamiAddons to initialise the app
+  * qml: Remove workaround that doesn't apply anymore
+  * Fix FolderDialog usage
+  * Fix list item highlights not being full-width (kde#508495)
+  * Added BUILD_DOC option as to make the documentation optional
+  * Fix camera selection
+  * Add an About dialog (kde#506677)
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:23 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
