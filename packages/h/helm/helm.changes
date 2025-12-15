@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec 11 07:00:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.0.2:
+  * fix: prevent reporting fallback on version when none specified
+  * fix: prevent segmentation violation on empty yaml in multidoc
+  * Ignore duplicated URN in logs
+  * jsonschema: warn and ignore unresolved URN $ref to match
+    v3.18.4
+  * Publish Helm v4 -> `helm-latest-version`
+  * fix: Fix Helm v4 release distribtion/get-helm-3 script
+
+-------------------------------------------------------------------
 Tue Nov 25 07:41:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.0.1:
