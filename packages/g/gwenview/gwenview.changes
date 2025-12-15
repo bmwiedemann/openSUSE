@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:20 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- No code change since 25.11.80
+
+-------------------------------------------------------------------
+Sat Nov 15 19:56:22 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * Reversed zoom combo box items. (kde#458241)
+  * removing last year's fundraiser supporters
+  * Suggest kimageformats package on unknown documents type error message
+  * Add KColorSchemeManager for Window Color Menu
+  * Consult NormalPalette for whether we are light/dark mode
+  * Fix various typos Fixes user-facing and non-user-facing typos.
+  * don't warn in release builds
+  * gitignore: add more ignored items
+  * Edit README.md(add Snap link+ icon)
+  * use proper icon set and style outside of Plasma
+  * Fix fade out bug in video player controls in comparison mode
+  * Fix alpha background smaller than the image on non-integer device pixel ratio
+  * add color space conversion support
+  * Fix invalid memory read when HudButtonBox is dismissed
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:18 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
