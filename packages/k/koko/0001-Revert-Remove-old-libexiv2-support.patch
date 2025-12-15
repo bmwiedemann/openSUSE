@@ -1,0 +1,42 @@
+From 1be7cf045b2c1d83f8c2b483ed424d66558d3bed Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Sat, 6 Dec 2025 17:00:54 +0100
+Subject: [PATCH] Revert: "Remove old libexiv2 support"
+
+---
+ CMakeLists.txt         | 2 +-
+ src/exiv2extractor.cpp | 4 ++++
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 735ea71..4839e7a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -49,7 +49,7 @@ endif()
+ 
+ find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS I18n Declarative Config ConfigWidgets KIO CoreAddons Notifications FileMetaData DBusAddons)
+ 
+-find_package(LibExiv2 0.28 REQUIRED)
++find_package(LibExiv2 0.27 REQUIRED)
+ 
+ ecm_find_qmlmodule(org.kde.kquickimageeditor)
+ find_package(KQuickImageEditor 0.6.0 COMPONENTS)
+diff --git a/src/exiv2extractor.cpp b/src/exiv2extractor.cpp
+index 7b915ed..6f2eae2 100644
+--- a/src/exiv2extractor.cpp
++++ b/src/exiv2extractor.cpp
+@@ -290,7 +290,11 @@ void Exiv2Extractor::extract(const QString &filePath)
+     std::string fileString(arr.data(), arr.length());
+ 
+     Exiv2::LogMsg::setLevel(Exiv2::LogMsg::mute);
++#if EXIV2_TEST_VERSION(0, 27, 99)
+     Exiv2::Image::UniquePtr image;
++#else
++    Exiv2::Image::AutoPtr image;
++#endif
+ 
+     QFileInfo file_info(m_filePath);
+ 
+-- 
+2.52.0
+

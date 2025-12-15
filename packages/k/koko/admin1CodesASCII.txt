@@ -6,7 +6,7 @@ AD.02	Canillo	Canillo	3041203
 AD.07	Andorra la Vella	Andorra la Vella	3041566
 AD.08	Escaldes-Engordany	Escaldes-Engordany	3338529
 AE.07	Umm al Qaywayn	UmmalQaywayn	290595
-AE.05	Raʼs al Khaymah	Ra's al Khaymah	291075
+AE.05	Ras Al Khaimah	Ras Al Khaimah	291075
 AE.03	Dubai	Dubai	292224
 AE.06	Sharjah	Sharjah	292673
 AE.04	Fujairah	Fujairah	292879
@@ -171,14 +171,14 @@ AZ.35	Nakhichevan ASSR	Nakhichevan ASSR	147435
 AZ.32	Masally	Masally	147551
 AZ.31	Lerik District	Lerik District	147610
 AZ.29	Lənkəran	Lankaran	147613
-AZ.28	Laçın	Lacin	147626
+AZ.28	Lachin Rayon	Lachin Rayon	147626
 AZ.43	Qubadlı	Qubadli	147694
 AZ.24	İmişli	Imisli	147983
 AZ.18	Fuzuli District	Fuzuli District	148107
 AZ.14	Jabrayil	Jabrayil	148140
 AZ.15	Jalilabad	Jalilabad	148155
 AZ.08	Astara	Astara	148442
-AZ.64	Xocalı	Xocali	148449
+AZ.64	Khojaly	Khojaly	148449
 AZ.02	Ağcabǝdi	Aghjabadi Rayon	148615
 AZ.03	Ağdam	Agdam	148617
 AZ.07	Shirvan	Shirvan	409417
@@ -1012,13 +1012,13 @@ FR.11	Île-de-France	Ile-de-France	3012874
 FR.94	Corsica	Corsica	3023519
 FR.24	Centre	Centre	3027939
 FR.53	Brittany	Brittany	3030293
-FR.27	Bourgogne-Franche-Comté	Bourgogne-Franche-Comte	11071619
+FR.27	Bourgogne	Bourgogne	11071619
 FR.75	Nouvelle-Aquitaine	Nouvelle-Aquitaine	11071620
 FR.28	Normandy	Normandy	11071621
 FR.44	Grand Est	Grand Est	11071622
 FR.76	Occitanie	Occitanie	11071623
 FR.32	Hauts-de-France	Hauts-de-France	11071624
-FR.84	Auvergne-Rhône-Alpes	Auvergne-Rhone-Alpes	11071625
+FR.84	Rhône-Alpes	Rhone-Alpes	11071625
 GA.09	Woleu-Ntem	Woleu-Ntem	2396076
 GA.08	Ogooué-Maritime	Ogooue-Maritime	2396924
 GA.07	Ogooué-Lolo	Ogooue-Lolo	2396925
@@ -1184,20 +1184,20 @@ GY.10	Barima-Waini	Barima-Waini	3379515
 HK.NYL	Yuen Long	Yuen Long	1818224
 HK.NTW	Tsuen Wan	Tsuen Wan	1818458
 HK.NTP	Tai Po	Tai Po	1818672
-HK.NSK	Sai Kung	Sai Kung	1819049
+HK.NSK	Sai Kung District	Sai Kung District	1819049
 HK.NIS	Islands	Islands	1819708
 HK.HCW	Central and Western	Central and Western	7533598
 HK.HWC	Wan Chai	Wan Chai	7533607
-HK.HEA	Eastern	Eastern	7533608
-HK.HSO	Southern	Southern	7533609
-HK.KYT	Yau Tsim Mong	Yau Tsim Mong	7533610
-HK.KSS	Sham Shui Po	Sham Shui Po	7533611
+HK.HEA	Eastern District	Eastern District	7533608
+HK.HSO	Southern District	Southern District	7533609
+HK.KYT	Yau Tsim Mong District	Yau Tsim Mong District	7533610
+HK.KSS	Sham Shui Po District	Sham Shui Po District	7533611
 HK.KKC	Kowloon City	Kowloon City	7533612
-HK.KWT	Wong Tai Sin	Wong Tai Sin	7533613
-HK.KKT	Kwun Tong	Kwun Tong	7533614
-HK.NKT	Kwai Tsing	Kwai Tsing	7533615
+HK.KWT	Wong Tai Sin District	Wong Tai Sin District	7533613
+HK.KKT	Kwun Tong District	Kwun Tong District	7533614
+HK.NKT	Kwai Tsing District	Kwai Tsing District	7533615
 HK.NTM	Tuen Mun	Tuen Mun	7533616
-HK.NNO	North	North	7533617
+HK.NNO	North District	North District	7533617
 HK.NST	Sha Tin	Sha Tin	7533618
 HN.18	Yoro Department	Yoro Department	3600193
 HN.17	Valle Department	Valle Department	3600456
@@ -1812,14 +1812,14 @@ LV.32	Ventspils	Ventspils	454311
 LV.31	Valmiera	Valmiera	454564
 LV.30	Valka	Valka	454571
 LV.29	Tukums Municipality	Tukums Municipality	454771
-LV.28	Talsi Municipality	Talsi Municipality	454968
+LV.28	Talsu novads	Talsu novads	454968
 LV.27	Saldus Rajons	Saldus Rajons	455888
 LV.25	Riga	Riga	456173
 LV.24	Rēzekne Municipality	Rezekne Municipality	456197
 LV.23	Rēzekne	Rezekne	456203
 LV.22	Preiļu novads	Preilu novads	456528
 LV.21	Ogre	Ogre	457061
-LV.20	Madona Municipality	Madona Municipality	457712
+LV.20	Madonas novads	Madonas novads	457712
 LV.19	Ludza Municipality	Ludza Municipality	457773
 LV.18	Limbaži Municipality	Limbazi Municipality	457889
 LV.16	Liepāja	Liepaja	457955
@@ -2909,19 +2909,19 @@ SC.12200080	Ile Perseverance II	Ile Perseverance II	12200080
 SD.43	Northern State	Northern State	378389
 SD.29	Khartoum	Khartoum	379253
 SD.36	Red Sea	Red Sea	408646
-SD.38	Al Jazīrah	Al Jazirah	408648
+SD.38	Al Jazirah	Al Jazirah	408648
 SD.39	Al Qaḑārif	Al Qadarif	408649
 SD.41	White Nile	White Nile	408653
 SD.42	Blue Nile	Blue Nile	408654
 SD.47	Western Darfur	Western Darfur	408658
-SD.62	West Kordofan State	West Kordofan State	408659
+SD.62	West Kordofan	West Kordofan	408659
 SD.49	Southern Darfur	Southern Darfur	408660
 SD.50	Southern Kordofan	Southern Kordofan	408661
 SD.52	Kassala	Kassala	408663
 SD.53	River Nile	River Nile	408664
 SD.55	Northern Darfur	Northern Darfur	408666
 SD.56	North Kordofan	North Kordofan	408667
-SD.58	Sinnār	Sinnar	408669
+SD.58	Sennar	Sennar	408669
 SD.60	Eastern Darfur	Eastern Darfur	8394435
 SD.61	Central Darfur	Central Darfur	8394436
 SE.14	Norrbotten	Norrbotten	604010
@@ -3262,7 +3262,7 @@ SY.08	Rif-dimashq	Rif-dimashq	170652
 SY.07	Deir ez-Zor	Deir ez-Zor	170792
 SY.06	Daraa	Daraa	170903
 SY.05	As-Suwayda	As-Suwayda	172410
-SY.04	Ar-Raqqah	Ar-Raqqah	172957
+SY.04	Raqqa	Raqqa	172957
 SY.03	Quneitra	Quneitra	173336
 SY.02	Latakia	Latakia	173578
 SY.01	Al-Hasakah	Al-Hasakah	173813

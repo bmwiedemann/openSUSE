@@ -394,7 +394,7 @@ AF.41.3408	Sang-e Takht	Sang-e Takht	7054332
 AF.41.3409	Shahristān	Shahristan	7054334
 AF.42.3306	‘Unābah	'Unabah	7054336
 AF.42.3301	Bāzārak	Bazarak	7054337
-AF.42.3302	Darah	Darah	7054338
+AF.42.3302	Darah-e Hazara	Darah-e Hazara	7054338
 AF.42.3303	Khinj	Khinj	7054339
 AF.42.3304	Parīān	Parian	7054340
 AF.42.3307	Rukhah	Rukhah	7054341
@@ -741,7 +741,6 @@ AO.08.3347110	Mungo	Mungo	3347110
 AO.04.3347352	Menongue	Menongue	3347352
 AO.09.3347423	Matala	Matala	3347423
 AO.12.3347614	Luquembo	Luquembo	3347614
-AO.14.3347741	Luchazes	Luchazes	3347741
 AO.09.3347760	Lubango	Lubango	3347760
 AO.08.3347852	Longonjo	Longonjo	3347852
 AO.08.3347879	Londuimbali	Londuimbali	3347879
@@ -8867,7 +8866,7 @@ CA.01.4819041	Municipal District of Smoky River No. 130	Municipal District of Sm
 CA.01.4819054	Municipal District of Spirit River No. 133	Municipal District of Spirit River No. 133	6084218
 CA.01.4802021	Municipal District of Taber	Municipal District of Taber	6084219
 CA.01.4807049	Municipal District of Wainwright No. 61	Municipal District of Wainwright No. 61	6084220
-CA.01.4813028	Municipal District of Westlock No. 92	Municipal District of Westlock No. 92	6084221
+CA.01.4813028	Westlock County	Westlock County	6084221
 CA.01.4803018	Municipal District of Willow Creek No. 26	Municipal District of Willow Creek No. 26	6084222
 CA.08.3544	District Municipality of Muskoka	District Municipality of Muskoka	6084939
 CA.11.4708071	Newcombe No. 260	Newcombe No. 260	6087497
@@ -10703,6 +10702,7 @@ CI.82.11362033	Région de La Mé	Region de La Me	11362033
 CI.98.11153154	Yamoussoukro	Yamoussoukro	11996435
 CI.93.11996449	Abidjan	Abidjan	11996449
 CK.11695124.4035518	Tautu District	Tautu District	4035518
+CK.11695425.4035726	Arorangi District	Arorangi District	4035726
 CK.11695124.4036514	Vaitupa District	Vaitupa District	4036514
 CK.11695124.4036515	Anaunga District	Anaunga District	4036515
 CK.11695124.4036516	Avanui District	Avanui District	4036516
@@ -23482,6 +23482,7 @@ LR.13.9645233	Karluway Number One District	Karluway Number One District	9645233
 LR.13.9645234	Karluway Number Two District	Karluway Number Two District	9645234
 LR.16.13423958	Gee District	Gee District	13423958
 LS.12.7303922	Khomokhoana Community	Khomokhoana Community	7303922
+LS.14.7304421	Qiloane Community	Qiloane Community	7304421
 LS.14.7522489	Makhaleng Constituency	Makhaleng Constituency	7522489
 LS.12.7670780	Urban	Urban	7670780
 LS.12.7670807	Hleoheng	Hleoheng	7670807
@@ -23826,7 +23827,7 @@ LV.20.0705554	Ērgļu pagasts	Erglu pagasts	11352590
 LV.20.0705560	Jumurdas pagasts	Jumurdas pagasts	11352591
 LV.20.0705592	Sausnējas pagasts	Sausnejas pagasts	11352592
 LV.01.0321027	Jaunjelgavas pagasts	Jaunjelgavas pagasts	11352593
-LV.B5.0806000	Garkalnes novads	Garkalnes novads	11352594
+LV.B5.0806000	Garkalnes pagasts	Garkalnes pagasts	11352594
 LV.DN.0641044	Bārtas pagasts	Bartas pagasts	11352595
 LV.DN.0641056	Gaviezes pagasts	Gaviezes pagasts	11352596
 LV.DN.0641060	Grobiņas pagasts	Grobinas pagasts	11352597
@@ -38185,6 +38186,10 @@ RU.59.13497841	Dal’nerechenskiy Gorodskoy Okrug	Dal'nerechenskiy Gorodskoy Okr
 RU.59.13497842	Artëmovskiy Gorodskoy Okrug	Artemovskiy Gorodskoy Okrug	13497842
 RU.59.13497843	Gorodskoy Okrug Spassk-Dal’niy	Gorodskoy Okrug Spassk-Dal'niy	13497843
 RU.59.13497844	Arsen’yevskiy Gorodskoy Okrug	Arsen'yevskiy Gorodskoy Okrug	13497844
+RU.81.13515970	Gorodskoy Okrug Ul’yanovsk	Gorodskoy Okrug Ul'yanovsk	13515970
+RU.81.13515971	Gorodskoy Okrug Novoul’yanovsk	Gorodskoy Okrug Novoul'yanovsk	13515971
+RU.81.13515972	Gorodskoy Okrug Dimitrovgrad	Gorodskoy Okrug Dimitrovgrad	13515972
+RU.81.13515973	Bazarnosyzganskiy Rayon	Bazarnosyzganskiy Rayon	13515973
 RW.11.52	Nyagatare District	Nyagatare District	7688799
 RW.11.53	Gatsibo District	Gatsibo District	7688800
 RW.11.54	Kayonza District	Kayonza District	7688801
@@ -38860,11 +38865,11 @@ SH.02.12746831	Levelwood	Levelwood	12746831
 SH.02.12746832	Longwood	Longwood	12746832
 SH.02.12746833	Sandy Bay	Sandy Bay	12746833
 SH.02.12746834	Saint Paul's	Saint Paul's	12746834
-SI.09.3196350	Opština Ljubljana-Vič-Rudnik	Opstina Ljubljana-Vic-Rudnik	3196350
-SI.71.3196352	Opština [historical] Ljubljana-Šiška	Opstina [historical] Ljubljana-Siska	3196352
+SI.09.3196350	Rudnik District	Rudnik District	3196350
+SI.71.3196352	Šiška District	Siska District	3196352
 SI.61.3196355	Opština Ljubljana-Moste-Polje	Opstina Ljubljana-Moste-Polje	3196355
 SI.61.3196356	Opština Ljubljana-Center	Opstina Ljubljana-Center	3196356
-SI.61.3196357	Opčina Ljubljana-Bežigrad	Opcina Ljubljana-Bezigrad	3196357
+SI.61.3196357	Bežigrad District	Bezigrad District	3196357
 SI.M8.9794374	Črnuče District	Crnuce District	9794374
 SI.61.9794375	Dravlje District	Dravlje District	9794375
 SI.61.9794376	Golovec District	Golovec District	9794376
@@ -40592,6 +40597,16 @@ TM.05.1218305	Tagtabazar Etrap	Tagtabazar Etrap	1218305
 TM.05.1218742	Guşgy Etrap	Gusgy Etrap	1218742
 TM.01.11189155	Baharly District	Baharly District	11189155
 TM.03.11820056	Akdepe District	Akdepe District	11820056
+TM.05.13526664	Mary District	Mary District	13526664
+TM.05.13526677	Baýramaly District	Bayramaly District	13526677
+TM.05.13526678	Garagum District	Garagum District	13526678
+TM.05.13526679	Murgap District	Murgap District	13526679
+TM.05.13526680	Sakarçäge District	Sakarcaege District	13526680
+TM.05.13526681	Ýolöten District	Yoloeten District	13526681
+TM.05.13526682	Wekilbazar District	Wekilbazar District	13526682
+TM.03.13526879	Gubadag District	Gubadag District	13526879
+TM.04.13526881	Saýat District	Sayat District	13526881
+TM.05.13526882	Türkmengala District	Tuerkmengala District	13526882
 TN.37.1651	Zaghouan	Zaghouan	2464039
 TN.36.1152	Délégation de la Médina	Delegation de la Medina	2464465
 TN.35.6251	Tozeur	Tozeur	2464646
@@ -42084,6 +42099,7 @@ TZ.32.6001	Songwe District	Songwe District	11951161
 UA.01.7102	Zvenihorodka Raion	Zvenihorodka Raion	686801
 UA.01.7104	Zolotonosha Raion	Zolotonosha Raion	686871
 UA.15.4604	Zolochivskyi Raion	Zolochivskyi Raion	686893
+UA.12.687055	Solomianka Rayon	Solomianka Rayon	687055
 UA.23.0506	Zhmerynka Raion	Zhmerynka Raion	687114
 UA.27.1804	Zhytomyr Raion	Zhytomyr Raion	687124
 UA.26.2306	Zaporizhzhya Raion	Zaporizhzhya Raion	687686
@@ -42106,6 +42122,7 @@ UA.14.4414	Starobilskyi Raion	Starobilskyi Raion	692830
 UA.08.6508	Skadovsk Raion	Skadovsk Raion	693707
 UA.04.1214	Synelnykove Raion	Synelnykove Raion	693793
 UA.11.0116	Simferopol Raion	Simferopol Raion	693803
+UA.12.694120	Shevchenkivskyi Raion	Shevchenkivskyi Raion	694120
 UA.09.6806	Shepetivka Raion	Shepetivka Raion	694213
 UA.19.5608	Sarnenskyi Raion	Sarnenskyi Raion	694800
 UA.21.5906	Romenskyi Raion	Romenskyi Raion	695466
@@ -42114,7 +42131,9 @@ UA.25.2106	Rakhiv Raion	Rakhiv Raion	695857
 UA.02.7408	Prylutskyi Raion	Prylutskyi Raion	696294
 UA.18.5308	Poltava Raion	Poltava Raion	696629
 UA.26.2310	Polohy Raion	Polohy Raion	696670
+UA.12.696872	Podilskyi Raion	Podilskyi Raion	696872
 UA.16.4808	Pervomaysk Raion	Pervomaysk Raion	697571
+UA.12.697796	Pechersk Raion	Pechersk Raion	697796
 UA.04.1212	Pavlohrad Raion	Pavlohrad Raion	697888
 UA.13.3212	Obukhiv Raion	Obukhiv Raion	698777
 UA.10.3506	Novoukrayinka Raion	Novoukrayinka Raion	699073
@@ -42122,10 +42141,13 @@ UA.04.1210	Samar Raion	Samar Raion	699442
 UA.04.1208	Nikopol Raion	Nikopol Raion	700049
 UA.06.2612	Nadvirna Raion	Nadvirna Raion	700505
 UA.25.2104	Mukachevo Raion	Mukachevo Raion	700644
+UA.12.700708	Holosiiv Raion	Holosiiv Raion	700708
 UA.23.0508	Mohyliv-Podilskyy Raion	Mohyliv-Podilskyy Raion	700917
 UA.18.5306	Myrhorod Raion	Myrhorod Raion	701072
+UA.12.701078	Obolonskyi Raion	Obolonskyi Raion	701078
 UA.26.2308	Melitopol Raion	Melitopol Raion	701403
 UA.18.5304	Lubny Raion	Lubny Raion	702724
+UA.12.703266	Sviatoshynskyi Raion	Sviatoshynskyi Raion	703266
 UA.04.1206	Kryvyy Rih Raion	Kryvyy Rih Raion	704025
 UA.22.6102	Kremenets Raion	Kremenets Raion	704140
 UA.18.5302	Kremenchuk Raion	Kremenchuk Raion	704149
@@ -42154,6 +42176,7 @@ UA.10.3508	Oleksandriya Raion	Oleksandriya Raion	709226
 UA.13.3214	Fastiv Raion	Fastiv Raion	709244
 UA.11.0106	Dzhankoyskiy rayon	Dzhankoyskiy rayon	709333
 UA.04.1202	Dnipro rural raion	Dnipro rural raion	709961
+UA.12.710276	Darnytsia Raion	Darnytsia Raion	710276
 UA.22.6106	Chortkiv Raion	Chortkiv Raion	710399
 UA.02.7410	Chernihiv Raion	Chernihiv Raion	710736
 UA.01.7108	Cherkasy Raion	Cherkasy Raion	710795
@@ -42174,6 +42197,8 @@ UA.05.1402	Bakhmut Raion	Bakhmut Raion	713172
 UA.21.5904	Okhtyrskiy Rayon	Okhtyrskiy Rayon	713748
 UA.11.0120	Gorodskoy okrug Yalta	Gorodskoy okrug Yalta	8449687
 UA.11.0110	Kerchens'ka Mis'ka Rada	Kerchens'ka Mis'ka Rada	8449692
+UA.12.8520167	Desnianskyi Raion	Desnianskyi Raion	8520167
+UA.12.8693025	Dnipro Raion	Dnipro Raion	8693025
 UA.07.6310	Lozova City Council	Lozova City Council	9101597
 UA.07.6312	Kharkiv Raion	Kharkiv Raion	9114284
 UA.07.6314	Chuhuiv City Council	Chuhuiv City Council	9114317
@@ -42216,7 +42241,7 @@ UA.05.1406	Horlivskyi Raion	Horlivskyi Raion	12189530
 UA.05.1408	Donetskyi Raion	Donetskyi Raion	12189531
 UA.04.1204	Kamianskyi Raion	Kamianskyi Raion	12189532
 UA.03.7304	Dnistrovskyi Raion	Dnistrovskyi Raion	12189533
-UA.03.7306	Chernivestkyi Raion	Chernivestkyi Raion	12189534
+UA.03.7306	Chernivetskyi Raion	Chernivetskyi Raion	12189534
 UG.C.89	Mpigi District	Mpigi District	233709
 UG.E.E1	Namutumba District	Namutumba District	234069
 UG.E.C3	Bukedea District	Bukedea District	234411
@@ -46183,6 +46208,8 @@ VI.030.82900	West End	West End	9252034
 VI.010.38800	Frederiksted	Frederiksted	9252035
 VI.010.59500	Northcentral	Northcentral	9252036
 VN.79.726	Tân Uyên	Tan Uyen	1566754
+VN.82.1574213	Xã Mỹ An Hưng	Xa My An Hung	1574213
+VN.82.1577922	Xã Lai Vung	Xa Lai Vung	1577922
 VN.68.674	Đam Rong	GJam Rong	1584012
 VN.86.837	Huyện Thạnh Phú	Huyen Thanh Phu	1904844
 VN.86.833	Huyện Mỏ Cày Nam	Huyen Mo Cay Nam	1904845
@@ -46855,6 +46882,9 @@ VN.82.817	Thị xã Cai Lậy	Thi xa Cai Lay	9113513
 VN.82.825	Huyện Tân Phú Đông	Huyen Tan Phu GJong	9113514
 VN.91.913	Huyện U Minh Thượng	Huyen U Minh Thuong	9280591
 VN.82.868	Thị Xã Hồng Ngự	Thi Xa Hong Ngu	9289553
+VN.82.8714525	Xã Lấp Vò	Xa Lap Vo	9289615
+VN.82.9289623	Xã Tân Nhuận Đông	Xa Tan Nhuan GJong	9289623
+VN.82.9289624	Xã Phú Hựu	Xa Phu Huu	9289624
 VN.86.863	Huyện Bình Tân	Huyen Binh Tan	9290449
 VN.86.838	Huyện Mỏ Cày Bắc	Huyen Mo Cay Bac	9531822
 VN.92.918	Quận Bình Thủy	Quan Binh Thuy	9533385

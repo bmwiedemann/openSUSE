@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:51 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- Changes since 25.11.80:
+  * InfoSidebar: Fix scrollbar position
+  * Remove no longer necessary KF6GuiAddons dependency
+  * OpenFileModel: Default initialize m_mode member variable
+- Replace 0001-Remove-old-libexiv2-support.patch with
+  0001-Revert-Remove-old-libexiv2-support.patch
+
+-------------------------------------------------------------------
+Sat Nov 15 19:56:53 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Too many changes since 25.08.3, only listing bugfixes:
+  * Remove thumbnailbar loading placeholder (kde#509966)
+  * Fix mishandling of URL containing quotes in QUrl–QString dance (kde#506465)
+  * Refactor OpenFileModel and fix argument/'Open With' behaviour (kde#507311)
+  * RasterImageDelegate: Only stop being smooth at >= 400% (kde#503454)
+  * ImageViewPage: Fix black frame when switching images (kde#506239)
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:51 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
