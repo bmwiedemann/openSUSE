@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Dec 13 05:01:14 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- BuildRequire glu to let it build
+
+-------------------------------------------------------------------
 Thu Apr 29 09:07:35 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.04:

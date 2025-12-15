@@ -33,6 +33,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(SDL_image)
 BuildRequires:  pkgconfig(SDL_mixer)
 BuildRequires:  pkgconfig(SDL_ttf)
+BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(sdl)
 BuildRequires:  update-desktop-files
 
