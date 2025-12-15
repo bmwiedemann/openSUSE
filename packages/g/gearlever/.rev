@@ -204,4 +204,26 @@
 </comment>
     <requestid>1316678</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>20a3b1d631ea7ed80f28c59243cef136</srcmd5>
+    <version>4.0.3</version>
+    <time>1765796316</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.0.3:
+  * Update GithubUpdater
+- Update to 4.0.2:
+  * Fixed restoring back update manager to default
+- Update to 4.0.1:
+  * Update translations
+  * Update icons
+  * Update GithubUpdater
+- Update to 4.0.0:
+  * Added FTP update system
+  * New update management UI
+  * New documentation website, still work in progress
+  * Faster app loading times for most of the appimages
+  * Better support for apps having dekstop actions
+</comment>
+    <requestid>1322781</requestid>
+  </revision>
 </revisionlist>

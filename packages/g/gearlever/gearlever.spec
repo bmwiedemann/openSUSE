@@ -18,7 +18,7 @@
 
 %define appid it.mijorus.gearlever
 Name:           gearlever
-Version:        3.4.7
+Version:        4.0.3
 Release:        0
 Summary:        Manage AppImages
 License:        GPL-3.0-or-later
@@ -36,9 +36,11 @@ Requires:       7zip
 Requires:       dwarfs
 Requires:       flatpak-spawn
 Requires:       python3-dbus-python
+Requires:       python3-desktop-entry-lib
+Requires:       python3-ftputil
 Requires:       python3-gobject
 Requires:       python3-pyxdg
-Requires:       python3-requests
+Requires:       python3-requests >= 2.25.1
 Requires:       squashfs
 Requires:       typelib(Adw) = 1
 Requires:       typelib(GLib)
