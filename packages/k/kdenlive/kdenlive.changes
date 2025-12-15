@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:33 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- Too many changes since 25.11.80, only listing bugfixes:
+  * Fix various issue with on monitor overlays (kde#512856)
+  * Fix crash opening Kdenlive settings with project having fps >= 100 (kde#499689)
+  * Move OTIO Import above Export (kde#504996)
+  * Correctly update render duration when using marker zone rendering to the end of the project (kde#511128)
+  * Allow Extract Zone action to have a shortcut (kde#511796)
+  * Fix crash opening project with audio record enabled (kde#512319)
+  * Fix effect compare button incorrectly disabled (kde#512275)
+  * Fix storing of audio stream index can lead to stream confusion in timeline (kde#511402)
+  * Fix proxying changing timeline duration of clips with speed change (kde#511851)
+  * Fix clips disappear when moving in Insert or Overwrite mode (kde#511964)
+
+-------------------------------------------------------------------
+Sat Nov 15 19:56:35 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Too many changes since 25.08.3, only listing bugfixes:
+  * Fix image sequence by Mime broken (kde#500542)
+  * Fix some images not rendered in timeline preview (kde#511249)
+  * Add svg as supported file type (kde#511250)
+  * Allow multiple lines in dynamic text effect (kde#505449)
+  * Add drive space check in render widget (kde#400699)
+  * Fix fade to black preset incorrectly applied (kde#509108)
+  * Fix crash dragging effect from another window (kde#510253)
+  * Improve selection and resize of small clips (kde#509911)
+  * Fix sequence subclips disappear after reopening project (kde#509773)
+  * Make audio capture name translatable (kde#509546)
+  * Fix Transform effect when current clip is not below play head / timeline cursor (kde#508818)
+  * Allow using null rectangle to completely hide image in Transform and other geometry effects (kde#508570)
+  * Add SVT-AV1 to codecs which use `crf` option (kde#492708)
+  * Fix transcoding of files with missing duration. (kde#507396)
+  * Convert Keyboard schemes from .rc to xml after download since this is what is expected (kde#503526)
+  * Reduce minimum height of Speech Editor Widget (kde#465766)
+  * Fix Vosk Speech-To-Text producing garbage subtitles (kde#503985)
+  * Add 1080p monitor scaling (kde#505776)
+  * Defang dragging subtitle clips down to create a new layer (kde#506414)
+  * Add powermanagement to disable sleep while rendering and playing (kde#500615)
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:32 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3

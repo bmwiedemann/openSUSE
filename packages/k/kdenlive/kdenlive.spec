@@ -16,13 +16,13 @@
 #
 
 
-%define mlt_version 7.14.0
-%define kf6_version 6.14.0
-%define qt6_version 6.8.0
+%define mlt_version 7.32.0
+%define kf6_version 6.19.0
+%define qt6_version 6.9.0
 
 %bcond_without released
 Name:           kdenlive
-Version:        25.08.3
+Version:        25.12.0
 Release:        0
 Summary:        Non-linear video editor
 License:        GPL-3.0-or-later
@@ -37,6 +37,7 @@ BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
 BuildRequires:  rttr-devel
 BuildRequires:  shared-mime-info
+BuildRequires:  cmake(KDDockWidgets-qt6)
 BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
 BuildRequires:  cmake(KF6Bookmarks) >= %{kf6_version}
 BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
@@ -64,6 +65,7 @@ BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Multimedia) >= %{qt6_version}
+BuildRequires:  cmake(Qt6MultimediaWidgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6NetworkAuth) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
