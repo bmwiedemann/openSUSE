@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:41:15 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- No code change since 25.11.80
+
+-------------------------------------------------------------------
+Sat Nov 15 19:57:19 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * Remove QPair => use struct named
+  * Prepare PluginsStateList
+  * Fix variable name
+  * Activate HAVE_TEXTUTILS_HAS_WHATSNEW_SUPPORT
+  * Add support for HAVE_TEXTUTILS_HAS_WHATSNEW_SUPPORT => don't build needupdateversion/whatsnew/verifynewversion when not necessary
+  * Remove not necessary now KF6::TextAutoCorrection
+  * const'ify variable
+  * Remove duplicate headers
+  * Don't store empty key
+  * Now autotest seems to work on windows CI
+  * Disable CMAKE_CXX_SCAN_FOR_MODULES
+  * Fix some cppcheck warnings
+  * Use static
+  * whatsnewwidget.cpp - change "All Version" to "All Versions"
+
+-------------------------------------------------------------------
 Thu Nov  6 18:38:16 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
