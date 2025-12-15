@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Dec 13 10:58:04 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20251212:
+  * tmd710: Fix failure to identify
+  * tk11: Fix download/upload progress bar is not updating
+  * translation updates
+
+-------------------------------------------------------------------
 Fri Dec  5 16:12:49 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20251205:
