@@ -173,4 +173,27 @@
   * FAQ update to describe how to customize Excel exports (2088)</comment>
     <requestid>1304690</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>970c8dcb9a0e580fc6a6c3ee9b6d0965</srcmd5>
+    <version>4.3.14</version>
+    <time>1765796283</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.3.14:
+  * Add Ukrainian translation (2132)
+  * Fix: file_name is None in before_import_row when
+    skip_import_confirm=True (2129)
+  * Minor documentation fix
+  * Fix for export not retaining URI query params (2097)
+  * Improved field value extraction for dict-based querysets
+  * Performance improvements for membership checks (2090)
+  * Fix ForeignKeyWidget export issue (2117)
+  * Improved documentation for clean() methods (2115)
+  * Documentation updates: JSONField export with attribute syntax
+  * Documentation updates: handling TooManyFieldsSent (2103)
+  * Updated Turkish translation (2101)
+  * Updated Czech translation (2111)
+
+  * Clarified documentation when importing with import_id_fields</comment>
+    <requestid>1322773</requestid>
+  </revision>
 </revisionlist>
