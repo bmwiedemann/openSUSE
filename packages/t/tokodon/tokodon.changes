@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:41:20 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- Changes since 25.11.80:
+  * Remove erroneous icon from icon list
+  * Update Android icon list
+  * Prefer auth-code instead of browser auth on Android
+  * Stop language button from appearing checked when closing dialog
+  * Use the same icon for polls everywhere
+  * Increase size of the scheduled post date picker
+  * Grab used icons from C++ as well
+  * Prevent left CTRL from moving timelines
+  * Fix content notices not showing up in quoted posts
+  * Load a Mastodon-native quote if found
+
+-------------------------------------------------------------------
+Sat Nov 15 19:57:24 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Too many changes since 25.08.3, only listing bugfixes:
+  * Increment or decrement favorite/reblog counter when interacting (kde#510660)
+  * Add keyboard shortcut for opening the account switcher (kde#508176)
+
+-------------------------------------------------------------------
 Thu Nov  6 18:38:21 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
