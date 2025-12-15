@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-kde
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,7 @@ This particular package contains the KDE patterns.
 
 
 ################################################################################
+
 %package devel_kde_frameworks
 %pattern_development
 Summary:        KDE Frameworks and Plasma Development
@@ -105,9 +106,6 @@ Recommends:     kirigami2-devel
 Recommends:     kitemmodels-devel
 Recommends:     kitemviews-devel
 Recommends:     kjobwidgets-devel
-Recommends:     kjs-devel
-Recommends:     kjsembed-devel
-Recommends:     kmediaplayer-devel
 Recommends:     knewstuff-core-devel
 Recommends:     knewstuff-devel
 Recommends:     knewstuff-quick-devel
@@ -119,9 +117,6 @@ Recommends:     kpeople5-devel
 Recommends:     kplotting-devel
 Recommends:     kpty-devel
 Recommends:     kquickcharts-devel
-Recommends:     kross-devel
-Recommends:     krunner-devel
-Recommends:     kscreenlocker-devel
 Recommends:     kservice-devel
 Recommends:     ktexteditor-devel
 Recommends:     ktextwidgets-devel
@@ -130,25 +125,17 @@ Recommends:     kwallet-devel
 Recommends:     kwayland-devel
 Recommends:     kwayland-server-devel
 Recommends:     kwidgetsaddons-devel
-Recommends:     kwin5-devel
 Recommends:     kwindowsystem-devel
 Recommends:     kxmlgui-devel
 Recommends:     kxmlrpcclient5-devel
 Recommends:     libAppStreamQt-devel
-Recommends:     libKF5ModemManagerQt-devel
-Recommends:     libKF5NetworkManagerQt-devel
 Recommends:     libkdecoration2-devel
-Recommends:     libkscreen2-devel
 Recommends:     libksysguard5-devel
 Recommends:     libpolkit-qt5-1-devel
 Recommends:     phonon4qt5-devel
 Recommends:     plasma-framework-devel
-Recommends:     plasma5-addons-devel
 Recommends:     plasma5-integration-devel
-Recommends:     plasma5-workspace-devel
 Recommends:     prison-qt5-devel
-Recommends:     purpose-devel
-Recommends:     qqc2-breeze-style-devel
 Recommends:     qqc2-desktop-style-devel
 Recommends:     solid-devel
 Recommends:     sonnet-devel
