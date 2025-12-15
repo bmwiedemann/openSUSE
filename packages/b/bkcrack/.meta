@@ -1,0 +1,12 @@
+<package name="bkcrack" project="openSUSE:Factory">
+  <title>Crack legacy zip encryption with Biham and Kocher's known plaintext attack</title>
+  <description>bkcrack is a command-line tool which implements a known plaintext attack
+against legacy encrypted ZIP archives. The vulnerability was shown by Eli Biham
+and Paul C. Kocher in the research paper &quot;A known plaintext attack on the PKZIP
+stream cipher.&quot; The main features are:
+
+* Recover internal state from ciphertext and plaintext.
+* Remove or change a ZIP archive's password using the internal state.
+* Recover the original password from the internal state.</description>
+  <url>https://github.com/kimci86/bkcrack/</url>
+</package>
