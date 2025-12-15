@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:34 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- Changes since 25.11.80:
+  * Prevent crash if the dav url list is empty (kde#512424)
+  * Fix KMail crashing when pressing on "Server Info" button (kde#512348)
+
+-------------------------------------------------------------------
+Sat Nov 15 19:56:36 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Too many changes since 25.08.3, only listing bugfixes:
+  * DAV config: don't auto-fill display name for manual setup (kde#508544)
+  * Mail dispatcher agent needs widgets (kde#508521)
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:33 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
