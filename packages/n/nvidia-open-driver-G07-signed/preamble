@@ -7,6 +7,8 @@ Provides: nvidia-open-driver-G07-signed-cuda-kmp-%1 = %{-v*}
 # Provide plain version to simplify installation
 Provides: nvidia-open-driver-G07-signed-kmp = %{-v*}
 Provides: nvidia-open-driver-G07-signed-kmp-%1 = %{-v*}
+Conflicts: nvidia-open-driver-G06-signed-cuda-kmp < 590.44.01
+Conflicts: nvidia-open-driver-G06-signed-cuda-kmp-%1 < 590.44.01
 %if 0%{?suse_version} < 1600 && 0%{?sle_version} < 150600 && !0%{?is_opensuse}
 Requires: nvidia-modprobe = %{-v*}
 Requires: nvidia-persistenced = %{-v*}
@@ -21,8 +23,8 @@ Conflicts: nvidia-open-signed-kmp(%otherkind)
 
 Obsoletes: nvidia-open-driver-G07 = %{-v*}
 
-Obsoletes: nvidia-open-driver-G06 < 590.44.01
-Obsoletes: nvidia-open-driver-G06-signed-kmp < 590.44.01
-Obsoletes: nvidia-open-driver-G06-signed-kmp-%1 < 590.44.01
-Obsoletes: nvidia-open-signed-kmp < 590.44.01
-
+### zypper dup handles it as Provides :-(
+Conflicts: nvidia-open-driver-G06 < 590.44.01
+Conflicts: nvidia-open-driver-G06-signed-kmp < 590.44.01
+Conflicts: nvidia-open-driver-G06-signed-kmp-%1 < 590.44.01
+#Obsoletes: nvidia-open-signed-kmp < 590.44.01

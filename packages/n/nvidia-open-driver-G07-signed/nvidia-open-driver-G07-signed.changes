@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec 12 17:47:48 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- preamble: let G07 KMPs conflict with G06 KMPs due to file conflicts
+
+-------------------------------------------------------------------
+Fri Dec 12 09:20:03 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- removed Obsoletes to nvidia-open-driver-G06-signed-kmp, because
+  zypper dup apparently handles Obsoletes the same way as Provides,
+  which we don't want (at least not now) (boo#1254887)
+
+-------------------------------------------------------------------
 Mon Dec  8 12:03:45 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to G07 version 590.44.01

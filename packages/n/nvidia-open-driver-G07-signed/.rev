@@ -7,4 +7,16 @@
     <comment>update to G07 version 590.44.01</comment>
     <requestid>1321607</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>68303ad96b87914f5729d30957252f3b</srcmd5>
+    <version>590.44.01</version>
+    <time>1765796189</time>
+    <user>anag_factory</user>
+    <comment>- preamble: let G07 KMPs conflict with G06 KMPs due to file conflicts
+
+- removed Obsoletes to nvidia-open-driver-G06-signed-kmp, because
+  zypper dup apparently handles Obsoletes the same way as Provides,
+  which we don't want (at least not now) (boo#1254887)</comment>
+    <requestid>1322657</requestid>
+  </revision>
 </revisionlist>
