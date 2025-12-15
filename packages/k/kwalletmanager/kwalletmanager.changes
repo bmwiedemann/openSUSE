@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:41:04 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- No code change since 25.11.80
+
+-------------------------------------------------------------------
+Sat Nov 15 19:57:08 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * kwalleteditor: fix crash due to nullptr in updateFolderList() and updateEntries()
+  * Make sure entrylist context menu is created for empty list (kde#510780)
+  * Convert the two missing old style connects
+  * Bump kf ecm_set_disabled_deprecation_versions
+
+-------------------------------------------------------------------
 Thu Nov  6 18:38:05 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
