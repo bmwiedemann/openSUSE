@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.14.0
+%define kf6_version 6.19.0
 %define plasma6_version 5.27.80
-%define qt6_version 6.8.0
+%define qt6_version 6.9.0
 
 %bcond_without released
 Name:           kio-extras
-Version:        25.08.3
+Version:        25.12.0
 Release:        0
 Summary:        Additional KIO slaves for KDE applications
 License:        GPL-2.0-or-later
@@ -37,19 +37,16 @@ BuildRequires:  libmtp-devel
 BuildRequires:  libssh-devel
 BuildRequires:  pkgconfig
 BuildRequires:  shared-mime-info
-BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  cmake(KDSoap-qt6)
 BuildRequires:  cmake(KDSoapWSDiscoveryClient)
 BuildRequires:  cmake(KExiv2Qt6)
 BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
 BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
-BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6DNSSD) >= %{kf6_version}
 BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
-BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6KCMUtils) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
@@ -58,11 +55,9 @@ BuildRequires:  cmake(KF6Solid) >= %{kf6_version}
 BuildRequires:  cmake(KF6SyntaxHighlighting) >= %{kf6_version}
 BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
 BuildRequires:  cmake(Microsoft.GSL)
-BuildRequires:  cmake(Phonon4Qt6)
 BuildRequires:  cmake(PlasmaActivities) >= %{plasma6_version}
 BuildRequires:  cmake(PlasmaActivitiesStats) >= %{plasma6_version}
 BuildRequires:  cmake(QCoro6Core)
-BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Sql) >= %{qt6_version}
@@ -185,7 +180,6 @@ This is the development package for libkioarchive6
 %{_kf6_plugindir}/kf6/thumbcreator/textthumbnail.so
 %{_kf6_plugindir}/kf6/thumbcreator/windowsexethumbnail.so
 %{_kf6_plugindir}/kf6/thumbcreator/windowsimagethumbnail.so
-%{_kf6_plugindir}/kfileaudiopreview.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_netpref.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_proxy.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_webshortcuts.so

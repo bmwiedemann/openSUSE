@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:42 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- No code change since 25.11.80
+
+-------------------------------------------------------------------
+Sat Nov 15 19:56:45 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * kio_filenamesearch: Include a "syntax=wordlist" option.
+  * exeutils: Handle virtual size of zero (kde#508383)
+  * recentlyused: mark the protocol as readonly
+  * Drop unused Qt6Core5Compat dependency
+  * kio_filenamesearch: Add options to search for a phrase or regular expression.
+  * kio_filenamesearch: Add namespace FileNameSearch and refactor
+  * sftp: Support setting mtime
+  * Drop worker status handling
+  * recentlyused: take into account passed in limit argument
+  * Drop kfileaudiopreview
+  * [kcms/netpref] Port to KConfigXT
+  * Remove the last remains of QTextCodec and thus Qt::Core5Compat use
+  * Use CMake for building KIO-Extras Thumbnailers fuzzers
+  * Make KCMS optional, remove unused dependencies, and conditionally find dependencies
+  * thumbnail.json: Set maxInstances to 5
+  * Return correct AFC error code instead of lockdown error
+  * [thumbnail] Test more sizes
+  * Drop unused dependency
+  * kio_filenamesearch: Return ERR_WORKER_DEFINED error after an invalid regex.
+  * Replace breeze.cursor (LGPL, added by mistake) with wget
+  * Add dict files for KDE-Thumbnailers fuzzer
+  * Enforce passing tests on all platforms
+  * Skip TestKioArchive on Windows
+  * Drop unused ktextwidgets dependency
+  * Use ThumbnailRequest::mimeType() rather than manual mime detection
+  * Fix oss-fuzz afl and coverage builds
+  * FilenameSearchExternalTest: Add autotests for external search script.
+  * Integrate KDE-Thumbnailers into OSS-Fuzz
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:42 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
