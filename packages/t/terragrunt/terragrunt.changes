@@ -1,4 +1,175 @@
 -------------------------------------------------------------------
+Sun Dec 14 09:05:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.95.1:
+  * Experiments Updated
+    - The filter-flag experiment now supports the --filter-affected
+      flag
+      The --filter-affected flag has been introduced as an
+      convenience alias for --filter [main...HEAD] (remember that
+      you must use the filter-flag experiment to try this).
+
+        terragrunt find --filter-affected
+
+      Note that if you have local Git configurations that results
+      in a different branch being your default branch, that branch
+      will be used instead of main.
+  * Bug Fixes
+    - Integration of --queue-strict-include with
+      --queue-include-units-reading fixed
+      A regression in --queue-strict-include resulted in empty run
+      queues when using a combination of --queue-strict-include
+      with --queue-include-units-reading. That bug has been
+      resolved.
+    - Integration of --source with run --all fixed
+      A regression in --source prevented it from working correctly
+      in combination with run --all , resulting in empty run
+      queues. That bug has been resolved.
+    - Integration of Git-expressions with explicit stacks
+      A bug in the implementation of explicit stack generation for
+      Git-expressions prevented stacks from being generated in Git
+      worktrees when using Git-expressions in the filter-flag
+      experiment. That bug has been resolved.
+  * Chores
+    - Dependencies updates
+      - cloud.google.com/go/storage —> v1.58.0
+      - github.com/aws/aws-sdk-go-v2 —> v1.41.0
+      - github.com/hashicorp/go-version —> v1.8.0
+      - github.com/aws/smithy-go —> v1.24.0
+  * What's Changed
+    - fix: Fixing `--queue-strict-include` integration with
+      `--queue-include-units-reading` (#5222)
+    - chore: go cloud dependencies update (#5183)
+    - docs: Documenting `--filter-affected` (#5110)
+    - bug: improved dependency config path validation (#5212)
+    - fix: Fixing Git expressions with explicit stacks (#5223)
+    - feat: Adding `--filter-affected` flag (#5109)
+    - fix: Fixing integration of `run --all` with `--source`
+      (#5209)
+    - chore: Re-enabling `TestAwsDocsTerralithToTerragruntGuide`
+      test (#5220)
+    - chore: worktree tests simplification (#5217)
+    - docs: Fixing Git-based docs (#5218)
+    - fix: Cleaning up `TestExcludeDirs` tests (#5215)
+
+-------------------------------------------------------------------
+Fri Dec 12 16:04:42 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.95.0:
+  * Breaking Changes
+    - The --queue-exclude-external flag has been deprecated
+      Previously, Terragrunt would automatically pull in external
+      dependencies (dependencies outside the current working
+      directory when running terragrunt run --all) into the run
+      queue.
+      To prevent this behavior, users had to manually supply the
+      --queue-exclude-external flag. This has caused significant
+      confusion and unexpected behavior for users over the duration
+      of it’s existence in the Terragrunt CLI. To prevent this
+      unexpected behavior for users and follow the principle of
+      least surprise, this flag has been deprecated and its
+      behavior is now the default in Terragrunt.
+      To explicitly request inclusion of external dependencies in
+      the run queue, use the —queue-include-external flag.
+      https://terragrunt.gruntwork.io/docs/reference/cli/commands/run/#queue-include-external
+  * Process Updates
+    - OpenTofu 1.11.x added to compatibility matrix
+      We are now continuously testing against OpenTofu 1.11.1 in
+      our Continuous Integration testing, and have updated the
+      compatibility matrix to reflect that.
+      https://terragrunt.gruntwork.io/docs/reference/supported-versions/
+  * Updated Experiments
+    - The filter-flag experiment now supports Git-based expressions
+      The --filter flag can now be used to filter units based on
+      changes in Git history (remember that you must use the
+      filter-flag experiment to try this).
+
+        # Compare between two references
+        terragrunt find --filter '[main...HEAD]'
+
+        # Shorthand: compare reference to HEAD
+        terragrunt find --filter '[main]'
+
+        # Compare between specific commits
+        terragrunt find --filter '[abc123...def456]'
+
+        # Compare between tags
+        terragrunt find --filter '[v1.0.0...v2.0.0]'
+
+        # Compare using relative references
+        terragrunt find --filter '[HEAD~1...HEAD]'
+
+        # Compare between branches
+        terragrunt find --filter '[feature-branch...main]'
+
+      For more information, see the dedicated documentation on
+      Git-Based Filtering.
+      https://terragrunt.gruntwork.io/docs/features/filter/#git-based-filtering
+  * Bug Fixes
+    - Units now properly flush stdout in run --all
+      A regression in unit stdout flushing caused stdout for unit
+      logs to hang pending resolution of run --all runs. This
+      regression has been fixed to ensure that logs are streamed in
+      real time again.
+    - Queue entries now properly run, even if dependent units are
+      excluded
+      A bug in run queue optimization made it so that excluding the
+      dependent of a unit within a multi-unit run queue would
+      incorrectly exclude the dependency unit from the run queue.
+      This bug has been resolved, and units are now properly
+      included, even if their dependents are excluded.
+    - Provider cache server only contacts relevant registries
+      The provider cache server was incorrectly establishing a
+      connection with multiple registries even though only one
+      registry for a given IaC tool run by Terragrunt. For users
+      with network-restricted environments, this could cause
+      problems. Terragrunt will now only contact the relevant
+      registry for a given IaC tool unless users explicitly request
+      for usage of multiple registries.
+  * Documentation Updates
+    - Provider cache server no longer documented as experimental
+      The Provider Cache Server has been used in production by a
+      good portion of the Terragrunt community based on voluntary
+      community reporting. The need for the feature is also
+      mitigated by advances in OpenTofu that makes the Automatic
+      Provider Cache Dir the default solution all Terragrunt users
+      using OpenTofu ≥ v1.10.0.
+      As such, the Provider Cache Server has been promoted to a
+      generally available feature that is exclusively opt-in for
+      users that cannot benefit from the Automatic Provider Cache
+      Dir feature, or are better served by the Provider Cache
+      Server due to scale or platform limitations.
+  * What's Changed
+    - docs: Documenting `--filter` Git support (#5108)
+    - chore: Upgrade to Opentofu 1.11 (#5214)
+    - feat: Adding `--filter-allow-destroy` flag (#5210)
+    - bug: runner pool external dependencies inclusion fix (#5199)
+    - Adding new ambassador (#5211)
+    - fix: Temporarily skipping
+      `TestAwsDocsTerralithToTerragruntGuide` until we get a new
+      release (#5208)
+    - docs: Documenting stacks limitations (#5188)
+    - fix: Fixing #5192 (#5194)
+    - feat: filter git improvements (#5184)
+    - chore: Adding `--queue-exclude-dir` / `--filter` equivalence
+      test (#5078)
+    - fix: Only call necessary registries based on
+      OpenTofu/Terraform usage (#5196)
+    - bug: unit output flushing (#5193)
+    - docs: Updating documentation around the provider cache server
+      (#5190)
+    - Nav revisions (#5172)
+    - build(deps): bump mikepenz/action-junit-report from 5 to 6
+      (#5046)
+    - build(deps): bump DavidAnson/markdownlint-cli2-action from 20
+      to 21 (#5140)
+    - build(deps): bump actions/checkout from 5 to 6 (#5141)
+    - Reapply "fix: Remove outdated Bun/Node locking" (#5186)
+    - Revert "fix: Remove outdated Bun/Node locking"
+    - fix: Remove outdated Bun/Node locking
+    - feat: Adding --filter Git support (#5166)
+
+-------------------------------------------------------------------
 Tue Dec 09 06:33:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.94.0:
