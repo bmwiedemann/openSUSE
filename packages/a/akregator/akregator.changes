@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:11 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- Changes since 25.11.80:
+  * Look at to build against release 25.12
+  * Use release 25.12 branch
+
+-------------------------------------------------------------------
+Sat Nov 15 19:56:12 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * Fix stable url
+  * Port away java style iterator
+  * Fix typo
+  * Move settings to config-*.h + implement HAVE_TEXTTOSPEECH_ENQQUEUE_SUPPORT
+  * Port deprecated invalidateFilter method
+  * Remove unused include
+  * Fix version
+  * Make it compile with new api
+  * Step 1 for porting to TextAddonsWidgets
+  * Prepare to support whatsnew/etc from ktextaddonswidget
+  * Fix some cppcheck warnings
+  * Add x-scheme-handler/feed in mimetype
+  * Don't show "what's new" in first step
+  * Use u'...'
+  * Increase ktextaddons to 1.7.0
+  * Fix some cppcheck warnings
+  * Remove unused method
+  * Add "rss" keyword to .desktop file
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:09 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
