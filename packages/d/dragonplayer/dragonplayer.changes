@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:17 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- Changes since 25.11.80:
+  * flatpak: upgrade to 6.10 runtime
+  * stop using multimediaprivate
+
+-------------------------------------------------------------------
+Sat Nov 15 19:56:18 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * fileopen: set a window title
+  * Set window icon
+  * fileopen: Fix window handle ID
+  * appstream: rename id to drop the legacy .desktop suffix
+  * apply flathub suggestions
+  * main: defer the amd hack to qt 6.12
+  * Adding more info to ReadMe
+  * CI: add snap pipelines
+  * Flesh out the README a bit
+  * add a readme
+  * comment++
+  * guard against empty URI list from the portal
+  * workaround AMD texture problems
+  * Remove unused "blameDistro" property
+  * visualize when an unsupported backend is used (kde#506940)
+  * Force the top header as toolbar mode
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:15 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3

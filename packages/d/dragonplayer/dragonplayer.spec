@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.14.0
-%define qt6_version 6.8.0
+%define kf6_version 6.19.0
+%define qt6_version 6.9.0
 
 %define rname dragon
 %bcond_without released
 Name:           dragonplayer
-Version:        25.08.3
+Version:        25.12.0
 Release:        0
 Summary:        Multimedia Player
 License:        GPL-2.0-or-later
@@ -60,6 +60,9 @@ Dragon Player is a simple video player.
 
 %prep
 %autosetup -p1 -n %{rname}-%{version}
+
+# Upstream sometimes insists to make runtime dependencies required at build time
+sed -i 's#FATAL_ERROR#STATUS#' CMakeLists.txt
 
 %build
 %cmake_kf6
