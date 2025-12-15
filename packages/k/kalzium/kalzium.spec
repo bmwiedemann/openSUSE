@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.14.0
-%define qt6_version 6.6.2
+%define kf6_version 6.19.0
+%define qt6_version 6.9.0
 
 %bcond_without released
 Name:           kalzium
-Version:        25.08.3
+Version:        25.12.0
 Release:        0
 Summary:        Periodic Table of Elements
 License:        GPL-2.0-or-later
