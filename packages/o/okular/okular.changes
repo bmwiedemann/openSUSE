@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:41:14 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- Changes since 25.11.80:
+  * Drop unused KF6ItemViews dependency
+  * Do not process HTML with QDomDocument (kde#510945)
+  * FilePrinter: Use the mapping already provided by Qt
+
+-------------------------------------------------------------------
+Sat Nov 15 19:57:18 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Too many changes since 25.08.3, only listing bugfixes:
+  * Select first certificate if previous not found (kde#511986)
+  * Set parent widget for input dialogs (kde#496390)
+  * KIMGIO: Reject large files (kde#507550)
+  * Fix crash in DocumentPrivate::evaluateKeystrokeEventChange (kde#506851)
+
+-------------------------------------------------------------------
 Thu Nov  6 18:38:14 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
