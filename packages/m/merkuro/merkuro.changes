@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:41:12 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- Changes since 25.11.80:
+  * Disable editing calendar if we don't have permission for it
+  * Hide Separator when there are no actions below it
+
+-------------------------------------------------------------------
+Sat Nov 15 19:57:16 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * Fix merkuro-mail not launching (kde#510488)
+  * Add KF_MIN_VERSION
+  * Edit org.kde.merkuro.metainfo.xml
+  * calendar: Fixed BasicMonthListView not being able to move to today's date
+  * Avoid saying "Task calendars"
+  * calendar: Only show 1 refresh button on calendar sources
+  * mail: Improve MailDelegate's handling of sender information
+  * Delete ETMTreeViewStateSaver
+  * calendar: Add show/hide all button to resource collections
+  * mail: Fix MailComposer not showing the right sender email address
+  * calendar: Fix adding sub-item to tasks not working
+  * Fix a few qml warnings
+  * Fix some cppcheck warnings
+  * Initialize model to nullptr + add explicit
+  * Clean includes
+  * Make strings HIG compliant
+  * Fix typos Fixes various typos
+  * Use u'<foo>'
+  * Disable CMAKE_CXX_SCAN_FOR_MODULES
+  * Fix some cppcheck warnings
+  * Use u"..."_s "..."_ba
+  * Remove unused signal
+  * Rename "Free/Busy" to "Availability"
+
+-------------------------------------------------------------------
 Thu Nov  6 18:38:13 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3

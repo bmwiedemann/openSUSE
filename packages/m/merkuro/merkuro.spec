@@ -18,14 +18,14 @@
 
 %global __requires_exclude qt6qmlimport\\((org\\.kde\\.merkuro|org\\.kde\\.raven).*
 
-%define kf6_version 6.14.0
-%define qt6_version 6.8.0
-%define kpim6_version 6.5.3
+%define kf6_version 6.19.0
+%define qt6_version 6.9.0
+%define kpim6_version 6.6.0
 %define plasma6_version 6.2.0
 
 %bcond_without released
 Name:           merkuro
-Version:        25.08.3
+Version:        25.12.0
 Release:        0
 Summary:        Calendar Application
 License:        GPL-3.0-only
@@ -150,9 +150,6 @@ This package provides a Plasma widget to view address book contacts.
 
 %files plasmoid
 %dir %{_kf6_plasmadir}/plasmoids
-%if %{pkg_vcmp cmake(KF6Package) < 6.18}
-%{_kf6_appstreamdir}/org.kde.merkuro.contact.applet.appdata.xml
-%endif
 %{_kf6_plasmadir}/plasmoids/org.kde.merkuro.contact.applet
 
 %files lang -f %{name}.lang
