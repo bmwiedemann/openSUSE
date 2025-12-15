@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:17 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- Changes since 25.11.80:
+  * Fix build with Qt 6.10 on Android
+
+-------------------------------------------------------------------
+Sat Nov 15 19:56:19 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Too many changes since 25.08.3, only listing bugfixes:
+  * Lyrics: stable ordering and group highlight for identical timestamps (bilingual lines) (kde#464843)
+  * Remove unneeded cover file cache in file listing (kde#505985)
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:15 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
