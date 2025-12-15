@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.14.0
-%define qt6_version 6.8.0
+%define kf6_version 6.19.0
+%define qt6_version 6.9.0
 
 %bcond_without released
 Name:           juk
-Version:        25.08.3
+Version:        25.12.0
 Release:        0
 Summary:        Jukebox
 License:        GPL-2.0-or-later
@@ -83,7 +83,7 @@ Jukebox and music manager by KDE
 %license COPYING
 %doc %lang(en) %{_kf6_htmldir}/en/juk/
 %{_kf6_applicationsdir}/org.kde.juk.desktop
-%{_kf6_appstreamdir}/org.kde.juk.appdata.xml
+%{_kf6_appstreamdir}/org.kde.juk.metainfo.xml
 %{_kf6_bindir}/juk
 %{_kf6_dbusinterfacesdir}/org.kde.juk.*
 %{_kf6_iconsdir}/hicolor/*/apps/juk.*
