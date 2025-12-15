@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.14.0
-%define qt6_version 6.8.0
+%define kf6_version 6.19.0
+%define qt6_version 6.9.0
 
 %bcond_without released
 Name:           konqueror
-Version:        25.08.3
+Version:        25.12.0
 Release:        0
 Summary:        KDE File Manager and Browser
 # Note for legal: webenginepart/autotests/webengine_testutils.h is neither built nor installed in our package.
@@ -113,9 +113,6 @@ Development package for the konqueror libraries.
 %install
 %kf6_install
 
-# No webkit anymore
-rm -r %{buildroot}%{_kf6_plugindir}/kwebkitpart
-
 %find_lang %{name} --with-html --all-name
 
 %ldconfig_scriptlets
@@ -194,7 +191,6 @@ rm -r %{buildroot}%{_kf6_plugindir}/kwebkitpart
 %{_kf6_plugindir}/kf6/thumbcreator/webarchivethumbnail.so
 # webenginepart/kpartplugins/khtmlsettingspluginwebenginepart_kpartplugins.so is a symlink to this file
 %{_kf6_plugindir}/khtmlsettingsplugin.so
-%{_kf6_plugindir}/khtml/
 %dir %{_kf6_plugindir}/konqueror
 %dir %{_kf6_plugindir}/konqueror/kpartplugins
 %{_kf6_plugindir}/konqueror/kpartplugins/searchbarplugin.so

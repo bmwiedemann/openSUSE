@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:52 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- No code change since 25.11.80
+
+-------------------------------------------------------------------
+Sat Nov 15 19:56:55 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * Display available web engines in the correct order in configuration dialog
+  * Connect the location bar slotActivated slot also to the returnPressed signal
+  * Use QWebEnginePage::navigationRequested and QWebEnginePage::newWindowRequested signls and support CTRL+click on html button
+  * Edit org.kde.konqueror.appdata.xml
+  * Increase the printer resolution when printing a web page to a file
+  * Add support for printing in response to javascript window.print() calls
+  * Fix searchbar (kde#509328)
+  * Disable functionality related to running activities when compiling with Plasma 6.5 (kde#509937)
+  * Remove WebKit support from thumbnail plugin
+  * Babelfish plugin: Correct name of "Portuguese" language
+  * Babelfish plugin: Sort language list menus by translated text
+  * Babelfish plugin: Show language flag icons
+  * Babelfish plugin: Correctly open the translator URL
+  * Fix sidebar context menu on Wayland
+  * Respect choice made by user when asked what to do with an URL
+  * Improve detection of whether a .desktop file can be executed
+  * Respect the "Open in existing Konqueror when URL called externally" option
+  * Show the restore session dialog on all activities
+  * Add the ability to open the folder containing the downloaded file
+  * Use the correct path for the history KCM
+  * Use the correct mimetype when deciding whether to open a local URL in WebEnginePart
+  * Don't install part plugins for khtml and webkitpart as they don't exist anymore
+  * Remove code which KonqFactory::getOffers used to avoid to duplicate entries
+  * Refactor session dialog
+  * org.kde.konqueror.desktop: Set Type to "Application", fix Categories
+  * Use qWebEngineChromiumVersion() to get the Chromium version used by QtWebEngine
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:53 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
