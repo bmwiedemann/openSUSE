@@ -1,7 +1,7 @@
 #
 # spec file for package python-calver
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %define ghtag 2022.06.26
 %{?sle15_python_module_pythons}
 Name:           python-calver%{psuffix}
-Version:        2025.4.17
+Version:        2025.10.20
 Release:        0
 Summary:        Setuptools extension for CalVer package versions
 License:        Apache-2.0

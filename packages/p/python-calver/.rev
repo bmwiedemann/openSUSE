@@ -47,4 +47,13 @@
 - Inject multibuild.</comment>
     <requestid>1279597</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d024d88d567fd84d3b4f6c8fb9ea4894</srcmd5>
+    <version>2025.10.20</version>
+    <time>1765794916</time>
+    <user>anag_factory</user>
+    <comment>- update to 2025.10.20:
+  * Fix `DeprecationWarning` for `datetime.datetime.utcnow()`</comment>
+    <requestid>1322577</requestid>
+  </revision>
 </revisionlist>
