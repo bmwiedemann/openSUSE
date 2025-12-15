@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:20 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- No code change since 25.11.80
+
+-------------------------------------------------------------------
+Sat Nov 15 19:56:22 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * Don't use QPair use struct named
+  * Add emoticon support
+  * Clean forward declaration
+  * incidencedialog.cpp -remove not needed include incidenceeditorsettings.h
+  * .clang-tidy - remove readability-redundant-access-specifiers check
+  * Use QCOMPARE here
+  * Disable CMAKE_CXX_SCAN_FOR_MODULES
+  * incidencedatetime.cpp - fix "starting the todo in the past" computation
+  * Notify the user if trying to create an event or to-do in the past (kde#181384)
+  * Remove unused signal
+  * src/conflictresolver.cpp - remove a qWarning
+  * attachmenteditdialog - remove unused mAttachment
+  * clang-tidy fixes misc-const-correctness
+  * clang-tidy fixes bugprone-branch-clone
+  * clang-tidy fixes readability-static-definition-in-anonymous-namespace
+  * cpptidy suppress performance-avoid-endl
+  * clang-tidy suppressions readability-avoid-unconditional-preprocessor-if
+  * clang-tidy fixes performance-unnecessary-copy-initialization
+  * clang-tidy fixes readability-const-return-type
+  * clang-tidy fixes bugprone-switch-missing-default-case
+  * clangtidy fixes bugprone-assignment-in-if-condition
+  * clang-tidy fixes performance-unnecessary-value-param
+  * src/incidencecompletionpriority.cpp - remove wrong comment
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:18 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
