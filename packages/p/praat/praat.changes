@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec 11 09:59:06 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.4.48:
+  * Linux audio: recognize JACK devices (next to the already
+    recongized ALSA devices).
+  * Linux fonts: support for the Charis 7 font, as on macOS and
+    Windows.
+  * OTGrammar: non-negative maximum entropy learning.
+  * Debug option at start-up from command line, e.g. --debug=58.
+
+-------------------------------------------------------------------
 Sat Nov  8 13:34:21 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.4.47:
