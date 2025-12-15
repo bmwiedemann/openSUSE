@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:41:03 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- No code change since 25.11.80
+
+-------------------------------------------------------------------
+Sat Nov 15 19:57:07 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * Use Qt camelcase support
+  * Bump kf ecm_set_disabled_deprecation_versions
+
+-------------------------------------------------------------------
 Thu Nov  6 18:38:04 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
