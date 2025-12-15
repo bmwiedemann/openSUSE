@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec  3 12:33:19 UTC 2025 - Josef Reidinger <jreidinger@suse.com>
+
+- Add dependency on rubygem-cgi which is separated in ruby4.
+  ruby3.4 has provision for that rubygem.
+  (gh#yast/yast-packager#664)
+- 5.0.10
+
+-------------------------------------------------------------------
 Mon Nov 24 10:56:20 UTC 2025 - Knut Anderssen <kanderssen@suse.com>
 
 - Do not add the biosdevname package to the list of packages to be

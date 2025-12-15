@@ -17,7 +17,7 @@
 
 
 Name:           yast2-packager
-Version:        5.0.9
+Version:        5.0.10
 Release:        0
 Summary:        YaST2 - Package Library
 License:        GPL-2.0-or-later
@@ -32,6 +32,8 @@ BuildRequires:  rubygem(%{rb_default_ruby_abi}:cfa) >= 0.5.0
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:nokogiri)
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake)
+# CGI is separate gem from ruby4, but older ruby versions provide it
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:cgi)
 # Y2Storage::Device#exists_in_raw_probed
 BuildRequires:  yast2-storage-ng >= 4.0.141
 # break the yast2-packager -> yast2-storage-ng -> yast2-packager build cycle
@@ -68,6 +70,8 @@ Requires:       augeas-lenses
 Requires:       rubygem(%{rb_default_ruby_abi}:cfa) >= 0.5.0
 # parsing xml with repositories
 Requires:       rubygem(%{rb_default_ruby_abi}:nokogiri)
+# parsing URI
+Requires:       rubygem(%{rb_default_ruby_abi}:cgi)
 # One of libyui-qt-pkg, libyui-ncurses-pkg, libyui-gtk-pkg
 Requires:       libyui_pkg
 Requires:       ruby-solv
