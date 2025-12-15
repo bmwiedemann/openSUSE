@@ -1,0 +1,6 @@
+<package name="oeis-tui" project="openSUSE:Factory">
+  <title>A CLI/TUI for the Encyclopedia of Integer Sequences (OEIS)</title>
+  <description>A command-line and terminal interface for browsing the On-Line Encyclopedia of
+Integer Sequences (OEIS).</description>
+  <url>https://github.com/hako/oeis-tui</url>
+</package>
