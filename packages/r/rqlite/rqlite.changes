@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec 13 11:00:38 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 9.3.5:
+  * Simplify type and value checks for CDC Comparators
+  * Fix .restore command in rqlite shell
+
+-------------------------------------------------------------------
 Fri Dec  5 18:52:35 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 9.3.4:
