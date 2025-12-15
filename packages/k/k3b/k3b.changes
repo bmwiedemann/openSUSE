@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:21 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- No code change since 25.11.80
+
+-------------------------------------------------------------------
+Sat Nov 15 19:56:23 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * Support sox-ng in the sox plugin (kde#509904)
+  * doc: remove the space after a 'url' tag
+  * CI: Install frameworks/kauth
+  * Fix build with ffmpeg >= 8 (kde#509501)
+  * libpulse0 reverse-dep as a stage package
+  * chuck another libpulse-dev at it
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:20 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
