@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:57 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- No code change since 25.11.80
+
+-------------------------------------------------------------------
+Sat Nov 15 19:57:00 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * RdpSession::endPaint() : guard for empty device context and window handle. (kde#512024)
+  * BookmarkManager: update code to current KBookmarkOwner interface (kde#507689)
+  * Drop kactivities support
+  * Edit org.kde.krdc.appdata.xml
+  * RDP: add support for freerdp's prevent-session-lock option (kde#509768)
+  * Remove krdc-vnc-qtonly code and pipeline
+  * Fixes several typos in codebase
+  * Remoteview: detect DPI changes and inform the remoteview implementation. (kde#509042)
+  * Address input: don't remove the path/query information from the URL when loading a bookmark or connecting (kde#508553)
+  * Use KModifierKeyInfo to detect *lock modifiers' status (kde#349813)
+  * Fix invisible mouse cursor after toggling off "view only"
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:58 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
