@@ -17,7 +17,7 @@
 
 
 Name:           easyeffects
-Version:        8.0.6
+Version:        8.0.8
 Release:        0
 Summary:        Simple audio effects
 License:        GPL-3.0-or-later
@@ -43,15 +43,13 @@ BuildRequires:  cmake(Qt6DBus)
 BuildRequires:  cmake(Qt6Graphs)
 BuildRequires:  cmake(Qt6QuickControls2)
 BuildRequires:  cmake(Qt6QuickShapesPrivate)
-BuildRequires:  cmake(Qt6WebEngineQuick)
 BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(libbs2b)
 BuildRequires:  pkgconfig(libebur128)
+BuildRequires:  pkgconfig(libmysofa)
 BuildRequires:  pkgconfig(libpipewire-0.3)
-BuildRequires:  pkgconfig(libportal-qt6)
 BuildRequires:  pkgconfig(lilv-0)
 BuildRequires:  pkgconfig(rnnoise)
-BuildRequires:  pkgconfig(samplerate)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(soundtouch)
 BuildRequires:  pkgconfig(tbb)
@@ -59,7 +57,6 @@ BuildRequires:  pkgconfig(webrtc-audio-processing-2)
 Requires:       kf6-kirigami
 Requires:       kirigami-addons6
 Requires:       qt6-graphs-imports
-Requires:       qt6-webengine-imports
 Recommends:     breeze6
 Recommends:     lv2-calf
 Recommends:     lv2-lsp-plugins
@@ -87,7 +84,7 @@ plugins for PipeWire applications.
 
 %files
 %license LICENSE
-%doc README.md CHANGELOG.md
+%doc README.md src/contents/docs/community/CHANGELOG.md
 %{_datadir}/icons/hicolor/scalable/apps/com.github.wwmm.%{name}.svg
 %{_datadir}/icons/hicolor/scalable/apps/com.github.wwmm.%{name}-symbolic.svg
 %{_datadir}/metainfo/com.github.wwmm.%{name}.metainfo.xml
