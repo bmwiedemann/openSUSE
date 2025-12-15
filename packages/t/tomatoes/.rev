@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>1156101</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>8f5c501536c4c444ccd65317cae2eef9</srcmd5>
+    <version>1.55</version>
+    <time>1765796224</time>
+    <user>anag_factory</user>
+    <comment>BuildRequire glu to let it build</comment>
+    <requestid>1322672</requestid>
+  </revision>
 </revisionlist>

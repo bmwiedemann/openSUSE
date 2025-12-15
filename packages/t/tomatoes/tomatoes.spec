@@ -33,6 +33,7 @@ BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig(SDL_image)
 BuildRequires:  pkgconfig(SDL_mixer)
+BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(sdl)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{?suse_version}
