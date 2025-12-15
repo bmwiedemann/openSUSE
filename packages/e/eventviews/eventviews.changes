@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:18 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- No code change since 25.11.80
+
+-------------------------------------------------------------------
+Sat Nov 15 19:56:19 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * Port invalidateFilter deprecated methods
+  * Check for end iterator before dereferencing
+  * pre-commit autoupdate
+  * Run clang-format
+  * Clean forward declaration
+  * timelabels.cpp - add tooltips and whatsthis for the menu items
+  * src/agenda/timelabels.cpp - fix KUIT info context
+  * monthgraphicsitems.cpp - hard-set the icon height to 16 pixels (kde#509037)
+  * monthview.cpp - remove include for ranges
+  * In Agenda View: show grid and timelabels even without calendars (kde#508539)
+  * Use u'...'
+  * Remove unused include
+  * Allow showing timelabels on both sides of the agenda view (kde#212165)
+  * clang-tidy fixes readability-enum-initial-value
+  * clazy fixes for viewerapp
+  * clang-tidy - fixes in viewerapp
+  * .clang-tidy - skip readability-redundant-access-specifiers
+  * Fix Variable 'currentCell' can be declared as pointer to const [constVariablePointer]
+  * Fix BUG 507980: Korganizer crashes on double-click on calendar header (kde#507980)
+  * agendaview.cpp - Show events with no duration as 30 minutes long (kde#61740)
+  * src/agenda/agenda.cpp - remove a useless debug statement
+  * todoview.cpp - add/removeCalendar guard against invalid calendars
+  * monthview.cpp - addCalendar/removeCalendar invalid calendar guards
+  * agendaview.cpp - in removeCalendar(), use pointer comparison
+  * todoviewsortfilterproxymodel.cpp - filterAcceptsRows() valid QModelIndex
+  * todoview.cpp - addCalendar/removeCalendar() don't filter if no change
+  * todoview.cpp - more instances of needing to call beginFilterChange()
+  * todoviewsortfilterproxymodel.cpp - call beginFilterChange() as needed
+  * src/month/monthscene.cpp - Fix month view title
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:15 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
