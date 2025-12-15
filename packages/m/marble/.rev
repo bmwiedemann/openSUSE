@@ -1575,4 +1575,12 @@ touch version is still build but no desktop file installed. (forwarded request 2
 - No code change since 25.08.2</comment>
     <requestid>1317028</requestid>
   </revision>
+  <revision rev="197" vrev="1">
+    <srcmd5>a00fe67fdf65fbce112981342ee96b20</srcmd5>
+    <version>25.12.0</version>
+    <time>1765796131</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 25.12 (forwarded request 1321386 from krop)</comment>
+    <requestid>1322499</requestid>
+  </revision>
 </revisionlist>

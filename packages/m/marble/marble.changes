@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:41:11 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- No code change since 25.11.80
+
+-------------------------------------------------------------------
+Sat Nov 15 19:57:15 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * Handle geo URLs as positional arguments (kde#510590)
+  * Add StartupNotify=true
+  * Remove obsolete Id from runner metadata
+  * Remove obsolete ServicesTypes from runner metadata
+  * marble-maps: Set background color for SearchResultView
+  * Restore thumbnailer functionality
+  * marble-maps: Fix crash on startup
+
+-------------------------------------------------------------------
 Tue Nov 11 08:34:37 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Don't build plasma applets

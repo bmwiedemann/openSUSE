@@ -19,8 +19,8 @@
 %define _so -28
 %define _so_astro 1
 
-%define kf6_version 6.14.0
-%define qt6_version 6.8.0
+%define kf6_version 6.19.0
+%define qt6_version 6.9.0
 
 %ifarch x86_64 aarch64 riscv64
 %define with_webengine 1
@@ -28,7 +28,7 @@
 
 %bcond_without released
 Name:           marble
-Version:        25.08.3
+Version:        25.12.0
 Release:        0
 Summary:        Generic map viewer
 # License note: the tools directory contains GPL-3 tools, but they are neither built nor installed by the package
@@ -195,13 +195,11 @@ export SUSE_ASNEEDED=0
 %files
 %license COPYING* LICENSE*
 %doc CREDITS ChangeLog MANIFESTO.txt
-%{_kf6_applicationsdir}/marble_geo.desktop
 %{_kf6_applicationsdir}/marble_geojson.desktop
 %{_kf6_applicationsdir}/marble_gpx.desktop
 %{_kf6_applicationsdir}/marble_kml.desktop
 %{_kf6_applicationsdir}/marble_kmz.desktop
 %{_kf6_applicationsdir}/marble_shp.desktop
-%{_kf6_applicationsdir}/marble_worldwind.desktop
 %{_kf6_appstreamdir}/org.kde.marble.appdata.xml
 %{_kf6_appstreamdir}/org.kde.marble.behaim.appdata.xml
 %{_kf6_appstreamdir}/org.kde.marble.maps.appdata.xml
@@ -214,8 +212,9 @@ export SUSE_ASNEEDED=0
 %{_kf6_plugindir}/designer/
 %dir %{_kf6_plugindir}/kf6/krunner/
 %{_kf6_plugindir}/kf6/krunner/plasma_runner_marble.so
+%dir %{_kf6_plugindir}/kf6/thumbcreator
+%{_kf6_plugindir}/kf6/thumbcreator/*.so
 %{_kf6_plugindir}/libmarble_part.so
-%{_kf6_plugindir}/marblethumbnail.so
 %{_kf6_qmldir}/org/kde/marble/
 %{_kf6_sharedir}/mime/packages/geo.xml
 
@@ -247,10 +246,6 @@ export SUSE_ASNEEDED=0
 %{_kf6_bindir}/marble-qt
 
 %files kde
-%{_kf6_applicationsdir}/marble_thumbnail_kml.desktop
-%{_kf6_applicationsdir}/marble_thumbnail_kmz.desktop
-%{_kf6_applicationsdir}/marble_thumbnail_osm.desktop
-%{_kf6_applicationsdir}/marble_thumbnail_shp.desktop
 %{_kf6_applicationsdir}/org.kde.marble.behaim.desktop
 %{_kf6_applicationsdir}/org.kde.marble.desktop
 %{_kf6_applicationsdir}/org.kde.marble.maps.desktop
