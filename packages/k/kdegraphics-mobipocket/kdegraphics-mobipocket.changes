@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:32 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- Changes since 25.11.80:
+  * Use QTextStream instead of qDebug()
+
+-------------------------------------------------------------------
+Sat Nov 15 19:56:34 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * Remove obsolete private helper method, use more QByteArrayView
+  * Remove Qt5 compatibility code
+  * Remove bogus fallback to random image for thumbnail
+  * Add tool to dump metadata and text
+  * Allow building qmobipocket as a static library
+  * Remove Qt5 support
+  * Test HuffDic robustness against invalid dictionary contents
+  * Avoid overflow of dict offsets in bounds checks
+  * Add heuristic to protect HuffDic decompressor against 'ZIP bombs'
+  * Abort HuffDic decompression on first error
+  * Avoid HuffDic decompressor dictionary out-of-bounds accesses
+  * Verify hasDRM() returns the correct value
+  * Fix invalid QStringDecoder instantiation for cp1252
+  * Add support for categorized logging
+  * Add missing bounds check for HuffDic records
+  * Verify a truncated valid file does not cause invalid reads
+  * Fix invalid QTextCodec access for invalid files
+  * Fix possible out-of-bounds read when determining extra flags
+  * Fix possible out-of-bounds read for EXTH parsing
+  * Move PDB class definition to private header, clean it up
+  * Add missing bounds checks for getImage(), clean up, extend tests
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:31 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
