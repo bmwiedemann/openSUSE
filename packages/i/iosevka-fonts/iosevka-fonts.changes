@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Dec  7 00:20:44 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.3.6
+  * Changes of version 33.3.6
+    = Add Characters
+      ~ CIRCLED NUMBER TEN ON BLACK SQUARE (U+3248) .. CIRCLED
+        NUMBER EIGHTY ON BLACK SQUARE (U+324F) (#2963).
+      ~ INSERTION SYMBOL (U+2380) .. EMPHASIS SYMBOL (U+2383)
+        (#2939).
+    = Refine shape of the following characters:
+      ~ CYRILLIC CAPITAL LETTER HARD SIGN (U+042A).
+      ~ CYRILLIC SMALL LETTER HARD SIGN (U+044A).
+      ~ CYRILLIC CAPITAL LETTER BASHKIR KA (U+04A0).
+      ~ CYRILLIC SMALL LETTER BASHKIR KA (U+04A1).
+      ~ CYRILLIC CAPITAL LETTER YERU WITH BACK YER (U+A650).
+      ~  CYRILLIC SMALL LETTER YERU WITH BACK YER (U+A651).
+    = Fix underline shapes of APL operators (#2960).
+    = Add non-APL variant for ⍊ (U+234A) and ⍑ (U+2351) (#2960).
+
+-------------------------------------------------------------------
 Sat Nov 22 23:27:18 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v33.3.5
