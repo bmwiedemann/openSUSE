@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.14.0
+%define kf6_version 6.19.0
 %define plasma6_version 5.27.80
-%define qt6_version 6.8.0
+%define qt6_version 6.9.0
 
 %bcond_without released
 Name:           kate
-Version:        25.08.3
+Version:        25.12.0
 Release:        0
 Summary:        Advanced Text Editor
 License:        GPL-3.0-or-later
@@ -111,9 +111,11 @@ rm -r %{buildroot}%{_kf6_iconsdir}/hicolor/{150x150,310x310,44x44}
 %doc %{_kf6_mandir}/man1/kate.1%{?ext_man}
 %{_kf6_applicationsdir}/org.kde.kate.desktop
 %{_kf6_appstreamdir}/org.kde.kate.appdata.xml
+%{_kf6_bindir}/exec_inspect.sh
 %{_kf6_bindir}/kate
 %{_kf6_iconsdir}/hicolor/*/apps/kate.*
 %{_kf6_libdir}/libkateprivate.so.*
+%{_kf6_pluginsdir}/kf6/kio/kio_kateexec.so
 
 %files -n kwrite
 %doc README.md

@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:26 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- Changes since 25.11.80:
+  * Fix reading search highlight color (kde#512537)
+  * dap: be aware of some incompatible servers
+  * dap: add netcoredbg DAP server
+  * dap: message sequence should start at 1
+  * Add lldb-dap config
+  * Show scopes in a tree
+  * Simplify local variables code
+  * Move all Locals code to a separate widget
+  * Remove unused activeId argument
+  * lsp: Add blueprint-compiler lsp
+  * Fix numstat parsing
+  * filehistory: Omit --name-only when showing history for a directory
+  * Flatpak: Allow-list org.freedesktop.FileManager1
+
+-------------------------------------------------------------------
+Sat Nov 15 19:56:28 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Too many changes since 25.08.3, only listing bugfixes:
+  * register more mime-types & use same template for both apps (kde#510565)
+  * encode the rootUri properly (kde#510863)
+  * lsp: clear formatOnSave connection in updateState (kde#510870)
+  * Fix Context toolview steals focus (kde#510684)
+  * better link matching if ending if braces or string/sentences end (kde#510574)
+  * S&R: Limit the pre-match part in the results to 25% of view width (kde#509048)
+  * Capitalize drive letters on windows (kde#509085)
+  * Ignore unix signals when quitting (kde#508494)
+  * use malloc_trim if available to free memory to the system (kde#509126)
+  * ensure we don't crash when the parent window is deleted (kde#508894)
+  * Ensure we don't access null (kde#508802)
+  * Ensure we dont read pass the end of the buffer (kde#508802)
+  * diff: fix output being ignored if there is an error/warning (kde#507872)
+  * Fix infinite loop in git blame (kde#508577)
+  * Add toolbar to formatplugin (kde#508281)
+  * be more defensive (kde#508659)
+  * Allow pinnning documents (kde#486641)
+  * default is markdown for hover strings (kde#494139)
+  * Add support for workspace/configuration request in LSP client (kde#501082)
+  * Debugger: Improve DAP launch to prevent starting without a target (kde#505521)
+  * Limit Terraform LSP to project directory (kde#507020)
+  * Use KIO::moveAs to rename file (kde#506802)
+  * Fix tab restore when "open to right of current tab" is true (kde#495419)
+  * Fix tab order restore with limited tabs (kde#495419)
+  * Fix cursor position not being restored with multiple views (kde#506956)
+  * Use darkRed/darkGreen in light mode (kde#506911)
+  * Rehighlight diff when editor theme changes (kde#506911)
+  * add all tools, even the non-executable ones (kde#506559)
+  * Automatically highlight symbol under cursor (kde#503414)
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:25 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
