@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:39 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- Changes since 25.11.80:
+  * Prevent letter guessing during pause or result timer
+  * Use the theme text color for GamePage timerText
+  * Replace hint toolbutton icon with text
+
+-------------------------------------------------------------------
+Sat Nov 22 21:19:53 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove unused BuildRequires: update-desktop-files.
+
+-------------------------------------------------------------------
+Sat Nov 15 19:56:42 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Changes since 25.08.3:
+  * Use kf6 upper case include headers
+
+-------------------------------------------------------------------
 Thu Nov  6 18:37:39 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.3
