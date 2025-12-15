@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.14.0
-%define qt6_version 6.8.0
+%define kf6_version 6.19.0
+%define qt6_version 6.9.0
 %define plasma6_version 5.27.80
 
 %bcond_without released
 Name:           kweather
-Version:        25.08.3
+Version:        25.12.0
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Weather application for Plasma
@@ -80,14 +80,9 @@ views for showing forecasts and other information.
 %{_datadir}/dbus-1/services/org.kde.kweather.service
 %{_kf6_applicationsdir}/org.kde.kweather.desktop
 %{_kf6_appstreamdir}/org.kde.kweather.appdata.xml
-%if %{pkg_vcmp cmake(KF6Package) < 6.18}
-%{_kf6_appstreamdir}/org.kde.plasma.kweather_1x4.appdata.xml
-%endif
 %{_kf6_bindir}/kweather
 %{_kf6_iconsdir}/hicolor/scalable/apps/org.kde.kweather.svg
-%dir %{_kf6_plasmadir}/plasmoids
-%{_kf6_plasmadir}/plasmoids/org.kde.plasma.kweather_1x4/
-%{_kf6_plugindir}/plasma/applets/plasma_applet_kweather_1x4.so
+%{_kf6_plugindir}/plasma/applets/org.kde.plasma.kweather_1x4.so
 
 %files lang -f %{name}.lang
 
