@@ -17,6 +17,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 # define variables needed to build/install borgbackup >= 1.2.0
 %define borg_openssl_prefix BORG_OPENSSL_PREFIX=%{_prefix}/lib:%{_libdir}
 # needed when building without the packaged algorithms
@@ -221,15 +222,20 @@ rm -rf src/borg/algorithms/blake2
 # remove precompiled Cython code
 find src/ -name '*.pyx' | sed -e 's/.pyx/.c/g' | xargs rm -f
 # better name for msgpack license
-cp -a %{_datadir}/licenses/%{python_flavor}-msgpack/COPYING LICENSE.msgpack
+cp -a %{_datadir}/licenses/%{py3pkg}-msgpack/COPYING LICENSE.msgpack
+# use the defined python version
+for f in scripts/errorlist.py scripts/glibc_check.py; do
+    sed -i 's,#!/usr/bin/env python3,python-%{py3ver},' $f
+done
+sed -i 's/python3/python%{py3ver}/' src/borg/testsuite/archiver.py
 
 %build
-%{borg_openssl_prefix} %{borg_libzstd_prefix} %{borg_liblz4_prefix} %{borg_libxxhash_prefix} %{borg_libacl_prefix} CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" python3 setup.py build
+%{borg_openssl_prefix} %{borg_libzstd_prefix} %{borg_liblz4_prefix} %{borg_libxxhash_prefix} %{borg_libacl_prefix} CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" python%{py3ver} setup.py build
 export PYTHONPATH=$(pwd)/build/lib.linux-$(uname -m)-%{py3_ver}
 %make_build -C docs html man && rm docs/_build/html/.buildinfo
 
 %install
-%{borg_libacl_prefix} %{borg_libxxhash_prefix} %{borg_openssl_prefix} %{borg_liblz4_prefix} %{borg_libzstd_prefix} python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
+%{borg_libacl_prefix} %{borg_libxxhash_prefix} %{borg_openssl_prefix} %{borg_liblz4_prefix} %{borg_libzstd_prefix} python%{py3ver} setup.py install --prefix=%{_prefix} --root=%{buildroot}
 # install all man pages
 mkdir -p %{buildroot}%{_mandir}/man1
 install -m 0644 docs/man/borg*.1 %{buildroot}%{_mandir}/man1
@@ -238,7 +244,7 @@ install -D -m 0644 scripts/shell_completions/bash/borg %{buildroot}/%{_datadir}/
 install -D -m 0644 scripts/shell_completions/zsh/_borg %{buildroot}/%{_datadir}/zsh/site-functions/_borg
 install -D -m 0644 scripts/shell_completions/fish/borg.fish %{buildroot}/%{_datadir}/fish/vendor_completions.d/borg.fish
 # link duplicate files
-%fdupes %{buildroot}/%{python3_sitearch}/borgbackup-%{version}-py%{py3_ver}.egg-info/
+%fdupes %{buildroot}/%{_libdir}/python%{py3ver}/site-packages/borgbackup-%{version}-py%{py3_ver}.egg-info/
 # fix wrong-file-end-of-line-encoding
 sed -i 's/\r$//' docs/_build/html/_static/fonts/open-sans/stylesheet.css
 sed -i 's/\r$//' docs/_build/html/_static/fonts/source-serif-pro/LICENSE.txt
@@ -246,8 +252,8 @@ sed -i 's/\r$//' docs/_build/html/_static/fonts/source-serif-pro/LICENSE.txt
 %if %{with borg_test}
 %check
 # tests need to run in the build env for some reason
-export py3_ver_nodot=$(echo %{py3_ver} | tr -d '.')
-export PYTHONPATH=$(pwd)/build/lib.linux-$(uname -m)-cpython-$py3_ver_nodot
+export py3ver_nodot=$(echo %{py3ver} | tr -d '.')
+export PYTHONPATH=$(pwd)/build/lib.linux-$(uname -m)-cpython-$py3ver_nodot
 TEST_SELECTOR="not benchmark"
 LANG=en_US.UTF-8 py.test -x -vk "$TEST_SELECTOR" $PYTHONPATH/borg/testsuite/*.py
 %endif
@@ -255,8 +261,8 @@ LANG=en_US.UTF-8 py.test -x -vk "$TEST_SELECTOR" $PYTHONPATH/borg/testsuite/*.py
 %files
 %doc CHANGES.rst README.rst
 %license LICENSE LICENSE.msgpack
-%{python3_sitearch}/borg/
-%{python3_sitearch}/borgbackup-%{version}-py%{py3_ver}.egg-info
+%{_libdir}/python%{py3ver}/site-packages/borg/
+%{_libdir}/python%{py3ver}/site-packages/borgbackup-%{version}-py%{py3ver}.egg-info
 %{_bindir}/borg
 %{_bindir}/borgfs
 %{_mandir}/man1/borg*.1%{?ext_man}
