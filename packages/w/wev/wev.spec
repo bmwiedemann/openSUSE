@@ -1,7 +1,7 @@
 #
 # spec file for package wev
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           wev
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Wayland event viewer
 License:        MIT
 URL:            https://git.sr.ht/~sircmpwn/wev
-Source0:        https://git.sr.ht/~sircmpwn/wev/archive/%version.tar.gz
-BuildRequires:  wayland-devel
+Source0:        https://git.sr.ht/~sircmpwn/wev/archive/%{version}.tar.gz
 BuildRequires:  libxkbcommon-devel
-BuildRequires:  wayland-protocols-devel
 BuildRequires:  scdoc
+BuildRequires:  wayland-devel
+BuildRequires:  wayland-protocols-devel
 
 %description
 This is a tool for debugging events on a Wayland window, analagous to
@@ -36,15 +36,15 @@ the X11 tool xev.
 %setup -q
 
 %build
-%make_build CFLAGS="%optflags"
+%make_build CFLAGS="%{optflags}"
 
 %install
-%make_install PREFIX="%_prefix"
+%make_install PREFIX="%{_prefix}"
 
 %files
 %license LICENSE
 %doc README.md
-%_bindir/wev
-%_mandir/man1/wev.*
+%{_bindir}/wev
+%{_mandir}/man1/wev.*
 
 %changelog

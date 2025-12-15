@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Dec 14 20:42:40 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update package to 1.1.0:
+  * Fix logging of modifiers serial/group
+  * Makefile: drop dependency on header file
+  * Handle our interface version being greater than the compositor version
+  * Add support for wl_pointer.axis_value120
+  * Add support for wl_pointer.axis_relative_direction
+  * Print ids 10 characters wide
+  * Add support for the tablet protocol
+  * Map the keymap with MAP_PRIVATE
+  * Fix crasher if the tablet manager doesn't exist
+  * Switch to the stable tablet protocol
+  * Add support for the relativ dials in tablets
+  * Fix axis_discrete event log
+  * remember to close and unmap buffer after drawing
+  * escape control characters
+- ran spec-cleaner
+
+-------------------------------------------------------------------
 Tue Jan 26 10:19:38 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update package to 1.0.0:
