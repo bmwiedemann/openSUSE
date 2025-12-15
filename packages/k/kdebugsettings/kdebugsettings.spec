@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.14.0
-%define qt6_version 6.8.0
+%define kf6_version 6.19.0
+%define qt6_version 6.9.0
 
 %bcond_without released
 Name:           kdebugsettings
-Version:        25.08.3
+Version:        25.12.0
 Release:        0
 Summary:        Program to set debug verbosity for KDE applications
 License:        LGPL-2.0-or-later
@@ -41,6 +41,7 @@ BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6ItemViews) >= %{kf6_version}
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 Obsoletes:      kdebugsettings5 < %{version}
