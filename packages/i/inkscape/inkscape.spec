@@ -28,9 +28,11 @@ Source:         inkscape-%{version}.tar.zst
 Source1:        openSUSE.gpl
 Source2:        inkscape-split-extensions-extra.py
 # PATCH-FIX-UPSTREAM ce52c5f96106ae5747171663a46831f21aa52d95.patch -- Fix building with Poppler 25.07.0
-Patch:          https://gitlab.com/inkscape/inkscape/-/commit/ce52c5f96106ae5747171663a46831f21aa52d95.patch
+Patch:          ce52c5f96106ae5747171663a46831f21aa52d95.patch
 # PATCH-FIX-UPSTREAM b60d81745016b5f20d4c6aec6d073b8a6f3e499c.patch -- Fix building with Poppler 25.09.0
-Patch1:         https://gitlab.com/inkscape/inkscape/-/commit/b60d81745016b5f20d4c6aec6d073b8a6f3e499c.patch
+Patch1:         b60d81745016b5f20d4c6aec6d073b8a6f3e499c.patch
+# PATCH-FIX-UPSTREAM ace884e13e413b0cc49ece80936584ef92c986f5.patch -- Fix building with Poppler 25.10.0
+Patch2:         ace884e13e413b0cc49ece80936584ef92c986f5.patch
 
 BuildRequires:  cmake
 BuildRequires:  double-conversion-devel

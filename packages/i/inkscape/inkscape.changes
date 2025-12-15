@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Dec 11 09:37:23 UTC 2025 - Petr Gajdos <pgajdos@suse.com>
+
+- ace884e13e413b0cc49ece80936584ef92c986f5.patch had to be backported,
+  so remove patch url
+- also remove source urls from other patches as it causes issues
+  (https://build.opensuse.org/requests/1322235)
+
+-------------------------------------------------------------------
+Tue Dec  9 12:42:56 UTC 2025 - Petr Gajdos <pgajdos@suse.com>
+
+- fix building with Poppler 25.10.0
+- added patches
+  * ace884e13e413b0cc49ece80936584ef92c986f5.patch
+
+-------------------------------------------------------------------
 Sat Nov 22 21:19:02 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove unused BuildRequires: update-desktop-files.
