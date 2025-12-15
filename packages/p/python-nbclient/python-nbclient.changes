@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Dec 13 14:37:39 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.2:
+  * Drop Python 3.8, test PyPy 3.10 #323 (@davidbrochart)
+  * Gracefully handle explicit transient=None #322
+- update to 0.10.1:
+  * Run docs on ubuntu #314 (@blink1073)
+  * avoid deprecation warning for py313 #320 (@lucascolley)
+- drop nbclient-pr315-date-deprecation.patch,
+     nbclient-pr317-py313tests.patch: (upstream)
+
+-------------------------------------------------------------------
 Thu Feb 27 12:54:52 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
@@ -13,14 +25,14 @@ Thu Nov 21 18:57:39 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Add nbclient-pr315-date-deprecation.patch
   * Avoids DeprecationWarning when importing
-  * gh#jupyter/nbclient#315 gh#jupyter/nbclient#318 
+  * gh#jupyter/nbclient#315 gh#jupyter/nbclient#318
 - Add nbclient-pr317-py313tests.patch gh#jupyter/nbclient#317
   * make tests more lenient
 
 -------------------------------------------------------------------
 Wed Jun 26 01:36:57 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Remove upper bound on pytest. 
+- Remove upper bound on pytest.
 
 -------------------------------------------------------------------
 Fri Mar 29 18:45:22 UTC 2024 - Ben Greiner <code@bnavigator.de>
@@ -168,7 +180,7 @@ Wed Mar  9 16:47:55 UTC 2022 - Arun Persaud <arun@gmx.de>
 -------------------------------------------------------------------
 Mon Feb 28 10:17:42 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
-- Skip more failing tests due to new Exception message format 
+- Skip more failing tests due to new Exception message format
 
 -------------------------------------------------------------------
 Thu Feb 17 16:33:39 UTC 2022 - Arun Persaud <arun@gmx.de>

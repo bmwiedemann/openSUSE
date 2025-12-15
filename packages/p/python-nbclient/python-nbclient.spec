@@ -1,7 +1,7 @@
 #
 # spec file for package python-nbclient
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,16 +34,12 @@
 %{?sle15_python_module_pythons}
 
 Name:           python-nbclient%{psuffix}
-Version:        0.10.0
+Version:        0.10.2
 Release:        0
 Summary:        A client library for executing notebooks
 License:        BSD-3-Clause
 URL:            https://github.com/jupyter/nbclient
 Source:         https://files.pythonhosted.org/packages/source/n/nbclient/nbclient-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM nbclient-pr315-date-deprecation.patch gh#jupyter/nbclient#315 gh#jupyter/nbclient#318
-Patch0:         nbclient-pr315-date-deprecation.patch
-# PATCH-FIX-UPSTREAM nbclient-pr317-py313tests.patch gh#jupyter/nbclient#317
-Patch1:         nbclient-pr317-py313tests.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling >= 1.10.0}
 BuildRequires:  %{python_module pip}

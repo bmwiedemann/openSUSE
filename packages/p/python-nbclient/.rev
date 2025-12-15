@@ -339,4 +339,23 @@
     <comment></comment>
     <requestid>1248992</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>5f4278eec3e4339b33b98ca8c760e21e</srcmd5>
+    <version>0.10.2</version>
+    <time>1765796313</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.10.2:
+  * Drop Python 3.8, test PyPy 3.10 #323 (@davidbrochart)
+  * Gracefully handle explicit transient=None #322
+- update to 0.10.1:
+  * Run docs on ubuntu #314 (@blink1073)
+  * avoid deprecation warning for py313 #320 (@lucascolley)
+- drop nbclient-pr315-date-deprecation.patch,
+     nbclient-pr317-py313tests.patch: (upstream)
+
+  * gh#jupyter/nbclient#315 gh#jupyter/nbclient#318
+- Remove upper bound on pytest.
+- Skip more failing tests due to new Exception message format</comment>
+    <requestid>1322780</requestid>
+  </revision>
 </revisionlist>
