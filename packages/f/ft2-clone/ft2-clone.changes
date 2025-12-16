@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec 14 19:58:23 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.03
+  * Further tweak of sinc interpolation to prevent ringing (in
+    extreme cases).
+
+-------------------------------------------------------------------
 Sun Dec  7 08:50:06 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.02
