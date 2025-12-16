@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Dec 12 20:17:36 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.21.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.21.0
+- Changes since 6.20.0:
+  * Update dependency version to 6.21.0
+  * *Delegate: Update the paddings of all other delegates
+  * ComboBox: fix paddings (kde#512914)
+  * ItemDelegate: support custom paddings
+  * DefaultListItemBackground: make alternating background touch the edges
+  * SwipeDelegate: same behavior between SwipeDelegate and ItemDelegate
+  * ItemDelegate: More padding/inset to ItemDelegate to match ToolBar paddings (kde#487653)
+  * Consistent toolbar heights with QWidget applications
+  * DefaultListItemBackground: hide hover effect when control is disabled
+  * Update version to 6.21.0
+
+-------------------------------------------------------------------
 Thu Nov 13 20:59:03 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.20.0
