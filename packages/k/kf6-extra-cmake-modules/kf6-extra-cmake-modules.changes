@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Dec 12 20:17:18 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.21.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.21.0
+- Changes since 6.20.0:
+  * typo--
+  * FindInotify: Fix behavior on the CMake reconfiguration
+  * FindInotify: Teach to locate the native inotify impl on  systems
+  * ecm_add_test: make TARGET_NAME_VAR & TEST_NAME_VAR official
+  * Update version to 6.21.0
+
+-------------------------------------------------------------------
 Thu Nov 13 20:58:43 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.20.0
