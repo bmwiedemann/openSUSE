@@ -58,7 +58,6 @@ BuildRequires:  pandoc
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Jinja2
 BuildRequires:  python3-PyYAML
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(cairo-xlib)
 BuildRequires:  pkgconfig(glib-2.0)
