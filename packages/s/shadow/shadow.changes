@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 11 11:00:51 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add permissions file for shadow-pw-mgmt
+  [bsc#1253052#c12], [bsc#1254844]
+
+-------------------------------------------------------------------
 Sat Nov  1 17:43:53 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Move chage, chfn, chsh, passwd and new?idmap into own 

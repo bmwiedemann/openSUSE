@@ -34,6 +34,8 @@ Source2:        https://github.com/shadow-maint/shadow/releases/download/%{versi
 Source3:        %{name}.keyring
 Source4:        shadow.service
 Source5:        shadow.timer
+Source6:        shadow.permissions
+Source7:        shadow.permissions.paranoid
 # SOURCE-FEATURE-SUSE shadow-login_defs-check.sh sbrabec@suse.com -- Supplementary script that verifies coverage of variables in shadow-login_defs-unused-by-pam.patch and other patches.
 Source40:       shadow-login_defs-check.sh
 # PATCH-FIX-SUSE shadow-login_defs-unused-by-pam.patch kukuk@suse.com -- Remove variables that have no use with PAM.
@@ -57,6 +59,7 @@ BuildRequires:  libselinux-devel
 BuildRequires:  libsemanage-devel
 BuildRequires:  libtool
 BuildRequires:  pam-devel
+BuildRequires:  permissions-config
 BuildRequires:  xz
 # we depend on libbsd or glibc >= 2.38 for the strlcpy() (and readpassphrase()) functions
 BuildRequires:  glibc-devel >= 2.38
@@ -112,6 +115,7 @@ Development files for libsubid5.
 Summary:        Tools to manage user account data
 Group:          System/Base
 Requires:       shadow
+Requires(pre):  permissions
 
 %description pw-mgmt
 This sub-package contains utilities to manage user account
@@ -165,6 +169,8 @@ autoreconf -fvi
 
 install -Dm644 %{SOURCE4} %{buildroot}%{_unitdir}/shadow.service
 install -Dm644 %{SOURCE5} %{buildroot}%{_unitdir}/shadow.timer
+install -Dm644 %{SOURCE6} %{buildroot}%{_datadir}/permissions/permissions.d/shadow
+install -Dm644 %{SOURCE7} %{buildroot}%{_datadir}/permissions/permissions.d/shadow.paranoid
 
 # add empty /etc/sub{u,g}id files
 touch %{buildroot}/%{_sysconfdir}/subuid
@@ -258,6 +264,7 @@ test -f %{_sysconfdir}/login.defs.rpmsave && mv -v %{_sysconfdir}/login.defs.rpm
 
 %verifyscript
 %verify_permissions %{_bindir}/gpasswd
+%verify_permissions %{_bindir}/newgrp
 
 %verifyscript pw-mgmt
 %verify_permissions %{_bindir}/chage
@@ -266,6 +273,7 @@ test -f %{_sysconfdir}/login.defs.rpmsave && mv -v %{_sysconfdir}/login.defs.rpm
 %verify_permissions %{_bindir}/expiry
 %verify_permissions %{_bindir}/newgrp
 %verify_permissions %{_bindir}/newgidmap
+%verify_permissions %{_bindir}/newuidmap
 %verify_permissions %{_bindir}/passwd
 
 %preun
@@ -373,9 +381,11 @@ test -f %{_sysconfdir}/login.defs.rpmsave && mv -v %{_sysconfdir}/login.defs.rpm
 %verify(not mode) %attr(4755,root,shadow) %{_bindir}/chfn
 %verify(not mode) %attr(4755,root,shadow) %{_bindir}/chsh
 %verify(not mode) %attr(4755,root,shadow) %{_bindir}/expiry
-%verify(not mode) %attr(4755,root,shadow) %{_bindir}/newgidmap
-%verify(not mode) %attr(4755,root,shadow) %{_bindir}/newuidmap
+%verify(not mode) %attr(4755,root,root) %{_bindir}/newgidmap
+%verify(not mode) %attr(4755,root,root) %{_bindir}/newuidmap
 %verify(not mode) %attr(4755,root,shadow) %{_bindir}/passwd
+%{_datadir}/permissions/permissions.d/shadow
+%{_datadir}/permissions/permissions.d/shadow.paranoid
 %{_mandir}/man1/chage.1%{?ext_man}
 %{_mandir}/man1/chfn.1%{?ext_man}
 %{_mandir}/man1/chsh.1%{?ext_man}

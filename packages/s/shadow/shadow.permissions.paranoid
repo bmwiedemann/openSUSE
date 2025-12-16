@@ -1,0 +1,8 @@
+/usr/bin/chage                   root:shadow       0755
+/usr/bin/chfn                    root:shadow       0755
+/usr/bin/chsh                    root:shadow       0755
+/usr/bin/expiry                  root:shadow       0755
+/usr/bin/passwd                  root:shadow       0755
+# newgidmap / newuidmap (bsc#979282, bsc#1048645, bsc#1208309)
+/usr/bin/newgidmap               root:root         0755
+/usr/bin/newuidmap               root:root         0755
