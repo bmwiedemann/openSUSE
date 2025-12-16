@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec 16 08:39:05 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.2.2
+  * {mcp} Improve MCP Proxy OAuth Token Refresh Reliability and
+    Profile Reuse by @AllyW in (#1282)
+  * Update Aliyun OpenAPI meta data
+- from version 3.2.1
+  * {Utils} Update mac runner by @AllyW in (#1283)
+  * Update Aliyun OpenAPI meta data
+
+-------------------------------------------------------------------
 Sat Dec  6 14:51:33 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.2.0

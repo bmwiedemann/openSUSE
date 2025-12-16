@@ -36,4 +36,18 @@
   * Update Aliyun OpenAPI meta data (forwarded request 1321365 from glaubitz)</comment>
     <requestid>1321643</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f26b6b96ca819273fedcb5a066924ab5</srcmd5>
+    <version>3.2.2</version>
+    <time>1765902175</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.2.2
+  * {mcp} Improve MCP Proxy OAuth Token Refresh Reliability and
+    Profile Reuse by @AllyW in (#1282)
+  * Update Aliyun OpenAPI meta data
+- from version 3.2.1
+  * {Utils} Update mac runner by @AllyW in (#1283)
+  * Update Aliyun OpenAPI meta data (forwarded request 1323073 from glaubitz)</comment>
+    <requestid>1323133</requestid>
+  </revision>
 </revisionlist>
