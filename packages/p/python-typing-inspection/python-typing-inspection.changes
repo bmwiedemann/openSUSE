@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 12 09:37:22 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 0.4.2
+  * Add typing_objects.is_noextraitems() by @Viicos in #47
+
+-------------------------------------------------------------------
 Wed Jul 30 18:03:09 UTC 2025 - Elisei Roca <eroca@suse.com>
 
 - Update to 0.4.1

@@ -15,4 +15,15 @@
     <comment>new package</comment>
     <requestid>1296716</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ee591d8484ff1569159248f1494a3fd5</srcmd5>
+    <version>0.4.2</version>
+    <time>1765896576</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.4.2
+  * Add typing_objects.is_noextraitems() by @Viicos in #47
+
+This is needed for the latest version of python-pydantic</comment>
+    <requestid>1322567</requestid>
+  </revision>
 </revisionlist>
