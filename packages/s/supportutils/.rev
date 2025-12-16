@@ -370,4 +370,12 @@
     <comment>bsc#1244003 bsc#1244011 bsc#1241284 bsc#1244937 (forwarded request 1289566 from jrecord)</comment>
     <requestid>1289568</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>7bd64e872ca4fca8dfd10db150041978</srcmd5>
+    <version>3.2.12.2</version>
+    <time>1765896973</time>
+    <user>anag_factory</user>
+    <comment>bsc#1232351 bsc#1245667 bsc#1246011 bsc#1246025 bsc#1249657 bsc#1250224 bsc#1252318 bsc#1254425 PR#265 PR#261 PR#266 PR#269 PR#270 PR#271 PR#276 PR#278 PR#279 PR#282 PR#284 PR#288 (forwarded request 1323019 from jrecord)</comment>
+    <requestid>1323020</requestid>
+  </revision>
 </revisionlist>

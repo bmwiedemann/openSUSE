@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Dec 12 20:05:09 UTC 2025 - jason.record@suse.com
+
+- Changes to version 3.2.12
+  + Optimized lsof usage and honors OPTION_OFILES (bsc#1232351, PR#274)
+  + Run in containers without errors (bsc#1245667, PR#272)
+  + Removed pmap PID from memory.txt (bsc#1246011, PR#263)
+  + Added missing /proc/pagetypeinfo to memory.txt (bsc#1246025, PR#264)
+  + Improved database perforce with kGraft patching (bsc#1249657, PR#273)
+  + Using last boot for journalctl for optimization (bsc#1250224, PR#287)
+  + Fixed extraction failures (bsc#1252318, PR#275)
+  + Update supportconfig.conf path in docs (bsc#1254425, PR#281)
+  + drm_sub_info: Catch error when dir doesn't exist (PR#265)
+  + Replace remaining `egrep` with `grep -E` (PR#261, PR#266)
+  + Add process affinity to slert logs (PR#269)
+  + Reintroduce cgroup statistics (and v2) (PR#270)
+  + Minor changes to basic-health-check: improve information level (PR#271)
+  + Collect important machine health counters (PR#276)
+  + powerpc: collect hot-pluggable PCI and PHB slots (PR#278)
+  + podman: collect podman disk usage (PR#279)
+  + Exclude binary files in crondir (PR#282)
+  + kexec/kdump: collect everything under /sys/kernel/kexec dir (PR#284)
+  + Use short-iso for journalctl (PR#288)
+
+-------------------------------------------------------------------
 Tue Jul  1 15:21:49 UTC 2025 - jason.record@suse.com
 
 - Changes to version 3.2.11
