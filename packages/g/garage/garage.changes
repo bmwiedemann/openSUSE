@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 15 13:05:57 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Use protoc from protobuf-devel package, intead of bundled binaries of
+  questionable provenance
+
+-------------------------------------------------------------------
 Fri Dec  5 00:04:30 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Switch to use system libraries and add the required buildrequires

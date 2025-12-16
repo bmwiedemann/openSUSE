@@ -32,6 +32,7 @@ Source21:       system-user-%{name}.conf
 Patch0:         make-the-default-path-match-our-package.patch
 BuildRequires:  cargo >= 1.77
 BuildRequires:  cargo-packaging
+BuildRequires:  protobuf-devel
 BuildRequires:  sysuser-tools
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(libseccomp)
@@ -56,6 +57,8 @@ operate, and highly resilient to machine failures.
 %autosetup -p 1 -a 1
 
 %build
+# Use protoc from protobuf-devel package
+export PROTOC=protoc
 %{cargo_build} --no-default-features --features=%{default_features}%{additional_features}
 
 # system-user
