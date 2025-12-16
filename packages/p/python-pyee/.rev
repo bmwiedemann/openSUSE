@@ -170,4 +170,12 @@ Add missing BuildRequires</comment>
     <comment></comment>
     <requestid>1291956</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>5a73e8156f91a4e3e65a574815e13cce</srcmd5>
+    <version>13.0.0</version>
+    <time>1765896996</time>
+    <user>anag_factory</user>
+    <comment>- Fix pytest section in pyproject.toml.</comment>
+    <requestid>1323042</requestid>
+  </revision>
 </revisionlist>

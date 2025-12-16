@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyee
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,6 +47,8 @@ from Node.js.
 
 %prep
 %autosetup -n pyee-%{version} -p1
+# https://github.com/jfhbrook/pyee/issues/189
+sed -ie 's/\(tool.pytest\)/\1.ini_options/' pyproject.toml
 
 %build
 %pyproject_wheel

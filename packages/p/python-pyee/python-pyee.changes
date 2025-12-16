@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 16 04:47:59 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Fix pytest section in pyproject.toml.
+
+-------------------------------------------------------------------
 Fri Jul 11 10:38:21 UTC 2025 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
 
 - Add gh-pr184_tests.patch to repair failing tests
