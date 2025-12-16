@@ -1507,4 +1507,16 @@
   * https://github.com/telegramdesktop/tdesktop/releases/tag/v6.3.6</comment>
     <requestid>1321342</requestid>
   </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>4eada419624b7a039e8c5d96547a5944</srcmd5>
+    <version>6.3.9</version>
+    <time>1765897073</time>
+    <user>anag_factory</user>
+    <comment>- Updated tg_owt to git20251128
+  * Removed tg_owt-pipewire.patch
+- Updated td to git20251210
+- Updated telegram-desktop to 6.3.9
+  * https://github.com/telegramdesktop/tdesktop/releases/tag/v6.3.9</comment>
+    <requestid>1323064</requestid>
+  </revision>
 </revisionlist>

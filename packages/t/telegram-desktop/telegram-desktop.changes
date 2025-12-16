@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 16 07:47:29 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Updated tg_owt to git20251128
+  * Removed tg_owt-pipewire.patch
+- Updated td to git20251210
+- Updated telegram-desktop to 6.3.9
+  * https://github.com/telegramdesktop/tdesktop/releases/tag/v6.3.9
+
+-------------------------------------------------------------------
 Sat Dec  6 07:38:00 UTC 2025 - Илья Индиго <ilya@ilya.top>
 
 - Updated td to git20251201.
