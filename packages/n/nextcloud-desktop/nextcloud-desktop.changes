@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Dec 16 08:11:45 UTC 2025 - Natasha Ament <stacheldrahtje@gmail.com>
+
+- Update to version 4.0.4:
+  * Server notifications can now be dismissed from the activity list 
+    (gh#nextcloud/desktop#9222)
+  * Fixed File Drop not working (gh#nextcloud/desktop#9195)
+  * The account wizard now displays a more clear error message if 
+    the server is in maintenance mode (gh#nextcloud/desktop#9226)
+  * Fixed a crash when removing a sync folder 
+    (gh#nextcloud/desktop#9183)
+  * Fixed enforcement of the enterprise update channel 
+    (gh#nextcloud/desktop#9139)
+  * Keep track of the previous client version in the config to 
+    allow better handling of configuration upgrades 
+    (gh#nextcloud/desktop#9204)
+  * Fixed configuration migration dialog being shown if no legacy 
+    configuration was found (gh#nextcloud/desktop#9190)
+  * Fixed a crash when calculating checksums 
+    (gh#nextcloud/desktop#9221)
+  * Reduced log verbosity when deleting folder contents 
+    (gh#nextcloud/desktop#9243)
+  * Fixed redirect handling after Qt6 migration 
+    (gh#nextcloud/desktop#9247)
+  * refactor: Use correct string overload (gh#nextcloud/desktop#8992)
+  * chore: Removed unused build scripts (gh#nextcloud/desktop#9245)
+
+-------------------------------------------------------------------
 Thu Dec  4 06:00:38 UTC 2025 - Natasha Ament <stacheldrahtje@gmail.com>
 
 - Update to version 4.0.3:
