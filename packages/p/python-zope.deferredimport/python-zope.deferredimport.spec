@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.deferredimport
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,20 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-zope.deferredimport
-Version:        5.0
+Version:        6.0
 Release:        0
 Summary:        On-demand import name resolver
 License:        ZPL-2.1
-Group:          Development/Languages/Python
 URL:            https://github.com/zopefoundation/zope.deferredimport
-Source:         https://files.pythonhosted.org/packages/source/z/zope.deferredimport/zope.deferredimport-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/z/zope.deferredimport/zope_deferredimport-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module zope.proxy}
 BuildRequires:  %{python_module zope.testrunner}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-setuptools
 Requires:       python-zope.proxy
 BuildArch:      noarch
 %python_subpackages
@@ -46,7 +47,7 @@ used.
 Documentation is hosted at https://zopedeferredimport.readthedocs.io/
 
 %prep
-%setup -q -n zope.deferredimport-%{version}
+%setup -q -n zope_deferredimport-%{version}
 
 %build
 %pyproject_wheel
@@ -62,7 +63,6 @@ Documentation is hosted at https://zopedeferredimport.readthedocs.io/
 %license LICENSE.txt
 %doc README.rst
 %{python_sitelib}/zope/deferredimport
-%{python_sitelib}/zope.deferredimport-%{version}-py*-nspkg.pth
 %{python_sitelib}/zope[_.]deferredimport-%{version}.dist-info
 
 %changelog

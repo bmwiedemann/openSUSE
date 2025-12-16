@@ -65,4 +65,14 @@
     <comment>Make it compatible with new setuptools</comment>
     <requestid>1266265</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1e9ff680efafef50cc536b1de248ab7d</srcmd5>
+    <version>6.0</version>
+    <time>1765896785</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.0:
+  * Replace pkg_resources namespace with PEP 420 native namespace.
+- Sprinkle in setuptools to {Build,}Requires.</comment>
+    <requestid>1322885</requestid>
+  </revision>
 </revisionlist>

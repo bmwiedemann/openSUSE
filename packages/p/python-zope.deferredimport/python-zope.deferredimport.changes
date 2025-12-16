@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 15 02:06:21 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 6.0:
+  * Replace pkg_resources namespace with PEP 420 native namespace.
+- Sprinkle in setuptools to {Build,}Requires.
+
+-------------------------------------------------------------------
 Tue Apr  1 16:05:31 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Make it compatible with older setuptools
