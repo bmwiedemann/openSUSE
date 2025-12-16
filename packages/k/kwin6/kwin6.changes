@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec 13 11:41:24 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix kwin freezes (kde#513151):
+  * 0001-core-sessions-don-t-take-ownership-of-an-fd-that-Qt-.patch
+
+-------------------------------------------------------------------
 Tue Dec  9 11:55:20 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.5.4:

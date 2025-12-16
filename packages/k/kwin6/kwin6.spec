@@ -39,6 +39,8 @@ Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{ver
 Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-core-sessions-don-t-take-ownership-of-an-fd-that-Qt-.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 # GCC 13 doesn't know std::ranges::to
