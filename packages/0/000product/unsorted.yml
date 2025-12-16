@@ -17534,6 +17534,7 @@ unsorted:
   - linux-enable-ir-emitter 
   - linux-ftools 
   - linux-libertine-fonts 
+  - linux-npu-driver 
   - linux32 
   - linux_logo 
   - linuxconsoletools 
@@ -26904,6 +26905,7 @@ unsorted:
   - python311-pytest-expect 
   - python311-pytest-filter-subpackage 
   - python311-pytest-fixture-config 
+  - python311-pytest-flake8 
   - python311-pytest-flake8-path 
   - python311-pytest-flakes 
   - python311-pytest-flask 
@@ -30757,6 +30759,7 @@ unsorted:
   - python312-pytest-expect 
   - python312-pytest-filter-subpackage 
   - python312-pytest-fixture-config 
+  - python312-pytest-flake8 
   - python312-pytest-flake8-path 
   - python312-pytest-flakes 
   - python312-pytest-flask 
@@ -34579,6 +34582,7 @@ unsorted:
   - python313-pytest-expect 
   - python313-pytest-filter-subpackage 
   - python313-pytest-fixture-config 
+  - python313-pytest-flake8 
   - python313-pytest-flake8-path 
   - python313-pytest-flakes 
   - python313-pytest-flask 
