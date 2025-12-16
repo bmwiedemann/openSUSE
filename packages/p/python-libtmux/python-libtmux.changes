@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Mon Dec 15 05:52:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.53.0:
+  * Highlights
+    - Fixed: Session.attach() no longer raises
+      TmuxObjectDoesNotExist when a user kills the session during
+      attachment
+    - Breaking: Session.attach() no longer calls refresh() after
+      returning (semantically incorrect for interactive commands)
+  * Bug Fixes
+    - Session.attach() no longer fails if session killed during
+      attachment (#616)
+      Fixed an issue where Session.attach() would raise
+      TmuxObjectDoesNotExist when a user:
+      - Attaches to a tmux session via tmuxp load
+      - Works in the session
+      - Kills the session (e.g., closes all windows) before
+        detaching
+      - Detaches from tmux
+
+      User Experience (Before Fix)
+
+        After running tmuxp load, users would see this traceback
+        printed to their terminal after detaching:
+
+          Traceback (most recent call last):
+            File "~/.local/bin/tmuxp", line 7, in <module>
+              sys.exit(cli.cli())
+            ...
+            File ".../libtmux/session.py", line 332, in attach
+              self.refresh()
+            File ".../libtmux/neo.py", line 167, in _refresh
+              obj = fetch_obj(...)
+            File ".../libtmux/neo.py", line 242, in fetch_obj
+              raise exc.TmuxObjectDoesNotExist(...)
+          libtmux.exc.TmuxObjectDoesNotExist: Could not find object
+
+      Root Cause
+
+      Session.attach() called self.refresh() after the
+      attach-session command returned. Since attach-session is a
+      blocking interactive command, the session state can change
+      arbitrarily during attachment—including being killed
+      entirely.
+
+      Technical Details
+
+      The refresh() call was semantically incorrect for interactive
+      commands:
+      - attach-session blocks until user detaches
+      - Session state can change during attachment (user may kill
+        session, rename it, etc.)
+      - Refreshing the object after such a command makes no
+        sense—the state could be anything
+
+      The fix: Remove the self.refresh() call from Session.attach()
+      (2 lines removed).
+
+  * Breaking Changes
+    - Session.attach() no longer calls refresh() (#616)
+      Session.attach() previously called Session.refresh() after
+      the attach-session command returned. This was semantically
+      incorrect since attach-session is a blocking interactive
+      command where session state can change arbitrarily during
+      attachment.
+      This was never strictly defined behavior as libtmux abstracts
+      tmux internals away. Code that relied on the session object
+      being refreshed after attach() should explicitly call
+      session.refresh() if needed.
+
+      Migration
+
+      # If you relied on the implicit refresh (unlikely):
+      session.attach()
+      session.refresh()  # Now explicit if you need it
+
+      Timeline
+      Date 	    Event
+      Feb 2024 	Session.attach() added with refresh() call (9a5147a)
+      Nov 2025 	tmuxp switched from attach_session() to attach() (fdafdd2b)
+      Dec 2025 	Users started experiencing the bug
+      Dec 2025 	v0.53.0 released with fix
+  * What's Changed
+    - fix(Session.attach()): Remove refresh() call that fails after
+      session killed by @tony in #616
+
+-------------------------------------------------------------------
 Tue Dec  9 06:58:49 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.52.1:
