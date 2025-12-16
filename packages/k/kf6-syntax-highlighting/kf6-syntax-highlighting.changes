@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Dec 12 20:17:37 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.21.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.21.0
+- Changes since 6.20.0:
+  * Update dependency version to 6.21.0
+  * spdx-comments.xml: update SPDX licenses
+  * Add support for new wayland interface delimiter
+  * fix(cmake.xml): `CACHE{name}` also can be in `if`, `elseif`, and `while`
+  * misc: update comment in `cmake.xml` generator
+  * update cmake refs to new hl state
+  * replace regex where possible with plain string matching
+  * cmake.xml: update syntax for CMake 4.2
+  * Highlight Kaitai Struct (.ksy) files as YAML
+  * Add tool for generating Jinja highlighting and use it on some languages
+  * CSV: tolerate spaces before double quotes (#38)
+  * Fix import context rule order and update test reference files
+  * Fix backslash in symbolops entity for proper /\ operator matching
+  * Revert "Remove test cases to avoid reference mismatch"
+  * Remove test cases to avoid reference mismatch (kde#512318)
+  * Merge operator rules to satisfy CI indexer (kde#512318)
+  * Haskell: fix backslash operator tokenization (kde#512318)
+  * syntax: Add blueprint-compiler syntax highlighting.
+  * Update version to 6.21.0
+
+-------------------------------------------------------------------
 Thu Nov 13 20:59:04 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.20.0
