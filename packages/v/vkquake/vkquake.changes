@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Dec 14 09:25:53 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.33.0
+  Fixes
+  * Allow centerprint to be larger than 40 chars (from Ironwail).
+  * Remove usage of spirv-remap.
+  * Try to load texture from bsp when external Wad load.
+  Changes / New features :
+  * MD3 model support. Supported features includes skins,
+    multi-surfaces, RGBA textures and so on, with the exception of
+    the Quake 3 Shader system.
+  * Remove 32bit support
+  * Many more internal refactorings and cleanups
+- Drop patch:
+  * sprirv-remap.patch (not longer needed)
+
+-------------------------------------------------------------------
 Mon Oct 27 15:02:22 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
 
 - added sprirv-remap.patch to fix compilation failing since glslang 16.0.0

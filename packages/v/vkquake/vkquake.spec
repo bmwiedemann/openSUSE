@@ -18,7 +18,7 @@
 
 
 Name:           vkquake
-Version:        1.32.3.1
+Version:        1.33.0
 Release:        0
 Summary:        Quake 1 port using Vulkan instead of OpenGL for rendering
 License:        GPL-2.0-or-later
@@ -28,8 +28,6 @@ Source:         https://github.com/Novum/vkQuake/archive/refs/tags/%{version}.ta
 Source99:       %{name}.changes
 Source100:      appdata.xml
 Source101:      %{name}.desktop
-# PATCH-FIX-UPSTREAM sprirv-remap.patch
-Patch:          sprirv-remap.patch
 BuildRequires:  cmake
 BuildRequires:  glslang-devel
 BuildRequires:  meson
