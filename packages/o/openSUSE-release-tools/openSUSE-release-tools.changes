@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec 08 13:54:46 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20251208.250a23f3:
+  * Leap 16.0: Fix missing openqa host when calling git-openqa-maintenance
+
+-------------------------------------------------------------------
+Mon Dec 08 12:38:35 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20251208.73cc3a4a:
+  * Use openqa python client to schedule tests
+
+-------------------------------------------------------------------
 Mon Dec 01 11:48:46 UTC 2025 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20251201.8e5d0523:
