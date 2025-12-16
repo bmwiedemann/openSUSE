@@ -31,6 +31,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  meson >= 0.49.0
 BuildRequires:  pkgconfig
+BuildRequires:  python3-base
 BuildRequires:  unzip
 
 %description
