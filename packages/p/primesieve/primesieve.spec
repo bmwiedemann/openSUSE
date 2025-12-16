@@ -17,14 +17,14 @@
 
 
 Name:           primesieve
-Version:        12.10
+Version:        12.11
 Release:        0
 Summary:        A prime number generator
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/kimwalisch/primesieve
 Source0:        https://github.com/kimwalisch/primesieve/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  cmake >= 3.7
+BuildRequires:  cmake >= 3.9
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  asciidoc
