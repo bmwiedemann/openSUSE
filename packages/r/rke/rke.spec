@@ -17,7 +17,7 @@
 
 
 Name:           rke
-Version:        1.8.8
+Version:        1.8.9
 Release:        0
 Summary:        Rancher Kubernetes Engine
 License:        Apache-2.0
