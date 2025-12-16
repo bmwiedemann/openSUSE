@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec 15 05:52:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.30.31:
+  * build(deps): bump chainguard.dev/sdk from 0.1.44 to 0.1.45
+    (#1980)
+  * build(deps): bump github/codeql-action from 4.31.7 to 4.31.8
+    (#1982)
+  * build(deps): bump step-security/harden-runner from 2.13.3 to
+    2.14.0 (#1983)
+
+-------------------------------------------------------------------
 Fri Dec 12 12:16:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.30.30:
