@@ -616,4 +616,12 @@ Full Changelog: https://github.com/pyenv/pyenv/compare/v2.4.7...v2.4.8</comment>
       PYTHON_BUILD_TCLTK_FORMULA envvar by @native-api in #3327</comment>
     <requestid>1315974</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>5629c9e4390c6e927da5c3d3f93eee51</srcmd5>
+    <version>2.6.16</version>
+    <time>1765897110</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1323126</requestid>
+  </revision>
 </revisionlist>

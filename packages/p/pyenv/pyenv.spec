@@ -19,7 +19,7 @@
 %define pyenv_dir      %{_libexecdir}/pyenv
 #
 Name:           pyenv
-Version:        2.6.12
+Version:        2.6.16
 Release:        0
 Summary:        Python Version Management
 License:        MIT
@@ -157,6 +157,9 @@ bats test/{pyenv,hooks,versions}.bats
 
 %config %{_sysconfdir}/pyenv.d/rehash/*.d/default.list
 %config %{_sysconfdir}/pyenv.d/exec/pip-rehash.bash
+%config %{_sysconfdir}/pyenv.d/exec/pip-rehash/conda
+%config %{_sysconfdir}/pyenv.d/exec/pip-rehash/easy_install
+%config %{_sysconfdir}/pyenv.d/exec/pip-rehash/pip
 %config %{_sysconfdir}/pyenv.d/rehash/*.bash
 %config %{_sysconfdir}/pyenv.d/install/*.bash
 
@@ -166,8 +169,7 @@ bats test/{pyenv,hooks,versions}.bats
 %dir %{_sysconfdir}/pyenv.d/rehash/
 %dir %{_sysconfdir}/pyenv.d/rehash/*.d/
 %dir %{_sysconfdir}/pyenv.d/install/
-
-%{_sysconfdir}/pyenv.d/exec/pip-rehash
+%dir %{_sysconfdir}/pyenv.d/exec/pip-rehash
 %{_bindir}/pyenv
 #
 %{_mandir}/man1/%{name}.1%{?ext_man}
