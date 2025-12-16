@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Dec 16 05:50:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.6.0:
+  * Features
+    - #1275 Support GitHub Enterprise
+    - #1282 #1284 Support PINACT_MIN_AGE environment variable for
+      -min-age option
+  * Bug Fixes
+    - #1283 Fix a bug that pinact token set can't be cancelled by
+      ctrl-c
+  * Dependencies
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.446.0 (#1281)
+    - chore(deps): update dependency anchore/syft to v1.38.2
+      (#1276)
+    - chore(deps): update dependency sigstore/cosign to v3.0.3
+      (#1277)
+    - chore(deps): update dependency goreleaser/goreleaser to
+      v2.13.1 (#1272)
+    - chore(deps): update dependency golangci/golangci-lint to
+      v2.7.2 (#1270)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.445.0 (#1269)
+    - chore(deps): update dependency suzuki-shunsuke/pinact to
+      v3.5.0 (#1268)
+
+-------------------------------------------------------------------
 Thu Dec 11 07:06:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.5.0:
