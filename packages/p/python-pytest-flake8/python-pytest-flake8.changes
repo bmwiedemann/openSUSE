@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Tue Dec 16 01:44:24 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Initial release of 1.3.0. 
+- Add patch support-pytest-9.patch:
+  * Support pytest 9 changes.
