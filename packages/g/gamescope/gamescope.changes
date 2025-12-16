@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Dec 15 21:35:43 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to version 3.16.18:
+  * OpenVRBackend: Add closing window support
+  * OpenVRBackend: Collection of non-Steam app niceties
+  * steamcompmgr: Exclude override redirects from VR taskbar
+  * OpenVRBackend: Update refresh rate dynamically
+  * wlserver: Fix syncobj crash
+  * DRMBackend: Fix HDR static metadata creation for PQ EOTF via lua config
+  * ime: Use correct timer for key release delay
+  * steamcompmgr: Add GAMESCOPE_MAIN_STEAMVR_OVERLAY
+  * gamescope: Forward Steam bootstrapper specifically to its own vr overlay
+  * Use HAVE_LIBCAP guard before including capability.h, and add missing dependency to some targets
+
+-------------------------------------------------------------------
 Thu Sep 18 14:31:25 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to version 3.16.17:
