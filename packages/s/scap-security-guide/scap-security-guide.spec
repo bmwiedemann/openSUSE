@@ -42,7 +42,7 @@
 %endif
 
 Name:           scap-security-guide
-Version:        0.1.78
+Version:        0.1.79
 Release:        0
 Summary:        XCCDF files for SUSE Linux and openSUSE
 License:        BSD-3-Clause
@@ -158,7 +158,7 @@ Security Content Automation Protocol (SCAP) Security Guide for SUSE Linux.
 This package contains XCCDF (Extensible Configuration Checklist
 Description Format), OVAL (Open Vulnerability and Assessment
 Language), CPE (Common Platform Enumeration) and DS (Data Stream)
-files to run a compliance test on SLE12, SLE15, SLEM5 and openSUSE
+files to run a compliance test on SLE12, SLE15, SLEM5, SLEM6 and openSUSE
 
 SUSE supported in this version of scap-security-guide:
 
@@ -265,6 +265,7 @@ cmake   -DCMAKE_INSTALL_PREFIX=%{_prefix} \
         -DSSG_PRODUCT_SLE12=ON \
         -DSSG_PRODUCT_SLE15=ON \
         -DSSG_PRODUCT_SLMICRO5=ON \
+        -DSSG_PRODUCT_SLMICRO6=ON \
         -DSSG_PRODUCT_UBUNTU1604=ON \
         -DSSG_PRODUCT_UBUNTU1804=ON \
         -DSSG_PRODUCT_UBUNTU2004=ON \

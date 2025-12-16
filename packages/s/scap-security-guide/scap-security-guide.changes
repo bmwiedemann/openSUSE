@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec 16 11:25:18 UTC 2025 - Boychev <svetlin.boychev@suse.com>
+
+- updated to 0.1.79 (jsc#ECO-3319)
+    - Add rhcos4 Profile for BSI Grundschutz
+    - Create SLE15 general profile
+    - Fix crypto policy settings in RHEL CIS profiles
+    - Remove deprecated CIS OpenShift 1.4.0 and 1.5.0 profiles
+    - Remove OCP STIG V1R1
+    - Remove OCP STIG V2R1
+    - Various updates for SLE 12/15
+
+-------------------------------------------------------------------
 Mon Sep 29 11:36:05 UTC 2025 - Boychev <svetlin.boychev@suse.com>
 
 - updated to 0.1.78 (jsc#ECO-3319)
