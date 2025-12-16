@@ -964,4 +964,15 @@ source service setup which messed up my spec file.
   (bsc#1254264)</comment>
     <requestid>1320390</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>31e80a4559e375b9fa120be8945c0c1e</srcmd5>
+    <version>16.1.2</version>
+    <time>1765896603</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 16.1.2:
+  * udev rules: write block queue attributes only if necessary
+  (bsc#1254928)
+  * mkosi-initrd: perform some basic checks on regenerate all</comment>
+    <requestid>1322974</requestid>
+  </revision>
 </revisionlist>

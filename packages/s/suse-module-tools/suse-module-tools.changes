@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 15 15:18:36 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.1.2:
+  * udev rules: write block queue attributes only if necessary
+  (bsc#1254928)
+  * mkosi-initrd: perform some basic checks on regenerate all
+
+-------------------------------------------------------------------
 Thu Nov 27 16:35:17 UTC 2025 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.1.1:
