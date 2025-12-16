@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Dec 12 20:17:27 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.21.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.21.0
+- Changes since 6.20.0:
+  * Update dependency version to 6.21.0
+  * Add braces around single-line if statements
+  * KFileItem: Remove or shorten timezone in timeString
+  * KFileWidget: Guard empty selection when double clicking
+  * Remove unneeded Q_Q
+  * Fix creating links to subdirectories of desktop links (kde#479350)
+  * RenameDialog: Set devicePixelRatio on PreviewJob
+  * RenameDialog: Use KContextualHelpButton
+  * KPropertiesDialog: Use KFileItem::timeString
+  * FilePreviewJob: Abort preview if no plugin is found (kde#511305)
+  * http: Use operation with known verb, if applicable (kde#492178)
+  * FilePreviewJob: After stat'ing the file, report the data back
+  * pastejob: Emit ERR_USER_CANCELED when closing paste filename prompt (kde#493075)
+  * Revert "KFileItemActions: Don't show hidden services on Open With menu" (kde#508607)
+  * kurlnavigator: show focus indicator
+  * KCoreDirLister: stop looking back at mount points
+  * KProcessRunner: Avoid setting bogus working directory
+  * kfilefilter: workaround to crash in Qt 6.11
+  * systemd: prevent passing invalid env vars starting with digit (kde#510968)
+  * Update version to 6.21.0
+  * kmountpoint: do not follow symlink before getting realpath
+  * trash: don't fallback to home trash if trash is unavailable (kde#502315)
+  * trash: force confirmation for ERR_TRASH_FILE_TOO_LARGE (kde#475235)
+  * Escape /* inside comment
+  * copyjob: Fallback to file-based progress when byte size is unavailable (kde#511241)
+
+-------------------------------------------------------------------
 Thu Nov 13 20:58:53 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.20.0
