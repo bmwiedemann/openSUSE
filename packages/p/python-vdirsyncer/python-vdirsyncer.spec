@@ -1,7 +1,7 @@
 #
 # spec file for package python-vdirsyncer
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-vdirsyncer
-Version:        0.19.3
+Version:        0.20.0
 Release:        0
 Summary:        CalDAV and CardDAV synchronization module
 License:        BSD-3-Clause
@@ -25,9 +25,7 @@ URL:            https://github.com/pimutils/vdirsyncer
 Source0:        https://files.pythonhosted.org/packages/source/v/vdirsyncer/vdirsyncer-%{version}.tar.gz
 Source1:        vdirsyncer.service
 Source2:        vdirsyncer.timer
-# PATCH-FIX-OPENSUSE Support pytest-asyncio 1.0 changes.
-Patch0:         support-new-pytest-asyncio.patch
-BuildRequires:  %{python_module atomicwrites}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module wheel}
@@ -38,7 +36,6 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(systemd)
 Requires:       python-aiohttp
 Requires:       python-aiostream
-Requires:       python-atomicwrites >= 0.1.7
 Requires:       python-click >= 5.0
 Requires:       python-click-log >= 0.3
 Requires:       python-requests >= 2.20.0

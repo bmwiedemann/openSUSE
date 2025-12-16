@@ -280,4 +280,20 @@
   * Support changes required by pytest-asyncio 1.0.</comment>
     <requestid>1294923</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>1777e938a0c064edbfb48f2dca29b8ea</srcmd5>
+    <version>0.20.0</version>
+    <time>1765896993</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.20.0:
+  * Remove dependency on abandoned atomicwrites library.
+  * Implement filter_hook for the HTTP storage.
+  * Drop support for Python 3.7.
+  * Add support for Python 3.12 and Python 3.13.
+  * Properly close the status database after using. This especially affects
+    tests, where we were leaking a large amount of file descriptors.
+  * Extend supported versions of aiostream to include 0.7.x.
+- Drop patch support-new-pytest-asyncio.patch, no longer required.</comment>
+    <requestid>1323041</requestid>
+  </revision>
 </revisionlist>

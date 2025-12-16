@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec 16 04:25:20 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.20.0:
+  * Remove dependency on abandoned atomicwrites library.
+  * Implement filter_hook for the HTTP storage.
+  * Drop support for Python 3.7.
+  * Add support for Python 3.12 and Python 3.13.
+  * Properly close the status database after using. This especially affects
+    tests, where we were leaking a large amount of file descriptors.
+  * Extend supported versions of aiostream to include 0.7.x.
+- Drop patch support-new-pytest-asyncio.patch, no longer required.
+
+-------------------------------------------------------------------
 Tue Jul 22 04:29:15 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-new-pytest-asyncio.patch:
