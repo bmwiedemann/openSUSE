@@ -135,4 +135,24 @@
     <comment></comment>
     <requestid>1307102</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2c249f631474d2be789a4f57bbbe7890</srcmd5>
+    <version>14.0.1</version>
+    <time>1765896984</time>
+    <user>anag_factory</user>
+    <comment>- Update to 14.0.1:
+  * Update generated code based on incoming API changes in the
+    2025-11-17.clover API version.
+  * stripe.error module is now accessible globally
+  * Dramatically improve performance by lazily loading most imports
+  * Re-add tests to our sdist
+  * Add strongly typed EventNotifications
+  * drop support for Python 3.6
+  * migrate from setup.py to pyproject.toml
+  * Deprecated the V1 service accessors living directly under StripeClient
+  * Remove deprecated compatibility exports
+- Add patch suport-pytest-9.patch:
+  * Do not apply marks to a fixture.</comment>
+    <requestid>1323038</requestid>
+  </revision>
 </revisionlist>

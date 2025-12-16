@@ -15,23 +15,27 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-stripe
-Version:        12.5.1
+Version:        14.0.1
 Release:        0
 Summary:        Python bindings for the Stripe API
 License:        MIT
 URL:            https://github.com/stripe/stripe-python
 Source:         https://files.pythonhosted.org/packages/source/s/stripe/stripe-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#stripe/stripe-python#1700
+Patch0:         suport-pytest-9.patch
 BuildRequires:  %{python_module aiohttp >= 3.9.4}
 BuildRequires:  %{python_module anyio}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module httpx}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 6.0}
 BuildRequires:  %{python_module pytest-mock >= 2.0}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module requests >= 2.20}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module trio}
 BuildRequires:  %{python_module typing_extensions >= 4.5.0}
 BuildRequires:  fdupes
@@ -61,13 +65,14 @@ stripe-mock &
 pid=$!
 # Raises invalid request
 donttest="test_terminal_readers_process_setup_intent_post "
+donttest+="or test_promotion_codes_post "
 # Requires network
 donttest+="or TestLiveHTTPClients or test_async_raw_request_timeout"
 %pytest -k "not ($donttest)"
 kill $pid
 
 %files %{python_files}
-%doc CHANGELOG.md README.md examples/
+%doc README.md
 %license LICENSE
 %{python_sitelib}/stripe
 %{python_sitelib}/stripe-%{version}.dist-info
