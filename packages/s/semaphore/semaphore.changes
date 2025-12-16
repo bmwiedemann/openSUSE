@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 16 06:13:29 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.16.46:
+  * fix(db): use longtext for tf state
+
+-------------------------------------------------------------------
 Sat Nov 08 07:06:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.16.45 (.44 was not released):
