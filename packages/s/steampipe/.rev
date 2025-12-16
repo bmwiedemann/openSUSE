@@ -201,4 +201,41 @@
   * Fix issue where macOS binaries failed to run due to absolute openssl paths and too-new min OS (#4687) (forwarded request 1315301 from ph03nix)</comment>
     <requestid>1315350</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5033e217b4450f767128d50fabe5e8c1</srcmd5>
+    <version>2.3.3</version>
+    <time>1765896963</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.3.3:
+  * v2.3.3
+  * v2.3.3
+  * [dep][go](deps): Bump github.com/containerd/containerd (#4697)
+  * Update FDW version to 2.1.4
+  * Upgrade containerd and crypto to remediate high vulnerabilities
+  * Update changelog
+  * Fix #4706: validateQueryArgs thread-safety with config struct (#4905)
+  * fix: Make OCI installations atomic to prevent inconsistent states (fixes #4758) (#4902)
+  * Fix #4760: State file corruption from concurrent writes in pluginmanager (#4907)
+  * fix: Return empty digest on version file failure (#4762) (#4900)
+  * Fix #4708: Thread-safe AddCommands/ResetCommands with mutex (#4904)
+  * Fix #4783: Nil pointer dereference in updateConnectionSchema (#4901)
+  * Nil GlobalConfig causes panic in newRefreshConnectionState closes #4779 (#4899)
+  * Nil pointer dereference in plugin version check closes #4747 (#4897)
+  * Disk space validation before OCI installation closes #4754 (#4895)
+  * Atomic FDW binary replacement closes #4753 (#4898)
+  * Nil pointer dereference in waitForPluginLoad closes #4752 (#4896)
+  * Fix version checker log.Fatal closes #4746 (#4894)
+  * Nil pointer dereference in State.reattachConfig() closes #4755 (#4893)
+  * Fix #4704: Preserve newlines in getPipedStdinData (#4878)
+  * Fix #4791: Use idiomatic for-range pattern for error channel closes #4791 (#4835)
+  * Fix #4716: Add synchronization to autoCompleteSuggestions.sort() (#4737)
+  * Race on cancelActiveQuery without synchronization closes #4802 (#4844)
+  * executeMetaquery error handling closes #4789 (#4834)
+  * Fix race condition on customSearchPath slice closes #4792 (#4837)
+  * Fix type assertion panic in logRefreshConnectionResults closes #4807 (#4855)
+  * executeQueries nil Client check closes #4797 (#4841)
+  * HandlePluginLimiterChanges nil pool handling closes #4785 (#4877)
+  * Fix #4809: Add nil checks for sessions map after Close() (rebased) (#4883) (forwarded request 1322978 from ph03nix)</comment>
+    <requestid>1323017</requestid>
+  </revision>
 </revisionlist>
