@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Dec 12 20:17:20 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.21.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.21.0
+- Changes since 6.20.0:
+  * Update dependency version to 6.21.0
+  * [KEncodingProber] Some more tests for UTF-8
+  * [KEncodingProber] Make UTF-8 state machine RFC3629 compliant
+  * [KEncodingProber] Add unit tests for UTF-8/UTF-16
+  * [KEncodingProber] Remove DEBUG_PROBE from public header file
+  * Update version to 6.21.0
+
+-------------------------------------------------------------------
 Thu Nov 13 20:58:45 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.20.0
