@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Dec 15 18:29:09 UTC 2025 - Daniel Donisa <daniel.donisa@suse.com>
+
+- New upstream release 1.9.2 
+
+  * What's Changed
+  
+  - Remove usage of IO#nread by @osyoyu in #181
+  - Remove assert matching stderr output in test_sni. by @jackorp in #158
+  
+  * New Contributors
+  
+  - @osyoyu made their first contribution in #181
+  - @jackorp made their first contribution in #158
+
+-------------------------------------------------------------------
 Mon Feb  3 10:47:47 UTC 2025 - Dan Čermák <dan.cermak@posteo.net>
 
 - New upstream release 1.9.1, no changelog found

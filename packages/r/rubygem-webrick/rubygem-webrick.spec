@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-webrick
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-webrick
-Version:        1.9.1
+Version:        1.9.2
 Release:        0
 %define mod_name webrick
 %define mod_full_name %{mod_name}-%{version}
