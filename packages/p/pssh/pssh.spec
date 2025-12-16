@@ -1,7 +1,7 @@
 #
 # spec file for package pssh
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define pkg_version 2.3.4
-%define python_version 3
+%define pythons python3
 %if ! %{defined python3_sitelib}
 %define python3_sitelib /usr/lib/python3.6/site-packages/
 %endif
@@ -47,8 +47,10 @@ Patch7:         0007-openSUSE-Add-openSUSE-specific-pssh-askpass-location.patch
 Patch8:         0008-openSUSE-add-C-pcmk_nodes-option-to-get-list-of-node.patch
 # PATCH-FEATURE-UPSTREAM Prepend hostname on each line when -P is set
 Patch9:         0001-Prepend-hostname-on-each-line-when-P-is-set.patch
-BuildRequires:  python%{python_version}-devel
-BuildRequires:  python%{python_version}-setuptools
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pssh = %{version}-%{release}
 BuildArch:      noarch
@@ -75,12 +77,11 @@ This package contains the pssh Python module.
 %autosetup -p1
 
 %build
-python%{python_version} setup.py build
+%pyproject_wheel
 
 %install
-python%{python_version} setup.py install \
-	 --prefix="%{_prefix}" \
-	 --root=%{buildroot}
+%pyproject_install
+%fdupes %{buildroot}%{python3_sitelib}
 
 %files
 %doc AUTHORS ChangeLog
@@ -103,7 +104,7 @@ python%{python_version} setup.py install \
 %files -n python-pssh
 %license COPYING
 %doc AUTHORS ChangeLog
-%{python3_sitelib}/%{name}-%{pkg_version}*
+%{python3_sitelib}/%{name}-%{pkg_version}.dist-info
 %{python3_sitelib}/%{name}lib
 
 %changelog

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 14 04:21:02 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros to build and install.
+- Also use fdupes.
+
+-------------------------------------------------------------------
 Thu Feb 29 15:00:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
