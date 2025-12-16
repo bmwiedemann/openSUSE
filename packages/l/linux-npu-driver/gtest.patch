@@ -1,0 +1,31 @@
+diff -uNr linux-npu-driver-1.26.0/third_party/CMakeLists.txt linux-npu-driver-1.26.0.Ok/third_party/CMakeLists.txt
+--- linux-npu-driver-1.26.0/third_party/CMakeLists.txt	2025-11-24 10:19:44.000000000 -0300
++++ linux-npu-driver-1.26.0.Ok/third_party/CMakeLists.txt	2025-12-14 22:53:10.576764220 -0300
+@@ -8,15 +8,11 @@
+ add_compile_options(-Wno-error -include cstdint)
+ 
+ include(cmake/vpux_elf.cmake)
+-include(cmake/level-zero.cmake)
+ include(cmake/level-zero-npu-extensions.cmake)
+ if (ENABLE_NPU_PERFETTO_BUILD)
+   include(cmake/perfetto.cmake)
+ endif()
+ 
+-set(INSTALL_GTEST OFF)
+-add_subdirectory(googletest EXCLUDE_FROM_ALL)
+-
+ set(YAML_CPP_INSTALL OFF)
+ set(BUILD_SHARED_LIBS OFF)
+ add_subdirectory(yaml-cpp EXCLUDE_FROM_ALL)
+diff -uNr linux-npu-driver-1.26.0/third_party/level-zero-npu-extensions/ze_graph_ext.h linux-npu-driver-1.26.0.Ok/third_party/level-zero-npu-extensions/ze_graph_ext.h
+--- linux-npu-driver-1.26.0/third_party/level-zero-npu-extensions/ze_graph_ext.h	2025-11-24 10:19:44.000000000 -0300
++++ linux-npu-driver-1.26.0.Ok/third_party/level-zero-npu-extensions/ze_graph_ext.h	2025-12-14 22:55:53.691719754 -0300
+@@ -11,7 +11,7 @@
+ #pragma once
+ #endif
+ 
+-#include "ze_api.h"
++#include "level_zero/ze_api.h"
+ #include "ze_graph_profiling_ext.h"
+ 
+ #ifndef ZE_GRAPH_EXT_NAME

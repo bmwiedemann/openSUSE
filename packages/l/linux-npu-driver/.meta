@@ -1,0 +1,7 @@
+<package name="linux-npu-driver" project="openSUSE:Factory">
+  <title>Intel NPU driver</title>
+  <description>Intel NPU device is an AI inference accelerator integrated with Intel client CPUs, starting from Intel Core Ultra generation of CPUs (formerly known as Meteor Lake). It enables energy-efficient execution of artificial neural network tasks.
+
+</description>
+  <url>https://github.com/intel/linux-npu-driver</url>
+</package>

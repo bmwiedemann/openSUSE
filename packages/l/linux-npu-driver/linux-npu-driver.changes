@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Mon Dec 15 01:31:14 UTC 2025 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Build with the factory level-zero. Thanks (anag_factory)
+
+-------------------------------------------------------------------
+Sun Dec 14 15:51:43 UTC 2025 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Build with the factory Googletest. Thanks (anag_factory) 
+
+-------------------------------------------------------------------
+Mon Dec  8 02:41:48 UTC 2025 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Add gtest package 
+
+-------------------------------------------------------------------
+Tue Dec  2 04:01:37 UTC 2025 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Update to version 1.26.0:
+ * NPU Driver 1.26.0 release unified 2025WW44
+ * Upgrade level-zero-npu-extensions submodule to 61e4aeb.
+ * Update vpux_elf submodule to c6694c8.
+ * Update compiler to npu_ud_2025_44_rc1.
+ * New Firmware binaries.
+ * New changes to driver and tests.
+
+-------------------------------------------------------------------
+Wed Nov 26 05:51:02 UTC 2025 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Initial package
+- Version 1.24.0 
