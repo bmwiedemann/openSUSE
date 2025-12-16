@@ -1,7 +1,7 @@
 #
 # spec file for package python-rcssmin
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define mod_name rcssmin
 
 Name:           python-%{mod_name}
-Version:        1.1.2
+Version:        1.2.2
 Release:        0
 Summary:        RCSSmin is a CSS Minifier Written in Python
 License:        Apache-2.0
@@ -69,7 +69,7 @@ rm -rf %{buildroot}/usr/share/doc/rcssmin
 
 %files %{python_files}
 %defattr(-,root,root,-)
-%doc README.md docs/CHANGES
+%doc README.md
 %license LICENSE
 %{python_sitearch}/%{mod_name}.py
 %pycache_only %{python_sitearch}/__pycache__/%{mod_name}.*.pyc
