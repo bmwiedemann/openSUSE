@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Dec 12 20:17:27 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.21.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.21.0
+- Changes since 6.20.0:
+  * Update dependency version to 6.21.0
+  * Fix various typos in the codebase Fixes mostly source documentation, comments, and some user-facing typos. Found via `codespell -q 3 -S "*.eps,*.raw" -L ahd,siz,widthn`
+  * XCF: initialize tiles and buffers
+  * HDR: fix uninitialized buffer
+  * PSD: add support for GrayA (8/16/32 bit) and Gray 32 bit
+  * PSD: fix use of uninitialized tmp image
+  * EXR: fix of uninitialized RGB read buffer
+  * RGB: fix Use-of-uninitialized-value
+  * HDR: readHeader() sanity checks
+  * PSD: return error if a complete line is read/decompressed
+  * Update version to 6.21.0
+
+-------------------------------------------------------------------
 Thu Nov 13 20:58:53 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.20.0
