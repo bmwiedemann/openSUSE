@@ -7,4 +7,13 @@
     <comment>- Initial release of 0.9.0.</comment>
     <requestid>1201494</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2721406a233452182bdb22302736ebbd</srcmd5>
+    <version>0.9.0</version>
+    <time>1765896791</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-pytest-9.patch:
+  * Remove py.path argument from the collection hook functions.</comment>
+    <requestid>1322890</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,22 @@
+From 9bf47de6ccc3f98de1e7ca1675a34e5331ccaf33 Mon Sep 17 00:00:00 2001
+From: Daniel Mizyrycki <mzdaniel@glidelink.net>
+Date: Wed, 22 May 2024 23:38:21 -0700
+Subject: [PATCH] Fix PytestRemovedIn9Warning
+
+---
+ tests/conftest.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/conftest.py b/tests/conftest.py
+index 43c2dfc..c6eba51 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -10,7 +10,7 @@
+ import docopt
+ 
+ 
+-def pytest_collect_file(file_path: Path, path, parent):
++def pytest_collect_file(file_path: Path, parent):
+     if file_path.suffix == ".docopt" and file_path.stem.startswith("test"):
+         return DocoptTestFile.from_parent(path=file_path, parent=parent)
+ 

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 15 04:28:57 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-pytest-9.patch:
+  * Remove py.path argument from the collection hook functions.
+
+-------------------------------------------------------------------
 Tue Sep 17 03:50:05 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Initial release of 0.9.0. 
