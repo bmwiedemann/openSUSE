@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec 12 20:17:27 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.21.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.21.0
+- Too many changes since 6.20.0, only listing bugfixes:
+  * globaltoolbar/NavigationButtons: fix Back button in RtL (kde#511295)
+
+-------------------------------------------------------------------
 Thu Nov 13 20:58:54 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.20.0
