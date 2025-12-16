@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 15 03:45:13 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-pytest-9.patch:
+  * Use shiny new pathlib arguments for the collection hooks.
+
+-------------------------------------------------------------------
 Fri Feb 21 12:30:09 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 25.0.0

@@ -137,4 +137,13 @@
     <comment></comment>
     <requestid>1247627</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>2b213126e95f98bc778a06b9dbb0c86a</srcmd5>
+    <version>25.0.0</version>
+    <time>1765896786</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-pytest-9.patch:
+  * Use shiny new pathlib arguments for the collection hooks.</comment>
+    <requestid>1322887</requestid>
+  </revision>
 </revisionlist>
