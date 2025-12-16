@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Dec  2 19:10:21 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- PKGBUILD changes
+  * Remove redundant packages from makedepends. If a package depends
+    on something, it implicitly makedepends on it as well
+  * Add python-ruamel-yaml dependency
+  * Build and install man pages
+  * Add python-argparse-manpage and python-sphinx to makedepends for
+    building man pages
+  * Add check() to run the test suite
+  * Add checkdepends for test suite dependencies
+  * Add optdepends as an equivalent to RPM's Recommends, making it
+    easier for users to find packages needed for optional features
+  * Use $pkgname variable across the script
+  * Install shell completion files
+  * Bump pkgrel
+
+-------------------------------------------------------------------
 Mon Nov 10 15:52:11 UTC 2025 - Daniel Mach <daniel.mach@suse.com>
 
 - 1.22.0
