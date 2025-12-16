@@ -19,11 +19,11 @@
 %define qt6_version 6.8.0
 
 %define rname modemmanager-qt
-# Full KF6 version (e.g. 6.20.0)
+# Full KF6 version (e.g. 6.21.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-modemmanager-qt
-Version:        6.20.0
+Version:        6.21.0
 Release:        0
 Summary:        Qt wrapper for ModemManager DBus API
 License:        LGPL-2.1-only OR LGPL-3.0-only
