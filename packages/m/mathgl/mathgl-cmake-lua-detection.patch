@@ -1,0 +1,23 @@
+---
+ lang/CMakeLists.txt |    8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+Index: mathgl-8.0.3/lang/CMakeLists.txt
+===================================================================
+--- mathgl-8.0.3.orig/lang/CMakeLists.txt
++++ mathgl-8.0.3/lang/CMakeLists.txt
+@@ -71,10 +71,10 @@ if(enable-python)
+ endif(enable-python)
+ 
+ if(enable-lua)
+-	INCLUDE(FindLua51)
+-	if(NOT LUA51_FOUND)
+-		message(SEND_ERROR "Couldn't find Lua 5.1 library.")
+-	endif(NOT LUA51_FOUND)
++	find_package(Lua 5.3)
++	if(NOT Lua_FOUND)
++		message(SEND_ERROR "Couldn't find Lua library.")
++	endif(NOT Lua_FOUND)
+ 
+ 	include_directories(${LUA_INCLUDE_DIR})
+ 	if(${CMAKE_VERSION} VERSION_LESS "3.8.0") 

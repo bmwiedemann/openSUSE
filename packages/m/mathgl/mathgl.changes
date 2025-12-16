@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 12 00:38:23 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add mathgl-cmake-lua-detection.patch: use cmake's in-built
+  FindLua to detect and build against lua version 5.3, rather than
+  using outdated version 5.1 [bsc#1254893,
+  https://sourceforge.net/p/mathgl/bugs/54/].
+
+-------------------------------------------------------------------
 Mon Nov 10 17:43:29 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 8.0.3:

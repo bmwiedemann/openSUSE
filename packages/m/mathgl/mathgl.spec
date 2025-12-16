@@ -58,6 +58,8 @@ Patch4:         udav-help-path.patch
 Patch5:         mathgl-texmf-dir.patch
 # PATCH-FIX-UPSTREAM mathgl-libharu2_4-compat.patch badshah400@gmail.com -- Fix compilation against libharu 2.4.x [https://sourceforge.net/p/mathgl/bugs/48/]
 Patch8:         mathgl-libharu2_4-compat.patch
+# PATCH-FIX-UPSTREAM mathgl-cmake-lua-detection.patch bsc#1254893 badshah400@gmail.com -- Use cmake's in-built FindLua to detect lua version 5.3 and build against it, rather than using outdated version 5.1 [https://sourceforge.net/p/mathgl/bugs/54/]
+Patch9:         mathgl-cmake-lua-detection.patch
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fltk-devel
@@ -83,7 +85,7 @@ BuildRequires:  pkgconfig(hdf5)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libtiff-4)
-BuildRequires:  pkgconfig(lua5.1)
+BuildRequires:  pkgconfig(lua)
 %if %{with python}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
