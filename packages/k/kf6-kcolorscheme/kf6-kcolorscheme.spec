@@ -19,11 +19,11 @@
 %define qt6_version 6.8.0
 
 %define rname kcolorscheme
-# Full KF6 version (e.g. 6.20.0)
+# Full KF6 version (e.g. 6.21.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-kcolorscheme
-Version:        6.20.0
+Version:        6.21.0
 Release:        0
 Summary:        Classes to read and interact with KColorScheme
 License:        LGPL-2.0-or-later
