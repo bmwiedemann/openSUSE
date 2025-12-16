@@ -32,11 +32,11 @@
 %define mypython_sitearch %{expand:%%%{mypython}_sitearch}
 %endif
 
-# Full KF6 version (e.g. 6.20.0)
+# Full KF6 version (e.g. 6.21.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-kwidgetsaddons
-Version:        6.20.0
+Version:        6.21.0
 Release:        0
 Summary:        Large set of desktop widgets
 License:        LGPL-2.1-or-later
