@@ -24,11 +24,13 @@ Summary:        A library for working with .desktop files
 License:        BSD-2-Clause
 URL:            https://pypi.org/project/desktop-entry-lib
 Source:         https://files.pythonhosted.org/packages/source/d/desktop_entry_lib/desktop_entry_lib-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://codeberg.org/JakobDev/desktop-entry-lib/pulls/19
+Patch0:         support-pytest-9.patch
 BuildRequires:  %{python_module jeepney}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyfakefs}
 BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module pytest-subtests}
+BuildRequires:  %{python_module pytest-subtests if %python-pytest < 9}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -62,4 +64,3 @@ Desktop Entry Specification.
 %{python_sitelib}/desktop_entry_lib-%{version}.dist-info
 
 %changelog
-

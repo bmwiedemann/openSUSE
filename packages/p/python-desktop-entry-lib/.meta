@@ -2,5 +2,6 @@
   <title>A library for working with .desktop files</title>
   <description>desktop-entry-lib allows reading and writing .desktop files according to the
 Desktop Entry Specification.</description>
+  <devel project="devel:languages:python" package="python-desktop-entry-lib"/>
   <url>https://pypi.org/project/desktop-entry-lib</url>
 </package>

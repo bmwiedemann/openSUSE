@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 15 03:17:10 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Only require pytest-subtests with pytest < 9.
+- Add patch support-pytest-9.patch:
+  * Actually make pytest-subtests use optional.
+
+-------------------------------------------------------------------
 Sun Dec  7 15:33:23 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Initial version of the package

@@ -7,4 +7,14 @@
     <comment>Add new package required for the last version of gearlever ( https://build.opensuse.org/package/show/system:packagemanager/gearlever )</comment>
     <requestid>1321582</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d642dfd3a9e9dd4c3d08c6978c27b56d</srcmd5>
+    <version>5.0</version>
+    <time>1765896780</time>
+    <user>anag_factory</user>
+    <comment>- Only require pytest-subtests with pytest &lt; 9.
+- Add patch support-pytest-9.patch:
+  * Actually make pytest-subtests use optional.</comment>
+    <requestid>1322886</requestid>
+  </revision>
 </revisionlist>

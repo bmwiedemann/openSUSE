@@ -1,0 +1,206 @@
+From 286820871fd9557143418877ed54f78a67d669e3 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Mon, 15 Dec 2025 14:14:58 +1100
+Subject: [PATCH] Support pytest 9 changes
+
+pytest 9 has pulled in pytest_subtests directly, meaning subtests are
+now supported without a plugin, so support both workflows for now.
+---
+ tests/test_action.py     |  9 ++++++---
+ tests/test_collection.py | 19 +++++++++++--------
+ tests/test_entry.py      | 15 +++++++++------
+ tests/test_portal.py     |  7 +++++--
+ 4 files changed, 31 insertions(+), 19 deletions(-)
+
+diff --git a/tests/test_action.py b/tests/test_action.py
+index b96a5ab..8672297 100644
+--- a/tests/test_action.py
++++ b/tests/test_action.py
+@@ -1,10 +1,13 @@
+ import desktop_entry_lib
+-import pytest_subtests
++try:
++    from pytest import Subtests
++except ImportError:
++    from pytest_subtests import SubTests as Subtests
+ import pyfakefs
+ import pytest
+ 
+ 
+-def test_get_icon_path(monkeypatch: pytest.MonkeyPatch, subtests: pytest_subtests.SubTests, fs: pyfakefs.fake_filesystem.FakeFilesystem) -> None:
++def test_get_icon_path(monkeypatch: pytest.MonkeyPatch, subtests: Subtests, fs: pyfakefs.fake_filesystem.FakeFilesystem) -> None:
+     fs.os = pyfakefs.fake_filesystem.OSType.LINUX
+     fs.create_file("/usr/share/pixmaps/test.png")
+ 
+@@ -32,7 +35,7 @@ def test_get_command() -> None:
+     assert action.get_command() == ["echo", "Test"]
+ 
+ 
+-def test_equal(subtests: pytest_subtests.SubTests) -> None:
++def test_equal(subtests: Subtests) -> None:
+     action_a = desktop_entry_lib.DesktopAction()
+     action_b = desktop_entry_lib.DesktopAction()
+     action_c = desktop_entry_lib.DesktopAction()
+diff --git a/tests/test_collection.py b/tests/test_collection.py
+index 9f4e91a..77bc004 100644
+--- a/tests/test_collection.py
++++ b/tests/test_collection.py
+@@ -1,5 +1,8 @@
+ import desktop_entry_lib
+-import pytest_subtests
++try:
++    from pytest import Subtests
++except ImportError:
++    from pytest_subtests import SubTests as Subtests
+ import subprocess
+ import pyfakefs
+ import pathlib
+@@ -45,7 +48,7 @@ def test_data_collection() -> None:
+         assert desktop_id in collection.desktop_entries
+ 
+ 
+-def test_load_menu(monkeypatch: pytest.MonkeyPatch, subtests: pytest_subtests.SubTests, tmp_path: pathlib.Path) -> None:
++def test_load_menu(monkeypatch: pytest.MonkeyPatch, subtests: Subtests, tmp_path: pathlib.Path) -> None:
+     collection_menu = desktop_entry_lib.DesktopEntryCollection()
+     collection_data = desktop_entry_lib.DesktopEntryCollection()
+ 
+@@ -67,7 +70,7 @@ def test_load_menu(monkeypatch: pytest.MonkeyPatch, subtests: pytest_subtests.Su
+         assert collection_menu == collection_data
+ 
+ 
+-def test_load_desktop(monkeypatch: pytest.MonkeyPatch, subtests: pytest_subtests.SubTests, tmp_path: pathlib.Path) -> None:
++def test_load_desktop(monkeypatch: pytest.MonkeyPatch, subtests: Subtests, tmp_path: pathlib.Path) -> None:
+     _create_test_directory(tmp_path)
+ 
+     with subtests.test("Exists"):
+@@ -90,7 +93,7 @@ def test_load_desktop(monkeypatch: pytest.MonkeyPatch, subtests: pytest_subtests
+         assert len(collection) == 0
+ 
+ 
+-def test_load_autostart(subtests: pytest_subtests.SubTests, fs: pyfakefs.fake_filesystem.FakeFilesystem) -> None:
++def test_load_autostart(subtests: Subtests, fs: pyfakefs.fake_filesystem.FakeFilesystem) -> None:
+     fs.os = pyfakefs.fake_filesystem.OSType.LINUX
+     fs.create_dir("/etc/xdg/autostart")
+ 
+@@ -154,7 +157,7 @@ def test_get_menu_entries(tmp_path: pathlib.Path) -> None:
+     assert desktop_entry_lib.DesktopEntry.from_file(os.path.join(tmp_path, "com.example.Third.desktop")) in collection.get_menu_entries()
+ 
+ 
+-def test_get_entry_by_name(subtests: pytest_subtests.SubTests, tmp_path: pathlib.Path) -> None:
++def test_get_entry_by_name(subtests: Subtests, tmp_path: pathlib.Path) -> None:
+     _create_test_directory(tmp_path)
+ 
+     collection = desktop_entry_lib.DesktopEntryCollection()
+@@ -182,7 +185,7 @@ def test_length(tmp_path: pathlib.Path) -> None:
+     assert len(collection) == 3
+ 
+ 
+-def test_equal(subtests: pytest_subtests.SubTests, tmp_path: pathlib.Path) -> None:
++def test_equal(subtests: Subtests, tmp_path: pathlib.Path) -> None:
+     _create_test_directory(tmp_path)
+ 
+     collection_a = desktop_entry_lib.DesktopEntryCollection()
+@@ -202,7 +205,7 @@ def test_equal(subtests: pytest_subtests.SubTests, tmp_path: pathlib.Path) -> No
+         assert collection_a != "test"
+ 
+ 
+-def test_getitem(subtests: pytest_subtests.SubTests, tmp_path: pathlib.Path) -> None:
++def test_getitem(subtests: Subtests, tmp_path: pathlib.Path) -> None:
+     _create_test_directory(tmp_path)
+ 
+     collection = desktop_entry_lib.DesktopEntryCollection()
+@@ -216,7 +219,7 @@ def test_getitem(subtests: pytest_subtests.SubTests, tmp_path: pathlib.Path) ->
+             collection["invalid"]
+ 
+ 
+-def test_setitem(subtests: pytest_subtests.SubTests) -> None:
++def test_setitem(subtests: Subtests) -> None:
+     with subtests.test("Everything working"):
+         collection = desktop_entry_lib.DesktopEntryCollection()
+         entry = desktop_entry_lib.DesktopEntry.from_file(DATA_DIR / "com.gitlab.JakobDev.jdTextEdit.desktop")
+diff --git a/tests/test_entry.py b/tests/test_entry.py
+index 484b715..2840829 100644
+--- a/tests/test_entry.py
++++ b/tests/test_entry.py
+@@ -1,5 +1,8 @@
+ import desktop_entry_lib
+-import pytest_subtests
++try:
++    from pytest import Subtests
++except ImportError:
++    from pytest_subtests import SubTests as Subtests
+ import subprocess
+ import pyfakefs
+ import pathlib
+@@ -64,7 +67,7 @@ def test_should_show_in_menu() -> None:
+     assert entry.should_show_in_menu() is True
+ 
+ 
+-def test_get_icon_path(monkeypatch: pytest.MonkeyPatch, subtests: pytest_subtests.SubTests, fs: pyfakefs.fake_filesystem.FakeFilesystem) -> None:
++def test_get_icon_path(monkeypatch: pytest.MonkeyPatch, subtests: Subtests, fs: pyfakefs.fake_filesystem.FakeFilesystem) -> None:
+     fs.os = pyfakefs.fake_filesystem.OSType.LINUX
+     fs.create_file("/usr/share/pixmaps/test.png")
+ 
+@@ -110,7 +113,7 @@ def test_from_file(tmp_path: pathlib.Path) -> None:
+     assert entry == desktop_entry_lib.DesktopEntry.from_file(os.path.join(tmp_path, "com.example.App.desktop"))
+ 
+ 
+-def test_from_id(monkeypatch: pytest.MonkeyPatch, subtests: pytest_subtests.SubTests, tmp_path: pathlib.Path) -> None:
++def test_from_id(monkeypatch: pytest.MonkeyPatch, subtests: Subtests, tmp_path: pathlib.Path) -> None:
+     monkeypatch.setenv("XDG_DATA_DIRS", str(tmp_path))
+ 
+     entry = _generate_test_entry()
+@@ -143,7 +146,7 @@ def test_get_keywords() -> None:
+     assert isinstance(desktop_entry_lib.DesktopEntry.get_keywords(), list)
+ 
+ 
+-def test_get_working_directory(subtests: pytest_subtests.SubTests) -> None:
++def test_get_working_directory(subtests: Subtests) -> None:
+     with subtests.test("Path key set"):
+         entry = desktop_entry_lib.DesktopEntry()
+         entry.Path = "/test"
+@@ -153,7 +156,7 @@ def test_get_working_directory(subtests: pytest_subtests.SubTests) -> None:
+         assert desktop_entry_lib.DesktopEntry().get_working_directory() == os.path.expanduser("~")
+ 
+ 
+-def test_get_command(subtests: pytest_subtests.SubTests, fs: pyfakefs.fake_filesystem.FakeFilesystem) -> None:
++def test_get_command(subtests: Subtests, fs: pyfakefs.fake_filesystem.FakeFilesystem) -> None:
+     fs.os = pyfakefs.fake_filesystem.OSType.LINUX
+ 
+     with subtests.test("Exec key not set"):
+@@ -304,7 +307,7 @@ def test_full_read_write(tmp_path: pathlib.Path) -> None:
+     assert write_entry == read_entry
+ 
+ 
+-def test_is_valid(monkeypatch: pytest.MonkeyPatch, subtests: pytest_subtests.SubTests) -> None:
++def test_is_valid(monkeypatch: pytest.MonkeyPatch, subtests: Subtests) -> None:
+     with subtests.test("Valid"):
+         monkeypatch.setattr(subprocess, "run", lambda args, capture_output: subprocess.CompletedProcess([], 0))
+ 
+diff --git a/tests/test_portal.py b/tests/test_portal.py
+index ac2c348..a8ce818 100644
+--- a/tests/test_portal.py
++++ b/tests/test_portal.py
+@@ -1,6 +1,9 @@
+ import jeepney.io.blocking
+ import desktop_entry_lib
+-import pytest_subtests
++try:
++    from pytest import Subtests
++except ImportError:
++    from pytest_subtests import SubTests as Subtests
+ from typing import Any
+ import jeepney
+ import pytest
+@@ -96,7 +99,7 @@ def _fake_new_method_call(interface: jeepney.DBusAddress, name: str, types: str,
+     return (name, args[0])
+ 
+ 
+-def test_install_with_portal(monkeypatch: pytest.MonkeyPatch, subtests: pytest_subtests.SubTests) -> None:
++def test_install_with_portal(monkeypatch: pytest.MonkeyPatch, subtests: Subtests) -> None:
+     monkeypatch.setattr(jeepney, "DBusAddress", _FakeJeepneyAddress)
+     monkeypatch.setattr(jeepney.io.blocking, "open_dbus_connection", lambda: _FakeJeepneyConnection())
+     monkeypatch.setattr(jeepney, "new_method_call", _fake_new_method_call)
+-- 
+2.47.3
+
