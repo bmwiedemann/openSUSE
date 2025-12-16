@@ -1,8 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec 15 11:42:53 UTC 2025 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to 0.14.2
+  https://typst.app/docs/changelog/0.14.2/
+  https://github.com/typst/typst/releases/tag/v0.14.2
+- Remove upstreamed pr7562-fix-missing-hint-in-testsuite.patch
+
+-------------------------------------------------------------------
 Thu Dec 11 14:25:47 UTC 2025 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Update to 0.14.1
-  https://typst.app/docs/changelog/0.14.1/ 
+  https://typst.app/docs/changelog/0.14.1/
   https://github.com/typst/typst/releases/tag/v0.14.1
 - Add upstream pr7562-fix-missing-hint-in-testsuite.patch to fix testsuite
 
