@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec 15 05:53:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.37.0:
+  * linter:tempdir: Relax check for /run directories slightly
+  * linter:tempdir: Consider directories too
+  * linter: Refactor so that individual linters can consider
+    directories
+  * feat: add TESTING environment variable feature gate for
+    microvm-init (#2264)
+
+-------------------------------------------------------------------
 Thu Dec 11 07:52:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.36.0:
