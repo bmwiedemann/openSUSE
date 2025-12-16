@@ -19,11 +19,11 @@
 %define qt6_version 6.8.0
 
 %define rname ki18n
-# Full KF6 version (e.g. 6.20.0)
+# Full KF6 version (e.g. 6.21.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-ki18n
-Version:        6.20.0
+Version:        6.21.0
 Release:        0
 Summary:        KDE Gettext-based UI text internationalization
 License:        LGPL-2.1-or-later
@@ -126,6 +126,7 @@ done
 
 %files imports
 %{_kf6_qmldir}/org/kde/i18n/
+%{_kf6_qmldir}/org/kde/ki18n/
 
 %files devel
 %{_kf6_includedir}/KI18n/
