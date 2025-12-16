@@ -20,7 +20,7 @@
 %define skip_python36 1
 %{?sle15_python_module_pythons}
 Name:           python-pymdown-extensions
-Version:        10.18
+Version:        10.19.1
 Release:        0
 Summary:        Extension pack for Python Markdown
 License:        MIT

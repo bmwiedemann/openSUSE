@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Dec 15 10:33:53 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 10.19.1:
+  * FIX: Arithmatex: Fix issue where block $$ math used inline
+    within a paragraph could result in nested math parsing.
+
+-------------------------------------------------------------------
+Fri Dec 12 20:30:08 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 10.19:
+  * NEW: Emoji: Update Twemoji to use Unicode 16.
+  * NEW: Critic: Roll back view mode deprecation as some still like
+    to use it, though further enhancements to this mode are not
+    planned.
+
+-------------------------------------------------------------------
 Mon Dec  8 20:58:20 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 10.18:
