@@ -1294,4 +1294,12 @@
     <comment>update to 3.8.0 and fix build</comment>
     <requestid>1321225</requestid>
   </revision>
+  <revision rev="151" vrev="2">
+    <srcmd5>d1f11eb087510fe7631f6548ad171366</srcmd5>
+    <version>3.8.0</version>
+    <time>1765896838</time>
+    <user>anag_factory</user>
+    <comment>https://bugzilla.suse.com/show_bug.cgi?id=1254576</comment>
+    <requestid>1322913</requestid>
+  </revision>
 </revisionlist>

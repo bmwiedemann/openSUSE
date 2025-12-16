@@ -18,7 +18,7 @@
 
 %bcond_without released
 # Internal QML import
-%global __requires_exclude qmlimport\\((KStarsLiteEnums|TelescopeLiteEnums).*
+%global __requires_exclude qmlimport\\((KStarsLiteEnums|TelescopeLiteEnums|Qt.labs.calendar.1|QtGraphicalEffects.1|QtQuick.Controls.1|QtQuick.Controls.Private.1|QtQuick.Dialogs.1).*
 Name:           kstars
 Version:        3.8.0
 Release:        0

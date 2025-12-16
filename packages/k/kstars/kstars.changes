@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 15 07:29:59 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add additionals __requires_exclude (bsc#1254576)
+
+-------------------------------------------------------------------
 Thu Dec  4 16:28:51 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Add fix-build-gcc15.patch
