@@ -22,11 +22,11 @@
 %define qt6_version 6.8.0
 
 %define rname purpose
-# Full KF6 version (e.g. 6.20.0)
+# Full KF6 version (e.g. 6.21.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-purpose
-Version:        6.20.0
+Version:        6.21.0
 Release:        0
 Summary:        Framework to integrate services and actions in applications
 License:        LGPL-2.1-or-later
@@ -58,7 +58,7 @@ Requires:       kf6-kdeclarative-imports >= %{_kf6_version}
 Requires:       kf6-kirigami-imports >= %{_kf6_version}
 Requires:       kf6-prison-imports >= %{_kf6_version}
 Requires:       qt6-declarative-imports >= %{qt6_version}
-Requires:       kf6-purpose-services >= %{version}
+Requires:       purpose-services >= %{version}
 
 %description
 This framework offers the possibility to create integrate services and actions
