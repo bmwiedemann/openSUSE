@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 11 14:03:11 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Add pam_env.conf.d directory for configuration snippets, to support drop-in
+  configuration files for pam_env, following the modular configuration pattern
+  used in modern Linux distributions.
+  
+-------------------------------------------------------------------
 Mon Sep 15 07:53:29 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - pam_mkhomedir: building with vendordir option allows fetching skeleton

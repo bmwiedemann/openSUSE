@@ -295,7 +295,7 @@ install -D -m 644 %{SOURCE2} %{buildroot}%{_rpmmacrodir}/macros.pam
 # /run/motd.d
 install -Dm0644 %{SOURCE13} %{buildroot}%{_tmpfilesdir}/pam.conf
 
-mkdir -p %{buildroot}%{_pam_secdistconfdir}/{limits.d,namespace.d}
+mkdir -p %{buildroot}%{_pam_secdistconfdir}/{limits.d,namespace.d,pam_env.conf.d}
 
 # Remove manual pages for main package
 %if !%{build_doc}
@@ -356,6 +356,7 @@ done
 %{_pam_secdistconfdir}/group.conf
 %{_pam_secdistconfdir}/faillock.conf
 %{_pam_secdistconfdir}/pam_env.conf
+%dir %{_pam_secdistconfdir}/pam_env.conf.d
 %if %{with selinux}
 %{_pam_secdistconfdir}/sepermit.conf
 %endif
