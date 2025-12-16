@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Dec 14 08:47:47 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 1.58:
+  * fixes for platforms other than GNU/Linux
+
+-------------------------------------------------------------------
+Wed Dec 10 14:52:41 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.57:
+  * The sysconfdir as provided by the configure run is now used for
+    the default global config files of the argparser. [T7894]
+  * New function gpgrt_fconcat and improved the existing
+    gpgrt_fnameconcat and gpgrt_absfnameconcat. [T7894,rE34dba88757]
+  * Some minor build improvements for zOS.
+  * Updated the Swedish and Portuguese translations.
+  * Interface changes relative to the 1.56 release:
+    - gpgrt_fconcat                       NEW.
+    - GPGRT_FCONCAT_ABS                   NEW.
+    - GPGRT_FCONCAT_TILDE                 NEW.
+    - GPGRT_FCONCAT_SYSCONF               NEW.
+  * Release-info: https://dev.gnupg.org/T7847
+
+-------------------------------------------------------------------
 Wed Oct  8 20:01:06 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 1.56:
