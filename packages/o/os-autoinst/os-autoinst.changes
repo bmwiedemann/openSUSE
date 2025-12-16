@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec 15 13:09:59 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1765804109.1e7c99a:
+  * Remove `ShellCheck` from devel dependencies on s390x
+  * Remove obsolete 'bin/' folder
+  * Simplify the code to increment the counter
+  * audio: Allow for multiple audio recordings per test
+  * Improve documentation strings for get/check_var
+
+-------------------------------------------------------------------
 Fri Dec 12 11:42:16 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1765533145.a82864c:
