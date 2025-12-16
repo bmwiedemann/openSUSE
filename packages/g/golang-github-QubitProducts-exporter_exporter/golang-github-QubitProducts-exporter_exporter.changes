@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 12 11:29:05 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Require gcc11-c++ for building with SLE 12
+
+-------------------------------------------------------------------
 Mon Dec  8 17:53:03 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Require Go >= 1.23 for building

@@ -41,6 +41,9 @@ Source3:        prometheus-exporter_exporter.service
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
 %endif
+%if 0%{?suse_version} == 1315 && !0%{?is_opensuse}
+BuildRequires:  gcc11-c++
+%endif
 %if 0%{?suse_version}
 BuildRequires:  golang(API) >= 1.23
 %else
@@ -67,6 +70,13 @@ Reverse proxy designed for Prometheus exporters
 %build
 %if 0%{?suse_version} || 0%{?rhel} >= 8
 %goprep %{import_path}
+%ifarch s390x armv7hl armv7l armv7l:armv6l:armv5tel armv6hl
+export CGO_ENABLED=1
+%if 0%{?suse_version} == 1315 && !0%{?is_opensuse}
+export CC=gcc-11
+export CXX=g++-11
+%endif
+%endif
 %gobuild --mod=vendor "" ...
 %else
 mkdir -pv $HOME/go/src && cp -avr vendor/* $HOME/go/src/
