@@ -2,8 +2,8 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/Xpra-org/xpra-html5</param>
     <param name="scm">git</param>
-    <param name="versionformat">v18.1</param>
-    <param name="revision">v18.1</param>
+    <param name="versionformat">v19</param>
+    <param name="revision">v19</param>
     <param name="match-tag">*</param>
     <!--
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
