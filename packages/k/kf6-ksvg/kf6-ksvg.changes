@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Dec 12 20:17:32 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.21.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.21.0
+- Changes since 6.20.0:
+  * Update dependency version to 6.21.0
+  * Remove unused signal
+  * Simplify ImageSet config file handling
+  * Remove FallbackImageSet config handling
+  * Wrap useGlobal handling in deprecation macro
+  * Wrap ImageSet metadata handling in deprecation macro
+  * Drop unused variable
+  * Add test for ImageSet::filePath
+  * Add test for currentImageSetHasImage
+  * Rename imageSetChanged parameter
+  * Test ImageSet file selectors
+  * Drop iconImageSetMetadataPath
+  * Reduce scope of themeMetadataPath variable
+  * Remove KDirWatch leftovers
+  * Run clang-format
+  * [imageset] Preserve basePath when calling setImageName
+  * Add Alpine CI build
+  * Update version to 6.21.0
+  * Correct some typos in FrameSvg docs
+  * Clarify what FrameSvg insets are
+  * Clarify what FrameSvg margins are
+  * Add FrameSvg::insets()
+  * Add QMargins getters for margins in FrameSvg
+  * Fix deprecation syntax
+  * [imageset] Deprecate metadata
+  * [imageset] Deprecate setCacheLimit
+  * [imageset] Deprecate setUseGlobalSettings
+  * [imageset] Remove unused isDefault
+  * [imageset] Remove Plasma theme version handling
+  * Don't use QDir::separator
+
+-------------------------------------------------------------------
 Thu Nov 13 20:58:59 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.20.0
