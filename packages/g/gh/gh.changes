@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Dec 15 16:23:25 UTC 2025 - Pavel Dostál <pdostal@suse.com>
+
+- Update to version 2.83.2:
+  * Update licences
+  * Bump dev-tunnels SDK 0.1.13 to 0.1.19
+  * Bump Go to 1.25.5
+  * Update licenses for go-containerregistry-0.20.7 bump
+  * chore(deps): bump github.com/google/go-containerregistry
+  * Update licenses for go-version-1.8.0 bump
+  * chore(deps): bump github.com/hashicorp/go-version from 1.7.0 to 1.8.0
+  * Update licenses for tcell-2.13.1 bump
+  * chore(deps): bump github.com/gdamore/tcell/v2 from 2.9.0 to 2.13.1
+  * chore: make licenses
+  * refactor: drop multierror in favor of std
+  * Bump Go to 1.25.4
+  * Update licenses for huh 0.8.0 bump
+  * Fix accessible prompter tests with huh 0.8.0 upgrade
+  * chore(deps): bump github.com/charmbracelet/huh from 0.7.0 to 0.8.0
+  * Update licenses with grpc-1.76.0 bump
+  * chore(deps): bump google.golang.org/grpc from 1.75.0 to 1.76.0
+  * Update licenses for mimetype 1.4.11 bump
+  * chore(deps): bump github.com/gabriel-vasile/mimetype
+  * chore(deps): bump github.com/theupdateframework/go-tuf/v2
+  * chore(deps): bump golangci/golangci-lint-action from 9.0.0 to 9.1.0
+  * Update licenses for protobuf 1.36.10 bump
+  * chore(deps): bump google.golang.org/protobuf from 1.36.9 to 1.36.10
+  * Error if go-licenses is not on the PATH
+  * chore(deps): bump actions/checkout from 5 to 6
+  * Update licenses for crypto-0.45.0 bump
+  * chore(deps): bump golang.org/x/crypto from 0.43.0 to 0.45.0
+  * Alphabetize Ubuntu section
+  * Add Debian/Ubuntu to unofficial packages
+  * Add PGP key rotation PoC (#12176)
+  * refactor(pkg/search): rename `KeywordsVerbatim` to `ImmutableKeywords`
+  * refactor(pkg/search): rewrite returns in a more verbose way
+  * fix(pr/shared): delegate query compilation to `search` package
+  * test(pkg/search): assert verbatim keywords are respected
+  * fix(pkg/search): add `KeywordsVerbatim` field to `Query` type
+  * Remove extra flag default from help usage
+  * Refactor cfg out of CAPI Client
+
+-------------------------------------------------------------------
 Fri Nov 14 08:13:12 UTC 2025 - Pavel Dostál <pdostal@suse.com>
 
 - Update to version 2.83.1:
