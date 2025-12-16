@@ -19,11 +19,11 @@
 %define qt6_version 6.8.0
 
 %define rname kwindowsystem
-# Full KF6 version (e.g. 6.20.0)
+# Full KF6 version (e.g. 6.21.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-kwindowsystem
-Version:        6.20.0
+Version:        6.21.0
 Release:        0
 Summary:        KDE Access to window manager
 License:        LGPL-2.1-or-later
