@@ -1,7 +1,7 @@
 #
 # spec file for package php8-pear
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define pear_module_version(m) %(sed -n 's/.*=>.*%{1}-\\(.*\\)\\.tar.*/\\1/p' %{SOURCE0})
 
 Name:           php8-pear
-Version:        1.10.24
+Version:        1.10.25
 Release:        0
 Summary:        PHP Extension and Application Repository
 License:        BSD-2-Clause

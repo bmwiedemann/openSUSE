@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Dec 14 20:56:13 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 1.10.25
+  - PEAR 1.10.17
+    * Fix HTTP chunked encoding handling
+    * fix composer.json: typo in replace for pear_exception package
+    * switch to https by default
+    * Throw new Error instead of E_USER_ERROR on PHP 7.0+
+    * update tests for https-first behavior
+  - Archive_Tar 1.6.0
+    * big file support
+    * Fix return value of _writeBlock
+    * Remove gzopen/gztell/gzseek shim
+
+-------------------------------------------------------------------
 Sun Dec  1 19:14:16 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to 1.10.24
