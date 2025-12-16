@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Dec 12 20:17:25 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.21.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.21.0
+- Changes since 6.20.0:
+  * Update dependency version to 6.21.0
+  * WaylandClipboard: Avoid overriding original UTF-8 text
+  * SystemClipboard: Destroy old data source after set_selection or set_primary_selection
+  * systemclipboard: Dont offer utf8 text again if it's already in the data
+  * Update version to 6.21.0
+
+-------------------------------------------------------------------
 Thu Nov 13 20:58:51 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.20.0
