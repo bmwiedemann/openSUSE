@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Dec 15 04:40:01 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 9.0.2:
+  * The terminal progress feature added in pytest 9.0.0 has been disabled by
+    default, except on Windows.
+  * Fixed the TOML type of the tmp_path_retention_count settings in the API
+    reference from number to string.
+  * The private config.inicfg attribute was changed in a breaking manner in
+    pytest 9.0.0. Due to its usage in the ecosystem, it is now restored to
+    working order using a compatibility shim.
+  * Fixed quadratic-time behavior when handling unittest subtests in Python
+    3.10.
+
+-------------------------------------------------------------------
 Tue Nov 25 04:50:19 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 9.0.1:

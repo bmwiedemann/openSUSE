@@ -1546,4 +1546,21 @@ Add python version constraints to Requires &amp; BuildRequires</comment>
       referenced a class that could not be imported.</comment>
     <requestid>1320320</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>96527be04de6c924341954fadf652686</srcmd5>
+    <version>9.0.2</version>
+    <time>1765896579</time>
+    <user>anag_factory</user>
+    <comment>- Update to 9.0.2:
+  * The terminal progress feature added in pytest 9.0.0 has been disabled by
+    default, except on Windows.
+  * Fixed the TOML type of the tmp_path_retention_count settings in the API
+    reference from number to string.
+  * The private config.inicfg attribute was changed in a breaking manner in
+    pytest 9.0.0. Due to its usage in the ecosystem, it is now restored to
+    working order using a compatibility shim.
+  * Fixed quadratic-time behavior when handling unittest subtests in Python
+    3.10.</comment>
+    <requestid>1322891</requestid>
+  </revision>
 </revisionlist>
