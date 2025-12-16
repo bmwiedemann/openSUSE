@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cloudpickle
-Version:        3.1.1
+Version:        3.1.2
 Release:        0
 Summary:        Extended pickling support for Python objects
 License:        BSD-3-Clause
 URL:            https://github.com/cloudpipe/cloudpickle
 Source:         https://github.com/cloudpipe/cloudpickle/archive/refs/tags/v{%version}.tar.gz#/cloudpickle-%{version}-gh.tar.gz
-# PATCH-FIX-UPSTREAM gh#cloudpipe/cloudpickle#570
-Patch0:         support-python-314.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}

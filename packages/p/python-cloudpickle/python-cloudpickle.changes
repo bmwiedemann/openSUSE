@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 12 11:59:47 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 3.1.2:
+  * Fix pickling of abstract base classes containing type annotations
+    for Python 3.14. (PR#578)
+- Remove upstreamed patch support-python-314.patch
+
+-------------------------------------------------------------------
 Thu Sep 25 05:14:58 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-python-314.patch:

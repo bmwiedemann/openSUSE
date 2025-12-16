@@ -315,4 +315,15 @@
   * Fix a test to pass under Python 3.14.</comment>
     <requestid>1307024</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>b946d47e7a9c999ec86462bb8e3d37fd</srcmd5>
+    <version>3.1.2</version>
+    <time>1765896577</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.1.2:
+  * Fix pickling of abstract base classes containing type annotations
+    for Python 3.14. (PR#578)
+- Remove upstreamed patch support-python-314.patch</comment>
+    <requestid>1322605</requestid>
+  </revision>
 </revisionlist>
