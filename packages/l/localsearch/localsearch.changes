@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec 10 20:18:54 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.10.2:
+  + Fix possible errors if a directory is deleted while crawled
+  + Improve handling of indexed folder configuration changes while
+    the indexer is not running
+  + Fix inconsistencies in "localsearch index" CLI utility that
+    could lead to duplicates in the indexed folder settings
+  + Fix pager not being closed after some CLI utilities exited with
+    errors
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Oct 14 05:35:48 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.10.1:

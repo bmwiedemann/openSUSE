@@ -57,4 +57,20 @@
     <comment></comment>
     <requestid>1311305</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1c5ac5d17837f331171360dbb8f45ca1</srcmd5>
+    <version>3.10.2</version>
+    <time>1765989140</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.10.2:
+  + Fix possible errors if a directory is deleted while crawled
+  + Improve handling of indexed folder configuration changes while
+    the indexer is not running
+  + Fix inconsistencies in &quot;localsearch index&quot; CLI utility that
+    could lead to duplicates in the indexed folder settings
+  + Fix pager not being closed after some CLI utilities exited with
+    errors
+  + Updated translations. (forwarded request 1322080 from iznogood)</comment>
+    <requestid>1323140</requestid>
+  </revision>
 </revisionlist>
