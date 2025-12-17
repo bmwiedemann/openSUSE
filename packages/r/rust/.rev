@@ -937,4 +937,12 @@ See SR#946556</comment>
     <comment></comment>
     <requestid>1314962</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>84bb6e0bb80d6eb4b4bf77738bdf4852</srcmd5>
+    <version>1.92.0</version>
+    <time>1765988999</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.92.0 - for details see the rust1.92 package</comment>
+    <requestid>1323037</requestid>
+  </revision>
 </revisionlist>
