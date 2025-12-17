@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Dec 13 21:51:21 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 21.1.7.
+  * This release contains bug-fixes for the LLVM 21.1.0 release.
+    This release is API and ABI compatible with 21.1.0.
+- Rebase llvm-do-not-install-static-libraries.patch.
+- Link with -z pack-relative-relocs to reduce size of relocations
+  and speed up their application.
+- Run testsuite also in qemu emulation. (From Andreas Schwab.)
+
+-------------------------------------------------------------------
 Fri Nov 21 22:34:38 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 21.1.6.

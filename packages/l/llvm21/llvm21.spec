@@ -19,7 +19,7 @@
 %global _sonum  21
 %global _minor  %{_sonum}.1
 %global _soname %{_minor}%{?_rc:-rc%_rc}
-%global _patch_level 6
+%global _patch_level 7
 %global _relver %{_minor}.%{_patch_level}
 %global _version %_relver%{?_rc:-rc%_rc}
 %global _itsme21 1
@@ -1099,7 +1099,7 @@ if [ $jobs -gt 8 ] ; then
 fi
 %endif
 %endif
-%define build_ldflags -Wl,--build-id=sha1 %{?lld_ldflag} ${lto_limit_threads}
+%define build_ldflags -Wl,--build-id=sha1 %{?lld_ldflag} -Wl,-z,pack-relative-relocs ${lto_limit_threads}
 # The build occasionally uses tools linking against previously built
 # libraries (mostly libLLVM.so), but we don't want to set RUNPATHs.
 export LD_LIBRARY_PATH=%{sourcedir}/build/%{_lib}
@@ -1435,8 +1435,6 @@ export LANG=C.UTF-8
 # NOTE: We're not running the tests via ninja, because we've removed object
 # files and static libraries already.
 pushd build
-%if !0%{?qemu_user_space_build}
-# we just do not have enough memory with qemu emulation
 
 # We don't build llvm-exegesis.
 rm -r ../test/tools/llvm-exegesis
@@ -1496,7 +1494,6 @@ sed -i '1i// XFAIL: target=armv{{(6|7).*}}' ../projects/libcxx/test/std/language
 # There are undefined references to __cxa_* functions and "typeinfo for int".
 sed -i '1i@ XFAIL: target=arm{{.*}}' ../projects/libcxxabi/test/native/arm-linux-eabi/ttype-encoding-{0,9}0.pass.sh.s
 %{python_bin} bin/llvm-lit -sv projects/libcxxabi/test/
-%endif
 %endif
 %endif
 popd

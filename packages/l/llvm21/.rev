@@ -112,4 +112,18 @@
 - Don't XFAIL tools/clang/test/Driver/linux-ld.c.</comment>
     <requestid>1319243</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d42d5a37314a445682e40e139ff30377</srcmd5>
+    <version>21.1.7</version>
+    <time>1765989175</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 21.1.7.
+  * This release contains bug-fixes for the LLVM 21.1.0 release.
+    This release is API and ABI compatible with 21.1.0.
+- Rebase llvm-do-not-install-static-libraries.patch.
+- Link with -z pack-relative-relocs to reduce size of relocations
+  and speed up their application.
+- Run testsuite also in qemu emulation.</comment>
+    <requestid>1323168</requestid>
+  </revision>
 </revisionlist>
