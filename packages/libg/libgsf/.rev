@@ -577,4 +577,15 @@
     <comment> (forwarded request 1279615 from iznogood)</comment>
     <requestid>1280024</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>768408e07d71a6dc0bb74941e29a74f3</srcmd5>
+    <version>1.14.54</version>
+    <time>1765989135</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.14.54:
+  + Fix ABR is msole properties code.
+  + Up thumbnailer's memory limit to 512MB.
+  + Various build fixes. (forwarded request 1321889 from iznogood)</comment>
+    <requestid>1323139</requestid>
+  </revision>
 </revisionlist>
