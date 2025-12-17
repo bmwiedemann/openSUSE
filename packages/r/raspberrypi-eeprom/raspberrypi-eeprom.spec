@@ -21,7 +21,7 @@
 %endif
 
 Name:           raspberrypi-eeprom
-Version:        2025.05.08
+Version:        2025.12.08
 Release:        0
 Summary:        Raspberry Pi 4 and Pi 5 EEPROM firmware
 License:        SUSE-Firmware
