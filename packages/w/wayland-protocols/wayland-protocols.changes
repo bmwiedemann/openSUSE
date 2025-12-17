@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec 15 15:26:01 UTC 2025 - llyyr <llyyr@yukari.in>
+
+- Update wayland-protocols.keyring
+- Update to 1.47
+  * staging/color-management: loosen restriction on maxCLL and maxFALL
+  * staging/color-management: add ready2 event
+  * color-management: add absolute_no_adaptation rendering intent
+  * staging/color-management: forbid advertising deprecated
+  * staging/color-management: replace two-piece TF
+  * color-management: add wp_image_description_reference_v1
+
+-------------------------------------------------------------------
 Mon Nov 24 18:09:25 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.46
