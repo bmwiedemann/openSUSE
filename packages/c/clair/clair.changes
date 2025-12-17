@@ -1,4 +1,231 @@
 -------------------------------------------------------------------
+Wed Dec 17 07:14:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.9.0:
+  * Claircore
+    - enrichment: don't consider vulnerability.Description for
+      enrichments
+    - postgres: better GetEnrichments query
+    - rpm: fix use of unique.Handle pinning fs.FS
+    - vex: account for new VEX RPM module logic
+    - cvss: switch to NVD 2.0 JSON feeds
+    - chore: upgrade from pgx v4 to v5
+    - vex: allow timeout to pull down VEX archive to be
+      configurable
+    - rpm: add function to determine if packages are installed from
+      RPMs
+    - sbom: add encoder to encode index reports as SPDX documents
+    - rhel: deprecate updater in favor of VEX updater
+    - suse: dynamic distribution discovery
+  * All
+    - 1aca06b8: fix formatted print calls
+  * Amqp
+    - 1a9f8769: add deprecation notice
+  * Build(Deps)
+    - e4feca46: bump golang.org/x/time from 0.7.0 to 0.8.0
+    - f54011b5: bump golang.org/x/sync from 0.8.0 to 0.9.0
+    - ee5524b8: bump go.opentelemetry.io/otel/sdk from 1.31.0 to
+      1.32.0
+    - 757b649c: bump
+      go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp
+    - 20c0040f: bump github.com/go-stomp/stomp/v3 from 3.1.2 to
+      3.1.3
+    - 1607766c: bump github.com/prometheus/client_golang
+    - 0a3a4611: bump
+      go.opentelemetry.io/contrib/instrumentation/net/http/httptrace/otelhttptrace
+    - 12ea7bf9: bump
+      go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp
+    - 146d4a67: bump github.com/urfave/cli/v2 from 2.27.3 to 2.27.5
+    - 50003694: bump github.com/klauspost/compress from 1.17.10 to
+      1.17.11
+    - 6069bb24: bump
+      go.opentelemetry.io/otel/exporters/stdout/stdouttrace
+  * Chore
+    - f6a412cc: v4.9.0 changelog bump
+    - cbfd97b6: fix typos in config.yaml.sample
+    - 7c9c079b: update claircore to v1.5.48
+    - 8e9a6d46: update claircore to v1.5.47
+    - 804ef6a4: update claircore to v1.5.46
+    - a50727a3: add DVO ignore annotations
+    - 8d991938: update claircore to v1.5.45
+    - ff2059cf: update claircore to v1.5.44
+    - db51ed82: update claircore to v1.5.42
+    - c2dc1766: update claircore to v1.5.41
+    - 8aa9e1e2: update claircore to v1.5.40
+    - eca299b7: update go references to go1.24
+    - 1660b66b: upgrade from pgx v4 to v5
+    - 68d03bae: remove reviews from dependabot config
+    - 0c5292e7: upgrade config module to v1.4.2
+    - e5d4c19c: update minimum go version to 1.23
+    - e45fbf0e: update claircore to v1.5.35
+    - 708bf2f5: update local-dev tracing configs to fix errors
+    - 216ca2f1: update claircore to v1.5.34
+    - dde57fc1: update openAPI spec to remove SourcePackage
+    - e5149fd3: group some dependencies to avoid excessive PRs
+    - 60ebea73: update claircore to v1.5.33
+  * Chore(Deps)
+    - f598d3ec: bump
+      go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp
+    - a952e3c6: bump the otel group with 11 updates
+    - 878fbceb: bump github.com/google/go-containerregistry
+    - 468e409c: bump actions/upload-artifact from 4 to 5
+    - c87bc8f0: bump github.com/klauspost/compress from 1.18.1 to
+      1.18.2
+    - 2a5c11fd: bump actions/checkout from 5 to 6
+    - b12439f4: bump golang.org/x/crypto from 0.44.0 to 0.45.0
+    - e169a50a: bump google.golang.org/grpc from 1.76.0 to 1.77.0
+    - 3e778f2c: bump golang.org/x/net in the golang-x group
+    - 4563ccbd: bump github.com/go-stomp/stomp/v3 from 3.1.3 to
+      3.1.5
+    - 195cdb06: bump golang.org/x/sync in the golang-x group
+    - b50044f4: bump actions/download-artifact from 5 to 6
+    - 1b429595: bump github.com/klauspost/compress from 1.18.0 to
+      1.18.1
+    - e439e4df: bump the golang-x group with 2 updates
+    - fe37c68b: bump google.golang.org/grpc from 1.75.1 to 1.76.0
+    - ee6ea1c8: bump github.com/quay/claircore from 1.5.42 to
+      1.5.43
+    - afcfd7f0: bump google.golang.org/grpc from 1.75.0 to 1.75.1
+    - 6a4937e4: bump the golang-x group across 1 directory with 3
+      updates
+    - 53cf68e9: bump github.com/jackc/pgx/v5 from 5.7.5 to 5.7.6
+    - e9850949: bump github.com/prometheus/client_golang
+    - 290969cd: bump actions/stale from 9 to 10
+    - 5b5519b5: bump actions/github-script from 7 to 8
+    - b78c76b1: bump actions/setup-go from 5 to 6
+    - b1f4716b: bump
+      go.opentelemetry.io/contrib/instrumentation/net/http/httptrace/otelhttptrace
+    - 93174450: bump github.com/grafana/pyroscope-go/godeltaprof
+    - 0f1fde39: bump the otel group with 11 updates
+    - 8dbb0f48: bump golang.org/x/net in the golang-x group
+    - a35a1281: bump github.com/ulikunitz/xz from 0.5.11 to 0.5.14
+    - 1fa9a753: bump actions/checkout from 4 to 5
+    - f0b0949c: bump actions/download-artifact from 4 to 5
+    - 890f4a1b: bump github.com/prometheus/client_golang
+    - 80add42b: bump google.golang.org/grpc from 1.73.0 to 1.75.0
+    - e4746794: bump github.com/jackc/pgx/v5 from 5.7.4 to 5.7.5
+    - ba6fe31c: bump go.opentelemetry.io/otel/exporters/prometheus
+    - 40b0402e: bump the golang-x group with 2 updates
+    - f9635886: bump github.com/quay/zlog from 1.1.8 to 1.1.9
+    - 4415106e: bump
+      go.opentelemetry.io/contrib/instrumentation/net/http/httptrace/otelhttptrace
+    - b7325ada: bump
+      go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp
+    - 78b92595: bump the otel group with 11 updates
+    - 62956271: bump github.com/urfave/cli/v2 from 2.27.6 to 2.27.7
+    - 440eee8e: bump github.com/google/go-containerregistry
+    - e75e2e2b: bump the golang-x group with 3 updates
+    - cf20adbd: bump google.golang.org/grpc from 1.72.2 to 1.73.0
+    - d9c211b4: bump github.com/quay/claircore from 1.5.37 to
+      1.5.38
+    - 6338de8b: bump github.com/ugorji/go/codec from 1.2.12 to
+      1.2.14
+    - 566271a1: bump
+      go.opentelemetry.io/contrib/instrumentation/net/http/httptrace/otelhttptrace
+    - 3e3a2d33: bump github.com/google/go-containerregistry
+    - 81b725ba: bump google.golang.org/grpc from 1.72.1 to 1.72.2
+    - faad36e2: bump the otel group with 11 updates
+    - 7979e036: bump google.golang.org/grpc from 1.72.0 to 1.72.1
+    - 99ab2c1a: bump the golang-x group with 2 updates
+    - a166f610: bump github.com/quay/claircore from 1.5.36 to
+      1.5.37
+    - d8e9dcf4: bump google.golang.org/grpc from 1.71.1 to 1.72.0
+    - bfa8f11d: bump github.com/quay/claircore from 1.5.35 to
+      1.5.36
+    - f8a41628: bump github.com/prometheus/client_golang
+    - 7ce22abe: bump google.golang.org/grpc from 1.71.0 to 1.71.1
+    - c53cf2ba: bump the golang-x group with 2 updates
+    - a5833a44: bump golang.org/x/net in the golang-x group
+    - cc6fb14a: bump github.com/rs/zerolog from 1.33.0 to 1.34.0
+    - 851e4a36: bump github.com/urfave/cli/v2 from 2.27.5 to 2.27.6
+    - e9997624: bump
+      go.opentelemetry.io/contrib/instrumentation/net/http/httptrace/otelhttptrace
+    - a73e832b: bump github.com/prometheus/client_golang
+    - 35110e9e: bump
+      go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp
+    - 0a9866e3: bump the golang-x group with 3 updates
+    - 1ce14606: bump the otel group with 11 updates
+    - 919d5287: bump github.com/google/go-cmp in /config
+    - 2673e4f4: bump github.com/rogpeppe/go-internal from 1.13.1 to
+      1.14.1
+    - cf7af98a: bump github.com/go-jose/go-jose/v3 from 3.0.3 to
+      3.0.4
+    - 6c9fae1e: bump github.com/google/go-cmp from 0.6.0 to 0.7.0
+    - 707d8049: bump github.com/prometheus/client_golang
+    - 136a618f: bump github.com/klauspost/compress from 1.17.11 to
+      1.18.0
+    - 3e7c6e74: bump the golang-x group with 3 updates
+    - 73db520d: bump github.com/evanphx/json-patch/v5 from 5.9.10
+      to 5.9.11
+    - a3a60f10: bump google.golang.org/grpc from 1.69.4 to 1.70.0
+    - cc29705c: bump github.com/evanphx/json-patch/v5 from 5.9.0 to
+      5.9.10
+    - d05b4049: bump
+      go.opentelemetry.io/contrib/instrumentation/net/http/httptrace/otelhttptrace
+    - 8b99d320: bump the otel group with 11 updates
+    - b2c66991: bump google.golang.org/grpc from 1.69.2 to 1.69.4
+    - ef4a1f11: bump the golang-x group with 2 updates
+    - 38b77499: bump golang.org/x/net in the golang-x group
+    - 80c0381a: bump the otel group across 1 directory with 2
+      updates
+    - 3eff1ef1: bump
+      go.opentelemetry.io/contrib/instrumentation/net/http/httptrace/otelhttptrace
+    - 5bf85313: bump
+      go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp
+    - 9ebb61d9: bump golang.org/x/crypto from 0.30.0 to 0.31.0
+    - 0881e079: bump the golang-x group with 2 updates
+    - f556ef16: bump
+      go.opentelemetry.io/contrib/instrumentation/net/http/httptrace/otelhttptrace
+    - bf8737a1: bump golang.org/x/net in the golang-x group
+    - f1d9aae4: bump
+      go.opentelemetry.io/otel/exporters/stdout/stdouttrace
+  * Chore(Manifests)
+    - 48b75fe4: add anti-affinity rules
+  * Ci
+    - a0a35fd7: Allow go test to access un-vendored dependencies
+  * Cicd
+    - ab791a2e: run multiarch tests without a full container
+    - 935a61f3: vendor modules into nightly source
+  * Clairctl
+    - 4c93f8ea: Print a friendly error on panic
+    - #2221### Config
+    - 0db9beaf: add ability to disable enrichment
+    - 7ab81b38: clean environment in example
+  * Dev
+    - 503215f5: rename dashboard.json file to clair.json
+    - 65cd4244: add a grafana dashboard for postgres stats
+  * Docker
+    - 10485679: remove version line from docker-compose.yaml
+  * Docker-Compose
+    - 8c71b46e: update containers
+  * Enrichments
+    - 6527a9ec: disable enrichers if config option is set
+  * Fix
+    - 0a8c3864: typo in variable name
+  * Go.Mod
+    - 6db583f7: Update Go version to 1.24.9 for CVE-2025-47907
+  * Health
+    - b57b9fa6: using atomic.Uint32
+  * Introspection
+    - 797c2f45: implement OTLP support for metrics and traces
+  * Misc
+    - 5891f64b: remove API doc make target, CI check
+  * Notifier
+    - a9a68e18: increase default durations to be more reasonable
+  * Openapi
+    - 8c540b96: rebuild OpenAPI spec
+  * Signer
+    - 1c6d0496: initialize before checking for PSK
+    - Fixes #2214 - #2221### Stomp
+    - b2501ba3: ignore Unsubscribe error in test
+    - 0b8e3507: add deprecation notice
+    - 684be8d0: catch test-specific error
+  * Types/V1
+    - 50d0164b: add JSON API v1 types and schemas
+  * Reverts
+    - cicd: exclude darwin/arm64
+
+-------------------------------------------------------------------
 Sat Dec 07 15:26:48 UTC 2024 - andrea.manzini@suse.com
 
 - Update to version 4.8.0:

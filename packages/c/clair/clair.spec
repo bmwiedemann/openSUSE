@@ -1,7 +1,7 @@
 #
 # spec file for package clair
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,11 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 %define cli_executable_name clairctl
 %define services clair.service clair-indexer.service clair-matcher.service clair-watcher.service
 
 Name:           clair
-Version:        4.8.0
+Version:        4.9.0
 Release:        0
 Summary:        Vulnerability Static Analysis for Containers
 License:        Apache-2.0
@@ -33,7 +31,7 @@ Source2:        clair.service
 Source3:        clair-indexer.service
 Source4:        clair-matcher.service
 Source5:        clair-watcher.service
-BuildRequires:  go >= 1.23
+BuildRequires:  go1.24 >= 1.24.9
 
 %description
 Clair is an open source project for the static analysis of vulnerabilities in
