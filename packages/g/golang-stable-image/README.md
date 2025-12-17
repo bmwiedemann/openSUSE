@@ -8,17 +8,17 @@
 language, with syntax loosely derived from C. Go offers additional features
 such as garbage collection, type safety, certain dynamic-typing capabilities,
 additional built-in types (for example, variable-length arrays and key-value
-maps) as well as a large standard library.
+maps) and a large standard library.
 
 
 ## Usage
 We recommend using the Go image as a build environment. Thus,
 the compiler does not need to be shipped as part of the images that are
-deployed. Instead, we recommend to use the Go image as the
+deployed. Instead, we recommend using the Go image as the
 builder image only.
 
 There are two options to work with Go images. First, you can encapsulate your
-application in a `scratch` container image, essentially an empty filesystem
+application in a `scratch` container image, essentially an empty file system
 image. This approach only works if your Go application does not depend on libc
 or any other library or files, as they will not be available.
 
