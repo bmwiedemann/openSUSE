@@ -45,7 +45,7 @@
 
 %global selinuxtype targeted
 Name:           passt
-Version:        20250611.0293c6f
+Version:        20251215.b40f5cd
 Release:        0
 Summary:        User-mode networking daemons for virtual machines and namespaces
 License:        GPL-2.0-or-later AND BSD-3-Clause
@@ -57,9 +57,6 @@ BuildRequires:  zstd
 BuildRequires:  gcc, make
 %if %{with selinux}
 Requires:       (%{name}-selinux = %{version}-%{release} if selinux-policy-targeted)
-BuildRequires:  checkpolicy
-BuildRequires:  selinux-policy-devel
-BuildRequires:  selinux-policy-targeted
 %endif
 %if %{with apparmor}
 BuildRequires:  apparmor-abstractions, apparmor-rpm-macros, libapparmor-devel
@@ -90,15 +87,18 @@ This package contains Apparmor profiles for passt and pasta.
 %endif
 
 %if %{with selinux}
-%package    selinux
-BuildArch:  noarch
-Summary:    SELinux support for passt and pasta
-Requires:   %{name} = %{version}-%{release}
-Requires:   selinux-policy
-Requires(post): %{name}
-Requires(post): policycoreutils
-Requires(preun): %{name}
-Requires(preun): policycoreutils
+%package            selinux
+BuildArch:          noarch
+Summary:            SELinux support for passt and pasta
+Requires:           %{name} = %{version}-%{release}
+Requires:           selinux-policy
+Requires:           container-selinux
+Requires(post):     policycoreutils
+Requires(post):     container-selinux
+Requires(preun):    policycoreutils
+BuildRequires:      checkpolicy
+BuildRequires:      selinux-policy-devel
+Recommends:         selinux-policy-%{selinuxtype}
 
 %description selinux
 This package adds SELinux enforcement to passt(1) and pasta(1).
@@ -109,7 +109,18 @@ This package adds SELinux enforcement to passt(1) and pasta(1).
 
 %build
 %set_build_flags
-%make_build VERSION=%{version}-%{release}
+# The Makefile creates symbolic links for pasta, but we need actual copies for
+# SELinux file contexts to work as intended. Same with pasta.avx2 if present.
+# Build twice, changing the version string, to avoid duplicate Build-IDs.
+# Ran into something similar for apparmor - https://github.com/containers/buildah/issues/5440.
+%make_build VERSION=%{version}-%{release}-pasta
+%ifarch x86_64
+mv -f passt.avx2 pasta.avx2
+%make_build passt passt.avx2 VERSION="%{version}-%{release}"
+%else
+%make_build passt VERSION="%{version}-%{release}"
+%endif
+
 
 %install
 %make_install prefix=%{_prefix} bindir=%{_bindir} mandir=%{_mandir} docdir=%{_docdir}/%{name}
@@ -136,9 +147,10 @@ ln -f passt.avx2 %{buildroot}%{_bindir}/pasta.avx2
 %if %{with selinux}
 pushd contrib/selinux
 make -f %{_datadir}/selinux/devel/Makefile
-install -p -m 644 -D passt.pp %{buildroot}%{_datadir}/selinux/packages/%{name}/passt.pp
+install -p -m 644 -D passt.pp %{buildroot}%{_datadir}/selinux/packages/%{selinuxtype}/passt.pp
+install -p -m 644 -D passt-repair.pp %{buildroot}%{_datadir}/selinux/packages/%{selinuxtype}/passt-repair.pp
+install -p -m 644 -D pasta.pp %{buildroot}%{_datadir}/selinux/packages/%{selinuxtype}/pasta.pp
 install -p -m 644 -D passt.if %{buildroot}%{_datadir}/selinux/devel/include/distributed/passt.if
-install -p -m 644 -D pasta.pp %{buildroot}%{_datadir}/selinux/packages/%{name}/pasta.pp
 popd
 %endif
 
@@ -153,13 +165,11 @@ popd
 %selinux_relabel_pre -s %{selinuxtype}
 
 %post selinux
-%selinux_modules_install -s %{selinuxtype} %{_datadir}/selinux/packages/%{name}/passt.pp
-%selinux_modules_install -s %{selinuxtype} %{_datadir}/selinux/packages/%{name}/pasta.pp
+%selinux_modules_install -s %{selinuxtype} %{_datadir}/selinux/packages/%{selinuxtype}/passt.pp %{_datadir}/selinux/packages/%{selinuxtype}/passt-repair.pp %{_datadir}/selinux/packages/%{selinuxtype}/pasta.pp
 
 %postun selinux
 if [ $1 -eq 0 ]; then
-        %selinux_modules_uninstall -s %{selinuxtype} passt
-        %selinux_modules_uninstall -s %{selinuxtype} pasta
+        %selinux_modules_uninstall -s %{selinuxtype} passt pasta passt-repair
 fi
 
 %posttrans selinux
@@ -188,9 +198,10 @@ fi
 
 %if %{with selinux}
 %files selinux
-%dir %{_datadir}/selinux/packages/%{name}
-%{_datadir}/selinux/packages/%{name}/passt.pp
-%{_datadir}/selinux/packages/%{name}/pasta.pp
+%dir %{_datadir}/selinux/packages/%{selinuxtype}
+%{_datadir}/selinux/packages/%{selinuxtype}/passt.pp
+%{_datadir}/selinux/packages/%{selinuxtype}/pasta.pp
+%{_datadir}/selinux/packages/%{selinuxtype}/passt-repair.pp
 %dir %{_datadir}/selinux/devel/include/distributed
 %{_datadir}/selinux/devel/include/distributed/passt.if
 %endif

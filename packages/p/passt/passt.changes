@@ -1,4 +1,212 @@
 -------------------------------------------------------------------
+Tue Dec 16 07:01:12 UTC 2025 - Danish Prakash <danish.prakash@suse.com>
+
+- spec: drop restorecon trigger now that file context rules use regex (bsc#1246291)
+  (https://archives.passt.top/passt-dev/20251016074045.562352-1-contact@danishpraka.sh/)
+- Update to version 20251215.b40f5cd:
+  * tcp: Use less-than-MSS window on no queued data, or no data sent recently
+  * conf, fwd: Move initialisation of auto port scanning out of conf()
+  * tcp: Remove extra space from TCP_INFO debug messages (trivial)
+  * pasta: Clean up waiting pasta child on failures
+  * treewide: Introduce passt_exit() helper
+  * tcp: Suppress new instance of cppcheck bug 14191
+  * pif: Correctly set scope_id for guest-side link local addresses
+  * tcp: Correct timer expiry value in trace message
+  * tcp_splice, flow: Add socket to epoll set before connect(), drop assert
+  * fedora: Fix build on Fedora 43, selinux_requires_min not available on Copr builders
+  * tcp: Skip redundant ACK on partial sendmsg() failure
+  * tcp: Send a duplicate ACK also on complete sendmsg() failure
+  * tcp: Allow exceeding the available sending buffer size in window advertisements
+  * tcp: Don't limit window to less-than-MSS values, use zero instead
+  * tcp: Acknowledge everything if it looks like bulk traffic, not interactive
+  * tcp: Don't clear ACK_TO_TAP_DUE if we're advertising a zero-sized window
+  * tcp: Adaptive interval based on RTT for socket-side acknowledgement checks
+  * tcp: Limit advertised window to available, not total sending buffer size
+  * tcp: Change usage factor of sending buffer in tcp_get_sndbuf() to 75%
+  * tcp, util: Add function for scaling to linearly interpolated factor, use it
+  * iov: Fix coding style of basic (non-IOV_TAIL) parts
+  * tcp, udp: Pad batched frames for vhost-user modes to 60 bytes (802.3 minimum)
+  * tcp, udp: Pad batched frames to 60 bytes (802.3 minimum) in non-vhost-user modes
+  * udp: Fix coding style for comment to enum udp_iov_idx
+  * tcp: Fix coding style for comment to enum tcp_iov_parts
+  * tap: Pad non-batched frames to 802.3 minimum (60 bytes) if needed
+  * test: Update Makefile to avoid failing on missing images
+  * conf: Separate local mode for each IP version, don't enable disabled IP version
+  * vu_common: Clarify prototype of vu_collect()
+  * test: Expand tmux right status bar to fit pass/fail/skipped counter and time
+  * tcp: Enable SO_KEEPALIVE if we see keep-alive segments from container / guest
+  * seccomp: Fix build and operation on 32-bit musl targets
+  * fwd: Preserve non-standard loopback address when splice forwarding
+  * tcp: Always populate oaddr field for socket initiated flows
+  * util: Rename sock_l4_dualstack() to sock_l4_dualstack_any()
+  * tcp, udp: Bind outbound listening sockets by interface instead of address
+  * tcp, udp: Remove fallback if creating dual stack socket fails
+  * util: Fix setting of IPV6_V6ONLY socket option
+  * udp: Move udp_sock_init() special case to its caller
+  * udp: Unify some more inbound/outbound parts of udp_sock_init()
+  * tcp: Merge tcp_ns_sock_init[46]() into tcp_sock_init_one()
+  * util, flow, pif: Simplify sock_l4_sa() interface
+  * inany: Let length of sockaddr_inany be implicit from the family
+  * flow: Remove bogus @path field from flowside_sock_args
+  * conf: More useful errors for kernels without SO_BINDTODEVICE
+  * util: Extend sock_probe_mem() to sock_probe_features()
+  * util: Correct error message on SO_BINDTODEVICE failure
+  * tcp: Clamp the retry timeout
+  * tcp: Update data retransmission timeout
+  * tcp: Resend SYN for inbound connections
+  * util: Introduce read_file() and read_file_integer() function
+  * tcp: Rename "retrans" to "retries"
+  * arp/ndp: don't send messages on uninitialized tap interface
+  * test: Fix IPv6 address/prefix mismatch error
+  * spec: use %selinux_requires_min macro, drop overlapping dependencies
+  * fwd: Don't explicitly exclude reverse-direction TCP ports for UDP
+  * fwd: Exclude ports based on prior mapping state
+  * Revert "fwd: Update all port maps before applying exclusions"
+  * udp: Use IP_FREEBIND for flow sockets as well as listening sockets
+  * tcp: Properly remove sockets from epoll loop when connection is closed
+  * seccomp.sh: Quote tr character ranges to prevent glob expansion
+  * contrib/selinux: use regex instead of SELinux template
+  * tcp, udp: Don't exclude ports in {tcp,udp}_port_rebind()
+  * fwd: Update all port maps before applying exclusions
+  * fwd: Check forwarding mode in fwd_scan_ports_*() rather than caller
+  * fwd: Share port scanning logic between init and timer cases
+  * fwd: Move port exclusion handling from procfs_scan_listen() to callers
+  * fwd: Consolidate scans (not rebinds) in fwd.c
+  * tcp, udp, fwd: Run all port scanning from a single timer
+  * icmp: Remove vestiges of ICMP timer
+  * passt: Move main event loop processing into passt_worker()
+  * udp: Use epoll instance management for UDP flows
+  * icmp: Use epoll instance management for ICMP flows
+  * tcp, flow: Replace per-connection in_epoll flag with an epollid in flow_common
+  * util: Move epoll registration out of sock_l4_sa()
+  * epoll_ctl: Extract epoll operations
+  * util: Simplify epoll_del() interface to take epollfd directly
+  * icmp: let icmp use mac address from flowside structure
+  * tap: change signature of function tap_push_l2h()
+  * tcp: forward external source MAC address through tap interface
+  * udp: forward external source MAC address through tap interface
+  * flow: add MAC address of LAN local remote hosts to flow
+  * arp/ndp: send ARP announcement / unsolicited NA when neigbour entry added
+  * arp/ndp: respond with true MAC address of LAN local remote hosts
+  * fwd: Add cache table for ARP/NDP contents
+  * netlink: add subscription on changes in NDP/ARP table
+  * Add reverse Christmas tree to CONTRIBUTING.md
+  * fwd: Fix misspelling
+  * test: Fix the escaping issue in memory/passt test
+  * test: Update the threshold value for some perf tests
+  * tap: Update some function comments for accuracy
+  * passt: Rename EPOLL_EVENTS to NUM_EPOLL_EVENTS
+  * Fix the wrong command in CONTRIBUTING.md
+  * test: For missing static checkers, skip rather than failing tests
+  * test: Add some missing quoting in exeter runner
+  * test: Use ${} consistently in lib/exeter
+  * isolation: keep CAP_DAC_OVERRIDE initially
+  * tcp: Clarify logic calculating how much guest data to ack
+  * tcp: On partial send (incomplete sendmsg()), request a retransmission right away
+  * tcp: Don't consider FIN flags with mismatching sequence
+  * tcp: Completely ignore data segment in CLOSE-WAIT state, log a message
+  * tcp: Fix ACK sequence on FIN to tap
+  * test: Add linting of Python test scripts
+  * test: Don't delete exetool on make clean
+  * cppcheck: Suppress variable scope warnings in dhcpv6()
+  * cppcheck: Suppress a buggy cppcheck warning
+  * cppcheck: Suppress the suppression of a suppression
+  * clang-tidy: Suppress redundant expression warning
+  * test: Update passt.mbuto and passt.mem.mbuto
+  * netlink: Don't require address to be global, just not link local
+  * test: Fix printf error when debug is enabled
+  * test: Update README.md
+  * test: Update mbuto profile to fix the symlink of /bin
+  * test: Update lib/term for clearer output when DEBUG is enabled
+  * test: fix 'make assets' failure as root
+  * tap: Drop frames if no client connected
+  * Add --stats option to display event statistics
+  * netlink: Drop nexthop state flags from routes we duplicate
+  * Add CONTRIBUTING.md
+  * selinux: add missing file contexts for Podman
+  * selinux: add container_var_run_t type transition
+  * dhcp: Fix coding style violations in dhcp() function
+  * Improve clarity of comment
+  * Send an initial ARP and NDP request to resolve the guest IP address
+  * Fix --no-icmp description and make it imply --no-ndp
+  * Introduce constant MAC_BROADCAST
+  * Show debug message whenever we observe a new guest MAC address
+  * tcp: Store the owner connections for flags frames
+  * Reduce tcp_buf_discard size
+  * tcp: Don't send FIN segment to guest yet if we have pending unacknowledged data
+  * tcp: Fast re-transmit if half-closed, make TAP_FIN_RCVD path consistent
+  * tcp: Cast operands of sequence comparison macros to uint32_t before using them
+  * tcp: Don't try to transmit right after the peer shrank the window to zero
+  * tcp: Fix closing logic for half-closed connections
+  * tcp: Rewind sequence when guest shrinks window to zero
+  * tcp: Factor sequence rewind for retransmissions into a new function
+  * tcp: FIN flags have to be retransmitted as well
+  * test: Fix the download link for debian-11-generic-ppc64el image
+  * tcp_vu: Pass virtqueue pointer to tcp_vu_sock_recv()
+  * udp_vu: Pass virtqueue pointer to udp_vu_sock_recv()
+  * vhost-user: Fix VHOST_USER_GET_QUEUE_NUM to return number of queues
+  * Add missing explicit PSH assignment
+  * Fix typo in doc comment
+  * test: Explicit specify forwarding ports for pasta in log rotation tests
+  * test: Allow exeter & podman tests to be parallel executed with BATS
+  * test: Convert build tests to exeter
+  * test: Run static checkers as exeter tests
+  * test: Extend test scripts to allow running exeter tests.
+  * packet: Add support for multi-vector packets
+  * packet: Refactor vhost-user memory region handling
+  * packet: remove unused parameter from PACKET_POOL_DECL()
+  * packet: remove PACKET_POOL() and PACKET_POOL_P()
+  * ndp: use iov_tail rather than pool
+  * icmp: use iov_tail rather than pool
+  * dhcpv6: use iov_tail rather than pool
+  * dhcp: use iov_tail rather than pool
+  * arp: use iov_tail rather than pool
+  * packet: rename packet_data() to packet_get()
+  * tap: Convert tap6_handler() to iov_tail
+  * tap: Convert tap4_handler() to iov_tail
+  * ip: Use iov_tail in ipv6_l4hdr()
+  * dhcp: Convert to iov_tail
+  * dhcpv6: Use iov_tail in dhcpv6_opt()
+  * dhcpv6: Convert to iov_tail
+  * dhcpv6: Extract sending of NotOnLink status
+  * dhcpv6: move offset initialization out of dhcpv6_opt()
+  * tcp: Convert tcp_data_from_tap() to use iov_tail
+  * tcp: Convert tcp_tap_handler() to use iov_tail
+  * udp: Convert to iov_tail
+  * icmp: Convert to iov_tail
+  * ndp: Convert to iov_tail
+  * arp: Convert to iov_tail
+  * packet: Add packet_data()
+  * packet: Use iov_tail with packet_add()
+  * tap: Use iov_tail with tap_add_packet()
+  * iov: Update IOV_REMOVE_HEADER() and IOV_PEEK_HEADER()
+  * iov: Introduce iov_tail_clone() and iov_drop_header().
+  * arp: Don't mix incoming and outgoing buffers
+  * build: Fix errors of TCP_REPAIR_* undeclared
+  * treewide: Flush pcap and log files, if used, before exiting
+  * selinux: pasta accesses /etc/resolv.conf
+  * treewide: By default, don't quit source after migration, keep sockets open
+  * test: Deal with /bin, /sbin unification in Fedora
+  * style: Add parentheses to function names in comments
+  * style: Fix 'Return' comment style
+
+-------------------------------------------------------------------
+Tue Dec  9 07:45:46 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Escape macro in comment (boo#1254579)
+
+-------------------------------------------------------------------
+Wed Jul  9 04:41:56 UTC 2025 - Danish Prakash <danish.prakash@suse.com>
+
+- Fixes to spec (ref: bsc#1245074):
+  * Install binaries for pasta, and not symlinks
+  * Remove circular dependency between passt and passt-selinux
+  * Install missing passt-repair.pp SELinux policy module
+  * Install modules at the correct location .../selinux/packages/%{selinuxtype}/
+  * Require container-selinux for container related policies
+  * Single line macro to load SELinux policies for better performance
+
+-------------------------------------------------------------------
 Mon Jun 16 13:44:00 UTC 2025 - dcermak@suse.com
 
 - Update to version 20250611.0293c6f:

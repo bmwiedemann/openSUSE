@@ -264,4 +264,12 @@ on SELinux-enabled projects e.g. SLFO. (forwarded request 1186132 from danishpra
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1254579</comment>
     <requestid>1321895</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>62d0a06a95942bba203e9b12ef78dbd0</srcmd5>
+    <version>20251215.b40f5cd</version>
+    <time>1765989127</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1323134</requestid>
+  </revision>
 </revisionlist>
