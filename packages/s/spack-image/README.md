@@ -3,7 +3,7 @@
 
 ## Description
 Spack is a package manager for supercomputers. It provides build recipes
-for more than 6000 software components, and it allows to build entire
+for more than 6000 software components, and it allows building entire
 HPC application stacks with little to no prerequisites.
 
 This container image serves as a build environment for a `Dockerfile`
@@ -33,10 +33,10 @@ spack:
       final:
       - <additional packages for final container>
 ```
-Replace 'application spec' with the actual application name, and provide optional
-build specifications (for details see the
+Replace 'application spec' with the actual application name and provide optional
+build specifications (for details, see the
 [Spack documentation](https://spack.readthedocs.io/en/latest/)).
-The 'container_format' can be either `docker` for a docker/OCI container
+The 'container_format' can be either `docker` for a Docker/OCI container
 image or `singularity` for a Singularity/Apptainer container image.
 The `os_packages` section is optional. Here you may specify additional
 packages to install in the build container or in the final
@@ -51,7 +51,7 @@ This builds `apptainer.sif` as the final Singularity/Apptainer image that can th
 ```ShellSession
 $ apptainer exec ./apptainer.sif <command line ...>
 ```
-To build a docker/OCI container, run the following commands:
+To build a Docker/OCI container, run the following commands:
 ```ShellSession
 $ spack containerize > Containerfile
 $ podman build -t <target_name> --format=docker .
