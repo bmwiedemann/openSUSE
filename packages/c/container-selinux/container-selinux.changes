@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec 15 15:58:25 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 2.245.0:
+  * bump to v2.245.0
+  * Fix typo in container_selinux(8) man page
+  * Add new booleans to container_selinux(8) man page
+  * Allow containers to access shared public content
+  * Add support for Incus
+  * Add ~/.local/share/containers/storage/overlay-containers to .fc (bsc#1253682)
+
+-------------------------------------------------------------------
 Mon Dec 08 08:20:55 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 2.244.0:

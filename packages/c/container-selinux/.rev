@@ -283,4 +283,12 @@
     <comment>container-selinux update</comment>
     <requestid>1321531</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>de42cda7aa29800500b9f780158f4fed</srcmd5>
+    <version>2.245.0</version>
+    <time>1765989046</time>
+    <user>anag_factory</user>
+    <comment>version bump</comment>
+    <requestid>1322982</requestid>
+  </revision>
 </revisionlist>
