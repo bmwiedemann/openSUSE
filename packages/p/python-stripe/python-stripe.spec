@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-stripe
-Version:        14.0.1
+Version:        14.1.0
 Release:        0
 Summary:        Python bindings for the Stripe API
 License:        MIT
 URL:            https://github.com/stripe/stripe-python
 Source:         https://files.pythonhosted.org/packages/source/s/stripe/stripe-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#stripe/stripe-python#1700
-Patch0:         suport-pytest-9.patch
 BuildRequires:  %{python_module aiohttp >= 3.9.4}
 BuildRequires:  %{python_module anyio}
 BuildRequires:  %{python_module base >= 3.7}

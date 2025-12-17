@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec 17 01:08:48 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 14.1.0:
+  * Update generated code based on incoming API changes in the
+    2025-12-15.clover API version.
+  * Updated bundled CA certificates
+  * Add create_async method to EphemeralKey
+- Dropped patch suport-pytest-9.patch, included upstream.
+
+-------------------------------------------------------------------
 Tue Dec 16 03:57:54 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 14.0.1:

@@ -155,4 +155,17 @@
   * Do not apply marks to a fixture.</comment>
     <requestid>1323038</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>337962bf1cb0da3c422684815018e71c</srcmd5>
+    <version>14.1.0</version>
+    <time>1765989424</time>
+    <user>anag_factory</user>
+    <comment>- Update to 14.1.0:
+  * Update generated code based on incoming API changes in the
+    2025-12-15.clover API version.
+  * Updated bundled CA certificates
+  * Add create_async method to EphemeralKey
+- Dropped patch suport-pytest-9.patch, included upstream.</comment>
+    <requestid>1323242</requestid>
+  </revision>
 </revisionlist>
