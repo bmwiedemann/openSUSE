@@ -5,7 +5,7 @@
 ## Description
 
 [KIWI NG](https://osinside.github.io/kiwi/) is a command-line utility for
-building Linux system appliances. An appliance is a ready to use image of an
+building Linux system appliances. An appliance is a ready-to-use image of an
 operating system that includes a pre-configured application for a specific
 use case. The appliance is provided as an image file and needs to be deployed
 to or activated in the target system or service.
