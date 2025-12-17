@@ -39,7 +39,7 @@ the image is found matching the public key. See the detailed usage below for
 information and caveats on other signature formats.
 
 Valid payload is printed to stdout, in JSON format. Note that the
-signed payload includes the digest of the container image, which indicated that these "detached" signatures apply to the correct image.
+signed payload includes the digest of the container image, which indicates that these "detached" signatures apply to the correct image.
 
 ```ShellSession
 $ podman run registry.opensuse.org/opensuse/cosign:2.6 verify --key cosign.pub $IMAGE_URI:1h
