@@ -7,7 +7,6 @@ After=network.target
 # https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
 ProtectSystem=full
 ProtectHome=true
-PrivateDevices=true
 ProtectHostname=true
 ProtectClock=true
 ProtectKernelTunables=true
