@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec 15 15:51:30 UTC 2025 - llyyr <llyyr@yukari.in>
+
+- Update to 1.3.0
+  * add color-management-v1 support
+  * switch to the stable tablet protocol
+  * support tablet bustype and relative dials
+  * add color-representation-v1 support
+
+-------------------------------------------------------------------
 Thu Jun  8 12:53:42 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.0
