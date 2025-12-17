@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Dec 17 07:16:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.11.6:
+  * talosctl-related changes
+    - c36ffc626 fix: disable kexec in talosctl cluster create on arm64
+  * Dependency Changes
+    - github.com/containernetworking/plugins v1.7.1 -> v1.9.0
+    - github.com/safchain/ethtool v0.6.1 -> v0.6.2
+    - github.com/siderolabs/pkgs v1.11.0-29-gaee690b ->
+      v1.11.0-36-g49ee0fe
+    - github.com/siderolabs/talos/pkg/machinery v1.11.5 -> v1.11.6
+    - github.com/siderolabs/tools v1.11.0-4-g05ee846 ->
+      v1.11.0-5-g7f05320
+    - github.com/stretchr/testify v1.10.0 -> v1.11.1
+    - golang.org/x/net v0.43.0 -> v0.47.0
+    - golang.org/x/sync v0.16.0 -> v0.19.0
+    - golang.org/x/sys v0.35.0 -> v0.39.0
+    - golang.org/x/term v0.34.0 -> v0.38.0
+    - golang.org/x/text v0.28.0 -> v0.32.0
+
+-------------------------------------------------------------------
 Thu Nov  6 14:45:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.11.5:
