@@ -3,7 +3,7 @@
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
 ## Description
-MariaDB is an open-source, multi-threaded, relational database management system. It's a backward-compatible branch of the MySQL Community Server that provides a drop-in replacement for MySQL.
+MariaDB is an open source, multi-threaded, relational database management system. It's a backward-compatible branch of the MySQL Community Server that provides a drop-in replacement for MySQL.
 
 
 ## Usage
@@ -27,7 +27,7 @@ The database is stored in the directory `/var/lib/mysql`.
 
 When using the MariaDB image, we recommend one of the following options:
 
-* Use a named volume to manage the storage of your database data. This is the default option and it is easy to use. The downside is that the files may be hard to locate for tools and applications that run directly on the host system, i.e. outside containers.
+* Use a named volume to manage the storage of your database data. This is the default option and it is easy to use. The downside is that the files may be hard to locate for tools and applications that run directly on the host system.
 * Create a data directory on the host system (outside the container) and mount the created directory to a directory accessible from inside the container. This stores the database files in a known location on the host system and makes it easy for tools and applications on the host system to access the files. If you choose this approach, make sure that the specified directory exists, and its permissions along with other security mechanisms on the host system are set up correctly.
 
 To mount a host directory as a volume for your data run the following command:
