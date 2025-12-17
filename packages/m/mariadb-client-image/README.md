@@ -4,7 +4,7 @@
 
 ## Description
 
-MariaDB is an open-source, multi-threaded, relational database management system. It's a backward-compatible branch of the MySQL Community Server that provides a drop-in replacement for MySQL.
+MariaDB is an open source, multi-threaded, relational database management system. It's a backward-compatible branch of the MySQL Community Server that provides a drop-in replacement for MySQL.
 
 This image contains the [MariaDB client](https://mariadb.com/kb/en/mariadb-command-line-client/) and utilities.
 
