@@ -5,7 +5,7 @@
 
 ## Description
 
-Stunnel is an open-source multi-platform application that provides a universal
+Stunnel is an open source multi-platform application that provides a universal
 TLS/SSL tunneling service.
 
 
@@ -21,28 +21,28 @@ Custom configuration files must be placed into the directory
 
 The container entry point configures TLS/SSL automatically by setting the key
 and certificate to the values of the environment variables `STUNNEL_KEY` and
-`STUNNEL_CERT`. If one of the environment variables is unset, then the
-entrypoint defaults to `/etc/stunnel/stunnel.key` for `STUNNEL_KEY` and
+`STUNNEL_CERT`. If one of the environment variables is unset, the
+entry point defaults to `/etc/stunnel/stunnel.key` for `STUNNEL_KEY` and
 `/etc/stunnel/stunnel.pem` for `STUNNEL_CERT`.
 
-The entrypoint can set up a single service via environment variables, so that
+The entry point can set up a single service via environment variables, so that
 the user doesn't have to write and mount their own configuration file. This can
 be specified via the environment variables `STUNNEL_SERVICE_NAME`,
 `STUNNEL_ACCEPT` and `STUNNEL_CONNECT`:
 
 - `STUNNEL_SERVICE_NAME`: name or otherwise unique identifier of the service
-  (used for documentation purpose only)
+  (used for documentation purposes only)
 
 - `STUNNEL_ACCEPT`: address on which new connections should be accepted. It can
-  be either a hostname and a port number or just a port number (in which case,
-  localhost is assumed to be the host)
+  be either a hostname and port number or just a port number (in which case,
+  localhost is assumed)
 
 - `STUNNEL_CONNECT`: address on which the unencrypted service is listening and
   to which stunnel connects. It can be either a hostname and port number or just
-  a port number (in which case, localhost is assumed to be the host)
+  a port number (in which case, localhost is assumed)
 
 
-For example, to create an SSL endpoint for a webserver listening on port `8000`
+For example, to create an SSL endpoint for a Web server listening on port `8000`
 on localhost, run the following command:
 
 ```bash
@@ -60,7 +60,7 @@ podman run --rm -d \
 ### Logging
 
 Stunnel supports eight log levels, from 0 (emergency) to 7 (debug) with 5
-(notice) being the default. The log level can be configured via the environment
+(notice) as the default. The log level can be configured via the environment
 variable `STUNNEL_DEBUG` using either the number or the log level name. For the
 supported logging levels, refer to the [upstream
 documentation](https://www.stunnel.org/static/stunnel.html#debug-FACILITY.-LEVEL).
