@@ -17,13 +17,13 @@
 #
 
 
-%define kf6_version 6.14.0
-%define qt6_version 6.8.0
-%define kpim6_version 6.5.2
+%define kf6_version 6.19.0
+%define qt6_version 6.9.0
+%define kpim6_version 6.6.0
 
 %bcond_without released
 Name:           kdepim-addons
-Version:        25.08.2
+Version:        25.12.0
 Release:        0
 Summary:        Addons for KDE PIM applications
 License:        GPL-2.0-only

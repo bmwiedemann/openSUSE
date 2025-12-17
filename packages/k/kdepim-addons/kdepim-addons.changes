@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Dec  6 11:40:34 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.0/
+- Changes since 25.11.80:
+  * Add missing include
+  * Fix build with corrosion 0.6
+  * Fix typo
+  * We need to use check here too
+  * Fix compile with 1.8.0
+  * Fix build for kaichat plugins
+  * Adapt to new api
+  * Use enum for propertyname
+
+-------------------------------------------------------------------
+Sat Nov 15 19:56:36 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.11.80
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
+Thu Nov  6 18:37:32 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.3/
+- Changes since 25.08.2:
+  * Make it compile with last ktextaddons
+
+-------------------------------------------------------------------
 Tue Oct  7 18:48:58 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.2
