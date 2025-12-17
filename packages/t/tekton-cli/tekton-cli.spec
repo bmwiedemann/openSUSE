@@ -19,7 +19,7 @@
 %define executable_name tkn
 
 Name:           tekton-cli
-Version:        0.42.0
+Version:        0.43.0
 Release:        0
 Summary:        CLI for interacting with the Tekton CD system
 License:        Apache-2.0
