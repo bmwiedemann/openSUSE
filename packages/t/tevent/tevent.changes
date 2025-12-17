@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 16 15:31:28 UTC 2025 - Noel Power <nopower@suse.com>
+
+- Add config-sitearch.patch
+- Update to 0.17.1
+  * Fix 1649525 Use of 32-bit time_t
+  * Fix Coverity ID 1649524 Dereference before null check
+  * Fix Coverity ID 1649526 Dereference before null check
+- Update to 0.17.0
+  * add tevent_context_set_wait_timeout()
+  * add tevent_reset_immediate()
+
+-------------------------------------------------------------------
 Tue Mar 11 10:02:31 UTC 2025 - Samuel Cabrero <scabrero@suse.de>
 
 - Update to version 0.16.2

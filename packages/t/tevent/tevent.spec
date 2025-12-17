@@ -55,7 +55,7 @@ BuildRequires:  pkgconfig(cmocka) >= 1.1.3
 %define	build_make_smp_mflags %{?jobs:-j%jobs}
 %endif
 URL:            https://tevent.samba.org/
-Version:        0.16.2
+Version:        0.17.1
 Release:        0
 Summary:        An event system based on the talloc memory management library
 License:        LGPL-3.0-or-later
@@ -64,6 +64,7 @@ Source:         https://download.samba.org/pub/tevent/tevent-%{version}.tar.gz
 Source1:        https://download.samba.org/pub/tevent/tevent-%{version}.tar.asc
 Source2:        tevent.keyring
 Source4:        baselibs.conf
+Patch0:         config-sitearch.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -133,6 +134,7 @@ This package contains the python bindings for the Tevent library.
 
 %prep
 %setup -n tevent-%{version} -q
+%autopatch -p1
 
 %build
 %if ! %{build_man}
@@ -154,6 +156,7 @@ CONFIGURE_OPTIONS="\
 	--disable-silent-rules \
 	--bundled-libraries=NONE,${BUNDLED_LIBS} \
 	--builtin-libraries=replace \
+	--pythonarchdir=%{python3_sitearch}
 "
 ./configure ${CONFIGURE_OPTIONS}
 %{__make} %{build_make_smp_mflags} \

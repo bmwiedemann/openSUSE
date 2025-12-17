@@ -452,4 +452,12 @@ Disable rpath-install and silent-rules while configure.</comment>
   * Add LGPLv3 LICENSE file</comment>
     <requestid>1254184</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>1e1c492b0088a32df9e21b53b6cf0fe8</srcmd5>
+    <version>0.17.1</version>
+    <time>1765989081</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1323103</requestid>
+  </revision>
 </revisionlist>
