@@ -1,7 +1,7 @@
 #
 # spec file for package kubectl-rook-ceph
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,14 @@
 %define executable_name kubectl-rook_ceph
 
 Name:           kubectl-rook-ceph
-Version:        0.9.4
+Version:        0.9.5
 Release:        0
 Summary:        Management and troubleshooting tools for the Rook Ceph storage provider
 License:        Apache-2.0
 URL:            https://github.com/rook/kubectl-rook-ceph
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go1.23
+BuildRequires:  go1.24 >= 1.24.3
 
 %description
 Provide common management and troubleshooting tools for the Rook Ceph storage

@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Nov 21 12:20:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.9.5:
+  * ci: update versions and optimize CI reliability
+  * csi: skip not-ready cephfs subvolumes in ls and summarize
+    errors
+  * build(deps): bump github.com/rook/rook in the
+    github-dependencies group
+  * core: support standard kubectl flags
+  * build(deps): bump the github-dependencies group with 2 updates
+  * ci: generate subvolumeName from volumeHandle
+  * ci: update func wait_for_crd_to_be_ready
+  * ci: restarting operator to pickup new resources
+  * ci: increase wait-time for cephblockpool
+  * ci: testing ci failures
+  * build(deps): bump github.com/rook/rook in the
+    github-dependencies group
+  * build(deps): bump github.com/rook/rook in the
+    github-dependencies group
+  * mds: hide subvolume delete command for now
+  * build(deps): bump the k8s-dependencies group with 3 updates
+  * build(deps): bump the github-dependencies group across 1
+    directory with 3 updates
+  * build(deps): bump the k8s-dependencies group with 3 updates
+  * ci: with new rook release install csi operator
+  * csi: skip failure when volumesnapshotcontents crd is missing
+  * build(deps): bump the k8s-dependencies group with 3 updates
+  * build(deps): bump actions/checkout from 4 to 5
+  * build(deps): bump the k8s-dependencies group with 3 updates
+  * build: update go version to 1.24
+  * build(deps): bump github.com/rook/rook in the
+    github-dependencies group
+  * build(deps): bump github.com/rook/rook in the
+    github-dependencies group
+  * build(deps): bump github.com/rook/rook in the
+    github-dependencies group
+  * build(deps): bump github.com/rook/rook in the
+    github-dependencies group
+  * build(deps): bump github.com/rook/rook in the
+    github-dependencies group
+  * mons: correct IPv6 address parsing in GetMonEndpoint
+  * build(deps): bump github.com/rook/rook in the
+    github-dependencies group
+
+-------------------------------------------------------------------
 Tue May 06 11:03:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.9.4:
