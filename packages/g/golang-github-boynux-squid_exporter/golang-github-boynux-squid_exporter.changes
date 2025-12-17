@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Thu Dec 11 08:26:57 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Add _service file
+- Add vendor.tar.gz tarball
+- Require Go 1.23 or newer for building
+- Require gcc11-c++ for building with SLE 12
+- Refactor spec file
+- Update to version 1.13.0
+  - Add support for squid-internal-mgr path for metrics.
+- Update to version 1.12.0
+  - Add TLS and basic authentication support for the web interface.
+- Update to version 1.11.0
+  - Allow adding custom labels to all metrics.
+- Update to version 1.10.0
+  - Add ability to configure the exporter using
+    environment variables.
+  - Add support for Squid 6
+  - Add `squid_up` metric
+  - Add `squid_scrape_duration_seconds` metric
+  - Add `squid_scrape_error` metric
+- Update to version 1.9.0
+  - Add `process_open_fds` metric to monitor open file
+    descriptors.
+  - Use `CAP_DAC_READ_SEARCH` capability to allow reading
+    process information without running as root.
+- Update to version 1.8.0
+  - Add various service time metrics to provide more
+    detailed performance data.
+- Update to version 1.7.0
+  - Add support for basic authentication against the
+    Squid proxy.
+  - Fix `squid_client_http_requests_total` metric
+  - Fix `squid_client_http_requests_total` metric
+- Upstream changes for v1.9.0:
+  - Add `process_open_fds` metric to monitor open file
+    descriptors.
+  - Use `CAP_DAC_READ_SEARCH` capability to allow
+    reading process information without running as root.
+- Upstream changes for v1.8.0:
+  - Add various service time metrics to provide more
+    detailed performance data.
+- Upstream changes for v1.7.0:
+  - Add support for basic authentication against the
+    Squid proxy.Update to version 1.10.0
+  - Add ability to configure the exporter using environment
+    variables.
+  - Add support for Squid 6
+  - Add `squid_up` metric
+  - Add `squid_scrape_duration_seconds` metric
+  - Add `squid_scrape_error` metric
+  - Fix `squid_client_http_requests_total` metric
+  - Fix `squid_client_http_requests_total` metric
+- Upstream changes for v1.9.0:
+  - Add `process_open_fds` metric to monitor open file descriptors.
+  - Use `CAP_DAC_READ_SEARCH` capability to allow reading process
+    information without running as root.
+- Upstream changes for v1.8.0:
+  - Add various service time metrics to provide more detailed
+    performance data.
+- Upstream changes for v1.7.0:
+  - Add support for basic authentication against the Squid proxy.
+
+-------------------------------------------------------------------
 Wed Aug 20 12:45:49 UTC 2025 - Michael Matz <matz@suse.com>
 
 - Use current distro go default version.  Use auto-versioning

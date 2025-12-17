@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-boynux-squid_exporter
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2019 João Cavalheiro <jcavalheiro@suse.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -33,47 +33,54 @@
 %endif
 
 Name:           golang-github-boynux-squid_exporter
-Version:        1.6
+Version:        1.13.0
 Release:        0
 Summary:        Squid Prometheus Exporter
 License:        MIT
 Group:          System/Management
 URL:            http://%{githubrepo}
 Source:         %{upstreamname}-%{version}.tar.gz
-Source1:        %{targetname}.service
-BuildRequires:  fdupes
-BuildRequires:  golang-packaging
-BuildRequires:  xz
+Source1:        vendor.tar.gz
+Source2:        %{targetname}.service
+%if 0%{?suse_version} == 1315 && !0%{?is_opensuse}
+BuildRequires:  gcc11-c++
+%endif
 %if 0%{?rhel}
 BuildRequires:  golang >= 1.15
 %else
-BuildRequires:  golang(API) >= 1.15
+BuildRequires:  golang(API) >= 1.23
 %endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%{?systemd_requires}
 %if 0%{?rhel}
 Requires(pre):  shadow-utils
 %else
 Requires(pre):  shadow
 %endif
 ExcludeArch:    s390
+%systemd_ordering
 
 %description
 Exports squid metrics in Prometheus format
 
 %prep
-%setup -q -n %{upstreamname}-%{version}
+%setup -q -a1 -n %{upstreamname}-%{version}
 
 %build
-%goprep %{githubrepo}
-# Fix automatic versioning
-export GO111MODULE=auto
-%gobuild
+%ifnarch ppc64
+export GOFLAGS="-buildmode=pie"
+%endif
+%ifarch s390x armv7hl armv7l armv7l:armv6l:armv5tel armv6hl
+export CGO_ENABLED=1
+%if 0%{?suse_version} == 1315 && !0%{?is_opensuse}
+export CC=gcc-11
+export CXX=g++-11
+%endif
+%endif
+go build
 
 %install
-install -D -m0755 %{_builddir}/go/bin/%{upstreamname} %{buildroot}/%{_bindir}/%{targetname}
+install -D -m0755 %{_builddir}/%{upstreamname}-%{version}/%{upstreamname} %{buildroot}/%{_bindir}/%{targetname}
 install -d -m 0755 %{buildroot}%{_unitdir}
-install -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}
+install -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}
 install -d -m 0755 %{buildroot}%{_sbindir}
 ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rc%{targetname}
 
