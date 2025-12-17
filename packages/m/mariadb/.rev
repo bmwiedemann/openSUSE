@@ -2074,4 +2074,12 @@ I am aware of the git for packaging, but this file does not seem to be tracked t
     <comment></comment>
     <requestid>1322220</requestid>
   </revision>
+  <revision rev="157" vrev="2">
+    <srcmd5>879b9d5a5ee95f01b9ae94aa96601348</srcmd5>
+    <version>11.8.5</version>
+    <time>1765989072</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1323015</requestid>
+  </revision>
 </revisionlist>

@@ -71,6 +71,8 @@ Source16:       mariadb.target
 Source17:       mysql-systemd-helper
 Source18:       mariadb@.service.in
 Source19:       macros.mariadb-test
+# config for pam
+Source20:       mysql.pamd
 Source50:       suse_skipped_tests.list
 Source51:       mariadb-rpmlintrc
 Source52:       series
@@ -693,6 +695,15 @@ install -m 644 %{SOURCE19} %{buildroot}%{_rpmmacrodir}
 mkdir -p %{buildroot}%{_sysusersdir}
 install -m 644 %{SOURCE12} %{buildroot}%{_sysusersdir}/
 
+# Install pam config
+%if %{defined _distconfdir}
+install -d -m 755 %{buildroot}%{_pam_vendordir}
+install -m 644 %{SOURCE20} %{buildroot}%{_pam_vendordir}/mysql
+%else
+install -d -m 755 %{buildroot}%{_sysconfdir}/pam.d
+install -m 644 %{SOURCE20} %{buildroot}%{_sysconfdir}/pam.d/mysql
+%endif
+
 %check
 cd build
 
@@ -877,6 +888,11 @@ exit 0
 %{_datadir}/%{name}/systemd/mariadb@.service
 %{_datadir}/%{name}/systemd/mariadb-extra@.socket
 %{_datadir}/%{name}/systemd/mariadb@.socket
+%if %{defined _distconfdir}
+%{_pam_vendordir}/mysql
+%else
+%config(noreplace) %{_sysconfdir}/pam.d/mysql
+%endif
 
 %files rpm-macros
 %{_rpmmacrodir}/macros.mariadb-test

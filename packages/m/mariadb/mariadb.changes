@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 11 09:41:07 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Add missing pam configuration file for the shipped auth_pam.so plugin
+  (bsc#1254485)
+  * mysql.pamd
+
+-------------------------------------------------------------------
 Tue Dec  9 20:37:22 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 11.8.5:
