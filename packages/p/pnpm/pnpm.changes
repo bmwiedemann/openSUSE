@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Dec 15 22:06:15 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 10.26.0
+  * Minor Changes
+    - Semi-breaking. Block git-hosted dependencies from running
+      prepare scripts unless explicitly allowed in onlyBuiltDependencies #10288.
+    - Semi-breaking. Compute integrity hash for HTTP tarball
+      dependencies when fetching, storing it in the lockfile to
+      prevent servers from serving altered content on subsequent installs #10287.
+    - Added a new setting blockExoticSubdeps that prevents the
+      resolution of exotic protocols in transitive dependencies.
+    - Added support for allowBuilds, which is a new field that
+      can be used instead of onlyBuiltDependencies and
+      ignoredBuiltDependencies. The new allowBuilds field in your
+      pnpm-workspace.yaml uses a map of package matchers to
+      explicitly allow (true) or disallow (false) script execution.
+      This allows for a single, easy-to-manage source of truth for
+      your build permissions.
+  * Patch Changes
+    - Show deprecation in table/list formats when latest version
+      is deprecated #8658.
+    - Remove the injectWorkspacePackages setting from the
+    lockfile on the deploy command #10294.
+    - Normalize the tarball URLs before saving them to the
+      lockfile. URLs should not contain default ports, like :80 for
+      http and :443 for https #10273.
+    - When a dependency is installed via a direct URL that
+      redirects to another URL and is immutable, the original URL
+      is normalized and saved to package.json #10197.
+
+-------------------------------------------------------------------
 Sat Dec 13 12:41:20 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 10.25.0:
