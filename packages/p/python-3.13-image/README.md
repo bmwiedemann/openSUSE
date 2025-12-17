@@ -4,7 +4,7 @@
 
 ## Description
 
-[Python](https://www.python.org/) is an interpreted, interactive, object-oriented, open-source programming language. It incorporates modules, exceptions, dynamic typing, high-level dynamic data types, and classes. It provides interfaces to many system calls, libraries, and various window systems, and it is extensible in C or C++. It is also usable as an extension language for applications that require programmable interfaces.
+[Python](https://www.python.org/) is an interpreted, interactive, object-oriented, open source programming language. It incorporates modules, exceptions, dynamic typing, high-level dynamic data types, and classes. It provides interfaces to many system calls, libraries, and various window systems, and it is extensible in C or C++. It is also usable as an extension language for applications that require programmable interfaces.
 
 ## Usage
 
