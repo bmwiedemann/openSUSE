@@ -60,13 +60,13 @@ EXPOSE 3389/tcp 3636/tcp
 
 COPY nsswitch.conf /etc/nsswitch.conf
 
-RUN set -euo pipefail; mkdir -p /data/config; \
-    mkdir -p /data/ssca; \
-    mkdir -p /data/run; \
-    mkdir -p /var/run/dirsrv; \
+RUN set -euo pipefail; install -d -o dirsrv -g dirsrv /data; \
+    install -d -o dirsrv -g dirsrv /data/config  /data/ssca /data/run /var/run/dirsrv; \
     ln -s /data/config /etc/dirsrv/slapd-localhost; \
     ln -s /data/ssca /etc/dirsrv/ssca; \
-    ln -s /data/run /var/run/dirsrv
+    ln -s /data/run /var/run/dirsrv; \
+    chown -R dirsrv: /data /var/run/dirsrv;\
+    chgrp -R dirsrv /etc/dirsrv;
 
 HEALTHCHECK --start-period=5m --timeout=5s --interval=5s --retries=2 \
     CMD /usr/lib/dirsrv/dscontainer -H

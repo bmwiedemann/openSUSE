@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 15 13:30:04 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- improve permissions on created directories
+
+-------------------------------------------------------------------
 Mon Oct 20 12:53:40 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - remove password change date from /etc/shadow to make the file reproducible
