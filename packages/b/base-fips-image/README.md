@@ -6,13 +6,12 @@
 ## Description
 
 
-This base container image is configured with FIPS mode enabled by default, but
-**does not** include any certified binaries.
+This base container image is configured with FIPS mode enabled by default, but it **does not** include any certified binaries.
 
 
 ## Usage
 The image is configured to enforce the use of FIPS mode by default,
-independent of the host environment setup by specifying the following
+independent of the host environment setup, by specifying the following
 environment variables:
 * `OPENSSL_FIPS=1`: Initialize the OpenSSL FIPS mode
 * `OPENSSL_FORCE_FIPS_MODE=1`: Set FIPS mode to enforcing independent of the host kernel
