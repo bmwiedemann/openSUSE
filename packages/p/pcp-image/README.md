@@ -49,7 +49,7 @@ Path inside the container to the bind mount of `/` on the host.
 #### `REDIS_SERVERS`
 Default: `localhost:6379`
 
-Redis connection spec(s) - could be any individual cluster host, and all hosts in the cluster will be automatically discovered.
+Redis connection spec(s); can be an individual cluster host, and all hosts in the cluster will be automatically discovered.
 Alternately, use comma-separated hostspecs (non-clustered setup)
 
 ### Configuration files
