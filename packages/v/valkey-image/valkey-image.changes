@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec 16 15:28:01 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- README.md language cleanups
+
+-------------------------------------------------------------------
+Tue Dec 16 14:18:47 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- update configuration for the new configuration template names and onyl append the settings rather than overwrite.
+
+-------------------------------------------------------------------
 Thu Nov  6 08:35:06 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - update for valkey 9.0

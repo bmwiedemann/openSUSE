@@ -21,7 +21,7 @@ To start an instance, follow these instructions:
 podman run --rm registry.opensuse.org/opensuse/valkey:9.0
 ```
 
-In case you want start with persistent storage, run this:
+If you want to start with persistent storage, run this:
 
 ```ShellSession
 podman run --rm registry.opensuse.org/opensuse/valkey:9.0 valkey-server --save 60 1
