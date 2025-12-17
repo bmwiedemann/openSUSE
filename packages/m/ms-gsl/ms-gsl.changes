@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Dec 15 19:10:40 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding 'Source100: README.md' as the README is suggested at src.opensuse.org
+  setup, otherwise get the following message:
+  * "Attention, "README.md" is not mentioned in spec files as source or patch."
+
+-------------------------------------------------------------------
+Mon Dec  8 18:47:52 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to upstream version 4.2.1
+  * This is a patch release that corresponds with the current tip of the
+    rel/4.2 branch.
+  * Bug Fixes
+    - Fixed an issue with the v4.2.0 GSL release #1224
+      * https://github.com/microsoft/GSL/issues/1224
+
+-------------------------------------------------------------------
 Thu Jun 19 15:01:50 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Fix build using googletest >= v1.17.0, boo#1244989

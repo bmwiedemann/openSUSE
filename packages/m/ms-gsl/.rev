@@ -31,4 +31,22 @@
     <comment></comment>
     <requestid>1287265</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2a250dfd084b8077704872c709800858</srcmd5>
+    <version>4.2.1</version>
+    <time>1765989065</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit
+- Adding 'Source100: README.md' as the README is suggested at src.opensuse.org
+  setup, otherwise get the following message:
+  * &quot;Attention, &quot;README.md&quot; is not mentioned in spec files as source or patch.&quot;
+
+- Update to upstream version 4.2.1
+  * This is a patch release that corresponds with the current tip of the
+    rel/4.2 branch.
+  * Bug Fixes
+    - Fixed an issue with the v4.2.0 GSL release #1224
+      * https://github.com/microsoft/GSL/issues/1224</comment>
+    <requestid>1323011</requestid>
+  </revision>
 </revisionlist>

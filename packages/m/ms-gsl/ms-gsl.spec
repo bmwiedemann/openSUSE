@@ -17,12 +17,13 @@
 
 
 Name:           ms-gsl
-Version:        4.2.0
+Version:        4.2.1
 Release:        0
 Summary:        Guidelines Support Library
 License:        MIT
 URL:            https://github.com/Microsoft/GSL
-Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source100:      README.md
 BuildRequires:  git-core
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
