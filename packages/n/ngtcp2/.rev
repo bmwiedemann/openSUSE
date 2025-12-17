@@ -238,4 +238,12 @@
   * cc: Compute pacing interval and send_quantum by @tatsuhiro-t in #1829 (forwarded request 1313180 from pmonrealgonzalez)</comment>
     <requestid>1313210</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9becf1c220857fdf67b60ad408ba7ef4</srcmd5>
+    <version>1.18.0</version>
+    <time>1765989087</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.18.0:</comment>
+    <requestid>1323115</requestid>
+  </revision>
 </revisionlist>

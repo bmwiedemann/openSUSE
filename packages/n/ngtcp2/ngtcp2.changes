@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Dec 16 10:33:33 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.18.0:
+  * Assume payload is not empty when decoding a QUIC frame
+  * Fix a memory leak on Retry
+  * Rename ngtcp2_encode_hex to ngtcp2_encode_hex_cstr
+  * Fix a potential double free
+  * Delete unusable initial rx key on if tx key installation fails
+  * crypto: Allow an application to store opaque data for a regular
+    token
+  * crypto: Fix memcpy runtime error: null pointer passed as
+    argument 1
+  * Raise glitch counter initial limits
+  * Set ngtcp2_conn to NULL if its initialization fails
+  * Fix the bug that Initial packet is not padded
+  * Try padding even if the current packet size >= 1200
+  * Increase stream data fragmentation limit
+
+-------------------------------------------------------------------
 Thu Oct 23 09:39:52 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.17.0:
