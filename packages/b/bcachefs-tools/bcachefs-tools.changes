@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Mon Dec 15 16:57:51 UTC 2025 - Holden Fried <holden@opensuse.org>
+
+- Update to release 1.33.1
+  * Recovery passes will now be run in the background when possible
+  * When a scheduled recovery pass and all scheduled passes that
+    depend on it can be run online, we'll now run it in the
+    background instead of blocking mount. This means that upgrades
+    to 1.33 from previous versions will now happen in the
+    background.
+  * We now avoid blocking on memory reclaim when allocating btree
+    node buffers; it was discovered that under memory pressure it
+    can take > 10 seconds to satisfy a single allocation due to
+    compaction. We'll now fall back to vmalloc much quicker.This
+    should help with the SRCU lock hold time warnings that have
+    still been popping up.
+    * There's a new btree node cache statistic to track the number
+    of vmalloc allocations; if we notice that this is now too high
+    we may want to add a background task to allocate physically
+    contiguous buffers to replace the vmalloc allocations (vmalloc
+    memory is a bit slower than physically contiguous memory).
+  * Fix a "pending incorrectly set" ERO
+  * Fix checking for device rebalance scan cookies, this will
+    eliminate some spurious "extent with incorrect/missing
+    reconcile opts" errors.
+  * Snapshot deletion fixes; when multiple leaves were being
+    deleted simultaneously and interior nodes needed to be deleted
+    too, the interior nodes often wouldn't get cleaned up - and in
+    rare situations keys could get moved to the incorrect snapshot
+    node, due to a DFS iteration bug.
+
+
+-------------------------------------------------------------------
+Fri Dec  5 23:11:05 UTC 2025 - Holden Fried <holden@opensuse.org>
+
+- Update to release 1.33.0
+  * ``bcachefs_metadata_version_reconcile``, formerly known as
+    ``rebalance_v2``, is now available, and requires an
+    incompatible format upgrade to enable.
+  * Reconcile/Rebalance now handles all IO path operations
+    (rather than just the background target & compression options),
+    as well as metadata.
+  * Reconcile reacts to option changes and device setting changes,
+    immediately rereplicating degraded data or metadata. This
+    obsoletes the commands ``data rereplicate``, ``data job
+    drop_extra_replicas``, and others; the new commands are
+    ``reconcile status`` and ``reconcile wait``.
+  * The filesystem now track whether a disk is rotational or not,
+    but this currently cannot be changed once set.
+  * Degraded data is now always properly reported as degraded (by
+    ``bcachefs fs usage`)`.
+
+-------------------------------------------------------------------
 Sun Nov 16 19:36:29 UTC 2025 - Holden Fried <holden@opensuse.org>
 
 - Update to release 1.32.1

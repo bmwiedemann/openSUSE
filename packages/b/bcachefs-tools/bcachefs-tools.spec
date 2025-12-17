@@ -17,13 +17,14 @@
 
 
 Name:           bcachefs-tools
-Version:        1.32.1
+Version:        1.33.1
 Release:        0
 Summary:        Configuration utilities for bcachefs
 License:        Apache-2.0 AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND MIT AND MPL-2.0 AND (MIT OR Unlicense) AND BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-only
 Group:          System/Filesystems
 URL:            https://bcachefs.org/
 #Git-Clone:     https://evilpiepirate.org/git/bcachefs-tools.git
+#Changelog:     <source0>/Changelog.mdwn
 Source0:        https://evilpiepirate.org/bcachefs-tools/%name-vendored-%version.tar.zst
 Source1:        https://evilpiepirate.org/bcachefs-tools/%name-vendored-%version.tar.sign
 Source2:        %name.keyring
@@ -117,6 +118,6 @@ done
 %_udevrulesdir/64-bcachefs.rules
 %_mandir/man8/*.8*
 %license COPYING
-%doc doc/bcachefs-principles-of-operation.tex
+%doc doc/bcachefs-principles-of-operation.tex Changelog.mdwn Documentation/*
 
 %changelog
