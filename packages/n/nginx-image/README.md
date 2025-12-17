@@ -4,7 +4,7 @@
 
 ## Description
 
-nginx (pronounced "engine-x") is an open-source reverse proxy server for the HTTP, HTTPS, SMTP, POP3, and IMAP protocols. nginx can also act as a load balancer, HTTP cache, and a web server (origin server).
+nginx (pronounced "engine-x") is an open source reverse proxy server for the HTTP, HTTPS, SMTP, POP3, and IMAP protocols. nginx can also act as a load balancer, HTTP cache, and web server (origin server).
 
 ## Usage
 
@@ -62,7 +62,7 @@ This optional environment variable specifies a directory containing template fil
 
 This optional environment variable specifies a directory for storing results of running [`envsubst`](https://www.gnu.org/software/gettext/manual/html_node/envsubst-Invocation.html) on templates (default is `/etc/nginx/conf.d`).
 
-The output filename is the template filename with the suffix `.template` removed.
+The output filename is the template filename, with the `.template` suffix removed.
 
 **Note:** Modifying this variable also requires changing the `nginx.conf`, so it recognizes the new directory location.
 
