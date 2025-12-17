@@ -24,6 +24,8 @@ License:        Apache-2.0
 URL:            https://github.com/sigstore/gitsign
 Source:         gitsign-%{version}.tar.gz
 Source1:        vendor.tar.gz
+Source2:        gitsign-credential-cache.service
+Source3:        gitsign-credential-cache.socket
 BuildRequires:  golang(API) >= 1.23
 
 %description
@@ -31,6 +33,15 @@ Keyless Git signing with Sigstore!
 
 This is heavily inspired by https://github.com/github/smimesign, but uses
 keyless Sigstore to sign Git commits with your own GitHub / OIDC identity.
+
+%package credential-cache
+Summary:        Credential cache for gitsign
+Requires:       %{name} = %{version}-%{release}
+Provides:       gitsign:%{_bindir}/gitsign-credential-cache
+
+%description credential-cache
+This package provides the gitsign-credential-cache binary and systemd
+user units for caching Sigstore credentials.
 
 %prep
 %autosetup -p 1 -a 1
@@ -52,11 +63,33 @@ go build \
 # Install the binary.
 install -D -m 0755 bin/%{name} "%{buildroot}/%{_bindir}/%{name}"
 install -D -m 0755 bin/gitsign-credential-cache "%{buildroot}/%{_bindir}/gitsign-credential-cache"
+# systemd user unit files
+install -D -m 644 %{SOURCE2} %{buildroot}%{_userunitdir}/gitsign-credential-cache.service
+install -D -m 644 %{SOURCE3} %{buildroot}%{_userunitdir}/gitsign-credential-cache.socket
+# move README so both READMEs can be packaged
+mv cmd/gitsign-credential-cache/README.md cmd/gitsign-credential-cache/README-credential-cache.md
 
 %files
 %doc README.md
 %license LICENSE
 %{_bindir}/%{name}
+
+%pre credential-cache
+%service_add_pre gitsign-credential-cache.service gitsign-credential-cache.socket
+
+%post credential-cache
+%service_add_post gitsign-credential-cache.service gitsign-credential-cache.socket
+
+%preun credential-cache
+%service_del_preun gitsign-credential-cache.service gitsign-credential-cache.socket
+
+%postun credential-cache
+%service_del_postun gitsign-credential-cache.service gitsign-credential-cache.socket
+
+%files credential-cache
+%doc cmd/gitsign-credential-cache/README-credential-cache.md
 %{_bindir}/gitsign-credential-cache
+%{_userunitdir}/gitsign-credential-cache.service
+%{_userunitdir}/gitsign-credential-cache.socket
 
 %changelog

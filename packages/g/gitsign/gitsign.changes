@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec  5 16:27:25 UTC 2025 - Thomas Bechtold <thomasbechtold@jpberlin.de>
+
+- Move gitsign-credential-cache into its own package
+- Add systemd user units for gitsign-credential-cache
+
+-------------------------------------------------------------------
 Thu Dec  4 08:55:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - BuildRequire go1.23
