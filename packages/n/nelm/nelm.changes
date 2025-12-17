@@ -1,4 +1,115 @@
 -------------------------------------------------------------------
+Wed Dec 17 09:21:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.18.0:
+  * Features
+    - --delete-propagation and werf.io/delete-propagation (79e448e)
+  * Bug Fixes
+    - plan shows nothing if only tracking ops in plan (bd36c0e)
+    - remove null keys from manifests now only on
+      NELM_FEAT_CLEAN_NULL_FIELDS=true (f1c9a36)
+
+-------------------------------------------------------------------
+Wed Dec 17 09:15:23 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.17.2:
+  * Bug Fixes
+    - panics if logboek context not initialized (0e0ea90)
+    - show verbose diffs by default like before (5d32927)
+
+-------------------------------------------------------------------
+Wed Dec 17 08:52:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.17.1:
+  * Bug Fixes
+    - panic: interface conversion: plan.OperationConfig (df9709c)
+    - new release created even if no changes (15db0fe)
+    - null or empty fields might fail resource deploys (f990fc1)
+
+-------------------------------------------------------------------
+Wed Dec 17 08:42:49 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.17.0:
+  * Features
+    - --release-info-annotation and --release-labels for rollback
+      (3ea8ef4)
+  * Bug Fixes
+    - bad handling of context cancellation in install (fbdbc62)
+    - canceled operations not displayed in the end of deployment
+      (7ffed4a)
+    - empty Release.Info.First(Last)Deployed (cf23ebb)
+    - error unable to acquire lock if install to new namespace
+      (79a51d5)
+
+-------------------------------------------------------------------
+Wed Dec 17 08:36:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.16.2:
+  * Bug Fixes
+    - show verbose diffs by default like before (89af792)
+
+-------------------------------------------------------------------
+Wed Dec 17 08:31:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.16.1:
+  * Bug Fixes
+    - failures in init containers of Jobs ignored (68bf839)
+    - version 0.0.0 (16455d7)
+    - webhooks not readying (55c46af)
+
+-------------------------------------------------------------------
+Wed Dec 17 08:28:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.16.0:
+  * Features
+    - chart repo connection flags --chart-repo-basic-password,
+      --chart-repo-basic-username, --chart-repo-ca,
+      --chart-repo-cert, --chart-repo-key, --chart-repo-pass-creds,
+      --chart-repo-request-timeout, --chart-repo-url (e6d1d7c)
+    - flag --extra-apiversions for "lint/render" (e6d1d7c)
+    - flags --no-notes for "install/rollback" (e6d1d7c)
+    - flags --save-graph-to, --release-info-annotations,
+      --release-labels for "plan" (e6d1d7c)
+    - flags --set-json, --set-literal, --provenance-keyring,
+      --provenance-strategy, --templates-allow-dns,
+      --runtime-labels, --release-storage-sql-connection (e6d1d7c)
+    - k8s connection flags --kube-auth-password,
+      --kube-auth-provider, --kube-auth-provider-config,
+      --kube-auth-username, --kube-ca-data, --kube-cert,
+      --kube-cert-data, --kube-context-cluster,
+      --kube-context-user, --kube-impersonate-group,
+      --kube-impersonate-uid, --kube-impersonate-user, --kube-key,
+      --kube-key-data, --kube-proxy-url, --kube-request-timeout,
+      --kube-token-path (e6d1d7c)
+    - lots of new cli flags (e6d1d7c)
+  * Bug Fixes
+    - improve blind apply reason in plan (a5ff9d3)
+
+-------------------------------------------------------------------
+Wed Dec 17 08:25:29 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.15.1:
+  * Bug Fixes
+    - correct release planning (b34f6c1)
+    - error undefined: helmdownloader.VerificationStrategyString
+      (a5299cb)
+    - no Auth Provider found for name "" (f4ca24c)
+    - panic unknown VerificationStrategyString value (f4ca24c)
+    - panic if failure/rollback plan fails (778fa3f)
+
+-------------------------------------------------------------------
+Wed Dec 17 08:19:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.15.0:
+  * Features
+    - option --set-runtime-json (948a502)
+  * Bug Fixes
+    - error too many arguments in call to chartutil.ToRenderValues
+      (cd349f3)
+    - invalid helm.sh/hook causes panic in render (802708f)
+    - unnecessary resource/release updates (138faeb)
+
+-------------------------------------------------------------------
 Fri Oct 17 05:12:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.14.1:
