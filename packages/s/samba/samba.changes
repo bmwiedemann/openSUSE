@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Fri Dec 12 15:42:05 UTC 2025 - Noel Power <nopower@suse.com>
+
+- samba-ad-dc-libs packages are missing a DLZ plugin for bind 9.20;
+  (bso#15790); (bsc#1249058).
+
+-------------------------------------------------------------------
+Tue Dec  9 11:18:45 UTC 2025 - Noel Power <nopower@suse.com>
+
+- Update to 4.23.4
+  * Samba 4.22 breaks Time Machine; (bso#15926).
+  * mdssvc doesn't support $time.iso dates before 1970;
+    (bso#15947).
+  * Fix winbind cache consistency; (bso#15963).
+  * Assert failed: (dirfd != -1) || (smb_fname->base_name[0] ==
+    '/') in vfswrap_openat; (bso#15897).
+  * ctdb can crash with inconsistent cluster lock configuration;
+    (bso#15950).
+  * samba-bgqd: rework man page; (bso#15809).
+  * samba-bgqd can't find [printers] share; (bso#15936).
+  * Winbind can hang forever in gssapi if there are network
+    issues; (bso#15955).
+  * libldb requires linking libreplace on Linux; (bso#15961).
+
+- Update to 4.23.3
+  * Spotlight search restriction for shares incomplete and
+    default search searches in too many attributes; (bso#15927).
+  * Searching for numbers doesn't work with Spotlight;
+    (bso#15930).
+  * rpcd_mdssvc may crash because name mangling is not
+    initialized; (bso#15931).
+  * Only increment lease epoch if a lease was granted;
+    (bso#15933).
+  * vfs_recycle does not update mtime; (bso#15940).
+  * samba-log-parser fails with UnicodeDecodeError: 'utf-8' codec
+    can't decode byte; (bso#15943).
+  * Crash in ctdbd on failed updateip; (bso#15935).
+
+- Update to 4.23.2
+  * CVE-2025-10230: Command injection via WINS server hook
+    script (bso#15903); (bsc#1251280).
+  * CVE-2025-9640: uninitialized memory disclosure via
+    vfs_streams_xattr; (bso#15885); (bsc#1251279).
+
+- Update to 4.23.1
+  * Incomplete bind configuration causes DLZ plugin to crash;
+    (bso#15920).
+  * winbind can crash at startup; (bso#15914).
+  * vfs_ceph_new should not use ceph_ll_nonblocking_readv_writev
+    for fsync_send; (bso#15919).
+  * CTDB does not support PCP 7.0.0; (bso#15904).
+  * CTDB_SOCKET can be used even when CTDB_TEST_MODE is not set;
+    (bso#15921).
+
+- Update to 4.23.0
+  * samba.tests.safe_tarfile fails on Python 3.13 with additional
+    security fixes for tarfile support; (bso#15911).
+  * samba-4.21 fails to join AD when multiple DCs are returned;
+    (bso#15905).
+  * Uninitialized read leads to hanging rpcd_spoolss;
+    (bso#15908).
+  * Stack buffer overflow in samba3.smb2.dirlease.fileserver;
+    (bso#15907).
+  * Regression in gssproxy support in 4.23.rc1+; (bso#15902).
+  * 'net ads group' failed to list domain groups; (bso#15900).
+  * macOS Finder client DFS broken on 4.22.0; (bso#15843).
+  * Self-signed certificates don't have X509v3 Subject
+    Alternative Name for DNS; (bso#15899).
+  * Improve handling of principals and realms in client tools;
+    (bso#15893).
+  * libquic build fixes; (bso#15896).
+  * getpwuid does not shift to new DC when current DC is down;
+    (bso#15844).
+  * Windows security hardening locks out schannel'ed netlogon dc
+    calls like netr_DsRGetDCName; (bso#15876).
+
+-------------------------------------------------------------------
 Fri Oct 31 09:44:48 UTC 2025 - Noel Power <noel.power@suse.com>
 
 - Update [printers] location to /var/samba/spool; (bsc#1249179).

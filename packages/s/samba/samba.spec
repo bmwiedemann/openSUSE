@@ -39,8 +39,8 @@
 %endif
 
 %define talloc_version 2.4.3
-%define tevent_version 0.16.2
-%define tdb_version    1.4.13
+%define tevent_version 0.17.1
+%define tdb_version    1.4.14
 
 # This table represents the possible combinations of build macros.
 # They are defined only if not already defined in the build service
@@ -137,6 +137,7 @@ BuildRequires:  libcephfs-devel
 BuildRequires:  librados-devel
 %endif
 BuildRequires:  libgnutls-devel >= 3.4.7
+BuildRequires:  libngtcp2_crypto_gnutls-devel >= 1.12.0
 %if %{with_dc}
 BuildRequires:  pkgconfig(gpgme)
 BuildRequires:  libjansson-devel
@@ -168,7 +169,7 @@ BuildRequires:  liburing-devel
 %endif
 BuildRequires:  sysuser-tools
 
-Version:        4.22.6+git.435.014e5eceb5d
+Version:        4.23.4+git.428.6b48e7eba5b
 Release:        0
 URL:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -254,6 +255,8 @@ Please check https://en.openSUSE.org/Samba for general information on
 Samba as part of SUSE Linux Enterprise or openSUSE products, links to
 binary packages of the most current Samba version, and a bug reporting
 how to.
+
+%lang_package -n samba-client
 
 %package devel
 Summary:        Development files shared by Samba subpackages
@@ -485,6 +488,8 @@ Requires(postun):/sbin/ldconfig
 %description winbind-libs
 This package contains the libraries required by the Winbind daemon.
 
+%lang_package -n samba-winbind-libs
+
 %package dcerpc
 Summary:	Samba dcerpc service binaries
 License:        GPL-3.0-or-later
@@ -680,7 +685,7 @@ fi
 export CFLAGS="%{optflags} -D_GNU_SOURCE -D_LARGEFILE64_SOURCE -DIDMAP_RID_SUPPORT_TRUSTED_DOMAINS -I/usr/include/tirpc"
 export LDFLAGS="-ltirpc"
 
-bundled_libraries="NONE"
+bundled_libraries=",libquic"
 %if ! 0%{?with_mscat}
 bundled_libraries+=",libtasn1"
 %endif
@@ -702,6 +707,7 @@ CONFIGURE_OPTIONS="\
 	--enable-debug \
 	--with-profiling-data \
 	--private-libraries=${private_libraries} \
+	--pythonarchdir=%{python3_sitearch}
 %if !%{with_lmdb}
 	--without-ldb-lmdb \
 %endif
@@ -801,6 +807,9 @@ rm \
 	%{buildroot}/%{_mandir}/man8/samba_downgrade_db.8* \
 	%{buildroot}/%{_unitdir}/samba-ad-dc.service
 %endif
+
+%find_lang pam_winbind
+%find_lang net
 
 # CTDB
 install -m 0644 packaging/SuSE/config/sysconfig.ctdb %{buildroot}/%{_fillupdir}
@@ -1206,6 +1215,10 @@ exit 0
 %{_fillupdir}/sysconfig.samba
 %{_sysusersdir}/samba.conf
 
+
+%files client-lang -f net.lang
+%defattr(-,root,root)
+
 %files client
 %defattr(-,root,root)
 %dir %{CONFIGDIR}
@@ -1522,7 +1535,8 @@ exit 0
 %{_libdir}/samba/libsamba3-util-private-samba.so
 %{_libdir}/samba/libsamba-modules-private-samba.so
 %{_libdir}/samba/libsamdb-common-private-samba.so
-%{_libdir}/samba/libsmb-transport-private-samba.so
+%{_libdir}/samba/libsamba-security-trusts-private-samba.so
+%{_libdir}/samba/libquic-private-samba.so
 %{_libdir}/samba/libsmbclient-raw-private-samba.so
 %{_libdir}/samba/libsmbd-base-private-samba.so
 %{_libdir}/samba/libsmbd-shim-private-samba.so
@@ -1542,6 +1556,7 @@ exit 0
 %{_libdir}/samba/libmscat-private-samba.so
 %endif
 %if %{with_dc}
+%{_libdir}/samba/service/ft_scanner.so
 %{_libdir}/samba/libdfs-server-ad-private-samba.so
 %endif
 %dir %{_libdir}/samba/pdb
@@ -1617,6 +1632,9 @@ exit 0
 %{_mandir}/man1/masktest.1.*
 %{_mandir}/man1/ndrdump.1.*
 %{_mandir}/man1/mdsearch.1.*
+
+%files winbind-libs-lang -f pam_winbind.lang
+%defattr(-,root,root)
 
 %files winbind-libs
 %defattr(-,root,root)
@@ -1919,6 +1937,9 @@ exit 0
 %{_libdir}/samba/ldb/ldap.so
 %{_libdir}/samba/ldb/ildap.so
 %{_libdir}/samba/ldb/ldbsamba_extensions.so
+%if %{with_dc}
+%{_libdir}/samba/ldb/trust_notify.so
+%endif
 
 %if %{with_dc}
 %files ad-dc-libs
