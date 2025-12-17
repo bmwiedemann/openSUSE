@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec  3 20:31:21 UTC 2025 - Guang Yee <gyee@suse.com>
+
+- Update to 2.12.5
+  * Fix pickle error when using model_construct() on a model with MISSING as a default value in #12522.
+  * Several updates to the documentation
+- Remove patches bump-pydantic-core-2.35.1.patch, field-name-validator-core-schemas.patch,
+  py314.patch, and support-pydantic-core-2.39.0.patch as they've merged upstream.
+
+-------------------------------------------------------------------
 Mon Sep 29 12:28:15 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream py314.patch to fix compatibility with Python 3.14

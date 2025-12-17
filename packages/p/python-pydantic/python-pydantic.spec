@@ -27,25 +27,17 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pydantic%{psuffix}
-Version:        2.11.9
+Version:        2.12.5
 Release:        0
 Summary:        Data validation and settings management using python type hinting
 License:        MIT
 URL:            https://github.com/pydantic/pydantic
 Source:         https://github.com/pydantic/pydantic/archive/v%{version}.tar.gz#/pydantic-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM bump-pydantic-core-2.35.1.patch gh#pydantic/pydantic#11963
-Patch0:         bump-pydantic-core-2.35.1.patch
-# PATCH-FIX-UPSTREAM field-name-validator-core-schemas.patch gh#pydantic/pydantic#11761
-Patch1:         field-name-validator-core-schemas.patch
-# PATCH-FIX-UPSTREAM Based on gh#pydantic/pydantic#11883
-Patch2:         support-pydantic-core-2.39.0.patch
-# PATCH-FIX-UPSTREAM https://github.com/pydantic/pydantic/pull/11991 Add initial support for Python 3.14
-Patch3:         py314.patch
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pydantic-core = 2.39.0}
+BuildRequires:  %{python_module pydantic-core = 2.41.5}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -65,9 +57,9 @@ BuildRequires:  %{python_module python-dotenv >= 0.10.4}
 BuildRequires:  %{python_module rich}
 BuildRequires:  %{python_module typing-inspection}
 %endif
-Requires:       python-annotated-types >= 0.4.0
-Requires:       python-pydantic-core = 2.39.0
-Requires:       python-typing-extensions >= 4.12.2
+Requires:       python-annotated-types >= 0.6.0
+Requires:       python-pydantic-core = 2.41.5
+Requires:       python-typing-extensions >= 4.14.1
 Requires:       python-typing-inspection
 BuildArch:      noarch
 %python_subpackages
@@ -77,6 +69,10 @@ Data validation and settings management using Python type hinting.
 
 %prep
 %autosetup -p1 -n pydantic-%{version}
+
+# FIXME: make it compatible with the older version of setuptools.
+# make sure to remove this hack once we have a newer version of setuptools.
+sed -i '/.*Programming Language :: Python :: 3\.14.*/d' pyproject.toml
 
 %build
 %pyproject_wheel
