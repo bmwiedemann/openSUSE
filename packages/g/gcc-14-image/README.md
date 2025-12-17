@@ -4,7 +4,7 @@
 # Description
 The GNU Compiler Collection (GCC) is an optimizing compiler for various
 architectures and operating systems. It is the default compiler in the GNU
-project and most Linux distributions, including SUSE Linux Enterprise and
+project and in most Linux distributions, including SUSE Linux Enterprise and
 openSUSE.
 
 
@@ -58,8 +58,8 @@ using `zypper`. This includes the following:
 
 ### Available compiler frontends
 
-The GNU Compiler Collections supports a wide range of frontends. The container
-image ships the C,  C++  and fortran frontends available as `gcc`, `g++` and `gfortran`
+The GNU Compiler Collection supports a wide range of frontends. The container
+image ships with the C,  C++  and Fortran frontends available as `gcc`, `g++` and `gfortran`
 respectively. The following additional frontends can be installed from the
 repository:
 - `gcc14-ada` for the Ada frontend (GNAT)
