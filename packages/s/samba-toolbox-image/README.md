@@ -4,7 +4,7 @@
 
 ## Description
 
-Samba is a feature-rich Open Source implementation of the SMB and Active Directory protocols for Linux and UNIX-like systems.
+Samba is a feature-rich open source implementation of the SMB and Active Directory protocols for Linux and UNIX-like systems.
 
 This image comes with Samba tools and TDB tools.
 
