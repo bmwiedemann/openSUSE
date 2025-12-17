@@ -41,6 +41,7 @@ Provides:       pattern() = kalpa_base
 Provides:       pattern-category() = Kalpa
 Provides:       pattern-icon() = pattern-kubic
 Provides:       pattern-order() = 9200
+Provides:       pattern-visible()
 %if %{with betatest}
 # need to require it as recommends are off
 Requires:       pattern() = update_test

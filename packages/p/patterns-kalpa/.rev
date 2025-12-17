@@ -140,4 +140,12 @@
     <comment>- Minor edits for spelling/clarity and resync with OBS</comment>
     <requestid>1321647</requestid>
   </revision>
+  <revision rev="16" vrev="9">
+    <srcmd5>cf8a3a73e9df673e5670553c0fe4bdcf</srcmd5>
+    <version>6.0</version>
+    <time>1765989204</time>
+    <user>anag_factory</user>
+    <comment>- Add pattern-visible()</comment>
+    <requestid>1323135</requestid>
+  </revision>
 </revisionlist>
