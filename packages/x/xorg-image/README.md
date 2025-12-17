@@ -3,14 +3,14 @@
 
 ## Description
 
-X.Org Server is the free and open-source implementation of the X Window System
+X.Org Server is the free and open source implementation of the X Window System
 (X11) display server stewarded by the X.Org Foundation.
 
 
 ## Usage
 
 This container image is intended for consumption via a helm chart which launches
-the container in the intended fashion.
+the container as intended.
 
 To launch the container manually, switch to a tty and execute the following
 command as `root`:
