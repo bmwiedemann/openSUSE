@@ -1,6 +1,7 @@
 #
 # spec file for package poppler
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,7 +25,7 @@
 %endif
 # Actual version of poppler-data:
 %define poppler_data_version 0.4.11
-%define poppler_sover 153
+%define poppler_sover 155
 %define poppler_cpp_sover 2
 %define poppler_glib_sover 8
 %define poppler_qt5_sover 1
@@ -32,7 +33,7 @@
 %define poppler_api 0.18
 %define poppler_apipkg 0_18
 Name:           poppler%{?psuffix}
-Version:        25.09.1
+Version:        25.12.0
 Release:        0
 Summary:        PDF Rendering Library
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -42,10 +43,6 @@ Source:         %{url}/%{sname}-%{version}.tar.xz
 Source1:        %{url}/%{sname}-%{version}.tar.xz.sig
 Source90:       poppler.keyring
 Source99:       baselibs.conf
-# CVE-2025-52885 [bsc#1251940], raw pointers can lead to dangling pointers when the vector is resized
-Patch0:         poppler-CVE-2025-52885.patch
-# CVE-2025-11896 [bsc#1252337], infinite recursion leading to stack overflow due to object loop in PDF CMap
-Patch1:         poppler-CVE-2025-11896.patch
 
 BuildRequires:  cmake >= 3.10
 BuildRequires:  gtk-doc
