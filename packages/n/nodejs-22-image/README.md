@@ -4,7 +4,7 @@
 
 ## Description
 
-[Node.js](https://nodejs.org/) is a free, open-source, cross-platform JavaScript run-time environment that lets developers write server-side applications and tools outside of a browser.
+[Node.js](https://nodejs.org/) is a free, open source, cross-platform JavaScript run-time environment that lets developers write server-side applications and tools outside of a browser.
 
 ## Usage
 
@@ -36,7 +36,7 @@ The example above assumes that there is a `package-lock.lock` file in the applic
 To generate a `package-lock.lock` file, use the following command:
 
 ```ShellSession
-$ podman run --rm -v "$PWD":/app:Z -w /app registry.opensuse.org/opensuse/bci/nodejs:22 npm i --package-lock-only
+$ podman run --rm -v "$PWD":/app:Z -w /app registry.opensuse.org/opensuse/bci/nodejs:22 npm install --package-lock-only
 ```
 
 To run a single script inside a container, use the following command:
