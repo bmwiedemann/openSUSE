@@ -6,7 +6,7 @@
 
 PostgreSQL (often spelled as Postgres) is an extensible and SQL-compliant relational database management system (RDBMS).
 
-PostgreSQL implements most of the SQL:2011 standard, and the RDBMS is ACID-compliant and transactional (including most DDL statements). The latter prevents locking issues using multiversion concurrency control (MVCC) as well as provides immunity to dirty reads and full serializability. PostgreSQL can handle complex SQL queries using different indexing methods that are not available in other databases. It features updateable views and materialized views, triggers, and foreign keys. The RDBMS supports functions and stored procedures. PostgreSQL's functionality can be extended using a vast collection of available extensions.
+PostgreSQL implements most of the SQL:2011 standard; the RDBMS is ACID-compliant and transactional (including most DDL statements). The latter prevents locking issues using multiversion concurrency control (MVCC) and provides immunity to dirty reads and full serializability. PostgreSQL can handle complex SQL queries using different indexing methods that are not available in other databases. It features updatable views and materialized views, triggers, and foreign keys. The RDBMS supports functions and stored procedures. PostgreSQL's functionality can be extended using its vast collection of available extensions.
 
 ## Usage
 
@@ -26,7 +26,7 @@ PostgreSQL data directory location.
 
 **Note 1:** The directory must be empty for `initdb` to create a new database.
 
-**Note 2:** If the volume points either to a file system mount point, a remote folder that cannot be owned by the `postgres` user, or a location that already contains files (including `lost+found` and dotfiles), a new subdirectory for storing the PostgreSQL data must be created within the `PGDATA` volume.
+**Note 2:** If the volume points either to a file system mount point, a remote folder that cannot be owned by the `postgres` user, or a location that already contains files (including `lost+found` and "dotfiles"), a new subdirectory for storing the PostgreSQL data must be created within the `PGDATA` volume.
 
 ## Environment variables
 
@@ -74,7 +74,7 @@ The value for this variable is `/var/lib/pgsql/data`. This location is a volume 
 
 ## Sensitive information
 
-As an alternative to passing sensitive information via environment variables, `_FILE` can be appended to `POSTGRES_INITDB_ARGS`, `POSTGRES_PASSWORD`, `POSTGRES_USER`, and `POSTGRES_DB` environment variables. This makes the initialization script load the values for those variables from files present in the container. To, e.g., pass the password securely, you can store the password in a secret called `postgress-pw` and launch the container as follows:
+As an alternative to passing sensitive information via environment variables, `_FILE` can be appended to `POSTGRES_INITDB_ARGS`, `POSTGRES_PASSWORD`, `POSTGRES_USER`, and `POSTGRES_DB` environment variables. This makes the initialization script load the values for those variables from files present in the container. To, for example, pass the password securely, you can store the password in a secret called `postgress-pw` and launch the container as follows:
 
 ```ShellSession
 $ podman run -it --rm
@@ -87,9 +87,9 @@ $ podman run -it --rm
 
 ## Health, liveness, and readiness
 
-There is one explicit health check added to the container image. This check executes the `pg_isready` for host `localhost` and port `5432`.
+There is one explicit health check added to the container image. This check executes `pg_isready` for host `localhost` and port `5432`.
 
-The utility [pg_isread](https://www.postgresql.org/docs/current/app-pg-isready.html) checks the connection status of the server, and the exit status specifies the result of the connection check.
+The utility [pg_isready](https://www.postgresql.org/docs/current/app-pg-isready.html) checks the connection status of the server, and the exit status specifies the result of the connection check.
 
 ## Initialization scripts
 
