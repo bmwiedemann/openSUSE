@@ -1,7 +1,7 @@
 #
 # spec file for package python-isort
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,15 +32,13 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-isort%{psuffix}
-Version:        6.0.1
+Version:        7.0.0
 Release:        0
 Summary:        A Python utility / library to sort Python imports
 License:        MIT
 URL:            https://pycqa.github.io/isort/
 Source:         https://files.pythonhosted.org/packages/source/i/isort/isort-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-typo.patch gh#PyCQA/isort/2392
-Patch0:         fix-typo.patch
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
@@ -48,23 +46,20 @@ BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       alts
-Recommends:     python-colorama >= 0.4.3
-Recommends:     python-pip-api
-Recommends:     python-pip-shims >= 0.5.2
-Recommends:     python-pipreqs
-Recommends:     python-setuptools
+Recommends:     python-colorama >= 0.4.6
 Suggests:       git-core
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module black}
-BuildRequires:  %{python_module colorama >= 0.4.3}
-BuildRequires:  %{python_module hypothesmith}
+BuildRequires:  %{python_module colorama >= 0.4.6}
+BuildRequires:  %{python_module hypothesmith >= 0.3.3}
 BuildRequires:  %{python_module isort == %{version}}
 BuildRequires:  %{python_module libcst}
 BuildRequires:  %{python_module natsort}
 BuildRequires:  %{python_module pip-api}
 BuildRequires:  %{python_module pipreqs}
-BuildRequires:  %{python_module pytest > 6.0}
+BuildRequires:  %{python_module pytest >= 8.4}
+BuildRequires:  %{python_module pytest-benchmark >= 5.1}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module toml >= 0.10.2}
 BuildRequires:  git-core

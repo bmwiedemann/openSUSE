@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Dec 17 03:58:06 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 7.0.0:
+  * Breaking Changes
+    + Drop support for Python 3.9 (#2430) @DanielNoord
+  * Features
+    + Show absolute paths in skipped file messages (#2416) @pranlawate
+  * Fixes
+    + Drop use of non-standard pkg_resources API (#2405) @dvarrazzo
+    + Use working isort version in pre-commit example (#2402) @iainelder
+    + fix typo in _get_files_from_dir_cached test (#2392) @tiltingpenguin
+    + Resolve bandit warnings (#2379) @kurtmckee
+    + Some fixes for Python 3.14 (#2433) @DanielNoord
+    + Test on 3.14 and fix any bugs (#2425) @DanielNoord
+    + Update CHANGELOG.md + Fix Formatting and Grammar (#2419) @lukbrew25
+    + Fix output of hanging indent for long lines with noqa (#2407)
+- Drop patch fix-typo.patch, merged upstream.
+
+-------------------------------------------------------------------
 Thu Jul 10 13:23:44 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives
