@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Wed Dec 17 08:09:39 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.9.12
+  * New features and improvements
+    + Apply resolver changes and improvements
+    + Update formatting of prerequisites-requirements error to
+      improve readability
+    + Allow a Maven plugin to require a Java version
+    + Use MavenRepositorySystem in ProjectBuildingHelper instead
+      of deprecated RepositorySystem
+    + Make maven.config use UTF8
+    + Simplify prefix resolution
+  * Bug Fixes
+    + Add default implementation for new method in
+      MavenPluginManager
+    + Repository layout should be used in MavenRepositorySystem
+    + Fix plugin prefix resolution when metadata is not available
+      from repository
+    + Improve source root modification warning message
+    + Bug: bad cache isolation between two sessions
+    + Set Guice class loading to CHILD - avoid using terminally
+      deprecated methods
+    + Avoid parsing MAVEN_OPTS (3.9.x)
+  * Documentation updates
+    + clarify repository vs deployment repository
+    + add maintained branches
+  * Maintenance
+    + Add IntelliJ icon
+    + Build by JDK 25
+    + Deprecate org.apache.maven.repository.RepositorySystem in
+      3.9.x
+  * Build
+    + Bump actions/download-artifact from 5.0.0 to 6.0.0
+    + Bump actions/upload-artifact from 4.6.2 to 5.0.0
+  * Dependency updates
+    + Bump actions/cache from 4.2.3 to 5.0.0
+    + Bump resolverVersion from 1.9.24 to 1.9.25
+    + Bump actions/checkout from 5.0.0 to 6.0.1
+    + Bump actions/setup-java from 5.0.0 to 5.1.0
+    + Bump commons-cli:commons-cli from 1.9.0 to 1.11.0
+    + Bump org.codehaus.plexus:plexus-interpolation from 1.28 to
+      1.29
+    + Bump commons-io:commons-io from 2.19.0 to 2.21.0
+    + Bump xmlunitVersion from 2.10.3 to 2.11.0
+    + Bump org.codehaus.mojo:animal-sniffer-maven-plugin from 1.24
+      to 1.26
+    + Bump org.ow2.asm:asm from 9.8 to 9.9
+    + Bump com.google.guava:guava from 33.4.8-jre to 33.5.0-jre
+- Removed patch:
+  * 0001-Set-Guice-class-loading-to-CHILD-avoid-using-termina.patch
+    + integrated in this version
+- Modified patches:
+  * 0001-Adapt-mvn-script.patch
+  * 0002-Invoke-logback-via-reflection.patch
+  * 0003-Remove-dependency-on-powermock.patch
+  * 0004-Fix-build-with-qdox-2.0.1.patch
+  * 0005-Reproducible-maven.build.timestamp.patch
+    + rediff
+
+-------------------------------------------------------------------
 Tue Nov  4 22:41:54 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

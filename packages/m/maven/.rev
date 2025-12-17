@@ -248,4 +248,12 @@ put into adi:2</comment>
     <comment>Avoid warning polution with Java 25</comment>
     <requestid>1315651</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>61df96b0f2583bb626323f3679efbc7c</srcmd5>
+    <version>3.9.12</version>
+    <time>1765993191</time>
+    <user>anag_factory</user>
+    <comment>3.9.12</comment>
+    <requestid>1323342</requestid>
+  </revision>
 </revisionlist>

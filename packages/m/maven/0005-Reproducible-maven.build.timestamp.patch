@@ -1,4 +1,4 @@
-From 599dc0284287da5d48f578f5fe90b84dd4e0e485 Mon Sep 17 00:00:00 2001
+From 0d5ede756650a0e4f01183723a9185b711ee4ecf Mon Sep 17 00:00:00 2001
 From: Emmanuel Bourg <ebourg@apache.org>
 Date: Mon, 4 Sep 2023 17:10:19 +0200
 Subject: [PATCH 5/5] Reproducible maven.build.timestamp
@@ -12,7 +12,7 @@ builds reproducible.
  2 files changed, 18 insertions(+), 2 deletions(-)
 
 diff --git a/maven-compat/src/main/java/org/apache/maven/project/interpolation/BuildTimestampValueSource.java b/maven-compat/src/main/java/org/apache/maven/project/interpolation/BuildTimestampValueSource.java
-index f2af8036a..9e0db2cb0 100644
+index f2af8036ae..9e0db2cb08 100644
 --- a/maven-compat/src/main/java/org/apache/maven/project/interpolation/BuildTimestampValueSource.java
 +++ b/maven-compat/src/main/java/org/apache/maven/project/interpolation/BuildTimestampValueSource.java
 @@ -44,7 +44,15 @@ public BuildTimestampValueSource(Date startTime, String format) {
@@ -33,7 +33,7 @@ index f2af8036a..9e0db2cb0 100644
  
              return formattedDate;
 diff --git a/maven-model-builder/src/main/java/org/apache/maven/model/interpolation/MavenBuildTimestamp.java b/maven-model-builder/src/main/java/org/apache/maven/model/interpolation/MavenBuildTimestamp.java
-index e1721334f..2ea2ce381 100644
+index e1721334f4..2ea2ce3815 100644
 --- a/maven-model-builder/src/main/java/org/apache/maven/model/interpolation/MavenBuildTimestamp.java
 +++ b/maven-model-builder/src/main/java/org/apache/maven/model/interpolation/MavenBuildTimestamp.java
 @@ -21,6 +21,7 @@
@@ -61,5 +61,5 @@ index e1721334f..2ea2ce381 100644
          dateFormat.setTimeZone(DEFAULT_BUILD_TIME_ZONE);
          formattedTimestamp = dateFormat.format(time);
 -- 
-2.42.0
+2.52.0
 
