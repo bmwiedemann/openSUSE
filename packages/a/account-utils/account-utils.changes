@@ -1,0 +1,595 @@
+-------------------------------------------------------------------
+Wed Dec 17 13:04:10 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add conflict with busybox-adduser
+
+-------------------------------------------------------------------
+Tue Dec 16 16:35:33 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.0+git20251216.774fa6e:
+  * Release version 1.0.0
+  * tst-pam_unix_ng: don't provide empty password
+
+-------------------------------------------------------------------
+Tue Dec 16 15:24:03 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.4+git20251216.fcab559:
+  * pam_unix_ng: don't ask for empty password
+  * Add manual pam_unix_ng.so test
+  * passwd: implement --stdin option
+  * passwd: change password changed to account information
+  * new*idmap: de-duplicate code
+
+-------------------------------------------------------------------
+Fri Dec 12 10:37:47 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.4+git20251212.b0d4c80:
+  * Enhance sandboxing of service files
+
+-------------------------------------------------------------------
+Wed Dec 10 15:15:32 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use pam-config to enable pam_unix_ng.so
+
+-------------------------------------------------------------------
+Wed Dec 10 14:22:15 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.4+git20251210.c171d45:
+  * libclient: unify econf_readConfig call
+  * chage: simplify repeating code
+  * passwd: code cleanup
+  * pwupdd: check that passwd and shadow are for the same user
+  * pwaccess_get_user_record(): handle different size of long on 32bit vs 64bit.
+  * libclient: make resp a local variable
+  * pwupdd: mutex unlock after send_v usage
+  * pwaccessd: free context variable
+  * read_config: add missing NULL pointer check
+  * Add get_account_name example
+
+-------------------------------------------------------------------
+Mon Dec 08 21:29:18 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add user nobody to BuildRequires for test suite
+- Update to version 0.4+git20251208.2a55add:
+  * files: fix double close of fd
+  * tst-read_config: free struct config
+  * Create "context_t" for event loop and config as userdata
+  * pwaccessd: don't use static variables
+  * read_config: add cleanup function for config_t
+  * verify: hash can theoretically be a NULL pointer
+  * Move client only code from libcommon to libclient
+  * pwupdd: fix typo
+
+-------------------------------------------------------------------
+Fri Dec 05 15:01:37 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Disable test suite, doesn't seem to work in OBS
+- Update to version 0.4+git20251205.2682df5:
+  * libpwaccess: code cleanup and bug fixes
+
+-------------------------------------------------------------------
+Fri Dec 05 14:45:46 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.4+git20251205.c8ae145:
+  * read_config(): fix bugs and enhance test
+
+-------------------------------------------------------------------
+Fri Dec 05 13:29:31 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.4+git20251205.46421f9:
+  * pwaccessd: read pwaccessd.conf, add error handling
+
+-------------------------------------------------------------------
+Fri Dec 05 11:21:12 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.4+git20251205.8cafd4b:
+  * Implement read_config() and use it in pwaccessd
+  * Merge update_{passwd,shadow} functions into one generic one
+  * Introduce check_caller_perms() function
+  * newidmapd: use pwaccess_get_account_name()
+  * libpwaccess: fix check for valid daysleft result
+  * newidmapd: fix typo (#16)
+  * Remove outdated patches directory
+
+-------------------------------------------------------------------
+Tue Dec 02 20:10:06 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.4+git20251202.b7b89ee:
+  * pam_unix_ng: no shadow entry is no error
+  * libpwaccess: initialize all possible variables
+
+-------------------------------------------------------------------
+Mon Dec 01 07:29:36 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.4+git20251201.b675d19:
+  * units: allow network services like NIS and LDAP
+
+-------------------------------------------------------------------
+Sun Nov 30 23:01:36 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.4+git20251201.c799e6c:
+  * pam_unix_ng: fix no local user function
+  * CI: install libcap-devel
+
+-------------------------------------------------------------------
+Sun Nov 30 11:26:14 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.4+git20251130.630c7ff:
+  * Install tools if enabled
+  * Add scan-deps utilitiy
+  * Return ENODATA if user is not found, not ENOENT
+
+-------------------------------------------------------------------
+Fri Nov 28 16:36:30 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.4+git20251128.c1f2cbb:
+  * Add passwd PAM config
+
+-------------------------------------------------------------------
+Fri Nov 28 15:56:23 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.4+git20251128.4b39a44:
+  * pam_unix_ng: move prelim check and update authtok in own functions
+  * pwupdd: code cleanup and mutex/broadcast fix
+  * clients: drop privileges
+  * pam_unix_ng: Don't support MD5 from login.defs.
+  * TODO: implemented fallback for passwd
+
+-------------------------------------------------------------------
+Thu Nov 27 16:02:37 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.4+git20251127.6ae7b47:
+  * passwd: better error handling and fallback mode
+  * pam_unix_ng: free new password hash in a secure way
+  * Fix pwaccess->account-utils in doc
+
+-------------------------------------------------------------------
+Wed Nov 26 15:29:49 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.4+git20251126.cdb6606:
+  * pam_unix_ng: code cleanup
+  * libpwaccess: fix method name in error message
+  * libpwaccess: document, that return values needs to be free'd.
+  * pwupdd: make sure no thread is running for c* methods
+  * pwupdd: rework thread handling
+  * reply_callback(): parse result for error message
+  * pwupdd: rework check shell function (memory leak, better error message)
+  * TODO: add passwd messages
+  * pam_debuginfo: make log level configurable
+  * pwupdd: optimize pthread mutex locks
+  * Set locale for chfn invalid character check
+  * libcommon: unify closing and rename shadow/passwd
+  * pwupdd: Use sd_json_variant_unref(send_v) as intendet
+  * pwupdd: consistently use return_errno_error()
+
+-------------------------------------------------------------------
+Thu Nov 20 09:38:52 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.4+git20251120.e2a45c9:
+  * dump-privs: reomve \n from selinux context (unconfined)
+
+-------------------------------------------------------------------
+Thu Nov 20 09:25:26 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.4+git20251120.cc82c53:
+  * dump-privs: print current working directory
+
+-------------------------------------------------------------------
+Wed Nov 19 21:14:30 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.4+git20251119.4da42f4:
+  * newidmapd: check number of map ranges and calloc result
+  * CI: Add clang build
+  * pwupdd: fixes for varlink interface definition
+  * dump-privs: add missing stdbool include
+  * Rename BUGS -> TODO
+  * BUGS: add missing passwd functionality
+
+-------------------------------------------------------------------
+Tue Nov 18 07:11:19 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.4+git20251118.f361082:
+  * newidmapd: fix varlink description of map values
+  * pwupdd: remove PAM_NO_ROOT workaround, no longer needed
+  * newidmapd: fix file handle leak
+  * newidmapd: make sure the mappings stay in range
+  * newidmapd: rename ranges to nranges
+
+-------------------------------------------------------------------
+Mon Nov 17 13:51:22 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.4+git20251117.8ee0875:
+  * newidmapd: fix uid/gid check and name of map
+  * newidmapd: don't call exit()
+  * get_logindefs: allocate default string, caller will free them
+  * Fix memory leak
+  * Build optional dump-privs
+  * dump-privs: add option to print environment
+  * GetEnvironment: remove debug sleeps
+  * passwd: add missing warndays option
+
+-------------------------------------------------------------------
+Fri Nov 14 14:02:26 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.4+git20251114.b559637:
+  * pwupdd@.service: Remove wrong Type=notify
+  * pam_unix_ng: fix check if debug is enabled
+
+-------------------------------------------------------------------
+Wed Nov 12 13:03:23 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.4+git20251112.3c36a3b:
+  * get_logindefs: ignore key not found error
+
+-------------------------------------------------------------------
+Tue Nov 11 16:41:30 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.4+git20251111.9104074:
+  * pam_unix_ng: read hash algorighm from login.defs
+  * chage, passwd: implement struct_result_free()
+  * pam_debuginfo: log selinux context
+  * Update dump-privs/Dockerfile to work in OBS
+
+-------------------------------------------------------------------
+Mon Nov 10 15:24:21 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.4+git20251110.6b65caf:
+  * Add newidmapd, newuidmap, newgidmap for rootless container
+  * pam_unix_ng: mark default crypt algo for TODO list
+  * pam_unix_ng.8: fix formating of crypt options.
+  * Add tool and Dockerfile to print privileges inside a container
+
+-------------------------------------------------------------------
+Tue Nov 04 14:16:39 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.4+git20251104.5037b0f:
+  * Release version 0.4.0
+  * units: source /etc/default/account-utils
+  * libpwaccess: bump symbol version to 0.4
+  * Remove unneeded no_new_privs checks
+  * Add manual page for passwd
+  * chage: fix help text
+  * Add chfn manual page
+  * chage: use get_logindefs_num()
+  * passwd: add -I, -m, -M and -w option
+  * get_logindefs_num(): common function to read login.defs
+  * Add expiry.1 manual page
+  * Add chsh manual page
+  * Add chage.1 manual page
+
+-------------------------------------------------------------------
+Sun Nov 02 13:52:13 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.3+git20251102.acf6951:
+  * Add manual page for pam_debuginfo
+
+-------------------------------------------------------------------
+Sat Nov  1 21:04:53 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add permissions file
+
+-------------------------------------------------------------------
+Sat Nov 01 15:12:15 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.3+git20251101.e48af77:
+  * chage: implement interacive value change
+
+-------------------------------------------------------------------
+Sat Nov 01 11:37:32 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.3+git20251101.858389c:
+  * chage: Implement adjusting values via options
+  * expiry: allow checking for other accounts
+  * Rename package from pwaccess to account-utils
+  * Update README.md (pwaccess -> account-utils)
+
+-------------------------------------------------------------------
+Sat Nov 01 10:24:06 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.3+git20251101.ccb5680:
+  * pwupdd: allow to only update shadow entry
+  * pam_unix_ng: check strol() calls for ERANGE error
+  * chage: add support for iso8601 dates
+  * pam_debuginfo: fix compiler warning with disabled SELinux
+  * meson: add distribution option
+
+-------------------------------------------------------------------
+Fri Oct 31 16:31:41 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.3+git20251031.4bea803:
+  * Add pam.d config files
+
+-------------------------------------------------------------------
+Fri Oct 31 15:06:07 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.3+git20251031.fca80fc:
+  * chage: first version only supporting -l
+  * pam_debuginfo: print status of SELinux
+  * chfn/pwupd: fix work/home phone definition
+  * Update README.md
+
+-------------------------------------------------------------------
+Thu Oct 30 16:58:14 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.3+git20251030.113b0dc:
+  * pwupdd: fix XXX (memory leaks, missing output)
+  * pam_unix_ng: remove outdated XXX comment
+  * pwaccessd: use passwd hash if shadow entry does not exist
+  * pam_unix_ng(auth): print error variable if set
+  * pam_unix_ng: don't abort with user not found if there is no shadow entry
+  * pam_unix_ng: support PAM_DISALLOW_NULL_AUTHTOK
+  * pwaccessd: check if uid parameter is in range
+  * chsh,expiry: let pwaccessd do the uid lookup
+  * pwaccessd: use valid_name()
+  * chfn: use pwaccess_get_account_name()
+  * pwaccessd: implement GetAccountName to mape UID -> username
+  * may_change_field(): add error string argument
+  * Make /usr/etc configurable as "vendordir"
+  * chfn/pwupdd: check if gecos field is valid
+  * expired_check(): shadow says expire must be 1
+
+-------------------------------------------------------------------
+Tue Oct 28 21:37:52 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.3+git20251028.5fd2ea5:
+  * Add expiry, move chauthtok() from passwd to libcommon
+  * Change PWA_* defines for better readability
+  * chfn: initial version
+  * update_passwd: allow new, empty values
+  * BUGS: pam_rootok will not work with NoNewPrivs
+  * Update BUGS.txt
+  * chsh: print full option names in help text
+  * get_value: handle NULL for old value correct
+  * chsh: remove usage option
+  * passwd: implement --status option
+
+-------------------------------------------------------------------
+Sun Oct 26 10:01:23 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.3+git20251026.26b2b39:
+  * passwd: Implement -e, -l and -u
+  * chsh: implement --version option
+  * pam_unix_ng: make sure pw_passwd is set correct
+  * passwd: implement delete password
+  * pwupd: update of shadow/passwd via varlink
+  * Make struct result public
+  * update account: abort if account not found
+  * pwaccess: fix varlink definition for type pw/sp
+  * Implement support for PAM_CHANGE_EXPIRED_AUTHTOK
+
+-------------------------------------------------------------------
+Fri Oct 24 13:52:54 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.3+git20251024.32116ff:
+  * Use env variable to differentiate root/not-root
+  * passwd: abort if ^D got pressed
+  * pam_unix_ng: add missing time header
+
+-------------------------------------------------------------------
+Sun Oct 19 19:42:41 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.3+git20251019.82434bd:
+  * systemd: use libexecdir as configured in meson to template binary paths
+  * Fix double lib prefix
+  * no_new_privs.h: include stdbool.h
+
+-------------------------------------------------------------------
+Sat Oct 18 13:34:55 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.3+git20251018.416c37e:
+  * pam_debuginfo: fix open session and add test case
+
+-------------------------------------------------------------------
+Sat Oct 18 08:56:27 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.3+git20251018.b465a9e:
+  * Add pam_debuginfo
+  * pam_unix_ng: fix print format for uid_t
+  * Add PAM_SILENT to BUGS
+  * log failure: remove unused service
+
+-------------------------------------------------------------------
+Fri Oct 17 08:47:03 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.3+git20251017.97ccf32:
+  * Use bool for is_known_shell()
+  * Update BUGS list
+
+-------------------------------------------------------------------
+Thu Oct 16 22:00:19 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.3+git20251016.5d23ed8:
+  * pam_unix_ng: print if run as root and fix NULL pointer access
+
+-------------------------------------------------------------------
+Thu Oct 16 20:31:52 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.3+git20251016.508b232:
+  * pam_unix_ng: ignore root if no_new_privs is set
+  * pwupd: don't call setuid with no_new_privs set
+  * Log if no_new_privs is enabled
+  * Add function to check for no_new_privs flag
+  * Update docu
+  * Fix typo in debug message
+
+-------------------------------------------------------------------
+Thu Oct 16 17:04:43 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.3+git20251016.8c63160:
+  * Don't ask for old empty password if we change it.
+  * Use errno_to_pam()
+  * Add more checks for valid usernames in error case
+  * get_value(): check for OOM
+  * Update manual page
+  * Make hash algorithm configurable
+  * Document minlen= option
+  * Introduce struct config_t
+  * Move common functions to libcommon
+  * pam_unix_ng: don't overwrite user with same entry
+
+-------------------------------------------------------------------
+Wed Oct 15 16:36:12 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.3+git20251015.8aabc57:
+  * Fix logic of prefix compare
+  * Only compare pass_old with pass_new if not NULL
+  * pam_unix_ng: implement updating shadow file
+  * pam_unix_ng: implement changing password in passwd
+  * Replace skip_prefix() with startswith()
+  * pam_unix_ng(passwd): implement prelim check
+  * Add get_local_user_record() function
+  * Move common pam_unix_ng code to "common".
+  * pam_unix_ng(auth): only log valid usernames
+  * Make sure pw_passwd/sp_pwdp are not NULL
+  * Move valid_name() to verify.c
+  * pam_unix_ng: use pam_fail_delay with configureable time
+  * pam_unix_ng.8: reword authtok_type
+  * pm_unix_ng.8: fix typo
+  * CI: add packages to build manpages
+  * Add pam_unix_ng.8 manual page
+  * Use LOGIN_NAME_MAX for getlogin_r() buffer
+  * pwupdd: optimize error handling and check if shell is valid
+  * varlink: add invalid shell error
+  * chsh: add -h as option
+  * CI: install libselinux-devel
+  * pwupdd/chsh: finish updating passwd file
+  * Add endswith()/startswith() functions
+  * pwupdd: use parameter for PAM service name
+  * Don't return error on end of loop
+  * Don't print "password changed"
+
+-------------------------------------------------------------------
+Wed Sep 24 13:15:15 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.3+git20250924.4c88a83:
+  * Bump version to 0.3.0
+  * Add pwupdd, chsh and passwd
+  * Move common varlink code to own file
+  * Remove unused variable
+  * pam_unix_ng: Add log_runtime_ms() to log runtime
+  * README: document pam_unix_ng
+  * Add fallback code for if pwaccess is not running
+  * Remove include of unneeded config.h
+  * Update shadow-pwaccess patch
+  * Fix typos
+
+-------------------------------------------------------------------
+Wed Sep 24 13:02:29 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.2+git20250924.cc0450a:
+  * Add pwupdd, chsh and passwd
+  * Move common varlink code to own file
+  * Remove unused variable
+  * pam_unix_ng: Add log_runtime_ms() to log runtime
+  * README: document pam_unix_ng
+  * Add fallback code for if pwaccess is not running
+  * Remove include of unneeded config.h
+  * Update shadow-pwaccess patch
+  * Fix typos
+
+-------------------------------------------------------------------
+Thu Aug 21 14:27:22 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.2+git20250821.ae49c44:
+  * Enable tests in CI
+  * Unify license header
+  * Adjust pam_unix_ng name
+  * pam_unix_ng: improve logging
+  * pam-pwaccess.patch: new version merged upstream
+  * Rename pam_unix-ng to pam_unix_ng
+  * Add pam_unix-ng
+  * Document return values of pwaccess_check_expired()
+  * Remove two prototypes for non existing functions
+  * Create enum from defines
+  * Enhance README
+  * pwaccessd: ExitCode must be negative
+
+-------------------------------------------------------------------
+Tue Jul 15 11:49:13 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.2+git20250715.a8ee81e:
+  * Release version 0.2.0
+  * Update patch for Linux-PAM
+  * Move peer uid check before dispatch, fix Quit method
+  * Introduce error_user_not_found() error handler
+  * Fix syntax error
+  * Change order of functions
+  * Check that all account name characters are valid for logging
+  * verify: correct checks for empty strings and shadow password
+
+-------------------------------------------------------------------
+Fri Jul 11 08:30:06 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.1+git20250711.423c68e:
+  * pwaccessd: always guard p.name with strna
+  * pwaccessd: use stroom more often
+  * pwaccessd: use printf format attribute for log_msg
+  * pwaccessd: fix typos
+  * Extend interface description
+  * Fix style in symbol comments
+  * Update patch for Linux-PAM
+
+-------------------------------------------------------------------
+Mon Jun 23 14:49:03 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.1+git20250623.4c6aeb9:
+  * Implement org.openSUSE.pwaccess.ExpiredCheck
+  * example/get_user_record: allow account as argv
+  * libpwaccess: fix check if shadow data is available
+
+-------------------------------------------------------------------
+Fri Jun 20 11:47:36 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.1+git20250620.3391c86:
+  * Allow NULL as password
+  * Use string macros
+
+-------------------------------------------------------------------
+Fri Jun 20 08:51:10 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.1+git20250620.b262975:
+  * Add verify_password example
+  * libpwaccess: add pwaccess_verify_password()
+  * pwaccessd: fix nullok and add more debug logs
+
+-------------------------------------------------------------------
+Fri Jun 20 06:37:06 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.1+git20250620.158b0e5:
+  * Add server side password verify
+  * Add PoC patches for pam and shadow
+
+-------------------------------------------------------------------
+Thu May 08 14:47:50 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.1+git20250508.ccf8b83:
+  * pwaccessd: decode UID correctly as int64
+  * libpwaccess: add missing NULL checks
+  * Introduce stroom()
+  * pwaccessd: return only Non-NULL entries
+
+-------------------------------------------------------------------
+Thu May 08 13:27:32 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.1+git20250508.ccc0834:
+  * pwaccessd: implement error checks if getpwnam/getspnam fail
+  * libpwaccess: return -ENOENT if entry not found
+
+-------------------------------------------------------------------
+Thu May 08 10:18:47 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.1+git20250508.f57950a:
+  * pwaccess.h: include stdbool.h
+
+-------------------------------------------------------------------
+Wed May 07 14:13:55 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.1+git20250507.f0aeda0:
+  * Add PWACCESS_IS_NOT_RUNNING macro to header file
+
+-------------------------------------------------------------------
+Wed May 07 13:46:19 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.1+git20250507.0ac3823:
+  * json: mark entries which can be NULL correct
+  * Install pwaccessd in libexecdir

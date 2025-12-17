@@ -1,0 +1,7 @@
+/usr/bin/chage		root:root	0755
+/usr/bin/chfn		root:root	0755
+/usr/bin/chsh		root:root	0755
+/usr/bin/expiry		root:root	0755
+/usr/bin/newgidmap      root:root       0755
+/usr/bin/newuidmap      root:root       0755
+/usr/bin/passwd		root:root	0755
