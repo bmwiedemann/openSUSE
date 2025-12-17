@@ -23,4 +23,12 @@
     <comment>Require maven4-lib when installing maven4, otherwise the package is broken.</comment>
     <requestid>1320096</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>984dfd5a2aa2badbeb79762b95968b6e</srcmd5>
+    <version>4.0.0~rc5</version>
+    <time>1765993192</time>
+    <user>anag_factory</user>
+    <comment>Fix build with maven-resolver 2.0.14</comment>
+    <requestid>1323343</requestid>
+  </revision>
 </revisionlist>

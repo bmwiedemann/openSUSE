@@ -1,0 +1,1444 @@
+From 043722253343ea7a53faec60bdb9d935636ce319 Mon Sep 17 00:00:00 2001
+From: Tamas Cservenak <tamas@cservenak.net>
+Date: Tue, 16 Dec 2025 14:41:26 +0100
+Subject: [PATCH] Maven 4.0.x w/ Resolver 2.0.14-SNAPSHOT (#11530)
+
+Changes:
+* update to Resolver 2.0.14
+* use per-request metadata nature in version range requests
+* apply required code changes
+* use new TrackingFileManager in maven-compat upgrade check manager
+
+Backport of https://github.com/apache/maven/pull/11473
+---
+ .mvn/maven.config                             |   3 +-
+ .../java/org/apache/maven/api/Constants.java  |   5 +-
+ .../services/VersionRangeResolverRequest.java | 149 +++++++++++++++++-
+ compat/maven-compat/pom.xml                   |   9 +-
+ .../legacy/DefaultUpdateCheckManager.java     | 116 +++-----------
+ .../LegacyRepositorySystemTest.java           |   5 +-
+ .../legacy/DefaultUpdateCheckManagerTest.java |   4 +-
+ .../BootstrapCoreExtensionManager.java        |   5 +-
+ .../internal/DefaultVersionRangeResolver.java |   4 +-
+ .../BootstrapCoreExtensionManager.java        |   6 +-
+ .../AbstractRepositoryTestCase.java           |   5 +-
+ .../apache/maven/model/ModelBuilderTest.java  |   5 +-
+ .../impl/DefaultVersionRangeResolver.java     |  10 ++
+ .../resolver/DefaultVersionRangeResolver.java |   4 +-
+ .../standalone/RepositorySystemSupplier.java  | 145 +++++++++++++++--
+ .../stubs/RepositorySystemSupplier.java       |  72 +++++++--
+ ...7DependencyResolutionErrorMessageTest.java |   4 +-
+ pom.xml                                       |   2 +-
+ 18 files changed, 404 insertions(+), 149 deletions(-)
+
+diff --git a/.mvn/maven.config b/.mvn/maven.config
+index f3b0cd90b1..7633128e39 100644
+--- a/.mvn/maven.config
++++ b/.mvn/maven.config
+@@ -1,2 +1,3 @@
+ # A hack to pass on this property for Maven 3 as well; Maven 4 supports this property out of the box
+--DsessionRootDirectory=${session.rootDirectory}
+\ No newline at end of file
++-DsessionRootDirectory=${session.rootDirectory}
++
+diff --git a/api/maven-api-core/src/main/java/org/apache/maven/api/Constants.java b/api/maven-api-core/src/main/java/org/apache/maven/api/Constants.java
+index d0b9b9076b..156366b6e3 100644
+--- a/api/maven-api-core/src/main/java/org/apache/maven/api/Constants.java
++++ b/api/maven-api-core/src/main/java/org/apache/maven/api/Constants.java
+@@ -531,7 +531,10 @@ public final class Constants {
+      *     <li>"release" - query only release repositories to discover versions</li>
+      *     <li>"snapshot" - query only snapshot repositories to discover versions</li>
+      * </ul>
+-     * Default (when unset) is existing Maven behaviour: "release_or_snapshots".
++     * Default (when unset) is using request carried nature. Hence, this configuration really makes sense with value
++     * {@code "auto"}, while ideally callers needs update and use newly added method on version range request to
++     * express preference.
++     *
+      * @since 4.0.0
+      */
+     @Config(defaultValue = "release_or_snapshot")
+diff --git a/api/maven-api-core/src/main/java/org/apache/maven/api/services/VersionRangeResolverRequest.java b/api/maven-api-core/src/main/java/org/apache/maven/api/services/VersionRangeResolverRequest.java
+index 2f69c574a3..50de8e9a80 100644
+--- a/api/maven-api-core/src/main/java/org/apache/maven/api/services/VersionRangeResolverRequest.java
++++ b/api/maven-api-core/src/main/java/org/apache/maven/api/services/VersionRangeResolverRequest.java
+@@ -32,83 +32,210 @@
+ import static java.util.Objects.requireNonNull;
+ 
+ /**
++ * A request to resolve a version range to a list of matching versions.
++ * This request is used by {@link VersionRangeResolver} to expand version ranges
++ * (e.g., "[3.8,4.0)") into concrete versions available in the configured repositories.
+  *
+  * @since 4.0.0
+  */
+ @Experimental
+ public interface VersionRangeResolverRequest extends RepositoryAwareRequest {
+ 
++    /**
++     * Specifies which type of repositories to query when resolving version ranges.
++     * This controls whether to search in release repositories, snapshot repositories, or both.
++     *
++     * @since 4.0.0
++     */
++    enum Nature {
++        /**
++         * Query only release repositories to discover versions.
++         */
++        RELEASE,
++        /**
++         * Query only snapshot repositories to discover versions.
++         */
++        SNAPSHOT,
++        /**
++         * Query both release and snapshot repositories to discover versions.
++         * This is the default behavior.
++         */
++        RELEASE_OR_SNAPSHOT
++    }
++
++    /**
++     * Gets the artifact coordinates whose version range should be resolved.
++     * The coordinates may contain a version range (e.g., "[1.0,2.0)") or a single version.
++     *
++     * @return the artifact coordinates, never {@code null}
++     */
+     @Nonnull
+     ArtifactCoordinates getArtifactCoordinates();
+ 
++    /**
++     * Gets the nature of repositories to query when resolving the version range.
++     * This determines whether to search in release repositories, snapshot repositories, or both.
++     *
++     * @return the repository nature, never {@code null}
++     */
++    @Nonnull
++    Nature getNature();
++
++    /**
++     * Creates a version range resolver request using the session's repositories.
++     *
++     * @param session the session to use, must not be {@code null}
++     * @param artifactCoordinates the artifact coordinates whose version range should be resolved, must not be {@code null}
++     * @return the version range resolver request, never {@code null}
++     */
+     @Nonnull
+     static VersionRangeResolverRequest build(
+             @Nonnull Session session, @Nonnull ArtifactCoordinates artifactCoordinates) {
+-        return build(session, artifactCoordinates, null);
++        return build(session, artifactCoordinates, null, null);
+     }
+ 
++    /**
++     * Creates a version range resolver request.
++     *
++     * @param session the session to use, must not be {@code null}
++     * @param artifactCoordinates the artifact coordinates whose version range should be resolved, must not be {@code null}
++     * @param repositories the repositories to use, or {@code null} to use the session's repositories
++     * @return the version range resolver request, never {@code null}
++     */
+     @Nonnull
+     static VersionRangeResolverRequest build(
+             @Nonnull Session session,
+             @Nonnull ArtifactCoordinates artifactCoordinates,
+             @Nullable List<RemoteRepository> repositories) {
++        return build(session, artifactCoordinates, repositories, null);
++    }
++
++    /**
++     * Creates a version range resolver request.
++     *
++     * @param session the session to use, must not be {@code null}
++     * @param artifactCoordinates the artifact coordinates whose version range should be resolved, must not be {@code null}
++     * @param repositories the repositories to use, or {@code null} to use the session's repositories
++     * @param nature the nature of repositories to query when resolving the version range, or {@code null} to use the default
++     * @return the version range resolver request, never {@code null}
++     */
++    @Nonnull
++    static VersionRangeResolverRequest build(
++            @Nonnull Session session,
++            @Nonnull ArtifactCoordinates artifactCoordinates,
++            @Nullable List<RemoteRepository> repositories,
++            @Nullable Nature nature) {
+         return builder()
+                 .session(requireNonNull(session, "session cannot be null"))
+                 .artifactCoordinates(requireNonNull(artifactCoordinates, "artifactCoordinates cannot be null"))
+                 .repositories(repositories)
++                .nature(nature)
+                 .build();
+     }
+ 
++    /**
++     * Creates a new builder for version range resolver requests.
++     *
++     * @return a new builder, never {@code null}
++     */
+     @Nonnull
+     static VersionResolverRequestBuilder builder() {
+         return new VersionResolverRequestBuilder();
+     }
+ 
++    /**
++     * Builder for {@link VersionRangeResolverRequest}.
++     */
+     @NotThreadSafe
+     class VersionResolverRequestBuilder {
+         Session session;
+         RequestTrace trace;
+         ArtifactCoordinates artifactCoordinates;
+         List<RemoteRepository> repositories;
++        Nature nature = Nature.RELEASE_OR_SNAPSHOT;
+ 
++        /**
++         * Sets the session to use for the request.
++         *
++         * @param session the session, must not be {@code null}
++         * @return this builder, never {@code null}
++         */
+         public VersionResolverRequestBuilder session(Session session) {
+             this.session = session;
+             return this;
+         }
+ 
++        /**
++         * Sets the request trace for debugging and diagnostics.
++         *
++         * @param trace the request trace, may be {@code null}
++         * @return this builder, never {@code null}
++         */
+         public VersionResolverRequestBuilder trace(RequestTrace trace) {
+             this.trace = trace;
+             return this;
+         }
+ 
++        /**
++         * Sets the artifact coordinates whose version range should be resolved.
++         *
++         * @param artifactCoordinates the artifact coordinates, must not be {@code null}
++         * @return this builder, never {@code null}
++         */
+         public VersionResolverRequestBuilder artifactCoordinates(ArtifactCoordinates artifactCoordinates) {
+             this.artifactCoordinates = artifactCoordinates;
+             return this;
+         }
+ 
++        /**
++         * Sets the nature of repositories to query when resolving the version range.
++         * If {@code null} is provided, defaults to {@link Nature#RELEASE_OR_SNAPSHOT}.
++         *
++         * @param nature the repository nature, or {@code null} to use the default
++         * @return this builder, never {@code null}
++         */
++        public VersionResolverRequestBuilder nature(Nature nature) {
++            this.nature = Objects.requireNonNullElse(nature, Nature.RELEASE_OR_SNAPSHOT);
++            return this;
++        }
++
++        /**
++         * Sets the repositories to use for resolving the version range.
++         *
++         * @param repositories the repositories, or {@code null} to use the session's repositories
++         * @return this builder, never {@code null}
++         */
+         public VersionResolverRequestBuilder repositories(List<RemoteRepository> repositories) {
+             this.repositories = repositories;
+             return this;
+         }
+ 
++        /**
++         * Builds the version range resolver request.
++         *
++         * @return the version range resolver request, never {@code null}
++         */
+         public VersionRangeResolverRequest build() {
+-            return new DefaultVersionResolverRequest(session, trace, artifactCoordinates, repositories);
++            return new DefaultVersionResolverRequest(session, trace, artifactCoordinates, repositories, nature);
+         }
+ 
+         private static class DefaultVersionResolverRequest extends BaseRequest<Session>
+                 implements VersionRangeResolverRequest {
+             private final ArtifactCoordinates artifactCoordinates;
+             private final List<RemoteRepository> repositories;
++            private final Nature nature;
+ 
+             @SuppressWarnings("checkstyle:ParameterNumber")
+             DefaultVersionResolverRequest(
+                     @Nonnull Session session,
+                     @Nullable RequestTrace trace,
+                     @Nonnull ArtifactCoordinates artifactCoordinates,
+-                    @Nullable List<RemoteRepository> repositories) {
++                    @Nullable List<RemoteRepository> repositories,
++                    @Nonnull Nature nature) {
+                 super(session, trace);
+-                this.artifactCoordinates = artifactCoordinates;
++                this.artifactCoordinates = requireNonNull(artifactCoordinates);
+                 this.repositories = validate(repositories);
++                this.nature = requireNonNull(nature);
+             }
+ 
+             @Nonnull
+@@ -123,23 +250,31 @@ public List<RemoteRepository> getRepositories() {
+                 return repositories;
+             }
+ 
++            @Nonnull
++            @Override
++            public Nature getNature() {
++                return nature;
++            }
++
+             @Override
+             public boolean equals(Object o) {
+                 return o instanceof DefaultVersionResolverRequest that
+                         && Objects.equals(artifactCoordinates, that.artifactCoordinates)
+-                        && Objects.equals(repositories, that.repositories);
++                        && Objects.equals(repositories, that.repositories)
++                        && nature == that.nature;
+             }
+ 
+             @Override
+             public int hashCode() {
+-                return Objects.hash(artifactCoordinates, repositories);
++                return Objects.hash(artifactCoordinates, repositories, nature);
+             }
+ 
+             @Override
+             public String toString() {
+                 return "VersionResolverRequest[" + "artifactCoordinates="
+                         + artifactCoordinates + ", repositories="
+-                        + repositories + ']';
++                        + repositories + ", nature="
++                        + nature + ']';
+             }
+         }
+     }
+diff --git a/compat/maven-compat/pom.xml b/compat/maven-compat/pom.xml
+index e584686e79..17a9254bab 100644
+--- a/compat/maven-compat/pom.xml
++++ b/compat/maven-compat/pom.xml
+@@ -115,6 +115,10 @@ under the License.
+       <groupId>org.apache.maven.resolver</groupId>
+       <artifactId>maven-resolver-util</artifactId>
+     </dependency>
++    <dependency>
++      <groupId>org.apache.maven.resolver</groupId>
++      <artifactId>maven-resolver-impl</artifactId>
++    </dependency>
+ 
+     <dependency>
+       <groupId>org.codehaus.plexus</groupId>
+@@ -216,11 +220,6 @@ under the License.
+       <artifactId>maven-resolver-spi</artifactId>
+       <scope>test</scope>
+     </dependency>
+-    <dependency>
+-      <groupId>org.apache.maven.resolver</groupId>
+-      <artifactId>maven-resolver-impl</artifactId>
+-      <scope>test</scope>
+-    </dependency>
+     <dependency>
+       <groupId>org.apache.maven.resolver</groupId>
+       <artifactId>maven-resolver-connector-basic</artifactId>
+diff --git a/compat/maven-compat/src/main/java/org/apache/maven/repository/legacy/DefaultUpdateCheckManager.java b/compat/maven-compat/src/main/java/org/apache/maven/repository/legacy/DefaultUpdateCheckManager.java
+index d43758c997..3db0d7bcd0 100644
+--- a/compat/maven-compat/src/main/java/org/apache/maven/repository/legacy/DefaultUpdateCheckManager.java
++++ b/compat/maven-compat/src/main/java/org/apache/maven/repository/legacy/DefaultUpdateCheckManager.java
+@@ -18,17 +18,13 @@
+  */
+ package org.apache.maven.repository.legacy;
+ 
++import javax.inject.Inject;
+ import javax.inject.Named;
+ import javax.inject.Singleton;
+ 
+ import java.io.File;
+-import java.io.FileInputStream;
+-import java.io.IOException;
+-import java.io.RandomAccessFile;
+-import java.nio.channels.Channels;
+-import java.nio.channels.FileChannel;
+-import java.nio.channels.FileLock;
+ import java.util.Date;
++import java.util.HashMap;
+ import java.util.Properties;
+ 
+ import org.apache.maven.artifact.Artifact;
+@@ -39,6 +35,7 @@
+ import org.apache.maven.repository.Proxy;
+ import org.codehaus.plexus.logging.AbstractLogEnabled;
+ import org.codehaus.plexus.logging.Logger;
++import org.eclipse.aether.internal.impl.TrackingFileManager;
+ 
+ /**
+  * DefaultUpdateCheckManager
+@@ -47,13 +44,21 @@
+ @Singleton
+ @Deprecated
+ public class DefaultUpdateCheckManager extends AbstractLogEnabled implements UpdateCheckManager {
++    private final TrackingFileManager trackingFileManager;
+ 
+     private static final String ERROR_KEY_SUFFIX = ".error";
+ 
+-    public DefaultUpdateCheckManager() {}
++    @Inject
++    public DefaultUpdateCheckManager(TrackingFileManager trackingFileManager) {
++        this.trackingFileManager = trackingFileManager;
++    }
+ 
+-    public DefaultUpdateCheckManager(Logger logger) {
++    /**
++     * For testing purposes.
++     */
++    public DefaultUpdateCheckManager(Logger logger, TrackingFileManager trackingFileManager) {
+         enableLogging(logger);
++        this.trackingFileManager = trackingFileManager;
+     }
+ 
+     public static final String LAST_UPDATE_TAG = ".lastUpdated";
+@@ -156,7 +161,7 @@ public void touch(Artifact artifact, ArtifactRepository repository, String error
+         File touchfile = getTouchfile(artifact);
+ 
+         if (file.exists()) {
+-            touchfile.delete();
++            trackingFileManager.delete(touchfile);
+         } else {
+             writeLastUpdated(touchfile, getRepositoryKey(repository), error);
+         }
+@@ -201,70 +206,10 @@ String getRepositoryKey(ArtifactRepository repository) {
+     }
+ 
+     private void writeLastUpdated(File touchfile, String key, String error) {
+-        synchronized (touchfile.getAbsolutePath().intern()) {
+-            if (!touchfile.getParentFile().exists()
+-                    && !touchfile.getParentFile().mkdirs()) {
+-                getLogger()
+-                        .debug("Failed to create directory: " + touchfile.getParent()
+-                                + " for tracking artifact metadata resolution.");
+-                return;
+-            }
+-
+-            FileChannel channel = null;
+-            FileLock lock = null;
+-            try {
+-                Properties props = new Properties();
+-
+-                channel = new RandomAccessFile(touchfile, "rw").getChannel();
+-                lock = channel.lock();
+-
+-                if (touchfile.canRead()) {
+-                    getLogger().debug("Reading resolution-state from: " + touchfile);
+-                    props.load(Channels.newInputStream(channel));
+-                }
+-
+-                props.setProperty(key, Long.toString(System.currentTimeMillis()));
+-
+-                if (error != null) {
+-                    props.setProperty(key + ERROR_KEY_SUFFIX, error);
+-                } else {
+-                    props.remove(key + ERROR_KEY_SUFFIX);
+-                }
+-
+-                getLogger().debug("Writing resolution-state to: " + touchfile);
+-                channel.truncate(0);
+-                props.store(Channels.newOutputStream(channel), "Last modified on: " + new Date());
+-
+-                lock.release();
+-                lock = null;
+-
+-                channel.close();
+-                channel = null;
+-            } catch (IOException e) {
+-                getLogger()
+-                        .debug(
+-                                "Failed to record lastUpdated information for resolution.\nFile: " + touchfile
+-                                        + "; key: " + key,
+-                                e);
+-            } finally {
+-                if (lock != null) {
+-                    try {
+-                        lock.release();
+-                    } catch (IOException e) {
+-                        getLogger()
+-                                .debug("Error releasing exclusive lock for resolution tracking file: " + touchfile, e);
+-                    }
+-                }
+-
+-                if (channel != null) {
+-                    try {
+-                        channel.close();
+-                    } catch (IOException e) {
+-                        getLogger().debug("Error closing FileChannel for resolution tracking file: " + touchfile, e);
+-                    }
+-                }
+-            }
+-        }
++        HashMap<String, String> update = new HashMap<>();
++        update.put(key, Long.toString(System.currentTimeMillis()));
++        update.put(key + ERROR_KEY_SUFFIX, error); // error==null => remove mapping
++        trackingFileManager.update(touchfile, update);
+     }
+ 
+     Date readLastUpdated(File touchfile, String key) {
+@@ -293,30 +238,7 @@ private String getError(File touchFile, String key) {
+     }
+ 
+     private Properties read(File touchfile) {
+-        if (!touchfile.canRead()) {
+-            getLogger().debug("Skipped unreadable resolution tracking file: " + touchfile);
+-            return null;
+-        }
+-
+-        synchronized (touchfile.getAbsolutePath().intern()) {
+-            try {
+-                Properties props = new Properties();
+-
+-                try (FileInputStream in = new FileInputStream(touchfile)) {
+-                    try (FileLock lock = in.getChannel().lock(0, Long.MAX_VALUE, true)) {
+-                        getLogger().debug("Reading resolution-state from: " + touchfile);
+-                        props.load(in);
+-
+-                        return props;
+-                    }
+-                }
+-
+-            } catch (IOException e) {
+-                getLogger().debug("Failed to read resolution tracking file: " + touchfile, e);
+-
+-                return null;
+-            }
+-        }
++        return trackingFileManager.read(touchfile);
+     }
+ 
+     File getTouchfile(Artifact artifact) {
+diff --git a/compat/maven-compat/src/test/java/org/apache/maven/repository/LegacyRepositorySystemTest.java b/compat/maven-compat/src/test/java/org/apache/maven/repository/LegacyRepositorySystemTest.java
+index 8f9709a175..91f30c8060 100644
+--- a/compat/maven-compat/src/test/java/org/apache/maven/repository/LegacyRepositorySystemTest.java
++++ b/compat/maven-compat/src/test/java/org/apache/maven/repository/LegacyRepositorySystemTest.java
+@@ -61,6 +61,7 @@
+ import org.eclipse.aether.DefaultRepositorySystemSession;
+ import org.eclipse.aether.internal.impl.DefaultChecksumPolicyProvider;
+ import org.eclipse.aether.internal.impl.DefaultRemoteRepositoryManager;
++import org.eclipse.aether.internal.impl.DefaultRepositoryKeyFunctionFactory;
+ import org.eclipse.aether.internal.impl.DefaultUpdatePolicyAnalyzer;
+ import org.eclipse.aether.internal.impl.SimpleLocalRepositoryManagerFactory;
+ import org.eclipse.aether.repository.LocalRepository;
+@@ -151,7 +152,9 @@ void testThatASystemScopedDependencyIsNotResolvedFromRepositories() throws Excep
+                 new SimpleLookup(List.of(
+                         new DefaultRequestCacheFactory(),
+                         new DefaultRepositoryFactory(new DefaultRemoteRepositoryManager(
+-                                new DefaultUpdatePolicyAnalyzer(), new DefaultChecksumPolicyProvider())),
++                                new DefaultUpdatePolicyAnalyzer(),
++                                new DefaultChecksumPolicyProvider(),
++                                new DefaultRepositoryKeyFunctionFactory())),
+                         new DefaultVersionParser(new DefaultModelVersionParser(new GenericVersionScheme())),
+                         new DefaultArtifactCoordinatesFactory(),
+                         new DefaultArtifactResolver(),
+diff --git a/compat/maven-compat/src/test/java/org/apache/maven/repository/legacy/DefaultUpdateCheckManagerTest.java b/compat/maven-compat/src/test/java/org/apache/maven/repository/legacy/DefaultUpdateCheckManagerTest.java
+index e06318c1db..9369de93ba 100644
+--- a/compat/maven-compat/src/test/java/org/apache/maven/repository/legacy/DefaultUpdateCheckManagerTest.java
++++ b/compat/maven-compat/src/test/java/org/apache/maven/repository/legacy/DefaultUpdateCheckManagerTest.java
+@@ -30,6 +30,7 @@
+ import org.apache.maven.artifact.repository.metadata.RepositoryMetadata;
+ import org.codehaus.plexus.logging.Logger;
+ import org.codehaus.plexus.logging.console.ConsoleLogger;
++import org.eclipse.aether.internal.impl.DefaultTrackingFileManager;
+ import org.junit.jupiter.api.BeforeEach;
+ import org.junit.jupiter.api.Test;
+ 
+@@ -57,7 +58,8 @@ protected String component() {
+     public void setUp() throws Exception {
+         super.setUp();
+ 
+-        updateCheckManager = new DefaultUpdateCheckManager(new ConsoleLogger(Logger.LEVEL_DEBUG, "test"));
++        updateCheckManager = new DefaultUpdateCheckManager(
++                new ConsoleLogger(Logger.LEVEL_DEBUG, "test"), new DefaultTrackingFileManager());
+     }
+ 
+     @Test
+diff --git a/compat/maven-embedder/src/main/java/org/apache/maven/cli/internal/BootstrapCoreExtensionManager.java b/compat/maven-embedder/src/main/java/org/apache/maven/cli/internal/BootstrapCoreExtensionManager.java
+index 321bde249d..9b4e7c819a 100644
+--- a/compat/maven-embedder/src/main/java/org/apache/maven/cli/internal/BootstrapCoreExtensionManager.java
++++ b/compat/maven-embedder/src/main/java/org/apache/maven/cli/internal/BootstrapCoreExtensionManager.java
+@@ -73,6 +73,7 @@
+ import org.eclipse.aether.graph.DependencyFilter;
+ import org.eclipse.aether.internal.impl.DefaultChecksumPolicyProvider;
+ import org.eclipse.aether.internal.impl.DefaultRemoteRepositoryManager;
++import org.eclipse.aether.internal.impl.DefaultRepositoryKeyFunctionFactory;
+ import org.eclipse.aether.internal.impl.DefaultUpdatePolicyAnalyzer;
+ import org.eclipse.aether.repository.RemoteRepository;
+ import org.eclipse.aether.repository.WorkspaceReader;
+@@ -272,7 +273,9 @@ public <T extends Service> T getService(Class<T> clazz) throws NoSuchElementExce
+                 return (T) new DefaultArtifactManager(this);
+             } else if (clazz == RepositoryFactory.class) {
+                 return (T) new DefaultRepositoryFactory(new DefaultRemoteRepositoryManager(
+-                        new DefaultUpdatePolicyAnalyzer(), new DefaultChecksumPolicyProvider()));
++                        new DefaultUpdatePolicyAnalyzer(),
++                        new DefaultChecksumPolicyProvider(),
++                        new DefaultRepositoryKeyFunctionFactory()));
+             } else if (clazz == Interpolator.class) {
+                 return (T) new DefaultInterpolator();
+                 // } else if (clazz == ModelResolver.class) {
+diff --git a/compat/maven-resolver-provider/src/main/java/org/apache/maven/repository/internal/DefaultVersionRangeResolver.java b/compat/maven-resolver-provider/src/main/java/org/apache/maven/repository/internal/DefaultVersionRangeResolver.java
+index 693e5c1002..e96c0deaa5 100644
+--- a/compat/maven-resolver-provider/src/main/java/org/apache/maven/repository/internal/DefaultVersionRangeResolver.java
++++ b/compat/maven-resolver-provider/src/main/java/org/apache/maven/repository/internal/DefaultVersionRangeResolver.java
+@@ -117,9 +117,7 @@ public VersionRangeResult resolveVersionRange(RepositorySystemSession session, V
+             } else {
+                 Metadata.Nature wantedNature;
+                 String natureString = ConfigUtils.getString(
+-                        session,
+-                        Metadata.Nature.RELEASE_OR_SNAPSHOT.name(),
+-                        Constants.MAVEN_VERSION_RANGE_RESOLVER_NATURE_OVERRIDE);
++                        session, request.getNature().name(), Constants.MAVEN_VERSION_RANGE_RESOLVER_NATURE_OVERRIDE);
+                 if ("auto".equals(natureString)) {
+                     org.eclipse.aether.artifact.Artifact lowerArtifact = lowerBound != null
+                             ? request.getArtifact()
+diff --git a/impl/maven-cli/src/main/java/org/apache/maven/cling/extensions/BootstrapCoreExtensionManager.java b/impl/maven-cli/src/main/java/org/apache/maven/cling/extensions/BootstrapCoreExtensionManager.java
+index 89dd0e0c0e..61a65954a2 100644
+--- a/impl/maven-cli/src/main/java/org/apache/maven/cling/extensions/BootstrapCoreExtensionManager.java
++++ b/impl/maven-cli/src/main/java/org/apache/maven/cling/extensions/BootstrapCoreExtensionManager.java
+@@ -76,6 +76,7 @@
+ import org.eclipse.aether.graph.DependencyFilter;
+ import org.eclipse.aether.internal.impl.DefaultChecksumPolicyProvider;
+ import org.eclipse.aether.internal.impl.DefaultRemoteRepositoryManager;
++import org.eclipse.aether.internal.impl.DefaultRepositoryKeyFunctionFactory;
+ import org.eclipse.aether.internal.impl.DefaultUpdatePolicyAnalyzer;
+ import org.eclipse.aether.repository.RemoteRepository;
+ import org.eclipse.aether.repository.WorkspaceReader;
+@@ -270,6 +271,7 @@ protected Session newSession(
+             return new SimpleSession(mavenSession, getRepositorySystem(), repositories);
+         }
+ 
++        @SuppressWarnings("unchecked")
+         @Override
+         public <T extends Service> T getService(Class<T> clazz) throws NoSuchElementException {
+             if (clazz == ArtifactCoordinatesFactory.class) {
+@@ -284,7 +286,9 @@ public <T extends Service> T getService(Class<T> clazz) throws NoSuchElementExce
+                 return (T) new DefaultArtifactManager(this);
+             } else if (clazz == RepositoryFactory.class) {
+                 return (T) new DefaultRepositoryFactory(new DefaultRemoteRepositoryManager(
+-                        new DefaultUpdatePolicyAnalyzer(), new DefaultChecksumPolicyProvider()));
++                        new DefaultUpdatePolicyAnalyzer(),
++                        new DefaultChecksumPolicyProvider(),
++                        new DefaultRepositoryKeyFunctionFactory()));
+             } else if (clazz == Interpolator.class) {
+                 return (T) new DefaultInterpolator();
+                 // } else if (clazz == ModelResolver.class) {
+diff --git a/impl/maven-core/src/test/java/org/apache/maven/internal/transformation/AbstractRepositoryTestCase.java b/impl/maven-core/src/test/java/org/apache/maven/internal/transformation/AbstractRepositoryTestCase.java
+index d20e157c25..1fcf1dc62d 100644
+--- a/impl/maven-core/src/test/java/org/apache/maven/internal/transformation/AbstractRepositoryTestCase.java
++++ b/impl/maven-core/src/test/java/org/apache/maven/internal/transformation/AbstractRepositoryTestCase.java
+@@ -40,6 +40,7 @@
+ import org.eclipse.aether.RepositorySystemSession;
+ import org.eclipse.aether.internal.impl.DefaultChecksumPolicyProvider;
+ import org.eclipse.aether.internal.impl.DefaultRemoteRepositoryManager;
++import org.eclipse.aether.internal.impl.DefaultRepositoryKeyFunctionFactory;
+ import org.eclipse.aether.internal.impl.DefaultUpdatePolicyAnalyzer;
+ import org.eclipse.aether.internal.impl.scope.ScopeManagerImpl;
+ import org.eclipse.aether.repository.LocalRepository;
+@@ -91,7 +92,9 @@ public RepositorySystemSession newMavenRepositorySystemSession(RepositorySystem
+     protected List<Object> getSessionServices() {
+         return List.of(
+                 new DefaultRepositoryFactory(new DefaultRemoteRepositoryManager(
+-                        new DefaultUpdatePolicyAnalyzer(), new DefaultChecksumPolicyProvider())),
++                        new DefaultUpdatePolicyAnalyzer(),
++                        new DefaultChecksumPolicyProvider(),
++                        new DefaultRepositoryKeyFunctionFactory())),
+                 new DefaultInterpolator());
+     }
+ 
+diff --git a/impl/maven-core/src/test/java/org/apache/maven/model/ModelBuilderTest.java b/impl/maven-core/src/test/java/org/apache/maven/model/ModelBuilderTest.java
+index 7b6ff839f2..856d89a089 100644
+--- a/impl/maven-core/src/test/java/org/apache/maven/model/ModelBuilderTest.java
++++ b/impl/maven-core/src/test/java/org/apache/maven/model/ModelBuilderTest.java
+@@ -44,6 +44,7 @@
+ import org.eclipse.aether.RepositorySystemSession;
+ import org.eclipse.aether.internal.impl.DefaultChecksumPolicyProvider;
+ import org.eclipse.aether.internal.impl.DefaultRemoteRepositoryManager;
++import org.eclipse.aether.internal.impl.DefaultRepositoryKeyFunctionFactory;
+ import org.eclipse.aether.internal.impl.DefaultUpdatePolicyAnalyzer;
+ import org.junit.jupiter.api.Test;
+ 
+@@ -84,7 +85,9 @@ void testModelBuilder() throws Exception {
+                 new SimpleLookup(List.of(
+                         new DefaultRequestCacheFactory(),
+                         new DefaultRepositoryFactory(new DefaultRemoteRepositoryManager(
+-                                new DefaultUpdatePolicyAnalyzer(), new DefaultChecksumPolicyProvider())))),
++                                new DefaultUpdatePolicyAnalyzer(),
++                                new DefaultChecksumPolicyProvider(),
++                                new DefaultRepositoryKeyFunctionFactory())))),
+                 null);
+         InternalSession.associate(rsession, session);
+ 
+diff --git a/impl/maven-impl/src/main/java/org/apache/maven/impl/DefaultVersionRangeResolver.java b/impl/maven-impl/src/main/java/org/apache/maven/impl/DefaultVersionRangeResolver.java
+index b0097d5248..7a76a9f85e 100644
+--- a/impl/maven-impl/src/main/java/org/apache/maven/impl/DefaultVersionRangeResolver.java
++++ b/impl/maven-impl/src/main/java/org/apache/maven/impl/DefaultVersionRangeResolver.java
+@@ -33,6 +33,7 @@
+ import org.apache.maven.api.services.VersionRangeResolverRequest;
+ import org.apache.maven.api.services.VersionRangeResolverResult;
+ import org.eclipse.aether.RepositorySystem;
++import org.eclipse.aether.metadata.Metadata;
+ import org.eclipse.aether.repository.ArtifactRepository;
+ import org.eclipse.aether.resolution.VersionRangeRequest;
+ import org.eclipse.aether.resolution.VersionRangeResolutionException;
+@@ -73,6 +74,7 @@ public VersionRangeResolverResult doResolve(VersionRangeResolverRequest request)
+                                             request.getRepositories() != null
+                                                     ? request.getRepositories()
+                                                     : session.getRemoteRepositories()),
++                                    toResolver(request.getNature()),
+                                     trace.context())
+                             .setTrace(trace.trace()));
+ 
+@@ -114,4 +116,12 @@ public Optional<Repository> getRepository(Version version) {
+             RequestTraceHelper.exit(trace);
+         }
+     }
++
++    private Metadata.Nature toResolver(VersionRangeResolverRequest.Nature nature) {
++        return switch (nature) {
++            case RELEASE_OR_SNAPSHOT -> Metadata.Nature.RELEASE_OR_SNAPSHOT;
++            case SNAPSHOT -> Metadata.Nature.SNAPSHOT;
++            case RELEASE -> Metadata.Nature.RELEASE;
++        };
++    }
+ }
+diff --git a/impl/maven-impl/src/main/java/org/apache/maven/impl/resolver/DefaultVersionRangeResolver.java b/impl/maven-impl/src/main/java/org/apache/maven/impl/resolver/DefaultVersionRangeResolver.java
+index 696a919b87..b16caa3b72 100644
+--- a/impl/maven-impl/src/main/java/org/apache/maven/impl/resolver/DefaultVersionRangeResolver.java
++++ b/impl/maven-impl/src/main/java/org/apache/maven/impl/resolver/DefaultVersionRangeResolver.java
+@@ -113,9 +113,7 @@ public VersionRangeResult resolveVersionRange(RepositorySystemSession session, V
+             } else {
+                 Metadata.Nature wantedNature;
+                 String natureString = ConfigUtils.getString(
+-                        session,
+-                        Metadata.Nature.RELEASE_OR_SNAPSHOT.name(),
+-                        Constants.MAVEN_VERSION_RANGE_RESOLVER_NATURE_OVERRIDE);
++                        session, request.getNature().name(), Constants.MAVEN_VERSION_RANGE_RESOLVER_NATURE_OVERRIDE);
+                 if ("auto".equals(natureString)) {
+                     org.eclipse.aether.artifact.Artifact lowerArtifact = lowerBound != null
+                             ? request.getArtifact()
+diff --git a/impl/maven-impl/src/main/java/org/apache/maven/impl/standalone/RepositorySystemSupplier.java b/impl/maven-impl/src/main/java/org/apache/maven/impl/standalone/RepositorySystemSupplier.java
+index 015f5ba38c..77e7a98e76 100644
+--- a/impl/maven-impl/src/main/java/org/apache/maven/impl/standalone/RepositorySystemSupplier.java
++++ b/impl/maven-impl/src/main/java/org/apache/maven/impl/standalone/RepositorySystemSupplier.java
+@@ -24,6 +24,7 @@
+ import org.apache.maven.api.annotations.Nullable;
+ import org.apache.maven.api.di.Named;
+ import org.apache.maven.api.di.Provides;
++import org.apache.maven.api.di.Singleton;
+ import org.apache.maven.impl.resolver.validator.MavenValidatorFactory;
+ import org.eclipse.aether.RepositoryListener;
+ import org.eclipse.aether.RepositorySystem;
+@@ -62,6 +63,7 @@
+ import org.eclipse.aether.internal.impl.DefaultRemoteRepositoryManager;
+ import org.eclipse.aether.internal.impl.DefaultRepositoryConnectorProvider;
+ import org.eclipse.aether.internal.impl.DefaultRepositoryEventDispatcher;
++import org.eclipse.aether.internal.impl.DefaultRepositoryKeyFunctionFactory;
+ import org.eclipse.aether.internal.impl.DefaultRepositoryLayoutProvider;
+ import org.eclipse.aether.internal.impl.DefaultRepositorySystem;
+ import org.eclipse.aether.internal.impl.DefaultRepositorySystemLifecycle;
+@@ -91,6 +93,7 @@
+ import org.eclipse.aether.internal.impl.filter.DefaultRemoteRepositoryFilterManager;
+ import org.eclipse.aether.internal.impl.filter.FilteringPipelineRepositoryConnectorFactory;
+ import org.eclipse.aether.internal.impl.filter.GroupIdRemoteRepositoryFilterSource;
++import org.eclipse.aether.internal.impl.filter.PrefixesLockingInhibitorFactory;
+ import org.eclipse.aether.internal.impl.filter.PrefixesRemoteRepositoryFilterSource;
+ import org.eclipse.aether.internal.impl.offline.OfflinePipelineRepositoryConnectorFactory;
+ import org.eclipse.aether.internal.impl.synccontext.DefaultSyncContextFactory;
+@@ -126,6 +129,8 @@
+ import org.eclipse.aether.spi.io.ChecksumProcessor;
+ import org.eclipse.aether.spi.io.PathProcessor;
+ import org.eclipse.aether.spi.localrepo.LocalRepositoryManagerFactory;
++import org.eclipse.aether.spi.locking.LockingInhibitorFactory;
++import org.eclipse.aether.spi.remoterepo.RepositoryKeyFunctionFactory;
+ import org.eclipse.aether.spi.resolution.ArtifactResolverPostProcessor;
+ import org.eclipse.aether.spi.synccontext.SyncContextFactory;
+ import org.eclipse.aether.spi.validator.ValidatorFactory;
+@@ -138,6 +143,7 @@
+ @SuppressWarnings({"unused", "checkstyle:ParameterNumber"})
+ public class RepositorySystemSupplier {
+ 
++    @Singleton
+     @Provides
+     static MetadataResolver newMetadataResolver(
+             RepositoryEventDispatcher repositoryEventDispatcher,
+@@ -159,11 +165,13 @@ static MetadataResolver newMetadataResolver(
+                 pathProcessor);
+     }
+ 
++    @Singleton
+     @Provides
+     static RepositoryEventDispatcher newRepositoryEventDispatcher(@Nullable Map<String, RepositoryListener> listeners) {
+         return new DefaultRepositoryEventDispatcher(listeners != null ? listeners : Map.of());
+     }
+ 
++    @Singleton
+     @Provides
+     static UpdateCheckManager newUpdateCheckManager(
+             TrackingFileManager trackingFileManager,
+@@ -172,16 +180,25 @@ static UpdateCheckManager newUpdateCheckManager(
+         return new DefaultUpdateCheckManager(trackingFileManager, updatePolicyAnalyzer, pathProcessor);
+     }
+ 
++    @Singleton
++    @Provides
++    static RepositoryKeyFunctionFactory newRepositoryKeyFunctionFactory() {
++        return new DefaultRepositoryKeyFunctionFactory();
++    }
++
++    @Singleton
+     @Provides
+     static TrackingFileManager newTrackingFileManager() {
+         return new DefaultTrackingFileManager();
+     }
+ 
++    @Singleton
+     @Provides
+     static UpdatePolicyAnalyzer newUpdatePolicyAnalyzer() {
+         return new DefaultUpdatePolicyAnalyzer();
+     }
+ 
++    @Singleton
+     @Provides
+     static RepositoryConnectorProvider newRepositoryConnectorProvider(
+             Map<String, RepositoryConnectorFactory> connectorFactories,
+@@ -189,6 +206,7 @@ static RepositoryConnectorProvider newRepositoryConnectorProvider(
+         return new DefaultRepositoryConnectorProvider(connectorFactories, pipelineConnectorFactories);
+     }
+ 
++    @Singleton
+     @Named("basic")
+     @Provides
+     static BasicRepositoryConnectorFactory newBasicRepositoryConnectorFactory(
+@@ -207,6 +225,7 @@ static BasicRepositoryConnectorFactory newBasicRepositoryConnectorFactory(
+                 providedChecksumsSources);
+     }
+ 
++    @Singleton
+     @Named(OfflinePipelineRepositoryConnectorFactory.NAME)
+     @Provides
+     static OfflinePipelineRepositoryConnectorFactory newOfflinePipelineConnectorFactory(
+@@ -214,6 +233,7 @@ static OfflinePipelineRepositoryConnectorFactory newOfflinePipelineConnectorFact
+         return new OfflinePipelineRepositoryConnectorFactory(offlineController);
+     }
+ 
++    @Singleton
+     @Named(FilteringPipelineRepositoryConnectorFactory.NAME)
+     @Provides
+     static FilteringPipelineRepositoryConnectorFactory newFilteringPipelineConnectorFactory(
+@@ -221,11 +241,13 @@ static FilteringPipelineRepositoryConnectorFactory newFilteringPipelineConnector
+         return new FilteringPipelineRepositoryConnectorFactory(remoteRepositoryFilterManager);
+     }
+ 
++    @Singleton
+     @Provides
+     static RepositoryLayoutProvider newRepositoryLayoutProvider(Map<String, RepositoryLayoutFactory> layoutFactories) {
+         return new DefaultRepositoryLayoutProvider(layoutFactories);
+     }
+ 
++    @Singleton
+     @Provides
+     @Named(Maven2RepositoryLayoutFactory.NAME)
+     static Maven2RepositoryLayoutFactory newMaven2RepositoryLayoutFactory(
+@@ -234,54 +256,70 @@ static Maven2RepositoryLayoutFactory newMaven2RepositoryLayoutFactory(
+         return new Maven2RepositoryLayoutFactory(checksumAlgorithmFactorySelector, artifactPredicateFactory);
+     }
+ 
++    @Singleton
+     @Provides
+     static SyncContextFactory newSyncContextFactory(NamedLockFactoryAdapterFactory namedLockFactoryAdapterFactory) {
+         return new DefaultSyncContextFactory(namedLockFactoryAdapterFactory);
+     }
+ 
++    @Singleton
+     @Provides
+     static OfflineController newOfflineController() {
+         return new DefaultOfflineController();
+     }
+ 
++    @Singleton
+     @Provides
+     static RemoteRepositoryFilterManager newRemoteRepositoryFilterManager(
+             Map<String, RemoteRepositoryFilterSource> sources) {
+         return new DefaultRemoteRepositoryFilterManager(sources);
+     }
+ 
++    @Singleton
+     @Provides
+     @Named(GroupIdRemoteRepositoryFilterSource.NAME)
+     static GroupIdRemoteRepositoryFilterSource newGroupIdRemoteRepositoryFilterSource(
+-            RepositorySystemLifecycle repositorySystemLifecycle, PathProcessor pathProcessor) {
+-        return new GroupIdRemoteRepositoryFilterSource(repositorySystemLifecycle, pathProcessor);
++            RepositoryKeyFunctionFactory repositoryKeyFunctionFactory,
++            RepositorySystemLifecycle repositorySystemLifecycle,
++            PathProcessor pathProcessor) {
++        return new GroupIdRemoteRepositoryFilterSource(
++                repositoryKeyFunctionFactory, repositorySystemLifecycle, pathProcessor);
+     }
+ 
++    @Singleton
+     @Provides
+     @Named(PrefixesRemoteRepositoryFilterSource.NAME)
+     static PrefixesRemoteRepositoryFilterSource newPrefixesRemoteRepositoryFilterSource(
++            RepositoryKeyFunctionFactory repositoryKeyFunctionFactory,
+             MetadataResolver metadataResolver,
+             RemoteRepositoryManager remoteRepositoryManager,
+             RepositoryLayoutProvider repositoryLayoutProvider) {
+         return new PrefixesRemoteRepositoryFilterSource(
+-                () -> metadataResolver, () -> remoteRepositoryManager, repositoryLayoutProvider);
++                repositoryKeyFunctionFactory,
++                () -> metadataResolver,
++                () -> remoteRepositoryManager,
++                repositoryLayoutProvider);
+     }
+ 
++    @Singleton
+     @Provides
+     static PathProcessor newPathProcessor() {
+         return new DefaultPathProcessor();
+     }
+ 
++    @Singleton
+     @Provides
+     static List<ValidatorFactory> newValidatorFactories() {
+         return List.of(new MavenValidatorFactory());
+     }
+ 
++    @Singleton
+     @Provides
+     static RepositorySystemValidator newRepositorySystemValidator(List<ValidatorFactory> validatorFactories) {
+         return new DefaultRepositorySystemValidator(validatorFactories);
+     }
+ 
++    @Singleton
+     @Provides
+     static RepositorySystem newRepositorySystem(
+             VersionResolver versionResolver,
+@@ -315,84 +353,130 @@ static RepositorySystem newRepositorySystem(
+                 repositorySystemValidator);
+     }
+ 
++    @Singleton
+     @Provides
+     static RemoteRepositoryManager newRemoteRepositoryManager(
+-            UpdatePolicyAnalyzer updatePolicyAnalyzer, ChecksumPolicyProvider checksumPolicyProvider) {
+-        return new DefaultRemoteRepositoryManager(updatePolicyAnalyzer, checksumPolicyProvider);
++            UpdatePolicyAnalyzer updatePolicyAnalyzer,
++            ChecksumPolicyProvider checksumPolicyProvider,
++            RepositoryKeyFunctionFactory repositoryKeyFunctionFactory) {
++        return new DefaultRemoteRepositoryManager(
++                updatePolicyAnalyzer, checksumPolicyProvider, repositoryKeyFunctionFactory);
+     }
+ 
++    @Singleton
+     @Provides
+     static ChecksumPolicyProvider newChecksumPolicyProvider() {
+         return new DefaultChecksumPolicyProvider();
+     }
+ 
++    @Singleton
++    @Provides
++    @Named(PrefixesLockingInhibitorFactory.NAME)
++    static LockingInhibitorFactory newPrefixesLockingInhibitorFactory() {
++        return new PrefixesLockingInhibitorFactory();
++    }
++
++    @Singleton
+     @Provides
+     static NamedLockFactoryAdapterFactory newNamedLockFactoryAdapterFactory(
+             Map<String, NamedLockFactory> factories,
+             Map<String, NameMapper> nameMappers,
++            Map<String, LockingInhibitorFactory> lockingInhibitorFactories,
+             RepositorySystemLifecycle lifecycle) {
+-        return new NamedLockFactoryAdapterFactoryImpl(factories, nameMappers, lifecycle);
++        return new NamedLockFactoryAdapterFactoryImpl(factories, nameMappers, lockingInhibitorFactories, lifecycle);
+     }
+ 
++    @Singleton
+     @Provides
+     @Named(FileLockNamedLockFactory.NAME)
+     static FileLockNamedLockFactory newFileLockNamedLockFactory() {
+         return new FileLockNamedLockFactory();
+     }
+ 
++    @Singleton
+     @Provides
+     @Named(LocalReadWriteLockNamedLockFactory.NAME)
+     static LocalReadWriteLockNamedLockFactory newLocalReadWriteLockNamedLockFactory() {
+         return new LocalReadWriteLockNamedLockFactory();
+     }
+ 
++    @Singleton
+     @Provides
+     @Named(LocalSemaphoreNamedLockFactory.NAME)
+     static LocalSemaphoreNamedLockFactory newLocalSemaphoreNamedLockFactory() {
+         return new LocalSemaphoreNamedLockFactory();
+     }
+ 
++    @Singleton
+     @Provides
+     @Named(NoopNamedLockFactory.NAME)
+     static NoopNamedLockFactory newNoopNamedLockFactory() {
+         return new NoopNamedLockFactory();
+     }
+ 
++    @Singleton
+     @Provides
+     @Named(NameMappers.STATIC_NAME)
+     static NameMapper staticNameMapper() {
+         return NameMappers.staticNameMapper();
+     }
+ 
++    @Singleton
+     @Provides
+     @Named(NameMappers.GAV_NAME)
+     static NameMapper gavNameMapper() {
+         return NameMappers.gavNameMapper();
+     }
+ 
++    @Singleton
++    @Provides
++    @Named(NameMappers.GAECV_NAME)
++    static NameMapper gaecvNameMapper() {
++        return NameMappers.gaecvNameMapper();
++    }
++
++    @Singleton
+     @Provides
+     @Named(NameMappers.DISCRIMINATING_NAME)
+     static NameMapper discriminatingNameMapper() {
+         return NameMappers.discriminatingNameMapper();
+     }
+ 
++    @Singleton
+     @Provides
+     @Named(NameMappers.FILE_GAV_NAME)
+     static NameMapper fileGavNameMapper() {
+         return NameMappers.fileGavNameMapper();
+     }
+ 
++    @Singleton
++    @Provides
++    @Named(NameMappers.FILE_GAECV_NAME)
++    static NameMapper fileGaecvNameMapper() {
++        return NameMappers.fileGaecvNameMapper();
++    }
++
++    @Singleton
+     @Provides
+     @Named(NameMappers.FILE_HGAV_NAME)
+     static NameMapper fileHashingGavNameMapper() {
+         return NameMappers.fileHashingGavNameMapper();
+     }
+ 
++    @Singleton
++    @Provides
++    @Named(NameMappers.FILE_HGAECV_NAME)
++    static NameMapper fileHashingGaecvNameMapper() {
++        return NameMappers.fileHashingGaecvNameMapper();
++    }
++
++    @Singleton
+     @Provides
+     static RepositorySystemLifecycle newRepositorySystemLifecycle() {
+         return new DefaultRepositorySystemLifecycle();
+     }
+ 
++    @Singleton
+     @Provides
+     static ArtifactResolver newArtifactResolver(
+             PathProcessor pathProcessor,
+@@ -418,11 +502,13 @@ static ArtifactResolver newArtifactResolver(
+                 remoteRepositoryFilterManager);
+     }
+ 
++    @Singleton
+     @Provides
+     static DependencyCollector newDependencyCollector(Map<String, DependencyCollectorDelegate> delegates) {
+         return new DefaultDependencyCollector(delegates);
+     }
+ 
++    @Singleton
+     @Provides
+     @Named(BfDependencyCollector.NAME)
+     static BfDependencyCollector newBfDependencyCollector(
+@@ -437,6 +523,7 @@ static BfDependencyCollector newBfDependencyCollector(
+                 artifactDecoratorFactories != null ? artifactDecoratorFactories : Map.of());
+     }
+ 
++    @Singleton
+     @Provides
+     @Named(DfDependencyCollector.NAME)
+     static DfDependencyCollector newDfDependencyCollector(
+@@ -451,6 +538,7 @@ static DfDependencyCollector newDfDependencyCollector(
+                 artifactDecoratorFactories != null ? artifactDecoratorFactories : Map.of());
+     }
+ 
++    @Singleton
+     @Provides
+     static Installer newInstaller(
+             PathProcessor pathProcessor,
+@@ -467,6 +555,7 @@ static Installer newInstaller(
+                 syncContextFactory);
+     }
+ 
++    @Singleton
+     @Provides
+     static Deployer newDeployer(
+             PathProcessor pathProcessor,
+@@ -491,66 +580,79 @@ static Deployer newDeployer(
+                 offlineController);
+     }
+ 
++    @Singleton
+     @Provides
+     static LocalRepositoryProvider newLocalRepositoryProvider(
+             Map<String, LocalRepositoryManagerFactory> localRepositoryManagerFactories) {
+         return new DefaultLocalRepositoryProvider(localRepositoryManagerFactories);
+     }
+ 
++    @Singleton
+     @Provides
+     @Named(EnhancedLocalRepositoryManagerFactory.NAME)
+     static EnhancedLocalRepositoryManagerFactory newEnhancedLocalRepositoryManagerFactory(
+             LocalPathComposer localPathComposer,
+             TrackingFileManager trackingFileManager,
+-            LocalPathPrefixComposerFactory localPathPrefixComposerFactory) {
++            LocalPathPrefixComposerFactory localPathPrefixComposerFactory,
++            RepositoryKeyFunctionFactory repositoryKeyFunctionFactory) {
+         return new EnhancedLocalRepositoryManagerFactory(
+-                localPathComposer, trackingFileManager, localPathPrefixComposerFactory);
++                localPathComposer, trackingFileManager, localPathPrefixComposerFactory, repositoryKeyFunctionFactory);
+     }
+ 
++    @Singleton
+     @Provides
+     @Named(SimpleLocalRepositoryManagerFactory.NAME)
+     static SimpleLocalRepositoryManagerFactory newSimpleLocalRepositoryManagerFactory(
+-            LocalPathComposer localPathComposer) {
+-        return new SimpleLocalRepositoryManagerFactory(localPathComposer);
++            LocalPathComposer localPathComposer, RepositoryKeyFunctionFactory repositoryKeyFunctionFactory) {
++        return new SimpleLocalRepositoryManagerFactory(localPathComposer, repositoryKeyFunctionFactory);
+     }
+ 
++    @Singleton
+     @Provides
+     static LocalPathComposer newLocalPathComposer() {
+         return new DefaultLocalPathComposer();
+     }
+ 
++    @Singleton
+     @Provides
+-    static LocalPathPrefixComposerFactory newLocalPathPrefixComposerFactory() {
+-        return new DefaultLocalPathPrefixComposerFactory();
++    static LocalPathPrefixComposerFactory newLocalPathPrefixComposerFactory(
++            RepositoryKeyFunctionFactory repositoryKeyFunctionFactory) {
++        return new DefaultLocalPathPrefixComposerFactory(repositoryKeyFunctionFactory);
+     }
+ 
++    @Singleton
+     @Provides
+     static TransporterProvider newTransportProvider(@Nullable Map<String, TransporterFactory> transporterFactories) {
+         return new DefaultTransporterProvider(transporterFactories != null ? transporterFactories : Map.of());
+     }
+ 
++    @Singleton
+     @Provides
+     static ChecksumProcessor newChecksumProcessor(PathProcessor pathProcessor) {
+         return new DefaultChecksumProcessor(pathProcessor);
+     }
+ 
++    @Singleton
+     @Provides
+     static ChecksumExtractor newChecksumExtractor(Map<String, ChecksumExtractorStrategy> strategies) {
+         return new DefaultChecksumExtractor(strategies);
+     }
+ 
++    @Singleton
+     @Provides
+     @Named(Nx2ChecksumExtractor.NAME)
+     static Nx2ChecksumExtractor newNx2ChecksumExtractor() {
+         return new Nx2ChecksumExtractor();
+     }
+ 
++    @Singleton
+     @Provides
+     @Named(XChecksumExtractor.NAME)
+     static XChecksumExtractor newXChecksumExtractor() {
+         return new XChecksumExtractor();
+     }
+ 
++    @Singleton
+     @Provides
+     @Named(TrustedToProvidedChecksumsSourceAdapter.NAME)
+     static TrustedToProvidedChecksumsSourceAdapter newTrustedToProvidedChecksumsSourceAdapter(
+@@ -558,52 +660,65 @@ static TrustedToProvidedChecksumsSourceAdapter newTrustedToProvidedChecksumsSour
+         return new TrustedToProvidedChecksumsSourceAdapter(trustedChecksumsSources);
+     }
+ 
++    @Singleton
+     @Provides
+     @Named(SparseDirectoryTrustedChecksumsSource.NAME)
+     static SparseDirectoryTrustedChecksumsSource newSparseDirectoryTrustedChecksumsSource(
+-            ChecksumProcessor checksumProcessor, LocalPathComposer localPathComposer) {
+-        return new SparseDirectoryTrustedChecksumsSource(checksumProcessor, localPathComposer);
++            RepositoryKeyFunctionFactory repositoryKeyFunctionFactory,
++            ChecksumProcessor checksumProcessor,
++            LocalPathComposer localPathComposer) {
++        return new SparseDirectoryTrustedChecksumsSource(
++                repositoryKeyFunctionFactory, checksumProcessor, localPathComposer);
+     }
+ 
++    @Singleton
+     @Provides
+     @Named(SummaryFileTrustedChecksumsSource.NAME)
+     static SummaryFileTrustedChecksumsSource newSummaryFileTrustedChecksumsSource(
++            RepositoryKeyFunctionFactory repositoryKeyFunctionFactory,
+             LocalPathComposer localPathComposer,
+             RepositorySystemLifecycle repositorySystemLifecycle,
+             PathProcessor pathProcessor) {
+-        return new SummaryFileTrustedChecksumsSource(localPathComposer, repositorySystemLifecycle, pathProcessor);
++        return new SummaryFileTrustedChecksumsSource(
++                repositoryKeyFunctionFactory, localPathComposer, repositorySystemLifecycle, pathProcessor);
+     }
+ 
++    @Singleton
+     @Provides
+     static ChecksumAlgorithmFactorySelector newChecksumAlgorithmFactorySelector(
+             Map<String, ChecksumAlgorithmFactory> factories) {
+         return new DefaultChecksumAlgorithmFactorySelector(factories);
+     }
+ 
++    @Singleton
+     @Provides
+     @Named(Md5ChecksumAlgorithmFactory.NAME)
+     static Md5ChecksumAlgorithmFactory newMd5ChecksumAlgorithmFactory() {
+         return new Md5ChecksumAlgorithmFactory();
+     }
+ 
++    @Singleton
+     @Provides
+     @Named(Sha1ChecksumAlgorithmFactory.NAME)
+     static Sha1ChecksumAlgorithmFactory newSh1ChecksumAlgorithmFactory() {
+         return new Sha1ChecksumAlgorithmFactory();
+     }
+ 
++    @Singleton
+     @Provides
+     @Named(Sha256ChecksumAlgorithmFactory.NAME)
+     static Sha256ChecksumAlgorithmFactory newSh256ChecksumAlgorithmFactory() {
+         return new Sha256ChecksumAlgorithmFactory();
+     }
+ 
++    @Singleton
+     @Provides
+     @Named(Sha512ChecksumAlgorithmFactory.NAME)
+     static Sha512ChecksumAlgorithmFactory newSh512ChecksumAlgorithmFactory() {
+         return new Sha512ChecksumAlgorithmFactory();
+     }
+ 
++    @Singleton
+     @Provides
+     static ArtifactPredicateFactory newArtifactPredicateFactory(
+             ChecksumAlgorithmFactorySelector checksumAlgorithmFactorySelector) {
+diff --git a/impl/maven-testing/src/main/java/org/apache/maven/api/plugin/testing/stubs/RepositorySystemSupplier.java b/impl/maven-testing/src/main/java/org/apache/maven/api/plugin/testing/stubs/RepositorySystemSupplier.java
+index e55785de4e..03483142e8 100644
+--- a/impl/maven-testing/src/main/java/org/apache/maven/api/plugin/testing/stubs/RepositorySystemSupplier.java
++++ b/impl/maven-testing/src/main/java/org/apache/maven/api/plugin/testing/stubs/RepositorySystemSupplier.java
+@@ -96,6 +96,7 @@
+ import org.eclipse.aether.internal.impl.DefaultRemoteRepositoryManager;
+ import org.eclipse.aether.internal.impl.DefaultRepositoryConnectorProvider;
+ import org.eclipse.aether.internal.impl.DefaultRepositoryEventDispatcher;
++import org.eclipse.aether.internal.impl.DefaultRepositoryKeyFunctionFactory;
+ import org.eclipse.aether.internal.impl.DefaultRepositoryLayoutProvider;
+ import org.eclipse.aether.internal.impl.DefaultRepositorySystem;
+ import org.eclipse.aether.internal.impl.DefaultRepositorySystemLifecycle;
+@@ -125,6 +126,7 @@
+ import org.eclipse.aether.internal.impl.filter.DefaultRemoteRepositoryFilterManager;
+ import org.eclipse.aether.internal.impl.filter.FilteringPipelineRepositoryConnectorFactory;
+ import org.eclipse.aether.internal.impl.filter.GroupIdRemoteRepositoryFilterSource;
++import org.eclipse.aether.internal.impl.filter.PrefixesLockingInhibitorFactory;
+ import org.eclipse.aether.internal.impl.filter.PrefixesRemoteRepositoryFilterSource;
+ import org.eclipse.aether.internal.impl.offline.OfflinePipelineRepositoryConnectorFactory;
+ import org.eclipse.aether.internal.impl.resolution.TrustedChecksumsArtifactResolverPostProcessor;
+@@ -162,6 +164,8 @@
+ import org.eclipse.aether.spi.io.ChecksumProcessor;
+ import org.eclipse.aether.spi.io.PathProcessor;
+ import org.eclipse.aether.spi.localrepo.LocalRepositoryManagerFactory;
++import org.eclipse.aether.spi.locking.LockingInhibitorFactory;
++import org.eclipse.aether.spi.remoterepo.RepositoryKeyFunctionFactory;
+ import org.eclipse.aether.spi.resolution.ArtifactResolverPostProcessor;
+ import org.eclipse.aether.spi.synccontext.SyncContextFactory;
+ import org.eclipse.aether.spi.validator.ValidatorFactory;
+@@ -269,7 +273,7 @@ public final LocalPathPrefixComposerFactory getLocalPathPrefixComposerFactory()
+     }
+ 
+     protected LocalPathPrefixComposerFactory createLocalPathPrefixComposerFactory() {
+-        return new DefaultLocalPathPrefixComposerFactory();
++        return new DefaultLocalPathPrefixComposerFactory(getRepositoryKeyFunctionFactory());
+     }
+ 
+     private RepositorySystemLifecycle repositorySystemLifecycle;
+@@ -343,6 +347,20 @@ protected UpdateCheckManager createUpdateCheckManager() {
+         return new DefaultUpdateCheckManager(getTrackingFileManager(), getUpdatePolicyAnalyzer(), getPathProcessor());
+     }
+ 
++    private RepositoryKeyFunctionFactory repositoriesKeyFunctionFactory;
++
++    public final RepositoryKeyFunctionFactory getRepositoryKeyFunctionFactory() {
++        checkClosed();
++        if (repositoriesKeyFunctionFactory == null) {
++            repositoriesKeyFunctionFactory = createRepositoryKeyFunctionFactory();
++        }
++        return repositoriesKeyFunctionFactory;
++    }
++
++    protected RepositoryKeyFunctionFactory createRepositoryKeyFunctionFactory() {
++        return new DefaultRepositoryKeyFunctionFactory();
++    }
++
+     private Map<String, NamedLockFactory> namedLockFactories;
+ 
+     public final Map<String, NamedLockFactory> getNamedLockFactories() {
+@@ -376,9 +394,28 @@ protected Map<String, NameMapper> createNameMappers() {
+         HashMap<String, NameMapper> result = new HashMap<>();
+         result.put(NameMappers.STATIC_NAME, NameMappers.staticNameMapper());
+         result.put(NameMappers.GAV_NAME, NameMappers.gavNameMapper());
++        result.put(NameMappers.GAECV_NAME, NameMappers.gaecvNameMapper());
+         result.put(NameMappers.DISCRIMINATING_NAME, NameMappers.discriminatingNameMapper());
+         result.put(NameMappers.FILE_GAV_NAME, NameMappers.fileGavNameMapper());
++        result.put(NameMappers.FILE_GAECV_NAME, NameMappers.fileGaecvNameMapper());
+         result.put(NameMappers.FILE_HGAV_NAME, NameMappers.fileHashingGavNameMapper());
++        result.put(NameMappers.FILE_HGAECV_NAME, NameMappers.fileHashingGaecvNameMapper());
++        return result;
++    }
++
++    private Map<String, LockingInhibitorFactory> lockingInhibitorFactories;
++
++    public final Map<String, LockingInhibitorFactory> getLockingInhibitorFactories() {
++        checkClosed();
++        if (lockingInhibitorFactories == null) {
++            lockingInhibitorFactories = createLockingInhibitorFactories();
++        }
++        return lockingInhibitorFactories;
++    }
++
++    protected Map<String, LockingInhibitorFactory> createLockingInhibitorFactories() {
++        HashMap<String, LockingInhibitorFactory> result = new HashMap<>();
++        result.put(PrefixesLockingInhibitorFactory.NAME, new PrefixesLockingInhibitorFactory());
+         return result;
+     }
+ 
+@@ -394,7 +431,10 @@ public final NamedLockFactoryAdapterFactory getNamedLockFactoryAdapterFactory()
+ 
+     protected NamedLockFactoryAdapterFactory createNamedLockFactoryAdapterFactory() {
+         return new NamedLockFactoryAdapterFactoryImpl(
+-                getNamedLockFactories(), getNameMappers(), getRepositorySystemLifecycle());
++                getNamedLockFactories(),
++                getNameMappers(),
++                getLockingInhibitorFactories(),
++                getRepositorySystemLifecycle());
+     }
+ 
+     private SyncContextFactory syncContextFactory;
+@@ -503,13 +543,18 @@ public final LocalRepositoryProvider getLocalRepositoryProvider() {
+ 
+     protected LocalRepositoryProvider createLocalRepositoryProvider() {
+         LocalPathComposer localPathComposer = getLocalPathComposer();
++        RepositoryKeyFunctionFactory repositoryKeyFunctionFactory = getRepositoryKeyFunctionFactory();
+         HashMap<String, LocalRepositoryManagerFactory> localRepositoryProviders = new HashMap<>(2);
+         localRepositoryProviders.put(
+-                SimpleLocalRepositoryManagerFactory.NAME, new SimpleLocalRepositoryManagerFactory(localPathComposer));
++                SimpleLocalRepositoryManagerFactory.NAME,
++                new SimpleLocalRepositoryManagerFactory(localPathComposer, repositoryKeyFunctionFactory));
+         localRepositoryProviders.put(
+                 EnhancedLocalRepositoryManagerFactory.NAME,
+                 new EnhancedLocalRepositoryManagerFactory(
+-                        localPathComposer, getTrackingFileManager(), getLocalPathPrefixComposerFactory()));
++                        localPathComposer,
++                        getTrackingFileManager(),
++                        getLocalPathPrefixComposerFactory(),
++                        repositoryKeyFunctionFactory));
+         return new DefaultLocalRepositoryProvider(localRepositoryProviders);
+     }
+ 
+@@ -524,7 +569,8 @@ public final RemoteRepositoryManager getRemoteRepositoryManager() {
+     }
+ 
+     protected RemoteRepositoryManager createRemoteRepositoryManager() {
+-        return new DefaultRemoteRepositoryManager(getUpdatePolicyAnalyzer(), getChecksumPolicyProvider());
++        return new DefaultRemoteRepositoryManager(
++                getUpdatePolicyAnalyzer(), getChecksumPolicyProvider(), getRepositoryKeyFunctionFactory());
+     }
+ 
+     private Map<String, RemoteRepositoryFilterSource> remoteRepositoryFilterSources;
+@@ -541,11 +587,15 @@ protected Map<String, RemoteRepositoryFilterSource> createRemoteRepositoryFilter
+         HashMap<String, RemoteRepositoryFilterSource> result = new HashMap<>();
+         result.put(
+                 GroupIdRemoteRepositoryFilterSource.NAME,
+-                new GroupIdRemoteRepositoryFilterSource(getRepositorySystemLifecycle(), getPathProcessor()));
++                new GroupIdRemoteRepositoryFilterSource(
++                        getRepositoryKeyFunctionFactory(), getRepositorySystemLifecycle(), getPathProcessor()));
+         result.put(
+                 PrefixesRemoteRepositoryFilterSource.NAME,
+                 new PrefixesRemoteRepositoryFilterSource(
+-                        this::getMetadataResolver, this::getRemoteRepositoryManager, getRepositoryLayoutProvider()));
++                        getRepositoryKeyFunctionFactory(),
++                        this::getMetadataResolver,
++                        this::getRemoteRepositoryManager,
++                        getRepositoryLayoutProvider()));
+         return result;
+     }
+ 
+@@ -605,11 +655,15 @@ protected Map<String, TrustedChecksumsSource> createTrustedChecksumsSources() {
+         HashMap<String, TrustedChecksumsSource> result = new HashMap<>();
+         result.put(
+                 SparseDirectoryTrustedChecksumsSource.NAME,
+-                new SparseDirectoryTrustedChecksumsSource(getChecksumProcessor(), getLocalPathComposer()));
++                new SparseDirectoryTrustedChecksumsSource(
++                        getRepositoryKeyFunctionFactory(), getChecksumProcessor(), getLocalPathComposer()));
+         result.put(
+                 SummaryFileTrustedChecksumsSource.NAME,
+                 new SummaryFileTrustedChecksumsSource(
+-                        getLocalPathComposer(), getRepositorySystemLifecycle(), getPathProcessor()));
++                        getRepositoryKeyFunctionFactory(),
++                        getLocalPathComposer(),
++                        getRepositorySystemLifecycle(),
++                        getPathProcessor()));
+         return result;
+     }
+ 
+diff --git a/its/core-it-suite/src/test/java/org/apache/maven/it/MavenITmng3477DependencyResolutionErrorMessageTest.java b/its/core-it-suite/src/test/java/org/apache/maven/it/MavenITmng3477DependencyResolutionErrorMessageTest.java
+index 1b2dbfd9a0..d2b1f774b7 100644
+--- a/its/core-it-suite/src/test/java/org/apache/maven/it/MavenITmng3477DependencyResolutionErrorMessageTest.java
++++ b/its/core-it-suite/src/test/java/org/apache/maven/it/MavenITmng3477DependencyResolutionErrorMessageTest.java
+@@ -94,9 +94,11 @@ void connectionProblemsPlugin() throws Exception {
+         testit(
+                 54312,
+                 new String[] { // JDK "Connection to..." Apache "Connect to..."
++                    // with removal of connector hack https://github.com/apache/maven-resolver/pull/1676
++                    // the order is not stable anymore, so repoId may be any of two
+                     ".*The following artifacts could not be resolved: org.apache.maven.its.plugins:maven-it-plugin-not-exists:pom:1.2.3 \\(absent\\): "
+                             + "Could not transfer artifact org.apache.maven.its.plugins:maven-it-plugin-not-exists:pom:1.2.3 from/to "
+-                            + "central \\(http://localhost:.*/repo\\):.*Connect.*refused.*"
++                            + "(central|maven-core-it) \\(http://localhost:.*/repo\\):.*Connect.*refused.*"
+                 },
+                 "pom-plugin.xml");
+     }
+diff --git a/pom.xml b/pom.xml
+index ba527a1104..c2d70d4c36 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -163,7 +163,7 @@ under the License.
+     <plexusInterpolationVersion>1.28</plexusInterpolationVersion>
+     <plexusTestingVersion>2.0.1</plexusTestingVersion>
+     <plexusXmlVersion>4.1.0</plexusXmlVersion>
+-    <resolverVersion>2.0.13</resolverVersion>
++    <resolverVersion>2.0.14</resolverVersion>
+     <securityDispatcherVersion>4.1.0</securityDispatcherVersion>
+     <sisuVersion>0.9.0.M4</sisuVersion>
+     <slf4jVersion>2.0.17</slf4jVersion>
+-- 
+2.52.0
+

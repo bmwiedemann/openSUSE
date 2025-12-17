@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 17 07:08:37 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * 0001-Maven-4.0.x-w-Resolver-2.0.14-SNAPSHOT-11530.patch
+    + Fix build with maven-resolver 2.0.14
+
+-------------------------------------------------------------------
 Tue Nov 25 21:44:26 UTC 2025 - Robert Munteanu <rombert@apache.org>
 
 - Require maven4-lib when installing maven4, otherwise the package
