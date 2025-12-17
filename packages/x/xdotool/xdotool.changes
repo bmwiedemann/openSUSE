@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Dec 17 09:50:15 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 4.20251130.1
+  * Fix bug in typing/keyboard causing xdotool to send extra
+    modifier keys in certain cases. When xkeyboard-config 2.46 is
+    installed, xdotool would send incorrect key sequences for
+    function keys, for example incorrectly sending "Alt + F3" when
+    F3 was requested. (#491, PR #493)
+  * Add 'windowlower' command (#426)
+  * Fix some crashes in xdo_get_desktop_for_window (#434)
+  * Fix mouse movement under Xwayland when multiple screens are
+    present (#435)
+  * mousemove --sync no only waits if the cursor is expected to
+    actually move (#463, #464)
+  * Remove dependency on libXi that was leftover from Wayland
+    detection code no longer used in xdotool
+  * Bump SONAME to 4 hopefully to resolve ABI issues with
+    previous versions of libxdo.
+  * Code improvements intended to reduce compiler warnings (#364)
+  * Add support for Cygwin when building
+  * Test suite works again! :)
+- fixes regression since xkeyboard-config 2.46 (boo#1254993)
+
+-------------------------------------------------------------------
 Tue Jan  4 21:25:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2021022.1:

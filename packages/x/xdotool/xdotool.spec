@@ -1,7 +1,7 @@
 #
 # spec file for package xdotool
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xdotool
-Version:        3.20211022.1
+Version:        4.20251130.1
 Release:        0
 Summary:        Fake keyboard/mouse input
 License:        BSD-3-Clause
