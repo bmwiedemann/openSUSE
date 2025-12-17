@@ -19,7 +19,7 @@
 %{!?python_sitearch:  %global python_sitearch %(python -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 %{!?py3_soflags:  %global py3_soflags cpython-%{python3_version_nodots}m}
 Name:           tdb
-Version:        1.4.13
+Version:        1.4.14
 Release:        0
 Summary:        Samba Trivial Database
 License:        LGPL-3.0-or-later
@@ -30,6 +30,7 @@ Source1:        https://download.samba.org/pub/tdb/tdb-%{version}.tar.asc
 Source2:        tdb.keyring
 Source4:        baselibs.conf
 Patch0:         build_pie.patch
+Patch1:         config-sitearch.patch
 BuildRequires:  autoconf
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  doxygen
@@ -97,7 +98,8 @@ export CFLAGS="%{optflags} -D_GNU_SOURCE -D_LARGEFILE64_SOURCE -DIDMAP_RID_SUPPO
 	--disable-rpath \
 	--disable-rpath-install \
 	--disable-silent-rules \
-	--bundled-libraries=NONE
+	--bundled-libraries=NONE \
+	--pythonarchdir=%{python3_sitearch}
 
 %make_build all
 doxygen doxy.config

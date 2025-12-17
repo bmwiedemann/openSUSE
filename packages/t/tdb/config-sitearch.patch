@@ -1,0 +1,13 @@
+Index: tdb-1.4.14/wscript
+===================================================================
+--- tdb-1.4.14.orig/wscript
++++ tdb-1.4.14/wscript
+@@ -68,6 +68,8 @@ def options(opt):
+                    help=("Disable the use of pthread robust mutexes"),
+                    action="store_true", dest='disable_tdb_mutex_locking',
+                    default=False)
++    opt.load('python') # options for disabling pyc or pyo compilation
++    # enable options related to building python extensions
+ 
+ 
+ def configure(conf):

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 16 11:17:53 UTC 2025 - Noel Power <nopower@suse.com>
+
+- Add config-sitearch.patch
+- Update to 1.4.14
+  * let tdbtool return error on failure; (bso#15890).
+
+-------------------------------------------------------------------
 Wed Mar 12 15:21:07 UTC 2025 - Samuel Cabrero <scabrero@suse.de>
 
 - Update to 1.4.13
