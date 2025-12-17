@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Dec 17 06:20:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.30.1 (4.30.0 was not released):
+  * fix: downgrade aliyun credentials to v1.4.7 (#2756)
+  * chore: fix attest-build-provenance subject-checksums path
+    (#2755)
+  * chore: update dependencies (#2753)
+  * Add DNS provider for Ionos Cloud (#2752)
+  * docs: improve contributing guide
+  * chore: clean maps
+  * Add DNS provider for hosting.nl (#1967)
+  * chore: improves github templates
+  * Add DNS provider for Virtualname (#2748)
+  * Add DNS Provider for Neodigit (#2747)
+  * chore: skip jekyll
+  * docs: add notes
+  * Add DNS provider for Syse.no (#2742)
+  * chore: update workflows (#2741)
+  * Add DNS provider for Gravity (#2738)
+  * feat: remove email requirement (#2736)
+  * chore: move provider "manual" into a dedicated package (#2739)
+  * autodns: use the right response structure (#2737)
+
+-------------------------------------------------------------------
 Thu Dec 04 06:47:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.29.0:
