@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Wed Dec 17 07:11:41 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 2.0.14
+  * New features and improvements
+    + Enhance RRF
+    + Locking inhibitor SPI
+    + Repository Key Function SPI
+    + GH-1668: Add catch-all for group filter
+    + Remote repository intent
+    + Name mappers cleanup and new GAECV mapper
+    + Remove hack from Basic connector
+    + HTTP compression support in Java Http Client
+    + Support preemptive authentication with Java HTTP Client
+  * Bug Fixes
+    + GH-1711 make sure last wins
+    + GH-1703 Gaps in G segments resets result
+    + GH-1703 Locally cached artifacts defy RRF
+    + depMgt in manager was "last wins" instead of "first wins"
+    + Prioritized Components Cache change detection got removed
+    + TrackingFileManager changes
+    + Make filters daemon friendly
+    + Fix locking issues
+    + Filter fixes
+    + Fix automatic module names and missing methanol
+    + ScopeManager: do not interfere with session graph transformer
+    + GH-1646 bugfix for filter support in ADNC
+    + Set the request timeout with Java HTTP Client
+  * Documentation updates
+    + Fix typos and improve clarity in using resolver docs
+  * Maintenance
+    + Test: Increase IPC test timeout
+    + Use try-with for resource in test HttpServer
+    + Cleanup prefix and others
+    + Maven Resolver lockrepro
+    + Update GH CI
+  * Dependency updates
+    + Update test tools
+    + Bump org.mockito:mockito-core from 5.20.0 to 5.21.0
+    + Bump org.codehaus.plexus:plexus-testing from 1.6.0 to 2.0.2
+    + Bump bouncycastleVersion from 1.82 to 1.83
+    + Update to SigStore 2.0.0
+    + Bump org.jboss.forge.roaster:roaster-api from 2.30.1.Final to
+      2.30.3.Final
+    + Bump org.jboss.forge.roaster:roaster-jdt from 2.30.1.Final to
+      2.30.3.Final
+    + Bump com.github.siom79.japicmp:japicmp-maven-plugin from
+      0.23.1 to 0.25.0
+    + Bump okhttpVersion from 5.1.0 to 5.3.2
+    + Bump org.apache.commons:commons-lang3 from 3.19.0 to 3.20.0
+    + Bump commons-codec:commons-codec from 1.19.0 to 1.20.0
+    + Bump org.codehaus.mojo:exec-maven-plugin from 3.6.1 to 3.6.2
+    + Bump com.github.mizosoft.methanol:methanol from 1.8.3 to 1.8.4
+- Added patch:
+  * 0001-Revert-Use-Methanol-for-support-of-response-compress.patch
+    + avoid an additional dependency.
+
+-------------------------------------------------------------------
 Fri Oct 10 18:45:46 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging with version 2.0.13

@@ -20,7 +20,7 @@
 %define version_suffix 2
 %define _buildshell /bin/bash
 Name:           %{base_name}%{version_suffix}
-Version:        2.0.13
+Version:        2.0.14
 Release:        0
 Summary:        Apache Maven Artifact Resolver library
 License:        Apache-2.0
@@ -28,6 +28,7 @@ Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/resolver/
 Source0:        https://archive.apache.org/dist/maven/resolver/%{base_name}-%{version}-source-release.zip
 Source1:        %{name}-build.tar.xz
+Patch0:         0001-Revert-Use-Methanol-for-support-of-response-compress.patch
 BuildRequires:  ant
 BuildRequires:  atinject
 BuildRequires:  bouncycastle
@@ -144,18 +145,22 @@ Group:          Development/Libraries/Java
 %description transport-file
 A transport implementation for repositories using file:// URLs.
 
-%package transport-jdk-11
+%package transport-jdk11
 Summary:        Maven Artifact Resolver Transport JDK 11
 Group:          Development/Libraries/Java
+Provides: %{name}-transport-jdk-11 = %{version}
+Obsoletes: %{name}-transport-jdk-11 < %{version}
 
-%description transport-jdk-11
+%description transport-jdk11
 Maven Artifact Transport JDK Java 11+.
 
-%package transport-jdk-8
+%package transport-jdk8
 Summary:        Maven Artifact Resolver Transport JDK 8
 Group:          Development/Libraries/Java
+Provides: %{name}-transport-jdk-8 = %{version}
+Obsoletes: %{name}-transport-jdk-8 < %{version}
 
-%description transport-jdk-8
+%description transport-jdk8
 Maven Artifact Transport JDK Java 8+.
 
 %package transport-jdk
@@ -181,6 +186,8 @@ This package provides %{summary}.
 
 %prep
 %setup -q -n %{base_name}-%{version} -a1
+%patch -P 0 -p1
+%pom_remove_dep -r com.github.mizosoft.methanol:methanol
 
 %pom_remove_dep :jetty-bom
 
@@ -254,8 +261,8 @@ for i in \
 done
 
 for i in \
-    transport-jdk-11 \
-    transport-jdk-8 \
+    transport-jdk11 \
+    transport-jdk8 \
     transport-jdk; do
   if [ -e %{base_name}-transport-jdk-parent/%{base_name}-${i}/site/apidocs ]; then
     cp -r %{base_name}-transport-jdk-parent/%{base_name}-${i}/site/apidocs target/site/apidocs/%{name}-${i}
@@ -296,9 +303,9 @@ done
 
 %files transport-apache -f .mfiles-transport-apache
 
-%files transport-jdk-11 -f .mfiles-transport-jdk-11
+%files transport-jdk11 -f .mfiles-transport-jdk11
 
-%files transport-jdk-8 -f .mfiles-transport-jdk-8
+%files transport-jdk8 -f .mfiles-transport-jdk8
 
 %files transport-jdk -f .mfiles-transport-jdk
 
