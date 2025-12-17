@@ -651,4 +651,14 @@
     <comment>Qt 6.10.1</comment>
     <requestid>1319476</requestid>
   </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>33bc84145efc7c8a4bcbd033e97e5510</srcmd5>
+    <version>6.10.1</version>
+    <time>1765989056</time>
+    <user>anag_factory</user>
+    <comment>- Add patch to fix crash due to 0001-fix-slow-scrolling-on-wayland.patch
+  (boo#1253651):
+  * 0001-wayland-Fix-crash-in-QWaylandShmBackingStore-scroll.patch (forwarded request 1322977 from Vogtinator)</comment>
+    <requestid>1323004</requestid>
+  </revision>
 </revisionlist>

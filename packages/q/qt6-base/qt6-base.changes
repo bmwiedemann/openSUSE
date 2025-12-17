@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 15 15:41:38 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix crash due to 0001-fix-slow-scrolling-on-wayland.patch
+  (boo#1253651):
+  * 0001-wayland-Fix-crash-in-QWaylandShmBackingStore-scroll.patch
+
+-------------------------------------------------------------------
 Thu Nov 20 15:14:22 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.10.1
