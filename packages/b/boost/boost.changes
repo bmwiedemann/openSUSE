@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec 10 18:26:07 CET 2025 - Arvin Schnell <aschnell@suse.com>
+
+- update to 1.90.0
+  * new libraries:
+    + OpenMethod (Header-only Open-(multi-)methods)
+  * for details on all changes see,
+    https://www.boost.org/releases/1.90.0/
+- boost-no-exception.patch: updated
+
+-------------------------------------------------------------------
 Thu Sep 04 08:48:57 CEST 2025 - aschnell@suse.com
 
 - update to 1.89.0

@@ -19,8 +19,8 @@
 #
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define ver 1.89.0
-%define _ver 1_89_0
+%define ver 1.90.0
+%define _ver 1_90_0
 %define file_version %_ver
 %define lib_appendix %_ver
 %define docs_version 1.56.0
@@ -72,9 +72,9 @@ ExclusiveArch:  do_not_build
 %define base_name boost%{?name_suffix}
 
 Name:           %{base_name}
-Version:        1.89.0
+Version:        1.90.0
 Release:        0
-%define library_version 1_89_0
+%define library_version 1_90_0
 Summary:        Boost C++ Libraries
 License:        BSL-1.0
 Group:          Development/Libraries/C and C++
@@ -729,6 +729,7 @@ This package contains the Boost.ProgramOptions runtime library.
 %package     -n libboost_program_options%{library_version}-devel
 Summary:        Development headers for Boost.ProgramOptions library
 Group:          Development/Libraries/C and C++
+Requires:       libboost_coroutine%{library_version}-devel = %{version}
 Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_program_options%{library_version} = %{version}
 Conflicts:      boost-devel < 1.63

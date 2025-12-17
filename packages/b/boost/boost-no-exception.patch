@@ -51,3 +51,15 @@ index dbaa83a..5b11d12 100644
      <library>/boost/spirit//boost_spirit
      <library>/boost/xpressive//boost_xpressive
      ;
+diff --git a/build.jam b/build.jam
+index dd6db1f8..2062c760 100644
+--- libs/test/build.jam
++++ libs/test/build.jam
+@@ -12,7 +12,6 @@ constant boost_dependencies :
+     /boost/config//boost_config
+     /boost/core//boost_core
+     /boost/detail//boost_detail
+-    /boost/exception//boost_exception
+     /boost/function//boost_function
+     /boost/io//boost_io
+     /boost/iterator//boost_iterator
