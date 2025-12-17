@@ -238,4 +238,15 @@
   * Fix #4809: Add nil checks for sessions map after Close() (rebased) (#4883) (forwarded request 1322978 from ph03nix)</comment>
     <requestid>1323017</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2a542de216ce588bc874edbde318476a</srcmd5>
+    <version>2.3.4</version>
+    <time>1765989237</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.3.4:
+  * v2.3.4
+  * Fix db client deadlocks with non-blocking cleanup and RW locks (#4918)
+  * Release Steampipe v2.3.2 (#4695) (forwarded request 1323160 from ph03nix)</comment>
+    <requestid>1323161</requestid>
+  </revision>
 </revisionlist>

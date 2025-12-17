@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 16 18:11:13 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.3.4:
+  * v2.3.4
+  * Fix db client deadlocks with non-blocking cleanup and RW locks (#4918)
+  * Release Steampipe v2.3.2 (#4695)
+
+-------------------------------------------------------------------
 Mon Dec 15 14:12:57 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 2.3.3:
