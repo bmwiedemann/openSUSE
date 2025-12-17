@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Dec 17 07:40:30 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 1.9.25
+  * New features and improvements
+    + Add scope support for trusted checksums
+    + Name mappers cleanup and new GAECV mapper
+    + Proper metadata locking support
+    + Ability to augment metadata nature for version range request
+  * Bug Fixes
+    + TrackingFileManager changes
+    + Maven filters daemon friendly
+    + Remove hack from Basic connector
+    + Fix locking issues
+  * Documentation updates
+    + Updated the documentation to reflect the current list of name
+      mappers
+  * Maintenance
+    + Mild backport: support same properties as Resolver 2.x
+    + Maven resolver lockrepro
+    + Bugfix: Java 25 broke test
+  * Dependency updates
+    + Bump com.github.siom79.japicmp:japicmp-maven-plugin from
+      0.23.1 to 0.25.0
+    + Bump org.codehaus.mojo:animal-sniffer-maven-plugin from 1.24
+      to 1.26
+    + Bump commons-codec:commons-codec from 1.18.0 to 1.20.0
+    + Bump org.redisson:redisson from 3.50.0 to 3.52.0
+    + Bump com.google.guava:guava from 33.4.8-jre to 33.5.0-jre
+    + Bump com.google.code.gson:gson from 2.13.1 to 2.13.2
+    + Bump jettyVersion from 9.4.57.v20241219 to 9.4.58.v20250814
+    + Bump mavenVersion from 3.9.10 to 3.9.11
+
+-------------------------------------------------------------------
 Tue Jul 22 07:22:59 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream version 1.9.24

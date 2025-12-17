@@ -1,7 +1,7 @@
 #
 # spec file for package maven-resolver
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global base_name maven-resolver
 %define _buildshell /bin/bash
 Name:           %{base_name}
-Version:        1.9.24
+Version:        1.9.25
 Release:        0
 Summary:        Apache Maven Artifact Resolver library
 License:        Apache-2.0
