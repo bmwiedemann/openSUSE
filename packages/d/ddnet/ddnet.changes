@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Tue Dec 16 18:23:17 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 19.6:
+  * [Client] Interactive scoreboard
+  * [Client] Improved controls settings
+  * [Client] WebLate for translations
+  * [Client&Server] Add important mod/alert messages
+  * [Client&Server] Add net message for save codes
+  * [Masterserver] Community support
+  * [Client] Add friend highlighting based on selected server
+  * [Client] Make hookline stop at other players outline
+  * [Client] Allow demo player everywhere
+  * [Client] Quad clustering (higher FPS on maps)
+  * [Client] Revert skin name normalization
+  * [Client] Remove standard cl_overlay_entities bind
+  * [Client] Set a more reasonable minimum to entity text size
+  * [Client] Add option to show/hide spectator hud
+  * [Client] Rework console autocomplete sorting
+  * [Client] Improve client moving between screens
+  * [Client] Generalize render layer clipping
+  * [Client] Fix best record time display in 0.7
+  * [Client] Fix hook line not showing player hooking correctly
+  * [Client] Fix Android shortcuts not working
+  * [Client] Don't interpolate spec cursor when demo player
+    is paused
+  * [Client] Client updater fixes
+  * [Client] Nameplate fixes
+  * [Client] Handle info change cooldown separately for player
+    and dummy
+  * [Client] Don't copy inputs to dummy when spectating others
+  * [Client] Fix client crash when community removed while on
+    browser tab
+  * [Editor] Improve and optimize quad envelope preview
+  * [Editor] Support setting color of all quad points 
+    simultaneously
+  * [Server] Add /collision, /hookcollision, /hitothers to practic
+  * [Server] Fix ninja old velocity not being clamped
+  * [Server] Fix teehistorian joins
+  * [Server] Don't ignore pre-CONNECTING players
+  * [Server] Add response to empty name_bans [rainonwires]
+  * [Server] Allow using vote-kick to mute players in
+    different teams
+  * [Server] Remove the limit of tees hit by ninja
+  * [Server] Fix: sv_hide_score leaks best time and leaks player
+    time on finish
+  * [Server] Fix server crashes in PickupType_SixToSeven
+  * [Server] Do not count player vote on client-side until server
+    confirms it, send "yes" voted-state to player calling a vote
+  * [Server] Fix crash on right border
+  * [Server] Fix unauthed clients able to force votes with helper
+    access level
+  * [Server] Don't allow reading out community token
+  * [Masterserver] Use "403 Forbidden" for responses to banned
+    IP addresses
+
+-------------------------------------------------------------------
 Sat Oct 25 04:53:25 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 19.5:

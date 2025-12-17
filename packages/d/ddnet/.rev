@@ -392,4 +392,63 @@
     <comment></comment>
     <requestid>1314085</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>48704d323509decaf10eb5798be2def6</srcmd5>
+    <version>19.6</version>
+    <time>1765989833</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 19.6:
+  * [Client] Interactive scoreboard
+  * [Client] Improved controls settings
+  * [Client] WebLate for translations
+  * [Client&amp;Server] Add important mod/alert messages
+  * [Client&amp;Server] Add net message for save codes
+  * [Masterserver] Community support
+  * [Client] Add friend highlighting based on selected server
+  * [Client] Make hookline stop at other players outline
+  * [Client] Allow demo player everywhere
+  * [Client] Quad clustering (higher FPS on maps)
+  * [Client] Revert skin name normalization
+  * [Client] Remove standard cl_overlay_entities bind
+  * [Client] Set a more reasonable minimum to entity text size
+  * [Client] Add option to show/hide spectator hud
+  * [Client] Rework console autocomplete sorting
+  * [Client] Improve client moving between screens
+  * [Client] Generalize render layer clipping
+  * [Client] Fix best record time display in 0.7
+  * [Client] Fix hook line not showing player hooking correctly
+  * [Client] Fix Android shortcuts not working
+  * [Client] Don't interpolate spec cursor when demo player
+    is paused
+  * [Client] Client updater fixes
+  * [Client] Nameplate fixes
+  * [Client] Handle info change cooldown separately for player
+    and dummy
+  * [Client] Don't copy inputs to dummy when spectating others
+  * [Client] Fix client crash when community removed while on
+    browser tab
+  * [Editor] Improve and optimize quad envelope preview
+  * [Editor] Support setting color of all quad points 
+    simultaneously
+  * [Server] Add /collision, /hookcollision, /hitothers to practic
+  * [Server] Fix ninja old velocity not being clamped
+  * [Server] Fix teehistorian joins
+  * [Server] Don't ignore pre-CONNECTING players
+  * [Server] Add response to empty name_bans [rainonwires]
+  * [Server] Allow using vote-kick to mute players in
+    different teams
+  * [Server] Remove the limit of tees hit by ninja
+  * [Server] Fix: sv_hide_score leaks best time and leaks player
+    time on finish
+  * [Server] Fix server crashes in PickupType_SixToSeven
+  * [Server] Do not count player vote on client-side until server
+    confirms it, send &quot;yes&quot; voted-state to player calling a vote
+  * [Server] Fix crash on right border
+  * [Server] Fix unauthed clients able to force votes with helper
+    access level
+  * [Server] Don't allow reading out community token
+  * [Masterserver] Use &quot;403 Forbidden&quot; for responses to banned
+    IP addresses (forwarded request 1323166 from Kieltux)</comment>
+    <requestid>1323285</requestid>
+  </revision>
 </revisionlist>
