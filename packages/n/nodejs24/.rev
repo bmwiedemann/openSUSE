@@ -31,4 +31,27 @@
     <comment>- Add support for ICU 77.1</comment>
     <requestid>1321678</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>46c6a8393e9e41a597d164f542a01935</srcmd5>
+    <version>24.12.0</version>
+    <time>1765989006</time>
+    <user>anag_factory</user>
+    <comment>- npm-path-normalization.patch: patch npm bug that causes build
+  failure wit localhost-npm-registry
+
+- Update to 24.12.0:
+  * http: add optimizeEmptyRequests server option
+  * lib: add options to util.deprecate
+  * module: mark type stripping as stable
+  * node-api: add napi_create_object_with_properties
+  * sqlite: allow setting defensive flag
+  * src: add watch config namespace
+  * src: add an option to make compile cache portable
+  * src,permission: add --allow-inspector ability
+  * v8: add cpu profile
+  for details, see https://nodejs.org/en/blog/release/v24.12.0
+- nodejs-libpath.patch: refreshed
+- fix_ci_tests.patch: add fix on 32bit platforms</comment>
+    <requestid>1322965</requestid>
+  </revision>
 </revisionlist>

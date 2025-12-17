@@ -34,7 +34,7 @@
 %endif
 
 Name:           nodejs24
-Version:        24.11.1
+Version:        24.12.0
 Release:        0
 
 # Double DWZ memory limits
@@ -147,6 +147,7 @@ Source21:       README.md
 Patch3:         fix_ci_tests.patch
 Patch4:         v8_nameclash.patch
 Patch5:         icu_781.patch
+Patch6:         npm-path-normalization.patch
 
 ## Patches specific to SUSE and openSUSE
 # PATCH-FIX-OPENSUSE -- set correct path for dtrace if it is built
@@ -267,7 +268,7 @@ Provides:       bundled(icu) = 77.1
 %if ! 0%{with intree_nghttp2}
 BuildRequires:  libnghttp2-devel >= 1.41.0
 %else
-Provides:       bundled(nghttp2) = 1.66.0
+Provides:       bundled(nghttp2) = 1.67.1
 %endif
 
 %if 0%{with valgrind_tests}
@@ -318,7 +319,7 @@ ExclusiveArch:  not_buildable
 
 Provides:       bundled(uvwasi) = 0.0.23
 Provides:       bundled(libuv) = 1.51.0
-Provides:       bundled(v8) = 13.6.233.10
+Provides:       bundled(v8) = 13.6.233.17
 %if %{with intree_brotli}
 Provides:       bundled(brotli) = 1.1.0
 %else
@@ -330,7 +331,7 @@ Provides:       bundled(llhttp) = 9.3.0
 Provides:       bundled(ngtcp2) = 1.11.0
 
 
-Provides:       bundled(simdjson) = 4.0.7
+Provides:       bundled(simdjson) = 4.1.0
 # bundled url-ada parser, not ada
 Provides:       bundled(ada) = 3.3.0
 

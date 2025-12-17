@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Dec 15 14:24:24 UTC 2025 - Adam Majer <adam.majer@suse.de>
+
+- npm-path-normalization.patch: patch npm bug that causes build
+  failure wit localhost-npm-registry
+
+-------------------------------------------------------------------
+Thu Dec 11 11:43:06 UTC 2025 - Adam Majer <adam.majer@suse.de>
+
+- Update to 24.12.0:
+  * http: add optimizeEmptyRequests server option
+  * lib: add options to util.deprecate
+  * module: mark type stripping as stable
+  * node-api: add napi_create_object_with_properties
+  * sqlite: allow setting defensive flag
+  * src: add watch config namespace
+  * src: add an option to make compile cache portable
+  * src,permission: add --allow-inspector ability
+  * v8: add cpu profile
+
+  for details, see https://nodejs.org/en/blog/release/v24.12.0
+
+- nodejs-libpath.patch: refreshed
+- fix_ci_tests.patch: add fix on 32bit platforms
+
+-------------------------------------------------------------------
 Mon Dec  8 18:59:05 UTC 2025 - Adam Majer <adam.majer@suse.de>
 
 - Add support for ICU 77.1

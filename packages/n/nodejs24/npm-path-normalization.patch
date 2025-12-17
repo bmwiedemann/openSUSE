@@ -1,0 +1,15 @@
+from https://github.com/npm/package-json/pull/164
+
+Index: node-v24.12.0/deps/npm/node_modules/@npmcli/package-json/lib/normalize.js
+===================================================================
+--- node-v24.12.0.orig/deps/npm/node_modules/@npmcli/package-json/lib/normalize.js
++++ node-v24.12.0/deps/npm/node_modules/@npmcli/package-json/lib/normalize.js
+@@ -474,7 +474,7 @@ async function asyncSteps (pkg, { steps,
+   }
+ 
+   // expand "directories.bin"
+-  if (steps.includes('binDir') && data.directories?.bin && !data.bin) {
++  if (steps.includes('binDir') && data.directories?.bin && !data.bin && pkg.path) {
+     const binPath = secureAndUnixifyPath(data.directories.bin)
+     const bins = await lazyLoadGlob()('**', { cwd: path.resolve(pkg.path, binPath) })
+     data.bin = bins.reduce((acc, binFile) => {
