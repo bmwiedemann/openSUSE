@@ -4997,4 +4997,12 @@ a previous changelog entry.
     https://libvirt.org/news.html#v11-10-0-2025-12-01</comment>
     <requestid>1320883</requestid>
   </revision>
+  <revision rev="435" vrev="2">
+    <srcmd5>5af5688b803cd2ad6e98a3da146f2f73</srcmd5>
+    <version>11.10.0</version>
+    <time>1765989074</time>
+    <user>anag_factory</user>
+    <comment>Deactive gluster backend, package is going away for being unmaintained</comment>
+    <requestid>1323034</requestid>
+  </revision>
 </revisionlist>

@@ -33,12 +33,11 @@
 
 # Stateful secondary host drivers that run in daemons
 %define with_storage_rbd   0%{!?_without_storage_rbd:0}
-# The gluster storage backend is built for both openSUSE and SLE, but it is
-# not supported
-%define with_storage_gluster  0%{!?_without_storage_gluster:1}
 %define with_storage_iscsi_direct 0%{!?_without_storage_iscsi_direct:1}
 %define with_apparmor      0%{!?_without_apparmor:1}
 %define with_selinux_unconfined_daemon_hooks	0%{!?_without_selinux:1}
+# The gluster storage backend is currently unmaintained in both openSUSE and SLE
+%define with_storage_gluster  0%{!?_without_storage_gluster:0}
 # The udev interface backend is the only one that works across SUSE distros.
 # It supports just a handful of read-only operations, has a history of
 # instability, and is insufficiently maintained. Completely disable the
