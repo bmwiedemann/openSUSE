@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 16 15:54:33 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.27
+
+- Update to 2.95.27
+  * Fix DOCTEAM-2059: Add name to JSON-LD structure in #769
+  * Use HTTPS instead of HTTP for schema.org in #771
+
+-------------------------------------------------------------------
 Thu Dec 11 06:47:50 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.26
 
 - Update to 2.95.26
