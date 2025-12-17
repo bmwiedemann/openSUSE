@@ -1,7 +1,7 @@
 #
 # spec file for package rtl_433
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2017-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           rtl_433
-Version:        25.02
+Version:        25.12
 Release:        0
 Summary:        Application turning the RTL2832 dongle into a 433.92MHz generic data receiver
 License:        GPL-2.0-only
@@ -50,9 +50,7 @@ to make use of rtl_433.
 %setup -q
 
 %build
-%cmake \
-    -DBUILD_TESTING=OFF \
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+%cmake
 %cmake_build
 
 %install
