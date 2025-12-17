@@ -1,7 +1,6 @@
 #
 # spec file for package gegl
 #
-# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,7 +26,7 @@
 %bcond_with gegl_docs
 
 Name:           gegl
-Version:        0.4.64
+Version:        0.4.66
 Release:        0
 Summary:        Generic Graphics Library
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later

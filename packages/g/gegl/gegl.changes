@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec 15 00:24:43 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.4.66:
+  - Core:
+    - Improved relocability now also on linux.
+  - Ops:
+    - gif-load: don’t embed libnsgif directly
+  - Dependencies:
+    - libnsgif: support using distro provided lib.
+    - ctx: synchronize with ctx-0.1.14
+
+-------------------------------------------------------------------
 Mon Oct 27 16:54:00 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Enable luajit on riscv64

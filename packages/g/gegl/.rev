@@ -798,4 +798,12 @@
 Update the changelog to record security CVE fixed in previous update. (CVE-2025-10921, ZDI-CAN-27803, bsc#1250496)</comment>
     <requestid>1320572</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>3ec38cab09207f47d0b2b0bd051ac1be</srcmd5>
+    <version>0.4.66</version>
+    <time>1765989169</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1323157</requestid>
+  </revision>
 </revisionlist>
