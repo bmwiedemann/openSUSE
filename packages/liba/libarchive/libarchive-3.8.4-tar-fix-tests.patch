@@ -1,0 +1,43 @@
+From 400598a59e2158deb7fe7d976db0c4b8e4becc0a Mon Sep 17 00:00:00 2001
+From: Martin Matuska <martin@matuska.de>
+Date: Mon, 8 Dec 2025 21:40:46 +0100
+Subject: [PATCH] tar: fix off-bounds read resulting from #2787 (3150539ed)
+
+---
+ tar/subst.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/tar/subst.c b/tar/subst.c
+index a466f6535..fff9a45c8 100644
+--- a/tar/subst.c
++++ b/tar/subst.c
+@@ -237,7 +237,7 @@ apply_substitution(struct bsdtar *bsdtar, const char *name, char **result,
+ 
+ 		char isEnd = 0;
+ 		do {
+-            isEnd = *name == '\0';
++			isEnd = *name == '\0';
+ 			if (regexec(&rule->re, name, 10, matches, 0))
+ 				break;
+ 
+@@ -293,13 +293,13 @@ apply_substitution(struct bsdtar *bsdtar, const char *name, char **result,
+ 
+ 			realloc_strcat(result, rule->result + j);
+ 			if (matches[0].rm_eo > 0) {
+-                name += matches[0].rm_eo;
+-            } else {
+-                // We skip a character because the match is 0-length
+-                // so we need to add it to the output
+-                realloc_strncat(result, name, 1);
+-                name += 1;
+-            }
++				name += matches[0].rm_eo;
++            		} else if (!isEnd) {
++				// We skip a character because the match is 0-length
++				// so we need to add it to the output
++				realloc_strncat(result, name, 1);
++				name += 1;
++			}
+ 		} while (rule->global && !isEnd); // Testing one step after because sed et al. run 0-length patterns a last time on the empty string at the end
+ 	}
+ 

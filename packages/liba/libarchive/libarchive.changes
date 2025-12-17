@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec  9 09:17:20 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 3.8.4:
+  * bsdtar: Fix zero-length pattern issue
+  * lib: Fix regression introduced in libarchive 3.8.2 when walking
+    enterable but unreadable directories
+- add libarchive-3.8.4-tar-fix-tests.patch to fix tests
+
+-------------------------------------------------------------------
 Sat Nov 29 09:02:11 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 3.8.3:
