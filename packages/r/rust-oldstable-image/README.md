@@ -4,7 +4,7 @@
 
 ## Description
 
-[Rust](https://www.rust-lang.org/) is a systems programming language sponsored by Mozilla Research. It is designed to be a safe, concurrent, practical language, supporting functional and imperative-procedural paradigms. While syntactically similar to C++, Rust is designed for better memory safety without performance penalty.
+[Rust](https://www.rust-lang.org/) is a systems programming language sponsored by Mozilla Research. It is designed to be a safe, concurrent, practical language, supporting functional and imperative-procedural paradigms. While syntactically similar to C++, Rust is designed for better memory safety without a performance penalty.
 
 ## Usage
 
