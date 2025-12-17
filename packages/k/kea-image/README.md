@@ -2,7 +2,7 @@
 
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
-Kea is an open-source DHCP server developed by the [Internet Systems
+Kea is an open source DHCP server developed by the [Internet Systems
 Consortium](https://www.isc.org/) and the successor of the now deprecated
 DHCPd. The Kea distribution includes a DHCPv4 server, a DHCPv6 server, and a
 Dynamic DNS (DDNS) server. Significant features include: support for IPv6 prefix
