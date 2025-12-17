@@ -129,4 +129,12 @@
     <comment>- Update to 1.12.0: (forwarded request 1310654 from darix)</comment>
     <requestid>1310711</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>31fbd54d902a763d608bbd536ea49fe5</srcmd5>
+    <version>1.13.1</version>
+    <time>1765989091</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.13.1:</comment>
+    <requestid>1323119</requestid>
+  </revision>
 </revisionlist>

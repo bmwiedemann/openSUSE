@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Dec 16 10:29:17 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.13.1:
+  * Fix header name validation on a platform where char is unsigned
+
+-------------------------------------------------------------------
+Tue Dec 16 10:27:40 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.13.0:
+  * Revert #395 partially
+  * Replace POPCNT-based ispow2 with portable bitwise
+    implementation to prevent illegal instruction crashes
+  * doc: Recommend specifying rand callback
+  * qpack: Optimize huffman decoding a bit
+  * Remove unused enum values from nghttp3_stream_http_state
+  * Qpack indexing strategy
+
+-------------------------------------------------------------------
 Fri Oct 10 23:53:46 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.12.0:
