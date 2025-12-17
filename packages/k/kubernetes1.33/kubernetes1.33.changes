@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Dec 15 06:28:33 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.33.7:
+  * Bump dependencies, images and versions used to Go 1.24.11 and distroless iptables
+  * fix docker IP address detection for rsync
+  * [Manual bugfix]: unhide the etcd-join phase for v1.33
+  * Fallback to live ns lookup on admission if lister cannot find namespace
+  * fix panic for the crd with status subresource but lose openAPIV3Schema fileds
+  * fix: ResolverTypeProvider data race
+  * mark device manager as healthy before it started for the first time
+  * Mark API server errors as transient in csi raw block driver
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.24.11`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.33.7/build/dependencies.yaml#L113-L115
+
+-------------------------------------------------------------------
 Tue Nov 25 07:09:26 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.33.6:

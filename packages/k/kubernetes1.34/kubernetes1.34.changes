@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Dec 15 06:26:34 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.34.3:
+  * Bump dependencies, images and versions used to Go 1.24.11 and distroless iptables
+  * Use transformer in consistency checker
+  * Add unit tests for Data Consistency Detector
+  * Embed proper interface in TransformingStore to ensure DeltaFIFO and RealFIFO are implementing it
+  * fix docker IP address detection for rsync
+  * [Manual bugfix]: unhide the etcd-join phase for v1.34
+  * Fallback to live ns lookup on admission if lister cannot find namespace
+  * Fix alpha API warnings for patch version differences
+  * mark device manager as healthy before it started for the first time
+  * Mark API server errors as transient in csi raw block driver
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.24.11`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.34.3/build/dependencies.yaml#L113-L116
+
+-------------------------------------------------------------------
 Tue Nov 25 07:02:53 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.34.2:

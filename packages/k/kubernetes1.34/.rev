@@ -18,4 +18,12 @@
 - add `Recommends: diffutils` to Kubernetes*-client package, bsc#1251168</comment>
     <requestid>1319945</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d90027d8ae076945b9decf4cc7f5f52e</srcmd5>
+    <version>1.34.3</version>
+    <time>1765993249</time>
+    <user>anag_factory</user>
+    <comment>Monthly Patch Release – Dec, 2025: Update to version 1.34.3</comment>
+    <requestid>1323347</requestid>
+  </revision>
 </revisionlist>
