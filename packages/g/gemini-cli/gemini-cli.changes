@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Wed Dec 17 14:14:23 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.21.0:
+  * refactor(stdio): always patch stdout and use
+    createWorkingStdio for clean output
+  * implement fuzzy search inside settings
+  * feat: enable message bus integration by default
+  * docs: Recommend using --debug intead of --verbose for CLI
+    debugging
+  * feat: consolidate remote MCP servers to use `url` in config
+  * Restrict integration tests tools
+  * track github repository names in telemetry events
+  * Allow telemetry exporters to GCP to utilize user's login
+    credentials, if requested
+  * refactor(editor): use const assertion for editor types with
+    single source of truth
+  * fix(security): Fix npm audit vulnerabilities in glob and
+    body-parser
+  * Add new enterprise instructions
+  * feat(hooks): Hook Session Lifecycle & Compression Integration
+  * Avoid triggering refreshStatic unless there really is a
+    banner to display.
+  * feat(hooks): Hooks Commands Panel, Enable/Disable, and
+    Migrate
+  * fix: Bundle default policies for npx distribution
+  * Fix tests
+  * feat: add scheduled workflow to close stale issues
+  * feat: Support Extension Hooks with Security Warning
+  * feat: Add enableAgents experimental flag
+  * docs: fix typo 'socus' to 'focus' in todos.md
+  * Markdown export: move the emoji to the end of the line
+  * fix(acp): prevent unnecessary credential cache clearing on
+    re-authent…
+  * fix: improve retry logic for fetch errors and network codes
+  * remove unused isSearching field
+  * feat(mcp): add `--type` alias for `--transport` flag in
+    gemini mcp add
+  * feat(cli): Move key restore logic to core
+  * feat: add auto-execute on Enter behavior to argumentless MCP
+    prompts
+  * fix(shell): cursor visibility when using interactive mode
+  * Adding session id as part of json o/p
+  * fix(extensions): resolve GitHub API 415 error for source
+    tarballs
+  * fix(client): Correctly latch hasFailedCompressionAttempt flag
+  * Disable flaky extension reloading test on linux
+  * Add support for MCP dynamic tool update by
+    `notifications/tools/list_changed`
+  * Fix privacy screen for legacy tier users
+  * feat: Exclude maintainer labeled issues from stale issue
+    closer
+  * Grant chained workflows proper permission.
+  * Make trigger_e2e manually fireable.
+  * Write e2e status to local repo not forked repo
+  * Fixes [API Error: Cannot read properties of undefined
+    (reading 'error')]
+  * Fix bug in the shellExecutionService resulting in both
+    truncation and 3X bloat
+  * Fix issue where we were passing the model content reflecting
+    terminal line wrapping.
+  * chore/release: bump version to
+    0.21.0-nightly.20251204.3da4fd5f7
+  * feat(sessions): use 1-line generated session summary to
+    describe sessions
+  * Use Robot PAT for chained e2e merge queue skipper
+  * fix(core): improve API response error handling and retry
+  * refactor(telemetry): Improve previous PR that allows
+    telemetry to use the CLI auth and add testing
+  * Always set status in chained_e2e workflow
+  * feat: Add OTEL log event `gemini_cli.startup_stats` for
+    startup stats.
+  * feat: auto-execute on slash command completion functions
+  * Docs: Proper release notes
+  * Add support for user-scoped extension settings
+  * refactor(core): Improve environment variable handling in
+    shell execution
+  * Remove old E2E Workflows
+  * fix(lint): upgrade pip and use public pypi for yamllint
+  * fix: use Gemini API supported image formats for clipboard
+  * feat(a2a): Introduce restore command for a2a server
+  * allow final:true to be returned on a2a server edit calls.
+
+-------------------------------------------------------------------
 Sat Dec 13 16:33:21 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - package 0.20.2

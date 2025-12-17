@@ -1,7 +1,7 @@
 #
-# spec file for package bc
+# spec file for package gemini-cli
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           gemini-cli
-Version:        0.20.2
+Version:        0.21.0
 Release:        0
 Summary:        An AI agent that brings the power of Gemini directly into your terminal
 License:        Apache-2.0
 URL:            https://github.com/google-gemini/gemini-cli
 Source0:        https://github.com/google-gemini/gemini-cli/releases/download/v%{version}/gemini.js#/%{name}-%{version}.js
 Source1:        https://raw.githubusercontent.com/google-gemini/gemini-cli/refs/tags/v%{version}/LICENSE
-Requires:       grep
 Requires:       git-core
+Requires:       grep
 Recommends:     codespell
 
 %description
@@ -39,7 +39,6 @@ most direct path from your prompt to our model.
 * Extensible: MCP (Model Context Protocol) support for custom integrations.
 * Terminal-first: Designed for developers who live in the command line.
 * Open source: Apache 2.0 licensed.
-
 
 %prep
 cp -p %{SOURCE1} .
