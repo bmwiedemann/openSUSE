@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Dec 16 16:30:03 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
+
+- Update to version 2.60.1:
+  * sync: skip bloat check if fresh sync
+  * project: only use --no-auto-gc for git 2.23.0+
+
+-------------------------------------------------------------------
+Thu Dec 11 19:39:40 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
+
+- Update to version 2.60:
+  * sync: Add heuristic warning for bloated shallow repositories
+  * project: disable auto-gc on fetch for projects with clone-depth=1
+  * Prevent leftover bare gitdirs after failed sync attempts
+  * project: Make the error message more logical when a linkfile fail
+  * info: Print a newline after printing the superproject's revision
+  * Rename XmlManifest.GetGroupsStr() to XmlManifest.GetManifestGroupsStr()
+  * manifest_xml, git_superproject: Rename an argument for XmlManifest.ToXml()
+  * docs: manifest-format: reformat spec to align the CDATA parts
+  * manifest: Propagate revision attribute through multiple levels of include
+  * manifest, project: Store project groups as sets
+  * project: Use dicts to keep track of copyfiles and linkfiles
+  * manifest: Make include groups propagate to extend-project elements
+  * wipe: Add new `repo wipe` subcommand
+  * tests: manifest_xml: convert most path usage to pathlib
+  * man: Regenerate after manifest update
+  * manifest: Make extend-project support copyfile, linkfile and annotation
+
+-------------------------------------------------------------------
 Wed Nov 05 18:38:43 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
 
 - Update to version 2.59:
