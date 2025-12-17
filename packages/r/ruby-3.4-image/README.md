@@ -4,7 +4,7 @@
 
 ## Description
 
-[Ruby](https://www.ruby-lang.org/) is a dynamic, reflective, object-oriented, general-purpose, open-source programming language. It supports multiple programming paradigms, including functional, object-oriented, and imperative. It also has a dynamic type system and automatic memory management.
+[Ruby](https://www.ruby-lang.org/) is a dynamic, reflective, object-oriented, general-purpose, open source programming language. It supports multiple programming paradigms, including functional, object-oriented, and imperative. It also has a dynamic type system and automatic memory management.
 
 ## Usage
 
