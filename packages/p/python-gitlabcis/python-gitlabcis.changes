@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 17 07:02:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.15.16:
+  * Fix
+    - fix(deps): update dependency bandit to v1.9.2 (9075bc1)
+
+-------------------------------------------------------------------
 Mon Dec 15 05:56:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.15.15 (.14 was not released):

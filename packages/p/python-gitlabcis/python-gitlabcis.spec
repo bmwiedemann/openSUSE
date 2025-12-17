@@ -17,7 +17,7 @@
 
 
 Name:           python-gitlabcis
-Version:        1.15.13
+Version:        1.15.16
 Release:        0
 Summary:        An automated tool that assesses the GitLab CIS benchmarks against a project
 License:        MIT
@@ -37,7 +37,7 @@ BuildRequires:  %{python_module wheel >= 0.45.1}
 # /SECTION
 # SECTION runtime requirements
 # https://gitlab.com/gitlab-security-oss/cis/gitlabcis/-/blob/main/pyproject.toml?ref_type=heads#L61
-BuildRequires:  %{python_module PyYAML >= 6.0.2}
+BuildRequires:  %{python_module PyYAML >= 6.0.3}
 BuildRequires:  %{python_module defusedxml >= 0.7.1}
 BuildRequires:  %{python_module gql >= 3.5.3}
 BuildRequires:  %{python_module python-dateutil >= 2.9.0.post0}
@@ -46,9 +46,9 @@ BuildRequires:  %{python_module tabulate >= 0.9.0}
 BuildRequires:  %{python_module tqdm >= 4.67.1}
 # /SECTION
 # SECTION test requirements
-# BuildRequires:  python_module pytest >= 8.3.4}
-# BuildRequires:  python_module yamllint >= 1.35.1}
-# BuildRequires:  python_module bandit >= 1.8.3}
+# BuildRequires:  python_module pytest >= 8.4.2}
+# BuildRequires:  python_module yamllint >= 1.37.1}
+# BuildRequires:  python_module bandit >= 1.9.2}
 # /SECTION
 BuildRequires:  fdupes
 # https://gitlab.com/gitlab-security-oss/cis/gitlabcis/-/blob/main/pyproject.toml?ref_type=heads#L61
