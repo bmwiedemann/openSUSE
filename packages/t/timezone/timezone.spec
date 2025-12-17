@@ -20,7 +20,7 @@
 %global AREA    Etc
 %global ZONE    UTC
 Name:           timezone
-Version:        2025b
+Version:        2025c
 Release:        0
 Summary:        Time Zone Descriptions
 License:        BSD-3-Clause AND SUSE-Public-Domain

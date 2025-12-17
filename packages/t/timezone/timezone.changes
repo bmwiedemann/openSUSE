@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Dec 13 13:52:41 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2025c:
+  * update Baja California DST rules in 1953, 1961-1975
+  * An unset TZ is no longer invalid when /etc/localtime is
+    missing, and is abbreviated "UTC" not "-00".  This reverts to
+    2024b behavior
+  * tzset etc. are now more cautious about questionable TZ settings.
+  * tzset etc. now treat ' ' like '_' in time zone abbreviations
+  * tzfree now preserves errno, consistently with POSIX.1-2024 ‘free’.
+  * zic has new options inspired by FreeBSD.  ‘-D’ skips creation of
+    output ancestor directories, ‘-m MODE’ sets output files’ mode,
+    and ‘-u OWNER[:GROUP]’ sets output files’ owner and group.
+  * multiple changes visible to developers
+
+-------------------------------------------------------------------
 Sun Mar 23 07:06:49 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 2025b:
