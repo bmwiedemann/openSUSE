@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Dec  3 20:52:00 UTC 2025 - Guang Yee <gyee@suse.com>
+
+- Update to 2.41.5
+  * Correct invalid serialization of date/datetime/time/timedelta by pulling downcast checks up by @astei in #1851
+  * avoid getting default values from defaultdict by @davidhewitt in #1853
+  * ci: add more 3.14t builds, delete duplicate linux aarch64 build by @davidhewitt in #1864
+  * JsonValue: Deduplicate keys before populating Dict by @friendlymatthew in #1865
+  * fix: only percent-encode characters in the userinfo encode set by @davidhewitt in #1852
+  * Bump jiter from 0.11.0 to 0.11.1 by @dependabot[bot] in #1878
+  * Bump regex from 1.11.3 to 1.12.2 by @dependabot[bot] in #1877
+  * Bump percent-encoding from 2.3.1 to 2.3.2 by @dependabot[bot] in #1876
+  * fix issue with field_serializers on nested typed dicts by @davidhewitt in #1879
+  * clean up GC traversal for some top-level types by @davidhewitt in #1870
+  * add type inference for serializing ip address types by @davidhewitt in #1868
+  * revert url credential encoding (to be reintroduced as an option in future) by @davidhewitt in #1882
+  * optimizations in URL implementation by @davidhewitt in #1833 
+
+-------------------------------------------------------------------
 Thu Aug 14 04:02:02 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.39.0:

@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pydantic-core%{psuffix}
-Version:        2.39.0
+Version:        2.41.5
 Release:        0
 Summary:        Core functionality for pydantic validation and serialization
 License:        MIT
@@ -37,7 +37,7 @@ BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module inline-snapshot}
 BuildRequires:  %{python_module maturin >= 1}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module typing-extensions >= 4.6.0}
+BuildRequires:  %{python_module typing-extensions >= 4.14.1}
 BuildRequires:  cargo-packaging
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
