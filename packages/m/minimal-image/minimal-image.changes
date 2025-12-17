@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 16 15:28:01 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- README.md language cleanups
+
+-------------------------------------------------------------------
 Mon Oct 20 12:53:40 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - remove password change date from /etc/shadow to make the file reproducible
