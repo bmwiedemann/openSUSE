@@ -1,0 +1,76 @@
+commit 29ebdb37c7095e258303f1c6a05e3af74c440b98
+Author: Marcus Meissner <>
+Date:   Sat May 3 12:02:40 2025 -0700
+
+    Add defines for seccomp and getrandom missing in older kernel headers
+    
+    go1.24 requires kernel headers supplied by glibc new enough to define seccomp and getrandom
+    
+    Building the go1.24 toolchain with older kernel headers fails during the bootstrap phase with the nonspecific error:
+    
+    go tool dist: FAILED: go/pkg/tool/linux_amd64/go_bootstrap install -v std: exit status 1
+
+diff --git a/src/crypto/internal/sysrand/internal/seccomp/seccomp_linux.go b/src/crypto/internal/sysrand/internal/seccomp/seccomp_linux.go
+index 32ef52a..0654fcb 100644
+--- a/src/crypto/internal/sysrand/internal/seccomp/seccomp_linux.go
++++ b/src/crypto/internal/sysrand/internal/seccomp/seccomp_linux.go
+@@ -49,6 +49,59 @@ struct seccomp_data {
+ #define SECCOMP_RET_ALLOW 0x7fff0000U
+ #define SECCOMP_SET_MODE_FILTER 1
+ 
++#ifndef SYS_seccomp
++# if defined(__i386__)
++#  define SYS_seccomp 354
++# elif defined(__x86_64__)
++#  define SYS_seccomp 317
++# elif defined(__arm__)
++#  define SYS_seccomp 383
++# elif defined(__aarch64__)
++#  define SYS_seccomp 277
++# elif defined(__riscv)
++#  define SYS_seccomp 277
++# elif defined(__csky__)
++#  define SYS_seccomp 277
++# elif defined(__loongarch__)
++#  define SYS_seccomp 277
++# elif defined(__hppa__)
++#  define SYS_seccomp 338
++# elif defined(__powerpc__)
++#  define SYS_seccomp 358
++# elif defined(__s390__)
++#  define SYS_seccomp 348
++# elif defined(__xtensa__)
++#  define SYS_seccomp 337
++# elif defined(__sh__)
++#  define SYS_seccomp 372
++# elif defined(__mc68000__)
++#  define SYS_seccomp 380
++# else
++#  warning "seccomp syscall number unknown for this architecture"
++#  define SYS_seccomp 0xffff
++# endif
++#endif
++
++
++#ifndef SYS_getrandom
++# if defined(__i386__)
++#  define SYS_getrandom 355
++# elif defined(__x86_64__)
++#  define SYS_getrandom 318
++# elif defined(__arm__)
++#  define SYS_getrandom 384
++# elif defined(__aarch64__)
++#  define SYS_getrandom 278
++# elif defined(__powerpc__)
++#  define SYS_getrandom 359
++# elif defined(__s390__)
++#  define SYS_getrandom 349
++# else
++#  warning "getrandom syscall number unknown for this architecture"
++#  define SYS_getrandom 0xffff
++# endif
++#endif
++
+ int disable_getrandom() {
+     if (prctl(PR_SET_NO_NEW_PRIVS, 1, 0, 0, 0)) {
+         return 1;
