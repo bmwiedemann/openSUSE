@@ -2,7 +2,7 @@
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
 ## Description
-This container image allows to run a local OCI registry.
+This container image allows running a local OCI registry.
 
 
 ## Usage
