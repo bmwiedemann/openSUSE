@@ -4,11 +4,11 @@
 
 ## Description
 
-Samba is a feature-rich Open Source implementation of the SMB and Active Directory
+Samba is a feature-rich open source implementation of the SMB and Active Directory
 protocols for Linux and UNIX-like systems.
 
-Samba is a high-performance, scalable distributed software for providing access to
-various cluster filesystems. It enables cloud platform-as-a-service (PaaS) providers,
+Samba is a high-performance, scalable distributed software platform for providing access to
+various cluster file systems. It enables cloud platform-as-a-service (PaaS) providers,
 software-defined storage (SDS) solutions, high-performance computing (HPC) applications,
 and enterprise-grade network attached storage (NAS) to support the latest security and
 SMB capabilities.
@@ -51,7 +51,7 @@ To create a home directory for each user and a public share, you can use the exa
 	directory mask = 0775
 ```
 
-TO run the container use the following command:
+To run the container, use the following command:
 
 ```ShellSession
 $ podman run -it --rm -p 5445:445 \
@@ -69,7 +69,7 @@ $ podman exec <container-name-or-id> smbuser -u bob -p p433w0rd -d /shares/users
 
 ### Volumes
 
-The image has two volumens, `/shares` and `/var/lib/samba`.
+The image has two volumes, `/shares` and `/var/lib/samba`.
 
 The volume `/shares` should be used to mount all shared resources.
 
