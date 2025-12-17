@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 16 15:12:03 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1765887110.8fc02990:
+  * Avoid partial deletion of a screenshot if Minion job is aborted
+  * Add `SignalBlocker` to delay signal handling during critical sections
+
+-------------------------------------------------------------------
 Mon Dec 15 14:08:30 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1765805960.2112d43d:
