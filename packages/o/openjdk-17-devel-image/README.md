@@ -4,7 +4,7 @@
 
 ## Description
 
-[OpenJDK](https://openjdk.org/) (Open Java Development Kit) is a free and open source implementation of the Java Platform, Standard Edition (Java SE). OpenJDK is the official reference implementation of Java SE since version 7.
+[OpenJDK](https://openjdk.org/) (Open Java Development Kit) is a free and open source implementation of the Java Platform, Standard Edition (Java SE). OpenJDK is the official reference implementation of Java SE starting with version 7.
 
 The OpenJDK development image is intended to be used as a build environment. For runtime, use the OpenJDK runtime image.
 
