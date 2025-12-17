@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Dec 17 07:19:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.180:
+  * General
+    - Fix docker extension stuck in redirect loop @aabidsofi19
+      (#16673)
+  * Meshery CLI
+    - fix(mesheryctl): enhance model list error enhancement
+      @lekaf974 (#16655)
+  * Maintenance
+    - fix: update golangci-lint version and add workflow paths as
+      trigger @lekaf974 (#16666)
+    - Remove no-duplicate-categories setting from config
+      @kishore08-07 (#16670)
+    - Refactor ESLint steps in GitHub Actions workflow @ritzorama
+      (#16672)
+    - Update to the latest version tags of action in workflows
+      @CodexRaunak (#16665)
+  * Documentation
+    - [Docs] Fix typos in Permission Keys Reference documentation
+      @YadavAkhileshh (#16652)
+
+-------------------------------------------------------------------
 Thu Dec 11 12:38:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.179:
