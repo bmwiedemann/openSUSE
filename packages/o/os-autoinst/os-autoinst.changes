@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec 16 20:39:50 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1765808557.b89e9b4:
+  * Restore package  builds on older openSUSE versions
+  * Remove `ShellCheck` from devel dependencies on s390x
+  * Remove obsolete 'bin/' folder
+  * Simplify the code to increment the counter
+  * audio: Allow for multiple audio recordings per test
+
+-------------------------------------------------------------------
 Mon Dec 15 13:09:59 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1765804109.1e7c99a:
