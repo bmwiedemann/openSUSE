@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 16 07:33:16 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.30:
+  + Declare supports-safe-private-file-access so private
+    connections can continue working after change in the daemon.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Dec  2 08:55:24 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.2.29:

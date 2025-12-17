@@ -154,4 +154,15 @@ This depends on recently checked into tw rpmlint whitelisting - should be &quot;
     <comment></comment>
     <requestid>1320871</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>000d4794bf7828ff4f622ba718922c3a</srcmd5>
+    <version>1.2.30</version>
+    <time>1765989149</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.2.30:
+  + Declare supports-safe-private-file-access so private
+    connections can continue working after change in the daemon.
+  + Updated translations. (forwarded request 1323061 from iznogood)</comment>
+    <requestid>1323142</requestid>
+  </revision>
 </revisionlist>
