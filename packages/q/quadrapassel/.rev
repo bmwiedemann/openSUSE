@@ -311,4 +311,26 @@
   + Updated translations. (forwarded request 1319226 from iznogood)</comment>
     <requestid>1319642</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>7b0821157350e53f944846897856fd1b</srcmd5>
+    <version>49.2.3</version>
+    <time>1765989198</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 49.2.3:
+  + Fixed a bug where the pause button would not work by clicking
+  + Updated translations.
+
+- Update to version 49.2.2:
+  + Fixed incorrect margins for the statistics when the next block
+    preview was disabled
+  + Fixed focus for the main menu, enabling screen readers and
+    keyboard navigation
+  + The game now pauses when it loses focus (pauses when the main
+    menu is shown)
+  + Updated libgnome-games-support
+  + Fixed a bug where on a new score, the player name entry
+    wouldn't be focused if its rank was less than 10
+  + Updated translations. (forwarded request 1322158 from iznogood)</comment>
+    <requestid>1323141</requestid>
+  </revision>
 </revisionlist>

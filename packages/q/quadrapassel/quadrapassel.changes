@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Dec 11 09:26:56 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.2.3:
+  + Fixed a bug where the pause button would not work by clicking
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Dec 10 06:54:54 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.2.2:
+  + Fixed incorrect margins for the statistics when the next block
+    preview was disabled
+  + Fixed focus for the main menu, enabling screen readers and
+    keyboard navigation
+  + The game now pauses when it loses focus (pauses when the main
+    menu is shown)
+  + Updated libgnome-games-support
+  + Fixed a bug where on a new score, the player name entry
+    wouldn't be focused if its rank was less than 10
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Nov 22 09:29:56 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.2.1:
