@@ -1,0 +1,293 @@
+Subject: Complete server-to-client data sync (PROVIDE)
+From: Lin Ma lma@suse.de Mon Jul 7 13:14:40 2025 +0800
+Date: Sun Oct 12 16:55:56 2025 +0800:
+Git: 6e6d5df86cb5b6fe032573e9fd4defe88f04a733
+
+This patch implements the final stage of the server-to-client extended
+clipboard synchronization, enabling the client to receive and process
+the actual data sent by the server via 'VNC_CLIPBOARD_ACTION_PROVIDE'.
+
+The main workflow is as follows:
+1.  Upon receiving a 'PROVIDE' message, VncConnection reads and
+    decompresses the data payload using zlib.
+2.  It parses the decompressed data, extracts the text content, and
+    handles any potential Unicode escape sequences.
+3.  After validating the data as legal UTF-8, it emits a new GObject
+    signal, 'vnc-clipboard-data-received', passing the text as an argument.
+4.  VncDisplay listens for this signal and, in its callback, sets the
+    received text to the local 'CLIPBOARD' and 'PRIMARY' selections.
+
+Signed-off-by: Lin Ma <lma@suse.de>
+
+--- a/src/vncconnection.c
++++ b/src/vncconnection.c
+@@ -159,6 +159,9 @@ static void vnc_connection_write_clipboa
+                                                    guint32 flags);
+ static void vnc_connection_handle_clipboard_notify(VncConnection *conn,
+                                                    guint32 flags);
++static void vnc_connection_handle_clipboard_provide(VncConnection *conn,
++                                                    guint32 flags,
++                                                    gint32 len);
+ 
+ /*
+  * A special GSource impl which allows us to wait on a certain
+@@ -320,6 +323,7 @@ enum {
+     VNC_ERROR,
+ 
+     VNC_CLIPBOARD_REQUEST, /* 20 */
++    VNC_CLIPBOARD_DATA_RECEIVED,
+ 
+     VNC_LAST_SIGNAL,
+ };
+@@ -5625,6 +5629,16 @@ static void vnc_connection_class_init(Vn
+                       g_cclosure_marshal_VOID__VOID,
+                       G_TYPE_NONE,
+                       0);
++    signals[VNC_CLIPBOARD_DATA_RECEIVED] =
++        g_signal_new("vnc-clipboard-data-received",
++                     G_TYPE_FROM_CLASS(klass),
++                     G_SIGNAL_RUN_LAST,
++                     0,
++                     NULL, NULL,
++                     g_cclosure_marshal_VOID__STRING,
++                     G_TYPE_NONE,
++                     1,
++                     G_TYPE_STRING);
+ }
+ 
+ 
+@@ -6899,12 +6913,6 @@ vnc_connection_handle_extended_clipboard
+                                  len);
+         return;
+     }
+-    if (len > VNC_MAX_EXTENDED_CLIPBOARD_MSG_SIZE) {
+-        vnc_connection_set_error(conn,
+-                                 "Extended clipboard message too long (%d bytes).",
+-                                 len);
+-        return;
+-    }
+ 
+     flags = vnc_connection_read_u32(conn);
+     if (vnc_connection_has_error(conn))
+@@ -6938,7 +6946,7 @@ vnc_connection_handle_extended_clipboard
+         vnc_connection_handle_clipboard_caps(conn, flags, lengths);
+ 
+     } else if (action == VNC_CLIPBOARD_ACTION_PROVIDE) {
+-        VNC_DEBUG("Received clipboard action 'provide', not implemented yet");
++        vnc_connection_handle_clipboard_provide(conn, flags, len);
+     } else if (action == VNC_CLIPBOARD_ACTION_REQUEST) {
+         vnc_connection_handle_clipboard_request(conn);
+     } else if (action == VNC_CLIPBOARD_ACTION_PEEK) {
+@@ -7140,3 +7148,167 @@ vnc_connection_handle_clipboard_notify(V
+         }
+     }
+ }
++
++/**
++ * unescape_unicode_string:
++ * @escaped_text: A string that may contain \uXXXX escape sequences.
++ *
++ * This function parses a string containing C-style Unicode escapes
++ * (e.g., "\u4f60\u597d") and converts it back to a proper UTF-8
++ * encoded string (e.g., "你好").
++ *
++ * Returns: A new, g_malloc'd string with the unescaped UTF-8 content.
++ *          The caller is responsible for freeing the returned string.
++ *          Returns NULL on failure.
++ */
++static gchar*
++unescape_unicode_string(const gchar *escaped_text)
++{
++    if (!escaped_text)
++        return NULL;
++
++    GString *result = g_string_new("");
++    const gchar *p = escaped_text;
++
++    while (*p) {
++        if (p[0] == '\\' && p[1] == 'u' &&
++            g_ascii_isxdigit(p[2]) && g_ascii_isxdigit(p[3]) &&
++            g_ascii_isxdigit(p[4]) && g_ascii_isxdigit(p[5]))
++        {
++            gchar hex[5];
++            gunichar uc;
++
++            strncpy(hex, p + 2, 4);
++            hex[4] = '\0';
++            uc = g_ascii_strtoull(hex, NULL, 16);
++
++            g_string_append_unichar(result, uc);
++            p += 6;
++        } else {
++            g_string_append_c(result, *p);
++            p++;
++        }
++    }
++
++    return g_string_free(result, FALSE);
++}
++
++/*
++ * Handles the clipboard 'provide' action. It reads the compressed
++ * data from the connection, decompresses it, parses the content,
++ * and emits the "vnc-clipboard-data-received" signal if successful.
++ */
++static void
++vnc_connection_handle_clipboard_provide(VncConnection *conn, guint32 flags, gint32 len)
++{
++    guint8 *zlib_data = NULL;
++    guint8 *uncompressed_data = NULL;
++    GByteArray *out_array = NULL;
++    gchar *escaped_text = NULL;
++    gchar *text = NULL;
++    z_stream zst;
++    gboolean zst_initialized = FALSE;
++
++    gsize uncompressed_size = 0;
++    guint32 text_len = 0;
++
++    if (!(flags & VNC_CLIPBOARD_FORMAT_UTF8)) {
++        vnc_connection_set_error(conn, "%s", "Unsupported format UTF8.");
++        goto cleanup;
++    }
++
++    len -= 4;
++    // read the entire compressed data block from the network connection.
++    zlib_data = g_malloc(len);
++    if (!vnc_connection_read(conn, zlib_data, len)) {
++        vnc_connection_set_error(conn, "Failed to read clipboard provide data");
++        goto cleanup;
++    }
++
++    // Decompress the entire block of data.
++    zst.zalloc = Z_NULL;
++    zst.zfree = Z_NULL;
++    zst.opaque = Z_NULL;
++    zst.avail_in = len;
++    zst.next_in = zlib_data;
++
++    if (inflateInit(&zst) != Z_OK) {
++        vnc_connection_set_error(conn, "%s", "Failed to initialize zlib for decompression");
++        goto cleanup;
++    }
++    zst_initialized = TRUE;
++
++    out_array = g_byte_array_new();
++    guint8 temp_buf[4096];
++    int ret;
++
++    do {
++        zst.avail_out = sizeof(temp_buf);
++        zst.next_out = temp_buf;
++        ret = inflate(&zst, Z_NO_FLUSH);
++        if (ret != Z_OK && ret != Z_STREAM_END) {
++            vnc_connection_set_error(conn,
++                                     "Zlib decompression failed with code %d",
++                                     ret);
++            goto cleanup;
++        }
++        g_byte_array_append(out_array, temp_buf, sizeof(temp_buf) - zst.avail_out);
++    } while (zst.avail_out == 0 && ret != Z_STREAM_END);
++
++    uncompressed_data = g_byte_array_free(out_array, FALSE);
++    out_array = NULL;
++    uncompressed_size = zst.total_out;
++    inflateEnd(&zst);
++    zst_initialized = FALSE;
++
++    // parse [length][data] from the decompressed data.
++    if (uncompressed_size < 4) {
++        vnc_connection_set_error(conn,
++                                 "Invalid decompressed data: too short for "
++                                 "length field");
++        goto cleanup;
++    }
++
++    text_len = g_ntohl(*(guint32 *)uncompressed_data);
++
++    if (text_len > uncompressed_size - 4) {
++        vnc_connection_set_error(conn, "Invalid decompressed data: length mismatch");
++        goto cleanup;
++    }
++
++    if (text_len > VNC_MAX_EXTENDED_CLIPBOARD_MSG_SIZE) {
++        VNC_DEBUG("Clipboard data size (%u) exceeds maximum size (%u), ignoring.",
++                  text_len,
++                  VNC_MAX_EXTENDED_CLIPBOARD_MSG_SIZE);
++        goto cleanup;
++    }
++
++    escaped_text = g_strndup((const gchar *)(uncompressed_data + 4), text_len);
++    text = unescape_unicode_string(escaped_text);
++
++    if (!g_utf8_validate(text, -1, NULL)) {
++        VNC_DEBUG("Invalid UTF-8 sequence in clipboard data");
++        goto cleanup;
++    }
++
++    VNC_DEBUG("Successfully decoded clipboard text (len=%u), "
++              "emitting signal to UI layer.",
++              text_len);
++    g_signal_emit(conn, signals[VNC_CLIPBOARD_DATA_RECEIVED], 0, text);
++
++cleanup:
++    g_free(zlib_data);
++    g_free(uncompressed_data);
++    g_free(escaped_text);
++    g_free(text);
++
++    if (out_array) {
++        g_byte_array_free(out_array, TRUE);
++    }
++
++    if (zst_initialized) {
++        inflateEnd(&zst);
++    }
++
++    return;
++}
+--- a/src/vncdisplay.c
++++ b/src/vncdisplay.c
+@@ -360,6 +360,9 @@ static void on_clipboard_request(VncConn
+ static void send_primary_selection(GtkClipboard *clipboard G_GNUC_UNUSED,
+                                    const gchar *text,
+                                    gpointer user_data);
++static void on_clipboard_data_received(VncConnection *conn G_GNUC_UNUSED,
++                                       const gchar *text,
++                                       gpointer user_data);
+ 
+ #ifdef G_OS_WIN32
+ static HWND win32_window = NULL;
+@@ -1557,6 +1560,23 @@ send_primary_selection(GtkClipboard *cli
+     }
+ }
+ 
++static void
++on_clipboard_data_received(VncConnection *conn G_GNUC_UNUSED,
++                           const gchar *text,
++                           gpointer user_data)
++{
++    VncDisplay *display = VNC_DISPLAY(user_data);
++    GtkClipboard *clipboard;
++
++    clipboard = gtk_widget_get_clipboard(GTK_WIDGET(display),
++                                         gdk_atom_intern("CLIPBOARD", FALSE));
++    gtk_clipboard_set_text(clipboard, text, -1);
++
++    clipboard = gtk_widget_get_clipboard(GTK_WIDGET(display),
++                                         GDK_SELECTION_PRIMARY);
++    gtk_clipboard_set_text(clipboard, text, -1);
++}
++
+ 
+ static void do_framebuffer_init(VncDisplay *obj,
+                                 const VncPixelFormat *remoteFormat,
+@@ -3129,6 +3149,8 @@ static void vnc_display_init(VncDisplay
+                      G_CALLBACK(on_primary_owner_change), display);
+     g_signal_connect(display, "focus-in-event",
+                      G_CALLBACK(on_focus_in), display);
++    g_signal_connect(G_OBJECT(priv->conn), "vnc-clipboard-data-received",
++                     G_CALLBACK(on_clipboard_data_received), display);
+ 
+     priv->keycode_map = vnc_display_keymap_gdk2rfb_table(&priv->keycode_maplen);
+ }

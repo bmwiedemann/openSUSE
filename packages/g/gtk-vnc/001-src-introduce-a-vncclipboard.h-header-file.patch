@@ -1,0 +1,69 @@
+Subject: src: introduce a vncclipboard.h header file
+From: Lin Ma lma@suse.de Mon Jul 7 12:39:46 2025 +0800
+Date: Sun Oct 12 16:55:56 2025 +0800:
+Git: 4806aa5889ea50508ef25347641c42acc601dd31
+
+This header file defines the formats and the actions agreed upon by the
+RFB extended clipboard protocol.
+
+Signed-off-by: Lin Ma <lma@suse.de>
+
+diff --git a/src/meson.build b/src/meson.build
+index f5a11cf..941fe70 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -58,6 +58,7 @@ gvnc_headers = [
+   'vnccolormap.h',
+   'vncconnection.h',
+   'vncutil.h',
++  'vncclipboard.h',
+ ]
+ 
+ install_headers(gvnc_headers + [gvnc_version_header], subdir: 'gvnc-1.0')
+diff --git a/src/vncclipboard.h b/src/vncclipboard.h
+new file mode 100644
+index 0000000..dd59bf4
+--- /dev/null
++++ b/src/vncclipboard.h
+@@ -0,0 +1,41 @@
++/*
++ * GTK VNC Widget
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2.0 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301 USA
++ */
++
++#ifndef VNC_CLIPBOARD_H
++#define VNC_CLIPBOARD_H
++
++/* Max number of extended clipboard formats we might track(bits 0-15) */
++#define VNC_CLIPBOARD_MAX_FORMATS 16
++
++/* Extended Clipboard Formats */
++#define VNC_CLIPBOARD_FORMAT_UTF8  (1 << 0)
++#define VNC_CLIPBOARD_FORMAT_RTF   (1 << 1)
++#define VNC_CLIPBOARD_FORMAT_HTML  (1 << 2)
++#define VNC_CLIPBOARD_FORMAT_DIB   (1 << 3)
++#define VNC_CLIPBOARD_FORMAT_FILES (1 << 4)
++
++/* Extended Clipboard Actions */
++#define VNC_CLIPBOARD_ACTION_CAPS    (1 << 24)
++#define VNC_CLIPBOARD_ACTION_REQUEST (1 << 25)
++#define VNC_CLIPBOARD_ACTION_PEEK    (1 << 26)
++#define VNC_CLIPBOARD_ACTION_NOTIFY  (1 << 27)
++#define VNC_CLIPBOARD_ACTION_PROVIDE (1 << 28)
++
++#define VNC_CLIPBOARD_ACTION_MASK 0xff000000
++
++#endif /* VNC_CLIPBOARD_H */

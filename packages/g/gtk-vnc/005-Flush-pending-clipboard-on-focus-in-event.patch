@@ -1,0 +1,93 @@
+Subject: Flush pending clipboard on focus-in event
+From: Lin Ma lma@suse.de Mon Jul 7 13:00:46 2025 +0800
+Date: Sun Oct 12 16:55:56 2025 +0800:
+Git: 6c8d86919878f08665e3c92915c58c64901af3ea
+
+This patch introduces a mechanism to handle clipboard synchronization
+when the VNC client window regains focus.
+
+Previously, if a user copied content while the VNC window was inactive,
+the clipboard change state 'pendingClientClipboard' was recorded but not
+immediately notified to the server.
+
+This commit addresses this by:
+- Making VncDisplay listen for the 'focus-in-event' signal.
+- When the widget gains focus, the vnc_connection_flush_pending_clipboard
+  function is called.
+- This function checks for a pending clipboard update and, if one exists,
+  immediately sends a NOTIFY message to the server side, announcing that
+  clipboard content is available.
+
+This "lazy synchronization" strategy ensures that the clipboard state is
+updated only when the user re-engages with the VNC session.
+
+Signed-off-by: Lin Ma <lma@suse.de>
+
+--- a/src/libgvnc_sym.version
++++ b/src/libgvnc_sym.version
+@@ -97,6 +97,7 @@
+ 
+ 	vnc_connection_handle_clipboard_change;
+ 	vnc_connection_clear_pending_flag;
++	vnc_connection_flush_pending_clipboard;
+ 
+ 	vnc_util_set_debug;
+ 	vnc_util_get_debug;
+--- a/src/vncconnection.c
++++ b/src/vncconnection.c
+@@ -6978,3 +6978,12 @@ void vnc_connection_clear_pending_flag(V
+ 
+     priv->pendingClientClipboard = FALSE;
+ }
++
++void vnc_connection_flush_pending_clipboard(VncConnection *conn)
++{
++    VncConnectionPrivate *priv = conn->priv;
++
++    if (priv->pendingClientClipboard)
++        vnc_connection_announce_clipboard(conn, TRUE);
++    priv->pendingClientClipboard = FALSE;
++}
+--- a/src/vncconnection.h
++++ b/src/vncconnection.h
+@@ -248,6 +248,7 @@ gboolean vnc_connection_set_framebuffer(
+ 
+ void vnc_connection_handle_clipboard_change(VncConnection *conn);
+ void vnc_connection_clear_pending_flag(VncConnection *conn);
++void vnc_connection_flush_pending_clipboard(VncConnection *conn);
+ 
+ const char *vnc_connection_get_name(VncConnection *conn);
+ int vnc_connection_get_width(VncConnection *conn);
+--- a/src/vncdisplay.c
++++ b/src/vncdisplay.c
+@@ -1876,6 +1876,21 @@ static void on_primary_owner_change(GtkC
+                                                      opaque);
+ }
+ 
++static gboolean on_focus_in(GtkWidget *widget G_GNUC_UNUSED,
++                            GdkEventFocus *event G_GNUC_UNUSED,
++                            gpointer opaqueg)
++{
++    VncDisplay *display = VNC_DISPLAY(opaqueg);
++    VncDisplayPrivate *priv = display->priv;
++
++    VNC_DEBUG("VncDisplay gained focus.");
++
++    if (!priv->read_only)
++        vnc_connection_flush_pending_clipboard(priv->conn);
++
++    return FALSE;
++}
++
+ static void on_server_cut_text(VncConnection *conn G_GNUC_UNUSED,
+                                const gchar *text,
+                                gpointer opaque)
+@@ -3055,6 +3070,8 @@ static void vnc_display_init(VncDisplay
+                      G_CALLBACK(on_power_control_fail), display);
+     g_signal_connect(gtk_clipboard_get(GDK_SELECTION_PRIMARY), "owner-change",
+                      G_CALLBACK(on_primary_owner_change), display);
++    g_signal_connect(display, "focus-in-event",
++                     G_CALLBACK(on_focus_in), display);
+ 
+     priv->keycode_map = vnc_display_keymap_gdk2rfb_table(&priv->keycode_maplen);
+ }

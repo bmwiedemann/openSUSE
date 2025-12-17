@@ -1,0 +1,263 @@
+Subject: Implement extended clipboard capability negotiation
+From: Lin Ma lma@suse.de Mon Jul 7 12:41:10 2025 +0800
+Date: Sun Oct 12 16:55:56 2025 +0800:
+Git: 1c813530f80ddd58029b0c2dca5228f205c50a9f
+
+This patch implements the initial capability negotiation for the RFB
+Extended Clipboard protocol.
+
+It modifies the vnc_connection_server_message to detect the extended
+ServerCutText messages, which are identified by a negative length
+value.
+
+Upon receiving a message with the VNC_CLIPBOARD_ACTION_CAPS flag, The
+vnc_connection_handle_clipboard_caps function is called. This function
+parses the list of formats and their maximum sizes advertised by the
+server and stores them in the private connection state.
+
+After processing the server's capabilities, Client responds by sending
+its own capabilities back. The vnc_connection_write_clipboard_caps
+function constructs this response, announcing the client's supported
+formats and actions.
+
+New fields have been added to the VncConnectionPrivate struct to track
+the negotiation state and the server's capabilities.
+
+This commit establishes the foundational handshake required for all
+subsequent extended clipboard operations.
+
+Signed-off-by: Lin Ma <lma@suse.de>
+
+--- a/src/vncconnection.c
++++ b/src/vncconnection.c
+@@ -26,6 +26,7 @@
+ #include "vncmarshal.h"
+ #include "vncbaseframebuffer.h"
+ #include "vncutil.h"
++#include "vncclipboard.h"
+ 
+ #include <string.h>
+ #include <unistd.h>
+@@ -58,6 +59,11 @@
+ 
+ #define GTK_VNC_ERROR g_quark_from_static_string("gtk-vnc")
+ 
++/* A reasonable upper limit for an extended clipboard message, which
++ * contains metadata, not the actual clipboard content.
++ */
++#define VNC_MAX_EXTENDED_CLIPBOARD_MSG_SIZE (256 * 1024)
++
+ struct wait_queue
+ {
+     gboolean waiting;
+@@ -133,6 +139,15 @@ static void vnc_connection_set_error(Vnc
+                                      ...) G_GNUC_PRINTF(2, 3);
+ static void vnc_connection_auth_failure(VncConnection *conn, const char *reason);
+ 
++static void vnc_connection_write_clipboard_caps(VncConnection *conn,
++                                                guint32 caps,
++                                                const guint32 *lengths);
++static void vnc_connection_handle_clipboard_caps(VncConnection *conn,
++                                                 guint32 flags,
++                                                 const guint32 *lengths);
++static void vnc_connection_handle_extended_clipboard(VncConnection *conn,
++                                                     gint32 len);
++
+ /*
+  * A special GSource impl which allows us to wait on a certain
+  * condition to be satisfied. This is effectively a boolean test
+@@ -257,6 +272,10 @@ struct _VncConnectionPrivate
+     VncAudio *audio;
+     VncAudioSample *audio_sample;
+     guint audio_timer;
++
++    gboolean has_extended_clipboard;
++    guint32 server_clipboard_flags;
++    guint32 server_clipboard_sizes[VNC_CLIPBOARD_MAX_FORMATS];
+ };
+ 
+ G_DEFINE_TYPE_WITH_PRIVATE(VncConnection, vnc_connection, G_TYPE_OBJECT);
+@@ -3670,23 +3689,24 @@ static gboolean vnc_connection_server_me
+         break;
+     case VNC_CONNECTION_SERVER_MESSAGE_SERVER_CUT_TEXT: {
+         guint8 pad[3];
+-        guint32 n_text;
+-        char *data;
+-
++        guint32 len;
+         vnc_connection_read(conn, pad, 3);
+-        n_text = vnc_connection_read_u32(conn);
+-        if (n_text > (32 << 20)) {
+-            vnc_connection_set_error(conn, "Cut text length %u longer than permitted %d",
+-                                     n_text, (32 << 20));
+-            break;
+-        }
+-
+-        data = g_new(char, n_text + 1);
+-        vnc_connection_read(conn, data, n_text);
+-        data[n_text] = 0;
++        len = vnc_connection_read_u32(conn);
+ 
+-        vnc_connection_server_cut_text(conn, data, n_text);
+-        g_free(data);
++        if ((gint32)len < 0) {
++            vnc_connection_handle_extended_clipboard(conn, -(gint32)len);
++        } else {
++            if (len > (32 << 20)) {
++                vnc_connection_set_error(conn, "Cut text length %u longer than permitted %d",
++                                         len, (32 << 20));
++                break;
++            }
++            char *data = g_new(char, len + 1);
++            vnc_connection_read(conn, data, len);
++            data[len] = 0;
++            vnc_connection_server_cut_text(conn, data, len);
++            g_free(data);
++         }
+     }        break;
+     case VNC_CONNECTION_SERVER_MESSAGE_XVP: {
+         guint8 pad[1];
+@@ -5595,6 +5615,10 @@ static void vnc_connection_init(VncConne
+     priv->fd = -1;
+     priv->auth_type = VNC_CONNECTION_AUTH_INVALID;
+     priv->auth_subtype = VNC_CONNECTION_AUTH_INVALID;
++
++    priv->has_extended_clipboard = FALSE;
++    priv->server_clipboard_flags = 0;
++    memset(priv->server_clipboard_sizes, 0, sizeof(priv->server_clipboard_sizes));
+ }
+ 
+ 
+@@ -6773,3 +6797,132 @@ VncConnectionResizeStatus vnc_connection
+     return !vnc_connection_has_error(conn);
+ 
+ }
++
++static void
++vnc_connection_handle_clipboard_caps(VncConnection *conn,
++                                     guint32 flags,
++                                     const guint32 *lengths)
++{
++    VncConnectionPrivate *priv = conn->priv;
++    int i, num = 0;
++    guint32 client_caps;
++    guint32 sizes[] = {0};
++
++    VNC_DEBUG("Got server clipboard capabilities (flags 0x%x)", flags);
++
++    priv->has_extended_clipboard = TRUE;
++    priv->server_clipboard_flags = flags;
++
++    memset(priv->server_clipboard_sizes, 0, sizeof(priv->server_clipboard_sizes));
++    for (i = 0; i < VNC_CLIPBOARD_MAX_FORMATS; i++) {
++        if (flags & (1 << i)) {
++            priv->server_clipboard_sizes[i] = lengths[num++];
++        }
++    }
++
++    // Announce our capabilities, Currently only implements UTF8 format handling.
++    client_caps = (VNC_CLIPBOARD_FORMAT_UTF8 |
++                   VNC_CLIPBOARD_ACTION_REQUEST |
++                   VNC_CLIPBOARD_ACTION_PEEK |
++                   VNC_CLIPBOARD_ACTION_NOTIFY |
++                   VNC_CLIPBOARD_ACTION_PROVIDE);
++
++    vnc_connection_write_clipboard_caps(conn, client_caps, sizes);
++}
++
++static void
++vnc_connection_write_clipboard_caps(VncConnection *conn,
++                                    guint32 caps,
++                                    const guint32 *lengths)
++{
++    int i, count = 0;
++    guint8 pad[3] = {0};
++
++    VNC_DEBUG("Sending client clipboard capabilities (caps 0x%x)", caps);
++
++    vnc_connection_buffered_write_u8(conn, VNC_CONNECTION_CLIENT_MESSAGE_CUT_TEXT);
++    vnc_connection_buffered_write(conn, pad, 3);
++
++    for (i = 0; i < VNC_CLIPBOARD_MAX_FORMATS; i++) {
++        if (caps & (1 << i))
++            count++;
++    }
++
++    // Payload is flags(4) + one size per format
++    vnc_connection_buffered_write_s32(conn, -(4 + 4 * count));
++
++    vnc_connection_buffered_write_u32(conn, caps | VNC_CLIPBOARD_ACTION_CAPS);
++
++    count = 0;
++    for (i = 0; i < VNC_CLIPBOARD_MAX_FORMATS; i++) {
++        if (caps & (1 << i))
++            vnc_connection_buffered_write_u32(conn, lengths[count++]);
++    }
++
++    vnc_connection_buffered_flush(conn);
++}
++
++static void
++vnc_connection_handle_extended_clipboard(VncConnection *conn, gint32 len)
++{
++    guint32 flags, action;
++
++    if (len < 4) {
++        vnc_connection_set_error(conn,
++                                 "Invalid extended clipboard message: length "
++                                 "%d is less than 4",
++                                 len);
++        return;
++    }
++    if (len > VNC_MAX_EXTENDED_CLIPBOARD_MSG_SIZE) {
++        vnc_connection_set_error(conn,
++                                 "Extended clipboard message too long (%d bytes).",
++                                 len);
++        return;
++    }
++
++    flags = vnc_connection_read_u32(conn);
++    if (vnc_connection_has_error(conn))
++        return;
++
++    action = flags & VNC_CLIPBOARD_ACTION_MASK;
++
++    if (action & VNC_CLIPBOARD_ACTION_CAPS) {
++        int i, format_count = 0;
++        guint32 lengths[VNC_CLIPBOARD_MAX_FORMATS] = {0};
++
++        for (i = 0; i < VNC_CLIPBOARD_MAX_FORMATS; i++) {
++            if (flags & (1 << i))
++                format_count++;
++        }
++
++        if (len < (4 + 4 * format_count)) {
++            vnc_connection_set_error(conn,
++                                     "Invalid clipboard caps message, length "
++                                     "%d is too small for %d formats",
++                                     len, format_count);
++            return;
++        }
++
++        for (i = 0; i < format_count; i++) {
++            lengths[i] = vnc_connection_read_u32(conn);
++            if (vnc_connection_has_error(conn))
++                return;
++        }
++
++        vnc_connection_handle_clipboard_caps(conn, flags, lengths);
++
++    } else if (action == VNC_CLIPBOARD_ACTION_PROVIDE) {
++        VNC_DEBUG("Received clipboard action 'provide', not implemented yet");
++    } else if (action == VNC_CLIPBOARD_ACTION_REQUEST) {
++        VNC_DEBUG("Received clipboard action 'request', not implemented yet");
++    } else if (action == VNC_CLIPBOARD_ACTION_PEEK) {
++        VNC_DEBUG("Received clipboard action 'peek', not implemented yet");
++    } else if (action == VNC_CLIPBOARD_ACTION_NOTIFY) {
++        VNC_DEBUG("Received clipboard action 'notify', not implemented yet");
++    } else {
++        VNC_DEBUG("Unknown extended clipboard action 0x%x", action);
++    }
++
++    return;
++}

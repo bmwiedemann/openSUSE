@@ -1,0 +1,36 @@
+Subject: Add the extended clipboard pseudo-encoding
+From: Lin Ma lma@suse.de Mon Jul 7 12:40:53 2025 +0800
+Date: Sun Oct 12 16:55:56 2025 +0800:
+Git: e334dd438907251d7b42615824d9c14ae3452331
+
+Signed-off-by: Lin Ma <lma@suse.de>
+
+--- a/src/vncconnection.h
++++ b/src/vncconnection.h
+@@ -131,6 +131,7 @@ typedef enum {
+     VNC_CONNECTION_ENCODING_EXTENDED_DESKTOP_RESIZE = -308,
+     VNC_CONNECTION_ENCODING_XVP = -309,
+     VNC_CONNECTION_ENCODING_ALPHA_CURSOR = -314,
++    VNC_CONNECTION_ENCODING_EXTENDED_CLIPBOARD = 0xC0A1E5CE,
+ } VncConnectionEncoding;
+ 
+ /**
+--- a/src/vncdisplay.c
++++ b/src/vncdisplay.c
+@@ -1973,6 +1973,7 @@ static void on_initialized(VncConnection
+                             VNC_CONNECTION_ENCODING_EXTENDED_DESKTOP_RESIZE,
+                             VNC_CONNECTION_ENCODING_DESKTOP_RESIZE,
+                             VNC_CONNECTION_ENCODING_DESKTOP_NAME,
++                            VNC_CONNECTION_ENCODING_EXTENDED_CLIPBOARD,
+                             VNC_CONNECTION_ENCODING_LAST_RECT,
+                             VNC_CONNECTION_ENCODING_WMVi,
+                             VNC_CONNECTION_ENCODING_AUDIO,
+@@ -1996,7 +1997,7 @@ static void on_initialized(VncConnection
+                         sizeof(gint32) *                \
+                         (n_encodings - (i + 1)));       \
+             n_encodings--;                              \
+-            VNC_DEBUG("Removed encoding %d", e);        \
++            VNC_DEBUG("Removed encoding %d", (int)e);   \
+             break;                                      \
+         }                                               \
+     }

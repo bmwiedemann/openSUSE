@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov  3 13:38:54 MST 2025 - carnold@suse.com
+
+- bsc#1251850 - removal of spice leads to regression in
+  functionality, specifically for graphical console copy paste
+  001-src-introduce-a-vncclipboard.h-header-file.patch
+  002-Add-the-extended-clipboard-pseudo-encoding.patch
+  003-Implement-extended-clipboard-capability-negotiation.patch
+  004-Implement-client-to-server-clipboard-update-notification.patch
+  005-Flush-pending-clipboard-on-focus-in-event.patch
+  006-Implement-response-to-server-clipboard-REQUEST-action.patch
+  007-Implement-handling-of-server-clipboard-NOTIFY-action.patch
+  008-Complete-server-to-client-data-sync-PROVIDE.patch
+
+-------------------------------------------------------------------
 Fri Feb  7 09:58:09 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.5.0:

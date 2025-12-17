@@ -471,4 +471,12 @@ Consolidate licenses (forwarded request 160578 from babelworx)</comment>
     <comment></comment>
     <requestid>1244232</requestid>
   </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>69918328c0ad5338f17d1297462badd1</srcmd5>
+    <version>1.5.0</version>
+    <time>1765989131</time>
+    <user>anag_factory</user>
+    <comment>Upstream patches to fix bsc#1251850. Adds copy and paste ability between host and guest when using VNC Display instead of Spice. (forwarded request 1321847 from charlesa)</comment>
+    <requestid>1323138</requestid>
+  </revision>
 </revisionlist>

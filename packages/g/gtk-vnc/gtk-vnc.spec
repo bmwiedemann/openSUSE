@@ -29,6 +29,15 @@ Group:          Development/Libraries/X11
 URL:            https://wiki.gnome.org/Projects/gtk-vnc
 Source0:        https://download.gnome.org/sources/gtk-vnc/1.5/%{name}-%{version}.tar.xz
 
+Patch1:         001-src-introduce-a-vncclipboard.h-header-file.patch
+Patch2:         002-Add-the-extended-clipboard-pseudo-encoding.patch
+Patch3:         003-Implement-extended-clipboard-capability-negotiation.patch
+Patch4:         004-Implement-client-to-server-clipboard-update-notification.patch
+Patch5:         005-Flush-pending-clipboard-on-focus-in-event.patch
+Patch6:         006-Implement-response-to-server-clipboard-REQUEST-action.patch
+Patch7:         007-Implement-handling-of-server-clipboard-NOTIFY-action.patch
+Patch8:         008-Complete-server-to-client-data-sync-PROVIDE.patch
+
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  gobject-introspection-devel >= 0.9.4
 BuildRequires:  intltool
@@ -157,7 +166,7 @@ threaded.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -p1
 # install gvncviewer
 sed -i '/install:/s/false/true/' examples/meson.build
 

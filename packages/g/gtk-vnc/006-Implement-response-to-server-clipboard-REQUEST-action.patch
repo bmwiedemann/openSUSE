@@ -1,0 +1,272 @@
+Subject: Implement response to server clipboard REQUEST action
+From: Lin Ma lma@suse.de Mon Jul 7 13:05:22 2025 +0800
+Date: Sun Oct 12 16:55:56 2025 +0800:
+Git: e5ecf1243b7b7ac274681567ed9bb1b596967b28
+
+This patch implements the full logic for the client to handle a server's
+VNC_CLIPBOARD_ACTION_REQUEST and send back the clipboard data.
+
+When the VncConnection receives a data request from the server, it now:
+1.  Emits a new GObject signal, 'clipboard-request', to propagate the
+    protocol event to the upper VncDisplay layer.
+2.  VncDisplay, upon catching this signal, asynchronously requests the
+    text content of the 'PRIMARY' selection from GTK.
+3.  After successfully fetching the text, it passes the data back to the
+    VncConnection via the public API vnc_connection_send_clipboard_data.
+4.  The VncConnection then compresses the data using zlib and sends it
+    to the server side.
+
+This implementation handles the decoupling of the protocol and UI layers,
+manages GTK's asynchronous clipboard operations, and completes the
+request-response loop for client-to-server data synchronization.
+
+Signed-off-by: Lin Ma <lma@suse.de>
+
+--- a/src/libgvnc_sym.version
++++ b/src/libgvnc_sym.version
+@@ -98,6 +98,7 @@
+ 	vnc_connection_handle_clipboard_change;
+ 	vnc_connection_clear_pending_flag;
+ 	vnc_connection_flush_pending_clipboard;
++	vnc_connection_send_clipboard_data;
+ 
+ 	vnc_util_set_debug;
+ 	vnc_util_get_debug;
+--- a/src/vncconnection.c
++++ b/src/vncconnection.c
+@@ -151,6 +151,10 @@ static void vnc_connection_write_clipboa
+                                                   guint32 flags);
+ static void vnc_connection_announce_clipboard(VncConnection *conn,
+                                               gboolean available);
++static void vnc_connection_write_clipboard_provide(VncConnection *conn,
++                                                   guint32 flags,
++                                                   const gchar *text);
++static void vnc_connection_handle_clipboard_request(VncConnection *conn);
+ 
+ /*
+  * A special GSource impl which allows us to wait on a certain
+@@ -311,6 +315,8 @@ enum {
+     VNC_DISCONNECTED,
+     VNC_ERROR,
+ 
++    VNC_CLIPBOARD_REQUEST, /* 20 */
++
+     VNC_LAST_SIGNAL,
+ };
+ 
+@@ -5606,6 +5612,15 @@ static void vnc_connection_class_init(Vn
+                       G_TYPE_NONE,
+                       1,
+                       G_TYPE_STRING);
++    signals[VNC_CLIPBOARD_REQUEST] =
++        g_signal_new ("clipboard-request",
++                      G_OBJECT_CLASS_TYPE (object_class),
++                      G_SIGNAL_RUN_FIRST,
++                      G_STRUCT_OFFSET (VncConnectionClass, vnc_clipboard_request),
++                      NULL, NULL,
++                      g_cclosure_marshal_VOID__VOID,
++                      G_TYPE_NONE,
++                      0);
+ }
+ 
+ 
+@@ -6921,7 +6936,7 @@ vnc_connection_handle_extended_clipboard
+     } else if (action == VNC_CLIPBOARD_ACTION_PROVIDE) {
+         VNC_DEBUG("Received clipboard action 'provide', not implemented yet");
+     } else if (action == VNC_CLIPBOARD_ACTION_REQUEST) {
+-        VNC_DEBUG("Received clipboard action 'request', not implemented yet");
++        vnc_connection_handle_clipboard_request(conn);
+     } else if (action == VNC_CLIPBOARD_ACTION_PEEK) {
+         VNC_DEBUG("Received clipboard action 'peek', not implemented yet");
+     } else if (action == VNC_CLIPBOARD_ACTION_NOTIFY) {
+@@ -6987,3 +7002,92 @@ void vnc_connection_flush_pending_clipbo
+         vnc_connection_announce_clipboard(conn, TRUE);
+     priv->pendingClientClipboard = FALSE;
+ }
++
++static void
++vnc_connection_write_clipboard_provide(VncConnection *conn,
++                                       guint32 flags,
++                                       const gchar *text)
++{
++    guint8 pad[3] = {0};
++    z_stream zst;
++    GByteArray *uncompressed_payload = NULL;
++    guchar *compressed_buf = NULL;
++    gsize compressed_size = 0;
++    gulong text_len = strlen(text) + 1;
++    guint32 text_len_net;
++    gulong dest_len;
++
++    uncompressed_payload = g_byte_array_new();
++
++    text_len_net = g_htonl(text_len);
++    g_byte_array_append(uncompressed_payload,
++                        (const guint8 *)&text_len_net,
++                        sizeof(text_len_net));
++
++    g_byte_array_append(uncompressed_payload, (const guint8 *)text, text_len);
++
++    dest_len = compressBound(uncompressed_payload->len);
++    compressed_buf = g_malloc(dest_len);
++
++    zst.zalloc = Z_NULL;
++    zst.zfree = Z_NULL;
++    zst.opaque = Z_NULL;
++
++    if (deflateInit(&zst, Z_DEFAULT_COMPRESSION) != Z_OK) {
++        vnc_connection_set_error(conn,
++                                 "Failed to initialize zlib for compression");
++        g_free(compressed_buf);
++        g_byte_array_free(uncompressed_payload, TRUE);
++        return;
++    }
++
++    zst.avail_in = uncompressed_payload->len;
++    zst.next_in = uncompressed_payload->data;
++    zst.avail_out = dest_len;
++    zst.next_out = compressed_buf;
++
++    if (deflate(&zst, Z_FINISH) != Z_STREAM_END) {
++        vnc_connection_set_error(conn, "%s", "Zlib compression failed");
++        goto cleanup;
++    }
++    compressed_size = zst.total_out;
++
++    VNC_DEBUG("Sending clipboard provide, payload size %u, compressed size %lu",
++              uncompressed_payload->len, (gulong)compressed_size);
++
++    vnc_connection_buffered_write_u8(conn, VNC_CONNECTION_CLIENT_MESSAGE_CUT_TEXT);
++    vnc_connection_buffered_write(conn, pad, 3);
++
++    vnc_connection_buffered_write_s32(conn, -(4 + compressed_size));
++    vnc_connection_buffered_write_u32(conn, flags | VNC_CLIPBOARD_ACTION_PROVIDE);
++
++    vnc_connection_buffered_write(conn, compressed_buf, compressed_size);
++
++    vnc_connection_buffered_flush(conn);
++
++cleanup:
++    deflateEnd(&zst);
++    g_free(compressed_buf);
++    g_byte_array_free(uncompressed_payload, TRUE);
++}
++
++static void vnc_connection_handle_clipboard_request(VncConnection *conn)
++{
++    g_signal_emit(conn, signals[VNC_CLIPBOARD_REQUEST], 0);
++}
++
++void vnc_connection_send_clipboard_data(VncConnection *conn,
++                                        const gchar *text)
++{
++    VncConnectionPrivate *priv = conn->priv;
++
++    if (priv->server_clipboard_flags & VNC_CLIPBOARD_ACTION_PROVIDE) {
++        vnc_connection_write_clipboard_provide(conn,
++                                               VNC_CLIPBOARD_FORMAT_UTF8,
++                                               text);
++    } else {
++        vnc_connection_set_error(conn,
++                                 "Server does not support clipboard 'provide'"
++                                 "action, can not send clipboard data.");
++    }
++}
+--- a/src/vncconnection.h
++++ b/src/vncconnection.h
+@@ -83,6 +83,7 @@ struct _VncConnectionClass
+     void (*vnc_power_control_initialized)(VncConnection *conn);
+     void (*vnc_power_control_failed)(VncConnection *conn);
+     void (*vnc_desktop_rename)(VncConnection *conn, const char *name);
++    void (*vnc_clipboard_request) (VncConnection *conn);
+ 
+     /*
+      * If adding fields to this struct, remove corresponding
+@@ -249,6 +250,7 @@ gboolean vnc_connection_set_framebuffer(
+ void vnc_connection_handle_clipboard_change(VncConnection *conn);
+ void vnc_connection_clear_pending_flag(VncConnection *conn);
+ void vnc_connection_flush_pending_clipboard(VncConnection *conn);
++void vnc_connection_send_clipboard_data(VncConnection *conn, const gchar *text);
+ 
+ const char *vnc_connection_get_name(VncConnection *conn);
+ int vnc_connection_get_width(VncConnection *conn);
+--- a/src/vncdisplay.c
++++ b/src/vncdisplay.c
+@@ -356,6 +356,11 @@ static GdkCursor *create_default_cursor(
+     return cursor;
+ }
+ 
++static void on_clipboard_request(VncConnection *conn, VncDisplay *display);
++static void send_primary_selection(GtkClipboard *clipboard G_GNUC_UNUSED,
++                                   const gchar *text,
++                                   gpointer user_data);
++
+ #ifdef G_OS_WIN32
+ static HWND win32_window = NULL;
+ 
+@@ -1347,6 +1352,11 @@ static void realize_event(GtkWidget *wid
+ 
+     gdk_window_set_cursor(gtk_widget_get_window(GTK_WIDGET(obj)),
+                           priv->remote_cursor ? priv->remote_cursor : priv->null_cursor);
++
++    if (priv->conn) {
++        g_signal_connect(priv->conn, "clipboard-request",
++                         G_CALLBACK(on_clipboard_request), obj);
++    }
+ }
+ 
+ static void get_preferred_width(GtkWidget *widget,
+@@ -1501,6 +1511,53 @@ static void on_framebuffer_update(VncCon
+ }
+ 
+ 
++/**
++ * on_clipboard_request:
++ *
++ * This function is called when the VncConnection receives a clipboard
++ * request from the server. Its job is to start the *asynchronous*
++ * process of getting the local PRIMARY selection text from GTK.
++ */
++static void
++on_clipboard_request(VncConnection *conn G_GNUC_UNUSED, VncDisplay *display)
++{
++    GtkClipboard *primary_clipboard;
++
++    VNC_DEBUG("Handling 'clipboard-request' signal, asking GTK for PRIMARY selection.");
++
++    primary_clipboard = gtk_widget_get_clipboard(GTK_WIDGET(display),
++                                                 GDK_SELECTION_PRIMARY);
++
++    /*
++     * This is an asynchronous operation. GTK will fetch the text
++     * and call send_primary_selection() when it's done.
++     */
++    gtk_clipboard_request_text(primary_clipboard,
++                               send_primary_selection,
++                               display);
++}
++
++/**
++ * send_primary_selection:
++ *
++ * GTK calls this function after it has successfully fetched the PRIMARY
++ * selection text. We now have the data and can send it to the server.
++ */
++static void
++send_primary_selection(GtkClipboard *clipboard G_GNUC_UNUSED,
++                       const gchar *text,
++                       gpointer user_data)
++{
++    VncDisplay *display = VNC_DISPLAY(user_data);
++    VncConnection *conn = vnc_display_get_connection(display);
++
++    if (conn && text != NULL && *text != '\0') {
++        VNC_DEBUG("Got PRIMARY selection asynchronously, sending to server.");
++        vnc_connection_send_clipboard_data(conn, text);
++    }
++}
++
++
+ static void do_framebuffer_init(VncDisplay *obj,
+                                 const VncPixelFormat *remoteFormat,
+                                 int width, int height, gboolean quiet)

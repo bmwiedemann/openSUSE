@@ -1,0 +1,207 @@
+Subject: Implement client-to-server clipboard update notification
+From: Lin Ma lma@suse.de Mon Jul 7 12:59:03 2025 +0800
+Date: Sun Oct 12 16:55:56 2025 +0800:
+Git: 348452c1007bbfd3575b94263d9e55b0e11b79db
+
+This patch implements the mechanism for notifying the VNC server side
+when the client's local clipboard content has changed.
+
+On the VncDisplay (UI) layer:
+- It detects local clipboard changes by listening to the 'owner-change'
+  signal on the GDK 'PRIMARY' selection.
+- A 50ms timer is used to debounce events, filtering out transient,
+  invalid events caused by actions like double-clicks.
+- When valid clipboard content is confirmed, it calls the underlying
+  VncConnection function.
+
+On the VncConnection (protocol) layer:
+- A new public function vnc_connection_handle_clipboard_change, is added
+  to serve as the entry point for triggering clipboard notifications from
+  the UI layer.
+- The vnc_connection_write_clipboard_notify function is implemented to
+  construct and send an extended clipboard message with the NOTIFY action.
+
+This patch completes the "announcement" phase of a client-side clipboard
+update, laying the groundwork for the server to subsequently request the
+data.
+
+Signed-off-by: Lin Ma <lma@suse.de>
+
+--- a/src/libgvnc_sym.version
++++ b/src/libgvnc_sym.version
+@@ -95,6 +95,9 @@
+ 	vnc_connection_power_control;
+ 	vnc_connection_set_size;
+ 
++	vnc_connection_handle_clipboard_change;
++	vnc_connection_clear_pending_flag;
++
+ 	vnc_util_set_debug;
+ 	vnc_util_get_debug;
+ 	vnc_util_get_version;
+--- a/src/vncconnection.c
++++ b/src/vncconnection.c
+@@ -147,6 +147,10 @@ static void vnc_connection_handle_clipbo
+                                                  const guint32 *lengths);
+ static void vnc_connection_handle_extended_clipboard(VncConnection *conn,
+                                                      gint32 len);
++static void vnc_connection_write_clipboard_notify(VncConnection *conn,
++                                                  guint32 flags);
++static void vnc_connection_announce_clipboard(VncConnection *conn,
++                                              gboolean available);
+ 
+ /*
+  * A special GSource impl which allows us to wait on a certain
+@@ -276,6 +280,7 @@ struct _VncConnectionPrivate
+     gboolean has_extended_clipboard;
+     guint32 server_clipboard_flags;
+     guint32 server_clipboard_sizes[VNC_CLIPBOARD_MAX_FORMATS];
++    gboolean pendingClientClipboard;
+ };
+ 
+ G_DEFINE_TYPE_WITH_PRIVATE(VncConnection, vnc_connection, G_TYPE_OBJECT);
+@@ -5619,6 +5624,7 @@ static void vnc_connection_init(VncConne
+     priv->has_extended_clipboard = FALSE;
+     priv->server_clipboard_flags = 0;
+     memset(priv->server_clipboard_sizes, 0, sizeof(priv->server_clipboard_sizes));
++    priv->pendingClientClipboard = FALSE;
+ }
+ 
+ 
+@@ -6926,3 +6932,49 @@ vnc_connection_handle_extended_clipboard
+ 
+     return;
+ }
++
++static void vnc_connection_write_clipboard_notify(VncConnection *conn,
++                                                  guint32 flags)
++{
++    guint8 pad[3] = {0};
++
++    vnc_connection_buffered_write_u8(conn, VNC_CONNECTION_CLIENT_MESSAGE_CUT_TEXT);
++    vnc_connection_buffered_write(conn, pad, 3);
++
++    /* Payload is flags(4). Negative length indicates extended message. */
++    vnc_connection_buffered_write_s32(conn, -4);
++
++    vnc_connection_buffered_write_u32(conn, flags | VNC_CLIPBOARD_ACTION_NOTIFY);
++
++    vnc_connection_buffered_flush(conn);
++}
++
++static void vnc_connection_announce_clipboard(VncConnection *conn,
++                                              gboolean available)
++{
++
++    if (!(conn->priv->server_clipboard_flags & VNC_CLIPBOARD_ACTION_NOTIFY)) {
++        vnc_connection_set_error(conn,
++                                 "Server does not support clipboard "
++                                 "'notify' action");
++    }
++
++    guint32 flags = available ? VNC_CLIPBOARD_FORMAT_UTF8 : 0;
++    vnc_connection_write_clipboard_notify(conn, flags);
++}
++
++void vnc_connection_handle_clipboard_change(VncConnection *conn)
++{
++    VncConnectionPrivate *priv = conn->priv;
++
++    priv->pendingClientClipboard = TRUE;
++
++    vnc_connection_announce_clipboard(conn, FALSE);
++}
++
++void vnc_connection_clear_pending_flag(VncConnection *conn)
++{
++    VncConnectionPrivate *priv = conn->priv;
++
++    priv->pendingClientClipboard = FALSE;
++}
+--- a/src/vncconnection.h
++++ b/src/vncconnection.h
+@@ -246,6 +246,9 @@ gboolean vnc_connection_has_error(VncCon
+ gboolean vnc_connection_set_framebuffer(VncConnection *conn,
+                                         VncFramebuffer *fb);
+ 
++void vnc_connection_handle_clipboard_change(VncConnection *conn);
++void vnc_connection_clear_pending_flag(VncConnection *conn);
++
+ const char *vnc_connection_get_name(VncConnection *conn);
+ int vnc_connection_get_width(VncConnection *conn);
+ int vnc_connection_get_height(VncConnection *conn);
+--- a/src/vncdisplay.c
++++ b/src/vncdisplay.c
+@@ -100,6 +100,8 @@ struct _VncDisplayPrivate
+     VncGrabSequence *vncgrabseq; /* the configured key sequence */
+     gboolean *vncactiveseq; /* the currently pressed keys */
+ 
++    guint primary_selection_timer_id;
++
+ #ifdef WIN32
+     HHOOK keyboard_hook;
+ #endif
+@@ -1826,6 +1828,54 @@ static void on_auth_unsupported(VncConne
+     g_signal_emit(G_OBJECT(obj), signals[VNC_AUTH_UNSUPPORTED], 0, authType);
+ }
+ 
++static void handle_primary_received(GtkClipboard *clipboard  G_GNUC_UNUSED,
++                                    const gchar *text,
++                                    gpointer opaque)
++{
++    VncDisplay *display = VNC_DISPLAY(opaque);
++    VncDisplayPrivate *priv = display->priv;
++
++    if (text != NULL && *text != '\0' && !priv->read_only) {
++        vnc_connection_handle_clipboard_change(priv->conn);
++    } else {
++        vnc_connection_clear_pending_flag(priv->conn);
++    }
++}
++
++static gboolean handle_primary_request(gpointer opaque)
++{
++    VncDisplay *display = VNC_DISPLAY(opaque);
++    VncDisplayPrivate *priv = display->priv;
++
++    GtkClipboard *clipboard = gtk_clipboard_get(GDK_SELECTION_PRIMARY);
++    gtk_clipboard_request_text(clipboard, handle_primary_received, opaque);
++
++    /* Returns FALSE to indicate that this timer will be executed only once and
++     * then automatically destroyed. */
++    priv->primary_selection_timer_id = 0;
++    return G_SOURCE_REMOVE;
++}
++
++static void on_primary_owner_change(GtkClipboard *clipboard G_GNUC_UNUSED,
++                                    GdkEventOwnerChange *event G_GNUC_UNUSED,
++                                    gpointer opaque)
++{
++    VncDisplay *display = VNC_DISPLAY(opaque);
++    VncDisplayPrivate *priv = display->priv;
++
++    /* If a timer is already running, cancel it first. */
++    if (priv->primary_selection_timer_id != 0) {
++        g_source_remove(priv->primary_selection_timer_id);
++    }
++
++    /* Start a new timer and execute the real request after 50 milliseconds,
++     * This delay is enough to filter out intermediate events generated by
++     * double clicks */
++    priv->primary_selection_timer_id = g_timeout_add(50,
++                                                     handle_primary_request,
++                                                     opaque);
++}
++
+ static void on_server_cut_text(VncConnection *conn G_GNUC_UNUSED,
+                                const gchar *text,
+                                gpointer opaque)
+@@ -3003,6 +3053,8 @@ static void vnc_display_init(VncDisplay
+                      G_CALLBACK(on_power_control_init), display);
+     g_signal_connect(G_OBJECT(priv->conn), "vnc-power-control-failed",
+                      G_CALLBACK(on_power_control_fail), display);
++    g_signal_connect(gtk_clipboard_get(GDK_SELECTION_PRIMARY), "owner-change",
++                     G_CALLBACK(on_primary_owner_change), display);
+ 
+     priv->keycode_map = vnc_display_keymap_gdk2rfb_table(&priv->keycode_maplen);
+ }

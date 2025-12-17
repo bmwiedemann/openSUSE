@@ -1,0 +1,96 @@
+Subject: Implement handling of server clipboard NOTIFY action
+From: Lin Ma lma@suse.de Mon Jul 7 13:11:06 2025 +0800
+Date: Sun Oct 12 16:55:56 2025 +0800:
+Git: b9150485968c771bdb32dc8a95560f6baa3c91eb
+
+This patch implements the first step in the server-to-client clipboard
+synchronization flow: the client's response to a server update
+notification.
+
+The specific changes are as follows:
+- When VncConnection receives a message from the server with the
+  'VNC_CLIPBOARD_ACTION_NOTIFY' flag, the new
+  'vnc_connection_handle_clipboard_notify' function is called.
+- Within this function, the client checks if the server supports the
+  'REQUEST' action. If so, the client immediately sends back a 'REQUEST'
+  message, asking the server to provide its clipboard data.
+- Additionally, upon receiving a notification from the server, any
+  pending client-to-server clipboard update ('pendingClientClipboard')
+  is cancelled. This ensures correct clipboard state synchronization.
+
+This commit establishes the "Notify -> Request" interaction, laying the
+groundwork for the client to receive clipboard data from the server.
+
+Signed-off-by: Lin Ma <lma@suse.de>
+
+--- a/src/vncconnection.c
++++ b/src/vncconnection.c
+@@ -155,6 +155,10 @@ static void vnc_connection_write_clipboa
+                                                    guint32 flags,
+                                                    const gchar *text);
+ static void vnc_connection_handle_clipboard_request(VncConnection *conn);
++static void vnc_connection_write_clipboard_request(VncConnection *conn,
++                                                   guint32 flags);
++static void vnc_connection_handle_clipboard_notify(VncConnection *conn,
++                                                   guint32 flags);
+ 
+ /*
+  * A special GSource impl which allows us to wait on a certain
+@@ -6940,7 +6944,7 @@ vnc_connection_handle_extended_clipboard
+     } else if (action == VNC_CLIPBOARD_ACTION_PEEK) {
+         VNC_DEBUG("Received clipboard action 'peek', not implemented yet");
+     } else if (action == VNC_CLIPBOARD_ACTION_NOTIFY) {
+-        VNC_DEBUG("Received clipboard action 'notify', not implemented yet");
++        vnc_connection_handle_clipboard_notify(conn, flags);
+     } else {
+         VNC_DEBUG("Unknown extended clipboard action 0x%x", action);
+     }
+@@ -7091,3 +7095,48 @@ void vnc_connection_send_clipboard_data(
+                                  "action, can not send clipboard data.");
+     }
+ }
++
++static void
++vnc_connection_write_clipboard_request(VncConnection *conn, guint32 flags)
++{
++    VncConnectionPrivate *priv = conn->priv;
++    guint8 pad[3] = {0};
++
++    if (!(priv->server_clipboard_flags & VNC_CLIPBOARD_ACTION_REQUEST)) {
++        vnc_connection_set_error(conn,
++                                 "Server does not support clipboard 'request'"
++                                 "action.");
++        return;
++    }
++
++    VNC_DEBUG("Sending clipboard request to server for format flags 0x%x", flags);
++
++    vnc_connection_buffered_write_u8(conn, VNC_CONNECTION_CLIENT_MESSAGE_CUT_TEXT);
++    vnc_connection_buffered_write(conn, pad, 3);
++
++    vnc_connection_buffered_write_s32(conn, -4);
++    vnc_connection_buffered_write_u32(conn, flags | VNC_CLIPBOARD_ACTION_REQUEST);
++
++    vnc_connection_buffered_flush(conn);
++}
++
++static void
++vnc_connection_handle_clipboard_notify(VncConnection *conn, guint32 flags)
++{
++    VncConnectionPrivate *priv = conn->priv;
++
++    if (flags & VNC_CLIPBOARD_FORMAT_UTF8) {
++        priv->pendingClientClipboard = FALSE;
++
++        VNC_DEBUG("Received notification of new clipboard data on server.");
++
++        if (priv->server_clipboard_flags & VNC_CLIPBOARD_ACTION_REQUEST) {
++            vnc_connection_write_clipboard_request(conn, VNC_CLIPBOARD_FORMAT_UTF8);
++        } else {
++            VNC_DEBUG("Server does not support clipboard request, not requesting data.");
++            vnc_connection_set_error(conn,
++                                     "Server does not support clipboard "
++                                     "'notify' action.");
++        }
++    }
++}
