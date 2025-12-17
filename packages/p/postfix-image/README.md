@@ -20,7 +20,7 @@
 
 ### Create new postfix server
 
-By default a simple relayhost postfix instance is started.
+By default, a simple relayhost postfix instance is started.
 
 The command to run this container is:
 
@@ -88,16 +88,16 @@ Mails for virtual domains and users are stored in Maildir format in
 `/var/spool/vmail` inside the container. To not loose the mail, this directory
 should be a persistence volume.
 `VMAIL_UID` specifies the UID and GID which owns all files below this
-directory. This makes sure, that the container is using the same UID/GID as
-the Container Host OS for the files and not regular users are owning this
-files and can read and modify them. The default UID/GID is `5000`.
+directory. This ensures that the container is using the same UID/GID as
+the container host OS for the files and no regular users own these
+files and can read or modify them. The default UID/GID is `5000`.
 
-There are three ways to provide the data for virtual domains and users, via
-environment variables, files or LDAP.
+There are three ways to provide the data for virtual domains and users:
+via environment variables, files or LDAP.
 
 ### Environment Variables
 
-Beside the already mentioned environment variables, two further variables
+Besides the already mentioned environment variables, two further variables
 define the virtual domains and the virtual users.
 `VIRTUAL_DOMAINS="example.com example2.com example3.com"` is a whitespace
 separated list which can contain one or more virtual domains. For every
@@ -158,7 +158,7 @@ user@example1.com example1.com/user/
 ```
 For mbox format, the trailing '/' needs to be removed.
 
-Additional a `/etc/postfix/vquota` file is required, which contains the quota
+Additionally, a `/etc/postfix/vquota` file is required, which contains the quota
 of the virtual users mailbox. To disable it, the file would look like:
 ```
 user1@example.com 0
