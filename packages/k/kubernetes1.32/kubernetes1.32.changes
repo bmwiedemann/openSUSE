@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Dec 17 12:45:48 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.32.11:
+  * upgrade to cos 121
+  * Bump dependencies, images and versions used to Go 1.24.11 and distroless iptables
+  * fix docker IP address detection for rsync
+  * Fallback to live ns lookup on admission if lister cannot find namespace
+  * mark device manager as haelthy before it started for the first time
+  * Mark API server errors as transient in csi raw block driver
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.24.11`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.32.11/build/dependencies.yaml#L113-L116
+
+-------------------------------------------------------------------
 Tue Nov 25 07:19:00 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.32.10:
