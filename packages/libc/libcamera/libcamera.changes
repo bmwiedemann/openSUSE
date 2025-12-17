@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Dec 16 14:24:09 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to release 0.6.0
+  * Improved the public facing API.
+  * New global configuration file system which will replace or
+    extend the current use of environment variables to configure
+    runtime behaviours.
+  * The core V4L2 classes can now support the V4L2 Request API which
+    in turn has brought in huge developments for the i.MX8MP Dewarper
+    support allowing full resize, scale, rotate and crop capabilities
+    on top of also performing lens dewarping.
+  * SoftISP: IPU7 has been added as a supported configuration to
+    the pipeline.
+  * New tuning files have been added for Raspberry Pi platforms,
+    improving support for the Sony IMX335, IMX415, IMX462, and ST
+    VD55G1 image sensors, and Decompand support has been added for
+    the Raspberry Pi 5.
+  * Various improvements have been made for thread handling,
+    improving synchronisation and event dispatch, as well as fixing
+    the serialisation operations for isolated IPA modules.
+  * In the applications components, there are fixes to cam adding
+    more output formats and qcam now behaves more consistently when
+    no camera is selected. The Python bindings have received fixes
+    for paths from meson, and the FrameBuffer::planes wrapper.
+  * doc: theme refresh and clearer separation between the internal
+    and public API, and fixes to the contributing guidelines.
+  * For a full list of changes, please see:
+    https://gitlab.freedesktop.org/camera/libcamera/-/releases/v0.6.0
+- Update meson build requirement to 1.0.1 according to the upstream
+  changes
+
+-------------------------------------------------------------------
 Tue Sep  9 12:42:46 UTC 2025 - pgajdos@suse.com
 
 - Update to release 0.5.2

@@ -16,15 +16,15 @@
 #
 
 
-%define lname       libcamera0_5
-%define lname_base  libcamera-base0_5
+%define lname       libcamera0_6
+%define lname_base  libcamera-base0_6
 %if "@BUILD_FLAVOR@" != ""
 %define extname -@BUILD_FLAVOR@
 %else
 %define extname %nil
 %endif
 Name:           libcamera%extname
-Version:        0.5.2
+Version:        0.6.0
 Release:        0
 Summary:        A complex camera support library in C++
 License:        CC-BY-SA-4.0 AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -40,7 +40,7 @@ BuildRequires:  c++_compiler
 BuildRequires:  gcc11
 BuildRequires:  gcc11-c++
 %endif
-BuildRequires:  meson >= 0.56
+BuildRequires:  meson >= 1.0.1
 BuildRequires:  pkg-config
 BuildRequires:  python3-Jinja2
 BuildRequires:  python3-PyYAML
