@@ -8,8 +8,7 @@ manager. This means that the image is smaller than `bci-minimal`. The primary
 use case for the image is deploying static binaries produced externally or
 during multi-stage builds.
 
-This base container image is configured with FIPS mode enabled by default, but
-**does not** include any certified binaries.
+This base container image is configured with FIPS mode enabled by default, but it **does not** include any certified binaries.
 
 ## Usage
 
