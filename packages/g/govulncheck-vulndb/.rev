@@ -1524,4 +1524,16 @@
   * GO-2025-4212 GHSA-pfrf-9r5f-73f5 (forwarded request 1323039 from jfkw)</comment>
     <requestid>1323040</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>0db7a2425bbebb617b1988771c9209d5</srcmd5>
+    <version>0.0.20251216T193914</version>
+    <time>1765989245</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.0.20251216T193914 2025-12-16T19:39:14Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2025-4239 CVE-2025-68113 GHSA-6gvq-jcmp-8959
+  * GO-2025-4240 CVE-2025-13281 GHSA-r6j8-c6r2-37rr (forwarded request 1323225 from jfkw)</comment>
+    <requestid>1323226</requestid>
+  </revision>
 </revisionlist>
