@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Dec 17 06:34:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 52.11.0:
+  This is the first release in preparation for V2.00, which will be
+  officially launched in January 2026. We will continue adding new
+  features while deprecating older ones, as V1.00 is gradually
+  being sunset.
+  You can read more about this transition here.
+  https://www.linkedin.com/pulse/kubeshark-v200-coming-soon-alon-girmonsky-o9jtc/
+  * Bug Fixes & New Features
+    - The backend was completely refactored. The new backend is now
+      available as part of V2.00, while V1.00 continues to use the
+      legacy backend. In addition to enabling new features, the new
+      backend is significantly more performant than the legacy
+      implementation.
+    - Added an easy way to export cluster-wide L4 traffic (PCAP).
+      Read more here.
+    - Added L7-to-L4 mapping (API calls mapped to L4 TCP/UDP
+      connections). This functionality includes an online PCAP
+      viewer, as well as the ability to download a single
+      aggregated PCAP file. Read more here
+    - Fixed an issue where backend filter rules related to
+      namespace exclusion did not work correctly.
+
+-------------------------------------------------------------------
 Thu Dec 04 07:01:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 52.10.3 (no releases between .0 and this one):
