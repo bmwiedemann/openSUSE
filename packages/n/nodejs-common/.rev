@@ -208,4 +208,14 @@
     <comment>- Update SLFO to current LTS</comment>
     <requestid>1223915</requestid>
   </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>8d990f68f378e1c6b0cc9a1024c1794f</srcmd5>
+    <version>6.1</version>
+    <time>1765989003</time>
+    <user>anag_factory</user>
+    <comment>- Update TW and SLFO to 24. Since we cannot differentiate between
+  16.0 and 16.1 at the moment, the SLFO numbers need to be branched
+  per revision.</comment>
+    <requestid>1320746</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package nodejs-common
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,7 @@
 #
 
 
-###########################################################
-#
-#   WARNING! WARNING! WARNING! WARNING! WARNING! WARNING!
-#
-# This spec file is generated from a template hosted at
-# https://github.com/AdamMajer/nodejs-packaging
-#
-###########################################################
-
-%define NODEJS_CURRENT  22
-%define NODEJS_LTS      22
+%define NODEJS_CURRENT  24
 
 %if 0%{?suse_version} > 1500 || 0%{?fedora_version}
 %bcond_without libalternatives
@@ -74,13 +64,13 @@
 %endif
 
 %if 0%{?suse_version} == 1600
-# SLFO variants
-%define default_node_ver %NODEJS_LTS
+# 16.1
+%define default_node_ver 24
 %endif
 
 # TW
 %if 0%{?suse_version} >= 1699
-%define default_node_ver %NODEJS_CURRENT
+%define default_node_ver 24
 %endif
 
 Name:           nodejs-common

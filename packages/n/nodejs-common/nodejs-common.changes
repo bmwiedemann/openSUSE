@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 28 18:43:55 UTC 2025 - Adam Majer <adam.majer@suse.de>
+
+- Update TW and SLFO to 24. Since we cannot differentiate between
+  16.0 and 16.1 at the moment, the SLFO numbers need to be branched
+  per revision.
+
+-------------------------------------------------------------------
 Wed Nov 13 11:12:54 UTC 2024 - Adam Majer <adam.majer@suse.de>
 
 - Update SLFO to current LTS
