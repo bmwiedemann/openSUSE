@@ -24,7 +24,13 @@ License:        GPL-3.0-or-later
 URL:            https://github.com/wwmm/easyeffects
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  cmake
+%if 0%{?suse_version} <= 1600
+BuildRequires:  gcc15
+BuildRequires:  gcc15-c++
+%else
+BuildRequires:  gcc
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  kf6-extra-cmake-modules
 BuildRequires:  ladspa-devel
 BuildRequires:  nlohmann_json-devel
@@ -74,6 +80,10 @@ plugins for PipeWire applications.
 %autosetup
 
 %build
+%if 0%{?suse_version} <= 1600
+export CC=gcc-15
+export CXX=g++-15
+%endif
 %cmake
 %cmake_build
 
