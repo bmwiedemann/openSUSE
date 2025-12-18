@@ -1,0 +1,170 @@
+From 51bada5f0c1b634b5db92de428f33c0188e68e82 Mon Sep 17 00:00:00 2001
+From: Maciej Strozek <mstrozek@opensource.cirrus.com>
+Date: Fri, 28 Nov 2025 16:08:23 +0000
+Subject: [PATCH 2/3] ucm2: sof-soundwire: Simplify cs42l45 configs
+
+Simplify cs42l45 configs following machine driver changes [1]
+which bring normal switches instead of mute switches.
+
+[1] https://lore.kernel.org/all/20251127163426.2500633-2-ckeepax@opensource.cirrus.com/
+
+Closes: https://github.com/alsa-project/alsa-ucm-conf/pull/655
+Signed-off-by: Maciej Strozek <mstrozek@opensource.cirrus.com>
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/codecs/cs42l45-dmic/init.conf    | 17 +++++++++++++++--
+ ucm2/codecs/cs42l45/init.conf         | 24 ++++++++++++++++++++++++
+ ucm2/sof-soundwire/cs42l45-dmic.conf  |  8 ++------
+ ucm2/sof-soundwire/cs42l45.conf       | 18 +++---------------
+ ucm2/sof-soundwire/sof-soundwire.conf |  2 +-
+ 5 files changed, 45 insertions(+), 24 deletions(-)
+ create mode 100644 ucm2/codecs/cs42l45/init.conf
+
+diff --git a/ucm2/codecs/cs42l45-dmic/init.conf b/ucm2/codecs/cs42l45-dmic/init.conf
+index 6dd19bbf0ee8..deefb3d19cdc 100644
+--- a/ucm2/codecs/cs42l45-dmic/init.conf
++++ b/ucm2/codecs/cs42l45-dmic/init.conf
+@@ -1,9 +1,22 @@
+ # cs42l45 specific control settings
+ 
++LibraryConfig.remap.Config {
++	ctl.default.map {
++		"name='cs42l45 Microphone Capture Switch'" {
++			"name='cs42l45 FU 113 Channel Switch'".vindex.0 0
++			"name='cs42l45 FU 113 Channel Switch'".vindex.1 1
++		}
++		"name='cs42l45 Microphone Capture Volume'" {
++			"name='cs42l45 FU 113 Channel Volume'".vindex.0 0
++			"name='cs42l45 FU 113 Channel Volume'".vindex.1 1
++		}
++	}
++}
++
+ BootSequence [
+-	cset "name='cs42l45 FU 113 Mute Switch' 0"
++	cset "name='cs42l45 FU 113 Channel Switch' 0"
+ ]
+ 
+ Macro [
+-	{ SetLED { LED="mic" Action="attach" CtlId="cs42l45 FU 113 Mute Switch" Mode="follow-route"} }
++	{ SetLED { LED="mic" Action="attach" CtlId="cs42l45 FU 113 Channel Switch"} }
+ ]
+diff --git a/ucm2/codecs/cs42l45/init.conf b/ucm2/codecs/cs42l45/init.conf
+new file mode 100644
+index 000000000000..f4aee4afcb11
+--- /dev/null
++++ b/ucm2/codecs/cs42l45/init.conf
+@@ -0,0 +1,24 @@
++# cs42l45 specific control settings
++
++LibraryConfig.remap.Config {
++	ctl.default.map {
++		"name='cs42l45 Jack Microphone Capture Switch'" {
++			"name='cs42l45 FU 36 Channel Switch'".vindex.0 0
++			"name='cs42l45 FU 36 Channel Switch'".vindex.1 1
++		}
++		"name='cs42l45 Jack Microphone Capture Volume'" {
++			"name='cs42l45 FU 36 Channel Volume'".vindex.0 0
++			"name='cs42l45 FU 36 Channel Volume'".vindex.1 1
++		}
++	}
++	ctl.default.map {
++		"name='cs42l45 Headphone Playback Switch'" {
++			"name='cs42l45 FU 41 Channel Switch'".vindex.0 0
++			"name='cs42l45 FU 41 Channel Switch'".vindex.1 1
++		}
++		"name='cs42l45 Headphone Playback Volume'" {
++			"name='cs42l45 FU 41 Channel Volume'".vindex.0 0
++			"name='cs42l45 FU 41 Channel Volume'".vindex.1 1
++		}
++	}
++}
+\ No newline at end of file
+diff --git a/ucm2/sof-soundwire/cs42l45-dmic.conf b/ucm2/sof-soundwire/cs42l45-dmic.conf
+index 9477cbac7674..d46808e3187e 100644
+--- a/ucm2/sof-soundwire/cs42l45-dmic.conf
++++ b/ucm2/sof-soundwire/cs42l45-dmic.conf
+@@ -7,18 +7,14 @@ SectionDevice."Mic" {
+ 		"Headset"
+ 	]
+ 
+-	EnableSequence [
+-		cset "name='cs42l45 FU 113 Mute Switch' 0"
+-	]
+-
+ 	DisableSequence [
+-		cset "name='cs42l45 FU 113 Mute Switch' 1"
++		cset "name='cs42l45 FU 113 Channel Switch' 0"
+ 	]
+ 
+ 	Value {
+ 		CapturePriority 100
+ 		CapturePCM "hw:${CardId},4"
+ 		CaptureMixer "default:${CardId}"
+-		CaptureVolume "cs42l45 FU 113 Channel Volume"
++		CaptureMixerElem "cs42l45 Microphone"
+ 	}
+ }
+diff --git a/ucm2/sof-soundwire/cs42l45.conf b/ucm2/sof-soundwire/cs42l45.conf
+index ba610480eaad..c88562a03581 100644
+--- a/ucm2/sof-soundwire/cs42l45.conf
++++ b/ucm2/sof-soundwire/cs42l45.conf
+@@ -3,19 +3,11 @@
+ SectionDevice."Headphones" {
+ 	Comment "Headphones"
+ 
+-	EnableSequence [
+-		cset "name='cs42l45 FU 41 Mute Switch' 0"
+-	]
+-
+-	DisableSequence [
+-		cset "name='cs42l45 FU 41 Mute Switch' 1"
+-	]
+-
+ 	Value {
+ 		PlaybackPriority 200
+ 		PlaybackPCM "hw:${CardId},0"
+ 		PlaybackMixer "default:${CardId}"
+-		PlaybackVolume "cs42l45 FU 41 Channel Volume"
++		PlaybackMixerElem "cs42l45 Headphone"
+ 		JackControl "cs42l45 OT 43 Headphone Jack"
+ 	}
+ }
+@@ -23,19 +15,15 @@ SectionDevice."Headphones" {
+ SectionDevice."Headset" {
+ 	Comment "Jack Microphone"
+ 
+-	EnableSequence [
+-		cset "name='cs42l45 FU 36 Mute Switch' 0"
+-	]
+-
+ 	DisableSequence [
+-		cset "name='cs42l45 FU 36 Mute Switch' 1"
++		cset "name='cs42l45 FU 36 Channel Switch' 0"
+ 	]
+ 
+ 	Value {
+ 		CapturePriority 200
+ 		CapturePCM "hw:${CardId},1"
+ 		CaptureMixer "default:${CardId}"
+-		CaptureVolume "cs42l45 FU 36 Channel Volume"
++		CaptureMixerElem "cs42l45 Jack Microphone"
+ 		JackControl "cs42l45 IT 31 Microphone Jack"
+ 	}
+ }
+diff --git a/ucm2/sof-soundwire/sof-soundwire.conf b/ucm2/sof-soundwire/sof-soundwire.conf
+index 895f479933f4..7a00209e940a 100644
+--- a/ucm2/sof-soundwire/sof-soundwire.conf
++++ b/ucm2/sof-soundwire/sof-soundwire.conf
+@@ -117,7 +117,7 @@ If.spk_init {
+ If.hs_init {
+ 	Condition {
+ 		Type RegexMatch
+-		Regex "(cs42l43|rt5682|rt700|rt711|rt713(-sdca)?)"
++		Regex "(cs42l43|cs42l45|rt5682|rt700|rt711|rt713(-sdca)?)"
+ 		String "${var:HeadsetCodec1}"
+ 	}
+ 	True.Include.hs_init.File "/codecs/${var:HeadsetCodec1}/init.conf"
+-- 
+2.52.0
+

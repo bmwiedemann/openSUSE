@@ -27,6 +27,9 @@ Source1:        %{url}/files/pub/lib/alsa-ucm-conf-%{version}.tar.bz2.sig
 # from https://www.alsa-project.org/files/pub/gpg-release-key-v1.txt
 Source2:        alsa-ucm-conf.keyring
 # upstream fixes
+Patch1:         0001-sof-soundwire-third-fix-for-multi-codec.patch
+Patch2:         0002-ucm2-sof-soundwire-Simplify-cs42l45-configs.patch
+Patch3:         0003-ucm2-codecs-rt722-add-condition-to-SetLED-for-mic.patch
 BuildRequires:  fdupes
 BuildArch:      noarch
 Requires:       libasound2 >= 1.2.6.1

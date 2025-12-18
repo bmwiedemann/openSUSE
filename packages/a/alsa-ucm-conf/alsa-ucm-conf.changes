@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 17 11:40:48 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Backport upstream fixes (bsc#1255123):
+  0001-sof-soundwire-third-fix-for-multi-codec.patch
+  0002-ucm2-sof-soundwire-Simplify-cs42l45-configs.patch
+  0003-ucm2-codecs-rt722-add-condition-to-SetLED-for-mic.patch
+
+-------------------------------------------------------------------
 Mon Dec  8 14:36:17 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to alsa-ucm-conf 1.2.15:
