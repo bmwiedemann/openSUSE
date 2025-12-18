@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Dec 12 06:13:06 UTC 2025 - Nicholas Yang <nicholas.yang@suse.com>
+
+- Update to version 3.0.4:
+  * configure: Remove unsupported -Wunsigned-char
+  * qnetd: Remove unused cluster_no
+  * qnetd: Add void to register function declaration
+  * configure: Detection of warning flags for clang
+  * configure: Remove deprecated warnings
+  * qdevice: Suppress Coverity errors
+  * qdevice: Add option to change socket file gid
+  * utils: Add utils_get_group_gid
+  * qdevice: Add option to change socket file umask
+  * utils: Add utils_strtonum_base
+  * tests: Add check of empty dynar-getopt value
+  * certutil: Adding alternative options for SSH
+  * qnetd: Assert dpd timer entry exists
+  * qnetd: Assert first tie-breaker node entry exists
+  * msg: Check result of msg_add_type and msg_add_len
+  * qdevice: Add note about coverity weak crypto err
+  * man: Clarify HB interval in corosync-qnetd-tool
+  * init: Remove unused upstart entry from Makefile.am
+  * build: Add support for sysusers.d functionality
+  * qnetd: Add note about coverity false positive err
+  * build: Add support for installing qnetd into sbin
+  * spec: Migrate to SPDX license
+
+-------------------------------------------------------------------
 Mon Apr 28 04:35:09 UTC 2025 - Nicholas Yang <nicholas.yang@suse.com>
 
 - Modify 0001-harden-services-with-systemd-sandboxing.patch:

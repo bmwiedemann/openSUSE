@@ -1,7 +1,7 @@
 #
 # spec file for package corosync-qdevice
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 
 Name:           corosync-qdevice
 Summary:        The Corosync Cluster Engine Qdevice
-Version:        3.0.3
+Version:        3.0.4
 Release:        0%{?gitver}%{?dist}
 License:        BSD-3-Clause
 URL:            https://github.com/corosync/corosync-qdevice
