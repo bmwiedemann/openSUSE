@@ -94,4 +94,12 @@
   CXX set to false and makes c++ base extensions fail</comment>
     <requestid>1316510</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c3eb7d3432b539d9a026a692725b0cb4</srcmd5>
+    <version>3.4.8</version>
+    <time>1766078953</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.4.8</comment>
+    <requestid>1323333</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Wed Dec 17 11:01:47 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.4.8
+  - Bug #21629: Ruby-3.4.7 prints -Wdefault-const-init-field-unsafe
+    warnings on clang / llvm 21 - Ruby - Ruby Issue Tracking System
+  - Bug #21626: Backport WASI setjmp handler memory leak fixes -
+    Ruby - Ruby Issue Tracking System
+  - Bug #21631: Backport openssl gem bugfix releases - Ruby - Ruby
+    Issue Tracking System
+  - Bug #21632: Backport REXML CVE-2025-58767 fix - Ruby - Ruby
+    Issue Tracking System
+  - Bug #21644: Stack consistency error for the newrange INSN
+    peephole optimization with chilled string - Ruby - Ruby Issue
+    Tracking System
+  - Bug #21668: Improve performance of
+    UnicodeNormalize.canonical_ordering_one - Ruby - Ruby Issue
+    Tracking System
+  - Bug #21638: Ractor-local $DEBUG is not marked - Ruby - Ruby
+    Issue Tracking System
+  - Bug #21652: Marshal#dump documentation out-of-date/unclear
+    regarding Data class - Ruby - Ruby Issue Tracking System
+  - Bug #13671: Regexp with lookbehind and case-insensitivity
+    raises RegexpError only on strings with certain characters -
+    Ruby - Ruby Issue Tracking System
+  - Bug #21625: Allow IO#wait_readable together with IO#ungetc even
+    in text mode - Ruby - Ruby Issue Tracking System
+  - Bug #21671: Rails CI raises Assertion Failed:
+    rbimpl_rstring_getmem:RB_TYPE_P(str, RUBY_T_STRING): actual
+    type: 26 with "-DENABLE_PATH_CHECK=0 -DRUBY_DEBUG=1" enabled -
+    Ruby - Ruby Issue Tracking System
+  - Update next stable version to 4.0 from 3.5 by hsbt · Pull
+    Request #15146
+  - Bug #21679: Segfault when ruby calls pthread_detach in
+    rb_getnameinfo - Ruby - Ruby Issue Tracking System
+  - Bug #21694: Crash when looking up super method from BasicObject
+    - Ruby - Ruby Issue Tracking System
+  - Bug #21707: Destructuring assignment of SimpleDelegator wrapped
+    array bug with YJIT - Ruby - Ruby Issue Tracking System
+  - Bug #21265: Crash when proc from Symbol#to_proc called outside
+    refinement scope - Ruby - Ruby Issue Tracking System
+  - Bug #21703: RUBY_CRASH_REPORT does not work when shelling out
+    in some cases - Ruby - Ruby Issue Tracking System
+  - Bug #21666: Math.lgamma(-1).should == [infinity_value, 1] fails
+    with Fedora glibc-2.42.9000-8.fc44 - Ruby - Ruby Issue Tracking
+    System
+  - Bug #21655: segfault when building 3.3.10 with GCC 15.2.1,
+    regression from 3.3.9 - Ruby - Ruby Issue Tracking System
+  - Bug #21680: Integer#digits bug starting from Ruby 3.1 - Ruby -
+    Ruby Issue Tracking System
+  - Bug #21705: UNIXServer.open(nil) segfaults on Windows - Ruby -
+    Ruby Issue Tracking System
+  - Bug #21648: [prism] ruby crashes for for * in [10]; end - Ruby
+    - Ruby Issue Tracking System
+  - Bug #21187: Strings concatenated with \ getting frozen with
+    literal hashes (PRISM only) - Ruby - Ruby Issue Tracking System
+  - Bug #21757: Splatted args array is mutated when passing
+    unexpected kwargs - Ruby - Ruby Issue Tracking System
+  - Bug #21772: ruby: YJIT has panicked StackOpnd(1) should be a
+    heap object, but was ImmSymbol for VALUE(137647867319760) -
+    Ruby - Ruby Issue Tracking System
+  - Bug #21446: StackOverflow when changing visibility in reopened
+    refinement - Ruby - Ruby Issue Tracking System
+  - Bug #21779: Do not export functions from statically linked
+    extensions - Ruby - Ruby Issue Tracking System
+  - Bug #21266: YJIT GC safety crash with proc objects as block
+    argument - Ruby - Ruby Issue Tracking System
+
+    https://github.com/ruby/ruby/releases/tag/v3_4_8
+
+-------------------------------------------------------------------
 Fri Nov  7 22:16:26 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Add BuildRequires for gcc-c++ otherwise the rbconfig.rb now has
@@ -16,7 +86,7 @@ Tue Oct  7 23:34:13 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
   has been made for the convenience of those who wish to continue
   using it as a default gem.
 
-    https://github.com/ruby/ruby/releases/tag/v3_4_6
+    https://github.com/ruby/ruby/releases/tag/v3_4_7
 
 -------------------------------------------------------------------
 Tue Oct  7 01:26:21 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
