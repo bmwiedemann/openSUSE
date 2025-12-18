@@ -1,7 +1,7 @@
 #
 # spec file for package rsync
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,6 +61,9 @@ Patch3:         rsync-run-dir.patch
 Patch5:         rsyncd-return-from-list-command-with-0.patch
 # https://github.com/RsyncProject/rsync/pull/716
 Patch6:         rsync341-gcc15-bool.patch
+# bsc#1254441, CVE-2025-10158: rsync: Out of bounds array access via negative index
+# https://github.com/RsyncProject/rsync/commit/797e17fc4a6f15e3b1756538a9f812b63942686f
+Patch7:         rsync-CVE-2025-10158.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  c++_compiler
