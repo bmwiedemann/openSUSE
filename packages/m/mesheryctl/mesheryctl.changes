@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Thu Dec 18 08:08:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.182:
+  * Meshery CLI
+    - [CLI] Remove "exit status 1" from Meshery Server
+      unavailability errors @copilot-swe-agent[bot] (#16685)
+    - Replace exec.Command docker-compose calls with docker compose
+      library @copilot-swe-agent[bot] (#16677)
+    - [DOCS] Update mesheryctl documentations for -p docker
+      @Kevindua26 (#16671)
+    - fix(api): add optional headers parameter to Add function
+      @leecalcote (#16680)
+    - feat: add connection management commands for create, view,
+      and delete operations @leecalcote (#16688)
+    - chore: Improve error handling in makeRequest function for
+      better connectivity feedback @lekaf974 (#16686)
+  * Maintenance
+    - Bump github.com/docker/docker from 28.0.4+incompatible to
+      28.5.2+incompatible @dependabot[bot] (#16529)
+    - chore(deps): bump github.com/containerd/containerd/v2 from
+      2.1.4 to 2.1.5 @dependabot[bot] (#16693)
+    - Fix indentation for docker compose command @carlosriosilva
+      (#16694)
+    - Fix indentation for Docker compose command @pontusringblom
+      (#16692)
+    - Replace exec.Command docker-compose calls with docker compose
+      library @copilot-swe-agent[bot] (#16677)
+  * Documentation
+    - [DOCS] Update mesheryctl documentations for -p docker
+      @Kevindua26 (#16671)
+    - feat: add connection management commands for create, view,
+      and delete operations @leecalcote (#16688)
+    - docs: add id attribute to error code table rows @1012Charan
+      (#16690)
+- update to 0.8.181:
+  * General
+    - optimize resources response and add support for getting
+      resource by id @aabidsofi19 (#16675)
+  * Maintenance
+    - fix: Update Go version to 1.25 in error codes updater
+      workflow @lekaf974 (#16676)
+  * Documentation
+    - fix incorrect example in Hierarchical-Parent-Wallet section
+      @safiya2610 (#16609)
+    - Docs: Reframe model generation terminology from filtering to
+      grouping @parthivsaikia (#16637)
+    - Enhance error handling and logging in GraphQL resolvers;
+      improve context management and subscription handling
+      @leecalcote (#16654)
+
+-------------------------------------------------------------------
 Wed Dec 17 07:19:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.180:
