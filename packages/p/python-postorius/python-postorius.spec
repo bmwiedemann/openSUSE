@@ -1,7 +1,7 @@
 #
 # spec file for package python-postorius
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %bcond_without testsuite
 
-# keep in sync with setup.py
+# keep in sync with pyproject.toml
 %global django_mailman3_min_version 1.3.13
 %global django_min_version 4.2
-%global django_max_version 5.1
+%global django_max_version 5.3
 %global mailmanclient_min_version 3.3.3
 
 %global srv_www_dir /srv/www
@@ -67,10 +67,12 @@ Source12:       postorius.uwsgi
 Source20:       README.SUSE.md
 #
 Patch0:         postorius-settings.patch
+# PATCH-FIX-UPSTREAM https://gitlab.com/mailman/postorius/-/commit/0468ab0329df85b89e6b5d9f7b4d1805f47450c9 feat: Add Python 3.13 and Django 5.2 (LTS) support
+Patch1:         django52.patch
 #
 BuildRequires:  %{python_module legacy-cgi}
-BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pdm-backend}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  acl
