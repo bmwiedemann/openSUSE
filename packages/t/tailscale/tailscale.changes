@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 17 13:24:06 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.92.3:
+  * WireGuard configuration that occurs automatically in the client, no longer
+    results in a panic
+
+-------------------------------------------------------------------
 Fri Dec 12 14:21:14 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.92.2:

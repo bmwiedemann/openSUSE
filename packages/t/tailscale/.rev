@@ -454,4 +454,14 @@
   * cmd/derper: add GCP Certificate Manager support (forwarded request 1322627 from rrahl0)</comment>
     <requestid>1322628</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>f67d6ca2b32e198334f4b3ab464e7097</srcmd5>
+    <version>1.92.3</version>
+    <time>1766079135</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.92.3:
+  * WireGuard configuration that occurs automatically in the client, no longer
+    results in a panic (forwarded request 1323400 from rrahl0)</comment>
+    <requestid>1323401</requestid>
+  </revision>
 </revisionlist>
