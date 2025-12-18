@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 16 18:38:06 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 8.1.0:
+  * Deprecated: --hls-segment-queue-threshold in favor of
+    --stream-segmented-queue-deadline
+  * Improved: debug logging of segmented streams
+  * twitch: fixed clips GQL API query
+
+-------------------------------------------------------------------
 Fri Nov 14 17:49:36 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update minimum version for dependencies
