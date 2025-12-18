@@ -2616,6 +2616,8 @@ unsorted:
   - coredns-for-k8s1.33-extras 
   - coredns-for-k8s1.34 
   - coredns-for-k8s1.34-extras 
+  - coredns-for-k8s1.35 
+  - coredns-for-k8s1.35-extras 
   - coreos-installer 
   - corepack-default 
   - corepack22 
@@ -3660,6 +3662,7 @@ unsorted:
   - emil 
   - emojione-color-font 
   - emptyepsilon 
+  - enable-no_new_privs 
   - enblend-enfuse 
   - enblend-enfuse-doc 
   - enc 
@@ -3826,6 +3829,7 @@ unsorted:
   - etcd-for-k8s1.32 
   - etcd-for-k8s1.33 
   - etcd-for-k8s1.34 
+  - etcd-for-k8s1.35 
   - etcdctl 
   - etcdutl 
   - etckeeper 
@@ -10676,6 +10680,17 @@ unsorted:
   - kubernetes1.34-kubelet-common 
   - kubernetes1.34-proxy 
   - kubernetes1.34-scheduler 
+  - kubernetes1.35-apiserver 
+  - kubernetes1.35-client 
+  - kubernetes1.35-client-bash-completion 
+  - kubernetes1.35-client-common 
+  - kubernetes1.35-client-fish-completion 
+  - kubernetes1.35-controller-manager 
+  - kubernetes1.35-kubeadm 
+  - kubernetes1.35-kubelet 
+  - kubernetes1.35-kubelet-common 
+  - kubernetes1.35-proxy 
+  - kubernetes1.35-scheduler 
   - kubescape 
   - kubeseal 
   - kubesec 
@@ -14720,8 +14735,8 @@ unsorted:
   - libmirisdr-devel 
   - libmirisdr0 
   - libmiroil8 
-  - libmirplatform33 
-  - libmirserver65 
+  - libmirplatform34 
+  - libmirserver66 
   - libmirserverplatform23 
   - libmirwayland5 
   - libmission-control-plugins0 
@@ -15482,7 +15497,7 @@ unsorted:
   - libpresage-devel 
   - libpresage-doc 
   - libprimecount-devel 
-  - libprimecount7 
+  - libprimecount8 
   - libprimesieve-devel 
   - libprimesieve12 
   - libprofanity0 
@@ -23898,6 +23913,7 @@ unsorted:
   - python3-dbus-presage 
   - python3-deltarpm 
   - python3-designateclient-doc 
+  - python3-django-mailman3 
   - python3-dnf 
   - python3-dnf-plugin-kickstart 
   - python3-dnf-plugin-leaves 
@@ -25300,7 +25316,6 @@ unsorted:
   - python311-django-jsonfield 
   - python311-django-localflavor 
   - python311-django-mailer 
-  - python311-django-mailman3 
   - python311-django-mathfilters 
   - python311-django-minio-storage 
   - python311-django-model-utils 
@@ -29112,7 +29127,6 @@ unsorted:
   - python312-django-jsonfield 
   - python312-django-localflavor 
   - python312-django-mailer 
-  - python312-django-mailman3 
   - python312-django-mathfilters 
   - python312-django-minio-storage 
   - python312-django-model-utils 
@@ -32957,7 +32971,6 @@ unsorted:
   - python313-django-jsonfield 
   - python313-django-localflavor 
   - python313-django-mailer 
-  - python313-django-mailman3 
   - python313-django-mathfilters 
   - python313-django-minio-storage 
   - python313-django-model-utils 
