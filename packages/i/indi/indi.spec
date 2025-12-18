@@ -30,6 +30,10 @@ Group:          Productivity/Scientific/Astronomy
 URL:            https://www.indilib.org/
 Source0:        https://github.com/indilib/indi/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        indi-rpmlintrc
+# PATCH-FIX-UPSTREAM https://github.com/indilib/indi/commit/9ce200b65d65ae2d5e4d25796049273d99fcf41e
+Patch0:         fix-safety-monitor.patch
+# PATCH-FIX-UPSTREAM https://github.com/indilib/indi/commit/7891ede769f350db0b8117e2a3182b204230a055
+Patch1:         fix-infinite-loop.patch
 BuildRequires:  cmake
 BuildRequires:  gcc%{?force_gcc_version}-c++ >= 12
 %if 0%{?suse_version} < 1600

@@ -209,4 +209,14 @@
 </comment>
     <requestid>1321184</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>c114e16169b08142bcda963ea24ad857</srcmd5>
+    <version>2.1.7</version>
+    <time>1766079329</time>
+    <user>anag_factory</user>
+    <comment>- Add fix-safety-monitor.patch
+- Add fix-infinite-loop.patch
+</comment>
+    <requestid>1323482</requestid>
+  </revision>
 </revisionlist>
