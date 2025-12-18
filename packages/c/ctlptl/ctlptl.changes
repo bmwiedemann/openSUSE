@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 18 08:11:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.8.44:
+  * cluster: add kind 0.31 support (#393)
+  * circleci: pin goreleaser (#394)
+  * Update version numbers: 0.8.43
+
+-------------------------------------------------------------------
 Thu Aug 28 07:18:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.8.43:
