@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 15 18:31:54 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 6.17.0
+  * Fix evaluating ATA Error Count: 0 as a warning.
+  * Add areca devices.
+
+-------------------------------------------------------------------
 Wed Jun 18 11:22:44 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to 6.16.0
