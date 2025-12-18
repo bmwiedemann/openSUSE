@@ -44,7 +44,7 @@ BuildRequires:  fdupes
 BuildRequires:  java-devel >= 17
 BuildRequires:  javapackages-local
 BuildRequires:  junit5-minimal
-BuildRequires:  maven-resolver2-api
+BuildRequires:  maven-resolver2-api >= 2.0.14
 BuildRequires:  maven-resolver2-connector-basic
 BuildRequires:  maven-resolver2-impl
 BuildRequires:  maven-resolver2-spi

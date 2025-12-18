@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 18 06:43:33 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Specify required maven-resolver version since the patch ports
+  maven4 to new APIs appeared in 2.0.14
+
+-------------------------------------------------------------------
 Wed Dec 17 07:08:37 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

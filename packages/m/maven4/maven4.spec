@@ -69,9 +69,9 @@ BuildRequires:  jline3-reader
 BuildRequires:  jline3-style
 BuildRequires:  jline3-terminal
 BuildRequires:  jline3-terminal-jni
-BuildRequires:  maven-resolver2-api
+BuildRequires:  maven-resolver2-api >= 2.0.14
 BuildRequires:  maven-resolver2-connector-basic
-BuildRequires:  maven-resolver2-impl
+BuildRequires:  maven-resolver2-impl >= 2.0.14
 BuildRequires:  maven-resolver2-named-locks
 BuildRequires:  maven-resolver2-spi
 BuildRequires:  maven-resolver2-transport-apache

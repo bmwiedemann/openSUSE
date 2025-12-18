@@ -31,4 +31,12 @@
     <comment>Fix build with maven-resolver 2.0.14</comment>
     <requestid>1323343</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>08b973557f00d6dfe56fc2e0fe368cd1</srcmd5>
+    <version>4.0.0~rc5</version>
+    <time>1766079207</time>
+    <user>anag_factory</user>
+    <comment>Specify required resolver version</comment>
+    <requestid>1323460</requestid>
+  </revision>
 </revisionlist>
