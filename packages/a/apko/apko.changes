@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 18 06:04:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.30.33:
+  * Add support for SPDX SBOMs without shortcut fields. (#1988)
+  * build(deps): bump github/codeql-action from 4.31.8 to 4.31.9
+    (#1991)
+
+-------------------------------------------------------------------
 Wed Dec 17 06:20:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.30.32:
