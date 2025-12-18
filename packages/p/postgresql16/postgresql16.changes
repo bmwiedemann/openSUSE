@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 12 08:00:38 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on aarch64 with upstream commit 0dceba2:
+  * llvm-21-aarch64.patch
+
+-------------------------------------------------------------------
 Mon Nov 24 16:44:38 UTC 2025 - Reinhard Max <max@suse.com>
 
 - Fix build with uring for post SLE15 code streams.

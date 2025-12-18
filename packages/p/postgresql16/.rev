@@ -261,4 +261,12 @@ https://www.postgresql.org/about/news/postgresql-176-1610-1514-1419-1322-and-18-
     would then lead to writing past the end of the buffer.</comment>
     <requestid>1320374</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>de1d76e0b3f6b1e2d29b07f01a038e3b</srcmd5>
+    <version>16.11</version>
+    <time>1766079374</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1323487</requestid>
+  </revision>
 </revisionlist>
