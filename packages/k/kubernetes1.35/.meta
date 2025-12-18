@@ -1,0 +1,5 @@
+<package name="kubernetes1.35" project="openSUSE:Factory">
+  <title>kubernetes1.35</title>
+  <description>Kubernetes is an open source container orchestration engine for automating deployment, scaling, and management of containerized applications.</description>
+  <url>https://github.com/kubernetes/kubernetes</url>
+</package>

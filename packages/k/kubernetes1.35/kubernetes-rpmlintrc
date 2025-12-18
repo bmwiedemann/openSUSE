@@ -1,0 +1,4 @@
+addFilter ("^kubernetes-unit-test.*: E: devel-file-in-non-devel-package")
+addFilter ("^kubernetes-master.*: W: statically-linked-binary")
+addFilter ("^kubernetes-extra.*: E: env-script-interpreter")
+addFilter ("^kubernetes-extra.*: E: wrong-script-interpreter")
