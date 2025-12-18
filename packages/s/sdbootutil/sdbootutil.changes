@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 18 09:13:42 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20251218.1cd7294:
+  * Improve partition detection for multipath (boo#1254317)
+
+-------------------------------------------------------------------
 Thu Dec 11 12:25:54 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20251211.b3d0304:
