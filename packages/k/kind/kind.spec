@@ -17,7 +17,7 @@
 
 
 Name:           kind
-Version:        0.30.0
+Version:        0.31.0
 Release:        0
 Summary:        Kubernetes IN Docker - local clusters for testing Kubernetes
 License:        Apache-2.0
