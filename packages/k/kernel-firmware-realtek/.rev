@@ -190,4 +190,15 @@ After this PR, there will be a delete request for kernel-firmware.
   * rtl_nic: add firmware rtl9151a-1</comment>
     <requestid>1318812</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b8585da51d15daaf3eb5198c7d7756b0</srcmd5>
+    <version>20251217</version>
+    <time>1766079038</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases for 6.19-rc1
+
+- Update to version 20251217 (git commit c695356f6ea1):
+  * rtw89: 8852b: update fw to v0.29.29.15</comment>
+    <requestid>1323382</requestid>
+  </revision>
 </revisionlist>

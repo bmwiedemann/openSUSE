@@ -20,10 +20,10 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 53dce114cc5d289aafdf5bc8a717a064cc466e01
+%define git_version c695356f6ea11b6585b85d31931bafcb10abb2b2
 
 Name:           kernel-firmware-realtek
-Version:        20251118
+Version:        20251217
 Release:        0
 Summary:        Kernel firmware files for Realtek wireless drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware
@@ -667,6 +667,7 @@ Supplements:    modalias(usb:v2001p3312d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2001p3317d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2001p3319d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2001p331Bd*dc*dsc*dp*icFFiscFFipFFin*)
+Supplements:    modalias(usb:v2001p3328d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2001p3C15d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2001p3C17d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2001p3C19d*dc*dsc*dp*ic*isc*ip*in*)
