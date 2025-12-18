@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Dec 14 09:53:00 UTC 2025 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primecount-8.0.
+- api.cpp: Fix broken 128-bit nth prime function.
+- util.cpp: Fix undefined behavior in to_string().
+- calculator.hpp: Add code to detect integer overflows.
+- LoadBalancerP2.cpp: Faster critical section.
+- LoadBalancerS2.cpp: Faster critical section.
+- LoadBalancerAC.cpp: Faster critical section.
+- nth_prime.cpp: Improve status output.
+- AC.cpp: Improved instruction level parallelism.
+- AC_libdivide.cpp: Improved instruction level parallelism.
+- D.cpp: Refactor runtime dispatch to optimized SIMD algorithm.
+- S2_hard.cpp: Refactor runtime dispatch to optimized SIMD algorithm.
+- pi_lmo_parallel.cpp: Add support for runtime dispatch to optimized SIMD algorithm.
+- Move S2_easy_libdivide.cpp code into S2_easy.cpp.
+- Move AC_libdivide.cpp code into AC.cpp.
+- src/app/test.cpp: Speed up tests.
+- CMakeLists.txt: Set CMAKE_VISIBILITY_INLINES_HIDDEN = ON by default.
+
+-------------------------------------------------------------------
 Tue Nov 04 16:50:00 UTC 2025 - Kim Walisch <kim.walisch@gmail.com>
 
 - Update to primecount-7.20 (API & ABI are backwards compatible).
