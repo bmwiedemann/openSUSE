@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 18 09:09:01 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream django52.patch to officially support Django 5.2
+
+-------------------------------------------------------------------
 Tue Mar 11 13:19:11 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch for reproducible builds

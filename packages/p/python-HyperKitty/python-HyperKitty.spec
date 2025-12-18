@@ -1,7 +1,7 @@
 #
 # spec file for package python-HyperKitty
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 
 # keep in sync with setup.py
 %global django_min_version 4.2
-%global django_max_version 5.1
+%global django_max_version 5.3
 %global django_mailman3_min_version 1.3.13
 %global django_gravatar2_min_version 1.0.6
 %global djangorestframework_min_version 3.0.0
@@ -94,6 +94,8 @@ Patch98:        gl-mr300-add-opengraph-metadata.patch
 Patch99:        gl-mr470-introduce-feed-filtering.patch
 Patch100:       reproducible.patch
 #
+# PATCH-FIX-UPSTREAM django52.patch feat: Add Python 3.13 and Django 5.2 (LTS) support
+Patch101:       django52.patch
 BuildRequires:  %{python_module Django >= %{django_min_version} with %python-Django < %{django_max_version}}
 BuildRequires:  %{python_module Whoosh}
 BuildRequires:  %{python_module django-compressor >= %{django_compressor_min_version}}

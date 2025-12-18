@@ -1,0 +1,25 @@
+From b8b7536c2cb7380ec55ed62140617cff8ae36b1d Mon Sep 17 00:00:00 2001
+From: SATOH Fumiyasu <fumiyas@osstech.co.jp>
+Date: Fri, 1 Aug 2025 23:18:30 +0000
+Subject: [PATCH] feat: Add Python 3.13 and Django 5.2 (LTS) support
+
+---
+ .gitlab-ci.yml | 43 ++++++++++++++++---------------------------
+ doc/news.rst   |  2 ++
+ pyproject.toml |  3 +--
+ tox.ini        |  4 ++--
+ 4 files changed, 21 insertions(+), 31 deletions(-)
+
+Index: hyperkitty-1.3.12/pyproject.toml
+===================================================================
+--- hyperkitty-1.3.12.orig/pyproject.toml
++++ hyperkitty-1.3.12/pyproject.toml
+@@ -23,7 +23,7 @@ dependencies = [
+     "django-gravatar2>=1.0.6",
+     "django-haystack>=2.8.0",
+     "django-q2>=1.0.0",
+-    "django>=4.2,<5.1",
++    "django>=4.2,<5.3",
+     "django_mailman3>=1.3.13",
+     "djangorestframework>=3.0.0",
+     "flufl.lock>=4.0",
