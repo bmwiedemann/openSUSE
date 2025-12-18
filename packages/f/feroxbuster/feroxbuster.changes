@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Dec 13 16:26:47 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.13.1
+  * fixed multiple rate limiting bugs.
+  * added new heuristics for identifying directory listing.
+  * Added web fonts to ignored extensions list.
+
+-------------------------------------------------------------------
+Sat Oct 11 06:13:45 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.13.0
+  * add --scope option.
+  * add STATE_FILENAME environment variable to control feroxbuster
+    state file name/location.
+
+-------------------------------------------------------------------
 Fri Sep 12 18:01:38 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.12.0
