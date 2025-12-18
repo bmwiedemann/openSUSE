@@ -164,4 +164,15 @@ After this PR, there will be a delete request for kernel-firmware.
   * xe: Update GUC to v70.54.0 for BMG, PTL</comment>
     <requestid>1320751</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c9d99bf40b960b5b9c9c360a7b0e80cb</srcmd5>
+    <version>20251217</version>
+    <time>1766079029</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases for 6.19-rc1
+
+- Update to version 20251217 (git commit c695356f6ea1):
+  * xe: Update GUC to v70.55.3 for BMG, PTL</comment>
+    <requestid>1323376</requestid>
+  </revision>
 </revisionlist>

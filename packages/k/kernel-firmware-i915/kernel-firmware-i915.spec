@@ -20,10 +20,10 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 23568a4b942079631c9378011aa0a9b29de19370
+%define git_version c695356f6ea11b6585b85d31931bafcb10abb2b2
 
 Name:           kernel-firmware-i915
-Version:        20251125
+Version:        20251217
 Release:        0
 Summary:        Kernel firmware files for Intel i915 graphics driver
 License:        GPL-2.0-or-later AND SUSE-Firmware
@@ -339,6 +339,7 @@ Supplements:    modalias(pci:v00008086d00005A85sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00006420sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d000064A0sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d000064B0sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000674Csv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007D40sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00007D41sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00007D45sv*sd*bc03sc*i*)
@@ -430,6 +431,12 @@ Supplements:    modalias(pci:v00008086d0000B0A1sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000B0A2sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000B0B0sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000B640sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000D740sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000D741sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000D742sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000D743sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000D744sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000D745sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000E202sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000E209sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000E20Bsv*sd*bc03sc*i*)
