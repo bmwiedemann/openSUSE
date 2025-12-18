@@ -1,5 +1,5 @@
 <services>
-  <service mode="disabled" name="obs_scm">
+  <service mode="manual" name="obs_scm">
     <param name="url">https://github.com/jupyter-server/pycrdt.git</param>
     <param name="scm">git</param>
     <param name="revision">@PARENT_TAG@</param>
@@ -7,13 +7,13 @@
     <param name="versionrewrite-pattern">(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>
-  <service mode="disabled" name="tar" />
-  <service mode="disabled" name="recompress">
+  <service mode="manual" name="tar" />
+  <service mode="manual" name="recompress">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service mode="disabled" name="set_version"/>
-  <service name="cargo_vendor" mode="disabled">
+  <service mode="manual" name="set_version"/>
+  <service name="cargo_vendor" mode="manual">
      <param name="srcdir">pycrdt</param>
      <param name="compression">xz</param>
      <param name="update">true</param>

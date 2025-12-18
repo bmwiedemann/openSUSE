@@ -194,4 +194,28 @@
   * Fix UndoManager with XmlFragment.</comment>
     <requestid>1307734</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e92bd9a8f92688d10d372ef89343de53</srcmd5>
+    <version>0.12.44</version>
+    <time>1766079056</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.12.44
+  * Expose UndoManager stack items.
+  * Bump yrs to v0.25.0.
+- Fix test dependencies
+
+- update to 0.12.43:
+  * Make `pycrdt` a namespace package.
+  * Bump `pyo3` to v0.27.1.
+  * Drop PyPy 3.10 support.
+  * Support Python v3.14.
+  * Improve error propagation with `PyResult`.
+  * Cleanup transaction when commit fails.
+
+- Update to 0.12.21
+- Release 0.12.13
+- Update to 0.12.9
+- Remove upper bound on pytest.</comment>
+    <requestid>1323330</requestid>
+  </revision>
 </revisionlist>
