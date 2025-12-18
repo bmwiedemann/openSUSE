@@ -9,4 +9,15 @@
   * Changelog – https://github.com/coredns/coredns/releases/tag/v1.12.1</comment>
     <requestid>1305862</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1b57f0480767d9f2ff5f56803b67da80</srcmd5>
+    <version>1.12.1</version>
+    <time>1766079434</time>
+    <user>anag_factory</user>
+    <comment>add new patch: CVE-2025-68156-limit-recursion-depth.patch, bsc#1255332
+  * Patch to fix CVE-2025-68156 (fix(builtin): limit recursion depth)
+  * Ref: https://patch-diff.githubusercontent.com/raw/expr-lang/expr/pull/870.patch
+  * Ref: https://github.com/expr-lang/expr/security/advisories/GHSA-cfpf-hrx2-8rv6</comment>
+    <requestid>1323530</requestid>
+  </revision>
 </revisionlist>
