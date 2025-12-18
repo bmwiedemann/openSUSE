@@ -194,4 +194,12 @@ After this PR, there will be a delete request for kernel-firmware.
   * intel_vpu: Update NPU firmware</comment>
     <requestid>1320752</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>954c1af2a77a7eeddcaaf17a80fc3c1c</srcmd5>
+    <version>20251129</version>
+    <time>1766079030</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases for 6.19-rc1</comment>
+    <requestid>1323377</requestid>
+  </revision>
 </revisionlist>
