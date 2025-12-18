@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Dec 18 13:38:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.34.0:
+  * Release notes 0.34.0 (#1855)
+  * Add kseal to README (#1852)
+  * Bump golang version to the latest available 1.24 (#1854)
+  * Bump k8s.io/code-generator from 0.34.2 to 0.34.3 (#1850)
+  * Bump k8s.io/client-go from 0.34.2 to 0.34.3 (#1848)
+  * Bump github.com/onsi/ginkgo/v2 from 2.27.2 to 2.27.3 (#1843)
+  * Bump distroless/static from `87bce11` to `4b2a093` in /docker
+    (#1846)
+  * Bump github.com/onsi/gomega from 1.38.2 to 1.38.3 (#1844)
+  * Bump golang.org/x/crypto from 0.45.0 to 0.46.0 (#1845)
+  * Make controllers kubeclient QPS & Burst configurable. (#1834)
+  * use default method to watch for key secrets (#1831)
+  * Bump golang.org/x/crypto from 0.44.0 to 0.45.0 in the
+    go_modules group across 1 directory (#1840)
+  * Bump k8s.io/code-generator from 0.34.1 to 0.34.2 (#1839)
+  * Bump golang.org/x/crypto from 0.43.0 to 0.44.0 (#1835)
+  * Bump k8s.io/client-go from 0.34.1 to 0.34.2 (#1837)
+  * Release carvel package 2.17.9 (#1830)
+  * Release chart 2.17.9 (#1829)
+
+-------------------------------------------------------------------
 Mon Nov 10 12:47:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.33.1:
