@@ -127,4 +127,16 @@ After this PR, there will be a delete request for kernel-firmware.
   * iwlwifi: add Sc/Wh FW for core98-181 release</comment>
     <requestid>1320753</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>930a3a2616c01bdb8284c4dd53a2c683</srcmd5>
+    <version>20251217</version>
+    <time>1766079032</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251217 (git commit c695356f6ea1):
+  * iwlwifi: add Bz/Sc FW for core101-82 release
+  * iwlwifi: Add Sc/Gf firmware for core101-82 release
+  * iwlwifi: update ty/So/Ma firmwares for core101-82 release
+  * iwlwifi: update cc/Qu/QuZ firmwares for core101-82 release</comment>
+    <requestid>1323378</requestid>
+  </revision>
 </revisionlist>
