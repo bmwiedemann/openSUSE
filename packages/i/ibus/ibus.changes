@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 16 15:55:11 UTC 2025 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- use return insted of exit in 20-ibus-plasma-setup.sh
+  * such script is sourced not executed, when using exit other 
+    scripts in the same directory are not sourced anymore
+  * fix boo#1255237
+
+-------------------------------------------------------------------
 Wed Nov 19 14:14:39 UTC 2025 - Fuminobu Takeyama <ftake@geeko.jp> - 1.5.33
 
 - Upstream update to 1.5.33

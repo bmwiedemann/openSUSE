@@ -10,12 +10,12 @@ desktop_file="/usr/share/applications/org.freedesktop.IBus.Panel.Wayland.Gtk3.de
 
 # Do nothing for X11 session
 if [ "$XDG_SESSION_TYPE" != "wayland" ]; then
-    exit 0
+    return 0
 fi
 
 # Do nothing if kreadconfig6 is not available
 if ! command -v kreadconfig6 >/dev/null 2>&1; then
-    exit 0
+    return 0
 fi
 
 # check current virtual keyboard
