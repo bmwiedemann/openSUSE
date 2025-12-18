@@ -1,0 +1,5 @@
+<package name="coredns-for-k8s1.35" project="openSUSE:Factory">
+  <title>coredns-for-k8s1.35</title>
+  <description>CoreDNS is a DNS server/forwarder, written in Go, that chains plugins. Each plugin performs a (DNS) function.</description>
+  <url>https://github.com/coredns/coredns/</url>
+</package>
