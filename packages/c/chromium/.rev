@@ -6045,4 +6045,16 @@ Thu Jun  12 09:05:12 UTC 2025 - Bernhard Wiedemann &lt;bwiedemann@suse.com&gt;
     <comment>Chromium 143.0.7499.109 (boo#1254776)</comment>
     <requestid>1322114</requestid>
   </revision>
+  <revision rev="493" vrev="1">
+    <srcmd5>69dd21c01ed9229852b7bd09e0157d6e</srcmd5>
+    <version>143.0.7499.146</version>
+    <time>1766079118</time>
+    <user>anag_factory</user>
+    <comment>- Chromium 143.0.7499.146 (boo#1255115):
+  * CVE-2025-14765: Use after free in WebGPU
+  * CVE-2025-14766: Out of bounds read and write in V8 
+
+  * CVE-2025-14174: Out of bounds memory access in ANGLE</comment>
+    <requestid>1323395</requestid>
+  </revision>
 </revisionlist>
