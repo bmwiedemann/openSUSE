@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Dec 11 14:43:00 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.14.2
+  🔥 Key Features
+    📤 Metadata Exporter Enhancements
+    - New formatters: multipart, msgpack, and json_with_message
+    - Binary message support and efficient multipart uploads
+    - Deprecated old meta_headers option in favor of new formatters
+    🛡️ DMARC RUA Validation
+    - New rspamadm dmarc_report --recheck-rua flag
+    - Re-validate cached report addresses against exclusion maps
+    - Useful for validating domains against RBLs before sending
+      reports
+    ✉️ Milter Headers Control
+    - Selective Authentication-Results removal with remove_ar_from
+    - Target specific domains for header cleanup
+    📚 Documentation
+    - Added comprehensive Python/aiohttp example for handling
+      multipart metadata exports
+  https://rspamd.com/doc/changelog.html
+
+-------------------------------------------------------------------
 Tue Nov 11 14:32:00 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.14.0

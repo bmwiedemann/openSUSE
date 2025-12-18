@@ -67,7 +67,7 @@
 %endif
 
 Name:           rspamd
-Version:        3.14.0
+Version:        3.14.2
 Release:        0
 Summary:        Spam filtering system
 License:        Apache-2.0
@@ -420,6 +420,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %config(noreplace) %{_sysconfdir}/rspamd/scores.d/subject_group.conf
 %config(noreplace) %{_sysconfdir}/rspamd/scores.d/surbl_group.conf
 %config(noreplace) %{_sysconfdir}/rspamd/scores.d/whitelist_group.conf
+%config(noreplace) %{_sysconfdir}/rspamd/scores.d/url_suspect_group.conf
 
 %dir %{_sysconfdir}/rspamd/maps.d
 %config(noreplace) %{_sysconfdir}/rspamd/maps.d/dmarc_whitelist.inc
@@ -485,6 +486,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/url_redirector.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/whitelist.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/aliases.conf
+%config(noreplace) %{_sysconfdir}/rspamd/modules.d/url_suspect.conf
 
 %dir %{_sysconfdir}/rspamd/override.d
 %config(noreplace) %{_sysconfdir}/rspamd/override.d/module.conf.example
@@ -553,6 +555,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/plugins/trie.lua
 %{_datadir}/rspamd/plugins/url_redirector.lua
 %{_datadir}/rspamd/plugins/whitelist.lua
+%{_datadir}/rspamd/plugins/url_suspect.lua
 
 %dir %{_datadir}/rspamd/lualib
 %{_datadir}/rspamd/lualib/ansicolors.lua
@@ -584,7 +587,6 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/lualib/lua_verdict.lua
 %{_datadir}/rspamd/lualib/lupa.lua
 %{_datadir}/rspamd/lualib/plugins_stats.lua
-%{_datadir}/rspamd/lualib/tableshape.lua
 %{_datadir}/rspamd/lualib/lua_bayes_redis.lua
 %{_datadir}/rspamd/lualib/lua_cache.lua
 %{_datadir}/rspamd/lualib/llm_common.lua
@@ -593,6 +595,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/lualib/llm_search_context.lua
 %{_datadir}/rspamd/lualib/lua_aliases.lua
 %{_datadir}/rspamd/lualib/lua_fuzzy_html.lua
+%{_datadir}/rspamd/lualib/lua_url_filter.lua
 
 %dir %{_datadir}/rspamd/lualib/lua_content
 %{_datadir}/rspamd/lualib/lua_content/ical.lua
@@ -641,6 +644,12 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/lualib/lua_selectors/init.lua
 %{_datadir}/rspamd/lualib/lua_selectors/maps.lua
 %{_datadir}/rspamd/lualib/lua_selectors/transforms.lua
+%dir %{_datadir}/rspamd/lualib/lua_shape/
+%{_datadir}/rspamd/lualib/lua_shape/core.lua
+%{_datadir}/rspamd/lualib/lua_shape/docs.lua
+%{_datadir}/rspamd/lualib/lua_shape/jsonschema.lua
+%{_datadir}/rspamd/lualib/lua_shape/plugin_schema.lua
+%{_datadir}/rspamd/lualib/lua_shape/registry.lua
 
 %dir %{_datadir}/rspamd/lualib/rspamadm
 %{_datadir}/rspamd/lualib/rspamadm/clickhouse.lua
@@ -667,6 +676,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/lualib/rspamadm/fuzzy_ping.lua
 %{_datadir}/rspamd/lualib/rspamadm/secretbox.lua
 %{_datadir}/rspamd/lualib/rspamadm/ratelimit.lua
+%{_datadir}/rspamd/lualib/rspamadm/confighelp_plugins.lua
 
 %dir %{_datadir}/rspamd/lualib/plugins
 %{_datadir}/rspamd/lualib/plugins/dmarc.lua
