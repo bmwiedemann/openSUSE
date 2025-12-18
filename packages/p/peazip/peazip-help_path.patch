@@ -1,8 +1,8 @@
-Index: peazip-10.7.0.src/dev/peach.pas
+Index: peazip-10.8.0.src/dev/peach.pas
 ===================================================================
---- peazip-10.7.0.src.orig/dev/peach.pas
-+++ peazip-10.7.0.src/dev/peach.pas
-@@ -62178,7 +62178,7 @@ end;
+--- peazip-10.8.0.src.orig/dev/peach.pas
++++ peazip-10.8.0.src/dev/peach.pas
+@@ -62568,7 +62568,7 @@ end;
  
  procedure TFormPeach.baboutlocalhelpClick(Sender: TObject);
  begin
@@ -11,7 +11,7 @@ Index: peazip-10.7.0.src/dev/peach.pas
  end;
  
  procedure TFormPeach.baboutplugindirClick(Sender: TObject);
-@@ -74697,7 +74697,7 @@ end;
+@@ -75102,7 +75102,7 @@ end;
  
  procedure TFormPeach.mpeahelpofflineClick(Sender: TObject);
  begin
