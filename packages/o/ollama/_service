@@ -4,6 +4,6 @@
 
   <service name="go_modules" mode="manual">
     <param name="compression">zstd</param>
-    <param name="replace">golang.org/x/net=golang.org/x/net@v0.46.0</param>
+    <param name="replace">golang.org/x/net=golang.org/x/net@v0.48.0</param>
   </service>
 </services>

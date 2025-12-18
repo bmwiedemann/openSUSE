@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Dec 17 11:48:24 UTC 2025 - Glen Masgai <glen.masgai@gmail.com>
+
+- Update vendored golang.org/x/net/html to v0.48.0
+
+- Update to version 0.13.4:
+  * New models: Nemotron 3 Nano, Olmo 3, Olmo 3.1
+  * Enable Flash Attention automatically for models by default
+  * Fixed handling of long contexts with Gemma 3 models
+  * Fixed issue that would occur with Gemma 3 QAT models or
+    other models imported with the Gemma 3 architecture
+
+- Update to version 0.13.3:
+  * New models: Devstral-Small-2, rnj-1, nomic-embed-text-v2
+  * Improved truncation logic when using /api/embed and
+    /v1/embeddings
+  * Extend Gemma 3 architecture to support rnj-1 model
+  * Fix error that would occur when running qwen2.5vl with image
+    input
+
+- Update to version 0.13.2:
+  * New models: Qwen3-Next
+  * Flash attention is now enabled by default for vision models
+    such as mistral-3, gemma3, qwen3-vl and more. This improves
+    memory utilization and performance when providing images as
+    input.
+  * Fixed GPU detection on multi-GPU CUDA machines
+  * Fixed issue where deepseek-v3.1 would always think even with
+    thinking is disabled in Ollama's app
+
+-------------------------------------------------------------------
 Thu Dec  4 18:07:05 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 0.13.1:
