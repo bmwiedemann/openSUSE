@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Dec 13 18:47:17 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.2.0:
+  * Improved dark theme, now using Wikipedia's native dark skin.
+  * An option has been added to the article menu to paste and open
+    Wikipedia links.
+  * The shortcuts window has been migrated to the new LibAdwaita
+    shortcuts dialog.
+  * Bug fixes and code improvements.
+  * Updated translations.
+
+-------------------------------------------------------------------
 Tue Oct 28 19:02:10 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.1.3:
