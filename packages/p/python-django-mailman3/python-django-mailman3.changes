@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 17 13:42:20 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream django52.patch to officially support Django 5.2
+
+-------------------------------------------------------------------
 Tue Jul  2 08:51:37 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Re-download pytest.ini and fix multiflavor packaging

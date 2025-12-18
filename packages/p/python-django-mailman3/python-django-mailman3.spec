@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-mailman3
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,16 @@
 
 
 %global django_min_version           4.2
-%global django_max_version           5.1
+%global django_max_version           5.3
 %global mailmanclient_min_version    3.3.3
 %global django_allauth_min_version   0.63
 %global django_gravatar2_min_version 1.0.6
 
+%if 0%{?suse_version} >= 1550
+%define pythons python3
+%else
 %{?sle15_python_module_pythons}
+%endif
 %define modname django_mailman3
 Name:           python-django-mailman3
 Version:        1.3.14
@@ -34,6 +38,8 @@ Source0:        %{url}/-/releases/v%{version}/downloads/%{modname}-%{version}.ta
 Source1:        %{url}/-/releases/v%{version}/downloads/%{modname}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 Source3:        %{url}/-/raw/v%{version}/pytest.ini
+# PATCH-FIX-UPSTREAM https://gitlab.com/mailman/django-mailman3/-/commit/465c1ffc77556bb8a80a678f53a40f16b9766cc6 feat: Add Python 3.13 and Django 5.2 (LTS) support
+Patch0:         django52.patch
 BuildRequires:  %{python_module pdm}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
