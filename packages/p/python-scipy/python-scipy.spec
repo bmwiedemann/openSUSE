@@ -46,7 +46,7 @@
 # TODO explore debundling Boost for standard
 
 Name:           python-scipy%{?psuffix}
-Version:        1.16.2
+Version:        1.16.3
 Release:        0
 Summary:        Scientific Tools for Python
 License:        BSD-3-Clause AND LGPL-2.0-or-later AND BSL-1.0
@@ -56,7 +56,9 @@ Source0:        https://files.pythonhosted.org/packages/source/s/scipy/scipy-%{v
 Source1:        scipy-datasets.tar.gz
 # PATCH-FIX-UPSTREAM pytest-run-parallel-compat.patch https://github.com/scipy/scipy/pull/23305
 Patch0:         pytest-run-parallel-compat.patch
-BuildRequires:  %{python_module Cython >= 3.0.8 with %python-Cython < 3.2}
+# PATCH-FIX-UPSTREAM https://github.com/scipy/scipy/pull/23940 BUG: sparse.csgraph: remove rel import to fix Cython 3.2
+Patch1:         cython32.patch
+BuildRequires:  %{python_module Cython >= 3.0.8}
 BuildRequires:  %{python_module devel >= 3.11}
 BuildRequires:  %{python_module meson-python >= 0.15.0 with %python-meson-python < 0.21}
 BuildRequires:  %{python_module pip}

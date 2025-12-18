@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 16 15:17:11 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.16.3
+  * bug-fix release with no new features compared to 1.16.2
+- Add cython32.patch to allow build with Cython 3.2
+
+-------------------------------------------------------------------
 Tue Oct  7 15:11:36 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Add pytest-run-parallel-compat.patch to fix tests with Python 3.14
