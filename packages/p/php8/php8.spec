@@ -1,6 +1,7 @@
 #
 # spec file for package php8
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -57,7 +58,7 @@
 %bcond_without	sodium
 
 Name:           %{pprefix}%{php_name}%{psuffix}
-Version:        8.4.14
+Version:        8.4.15
 Release:        0
 Summary:        Interpreter for the PHP scripting language version 8
 License:        MIT AND PHP-3.01
@@ -172,6 +173,8 @@ BuildRequires:  php-fpm = %{version}
 %if "%{flavor}" == ""
 Requires:       php-sapi = %{version}
 Requires:       timezone
+Requires:       group(www)
+Requires:       user(wwwrun)
 Recommends:     php-ctype = %{version}
 Recommends:     php-dom = %{version}
 Recommends:     php-iconv = %{version}
@@ -325,8 +328,6 @@ Group:          Development/Libraries/PHP
 BuildRequires:  php = %{version}
 BuildRequires:  pkgconfig(libsystemd) >= 209
 Requires:       php = %{version}
-Requires:       group(www)
-Requires:       user(wwwrun)
 Provides:       php-fpm = %{version}
 Provides:       php-sapi = %{version}
 Obsoletes:      php7-fpm

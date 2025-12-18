@@ -1503,4 +1503,41 @@
         Fixed bug GH-19932 (Memory leak in zip setEncryptionName()/setEncryptionIndex()). (forwarded request 1313254 from adkorte)</comment>
     <requestid>1313343</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>a06c8b82e5b72e58c23af102ab48527f</srcmd5>
+    <version>8.4.15</version>
+    <time>1766079048</time>
+    <user>anag_factory</user>
+    <comment>- main package require wwwrun:www user as it assumes it in filelist
+  [bsc#1255043]
+
+- version update to 8.4.15
+    Core:
+        Fixed bug GH-19934 (CGI with auto_globals_jit=0 causes uouv).
+        Fixed bug GH-20073 (Assertion failure in WeakMap offset operations on reference).
+        Fixed bug GH-20085 (Assertion failure when combining lazy object get_properties exception with foreach loop).
+        Fixed bug GH-19844 (Don't bail when closing resources on shutdown).
+        Fixed bug GH-20177 (Accessing overridden private property in get_object_vars() triggers assertion error).
+        Fixed bug GH-20270 (Broken parent hook call with named arguments).
+        Fixed bug GH-20183 (Stale EG(opline_before_exception) pointer through eval).
+    DOM:
+        Partially fixed bug GH-16317 (DOM classes do not allow __debugInfo() overrides to work).
+        Fixed bug GH-20281 (\Dom\Document::getElementById() is inconsistent after nodes are removed).
+    Exif:
+        Fix possible memory leak when tag is empty.
+    FPM:
+        Fixed bug GH-19974 (fpm_status_export_to_zval segfault for parallel execution).
+    FTP:
+        Fixed bug GH-20240 (FTP with SSL: ftp_fput(): Connection timed out on successful writes).
+    GD:
+        Fixed bug GH-20070 (Return type violation in imagefilter when an invalid filter is provided).
+    Intl:
+        Fix memory leak on error in locale_filter_matches().
+    LibXML:
+        Fix not thread safe schema/relaxng calls.
+    MySQLnd:
+        Fixed bug GH-8978 (SSL certificate verification fails (port doubled)).
+        Fixed bug GH-20122 (getColumnMeta() for JSON-column in MySQL).</comment>
+    <requestid>1323502</requestid>
+  </revision>
 </revisionlist>

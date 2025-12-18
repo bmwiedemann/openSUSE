@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Thu Dec 18 09:34:11 UTC 2025 - Petr Gajdos <pgajdos@suse.com>
+
+- main package require wwwrun:www user as it assumes it in filelist
+  [bsc#1255043]
+
+-------------------------------------------------------------------
+Thu Nov 20 14:46:37 UTC 2025 - pgajdos@suse.com
+
+- version update to 8.4.15
+    Core:
+        Fixed bug GH-19934 (CGI with auto_globals_jit=0 causes uouv).
+        Fixed bug GH-20073 (Assertion failure in WeakMap offset operations on reference).
+        Fixed bug GH-20085 (Assertion failure when combining lazy object get_properties exception with foreach loop).
+        Fixed bug GH-19844 (Don't bail when closing resources on shutdown).
+        Fixed bug GH-20177 (Accessing overridden private property in get_object_vars() triggers assertion error).
+        Fixed bug GH-20270 (Broken parent hook call with named arguments).
+        Fixed bug GH-20183 (Stale EG(opline_before_exception) pointer through eval).
+    DOM:
+        Partially fixed bug GH-16317 (DOM classes do not allow __debugInfo() overrides to work).
+        Fixed bug GH-20281 (\Dom\Document::getElementById() is inconsistent after nodes are removed).
+    Exif:
+        Fix possible memory leak when tag is empty.
+    FPM:
+        Fixed bug GH-19974 (fpm_status_export_to_zval segfault for parallel execution).
+    FTP:
+        Fixed bug GH-20240 (FTP with SSL: ftp_fput(): Connection timed out on successful writes).
+    GD:
+        Fixed bug GH-20070 (Return type violation in imagefilter when an invalid filter is provided).
+    Intl:
+        Fix memory leak on error in locale_filter_matches().
+    LibXML:
+        Fix not thread safe schema/relaxng calls.
+    MySQLnd:
+        Fixed bug GH-8978 (SSL certificate verification fails (port doubled)).
+        Fixed bug GH-20122 (getColumnMeta() for JSON-column in MySQL).
+    Opcache:
+        Fixed bug GH-20081 (access to uninitialized vars in preload_load()).
+        Fixed bug GH-20121 (JIT broken in ZTS builds on MacOS 15).
+        Fixed bug GH-19875 (JIT 1205 segfault on large file compiled in subprocess).
+        Fixed bug GH-20012 (heap buffer overflow in jit).
+        Partially fixed bug GH-17733 (Avoid calling wrong function when reusing file caches across differing environments).
+    PgSql:
+        Fix memory leak when first string conversion fails.
+        Fix segfaults when attempting to fetch row into a non-instantiable class name.
+    Phar:
+        Fix memory leak of argument in webPhar.
+        Fix memory leak when setAlias() fails.
+        Fix a bunch of memory leaks in phar_parse_zipfile() error handling.
+        Fix file descriptor/memory leak when opening central fp fails.
+        Fix memleak+UAF when opening temp stream in buildFromDirectory() fails.
+        Fix potential buffer length truncation due to usage of type int instead of type size_t.
+        Fix memory leak when openssl polyfill returns garbage.
+        Fix file descriptor leak in phar_zip_flush() on failure.
+        Fix memory leak when opening temp file fails while trying to open gzip-compressed archive.
+        Fixed bug GH-20302 (Freeing a phar alias may invalidate PharFileInfo objects).
+    Random:
+        Fix Randomizer::__serialize() w.r.t. INDIRECTs.
+    Reflection:
+        Fixed bug GH-20217 (ReflectionClass::isIterable() incorrectly returns true for classes with property hooks).
+    SimpleXML:
+        Partially fixed bug GH-16317 (SimpleXML does not allow __debugInfo() overrides to work).
+    Streams:
+        Fixed bug GH-19798: XP_SOCKET XP_SSL (Socket stream modules): Incorrect condition for Win32/Win64.
+    Tidy:
+        Fixed GH-19021 (improved tidyOptGetCategory detection).
+        Fix UAF in tidy when tidySetErrorBuffer() fails.
+    XMLReader:
+        Fix arginfo/zpp violations when LIBXML_SCHEMAS_ENABLED is not available.
+
+-------------------------------------------------------------------
 Thu Oct 23 19:02:50 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - version update to 8.4.14
