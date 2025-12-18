@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Dec 17 00:17:27 UTC 2025 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Update to version 1.2.16
+  + Make Discord Rich presence use filename if song title is missing
+  + Added better error message when a GStreamer plugin is missing
+  + Preserve track order in album shuffle mode when restarting playback (#1623)
+  + Possible fixes for context word wrap
+  + Added lyrics from lrclib.net
+  + Added option to turn off the use of sort tags for the collection
+  + Fixed Spotify login
+  + Fixed error dialog shown minimized if another Strawberry window than the mainwindow was active
+  + Fixed seeking to the end of the track and back causing seeking to stop working (#1675)
+  + Set current index when automatically selecting track (#1825)
+  + Make icon size for shuffle and repeat buttons adjust to screen resolution (#1838)
+  + Fixed song being removed from playlist when dragging to another application (#1815)
+  + Don't automatically scroll on dynamic playlists (#1427)
+
+-------------------------------------------------------------------
 Tue Nov 25 03:10:07 UTC 2025 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Update to version 1.2.15
