@@ -409,4 +409,12 @@ https://www.postgresql.org/about/news/postgresql-176-1610-1514-1419-1322-and-18-
     would then lead to writing past the end of the buffer.</comment>
     <requestid>1320377</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>0a04d6ffad6e40dbf736e95782b445f5</srcmd5>
+    <version>14.20</version>
+    <time>1766079381</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1323489</requestid>
+  </revision>
 </revisionlist>
