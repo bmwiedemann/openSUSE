@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Thu Dec 18 06:18:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.8.0:
+  * New checks
+    - Feat/add alphabetical order check by @roguepikachu in #1042
+    - Add kubeconform template for schema validation by @janisz in
+      #1033
+  * Other Changes
+    - chore(deps): bump sigstore/cosign-installer from 3.9.2 to
+      3.10.0 by @dependabot[bot] in #1026
+    - chore(deps): bump helm.sh/helm/v3 from 3.18.6 to 3.19.0 by
+      @dependabot[bot] in #1027
+    - chore(deps): bump github.com/golangci/golangci-lint/v2 from
+      2.4.0 to 2.5.0 in /tool-imports by @dependabot[bot] in #1028
+    - chore(deps): bump docker/login-action from 3.5.0 to 3.6.0 by
+      @dependabot[bot] in #1030
+    - chore(deps): bump
+      github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring
+      from 0.85.0 to 0.86.0 by @dependabot[bot] in #1034
+    - chore(deps): bump github.com/cert-manager/cert-manager from
+      1.18.2 to 1.19.0 by @dependabot[bot] in #1035
+    - chore(deps): bump
+      github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring
+      from 0.86.0 to 0.86.1 by @dependabot[bot] in #1039
+    - chore(deps): bump github.com/cert-manager/cert-manager from
+      1.19.0 to 1.19.1 by @dependabot[bot] in #1040
+    - Fix nil pointer dereference in pdbminavailable check by
+      @janisz in #1043
+    - chore(deps): bump github.com/containerd/containerd from
+      1.7.28 to 1.7.29 by @dependabot[bot] in #1048
+    - chore(deps): bump
+      github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring
+      from 0.86.1 to 0.86.2 by @dependabot[bot] in #1050
+    - chore(deps): bump helm.sh/helm/v3 from 3.19.0 to 3.19.2 by
+      @dependabot[bot] in #1049
+    - Add fallback decoder for unknown resources to handle CRDs by
+      @janisz in #1037
+    - chore(deps): bump actions/download-artifact from 5 to 6 by
+      @dependabot[bot] in #1046
+    - chore(deps): bump golang.org/x/crypto from 0.43.0 to 0.45.0
+      by @dependabot[bot] in #1055
+    - chore(deps): bump actions/upload-artifact from 4 to 5 by
+      @dependabot[bot] in #1051
+    - chore(deps): bump the k8s-io group with 3 updates by
+      @dependabot[bot] in #1052
+    - chore(deps): bump github/codeql-action from 3 to 4 by
+      @dependabot[bot] in #1036
+    - chore(deps): bump sigstore/cosign-installer from 3.10.0 to
+      4.0.0 by @dependabot[bot] in #1044
+    - chore(deps): bump golang.org/x/crypto from 0.42.0 to 0.45.0
+      in /tool-imports by @dependabot[bot] in #1054
+    - chore(deps): bump github.com/golangci/golangci-lint/v2 from
+      2.5.0 to 2.6.2 in /tool-imports by @dependabot[bot] in #1053
+    - chore(deps): bump
+      github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring
+      from 0.86.2 to 0.87.0 by @dependabot[bot] in #1057
+    - chore(deps): bump github.com/goccy/go-yaml from 1.18.0 to
+      1.19.0 by @dependabot[bot] in #1058
+    - chore(deps): bump codecov/codecov-action from 5.5.1 to 5.5.2
+      by @dependabot[bot] in #1059
+    - chore(deps): bump github.com/spf13/cobra from 1.10.1 to
+      1.10.2 by @dependabot[bot] in #1061
+    - chore(deps): bump github.com/golangci/golangci-lint/v2 from
+      2.6.2 to 2.7.2 in /tool-imports by @dependabot[bot] in #1063
+    - chore(deps): bump
+      github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring
+      from 0.87.0 to 0.87.1 by @dependabot[bot] in #1062
+    - chore(deps): bump the k8s-io group with 3 updates by
+      @dependabot[bot] in #1060
+    - chore(deps): bump actions/checkout from 5 to 6 by
+      @dependabot[bot] in #1056
+    - feat: add env-value-from as opt-in check for #705 by
+      @Nexusrex18 in #1032
+    - Add Kustomize Support by @janisz in #1045
+    - chore(deps): bump github.com/goccy/go-yaml from 1.19.0 to
+      1.19.1 by @dependabot[bot] in #1064
+    - chore(deps): bump helm.sh/helm/v3 from 3.19.2 to 3.19.4 by
+      @dependabot[bot] in #1065
+    - chore(deps): bump github.com/cert-manager/cert-manager from
+      1.19.1 to 1.19.2 by @dependabot[bot] in #1066
+    - chore(deps): bump actions/download-artifact from 6 to 7 by
+      @dependabot[bot] in #1069
+    - chore(deps): bump actions/upload-artifact from 5 to 6 by
+      @dependabot[bot] in #1068
+    - chore(deps): bump actions/cache from 4 to 5 by
+      @dependabot[bot] in #1067
+
+-------------------------------------------------------------------
 Thu Sep 18 12:43:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.7.6:
