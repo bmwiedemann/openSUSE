@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 18 09:41:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.15.29:
+  * update go version to 1.24.11 to address several vulnerabilities
+    (#1430)
+
+-------------------------------------------------------------------
 Thu Nov 13 14:56:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.15.28:
