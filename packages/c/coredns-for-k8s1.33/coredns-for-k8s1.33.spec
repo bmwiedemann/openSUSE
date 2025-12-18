@@ -29,6 +29,10 @@ Source0:        coredns-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source10:       Corefile
 Source11:       coredns.service
+# Patch to fix CVE-2025-68156 (fix(builtin): limit recursion depth)
+# Ref: https://patch-diff.githubusercontent.com/raw/expr-lang/expr/pull/870.patch
+# Ref: https://github.com/expr-lang/expr/security/advisories/GHSA-cfpf-hrx2-8rv6
+Patch2:         CVE-2025-68156-limit-recursion-depth.patch
 BuildRequires:  fdupes
 BuildRequires:  golang(API) >= 1.22
 Conflicts:      coredns
@@ -59,6 +63,7 @@ non-containerized environment (man pages, configuration, unit file).
 
 %prep
 %setup -q -a1 -n coredns-%{version}
+%patch -P 2 -p1
 
 %build
 

@@ -8,4 +8,15 @@
 * Version specified in kubernetes v1.33.0 - https://github.com/kubernetes/kubernetes/blob/v1.33.0/build/dependencies.yaml#L32-L34</comment>
     <requestid>1274892</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>99356013cec6bc3c6868a3a4c28b6607</srcmd5>
+    <version>1.12.0</version>
+    <time>1766079433</time>
+    <user>anag_factory</user>
+    <comment>add new patch: CVE-2025-68156-limit-recursion-depth.patch, bsc#1255332
+  * Patch to fix CVE-2025-68156 (fix(builtin): limit recursion depth)
+  * Ref: https://patch-diff.githubusercontent.com/raw/expr-lang/expr/pull/870.patch
+  * Ref: https://github.com/expr-lang/expr/security/advisories/GHSA-cfpf-hrx2-8rv6</comment>
+    <requestid>1323528</requestid>
+  </revision>
 </revisionlist>

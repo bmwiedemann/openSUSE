@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 18 13:25:07 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- add new patch: CVE-2025-68156-limit-recursion-depth.patch, bsc#1255332
+  * Patch to fix CVE-2025-68156 (fix(builtin): limit recursion depth)
+  * Ref: https://patch-diff.githubusercontent.com/raw/expr-lang/expr/pull/870.patch
+  * Ref: https://github.com/expr-lang/expr/security/advisories/GHSA-cfpf-hrx2-8rv6
+
+-------------------------------------------------------------------
 Tue May  6 10:32:53 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Initial package version 1.12.0
