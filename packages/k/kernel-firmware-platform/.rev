@@ -168,4 +168,12 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment>- Update aliases</comment>
     <requestid>1317808</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>dcca9e6d402fdb59c36df46935325bd5</srcmd5>
+    <version>20251004</version>
+    <time>1766079033</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases for 6.19-rc1</comment>
+    <requestid>1323379</requestid>
+  </revision>
 </revisionlist>

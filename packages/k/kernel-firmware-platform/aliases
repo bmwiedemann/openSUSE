@@ -26,6 +26,7 @@ ccp: acpi*:AMDI0C00%3A*
 ccp: of:N*T*Camd%2Cccp-seattle-v1a
 ccp: of:N*T*Camd%2Cccp-seattle-v1aC*
 ccp: pci:v00001022d00001134sv*sd*bc*sc*i*
+ccp: pci:v00001022d0000115Asv*sd*bc*sc*i*
 ccp: pci:v00001022d00001456sv*sd*bc*sc*i*
 ccp: pci:v00001022d00001468sv*sd*bc*sc*i*
 ccp: pci:v00001022d00001486sv*sd*bc*sc*i*
