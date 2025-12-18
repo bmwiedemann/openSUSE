@@ -437,4 +437,12 @@
     <comment>Update to version 3.6.6 (forwarded request 1317717 from eroca)</comment>
     <requestid>1317718</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>e87dc8d3e12abf71d3a6f8851eae0fbe</srcmd5>
+    <version>3.6.7</version>
+    <time>1766079479</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1323535</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 18 15:16:37 UTC 2025 - Elisei Roca <eroca@suse.com>
+
+- Update to version 3.6.7:
+  * dependency: Bump golang.org/x/net from 0.38.0 to 0.45.0
+  * Bump go to 1.24.11
+  * Print token fingerprint instead of the original tokens in log messages
+
+-------------------------------------------------------------------
 Fri Nov 14 07:59:59 UTC 2025 - Elisei Roca <eroca@suse.com>
 
 - Update to version 3.6.6:
