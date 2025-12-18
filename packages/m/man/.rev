@@ -1139,4 +1139,13 @@
 - Avoid latest gettextize as it breaks build now</comment>
     <requestid>1298345</requestid>
   </revision>
+  <revision rev="107" vrev="2">
+    <srcmd5>4a12ab5fac2c812ab83327d9b36cf700</srcmd5>
+    <version>2.13.1</version>
+    <time>1766079027</time>
+    <user>anag_factory</user>
+    <comment>- Extend tmpfiles template man-db.conf (jsc#PED-14862)
+  * Create cache directories with systemd tmpfiles service</comment>
+    <requestid>1323319</requestid>
+  </revision>
 </revisionlist>

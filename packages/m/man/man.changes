@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 17 10:07:17 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Extend tmpfiles template man-db.conf (jsc#PED-14862)
+  * Create cache directories with systemd tmpfiles service
+
+-------------------------------------------------------------------
 Fri Aug  8 06:58:32 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Update to man-db 2.13.1 (2 May 2025)

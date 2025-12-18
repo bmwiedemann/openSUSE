@@ -1,7 +1,7 @@
 #
 # spec file for package man
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -88,6 +88,9 @@ Requires(pre):  user(man)
 Provides:       man_db
 %if 0%{?suse_version} < 1500
 Requires:       cron
+%endif
+%if 0%{?_has_tmpfiled} == 0
+%define _tmpfilesdir %{_prefix}/lib/tmpfiles.d
 %endif
 
 %description
@@ -259,6 +262,9 @@ install -m 644 %{SOURCE9} %{buildroot}%{_prefix}/etc/profile.d/
 
 %find_lang man-db --all-name --with-man
 
+find %{buildroot}%{_localstatedir}/cache/man/ -type d -printf "d %{_localstatedir}/cache/man/%%P 0755 man man -\n" | \
+grep -v '/ ' >> %{buildroot}%{_prefix}/lib/tmpfiles.d/man-db.conf
+
 %global trigger_functions %{expand:
 -- Check if rpm.execute() as function call is given
 if type(rpm.execute) == "function" then
@@ -373,6 +379,7 @@ fi
 %service_add_post man-db.service man-db.timer
 %endif
 %endif
+%{?tmpfiles_create:%tmpfiles_create %{_tmpfilesdir}/man-db.conf}
 
 %preun
 %if %{with sdtimer}
@@ -427,9 +434,9 @@ fi
 %{_libdir}/libman*.so
 %{_libexecdir}/man-db/zsoelim
 %if 0%{?_has_tmpfiled} == 0
-%dir %{_prefix}/lib/tmpfiles.d
+%dir %{_tmpfilesdir}
 %endif
-%{_prefix}/lib/tmpfiles.d/man-db.conf
+%{_tmpfilesdir}/man-db.conf
 %if %{with sdtimer}
 %{_unitdir}/man-db-create.service
 %if 0%{?suse_version} >= 1500
@@ -449,6 +456,8 @@ fi
 %dir %{_mandir}/tr
 %{_fillupdir}/sysconfig.cron-man
 %defattr(-,man,man)
+%if 0%{?_has_tmpfiled} == 0
 %ghost %{_localstatedir}/cache/man
+%endif
 
 %changelog
