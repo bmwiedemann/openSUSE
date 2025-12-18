@@ -168,4 +168,265 @@
 </comment>
     <requestid>1204531</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d138a6d77d0d5d0d842ef3888d33a63c</srcmd5>
+    <version>2.28.0</version>
+    <time>1766079054</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.28.0:
+  * Add `untracked_message_types` to Page Config #471
+    (@Darshan808)
+  * Fix typo in default for template directory traitlet
+    (`template_dir` → `templates_dir`) #463 (@krassowski)
+  * Add `@web.authenticated` for `ListingsHandler`'s `GET` method
+    #457 (@krassowski)
+- Disable openapi: Not compatible with 0.19
+- Update to 2.27.3
+  * Fix handling language packs for pseudo language #456
+    (@fcollonval)
+  * Load overrides once, rather than in each settings handler #452
+    (@krassowski)
+- Remove upper bound on pytest.
+- Update to 2.27.1
+  * Move ENV_CONFIG_PATH import back into _get_config_manager #450
+    (@divyansshhh)
+- Release 2.27.0
+  * Add util to get consolidated page_config from higher levels
+    #448 (@divyansshhh)
+- Release 2.26.0
+  * For v2 extensions parse entrypoint data #445
+    (@AshokChoudhary11)
+  * Ignore pageconfig file if JSON is zero-length #444 (@holzman)
+- Update to 2.25.4
+  * Maintenance and upkeep improvements
+- Update to 2.25.3
+  * URL Incorrect path Issue #436 (@itsmevichu)
+- Skip building and using python39-jupyterlab-server-test: no
+  longer supported since ipython 8.19 (through ipykernel)
+- Disable openapi subpackage and tests for python312: not supported
+  yet
+- Update to 2.25.2
+  * Maintenance and upkeep improvements
+- Release 2.25.1
+  * Add repository info when getting federated extensions #417
+    (@nbowditch-einblick)
+- Update to 2.25.0
+  * Bump openapi deps and support Python 3.8-3.12 #410 (@blink1073)
+- Drop jupyterlab_server-ignore-jsonschema-deprecation.patch
+- Update to 2.24.0
+  * add lab config for copy absolute path #405 (@pauky)
+  * Requirements updates
+- Disable openapi subpackage: gh#jupyterlab/jupyterlab_server#400
+- Ignore jsonschema deprecation
+  * Add jupyterlab_server-ignore-jsonschema-deprecation.patch
+- Raise upper pin for openapi-spec-validator
+  * gh#jupyterlab/jupyterlab_server#403
+- Update to 2.23.0
+  * Set Cache-control immutable for static files #394 (@brichet)
+- Make sure to supply the language test packages for tests
+- Update to 2.22.1
+  * Fix coverage handling (#392 #392 (@blink1073)
+- Release 2.22.0
+  * Optional argument to get only the schema names #385 (@brichet)
+- Release 2.21.0
+  * Add json5 support for page_config.json #388 (@peytondmurray)
+  * Ignore warning from bind_sockets #383 (@blink1073)
+- Update to 2.20.0
+  * Change periodic callback time from tuple to int #376 (@rmoe)
+  * Pin openapi deps #381 (@blink1073)
+  * Add more linting #369 (@blink1073)
+  * Clean up openapi compat and warnings #368 (@blink1073)
+- Update to 2.19.0
+  * Don't change language environment variable #366 (@fcollonval)
+  * Fix test_process_app #367 (@blink1073)
+  * Sync lint deps #365 (@blink1073)
+- Update to 2.18.0
+  * Prepare for jupyter_server preferred_dir fix #324 (@vidartf)
+  * Handle systems with python3 #362 (@blink1073)
+- Drop jupyterlab-server-pr362-entrypoint.patch
+- Update ot 2.17.0
+  * Do not repeat requirements #361 (@blink1073)
+  * Add support for newer openapi spec #360 (@blink1073)
+  * Add spelling and docstring enforcement #358 (@blink1073)
+- Release 2.16.6
+  * Restore print outputs in process #357 (@blink1073)
+- Release 2.16.5
+  * Use pytest-jupyter #351 (@blink1073)
+- Release 2.16.4
+  * Add py.typed marker file #349 (@blink1073)
+- Release 2.16.3
+  * Fix handling of jupyter core warning #335 (@blink1073)
+- Release 2.16.2
+  * Terminals availability is not the responsibility of JupyterLab
+    #330 (@fcollonval)
+- Add jupyterlab-server-pr362-entrypoint.patch
+- Rename main package to python-jupyterlab-server
+- Test in multibuild
+- Update to 2.16.1
+  * Prep for using releaser #327 (@blink1073)
+  * Maintenance cleanup #325 (@blink1073)
+  * Fix workflows and add new ones #318 (@fcollonval)
+- Release 2.16.0
+  * raise jupyter_server pin to include 2.x #302 (@Zsailer)
+  * CI Cleanup #316 (@blink1073)
+  * Ignore warnings in prerelease test #312 (@blink1073)
+- Drop jupyterlab-server-fix-testing.patch
+- update to 2.15.2
+  * Pin openapi_core dependency #308 (@blink1073)
+- Disable openapi tests, as openapi-core 0.15.x is not compatible
+  * gh#jupyterlab/jupyterlab_server#308
+- update to 2.15.1
+  * Ignore deprecationwarning from jsonschema #295 (@blink1073)
+- update jupyterlab-server-fix-testing.patch: mistune no longer
+  vendored in nbconvert.
+- Update to 2.15.0
+  * Suppress tornado 6.2 beta warnings #285 (@blink1073)
+  * Add compat for openapi-core 0.15 #281 (@blink1073)
+- Release 2.14.0
+  * proper setup for the fallback logger #269 (@rvalieris)
+  * Switch to hatch backend #274 (@blink1073)
+- Release 2.13.0
+  * Audit uses of print #261 (@blink1073)
+  * Switch to importlib.metadata to list entry points #264
+    (@fcollonval)
+  * Add git-blame-ignore-revs #258 (@blink1073)
+- Release 2.12.0
+  * Make openapi optional and lazy #253 (@blink1073)
+  * Adds notebook_starts_kernel option to make &quot;canStartKernel&quot;
+    configurable #248 (@jweill-aws)
+  * Clean up tests and add public openapi_spec #247 (@blink1073)
+- Release 2.11.2
+  * Resolve paths in tests #245 (@blink1073)
+- Release 2.11.1
+  * Restore pytest_plugin #243 (@blink1073)
+- Release 2.11.0
+  * Also look in static for license files #238 (@bollwyvl)
+- Add jupyterlab-server-fix-testing.patch
+- Update to 2.10.2
+  * Revert &quot;Delay list -&gt; dict conversation to end (#192)&quot; #234
+    (@blink1073)
+  * Fix issue where preferredPath is incorrectly calculated #233
+    (@mlucool) Maintenance and upkeep improvements
+  * Add downstream test workflow #232 (@blink1073)
+- Release 2.10.1
+  * Restore back older export for workspaces #229 (@fcollonval)
+- Release 2.10.0
+  * Move workspace management in jupyterlab_server #227
+    (@fcollonval)
+  * Delay list -&gt; dict conversation to end #192 (@vidartf)
+- Release 2.9.0
+  * Add overrides.d for settings defaults #224 (@bollwyvl)
+  * Add page_config_hook #220 (@minrk)
+  * Enforce labels on PRs #221 (@blink1073)
+  * Fix caching of conda env in CI #218 (@blink1073)
+  * pyproject.toml: clarify build system version #222
+    (@adamjstewart)
+- Fix import of mistune in tests due to our mitigation of
+  gh#jupyter/nbconvert#1685
+- Really update to 2.8.2 (was 2.8.1 before)
+  * Fallback to context-less translation on Python 3.7 #213
+    (@krassowski)
+  * Clean unneeded catch #210 (@fcollonval)
+- Update to 2.8.2
+  * Fall back to DEFAULT_LOCALE when translation settings schema is
+    invalid in get_current_locale
+  * Translate settings schema
+- Really remove the patch jupyterlab-server-pr198-openapi014.patch
+- Update to 2.7.2
+  * Do not overwrite capitalization of region names #202
+  * Use Check Links Action #201
+  * Recommend pytest --pyargs jupyterlab_server #203
+- Changlog for release 2.7.1
+  * Fix reset user settings if validation failed #199
+  * support openapi-core 0.14 SpecPath #198
+- Drop jupyterlab-server-pr198-openapi014.patch merged upstream
+  * gh#jupyterlab/jupyterlab_server#198
+- Fix jupyter-jupyterlab-server-rpmlintrc for rpmlint 2 errors
+- All the test exceptions have been resolved upstream
+- Update to 2.7.0
+  * Switch to entrypoints package #187
+- Changelog for release 2.6.2
+  * PR: Add preferred dir option to config #190
+  * PR: Update new_defaults dictionary instead of copy #194
+  * Update tests workflow #193
+- Changelog for release 2.6.1
+  * Merge overrides settings if values are dicts #188
+- Changelog for release 2.6.0
+  * LicensesManager and API/CLI #161
+- Changelog for release 2.5.1
+  * Maintenance and upkeep improvements
+  * Remove Packaging Dependency #181
+- Changelog for release 2.5.0
+  * Support for overrides.json5 #179
+  * Documentation improvements
+  * Make LabConfig configurable and add config API docs #172
+  * Upgrade packaging #178
+  * Add more API docs #177
+  * Add cli config options documentation #176
+  * Add example request/responses to REST docs #174
+  * Add Swagger Docs #173
+  * Update Readme Badges #171
+- Changelog for release 2.4.0
+  * Add Sphinx docs #169
+  * Cleanup unused imports #165
+  * Fill in missing changelog entries #164
+  * Improve documentation: Instructions for development and test
+    setups #130
+- Changelog for release 2.3.0
+  * Set file_url_prefix trait for opening notebooks directly #162
+- Changelog for release 2.2.1
+  * Alleviate invalid locale issue by only setting it if language
+    pack exists #159
+- Changelog for release 2.2.0
+  * Add URL and description for federated extension data #154
+- Changelog for release 2.1.5
+  * Fix/cp949 encoding error #158
+- Changelog for release 2.1.4
+  * Reduce path length of installed package #157 (@afshin)
+- Changelog for release 2.1.3
+  * Fix mathjax URL handling #153
+- Add jupyterlab-server-pr198-openapi014.patch for new API in
+  openapi-core &gt;= 0.14
+- Update to 2.1.3
+  * no upstream changelog (No really!)
+- Make singlespec
+- Update requirements, providers and obsoletions
+- Update to 1.1.5:
+  * Clean up terminate logic. #91
+  * Kill the subprocess if it does not stop. #86
+  * Do not try to close the watch process file handle. #85
+  * Update nodejs error message to not give an outdated version. #84
+- Update to 1.0.6
+  * Add .json.orig files to sdists
+- Disable spurious rpmlint checks.
+  They are incorrectly flagging valid test files.
+  These tests are used by other packages besides this one,
+  so they need to stay in.
+- This replaces jupyterlab-launcher
+- Update to 1.0.5
+  * require jinja2 to make tojson always safe
+- Update to 1.0.4
+  * use escape instead of urlencode for urls
+- Update to 1.0.3
+  * Escape template values in Jinja
+- Update to 1.0.2
+  * Add store ID to page config
+- Update to 1.0.1
+  * fix page config escaping
+- Update to 1.0.0
+  * jupyterlab 1.0.0 support
+- Fix conflict with newer version on openSUSE:Factory
+- Roll back to version 0.2.0, jupyterlab is not compatible with 0.3.0.
+- Rename to to match jupyter package naming guidelines.
+- Simplify files somewhat
+- Grammar fix in summary
+- specfile:
+  * remove devel from noarch
+  * be more specific in %files section
+- update to version 0.3.0:
+  * Update workspaces listing to include values.
+- Initial version (0.2.0)
+</comment>
+    <requestid>1323307</requestid>
+  </revision>
 </revisionlist>
