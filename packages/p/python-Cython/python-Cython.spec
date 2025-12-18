@@ -24,7 +24,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-Cython
-Version:        3.1.4
+Version:        3.2.2
 Release:        0
 Summary:        The Cython compiler for writing C extensions for the Python language
 License:        Apache-2.0

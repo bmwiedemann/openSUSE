@@ -1316,4 +1316,41 @@
     <comment></comment>
     <requestid>1306743</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>8fed6e9f1187c635e9c5aec6e23e3298</srcmd5>
+    <version>3.2.2</version>
+    <time>1766079000</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.2.2:
+  * The C-API declarations were updated to include the new
+    PyDict_*Ref() functions. (Github issue :issue:`7291`)
+  * Iteration over literal sequences and strings in generators
+    generated invalid C code since 3.2.0. This was a regression
+    due to the C array iteration optimisation in :issue:`6926`,
+    which is now disabled inside of generators. (Github issue
+    :issue:`7342`)
+  * Calling special methods of known exception types failed with
+    an AttributeError. (Github issue :issue:`7342`)
+  * Calling the unbound __mul__ special method of builtin
+    collections with subtypes failed. (Github issue
+    :issue:`7340`)
+  * C string literals could generate invalid &quot;const to non-const&quot;
+    casts in the C code. (Github issue :issue:`7346`)
+  * yield is no longer allowed inside of a
+    cython.critical_section, but is now allowed while holding a
+    cython.pymutex. (Github issue :issue:`7317`)
+  * Under lock congestion, acquiring the GIL could crash in
+    Python 3.11, part 2. This bug was introduced in Cython 3.2.0.
+    (Github issue :issue:`7312`)
+  * The new py_safe_* functions in libc.threads triggered C
+    compiler warnings. (Github issue :issue:`7356`)
+  * Cython now leaves markers about its utility code dependencies
+    in the generated C code to help debugging &quot;unused function&quot; C
+    compiler warnings. (Github issue :issue:`7294`)
+  * Relative imports could fail if the shared utility module is
+    used. This bug was introduced in Cython 3.2.0. (Github issue
+    :issue:`7290`)
+  * Under lock congestion, acquiring the GIL could crash in</comment>
+    <requestid>1322582</requestid>
+  </revision>
 </revisionlist>
