@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Thu Dec 18 06:31:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.96.1:
+  * Experiments Updated
+    - The --filter-affected flag has more robust determination of
+      the default branch in a Git repository
+      The --filter-affected flag will now use Git plumbing to
+      interrogate the default branch as considered by the remote
+      repository before falling back to interrogating local
+      configurations for determination of a default branch
+      (remember that you must use the filter-flag experiment to try
+      this out).
+
+        # This is checked first
+        $ git rev-parse --abbrev-ref origin/HEAD
+
+        # Followed by this
+        $ git ls-remote --symref origin HEAD
+
+        # Followed with this
+        $ git config init.defaultBranch
+
+        # If none of the above succeed, the default branch is assumed to be `main`.
+
+    - Git-based filter expressions now warn users when using local
+      state
+      Usage of --filter Git-based expressions in combination with
+      local state will now emit a warning, recommending usage of
+      remote states (remember that you must use the filter-flag
+      experiment to try this out).
+
+        $ terragrunt run --all --filter '[HEAD~1...HEAD]' -- plan
+        09:30:38.017 WARN   One or more units discovered using Git-based filter expressions (e.g. [HEAD~1...HEAD]) do not have a remote_state configuration. This may result in unexpected outcomes, such as outputs for dependencies returning empty. It is strongly recommended to use remote state when working with Git-based filter expressions.
+
+      See the warning at the bottom of Git-based expressions
+      documentation for more information.
+      https://terragrunt.gruntwork.io/docs/features/filter/#git-based-expressions
+    - OpenTelemetry traces added for filter evaluation
+      Filter evaluation now emits OpenTelemetry spans and metrics,
+      including filter resolution details, evaluation duration, and
+      filtering scope. This helps teams analyze performance and
+      pinpoint bottlenecks in filtering with large Terragrunt
+      repositories.
+  * Bug Fixes
+    - Path-based filters targeting external paths fixed
+      A bug in the parsing of path-based filter expressions in the
+      --filter flag of the filter-flag experiment prevented parsing
+      of path-based filters for external paths (e.g. --filter
+      ../external-dir). This bug has been fixed.
+    - HTTPS Git CAS URLs fixed
+      A bug in the parsing of source URLs with forced usage of the
+      Git protocol (e.g. git::https://github.com/acme/catalog)
+      prevented using the cas experiment with HTTPS Git URLs with
+      forced usage of the Git protocol. This bug has been fixed.
+    - Regression of support for root terragrunt.hcl fixed
+      A bug in the processing of --queue-exclude-dir resulted in
+      prefix based matching of non-glob expressions in
+      --queue-exclude-dir values. This broke backwards
+      compatibility for users with a root terragrunt.hcl file
+      instead of a differently named file for the root include
+      (e.g. root.hcl). This bug has been fixed.
+      Note that you are still advised to migrate away from using a
+      root terragrunt.hcl as soon as possible for your team. We
+      will maintain backwards compatibility until at least 2.0,
+      however.
+  * What's Changed
+    - feat: add opentelemtry integration in filter flag (#5247)
+    - fix: Adding warnings for local state usage with Git-based expressions (#5245)
+    - fix: Fixing regression with support for include of root `terragrunt.hcl` (#5249)
+    - docs: Cleaning up some docs (#5239)
+    - fix: Use more robust default branch detection in Git-based expressions (#5243)
+    - fix: Fixing warnings for how to replicate (#5246)
+    - fix: Fixing HTTPS CAS URLs (#5240)
+    - fix: Fixing parsing of external filters (#5238)
+    - chore: Dropping `util.JoinPath` (#5219)
+    - chore: Verify `--filter` results in minimal parsing (#5229)
+    - chore: Verify `--queue-include-external` isn't necessary when using the `--filter` flag (#5216)
+
+-------------------------------------------------------------------
 Tue Dec 16 06:14:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.96.0:
