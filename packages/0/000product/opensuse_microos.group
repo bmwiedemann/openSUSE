@@ -53,7 +53,7 @@
     <package name="bluez-cups" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="bluez-firmware" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="bolt" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="boost-license1_89_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
+    <package name="boost-license1_90_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="branding-openSUSE" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="breeze6" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="breeze6-cursors" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
@@ -758,8 +758,8 @@
     <package name="libaudit1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libaugeas0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base-zypper -->
     <package name="libauparse0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-defaults -->
-    <package name="libavahi-client3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-sssd_ldap -->
-    <package name="libavahi-common3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-sssd_ldap -->
+    <package name="libavahi-client3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
+    <package name="libavahi-common3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="libavahi-core7" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libavahi-glib1" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libavc1394-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
@@ -789,8 +789,8 @@
     <package name="libblogger2" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libbluetooth3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libbluray3" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="libboost_filesystem1_89_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base-zypper -->
-    <package name="libboost_thread1_89_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
+    <package name="libboost_filesystem1_90_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base-zypper -->
+    <package name="libboost_thread1_90_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libbpf1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libbrotlicommon1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libbrotlidec1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
@@ -803,8 +803,8 @@
     <package name="libcaca0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libcairo-gobject2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="libcairo2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
-    <package name="libcamera-base0_5" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="libcamera0_5" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
+    <package name="libcamera-base0_6" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
+    <package name="libcamera0_6" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libcanberra0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libcap-ng0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libcap2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
@@ -1063,6 +1063,8 @@
     <package name="libnftnl11" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="libnghttp2-14" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libnghttp3-9" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
+    <package name="libngtcp2-16" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
+    <package name="libngtcp2_crypto_gnutls8" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libnl-config" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libnl3-200" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libnm0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
@@ -1120,7 +1122,7 @@
     <package name="libpolkit-qt6-1-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libpoppler-cpp2" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libpoppler-qt6-3" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="libpoppler153" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
+    <package name="libpoppler155" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libpopt0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libpostproc58" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libppd" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
@@ -1576,8 +1578,10 @@
     <package name="rtkit" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="runc" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-containers-container_runtime -->
     <package name="rust-keylime" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
+    <package name="samba-ad-dc-libs" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="samba-client" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="samba-client-libs" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-sssd_ldap -->
+    <package name="samba-client-libs" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
+    <package name="samba-libs" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="sdbootutil" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="sdbootutil-dracut-measure-pcr" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="sdbootutil-snapper" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->

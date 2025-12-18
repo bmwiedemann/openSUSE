@@ -50,7 +50,7 @@
     <package name="bluez-firmware" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="bluez-obexd" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="bolt" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="boost-license1_89_0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
+    <package name="boost-license1_90_0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="branding-openSUSE" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="breeze6" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="breeze6-cursors" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
@@ -758,7 +758,7 @@
     <package name="libblogger2" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libbluetooth3" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libbluray3" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="libboost_thread1_89_0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
+    <package name="libboost_thread1_90_0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libbpf1" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libbrotlicommon1" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libbrotlidec1" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
@@ -771,8 +771,8 @@
     <package name="libcaca0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libcairo-gobject2" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libcairo2" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="libcamera-base0_5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="libcamera0_5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
+    <package name="libcamera-base0_6" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
+    <package name="libcamera0_6" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libcanberra0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libcap-ng0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libcap2" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:Kalpa-release -->
@@ -1021,6 +1021,8 @@
     <package name="libnftnl11" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libnghttp2-14" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libnghttp3-9" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
+    <package name="libngtcp2-16" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
+    <package name="libngtcp2_crypto_gnutls8" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libnl-config" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libnl3-200" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libnm0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
@@ -1073,7 +1075,7 @@
     <package name="libpoppler-cpp2" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libpoppler-glib8" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libpoppler-qt6-3" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="libpoppler153" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
+    <package name="libpoppler155" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libpopt0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libpostproc58" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libppd" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
@@ -1450,8 +1452,10 @@
     <package name="rsync" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="rtkit" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="runc" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
+    <package name="samba-ad-dc-libs" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="samba-client" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="samba-client-libs" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
+    <package name="samba-libs" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="sane-backends" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="sddm-greeter-qt5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="sddm-greeter-qt6" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->

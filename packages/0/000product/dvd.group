@@ -183,7 +183,7 @@
     <package name="bluez-firmware" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="bluez-obexd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="bolt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="boost-license1_89_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="boost-license1_90_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="breeze6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="breeze6-cursors" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1718,16 +1718,16 @@
     <package name="libblogger2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libbluetooth3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libbluray3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libboost_filesystem1_89_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libboost_filesystem1_89_0-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libboost_iostreams1_89_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libboost_iostreams1_89_0-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libboost_locale1_89_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libboost_locale1_89_0-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libboost_python-py3-1_89_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
-    <package name="libboost_python-py3-1_89_0-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libboost_thread1_89_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libboost_thread1_89_0-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libboost_filesystem1_90_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libboost_filesystem1_90_0-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libboost_iostreams1_90_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libboost_iostreams1_90_0-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libboost_locale1_90_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libboost_locale1_90_0-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libboost_python-py3-1_90_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
+    <package name="libboost_python-py3-1_90_0-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libboost_thread1_90_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libboost_thread1_90_0-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libbox2d2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libbpf1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libbrlapi0_8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1755,8 +1755,8 @@
     <package name="libcairomm-1_16-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcamd3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcamel-1_2-66" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libcamera-base0_5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libcamera0_5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libcamera-base0_6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libcamera0_6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libcanberra-gtk-module-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcanberra-gtk0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcanberra-gtk2-module" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2414,6 +2414,10 @@
     <package name="libnftnl11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnghttp2-14" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libnghttp3-9" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libngtcp2-16" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libngtcp2-16-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libngtcp2_crypto_gnutls8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libngtcp2_crypto_gnutls8-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libnice10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnl-config" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnl3-200" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2527,7 +2531,7 @@
     <package name="libpoppler-cpp2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpoppler-glib8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpoppler-qt6-3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libpoppler153" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libpoppler155" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpopt0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpopt0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libportal-gtk3-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3534,11 +3538,11 @@
     <package name="python3-cepces" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-file_server -->
     <package name="python3-createrepo_c" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="python3-cupshelpers" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="python3-ldb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="python3-ldb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-louis" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-smbios" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="python3-smbios-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="python3-talloc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="python3-talloc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-talloc-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python3-tdb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="python3-tevent" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3817,20 +3821,24 @@
     <package name="salt-master" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="salt-minion" supportstatus="unsupported"/> <!-- reason: dvd:salt-minion -->
     <package name="samba" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="samba-ad-dc-libs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="samba-ad-dc-libs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="samba-ad-dc-libs-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="samba-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="samba-client-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="samba-client-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="samba-client-libs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="samba-client-libs-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="samba-dcerpc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="samba-gpupdate" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-file_server -->
     <package name="samba-ldb-ldap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-file_server -->
-    <package name="samba-libs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="samba-libs-python3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="samba-libs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="samba-libs-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="samba-libs-python3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="samba-python3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="samba-winbind" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-file_server -->
     <package name="samba-winbind-libs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-file_server -->
     <package name="samba-winbind-libs-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="samba-winbind-libs-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-file_server -->
     <package name="sane-backends" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="sane-backends-autoconfig" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="sbc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
