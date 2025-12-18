@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-network-displays
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnome-network-displays
-Version:        0.97.0
+Version:        0.98.0
 Release:        0
 Summary:        Miracast implementation for GNOME
 License:        GPL-3.0-or-later
@@ -70,19 +70,21 @@ to use the created "Network-Displays" sink.
 
 %check
 desktop-file-validate %{buildroot}/%{_datadir}/applications/*.desktop
-appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/*.appdata.xml
+appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/*.metainfo.xml
 %meson_test
 
 %files
 %license COPYING
 %{_bindir}/gnome-network-displays
+%{_bindir}/gnome-network-displays-daemon
 %dir %{_prefix}/lib/firewalld
 %dir %{_prefix}/lib/firewalld/zones
 %{_prefix}/lib/firewalld/zones/P2P-WiFi-Display.xml
 %{_datadir}/applications/org.gnome.NetworkDisplays.desktop
 %{_datadir}/icons/hicolor/scalable/apps/org.gnome.NetworkDisplays.svg
 %{_datadir}/icons/hicolor/symbolic/apps/org.gnome.NetworkDisplays-symbolic.svg
-%{_datadir}/metainfo/org.gnome.NetworkDisplays.appdata.xml
+%{_datadir}/metainfo/org.gnome.NetworkDisplays.metainfo.xml
+%{_libexecdir}/gnome-network-displays-stream
 
 %files lang -f %{name}.lang
 

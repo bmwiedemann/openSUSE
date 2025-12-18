@@ -115,4 +115,18 @@ This is more futureproof.
   + p2p: correct p2p peer add and remove (forwarded request 1279173 from iznogood)</comment>
     <requestid>1279998</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f61a755072b9893277e80b248f65b141</srcmd5>
+    <version>0.98.0</version>
+    <time>1766079406</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.98.0:
+  + Add a dbus daemon program
+  + Use correct URL for WFD keep-alive
+  + Add systemd-resolved-based mDNS providers as alternatives to
+    Avahi-based providers
+  + Various updates related to daemon improvements and metadata
+  + Updated translations. (forwarded request 1322915 from iznogood)</comment>
+    <requestid>1323517</requestid>
+  </revision>
 </revisionlist>

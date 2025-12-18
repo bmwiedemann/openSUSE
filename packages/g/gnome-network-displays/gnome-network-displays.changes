@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec 15 08:00:06 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.98.0:
+  + Add a dbus daemon program
+  + Use correct URL for WFD keep-alive
+  + Add systemd-resolved-based mDNS providers as alternatives to
+    Avahi-based providers
+  + Various updates related to daemon improvements and metadata
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu May 22 06:44:26 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.97.0:
