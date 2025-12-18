@@ -1,0 +1,28 @@
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="url">https://github.com/etcd-io/etcd.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="revision">v3.6.6</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="changesgenerate">enable</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+  </service>
+  <service mode="manual" name="set_version">
+    <param name="basename">etcd</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service name="go_modules" mode="manual">
+    <param name="archive">*etcd*.tar.gz</param>
+    <param name="subdir">server</param>
+    <param name="vendorname">vendor-server</param>
+  </service>
+  <service name="go_modules" mode="manual">
+    <param name="archive">*etcd*.tar.gz</param>
+    <param name="subdir">etcdctl</param>
+    <param name="vendorname">vendor-etcdctl</param>
+  </service>
+</services>

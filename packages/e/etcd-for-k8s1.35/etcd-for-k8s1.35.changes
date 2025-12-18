@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Wed Dec 17 13:48:49 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Initial package version 3.6.6:
+  * Version specified in kubernetes v1.35.0 https://github.com/kubernetes/kubernetes/blob/v1.35.0/build/dependencies.yaml#L65-L67
+  * full changelog: https://github.com/etcd-io/etcd/blob/main/CHANGELOG/CHANGELOG-3.6.md#v366-2025-11-11
