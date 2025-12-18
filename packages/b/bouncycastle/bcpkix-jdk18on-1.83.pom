@@ -5,7 +5,7 @@
   <artifactId>bcpkix-jdk18on</artifactId>
   <packaging>jar</packaging>
   <name>Bouncy Castle PKIX, CMS, EAC, TSP, PKCS, OCSP, CMP, and CRMF APIs</name>
-  <version>1.82</version>
+  <version>1.83</version>
   <description>The Bouncy Castle Java APIs for CMS, PKCS, EAC, TSP, CMP, CRMF, OCSP, and certificate generation. This jar contains  APIs for Java 1.8 and later. The APIs are designed primarily to be used in conjunction with the BC Java provider but may also be used with other providers providing cryptographic services.</description>
   <url>https://www.bouncycastle.org/download/bouncy-castle-java/</url>
   <licenses>
@@ -33,7 +33,7 @@
     <dependency>
       <groupId>org.bouncycastle</groupId>
       <artifactId>bcutil-jdk18on</artifactId>
-      <version>1.82</version>
+      <version>1.83</version>
       <type>jar</type>
     </dependency>
   </dependencies>
