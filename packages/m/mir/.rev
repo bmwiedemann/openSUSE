@@ -208,4 +208,41 @@ Will be a requirement for forthcoming miriway submission</comment>
     <comment></comment>
     <requestid>1311208</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1bc4008efe4e86e50dc3123f7770ec73</srcmd5>
+    <version>2.25.1</version>
+    <time>1766079189</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.25.1:
+  * mirplatform ABI bumped to 34
+  * mirserver ABI bumped to 66
+  * Bugs Fixed:
+    - Cursor icons don't change with XTerm (gh#canonical/mir#4134)
+    - Fix magnifier filter not consuming events when magnifications
+      is greater/less than the max/min (gh#canonical/mir#4386)
+    - If no specified cursor theme loads, then internal theme
+      (gh#canonical/mir#439)
+    - Renderer: Ensure current EGL context when destroying GL
+      resources (gh#canonical/mir#4460)
+    - Fix XWayland menu positioning by initializing spec from
+      cached geometry (gh#canonical/mir#4512)
+    - Implement wl_subsurface.place_above and place_below with
+      parent z-ordering (gh#canonical/mir#4332)
+    - WindowInfo::clip_area is incorrect if the output is scaled
+      (gh#canonical/mir#4484)
+    - Check DRM_CAP_SYNCOBJ_TIMELINE in platform layer before
+      providing DRMRenderingProvider
+    - Fix cursor size getting truncated after scaling leading to
+      crash (gh#canonical/mir#4377)
+    - Intermittent crash (gh#canonical/mir#4323)
+    - Bugfix for PkgConf files missing versions
+      (gh#canonical/mir#4554)
+  * Wayland:
+    - Add support for the ext_foreign_toplevel_list_v1 extension
+    - Implement ext-data-control
+    - Partial implementation of ext-image-capture-source and
+      ext-image-copy-capture Wayland extensions
+    - Rework wayland extension management so that connections</comment>
+    <requestid>1323421</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
-From 0eea2e7195c7cc9ef93931cdb320139b686ec070 Mon Sep 17 00:00:00 2001
+From 53c69bb48aae7eb4fed217919e89cbb4fecf2d2d Mon Sep 17 00:00:00 2001
 From: "Shawn W. Dunn" <sfalken@cloverleaf-linux.org>
 Date: Mon, 20 Jan 2025 07:19:37 -0800
-Subject: [PATCH 2/2] remove use of env to call bash
+Subject: [PATCH 1/2] remove use of env to call bash
 
 Change shebang from #!/usr/bin/env bash, to #!/usr/bin/bash
 ---
@@ -19,5 +19,5 @@ index 11d4dde..6c8b6bd 100755
  miral_server=miral-shell
  gdb=""
 -- 
-2.51.0
+2.52.0
 

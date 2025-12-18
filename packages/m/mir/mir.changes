@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Wed Dec 17 15:36:24 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 2.25.1:
+  * mirplatform ABI bumped to 34
+  * mirserver ABI bumped to 66
+  * Bugs Fixed:
+    - Cursor icons don't change with XTerm (gh#canonical/mir#4134)
+    - Fix magnifier filter not consuming events when magnifications
+      is greater/less than the max/min (gh#canonical/mir#4386)
+    - If no specified cursor theme loads, then internal theme
+      (gh#canonical/mir#439)
+    - Renderer: Ensure current EGL context when destroying GL
+      resources (gh#canonical/mir#4460)
+    - Fix XWayland menu positioning by initializing spec from
+      cached geometry (gh#canonical/mir#4512)
+    - Implement wl_subsurface.place_above and place_below with
+      parent z-ordering (gh#canonical/mir#4332)
+    - WindowInfo::clip_area is incorrect if the output is scaled
+      (gh#canonical/mir#4484)
+    - Check DRM_CAP_SYNCOBJ_TIMELINE in platform layer before
+      providing DRMRenderingProvider
+    - Fix cursor size getting truncated after scaling leading to
+      crash (gh#canonical/mir#4377)
+    - Intermittent crash (gh#canonical/mir#4323)
+    - Bugfix for PkgConf files missing versions
+      (gh#canonical/mir#4554)
+  * Wayland:
+    - Add support for the ext_foreign_toplevel_list_v1 extension
+    - Implement ext-data-control
+    - Partial implementation of ext-image-capture-source and
+      ext-image-copy-capture Wayland extensions
+    - Rework wayland extension management so that connections
+      originating from the server can always use the require
+      extensions
+  * Implementation of an evdev platform in rust
+  * Added copilot instructions
+  * Roll mir-renderer-gl (et alia) into mirplatform
+  * Publish the mirplatform headers used outside mirplatform
+  * Improve Cursor Scale animation
+  * Implement LocatePointer
+  * Implement ApplicationSwitcher
+  * Implement the StandardApplicationSwitcher for ease of use
+  * New FloatingWindowManager and deprecate MinimalWindowManager
+  * Handle opaque regions of transparents surfaces
+  * Log security events according to OWASP format
+  * Add geometry::Value generic accessors for type-safe value
+    conversion
+  * Move mir::report_exception() to mircore
+  * Documentation:
+    - Add Release Notes template
+    - Update the input platform explanation to include information
+      about threading
+  * Patches rebased
+    - Add 0001-remove-use-of-env-to-call-bash.patch
+    - Add 0002-correct-include-paths-pkgconfig.patch
+    - Remove 0002-remove-use-of-env-to-call-bash.patch
+
+-------------------------------------------------------------------
 Mon Oct 13 17:34:41 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to 2.23.0:

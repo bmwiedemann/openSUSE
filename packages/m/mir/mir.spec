@@ -27,23 +27,25 @@
 # Set globals for easier future maintenance
 %global commonlibsover 11
 %global mircoresover 2
-%global mirplatformsover 33
+%global mirplatformsover 34
 %global lomirisover 8
 %global miralsover 7
-%global mirserversover 65
+%global mirserversover 66
 %global mirwaylandsover 5
 %global mirserverplatformsover 23
 %global mirevdevsover 10
 
 Name:           mir
-Version:        2.23.0
+Version:        2.25.1
 Release:        0
 Summary:        Libraries for building Wayland shells
 License:        (GPL-2.0-only OR GPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only)
 URL:            https://mir-server.io
 Source:         https://github.com/canonical/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz
-# PATCH-FIX-OPENSUSE 0002-remove-use-of-env-to-call-bash.patch
-Patch1:         0002-remove-use-of-env-to-call-bash.patch
+# PATCH-FIX-OPENSUSE 0001-remove-use-of-env-to-call-bash.patch <sfalken@opensuse.org>
+Patch1:         0001-remove-use-of-env-to-call-bash.patch
+# PATCH-FIX-UPSTREAM 0002-correct-include-paths-pkgconfig.patch <sfalken@opensuse.org> (gh#canonical/mir#4573)
+Patch2:         0002-correct-include-paths-pkgconfig.patch
 
 BuildRequires:  boost-devel
 BuildRequires:  cmake
