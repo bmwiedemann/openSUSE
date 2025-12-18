@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec 17 17:11:55 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1765976654.0026f92:
+  * Fix opencv dependency due to upstream changes
+  * Restore package  builds on older openSUSE versions
+  * Remove `ShellCheck` from devel dependencies on s390x
+  * Remove obsolete 'bin/' folder
+  * Improve documentation strings for get/check_var
+
+-------------------------------------------------------------------
 Tue Dec 16 20:39:50 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1765808557.b89e9b4:
