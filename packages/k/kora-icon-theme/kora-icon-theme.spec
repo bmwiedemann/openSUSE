@@ -1,7 +1,7 @@
 #
 # spec file for package kora-icon-theme
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           kora-icon-theme
-Version:        1.6.5
+Version:        2.0.0
 Release:        0
 Summary:        SVG icon theme suitable for every desktop environment (dark and light versions, HiDPI support)
 License:        GPL-3.0-only
@@ -33,9 +33,8 @@ Kora is an SVG icon theme with lots of new icons for GNU/Linux operating systems
 To make them display properly, you may need to update the icon cache. A script is included.
 
 Different versions available:
-kora - for dark themes with dark panel
-kora-light - for light themes with dark panel (depends on Kora)
-kora-light-panel - for light themes with light panel (depends on Kora and Kora-light)
+
+kora - theme with blue folder colors
 kora-pgrey - theme with grey folder colors (depends on Kora)
 
 %prep
@@ -49,18 +48,15 @@ kora-pgrey - theme with grey folder colors (depends on Kora)
 # Delete useless files from source folder
 rm -f "kora/create-new-icon-theme.cache.sh"
 rm -f "kora/icon-theme.cache"
-rm -f "kora-light/create-new-icon-theme.cache.sh"
-rm -f "kora-light/icon-theme.cache"
-rm -f "kora-light-panel/create-new-icon-theme.cache.sh"
-rm -f "kora-light-panel/icon-theme.cache"
 rm -f "kora-pgrey/create-new-icon-theme.cache.sh"
 rm -f "kora-pgrey/icon-theme.cache"
+# Remove icons that currently have an invalid symlink (https://github.com/bikass/kora/issues/245)
+rm -f "kora/apps/scalable/net.lugsole.bible_gui.svg"
+rm -f "kora/apps/scalable/org.xiphos.Xiphos.svg"
 
 # Install icons
 mkdir -p %{buildroot}/usr/share/icons
 cp -dr --no-preserve=mode "kora" %{buildroot}/usr/share/icons/kora
-cp -dr --no-preserve=mode "kora-light" %{buildroot}/usr/share/icons/kora-light
-cp -dr --no-preserve=mode "kora-light-panel" %{buildroot}/usr/share/icons/kora-light-panel
 cp -dr --no-preserve=mode "kora-pgrey" %{buildroot}/usr/share/icons/kora-pgrey
 
 # Install license
@@ -71,8 +67,6 @@ cp -p "LICENSE" %{buildroot}/usr/share/licenses/%{name}
 %doc README.md
 %license LICENSE
 /usr/share/icons/kora
-/usr/share/icons/kora-light
-/usr/share/icons/kora-light-panel
 /usr/share/icons/kora-pgrey
 
 %changelog
