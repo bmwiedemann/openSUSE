@@ -1,4 +1,167 @@
 -------------------------------------------------------------------
+Wed Dec 17 20:36:09 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.21.0:
+  * gopls: update go.mod for v0.21.0-pre.2
+  * gopls/doc/release/v0.21.0.md: update relnotes for RC2
+  * gopls/internal/golang: add util function NarrowestDeclaringPackage
+  * gopls/internal/golang: add skeleton for move type codeaction
+  * gopls/internal/golang: fix panic in definition
+  * gopls/internal/cache: fix %q verb use with wrong type
+  * gopls/internal/protocol/generate: move injections to tables.go
+  * gopls/internal/protocol: add form field in type CodeAction
+  * gopls/internal/metadata: document when Module can be nil
+  * gopls/internal/cache: make unimported completions deterministic
+  * gopls/completion: avoid nil dereference
+  * gopls/internal/template: fix printf mistake in test
+  * gopls/doc/release/v0.21.0.md: tweaks
+  * gopls/internal/test/integration: add codeAction/resolve in fake editor
+  * gopls/internal/test/integration: deduplicate CodeActionByKind util func
+  * gopls/internal/util/fingerprint: : remove self-referential alias in TestMatches
+  * gopls/internal/golang: remove self-referential alias in TestUnify
+  * gopls/internal/mcp: add counter for go_rename_symbol mcp tool
+  * gopls/internal/debug: add /package debug view
+  * gopls: update go.mod for v0.21.0-pre.1
+  * all: update codereview.cfg for gopls-release-branch.0.21
+  * gopls/doc/release/v0.21.0.md: prepare
+  * gopls/internal/settings: add renameMovesSubpackages setting
+  * gopls/internal/golang: allow package move into empty directories
+  * gopls/internal/golang: package move: handle mixed build configs
+  * go/analysis/passes/inline: add lazy-fix mode for gopls
+  * gopls/doc: document Rename feature
+  * gopls/internal/golang: implement package move
+  * gopls/internal/test/marker: avoid BasicLit in fill_struct.txt
+  * gopls/internal/filewatcher: retry directory reading upon failure
+  * gopls/internal/settings: correct git issue for fieldalignment warning
+  * gopls/internal/server: don't pop up errors when resolving code actions
+  * gopls/internal/golang: fix crash in canExtractVariable
+  * gopls/internal/mcp: add go_rename_symbol MCP tool
+  * gopls/internal/filewatcher: synthesize events after watching a dir
+  * gopls/internal/golang: Extract variable: simplify using Cursor
+  * gopls/internal/test/marker: another test case for golang/go#76144
+  * internal/server: add instrumentation to track gopls command usage
+  * gopls/internal/filewatcher: read and process event in separate goroutine
+  * gopls/internal/golang: Extract function: simplify using Cursor
+  * gopls/internal/analysis/modernize: add strings.Cut modernizer
+  * gopls/internal/mcp: fix NPE in file diagnostics
+  * gopls/internal: drop import name internalastutil
+  * gopls: replace snapshot.FindFile by ReadFile
+  * gopls/internal/golang: support hover over selected expression
+  * gopls/internal/golang: Hover: show field info for embedded fields too
+  * gopls/internal/golang: change hover handling from position to range
+  * gopls/internal/golang: Hover: use Cursor throughout
+  * gopls/internal/settings: introduce ModeVulncheckPrompt as default value for VulncheckMode setting
+  * gopls/internal/golang: add navigation to doc links in hovers
+  * gopls/internal/golang: CallHierarchy: only funcs
+  * gopls/internal/golang: typeDefinition: allow any expression
+  * gopls/internal/analysis/yield: handle booleans better
+  * gopls/go.mod: update staticcheck to 8273271
+  * gopls/internalanalysis: DeleteStmt deletes comments
+  * gopls/internal/analysis/yield: improve diagnostic
+  * gopls/internal/test/integration/workspace: fix broken test
+  * gopls/internal/golang: fix panic in inlineOneVariable
+  * gopls/internal/analysis/unusedfunc: use refactor.Delete* operators
+  * gopls/internal/golang: add condition for enabling package move
+  * gopls/internal/server: produce DocumentChange list in golang.Rename
+  * gopls/internal/test/integration/completion: make test more go1.26-robust
+  * gopls/internal: prompt with full package path in preparerename
+  * gopls/internal/analysis/modernize: pass to use go1.26 new(x)
+  * gopls/unimported: prefer packages in go.mod
+  * gopls/internal/golang: add package rename counter
+  * gopls/internal/server: fix typo in RunGovulncheck
+  * gopls: update to use the mcp go-sdk@v0.8.0
+  * gopls: add doc link for quick fix implement method
+  * gopls/internal/protocol: upgrades LSP to latest
+  * gopls: update MCP SDK dependency to v0.7.0
+  * gopls/internal/analysis/modernize: reflect.TypeOf(x) -> TypeFor[T]()
+  * gopls/test/quickfix_test: verify that issue 70755 is fixed
+  * gopls/internal/cmd: skip TestMCPVulncheckCommand when fsnotify not supported
+  * gopls/internal/protocol: add range to TextDocumentPositionParams
+  * gopls/internal/analysis/embeddirective: call AddImport directly
+  * gopls/internal/doc/generate: convert Analyzer.Doc to Markdown
+  * gopls/internal/analysis/modernize: slicescontains: improve widening check
+  * gopls: update MCP SDK to v0.6.0
+  * gopls: fix extracted function shouldReturn boolean return value position
+  * gopls/internal/util/cursorutil: add FirstEnclosing
+  * gopls/internal/analysis/modernize: stringscutprefix: handle CutSuffix too
+  * gopls/internal/folding_range: display closing parentheses
+  * gopls/internal/analysis/modernize/cmd/modernize: improve godoc
+  * gopls/internal/golang/completion: don't offer internal std packages
+  * gopls: use correct doc link
+  * gopls/internal/progress: use t.Context in tests
+  * gopls: convert some users of astutil to Cursors
+  * gopls/internal/cache: set goVersion when there is no module version
+  * gopls: update Go MCP SDK to v0.5.0
+  * gopls/internal/analysis/modernize: use better qualifier for rangeint
+  * gopls: render package documentation when hovering over imported package name identifiers
+  * gopls/internal/golang: do not offer "inline variable" on an lvalue reference
+  * gopls/internal/settings: shadow.severity = hint
+  * gopls/internal/test: update the minimum go command of TestImportAlias
+  * gopls/internal/test/integration/completion: make test go1.26-robust
+  * gopls/internal/server: add telemetry for Zed, Helix clientInfo
+  * gopls/internal/test/integration/completion: skip TestFuzzFunc pre-go1.25
+  * gopls/internal/analysis/modernize: add test of no gopls imports
+  * gopls/internal/mcp: use official go mcp sdk
+  * gopls/internal/analysis/modernize: fix bad edit in var ( ... ) decl
+  * gopls/completion: unimported completions with explicit package names
+  * internal/astutil: move declarations from gopls/internal/util/astutil
+  * internal/analysisinternal/generated: move from gopls/internal/analysis
+  * internal/moreiters: move from gopls/internal/util/moreiters
+  * gopls/internal/analysis/modernize/rangeint: fix defer bug
+  * gopls/internal/golang: OutgoingCalls: fix crash on error.Error
+  * gopls/internal/analysis/recursiveiter: fix typo
+  * gopls/internal/analysis/modernize: stringsbuilder: fix s=x bug
+  * gopls/internal: modernize -stringbuilder -fix
+  * gopls/internal/analysis/modernize: string+=string => strings.Builder
+  * gopls: modernize
+  * gopls: update to go1.25
+  * gopls/internal/analysis/modernize: split up
+  * gopls/internal/golang: InlayHint: allow space before // ignore error
+  * gopls/internal/analysis/generated: amortize ast.IsGenerated
+  * gopls: support jump to definition for field links in comments
+  * gopls/internal/analysis: fix waitgroup modernizer formatting
+  * gopls/internal/folding_range: allow more folding ranges
+  * gopls/internal/analysis/modernize: invalid code produced by fmtappendf modernizer
+  * gopls/internal/mcp: fix panic in symbolReferencesHandler on nil types.Object
+  * gopls/internal/filewatcher: replace handleEvent with convertEvent
+  * gopls/doc: fix broken url
+  * gopls/internal/test/integration/completion: skip a_test.go
+  * gopls/internal/golang/completion: don't make unnecessary conversions for generic functions
+  * gopls/internal/settings: add ui.newGoFileHeader option
+  * gopls/internal/analysis/modernize: fix doc typos
+  * gopls/doc/features: add "MCP" to index.
+  * gopls/internal/golang/hover: show alias real type decl for types only
+  * gopls/internal/analysis/modernize/forvar: provide fix for second loop var
+  * gopls/internal/server: add counters for add and remove struct tags
+  * gopls/internal/filewatcher: fix race condition on watcher shutdown
+  * gopls/internal/server: add windsurf and cursor as language client
+  * gopls/internal/golang: show document after test generation
+  * gopls/internal/filewatcher: move dir with broken symlink to avoid flakiness
+  * gopls/internal/golang: ignoredError inlay hint: skip io.WriteString
+  * gopls/internal/cache: add removeIntermediateTestVariants parameter
+  * gopls/doc: yet more tweaks
+  * gopls/internal/analysis/unusedfunc: skip std
+  * gopls/internal/template: use protocol.Mapper and simplify
+  * gopls/internal/template: unexport Parse et al
+  * gopls/internal/test/integration/template: add test for golang/go#74635
+  * gopls/internal/golang: CodeAction(gopls.doc.features): update URL
+  * gopls/internal/protocol: remove obsolete recoverHandlerPanic
+  * gopls/doc/release/v0.21.0.md: restore (deleted in CL 691115)
+  * gopls/doc/release: fix (oddly) broken link
+  * gopls: improve SignatureHelp triggering
+  * gopls/doc: yet more doc tweaks
+  * gopls/internal/filewatcher: retry watch registration upon failure
+  * gopls/go.mod: update dependencies following the v0.20.0 release
+  * gopls/doc/release/v0.20.0.md: final tweaks
+  * gopls/internal/debug: KillTraceViewers: kill process group on UNIX
+  * gopls/internal/golang: fix extract on anonymous structs
+  * gopls/internal/test/marker: fix reachable panic("unreachable")
+  * gopls/internal/test/integration/web: kill "go tool trace" processes
+  * gopls/internal/golang: allow rename in doc comments
+  * gopls/internal/filewatcher: add stress test for file watcher
+  * gopls/doc/features: fix two stray backticks
+
+-------------------------------------------------------------------
 Mon Jul 28 19:08:55 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.20.0:

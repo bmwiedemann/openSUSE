@@ -346,4 +346,41 @@
   * gopls/internal/cmd: fix flaky mcp http test (forwarded request 1296211 from jfkw)</comment>
     <requestid>1296212</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>3cdd107b253a51b8b003a3f8fe1ef614</srcmd5>
+    <version>0.21.0</version>
+    <time>1766079199</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.21.0:
+  * gopls: update go.mod for v0.21.0-pre.2
+  * gopls/doc/release/v0.21.0.md: update relnotes for RC2
+  * gopls/internal/golang: add util function NarrowestDeclaringPackage
+  * gopls/internal/golang: add skeleton for move type codeaction
+  * gopls/internal/golang: fix panic in definition
+  * gopls/internal/cache: fix %q verb use with wrong type
+  * gopls/internal/protocol/generate: move injections to tables.go
+  * gopls/internal/protocol: add form field in type CodeAction
+  * gopls/internal/metadata: document when Module can be nil
+  * gopls/internal/cache: make unimported completions deterministic
+  * gopls/completion: avoid nil dereference
+  * gopls/internal/template: fix printf mistake in test
+  * gopls/doc/release/v0.21.0.md: tweaks
+  * gopls/internal/test/integration: add codeAction/resolve in fake editor
+  * gopls/internal/test/integration: deduplicate CodeActionByKind util func
+  * gopls/internal/util/fingerprint: : remove self-referential alias in TestMatches
+  * gopls/internal/golang: remove self-referential alias in TestUnify
+  * gopls/internal/mcp: add counter for go_rename_symbol mcp tool
+  * gopls/internal/debug: add /package debug view
+  * gopls: update go.mod for v0.21.0-pre.1
+  * all: update codereview.cfg for gopls-release-branch.0.21
+  * gopls/doc/release/v0.21.0.md: prepare
+  * gopls/internal/settings: add renameMovesSubpackages setting
+  * gopls/internal/golang: allow package move into empty directories
+  * gopls/internal/golang: package move: handle mixed build configs
+  * go/analysis/passes/inline: add lazy-fix mode for gopls
+  * gopls/doc: document Rename feature
+  * gopls/internal/golang: implement package move
+  * gopls/internal/test/marker: avoid BasicLit in fill_struct.txt (forwarded request 1323424 from jfkw)</comment>
+    <requestid>1323425</requestid>
+  </revision>
 </revisionlist>
