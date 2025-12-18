@@ -1,4 +1,374 @@
 -------------------------------------------------------------------
+Thu Dec 18 06:13:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.56.2:
+  * Bug Fixes
+    - deploy: docker hub creds might leak in pod events (62adcb4)
+- Update to version 2.56.1:
+  * Bug Fixes
+    - deploy: logs stop showing after 4 hours (e33523b)
+- Update to version 2.56.0:
+  * Features
+    - build: implement werf stages copy command to import/export
+      stages (all or current build only) (#7209) (937b96a)
+    - deploy: werf.io/log-regex-skip and
+      werf.io/log-regex-skip-for-<container> annotations (293c151)
+  * Bug Fixes
+    - build: add custom-tag once (#7275) (e4953e7)
+    - build, import: prune empty dirs (939942b)
+    - build, import: take into account symlinks calculating import
+      checksum (3145852)
+    - build, import: revert symlink resolve to prevent backward
+      compatibility (made in v2.55.6) (be086d830)
+    - deploy: panic if apiserver connection lost (7358731)
+
+-------------------------------------------------------------------
+Thu Dec 18 06:00:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.55.6:
+  * Bug Fixes
+    - build, import: should not resolve symlinks (c28127a)
+    - deploy: hooks cleaned up too early (42c57b4)
+
+-------------------------------------------------------------------
+Wed Dec 17 13:13:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.55.4:
+  * Bug Fixes
+    - build, import: avoid following symlinks during checksum
+      calculation to prevent runner stalls (9ee46f2)
+    - config: align .Files.Glob behavior with helm (7959568)
+  * - Update to version 2.55.3:
+  * Miscellaneous Chores
+    - release: force v2.55.3 (4705747)
+  * - Update to version 2.55.2:
+  * Miscellaneous Chores
+    - release: force v2.55.2 (c1f60fc)
+  * - Update to version 2.55.1:
+  * Bug Fixes
+    - build: add custom-tag once (2e23d3f)
+    - build: highlight an error in parallel mode (a3f509a)
+  * - Update to version 2.55.0:
+  * Features
+    - deploy: --delete-propagation and werf.io/delete-propagation
+      (806ee13)
+  * Bug Fixes
+    - build: collision between WERF_REQUIRE_BUILT_IMAGES of build
+      with other commands (201e8d9)
+    - deploy: remove null keys from manifests now only on
+      NELM_FEAT_CLEAN_NULL_FIELDS=true (dc41572)
+
+-------------------------------------------------------------------
+Wed Dec 17 13:03:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.54.1:
+  * Bug Fixes
+    - build, stapel, import: preserve security capabilities during
+      file import (#7237) (522ebf7)
+    - deploy: plan shows nothing if only tracking ops in plan
+      (d982297)
+  * - Update to version 2.54.0:
+  * Features
+    - config: ability to save the render along a custom path
+      (#7176) (7c624ec)
+    - config: add toYaml func to config parser (1ae722e)
+  * Bug Fixes
+    - build, docker: fix docker commands do not stop on context
+      cancellation (#7232) (3737404)
+    - build, stapel, import: correct rsync glob handling for
+      imports and checksums (6007704)
+    - build, stapel, import: warn if import config does nothing
+      (#7225) (2756b18)
+    - build: use blocking execution for parallel (#7231) (42def11)
+    - cleanup: warn when cleanup metadata push hits immutable repo
+      (87c2705)
+    - host-cleanup: use different keeping strategies for different
+      kind of tmp data (#7219) (4ca0b9e)
+    - includes: clarify usage of relative and absolute
+      includesLockPath (8535d8e)
+    - includes: prevent double projectDir in includes path
+      resolution (af64a6d)
+    - includes: respect projectDir in lock file creation (61ae7e7)
+
+-------------------------------------------------------------------
+Wed Dec 17 12:54:41 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.53.5:
+  * Bug Fixes
+    - deploy: show verbose diffs by default like before (97d8c28)
+    - deploy: show verbose diffs by default like before /2
+      (29fd2b0)
+- Update to version 2.53.4:
+  * Miscellaneous Chores
+    - release: force v2.53.4 (1f114ec)
+- Update to version 2.53.3:
+  * Bug Fixes
+    - build, stapel: exit with error when import nothing (#7166)
+      (6e6f6b4)
+    - build, stapel: throw error if two import configurations
+      contain everything and glob everything (#7171) (c6ba868)
+    - deploy: panic: interface conversion: plan.OperationConfig
+      (c7ee56b)
+    - deploy: new release created even if no changes (bdfd07d)
+    - deploy: null or empty fields might fail resource deploys
+      (e213f40)
+- Update to version 2.53.2:
+  * Bug Fixes
+    - deploy: deploy command always create .dot file (a0d8512)
+  * - Update to version 2.53.1:
+  * Miscellaneous Chores
+    - release: force v2.53.1 (067637d)
+- Update to version 2.53.0:
+  * Features
+    - build: support imageSpec stage without registry (#7053)
+      (cad58f0)
+    - deploy: add werf rollback command (4effe69)
+    - deploy: new werf bundle plan command (cffad6a)
+    - deploy: new werf lint command (8284016)
+  * Bug Fixes
+    - build error "undefined: tmp_manager.ReleaseProjectDir"
+      (b090ae7)
+    - deploy: --timeout and CTRL-C not stopping deployment
+      correctly (143ce54)
+    - deploy: canceled operations not displayed in the end of
+      deployment (551eacb)
+    - deploy: empty Release.Info.First(Last)Deployed (946c269)
+    - deploy: error unable to acquire lock if install to new
+      namespace (92b1106)
+    - host-cleanup: don't use "file age" as metric for tmp data
+      cleaning (d970341)
+
+-------------------------------------------------------------------
+Wed Dec 17 12:47:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.52.0:
+  * Features
+    - deploy: flag --extra-apiversions (21b9109)
+    - deploy: flag --kube-auth-password (21b9109)
+    - deploy: flag --kube-auth-provider-config (21b9109)
+    - deploy: flag --kube-auth-provider (21b9109)
+    - deploy: flag --kube-auth-username (21b9109)
+    - deploy: flag --kube-ca-data (21b9109)
+    - deploy: flag --kube-cert-data (21b9109)
+    - deploy: flag --kube-cert (21b9109)
+    - deploy: flag --kube-context-cluster (21b9109)
+    - deploy: flag --kube-context-user (21b9109)
+    - deploy: flag --kube-impersonate-group (21b9109)
+    - deploy: flag --kube-impersonate-uid (21b9109)
+    - deploy: flag --kube-impersonate-user (21b9109)
+    - deploy: flag --kube-key-data (21b9109)
+    - deploy: flag --kube-key (21b9109)
+    - deploy: flag --kube-proxy-url (21b9109)
+    - deploy: flag --kube-request-timeout (21b9109)
+    - deploy: flag --kube-token-path (21b9109)
+    - deploy: flag --no-notes (21b9109)
+    - deploy: flag --provenance-keyring (21b9109)
+    - deploy: flag --provenance-strategy (21b9109)
+    - deploy: flag --release-info-annotations (21b9109)
+    - deploy: flag --release-storage (21b9109)
+    - deploy: flag --runtime-annotations (21b9109)
+    - deploy: flag --runtime-labels (21b9109)
+    - deploy: flag --set-json (21b9109)
+    - deploy: flag --set-literal (21b9109)
+    - deploy: flag --templates-allow-dns (21b9109)
+    - deploy: LOTS of new cli flags (21b9109)
+
+-------------------------------------------------------------------
+Wed Dec 17 11:57:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.51.7:
+  * Bug Fixes
+    - build: collision between WERF_REQUIRE_BUILT_IMAGES of build
+      with other commands (18fbe7e)
+- Update to version 2.51.6:
+  * Bug Fixes
+    - show verbose diffs by default like before (a470377)
+- Update to version 2.51.5:
+  * Bug Fixes
+    - deploy: deploy command always create .dot file (d163686)
+
+-------------------------------------------------------------------
+Wed Dec 17 11:51:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.51.4:
+  * Bug Fixes
+    - deploy: failures in init containers of jobs ignored (5cbbe69)
+    - deploy: webhooks not readying (63dfd5e)
+  * - Update to version 2.51.3:
+  * Bug Fixes
+    - build: use map access for bridge network IP address (8f0efe9)
+- Update to version 2.51.2:
+  * Bug Fixes
+    - deploy: --dir breaks --values (fa3a865)
+- Update to version 2.51.1:
+  * Bug Fixes
+    - deploy: error no Auth Provider found for name "" (ff71d70)
+    - deploy: Helm release annotation updates trigger new release
+      (ff71d70)
+    - deploy: panic unknown VerificationStrategyString value
+      (ff71d70)
+    - deploy: panic if failure/autorollback plan fails, refactor
+      (bd2c90a)
+    - deploy: resources updated for no reason (ff71d70)
+- Update to version 2.51.0:
+  * Features
+    - deploy: option --set-runtime-json (a9181f6)
+  * Bug Fixes
+    - deploy: invalid helm.sh/hook causes panic in render (a65bd52)
+    - deploy: unnecessary resource/release updates (493659f)
+    - error too many arguments in call to chartutil.ToRenderValues
+      (f63e7c8)
+
+-------------------------------------------------------------------
+Wed Dec 17 11:39:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.50.2:
+  * Bug Fixes
+    - deploy: improve diffs in plan output (471a4d1)
+- Update to version 2.50.1:
+  * Bug Fixes
+    - deploy: broken diffs with object: in plan (8a5c7ec)
+    - deploy: error if only one of --release/--namespace set for
+      dismiss and git found (016b07f)
+- Update to version 2.50.0:
+  * Features
+    - deploy: annotation werf.io/delete-policy:
+      before-creation-if-immutable, options --no-final-tracking,
+      --no-remove-manual-changes (dd34dcd)
+    - deploy: option --no-remove-manual-changes from the cluster
+      resources (0143305)
+  * Bug Fixes
+    - build: cross validate images' platforms (#7110) (10f0d93)
+    - host-cleanup: doesn't print warnings while detaching process
+      (0ec9e0f)
+
+-------------------------------------------------------------------
+Wed Dec 17 11:27:37 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.49.4:
+  * Bug Fixes
+    - deploy: panic in plan (6c98d43)
+- Update to version 2.49.3:
+  * Miscellaneous Chores
+    - release: test mac signing (e970b7e)
+- Update to version 2.49.2:
+  * Miscellaneous Chores
+    - release: test mac signing (281b0d8)
+- Update to version 2.49.1:
+  * Bug Fixes
+    - deploy: plan panic and json diffs instead of yaml (c8d8187)
+- Update to version 2.49.0:
+  * Features
+    - deploy: plan options --diff-context-lines,
+      --show-insignificant-diffs, --show-sensitive-diffs,
+      --show-verbose-crd-diffs, --show-verbose-diffs (29fad9e)
+    - deploy: werf.io/delete-policy, werf.io/ownership,
+      werf.io/deploy-on and more (2348b90)
+
+-------------------------------------------------------------------
+Wed Dec 17 10:18:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.48.3:
+  * Bug Fixes
+    - deploy: error if only one of --release/--namespace set for
+      dismiss and git found (1a1e95e)
+- Update to version 2.48.2:
+  * Bug Fixes
+    - stapel, git: handle broken symlinks in chown xargs command
+      (3936931)
+- Update to version 2.48.1:
+  * Bug Fixes
+    - includes: fix includes and lock configs path resolution for
+      custom project dir (#7117) (6dee249)
+    - stapel, git: fix file ownership setup for scratch (rel sudo:
+      unknown uid 0) (#7094) (23f8cf7)
+- Update to version 2.48.0:
+  * Features
+    - implement SQL connection handling (430415c)
+  * Bug Fixes
+    - build: fix stage selection handling for git stages (2de807e)
+    - host-cleanup: don't keep images which contain in their tags
+      projectName or "werf-stages-storage/" (aa0db91)
+    - host-cleanup: require backend storage path (ab9a8f7)
+    - includes: respect flag and env for werf includes update
+      (839ee1b)
+
+-------------------------------------------------------------------
+Wed Dec 17 10:05:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.47.11:
+  * chore(main): release 2.47.11
+  * chore(main): release 2.47.10
+  * fix(deploy): dismiss reads release name and namespace from git even if they specified via flags
+  * chore(main): release 2.47.10
+  * chore(channels): bump alpha
+  * docs: regen cli reference
+  * fix(deploy): bundle render/apply requires git
+  * chore(release): 2 beta
+  * chore(release): 2 alpha,beta
+  * chore(main): release 2.47.9
+  * chore(ci): update releases after publish
+  * chore(dev): task mock:generate
+  * refactor(build, stapel, git): update stage selection debug and warning messages
+  * fix(build, stapel, git): prevent patch creation error when a submodule commit no longer exists in the remote
+  * refactor(build): refactor stage selection logic to improve clarity and efficiency
+  * fix(ci-env): fix destination for source script
+  * chore(dev): add .gitignore rule
+  * fix: use a consistent werf tmp dir (#7095)
+  * test(build): cover parallel tasking
+  * refactor(build): support early cancellation vit SIGINT, real-time printing of logs and fast failing on any error
+  * refactor(build): simplify parallel tasking
+  * chore(release): 2 alpha
+  * chore(main): release 2.47.8
+  * fix(build): fix deferred build log on error in quiet mode
+  * refactor: pass ctx to git fetch
+  * fix(includes): fix --allow-includes-update does not use actual HEAD (also related to stapel git.branch)
+  * fix(build): fix --save-build-report does not work with --require-built-images option
+  * chore(lint): lint docker-compose.yml (#7086)
+  * chore(release): 2 alpha
+  * chore(main): release 2.47.7 (#7085)
+  * docs(build): clarify SSH agent behavior on macOS with Docker Desktop (#7071)
+  * chore(playground): add playground for registry with s3
+  * fix(buildah): enable precomputed digests to avoid S3 blob upload conflicts
+  * refactor(giterminism): optimize git patching
+  * refactor(build): add --require-built-images option
+  * refactor(build): pass ctx down to oras (#7079)
+  * refactor(build): improve error readability
+  * chore(release): 2 alpha
+
+-------------------------------------------------------------------
+Wed Dec 17 10:01:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.47.11:
+  * Bug Fixes
+    - deploy: dismiss reads release name and namespace from git
+      even if they specified via flags (660908e)
+- Update to version 2.47.10:
+  * Bug Fixes
+    - deploy: bundle render/apply requires git (6828274)
+- Update to version 2.47.9:
+  * Bug Fixes
+    - build, stapel, git: prevent patch creation error when a
+      submodule commit no longer exists in the remote (3ad251e)
+    - use a consistent werf tmp dir (#7095) (fd88fa5)
+- Update to version 2.47.8:
+  * Bug Fixes
+    - build: fix --save-build-report does not work with (9bbdfb7)
+    - build: fix deferred build log on error in quiet mode
+      (3e546cc)
+    - includes: fix --allow-includes-update does not use actual
+      HEAD (also related to stapel git.branch) (9a58246)
+- Update to version 2.47.7:
+  * Bug Fixes
+    - build, buildah: enable precomputed digests to avoid S3 blob
+      upload conflicts (a458a3d)
+- Update to version 2.47.6:
+  * Bug Fixes
+    cleanup: fix cleanup meta check condition (89b05d2)
+    handle panic properly (fddd12f)
+    pass ctx down (#7073) (76efdce)
+
+-------------------------------------------------------------------
 Sat Sep 20 08:31:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.47.5:
