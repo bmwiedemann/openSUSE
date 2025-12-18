@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec 17 07:16:40 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6
+  * A new wideband-to-fullband bandwidth extension (BWE) module.
+  * Support for 96 kHz audio with Opus HD.
+  * Significant improvement to Deep Redundancy (DRED).
+  * A new 24-bit encoder/decoder API.
+  * Fixed-point improvements.
+
+-------------------------------------------------------------------
 Sun Apr 14 12:09:30 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 1.5.2:
