@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 17 12:07:20 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251217 (git commit c695356f6ea1):
+  * cirrus: cs35l41: Update firmware and tuning for various HP laptops
+  * cirrus: cs35l41: Add support for new HP Clipper laptop
+
+-------------------------------------------------------------------
 Sat Dec  6 07:55:50 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20251205 (git commit 536cc58d9db1):

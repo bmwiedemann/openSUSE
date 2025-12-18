@@ -333,4 +333,14 @@ After this PR, there will be a delete request for kernel-firmware.
   * cirrus: cs35l41: Add support for new HP laptops</comment>
     <requestid>1321336</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>8d1c070f12ad04612070e77a0f1ddf58</srcmd5>
+    <version>20251217</version>
+    <time>1766079040</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251217 (git commit c695356f6ea1):
+  * cirrus: cs35l41: Update firmware and tuning for various HP laptops
+  * cirrus: cs35l41: Add support for new HP Clipper laptop</comment>
+    <requestid>1323383</requestid>
+  </revision>
 </revisionlist>
