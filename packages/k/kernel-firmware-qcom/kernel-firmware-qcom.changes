@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Dec 17 12:06:49 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251217 (git commit c695356f6ea1):
+  * qcom: drop compatibility a640_zap.mdt symlink
+
+-------------------------------------------------------------------
+Fri Dec 12 08:23:53 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251211 (git commit 6953ec7e9fea):
+  * qcom: Add firmwares for sm8150 GPU
+  * qcom: Add firmwares for sm8450 GPU
+  * qcom: Add firmwares for sm8550 GPU
+  * qcom: Add firmwares for sm8650 GPU
+  * qcom: Add firmwares for sm8750 GPU
+
+-------------------------------------------------------------------
 Tue Dec  2 06:07:44 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20251202 (git commit 38c82f07a964):
