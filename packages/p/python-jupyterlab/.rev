@@ -1240,4 +1240,41 @@
     - Clear incomplete execution metadata when splitting running</comment>
     <requestid>1308326</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>ec431729763f099e4de7df4486a44814</srcmd5>
+    <version>4.5.1</version>
+    <time>1766079058</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.5.1
+  ## Deprecated features
+  * Drives: Deprecate the notion of defaultContentProvider #18169
+    (@martinRenou)
+  ## Enhancements made
+  * Detect and log slow plugins #18181 (@Darshan808)
+  ## Bugs fixed
+  * Debugger: Fix restart and debug command. #18115
+    (@HaudinFlorence)
+  * Fix scrollPastEnd for text editors #18186 (@Meriem-BenIsmail)
+  * Enable undo/redo in JSON settings editor #18165
+    (@Meriem-BenIsmail)
+  * Restore focus after closing the command palette #18167
+    (@Meriem-BenIsmail)
+  * Restore auto-resizing of the code console input prompts #17819
+    (@jtpio)
+  * Fix: Safely handle missing args in fileeditor:change-font-size
+    label provider #18157 (@prajyot-porje)
+
+- update to 4.5.0:
+  * Add terminal search functionality #17691 (@ianthomas23)
+  * Fix kernel status display in status bar #18047 (@Darshan808)
+  * Introduce `DebuggerDisplayRegistry` to provide context-aware
+    display names for debugger panels #18043 (@arjxn-py)
+  * Introduce new token for the default `IContentProvider` #18027
+    (@martinRenou)
+  * Update `Show more outputs` button design #18021 (@andrii-i)
+  * Optimize `content-visibility` application #18013 (@Meriem-
+    BenIsmail)
+  * Show execution count in breakpoints, callstack, and sources</comment>
+    <requestid>1323335</requestid>
+  </revision>
 </revisionlist>

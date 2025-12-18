@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Wed Dec 17 11:28:46 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.5.1
+  ## Deprecated features
+  * Drives: Deprecate the notion of defaultContentProvider #18169
+    (@martinRenou)
+  ## Enhancements made
+  * Detect and log slow plugins #18181 (@Darshan808)
+  ## Bugs fixed
+  * Debugger: Fix restart and debug command. #18115
+    (@HaudinFlorence)
+  * Fix scrollPastEnd for text editors #18186 (@Meriem-BenIsmail)
+  * Enable undo/redo in JSON settings editor #18165
+    (@Meriem-BenIsmail)
+  * Restore focus after closing the command palette #18167
+    (@Meriem-BenIsmail)
+  * Restore auto-resizing of the code console input prompts #17819
+    (@jtpio)
+  * Fix: Safely handle missing args in fileeditor:change-font-size
+    label provider #18157 (@prajyot-porje)
+
+-------------------------------------------------------------------
+Sat Dec 13 14:26:00 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.5.0:
+  * Add terminal search functionality #17691 (@ianthomas23)
+  * Fix kernel status display in status bar #18047 (@Darshan808)
+  * Introduce `DebuggerDisplayRegistry` to provide context-aware
+    display names for debugger panels #18043 (@arjxn-py)
+  * Introduce new token for the default `IContentProvider` #18027
+    (@martinRenou)
+  * Update `Show more outputs` button design #18021 (@andrii-i)
+  * Optimize `content-visibility` application #18013 (@Meriem-
+    BenIsmail)
+  * Show execution count in breakpoints, callstack, and sources
+    panels while debugging in console #18003 (@arjxn-py)
+  * Keep debugger state though kernel restarts #17972 (@gjmooney)
+  * Make `DocumentManager` dialogs customizable #17961
+    (@Darshan808)
+  * Systematise how base URL is obtained to allow swapping it
+    more easily #17952 (@krassowski)
+  * Export the `ContentProviderRegistry` #17940 (@martinRenou)
+  * Make filebrowser breadcrumbs configurable #17932
+    (@Darshan808)
+  * Switch the default windowing mode to `contentVisibility`
+    #17926 (@Meriem-BenIsmail)
+  * Pass context down in attachments resolver #17924
+    (@krassowski)
+  * Allow swapping the empty markdown cell placeholder (and
+    translate it) #17920 (@krassowski)
+  * Enable the minimap for all windowing modes #17904 (@Meriem-
+    BenIsmail)
+  * Debugger: Differentiate selected breakpoints with specific
+    style #17893 (@HaudinFlorence)
+  * Use console for debugger evaluation #17892 (@gjmooney)
+  * Debugger: Visual indicator when debugger is paused #17891
+    (@arjxn-py)
+  * Add `IUserAPIClient` to make swapping `UserManager` easier
+    #17884 (@krassowski)
+  * Provide context about the tag and attribute to the URL
+    resolver #17882 (@krassowski)
+  * Debugger: Show cell execution count in breakpoint/call
+    stack/source panel #17881 (@arjxn-py)
+  * Add file browser menu for creating new Python/R/Julia files
+    #17848 (@martinRenou)
+  * Allow configuring `toSkip` for the `SettingsEditor` #17834
+    (@jtpio)
+  * Use `content-visibility` to render notebook cells more
+    efficiently #17822 (@Meriem-BenIsmail)
+  * Use toolbar registry for log console #17814 (@gjmooney)
+  * Add a new `addExtraLineOnCellMerge` setting #17806 (@jtpio)
+  * Update to mermaid 11.10, marked 16.2 #17800 (@bollwyvl)
+  * Allow opening notebooks without starting a kernel #17798
+    (@jtpio)
+  * Allow to swap the URL resolver #17784 (@krassowski)
+  * Add the "Show Workspace Indicator" command to the palette
+    #17780 (@jtpio)
+  * Auto-switch between light and dark mode when "Synchronize
+    with System Settings" is enabled #17733 (@MUFFANUJ)
+  * Keep cell `id` when the user changes cell type #17731
+    (@afshin)
+  * Discover the app directory relative to the installed module
+    #17721 (@zanieb)
+  * Show checkbox and buttons of Dialog component on separate
+    lines #17696 (@MUFFANUJ)
+  * Add types for interrupt messages, and move them from `shell`
+    to `control` channel #17684 (@krassowski)
+  * Add fold/unfold commands to menu and command palette #17677
+    (@Darshan808)
+  * Add a new `allowFileUploads` setting to the file browser
+    #17676 (@jtpio)
+  * Dockerfile: Install less, vim, and nano #17670 (@rschroll)
+  * Describe `args` for all commands #17649 (@jtpio)
+
+-------------------------------------------------------------------
 Wed Oct  1 07:47:33 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 4.4.9:
@@ -37,7 +132,7 @@ Wed Oct  1 07:47:33 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
   - Documentation improvements
     - Improve language/grammar in extensions documentation
     - Reorganise and improve discoverability in documentation
-     
+
     - Replace deprecated toolbarRegistry.registerFactory with
       toolbarRegistry.addFactory in docs
 - Update to 4.4.6:
@@ -50,13 +145,13 @@ Wed Oct  1 07:47:33 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
     - Fix uncoalesced cell stream outputs clearing
     - Fix error when deleting a markdown cell with heading
     - Fix initial column sizes in FileDialog.getOpenFiles dialog
-     
+
     - Exclude version 6.30.0 of ipykernel, which add a regression
       on the debugger
   - Maintenance and upkeep improvements
     - Avoid ipykernel 7.0.0a2 in CI
     - Add logs to the server startup in the js-testing tests
-     
+
     - Bump form-data from 4.0.2 to 4.0.4
     - Pin to httpx<1
     - Add more retries on the frequently failing test
@@ -452,7 +547,7 @@ Sun Nov 17 14:17:22 UTC 2024 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Sun Nov 17 14:12:53 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
-- Downgrade to 4.2.6 
+- Downgrade to 4.2.6
   * Maintain autosave timers while disconnected #16903 (@holzman)
   * Use class instead of id in the log console test #16723
     (@krassowski)

@@ -16,9 +16,9 @@
 #
 
 
-%define distversion 4.4.9
+%define distversion 4.5.1
 Name:           python-jupyterlab
-Version:        4.4.9
+Version:        4.5.1
 Release:        0
 Summary:        Environment for interactive and reproducible computing
 License:        BSD-3-Clause
@@ -30,14 +30,14 @@ BuildRequires:  %{python_module Jinja2 >= 3.0.3}
 BuildRequires:  %{python_module async_lru >= 1.0.0}
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module hatch-jupyter-builder}
-BuildRequires:  %{python_module hatchling}
-BuildRequires:  %{python_module httpx >= 0.25.0}
+BuildRequires:  %{python_module hatchling >= 1.21.1}
+BuildRequires:  %{python_module httpx >= 0.25.0 with %python-httpx < 1.0}
 BuildRequires:  %{python_module importlib-metadata >= 4.8.3 if %python-base < 3.10}
 BuildRequires:  %{python_module ipykernel >= 6.5.0}
 BuildRequires:  %{python_module jupyter-lsp >= 2.0.0}
 BuildRequires:  %{python_module jupyter_core}
 BuildRequires:  %{python_module jupyter_server >= 2.4.0 with %python-jupyter_server < 3}
-BuildRequires:  %{python_module jupyterlab_server >= 2.27.1 with %python-jupyterlab_server < 3}
+BuildRequires:  %{python_module jupyterlab_server >= 2.28 with %python-jupyterlab_server < 3}
 BuildRequires:  %{python_module notebook_shim >= 0.2}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
@@ -54,18 +54,18 @@ Requires(postun): update-alternatives
 Requires:       jupyter-jupyterlab = %{version}
 Requires:       python-Jinja2 >= 3.0.3
 Requires:       python-async_lru >= 1.0.0
-Requires:       python-httpx >= 0.25.0
 Requires:       python-ipykernel >= 6.5.0
 Requires:       python-jupyter-lsp >= 2.0.0
 Requires:       python-jupyter_core
 Requires:       python-notebook_shim >= 0.2
 Requires:       python-packaging
-Requires:       python-setuptools >= 40.1
+Requires:       python-setuptools >= 41.1
 Requires:       python-tornado >= 6.2.0
 Requires:       python-traitlets
+Requires:       (python-httpx >= 0.25.0 with python-httpx < 1.0)
 Requires:       (python-importlib-metadata >= 4.8.3 if python-base < 3.10)
 Requires:       (python-jupyter_server >= 2.4.0 with python-jupyter_server < 3)
-Requires:       (python-jupyterlab_server >= 2.27.1 with python-jupyterlab_server < 3)
+Requires:       (python-jupyterlab_server >= 2.28.0 with python-jupyterlab_server < 3)
 Requires:       (python-tomli >= 1.2.2 if python-base < 3.11)
 Suggests:       python-jupyter-collaboration >= 1
 Provides:       python-jupyter_jupyterlab = %{version}
