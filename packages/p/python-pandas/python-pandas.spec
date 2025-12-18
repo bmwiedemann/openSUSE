@@ -67,7 +67,7 @@ ExclusiveArch:  donotbuild
 %endif
 Name:           python-pandas%{psuffix}
 # Set version through _service
-Version:        2.3.2
+Version:        2.3.3
 Release:        0
 Summary:        Python data structures for data analysis, time series, and statistics
 License:        BSD-3-Clause
@@ -77,6 +77,8 @@ URL:            https://pandas.pydata.org/
 Source0:        pandas-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM pandas-pr61132-dropna.patch gh#pandas-dev/pandas#61132 BUG: .mode(dropna=False) doesn't work with nullable integers
 Patch1:         pandas-pr61132-dropna.patch
+# PATCH-FIX-UPSTREAM pandas-pr62553-numexpr.patch gh#pandas-dev/pandas#62553 TST: remove expected warnings for new numexpr version
+Patch2:         pandas-pr62553-numexpr.patch
 %if !%{with test}
 BuildRequires:  %{python_module Cython >= 3.0.5}
 BuildRequires:  %{python_module devel >= 3.9}

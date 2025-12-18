@@ -1,0 +1,197 @@
+From 5fc3df37d772befbdba7cc2bd3e9ce572fe607c0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C3=81lvaro=20Kothe?= <kothe65@gmail.com>
+Date: Fri, 3 Oct 2025 14:11:53 -0300
+Subject: [PATCH] [backport 2.3.x] TST: remove expected warnings for new
+ `numexpr` version (#62553) (#62557)
+
+---
+ pandas/tests/frame/test_arithmetic.py  | 10 +++-
+ pandas/tests/series/test_arithmetic.py |  8 ++-
+ pandas/tests/test_expressions.py       | 76 +++++++++++++++-----------
+ 3 files changed, 60 insertions(+), 34 deletions(-)
+
+diff --git a/pandas/tests/frame/test_arithmetic.py b/pandas/tests/frame/test_arithmetic.py
+index 195126f1c5382..567183e45189e 100644
+--- a/pandas/tests/frame/test_arithmetic.py
++++ b/pandas/tests/frame/test_arithmetic.py
+@@ -12,6 +12,7 @@
+ import pytest
+ 
+ from pandas.compat import HAS_PYARROW
++from pandas.compat._optional import import_optional_dependency
+ import pandas.util._test_decorators as td
+ 
+ import pandas as pd
+@@ -27,6 +28,7 @@
+     _check_mixed_float,
+     _check_mixed_int,
+ )
++from pandas.util.version import Version
+ 
+ 
+ @pytest.fixture
+@@ -1092,6 +1094,8 @@ def test_binop_other(self, op, value, dtype, switch_numexpr_min_elements):
+             (operator.mod, "complex128"),
+         }
+ 
++        ne = import_optional_dependency("numexpr", errors="ignore")
++        ne_warns_on_op = ne is not None and Version(ne.__version__) < Version("2.13.1")
+         if (op, dtype) in invalid:
+             warn = None
+             if (dtype == "<M8[ns]" and op == operator.add) or (
+@@ -1120,7 +1124,11 @@ def test_binop_other(self, op, value, dtype, switch_numexpr_min_elements):
+ 
+         elif (op, dtype) in skip:
+             if op in [operator.add, operator.mul]:
+-                if expr.USE_NUMEXPR and switch_numexpr_min_elements == 0:
++                if (
++                    expr.USE_NUMEXPR
++                    and switch_numexpr_min_elements == 0
++                    and ne_warns_on_op
++                ):
+                     # "evaluating in Python space because ..."
+                     warn = UserWarning
+                 else:
+diff --git a/pandas/tests/series/test_arithmetic.py b/pandas/tests/series/test_arithmetic.py
+index a65d7687cfb06..28f12476c9ef9 100644
+--- a/pandas/tests/series/test_arithmetic.py
++++ b/pandas/tests/series/test_arithmetic.py
+@@ -11,6 +11,7 @@
+ 
+ from pandas._libs import lib
+ from pandas._libs.tslibs import IncompatibleFrequency
++from pandas.compat._optional import import_optional_dependency
+ 
+ import pandas as pd
+ from pandas import (
+@@ -26,7 +27,7 @@
+ import pandas._testing as tm
+ from pandas.core import ops
+ from pandas.core.computation import expressions as expr
+-from pandas.core.computation.check import NUMEXPR_INSTALLED
++from pandas.util.version import Version
+ 
+ 
+ @pytest.fixture(autouse=True, params=[0, 1000000], ids=["numexpr", "python"])
+@@ -353,9 +354,12 @@ def test_add_list_to_masked_array(self, val, dtype):
+ 
+     def test_add_list_to_masked_array_boolean(self, request):
+         # GH#22962
++        ne = import_optional_dependency("numexpr", errors="ignore")
+         warning = (
+             UserWarning
+-            if request.node.callspec.id == "numexpr" and NUMEXPR_INSTALLED
++            if request.node.callspec.id == "numexpr"
++            and ne
++            and Version(ne.__version__) < Version("2.13.1")
+             else None
+         )
+         ser = Series([True, None, False], dtype="boolean")
+diff --git a/pandas/tests/test_expressions.py b/pandas/tests/test_expressions.py
+index dfec99f0786eb..1ea16f96b73e7 100644
+--- a/pandas/tests/test_expressions.py
++++ b/pandas/tests/test_expressions.py
+@@ -4,6 +4,8 @@
+ import numpy as np
+ import pytest
+ 
++from pandas.compat._optional import import_optional_dependency
++
+ from pandas import option_context
+ import pandas._testing as tm
+ from pandas.core.api import (
+@@ -12,6 +14,7 @@
+     Series,
+ )
+ from pandas.core.computation import expressions as expr
++from pandas.util.version import Version
+ 
+ 
+ @pytest.fixture
+@@ -324,7 +327,7 @@ def test_bool_ops_raise_on_arithmetic(self, op_str, opname):
+     @pytest.mark.parametrize(
+         "op_str,opname", [("+", "add"), ("*", "mul"), ("-", "sub")]
+     )
+-    def test_bool_ops_warn_on_arithmetic(self, op_str, opname):
++    def test_bool_ops_warn_on_arithmetic(self, op_str, opname, monkeypatch):
+         n = 10
+         df = DataFrame(
+             {
+@@ -343,36 +346,47 @@ def test_bool_ops_warn_on_arithmetic(self, op_str, opname):
+             # raises TypeError
+             return
+ 
+-        with tm.use_numexpr(True, min_elements=5):
+-            with tm.assert_produces_warning():
+-                r = f(df, df)
+-                e = fe(df, df)
+-                tm.assert_frame_equal(r, e)
+-
+-            with tm.assert_produces_warning():
+-                r = f(df.a, df.b)
+-                e = fe(df.a, df.b)
+-                tm.assert_series_equal(r, e)
+-
+-            with tm.assert_produces_warning():
+-                r = f(df.a, True)
+-                e = fe(df.a, True)
+-                tm.assert_series_equal(r, e)
+-
+-            with tm.assert_produces_warning():
+-                r = f(False, df.a)
+-                e = fe(False, df.a)
+-                tm.assert_series_equal(r, e)
+-
+-            with tm.assert_produces_warning():
+-                r = f(False, df)
+-                e = fe(False, df)
+-                tm.assert_frame_equal(r, e)
+-
+-            with tm.assert_produces_warning():
+-                r = f(df, True)
+-                e = fe(df, True)
+-                tm.assert_frame_equal(r, e)
++        msg = "operator is not supported by numexpr"
++        ne = import_optional_dependency("numexpr", errors="ignore")
++        warning = (
++            UserWarning
++            if ne
++            and op_str in {"+", "*"}
++            and Version(ne.__version__) < Version("2.13.1")
++            else None
++        )
++        with monkeypatch.context() as m:
++            m.setattr(expr, "_MIN_ELEMENTS", 5)
++            with option_context("compute.use_numexpr", True):
++                with tm.assert_produces_warning(warning, match=msg):
++                    r = f(df, df)
++                    e = fe(df, df)
++                    tm.assert_frame_equal(r, e)
++
++                with tm.assert_produces_warning(warning, match=msg):
++                    r = f(df.a, df.b)
++                    e = fe(df.a, df.b)
++                    tm.assert_series_equal(r, e)
++
++                with tm.assert_produces_warning(warning, match=msg):
++                    r = f(df.a, True)
++                    e = fe(df.a, True)
++                    tm.assert_series_equal(r, e)
++
++                with tm.assert_produces_warning(warning, match=msg):
++                    r = f(False, df.a)
++                    e = fe(False, df.a)
++                    tm.assert_series_equal(r, e)
++
++                with tm.assert_produces_warning(warning, match=msg):
++                    r = f(False, df)
++                    e = fe(False, df)
++                    tm.assert_frame_equal(r, e)
++
++                with tm.assert_produces_warning(warning, match=msg):
++                    r = f(df, True)
++                    e = fe(df, True)
++                    tm.assert_frame_equal(r, e)
+ 
+     @pytest.mark.parametrize(
+         "test_input,expected",

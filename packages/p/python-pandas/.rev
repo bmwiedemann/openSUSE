@@ -877,4 +877,12 @@ All packages broken by this update should be fixed now.</comment>
     would result in using the xlrd engine in many cases, including</comment>
     <requestid>1304697</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>b5e30d29503e11c27b760921ab87b769</srcmd5>
+    <version>2.3.3</version>
+    <time>1766078967</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1323507</requestid>
+  </revision>
 </revisionlist>
