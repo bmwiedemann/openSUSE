@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Dec 17 15:57:35 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.5.1
+  * Fix selector for the O keyboard shortcut #7782 (@jtpio,
+    @krassowski)
+  * Fix missing debugger display provider in Notebook #7774
+    (@arjxn-py, @jtpio, @martinRenou)
+
+-------------------------------------------------------------------
+Wed Dec 17 09:45:12 UTC 2025 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix more dependency issues
+
+-------------------------------------------------------------------
+Mon Dec 15 08:10:23 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- Change BuildRequires: and Requires: to use jupyterlab-4.5.x
+
+-------------------------------------------------------------------
+Mon Dec  1 21:18:59 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.5.0:
+  * Update to JupyterLab v4.5.0b1
+  * Increase the checkpoint polling interval to 30s
+  * Define `O` as the keyboard shortcut to toggle cell outputs
+  * Expose the cell toolbar settings #7766
+  * Handle file rename errors #7710
+  * Fix open file with “#” in the filename #7698
+
+-------------------------------------------------------------------
 Sat Aug  2 16:04:19 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 7.4.4
@@ -54,7 +84,7 @@ Sat Dec  7 13:19:30 UTC 2024 - Ben Greiner <code@bnavigator.de>
   * Adds message about building code before running 'develop' #7382
     (@JasonWeill)
   ## Maintenance and upkeep improvements
-  * Update to JupyterLab 4.3.2 #7527 (@jtpio)  
+  * Update to JupyterLab 4.3.2 #7527 (@jtpio)
   * Add webpack prod config #7513 (@gjmooney)
   * Remove the StateDB file browser trick #7477 (@jtpio)
 
@@ -257,7 +287,7 @@ Tue Aug  2 21:19:05 UTC 2022 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Wed Jun 15 19:37:13 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- update to version 6.4.12: 
+- update to version 6.4.12:
   * Address security advisory GHSA-v7vq-3x77-87vg
   * CVE-2022-29238
 
@@ -335,7 +365,7 @@ Thu Oct 28 19:10:40 UTC 2021 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Wed Oct 20 19:30:59 UTC 2021 - Stefan Schubert <schubi@schubi.de>
 
-- Use libalternatives instead of update-alternatives. 
+- Use libalternatives instead of update-alternatives.
 
 -------------------------------------------------------------------
 Wed Oct 20 18:30:59 UTC 2021 - Ben Greiner <code@bnavigator.de>
@@ -401,7 +431,7 @@ Wed Oct 20 18:30:59 UTC 2021 - Ben Greiner <code@bnavigator.de>
   * Replace Travis and Appveyor with Github Actions
   * DOC: Server extension, extra docs on
     configuration/authentication.
-- Silence rpmlint2 
+- Silence rpmlint2
 
 -------------------------------------------------------------------
 Sun Feb 14 18:12:07 UTC 2021 - Arun Persaud <arun@gmx.de>
@@ -436,7 +466,7 @@ Mon Dec 21 09:59:15 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 6.1.5
   * Fix open redirect vulnerability GHSA-c7vm-f5p4-8fqh
-    (CVE to be assigned) 
+    (CVE to be assigned)
 - Changes for 6.1.4
   * Fix broken links to jupyter documentation
   * Add additional entries to troubleshooting section
@@ -447,85 +477,85 @@ Mon Dec 21 09:59:15 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 - Changes for 6.1.3
   * Title new buttons with label if action undefined
 - Changes for 6.1.2
-  * Fix russian message format for delete/duplicate actions 
-  * Remove unnecessary import of bind_unix_socket 
-  * Tooltip style scope fix 
+  * Fix russian message format for delete/duplicate actions
+  * Remove unnecessary import of bind_unix_socket
+  * Tooltip style scope fix
 - Changes for 6.1.1
-  * Prevent inclusion of requests_unixsocket on Windows 
+  * Prevent inclusion of requests_unixsocket on Windows
 - Changes for 6.1.0
-  Please note that this repository is currently maintained by a 
-  skeleton crew of maintainers from the Jupyter community. For our 
-  approach moving forward, please see this notice from the README. 
+  Please note that this repository is currently maintained by a
+  skeleton crew of maintainers from the Jupyter community. For our
+  approach moving forward, please see this notice from the README.
   Thank you.
-  * Remove deprecated encoding parameter for Python 3.9 
-    compatibility. 
-  * Add support for async kernel management 
-  * Fix typo in password_required help message 
-  * Gateway only: Ensure launch and request timeouts are in sync 
-  * Update Markdown Cells example to HTML5 video tag 
-  * Integrated LoginWidget into edit to enable users to logout 
-    from the t… 
-  * Update message about minimum Tornado version 
-  * Logged notebook type 
-  * Added nl language 
-  * Add UNIX socket support to notebook server. 
-  * Update CodeMirror dependency 
-  * Tree added download multiple files 
-  * Toolbar buttons tooltip: show help instead of label 
-  * Remove unnecessary import of requests_unixsocket 
-  * Add ability to cull terminals and track last activity 
-  * Code refactoring notebook.js 
-  * Install terminado for docs build 
-  * Convert notifications JS test to selenium 
-  * Add cell attachments to markdown example 
-  * Add Japanese document 
-  * Migrate Move multiselection test to selenium 
-  * Use cmdtrl-enter to run a cell 
-  * Fix broken "Raw cell MIME type" dialog 
-  * Make a notebook writable after successful save-as 
-  * Add actual watch script 
-  * Added --autoreload flag to NotebookApp 
-  * Enable check_origin on gateway websocket communication 
-  * Restore detection of missing terminado package 
-  * Culling: ensure last_activity attr exists before use 
-  * Added functionality to allow filter kernels by Jupyter     
-    Enterprise Gat… 
-  * 'Play' icon for run-cell toolbar button 
-  * Bump minimum version of jQuery to 3.5.0 
-  * Remove old JS markdown tests, add a new one in selenium 
-  * Add support for more RTL languages 
-  * Make markdown cells stay RTL in edit mode 
-  * Unforce RTL output display 
-  * Fixed multicursor backspacing 
-  * Implemented Split Cell for multicursor 
-  * Alignment issue [FIXED] 
-  * MathJax: Support for \gdef 
-  * Another (Minor) Duplicate Code Reduction 
-  * Update readme regarding maintenance 
-  * Document contents chunks 
-  * Backspace deletes empty line 
-  * The dropdown submenu at notebook page is not keyboard 
-    accessible 
-  * Tooltips visible through keyboard navigation for specified 
-    buttons 
-  * Fix for recursive symlink 
-  * Fix for the terminal shutdown issue 
-  * Add japanese translation files 
-  * Workaround for socket permission errors on Cygwin 
-  * Implement optional markdown header and footer files 
-  * Remove double link when using custom_display_url 
-  * Respect cell.is_editable during find-and-replace 
+  * Remove deprecated encoding parameter for Python 3.9
+    compatibility.
+  * Add support for async kernel management
+  * Fix typo in password_required help message
+  * Gateway only: Ensure launch and request timeouts are in sync
+  * Update Markdown Cells example to HTML5 video tag
+  * Integrated LoginWidget into edit to enable users to logout
+    from the t…
+  * Update message about minimum Tornado version
+  * Logged notebook type
+  * Added nl language
+  * Add UNIX socket support to notebook server.
+  * Update CodeMirror dependency
+  * Tree added download multiple files
+  * Toolbar buttons tooltip: show help instead of label
+  * Remove unnecessary import of requests_unixsocket
+  * Add ability to cull terminals and track last activity
+  * Code refactoring notebook.js
+  * Install terminado for docs build
+  * Convert notifications JS test to selenium
+  * Add cell attachments to markdown example
+  * Add Japanese document
+  * Migrate Move multiselection test to selenium
+  * Use cmdtrl-enter to run a cell
+  * Fix broken "Raw cell MIME type" dialog
+  * Make a notebook writable after successful save-as
+  * Add actual watch script
+  * Added --autoreload flag to NotebookApp
+  * Enable check_origin on gateway websocket communication
+  * Restore detection of missing terminado package
+  * Culling: ensure last_activity attr exists before use
+  * Added functionality to allow filter kernels by Jupyter
+    Enterprise Gat…
+  * 'Play' icon for run-cell toolbar button
+  * Bump minimum version of jQuery to 3.5.0
+  * Remove old JS markdown tests, add a new one in selenium
+  * Add support for more RTL languages
+  * Make markdown cells stay RTL in edit mode
+  * Unforce RTL output display
+  * Fixed multicursor backspacing
+  * Implemented Split Cell for multicursor
+  * Alignment issue [FIXED]
+  * MathJax: Support for \gdef
+  * Another (Minor) Duplicate Code Reduction
+  * Update readme regarding maintenance
+  * Document contents chunks
+  * Backspace deletes empty line
+  * The dropdown submenu at notebook page is not keyboard
+    accessible
+  * Tooltips visible through keyboard navigation for specified
+    buttons
+  * Fix for recursive symlink
+  * Fix for the terminal shutdown issue
+  * Add japanese translation files
+  * Workaround for socket permission errors on Cygwin
+  * Implement optional markdown header and footer files
+  * Remove double link when using custom_display_url
+  * Respect cell.is_editable during find-and-replace
   * Fix exception causes all over the codebase (:ghpull:`5556`
-  * Improve login shell heuristics 
-  * Added support for JUPYTER_TOKEN_FILE 
-  * Kill notebook itself when server cull idle kernel 
-  * Implement password hashing with bcrypt 
-  * Fix broken links 
-  * Russian internationalization support 
-  * Add a metadata tag to override notebook direction (ltr/rtl) 
-  * Paste two images from clipboard in markdown cell 
-  * Add keyboard shortcuts to menu dropdowns 
-  * Update codemirror to 5.56.0+components1 
+  * Improve login shell heuristics
+  * Added support for JUPYTER_TOKEN_FILE
+  * Kill notebook itself when server cull idle kernel
+  * Implement password hashing with bcrypt
+  * Fix broken links
+  * Russian internationalization support
+  * Add a metadata tag to override notebook direction (ltr/rtl)
+  * Paste two images from clipboard in markdown cell
+  * Add keyboard shortcuts to menu dropdowns
+  * Update codemirror to 5.56.0+components1
 - refresh remove_nose.patch based on gh#jupyter/notebook#5826
 - move the entrypoints to the flavored python package and make them
   alternatives
@@ -546,7 +576,7 @@ Tue Jan 28 15:20:00 UTC 2020 - Todd R <toddrme2178@gmail.com>
   * Creation of recent tab
 - Use multibuild to separate out tests.
   The tests have some heavy dependencies the main package doesn't.
-- Drop documentation. 
+- Drop documentation.
   These are mostly a relic of when the tests needed to be in a
   separate package, and since the docs are no longer versioned
   upstream keeping them synced with the main package is difficult.
@@ -787,7 +817,7 @@ Thu Aug  2 17:21:43 UTC 2018 - toddrme2178@gmail.com
     * Don't trash non-empty directories on Windows (:ghpull:`3673`)
     * Include LICENSE file in wheels (:ghpull:`3671`)
 - Don't show "0 active kernels" when starting the notebook (:ghpull:`3696`)
-  + Testing: 
+  + Testing:
     * Add find replace test (:ghpull:`3630`)
     * Selenium test for deleting all cells (:ghpull:`3601`)
     * Make creating a new notebook more robust (:ghpull:`3726`)
@@ -909,42 +939,42 @@ Thu Feb 15 15:56:49 UTC 2018 - toddrme2178@gmail.com
 Thu Jan 18 06:41:05 UTC 2018 - toddrme2178@gmail.com
 
 - update to version 5.3.1
-  * Add support for terminals on windows (:ghpull:`3087`). 
-  * Add a "restart and run all" button to the toolbar (:ghpull:`2965`). 
-  * Send files to os trash mechanism on delete (:ghpull:`1968`). 
-  * Allow programmatic copy to clipboard (:ghpull:`3088`). 
+  * Add support for terminals on windows (:ghpull:`3087`).
+  * Add a "restart and run all" button to the toolbar (:ghpull:`2965`).
+  * Send files to os trash mechanism on delete (:ghpull:`1968`).
+  * Allow programmatic copy to clipboard (:ghpull:`3088`).
   * Use DOM History API for navigating between directories in the file browser (:ghpull:`3115`).
-  * Add translated files to folder(docs-translations) (:ghpull:`3065`). 
-  * Allow non empty dirs to be deleted (:ghpull:`3108`). 
-  * Set cookie on base_url (:ghpull:`2959`). 
-  * Allow token-authenticated requests cross-origin by default (:ghpull:`2920`). 
-  * Change cull_idle_timeout_minimum to 1 from 300 (:ghpull:`2910`). 
-  * Config option to shut down server after n seconds with no kernels (:ghpull:`2963`). 
-  * Display a "close" button on load notebook error (:ghpull:`3176`). 
-  * Add action to command pallette to run CodeMirror's "indentAuto" on selection (:ghpull:`3175`). 
-  * Add option to specify extra services (:ghpull:`3158`). 
-  * Warn_bad_name should not use global name (:ghpull:`3160`). 
-  * Avoid overflow of hidden form (:ghpull:`3148`). 
-  * Fix shutdown trans loss (:ghpull:`3147`). 
-  * Find available kernelspecs more efficiently (:ghpull:`3136`). 
-  * Don\'t try to translate missing help strings (:ghpull:`3122`). 
-  * Frontend/extension-config: allow default json files in a .d directory (:ghpull:`3116`). 
-  * Use `requirejs` vs. `require` (:ghpull:`3097`). 
-  * Fixes some ui bugs in firefox #3044 (:ghpull:`3058`). 
-  * Compare non-specific language code when choosing to use arabic numerals (:ghpull:`3055`). 
-  * Fix save-script deprecation (:ghpull:`3053`). 
-  * Include moment locales in package_data (:ghpull:`3051`). 
-  * Fix moment locale loading in bidi support (:ghpull:`3048`). 
-  * Tornado 5: periodiccallback loop arg will be removed (:ghpull:`3034`). 
-  * Use `/files` prefix for pdf-like files (:ghpull:`3031`). 
-  * Add folder for document translation (:ghpull:`3022`). 
-  * When login-in via token, let a chance for user to set the password (:ghpull:`3008`). 
-  * Switch to jupyter_core implementation of ensure_dir_exists (:ghpull:`3002`). 
-  * Send http shutdown request on \'stop\' subcommand (:ghpull:`3000`). 
-  * Work on loading ui translations  (:ghpull:`2969`). 
-  * Fix ansi inverse (:ghpull:`2967`). 
-  * Add send2trash to requirements for building docs (:ghpull:`2964`). 
-  * I18n readme.md improvement (:ghpull:`2962`).  
+  * Add translated files to folder(docs-translations) (:ghpull:`3065`).
+  * Allow non empty dirs to be deleted (:ghpull:`3108`).
+  * Set cookie on base_url (:ghpull:`2959`).
+  * Allow token-authenticated requests cross-origin by default (:ghpull:`2920`).
+  * Change cull_idle_timeout_minimum to 1 from 300 (:ghpull:`2910`).
+  * Config option to shut down server after n seconds with no kernels (:ghpull:`2963`).
+  * Display a "close" button on load notebook error (:ghpull:`3176`).
+  * Add action to command pallette to run CodeMirror's "indentAuto" on selection (:ghpull:`3175`).
+  * Add option to specify extra services (:ghpull:`3158`).
+  * Warn_bad_name should not use global name (:ghpull:`3160`).
+  * Avoid overflow of hidden form (:ghpull:`3148`).
+  * Fix shutdown trans loss (:ghpull:`3147`).
+  * Find available kernelspecs more efficiently (:ghpull:`3136`).
+  * Don\'t try to translate missing help strings (:ghpull:`3122`).
+  * Frontend/extension-config: allow default json files in a .d directory (:ghpull:`3116`).
+  * Use `requirejs` vs. `require` (:ghpull:`3097`).
+  * Fixes some ui bugs in firefox #3044 (:ghpull:`3058`).
+  * Compare non-specific language code when choosing to use arabic numerals (:ghpull:`3055`).
+  * Fix save-script deprecation (:ghpull:`3053`).
+  * Include moment locales in package_data (:ghpull:`3051`).
+  * Fix moment locale loading in bidi support (:ghpull:`3048`).
+  * Tornado 5: periodiccallback loop arg will be removed (:ghpull:`3034`).
+  * Use `/files` prefix for pdf-like files (:ghpull:`3031`).
+  * Add folder for document translation (:ghpull:`3022`).
+  * When login-in via token, let a chance for user to set the password (:ghpull:`3008`).
+  * Switch to jupyter_core implementation of ensure_dir_exists (:ghpull:`3002`).
+  * Send http shutdown request on \'stop\' subcommand (:ghpull:`3000`).
+  * Work on loading ui translations  (:ghpull:`2969`).
+  * Fix ansi inverse (:ghpull:`2967`).
+  * Add send2trash to requirements for building docs (:ghpull:`2964`).
+  * I18n readme.md improvement (:ghpull:`2962`).
   * Add \'reason\' field to json error responses (:ghpull:`2958`).
   * Add some padding for stream outputs (:ghpull:`3194`).
   * Always use setuptools in ``setup.py`` (:ghpull:`3206`).
@@ -1016,7 +1046,7 @@ Thu Apr 27 08:10:10 UTC 2017 - toddrme2178@gmail.com
 
 - All python versions can share the empty extension directories
   without conflicting.
-  
+
 -------------------------------------------------------------------
 Wed Apr 26 21:32:05 UTC 2017 - toddrme2178@gmail.com
 
@@ -1163,11 +1193,11 @@ Mon Jan 11 08:24:03 UTC 2016 - toddrme2178@gmail.com
     - Send keepalive messages for web terminals
     - Fix bugs in the notebook tour
   + UI changes:
-    - Moved the cell toolbar selector into the *View* menu. Added 
+    - Moved the cell toolbar selector into the *View* menu. Added
       a button that triggers a "hint" animation to the main toolbar
       so users can find the new location.
     - Added *Restart & Run All* to the *Kernel* menu. Users can
-      also bind it to a keyboard shortcut on action 
+      also bind it to a keyboard shortcut on action
       ``restart-kernel-and-run-all-cells``.
     - Added multiple-cell selection. Users press ``Shift-Up/Down``
       or ``Shift-K/J`` to extend selection in command mode.
@@ -1184,9 +1214,9 @@ Mon Jan 11 08:24:03 UTC 2016 - toddrme2178@gmail.com
       allowing async operations.
     - Make clearing output optional when rewriting input with
       ``set_next_input(replace=True)``.
-    - Added support for TLS client authentication via 
+    - Added support for TLS client authentication via
       ``--NotebookApp.client-ca``.
-    - Added tags to ``jupyter/notebook`` releases on DockerHub. 
+    - Added tags to ``jupyter/notebook`` releases on DockerHub.
       ``latest`` continues to track the master branch.
 
 -------------------------------------------------------------------
@@ -1198,7 +1228,7 @@ Mon Oct 12 13:43:57 UTC 2015 - toddrme2178@gmail.com
   * fix a couple of cases where errors could prevent opening a notebook
 - specfile:
   * filename change: tgz->tar.gz
-  
+
 -------------------------------------------------------------------
 Mon Oct  5 10:01:17 UTC 2015 - toddrme2178@gmail.com
 

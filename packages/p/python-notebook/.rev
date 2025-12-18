@@ -425,4 +425,20 @@
   * Update to JupyterLab v4.4.4 #7671 (@jtpio)</comment>
     <requestid>1297162</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>e1b4768aa072f3d17207e44f2316e359</srcmd5>
+    <version>7.5.1</version>
+    <time>1766079062</time>
+    <user>anag_factory</user>
+    <comment>- Update to 7.5.1
+  * Fix selector for the O keyboard shortcut #7782 (@jtpio,
+    @krassowski)
+  * Fix missing debugger display provider in Notebook #7774
+    (@arjxn-py, @jtpio, @martinRenou)
+
+- Fix more dependency issues
+
+- Change BuildRequires: and Requires: to use jupyterlab-4.5.x</comment>
+    <requestid>1323390</requestid>
+  </revision>
 </revisionlist>
