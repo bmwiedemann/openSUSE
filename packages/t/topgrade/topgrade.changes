@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Dec 17 10:44:06 UTC 2025 - gerald_chen@foxmail.com
+
+- Update to version 16.7.0:
+  * chore: release v16.7.0 (#1610)
+  * fix(brew): fix brew casks and incomplete formula update on linux when using isolated user (#1611)
+  * feat(containers): add `use_sudo` option (#1618)
+  * chore(deps): lock file maintenance (#1615)
+  * ci(lint_pr): zizmor fixes (#1614)
+  * chore(renovate): move Renovate config (#1613)
+  * chore(deps): update github/codeql-action action to v4.31.8 (#1607)
+  * chore(deps): update github artifact actions (major) (#1609)
+  * fix(vscode): fix parsing of different version format (#1608)
+  * chore(deps): update rust crate shell-words to v1.1.1 (#1604)
+  * chore(deps): update itertools to 0.14.0 (#1601)
+  * feat(sudo): propagate --env to sudo commands (#1588) (#1589)
+  * chore(pre-commit): autoupdate (#1580)
+  * chore(deps): lock file maintenance (#1597)
+  * feat(aqua): run `aqua update --config $AQUA_GLOBAL_CONFIG` instead of `aqua update` (#1596)
+  * chore(deps): update github/codeql-action action to v4.31.7 (#1591)
+  * chore(deps): update release-plz/action digest to 487eb7b (#1590)
+
+-------------------------------------------------------------------
 Sun Dec 07 01:23:40 UTC 2025 - gerald_chen@foxmail.com
 
 - Update to version 16.6.1:
