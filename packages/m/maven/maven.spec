@@ -56,7 +56,7 @@ BuildRequires:  jansi
 BuildRequires:  javapackages-local
 BuildRequires:  jcl-over-slf4j
 BuildRequires:  jdom2
-BuildRequires:  maven-resolver-api >= 1.8.1
+BuildRequires:  maven-resolver-api >= 1.9.25
 BuildRequires:  maven-resolver-connector-basic
 BuildRequires:  maven-resolver-impl
 BuildRequires:  maven-resolver-named-locks

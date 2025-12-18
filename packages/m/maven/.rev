@@ -256,4 +256,12 @@ put into adi:2</comment>
     <comment>3.9.12</comment>
     <requestid>1323342</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>b4a992062146fcc7c10dbdcf3d90d5b9</srcmd5>
+    <version>3.9.12</version>
+    <time>1766079204</time>
+    <user>anag_factory</user>
+    <comment>Specify required resolver version</comment>
+    <requestid>1323432</requestid>
+  </revision>
 </revisionlist>
