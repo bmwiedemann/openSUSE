@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 18 10:34:30 UTC 2025 - Martin Winter <me@letsfindaway.de>
+
+- add patch 1387-fix-poppler-25-11.patch
+  * compatibility with poppler 25.11
+  * already merged upstream for next release
+
+-------------------------------------------------------------------
 Mon Dec 23 20:47:49 UTC 2024 - Martin Winter <me@letsfindaway.de>
 
 - update to release version 1.7.3
