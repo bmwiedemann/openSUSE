@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Dec 10 15:57:07 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2.12.8:
+  * Changelog: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/+/refs/tags/lts-v2.12.8/docs/change-log.md
+- Skipped:
+  * Changelog: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/+/refs/tags/lts-v2.12.7/docs/change-log.md
+  * Changelog: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/+/refs/tags/lts-v2.12.6/docs/change-log.md
+  * Changelog: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/+/refs/tags/lts-v2.12.5/docs/change-log.md
+  * Changelog: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/+/refs/tags/lts-v2.12.4/docs/change-log.md
+
+-------------------------------------------------------------------
+Wed Dec 10 15:51:54 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Build tools with distro flags 
+
+-------------------------------------------------------------------
 Thu Jun 19 06:29:54 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix build of A3700 with gcc15:

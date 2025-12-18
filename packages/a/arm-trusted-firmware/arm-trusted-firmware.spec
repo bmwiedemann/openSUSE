@@ -1,7 +1,7 @@
 #
 # spec file for package arm-trusted-firmware
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,9 +50,9 @@ Name:           arm-trusted-firmware
 %else
 Name:           arm-trusted-firmware-%{platform}
 %endif
-Version:        2.12.3
+Version:        2.12.8
 Release:        0
-%define srcversion 2.12.3
+%define srcversion 2.12.8
 %define mv_ddr_ver armada-atf-master
 %define mv_bin_ver 10.0.1.0
 %define a3700_utils_ver master
@@ -240,10 +240,14 @@ export CRYPTOPP_INCDIR=%{_includedir}/cryptopp
 %endif
 
 %if "%{platform}" == ""
+%set_build_flags
+sed -i -e 's/HOSTCCFLAGS :=/HOSTCCFLAGS := ${CFLAGS}/' tools/fiptool/Makefile
 make %{?_smp_mflags} V=1 fiptool
 
 %if %{with A3700_tools}
 pushd A3700-utils-marvell-%{a3700_utils_ver}
+export CC_FLAGS=${CFLAGS}
+sed -i -e 's/CXXFLAGS =/CXXFLAGS +=/' wtptp/src/Wtpdownloader_Linux/makefile.mk
 make %{?_smp_mflags} -C wtptp/src/TBB_Linux -f TBB_linux.mak INCDIR=%{_includedir}/cryptopp LIBDIR=%{_libdir}
 make %{?_smp_mflags} -C wtptp/src/Wtpdownloader_Linux -f makefile.mk
 popd
