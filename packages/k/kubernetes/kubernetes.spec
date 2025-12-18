@@ -17,45 +17,45 @@
 
 
 # baseversion - base minor version (n) of kubernetes for this package
-%define baseversion 1.34
+%define baseversion 1.35
 
 # baseversionminus1 - previous base minor (n-1) version of kubernetes
-%define baseversionminus1 1.33
+%define baseversionminus1 1.34
 # versionminus1 - full previous base minor (n-1) version of kubernetes, including point revision
-%define versionminus1 1.33.7
+%define versionminus1 1.34.3
 
 # baseversionminus2 - previous base minor (n-2) version of kubernetes
-%define baseversionminus2 1.32
+%define baseversionminus2 1.33
 # versionminus2 - full previous base minor (n-2) version of kubernetes, including point revision
-%define versionminus2 1.32.11
+%define versionminus2 1.33.7
 
 # baseversionminus3 - previous base minor (n-3) version of kubernetes
-%define baseversionminus3 1.31
+%define baseversionminus3 1.32
 # versionminus3 - full previous base minor (n-3) version of kubernetes, including point revision
-%define versionminus3 1.31.14
+%define versionminus3 1.32.11
 
 
 # etcdversion - version of etcd
-%define etcdversion 3.6.5
+%define etcdversion 3.6.6
 # etcdversionminus1 - version of etcd for versionminus1
-%define etcdversionminus1 3.5.24
+%define etcdversionminus1 3.6.5
 # etcdversionminus2 - version of etcd for versionminus2
 %define etcdversionminus2 3.5.24
 # etcdversionminus3 - version of etcd for versionminus3
-%define etcdversionminus3 3.5.15
+%define etcdversionminus3 3.5.24
 
 
 # corednsversion - version of coredns
-%define corednsversion 1.12.1
+%define corednsversion 1.13.1
 # corednsversionminus1 - version of coredns for versionminus1
-%define corednsversionminus1 1.12.0
+%define corednsversionminus1 1.12.1
 # corednsversionminus2 - version of coredns for versionminus2
-%define corednsversionminus2 1.11.3
+%define corednsversionminus2 1.12.0
 # corednsversionminus3 - version of coredns for versionminus3
 %define corednsversionminus3 1.11.3
 
 Name:           kubernetes
-Version:        1.34.3
+Version:        1.35.0
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
