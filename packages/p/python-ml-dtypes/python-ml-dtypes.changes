@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec 15 12:14:12 UTC 2025 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- update to 0.5.4: 
+  * register casts from int2 and int4 to all of the custom float types,
+    except float6_e2m3fn and float8_e8m0fnu
+  * Custom floats may now be constructed from Python integers
+  * Fixed bug in byte-swap operation for custom floats 
+  * Wheels now support Python 3.14 free threading on Windows
+  * required for onnx on s390x: bsc#1215337
+
+-------------------------------------------------------------------
 Sun Sep 21 14:42:38 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.5.3:

@@ -17,13 +17,13 @@
 
 
 Name:           python-ml-dtypes
-Version:        0.5.3
+Version:        0.5.4
 Release:        0
 Summary:        stand-alone implementation of several NumPy dtype extensions
 License:        Apache-2.0
 URL:            https://github.com/jax-ml/ml_dtypes
 Source:         https://files.pythonhosted.org/packages/source/m/ml-dtypes/ml_dtypes-%{version}.tar.gz
-Source1:        https://github.com/jax-ml/ml_dtypes/archive/refs/tags/v%{version}.tar.gz#/ml-dtypes-%{version}-gh.tar.gz
+Source1:        https://github.com/jax-ml/ml_dtypes/archive/refs/tags/v%{version}.tar.gz#/ml_dtypes-%{version}-gh.tar.gz
 BuildRequires:  %{python_module abseil}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
