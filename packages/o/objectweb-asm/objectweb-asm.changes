@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 17 06:40:09 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 9.9.1
+  * bug fixes
+    + 318036: OutOfMemoryError when reading invalid class
+    + 318037: Version ranges too wide on Import-Package
+
+-------------------------------------------------------------------
 Thu Oct 23 07:42:15 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 9.9

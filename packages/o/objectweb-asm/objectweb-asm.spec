@@ -18,7 +18,7 @@
 
 %define __requires_exclude java-headless
 Name:           objectweb-asm
-Version:        9.9
+Version:        9.9.1
 Release:        0
 Summary:        Java bytecode manipulation framework
 License:        BSD-3-Clause

@@ -2,11 +2,11 @@
 	<service name="tar_scm" mode="disabled">
 		<param name="scm">git</param>
 		<param name="url">https://gitlab.ow2.org/asm/asm.git</param>
-		<param name="revision">ASM_9_9</param>
+		<param name="revision">ASM_9_9_1</param>
 		<param name="match-tag">ASM_*</param>
 		<param name="versionformat">@PARENT_TAG@</param>
-		<param name="versionrewrite-pattern">ASM_(\d+)_(\d+)</param>
-		<param name="versionrewrite-replacement">\1.\2</param>
+		<param name="versionrewrite-pattern">ASM_(\d+)_(\d+)_(\d+)</param>
+		<param name="versionrewrite-replacement">\1.\2.\3</param>
         <param name="exclude">**/*.jar</param>
         <param name="exclude">asm{,-analysis,-commons}/**/*.class</param>
         <param name="exclude">gradle</param>
