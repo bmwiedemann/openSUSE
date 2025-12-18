@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Dec 15 08:24:10 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.2:
+  * applet: stylistic changes and some code reduction for help.
+  * applet: Auto-detect help gzip/zlib compression.
+  * db: fix chroot proc setup for scripts when in user namespace.
+  * db, pkg: add fallback to not needing unshare() when running as
+    root.
+  * commit: dynamic unit for installed_bytes.
+  * apk: fix compile when using C89.
+  * mkpkg: implement --xattrs[=BOOL] to disable xattr recording.
+  * io_url_libfetch: do not map error to zero.
+  * package: add F_SEAL_EXEC to memfd script.
+  * db: drop use of fexecve for scripts.
+  * commit: don't sync with --simulate.
+
+-------------------------------------------------------------------
 Wed Dec 03 19:07:56 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.0.1:
