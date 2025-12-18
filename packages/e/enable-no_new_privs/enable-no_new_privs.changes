@@ -1,0 +1,75 @@
+-------------------------------------------------------------------
+Thu Dec 18 09:36:38 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update dependencies to account-utils and run0-wrappers
+
+-------------------------------------------------------------------
+Tue Dec 16 08:37:20 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Rename from disable-setuid to enable-no_new_privs
+
+-------------------------------------------------------------------
+Wed Dec 10 15:19:03 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Move presets to systemd-presets-common-SUSE
+
+-------------------------------------------------------------------
+Wed Dec  3 22:48:24 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Don't conflict with pkexec, run0-wrappers handles this
+
+-------------------------------------------------------------------
+Tue Dec  2 21:38:15 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Don't remove pam_unix_ng on de-install
+
+-------------------------------------------------------------------
+Fri Nov 28 22:40:09 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Replace run0-sudo requires with run0-wrappers
+
+-------------------------------------------------------------------
+Thu Nov 13 14:23:19 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove setuid bit from polkit agent
+
+-------------------------------------------------------------------
+Thu Nov 13 09:20:22 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Require splitted shadow package
+
+-------------------------------------------------------------------
+Wed Nov 12 15:02:25 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Require run0-sudo
+
+-------------------------------------------------------------------
+Mon Nov 10 15:34:52 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Enable newidmapd.socket by default
+
+-------------------------------------------------------------------
+Mon Nov 10 09:27:46 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Adjust minimal polkit version
+
+-------------------------------------------------------------------
+Wed Nov  5 15:43:45 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Rebuild initrd since the systemd.conf changes end there
+
+-------------------------------------------------------------------
+Wed Nov  5 10:06:50 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add preset file for polkit-agent, pwaccess and pwupd
+
+-------------------------------------------------------------------
+Sun Nov  2 13:31:59 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Require account-utils > 0.3+git20251101
+- Conflicts with cron and pkexec
+
+-------------------------------------------------------------------
+Fri Oct 31 15:39:47 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Initial version

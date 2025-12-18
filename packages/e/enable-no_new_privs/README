@@ -1,0 +1,14 @@
+This package has all the config files and dependencies
+to setup a system in a way, that new privileges are disabled
+(no_new_privs or NoNewPrivs flags and options).
+
+This means, that no setuid or setgid binary will work anymore.
+
+A list of setuid binaries that no longer work completely or at all,
+as well as their replacement files:
+
+* cron -> systemd.timer
+* pkexec -> run0
+* su -> run0
+* sudo -> run0
+* pam_unix.so -> pam_unix_ng.so
