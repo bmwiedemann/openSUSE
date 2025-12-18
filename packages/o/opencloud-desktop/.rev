@@ -44,4 +44,23 @@ Enhancement
 - Updata to v. 2.0.0 RC4</comment>
     <requestid>1294869</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cdddf1d94c83e6202bf5b898601dbc04</srcmd5>
+    <version>3.0.3</version>
+    <time>1766079089</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.0.3.
+  * Ensure downloads are closed before finished is emitted [#741]
+  * Fix autostart on linux [#740]
+  * Fix massive ram usage with http2 downloads [#736]
+  * Fix high cpu usage during cfapi hydration [#735]
+
+- Fix source URL.
+
+- Update to upstream version 3.0.2 
+  This is a significant feature- and bugfix release for the client
+  Please see https://github.com/opencloud-eu/desktop/releases for
+  detailed changelog</comment>
+    <requestid>1323337</requestid>
+  </revision>
 </revisionlist>

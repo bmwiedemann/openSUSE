@@ -16,25 +16,17 @@
 #
 
 
-# The minimum required version of qtkeychain
-%define keychain_version 0.12.0
-# old rpm without /usr/etc
-%if 0%{?suse_version} && 0%{?suse_version} <= 1500
-%global _distconfdir %{_sysconfdir}
-%endif
-# define the version of the tarball, both the tarball name and top dir
-%define src_version 2.0.0
 # LibreGraph version to build against (statically):
 %define libregraph_version 1.0.7
 %global __requires_exclude qt6qmlimport\\(eu\\.OpenCloud\\.*
 Name:           opencloud-desktop
-Version:        2.0.0
+Version:        3.0.3
 Release:        0
 Summary:        The OpenCloud synchronization client
 License:        GPL-2.0-only AND GPL-3.0-only
 Group:          Productivity/Networking/Other
 URL:            https://github.com/opencloud-eu/desktop
-Source0:        https://github.com/opencloud-eu/desktop/archive/refs/tags/v%{src_version}.tar.gz
+Source0:        https://github.com/opencloud-eu/desktop/archive/refs/tags/v%{version}.tar.gz#/desktop-%{version}.tar.gz
 Source1:        opencloud.conf
 Source2:        https://github.com/opencloud-eu/libre-graph-api-cpp-qt-client/archive/refs/tags/v%{libregraph_version}.tar.gz#/libre-graph-api-cpp-qt-client-%{libregraph_version}.tar.gz
 BuildRequires:  cmake >= 2.8.11
@@ -49,7 +41,7 @@ BuildRequires:  cmake(Qt6Concurrent)
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6DBus)
 BuildRequires:  cmake(Qt6Gui)
-BuildRequires:  cmake(Qt6Keychain) >= %{keychain_version}
+BuildRequires:  cmake(Qt6Keychain) >= 0.12.0
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Network)
 BuildRequires:  cmake(Qt6Quick)
@@ -86,7 +78,6 @@ workstation and the OpenCloud server.
 %package -n %{name}-doc
 Summary:        Documentation for OpenCloud
 Group:          Development/Libraries/C and C++
-Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description -n %{name}-doc
 Documentation for the OpenCloud desktop application.
@@ -94,7 +85,6 @@ Documentation for the OpenCloud desktop application.
 %package -n libopencloudsync0
 Summary:        The OpenCloud synchronization library
 Group:          Development/Libraries/C and C++
-Requires:       libqt6keychain1 >= %{keychain_version}
 
 %description -n libopencloudsync0
 The OpenCloud synchronization library. It implements the OpenCloud
@@ -112,7 +102,7 @@ implements the OpenCloud sync algorithm that keeps a local directory
 in sync with the content on your cloud.
 
 %prep
-%autosetup -p1 -n desktop-%{src_version} -a 2
+%autosetup -p1 -n desktop-%{version} -a 2
 
 %build
 pushd "./libre-graph-api-cpp-qt-client-%{libregraph_version}/client"
@@ -124,7 +114,7 @@ cmake --build build -v -t install
 popd
 
 export CMAKE_PREFIX_PATH="./libre-graph-api-cpp-qt-client-%{libregraph_version}/client/.install%{_libdir}/cmake${CMAKE_PREFIX_PATH+:}${CMAKE_PREFIX_PATH}"
-%{cmake_qt6} -DKDE_SKIP_RPATH_SETTINGS=ON -DKDE_INSTALL_SYSCONFDIR=%{_distconfdir}
+%{cmake_qt6} -DKDE_SKIP_RPATH_SETTINGS=ON -DKDE_INSTALL_SYSCONFDIR=%{_sysconfdir}
 %{qt6_build}
 
 %install
@@ -132,7 +122,7 @@ export CMAKE_PREFIX_PATH="./libre-graph-api-cpp-qt-client-%{libregraph_version}/
 %{qt6_install}
 
 # do not allow to call home
-install -m 0644 -D %{SOURCE1} -t %{buildroot}%{_distconfdir}/opencloud/
+install -m 0644 -D %{SOURCE1} -t %{buildroot}%{_sysconfdir}/opencloud/
 
 # we don't need these any more, and we do not intend to ship them either:
 rm -rf \
@@ -156,25 +146,22 @@ rm -rf \
 %dir %{_libdir}/qt6/qml/eu
 %{_libdir}/qt6/qml/eu/OpenCloud
 %{_datadir}/icons/hicolor/*/apps/opencloud.*
-%dir %{_distconfdir}/opencloud
+%dir %{_sysconfdir}/opencloud
 # old rpm without /usr/etc
 %if 0%{?suse_version} && 0%{?suse_version} <= 1500
-%config(noreplace) %{_distconfdir}/opencloud/opencloud.conf
+%config(noreplace) %{_sysconfdir}/opencloud/opencloud.conf
 %else
-%{_distconfdir}/opencloud/opencloud.conf
+%{_sysconfdir}/opencloud/opencloud.conf
 %endif
 
 %files -n libopencloudsync0
 %{_libdir}/libOpenCloudLibSync.so.0
-%{_libdir}/libOpenCloudLibSync.so.2.*
-%{_libdir}/libOpenCloudCsync.so.0
-%{_libdir}/libOpenCloudCsync.so.2.*
+%{_libdir}/libOpenCloudLibSync.so.3.*
 %{_libdir}/libOpenCloudResources.so.0
-%{_libdir}/libOpenCloudResources.so.2.*
+%{_libdir}/libOpenCloudResources.so.3.*
 
 %files -n libopencloudsync-devel
 %{_libdir}/libOpenCloudLibSync.so
-%{_libdir}/libOpenCloudCsync.so
 %{_libdir}/libOpenCloudResources.so
 %dir %{_libdir}/cmake/OpenCloud
 %{_libdir}/cmake/OpenCloud/OpenCloud*.cmake

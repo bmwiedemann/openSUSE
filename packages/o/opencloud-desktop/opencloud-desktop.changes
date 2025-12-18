@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Dec  9 08:12:26 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.0.3.
+  * Ensure downloads are closed before finished is emitted [#741]
+  * Fix autostart on linux [#740]
+  * Fix massive ram usage with http2 downloads [#736]
+  * Fix high cpu usage during cfapi hydration [#735]
+
+-------------------------------------------------------------------
+Tue Dec  2 20:59:42 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- Fix source URL.
+
+-------------------------------------------------------------------
+Thu Nov 27 14:54:58 UTC 2025 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to upstream version 3.0.2 
+  This is a significant feature- and bugfix release for the client
+  Please see https://github.com/opencloud-eu/desktop/releases for
+  detailed changelog
+
+-------------------------------------------------------------------
 Sun Jul 20 19:15:54 UTC 2025 - Klaas Freitag <opensuse@freisturz.de>
 
 - Fix package version in spec file 
