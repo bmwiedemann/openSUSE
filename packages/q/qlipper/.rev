@@ -53,4 +53,19 @@
   cmake(lxqt-build-tools)</comment>
     <requestid>1219700</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5c5b3b407db9f70cae13da71ae09c10b</srcmd5>
+    <version>6.0.0</version>
+    <time>1766079468</time>
+    <user>anag_factory</user>
+    <comment>- Remove Group: declaration
+- Remove %suse_update_desktop_file, deprecated
+- Add qlipper-translations.patch
+
+- Update to version 6.0.0
+  * Plenty of translation updates
+  * Port to Qt v6
+  * Add wayland support (using KF6)</comment>
+    <requestid>1323537</requestid>
+  </revision>
 </revisionlist>

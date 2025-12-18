@@ -1,7 +1,7 @@
 #
 # spec file for package qlipper
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,51 +17,46 @@
 
 
 Name:           qlipper
-Version:        5.1.2
+Version:        6.0.0
 Release:        0
 Summary:        Clipboard history applet
 License:        GPL-2.0-or-later
-Group:          Productivity/Text/Utilities
 URL:            https://github.com/pvanek/qlipper
-Source:         https://github.com/pvanek/qlipper/archive/%{version}.tar.gz
-BuildRequires:  cmake >= 3.1.0
+Source0:        %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         %{name}-translations.patch
+BuildRequires:  cmake >= 3.5.0
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libQt5Gui-private-headers-devel
-BuildRequires:  pkgconfig
-BuildRequires:  cmake(lxqt-build-tools) >= 0.5.0
-BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5Widgets)
-%if 0%{?suse_version}
-BuildRequires:  update-desktop-files
-%endif
+BuildRequires:  cmake(lxqt2-build-tools)
+BuildRequires:  cmake(KF6GuiAddons)
+BuildRequires:  cmake(Qt6GuiPrivate)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6Widgets)
 
 %description
-A clipboard history applet.
+Lightweight and cross-platform clipboard history applet.
 
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%cmake \
-    -DENABLE_LXQT_AUTOSTART=ON
-make %{?_smp_mflags}
+%cmake_qt6 \
+    -DENABLE_LXQT_AUTOSTART=ON \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+%qt6_build
 
 %install
-%cmake_install
-%if 0%{?suse_version}
-%suse_update_desktop_file -r -u %{name} Utility DesktopUtility
-%endif
+%qt6_install
 
 %find_lang %{name} --with-qt
 
 %files
 %license COPYING
 %doc CHANGELOG README
-%{_sysconfdir}/xdg/autostart/lxqt-%{name}-autostart.desktop
+%config %{_sysconfdir}/xdg/autostart/lxqt-%{name}-autostart.desktop
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png

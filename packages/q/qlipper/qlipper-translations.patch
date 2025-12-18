@@ -1,0 +1,43 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0e7e2bd..7b092d7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -164,18 +164,36 @@ set (QLIPPER_RESOURCES
+ )
+ 
+ set (QLIPPER_TRANSLATIONS
++    ts/qlipper_ar.ts
++    ts/qlipper_bg.ts
+     ts/qlipper_ca.ts
+     ts/qlipper_cs.ts
++    ts/qlipper_da.ts
+     ts/qlipper_de.ts
+     ts/qlipper_es.ts
++    ts/qlipper_et.ts
++    ts/qlipper_fa.ts
++    ts/qlipper_fr.ts
++    ts/qlipper_he.ts
++    ts/qlipper_hi.ts
++    ts/qlipper_hr.ts
++    ts/qlipper_hu.ts
++    ts/qlipper_it.ts
+     ts/qlipper_ja.ts
++    ts/qlipper_ko.ts
+     ts/qlipper_lt.ts
++    ts/qlipper_nb_NO.ts
++    ts/qlipper_nl.ts
++    ts/qlipper_oc.ts
+     ts/qlipper_pl.ts
++    ts/qlipper_pt.ts
++    ts/qlipper_ru.ts
++    ts/qlipper_si.ts
++    ts/qlipper_sk.ts
+     ts/qlipper_sr.ts
+     ts/qlipper_sv.ts
+-    ts/qlipper_it.ts
++    ts/qlipper_uk.ts
+     ts/qlipper_zh_CN.ts
+-    ts/qlipper_pt.ts
+ )
+ 
+ QT6_WRAP_UI( QLIPPER_UI ${QLIPPER_FORMS} )

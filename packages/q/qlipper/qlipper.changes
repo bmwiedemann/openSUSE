@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Dec 17 22:38:05 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Remove Group: declaration
+- Remove %suse_update_desktop_file, deprecated
+- Add qlipper-translations.patch
+
+-------------------------------------------------------------------
+Wed Dec 17 21:33:53 UTC 2025 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 6.0.0
+  * Plenty of translation updates
+  * Port to Qt v6
+  * Add wayland support (using KF6)
+
+-------------------------------------------------------------------
 Wed Oct 30 18:42:19 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
 
 - Change BuildRequires from lxqt-build-tools-devel to
