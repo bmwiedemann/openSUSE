@@ -29,17 +29,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-fsspec%{psuffix}
-Version:        2024.3.1
+Version:        2025.12.0
 Release:        0
 Summary:        Filesystem specification package
 License:        BSD-3-Clause
 URL:            https://github.com/fsspec/filesystem_spec
 # the tests are only in the GitHub archive
 Source:         https://github.com/fsspec/filesystem_spec/archive/%{version}.tar.gz#/fsspec-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module hatch-vcs}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  fuse
 BuildRequires:  python-rpm-macros
@@ -98,6 +98,7 @@ A specification for pythonic filesystems.
 %autosetup -p1 -n filesystem_spec-%{version}
 
 %build
+export SETUPTOOLS_SCM_PRETEND_VERSION="%{version}"
 %pyproject_wheel
 
 %if ! %{with test}
@@ -114,13 +115,17 @@ donttest="test_basic"
 donttest+=" or test_not_cached"
 # wants to open a socket connection to "my_instance.com"
 donttest+=" or test_dbfs"
+# wants to connect to an Amazon S3 bucket
+donttest+=" or test_async_cat_file_ranges"
 # wants to connect to ftp.fau.de
 donttest+=" or test_find"
 # does not like the '.' from the version in the build path
 donttest+=" or (test_local and test_make_path_posix)"
 # no fuse module loaded
 donttest+=" or test_fuse"
-%pytest -rfEs  -k "not ($donttest)"
+# wants to connect to GitHub directly
+ignore="--ignore fsspec/implementations/tests/test_github.py"
+%pytest -rfEs $ignore -k "not ($donttest)"
 %endif
 
 %if ! %{with test}
@@ -128,7 +133,7 @@ donttest+=" or test_fuse"
 %doc README.md
 %license LICENSE
 %{python_sitelib}/fsspec
-%{python_sitelib}/fsspec-%{version}*-info
+%{python_sitelib}/fsspec-%{version}.dist-info
 %endif
 
 %changelog

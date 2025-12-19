@@ -466,4 +466,41 @@ Required by the latest version of python-gcsfs</comment>
     <comment>- Add missing BuildRequires on pytest-asyncio.</comment>
     <requestid>1299203</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>2b837cbd49f9b849ac2e6388620c7fb8</srcmd5>
+    <version>2025.12.0</version>
+    <time>1766159005</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2025.12.0:
+  * Enhancements
+    + fsspec.parquet to support filters and multiple files (#1945)
+    + file system for GitHub gists (#1791)
+    + LFS support in github: (#1810)
+    + add pipe_file to HTTP (#1799, 1801)
+    + add sync http for pyodide (#1177)
+    + add open() to referenceFS (#1778)
+    + “exclusive” mode for writing (#1762, 1756, 174+)
+    + “tree” text display of filesystem contents (#1750)
+    + async wrapper for sync FSs (#1745)
+    + new known implementation: tosfs (#1739)
+    + consilidate block fetch requests (#1733)
+    + allow dicts (not just bytes) for referenceFS (#1616
+    + make filesystems JSON serializeable (#1612)
+    + implement multifile cat() for github (#1620)
+    + log hits/misses in bytes cachers (#1566)
+  * Fixes
+    + strip protocol for sftp (#1940)
+    + use one-step mv in jupyterfs (#1937)
+    + raise errors in jupyterfs, not return (#1936)
+    + allow ls() on a single file for arrowFS (#1931)
+    + accept all mode= types in memoryFS (#1922)
+    + pass path list to put() in localtempfile for efficiency (#1920)
+    + use st_birthtime in localFS, if available (#1883)
+    + remove deprecated asyncio use (#1862)
+    + create event loop if it doesn’t exist (#1857)
+    + don’t make async open() in async-wrapper (#1769)
+    + fix CI following dask-expr upstream change (#1781)
+    + better webHDFS proxies</comment>
+    <requestid>1323588</requestid>
+  </revision>
 </revisionlist>

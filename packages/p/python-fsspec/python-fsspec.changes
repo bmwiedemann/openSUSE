@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Fri Dec 19 02:59:39 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2025.12.0:
+  * Enhancements
+    + fsspec.parquet to support filters and multiple files (#1945)
+    + file system for GitHub gists (#1791)
+    + LFS support in github: (#1810)
+    + add pipe_file to HTTP (#1799, 1801)
+    + add sync http for pyodide (#1177)
+    + add open() to referenceFS (#1778)
+    + “exclusive” mode for writing (#1762, 1756, 174+)
+    + “tree” text display of filesystem contents (#1750)
+    + async wrapper for sync FSs (#1745)
+    + new known implementation: tosfs (#1739)
+    + consilidate block fetch requests (#1733)
+    + allow dicts (not just bytes) for referenceFS (#1616
+    + make filesystems JSON serializeable (#1612)
+    + implement multifile cat() for github (#1620)
+    + log hits/misses in bytes cachers (#1566)
+  * Fixes
+    + strip protocol for sftp (#1940)
+    + use one-step mv in jupyterfs (#1937)
+    + raise errors in jupyterfs, not return (#1936)
+    + allow ls() on a single file for arrowFS (#1931)
+    + accept all mode= types in memoryFS (#1922)
+    + pass path list to put() in localtempfile for efficiency (#1920)
+    + use st_birthtime in localFS, if available (#1883)
+    + remove deprecated asyncio use (#1862)
+    + create event loop if it doesn’t exist (#1857)
+    + don’t make async open() in async-wrapper (#1769)
+    + fix CI following dask-expr upstream change (#1781)
+    + better webHDFS proxies
+    + syn FSs in referenceFS (#1755)
+    + don’t serialize file caches (#1753)
+    + paths without “/” in dirFS (#1638)
+    + paths with “/” in FTS (#1643, 1644)
+    + ls in parquet-based nested reference sets, and append (#1645, 1657)
+    + exception handling for SMB (#1650)
+    + fix appending to non-dict reference sets (#1634)
+    + don’t let generic edit info dicts (#1633)
+    + fix JSON serialize for FSs with interior FSs (#1628, 1627)
+    + option to strip “password” when pickling (#1625)
+    + implement auto_mkdir for SMB (#1604)
+    + rsync: only delete files if there are some to delete (#1596)
+    + don’t let files equal bytes objects (#1594)
+    + url_to_fs to stringify paths (#1591)
+    + restore _strip_protocol signature for local (#1567)
+    + convert list to set when loading cache metadata (#1556)
+  * Other
+    + support py3.14 and drop 3.9 (#1946)
+    + add obstore to known implementations (#1875)
+    + add Microsoft storage to known implementations (#1853)
+    + use builtins zstd for py3.14 (#1874)
+    + remove mv_file (#1585)
+    + mv() should not swallow errors (#1576)
+    + build system to hatch (#1553)
+
+-------------------------------------------------------------------
 Wed Aug 13 05:40:03 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing BuildRequires on pytest-asyncio.
