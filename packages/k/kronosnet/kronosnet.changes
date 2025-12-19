@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Dec 12 08:49:36 UTC 2025 - Nicholas Yang <nicholas.yang@suse.com>
+
+- kronosnet-1.32
+ * IMPORTANT: sctp support is now officially deprecated. It is disabled by default and it will be removed in knet 2.x.
+ * Fix potential thread race condition in libnozzle close.
+ * Fix wrong pointer in libknet RX thread, only triggered by old gcc (< 11).
+ * Libnozzle: different fixes for BSD to deal with new tap driver changes and don´t leak interfaces.
+ * New API call in libknet to allow configuring a dscp value for KNET_LINK_FLAG_TRAFFICHIPRIO.
+ * Bump soname to reflect new API call.
+ * Improve OpenSSL error handling.
+ * Add support for OpenIndiana.
+ * Documentation updates.
+ * Fix several tests to better deal with execution timing.
+ * Handle some new coverity errors.
+ * Create and refine STYLE_GUIDE.md for project contributions.
+- kronosnet-1.31
+ * Fixed incorrect lzo1x_decompress call to use the safe version
+ * Udp: lower log levels for messages triggered by every single packets to trace level.
+
+-------------------------------------------------------------------
 Wed Dec  4 07:44:28 UTC 2024 - Nicholas Yang <nicholas.yang@suse.com>
 
 - kronosnet-1.30

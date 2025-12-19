@@ -73,4 +73,27 @@ Fix a typo from this change.</comment>
     <comment></comment>
     <requestid>1228423</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>efc88e4f470c1e2826a33a5709ea0ade</srcmd5>
+    <version>1.32</version>
+    <time>1766158924</time>
+    <user>anag_factory</user>
+    <comment>- kronosnet-1.32
+ * IMPORTANT: sctp support is now officially deprecated. It is disabled by default and it will be removed in knet 2.x.
+ * Fix potential thread race condition in libnozzle close.
+ * Fix wrong pointer in libknet RX thread, only triggered by old gcc (&lt; 11).
+ * Libnozzle: different fixes for BSD to deal with new tap driver changes and don´t leak interfaces.
+ * New API call in libknet to allow configuring a dscp value for KNET_LINK_FLAG_TRAFFICHIPRIO.
+ * Bump soname to reflect new API call.
+ * Improve OpenSSL error handling.
+ * Add support for OpenIndiana.
+ * Documentation updates.
+ * Fix several tests to better deal with execution timing.
+ * Handle some new coverity errors.
+ * Create and refine STYLE_GUIDE.md for project contributions.
+- kronosnet-1.31
+ * Fixed incorrect lzo1x_decompress call to use the safe version
+ * Udp: lower log levels for messages triggered by every single packets to trace level.</comment>
+    <requestid>1323463</requestid>
+  </revision>
 </revisionlist>

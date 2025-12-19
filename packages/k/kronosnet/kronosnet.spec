@@ -1,7 +1,7 @@
 #
 # spec file for package kronosnet
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -104,7 +104,7 @@ BuildRequires:  libxml2-devel
 # main (empty) package
 # http://www.rpm.org/max-rpm/s1-rpm-subpack-spec-file-changes.html
 Name:           kronosnet
-Version:        1.30
+Version:        1.32
 Release:        0
 Summary:        Multipoint-to-Multipoint VPN daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
