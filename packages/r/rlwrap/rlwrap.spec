@@ -17,7 +17,7 @@
 
 
 Name:           rlwrap
-Version:        0.47.1
+Version:        0.48
 Release:        0
 Summary:        A Readline Wrapper
 License:        GPL-2.0-or-later

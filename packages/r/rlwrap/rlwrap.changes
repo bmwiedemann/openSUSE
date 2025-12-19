@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Nov 13 11:37:17 UTC 2025 - Daniel Donisa <daniel.donisa@suse.com>
+
+- Update to 0.48
+
+  * Bug fix
+
+  - rlwrap would mess up history when compiled with readline-8.3
+  - --filter 'filter_commandline $with <shell_matachars' would not find filters in $RLWRAP_FILTERDIR
+  - rlwrap would not always honour show-mode-in-prompt
+  - make pipeline filter find filters in $RLWRAP_FILTERDIR
+
+  * New features
+
+  - allow full user control of word-breakers with --break-chars='precisely:...'
+  - simplify handling of --prompt-colour, which now accepts general (ANSI) color codes for e.g. 256-color terminals
+  - add -i option to filters logger and logger.py (making them useful stand-alone)
+  - add example filter null2.py (to show how to make argparse print filter help with e.g. rlwrap -z null2.py)
+
+-------------------------------------------------------------------
 Tue Sep 16 08:41:43 UTC 2025 - Daniel Donisa <daniel.donisa@suse.com>
 
 - Update to 0.47.1
