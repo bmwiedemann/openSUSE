@@ -19,7 +19,7 @@
 %define _empty_manifest_terminate_build 0
 
 Name:           mapi-header-php
-Version:        2.0
+Version:        2.1
 Release:        0
 Summary:        Common PHP MAPI header files for grommunio
 License:        AGPL-3.0-or-later
