@@ -16,9 +16,10 @@
 #
 
 
+%define pythons python3
 %define sover 20
 Name:           liblouis
-Version:        3.35.0
+Version:        3.36.0
 Release:        0
 Summary:        Two-way braille translator
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -31,6 +32,7 @@ BuildRequires:  m4
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3
+BuildRequires:  python3-pip
 BuildRequires:  python3-pytest
 Requires:       liblouis%{sover} = %{version}
 
@@ -131,7 +133,7 @@ This subpackage contains the Python3 bindings.
 
 # build python binding
 pushd python
-%python3_build
+%pyproject_wheel
 popd
 
 %install
@@ -144,7 +146,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 # install python binding
 pushd python
-%python3_install
+%pyproject_install
 popd
 
 %post -n liblouis%{sover} -p /sbin/ldconfig
@@ -182,7 +184,8 @@ popd
 %{_includedir}/liblouis
 
 %files -n python3-louis
-%{python3_sitelib}/louis*.egg-info
+%{python3_sitelib}/louis/
+%{python3_sitelib}/louis-%{version}.dist-info
 %{python3_sitelib}/louis
 
 %changelog

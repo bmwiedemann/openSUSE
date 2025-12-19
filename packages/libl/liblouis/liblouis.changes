@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Dec 16 20:14:56 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 3.36.0:
+  + This release brings various updates to braille tables,
+    particularly for Slovakian and Norwegian in line with the
+    respective changes to their the braille standards. There
+    are new tables for Macedonian uncontracted braille and the
+    long awaited table for English Grade 3 is finally here. On
+    the technical side, there are modernized Python bindings
+    and better support for building liblouis for environments
+    such as Android.
+- Update python build/install macros for pyproject.toml.
+
+-------------------------------------------------------------------
 Fri Sep 26 00:33:18 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 3.35.0:
