@@ -17,7 +17,7 @@
 
 
 Name:           shadowsocks-rust
-Version:        1.23.5
+Version:        1.24.0
 Release:        0
 Summary:        Rust port of Shadowsocks
 License:        MIT
@@ -51,14 +51,13 @@ low-end boxes.
 mkdir .cargo
 cat >>.cargo/config.toml <<EOF
 [source.crates-io]
-registry = 'https://github.com/rust-lang/crates.io-index'
 replace-with = 'vendored-sources'
 [source.vendored-sources]
-directory = './vendor'
+directory = 'vendor'
 EOF
 
 %build
-cargo auditable build -j12 --offline --release
+cargo auditable build -j16 --offline --release
 
 %install
 %cargo_install

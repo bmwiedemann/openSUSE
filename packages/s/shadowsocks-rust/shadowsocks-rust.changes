@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 19 12:42:56 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.24.0
+  * Support logging to file and syslog
+  * HTTP Client support auto retry if cached connection was lost
+  * Fix bugs
+
+-------------------------------------------------------------------
 Tue Sep  9 14:04:47 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.23.5

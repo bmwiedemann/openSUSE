@@ -139,4 +139,15 @@
 - Update version to 1.23.4 (forwarded request 1303370 from hillwood)</comment>
     <requestid>1303372</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8844951b37a932c36a8f767127e4c0c7</srcmd5>
+    <version>1.24.0</version>
+    <time>1766159164</time>
+    <user>anag_factory</user>
+    <comment>- Update version to 1.24.0
+  * Support logging to file and syslog
+  * HTTP Client support auto retry if cached connection was lost
+  * Fix bugs (forwarded request 1323669 from hillwood)</comment>
+    <requestid>1323670</requestid>
+  </revision>
 </revisionlist>
