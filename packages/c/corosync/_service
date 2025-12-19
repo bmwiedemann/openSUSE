@@ -3,8 +3,8 @@
     <param name="url">https://github.com/corosync/corosync.git</param>
     <param name="scm">git</param>
     <param name="filename">corosync</param>
-    <param name="versionformat">3.1.9</param>
-    <param name="revision">v3.1.9</param>
+    <param name="versionformat">3.1.10</param>
+    <param name="revision">v3.1.10</param>
     <param name="changesgenerate">enable</param>
   </service>
 

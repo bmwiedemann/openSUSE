@@ -1197,4 +1197,81 @@ v2.3.5
     <comment></comment>
     <requestid>1256370</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>6678e23da96f3995cbb5e02bb3586f42</srcmd5>
+    <version>3.1.10</version>
+    <time>1766158927</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.1.10:
+  * Unit tests for fd_get() calls
+  * rust: fix fd_get() pointer dereference
+  * configure.ac: Remove MSGHDR fields detection
+  * totemudp: Remove MSGHDR conditionals
+  * totemudp: Rework truncated packet detection
+  * totemudpu: Remove MSGHDR conditionals
+  * totemudpu: Fix weird indentation
+  * totemudpu: Rework truncated packet detection
+  * totemknet: Remove MSGHDR conditionals
+  * totemknet: Rework truncated packet detection
+  * clang: Add missing void to function declarations
+  * configure: Remove unsupported -Wunsigned-char
+  * Handle knet's removal of SCTP gracefully
+  * SCTP in knet is deprecated
+  * allow to use dscp for traffic prioritization
+  * totemknet: Remove usage of struct ether_header
+  * sam: Do not lock sam_register
+  * cmapctl: Check return code of cmap_set_uint32
+  * sam: Refactor locking
+  * testsam: Add sam_finalize deadlock test
+  * testsam: Refactor test
+  * testsam: Make test work with votequorum
+  * testsam: Try to turn off coredump
+  * cfg: Fix cfg_get_node_addrs incorrect retype
+  * totemknet: Fix msg_msg_hdr typo
+  * totemknet: Handle trncated packets and msg_flags
+  * totemknet: Include ethernet.h only for nozzle
+  * totempg: Retype iovec iov_base
+  * main: Retype iovec iov_base
+  * pload: Retype iovec iov_base
+  * cmap: Retype iovec iov_base
+  * vsf_quorum: Include alloca header file
+  * logsys: Remove config mutex
+  * coroparse: Suppress coverity toctou error
+  * cpg: Add comment about potential resource leak
+  * totempg: Suppress coverity sleep error
+  * totemconfig: Suppress coverity unused_value errors
+  * totemconfig: Suppress coverity no_effect error
+  * coverity: Suppress weak_crypto errors
+  * keygen: Enhance read random loop
+  * cpg: Don't call cpg_deliver_fn if unset
+  * totempg: Fix signedness for result of mcast_msg
+  * logsys: Fix signedness of get_unblocked
+  * cpg: Fix signedness of munmap result
+  * man: Clarify processor scaling
+  * init: Use LogsDirectory in systemd unit file
+  * exec: Add support for env STATE_DIRECTORY
+  * config: Cleanup dropped options
+  * totemconfig: Store mcastport in icmap
+  * man: Enhance description of mcastport
+  * coroparse: Implement handler for str_to_ull error
+  * coroparse: Remove kv_items from list
+  * coroparse: Initialize logger_subsys_items_head
+  * coroparse: Fix memory leaks
+  * coroparse: Store key with prefix for nodelist.node
+  * coroparse: Don't allow sections within member
+  * coroparse: Don't allow sections within uidgid
+  * coroparse: Store subsections of logging_daemon
+  * coroparse: Store subsections of logger_subsys
+  * coroparse: Handle end of special sections
+  * coroparse: Remove unused code
+  * coroparse: Mark path in parse_section as const
+  * coroparse: Check emptiness of key name
+  * Fix stack buffer overflow in remove_whitespace()
+  * totemsrp: Check size of orf_token msg
+  * totemknet: Handle new knet2 datafd API
+  * spec: Use GitHub source URL
+- Remove a patch as it is included in 3.1.10
+  * 779.patch</comment>
+    <requestid>1323465</requestid>
+  </revision>
 </revisionlist>
