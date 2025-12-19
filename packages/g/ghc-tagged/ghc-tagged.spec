@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-tagged
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name tagged
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.8.9
+Version:        0.8.10
 Release:        0
 Summary:        Haskell 98 phantom types to avoid unsafely passing dummy arguments
 License:        BSD-3-Clause
@@ -33,8 +33,6 @@ BuildRequires:  ghc-deepseq-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-template-haskell-devel
 BuildRequires:  ghc-template-haskell-prof
-BuildRequires:  ghc-transformers-devel
-BuildRequires:  ghc-transformers-prof
 ExcludeArch:    %{ix86}
 
 %description
