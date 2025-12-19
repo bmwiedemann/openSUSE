@@ -478,4 +478,15 @@
   * Update golang.org/x/net to 0.45.0 in vendor (forwarded request 1309804 from hillwood)</comment>
     <requestid>1310006</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>6d28928dfc29a14b95be93578207953a</srcmd5>
+    <version>5.42.0</version>
+    <time>1766159172</time>
+    <user>anag_factory</user>
+    <comment>- Update version to 5.42.0
+  * Add TLSMirror bootstrap enrollment and self enrollment feature
+  * TLSMirror Inverse Role Request Tripper Enrollment Server Support
+- Drop fix-CVE-2025-47911.patch, fixed by upstream (forwarded request 1323676 from hillwood)</comment>
+    <requestid>1323677</requestid>
+  </revision>
 </revisionlist>

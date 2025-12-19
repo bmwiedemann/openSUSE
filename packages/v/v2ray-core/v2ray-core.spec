@@ -25,7 +25,7 @@
 %define   import_path     github.com/v2fly/v2ray-core/v5
 
 Name:           v2ray-core
-Version:        5.40.0
+Version:        5.42.0
 Release:        0
 Summary:        Network tools for building a computer network
 License:        MIT
@@ -39,11 +39,11 @@ Source4:        https://github.com/v2fly/geoip/raw/release/geoip.dat
 Source5:        https://github.com/v2fly/domain-list-community/raw/release/dlc.dat
 Source6:        https://github.com/v2fly/v2ray-core/releases/download/v%{version}/v2ray-extra.zip
 Source99:       %{name}-rpmlintrc
-Patch0:         fix-CVE-2025-47911.patch
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  unzip
+BuildRequires:  golang(API) >= 1.25
 BuildRequires:  pkgconfig(systemd)
 AutoReqProv:    Off
 Provides:       v2ray = %{version}-%{release}
@@ -69,7 +69,6 @@ This package provide source code for %{repo}
 
 %prep
 %setup -q -a1 -a6 -n %{repo}-%{version}
-%patch -P 0 -p1
 
 %build
 export GO111MODULE=off

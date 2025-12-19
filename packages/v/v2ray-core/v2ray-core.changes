@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 19 13:05:37 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.42.0
+  * Add TLSMirror bootstrap enrollment and self enrollment feature
+  * TLSMirror Inverse Role Request Tripper Enrollment Server Support
+- Drop fix-CVE-2025-47911.patch, fixed by upstream
+
+-------------------------------------------------------------------
 Wed Oct  8 13:30:29 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
 
 - Fix CVE-2025-47911 and boo#1251404
