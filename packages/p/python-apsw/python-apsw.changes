@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Fri Dec 12 10:55:57 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.51.1.0:
+  * All objects that can be closed implement __bool__() which
+    returns True while open and False when closed - Connection,
+    Cursor, Backup, Blob, Session, ChangesetBuilder, Rebaser.
+- update to 3.51.0.0:
+  * JSON can be used as though it is a native type of SQLite,
+    with automatic conversion of Python objects on writing and
+    reading. (example)
+  * Connection.convert_binding (and Cursor.convert_binding)
+    callback to allow conversion of bindings when executing SQL.
+  * Connection.convert_jsonb (and Cursor.convert_jsonb) callback
+    to allow conversion of JSONB when reading query results.
+    (JSONB is SQLite’s binary internal parsed format for quick
+    operations on JSON.)
+  * 3 functions for working directly with JSONB allowing direct
+    conversion between Python objects and JSONB, without having
+    to go through the intermediate JSON text format.
+  * Added apsw.ext.Function() for calling SQL functions directly
+    from Python.
+  * When using with (Connection context manager) you can set the
+    outer transaction mode to DEFERRED (default) / IMMEDIATE /
+    EXCLUSIVE. (APSW issue 578)
+  * Changeset.apply() now takes filter_change parameter for
+    allowing filtering on individual change level, taking
+    advantage of sqlite3changeset_apply_v3
+  * Updated Connection.status() to use 64 bit API, and
+    apsw.ext.ShowResourceUsage() to show TEMPBUF_SPILL. (pragma
+    cache_size controls the amount of temp/cache memory
+    available.)
+  * The percentile extension is enabled when enabling all
+    extensions, which is standard for pypi downloads. It enables
+    several percentile, median, and related SQL functions.
+  * The carray extension is enabled when enabling all extensions,
+    which is standard for pypi downloads. apsw.carray() allows
+    binding bulk numbers, strings, and blobs to a query. See the
+    example.
+  * SQLITE_SCM_ constants (BRANCH, TAGS, DATETIME) are available
+    on the module if built with the amalgamation.
+  * apsw.ext.generate_series_sqlite() updated to exactly match
+    SQLite’s behaviour. apsw.ext.generate_series() is recommended
+    as it matches other databases.
+  * Updated apsw.unicode to support Unicode 17.0 which adds 4,803
+    new codepoints, and updated line breaking, along with other
+    small tweaks.
+  * The Geopoly extension (GeoJSON access to RTree) is enabled
+    when --enable-all-extensions is used with setup.py. This
+    includes pypi builds.
+  * This is the final release supporting Python 3.9.
+
+-------------------------------------------------------------------
 Tue Aug  5 08:38:22 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.50.4.0

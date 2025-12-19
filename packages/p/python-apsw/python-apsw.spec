@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
@@ -23,7 +24,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-apsw
-Version:        3.50.4.0
+Version:        3.51.1.0
 Release:        0
 Summary:        Another Python SQLite Wrapper
 License:        Zlib
@@ -43,7 +44,7 @@ Requires:       alts
 BuildRequires:  alts
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 %python_subpackages
 
