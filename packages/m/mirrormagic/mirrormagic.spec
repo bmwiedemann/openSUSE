@@ -52,7 +52,7 @@ rm -rfv lib mirrormagic
 find . -name "*.orig" -delete
 
 %build
-%make_build \
+make \
     PROGBASE=%{name} \
     OPTIONS="%{optflags} -fPIE" \
     EXTRA_LDFLAGS="%{optflags} -pie" \

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 12 06:37:13 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Build without parallelism for reliable builds
+
+-------------------------------------------------------------------
 Sun Jan 28 16:39:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to version 3.3.1:
