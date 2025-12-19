@@ -1,0 +1,71 @@
+From 1d2a6059db4cd44f14f9f3008098ca04a1a2bc96 Mon Sep 17 00:00:00 2001
+From: Stan Triepels <1939656+GDay@users.noreply.github.com>
+Date: Thu, 12 Oct 2023 22:44:19 +0200
+Subject: [PATCH] Add support for Django 5 (#120)
+
+---
+ .github/workflows/test.yml |   27 +-
+ README.rst                 |    4 +-
+ django_q/core_signing.py   |   12 +-
+ django_q/utils.py          |    2 +-
+ docs/index.rst             |    2 +-
+ docs/install.rst           |   10 +-
+ poetry.lock                | 1751 +++++++++++++++++++-----------------
+ pyproject.toml             |   10 +-
+ 8 files changed, 962 insertions(+), 856 deletions(-)
+
+Index: django-q-1.3.9/django_q/core_signing.py
+===================================================================
+--- django-q-1.3.9.orig/django_q/core_signing.py
++++ django-q-1.3.9/django_q/core_signing.py
+@@ -2,11 +2,18 @@ import datetime
+ import time
+ import zlib
+ 
++import django
+ from django.core.signing import BadSignature, JSONSerializer, SignatureExpired
+ from django.core.signing import Signer as Sgnr
+ from django.core.signing import TimestampSigner as TsS
+ from django.core.signing import b64_decode, dumps
+-from django.utils import baseconv
++
++if django.VERSION < (5, 0):
++    from django.utils.baseconv import base62
++    b62_decode = base62.decode
++else:
++    from django.core.signing import b62_decode
++
+ from django.utils.crypto import constant_time_compare
+ from django.utils.encoding import force_bytes, force_str
+ 
+@@ -32,7 +39,7 @@ def loads(
+     """
+     # TimestampSigner.unsign() returns str but base64 and zlib compression
+     # operate on bytes.
+-    base64d = force_bytes(TimestampSigner(key, salt=salt).unsign(s, max_age=max_age))
++    base64d = force_bytes(TimestampSigner(key=key, salt=salt).unsign(s, max_age=max_age))
+     decompress = False
+     if base64d[:1] == b".":
+         # It's compressed; uncompress it first
+@@ -69,7 +76,7 @@ class TimestampSigner(Signer, TsS):
+         """
+         result = super(TimestampSigner, self).unsign(value)
+         value, timestamp = result.rsplit(self.sep, 1)
+-        timestamp = baseconv.base62.decode(timestamp)
++        timestamp = b62_decode(timestamp)
+         if max_age is not None:
+             if isinstance(max_age, datetime.timedelta):
+                 max_age = max_age.total_seconds()
+Index: django-q-1.3.9/django_q/models.py
+===================================================================
+--- django-q-1.3.9.orig/django_q/models.py
++++ django-q-1.3.9/django_q/models.py
+@@ -213,7 +213,7 @@ class Schedule(models.Model):
+                 url = reverse("admin:django_q_success_change", args=(task.id,))
+             else:
+                 url = reverse("admin:django_q_failure_change", args=(task.id,))
+-            return format_html(f'<a href="{url}">[{task.name}]</a>')
++            return format_html('<a href="{}">[{}]</a>', url, task.name)
+         return None
+ 
+     def __str__(self):

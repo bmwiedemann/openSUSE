@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-q
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,23 +25,28 @@ License:        MIT
 URL:            https://django-q.readthedocs.org
 Source:         https://files.pythonhosted.org/packages/source/d/django-q/django-q-%{version}.tar.gz
 # pkg_resources is broken since the flufl.lock update in Factory
-Patch:          gh-pr-737_importlib.patch
+Patch0:         gh-pr-737_importlib.patch
+# PATCH-FIX-UPSTREAM combined bits of:
+# https://github.com/django-q2/django-q2/commit/1f31725f43e3b6f0f793ed00f482d994ae50a503 Added Django 4.2 to the test matrix, fixed deprecation warning
+# https://github.com/django-q2/django-q2/commit/1d2a6059db4cd44f14f9f3008098ca04a1a2bc96 Add support for Django 5
+# https://github.com/django-q2/django-q2/commit/0090a6f4111c95aa4d405a10fcc06cc14c907a4d Update tested versions, add python 3.13 support and django 5.2 support. Drop python 3.8 support
+Patch1:         django5.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-Django >= 2.2
 Requires:       python-arrow
 Requires:       python-blessed
 Requires:       python-django-picklefield
 Requires:       python-redis
-Requires:       (python-Django >= 2.2 with python-Django < 5)
 Suggests:       python-croniter
 Suggests:       python-django-q-rollbar >= 0.1
 Suggests:       python-django-q-sentry >= 0.1
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Django >= 2.2 with %python-Django < 5}
+BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module arrow}
 BuildRequires:  %{python_module blessed}
 BuildRequires:  %{python_module croniter}
@@ -63,7 +68,7 @@ This package provides a multiprocessing distributed task queue for Django.
 %prep
 %setup -n django-q-%{version}
 # wrong line endings prevent patching
-dos2unix django_q/conf.py
+dos2unix django_q/*.py
 %autopatch -p1
 
 # Fix permissions

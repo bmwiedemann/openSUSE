@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 17 13:12:39 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream patch django5.patch to fix Django 5 support
+
+-------------------------------------------------------------------
 Tue Jun  3 06:48:29 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
