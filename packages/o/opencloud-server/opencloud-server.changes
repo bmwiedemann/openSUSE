@@ -1,4 +1,537 @@
 -------------------------------------------------------------------
+Tue Dec 16 06:21:59 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.1.0:
+  Opencloud
+  * Documentation
+    - fix typo [#2024]
+    - [docs] update policies link [#1996]
+    - fix the link in quickstart script for itself [#1956]
+  * Tests
+    - [full-ci][tests-only] test: fix some test flakiness [#2003]
+    - [tests-only] Skip test related pipelines for ready-release-go
+      PRs [#2011]
+    - [full-ci][tests-only] test: add test to check mismatch offset
+      during TUS upload [#1993]
+    - [full-ci][tests-only] test: proper resource existence check
+      [#1990]
+    - check propfing after renaming data in file system [#1809]
+    - fix-get-attribute-test [#1974]
+  * Enhancement
+    - Show edition in opencloud version command [#2019]
+  * Bug Fixes
+    - fix: enforce trailing slash for server url [#1995]
+    - fix: enhance resource creation with detailed process
+      information [#1978]
+  * Dependencies
+    - chore: bump web to v4.3.0 [#2030]
+    - reva-bump-2.41.0 [#2032]
+    - build(deps): bump github.com/testcontainers/testcontainers-go
+      from 0.39.0 to 0.40.0 [#1931]
+  Web
+  * Security
+    - chore(deps): bump mdast-util-to-hast to 13.2.1 (security)
+      [#1692]
+    - chore: bump sub-dependencies that cause vulnerability alerts
+      [#1653]
+  * Bug Fixes
+    - fix(design-system): filter chip margins [#1739]
+    - fix(design-system): remove tailwind reference in bundled css
+      [#1728]
+    - fix: add missing drag styling in tiles view [#1645]
+    - fix: embed mode click behavior [#1641]
+    - fix: hide calendar when env var FRONTEND_DISABLE_RADICALE is
+      set to true [#1660]
+    - fix: move folder replace [#1627]
+    - fix: editing and loading tags for received shares [#1650]
+    - fix: catching errors in sse events [#1654]
+    - fix: missing versions when closing and re-opening sidebar
+      [#1602]
+    - fix: embed actions z-index [#1610]
+    - fix: version downloads and remove downloadUrl dav property
+      default [#1559]
+    - fix: copying created links in Safari [#1594]
+    - fix: prevent undo delete multiple times for same file [#1587]
+    - fix: initial default favicon [#1584]
+    - fix: add missing file list update after undo delete in space
+      [#1561]
+    - bug: hide addtional calendar data, if radicale is not set up
+      [#1573]
+    - fix: lazy loading indicator in condensed resource table
+      [#1572]
+    - fix: endless propfind requests when opening public links
+      authenticated [#1534]
+    - fix: archive download on password protected links [#1523]
+    - bug: allow clipboard access to collabora [#1569]
+    - fix: translation string typos [#1564]
+    - fix: remove horizontal scrollbar when opening upload menu
+      [#1562]
+    - fix: account preferences page, left sidebar won't be
+      translated on language change [#1554]
+    - fix: avoid flicker on CalDAV check [#1538]
+    - fix: private link doesn't reliably open default app [#1527]
+    - fix: only render drop content when opened [#1498]
+    - fix: space batch actions not loading in spaces table [#1517]
+    - fix: bottom drawer 'New'-menus appearance [#1494]
+    - revert: "Update Font Metadata2 (#1488)" [#1507]
+    - fix: adjust headline sizes across the webui [#1504]
+  * Tests
+    - [tests-only] correct release PR condition to use build.sender
+      [#1736]
+    - [tests-only] skip unit and e2e test pipelines on
+      ready-release-go prs [#1714]
+    - e2e-tests. undo deleted resources [#1580]
+    - e2e-test. download folder on public link [#1531]
+    - check user avatar in the admin settings->users [#1510]
+  * Enhancement
+    - feat: add photo roll to preview app [#1699]
+    - feat: render readme.md file at the top of folder [#1708]
+    - feat: add inlineLabel and hasBorder props to OcTextInput and
+      OCSelect [#1707]
+    - feat(preview): add support for mov video files [#1705]
+    - feat: add floating action button [#1688]
+    - feat: replace extension and gdpr icon in preference menu
+      [#1683]
+    - feat: implement mail account switcher [#1677]
+    - feat: show empty trash bin icon at quick action if trash is
+      empty [#1647]
+    - feat: share links and passwords in embed mode [#1613]
+    - Introduce mail app [#1382]
+  * Dependencies
+    - chore(deps): update dependency @codemirror/view to v6.39.4
+      [#1732]
+    - fix(deps): update dependency vue-router to v4.6.4 [#1743]
+    - fix(deps): update dependency @sentry/vue to v10.30.0 [#1737]
+    - chore(deps): update node.js to v24.12.0 [#1734]
+    - chore(deps): update devdependencies (non-major) [#1742]
+    - chore(deps): update dependency @codemirror/view to v6.39.1
+      [#1730]
+    - chore(deps): update dependency dompurify to v3.3.1 [#1721]
+    - chore(deps): update typescript-eslint monorepo to v8.49.0
+      [#1724]
+    - chore(deps): update dependency md-editor-v3 to v6.2.1 [#1726]
+    - chore(deps): update dependency @codemirror/view to v6.39.1
+      [#1725]
+    - chore(deps): update devdependencies (non-major) [#1722]
+    - fix(deps): update uppy monorepo [#1729]
+    - chore(deps): update pnpm to v10.25.0 [#1723]
+    - chore(deps): update traefik docker tag to v3.6.4 [#1716]
+    - chore(deps): update devdependencies (non-major) [#1717]
+    - fix(deps): update dependency @sentry/vue to v10.29.0 [#1712]
+    - fix(deps): update dependency @sentry/vue to v10.28.0 [#1697]
+    - chore(deps): update dependency @panzoom/panzoom to v4.6.1
+      [#1698]
+    - chore(deps): update typescript-eslint monorepo to v8.48.1
+      [#1693]
+    - fix(deps): update uppy monorepo [#1695]
+    - chore(deps): update devdependencies (non-major) [#1690]
+    - update-playwright-1.57 [#1709]
+    - fix(deps): update dependency password-sheriff to v2 [#1701]
+    - chore(deps): update collabora/code docker tag to v25.04.7.3.1
+      [#1684]
+    - chore(deps): update dependency vite to v7.2.6 [#1689]
+    - chore(deps): update devdependencies (non-major) [#1686]
+    - chore(deps): update devdependencies (non-major) [#1652]
+    - chore(deps): update typescript-eslint monorepo to v8.48.0
+      [#1673]
+    - chore(deps): update dependency password-sheriff to v1.3.1
+      [#1672]
+    - chore(deps): update ghcr.io/stalwartlabs/stalwart docker tag
+      to v0.14.1 [#1541]
+    - chore(deps): update dependency eslint-plugin-vue to v10.6.2
+      [#1664]
+    - fix(deps): update dependency @sentry/vue to v10.27.0 [#1674]
+    - chore(deps): update dependency @vueuse/core to v14.1.0
+      [#1676]
+    - fix(deps): update vue monorepo to v3.5.25 [#1669]
+    - fix(deps): update dependency zod to v4.1.13 [#1667]
+    - chore(deps): update pnpm to v10.24.0 [#1656]
+    - chore(deps): update dependency md-editor-v3 to v6.2.0 [#1648]
+    - fix(deps): update dependency @sentry/vue to v10.26.0 [#1649]
+    - chore(deps): update dependency glob to v13 [#1651]
+    - chore(deps): update dependency @cucumber/messages to v31
+      [#1644]
+    - chore(deps): update dependency @vitejs/plugin-vue to v6.0.2
+      [#1632]
+    - chore(deps): update traefik docker tag to v3.6.2 [#1643]
+    - chore(deps): update dependency oidc-client-ts to v3.4.1
+      [#1570]
+    - fix(deps): update dependency p-queue to v9.0.1 [#1640]
+    - chore(deps): update typescript-eslint monorepo to v8.47.0
+      [#1633]
+    - chore(deps): update dependency glob to v12 [#1634]
+    - chore(deps): update collabora/code docker tag to v25.04.7.2.1
+      [#1631]
+    - chore(deps): update devdependencies (non-major) to v4.0.10
+      [#1625]
+    - chore(deps): update dependency @codemirror/view to v6.38.8
+      [#1622]
+    - chore(deps): update dependency vue-tsc to v3.1.4 [#1621]
+    - chore(deps): update dependency @codemirror/view to v6.38.7
+      [#1619]
+    - chore(deps): update devdependencies (non-major) to v4.0.9
+      [#1618]
+    - chore(deps): update traefik docker tag to v3.6.1 [#1614]
+    - chore(deps): update pnpm to v10.22.0 [#1607]
+    - chore(deps): update dependency jsdom to v27.2.0 [#1601]
+    - chore(deps): update node.js to v24.11.1 [#1600]
+    - fix(deps): update dependency @sentry/vue to v10.25.0 [#1599]
+    - fix(deps): update dependency @sentry/vue to v10.24.0 [#1574]
+    - chore(deps): update typescript-eslint monorepo to v8.46.4
+      [#1581]
+    - chore(deps): update collabora/code docker tag to v25.04.7.1.1
+      [#1516]
+    - chore(deps): update devdependencies (non-major) to v4.0.8
+      [#1557]
+    - chore(deps): update traefik docker tag to v3.6.0 [#1566]
+    - chore(deps): update pnpm to v10.21.0 [#1568]
+    - chore(deps): update dependency password-sheriff to v1.3.0
+      [#1560]
+    - fix(deps): update vue monorepo to v3.5.24 [#1558]
+    - chore(deps): update dependency vite to v7.2.2 [#1555]
+    - chore(deps): update devdependencies (non-major) to v4.1.17
+      [#1533]
+    - chore(deps): update dependency axios to v1.13.2 [#1537]
+    - fix(deps): update vue monorepo to v3.5.23 [#1544]
+    - fix(deps): update dependency @sentry/vue to v10.23.0 [#1542]
+    - fix(deps): update dependency pinia to v3.0.4 [#1532]
+    - chore(deps): update dependency @pinia/testing to v1.0.3
+      [#1524]
+    - chore(deps): update dependency pinia to v3.0.4 [#1525]
+    - fix(deps): update dependency axios to v1.13.2 - autoclosed
+      [#1515]
+    - chore(deps): update devdependencies (non-major) to v4.0.7
+      [#1514]
+    - chore(deps): update dependency eslint to v9.39.1 [#1503]
+    - chore(deps): update typescript-eslint monorepo to v8.46.3
+      [#1502]
+    - [full-ci] bump-opencloud-3.7.0. run all tests [#1500]
+    - chore(deps): update dependency md-editor-v3 to v6.1.1 [#1493]
+    - fix(deps): update dependency @uppy/utils to v7.1.3 [#1496]
+  Reva
+  * Enhancement
+    - Write mtime from filesystem to metadata to preven
+      re-assimilation [#457]
+    - introduce Natswatcher [#449]
+  * Bug Fixes
+    - Do not log EOF as error, it is expected behavior when reading
+      empty dirs [#454]
+
+-------------------------------------------------------------------
+Tue Dec 16 06:01:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.0.1:
+  * Tests
+    - [stable-4.0] Port #2011 [#2018]
+  * Bug Fixes
+    - [stable-4.0] fix: build time edition channels #2001 [#2010]
+    - [stable-4.0] fix: enforce trailing slash for server url
+      [#2002]
+    - [stable-4.0] fix: enhance resource creation with detailed
+      process information (#1978) [#2000]
+
+-------------------------------------------------------------------
+Mon Dec 15 08:10:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.0.0:
+  https://github.com/opencloud-eu/opencloud/releases/tag/v4.0.0
+  https://docs.opencloud.eu/docs/admin/maintenance/upgrade/upgrade-4.0.0
+  * Highlights:
+    - Multitenancy
+      This release sets the foundation for multi tenant
+      capabilities and provides a centralized platform with shared
+      infrastructure and a logical separation between tenants. This
+      means that users can only view and share files with users
+      inside their own tenant. Configuration and administration are
+      unified across the environment while shared services enable
+      more efficient scaling. Multitenancy is ideal for
+      organizations operating multiple units under one roof, such
+      as agencies managing separate clients, enterprises with
+      distinct business divisions or service providers hosting
+      multiple customer environments.  Multitenancy is supported
+      within the enterprise licence.
+    - K8s - Kubernetes Helm Charts
+      The new kubernetes helm charts ensure high availability for
+      business critical deployments. Services now support stable,
+      automated up and down scaling under load. The charts include
+      built-in dashboards and alerts to spot issues early and keep
+      environments easy to monitor. Heads up: The Helm charts are
+      part of the enterprise licence and are different from the
+      free, community driven Helm Charts.
+    - Calendar and Contacts
+      OpenCloud now supports an optional calendar and contacts
+      service powered by Radicale, easily enabled as an addon. It
+      works with standard CardDAV and CalDAV clients such as
+      Thunderbird and common mobile apps. All data stays fully
+      under your control with zero reliance on big tech providers.
+      If enabled, users find their personal CalDAV calendar URL
+      directly in the Web UI.
+      - New "Calendar" panel in the account settings (visible only
+        if CalDAV is enabled by the server).
+      - Includes:
+        - CalDAV URL (copyable)
+        - Username (copyable)
+        - Password info: use an app token for authentication
+      The calendar integration was added thanks to frequent request
+      from the community. For enterprise deployments, contact our
+      Service and Support team. Learn more:
+      https://docs.opencloud.eu/docs/admin/configuration/radicale-integration
+    - PosixFS with Live File Updates
+      PosixFS provides the single source of truth in OpenCloud,
+      eliminating separate metadata and inconsistent states one
+      encounters with classic database backed systems. Changes on
+      the file level are now reflected live in OpenCloud, updating
+      on all your clients in realtime whats going on within your
+      storage file tree.
+    - Enterprise Search Backend: OpenSearch
+      OpenCloud now integrates with OpenSearch
+      (https://opensearch.org/) as search service for indexing and
+      querying. The OpenSearch integration provides cluster
+      capabilities for high load scenarios. Full text queries run
+      faster and more precisely through modern relevance models,
+      backed by distributed indexing for high throughput. This
+      allows administrators to use OpenSearch as a scalable,
+      distributed search backend, while Bleve remains the default
+      search engine for regular home- and family-setups. The
+      OpenSearch integration is supported within the enterprise
+      licence.
+    - 1-Click Branding
+      OpenCloud now generates a complete, accessible theme from a
+      single primary color input covering buttons, navigation,
+      states and more. Manual color configuration remains optional
+      for advanced customization. The generated themes meet
+      accessibility (BITV2.0 and WCAG2.1) requirements and ensure
+      consistent branding across all tenants. 1-Klick branding ist
+      included in the enterprise licence.
+    - Undo Option
+      Introduces an undo option for delete actions, giving users
+      quick recovery from mistakes and encouraging safer
+      experimentation. This lowers the barrier for cautious or less
+      experienced users by enabling safe experimentation without
+      fear of breaking anything.
+    - Install the Web UI as PWA
+      The OpenCloud Web UI can now be installed as a Progressive
+      Web App directly from the browser. The PWA allow users to
+      place an icon on the homescreen, desktop or taskbar for fast
+      access. The web ui launches like a native application without
+      a browser frame and the installation can be done without the
+      need of an app store. The UI for installing a PWA depends on
+      the browser and platform. On Safari for iOS, users install
+      the PWA through the Add to Home Screen option. On Android
+      browsers like Chrome, the install option appears in the
+      browser menu. On desktop Firefox, Chrome and Edge, an install
+      icon appears in the URL bar when the PWA is not yet
+      installed.
+    - Collabora automatic dark/light theme
+      Integration is everything: Collabora now automatically adapts
+      to your Dark or Light mode settings in OpenCloud. You no
+      longer need to switch modes manually, making you feel right
+      at “home” when working on documents. Everything looks
+      seamless and makes working more effortless.
+    - Tiles view on search result page
+      OpenCloud allows the Tiles View on search result pages to be
+      enabled as a global setting. This means the view is now
+      available on every relevant page, including search results.
+      The new view makes it easier to quickly identify and select
+      documents or files. Search results are displayed visually in
+      a clear, tile-based layout. With the global activation, the
+      Tiles View is automatically applied across all relevant
+      pages, providing a consistent and user-friendly experience.
+    - Calendar settings
+      The Calendar settings are now easier to find: Application
+      Switcher on the top left in the web ui. Note that the
+      built-in Calendar needs to be enabled if you want to use it:
+      https://docs.opencloud.eu/docs/admin/configuration/radicale-integration/
+    - Update Check
+      OpenCloud now includes an Update Check in the Web UI that
+      checks if there is a new version available. The goal is to
+      provide subtle update notifications without distracting you
+      with banners or pop-ups. No personal user data is
+      transmitted.  We deliver new features every three weeks as
+      part of our rolling release cycle, and a new production
+      release twice a year. The update check is fully optional and
+      can be disabled at any time.
+    - Use of css framework Tailwind
+      The design system now fully uses Tailwind CSS, a modern
+      utility-first framework that lets developers style components
+      directly in the markup with pre-defined classes. This
+      simplifies styling and ensures a consistent look across
+      OpenCloud.
+    - IDP Login Control
+      OpenCloud now lets admins hide the login enable/disable
+      option for users managed by an external IDP. This makes the
+      user management interface clearer and easier to use.
+    - Modernized context menu on mobile
+      The context menu on mobile devices now features a drilldown
+      design for submenus. This makes context actions more modern,
+      intuitive, and optimized for smartphones. Additionally, the
+      bottom drawer has been updated with a clearer, less technical
+      label, improving usability for all users.
+    - WebP support in preview
+      The preview now supports the WebP image format: in addition
+      to thumbnails in the file list and tiles view, clicking on a
+      WebP file will now open it directly in the Preview app
+      instead of downloading.
+    - Add dark mode and adjust light theme colors
+      This release introduces a new dark mode for improved
+      accessibility and user experience in low-light environments.
+      Additionally, the light theme color palette has been adjusted
+      to align with the generated Material Design color guidelines,
+      ensuring visual consistency and design compliance across the
+      application.
+    - New action "empty trash"
+      A new "Empty Trash" option is now available in the context
+      menu of the trash overview. This action allows user to empty
+      the trash of a selected space without navigating into it.
+      This improvement streamlines the cleanup process for users
+      managing multiple spaces.
+    - Add fillstate for deleted files in trash overview page
+      The view feature "Show empty trash bins" has been added to
+      the trash overview page. This allows users easily filter and
+      focus on trash bins that still contain deleted files. This
+      enhancement provides a cleaner and more targeted trash
+      management experience.
+    - Collabora: New “Export As” and “Save As” Options
+      Working in Collabora just got more powerful:
+      - Save As You can now save a copy of the current file
+        directly from within Collabora.
+      - Export As Export your currently edited document into
+        another format (e.g. PDF) — no extra tools needed.
+      These improvements let you convert and copy documents without
+      ever leaving the editor.
+    - Simplified "Open" Context Menu for Files
+      The file context menu has been redesigned for a cleaner and
+      more intuitive experience. A single "Open" entry replaces
+      multiple "Open with..." options. This feature is fully
+      accessible with keyboards.
+    - Extended File Format Support in Text Editor
+      The text editor now supports a wider range of text-based file
+      formats:
+      - Markup & Web: .html, .css, .scss, .sass, .less
+      - Scripts & Code: .c, .cpp, .java, .sh, .bat, .asm, .ts, .tsx,
+        .jsx, .vue
+      - Config & Environment: .yml, .yaml, .toml, .ini, .conf, .env
+      - Structured Data: .csv, .tsv, .xml
+      - Other Text Formats: .log, .rtf, .ics, .dockerfile,
+        .makefile
+    - Add Profile Photo
+      Users can now upload a profile photo to personalize their
+      account. The profile image will be displayed in the user
+      interface wherever user avatars are shown such as the top bar
+      and user lists enhancing recognition and adding a more
+      personal touch.
+    - Accessibility Improvement: Required Mark for Text Input
+      Fields
+      The text input component now includes a proper "required"
+      mark for accessibility (a11y). This improves compliance with
+      WCAG 2.1 and overall form usability.
+    - Delete Files Directly from Viewer or Editor
+      You can now delete files directly from within an editor or
+      viewer, without having to return to the file list. The delete
+      option is available in the topbar context menu, the right
+      sidebar action panel or the preview controls bar. Thanks to
+      fwinn for proposing this improvement.
+    - Croping of Space Images
+      Space managers can now select the visible area of a space
+      image in a 16:9 aspect ratio. When uploading a space image, a
+      crop tool lets you define the exact area shown in the space
+      overview and details. Cropping is also completely
+      controllable via
+      keyboard.
+    - Redesigned Account Settings
+      Account settings have been redesigned and restructured into
+      dedicated pages with a clear left-hand navigation. This makes
+      navigating settings simpler and offer a clearer structure and
+      better usability.
+    - Configurable Logo Link on Login Page
+      You can now configure a custom URL for the logo on the login
+      page.
+      This allows you to redirect users to your organisations
+      website, support portal, or any other destination when they
+      click the logo.
+    - Important Performance Improvement: Reduced CPU Load
+      Thanks to this bug report we’ve made several improvements to
+      the activitylog service to significantly reduce its impact on
+      system performance in 842.
+  * Breaking changes
+      - collaboration: Enable InsertRemoteImage option [#1692]
+  * Documentation
+    - Fix typos in antivirus README documentation [#1940]
+    - fix: add missing service README.md files with basic
+      description [#1859]
+    - Fix README.md files which contain broken or missing links
+      [#1854]
+  * Bug Fixes
+    - introduce OC_EVENTS_TLS_INSECURE [#1936]
+    - kill unused env vars [#1888]
+    - rc-handling was only active for the dryrun, not the real
+      build-and-push [#1919]
+    - handle objectguid endianess [#1901]
+    - fix: add update server to default csp rules [#1875]
+    - fix: add missing capability flag support-radicale [#1891]
+    - fix opensearch client certificate [#1890]
+    - Bump reva [#1882]
+    - load two yaml configs [#1617]
+    - make user cache tenant aware [#1732]
+    - fix: sanitise markdow code to make docusaurus happy [#1851]
+    - update launch.json [#1843]
+    - docs: Fix auth-app examples in README [#1844]
+    - fix: fix typo in treesize logging [#1826]
+    - fix: set global signing secret fallback correctly [#1781]
+  * Enhancement
+    - feat(ocm): add WAYF configuration for reva OCM service
+      [#1714]
+    - log missing name or id attributes [#1914]
+    - collabora: Set IsAdminUser and IsAnonymousUser in
+      CheckFileInfo [#1745]
+  * Tests
+    - [full-ci] disable running ci with watch fs when full-ci
+      [#1902]
+    - api-tests: delete spaces before users [#1877]
+    - update tika version [#1872]
+    - add share sync to collaborativePosix suite [#1806]
+    - removed test virus files from repo [#1812]
+    - increase timeouts waiting for notification & search [#1802]
+    - Sync share before action [#1795]
+    - correct STORAGE_USERS_POSIX_WATCH_FS env typo in CI [#1746]
+  * Dependencies
+    - [full-ci] revaBump-v2.40.1 [#1927]
+    - [full-ci] chore: bump web to v4.2.1 [#1938]
+    - build(deps): bump google.golang.org/grpc from 1.76.0 to
+      1.77.0 [#1923]
+    - build(deps): bump github.com/nats-io/nats-server/v2 from
+      2.12.1 to 2.12.2 [#1922]
+    - build(deps): bump github.com/kovidgoyal/imaging from 1.7.2 to
+      1.8.17 [#1912]
+    - build(deps): bump golang.org/x/crypto from 0.44.0 to 0.45.0
+      [#1911]
+    - [decomposed]Update version 4.0.0 rc.2 [#1917]
+    - chore: bump web to v4.2.1-rc.1 [#1900]
+    - revaBump-getting#428 [#1887]
+    - build(deps): bump github.com/blevesearch/bleve/v2 from 2.5.4
+      to 2.5.5 [#1884]
+    - build(deps): bump github.com/olekukonko/tablewriter from
+      1.1.0 to 1.1.1 [#1869]
+    - build(deps): bump golang.org/x/term from 0.36.0 to 0.37.0
+      [#1845]
+    - reva-bump-2.39.2. update opencloud 4.0.0-rc.1 [#1849]
+    - build(deps): bump golang.org/x/sync from 0.17.0 to 0.18.0
+      [#1836]
+    - build(deps): bump golang.org/x/oauth2 from 0.32.0 to 0.33.0
+      [#1828]
+    - build(deps): bump github.com/KimMachineGun/automemlimit from
+      0.7.4 to 0.7.5 [#1787]
+    - build(deps): bump github.com/open-policy-agent/opa from 1.9.0
+      to 1.10.1 [#1788]
+    - Bump reva [#1786]
+    - build(deps): bump github.com/gabriel-vasile/mimetype from
+      1.4.10 to 1.4.11 [#1775]
+    - build(deps): bump github.com/nats-io/nats-server/v2 from
+      2.12.0 to 2.12.1 [#1706]
+    - build(deps): bump github.com/onsi/ginkgo/v2 from 2.27.1 to
+      2.27.2 [#1754]
+
+-------------------------------------------------------------------
 Mon Nov 03 17:36:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.7.0:

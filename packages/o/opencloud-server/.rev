@@ -47,4 +47,12 @@
     <comment>update to 3.7.0</comment>
     <requestid>1315368</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f1724a94a94b111ab81cd50b38917fa3</srcmd5>
+    <version>4.1.0</version>
+    <time>1766159038</time>
+    <user>anag_factory</user>
+    <comment>update to 4.1.0 (and fix version information in GUI)</comment>
+    <requestid>1323593</requestid>
+  </revision>
 </revisionlist>

@@ -17,10 +17,10 @@
 
 
 %define executable_name opencloud-server
-%define web_assets_version v4.2.0
+%define web_assets_version v4.3.0
 
 Name:           opencloud-server
-Version:        3.7.0
+Version:        4.1.0
 Release:        0
 Summary:        Secure and private way to store, access, and share your files
 License:        Apache-2.0
@@ -106,8 +106,9 @@ go build \
 %endif
    -ldflags=" \
    -X google.golang.org/protobuf/reflect/protoregistry.conflictPolicy=warn \
-   -X github.com/opencloud-eu/opencloud/pkg/version.String=v%{version} \
-   -X github.com/opencloud-eu/opencloud/pkg/version.Tag=${COMMIT_HASH} \
+   -X github.com/opencloud-eu/opencloud/pkg/version.Edition=rolling \
+   -X github.com/opencloud-eu/opencloud/pkg/version.String=${COMMIT_HASH:0:8} \
+   -X github.com/opencloud-eu/opencloud/pkg/version.Tag=v%{version} \
    -X github.com/opencloud-eu/opencloud/pkg/version.Date=${BUILD_DATE}" \
    -o ../bin/%{executable_name} ./cmd/opencloud
 
