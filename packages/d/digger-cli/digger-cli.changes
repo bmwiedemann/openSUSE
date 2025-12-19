@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Dec 19 08:15:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.138:
+  * feat/plan policies extra data (#2519)
+  * docs: replace old digger GH app with otaco (#2516)
+  * feat: OpenTaco rebranded docs (#2512)
+  * feat/new docs new (#2501)
+  * overide get_env function to avoid generation errors (#2508)
+  * add instructions to run docs locally (#2495)
+  * chore(docs): add railway self hosting instructions (#2496)
+  * commit sha logging (#2505)
+  * use goroutines during checks to fix the latency issue (#2506)
+  * fix set-status proxy error (#2504)
+  * feat/reconcliation of branches (#2498)
+  * introduce monitoring (#2503)
+  * Update staging-deploy.yml
+  * Update staging-deploy.yml
+  * Create staging-deploy.yml
+  * Move from callbacks to webhooks for repos handling - again - on
+    top of v0.6.136 this time (#2492)
+  * Bring back local development docs (#2491)
+  * Remove Securing Digger page (#2489)
+  * fix: silently skip repos without digger config for org-wide
+    installations (#2488)
+  * manual release for backend-ee (#2487)
+  * Revert "Switch from callbacks to webhooks for repos (#2466)"
+    (#2486)
+  * Switch from callbacks to webhooks for repos (#2466)
+  * bugs, add sentry handler, add diagnostic logging (#2482)
+  * Fix conclusion in checks api call (#2483)
+  * removal of unused functions, log error messages, correctly
+    ommit conclusion when '' (#2478)
+  * more active logs (#2470)
+  * improve log set status msg (#2477)
+  * Revert "Fix GitHub App OAuth flow for repository updates
+    (#2471)" (#2476)
+  * add docs on reducing pr noise (#2475)
+  * Fix GitHub App OAuth flow for repository updates (#2471)
+  * Update update-helm-on-release.yml (#2474)
+  * Update update-helm-on-release.yml
+  * Update update-helm-on-release.yml (#2473)
+  * Update pull_request_template.md
+  * Add docs for local development (#2472)
+
+-------------------------------------------------------------------
 Fri Nov 21 12:21:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.137:
