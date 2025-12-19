@@ -21,7 +21,7 @@
 %endif
 
 Name:           nvidia-settings
-Version:        580.105.08
+Version:        580.119.02
 Release:        0
 Summary:        Configure the NVIDIA graphics driver
 License:        GPL-2.0-only
