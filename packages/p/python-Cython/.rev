@@ -1353,4 +1353,12 @@
   * Under lock congestion, acquiring the GIL could crash in</comment>
     <requestid>1322582</requestid>
   </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>0991e19a2ce8c6040ad51e66e6fcae63</srcmd5>
+    <version>3.1.4</version>
+    <time>1766158992</time>
+    <user>anag_factory</user>
+    <comment>Revert https://bugzilla.opensuse.org/show_bug.cgi?id=1255386</comment>
+    <requestid>1323648</requestid>
+  </revision>
 </revisionlist>
