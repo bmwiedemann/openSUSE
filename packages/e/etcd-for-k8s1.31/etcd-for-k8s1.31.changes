@@ -1,6 +1,0 @@
--------------------------------------------------------------------
-Fri Aug 16 14:41:16 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
-
-- Initial package version 3.5.15:
-  * Version specified in kubernetes v1.31.0 - https://github.com/kubernetes/kubernetes/blob/v1.31.0/build/dependencies.yaml#L65-L66
-  * full changelog - https://github.com/etcd-io/etcd/blob/378207da5159ebb885bacb427bf4df7907dba445/CHANGELOG/CHANGELOG-3.5.md#v3515-2024-07-19
