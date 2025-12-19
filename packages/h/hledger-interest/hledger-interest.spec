@@ -23,7 +23,7 @@ Summary:        Computes interest for a given account
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/3.cabal#/%{name}.cabal
+Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/4.cabal#/%{name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-Cabal-prof
 BuildRequires:  ghc-Decimal-devel
