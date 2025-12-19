@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter-client
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-jupyter-client%{psuffix}
-Version:        8.6.3
+Version:        8.7.0
 Release:        0
 Summary:        Jupyter protocol implementation and client libraries
 License:        BSD-3-Clause
@@ -35,17 +35,16 @@ URL:            https://github.com/jupyter/jupyter_client
 Source:         https://files.pythonhosted.org/packages/source/j/jupyter_client/jupyter_client-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE jupyter-client-suse-remove-ifconfig-test.patch code@bnavigator.de -- we don't have `ifconfig` and don't need it because we have `ip`
 Patch10:        jupyter-client-suse-remove-ifconfig-test.patch
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatchling >= 1.5}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-jupyter-core >= 5.1
 Requires:       python-python-dateutil >= 2.8.2
-Requires:       python-pyzmq >= 23.0
-Requires:       python-tornado >= 6.2
+Requires:       python-pyzmq >= 25.0
+Requires:       python-tornado >= 6.4.1
 Requires:       python-traitlets >= 5.3
-Requires:       (python-importlib-metadata >= 4.8.3 if python-base < 3.10)
-Requires:       (python-jupyter-core >= 5.1 or (python-jupyter-core >= 4.12 with python-jupyter-core < 5.0))
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Provides:       python-jupyter_client = %{version}-%{release}
@@ -59,10 +58,11 @@ Obsoletes:      jupyter-jupyter-client-doc < %{version}-%{release}
 BuildArch:      noarch
 %if %{with test}
 # gh#jupyter/jupyter_client#787
+BuildRequires:  %{python_module anyio}
 BuildRequires:  %{python_module ipykernel >= 6.14}
 BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module jupyter-client = %{version}}
-BuildRequires:  %{python_module pytest-jupyter-client >= 0.4.1}
+BuildRequires:  %{python_module pytest-jupyter-client >= 0.6.2}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 # flaky is not an upstream dep, but for obs flakyness of parallel kernel test
@@ -113,7 +113,7 @@ donttest+=" or (TestKernelManager and test_stream_on_recv)"
 %if !%{with test}
 %files %{python_files}
 %license LICENSE
-%{python_sitelib}/jupyter_client-%{version}*-info
+%{python_sitelib}/jupyter_client-%{version}.dist-info
 %{python_sitelib}/jupyter_client/
 %python_alternative %{_bindir}/jupyter-kernel
 %python_alternative %{_bindir}/jupyter-kernelspec

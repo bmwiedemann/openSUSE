@@ -449,4 +449,24 @@ Update to 5.3.4</comment>
     <comment></comment>
     <requestid>1278584</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>185336fab7a82f66b0b72cc4c21a3df6</srcmd5>
+    <version>8.7.0</version>
+    <time>1766158938</time>
+    <user>anag_factory</user>
+    <comment>- Update to 8.7.0
+  ## Enhancements made
+  * allow configuring client_class and client_factory #1081
+    (@rgbkrk)
+  * Support date serialization in messages #1060 (@sebwills)
+  * feat: added --missing flag to list and remove subcommands #1056
+    (@wpk-nist-gov)
+  * Set protocol version to 5.4 #1054 (@JamesWrigley)
+  ## Bugs fixed
+  * don't include link-local addresses (169.254) in public_ips
+    #1040 (@minrk)
+  * jupyter-run: avoid traceback for NoSuchKernel #994 (@minrk)
+</comment>
+    <requestid>1323552</requestid>
+  </revision>
 </revisionlist>

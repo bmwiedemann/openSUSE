@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Dec 18 16:39:20 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 8.7.0
+  ## Enhancements made
+  * allow configuring client_class and client_factory #1081
+    (@rgbkrk)
+  * Support date serialization in messages #1060 (@sebwills)
+  * feat: added --missing flag to list and remove subcommands #1056
+    (@wpk-nist-gov)
+  * Set protocol version to 5.4 #1054 (@JamesWrigley)
+  ## Bugs fixed
+  * don't include link-local addresses (169.254) in public_ips
+    #1040 (@minrk)
+  * jupyter-run: avoid traceback for NoSuchKernel #994 (@minrk)
+
+-------------------------------------------------------------------
 Mon May 19 17:12:02 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - Drop skipping the tests for python 3.13
