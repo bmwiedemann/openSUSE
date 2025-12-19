@@ -56,4 +56,12 @@
     <comment></comment>
     <requestid>1277398</requestid>
   </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>c2c6c3135dc613be31dd888400ba3b35</srcmd5>
+    <version>0.2.0</version>
+    <time>1766158995</time>
+    <user>anag_factory</user>
+    <comment>- Add missing BuildRequires on setuptools.</comment>
+    <requestid>1323584</requestid>
+  </revision>
 </revisionlist>

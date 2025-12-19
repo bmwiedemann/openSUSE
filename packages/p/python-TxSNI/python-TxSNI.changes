@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 19 00:55:59 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing BuildRequires on setuptools.
+
+-------------------------------------------------------------------
 Wed May 14 10:56:21 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

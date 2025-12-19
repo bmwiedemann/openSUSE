@@ -1,7 +1,7 @@
 #
 # spec file for package python-TxSNI
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,12 +22,12 @@ Version:        0.2.0
 Release:        0
 Summary:        Python module for running a TLS server with Twisted
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/glyph/txsni
 Source0:        https://github.com/glyph/txsni/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module Twisted-tls >= 14.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyOpenSSL >= 0.14}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -56,7 +56,7 @@ This package brings support for running a TLS server with Twisted.
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/[Tt]x[Ss][Nn][Ii]
-%{python_sitelib}/[Tt]x[Ss][Nn][Ii]-%{version}*-info
+%{python_sitelib}/[Tt]x[Ss][Nn][Ii]-%{version}.dist-info
 %{python_sitelib}/twisted/plugins/txsni_endpoint.py
 %pycache_only %{python_sitelib}/twisted/plugins/__pycache__/txsni_endpoint*
 
