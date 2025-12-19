@@ -155,8 +155,8 @@ BuildRequires:  libicu-devel
 BuildRequires:  libselinux-devel
 %endif
 %if %{with llvm}
-BuildRequires:  gcc-c++
 BuildRequires:  clang%{product_libs_llvm_ver}
+BuildRequires:  gcc-c++
 BuildRequires:  llvm%{product_libs_llvm_ver}-devel
 %endif
 BuildRequires:  libxslt-devel
@@ -218,6 +218,8 @@ Patch9:         postgresql-var-run-socket.patch
 %if %{with llvm}
 Patch10:        postgresql-llvm-optional.patch
 Patch11:        0001-jit-Workaround-potential-datalayout-mismatch-on-s390.patch
+# PATCH-FIX-UPSTREAM - commit 0dceba2
+Patch12:        llvm-21-aarch64.patch
 %endif
 URL:            https://www.postgresql.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -550,6 +552,7 @@ touch -r configure tmp
 %if %{with llvm}
 %patch -P 10
 %patch -P 11
+%patch -P 12 -p1
 %endif
 touch -r tmp configure
 rm tmp
