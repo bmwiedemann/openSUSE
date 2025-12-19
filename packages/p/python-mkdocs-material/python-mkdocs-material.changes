@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 18 11:59:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.7.1:
+  * Updated requests to 2.30+ to mitigate CVE in urllib
+  * Fixed privacy plugin not picking up protocol-relative URLs
+  * Fixed #8542: false positives and negatives captured in privacy
+    plugin
+
+-------------------------------------------------------------------
 Tue Nov 11 10:17:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.7.0:

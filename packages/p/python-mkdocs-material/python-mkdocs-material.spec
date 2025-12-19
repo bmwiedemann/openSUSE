@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mkdocs-material
-Version:        9.7.0
+Version:        9.7.1
 Release:        0
 Summary:        Material theme for mkdocs
 License:        MIT
@@ -54,7 +54,7 @@ BuildRequires:  %{python_module Babel >= 2.10}
 BuildRequires:  %{python_module backrefs >= 5.8}
 BuildRequires:  %{python_module colorama >= 0.4}
 BuildRequires:  %{python_module paginate >= 0.5}
-BuildRequires:  %{python_module requests >= 2.31}
+BuildRequires:  %{python_module requests >= 2.3}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # Requirements for core
