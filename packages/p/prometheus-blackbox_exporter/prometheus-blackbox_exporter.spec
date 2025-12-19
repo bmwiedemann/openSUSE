@@ -1,7 +1,7 @@
 #
 # spec file for package prometheus-blackbox_exporter
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,9 @@ Source2:        prometheus-blackbox_exporter.service
 # This patch has been applied before generating vendor tarball
 Patch1:         0001-Bump-x-net.patch
 BuildRequires:  fdupes
+%if 0%{?sle_version} < 150000 && !0%{?is_opensuse}
+BuildRequires:  gcc11-c++
+%endif
 BuildRequires:  golang-github-prometheus-promu >= 0.17.0
 %if 0%{?rhel}
 BuildRequires:  golang >= 1.19
@@ -63,6 +66,10 @@ Prometheus blackbox exporter allows blackbox probing of endpoints over HTTP, HTT
 %build
 %ifarch i586 s390x armv7hl armv7l armv7l:armv6l:armv5tel armv6hl
 export BUILD_CGO_FLAG="--cgo"
+%if 0%{?sle_version} < 150000 && !0%{?is_opensuse}
+export CC=gcc-11
+export CXX=g++-11
+%endif
 %endif
 export GOFLAGS="-buildmode=pie"
 promu build -v $BUILD_CGO_FLAG

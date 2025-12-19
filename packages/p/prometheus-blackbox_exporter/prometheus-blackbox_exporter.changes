@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 17 11:15:45 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Require gcc11-c++ for building with SLE 12
+
+-------------------------------------------------------------------
 Tue May 27 08:31:08 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Rebase 0001-Bump-x-net.patch.
