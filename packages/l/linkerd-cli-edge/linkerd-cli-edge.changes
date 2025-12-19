@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Dec 19 08:13:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 25.12.3:
+  No CLI-related changes in the changelog
+  Dependencies
+  * chore(deps): bump proxy-init(v2.4.4), linkerd-cni(v1.6.5) and
+    validator(0.1.5) (#14816)
+  * build(deps): bump hostname from 0.4.1 to 0.4.2 (#14787)
+  * build(deps): bump socket2 from 0.6.0 to 0.6.1 (#14811)
+  * build(deps): bump rustls-pki-types from 1.13.0 to 1.13.1
+    (#14810)
+  * build(deps): bump the kube group with 7 updates (#14797)
+  * build(deps): bump indexmap from 2.12.0 to 2.12.1 (#14785)
+  * build(deps): bump tj-actions/changed-files (#14799)
+  * build(deps-dev): bump webpack-bundle-analyzer in /web/app
+    (#14802)
+  * build(deps): bump helm.sh/helm/v3 from 3.19.2 to 3.19.4
+    (#14804)
+  * build(deps): bump actions/upload-artifact from 5.0.0 to 6.0.0
+    (#14806)
+  * build(deps): bump actions/download-artifact from 6.0.0 to 7.0.0
+    (#14807)
+  * build(deps): bump tokio-metrics from 0.4.5 to 0.4.6 (#14784)
+  * build(deps): bump google.golang.org/protobuf from 1.36.10 to
+    1.36.11 (#14805)
+  * build(deps): bump dessant/lock-threads from 5.0.1 to 6.0.0
+    (#14808)
+  * build(deps): bump actions/download-artifact (#14809)
+
+-------------------------------------------------------------------
 Thu Dec 11 07:55:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 25.12.2:
