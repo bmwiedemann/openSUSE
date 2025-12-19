@@ -4197,4 +4197,12 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
 - fixes CVE-2025-65955 [bsc#1254435]</comment>
     <requestid>1322137</requestid>
   </revision>
+  <revision rev="320" vrev="2">
+    <srcmd5>82c9511058b1987b3afe2104654782e2</srcmd5>
+    <version>7.1.2.10</version>
+    <time>1766158989</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1323638</requestid>
+  </revision>
 </revisionlist>

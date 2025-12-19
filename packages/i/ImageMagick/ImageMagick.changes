@@ -5,6 +5,7 @@ Sun Dec  7 15:06:32 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
   * no upstream changelog, see
     https://github.com/ImageMagick/ImageMagick/compare/7.1.2-8..7.1.2-10
 - fixes CVE-2025-65955 [bsc#1254435]
+        CVE-2025-66628 [bsc#1254820]
 
 -------------------------------------------------------------------
 Thu Nov  6 14:37:08 UTC 2025 - Dirk Stoecker <opensuse@dstoecker.de>
