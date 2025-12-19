@@ -2354,4 +2354,11 @@ See https://build.opensuse.org/request/show/1286046</comment>
     <comment></comment>
     <requestid>1315672</requestid>
   </revision>
+  <revision rev="330" vrev="328">
+    <srcmd5>1c2a0785d73c89f208fb301d5ae8b530</srcmd5>
+    <version>unknown</version>
+    <time>1766147953</time>
+    <user>dimstar_suse</user>
+    <comment>Suggest sudo and pkexec; run0-wrappers are not yet ready</comment>
+  </revision>
 </revisionlist>

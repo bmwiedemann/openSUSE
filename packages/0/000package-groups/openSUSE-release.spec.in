@@ -37,9 +37,9 @@ Suggests:       mariadb
 Suggests:       mariadb-client
 Suggests:       openSUSE-build-key
 Suggests:       openSUSE-repos-Tumbleweed
-Suggests:       openssl-1_1
-# https://progress.opensuse.org/issues/121960
-Suggests:       procps < 4
+# sudo and pkexec are provided by the new run0-wrappers too
+Suggests:       sudo
+Suggests:       pkexec
 Conflicts:      core-release <= 10
 Conflicts:      distribution-release
 Conflicts:      sled-release <= 10

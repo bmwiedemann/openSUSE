@@ -34,6 +34,9 @@ Suggests:       java-25-openjdk
 Suggests:       java-25-openjdk-devel
 Suggests:       openSUSE-build-key
 Suggests:       openSUSE-repos-MicroOS
+# sudo and pkexec are provided by the new run0-wrappers too
+Suggests:       sudo
+Suggests:       pkexec
 Conflicts:      distribution-release
 Conflicts:      kernel < 4.4
 Provides:       distribution-release
