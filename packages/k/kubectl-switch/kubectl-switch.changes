@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Dec 19 08:17:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.4.1:
+  * Bug Fixes
+    - go: update k8s.io/apimachinery ( v0.34.3 → v0.35.0 )
+      (83b0710)
+  * Documentation
+    - update readme (526e140)
+  * CI/CD
+    - github-action: update renovatebot/github-action ( v44.1.0 →
+      v44.2.0 ) (a51a5b3)
+
+-------------------------------------------------------------------
 Tue Dec 16 05:51:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.4.0:

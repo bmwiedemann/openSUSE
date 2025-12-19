@@ -17,7 +17,7 @@
 
 
 Name:           kubectl-switch
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        Simple tool to help manage multiple kubeconfig files
 License:        MIT
@@ -27,7 +27,7 @@ Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.24
+BuildRequires:  golang(API) >= 1.25
 
 %description
 kubectl-switch is a command-line tool for managing and switching between
