@@ -139,4 +139,12 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1285491</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>6fc22ce97a497f87ab9fcc99bc63763f</srcmd5>
+    <version>0.8.0</version>
+    <time>1766158998</time>
+    <user>anag_factory</user>
+    <comment>- Add missing pytest plugins to BuildRequires, and disable strict mode.</comment>
+    <requestid>1323585</requestid>
+  </revision>
 </revisionlist>

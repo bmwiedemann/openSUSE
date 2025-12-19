@@ -1,7 +1,7 @@
 #
 # spec file for package python-vistir
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,6 @@ Version:        0.8.0
 Release:        0
 Summary:        Utilities for filesystems, paths, projects, subprocesses, and more
 License:        ISC
-Group:          Development/Languages/Python
 URL:            https://github.com/sarugaku/vistir
 Source:         https://github.com/sarugaku/vistir/archive/refs/tags/v%{version}.tar.gz#/vistir-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
@@ -36,6 +35,9 @@ BuildArch:      noarch
 BuildRequires:  %{python_module colorama >= 0.3.4}
 BuildRequires:  %{python_module hypothesis-fspaths}
 BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module pytest-flake8}
+BuildRequires:  %{python_module pytest-rerunfailures}
+BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 # /SECTION
@@ -48,7 +50,7 @@ subprocesses, and more.
 %prep
 %setup -q -n vistir-%{version}
 
-sed -i '/invoke/d;/parver/d;/wheel$/d;/addopts/d' setup.cfg
+sed -i '/invoke/d;/parver/d;/wheel$/d;/addopts/d;/strict/d' setup.cfg
 
 %build
 %pyproject_wheel
@@ -74,6 +76,6 @@ $python -m pytest -v -k "not ($skip_tests)"
 %doc CHANGELOG.rst README.rst
 %license LICENSE
 %{python_sitelib}/vistir
-%{python_sitelib}/vistir-%{version}*-info
+%{python_sitelib}/vistir-%{version}.dist-info
 
 %changelog
