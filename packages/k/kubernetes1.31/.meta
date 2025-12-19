@@ -1,5 +1,0 @@
-<package name="kubernetes1.31" project="openSUSE:Factory">
-  <title>kubernetes1.31</title>
-  <description>Kubernetes is an open source container orchestration engine for automating deployment, scaling, and management of containerized applications.</description>
-  <devel project="devel:kubic" package="kubernetes1.31"/>
-</package>
