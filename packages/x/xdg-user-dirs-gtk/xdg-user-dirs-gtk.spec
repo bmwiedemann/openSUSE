@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-user-dirs-gtk
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xdg-user-dirs-gtk
-Version:        0.14
+Version:        0.16
 Release:        0
 Summary:        Xdg-user-dir support for Gnome and Gtk+ applications
 License:        GPL-2.0-or-later
@@ -64,6 +64,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/user-dirs-update-gtk.
 %{_bindir}/xdg-user-dirs-gtk-update
 %config(noreplace) %{_sysconfdir}/xdg/autostart/user-dirs-update-gtk.desktop
 %{_datadir}/applications/user-dirs-update-gtk.desktop
+%{_userunitdir}/user-dirs-update-gtk.service
 
 %files lang -f %{name}.lang
 

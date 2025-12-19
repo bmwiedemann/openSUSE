@@ -228,4 +228,14 @@
     <comment>Yet a new release (forwarded request 1238786 from iznogood)</comment>
     <requestid>1239208</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>29eb7d76e7d61be098578bb9531edf9a</srcmd5>
+    <version>0.16</version>
+    <time>1766158931</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.16:
+  + autostart: Add systemd service
+  + Updated translations. (forwarded request 1322813 from iznogood)</comment>
+    <requestid>1323518</requestid>
+  </revision>
 </revisionlist>
