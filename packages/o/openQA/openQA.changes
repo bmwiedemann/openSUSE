@@ -1,7 +1,8 @@
 -------------------------------------------------------------------
-Thu Dec 18 03:54:10 UTC 2025 - okurz@suse.com
+Thu Dec 18 17:20:22 UTC 2025 - okurz@suse.com
 
-- Update to version 5.1766014013.377e64fe:
+- Update to version 5.1766053374.57cdeee3:
+  * fix(docs): Fix indentation in job template examples
   * feat(Needle::Save): Adapt to new error handling
   * feat(OpenQA::Git): Make error handling more flexible with exceptions
 
