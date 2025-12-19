@@ -202,4 +202,38 @@
   * clean up loop on close</comment>
     <requestid>1165945</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>046f393f4e02351aa989a99d6f5fa2a7</srcmd5>
+    <version>2025.12.0</version>
+    <time>1766159009</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2025.12.0:
+  * fix info() performance regression (#705)
+  * mkdir should not create bucket by default (#701)
+  * fix slow ls iterations (#697)
+  * Ensure right error type for get() on nonexistent (#695)
+  * acknowledge Anaconda support (#691)
+  * Fix token timezone comparison (#683, 688)
+  * Avoid deprecated utcnow (#680)
+  * Add support for specifying Cloud KMS keys when creating files (#679)
+  * Yet another fix for isdir (#676)
+  * Create warning for appending mode ‘a’ operations (#675)
+  * add userProject to batch deletion query (#673)
+  * Fix find with path not ending with “/” (#668)
+  * remove “beta” note from doc (#666)
+  * don’t check expiry of creds that don’t expire (#665)
+  * Improvements for credentials refresh under high load (#658)
+  * guess upload file MIME types (#655)
+  * better shutdown cleanup (#657)
+  * Exclusive write (#651)
+  * Avoid IndexError on integer seconds (#649)
+  * note on non-posixness (#648)
+  * handle chache_timeout=0 (#646)
+  * Remove race condition in credentials (#643)
+  * fix md5 hash order logic (#640)
+  * In case error in a pure string (#631)
+  * swap order of “gcs”, “gs” protocols (#620)
+  * fix get_file for relative lpath (#618)</comment>
+    <requestid>1323589</requestid>
+  </revision>
 </revisionlist>

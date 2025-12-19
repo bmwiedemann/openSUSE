@@ -1,7 +1,7 @@
 #
 # spec file for package python-gcsfs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-gcsfs
-Version:        2024.3.1
+Version:        2025.12.0
 Release:        0
 Summary:        Filesystem interface over GCS
 License:        BSD-3-Clause
@@ -36,6 +36,7 @@ Requires:       python-fsspec = %{version}
 Requires:       python-google-auth >= 1.2
 Requires:       python-google-auth-oauthlib
 Requires:       python-google-cloud-storage
+Requires:       python-google-cloud-storage-control
 Requires:       python-requests
 Recommends:     dask
 Recommends:     python-gcsfs-fuse = %{version}
@@ -51,7 +52,9 @@ BuildRequires:  %{python_module google-api-core}
 BuildRequires:  %{python_module google-api-python-client}
 BuildRequires:  %{python_module google-auth >= 1.2}
 BuildRequires:  %{python_module google-auth-oauthlib}
+BuildRequires:  %{python_module google-cloud-storage-control}
 BuildRequires:  %{python_module google-cloud-storage}
+BuildRequires:  %{python_module grpc-google-iam-v1}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
@@ -104,7 +107,7 @@ donttest+=" or test_credentials_from_raw_token or test_sign"
 %pytest -rfEs -k "not ($donttest)"
 
 %files %{python_files}
-%doc README.rst
+%doc README.md
 %license LICENSE.txt
 %{python_sitelib}/gcsfs-%{version}.dist-info
 %{python_sitelib}/gcsfs/
