@@ -39,7 +39,7 @@ https://www.kernel.org/doc/Documentation/networking/generic-hdlc.txt
 %setup -q
 
 %build
-rm sethdlc
+rm -f sethdlc
 gcc %{optflags} %{name}.c -o %{name}
 
 %install

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 18 17:42:24 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use rm -f so it does not fail when binary is gone
+
+-------------------------------------------------------------------
 Tue Dec 22 09:22:06 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version 1.18
