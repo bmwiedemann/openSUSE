@@ -27,7 +27,7 @@
 %define   import_path     %{provider_prefix}
 
 Name:           shadowsocks-v2ray-plugin
-Version:        5.37.0
+Version:        5.41.0
 Release:        0
 Summary:        SIP003 plugin for shadowsocks
 License:        MIT
@@ -37,6 +37,7 @@ Source0:        https://github.com/teddysun/v2ray-plugin/archive/v%{version}/%{r
 Source1:        vendor.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
+BuildRequires:  golang(API) >= 1.25
 AutoReqProv:    Off
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{go_provides}

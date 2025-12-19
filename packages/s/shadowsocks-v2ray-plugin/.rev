@@ -70,4 +70,13 @@
 - Drop update-vendor.patch, fixed by upstream (forwarded request 1304097 from hillwood)</comment>
     <requestid>1304098</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d539e134e199b568f5e07c1e8fdd1e12</srcmd5>
+    <version>5.41.0</version>
+    <time>1766159170</time>
+    <user>anag_factory</user>
+    <comment>- Update version to 5.41.0
+  * Update v2ray-core to v5.41.0 (forwarded request 1323672 from hillwood)</comment>
+    <requestid>1323673</requestid>
+  </revision>
 </revisionlist>
