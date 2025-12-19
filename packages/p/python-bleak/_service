@@ -1,12 +1,15 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="versionformat">0.22.3</param>
+    <param name="versionformat">1.1.1</param>
     <param name="url">https://github.com/hbldh/bleak.git</param>
     <param name="filename">python-bleak</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
-    <param name="exclude">.*</param>
-    <param name="revision">b094466</param>
+    <param name="exclude">.git*</param>
+    <param name="exclude">.editorconfig</param>
+    <param name="exclude">.readthedocs*</param>
+    <param name="exclude">.vscode</param>
+    <param name="revision">2564f91</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="compression">xz</param>

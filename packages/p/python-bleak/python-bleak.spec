@@ -1,7 +1,7 @@
 #
 # spec file for package python-bleak
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,28 +27,25 @@
 %define pname bleak
 %{?sle15_python_module_pythons}
 Name:           python-%{pname}%{psuffix}
-Version:        0.22.3
+Version:        1.1.1
 Release:        0
 Summary:        Python GATT client
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/hbldh/bleak
 Source0:        python-%{pname}-%{version}.tar.xz
 BuildArch:      noarch
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module dbus_fast >= 1.83.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
-BuildRequires:  %{python_module setuptools}
 %if %python_version_nodots < 311
 BuildRequires:  %{python_module async_timeout >= 3.0.0}
 %endif
 %if %{with test}
-BuildRequires:  %{python_module async_timeout}
-BuildRequires:  %{python_module bleak}
-BuildRequires:  %{python_module pytest >= 7.0.0}
-BuildRequires:  %{python_module pytest-asyncio >= 0.19.0}
+BuildRequires:  %{python_module bleak = %{version}}
+BuildRequires:  %{python_module pytest >= 8.2.1}
+BuildRequires:  %{python_module pytest-asyncio >= 0.23.7}
 BuildRequires:  %{python_module pytest-cov >= 3.0.0}
-BuildRequires:  %{python_module typing_extensions >= 4.7.0}
 %endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

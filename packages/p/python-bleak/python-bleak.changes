@@ -1,4 +1,119 @@
 -------------------------------------------------------------------
+Wed Oct 29 01:57:00 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to version 1.1.1:
+  * bluezdbus: improve D-Bus connection error handling in manager
+  * backends/bluez: don't bind lambda to loop variable
+  * backends/p4android/client: initialize __callbacks to None
+  * backends/winrt/client: call disconnect callback on disconnect
+  * Pythonista iOS app backend support
+  * bleak: add BleakClient.name property
+  * backends: p4android: fix connect()
+  * examples/service_explorer: pass objects directly instead of handles
+  * Update service_explorer.py
+  * github: add -v option to pytest
+  * backends: bluezdbus: restore deprecated imports
+  * backends/device: restore **kwargs in BLEDevice constructor
+  * bluez: client: fix a few static typing complaints
+  * "tomli" was included in Python 3.11 as "tomllib" (#1782)
+  * bleak: use backend-specific key for seen_devices
+  * backends: bluez: handle address change after pairing
+  * bleak: use longer timeout when pairing during connect
+  * build(deps-dev): bump urllib3 from 1.26.19 to 2.5.0
+  * backends: winrt: scanner: enable extended advertising
+  * build(deps-dev): bump requests from 2.32.0 to 2.32.4
+  * github: add stale bot messages
+  * backends: winrt: deprecate protection_level
+  * backends: winrt: try highest pairing level first
+  * backends: winrt: fix pair debug message with wrong value
+  * backends: winrt: improve pairing error message
+  * backends: winrt: swap order of is_paired and can_pair check
+  * backends: winrt: move protection_level out of parameters
+  * backends/characteristic: fix type hint
+  * typings: fix a couple mypy complaints
+  * backends: winrt: don't wait for disconnect
+  * backends: service: fix a type error with cast
+  * backends: refactor resolving descriptors
+  * backends: refactor common characteristics lookup code
+  * backends: service: remove BleakGATTService subclasses
+  * backends: characteristic: remove subclasses
+  * backends: descriptor: remove subclassess
+  * backends: corebluetooth: improve typings
+  * backends: bluezdbus: fix regression in connect() method
+  * backends: bluez: use None for name instead of address
+  * backends: scanner: fix type of device name
+  * examples: include device name in info
+  * backends: android: drop __del__ methods
+  * backends: scanner: use override decorator
+  * backends: scanner: remove set_scanning_filter() method
+  * backends: client: use @override decorator
+  * backends: get_services is no longer a required method
+  * typings/Foundation: add NSBundle
+  * typing: ignore PlatformBleakScanner constructor complaints
+  * backends: winrt: rename RawAdvData
+  * fix Self imports
+  * examples: more typing fixes
+  * examples: use {} instead of dict() for backend args
+  * bleak.args: add new sub-package for backend-specific args
+  * examples: strongly typed args namespace
+  * use absolute import instead of relative
+  * typings: fix wrong file extension
+  * backends: winrt: more typing improvements
+  * backends: bluez: type hint improvements
+  * general type hint improvements
+  * examples: fix wrong kwarg name
+  * backends: add hack to ignore different platforms from type checkers
+  * backends: bluez: fix wrong import module
+  * typing: fix unreachable
+  * typing: add explicit type for kwargs
+  * typing: fix missing generic type arguments
+  * typing: use collections.abc instead of deprecated typing aliases
+  * typing: use python 3.9 type[T] instead of typing.Type[T]
+  * typing: use python 3.9 set[T] instead of typing.Set
+  * typing: use python 3.9 dict[K, V] instead of typing.Dict
+  * typing: use python 3.9 tuple[...] instead of typing.Tuple[...]
+  * typing: use Python 3.9 list[T] instead of List[T]
+  * Update macos.rst
+  * docs: update RPi troubleshooting section
+  * github: only build and test if code changes
+  * github: add bot to close stale issues
+  * Drop support for BlueZ < 5.55
+  * Drop support for macOS < 10.13
+  * change connect/disconnect/pair/unpair method returns to None
+  * Remove deprecated properties from BLEDevice.
+  * don't allow calling is_connected as a method
+  * bleak: remove deprecated methods
+  * remove deprecated parameters
+  * bleak: undeprecate response=None arg to BleakClient.write_gatt_char()
+  * pyproject update jinja2
+  * docs/macos: elaborate on pairing
+  * corebluetooth: add type hints for new notification discriminator
+  * pyproject: update docs dependencies
+  * docs: remove requirements.txt
+  * bluez/characteristic: remove unused _GattCharacteristicsFlagsEnum
+  * bleak: add pair param to BleakClient()
+  * Corebluetooth: add notification descriminator (#1742)
+  * make extraction of device path from characteristic path more robust
+  * winrt: move event wait inside timeout
+  * winrt: improve logging in pair method
+  * winrt: fix another winrt v3 api change
+  * winrt: improve type hints for adv data args
+  * docs: ignore .venv dircectory
+  * bluez: Fix DBus connection leak by utilizing AsyncExitStack
+  * bluez: fix service interface leak
+  * bleak: restore description of response=None
+  * pyproject: remove upper bound on most dependency versions
+  * pyproject: drop support for Python 3.8
+  * bleak: deprecate omitting write_gatt_char() response arg
+  * setup.cfg: ignore Flake E231
+  * Update flake8 to 7.1.1 to fix false-positives
+  * Update black formatting
+  * Update poetry to v2
+  * Log to stderr instead of stdout by default
+  * github: drop -dev from Python 3.13
+  * Changing docstring with demo-code to r-string.
+
+-------------------------------------------------------------------
 Tue Nov 26 14:30:11 UTC 2024 - mmachova@suse.com
 
 - Update to version 0.22.3:
