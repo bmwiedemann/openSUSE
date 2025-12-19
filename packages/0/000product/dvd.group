@@ -3817,7 +3817,7 @@
     <package name="ruby3.4-rubygem-ruby-augeas" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="ruby3.4-rubygem-ruby-dbus" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="ruby3.4-rubygem-simpleidn" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
-    <package name="run0-wrappers" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="run0-wrappers" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="salt" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="salt-master" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="salt-minion" supportstatus="unsupported"/> <!-- reason: dvd:salt-minion -->
@@ -3933,8 +3933,8 @@
     <package name="step-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="stix-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="strace" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="sudo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="sudo-plugin-python" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="sudo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="sudo-plugin-python" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="suse-module-tools" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="suse-module-tools-scriptlets" supportstatus="unsupported"/> <!-- reason: dvd:suse-module-tools-scriptlets -->
     <package name="susepaste" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
