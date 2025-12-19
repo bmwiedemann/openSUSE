@@ -220,4 +220,16 @@
   gh#Calysto/metakernel#279</comment>
     <requestid>1268617</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b41459aff1292b6e9d1945e26592b536</srcmd5>
+    <version>0.30.4</version>
+    <time>1766158975</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.30.4:
+  * Add support for ipykernel 7 and update supported Python
+    versions #296 (@blink1073)
+  * Update supported Pythons and fix links
+</comment>
+    <requestid>1323550</requestid>
+  </revision>
 </revisionlist>

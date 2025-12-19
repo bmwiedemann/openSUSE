@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec  1 21:51:49 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.30.4:
+  * Add support for ipykernel 7 and update supported Python
+    versions #296 (@blink1073)
+  * Update supported Pythons and fix links
+
+-------------------------------------------------------------------
 Fri Apr 11 12:55:13 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.30.3:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-metakernel
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-metakernel
-Version:        0.30.3
+Version:        0.30.4
 Release:        0
 Summary:        Metakernel for Jupyter
 License:        BSD-3-Clause
@@ -30,16 +30,16 @@ BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-ipykernel >= 5.5.6
 Requires:       python-jedi >= 0.18
 Requires:       python-jupyter-core >= 4.9.2
 Requires:       python-pexpect >= 4.8
-Requires:       (python-ipykernel >= 5.5.6 with python-ipykernel < 7)
 Recommends:     python-ipyparallel
 Provides:       python-jupyter_metakernel = %{version}
 Obsoletes:      python-jupyter_metakernel < %{version}
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module ipykernel >= 5.5.6 with %python-ipykernel < 7}
+BuildRequires:  %{python_module ipykernel >= 5.5.6}
 BuildRequires:  %{python_module jupyter-core >= 4.9.2}
 BuildRequires:  %{python_module pexpect >= 4.8}
 BuildRequires:  %{python_module pytest-timeout}
