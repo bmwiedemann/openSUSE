@@ -17,7 +17,7 @@
 
 
 Name:           xournalpp
-Version:        1.2.10
+Version:        1.3.0
 Release:        0
 Summary:        Notetaking software designed around a tablet
 License:        GPL-2.0-or-later
@@ -26,6 +26,8 @@ URL:            https://github.com/xournalpp/xournalpp
 Source0:        https://github.com/xournalpp/xournalpp/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  fdupes
+BuildRequires:  gcc-c++
+BuildRequires:  help2man
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  texlive-latex-bin
@@ -33,6 +35,7 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtksourceview-4)
+BuildRequires:  pkgconfig(libqpdf) >= 10.6.0
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libzip)
@@ -44,11 +47,6 @@ BuildRequires:  pkgconfig(zlib)
 Recommends:     webp-pixbuf-loader
 Recommends:     tex(scontents.tex)
 Recommends:     tex(standalone.tex)
-%if 0%{?suse_version} < 1550
-BuildRequires:  gcc9-c++
-%else
-BuildRequires:  gcc-c++
-%endif
 
 %description
 Xournal++ is a hand note taking software.
@@ -60,11 +58,11 @@ It supports pen input, e.g. Wacom tablets.
 %autosetup -p1
 
 %build
-%cmake -DENABLE_MATHTEX=ON \
-%if 0%{?suse_version} < 1550
-       -DCMAKE_CXX_COMPILER="%{_bindir}/g++-9" \
-%endif
-       %{nil}
+%cmake \
+  -DDISTRO_CODENAME="openSUSE Linux" \
+  -DENABLE_CPPTRACE=OFF \
+  -DMAN_COMPRESS=OFF \
+  %{nil}
 %cmake_build
 
 %install
@@ -75,8 +73,9 @@ It supports pen input, e.g. Wacom tablets.
 %files
 %license LICENSE
 %doc AUTHORS README.md
-%{_bindir}/xournalpp-thumbnailer
 %{_bindir}/xournalpp
+%{_bindir}/xournalpp-thumbnailer
+%{_bindir}/xournalpp-wrapper
 %{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/scalable/mimetypes/*.svg
 %{_datadir}/icons/hicolor/*/apps/*
@@ -85,6 +84,7 @@ It supports pen input, e.g. Wacom tablets.
 %dir %{_datadir}/thumbnailers
 %{_datadir}/thumbnailers/*.thumbnailer
 %{_datadir}/xournalpp/
+%{_mandir}/man1/xournalpp*.1%{?ext_man}
 
 %files lang -f xournalpp.lang
 
