@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Fri Dec 19 16:04:39 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.3.1+git0.9c24c11a6:
+  * [RELEASE] Released version 3.3.1
+  * BUG/MEDIUM: mux-h2: synchronize all conditions to create a new backend stream
+  * BUG/MEDIUM: backend: Do not remove CO_FL_SESS_IDLE in assign_server()
+  * BUG/MEDIUM: quic: Don't try to use hystart if not implemented
+  * BUG/MINOR: quic-be: Missing keywords array NULL termination
+  * MINOR: quic: implement cc-algo server keyword
+  * MINOR: quic: extract cc-algo parsing in a dedicated function
+  * MINOR: quic: define quic_cc_algo as const
+  * Revert "MINOR: quic: use dynamic cc_algo on bind_conf"
+  * BUG/MEDIUM: stconn: Don't report abort from SC if read0 was already received
+  * BUG/MEDIUM: http-ana: Properly detect client abort when forwarding response (v2)
+  * MINOR: h2/trace: emit a trace of the received RST_STREAM type
+  * BUG/MEDIUM: h3: fix access to QCS <sd> definitely
+  * BUG/MEDIUM: ssl: Don't resume session for check connections
+  * BUG/MEDIUM: ssl: Don't store the ALPN for check connections
+  * MINOR: connections: Add a new CO_FL_SSL_NO_CACHED_INFO flag
+  * BUG/MEDIUM: ssl: Always check the ALPN after handshake
+  * MEDIUM: ssl/server: No longer store the SNI of cached TLS sessions
+  * BUG/MEDIUM: ssl: Don't reuse TLS session if the connection's SNI differs
+  * MEDIUM: tcpcheck/backend: Get the connection SNI before initializing SSL ctx
+  * MINOR: connection/ssl: Store the SNI hash value in the connection itself
+  * MINOR: ssl: Compare hashes instead of SNIs when a session is cached
+  * MINOR: ssl: Store hash of the SNI for cached TLS sessions
+  * MINOR: ssl: Add a function to hash SNIs
+  * MEDIUM: quic: Add connection as argument when qc_new_conn() is called
+  * BUG/MINOR: mworker/cli: 'show proc' is limited by buffer size
+  * CLEANUP: mworker/cli: remove useless variable
+  * BUG/MEDIUM: h3: do not access QCS <sd> if not allocated
+  * DOC: config: Improve spop mode documentation
+  * DOC: config: Fix description of the spop mode
+  * BUG/MEDIUM: http-ana: Don't close server connection on read0 in TUNNEL mode
+  * BUG/MINOR: log: Dump good %B and %U values in logs
+  * BUG/MINOR: ssl: Don't allow to set NULL sni
+  * BUG/MINOR: quic: do not set first the default QUIC curves
+  * BUG/MINOR: quic-be: missing connection stream closure upon TLS alert to send
+  * MINOR: quic: avoid code duplication in TLS alert callback
+  * MINOR: quic: Add useful debugging traces in qc_idle_timer_do_rearm()
+  * BUG/MINOR: quic-be: handshake errors without connection stream closure
+  * BUG/MINOR: quic/ssl: crash in ClientHello callback ssl traces
+  * DOC: config: reorder the cache section's keywords
+  * DOC: config: mention clearer that the cache's total-max-size is mandatory
+  * BUG/MEDIUM: config: ignore empty args in skipped blocks
+  * BUG/MEDIUM: connection: fix "bc_settings_streams_limit" typo
+  * DOC: configuration: ECH support details
+  * BUG/MINOR: jwt: Missing "case" in switch statement
+  * BUG/MEDIUM: mworker/listener: ambiguous use of RX_F_INHERITED with shards
+
+-------------------------------------------------------------------
 Wed Nov 26 15:48:38 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 3.3.0+git0.7832fb21f:
