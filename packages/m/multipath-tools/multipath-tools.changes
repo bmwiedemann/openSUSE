@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Dec 17 21:34:12 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 0.13.0+229+suse.dbac936f:
+  * multipath-tools tests: adaptations for cmocka 2.0
+    (bsc#1255045, gh#opensvc/multipath-tools#129)
+  * libmpathutil: use union for bitfield (bsc#1255285)
+  * libmultipath: don't access path members in free_pgvec()
+    (gh#opensvc/multipath-tools#128)
+
+- Include reviewed upstream fixes post 0.13.0:
+  * more mpathpersist fixes
+  * hwtable updates
+
+-------------------------------------------------------------------
+Mon Nov 17 16:11:43 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 0.13.0+201+suse.821510bc:
+
+  * CI: more GitHub workflow updates. No code changes.
+
+-------------------------------------------------------------------
+Mon Nov 17 14:18:51 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 0.13.0+186+suse.9a8e81de:
+
+  * CI: GitHub workflow updates. No code changes.
+
+-------------------------------------------------------------------
 Tue Nov 11 16:09:37 UTC 2025 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 0.13.0+127+suse.37f9a4c9
