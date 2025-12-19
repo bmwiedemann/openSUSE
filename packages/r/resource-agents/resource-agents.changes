@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Dec 17 17:47:09 UTC 2025 - Peter Varkoly <varkoly@suse.com>
+
+- Update to version 4.17.0+git18.92719d83:
+  * Filesystem: signal many processes in parallel
+  * podman-etcd: sync environment variables with Pod manifest
+  * OCPEDGE-2231: podman-etcd: improve error handling to support retry on start errors (#2105)
+  * Filesystem: new force_unmount=move option
+  * Filesystem: try umount immediately after signals are sent
+  * Filesystem: tmpfs/overlayfs have no need for systemd_drop_in
+  * Filesystem: improve shell trace (set -x) output
+  * OCPEDGE-2213: podman-etcd: fix to prevent learner from starting before cluster is ready (#2098)
+  * exportfs: fix grep error on stop
+
+-------------------------------------------------------------------
 Tue Nov 25 13:22:46 UTC 2025 - Peter Varkoly <varkoly@suse.com>
 
 - Update to version 4.17.0+git5.e3a22113:
