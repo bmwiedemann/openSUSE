@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Dec 19 08:21:41 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.221.0:
+  * Improvements
+    - added support us-isob-west-1 region (#8602)
+  * Bug Fixes
+    - Fix failures in cluster deletion in regions without
+      capability support (#8631)
+    - Add taints for AL2023 NodeGroups as tolerations for Nvidia
+      device plugin daemonset (#8627)
+  * Maintenance
+    - Update ec2-info (#8578)
+
+-------------------------------------------------------------------
 Thu Dec 04 06:03:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.220.0:
