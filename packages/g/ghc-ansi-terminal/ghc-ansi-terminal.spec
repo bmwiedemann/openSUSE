@@ -19,7 +19,7 @@
 %global pkg_name ansi-terminal
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        1.1.3
+Version:        1.1.4
 Release:        0
 Summary:        Simple ANSI terminal support
 License:        BSD-3-Clause
