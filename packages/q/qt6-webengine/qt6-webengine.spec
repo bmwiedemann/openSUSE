@@ -15,12 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%ifarch aarch64
-# Temp workaround for boo#1251922
-%define _lto_cflags %{nil}
-%endif
-
 %define real_version 6.10.1
 %define short_version 6.10
 %define tar_name qtwebengine-everywhere-src
@@ -386,6 +380,11 @@ ABI or API guarantees.
 # Ensure that also the internal chromium build follows the right number of
 # parallel processes instead of its defaults.
 export NINJAFLAGS="%{?_smp_mflags}"
+
+%ifarch aarch64
+# Workaround for boo#1251922: force -mno-outline-atomics through the gn build for aarch64
+sed -e 's/cflags = \[\]/cflags = \[ \"-mno-outline-atomics\" \]/' -i ./src/3rdparty/chromium/build/config/linux/BUILD.gn 
+%endif
 
 %cmake_qt6 \
   -DCMAKE_TOOLCHAIN_FILE:STRING="%{_qt6_cmakedir}/Qt6/qt.toolchain.cmake" \

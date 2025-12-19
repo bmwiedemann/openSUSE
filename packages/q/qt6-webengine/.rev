@@ -418,4 +418,13 @@
     <comment>Qt 6.10.1</comment>
     <requestid>1319512</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>c86b93a8cb3539a21b51cf72cd280f84</srcmd5>
+    <version>6.10.1</version>
+    <time>1766158929</time>
+    <user>anag_factory</user>
+    <comment>- boo#1251922 - Re-enable LTO and pass -mno-outline-atomics to
+  3rdparty/chromium for aarch64 as a workaround until fixed upstream (forwarded request 1323471 from Guillaume_G)</comment>
+    <requestid>1323478</requestid>
+  </revision>
 </revisionlist>

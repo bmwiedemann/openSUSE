@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 16 12:32:44 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- boo#1251922 - Re-enable LTO and pass -mno-outline-atomics to
+  3rdparty/chromium for aarch64 as a workaround until fixed upstream
+
+-------------------------------------------------------------------
 Thu Nov 20 15:15:44 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.10.1
