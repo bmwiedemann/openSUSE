@@ -388,4 +388,19 @@
     <comment></comment>
     <requestid>1269375</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>34e17477f4b1425a5f011204e0e79510</srcmd5>
+    <version>0.940.0</version>
+    <time>1766263632</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.940.0 (0.94)
+   see /usr/share/doc/packages/perl-Spreadsheet-Read/Changes
+  0.94	- 09 Dec 2025, H.Merijn Brand
+      * Add label2col ()
+      * $sheet-&gt;{attr} should always be there, might be empty (issue#56)
+      * Skip type  tests when unsupported (issue#56)
+      * Skip merge tests when unsupported (issue#56)
+      * Update SECURITY.md</comment>
+    <requestid>1323813</requestid>
+  </revision>
 </revisionlist>

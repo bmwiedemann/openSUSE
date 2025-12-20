@@ -13,6 +13,5 @@ For CSV this module uses Text::CSV_XS (0.29 or up required, 0.73 or up
 preferred) or Text::CSV_PP (1.05 or up required).
 
 For SquirrelCalc there is a very simplistic built-in parser</description>
-  <devel project="devel:languages:perl" package="perl-Spreadsheet-Read"/>
   <url>http://search.cpan.org/dist/Spreadsheet-Read/</url>
 </package>
