@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Fri Dec 19 07:51:15 UTC 2025 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 8.4.16
+    Core:
+        Sync all boost.context files with release 1.86.0.
+        Fixed bug GH-20435 (SensitiveParameter doesn't work for named argument passing to variadic parameter).
+        Fixed bug GH-20286 (use-after-destroy during userland stream_close()).
+    Bz2:
+        Fix assertion failures resulting in crashes with stream filter object parameters.
+    Date:
+        Fix crashes when trying to instantiate uninstantiable classes via date static constructors.
+    DOM:
+        Fix memory leak when edge case is hit when registering xpath callback.
+        Fixed bug GH-20395 (querySelector and querySelectorAll requires elements in $selectors to be lowercase).
+        Fix missing NUL byte check on C14NFile().
+    Fibers:
+        Fixed bug GH-20483 (ASAN stack overflow with fiber.stack_size INI small value).
+    FTP:
+        Fixed bug GH-20601 (ftp_connect overflow on timeout).
+    GD:
+        Fixed bug GH-20511 (imagegammacorrect out of range input/output values).
+        Fixed bug GH-20602 (imagescale overflow with large height values).
+    Intl:
+        Fixed bug GH-20426 (Spoofchecker::setRestrictionLevel() error message suggests missing constants).
+    LibXML:
+        Fix some deprecations on newer libxml versions regarding input buffer/parser handling.
+    MbString:
+        Fixed bug GH-20491 (SLES15 compile error with mbstring oniguruma).
+        Fixed bug GH-20492 (mbstring compile warning due to non-strings).
+    MySQLnd:
+        Fixed bug GH-20528 (Regression breaks mysql connexion using an IPv6 address enclosed in square brackets).
+    Opcache:
+        Fixed bug GH-20329 (opcache.file_cache broken with full interned string buffer).
+    PDO:
+        Fixed GHSA-8xr5-qppj-gvwj (PDO quoting result null deref). (CVE-2025-14180)
+    Phar:
+        Fixed bug GH-20442 (Phar does not respect case-insensitiveness of __halt_compiler() when reading stub).
+        Fix broken return value of fflush() for phar file entries.
+        Fix assertion failure when fseeking a phar file out of bounds.
+    PHPDBG:
+        Fixed ZPP type violation in phpdbg_get_executable() and phpdbg_end_oplog().
+    SPL:
+        Fixed bug GH-20614 (SplFixedArray incorrectly handles references in deserialization).
+    Standard:
+        Fix memory leak in array_diff() with custom type checks.
+        Fixed bug GH-20583 (Stack overflow in http_build_query via deep structures).
+        Fixed GHSA-www2-q4fc-65wf (Null byte termination in dns_get_record()).
+        Fixed GHSA-h96m-rvf9-jgm2 (Heap buffer overflow in array_merge()). (CVE-2025-14178)
+        Fixed GHSA-3237-qqm7-mfv7 (Information Leak of Memory in getimagesize). (CVE-2025-14177)
+    Tidy:
+        Fixed bug GH-20374 (PHP with tidy and custom-tags).
+    XML:
+        Fixed bug GH-20439 (xml_set_default_handler() does not properly handle special characters in attributes when passing data to callback).
+    Zip:
+        Fix crash in property existence test.
+        Don't truncate return value of zip_fread() with user sizes.
+    Zlib:
+        Fix assertion failures resulting in crashes with stream filter object parameters.
+
+-------------------------------------------------------------------
 Thu Dec 18 09:34:11 UTC 2025 - Petr Gajdos <pgajdos@suse.com>
 
 - main package require wwwrun:www user as it assumes it in filelist

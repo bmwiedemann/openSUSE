@@ -16,11 +16,11 @@ Signed-off-by: Arjen de Korte <build+github@de-korte.org>
  ext/phar/zip.c           |  2 +-
  6 files changed, 18 insertions(+), 5 deletions(-)
 
-Index: php-8.4.10/ext/phar/phar.c
+Index: php-8.4.16/ext/phar/phar.c
 ===================================================================
---- php-8.4.10.orig/ext/phar/phar.c
-+++ php-8.4.10/ext/phar/phar.c
-@@ -2965,7 +2965,7 @@ void phar_flush_ex(phar_archive_data *ph
+--- php-8.4.16.orig/ext/phar/phar.c
++++ php-8.4.16/ext/phar/phar.c
+@@ -2936,7 +2936,7 @@ int phar_flush_ex(phar_archive_data *pha
  			4: metadata-len
  			+: metadata
  		*/
@@ -29,10 +29,10 @@ Index: php-8.4.10/ext/phar/phar.c
  		phar_set_32(entry_buffer, entry->uncompressed_filesize);
  		phar_set_32(entry_buffer+4, mytime);
  		phar_set_32(entry_buffer+8, entry->compressed_filesize);
-Index: php-8.4.10/ext/phar/phar_internal.h
+Index: php-8.4.16/ext/phar/phar_internal.h
 ===================================================================
---- php-8.4.10.orig/ext/phar/phar_internal.h
-+++ php-8.4.10/ext/phar/phar_internal.h
+--- php-8.4.16.orig/ext/phar/phar_internal.h
++++ php-8.4.16/ext/phar/phar_internal.h
 @@ -315,6 +315,21 @@ static inline php_stream *phar_get_pharf
  	return PHAR_G(cached_fp)[phar->phar_pos].fp;
  }
@@ -55,24 +55,24 @@ Index: php-8.4.10/ext/phar/phar_internal.h
  static inline enum phar_fp_type phar_get_fp_type(const phar_entry_info *entry)
  {
  	if (!entry->is_persistent) {
-Index: php-8.4.10/ext/phar/stream.c
+Index: php-8.4.16/ext/phar/stream.c
 ===================================================================
---- php-8.4.10.orig/ext/phar/stream.c
-+++ php-8.4.10/ext/phar/stream.c
-@@ -474,7 +474,7 @@ static int phar_stream_flush(php_stream
+--- php-8.4.16.orig/ext/phar/stream.c
++++ php-8.4.16/ext/phar/stream.c
+@@ -473,7 +473,7 @@ static int phar_stream_flush(php_stream
  	phar_entry_data *data = (phar_entry_data *) stream->abstract;
  
  	if (data->internal_file->is_modified) {
 -		data->internal_file->timestamp = time(0);
 +		data->internal_file->timestamp = source_date_epoch_time(0);
- 		phar_flush(data->phar, &error);
+ 		ret = phar_flush(data->phar, &error);
  		if (error) {
  			php_stream_wrapper_log_error(stream->wrapper, REPORT_ERRORS, "%s", error);
-Index: php-8.4.10/ext/phar/tar.c
+Index: php-8.4.16/ext/phar/tar.c
 ===================================================================
---- php-8.4.10.orig/ext/phar/tar.c
-+++ php-8.4.10/ext/phar/tar.c
-@@ -972,7 +972,7 @@ void phar_tar_flush(phar_archive_data *p
+--- php-8.4.16.orig/ext/phar/tar.c
++++ php-8.4.16/ext/phar/tar.c
+@@ -972,7 +972,7 @@ int phar_tar_flush(phar_archive_data *ph
  	char *buf, *signature, sigbuf[8];
  
  	entry.flags = PHAR_ENT_PERM_DEF_FILE;
@@ -81,10 +81,10 @@ Index: php-8.4.10/ext/phar/tar.c
  	entry.is_modified = 1;
  	entry.is_crc_checked = 1;
  	entry.is_tar = 1;
-Index: php-8.4.10/ext/phar/util.c
+Index: php-8.4.16/ext/phar/util.c
 ===================================================================
---- php-8.4.10.orig/ext/phar/util.c
-+++ php-8.4.10/ext/phar/util.c
+--- php-8.4.16.orig/ext/phar/util.c
++++ php-8.4.16/ext/phar/util.c
 @@ -701,7 +701,7 @@ phar_entry_data *phar_get_or_create_entr
  
  	phar_add_virtual_dirs(phar, path, path_len);
@@ -94,11 +94,11 @@ Index: php-8.4.10/ext/phar/util.c
  	etemp.is_crc_checked = 1;
  	etemp.phar = phar;
  	etemp.filename = estrndup(path, path_len);
-Index: php-8.4.10/ext/phar/zip.c
+Index: php-8.4.16/ext/phar/zip.c
 ===================================================================
---- php-8.4.10.orig/ext/phar/zip.c
-+++ php-8.4.10/ext/phar/zip.c
-@@ -1271,7 +1271,7 @@ void phar_zip_flush(phar_archive_data *p
+--- php-8.4.16.orig/ext/phar/zip.c
++++ php-8.4.16/ext/phar/zip.c
+@@ -1251,7 +1251,7 @@ int phar_zip_flush(phar_archive_data *ph
  
  	pass.error = &temperr;
  	entry.flags = PHAR_ENT_PERM_DEF_FILE;
