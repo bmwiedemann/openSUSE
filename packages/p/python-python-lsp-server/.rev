@@ -437,4 +437,18 @@
     <comment></comment>
     <requestid>1318437</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>5e4a60d6c661f042724a04eba68d18eb</srcmd5>
+    <version>1.14.0</version>
+    <time>1766263634</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.14.0
+  * Add `pylsp.signature.include_docstring` to hide docstring in
+    signatures.
+  * Add support for Pylint 4.
+  * Fix support for Python 3.14.
+- Drop allow-pylint4.patch
+</comment>
+    <requestid>1323800</requestid>
+  </revision>
 </revisionlist>

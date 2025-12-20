@@ -24,15 +24,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python-lsp-server
-Version:        1.13.1
+Version:        1.14.0
 Release:        0
 Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
 URL:            https://github.com/python-lsp/python-lsp-server
 Source:         https://files.pythonhosted.org/packages/source/p/python-lsp-server/python_lsp_server-%{version}.tar.gz
 Patch1:         unpin-autopep8.patch
-# PATCH-FIX-UPSTREAM allow-pylint4.patch https://github.com/python-lsp/python-lsp-server/pull/687
-Patch2:         allow-pylint4.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61.2}
@@ -106,7 +104,8 @@ will be enabled:
 %package all
 Summary:        The python-lsp-server[all] extra
 Requires:       python-autopep8 >= 2.0.4
-Requires:       python-rope >= 1.2.0
+Requires:       python-python-lsp-server = %{version}-%{release}
+Requires:       python-rope >= 1.11.0
 Requires:       python-yapf >= 0.33
 Requires:       (python-pydocstyle >= 6.3.0 with python-pydocstyle < 6.4.0)
 Requires:       (python-pylint >= 3.1 with python-pylint < 4.1)
