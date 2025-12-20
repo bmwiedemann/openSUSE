@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 19 21:38:55 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1766150951.2799046e:
+  * Coverage of openQA: add folder Client/ in codecov.yaml
+  * Improve openQA coverage of _download_handler in Archive.pm
+
+-------------------------------------------------------------------
 Thu Dec 18 17:20:22 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1766053374.57cdeee3:
