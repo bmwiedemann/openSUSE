@@ -19,7 +19,7 @@
 %define debug_package_requires libbabl-0_1-0 = %{version}-%{release}
 
 Name:           babl
-Version:        0.1.116
+Version:        0.1.118
 Release:        0
 Summary:        Dynamic Pixel Format Translation Library
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -27,6 +27,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://gegl.org/babl/
 Source0:        https://download.gimp.org/pub/babl/0.1/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM https://gitlab.gnome.org/GNOME/babl/-/commit/4efc8b827e008417c4995a93ae3310697318cfab.patch - really make git an optional dependency
+Patch0:         4efc8b827e008417c4995a93ae3310697318cfab.patch
 BuildRequires:  meson >= 0.54.0
 BuildRequires:  pkgconfig
 BuildRequires:  vala

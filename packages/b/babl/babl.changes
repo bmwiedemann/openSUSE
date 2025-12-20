@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Dec 15 16:09:45 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Added https://gitlab.gnome.org/GNOME/babl/-/commit/4efc8b827e008417c4995a93ae3310697318cfab.patch
+  Ensure git is really an optional dependency.
+  Can be removed with the next update.
+- Drop the buildrequires for git-core again
+
+-------------------------------------------------------------------
+Mon Dec 15 00:58:22 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add BuildRequires for git-core as the meson build now needs
+  git
+
+-------------------------------------------------------------------
+Mon Dec 15 00:51:14 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.1.118:
+  - build and portability fixes, babl is now relocatedable.
+
+-------------------------------------------------------------------
 Mon Oct  6 13:38:57 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.1.116:
