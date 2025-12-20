@@ -1,0 +1,5 @@
+<package name="kernel-source" project="openSUSE:Factory">
+  <title>The Linux Kernel Sources</title>
+  <description>Linux kernel sources with many fixes and improvements.</description>
+  <devel project="Kernel:stable" package="kernel-source"/>
+</package>
