@@ -113,4 +113,13 @@
       - Fix terminal size detection</comment>
     <requestid>1320471</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>050dc81f4a78848e6b74a696289e1e40</srcmd5>
+    <version>0.028</version>
+    <time>1766263629</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.028
+   see /usr/share/doc/packages/perl-Term-Table/Changes</comment>
+    <requestid>1323810</requestid>
+  </revision>
 </revisionlist>
