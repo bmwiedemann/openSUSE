@@ -17,7 +17,7 @@
 
 
 Name:           kube-linter
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        Static analysis tool that checks Kubernetes YAML files and Helm charts
 License:        Apache-2.0

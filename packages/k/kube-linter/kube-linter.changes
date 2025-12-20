@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec 20 07:21:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.8.1:
+  * Other Changes
+    - chore: upgrade cosign to v3 bundle format (#1073)
+
+-------------------------------------------------------------------
 Thu Dec 18 06:18:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.8.0:
