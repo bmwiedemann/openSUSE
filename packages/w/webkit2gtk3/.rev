@@ -2038,4 +2038,15 @@ Add bug/CVE refs to changes (forwarded request 1319842 from mgorse)</comment>
     <comment></comment>
     <requestid>1321408</requestid>
   </revision>
+  <revision rev="234" vrev="1">
+    <srcmd5>52172321d434f7e337123c4b6f0e3d23</srcmd5>
+    <version>2.50.4</version>
+    <time>1766263533</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.50.4 (bsc#1255183 bsc#1255191 bsc#1255194
+  bsc#1255195 bsc#1255198 bsc#1255200)
+- Add webkit2gtk3-a11y-fix-role-mapping.patch: fix a11y regression
+  where AT-SPI roles were mapped incorrectly. (forwarded request 1323389 from mgorse)</comment>
+    <requestid>1323659</requestid>
+  </revision>
 </revisionlist>

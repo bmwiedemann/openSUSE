@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec 17 15:35:08 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.50.4 (bsc#1255183 bsc#1255191 bsc#1255194
+  bsc#1255195 bsc#1255198 bsc#1255200):
+  + Correctly handle the program name passed to the sleep disabler.
+  + Ensure GStreamer is initialized before using the Quirks.
+  + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2025-14174, CVE-2025-43501, CVE-2025-43529,
+    CVE-2025-43531, CVE-2025-43535, CVE-2025-43536, CVE-2025-43541.
+- Add webkit2gtk3-a11y-fix-role-mapping.patch: fix a11y regression
+  where AT-SPI roles were mapped incorrectly.
+
+-------------------------------------------------------------------
 Thu Dec  4 21:41:39 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.50.3 (bsc#1254473 bsc#1254498 bsc#1254509):

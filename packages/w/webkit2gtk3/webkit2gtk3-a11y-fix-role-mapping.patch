@@ -1,0 +1,89 @@
+From 802faad87e283f257ab5ac22cd55bd5eaa0e610c Mon Sep 17 00:00:00 2001
+From: Mike Gorse <mgorse@suse.com>
+Date: Fri, 12 Dec 2025 19:15:51 -0600
+Subject: [PATCH] AX: Adjust Atspi::Role to match the enum defined in
+ at-spi2-core https://bugs.webkit.org/show_bug.cgi?id=300090
+
+Reviewed by NOBODY (OOPS!).
+
+R296017 removed the Footer member from Atspi::Role and also added
+SectionHeader and SectionFooter, which do not currently exist in AT-SPI,
+leading to the wrong Role values being reported. This commit adjusts the
+enum to correspond with the current AT-SPI specification and also adds a
+couple of newer AT-SPI roles.
+
+* Source/WebCore/accessibility/atspi/AccessibilityAtspiEnums.h:
+* Source/WebCore/accessibility/atspi/AccessibilityObjectAtspi.cpp:
+(WebCore::atspiRole):
+---
+ .../accessibility/atspi/AccessibilityAtspiEnums.h  | 14 ++++++++++++--
+ .../atspi/AccessibilityObjectAtspi.cpp             |  4 ++--
+ 2 files changed, 14 insertions(+), 4 deletions(-)
+
+diff --git a/Source/WebCore/accessibility/atspi/AccessibilityAtspiEnums.h b/Source/WebCore/accessibility/atspi/AccessibilityAtspiEnums.h
+index f62d8f97836d..65e624bfe17a 100644
+--- a/Source/WebCore/accessibility/atspi/AccessibilityAtspiEnums.h
++++ b/Source/WebCore/accessibility/atspi/AccessibilityAtspiEnums.h
+@@ -23,6 +23,11 @@
+ namespace WebCore {
+ namespace Atspi {
+ 
++// These enum values are passed over DBus as integers and must correspond
++// to the definitions in at-spi2-core
++// (https://gitlab.gnome.org/GNOME/at-spi2-core). Do not modify them without
++// a corresponding change in at-spi2-core.
++
+ enum class Role {
+     InvalidRole,
+     AcceleratorLabel,
+@@ -96,6 +101,7 @@ enum class Role {
+     Window,
+     Extended,
+     Header,
++    Footer,
+     Paragraph,
+     Ruler,
+     Application,
+@@ -139,8 +145,6 @@ enum class Role {
+     Math,
+     Rating,
+     Timer,
+-    SectionFooter,
+-    SectionHeader,
+     Static,
+     MathFraction,
+     MathRoot,
+@@ -154,8 +158,14 @@ enum class Role {
+     ContentInsertion,
+     Mark,
+     Suggestion,
++    PushButtonMenu,
++    Switch,
+ };
+ 
++static_assert((int)Atspi::Role::Paragraph == 73);
++static_assert((int)Atspi::Role::Section == 85);
++static_assert((int)Atspi::Role::Switch == 130);
++
+ enum class State : uint64_t {
+     InvalidState            = 1LLU << 0,
+     Active                  = 1LLU << 1,
+diff --git a/Source/WebCore/accessibility/atspi/AccessibilityObjectAtspi.cpp b/Source/WebCore/accessibility/atspi/AccessibilityObjectAtspi.cpp
+index 34e3ac0e2cff..005bc9aa8f3b 100644
+--- a/Source/WebCore/accessibility/atspi/AccessibilityObjectAtspi.cpp
++++ b/Source/WebCore/accessibility/atspi/AccessibilityObjectAtspi.cpp
+@@ -323,9 +323,9 @@ static Atspi::Role atspiRole(AccessibilityRole role)
+     case AccessibilityRole::LandmarkSearch:
+         return Atspi::Role::Landmark;
+     case AccessibilityRole::SectionFooter:
+-        return Atspi::Role::SectionFooter;
++        return Atspi::Role::Footer;
+     case AccessibilityRole::SectionHeader:
+-        return Atspi::Role::SectionHeader;
++        return Atspi::Role::Header;
+     case AccessibilityRole::DescriptionList:
+         return Atspi::Role::DescriptionList;
+     case AccessibilityRole::Term:
+-- 
+2.52.0
+
