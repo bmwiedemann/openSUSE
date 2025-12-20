@@ -72,4 +72,22 @@
   * refactor: Cache, reuse `Implementation._backend_version`</comment>
     <requestid>1293131</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3126b47b5ed77bce878dec4f2eab5eb3</srcmd5>
+    <version>2.14.0</version>
+    <time>1766263640</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.14.0
+  ## Enhancements
+  * feat: add list aggregate methods (#3332)
+  * feat: Add {Expr,Series}.any_value (#3315)
+  * enh: Add support for slice(None) in series getitem (#3342)
+  ## Bug fixes
+  * test: fix median tests for list.agg methods (#3354)
+  * fix: ArrowSeries.fill_null(strategy=..., limit=...) and None at
+    the &quot;edge&quot; (#3335)
+- Lots of other changes since 1.46, see Releases page on GitHub
+  https://github.com/narwhals-dev/narwhals/releases (forwarded request 1323818 from bnavigator)</comment>
+    <requestid>1323819</requestid>
+  </revision>
 </revisionlist>

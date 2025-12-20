@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Dec 20 17:51:40 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.14.0
+  ## Enhancements
+  * feat: add list aggregate methods (#3332)
+  * feat: Add {Expr,Series}.any_value (#3315)
+  * enh: Add support for slice(None) in series getitem (#3342)
+  ## Bug fixes
+  * test: fix median tests for list.agg methods (#3354)
+  * fix: ArrowSeries.fill_null(strategy=..., limit=...) and None at
+    the "edge" (#3335)
+- Lots of other changes since 1.46, see Releases page on GitHub
+  https://github.com/narwhals-dev/narwhals/releases
+
+-------------------------------------------------------------------
 Mon Jul 14 12:28:34 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.46.0:

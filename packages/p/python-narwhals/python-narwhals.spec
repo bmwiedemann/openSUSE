@@ -17,7 +17,7 @@
 
 
 Name:           python-narwhals
-Version:        1.46.0
+Version:        2.14.0
 Release:        0
 Summary:        Extremely lightweight compatibility layer between dataframe libraries
 License:        MIT
@@ -27,6 +27,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  fdupes
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module base >= 3.9}
 # Test requirements
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-env}
@@ -40,7 +41,7 @@ BuildRequires:  %{python_module pyarrow >= 11.0.0}
 Suggests:       python-pandas >= 1.1.3
 Suggests:       python-dask >= 2024.8
 Suggests:       python-dask-dataframe >= 2024.8
-Suggests:       python-pyarrow >= 11.0.0
+Suggests:       python-pyarrow >= 13.0.0
 
 BuildArch:      noarch
 %python_subpackages
