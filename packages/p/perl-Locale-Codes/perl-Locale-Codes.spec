@@ -18,10 +18,10 @@
 
 %define cpan_name Locale-Codes
 Name:           perl-Locale-Codes
-Version:        3.850.0
+Version:        3.860.0
 Release:        0
-# 3.85 -> normalize -> 3.850.0
-%define cpan_version 3.85
+# 3.86 -> normalize -> 3.860.0
+%define cpan_version 3.86
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Distribution of modules to handle locale codes
 URL:            https://metacpan.org/release/%{cpan_name}
