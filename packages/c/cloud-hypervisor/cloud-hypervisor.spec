@@ -17,7 +17,7 @@
 
 
 Name:           cloud-hypervisor
-Version:        49.0
+Version:        50.0
 Release:        0
 Summary:        A Virtual Machine Monitor
 License:        Apache-2.0 AND BSD-3-Clause
@@ -31,7 +31,7 @@ BuildRequires:  clang-devel
 BuildRequires:  flex
 BuildRequires:  git-core
 BuildRequires:  qemu-tools
-BuildRequires:  rust >= 1.77
+BuildRequires:  rust >= 1.89
 BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(ossp-uuid)
 #riscv is still not ready
@@ -67,7 +67,21 @@ install -Dm0755 ./target/release/ch-remote %{buildroot}%{_bindir}/ch-remote
 
 %ifnarch riscv64
 %check
-%{cargo_test} -- --test unit_tests::
+# skipped tests need kvm enabled
+%{cargo_test} -- --test unit_tests:: \
+                 --skip cpu::unit_tests:: \
+                 --skip unit_tests::test_vmm_vm_cold_add_device \
+                 --skip unit_tests::test_vmm_vm_cold_add_disk \
+                 --skip unit_tests::test_vmm_vm_cold_add_fs \
+                 --skip unit_tests::test_vmm_vm_cold_add_net \
+                 --skip unit_tests::test_vmm_vm_cold_add_pmem \
+                 --skip unit_tests::test_vmm_vm_cold_add_user_device \
+                 --skip unit_tests::test_vmm_vm_cold_add_vdpa \
+                 --skip unit_tests::test_vmm_vm_cold_add_vsock \
+                 --skip unit_tests::test_vmm_vm_create \
+                 --skip vm::unit_tests::test_vm \
+                 --skip kvm::aarch64:: \
+                 --skip vm::unit_tests::test_create_fdt_with_devices
 %endif
 
 %files

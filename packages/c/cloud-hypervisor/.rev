@@ -120,4 +120,25 @@
   * Fix seccomp filter violation from the http-server thread (forwarded request 1316949 from rrahl0)</comment>
     <requestid>1316950</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>09e8f522e6bfefaafa1d7fe903837e3f</srcmd5>
+    <version>50.0</version>
+    <time>1766263576</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 50.0:
+  * Configurable Nested Virtualization Option on x86_64
+  * Compression Support for QCOW2
+  * Notable Performance Improvements
+  * Live Disk Resizing Support for Raw Images
+  * Improved File-level Locking Support
+  * Logging Improvements
+  * Fix several issues around CPUID in the guest
+  * Fix snapshot/restore for Windows Guest
+  * Respect queue size in block performance tests
+  * Fix several Serial Manager issues
+  * Fix several seccomp violation issues
+  * Fix various issues around block and qcow
+  * Fix live migration (and snapshot/restore) with AMX state (forwarded request 1323731 from rrahl0)</comment>
+    <requestid>1323732</requestid>
+  </revision>
 </revisionlist>
