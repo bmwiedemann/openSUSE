@@ -44,4 +44,17 @@
            * Experimentally support refalias syntax in extended signatures</comment>
     <requestid>1320470</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>074797b19eb379488d56092baf825f12</srcmd5>
+    <version>0.410.0</version>
+    <time>1766263631</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.410.0 (0.41)
+   see /usr/share/doc/packages/perl-XS-Parse-Sublike/Changes
+  0.41    2025-12-09
+          [CHANGES]
+           * Support optional refalias parameters with defaulting expressions
+           * Support named refalias parameters</comment>
+    <requestid>1323812</requestid>
+  </revision>
 </revisionlist>

@@ -18,10 +18,10 @@
 
 %define cpan_name XS-Parse-Sublike
 Name:           perl-XS-Parse-Sublike
-Version:        0.400.0
+Version:        0.410.0
 Release:        0
-# 0.40 -> normalize -> 0.400.0
-%define cpan_version 0.40
+# 0.41 -> normalize -> 0.410.0
+%define cpan_version 0.41
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        XS functions to assist in parsing sub-like syntax
 URL:            https://metacpan.org/release/%{cpan_name}
