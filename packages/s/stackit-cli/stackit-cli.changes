@@ -1,4 +1,108 @@
 -------------------------------------------------------------------
+Sat Dec 20 07:15:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.50.0:
+  * feat(sfs): Onboard sfs commands (#1197)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/loadbalancer
+    (#1194)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/kms (#1187)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/serviceenablement
+    (#1188)
+  * feat: add label to ignore stale (#1193)
+  * fix(deps): update module github.com/goccy/go-yaml to v1.19.1
+    (#1191)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/serviceaccount
+    (#1185)
+  * chore(deps): bump renovatebot/github-action from 44.0.5 to
+    44.2.0 (#1182)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/iaas (#1189)
+  * feat: max_age is set during auth request to limit user session
+    (#1134)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/opensearch
+    (#1175)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/intake (#1177)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/authorization
+    (#1176)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/mongodbflex
+    (#1178)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/secretsmanager
+    (#1179)
+  * chore(deps): bump actions/download-artifact from 6 to 7 (#1180)
+  * chore(deps): bump actions/upload-artifact from 5 to 6 (#1181)
+  * fix(deps): update module github.com/jedib0t/go-pretty/v6 to
+    v6.7.7 (#1174)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/alb (#1169)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/runcommand
+    (#1168)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/dns (#1170)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/ske (#1171)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/logme (#1172)
+  * chore(docs): update links to new STACKIT docs (#1167)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/rabbitmq
+    (#1160)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/objectstorage
+    (#1159)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/git (#1158)
+  * fix(deps): update module golang.org/x/oauth2 to v0.34.0 (#1163)
+  * chore(deps): update module golang.org/x/tools to v0.40.0
+    (#1161)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/serverupdate
+    (#1157)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/iaas (#1156)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/postgresflex
+    (#1153)
+  * chore(deps): update module github.com/golangci/golangci-lint/v2
+    to v2.7.2 (#1154)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/redis (#1152)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/mariadb (#1151)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/serverbackup
+    (#1150)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/sqlserverflex
+    (#1149)
+  * chore(deps): bump golangci-lint from v1 to v2 (#1148)
+  * chore(deps): bump github.com/stackitcloud/stackit-sdk-go/core
+    (#1147)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/git (#1144)
+  * fix(deps): update module github.com/spf13/cobra to v1.10.2
+    (#1145)
+  * chore(linter): remove duplicate linter timeout configuration
+    (#1142)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/sqlserverflex
+    (#1139)
+  * chore(deps): update renovatebot/github-action action to v44.0.5
+    (#1141)
+  * fix: refresh token flow uses x-www-form encoding (#1135)
+  * feat(mongodbflex): add readAnyDatabase and stackitAdmin roles
+    for users (#1049)
+
+-------------------------------------------------------------------
 Thu Dec 04 06:00:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.49.0:
