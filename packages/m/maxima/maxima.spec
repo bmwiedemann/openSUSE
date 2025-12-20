@@ -36,7 +36,7 @@
 %bcond_with tests
 
 Name:           maxima
-Version:        5.48.1
+Version:        5.49.0
 Release:        0
 Summary:        Symbolic Computation Program/Computer Algebra System
 License:        GPL-2.0-or-later
