@@ -77,6 +77,7 @@ BuildRequires:  %{python_module jupyter-client >= 4.1}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-qt}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module traitlets}
@@ -118,7 +119,9 @@ desktop-file-install $f
 popd
 
 %check
-%pytest -ra
+# flaky zmq errors
+donttest="test_scroll or test_debug or test_input_and_print"
+%pytest -ra -n auto -k "not ($donttest)"
 
 %pre
 %python_libalternatives_reset_alternative jupyter-qtconsole

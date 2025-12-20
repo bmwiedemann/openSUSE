@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Dec 20 14:53:47 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Another try to avoid flaky test errors (zmq related)
+
+-------------------------------------------------------------------
 Fri Nov 21 16:10:25 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.7.0

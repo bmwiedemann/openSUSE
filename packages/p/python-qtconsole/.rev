@@ -333,4 +333,12 @@ This needs to go into openSUSE:Factory:Staging:adi:49 with the other jupyter sub
 - Use Qt6 for tests</comment>
     <requestid>1319158</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>d384bfd0e3e1142e3415151d7dea8440</srcmd5>
+    <version>5.7.0</version>
+    <time>1766263623</time>
+    <user>dimstar_suse</user>
+    <comment>- Another try to avoid flaky test errors (zmq related)</comment>
+    <requestid>1323817</requestid>
+  </revision>
 </revisionlist>
