@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Dec 19 11:11:46 UTC 2025 - Robert Frohl <rfrohl@suse.com>
+
+- Update to version 20251219:
+  * Allow 'mysql-systemd-helper upgrade' to work correctly (bsc#1255024)
+
+-------------------------------------------------------------------
+Thu Dec 18 08:27:32 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
+
+- Save previous file contexts in /run and ensure deletion (bsc#1245303)
+
+-------------------------------------------------------------------
+Thu Dec 18 08:17:06 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 20251218:
+  * Allow systemd_udev_trigger_generator_t use CAP_SYS_RESOURCE (bsc#1255079)
+
+-------------------------------------------------------------------
 Wed Dec 17 09:20:40 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 20251217:

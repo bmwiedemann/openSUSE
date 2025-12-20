@@ -28,7 +28,7 @@
 %_selinux_store_policy_path %{_selinux_store_path}/${_policytype}
 
 %_file_context_file %{_sysconfdir}/selinux/${SELINUXTYPE}/contexts/files/file_contexts
-%_file_context_file_pre /var/adm/update-scripts/file_contexts.pre
+%_file_context_file_pre /run/selinux-file_contexts.pre
 
 %_file_custom_defined_booleans %{_selinux_store_policy_path}/rpmbooleans.custom
 %_file_custom_defined_booleans_tmp %{_selinux_store_policy_path}/rpmbooleans.custom.tmp
@@ -120,10 +120,10 @@ if %{_sbindir}/selinuxenabled && [ "${SELINUXTYPE}" = "${_policytype}" ]; then \
    if [ -f %{_file_context_file_pre} ]; then \
      if [ -z "${TRANSACTIONAL_UPDATE}" ]; then \
        %{_sbindir}/fixfiles -C %{_file_context_file_pre} restore &> /dev/null \
-       rm -f %{_file_context_file_pre} \
      else \
        touch /etc/selinux/.autorelabel \
      fi \
+     rm -f %{_file_context_file_pre} \
    fi \
 fi \
 %{nil}
