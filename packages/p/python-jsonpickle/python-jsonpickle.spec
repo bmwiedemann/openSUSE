@@ -46,7 +46,7 @@ BuildRequires:  %{python_module ecdsa}
 BuildRequires:  %{python_module feedparser}
 BuildRequires:  %{python_module gmpy2 if %python-base < 3.12}
 BuildRequires:  %{python_module numpy}
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1550 && 0%{?suse_version} < 1600 || 0%{?suse_version} >= 1699
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pymongo}
 BuildRequires:  %{python_module scikit-learn}
@@ -81,10 +81,10 @@ rm -rv fuzzing
 donttest="test_multindex_dataframe_roundtrip"
 # https://github.com/jsonpickle/jsonpickle/issues/460
 donttest+=" or test_timedelta_index_roundtrip"
-%if 0%{?suse_version} < 1550
-%pytest -ra -k "not ($donttest)" tests jsonpickle/pickler.py jsonpickle/unpickler.py jsonpickle/util.py
-%else
+%if 0%{?suse_version} >= 1550 && 0%{?suse_version} < 1600 || 0%{?suse_version} >= 1699
 %pytest -ra -k "not ($donttest)"
+%else
+%pytest -ra -k "not ($donttest)" tests jsonpickle/pickler.py jsonpickle/unpickler.py jsonpickle/util.py
 %endif
 
 %files %{python_files}

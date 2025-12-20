@@ -354,4 +354,14 @@
     supported. (+556)</comment>
     <requestid>1307763</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>97c0c58122fe65ca92dcf4d089dfbb1f</srcmd5>
+    <version>4.1.1</version>
+    <time>1766263567</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1322932 from mcalabkova
+
+- Exclude testing with pandas on Leap 16.0</comment>
+    <requestid>1323721</requestid>
+  </revision>
 </revisionlist>
