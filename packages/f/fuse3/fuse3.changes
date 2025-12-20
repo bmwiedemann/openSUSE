@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec 19 00:31:24 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.18.0
+  * FUSE-over-uring communication
+  * statx support
+  * FUSE_NOTIFY_INC_EPOCH: New notification mechanism for epoch
+    counters
+  * Fixed double unmount on FUSE_DESTROY
+  * Fixed junk readdirplus results when filesystem does not
+    fill stat info
+
+-------------------------------------------------------------------
 Wed Aug 20 14:17:50 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.17.4
