@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Dec 19 09:30:07 UTC 2025 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.785.g17d177bb:
+
+  Fix and update testsuite (bsc#1254873):
+  * test(FULL-SYSTEMD): ignore errors in systemd-vconsole-setup.service
+  * test: move /failed to /run/failed as rootfs might be read-only
+  * test(FULL-SYSTEMD): use poweroff to shut down test
+  * test(FULL SYSTEMD): no need to include dbus to the target rootfs
+  * test: make the size of all test drives 512 MB
+  * fix(systemd): move installation of libkmod to udev-rules module
+  * test: switch to virtio for the QEMU drive
+  * test: switch to virtio for the QEMU drive
+  * test: increase test VM memory from 512M to 1024M to avoid OOM killer
+  * test: move more common test code to test-functions
+  * test: upgrade to ext4
+
+  Other:
+  * fix(systemd-networkd): install and enable systemd-networkd-resolve-hook.socket
+  * fix(nfs): do not execute logic in nfs hooks if netroot is not nfs (bsc#1253960)
+
+-------------------------------------------------------------------
 Fri Oct 31 16:19:43 UTC 2025 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.769.g693ea004:

@@ -137,7 +137,7 @@ MERGED  b2c6b584 fix(dracut.sh): exit if resolving executable dependencies fails
         d55fa823 ci: migrate from systemd-boot to systemd-utils in Gentoo container
         403f4e8e ci: do not run test container generation on forked repos by default
 MERGED  16855765 refactor(install): log about missing firmware only once
-        c46513fb test: increase test VM memory from 512M to 1024M to avoid OOM killer
+MERGED  c46513fb test: increase test VM memory from 512M to 1024M to avoid OOM killer
 MERGED  a804945f fix(integrity): do not require ls
         e278a965 ci: match comment with code
         9e1e9245 ci: automate release generation
@@ -202,7 +202,7 @@ MERGED  afb5717e fix(kernel-modules): add interconnect drivers
         d244b316 test(LVM-THIN): avoid thin pool size warning
         739b9e1b ci: cleanup containers
         ae7cd94b test: add empty default test_cleanup implementation
-        f1346763 test: move more common test code to test-functions
+MERGED  f1346763 test: move more common test code to test-functions
         5ac581ef fix(resolve-deps): check the existing file—not the source
 MERGED  07af8d58 fix(dracut-lib.sh): remove successful finished initqueue scripts
 MERGED  7310a641 fix(udev-rules): remove firmware.rules
@@ -213,7 +213,7 @@ MERGED  07b49a3e fix(virtiofs): add virtio_pci kernel module to virtiofs
         c08ae406 ci: install multipath-tools into openSuse container
         d1187543 test: remove references of dhcpd3 from tests
         1843c16c test: move test condition to test_check
-        006890a2 test: upgrade to ext4
+MERGED  006890a2 test: upgrade to ext4
 MERGED  86c8a5a7 fix(dracut-systemd): rootfs-generator cannot write outside of generator dir
 MERGED  acfa793b fix(dracut-systemd): check and create generator dir outside of inner function
 MERGED  a7c04716 fix(dracut-systemd): do not hardcode the systemd generator directory
@@ -441,3 +441,12 @@ f879b04d fix(74nvmf): make sure autoconnect script is run at least once
 89dcdd91 fix(dracut.sh): check that custom fw search patch exists before reading it
 46369b3b fix(dmsquash-live): install required stat binary
 de8b63f5 fix(multipath): add udev rule 99-z-dm-mpath-late.rules
+d464dcb8 test: switch to virtio for the QEMU drive
+2df41817 test: switch to virtio for the QEMU drive
+ef0972fe fix(systemd): move installation of libkmod to udev-rules module
+a6df84b7 test: make the size of all test drives 512 MB
+49a971b6 test(FULL SYSTEMD): no need to include dbus to the target rootfs
+412807b6 test(FULL-SYSTEMD): use poweroff to shut down test
+43648f08 test: move /failed to /run/failed as rootfs might be read-only
+bf29f4b7 fix(nfs): do not execute logic in nfs hooks if netroot is not nfs
+84c05fc6 fix(systemd-networkd): install and enable systemd-networkd-resolve-hook.socket
