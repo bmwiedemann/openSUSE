@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Dec 19 10:31:44 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.0.19:
+  + This release adds the following features:
+    - Add two commands to fwupdtool to calculate and find CRCs
+    - Allow systems to use the udev event source without using systemd
+  + This release fixes the following bugs:
+    - Always show the correct new firmware version in 'fwupdmgr get-history'
+    - Fix an integer underflow when parsing a malicious PE file
+    - Fix a regression when enumerating the dell-dock status component
+    - Fix the fuzzer timeout when parsing a synaptics-rmi SBL container
+    - Fix updating the Intel GPU FWDATA section
+    - Respect 'fwupdmgr --force' when installing firmware
+  + This release adds support for the following hardware:
+    - Lenovo Sapphire Folio Keyboard
+
+-------------------------------------------------------------------
 Mon Dec  1 14:08:16 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.0.18:
