@@ -255,6 +255,13 @@ chmod -x lcl/include/screen.inc
 # remove git ignore files to prevent them from being installed to fix rpmlint error "version-control-internal-file"
 find . \( -name ".gitignore" \) -delete
 
+# Reproducible build requested (SOURCE_DATE_EPOCH is set and non-null/non-zero)?
+if [[ -n "$SOURCE_DATE_EPOCH" ]];then
+  # Replace build date and time with those from SOURCE_DATE_EPOCH.
+  sed -i 's|{$I %date%}|'\'$(date --utc --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y-%m-%d)\''|g' ide/lazarus.pp
+  sed -i 's|{$I %time%}|'\'$(date --utc --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%T)\''|g' ide/lazarus.pp
+fi
+
 %build
 # Remove the files for building other packages
 rm -rf debian
