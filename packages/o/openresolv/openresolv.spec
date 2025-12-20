@@ -1,7 +1,7 @@
 #
 # spec file for package openresolv
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           openresolv
-Version:        3.17.0
+Version:        3.17.3
 Release:        0
 Summary:        DNS management framework
 License:        BSD-2-Clause

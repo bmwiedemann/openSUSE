@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Dec 20 08:28:59 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 3.17.3:
+  * resolvconf: quote on printf rather than on value
+
+-------------------------------------------------------------------
+Sat Dec 13 16:43:41 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 3.17.2:
+  * resolvconf: Escape single quotes in input when parsing
+    Fixes a futher attack vector from the prior release
+
+- update to 3.17.1:
+  * resolvconf: Single quote parsed values from resolv.conf
+
+-------------------------------------------------------------------
 Sat Jul  5 14:43:42 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 3.17.0:
