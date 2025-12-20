@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Dec 20 07:02:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.23:
+  * Highlights
+    - This release introduces priority-based parallel hook
+      execution: prek can run multiple hooks in parallel when they
+      share the same priority, which can be a huge speed-up for
+      many configs. See configuration docs for priority.
+  * Enhancements
+    - Allow uv reading user-level or system-level configuration
+      files (#1227)
+    - Implement check-case-conflict as builtin hook (#888)
+    - Implement priority based parallel execution (#1232)
+  * Bug fixes
+    - Fix check-executable-have-shebangs "command line too long"
+      error on Windows (#1236)
+  * Documentation
+    - Add FastAPI to the list of projects using prek (#1241)
+    - Document hook_types flag and default_install_hook_types
+      behavior (#1225)
+    - Improve documentation for priority (#1245)
+    - Mention prek can be installed viataiki-e/install-action@prek
+      (#1234)
+
+-------------------------------------------------------------------
 Sat Dec 13 19:27:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.22:
