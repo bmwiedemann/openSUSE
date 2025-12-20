@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Dec 18 21:12:00 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.79
+  * Fixed loading of WAV samples of the WAVE_FORMAT_EXTENSIBLE
+    type.
+  * Fixed some small issues with the sampling feature.
+  * Removed unnecessary custom math functions in the source code.
+
+-------------------------------------------------------------------
+Wed Sep 17 18:58:23 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.78
+  * When loading .IFF samples, always set volume to max (64)
+    instead of reading the sample volume from the IFF header.
+    This is because many IFFs used different ranges for the sample
+    volume, so the resulting sample volume value would often bei
+    zero instead of max.
+
+-------------------------------------------------------------------
 Sun Sep  7 19:09:51 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.77
