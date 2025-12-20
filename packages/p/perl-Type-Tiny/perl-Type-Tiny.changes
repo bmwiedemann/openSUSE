@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Nov 27 05:36:33 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.008006
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  2.008006	2025-11-26
+
+   - Minor optimization for non-XS type check code for Enum types: if there
+     are only a small number of valid strings (five or under), check using
+     `eq` and `or` operators instead of compiling a regexp to check against
+     them all at once. This can be controlled by passing the `use_eq`
+     attribute to the Type::Tiny::Enum constructor, but is otherwise
+     automatic.
+
+-------------------------------------------------------------------
 Fri Nov 21 05:36:54 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.008005

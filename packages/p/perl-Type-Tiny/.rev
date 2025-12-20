@@ -341,4 +341,20 @@
      make a measurable difference.</comment>
     <requestid>1320468</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>d2a02f4dbf83ab5a0e603ac052352ff1</srcmd5>
+    <version>2.008006</version>
+    <time>1766263629</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.008006
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+  2.008006	2025-11-26
+   - Minor optimization for non-XS type check code for Enum types: if there
+     are only a small number of valid strings (five or under), check using
+     `eq` and `or` operators instead of compiling a regexp to check against
+     them all at once. This can be controlled by passing the `use_eq`
+     attribute to the Type::Tiny::Enum constructor, but is otherwise
+     automatic.</comment>
+    <requestid>1323809</requestid>
+  </revision>
 </revisionlist>
