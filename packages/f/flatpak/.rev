@@ -1059,4 +1059,35 @@ As a side note Leap is affected as well by this. Might be worth back porting thi
   dbus-broker in all cases. (forwarded request 1317557 from dimstar)</comment>
     <requestid>1317567</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>dcc2f9507ace0422a08ae916dcf586db</srcmd5>
+    <version>1.16.2</version>
+    <time>1766263536</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.16.2:
+  + Enhancements:
+    - Documentation improvements
+    - Support the reinstall option on bundle installations
+    - Enable the VA-API extension for Intel Xe GPUs
+    - Documentation improvements
+    - Add cancellation support for curl downloads
+  + Bug fixes:
+    - Provide an empty /run/host/font-dirs.xml during flatpak build
+    - Fix various issues with flatpak mask and flatpak pin by
+      reloading the repo configuration after changes done via the
+      system helper
+    - Fix an issue where the home directory would accidentally be
+      accessible when a bad version of glib is in use, the app has
+      access to a standard XDG directory, and that directory is not
+      available on the system
+    - flatpak-kill will no longer send SIGKILL to all processes in
+      the current process group
+    - Various bug fixes for the OCI support
+    - Fix various memory leaks
+    - Fix various crashes
+  + Updated translations.
+- Drop cd80e843435df5ce70d9a2b6710098135ceb9085.patch: Fixed
+  upstream. (forwarded request 1323545 from iznogood)</comment>
+    <requestid>1323660</requestid>
+  </revision>
 </revisionlist>

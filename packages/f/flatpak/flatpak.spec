@@ -30,7 +30,7 @@
 %define support_environment_generators 1
 %endif
 Name:           flatpak
-Version:        1.16.1
+Version:        1.16.2
 Release:        0
 Summary:        OSTree based application bundles management
 License:        LGPL-2.1-or-later
@@ -44,8 +44,6 @@ Source4:        update-user-flatpaks.timer
 Source5:        https://flathub.org/repo/flathub.flatpakrepo
 # PATCH-FEATURE-OPENSUSE polkit_rules_usability.patch -- Make the rules comply with openSUSE expectations
 Patch0:         polkit_rules_usability.patch
-# PATCH-FIX-UPSTREAM cd80e843435df5ce70d9a2b6710098135ceb9085.patch -- session-helper: Avoid a memory leak
-Patch1:         https://github.com/flatpak/flatpak/commit/cd80e843435df5ce70d9a2b6710098135ceb9085.patch
 
 BuildRequires:  bison
 BuildRequires:  bubblewrap >= %{bubblewrap_version}
@@ -385,6 +383,7 @@ fi;
 %dir %{_datadir}/doc/flatpak
 %doc %{_datadir}/doc/flatpak/docbook.css
 %doc %{_datadir}/doc/flatpak/flatpak-docs.html
+%doc %{_datadir}/doc/flatpak/libflatpak-docs.html
 %{_bindir}/flatpak-bisect
 %{_bindir}/flatpak-coredumpctl
 %{_libdir}/pkgconfig/flatpak.pc
