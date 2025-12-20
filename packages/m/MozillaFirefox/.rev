@@ -7909,4 +7909,12 @@
     Memory safety bugs fixed in Firefox ESR 140.6, Thunderbird</comment>
     <requestid>1321887</requestid>
   </revision>
+  <revision rev="473" vrev="1">
+    <srcmd5>23fedffeed0fc0a8122aa3fc82107cf2</srcmd5>
+    <version>146.0.1</version>
+    <time>1766263504</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1323597</requestid>
+  </revision>
 </revisionlist>
