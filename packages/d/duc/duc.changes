@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec 10 12:13:39 UTC 2025 - Alexander Bergmann <abergmann@suse.com>
+
+- Fix build requirements
+
+-------------------------------------------------------------------
+Sat Nov  8 08:29:11 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.4.6:
+  * new: added LICENCE to 'make release' target
+  * fix: fixed logic error in buffer_get() (boo#1254566, CVE-2025-13654)
+  * cha: updated tests
+
+-------------------------------------------------------------------
 Mon Jul 25 07:44:40 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.4.5:

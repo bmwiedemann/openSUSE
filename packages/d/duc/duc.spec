@@ -1,7 +1,7 @@
 #
 # spec file for package duc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,19 @@
 
 
 Name:           duc
-Version:        1.4.5
+Version:        1.4.6
 Release:        0
 Summary:        Collection of tools for inspecting and visualizing disk usage
 License:        LGPL-3.0-only
 Group:          System/Filesystems
 URL:            https://github.com/zevv/duc
-Source:         https://github.com/zevv/%{name}/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source:         https://github.com/zevv/duc/archive/refs/tags/%{version}.tar.gz
+BuildRequires:  autoconf
+BuildRequires:  autoconf-archive
+BuildRequires:  automake
 BuildRequires:  cairo-devel
 BuildRequires:  libglfw-devel
+BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 BuildRequires:  pango-devel
 BuildRequires:  sqlite3-devel
@@ -40,6 +44,7 @@ Duc scales quite well, it has been tested on systems with more than 500 million 
 %setup -q
 
 %build
+autoreconf -fi
 # add missing linker dependency to gobject library
 LIBS="`pkg-config --libs gobject-2.0`"
 export LIBS
@@ -54,6 +59,7 @@ make %{?_smp_mflags}
 %make_install
 
 %files
+%license LICENSE
 %doc ChangeLog
 %{_bindir}/duc
 %{_mandir}/man1/duc.1%{ext_man}

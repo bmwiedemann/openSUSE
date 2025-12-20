@@ -44,4 +44,12 @@
   * fix: various bug fixes, check the git log for details</comment>
     <requestid>990948</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>66b06093fd9f5e9f793a4d6af3a7d020</srcmd5>
+    <version>1.4.6</version>
+    <time>1766263607</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1323767</requestid>
+  </revision>
 </revisionlist>
