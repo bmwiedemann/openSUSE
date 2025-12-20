@@ -1,6 +1,0 @@
-# This file is for run0-wrappers
-#
-# See tmpfiles.d(5) for details
-#
-L /usr/local/bin/su	-    -    -     - ../../bin/run0-su
-
