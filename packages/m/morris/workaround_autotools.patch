@@ -1,7 +1,7 @@
-diff --git a/configure.ac b/configure.ac
-index 18951eb..3366e43 100644
---- a/configure.ac
-+++ b/configure.ac
+Index: morris-0.3/configure.ac
+===================================================================
+--- morris-0.3.orig/configure.ac
++++ morris-0.3/configure.ac
 @@ -5,7 +5,7 @@ AC_CONFIG_AUX_DIR([build-aux])
  AC_CONFIG_SRCDIR([src/morris.cc])
  AC_CONFIG_HEADERS([config.h])
@@ -11,3 +11,11 @@ index 18951eb..3366e43 100644
  
  #AM_MAINTAINER_MODE
  #AC_CONFIG_MACRO_DIR([m4])
+@@ -43,6 +43,7 @@ AC_C_INLINE
+ AC_TYPE_SIZE_T
+ 
+ # Checks for library functions.
++AM_GNU_GETTEXT_REQUIRE_VERSION([0.19.4])
+ AM_GNU_GETTEXT([external])
+ 
+ GETTEXT_PACKAGE=morris
