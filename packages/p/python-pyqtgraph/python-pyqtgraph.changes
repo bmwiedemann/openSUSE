@@ -1,4 +1,159 @@
 -------------------------------------------------------------------
+Sat Dec 20 14:35:20 UTC 2025 - Mikhail Paulyshka <me@mixaill.net>
+
+- replace no-sphinx-qt-doc.patch with drop-unpackaged-sphinx-extensions.patch
+- update to 0.14.0 
+  + Highlights
+    * implement cuda OpenGL interops
+    * PColorMeshItem: implement opengl rendering
+    * Port PlotCurveItem experimental opengl codepath to shaders
+    * Remove MetaArray, MultiPlotItem and MultiPlotWidget
+    * Add Boxplot feature
+    * Unvendor very old colorama
+    * implement fill for connect="finite"
+    * Add legend double-click and legend sample click signals.
+    * pcmi: add support for OpenGL ES 3.0
+    * Bump min numpy to 1.25+
+    * Create FUNDING.yml
+  + API/Behavior Changes and Additions
+    * GLMeshItem: allow ubyte color buffers
+    * Allow OpenGL without enableExperimental
+    * Do away with Parameter deprecation
+    * Transform3D.map should return the type of obj passed in
+    * Remove MetaArray, MultiPlotItem and MultiPlotWidget
+    * Remove canvas module
+    * implement fill for connect="finite"
+    * Raise ParseError on duplicate keys in configfile
+    * Add legend double-click and legend sample click signals.
+    * Parameter Tree: ListParameter: Add deprecation warning when values is present.
+    * allow conditional siPrefixing of axis labels
+    * PlotItem.autoBtnClicked to emit PlotItem.sigRangeChangedManually
+    * add setSymbol method
+    * Option to execute repl commands in a non-GUI thread
+    * AxisItem: Allow hiding minor ticks
+    * allow returned camera params to be set back
+    * Plot option to subtract mean value from all samples
+    * Locale aware spinbox
+    * Parameter: define create as a classmethod
+    * Add overlay grid option to GLSurfacePlotItem
+    * Alignment option for GLTextItem
+  + Bug Fixes
+    * Correctly handle SI-prefixes for nonlinear units
+    * fix aspect-locked zoom with mouse-drag while right-button pressed
+    * fix: isnan is not available in OpenGL 2.1 nor OpenGL ES 2.0
+    * fix: GL_POINT_SPRITE was not enabled for NoProfile
+    * Fix LinearRegionItem mouseDragEvent
+    * render comparison: resize before show
+    * fix: GLLinePlotItem uploading vbo perpetually
+    * Various OpenGL fixes
+    * Support downsampling of image data with NaNs
+    * Catch SystemError During Signal.disconnect()
+    * RawImageGLWidget: update uploaded state on cleanup
+    * enable blending to take into account alpha transparency
+    * Fixes: Error when using FFT on data with one point
+    * Fix ViewBox wheel event propagation
+    * bugfix: PlotCurveItem OpenGL didn't invalidate render_cache on cleanup
+    * Format DateAxisItem ticks in different timezones correctly
+    * fix ComboBox.items()
+    * connect darkMode slots only once
+    * Minor fixes for a memory debugging tool
+    * ParseError line numbers should account for empty lines
+    * workaround PySide QByteArray leak on conda builds
+    * Fix ConsoleWidget ReplWidget.write() always scrolling to bottom (`scrollToBottom` not working)
+    * initialize the pressPos attribute with default value to prevent error
+    * Apoptose dock area when temporary window is closed
+    * Fix bug in PlotItem.setAxisItem when called befor scene is set
+    * Emit sigRegionChanged only once for LinearRegionItem
+    * Removes GraphicsScene.mouseMoveEvent duplicate events
+    * Fix 'GridItem.generatePicture' for cases of invalid size
+    * Fix scaling with locked aspect
+    * Update removeItem()
+    * GLLinePlotItem: restore changes to state
+    * PlotDataItem setData() listOfDicts fix?
+    * To align mark and the label vertically in a Legend
+    * Fix bug causing DateTimeAxis to not display tick labels #3185
+    * Update syntax.py to correctly colorize commented code
+    * Fix bug preventing console showing more than one uncaught exception
+    * fixed the issue where x and y column would be added regardless of the columnMode while exporting to csv
+    * GraphicsLayout: Fix removeItem() regression
+    * fix GLIsosurface overflow warning on numpy 2
+    * Fix parameter item compare unpack order
+    * Fix recarray support in PlotDataItem
+    * Two minor corrections in flowchart and debug
+    * Fix exception when AxisItem is initialized with text argument (fixes #3410)
+    * ensure comparison returns bool instead of np.bool in TableWidget
+    * fix: blockSignal=True in Parameter.setValue()
+  + Performance Improvements
+    * invalidate nan locations when downsampling image
+    * ImageItem: implement persistent default autolevels
+    * finer grained VBO upload
+    * Skip nan values in mesh
+    * Fixed bug that significantly degraded zooming performance for line plots
+    * use native c++ construction of QPixmap from QImage
+    * implement cuda OpenGL interops
+    * Port PlotCurveItem experimental opengl codepath to shaders
+    * PlotCurveItem: implement OpenGL curve fill
+    * PColorMeshItem: implement opengl rendering
+    * pcmi: add support for OpenGL ES 3.0
+    * De-ancient-ify OpenGL shaders
+    * prevent grid lines from getting mouse events
+    * Make PlotCurveItem and PColorMeshItem work in Core Profile
+    * Lazy evaluation of mkColor error string
+    * Make shaders in shaders.py run on macOS OpenGL 4.1 Core
+    * ViewBox: Only update auto-range before painting.
+    * create a default VAO if using Core profile
+    * GLVolumeItem: calculate camera pos using ModelView matrix
+    * don't relink shader program where it is not needed
+    * Adding support for connect PlotItem connect vector during view clipping and downsampling
+  + Testing
+    * test image formats outside of ImageItem
+    * Remove now unneeded test skip conditions, use packaging library for version comparison.
+    * Add coverage reporting
+    * Use packaging library for version comparison
+  + Documentation
+    * Add Qtimer, multi threading and multiprocessing to docs
+    * Substantially upgrade ImageItem docs
+    * Overhaul PlotDataItem documentation
+    * Documentation text review for PlotDataItem
+    * Convert PlotItem and AxisItem to use numpydoc Docstring Style
+    * Do upgrade to CONTRIBUTING.md, it's been a while
+    * Bump sphinx-design from 0.5.0 to 0.6.0 in /doc
+    * Bump sphinx-design from 0.6.0 to 0.6.1 in /doc
+    * Update to pydata-sphinx-theme 0.15.4
+    * Bump pydata-sphinx-theme from 0.15.4 to 0.16.0 in /doc
+    * Upgrade to PyData-Sphinx-Theme 0.16.1
+    * Bump sphinx from 7.3.7 to 7.4.6 in /doc
+    * Bump sphinx from 7.4.6 to 7.4.7 in /doc
+    * Bump sphinxcontrib-images from 0.9.4 to 1.0.1 in /doc
+  + Misc
+    * replace stencil test with scissor test
+    * ColorMapMenu: add new matplotlib colormaps
+    * Use filtfilt for bidirectional filtering in Flowchart
+    * Added type annotations to GraphicsWidget
+    * adapt to changes in QPainterPathPrivate in Qt 6.10
+    * Update Flowchart.py
+    * Update ASV config to use paramers
+    * Fix libegl1 not found
+    * Fix Comment Error in examples/dockarea.py
+    * pcmi opengl: discard nan fragments
+    * Annotate slots with `QtCore.Slot`
+    * Annotate ViewBox slots
+    * GraphicsItem: don't override Qt methods
+    * pyside6: don't take QByteArray memoryview too
+    * Probe QByteArray leak at runtime
+    * REPL fonts should be consistently monospaced
+    * refactor getting of OpenGLFunctions
+    * Create FUNDING.yml
+    * remove numba for rescaleData
+    * RawImageGLWidget: implement using QOpenGLTextureBlitter
+    * Unvendor very old colorama
+    * don't draw non-finite pairs
+    * fix: minor improvements to the visibility of the colormap button
+    * assume matplotlib supports Qt6
+    * Use Monospace font in Console Widget CmdInput
+    * fix variable name typo
+
+-------------------------------------------------------------------
 Thu Jun  5 16:55:55 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Remove pyside2 requirement
