@@ -420,4 +420,41 @@
   * service/dap: fix panic on uninitialized debugger (#4061) (forwarded request 1301625 from jfkw)</comment>
     <requestid>1301626</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>4040e7d2b7138f7c64c2f835b9def78c</srcmd5>
+    <version>1.26.0</version>
+    <time>1766263564</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.26.0:
+  * v1.26.0 (#4220)
+  * tests: fix TestFilterGoroutines/TestGoroutineLabels on windows/1.26 (#4217)
+  * gdbserial: do not set detached if we kill the process (#4216)
+  * service/dap: fix restart handling when compilation fails (#4215)
+  * service/dap: disable string() field for address-less variables (#4214)
+  * service/test: disable TestGuessSubstitutePath on riscv64 (#4212)
+  * *: More fixes for Go 1.26 (#4211)
+  * pkg/proc: process spawned event (#4171)
+  * *: update riscv64 capslock file (#4210)
+  * github: fix issue template (#4209)
+  * fix: go mod vendor (#4207)
+  * *: replace github.com/hashicorp/golang-lru with a custom lru cache (#4196)
+  * *: update riscv64 support and adding it in test matrix (#4190)
+  * go.mod: remove replace directive
+  * cmd/dlv,_scripts: move things that use x/tools/go/packages to new repo (#3990)
+  * pkg/proc: add way to disable stop-on-error for breakpoint conditions (#4191)
+  * *: fix tests on windows and arm64 for go1.26 (#4205)
+  * dap: preserve tags when handling tags (#4201)
+  * test: only run capslock on latest minor version (#4202)
+  * *: fix tests (#4198)
+  * Teamcity: disable riscv64 build due to lack of agent (#4199)
+  * terminal: add savestate command (#4045)
+  * service/dap: add target command in console and support follow-exec in DAP interface (#4078)
+  * service: workaround for non-unicode strings in Variables (#4082)
+  * pkg/proc: guard register logging from nil pointer dereferences (#4188)
+  * teamcity: Add support for riscv64 architecture in settings (#4189)
+  * Add support to trace defer function calls under trace follow option (#3978)
+  * pkg/dwarf: do not insist stmt is same line as entry (#4186)
+  * replay subcommand must keep trace directory. (#4184) (forwarded request 1323714 from jfkw)</comment>
+    <requestid>1323715</requestid>
+  </revision>
 </revisionlist>
