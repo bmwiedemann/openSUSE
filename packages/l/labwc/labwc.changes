@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Dec 19 22:40:00 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.9.3:
+  + Added
+    - `<windowSwitcher order="focus|age"/>` to sort windows
+      by focus or age
+    - New snapping config:
+      `<snapping><range inner="" outer="">`
+    - `direction` option for `Resize` action
+      (up-left, right, down, etc.)
+    - `sendEventsMode` option to disable keyboard input
+    - Window switcher OSD options:
+      + `thumbnailLabelFormat`
+      + `output="all|focused|cursor"`
+    - Click-to-focus in window switcher OSD
+    - Support for `xdg-dialog` protocol
+    - `--keyboard-focus` option for labnag
+    - Option to unshade windows during window switching
+  + Changed
+    - Alt-Tab now selects the previously focused window
+    - Deprecated old `<snapping><range>` syntax
+    - Refactored window switcher configuration
+    - OSD placement now centered on output
+  + Fixed
+    - Desktop files with dots in filenames
+    - Incorrect cursor motion from absolute events
+    - Mouse issues with constrained surfaces
+    - XCB race between Raise and input
+    - Window switcher layout and geometry issues
+
+-------------------------------------------------------------------
 Sat Oct 11 22:27:04 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.9.2:
