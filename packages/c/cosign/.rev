@@ -707,4 +707,41 @@
   - Add to `attest-blob` the ability to supply a complete in-toto statement, and add to `verify-blob-attestation` the ability to verify with just a digest (#4306) (forwarded request 1305826 from msmeissn)</comment>
     <requestid>1305829</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>72fb2ed754f1c18832540ca107623251</srcmd5>
+    <version>3.0.3</version>
+    <time>1766263612</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.3:
+  * 4554: Closes 4554 - Add warning when --output* is used (#4556)
+  * chore(deps): bump golangci/golangci-lint-action from 8.0.0 to 9.1.0 (#4545)
+  * chore(deps): bump github.com/buildkite/agent/v3 from 3.111.0 to 3.113.0 (#4542)
+  * chore(deps): bump github.com/awslabs/amazon-ecr-credential-helper/ecr-login (#4543)
+  * chore(deps): bump actions/checkout from 5.0.0 to 6.0.0 (#4546)
+  * chore(deps): bump the actions group with 4 updates (#4544)
+  * chore(deps): bump the gomod group across 1 directory with 5 updates (#4567)
+  * chore(deps): bump golang from 1.25.4 to 1.25.5 in the all group (#4568)
+  * update builder to use go1.25.5 (#4566)
+  * Protobuf bundle support for subcommand `clean` (#4539)
+  * Add staging flag to initialize with staging TUF metadata
+  * update slack invite link (#4560)
+  * Updating sign-blob to also support signing with a certificate (#4547)
+  * Bump sigstore library dependencies (#4532)
+  * Protobuf bundle support for subcommands `save` and `load` (#4538)
+  * Fix cert attachment for new bundle with signing config
+  * Fix OCI verification with local cert - old bundle
+  * chore(deps): bump github.com/sigstore/fulcio from 1.7.1 to 1.8.1 (#4519)
+  * chore(deps): bump golang.org/x/crypto in /test/fakeoidc (#4535)
+  * chore(deps): bump golang.org/x/crypto from 0.43.0 to 0.45.0 (#4536)
+  * update go builder and cosign (#4529)
+  * chore(deps): bump the gomod group across 1 directory with 7 updates (#4528)
+  * chore(deps): bump sigstore/cosign-installer from 3.10.0 to 4.0.0 (#4478)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go (#4520)
+  * chore(deps): bump golang from 1.25.3 to 1.25.4 in the all group (#4515)
+  * chore(deps): bump golang.org/x/oauth2 from 0.32.0 to 0.33.0 (#4518)
+  * chore(deps): bump cuelang.org/go from 0.14.2 to 0.15.0 (#4524)
+  * chore(deps): bump github.com/open-policy-agent/opa from 1.9.0 to 1.10.1 (#4521)
+  * chore(deps): bump actions/upload-artifact from 4.6.2 to 5.0.0 (#4502) (forwarded request 1322929 from msmeissn)</comment>
+    <requestid>1323778</requestid>
+  </revision>
 </revisionlist>
