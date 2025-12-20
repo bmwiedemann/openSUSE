@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.18
-%define patchversion 6.18.1
-%define git_commit ffe6340b267ac4e36a25057fcb92f9a0c0f7d2b4
+%define patchversion 6.18.2
+%define git_commit 94472718bd34ca4adb72d325d55f37bd87bfde65
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -40,9 +40,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-default
-Version:        6.18.1
+Version:        6.18.2
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gffe6340
+Release:        <RELEASE>.g9447271
 %else
 Release:        0
 %endif
