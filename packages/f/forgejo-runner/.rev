@@ -441,4 +441,26 @@
     docker actions (forwarded request 1322615 from rrahl0)</comment>
     <requestid>1322616</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>2d84ece36dc6e98070ca24b8019f4bbd</srcmd5>
+    <version>12.2.0</version>
+    <time>1766263617</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 12.2.0:
+  * allow access to the outputs of a reusable workflow
+  * support expanding reusable workflows into multiple new jobs
+  * allow accessing ${{ needs... }} when expanding reusable workflows
+  * allow matrix expansion on caller of reusable workflows
+  * rewrite reusable workflow 'needs' references between jobs
+  * populate 'needs' in reusable workflow expansion
+  * map 'with' from callee into 'inputs' of reusable workflow expansion
+  * add variable workflow_ref to github context
+  * allow access to 'inputs' context when evaluating workflow call outputs
+  * track reusable workflow recursion limits across re-expansion
+  * inner job in a reusable workflow can't reference ${{ needs... }} in with
+  * unrecoverable errors in artifactcache should have non-zero exit code
+  * relative reusable workflow w/ HTTP (not HTTPS) github instance url
+  * double protocol prefix in reusable workflow clone URLs (forwarded request 1323787 from rrahl0)</comment>
+    <requestid>1323788</requestid>
+  </revision>
 </revisionlist>

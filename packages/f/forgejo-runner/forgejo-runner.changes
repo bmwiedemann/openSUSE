@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Dec 20 13:53:04 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 12.2.0:
+  * allow access to the outputs of a reusable workflow
+  * support expanding reusable workflows into multiple new jobs
+  * allow accessing ${{ needs... }} when expanding reusable workflows
+  * allow matrix expansion on caller of reusable workflows
+  * rewrite reusable workflow 'needs' references between jobs
+  * populate 'needs' in reusable workflow expansion
+  * map 'with' from callee into 'inputs' of reusable workflow expansion
+  * add variable workflow_ref to github context
+  * allow access to 'inputs' context when evaluating workflow call outputs
+  * track reusable workflow recursion limits across re-expansion
+  * inner job in a reusable workflow can't reference ${{ needs... }} in with
+  * unrecoverable errors in artifactcache should have non-zero exit code
+  * relative reusable workflow w/ HTTP (not HTTPS) github instance url
+  * double protocol prefix in reusable workflow clone URLs
+
+-------------------------------------------------------------------
 Sun Dec  7 23:45:18 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 12.1.2:
