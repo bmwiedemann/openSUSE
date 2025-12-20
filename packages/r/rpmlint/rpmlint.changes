@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Dec 19 11:41:46 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.8.0+git20251215.35efabff:
+  * Fix lint
+  * MenuXDGCheck: Fix error string
+  * Remove post-without-tmpfile-creation warning
+  * Format and modify test/spec/bogus-date.spec
+
+-------------------------------------------------------------------
 Fri Dec 12 14:53:51 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.8.0+git20251212.031b8a08:

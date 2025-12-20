@@ -5437,4 +5437,17 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
 </comment>
     <requestid>1322636</requestid>
   </revision>
+  <revision rev="520" vrev="1">
+    <srcmd5>356c384548290e98e2f60cbf16db4b07</srcmd5>
+    <version>2.8.0+git20251215.35efabff</version>
+    <time>1766263543</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.8.0+git20251215.35efabff:
+  * Fix lint
+  * MenuXDGCheck: Fix error string
+  * Remove post-without-tmpfile-creation warning
+  * Format and modify test/spec/bogus-date.spec
+</comment>
+    <requestid>1323662</requestid>
+  </revision>
 </revisionlist>
