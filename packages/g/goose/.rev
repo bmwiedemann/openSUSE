@@ -52,4 +52,41 @@
   * feat: @goose in terminal (native terminal support) (#5887)</comment>
     <requestid>1322001</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cad0d3881db7ca9a075d2c5fd0f47e7a</srcmd5>
+    <version>1.17.0</version>
+    <time>1766263547</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.17.0:
+  * fix: respect default_enabled value of platform extensions (#6159)
+  * Add more posthog analytics (privacy aware) (#6122)
+  * Fix tokenState loading on new sessions (#6129)
+  * chore(release): release version 1.17.0
+  * feat(mcp): platform extension for &quot;code mode&quot; MCP tool calling (#6030)
+  * workflow: auto-update recipe-reference on release (#5988)
+  * Document recipe slash commands feature (#6075)
+  * docs: add GitHub Copilot device flow authentication details (#6123)
+  * Disallow subagents with no extensions (#5825)
+  * chore(deps): bump js-yaml in /documentation (#6093)
+  * feat: external goosed server (#5978)
+  * fix: Make datetime info message more explicit to prevent LLM confusion about current year (#6101)
+  * refactor: unify subagent and subrecipe tools into single tool (#5893)
+  * goose repo is too big for the issue solver workflow worker (#6099)
+  * fix: use system not developer role in db (#6098)
+  * Add /goose issue solver github workflow (#6068)
+  * OpenAI responses streaming (#5837)
+  * Canonical models for Providers (#5694)
+  * feat: add Inception provider for Mercury models (#6029)
+  * fix old sessions with tool results not loading (#6094)
+  * Fix community page mobile responsiveness and horizontal overflow (#6082)
+  * Tool reply meta (#6074)
+  * chore: avoid accidentally using native tls again (#6086)
+  * Update vars to be capitalised to be in line with other variables in config file (#6085)
+  * docs: restructure recipe reference (#5972)
+  * docs: configure custom providers (#6044)
+  * docs: Community All-Stars Spotlight November 2025, CodeTV Hackathon edition (#6070)
+  * fix: include file attachments in queued messages (#5961)
+  * fix(ui): prevent incorrect provider type suffix in update dialog #5908 (#5909)</comment>
+    <requestid>1323698</requestid>
+  </revision>
 </revisionlist>
