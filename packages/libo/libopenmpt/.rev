@@ -1120,4 +1120,21 @@ Changes in 0.5.3:
     first tick is applied, the filter should still be activated.</comment>
     <requestid>1304594</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>9837f80a9519c0f2e3df0fca6348283a</srcmd5>
+    <version>0.8.4</version>
+    <time>1766263501</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.4:
+  * openmpt123: libsndfile float32 output was broken since 0.8.1.
+  * [Bug] build/download_externals.txt was missing from makefile
+    and msvc source archives.
+  * PT36: Some MODs with samples larger than 64k inside PT36
+    containers were not read correctly.
+  * IT: Files are no longer interpreted as ModPlug-made (thus
+    disabling all compatibility settings) just because instrument
+    extensions are found (no such files are currently known to
+    exist in the wild).</comment>
+    <requestid>1323566</requestid>
+  </revision>
 </revisionlist>
