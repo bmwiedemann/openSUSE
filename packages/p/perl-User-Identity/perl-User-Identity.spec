@@ -18,10 +18,10 @@
 
 %define cpan_name User-Identity
 Name:           perl-User-Identity
-Version:        1.30.0
+Version:        3.0.0
 Release:        0
-# 1.03 -> normalize -> 1.30.0
-%define cpan_version 1.03
+# 3.00 -> normalize -> 3.0.0
+%define cpan_version 3.00
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Collect information about a user
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -55,6 +55,10 @@ The 'User-Identity' distribution is created to maintain a set of
 informational objects which are related to one user. The 'User::Identity'
 module tries to be smart providing defaults, conversions and often required
 combinations.
+
+*This is a maintenance release for the old interface*. Read
+_https://github.com/markov2/perl5-Mail-Box/wiki/_ how to move towards
+version 4.
 
 The identities are not implementing any kind of storage, and can therefore
 be created by any simple or complex Perl program. This way, it is more

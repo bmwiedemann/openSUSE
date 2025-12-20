@@ -48,4 +48,22 @@
   	- add .gitignore</comment>
     <requestid>1310533</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fd028b5bfb1a7bd0d109936f2ab87de6</srcmd5>
+    <version>3.0.0</version>
+    <time>1766263630</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 3.0.0 (3.00)
+   see /usr/share/doc/packages/perl-User-Identity/ChangeLog
+  #!!! This is the maintenance version of this module.  When you start fresh,
+  #!!! go for version 4 (or higher).  On github, this code is branch 'maint3'
+  #!!! Convert? See F&lt;https://github.com/markov2/perl5-Mail-Box/wiki/&gt;
+  version 3.00:
+  	Changes:
+  	- maintenance release with Mail::Box version 3 compatibility.
+  	Improvements:
+  	- add bugtracker to meta
+  	- bump version to show it is not compatible with MailBox 4</comment>
+    <requestid>1323811</requestid>
+  </revision>
 </revisionlist>

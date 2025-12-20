@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov 25 05:36:40 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.0.0 (3.00)
+   see /usr/share/doc/packages/perl-User-Identity/ChangeLog
+
+  #!!! This is the maintenance version of this module.  When you start fresh,
+  #!!! go for version 4 (or higher).  On github, this code is branch 'maint3'
+  #!!! Convert? See F<https://github.com/markov2/perl5-Mail-Box/wiki/>
+  version 3.00:
+  	Changes:
+  	- maintenance release with Mail::Box version 3 compatibility.
+  	Improvements:
+  	- add bugtracker to meta
+  	- bump version to show it is not compatible with MailBox 4
+
+-------------------------------------------------------------------
 Thu Oct  9 20:52:08 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.30.0 (1.03)
