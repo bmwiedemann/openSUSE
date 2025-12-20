@@ -16,9 +16,12 @@
 #
 
 
+%if 0%{?suse_version} >= 1600
+%bcond_without faad
+%else
 %bcond_with faad
-%bcond_without libmpeg2
-%bcond_without mad
+%endif
+
 Name:           scummvm
 Version:        2.9.1
 Release:        0
@@ -58,12 +61,8 @@ Suggests:       %{name}-tools
 %if %{with faad}
 BuildRequires:  pkgconfig(faad2)
 %endif
-%if %{with mad}
-BuildRequires:  pkgconfig(mad)
-%endif
-%if %{with libmpeg2}
 BuildRequires:  pkgconfig(libmpeg2) >= 0.4.0
-%endif
+BuildRequires:  pkgconfig(mad)
 %ifarch %{ix86}
 BuildRequires:  nasm
 %endif

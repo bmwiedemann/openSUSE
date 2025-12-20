@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 12 18:14:35 UTC 2025 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- enable faad2 for Leap 16.0 and tumbleweed
+- remove obsolete bcond for mad and libmpeg2
+
+-------------------------------------------------------------------
 Wed Jun 11 07:32:47 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add --enable-release for reproducible builds (boo#1231626)

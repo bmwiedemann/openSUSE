@@ -352,4 +352,12 @@ SPDX format - plus it appears as though only one license relevant binary is crea
     <comment></comment>
     <requestid>1284741</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>d24694f756d5d1acb04df0ff4a4b8182</srcmd5>
+    <version>2.9.1</version>
+    <time>1766263555</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1323705</requestid>
+  </revision>
 </revisionlist>
