@@ -407,4 +407,20 @@
    see /usr/share/doc/packages/perl-MIME-Types/ChangeLog</comment>
     <requestid>1309622</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>1fdb48205e7561d06739217870d84cb8</srcmd5>
+    <version>2.300.0</version>
+    <time>1766263625</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.300.0 (2.30)
+   see /usr/share/doc/packages/perl-MIME-Types/ChangeLog
+  version 2.30: Mon  8 Dec 20:33:20 CET 2025
+  	Fixes:
+  	- no undef when simplifying illegal type
+  	  github issue #15 [Todd Richmond]
+  	Improvements:
+  	- add bugtracker to meta
+  	- better OO use of attributes.</comment>
+    <requestid>1323805</requestid>
+  </revision>
 </revisionlist>

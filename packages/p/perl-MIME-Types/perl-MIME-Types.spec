@@ -18,10 +18,10 @@
 
 %define cpan_name MIME-Types
 Name:           perl-MIME-Types
-Version:        2.290.0
+Version:        2.300.0
 Release:        0
-# 2.29 -> normalize -> 2.290.0
-%define cpan_version 2.29
+# 2.30 -> normalize -> 2.300.0
+%define cpan_version 2.30
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Definition of MIME types
 URL:            https://metacpan.org/release/%{cpan_name}
