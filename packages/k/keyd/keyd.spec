@@ -1,7 +1,7 @@
 #
 # spec file for package keyd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global libinput_overrides %{_sysconfdir}/libinput/local-overrides.quirks
 Name:           keyd
-Version:        2.5.0
+Version:        2.6.0
 Release:        0
 Summary:        A key remapping daemon for linux
 License:        MIT
@@ -43,26 +43,24 @@ which remaps keys using kernel level input primitives (evdev, uinput).
 %autosetup
 
 %build
-# fix default prefix in Makefile being /usr/local
-%make_build PREFIX=%{_prefix}
+CFLAGS="%{optflags}" %make_build PREFIX=%{_prefix}
 
 %install
-install -m755 -d %{buildroot}%{_bindir} %{buildroot}%{_datadir}/%{name}/layouts %{buildroot}%{_mandir}/man1 %{buildroot}%{_unitdir}
-install -m755 bin/* %{buildroot}%{_bindir}
-install -m644 data/keyd.compose %{buildroot}%{_datadir}/%{name}
-install -m644 layouts/* %{buildroot}%{_datadir}/%{name}/layouts
-cp -r data/gnome-* %{buildroot}%{_datadir}/%{name}
-install -m644 data/*.1.gz %{buildroot}%{_mandir}/man1/
-install -m644 %{name}.service %{buildroot}%{_unitdir}
+%make_install PREFIX=%{_prefix} FORCE_SYSTEMD=1
+
+%check
+make test-io
 
 %files
 %license LICENSE
-%doc README.md docs/*.md examples
-%{_bindir}/*
-%{_mandir}/man1/*
-%dir %{_datadir}/%{name}
-%{_datadir}/%{name}/*
+%{_bindir}/%{name}
+%{_bindir}/keyd-application-mapper
+%{_mandir}/man1/%{name}.1%{?ext_man}
+%{_mandir}/man1/keyd-application-mapper.1%{?ext_man}
+%{_datadir}/%{name}
 %{_unitdir}/%{name}.service
+%{_sysusersdir}/%{name}.conf
+%{_datadir}/doc/%{name}
 
 %pre
 getent group keyd >/dev/null 2>&1 || groupadd keyd

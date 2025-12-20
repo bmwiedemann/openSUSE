@@ -33,4 +33,13 @@ pointer being treated as a tablet, resulting in mouse pointer not working
     <comment>Update to v2.5.0</comment>
     <requestid>1189940</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8bc38e17719e0d06dc2e0d8d316e1751</srcmd5>
+    <version>2.6.0</version>
+    <time>1766263609</time>
+    <user>dimstar_suse</user>
+    <comment>Update to v2.6.0
+</comment>
+    <requestid>1323776</requestid>
+  </revision>
 </revisionlist>
