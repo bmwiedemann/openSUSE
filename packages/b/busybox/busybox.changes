@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec 19 07:56:40 UTC 2025 - Radoslav Kolev <radoslav.kolev@suse.com>
+
+- Fix tar hidden files via escape sequence (CVE-2025-46394, bsc#1241661)
+  * 0001-archival-libarchive-sanitize-filenames-on-output-pre.patch
+- Fix HTTP request header injection in wget (CVE-2025-60876, bsc#1253245)
+  * wget-don-t-allow-control-characters-in-url.patch
+- Set CONFIG_FIRST_SYSTEM_ID to 201 to avoid confclict (bsc#1236670)
+- Fix unshare -mrpf sh core dump on  ppc64le (bsc#1249237)
+  * 0001-nsenter-unshare-don-t-use-xvfork_parent_waits_and_ex.patch
+
+-------------------------------------------------------------------
 Mon Aug 11 14:37:07 UTC 2025 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch to fix adduser inside containers on an SELinux host

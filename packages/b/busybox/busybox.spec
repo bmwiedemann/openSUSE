@@ -1,7 +1,7 @@
 #
 # spec file for package busybox
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,6 +57,12 @@ Patch10:        busybox-1.37.0-od-make-B-test-little-endian-only-add-variant-for
 Patch11:        busybox-1.37.0-hexdump-add-tests-for-x-handle-little-big-endian-pro.patch
 # PATCH-FIX-UPSTREAM - Fix adduser inside containers (boo#1247779)
 Patch12:        0001-update_passwd-Avoid-selinux_preserve_fcontext-if-SEL.patch
+# PATCH-FIX-UPSTREAM - Fix bsc#1241661 (CVE-2025-46394), from upstream commit f5e1bf966
+Patch13:        0001-archival-libarchive-sanitize-filenames-on-output-pre.patch
+# PATCH-FIX-UPSTREAM - Fix bsc#1253245 (CVE-2025-60876), submitted to mailing list
+Patch14:        wget-don-t-allow-control-characters-in-url.patch
+# PATCH-FIX-UPSTREAM - Fix bsc#1249237, from upstream commit 362159593
+Patch15:        0001-nsenter-unshare-don-t-use-xvfork_parent_waits_and_ex.patch
 
 # other patches
 Patch100:       busybox.install.patch

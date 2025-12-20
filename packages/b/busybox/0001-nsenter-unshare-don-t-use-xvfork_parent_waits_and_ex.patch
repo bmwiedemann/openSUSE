@@ -1,0 +1,83 @@
+From 3621595939e43a831d66f6b757d4f410029bff95 Mon Sep 17 00:00:00 2001
+From: Denys Vlasenko <vda.linux@googlemail.com>
+Date: Wed, 8 Oct 2025 14:49:26 +0200
+Subject: [PATCH 1/1] nsenter,unshare: don't use
+ xvfork_parent_waits_and_exits(), it SEGVs on ppc64le
+
+Signed-off-by: Denys Vlasenko <vda.linux@googlemail.com>
+---
+ libbb/xfuncs_printf.c | 9 +++++++++
+ util-linux/nsenter.c  | 9 ++++++++-
+ util-linux/unshare.c  | 9 ++++++++-
+ 3 files changed, 25 insertions(+), 2 deletions(-)
+
+diff --git a/libbb/xfuncs_printf.c b/libbb/xfuncs_printf.c
+index 842d10cd2..d413c81e8 100644
+--- a/libbb/xfuncs_printf.c
++++ b/libbb/xfuncs_printf.c
+@@ -696,6 +696,14 @@ pid_t FAST_FUNC xfork(void)
+ }
+ #endif
+ 
++#if 0
++/* DO NOT DO THIS. This can't be a function.
++ * It works on some arches (x86) but fails on others (ppc64le: SEGV).
++ * The reason is: the child returns from this function
++ * and likely pops up the stack in an arch-dependent way.
++ * When child eventually exits or execs, parent "reappear"
++ * in the now-unwound stack (!) and the behavior is undefined.
++ */
+ void FAST_FUNC xvfork_parent_waits_and_exits(void)
+ {
+ 	pid_t pid;
+@@ -711,6 +719,7 @@ void FAST_FUNC xvfork_parent_waits_and_exits(void)
+ 	}
+ 	/* Child continues */
+ }
++#endif
+ 
+ // Useful when we do know that pid is valid, and we just want to wait
+ // for it to exit. Not existing pid is fatal. waitpid() status is not returned.
+diff --git a/util-linux/nsenter.c b/util-linux/nsenter.c
+index 9a250e43c..425d5175f 100644
+--- a/util-linux/nsenter.c
++++ b/util-linux/nsenter.c
+@@ -251,7 +251,14 @@ int nsenter_main(int argc UNUSED_PARAM, char **argv)
+ 	 * explicitly requested by the user not to.
+ 	 */
+ 	if (!(opts & OPT_nofork) && (opts & OPT_pid)) {
+-		xvfork_parent_waits_and_exits();
++		pid_t pid = xvfork();
++		if (pid > 0) {
++			/* Parent */
++			int exit_status = wait_for_exitstatus(pid);
++			if (WIFSIGNALED(exit_status))
++				kill_myself_with_sig(WTERMSIG(exit_status));
++			return WEXITSTATUS(exit_status);
++		}
+ 		/* Child continues */
+ 	}
+ 
+diff --git a/util-linux/unshare.c b/util-linux/unshare.c
+index a9f56f388..f58cdd93e 100644
+--- a/util-linux/unshare.c
++++ b/util-linux/unshare.c
+@@ -333,7 +333,14 @@ int unshare_main(int argc UNUSED_PARAM, char **argv)
+ 	 * that'll become PID 1 in this new namespace.
+ 	 */
+ 	if (opts & OPT_fork) {
+-		xvfork_parent_waits_and_exits();
++		pid_t pid = xvfork();
++		if (pid > 0) {
++			/* Parent */
++			int exit_status = wait_for_exitstatus(pid);
++			if (WIFSIGNALED(exit_status))
++				kill_myself_with_sig(WTERMSIG(exit_status));
++			return WEXITSTATUS(exit_status);
++		}
+ 		/* Child continues */
+ 	}
+ 
+-- 
+2.51.1
+
