@@ -17,12 +17,14 @@
 
 
 Name:           gap-autodoc
-Version:        2025.10.16
+Version:        2025.12.19
 Release:        0
 Summary:        GAP: Tools for generating automatic GAPDoc documentations
 License:        GPL-2.0-only
 Group:          Productivity/Scientific/Math
-URL:            http://gap-packages.github.io/AutoDoc/
+URL:            https://gap-packages.github.io/AutoDoc/
+#Git-Clone:     https://github.com/gap-packages/AutoDoc/
+#Changelog:     <source0>/CHANGES.md
 Source:         https://github.com/gap-packages/AutoDoc/releases/download/v%version/AutoDoc-%version.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gap-rpm-devel

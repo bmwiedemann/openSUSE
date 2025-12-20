@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Dec 19 16:36:52 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2025.12.19
+  * Don't replace empty lines in `@BeginCode` blocks by `<P/>`.
+  * Fix XML header in generated files (it had a syntax error, which
+    somehow also slips by GAPDoc; so it caused no problems in
+    practice, but the resulting XML was strictly speaking invalid).
+  * Predefine entities `VERSION`, `RELEASEYEAR`, `RELEASEDATE`.
+  * Allow specifying scaffold settings *simultaneously* in
+    `PackageInfo.g` and `makedoc.g`; the records are merged, with
+    values from `makedoc.g` taken precedence if e.g. the same
+    entity is defined in both places.
+
+-------------------------------------------------------------------
 Sun Oct 19 12:39:32 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2025.10.16
