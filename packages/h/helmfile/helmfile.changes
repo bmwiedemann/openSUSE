@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Sat Dec 20 07:41:55 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.2.3:
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/config from
+    1.32.2 to 1.32.3 by @dependabot[bot] in #2308
+  * build(deps): bump github.com/spf13/cobra from 1.10.1 to 1.10.2
+    by @dependabot[bot] in #2310
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.92.1 to 1.93.0 by @dependabot[bot] in #2307
+  * Add parameter to render helmfile as go template without .gotmpl
+    extension by @ronaldour in #2312
+  * build(deps): bump golang.org/x/sync from 0.18.0 to 0.19.0 by
+    @dependabot[bot] in #2315
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.93.0 to 1.93.2 by @dependabot[bot] in #2323
+  * build(deps): bump k8s.io/apimachinery from 0.34.2 to 0.34.3
+    by @dependabot[bot] in #2322
+  * build(deps): bump golang.org/x/term from 0.37.0 to 0.38.0 by
+    @dependabot[bot] in #2317
+  * build(deps): bump k8s.io/client-go from 0.34.2 to 0.34.3 by
+    @dependabot[bot] in #2321
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/config from
+    1.32.3 to 1.32.5 by @dependabot[bot] in #2320
+  * build(deps): bump helm.sh/helm/v3 from 3.19.2 to 3.19.3 by
+    @dependabot[bot] in #2325
+  * build(deps): bump helm.sh/helm/v4 from 4.0.1 to 4.0.2 by
+    @dependabot[bot] in #2326
+  * build(deps): bump actions/upload-artifact from 5 to 6 by
+    @dependabot[bot] in #2331
+  * build(deps): bump helm.sh/helm/v3 from 3.19.3 to 3.19.4 by
+    @dependabot[bot] in #2328
+  * build(deps): bump actions/download-artifact from 6 to 7 by
+    @dependabot[bot] in #2332
+  * build(deps): bump dessant/lock-threads from 5 to 6 by
+    @dependabot[bot] in #2330
+  * build(deps): bump helm.sh/helm/v4 from 4.0.3 to 4.0.4 by
+    @dependabot[bot] in #2329
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3
+    from 1.93.2 to 1.94.0 by @dependabot[bot] in #2333
+  * bump helm version to 4.0.4 by @yxxhero in #2335
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/config from
+    1.32.5 to 1.32.6 by @dependabot[bot] in #2336
+  * build(deps): bump github.com/zclconf/go-cty-yaml from 1.1.0
+    to 1.2.0 by @dependabot[bot] in #2340
+  * build(deps): bump k8s.io/client-go from 0.34.3 to 0.35.0 by
+    @dependabot[bot] in #2338
+  * fix: rewrite relative file:// chart dependencies to absolute
+    paths by @sstarcher in #2334
+
+-------------------------------------------------------------------
 Fri Nov 28 08:36:10 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.2.2:
