@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec 20 19:25:25 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Skip test due to nbdime not up to date with pytest
+  * gh#computationalmodelling/nbval#230
+
+-------------------------------------------------------------------
 Wed Sep 25 08:26:49 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

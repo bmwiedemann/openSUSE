@@ -123,4 +123,13 @@
 </comment>
     <requestid>1203612</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>80bcb5a7a2c27a0acb7555f0121700bc</srcmd5>
+    <version>0.11.0</version>
+    <time>1766263642</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip test due to nbdime not up to date with pytest
+  * gh#computationalmodelling/nbval#230</comment>
+    <requestid>1323834</requestid>
+  </revision>
 </revisionlist>

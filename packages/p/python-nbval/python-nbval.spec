@@ -1,7 +1,7 @@
 #
 # spec file for package python-nbval
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -91,11 +91,14 @@ export LANG=en_US.UTF-8
 
 %if %{with test}
 %check
+# https://github.com/computationalmodelling/nbval/issues/230
+donttest="test_nbdime_reporter"
 # see dodo.py for call signature
 %{pytest tests/ --nbval \
                 --nbval-current-env \
                 --nbval-sanitize-with tests/sanitize_defaults.cfg \
-                --ignore tests/ipynb-test-samples
+                --ignore tests/ipynb-test-samples \
+                -k "not ($donttest)"
 }
 %endif
 
