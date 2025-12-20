@@ -88,4 +88,26 @@ the labwc wayland compositor</comment>
   * xml.c -&gt; xml.cpp</comment>
     <requestid>1321186</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>273d41c6afd9688e94a2c6ce38634e6c</srcmd5>
+    <version>0~git.20251219.9b90fc7</version>
+    <time>1766263553</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0~git.20251219.9b90fc7:
+  * Removed redundant combobox items from mouse.ui
+  * lrm|lmr may not be clear in all languages
+  * reordered .ui file
+  * Removed Keep border;added decorations server|client
+  * Added more possible settings to appearance page
+  * Updated .ts files
+  * Weblate commits
+  * Full width for slider
+  * Split the Settting class into a dedicated settings.{h,cpp}
+  * s/-65535/LAB_INVALID/
+  * mouse: convert pointer-speed to QSlider
+  * mouse: set the default values indicated by libinput
+  * settings.cpp: correctly initialise int/float/bool without rc.xml entry
+  * mouse: add more libinput settings</comment>
+    <requestid>1323709</requestid>
+  </revision>
 </revisionlist>

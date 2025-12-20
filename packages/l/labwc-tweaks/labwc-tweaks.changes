@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Dec 19 17:40:05 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to version 0~git.20251219.9b90fc7:
+  * Removed redundant combobox items from mouse.ui
+  * lrm|lmr may not be clear in all languages
+  * reordered .ui file
+  * Removed Keep border;added decorations server|client
+  * Added more possible settings to appearance page
+  * Updated .ts files
+  * Weblate commits
+  * Full width for slider
+  * Split the Settting class into a dedicated settings.{h,cpp}
+  * s/-65535/LAB_INVALID/
+  * mouse: convert pointer-speed to QSlider
+  * mouse: set the default values indicated by libinput
+  * settings.cpp: correctly initialise int/float/bool without rc.xml entry
+  * mouse: add more libinput settings
+
+-------------------------------------------------------------------
 Thu Dec 04 17:01:57 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to version 0~git.20251202.8404e2f:
