@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Tue Dec 16 13:42:10 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 6.5.4
+  * The in operator for HTTPHeaders was incorrectly case-sensitive, causing
+    lookups to fail for headers with different casing than the original header
+    name. This was a regression in version 6.5.3 and has been fixed to restore
+    the intended case-insensitive behavior from version 6.5.2 and earlier.
+- Update to 6.5.3 (bsc#1254903, bsc#1254905, bsc#1254904)
+  * Fixed a denial-of-service vulnerability involving quadratic computation
+    when parsing multipart/form-data request bodies. CVE-2025-67726
+    Thanks to Finder16 for reporting this issue.
+  * Fixed a denial-of-service vulnerability involving quadratic computation when
+    parsing repeated HTTP headers. CVE-2025-67725.
+    Thanks to Finder16 for reporting this issue.
+  * Fixed a header injection and XSS vulnerability involving the reason argument
+    to .RequestHandler.set_status and tornado.web.HTTPError. CVE-2025-67724.
+    Thanks to Finder16 and Cheshire1225 for reporting this issue.
+  * Several demo applications bundled with the Tornado repo (blog, chat,
+    facebook) had an open redirect vulnerability which has been fixed. This is
+    not covered by a CVE or security advisory since the demo applications are
+    not included as a part of the Tornado package when installed, but developers
+    who have copied code from these demos may which to review their own
+    applications for open redirects.
+    Thanks to J1vvoo for reporting this issue.
+  * he s3server demo application contained some path traversal vulnerabilities.
+    Since this demo application was not demonstrating any interesting aspects of
+    Tornado, it has been deleted rather than being fixed.
+    Thanks to J1vvoo for reporting this issue.
+- Update to 6.5.2
+  * Fixed a bug that resulted in WebSocket pings not being sent at the
+    configured interval.
+  * Improved logging for invalid Host headers. This was previously logged as an
+    uncaught exception with a stack trace, now it is simply a 400 response
+    (logged as a warning in the access log).
+  * Restored the host argument to .HTTPServerRequest. This argument is
+    deprecated and will be removed in the future, but its removal with no
+    warning in 6.5.0 was a mistake.
+  * Removed a debugging print statement that was left in the code.
+  * Improved type hints for gen.multi.
+- Update to 6.5.1
+  * Fixed a bug in multipart/form-data parsing that could incorrectly reject
+    filenames containing characters above U+00FF (i.e. most characters outside
+    the Latin alphabet).
+
+-------------------------------------------------------------------
 Fri May 16 09:23:08 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 6.5.0 (CVE-2025-47287, bsc#1243268):

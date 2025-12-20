@@ -244,4 +244,12 @@
       deprecated. Use the new get_message method instead.</comment>
     <requestid>1277990</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>15e672e25e9ab29307cc73725d7d77e0</srcmd5>
+    <version>6.5.4</version>
+    <time>1766263503</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1323582</requestid>
+  </revision>
 </revisionlist>
