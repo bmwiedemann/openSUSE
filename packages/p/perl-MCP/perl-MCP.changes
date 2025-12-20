@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Dec  9 05:35:26 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.60.0 (0.06)
+   see /usr/share/doc/packages/perl-MCP/Changes
+
+  0.06  2025-12-05
+    - Protocol version is now 2025-11-25.
+    - Added support for resources.
+    - Added support for audio and resource results.
+    - Added support for sessions specific prompt, resource, and tool lists.
+    - Added MCP::Resource class.
+    - Added read_resource and list_resources methods to MCP::Client.
+    - Added resource method to MCP::Server.
+    - Added audio_result and resource_link_result methods to MCP::Tool.
+    - Added prompts, resources, and tools events to MCP::Server.
+
+-------------------------------------------------------------------
 Mon Oct  6 18:47:59 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.50.0 (0.05)

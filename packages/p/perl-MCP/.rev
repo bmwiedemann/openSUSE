@@ -21,4 +21,23 @@
     - Added prompt method to MCP::Server.</comment>
     <requestid>1309621</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d35f8dbd8c8baec0823b396430757eba</srcmd5>
+    <version>0.60.0</version>
+    <time>1766263627</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.60.0 (0.06)
+   see /usr/share/doc/packages/perl-MCP/Changes
+  0.06  2025-12-05
+    - Protocol version is now 2025-11-25.
+    - Added support for resources.
+    - Added support for audio and resource results.
+    - Added support for sessions specific prompt, resource, and tool lists.
+    - Added MCP::Resource class.
+    - Added read_resource and list_resources methods to MCP::Client.
+    - Added resource method to MCP::Server.
+    - Added audio_result and resource_link_result methods to MCP::Tool.
+    - Added prompts, resources, and tools events to MCP::Server.</comment>
+    <requestid>1323806</requestid>
+  </revision>
 </revisionlist>
