@@ -1,4 +1,103 @@
 -------------------------------------------------------------------
+Sat Dec 20 07:04:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.0.43:
+  * feat(genconfig): don't append extraKernelArgs on v1.12+
+  * chore(schema): update talos-extensions.yaml JSON schema (#1343)
+  * fix(deps): update github.com/sirupsen/logrus digest to b61f268
+    (#1340)
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+    v3.0.42
+  * feat: update Scoop for talhelper version v3.0.42
+  * feat: update flake (#1338)
+
+-------------------------------------------------------------------
+Sat Dec 20 06:59:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.0.42:
+  * docs: update CLI reference documentation (#1337)
+  * feat(genurl): allow providing customization-file flag
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * chore(container): update
+    mcr.microsoft.com/devcontainers/go:2.0-bookworm docker digest
+    to ef7d7fe (#1335)
+  * chore(container): update
+    mcr.microsoft.com/devcontainers/go:2.0-bookworm docker digest
+    to 891b8e8 (#1334)
+  * chore(container): update alpine:3.23.2 docker digest to 865b95f
+  * chore(container): update alpine docker tag to v3.23.2
+  * chore(container): update registry.k8s.io/kubectl docker tag to
+    v1.35.0
+  * docs: update CLI reference documentation (#1330)
+  * chore(deps): update dependency siderolabs/talos to v1.11.6
+  * chore(container): update ghcr.io/siderolabs/talosctl docker tag
+    to v1.11.6
+  * chore(schema): update talos-extensions.yaml JSON schema (#1329)
+  * fix(deps): update module
+    github.com/siderolabs/talos/pkg/machinery to v1.12.0-rc.1
+  * chore(github-action): update renovatebot/github-action action
+    to v44.2.0
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * chore(github-action): update renovatebot/github-action action
+    to v44.1.0
+  * chore(schema): update talos-extensions.yaml JSON schema (#1323)
+  * chore(github-action)!: Update actions/cache action to v5
+  * chore(github-action)!: Update peter-evans/create-pull-request
+    action to v8
+  * chore(container): update registry.k8s.io/kubectl docker tag to
+    v1.34.3
+  * fix(deps): update module
+    github.com/siderolabs/talos/pkg/machinery to v1.12.0-rc.0
+  * docs: update Pulumi provider link
+  * chore(schema): update talos-extensions.yaml JSON schema (#1320)
+  * fix(deps): update module golang.org/x/mod to v0.31.0
+  * chore(container): update goreleaser/goreleaser docker tag to
+    v2.13.1
+  * chore(container): update golangci/golangci-lint docker tag to
+    v2.7.2
+  * fix(test): upstream API changes
+  * fix(deps): update module
+    github.com/siderolabs/talos/pkg/machinery to v1.12.0-beta.1
+  * chore(schema): update talos-extensions.yaml JSON schema (#1313)
+  * chore(container): update golangci/golangci-lint docker tag to
+    v2.7.1
+  * chore(schema): update talos-extensions.yaml JSON schema (#1312)
+  * chore(container): update alpine docker tag to v3.23.0
+  * chore(container): update golangci/golangci-lint docker tag to
+    v2.7.0
+  * fix(deps): update module github.com/spf13/cobra to v1.10.2
+  * chore(schema): update talos-extensions.yaml JSON schema (#1309)
+  * chore(github-action): update actions/checkout action to v6.0.1
+  * chore(github-action): update renovatebot/github-action action
+    to v44.0.5
+  * chore(github-action): update actions/checkout digest to 8e8c483
+    (#1305)
+  * chore(schema): update talos-extensions.yaml JSON schema (#1304)
+  * chore(container): update goreleaser/goreleaser docker tag to
+    v2.13.0
+  * docs: update CLI reference documentation (#1299)
+  * fix(genurl): `talos-mode` is also used by installer url
+  * Update commit message template for WinGet
+  * fix(deps): update module github.com/siderolabs/image-factory to
+    v0.9.0
+  * chore(schema): update talos-extensions.yaml JSON schema (#1297)
+  * chore(schema): update talos-extensions.yaml JSON schema (#1296)
+  * chore(container): update
+    mcr.microsoft.com/devcontainers/go:2.0-bookworm docker digest
+    to 1d9c107 (#1295)
+  * feat(editorconfig): add editorconfig
+  * chore(flake): update flake
+  * feat(justfile): add justfile
+  * fix(deps): update module github.com/google/go-containerregistry
+    to v0.20.7
+  * chore(github-action): update renovatebot/github-action action
+    to v44.0.4
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+    v3.0.41
+  * feat: update Scoop for talhelper version v3.0.41
+  * feat: update flake (#1291)
+
+-------------------------------------------------------------------
 Mon Nov 24 07:04:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.0.41:
