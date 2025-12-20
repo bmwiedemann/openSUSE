@@ -35,17 +35,13 @@ BuildRequires:  %{pg_name}-server-devel
 %pg_server_requires
 %endif
 BuildRequires:  libical-devel
-Version:        0.2.0+git20211101.d7d10f2
+Version:        0.3.1
 Release:        0
-Summary:        RULE data type for PostgreSQL
+Summary:        RRULE data type for PostgreSQL
 License:        MIT
 Group:          Productivity/Databases/Tools
-URL:            https://github.com/petropavel13/pg_rrule
-Source:         https://deb.debian.org/debian/pool/main/p/pg-rrule/pg-rrule_0.2.0+git20211101.d7d10f2.orig.tar.gz
-Patch0:         https://sources.debian.org/data/main/p/pg-rrule/0.2.0%2Bgit20211101.d7d10f2-3/debian/patches/fix_make_install.patch
-Patch1:         https://sources.debian.org/data/main/p/pg-rrule/0.2.0%2Bgit20211101.d7d10f2-3/debian/patches/fix_regress_opts.patch
-Patch2:         https://sources.debian.org/data/main/p/pg-rrule/0.2.0%2Bgit20211101.d7d10f2-3/debian/patches/fix_testsuite.patch
-Patch3:         https://sources.debian.org/data/main/p/pg-rrule/0.2.0%2Bgit20211101.d7d10f2-3/debian/patches/test-create-extension.patch
+URL:            https://github.com/Natureshadow/pg_rrule
+Source:         https://github.com/Natureshadow/pg_rrule/archive/refs/tags/%{version}.tar.gz
 
 %description
 pg-rrule can expand recurrence rules (RRULE) as defined in the
@@ -54,7 +50,7 @@ into concrete occurences as timestamps, which can then be queried
 against.
 
 %prep
-%autosetup -p1 -n %{ext_name}-master
+%autosetup -p1 -n %{ext_name}-%{version}
 
 %build
 %make_pgxs
