@@ -1,7 +1,7 @@
 #
 # spec file for package python-papermill
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,18 +43,19 @@ Requires:       python-aiohttp
 %endif
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-Recommends:     python-azure-datalake-store >= 0.0.30
 Recommends:     python-azure-identity >= 1.3.1
 Recommends:     python-azure-storage-blob >= 12.1.0
 Recommends:     python-black
 Recommends:     python-boto3
 Recommends:     python-gcsfs >= 0.2.0
+Recommends:     (python-azure-datalake-store >= 0.0.30 with python-azure-datalake-store < 1)
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module aiohttp if %python-base >= 3.12}
 BuildRequires:  %{python_module ansicolors}
-BuildRequires:  %{python_module azure-datalake-store >= 0.0.30}
+# https://github.com/nteract/papermill/issues/825
+# BuildRequires:  %%{python_module azure-datalake-store >= 0.0.30 with python-azure-datalake-store < 1}
 BuildRequires:  %{python_module azure-identity >= 1.3.1}
 BuildRequires:  %{python_module azure-storage-blob >= 12.1.0}
 BuildRequires:  %{python_module boto3}
@@ -98,9 +99,13 @@ sed -i '/docs_/d' setup.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# https://github.com/nteract/papermill/issues/825
+ignoretests="--ignore papermill/tests/test_adl.py"
 # different output type expected
 donttest="TestBrokenNotebook2"
-%pytest -k "not ($donttest)"
+# https://github.com/nteract/papermill/issues/828
+donttest="$donttest or test_output_formatting"
+%pytest $ignoretests -k "not ($donttest)"
 
 %post
 %python_install_alternative papermill

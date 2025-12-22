@@ -222,4 +222,13 @@
 </comment>
     <requestid>1187313</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>66cf7c2993171118fb7b493257ad57c5</srcmd5>
+    <version>2.6.0</version>
+    <time>1766440325</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't test azure-datalake-store gh#nteract/papermill#825
+- Skip broken formatting test gh#nteract/papermill#828</comment>
+    <requestid>1324182</requestid>
+  </revision>
 </revisionlist>
