@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Dec 11 17:24:45 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0+1:
+  * i18n(sv): translate appstream metainfo
+  * fix: cache icon handles and handle icon names that are paths
+  * chore: update dependencies
+  * Russian translation for .desktop file
+  * i18n: translation updates from weblate
+  * chore: update cosmic-text
+
+-------------------------------------------------------------------
+Sat Dec 06 22:52:46 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta9+1:
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+  * chore: update libcosmic
+
+-------------------------------------------------------------------
+Sat Nov 15 19:57:12 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta6+0:
+  * chore: update border radius
+
+-------------------------------------------------------------------
+Mon Nov 10 15:42:50 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta5+0:
+  * chore: update libcosmic
+
+-------------------------------------------------------------------
+Thu Oct 23 17:09:20 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta3+0:
+  * no changes since last release
+
+-------------------------------------------------------------------
+Sun Oct 19 14:34:42 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta2+2:
+  * Updated translations
+
+-------------------------------------------------------------------
 Mon Sep 29 20:45:28 UTC 2025 - mkd <mkdwho@icloud.com>
 
 - Update to version 1.0.0~beta1.1+1:
