@@ -1,4 +1,143 @@
 -------------------------------------------------------------------
+Thu Nov 13 19:21:54 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 4.2.1:
+  * When building from a tarball without Sphinx (that is, with -
+    DBUILD_DOCS=OFF or when sphinx-build is not found), builtin
+    man pages and help files were missing, which has been fixed (#12052).
+  * fish_config’s theme selector (the “colors” tab) was broken,
+    which has been fixed (#12053).
+
+-------------------------------------------------------------------
+Tue Nov 11 22:38:23 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 4.2.0
+  == NOTABLE FIXES AND IMPROVEMENTS ==
+  * History-based autosuggestions now include multi-line commands.
+  * A transient prompt containing more lines than the final
+    prompt will now be cleared properly (#11875)
+  * Taiwanese Chinese translations have been added.
+  * French translations have been supplemented (#11842)
+  + DEPRECATIONS AND REMOVALS
+  * fish now assumes UTF-8 for character encoding even if the
+    system does not have a UTF-8 locale. Input bytes which are
+    not valid UTF-8 are still round-tripped correctly. For example,
+    file paths using legacy encodings can still be used, but may
+    be rendered differently on the command line.
+  * On systems where no multi-byte locale is available, fish will
+    no longer fall back to using ASCII replacements for Unicode
+    characters such as “…”.
+  == INTERACTIVE IMPROVEMENTS ==
+  * The title of the terminal tab can now be set separately from
+    the window title by defining the fish_tab_title function (#2692).
+  * fish now hides the portion of a multiline prompt that is
+    scrolled out of view due to a huge command line. This
+    prevents duplicate lines after repainting with partially visible prompt (#11911).
+  * fish_config prompt’s choose and save subcommands have been
+    taught to reset fish_mode_prompt in addition to the other
+    prompt functions (#11937).
+  * fish no longer force-disables mouse capture (DECSET/DECRST
+    1000), so you can use those commands to let mouse clicks move
+    the cursor or select completions items (#4918).
+  * The alt-p binding no longer adds a redundant space to the command line.
+  * When run as a login shell on macOS, fish now sets MANPATH
+    correctly when that variable was already present in the environment (#10684).
+  * A Windows-specific case of the web-based config failing to
+    launch has been fixed (#11805).
+  * A MSYS2-specific workaround for Konsole and WezTerm has been
+    added, to prevent them from using the wrong working directory
+    when opening new tabs (#11981).
+  == FOR DISTRIBUTORS AND DEVELOPERS ==
+  * Release tags and source code tarballs are GPG-signed again (#11996).
+  * Documentation in release tarballs is now built with the
+    latest version of Sphinx, which means that pre-built man
+    pages include OSC 8 hyperlinks.
+  * The Sphinx dependency is now specified in pyproject.toml,
+    which allows you to use uv to provide Sphinx for building
+    documentation (e.g. uv run cargo install --path .).
+  * The minimum supported Rust version (MSRV) has been updated to 1.85.
+  * The standalone build mode has been made the default. This
+    means that the files in $CMAKE_INSTALL_PREFIX/share/fish will
+    not be used anymore, except for HTML docs. As a result,
+    future upgrades will no longer break running shells if one of
+    fish’s internal helper functions has been changed in the
+    updated version. For now, the data files are still installed
+    redundantly, to prevent upgrades from breaking already-
+    running shells (#11921). To reverse this change (which should
+    not be necessary), patch out the embed-data feature from cmake/Rust.cmake.
+    This option will be removed in future.
+  * OpenBSD 7.8 revealed an issue with fish’s approach to
+    displaying builtin man pages, which has been fixed.
+  == REGRESSION FIXES ==
+  * (from 4.1.0) Fix the web-based config for Python 3.9 and older (#12039).
+  * (from 4.1.0) Correct wrong terminal modes set by fish -c 'read; cat (#12024).
+  * (from 4.1.0) On VTE-based terminals, stop redrawing the
+    prompt on resize again, to avoid glitches.
+  * (from 4.1.0) Fix error using man for the commands ! . : [ { (#11955).
+  * (from 4.1.0) Fix build issues on illumos systems (#11982).
+  * (from 4.1.0) Fix crash on invalid function command (#11912).
+  * (from 4.0.0) Fix build on SPARC and MIPS Linux by disabling SIGSTKFLT.
+  * (from 4.0.0) Fix crash when passing negative PIDs to builtin wait (#11929).
+  * (from 4.0.0) On Linux, fix status fish-path output when fish
+    has been reinstalled since it was started.
+  * (from 4.1.0) On MSYS2, fix saving/loading of universal
+    variables (#11948).
+- filter out windows specific cargo dependencies
+
+-------------------------------------------------------------------
+Wed Oct  8 20:39:29 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 4.1.2
+  * Fixed spurious error output when completing remote file paths
+    for scp (#11860).
+  * Fixed the alt-l binding not formatting ls output correctly
+    (one entry per line, no colors) (#11888).
+  * Fixed an issue where focus events (currently only enabled in
+    tmux) would cause multiline prompts to be redrawn in the
+    wrong line (#11870).
+  * Stopped printing output that would cause a glitch on old
+    versions of Midnight Commander (#11869).
+  * Added a fix for some configurations of Zellij where escape
+    key processing was delayed (#11868).
+  * Fixed a case where the web-based configuration tool would
+    generate invalid configuration (#11861).
+  * Fixed a case where pasting into fish -c read would fail with
+    a noisy error (#11836).
+  * Fixed a case where upgrading fish would break old versions of
+    fish that were still running.
+  * In general, fish still needs to be restarted after it is
+    upgraded, except for standalone builds.
+
+-------------------------------------------------------------------
+Wed Oct  1 17:56:37 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 4.1.1
+  * Many of our new Chinese translations were more confusing than
+    helpful; they have been fixed or removed (#11833)
+  * Some fish_config subcommands for showing prompts and themes
+    had been broken in standalone Linux builds (those using the
+    embed-data cargo feature), which has been fixed (#11832)
+  * On Windows Terminal, we observed an issue where fish would
+    fail to read the terminal’s response to our new startup
+    queries, causing noticeable lags and a misleading error
+    message. A workaround has been added (#11841)
+  * A WezTerm issue breaking shifted key input has resurfaced on
+    some versions of WezTerm; our workaround has been extended to
+    cover all versions for now (#11204)
+  * Fixed a crash in the web-based configuration tool when using
+    the new underline styles (#11840)
+
+-------------------------------------------------------------------
+Sat Sep 27 20:50:15 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 4.1.0
+  * This release comprises 1396 commits since 4.0.9, contributed by
+    126 authors, 70 of which are new committers.
+  * see https://github.com/fish-shell/fish-shell/releases/tag/4.1.0
+- desktop file removed
+  * see https://github.com/fish-shell/fish-shell/pull/11104
+
+-------------------------------------------------------------------
 Mon Sep 15 20:52:24 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
 
 - update to 4.0.6

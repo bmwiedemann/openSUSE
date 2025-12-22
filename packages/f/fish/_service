@@ -1,6 +1,7 @@
 <services>
   <service name="cargo_vendor" mode="manual">
     <param name="src">fish*.tar.xz</param>
+    <param name="filter">true</param>
   </service>
 </services>
 

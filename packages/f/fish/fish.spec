@@ -17,7 +17,7 @@
 
 
 Name:           fish
-Version:        4.0.6
+Version:        4.2.1
 Release:        0
 Summary:        The "friendly interactive shell"
 # see bundled doc_src/license.rst
@@ -36,7 +36,6 @@ BuildRequires:  groff
 BuildRequires:  ncurses-devel
 BuildRequires:  pcre2-devel >= 10.21
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  zstd
 # for tests
 BuildRequires:  procps
@@ -78,12 +77,8 @@ find share/tools -type f -name *.py -exec \
 %install
 %cmake_install
 
-%find_lang %{name}
-
 # Location varies between TW and SLE/Leap, try both
 rm %{buildroot}/%{_datadir}/doc/packages/fish/.buildinfo
-
-%suse_update_desktop_file -G "Command-line interpreter" fish TerminalEmulator
 
 %if %{suse_version} >= 1600
 %python3_fix_shebang_path %{buildroot}/%{_datadir}/%{name}/tools/*.py
@@ -105,7 +100,7 @@ if [ "$1" = 0 ]; then
         mv %{_sysconfdir}/%{name}.tmp %{_sysconfdir}/shells
 fi
 
-%files -f %{name}.lang
+%files
 %license COPYING doc_src/license.rst
 %dir %{_sysconfdir}/fish
 %config(noreplace) %{_sysconfdir}/%{name}/*
@@ -115,8 +110,6 @@ fi
 %doc %{_datadir}/doc/packages/%{name}
 %{_datadir}/%{name}
 %{_mandir}/man1/*.1%{?ext_man}
-%{_datadir}/applications/fish.desktop
-%{_datadir}/pixmaps/fish.png
 
 %files devel
 %license COPYING doc_src/license.rst
