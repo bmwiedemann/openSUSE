@@ -470,4 +470,20 @@
       - Fix undef string bug in Test::Tester (Thanks Branislav Zahradník)</comment>
     <requestid>1319073</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>b88014af55bef9ab99a73e630bda8d3b</srcmd5>
+    <version>1.302219</version>
+    <time>1766440110</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.302219
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+  1.302219  2025-12-08 16:09:01-08:00 America/Los_Angeles
+      - Fix downstream test not to install Test2::Suite
+      - Fix documentation mistakes
+  1.302218  2025-12-08 09:18:44-08:00 America/Los_Angeles
+      - No changes from previous trial release
+  1.302217  2025-12-02 16:05:57-08:00 America/Los_Angeles (TRIAL RELEASE)
+      - Add Test2::V1 bundle</comment>
+    <requestid>1323804</requestid>
+  </revision>
 </revisionlist>
