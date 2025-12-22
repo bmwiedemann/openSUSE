@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Dec 20 13:41:29 UTC 2025 - Matthias Bach <marix@marix.org>
+
+- Update to 0.20.1
+  * Add support for standard tracebacks via the environment
+    variable TYPER_STANDARD_TRACEBACK.
+  * Ensure that options_metavar is passed through correctly.
+  * Ensure an optional argument is shown in brackets, even when
+    metavar is set.
+  * Ensure that the default rich_markup_mode is interpreted
+    correctly.
+
+-------------------------------------------------------------------
 Tue Oct 21 18:01:32 UTC 2025 - Matthias Bach <marix@marix.org> - 0.20.0
 
 - Update to 0.20.0
