@@ -18,14 +18,13 @@
 
 %define         appname com.system76.CosmicNotifications
 Name:           cosmic-notifications
-Version:        1.0.0~beta1.1+2
+Version:        1.0.0+0
 Release:        0
 Summary:        Layer for COSMIC Notifications
 License:        GPL-3.0-only
 URL:            https://github.com/pop-os/cosmic-notifications
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-Patch0:         switch-to-mold.patch
 BuildRequires:  appstream-glib
 BuildRequires:  cargo-packaging
 BuildRequires:  desktop-file-utils
@@ -42,7 +41,7 @@ BuildRequires:  pkgconfig(xkbcommon)
 Layer Shell notifications daemon which integrates with COSMIC.
 
 %prep
-%autosetup -p1 -a1
+%autosetup -a1
 
 %build
 just build-release
