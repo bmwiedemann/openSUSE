@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyWebDAV3-GNUHealth
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,14 @@
 %{?sle15_python_module_pythons}
 %bcond_without  test
 Name:           python-PyWebDAV3-GNUHealth
-Version:        0.12.0
+Version:        0.13.0
 Release:        0
 %define ltmsver 0.15
 Summary:        WebDAV library for Python - GNU Health port
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Web/Servers
 URL:            https://health.gnu.org
-Source0:        https://files.pythonhosted.org/packages/source/P/PyWebDAV3-GNUHealth/PyWebDAV3-GNUHealth-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/P/PyWebDAV3-GNUHealth/pywebdav3_gnuhealth-%{version}.tar.gz
 Source1:        https://notroj.github.io/litmus/litmus-%{ltmsver}.tar.gz
 
 # TODO: send this upstream (where?)
@@ -60,7 +60,7 @@ can be run as daemon.
 Port from Andrew Leech PyWebDAV3 library to Support GNU Health.
 
 %prep
-%autosetup -p1 -n PyWebDAV3-GNUHealth-%{version}
+%autosetup -p1 -n pywebdav3_gnuhealth-%{version}
 
 cp %{SOURCE1} test/
 

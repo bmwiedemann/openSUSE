@@ -2,7 +2,7 @@ diff -ur PyWebDAV3-GNUHealth-0.12.0/pywebdav/lib/INI_Parse.py PyWebDAV3-GNUHealt
 --- PyWebDAV3-GNUHealth-0.12.0/pywebdav/lib/INI_Parse.py	2023-07-14 17:28:43.000000000 +0200
 +++ PyWebDAV3-GNUHealth-0.12.0.patched/pywebdav/lib/INI_Parse.py	2024-02-04 13:05:29.322027790 +0100
 @@ -1,8 +1,12 @@
--from configparser import SafeConfigParser
+-from configparser import ConfigParser
 +try:
 +    from configparser import ConfigParser
 +except ImportError:
@@ -11,8 +11,7 @@ diff -ur PyWebDAV3-GNUHealth-0.12.0/pywebdav/lib/INI_Parse.py PyWebDAV3-GNUHealt
  
  class Configuration:
      def __init__(self, fileName):
--        cp = SafeConfigParser()
-+        cp = ConfigParser()
+         cp = ConfigParser()
          cp.read(fileName)
          self.__parser = cp
          self.fileName = fileName
