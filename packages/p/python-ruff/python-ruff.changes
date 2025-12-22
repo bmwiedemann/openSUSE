@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sun Dec 21 12:50:30 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.14.10:
+ * Preview feature
+  * [formatter] Fluent formatting of method chains 
+  * [formatter] Keep lambda parameters on one line and parenthesize the body if it expands 
+  * [flake8-implicit-str-concat] New rule to prevent implicit string concatenation in collections (ISC004) 
+  * [flake8-use-pathlib] Make fixes unsafe when types change in compound statements (PTH104, PTH105, PTH109, PTH115) 
+  * [refurb] Extend support for Path.open (FURB101, FURB103) 
+ * Bug fixes
+  * [pyupgrade] Fix parsing named Unicode escape sequences (UP032) 
+ * Rule changes
+  * [eradicate] Ignore ruff:disable and ruff:enable comments in ERA001 
+  * [flake8-pytest-style] Allow match and check keyword arguments without an expected exception type (PT010) 
+  * [syntax-errors] Annotated name cannot be global 
+ * Documentation
+  * Add uv and ty to the Ruff README 
+  * Document known lambda formatting deviations from Black 
+  * Update setup.md 
+  * [flake8-bandit] Fix broken link (S704) 
+
+-------------------------------------------------------------------
+Sun Dec 14 14:26:57 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.14.9
+ * Preview features
+  * [ruff] New RUF100 diagnostics for unused range suppressions 
+  * [pylint] Detect subclasses of builtin exceptions (PLW0133) 
+ * Bug fixes
+  * Fix comment placement in lambda parameters 
+  * Skip over trivia tokens after re-lexing 
+  * [flake8-bandit] Fix false positive when using non-standard CSafeLoader path (S506). 
+  * [flake8-bugbear] Accept immutable slice default arguments (B008) 
+ * Rule changes
+  * [pydocstyle] Suppress D417 for parameters with Unpack annotations 
+ * Performance
+  * Use memchr for computing line indexes 
+ * Documentation
+  * Document *.pyw is included by default in preview 
+  * Document range suppressions, reorganize suppression docs 
+  * Update mkdocs-material to 9.7.0 (Insiders now free) 
+
+-------------------------------------------------------------------
 Fri Dec  5 06:19:20 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update 0.14.8 
