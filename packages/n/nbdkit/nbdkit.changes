@@ -1,4 +1,203 @@
 -------------------------------------------------------------------
+Mon Dec 22 15:25:22 UTC 2025 - Charles Arnold <carnold@suse.com>
+
+- Update to version 1.46.0:
+  * Version 1.46.0.
+  * docs/nbdkit_debug_hexdump.pod: Add a link to nbddump page
+  * docs: Update release notes for 1.46 release
+  * include/nbdkit-common.h: Whitespace changes
+  * include: Define and use __attribute__((malloc)) on public functions
+  * include: Define and use __attribute__((nonnull))
+  * include: Rename ATTRIBUTE_FORMAT_PRINTF -> NBDKIT_ATTRIBUTE_FORMAT_PRINTF
+  * server: Add nbdkit_debug_hexdump function
+  * file: Change windows_fd_lock into reader/writer lock
+  * Version 1.45.17.
+  * file: Don't allow oldest.fd to be closed during evict_writes
+  * file: Rename cache=none to reduce-memory-pressure=true
+  * pattern: Add upper parameter to set top 16 bits
+  * file: posix_fadvise returns an errno, not the usual -1 for errors
+  * file: Move %m to end of debug message
+  * Version 1.45.16.
+  * tests/functions.sh.in: start_nbdkit: Cache is_windows check
+  * tests/functions.sh.in: Rename kill_nbdkit because this is an internal fn
+  * docs/nbdkit-release-notes-1.46.pod: Minor update with latest changes
+  * file: Improve debug message when extents are not supported
+  * file: Print a debug message whenever we clear one of the h->can_* fields
+  * file: Print extra can_* facts in debug output
+  * file: Print either "can_write" or "readonly" fact in debug output
+  * file: Update debug message about block devices
+  * vddk: Initialize start_t to avoid Coverity warning
+  * docs: Update release notes for 1.46
+  * file: In debug output, print more information about the file
+  * winfile: Improve error messages
+  * tests/test-map-random.sh: Skip the test on Windows
+  * tests/test-cow-export-safe.sh: Skip this test on Windows
+  * tests/test-bad-{filter,plugin}-name.sh: Use $EXEEXT for Windows
+  * tests/test-pattern-stride.sh: Skip on Windows
+  * tests: Test for partitioning plugin before using
+  * tests/functions.sh.in: Fail 'is_windows' test if nbdkit is broken
+  * tests/requires.c: Skip requires_root tests on Windows
+  * common/replacements/win32/nbdkit-cat.h: New windmc output
+  * docs/nbdkit-plugin.pod: Mention errno_is_preserved in error handling section
+  * file: Fix incorrect error message about modes
+  * file: Fix misleading comment
+  * ci/lcitool/projects/nbdkit.yml: Add 'tar' as an explicit dependency
+  * tar: Better checking for errors when writing to the tar subprocess
+  * pattern: Implement check writes
+  * pattern: Add stride parameter to allow pattern at block boundaries
+  * pattern: Mention random and sparse-random plugins as alternatives
+  * ci: Update various OS versions
+  * ci: Update various OS versions
+  * add proxmox backup server plugin to OTHER_PLUGINS
+  * Version 1.45.15.
+  * server/crypto.c: Support extra server keys for hybrid PQC
+  * nocache, nozero, fua: Add 'foo-mode=' alias options
+  * server: Add --tls-priority option to allow overriding TLS priority
+  * configure: Print TLS priority in summary output
+  * Fix constness of return value of strchr
+  * random: Vary the sector buffer in fast mode
+  * tests: random: Add separate tests of the seed parameter
+  * random: Add fast=true (fast mode)
+  * random: Factor out the function that generates the random buffer
+  * tests/test-random-copy.sh: Fix copy mistake in comment
+  * extentlist: Set errno on extent failure
+  * tests: One more testcase for set meta context
+  * protocol: Allow OPT_LIST more than once
+  * tests: Add test of meta context negotiation corner cases
+  * noextents: Add unit test
+  * ssh: Implement get_size for block devices
+  * ssh: Store the file attributes in the handle
+  * ssh; Display server banner, SFTP version and extensions
+  * tests/test-readonly.sh: Modify test to use 'define' function for script
+  * readonly: Advertise correct status to plugin
+  * doc: Fix formatting typos
+  * vector: Fine-tune vector_reserve behavior
+  * sh, extentlist: Also skip blank lines
+  * sh, extentlist: Allow comments in extents list
+  * python: Include <Python.h> first
+  * cc: Small tweaks to SYNOPSIS section of documentation
+  * checkwrite: Fix two bugs in .zero
+  * docs: Add outline release notes for nbdkit 1.46
+  * todo: Suggest an Imago plugin
+  * todo: Suggest OVA plugin
+  * docs: Use markdown for TODO and SECURITY files
+  * data: Support base64:<BASE64> sequences in the data parameter
+  * data: In le/be code, split word parsing into a separate function
+  * data: Define new macro if we have base64 support
+  * Version 1.45.14
+  * Version 1.45.13.
+  * vram/todo: Add some unresolved issues to the TODO file
+  * linuxdisk: Simplify computation of last line of du
+  * vram: Obey trim FUA flag by calling vram_flush
+  * vram: Link to radeontop(1)
+  * vram: Fix trim command
+  * Fix mke2fs command line
+  * vram: Skip listing devices when no devices found in platform
+  * linuxdisk: Fix parsing of last line of 'du' command output
+  * vram: Skip listing devices when no platforms are found
+  * Version 1.45.12.
+  * ocaml: Don't unregister the thread in close_wrapper
+  * tests/test-ocaml-errorcodes.c: Fix unclosed parenthesis in comment
+  * tests/test-ocaml-errorcodes.c: Launch plugin with systemd socket activation
+  * tests/test-ocaml-errorcodes: Check recovery after reading an error
+  * tests/test_ocaml_errorcodes_plugin.ml: Call Gc.compact on unload
+  * configure: Use PRINT_PKG_VERSION macro in more places
+  * New plugin: vram (Video RAM) plugin using OpenCL
+  * configure: Add new macro to print package version
+  * Version 1.45.11.
+  * vddk: Don't use FNM_PATHNAME when matching export parameter
+  * ocaml: Don't release OCaml runtime system after caml_shutdown
+  * Version 1.45.10.
+  * server/log-fp.c: Fix --name (process name) in error messages
+  * ocaml: Don't call caml_shutdown on unload
+  * data: Check number and type of parameters to expr() function
+  * data: Avoid passing signed int64_t to uint64_t vararg parameter
+  * data: Fix comment about how uint8_t is promoted through varargs
+  * Version 1.45.9.
+  * build: Check for qemu-img and disable some tests if not present
+  * tests/curl: Skip test if 'disk' was not created
+  * server/public.c: Use common/include parse_bool function
+  * common/include: Extra bool parsing into a mini-library
+  * docs: Shorter title and tweaks to the description
+  * Version 1.45.8.
+  * indexed-gzip: Include <stddef.h> to get ptrdiff_t
+  * indexed-gzip: Move variable decl outside for loop
+  * vddk: Sort synopsis into alphabetical order
+  * ext2: Update docs since filter supports concurrent connections
+  * docs: Move --short/--long-options to right place in synopsis
+  * docs: Document how to probe for server command line options
+  * server: Document --long-options and --short-options
+  * docs/nbdkit-probing.pod: Rearrange synopsis to match description
+  * Version 1.45.7.
+  * server: Add --name parameter
+  * docs: Fix bolding of --log=/path option
+  * tests/test-python-plugin.py: Remove unused variables
+  * python: Add binding for nbdkit_parse_bool
+  * tests/test-python-plugin.py: Add name of test for test_parse_size
+  * Version 1.45.6.
+  * server/public.c: Use lrint() instead of implicit conversion to int
+  * indexed-gzip: Fixes for 32-bit support
+  * Version 1.45.5.
+  * indexed-gzip: More editorially neutral content
+  * Introduce index-gzip filter
+  * Move unmodified index build/extract to ig_zran.h/c
+  * Add serialize/deserialize fn for zran structs
+  * Restructure zran.h, zran.c for use as library
+  * Import zran.c/zran.h v1.6 (2 Aug 2024) from zlib
+  * delay: Add new delay-trigger option
+  * delay: Rearrange the options in alphabetical order in the documentation
+  * tests/test-map.sh: Fix "nbd_pread: count cannot be 0: Invalid argument"
+  * Version 1.45.4.
+  * docs/nbdkit-client.pod: Document attaching NBD devices to QEMU VMs
+  * docs/nbdkit-client.pod: Combine and rename "LIMITATIONS" section
+  * tests/test-golang-fork-warning.sh: Fix hanging test
+  * tests: Use 'define script' in a few more places
+  * tests: Modify make-pki and make-psk scripts to be atomic
+  * tests: Define common functions for requiring TLS certs and PSK
+  * tests/test-tls.sh: Remove unused export of pkidir
+  * tests: Generate make-psk.sh
+  * tests/make-psk.sh: Fix typo "pkstool" -> "psktool"
+  * tests: Fix typo "An good" -> "A good"
+  * map: Implement map-size feature
+  * tests/test-at-file.sh: Fix srcdir != builddir
+  * tests: Work around realpath error on BSDs
+  * Version 1.45.3.
+  * server: Use debug() instead of nbdkit_debug() consistently in the server
+  * map: Refer to @PATH syntax in documentation
+  * server: Add @PATH syntax
+  * server/main.c: Factor out the function that parses key=value
+  * server/main.c: Fix comment
+  * server/main.c: Move key=value parsing to a new function
+  * server/options.h: Reject empty string ("") as a short name
+  * server/options.h: Add comment to is_short_name
+  * server/main.c: Reject empty string as a plugin name or filter name
+  * common: utils: Add const to <vector>_duplicate variable decls
+  * data: Use new vector_append_array in a couple of places
+  * map: Use new vector_append_array function instead of loop
+  * common: utils: vector: Fix vector_uniq prototype and add a test
+  * common: utils: vector: Add range functions for insert, append and remove
+  * common: utils: vector: Prefer vector_reset over free()
+  * Version 1.45.2.
+  * New filter: map for remapping arbitrary blocks
+  * common: utils: vector: Add new vector_uniq function
+  * tests/functions: Factor out 2^63-1 constant used by a few tests
+  * tests/test-cache-block-size.sh: Remove unused socket
+  * data: Minor revisions to the documentation for clarity
+  * full: Remove reference to equivalence of nbdkit-readonly-filter
+  * tests/test-floppy.sh: Simplify this test
+  * count: Add an example to the documentation
+  * common/include/test-once.c: Further fixes for pthread_barrier_t
+  * common/include/test-once.c: Skip test on macOS which lacks pthread_barrier_t
+  * Version 1.45.1.
+  * count: Clarify documentation
+  * New filter: nbdkit-count-filter: count bytes read, written etc.
+  * file: trim: Don't try BLKDISCARD if earlier FALLOC_FL_PUNCH_HOLE worked
+  * file: zero: Print the debug message on the fallback path once
+  * common: Add ONCE macro to run code only once
+  * server: Fix .zero fallback path
+  * Remove deprecated cacheextents filter
+
+-------------------------------------------------------------------
 Tue Oct 28 16:12:09 UTC 2025 - Charles Arnold <carnold@suse.com>
 
 - Update to version 1.44.4:

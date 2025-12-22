@@ -250,4 +250,12 @@ Factory, SLE15-SP7:GA, and SLFO:Main.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1315532</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>9be4e4ee6b59464eb451a1aaf16c884d</srcmd5>
+    <version>1.46.0</version>
+    <time>1766440348</time>
+    <user>dimstar_suse</user>
+    <comment>Update nbdkit to version 1.46.0</comment>
+    <requestid>1324212</requestid>
+  </revision>
 </revisionlist>

@@ -27,7 +27,7 @@
 %global broken_test_arches %{arm} aarch64 %{ix86}
 
 Name:           nbdkit
-Version:        1.44.4
+Version:        1.46.0
 Release:        0
 Summary:        Network Block Device server
 License:        BSD-3-Clause
@@ -180,8 +180,10 @@ This package contains example plugins for %{name}.
 
 
 
+
 # The plugins below have non-trivial dependencies are so are
 # packaged separately.
+
 %package cdi-plugin
 Summary:        Containerized Data Import plugin for %{name}
 Requires:       %{name}-server = %{version}-%{release}
@@ -207,8 +209,10 @@ This package contains cURL (HTTP/FTP) support for %{name}.
 
 
 
+
 # In theory this is noarch, but because plugins are placed in _libdir
 # which varies across architectures, RPM does not allow this.
+
 %package gcs-plugin
 Summary:        Gooogle Cloud Storage plugin %{name}
 Requires:       %{name}-python-plugin = %{version}-%{release}
@@ -284,7 +288,6 @@ Requires:       %{name}-server = %{version}-%{release}
 Provides:       %{name}-blocksize-filter = %{version}-%{release}
 Provides:       %{name}-blocksize-policy-filter = %{version}-%{release}
 Provides:       %{name}-cache-filter = %{version}-%{release}
-Provides:       %{name}-cacheextents-filter = %{version}-%{release}
 Provides:       %{name}-checkwrite-filter = %{version}-%{release}
 Provides:       %{name}-cow-filter = %{version}-%{release}
 Provides:       %{name}-ddrescue-filter = %{version}-%{release}
@@ -334,8 +337,6 @@ nbdkit-blocksize-filter     Adjusts block size of requests sent to plugins.
 nbdkit-blocksize-policy-filter  Set block size constraints and policy.
 
 nbdkit-cache-filter         Server-side cache.
-
-nbdkit-cacheextents-filter  Caches extents.
 
 nbdkit-checkwrite-filter    Checks writes match contents of plugin.
 
@@ -661,8 +662,8 @@ export PATH=/usr/sbin:$PATH
 %{_libdir}/%{name}/filters/nbdkit-blocksize-filter.so
 %{_libdir}/%{name}/filters/nbdkit-blocksize-policy-filter.so
 %{_libdir}/%{name}/filters/nbdkit-cache-filter.so
-%{_libdir}/%{name}/filters/nbdkit-cacheextents-filter.so
 %{_libdir}/%{name}/filters/nbdkit-checkwrite-filter.so
+%{_libdir}/%{name}/filters/nbdkit-count-filter.so
 %{_libdir}/%{name}/filters/nbdkit-cow-filter.so
 %{_libdir}/%{name}/filters/nbdkit-ddrescue-filter.so
 %{_libdir}/%{name}/filters/nbdkit-delay-filter.so
@@ -674,10 +675,12 @@ export PATH=/usr/sbin:$PATH
 %{_libdir}/%{name}/filters/nbdkit-extentlist-filter.so
 %{_libdir}/%{name}/filters/nbdkit-fua-filter.so
 %{_libdir}/%{name}/filters/nbdkit-gzip-filter.so
+%{_libdir}/%{name}/filters/nbdkit-indexed-gzip-filter.so
 %{_libdir}/%{name}/filters/nbdkit-ip-filter.so
 %{_libdir}/%{name}/filters/nbdkit-limit-filter.so
 %{_libdir}/%{name}/filters/nbdkit-log-filter.so
 %{_libdir}/%{name}/filters/nbdkit-luks-filter.so
+%{_libdir}/%{name}/filters/nbdkit-map-filter.so
 %{_libdir}/%{name}/filters/nbdkit-multi-conn-filter.so
 %{_libdir}/%{name}/filters/nbdkit-nocache-filter.so
 %{_libdir}/%{name}/filters/nbdkit-noextents-filter.so
@@ -704,8 +707,8 @@ export PATH=/usr/sbin:$PATH
 %{_mandir}/man1/nbdkit-blocksize-filter.1*
 %{_mandir}/man1/nbdkit-blocksize-policy-filter.1*
 %{_mandir}/man1/nbdkit-cache-filter.1*
-%{_mandir}/man1/nbdkit-cacheextents-filter.1*
 %{_mandir}/man1/nbdkit-checkwrite-filter.1*
+%{_mandir}/man1/nbdkit-count-filter.1.gz
 %{_mandir}/man1/nbdkit-cow-filter.1*
 %{_mandir}/man1/nbdkit-ddrescue-filter.1*
 %{_mandir}/man1/nbdkit-delay-filter.1*
@@ -717,10 +720,12 @@ export PATH=/usr/sbin:$PATH
 %{_mandir}/man1/nbdkit-extentlist-filter.1*
 %{_mandir}/man1/nbdkit-fua-filter.1*
 %{_mandir}/man1/nbdkit-gzip-filter.1*
+%{_mandir}/man1/nbdkit-indexed-gzip-filter.1.gz
 %{_mandir}/man1/nbdkit-ip-filter.1*
 %{_mandir}/man1/nbdkit-limit-filter.1*
 %{_mandir}/man1/nbdkit-log-filter.1*
 %{_mandir}/man1/nbdkit-luks-filter.1*
+%{_mandir}/man1/nbdkit-map-filter.1.gz
 %{_mandir}/man1/nbdkit-multi-conn-filter.1*
 %{_mandir}/man1/nbdkit-nocache-filter.1*
 %{_mandir}/man1/nbdkit-noextents-filter.1*
