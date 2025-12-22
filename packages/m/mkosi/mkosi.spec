@@ -28,7 +28,7 @@
 %endif
 
 Name:           mkosi
-Version:        25.3
+Version:        26
 Release:        0
 Summary:        Build bespoke OS Images
 License:        LGPL-2.1-or-later
@@ -36,10 +36,8 @@ Group:          System/Management
 URL:            https://github.com/systemd/mkosi
 Source0:        https://github.com/systemd/mkosi/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        mkosi-initrd.conf
-# PATCH-FIX-UPSTREAM https://github.com/systemd/mkosi/pull/3841
-Patch0:         0001-Drop-microsecond-resolution-for-datetime.now.patch
-# PATCH-FIX-UPSTREAM https://github.com/systemd/mkosi/pull/3823
-Patch1:         0002-Include-sys-conf-ext-info-in-metadata-file.patch
+# PATCH-FIX-UPSTREAM https://github.com/systemd/mkosi/pull/4079
+Patch0:         0001-distribution-do-not-default-to-release-VERSION_ID-fo.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
@@ -142,8 +140,8 @@ if [ ! -e %{_sysconfdir}/mkosi-initrd/mkosi.conf ]; then
 # See man mkosi(1) for details.
 #[Content]
 #ExtraTrees=
-#KernelModulesInclude=
-#KernelModulesExclude=
+#FirmwareFiles=
+#KernelModules=
 EOF
 fi
 %{?regenerate_initrd_post}

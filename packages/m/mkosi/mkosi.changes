@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Mon Dec 22 09:37:12 UTC 2025 - Antonio Feijoo <antonio.feijoo@suse.com>
+
+- Add 0001-distribution-do-not-default-to-release-VERSION_ID-fo.patch:
+  * Backport upstream patch to fix mkosi-initrd in openSUSE Tumbleweed.
+    Without this patch, mkosi thinks that it's Leap and the call fails.
+
+- Update to 26:
+  * Extra options to commands invoked by mkosi (e.g. when using mkosi boot
+    or mkosi shell) should now be delimited from regular options using
+    --. Options passed after the verb without using the -- delimiter
+    are now interpreted as regular mkosi options.
+  * Boolean options specified on the command line now always expect a
+    boolean argument. For example, --repository-key-check needs to
+    become --repository-key-check=yes. The reason for this change is to
+    remove ambiguity when parsing e.g. --repository-key-check build
+    where build would be interpreted as the argument for
+    --repository-key-check whereas now it'll be properly interpreted as
+    the verb.
+  * Teach --verity a new hash value, which skips the verity signature
+    partition for extension / portable images. To align the possible values,
+    yes is renamed to signed.
+  * Teach --verity a new defer value, which defers creation of the
+    verity signature partition for disk, extension and portable images (but
+    still allocates space for it). This is useful to implement offline
+    signing of the verity roothash.
+  * A new way to specify modules included in the initrd has been added.
+    The new default is that modules need to be specified to be included.
+    Previous separate Include and Exclude options that take regexps are now
+    deprecated and are replaced by a single option that takes a list of
+    positive and negative globs. The new options are KernelModules=
+    and KernelInitrdModules=.
+  * A new way to specify firmware files included in the initrd has been added.
+    Previous separate Include and Exclude options that take regexps are now
+    deprecated and are replaced by a single option that takes a list of
+    positive and negative globs. The new option is FirmwareFiles=.
+  * The RuntimeScratch= option has been dropped. Use RuntimeSize=
+    instead to grow the image before booting it.
+  * The CDROM= option has been dropped.
+  * Unknown settings now generate a warning message instead of failing the
+    image build. This allows configs to work across a wider range of mkosi
+    versions while still taking advantage of newer settings. MinimumVersion
+    can still be used to enforce a minimum version of mkosi that knows all
+    required settings.
+
+- Remove 0002-Include-sys-conf-ext-info-in-metadata-file.patch, merged in
+  version 26.
+
+- Remove 0001-Drop-microsecond-resolution-for-datetime.now.patch, merged in
+  version 26.
+
+-------------------------------------------------------------------
 Mon Aug 25 12:35:04 UTC 2025 - Antonio Feijoo <antonio.feijoo@suse.com>
 
 - Add 0002-Include-sys-conf-ext-info-in-metadata-file.patch
