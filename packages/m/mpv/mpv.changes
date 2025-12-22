@@ -1,4 +1,130 @@
 -------------------------------------------------------------------
+Sun Dec 21 19:40:41 UTC 2025 - llyyr <llyyr@yukari.in>
+
+- Update to version 0.41.0+git20251221.d0e24ab17a:
+  * Update MPV_VERSION
+  * Release 0.41.0
+  * wayland: use rendering intent enum instead of magic value
+  * wayland: support color-management-v1 version 2
+  * osxbundle: add new macOS 26 compatible App icon
+  * vo: trigger manual redraws at most at slightly over display fps
+  * DOCS/man/options: clearify that gpu-next support d3d11va and everything
+  * mp_image: check all components for pl_bit_encoding in mp_image_setfmt
+  * vo: put vo states into union
+  * meson: remove png icons from win32 resource depend
+  * vo: remove unused configs from context
+  * wayland: convert luminance values to libplacebo space
+  * Revert "ytdl_hook: add chapters by parsing video's description"
+  * Revert "ytdl_hook: add option to extract chapters"
+  * filters/f_decoder_wrapper: reinit decoder on audio-spdif opt change
+  * osc.lua: remove flags from disable_key_bindings
+  * video/out/aspect: don't overflow intermediate values in scaling calc
+  * video/out/gpu/hwdec: load native D3D RA hwdec drivers first
+  * ao_aaudio: set content type if --audio-set-media-role is enabled
+  * ao_audiotrack: set content type if --audio-set-media-role is enabled
+  * ao_pulse: set media.role if --audio-set-media-role enabled
+  * ao_pipewire: avoid setting any media.role by default
+  * ci/win32: downgrade meson to 1.9.2
+  * mac/vulkan: log opaque state (direct-to-display possible) of metal layer
+  * mac/vulkan: log display sync active state of metal layer
+  * mac/vulkan: log HDR active state of metal layer
+  * mac/vulkan: log EDR changes of metal layer
+  * mac/vulkan: log colorspace changes of metal layer
+  * mac/vulkan: log pixel format changes of metal layer
+  * clipboard-x11: request selection at init
+  * clipboard-x11: use separate properties to receive primary and clipboard
+  * ci: update some github actions
+  * ci/mingw: update dependency versions
+  * ci/mingw: use a mirror instead of ftp.gnu.org
+  * demux_playlist: clarify reason for HLS detection
+  * demux_lavf: remove 'bin' format from blacklist
+  * etc/mpv.conf: replace the --sharpen example
+  * player/command: fix playlist-remove argument requirement
+  * vd_lavc: enable hwdec for DPX by default
+  * mp_image: add `ycgco-{re,ro}` support
+  * m_option: be more resilent to new enum additions
+  * player/video: only set a/v speed factor to 1 when exiting display-sync
+  * player/command: update speed filters for pitch-correction change too
+  * ao/aaudio: implement aaudio backend for android
+  * meson: added option to disable audiotrack
+  * video/image_writer: use image->params.repr to determine depth
+  * DOCS/man/input: don't discourage hook usage
+  * meson: print cocoa for feature summary
+  * demux: clear packet pool when upper memory limit is lowered
+  * misc/path_utils: don't normalize -
+  * wayland: correct geometry handling for rotated outputs
+  * wayland: fix condition for setting image description
+  * wayland: move initial color management setup earlier in the init
+  * wayland: only print color repr message if we actually set anything
+  * wayland: remove unused primaries/tf/luminance feature flags
+  * wayland: always use get_preferred instead of get_preferred_parametric
+  * wayland: assume all image description is parametric until icc_file event
+  * wayland: remove icc feature check and simplify handling icc file
+  * ci/win32: bump ffmpeg to 8.0
+  * osdep/compiler: fix typo in MP_ASSERT_UNREACHABLE
+  * meson: define WINICONV_CONST to strip const from win-iconv
+  * ci/win32: fix aom CRT type to be consistent with the rest of the build
+  * ao_wasapi_utils,command,hwdec_vulkan: remove double semicolons
+  * ao_pipewire: fix mapping of wide channels
+  * ci/openbsd: update to 7.8
+  * github/workflows: fix libXpresent installation on freebsd
+  * ao_pipewire: fix copy paste error in channel mapping
+  * meson.build: print drm for feature summary
+  * vo_gpu_next: limit min_luma to 1000:1 contrast ratio in SDR mode
+  * mp_image: map hwdec format parameters correctly
+  * ci/mac: add macOS 15 intel runner
+  * ci/mac: move our test runner to the newest macOS 26 runner
+  * ci/mac: add macOS 26 runner
+  * ci/mac: use oldest Xcode version on oldest macOS runner
+  * ci/mac: remove deprecated macOS 13 runner
+  * osxbundle: make bundle category configurable and default to video
+  * ci/tumbleweed: disable sanitizers for GCC build
+  * .lsan_suppressions: remove no longer needed suppression
+  * ci: remove -Wno-error=deprecated
+  * TOOLS/lua/autoload.lua: stop initial file from being added twice
+  * video/out/gpu/video: change `treat-srgb-as-power22` default to auto
+  * ci/build-msys2.sh: disable pdf-build for clangarm64
+  * osxbundle: read version from version.h
+  * mac/common: fix window position on multi monitor setups
+  * stats.lua: remove prefix from display luminance metadata
+  * console.lua: don't clip items if OSD dimensions are not initialized
+  * meson: warn if building with SDL2
+  * meson: remove redundant `sdl2` option
+  * wayland: log display luminance values alongside other preferred img desc
+  * wayland: replace comment with log message
+  * wayland: log connector name for wl_output in more places
+  * {console/context_menu}.lua: don't apply --osd-blur to menu backgrounds
+  * vo_gpu_next: add workaround for broken linear output in libplacebo
+  * video/out/gpu/video: add `--sdr-adjust-gamma`
+  * vo_gpu_next: linearize sRGB as a pure 2.2 power function
+  * command: react to --force-window changes with no file playing
+  * meson.build: add libx11 as x11 clipboard dependency
+  * wayland_common: always prefer the PQ transfer for HDR output
+  * vo/context_android: fix surface tearing on resize
+  * clipboard: add --clipboard-xwayland option
+  * .pre-commit-config: add requestor to ignore list
+  * console.lua: use clipboard property for x11
+  * clipboard-x11: add x11 clipboard backend
+  * .github/ISSUE_TEMPLATE: add --msg-time to log file instruction
+  * various: use mp_sleep_ns
+  * TOOLS/lua/test-hooks.lua: drop sleep amount suffix
+  * command: fix bluray angle stream detection
+  * vd_lavc: add ProRes RAW to the list of default hwdec codecs
+  * vo_dmabuf_wayland: request redraw on resize
+  * stream_bluray: do not demux_flush on angle change
+  * sub/osd_libass: change add_osd_ass_event argument to bstr
+  * video/out/gpu/video: make the target-contrast limit higher
+  * vo_gpu_next: use reported display contrast value also in SDR mode
+  * options: add mxf to video file extensions list
+  * player/lua: fix UB in integerness check
+  * player/javascript: fix mp.set_property_number for integer properties
+  * TOOLS/lua/gamma-auto: update on timer when on Linux
+  * osdep/linux-als: support ambient-light on Linux
+  * DOCS/man/input: document command-list contents
+  * context_menu.lua: prevent some rare crashes
+  * context_menu.lua: add a missing return
+
+-------------------------------------------------------------------
 Mon Oct 27 16:56:03 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Enable luajit on riscv64
