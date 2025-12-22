@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Dec 21 06:28:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1.3:
+  * New Features
+    - 23fdfe1: feat(web): add SEO meta tags and FAQ page
+      (@mr-karan)
+    - 39bae49: feat: add macOS SystemConfiguration DNS support and
+      internal strategy (#193) (@phrawzty)
+  * Bug fixes
+    - 15d6c34: fix: restore table text wrapping and respect -4/-6
+      flags for query types (@mr-karan)
+  * Others
+    - 46a1de3: chore: upgrade go dependencies (@mr-karan)
+    - 47136e4: docs(README): add mise alternative method
+      installation (@jylenhof)
+    - d1091e3: refactor: address PR #227 review feedback
+      (@phrawzty)
+
+-------------------------------------------------------------------
 Sun Nov 02 06:48:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.1.2:
