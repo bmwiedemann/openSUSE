@@ -50,4 +50,12 @@
   * injections.scm: TOML +++ metadata frontmatter support (forwarded request 1265946 from rrahl0)</comment>
     <requestid>1265953</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d6919cb7994dee5bbd81c8379e052bd8</srcmd5>
+    <version>0.5.1</version>
+    <time>1766440212</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1324037</requestid>
+  </revision>
 </revisionlist>
