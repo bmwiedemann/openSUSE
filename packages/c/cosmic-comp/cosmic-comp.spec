@@ -17,18 +17,13 @@
 
 
 Name:           cosmic-comp
-Version:        1.0.0~beta1.1+0
+Version:        1.0.0+1
 Release:        0
 Summary:        Compositor for the COSMIC DE
 License:        GPL-3.0-only
 URL:            https://github.com/pop-os/cosmic-comp
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-Source2:        Cargo.lock
-#This is a patch I use to patch the dependency, but as cargo_vendor
-#pulls in the patched dependency, we actually don't need to apply the patch
-Patch0:         fix-vendor.patch
-Patch1:         fix-Cargo.toml.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  make
 BuildRequires:  pkgconfig
@@ -52,8 +47,7 @@ Recommends:     Mesa-libGL1
 %{summary}.
 
 %prep
-%autosetup -a1 -N
-%patch -P 1 -p1
+%autosetup -a1 -p1
 
 %build
 %make_build

@@ -1,4 +1,120 @@
 -------------------------------------------------------------------
+Thu Dec 11 16:48:36 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0+1:
+  * [i18n] Swedish translation of desktop file
+  * tiling: Add placeholder when tree is empty
+  * grabs/moving: cleanup drag in tiling layer if window doesn't exist
+  * layout/tiling: Always send output_enter after swap
+  * chore(deps): Update libcosmic/cosmic-text
+  * chore: smithay update
+  * i18n: translation updates from weblate
+  * xwayland: Handle `_NET_ACTIVE_WINDOW` client messages
+  * chore: smithay update
+
+-------------------------------------------------------------------
+Sat Dec 06 22:16:16 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta9+3:
+  * kms: Only pause device after all surfaces are successfully suspended
+  * surface: Don't crash due to weird state after resume
+  * Update `smithay` for DnD updates
+  * i18n: translation updates from weblate
+  * shell: Add `DelayGrab` for client initiated move requests
+  * fix: Add second touchpad hotkey config for Pangolin keyboards
+  * fix: properly remove elements from the focus_stack
+  * input: Clear `modifier_queue` on a11y grab
+  * input: Use `suppresssed_keys()` for a11y grabs
+  * wayland: Remove `atspi` protocol
+  * dbus: Implement `org.freedesktop.a11y.Manager` protocol
+  * dbus: Add `NameOwners` helper
+  * dbus: Use `ThreadPool` instead of zbus blocking API
+  * Add a `ThreadPool` async executor to `State`
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+  * gestures: Cycle through workspaces
+  * xwayland: Fix unscaled dpi setting
+  * i18n: translation updates from weblate
+  * Set X11Surface hidden when a surface is minimized
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
+Sat Nov 15 19:21:11 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta6+4:
+  * fix(popup): avoid panic when None
+  * shell: Change fullscreen restore info on move
+  * shell: Tile windows moved to a tiled workspace
+  * shell: Moved minimized windows should stay minimized
+  * shell: Remove minimized state on unmap
+  * layout/tiling: Fix crash swapping across workspaces
+  * shell/stack: Don't reset `previous_keyboard` on noop `set_active` call
+  * Fix bars when full screen, reposition popups
+  * Define a `with_toplevel_state`, generic over `pending` bool
+
+-------------------------------------------------------------------
+Mon Nov 10 15:20:38 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta5+7:
+  * fix: unset grab if focusing exclusive layer shell surface
+  * focus-stack: Keep dragged surface in focus stack in `move_request()`
+  * Use keyboard focus target rather than `focus_stack` in keybindings
+  * Use `shift_remove()` instead of `retain()` in `unmap_element()`
+  * focus-stack: Use `IndexSet::shift_remove()` for `remove`
+  * Make `CosmicWindowInternal`/`CosmicStackInternal` not `Clone`
+  * Add `ext-data-control-v1` protocol
+  * Expose `wlr-data-control-unstable-v1` to non-sandboxed clients
+  * Restrict `atspi` protocol to only clients without security context
+  * Replace `privileged` field with a `not_sandboxed()` method
+  * Don't check for `privileged` for creator of security context
+  * Remove `COSMIC_ENABLE_WAYLAND_SECURITY` env var
+  * session: Remove `NewPrivilegedClient` command
+  * i18n: translation updates from weblate
+  * Add example for customized window decorations
+  * Add hooks for custom window decorations
+  * expose cosmic_comp as a library
+  * Update translations
+
+-------------------------------------------------------------------
+Thu Oct 23 16:44:58 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta3+8:
+  * chore: format for Rust 2024
+  * fix(kms): early exit when iterating over crts
+- remove patch update-libdisplay-info.patch, fixed upstream
+
+-------------------------------------------------------------------
+Sun Oct 19 14:00:27 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta2+2:
+  * Call `dbus::ready` even when systemd is enabled
+  * chore: add Alt+F4 shortcut to close windows
+  * i18n: translation updates from weblate
+  * feat: corner radius for CosmicMapped
+  * fix(corner-radius): error handling and cleanup
+  * chore: cosmic-protocols patch
+  * refactor(corner-radius): cleanup & add pre commit hooks
+  * fix(corner-radius): post protocol errors
+  * fix(corner-radius): use cached state
+  * fix(outline): pass the radii in the correct order for the shader
+  * fix(corner-radius): properly handle no value, and use geometry
+  * cleanup use statements
+  * fix(corner-radius): guard against corner radius being too large
+  * refactor(corner-radius): corner_radius method for CosmicSurface
+  * fix(corner-radius): force redraw after corner radius change
+  * cleanup: corner-radius use statements
+  * cleanup: remove TODOs
+  * fix: support per-corner radius
+  * feat: corner-radius protocol support
+  * focus: Check if X11 surface matches in `KeyboardFocus::replace()`
+  * focus: Split off an `x11_surface()` method from `is_xwm()`
+  * screencopy: Without `draw_cursor`, omit dnd icon from toplevel capture
+  * Update translations
+- switching out fix-Cargo.toml.patch and fix-vendor.patch for update-libdisplay-info.patch,
+  fixing it correctly
+
+-------------------------------------------------------------------
 Tue Sep 30 20:06:02 UTC 2025 - mkd <mkdwho@icloud.com>
 - Update patch & Cargo.lock
 

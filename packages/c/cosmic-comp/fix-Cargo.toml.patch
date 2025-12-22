@@ -1,9 +1,0 @@
-diff --git a/Cargo.toml b/Cargo.toml
-index 259cbc4..a5db4de 100644
---- a/Cargo.toml
-+++ b/Cargo.toml
-@@ -148,3 +148,4 @@ cosmic-client-toolkit = { git = "https://github.com/pop-os//cosmic-protocols", b
-
- [patch.crates-io]
- smithay = { git = "https://github.com/smithay/smithay.git", rev = "eb45814" }
-+libdisplay-info-sys = { path = "vendor/libdisplay-info-sys-0.2.2" }
