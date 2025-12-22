@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Dec 25 23:04:13 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.33.4
+  * Fix a bug with interior snapshot node deletion that could
+    manifest as fs corruption that would disappear on the next
+    remount.
+  * New mode for verifying the result of data compression before
+    writing compressed data out to disk (``verify_compress``).
+  * Reconcile no longer runs when the filesystem is mounted read only.
+
+-------------------------------------------------------------------
+Tue Dec 23 17:11:23 UTC 2025 - Holden Fried <holden@opensuse.org>
+
+- Update to release 1.33.3
+  * More snapshot deletion fixes, old interior snapshot nodes
+    should finally be getting cleaned up correctly
+  * We now run ``check_snapshots`` on every mount; there have been
+    some bugs which result in snapshot tree corruption in the
+    depth/skiplist fields, breaking ``snapshot_is_ancestor()``.
+    We can't efficiently detect this kind of corruption at
+    runtime, but ``check_snapshots`` is no more expensive than
+    ``read_snapshots``; if we still have bugs in snapshot deletion,
+    this will render them harmless.
+  * Some obscure repair paths are now more robust - str_hash
+    mismatch repair, inode reconstruction.
+  * Btree node rewrites no longer run at ``BCH_WATERMARK_btree``
+    by default; this should solve some deadlocks that started
+    happening when reconcile started moving around a lot more
+    btree nodes.
+  * When we get a ZSTD decompression error, the specific error
+    code from zstd will now be reported in the error message.
+
+-------------------------------------------------------------------
 Fri Dec 19 21:28:19 UTC 2025 - Holden Fried <holden@opensuse.org>
 
 - Update to release 1.33.2
