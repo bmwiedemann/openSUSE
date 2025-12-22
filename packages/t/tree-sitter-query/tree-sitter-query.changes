@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Dec 22 01:20:42 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.8.0:
+  * fix: allow multiple quantifiers with relaxed ordering
+  * fix!: don't parse unquoted predicate args specially
+  * feat: support anonymous node subtypes
+- Update to version 0.7.0:
+  * fix: support predicates without parameters
+- Update to version 0.6.2:
+  * fix: use token.immediate() on end string quote
+  * fix: align escape sequences to the query.c logic
+  * fix: disallow $ from identifiers
+- Update to version 0.6.1:
+  * fix: disallow newlines in strings
+- Update to version 0.6.0:
+  * fix: once again disallow empty groupings, alternations
+
+-------------------------------------------------------------------
 Tue Apr 15 12:44:13 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.5.1:
