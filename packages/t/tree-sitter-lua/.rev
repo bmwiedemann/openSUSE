@@ -41,4 +41,12 @@
   * refactor: use Tree-sitter prefixed calloc/free functions (forwarded request 1265945 from rrahl0)</comment>
     <requestid>1265952</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f38e48f5ae950dd2695f5c99b1f65428</srcmd5>
+    <version>0.4.0</version>
+    <time>1766440211</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1324035</requestid>
+  </revision>
 </revisionlist>
