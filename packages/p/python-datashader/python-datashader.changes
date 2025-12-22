@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Dec 20 18:46:49 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Remove deprecated nbsmoke from test dependencies
+
+-------------------------------------------------------------------
 Wed Sep 17 14:32:03 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Remove deprecated dask-expr from tests

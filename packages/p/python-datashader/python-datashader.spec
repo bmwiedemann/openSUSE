@@ -68,7 +68,6 @@ BuildRequires:  %{python_module fastparquet}
 BuildRequires:  %{python_module matplotlib >= 3.3}
 BuildRequires:  %{python_module nbconvert}
 BuildRequires:  %{python_module nbformat}
-BuildRequires:  %{python_module nbsmoke >= 0.5.0}
 BuildRequires:  %{python_module netCDF4}
 BuildRequires:  %{python_module pyarrow}
 BuildRequires:  %{python_module pytest-xdist}

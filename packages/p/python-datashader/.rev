@@ -380,4 +380,12 @@
     <comment></comment>
     <requestid>1305402</requestid>
   </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>66215891bba5f3c1179f193f82888092</srcmd5>
+    <version>0.18.2</version>
+    <time>1766440119</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove deprecated nbsmoke from test dependencies (forwarded request 1323826 from bnavigator)</comment>
+    <requestid>1323827</requestid>
+  </revision>
 </revisionlist>
