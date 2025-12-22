@@ -1,4 +1,111 @@
 -------------------------------------------------------------------
+Thu Dec 11 16:57:26 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0+0:
+  * chore: update cosmic-text
+  * i18n: translation updates from weblate
+  * fix: update network path when entering uri
+  * chore: update winit
+  * Russian translation for .desktop file
+
+-------------------------------------------------------------------
+Sat Dec 06 22:24:14 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta9+4:
+  * fix: Only type to search in App mode
+  * i18n: translation updates from weblate
+  * fix(app): type to search enters text into path bar
+  * feat(tab): allow entering of network uri as path
+  * docs (QA): Clarify thumbnail test includes fresh generation
+  * fix: allow context menu when shift is being pressed
+  * i18n: translation updates from weblate
+  * fix: sliders on desktop view options
+  * i18n: translation updates from weblate
+  * Fix compilation with desktop-applet feature
+  * Track and use modifiers per sub-window, fixes #1152
+  * fix: better surface view cleanup
+  * Add required-features to gvfs examples
+  * Do not track modifiers in tab, fixes #1312
+  * Fix compilation without wayland feature and add feature testing to CI
+  * fix: surface cleanup
+  * chore: add method for checking if a dialog tracks a surface
+  * i18n: translation updates from weblate
+  * make sure to not create more thumbnail workers than available CPU cores
+  * extend remote location filesystem detection filter
+  * directly navigate to the mounted drive after mounting them with a click on the sidebar
+  * fix metadata, thumbnails and gallery view for locally mounted drives
+  * implement adaptive sampling for optimal image quality of large images in gallery view while keeping the memory foodprint minimal and UI blocks from GPU buffer uploads minimal and as short as possible
+  * improve and simplify heuristics
+  * refactor try_decode_image
+  * move large image handling out of tab and into new module large_image
+  * update libcosmic
+  * improve support and performance with very large images for thumbnail generation, preview tab and gallery view
+
+-------------------------------------------------------------------
+Sat Nov 15 19:30:05 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta6+6:
+  * fix for hidden files being visible on external drives
+  * i18n: translation updates from weblate
+  * Split out empty trash title
+  * Fix compilation without gvfs feature
+  * Do not close context drawer when context menu opens
+  * fix(tab): next tab not wrapping around to 0
+  * sentence case and dialog copy changes
+  * i18n(sv): update appstream metainfo
+  * i18n(sv): translate appstream metainfo
+  * perf: optimise `tab::folder_name`
+
+-------------------------------------------------------------------
+Mon Nov 10 15:29:25 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta5+3:
+  * chore: update dependencies
+  * perf: general minor performance optimisations
+  * chore: more pedantic clippy suggestions
+  * i18n: translation updates from weblate
+  * perf: use `rustc-hash` for `HashMap` and `HashSet`
+  * Update translations
+
+-------------------------------------------------------------------
+Thu Oct 23 16:53:33 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta3+13:
+  * refactor: capture Escape in subscription
+  * Close dialog on esc if text input is focused
+  * chore: focus empty trash and mount error buttons
+  * chore: focus replace & favorite path dialog buttons
+  * chore: set executable and launch dialog confirm button
+  * chore: focus open with dialog confirm button
+  * fix: focus button for permanently delete dialog
+  * i18n: translation updates from weblate
+  * enable ovelap variable on features
+  * fix: check surface_ids for keypress
+  * Unhighlight all items when config changes
+  * Fix shift click sorting when items sorted by name
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
+Sun Oct 19 14:11:57 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta2+3:
+  * Downgrade to zbus 4 in cosmic-files-applet to fix file manager interface
+  * fix: avoid background process when last tab closed
+  * Allow type to enter path to select files in dialog
+  * Implement type to search in dialog
+  * perf: use `Rc<RefCell>` for `ArcElementWrapper`
+  * fix: avoid leaving zombie processes on unix
+  * When navbar context menu is opened, close all others
+  * Fix location context menu
+  * fix(desktop applet): overlaps
+  * Handle single click to open on release
+  * Always set maximum scrollable height for open with dialog
+  * fix: update modifier state for all windows, not just the main window
+  * perf(zip): don't call `sync_all()` on every file
+  * fix: use the dimension of the image instead of the thumbnail's dimension
+  * Update translations
+
+-------------------------------------------------------------------
 Mon Sep 29 21:02:55 UTC 2025 - mkd <mkdwho@icloud.com>
 
 - Update to version 1.0.0~beta1.1+36:
