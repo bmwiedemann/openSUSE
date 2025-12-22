@@ -1,0 +1,193 @@
+From 58d1bed6ff17f18cc431e7850a52adc78b5921e7 Mon Sep 17 00:00:00 2001
+From: Michael Waskom <mwaskom@gmail.com>
+Date: Sat, 25 Jan 2025 20:52:25 -0500
+Subject: [PATCH 1/6] Address matplotlib bxp vert= deprecation
+
+---
+ seaborn/categorical.py | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/seaborn/categorical.py b/seaborn/categorical.py
+index ee8aa0908b..7c3d2e3cc3 100644
+--- a/seaborn/categorical.py
++++ b/seaborn/categorical.py
+@@ -626,6 +626,8 @@ def get_props(element, artist=mpl.lines.Line2D):
+         props["whisker"].setdefault("solid_capstyle", "butt")
+         props["flier"].setdefault("markersize", fliersize)
+ 
++        orientation = {"x": "vertical", "y": "horizontal"}[self.orient]
++
+         ax = self.ax
+ 
+         for sub_vars, sub_data in self.iter_data(iter_vars,
+@@ -682,14 +684,19 @@ def get_props(element, artist=mpl.lines.Line2D):
+                 # Set width to 0 to avoid going out of domain
+                 widths=data["width"] if linear_orient_scale else 0,
+                 patch_artist=fill,
+-                vert=self.orient == "x",
+                 manage_ticks=False,
+                 boxprops=boxprops,
+                 medianprops=medianprops,
+                 whiskerprops=whiskerprops,
+                 flierprops=flierprops,
+                 capprops=capprops,
+-                # Added in matplotlib 3.6.0; see below
++                # Added in matplotlib 3.10; see below
++                # orientation=orientation
++                **(
++                    {"vert": orientation == "x"} if _version_predates(mpl, "3.10.0")
++                    else {"orientation": orientation}
++                ),
++                # added in matplotlib 3.6.0; see below
+                 # capwidths=capwidth,
+                 **(
+                     {} if _version_predates(mpl, "3.6.0")
+
+From ab486df804b0b306d2b1d407eec5185bcdd40543 Mon Sep 17 00:00:00 2001
+From: Michael Waskom <mwaskom@gmail.com>
+Date: Sat, 25 Jan 2025 20:52:38 -0500
+Subject: [PATCH 2/6] Address np.in1d deprecation
+
+---
+ tests/test_categorical.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test_categorical.py b/tests/test_categorical.py
+index 3df7824787..21db60beb7 100644
+--- a/tests/test_categorical.py
++++ b/tests/test_categorical.py
+@@ -1206,7 +1206,7 @@ def check_boxen(self, patches, data, orient, pos, width=0.8):
+ 
+         assert verts[pos_idx].min().round(4) >= np.round(pos - width / 2, 4)
+         assert verts[pos_idx].max().round(4) <= np.round(pos + width / 2, 4)
+-        assert np.in1d(
++        assert np.isin(
+             np.percentile(data, [25, 75]).round(4), verts[val_idx].round(4).flat
+         ).all()
+         assert_array_equal(verts[val_idx, 1:, 0], verts[val_idx, :-1, 2])
+
+From b593faf0e206956c56e8ea81b7c655ef4ca8d243 Mon Sep 17 00:00:00 2001
+From: Michael Waskom <mwaskom@gmail.com>
+Date: Sat, 25 Jan 2025 20:56:49 -0500
+Subject: [PATCH 3/6] Address converter attribute deprecation
+
+---
+ seaborn/_compat.py |  6 ++++++
+ tests/test_base.py | 10 +++++-----
+ 2 files changed, 11 insertions(+), 5 deletions(-)
+
+diff --git a/seaborn/_compat.py b/seaborn/_compat.py
+index bd2f0c12d3..c67d6dba71 100644
+--- a/seaborn/_compat.py
++++ b/seaborn/_compat.py
+@@ -121,3 +121,9 @@ def groupby_apply_include_groups(val):
+     if _version_predates(pd, "2.2.0"):
+         return {}
+     return {"include_groups": val}
++
++
++def get_converter(axis):
++    if _version_predates(mpl, "3.10.0"):
++        return axis.converter
++    return axis.get_converter()
+diff --git a/tests/test_base.py b/tests/test_base.py
+index 4dfb3edfb4..d512db6b6a 100644
+--- a/tests/test_base.py
++++ b/tests/test_base.py
+@@ -9,7 +9,7 @@
+ from pandas.testing import assert_frame_equal
+ 
+ from seaborn.axisgrid import FacetGrid
+-from seaborn._compat import get_colormap
++from seaborn._compat import get_colormap, get_converter
+ from seaborn._base import (
+     SemanticMapping,
+     HueMapping,
+@@ -1130,14 +1130,14 @@ def test_attach_converters(self, long_df):
+         _, ax = plt.subplots()
+         p = VectorPlotter(data=long_df, variables={"x": "x", "y": "t"})
+         p._attach(ax)
+-        assert ax.xaxis.converter is None
+-        assert "Date" in ax.yaxis.converter.__class__.__name__
++        assert get_converter(ax.xaxis) is None
++        assert "Date" in get_converter(ax.yaxis).__class__.__name__
+ 
+         _, ax = plt.subplots()
+         p = VectorPlotter(data=long_df, variables={"x": "a", "y": "y"})
+         p._attach(ax)
+-        assert "CategoryConverter" in ax.xaxis.converter.__class__.__name__
+-        assert ax.yaxis.converter is None
++        assert "CategoryConverter" in get_converter(ax.xaxis).__class__.__name__
++        assert get_converter(ax.yaxis) is None
+ 
+     def test_attach_facets(self, long_df):
+ 
+
+From b70bc1e843ec036a19d8103150bd3203e4a35986 Mon Sep 17 00:00:00 2001
+From: Michael Waskom <mwaskom@gmail.com>
+Date: Sat, 25 Jan 2025 21:03:07 -0500
+Subject: [PATCH 4/6] Address parameterized fixture deprecation
+
+---
+ tests/test_base.py | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/tests/test_base.py b/tests/test_base.py
+index d512db6b6a..37b84d3639 100644
+--- a/tests/test_base.py
++++ b/tests/test_base.py
+@@ -1340,7 +1340,6 @@ def test_comp_data_category_order(self):
+             ["numeric", "category", "datetime"],
+         )
+     )
+-    @pytest.mark.parametrize("NA,var_type")
+     def comp_data_missing_fixture(self, request):
+ 
+         # This fixture holds the logic for parameterizing
+
+From f0651745f1a26c1d1d8e3a4c528f52c5f85e7fbd Mon Sep 17 00:00:00 2001
+From: Michael Waskom <mwaskom@gmail.com>
+Date: Sat, 25 Jan 2025 21:05:23 -0500
+Subject: [PATCH 5/6] Address false-positive internal deprecation warning
+
+---
+ tests/test_base.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test_base.py b/tests/test_base.py
+index 37b84d3639..da3600d923 100644
+--- a/tests/test_base.py
++++ b/tests/test_base.py
+@@ -454,7 +454,7 @@ def test_map_size_categorical(self, long_df):
+     def test_array_palette_deprecation(self, long_df):
+ 
+         p = VectorPlotter(long_df, {"y": "y", "hue": "s"})
+-        pal = mpl.cm.Blues([.3, .8])[:, :3]
++        pal = mpl.cm.Blues([.3, .5, .8])[:, :3]
+         with pytest.warns(UserWarning, match="Numpy array is not a supported type"):
+             m = HueMapping(p, pal)
+         assert m.palette == pal.tolist()
+
+From 856c7969a94cea29a3eaf26cd56f7d5b7910da52 Mon Sep 17 00:00:00 2001
+From: Michael Waskom <mwaskom@gmail.com>
+Date: Sat, 25 Jan 2025 21:21:22 -0500
+Subject: [PATCH 6/6] Fix boxplot backcompat
+
+---
+ seaborn/categorical.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/seaborn/categorical.py b/seaborn/categorical.py
+index 7c3d2e3cc3..017f0b8648 100644
+--- a/seaborn/categorical.py
++++ b/seaborn/categorical.py
+@@ -693,7 +693,8 @@ def get_props(element, artist=mpl.lines.Line2D):
+                 # Added in matplotlib 3.10; see below
+                 # orientation=orientation
+                 **(
+-                    {"vert": orientation == "x"} if _version_predates(mpl, "3.10.0")
++                    {"vert": orientation == "vertical"}
++                    if _version_predates(mpl, "3.10.0")
+                     else {"orientation": orientation}
+                 ),
+                 # added in matplotlib 3.6.0; see below

@@ -233,4 +233,13 @@
     <comment></comment>
     <requestid>1250004</requestid>
   </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>2f4eec55f642f063114531b5477b5e03</srcmd5>
+    <version>0.13.2</version>
+    <time>1766440123</time>
+    <user>dimstar_suse</user>
+    <comment>- Add seaborn-pr3820-deprecations.patch
+  * gh#mwaskom/seaborn#3820</comment>
+    <requestid>1323841</requestid>
+  </revision>
 </revisionlist>

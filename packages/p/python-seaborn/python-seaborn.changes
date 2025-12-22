@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec 20 20:03:16 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Add seaborn-pr3820-deprecations.patch
+  * gh#mwaskom/seaborn#3820
+
+-------------------------------------------------------------------
 Tue Mar  4 08:56:01 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Move away from python-fastcluster, dead upstream
