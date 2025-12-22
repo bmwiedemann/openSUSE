@@ -63,4 +63,12 @@
     <comment></comment>
     <requestid>1314650</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>37bdbfa781dc60bf4de36085fc709946</srcmd5>
+    <version>3.2.1</version>
+    <time>1766440121</time>
+    <user>dimstar_suse</user>
+    <comment>libmseed 3.2.1</comment>
+    <requestid>1323823</requestid>
+  </revision>
 </revisionlist>

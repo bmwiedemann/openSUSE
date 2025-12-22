@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Dec 20 18:36:37 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.2.1:
+  * Multiple API changes and updates
+  * Update internal selection matching to support ! in addition to
+    ^ for character class negation and handle edge cases more
+    robustly.
+  * Bug fixes and updates to tests
+
+-------------------------------------------------------------------
 Fri Oct 31 08:14:47 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.1.11:

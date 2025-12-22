@@ -18,7 +18,7 @@
 
 %define sover 3
 Name:           libmseed
-Version:        3.1.11
+Version:        3.2.1
 Release:        0
 Summary:        MiniSEED data format library
 License:        Apache-2.0
@@ -72,8 +72,7 @@ This package contains files required for building using %{name}.
 %files -n %{name}%{sover}
 %license LICENSE
 %doc ChangeLog README*
-%{_libdir}/libmseed.so.%{sover}
-%{_libdir}/libmseed.so.%{sover}.*
+%{_libdir}/libmseed.so.%{sover}{,.*}
 
 %files devel
 %license LICENSE
