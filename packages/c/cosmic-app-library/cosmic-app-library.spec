@@ -1,7 +1,7 @@
 #
 # spec file for package cosmic-app-library
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appname com.system76.CosmicAppLibrary
 Name:           cosmic-app-library
-Version:        1.0.0~beta.1.1+1
+Version:        1.0.0+0
 Release:        0
 Summary:        A template for getting started with COSMIC
 License:        GPL-3.0-only
