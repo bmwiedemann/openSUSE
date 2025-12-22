@@ -20,12 +20,13 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.20.1
+Version:        0.2.21
 Release:        0
 Summary:        Efficient hashing-based container types
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
@@ -69,8 +70,8 @@ remains valid even if structures are shared.
 /Security/
 
 This package currently provides no defenses against hash collision attacks such
-as HashDoS. Users who need to store input from untrusted sources are advised to
-use 'Data.Map' or 'Data.Set' from the 'containers' package instead.
+as HashDoS. Users who need to store keys derived from untrusted input are
+advised to use 'Data.Map' or 'Data.Set' from the 'containers' package instead.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -101,6 +102,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
+cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
