@@ -1,6 +1,7 @@
 #
 # spec file for package mpg123
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +19,7 @@
 
 %define sover   0
 Name:           mpg123
-Version:        1.33.3
+Version:        1.33.4
 Release:        0
 Summary:        Console MPEG audio player and decoder library
 License:        LGPL-2.1-only

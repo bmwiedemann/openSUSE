@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Dec 20 18:56:43 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.33.4
+  * mpg123: In terminal control, ignore 7-bit escape sequences to
+    avoid spurious actions, e.g. when hitting cursor keys.
+  * ports/cmake: Avoid possibly conflicting use of SIZEOF_OFF_T
+    CMake variable when embedding mpg123 with other projects
+    using cmake and different off_t semantics.
+
+-------------------------------------------------------------------
 Mon Oct  6 10:45:17 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.33.3
