@@ -18,7 +18,7 @@
 
 %define         _name vim
 Name:           tree-sitter-vim
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 Summary:        Vimscript grammar for tree-sitter
 License:        MIT

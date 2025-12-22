@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 22 01:40:45 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.7.0:
+  * feat: parse ranges for all commands
+  * feat(grammar): support "trim" for script heredocs
+  * feat(grammar): support let slice assignments
+
+-------------------------------------------------------------------
 Thu May  8 16:22:24 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.6.0:
