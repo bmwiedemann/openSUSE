@@ -1,7 +1,8 @@
-diff -ur holoviews-1.20.0.orig/pyproject.toml holoviews-1.20.0/pyproject.toml
---- holoviews-1.20.0.orig/pyproject.toml	2024-11-28 22:41:42.243258842 +0100
-+++ holoviews-1.20.0/pyproject.toml	2024-11-28 22:49:47.345433935 +0100
-@@ -70,7 +70,7 @@
+Index: holoviews-1.22.1/pyproject.toml
+===================================================================
+--- holoviews-1.22.1.orig/pyproject.toml
++++ holoviews-1.22.1/pyproject.toml
+@@ -82,7 +82,7 @@ examples = "holoviews/examples"
  version-file = "holoviews/_version.py"
  
  [tool.pytest.ini_options]
@@ -10,7 +11,7 @@ diff -ur holoviews-1.20.0.orig/pyproject.toml holoviews-1.20.0/pyproject.toml
  asyncio_mode = "auto"
  asyncio_default_fixture_loop_scope = "function"
  minversion = "7"
-@@ -114,8 +114,6 @@
+@@ -125,8 +125,6 @@ filterwarnings = [
      # 2024-01: Pandas 2.2
      "ignore:\\s*Pyarrow will become a required dependency of pandas:DeprecationWarning", # Will go away by itself in Pandas 3.0
      "ignore:Passing a (SingleBlockManager|BlockManager) to (Series|GeoSeries|DataFrame|GeoDataFrame) is deprecated:DeprecationWarning", # https://github.com/holoviz/spatialpandas/issues/137
@@ -19,10 +20,10 @@ diff -ur holoviews-1.20.0.orig/pyproject.toml holoviews-1.20.0/pyproject.toml
      # 2024-05
      "ignore:backend2gui is deprecated since IPython 8.24:DeprecationWarning", # https://github.com/holoviz/holoviews/pull/6227#issuecomment-2104401396
      # 2024-06
-@@ -126,6 +124,9 @@
-     "ignore: Jitify is performing a one-time only warm::cupy", # OK,
-     # 2024-10
-     "ignore::ResourceWarning",
+@@ -146,6 +144,9 @@ filterwarnings = [
+     "ignore:'asyncio.get_event_loop_policy' is deprecated and slated for removal in Python 3.16", # https://github.com/holoviz/panel/issues/8239
+     "ignore:'asyncio.WindowsSelectorEventLoopPolicy' is deprecated and slated for removal in Python 3.16", # https://github.com/holoviz/panel/issues/8239
+     "ignore:'_UnionGenericAlias' is deprecated and slated for removal in Python 3.17", # OK
 +    # OBS
 +    "ignore::FutureWarning",
 +    "ignore:\\s*The dash_core_components package is deprecated:UserWarning",

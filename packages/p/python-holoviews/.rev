@@ -497,4 +497,41 @@
     <comment></comment>
     <requestid>1228768</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>01a47479e1fbe7f021c191a4b73f682e</srcmd5>
+    <version>1.22.1</version>
+    <time>1766440118</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.22.1
+  ##Enhancements:
+  * Add text_outline_color and text_outline_width style to Labels
+    (Bokeh) (#6738, #6746)
+  * Add support for timedelta axis and Narwhals duration (Bokeh)
+    (#6734)
+  * Add numpy masked array to masked_types (#6732)
+  ## Bug Fixes:
+  * Have hover tool work across different DynamicMaps elements
+    (Bokeh) (#6748)
+  * Suppress Runtime warnings for negative size values (Matplotlib)
+    (#6744)
+  * Don't error if Heatmap is optimized and color style is used
+    (#6730)
+  * Narwhals Series not being seen as arraylike and not computing
+    dim expression (#6729)
+  * Check categorical legend dtypes for categories before accessing
+    it (#6053)
+  * Element interface mask to allow for np.nan (#5790)
+
+- Update to 1.21.0
+  * This release adds support for sample information on hover for
+    rasterized/datashaded plots, adds dendrogram plot, and adds
+    logarithmic support for Histogram. Along with these new
+    features, this release includes a number of enhancements, bug
+    fixes, and improved documentation.
+  ## New Features
+  * Sample information on hover for rasterized/datashaded Bokeh
+    plot (#6422, #6479, #6531, #6553, #6568, #6581, #6584, #6593,
+    #6596, #6609) Add dendrogram plot (#6511, #6625, #6600) Add (forwarded request 1323824 from bnavigator)</comment>
+    <requestid>1323825</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-holoviews
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 
 Name:           python-holoviews%{psuffix}
-Version:        1.20.0
+Version:        1.22.1
 Release:        0
 Summary:        Composable, declarative visualizations for Python
 License:        BSD-3-Clause
@@ -34,7 +34,7 @@ URL:            https://github.com/holoviz/holoviews
 Source0:        https://files.pythonhosted.org/packages/source/h/holoviews/holoviews-%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE holoviews-opensuse-pyproject.patch -- for obs builds, code@bnavigator.de
 Patch0:         holoviews-opensuse-pyproject.patch
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
@@ -42,12 +42,14 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-bokeh >= 3.1
 Requires:       python-colorcet
+Requires:       python-narwhals >= 2
 Requires:       python-numpy >= 1.21
 Requires:       python-packaging
 Requires:       python-pandas >= 1.3
 Requires:       python-panel >= 1.0
+Requires:       python-python-dateutil > 2.8.2
 Requires:       python-pyviz-comms >= 2.1
-Requires:       (python-param >= 1.12 with python-param < 3)
+Requires:       (python-param >= 2.0 with python-param < 3)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     python-ipython >= 5.4.0
@@ -58,7 +60,6 @@ Suggests:       python-Pillow
 Suggests:       python-xarray >= 0.10.4
 Suggests:       python-plotly >= 4.0
 Suggests:       python-dash >= 1.16
-Suggests:       python-streamz >= 0.5.0
 Suggests:       python-datashader >= 0.11.1
 Suggests:       python-ffmpeg-python
 Suggests:       python-netCDF4
@@ -75,7 +76,8 @@ BuildRequires:  %{python_module holoviews = %{version}}
 ##
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module contourpy}
-BuildRequires:  %{python_module dash >= 1.16}
+## Requires plotly (see below)
+#BuildRequires:  %%{python_module dash >= 1.16}
 BuildRequires:  %{python_module dask}
 BuildRequires:  %{python_module datashader >= 0.11.1}
 BuildRequires:  %{python_module deepdiff}
@@ -84,20 +86,19 @@ BuildRequires:  %{python_module ipython >= 5.4.0}
 BuildRequires:  %{python_module keyring}
 BuildRequires:  %{python_module matplotlib >= 3}
 BuildRequires:  %{python_module nbconvert}
-BuildRequires:  %{python_module nbsmoke}
 BuildRequires:  %{python_module netCDF4}
 BuildRequires:  %{python_module networkx}
 BuildRequires:  %{python_module notebook}
-BuildRequires:  %{python_module plotly >= 4.0}
+## Installing plotly causes test failures with bokeh backend
+#BuildRequires:  %%{python_module plotly >= 4.0}
 BuildRequires:  %{python_module pytest-asyncio >= 0.24}
 BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module rfc3986}
-BuildRequires:  %{python_module scikit-image if %python-base < 3.13}
+BuildRequires:  %{python_module scikit-image}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module shapely}
-BuildRequires:  %{python_module streamz >= 0.5.0}
 BuildRequires:  %{python_module xarray >= 0.10.4}
 %endif
 %python_subpackages

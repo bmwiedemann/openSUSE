@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Sat Dec 20 17:44:16 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.22.1
+  ##Enhancements:
+  * Add text_outline_color and text_outline_width style to Labels
+    (Bokeh) (#6738, #6746)
+  * Add support for timedelta axis and Narwhals duration (Bokeh)
+    (#6734)
+  * Add numpy masked array to masked_types (#6732)
+  ## Bug Fixes:
+  * Have hover tool work across different DynamicMaps elements
+    (Bokeh) (#6748)
+  * Suppress Runtime warnings for negative size values (Matplotlib)
+    (#6744)
+  * Don't error if Heatmap is optimized and color style is used
+    (#6730)
+  * Narwhals Series not being seen as arraylike and not computing
+    dim expression (#6729)
+  * Check categorical legend dtypes for categories before accessing
+    it (#6053)
+  * Element interface mask to allow for np.nan (#5790)
+
+-------------------------------------------------------------------
+Wed Sep 17 15:12:02 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.21.0
+  * This release adds support for sample information on hover for
+    rasterized/datashaded plots, adds dendrogram plot, and adds
+    logarithmic support for Histogram. Along with these new
+    features, this release includes a number of enhancements, bug
+    fixes, and improved documentation.
+  ## New Features
+  * Sample information on hover for rasterized/datashaded Bokeh
+    plot (#6422, #6479, #6531, #6553, #6568, #6581, #6584, #6593,
+    #6596, #6609) Add dendrogram plot (#6511, #6625, #6600) Add
+    logarithmic support for Histogram (#6575)
+  ## Deprecations and removals:
+  * Minimum supported Python version is now 3.10 (#6549)
+  * Deprecate the streamz interface (planned removal in 1.23.0)
+    (#6490)
+  * Deprecate autoloading RC file (planned removal in 1.23.0)
+    (#6610)
+  * Deprecate IPython magic (planned removal in 1.23.0) (#6610)
+  * Deprecate hv.extension() for hv.extension("matplotlib")
+    (planned removal in 1.23.0) (#6610)
+  * Remove unused hv.config parameters: future_deprecations and
+    warn_options_call (#6610)
+  ## Enhancements:
+  * [Bokeh] Add hide_toolbar options (#6602)
+  * [Bokeh] Add radius and radius_dimension to Point plot (#6599,
+    #6613)
+  * [Notebook] Add details option for AbbreviatedException (#6611)
+  * [Notebook] Improve the content displayed when loading the
+    extension in a notebook (#6586)
+  * Add basic reactive expression support in a streams dictionary
+    (#6563)
+  * Allow passing dimension as style mapping option #6614
+  * Support passing selection dictionary to Dataset.select (#6617,
+    #6626)
+  * Pass the backend in holoviews.opts.defaults (#6331)
+  * Update norm function to handle edge case (#6366)
+  ## Performance:
+  * Defer Pandas import (#6476, #6574, #6582, #6585)
+  * Defer datashader.bundling to avoid numba compile time (#6616)
+  * Defer Panel and Pandas imports in IPython (#6570)
+  ## Fixes:
+  * Correctly apply Bars style transforms (#6623)
+  * Don't assume all extents are string in max_extents (#6571)
+  * Histogram error with datatype dask.array and backend Matplotlib
+    (#6542)
+  * Wrong empty element when using apply_when (#6628)
+  * Add legend to distribution for matplotlib backend (#6544)
+  * Improve multi_y error for single element (#6543)
+  * PandasInterface.select with an index and a column (#6579)
+  * Skip overlay aggregate for NdOverlays with a count aggregator
+    (#6619)
+
+-------------------------------------------------------------------
 Thu Dec  5 22:06:46 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip python313 tests with scikit-image (not available yet)
