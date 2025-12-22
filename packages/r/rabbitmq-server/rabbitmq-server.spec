@@ -1,7 +1,7 @@
 #
 # spec file for package rabbitmq-server
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,7 @@
 %define _rabbitmq_group rabbitmq
 
 Name:           rabbitmq-server
-Version:        3.13.7
+Version:        4.2.1
 Release:        0
 Summary:        A message broker supporting AMQP, STOMP and MQTT
 License:        MPL-2.0
@@ -54,12 +54,11 @@ Source6:        rabbitmq-server.service
 Source7:        https://raw.githubusercontent.com/rabbitmq/rabbitmq-packaging/v%{version}/RPMS/Fedora/rabbitmq-server.tmpfiles
 Source8:        README.SUSE
 Patch0:         feature-suse-reproducable-build.patch
-Patch1:         rabbitmq-server-allow-elixir-1.18.patch
-Patch2:         fix-CVE-2025-30219.patch
-Patch3:         fix-CVE-2025-50200.patch
 BuildRequires:  elixir
-# https://www.rabbitmq.com/which-erlang.html
-BuildRequires:  erlang >= 25.0
+# https://www.rabbitmq.com/docs/which-erlang
+BuildRequires:  erlang >= 26.2
+BuildRequires:  7zip
+BuildRequires:  erlang-epmd
 BuildRequires:  erlang-src
 BuildRequires:  fdupes
 BuildRequires:  hostname
@@ -70,7 +69,7 @@ BuildRequires:  unzip
 BuildRequires:  xmlto
 BuildRequires:  xz
 BuildRequires:  zip
-Requires:       erlang >= 25.0
+Requires:       erlang >= 26.2
 Requires:       erlang-epmd
 Requires:       logrotate
 Provides:       AMQP-server
@@ -102,7 +101,7 @@ This package includes some plugins for the RabbitMQ server.
 %package -n erlang-rabbitmq-client
 Summary:        RabbitMQ AMQP language bindings for Erlang
 Group:          Development/Libraries/Other
-Requires:       erlang
+Requires:       erlang27
 Provides:       erlang-amqp_client = %{version}
 Provides:       erlang-gen_server2 = %{version}
 Provides:       erlang-rabbit_common = %{version}

@@ -1,13 +1,13 @@
-Index: rabbitmq-server-3.13.7/erlang.mk
+Index: rabbitmq-server-4.1.5/erlang.mk
 ===================================================================
---- rabbitmq-server-3.13.7.orig/erlang.mk
-+++ rabbitmq-server-3.13.7/erlang.mk
+--- rabbitmq-server-4.1.5.orig/erlang.mk
++++ rabbitmq-server-4.1.5/erlang.mk
 @@ -66,7 +66,7 @@ export ERLANG_MK_TMP
  
  # "erl" command.
  
--ERL = erl +A1 -noinput -boot no_dot_erlang
-+ERL = erl +A1 -noinput -boot no_dot_erlang -enable-deterministic-build
+-ERL = erl -noinput -boot no_dot_erlang -kernel start_distribution false +P 1024 +Q 1024
++ERL = erl -noinput -enable-deterministic-build -boot no_dot_erlang -kernel start_distribution false +P 1024 +Q 1024
  
  # Platform detection.
  

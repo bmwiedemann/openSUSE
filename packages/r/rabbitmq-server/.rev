@@ -929,4 +929,12 @@ The new default is much safer and will reduce the effect application channel lea
     <comment></comment>
     <requestid>1298073</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>e440bfea38e504b20c539d39932086c7</srcmd5>
+    <version>4.2.1</version>
+    <time>1766440193</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1324003</requestid>
+  </revision>
 </revisionlist>
