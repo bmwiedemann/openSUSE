@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Dec 22 08:26:28 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20251222.3aa2ace5:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: sbd: Don't use category when checking sbd timeout
+  * Dev: sbd: Allow some timeout values bigger than expected
+  * Dev: sbd: Adjust check/fix functions for watchdog timeout and msgwait timeout
+  * Dev: sbd: Remove unused function
+  * Dev: sbd: Rename attribute warn to quiet in class SBDTimeoutChecker
+  * Dev: utils: check_ssh_passwd_need: Add SSH_AUTH_SOCK if detected in environment
+  * Dev: sbd: Minor improvements for log clarity
+  * Dev: sbd: Take crashdump watchdog timeout into account
+  * Dev: behave: Adjust functional test for previous commits
+  * Dev: doc: Add help info for `crm cluster health sbd`
+  * Dev: sbd: Introduce class sbd.SBDTimeoutChecker
+  * Dev: ui_cluster: Introduce sbd option for 'crm cluster health' command
+
+-------------------------------------------------------------------
+Tue Dec 16 09:53:38 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20251216.8dbfabd9:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: utils: Rename utils.is_quorate to utils.cluster_with_quorum
+  * Dev: crash_test: Reuse get_node_list in xmlutil.CrmMonXmlParser
+  * Dev: utils: Reuse methods in xmlutil.CrmMonXmlParser
+  * Dev: unittests: Remove related unit test for the removed codes in crash_test/check.py
+  * Dev: crash_test: Removed unused codes related to check.py
+
+-------------------------------------------------------------------
 Wed Dec 10 10:43:22 UTC 2025 - XLiang@suse.com
 
 - Update to version 5.0.0+20251210.b974da26:
