@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec 21 08:31:32 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 0.47.1:
+  * DXC - VE7CC-type Cluster is correctly detected
+  * Chat - Changed ON4KST URL
+  * Fixed Missing clear button for Search Callsign
+  * Fixed Updated QSOs are not sent to Wavelog
+  * Fixed ADI Header does not follow ADIF Spec
+  * Fixed OmniRig settings are not saved
+
+-------------------------------------------------------------------
 Sat Dec  6 17:38:30 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 0.47.0:
