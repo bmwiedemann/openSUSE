@@ -1,7 +1,7 @@
 #
 # spec file for package zk
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           zk
-Version:        0.15.0
+Version:        0.15.2
 Release:        0
 Summary:        Plain text note-taking assistant for markdown
 License:        BSD-2-Clause
