@@ -17,7 +17,7 @@
 
 
 Name:           taradino
-Version:        20251031
+Version:        20251222
 Release:        0
 Summary:        SDL port of the Rise of the Triad engine
 License:        GPL-2.0-or-later
@@ -30,12 +30,13 @@ BuildRequires:  cmake
 BuildRequires:  pkg-config
 BuildRequires:  xz
 BuildRequires:  pkgconfig(SDL2_mixer)
+BuildRequires:  pkgconfig(libADLMIDI)
 BuildRequires:  pkgconfig(sdl2)
 Provides:       rott = 1.4
 Obsoletes:      rott < 1.4
 
 %description
-The package contains an SDL port of the engine used for the
+The package contains an SDL-based engine (of the icculus "lineage") for the
 first-person 3D action game "Rise of the Triad".
 
 The ROTT engine is a derivative of the Wolfenstein 3D one, inheriting
