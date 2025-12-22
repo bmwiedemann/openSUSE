@@ -3,9 +3,11 @@
  Misc/NEWS               |    2 +-
  2 files changed, 1 insertion(+), 4 deletions(-)
 
---- a/Doc/using/configure.rst
-+++ b/Doc/using/configure.rst
-@@ -42,7 +42,6 @@ General Options
+Index: Python-3.10.19/Doc/using/configure.rst
+===================================================================
+--- Python-3.10.19.orig/Doc/using/configure.rst	2025-10-09 17:25:03.000000000 +0200
++++ Python-3.10.19/Doc/using/configure.rst	2025-12-19 23:10:08.779794344 +0100
+@@ -42,7 +42,6 @@
  
     See :data:`sys.int_info.bits_per_digit <sys.int_info>`.
  
@@ -13,7 +15,7 @@
  .. cmdoption:: --with-cxx-main=COMPILER
  
     Compile the Python ``main()`` function and link Python executable with C++
-@@ -473,13 +472,11 @@ macOS Options
+@@ -473,13 +472,11 @@
  
  See ``Mac/README.rst``.
  
@@ -27,9 +29,11 @@
  .. cmdoption:: --enable-framework=INSTALLDIR
  
     Create a Python.framework rather than a traditional Unix install. Optional
---- a/Misc/NEWS
-+++ b/Misc/NEWS
-@@ -3942,7 +3942,7 @@ C API
+Index: Python-3.10.19/Misc/NEWS
+===================================================================
+--- Python-3.10.19.orig/Misc/NEWS	2025-10-09 17:25:03.000000000 +0200
++++ Python-3.10.19/Misc/NEWS	2025-12-19 23:10:08.784479751 +0100
+@@ -4018,7 +4018,7 @@
  -----
  
  - bpo-43795: The list in :ref:`stable-abi-list` now shows the public name
