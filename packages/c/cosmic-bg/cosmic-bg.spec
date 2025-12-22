@@ -18,7 +18,7 @@
 
 %define         appname com.system76.CosmicBackground
 Name:           cosmic-bg
-Version:        1.0.0~beta1.1+1
+Version:        1.0.0+0
 Release:        0
 Summary:        COSMIC service for backgrounds
 License:        MPL-2.0
