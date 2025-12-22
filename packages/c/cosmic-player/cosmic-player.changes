@@ -1,4 +1,129 @@
 -------------------------------------------------------------------
+Tue Dec 16 16:53:19 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Fix playback by adding a new runtime dependency, while downgrading
+  ugly codecs to recommends
+
+-------------------------------------------------------------------
+Thu Dec 11 17:54:02 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0+0:
+  * i18n: translation updates from weblate
+  * Russian translation for .desktop file
+
+-------------------------------------------------------------------
+Sat Dec 06 23:06:52 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta9+2:
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+  * Prevent screen turning off during playback
+
+-------------------------------------------------------------------
+Sat Nov 15 20:14:36 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta6+2:
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+  * Use same video creation method for player and thumbnailer
+  * i18n(sv): translate appstream metainfo
+  * Clean up dependencies, lints
+
+-------------------------------------------------------------------
+Mon Nov 10 23:46:12 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Require the gstreamer plugins, otherwise most things don't play
+
+-------------------------------------------------------------------
+Thu Nov 06 19:58:02 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta5+0:
+  * i18n: translation updates from weblate
+  * Add working desktop file validation as CI action
+- Update to version 1.0.0~beta4+0:
+  * Updated translations
+
+-------------------------------------------------------------------
+Thu Oct 23 17:20:41 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta3+2:
+  * i18n: translation updates from weblate
+  * fix mouse cursor showing in Fullscreen video
+
+-------------------------------------------------------------------
+Sun Oct 19 14:52:52 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta2+0:
+  * fix desktop translation
+  * Clear recent media button
+  * Update libcosmic, fixes #121
+  * Correctly handle videos with no subtitles
+  * Allow toggling subtitles
+
+-------------------------------------------------------------------
+Tue Sep 30 20:35:45 UTC 2025 - mkd <mkdwho@icloud.com>
+
+cosmic-player.spec: add %dir %{_datadir}/thumbnailers
+
+Ensure the package owns /usr/share/thumbnailers to resolve
+“directories not owned by a package” error during build checks.
+
+-------------------------------------------------------------------
+Mon Sep 29 22:22:17 UTC 2025 - mkd <mkdwho@icloud.com>
+
+- Include new .thumbnailer file in %files
+
+-------------------------------------------------------------------
+Mon Sep 29 20:42:44 UTC 2025 - mkd <mkdwho@icloud.com>
+
+- Update to version 1.0.0~beta1.1+18:
+  * Added translation using Weblate (Norwegian Bokmål)
+  * Translated using Weblate (Estonian)
+  * Added translation using Weblate (Estonian)
+  * Translated using Weblate (Ukrainian)
+  * Added translation using Weblate (Ukrainian)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Russian)
+  * Translated using Weblate (Frisian)
+  * Translated using Weblate (Afrikaans)
+  * Translated using Weblate (Chinese (Simplified Han script))
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Frisian)
+  * Translated using Weblate (Afrikaans)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Portuguese)
+  * Translated using Weblate (Dutch)
+  * Added translation using Weblate (Limburgish)
+  * Added translation using Weblate (Frisian)
+  * Translated using Weblate (Afrikaans)
+  * Added translation using Weblate (Afrikaans)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Hindi)
+  * Translations update from Hosted Weblate (#144)
+  * Update Arabic translation
+  * Update Arabic translation
+  * Update cosmic_player.ftl PL translation
+  * i18n(es): updated translations
+  * set agent for souphttpsrc
+  * i18n(sk): Update translations
+  * Respond to duration changes, fixes #107
+  * Handle codec install during file open, fixes #23
+  * Add videoflip filter to automatically handle orientation metadata
+  * Provide thumbnailing
+  * i18n(ar): Add Arabic translation
+  * Fixed volume scroll
+  * i18n(pt-BR): Update translations
+  * Retain paused/playing state on scrub
+  * fix: don't change volume on scroll when sidebar is toggled otherwise, potential scrolling in the sidebar inferes with volume control by scrolling
+  * feat: change volume on mousewheel scroll, #112
+  * Update Hungarian translations
+  * i18n(bg): Add Bulgarian translation
+  * i18n(es): Updated translation, fix words for coherence
+  * i18n(zh-CN): update desktop file translation
+
+-------------------------------------------------------------------
 Thu Apr 24 17:57:26 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.0~alpha7+0:

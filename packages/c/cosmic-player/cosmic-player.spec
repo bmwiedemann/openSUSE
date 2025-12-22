@@ -1,7 +1,7 @@
 #
 # spec file for package cosmic-player
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appname com.system76.CosmicPlayer
 Name:           cosmic-player
-Version:        1.0.0~alpha7+0
+Version:        1.0.0+0
 Release:        0
 Summary:        COSMIC media player
 License:        GPL-3.0-only
@@ -37,6 +37,9 @@ BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(xkbcommon)
+Requires:       gstreamer-plugins-bad
+Requires:       gstreamer-plugins-good
+Requires:       gstreamer-plugins-libav
 
 %description
 %{summary}.
@@ -60,5 +63,7 @@ just rootdir=%{buildroot} prefix=%{_prefix} install
 %{_datadir}/applications/%{appname}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{appname}.svg
 %{_datadir}/metainfo/%{appname}.metainfo.xml
+%dir %{_datadir}/thumbnailers
+%{_datadir}/thumbnailers/%{appname}.thumbnailer
 
 %changelog
