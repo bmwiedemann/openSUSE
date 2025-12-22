@@ -162,8 +162,8 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.15.0~a1
-%define         tarversion 3.15.0a1
+Version:        3.15.0~a3
+%define         tarversion 3.15.0a3
 %define         tarname    Python-%{tarversion}
 Release:        0
 Summary:        Python 3 Interpreter
@@ -224,9 +224,6 @@ Patch40:        fix-test-recursion-limit-15.6.patch
 Patch41:        bsc1243155-sphinx-non-determinism.patch
 # PATCH-FIX-OPENSUSE gh139257-Support-docutils-0.22.patch gh#python/cpython#139257 daniel.garcia@suse.com
 Patch42:        gh139257-Support-docutils-0.22.patch
-# PATCH-FIX-UPSTREAM CVE-2025-6075-expandvars-perf-degrad.patch bsc#1252974 mcepl@suse.com
-# Avoid potential quadratic complexity vulnerabilities in path modules
-Patch43:        CVE-2025-6075-expandvars-perf-degrad.patch
 #### Python 3.15 DEVELOPMENT PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
@@ -272,7 +269,7 @@ BuildRequires:  python3-python-docs-theme >= 2022.1
 
 %if %{with experimental_jit}
 # needed for experimental_jit
-BuildRequires:  clang19 llvm19
+BuildRequires:  clang21 llvm21
 BuildRequires:  llvm
 %endif
 
@@ -577,7 +574,7 @@ export SUSE_VERSION="0%{?suse_version}"
 export SLE_VERSION="0%{?sle_version}"
 
 %if %{with doc}
-TODAY_DATE=`date -r %{SOURCE0} "+%%B %%d, %%Y"`
+TODAY_DATE=`date -r %{SOURCE0} "+%B %d, %Y"`
 # TODO use not date of tarball but date of latest patch
 
 cd Doc
@@ -690,6 +687,8 @@ EXCLUDE="$EXCLUDE test_capi"
 
 # Failing tests on python 3.15
 EXCLUDE="$EXCLUDE test_regrtest test_sysconfig"
+# Segfaults on 32 bit
+EXCLUDE="$EXCLUDE test_profiling"
 
 # Limit virtual memory to avoid spurious failures
 if test $(ulimit -v) = unlimited || test $(ulimit -v) -gt 10000000; then
@@ -755,7 +754,7 @@ done
 for library in \
     array binascii _bisect _bz2 cmath _codecs_* \
     _csv _ctypes _decimal fcntl grp \
-    _hashlib _heapq _hmac _json _lsprof _lzma math mmap \
+    _hashlib _heapq _hmac _json _lsprof _lzma math mmap _math_integer \
     _multibytecodec _multiprocessing _pickle _posixshmem \
     _posixsubprocess _queue _random resource select _ssl _socket \
     _statistics _struct syslog termios _testbuffer _testimportmultiple \
@@ -1088,6 +1087,7 @@ fi
 %{dynlib _lzma}
 %{dynlib math}
 %{dynlib mmap}
+%{dynlib _math_integer}
 %{dynlib _multibytecodec}
 %{dynlib _multiprocessing}
 %{dynlib _pickle}

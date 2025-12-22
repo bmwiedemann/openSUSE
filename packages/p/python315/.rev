@@ -25,4 +25,41 @@
       (bsc#1251305, CVE-2025-8291).</comment>
     <requestid>1320571</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>847162df9ac59b1b9acbb6067050dc78</srcmd5>
+    <version>3.15.0~a3</version>
+    <time>1766440195</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.15.0~a3:
+- Security
+    - gh-142145: Remove quadratic behavior in xml.minidom node ID
+      cache clearing (CVE-2025-12084, bsc#1254997).
+    - gh-42400: Fix buffer overflow in _Py_wrealpath() for paths
+      exceeding MAXPATHLEN bytes by using dynamic memory
+      allocation instead of fixed-size buffer. Patch by Shamil
+      Abdulaev.
+    - gh-119451: Fix a potential memory denial of service in the
+      http.client module. When connecting to a malicious server,
+      it could cause an arbitrary amount of memory to be
+      allocated. This could have led to symptoms including
+      a MemoryError, swapping, out of memory (OOM) killed
+      processes or containers, or even system crashes
+      (CVE-2025-13836, bsc#1254400).
+    - gh-119342: Fix a potential memory denial of service in the
+      plistlib module. When reading a Plist file received from
+      untrusted source, it could cause an arbitrary amount of
+      memory to be allocated. This could have led to symptoms
+      including a MemoryError, swapping, out of memory (OOM)
+      killed processes or containers, or even system crashes
+      (CVE-2025-13837, bsc#1254401).
+- Library
+    - gh-142754: Add the ownerDocument attribute to
+      xml.dom.minidom elements and attributes created by directly
+      instantiating the Element or Attr class. Note that this way
+      of creating nodes is not supported; creator functions like
+      xml.dom.Document.documentElement() should be used instead.
+    - gh-142594: Fix crash in TextIOWrapper.close() when the
+      underlying buffer’s closed property calls detach().</comment>
+    <requestid>1324009</requestid>
+  </revision>
 </revisionlist>
