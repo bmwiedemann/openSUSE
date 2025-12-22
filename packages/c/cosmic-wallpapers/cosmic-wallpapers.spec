@@ -1,7 +1,7 @@
 #
 # spec file for package cosmic-wallpapers
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cosmic-wallpapers
-Version:        1.0.0~alph7+0
+Version:        1.0.0+0
 Release:        0
 Summary:        Wallpapers for the COSMIC Desktop Environment
 License:        CC-BY-4.0 OR CC0-1.0
