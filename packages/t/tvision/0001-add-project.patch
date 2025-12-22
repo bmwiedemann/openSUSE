@@ -1,0 +1,41 @@
+From 8d36798abfb56bf6fdd1d63f4f7f7643644dd0a2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@kkaempf.de>
+Date: Sat, 20 Dec 2025 17:05:12 +0100
+Subject: [PATCH] add project()
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Klaus Kämpf <kkaempf@kkaempf.de>
+---
+ CMakeLists.txt      | 2 +-
+ test/CMakeLists.txt | 2 ++
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 11120df..12c71fb 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -15,8 +15,8 @@
+ # * TV_BUILD_AVSCOLOR (default OFF) to build an AviSynth plugin for testing the
+ #   terminal color quantization (Unix only).
+ # * TV_BUILD_TESTS (default OFF) to build and run tests.
+-
+ cmake_minimum_required (VERSION 3.5...3.30)
++project(tvision)
+ if (CMAKE_VERSION VERSION_GREATER_EQUAL "3.13.0")
+     cmake_policy(SET CMP0077 NEW) # 'option()' honors normal variables.
+ endif()
+diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
+index 502f847..618e1be 100644
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -1,3 +1,5 @@
++cmake_minimum_required (VERSION 3.5...3.30)
++project(tvision-test)
+ if (TV_BUILD_TESTS)
+     file(GLOB_RECURSE TEST_SRC "${CMAKE_CURRENT_LIST_DIR}/*.cpp")
+ 
+-- 
+2.52.0
+

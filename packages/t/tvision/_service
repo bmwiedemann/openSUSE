@@ -4,6 +4,7 @@
 		<param name="url">https://github.com/magiblot/tvision</param>
 		<param name="revision">master</param>
 		<param name="versionformat">0~git@TAG_OFFSET@</param>
+		<param name="changesgenerate">enable</param>
 	</service>
 	<service name="recompress" mode="manual">
 		<param name="file">*.tar</param>

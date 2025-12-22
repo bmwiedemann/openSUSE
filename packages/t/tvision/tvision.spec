@@ -1,7 +1,7 @@
 #
 # spec file for package tvision
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,13 @@
 
 Name:           tvision
 Release:        0
-Version:        0~git631
+Version:        0~git727
 Summary:        Modern port of Turbo Vision 2.0
 Group:          Development/Languages/C and C++
 License:        MIT
 URL:            https://github.com/magiblot/tvision
 Source:         %{name}-%{version}.tar.xz
+Patch1:         0001-add-project.patch
 
 %description
 A modern port of Turbo Vision 2.0, the classical
@@ -49,9 +50,9 @@ Summary:        Static library for Turbo Vision 2.0
 Group:          Development/Languages/C and C++
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
-BuildRequires:  pkgconfig(ncurses)
-BuildRequires:  gtest
 BuildRequires:  gpm
+BuildRequires:  gtest
+BuildRequires:  pkgconfig(ncurses)
 Suggests:       (xclip or xset)
 
 %description devel-static
@@ -62,7 +63,6 @@ Vision 2.0 port.
 A modern port of Turbo Vision 2.0, the classical
 framework for text-based user interfaces, but with
 Unicode and cross=platform support.
-
 
 %package demos
 Summary:        Demo programs of Turbo Vision 2.0
@@ -101,7 +101,8 @@ popd
 %license COPYRIGHT
 %doc README.md
 %{_bindir}/tvhc
-%{_includedir}/*
+%dir %{_includedir}/%{name}
+%{_includedir}/%{name}/*
 %{_libdir}/*
 %{_libdir}/cmake/
 

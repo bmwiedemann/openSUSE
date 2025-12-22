@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Dec 20 16:02:00 UTC 2025 - Klaus Kämpf <kkaempf@suse.de>
+
+- Update to version 0~git727:
+  * Rename string formatting function into 'formatStr'
+  * Make code page conversion customizable by the developer, not the user
+  * Add Unicode support for TMenuView shortcuts
+  * Implement TText::equalsIgnoreCase
+  * Fix cast of constant variable
+  * platform: reorganize character processing functions
+  * Reorganize and improve comparison and printing operators in tests
+  * Add string-based variants of hotKey, getAltChar and getCtrlChar functions
+  * platform: simplify freeing memory of DisplayBuffer objects
+  * Fix warning in TVDemo::mouse()
+
+- fix the build: add 0001-add-project.patch
+
+-------------------------------------------------------------------
 Wed May 29 02:38:31 UTC 2024 - Julius Enriquez <win8linux@gmail.com>
 
 - Working spec file 
