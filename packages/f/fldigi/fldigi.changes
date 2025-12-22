@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Dec 19 23:57:36 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to 4.2.11:
+  * Documentation update: dialog resizing with CONTROL +/- keys
+  * changes to improve flrig rtty timing of character by character
+    data stream
+  * MFSK Rx Pic: change Rx image dialog resize algorithm
+    . receieved image dimensions were not correctly applied to
+      dialog resize
+  * change CW signal detection and tracking
+  * add documentation specific to CW macro usage
+  * COM port evaluation: attempt non-invasive test and find serial
+    ports using native operating system calls vice POSIX open port
+  * disable network debug file, file size might exceed allowable
+    limits when program allowed to run continuously with many
+    network requests being processed.  
+
+-------------------------------------------------------------------
 Thu Nov 20 20:56:47 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to 4.2.10:
