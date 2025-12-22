@@ -17,14 +17,13 @@
 
 
 Name:           goose
-Version:        1.17.0
+Version:        1.18.0
 Release:        0
 Summary:        A local, extensible, open source AI agent that automates engineering tasks
 License:        Apache-2.0
 URL:            https://github.com/block/goose
 Source0:        goose-%{version}.tar.zst
 Source1:        vendor.tar.zst
-Patch1:         disable-self-update.patch
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  libxcb-devel
@@ -43,7 +42,7 @@ export CARGO_PROFILE_RELEASE_LTO=true
 export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
 export CARGO_PROFILE_RELEASE_OPT_LEVEL=z
 
-%{cargo_build} --package goose-cli
+%{cargo_build} --package goose-cli --features disable-update
 
 %install
 mkdir -p %{buildroot}%{_bindir}

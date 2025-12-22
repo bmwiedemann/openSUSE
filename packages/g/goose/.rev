@@ -89,4 +89,12 @@
   * fix(ui): prevent incorrect provider type suffix in update dialog #5908 (#5909)</comment>
     <requestid>1323698</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7291ace058de10b289aeef27a22dc107</srcmd5>
+    <version>1.18.0</version>
+    <time>1766440310</time>
+    <user>dimstar_suse</user>
+    <comment>v1.18.0</comment>
+    <requestid>1324147</requestid>
+  </revision>
 </revisionlist>
