@@ -5742,4 +5742,12 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 11.0-rc1 release</comment>
     <requestid>1322569</requestid>
   </revision>
+  <revision rev="481" vrev="1">
+    <srcmd5>339b569410b4111b30fa80ab3a0b5b60</srcmd5>
+    <version>11.0~rc2</version>
+    <time>1766440137</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1323886</requestid>
+  </revision>
 </revisionlist>
