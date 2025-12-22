@@ -1,7 +1,7 @@
 #
 # spec file for package cosmic-panel
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cosmic-panel
-Version:        1.0.0~alpha7+0
+Version:        1.0.0+0
 Release:        0
 Summary:        A panel for COSMIC DE
 License:        GPL-3.0-only
@@ -31,6 +31,7 @@ BuildRequires:  just
 BuildRequires:  pkgconfig
 BuildRequires:  rust >= 1.80
 BuildRequires:  pkgconfig(wayland-client)
+BuildRequires:  pkgconfig(wayland-server)
 BuildRequires:  pkgconfig(xkbcommon)
 
 %description

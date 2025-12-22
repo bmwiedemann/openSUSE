@@ -1,4 +1,117 @@
 -------------------------------------------------------------------
+Thu Dec 11 17:53:06 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0+0:
+  * no changes since last release
+
+-------------------------------------------------------------------
+Sat Dec 06 23:03:42 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta9+0:
+  * fix: check overflow popup for focus tracking
+  * chore(config): activate gap by default
+  * fix: shrinkable padding for applets made applets no longer square shaped
+  * chore: improved overflow stability
+  * fix: add overflow unless already exists with matching id
+  * fix: offset of animation for autohide
+  * fix(named output): apply setup after initial creation
+
+-------------------------------------------------------------------
+Sat Nov 15 20:10:24 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta6+4:
+  * Move panels to overlay layer when workspaces is shown
+  * Show auto-hide panels in workspaces overlay
+  * config: Add a `CosmicPanelContainerConfigEntry` struct
+  * workspaces_dbus: Also detect if `cosmic-workspaces` disappears from bus
+  * chore: update defaults
+  * chore: install 0 spacing default
+  * fix: allow hiding and showing empty windows
+  * fix: restart panel on spacing change
+  * feat: applets shrinkable by padding and configurable
+  * force size to be non-negative
+  * chore: add dock padding
+  * fix: background overlap after spacer updates
+
+-------------------------------------------------------------------
+Mon Nov 10 15:54:20 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta5+0:
+  * Add files to default schema for settings keys that aren't there
+  * cleanup: remove RUST_BACKTRACE from env
+
+-------------------------------------------------------------------
+Thu Oct 23 17:19:58 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta3+0:
+  * no changes since last release
+
+-------------------------------------------------------------------
+Sun Oct 19 14:48:53 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta2+0:
+  * Fix handling of scroll events
+  * Fix auto-hide when intellihide is not supported
+  * Remove `if` block that appears to be dead code
+  * Move things shared between `PanelSpace`s to a `PanelSharedSpace`
+  * fix: issue with background rendering by changing scale
+  * fix: briefly apply +-1 pixel when autohide changed
+  * fix: Close workspaces for popups that take grabs; not tooltips
+  * fix: handle press in space if hovered
+
+-------------------------------------------------------------------
+Mon Sep 29 20:25:32 UTC 2025 - mkd <mkdwho@icloud.com>
+
+- Update to version 1.0.0~beta1.1+1:
+  * feat: configurable delay before unhiding panels
+  * Use `cosmic-workspaces` DBus to hide workspace when popup is shown
+  * Define `visiblity` in `PanelSpace::new()` instead of accepting as arg
+  * Run `cargo fmt` (on nightly)
+  * fix: add --die-with-parent
+  * fix: improve cleanup of fds
+  * fix: overlap handling
+  * fix: avoid input region rectangle accumulation
+  * fix: input region position on right edge
+  * update smithay, remove unnecessary surface attributes
+  * update `sctk`
+  * chore: update dependencies
+  * chore: migrate to Rust 2024 edition
+  * fix: cursor
+  * chore: use crates-io
+  * Add `TouchTarget` support for `IcedElement`
+  * Add support for overflow popup applets to `touch_under()`
+  * Use `space_focus()` for overflow popups as well
+  * Split off some shared pointer/touch code in a `space_focus()` function
+  * Use `dyn` to simplify `KeyboardTarget`/`PointerTarget` slightly
+  * Update `smithay` to latest commit
+  * fix: check hovered and focused surface for popup creation
+  * fix: improve overflow popup handling
+  * avoid closing popups before autohover events are generated
+  * refactor: take a grab for popups that want input
+  * Initial support for passing touch input to clients
+  * fix(cursor): multipool
+  * fix(maximized): track sticky windows for each output
+  * refactor: update default config
+  * fix(nix): Reworked flake to work with current setup
+  * chore: update deps
+  * fix: damage tracking is not working with the correct offset for gaps
+  * Update `cctk`
+  * chore: pass spacing to applets
+  * fix: exit early if the hovered applet has a popup
+  * feat: support flatpak applets
+  * fix: increase timeout for notifications proxy
+  * fix: handle minimized toplevels in intellihide
+  * Limit custom panel size to greater than 16 and intervals of 4
+  * Add "Custom" panel size, with an arbitrary value for the size
+  * fix: hover tracking
+  * fix: popup offset for parent popup should be zero
+  * fix: check toplevel overlaps to determine if it should hide, instead of output toplevels
+  * fix: account for potentially overlapping dock and panel
+  * fix: set overlap notify state after config is changed
+  * fix: apply new location after focus transition has ended
+  * fix: overflow button scaling for size calculation
+
+-------------------------------------------------------------------
 Thu Apr 24 17:53:46 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.0~alpha7+0:
