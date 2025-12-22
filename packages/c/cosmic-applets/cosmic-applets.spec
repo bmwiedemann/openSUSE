@@ -1,7 +1,7 @@
 #
 # spec file for package cosmic-applets
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,7 @@
 %define         workspacesbutton PanelWorkspacesButton
 %define         launcherbutton PanelLauncherButton
 Name:           cosmic-applets
-Version:        1.0.0~beta.1.1+3
+Version:        1.0.0+0
 Release:        0
 Summary:        Applets for COSMIC DE
 License:        GPL-3.0-only

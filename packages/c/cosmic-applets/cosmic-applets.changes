@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Thu Dec 11 16:17:54 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0+0:
+  * chore: update dependencies
+  * chore: update cosmic-text
+  * i18n: translation updates from weblate
+  * workspaces: Use libcosmic `DiscreteScrollState` helper
+  * Run `cargo fmt`
+
+-------------------------------------------------------------------
+Sat Dec 06 22:00:53 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta9+3:
+  * i18n: translation updates from weblate
+  * chore: update sound subscription crate commit
+  * fix(audio): disable auto-profile set on init
+  * chore: settings subscriptions
+  * feat(audio): share cosmic-settings' new sound library
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+  * fix(app-tray): window id for active list overflow icon buttons
+  * fix(app-tray): overflow popup active list calculation
+  * i18n(notifications): 'Just now' instead of '0 minutes ago' (#1153)
+  * i18n: translation updates from weblate
+  * fix(time): handle invalid strftime formatters
+  * fix(battery): align brightness reporting with cosmic-osd
+
+-------------------------------------------------------------------
+Sat Nov 15 19:06:31 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta6+1:
+  * fix wired speed detection and layout
+  * chore: remove libcosmic patches
+  * applet overlap
+  * fix(status-area): better handle apps with no menus
+  * Update translations
+
+-------------------------------------------------------------------
+Mon Nov 10 15:07:59 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta5+3:
+  * feat(time): formattable datetime strings with strftime
+  * fix(battery): start and end threshold check
+  * fix(battery): restore defaults if unsetting charge limits
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
+Thu Oct 23 15:03:34 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta3+3:
+  * i18n: translation update from Hosted Weblate (#1109)
+  * fix (network): reversed order of WAPs
+  * perf: use `rustc-hash` for `HashMap` and `HashSet`
+  * fix(bluetooth): avoid device discovery when applet is not open
+
+-------------------------------------------------------------------
+Sun Oct 19 13:36:02 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta2+1:
+  * cargo fmt
+  * fix(app-list): remove double indicators
+  * feat(network): add VPN connection management
+  * fix(network): reversed ordering of networks
+  * perf: use unstable sorting when async
+  * perf: refactor to reduce memory allocations and cpu work
+  * perf(cargo): re-enable opt-level = 3
+  * chore: apply recommendations from clippy
+  * fix(a11y): wrong name in log
+  * perf: replace `rand` with `fastrand`
+  * feat(audio): MPRIS Raise functionality
+  * i18n(ar): remove broken keys in power applet
+  * i18n: fix power applet syntax errors
+  * i18n(ar): remove broken keys
+  * i18n(ar): another syntax error
+  * i18n(ar): syntax error
+  * i18n(sk): matches must have a default variant
+  * i18n(ar): fix another syntax error
+  * i18n(ar): another syntax error
+  * i18n(ar): fix more syntax errors
+  * i18n(ar): fix syntax error
+  * updated translations
+
+-------------------------------------------------------------------
 Tue Sep 30 11:42:56 UTC 2025 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~beta.1.1+3:
