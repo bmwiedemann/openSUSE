@@ -272,4 +272,17 @@
     <comment>- set minimum versions required by the software (forwarded request 1219828 from rrahl0)</comment>
     <requestid>1219829</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>05028952c203a1654c003c5024d58f3e</srcmd5>
+    <version>2.0.3</version>
+    <time>1766440341</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.3:
+  * Adding support for importing Mermaid mindmap files
+  * Adding import and export examples in command-line help output
+  * Fixed issue with placing root node on application open
+  * Fixed issue with Style widgets accidentally scrolling
+  * Fixed various issues with command-line import/export (forwarded request 1324201 from rrahl0)</comment>
+    <requestid>1324202</requestid>
+  </revision>
 </revisionlist>

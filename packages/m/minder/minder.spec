@@ -1,7 +1,7 @@
 #
 # spec file for package minder
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,16 @@
 
 
 %define         appid com.github.phase1geo.minder
-%define         __builder ninja
 Name:           minder
-Version:        1.17.0
+Version:        2.0.3
 Release:        0
 Summary:        Mind-mapping app
-License:        GPL-2.0-or-later
+License:        GPL-3.0-only
 URL:            https://github.com/phase1geo/Minder
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
+BuildRequires:  gettext-runtime
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
 BuildRequires:  ninja
@@ -36,13 +37,13 @@ BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(granite) >= 6.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
-BuildRequires:  pkgconfig(gtksourceview-4)
+BuildRequires:  pkgconfig(granite-7)
+BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(gtksourceview-5)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libarchive)
-BuildRequires:  pkgconfig(libhandy-1)
 BuildRequires:  pkgconfig(libmarkdown) >= 3.0
+BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libxml-2.0)
 
 %description

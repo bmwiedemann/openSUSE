@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Mon Dec 22 14:20:25 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 2.0.3:
+  * Adding support for importing Mermaid mindmap files
+  * Adding import and export examples in command-line help output
+  * Fixed issue with placing root node on application open
+  * Fixed issue with Style widgets accidentally scrolling
+  * Fixed various issues with command-line import/export
+
+-------------------------------------------------------------------
+Sun Dec 21 09:37:19 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 2.0.2:
+  * Changed Shift-F keyboard shortcut to toggle the node folding deeply rather
+    than always unfold deeply
+  * Changed node menu from 'Fold Children' to 'Toggle Folding' submenu where
+    one level or all levels can be selected
+  * Fixed application crash caused by adding parent node between a root node
+    and a main node
+  * Attempting to fix UI issue where dark mode is changed by the system,
+    causing some icons to visually disappear
+- Update to version 2.0.1:
+  * Removed unnecessary OARS values from appdata.xml
+  * Allowed window height to be much smaller when sidebar is displayed
+  * Improved performance of selections when dragging selection box over nodes
+  * Removed theme value to prefer dark mode, using system setting in window always
+  * Increased default padding for root nodes to make it more visible
+  * Improved default position of root node when a new mindmap is created
+  * Fixed issue with some style settings not taking immediate effect in the mindmap
+  * Fixed issue with sequence numbers being obfuscated when multiple nodes selected
+  * Fixed issue with autopan when dragging out selection box
+  * Fixed issue with alpha when selection box is dragged over a single node
+  * Fixed potential issue with releasing selection box causing node changes
+  * Fixed display of branch corner radius adjustment in styles sidebar
+  * Fixed issue where panning with middle button continued to pan after button released
+- Update to version 2.0.0:
+  * Added support for node text alignment controls in Style sidebar
+  * Added new brainstorming UI for quickly adding ideas without organizing them into the node tree
+  * Added support for configuring shortcuts within preferences
+  * Added support for exporting as a Mermaid mindmap
+  * Added support for exporting as a WebP image file
+  * Added support for exporting most formats to the clipboard
+  * Added shortcut ability to close current tab
+  * Added support for node tagging
+  * Added support for style templates
+  * Added support for copying/pasting style
+  * Added support for adjust size of link and connection arrows in style sidebar
+  * Added support for multi-node selection drag-drop operations
+  * Added read-only support
+  * Added support for automatic mindmap panning when dragging nodes
+  * Added preference option to enable compact sidebar width (useful for Gnome environments)
+  * Added preference option to control the default style settings used in new
+    mindmaps (Minder default, last used, or a saved style template)
+  * Added preference option to control whether a new node style matches its sibling or parent node
+
+-------------------------------------------------------------------
 Thu Oct 31 10:39:26 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.17.0:
