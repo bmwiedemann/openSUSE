@@ -1,12 +1,17 @@
 -------------------------------------------------------------------
+Thu Dec 18 16:12:20 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
+
+- Enable postfix role on SLE 15 (bsc#1255313)
+
+-------------------------------------------------------------------
 Mon Aug 18 12:37:42 UTC 2025 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
 
-- Ensure galaxy.yml version is aligned with spec Version to avoid build failures 
+- Ensure galaxy.yml version is aligned with spec Version to avoid build failures
 
 -------------------------------------------------------------------
 Mon Aug 11 11:01:09 UTC 2025 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
 
-- Add keylime_server role 
+- Add keylime_server role
 
 -------------------------------------------------------------------
 Wed Jul 23 14:41:47 UTC 2025 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
@@ -17,13 +22,13 @@ Wed Jul 23 14:41:47 UTC 2025 - Harshvardhan Sharma <harshvardhan.sharma@suse.com
 Thu Jul 10 14:19:35 UTC 2025 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
 
 - Add aide role
-- Add cockpit role 
+- Add cockpit role
 
 -------------------------------------------------------------------
 Fri Jun 27 10:37:02 UTC 2025 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
 
 - Add selinux role for managing SELinux configuration
-- Add podman role for managing containers using Podman 
+- Add podman role for managing containers using Podman
 
 -------------------------------------------------------------------
 Wed Jun 25 12:24:00 UTC 2025 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
@@ -34,14 +39,14 @@ Wed Jun 25 12:24:00 UTC 2025 - Harshvardhan Sharma <harshvardhan.sharma@suse.com
   - ha_cluster to 1.24.0:
     - add SLES 16 support with zypper pattern and crmsh updates
     - export pcsd and OS configuration
-    - fix qdevice restart on cert regen and disable proxy for local pcsd socket 
+    - fix qdevice restart on cert regen and disable proxy for local pcsd socket
 
 -------------------------------------------------------------------
 Mon Jun  9 09:58:40 UTC 2025 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
 
 - Fix: Ensure `certificate` role is included on SLE 16
   - Introduced `%sle16` macro for version-based logic
-  - Cleaned up and simplified `%prep` section accordingly 
+  - Cleaned up and simplified `%prep` section accordingly
 
 -------------------------------------------------------------------
 Fri Apr 11 09:08:14 UTC 2025 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>

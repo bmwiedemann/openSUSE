@@ -1,6 +1,7 @@
-# spec file for package ansible-linux_system_roles
 #
-# Copyright (c) 2025 SUSE LLC
+# spec file for package ansible-linux-system-roles
+#
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -11,7 +12,8 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/\
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 # Define individual versions for each role
@@ -57,27 +59,27 @@ Source5:        %{url}/ansible-systemd/archive/refs/tags/%{systemd_version}-suse
 Source6:        %{url}/ansible-ha_cluster/archive/refs/tags/%{ha_cluster_version}-suse.tar.gz#/ha_cluster-%{ha_cluster_version}.tar.gz
 Source7:        %{url}/ansible-mssql/archive/refs/tags/%{mssql_version}-suse.tar.gz#/mssql-%{mssql_version}.tar.gz
 Source8:        %{url}/ansible-suseconnect/archive/refs/tags/%{suseconnect_version}-suse.tar.gz#/suseconnect-%{suseconnect_version}.tar.gz
-Source9:        %{url}/ansible-auto_maintenance/archive/refs/tags/%{auto_maintenance_version}-suse.tar.gz#/auto_maintenance-%{auto_maintenance_version}.tar.gz 
+Source9:        %{url}/ansible-auto_maintenance/archive/refs/tags/%{auto_maintenance_version}-suse.tar.gz#/auto_maintenance-%{auto_maintenance_version}.tar.gz
+Source10:       %{url}/ansible-postfix/archive/refs/tags/%{postfix_version}-suse.tar.gz#/postfix-%{postfix_version}.tar.gz
 %if %{sle16}
-Source10:        %{url}/ansible-certificate/archive/refs/tags/%{certificate_version}-suse.tar.gz#/certificate-%{certificate_version}.tar.gz
-Source11:        %{url}/ansible-selinux/archive/refs/tags/%{selinux_version}-suse.tar.gz#/selinux-%{selinux_version}.tar.gz
-Source12:        %{url}/ansible-podman/archive/refs/tags/%{podman_version}-suse.tar.gz#/podman-%{podman_version}.tar.gz
-Source13:        %{url}/ansible-cockpit/archive/refs/tags/%{cockpit_version}-suse.tar.gz#/cockpit-%{cockpit_version}.tar.gz
-Source14:        %{url}/ansible-aide/archive/refs/tags/%{aide_version}-suse.tar.gz#/aide-%{aide_version}.tar.gz
-Source15:        %{url}/ansible-postfix/archive/refs/tags/%{postfix_version}-suse.tar.gz#/postfix-%{postfix_version}.tar.gz
-Source16:        %{url}/ansible-keylime_server/archive/refs/tags/%{keylime_server_version}-suse.tar.gz#/keylime_server-%{keylime_server_version}.tar.gz
+Source11:       %{url}/ansible-certificate/archive/refs/tags/%{certificate_version}-suse.tar.gz#/certificate-%{certificate_version}.tar.gz
+Source12:       %{url}/ansible-selinux/archive/refs/tags/%{selinux_version}-suse.tar.gz#/selinux-%{selinux_version}.tar.gz
+Source13:       %{url}/ansible-podman/archive/refs/tags/%{podman_version}-suse.tar.gz#/podman-%{podman_version}.tar.gz
+Source14:       %{url}/ansible-cockpit/archive/refs/tags/%{cockpit_version}-suse.tar.gz#/cockpit-%{cockpit_version}.tar.gz
+Source15:       %{url}/ansible-aide/archive/refs/tags/%{aide_version}-suse.tar.gz#/aide-%{aide_version}.tar.gz
+Source16:       %{url}/ansible-keylime_server/archive/refs/tags/%{keylime_server_version}-suse.tar.gz#/keylime_server-%{keylime_server_version}.tar.gz
 %endif
 Source999:      galaxy.yml
 
 BuildArch:      noarch
 
-BuildRequires:  python3-ruamel.yaml
 BuildRequires:  python3-Jinja2
+BuildRequires:  python3-ruamel.yaml
 
-Requires:       ansible-core >= 2.16
 Requires:       ansible >= 9
-BuildRequires:  ansible-core >= 2.16
+Requires:       ansible-core >= 2.16
 BuildRequires:  ansible >= 9
+BuildRequires:  ansible-core >= 2.16
 
 %description
 Linux System Roles is a collection of Ansible roles and modules that provide a
@@ -98,13 +100,13 @@ roles=(
   "mssql:%{mssql_version}"
   "suseconnect:%{suseconnect_version}"
   "auto_maintenance:%{auto_maintenance_version}"
+  "postfix:%{postfix_version}"
 %if %{sle16}
   "certificate:%{certificate_version}"
   "selinux:%{selinux_version}"
   "podman:%{podman_version}"
   "cockpit:%{cockpit_version}"
   "aide:%{aide_version}"
-  "postfix:%{postfix_version}"
   "keylime_server:%{keylime_server_version}"
 %endif
 )

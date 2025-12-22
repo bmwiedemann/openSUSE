@@ -79,4 +79,12 @@ This package contains ansible roles from linux-system-roles project: https://git
     <comment>Ensure galaxy.yml version is aligned with spec Version to avoid build failures</comment>
     <requestid>1300092</requestid>
   </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>516ceb834b22a3ac0533d5c246edf4a7</srcmd5>
+    <version>1.0.0</version>
+    <time>1766440322</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1324177</requestid>
+  </revision>
 </revisionlist>
