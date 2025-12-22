@@ -1,7 +1,7 @@
 #
 # spec file for package darktable
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -119,7 +119,7 @@
 %endif
 
 Name:           darktable
-Version:        5.2.1
+Version:        5.4.0
 Release:        0
 %global pkg_name darktable
 %global pkg_version %{version}
@@ -135,8 +135,6 @@ Source99:       README.openSUSE
 #
 Patch0:         darktable-rawspeed-build-type-override.patch
 #
-# PATCH-FIX-UPSTREAM - Fix build with clang-21
-Patch1:         darktable-fix-build-clang21.patch
 ExclusiveArch:  x86_64 aarch64 ppc64le
 # build time tools
 BuildRequires:  clang >= 13

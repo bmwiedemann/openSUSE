@@ -1629,4 +1629,15 @@ Togan
     <comment></comment>
     <requestid>1310483</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>c51a8a541b961a54ed2d431dd5304dbf</srcmd5>
+    <version>5.4.0</version>
+    <time>1766440183</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.4.0:
+  * https://www.darktable.org/2025/12/darktable-5.4.0-released/
+- Drop upstreamed darktable-fix-build-clang21.patch
+</comment>
+    <requestid>1324149</requestid>
+  </revision>
 </revisionlist>
