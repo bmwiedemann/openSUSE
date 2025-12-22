@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Dec 15 13:38:36 UTC 2025 - Lars Vogdt <lars@linux-schulserver.de>
+
+- update to 1.6.12
+  This is a security update to the stable version 1.6 of Roundcube Webmail.
+  It provides fixes to recently reported security vulnerabilities:
+  
+  + Fix Cross-Site-Scripting vulnerability via SVG's animate tag 
+    reported by Valentin T., CrowdStrike.
+  + Fix Information Disclosure vulnerability in the HTML style 
+    sanitizer reported by somerandomdev.
+
+  This version is considered stable and we recommend to update all 
+  productive installations of Roundcube 1.6.x with it. 
+
+  + Support IPv6 in database DSN (#9937)
+  + Don't force specific error_reporting setting
+  + Fix compatibility with PHP 8.5 regarding array_first()
+  + Remove X-XSS-Protection example from .htaccess file (#9875)
+  + Fix "Assign to group" action state after creation of a first group (#9889)
+  + Fix bug where contacts search would fail if contactlist_fields contained vcard fields (#9850)
+  + Fix bug where an mbox export file could include inconsistent message delimiters (#9879)
+  + Fix parsing of inline styles that aren't well-formatted (#9948)
+  + Fix Cross-Site-Scripting vulnerability via SVG's animate tag
+  + Fix Information Disclosure vulnerability in the HTML style sanitizer
+
+-------------------------------------------------------------------
 Sun Jun  1 17:11:22 UTC 2025 - Aeneas Jaißle <aj@ajaissle.de>
 
 - update to 1.6.11
