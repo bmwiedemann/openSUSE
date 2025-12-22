@@ -29,7 +29,7 @@
 
 %define majorver 7.0
 Name:           trytond_stock_lot
-Version:        %{majorver}.4
+Version:        %{majorver}.5
 Release:        0
 Summary:        The "stock_lot" module of the Tryton ERP system
 License:        GPL-3.0-or-later
