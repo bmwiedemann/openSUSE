@@ -17,7 +17,7 @@
 
 
 Name:           cosmic-idle
-Version:        1.0.0~beta1.1+0
+Version:        1.0.0+0
 Release:        0
 Summary:        Idle notify manager for COSMIC
 License:        GPL-3.0-only
