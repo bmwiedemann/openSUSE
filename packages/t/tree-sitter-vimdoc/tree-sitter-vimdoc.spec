@@ -18,7 +18,7 @@
 
 %define         _name vimdoc
 Name:           tree-sitter-vimdoc
-Version:        3.0.1
+Version:        4.1.0
 Release:        0
 Summary:        Tree-sitter parser for Vim help files
 License:        Apache-2.0

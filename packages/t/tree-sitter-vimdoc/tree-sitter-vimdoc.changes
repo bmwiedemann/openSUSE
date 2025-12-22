@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Dec 22 01:42:23 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 4.1.0:
+  * feat: numbered listitems
+- Update to version 4.0.2:
+  * fix: ignore ":" at end of URL
+- Update to version 4.0.1:
+  * fix: ignore punctuation at end of URL
+- Update to version 4.0.0:
+  * feat(parser)!: update to ABI 15
+  * fix(grammar): add '|' as not taglink
+
+-------------------------------------------------------------------
 Tue Apr 15 12:41:43 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 3.0.1:

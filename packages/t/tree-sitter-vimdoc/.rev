@@ -40,4 +40,12 @@
   * fix(tests): adapt expected to heading changes (forwarded request 1269630 from rrahl0)</comment>
     <requestid>1269631</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6117b3655954d45501ff78597bbb613a</srcmd5>
+    <version>4.1.0</version>
+    <time>1766440218</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1324051</requestid>
+  </revision>
 </revisionlist>
