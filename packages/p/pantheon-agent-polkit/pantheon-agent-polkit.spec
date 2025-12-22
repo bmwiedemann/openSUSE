@@ -1,7 +1,7 @@
 #
 # spec file for package pantheon-agent-polkit
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.desktop.agent-polkit
 Name:           pantheon-agent-polkit
-Version:        8.0.1
+Version:        8.0.2
 Release:        0
 Summary:        Polkit authorization designed for Pantheon
 License:        LGPL-2.1-or-later
@@ -30,10 +30,10 @@ BuildRequires:  pkgconfig
 BuildRequires:  vala
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(granite-7)
+BuildRequires:  pkgconfig(granite-7) >= 7.7.0
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libadwaita-1)
-BuildRequires:  pkgconfig(pantheon-wayland-1)
+BuildRequires:  pkgconfig(pantheon-wayland-1) >= 1.1.0
 BuildRequires:  pkgconfig(polkit-agent-1)
 BuildRequires:  pkgconfig(polkit-gobject-1)
 

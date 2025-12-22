@@ -18,4 +18,17 @@
 </comment>
     <requestid>1234464</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9db04e8c5f5c5405a7049ace42b6fe7e</srcmd5>
+    <version>8.0.2</version>
+    <time>1766440130</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.0.2:
+  * Updated translations
+  * PolkitDialog: use Gtk.PasswordEntry
+  * Make the polkit dialog modal on wayland
+  * Application: rely on Granite.StyleManager
+  * PolkitDialog: fix Granite CSS deprecations (forwarded request 1323855 from rrahl0)</comment>
+    <requestid>1323856</requestid>
+  </revision>
 </revisionlist>

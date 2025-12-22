@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Dec 21 01:21:31 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 8.0.2:
+  * Updated translations
+  * PolkitDialog: use Gtk.PasswordEntry
+  * Make the polkit dialog modal on wayland
+  * Application: rely on Granite.StyleManager
+  * PolkitDialog: fix Granite CSS deprecations
+
+-------------------------------------------------------------------
 Wed Nov 20 21:46:53 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 8.0.1:
