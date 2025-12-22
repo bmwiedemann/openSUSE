@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec 22 01:48:14 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.7.2:
+  * fix(legacy): rename grammar
+  * fix(c): update header path
+- Update to version 0.7.1:
+  * fix: add missing stdint.h include to schema.*.c
+  * feat: support YAML 1.1 schema
+  * build(c): allow specifying schema
+
+-------------------------------------------------------------------
 Thu Dec  5 00:58:11 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - initial packaging
