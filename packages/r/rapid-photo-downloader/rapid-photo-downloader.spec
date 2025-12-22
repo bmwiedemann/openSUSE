@@ -1,7 +1,7 @@
 #
 # spec file for package rapid-photo-downloader
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2012 Togan Muftuoglu toganm@opensuse.org
 # Copyright (c) 2009-2011 Pascal Blesser pascal.bleser@opensuse.org
 #
@@ -42,7 +42,6 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-wheel
-BuildRequires:  update-desktop-files
 Requires:       exiftool
 BuildRequires:  python3-PyPrind >= 2.9.4
 Requires:       python3-PyPrind >= 2.9.4

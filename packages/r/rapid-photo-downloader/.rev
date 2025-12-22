@@ -713,4 +713,14 @@
 - Use pyproject macros from python-rpm-macros to build and install.</comment>
     <requestid>1295491</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>6761c12f327322e15564af22b0846d84</srcmd5>
+    <version>0.9.36</version>
+    <time>1766440334</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1319753 from sbrabec
+
+- Remove unused BuildRequires: update-desktop-files.</comment>
+    <requestid>1324198</requestid>
+  </revision>
 </revisionlist>
