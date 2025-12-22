@@ -1,7 +1,7 @@
 #
 # spec file for package tree-sitter-test
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         _name test
 Name:           tree-sitter-test
-Version:        0.1.0
+Version:        0.3.0
 Release:        0
 Summary:        TS corpus test grammar for tree-sitter
 License:        MIT
@@ -56,4 +56,3 @@ ln -s %{_libdir}/lib%{name}.so %{buildroot}%{_libdir}/tree_sitter/%{_name}.so
 %treesitter_devel_package
 
 %changelog
-

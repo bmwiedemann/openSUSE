@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 22 01:36:29 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.3.0:
+  * docs: fix npm package link
+  * feat(grammar): support cst attribute
+
+-------------------------------------------------------------------
 Thu Dec  5 00:57:45 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - initial packaging
