@@ -1,7 +1,7 @@
 #
 # spec file for package cosmic-term
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appname com.system76.CosmicTerm
 Name:           cosmic-term
-Version:        1.0.0~alpha7+0
+Version:        1.0.0+0
 Release:        0
 Summary:        COSMIC terminal emulator
 License:        GPL-3.0-only

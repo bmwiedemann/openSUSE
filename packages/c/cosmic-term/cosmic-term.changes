@@ -1,4 +1,171 @@
 -------------------------------------------------------------------
+Thu Dec 11 19:40:27 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0+0:
+  * chore: update cosmic-text
+  * i18n: translation updates from weblate
+  * Russian translation for .desktop file
+  * i18n: translation updates from weblate
+  * chore: update winit
+
+-------------------------------------------------------------------
+Sat Dec 06 23:27:16 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta9+4:
+  * Add Everforest Dark color scheme
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+  * chore: update cosmic-files
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
+Sat Nov 15 20:38:30 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta6+2:
+  * terminal: sustain drag autoscroll
+  * terminal: smooth drag edge scrolling
+  * Update desktop file with sv translation of categories
+
+-------------------------------------------------------------------
+Mon Nov 10 16:21:33 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta5+0:
+  * Update cosmic-text
+  * fix: disable terminal box when context page is active
+  * Update translations
+
+-------------------------------------------------------------------
+Thu Oct 23 18:21:27 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta3+8:
+  * Update dependencies
+  * i18n: translation updates from weblate
+  * Show the Open Link menu item at the top of the menu if we have a link
+  * i18n: translation updates from weblate
+  * Avoid publishing on all mouse events
+  * Avoid updating the link highlight while the context menu is shown
+  * Update com.system76.CosmicTerm.metainfo.xml
+  * Update com.system76.CosmicTerm.desktop
+  * Add context menu for opening links
+
+-------------------------------------------------------------------
+Sun Oct 19 15:20:34 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta2+0:
+  * Implement a simple password manager
+  * Update regex based on ctrl modifier
+  * Only use mouse interaction pointer for links if CTRL is used
+  * fix: opacity
+  * chore: add license url
+  * chore: cleanup patch
+  * Updated translations
+
+-------------------------------------------------------------------
+Mon Sep 29 20:28:42 UTC 2025 - mkd <mkdwho@icloud.com>
+
+- Update to version 1.0.0~beta1.1+31:
+  * Added translation using Weblate (Norwegian Bokmål)
+  * Translated using Weblate (Estonian)
+  * Translated using Weblate (Afrikaans)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Chinese (Traditional Han script))
+  * Translated using Weblate (Chinese (Simplified Han script))
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Irish)
+  * Translated using Weblate (Spanish (Latin America))
+  * Added translation using Weblate (Estonian)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Ukrainian)
+  * Translated using Weblate (Russian)
+  * Translated using Weblate (Irish)
+  * Translated using Weblate (Spanish (Latin America))
+  * Translated using Weblate (Frisian)
+  * Translated using Weblate (Afrikaans)
+  * Translated using Weblate (Chinese (Simplified Han script))
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Spanish (Latin America))
+  * Hide opening hyperlinks behind the Ctrl modifier
+  * Translated using Weblate (Frisian)
+  * Translated using Weblate (Afrikaans)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Portuguese)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Arabic)
+  * Added translation using Weblate (Limburgish)
+  * Translated using Weblate (English (United Kingdom))
+  * Added translation using Weblate (Frisian)
+  * Translated using Weblate (Afrikaans)
+  * Added translation using Weblate (Afrikaans)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Hindi)
+  * Translations update from Hosted Weblate (#551)
+  * Translated using Weblate (Italian) (#550)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Bulgarian)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Arabic)
+  * chore: update to icu 2.0.0
+  * Fix translation file names
+  * i18n(pt-BR): update translations
+  * Update cosmic_term.ftl PL Translate
+  * i18n(es): update desktop & metainfo translations
+  * Update Hungarian translations
+  * i18n(ar): Update Arabic keywords
+  * i18n(ar): Update translations
+  * i18n(ar): Update translations
+  * chore: update dependencies
+  * Add Arabic .metainfo.xml
+  * Add Arabic .desktop
+  * chore: update dependencies
+  * chore: Rust 2024 edition
+  * Update redox-syscall
+  * Update dependencies
+  * i18n(sk): Update translations
+  * Reduce minimum underline thickness from 2px to 1px
+  * Update dependencies
+  * chore: update libcosmic and handle input paste
+  * fix: keep shell program opt when checking
+  * Update dependencies
+  * Add the Modus Themes
+  * Update libcosmic, fixes #525
+  * Update dependencies
+  * Update cosmic-files
+  * Update cosmic-files
+  * Add missing type cast to .take call
+  * Fix repeat/take arguments in mouse_reporter.rs
+  * chore: stop depending on `itertools`
+  * chore: use `LazyLock` instead of `lazy_static!`
+  * Update cosmic-files
+  * i18n(ar): Updated tranlations.
+  * Fix compilation with new cosmic-files dialog API
+  * Update dependencies
+  * Add F11 support
+  * Adjust shortcut text style
+  * Support ClI argument for Version and Help
+  * Update libcosmic and use system_theme_update
+  * Remove cosmic-text patch
+  * fix: pin cosmic-text to `b017d7c` to fix cut text
+  * Improve wheel mode
+  * chore: update libcosmic
+  * update deps
+  * feat: menubar popups
+  * i18n(pt-BR): Update translations
+  * i18n(nl) update Dutch translation
+  * i18n(bg): Add Bulgarian translation
+  * Update Hungarian translations
+  * feat(color-schemes): add Seashells color-scheme
+  * Use mesa instead of deprecated mesa.drivers
+  * Update flake.lock
+  * feat: bind copy/paste keycodes to copy/paste actions.
+  * i18n(es): Updated translation
+  * Revert "Add support for XF86Copy and XF86Paste keybindings"
+  * Add support for XF86Copy and XF86Paste keybindings
+  * i18n(zh-CN): update translation
+
+-------------------------------------------------------------------
 Thu Apr 24 18:25:13 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.0~alpha7+0:
