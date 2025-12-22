@@ -1,7 +1,7 @@
 #
 # spec file for package pantheon-wayland
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         sover 1
 Name:           pantheon-wayland
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Wayland integration library to the Pantheon Desktop
 License:        LGPL-3.0-or-later

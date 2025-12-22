@@ -7,4 +7,13 @@
     <comment></comment>
     <requestid>1234498</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>60c174d3b0cc920c90767989ed230764</srcmd5>
+    <version>1.1.0</version>
+    <time>1766440127</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.0:
+  * Add the make_modal method (forwarded request 1323852 from rrahl0)</comment>
+    <requestid>1323853</requestid>
+  </revision>
 </revisionlist>

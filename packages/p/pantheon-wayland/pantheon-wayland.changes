@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec 21 01:26:52 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.1.0:
+  * Add the make_modal method
+
+-------------------------------------------------------------------
 Thu Jan  2 00:02:17 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - add fix-version.patch to fix version which typelib requires
