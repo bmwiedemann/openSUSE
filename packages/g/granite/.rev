@@ -230,4 +230,35 @@
     <comment>- add fix-version.patch to fix version which typelib requires (forwarded request 1234493 from rrahl0)</comment>
     <requestid>1234496</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2d1f90039af72ccbe08851484c8f69a4</srcmd5>
+    <version>7.7.0</version>
+    <time>1766440129</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 7.7.0:
+  * View icons for columns, grids, lists, and reader mode. Plus horizontal and
+    vertical ellipsis icons
+  * Start and End show/hide sidebar icons
+  * Emoji category icons used by GTK's emoji picker
+  * Eye icons required by Gtk.PasswordEntry
+  * Box is an orientable widget that includes standardized spacing and linked styles
+  * ListItem is a standard list widget that includes styles and spacing
+  * ToolBox is a vertical layout widget for top and bottom toolbars
+  * new style class constants for labels: CssClass.NUMERIC and CssClass.MONOSPACE
+  * StyleManager handles automatically setting dark and light modes as well as
+    system accent colors using Portals
+  * BackButton is a standardized navigation button that activates
+    &quot;navigation.pop&quot; and includes a shortcut tooltip
+  * accel_to_string now uses the word &quot;Super&quot; instead of the &quot;⌘&quot; symbol
+  * HeaderLabel has a new property for H1-H4 sizes and H2 styles are now bolder
+  * CssClass.CARD is now rounded by default
+  * Updated translations
+  * Utils.set_color_primary. Modern apps have moved to more of a split paned
+    design and this style is no longer very fashionable
+  * Nearly all of the old `STYLE_CLASS` constants have been deprecated. Some of
+    them have been replaced by `CssClass` constants, others by widgets
+  * More demo pages with more widgets
+  * Color scheme switcher in the sidebar</comment>
+    <requestid>1323854</requestid>
+  </revision>
 </revisionlist>

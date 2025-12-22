@@ -1,7 +1,7 @@
 #
 # spec file for package granite
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define         soname 7_6_0
 %define         appid io.elementary.granite-%{sover}
 Name:           granite
-Version:        7.6.0
+Version:        7.7.0
 Release:        0
 Summary:        An extension of GTK+ libraries
 License:        LGPL-3.0-or-later
@@ -39,6 +39,7 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.50
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.50
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk4) >= 4.4
+BuildRequires:  pkgconfig(shumate-1.0)
 
 %description
 Granite is an extension of GTK+. Among other things, it provides the

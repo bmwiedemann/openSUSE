@@ -1,7 +1,7 @@
-diff -rub granite-7.6.0/lib/meson.build granite-7.6.0-patched/lib/meson.build
---- granite-7.6.0/lib/meson.build	2024-11-21 17:03:03.000000000 +0100
-+++ granite-7.6.0-patched/lib/meson.build	2025-01-02 00:05:15.749554259 +0100
-@@ -77,7 +77,7 @@
+diff -rubN granite-7.7.0/lib/meson.build granite-7.7.0-patched/lib/meson.build
+--- granite-7.7.0/lib/meson.build	2025-09-30 23:20:30.000000000 +0200
++++ granite-7.7.0-patched/lib/meson.build	2025-12-21 01:49:36.144957533 +0100
+@@ -82,7 +82,7 @@
      vala_vapi: 'granite-7.vapi',
      vala_gir: granite_gir,
  
@@ -10,12 +10,12 @@ diff -rub granite-7.6.0/lib/meson.build granite-7.6.0-patched/lib/meson.build
      install: true,
      install_dir: [true, include_dir, true, true],
  )
-diff -rub granite-7.6.0/meson.build granite-7.6.0-patched/meson.build
---- granite-7.6.0/meson.build	2024-11-21 17:03:03.000000000 +0100
-+++ granite-7.6.0-patched/meson.build	2025-01-02 00:04:58.119532927 +0100
+diff -rubN granite-7.7.0/meson.build granite-7.7.0-patched/meson.build
+--- granite-7.7.0/meson.build	2025-09-30 23:20:30.000000000 +0200
++++ granite-7.7.0-patched/meson.build	2025-12-21 01:49:58.839752380 +0100
 @@ -4,6 +4,7 @@
      meson_version: '>= 0.57.0',
-     version: '7.6.0'
+     version: '7.7.0'
  )
 +granite_major = '7'
  
