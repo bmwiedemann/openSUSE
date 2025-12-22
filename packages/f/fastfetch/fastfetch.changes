@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Dec 21 01:44:36 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- Update to version 2.56.1:
+  * Packaging: update debian stuff
+  * JsonSchema: refines comments [ci skip]
+  * Packages (Windows): fixes possible UB
+  * Memory (macOS): Refines Memory usage detection on macOS to match
+    Activity Monitor more closely
+  * Doc: update changelog
+  * Host (macOS): prefers `hw.product` than `hw.model`
+  * CPU (SunOS): adds `const` for consistancy
+  * IO (Windows): removes unneeded null terminator appending
+  * Chore (Windows): Standardize windows header casing. (#2096)
+    [ci skip]
+
+-------------------------------------------------------------------
 Mon Dec 08 16:26:08 UTC 2025 - RN <R_Nik_C@proton.me>
 
 - Update to version 2.56.0:
