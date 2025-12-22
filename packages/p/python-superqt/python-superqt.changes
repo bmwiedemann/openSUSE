@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Dec 21 16:45:44 UTC 2025 - Andreas Prittwitz <m4ng4n@gmx.de>
+
+- Update to 0.7.6
+  * fix: Fix size of Slider label to not ocupy to much space
+- Changes in 0.7.5
+  * feat: Use scientific notation for big values in labeled
+    slider 
+- Changes in 0.7.4
+  * docs: document QToggleSwitch
+  * Make qimage_to_array() work on big endian
+  * Fix napari test
+  * fix: Set SliderProxy range params to Any
+  * feat: Allow setting label position on labeled slider
+- Changes in 0.7.3
+  * Enh: Adds a filterable kwarg to ColormapComboBox enabling
+    filtering (like Catalog)
+  * feat: toggle switch
+- Changes in 0.7.2
+  * fix: less Slider signal renaming, make alternate signal types
+    public
+
+-------------------------------------------------------------------
 Mon Jun  2 08:49:17 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Drop pyside2 support (boo#1243916)

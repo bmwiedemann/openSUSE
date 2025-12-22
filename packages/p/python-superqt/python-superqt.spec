@@ -1,7 +1,7 @@
 #
 # spec file for package python-superqt
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-superqt
-Version:        0.7.1
+Version:        0.7.6
 Release:        0
 Summary:        Missing widgets and components for PyQt/PySide
 License:        BSD-3-Clause
