@@ -463,4 +463,12 @@
   * double protocol prefix in reusable workflow clone URLs (forwarded request 1323787 from rrahl0)</comment>
     <requestid>1323788</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>9989c44bb372ab04aa29d8540ae05851</srcmd5>
+    <version>12.3.0</version>
+    <time>1766440197</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1324018</requestid>
+  </revision>
 </revisionlist>

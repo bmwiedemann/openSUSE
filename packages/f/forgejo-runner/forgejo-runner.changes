@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Dec 21 22:42:12 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 12.3.0:
+  * feat(jobparser): expose Job to reusable workflow fetchers
+  * feat(jobparser): add tracking IDs for outer/inner jobs in reusable workflows
+  * feat(jobparser): ignore __metadata in workflow schema validation
+  * feat(jobparser): expose API for EvaluateWorkflowCallSecrets
+  * feat(runner): skip service containers with empty image after interpolation
+  * fix(jobparser): preserve workflow_parent_id on reparsing incomplete workflows
+  * fix: accept env references in service definitions
+
+-------------------------------------------------------------------
 Sat Dec 20 13:53:04 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 12.2.0:
