@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Dec 11 19:45:21 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0+0:
+  * chore: update cosmic-text
+  * Use libcosmic `DiscreteScrollState` helper
+  * screencopy: Use `info!` logging for `FailureReason::Stopped`
+  * Adjust speed of pointer scrolling
+  * Accumulate line scrolling
+  * Wrap workspace scrolling at start and end
+
+-------------------------------------------------------------------
+Sat Dec 06 23:33:24 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta9+2:
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+  * Russian translation for .desktop file
+
+-------------------------------------------------------------------
+Sat Nov 15 20:44:40 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta6+3:
+  * Add margins for auto-hide panels without exclusive zones
+  * Use subscriptions to monitor cosmic-panel configs
+  * Update dependencies
+
+-------------------------------------------------------------------
+Mon Nov 10 16:31:22 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta5+0:
+  * no changes since last release
+
+-------------------------------------------------------------------
+Thu Oct 23 18:31:13 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta3+0:
+  * no changes since last release
+
+-------------------------------------------------------------------
+Sun Oct 19 18:05:27 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta2+0:
+  * Update translations
+
+-------------------------------------------------------------------
 Mon Sep 29 21:34:36 UTC 2025 - mkd <mkdwho@icloud.com>
 
 - Update to version 1.0.0~beta1.1+3:
