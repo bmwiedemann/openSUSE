@@ -708,4 +708,12 @@
   * Patch boost.patch (forwarded request 1307152 from anag_factory)</comment>
     <requestid>1307153</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>27e02143f652ac09eb1a7596a8706f87</srcmd5>
+    <version>2025.0.1</version>
+    <time>1766440327</time>
+    <user>dimstar_suse</user>
+    <comment>version update to 2025.0.1</comment>
+    <requestid>1324185</requestid>
+  </revision>
 </revisionlist>

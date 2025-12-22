@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec 22 11:51:23 UTC 2025 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 2025.0.1
+  * Added hugin_toolbox: a GUI for enfuse and perspective correction.
+  * Use vector SVG files instead of pixel PNG files for toolbars and buttons.
+  * A C++17 compiler is now needed. Therefore the boost library is not needed anymore.
+  * wxWidgets 3.2 is now required. The code has be refactored to follow the modern
+    wxWidgets code style.
+- deleted patches
+  * boost.patch (not needed)
+
+-------------------------------------------------------------------
 Thu Sep 25 14:01:03 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Remove BuildRequires on libboost_system-devel, removed on boost 1.89
