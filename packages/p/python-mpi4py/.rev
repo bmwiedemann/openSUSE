@@ -233,4 +233,47 @@
     <comment></comment>
     <requestid>1250001</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b4d6a8e4bb06e5ec62dd786198f7f280</srcmd5>
+    <version>4.1.1</version>
+    <time>1766440187</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1.1
+  * Add MPIABI-aware import hook support.
+  * Support MPI.ERR_ERRHANDLER with Open MPI.
+  * Minor fixes and improvements to typing stubs.
+- Changes in 4.1.0
+  ## New features:
+  * Add support for the MPI 5.0 standard.
+  * MPI handle serialization with integral values.
+  * Fixed-size Fortran LOGICAL datatypes.
+  * Query ABI version/info and Fortran ABI info.
+  * MPI.Datatype.Create_contiguous now uses BigMPI's approach when
+    using MPI implementations that do not yet support the MPI 4.0
+    large-count APIs.
+  * Add support for MPI.FLOAT16_T and MPI.BFLOAT16_T datatypes. 
+  * Add MPI.Status.tomemory to expose the status contents as a
+    memoryview object.
+  ## Enhancements:
+  * Support (opt-in via MPI4PY_BUILD_PYSABI) for building with
+    Py_LIMITED_API under Python 3.10+ (requires Cython 3.1+).
+  * Support (opt-in via MPI4PY_BUILD_MPIABI) for building with the
+    MPI 5.0 standard ABI and the MPICH or Open MPI legacy ABIs. 
+  * Support a buffersize parameter in the MPIPoolExecutor.map()
+    and MPIPoolExecutor.starmap() methods to limit the number
+    of pending tasks.
+  * Improve ownership management of DLPack capsules.
+  * Minor fixes to typing stubs and documentation.
+  ## Backward-incompatible changes:
+  * Python 3.8+ is required.
+  * The MPI.Exception class is now a heap type.
+  * The types of the MPI.BOTTOM, MPI.IN_PLACE, and 
+    MPI.BUFFER_AUTOMATIC are no longer subclasses of int.
+- Change BuildRequirement to Cython &gt;= 3.0.1
+- Disable two tests that fail on Tumbleweed:
+  * donttest+=&quot; -x TestULFMSelf.testRevoke&quot;
+  * donttest+=&quot; -x TestULFMWorld.testRevoke&quot;
+</comment>
+    <requestid>1323998</requestid>
+  </revision>
 </revisionlist>

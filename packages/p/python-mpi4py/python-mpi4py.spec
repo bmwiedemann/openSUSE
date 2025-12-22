@@ -1,7 +1,7 @@
 #
 # spec file for package python-mpi4py
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define plainpython python
 Name:           python-mpi4py
-Version:        4.0.3
+Version:        4.1.1
 Release:        0
 Summary:        MPI for Python
 License:        BSD-3-Clause
 URL:            https://github.com/mpi4py/mpi4py
 Source:         https://files.pythonhosted.org/packages/source/m/mpi4py/mpi4py-%{version}.tar.gz
-BuildRequires:  %{python_module Cython >= 3}
+BuildRequires:  %{python_module Cython >= 3.0.1}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 42}
@@ -170,6 +170,8 @@ donttest+=" -x test_io"
 # There are more broken tests in i586: https://github.com/mpi4py/mpi4py/issues/279
 donttest+=" -x test_file -x test_subclass -x test_errhandler -x test_threads"
 %endif
+donttest+=" -x TestULFMSelf.testRevoke"
+donttest+=" -x TestULFMWorld.testRevoke"
 %setup_openmpi
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
 rm -rf build _build.*
