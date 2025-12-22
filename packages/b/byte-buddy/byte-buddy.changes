@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Dec 19 15:36:15 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v1.18.3
+  * Changes of v1.18.3
+    + Avoid using Class File API when Byte Buddy is loaded on the
+      boot loader where multi-release jars are not available.
+    + Add additional safety when processing class files with
+      illegally formed parameters.
+    + Update to latest ASM.
+  * Changes of v1.18.2
+    + Support modifiers for value classes in Valhalla builds.
+    + Improve use of build cache in Gradle.
+
+-------------------------------------------------------------------
 Mon Nov 24 09:27:27 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v1.18.1
