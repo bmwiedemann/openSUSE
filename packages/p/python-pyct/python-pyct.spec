@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyct
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,22 @@
 
 
 Name:           python-pyct
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        Python package for common tasks for users
 License:        BSD-3-Clause
 URL:            https://github.com/pyviz/pyct
 Source0:        https://files.pythonhosted.org/packages/source/p/pyct/pyct-%{version}.tar.gz
 Source100:      python-pyct-rpmlintrc
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module hatch-vcs >= 0.4.0}
+BuildRequires:  %{python_module hatchling >= 1.25.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-PyYAML
 Requires:       python-param >= 1.7.0
-Requires:       python-requests
+Recommends:     python-PyYAML
+Recommends:     python-requests
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}

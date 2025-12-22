@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Dec 20 18:05:30 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.6.0
+  * Distributions built with hatchling and no longer setuptools
+  * get_setup_version is deprecated and will be removed in a future
+    version; Param as a dependency will be removed at the same time
+  * Pixi for project management
+  * Replace distutils.core.copy_tree with shutils.copytree as
+    distutils has been removed in recent Python versions
+  * Drop support of older Python versions, minimum supported
+    version is 3.8
+  * Tests up to Python 3.13
+  * Removed some Python 2 compatibility code
+
+-------------------------------------------------------------------
 Fri May  9 05:13:02 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject and pytest macros.
