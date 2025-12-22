@@ -17,7 +17,7 @@
 
 
 Name:           cosmic-osd
-Version:        1.0.0~beta1.1+5
+Version:        1.0.0+0
 Release:        0
 Summary:        COSMIC OSD
 License:        GPL-3.0-only
@@ -26,6 +26,7 @@ Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
 BuildRequires:  clang-devel
+BuildRequires:  just
 BuildRequires:  make
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libinput)
@@ -42,10 +43,10 @@ BuildRequires:  pkgconfig(xkbcommon)
 %autosetup -a1
 
 %build
-%make_build
+just build-release
 
 %install
-%make_install DESTDIR=%{buildroot} prefix=%{_prefix}
+just rootdir=%{buildroot} install
 
 %check
 %{cargo_test}

@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Thu Dec 11 17:44:33 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0+0:
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
+Sat Dec 06 22:59:43 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta9+1:
+  * i18n: translation updates from weblate
+  * update libcosmic
+  * shrink display identifier OSD
+  * fix display identifiers OSD during display hotplug
+  * decrease display identifier OSD by 30%
+  * display identifier OSDs now automatically disappear after 1 seconds except if the timer gets reset
+  * apply rustfmt
+  * resolve Cargo.lock diff from git rebase to master
+  * adapt UI feedback for the display number indicator and let it appear as a small square at the top of each monitor with the accent color
+  * adapt breaking change from libcosmic after rebase
+  * implement display identifier used for display arrangement configuration
+  * apply rustfmt
+  * implement display identifier used for display arrangement configuration
+  * build(debian): add install file to ensure binary exists
+  * build(debian): wrong DESTDIR path
+  * build(debian): export DESTDIR
+  * build: fixes for justfile and debian/rules
+  * i18n: translation updates from weblate
+  * build: migrate from make to just
+  * i18n: translation updates from weblate
+  * Eliminate 10% jump on coarse displays like darter
+  * Fix for inconsistent jump in brightness
+  * Ensure consistent 5% brightness scaling through hotkeys
+  * osd: align brightness overlay with cosmic-settings-daemon clamp (min 1%)
+
+-------------------------------------------------------------------
+Sat Nov 15 20:06:24 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta6+0:
+  * chore: update dependencies
+  * chore: clippy
+
+-------------------------------------------------------------------
+Mon Nov 10 15:50:34 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta5+0:
+  * chore: re-enable opt-level = 3
+  * Update translations
+
+-------------------------------------------------------------------
+Thu Oct 23 17:16:33 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta3+0:
+  * no changes since last release
+
+-------------------------------------------------------------------
+Sun Oct 19 14:44:46 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta2+0:
+  * refactor: better handling of internal displays & avoid overlap when enabling
+  * feat: display toggle
+  * Updated translations
+
+-------------------------------------------------------------------
 Tue Sep 30 20:44:13 UTC 2025 - mkd <mkdwho@icloud.com>
 
 cosmic-osd.spec: add `BuildRequires: pkgconfig(libinput)`
