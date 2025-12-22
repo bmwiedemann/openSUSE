@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Dec 22 11:02:09 UTC 2025 - Petr Gajdos <pgajdos@suse.com>
+
+- Update to version 0.140
+  * All fonts are now distributed in OpenType format, PS Type 1 is obsoleted.
+  * General-use glyph coverage substantially expanded and Hebrew romanization
+    added to Simple CLM by Aharon Varady.
+  * Hebrew romanization characters are also supported in Frank Ruehl CLM,
+    Nachlieli CLM, and Miriam Mono CLM.
+    (https://culmus.sourceforge.io/notes.html#romanization)
+  * Drugulin CLM how comes in bold face only, bold italic was extracted and
+    renamed to Farissol (see https://culmus.sourceforge.io/fancy/index.html)
+  * Drugulin CLM now supports diacritics.
+  * All fonts with diacritics now support meteg, rafe, and ACCENT OLE.
+  * Added YOD TRIANGLE to most basic fonts.
+  * Fixed fontconfig warnings.
+
+-------------------------------------------------------------------
 Sat May  7 18:54:53 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.133

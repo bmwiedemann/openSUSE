@@ -1,7 +1,7 @@
 #
 # spec file for package culmus-fonts
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,10 @@
 #
 
 
-%define type1dir %{_fontsdir}/Type1
 %define upstream_name  culmus
 
 Name:           culmus-fonts
-Version:        0.133
+Version:        0.140
 Release:        0
 Summary:        A set of Hebrew fonts
 License:        GPL-2.0-or-later
@@ -29,8 +28,6 @@ URL:            https://culmus.sourceforge.io/
 Source0:        https://sourceforge.net/projects/culmus/files/culmus/%{version}/culmus-%{version}.tar.gz
 BuildRequires:  fontpackages-devel
 %reconfigure_fonts_prereq
-Provides:       locale(he)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -41,7 +38,7 @@ and Bitstream fonts. Also included Miriam, Drugulin, Aharoni, David,
 Yehuda, and Ellinia.
 
 %prep
-%setup -q -n %{upstream_name}-%{version}
+%autosetup -p1 -n %{upstream_name}-%{version}
 
 %build
 
@@ -49,18 +46,12 @@ Yehuda, and Ellinia.
 mkdir -p %{buildroot}%_ttfontsdir
 install -m 0644 *.ttf *.otf \
         %{buildroot}%_ttfontsdir
-mkdir -p %{buildroot}%type1dir
-install -c -m 644 *.afm *.pf? %{buildroot}%type1dir
-install -c -m 644 fonts.scale-type1 \
-        %{buildroot}%type1dir/fonts.scale.culmus
 
 %reconfigure_fonts_scriptlets
 
 %files
-%defattr(-, root,root)
 %doc CHANGES fonts.scale-ttf culmus.conf
 %license GNU-GPL LICENSE LICENSE-BITSTREAM
-%type1dir
 %_ttfontsdir
 
 %changelog
