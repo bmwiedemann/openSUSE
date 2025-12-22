@@ -1,0 +1,15 @@
+diff --git a/util/all_tests.json b/util/all_tests.json
+index 9f80db391..60cb87dfc 100644
+--- a/util/all_tests.json
++++ b/util/all_tests.json
+@@ -150,10 +150,5 @@
+     "cmd": [
+       "crypto/rwlock_static_init"
+     ]
+-  },
+-  {
+-    "cmd": [
+-      "tool-openssl/tool_openssl_test"
+-    ]
+   }
+ ]

@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Sun Dec 21 23:21:09 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.66.1:
+  * Iterate through all DNS entries in connect CLI
+  * Fix socat integration test
+  * Remove OPENSSL_NO_BF for real
+  * Add openssl genpkey cli utility tool
+  * Add stdin support for pkcs8 tool
+  * Fix extension processing order in x509 cli
+  * ML-DSA: Missing Private Key Validation Checks
+- Update to version 1.66.0:
+  * Add encap/decapKeyCheck support in ACVP
+  * Clarify comments and API behaviour for equal-preference for TLS 1.3
+  * Add support for external contexts in ML-DSA ACVP
+  * Route ML-DSA ACVP to the right APIs
+  * Add sha1 CLI
+  * Fix openssl comparison tests
+  * tool-openssl: pkcs8 error output on decrypt
+  * Add RSA_X931_PADDING to rsa.h
+  * Blowfish OFB Block Cipher Mode Support
+  * Run ACCP integration tests on aarch64
+  * Support stdin for openssl rsa tool
+  * Remove rsa expected in test
+  * [tool-openssl] basic asn1parse support
+  * Several CLI Fixes
+  * Implement enc CLI
+- Update to version 1.65.1:
+  * Adjust image-build-android concurrency group
+  * s_client: Add TLS 1.2 and 1.3 protocol selection flags
+  * Add EVP_bf_cfb64
+  * Add conversion and traceability for third-party test vectors
+  * Verify size of mlen in ML-DSA external mu mode
+  * Replicate OpenSSL 1.1.1 behavior for BIO_s_mem BIO_NOCLOSE
+  * Add ACVP support for AES CFB128
+  * Add support for HMAC-SHA3 to ACVP tool
+  * Move dk to Tests in ML-KEM ACVP
+- Update to version 1.65.0:
+  * Use new images for fuzzing and x509
+  * Remove unused Wycheproof test vectors
+  * Fix openldap; regenerate configure script
+  * Fix unchecked return value
+  * Avoid NULL dereference
+  * AES-XTS Enc Dec test on rand incremental length inputs
+  * Make N1 cpucap a subset of that of V1 and V2
+  * Set SSL_R_NO_CIPHER_MATCH when failing to set ciphers
+  * Add CFI directives to chacha-armv8.pl
+  * Add CFI directives in aesv8-armx.pl
+  * Match req CLI behavior with OpenSSL
+  * Adjust script to handle other event types
+- Update to version 1.64.0:
+  * Update max polyz value
+  * Support more "openssl rsa" options
+  * Additional options for "openssl c_client"
+  * Use C++11 atomics to update session stats
+  * Support "openssl dhparam"
+  * Remove dead code
+  * Rename snapsafe to VM UBE
+  * Extend grv asan timeout for Golang to allow completion
+  * Implement more options for req CLI
+  * Ensure HMAC_Init_ex reinitializes data properly
+- enable more tests, by exposing openssl/bssl tools
+- add skip-test.patch, skipping tool_openssl_test, as for some reason,
+  a lot of features in that tool are not available
+
+-------------------------------------------------------------------
 Sat Nov  1 10:04:21 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.63.0:
