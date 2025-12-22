@@ -1,7 +1,7 @@
 #
 # spec file for package owasp-modsecurity-crs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2023 Alessandro de Oliveira Faria (A.K.A CABELO) <cabelo@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           owasp-modsecurity-crs
-Version:        4.10.0
+Version:        4.21.0
 Release:        0
 Summary:        OWASP ModSecurity Common Rule Set (CRS)
 License:        Apache-2.0
@@ -61,7 +61,7 @@ mkdir -p %{buildroot}%{apache_sysconfdir}/mod_security2.d/rules
 # has to be read before rules
 cp -a crs-setup.conf.example %{buildroot}%{apache_sysconfdir}/mod_security2.d/modsecurity-crf-setup.conf
 # rules linked to mod_security2 conf
-for rule in `ls %{buildroot}%{_datadir}/%{name}/rules` ; do 
+for rule in `ls %{buildroot}%{_datadir}/%{name}/rules` ; do
     ln -s %{_datadir}/%{name}/rules/$rule %{buildroot}%{apache_sysconfdir}/mod_security2.d/rules/$rule
 done
 

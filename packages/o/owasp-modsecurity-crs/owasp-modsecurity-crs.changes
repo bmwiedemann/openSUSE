@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Dec 22 13:03:06 UTC 2025 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 4.41.0
+  * feat(931100): add IPv6 support / XML scan and SSH scheme. by @touchweb-vincent in #4321
+  * feat(920440): add new restricted file extensions by @touchweb-vincent in #4322
+  * fix(942160): adding unit test for double comment by @touchweb-vincent in #4315
+  * fix(920280, 920300, 920310, 920311, 920320, 920330): should be block by @touchweb-vincent in #4319
+  * fix(942151,942152): wrong functions names by @touchweb-vincent in #4333
+  * feat(942460): adding help for non-English folks by @touchweb-vincent in #4334
+  * fix(932180): reduce substring false positives by @EsadCetiner in #4338
+  * fix(942151,942152): wrong functions names by @touchweb-vincent in #4337
+  * fix(920180): wrong unit test - content-type evasion bypass by @touchweb-vincent in #4339
+  * fix(956110): move rule to pl-2 by @EsadCetiner in #4344
+  * docs: comment on disabling Expect header in .Net by @theseion in #4348
+  * fix: add missing capture action to affected rules by @airween in #4361
+- for changelog for older releases see:
+  https://github.com/coreruleset/coreruleset/blob/v4.21.0/CHANGES.md
+
+-------------------------------------------------------------------
 Thu Jan 23 14:23:17 UTC 2025 - pgajdos@suse.com
 
 - package cleanup, coordinated with apache2-mod_security2
