@@ -1,0 +1,18 @@
+Index: spyder-6.1.2/spyder/__init__.py
+===================================================================
+--- spyder-6.1.2.orig/spyder/__init__.py
++++ spyder-6.1.2/spyder/__init__.py
+@@ -73,12 +73,7 @@ def get_versions(reporev=True):
+             os.path.dirname(__current_directory__)
+         )
+ 
+-    if is_conda_based_app():
+-        installer = 'standalone'
+-    elif is_conda_env(pyexec=sys.executable):
+-        installer = 'conda'
+-    else:
+-        installer = 'pip'
++    installer = 'openSUSE RPM'
+ 
+     versions = {
+         'spyder': __version__,

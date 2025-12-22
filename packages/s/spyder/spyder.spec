@@ -21,7 +21,7 @@
 # You MUST checkout the app in your live system and play with it before submitting an update.
 %bcond_with     test
 Name:           spyder
-Version:        6.1.0
+Version:        6.1.2
 Release:        0
 Summary:        The Scientific Python Development Environment
 License:        MIT
@@ -29,8 +29,8 @@ Group:          Development/Languages/Python
 URL:            https://www.spyder-ide.org/
 Source:         https://github.com/spyder-ide/spyder/archive/v%{version}.tar.gz#/spyder-%{version}.tar.gz
 Source1:        spyder-rpmlintrc
-# PATCH-FIX-OPENSUSE spyder-opensuse-deps.patch gh#spyder-ide/spyder#25342
-Patch0:         spyder-opensuse-deps.patch
+# PATCH-FIX-OPENSUSE spyder-opensuse-installer.patch code@bnavigator.de -- make sure users don't report bugs as installed from an upstream package
+Patch0:         spyder-opensuse-installer.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base >= 3.7
@@ -43,7 +43,7 @@ Requires:       python3-PyQt6-WebEngine >= 6.5
 Requires:       python3-Pygments >= 2.0
 Requires:       python3-QtPy >= 2.4
 Requires:       python3-Rtree >= 0.9.7
-Requires:       python3-Sphinx >= 0.6.6
+Requires:       python3-Sphinx >= 7.2.0
 Requires:       python3-aiohttp >= 3.11.2
 Requires:       python3-atomicwrites >= 1.2.0
 Requires:       python3-bcrypt >= 4.3.0
@@ -52,7 +52,7 @@ Requires:       python3-cloudpickle >= 0.5.0
 Requires:       python3-cookiecutter >= 1.6.0
 Requires:       python3-diff-match-patch >= 20181111
 Requires:       python3-importlib-metadata >= 4.6.0
-Requires:       python3-intervaltree
+Requires:       python3-intervaltree >= 3.0.2
 Requires:       python3-ipython_pygments_lexers >= 1.0
 Requires:       python3-jellyfish >= 0.7
 Requires:       python3-jsonschema >= 3.2.0
@@ -60,7 +60,6 @@ Requires:       python3-keyring >= 17.0.0
 Requires:       python3-nbconvert >= 4.0
 Requires:       python3-numpydoc >= 0.6.0
 Requires:       python3-packaging >= 20.0
-Requires:       python3-parso >= 0.7.0
 Requires:       python3-pexpect >= 4.4.0
 Requires:       python3-pickleshare >= 0.4
 Requires:       python3-psutil >= 5.3
@@ -69,25 +68,26 @@ Requires:       python3-pylint-venv >= 3.0.2
 Requires:       python3-pyls-spyder >= 0.4.0
 Requires:       python3-pyuca >= 1.2
 Requires:       python3-pyxdg >= 0.26
-Requires:       python3-pyzmq >= 24
+Requires:       python3-pyzmq >= 24.0.0
 Requires:       python3-qstylizer >= 0.2.2
 Requires:       python3-textdistance >= 4.2.0
 Requires:       python3-three-merge >= 0.1.1
-Requires:       python3-watchdog
+Requires:       python3-watchdog >= 0.10.3
 Requires:       python3-yarl >= 1.9.4
 Requires:       (python3-QDarkStyle >= 3.2.0 with python3-QDarkStyle < 3.3.0)
 Requires:       (python3-QtAwesome >= 1.4 with python3-QtAwesome < 1.5)
 Requires:       (python3-asyncssh >= 2.14 with python3-asyncssh < 3)
-Requires:       (python3-ipython >= 8.13 with python3-ipython < 10)
+Requires:       (python3-ipython >= 8.15 with python3-ipython < 10)
 Requires:       (python3-jedi >= 0.17.2 with python3-jedi < 0.20)
-# Check Patch0 and https://github.com/spyder-ide/spyder/issues/25342
-Requires:       (python3-pylint >= 3.1 with python3-pylint < 4.1)
+Requires:       (python3-parso >= 0.7.0 with python3-parso < 0.9.0)
+Requires:       (python3-pylint >= 3.1 with python3-pylint < 5)
 Requires:       (python3-python-lsp-black >= 2.0.0 with python3-python-lsp-black < 3)
 Requires:       (python3-python-lsp-ruff >= 2.3.0 with python3-python-lsp-ruff < 3)
-Requires:       (python3-python-lsp-server-all >= 1.13.0 with python3-python-lsp-server-all < 1.14)
+Requires:       (python3-python-lsp-server-all >= 1.14.0 with python3-python-lsp-server-all < 1.15)
 Requires:       (python3-qtconsole >= 5.7.0 with python3-qtconsole < 5.8.0)
-Requires:       (python3-spyder-kernels >= 3.1 with python3-spyder-kernels < 3.2)
+Requires:       (python3-spyder-kernels >= 3.1.2 with python3-spyder-kernels < 3.2)
 Requires:       (python3-superqt >= 0.6.2 with python3-superqt < 1)
+Recommends:     fzf >= 0.42
 Recommends:     git-core
 Recommends:     python3-Cython
 Recommends:     python3-Pillow
@@ -143,12 +143,12 @@ BuildRequires:  python3-scipy
 BuildRequires:  python3-sympy
 %endif
 # runtime
-BuildRequires:  python3-Pygments >= 2.0
 BuildRequires:  python3-PyQt6 >= 6.5
 BuildRequires:  python3-PyQt6-WebEngine >= 6.5
+BuildRequires:  python3-Pygments >= 2.0
 BuildRequires:  python3-QtPy >= 2.4
 BuildRequires:  python3-Rtree >= 0.9.7
-BuildRequires:  python3-Sphinx >= 0.6.6
+BuildRequires:  python3-Sphinx >= 7.2.0
 BuildRequires:  python3-aiohttp >= 3.11.2
 BuildRequires:  python3-atomicwrites >= 1.2.0
 BuildRequires:  python3-bcrypt >= 4.3.0
@@ -157,7 +157,7 @@ BuildRequires:  python3-cloudpickle >= 0.5.0
 BuildRequires:  python3-cookiecutter >= 1.6.0
 BuildRequires:  python3-diff-match-patch >= 20181111
 BuildRequires:  python3-importlib-metadata >= 4.6.0
-BuildRequires:  python3-intervaltree
+BuildRequires:  python3-intervaltree >= 3.0.2
 BuildRequires:  python3-ipython_pygments_lexers >= 1.0
 BuildRequires:  python3-jellyfish >= 0.7
 BuildRequires:  python3-jsonschema >= 3.2.0
@@ -165,7 +165,6 @@ BuildRequires:  python3-keyring >= 17.0.0
 BuildRequires:  python3-nbconvert >= 4.0
 BuildRequires:  python3-numpydoc >= 0.6.0
 BuildRequires:  python3-packaging >= 20.0
-BuildRequires:  python3-parso >= 0.7.0
 BuildRequires:  python3-pexpect >= 4.4.0
 BuildRequires:  python3-pickleshare >= 0.4
 BuildRequires:  python3-psutil >= 5.3
@@ -174,23 +173,24 @@ BuildRequires:  python3-pylint-venv >= 3.0.2
 BuildRequires:  python3-pyls-spyder >= 0.4.0
 BuildRequires:  python3-pyuca >= 1.2
 BuildRequires:  python3-pyxdg >= 0.26
-BuildRequires:  python3-pyzmq >= 24
+BuildRequires:  python3-pyzmq >= 24.0.0
 BuildRequires:  python3-qstylizer >= 0.2.2
 BuildRequires:  python3-textdistance >= 4.2.0
 BuildRequires:  python3-three-merge >= 0.1.1
-BuildRequires:  python3-watchdog
+BuildRequires:  python3-watchdog >= 0.10.3
 BuildRequires:  python3-yarl >= 1.9.4
 BuildRequires:  (python3-QDarkStyle >= 3.2.0 with python3-QDarkStyle < 3.3.0)
 BuildRequires:  (python3-QtAwesome >= 1.4 with python3-QtAwesome < 1.5)
 BuildRequires:  (python3-asyncssh >= 2.14 with python3-asyncssh < 3)
-BuildRequires:  (python3-ipython >= 8.13 with python3-ipython < 10)
+BuildRequires:  (python3-ipython >= 8.15 with python3-ipython < 10)
 BuildRequires:  (python3-jedi >= 0.17.2 with python3-jedi < 0.20)
-BuildRequires:  (python3-pylint >= 3.1 with python3-pylint < 4.1)
+BuildRequires:  (python3-parso >= 0.7.0 with python3-parso < 0.9.0)
+BuildRequires:  (python3-pylint >= 3.1 with python3-pylint < 5)
 BuildRequires:  (python3-python-lsp-black >= 2.0.0 with python3-python-lsp-black < 3)
 BuildRequires:  (python3-python-lsp-ruff >= 2.3.0 with python3-python-lsp-ruff < 3)
-BuildRequires:  (python3-python-lsp-server-all >= 1.13.0 with python3-python-lsp-server-all < 1.14)
-BuildRequires:  (python3-qtconsole >= 5.7 with python3-qtconsole < 5.8)
-BuildRequires:  (python3-spyder-kernels >= 3.1 with python3-spyder-kernels < 3.2)
+BuildRequires:  (python3-python-lsp-server-all >= 1.14.0 with python3-python-lsp-server-all < 1.15)
+BuildRequires:  (python3-qtconsole >= 5.7.0 with python3-qtconsole < 5.8.0)
+BuildRequires:  (python3-spyder-kernels >= 3.1.2 with python3-spyder-kernels < 3.2)
 BuildRequires:  (python3-superqt >= 0.6.2 with python3-superqt < 1)
 # /SECTION
 

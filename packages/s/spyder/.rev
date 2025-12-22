@@ -945,4 +945,12 @@ rename the package from spyder3 to spyder.
     * Fix startup crash when Spyder is using the Brazilian Portuguese</comment>
     <requestid>1319162</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>bfaa0c7a6dfb4142d764fd20a83564ef</srcmd5>
+    <version>6.1.2</version>
+    <time>1766440113</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1323797</requestid>
+  </revision>
 </revisionlist>
