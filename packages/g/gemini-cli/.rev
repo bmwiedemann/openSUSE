@@ -44,4 +44,20 @@
   * fix(acp): prevent unnecessary credential cache clearing on</comment>
     <requestid>1323366</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0e0b089ab820bcfe45309adf061e5124</srcmd5>
+    <version>0.21.3</version>
+    <time>1766440319</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.21.3:
+  * fix(patch): cherry-pick 9e6914d to release/v0.21.2-pr-15288
+    to patch version v0.21.2 and create version 0.21.3
+- update to 0.21.2:
+  * fix(patch): cherry-pick a6d1245 to release/v0.21.1-pr-15214
+    to patch version v0.21.1 and create version 0.21.2
+- update to 0.21.1:
+  * **Full Changelog**: https://github.com/google-gemini/gemini-
+    cli/compare/v0.21.0...v0.21.1</comment>
+    <requestid>1324169</requestid>
+  </revision>
 </revisionlist>
