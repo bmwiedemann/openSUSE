@@ -17,7 +17,7 @@
 
 
 Name:           cosmic-session
-Version:        1.0.0~beta1.1+0
+Version:        1.0.0+0
 Release:        0
 Summary:        Session manager for the COSMIC desktop environment
 License:        GPL-3.0-only
@@ -25,7 +25,6 @@ URL:            https://github.com/pop-os/cosmic-session
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Source2:        %{name}.dconf
-Patch0:         leap-fix-justfile.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  dconf
 BuildRequires:  just
@@ -35,10 +34,7 @@ Requires:       switcheroo-control
 %{summary}.
 
 %prep
-%autosetup -N -a1
-%if 0%{?suse_version} < 1600
-%patch -P0 -p1
-%endif
+%autosetup -a1
 
 %build
 just build
