@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 22 01:31:54 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.4.0:
+  * refactor: use case-insensitive regexp
+  * fix: regression in plain ProxyJump
+  * fix: support 'always' in 'CanonicalizeHostname'
+
+-------------------------------------------------------------------
 Tue Dec 10 22:40:16 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - remove accidental link in Source

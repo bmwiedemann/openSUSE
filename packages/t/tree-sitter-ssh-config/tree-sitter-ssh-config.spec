@@ -1,7 +1,7 @@
 #
 # spec file for package tree-sitter-ssh-config
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define         _name ssh-config
 Name:           tree-sitter-ssh-config
-Version:        0+20241103.dd32616
+Version:        0.4.0
 Release:        0
 Summary:        OpenSSH config grammar for tree-sitter
 License:        MIT
 URL:            https://github.com/tree-sitter-grammars/tree-sitter-ssh-config
-Source0:        %{name}-%{version}.tar.gz
+Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  tree-sitter
 %treesitter_grammars %{_name}
 
@@ -56,4 +56,3 @@ ln -s %{_libdir}/lib%{name}.so %{buildroot}%{_libdir}/tree_sitter/%{_name}.so
 %treesitter_devel_package
 
 %changelog
-
