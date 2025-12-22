@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Dec 20 20:56:13 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.11.4
+  * fix KeyError when audio playlists are missing playNavigationEndpoint
+  * get_explore: handle episodes in trending
+  * get_charts: fix crash if artists are missing rank data (when unauthed)
+
+-------------------------------------------------------------------
+Thu Dec  4 18:09:02 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.11.3:
+  * get_playlist/get_home: handle MUSIC_PAGE_TYPE_AUDIOBOOK
+
+-------------------------------------------------------------------
 Sun Aug 31 08:29:24 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.11.1
