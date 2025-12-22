@@ -17,14 +17,14 @@
 
 
 Name:           termscp
-Version:        0.19.0
+Version:        0.19.1
 Release:        0
 Summary:        Feature rich terminal UI file transfer and explorer
 License:        MIT
 URL:            https://github.com/veeso/termscp
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-BuildRequires:  cargo >= 1.84
+BuildRequires:  cargo >= 1.89
 BuildRequires:  cargo-packaging
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(dbus-1)
