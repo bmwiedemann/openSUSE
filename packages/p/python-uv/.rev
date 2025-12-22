@@ -1844,4 +1844,32 @@
   * Update UV_VERSION in docs for GitLab CI/CD</comment>
     <requestid>1322090</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>2585b85fddba9788ee0b11f28e83bf86</srcmd5>
+    <version>0.9.18</version>
+    <time>1766440165</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.18 
+ * Enhancements
+  * Add value hints to command line arguments to improve shell completion accuracy 
+  * Improve error handling in uv publish 
+  * Improve rendering of multiline error messages 
+  * Support redirects in uv publish 
+ * Configuration
+  * Accept --torch-backend in [tool.uv] 
+ * Performance
+  * Speed up uv cache size 
+  * Initialize S3 signer once 
+ * Bug fixes
+  * Avoid panics due to reads on failed requests 
+  * Enforce latest-version in @latest requests 
+  * Explicitly set EntryType for file entries in tar 
+  * Ignore pyproject.toml index username in lockfile comparison 
+  * Relax error when using uv add with UV_GIT_LFS set 
+  * Change schema for exclude-newer into optional string 
+ * Documentation
+  * Fix version reference in resolver example 
+  * Better documentation for exclude-newer*</comment>
+    <requestid>1323925</requestid>
+  </revision>
 </revisionlist>

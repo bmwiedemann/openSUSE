@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Dec 21 12:43:52 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.9.18 
+ * Enhancements
+  * Add value hints to command line arguments to improve shell completion accuracy 
+  * Improve error handling in uv publish 
+  * Improve rendering of multiline error messages 
+  * Support redirects in uv publish 
+ * Configuration
+  * Accept --torch-backend in [tool.uv] 
+ * Performance
+  * Speed up uv cache size 
+  * Initialize S3 signer once 
+ * Bug fixes
+  * Avoid panics due to reads on failed requests 
+  * Enforce latest-version in @latest requests 
+  * Explicitly set EntryType for file entries in tar 
+  * Ignore pyproject.toml index username in lockfile comparison 
+  * Relax error when using uv add with UV_GIT_LFS set 
+  * Change schema for exclude-newer into optional string 
+ * Documentation
+  * Fix version reference in resolver example 
+  * Better documentation for exclude-newer* 
+
+-------------------------------------------------------------------
 Wed Dec 10 21:09:53 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.9.17
