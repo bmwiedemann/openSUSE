@@ -5,7 +5,7 @@
     <param name="scm">git</param>
     <param name="revision">master</param>
     <param name="versionrewrite-pattern">epoch-(.*)\+0</param>
-    <param name="versionformat">1.0.0~alpha7+@TAG_OFFSET@</param>
+    <param name="versionformat">1.0.0+@TAG_OFFSET@</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="package-meta">yes</param>
     <param name="filename">cosmic-edit</param>

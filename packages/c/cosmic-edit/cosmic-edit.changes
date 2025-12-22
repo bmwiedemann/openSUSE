@@ -1,4 +1,181 @@
 -------------------------------------------------------------------
+Thu Dec 11 16:52:10 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0+0:
+  * chore: update cosmic-text
+  * i18n: translation updates from weblate
+  * chore: update winit
+
+-------------------------------------------------------------------
+Sat Dec 06 22:19:45 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta9+2:
+  * i18n: translation updates from weblate
+  * docs: Add QA testing checklist
+  * i18n: translation updates from weblate
+  * chore: update cosmic-files
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
+Sat Nov 15 19:25:13 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta6+2:
+  * Fix horizontal scrolling with wheel or touchpad and improve scrollbar behavior
+  * Reload folder tree and git status using recursive watcher
+  * Change text_box redraw log level to trace
+  * Show open project placeholder only if no projects open
+  * Use ignore crate to build tree view
+  * i18n: translation updates from weblate
+  * Make context drawer inline
+  * Remove extra line in project search
+  * sentence case and dialog copy changes
+  * i18n(sv): update appstream metainfo
+
+-------------------------------------------------------------------
+Mon Nov 10 15:24:31 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta5+3:
+  * Clip text box
+  * Draw most items with GPU, except for line numbers
+  * Add working desktop file validation as CI action
+  * fix: focus find on window focus if text box did not have focus
+  * Update translations
+
+-------------------------------------------------------------------
+Thu Oct 23 16:49:30 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta3+3:
+  * Update dependencies
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
+Sun Oct 19 14:05:49 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta2+4:
+  * Filter out changes from saves in EditorTab::reload
+  * i18n: translation updates from weblate
+  * Allow opening of non-existant files
+  * Preserve newlines and get closest cursor on reload
+  * Fix character counting in document statistics to use graphemes
+  * Refactor: Extract monospace_attrs() helper to eliminate code duplication
+  * update translations
+
+-------------------------------------------------------------------
+Mon Sep 29 22:11:19 UTC 2025 - mkd <mkdwho@icloud.com>
+
+- Add `BuildRequires: pkgconfig(glib-2.0)` for glib-sys
+
+-------------------------------------------------------------------
+Mon Sep 29 20:48:10 UTC 2025 - mkd <mkdwho@icloud.com>
+
+- Update to version 1.0.0~beta1.1+29:
+  * Added translation using Weblate (Norwegian Bokmål)
+  * Translated using Weblate (Estonian)
+  * Translated using Weblate (Afrikaans)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Ukrainian)
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Irish)
+  * Translated using Weblate (Spanish (Latin America))
+  * Added translation using Weblate (Estonian)
+  * Translated using Weblate (Ukrainian)
+  * Translated using Weblate (Russian)
+  * Translated using Weblate (Irish)
+  * Translated using Weblate (Spanish (Latin America))
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Frisian)
+  * Translated using Weblate (Afrikaans)
+  * Translated using Weblate (Chinese (Simplified Han script))
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Spanish (Latin America))
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Afrikaans)
+  * Translated using Weblate (Portuguese)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Frisian)
+  * Translated using Weblate (Afrikaans)
+  * Translated using Weblate (Portuguese)
+  * Translated using Weblate (Dutch)
+  * Added translation using Weblate (Limburgish)
+  * Added translation using Weblate (Frisian)
+  * Translated using Weblate (Afrikaans)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Italian)
+  * Added translation using Weblate (Afrikaans)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Czech)
+  * Update cosmic_edit.ftl
+  * Translated using Weblate (Chinese (Simplified Han script))
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Czech)
+  * Update cosmic_edit.ftl ITA (#403)
+  * Merge pull request #402 from weblate/weblate-pop-os-cosmic-edit
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Hungarian)
+  * Translated using Weblate (Bulgarian)
+  * Update Arabic translation
+  * Update Arabic translation
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Polish)
+  * Update com.system76.CosmicEdit.metainfo.xml
+  * Update com.system76.CosmicEdit.desktop
+  * Remove duplicate translation entries
+  * Use modiifed_key instead of key, fixes #286
+  * chore: update to icu 2.0
+  * Update cosmic_edit.ftl PL translate About
+  * i18n(es): updated translations
+  * Update Arabic translation
+  * i18n(ar): Update Arabic translations
+  * chore: make dbus-config optional
+  * chore: update dependencies
+  * chore: update dependencies
+  * chore: Rust 2024 edition
+  * i18n (ar): Updated Arabic tranlation
+  * Update redox_syscall and winit
+  * Adjust scroll speeds
+  * Update to latest cosmic-text
+  * i18n(sk): Update translations
+  * Update com.system76.CosmicEdit.metainfo.xml
+  * Add Arabic translation .desktop
+  * fix(322): fix undo/redo after reverting all changes
+  * fix(libcosmic): enable dbus-config only on Linux targets
+  * fix: enable dbus-config on libcosmic to fix theme not updating
+  * improv: use new and improved FileNav style
+  * Update dependencies
+  * i18n: add Persian translation
+  * chore: update libcosmic
+  * i18n: added bulgarian translation
+  * Update dependencies
+  * Update cosmic-files
+  * Update cosmic-files
+  * i18n - update and fix russian translations
+  * chore: update libcosmic
+  * Update cosmic-files
+  * i18n(be): update Belarusian translation
+  * i18n(ar): Transliterate "COSMIC" to Arabic.
+  * Fix compilation with new cosmic-files dialog API
+  * Update dependencies
+  * Adjust shortcut text style
+  * fix(cosmic-text): unpin due to upstream revert
+  * fix(cosmic-text): pin cosmic-text to b017d7c (via cosmic-term issue #508)
+  * chore: update libcosmic
+  * feat: menubar popups
+  * i18n(pt-BR): update translation
+  * i18n(pt-BR): update translation
+  * feat(text_box): add CTRL+<backspace> and CTRL+<delete> keybinds (delete left/right word) (#353)
+  * bugfix(text_box): ignoring tab key presses when alt is held (#348)
+  * i18n(es): Fix reference to the app name (#352)
+  * i18n(zh-CN): update translation (#349)
+  * bugfix(replace): fix issue with regexes targeting empty lines replacing with nothing (#347)
+  * Enable gvfs feature of cosmic-files, fixes #346
+
+-------------------------------------------------------------------
 Thu Apr 24 17:27:59 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.0~alpha7+0:
@@ -82,7 +259,7 @@ Fri Nov  1 01:08:56 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 - update to 1.0.0~alpha3:
   * Fix clicking directories in nav bar in condensed mode
   * fix(l18n): Ensure COSMIC is properly cased
-  * update dependencies 
+  * update dependencies
   * update translations
 
 -------------------------------------------------------------------
