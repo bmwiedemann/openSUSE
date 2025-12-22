@@ -2,7 +2,7 @@
 # spec file for package urh
 #
 # Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2017-2024, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2017-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 
 Name:           urh
-Version:        2.9.8
+Version:        2.10.0
 Release:        0
 Summary:        Tool for investigating unknown wireless protocols
 License:        GPL-3.0-only
 Group:          Productivity/Hamradio/Other
 URL:            https://github.com/jopohl/urh
 Source:         https://github.com/jopohl/urh/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         numpy-version.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -34,11 +33,11 @@ BuildRequires:  limesuite-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-PyAudio
-BuildRequires:  python3-devel >= 3.4
+BuildRequires:  python3-PyQt6
+BuildRequires:  python3-devel >= 3.8
 BuildRequires:  python3-numpy
 BuildRequires:  python3-numpy-devel
 BuildRequires:  python3-pip
-BuildRequires:  python3-qt5
 BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libairspy)
@@ -47,10 +46,10 @@ BuildRequires:  pkgconfig(libhackrf)
 BuildRequires:  pkgconfig(librtlsdr)
 BuildRequires:  pkgconfig(uhd)
 Requires:       python3-PyAudio
+Requires:       python3-PyQt6
 Requires:       python3-numpy
 Requires:       python3-psutil
 Requires:       python3-pyzmq
-Requires:       python3-qt5
 Recommends:     inspectrum
 Recommends:     rfcat
 %if 0%{?suse_version} <= 1500
@@ -67,6 +66,9 @@ protocols.
 
 %prep
 %autosetup -p1
+sed -i -e '/^#!\//, 1d' \
+  src/urh/cli/urh_cli.py \
+  src/urh/main.py
 
 %build
 %python3_build \

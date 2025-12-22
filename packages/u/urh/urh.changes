@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Dec 17 19:20:45 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.10.0
+  * Fixed gauss_fir to work with numpy-2.
+  * fix #1153 (index error).
+  * Fix receiving data with rtl_tcp.
+  * Fix setting of bias tee with rtl_tcp.
+  * fix(numpy): replace deprecated tostring with tobytes.
+  * Fix deprecation warning xml.etree.ElementTree.Element.
+  * Drop python 3.8; Require python 3.9.
+  * Replace deprecated ast.* constants.
+  * Feat!: use numpy2.
+  * Fix compilation with Cython3.1.
+  * Fix buffer overflow in USRP recv_stream function.
+  * fix: handle EOFError when control connection is closed.
+  * Migrate to PyQt6.
+  * Fix error when saving compressed files.
+- Drop patch:
+  * numpy-version.patch
+
+-------------------------------------------------------------------
 Sun Nov  2 13:32:13 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Add patch:
