@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Dec 11 19:50:28 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0+0:
+  * i18n: translation updates from weblate
+  * chore: update cosmic-text
+
+-------------------------------------------------------------------
+Sat Dec 06 23:37:14 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta9+1:
+  * i18n: translation updates from weblate
+  * chore: update cosmic-files
+  * i18n: translation updates from weblate
+  * chore: update-cosmic-files
+  * fix: handling of popups within dialogs
+
+-------------------------------------------------------------------
+Sat Nov 15 20:52:50 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta6+0:
+  * no changes since last release
+
+-------------------------------------------------------------------
+Mon Nov 10 16:32:20 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta5+0:
+  * fix: update libcosmic
+  * Update translate
+
+-------------------------------------------------------------------
+Thu Oct 23 18:35:58 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta3+0:
+  * no changes since last release
+
+-------------------------------------------------------------------
+Sun Oct 19 18:09:36 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta2+2:
+  * Use DBus socket activation
+  * Ignore `PORTAL_WAYLAND_SOCKET` env var; use normal Wayland socket
+  * perf(cargo): reduce binary size by another 5MB with panic="abort"
+  * Updated translations
+
+-------------------------------------------------------------------
 Tue Sep 30 21:48:27 UTC 2025 - mkd <mkdwho@icloud.com>
 
 leap-fix-libexec.patch: fix patch to work with the latest changes

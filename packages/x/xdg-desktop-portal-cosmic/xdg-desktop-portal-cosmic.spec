@@ -17,7 +17,7 @@
 
 
 Name:           xdg-desktop-portal-cosmic
-Version:        1.0.0~beta1.1+1
+Version:        1.0.0+0
 Release:        0
 Summary:        COSMIC xdg portal
 License:        GPL-3.0-only
@@ -61,10 +61,11 @@ This package contains the xdg portal implementation for COSMIC DE.
 
 %files
 %license LICENSE
-%{_libexecdir}/%{name}
-%{_datadir}/icons/hicolor/scalable/actions/{screenshot-screen-symbolic,screenshot-selection-symbolic,screenshot-window-symbolic}.svg
 %{_datadir}/dbus-1/services/org.freedesktop.impl.portal.desktop.cosmic.service
+%{_datadir}/icons/hicolor/scalable/actions/{screenshot-screen-symbolic,screenshot-selection-symbolic,screenshot-window-symbolic}.svg
 %{_datadir}/xdg-desktop-portal/cosmic-portals.conf
 %{_datadir}/xdg-desktop-portal/portals/cosmic.portal
+%{_libexecdir}/%{name}
+%{_prefix}/lib/systemd/user/org.freedesktop.impl.portal.desktop.cosmic.service
 
 %changelog
