@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Dec 19 21:28:19 UTC 2025 - Holden Fried <holden@opensuse.org>
+
+- Update to release 1.33.2
+  * Fix multiple bugs involving deleting interior snapshot nodes
+  * Fix an assertion pop caused by leftover rebalance scan
+    cookies, from pre-1.33.0
+  * Fix mmap-involved page cache inconsistency/corruption, users
+    generally noticed this as files that seemed to be corrupted by
+    the cp afterwards
+  * Fix a topology inconsistency caused by a transaction commit
+    merging a node we were updating a key for in the same
+    transaction; we now have stricter topology checks
+  * Online fsck now understands ``-o recovery_passes``
+  * Copygc (and elsewhere) now correctly uses the 'fragmented'
+    counter under `dev_data_type` accounting; intricacies of
+    compressed data accounting mean that ``buckets * bucket_size -
+    sectors`` does not work for this, and may underflow.
+  * New recovery pass: ``kill_i_generation_keys``. Modern
+    filesystems do not use ``KEY_TYPE_i_generation`` for
+    implementing NFS inode generation numbers, and old filesystems
+    may have significant amounts of wasted space in the inodes
+    btree from these. Must be run manually, and can be run online.
+  * Subvolumes and snapshot trees are now viewable in debugfs,
+    along with the per-snapshot accounting. These should be
+    considered prototype interfaces, to give users something to
+    look at and comment on before the real interfaces are
+    designed.
+  * Snapshot accounting is no longer kept in-memory; this fixes
+    slow ``accouting_read`` on filesystems with huge numbers of
+    snapshots.
+
+-------------------------------------------------------------------
 Mon Dec 15 16:57:51 UTC 2025 - Holden Fried <holden@opensuse.org>
 
 - Update to release 1.33.1
