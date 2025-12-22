@@ -303,4 +303,12 @@
     <comment>- Update to release 3.18.0</comment>
     <requestid>1323629</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>243fa9c58a0498a6031ed3a094110d74</srcmd5>
+    <version>3.18.1</version>
+    <time>1766440098</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.18.1</comment>
+    <requestid>1323849</requestid>
+  </revision>
 </revisionlist>

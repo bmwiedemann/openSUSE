@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec 20 23:42:07 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.18.1
+  * Fix ABI break introduced by 3.18.0
+
+-------------------------------------------------------------------
 Fri Dec 19 00:31:24 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.18.0
