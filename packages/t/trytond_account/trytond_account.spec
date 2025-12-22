@@ -28,7 +28,7 @@
 
 %define majorver 7.0
 Name:           trytond_account
-Version:        %{majorver}.22
+Version:        %{majorver}.23
 Release:        0
 Summary:        The "account" module for the Tryton ERP system
 License:        GPL-3.0-or-later
