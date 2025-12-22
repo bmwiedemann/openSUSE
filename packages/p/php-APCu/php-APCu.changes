@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Dec 16 21:09:38 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to version 5.1.28
+  * Defragmentation now reclaims unused space from moved entries,
+    resulting in better compaction.
+  * Shared memory for new entries is allocated faster in scenarios with
+    many free memory blocks. This should improve APCu's insertion
+    performance when entries are frequently deleted or replaced, or when
+    APCu is used with larger amounts of memory.
+  * Trying to insert entries larger than the shared memory no longer
+    results in cache wipes.
+  * Fix build against PHP 8.6.
+  * Fix apc.php compatibility with older apcu versions.
+
+-------------------------------------------------------------------
 Wed Sep 17 19:54:58 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to version 5.1.27
