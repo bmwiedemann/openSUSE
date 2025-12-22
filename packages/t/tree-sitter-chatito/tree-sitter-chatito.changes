@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec 22 00:35:39 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.5.0:
+  * Fix cargo metadata
+  * Improve documentation a bit
+  * fix: allow comments in bodies
+  * feat: support chatl files
+  * feat!: replace eq symbol with field
+
+-------------------------------------------------------------------
 Thu Dec  5 00:54:57 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - initial packaging

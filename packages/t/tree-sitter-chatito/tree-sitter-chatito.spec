@@ -1,7 +1,7 @@
 #
 # spec file for package tree-sitter-chatito
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         _name chatito
 Name:           tree-sitter-chatito
-Version:        0.1.2
+Version:        0.5.0
 Release:        0
 Summary:        Chatito grammar for tree-sitter
 License:        MIT
@@ -56,4 +56,3 @@ ln -s %{_libdir}/lib%{name}.so %{buildroot}%{_libdir}/tree_sitter/%{_name}.so
 %treesitter_devel_package
 
 %changelog
-
