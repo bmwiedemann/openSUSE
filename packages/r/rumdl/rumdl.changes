@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Dec 21 06:33:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.0.198:
+  * Fixed
+    - MD057 (link-target-exists): Support mdBook and doc site .html
+      links
+      - Links to .html files now correctly resolve when
+        corresponding .md source exists
+      - Handles mdBook, Jekyll, Hugo and similar doc generators
+        that compile .md to .html
+      - Applied to both single-file check() and cross-file
+        validation
+      - Reduces false positives in documentation projects like
+        rustc-dev-guide
+
+-------------------------------------------------------------------
 Sat Dec 20 07:28:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.0.197:
