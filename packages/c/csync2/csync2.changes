@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 22 14:35:07 UTC 2025 - Peter Varkoly <varkoly@suse.com>
+
+- (jsc#PED-14855) Fix packages for Immutable Mode - csync2
+- Strip binary.
+
+-------------------------------------------------------------------
 Wed Apr  7 19:21:54 UTC 2021 - Peter Varkoly <varkoly@suse.com>
 
 - Update to 2.0+git.1600444747.83b3644:

@@ -1,7 +1,7 @@
 #
 # spec file for package csync2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,10 +23,10 @@ Summary:        Cluster synchronization tool
 License:        GPL-2.0-or-later
 Group:          Productivity/Clustering/HA
 URL:            http://oss.linbit.com/csync2/
-#Source0:       http://oss.linbit.com/csync2/%{name}-%{version}.tar.gz
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        csync2-README.quickstart
 Source2:        csync2-rm-ssl-cert
+Source3:        csync2.conf
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -61,20 +61,26 @@ autoreconf -fvi
     --docdir=%{_docdir}/%{name}
 make %{?_smp_mflags}
 
+%check
+make check
+
 %install
 %make_install
-mkdir -p %{buildroot}%{_localstatedir}/lib/csync2
 install -p -m 644 %{SOURCE1} %{buildroot}%{_docdir}/%{name}/README.quickstart
 install -p -m 755 %{SOURCE2} %{buildroot}%{_sbindir}/csync2-rm-ssl-cert
+mkdir -p %{buildroot}%_tmpfilesdir/
+install -p -m 644 %{SOURCE3} %{buildroot}%_tmpfilesdir/
 mkdir -p %{buildroot}%{_unitdir}
 # We need these empty files to be able to %%ghost them
 touch %{buildroot}%{_sysconfdir}/csync2/csync2_ssl_key.pem
 touch %{buildroot}%{_sysconfdir}/csync2/csync2_ssl_cert.pem
+/usr/bin/strip  %{buildroot}%{_sbindir}/%{name}
 
 %pre
 %service_add_pre csync2.socket csync2@.service
 
 %post
+%tmpfiles_create %_tmpfilesdir/csync2.conf
 %service_add_post csync2.socket csync2@.service
 umask 077
 if [ ! -f %{_sysconfdir}/csync2/csync2_ssl_key.pem ]; then
@@ -111,14 +117,15 @@ fi
 %{_sbindir}/csync2-compare
 %{_unitdir}/csync2.socket
 %{_unitdir}/csync2@.service
-%dir %{_localstatedir}/lib/csync2/
 # Using docdir here ensures correct doc file tagging
 %{_docdir}/%{name}
 %dir %{_sysconfdir}/csync2/
 %config(noreplace) %{_sysconfdir}/csync2/csync2.cfg
 %ghost %config %{_sysconfdir}/csync2/csync2_ssl_key.pem
 %ghost %config %{_sysconfdir}/csync2/csync2_ssl_cert.pem
+%ghost %dir %attr(0755,root,root) /var/lib/csync2
 %{_sbindir}/csync2-rm-ssl-cert
 %{_mandir}/man1/csync2.1*
+%_tmpfilesdir/%{name}.conf
 
 %changelog

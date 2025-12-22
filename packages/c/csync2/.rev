@@ -235,4 +235,13 @@
   * 0001-Add-COPYING-as-docfile.patch</comment>
     <requestid>883785</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>d9b2918373379e5ca70135c88d334c5a</srcmd5>
+    <version>2.0+git.1600444747.83b3644</version>
+    <time>1766440352</time>
+    <user>dimstar_suse</user>
+    <comment>- (jsc#PED-14855) Fix packages for Immutable Mode - csync2
+- Strip binary.</comment>
+    <requestid>1324213</requestid>
+  </revision>
 </revisionlist>
