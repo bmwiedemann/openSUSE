@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Dec 20 07:03:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.26.1:
+  * Version 0.26.1
+  * Bump the all group across 1 directory with 10 updates (#375)
+  * add option for multiple contexts (#366)
+  * add generate-completion command using clap_complete (#374)
+  * Bump the all group across 1 directory with 7 updates (#361)
+  * Bump the all group across 1 directory with 3 updates (#355)
+
+-------------------------------------------------------------------
 Wed Jul 02 05:23:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.26.0:
@@ -356,4 +367,4 @@ Wed Feb 03 10:56:30 UTC 2021 - rombert@apache.org
 -------------------------------------------------------------------
 Tue Feb  2 14:41:17 UTC 2021 - Robert Munteanu <rombert@apache.org>
 
-- Initial package 
+- Initial package
