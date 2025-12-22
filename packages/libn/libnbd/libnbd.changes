@@ -1,4 +1,152 @@
 -------------------------------------------------------------------
+Tue Dec 16 16:29:46 UTC 2025 - Charles Arnold <carnold@suse.com>
+
+- Update to version 1.24.0:
+  * Version 1.24.0.
+  * docs: Finalize release notes for libnbd 1.24
+  * ci/lcitool/projects/libnbd.yml: Add 'tar' as an explicit dependency
+  * misc: Require libxml2 / URI support for these tests
+  * tests: Add an explicit 'requires_uri' for URI support
+  * ci: Update various OS versions
+  * generator: Rework description of nbd_set_tls_priority
+  * Version 1.23.13.
+  * tests: Add a test of tls-priority
+  * lib: In nbd_get_uri return tls-priority if non-default
+  * lib: Add tls-priority to URIs, but disable it by default
+  * generator/API.ml: Arrange tls-* URI parameters in order
+  * lib: Use the TLS priority from the handle
+  * lib: Add nbd_get_tls_priority and nbd_set_tls_priority
+  * rust: Allow piped links in POD documentation
+  * lib/crypto.c: Support extra client keys for hybrid PQC
+  * configure: Print TLS priority in summary output
+  * vector: Fine-tune vector_reserve behavior
+  * misc: Fix tab-completion of -h/--help options
+  * Version 1.23.12.
+  * docs: Add outline release notes for libnbd 1.24
+  * misc: Rename -f/--fast as --fast-zero
+  * misc/nbddiscard.pod: Document --check & --fast in alphabetical order
+  * misc/nbddiscard.pod: Document short and long options in synopsis
+  * sh: Add an example of writing to the disk using nbdsh
+  * sh: Link to nbdkit(1)
+  * sh: Link to nbddump from the hexdump example
+  * misc: Add nbdzero --fast
+  * misc: Add nbddiscard --check
+  * misc: Avoid traceback on NBD errors in nbddiscard
+  * misc: Enhance nbddiscard/nbdzero range tests
+  * tests: Add define() to functions.sh
+  * Version 1.23.11.
+  * misc: Fix creation of nbdzero symlink
+  * misc/nbddiscard.in: Fix tests on macOS
+  * misc/nbddiscard: Generate shebang with correct path to python
+  * copy: Link --destination-is-zero option to new tools nbddiscard/nbdzero
+  * misc/nbdzero.1: Fix link to nbddiscard(1)
+  * Version 1.23.10.
+  * Add new 'nbddiscard' and 'nbdzero' tools
+  * tests: Fix missing exit in some tests
+  * Update TODO
+  * configure: Add new macro to print package version
+  * copy: Skip some tests when running on ZFS
+  * copy/copy-allocated-destination-zero-*.sh: Remove test for /dev/zero
+  * docs/libnbd-security.pod: Add section for recent nbd+ssh security issue
+  * Version 1.23.9.
+  * uri: Sanitize user-provided hostnames
+  * lib/uri.c: Replace boolean parsing code with common nbdkit code
+  * common/include: Extra bool parsing into a mini-library
+  * common/include: Add locale-safe ascii_strcasecmp and ascii_strncasecmp.
+  * Version 1.23.8.
+  * lib/uri: Allow ssh compression to be controlled from URIs
+  * generator: Additional checking for longdesc
+  * generator/API.ml: Make longdesc fields consistent
+  * generator: Use quoted string literals in many places
+  * generator: Use quoted string literals for regular expressions
+  * ocaml: Deal with fallback case
+  * examples/connect-benchmark.c: Include <stdatomic.h> or fall back
+  * docs: Minor copyediting to export name documentation
+  * docs: Document which NBD URI features are non-standard
+  * tests: Add a test of tls-username in NBD URIs
+  * lib/uri.c: Replace nbd-user with tls-username
+  * Version 1.23.7.
+  * docs: nbd_connect_uri: Combine export name sections together
+  * docs: nbd_connect_uri: Minor copyedits
+  * docs: nbd_connect_uri: Split up URI parsing section
+  * lib/uri.c: Add nbd-port and nbd-user parameters
+  * lib/uri.c: Return EINVAL errno for invalid SSH username
+  * lib/uri: Refactor long connect_uri function
+  * lib/uri.c: Use uri_query_list functions to free
+  * lib/uri.c: Add static annotation to parse_bool
+  * lib/uri.c: Factor out common char port_str[32]
+  * lib: Convert nbd+ssh://user@.. to SSH username
+  * docs: Clarify documentation for export names in nbd_connect_uri
+  * docs: Add S<...> around qemu versions to avoid distracting linebreak
+  * generator: rust: Parse S<...> (non-breaking spaces) in POD
+  * generator: rust: Allow nested X<..X<..>..> expressions in POD
+  * generator: Don't list nbd_is_uri as a "flag call"
+  * generator: Clarify documentation for nbd_set_private_data
+  * Version 1.23.6.
+  * ocaml: Get a better estimate of the size of the libnbd handle
+  * lib: When debugging is enabled print the size of the handle
+  * lib: New API nbd_get_handle_size to estimate the handle size
+  * ocaml: Small tweaks to the generated documentation
+  * ci: Remove fedora-40, alpine-320, add fedora-42, alpine-322
+  * python: Implement indexing and slicing for nbd.Buffer
+  * python: Add libnbd-python(3) documentation
+  * common: utils: Add const to <vector>_duplicate variable decls
+  * copy, info: Use new vector_array_append functions in a couple of places
+  * common: utils: vector: Fix vector_uniq prototype and add a test
+  * common: utils: vector: Add range functions for insert, append and remove
+  * common: utils: vector: Prefer vector_reset over free()
+  * common: utils: vector: Add new vector_uniq function
+  * common/utils: Add convenient string_append_format function
+  * Version 1.23.5.
+  * tools: Add extra version information in the output of --version
+  * ublk: Remove unused EXPECTED_VERSION
+  * lib: New API: nbd_get_version_extra
+  * build: Add ./configure --with-extra="..."
+  * todo: Remove a couple of minor features that have been implemented
+  * Version 1.23.4.
+  * api: Relax LIBNBD_STRICT_ALIGN for unaligned image size
+  * info: Tolerate nbdkit slop on large extents
+  * generator: Avoid const-correctness warnings in golang
+  * generator: Optimize buffer size on macOS and Linux
+  * ocaml: Implement NBD.Buffer.is_zero
+  * maint: Spelling fixes
+  * ci: Disable cross-builds of Rust
+  * rust: Allow cargo build --target $RUST_TARGET to be set
+  * Version 1.23.3.
+  * copy: Test --allocated + --destination-is-zero options together
+  * copy: Test --destination-is-zero option
+  * copy: Test --allocated option more thoroughly
+  * copy: Add a test of the --flush option
+  * copy: Remove output file in a few tests
+  * build: Print rustc version in ./configure output
+  * generator: Improve the comment for set_buffers
+  * Set socket buffer only for unix socket
+  * rust: Use nbd.is_uri in examples
+  * Set socket receive and send buffers on macOS
+  * ci: Skip go on FreeBSD 14
+  * ci: Update to latest
+  * copy: Fix file allocation when using --allocated
+  * copy: Fix file_sync_zero when allocate == true
+  * copy: Consider options when zeroing in synch mode
+  * copy: Fix corrupted hash on incomplete read
+  * copy: Enable zero optimization for allocated extents
+  * copy: Shrink struct block
+  * copy: Define block_type outside of block struct
+  * copy: Fix crash when blkhash size is not a power of 2
+  * Version 1.23.2.
+  * copy: Hard error if sync_file_range fails
+  * Version 1.23.1.
+  * copy: Add --blkhash option
+  * info/info-uri-nbds.sh: Fix test if compiled without GnuTLS
+  * copy: Set the total size in bytes copied
+  * copy: progress: Add a comment about size and pipes
+  * build: Create sections in the configure file
+  * build: Add heading about basic build environment
+  * build: Only use ANSI colour sequences if stdout is a terminal
+  * build: Embolden headings in configure output
+  * build: Colourize features
+
+-------------------------------------------------------------------
 Tue Oct 28 16:11:08 UTC 2025 - Charles Arnold <carnold@suse.com>
 
 - Update to version 1.22.5:

@@ -19,7 +19,7 @@
 %define sover 0
 
 Name:           libnbd
-Version:        1.22.5
+Version:        1.24.0
 Release:        0
 Summary:        NBD client library in userspace
 License:        LGPL-2.1-or-later
@@ -161,9 +161,13 @@ done
 %{_bindir}/nbdcopy
 %{_bindir}/nbddump
 %{_bindir}/nbdinfo
+%{_bindir}/nbddiscard
+%{_bindir}/nbdzero
 %{_mandir}/man1/nbdcopy.1*
 %{_mandir}/man1/nbddump.1*
+%{_mandir}/man1/nbddiscard.1*
 %{_mandir}/man1/nbdinfo.1*
+%{_mandir}/man1/nbdzero.1*
 
 %files -n libnbd%{sover} -f %name.files
 %license COPYING.LIB
@@ -176,6 +180,7 @@ done
 %{_libdir}/pkgconfig/libnbd.pc
 %{_mandir}/man3/libnbd.3*
 %{_mandir}/man3/libnbd-ocaml.3.gz
+%{_mandir}/man3/libnbd-python.3*
 %{_mandir}/man1/libnbd-release-notes-1.*.1*
 %{_mandir}/man3/libnbd-security.3*
 %{_mandir}/man3/nbd_*.3*
