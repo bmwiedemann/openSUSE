@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 22 01:08:34 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.4.0:
+  * feat: add WaystoneTier for PoE 2
+  * feat: add missing conditions
+
+-------------------------------------------------------------------
 Thu Dec  5 00:56:58 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - initial packaging
