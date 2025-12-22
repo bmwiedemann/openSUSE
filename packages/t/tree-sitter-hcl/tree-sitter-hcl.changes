@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 22 00:53:01 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.2.0:
+  * fix: precedence of unary operators and expressions
+  * fix(node): set access to public
+
+-------------------------------------------------------------------
 Wed Dec 11 23:21:01 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - disable devel packge (for now)
