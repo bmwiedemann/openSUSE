@@ -345,4 +345,12 @@
     <comment>Security Release</comment>
     <requestid>1319274</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>3a71d55f683c5e8333c3d7cae63bf9e3</srcmd5>
+    <version>7.0.16</version>
+    <time>1766440159</time>
+    <user>dimstar_suse</user>
+    <comment>bugfix version</comment>
+    <requestid>1323915</requestid>
+  </revision>
 </revisionlist>
