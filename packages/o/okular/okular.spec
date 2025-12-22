@@ -82,6 +82,8 @@ BuildRequires:  pkgconfig(libspectre)
 BuildRequires:  pkgconfig(libzip)
 BuildRequires:  pkgconfig(poppler-qt6) >= 22.02.0
 BuildRequires:  pkgconfig(zlib)
+# Recommend a dingbats font for embedded forms
+Recommends:     urw-base35-fonts-D050000L
 Suggests:       %{name}-spectre
 Obsoletes:      okular5 < %{version}
 Provides:       okular5 = %{version}
