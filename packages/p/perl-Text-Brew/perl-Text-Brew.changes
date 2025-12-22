@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 22 13:14:12 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details
+- Add cpanspec.yml for overriding license
+
+
+-------------------------------------------------------------------
 Fri Mar 28 10:57:48 UTC 2014 - alarrosa@suse.com
 
 - perl-Text-Brew 0.02 

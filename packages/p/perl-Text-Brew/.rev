@@ -14,4 +14,14 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4dcda96ba3695237077dabc48467cce9</srcmd5>
+    <version>0.20.0</version>
+    <time>1766440332</time>
+    <user>dimstar_suse</user>
+    <comment>- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details
+- Add cpanspec.yml for overriding license</comment>
+    <requestid>1324195</requestid>
+  </revision>
 </revisionlist>
