@@ -1,7 +1,7 @@
 #
 # spec file for package libcotp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 
 %define libsoname %{name}3
 Name:           libcotp
-Version:        3.1.0
+Version:        3.1.1
 Release:        0
 Summary:        C library for generating TOTP and HOTP
 License:        Apache-2.0

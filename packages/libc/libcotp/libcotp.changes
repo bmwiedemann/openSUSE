@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Dec 22 16:42:11 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.1.1:
+  * Security
+    + Memory sanitization: Sensitive cryptographic data is now
+      securely cleared from memory
+    + Buffer safety: Fixed potential overflow in base32 decoding
+  * Improvements
+    + Type safety: Migrated to unsigned integers for crypto operations
+    + Performance: Optimized base32 length calculations and removed
+      redundant calls
+    + Code quality: Simplified token formatting and enhanced
+      error handling
+
+-------------------------------------------------------------------
 Thu Oct 10 07:59:18 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.1.0:
