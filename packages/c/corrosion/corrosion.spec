@@ -1,7 +1,7 @@
 #
 # spec file for package corrosion
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           corrosion
-Version:        0.5.2
+Version:        0.6.0
 Release:        0
 Summary:        Rust integration into existing CMake project
 License:        MIT
@@ -49,6 +49,10 @@ static libraries, and dynamic libraries from a workspace or package manifest
 %check
 # Some tests need rustup which conflicts with cargo
 excluded_tests="cbindgen_rust2cpp_build|cbindgen_rust2cpp_run_cpp-exe|rustup_proxy_build|hostbuild_build|hostbuild_run_rust-host-program|parse_target_triple_build"
+# Others need network access
+excluded_tests+="|config_discovery_build|cbindgen_rust2cpp_auto_build|custom_target_build|cbindgen_install|cbindgen_manual_build|install_lib_build"
+# Depends on disabled tests
+excluded_tests+="|config_discovery_run_cargo_clean|config_discovery_run_config_discovery|custom_target_run_test-exe|custom_target_run_rust-bin|cbindgen_rust2cpp_auto_run_cpp-exe|cbindgen_manual_run_cpp-exe|install_lib_run_main-static|install_lib_run_main-shared"
 %ctest --exclude-regex "${excluded_tests}"
 
 %files
