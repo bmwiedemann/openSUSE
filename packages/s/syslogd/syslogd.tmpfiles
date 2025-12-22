@@ -1,0 +1,10 @@
+d /run/syslogd              0750 root root -
+f /var/log/messages         0640 root root -
+f /var/log/mail             0640 root root -
+f /var/log/mail.info        0640 root root -
+f /var/log/mail.warn        0640 root root -
+f /var/log/mail.err         0640 root root -
+d /var/log/news             0750 news news -
+f /var/log/news/news.crit   0640 news news -
+f /var/log/news/news.err    0640 news news -
+f /var/log/news/news.notice 0640 news news -

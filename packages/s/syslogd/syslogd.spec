@@ -21,9 +21,6 @@
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
-%if ! %{defined _rundir}
-%define _rundir %{_localstatedir}/run
-%endif
 Name:           syslogd
 Version:        1.5.1
 Release:        0
@@ -41,6 +38,7 @@ Source6:        klog.service
 Source7:        klogd.service
 Source8:        syslogd.service
 Source9:        syslogd-service-prepare
+Source10:       syslogd.tmpfiles
 Source11:       syslogd-rpmlintrc
 Source12:       sysconfig.boot
 Patch0:         sysklogd-1.4.1.dif
@@ -70,6 +68,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  group(news)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
+BuildRequires:  rpm_macro(_tmpfilesdir)
 BuildRequires:  user(news)
 Requires:       klogd
 Requires(post): %fillup_prereq
@@ -158,7 +157,7 @@ mkdir -p %{buildroot}/%{_sbindir}
 mkdir -p %{buildroot}/%{_mandir}/man{5,8}
 mkdir -p %{buildroot}%{_fillupdir}
 mkdir -p %{buildroot}%{_unitdir}
-mkdir -p -m 0755 %{buildroot}/%{_rundir}/syslogd
+#mkdir -p -m 0755 %%{buildroot}/run/syslogd
 make install MANDIR=%{_mandir} BINDIR=%{_sbindir} DESTDIR=%{buildroot}
 %if 0%{?suse_version} > 1500
 mkdir -p %{buildroot}%{_distconfdir}/logrotate.d
@@ -186,6 +185,9 @@ sed -i 's/^KERNEL_LOGLEVEL=1/KERNEL_LOGLEVEL=7/' \
 %{buildroot}%{_fillupdir}/sysconfig.klogd
 %endif
 
+mkdir -p %{buildroot}%{_tmpfilesdir}
+install -m 0644 %{S:10} %{buildroot}%{_tmpfilesdir}/syslogd.conf
+
 %if %{defined verify_permissions}
 %verifyscript
 %verify_permissions -e %{_sysconfdir}/syslog.conf
@@ -195,31 +197,13 @@ sed -i 's/^KERNEL_LOGLEVEL=1/KERNEL_LOGLEVEL=7/' \
 %service_add_pre syslogd.service
 
 %post
+%tmpfiles_create %{_tmpfilesdir}/syslog.conf
 %set_permissions %{_sysconfdir}/syslog.conf
 #
 # add syslog variables provided by syslogd if needed
 #
 %{remove_and_set -n syslog SYSLOG_DAEMON}
 %{remove_and_set -n syslog SYSLOG_REQUIRES_NETWORK}
-%{fillup_only -ns syslog syslogd}
-#
-# create dirs, touch log default files
-#
-mkdir -p var/log
-touch var/log/messages;  chmod 640 var/log/messages
-touch var/log/mail;      chmod 640 var/log/mail
-touch var/log/mail.info; chmod 640 var/log/mail.info
-touch var/log/mail.warn; chmod 640 var/log/mail.warn
-touch var/log/mail.err;  chmod 640 var/log/mail.err
-test -f var/log/news && mv var/log/news var/log/news.bak
-mkdir -p -m 0750 var/log/news
-chown news:news  var/log/news
-touch var/log/news/news.crit;   chmod 640 var/log/news/news.crit
-chown news:news var/log/news/news.crit
-touch var/log/news/news.err;    chmod 640 var/log/news/news.err
-chown news:news var/log/news/news.err
-touch var/log/news/news.notice; chmod 640 var/log/news/news.notice
-chown news:news var/log/news/news.notice
 #
 # Enable the syslogd as service
 #
@@ -371,12 +355,12 @@ done
 %defattr(-,root,root)
 %{_fillupdir}/sysconfig.syslogd
 %config %verify(not mode) %attr(0600,root,root) %{_sysconfdir}/syslog.conf
+%{_tmpfilesdir}/syslogd.conf
 %{_mandir}/man5/syslog.conf.5%{ext_man}
 %{_mandir}/man8/syslogd.8%{ext_man}
 %{_mandir}/man8/sysklogd.8%{ext_man}
 %{_unitdir}/syslogd.service
 %{_sbindir}/syslogd-service-prepare
-%attr(0755,root,root) %dir %ghost %{_rundir}/syslogd
 %{_sbindir}/syslogd
 %{_sbindir}/rcsyslogd
 %if 0%{?suse_version} < 1550

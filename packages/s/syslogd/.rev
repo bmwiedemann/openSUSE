@@ -901,4 +901,15 @@
     <comment>- Drop last sysvinit Requirement/Provide (PED-13698)</comment>
     <requestid>1318241</requestid>
   </revision>
+  <revision rev="107" vrev="806">
+    <srcmd5>23dc5c1630c9cde42521394f71e4103e</srcmd5>
+    <version>unknown</version>
+    <time>1766440108</time>
+    <user>dimstar_suse</user>
+    <comment>- Install tmpfile correctly as syslogd.conf (instead of
+  sendmail.conf),
+
+- Fix tmpfile handling for transactional updates (jsc#PED-14864)</comment>
+    <requestid>1323782</requestid>
+  </revision>
 </revisionlist>
