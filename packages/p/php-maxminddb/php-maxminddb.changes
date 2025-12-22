@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 16 21:15:42 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Updated to version 1.13.1
+  * First PIE release. No other changes.
+
+- Updated to version 1.13.0
+  * A redundant `filesize()` call in the reader's constructor was removed.
+
+-------------------------------------------------------------------
 Mon May 12 20:37:40 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - Updated to version 1.12.1
