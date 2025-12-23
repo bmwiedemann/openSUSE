@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 23 10:28:14 UTC 2025 - Peter Varkoly <varkoly@suse.com>
+
+- Use sysuser-tools
+- (jsc#PED-14857) Fix packages for Immutable Mode - dovecot 
+
+-------------------------------------------------------------------
 Thu May  8 07:59:36 UTC 2025 - Peter Varkoly <varkoly@suse.com>
 
 - Recommend dovecot24

@@ -160,4 +160,13 @@
   On dovecot 2.4 we only provides one simple configuration file.</comment>
     <requestid>1275436</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>5cb7d807f831702a2aeb80e2513d22ec</srcmd5>
+    <version>2.4</version>
+    <time>1766493892</time>
+    <user>dimstar_suse</user>
+    <comment>- Use sysuser-tools
+- (jsc#PED-14857) Fix packages for Immutable Mode - dovecot</comment>
+    <requestid>1324259</requestid>
+  </revision>
 </revisionlist>

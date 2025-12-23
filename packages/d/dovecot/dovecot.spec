@@ -25,6 +25,7 @@ Group:          Productivity/Networking/Email/Servers
 URL:            http://www.dovecot.org/
 PreReq:         dovecot-implementation
 PreReq:         shadow
+%sysusers_requires
 Recommends:     %{name}24
 #!BuildIgnore: dovecot-implementation
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -42,6 +43,10 @@ Source11:       %{name}-2.2-pigeonhole.configfiles
 Source12:       %{name}-2.3.configfiles
 Source13:       %{name}-2.3-pigeonhole.configfiles
 Source14:       %{name}-2.4.configfiles
+Source15:       %{name}-user.conf
+BuildRequires:  pam-devel
+BuildRequires:  sysuser-tools
+
 
 %description
 Dovecot is an IMAP and POP3 server for Linux and UNIX-like systems,
@@ -58,6 +63,7 @@ versioned dovecot packages.
 %prep
 
 %build
+%sysusers_generate_pre %{S:15} %{name}-user
 
 %install
 for i in $RPM_SOURCE_DIR/*.configfiles ; do
@@ -67,24 +73,15 @@ for i in $RPM_SOURCE_DIR/*.configfiles ; do
   done
 done
 
-install -D -p -m 0644 %{S:5} %{buildroot}%{_datadir}/doc/packages/%{name}/README.SUSE
-install -d %{buildroot}%{_sbindir}
+%{__install} -D -p -m 0644 %{S:4} %{buildroot}/%{_pam_vendordir}/%{name}
+%{__install} -D -p -m 0644 %{S:5} %{buildroot}%{_datadir}/doc/packages/%{name}/README.SUSE
+%{__install} -d %{buildroot}%{_sbindir}
 %{__install} -D -m 644 %{S:7} %{buildroot}%{_tmpfilesdir}/%{name}.conf
-%{__ln_s} -f %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
-install -D -p -m 0644 %{S:8} %{buildroot}%{_unitdir}/%{name}.service
-install -D -p -m 0644 %{S:9} %{buildroot}%{_unitdir}/%{name}.socket
+%{__install} -D -p -m 0644 %{S:8} %{buildroot}%{_unitdir}/%{name}.service
+%{__install} -D -p -m 0644 %{S:9} %{buildroot}%{_unitdir}/%{name}.socket
+%{__install} -D -m 0644 %{S:15} %{buildroot}%{_sysusersdir}/dovecot.conf
 
-# install pam config
-%{__install} -D -p -m 0644 %{S:4} %{buildroot}%{_sysconfdir}/pam.d/%{name}
-# create /var directories
-%{__install} -p -m 0755 -Dd \
-  %{buildroot}%{_var}/run/%{name}/login/ \
-  %{buildroot}%{_var}/lib/%{name}/
-
-%pre
-getent group %{name} > /dev/null || /usr/sbin/groupadd -r %{name} >/dev/null 2>&1 || :
-getent passwd %{name} > /dev/null || /usr/sbin/useradd -g %{name} -s /bin/false -r -c "User for Dovecot imapd" -d %{_var}/run/%{name} %{name}
-getent passwd dovenull > /dev/null || /usr/sbin/useradd -g %{name} -s /bin/false -r -c "User for Dovecot login" -d %{_var}/run/%{name} dovenull
+%pre -f %{name}-user.pre
 # try to copy the default configuration.
 #
 # we fail silently if the dovecot-implementation package is not
@@ -95,7 +92,6 @@ if [ ! -e %{_sysconfdir}/%{name}/%{name}.conf -a -e %{_datadir}/%{name}/example-
   echo "Did not find a /etc/dovecot/dovecot.conf. copying default configuration"
   cp -na %{_datadir}/%{name}/example-config/* %{_sysconfdir}/%{name}/
   # the chmod breaks the lda. lets use the more open permissions
-  #chmod -Rv o= %{_sysconfdir}/%{name}/
 fi
 %service_add_pre %{name}.service %{name}.socket
 
@@ -107,7 +103,7 @@ fi
 %service_add_post %{name}.service %{name}.socket
 
 %postun
-%service_del_postun %{name}.service
+%service_del_postun %{name}.service %{name}.socket
 
 %files
 %defattr(-,root,root)
@@ -115,13 +111,13 @@ fi
 # conf
 %dir /etc/%{name}/
 %ghost %config(noreplace) /etc/%{name}/*
-%config(noreplace) %{_sysconfdir}/pam.d/%{name}
-%{_sbindir}/rc%{name}
+%ghost %dir %attr(0755,root,root) /run/dovecot/
+%ghost %dir %attr(0755,root,dovecot) /run/dovecot/login/
+%ghost %dir %attr(0750,root,root) %{_localstatedir}/lib/%{name}
+%config(noreplace) /%{_pam_vendordir}/%{name}
+%{_sysusersdir}/%{name}.conf
 %{_tmpfilesdir}/%{name}.conf
 %{_unitdir}/%{name}.service
 %{_unitdir}/%{name}.socket
-%dir %attr(0750,root,root) %{_localstatedir}/lib/%{name}
-%ghost %dir /run/%{name}
-%ghost %dir /run/%{name}/login
 
 %changelog
