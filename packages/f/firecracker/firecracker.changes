@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Dec 21 15:43:15 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.14.0:
+  * Added support for virtio-pmem devices. See documentation for more info
+  * Added support for memory hot-plugging through the virtio-mem device
+  * Added support for virtio-balloon free page reporting and hinting
+  * Balloon stats now supports guest kernel >= 6.12, adding metrics on guest OOM
+    kills, memory allocation stalls, and memory scan/reclaim info.
+  * Removed the rx_partial_writes, tx_partial_reads, sync_response_fails,
+    sync_vmm_send_timeout_count, deprecated_cmd_line_api_calls, log_fails and
+  * device_events metrics, as they were never incremented.  
+  * Fixed typo in Swagger definition of MmdsConfig
+  * imds_comat. This caused auto-generated clients to create bad requests.
+  * Fixed Intel AMX enabling for kernels that support dynamic XSTATE features for
+    userspace applications but not for KVM guests (e.g. kernel versions >= 5.16
+    and < 5.17). 
+  * Fixed a bug causing a read/write from an iovec to be duplicated
+    when receiving an error on an iovec other than the first
+  * Fixed a watchdog soft lockup bug on microVMs restored from snapshots by 
+    calling KVM_KVMCLOCK_CTRL ioctl before resuming
+  * Fixed a cache coherency issue on non-FWB aarch64 platforms
+
+-------------------------------------------------------------------
 Tue Sep 02 06:05:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.13.1:
