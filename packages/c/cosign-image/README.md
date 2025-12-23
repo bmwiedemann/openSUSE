@@ -22,7 +22,7 @@ and a certificate issuer using the `--certificate-identity` and
 `--certificate-oidc-issuer` flags:
 
 ```ShellSession
-$ podman run registry.opensuse.org/opensuse/cosign:2.6 \
+$ podman run registry.opensuse.org/opensuse/cosign:3.0 \
     verify $IMAGE \
     --certificate-identity=$IDENTITY \
     --certificate-oidc-issuer=$OIDC_ISSUER
@@ -42,7 +42,7 @@ Valid payload is printed to stdout, in JSON format. Note that the
 signed payload includes the digest of the container image, which indicates that these "detached" signatures apply to the correct image.
 
 ```ShellSession
-$ podman run registry.opensuse.org/opensuse/cosign:2.6 verify --key cosign.pub $IMAGE_URI:1h
+$ podman run registry.opensuse.org/opensuse/cosign:3.0 verify --key cosign.pub $IMAGE_URI:1h
 The following checks were performed on these signatures:
   - The cosign claims were validated
   - The signatures were verified against the specified public key
