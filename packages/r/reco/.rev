@@ -175,4 +175,41 @@
   * use autosetup (forwarded request 1228955 from rrahl0)</comment>
     <requestid>1228956</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c5340a9d78949708919e8c746bdaedbc</srcmd5>
+    <version>5.1.1</version>
+    <time>1766493855</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.1.1:
+  * Focus to pause button by default to avoid unintentional cancel
+  * Show a toast, generic design, instead of changing appearance of the record
+    button when recording succeeded
+  * App name and icon are now displayed correctly in monitoring apps e.g.
+    pavucontrol or gnome-system-monitor
+  * Update translations
+- Update to version 5.1.0:
+  * Add Keyboard Shortcuts window
+  * Port to libadwaita for modern look &amp; feel
+  * Add About dialog
+  * Do not inhibit screen lock
+  * Uninhibit sleep while pausing recording
+  * Include both start and end date time in filenames
+  * Remove redundant prefix &quot;Recording from&quot; in filenames
+  * Do not translate default filenames
+  * Detailed error message
+  * Use mnemonics in the main menu
+  * The default menu item &quot;System&quot; now appears at the top of the &quot;Style&quot; main
+    menu
+  * Update translations
+  * Bluetooth input/output devices not being detected
+  * Prevent record button from being broken when clicking rapidly
+  * Make sure to initialize timeout variable when it's removed
+  * Fix substituting signed values to unsigned variables
+- Update to version 5.0.2:
+  * Update translations
+- Update to version 5.0.1:
+  * Reword string in metainfo
+  * Reword and elaborate on metadata and descriptions</comment>
+    <requestid>1324225</requestid>
+  </revision>
 </revisionlist>

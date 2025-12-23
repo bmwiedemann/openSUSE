@@ -1,7 +1,7 @@
 #
 # spec file for package reco
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appid com.github.ryonakano.reco
 Name:           reco
-Version:        3.2.1
+Version:        5.1.1
 Release:        0
 Summary:        Audio Recording App
 License:        GPL-3.0-or-later
@@ -27,14 +27,19 @@ Source:         %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.t
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libxml2-tools
-BuildRequires:  meson >= 0.49.0
+BuildRequires:  meson >= 0.58.0
 BuildRequires:  pkgconfig
 BuildRequires:  vala
-BuildRequires:  pkgconfig(granite) >= 5.2.3
-BuildRequires:  pkgconfig(gstreamer-1.0)
-BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(libhandy-1)
+BuildRequires:  pkgconfig(blueprint-compiler)
+BuildRequires:  pkgconfig(gee-0.8)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.74
+BuildRequires:  pkgconfig(granite-7) >= 7.2.0
+BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.20
+BuildRequires:  pkgconfig(gtk4) >= 4.10
+BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(livechart-2) >= 2.0.0
+BuildRequires:  pkgconfig(ryokucha)
 
 %description
 An audio recording app designed for the Pantheon Desktop.
@@ -45,7 +50,7 @@ An audio recording app designed for the Pantheon Desktop.
 %autosetup
 
 %build
-%meson
+%meson -Dgranite=enabled
 %meson_build
 
 %install
@@ -59,9 +64,8 @@ An audio recording app designed for the Pantheon Desktop.
 %{_bindir}/%{appid}
 %{_datadir}/applications/%{appid}.desktop
 %{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
-%{_datadir}/icons/hicolor/*/apps/%{appid}.svg
-%{_datadir}/icons/hicolor/symbolic/apps/record-completed-symbolic.svg
-%{_datadir}/metainfo/%{appid}.appdata.xml
+%{_datadir}/icons/hicolor/*/apps/%{appid}.png
+%{_datadir}/metainfo/%{appid}.metainfo.xml
 
 %files lang -f %{appid}.lang
 

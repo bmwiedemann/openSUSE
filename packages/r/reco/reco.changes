@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Mon Dec 22 20:19:55 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 5.1.1:
+  * Focus to pause button by default to avoid unintentional cancel
+  * Show a toast, generic design, instead of changing appearance of the record
+    button when recording succeeded
+  * App name and icon are now displayed correctly in monitoring apps e.g.
+    pavucontrol or gnome-system-monitor
+  * Update translations
+- Update to version 5.1.0:
+  * Add Keyboard Shortcuts window
+  * Port to libadwaita for modern look & feel
+  * Add About dialog
+  * Do not inhibit screen lock
+  * Uninhibit sleep while pausing recording
+  * Include both start and end date time in filenames
+  * Remove redundant prefix "Recording from" in filenames
+  * Do not translate default filenames
+  * Detailed error message
+  * Use mnemonics in the main menu
+  * The default menu item "System" now appears at the top of the "Style" main
+    menu
+  * Update translations
+  * Bluetooth input/output devices not being detected
+  * Prevent record button from being broken when clicking rapidly
+  * Make sure to initialize timeout variable when it's removed
+  * Fix substituting signed values to unsigned variables
+- Update to version 5.0.2:
+  * Update translations
+- Update to version 5.0.1:
+  * Reword string in metainfo
+  * Reword and elaborate on metadata and descriptions
+  * Show tooltip for each row of microphone combobox
+  * Add notification after saving recording for play and open folder
+  * Update translations
+  * Recording levelbar disappears after some time
+  * Potential null access
+  * Timer counts up/down twice as fast when resuming from pause
+  * Audio stutters after some time
+- Update to version 5.0.0:
+  * Add ability to choose which device to record from
+  * Show a graph depending on the volume to indicate recording is in progress
+  * Support recording over an hour
+  * System-synced color preference now available on any platforms other than
+    Pantheon
+  * Improve debug logs and error messages
+  * Code refactoring
+  * Fix Ctrl+Q quits the app without saving
+  * Prevent user from recording when no microphone is connected
+- Update to version 4.0.1:
+  * Show important errors to users
+  * Improve app metainfo
+  * Review label notation
+  * Improve the way to load custom icons
+  * Update translations
+- Update to version 4.0.0:
+  * Migrate to GTK 4, the latest version of GTK
+  * Get disk access permission only when the user allowed
+  * Hide remaining time label when unnecessary
+  * Fix no style button selected on non-Pantheon desktop environments when first launch
+  * Update translations
+- Update to version 3.3.1:
+  * Update translations
+- Update to version 3.3.0:
+  * Check desktop environment on runtime
+  * Show nicer message dialogs depending on the running desktpp environment
+  * Update translations
+
+-------------------------------------------------------------------
 Fri Dec  6 20:43:06 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update spec file for Leap 16.0:
