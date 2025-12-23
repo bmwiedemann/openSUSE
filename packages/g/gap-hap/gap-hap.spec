@@ -1,7 +1,7 @@
 #
 # spec file for package gap-hap
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-hap
-Version:        1.70
+Version:        1.73
 Release:        0
 Summary:        GAP: Homological Algebra Programming
 License:        GPL-2.0-or-later
@@ -29,7 +29,7 @@ BuildArch:      noarch
 BuildRequires:  fdupes
 BuildRequires:  gap-rpm-devel
 Requires:       gap-aclib >= 1.1
-Requires:       gap-core >= 4.5.6
+Requires:       gap-core >= 4.12
 Requires:       gap-crystcat >= 1.1
 Requires:       gap-fga >= 1.1
 Requires:       gap-nq >= 1.1
@@ -37,11 +37,11 @@ Requires:       gap-polycyclic >= 1.1
 Suggests:       gap-congruence
 Suggests:       gap-edim >= 1.2.2
 Suggests:       gap-gapdoc
-Suggests:       gap-hapcryst
+Suggests:       gap-hapcryst >= 0.1.0
 Suggests:       gap-homology
 Suggests:       gap-laguna
 Suggests:       gap-nq >= 1.1
-Suggests:       gap-polymaking >= 0.8.3
+Suggests:       gap-polymaking >= 0.8.4
 Suggests:       gap-singular >= 06.07.23
 Suggests:       gap-xmod
 
