@@ -59,4 +59,23 @@
 </comment>
     <requestid>1228952</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cb49649d8d101d441935425569901d80</srcmd5>
+    <version>1.2.1</version>
+    <time>1766493856</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.1:
+  * Elementary appcenter fixes for 1.2.1
+- Update to version 1.2.0:
+  * Convert HTTP links to HTTPS
+  * Implement basic printing operation support
+  * Added limit to editable characters in all text entries
+  * Fix deprecated top-level developer_name in AppData XML
+  * Add tag to AppStream metadata
+  * Use spaces instead of tabs
+  * meson: Use gnome module instead of Python script
+  * meson: Replace deprecated source_root with project_source_root
+  * Omitting OARS tags with the value of none</comment>
+    <requestid>1324227</requestid>
+  </revision>
 </revisionlist>

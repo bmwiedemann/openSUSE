@@ -1,7 +1,7 @@
 #
 # spec file for package agenda
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %define         appid com.github.dahenson.agenda
 Name:           agenda
-Version:        1.1.2
+Version:        1.2.1
 Release:        0
 Summary:        Task Manager for Elementary
 License:        GPL-3.0-or-later
 URL:            https://github.com/dahenson/agenda
 Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  meson >= 0.40.
+BuildRequires:  meson >= 0.59.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(granite) >= 5.3.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.16
