@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec 21 09:31:47 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.4
+  * Added generalized end-of-input symbol $ (#525). This change may
+    break old code with conflicitng end-of-input rules, as they now
+    have position-based precedence. The broken cases were reported
+    with -Wdeprecated-eof-rule since version 4.3.
+
+-------------------------------------------------------------------
 Tue Dec  2 13:05:45 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.3.1
