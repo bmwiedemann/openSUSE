@@ -1,0 +1,14 @@
+diff -rubN ryokucha-0.3.1/lib/meson.build ryokucha-0.3.1-patched/lib/meson.build
+--- ryokucha-0.3.1/lib/meson.build	2024-07-15 07:38:42.000000000 +0200
++++ ryokucha-0.3.1-patched/lib/meson.build	2025-12-22 21:07:24.653314488 +0100
+@@ -7,8 +7,9 @@
+     libryokucha_sources,
+     dependencies: libryokucha_deps,
+     vala_header: 'ryokucha.h',
++    version: '0',
+     install: true,
+-    install_dir: [true, true, true]
++    install_dir: [true, get_option('includedir') / 'ryokucha', true]
+ )
+ 
+ install_data(
