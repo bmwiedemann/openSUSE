@@ -100,4 +100,23 @@
     <comment></comment>
     <requestid>1320561</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2bb94a0d91385cb600c2252bd1f9ff23</srcmd5>
+    <version>2.50.4</version>
+    <time>1766493877</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.50.2:
+  + Correctly handle the program name passed to the sleep disabler.
+  + Ensure GStreamer is initialized before applying quirks.
+  + Fix usage of the cache API in nested workers.
+  + Fix incorrect rendering of SVG path arc elements.
+  + Fix several crashes and rendering issues.
+- Changes from version 2.50.3:
+  + Fix pointer event processing no longer working after a mouse
+    right button press.
+  + Fix seeking and looping of media elements that set the loop
+    property.
+  + Fix several crashes and rendering issues. (forwarded request 1323986 from iznogood)</comment>
+    <requestid>1324253</requestid>
+  </revision>
 </revisionlist>

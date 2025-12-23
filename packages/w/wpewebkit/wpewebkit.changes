@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Dec 21 15:22:50 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.50.2:
+  + Correctly handle the program name passed to the sleep disabler.
+  + Ensure GStreamer is initialized before applying quirks.
+  + Fix usage of the cache API in nested workers.
+  + Fix incorrect rendering of SVG path arc elements.
+  + Fix several crashes and rendering issues.
+- Changes from version 2.50.3:
+  + Fix pointer event processing no longer working after a mouse
+    right button press.
+  + Fix seeking and looping of media elements that set the loop
+    property.
+  + Fix several crashes and rendering issues.
+
+-------------------------------------------------------------------
 Thu Nov 27 11:19:22 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.50.2:
