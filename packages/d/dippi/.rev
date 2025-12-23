@@ -79,4 +79,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1228615</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ac6b51af568d7b059f427532b7aa188d</srcmd5>
+    <version>4.2.0</version>
+    <time>1766493857</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.2.0:
+  * update appid to com.cassidyjames.dippi
+- Update to version 4.1.1:
+  * Handle common aspect ratios
+  * update dependencies for GNOME 49</comment>
+    <requestid>1324228</requestid>
+  </revision>
 </revisionlist>
