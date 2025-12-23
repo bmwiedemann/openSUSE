@@ -8566,7 +8566,6 @@ unsorted:
   - homebank 
   - homebank-lang 
   - homeshick 
-  - honggfuzz 
   - horst 
   - host-spawn 
   - hostap-utils 
@@ -12683,8 +12682,8 @@ unsorted:
   - libcmis-c-0_6-6 
   - libcmis-c-devel 
   - libcmis-devel 
-  - libcmocka-cmake 
-  - libcmocka-cmake-32bit 
+  - libcmocka-cmake-devel 
+  - libcmocka-cmake-devel-32bit 
   - libcmocka-devel 
   - libcmocka-devel-32bit 
   - libcmocka-doc 
@@ -16100,6 +16099,7 @@ unsorted:
   - librygel-ruih-2_8-0 
   - librygel-server-2_8-0 
   - libryml0_8_0 
+  - libryokucha0 
   - libs2n0unstable 
   - libs3-4 
   - libs3-devel 
@@ -21011,6 +21011,8 @@ unsorted:
   - pantheon-mail 
   - pantheon-mail-apparmor 
   - pantheon-mail-lang 
+  - pantheon-maps 
+  - pantheon-maps-lang 
   - pantheon-music 
   - pantheon-music-lang 
   - pantheon-notifications 
@@ -26271,7 +26273,6 @@ unsorted:
   - python311-nbdime-git 
   - python311-nbdime-hg 
   - python311-nbformat 
-  - python311-nbsmoke 
   - python311-nbsphinx 
   - python311-nbval 
   - python311-nbxmpp 
@@ -30107,7 +30108,6 @@ unsorted:
   - python312-nbdime-git 
   - python312-nbdime-hg 
   - python312-nbformat 
-  - python312-nbsmoke 
   - python312-nbsphinx 
   - python312-nbval 
   - python312-nbxmpp 
@@ -33941,7 +33941,6 @@ unsorted:
   - python313-nbdime-git 
   - python313-nbdime-hg 
   - python313-nbformat 
-  - python313-nbsmoke 
   - python313-nbsphinx 
   - python313-nbval 
   - python313-nbxmpp 
@@ -37189,6 +37188,8 @@ unsorted:
   - rygel-lang 
   - rygel-plugin-gstreamer-renderer 
   - rygel-plugin-localsearch 
+  - ryokucha-demo 
+  - ryokucha-devel 
   - rypper 
   - ryzenadj 
   - rz-cutter 
@@ -49467,7 +49468,6 @@ unsorted:
   - waynergy 
   - waynergy-kde 
   - waypipe 
-  - wayprompt 
   - wayshot 
   - waysip 
   - wayvnc 
