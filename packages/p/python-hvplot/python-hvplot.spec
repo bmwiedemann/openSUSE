@@ -1,7 +1,7 @@
 #
 # spec file for package python-hvplot
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,24 +27,23 @@
 
 %{?sle15_python_modules_python}
 Name:           python-hvplot%{psuffix}
-Version:        0.11.0
+Version:        0.12.2
 Release:        0
 Summary:        High-level plotting API for the PyData ecosystem built on HoloViews
 License:        BSD-3-Clause
 URL:            https://github.com/pyviz/hvplot
 Source0:        https://files.pythonhosted.org/packages/source/h/hvplot/hvplot-%{version}.tar.gz
 # Test data. Bump the commit whenever you bump this version
-Source1:        https://github.com/pydata/xarray-data/archive/7d8290e0be9d2a8f4b4381641f20a97db6eaea3d.tar.gz#/xarray-data.tar.gz
-BuildRequires:  %{python_module base >= 3.9}
+Source1:        https://github.com/pydata/xarray-data/archive/f6f83f99b603fbec09189af8eeae9d3d90267f6c.tar.gz#/xarray-data.tar.gz
+BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module hatch-vcs >= 0.4.0}
+BuildRequires:  %{python_module hatchling >= 1.25.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-bokeh >= 3.1
 Requires:       python-colorcet >= 2
-Requires:       python-holoviews >= 1.19.0
+Requires:       python-holoviews >= 1.21.0
 Requires:       python-numpy >= 1.21
 Requires:       python-packaging
 Requires:       python-pandas >= 1.3
@@ -83,10 +82,12 @@ BuildRequires:  %{python_module hvplot = %{version}}
 ##
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module bokeh_sampledata}
+BuildRequires:  %{python_module cftime}
 BuildRequires:  %{python_module dask}
 BuildRequires:  %{python_module datashader}
 BuildRequires:  %{python_module ipywidgets}
 BuildRequires:  %{python_module networkx}
+BuildRequires:  %{python_module numpydoc}
 BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module plotly}
 BuildRequires:  %{python_module pooch}

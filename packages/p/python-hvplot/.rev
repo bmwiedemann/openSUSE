@@ -185,4 +185,66 @@
     <comment></comment>
     <requestid>1204573</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>66666acee3b85344ca4084b6b4d783e0</srcmd5>
+    <version>0.12.2</version>
+    <time>1766493840</time>
+    <user>dimstar_suse</user>
+    <comment>- Require holoviews &gt;= 1.21: Not declared upstream but tests fail
+  with a message that selector only works with &gt;= 1.21
+- Update to 0.12.2
+  ## Enhancements:
+  * Automatically convert xlim/ylim to Web Mercator when tiles=True
+    (#1685)
+  * Automatically use y as default text kwarg if only two columns
+    (#1681)
+  ## Bug Fixes:
+  * Fix handling of hv.dim expressions in size and color parameters
+    (#1691)
+  * Exclude internal style columns (_color and _size) from tooltips
+    (#1690)
+- The 0.12.1 release is a patch release that brings a few bugfixes
+  and enhancements, and most importantly adds a new extended
+  Gallery top-level section with about 50 examples, replacing the
+  previous and limited Reference Gallery.
+  ## Enhancements:
+  * hvplot.show supports displaying Param/Panel reactive
+    expressions (#1651)
+  ## Bug Fixes:
+  * Fix error raised when importing sampledata and hvsampledata is
+    not installed (#1649)
+  * Ensure the hist plotting method uses bin_range (#1663)
+- Release 0.12.0
+  * This minor release brings extensive documentation improvements,
+    exposes new HoloViews options, and brings a few bugfixes. Check
+    out the release blog post for a visual overview of the key
+    updates.
+  * Major expansion and improvement of the reference documentation,
+    covering all plotting options and methods
+  * Ability to switch between multiple versions of hvPlot on the
+    website
+  * A new selector option for sample hover info on datashaded
+    plotsunindent.
+  * Toolbar customization with toolbar and autohide_toolbar
+  * Flexible legends with the new legend_cols and legend_opts
+    options
+  * Advanced styling enabled by the backend_opts option
+  * A new sampledata module for easy access to sample datasets
+  * Dropped Python 3.9 support
+  ## Enhancements:
+  * Add the selector option to display sample information on hover
+    for rasterized/datashaded plots (#1585)
+  * Add the toolbar and autohide_toolbar options (#1634)
+  * Add the backend_opts option (#1635)
+  * Add the legend_cols and legend_opts options (#1636)
+  * Add support for log10 binning for histograms with logx and
+    loglog (#1593)
+  * Add the sampledata module (#1628)
+  ## Bug Fixes:
+  * Fix handling CRS translation (#1600)
+  * Remove unused piece of code (#1588)
+  * Minor fixes to andrews_curves (#1563)
+</comment>
+    <requestid>1323993</requestid>
+  </revision>
 </revisionlist>
