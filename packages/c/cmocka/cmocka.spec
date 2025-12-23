@@ -1,7 +1,7 @@
 #
 # spec file for package cmocka
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,17 +24,18 @@
 %endif
 
 Name:           cmocka
-Version:        1.1.8
+Version:        2.0.1
 Release:        0
 Summary:        Lightweight library to simplify and generalize unit tests for C
 License:        Apache-2.0
 Group:          Productivity/Networking/Other
 URL:            https://cmocka.org
 
-Source0:        https://cmocka.org/files/1.1/%{name}-%{version}.tar.xz
-Source1:        https://cmocka.org/files/1.1/%{name}-%{version}.tar.xz.asc
+Source0:        https://cmocka.org/files/2.0/%{name}-%{version}.tar.xz
+Source1:        https://cmocka.org/files/2.0/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
+Source4:        doxygen-awesome-css-2.4.1.tar.gz
 
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -90,7 +91,7 @@ Summary:        Development headers for the cmocka library
 Group:          Development/Libraries/C and C++
 Requires:       libcmocka0 = %{version}
 Requires:       pkg-config
-Requires:       (libcmocka-cmake if cmake)
+Requires:       (libcmocka-cmake-devel if cmake)
 
 %description -n libcmocka-devel
 Development headers for the cmocka unit testing library.
@@ -105,26 +106,29 @@ BuildArch:      noarch
 %description -n libcmocka-doc
 Documentation for the cmocka unit testing library.
 
-%package -n libcmocka-cmake
+%package -n libcmocka-cmake-devel
 Summary:        CMake support for the cmocka library
 Group:          Development/Libraries/C and C++
 Requires:       cmake
 Requires:       libcmocka-devel = %{version}
 Provides:       libcmocka-devel:%{_libdir}/cmake/cmocka
 
-%description -n libcmocka-cmake
+Obsoletes:      libcmocka-cmake < %{version}
+Provides:       libcmocka-cmake = %{version}
+
+%description -n libcmocka-cmake-devel
 cmake support for developing with the cmocka unit testing library.
 
 %prep
-%autosetup -p1
+%autosetup -a4 -p1
 
 %build
 %define _lto_cflags %{nil}
 %cmake \
     -DCMAKE_SKIP_RPATH=OFF \
     -DWITH_STATIC_LIB=ON \
-    -DWITH_CMOCKERY_SUPPORT=ON \
-    -DUNIT_TESTING=ON
+    -DUNIT_TESTING=ON \
+    -DDOXYGEN_AWESOME_CSS_DIR=%{_sourcedir}/doxygen-awesome-css-2.4.1
 
 make %{?_smp_mflags}
 %if %{with docs}
@@ -145,23 +149,23 @@ popd
 %postun -n libcmocka0 -p /sbin/ldconfig
 
 %files -n libcmocka0
-%doc AUTHORS README.md ChangeLog
-%license COPYING
+%doc AUTHORS README.md CHANGELOG.md
+%license LICENSE
 %{_libdir}/libcmocka.so.*
 
 %files -n libcmocka-devel
 %{_includedir}/cmocka.h
 %{_includedir}/cmocka_pbc.h
-%{_includedir}/cmockery
+%{_includedir}/cmocka_version.h
 %{_libdir}/libcmocka.so
 %{_libdir}/pkgconfig/cmocka.pc
+
+%files -n libcmocka-cmake-devel
+%{_libdir}/cmake/cmocka
 
 %if %{with docs}
 %files -n libcmocka-doc
 %doc build/doc/html
 %endif
-
-%files -n libcmocka-cmake
-%{_libdir}/cmake/cmocka
 
 %changelog

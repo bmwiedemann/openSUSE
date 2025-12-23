@@ -1,4 +1,219 @@
 -------------------------------------------------------------------
+Fri Dec 19 13:51:03 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 2.0.1
+  * Option to disable deprecation warnings via `CMOCKA_NO_DEPRECATION_WARNINGS`
+  * Documentation theme is now downloaded during `make docs` instead of at
+  * configure time
+  * Fixed const-correctness issues throughout the library
+
+-------------------------------------------------------------------
+Tue Dec 16 10:45:26 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix obsoleting libcmocka-cmake
+
+-------------------------------------------------------------------
+Mon Dec  8 08:41:10 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 2.0.0
+  o Added
+    * Test Filtering
+      - Environment variable support for test filtering:
+      - `CMOCKA_TEST_FILTER`: Filter tests to run by pattern
+      - `CMOCKA_SKIP_FILTER`: Filter tests to skip by pattern
+      - Improved `cmocka_set_test_filter()` and `cmocka_set_skip_filter()`
+        functions
+
+    * Output Formats
+      - **TAP 14 support**: Updated Test Anything Protocol output to
+        version 14 with YAML diagnostics
+      - YAML-formatted error messages with proper indentation
+      - `severity` field for distinguishing failures from errors
+      - Improved SKIP directive format
+
+    * Type-Safe Assertions and Mocking
+      - Type-safe assertion macros for integers:
+      - `assert_int_equal()` / `assert_int_not_equal()`
+      - `assert_uint_equal()` / `assert_uint_not_equal()`
+      - `assert_int_in_range()` / `assert_int_not_in_range()`
+      - `assert_uint_in_range()` / `assert_uint_not_in_range()`
+      - `assert_int_in_set()` / `assert_int_not_in_set()`
+      - `assert_uint_in_set()` / `assert_uint_not_in_set()`
+
+      - Type-safe mocking macros for different types:
+      - `will_return_int()`, `will_return_uint()`,
+        `will_return_float()`, `will_return_double()`,
+        `will_return_ptr()`
+      - `will_return_*_count()`, `will_return_*_always()`,
+        `will_return_*_maybe()` variants
+      - `will_set_parameter_int()`, `will_set_parameter_uint()`,
+        `will_set_parameter_float()`, `will_set_parameter_double()`,
+        `will_set_parameter_ptr()`
+      - `will_set_parameter_*_count()`,
+        `will_set_parameter_*_always()`,
+        `will_set_parameter_*_maybe()` variants
+      - `mock_int()`, `mock_uint()`, `mock_float()`, `mock_double()`,
+        `mock_ptr()`
+
+      - Type-safe expect macros:
+      - `expect_int_value()` / `expect_uint_value()`
+      - `expect_int_not_value()` / `expect_uint_not_value()`
+      - `expect_int_in_range()` / `expect_uint_in_range()`
+      - `expect_int_not_in_range()` / `expect_uint_not_in_range()`
+      - `expect_int_in_set()` / `expect_uint_in_set()`
+      - `expect_int_not_in_set()` / `expect_uint_not_in_set()`
+      - `expect_check_int()` / `expect_check_uint()`
+
+    * Float and Double Support
+      - Floating-point assertion macros:
+      - `assert_float_equal()` / `assert_float_not_equal()`
+      - `assert_double_equal()` / `assert_double_not_equal()` with
+        epsilon parameter
+      - `assert_float_in_range()` / `assert_float_not_in_range()`
+      - `assert_float_in_set()` / `assert_float_not_in_set()`
+
+      - Floating-point expect macros:
+      - `expect_float()` / `expect_not_float()`
+      - `expect_double()` / `expect_not_double()`
+      - `expect_float_in_range()` / `expect_float_not_in_range()`
+      - `expect_float_in_set()` / `expect_float_not_in_set()`
+      - `mock_double()` / `mock_parameter_double()` for mocking double
+        values
+
+    * Assertion Enhancements
+      - Pointer assertion macros with custom error messages:
+      - `assert_ptr_equal_msg()` / `assert_ptr_not_equal_msg()`
+      - `assert_null_msg()` / `assert_non_null_msg()`
+      - `assert_true()` and `assert_false()` now provide more verbose
+        error messages
+      - Memory comparison improvements with better error display
+
+    * Testing Features
+      - `has_mock()`: Check if a mock value is available before calling
+        `mock()`
+      - `stop()`: New feature to stop test execution while allowing
+        remaining tests to run
+      - `expect_check_data()`: New API for parameter validation with
+        custom data (replaces deprecated `expect_check()`)
+      - `expect_check_data_any()`: Variant for checking pointer/struct
+        parameters
+      - Errno mocking convenience macros: `will_set_errno()`,
+        `will_set_errno_always()`
+
+    * Output Customization
+      - Multiple simultaneous output formats support (can combine
+        STANDARD, SUBUNIT, TAP, XML)
+      - Output function override capability via `cmocka_set_callbacks()`
+      - `cmocka_print_error()`: Public API for printing errors using
+        configured output format
+
+    * Documentation and Examples
+      - Improved API documentation with better examples
+      - Added `expect_check_data()` examples
+      - Added errno mocking examples
+      - Added parameter setting examples
+      - Better mock object examples
+
+    * Build System and Compatibility
+      - CMake minimum required version bumped to 3.13
+      - CMake namespace support (`cmocka::cmocka`, `cmocka::static`)
+      - Meson build system support
+      - `extern "C"` wrapper for C++ compatibility
+      - Version header (`cmocka_version.h`)
+
+  o Changed
+
+    * API Improvements
+      - Changed internal value handling to use `CMockaValueData` union
+        for better type safety
+      - `_mock()` now returns `CMockaValueData` instead of raw values
+      - Improved error messages throughout the library
+      - Error messages now print to stdout instead of stderr
+      - Better display of memory comparison errors
+      - Enhanced string replacement implementation
+
+    * Code Quality
+      - Use `bool` instead of `int` for boolean values throughout
+      - Use `stdint.h` types (`intmax_t`, `uintmax_t`) instead of
+        custom types
+      - Reduced call stack consumption in printf functions
+      - Added compiler attributes to non-returning functions
+      - Use `__builtin_align_down` when available
+      - Better alignment handling (MALLOC_ALIGNMENT set to 16)
+
+    * Build Configuration
+      - Require C99 standard
+      - C extensions enabled by default
+      - Windows DLL export improvements with `CMOCKA_DLLEXTERN`
+      - `WINDOWS_EXPORT_ALL_SYMBOLS` support
+      - Address sanitizer support for MSVC
+      - Stack protector flags always passed to linker
+
+    * Documentation Improvements
+      - Enhanced API documentation with better organization
+      - Cleaned up internal functions from public documentation
+      - Better grouping of macros and functions
+      - Improved page layout and styling
+      - Updated README with more details
+
+    * Examples
+      - Modernized and rebuilt calculator example
+      - Added new assert_macro examples demonstrating common assertions
+      - Removed deprecated allocate module example (use AddressSanitizer instead)
+
+  o Deprecated
+      - `expect_check()`: Use `expect_check_data()` instead
+      - `check_expected()`: Use `check_expected_int()` or
+        `check_expected_uint()` instead
+      - `assert_in_range()`: Use `assert_int_in_range()` or
+        `assert_uint_in_range()` instead
+      - `assert_not_in_range()`: Use `assert_int_not_in_range()` or
+        `assert_uint_not_in_range()` instead
+      - `assert_in_set()`: Use `assert_int_in_set()` or
+        `assert_uint_in_set()` instead
+      - `expect_in_range()`: Use `expect_int_in_range()` or
+        `expect_uint_in_range()` instead
+      - `expect_not_in_range()`: Use `expect_int_not_in_range()` or
+        `expect_uint_not_in_range()` instead
+      - `expect_value()`: Use `expect_int_value()` or
+        `expect_uint_value()` instead
+      - `expect_not_value()`: Use `expect_int_not_value()` or
+        `expect_uint_not_value()` instead
+      - `will_return()`: Use type-specific variants
+        (`will_return_int()`, etc.) instead
+      - `will_return_count()`: Use type-specific variants instead
+      - `will_return_always()`: Use type-specific variants instead
+      - `will_set_parameter()`: Use type-specific variants instead
+      - Old MSVC support (pre-2008) dropped
+      - Cmockery legacy support removed
+
+  o Fixed
+      - Fixed missing `cmocka_version.h` in documentation
+      - Fixed TAP output for skipped tests
+      - Fixed floating-point comparison for `INFINITY` and `NAN`
+      - Fixed `expect_not_float()` implementation
+      - Fixed `mock_float()` implementation
+      - Fixed `assert_double_not_equal()` float handling
+      - Fixed `expect_function_calls()` for counts of 0
+      - Fixed NULL pointer dereference in `_function_called()`
+      - Fixed pointer assertions with function pointers
+      - Fixed segmentation fault handling in tests
+      - Fixed setjmp in `expect_assert_failure` macro
+      - Fixed unexpanded `%s` in leftover values error messages
+      - Fixed XML output duration formatting
+      - Fixed XML string sanitization (escape slashes and special
+        characters)
+      - Fixed Windows x64 builds
+      - Fixed Windows UWP build errors (C4703)
+      - Fixed MinGW pkgconfig path relocation
+      - Fixed test calloc overflow checking
+      - Fixed symbol map freeing to avoid undefined behavior
+      - Fixed memory equal display implementation
+      - Fixed comparison between pointer and integer issues
+      - Fixed possible data loss on MSVC
+      - Fixed conversion warnings from `time_t` to `double`
+
+-------------------------------------------------------------------
 Thu Jul 17 07:06:11 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 1.1.8
