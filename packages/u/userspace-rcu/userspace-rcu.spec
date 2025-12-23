@@ -2,7 +2,7 @@
 #
 # spec file for package userspace-rcu
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 
 %define soname  8
 Name:           userspace-rcu
-Version:        0.14.0
+Version:        0.15.3
 Release:        0
 Summary:        Userspace Read-Copy-Update Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND GPL-3.0-or-later
@@ -84,24 +84,15 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n liburcu%{soname} -p /sbin/ldconfig
 
 %files -n liburcu%{soname}
-%license LICENSE
-%doc ChangeLog README.md *.txt doc/*.md
-%{_libdir}/liburcu.so.%{soname}
-%{_libdir}/liburcu.so.%{soname}.*
-%{_libdir}/liburcu-bp.so.%{soname}
-%{_libdir}/liburcu-bp.so.%{soname}.*
-%{_libdir}/liburcu-cds.so.%{soname}
-%{_libdir}/liburcu-cds.so.%{soname}.*
-%{_libdir}/liburcu-common.so.%{soname}
-%{_libdir}/liburcu-common.so.%{soname}.*
-%{_libdir}/liburcu-mb.so.%{soname}
-%{_libdir}/liburcu-mb.so.%{soname}.*
-%{_libdir}/liburcu-memb.so.%{soname}
-%{_libdir}/liburcu-memb.so.%{soname}.*
-%{_libdir}/liburcu-qsbr.so.%{soname}
-%{_libdir}/liburcu-qsbr.so.%{soname}.*
-%{_libdir}/liburcu-signal.so.%{soname}
-%{_libdir}/liburcu-signal.so.%{soname}.*
+%license LICENSE.md
+%doc ChangeLog README.md doc/*.md
+%{_libdir}/liburcu.so.*
+%{_libdir}/liburcu-bp.so.*
+%{_libdir}/liburcu-cds.so.*
+%{_libdir}/liburcu-common.so.*
+%{_libdir}/liburcu-mb.so.*
+%{_libdir}/liburcu-memb.so.*
+%{_libdir}/liburcu-qsbr.so.*
 
 %files -n liburcu-devel
 %{_includedir}/urcu*.h
@@ -113,13 +104,11 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/liburcu-mb.so
 %{_libdir}/liburcu-memb.so
 %{_libdir}/liburcu-qsbr.so
-%{_libdir}/liburcu-signal.so
 %{_libdir}/pkgconfig/liburcu.pc
 %{_libdir}/pkgconfig/liburcu-bp.pc
 %{_libdir}/pkgconfig/liburcu-cds.pc
 %{_libdir}/pkgconfig/liburcu-mb.pc
 %{_libdir}/pkgconfig/liburcu-memb.pc
 %{_libdir}/pkgconfig/liburcu-qsbr.pc
-%{_libdir}/pkgconfig/liburcu-signal.pc
 
 %changelog

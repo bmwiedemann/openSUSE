@@ -244,4 +244,148 @@
     <comment></comment>
     <requestid>1071148</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a36cb773018c9ba2830cf12f84a1ff78</srcmd5>
+    <version>0.15.3</version>
+    <time>1766493827</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.15.3
+    * Fix: Use bitfield static assert with GCC &lt; 7.1.0
+    * Fix: Allow compile-time checks for GCC 5.1
+    * fix: __atomic_always_lock_free() not a constant expression on g++ &lt; 5.1
+    * fix: urcu assert fallback for pre-C11 builds
+    * doc: update uatomic-api for static assert
+    * Add uatomic size static assert for 's390'
+    * Add uatomic size static assert for 'sparc64'
+    * Add uatomic size static assert for 'ppc'
+    * Add uatomic size static assert for 'x86'
+    * Add uatomic size static assert for 'generic'
+    * Add uatomic size static assert
+    * Use UATOMIC_HAS_ATOMIC_INT/LLONG in generic implementation
+    * Add UATOMIC_HAS_ATOMIC_INT/LLONG for x86
+    * Add UATOMIC_HAS_ATOMIC_INT/LLONG for tile
+    * Add UATOMIC_HAS_ATOMIC_INT/LLONG for sparc64
+    * Add UATOMIC_HAS_ATOMIC_INT/LLONG for s390
+    * Add UATOMIC_HAS_ATOMIC_INT/LLONG for riscv
+    * Add UATOMIC_HAS_ATOMIC_INT/LLONG for ppc
+    * Add UATOMIC_HAS_ATOMIC_INT/LLONG for nios2
+    * Add UATOMIC_HAS_ATOMIC_INT/LLONG for mips
+    * Add UATOMIC_HAS_ATOMIC_INT/LLONG for m68k
+    * Add UATOMIC_HAS_ATOMIC_INT/LLONG for loongarch
+    * Add UATOMIC_HAS_ATOMIC_INT/LLONG for ia64
+    * Add UATOMIC_HAS_ATOMIC_INT/LLONG for hppa
+    * Add UATOMIC_HAS_ATOMIC_INT/LLONG for 'gcc' arch
+    * Add UATOMIC_HAS_ATOMIC_INT/LLONG for arm
+    * Add UATOMIC_HAS_ATOMIC_INT/LLONG for alpha
+    * Add UATOMIC_HAS_ATOMIC_INT/LLONG for aarch64
+    * Add UATOMIC_HAS_ATOMIC_INT/LLONG for atomic builtins
+    * Add builtin atomics size static asserts
+    * cleanup: use URCU_GCC_VERSION from compiler.h
+    * fix: atomic builtins defines for type support
+    * Move back CMM_LOAD/STORE_SHARED to volatile access
+    * Add cmm_annotate_mem_acquire() to URCU_DEREFERENCE_USE_VOLATILE rcu_dereference
+    * Use uatomic_load CMM_RELAXED in URCU_DEREFERENCE_USE_VOLATILE
+    * Fix: Re-introduce URCU_DEREFERENCE_USE_VOLATILE read barrier depends for alpha
+    * Tree-wide: Rename to uatomic_load/uatomic_store
+    * src: Use __*__ for attribute names
+    * API: Use __*__ for attribute names
+    * Fix Changelog 0.15.1 date
+    * uatomic/generic: Add missing #include &lt;stdlib.h&gt;
+    * docs: Clarify that make is required to build the project
+    * fix: add missing SPDX headers to urcu/uatomic/api.h
+    * compiler.h: Remove caa_unqual_scalar_typeof
+    * Fix compilation errors
+    * Document cmm_cast_volatile
+    * Honor URCU_DEREFERENCE_USE_VOLATILE
+    * arm: Use atomic builtins for xchg if supported
+    * Introduce _CMM_TOOLCHAIN_SUPPORT_C11_MM
+    * Seperate uatomic and uatomic_mo
+    * uatomic: Fix header guard comment
+    * Fix: missing typename in URCU_FORCE_CAST
+    * Allow building with GCC &gt;= 13.3 on RISC-V
+    * pointer.h: Fix the rcu_cmpxchg_pointer documentation
+    * rculfhash: make cds_lfht_iter_get_node argument const
+    * lfstack: make cds_lfs_empty argument const
+    * wfcqueue: make cds_wfcq_empty arguments const
+    * wfstack: make cds_wfs_empty argument const
+    * cds_list: make cds_list_replace @old argument const
+    * cds_list: make cds_list_empty const
+    * Adjust shell script to allow Bash in other locations
+    * futex.h: Indent preprocessor directives
+    * futex.h: Use urcu_posix_assert to validate unused values
+    * Use futex on OpenBSD
+    * fix: handle EINTR correctly in get_cpu_mask_from_sysfs
+    * Relicense src/compat-smp.h to MIT
+    * uatomic/x86: Remove redundant memory barriers
+    * cleanup: move rand_r compat code to tests
+    * ppc: Document cache line size choice
+    * Fix: change order of _cds_lfht_new_with_alloc parameters
+    * Add support for custom memory allocators for rculfhash
+    * ppc.h: use mftb on ppc
+    * rcutorture: Check histogram of ages
+    * docs: Add links to project resources
+    * Fix: allow clang to build liburcu on RISC-V
+    * Fix -Walloc-size
+    * cleanup: use an enum for the error states of nr_cpus_mask
+    * fix: add missing SPDX licensing tags
+    * urcu/uatomic/riscv: Mark RISC-V as broken
+    * Fix: urcu-bp: misaligned reader accesses
+    * rculfhash: Only pass integral types to atomic builtins
+    * LoongArch: Document that byte and short atomics are implemented with LL/SC
+    * Add LoongArch support
+    * Tests: Add test for byte/short atomics on addresses which are not word-aligned
+    * Complete removal of urcu-signal flavor
+    * doc/examples: Remove urcu-signal example
+    * tests/common: Remove urcu-signal common test files
+    * tests/benchmark: Remove urcu-signal benchmark tests
+    * tests/regression: Remove urcu-signal regression tests
+    * tests/unit: Remove urcu-signal unit tests
+    * Fix: Add missing cmm_smp_mb() in deprecated urcu-signal
+    * urcu/uatomic.h: Improve verbosity of static assert error messages
+    * urcu/compiler: Add urcu_static_assert
+    * Phase 1 of deprecating liburcu-signal
+    * uatomic/generic: Fix redundant declaration warning
+    * tests: Add tests for checking race conditions
+    * Add cmm_emit_legacy_smp_mb()
+    * urcu/annotate: Add CMM annotation
+    * tests/unit/test_build: Quiet unused return value
+    * benchmark: Use uatomic for accessing global states
+    * tests: Use uatomic for accessing global states
+    * urcu-wait: Fix wait state load/store
+    * Add CMM memory model
+    * urcu/arch/generic: Use atomic builtins if configured
+    * urcu/compiler: Use atomic builtins if configured
+    * configure: Add --enable-compiler-atomic-builtins option
+    * Fix: tests/rcutorture: Put thread offline on busy-wait
+    * tests/regression/rcutorture: Use urcu-wait
+    * tests/rcutorture: Factor out thread registration
+    * tests/regression/rcutorture: Add wait state
+    * urcu-wait: Initialize node in URCU_WAIT_NODE_INIT
+    * Complete REUSE support
+    * extras/abi: license data files under CC-1.0
+    * examples: use SPDX identifiers
+    * tests: use SPDX identifiers
+    * src: use SPDX identifiers
+    * Public headers: use SPDX identifiers
+    * Build system: use SPDX identifiers
+    * Fix: urcu-wait: add missing futex.h include
+    * doc: update GCC baseline to 4.8
+    * doc: update FreeBSD tested version
+    * doc: Remove Solaris from tested platforms
+    * Revert &quot;compiler.h: Introduce caa_unqual_scalar_typeof&quot;
+    * rculfhash: Use caa_container_of_check_null in cds_lfht_entry
+    * compiler.h: Introduce caa_container_of_check_null
+    * compiler.h: Introduce caa_unqual_scalar_typeof
+    * Avoid calling caa_container_of on NULL pointer in cds_lfht macros
+    * Fix: revise urcu_read_lock_update() comment
+    * Fix: uatomic powerpc comment about lwsync
+    * fix: aarch64: allow RHEL7 gcc 4.8.5-11
+    * aarch64: Implement caa_cpu_relax as yield instruction
+    * fix: warning 'noreturn' function does return on ppc
+    * Fix: use __noreturn__ for C11-compatibility
+    * Adjust shell scripts to allow Bash in other locations
+    * Add support for OpenBSD
+</comment>
+    <requestid>1323693</requestid>
+  </revision>
 </revisionlist>
