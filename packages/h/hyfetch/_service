@@ -3,7 +3,7 @@
     <param name="url">https://github.com/hykilpikonna/hyfetch</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">2.0.2</param>
+    <param name="revision">2.0.5</param>
     <param name="match-tag">*</param>
     <param name="changesgenerate">enable</param>
     <param name="changesauthor">cat@aulucya.gay</param>

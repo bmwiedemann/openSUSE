@@ -1,6 +1,7 @@
 #
 # spec file for package hyfetch
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +19,7 @@
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           hyfetch
-Version:        2.0.2
+Version:        2.0.5
 Release:        0
 Summary:        Customizable Linux System Information Script
 License:        MIT
@@ -26,7 +27,6 @@ Group:          Productivity/Text/Utilities
 URL:            https://github.com/hykilpikonna/HyFetch
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
-# PATCH-FIX-SUSE Fix E: env-script-interpreter
 Patch0:         fix-shebang.patch
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
@@ -48,8 +48,9 @@ It is a fork of neofetch, and adds pride flag coloration to the OS logo.
 
 %package -n neowofetch
 # version as reported by neowofetch --version
-Version:        8.0.2
+Version:        8.0.5
 Summary:        CLI system information tool written in BASH
+BuildArch:      noarch
 Provides:       neofetch = %{version}
 Obsoletes:      neofetch < %{version}
 

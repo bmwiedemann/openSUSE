@@ -85,4 +85,20 @@
     <comment></comment>
     <requestid>1304123</requestid>
   </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>b9dd7ba77de075410f8f9afc4c0dbc3f</srcmd5>
+    <version>unknown</version>
+    <time>1766493864</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.5:
+  * [+] Added support for Secureblue (#434)
+  * [+] Added `void_old` logo variant (#457)
+  * [+] Added Femme flag (#456)
+  * [F] Fixed a panic when entering an invalid alignment option after roling (#460)
+  * [F] Fixed a traceback printing on KeyboardInterrupt (#462)
+  * [+] Restored flags lost during the Python/Rust presets merge (#466)
+  * [F] Fixed a panic with file metadata access (#465)
+</comment>
+    <requestid>1324226</requestid>
+  </revision>
 </revisionlist>
