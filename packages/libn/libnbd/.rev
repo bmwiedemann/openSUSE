@@ -200,4 +200,12 @@ Factory, SLE15-SP7:GA, and SLFO:Main.</comment>
     <comment>Update libnbd to version 1.24.0</comment>
     <requestid>1324211</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>6185a20157653823ea7a1f7765cbb47b</srcmd5>
+    <version>1.24.0</version>
+    <time>1766493842</time>
+    <user>dimstar_suse</user>
+    <comment>Update libnbd to version 1.24.0. Include CVE and bug numbers in prior changelog entry.</comment>
+    <requestid>1324237</requestid>
+  </revision>
 </revisionlist>
