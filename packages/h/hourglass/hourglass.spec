@@ -1,7 +1,7 @@
 #
 # spec file for package hourglass
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appid com.github.sgpthomas.hourglass
 Name:           hourglass
-Version:        3.1.0
+Version:        3.1.1
 Release:        0
 Summary:        Clock gadget for the Pantheon DE
 License:        GPL-3.0-only
@@ -51,10 +51,6 @@ Pantheon's design scheme.
 %find_lang %{appid}
 %fdupes %{buildroot}
 
-#fix upstream
-chmod -x %{buildroot}%{_datadir}/icons/hicolor/*/apps/%{appid}.svg
-chmod -x %{buildroot}%{_datadir}/pixmaps/%{appid}.svg
-
 %files
 %license COPYING
 %doc AUTHORS README.md
@@ -62,8 +58,8 @@ chmod -x %{buildroot}%{_datadir}/pixmaps/%{appid}.svg
 %{_datadir}/applications/%{appid}.desktop
 %{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/%{appid}.svg
+%{_datadir}/icons/hicolor/*/apps/%{appid}.png
 %{_datadir}/metainfo/%{appid}.metainfo.xml
-%{_datadir}/pixmaps/%{appid}.svg
 
 %files lang -f %{appid}.lang
 
