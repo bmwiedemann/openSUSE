@@ -14446,6 +14446,7 @@ unsorted:
   - liblirc_client0-32bit 
   - liblirc_driver0 
   - liblirc_driver0-32bit 
+  - liblivechart-2-2 
   - liblkl0 
   - libllama0 
   - liblldb15 
@@ -17574,6 +17575,7 @@ unsorted:
   - live-usb-gui 
   - live555 
   - live555-devel 
+  - livechart-devel 
   - livedtd 
   - livi 
   - livi-lang 
@@ -38179,8 +38181,6 @@ unsorted:
   - switchboard-plug-notifications-lang 
   - switchboard-plug-onlineaccounts 
   - switchboard-plug-onlineaccounts-lang 
-  - switchboard-plug-pantheon-shell 
-  - switchboard-plug-pantheon-shell-lang 
   - switchboard-plug-printers 
   - switchboard-plug-printers-lang 
   - switchboard-plug-sharing 
