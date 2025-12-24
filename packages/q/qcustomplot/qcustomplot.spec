@@ -1,7 +1,7 @@
 #
 # spec file for package qcustomplot
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,36 +16,63 @@
 #
 
 
-Name:           qcustomplot
-Version:        2.1.1
+%global lib_ver 2.0.0
 %define sover   2
+
+%global qcustomplot_flavor @BUILD_FLAVOR@%{nil}
+%if "%{qcustomplot_flavor}" == ""
+ExclusiveArch:  do_not_build
+%endif
+%if "%{qcustomplot_flavor}" == "qt6"
+%define qt6 1
+%define qt_major 6
+%define qt_descr Qt6
+%if 0%{?suse_version} < 1600
+# requires <filesystem> and c++17
+%define gcc_ver 11
+%endif
+%endif
+%if "%{qcustomplot_flavor}" == "qt5"
+%define qt5 1
+%define qt_major 5
+%define qt_descr Qt5
+%endif
+
+%define pname qcustomplot
+%if 0%{?qt_major}
+%define libname libqcustomplot-qt%{qt_major}-%{sover}
+%define psuffix -qt%{qt_major}
+%endif
+
+Name:           %{pname}%{?psuffix}
+Version:        2.1.1
 Release:        0
-Summary:        Qt widget for plotting and data visualization
+Summary:        %{qt_descr} widget for plotting and data visualization
 License:        GPL-3.0-or-later
 URL:            https://www.qcustomplot.com/
 Group:          Development/Libraries/C and C++
 Source0:        https://www.qcustomplot.com/release/%{version}/QCustomPlot.tar.gz
-Source1:        https://www.qcustomplot.com/release/%{version}/QCustomPlot-sharedlib.tar.gz
-# PATCH-FIX-OPENSUSE relwithdebug.diff -- build with debug symbols
-Patch1:         relwithdebug.patch
+Source1:        CMakeLists.txt
+BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++ >= 4.6.4
-BuildRequires:  gdb
+BuildRequires:  gcc%{?gcc_ver}
+BuildRequires:  gcc%{?gcc_ver}-c++
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(%{qt_descr}Core)
+BuildRequires:  pkgconfig(%{qt_descr}Gui)
+BuildRequires:  pkgconfig(%{qt_descr}PrintSupport)
+BuildRequires:  pkgconfig(%{qt_descr}Widgets)
 
 %description
-QCustomPlot is a Qt C++ widget for plotting and data visualization.
+QCustomPlot is a %{qt_descr} C++ widget for plotting and data visualization.
 This plotting library focuses on making good looking, publication quality 2D
 plots, graphs and charts, as well as offering high performance for realtime
 visualization applications.
 
-%package     -n lib%{name}%{sover}
-Summary:        Qt widget for plotting and data visualization
+%package     -n %{libname}
+Summary:        %{qt_descr} widget for plotting and data visualization
 Group:          System/Libraries
+%if 0%{?qt5}
 Provides:       %{name} = %{version}
 Provides:       lib%{name} = %{version}
 Obsoletes:      %{name} < %{version}
@@ -54,51 +81,61 @@ Obsoletes:      %{name}-qt5 < %{version}
 # Earlier misnamed packages
 Provides:       lib%{name}-%{sover} = %{version}
 Obsoletes:      lib%{name}-%{sover} < %{version}
+%endif
 
-%description -n lib%{name}%{sover}
-QCustomPlot is a Qt C++ widget for plotting and data visualization.
+%description -n %{libname}
+QCustomPlot is a %{qt_descr} C++ widget for plotting and data visualization.
 This plotting library focuses on making good looking, publication quality 2D
 plots, graphs and charts, as well as offering high performance for realtime
 visualization applications.
 
 %package        devel
-Summary:        Development files for QCustomPlot
+Summary:        Development files for QCustomPlot - %{qt_descr}
 Group:          Development/Libraries/C and C++
-Requires:       lib%{name}%{sover} = %{version}
+Requires:       %{libname} = %{version}
+%if 0%{?qt5}
 Requires:       pkgconfig(Qt5PrintSupport)
 # Last used 2018 with version 2.0.0
-Provides:       %{name}-qt5-devel = %{version}
-Obsoletes:      %{name}-qt5-devel < %{version}
+Provides:       %{pname}-qt5-devel = %{version}
+Obsoletes:      %{pname}-qt5-devel < %{version}
+Conflicts:      %{pname}-qt6-devel
+%endif
+%if 0%{?qt6}
+Requires:       pkgconfig(Qt6PrintSupport)
+Conflicts:      %{pname}-qt5-devel
+%endif
 
 %description    devel
 This package contains libraries and header files for
-developing applications that use QCustomPlot.
+developing applications that use QCustomPlot - %{qt_descr}.
 
-%package        doc
+%package -n %{pname}-doc
 Summary:        Documentation and examples for QCustomPlot
 Group:          Documentation/Other
 BuildArch:      noarch
 
-%description    doc
+%description -n %{pname}-doc
 This package contains the documentation and examples for QCustomPlot.
 
 %prep
-%setup -q -n %{name} -a 1 %{name}-sharedlib
-%patch -P 1 -p1
+%autosetup -p1 -n %{pname}
+cp %{SOURCE1} .
+chmod -x GPL.txt
+find ./examples/ -name "*.cpp" -o -name "*.h" | xargs sed -i 's/\r$//'
 
 %build
-mkdir %{name}-sharedlib/sharedlib-compilation/build
-pushd %{name}-sharedlib/sharedlib-compilation/build
-export SOVERSION=%{version}
-%qmake5 ../sharedlib-compilation.pro
-%make_jobs
-popd
+%if 0%{?gcc_ver}
+export CC=gcc-%{gcc_ver}
+export CXX=g++-%{gcc_ver}
+%endif
+%cmake \
+  -DQT_VER=%{qt_major} \
+  -DLIB_VER=%{lib_ver} \
+  %{nil}
+%cmake_build
 
 %install
-pushd %{name}-sharedlib/sharedlib-compilation/build
-install -Dm 755 -t %{buildroot}%{_libdir} libqcustomplot*.so*
-popd
-
+%cmake_install
 install -Dm 644 qcustomplot.h %{buildroot}%{_includedir}/qcustomplot.h
 
 # pkg-config files
@@ -108,36 +145,41 @@ cat > %{buildroot}%{_libdir}/pkgconfig/%{name}.pc <<EOF
 libdir=%{_libdir}
 includedir=%{_includedir}
 
-Name:           %{name}
+Name:           %{pname}
 Version:        %{version}
 Description: %{summary}
 Cflags: -I\${includedir}
-Libs: -L\${libdir} -lqcustomplot
+Libs: -L\${libdir} -lqcustomplot%{psuffix}
 EOF
 
-install -Dm 0644 -t %{buildroot}%{_docdir}/%{name}/ changelog.txt documentation/qcustomplot.qch
-cp -r documentation/html/ %{buildroot}%{_docdir}/%{name}/
-cp -r examples %{buildroot}%{_docdir}/%{name}/
-find %{buildroot}%{_docdir}/%{name}/ -type f -exec chmod 0644 \{\} +
+# Only install documentation for one flavor (qt6)
+%if 0%{?qt6}
+install -Dm 0644 -t %{buildroot}%{_docdir}/%{pname}/ changelog.txt documentation/qcustomplot.qch
+cp -r documentation/html/ %{buildroot}%{_docdir}/%{pname}/
+cp -r examples %{buildroot}%{_docdir}/%{pname}/
+find %{buildroot}%{_docdir}/%{pname}/ -type f -exec chmod 0644 \{\} +
+%endif
+
 %fdupes %{buildroot}/%{_prefix}
 
-%post -n lib%{name}%{sover} -p /sbin/ldconfig
-%postun -n lib%{name}%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
-%files -n lib%{name}%{sover}
+%files -n %{libname}
 %license GPL.txt
-%{_libdir}/libqcustomplot.so.*
+%{_libdir}/lib%{name}.so.%{sover}*
 
 %files devel
 %{_includedir}/qcustomplot.h
-%{_libdir}/libqcustomplot.so
+%{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
 
-%files doc
-%dir %{_docdir}/%{name}/
-%{_docdir}/%{name}/qcustomplot.qch
-%{_docdir}/%{name}/changelog.txt
-%{_docdir}/%{name}/html/
-%{_docdir}/%{name}/examples/
+%if 0%{?qt6}
+%files -n %{pname}-doc
+%dir %{_docdir}/%{pname}/
+%{_docdir}/%{pname}/qcustomplot.qch
+%{_docdir}/%{pname}/changelog.txt
+%{_docdir}/%{pname}/html/
+%{_docdir}/%{pname}/examples/
+%endif
 
 %changelog

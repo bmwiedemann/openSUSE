@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Dec 19 18:16:40 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Build doc package only for a single flavour (qt6).
+- Ensure srcrpm names are flavor specific.
+- Fix qt6 flavor build for Leap 15.6 by explicitly requiring GCC
+  11 (for c++17 and filesystem support).
+
+-------------------------------------------------------------------
+Sun Dec  7 11:06:03 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Use multibuild to split package into Qt5 and Q6 flavours
+- Add CMakeLists.txt for easier packaging (from Fedora)
+- Drop not longer needed files
+  * QCustomPlot-sharedlib.tar.gz
+  * relwithdebug.patch
+
+-------------------------------------------------------------------
 Thu Jan  4 14:43:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Re-download QCustomPlot-sharedlib.tar.gz and QCustomPlot.tar.gz

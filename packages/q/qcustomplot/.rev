@@ -44,4 +44,20 @@
 </comment>
     <requestid>1136848</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>7e6af871c3dbb25900821b18a33afbab</srcmd5>
+    <version>2.1.1</version>
+    <time>1766578629</time>
+    <user>dimstar_suse</user>
+    <comment>- Build doc package only for a single flavour (qt6).
+- Ensure srcrpm names are flavor specific.
+- Fix qt6 flavor build for Leap 15.6 by explicitly requiring GCC 11 (for c++17 and filesystem support).
+- Use multibuild to split package into Qt5 and Q6 flavours
+- Add CMakeLists.txt for easier packaging (from Fedora)
+- Drop not longer needed files
+  * QCustomPlot-sharedlib.tar.gz
+  * relwithdebug.patch
+</comment>
+    <requestid>1324339</requestid>
+  </revision>
 </revisionlist>
