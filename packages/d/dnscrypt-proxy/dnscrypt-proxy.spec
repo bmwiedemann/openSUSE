@@ -25,7 +25,7 @@
 %define services    %{name}.socket %{name}.service %{name}-resolvconf.service
 
 Name:           dnscrypt-proxy
-Version:        2.1.14
+Version:        2.1.15
 Release:        0
 Summary:        A tool for securing communications between a client and a DNS resolver
 License:        ISC

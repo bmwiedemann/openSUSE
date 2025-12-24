@@ -364,4 +364,12 @@ version 2.1.6</comment>
     <comment>Update to version 2.1.14</comment>
     <requestid>1304108</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>5831d02880ed669058ac6301620928fb</srcmd5>
+    <version>2.1.15</version>
+    <time>1766578619</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 2.1.15</comment>
+    <requestid>1324327</requestid>
+  </revision>
 </revisionlist>
