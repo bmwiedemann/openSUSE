@@ -20,7 +20,7 @@
 %bcond_with    mutt_openssl
 %bcond_without mutt_gnutls
 Name:           mutt
-Version:        2.2.14
+Version:        2.2.16
 Release:        0
 Summary:        Mail Program
 # ftp://ftp.mutt.org/mutt/devel/

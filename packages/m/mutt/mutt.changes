@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov 22 22:22:22 UTC 2025 - olaf@aepfle.de
+
+- Update to mutt 2.2.16 (Bug fix release)
+  * fixing an IMAP search/limit bug
+
+-------------------------------------------------------------------
 Thu Aug  7 08:42:02 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Exclude sample ca-bundle.crt as it is outdated (bsc#1246321)

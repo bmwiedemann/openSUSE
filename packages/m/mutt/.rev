@@ -1510,4 +1510,12 @@ with a run of spec-cleaner (forwarded request 826781 from AndreasStieger)</comme
     <comment>- Exclude sample ca-bundle.crt as it is outdated (bsc#1246321)</comment>
     <requestid>1298099</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>4c07e2c36e35af68552d592b7dc6562e</srcmd5>
+    <version>2.2.16</version>
+    <time>1766578588</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1324302</requestid>
+  </revision>
 </revisionlist>
