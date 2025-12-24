@@ -1,4 +1,137 @@
 -------------------------------------------------------------------
+Tue Dec 23 04:38:35 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 2.2.1:
+  * chore: improve the visibility of orphaned containers in logs
+  * build(deps): bump actions/attest-build-provenance from 3.0.0 to 3.1.0
+  * build(deps): bump docker/setup-buildx-action from 3.11.1 to 3.12.0
+  * update kind (0.31.0)
+  * update Kubo (0.39.0)
+  * update soci-snapshotter (0.12.1)
+  * update RootlessKit (2.3.6)
+  * update imgcrypt (2.0.2)
+  * update BuildKit (0.26.3)
+  * update CNI plugins (1.9.0)
+  * update runc (1.4.0)
+  * update containerd (2.2.1)
+  * build(deps): bump github.com/rootless-containers/rootlesskit/v2
+  * build(deps): bump github.com/containerd/nydus-snapshotter
+  * build(deps): bump github.com/containerd/containerd/v2
+  * Fix `'C:\\Program Files\\Linux Containers\\kernel' not found`
+  * nerdctl image prune -f means --force, not --filter
+  * (feat): Default net.ipv4.ip_unprivileged_port_start to 0 inside containers
+  * Revert "Fix SOCI image convertion regression for 0.12.0 release"
+  * test: refactor compose_up_linux_test.go to use Tigron
+  * build(deps): bump github.com/docker/cli in the docker group
+  * build(deps): bump actions/cache from 5.0.0 to 5.0.1
+  * docs: add additional nerdtest `Requirement`
+  * build(deps): bump actions/cache from 4.3.0 to 5.0.0
+  * --help: fix output
+  * build(deps): bump the golang-x group with 6 updates
+  * build(deps): bump github.com/containernetworking/plugins
+  * build(deps): bump github.com/containerd/nydus-snapshotter
+  * Refactor container_exec_test.go to use Tigron
+  * fix: support tmpfs long syntax in compose volumes
+  * Refactor container_list_test.go to use Tigron
+  * build(deps): bump tonistiigi/xx from 1.8.0 to 1.9.0
+  * build(deps): bump github.com/spf13/cobra from 1.10.1 to 1.10.2
+  * build(deps): bump github.com/containerd/nydus-snapshotter
+  * build(deps): bump github.com/docker/cli in the docker group
+  * docs/command-reference.md: fix nerdctl namespace anchors without blue_square
+  * build(deps): bump actions/checkout from 6.0.0 to 6.0.1
+  * fix(namespace): add namespace existence check in Inspect command
+  * fix(namespace): add namespace existence check in update command
+  * fix(namespace): require --label falg for update command
+  * build(deps): bump github.com/docker/cli in the docker group
+  * build(deps): bump github.com/compose-spec/compose-go/v2
+  * build(deps): bump github.com/klauspost/compress from 1.18.1 to 1.18.2
+  * fix: sort results of `nerdctl ps` and `nerdctl compose ps` alphabetically
+  * build(deps): bump github.com/opencontainers/selinux
+  * build(deps): bump github.com/cyphar/filepath-securejoin
+  * build(deps): bump docker/metadata-action from 5.9.0 to 5.10.0
+  * build(deps): bump github.com/docker/cli in the docker group
+  * Fix SOCI image convertion regression for 0.12.0 release
+  * build(deps): bump github.com/docker/cli in the docker group
+  * fix: split else-if to avoid identical-branches lint error
+  * build(deps): bump actions/setup-go from 6.0.0 to 6.1.0
+  * build(deps): bump actions/checkout from 5.0.1 to 6.0.0
+  * build(deps): bump golang.org/x/crypto in the golang-x group
+  * build(deps): bump actions/checkout from 5.0.0 to 5.0.1
+  * build(deps): bump github.com/docker/cli in the docker group
+  * build(deps): bump the golang-x group across 1 directory with 6 updates
+  * add env variable parsing for healthcheck command
+  * add config parsing to globalFlags and testing
+  * add all global options to healthcheck command
+  * add global options to healthcheck command
+  * fix: make PORTS in nerdctl ps or nerdctl compose ps easier to view
+  * build(deps): bump github.com/docker/cli in the docker group
+  * build(deps): bump the stargz group with 3 updates
+  * build(deps): bump github.com/containerd/imgcrypt/v2 from 2.0.1 to 2.0.2
+  * update stargz-snapshotter (0.18.1)
+  * update fuse-overlayfs (1.16)
+  * update containerd-fuse-overlayfs (2.1.7)
+  * update BuildKit (0.25.2)
+  * update containerd (2.2.0)
+  * build(deps): bump github.com/containerd/containerd/v2
+  * build(deps): bump docker/setup-qemu-action from 3.6.0 to 3.7.0
+  * build(deps): bump the docker group with 2 updates
+  * Upgrade runc to v1.3.3
+  * build(deps): bump docker/metadata-action from 5.8.0 to 5.9.0
+  * build(deps): bump github.com/containerd/containerd/v2
+  * update Kubo (0.38.2)
+  * update Nydus (2.3.9)
+  * update gotestsum (1.13.0)
+  * update stargz-snapshotter (0.18.0)
+  * update BuildKit (0.25.1)
+  * update runc (1.3.2)
+  * Add support for mount manager
+  * Should use mount.UnmountMounts for unmounting submounts
+  * bump to containerd v2.2.0-rc.0
+  * bump containerd to v2.2.0-rc.0
+  * build(deps): bump github.com/compose-spec/compose-go/v2
+  * manifest: unexport subcommand
+  * checkpoint: unexport subcommand
+  * docs: add checkpoint remove command reference
+  * checkpoint: add unit test for checkpoint rm
+  * checkpoint: support checkpoint rm command
+  * build(deps): bump github.com/containerd/nydus-snapshotter
+  * build(deps): bump github.com/ipfs/go-cid from 0.5.0 to 0.6.0
+  * build(deps): bump github.com/containerd/cgroups/v3 from 3.0.5 to 3.1.0
+  * docs: add checkpoint list command reference
+  * checkpoint: add unit test for checkpoint ls
+  * checkpoint: support checkpoint ls command
+  * build(deps): bump github.com/containerd/nydus-snapshotter
+  * fix ci failures about soci
+  * fix: don't symlink buildkit-cni documentation files to bin/
+  * Disable checkpoint/restore unit tests for docker
+  * compose: add unit tests for config hash and dependency handling
+  * compose: align convergence with Docker Compose
+  * taskutil: introduce taskoptions to reduce argument numbers
+  * ci: install criu dependency
+  * docs: add nerdctl start with checkpoint command reference
+  * container: add unit test for container start with checkpoint
+  * container: add checkpoint restore support to container start
+  * docs: add checkpoint create command reference
+  * checkpoint: add unit tests for checkpoint create command
+  * checkpoint: support nerdctl checkpoint create command
+  * CI: mark TestPush flaky
+  * add support for the new --estargz-gzip-helper option in stargz-snapshotter
+  * bump github.com/containerd/stargz-snapshotter from v0.17.0 to v0.18.0
+  * build(deps): bump github.com/klauspost/compress from 1.18.0 to 1.18.1
+  * build(deps): bump tonistiigi/xx from 1.7.0 to 1.8.0
+  * CI: skip flaky tests on EL8 and ARM64
+  * healthcheck: fix path issues and add default config values
+  * build(deps): bump golang.org/x/net in the golang-x group
+  * build(deps): bump lima-vm/lima-actions from 1.0.1 to 1.1.0
+  * build(deps): bump the docker group with 2 updates
+  * build(deps): bump github.com/containerd/nydus-snapshotter
+  * build(deps): bump the golang-x group across 1 directory with 5 updates
+  * docs/command-reference.md: fix markdown
+  * docs/command-reference.md: remove outdated "Windows enabled" notes
+  * Fix namestore directory regression: restore names subdirectory in path
+  * build(deps): bump the docker group with 2 updates
+
+-------------------------------------------------------------------
 Tue Oct 07 06:51:36 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 2.1.6:
