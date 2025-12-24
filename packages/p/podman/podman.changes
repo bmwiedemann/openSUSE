@@ -1,4 +1,338 @@
 -------------------------------------------------------------------
+Mon Dec 22 07:41:09 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 5.7.1:
+  * Bump to v5.7.1
+  * Final release notes update for v5.7.1
+  * kube play: Fix fd leak when handling symlinks
+  * Update release notes for v5.7.1
+  * avoid potential nil ptr deref in image rm
+  * fix: check err returned by newGenericDecompressor
+  * pkg/specgen/generate: Fix adding host devices on FreeBSD
+  * Replace FindExecutablePeer with FindHelperBinary
+  * [v5.7] Bump common to v0.66.1
+  * libpod: simplify resolveWorkDir()
+  * libpod: fix workdir MkdirAll() all check
+  * [v5.7] Bump Buildah to v1.42.2, runc to v1.3.4
+  * rootless_linux.c: use shortcut for system commands
+  * SetupRootless handle case where conmon pid are not valid
+  * preallocate paths in SetupRootless
+  * fix noMoveProcess in SetupRootless
+  * use return error handling in SetupRootless
+  * pkg/machine: make mount units hook into local-fs
+  * docs: fix redoc swagger URL
+  * Bump Podman to v5.7.1-dev
+  * Bump to v5.7.0
+  * Create release notes for v5.7.0
+  * hack/bats: port it to use the new remote support
+  * test/system: fix broken podman_runtime
+  * test/system: fix artifact test cleanup
+  * test/system: merge artifact tests into single file
+  * test/system: rework artifact created test
+  * test/system: remove 701-artifact-created.bats
+  * test/system: do not run artifact test in parallel
+  * test/system: skip flaky restore test on debian
+  * test/e2e: try to fix clean up after terminated build flake
+  * [v5.7] Packit/TMT: remove podman-next repos from release branches
+  * [v5.7] fix lint issues with github.com/cyphar/filepath-securejoin
+  * [v5.7] Bump to runc v1.3.3 - CVE-2025-52881
+  * rotate aws meta_task keys
+  * rotate aws key
+  * Bump Podman to v5.7.0-dev
+  * Bump to v5.7.0-rc3
+  * Update release notes for v5.7.0-rc3
+  * Fix cache misses when pulling WSL machine image
+  * test: organize search tests with BeforeEach/AfterEach patterns
+  * test: refactor search_test.go to use helper functions and PodmanExitCleanly
+  * test: Replace external registry deps with mock server in search tests
+  * Add tmt integration plan
+  * Bump bundled krunkit from 1.1.0 to 1.1.1
+  * Allow RC Windows Installer to be built
+  * Allow failures on WSL machine tests
+  * Bump Podman to v5.7.0-dev
+  * Bump to v5.7.0-rc2
+  * Add release notes for v5.7.0-rc2
+  * Bump bundled krunkit from 0.2.2 to 1.1.0
+  * Fix Windows Installer GH release
+  * Add CreatedAt format option to podman artifact ls
+  * Bump Podman to v5.7.0-dev
+  * Bump to v5.7.0-rc1
+  * Add release notes for v5.7.0-rc1
+  * quadlet: add `cat` alias for `print`
+  * Bump Buidah to v1.42.0 for Podman v5.7
+  * fix: failing tests
+  * feat(quadlet: kube): support multiple Yaml entries
+  * Warn on boltdb use
+  * fix artifact inspect issues
+  * feat(cmd): podman kube play support multiple arguments
+  * cmd/podman: add replace flag to quadlet install
+  * fix: typo in uidmap option doc
+  * RPM: build with sequoia for F43+
+  * feat: add `--format` flag to artifact inspect
+  * artifact: added CREATED column to artifact ls Fixes: #27314
+  * fix remote command parameters
+  * Add a test for containers.conf runtime options
+  * docs: introduce custom version selector in api.html
+  * add test for container name without Pod name prefix feature
+  * Allow artifact add to override org.opencontainers.image.title annotation
+  * Vendor in latest go.podman.io/common
+  * fileperms: newer Go 1.13+ octal literal format
+  * Quadlet build - add support for IgnoreFile key
+  * Add default runtime flags in config
+  * remove libartifact from podman
+  * chore: remove repetitive word in cmd/podman/README.md
+  * add option to remove Pod name prefix in resulting container name
+  * Add a new Windows installer supporting user scope
+  * docs: initialize redoc via JS API
+  * docs: generate Reference version list from json file
+  * fix: system prune JSON unmarshalling error in remote client
+  * [skip-ci] Update actions/setup-node action to v6
+  * docs: add missing manifest parameter to build API endpoints
+  * Add BuildArg example into documentation
+  * Add artifact quadlet unit type support
+  * Fix flaky sysctl completion by handling /proc/sys errors gracefully
+  * Run `make validatepr`
+  * Update docs/source/markdown/podman-systemd.unit.5.md
+  * Iterate through all machine providers in FindMachineByPort
+  * Add local build API for direct filesystem builds on MacOS and Windows (only WSL)
+  * fix(deps): update module golang.org/x/term to v0.36.0
+  * Update docs for StopTimeOut
+  * SECURITY.md: point to container-libs
+  * Update documentation to include BuildArg key
+  * Test for multiple key/val arguments
+  * Add BuildArg key to quadlets
+  * fix(deps): update module golang.org/x/sys to v0.37.0
+  * Fixed #27120: Pod Quadlet can configure podman pod stop --time
+  * fix(deps): update module golang.org/x/net to v0.45.0
+  * Fix --userns=ns:<path> conflicting with runc 1.1.11+
+  * quadlet: standardize Convert function signatures
+  * Add --replace option to podman artifact add command
+  * test/system: actually wait for container removal
+  * test/system: run_podman ? needs quoting
+  * quadlet: remove unused 'name' parameter from ConvertNetwork and ConvertVolume
+  * fix: #23915 podman build is not parsing sbom command line arguments
+  * test: Wait for killed container to avoid leak
+  * Update pkg/api/server/register_artifacts.go
+  * [DOCS] Add missing stable swagger API links
+  * fix(deps): update module github.com/onsi/ginkgo/v2 to v2.26.0
+  * secret ls: align docs, completion, and tests; fix formatting
+  * Add artifact fallback to podman inspect command
+  * pkg/api: api list quadlets resource
+  * cmd/podman: --ignore errors flag to artifact rm
+  * lint: reenable revive unused-parameter check
+  * stop service instances
+  * test: remove outdated skip in podman run check personality support test
+  * fix(deps): update module github.com/shirou/gopsutil/v4 to v4.25.9
+  * Quadlet - Support template dependency
+  * test: fix "run healthcheck" bindings test
+  * cmd: add auto completion for network create --interface-name
+  * docs: point Go Report Card badge to v5 module path
+  * pkg/api/handlers/compat: use strings.CutPrefix
+  * pkg/machine/wsl: use any instead of interface{}
+  * pkg/machine/e2e: remove obsoleted comment
+  * docs: fix Go Report Card badge to reference current repository
+  * cmd/podman/system: fix error handling in renumber and migrate commands
+  * [compat api] Remove ContainerConfig field
+  * [DOCS] Update volume mount docs for subpath support
+  * Implement TLS API Support
+  * test/e2e: fmt artifact list with virtual size
+  * Add Podman 6 HLD
+  * Add a design document for Conmon v3
+  * Add creation timestamp to podman artifacts
+  * docs: clarify that --userns=keep-id runs container as host UID
+  * cmd/podman: added virtual size option in artifact ls
+  * test: Fix test race in 030-run
+  * cmd/podman: completion for --sysctl in create/run
+  * fix: standardize casing for cgroups in documentation
+  * test: remove hack workaround in 'use plugin in containers'
+  * test: remove skip_if_remote from podman run - uidmapping has no /sys/kernel mounts
+  * chore(deps): update dependency golangci/golangci-lint to v2.5.0
+  * add containerfile doc link
+  * libpod: Fill out OnlineCPUs in the FreeBSD stats handler
+  * libpod: Implement getOnlineCPUs() on FreeBSD
+  * test/system: fix test race in exec leak check
+  * Update github action to use pull_request_target
+  * Revert "test/e2e: try debug potential pasta issue"
+  * docs: remove remote limitation note for --build-context option
+  * fix: Correct typo in chrootdirs option
+  * pkg/bindings: on terminal attach always wait for stdout to be done
+  * pkg/bindings: use HTTP 101 upgrade request for attach
+  * Add --sign-by-sq-fingerprint to push operations
+  * Exercise containers_image_sequoia in CI
+  * Revert "Rewrite the Quadlet documentation."
+  * Revert "Change the syntax to not depend on jinja2."
+  * Revert "Deduplicate more options."
+  * Revert "docs: restore podman-systemd.unit.5"
+  * fix(emulation): handle fs.ErrNotExist in registeredBinfmtMisc
+  * [skip-ci] Update actions/setup-node action to v5
+  * [skip-ci] Update actions/github-script action to v8
+  * troubleshooting: document lsetxattr error
+  * [skip-ci] Update actions/checkout action to v5
+  * vendor: update golang.org/x packages
+  * use maps.Clone() over Copy() when possible
+  * libpod/oci_conmon_linux.go: fix false postive in linter
+  * pkg/systemd/quadletL silence one lint warning
+  * inline some conditionals
+  * run modernize -fix ./...
+  * use bytes.SplitSeq where possible
+  * use strings.SplitSeq where possible
+  * update to go 1.24
+  * test/e2e: fix podman run default mask test with crun 1.24
+  * test/system: skip noswap memory mounts correctly
+  * test/system: skip idmapped mount correctly
+  * cirrus: update to freebsd 14.3
+  * cirrus: fix golangci-lint cache leak
+  * New VM images 2025-09-10
+  * Add a directory for design documents
+  * Quadlet build - consider File path that starts with a systemd specifier as absolute
+  * Makefile: restore HELPER_BINARIES_DIR
+  * fix(deps): update module google.golang.org/protobuf to v1.36.9
+  * refactor: Modularize binding build functions
+  * Adding github action to generate a badge for first time contributor
+  * fix: set header fields before response status code to prevent missing fields
+  * fix(deps): update module github.com/opencontainers/cgroups to v0.0.5
+  * test/e2e: add CVE-2025-9566 regression test
+  * docs: restore podman-systemd.unit.5
+  * Deduplicate more options.
+  * Update module github.com/onsi/ginkgo/v2 to v2.25.3
+  * quadlet: fix runtime error for invalid Mount value
+  * [skip-ci] Update actions/labeler action to v6
+  * Update dependency pytest to v8.4.2
+  * kube play: don't follow volume symlinks onto the host
+  * Add R! to systemd-tmpfiles script for all /tmp dirs
+  * spf13/pflag: replace deprecated ParseErrorsWhitelist
+  * update module github.com/spf13/pflag to v1.0.10
+  * [skip-ci] Update actions/stale action to v10
+  * [skip-ci] Update actions/setup-go action to v6
+  * fix(deps): update module github.com/docker/docker to v28.4.0+incompatible
+  * test/buildah-bud: enable one skipped test
+  * vendor: update go.podman.io/{common,image,storage}
+  * Fix a locking bug in that could cause a double-unlock
+  * Makefile: add SOURCES dep to bin/podman.cross.% target
+  * Makefile: add proper docs for bin/podman.cross.%
+  * Revert "Remove bin/podman.cross Make target"
+  * refactor: modularize build REST API with utility functions
+  * libpod: Fix the jailName helper
+  * libpod: Fix "top" support on FreeBSD
+  * compat: Deduplicate the Linux and FreeBSD containers/stats helpers
+  * compat: Add a stub container/stats handler for FreeBSD
+  * Change the syntax to not depend on jinja2.
+  * Rewrite the Quadlet documentation.
+  * test/system: remove distro-integration bats tag
+  * test/system: fix podman load - from URL
+  * test/system: do not connect to github server
+  * Handle SIGPIPE to prevent machine stuck in Starting state
+  * fix(deps): update module github.com/spf13/cobra to v1.10.1
+  * quadlet: add HttpProxy option for Container sections
+  * fix(deps): update module github.com/checkpoint-restore/checkpointctl to v1.4.0
+  * do not pass [no]copy as bind mounts options to runtime
+  * do not pass volume-opt as bind mounts options to runtime
+  * Switch common, storage and image to monorepo.
+  * chore(deps): update module github.com/ulikunitz/xz to v0.5.15 [security]
+  * fix(deps): update module github.com/spf13/pflag to v1.0.9
+  * fix(deps): update module github.com/shirou/gopsutil/v4 to v4.25.8
+  * Mention zstandard tarball import support
+  * chore(deps): update module github.com/go-viper/mapstructure/v2 to v2.4.0 [security]
+  * fix(deps): update module github.com/onsi/ginkgo/v2 to v2.25.2
+  * tests: Get rid of netcat on the host and use Bash's /dev/tcp
+  * tests: Replace ncat for socat
+  * Add support for criu's tcp-close functionality.
+  * test/e2e: actually start container in startContainer
+  * fix(deps): update module github.com/stretchr/testify to v1.11.1
+  * test/buildah-bud: skip new failing test
+  * test/e2e: remove image diff test skips
+  * vendor: update buildah to latest main
+  * vendor: update c/{common, image, storage} to latest main
+  * Add a release note for 5.6 Rosetta being disabled-by-default
+  * fix(deps): update module github.com/stretchr/testify to v1.11.0
+  * fix(libpod): truncate long hostnames to correct maximum length
+  * fix(deps): update module github.com/onsi/ginkgo/v2 to v2.25.1
+  * fix(deps): update module github.com/mattn/go-sqlite3 to v1.14.32
+  * fix(deps): update module github.com/onsi/ginkgo/v2 to v2.25.0
+  * fix(deps): update module github.com/coreos/go-systemd/v22 to v22.6.0
+  * Improve documentation wording
+  * windows: do not convert unconfined seccomp path
+  * ci: log wsl --version output
+  * Update module github.com/kevinburke/ssh_config to v1.4.0
+  * Update module go.etcd.io/bbolt to v1.4.3
+  * Update release notes on main to reflect v5.6 release
+  * podman events: show network create/remove event with journald
+  * cirrus: fix podman machine windows only_if condition
+  * update tests duo to CRUN#1767 to support both values
+  * Optimize image loading for Podman machines
+  * Skip JSON parsing for non-JSON error responses
+  * [docs] Refactor Artifact API documentation
+  * fix(deps): update module github.com/onsi/ginkgo/v2 to v2.24.0
+  * docs(run,create): note remote clients support only docker transport
+  * Configurable GINKGOTIMEOUT in `winmake.ps1`
+  * Fixes #26369
+  * Fixes: #26353
+  * 2025 3Q Roadmap Update
+  * docs: add missing groups and hgroups descriptors to podman-top documentation
+  * added system-connection-add options example
+  * fix(deps): update module github.com/containers/gvisor-tap-vsock to v0.8.7
+  * test/buildah-bud/run-buildah-bud-tests: loosen the branch regexp
+  * added example for custom socket
+  * chore(deps): update dependency golangci/golangci-lint to v2.4.0
+  * chore(deps): update docker.io/library/golang docker tag to v1.25
+  * fix: Correct small typo foce -> force
+  * feat: Add artifact remove --all option
+  * Update ADOPTERS.md
+  * make machine --user-mode-networking docs more clear
+  * [skip-ci] Update actions/checkout action to v5
+  * remove outdated dependencies/analyses scripts
+  * contrib: add script and docs to analyze dependency usage
+  * Small changes suggested by markdown linter.
+  * Updated with Type descriptions.
+  * Add a deprecation notice for users of BoltDB
+  * test/buildah-bud: fix checkout to also handle go.mod replace
+  * Update module golang.org/x/net to v0.43.0
+  * Updated with badges for Type and no extra line.
+  * Feat: Add log_path support in containers.conf
+  * Update vendor dependencies
+  * New: initial ADOPTERS.md file.
+  * Fix typo
+  * Fixes: #26691
+  * fix: drop yearly contributor badge
+  * [skip-ci] Update actions/download-artifact action to v5
+  * Manpages: Added --filter flag examples to all the relevant podman manpages
+  * Manpages: podman container runlabel added example with --replace
+  * Add support for configuring tls verification with machine init
+  * pkg/machine/e2e: remove build context skip
+  * fix(deps): update common, image, and storage deps
+  * doc(podman-system.unit.5.md): clarify user/group
+  * Packit: do not notify on podman-next failures
+  * chore(deps): update dependency golangci/golangci-lint to v2.3.1
+  * Makefile: Clarify different `binaries` targets
+  * docs: add examples with resource limits and mounts to podman pod create manpage
+  * compat: remove deprecated VirtualSize
+  * fix(deps): update module github.com/shirou/gopsutil/v4 to v4.25.7
+  * [CI:DOCS] Remove Experimental from Artifacts man pages
+  * Fix: Improve error message for empty device modes in API requests
+  * docs(kube play): clarify --annotation flag only affects containers, not pods
+  * feat: add Podman artifact support to Go bindings and remote clients
+  * events: add support for label filter with key only
+  * compat: GET /_ping return Builder-Version: 1
+  * compat: remove GET /system/df BuilderSize
+  * compat: add shared-size par to GET /images/json
+  * docs: add LFX Insights badges
+  * Fix ancestor filter to support Docker-compatible substring matching
+  * fix(deps): update module github.com/mattn/go-sqlite3 to v1.14.30
+  * fix(deps): update module github.com/docker/docker to v28.3.3+incompatible [security]
+  * fix(deps): update module sigs.k8s.io/yaml to v1.6.0
+  * docs: add resource limit examples to podman pod clone manpage
+  * Improve handling of --publish and incompatible NetNS modes
+  * Consolidate the definition and consumption of --sign* CLI options
+  * Fix (podman artifact push --creds)
+  * Remove unused CLI options
+  * Bump main to v5.7.0-dev
+  * podman: add --creds and --cert-dir to create/run
+  * Update module github.com/mattn/go-sqlite3 to v1.14.29
+  * Skip rather than comment bad diff tests
+  * Link to blog post
+  * compat: RepoTags and RepoDigest return [] and not null
+
+-------------------------------------------------------------------
 Fri Oct 03 05:26:38 UTC 2025 - Danish Prakash <danish.prakash@suse.com>
 
 - Update to version 5.6.2:
