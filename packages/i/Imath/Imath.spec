@@ -1,6 +1,7 @@
 #
 # spec file for package Imath
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +20,7 @@
 %global so_suffix -3_2
 %define sonum     30
 Name:           Imath
-Version:        3.2.1
+Version:        3.2.2
 Release:        0
 Summary:        C++ and Python Library of 2D and 3D Vector, Matrix, and Math Operations
 License:        BSD-3-Clause

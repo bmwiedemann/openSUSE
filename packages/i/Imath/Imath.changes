@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 22 11:44:07 UTC 2025 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 3.2.2
+  * fix build problem with newer versions of cmake
+
+-------------------------------------------------------------------
 Wed Oct  1 09:02:05 UTC 2025 - pgajdos@suse.com
 
 - version update to 3.2.1

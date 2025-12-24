@@ -142,4 +142,12 @@
   * baselibs.conf</comment>
     <requestid>1308353</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bf1617240fb0a51fb814e629d9e8dcb5</srcmd5>
+    <version>3.2.2</version>
+    <time>1766578518</time>
+    <user>dimstar_suse</user>
+    <comment>version update to 3.2.2</comment>
+    <requestid>1324184</requestid>
+  </revision>
 </revisionlist>
