@@ -216,4 +216,17 @@
     <comment></comment>
     <requestid>890409</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>2d5edb911453e758886d130695d6b43a</srcmd5>
+    <version>1.800.0</version>
+    <time>1766578522</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.800.0 (1.80)
+   see /usr/share/doc/packages/perl-DateTime-Format-Strptime/Changes
+  1.80     2025-12-06
+  * Fix the parse_datetime docs to state that it returns either an empty list of undef when it cannot
+    parse the given string, depending on the context. Previously, the docs said it always returned
+    undef, which is not true. Reported by @falsifian (James Cook). GH #33.</comment>
+    <requestid>1324188</requestid>
+  </revision>
 </revisionlist>

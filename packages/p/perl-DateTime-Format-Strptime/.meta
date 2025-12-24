@@ -4,6 +4,5 @@
 reverse of strftime(3), for DateTime. While strftime takes a DateTime and a
 pattern and returns a string, strptime takes a string and a pattern and
 returns the DateTime object associated.</description>
-  <devel project="devel:languages:perl" package="perl-DateTime-Format-Strptime"/>
   <url>http://search.cpan.org/dist/DateTime-Format-Strptime/</url>
 </package>

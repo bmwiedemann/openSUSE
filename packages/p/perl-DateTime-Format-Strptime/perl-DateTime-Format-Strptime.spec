@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DateTime-Format-Strptime
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,23 +18,26 @@
 
 %define cpan_name DateTime-Format-Strptime
 Name:           perl-DateTime-Format-Strptime
-Version:        1.79
+Version:        1.800.0
 Release:        0
-Summary:        Parse and format strp and strf time patterns
+# 1.80 -> normalize -> 1.800.0
+%define cpan_version 1.80
 License:        Artistic-2.0
+Summary:        Parse and format strp and strf time patterns
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(DateTime) >= 1.00
-BuildRequires:  perl(DateTime::Locale) >= 1.300000
+BuildRequires:  perl(DateTime) >= 1.0
+BuildRequires:  perl(DateTime::Locale) >= 1.300
 BuildRequires:  perl(DateTime::Locale::Base)
 BuildRequires:  perl(DateTime::Locale::FromData)
-BuildRequires:  perl(DateTime::TimeZone) >= 2.09
+BuildRequires:  perl(DateTime::TimeZone) >= 2.90
 BuildRequires:  perl(Params::ValidationCompiler)
-BuildRequires:  perl(Specio) >= 0.33
+BuildRequires:  perl(Specio) >= 0.330
 BuildRequires:  perl(Specio::Declare)
 BuildRequires:  perl(Specio::Exporter)
 BuildRequires:  perl(Specio::Library::Builtins)
@@ -44,19 +47,22 @@ BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(Test::Warnings)
 BuildRequires:  perl(Try::Tiny)
 BuildRequires:  perl(parent)
-Requires:       perl(DateTime) >= 1.00
-Requires:       perl(DateTime::Locale) >= 1.300000
+Requires:       perl(DateTime) >= 1.0
+Requires:       perl(DateTime::Locale) >= 1.300
 Requires:       perl(DateTime::Locale::Base)
 Requires:       perl(DateTime::Locale::FromData)
-Requires:       perl(DateTime::TimeZone) >= 2.09
+Requires:       perl(DateTime::TimeZone) >= 2.90
 Requires:       perl(Params::ValidationCompiler)
-Requires:       perl(Specio) >= 0.33
+Requires:       perl(Specio) >= 0.330
 Requires:       perl(Specio::Declare)
 Requires:       perl(Specio::Exporter)
 Requires:       perl(Specio::Library::Builtins)
 Requires:       perl(Specio::Library::String)
 Requires:       perl(Try::Tiny)
 Requires:       perl(parent)
+Provides:       perl(DateTime::Format::Strptime) = %{version}
+Provides:       perl(DateTime::Format::Strptime::Types) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -66,8 +72,9 @@ the reverse of 'strftime(3)', for 'DateTime'. While 'strftime' takes a
 and a pattern and returns the 'DateTime' object associated.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -82,7 +89,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc azure-pipelines.yml bench Changes CODE_OF_CONDUCT.md CONTRIBUTING.md precious.toml README.md
+%doc bench Changes CODE_OF_CONDUCT.md CONTRIBUTING.md README.md
 %license LICENSE
 
 %changelog

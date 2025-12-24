@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Dec  6 05:33:23 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.800.0 (1.80)
+   see /usr/share/doc/packages/perl-DateTime-Format-Strptime/Changes
+
+  1.80     2025-12-06
+
+  * Fix the parse_datetime docs to state that it returns either an empty list of undef when it cannot
+    parse the given string, depending on the context. Previously, the docs said it always returned
+    undef, which is not true. Reported by @falsifian (James Cook). GH #33.
+
+-------------------------------------------------------------------
 Mon May  3 03:06:56 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.79
