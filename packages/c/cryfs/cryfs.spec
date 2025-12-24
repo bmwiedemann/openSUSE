@@ -19,11 +19,9 @@
 # https://www.cryptopp.com/wiki/Link_Time_Optimization
 # see also -DCRYPTOPP_DISABLE_ASM=ON below
 #%%define _lto_cflags %%{nil}
-
 %bcond_without  tests
-
 Name:           cryfs
-Version:        1.0.1
+Version:        1.0.3
 Release:        0
 Summary:        Cryptographic filesystem for the cloud
 License:        LGPL-3.0-only
@@ -32,10 +30,6 @@ Source0:        https://github.com/cryfs/cryfs/releases/download/%{version}/%{na
 Source1:        https://github.com/cryfs/cryfs/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 # 0x5D5EC7BC6F1443EC2AF7177A9E6C996C991D25E1
 Source2:        %{name}.keyring
-# PATCH-FIX-UPSTREAM fix-build-with-boost-1_88.patch -- based on PR 494
-Patch0:         fix-build-with-boost-1_88.patch
-# PATCH-FIX-UPSTREAM fix-build-with-boost-1_89.patch -- based on PR 500
-Patch1:         fix-build-with-boost-1_89.patch
 # PATCH-FIX-UPSTREAM fix-feature-fuse3.patch -- based on branch feature/fuse3
 Patch2:         fix-feature-fuse3.patch
 BuildRequires:  cmake >= 3.25
@@ -53,13 +47,13 @@ BuildRequires:  cmake(spdlog)
 BuildRequires:  pkgconfig(fuse3) >= 3.9.0
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libssl)
+# system cryptopp lib cannot currently be used.
+# see also https://github.com/cryfs/cryfs/issues/369
+Provides:       bundled(libcryptopp) = 8.9.0
 %if %{with tests}
 BuildRequires:  pkgconfig(gmock)
 BuildRequires:  pkgconfig(gtest)
 %endif
-# system cryptopp lib cannot currently be used.
-# see also https://github.com/cryfs/cryfs/issues/369
-Provides:       bundled(libcryptopp) = 8.9.0
 
 %description
 CryFS provides a FUSE-based mount that encrypts file contents, file

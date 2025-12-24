@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec 22 09:35:50 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 1.0.3:
+  * Fix building with Boost 1.88
+    Drop previously patched fix-build-with-boost-1_88.patch
+  * Fix building with Boost 1.89
+    Drop previously patched fix-build-with-boost-1_89.patch
+  * Fix building on PowerPC
+
+-------------------------------------------------------------------
 Tue Sep  9 06:49:57 UTC 2025 - munix9@googlemail.com
 
 - Add fix-build-with-boost-1_89.patch
