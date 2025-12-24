@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Dec 23 08:21:20 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- While we are at it backport some fixes for the authentication
+  stack, after recommendation from upstream:
+  0001-auth-Fix-dashes-to-underscores-in-driver-names-in-fi.patch
+  0002-auth-Fix-crypt-CRYPT-in-passdb_passwd-passdb_ldap-de.patch
+  0003-auth-Make-the-default-passdb_static-passdb_default_p.patch
+  0004-auth-Set-CRYPT-as-default-passdb_default_password_sc.patch
+
+-------------------------------------------------------------------
+Tue Dec 23 08:11:59 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- backport patches to fix sieve regex support after the switch to
+  pcre2
+  0001-lib-regex-Separate-maximum-capture-groups-and-match-.patch
+  0002-lib-regex-Set-DREGEX_MAX_MATCHES-to-library-default.patch
+  0003-lib-regex-Limit-number-of-capture-groups-correctly.patch
+  
+- ------------------------------------------------------------------
 Wed Oct 29 12:16:37 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Add patches to fix the 32bit build failures:

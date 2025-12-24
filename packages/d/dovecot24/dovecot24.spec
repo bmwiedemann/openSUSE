@@ -64,6 +64,13 @@ Patch1:         dovecot-2.4.0-lua_json.patch
 Patch2:         dovecot-2.3.17-env_script_interpreter.patch
 Patch3:         dovecot24-32bit-1.patch
 Patch4:         dovecot24-32bit-2.patch
+Patch11:        0001-lib-regex-Separate-maximum-capture-groups-and-match-.patch
+Patch12:        0002-lib-regex-Set-DREGEX_MAX_MATCHES-to-library-default.patch
+Patch13:        0003-lib-regex-Limit-number-of-capture-groups-correctly.patch
+Patch14:        0001-auth-Fix-dashes-to-underscores-in-driver-names-in-fi.patch
+Patch15:        0002-auth-Fix-crypt-CRYPT-in-passdb_passwd-passdb_ldap-de.patch
+Patch16:        0003-auth-Make-the-default-passdb_static-passdb_default_p.patch
+Patch17:        0004-auth-Set-CRYPT-as-default-passdb_default_password_sc.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison

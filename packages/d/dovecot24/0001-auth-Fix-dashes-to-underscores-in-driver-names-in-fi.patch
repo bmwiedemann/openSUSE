@@ -1,0 +1,75 @@
+From d8e6aeb7c11d9d41ddc5f1058571e694e724b114 Mon Sep 17 00:00:00 2001
+From: Marco Bettini <marco.bettini@open-xchange.com>
+Date: Wed, 26 Nov 2025 17:35:58 +0000
+Subject: [PATCH 1/4] auth: Fix dashes to underscores in driver names in
+ filters
+
+Tbis is required specifically for passwd-file driver defaults to be properly picked up
+under the filter name passdb_passwd_filter, instead than passdb_passwd-filter
+---
+ src/auth/auth-common.h  | 5 +++++
+ src/auth/auth-request.c | 4 ++--
+ src/auth/auth.c         | 4 ++--
+ 3 files changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/src/auth/auth-common.h b/src/auth/auth-common.h
+index f6b6aa9446..62e662f737 100644
+--- a/src/auth/auth-common.h
++++ b/src/auth/auth-common.h
+@@ -15,4 +15,9 @@ void auth_refresh_proctitle(void);
+ void auth_worker_refresh_proctitle(const char *state);
+ void auth_module_load(const char *name);
+ 
++static inline const char *auth_driver_filter(const char *prefix, const char *driver)
++{
++	return t_strconcat(prefix, "_", t_str_replace(driver, '-', '_'), NULL);
++}
++
+ #endif
+diff --git a/src/auth/auth-request.c b/src/auth/auth-request.c
+index 7af85e935c..d57fc4d16e 100644
+--- a/src/auth/auth-request.c
++++ b/src/auth/auth-request.c
+@@ -632,7 +632,7 @@ void auth_request_passdb_lookup_begin(struct auth_request *request)
+ 	const char *passdb_driver = request->passdb->passdb->iface.name;
+ 	event_add_str(event, "passdb_driver", passdb_driver);
+ 	settings_event_add_filter_name(event,
+-		t_strconcat("passdb_", passdb_driver, NULL));
++		auth_driver_filter("passdb", passdb_driver));
+ 	settings_event_add_list_filter_name(event, "passdb",
+ 					    request->passdb->name);
+ 	event_set_log_prefix_callback(event, FALSE,
+@@ -702,7 +702,7 @@ void auth_request_userdb_lookup_begin(struct auth_request *request)
+ 	const char *userdb_driver = request->userdb->userdb->iface->name;
+ 	event_add_str(event, "userdb_driver", userdb_driver);
+ 	settings_event_add_filter_name(event,
+-		t_strconcat("userdb_", userdb_driver, NULL));
++		auth_driver_filter("userdb", userdb_driver));
+ 	settings_event_add_list_filter_name(event, "userdb",
+ 					    request->userdb->name);
+ 	event_set_log_prefix_callback(event, FALSE,
+diff --git a/src/auth/auth.c b/src/auth/auth.c
+index 3486b4c18e..3892ac698a 100644
+--- a/src/auth/auth.c
++++ b/src/auth/auth.c
+@@ -83,7 +83,7 @@ auth_passdb_preinit(struct auth *auth, const struct auth_passdb_settings *_set,
+ 	event_add_str(event, "protocol", auth->protocol);
+ 	event_add_str(event, "passdb", _set->name);
+ 	settings_event_add_filter_name(event,
+-		t_strconcat("passdb_", _set->driver, NULL));
++		auth_driver_filter("passdb", _set->driver));
+ 	settings_event_add_list_filter_name(event, "passdb", _set->name);
+ 	set = settings_get_or_fatal(event, &auth_passdb_setting_parser_info);
+ 
+@@ -155,7 +155,7 @@ auth_userdb_preinit(struct auth *auth, const struct auth_userdb_settings *_set)
+ 	event_add_str(event, "protocol", auth->protocol);
+ 	event_add_str(event, "userdb", _set->name);
+ 	settings_event_add_filter_name(event,
+-		t_strconcat("userdb_", _set->driver, NULL));
++		auth_driver_filter("userdb", _set->driver));
+ 	settings_event_add_list_filter_name(event, "userdb", _set->name);
+ 	if (_set == &userdb_dummy_set) {
+ 		/* If this is the dummy set do not try to lookup settings. */
+-- 
+2.52.0
+

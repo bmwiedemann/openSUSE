@@ -169,4 +169,25 @@ bugowner: varkoly</comment>
     <comment>- Update dovecot to 2.4.2 (boo#1252839 CVE-2025-30189)</comment>
     <requestid>1314350</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>99e24f1485a6c9434040724168bd8ceb</srcmd5>
+    <version>2.4.2</version>
+    <time>1766578562</time>
+    <user>dimstar_suse</user>
+    <comment>- While we are at it backport some fixes for the authentication
+  stack, after recommendation from upstream:
+  0001-auth-Fix-dashes-to-underscores-in-driver-names-in-fi.patch
+  0002-auth-Fix-crypt-CRYPT-in-passdb_passwd-passdb_ldap-de.patch
+  0003-auth-Make-the-default-passdb_static-passdb_default_p.patch
+  0004-auth-Set-CRYPT-as-default-passdb_default_password_sc.patch
+
+- backport patches to fix sieve regex support after the switch to
+  pcre2
+  0001-lib-regex-Separate-maximum-capture-groups-and-match-.patch
+  0002-lib-regex-Set-DREGEX_MAX_MATCHES-to-library-default.patch
+  0003-lib-regex-Limit-number-of-capture-groups-correctly.patch
+  
+- ------------------------------------------------------------------</comment>
+    <requestid>1324249</requestid>
+  </revision>
 </revisionlist>
