@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Exporter-Tiny
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %define cpan_name Exporter-Tiny
 Name:           perl-Exporter-Tiny
-Version:        1.006002
+Version:        1.006003
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        An exporter with the features of Sub::Exporter but only core dependencies
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/T/TO/TOBYINK/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -54,7 +55,7 @@ look at:
   * Exporter::Tiny::Manual::Importing
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

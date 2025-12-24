@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Dec  8 05:36:37 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.006003
+   see /usr/share/doc/packages/perl-Exporter-Tiny/Changes
+
+  1.006003	2025-12-07
+
+   [ Bug Fixes ]
+   - Support Perl versions >= 10, in theory.
+     Graham Knop++
+
+   [ Documentation ]
+   - Restore documentation about exporting to hashes which was accidentally
+     removed.
+   - Update copyright dates.
+
+-------------------------------------------------------------------
 Sat Apr  1 03:06:32 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.006002

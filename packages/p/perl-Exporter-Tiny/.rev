@@ -103,4 +103,21 @@
     <comment></comment>
     <requestid>1076998</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b36cce58b3043936716875109449d10a</srcmd5>
+    <version>1.006003</version>
+    <time>1766578524</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.006003
+   see /usr/share/doc/packages/perl-Exporter-Tiny/Changes
+  1.006003	2025-12-07
+   [ Bug Fixes ]
+   - Support Perl versions &gt;= 10, in theory.
+     Graham Knop++
+   [ Documentation ]
+   - Restore documentation about exporting to hashes which was accidentally
+     removed.
+   - Update copyright dates.</comment>
+    <requestid>1324189</requestid>
+  </revision>
 </revisionlist>
