@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Params-ValidationCompiler
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,23 @@
 
 %define cpan_name Params-ValidationCompiler
 Name:           perl-Params-ValidationCompiler
-Version:        0.31
+Version:        0.310.0
 Release:        0
+# 0.31 -> normalize -> 0.310.0
+%define cpan_version 0.31
 License:        Artistic-2.0
 Summary:        Build an optimized subroutine parameter validator once, use it forever
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Eval::Closure)
 BuildRequires:  perl(Exception::Class)
 BuildRequires:  perl(List::Util) >= 1.29
-BuildRequires:  perl(Specio) >= 0.14
+BuildRequires:  perl(Specio) >= 0.140
 BuildRequires:  perl(Test2::Plugin::NoWarnings)
 BuildRequires:  perl(Test2::Require::Module)
 BuildRequires:  perl(Test2::V0)
@@ -40,7 +43,11 @@ BuildRequires:  perl(Test::Without::Module)
 Requires:       perl(Eval::Closure)
 Requires:       perl(Exception::Class)
 Requires:       perl(List::Util) >= 1.29
-Recommends:     perl(Class::XSAccessor) >= 1.17
+Provides:       perl(Params::ValidationCompiler) = %{version}
+Provides:       perl(Params::ValidationCompiler::Compiler) = %{version}
+Provides:       perl(Params::ValidationCompiler::Exceptions) = %{version}
+%undefine       __perllib_provides
+Recommends:     perl(Class::XSAccessor) >= 1.170
 Recommends:     perl(Sub::Util) >= 1.40
 %{perl_requires}
 
@@ -53,9 +60,9 @@ In addition to type checks, it also supports parameter defaults, optional
 parameters, and extra "slurpy" parameters.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
