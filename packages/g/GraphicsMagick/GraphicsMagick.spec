@@ -24,7 +24,7 @@
 %define pp_so_ver       12
 %define wand_so_ver     2
 Name:           GraphicsMagick
-Version:        1.3.45
+Version:        1.3.46
 Release:        0
 Summary:        Viewer and Converter for Images
 License:        MIT
@@ -33,14 +33,6 @@ URL:            http://www.GraphicsMagick.org/
 Source:         https://downloads.sourceforge.net/project/graphicsmagick/graphicsmagick/%{version}/%{name}-%{version}.tar.xz
 Patch0:         GraphicsMagick-perl-linkage.patch
 Patch1:         GraphicsMagick-disable-insecure-coders.patch
-# CVE-2025-27795 [bsc#1239044], JXL in GraphicsMagick before 1.3.46 lacks image dimension resource limits.
-Patch2:         GraphicsMagick-CVE-2025-27795.patch
-# CVE-2025-27796 [bsc#1239043], WPG in GraphicsMagick before 1.3.46 mishandles palette buffer allocation.
-Patch3:         GraphicsMagick-CVE-2025-27796.patch
-# use return value of realloc function
-Patch4:         GraphicsMagick-return-value.patch
-# CVE-2025-32460 [bsc#1241150], heap-based buffer over-read in ReadJXLImage
-Patch5:         GraphicsMagick-CVE-2025-32460.patch
 BuildRequires:  cups-client
 BuildRequires:  dcraw
 BuildRequires:  gcc-c++

@@ -1,7 +1,7 @@
-Index: GraphicsMagick-1.3.45/coders/pdf.c
+Index: GraphicsMagick-1.3.46/coders/pdf.c
 ===================================================================
---- GraphicsMagick-1.3.45.orig/coders/pdf.c
-+++ GraphicsMagick-1.3.45/coders/pdf.c
+--- GraphicsMagick-1.3.46.orig/coders/pdf.c
++++ GraphicsMagick-1.3.46/coders/pdf.c
 @@ -499,7 +499,7 @@ ModuleExport void RegisterPDFImage(void)
    entry->seekable_stream=True;
    entry->description="Encapsulated Portable Document Format";
@@ -20,10 +20,10 @@ Index: GraphicsMagick-1.3.45/coders/pdf.c
    (void) RegisterMagickInfo(entry);
  }
  
-Index: GraphicsMagick-1.3.45/coders/ps.c
+Index: GraphicsMagick-1.3.46/coders/ps.c
 ===================================================================
---- GraphicsMagick-1.3.45.orig/coders/ps.c
-+++ GraphicsMagick-1.3.45/coders/ps.c
+--- GraphicsMagick-1.3.46.orig/coders/ps.c
++++ GraphicsMagick-1.3.46/coders/ps.c
 @@ -456,7 +456,7 @@ ModuleExport void RegisterPSImage(void)
    entry->adjoin=False;
    entry->description="Adobe Encapsulated PostScript Interchange format";
@@ -69,10 +69,10 @@ Index: GraphicsMagick-1.3.45/coders/ps.c
    (void) RegisterMagickInfo(entry);
  }
  
-Index: GraphicsMagick-1.3.45/coders/ps2.c
+Index: GraphicsMagick-1.3.46/coders/ps2.c
 ===================================================================
---- GraphicsMagick-1.3.45.orig/coders/ps2.c
-+++ GraphicsMagick-1.3.45/coders/ps2.c
+--- GraphicsMagick-1.3.46.orig/coders/ps2.c
++++ GraphicsMagick-1.3.46/coders/ps2.c
 @@ -252,7 +252,7 @@ ModuleExport void RegisterPS2Image(void)
    entry->seekable_stream=True;
    entry->description="Adobe Level II Encapsulated PostScript";
@@ -91,10 +91,10 @@ Index: GraphicsMagick-1.3.45/coders/ps2.c
    (void) RegisterMagickInfo(entry);
  }
  
-Index: GraphicsMagick-1.3.45/coders/ps3.c
+Index: GraphicsMagick-1.3.46/coders/ps3.c
 ===================================================================
---- GraphicsMagick-1.3.45.orig/coders/ps3.c
-+++ GraphicsMagick-1.3.45/coders/ps3.c
+--- GraphicsMagick-1.3.46.orig/coders/ps3.c
++++ GraphicsMagick-1.3.46/coders/ps3.c
 @@ -394,7 +394,7 @@ ModuleExport void RegisterPS3Image(void)
    entry->description="Adobe Level III Encapsulated PostScript";
    entry->seekable_stream=MagickTrue;
@@ -113,11 +113,11 @@ Index: GraphicsMagick-1.3.45/coders/ps3.c
    (void) RegisterMagickInfo(entry);
  }
  
-Index: GraphicsMagick-1.3.45/config/delegates.mgk.in
+Index: GraphicsMagick-1.3.46/config/delegates.mgk.in
 ===================================================================
---- GraphicsMagick-1.3.45.orig/config/delegates.mgk.in
-+++ GraphicsMagick-1.3.45/config/delegates.mgk.in
-@@ -76,27 +76,27 @@
+--- GraphicsMagick-1.3.46.orig/config/delegates.mgk.in
++++ GraphicsMagick-1.3.46/config/delegates.mgk.in
+@@ -88,27 +88,27 @@
    <delegate decode="dot" command='"@DOTDecodeDelegate@" -Tps "%i" -o "%o"' />
    <delegate decode="dvi" command='"@DVIDecodeDelegate@" -q -o "%o" "%i"' />
    <delegate decode="edit" stealth="True" command='"@EditorDelegate@" -title "Edit Image Comment" -e vi "%o"' />
@@ -153,7 +153,7 @@ Index: GraphicsMagick-1.3.45/config/delegates.mgk.in
  
    <!-- Read monochrome PDF using Poppler's pdftoppm -->
    <delegate decode="poppler-mono" stealth="True" command='"pdftoppm" "-mono" "-freetype" "yes" "-aa" "yes" "-aaVector" "yes" "-rx" "72" "-ry" "72" "%s" ">" "%s"' />
-@@ -120,16 +120,16 @@
+@@ -132,16 +132,16 @@
    <!-- Write MPEG file using mpeg2encode -->
    <delegate encode="mpeg-encode" stealth="True" command='"@MPEGEncodeDelegate@" "%i" "%o"' />
    <!-- Convert PDF to Encapsulated Poscript using Ghostscript -->
@@ -174,12 +174,12 @@ Index: GraphicsMagick-1.3.45/config/delegates.mgk.in
 +  <!--delegate decode="ps" encode="print" mode="encode" command='"@PrintDelegate@" "%i"' /-->
    <!-- Read HTML file  -->
    <delegate decode="shtml" command='"@HTMLDecodeDelegate@" -U -o "%o" "%i"' />
-   <delegate encode="show" stealth="True" command='"@GMDelegate@" display -immutable -delay 0 -window_group %g -title "%l of %f" "%o" &' />
-Index: GraphicsMagick-1.3.45/Makefile.in
+   <delegate encode="show" stealth="True" command='"@GMDelegate@" display -immutable -delay 0 -window_group %g -title "%l of %f" "%o" &amp;' />
+Index: GraphicsMagick-1.3.46/Makefile.in
 ===================================================================
---- GraphicsMagick-1.3.45.orig/Makefile.in
-+++ GraphicsMagick-1.3.45/Makefile.in
-@@ -4386,7 +4386,6 @@ TESTS_TESTS = \
+--- GraphicsMagick-1.3.46.orig/Makefile.in
++++ GraphicsMagick-1.3.46/Makefile.in
+@@ -4383,7 +4383,6 @@ TESTS_TESTS = \
  	tests/rwfile.tap \
  	tests/rwfile_sized.tap \
  	tests/rwfile_miff.tap \
@@ -187,10 +187,10 @@ Index: GraphicsMagick-1.3.45/Makefile.in
  	tests/rwfile_deep.tap
  
  TESTS_EXTRA_DIST = \
-Index: GraphicsMagick-1.3.45/tests/rwblob.tap
+Index: GraphicsMagick-1.3.46/tests/rwblob.tap
 ===================================================================
---- GraphicsMagick-1.3.45.orig/tests/rwblob.tap
-+++ GraphicsMagick-1.3.45/tests/rwblob.tap
+--- GraphicsMagick-1.3.46.orig/tests/rwblob.tap
++++ GraphicsMagick-1.3.46/tests/rwblob.tap
 @@ -10,7 +10,7 @@ rwblob=./rwblob
  check_types='bilevel gray palette truecolor'
  
@@ -219,16 +219,16 @@ Index: GraphicsMagick-1.3.45/tests/rwblob.tap
  # FAX format
  for type in ${check_types}
  do
-Index: GraphicsMagick-1.3.45/tests/rwfile.tap
+Index: GraphicsMagick-1.3.46/tests/rwfile.tap
 ===================================================================
---- GraphicsMagick-1.3.45.orig/tests/rwfile.tap
-+++ GraphicsMagick-1.3.45/tests/rwfile.tap
+--- GraphicsMagick-1.3.46.orig/tests/rwfile.tap
++++ GraphicsMagick-1.3.46/tests/rwfile.tap
 @@ -12,7 +12,7 @@ check_types='bilevel gray palette trueco
  check_types_noone='bilevel gray palette truecolor'
  
  # Number of tests we plan to run
--test_plan_fn 857
-+test_plan_fn 807
+-test_plan_fn 897
++test_plan_fn 847
  
  # AAI format
  for type in ${check_types}
@@ -295,7 +295,7 @@ Index: GraphicsMagick-1.3.45/tests/rwfile.tap
  # PGM format
  for type in ${check_types}
  do
-@@ -378,27 +329,6 @@ do
+@@ -406,27 +357,6 @@ do
    done
  done
  

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Dec 22 11:36:09 UTC 2025 - Petr Gajdos <pgajdos@suse.com>
+
+- versino update to 1.3.46
+  * MSL: Use libxml2's SAX handlers for the MVG XML-based scripting
+    implementation.  This removes a lot of archaic cruft which might
+    suffer from security issues.
+  * JP2: Fix Jasper max_samples calculation to avoid DOS due to huge
+    image dimensions.
+  * JXL: Apply image dimension resource limits. Fix heap buffer write
+    overflow while reading image.
+  * SVG: Use libxml2's SAX handlers for the SVG renderer.  This removes
+    a lot of archaic cruft which might suffer from security issues.
+  * WPG: Assure that the palette buffer is allocated and the current
+    size (SourceForge bug #750).
+  * ColorFloodfillImage(): For floodfill, return an error if a clip-mask
+    is present. The problem is that the algorithm may not converge if a
+    clip-mask is present.
+  * ThumbnailImage(): Prevent a divide by zero crash.
+  * other bug fixes
+- modified patches
+  * GraphicsMagick-disable-insecure-coders.patch (refreshed)
+  * GraphicsMagick-perl-linkage.patch (refreshed)
+- deleted patches
+  * GraphicsMagick-CVE-2025-27795.patch (upstreamed)
+  * GraphicsMagick-CVE-2025-27796.patch (upstreamed)
+  * GraphicsMagick-CVE-2025-32460.patch (upstreamed)
+  * GraphicsMagick-return-value.patch (upstreamed)
+
+-------------------------------------------------------------------
 Fri Nov 14 07:04:58 UTC 2025 - pgajdos@suse.com
 
 - recommend xorg-x11-fonts-legacy
