@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec 22 11:15:58 UTC 2025 - Petr Gajdos <pgajdos@suse.com>
+
+- update to 3.4.0
+  * Add pkg-config.
+  * Add alias double-conversion::double-conversion.
+  * Documentation improvements.
+  * Minor code cleanups, avoiding spurious warnings.
+  * Increase CMake minimum required version to 3.29.
+  * Makefile improvements.
+  * Bazel build improvements.
+
+-------------------------------------------------------------------
 Sat Apr  5 16:10:54 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.3.1:

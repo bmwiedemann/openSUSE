@@ -150,4 +150,12 @@
     <comment>double-conversion 3.3.1 (forwarded request 1267313 from AndreasStieger)</comment>
     <requestid>1267625</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>6b5d76e8d3929c06f93a83d392889be7</srcmd5>
+    <version>3.4.0</version>
+    <time>1766578513</time>
+    <user>dimstar_suse</user>
+    <comment>update to 3.4.0</comment>
+    <requestid>1324181</requestid>
+  </revision>
 </revisionlist>

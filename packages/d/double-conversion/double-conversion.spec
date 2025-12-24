@@ -1,7 +1,7 @@
 #
 # spec file for package double-conversion
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define lib_ver 3
 %define libname libdouble-conversion3
 Name:           double-conversion
-Version:        3.3.1
+Version:        3.4.0
 Release:        0
 Summary:        Binary-decimal and decimal-binary routines for IEEE doubles
 License:        BSD-3-Clause
@@ -87,5 +87,6 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 %{_libdir}/libdouble-conversion.so
 %{_libdir}/cmake/%{name}/
 %{_includedir}/%{name}/
+%{_libdir}/pkgconfig/double-conversion.pc
 
 %changelog
