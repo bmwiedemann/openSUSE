@@ -1,7 +1,7 @@
 #
 # spec file for package python-arviz
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-arviz
-Version:        0.20.0
+Version:        0.23.0
 Release:        0
 Summary:        Exploratory analysis of Bayesian models
 License:        Apache-2.0
@@ -33,41 +33,43 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module cloudpickle}
 BuildRequires:  %{python_module bokeh >= 3}
 BuildRequires:  %{python_module dash}
-BuildRequires:  %{python_module dask-array}
+BuildRequires:  %{python_module dask-distributed}
 BuildRequires:  %{python_module dask}
 BuildRequires:  %{python_module dm-tree >= 0.1.8}
-BuildRequires:  %{python_module h5netcdf}
+BuildRequires:  %{python_module h5netcdf >= 1.0.2}
 BuildRequires:  %{python_module matplotlib >= 3.5}
 BuildRequires:  %{python_module netCDF4}
-# Optional test, Numba is currently not compatible with numpy >= 2.1
-#BuildRequires:  %%{python_module numba}
-BuildRequires:  %{python_module numpy >= 1.23.0}
+BuildRequires:  %{python_module numba}
+BuildRequires:  %{python_module numpy >= 1.26.0}
 BuildRequires:  %{python_module packaging}
-BuildRequires:  %{python_module pandas >= 1.4.0}
+BuildRequires:  %{python_module pandas >= 2.1.0}
 BuildRequires:  %{python_module pytest >= 0.23}
 BuildRequires:  %{python_module pytest-xdist}
-BuildRequires:  %{python_module scipy >= 1.8.0}
-BuildRequires:  %{python_module typing_extensions}
+BuildRequires:  %{python_module scipy >= 1.11.0}
+BuildRequires:  %{python_module typing_extensions >= 4.1.0}
 BuildRequires:  %{python_module ujson}
-BuildRequires:  %{python_module xarray >= 0.21.0}
+BuildRequires:  %{python_module xarray >= 2023.7}
 BuildRequires:  %{python_module xarray-einstats >= 0.3}
-BuildRequires:  %{python_module zarr >= 2.5 with %python-zarr < 3}
+# Zarr is being updated to v3, arviz v1 will be compatible
+## BuildRequires:  %%{python_module zarr >= 2.5 with %%python-zarr < 3}
 # /SECTION
-Requires:       python-h5netcdf
-Requires:       python-matplotlib >= 3.5
-Requires:       python-numpy >= 1.23.0
+Requires:       python-h5netcdf >= 1.0.2
+Requires:       python-matplotlib >= 3.8
+Requires:       python-numpy >= 1.26.0
 Requires:       python-packaging
-Requires:       python-pandas >= 1.4.0
-Requires:       python-scipy >= 1.8.0
+Requires:       python-pandas >= 2.1.0
+Requires:       python-scipy >= 1.11.0
 Requires:       python-setuptools >= 60.0.0
-Requires:       python-typing_extensions
-Requires:       python-xarray >= 0.21.0
-Requires:       python-xarray-einstats
+Requires:       python-typing_extensions >= 4.1.0
+Requires:       python-xarray >= 2023.7
+Requires:       python-xarray-einstats >= 0.3
 Recommends:     python-bokeh >= 3
+Recommends:     python-dask-distributed
 Recommends:     python-dm-tree >= 0.1.8
 Recommends:     python-netCDF4
 Recommends:     python-numba
 Recommends:     python-ujson
+Recommends:     (python-zarr >= 2.5.0 with python-zarr < 3)
 BuildArch:      noarch
 %python_subpackages
 
