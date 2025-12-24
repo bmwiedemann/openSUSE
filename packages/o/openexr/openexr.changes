@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Dec 22 13:10:29 UTC 2025 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 3.4.4
+  * OpenEXRCore: fix ILMTHREAD_THREADING_ENABLED checks
+  * OpenEXRCore: avoid direct dependency on imath
+  * Bump github/codeql-action from 4.31.2 to 4.31.3
+  * Add missing copywrite comments
+  * Bump pypa/cibuildwheel from 3.2 to 3.3
+  * Bump github/codeql-action from 3.27.9 to 4.31.2
+  * Bump msys2/setup-msys2 from 2.27.0 to 2.29.0
+  * Bump actions/download-artifact from 4.1.8 to 6.0.0
+  * Bump ossf/scorecard-action from 2.4.0 to 2.4.3
+  * Bump pypa/cibuildwheel from 2.23 to 3.2
+  * Bump actions/cache from 4.2.0 to 4.3.0
+  * Bump actions/upload-artifact from 4 to 5
+  * Bump actions/checkout from 2.7.0 to 5.0.0
+  * Add recent CVEs to SECURITY.md
+  * Bump sigstore/gh-action-sigstore-python from 3.0.0 to 3.1.0
+  * Bump actions/setup-python from 5.3.0 to 6.0.0
+  * Bump snyk/actions from 0.4.0 to 1.0.0
+  * Bump pypa/gh-action-pypi-publish from 1.12.3 to 1.13.0
+  * Imporve Bazel support
+  * Converts asserts in internal_ht.cpp to if statement that throws an exception.
+  * DWA: initialize linear/nonlinear tables at runtime
+  * Update macos-13 to macos-15-intel
+  * Properly set OpenEXR_error in legacy python API
+  * B44: initialize exp/log tables at runtime
+
+-------------------------------------------------------------------
 Tue Nov 11 09:16:50 UTC 2025 - pgajdos@suse.com
 
 - version update to 3.4.3
