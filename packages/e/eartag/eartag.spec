@@ -1,7 +1,7 @@
 #
 # spec file for package eartag
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,9 @@
 #
 
 
+%define         appid app.drey.EarTag
 Name:           eartag
-Version:        1.0.0
+Version:        1.0.2
 Release:        0
 Summary:        Edit audio file tags
 License:        MIT
@@ -60,18 +61,19 @@ Unlike other tagging programs, Ear Tag does not require the user to set up a mus
 %install
 %meson_install
 
-%find_lang app.drey.EarTag
+%find_lang %{appid}
 
 %files
 %license COPYING
 %doc README.md
-%{_bindir}/eartag
-%{_datarootdir}/applications/app.drey.EarTag.desktop
-%dir %{_datarootdir}/eartag
-%{_datarootdir}/eartag/*
-%{_datarootdir}/icons/*
-%{_datarootdir}/metainfo/app.drey.EarTag.metainfo.xml
-%{_datarootdir}/glib-2.0/schemas/app.drey.EarTag.gschema.xml
+%{_bindir}/%{name}
+%{_datadir}/applications/%{appid}.desktop
+%{_datadir}/dbus-1/services/%{appid}.service
+%{_datadir}/%{name}
+%{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
+%{_datadir}/icons/hicolor/scalable/apps/%{appid}.svg
+%{_datadir}/icons/hicolor/symbolic/apps/%{appid}-symbolic.svg
+%{_datadir}/metainfo/%{appid}.metainfo.xml
 
 %files lang -f app.drey.EarTag.lang
 

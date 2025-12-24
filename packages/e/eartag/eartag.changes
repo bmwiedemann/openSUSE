@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec 24 04:10:57 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.2:
+  * Fixes a bug where files would get skipped while loading.
+- Update to version 1.0.1:
+  * fix: cover art handling
+- use the more common datadir macro rather than datarootdir
+- use a macro for the appid, so it's not too repetitive when it changes
+
+-------------------------------------------------------------------
 Sun Jul 20 18:23:47 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.0.0:
