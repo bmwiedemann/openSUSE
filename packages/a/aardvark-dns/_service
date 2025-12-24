@@ -3,13 +3,13 @@
     <param name="url">https://github.com/containers/aardvark-dns</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">v1.16.0</param>
+    <param name="revision">v1.17.0</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
   </service>
-  <service mode="manual" name="tar" />
+  <service mode="manual" name="tar"/>
   <service mode="manual" name="recompress">
     <param name="file">*.tar</param>
     <param name="compression">gz</param>
@@ -24,4 +24,3 @@
      <param name="srcdir">aardvark-dns</param>
   </service>
 </services>
-

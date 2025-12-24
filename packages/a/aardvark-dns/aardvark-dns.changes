@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Dec 22 10:19:19 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 1.17.0:
+  * release v1.17.0
+  * release notes for v1.17.0
+  * update MSRV to 1.86
+  * run cargo update
+  * fix download artifact action
+  * [skip-ci] Update GitHub Artifact Actions
+  * fix(deps): update rust crate clap to ~4.5.51
+  * rotate key of imgt for meta_task
+  * rotate aws creds
+  * fix(deps): update rust crate tokio to 1.48.0
+  * fix(deps): update rust crate clap to ~4.5.48
+  * fix(deps): update rust crate libc to 0.2.177
+  * Update nameservers when resolv.conf is modified.
+  * chore(deps): update rust crate chrono to 0.4.42
+  * fix(deps): update rust crate log to 0.4.28
+  * update CI images
+  * rpm: tests require socat instead of ncat now
+  * test: replace ncat with socat
+  * Packit: fetch copr rpm version from Cargo.toml
+  * bump to v1.17.0-dev
+
+-------------------------------------------------------------------
 Thu Aug 21 07:04:19 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 1.16.0:

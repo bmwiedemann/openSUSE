@@ -137,4 +137,12 @@ package. Also, BuildRequire cargo+rust to prevent conflicts with
     <comment></comment>
     <requestid>1301897</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0020357bafd85f15ffa9067bc6e203ea</srcmd5>
+    <version>1.17.0</version>
+    <time>1766578552</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1324265</requestid>
+  </revision>
 </revisionlist>

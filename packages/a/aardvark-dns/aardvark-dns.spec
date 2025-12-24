@@ -1,7 +1,7 @@
 #
 # spec file for package aardvark-dns
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           aardvark-dns
-Version:        1.16.0
+Version:        1.17.0
 Release:        0
 Summary:        Authoritative dns server for A/AAAA container records
 License:        Apache-2.0
