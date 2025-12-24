@@ -1,0 +1,28 @@
+From 30d59104339c554251eb80a700bbaf48fe1cbf77 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Wed, 17 Dec 2025 04:35:21 +0000
+Subject: [PATCH] Declare function pointers properly
+
+to allow compilation with gcc15 on openSUSE Tumbleweed
+---
+ bomber.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/bomber.h b/bomber.h
+index 86d9b39..6235487 100644
+--- a/bomber.h
++++ b/bomber.h
+@@ -148,8 +148,8 @@ typedef struct generic {
+ 	int xpos,ypos;
+ 	int px,py;
+ 	int timer;
+-	void (*process)();
+-	void (*draw)();
++	void (*process)(struct generic *);
++	void (*draw)(struct generic *);
+ 	void *ptr1,*ptr2;
+ 	int data1,data2;
+ } generic;
+-- 
+2.51.0
+

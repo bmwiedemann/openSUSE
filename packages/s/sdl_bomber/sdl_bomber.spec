@@ -28,6 +28,8 @@ Source1:        %{name}.sh
 Source2:        %{name}-icons.tar
 Source3:        %{name}.desktop
 Source4:        %{name}-rpmlintrc
+# PATCH-FIX-UPSTREAM
+Patch0:         fix-gcc15.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(SDL_image)
 BuildRequires:  pkgconfig(SDL_mixer)
@@ -59,7 +61,7 @@ case the only thing to avoid is accidentally killing yourself. Big deal...
 It's really a multiplayer game.
 
 %prep
-%setup -q -a2 -n sdlbomber
+%autosetup -p1 -a2 -n sdlbomber
 
 %build
 %make_build CPPFLAGS="%{optflags}"
