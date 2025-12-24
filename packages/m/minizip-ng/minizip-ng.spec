@@ -30,7 +30,7 @@ Name:           minizip-ng
 %global         compat_mode OFF
 %endif
 
-Version:        4.0.8
+Version:        4.0.10
 Release:        0
 Summary:        Companion library to zlib-ng for reading and writing ZIP files
 License:        Zlib

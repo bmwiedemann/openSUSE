@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Dec 23 16:19:41 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 4.0.10:
+  * gitgnore build folders
+  * fix: unzipping with backslashes in the name on UNIX
+  * cleanup pathwfs
+  * Make pattern in mz_zip_reader dynamically assigned
+  * Support star in filename
+  * updating github actions for ubuntu-22.04
+  * fix: unzipping with backslash at the end of the filename
+  * Support any character encoding
+  * free up writer memory when failing to open archive for reading
+  * fix copy encrypted file info
+- update to 4.0.9:
+  * Remove excess checks before free()
+  * Align structures for 64-bit platforms
+  * Consider passed codepage on listing and extraction callback
+  * Apply Clang format
+  * crypt.h: Remove register keyword
+  * Don't use Z_ERRNO in compatibility headers if zlib not included.
+  * Add lint GHA workflow with clang-format.
+
+-------------------------------------------------------------------
 Sat Feb  8 21:06:05 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.8:
