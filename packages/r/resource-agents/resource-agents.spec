@@ -216,7 +216,6 @@ ln -s %{_prefix}/lib/ocf/resource.d/heartbeat/aws-vpc-move-ip aws-vpc-move-ip
 %{_sbindir}/ocf-tester
 %{_sbindir}/ocft
 %{_includedir}/heartbeat
-%ghost %dir %attr (1755, root, root) %{_rundir}/resource-agents
 %doc AUTHORS
 %license COPYING
 %license COPYING.LGPL

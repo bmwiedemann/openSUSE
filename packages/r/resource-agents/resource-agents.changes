@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 22 11:58:06 UTC 2025 - Peter Varkoly <varkoly@suse.com>
+
+- (jsc#PED-14860) Fix packages for Immutable Mode - resource-agents
+
+-------------------------------------------------------------------
 Wed Dec 17 17:47:09 UTC 2025 - Peter Varkoly <varkoly@suse.com>
 
 - Update to version 4.17.0+git18.92719d83:

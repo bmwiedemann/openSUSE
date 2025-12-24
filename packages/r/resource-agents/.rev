@@ -2025,4 +2025,12 @@
   * exportfs: fix grep error on stop</comment>
     <requestid>1323402</requestid>
   </revision>
+  <revision rev="145" vrev="2">
+    <srcmd5>29347f1804ee95159675fab4edcee452</srcmd5>
+    <version>4.17.0+git18.92719d83</version>
+    <time>1766578530</time>
+    <user>dimstar_suse</user>
+    <comment>- (jsc#PED-14860) Fix packages for Immutable Mode - resource-agents</comment>
+    <requestid>1324200</requestid>
+  </revision>
 </revisionlist>
