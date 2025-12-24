@@ -747,7 +747,7 @@
  
 --- test/test.priv.h
 +++ test/test.priv.h	2025-07-14 07:33:47.039416894 +0000
-@@ -1171,12 +1171,12 @@ extern char *_nc_strstr(const char *, co
+@@ -1211,12 +1211,12 @@ extern char *_nc_strstr(const char *, co
  #endif
  
  /* out-of-band values for representing absent capabilities */

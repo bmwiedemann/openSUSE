@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 15 09:08:39 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20251213
+  + in-progress work to merge MinGW/Windows port.
+  + add a null-pointer check in tic -c option.
+  + add a limit-check in infocmp -i option (report/example by Yixuan Cao).
+
+-------------------------------------------------------------------
 Mon Dec  8 08:59:53 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20251206

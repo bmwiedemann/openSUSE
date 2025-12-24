@@ -5455,4 +5455,12 @@
   + in-progress work to merge MinGW/Windows port.</comment>
     <requestid>1321705</requestid>
   </revision>
+  <revision rev="317" vrev="90">
+    <srcmd5>a2c7fae0ba90cc89c884b30535320f01</srcmd5>
+    <version>unknown</version>
+    <time>1766578555</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1324174</requestid>
+  </revision>
 </revisionlist>
