@@ -1,0 +1,165 @@
+---
+ pyproject.toml |   21 ----------------
+ setup.cfg      |   48 ++++++++++++++++++++++++++++++++++++++
+ setup.py       |   71 +--------------------------------------------------------
+ 3 files changed, 50 insertions(+), 90 deletions(-)
+
+Index: rss2email-3.14/pyproject.toml
+===================================================================
+--- rss2email-3.14.orig/pyproject.toml	2022-08-26 16:54:21.000000000 +0200
++++ /dev/null	1970-01-01 00:00:00.000000000 +0000
+@@ -1,21 +0,0 @@
+-[tool.poetry]
+-name = "rss2email"
+-version = "3.12.2"
+-description = "Forward RSS feeds to your email address"
+-authors = ["Your Name <you@example.com>"]
+-license = "GPL-2.0-only"
+-
+-[tool.poetry.dependencies]
+-python = "^3.6"
+-feedparser = ">=6.0.5"
+-html2text = ">=2020.1.16"
+-
+-[tool.poetry.dev-dependencies]
+-update-copyright = ">=0.6.2"
+-
+-[build-system]
+-requires = ["poetry>=0.12"]
+-build-backend = "poetry.masonry.api"
+-
+-[tool.poetry.scripts]
+-r2e = "rss2email.main:run"
+Index: rss2email-3.14/setup.cfg
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ rss2email-3.14/setup.cfg	2025-07-01 15:01:34.861755273 +0200
+@@ -0,0 +1,48 @@
++[metadata]
++name = rss2email
++version = attr: rss2email.__version__
++description = A python script that converts RSS/Atom newsfeeds to email
++long_description = file: README.rst
++author = Adam Mokhtari, W. Trevor King, Amir Yalon
++author_email = 2553423+uutari@users.noreply.github.com, wking@tremily.us, git@please.nospammail.net
++maintainer = Adam Mokhtari
++maintainer_email = 2553423+uutari@users.noreply.github.com
++license = GPL-2.0-or-later
++keywords = rss, atom, feed, email
++classifiers =
++    Development Status :: 5 - Production/Stable
++    Environment :: Console
++    Intended Audience :: End Users/Desktop
++    Operating System :: OS Independent
++    Programming Language :: Python
++    Programming Language :: Python :: 3
++    Programming Language :: Python :: 3.6
++    Programming Language :: Python :: 3.7
++    Programming Language :: Python :: 3.8
++    Programming Language :: Python :: 3.9
++    Programming Language :: Python :: 3.10
++    Programming Language :: Python :: 3.11
++    Topic :: Communications :: Email
++    Topic :: Software Development :: Libraries :: Python Modules
++project_urls =
++    Homepage = https://github.com/rss2email/rss2email
++    Repository = https://github.com/rss2email/rss2email
++    Bug Tracker = https://github.com/rss2email/rss2email/issues
++
++[options]
++python_requires = >=3.6
++install_requires =
++    feedparser>=6.0.5
++    html2text>=2020.1.16
++packages = find:
++
++[options.extras_require]
++dev =
++    update-copyright>=0.6.2
++
++[options.entry_points]
++console_scripts =
++    r2e = rss2email.main:run
++
++[options.packages.find]
++where = .
+\ No newline at end of file
+Index: rss2email-3.14/setup.py
+===================================================================
+--- rss2email-3.14.orig/setup.py	2022-08-26 16:54:21.000000000 +0200
++++ rss2email-3.14/setup.py	2025-07-01 14:58:57.349589201 +0200
+@@ -1,72 +1,5 @@
+-# Copyright (C) 2012-2021 Adam Mokhtari <2553423+uutari@users.noreply.github.com>
+-#                         Amir Yalon <git@please.nospammail.net>
+-#                         Andrey Zelenchuk <azelenchuk@plesk.com>
+-#                         Arun Persaud <apersaud@lbl.gov>
+-#                         Léo Gaspard <leo@gaspard.io>
+-#                         Markus Unterwaditzer <markus@unterwaditzer.net>
+-#                         Profpatsch <mail@profpatsch.de>
+-#                         Steven Siloti <ssiloti@gmail.com>
+-#                         W. Trevor King <wking@tremily.us>
+-#                         auouymous <au@qzx.com>
+-#
+-# This file is part of rss2email.
+-#
+-# rss2email is free software: you can redistribute it and/or modify it under
+-# the terms of the GNU General Public License as published by the Free Software
+-# Foundation, either version 2 of the License, or (at your option) version 3 of
+-# the License.
+-#
+-# rss2email is distributed in the hope that it will be useful, but WITHOUT ANY
+-# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+-# A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+-#
+-# You should have received a copy of the GNU General Public License along with
+-# rss2email.  If not, see <http://www.gnu.org/licenses/>.
++#!/usr/bin/python3
+ 
+-"A python script that converts RSS/Atom newsfeeds to email"
+-
+-import codecs as _codecs
+-import os.path as _os_path
+ import setuptools
+ 
+-from rss2email import __version__, __url__, __author__, __email__
+-
+-
+-_this_dir = _os_path.dirname(__file__)
+-
+-setuptools.setup(
+-    name='rss2email',
+-    version=__version__,
+-    maintainer=__author__,
+-    maintainer_email=__email__,
+-    url=__url__,
+-    download_url='{}/archive/v{}.tar.gz'.format(__url__, __version__),
+-    license='GNU General Public License (GPL)',
+-    platforms=['all'],
+-    description=__doc__,
+-    long_description=_codecs.open(
+-        _os_path.join(_this_dir, 'README.rst'), 'r', encoding='utf-8').read(),
+-    classifiers=[
+-        'Development Status :: 5 - Production/Stable',
+-        'Environment :: Console',
+-        'Intended Audience :: End Users/Desktop',
+-        'Operating System :: OS Independent',
+-        'License :: OSI Approved :: GNU General Public License (GPL)',
+-        'License :: OSI Approved :: GNU General Public License v2 (GPLv2)',
+-        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
+-        'Programming Language :: Python',
+-        'Programming Language :: Python :: 3',
+-        'Programming Language :: Python :: 3.6',
+-        'Programming Language :: Python :: 3.7',
+-        'Programming Language :: Python :: 3.8',
+-        'Topic :: Communications :: Email',
+-        'Topic :: Software Development :: Libraries :: Python Modules',
+-        ],
+-    packages=['rss2email', 'rss2email.post_process'],
+-    scripts=['r2e'],
+-    provides=['rss2email'],
+-    install_requires=[
+-        'feedparser>=6.0.5',
+-        'html2text>=2020.1.16',
+-        ],
+-    )
++setuptools.setup()

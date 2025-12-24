@@ -1,0 +1,53 @@
+---
+ r2e.1               |    2 ++
+ rss2email/config.py |    2 ++
+ rss2email/feed.py   |   10 ++++++++++
+ 3 files changed, 14 insertions(+)
+
+Index: rss2email-3.14/r2e.1
+===================================================================
+--- rss2email-3.14.orig/r2e.1	2022-08-26 16:54:21.000000000 +0200
++++ rss2email-3.14/r2e.1	2025-06-30 12:08:04.486413554 +0200
+@@ -185,6 +185,8 @@
+ Set an HTTP proxy (e.g. 'http://your.proxy.here:8080/')
+ .IP feed-timeout
+ Set the timeout (in seconds) for feed server response
++.IP http-header
++Set custom HTTP headers to be sent with the feed requests
+ .RE
+ .SS Processing
+ .IP active
+Index: rss2email-3.14/rss2email/config.py
+===================================================================
+--- rss2email-3.14.orig/rss2email/config.py	2022-08-26 16:54:21.000000000 +0200
++++ rss2email-3.14/rss2email/config.py	2025-06-30 12:07:53.560474799 +0200
+@@ -113,6 +113,8 @@
+         ('feed-timeout', str(60)),
+         # Set the time (in seconds) to sleep between fetches from the same server
+         ('same-server-fetch-interval', str(0)),
++        # Custom HTTP headers (newline separated)
++        ('http-header', ''),
+ 
+         ### Processing
+         # True: Fetch, process, and email feeds.
+Index: rss2email-3.14/rss2email/feed.py
+===================================================================
+--- rss2email-3.14.orig/rss2email/feed.py	2022-08-26 16:54:21.000000000 +0200
++++ rss2email-3.14/rss2email/feed.py	2025-06-30 12:07:53.560872827 +0200
+@@ -384,6 +384,16 @@
+             kwargs['handlers'] = [
+                 _urllib_request.ProxyHandler({ 'http': proxy, 'https': proxy })
+             ]
++        extra_headers = {}
++        custom_headers = config['http-header']
++        if custom_headers:
++            for header in custom_headers.splitlines():
++                if ':' in header:
++                    key,value = header.split(':', 1)
++                    extra_headers[key.strip()] = value.strip()
++                else:
++                    _LOG.warning('malformed http-header: {}'.format(header))
++        kwargs['request_headers'] = extra_headers
+         f = _util.TimeLimitedFunction('feed {}'.format(self.name), timeout, _feedparser.parse)
+         return f(self.url, self.etag, modified=self.modified, agent=self.user_agent, **kwargs)
+ 

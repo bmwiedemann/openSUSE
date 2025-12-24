@@ -1,7 +1,7 @@
 #
 # spec file for package rss2email
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 Name:           rss2email
 Version:        3.14
 Release:        0
@@ -27,19 +25,27 @@ Group:          Development/Languages/Python
 URL:            https://github.com/rss2email/rss2email
 Source:         https://github.com/rss2email/rss2email/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         fix-tests.patch
-BuildRequires:  %{python_module feedparser >= 6.0.0}
-BuildRequires:  %{python_module html2text >= 3.0.1}
-BuildRequires:  %{python_module setuptools}
+# PATCH-FEATURE-UPSTREAM 213-http-header-config.patch gh#rss2email/rss2email!213 mcepl@suse.com
+# add http-header config option to pass custom HTTP headers
+Patch1:         213-http-header-config.patch
+# PATCH-FEATURE-UPSTREAM dynamic-version-number.patch gh#rss2email/rss2email!284 mcepl@suse.com
+# pyproject.toml should use dynamic version number derived from rss2email/ __version__
+Patch2:         dynamic-version-number.patch
+Patch3:         https://patch-diff.githubusercontent.com/raw/rss2email/rss2email/pull/279.patch
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-generators
 BuildRequires:  python-rpm-macros
-Requires:       python-feedparser >= 6.0.0
-Requires:       python-html2text >= 3.0.1
-Requires:       python-setuptools
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+BuildRequires:  python3-feedparser >= 6.0.0
+BuildRequires:  python3-html2text >= 2025.4.15
+BuildRequires:  python3-pip
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
+Requires:       python3-feedparser >= 6.0.0
+Requires:       python3-html2text >= 2025.4.15
+Provides:       python3-rss2email = %version-%release
+Obsoletes:      python3-rss2email < %version-%release
 BuildArch:      noarch
 %{?python_enable_dependency_generator}
-%python_subpackages
 
 %description
 Lets users receive news from RSS feeds in email. Intended to be run from
@@ -50,38 +56,26 @@ items.
 %autosetup -p1
 
 %build
-%python_build
+%python3_pyproject_wheel
 
 %install
-%python_install
-%python_clone -a %{buildroot}%{_bindir}/r2e
+%python3_pyproject_install
 install -Dm644 r2e.1 %{buildroot}%{_mandir}/man1/r2e.1
-%python_clone -a %{buildroot}%{_mandir}/man1/r2e.1
+%fdupes %{buildroot}%{python3_sitelib}
 
 %check
 pushd test
-%pyunittest --verbose
+export PYTHONPATH=%{buildroot}%{python3_sitelib}
+export PYTHONDONTWRITEBYTECODE=1
+python3 -m unittest discover -v
 popd
 
-%post
-%python_install_alternative r2e r2e.1
-
-%postun
-%python_uninstall_alternative r2e r2e.1
-
-%files %{python_files}
+%files
 %license COPYING
 %doc AUTHORS CHANGELOG README.rst
-%dir %{python_sitelib}/rss2email
-%dir %{python_sitelib}/rss2email/__pycache__
-%dir %{python_sitelib}/rss2email/post_process
-%dir %{python_sitelib}/rss2email/post_process/__pycache__
-%{python_sitelib}/rss2email/*py
-%{python_sitelib}/rss2email/post_process/*py
-%{python_sitelib}/rss2email-%{version}-py*.egg-info
-%pycache_only %{python_sitelib}/rss2email/__pycache__/*
-%pycache_only %{python_sitelib}/rss2email/post_process/__pycache__/*
-%python_alternative %{_bindir}/r2e
-%python_alternative %{_mandir}/man1/r2e.1%{?ext_man}
+%{_bindir}/r2e
+%{_mandir}/man1/r2e.1%{?ext_man}
+%{python3_sitelib}/rss2email
+%{python3_sitelib}/rss2email-%{version}*-info
 
 %changelog

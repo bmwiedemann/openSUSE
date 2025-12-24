@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Dec 12 08:03:01 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 279.patch: Fix build against html2text >= 2025.4.15 and
+  require this version at least.
+
+-------------------------------------------------------------------
+Mon Jun 30 10:11:28 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch the SPEC file from the single-spec one to the regular
+  one (rss2email is not consumed by any other package, AFAIK, so
+  multiple binary packages are not needed).
+- Add dynamic-version-number.patch to switch incorrect duality of
+  pyproject.toml/setup.py to the regular PEP 621 setup.cfg
+  (gh#rss2email/rss2email!284).
+- Add 213-http-header-config.patch to allow adding a custom
+  HTTP header to the request (required for some websites,
+  e.g., gh#rss2email/rss2email#273; the code is from
+  gh#rss2email/rss2email!213).
+
+-------------------------------------------------------------------
 Fri Apr  5 05:15:29 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
@@ -32,7 +52,7 @@ Mon Dec  5 07:33:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Tue Apr 26 05:44:30 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
-- No longer skip python310, feedparser is now available. 
+- No longer skip python310, feedparser is now available.
 
 -------------------------------------------------------------------
 Sat Feb  5 16:55:56 UTC 2022 - Benjamin Greiner <code@bnavigator.de>
@@ -43,7 +63,7 @@ Sat Feb  5 16:55:56 UTC 2022 - Benjamin Greiner <code@bnavigator.de>
 Tue Jan  4 18:28:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.13.1:
-  * Fix crash on html-mail entries with no URL 
+  * Fix crash on html-mail entries with no URL
 
 -------------------------------------------------------------------
 Mon Apr 12 16:19:42 UTC 2021 - Arun Persaud <arun@gmx.de>
@@ -209,7 +229,7 @@ Mon Jan 20 06:47:42 UTC 2014 - arun@gmx.de
 
 - updated to v3.8 (2014-01-18)
   * Sluggify feed names on opmlimport.
-  * Allow Unicode letters and digits in feed names, instead of just ASCII lettters and digits. 
+  * Allow Unicode letters and digits in feed names, instead of just ASCII lettters and digits.
 
 -------------------------------------------------------------------
 Fri Oct 11 16:55:54 UTC 2013 - arun@gmx.de
@@ -234,7 +254,7 @@ Fri Oct 11 16:55:54 UTC 2013 - arun@gmx.de
   [7]: https://github.com/wking/rss2email/issues/19
   [8]: http://thread.gmane.org/gmane.mail.rss2email/178
   [9]: https://github.com/wking/rss2email/pull/18
-  [10]: https://github.com/wking/rss2email/pull/20 
+  [10]: https://github.com/wking/rss2email/pull/20
 
 -------------------------------------------------------------------
 Fri Sep 20 00:15:49 UTC 2013 - arun@gmx.de
@@ -266,7 +286,7 @@ Tue May 14 20:46:29 UTC 2013 - arun@gmx.de
   Changes since 3.3 (from CHANGELOG)
   v3.4 (2013-05-14)
     * Added post-processing hooks for user-specified message manipulation.
-    * Added settings for IMAP delivery. The old `use-smtp` boolean has 
+    * Added settings for IMAP delivery. The old `use-smtp` boolean has
       been replaced by a new `email-protocol` setting. Non-IMAP users
       should adjust their configuration to set `email-protocol`
       to either `sendmail` or `smtp`.
@@ -274,8 +294,8 @@ Tue May 14 20:46:29 UTC 2013 - arun@gmx.de
 -------------------------------------------------------------------
 Sun Apr 14 04:56:54 UTC 2013 - arun@gmx.de
 
-- updated to version 3.3 
-  
+- updated to version 3.3
+
   Changes since 3.2 (from CHANGELOG):
   v3.3 (2013-04-13)
     * Fix SMTP message submission logic.
@@ -289,14 +309,14 @@ Sun Apr 14 04:56:54 UTC 2013 - arun@gmx.de
 Thu Mar 14 17:42:14 UTC 2013 - arun@gmx.de
 
 - updated to verson 3.2
- 
+
  Changes since 3.1 (from the CHANGELOG):
 * Use extended interpolation in configuration files, to allow percent
   signs (%).
 * Added .as_string() fallback to email flattening (only used if
   `use-smtp = False` and `use-8bit = True`).
 * Added sendmail configuration option.  Change this if you want to use
-  an alternative, sendmail-compatible mailer. 
+  an alternative, sendmail-compatible mailer.
 
 -------------------------------------------------------------------
 Sun Mar  3 06:26:46 UTC 2013 - arun@gmx.de
@@ -307,7 +327,7 @@ Sun Mar  3 06:26:46 UTC 2013 - arun@gmx.de
 -------------------------------------------------------------------
 Fri Feb 15 20:13:06 UTC 2013 - arun@gmx.de
 
-- update to version 3.1, use tar.gz instead of zip 
+- update to version 3.1, use tar.gz instead of zip
 
 -------------------------------------------------------------------
 Fri Feb 15 20:09:56 UTC 2013 - arun@gmx.de
@@ -315,10 +335,10 @@ Fri Feb 15 20:09:56 UTC 2013 - arun@gmx.de
 - fixed spec file according to comments on pull request
 
  * removed double install of doc files
- * don't zip man page 
+ * don't zip man page
 
 -------------------------------------------------------------------
 Wed Jan 23 20:11:04 UTC 2013 - arun@gmx.de
 
-- initial version from current git (933dc46f6af3fb5473da93e02c9a90c1e4b4ae5f) 
+- initial version from current git (933dc46f6af3fb5473da93e02c9a90c1e4b4ae5f)
 
