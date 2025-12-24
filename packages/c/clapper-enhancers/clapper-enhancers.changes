@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Dec 23 16:44:17 UTC 2025 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to version 0.10.0:
+  + New plugins:
+    - Control Hub - Allows to control playback remotely (port of
+      Clapper "Server" feature with new name for clarity what its
+      for)
+    - Media Scanner - Discovers queued media information (rewrite of
+      Clapper "Discoverer" feature: simpler, faster, less resource
+      heavy, uses newer GStreamer elements internally, also handles
+      playlists)
+    - MPRIS - MPRIS support (port of Clapper "MPRIS" feature,
+      expanded to support more media metadata and cover images)
+    - Parser M3U - M3U playlists support
+    - Recall - Recalls the last playback position. Auto resume
+      playback, mark last position on seek bar or do both. Can be
+      configured in Clapper preferences window.
+  + Changes:
+    - yt-dlp
+      + Support for changes in latest yt-dlp version (2025.12.08)
+      + Reworked format selection
+      + Support for searches, channel and playlist extractions
+      + Ability to change preferred codecs order
+      + Added option to use cookies file
+      + Ability to set yt-dlp extractors args
+      + Implemented caching of extracted content
+      + Support for custom "ytdlp://" URI scheme to force usage with
+        any media URI
+      + Added custom debug logger
+      + Implemented ability to cancel ongoing extraction
+    - lbry
+      + Miscellaneous updates for compatibility with Clapper 0.10
+    - peertube
+      + Miscellaneous updates for compatibility with Clapper 0.10
+  + Other:
+    - Update LGPL-2.1-or-later license text for remote-only FSF
+
+- Changes from version 0.8.3:
+  + Fixed playback getting initially stuck on buffering with recent
+    yt-dlp versions.
+
+- Changes from version 0.8.2:
+  + peertube: Fix regex for video IDs containing "-" characters
+  + meson: Allow setting custom enhancers directory
+
+-------------------------------------------------------------------
 Tue Jan 21 22:21:48 UTC 2025 - Florian "spirit" <sp1rit@disroot.org>
 
 - Updated to 0.8.1
