@@ -19,7 +19,7 @@
 %define major_minor %((v=%{version}; echo ${v%.*}))
 
 Name:           netavark
-Version:        1.16.1
+Version:        1.17.1
 Release:        0
 Summary:        Container network stack
 License:        Apache-2.0
@@ -80,19 +80,20 @@ install -D -m 0644 ${RPM_SOURCE_DIR}/netavark-%{default_firewall_backend}.conf %
 %{_unitdir}/%{name}-dhcp-proxy.service
 %{_unitdir}/%{name}-dhcp-proxy.socket
 %{_unitdir}/%{name}-firewalld-reload.service
+%{_unitdir}/%{name}-nftables-reload.service
 %dir %{_prefix}/lib/modules-load.d
 %{_prefix}/lib/modules-load.d/netavark-%{?default_firewall_backend}.conf
 
 %pre
-%service_add_pre %{name}-dhcp-proxy.service %{name}-dhcp-proxy.socket %{name}-firewalld-reload.service
+%service_add_pre %{name}-dhcp-proxy.service %{name}-dhcp-proxy.socket %{name}-firewalld-reload.service %{name}-nftables-reload.service
 
 %post
-%service_add_post %{name}-dhcp-proxy.service %{name}-dhcp-proxy.socket %{name}-firewalld-reload.service
+%service_add_post %{name}-dhcp-proxy.service %{name}-dhcp-proxy.socket %{name}-firewalld-reload.service %{name}-nftables-reload.service
 
 %preun
-%service_del_preun %{name}-dhcp-proxy.service %{name}-dhcp-proxy.socket %{name}-firewalld-reload.service
+%service_del_preun %{name}-dhcp-proxy.service %{name}-dhcp-proxy.socket %{name}-firewalld-reload.service %{name}-nftables-reload.service
 
 %postun
-%service_del_postun %{name}-dhcp-proxy.service %{name}-dhcp-proxy.socket %{name}-firewalld-reload.service
+%service_del_postun %{name}-dhcp-proxy.service %{name}-dhcp-proxy.socket %{name}-firewalld-reload.service %{name}-nftables-reload.service
 
 %changelog

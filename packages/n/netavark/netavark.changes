@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Mon Dec 22 09:48:09 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 1.17.1:
+  * release v1.17.1
+  * release notes for v1.17.1
+  * bump mozim to v0.3.1
+  * release v1.17.0
+  * release notes for v1.17.0
+  * sync release notes from v1.16.1
+  * refactor(netlink): Generalize socket for multi-protocol support
+  * run cargo update
+  * test-dhcp: use /24 subnet for bridge
+  * update serde and serde_json
+  * varktables: remove use of private serde type
+  * fix(deps): update rust crate iptables to 0.6.0
+  * fix(deps): update rust crate clap to ~4.5.51
+  * fix download artifact action
+  * Upgrade to mozim 0.3.0
+  * rotating aws metadata task key
+  * [skip-ci] Update GitHub Artifact Actions
+  * rotate aws keys
+  * fix(deps): update rust crate zbus to 5.12.0
+  * fix(deps): update rust crate tokio to 1.48.0
+  * chore(deps): update rust crate tempfile to 3.23.0
+  * fix(deps): update rust crate netlink-packet-core to 0.8.1
+  * fix(deps): update rust crate hyper-util to 0.1.17
+  * fix(deps): update rust crate serde_json to 1.0.144
+  * chore(deps): update rust crate tempfile to 3.22.0
+  * update netlink-package-{core, route}
+  * fix(deps): update rust crate zbus to 5.11.0
+  * feat(dhcp): Send DHCPRELEASE on container teardown
+  * bump MSRV to 1.86
+  * update tonic and prost to 0.14
+  * chore(deps): update rust crate chrono to 0.4.42
+  * fix(deps): update rust crate log to 0.4.28
+  * fix(deps): update rust crate zbus to 5.10.0
+  * Revert "[skip-ci] Update actions/download-artifact action to v5"
+  * chore(deps): update rust crate tempfile to 3.21.0
+  * Packit: fetch copr rpm version from Cargo.toml
+  * bridge: bind ip for aardvark-dns in unmanaged mode if gateway ip is not on the host
+  * fix(deps): update rust crate serde_json to 1.0.143
+  * feat: Add firewall-reload command for nftables systems
+  * test: coverage for firewalld's StrictForwardPorts configuration feature.
+  * update nftables to v0.6.3
+  * fix(deps): update rust crate mozim to 0.2.7
+  * bump to v1.17.0-dev
+
+-------------------------------------------------------------------
 Fri Sep 26 05:43:09 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - setting update to false in cargo_vendor_service as it updates
