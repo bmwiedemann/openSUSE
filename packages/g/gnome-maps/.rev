@@ -926,4 +926,17 @@
     <comment></comment>
     <requestid>1311117</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>ad9998b5a8be59325502b2362d9a146d</srcmd5>
+    <version>49.3</version>
+    <time>1766578534</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 49.3:
+  + Fix a bug causing a freeze when showing a route and moving the
+    window between different screens in some occasions.
+  + Update station icon for Great Britain National Rail stations
+    avoiding truncating parts of the graphics.
+  + Updated translations. (forwarded request 1324006 from iznogood)</comment>
+    <requestid>1324254</requestid>
+  </revision>
 </revisionlist>

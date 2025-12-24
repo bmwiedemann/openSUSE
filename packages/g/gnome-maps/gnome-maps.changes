@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Dec 21 21:07:06 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.3:
+  + Fix a bug causing a freeze when showing a route and moving the
+    window between different screens in some occasions.
+  + Update station icon for Great Britain National Rail stations
+    avoiding truncating parts of the graphics.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Oct 11 07:29:39 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.2:
