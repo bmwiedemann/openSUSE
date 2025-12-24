@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 23 22:02:52 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to 4.1.1:
+  * Fixed an issue for some apps that were relying on the 7zz extraction method
+- Update to 4.1.0:
+  * Added Forgejo update system
+
+-------------------------------------------------------------------
 Sun Dec  7 16:07:09 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to 4.0.3:
