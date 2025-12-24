@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec 18 10:33:44 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2025-13836-http-resp-cont-len.patch (bsc#1254400,
+  CVE-2025-13836) to prevent reading an HTTP response from
+  a server, if no read amount is specified, with using
+  Content-Length per default as the length.
+- Add CVE-2025-12084-minidom-quad-search.patch prevent quadratic
+  behavior in node ID cache clearing (CVE-2025-12084,
+  bsc#1254997).
+- Add CVE-2025-13837-plistlib-mailicious-length.patch protect
+  against OOM when loading malicious content (CVE-2025-13837,
+  bsc#1254401).
+
+-------------------------------------------------------------------
 Thu Dec 11 21:44:35 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 * Update to 3.9.25:

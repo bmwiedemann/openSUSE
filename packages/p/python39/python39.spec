@@ -194,6 +194,15 @@ Patch50:        gh120226-fix-sendfile-test-kernel-610.patch
 Patch51:        sphinx-802.patch
 # PATCH-FIX-OPENSUSE gh139257-Support-docutils-0.22.patch gh#python/cpython#139257 daniel.garcia@suse.com
 Patch52:        gh139257-Support-docutils-0.22.patch
+# PATCH-FIX-UPSTREAM CVE-2025-13836-http-resp-cont-len.patch bsc#1254400 mcepl@suse.com
+# Avoid loading possibly compromised length of HTTP response
+Patch53:         CVE-2025-13836-http-resp-cont-len.patch
+# PATCH-FIX-UPSTREAM CVE-2025-12084-minidom-quad-search.patch bsc#1254997 mcepl@suse.com
+# prevent quadratic behavior in node ID cache clearing 
+Patch54:        CVE-2025-12084-minidom-quad-search.patch
+# PATCH-FIX-UPSTREAM CVE-2025-13837-plistlib-mailicious-length.patch bsc#1254401 mcepl@suse.com
+# protect against OOM when loading malicious content
+Patch55:        CVE-2025-13837-plistlib-mailicious-length.patch 
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -466,6 +475,9 @@ other applications.
 %patch -p1 -P 50
 %patch -p1 -P 51
 %patch -p1 -P 52
+%patch -p1 -P 53
+%patch -p1 -P 54
+%patch -p1 -P 55
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
