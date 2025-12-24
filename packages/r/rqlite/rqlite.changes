@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 23 16:46:46 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 9.3.6:
+  * Move to Go 1.25.5 and upgrade dependencies.
+  * updates to tests
+
+-------------------------------------------------------------------
 Sat Dec 13 11:00:38 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 9.3.5:
