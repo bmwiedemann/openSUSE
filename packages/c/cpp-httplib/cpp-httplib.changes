@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Dec 22 20:58:05 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 0.28.0
+  * Fix HTTP 414 errors hanging until timeout
+  * CMake: Add HTTPLIB_SHARED option, don't define BUILD_SHARED_LIBS
+  * Add Client methods with both content provider and receiver
+  * Fix struct member initialization issue in getaddrinfo_with_timeout
+  * Add #undef _res after including resolv.h to prevent macro conflicts
+- 0.27.0 changes
+  * SSL Error Reporting Improvements
+  * SSL Client Certificate Authentication
+  * IPv6 Host Header Support
+  * Memory Safety Fix
+  * EventDispatcher Stability
+  * Threading Issues
+  * Build System Enhancements
+  * For full changelog see https://github.com/yhirose/cpp-httplib/releases/tag/v0.27.0
+- 0.26.0 changes
+  * Initialize start time for server to improve timing accuracy
+  * Addressed an unspecified issue reported in #2217
+  * Fix: handle EAI_ALLDONE from gai_suspend in getaddrinfo_with_timeout
+  * Fix #2223: Resolved issue as discussed in #2224
+  * Fix inconsistent use of macro TARGET_OS_OSX on macOS
+  * build(meson): Corrected new build option names for Meson build system
+  * Make code sample compilable
+  * Fix 32-bit MSVC compiler error due to unknown command #warning
+- Upstream release includes fixes for:
+  CVE-2025-66570 (boo#1254734)
+  CVE-2025-66577 (boo#1254735)
+- Add netcfg build requirement to fix tests
+  * The "SNI_AutoDetectionTest.SNI_Logic" test fails if localhost only resolves
+    to 127.0.0.1 (ipv4-only). netcfg provides the needed /etc/hosts config with
+    the ::1 localhost ipv6 entry.
+
+-------------------------------------------------------------------
 Tue Aug 12 12:05:54 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
 
 - updated version to 0.25.0
@@ -41,21 +76,21 @@ Tue Jul 22 23:58:47 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
   * Add Params support for PUT/DELETE methods #b2bf172
   * Complete removal of Windows 8 or lower support #2177
   * Removal of 32-bit environment support (64-bit only) #2173
-  * Improve form field access methods #2171 
+  * Improve form field access methods #2171
 
 -------------------------------------------------------------------
 Tue Jun 24 14:39:29 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
 
 - version update to 0.22.0
-  * Fix ranges that are not in the form 0-n do not work #2157 
-  * Fix windows req/res very slow compared to Linux #1777 
+  * Fix ranges that are not in the form 0-n do not work #2157
+  * Fix windows req/res very slow compared to Linux #1777
   * Add CPPHTTPLIB_HEADER_MAX_COUNT
   * Windows ::isdigit compilation error #2135
   * Specify version in meson.build #2139
   * Detect if afunix.h exists #2145
   * Feature request: let the Request& know which route matched #2101
   * Feature/multipart headers #2152
-  
+
 -------------------------------------------------------------------
 Mon May 19 20:04:41 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
@@ -202,7 +237,7 @@ Sun Sep 22 16:50:33 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 -------------------------------------------------------------------
 Fri Feb  2 17:01:44 UTC 2024 - Alexey Svistunov <svalx@svalx.net>
 
-- Update to version 0.15.1: 
+- Update to version 0.15.1:
   * Malicious requests for many overlapping byte ranges of large files risk OOM #1766
   * Add missing #include for strcasecmp #1744
   * ThreadPool: optional limit for jobs queue (#1741)
@@ -342,4 +377,3 @@ Mon Dec 26 09:13:54 UTC 2022 - svalx@svalx.net
 Fri Dec 23 08:53:05 UTC 2022 - Alexey Svistunov <svalx@svalx.net>
 
 - Initial release
-
