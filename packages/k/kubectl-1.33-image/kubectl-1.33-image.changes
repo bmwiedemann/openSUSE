@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 23 16:10:46 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- add diffutils (bsc#1251168)
+
+-------------------------------------------------------------------
 Mon Oct 20 12:53:40 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - remove password change date from /etc/shadow to make the file reproducible
