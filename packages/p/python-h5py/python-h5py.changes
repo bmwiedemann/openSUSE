@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Dec 22 12:05:57 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.15.1
+  ## New features
+  * h5py.Dataset.iter_chunks() accepts slice objects with the None
+    value for slice.start and slice.stop attributes, or integers
+    (PR 2657). Example: dset.iter_chunks((slice(None, None), 4)).
+    This is equivalent to dset[:,4].
+  * A new track_times parameter when creating a group or a file to
+    control whether creation, modification, change and access
+    timestamps are stored for group objects (PR 2611). This is
+    False by default.
+  * Work to better support free-threaded mode in CPython (PR 2658,
+    PR 2678). This is not substantially tested yet, but some of the
+    most glaring issues have been resolved. See free-threading.
+  ## Breaking Changes and Deprecations
+  * Support for Python 3.9 was dropped. Python 3.10 or newer is now
+    required to build or install h5py from this version on (PR
+    2640).
+  * The minimum supported version of HDF5 is now 1.10.7, and within
+    the 1.12 series the minimum supported version is now 1.12.1 (PR
+    2605).
+  * Timestamps are no longer stored by default for groups
+    (including the root group) if the track_order parameter is set
+    (PR 2611). Previously, setting this parameter also caused
+    timestamps to be stored in the file.
+  ## Bug fixes
+  * Fixed h5py.h5p.PropLAID.get_elink_prefix method (PR 2712).
+  * Fixed a segfault reading unallocated variable length string
+    data as NumPy variable length strings (PR 2630).
+  * Fixed an error reading certain types of variable length data
+    where an entry has 0 length (PR 2717).
+  * Fixed some SyntaxWarnings which might become errors in a future
+    Python version (PR 2597).
+
+-------------------------------------------------------------------
 Mon Aug 25 04:12:26 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.14.0:

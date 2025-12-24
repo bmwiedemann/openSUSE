@@ -48,34 +48,32 @@
 %endif
 # /SECTION MPI DEFINITIONS
 Name:           %{pname}%{?my_suffix}
-Version:        3.14.0
+Version:        3.15.1
 Release:        0
 Summary:        Python interface to the Hierarchical Data Format library
 License:        BSD-3-Clause
 Group:          Development/Libraries/Python
 URL:            https://github.com/h5py/h5py
 Source:         https://files.pythonhosted.org/packages/source/h/h5py/h5py-%{version}.tar.gz
-BuildRequires:  %{python_module Cython >= 0.29 with %python-Cython < 4}
-BuildRequires:  %{python_module devel >= 3.9}
+BuildRequires:  %{python_module Cython >= 3 with %python-Cython < 4}
+BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module numpy-devel >= 2.0.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pkgconfig}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools >= 77}
+BuildRequires:  %{python_module pkgconfig >= 1.5.5}
+BuildRequires:  %{python_module pytest >= 8.2.2}
+BuildRequires:  %{python_module setuptools >= 77.0.1}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-BuildRequires:  hdf5%{?my_suffix}-devel >= 1.10.6
+BuildRequires:  hdf5%{?my_suffix}-devel >= 1.11.5
 BuildRequires:  python-rpm-macros
 # Work around requires_eq not finding the capability libhdf5. Need the Requires before the macro for the python subpackage rewriter
 Requires:       %(rpm -q --requires hdf5%{?my_suffix}-devel | grep 'libhdf5.* = ' | head -n 1)
-Requires:       python-numpy >= 1.19.3
+Requires:       python-numpy >= 1.21.2
 %if %{with mpi}
 BuildRequires:  %{mpi_flavor}%{mpi_vers}-devel
-BuildRequires:  %{python_module mpi4py >= 3.1.1 if %python-base < 3.11}
-BuildRequires:  %{python_module mpi4py >= 3.1.6 if %python-base >= 3.12}
-BuildRequires:  %{python_module pytest-mpi >= 0.2}
-BuildRequires:  %{python_module mpi4py >= 3.1.4 if (%python-base >= 3.11 and %python-base < 3.12)}
-Requires:       python-mpi4py >= 3.1.1
+BuildRequires:  %{python_module mpi4py >= 3.1.2}
+BuildRequires:  %{python_module pytest-mpi >= 0.6}
+Requires:       python-mpi4py >= 3.1.2
 %endif
 %python_subpackages
 
