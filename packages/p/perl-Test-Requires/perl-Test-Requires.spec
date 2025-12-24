@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Requires
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,24 @@
 #
 
 
-Name:           perl-Test-Requires
-Version:        0.11
-Release:        0
 %define cpan_name Test-Requires
-Summary:        Checks to see if the module can be loaded
+Name:           perl-Test-Requires
+Version:        0.110.0
+Release:        0
+# 0.11 -> normalize -> 0.110.0
+%define cpan_version 0.11
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
+Summary:        Checks to see if the module can be loaded
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/T/TO/TOKUHIROM/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/T/TO/TOKUHIROM/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.64
+Provides:       perl(Test::Requires) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -40,16 +44,16 @@ If this fails rather than failing tests this *skips all tests*.
 Test::Requires can also be used to require a minimum version of Perl:
 
     use Test::Requires "5.010";  # quoting is necessary!!
-    
+
     # or
     use Test::Requires "v5.10";
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -60,8 +64,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes minil.toml README.md
+%doc Changes README.md
 %license LICENSE
 
 %changelog
