@@ -1,7 +1,7 @@
 #
 # spec file for package clapper
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global uuid com.github.rafostar.Clapper
 %global libver 0.0
-%global libsuffix 0.8.0
+%global libsuffix 0.10.0
 %global sover 0
 %global gstlib Clapper
 
@@ -32,7 +32,7 @@
 %bcond_without server
 
 Name:           clapper
-Version:        0.8.0
+Version:        0.10.0
 Release:        0
 Summary:        A GNOME media player built using GJS with GTK4
 Group:          Productivity/Multimedia/Video/Players
@@ -61,6 +61,8 @@ BuildRequires:  pkgconfig(gstreamer-tag-1.0) >= %{gst_version}
 BuildRequires:  pkgconfig(gstreamer-video-1.0) >= %{gst_version}
 BuildRequires:  pkgconfig(gtk4) >= %{gtk4_version}
 BuildRequires:  pkgconfig(libadwaita-1) >= %{adw_version}
+BuildRequires:  pkgconfig(libcgraph)
+BuildRequires:  pkgconfig(libgvc)
 
 %if %{with enhancers}
 BuildRequires:  pkgconfig(libpeas-2)
