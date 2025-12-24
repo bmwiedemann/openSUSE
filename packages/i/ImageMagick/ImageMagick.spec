@@ -1,6 +1,7 @@
 #
 # spec file for package ImageMagick
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +22,7 @@
 %define debug_build    0
 %define asan_build     0
 %define mfr_version    7.1.2
-%define mfr_revision   10
+%define mfr_revision   11
 %define quantum_depth  16
 %define source_version %{mfr_version}-%{mfr_revision}
 %define clibver        10

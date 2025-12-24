@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec 22 08:39:43 UTC 2025 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 7.1.2.11
+  * no upstream changelog, see
+    https://github.com/ImageMagick/ImageMagick/compare/7.1.2-10..7.1.2-11
+- modified patches
+  * ImageMagick-library-installable-in-parallel.patch (refreshed)
+
+-------------------------------------------------------------------
 Sun Dec  7 15:06:32 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - version update to 7.1.2.10
