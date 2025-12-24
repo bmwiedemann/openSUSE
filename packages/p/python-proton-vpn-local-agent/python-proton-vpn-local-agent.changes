@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 24 02:42:20 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- fixing Leap16.0, by locating the correct directory of the library
+
+-------------------------------------------------------------------
 Mon Nov 24 10:30:25 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 1.6.0 (boo#1253255):

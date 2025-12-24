@@ -55,6 +55,9 @@ pushd %{_name}
 popd
 
 %install
+%if 0%{?suse_version} == 1600
+pushd %{_name}
+%endif
 for p in $(echo "%{pythons}" | sed s/python31/python3.1/g); do
 install -d %{buildroot}%{_libdir}/$p/site-packages/{proton,proton/vpn};
 ln -sr %{buildroot}%{_libdir}/proton/local_agent.so  %{buildroot}%{_libdir}/$p/site-packages/proton/vpn/local_agent.so;

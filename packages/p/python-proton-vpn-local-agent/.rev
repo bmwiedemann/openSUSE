@@ -35,4 +35,12 @@
     <comment></comment>
     <requestid>1319816</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>3f0fa006d6115e197fe9d5f18240fa2a</srcmd5>
+    <version>1.6.0</version>
+    <time>1766578627</time>
+    <user>dimstar_suse</user>
+    <comment>- fixing Leap16.0, by locating the correct directory of the library (forwarded request 1324337 from rrahl0)</comment>
+    <requestid>1324338</requestid>
+  </revision>
 </revisionlist>
