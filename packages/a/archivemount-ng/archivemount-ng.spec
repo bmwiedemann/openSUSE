@@ -18,15 +18,13 @@
 
 
 Name:           archivemount-ng
-Version:        1a
+Version:        1b
 Release:        0
 Summary:        Mount archives as a file system
 License:        0BSD AND LGPL-2.1-or-later
 URL:            https://git.sr.ht/~nabijaczleweli/archivemount-ng
 Source:         https://git.sr.ht/~nabijaczleweli/archivemount-ng/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# fails download_files
-#Source2:        https://git.sr.ht/~nabijaczleweli/archivemount-ng/archive/%%{version}.tar.gz#/%%{name}-%%{version}.tar.gz
-Source2:        %{name}-%{version}.tar.gz.asc
+Source2:        https://git.sr.ht/~nabijaczleweli/archivemount-ng/archive/%{version}.tar.gz.asc#/%{name}-%{version}.tar.gz.asc
 Source3:        https://nabijaczleweli.xyz/pgp.txt#/%{name}.keyring
 BuildRequires:  c++_compiler
 BuildRequires:  pkgconfig
