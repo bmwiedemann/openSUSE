@@ -2269,8 +2269,13 @@ unsorted:
   - clapper 
   - clapper-devel 
   - clapper-enhancers 
+  - clapper-enhancers-control-hub 
   - clapper-enhancers-lbry 
+  - clapper-enhancers-media-scanner 
+  - clapper-enhancers-mpris 
+  - clapper-enhancers-parser-m3u 
   - clapper-enhancers-peertube 
+  - clapper-enhancers-recall 
   - clapper-enhancers-yt-dlp 
   - clapper-lang 
   - clash 
@@ -12743,7 +12748,7 @@ unsorted:
   - libcpluff0 
   - libcpluffxx-devel 
   - libcpluffxx0 
-  - libcpp-httplib0_25 
+  - libcpp-httplib0_28 
   - libcppunit-1_15-1 
   - libcppunit-1_15-1-32bit 
   - libcppunit_subunit0 
@@ -15598,7 +15603,8 @@ unsorted:
   - libqcow-devel 
   - libqcow-tools 
   - libqcow1 
-  - libqcustomplot2 
+  - libqcustomplot-qt5-2 
+  - libqcustomplot-qt6-2 
   - libqd0 
   - libqgpgme-devel 
   - libqgpgme15 
@@ -35658,8 +35664,9 @@ unsorted:
   - qcdloop-devel 
   - qcoro-qt5-devel 
   - qcoro-qt6-devel 
-  - qcustomplot-devel 
   - qcustomplot-doc 
+  - qcustomplot-qt5-devel 
+  - qcustomplot-qt6-devel 
   - qd-devel 
   - qdirstat 
   - qdox 
@@ -36731,6 +36738,7 @@ unsorted:
   - rspamd 
   - rspamd-apparmor 
   - rss-glx 
+  - rss2email 
   - rssguard 
   - rsstail 
   - rsvg-convert 
