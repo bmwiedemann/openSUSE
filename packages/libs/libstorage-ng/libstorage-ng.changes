@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Mon Dec 22 12:09:26 UTC 2025 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1044
+- avoid manual memory management
+- added test case
+- 4.5.281
+
+--------------------------------------------------------------------
 Thu Dec 11 10:22:41 UTC 2025 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#1043
