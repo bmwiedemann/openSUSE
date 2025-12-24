@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Dec 22 11:36:29 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.7.3
+  * Fix empty selection by @kmuehlbauer in #297
+- Previous releases since 1.3.0
+  * Retrieve format from _root instead of group instance by
+    @kmuehlbauer in #294
+  * fix writing lists of strings for NETCDF4 by @kmuehlbauer in
+    #292
+  * fix unintentional changes in test suite by @kmuehlbauer in #277
+  * Update test URL for ros3-test, add pytest-asyncio by
+    @kmuehlbauer in #284
+  * create enums with low-level API to keep order by value, add
+    h5dump-tests by @kmuehlbauer in #285
+  * FIX: interoperability netcdf4 vs h5netcdf by @kmuehlbauer in
+    #286
+  * Add partial support for NETCDF4_CLASSIC format by @huard in
+    #283
+  * do not return padded arrays if slice is exceeding variable
+    shape by @kmuehlbauer in #288
+  * Add better error messages when operating on a closed file by
+    @kmuehlbauer in #275
+  * fix invalid string format specifier, match raises/warns with
+    messages in test suite by @kmuehlbauer in #270
+  * fix hsds/h5pyd test fixture spinup issues by @kmuehlbauer in
+    #265
+  * Fix and add circular referrer tests for Python 3.14 by
+    @kmuehlbauer in #264
+  * Avoid opening file with h5pyd just to check if it exists by
+    @JonasGronberg and @kmuehlbauer in #266
+  * Return None for chunks on scalar variables by @rho-novatron in
+    #259
+  * Let h5netcdf.File(driver="h5pyd") force the use of h5pyd by
+    @rho-novatron in #256
+  * Allow zlib to be an alias for gzip by @hmaarrfk in #252
+  * add EnumType by @kmuehlbauer in #226
+  * UserType class, inherit EnumType from UserType by @kmuehlbauer
+    in #229
+  * Refactor fillvalue and dtype handling for user types, enhance
+    tests by @kmuehlbauer in #230
+  * Support wrapping an h5py File object by @takluyver in #238
+  * add VLType and CompoundType, commit complex compound type to
+    file by @kmuehlbauer in #227
+
+-------------------------------------------------------------------
 Wed Dec 27 11:02:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.3.0:

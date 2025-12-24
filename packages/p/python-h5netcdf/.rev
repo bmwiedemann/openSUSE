@@ -156,4 +156,12 @@
   * Add ros3 support by checking `driver`-kwarg.</comment>
     <requestid>1135286</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>355baa0ef1edd339d24094cdc30a91d6</srcmd5>
+    <version>1.7.3</version>
+    <time>1766578573</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1324293</requestid>
+  </revision>
 </revisionlist>
