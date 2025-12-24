@@ -1,0 +1,4 @@
+<package name="kubectl-1.35-image" project="openSUSE:Factory">
+  <title>openSUSE Tumbleweed kubectl</title>
+  <description>Kubernetes CLI for communicating with a Kubernetes cluster's control plane using the Kubernetes API, based on the openSUSE Tumbleweed Base Container Image.</description>
+</package>
