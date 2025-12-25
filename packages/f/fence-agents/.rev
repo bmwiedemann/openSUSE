@@ -1268,4 +1268,12 @@
   Adpat changes</comment>
     <requestid>1321707</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>0daa7e3d115fdefa5d85d75de8370ef0</srcmd5>
+    <version>4.16.0+git.1765293331.d30fb54b</version>
+    <time>1766689062</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1324379</requestid>
+  </revision>
 </revisionlist>

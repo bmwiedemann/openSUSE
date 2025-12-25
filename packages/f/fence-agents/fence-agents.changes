@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec 17 17:44:59 UTC 2025 - Peter Varkoly <varkoly@suse.com>
+
+- Update to version 4.16.0+git.1765293331.d30fb54b:
+  * fence_ibm_vpc: fix missing statuses
+  * Remove discards const qualifier warnings
+  * build: add support for rust coreutils
+  * fence_virt: print error messages to sderr
+  * fence_virt: cleanup whitespace at end of lines
+
+-------------------------------------------------------------------
 Tue Nov 25 13:21:25 UTC 2025 - Peter Varkoly <varkoly@suse.com>
 
 - Update to version 4.16.0+git.1763372689.07285aac:
