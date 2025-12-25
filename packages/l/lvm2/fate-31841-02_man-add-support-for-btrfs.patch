@@ -11,19 +11,11 @@ Signed-off-by: Heming Zhao <heming.zhao@suse.com>
  man/fsadm.8_main | 4 ++++
  1 file changed, 4 insertions(+)
 
-diff --git a/man/fsadm.8_main b/man/fsadm.8_main
-index dfff5bb97021..ad924ac3a304 100644
---- a/man/fsadm.8_main
-+++ b/man/fsadm.8_main
-@@ -31,6 +31,7 @@ It tries to use the same API for
- .BR ext2 ,
- .BR ext3 ,
- .BR ext4 ,
-+.BR btrfs ,
- .BR ReiserFS
- and
- .BR XFS
-@@ -119,6 +120,9 @@ Defaults to "\fI/dev\fP" and must be an absolute path.
+Index: LVM2.2.03.38/man/fsadm.8_main
+===================================================================
+--- LVM2.2.03.38.orig/man/fsadm.8_main	2025-12-23 12:06:54.757212415 +0800
++++ LVM2.2.03.38/man/fsadm.8_main	2025-12-23 12:07:22.353229247 +0800
+@@ -135,6 +135,9 @@
  .BR tune2fs (8),
  .BR resize2fs (8),
  .P
@@ -33,6 +25,3 @@ index dfff5bb97021..ad924ac3a304 100644
  .BR reiserfstune (8),
  .BR resize_reiserfs (8),
  .P
--- 
-1.8.3.1
-

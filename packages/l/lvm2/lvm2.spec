@@ -21,11 +21,11 @@
 %define libname_event libdevmapper-event1_03
 %define _udevdir %(pkg-config --variable=udevdir udev)
 %define cmdlib liblvm2cmd2_03
-%define lvm2_version              2.03.29
+%define lvm2_version              2.03.38
 # For device_mapper_version, it's package version, see bsc#1199074.
 # Also note there is another dm version on below "sed -ie ... VERSION_DM".
-%define upstream_device_mapper_version  1.02.203
-%define device_mapper_version           %{lvm2_version}_1.02.203
+%define upstream_device_mapper_version  1.02.212
+%define device_mapper_version           %{lvm2_version}_1.02.212
 %define thin_provisioning_version 0.7.0
 %if 0%{?suse_version} >= 1600 && ! 0%{?is_opensuse}
   %define _supportsanlock 0
@@ -583,6 +583,7 @@ LVM commands use lvmlockd to coordinate access to shared storage.
 %{_sbindir}/lvdisplay
 %{_sbindir}/lvextend
 %{_sbindir}/lvmdiskscan
+%{_sbindir}/lvmpersist
 %{_sbindir}/lvmsadc
 %{_sbindir}/lvmsar
 %{_sbindir}/lvreduce
@@ -639,6 +640,7 @@ LVM commands use lvmlockd to coordinate access to shared storage.
 /sbin/lvdisplay
 /sbin/lvextend
 /sbin/lvmdiskscan
+/sbin/lvmpersist
 /sbin/lvmsadc
 /sbin/lvmsar
 /sbin/lvreduce
@@ -697,6 +699,7 @@ LVM commands use lvmlockd to coordinate access to shared storage.
 %{_mandir}/man8/lvmdevices.8%{?ext_man}
 %{_mandir}/man8/lvm-dumpconfig.8%{?ext_man}
 %{_mandir}/man8/lvmdiskscan.8%{?ext_man}
+%{_mandir}/man8/lvmpersist.8%{?ext_man}
 %{_mandir}/man8/lvmdump.8%{?ext_man}
 %{_mandir}/man8/lvm-fullreport.8%{?ext_man}
 %{_mandir}/man8/lvmsadc.8%{?ext_man}

@@ -31,10 +31,10 @@ Signed-off-by: Heming Zhao <heming.zhao@suse.com>
  scripts/fsadm.sh | 88 ++++++++++++++++++++++++++++++++++++++++++++++++++++++--
  1 file changed, 86 insertions(+), 2 deletions(-)
 
-diff --git a/scripts/fsadm.sh b/scripts/fsadm.sh
-index 9ae422f55edf..a7345c503f77 100755
---- a/scripts/fsadm.sh
-+++ b/scripts/fsadm.sh
+Index: LVM2.2.03.38/scripts/fsadm.sh
+===================================================================
+--- LVM2.2.03.38.orig/scripts/fsadm.sh	2025-12-23 13:05:56.339324006 +0800
++++ LVM2.2.03.38/scripts/fsadm.sh	2025-12-23 13:07:44.671817336 +0800
 @@ -22,6 +22,7 @@
  # ext2/ext3/ext4: resize2fs, tune2fs
  # reiserfs: resize_reiserfs, reiserfstune
@@ -43,7 +43,7 @@ index 9ae422f55edf..a7345c503f77 100755
  #
  # Return values:
  #   0 success
-@@ -59,6 +60,7 @@ XFS_CHECK="xfs_check"
+@@ -88,6 +89,7 @@
  # XFS_REPAIR -n is used when XFS_CHECK is not found
  XFS_REPAIR="xfs_repair"
  CRYPTSETUP="cryptsetup"
@@ -51,7 +51,7 @@ index 9ae422f55edf..a7345c503f77 100755
  
  # user may override lvm location by setting LVM_BINARY
  LVM=${LVM_BINARY:-lvm}
-@@ -78,6 +80,9 @@ BLOCKCOUNT=
+@@ -107,6 +109,9 @@
  MOUNTPOINT=
  MOUNTED=
  REMOUNT=
@@ -61,7 +61,7 @@ index 9ae422f55edf..a7345c503f77 100755
  PROCDIR="/proc"
  PROCMOUNTS="$PROCDIR/mounts"
  PROCSELFMOUNTINFO="$PROCDIR/self/mountinfo"
-@@ -237,6 +242,33 @@ detect_fs() {
+@@ -276,6 +281,33 @@
  	verbose "\"$FSTYPE\" filesystem found on \"$VOLUME\"."
  }
  
@@ -95,7 +95,7 @@ index 9ae422f55edf..a7345c503f77 100755
  
  # Check that passed mounted MAJOR:MINOR is not matching $MAJOR:MINOR of resized $VOLUME
  validate_mounted_major_minor() {
-@@ -365,7 +397,11 @@ detect_mounted_with_proc_mounts() {
+@@ -404,7 +436,11 @@
  # check if the given device is already mounted and where
  # FIXME: resolve swap usage and device stacking
  detect_mounted() {
@@ -108,8 +108,8 @@ index 9ae422f55edf..a7345c503f77 100755
  		detect_mounted_with_proc_self_mountinfo
  	elif test -e "$PROCMOUNTS"; then
  		detect_mounted_with_proc_mounts
-@@ -662,6 +698,47 @@ resize_crypt() {
- 	dry "$CRYPTSETUP" resize "$1" --size $CRYPT_RESIZE_BLOCKS || error "$CRYPTSETUP failed to resize device $1"
+@@ -713,6 +749,47 @@
+ 		      "Target size: $CRYPT_RESIZE_BLOCKS sectors."
  }
  
 +########################
@@ -156,15 +156,15 @@ index 9ae422f55edf..a7345c503f77 100755
  ####################
  # Resize filesystem
  ####################
-@@ -685,6 +762,7 @@ resize() {
+@@ -736,6 +813,7 @@
  	  "crypto_LUKS")
- 		which "$CRYPTSETUP" >"$NULL" 2>&1 || error "$CRYPTSETUP utility required to resize LUKS volume"
+ 		which "$CRYPTSETUP" >"$NULL" 2>&1 || error "$CRYPTSETUP utility required to resize LUKS volume."
  		CMD=resize_luks ;;
 +	  "btrfs") CMD=resize_btrfs ;;
  	  *) error "Filesystem \"$FSTYPE\" on device \"$VOLUME\" is not supported by this tool." ;;
  	esac
  
-@@ -762,6 +840,12 @@ check() {
+@@ -820,6 +898,12 @@
  		which "$CRYPTSETUP" >"$NULL" 2>&1 || error "$CRYPTSETUP utility required."
  		check_luks || error "Crypto luks check failed."
  		;;
@@ -177,7 +177,7 @@ index 9ae422f55edf..a7345c503f77 100755
  	  *)
  		error "Filesystem \"$FSTYPE\" on device \"$VOLUME\" is not supported by this tool." ;;
  	esac
-@@ -780,7 +864,7 @@ test -n "${FSADM_RUNNING-}" && exit 0
+@@ -838,7 +922,7 @@
  for i in "$TUNE_EXT" "$RESIZE_EXT" "$TUNE_REISER" "$RESIZE_REISER" \
  	"$TUNE_XFS" "$RESIZE_XFS" "$MOUNT" "$UMOUNT" "$MKDIR" \
  	"$RMDIR" "$BLOCKDEV" "$BLKID" "$GREP" "$READLINK" \
@@ -186,6 +186,3 @@ index 9ae422f55edf..a7345c503f77 100755
  	test -n "$i" || error "Required command definitions in the script are missing!"
  done
  
--- 
-1.8.3.1
-
