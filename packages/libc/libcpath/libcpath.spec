@@ -1,7 +1,7 @@
 #
 # spec file for package libcpath
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libcpath
 %define lname	libcpath1
-Version:        20240414
+Version:        20251224
 Release:        0
 Summary:        Library for C path functions
 License:        LGPL-3.0-or-later
