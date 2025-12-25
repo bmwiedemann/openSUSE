@@ -1379,4 +1379,15 @@
   * Fixed build failure with Qt &lt; 6.8</comment>
     <requestid>1320510</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>7b56b06cbb0ecbec61e2e4254eef8d92</srcmd5>
+    <version>2.3.2</version>
+    <time>1766689058</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.2:
+  * Used QPointer for handling wlroots desktops to prevent dangling
+    pointers, especially with bad compositor codes (previously,
+    hyprland could make the panel crash)</comment>
+    <requestid>1324377</requestid>
+  </revision>
 </revisionlist>

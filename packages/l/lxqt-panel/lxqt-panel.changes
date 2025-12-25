@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 24 16:31:22 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to version 2.3.2:
+  * Used QPointer for handling wlroots desktops to prevent dangling
+    pointers, especially with bad compositor codes (previously,
+    hyprland could make the panel crash)
+
+-------------------------------------------------------------------
 Fri Nov 28 16:38:21 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to version 2.3.1:
