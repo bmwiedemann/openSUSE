@@ -2,6 +2,7 @@
 # spec file for package sshfs
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +18,19 @@
 
 
 Name:           sshfs
-Version:        3.7.4a
+Version:        3.7.5
 Release:        0
 Summary:        Filesystem client based on SSH file transfer protocol
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
-URL:            https://github.com/deadbeefsociety/sshfs
-Source0:        https://github.com/deadbeefsociety/sshfs/releases/download/%{name}-%{version}/%{name}-%{version}.tar.xz
-Source1:        https://github.com/deadbeefsociety/sshfs/releases/download/%{name}-%{version}/%{name}-%{version}.tar.xz.asc
+URL:            https://github.com/libfuse/sshfs
+Source0:        https://github.com/libfuse/sshfs/releases/download/sshfs-%{version}/%{name}-%{version}.tar.xz
+Source1:        https://github.com/libfuse/sshfs/releases/download/sshfs-%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        sshfs.keyring
-BuildRequires:  fuse3-devel >= 3.1.0
 BuildRequires:  meson
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  python3-docutils
+BuildRequires:  pkgconfig(fuse3) >= 3.1.0
 BuildRequires:  pkgconfig(glib-2.0)
 Requires:       fuse3 >= 3.1.0
 

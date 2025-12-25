@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec 24 11:04:01 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 3.7.5:
+  * Implement connect to vsock
+  * use latest major version for actions/checkout
+  * Fix memleak in cache after readlink
+  * Fill stat info when returning cached data for readdir
+  * ipv6 support for directport connection
+- reverts to original fork
+
+-------------------------------------------------------------------
 Thu Jul 17 10:16:07 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Don't globstar files in shared directory _bindir.
