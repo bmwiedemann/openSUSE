@@ -30,9 +30,10 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.60.0
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1600
 BuildRequires:  pkgconfig(OpenEXR) >= 3.1
 BuildRequires:  pkgconfig(libjxl)
+BuildRequires:  pkgconfig(librsvg-2.0)
 %endif
 BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(cairo)
@@ -44,7 +45,6 @@ BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libheif)
 BuildRequires:  pkgconfig(libpng16)
 BuildRequires:  pkgconfig(libraw)
-BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libsixel)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libwebp)
@@ -68,6 +68,7 @@ opening the image directly in a terminal window.
 %if 0%{?suse_version} < 1600
   -Dexr=disabled \
   -Djxl=disabled \
+  -Dsvg=disabled \
 %endif
 %if %{with test}
   -Dtests=enabled \
