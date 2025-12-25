@@ -17,9 +17,8 @@
 
 
 %define services %{name}.service
-
 Name:           forgejo-runner
-Version:        12.3.0
+Version:        12.3.1
 Release:        0
 Summary:        Daemon that connects to a Forgejo instance and runs CI jobs
 License:        GPL-3.0-or-later
@@ -111,10 +110,6 @@ install -D -m 0750 -d          %{buildroot}%{_sysconfdir}/%{name}
 install    -m 0640 config.yaml %{buildroot}%{_sysconfdir}/%{name}/config.yaml
 install    -m 0640 /dev/null   %{buildroot}%{_sysconfdir}/%{name}/runners
 install -D -m 0750 -d          %{buildroot}%{_localstatedir}/lib/%{name}
-
-# this update forgot to change the version, so disable for >12.1.1, enable when update
-#%%check
-#bin/%{name} --version | grep %{version}
 
 %pre
 %service_add_pre %{services}

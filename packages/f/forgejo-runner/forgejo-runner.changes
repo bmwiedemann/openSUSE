@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec 25 01:23:30 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 12.3.1:
+  * feat(jobparser): separate the concept of an instance & external reusable
+    workflow
+  * fix: second-layer reusable workflows losing their inputs when expanded
+- remove basic version check, as upstream most of the time forgets updating
+  that
+
+-------------------------------------------------------------------
 Sun Dec 21 22:42:12 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 12.3.0:
