@@ -35,7 +35,7 @@
 %define cuda_version %{cuda_version_major}-%{cuda_version_minor}
 
 Name:           ollama
-Version:        0.13.4
+Version:        0.13.5
 Release:        0
 Summary:        Tool for running AI models on-premise
 License:        MIT
@@ -102,18 +102,21 @@ can be imported.
 
 %package vulkan
 Summary:        Ollama Module using Vulkan
+Requires:       %{name} = %{version}-%{release}
 
 %description vulkan
 Ollama plugin module using Vulkan.
 
 %package cuda
 Summary:        Ollama Module using CUDA
+Requires:       %{name} = %{version}-%{release}
 
 %description cuda
 Ollama plugin module using NVIDIA CUDA.
 
 %package rocm
 Summary:        Ollama Module using AMD ROCm
+Requires:       %{name} = %{version}-%{release}
 
 %description rocm
 Ollama plugin module for ROCm.

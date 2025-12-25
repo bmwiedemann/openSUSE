@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Dec 19 12:01:05 UTC 2025 - Glen Masgai <glen.masgai@gmail.com>
+
+- Added 'Requires:' tag for subpackages to spec file
+
+- Update to version 0.13.5:
+  * New models: FunctionGemma
+  * 'bert' architecture models now run on Ollama's engine
+  * Added built-in renderer & tool parsing capabilities for
+    DeepSeek-V3.1
+  * Fixed issue where nested properties in tools may not have been
+    rendered properly
+
+-------------------------------------------------------------------
 Wed Dec 17 11:48:24 UTC 2025 - Glen Masgai <glen.masgai@gmail.com>
 
 - Update vendored golang.org/x/net/html to v0.48.0
