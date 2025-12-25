@@ -10,7 +10,7 @@
 
   <property name="project.groupId" value="org.apache.maven"/>
   <property name="project.artifactId" value="maven-archiver"/>
-  <property name="project.version" value="3.6.5"/>
+  <property name="project.version" value="3.6.6"/>
   <property name="project.name" value="Apache Maven Archiver"/>
   <property name="project.organization.name" value="The Apache Software Foundation"/>
 

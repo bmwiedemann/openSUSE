@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Dec 24 15:52:05 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to maven-archiver 3.6.6
+  * New features and improvements
+    + Backport sorting of properties to maven archiver 3.x
+  * Maintenance
+    + Convert to MARKDOWN with doxia-converter
+    + Add more timestamp tests
+  * Dependency updates
+    + Bump Maven to 3.9.12
+    + Bump org.codehaus.plexus:plexus-archiver from 4.10.2 to 4.10.4
+    + Bump org.codehaus.plexus:plexus-interpolation from 1.28 to 1.29
+
+-------------------------------------------------------------------
 Wed Oct  8 23:12:31 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to maven-archiver 3.6.5
