@@ -1,7 +1,7 @@
 #
 # spec file for package dino
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,14 @@
 #
 
 
+%define libdino libdino0
+%define libqlite libqlite0
+%define libcryptovala libcrypto-vala0
+%define libxmppvala libxmpp-vala0
 %bcond_with    separated_plugins
 %bcond_with    separated_libs
-%if 0%{?suse_version}
-%bcond_without shared_libsignal
-%else
-%bcond_with    shared_libsignal
-%endif
-
 Name:           dino
-Version:        0.4.5
+Version:        0.5.1
 Release:        0
 Summary:        Modern Jabber/XMPP Client using GTK+/Vala
 License:        GPL-3.0-only
@@ -34,19 +32,13 @@ URL:            https://github.com/dino/dino
 Source:         https://github.com/dino/dino/releases/download/v%{version}/dino-%{version}.tar.gz
 # PATCH-FEATURE-UPSTREAM -- Add more emoji translations gh/dino/dino#1207
 Patch0:         dino-0.4.3-emoji.patch
-BuildRequires:  cmake
 BuildRequires:  gcc-c++
-%if 0%{?suse_version}
-BuildRequires:  libgpgme-devel
-BuildRequires:  libgpgmepp-devel
-%else
-BuildRequires:  gpgme-devel
-%endif
 BuildRequires:  libgcrypt-devel
-BuildRequires:  libnotify-devel
+BuildRequires:  libomemo-c-devel
+BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  vala >= 0.30
+BuildRequires:  protobuf-c-devel
 BuildRequires:  pkgconfig(gee-0.8) >= 0.10
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.38
@@ -59,39 +51,39 @@ BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libqrencode)
 BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libsrtp2)
 BuildRequires:  pkgconfig(nice) >= 0.1.15
 BuildRequires:  pkgconfig(sqlite3)
-#BuildRequires:  pkgconfig(webrtc-audio-processing)
-%if %{with shared_libsignal}
-BuildRequires:  pkgconfig(libsignal-protocol-c) >= 2.3.2
-%endif
+BuildRequires:  pkgconfig(vapigen) >= 0.30
+BuildRequires:  pkgconfig(webrtc-audio-processing)
 Requires:       hicolor-icon-theme
+%if 0%{?suse_version}
+BuildRequires:  libgpgmepp-devel
+BuildRequires:  pkgconfig(gpgme)
+BuildRequires:  pkgconfig(gpgme-glib)
+%else
+BuildRequires:  gpgme-devel
+%endif
 %if "%{_lib}" == "lib64"
 Requires:       gstreamer1(element-gtksink)()(64bit)
 %else
 Requires:       gstreamer1(element-gtksink)
 %endif
 %if %{with separated_plugins}
-Recommends:     %{name}-plugin-http-upload   = %{version}
-Recommends:     %{name}-plugin-omemo         = %{version}
-Recommends:     %{name}-plugin-openpgp       = %{version}
+Recommends:     %{name}-plugin-http-upload = %{version}
+Recommends:     %{name}-plugin-omemo = %{version}
+Recommends:     %{name}-plugin-openpgp = %{version}
 %else
-Provides:       %{name}-plugin-openpgp       = %{version}
-Obsoletes:      %{name}-plugin-openpgp       < %{version}
-Provides:       %{name}-plugin-omemo         = %{version}
-Obsoletes:      %{name}-plugin-omemo         < %{version}
-Provides:       %{name}-plugin-http-upload   = %{version}
-Obsoletes:      %{name}-plugin-http-upload   < %{version}
+Provides:       %{name}-plugin-openpgp = %{version}
+Obsoletes:      %{name}-plugin-openpgp < %{version}
+Provides:       %{name}-plugin-omemo = %{version}
+Obsoletes:      %{name}-plugin-omemo < %{version}
+Provides:       %{name}-plugin-http-upload = %{version}
+Obsoletes:      %{name}-plugin-http-upload < %{version}
 %endif
-
-%define libdino libdino0
-%define libqlite libqlite0
-%define libcryptovala libcrypto-vala0
-%define libxmppvala libxmpp-vala0
-
 %if ! %{with separated_libs}
 Provides:       %{libdino} = %{version}-%{release}
 Obsoletes:      %{libdino} < %{version}-%{release}
@@ -101,7 +93,6 @@ Provides:       %{libcryptovala} = %{version}-%{release}
 Obsoletes:      %{libcryptovala} < %{version}-%{release}
 Provides:       %{libxmppvala} = %{version}-%{release}
 Obsoletes:      %{libxmppvala} < %{version}-%{release}
-
 %endif
 
 %description
@@ -144,14 +135,13 @@ The package contains libraries used and provided by %{name}.
 %package        devel
 Summary:        Development files for %{name}
 Group:          Development/Languages/Other
-
 %if %{with separated_libs}
 Requires:       %{libcryptovala} = %{version}
-Requires:       %{libdino}       = %{version}
-Requires:       %{libqlite}      = %{version}
-Requires:       %{libxmppvala}   = %{version}
+Requires:       %{libdino} = %{version}
+Requires:       %{libqlite} = %{version}
+Requires:       %{libxmppvala} = %{version}
 %else
-Requires:       %{name}          = %{version}
+Requires:       %{name} = %{version}
 %endif
 
 %description    devel
@@ -184,27 +174,13 @@ Contains the HTTP Upload plugin for %{name}.
 %autosetup -p1
 
 %build
-# workaround until we clarified if the gcc return type check is actually wrong there.
-%if 0%{?suse_version} >= 1550
-export CFLAGS="%{optflags} -Wno-return-type"
-%endif
-echo "PRERELEASE %{version}" > VERSION
-cmake -B build -DUSE_SOUP3=1
-%configure \
-%if ! %{with shared_libsignal}
-  --with-libsignal-in-tree
-%endif
-#cmake                                          \
-# -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed"    \
-# -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed" \
-# -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed"
-cmake -B build -DUSE_SOUP3=1
-make %{?_smp_mflags} V=1
+# gh/dino/dino/#1696
+export CFLAGS="%{optflags} -Wno-error=return-type"
+%meson
+%meson_build
 
 %install
-cmake -B build -DUSE_SOUP3=1
-#cmake_install
-make install DESTDIR="%{buildroot}" V=1
+%meson_install
 # desktop-file-validate %{buildroot}%{_datadir}/applications/dino.desktop
 
 %find_lang dino
@@ -250,13 +226,10 @@ gtk-update-icon-cache --quiet %{_datadir}/icons/hicolor &>/dev/null || :
 %if %{with separated_libs}
 %post   -n %{libdino} -p /sbin/ldconfig
 %postun -n %{libdino} -p /sbin/ldconfig
-
 %post   -n %{libqlite} -p /sbin/ldconfig
 %postun -n %{libqlite} -p /sbin/ldconfig
-
 %post   -n %{libcryptovala} -p /sbin/ldconfig
 %postun -n %{libcryptovala} -p /sbin/ldconfig
-
 %post   -n %{libxmppvala} -p /sbin/ldconfig
 %postun -n %{libxmppvala} -p /sbin/ldconfig
 %endif
@@ -273,6 +246,7 @@ gtk-update-icon-cache --quiet %{_datadir}/icons/hicolor &>/dev/null || :
 %{_bindir}/dino
 %dir %{_libdir}/dino
 %dir %{_libdir}/dino/plugins
+
 %if ! %{with separated_plugins}
 %{_libdir}/dino/plugins/*.so
 %endif
@@ -280,6 +254,7 @@ gtk-update-icon-cache --quiet %{_datadir}/icons/hicolor &>/dev/null || :
 %{_datadir}/dbus-1/services/im.dino.Dino.service
 %{_datadir}/icons/hicolor/*/apps/*dino*
 %{_datadir}/metainfo/im.dino.Dino.appdata.xml
+
 %if ! %{with separated_libs}
 %{_libdir}/libdino.so.*
 %{_libdir}/libqlite.so.*
@@ -289,26 +264,22 @@ gtk-update-icon-cache --quiet %{_datadir}/icons/hicolor &>/dev/null || :
 
 %if %{with separated_libs}
 %files -n %{libdino}
-%defattr(-,root,root)
 %license LICENSE
 %doc README.md
 %{_libdir}/libdino.so.*
 
 %files -n %{libqlite}
-%defattr(-,root,root)
 %license LICENSE
 %doc README.md
 %{_libdir}/libqlite.so.*
 
 %files -n %{libxmppvala}
-%defattr(-,root,root)
 %license LICENSE
 %doc README.md
 %{_libdir}/libxmpp-vala.so.*
 %endif
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/*.h
 %{_libdir}/libdino.so
 %{_libdir}/libqlite.so
@@ -318,20 +289,17 @@ gtk-update-icon-cache --quiet %{_datadir}/icons/hicolor &>/dev/null || :
 
 %if %{with separated_plugins}
 %files plugin-openpgp -f dino-openpgp.lang
-%defattr(-,root,root)
 %license LICENSE
 %doc README.md
 %{_libdir}/dino/plugins/openpgp.so
 
 %files plugin-omemo -f dino-omemo.lang
-%defattr(-,root,root)
 %license LICENSE
 %doc README.md
 %{_libdir}/dino/plugins/omemo.so
 
 %files plugin-http-upload
 #-f dino-http-files.lang
-%defattr(-,root,root)
 %license LICENSE
 %doc README.md
 %{_libdir}/dino/plugins/http-files.so
