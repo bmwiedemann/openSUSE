@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Dec 18 07:16:54 UTC 2025 - Enno Tensing <tenno+suse@suij.in>
+
+- Fix URL entry in PDAL.spec
+
+-------------------------------------------------------------------
+Sun Dec 14 10:01:50 UTC 2025 - Enno Tensing <tenno+suse@suij.in>
+
+- Update to PDAL 2.9.3
+    * Alias PDAL_DLL => PDAL_EXPORT and warn users to upgrade if it is defined (PR #4813)
+    * Suppress error messages from GDAL/PROJ when infering metadata type SRSs (PR #4820)
+    * Add min_clamp, max_clamp, and nodata options to filters.hag_dem (PR #4828)
+    * Support 0 as variable chunk indicator in LAZ/COPC files (PR #4843)
+    * Emit warnings for pdal tindex hexbin boundary failures (PR #4844)
+    * Fix Connector segfault on 404 from /vsis3/ path (PR #4853)
+    * Add class argument for hag_delaunay, hag_dem and hag_nn filters (PR #4865)
+    * Remove dead code from Kazhdan's ply.h (PR #4866)
+    * Only specify JSON-compatible types when serializing pipelines (PR #4877)
+    * Add custom class arguments for ground classification filters (PR #4879)
+    * Documentation updates
+    * Update minimum GDAL verstion to 3.8
+    * Migrates PDAL.io to PDAL.org
+    * Update PDAL-fix-gdal-includes.patch to cover more GDAL includes
+
+-------------------------------------------------------------------
 Thu Sep 11 17:17:31 UTC 2025 - Enno Tensing <tenno+suse@suij.in>
 
 - Update to PDAL 2.9.2

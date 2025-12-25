@@ -18,11 +18,11 @@
 
 
 %define soname 19
-%define sovers 19.2.0
+%define sovers 19.3.0
 %define lname   pdal
 Name:           PDAL
-Version:        2.9.2
-Release:        0
+Version:        2.9.3
+Release:        1
 Summary:        Point Data Abstraction Library (GDAL for point cloud data)
 # The code is licensed BSD except for:
 # - filters/private/csf/* and plugins/i3s/lepcc/* are Apache-2.0
@@ -31,7 +31,7 @@ Summary:        Point Data Abstraction Library (GDAL for point cloud data)
 # - plugins/e57/libE57Format/{src,include}/* is Boost 1-0
 License:        Apache-2.0 AND BSD-3-Clause AND MIT AND BSL-1.0
 Group:          Productivity/Graphics/CAD
-URL:            https://www.pdal.io/
+URL:            https://pdal.org/
 Source0:        https://github.com/PDAL/PDAL/releases/download/%{version}/%{name}-%{version}-src.tar.bz2
 Source1:        https://github.com/PDAL/PDAL/releases/download/%{version}/%{name}-%{version}-src.tar.bz2.sha256sum
 # Unbundle some bundled libraries inspired by Fedora work at
@@ -50,7 +50,7 @@ BuildRequires:  curl-devel
 BuildRequires:  eigen3-devel
 BuildRequires:  fdupes
 BuildRequires:  freeglut-devel
-BuildRequires:  gdal
+BuildRequires:  gdal >= 3.8
 BuildRequires:  geotiff-devel
 BuildRequires:  jsoncpp-devel
 BuildRequires:  libboost_filesystem-devel

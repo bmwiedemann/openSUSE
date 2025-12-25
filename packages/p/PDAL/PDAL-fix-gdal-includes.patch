@@ -1,5 +1,5 @@
 diff --git i/pdal/util/VSIIO.cpp w/pdal/util/VSIIO.cpp
-index 06556f1c6..082a6a750 100644
+index c80536d7f..6e328f173 100644
 --- i/pdal/util/VSIIO.cpp
 +++ w/pdal/util/VSIIO.cpp
 @@ -36,8 +36,8 @@
@@ -13,3 +13,42 @@ index 06556f1c6..082a6a750 100644
  #include <pdal/util/FileUtils.hpp>
  #include <pdal/util/VSIIO.hpp>
  #include <pdal/pdal_types.hpp>
+diff --git i/test/unit/SpatialReferenceTest.cpp w/test/unit/SpatialReferenceTest.cpp
+index f0c92e948..9336da897 100644
+--- i/test/unit/SpatialReferenceTest.cpp
++++ w/test/unit/SpatialReferenceTest.cpp
+@@ -44,7 +44,7 @@
+ #include <io/LasReader.hpp>
+ #include <io/LasWriter.hpp>
+ 
+-#include <gdal_version.h>
++#include <gdal/gdal_version.h>
+ 
+ #include <pdal/pdal_features.hpp>
+ 
+diff --git i/test/unit/io/CopcWriterTest.cpp w/test/unit/io/CopcWriterTest.cpp
+index 0585f4d87..bc4ca0ed0 100644
+--- i/test/unit/io/CopcWriterTest.cpp
++++ w/test/unit/io/CopcWriterTest.cpp
+@@ -47,7 +47,7 @@
+ 
+ #include "Support.hpp"
+ 
+-#include <gdal_version.h>
++#include <gdal/gdal_version.h>
+ 
+ namespace pdal
+ {
+diff --git i/test/unit/io/LasWriterTest.cpp w/test/unit/io/LasWriterTest.cpp
+index ceb31d2b3..06c576fbd 100644
+--- i/test/unit/io/LasWriterTest.cpp
++++ w/test/unit/io/LasWriterTest.cpp
+@@ -51,7 +51,7 @@
+ #include <io/private/las/Header.hpp>
+ #include <io/private/las/Vlr.hpp>
+ 
+-#include <gdal_version.h>
++#include <gdal/gdal_version.h>
+ 
+ #include "Support.hpp"
+ 
