@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec 24 13:49:32 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.0.18:
+  * Check if is a manual download
+  * Check deleted files when delete a dir
+- includes changes from 3.0.17:
+  * Set UserAgent for notification server request
+  * Cancel context when client is closed
+  * Support log rotate
+
+-------------------------------------------------------------------
 Mon Oct 20 07:18:37 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.0.16:
