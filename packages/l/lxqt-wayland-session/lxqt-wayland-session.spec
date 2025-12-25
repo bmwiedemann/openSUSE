@@ -26,7 +26,7 @@
 %endif
 
 Name:           lxqt-wayland-session
-Version:        0.3.0
+Version:        0.3.1
 Release:        0
 Summary:        Files needed for the LXQt Wayland Session
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND MIT AND CC-BY-SA-4.0
@@ -235,7 +235,11 @@ compositor with LXQt
 
 %files -n lxqt-niri-session
 %license COPYING
+%dir %{_datadir}/lxqt/wayland/niri
 %{_datadir}/lxqt/wayland/lxqt-niri.kdl
+%{_datadir}/lxqt/wayland/lxqt-niri.kdl.full
+%{_datadir}/lxqt/wayland/niri/*.kdl
+
 
 %if %{with river_session}
 %files -n lxqt-river-session

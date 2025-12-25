@@ -1,4 +1,4 @@
-From 492afe56a7f467d95150d134429923dbd24b2e5e Mon Sep 17 00:00:00 2001
+From 65df4b51fc1b0b01d3b03fcd510a8fd3bfff3223 Mon Sep 17 00:00:00 2001
 From: "Shawn W. Dunn" <sfalken@cloverleaf-linux.org>
 Date: Tue, 21 Jan 2025 16:21:14 -0800
 Subject: [PATCH 6/7] configuration changes for default river session
@@ -21,5 +21,5 @@ index d847b76..b1d4e40 100644
  # Set keyboard repeat rate
  riverctl set-repeat 50 300
 -- 
-2.51.1
+2.52.0
 

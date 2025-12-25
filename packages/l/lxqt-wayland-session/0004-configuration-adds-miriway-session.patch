@@ -1,38 +1,39 @@
-From 4b9556acf9262d470cdd362a2e4e8927ec0491ea Mon Sep 17 00:00:00 2001
-From: "Shawn W. Dunn" <sfalken@cloverleaf-linux.org>
-Date: Thu, 16 Jan 2025 16:12:51 -0800
+From f5711cd28ab947ee3cedc68e18b793ad0a75d10a Mon Sep 17 00:00:00 2001
+From: Shawn W Dunn <sfalken@opensuse.org>
+Date: Wed, 24 Dec 2025 07:55:21 -0800
 Subject: [PATCH 4/7] configuration adds miriway session
 
 Adds miriway session to package, currently being considered for
 inclusion upstream @ https://github.com/lxqt/lxqt-wayland-session/pull/40
 ---
  configurations/CMakeLists.txt               |  2 +
- configurations/miriway/lxqt-miriway-wrapper | 72 +++++++++++++++++++++
+ configurations/miriway/lxqt-miriway-wrapper | 73 +++++++++++++++++++++
  configurations/miriway/miriway-shell.config | 22 +++++++
  startlxqtwayland.in                         | 10 +++
- 4 files changed, 106 insertions(+)
+ 4 files changed, 107 insertions(+)
  create mode 100644 configurations/miriway/lxqt-miriway-wrapper
  create mode 100644 configurations/miriway/miriway-shell.config
 
 diff --git a/configurations/CMakeLists.txt b/configurations/CMakeLists.txt
-index 02ab38d..153a7f1 100644
+index 38c43e3..e28015e 100644
 --- a/configurations/CMakeLists.txt
 +++ b/configurations/CMakeLists.txt
-@@ -17,6 +17,8 @@ install(FILES
+@@ -18,7 +18,9 @@ install(FILES
  install(DIRECTORY
      labwc
      firstrun
 +    miriway
+     niri
 +    USE_SOURCE_PERMISSIONS
      DESTINATION "${CMAKE_INSTALL_DATADIR}/lxqt/wayland"
      COMPONENT Runtime
  )
 diff --git a/configurations/miriway/lxqt-miriway-wrapper b/configurations/miriway/lxqt-miriway-wrapper
 new file mode 100644
-index 0000000..d8d2e93
+index 0000000..8e7f826
 --- /dev/null
 +++ b/configurations/miriway/lxqt-miriway-wrapper
-@@ -0,0 +1,72 @@
+@@ -0,0 +1,73 @@
 +#!/bin/sh
 +
 +unset WAYLAND_DISPLAY
@@ -105,6 +106,7 @@ index 0000000..d8d2e93
 +kill $miriway_pid
 +
 +exit $lxqt_session_exit_code
++
 diff --git a/configurations/miriway/miriway-shell.config b/configurations/miriway/miriway-shell.config
 new file mode 100644
 index 0000000..9f4cf9e
@@ -134,10 +136,10 @@ index 0000000..9f4cf9e
 +ctrl-alt=BackSpace:@exit
 +
 diff --git a/startlxqtwayland.in b/startlxqtwayland.in
-index c92325c..e48e58b 100644
+index a2b15d9..abead72 100644
 --- a/startlxqtwayland.in
 +++ b/startlxqtwayland.in
-@@ -142,6 +142,16 @@ elif [ "$COMPOSITOR" = "kwin_wayland" ]; then
+@@ -143,6 +143,16 @@ elif [ "$COMPOSITOR" = "kwin_wayland" ]; then
      # WARNING: Option '--no-kactivities' can result in crashes with animations and corner actions.
      exec ${COMPOSITOR}_wrapper --exit-with-session lxqt-session --xwayland
  
@@ -155,5 +157,5 @@ index c92325c..e48e58b 100644
      if [ ! -f "$XDG_CONFIG_HOME/lxqt/wayland/lxqt-wayfire.ini" ]; then
          cp "$share_dir"/lxqt/wayland/lxqt-wayfire.ini "$XDG_CONFIG_HOME"/lxqt/wayland/
 -- 
-2.51.1
+2.52.0
 

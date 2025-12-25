@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec 24 16:01:53 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to version 0.3.1:
+  * Configuration updates for labwc 0.9.3
+  * Configuration updates for niri 25.11:
+    - niri configs split into multiple files
+  * Rebase patches
+
+-------------------------------------------------------------------
 Wed Nov  5 20:13:33 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to version 0.3.0:

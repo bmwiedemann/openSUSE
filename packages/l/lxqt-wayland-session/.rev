@@ -101,4 +101,16 @@
   * Rebased openSUSE patches for new version</comment>
     <requestid>1315895</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5064fc1e76090ee34c19f77f19750d9f</srcmd5>
+    <version>0.3.1</version>
+    <time>1766689060</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.1:
+  * Configuration updates for labwc 0.9.3
+  * Configuration updates for niri 25.11:
+    - niri configs split into multiple files
+  * Rebase patches</comment>
+    <requestid>1324378</requestid>
+  </revision>
 </revisionlist>

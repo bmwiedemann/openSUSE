@@ -1,18 +1,33 @@
-From e4061a04dc7a08b05086f03bf30155e9ae2ccc9a Mon Sep 17 00:00:00 2001
+From 2e0eaea69065dd93f3733b2eeb4a95d896f6ba96 Mon Sep 17 00:00:00 2001
 From: Shawn W Dunn <sfalken@opensuse.org>
-Date: Mon, 13 Oct 2025 13:06:00 -0700
+Date: Wed, 24 Dec 2025 07:44:53 -0800
 Subject: [PATCH 3/7] configuration changes for default niri session
 
-Disables "natural scrolling" for scrollwheel in default session
+Set openSUSE default background
+Disable "natural scrolling" for scrollwheel in default session
 ---
- configurations/lxqt-niri.kdl | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ configurations/lxqt-niri.kdl  | 2 +-
+ configurations/niri/input.kdl | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/configurations/lxqt-niri.kdl b/configurations/lxqt-niri.kdl
-index 4d65227..d29934e 100644
+index b222b52..5f6b12f 100644
 --- a/configurations/lxqt-niri.kdl
 +++ b/configurations/lxqt-niri.kdl
-@@ -39,7 +39,7 @@ input {
+@@ -14,7 +14,7 @@
+ // See the binds section below for more spawn examples.
+ // spawn-at-startup "waybar"
+ // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
+-   spawn-sh-at-startup "swaybg -i /usr/share/lxqt/wallpapers/waves-logo.png"
++   spawn-sh-at-startup "swaybg -i /usr/share/wallpapers/openSUSEdefault/contents/images/default.png"
+ // The above sets the wallpaper used in the overview.
+    spawn-sh-at-startup "lxqt-session && niri msg action quit -s"
+ 
+diff --git a/configurations/niri/input.kdl b/configurations/niri/input.kdl
+index 3f865cb..9e8eabc 100644
+--- a/configurations/niri/input.kdl
++++ b/configurations/niri/input.kdl
+@@ -30,7 +30,7 @@ input {
          dwtp
          // drag false
          // drag-lock
@@ -22,5 +37,5 @@ index 4d65227..d29934e 100644
          // accel-profile "flat"
          // scroll-method "two-finger"
 -- 
-2.51.1
+2.52.0
 

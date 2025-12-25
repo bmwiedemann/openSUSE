@@ -1,4 +1,4 @@
-From 2247156ba94d0fa488f4b28dcb5c5c6b8cf8ea79 Mon Sep 17 00:00:00 2001
+From ce124fe54daac61b18c5e6c4e669a977b368f30d Mon Sep 17 00:00:00 2001
 From: Shawn W Dunn <sfalken@opensuse.org>
 Date: Mon, 13 Oct 2025 13:10:40 -0700
 Subject: [PATCH 7/7] configuration changes for default sway session
@@ -31,5 +31,5 @@ index 3a8d3a4..d655736 100644
 -include /etc/sway/config.d/*
 +# include /etc/sway/config.d/*
 -- 
-2.51.1
+2.52.0
 

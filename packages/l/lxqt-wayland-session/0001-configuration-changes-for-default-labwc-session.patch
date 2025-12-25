@@ -1,4 +1,4 @@
-From 5407d4b4712f705111da657bdef1c6c477839523 Mon Sep 17 00:00:00 2001
+From d2c7d1059483d6000ac32b22f551d0d4dffa8bda Mon Sep 17 00:00:00 2001
 From: Shawn W Dunn <sfalken@opensuse.org>
 Date: Wed, 5 Nov 2025 12:07:56 -0800
 Subject: [PATCH 1/7] configuration changes for default labwc session
@@ -26,7 +26,7 @@ index fa49741..a756d24 100644
  # Faster startup for GTK apps:
  dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY > /dev/null 2>&1 &
 diff --git a/startlxqtwayland.in b/startlxqtwayland.in
-index 57f6af1..c92325c 100644
+index b1dbcef..a2b15d9 100644
 --- a/startlxqtwayland.in
 +++ b/startlxqtwayland.in
 @@ -100,10 +100,10 @@ if  [ -z "$COMPOSITOR" ]; then
@@ -55,5 +55,5 @@ index 57f6af1..c92325c 100644
  elif [ "$COMPOSITOR" = "niri" ]; then
      if [ ! -f "$XDG_CONFIG_HOME/lxqt/wayland/lxqt-niri.kdl" ]; then
 -- 
-2.51.1
+2.52.0
 
