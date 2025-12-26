@@ -134,6 +134,7 @@ fi
 
 %check
 # test_identification https://salsa.debian.org/reproducible-builds/diffoscope/-/issues/98
+cp -a `pwd` ../testrundir && cd ../testrundir # for boo#1227364
 py.test-%{python3_bin_suffix} -k 'not (test_python or test_identification or test_obj_identification)'
 
 %files

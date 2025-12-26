@@ -785,4 +785,12 @@ https://salsa.debian.org/reproducible-builds/diffoscope/-/issues/284#note_280561
   * Don't rely on zipdetails' --walk functionality to be</comment>
     <requestid>1304154</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>4096e65b55a98e4e84b2c08222ff9b3e</srcmd5>
+    <version>306</version>
+    <time>1766762623</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1324454</requestid>
+  </revision>
 </revisionlist>
