@@ -6,9 +6,7 @@
 %{_bindir}/systemd-resolve
 %{_datadir}/bash-completion/completions/resolvectl
 %{_datadir}/bash-completion/completions/systemd-resolve
-%if %{with upstream}
 %{_datadir}/dbus-1/interfaces/org.freedesktop.resolve1.DnsDelegate.xml
-%endif
 %{_datadir}/dbus-1/interfaces/org.freedesktop.resolve1.DnssdService.xml
 %{_datadir}/dbus-1/interfaces/org.freedesktop.resolve1.Link.xml
 %{_datadir}/dbus-1/interfaces/org.freedesktop.resolve1.Manager.xml
@@ -21,9 +19,7 @@
 %{_mandir}/man5/org.freedesktop.resolve1.5.gz
 %{_mandir}/man5/resolved.conf.5.gz
 %{_mandir}/man5/resolved.conf.d.5.gz
-%if %{with upstream}
 %{_mandir}/man5/systemd.dns-delegate.5.gz
-%endif
 %{_mandir}/man8/libnss_resolve.so.2.8.gz
 %{_mandir}/man8/nss-resolve.8.gz
 %{_mandir}/man8/systemd-resolved.8.gz
@@ -34,7 +30,5 @@
 %{_sysusersdir}/systemd-resolve.conf
 %{_tmpfilesdir}/systemd-resolve.conf
 %{_unitdir}/systemd-resolved.service
-%if %{with upstream}
 %{_unitdir}/systemd-resolved-monitor.socket
 %{_unitdir}/systemd-resolved-varlink.socket
-%endif

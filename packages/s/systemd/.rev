@@ -7802,4 +7802,41 @@ handle manual pages that consist only of a .so directive such as
     <comment>Revert to 257 - the full openQA results are a desaster</comment>
     <requestid>1321158</requestid>
   </revision>
+  <revision rev="460" vrev="1">
+    <srcmd5>86782224f55c361e5ee86c719e7401eb</srcmd5>
+    <version>258.3</version>
+    <time>1766756244</time>
+    <user>dimstar_suse</user>
+    <comment>- Import commit 25181d4e4c8307a3621d115f99279c4d3c28a9fa (merge of v258.3)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/e103ce013ed270c0a43318743ab822cac9325f00...25181d4e4c8307a3621d115f99279c4d3c28a9fa
+
+- Add 5003-core-when-isolating-keep-triggered-units-only-if-the.patch until
+  https://github.com/systemd/systemd/pull/39925 is merged.
+
+- Import commit e103ce013ed270c0a43318743ab822cac9325f00
+  e103ce013e pam_systemd: fix OSC write failure message appearing in error logs
+  c81c546411 pam-util: fix pam_syslog_errno() ignoring the level parameter
+
+- Drop 1001-Temporarily-remove-mountfsd-nsresourced-new-Polkit-a.patch
+  The relevant polkit actions have been reviewed by the security team.
+
+- Import commit 71c9223a1df429ae23bf113dc9eeb49154d8b734 (merge of v258.2)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/1898fac58dd5170dbe85f4c3d01e564889dba0de...71c9223a1df429ae23bf113dc9eeb49154d8b734
+- Drop 1002-core-unit-fail-earlier-before-spawning-executor-when.patch as it's
+  part of v258.2.
+
+- Import commit 1898fac58dd5170dbe85f4c3d01e564889dba0de
+  1898fac58d main: switch explicitly to tty1 on soft-reboot (bsc#1231986)
+  5fdd32dbe1 units: don't force the loading of the loop and dm_mod modules in systemd-repart.service (bsc#1248356)
+
+- Temporarily add
+  1002-core-unit-fail-earlier-before-spawning-executor-when.patch until v258.2
+  is released.
+
+- pam.systemd-user: skip common-account to avoid issues with pam_sss
+  and other network user directories (bsc#1250691)</comment>
+    <requestid>1323386</requestid>
+  </revision>
 </revisionlist>
