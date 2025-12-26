@@ -20,13 +20,12 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.0.1.2
+Version:        2.0.2.0
 Release:        0
-Summary:        TOML 1.0.0 parser
+Summary:        TOML 1.1.0 parser
 License:        ISC
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  alex
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-array-devel
@@ -55,7 +54,7 @@ BuildRequires:  ghc-template-haskell-prof
 
 %description
 TOML parser using generated lexers and parsers with careful attention to the
-TOML 1.0.0 semantics for defining tables.
+TOML 1.1.0 semantics for defining tables.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -85,7 +84,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
