@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 25 21:50:17 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.3
+  * Manual pages updated
+  * Overhaul of the custom command line option parser to handle
+    more X.org server options (such as ``vtXX``)
+
+-------------------------------------------------------------------
 Thu Jul 24 22:44:05 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to version 0.1

@@ -1,7 +1,7 @@
 #
 # spec file for package wayback
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           wayback
-Version:        0.1
+Version:        0.3
 Release:        0
 Summary:        Experimental X11 compatibility layer for Wayland
 License:        MIT
@@ -27,21 +27,24 @@ Source:         https://gitlab.freedesktop.org/wayback/wayback/-/archive/%versio
 BuildRequires:  c++_compiler
 BuildRequires:  meson
 BuildRequires:  pkg-config
+BuildRequires:  wlroots-devel >= 0.19
 BuildRequires:  pkgconfig(wayland-client)
-BuildRequires:  pkgconfig(wayland-server)
-BuildRequires:  pkgconfig(wayland-egl)
 BuildRequires:  pkgconfig(wayland-cursor)
+BuildRequires:  pkgconfig(wayland-egl)
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.14
+BuildRequires:  pkgconfig(wayland-server)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xwayland)
-BuildRequires:  pkgconfig(wayland-protocols) >= 1.14
-BuildRequires:  wlroots-devel >= 0.19
 Requires:       xwayland
 
 %description
 Wayback is an experimental X compatibility layer which allows for
 running full X desktop environments using Wayland components. It is
 essentially a stub compositor which provides just enough Wayland
-capabilities to host a rootful Xwayland server.
+capabilities to host a rootful Xwayland server (no other Wayland
+applications).
+
+# same echoed by https://lwn.net/Articles/1031332/
 
 %prep
 %autosetup -p1
