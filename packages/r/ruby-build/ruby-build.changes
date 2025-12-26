@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Dec 26 00:23:27 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20251225.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20251225
+  * Added 4.0.0 and switch 4.0 branch by @hsbt in #2592
+- Changes from version 20251218:
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20251218
+  * Add definition for Ruby 4.0.0-preview3 by @koic in #2591
+- Changes from version 20251217:
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20251217
+  * Add 3.4.8
+
+-------------------------------------------------------------------
 Fri Dec  5 17:27:42 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20251203.
