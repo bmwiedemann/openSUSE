@@ -29,6 +29,7 @@ BuildRequires:  cargo-packaging
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(libpulse)
+ExcludeArch:    %{arm32} %{ix86}
 
 %description
 LibrePods unlocks Apple's exclusive AirPods features on non-Apple devices. Get

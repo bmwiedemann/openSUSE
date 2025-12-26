@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 25 23:16:10 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- disable building for %{arm32} and %{ix86}, as these arches can't
+  allocate enough memory
+- increase memory for %{arm64} %{ppc64} and %{s390x} so those don't
+  run out of memory
+
+-------------------------------------------------------------------
 Tue Nov 18 18:47:41 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - initial packaging

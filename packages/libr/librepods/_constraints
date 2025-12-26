@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<constraints>
+  <overwrite>
+    <conditions>
+      <arch>aarch64</arch>
+      <arch>ppc64le</arch>
+      <arch>s390x</arch>
+    </conditions>
+    <hardware>
+      <physicalmemory>
+        <size unit="G">12</size>
+      </physicalmemory>
+    </hardware>
+  </overwrite>
+</constraints>
+
