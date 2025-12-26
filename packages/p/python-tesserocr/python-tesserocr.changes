@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 19 01:56:36 UTC 2025 - Mia Herkt <mia@0x0.st>
+
+- Update to 2.9.2
+  * Make AnalyseLayout interruptible
+    gh#sirfz/tesserocr#382
+
+-------------------------------------------------------------------
 Fri Oct 10 16:08:51 UTC 2025 - Mia Herkt <mia@0x0.st>
 
 - Update to 2.9.1

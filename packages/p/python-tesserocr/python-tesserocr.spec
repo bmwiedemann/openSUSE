@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-tesserocr
-Version:        2.9.1
+Version:        2.9.2
 Release:        0
 Summary:        A Python wrapper around tesseract-ocr
 License:        MIT
