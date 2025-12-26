@@ -349,4 +349,41 @@
 - Update to version 7266:</comment>
     <requestid>1321203</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>cb0eee393cf487039ddfc0326653c975</srcmd5>
+    <version>7540</version>
+    <time>1766756277</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 7540:
+  * Major CUDA improvements including Blackwell native build fixes,
+    experimental MXFP4 support, optimized CUMSUM paths, new ops
+    (FILL, DIAG, TRI, CUMSUM), FA/MMA overflow fixes, better GPU
+    utilization defaults, and multiple correctness and stability
+    fixes.
+  * Significant Vulkan backend work with new operators, faster
+    FA/MMV/MMVQ paths, async tensor and event support, rope and MoE
+    improvements, reduced data races, better logging, and numerous
+    performance optimizations.
+  * CPU and GGML backend enhancements covering ARM64, RVV, RISC-V,
+    ZenDNN, and Hexagon, with new and optimized kernels, improved
+    repack logic, allocator fixes, graph reuse, and better error
+    handling.
+  * Expanded support and fixes across Metal, HIP, SYCL, OpenCL,
+    CANN, WebGPU, and Hexagon backends.
+  * Added and improved support for many models and architectures
+    including Qwen3-Next, Nemotron v2/v3, Llama 4 scaling, GLM4V,
+    MiMo-V2-Flash, Granite Embeddings, KORMo, Rnj-1, LFM2 text/
+    audio/MoE, Mistral and Mistral-Large variants, DeepSeek
+    variants, ASR conformer models, and multimodal pipelines.
+  * Fixed multiple model issues such as missing tensors,
+    division-by-zero errors, rope scaling regressions, MoE edge
+    cases, bidirectional architectures, and multimodal loading
+    errors.
+  * Server and router improvements including safer multithreading,
+    race-condition fixes, multi-model routing, preset cascading,
+    startup model loading, auto-sleep on idle, improved speculative
+    decoding, better RPC validation, and friendlier error handling.
+  * CLI and argument-parsing improvements with new flags, negated</comment>
+    <requestid>1324424</requestid>
+  </revision>
 </revisionlist>

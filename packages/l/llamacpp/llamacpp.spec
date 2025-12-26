@@ -29,7 +29,7 @@
 %global ggml_sover_suffix  0
 
 Name:           llamacpp
-Version:        7266
+Version:        7540
 Release:        0
 Summary:        Inference of Meta's LLaMA model (and others) in pure C/C++
 License:        MIT

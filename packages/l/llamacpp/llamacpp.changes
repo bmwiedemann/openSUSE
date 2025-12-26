@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Fri Dec 26 01:54:44 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 7540:
+  * Major CUDA improvements including Blackwell native build fixes,
+    experimental MXFP4 support, optimized CUMSUM paths, new ops
+    (FILL, DIAG, TRI, CUMSUM), FA/MMA overflow fixes, better GPU
+    utilization defaults, and multiple correctness and stability
+    fixes.
+  * Significant Vulkan backend work with new operators, faster
+    FA/MMV/MMVQ paths, async tensor and event support, rope and MoE
+    improvements, reduced data races, better logging, and numerous
+    performance optimizations.
+  * CPU and GGML backend enhancements covering ARM64, RVV, RISC-V,
+    ZenDNN, and Hexagon, with new and optimized kernels, improved
+    repack logic, allocator fixes, graph reuse, and better error
+    handling.
+  * Expanded support and fixes across Metal, HIP, SYCL, OpenCL,
+    CANN, WebGPU, and Hexagon backends.
+  * Added and improved support for many models and architectures
+    including Qwen3-Next, Nemotron v2/v3, Llama 4 scaling, GLM4V,
+    MiMo-V2-Flash, Granite Embeddings, KORMo, Rnj-1, LFM2 text/
+    audio/MoE, Mistral and Mistral-Large variants, DeepSeek
+    variants, ASR conformer models, and multimodal pipelines.
+  * Fixed multiple model issues such as missing tensors,
+    division-by-zero errors, rope scaling regressions, MoE edge
+    cases, bidirectional architectures, and multimodal loading
+    errors.
+  * Server and router improvements including safer multithreading,
+    race-condition fixes, multi-model routing, preset cascading,
+    startup model loading, auto-sleep on idle, improved speculative
+    decoding, better RPC validation, and friendlier error handling.
+  * CLI and argument-parsing improvements with new flags, negated
+    argument support, environment overrides, clearer defaults,
+    and improved diagnostics.
+  * WebUI enhancements improving chat usability, attachment
+    editing, copy-to-clipboard behavior, streaming selection,
+    layout and sidebar behavior, statistics display, mobile
+    responsiveness, and general UX polish.
+  * Model conversion and tooling improvements including better
+    ftype heuristics, rope handling refactors, embedding
+    verification fixes, batching and multimodal support, safer
+    read-only workflows, and additional debugging and verbosity
+    options.
+  * Broad performance, stability, and correctness improvements
+    across memory management, kv-cache handling, async behavior,
+    graph optimization, numerical stability, and operator fusion.
+  * Full commit log:
+    https://github.com/ggml-org/llama.cpp/compare/b7266...b7540
+
+-------------------------------------------------------------------
 Thu Dec  4 12:15:40 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Switch to .so versioning, following upstream
