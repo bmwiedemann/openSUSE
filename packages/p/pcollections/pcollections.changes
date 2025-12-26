@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 24 22:17:55 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v5.0.0
+  * Faster OrderedPMap.containsKey() and OrderedPSet.contains()
+  * Dropped Java 8 support, as it was getting harder to maintain
+    the build system
+
+-------------------------------------------------------------------
 Wed Mar 20 12:55:56 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v4.0.2

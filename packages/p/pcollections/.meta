@@ -3,6 +3,5 @@
   <description>PCollections serves as a persistent and immutable analogue of the Java Collections Framework. This includes efficient, thread-safe, generic, immutable, and persistent stacks, maps, vectors, sets, and bags, compatible with their Java Collections counterparts.
 
 Persistent and immutable datatypes are increasingly appreciated as a simple, design-friendly, concurrency-friendly, and sometimes more time- and space-efficient alternative to mutable datatypes.</description>
-  <devel project="Java:packages" package="pcollections"/>
   <url>https://github.com/hrldcpr/pcollections</url>
 </package>

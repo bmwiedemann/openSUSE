@@ -1,7 +1,7 @@
 #
 # spec file for package pcollections
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pcollections
-Version:        4.0.2
+Version:        5.0.0
 Release:        0
 Summary:        A Persistent Java Collections Library
 License:        MIT
@@ -46,15 +46,14 @@ Group:          Documentation/HTML
 API documentation for %{name}.
 
 %prep
-%setup -q
+%autosetup
+
 cp %{SOURCE1} pom.xml
 
 %{mvn_file} : %{name}
 
 %build
-%{mvn_build} -f -- \
-	-Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
-	-Dmaven.compiler.release=11
+%{mvn_build} -f -- -Dmaven.compiler.release=11
 
 %install
 %mvn_install
