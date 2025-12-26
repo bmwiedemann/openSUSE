@@ -17,10 +17,10 @@
 #
 
 
-%global git_hash 0b636d9d8d3309663de0fb5554255f5f8f82544d
+%global git_hash 6c79dfb9a31e2fdde6230da4edcb71cc082ca7d9
 
 Name:           arti
-Version:        1.6.0
+Version:        1.8.0
 Release:        0
 Summary:        A WIP implementation of Tor, in Rust
 License:        (Apache-2.0 OR MIT) AND LGPL-3.0-only

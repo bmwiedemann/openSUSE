@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Dec 24 13:03:24 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 1.8.0:
+  * Feat: Implemented a usage-based timeout for strongly isolated
+    circuits, as specified in proposal 368.
+  * Feat: New experimental arti hsc ctor-migrate command line
+    invocation for migrating C Tor onion service client keys to the
+    Arti keystore.
+  * Security: Added Host header validation for non-CONNECT requests
+    to HTTP CONNECT port, to prevent adversarial web pages from
+    probing the version of Arti and its capabilities.
+  * Fix: Arti no longer exits with an error if configured with a
+    log file with no directory prefix.
+  * Fix: fs-mistrust now has consistent behavior with stat and
+    mkdir, which consider "" to be an invalid path, and all of its
+    error messages now include the file name that triggered the
+    error.
+  * For a full changelog see
+    /usr/share/doc/packages/arti/CHANGELOG.md
+- Update to version 1.7.0:
+  * Improved output format from the experimental arti keys
+    check-integrity command.
+  * Arti now has experimental support for running as a HTTP CONNECT
+    proxy.
+  * Arti's experimental circuit padding support now allows
+    first-hop padding to treat all the circuits on a channel as a
+    single unit, for improved security and efficiency.
+  * The restricted-discovery feature is no longer experimental.
+  * Added user-facing documentation for the arti hss onion service
+    administration tool.
+  * For a full changelog see
+    /usr/share/doc/packages/arti/CHANGELOG.md
+
+-------------------------------------------------------------------
 Tue Oct  7 15:51:12 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Fix rpmlints: summary-ended-with-dot,
