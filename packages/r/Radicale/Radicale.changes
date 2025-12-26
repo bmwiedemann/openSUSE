@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Dec 18 19:30:57 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
+
+- Update to 3.5.10
+  * Add: [logging] option to log response header on debug loglevel
+  * Add: logging of broken contact items during PUT
+  * Add: [server] max_resource_size option
+  * Add: support PROPFIND/max-resource-size by max_resource_size (capped to 80% of max_content_length)
+  * Extend: [auth] imap: add fallback support for LOGIN towards remote IMAP server (replaced in 3.5.0)
+  * Extend: [logging] with profiling log per reqest or regular per request method
+  * (see also https://github.com/Kozea/Radicale/wiki/Performance-Tuning)
+  * Extend: add selected XML query properties to request result log line for improved timing analysis incl. logwatch support
+  * (see also https://github.com/Kozea/Radicale/wiki/Server-Statistics)
+  * Improve: logging of broken calendar items during PUT
+  * Improve: remove unnecessary open+read for mtime+size cache
+  * Fix: improper detection of HTTP_X_FORWARDED_PORT on MOVE
+  * Adjust: [logging] header/content debug log indended by space to be skipped by logwatch 
+
+-------------------------------------------------------------------
 Mon Dec  1 08:40:59 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
 
 - Update to 3.5.9
