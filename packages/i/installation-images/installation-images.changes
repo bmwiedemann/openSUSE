@@ -1,4 +1,17 @@
 --------------------------------------------------------------------
+Fri Dec 26 10:54:35 UTC 2025 - dimstar@opensuse.org
+
+- merge gh#openSUSE/installation-images#775
+- Also drop dbus-1 from zenroot
+- 17.166
+
+--------------------------------------------------------------------
+Fri Dec 26 10:54:23 UTC 2025 - dimstar@opensuse.org
+
+- merge gh#openSUSE/installation-images#777
+- Remove new binaries from Ruby 4.0
+
+--------------------------------------------------------------------
 Wed Dec 3 10:39:13 UTC 2025 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#774

@@ -1914,4 +1914,12 @@ Currently, causes unresolvable builds in Leap 15.0 stagings. (forwarded request 
     <comment>submitted by snwint via jenkins</comment>
     <requestid>1320967</requestid>
   </revision>
+  <revision rev="239" vrev="1">
+    <srcmd5>ea29168914fcd210d09577c1f5113976</srcmd5>
+    <version>17.166</version>
+    <time>1766756247</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>1324446</requestid>
+  </revision>
 </revisionlist>
