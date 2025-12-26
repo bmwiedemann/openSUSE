@@ -1,0 +1,11 @@
+--- sonic-visualiser-5.2.1/svgui/view/Pane.cpp.orig	2025-12-25 22:35:01.218862220 -0800
++++ sonic-visualiser-5.2.1/svgui/view/Pane.cpp	2025-12-25 22:35:12.332034644 -0800
+@@ -1423,7 +1423,7 @@
+     if (m & Qt::GroupSwitchModifier) s << "GroupSwitch";
+     m &= (~ (Qt::ShiftModifier | Qt::ControlModifier | Qt::AltModifier |
+              Qt::MetaModifier | Qt::KeypadModifier | Qt::GroupSwitchModifier));
+-    if (m) s << QString(" (residue %1)").arg(m);
++    if (m) s << QString(" (residue %1)").arg(static_cast<int>(m));
+     if (s.empty()) return "(none)";
+     else return s.join(" | ");
+ }

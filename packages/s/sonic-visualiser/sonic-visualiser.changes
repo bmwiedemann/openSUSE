@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 26 06:38:20 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Add sonic-visualiser-svgui-qt6-fix.patch fixing build for TW and SR
+
+-------------------------------------------------------------------
 Tue Apr 29 23:53:13 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Add sonic-visualiser-fix-atomic-arguments.patch fixing build errors.

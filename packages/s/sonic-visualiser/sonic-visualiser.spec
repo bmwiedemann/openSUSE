@@ -1,7 +1,7 @@
 #
 # spec file for package sonic-visualiser
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2016 Tom Mbrt <tom.mbrt@googlemail.com>
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 # Copyright (c) 2011 Evstifeev Roman <someuniquename@gmail.com>
@@ -34,6 +34,7 @@ Source1:        %{name}.xml
 # PATCH-FIX-OPENSUSE sonic-visualiser-system-dataquay.patch aloisio@gmx.com -- force use of system libdataquay
 Patch0:         sonic-visualiser-system-dataquay.patch
 Patch1:         sonic-visualiser-fix-atomic-arguments.patch
+Patch2:         sonic-visualiser-svgui-qt6-fix.patch
 BuildRequires:  capnproto
 BuildRequires:  dssi
 BuildRequires:  flac
@@ -133,6 +134,10 @@ With Sonic Visualiser you can:
 %endif
 
 %patch -P 1 -p1
+
+%if 0%{?is_opensuse} && 0%{?suse_version} > 1600
+%patch -P 2 -p1
+%endif
 
 # required with capnproto 0.7.0
 for x in *.pr* config* Makefile* ; do perl -i -p -e 's/c\+\+11/c++14/g' "$x" ; done
