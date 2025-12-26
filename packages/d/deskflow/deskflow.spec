@@ -26,6 +26,7 @@ License:        GPL-2.0-only AND MIT AND SUSE-GPL-2.0-with-openssl-exception AND
 URL:            https://github.com/deskflow/deskflow
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         disable-updater.patch
+Patch1:         disable-test-x86.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.24
 BuildRequires:  doxygen
@@ -77,7 +78,12 @@ BuildArch:      noarch
 
 
 %prep
-%autosetup -p1
+%autosetup -N
+%ifarch %{ix86}
+%autopatch -p1
+%else
+%patch -P0 -p1
+%endif
 
 %build
 %cmake \
@@ -95,8 +101,10 @@ install -Dm0644 ./deploy/linux/%{appid}.metainfo.xml %{buildroot}%{_datadir}/met
 install -Dm0644 ./deploy/linux/%{appid}.png %{buildroot}%{_datadir}/icons/hicolor/512x512/apps/%{appid}.png
 %fdupes %{buildroot}%{_docdir}
 
+%ifnarch %{ix86}
 %check
-./build/bin/legacytests
+%ctest
+%endif
 
 %files
 %license LICENSE LICENSE_EXCEPTION

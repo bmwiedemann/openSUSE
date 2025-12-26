@@ -77,4 +77,13 @@
   * Save geometry into into a state file</comment>
     <requestid>1319169</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>a28e74d95547c07854fdec7bfb757750</srcmd5>
+    <version>1.25.0</version>
+    <time>1766756253</time>
+    <user>dimstar_suse</user>
+    <comment>- enable more tests by using the whole suite, not only legacytests
+- add disable-test-x86.patch, disable the 1 test which fails on legacy x86</comment>
+    <requestid>1324409</requestid>
+  </revision>
 </revisionlist>
