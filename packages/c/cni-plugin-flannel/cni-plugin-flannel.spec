@@ -1,7 +1,7 @@
 #
 # spec file for package cni-plugin-flannel
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define cni_dir %{_libexecdir}/cni
 
 Name:           cni-plugin-flannel
-Version:        1.7.1
+Version:        1.8.0
 Release:        0
 Summary:        A CNI network plugin that is powered by flannel
 License:        Apache-2.0

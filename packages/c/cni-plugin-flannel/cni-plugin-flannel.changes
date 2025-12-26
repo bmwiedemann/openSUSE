@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Dec 26 11:05:02 UTC 2025 - Enno Gotthold <egotthold@suse.com>
+
+- Update to version v1.8.0-flannel2:
+  * Bump alpine image to 3.22.2
+  * Simplify build and make sure build info are coherent
+  * Bump github.com/onsi/ginkgo/v2 from 2.25.3 to 2.26.0
+  * Bump github.com/containernetworking/plugins from 1.7.1 to 1.8.0
+  * Bump github.com/onsi/ginkgo/v2 from 2.25.2 to 2.25.3
+  * Bump github.com/onsi/ginkgo/v2 from 2.25.1 to 2.25.2
+  * Bump github.com/onsi/gomega from 1.38.1 to 1.38.2
+  * Bump github.com/onsi/gomega from 1.38.0 to 1.38.1
+  * Bump github.com/onsi/gomega from 1.37.0 to 1.38.0
+  * Bump Go to 1..24.3
+  * Make error message more explicit when subnet.env cannot be loaded
+
+-------------------------------------------------------------------
 Sat Jun 28 15:50:49 UTC 2025 - Enno Gotthold <egotthold@suse.com>
 
 - Update to version 1.7.1:
