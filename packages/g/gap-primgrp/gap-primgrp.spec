@@ -1,7 +1,7 @@
 #
 # spec file for package gap-primgrp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gap-primgrp
-Version:        4.0.1
+Version:        4.0.2
 Release:        0
 Summary:        GAP: Primitive Permutation Groups Library
 License:        GPL-2.0-or-later
@@ -36,7 +36,7 @@ conjugacy in the corresponding symmetric group), all primitive
 permutation groups of degree < 4096.
 
 %prep
-%setup -qn primgrp-%version
+%autosetup -p1 -n primgrp-%version
 
 %build
 
