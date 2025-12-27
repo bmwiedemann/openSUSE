@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Dec 13 19:26:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.19.4:
+  * Use latest patch release of Go in releases 7cfb6e4 (Matt
+    Farina)
+  * chore(deps): bump github.com/gofrs/flock from 0.12.1 to 0.13.0
+    59c951f (dependabot[bot])
+  * chore(deps): bump github.com/cyphar/filepath-securejoin d45f3f1
+    (dependabot[bot])
+  * chore(deps): bump golang.org/x/crypto from 0.44.0 to 0.45.0
+    d459544 (dependabot[bot])
+  * chore(deps): bump golang.org/x/term from 0.36.0 to 0.37.0
+    becd387 (dependabot[bot])
+  * chore(deps): bump the k8s-io group with 7 updates edb1579
+    (dependabot[bot])
+
+-------------------------------------------------------------------
 Thu Dec 11 06:59:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.19.3:
