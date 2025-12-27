@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Dec 13 19:26:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.0.4 (4.0.3 was not released):
+  * Bump v4.0.2 CVE deps cd700e0 (George Jenkins)
+  * Use latest patch release of Go in releases 9db13ee (Matt
+    Farina)
+
+-------------------------------------------------------------------
 Thu Dec 11 07:00:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.0.2:
