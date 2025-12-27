@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec 24 22:06:13 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.9.2:
+  * A bug in the external SSH execution is fixed that could cause
+    arbitrary command execution. Remote repository names were
+    improperly sent to the shell without quoting. Arguments to the
+    external SSH command are now sent parameterized. (boo#1255640)
+  * A bug in SSH credential creation is fixed that could cause a
+    buffer overflow. Public keys that are not NUL terminated were
+    improperly zeroed. The given length of public keys is now
+    honored. (boo#1255641)
+
+-------------------------------------------------------------------
 Mon Jun 16 19:23:27 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.9.1:
