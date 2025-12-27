@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Dec 27 09:49:53 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.1.2:
+  * Add compatibility with newer kernels
+  * Add incompressible pages count to the --stats output
+  * Switch from deprecated to supported zpool value in the default
+    config
+  * Disable the zpool configuration option from the default config
+
+-------------------------------------------------------------------
 Sat Oct 25 11:20:09 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.1.1:

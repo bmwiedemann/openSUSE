@@ -18,7 +18,7 @@
 
 %bcond_without systemd
 Name:           zswap-cli
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        Command-line tool to control the zswap kernel module options
 License:        MIT
