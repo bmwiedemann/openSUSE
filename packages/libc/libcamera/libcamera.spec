@@ -1,7 +1,7 @@
 #
 # spec file for package libcamera
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,11 @@
 %else
 %define extname %nil
 %endif
+
+# Signing breaks reproducible builds, see
+# https://gitlab.freedesktop.org/camera/libcamera/-/issues/233
+%bcond_with    signed_ipa
+
 Name:           libcamera%extname
 Version:        0.6.0
 Release:        0
@@ -33,13 +38,7 @@ URL:            https://libcamera.org/
 #Git-Web:       https://git.libcamera.org/libcamera/libcamera.git/
 Source:         libcamera-%version.tar.xz
 Source1:        baselibs.conf
-Patch0:         reproducible.patch
-BuildRequires:  boost-devel
 BuildRequires:  c++_compiler
-%if 0%{?suse_version} <= 1500
-BuildRequires:  gcc11
-BuildRequires:  gcc11-c++
-%endif
 BuildRequires:  meson >= 1.0.1
 BuildRequires:  pkg-config
 BuildRequires:  python3-Jinja2
@@ -47,15 +46,21 @@ BuildRequires:  python3-PyYAML
 BuildRequires:  python3-ply
 BuildRequires:  xz
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gnutls)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(libevent_pthreads)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(pybind11)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(yaml-0.1)
+%if %{with signed_ipa}
+# OpenSSL used for signing, gnutls for runtime verification
+BuildRequires:  openssl
+BuildRequires:  pkgconfig(gnutls)
+%endif
+%ifarch aarch64 %arm
+BuildRequires:  pkgconfig(libpisp)
+%endif
 %if "@BUILD_FLAVOR@" != ""
 BuildRequires:  pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(Qt6Gui)
@@ -108,24 +113,43 @@ libcamera is an experimental camera user-space API.
 
 This subpackage contains the header files.
 
-%package tools
-Summary:        Command-line utilities from libcamera
-Group:          Development/Tools/Other
+%package ipa
+Summary:        Plugins for hardware specific image processing blocks
+Group:          System/Libraries
+# Previously named libcamera-tools, although it provides none
+Provides:       libcamera-tools = %version-%release
+Obsoletes:      libcamera-tools < %version-%release
 
-%description tools
+%description ipa
 libcamera is an experimental camera user-space API.
+
+This package provides plugins for interfacing with various ISP
+(Image Signal Processor) hardware blocks, as well as
+calibration data for some camera sensors.
 
 %package -n libcamera-cam
 Summary:        Command-line interfaces for libcamera
 Group:          Development/Tools/Other
-# Heavy runtime deps (SDL, Qt6)
+# Heavy runtime deps (SDL)
 
 %description -n libcamera-cam
 libcamera is an experimental camera user-space API.
 
-"cam" is a command-line utility to interact with cameras. The initial state is
-limited and only supports listing cameras in the system and selecting a camera
-to interact with.
+"cam" is a command-line utility to interact with cameras. It allows
+to query and set image stream properties, and to capture the stream
+to a file or show a live view.
+
+%package -n libcamera-qcam
+Summary:        Qt interfaces for libcamera
+Group:          Development/Tools/Other
+# Heavy runtime deps (Qt6)
+
+%description -n libcamera-qcam
+libcamera is an experimental camera user-space API.
+
+"qcam" is a Qt interface to interact with cameras. It allows to
+query and set image stream properties, and to capture the stream
+to a file or show a live view.
 
 %package -n gstreamer-plugins-libcamera
 Summary:        GStreamer plugins from libcamera
@@ -146,10 +170,6 @@ Python bindings for libcamera.
 %autosetup -p1 -n libcamera-%version
 
 %build
-%if 0%{?suse_version} <= 1500
-export CC=gcc-11
-export CXX=g++-11
-%endif
 %meson \
 	-Ddocumentation=disabled \
 %if "@BUILD_FLAVOR@" != ""
@@ -158,7 +178,7 @@ export CXX=g++-11
 	-Dqcam=disabled \
 %endif
 	-Dv4l2=false -Dtracing=disabled \
-	-Dpipelines=ipu3,rkisp1,simple,uvcvideo,vimc \
+	-Dpipelines=auto,vimc \
 	-Dlc-compliance=disabled
 %meson_build
 
@@ -168,6 +188,7 @@ cd "%buildroot"
 %if "@BUILD_FLAVOR@" != ""
 find . ! -type d ! -path ./usr/bin/cam ! -path ./usr/bin/qcam -print -delete
 %else
+# Delete limited variant without SDL
 rm -v usr/bin/cam
 %endif
 
@@ -188,7 +209,7 @@ rm -v usr/bin/cam
 %_libdir/libcamera.so
 %_libdir/pkgconfig/*.pc
 
-%files tools
+%files ipa
 %_libexecdir/libcamera/
 %_libdir/libcamera/
 %_datadir/libcamera/
@@ -203,6 +224,8 @@ rm -v usr/bin/cam
 
 %files -n libcamera-cam
 %_bindir/cam
+
+%files -n libcamera-qcam
 %_bindir/qcam
 
 %endif

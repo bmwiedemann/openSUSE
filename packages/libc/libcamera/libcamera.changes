@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Dec 22 17:57:30 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Various cleanups:
+  * Drop unused boost build dependency
+  * Replace reproducible.patch with equivalent "signed_ipa" build
+    condition, only require openssl/gnutls if enabled.
+  * Rename subpackage containing IPA modules and support-files
+    from "tools" to "ipa".
+  * Use automatic selection of IPA modules/pipelines so that
+    ARM SoC specific ISPs are disabled on x86_64, and that
+    RPi and mali-c55 are now enabled on aarch64.
+  * Add libpisp build dependency for ARM targets
+  * Split cam/qcam package, to reduce runtime dependencies
+    notably on small SoCs (only SDL or Qt6 required)
+  * Drop dysfunctional SLE/Leap 15.x conditionals
+
+-------------------------------------------------------------------
 Tue Dec 16 14:24:09 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to release 0.6.0
