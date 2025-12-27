@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 24 10:46:12 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 1.97:
+  * Do not honor -o nonempty when compiled with FUSE 3
+
+-------------------------------------------------------------------
 Tue Nov 25 21:32:51 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 1.96:

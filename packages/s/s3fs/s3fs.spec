@@ -18,7 +18,7 @@
 
 
 Name:           s3fs
-Version:        1.96
+Version:        1.97
 Release:        0
 Summary:        FUSE file system backed by Amazon S3 bucket
 License:        GPL-2.0-or-later
