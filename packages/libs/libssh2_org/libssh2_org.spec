@@ -2,6 +2,7 @@
 # spec file for package libssh2_org
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +17,7 @@
 #
 
 
+%define sover 1
 %define pkg_name libssh2
 Name:           libssh2_org
 Version:        1.11.1
@@ -29,9 +31,9 @@ Source1:        https://www.libssh2.org/download/%{pkg_name}-%{version}.tar.xz.a
 Source2:        baselibs.conf
 Source3:        libssh2_org.keyring
 Patch0:         libssh2-ocloexec.patch
-BuildRequires:  libtool
-BuildRequires:  openssl-devel
+BuildRequires:  cmake
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(zlib)
 # drops build cycle in Factory
 #!BuildIgnore:  groff-full
@@ -42,11 +44,11 @@ Internet Drafts: SECSH-TRANS, SECSH-USERAUTH, SECSH-CONNECTION,
 SECSH-ARCH, SECSH-FILEXFER, SECSH-DHGEX, SECSH-NUMBERS, and
 SECSH-PUBLICKEY.
 
-%package -n libssh2-1
+%package -n libssh2-%{sover}
 Summary:        A library implementing the SSH2 protocol
 Group:          Development/Libraries/C and C++
 
-%description -n libssh2-1
+%description -n libssh2-%{sover}
 libssh2 is a library implementing the SSH2 protocol as defined by
 Internet Drafts: SECSH-TRANS, SECSH-USERAUTH, SECSH-CONNECTION,
 SECSH-ARCH, SECSH-FILEXFER, SECSH-DHGEX, SECSH-NUMBERS, and
@@ -56,7 +58,7 @@ SECSH-PUBLICKEY.
 Summary:        A library implementing the SSH2 protocol
 Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
-Requires:       libssh2-1 = %{version}
+Requires:       libssh2-%{sover} = %{version}
 
 %description -n libssh2-devel
 libssh2 is a library implementing the SSH2 protocol as defined by
@@ -68,39 +70,34 @@ SECSH-PUBLICKEY.
 %autosetup -p1 -n %{pkg_name}-%{version}
 
 %build
-sed -i -e 's@AM_CONFIG_HEADER@AC_CONFIG_HEADERS@g' configure.ac
-# remove m4 macro files for libtool as they should be picked up by
-rm -v m4/libtool.m4 m4/lt*
-autoreconf -fiv
-export CFLAGS="%{optflags} -DOPENSSL_LOAD_CONF"
-%configure \
-    --disable-silent_rules \
-    --enable-shared \
-    --disable-rpath \
-    --disable-docker-tests \
-    --with-libssl-prefix=%{_prefix} \
-    --with-libz=%{_prefix}
-
-%make_build
-
-%check
-%make_build check
+%cmake \
+	-DCRYPTO_BACKEND=OpenSSL \
+	-DBUILD_EXAMPLES:BOOL=OFF \
+	-DBUILD_TESTING:BOOL=OFF \
+	%{nil}
+%cmake_build
 
 %install
-%make_install
-rm -f %{buildroot}%{_libdir}/*.la %{buildroot}%{_libdir}/*.a
+%cmake_install
+# installed via %%license
+rm %{buildroot}%{_docdir}/%{name}/COPYING
 
-%post -n libssh2-1 -p /sbin/ldconfig
-%postun -n libssh2-1 -p /sbin/ldconfig
+%check
+%ctest
 
-%files -n libssh2-1
-%{_libdir}/libssh2.so.1*
+%ldconfig_scriptlets -n libssh2-%{sover}
+
+%files -n libssh2-%{sover}
+%license COPYING
+%{_libdir}/libssh2.so.%{sover}{,.*}
 
 %files -n libssh2-devel
-%doc NEWS docs/BINDINGS.md docs/HACKING.md docs/TODO
+%license COPYING
+%{_docdir}/libssh2_org
 %{_libdir}/libssh2.so
 %{_includedir}/*.h
-%{_mandir}/man3/*
+%{_mandir}/man3/*.3%{?ext_man}
 %{_libdir}/pkgconfig/libssh2.pc
+%{_libdir}/cmake/libssh2
 
 %changelog

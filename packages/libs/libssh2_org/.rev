@@ -393,4 +393,13 @@
     <comment></comment>
     <requestid>1223874</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>979e627fa1b8f3993bb6d9e8bd97a186</srcmd5>
+    <version>1.11.1</version>
+    <time>1766831327</time>
+    <user>dimstar_suse</user>
+    <comment>- use cmake build system so that cmake build files are generated,
+  as needed by daggy (forwarded request 1324326 from AndreasStieger)</comment>
+    <requestid>1324449</requestid>
+  </revision>
 </revisionlist>
