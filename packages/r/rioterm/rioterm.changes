@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Dec 19 18:42:52 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.2.37:
+  * update vi cursor fix
+  * fix: Fix vi cursor updates, can be improved
+  * allow ununsed on bg_color
+  * set windows title bar
+  * few updates to it work correctly
+  * set screen and window background color when changed via OSC
+  * fix lint
+  * use memmap2 and check all faces
+  * simplify comments
+  * fix decode names manually with utf-16
+  * Fix changelog URL (#1388)
+  * fix font size updating through config
+  * attempt to load path on memory retrival
+  * flake.lock: Update (#1384)
+  * flake.lock: Update (#1372)
+  * update lockfile
+  * update deps
+  * flake.lock: Update (#1367)
+  * Avoid allocating in `pre_exec` closure (#1366)
+  * update com.rioterm.Rio.metainfo.xml (0.2.36)
+
+-------------------------------------------------------------------
 Tue Nov 18 14:49:21 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to version 0.2.36:
