@@ -2563,4 +2563,18 @@ Note: The previously pushed version 3.89.0 never existed. This was a typo, which
   * [INS-37] Fixed the issue of ftp connection ignoring the detector's co… (#4590) (forwarded request 1322243 from ph03nix)</comment>
     <requestid>1322260</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>ec9fd73d4d798a40fabe6f398b9a3cbd</srcmd5>
+    <version>3.92.4</version>
+    <time>1766831337</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.92.4:
+  * enable line numbers for ghr (#4611)
+  * [INS-207] Add Role-Aware Resumption Support for Legacy S3 Scan (#4600)
+  * Update module golang.org/x/crypto to v0.45.0 [SECURITY] (#4562)
+  * [INS-226] use pinned image for quay registry test (#4602)
+  * Pagination and Rate-Limit Handling In Docker Registry Namespace API Calls (#4557)
+  * [INS-170] Unify JDBC URL parsing across detectors and analyzers (#4574) (forwarded request 1324431 from ph03nix)</comment>
+    <requestid>1324459</requestid>
+  </revision>
 </revisionlist>
