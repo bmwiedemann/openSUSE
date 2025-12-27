@@ -1,4 +1,4 @@
-From 128ce1fc50b12e012ac50e9d1728c0bb52124d10 Mon Sep 17 00:00:00 2001
+From e1562e145272efea60275ffe8e7edeb65224ab8d Mon Sep 17 00:00:00 2001
 From: Thomas Blume <thomas.blume@suse.com>
 Date: Tue, 25 Mar 2014 13:08:56 +0000
 Subject: [PATCH] rc-local: fix ordering startup for /etc/init.d/boot.local
@@ -9,18 +9,18 @@ Subject: [PATCH] rc-local: fix ordering startup for /etc/init.d/boot.local
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/units/rc-local.service.in b/units/rc-local.service.in
-index b135f3894d..92cd3652f9 100644
+index 6fb0838cdb..768f720032 100644
 --- a/units/rc-local.service.in
 +++ b/units/rc-local.service.in
 @@ -13,7 +13,7 @@
- Description={{SYSTEM_SYSVRCLOCAL_PATH}} Compatibility
+ Description={{RC_LOCAL_PATH}} Compatibility
  Documentation=man:systemd-rc-local-generator(8)
- ConditionFileIsExecutable={{SYSTEM_SYSVRCLOCAL_PATH}}
+ ConditionFileIsExecutable={{RC_LOCAL_PATH}}
 -After=network.target
 +After=basic.target
  
  [Service]
  Type=forking
 -- 
-2.43.0
+2.35.3
 

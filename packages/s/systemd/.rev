@@ -7839,4 +7839,12 @@ handle manual pages that consist only of a .so directive such as
   and other network user directories (bsc#1250691)</comment>
     <requestid>1323386</requestid>
   </revision>
+  <revision rev="461" vrev="4">
+    <srcmd5>6d45aecf18ca87fb43e7b3146c3c4d52</srcmd5>
+    <version>257.9</version>
+    <time>1766831330</time>
+    <user>dimstar_suse</user>
+    <comment>Revert to 257 - filed a bunch of bug reports </comment>
+    <requestid>1324470</requestid>
+  </revision>
 </revisionlist>

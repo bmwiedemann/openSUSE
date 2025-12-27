@@ -285,7 +285,9 @@
 %{_mandir}/man3/sd_bus_message_close_container.3.gz
 %{_mandir}/man3/sd_bus_message_copy.3.gz
 %{_mandir}/man3/sd_bus_message_dump.3.gz
+%if %{with upstream}
 %{_mandir}/man3/sd_bus_message_dump_json.3.gz
+%endif
 %{_mandir}/man3/sd_bus_message_enter_container.3.gz
 %{_mandir}/man3/sd_bus_message_exit_container.3.gz
 %{_mandir}/man3/sd_bus_message_get_allow_interactive_authorization.3.gz
@@ -439,6 +441,7 @@
 %{_mandir}/man3/sd_bus_unref.3.gz
 %{_mandir}/man3/sd_bus_unrefp.3.gz
 %{_mandir}/man3/sd_bus_wait.3.gz
+%if %{with upstream}
 %{_mandir}/man3/sd_device_enumerator_add_all_parents.3.gz
 %{_mandir}/man3/sd_device_enumerator_add_match_parent.3.gz
 %{_mandir}/man3/sd_device_enumerator_add_match_property.3.gz
@@ -453,6 +456,7 @@
 %{_mandir}/man3/sd_device_enumerator_get_device_next.3.gz
 %{_mandir}/man3/sd_device_enumerator_get_subsystem_first.3.gz
 %{_mandir}/man3/sd_device_enumerator_get_subsystem_next.3.gz
+%endif
 %{_mandir}/man3/sd_device_enumerator_new.3.gz
 %{_mandir}/man3/sd_device_enumerator_ref.3.gz
 %{_mandir}/man3/sd_device_enumerator_unref.3.gz
@@ -667,29 +671,6 @@
 %{_mandir}/man3/sd_journal_stream_fd_with_namespace.3.gz
 %{_mandir}/man3/sd_journal_test_cursor.3.gz
 %{_mandir}/man3/sd_journal_wait.3.gz
-%if %{with upstream}
-%{_mandir}/man3/sd_json_dispatch_const_string.3.gz
-%{_mandir}/man3/sd_json_dispatch_double.3.gz
-%{_mandir}/man3/sd_json_dispatch_id128.3.gz
-%{_mandir}/man3/sd_json_dispatch_int16.3.gz
-%{_mandir}/man3/sd_json_dispatch_int32.3.gz
-%{_mandir}/man3/sd_json_dispatch_int64.3.gz
-%{_mandir}/man3/sd_json_dispatch_int8.3.gz
-%{_mandir}/man3/sd_json_dispatch_intbool.3.gz
-%{_mandir}/man3/sd_json_dispatch_signal.3.gz
-%{_mandir}/man3/sd_json_dispatch_stdbool.3.gz
-%{_mandir}/man3/sd_json_dispatch_string.3.gz
-%{_mandir}/man3/sd_json_dispatch_strv.3.gz
-%{_mandir}/man3/sd_json_dispatch_tristate.3.gz
-%{_mandir}/man3/sd_json_dispatch_uid_gid.3.gz
-%{_mandir}/man3/sd_json_dispatch_uint16.3.gz
-%{_mandir}/man3/sd_json_dispatch_uint32.3.gz
-%{_mandir}/man3/sd_json_dispatch_uint64.3.gz
-%{_mandir}/man3/sd_json_dispatch_uint8.3.gz
-%{_mandir}/man3/sd_json_dispatch_unsupported.3.gz
-%{_mandir}/man3/sd_json_dispatch_variant.3.gz
-%{_mandir}/man3/sd_json_dispatch_variant_noref.3.gz
-%endif
 %{_mandir}/man3/sd_listen_fds.3.gz
 %{_mandir}/man3/sd_listen_fds_with_names.3.gz
 %{_mandir}/man3/sd_login_monitor.3.gz
@@ -729,7 +710,9 @@
 %{_mandir}/man3/sd_pid_notifyf.3.gz
 %{_mandir}/man3/sd_pid_notifyf_with_fds.3.gz
 %{_mandir}/man3/sd_pidfd_get_cgroup.3.gz
+%if %{with upstream}
 %{_mandir}/man3/sd_pidfd_get_inode_id.3.gz
+%endif
 %{_mandir}/man3/sd_pidfd_get_machine_name.3.gz
 %{_mandir}/man3/sd_pidfd_get_owner_uid.3.gz
 %{_mandir}/man3/sd_pidfd_get_session.3.gz
@@ -764,22 +747,14 @@
 %{_mandir}/man3/sd_uid_get_sessions.3.gz
 %{_mandir}/man3/sd_uid_get_state.3.gz
 %{_mandir}/man3/sd_uid_is_on_seat.3.gz
-%{_mandir}/man3/sd_varlink_get_description.3.gz
 %if %{with upstream}
-%{_mandir}/man3/sd_varlink_is_connected.3.gz
-%{_mandir}/man3/sd_varlink_is_idle.3.gz
-%endif
+%{_mandir}/man3/sd_varlink_get_description.3.gz
 %{_mandir}/man3/sd_varlink_push_dup_fd.3.gz
 %{_mandir}/man3/sd_varlink_push_fd.3.gz
 %{_mandir}/man3/sd_varlink_send.3.gz
 %{_mandir}/man3/sd_varlink_sendb.3.gz
 %{_mandir}/man3/sd_varlink_sendbo.3.gz
-%if %{with upstream}
-%{_mandir}/man3/sd_varlink_server_new.3.gz
-%endif
 %{_mandir}/man3/sd_varlink_set_description.3.gz
-%if %{with upstream}
-%{_mandir}/man3/sd_varlink_set_relative_timeout.3.gz
 %endif
 %{_mandir}/man3/sd_watchdog_enabled.3.gz
 %{_mandir}/man3/udev_device_get_action.3.gz
