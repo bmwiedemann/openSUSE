@@ -79,4 +79,21 @@
   * Fixed auto-scroll issue in Quick Add’s description field</comment>
     <requestid>1320550</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>77095bbb250273d8b89ec427f46211be</srcmd5>
+    <version>4.17.0</version>
+    <time>1766831333</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.17.0:
+  * Added deadline support, separate from due dates, with visual indicators for
+    overdue tasks
+  * Overdue tasks are now shown in the Scheduled view with quick reschedule
+    actions
+  * Added multi-select support to move multiple tasks between projects
+  * Introduced calendar sync and event creation via Evolution Data Server
+  * Improved calendar range views and event date display
+  * Fixed task editing issues in Overdue view and projects without tasks
+  * Added support for custom URI schemes in the Markdown editor</comment>
+    <requestid>1324452</requestid>
+  </revision>
 </revisionlist>

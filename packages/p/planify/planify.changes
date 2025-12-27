@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Dec 26 13:40:56 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 4.17.0:
+  * Added deadline support, separate from due dates, with visual indicators for
+    overdue tasks
+  * Overdue tasks are now shown in the Scheduled view with quick reschedule
+    actions
+  * Added multi-select support to move multiple tasks between projects
+  * Introduced calendar sync and event creation via Evolution Data Server
+  * Improved calendar range views and event date display
+  * Fixed task editing issues in Overdue view and projects without tasks
+  * Added support for custom URI schemes in the Markdown editor
+
+-------------------------------------------------------------------
 Sat Nov 29 09:11:18 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 4.16.1:

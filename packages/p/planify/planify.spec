@@ -19,7 +19,7 @@
 %define         sover 0
 %define         appid io.github.alainm23.planify
 Name:           planify
-Version:        4.16.1
+Version:        4.17.0
 Release:        0
 Summary:        Task and project manager
 License:        GPL-3.0-or-later
