@@ -12514,7 +12514,8 @@ unsorted:
   - libcamera-base0_6-32bit 
   - libcamera-cam 
   - libcamera-devel 
-  - libcamera-tools 
+  - libcamera-ipa 
+  - libcamera-qcam 
   - libcamera0_6-32bit 
   - libcanberra-devel 
   - libcanberra-gtk-devel 
@@ -12603,6 +12604,7 @@ unsorted:
   - libcfile1 
   - libcg3-1 
   - libcglm0 
+  - libcgmic3 
   - libcgns4_4 
   - libcgroup-devel 
   - libcgroup-pam 
