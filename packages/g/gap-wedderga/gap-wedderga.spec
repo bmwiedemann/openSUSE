@@ -1,7 +1,7 @@
 #
 # spec file for package gap-wedderga
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gap-wedderga
-Version:        4.11.1
+Version:        4.11.3
 Release:        0
 Summary:        GAP: Wedderburn Decomposition of Group Algebras
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://gap-packages.github.io/wedderga/
-
+#Git-Clone:     https://github.com/gap-packages/wedderga
 Source:         https://github.com/gap-packages/wedderga/releases/download/v%version/wedderga-%version.tar.gz
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
