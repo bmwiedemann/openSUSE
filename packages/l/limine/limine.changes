@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec 26 14:04:13 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 10.5.1:
+  * Many bug fixes throughout the codebase, mainly tackling hardening
+    (especially of filesystem drivers). Most issues were caught with
+    static analysis.
+  * Fixage of some memory leaks.
+  * Fixage of major issue that could have caused UEFI PXE to not work.
+  * Multiboot1: fix issue that would cause the information buffer to be
+    underallocated.
+
+-------------------------------------------------------------------
 Thu Dec 11 08:23:47 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
 
 - Update to 10.5.0:
