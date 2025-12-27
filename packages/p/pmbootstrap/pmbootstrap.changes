@@ -1,4 +1,176 @@
 -------------------------------------------------------------------
+Mon Dec 15 07:34:28 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.7.0
+  Features:
+  * envkernel: Add --llvm flag to use LLVM.
+  * kconfig: Reintroduce command line argument to check for
+    categories.
+  * pmb.install: Support PowerPC PReP boot partitions.
+  * pmb.qemu: Support booting with OpenFirmware.
+  * pmb.helpers.run_core: Better handle invalid timeout values.
+  * pmb.build.kconfig: Use LLVM for kconfig where applicable.
+  * setup_keymap: support systemd.
+  * kconfig: print option value pref. in warning about missing
+    config.
+  * pmb.shutdown: Add timeout to kill request sockets.
+  * pmb: Make command timeout opt-in.
+  * pmb.build.kconfig: add a "generate" cmd to build kconfig from
+    fragments.
+  * pmb.build.kconfig: edit: add kernel fragment support.
+  * pmb.aportgen: Add empty maintainer fields to generated
+    APKBUILDS.
+  * pmb.aportgen.device: Add postmarketos-base-downstream by
+    default if relevant.
+  * pmb.config.init: Automatically switch to Edge if creating a
+    new port.
+  * envkernel: Add support for RISC-V.
+  * pmb.build: Support architecture-specific fragments.
+  * pmb.qemu: Add UEFI support on RISC-V.
+  * envkernel: Make LLVM the default.
+  * pmb: Parse supported binary architectures from pmaports.cfg
+  * pmb: Default PMB_APK_FORCE_MISSING_REPOSITORIES=1 on
+    unsupported binary architectures.
+  * pmb.config.init: Rewrite message for new port creation.
+  * pmb.aportgen.linux: Add mainline kernel aport generation.
+  * pmb.config: add provider select prompting for pmos-usb-moded.
+  * pmb.parse._apkbuild: Add support for parsing maintainer fields.
+  * envkernel: Install required packages for Rust.
+  * pmb.parse.kconfigcheck: check correctness of arches.
+  Fixes:
+  * Honor version constraints in makedepends.
+  * pmb.config.init: Gracefully handle there not being any providrs
+    for _pmb_select.
+  * pmb: Remove execute bit from config file mode.
+  * pmb.install: Fix `Unable to find the first partition of
+    /dev/loop0`.
+  * pmb.parse.bootimg: Fix crash with non-default Exynos QCDT
+    values.
+  * pmb.aportgen: Use NonBugError to inform that there is no
+    generator.
+  * pmb.config.init: Use NonBugError for nonexistent devices.
+  * pmb.parse.deviceinfo: Use NonBugError for nonexistent devices.
+  * envkernel: enable word splitting for zsh.
+  * pmb: Fix kernel architecture logic.
+  * pmb.build: arch=all is not a single architecture.
+  * pmb.build.kconfig: Hardcode native chroot even more.
+  * pmb.helpers.git: Make upstream remote finding more robust.
+  * sideload: skip unnecessary apkindex updates.
+  * pmb.build: Fix bootstrap of systemd repo.
+  * pmb.parse: Don't prefer exact package match over other
+    providers.
+  * pmb.chroot.apk: Reduce repetition in apk package check.
+  * pmb.build.envkernel: Use NonBugError for invalid package
+    count.
+  * pmb.helpers.repo: Skip nonexistent APK indexes.
+  * pmb.core.context: Re-enable ccache by default.
+  * pmb.aportgen: Use NonBugError for cancelling an overwrite.
+  * pmb.build.init: Initialise chroot when initialising compiler.
+  * pmb.config.workdir: Use NonBugError for channel mismatch
+    message
+
+-------------------------------------------------------------------
+Thu Oct  2 06:48:47 UTC 2025 - Jianhua Lu <lujianhua000@gmail.com>
+
+- update t 3.6.0
+  * pmb: Only disable metadata_csum for ext4 on downstream ports
+  * bootimg: exynos: extract platform and subtype from dt.img header
+  * aportgen: device: set bootimg_qcdt_exynos_{platform,subtype}
+  * pmb.core.pkgrepo:pkgrepo_iter_package_dirs: speed up finding pkg dirs
+  * pmb.config.init: Add warning for kernels supposedly not supported by systemd
+  * pmb.config.init: Add check for recommended kernel version
+  * pmb.parse.arguments: Default to 8 GB for --second-storage
+  * chroot: make sure that we bootstrap the chroot /usr-merged
+  * pmb: support bootimg v3/v4 and `vendor_boot`
+  * envkernel: install gnutls-dev as well (for u-boot)
+  * Add ppc64le to machine type mapping
+  * pmb.ci: Add new "with-dot-git" option
+  * pmb.arch: Check whether CPU is 32-bit capable
+  * pmb.chroot.init: bootstrap the /usr-merge by creating symlinks
+  * kconfig: support tristate values for options
+  * Add PMB_CHANNELS_CFG environment variable
+  * pmb: Add --shallow-initial-clone argument to init
+  * pmb.parse.deviceinfo: Handle deviceinfo_initfs_compression
+  * pmb.chroot.initfs: Support more compression formats
+  * pmb, test: Use git switch instead of git checkout
+  * pmb.aportgen: Ask whether a new device port is upstream or downstream
+  * pmb: Add support for loongarch64
+  * pmb.qemu: Allow using EFI on non-native architectures
+  * pmb.qemu: Add support for loongarch64
+  * treewide: switch back to bootimg_qcdt{,_type}
+  * aportgen: re-add bootimg_qcdt variable
+  * Fix crash in "zap -a" and "zap -o" with apk3
+  * Don't set esp flag for msdos boot partitions
+  * pmb.parse._apkbuild: Use NonBugError for all errors
+  * pmb: Also apply ext4 metadata_csum workaround for archived ports
+  * pmb.chroot.mount: Fix pmb chroot --image for single-partition rootfs
+  * pmb.chroot.initfs: Fix initfs commands
+  * pmb.core.pkgrepo:pkgrepo_iter_package_dirs: allow following symlinks
+  * package.get_depends: use makedepends_{build,host}
+  * aportgen/gcc: don't remove cross prefix in package
+  * aportgen/gcc: don't use tracedeps
+  * test.core.test_chroot: fix on aarch64 hosts
+  * pmb.build.kconfig: test cross type in conditions
+  * pmb.flasher.variables: fix typo
+  * Use SPDX identifier for busybox-static-* packages
+  * pmb.build.package: re-run init_compiler in strict mode
+  * Only do the usr merge for supported binary architectures
+  * Revert "pmb.qemu: set default image size of 4G (!1886)"
+  * pmb.helpers.frontend: Initialise chroot in stats()
+  * fix(flasher): Support vendor boot for devices flashed with rkdeveloptool
+  * pmb.install._install: Initialise chroot in install_recovery_zip()
+  * pmb.flasher.init: Explicitly initialise chroot when installing depends
+  * Fix /usr merge breaking stable branches
+  * pmb: checksum: fail if verification fails
+  * pmb.parse.deviceinfo: Correctly convert header_version to an int
+  * Revert "pmb.helpers.repo: Always update APKINDEX if it doesn't exist"
+  * CI: Only run most pipelines when they actually are necessary
+  * test: Move test_devices to where it should be
+  * pmb.helpers.devices: Use get_device_category_by_directory_path()
+  * CI: fix running deploy job on master
+  * pmb.core.context: Properly type get_context()
+  * docs: Add automodule for pmb.commands.test
+  * CI: Skip removing files that start with test in docs check
+  * Revert "pmb.config: add the full hexdump to the list of installed build packages (MR 2454)"
+  * pmb: Make RunOutputTypeDefault and RunOutputTypePopen enums
+  * test: aportgen: device: add tests for boot img with exynos qcdt
+  * pmb: Use inspect.get_annotations()
+  * pmb.helpers.locale: Mark XkbLayout.primary_locales as Final
+  * CI: Add basic chroot test
+  * CI: Only build packages on install in bump_autobuild job
+  * initfs: drop support for initramfs flavor
+  * export: drop support for initramfs flavor
+  * pmb.config.init: Change warning texts
+  * pmb/helpers/repo_missing: skip device/archived
+  * Use standard `requires-python` field
+  * pmb: Remove exception for RUF021
+  * pmb: Remove exception for RUF052
+  * aportgen/gcc: disable libsanitizer
+  * pmb.chroot: drop custom usr-merge implementation
+  * config.apkbuild_attributes: add _pkgrel
+  * CI: run docs job with alpine stable
+  * pmb: Use Arch type instead of str
+  * docs: add POSIX-shell requirement
+  * ci: trigger also on changes in docs
+  * pmb: Enable Simplify checks
+  * doc: link to rules for merging
+  * .ci/pytest.sh: do not exit on first error or failed test
+  * pmb: Make header_version an int in Bootimg and Deviceinfo
+  * pmb, test: Add missing type annotations
+  * pmb: Enable Perflint checks
+  * pmb, tests: Enable Refurb checks
+  * pmb.config.pmaports: Fix typo
+  * pmb.helpers.args: Implement simplification found by SIM118
+  * pmb.helpers.frontend: Deprecate 'pmbootstrap lint'
+  * kconfig: Allow printing non-fatal warnings
+  * pmb.chroot.initfs: Improve error handling and clean up code
+  * CI: Add initramfs inspection test
+  * pmb.parse.deviceinfo: Use __annotations__ from future instead of quoted type
+  * pmb.parse.deviceinfo: Convert if ... else block to match
+  * CONTRIBUTING.md: Suggest git switch instead of git checkout
+  * aportgen: Move target folder handling logic from config to aportgen
+
+-------------------------------------------------------------------
 Sat Jul 26 14:49:47 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - fix non-executable-script in merge-usr.sh and other related erros.

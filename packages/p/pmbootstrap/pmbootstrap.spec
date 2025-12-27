@@ -5,7 +5,7 @@
 # Copyright (c) 2024 Jianhua Lu <lujianhua000@gmail.com>
 # Copyright (c) 2024 Zhang Bingwu <xtexchooser@duck.com>
 # Copyright (c) 2023, Tomáš Čech <sleep_walker@opensuse.org>
-# Copyright (c) 2021, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,9 +21,9 @@
 
 
 %define         pythons %{primary_python}
-%define         commit 799140da2be8b402c563361c460ec55a3add3865
+%define         commit da52a5d6d14d413243ea36e423593d442b25ad91
 Name:           pmbootstrap
-Version:        3.5.2
+Version:        3.7.0
 Release:        0
 Summary:        Sophisticated chroot/build/flash tool to develop and install postmarketOS
 License:        GPL-3.0-or-later
@@ -54,7 +54,6 @@ Sophisticated chroot/build/flash tool to develop and install postmarketOS
 
 %install
 %pyproject_install
-chmod +x %{buildroot}%{python3_sitelib}/pmb/data/merge-usr.sh
 export SOURCE_DATE_EPOCH=$(date +%s)
 python3 -m compileall -q -f %{buildroot}%{python3_sitelib}/pmb
 python3 -O -m compileall -q -f %{buildroot}%{python3_sitelib}/pmb
