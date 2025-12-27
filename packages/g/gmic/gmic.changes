@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Dec 21 11:43:02 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- bump memory constraint to 8GB to fix linking now that we build
+  more gmic targets in parallel
+
+-------------------------------------------------------------------
+Sat Dec 20 11:48:08 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- add libcgmic subpackage for gmic-gegl-plugin
+
+-------------------------------------------------------------------
+Sat Dec 20 11:43:28 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add fix-libc.patch - fix cross dependencies between the different
+  targets so that they properly build with -j > 1
+  https://discuss.pixls.us/t/gmic-gegl-release-0-1-0/54859/10
+
+-------------------------------------------------------------------
+Sat Dec 20 11:15:05 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.6.5
+  https://discuss.pixls.us/t/on-the-road-to-3-7/52265/23
+
+-------------------------------------------------------------------
 Sat Dec  6 14:28:55 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - use gimptool-3 (which is a symlink to gimptool-3.x) to make it
@@ -8,7 +32,7 @@ Sat Dec  6 14:28:55 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 Fri Dec  5 22:07:46 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.6.4
-  https://discuss.pixls.us/t/on-the-road-to-3-7/52265/13?u=darix
+  https://discuss.pixls.us/t/on-the-road-to-3-7/52265/13
 
 -------------------------------------------------------------------
 Tue Oct  7 00:45:02 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>

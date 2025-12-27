@@ -40,7 +40,7 @@
 %define gmic_datadir %{_datadir}/gmic
 
 Name:           gmic
-Version:        3.6.4
+Version:        3.6.5
 Release:        0
 Summary:        GREYC's Magick for Image Computing (denoise and others)
 # gmic-qt is GPL-3.0-or-later, zart is CECILL-2.0, libgmic and cli program are
@@ -53,6 +53,8 @@ Source0:        https://gmic.eu/files/source/gmic_%{version}.tar.gz
 Patch0:         krita5.patch
 # PATCH-FEATURE-OPENSUSE
 Patch1:         0001-Find-the-local-gmic-library.patch
+# PATCH-FEATURE-OPENSUSE
+Patch2:         fix-libc.patch
 #
 # SECTION pkg_vcmp
 #
@@ -118,12 +120,21 @@ multi-spectral volumetric images.
 Summary:        Shared library that belongs to gmic
 License:        CECILL-2.1
 
+%package -n libcgmic3
+Summary:        Shared library that belongs to gmic
+License:        CECILL-2.1
+
 %package -n libgmic-devel
 Summary:        Header and library from gmic for use in other C++ projects
 License:        CECILL-2.1
+Requires:       libcgmic3 = %{version}
 Requires:       libgmic3 = %{version}
 
 %description -n libgmic3
+This shared library allows using gmic functionality from other
+programs.
+
+%description -n libcgmic3
 This shared library allows using gmic functionality from other
 programs.
 
@@ -193,9 +204,9 @@ sed -i 's# -Wl,-rpath,.##' src/Makefile
 # The file is moved post-install in a directory not owned by gimp
 sed -i 's#/usr/lib/gimp/2.0/plug-ins#%{gmic_datadir}#' src/gmic_stdlib.gmic
 
-# There's no concept of build order in the crappy Makefile provided
-EXTRA_CFLAGS='%{optflags}' NOSTRIP=1 %__make lib %{?_smp_mflags}
-EXTRA_CFLAGS='%{optflags}' NOSTRIP=1 %__make cli_shared %{?_smp_mflags}
+for target in lib cli_shared libc ; do
+  EXTRA_CFLAGS='%{optflags}' NOSTRIP=1 %__make ${target} %{?_smp_mflags}
+done
 
 # Build gmic{_gimp|_krita}_qt
 pushd gmic-qt
@@ -254,6 +265,7 @@ install -D -m 0755 build/gmic_gimp_qt %{buildroot}%{_gimpplugindir}/gmic_gimp_qt
 popd
 
 %ldconfig_scriptlets -n libgmic3
+%ldconfig_scriptlets -n libcgmic3
 
 %files
 %doc README gmic-qt/README.md
@@ -281,11 +293,16 @@ popd
 %license COPYING
 %{_libdir}/libgmic.so.*
 
+%files -n libcgmic3
+%license COPYING
+%{_libdir}/libcgmic.so.*
+
 %files -n libgmic-devel
 %{_includedir}/CImg.h
 %{_includedir}/gmic.h
 %{_includedir}/gmic_libc.h
 %{_libdir}/libgmic.so
+%{_libdir}/libcgmic.so
 
 %files bash-completion
 %dir %{_datadir}/bash-completion/completions
