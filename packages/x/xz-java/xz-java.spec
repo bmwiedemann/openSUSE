@@ -1,7 +1,7 @@
 #
 # spec file for package xz-java
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2013 Peter Conrad
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           xz-java
-Version:        1.10
+Version:        1.11
 Release:        0
 Summary:        Pure Java implementation of XZ compression
 License:        0BSD
