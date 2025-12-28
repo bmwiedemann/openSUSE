@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Dec 21 01:53:53 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 8.1.2:
+  * The tooltips for C symbols are now more informative
+  * Cloning success is now indicated by toast instead of a dialog
+  * Global search and local search now have the same case sensitivity
+  * Opening a second window no longer results in duplicate project entries in
+    the project chooser
+  * Updated translations
+  * Profiling: Enable profiling in code using google-perftools
+  * Cloning: Show progress in sidebar
+  * Consistent search settings between document search and global search
+  * SymbolPane: improve tooltips for C tags
+  * Sidebar: Put stack and toast in overlay
+  * Fix open-folder shortcut
+  * ChooseProjectButton: prevent duplicate projects in dropdown
+  * Fix typo in .desktop file
+- Update to version 8.1.1:
+  * The terminal pane is now synchronized with the Terminal app foreground,
+    background and palette settings
+  * The terminal pane is now synchronized with GNOME font and cursor blink
+    settings
+  * Updated translations
+  * Restart shell in terminal pane if it exits
+  * Rework terminal settings
+
+-------------------------------------------------------------------
 Tue Aug 12 15:00:22 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 8.1.0:

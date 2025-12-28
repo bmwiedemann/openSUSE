@@ -19,7 +19,7 @@
 %define         sover 0
 %define         appid io.elementary.code
 Name:           pantheon-code
-Version:        8.1.0
+Version:        8.1.2
 Release:        0
 Summary:        Extensible Text Editor for the Pantheon Desktop
 License:        GPL-3.0-or-later
