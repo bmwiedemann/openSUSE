@@ -1,7 +1,7 @@
 #
 # spec file for package python-nmcli
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-nmcli
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        A python wrapper library for the network-manager cli client
 License:        MIT

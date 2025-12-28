@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>1274586</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6112dc7d7f5a6559e78911c59d615c96</srcmd5>
+    <version>1.6.0</version>
+    <time>1766946026</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.0:
+  * Added active option to `nmcli.connection.show`</comment>
+    <requestid>1324570</requestid>
+  </revision>
 </revisionlist>
