@@ -1,7 +1,7 @@
 #
 # spec file for package switchboard-plug-network
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %define         appid io.elementary.settings.network
 Name:           switchboard-plug-network
-Version:        8.1.0
+Version:        8.2.0
 Release:        0
 Summary:        Switchboard Network Plug
 License:        GPL-3.0-or-later
-URL:            https://github.com/elementary/switchboard-plug-network
+URL:            https://github.com/elementary/settings-network
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  meson
@@ -46,7 +46,7 @@ Configure all available networks.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -n settings-network-%{version}
 
 %build
 %meson
