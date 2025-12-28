@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Dec 27 17:28:19 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.6.0:
+  * Add the check license header script and make it installable
+  * Rename meson_options.txt to meson.options and remove the nls
+    option
+  * Add Birb.str_matches
+  * Remove Birb.Filter and Birb.CustomFilter
+  * Fix some incorrect whitespace
+  * Add Birb.PangoFormatter
+  * Create Birb.ResponseStream
+  * Add a codespell unit test
+  * Fix some issues with the check-license-header script
+  * Add a doap file
+  * Run the response_stream test by itself
+  * Bring in the Purple.Menu API
+
+-------------------------------------------------------------------
 Fri Oct  3 03:11:49 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 0.5.0:

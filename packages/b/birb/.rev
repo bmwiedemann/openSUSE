@@ -26,4 +26,12 @@
   * Fix some issues with the queued output stream error (forwarded request 1308729 from rrahl0)</comment>
     <requestid>1308730</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4d7c92f0edebbe0778439d5b7d0262da</srcmd5>
+    <version>0.6.0</version>
+    <time>1766945965</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1324498</requestid>
+  </revision>
 </revisionlist>

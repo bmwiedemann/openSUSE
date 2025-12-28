@@ -1,7 +1,7 @@
 #
 # spec file for package birb
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         sover 0
 Name:           birb
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        A library of utilities for GLib based apps
 License:        LGPL-2.1-or-later
@@ -33,6 +33,7 @@ BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)  >= 2.76
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(pango)
 
 %description
 Description is in development
@@ -71,8 +72,7 @@ BuildArch:      noarch
 %build
 %meson \
   -Ddoc=true \
-  -Dintrospection=true \
-  -Dnls=true
+  -Dintrospection=true
 %meson_build
 
 %install
@@ -89,6 +89,7 @@ BuildArch:      noarch
 %{_libdir}/lib%{name}.so.*
 
 %files devel
+%license LICENSE
 %{_includedir}/%{name}-1.0
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
@@ -100,5 +101,10 @@ BuildArch:      noarch
 %files doc
 %doc AUTHORS ChangeLog README.md
 %{_datadir}/doc/%{name}
+
+%files
+%license LICENSE
+%doc AUTHORS ChangeLog README.md
+%{_bindir}/%{name}-check-license-headers
 
 %changelog
