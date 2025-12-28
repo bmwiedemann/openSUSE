@@ -1,7 +1,7 @@
 #
 # spec file for package switchboard-plug-notifications
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %define         appid io.elementary.settings.notifications
 Name:           switchboard-plug-notifications
-Version:        8.0.0
+Version:        8.0.1
 Release:        0
 Summary:        Switchboard Notifications Plug
 License:        GPL-3.0-or-later
-URL:            https://github.com/elementary/switchboard-plug-notifications
+URL:            https://github.com/elementary/settings-notifications
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  meson
@@ -42,7 +42,7 @@ the Notifications plugin for Gala.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -n settings-notifications-%{version}
 
 %build
 %meson
