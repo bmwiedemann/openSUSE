@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec 28 13:49:30 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.2:
+  * Add missing py.typed file
+  * ruff: Use more specific name to enable pyupgrade rule
+
+-------------------------------------------------------------------
 Mon Nov 17 21:14:53 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.1:

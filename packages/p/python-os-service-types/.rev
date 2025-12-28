@@ -118,4 +118,14 @@
 - add obsoletes/conflicts</comment>
     <requestid>1318330</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a04c65df8391e47868295cd7d25cb312</srcmd5>
+    <version>1.8.2</version>
+    <time>1766946016</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.8.2:
+  * Add missing py.typed file
+  * ruff: Use more specific name to enable pyupgrade rule</comment>
+    <requestid>1324569</requestid>
+  </revision>
 </revisionlist>

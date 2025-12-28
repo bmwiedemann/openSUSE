@@ -17,7 +17,7 @@
 
 
 Name:           python-os-service-types
-Version:        1.8.1
+Version:        1.8.2
 Release:        0
 Summary:        Python library for consuming OpenStack sevice-types-authority data
 License:        Apache-2.0
