@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sun Dec 21 02:18:43 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 8.2.0:
+  * `start-here`
+  * Tool icons for Inkscape
+  * Add Adwaita as a fallback for icon names
+  * 16px `accessories-character-map`, `document-properties`, `preferences-system`
+  * 24px `list-add-symbolic`
+  * Add a scroll wheel to mouse
+  * Use outline style for `applications-internet-symbolic`
+  * Differentiate keyboard device from keyboard preferences
+  * Round find-location
+  * Remove visual artifact from 16px `edit-paste` icon
+  * `view-filter`
+  * `media-memory`
+  * Install scalable cursor theme
+  * Add more dnd-* symlinks
+  * Update placement of palette file, add support for local flatpack inst…
+  * Devices: add scroll wheel to mouse
+  * Compose mime-types during the build process
+  * Places: New design for folder icons
+  * Places: add start-here
+  * Places: Create symlinks in Meson
+  * Categories: outline style for applications-internet-symbolic
+  * Mimes: Copy base files for templates at build time
+  * Remove media-memory
+  * Prep palette file for Inkscape
+  * Devices: differentiate keyboard from keyboard preferences
+  * Places: fix misnamed symbolic folder-remote
+  * Places: fix naming of network-workgroup-symbolic
+  * Use system-help as central "question mark" icon
+  * Applications: Add cab fill to system-software-install at 16x
+  * Applications: Fix rim lighting stops at 16x
+  * Use Adwaita as a fallback icon theme
+  * Remove visual artifact from 16px edit-paste icon
+  * Add symlinks for Inkscape lock/unlock icons
+  * Add 16px document-properties
+  * Add 16px preferences-desktop-keyboard/accessories-character-map
+  * Add 16px preferences-system
+  * Add dialog-extensions symlink for Inkscape
+  * Add dialog-memory symlink for Inkscape
+  * Add edit-undo-history symlink for Inkscape
+  * Add font_collections for Inkscape
+  * Add dialog-object-properties for Inkscape
+  * Add dialog-xml-editor, dialog-selectors and dialog-scripts for Inkscape
+  * Add hide/unhide icons for Inkscape
+  * Add dialog-objects for Inkscape
+  * Add dialog-fill-and-stroke for Inkscape
+  * Add missing mint-green path boolean operation Inkscape icons
+  * Redesign changes-allow
+
+-------------------------------------------------------------------
 Thu Oct 24 02:38:42 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 8.1.0
