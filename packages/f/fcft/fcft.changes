@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec 27 18:48:51 UTC 2025 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 3.3.3:
+  * Failure to set LCD filter is no longer fatal
+  * COLRv1 fonts are now rejected or ignored as they are not supported.
+
+-------------------------------------------------------------------
 Wed Jul 16 15:06:04 UTC 2025 - Arnav Singh <opensuse@arnavion.dev>
 
 - Updated to 3.3.2:

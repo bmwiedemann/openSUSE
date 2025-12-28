@@ -306,4 +306,14 @@
     fonts that had failed to load.</comment>
     <requestid>1293844</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>e9c8403295bd32bf6176edb6df6901ae</srcmd5>
+    <version>3.3.3</version>
+    <time>1766945966</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.3:
+  * Failure to set LCD filter is no longer fatal
+  * COLRv1 fonts are now rejected or ignored as they are not supported.</comment>
+    <requestid>1324500</requestid>
+  </revision>
 </revisionlist>
