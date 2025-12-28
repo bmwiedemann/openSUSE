@@ -22,7 +22,7 @@
 %endif
 
 Name:           python-openapi-core
-Version:        0.19.5
+Version:        0.22.0
 Release:        0
 Summary:        Client- and server-side support for the OpenAPI Specification v3
 License:        BSD-3-Clause

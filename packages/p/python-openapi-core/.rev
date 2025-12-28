@@ -281,4 +281,28 @@
     <comment></comment>
     <requestid>1319932</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>798c2bc9d86951db804a276d663afa0d</srcmd5>
+    <version>0.22.0</version>
+    <time>1766946032</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.22.0:
+  * Typed style deserializers (casting is part of style
+    deserializing) #1075
+  * Urlencoded deserializer schema matching type coercion #1077
+  * BooleanCaster consistent boolean values fix #1076
+  * Error with multiple schemas in urlencoded request body #1077
+- update to 0.21.0:
+  * Cache compiled path parsers #1063
+  * Path tilda special character support #1071
+  * Path parser refactor #1071
+- update to 0.20.0:
+  * Python 3.13 support #994
+  * Python 3.14 support #1045
+  * Support aioitertools 0.13 #1039
+  * Allow FastAPI 0.120 and Starlette 0.49 #1027
+  * Accomodate type changes in werkzeug 3.1.4, resolve
+    CVE-2025-66221 #1041</comment>
+    <requestid>1324576</requestid>
+  </revision>
 </revisionlist>
