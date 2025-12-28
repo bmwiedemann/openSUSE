@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 25 08:56:35 UTC 2025 - Axel Braun <axel.braun@gmx.de>
+
+- apply fix for poppler 25.10 build error
+
+-------------------------------------------------------------------
 Wed Jul  3 21:16:29 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Force c++-20 on factory to fix build failure with poppler >= 24.05

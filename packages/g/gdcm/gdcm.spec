@@ -1,8 +1,8 @@
 #
 # spec file for package gdcm
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2019-2024 Dr. Axel Braun
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2019-2025 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -139,10 +139,13 @@ rm -rf Utilities/pvrg
 rm -rf Utilities/rle
 rm -rf Utilities/wxWidgets
 
+# build fails with poppler 25.10, currently only TW
+%if 0%{?suse_version} > 1600
+sed -i 's:getLength:size:' Applications/Cxx/{gdcminfo.cxx,gdcmpdf.cxx}
+%endif
+
 %build
-##%if 0%{?sle_version} >= 150400 && 0%{?is_opensuse}
-##export CXX=g++-11
-## %endif
+
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
 export CC=gcc-13
 export CXX=g++-13
