@@ -1,3 +1,18 @@
+-------------------------------------------------------------------
+Sun Dec 21 05:04:45 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 8.0.2:
+  * Manager: get settings from Daemon
+  * PairDialog: make passkey match pincode
+  * Manager: use GLib.Once
+  * PairDialog: send ACCEPT when paired
+  * DeviceRow: use CSS for small label
+  * DeviceRow: get adapter internally
+  * DeviceRow: connect to activate
+  * MainView: use list model
+  * MainView: use two lists
+- update URL
+
 ------------------------------------------------------------------
 Wed Nov 12 03:00:00 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
