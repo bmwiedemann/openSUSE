@@ -60,4 +60,41 @@
     cli/compare/v0.21.0...v0.21.1</comment>
     <requestid>1324169</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e7ebed22219cd5fc4ed27669d48b6448</srcmd5>
+    <version>0.22.4</version>
+    <time>1766946023</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.22.4:
+  * fix(patch): cherry-pick 37be162 to release/v0.22.3-pr-15601
+    to patch version v0.22.3 and create version 0.22.4
+- update to 0.22.3:
+  * fix(patch): cherry-pick 9cdb267 to release/v0.22.2-pr-15494
+    to patch version v0.22.2 and create version 0.22.3
+- update to 0.22.0:
+  * feat(ide): fallback to GEMINI_CLI_IDE_AUTH_TOKEN env var
+  * feat: display quota stats for unused models in /stats
+  * feat: ensure codebase investigator uses preview model when
+    main agent does
+  * chore: add closing reason to stale bug workflow
+  * Send the model and CLI version with the user agent
+  * refactor(sessions): move session summary generation to
+    startup
+  * Limit search depth in path corrector
+  * Fix: Correct typo in code comment
+  * feat(core): Plumbing for late resolution of model configs.
+  * feat: attempt more error parsing
+  * Add missing await.
+  * feat(core): Add support for transcript_path in hooks for git-
+    ai/Gemini extension
+  * refactor: implement DelegateToAgentTool with discriminated
+    union
+  * feat: reset availabilityService on /auth
+  * tool(cli): tweak the frontend tool to be aware of more core
+    files from the cli
+  * feat(cli): polish cached token stats and simplify stats
+    display when quota is present.
+  * feat(settings-validation): add validation for settings schema</comment>
+    <requestid>1324566</requestid>
+  </revision>
 </revisionlist>
