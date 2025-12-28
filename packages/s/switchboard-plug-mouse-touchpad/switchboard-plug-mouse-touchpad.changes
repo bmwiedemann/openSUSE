@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec 21 05:16:09 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 8.0.3:
+  * Middle click paste: add Wayland support
+  * Clicking: don't handle x11 primary paste
+- update URL
+
+-------------------------------------------------------------------
 Wed Jan  1 21:02:02 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 8.0.2:

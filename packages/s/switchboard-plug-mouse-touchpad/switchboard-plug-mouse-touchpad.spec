@@ -1,7 +1,7 @@
 #
 # spec file for package switchboard-plug-mouse-touchpad
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %define         appid io.elementary.settings.mouse-touchpad
 Name:           switchboard-plug-mouse-touchpad
-Version:        8.0.2
+Version:        8.0.3
 Release:        0
 Summary:        Switchboard Mouse and Touchpad Plug
 License:        GPL-3.0-or-later
-URL:            https://github.com/elementary/switchboard-plug-mouse-touchpad
+URL:            https://github.com/elementary/settings-mouse-touchpad
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  meson
@@ -41,7 +41,7 @@ This is a swtichboard plug for elementary OS.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -n settings-mouse-touchpad-%{version}
 
 %build
 %meson
