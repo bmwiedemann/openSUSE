@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Dec 21 02:38:12 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 8.1.0:
+  * Show album art in the sound indicator
+  * Clear the queue
+  * Updated translations
+  * Implement simple search in playlist
+  * Add quit keyboard shortcut
+  * Add clear queue button
+  * Remove songs
+  * TrackRow: DRY menu popup at pointer
+  * Fix gap below cover art
+  * MainWindow: replace ListBox with ListView
+  * Correctly display artists name in NowPlayingView
+  * Move lambdas into handlers
+  * Introduce save and restore methods
+  * Refresh screenshot to reflect current state
+  * Send artwork to MPRIS
+  * MainWindow: Fix missing gettext
+  * Add dark mode screenshot
+  * Add accel to open files via Ctrl+O
+  * PlaybackManager: create actions internally
+  * Restore last played
+  * Introduce a SearchBar
+  * gschema: Fix invalid default value for previous-queue
+
+-------------------------------------------------------------------
 Fri Nov  1 21:05:33 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - remove %suse_update_desktop_file

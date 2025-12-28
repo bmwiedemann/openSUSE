@@ -1,7 +1,7 @@
 #
 # spec file for package pantheon-music
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.music
 Name:           pantheon-music
-Version:        8.0.0
+Version:        8.1.0
 Release:        0
 Summary:        The official Elementary music player
 License:        GPL-3.0-or-later
@@ -30,12 +30,12 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  vala
-BuildRequires:  pkgconfig(granite-7)
+BuildRequires:  pkgconfig(granite-7) >= 7.6.0
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-pbutils-1.0)
 BuildRequires:  pkgconfig(gstreamer-tag-1.0)
 BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.4.0
 Provides:       elementary-music = %{version}
 Obsoletes:      elementary-music < %{version}
 
