@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sat Dec 27 18:14:49 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
+
+- Update to the new upstream release 1.24.0
+  * (feat) Add cluster support to redis/vaultkey store by @egimbernat in #1276
+  * Add Renovate to Docker clients by @DrJosh9000 in #1267
+  * Fix challenge validation panic when follow-up hits ALLOW by @JasonLovesDoggo in #1278
+  * Implement FCrDNS and other DNS features by @btomaev in #1308
+  * Pass the remote IP to the proxied application by @eXpl0it3r in #1298
+  * Show how to use subrequest auth with Caddy by @tbodt in #1312
+  * Update is.json by @sveinki in #1241
+  * add Polish language translation by @bplajzer in #1309
+  * build(deps): bump actions-hub/kubectl from 1.34.1 to 1.34.2 in the github-actions group by @dependabot[bot] in #1303
+  * build(deps): bump github.com/testcontainers/testcontainers-go from 0.39.0 to 0.40.0 in the gomod group across 1 directory by @dependabot[bot] in #1288
+  * build(deps): bump go deps by @JasonLovesDoggo in #1287
+  * build(deps): bump the github-actions group across 1 directory with 4 updates by @dependabot[bot] in #1340
+  * build(deps): bump the github-actions group with 3 updates by @dependabot[bot] in #1262
+  * build(deps): bump the github-actions group with 3 updates by @dependabot[bot] in #1317
+  * build(deps): bump the gomod group across 1 directory with 6 updates by @dependabot[bot] in #1341
+  * build(deps): bump the gomod group with 5 updates by @dependabot[bot] in #1316
+  * build(deps): bump the npm group with 2 updates by @dependabot[bot] in #1339
+  * build(deps-dev): bump esbuild from 0.25.12 to 0.27.0 in the npm group by @dependabot[bot] in #1260
+  * chore: add dependabot cooldown by @Xe in #1302
+  * ci: add go mod tidy check workflow by @Xe in #1300
+  * docs: clarify usage of PUBLIC_URL and REDIRECT_DOMAINS in installatio… by @JasonLovesDoggo in #1286
+  * docs: use nginx http2 directive instead of deprecated http2 listen parameter by @kouhaidev in #1251
+  * feat(internal/headers): extend debug logging of X-Forwarded-For middlewares by @DerRockWolf in #1269
+  * feat(lib): expose WEIGH matches as prometheus metrics by @Xe in #1277
+  * feat(localization): Add Ukrainian language translation by @nykula in #1044
+  * feat(store/valkey): Add Redis(R) Sentinel support by @Xe in #1294
+  * feat: Add thai language. by @karorogunso in #900
+  * feat: first implementation of honeypot logic by @Xe in #1342
+  * feat: writing logs to the filesystem with rotation support by @Xe in #1299
+  * fix(config): deprecate the report_as field for challenges by @Xe in #1311
+  * fix(data): add services folder to embedded filesystem by @Xe in #1259
+  * fix(data/docker-client): allow some more OCI clients through by @Xe in #1258
+  * fix(default-config): must-accept-rule on browsers only by @Xe in #1350
+  * fix(default-config): remove browser detection logic by @Xe in #1360
+  * fix(docs): use node:lts by @Xe in #1274
+  * fix(ogtags): respect target host/SNI/insecure flags in OG passthrough by @JasonLovesDoggo in #1283
+  * fix(run): mark openrc service script as executable by @kouhaidev in #1272
+  * fix(tests): make CVE-2025-24369 regression deterministic by @JasonLovesDoggo in #1285
+  * fix: pin Node.js and Go versions in CI configuration files by @JasonLovesDoggo in #1318
+  * i18n(de): improve consistency and wording by @michi-onl in #1348
+  * perf: field-align struct definitions to cut padding by @JasonLovesDoggo in #1284
+  * test(deps): update dependencies to latest versions by @JasonLovesDoggo in #1289
+  * test: Valkey test improvements for testcontainers by @SlyEcho in #1280
+  * test: ipv4 in v6 address checking by @SlyEcho in #1271 
+
+-------------------------------------------------------------------
 Sat Nov 22 15:02:59 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
 
 - Add block-tencent-cloud-by-default.patch: reanable block tencent-cloud by default

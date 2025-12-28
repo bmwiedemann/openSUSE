@@ -17,13 +17,13 @@
 
 
 Name:           anubis
-Version:        1.23.1
+Version:        1.24.0
 Release:        0
 Summary:        Web AI Firewall Utility
 License:        MIT
-URL:            https://github.com/TecharoHQ/%{name}
-Source0:        https://github.com/TecharoHQ/%{name}/releases/download/v%{version}/%{name}-src-vendor-npm-%{version}.tar.gz
-Source1:        https://github.com/TecharoHQ/%{name}/releases/download/v%{version}/%{name}-src-vendor-npm-%{version}.tar.gz.asc
+URL:            https://github.com/TecharoHQ/anubis
+Source0:        %{url}/releases/download/v%{version}/%{name}-src-vendor-npm-%{version}.tar.gz
+Source1:        %{url}/releases/download/v%{version}/%{name}-src-vendor-npm-%{version}.tar.gz.asc
 Source3:        %{name}@.service
 Patch0:         block-tencent-cloud-by-default.patch
 BuildRequires:  golang-packaging

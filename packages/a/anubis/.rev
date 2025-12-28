@@ -41,4 +41,12 @@ Use source with the vendor already installed and precompiled JS</comment>
     <comment>Add patch to reanable block tencent-cloud by default</comment>
     <requestid>1320065</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>81ff31b22f893517f0cb04a1122e32d1</srcmd5>
+    <version>1.24.0</version>
+    <time>1766945970</time>
+    <user>dimstar_suse</user>
+    <comment>Update to the new upstream release 1.24.0</comment>
+    <requestid>1324499</requestid>
+  </revision>
 </revisionlist>
