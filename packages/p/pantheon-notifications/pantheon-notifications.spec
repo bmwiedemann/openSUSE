@@ -1,7 +1,7 @@
 #
 # spec file for package pantheon-notifications
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.notifications
 Name:           pantheon-notifications
-Version:        8.1.0
+Version:        8.1.2
 Release:        0
 Summary:        Notification Server
 License:        GPL-3.0-or-later
@@ -30,11 +30,11 @@ BuildRequires:  pkgconfig
 BuildRequires:  vala
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(granite)
+BuildRequires:  pkgconfig(granite-7) >= 7.7.0
 BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
-BuildRequires:  pkgconfig(libhandy-1)
 Provides:       elementary-notifications = %{version}
 Obsoletes:      elementary-notifications < %{version}
 

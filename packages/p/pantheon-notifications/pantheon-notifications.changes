@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec 21 02:42:48 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 8.1.1:
+  * X11: Avoid using present
+  * Make screen reader announce notifications
+  * Handle "urgency" and "desktop-entry" hints in server
+  * Notification: create find_icon function
+
+-------------------------------------------------------------------
 Fri Jun  6 10:22:20 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 8.1.0:
