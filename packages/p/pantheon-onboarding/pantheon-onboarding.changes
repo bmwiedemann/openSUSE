@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec 21 02:47:52 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+= Update to version 8.0.4:
+  * StyleView: wrap sunset-to-sunrise label
+  * Move CSS to Application.css
+  * Fix deprecated Granite style classes
+  * Use Granite.Box
+  * WelcomeView: use Granite.ListItem and Granite.Box
+  * Update appearance previews
+
+-------------------------------------------------------------------
 Fri Dec 13 05:38:12 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 8.0.3:
