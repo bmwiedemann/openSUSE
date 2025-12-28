@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Aug  2 16:27:23 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.20.0
+  ## New features
+  * Add event coordinates to GeoJSON message by @lopezvoliver in
+    #1228
+  * Default zoom level to 4 instead of 12 so that default Map()
+    don't onl… by @SylvainCorlay in #1252
+  * Preserve {r} in basemap urls by @letmaik in #1241
+  * Fix geoman controls option update + snapping option by
+    @mangecoeur in #1247
+  * Add on_click to GeomanDrawControl by @arjxn-py in #1261
+  ## Bug fixes
+  * Add scrollWheelZoom.enable() and disable() by @lopezvoliver in
+    #1225
+  * Make Leaflet-Geoman ignore created layers by default by
+    @riccardoporreca in #1220
+  * Make cluster "bubbles" ignorable by Geoman by @lopezvoliver in
+    #1249
+  * Update deprecated subdomains for tile.openstreetmap.org by
+    @arjxn-py in #1257
+  * Add workaround for MeasureControl map panning bug by @gjmooney
+    in #1171
+  * geojson layers pmIgnore by @lopezvoliver in #1251
+
+-------------------------------------------------------------------
 Fri Aug 30 09:31:38 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.19.2
