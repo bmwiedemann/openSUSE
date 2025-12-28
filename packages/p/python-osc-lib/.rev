@@ -347,4 +347,31 @@
     <comment>switch to singlespec</comment>
     <requestid>1316775</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>6487bcd1083cef34b58441a5e1f9027a</srcmd5>
+    <version>4.3.0</version>
+    <time>1766946028</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.3.0:
+  * typing: Use Mapping, not dict
+  * Drop redundant target-version option
+  * Run mypy from tox
+  * ruff: Enable E5 check
+  * Add is\_uuid\_like helper
+  * typing: Allow use of column subclasses
+  * typing: More fixups for typed cliff, stevedore
+  * typing: Fixups for typed cliff, stevedore
+  * Remove unnecessary import
+  * ruff: Use more specific name to enable pyupgrade rule
+  * Add more utilities from OSC
+  * Deprecate osc\_lib.tests.utils module
+  * Use osc\_lib.test module
+  * Add osc\_lib.test module
+  * pre-commit: Bump versions
+  * reno: Update master for unmaintained/2024.1
+  * Update master for stable/2025.2
+  * pre-commit: Bump versions
+  * typing: Misc fixes</comment>
+    <requestid>1324575</requestid>
+  </revision>
 </revisionlist>
