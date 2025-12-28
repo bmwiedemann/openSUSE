@@ -1,7 +1,7 @@
 #
 # spec file for package switchboard-plug-applications
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %define         appid io.elementary.settings.applications
 Name:           switchboard-plug-applications
-Version:        8.1.0
+Version:        8.2.0
 Release:        0
 Summary:        Application configuration management
 License:        GPL-3.0-or-later
-URL:            https://github.com/elementary/switchboard-plug-applications
+URL:            https://github.com/elementary/settings-applications
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -44,7 +44,7 @@ allows the user to manage application settings.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -n settings-applications-%{version}
 
 %build
 %meson
