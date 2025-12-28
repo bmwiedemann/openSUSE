@@ -1,7 +1,7 @@
 #
 # spec file for package pantheon-calculator
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.calculator
 Name:           pantheon-calculator
-Version:        8.0.0
+Version:        8.0.1
 Release:        0
 Summary:        A simple calculator for the Pantheon Desktop
 License:        GPL-3.0-only
