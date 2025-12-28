@@ -1,7 +1,7 @@
 #
 # spec file for package pantheon-iconbrowser
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.iconbrowser
 Name:           pantheon-iconbrowser
-Version:        8.0.0
+Version:        8.1.0
 Release:        0
 Summary:        Browse and search system icons
 License:        GPL-3.0-or-later
