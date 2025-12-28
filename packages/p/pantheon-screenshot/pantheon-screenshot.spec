@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.screenshot
 Name:           pantheon-screenshot
-Version:        8.0.2
+Version:        8.0.4
 Release:        0
 Summary:        A simple screen capture tool
 License:        GPL-3.0-or-later

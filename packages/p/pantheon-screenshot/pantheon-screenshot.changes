@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec 21 02:54:26 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 8.0.4:
+  * Updated translations
+- Update to version 8.0.3:
+  * patch: fix screenshot crashing when image height exceeds width enough
+
+-------------------------------------------------------------------
 Sat Aug 16 19:37:00 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 8.0.2:
