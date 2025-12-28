@@ -15,4 +15,12 @@
     <comment>- Remove unused BuildRequires: update-desktop-files. (forwarded request 1319442 from sbrabec)</comment>
     <requestid>1319574</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ad81ed4a8b5df85bd65384a3f526dc61</srcmd5>
+    <version>8.0.2</version>
+    <time>1766946010</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1324548</requestid>
+  </revision>
 </revisionlist>

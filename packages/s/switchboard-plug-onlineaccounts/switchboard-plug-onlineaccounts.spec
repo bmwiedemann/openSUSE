@@ -18,11 +18,11 @@
 
 %define         appid io.elementary.settings.onlineaccounts
 Name:           switchboard-plug-onlineaccounts
-Version:        8.0.1
+Version:        8.0.2
 Release:        0
 Summary:        Online Accounts plug for Switchboard
 License:        GPL-3.0-or-later
-URL:            https://github.com/elementary/switchboard-plug-onlineaccounts
+URL:            https://github.com/elementary/settings-onlineaccounts
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -46,7 +46,7 @@ This plug allow you to enable online accounts sync.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -n settings-onlineaccounts-%{version}
 
 %build
 %meson
