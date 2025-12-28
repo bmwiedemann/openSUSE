@@ -7,4 +7,12 @@
     <comment>Build with the factory level-zero and googletest. Thanks ( @anag_factory) </comment>
     <requestid>1322889</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b0c97c41a98958c35ee99d6d5c1c948e</srcmd5>
+    <version>1.28.0</version>
+    <time>1766945963</time>
+    <user>dimstar_suse</user>
+    <comment>- The Panther Lake support is available from version v1.28.0</comment>
+    <requestid>1324496</requestid>
+  </revision>
 </revisionlist>

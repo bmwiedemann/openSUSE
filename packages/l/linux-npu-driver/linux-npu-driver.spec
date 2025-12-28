@@ -18,13 +18,13 @@
 
 %define _firmwaredir /lib/firmware
 Name:           linux-npu-driver
-Version:        1.26.0
+Version:        1.28.0
 Release:        0
 Summary:        Driver for Intel NPU device.
 License:        MIT
 URL:            https://github.com/intel/linux-npu-driver
 Source0:        %{name}-%{version}.tar.xz
-Patch0:         gtest.patch 
+Patch0:         gtest.patch
 BuildRequires:  cmake
 BuildRequires:  gtest level-zero-devel gmock
 BuildRequires:  gmock
