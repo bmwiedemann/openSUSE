@@ -1,7 +1,7 @@
 #
 # spec file for package switchboard-plug-about
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %define         appid io.elementary.settings.system
 Name:           switchboard-plug-about
-Version:        8.2.1
+Version:        8.2.2
 Release:        0
 Summary:        Switchboard plug to show system information
 License:        GPL-3.0-or-later
-URL:            https://github.com/elementary/switchboard-plug-about
+URL:            https://github.com/elementary/settings-system
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.40.0
@@ -54,7 +54,7 @@ This plug displays information about the system.
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n settings-system-%{version}
 
 %build
 %meson
@@ -70,7 +70,7 @@ This plug displays information about the system.
 %doc README.md
 %dir %{_libdir}/{switchboard-3,switchboard-3/hardware}
 %{_libdir}/switchboard-3/hardware/libsystem.so
-%{_datadir}/metainfo/%{appid}.metainfo.xml.in
+%{_datadir}/metainfo/%{appid}.metainfo.xml
 
 %files lang -f %{appid}.lang
 

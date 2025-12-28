@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec 21 04:54:37 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 8.2.2:
+  * Screen reader improvements
+  * Updated translations
+  * Add device icons to gresource
+  * FirmwareView: use Adw.NavigationView
+  * Meson: output correct metainfo file extension
+- update URL to new upstream
+
+-------------------------------------------------------------------
 Thu May  8 16:46:38 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 8.2.1:
