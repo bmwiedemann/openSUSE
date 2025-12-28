@@ -19,4 +19,12 @@
   * Updated translations (forwarded request 1226346 from rrahl0)</comment>
     <requestid>1226347</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4641b5b5d343bf6f8761efc3c2b4f8a3</srcmd5>
+    <version>8.0.2</version>
+    <time>1766945982</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1324515</requestid>
+  </revision>
 </revisionlist>
