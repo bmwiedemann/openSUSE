@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec 21 03:09:50 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 8.4.0:
+  * SystemUpdate: Use systemd timer for initial and daily update check
+  * Sync wingpanel's "Show Percentage" option
+  * Support Latte
+
+-------------------------------------------------------------------
 Sat Aug 16 19:39:25 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 8.3.1:

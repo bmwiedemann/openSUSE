@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.settings-daemon
 Name:           pantheon-settings-daemon
-Version:        8.3.1
+Version:        8.4.0
 Release:        0
 Summary:        A daemon for the Pantheon Desktop
 License:        GPL-3.0-or-later
@@ -78,21 +78,23 @@ install -Dm0644 %{SOURCE1} %{buildroot}%{_unitdir}/%{appid}.check-for-firmware-u
 %files
 %license LICENSE
 %doc README.md
+%dir %{_datadir}/{accountsservice,accountsservice/interfaces}
+%dir %{_datadir}/{xdg-desktop-portal,xdg-desktop-portal/portals}
 %{_bindir}/%{appid}
-%{_datadir}/applications/%{appid}.desktop
-%{_sysconfdir}/xdg/autostart/%{appid}.desktop
-%{_unitdir}/%{appid}.check-for-firmware-updates.service
-%{_unitdir}/%{appid}.check-for-firmware-updates.timer
-%{_userunitdir}/%{appid}.xdg-desktop-portal.service
-%{_libexecdir}/%{appid}.xdg-desktop-portal
 %{_datadir}/accountsservice/interfaces/io.elementary.SettingsDaemon.AccountsService.xml
+%{_datadir}/applications/%{appid}.desktop
 %{_datadir}/dbus-1/interfaces/io.elementary.SettingsDaemon.AccountsService.xml
 %{_datadir}/dbus-1/services/org.freedesktop.impl.portal.desktop.elementary.settings-daemon.service
 %{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
 %{_datadir}/metainfo/%{appid}.metainfo.xml
 %{_datadir}/xdg-desktop-portal/portals/%{appid}.portal
-%dir %{_datadir}/{accountsservice,accountsservice/interfaces}
-%dir %{_datadir}/{xdg-desktop-portal,xdg-desktop-portal/portals}
+%{_libexecdir}/%{appid}.xdg-desktop-portal
+%{_sysconfdir}/xdg/autostart/%{appid}.desktop
+%{_unitdir}/%{appid}.check-for-firmware-updates.service
+%{_unitdir}/%{appid}.check-for-firmware-updates.timer
+%{_userunitdir}/%{appid}.system-update.service
+%{_userunitdir}/%{appid}.system-update.timer
+%{_userunitdir}/%{appid}.xdg-desktop-portal.service
 
 %files lang -f %{appid}.lang
 
