@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Mon Dec 29 11:11:11 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- specify minimum libadwaita dependency to not needlessly attempt
+  to build on Leap 15.6
+
+-------------------------------------------------------------------
+Mon Dec 29 09:23:42 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- initial version

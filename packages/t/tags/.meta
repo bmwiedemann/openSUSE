@@ -1,0 +1,9 @@
+<package name="tags" project="openSUSE:Factory">
+  <title>A simple text tagger</title>
+  <description>A GNOME text tagger inspired by the TextAnalysisTool.NET tool.
+
+The main goal is to aid log analysis by tagging lines with user defined colors.
+Tags have a match pattern, description name, visibility toggle, color scheme
+and hit counter.</description>
+  <url>https://github.com/phastmike/tags</url>
+</package>
