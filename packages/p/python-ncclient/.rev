@@ -306,4 +306,30 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1294927</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0612296015790dd28379059f191a95b7</srcmd5>
+    <version>0.7.0</version>
+    <time>1767017799</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.7.0:
+  * Introduced `ssh-python` as option instead of `Paramiko`.
+  * Bumped to `0.7.0` as the `manager.connnect` call is NOT 100%
+    backwards compatible today with all possible parameters that
+    may be passed to `Paramiko`.
+  * update Paramiko dependency
+  * set default workflow permissions to read-only and pin action
+    hashes f…
+  * Fix error in .github/workflows/check.yml
+  * Load certificate data when a corresponding public key is
+    found in an ssh agent
+  * Lazy-load some submodules inside ncclient.transport only when
+    needed
+  * Update tox.ini for test-requirements.txt → requirements-
+    test.txt
+  * Add alternative SSH transport using libssh
+  * new: remove paramiko.DSSKey
+
+- Switch to %patch macro.</comment>
+    <requestid>1324587</requestid>
+  </revision>
 </revisionlist>
