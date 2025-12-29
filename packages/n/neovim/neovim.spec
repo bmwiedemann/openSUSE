@@ -1,7 +1,6 @@
 #
 # spec file for package neovim
 #
-# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -36,6 +35,7 @@ Source0:        https://github.com/neovim/neovim/archive/v%{version}/%{name}-%{v
 Source1:        sysinit.vim
 Source3:        suse-spec-template
 Source4:        spec.vim
+Source5:        tree-sitter-system.lua
 Source10:       https://github.com/neovim/deps/raw/06ef2b58b0876f8de1a3f5a710473dcd7afff251/opt/lua-dev-deps.tar.gz
 BuildRequires:  cmake >= 3.16
 BuildRequires:  desktop-file-utils
@@ -166,6 +166,9 @@ install -Dm0644 runtime/nvim.png %{buildroot}%{_datadir}/pixmaps/nvim.png
 
 # vim/site directories for plugins shared with vim
 mkdir -p %{buildroot}%{_datadir}/vim/site/{after,after/syntax,autoload,colors,doc,ftdetect,plugin,syntax}
+
+# universal loader for the system-wide tree-sitter parsers
+install -Dm0644 %{SOURCE5} %{buildroot}%{_datadir}/nvim/runtime/after/plugin/tree-sitter-system.lua
 
 %fdupes %{buildroot}
 %find_lang nvim
