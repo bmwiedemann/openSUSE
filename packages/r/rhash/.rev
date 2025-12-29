@@ -121,4 +121,20 @@
   * Bugfix: Fix dynamic library symlink on *BSD</comment>
     <requestid>1229831</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>53ca25bae7bbf61457f4f952dde6abeb</srcmd5>
+    <version>1.4.6</version>
+    <time>1767017758</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.4.6:
+  * Bugfix: Compilation error with GCC 15
+  * Speed up file reading while hashing a file
+  * Bugfix: Fix processing of ./ directory
+  * Support --blake3 option for the BLAKE3 hash function
+  * Support GNU/Hurd platform for --target argument
+  * Support Intel SHA1 extension
+  * Bugfix: Fix librhash function rhash_print_magnet()
+  * Bugfix: Fix building by gcc 7</comment>
+    <requestid>1324567</requestid>
+  </revision>
 </revisionlist>

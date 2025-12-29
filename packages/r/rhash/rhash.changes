@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Dec 28 13:41:51 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.6:
+  * Bugfix: Compilation error with GCC 15
+  * Speed up file reading while hashing a file
+  * Bugfix: Fix processing of ./ directory
+  * Support --blake3 option for the BLAKE3 hash function
+  * Support GNU/Hurd platform for --target argument
+  * Support Intel SHA1 extension
+  * Bugfix: Fix librhash function rhash_print_magnet()
+  * Bugfix: Fix building by gcc 7
+
+-------------------------------------------------------------------
 Tue Dec 10 14:22:07 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.4.5:
@@ -47,7 +60,7 @@ Sat Jun 18 13:23:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Improve ripemd160 performance
   * Add --bt-transmission option to create Transmission compatible torrent files
   * Bugfix: star character at the start of filepath must be ignored
-  
+
 -------------------------------------------------------------------
 Tue Jul 27 07:00:13 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
