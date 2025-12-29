@@ -1,7 +1,7 @@
 #
 # spec file for package gdu
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gdu
-Version:        5.31.0
+Version:        5.32.0
 Release:        0
 Summary:        Fast disk usage analyzer with console interface
 License:        MIT

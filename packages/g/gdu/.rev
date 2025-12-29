@@ -57,4 +57,17 @@
   * fix: automatically run non-interactive when related flag set by @dundee in #418 (forwarded request 1286378 from dheidler)</comment>
     <requestid>1286401</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c476502cbd8c5dcc12600282fea6a143</srcmd5>
+    <version>5.32.0</version>
+    <time>1767017844</time>
+    <user>anag_factory</user>
+    <comment>- Version 5.32.0
+  * feat: Add --no-spawn-shell flag to disable shell access (gh#dundee/gdu#440)
+  * feat: Add support showing size of absent git-annex'ed files (gh#dundee/gdu#404)
+  * fix: ctrl_z corruption (gh#dundee/gdu#253) by (gh#dundee/gdu#406)
+  * fix: item count for --show-item-count (gh#dundee/gdu#416)
+  * fix: automatically run non-interactive when related flag set (gh#dundee/gdu #418) (forwarded request 1324602 from RN)</comment>
+    <requestid>1324629</requestid>
+  </revision>
 </revisionlist>

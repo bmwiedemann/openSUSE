@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Dec 28 21:11:26 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- Version 5.32.0
+  * feat: Add --no-spawn-shell flag to disable shell access 
+    (gh#dundee/gdu#440)
+  * feat: Add support showing size of absent git-annex'ed files 
+    (gh#dundee/gdu#404)
+  * fix: ctrl_z corruption (gh#dundee/gdu#253) by (gh#dundee/gdu#406)
+  * fix: item count for --show-item-count (gh#dundee/gdu#416)
+  * fix: automatically run non-interactive when related flag set 
+    (gh#dundee/gdu #418)
+
+-------------------------------------------------------------------
 Tue Jun 17 12:58:12 UTC 2025 - Dominik Heidler <dheidler@suse.de>
 
 - Version 5.31.0
