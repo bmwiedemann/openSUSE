@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec 28 20:41:01 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.15.1:
+  * N808 now allows type variable names to start with an
+    underscore.
+  * Add support for Python 3.13.
+  * Drop support for Python 3.8.
+  * N808 checks type variable names use the CapWords convention
+    and have an appropriate suffix.
+
+-------------------------------------------------------------------
 Tue Jun  4 20:46:22 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.14.1:

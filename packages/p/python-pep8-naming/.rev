@@ -132,4 +132,18 @@
   - Do not require setuptools in setup.py. It works around an</comment>
     <requestid>1178618</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c24814e1a7dc9badd906276ced898761</srcmd5>
+    <version>0.15.1</version>
+    <time>1767017809</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.15.1:
+  * N808 now allows type variable names to start with an
+    underscore.
+  * Add support for Python 3.13.
+  * Drop support for Python 3.8.
+  * N808 checks type variable names use the CapWords convention
+    and have an appropriate suffix.</comment>
+    <requestid>1324597</requestid>
+  </revision>
 </revisionlist>
