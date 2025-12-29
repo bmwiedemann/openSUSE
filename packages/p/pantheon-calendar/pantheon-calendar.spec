@@ -1,7 +1,7 @@
 #
 # spec file for package pantheon-calendar
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define         sover 0
 %define         appid io.elementary.calendar
 Name:           pantheon-calendar
-Version:        8.0.0
+Version:        8.0.1
 Release:        0
 Summary:        Maya Calendar for the Pantheon Desktop
 License:        GPL-3.0-or-later
@@ -105,8 +105,10 @@ applications
 %{_datadir}/metainfo/%{appid}.metainfo.xml
 %{_datadir}/vala/vapi/elementary-calendar.{deps,vapi}
 %{_datadir}/icons/hicolor/*/apps/%{appid}.svg
+%{_datadir}/icons/hicolor/*/actions/%{appid}.event-new.svg
+%{_datadir}/icons/hicolor/*/actions/%{appid}.event-new-symbolic.svg
 %{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
-%dir %{_datadir}/icons/hicolor/{128x128@2,128x128@2/apps,16x16@2,16x16@2/apps,24x24@2,24x24@2/apps,32x32@2,32x32@2/apps,48x48@2,48x48@2/apps,64x64@2,64x64@2/apps}
+%dir %{_datadir}/icons/hicolor/{128x128@2,128x128@2/apps,16x16@2,16x16@2/actions,16x16@2/apps,24x24@2,24x24@2/actions,24x24@2/apps,32x32@2,32x32@2/apps,48x48@2,48x48@2/apps,64x64@2,64x64@2/apps}
 
 %files -n libelementary-calendar%{sover}
 %{_libdir}/libelementary-calendar.so.*
