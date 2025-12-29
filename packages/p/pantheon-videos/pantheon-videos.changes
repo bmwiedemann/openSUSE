@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec 21 03:23:04 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 8.0.2:
+  * Use Gtk.FileDialog
+  * BottomBar: mark primary menu
+
+-------------------------------------------------------------------
 Mon Nov  4 18:53:32 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - rename to pantheon-videos
