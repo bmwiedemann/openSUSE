@@ -106,4 +106,14 @@
     <comment></comment>
     <requestid>1125276</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>41ca432c9e7e0a3c03177664a406e721</srcmd5>
+    <version>2.6.2</version>
+    <time>1767017819</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.6.2:
+  * Fix memory leak in `which()` on `realloc()` failure
+  * Fix `pidfile()` to handle missing trailing slash in prefix</comment>
+    <requestid>1324606</requestid>
+  </revision>
 </revisionlist>

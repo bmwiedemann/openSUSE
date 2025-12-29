@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec 28 22:59:51 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.2:
+  * Fix memory leak in `which()` on `realloc()` failure
+  * Fix `pidfile()` to handle missing trailing slash in prefix
+
+-------------------------------------------------------------------
 Sun Nov 12 17:14:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.6.1:

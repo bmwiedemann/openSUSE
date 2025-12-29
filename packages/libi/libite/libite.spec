@@ -1,7 +1,7 @@
 #
 # spec file for package libite
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2018-2023, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define sover 5
 Name:           libite
-Version:        2.6.1
+Version:        2.6.2
 Release:        0
 Summary:        BSD function library
 License:        MIT AND X11
