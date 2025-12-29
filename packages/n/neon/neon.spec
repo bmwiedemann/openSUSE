@@ -19,7 +19,7 @@
 
 %define sover 27
 Name:           neon
-Version:        0.35.0
+Version:        0.36.0
 Release:        0
 Summary:        An HTTP and WebDAV Client Library
 # library is LGPL see src/COPYING.LIB
