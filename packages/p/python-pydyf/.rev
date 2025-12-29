@@ -115,4 +115,17 @@
   * Allow extra operands for special colors</comment>
     <requestid>1194572</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ae1c4f03c77081fb99932580c5e8f71c</srcmd5>
+    <version>0.12.1</version>
+    <time>1767017808</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.12.1:
+  * Don’t add /Info key in compressed trailer if info dict is
+    empty
+  * Python 3.13 and 3.14 are supported and tested
+  * Python 3.10+ is now needed, Python 3.8 and 3.9 are not
+    supported anymore</comment>
+    <requestid>1324595</requestid>
+  </revision>
 </revisionlist>

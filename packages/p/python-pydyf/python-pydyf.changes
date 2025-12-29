@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Dec 28 20:29:51 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.12.1:
+  * Don’t add /Info key in compressed trailer if info dict is
+    empty
+  * Python 3.13 and 3.14 are supported and tested
+  * Python 3.10+ is now needed, Python 3.8 and 3.9 are not
+    supported anymore
+
+-------------------------------------------------------------------
 Sun Aug 18 16:55:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.11.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydyf
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2022-2023 Dr. Axel Braun <DocB@openSUSE.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pydyf
-Version:        0.11.0
+Version:        0.12.1
 Release:        0
 Summary:        A low-level PDF generator
 License:        BSD-3-Clause
