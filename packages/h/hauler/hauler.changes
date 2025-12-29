@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 29 09:44:54 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 1.3.2:
+  * bump to latest cosign fork release (#481)
+  * Bump golang.org/x/crypto in the go_modules group across 1 directory (#476)
+
+-------------------------------------------------------------------
 Mon Nov 10 15:08:12 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 1.3.1 (bsc#1251516, CVE-2025-47911,
