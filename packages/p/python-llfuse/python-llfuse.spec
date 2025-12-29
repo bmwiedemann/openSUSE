@@ -1,7 +1,7 @@
 #
 # spec file for package python-llfuse
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-llfuse
-Version:        1.5.1
+Version:        1.5.2
 Release:        0
 Summary:        Python Bindings for the low-level FUSE API
 License:        LGPL-2.1-or-later

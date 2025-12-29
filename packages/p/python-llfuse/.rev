@@ -56,4 +56,23 @@
 - No more greedy globs in %files.</comment>
     <requestid>1288121</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>79b483b97fd2d821f2b9f8e1fbd1641b</srcmd5>
+    <version>1.5.2</version>
+    <time>1767017792</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.5.2:
+  * Support and test on Python 3.14 also.
+  * CI: test on Ubuntu 24.04
+  * Cythonized using Cython 3.2.3.
+  * setup.py: use SPDX license metadata (the old style was
+    deprecated), also require setuptools &gt;= 78.1.1, #104 remove
+    tests_require (not supported anymore)
+  * use SPDX license metadata (the old style was deprecated),
+    also require setuptools &gt;= 78.1.1, #104
+  * remove tests_require (not supported anymore)
+  * get rid of sphinx build warnings, #56
+  * README: link to mfusepy project</comment>
+    <requestid>1324583</requestid>
+  </revision>
 </revisionlist>
