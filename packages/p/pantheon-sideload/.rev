@@ -17,4 +17,12 @@
   * MainWindow: fix invalid bundle cast (forwarded request 1226360 from rrahl0)</comment>
     <requestid>1226361</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>59f565428bdb44b79af0ee6cb640d7af</srcmd5>
+    <version>6.3.1</version>
+    <time>1767017778</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1324527</requestid>
+  </revision>
 </revisionlist>

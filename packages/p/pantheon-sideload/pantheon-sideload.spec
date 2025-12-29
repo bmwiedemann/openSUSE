@@ -1,7 +1,7 @@
 #
 # spec file for package pantheon-sideload
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.sideload
 Name:           pantheon-sideload
-Version:        6.3.0
+Version:        6.3.1
 Release:        0
 Summary:        Sideload flatpaks on the Pantheon Desktop
 License:        GPL-3.0-or-later
