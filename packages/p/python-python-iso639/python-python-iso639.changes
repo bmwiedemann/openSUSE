@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Dec 28 21:03:19 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2025.11.16:
+  * Added support for Python 3.14.
+  * Updated the ISO 639 data from SIL to the latest 2025-10-15
+    release.
+  * Case-insensitive matching for `Language.match` is now opt-in.
+  * The keyword argument has been renamed `strict_case` (from
+    `exact` before), defaulting to `True`.
+  * In `Language.match`, removed the keyword argument `exact`
+  * (replaced by `strict_case`, defaulting to `True`).
+  * Dropped support for Python 3.9.
+
+-------------------------------------------------------------------
 Mon Apr 28 14:06:43 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2025.2.18:

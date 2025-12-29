@@ -36,4 +36,21 @@
 - Enable sle15_python_module_pythons.</comment>
     <requestid>1273167</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a4710d4f3b5acd004a447486cbf382f6</srcmd5>
+    <version>2025.11.16</version>
+    <time>1767017816</time>
+    <user>anag_factory</user>
+    <comment>- update to 2025.11.16:
+  * Added support for Python 3.14.
+  * Updated the ISO 639 data from SIL to the latest 2025-10-15
+    release.
+  * Case-insensitive matching for `Language.match` is now opt-in.
+  * The keyword argument has been renamed `strict_case` (from
+    `exact` before), defaulting to `True`.
+  * In `Language.match`, removed the keyword argument `exact`
+  * (replaced by `strict_case`, defaulting to `True`).
+  * Dropped support for Python 3.9.</comment>
+    <requestid>1324599</requestid>
+  </revision>
 </revisionlist>
