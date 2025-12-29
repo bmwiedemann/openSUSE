@@ -51,6 +51,8 @@ Patch5:         no-cython_test_exception_raiser.patch
 Patch6:         remove-dependency-version-upper-bounds.patch
 # PATCH-FIX-UPSTREAM https://github.com/twisted/twisted/issues/12430 Add support for Python 3.14
 Patch7:         py314.patch
+# PATCH-FIX-UPSTREAM https://github.com/twisted/twisted/pull/12551 use createElement in the test rather than instantiating Element
+Patch8:         createElement.patch
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module incremental >= 24.7.0}
