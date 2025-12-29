@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jaraco.functools
-Version:        4.3.0
+Version:        4.4.0
 Release:        0
 Summary:        Tools to work with functools
 License:        MIT
