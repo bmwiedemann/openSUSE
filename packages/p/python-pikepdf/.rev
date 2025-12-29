@@ -346,4 +346,34 @@
     <comment></comment>
     <requestid>1318160</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>edbc3cc17b80bad8c42ba39bbbb758bf</srcmd5>
+    <version>10.1.0</version>
+    <time>1767017797</time>
+    <user>anag_factory</user>
+    <comment>- update to 10.1.0:
+  * Added {class}`pikepdf.NamePath` for ergonomic access to deeply
+    nested PDF structures. NamePath provides a single-operation
+    traversal with helpful error messages showing exactly where
+    traversal failed.
+  * Added explicit scalar types: {class}`pikepdf.Integer`,
+    {class}`pikepdf.Boolean`, and {class}`pikepdf.Real`. When
+    explicit conversion mode is enabled, these types
+    are returned instead of Python native types (`int`, `bool`,
+    `Decimal`), enabling better type safety and static type checking.
+  * Added {func}`pikepdf.set_object_conversion_mode` and
+    {func}`pikepdf.get_object_conversion_mode` to control
+    conversion behavior globally.
+  * Added {func}`pikepdf.explicit_conversion` context manager for
+    temporarily enabling explicit conversion mode.
+  * Added safe accessor methods to
+    {class}`pikepdf.Object`: {meth}`~pikepdf.Object.as_int`,
+    {meth}`~pikepdf.Object.as_bool`, {meth}`~pikepdf.Object.as_float`, and
+    {meth}`~pikepdf.Object.as_decimal` with optional default parameters
+    for type-safe access to scalar values.
+  * `pikepdf.Integer` and `pikepdf.Real` now support full arithmetic
+    operations with both `int` and `float` operands, including true
+    division (`/`).</comment>
+    <requestid>1324586</requestid>
+  </revision>
 </revisionlist>
