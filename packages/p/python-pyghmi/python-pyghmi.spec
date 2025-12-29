@@ -17,7 +17,7 @@
 
 
 Name:           python-pyghmi
-Version:        1.6.6
+Version:        1.6.11
 Release:        0
 Summary:        General Hardware Management Initiative (IPMI and others)
 License:        Apache-2.0
@@ -31,11 +31,9 @@ BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.8.1}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module wheel}
 Requires:       python-cryptography >= 2.1
 Requires:       python-python-dateutil >= 2.8.1
-Requires:       python-six
 BuildArch:      noarch
 %if "python%{python_nodots_ver}" == "%{primary_python}"
 Obsoletes:      python3-pyghmi < %{version}

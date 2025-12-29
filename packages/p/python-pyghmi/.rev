@@ -501,4 +501,24 @@
   * Tolerate timeout on reseat</comment>
     <requestid>1316854</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>4fa4c1f0a7fcc75f77dc12034b74c8e7</srcmd5>
+    <version>1.6.11</version>
+    <time>1767017795</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.6.11:
+  * Remove six dependency
+  * Bail if number of max RDOC already met
+  * Change multipart boundary
+  * Avoid media upload to duplicate target
+  * Add AMI to oem modules
+  * Handle systems that model portions as distinct 'Systems'
+    members
+  * Add recognition of AMI convention of 'Self'
+  * Filter out UEFI boot certificates for BMC certificate
+    candidates
+  * Manage BMC certificates
+  * Handle missing dependencies in a redfish dependency map</comment>
+    <requestid>1324589</requestid>
+  </revision>
 </revisionlist>
