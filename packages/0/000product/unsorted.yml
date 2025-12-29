@@ -23916,7 +23916,6 @@ unsorted:
   - python3-dbus-presage 
   - python3-deltarpm 
   - python3-designateclient-doc 
-  - python3-django-mailman3 
   - python3-dnf 
   - python3-dnf-plugin-kickstart 
   - python3-dnf-plugin-leaves 
@@ -24015,7 +24014,6 @@ unsorted:
   - python3-logreduce 
   - python3-lttngust 
   - python3-magnumclient-doc 
-  - python3-mailman-hyperkitty 
   - python3-manifold 
   - python3-manilaclient-doc 
   - python3-masakariclient-doc 
@@ -25290,7 +25288,6 @@ unsorted:
   - python311-django-codemod 
   - python311-django-collectd-rest 
   - python311-django-compressor 
-  - python311-django-contrib-comments 
   - python311-django-cors-headers 
   - python311-django-countries 
   - python311-django-coverage-plugin 
@@ -25397,6 +25394,7 @@ unsorted:
   - python311-dom-toml 
   - python311-domdf-python-tools 
   - python311-dominate 
+  - python311-donfig 
   - python311-dotmap 
   - python311-dparse 
   - python311-dpcontracts 
@@ -26136,7 +26134,6 @@ unsorted:
   - python311-magic-wormhole-transit-relay 
   - python311-magicalimport 
   - python311-mailman3-fedmsg-plugin 
-  - python311-mailmanclient 
   - python311-maison 
   - python311-makefun 
   - python311-mando 
@@ -29101,7 +29098,6 @@ unsorted:
   - python312-django-codemod 
   - python312-django-collectd-rest 
   - python312-django-compressor 
-  - python312-django-contrib-comments 
   - python312-django-cors-headers 
   - python312-django-countries 
   - python312-django-coverage-plugin 
@@ -29209,6 +29205,7 @@ unsorted:
   - python312-dom-toml 
   - python312-domdf-python-tools 
   - python312-dominate 
+  - python312-donfig 
   - python312-dotmap 
   - python312-dparse 
   - python312-dpcontracts 
@@ -29966,7 +29963,6 @@ unsorted:
   - python312-magic-wormhole-transit-relay 
   - python312-magicalimport 
   - python312-mailman3-fedmsg-plugin 
-  - python312-mailmanclient 
   - python312-maison 
   - python312-makefun 
   - python312-mando 
@@ -32945,7 +32941,6 @@ unsorted:
   - python313-django-codemod 
   - python313-django-collectd-rest 
   - python313-django-compressor 
-  - python313-django-contrib-comments 
   - python313-django-cors-headers 
   - python313-django-countries 
   - python313-django-coverage-plugin 
@@ -32974,6 +32969,7 @@ unsorted:
   - python313-django-jsonfield 
   - python313-django-localflavor 
   - python313-django-mailer 
+  - python313-django-mailman3 
   - python313-django-mathfilters 
   - python313-django-minio-storage 
   - python313-django-model-utils 
@@ -33053,6 +33049,7 @@ unsorted:
   - python313-dom-toml 
   - python313-domdf-python-tools 
   - python313-dominate 
+  - python313-donfig 
   - python313-dotmap 
   - python313-dparse 
   - python313-dpcontracts 
@@ -33796,6 +33793,7 @@ unsorted:
   - python313-magic-wormhole-transit-relay 
   - python313-magicalimport 
   - python313-magnumclient 
+  - python313-mailman-hyperkitty 
   - python313-mailman3-fedmsg-plugin 
   - python313-mailmanclient 
   - python313-maison 
@@ -35741,6 +35739,7 @@ unsorted:
   - qmmp-plugin-pack-ffvideo 
   - qmmp-plugin-pack-goom 
   - qmmp-plugin-pack-modplug 
+  - qmmp-plugin-pack-mplayer 
   - qmmp-plugin-pack-samplerate 
   - qmmp-plugin-pack-youtube 
   - qmodbus 
@@ -38345,6 +38344,7 @@ unsorted:
   - tack 
   - tagbanwa-fonts 
   - taglib 
+  - tags 
   - tagsoup 
   - tagsoup-javadoc 
   - tai-heritage-pro-fonts 
