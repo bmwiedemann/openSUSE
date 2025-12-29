@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec 28 23:31:41 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.3:
+  * Fix raqm_set_text_utf8/utf16 reading beyond len for
+    multibyte.
+  * Support building against SheenBidi 2.9.
+  * Fix deprecation warning with latest HarfBuzz.
+
+-------------------------------------------------------------------
 Sat Sep 28 16:54:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.10.2:
