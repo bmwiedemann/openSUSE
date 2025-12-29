@@ -22,12 +22,16 @@
 %global django_allauth_min_version   0.63
 %global django_gravatar2_min_version 1.0.6
 
-%if 0%{?suse_version} >= 1550
-%define pythons python3
-%else
+# Always only build one flavor
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
 %{?sle15_python_module_pythons}
+%elif %{defined primary_python}
+%define pythons %{primary_python}
+%else
+%define pythons python3
 %endif
 %define modname django_mailman3
+
 Name:           python-django-mailman3
 Version:        1.3.14
 Release:        0
