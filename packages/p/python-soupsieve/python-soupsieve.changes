@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 29 10:10:20 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.8.1
+  * FIX: Changes in tests to accommodate latest Python HTML parser changes.
+
+-------------------------------------------------------------------
 Fri Sep 26 08:45:00 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.8
