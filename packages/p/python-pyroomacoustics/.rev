@@ -157,4 +157,22 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1318527</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c1c8b02d0e9b00396c25dfe68eb36ed6</srcmd5>
+    <version>0.9.0</version>
+    <time>1767017811</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.9.0:
+  * Adds a highpass filter on by default on all the computed RIR.
+    This avoids artifacts where the RIR gets a large DC offsets
+    when the reflections are very dense. The highpass filter is
+    controlled by the global option 'rir_hpf_enable'. In
+    addition, the cut-off frequency and the parameters of the
+    filters can be set via the options 'rir_hpf_fc' and
+    'rir_hpf_kwargs', respectively.
+  * Fixes a bug that would decrease the energy of every ray by
+    the scattering coefficient at every reflection when using
+    scattering &gt; 0.0.</comment>
+    <requestid>1324596</requestid>
+  </revision>
 </revisionlist>
