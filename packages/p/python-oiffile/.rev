@@ -74,4 +74,15 @@
 - Restrict numpy to &lt; 2 for now.</comment>
     <requestid>1290771</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>72245eeec12717e31330ebea5a13795e</srcmd5>
+    <version>2025.12.12</version>
+    <time>1767017803</time>
+    <user>anag_factory</user>
+    <comment>- update to 2025.12.12:
+  * ## Read Olympus image files (OIF and OIB)
+  * Derive OifFileError from ValueError.
+  * Drop support for Python 3.10.</comment>
+    <requestid>1324585</requestid>
+  </revision>
 </revisionlist>
