@@ -77,7 +77,8 @@ The main use cases of the library are:
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# test_wrap_multiword_non_wide* fail on recent Python interpreters https://github.com/astanin/python-tabulate/issues/389
+%pytest -k "not test_wrap_multiword_non_wide"
 
 %pre
 %python_libalternatives_reset_alternative tabulate
