@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec 28 19:45:40 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.16.0:
+  * Address deprecation warnings (commit)
+  * Drop Python 3.8 and 3.9 from CI builds (commit)
+  * Restore support multiple arguments via pubsub emits #1540
+    (commit)
+
+-------------------------------------------------------------------
 Wed Dec  3 21:26:55 UTC 2025 - Guang Yee <gyee@suse.com>
 
 - Update 5.15.0

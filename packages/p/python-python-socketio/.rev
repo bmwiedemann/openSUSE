@@ -154,4 +154,16 @@
     * Improvements to the logging documentation</comment>
     <requestid>1321922</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d479de1628eded155314515a2c71dafd</srcmd5>
+    <version>5.16.0</version>
+    <time>1767017801</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.16.0:
+  * Address deprecation warnings (commit)
+  * Drop Python 3.8 and 3.9 from CI builds (commit)
+  * Restore support multiple arguments via pubsub emits #1540
+    (commit)</comment>
+    <requestid>1324590</requestid>
+  </revision>
 </revisionlist>
