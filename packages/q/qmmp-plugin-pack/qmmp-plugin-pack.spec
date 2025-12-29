@@ -1,7 +1,8 @@
 #
 # spec file for package qmmp-plugin-pack
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2014 Dmitry Misharov <quarckster@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,16 +18,17 @@
 #
 
 
-%define qmmp_ver_min 2.1.0
-%define qmmp_ver_max 2.1.99
-%define mver    2.1
+%define qmmp_ver_min 2.3.0
+%define qmmp_ver_max 2.3.99
+%define mver    2.3
 Name:           qmmp-plugin-pack
-Version:        2.1.2
+Version:        2.3.0
 Release:        0
 Summary:        Extra plugins for Qmmp
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://qmmp.ylsoftware.com/plugins.php
+#https://qmmp.ylsoftware.com/files/qmmp-plugin-pack/2.3/qmmp-plugin-pack-2.3.0.tar.bz2
 Source:         https://qmmp.ylsoftware.com/files/%{name}/%{mver}/%{name}-%{version}.tar.bz2
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -82,6 +84,14 @@ Requires:       %{name} = %{version}-%{release}
 %description goom
 Qmmp plugin which provides goom visualisation.
 
+%package mplayer
+Summary:        Qmmp mplayer plugin
+Group:          Productivity/Multimedia/Sound/Players
+Requires:       %{name} = %{version}-%{release}
+
+%description mplayer
+Alternate Qmmp plugin to play videos.
+
 %package samplerate
 Summary:        Qmmp plugin which uses libsamplerate for decoding
 Group:          Productivity/Multimedia/Sound/Players
@@ -136,6 +146,10 @@ Qmmp plugin which uses yt-dlp to stream videos.
 %files goom
 %dir %{_libdir}/qmmp-%{mver}/Visual/
 %{_libdir}/qmmp-%{mver}/Visual/libgoom.so
+
+%files mplayer
+%dir %{_libdir}/qmmp-%{mver}/Engines/
+%{_libdir}/qmmp-%{mver}/Engines/libmplayer.so
 
 %files samplerate
 %dir %{_libdir}/qmmp-%{mver}/Effect/
