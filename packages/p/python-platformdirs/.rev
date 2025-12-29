@@ -221,4 +221,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1316422</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8cde2d9bc66a0beb9e3508a8ee2dbb20</srcmd5>
+    <version>4.5.1</version>
+    <time>1767017760</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.5.1:
+  * Fix no-ctypes fallback on windows</comment>
+    <requestid>1324571</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec 28 14:12:07 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.5.1:
+  * Fix no-ctypes fallback on windows
+
+-------------------------------------------------------------------
 Fri Oct 31 11:41:41 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.5.0:

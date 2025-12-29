@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-platformdirs%{psuffix}
-Version:        4.5.0
+Version:        4.5.1
 Release:        0
 Summary:        Module for determining appropriate platform-specific dirs
 License:        MIT
