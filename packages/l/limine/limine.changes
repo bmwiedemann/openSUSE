@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Dec 28 23:48:58 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 10.6.0:
+  * ISO9660: Add support for large, multi-extent files.
+  * Unbreak BIOS booting from optical media with ISO9660 filesystems on
+    many platforms including QEMU. This was a regression introduced in
+    10.5.1.
+  * Fix an issue with large (>4GiB) physical memory allocations on 32-bit
+    platforms. Some values were truncated to size_t (aka uint32_t) in
+    many instances causing bugs.
+  * Fix a couple of memory leaks missed in 10.5.1.
+  * Add safeguard against the font file being too small for the expected
+    size. This avoids potential panics from the filesystem driver, and it
+    instead just prints a warning and falls back to using the default
+    font.
+
+-------------------------------------------------------------------
 Fri Dec 26 14:04:13 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
 
 - Update to 10.5.1:

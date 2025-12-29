@@ -223,4 +223,12 @@
     <comment>Update to 10.5.1</comment>
     <requestid>1324461</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2a230089d01ad7df697432a04d0f5c2b</srcmd5>
+    <version>10.6.0</version>
+    <time>1767017826</time>
+    <user>anag_factory</user>
+    <comment>Update to 10.6.0</comment>
+    <requestid>1324621</requestid>
+  </revision>
 </revisionlist>
