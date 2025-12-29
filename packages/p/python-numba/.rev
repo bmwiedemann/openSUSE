@@ -536,4 +536,16 @@ Python2 support was turned off by accident.  I don't go out of my way to support
 </comment>
     <requestid>1309349</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>488ac5f23a61b04c1ae327e7252fcd52</srcmd5>
+    <version>0.63.1</version>
+    <time>1767017789</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.63.1:
+  * Python 3.14 support
+  * see https://numba.readthedocs.io/en/stable/release/0.63.0-notes.html
+
+- Fix version requirements</comment>
+    <requestid>1324581</requestid>
+  </revision>
 </revisionlist>
