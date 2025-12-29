@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Dec 22 12:29:36 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2025.12.20
+  * Do not initialize output arrays.
+- Release 2025.10.16
+  * Add option to decode EER super-resolution sub-pixels (breaking,
+    #313).
+  * Parse EER metadata to dict (breaking).
+- Release 2025.10.4
+  * Fix parsing SVS description ending with "|".
+- Release 2025.9.30
+  * Fix reading NDTiff series with unordered axes in index (#311).
+- Release 2025.9.20
+  * Derive TiffFileError from ValueError.
+  * Natural-sort files in glob pattern passed to imread by default
+    (breaking).
+  * Fix optional sorting of list of files passed to FileSequence
+    and imread.
+- Release 2025.9.9
+  * Consolidate Nuvu camera metadata.
+- Release 2025.8.28
+  * Support DNG DCP files (#306).
+- Release 2025.6.11
+  * Fix reading images with dimension length 1 through Zarr (#303).
+  * Add experimental option to write iterator of bytes and
+    bytecounts (#301).
+- Release 2025.5.26
+  * Use threads in Zarr stores.
+- Release 2025.5.24
+  * Fix incorrect tags created by Philips DP v1.1 (#299).
+  * Make Zarr stores partially listable.
+- Release 2025.5.21
+  * Move Zarr stores to tifffile.zarr namespace (breaking).
+  * Require Zarr 3 for Zarr stores and remove support for Zarr 2
+    (breaking).
+  * Drop support for Python 3.10.
+- Release 2025.5.21
+  * Raise ValueError when using zarr 3 (#296).
+  * Fall back to compression.zstd on Python >= 3.14 if no
+    imagecodecs.
+  * Remove doctest command line option.
+  * Support Python 3.14.
+- Release 2025.3.30
+  * Fix for imagecodecs 2025.3.30.
+
+-------------------------------------------------------------------
 Sun Mar 30 07:53:16 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2025.3.13:

@@ -289,4 +289,12 @@ This should fix ERROR: download_files is configured to fail when the upstream fi
   * Zarr 3 is not supported (#272).</comment>
     <requestid>1265493</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>2db41ff21c5902999f2f73e74e9339bd</srcmd5>
+    <version>2025.12.20</version>
+    <time>1767017766</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1324598</requestid>
+  </revision>
 </revisionlist>

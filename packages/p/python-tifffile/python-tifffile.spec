@@ -1,7 +1,7 @@
 #
 # spec file for package python-tifffile
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %bcond_with test
 %endif
 Name:           python-tifffile%{psuffix}
-Version:        2025.3.13
+Version:        2025.12.20
 Release:        0
 Summary:        Read and write TIFF files
 License:        BSD-2-Clause
@@ -43,9 +43,10 @@ Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     python-fsspec
 Recommends:     python-imagecodecs >= 2023.3.16
+Recommends:     python-kerchunk
 Recommends:     python-lxml
 Recommends:     python-matplotlib >= 3.3
-Recommends:     python-zarr
+Recommends:     python-zarr >= 3.1.3
 # SECTION test
 %if %{with test}
 BuildRequires:  %{python_module cmapfile}
@@ -53,7 +54,7 @@ BuildRequires:  %{python_module czifile}
 BuildRequires:  %{python_module dask}
 BuildRequires:  %{python_module defusedxml}
 BuildRequires:  %{python_module fsspec}
-BuildRequires:  %{python_module imagecodecs >= 2023.3.16}
+BuildRequires:  %{python_module imagecodecs >= 2023.11.11}
 BuildRequires:  %{python_module lfdfiles}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module matplotlib}
@@ -62,8 +63,8 @@ BuildRequires:  %{python_module oiffile}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module roifile}
-BuildRequires:  %{python_module xarray if %python-base >= 3.10}
-BuildRequires:  %{python_module zarr}
+BuildRequires:  %{python_module xarray}
+BuildRequires:  %{python_module zarr >= 3.1.3}
 %endif
 # /SECTION
 BuildArch:      noarch
