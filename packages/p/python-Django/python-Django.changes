@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 29 09:10:21 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add test_strip_tags_incomplete.patch to fix behaviour with changes
+  in the Python interpreter
+- Rebase test_strip_tags.patch
+
+-------------------------------------------------------------------
 Mon Dec  8 11:54:46 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.2.9 (bsc#1254437)

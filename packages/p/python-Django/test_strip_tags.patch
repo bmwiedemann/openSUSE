@@ -10,10 +10,10 @@ Subject: [PATCH] Fixed #36499 -- Adjusted
  tests/utils_tests/test_html.py | 4 ++--
  2 files changed, 4 insertions(+), 4 deletions(-)
 
-Index: django-5.2.6/tests/test_utils/tests.py
+Index: django-5.2.9/tests/test_utils/tests.py
 ===================================================================
---- django-5.2.6.orig/tests/test_utils/tests.py
-+++ django-5.2.6/tests/test_utils/tests.py
+--- django-5.2.9.orig/tests/test_utils/tests.py
++++ django-5.2.9/tests/test_utils/tests.py
 @@ -945,10 +945,10 @@ class HTMLEqualTests(SimpleTestCase):
              self.assertHTMLEqual("", "<p>")
          error_msg = (
@@ -27,22 +27,22 @@ Index: django-5.2.6/tests/test_utils/tests.py
          with self.assertRaises(HTMLParseError):
              parse_html("</p>")
  
-Index: django-5.2.6/tests/utils_tests/test_html.py
+Index: django-5.2.9/tests/utils_tests/test_html.py
 ===================================================================
---- django-5.2.6.orig/tests/utils_tests/test_html.py
-+++ django-5.2.6/tests/utils_tests/test_html.py
-@@ -162,13 +162,13 @@ class TestUtilsHtml(SimpleTestCase):
-             ("<script>alert()</script>&h", "alert()h"),
+--- django-5.2.9.orig/tests/utils_tests/test_html.py
++++ django-5.2.9/tests/utils_tests/test_html.py
+@@ -187,13 +187,13 @@ class TestUtilsHtml(SimpleTestCase):
+             ),
              (
                  "><!" + ("&" * 16000) + "D",
--                ">" if htmlparser_fixed else "><!" + ("&" * 16000) + "D",
+-                ">" if htmlparser_fixed_security else "><!" + ("&" * 16000) + "D",
 +                ">",
              ),
              ("X<<<<br>br>br>br>X", "XX"),
              ("<" * 50 + "a>" * 50, ""),
              (
                  ">" + "<a" * 500 + "a",
--                ">" if htmlparser_fixed else ">" + "<a" * 500 + "a",
+-                ">" if htmlparser_fixed_security else ">" + "<a" * 500 + "a",
 +                ">",
              ),
              ("<a" * 49 + "a" * 951, "<a" * 49 + "a" * 951),

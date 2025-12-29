@@ -35,11 +35,13 @@ Source:         https://www.djangoproject.com/m/releases/5.2/django-%{version}.t
 Source1:        https://www.djangoproject.com/m/pgp/Django-%{version}.checksum.txt
 Source2:        %{name}.keyring
 Source99:       python-Django-rpmlintrc
-# PATCH-FIX-UPSTREAM https://github.com/django/django/pull/19639 Fixed #36499 -- Adjusted utils_tests.test_html.TestUtilsHtml.test_strip_tags following Python's HTMLParser new behavior.
-# fixed and refined upstream, but some of our interpreters weren't updated to a new version yet and still only carry the patch, so providing the non-conditional version
-Patch0:         test_strip_tags.patch
 # PATCH-FIX-UPSTREAM https://github.com/django/django/pull/19530 Fixed #36421 -- Made test_msgfmt_error_including_non_ascii compatible with with msgfmt 0.25.
 Patch1:         support-msgfmt-0.25.patch
+# PATCH-FIX-UPSTREAM https://github.com/django/django/pull/20390 Refs #36499 -- Adjusted test_strip_tags following Python behavior change for incomplete entities.
+Patch2:         test_strip_tags_incomplete.patch
+# PATCH-FIX-UPSTREAM https://github.com/django/django/pull/19639 Fixed #36499 -- Adjusted utils_tests.test_html.TestUtilsHtml.test_strip_tags following Python's HTMLParser new behavior.
+# fixed and refined upstream, but some of our interpreters weren't updated to a new version yet and still only carry the patch, so providing the non-conditional version
+Patch3:         test_strip_tags.patch
 BuildRequires:  %{python_module Jinja2 >= 2.9.2}
 BuildRequires:  %{python_module Pillow >= 6.2.0}
 BuildRequires:  %{python_module PyYAML}
