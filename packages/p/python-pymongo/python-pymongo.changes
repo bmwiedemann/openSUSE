@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Dec 28 21:13:50 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.15.5:
+  * Fixed a bug that could cause AutoReconnect("connection pool
+    paused") errors when cursors fetched more documents from the
+    database after SDAM heartbeat failures.
+  * Relaxed the callback type of :meth:`~pymongo.asynchronous.cli
+    ent_session.AsyncClientSession.with_transaction` to allow the
+    broader Awaitable type rather than only Coroutine objects.
+  * Added the missing Python 3.14 trove classifier to the package
+    metadata.
+
+-------------------------------------------------------------------
 Fri Nov  7 01:33:18 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.15.3:

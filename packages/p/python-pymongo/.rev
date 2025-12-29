@@ -581,4 +581,20 @@
   * Allow Database.command to run bulkWrite commands</comment>
     <requestid>1316360</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>071fb34616e5f8d0ad18e980c5713c93</srcmd5>
+    <version>4.15.5</version>
+    <time>1767017817</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.15.5:
+  * Fixed a bug that could cause AutoReconnect(&quot;connection pool
+    paused&quot;) errors when cursors fetched more documents from the
+    database after SDAM heartbeat failures.
+  * Relaxed the callback type of :meth:`~pymongo.asynchronous.cli
+    ent_session.AsyncClientSession.with_transaction` to allow the
+    broader Awaitable type rather than only Coroutine objects.
+  * Added the missing Python 3.14 trove classifier to the package
+    metadata.</comment>
+    <requestid>1324601</requestid>
+  </revision>
 </revisionlist>
