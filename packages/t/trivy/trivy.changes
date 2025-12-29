@@ -1,7 +1,18 @@
 -------------------------------------------------------------------
+Mon Dec 29 09:58:28 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 0.68.2:
+  * release: v0.68.2 [release/v0.68] (#9950)
+  * fix(deps): bump alpine from `3.22.1` to `3.23.0` [backport: release/v0.68] (#9949)
+  * ci: enable `check-latest` for `setup-go` [backport: release/v0.68] (#9946)
+
+-------------------------------------------------------------------
 Wed Dec 03 10:23:46 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
-- Update to version 0.68.1:
+- Update to version 0.68.1 (bsc#1251363, CVE-2025-47911,
+  bsc#1251547, CVE-2025-58190, bsc#1253512, CVE-2025-47913,
+  bsc#1253512, CVE-2025-47913, bsc#1253786, CVE-2025-58181,
+  bsc#1253977, CVE-2025-47914):
   * release: v0.68.1 [main] (#9867)
   * fix: update cosing settings for GoReleaser after bumping cosing to v3 (#9863)
   * chore(deps): bump the testcontainers group with 2 updates (#9506)

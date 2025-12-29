@@ -1370,4 +1370,20 @@ dropped patch file
   * chore: trigger the trivy-www workflow (#9737)</comment>
     <requestid>1320965</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>535e3f9776b509d405feb48b6973bff1</srcmd5>
+    <version>0.68.2</version>
+    <time>1767017855</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.68.2:
+  * release: v0.68.2 [release/v0.68] (#9950)
+  * fix(deps): bump alpine from `3.22.1` to `3.23.0` [backport: release/v0.68] (#9949)
+  * ci: enable `check-latest` for `setup-go` [backport: release/v0.68] (#9946)
+
+- Update to version 0.68.1 (bsc#1251363, CVE-2025-47911,
+  bsc#1251547, CVE-2025-58190, bsc#1253512, CVE-2025-47913,
+  bsc#1253512, CVE-2025-47913, bsc#1253786, CVE-2025-58181,
+  bsc#1253977, CVE-2025-47914):</comment>
+    <requestid>1324695</requestid>
+  </revision>
 </revisionlist>
