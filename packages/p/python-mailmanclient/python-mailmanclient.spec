@@ -1,7 +1,7 @@
 #
 # spec file for package python-mailmanclient
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,15 @@
 #
 
 
+# Always only build one flavor
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
 %{?sle15_python_module_pythons}
+%elif %{defined primary_python}
+%define pythons %{primary_python}
+%else
+%define pythons python3
+%endif
+
 Name:           python-mailmanclient
 Version:        3.3.5
 Release:        0
