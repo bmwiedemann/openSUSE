@@ -18,7 +18,7 @@
 
 
 Name:           bspwm
-Version:        0.9.11
+Version:        0.9.12
 Release:        0
 Summary:        A tiling window manager based on binary space partitioning
 License:        BSD-2-Clause

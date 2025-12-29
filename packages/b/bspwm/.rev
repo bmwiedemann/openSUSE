@@ -306,4 +306,14 @@
 </comment>
     <requestid>1308482</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>409a9757637e55db8b73ac726c64a180</srcmd5>
+    <version>0.9.12</version>
+    <time>1767017822</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.9.12:
+  * Fix a regression introduced by 6082d8b (#1533)
+</comment>
+    <requestid>1324615</requestid>
+  </revision>
 </revisionlist>
