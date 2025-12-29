@@ -1,4 +1,129 @@
 -------------------------------------------------------------------
+Mon Dec 22 12:39:00 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.1.5
+  * See the v3 migration guide for a listing of what's changed
+    since v2
+    https://zarr.readthedocs.io/en/stable/user-guide/v3_migration/
+  * For a more complete list of bugfixes see
+    https://zarr.readthedocs.io/en/stable/release-notes/
+  ## Features
+  * The Array class can now also be parametrized in the same manner
+    as the AsyncArray class, allowing Zarr format v2 and v3 Arrays
+    to be distinguished. New types have been added to zarr.types to
+    help with this. (#3304)
+  * Adds zarr.experimental.cache_store.CacheStore, a Store that
+    implements caching by combining two other Store instances. See
+    the docs page for more information about this feature. (#3366)
+  * Adds a zarr.experimental module for unstable user-facing
+    features. (#3490)
+  * Add a array.target_shard_size_bytes to zarr.config to allow
+    users to set a maximum number of bytes per-shard when
+    shards="auto" in, for example, zarr.create_array. (#3547)
+  * Make async_array on the zarr.Array class public (_async_array
+    will remain untouched, but its stability is not guaranteed).
+    (#3556)
+  * Add a command-line interface to migrate v2 Zarr metadata to v3.
+    Corresponding functions are also provided under zarr.metadata.
+    (#1798)
+  * Add obstore implementation of delete_dir. (#3310)
+  * Adds a registry for chunk key encodings for extensibility. This
+    allows users to implement a custom ChunkKeyEncoding, which can
+    be registered via register_chunk_key_encoding or as an entry
+    point under zarr.chunk_key_encoding. (#3436)
+  * Trying to open a group at a path where an array already exists
+    now raises a helpful error. (#3444)
+  * Added support for async vectorized and orthogonal indexing.
+    (#3083)
+  * Make config param optional in init_array (#3391)
+  * Add lightweight implementations of .getsize() and
+    .getsize_prefix() for ObjectStore. (#3227)
+  * Ensure that invocations of create_array use consistent keyword
+    arguments, with consistent defaults.
+  * Added public API for Buffer ABCs and implementations.
+  * Adds zarr-specific data type classes.
+  * Added NDBuffer.empty method for faster ndbuffer initialization.
+    (#3191)
+  * Add an alternate from_array_metadata_and_store constructor to
+    CodecPipeline. (#3233)
+  * Add zarr.storage.FsspecStore.from_mapper() so that zarr.open()
+    supports stores of type fsspec.mapping.FSMap. (#2774)
+  * Implemented move for LocalStore and ZipStore. This allows users
+    to move the store to a different root path. (#3021)
+  * Added zarr.errors.GroupNotFoundError, which is raised when
+    attempting to open a group that does not exist. (#3066)
+  * Adds fill_value to the list of attributes displayed in the
+    output of the AsyncArray.info() method. (#3081)
+  * Use numpy.zeros instead of np.full for a performance speedup
+    when creating a zarr.core.buffer.NDBuffer with fill_value=0.
+    (#3082)
+  * Port more stateful testing actions from Icechunk. (#3130)
+  * Adds a with_read_only convenience method to the Store abstract
+    base class (raises NotImplementedError) and implementations to
+    the MemoryStore, ObjectStore, LocalStore, and FsspecStore
+    classes. (#3138)
+  * Added a print_debug_info function for bug reports. (#2913)
+  * Add experimental ObjectStore storage class based on obstore.
+    (#1661)
+  * Add zarr.from_array using concurrent streaming of source data
+    (#2622)
+  * Adds functions for concurrently creating multiple arrays and
+    groups. (#2665)
+  * Improves performance of FsspecStore.delete_dir for remote
+    filesystems supporting concurrent/batched deletes, e.g., s3fs.
+    (#2661)
+  * Added zarr.config.enable_gpu to update Zarr's configuration to
+    use GPUs. (#2751)
+  * Avoid reading chunks during writes where possible. #757 (#2784)
+  * LocalStore learned to delete_dir. This makes array and group
+    deletes more efficient. (#2804)
+  * Add zarr.testing.strategies.array_metadata to generate
+    ArrayV2Metadata and ArrayV3Metadata instances. (#2813)
+  * Add arbitrary shards to Hypothesis strategy for generating
+    arrays. (#2822)
+  * Test getsize() and getsize_prefix() in StoreTests. (#2693)
+  * Test that a ValueError is raised for invalid byte range syntax
+    in StoreTests. (#2693)
+  * Separate instantiating and opening a store in StoreTests.
+    (#2693)
+  * Add a test for using Stores as a context managers in
+    StoreTests. (#2693)
+  * Implemented LogingStore.open(). (#2693)
+  * LoggingStore is now a generic class. (#2693)
+  * Change StoreTest's test_store_repr, test_store_supports_writes,
+    test_store_supports_partial_writes, and
+    test_store_supports_listing to to be implemented using
+    @abstractmethod, rather raising NotImplementedError. (#2693)
+  * Test the error raised for invalid buffer arguments in
+    StoreTests. (#2693)
+  * Test that data can be written to a store that's not yet open
+    using the store.set method in StoreTests. (#2693)
+  * Adds a new function init_array for initializing an array in
+    storage, and refactors create_array to use init_array.
+    create_array takes two new parameters: data, an optional
+    array-like object, and write_data, a bool which defaults to
+    True. If data is given to create_array, then the dtype and
+    shape attributes of data are used to define the corresponding
+    attributes of the resulting Zarr array. Additionally, if data
+    given and write_data is True, then the values in data will be
+    written to the newly created array. (#2761)
+  * Implement zarr.from_array using concurrent streaming (#2622).
+  ## Deprecations and Removals
+  * Removes default chunk encoding settings (filters, serializer,
+    compressors) from the global configuration object.
+  * Removes support for passing keyword-only arguments positionally
+    to the following functions and methods: save_array, open,
+    group, open_group, create, get_basic_selection,
+    set_basic_selection, get_orthogonal_selection,
+    set_orthogonal_selection, get_mask_selection,
+    set_mask_selection, get_coordinate_selection,
+    set_coordinate_selection, get_block_selection,
+    set_block_selection, Group.create_array, Group.empty,
+    Group.zeroes, Group.ones, Group.empty_like, Group.full,
+    Group.zeros_like, Group.ones_like, Group.full_like, Group.array
+- Remove zarr-numcodecs-zstd-test.patch
+
+-------------------------------------------------------------------
 Thu Mar  6 08:37:22 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.18.4
