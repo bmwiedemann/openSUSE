@@ -167,7 +167,7 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.13.9
+Version:        3.13.11
 %define         tarversion %{version}
 %define         tarname    Python-%{tarversion}
 Release:        0
@@ -235,12 +235,6 @@ Patch43:        bsc1243155-sphinx-non-determinism.patch
 Patch44:        gh138131-exclude-pycache-from-digest.patch
 # PATCH-FIX-OPENSUSE gh139257-Support-docutils-0.22.patch gh#python/cpython#139257 daniel.garcia@suse.com
 Patch45:        gh139257-Support-docutils-0.22.patch
-# PATCH-FIX-UPSTREAM CVE-2025-8291-consistency-zip64.patch bsc#1251305 mcepl@suse.com
-# Check consistency of the zip64 end of central directory record
-Patch46:        CVE-2025-8291-consistency-zip64.patch
-# PATCH-FIX-UPSTREAM CVE-2025-6075-expandvars-perf-degrad.patch bsc#1252974 mcepl@suse.com
-# Avoid potential quadratic complexity vulnerabilities in path modules
-Patch47:        CVE-2025-6075-expandvars-perf-degrad.patch
 # PATCH-FIX-UPSTREAM pass-test_write_read_limited_history.patch bsc#[0-9]+ mcepl@suse.com
 # Fix readline history truncation when length is reduced
 Patch48:        pass-test_write_read_limited_history.patch
