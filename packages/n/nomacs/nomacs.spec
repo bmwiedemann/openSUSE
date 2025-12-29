@@ -17,16 +17,14 @@
 #
 
 
-%define pver a869962f051504dd2c1dedeb3bc3d266c17070c1
 Name:           nomacs
-Version:        3.21.1
+Version:        3.22.0
 Release:        0
 Summary:        Lightweight image viewer
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://nomacs.org/
 Source0:        https://github.com/nomacs/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        https://github.com/v-tyrtov/nomacs-plugins/archive/%{pver}/nomacs-plugins-%{pver}.tar.gz 
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes
 %if 0%{?suse_version} < 1600
@@ -45,6 +43,7 @@ BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6PrintSupport)
 BuildRequires:  cmake(Qt6Concurrent)
 BuildRequires:  cmake(Qt6Svg)
+BuildRequires:  cmake(QuaZip-Qt6)
 BuildRequires:  pkgconfig(exiv2) >= 0.26
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(libraw) >= 0.17
@@ -77,7 +76,6 @@ Some usefull plugins for nomacs:
 
 %prep
 %autosetup -p1
-tar xf %{SOURCE1} --strip-components 1 -C ImageLounge/plugins/
 
 %build
 %if 0%{?suse_version} < 1600
@@ -90,6 +88,7 @@ pushd ImageLounge/
   -DCMAKE_C_FLAGS='%{optflags} -fno-strict-aliasing'   \
   -DCMAKE_CXX_FLAGS='%{optflags} -fno-strict-aliasing' \
   -DQT_VERSION_MAJOR=6                                 \
+  -DENABLE_QUAZIP=ON                                   \
   -DUSE_SYSTEM_QUAZIP=ON                               \
   -DCMAKE_SHARED_LINKER_FLAGS=""                       \
   -DENABLE_TRANSLATIONS=ON

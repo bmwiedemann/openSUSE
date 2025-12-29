@@ -276,4 +276,23 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1278880</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>39a645cc204b184df9980bb2d57bef89</srcmd5>
+    <version>3.22.0</version>
+    <time>1767017847</time>
+    <user>anag_factory</user>
+    <comment>-  Add cmake(QuaZip-Qt6) BuildRequires: enable quazip support
+- Update to version 3.22.0
+  * Color Management improvements (display profile selection)
+  * Proper HiDPI rendering (true 1:1 at 100%)
+  * Improved ZIP archive support
+  * Faster and lighter thumbnail generation
+  * Improved comments and ratings
+  * New Simplified Chinese translation
+  * Shortcut and focus handling fixes
+  * Theme and animation reliability improvements
+- remove plugin source: now included on main source
+</comment>
+    <requestid>1324635</requestid>
+  </revision>
 </revisionlist>
