@@ -1902,4 +1902,21 @@
   failures in `test_write_read_limited_history`.</comment>
     <requestid>1318749</requestid>
   </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>2ec6e8f48fdaea37dbf136cf614f67cf</srcmd5>
+    <version>3.12.12</version>
+    <time>1767017744</time>
+    <user>anag_factory</user>
+    <comment>- Add CVE-2025-13836-http-resp-cont-len.patch (bsc#1254400,
+  CVE-2025-13836) to prevent reading an HTTP response from
+  a server, if no read amount is specified, with using
+  Content-Length per default as the length.
+- Add CVE-2025-12084-minidom-quad-search.patch prevent quadratic
+  behavior in node ID cache clearing (CVE-2025-12084,
+  bsc#1254997).
+- Add CVE-2025-13837-plistlib-mailicious-length.patch protect
+  against OOM when loading malicious content (CVE-2025-13837,
+  bsc#1254401).</comment>
+    <requestid>1324008</requestid>
+  </revision>
 </revisionlist>

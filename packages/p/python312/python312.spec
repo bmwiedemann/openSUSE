@@ -195,6 +195,15 @@ Patch47:        CVE-2025-6075-expandvars-perf-degrad.patch
 # PATCH-FIX-UPSTREAM pass-test_write_read_limited_history.patch bsc#[0-9]+ mcepl@suse.com
 # Fix readline history truncation when length is reduced
 Patch48:        pass-test_write_read_limited_history.patch
+# PATCH-FIX-UPSTREAM CVE-2025-13836-http-resp-cont-len.patch bsc#1254400 mcepl@suse.com
+# Avoid loading possibly compromised length of HTTP response
+Patch49:        CVE-2025-13836-http-resp-cont-len.patch
+# PATCH-FIX-UPSTREAM CVE-2025-12084-minidom-quad-search.patch bsc#1254997 mcepl@suse.com
+# prevent quadratic behavior in node ID cache clearing 
+Patch50:        CVE-2025-12084-minidom-quad-search.patch
+# PATCH-FIX-UPSTREAM CVE-2025-13837-plistlib-mailicious-length.patch bsc#1254401 mcepl@suse.com
+# protect against OOM when loading malicious content
+Patch51:        CVE-2025-13837-plistlib-mailicious-length.patch 
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
