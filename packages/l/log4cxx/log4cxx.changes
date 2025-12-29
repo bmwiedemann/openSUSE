@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Dec 29 11:15:21 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.0:
+  * Configuration ${varname} values can be set programatically prior
+    to loading a configuration file (see com/foo/config4.cpp) [#520]
+  * The current executable's file name and its components are available
+    for use in a configuration file and the LOG4CXX_CONFIGURATION
+    environment variable (see log4cxx::spi::Configurator::properties).
+    [#520]
+  * Console output (Log4cxx internal logging and BasicConfigurator)
+    use a color per message level by default [#529]
+  * New logging macros that defer binary-to-text conversion until
+    used in AsyncAppender's background thread
+  * A simplified way to attach an AsyncAppender to a logger using
+    a configuration file [#550]
+
+-------------------------------------------------------------------
 Thu Sep  4 14:08:11 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.0 (bsc#1248601, CVE-2025-54812):
