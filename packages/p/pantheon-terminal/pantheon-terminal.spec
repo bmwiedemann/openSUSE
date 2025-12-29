@@ -1,7 +1,7 @@
 #
 # spec file for package pantheon-terminal
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.terminal
 Name:           pantheon-terminal
-Version:        7.0.0
+Version:        7.2.0
 Release:        0
 Summary:        Lightweight and modern Terminal for the Pantheon Desktop
 License:        GPL-3.0-or-later
@@ -76,7 +76,7 @@ This package contains the configuration files when using the fish shell.
 %{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
 %{_mandir}/man?/%{appid}.?%{?ext_man}
 %{_datadir}/%{appid}
-%{_datadir}/metainfo/%{appid}.appdata.xml
+%{_datadir}/metainfo/%{appid}.metainfo.xml
 
 %files fish-completion
 %{_datadir}/fish/vendor_conf.d/pantheon_terminal_process_completion_notifications.fish

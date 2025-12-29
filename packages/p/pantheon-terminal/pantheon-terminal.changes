@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Dec 21 03:21:05 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 7.2.0:
+  * The option to hide the tabbar when there is only one tab is now exposed and
+    honored
+  * Translation updates
+  * Launch web links correctly
+  * Fix Clear Screen: Move cursor to line start before feeding clear command
+  * Auto-hide single tab option
+  * Disable secondary-click actions while a foreground process is running
+
+-------------------------------------------------------------------
+Tue Aug 12 15:06:14 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 7.1.0:
+  * Utils: add a warning about commands that skip confirmation
+  * Return and show all paste warnings
+  * UnsafePaste: add -f and --force
+  * Center the title, set min searchentry width
+  * Change tab label to name of foreground child process
+  * MainWindow: Ellipsize the title label
+  * Close tab when shell killed
+  * SettingsPopover: create ThemeCheckButton and use Settings action
+
+-------------------------------------------------------------------
 Fri Feb 14 20:09:22 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 7.0.0:
