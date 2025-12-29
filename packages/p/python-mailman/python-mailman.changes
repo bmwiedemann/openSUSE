@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 19 07:13:53 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
+
+- If possible build for primary_python (fixes Leap 16.0)
+
+-------------------------------------------------------------------
 Tue Jul 15 09:49:58 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
 
 - Fix removal of context manager usage for PosixPath in Python 3.13

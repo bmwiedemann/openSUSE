@@ -1,7 +1,7 @@
 #
 # spec file for package python-mailman
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,11 +48,13 @@
 %bcond_with test
 %endif
 # Keep this in sync with HyperKitty und Postorius
-# Always only build one flavor: primary python for TW, python311 from the SLE15 python module for 15.x
-%if 0%{?suse_version} >= 1550
-%define pythons python3
-%else
+# Always only build one flavor
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
 %{?sle15_python_module_pythons}
+%elif %{defined primary_python}
+%define pythons %{primary_python}
+%else
+%define pythons python3
 %endif
 %global mypython %pythons
 %global mypython_sitelib %{expand:%%{%{mypython}_sitelib}}
