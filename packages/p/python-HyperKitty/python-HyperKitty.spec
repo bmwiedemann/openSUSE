@@ -52,11 +52,13 @@
 %global hyperkitty_services hyperkitty-qcluster.service hyperkitty-runjob-daily.service hyperkitty-runjob-daily.timer hyperkitty-runjob-hourly.service hyperkitty-runjob-hourly.timer hyperkitty-runjob-minutely.service hyperkitty-runjob-minutely.timer hyperkitty-runjob-monthly.service hyperkitty-runjob-monthly.timer hyperkitty-runjob-quarter-hourly.service hyperkitty-runjob-quarter-hourly.timer hyperkitty-runjob-weekly.service hyperkitty-runjob-weekly.timer hyperkitty-runjob-yearly.service hyperkitty-runjob-yearly.timer
 
 # keep in sync with python-postorius/python-mailman-web
-# Always only build one flavor: primary python for TW, python311 from the SLE15 python module for 15.x
-%if 0%{?suse_version} >= 1550
-%define pythons python3
-%else
+# Always only build one flavor
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
 %{?sle15_python_module_pythons}
+%elif %{defined primary_python}
+%define pythons %{primary_python}
+%else
+%define pythons python3
 %endif
 %global mypython %pythons
 %global mypython_sitelib %{expand:%%{%{mypython}_sitelib}}
