@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Dec 25 01:33:11 UTC 2025 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Update to version 8.0.9
+  * Our local server was using /tmp as path. What is not the most
+    secure thing to do. It now uses /run/user/user_id.
+  * The F1 shortcut was broken and was not opening our manual.
+  * A crash could happen when using multiple convolver or
+    crystalizer instances. As well as using the convolver and the
+    crystalizer in the same pipeline.
+  * Super long preset names could make the corresponding menu
+    button to not be visible.
+
+-------------------------------------------------------------------
 Mon Dec 15 12:20:34 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Fix build error in Leap 16.
@@ -44,7 +57,7 @@ Wed Dec  3 00:57:42 UTC 2025 - Gerald Chen <gerald_chen@foxmail.com>
     missing icons in systems that do not use the icons in Breeze
     theme.
   * Users are now able to select a custom color theme in
-    EasyEffects preferences window.
+    Easy Effects preferences window.
   * Users are now able to set a fps cap to the spectrum and level
     meters.
   * Improved translations.
@@ -150,7 +163,7 @@ Sun Nov  9 13:14:18 UTC 2025 - Gerald Chen <gerald_chen@foxmail.com>
     presets.
   * Our window is now more friendly to small screens. As a result
     it is friendlier than before to tiling window managers too.
-  * EasyEffects now remembers the last used plugin or tab and
+  * Easy Effects now remembers the last used plugin or tab and
     restores them when the window is reopened.
   * The previous global bypass button is now exposed as a tradition
     on/off button.
