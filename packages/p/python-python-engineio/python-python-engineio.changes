@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec 28 20:25:12 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.13.0:
+  * Apply escaping rules when parsing cookie values (commit)
+  * Several minor improvements to the aiohttp integration #419
+  * Clarify logging behavior in documentation #421 (commit)
+  * Address deprecation warnings #422 (commit)
+  * Add 3.14 and pypy-3.11 CI builds (commit)
+  * Drop Python 3.8 and 3.9 from CI builds (commit)
+
+-------------------------------------------------------------------
 Tue Nov 11 21:58:08 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.12.3:
