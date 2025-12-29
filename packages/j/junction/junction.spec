@@ -18,7 +18,7 @@
 
 %define         appname re.sonny.Junction
 Name:           junction
-Version:        1.10
+Version:        1.11
 Release:        0
 Summary:        Application/browser chooser
 License:        GPL-3.0-only
