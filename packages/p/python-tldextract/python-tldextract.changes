@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Dec 29 02:30:15 UTC 2025 - Mia Herkt <mia@0x0.st>
+
+- Update to 5.3.1:
+Bugfixes
+  * Drop support for EOL Python 3.9
+    #gh/john-kurkowski/tldextract#359
+  * Support Python 3.14 + PyPy 3.11
+    #gh/john-kurkowski/tldextract#358
+  * Speed up IP address search space with isdecimal() instead of
+    isdigit()
+    #gh/john-kurkowski/tldextract#352
+Docs
+  * Reorganize, dedupe, and shorten README
+    #gh/john-kurkowski/tldextract#349
+
+-------------------------------------------------------------------
 Wed Apr 23 19:17:24 UTC 2025 - Mia Herkt <mia@0x0.st>
 
 - Update to 5.3.0:

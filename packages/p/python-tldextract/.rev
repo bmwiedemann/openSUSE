@@ -431,4 +431,23 @@ Misc
     #gh/john-kurkowski/tldextract#344</comment>
     <requestid>1272260</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>890f8d40e2858be985ed4b48d610975b</srcmd5>
+    <version>5.3.1</version>
+    <time>1767017835</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.3.1:
+Bugfixes
+  * Drop support for EOL Python 3.9
+    #gh/john-kurkowski/tldextract#359
+  * Support Python 3.14 + PyPy 3.11
+    #gh/john-kurkowski/tldextract#358
+  * Speed up IP address search space with isdecimal() instead of
+    isdigit()
+    #gh/john-kurkowski/tldextract#352
+Docs
+  * Reorganize, dedupe, and shorten README
+    #gh/john-kurkowski/tldextract#349</comment>
+    <requestid>1324626</requestid>
+  </revision>
 </revisionlist>
