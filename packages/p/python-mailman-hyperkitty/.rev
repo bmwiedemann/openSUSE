@@ -81,4 +81,12 @@ Build for Python 3.12 to restore compatibility with Mailman3</comment>
     <comment></comment>
     <requestid>1154170</requestid>
   </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>eef434bc0c7f9b3a50bdf9931fb6fdfc</srcmd5>
+    <version>1.2.1</version>
+    <time>1767017864</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1324687</requestid>
+  </revision>
 </revisionlist>

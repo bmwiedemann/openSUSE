@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 19 07:15:22 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
+
+- If possible build for primary_python (fixes Leap 16.0)
+
+-------------------------------------------------------------------
 Thu Feb 29 20:11:12 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Simplify python flavor selection
