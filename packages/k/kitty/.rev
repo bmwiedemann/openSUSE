@@ -761,4 +761,61 @@
     <comment></comment>
     <requestid>1315346</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>690bd74167dc9875bdd6c3e18c37a189</srcmd5>
+    <version>0.45.0</version>
+    <time>1767017770</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.45.0:
+  * A new kitten to select files at the speed of thought with a keyboard first
+    interface and support for content previews of text files with syntax
+    highlighting, images, videos, e-books and more (#9263)
+    - https://sw.kovidgoyal.net/kitty/kittens/choose-files/
+  * Add support for the paste events protocol (#9183)
+    - https://rockorager.dev/misc/bracketed-paste-mime/
+  * icat kitten: Add support for animated PNG and animated WebP, netPBM images,
+    ICC color profiles and CCIP color space metadata to the builtin engine
+  * icat kitten: Add a new flag kitty +kitten icat --fit to control how images
+    are scaled to fit the screen (#9201)
+  * icat kitten: The kitty +kitten icat --scale-up flag now takes effect when
+    not using kitty +kitten icat --place as well
+  * Add a mappable action copy_last_command_output to copy the output of the
+    last command to the clipboard (#9185)
+  * ssh kitten: Fix a bug where automatic login was not working (#9187)
+  * Graphics: Fix overwrite composition mode for animation frames not being
+    honored
+  * Automatic color scheme switching: Fix title bar and scroll bar colors not
+    being updated (#9167)
+  * macOS: Fix cycle through OS windows only swapping between the two most
+    recent OS Windows. Also add a cycle through OS Windows backwards
+    action. (#9215)
+  * goto_session: allow specifying a directory to select a session file from
+    the directory (#9219)
+  * Have reloading config also reload the custom tab bar python modules (#9221)
+  * kitten @ ls: Also output the neighbors for every window (#9225)
+  * Have the kitty --start-as flag be respected when used with kitty
+    --single-instance (#9228)
+  * When expanding environment variables in listen_on allow the env directive
+    to take effect
+  * macOS: Fix closing an OS Window when another OS Window is minimized causing
+    the minimized window to be un-minimized (#8913)
+  * Do not rewrap the text in the alternate screen buffer. Avoids flicker
+    during live resize with no resize_debounce_time (#9142)
+  * Add a default mapping search_scrollback to open the scrollback in a pager
+    in search mode. If any text is currently selected it is automatically
+    searched for.
+  * Wayland: Fix spurious key repeat events when some user defined callback
+    takes a long time to execute (#9224)
+  * When moving windows to a new tab/OS Window fix overlay windows not being
+    grouped with their parent windows (#9266)
+  * Linux: Fix a bug causing colors to occasionally all go black when using
+    mesa &gt;= 25.3.0 with nouveau GPU driver (#9235)
+  * Fix tab_bar_min_tabs not respecting tab_bar_filter (#9278)
+  * macOS: Workaround for regression in Tahoe 26.2 that breaks
+  * kitty --detach (#9288)
+  * macOS: Workaround for yet another Tahoe regression causing macOS to start
+    an AutoFill helper process and not shut it down on application exit (#9299)
+</comment>
+    <requestid>1324505</requestid>
+  </revision>
 </revisionlist>
