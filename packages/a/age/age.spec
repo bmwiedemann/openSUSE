@@ -1,7 +1,7 @@
 #
 # spec file for package age
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2021-2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           age
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        A file encryption tool
 License:        BSD-3-Clause
@@ -44,9 +44,7 @@ composability.
 
 %install
 %{goinstall}
-for i in age.1 age-keygen.1 ; do
-  install -Dm 0644 doc/$i %{buildroot}%{_mandir}/man1/$i
-done
+install -Dm 0644 -t %{buildroot}%{_mandir}/man1/ doc/*.1
 
 %check
 # disable test for now since it needs dependencies that are not vendored yet
@@ -57,7 +55,15 @@ done
 %doc README.md doc/*.1.html
 %{_bindir}/age
 %{_bindir}/age-keygen
+%{_bindir}/age-inspect
+%{_bindir}/age-plugin-batchpass
+%{_bindir}/age-plugin-pq
+%{_bindir}/age-plugin-tag
+%{_bindir}/age-plugin-tagpq
+%{_bindir}/age-plugin-tagtest
 %{_mandir}/man1/age-keygen.1%{?ext_man}
 %{_mandir}/man1/age.1%{?ext_man}
+%{_mandir}/man1/age-inspect.1%{?ext_man}
+%{_mandir}/man1/age-plugin-batchpass.1%{?ext_man}
 
 %changelog
