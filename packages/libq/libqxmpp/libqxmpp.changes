@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Dec 29 12:04:37 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.13.0
+  * Implement XEP-0402: PEP Native Bookmarks
+  * Implement XEP-0421: MUC Occupant IDs
+  * Implement XEP-0486: MUC Avatars
+  * MixManager: New service discovery API, request discovery info
+    and items on our own
+  * HttpUploadManager: Upload component discovery changes
+    * Add support and services properties
+    * Request discovery info and items on our own with new API
+    * Move functionality from UploadRequestManager into
+      HttpUploadManager
+    * Remove dependency on UploadRequestManager
+  * Use new service discovery API in MovedManager,
+    RegistrationManager
+  * Result<T>: Make T QXmpp::Success by default
+  * Result<T>: Add new hasValue/hasError/getValue/getError
+    helper functions
+
+-------------------------------------------------------------------
 Sun Nov 16 09:00:54 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.12.0
