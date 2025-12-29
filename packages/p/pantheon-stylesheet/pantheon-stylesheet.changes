@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Dec 21 03:16:19 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 8.2.2:
+  * Add Adw.NavigationSplitView styles
+  * Popover: fix indentation for headerlabel
+  * Sidebars: add support for Adw.NavigationSplitView
+  * Show sort-indicator in treeviews
+  * focus → focus-visible
+  * Fix Latte palette is built partially
+  * CheckButtons: Support Latte
+
+-------------------------------------------------------------------
 Sat Aug 16 21:06:43 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 8.2.1:

@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.stylesheet
 Name:           pantheon-stylesheet
-Version:        8.2.1
+Version:        8.2.2
 Release:        0
 Summary:        The Elementary GTK theme
 License:        GPL-3.0-or-later
