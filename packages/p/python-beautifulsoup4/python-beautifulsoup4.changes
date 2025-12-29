@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Dec 29 09:58:48 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 4.14.3
+  * When using one of the lxml tree builders, you can pass in
+    huge_tree=True to disable lxml's security restrictions and process
+    files that include huge text nodes. ("huge" means more than
+    10,000,000 bytes of text in a single node). Without this, lxml may
+    silently stop processing the file after encountering a huge text
+    node.
+  * The html.parser tree builder processes numeric character entities
+    using the algorithm described in the HTML spec. If this means
+    replacing some other character with REPLACEMENT CHARACTER, it will
+    set BeautifulSoup.contains_replacement_characters.
+  * Added a general test of the html.parser tree builder's ability to
+    turn any parsing exception from html.parser into a
+    ParserRejectedMarkup exception. This makes it possible to remove
+    version-dependent tests that depended on the existence of specific
+    bugs in html.parser.
+- Add htmlparser.patch to fix behaviour with cpython interpreters
+
+-------------------------------------------------------------------
 Mon Oct 13 09:11:52 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.14.2:
