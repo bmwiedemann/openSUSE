@@ -21,7 +21,7 @@
 %{?sle15_python_module_pythons}
 Name:           python-llvmlite
 # Note: this has to be in sync with Numba releases
-Version:        0.45.1
+Version:        0.46.0
 Release:        0
 Summary:        Lightweight wrapper around basic LLVM functionality
 License:        BSD-2-Clause
