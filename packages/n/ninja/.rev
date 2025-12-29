@@ -337,4 +337,13 @@
     <comment></comment>
     <requestid>1308315</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>74646905d274d55da106fd7c9ea5135a</srcmd5>
+    <version>1.13.2</version>
+    <time>1767017756</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.13.2:
+  * Fix Ninja exit code when interrupted (issue #2681) #2690</comment>
+    <requestid>1324564</requestid>
+  </revision>
 </revisionlist>

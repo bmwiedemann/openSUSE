@@ -1,7 +1,7 @@
 #
 # spec file for package ninja
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define name_ext -test
@@ -25,7 +26,7 @@
 %endif
 
 Name:           ninja%{name_ext}
-Version:        1.13.1
+Version:        1.13.2
 Release:        0
 Summary:        A small build system closest in spirit to Make
 License:        Apache-2.0
@@ -86,6 +87,6 @@ install -D -p -m 0644 %{SOURCE1} %{buildroot}%{_rpmconfigdir}/macros.d/macros.ni
 %{_datadir}/vim
 %{_datadir}/zsh
 %{_rpmconfigdir}/macros.d/macros.ninja
+%endif
 
 %changelog
-%endif
