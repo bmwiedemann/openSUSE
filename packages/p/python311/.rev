@@ -1748,4 +1748,21 @@ C API
       (CVE-2025-8291, bsc#1251305).</comment>
     <requestid>1318940</requestid>
   </revision>
+  <revision rev="62" vrev="3">
+    <srcmd5>6fdac4b2e1a154a3274c0ce4efb8b002</srcmd5>
+    <version>3.11.14</version>
+    <time>1767017746</time>
+    <user>anag_factory</user>
+    <comment>- Add CVE-2025-13836-http-resp-cont-len.patch (bsc#1254400,
+  CVE-2025-13836) to prevent reading an HTTP response from
+  a server, if no read amount is specified, with using
+  Content-Length per default as the length.
+- Add CVE-2025-12084-minidom-quad-search.patch prevent quadratic
+  behavior in node ID cache clearing (CVE-2025-12084,
+  bsc#1254997).
+- Add CVE-2025-13837-plistlib-mailicious-length.patch protect
+  against OOM when loading malicious content (CVE-2025-13837,
+  bsc#1254401).</comment>
+    <requestid>1324013</requestid>
+  </revision>
 </revisionlist>

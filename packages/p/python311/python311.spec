@@ -191,6 +191,15 @@ Patch25:        gh139257-Support-docutils-0.22.patch
 # PATCH-FIX-UPSTREAM CVE-2025-6075-expandvars-perf-degrad.patch bsc#1252974 mcepl@suse.com
 # Avoid potential quadratic complexity vulnerabilities in path modules
 Patch26:        CVE-2025-6075-expandvars-perf-degrad.patch
+# PATCH-FIX-UPSTREAM CVE-2025-13836-http-resp-cont-len.patch bsc#1254400 mcepl@suse.com
+# Avoid loading possibly compromised length of HTTP response
+Patch27:        CVE-2025-13836-http-resp-cont-len.patch
+# PATCH-FIX-UPSTREAM CVE-2025-12084-minidom-quad-search.patch bsc#1254997 mcepl@suse.com
+# prevent quadratic behavior in node ID cache clearing 
+Patch28:        CVE-2025-12084-minidom-quad-search.patch
+# PATCH-FIX-UPSTREAM CVE-2025-13837-plistlib-mailicious-length.patch bsc#1254401 mcepl@suse.com
+# protect against OOM when loading malicious content
+Patch29:        CVE-2025-13837-plistlib-mailicious-length.patch 
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  crypto-policies-scripts
