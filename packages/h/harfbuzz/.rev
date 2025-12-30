@@ -1331,4 +1331,34 @@ New stable rel</comment>
   + Documentation fixes. (forwarded request 1315662 from iznogood)</comment>
     <requestid>1315783</requestid>
   </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>ba455943583f37e70c726f6ffd9e8b7a</srcmd5>
+    <version>12.3.0</version>
+    <time>1767092446</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 12.3.0:
+  + Invalid font tables (eg. GSUB/GPOS) are outright rejected,
+    instead of partially validated and used. This behavior is
+    different from DirectWrite and HarfRust, and is in line with
+    CoreText.
+  + Various speed optimizations:
+    - AAT shaping: speed up state machine on Apple silicon using a
+      fast-path.
+    - 12% faster in LucidaGrande benchmark.
+    - OpenType shaping: speed up (Chain)Context lookup shaping
+      using a fast-path and Coverage caching. 20% speedup in
+      NotoNastaliqUrdu benchmark.
+    - Drawing mega variable-fonts: 30% speedup on GoogleSansFlex
+      benchmark.
+    - Drawing VARC fonts: 5% speedup on varc-hanzi benchmark.
+    - Always apply synthetic slant around horizontal glyph origin
+      in hb-draw API.
+    - Fix undefined C++ behavior in some uses union.
+    - Remove the disabled by default uniscribe-bug-compatible mode
+      from Indic and Khmer shapers, that used to be used when
+      testing against Uniscribe shaping behaviour.
+    - Support full instancing fonts with v2 avar table.
+    - Various subsetting, build, fuzzing, and documentation fixes. (forwarded request 1324573 from iznogood)</comment>
+    <requestid>1324682</requestid>
+  </revision>
 </revisionlist>
