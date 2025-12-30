@@ -336,4 +336,40 @@
   * Upgrade Linux dependencies: OpenSSL 3.0.15, CURL 8.10.1</comment>
     <requestid>1265510</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>6b7ef5d116b696d90aef49259c06e083</srcmd5>
+    <version>2.12.1</version>
+    <time>1767092418</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.12.1:
+  * Restored macOS binaries compatibility with macOS 13 and 14
+  * Fix to restore macOS 13 and 14 compatibility in prebuilt
+    binaries present in `librdkafka.redist`.
+  * Happening since 2.12.0 (#5219).
+  * Starting with **librdkafka 2.12.0**, the next generation
+    consumer group rebalance protocol defined in **KIP-848** is
+    **production-ready**. Please refer the following migration
+    guide for moving from `classic` to `consumer` protocol.
+  * Support for OAUTHBEARER metadata based authentication types,
+  * starting with Azure IMDS. Introduction available (#5155).
+  * Fix compression types read issue in GetTelemetrySubscriptions
+    response
+  * for big-endian architectures (#5183, @paravoid).
+  * Fix for KIP-1102 time based re-bootstrap condition (#5177).
+  * Fix for discarding the member epoch in a consumer group
+    heartbeat response when leaving with an inflight HB (#4672).
+  * Fix for an error being raised after a commit due to an
+    existing error in the topic partition (#4672).
+  * Fix double free of headers in `rd_kafka_produceva` method
+    (@blindspotbounty, #4628).
+  * Fix to ensure `rd_kafka_query_watermark_offsets` enforces the
+    specified timeout and does not continue beyond timeout expiry
+    (#5201).
+  * New walkthrough in the Wiki about configuring Kafka cross-
+    realm authentication between Windows SSPI and MIT Kerberos.
+
+    `ssl.certificate.pem` or `ssl_certificate` or
+    documentation says it's needed for socket buffers to take</comment>
+    <requestid>1324618</requestid>
+  </revision>
 </revisionlist>
