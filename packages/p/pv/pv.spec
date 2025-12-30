@@ -18,7 +18,7 @@
 
 
 Name:           pv
-Version:        1.9.34
+Version:        1.10.3
 Release:        0
 Summary:        Tool for monitor the progress of data through pipes
 License:        GPL-3.0-or-later
