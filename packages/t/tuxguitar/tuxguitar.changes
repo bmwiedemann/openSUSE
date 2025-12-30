@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec 28 11:12:54 UTC 2025 - guiv42 <guiv42@tuta.io>
+
+- Updated to new upstream release 2.0.1
+  * new file format
+  * new free edition mode
+  * new configurable main toolbar
+- Modified patch:
+  * 0004-startscript.patch
+    + rediff
+
+-------------------------------------------------------------------
 Fri Nov 14 13:31:50 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build for sle16, where apparently the suil-devel package is

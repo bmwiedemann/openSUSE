@@ -201,4 +201,12 @@
     <comment>Fix build against SLE 16.0 and 16.1</comment>
     <requestid>1317835</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>407858fc7937c6577643b66a7db4fd06</srcmd5>
+    <version>2.0.1</version>
+    <time>1767092499</time>
+    <user>anag_factory</user>
+    <comment>2.0.1</comment>
+    <requestid>1324745</requestid>
+  </revision>
 </revisionlist>

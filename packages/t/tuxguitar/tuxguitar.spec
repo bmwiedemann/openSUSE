@@ -26,7 +26,7 @@
 %global with_lv2 0
 %endif
 Name:           tuxguitar
-Version:        1.6.6
+Version:        2.0.1
 Release:        0
 Summary:        A multitrack tablature editor and player written in Java-SWT
 License:        LGPL-2.1-or-later
@@ -85,7 +85,7 @@ find . -name "*.so" -print -delete
 find . \( -name "*.xml" -or -name "*.gradle"  -or -name "*.properties" -or -name "*.html" -or -name control -or -name Info.plist -or -name CHANGES \) -and -not -path "./website/*" -and -type f -exec sed -i "s/9.99-SNAPSHOT/%{version}/" '{}' \;
 
 # Also set the version in the "Help - About" dialog
-sed -i "s/static final String RELEASE_NAME =.*/static final String RELEASE_NAME = (TGApplication.NAME + \" %{version}\");/" desktop/TuxGuitar/src/org/herac/tuxguitar/app/view/dialog/about/TGAboutDialog.java
+sed -i "s/static final String RELEASE_NAME =.*/static final String RELEASE_NAME = (TGApplication.NAME + \" %{version}\");/" desktop/TuxGuitar/src/app/tuxguitar/app/view/dialog/about/TGAboutDialog.java
 
 %if !%{with_lv2}
 %patch -P 1 -p1
