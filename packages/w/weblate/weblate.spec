@@ -21,6 +21,7 @@
 %define WLETCDIR %{_sysconfdir}/weblate
 %define _name Weblate
 Name:           weblate
+# version 5.14.3 is the last to support Python 3.11
 Version:        5.14.3
 Release:        0
 Summary:        Web-based translation tool
@@ -37,6 +38,10 @@ Source2:        %{name}.keyring
 Patch:          skip-test_ocr.patch
 # PATCH-FIX-UPSTREAM https://github.com/WeblateOrg/weblate/pull/16891 fix: make add_site_url filter more robust
 Patch:          site-url.patch
+# PATCH-FIX-UPSTREAM https://github.com/WeblateOrg/weblate/pull/17330 fix(validators): reject certain paths from being used
+Patch:          CVE-2025-68398_1.patch
+# PATCH-FIX-UPSTREAM https://github.com/WeblateOrg/weblate/pull/17345 fix(vcs): use GIT_SSH_COMMAND to override ssh command
+Patch:          CVE-2025-68398_2.patch
 BuildRequires:  bitstream-vera
 BuildRequires:  borgbackup >= 1.4.0
 BuildRequires:  fdupes

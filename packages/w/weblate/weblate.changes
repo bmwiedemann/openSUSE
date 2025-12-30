@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 29 16:11:28 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream patches CVE-2025-68398_1.patch and CVE-2025-68398_2.patch
+  to fix bsc#1255374 
+
+-------------------------------------------------------------------
 Mon Nov 10 17:27:45 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.14.3 (CVE-2025-64326, bsc#1253125)
