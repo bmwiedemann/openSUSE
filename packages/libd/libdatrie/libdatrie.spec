@@ -1,7 +1,7 @@
 #
 # spec file for package libdatrie
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libdatrie
-Version:        0.2.13
+Version:        0.2.14
 Release:        0
 Summary:        Double-Array Trie Library
 License:        LGPL-2.1-only

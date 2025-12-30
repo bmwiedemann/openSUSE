@@ -189,4 +189,20 @@
     <comment></comment>
     <requestid>871391</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a1f9061403215238c93db61d8150973b</srcmd5>
+    <version>0.2.14</version>
+    <time>1767092415</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.2.14:
+  * Check and link to locale_charset() available in libiconv
+  * Problem fixes for parallel build.
+  * Catch more malloc() failures caught by Coverity Scan
+  * Updated build scripts to latest toolchain.
+  * Minor documentation fix.
+  * Minor error handling improvement in tests.
+
+- remove static libraries</comment>
+    <requestid>1324609</requestid>
+  </revision>
 </revisionlist>

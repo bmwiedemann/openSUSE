@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec 28 23:06:26 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.14:
+  * Check and link to locale_charset() available in libiconv
+  * Problem fixes for parallel build.
+  * Catch more malloc() failures caught by Coverity Scan
+  * Updated build scripts to latest toolchain.
+  * Minor documentation fix.
+  * Minor error handling improvement in tests.
+
+-------------------------------------------------------------------
 Thu Feb 11 22:45:51 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.2.13:
@@ -25,7 +36,7 @@ Tue Aug 25 21:45:14 UTC 2020 - Dirk Mueller <dmueller@suse.com>
     of database size.
   - Fix trie_state_get_data() on a prefix key.
   - Fix reported segfault on full-range alpha map.
-   
+
 -------------------------------------------------------------------
 Mon Feb 19 11:29:35 UTC 2018 - jengelh@inai.de
 
@@ -139,7 +150,7 @@ Mon Jan  4 16:59:23 CET 2010 - vuntz@opensuse.org
 -------------------------------------------------------------------
 Thu Feb 19 22:22:08 CET 2009 - crrodriguez@suse.de
 
-- remove static libraries 
+- remove static libraries
 
 -------------------------------------------------------------------
 Mon Apr  7 15:23:59 CEST 2008 - uli@suse.de
