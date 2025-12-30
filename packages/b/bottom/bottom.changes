@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Dec 29 12:52:10 UTC 2025 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Update to version 0.12.2:
+  * Features
+    * Add spacebar shortcut to toggle process tree expansion
+    * Add read-only mode, where things like killing processes is
+      disabled
+    * Add enter key shortcut to close process search widget
+    * Add nice (UNIX-only) and priority columns to the process
+      widget
+  * Bug Fixes
+    * Fix a bug around quote parsing in the process widget's search
+  * Other
+    * Rename Linux icon to avoid collision with generic "bottom"
+      icon
+
+-------------------------------------------------------------------
 Mon Nov 17 10:19:53 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.11.4:
