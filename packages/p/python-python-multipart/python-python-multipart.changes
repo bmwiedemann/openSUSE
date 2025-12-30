@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec 28 19:46:11 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.0.21:
+  * Add support for Python 3.14 and drop EOL 3.8 and 3.9 #216.
+
+-------------------------------------------------------------------
 Tue Feb  4 17:06:23 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.0.20:

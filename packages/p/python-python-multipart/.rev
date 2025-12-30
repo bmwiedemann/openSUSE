@@ -105,4 +105,13 @@ Also a dep of fastapi (https://repology.org/project/python:fastapi/versions) and
   * Handle messages containing only end boundary #142.</comment>
     <requestid>1243192</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3620ad7683420d586a04f22d7b617580</srcmd5>
+    <version>0.0.21</version>
+    <time>1767092412</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.0.21:
+  * Add support for Python 3.14 and drop EOL 3.8 and 3.9 #216.</comment>
+    <requestid>1324591</requestid>
+  </revision>
 </revisionlist>
