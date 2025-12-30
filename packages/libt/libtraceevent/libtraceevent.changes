@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec 28 23:46:04 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.6:
+  * libtraceevent plugins: Add plugin_net to handle byte swap
+    during print
+  * libtraceevent: Return error on event parsing if format parsing
+    fails
+  * libtraceevent: Add support for nested ?: conditionals
+  * libtraceevent: Add support for __print_dynamic_array() macro
+
+-------------------------------------------------------------------
 Sun Mar 30 10:59:16 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.4:

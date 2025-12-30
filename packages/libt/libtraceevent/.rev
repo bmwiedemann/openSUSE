@@ -122,4 +122,18 @@
   * Print function pointer address when TEP_EVENT_FL_PRINTRAW is specified</comment>
     <requestid>1265512</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>987fbfce1b09c5d06932755beadbcf78</srcmd5>
+    <version>1.8.6</version>
+    <time>1767092420</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.8.6:
+  * libtraceevent plugins: Add plugin_net to handle byte swap
+    during print
+  * libtraceevent: Return error on event parsing if format parsing
+    fails
+  * libtraceevent: Add support for nested ?: conditionals
+  * libtraceevent: Add support for __print_dynamic_array() macro</comment>
+    <requestid>1324620</requestid>
+  </revision>
 </revisionlist>
