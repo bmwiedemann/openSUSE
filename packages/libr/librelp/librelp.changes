@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Dec 28 23:01:00 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.12.0:
+  * API: add ability to communicate source port back to caller
+  * tcp: tcp: avoid deprecated ENGINE_cleanup
+  * relp: fix build against `gcc-14`
+  * tests: Include missing sys/time.h
+  * bugfix: code adapted to C23 (as used in gcc 15 by default)
+
+-------------------------------------------------------------------
 Fri Jan 20 16:42:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.11.0:
@@ -169,7 +179,7 @@ Mon Apr  4 11:55:31 UTC 2016 - astieger@suse.com
 
 - librelp 1.2.10:
   * fix a problem with sending large buffers
-  * improve sender/receiver code 
+  * improve sender/receiver code
   * enable compatibility with older versions of GnuTLS
 
 -------------------------------------------------------------------
@@ -257,8 +267,8 @@ Tue Jul 16 10:52:06 UTC 2013 - andreas.stieger@gmx.de
 Thu Jul 11 21:41:09 UTC 2013 - andreas.stieger@gmx.de
 
 - update to 1.1.5:
-  This is a bug-fixing release that takes care of a memory leak on 
-  connection close as well as potential misadressing on session 
+  This is a bug-fixing release that takes care of a memory leak on
+  connection close as well as potential misadressing on session
   close.
   - bugfix: memory leak on connection close
   - bugfix: potential misadressing on session close
@@ -267,9 +277,9 @@ Thu Jul 11 21:41:09 UTC 2013 - andreas.stieger@gmx.de
 Thu Jul 11 21:35:53 UTC 2013 - andreas.stieger@gmx.de
 
 - update to 1.1.4:
-  This version of the library provides certificate wildcard name 
-  checks. It also supports enhanced performance options (burst 
-  support, requires support from the caller). It also contains 
+  This version of the library provides certificate wildcard name
+  checks. It also supports enhanced performance options (burst
+  support, requires support from the caller). It also contains
   some bug fixes, especially for BSD.
   - fix build problems on BSD
   - add ability to specify a non-standard RELP Window size

@@ -336,4 +336,24 @@ No indication of GPL-3.0 ^only^ files in package. Fedora also using GPL-3.0+ (fo
     <comment></comment>
     <requestid>1061809</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>46e0f959f6d00b781d3afc38fcc44153</srcmd5>
+    <version>1.12.0</version>
+    <time>1767092414</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.12.0:
+  * API: add ability to communicate source port back to caller
+  * tcp: tcp: avoid deprecated ENGINE_cleanup
+  * relp: fix build against `gcc-14`
+  * tests: Include missing sys/time.h
+  * bugfix: code adapted to C23 (as used in gcc 15 by default)
+
+  * improve sender/receiver code
+  This is a bug-fixing release that takes care of a memory leak on
+  connection close as well as potential misadressing on session
+  This version of the library provides certificate wildcard name
+  checks. It also supports enhanced performance options (burst
+  support, requires support from the caller). It also contains</comment>
+    <requestid>1324607</requestid>
+  </revision>
 </revisionlist>

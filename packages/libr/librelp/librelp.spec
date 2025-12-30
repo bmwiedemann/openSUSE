@@ -1,7 +1,7 @@
 #
 # spec file for package librelp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define library_name librelp0
 Name:           librelp
-Version:        1.11.0
+Version:        1.12.0
 Release:        0
 Summary:        A reliable logging library
 License:        GPL-3.0-or-later
