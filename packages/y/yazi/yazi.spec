@@ -17,7 +17,7 @@
 
 
 Name:           yazi
-Version:        25.5.31
+Version:        25.12.29
 Release:        0
 Summary:        Blazing fast terminal file manager written in Rust, based on async I/O
 License:        MIT
@@ -106,6 +106,9 @@ export VERGEN_GIT_SHA='openSUSE'
 install -Dm 644 yazi-boot/completions/yazi.bash %{buildroot}%{_datadir}/bash-completion/completions/yazi
 install -Dm 644 yazi-boot/completions/yazi.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/yazi.fish
 install -Dm 644 yazi-boot/completions/_yazi %{buildroot}%{_datadir}/zsh/site-functions/_yazi
+# install the desktop file
+install -Dm 0644 assets/yazi.desktop %{buildroot}/%{_datadir}/applications/yazi.desktop
+install -Dm 0644 assets/logo.png %{buildroot}/%{_datadir}/pixmaps/yazi.png
 
 %check
 %{cargo_test}
@@ -115,6 +118,8 @@ install -Dm 644 yazi-boot/completions/_yazi %{buildroot}%{_datadir}/zsh/site-fun
 %doc README.md
 %{_bindir}/%{name}
 %{_bindir}/ya
+%{_datadir}/applications/yazi.desktop
+%{_datadir}/pixmaps/yazi.png
 
 %files bash-completion
 %{_datadir}/bash-completion
