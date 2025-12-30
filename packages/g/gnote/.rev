@@ -890,4 +890,14 @@ Search-provider is now it's own subpackage (forwarded request 180587 from dimsta
     <comment></comment>
     <requestid>1320869</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>c2dd609fb92c3e84bab2813de1a63775</srcmd5>
+    <version>49.2</version>
+    <time>1767092517</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 49.2:
+  + Fix possible crash in a rare formatting scenarios
+  + Updated translations. (forwarded request 1324728 from iznogood)</comment>
+    <requestid>1324759</requestid>
+  </revision>
 </revisionlist>

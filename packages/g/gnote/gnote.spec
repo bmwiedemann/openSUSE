@@ -20,7 +20,7 @@
 %define glib_version 2.74
 
 Name:           gnote
-Version:        49.1
+Version:        49.2
 Release:        0
 Summary:        A Port of Tomboy to C++
 License:        GPL-3.0-or-later
