@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Dec 29 07:29:17 UTC 2025 - Glass Su <glass.su@suse.com>
+
+- update lvm.conf: sync up with upstream v2_03_38 (bsc#1255680)
+  - Remove unused config options:
+    - allocation/vdo_use_metadata_hints
+    - allocation/vdo_write_policy
+    - allocation/vdo_check_point_frequency
+  - New config options
+    + config/validate_metadata
+    + devices/devicesfile_backup_limit
+    + devices/{device_ids_refresh, device_ids_refresh_checks}
+    + allocation/pvmove_max_segment_size_mb
+    + global/sanlock_align_size
+    + global/{thin_restore_executable, thin_restore_options, cache_restore_executable, cache_restore_options}
+    + global/lvresize_fs_helper_executable
+  - Update comments of config options
+    - global/vdo_disabled_features
+    - devices/scan_lvs
+    - log/report_command_log
+    - log/command_log_selection
+    - global/system_id_source
+    - report/headings
+  - Typo fixes
+
+-------------------------------------------------------------------
 Tue Dec 22 04:56:09 UTC 2025 - Glass Su <glass.su@suse.com>
 
 - Update lvm2 from LVM2.2.03.29 to LVM2.2.03.38
