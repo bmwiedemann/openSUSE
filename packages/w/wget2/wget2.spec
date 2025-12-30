@@ -1,7 +1,7 @@
 #
 # spec file for package wget2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           wget2
-%define lname libwget2
-Version:        2.1.0
+%define lname libwget3
+Version:        2.2.0
 Release:        0
 Summary:        A Tool for Mirroring FTP and HTTP Servers
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -31,6 +31,7 @@ BuildRequires:  doxygen
 BuildRequires:  flex
 BuildRequires:  gettext-devel >= 0.18.1
 BuildRequires:  libidn2-devel >= 0.14
+BuildRequires:  libproxy-devel
 BuildRequires:  libtool >= 2.2
 BuildRequires:  libunistring-devel
 BuildRequires:  pkg-config
@@ -96,8 +97,7 @@ to build against libwget.
 rm -f "%buildroot/%_bindir"/*_noinstall "%buildroot/%_libdir"/*.la
 %find_lang %name
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -f %name.lang
 %_bindir/wget*

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec 30 09:53:21 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.2.0
+  * Don't truncate file when -c and -O are combined
+  * Don't log URI userinfo to logs
+  * Fix downloading multiple files via HTTP/2
+  * Support connecting with HTTP/1.0 proxies
+  * Ignore 1xx HTTP responses for HTTP/1.1
+  * Disable TCP Fast Open by default
+  * Fix segfault when OCSP response is missing
+  * Add libproxy support
+
+-------------------------------------------------------------------
 Fri Sep  1 11:56:36 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.1.0
