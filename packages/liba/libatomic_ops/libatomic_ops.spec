@@ -17,7 +17,7 @@
 
 
 Name:           libatomic_ops
-Version:        7.8.2
+Version:        7.10.0
 Release:        0
 Summary:        A portable library for atomic memory operations
 License:        GPL-2.0-or-later AND MIT

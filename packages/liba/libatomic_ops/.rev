@@ -161,4 +161,41 @@
     <comment>- Enable testsuite on qemu build (forwarded request 1139161 from Andreas_Schwab)</comment>
     <requestid>1139163</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>18351ac814f387ce229c86b617f91bbe</srcmd5>
+    <version>7.10.0</version>
+    <time>1767092417</time>
+    <user>anag_factory</user>
+    <comment>- update to 7.10.0:
+  * Add comment that overflow of a counter in AO_stack_pop is
+    impossible
+  * Add missed copyright header to ibmc/powerpc.h
+  * Adjust/reformat copyright header in armcc/arm_v6.h
+  * Build tests by default in CMake script
+  * Change AO_REAL_NEXT_PTR() to accept argument as reference
+    only
+  * Change static initializer of initial_heap_ptr and spin_dummy
+    to zero
+  * Consistently use '__sparc' predefined macro w/o trailing
+    underscores
+  * Define AO_N_BITS to a bigger value if pointer type is larger
+    than size_t
+  * Define AO_uintptr_t and use it in AO malloc and stack
+    (refactoring)
+  * Define functions and variables of tests as static
+    (refactoring)
+  * Discontinue support of configure '--enable-gcov' option
+  * Do not define AO_GCC_FORCE_HAVE_CAS for modern clang and gcc
+    for RISC-V
+  * Eliminate 'can be declared as pointer to const' cppcheck FP
+    in test_atomic
+  * Eliminate 'condition is always true' cppcheck style warnings
+    in test_atomic
+  * Fix 'libtool library used but LIBTOOL is undefined'
+    autoreconf error
+  * Give verbose error message if multiple include
+    test_and_set_t_is_*_t.h
+  * Guard against direct include of internal headers from outside</comment>
+    <requestid>1324613</requestid>
+  </revision>
 </revisionlist>
