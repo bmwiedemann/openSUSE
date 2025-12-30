@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Dec 29 13:43:08 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.6.5
+  * [General]  NTLM hash leak in Scribus
+  * [User Interface]  Dark Color Schema unusable
+  * [Color Management]  Color picker (eyedropper) does not work
+    (always returns "black")
+  * [General]  Layer disappears after editing inline object
+    (layer visibility scrambling)
+  * [General]  Failure to build with poppler 25.10.0
+  * [PDF]  Scribus crashes when exporting pdf via python and the
+    document has a PDF-Push-Button or other PDF-thingy
+  * [Build System]  Won't Compile: 'const_key_value_iterator' does
+    not name a type
+  * [Styles]  The line spacing mode drop down is not correctly
+    displayed for styles with a parent
+  * [Build System]  Fails to build with poppler 25.07
+  * [PDF]  Build failure with podofo 1.0
+  * [Scripter]  Undocumented feature in scribus.ImageExport: transparentBckgnd
+  * [Scripter]  Documentation of function getBoundingBox()
+    missing from HTML docs
+  * [Fonts]  Additional Font Path Settings reset
+  * [General]  Crash when loading legacy file produced with
+    Scribus 1.4.6
+  * [Scripter]  Using unknown/misspelled named parameter in API
+    call causes Scribus crash
+  * [Canvas]  Sometimes all items in a document become invisible
+  * [General]  Failure to build with poppler 25.09.0
+  * [General]  Accept negative values for the rotation in the
+    properties palette
+  * [General]  1.6.4 fails to build with popper 25.06.0
+  * [Fonts]  Font rendering different after PDF export
+  * [Printing]  Print Dialog - Inconsistency between output
+    filename extension and printing language
+  * [Printing]  Print Dialog - Crop marks not present in output
+    when they are the only marks selected
+- Drop patches:
+  * 0001-Fix-build-with-poppler-25.06.0.patch
+  * 0001-Fix-build-with-PoDoFo-1.0.0.patch
+  * 0001-Fix-build-with-poppler-25.07.0.patch
+  * 0001-Failure-to-build-with-poppler-25.09.0.patch
+  * 0001-Fix-build-with-poppler-25.10.0.patch
+
+-------------------------------------------------------------------
 Thu Oct  9 21:32:04 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change:

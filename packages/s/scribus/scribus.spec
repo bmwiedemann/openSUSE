@@ -39,29 +39,18 @@
 %endif
 
 Name:           scribus
-Version:        1.6.4
+Version:        1.6.5
 Release:        0
 Summary:        Page Layout and Desktop Publishing (DTP)
 License:        GPL-2.0-or-later
 URL:            https://www.scribus.net/
-# https://sourceforge.net/projects/scribus/files/scribus/1.6.4/
-Source0:        %{name}-%{version}.tar.xz
+Source0:        https://downloads.sourceforge.net/scribus/scribus-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.asc
+Source1:        https://downloads.sourceforge.net/scribus/scribus-%{version}.tar.xz.asc
 Source2:        scribus.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Make-sure-information-displayed-on-the-about-window-.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Fix-build-with-poppler-25.06.0.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-Fix-build-with-PoDoFo-1.0.0.patch
-# PATCH-FIX-UPSTREAM
-Patch3:         0001-Fix-build-with-poppler-25.07.0.patch
-# PATCH-FIX-UPSTREAM
-Patch4:         0001-Failure-to-build-with-poppler-25.09.0.patch
-# PATCH-FIX-UPSTREAM
-Patch5:         0001-Fix-build-with-poppler-25.10.0.patch
 BuildRequires:  cmake >= 3.14.0
 BuildRequires:  cups-devel
 BuildRequires:  dos2unix
