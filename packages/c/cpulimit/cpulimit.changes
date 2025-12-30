@@ -1,9 +1,20 @@
 -------------------------------------------------------------------
+Sun Dec 28 23:20:52 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2:
+  * Updated kernel HZ value to default to 250 on Linux since that
+  * is the configuration default.
+  * Added new command line parameter, -j (--hz) which allows the
+    user to override the kernel HZ value. We assume 250 on Linux and
+    100 on other kernels, but the user can set this to any integer
+    value.
+
+-------------------------------------------------------------------
 Mon May 20 13:10:29 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 3.1:
-  * The new version fixes an issue with monitoring a target process which 
-    has multiple children and a low CPU limit throttle. In some cases this 
+  * The new version fixes an issue with monitoring a target process which
+    has multiple children and a low CPU limit throttle. In some cases this
     situation could lead to LimitCPU crashing. This has been fixed and the
     monitoring of children processes has been made slightly more efficient.
 
@@ -90,7 +101,7 @@ Fri Dec 26 09:11:15 UTC 2014 - andrea@opensuse.org
   value such as SIGCONT, SIGSTOP, SIGINT, SIGTERM.
 
 - from version 2.1
-  + Added the --quiet (-q) flag to make 
+  + Added the --quiet (-q) flag to make
   limitcpu run silently
   + Make sure error messages are printed to stderr.
   + Placed source code in Subversion (svn) repository.
