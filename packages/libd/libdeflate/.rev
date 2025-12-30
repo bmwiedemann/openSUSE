@@ -145,4 +145,14 @@
     <comment></comment>
     <requestid>1303580</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0a040ad294c6df8c98d7f29b3d28a820</srcmd5>
+    <version>1.25</version>
+    <time>1767092421</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.25:
+  * Fixed a build error with gcc 16.
+  * The libdeflate CMake package is now relocatable.</comment>
+    <requestid>1324623</requestid>
+  </revision>
 </revisionlist>
