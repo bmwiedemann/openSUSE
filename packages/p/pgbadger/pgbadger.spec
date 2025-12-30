@@ -1,7 +1,7 @@
 #
 # spec file for package pgbadger
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2013-2015 Lars Vogdt
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
@@ -31,7 +31,7 @@
 %endif
 
 Name:           pgbadger
-Version:        13.1
+Version:        13.2
 Release:        0
 License:        MIT
 Summary:        A fast PostgreSQL log analyzer
@@ -42,7 +42,6 @@ Source1:        %{name}-cron
 Source2:        %{name}.timer
 Source3:        %{name}.service
 Source4:        README.SUSE
-Patch0:         pgbadger-13.1-precedence.patch
 BuildRequires:  cron
 BuildRequires:  perl
 BuildRequires:  perl(Benchmark)
