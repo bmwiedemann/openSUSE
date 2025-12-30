@@ -6,6 +6,7 @@ Fri Dec 19 13:51:03 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
   * Documentation theme is now downloaded during `make docs` instead of at
   * configure time
   * Fixed const-correctness issues throughout the library
+- This release helps to address boo#1255045
 
 -------------------------------------------------------------------
 Tue Dec 16 10:45:26 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
