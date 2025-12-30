@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec 28 19:28:44 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.6:
+  * Env for calling Python applications
+  * No warning emitting in case of SCM error when
+    fallback_version is used. Fixes #293  -
+  * Don't silently ignores invalid `PDM_BUILD_SCM_VERSION` env
+    var .
+  * Add license file metadata  -
+
+-------------------------------------------------------------------
 Wed Jul 23 13:05:39 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.4.5

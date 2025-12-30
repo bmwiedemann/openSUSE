@@ -71,4 +71,18 @@
     <comment></comment>
     <requestid>1295521</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ccf04726227558eb78a88a115d8c3dfd</srcmd5>
+    <version>2.4.6</version>
+    <time>1767092409</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.4.6:
+  * Env for calling Python applications
+  * No warning emitting in case of SCM error when
+    fallback_version is used. Fixes #293  -
+  * Don't silently ignores invalid `PDM_BUILD_SCM_VERSION` env
+    var .
+  * Add license file metadata  -</comment>
+    <requestid>1324584</requestid>
+  </revision>
 </revisionlist>
