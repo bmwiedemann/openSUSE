@@ -1,7 +1,7 @@
 #
 # spec file for package grisbi
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           grisbi
-Version:        3.0.4
+Version:        3.90.0
 Release:        0
 Summary:        Personal Accounting Application
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Finance
 URL:            http://www.grisbi.org
 Source0:        https://downloads.sourceforge.net/project/grisbi/grisbi%20stable/3.0.x/%{version}/%{name}-%{version}.tar.bz2
-Source1:        https://downloads.sourceforge.net/project/grisbi/grisbi%20stable/3.0.x/%{version}/%{name}-%{version}.tar.bz2.asc
+Source1:        https://downloads.sourceforge.net/project/grisbi/grisbi%20stable/3.0.x/%{version}/%{name}-%{version}.tar.bz2.sig
 
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig

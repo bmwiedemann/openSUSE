@@ -235,4 +235,12 @@
   + Preparing for the transition to gtk4 (forwarded request 1240282 from amanzini)</comment>
     <requestid>1240453</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>c095c8aaf5d0a313babce56cbdcc32e8</srcmd5>
+    <version>3.90.0</version>
+    <time>1767092525</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1324787</requestid>
+  </revision>
 </revisionlist>
