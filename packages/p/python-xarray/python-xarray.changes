@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Mon Dec 22 11:46:24 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2025.12.0
+  * This release rolls back the default engine for HTTP urls, adds
+    support for DataTree objects in combine_nested and contains
+    numerous bug fixes.
+- Release 2025.11.0
+  * This release changes the default for keep_attrs such that
+    attributes are preserved by default, adds support for DataTree
+    in top-level functions, and contains several memory and
+    performance improvements as well as a number of bug fixes.
+- Release 2025.10.0 and 2025.10.1
+  * These releases revert a breaking change to Xarray's preferred
+    netCDF backend.
+- Release 2025.09.1
+  * This release contains improvements to netCDF IO and the
+    DataTree.from_dict() constructor, as well as a variety of bug
+    fixes. In particular, the default netCDF backend has switched
+    from netCDF4 to h5netcdf, which is typically faster.
+- Release 2025.09.0
+  * This release brings a number of small improvements and fixes,
+    especially related to writing DataTree objects and netCDF files
+    to disk.
+  ## New Features
+  * Support rechunking by SeasonResampler for seasonal data
+    analysis (GH10425, PR10519). By Dhruva Kumar Kaushal.
+  * Add convenience methods to Coordinates (PR10318) By Justus
+    Magin.
+  * Added load_datatree() for loading DataTree objects into memory
+    from disk. It has the same relationship to open_datatree(), as
+    load_dataset() has to open_dataset(). By Stephan Hoyer.
+  * compute=False is now supported by DataTree.to_netcdf() and
+    DataTree.to_zarr(). By Stephan Hoyer.
+  * open_dataset will now correctly infer a path ending in .zarr/
+    as zarr By Ian Hunt-Isaak.
+  ## Breaking changes
+  * Following pandas 3.0 (pandas-dev/pandas#61985), Day is no
+    longer considered a Tick-like frequency. Therefore non-None
+    values of offset and non-"start_day" values of origin will have
+    no effect when resampling to a daily frequency for objects
+    indexed by a xarray.CFTimeIndex. As in pandas-dev/pandas#62101
+    warnings will be emitted if non default values are provided in
+    this context (GH10640, PR10650). By Spencer Clark.
+  * The default backend engine used by Dataset.to_netcdf() and
+    DataTree.to_netcdf() is now chosen consistently with
+    open_dataset() and open_datatree(), using whichever netCDF
+    libraries are available and valid, and preferring netCDF4 to
+    h5netcdf to scipy (GH10654). This will change the default
+    backend in some edge cases (e.g., from scipy to netCDF4 when
+    writing to a file-like object or bytes). To override these new
+    defaults, set engine explicitly. By Stephan Hoyer.
+  * The return value of Dataset.to_netcdf() without path is now a
+    memoryview object instead of bytes (PR10656). This removes an
+    unnecessary memory copy and ensures consistency when using
+    either engine="scipy" or engine="h5netcdf". If you need a bytes
+    object, simply wrap the return value of to_netcdf() with
+    bytes(). By Stephan Hoyer.
+- Release 2025.8.0
+  * This release brings the ability to load xarray objects
+    asynchronously, write netCDF as bytes, fixes a number of bugs,
+    and starts an important deprecation cycle for changing the
+    default values of keyword arguments for various xarray
+    combining functions.
+- Release 2025.7.0
+  * This release extends xarray's support for custom index classes,
+    restores support for reading netCDF3 files with SciPy, updates
+    minimum dependencies, and fixes a number of bugs.
+- Release 2025.6.0
+  * This release brings HTML reprs to the documentation, fixes to
+    flexible Xarray indexes, performance optimizations, more
+    ergonomic seasonal grouping and resampling
+- Update extras subpackages.
+  * Re-enable parallel.
+  * Remove dev: incomplete deps and not useful for system install
+
+-------------------------------------------------------------------
 Sun Mar 30 08:19:37 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2025.03.0:

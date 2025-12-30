@@ -1,7 +1,7 @@
 #
 # spec file for package python-xarray
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-xarray%{psuffix}
-Version:        2025.03.0
+Version:        2025.12.0
 Release:        0
 Summary:        N-D labeled arrays and datasets in Python
 License:        Apache-2.0
@@ -38,19 +38,26 @@ Source:         https://github.com/pydata/xarray/archive/refs/tags/v%{version}.t
 Patch0:         local_dataset.patch
 # PATCH-FIX-OPENSUSE: skip dependency on pytest-mypy
 Patch1:         no-mypy-test-plugin.patch
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.24
-Requires:       python-packaging >= 23.1
-Requires:       python-pandas >= 2.1
+Requires:       python-numpy >= 1.26
+Requires:       python-packaging >= 24.1
+Requires:       python-pandas >= 2.2
 Obsoletes:      python-xray <= 0.7
 BuildArch:      noarch
 %if %{with test}
+BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-env}
+BuildRequires:  %{python_module pytest-timeout}
+BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module ruff >= 0.8.0}
 BuildRequires:  %{python_module xarray-complete = %{version}}
 %endif
 # /SECTION
@@ -66,15 +73,15 @@ The Common Data Model for self-describing scientific data is used.
 The dataset is an in-memory representation of a netCDF file.
 
 %package accel
-# for minimum versions, check ci/requirements/min-all-deps.yml
 Summary:        The python xarray[accel] extra
 Requires:       python-Bottleneck
+Requires:       python-numba >= 0.62
 Requires:       python-opt-einsum
-Requires:       python-scipy >= 1.11
+Requires:       python-scipy >= 1.13
 Requires:       python-xarray = %{version}
 # not available yet
 Recommends:     python-flox
-Recommends:     python-numbagg >= 0.6
+Recommends:     python-numbagg >= 0.8
 
 %description accel
 The [accel] extra for xarray, N-D labeled arrays and datasets in Python
@@ -85,78 +92,51 @@ Use `pip --user install flox numbagg` to install from PyPI, if needed.
 Summary:        The python xarray[complete] extra
 Requires:       python-xarray = %{version}
 Requires:       python-xarray-accel = %{version}
-Requires:       python-xarray-dev = %{version}
 Requires:       python-xarray-io = %{version}
-#Requires:       python-xarray-parallel = %%{version}
+Requires:       python-xarray-parallel = %{version}
 Requires:       python-xarray-viz = %{version}
 
 %description complete
 The [complete] extra for xarray, N-D labeled arrays and datasets in Python
 
-%package dev
-Summary:        The python xarray[dev] extra
-Requires:       python-hypothesis
-Requires:       python-pytest
-Requires:       python-pytest-cov
-Requires:       python-pytest-env
-Requires:       python-pytest-timeout
-Requires:       python-pytest-xdist
-Requires:       python-ruff
-Requires:       python-xarray = %{version}
-Requires:       python-xarray-complete = %{version}
-# Not available and not really useful for us
-Recommends:     python-pre-commit
-
-%description dev
-The [dev] extra for xarray, N-D labeled arrays and datasets in Python
-Except pre-commit, Use `pip --user install pre-commit` to install, if needed.
-
 %package io
 Summary:        The python xarray[io] extra
 Requires:       python-cftime
 Requires:       python-fsspec
-Requires:       python-h5netcdf >= 1.3
-Requires:       python-netCDF4
+Requires:       python-h5netcdf
+Requires:       python-netCDF4 >= 1.6
 Requires:       python-pooch
-Requires:       python-scipy >= 1.11
+Requires:       python-scipy >= 1.13
 Requires:       python-xarray = %{version}
-Requires:       python-zarr >= 2.16
+Requires:       python-zarr >= 2.18
+# Not available yet
+Recommends:     python-pydap
 
 %description io
 The [io] extra for xarray, N-D labeled arrays and datasets in Python
 
+%package parallel
+Summary:        The python xarray[parallel] extra
+Requires:       python-dask-complete
+Requires:       python-xarray = %{version}
 
+%description parallel
+The [parallel] extra for xarray, N-D labeled arrays and datasets in Python
 
-
-
-
-
-
-
-
-
-
-
-#%%package parallel
-#Summary:        The python xarray[parallel] extra
-#Requires:       python-dask-complete >= 2023.11
-#Requires:       python-xarray = %%{version}
-#
-#%description parallel
-#The [parallel] extra for xarray, N-D labeled arrays and datasets in Python
 %package viz
 Summary:        The python xarray[viz] extra
-Requires:       python-matplotlib
+Requires:       python-matplotlib >= 3.8
 Requires:       python-seaborn
 Requires:       python-xarray = %{version}
 # Not available yet
+Recommends:     python-cartopy >= 0.23
 Recommends:     python-nc-time-axis
 
 %description viz
 The [viz] extra for xarray, N-D labeled arrays and datasets in Python
 
-Except nc-time-axis, because it's not packaged yet.
-Use `pip --user install nc-time-axis` to install from PyPI, if needed.
+Except nc-time-axis and cartopy, because they're not packaged yet.
+Use `pip --user install nc-time-axis cartopy` to install from PyPI, if needed.
 
 %prep
 %autosetup -p1 -n xarray-%{version}
@@ -191,8 +171,6 @@ fi
 donttest="$donttest or TestH5NetCDFDataRos3Driver"
 # NetCDF4 fails with these unsupported drivers
 donttest="$donttest or (TestNetCDF4 and test_compression_encoding and (szip or zstd or blosc_lz or blosc_zlib))"
-# skip parallelcompat as the 'parallel' subpackage is not built (see changes file)
-donttest="$donttest or test_h5netcdf_storage_options or test_source_encoding_always_present_with_fsspec"
 
 %pytest -n auto -rsEf -k "not ($donttest)" xarray
 %endif
@@ -212,17 +190,13 @@ donttest="$donttest or test_h5netcdf_storage_options or test_source_encoding_alw
 %doc README.md
 %license LICENSE
 
-%files %{python_files dev}
-%doc README.md
-%license LICENSE
-
 %files %{python_files io}
 %doc README.md
 %license LICENSE
 
-#%%files %%{python_files parallel}
-#%doc README.md
-#%%license LICENSE
+%files %{python_files parallel}
+%doc README.md
+%license LICENSE
 
 %files %{python_files viz}
 %doc README.md
