@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Dec 29 09:55:35 UTC 2025 - Nico Kruber <nico.kruber@gmail.com>
+
+- Update to 6.8.4:
+  + patched importing BIC in CAMT052.001.*
+  + fix unneeded TAN requests for Consorsbank
+    https://www.aquamaniac.de/rdm/issues/336
+  + fixed ultimate creditor/debtor
+  + aqpaypal: only enable env variable controlled logging if
+    AQPAYPAL_ENABLE_LOGTOFILE is defined. Then, setting environment variable
+    AQPAYPAL_LOG_COMM will sent and received messages to files
+    "paypal.log" and "paypal-XX.db" in the current working folder.
+
+-------------------------------------------------------------------
 Sat Dec 20 09:18:19 UTC 2025 - Nico Kruber <nico.kruber@gmail.com>
 
 - Update to 6.8.3:
