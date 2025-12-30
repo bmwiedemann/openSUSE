@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec 21 09:14:57 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.13:
+  * Add support for pipe operations, as supported by newer kernels
+  * Fixes for error path handling
+  * fixes to memory handling correctness
+  * fixes to build system and tests
+  * documentation updates and fixes
+  * fixes to undefined behavior issues and compiler issues
+
+-------------------------------------------------------------------
 Sat Aug 23 18:36:26 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.11:

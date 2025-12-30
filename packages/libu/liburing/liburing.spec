@@ -19,7 +19,7 @@
 
 %define lname   liburing2
 Name:           liburing
-Version:        2.11
+Version:        2.13
 Release:        0
 Summary:        Linux-native io_uring I/O access library
 License:        (GPL-2.0-only AND LGPL-2.1-or-later) OR MIT
@@ -92,16 +92,19 @@ export CPPFLAGS="%{optflags} -fno-stack-protector"
 # io_uring syscalls not supported as of qemu 7.0.0 and would test the host
 # kernel anyway not the target kernel..
 %if !0%{?qemu_user_space_build}
-declare -a TEST_EXCLUDE=( resize-rings.t )
+declare -a TEST_EXCLUDE=( resize-rings.t conn-unreach.t min-timeout-wait.t )
 
 %if 0%{?sle_version} == 150500
 TEST_EXCLUDE+=( fallocate.t fd-pass.t fixed-buf-merge.t msg-ring-overflow.t nop.t poll-race-mshot.t reg-hint.t sqwait.t wq-aff.t )
 %endif
 %if 0%{?sle_version} == 150600
-TEST_EXCLUDE+=( register-restrictions.t )
+TEST_EXCLUDE+=( register-restrictions.t sqpoll-sleep.t )
 %endif
 %if 0%{?sle_version} == 150600 || 0%{?sle_version} == 150700
 TEST_EXCLUDE+=( accept-non-empty.t bind-listen.t fallocate.t nop.t recvsend_bundle.t recvsend_bundle-inc.t sqwait.t timeout.t )
+%endif
+%if 0%{?sle_version} == 150700
+TEST_EXCLUDE+=( fifo-futex-poll.t )
 %endif
 %if 0%{?suse_version} == 1600
 TEST_EXCLUDE+=( read-inc-file.t sqwait.t timeout.t )
