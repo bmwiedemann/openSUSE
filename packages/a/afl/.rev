@@ -1679,4 +1679,33 @@
     <comment>- disable LTO, causes gcc ICE on s390x due to mix between clang and gcc lto. (bsc#1252006) (forwarded request 1316893 from msmeissn)</comment>
     <requestid>1316894</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>491f093ef61bb6bc4873fa1a8c0e1dd1</srcmd5>
+    <version>4.35c</version>
+    <time>1767092475</time>
+    <user>anag_factory</user>
+    <comment>- updated to 4.35c
+  - GUIFuzz++ merged: Unleashing Grey-box Fuzzing on Desktop Graphical User
+                      Interfacing Applications
+    https://futures.cs.utah.edu/papers/25ASE.pdf
+  - afl-fuzz:
+    - fix syncing issues with crashes and custom mutators by @AndyH-1
+    - another attempt to kill every client, thanks to @leonasdev
+  - afl-cc:
+    - Huge refactor for default pcguard instrumentation, several minor and
+      medium bug fixes, complete hidden decision coverage
+    - LTO: also added complete hidden decision coverage
+    - Various small fixes by @nbars, thanks!
+    - IJON fix to search for the necessary include
+    - Allow compiling the gcc plugin with clang++, thanks to @exoosh
+    - Fix for unusual bit sizes in cmplog-instructions-pass by @forzafedor
+  - qemu_mode:
+    - IJON support, thanks to @nj00001! see qemu_mode/README.md
+    - leaner, less warnings, thanks to @McSinyx!
+  - afl-tmin
+    - fix custom trimmings, thanks to @renatahodovan!
+  - custom mutators:
+    - Gramatron: fixes + cjson switch by @CarvedCoder, fix by @jubnzv (forwarded request 1324709 from msmeissn)</comment>
+    <requestid>1324710</requestid>
+  </revision>
 </revisionlist>

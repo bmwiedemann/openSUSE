@@ -1,7 +1,7 @@
-Index: AFLplusplus-4.30c/GNUmakefile
+Index: AFLplusplus-4.35c/GNUmakefile
 ===================================================================
---- AFLplusplus-4.30c.orig/GNUmakefile
-+++ AFLplusplus-4.30c/GNUmakefile
+--- AFLplusplus-4.35c.orig/GNUmakefile
++++ AFLplusplus-4.35c/GNUmakefile
 @@ -21,8 +21,8 @@ HASH=\#
  
  PREFIX      ?= /usr/local
@@ -13,10 +13,10 @@ Index: AFLplusplus-4.30c/GNUmakefile
  MISC_PATH    = $(PREFIX)/share/afl
  MAN_PATH     = $(PREFIX)/share/man/man8
  INCLUDE_PATH = $(PREFIX)/include/afl
-Index: AFLplusplus-4.30c/GNUmakefile.llvm
+Index: AFLplusplus-4.35c/GNUmakefile.llvm
 ===================================================================
---- AFLplusplus-4.30c.orig/GNUmakefile.llvm
-+++ AFLplusplus-4.30c/GNUmakefile.llvm
+--- AFLplusplus-4.35c.orig/GNUmakefile.llvm
++++ AFLplusplus-4.35c/GNUmakefile.llvm
 @@ -20,9 +20,9 @@
  HASH=\#
  
@@ -28,4 +28,4 @@ Index: AFLplusplus-4.30c/GNUmakefile.llvm
 +DOC_PATH    ?= $(DOC_DIR)/afl
  MISC_PATH   ?= $(PREFIX)/share/afl
  MAN_PATH    ?= $(PREFIX)/share/man/man8
- 
+ INCLUDE_PATH := $(PREFIX)/include/afl
