@@ -10236,8 +10236,6 @@ unsorted:
   - kio-admin 
   - kio-admin-lang 
   - kio-devel 
-  - kio-extras5 
-  - kio-extras5-lang 
   - kio-gdrive-lang 
   - kio-stash 
   - kio-stash-lang 
@@ -14301,8 +14299,6 @@ unsorted:
   - libkgapi6-devel 
   - libkgraphviewer0 
   - libkim-api2 
-  - libkioarchive-devel 
-  - libkioarchive5 
   - libkioarchive6-devel 
   - libkissfft-float131 
   - libkkc-devel 
@@ -17080,7 +17076,7 @@ unsorted:
   - libweston-14-0 
   - libwf-config1 
   - libwf-utils0 
-  - libwget2 
+  - libwget3 
   - libwhich 
   - libwiiuse0 
   - libwim15 
@@ -24146,7 +24142,6 @@ unsorted:
   - python311-Delorean 
   - python311-Deprecated 
   - python311-Django 
-  - python311-Django4 
   - python311-Dumper 
   - python311-Durus 
   - python311-EasyProcess 
@@ -27809,9 +27804,9 @@ unsorted:
   - python311-xarray 
   - python311-xarray-accel 
   - python311-xarray-complete 
-  - python311-xarray-dev 
   - python311-xarray-einstats 
   - python311-xarray-io 
+  - python311-xarray-parallel 
   - python311-xarray-viz 
   - python311-xattr 
   - python311-xcffib 
@@ -27930,7 +27925,6 @@ unsorted:
   - python312-Delorean 
   - python312-Deprecated 
   - python312-Django 
-  - python312-Django4 
   - python312-Dumper 
   - python312-Durus 
   - python312-EasyProcess 
@@ -31675,9 +31669,9 @@ unsorted:
   - python312-xarray 
   - python312-xarray-accel 
   - python312-xarray-complete 
-  - python312-xarray-dev 
   - python312-xarray-einstats 
   - python312-xarray-io 
+  - python312-xarray-parallel 
   - python312-xarray-viz 
   - python312-xattr 
   - python312-xcffib 
@@ -31798,7 +31792,6 @@ unsorted:
   - python313-Delorean 
   - python313-Deprecated 
   - python313-Django 
-  - python313-Django4 
   - python313-Dumper 
   - python313-Durus 
   - python313-EasyProcess 
@@ -35486,9 +35479,9 @@ unsorted:
   - python313-xarray 
   - python313-xarray-accel 
   - python313-xarray-complete 
-  - python313-xarray-dev 
   - python313-xarray-einstats 
   - python313-xarray-io 
+  - python313-xarray-parallel 
   - python313-xarray-viz 
   - python313-xattr 
   - python313-xcffib 
