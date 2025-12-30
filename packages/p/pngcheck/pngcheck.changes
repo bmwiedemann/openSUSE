@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Dec 22 13:55:31 UTC 2025 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 4.0.1
+  * Removed gpl/pngsplit and gpl/png-fix-IDAT-windowsize from this
+    project; we're moving them to a new home
+  * test for tIME valid day in month 
+  * Add cICP autodetect for BT.601 PAL, SECAM and NTSC
+  * Add test for missing cICP, if mDCV is present
+  * Removed the need to define the WIN32 macro for Windows builds
+  * Required the zlib library as a non-optional dependency, and
+    removed the need to define the USE_ZLIB macro externally
+  * Added third_party/wildargs to auto-expand wildcard arguments
+  * Prevent hard fails on chunks of unknown type in compliance with
+    PNG spec. By Maxim Samsonov (Ribose), metanorma/pngcheck-metanorma#1.
+  * Added CI workflows and Windows Makefiles (MSVC and MinGW) for GitHub
+    Actions on Linux, macOS, and Windows.
+  * Added iDOT support 
+  * Added (minimal) caBX support for PNG 4th Edition
+- deleted patches
+  * fixbuild.diff (upstreamed)
+  * pngcheck-fix-signedness-comparsion-issue.patch (upstreamed)
+  * pngcheck-remove-auxiliary-tools.patch (upstreamed)
+  * pngcheck-remove-incorrect-checks.patch (upstreamed)
+
+-------------------------------------------------------------------
+Mon Sep  8 13:08:34 UTC 2025 - pgajdos@suse.com
+
+- version update to 4.0.0
+  * Coding Independent Code Points cICP
+  * Mastering Display Color Volume mDCV
+  * Content Light Level Information cLLI
+  * Animated PNG acTL, fcTL and fdAT
+- modified patches
+  % fixbuild.diff (refreshed)
+- added patches
+  https://github.com/pnggroup/pngcheck/commit/7885b4420fac788679d13ba1f8a28f64ab099a45
+  + pngcheck-fix-signedness-comparsion-issue.patch
+  https://github.com/pnggroup/pngcheck/commit/4c888f5d78b51904b160c6b75e3ff7b6a9612aab
+  + pngcheck-remove-auxiliary-tools.patch
+- added sources
+  + pngcheck-4.0.0.tar.bz
+
+-------------------------------------------------------------------
 Thu Feb 22 07:22:49 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

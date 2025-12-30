@@ -1,7 +1,8 @@
 #
 # spec file for package pngcheck
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +18,13 @@
 
 
 Name:           pngcheck
-Version:        3.0.3
+Version:        4.0.1
 Release:        0
 Summary:        PNG file format checker
-License:        GPL-2.0-or-later AND HPND
+License:        HPND
 Group:          Productivity/Graphics/Other
-URL:            http://www.libpng.org/pub/png/apps/pngcheck.html
-Source:         http://www.libpng.org/pub/png/src/pngcheck-%{version}.tar.gz
-Patch0:         fixbuild.diff
+URL:            https://github.com/pnggroup/pngcheck
+Source:         https://github.com/pnggroup/pngcheck/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.bz
 BuildRequires:  zlib-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -43,19 +43,17 @@ ORDR). This is a command-line program with batch capabilities (e.g.,
 %autosetup -p1
 
 %build
-make %{?_smp_mflags} -f Makefile.unx
+make %{?_smp_mflags}
 
 %install
 install -m 755 -d %{buildroot}%{_bindir}
 install -m 755 %{name} %{buildroot}%{_bindir}/
-install -m 755 pngsplit %{buildroot}%{_bindir}/
-install -m 755 png-fix-IDAT-windowsize %{buildroot}%{_bindir}/
 install -m 755 -d %{buildroot}%{_mandir}/man1/
 install -m 0644 pngcheck.1 %{buildroot}%{_mandir}/man1/
 
 %files
 %defattr(-,root,root)
-%doc CHANGELOG README gpl/COPYING
+%doc CHANGELOG README.md LICENSE
 %{_bindir}/*
 %{_mandir}/man1/%{name}.1.gz
 
