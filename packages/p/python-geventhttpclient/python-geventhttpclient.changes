@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Dec 29 21:45:41 UTC 2025 - Andreas Prittwitz <m4ng4n@gmx.de>
+
+- Update to 2.3.7
+  * Reenabled test_cookielib_compatibility, fixed upstream
+    https://github.com/gwik/geventhttpclient/issues/119
+  * Reenabled test_no_module_ssl.py, fixed upstream
+    https://github.com/geventhttpclient/geventhttpclient/issues/180
+  * Fixed failing tests test_simple_ssl, test_timeout_on_connect,
+    test_network_timeout and test_verify_self_signed_fail
+    by copying missing files to tests directory and deleting
+    geventhttpclient-%{version}/tests/ coming from the 
+    github tarball
+  * Update GitHub action versions, build using Python 3.14, update
+    cibuildwheel to 3.3.0 by @cyberw in #237
+
+ - Changes in 2.3.6
+   * Explicitly support python 3.13 and 3.14 and build using 3.13
+     by @cyberw in #236
+
+ - Changes in 2.3.5
+   * Fix #230
+   * Fix Headers.extend by @ml31415 in #231
+
+ - Changes in 2.3.4
+   * test: Increase the read of the TLS handshake in 
+     sni_checker_server() by @sebastianas in #228
+
+ - Changes in 2.3.3
+   * Fixed github action publishing issue
+   * Fixed #225
+   * Move project source back to src/geventhttpclient 
+     by @ml31415 in #220
+
+-------------------------------------------------------------------
 Wed Oct 15 13:15:40 UTC 2025 - Jordi Massaguer <jmassaguerpla@suse.com>
 
 - Fix build for 15.7: Use the right python version 

@@ -1,7 +1,7 @@
 #
 # spec file for package python-geventhttpclient
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,9 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-geventhttpclient
-Version:        2.3.1
+Version:        2.3.7
 Release:        0
 Summary:        HTTP client library for gevent
 License:        MIT
@@ -60,6 +61,13 @@ APIs like Twitter's.
 %prep
 %autosetup -p1 -n geventhttpclient-%{version}
 tar -xvf %{SOURCE1} geventhttpclient-%{version}/tests/
+%if 0%{?suse_version} >= 1600
+cp geventhttpclient-%{version}/tests/{common.py,conftest.py,__init__.py,oncert.pem,server.crt,server.key} %{builddir}/geventhttpclient-%{version}/tests
+rm -rf geventhttpclient-%{version}/tests/
+%else
+cp geventhttpclient-%{version}/tests/{common.py,conftest.py,__init__.py,oncert.pem,server.crt,server.key} /home/abuild/rpmbuild/BUILD/geventhttpclient-%{version}/tests
+rm -rf geventhttpclient-%{version}/tests/
+%endif
 
 %build
 %pyproject_wheel
@@ -69,12 +77,10 @@ tar -xvf %{SOURCE1} geventhttpclient-%{version}/tests/
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-# test_cookielib_compatibility https://github.com/gwik/geventhttpclient/issues/119
-# test_no_module_ssl.py https://github.com/geventhttpclient/geventhttpclient/issues/180
 %if 0%{?suse_version} > 1600
-%pytest_arch -m 'not network' -k 'not (test_cookielib_compatibility or test_no_module_ssl)'
+%pytest_arch -m 'not network'
 %else
-%pytest_arch -m 'not network' -k 'not (test_cookielib_compatibility or test_no_module_ssl or test_implicit_sni_from_host_in_ssl or test_implicit_sni_from_header_in_ssl or test_explicit_sni_in_ssl)'
+%pytest_arch -m 'not network'
 %endif
 
 %files %{python_files}
