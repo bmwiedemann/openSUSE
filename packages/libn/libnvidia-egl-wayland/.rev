@@ -227,4 +227,12 @@
   * Add support for tegradisp-drm</comment>
     <requestid>1299157</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>74c8b40e7ac34af19089d664c3e93f3f</srcmd5>
+    <version>1.1.21</version>
+    <time>1767092461</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1324719</requestid>
+  </revision>
 </revisionlist>

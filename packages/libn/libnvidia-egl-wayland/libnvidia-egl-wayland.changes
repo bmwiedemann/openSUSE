@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Dec 22 14:32:14 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to version 1.1.21
+  * Fix loading libdrm when wl_drm is not available
+- 0001-egl-wayland-add-FP16-DRM-format.patch
+  * add FP16 DRM format; fixes #174, requires some fixes to the
+    core driver to fully work however.
+
+-------------------------------------------------------------------
+Mon Dec 22 11:41:50 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixed build against sle15-sp6/Leap 15.6
+
+-------------------------------------------------------------------
 Tue Aug 12 13:57:44 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to version 1.1.20 (needed by 580.76.05 driver, boo#1247907)

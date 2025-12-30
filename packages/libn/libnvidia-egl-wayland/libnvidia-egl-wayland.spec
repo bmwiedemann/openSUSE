@@ -16,11 +16,16 @@
 #
 
 
+%if 0%{?sle_version} == 150600 && 0%{?is_opensuse}
+%define meson_build /usr/bin/meson compile -C %{_vpath_builddir} %{_smp_mflags} --verbose
+%define meson_install /usr/bin/meson install -C %{_vpath_builddir} --no-rebuild --destdir=%{buildroot}
+%endif
+
 %define so_ver 1
 %define lname libnvidia-egl-wayland%{so_ver}
 %define rname egl-wayland
 Name:           libnvidia-egl-wayland
-Version:        1.1.20
+Version:        1.1.21
 Release:        0
 Summary:        The EGLStream-based Wayland external platform
 License:        MIT
@@ -28,6 +33,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/NVIDIA/egl-wayland
 Source0:        https://github.com/NVIDIA/egl-wayland/archive/%{version}/%{rname}-%{version}.tar.gz
 Source1:        baselibs.conf
+Patch0:         0001-egl-wayland-add-FP16-DRM-format.patch
 BuildRequires:  gcc-c++
 BuildRequires:  meson >= 0.50
 BuildRequires:  ninja
