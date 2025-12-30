@@ -280,4 +280,30 @@
   * Simple singly linked list implementation (forwarded request 1289476 from Andreas_Schwab)</comment>
     <requestid>1289477</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>feabf6d990bd88e7564447f818d126ac</srcmd5>
+    <version>1.8</version>
+    <time>1767092477</time>
+    <user>anag_factory</user>
+    <comment>- Update to opensbi 1.8
+  * Safe and reverse list iteration
+  * Stack protector support
+  * Allocate heap housekeeping nodes dynamically
+  * IPI device ratings
+  * Andes QiLai SoC support
+  * SpacemiT K1 SoC support
+  * ESWIN Computing EIC7700 SoC support
+  * Moved Ariane and Openpiton to generic platform
+  * SiFive CLINT v2 support
+  * Simple FDT based cache library
+  * SiFive PL2 cache controller driver
+  * SiFive Extensible Cache (EC) driver
+  * SiFive TMC0 based HSM driver
+  * SiFive SMC0 based system suspend driver
+  * MPXY RPMI mailbox driver for voltage service group
+  * MPXY RPMI mailbox driver for device power service group
+  * MPXY RPMI mailbox driver for performance service group
+  * HART protection abstraction (forwarded request 1324711 from Andreas_Schwab)</comment>
+    <requestid>1324712</requestid>
+  </revision>
 </revisionlist>

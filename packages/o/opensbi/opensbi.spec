@@ -1,7 +1,7 @@
 #
 # spec file for package opensbi
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Name:           opensbi
 %else
 Name:           opensbi-%{target}
 %endif
-Version:        1.7
+Version:        1.8
 Release:        0
 Summary:        RISC-V Open Source Supervisor Binary Interface
 License:        BSD-2-Clause

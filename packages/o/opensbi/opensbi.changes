@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Dec 29 12:56:07 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Update to opensbi 1.8
+  * Safe and reverse list iteration
+  * Stack protector support
+  * Allocate heap housekeeping nodes dynamically
+  * IPI device ratings
+  * Andes QiLai SoC support
+  * SpacemiT K1 SoC support
+  * ESWIN Computing EIC7700 SoC support
+  * Moved Ariane and Openpiton to generic platform
+  * SiFive CLINT v2 support
+  * Simple FDT based cache library
+  * SiFive PL2 cache controller driver
+  * SiFive Extensible Cache (EC) driver
+  * SiFive TMC0 based HSM driver
+  * SiFive SMC0 based system suspend driver
+  * MPXY RPMI mailbox driver for voltage service group
+  * MPXY RPMI mailbox driver for device power service group
+  * MPXY RPMI mailbox driver for performance service group
+  * HART protection abstraction
+
+-------------------------------------------------------------------
 Mon Jun 30 07:12:09 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Update to opensbi 1.7
