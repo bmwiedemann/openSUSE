@@ -1,7 +1,7 @@
 #
 # spec file for package keepalived
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,7 @@
 %bcond_without systemd
 
 Name:           keepalived
-Version:        2.3.1+git86.59c39afe
+Version:        2.3.4+git23.b3631012
 Release:        0
 Summary:        A keepalive facility for Linux
 License:        GPL-2.0-or-later
@@ -46,6 +46,8 @@ Group:          Productivity/Networking/Routing
 URL:            https://www.keepalived.org/
 Source:         %{name}-%{version}.tar.xz
 Source2:        keepalive-rpmlintrc
+Source3:        tmpfile.conf
+Source4:        users.conf
 Patch0:         keepalive-init.patch
 Patch1:         harden_keepalived.service.patch
 BuildRequires:  autoconf
@@ -79,13 +81,13 @@ Requires(pre):  pwdutils
 Requires(pre):  %fillup_prereq
 %if %{with systemd}
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(libsystemd)
 %{?systemd_ordering}
+%sysusers_requires
 %else
 Requires(pre):  %insserv_prereq
 %endif
-Provides:       group(keepalived)
-Provides:       user(keepalived)
 
 %description
 This project provides facilities for load balancing and high-availability to
@@ -150,24 +152,28 @@ export CFLAGS="%optflags -DOPENSSL_NO_SSL_INTERN"
   --enable-libnl \
   --enable-json
 make %{?_smp_mflags}
+%sysusers_generate_pre %{SOURCE12} %{name} %{S:4}
 
 %install
 %make_install
 install -dD -m 0750 %{buildroot}%{_var}/lib/%{name}
-install -D  -m 0644 %{buildroot}/etc/sysconfig/keepalived %{buildroot}%{_fillupdir}/sysconfig.%{name}
+install -D  -m 0644 %{buildroot}/etc/sysconfig/%{name} %{buildroot}%{_fillupdir}/sysconfig.%{name}
 
 %if %{with systemd}
 ln -s /sbin/service %{buildroot}%{_sbindir}/rckeepalived
 %else
-install -D -m 0750 keepalived/etc/init.d/keepalived.suse.init %{buildroot}/etc/init.d/keepalived
+install -D -m 0750 %{name}/etc/init.d/%{name}.suse.init %{buildroot}/etc/init.d/%{name}
 ln -s /etc/init.d/keepalived %{buildroot}%{_sbindir}/rckeepalived
 %endif
 
-chmod -R o= %{buildroot}/etc/keepalived
-rm -rv %{buildroot}/etc/keepalived/samples/ %{buildroot}/etc/sysconfig/keepalived
+chmod -R o= %{buildroot}/etc/%{name}
+rm -rv %{buildroot}/etc/%{name}/samples/ %{buildroot}/etc/sysconfig/%{name}
 cp -rv \
-  AUTHOR ChangeLog CONTRIBUTORS README doc/samples/ doc/keepalived.conf.SYNOPSIS doc/NOTE_vrrp_vmac.txt \
+  AUTHOR ChangeLog CONTRIBUTORS README doc/samples/ doc/%{name}.conf.SYNOPSIS doc/NOTE_vrrp_vmac.txt \
   %{buildroot}%{_defaultdocdir}/%{name}/
+
+mkdir -p %{buildroot}%{_tmpfilesdir}/
+install -D -m 0644 %{S:3} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 
 %check
 # A build could silently have LVS support disabled if the kernel includes can't
@@ -177,11 +183,7 @@ if ! grep -q "#define _WITH_LVS_ *1" lib/config.h; then
     exit 1
 fi
 
-%pre
-getent group %{name} >/dev/null || /usr/sbin/groupadd -r %{name}
-getent passwd %{name} >/dev/null || \
-	/usr/sbin/useradd -g %{name} -s /bin/false -r -c "Keepalived" \
-	-d %{_var}/lib/%{name} %{name}
+%pre  -f %{name}.pre
 %if %{with systemd}
 %service_add_pre %{name}.service
 %endif
@@ -211,31 +213,32 @@ getent passwd %{name} >/dev/null || \
 %defattr(-,root,root)
 %license COPYING
 %doc %{_defaultdocdir}/%{name}/
-%dir  %{_sysconfdir}/keepalived
-%dir %attr(-,keepalived,keepalived) %{_var}/lib/%{name}
-%config(noreplace) %ghost %attr(0640,root,root) %{_sysconfdir}/keepalived/keepalived.conf
-%config %attr(0640,root,root) %{_sysconfdir}/keepalived/keepalived.conf.sample
+%dir  %{_sysconfdir}/%{name}
+%{_tmpfilesdir}/%{name}.conf
+%ghost %dir /var/lib/%{name}
+%config(noreplace) %ghost %attr(0640,root,root) %{_sysconfdir}/%{name}/%{name}.conf
+%config %attr(0640,root,root) %{_sysconfdir}/%{name}/%{name}.conf.sample
 %{_fillupdir}/sysconfig.%{name}
 %{_bindir}/genhash
 %{_sbindir}/rckeepalived
-%{_sbindir}/keepalived
+%{_sbindir}/%{name}
 %{_mandir}/man1/genhash.1*
-%{_mandir}/man5/keepalived.conf.5*
-%{_mandir}/man8/keepalived.8*
+%{_mandir}/man5/%{name}.conf.5*
+%{_mandir}/man8/%{name}.8*
 %{_datadir}/snmp/mibs/KEEPALIVED-MIB.txt
 %{_datadir}/snmp/mibs/VRRP-MIB.txt
 %{_datadir}/snmp/mibs/VRRPv3-MIB.txt
 #
 %if %{with dbus}
-%config /etc/dbus-1/system.d/org.keepalived.Vrrp1.conf
-%{_datadir}/dbus-1/interfaces/org.keepalived.Vrrp1.Instance.xml
-%{_datadir}/dbus-1/interfaces/org.keepalived.Vrrp1.Vrrp.xml
+%config /etc/dbus-1/system.d/org.%{name}.Vrrp1.conf
+%{_datadir}/dbus-1/interfaces/org.%{name}.Vrrp1.Instance.xml
+%{_datadir}/dbus-1/interfaces/org.%{name}.Vrrp1.Vrrp.xml
 %endif
 #
 %if %{with systemd}
 %{_unitdir}/%name.service
 %else
-/etc/init.d/keepalived
+/etc/init.d/%{name}
 %endif
 
 %changelog

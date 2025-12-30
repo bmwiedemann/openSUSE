@@ -412,4 +412,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1219493</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>8ca234b1d13962df5b009aa213346b7e</srcmd5>
+    <version>2.3.4+git23.b3631012</version>
+    <time>1767092480</time>
+    <user>anag_factory</user>
+    <comment>- Fix packages for Immutable Mode (jsc#PED-14858)
+- Use sysusers tools instead of creating group and user 
+- Update to version 2.3.4+git23.b3631012:
+  * vrrp: log error if fail to update sysctl settings
+  * check: add SNMP variable for number of checkers not run per RS
+  * config: add option ${_ENV} to read environment variables
+  * vrrp: fix check in strict mode that have unicast peers
+  * vrrp: correct report of MASTER/BACKUP on notify fifo when reload
+  * configure: fix output formatting for close_range() test
+  * parser: fix handling ~SEQ with missing close bracket
+  * parser: add comment re sanitizer false positive
+  * config: detect lines with NUL characters and ignore them
+  * config: improve handling of parameter substitution
+  * config: improve handling of comment stripping and continuation lines
+  * vrrp: stop sending gratuitous ARP before vrrp_startup_delay expires
+  * vrrp: add vrrp_delay_after_boot global keyword
+  * vrrp: Don't start up VRRP instances before vrrp_startup_delay expires
+  * parser: remove unnecessary check of variable
+  * parser: resolve a heap buffer overflow
+  * snap: add staging of libssl3 and libkmod2 packages
+  * vrrp: remove redundant check not NULL check
+  * keepalived-2.3.4
+  * snap: fix snap builds when close_range not available
+  * all: fix conditional compilation when close_range() is not available
+  * Revert &quot;all: fix conditional compilation when close_range() is not available&quot;
+  * Revert &quot;all: next attempt to fix building snaps without close_range()&quot;
+  * Revert &quot;snap: try and identify why snap builds are failing&quot;
+  * Revert &quot;snap: further attempt to fix close_range problem with Linux 5.8&quot;
+  * Revert &quot;snap: attempt 5 to fix close_range() snap build with Linux 5.8&quot;
+  * Revert &quot;snap: attempt 6 to fix close_range() snap build with Linux 5.8&quot;</comment>
+    <requestid>1324714</requestid>
+  </revision>
 </revisionlist>

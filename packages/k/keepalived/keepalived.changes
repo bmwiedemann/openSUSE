@@ -1,4 +1,247 @@
 -------------------------------------------------------------------
+Mon Dec 29 14:25:27 UTC 2025 - Peter Varkoly <varkoly@suse.com>
+
+- Fix packages for Immutable Mode (jsc#PED-14858)
+- Use sysusers tools instead of creating group and user 
+- Update to version 2.3.4+git23.b3631012:
+  * vrrp: log error if fail to update sysctl settings
+  * check: add SNMP variable for number of checkers not run per RS
+  * config: add option ${_ENV} to read environment variables
+  * vrrp: fix check in strict mode that have unicast peers
+  * vrrp: correct report of MASTER/BACKUP on notify fifo when reload
+  * configure: fix output formatting for close_range() test
+  * parser: fix handling ~SEQ with missing close bracket
+  * parser: add comment re sanitizer false positive
+  * config: detect lines with NUL characters and ignore them
+  * config: improve handling of parameter substitution
+  * config: improve handling of comment stripping and continuation lines
+  * vrrp: stop sending gratuitous ARP before vrrp_startup_delay expires
+  * vrrp: add vrrp_delay_after_boot global keyword
+  * vrrp: Don't start up VRRP instances before vrrp_startup_delay expires
+  * parser: remove unnecessary check of variable
+  * parser: resolve a heap buffer overflow
+  * snap: add staging of libssl3 and libkmod2 packages
+  * vrrp: remove redundant check not NULL check
+  * keepalived-2.3.4
+  * snap: fix snap builds when close_range not available
+  * all: fix conditional compilation when close_range() is not available
+  * Revert "all: fix conditional compilation when close_range() is not available"
+  * Revert "all: next attempt to fix building snaps without close_range()"
+  * Revert "snap: try and identify why snap builds are failing"
+  * Revert "snap: further attempt to fix close_range problem with Linux 5.8"
+  * Revert "snap: attempt 5 to fix close_range() snap build with Linux 5.8"
+  * Revert "snap: attempt 6 to fix close_range() snap build with Linux 5.8"
+  * Revert "snap: snap: attempt 7 to fix close_range() snap build with Linux 5.8"
+  * Revert "snap: snap: attempt 8 to fix close_range() snap build with Linux 5.8"
+  * snap: snap: attempt 8 to fix close_range() snap build with Linux 5.8
+  * snap: snap: attempt 7 to fix close_range() snap build with Linux 5.8
+  * snap: attempt 6 to fix close_range() snap build with Linux 5.8
+  * snap: attempt 5 to fix close_range() snap build with Linux 5.8
+  * snap: further attempt to fix close_range problem with Linux 5.8
+  * snap: try and identify why snap builds are failing
+  * all: next attempt to fix building snaps without close_range()
+  * all: fix conditional compilation when close_range() is not available
+  * track_file: fix memory leak
+  * all: fix some RHEL 7 and friends compilation problems
+  * all: fix use of some conditional compilation definitions
+  * Fix build error when HAVE_CLOSE_RANGE not defined
+  * core: correct some conditional compilation tests for close_range()
+  * lib: fix fopen_safe after adding "e" mode flag support
+  * lib: don't check for dup3 support - it has been around a long time
+  * lib: call close_range() if available before exec'ing scripts
+  * snmp: use close_range() if available for closing snmp file descriptors
+  * snmp: set CLOEXEC on file descriptors opened by snmp
+  * all: set CLOEXEC flag on streams (fopen/popen)
+  * all: set CLOEXEC flag on all file descriptors except stdin/stdout/stderr
+  * all: s/independant/independent
+  * lib: remove unused variable following previous commit
+  * vrrp: resolve CodeQL security warning re insecure file creation
+  * all: fix some compile errors due to *_STACK_SIZE being undefined
+  * all: add code to calculate maximum stack usage and use it for no_swap
+  * all: stop repeatedly calling getpid()
+  * all: resolve lang warning when comparing ordering of function addresses
+  * all: include network namespace name when error opening namespace fds
+  * all: allow specifying iproute_usr_dir even if no iproute2 support
+  * vrrp: document and fix specifying iproute_etc_dir and iproute_usr_dir
+  * all: properly restore process priorities after a reload
+  * all: fix keepalived not coredumping after a reload
+  * ipvs: resolve infinity loop when SMTP_CHECKers have 'host' config
+  * all: fix resolving group name to gid for scripts
+  * vrrp: fix segfault at reload when DBus re-enabled
+  * lib: fix clang warning re refeninition of NDEBUG
+  * vrrp: fix track_process warn identified by -Wflex-array-member-not-at-end
+  * lib: update config_warnings.h.in
+  * build: Add -Wflex-array-member-not-at-end compiler warning
+  * ipvs: Resolve segfault when reloading with sorry server removed
+  * snap: Fix keepalived-wrapper changes
+  * snap: Construct and set LD_LIBRARY_PATH
+  * snap: try and get snap executable to see LD_LIBRARY_PATH
+  * snap: yet another attempt to get LD_LIBRARY_PATH correct
+  * snap: another attempt to set LD_LIBRARY_PATH
+  * snap: Attempt to fix setting LD_LIBRARY_PATH
+  * snap: fox formatting in snapcraft.yaml
+  * snap: Add /lib/$SNAPi_ARCH-linux-gnu to LD_LIBRARY_PATH and extra libraries
+  * snap: attempt to fix setting LD_LIBRARY_PATH
+  * snap: when setting LD_LIBRARY_PATH, include previous setting
+  * keepalived-2.3.3
+  * doc: fix minor layout error
+  * doc: fix typo in man page
+  * doc: add reference to required configuration to comply with RFC 9568
+  * doc: update keepalived.8 re disabling and reenabling SNMP on reload
+  * build: update git-commit-h before creating tar file
+  * vrrp: fix keepalived warning of ipsets specified without iptables
+  * vrrp: fix persistent FAULT state with use_vmac when interfaces renamed
+  * vrrp: ignore IPv6 tentative addresses
+  * lib: make inet_sockaddrtos() return none if address unspecified
+  * vrrp: update delayed start time on reload if vrrp_startup_delay changed
+  * vrrp: allow interface up debounce timer to exceed 2 * advert interval
+  * track_file: make enum names mean what they say
+  * track_file: don't overwrite track file at startup unless configured to
+  * vrrp: don't change link local IPv6 address when extra added to base if
+  * vrrp: fix recreating a VMAC interface with IPv6
+  * vrrp: fix compiling when VMACs disabled
+  * lib: optimize bitops when using only one word
+  * vrrp: delay deleting VMACs are parent interface is deleted
+  * vrrp: don't have multiple tracking objects for a VRRP instance
+  * vrrp: don't attempt to send advert if socket is closed
+  * vrrp: add function set_fault() so fault flags set in only one place
+  * core: cosmetic code changes
+  * vrrp: simplify checking if an instance is already in fault state
+  * vrrp: use typedef for interface fault flags enum and change name
+  * vrrp: remove superfluous parameter to down_instance() and try_up_instance()
+  * vrrp: fix compilation failure if building without VMACs
+  * vrrp: use a fault flag if num_track_faults is non zero
+  * vrrp: remove superfluous flag in down_instance() and try_up_instance()
+  * vrrp: add checks that interface fault flags not inconsistent
+  * vrrp: fix resolved_script flag in call to try_up_instance
+  * vrrp: add text for instance fault flags when writing keepalived.data
+  * vrrp: Remove unused definitions added in instance fault flags commit
+  * vrrp: improve comment re not sending IPv6 advert if no address on interface
+  * github: update workflow yaml files
+  * lib: fix use of IPROUTE_USR_DIR when not defined
+  * codeQL: Attempt to fix syntax error
+  * codeQL: update codeQL.yml for updated versions and corrected languages
+  * snap: set LD_LIBRARY_PATH for daemon
+  * Skip running not idle vrrp scripts
+  * There is a typo in the installation documentation: instead of pcre2-revel, it should be pcre2-devel.
+  * vrrp: handle a reload with no more startup_delay
+  * samples: ensure sample_notify_fifo.sh has write access to PID_DIR
+  * Fix segfault caused double erase from child_pid rb tree
+  * vrrp: add logging a change of master when detailed logging enabled
+  * vrrp: add option for address owner to drop received VRRP packets
+  * vrrp: fix compilation error caused by previous patch
+  * vrrp: detect and reject duplicate unicast_peers in configuration
+  * vrrp: identify unicast peer in unicast_peer block configuration errors
+  * vrrp: change rx_ttl_hop_limit to rx_ttl_hl
+  * vrrp: check TTL/HL and unicast source ip even when not checking VIPs
+  * vrrp: check that VIPs are not duplicated
+  * vrrp: use enum rather than defines for packet error codes
+  * vrrp: use struct in_addr/in6_addr in vrrp_in_chk_vips for checking VIPs
+  * vrrp: include source address in log after receiving a bad advert
+  * vrrp: update saved master address when receive high priority advert
+  * vrrp: it is not an error if VIPs in advert do not match configured
+  * vrrp: log rate-limited message if advert has no VIPs
+  * vrrp: log rate-limited warning if VRRPv3 advert interval mismatch
+  * vrrp: use macro for accessing VRRPv3 advert interval in packet
+  * vrrp: Implement logging rate-limiting specified by RFC 9568
+  * vrrp: some improvements for duplicate address owner handling
+  * vrrp: add more helpful log messages if duplicate address owner
+  * vrrp: if duplicate address owners, reduce priority if other won't
+  * vrrp: Only reduce address owner priority if primary ip address lower
+  * vrrp: Restore priority 255 if duplicate address owner detected
+  * utils: simplify addr_cmp()
+  * vrrp: correct two comments
+  * vrrp: /etc/iproute2/rt_addrprotos.d is not supported until v6.13
+  * vrrp: create /etc/iproute2 directory if it doesn't exist
+  * vrrp: check the iproute2 directories exist when read first file
+  * vrrp: use correct arrays for rt_addrprotos
+  * build: Fix for older compilers that don't support _FORTIFY_SOURCE=2
+  * Revert "snap: Remove architectures keyword from snapcraft.yaml"
+  * snap: Remove architectures keyword from snapcraft.yaml
+  * core: Update second open() of pidfile to also use O_CLOEXEC
+  * core: add O_CLOEXEC flag to pidfiles
+  * README: update README.kernel_versions
+  * snap: fix typo
+  * snap: fix an error in snapcraft.yaml
+  * snap: Fetch the linux-libc-dev.deb files into different files
+  * snap: Correct the craftctl set version syntax
+  * snap: yet more attempts to get launchpad to work
+  * vrrp: resolve compilation error caused by commit to resolve vrrp->flags use
+  * snap: further attempts to get launchpad to work
+  * snap: further attempt to build on all available platforms
+  * snap: update libsnmp35 to libsnmp40 in snapcraft.yaml
+  * snap: Update kernel versions and attempt to force riscv64 builds
+  * doc: use timer_expired_backup in place of thread_timer_expired
+  * ipvs: fix delay_loop for TCP_CHECK
+  * debug: add some missing function names for debugging
+  * ipvs: Fix segfault when using track_file checker
+  * build: make default _FORTIFY_SOURCE setting 3
+  * build: use -D_FORTIFY_SOURCE rather than -Wp,-D_FORTIFY_SOURCE
+  * build: Stop _FORTITY_SOURCE redefined warnings on Ubuntu >= 24.04
+  * vrrp: check specific flags in vrrp-flags
+  * vrrp: interface add should call setup_interface()
+  * snap: enable riscv64 building
+  * goodies: use bash mapfile and array to store found C files
+  * snap-tools: use sh as interpreter; misc tweaks
+  * lib: used defined values or read_hex_str special characters
+  * parser: Fix error handling for HEX_STR parsing in UDP_CHECK
+  * vrrp: Add setting IP_FREEBIND/IPV6_FREEBIND socket option
+  * vrrp: test for _HAVE_VRRP_VMAC_ before using VRRP_VMAC_BIT
+  * vrrp: don't allow unicast instance without interface to have a VMAC
+  * vrrp: Don't segfault if open_sockpool_socket() fails to open sockets
+  * vrrp: fix segfault when instance has no interface configured
+  * vrrp: handle checking ip utility version properly with BusyBox
+  * vrrp: fix reading of iproute2 conf files when directories don't exist
+  * INSTALL: update documentation for Alpine Linux
+  * Install linux-headers pkg to build in Docker
+  * doc: Add Oracle Linux ver 8 to README.kernel_versions
+  * vrrp: Don't include <linux/if_ether.h> if not needed
+  * configure: Don't use <<<, busybox doesn't support it
+  * doc: Add Oracle Linux to README.kernel_versions
+  * doc: add oldest distro versions with their EOL dates and kernel versions
+  * core: Allow building on very old systems with kernels < 3.15
+  * configure: fix CFLAGS if -Wformat-signedness is not supported by gcc
+  * keepalived-2.3.2
+  * doc: update specifying paper size for sphinx
+  * doc: use proper footnote for a table
+  * doc: add lvs_sync_daemon and mark lvs_sync_daemon_interface deprecated
+  * doc: fix spelling of interface in configuration_synopsis.rst
+  * vrrp: always add a keepalived entry to rt_addrprotos is none exists
+  * all: fix some build failures
+  * vrrp: Add configure option to update /etc/rt_addrprotos
+  * vrrp: General default value if rt_addrprotos does not include keepalived
+  * vrrp: Specify protocol for IP addresses that keepalived adds
+  * vrrp: update location of iproute config files
+  * ipvs: fix conditional includes of nftables keywords
+  * vrrp: use sizeof(buf) rather than MAX_RT_BUF for iproute files
+  * core: fix error report in json version parser
+  * all: clear pointers to old data structures freed after reload
+  * vrrp: Only use dbus_{in,out}_pipe[0] to indicate pipe is closed
+  * all: change checking process name at reload to include not NULL checks
+  * configure: fix previous commit
+  * configure: Remove -ffile-prefix-map= for repeatible builds
+  * all: stop "unmatched quotes" warning for quoted strings
+  * vrrp: stop using alloc_strvec() for parsing rttables files
+  * all: fix parsing of escaped characters in quoted strings
+  * all: Fix parsing of \xNN in quoted strings
+  * vrrp: only alloc garp delay structure if address family matches
+  * vrrp: allow garp_group garp_interval to take full range of unsigned values
+  * vrrp: remove aggregation_group field from garp_delay_t structure
+  * vrrp: Use timer threads for delayed sending of GARPs/GNAs
+  * vrrp: Correct formatting of GARP interval in config/status dump
+  * vrrp: merge vrrp instance garp_pending and gna_pending flags
+  * vrrp: improve some code indentation so then and else blocks match
+  * vrrp: On reload with addresses added to VRRP instance send 2nd GARPs
+  * vrrp: Use TIMER_HZ instead of 1000000 for garp/gna interval
+  * doc: reorder some entries in keepalived.conf(5) man page
+  * vrrp: use instance fault flags instead of a counter
+  * vrrp: cosmetic change in down_instance()
+  * vrrp: cosmetic change in try_up_instance() (2/2)
+  * vrrp: cosmetic change in try_up_instance() (1/2)
+  * Add CodeQL workflow for GitHub code scanning
+  * chore: Set permissions for GitHub actions
+
+-------------------------------------------------------------------
 Mon Oct 14 13:14:53 UTC 2024 - varkoly@suse.com
 
 - Update to version 2.3.1+git86.59c39afe:
