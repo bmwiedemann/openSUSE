@@ -20,17 +20,18 @@
 %define lname libnvidia-egl-x11%{so_ver}
 %define rname egl-x11
 Name:           libnvidia-egl-x11
-Version:        1.0.3
+Version:        1.0.5
 Release:        0
 Summary:        NVIDIA XLib and XCB EGL Platform Library
 # src/x11/dma-buf.h:/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/NVIDIA/egl-x11
-Source0:        %{rname}-1.0.2.tar.gz
+Source0:        %{rname}-1.0.4.tar.gz
 Source1:        baselibs.conf
-Patch1:         0001-Increment-the-version-number-to-1.0.3.patch
-Patch2:         0002-egl-x11-Add-support-for-tegradisp-drm.patch
+Patch1:         0001-Fix-attribute-handling-for-eglCreateWindow-PixmapSur.patch
+Patch2:         0002-Handle-eglQuerySurface-EGL_RENDER_BUFFER.patch
+Patch3:         0003-Enable-implicit-sync-if-we-re-talking-to-the-NVIDIA-.patch
 BuildRequires:  gcc-c++
 BuildRequires:  meson
 BuildRequires:  ninja
@@ -94,7 +95,7 @@ This package provides headers and libraries required to build software
 using %{name}.
 
 %prep
-%autosetup -n %{rname}-1.0.2 -p1
+%autosetup -n %{rname}-1.0.4 -p1
 
 %build
 export LDFLAGS="-Wl,-z,noexecstack -Wl,-z,now -Wl,-z,relro %{?_lto_cflags}"

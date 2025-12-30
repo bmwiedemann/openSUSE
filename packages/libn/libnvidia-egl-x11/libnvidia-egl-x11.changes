@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec 22 15:08:23 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to v1.0.4 tarball/version 1.0.5
+- supersedes the following patches:
+  * 0001-Increment-the-version-number-to-1.0.3.patch
+  * 0002-egl-x11-Add-support-for-tegradisp-drm.patch
+- added latest patches from git since 1.0.4
+  * 0001-Fix-attribute-handling-for-eglCreateWindow-PixmapSur.patch
+  * 0002-Handle-eglQuerySurface-EGL_RENDER_BUFFER.patch
+  * 0003-Enable-implicit-sync-if-we-re-talking-to-the-NVIDIA-.patch
+
+-------------------------------------------------------------------
 Tue Aug 12 14:20:20 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - updated to v1.0.2 tarball/version 1.0.3 with patches below

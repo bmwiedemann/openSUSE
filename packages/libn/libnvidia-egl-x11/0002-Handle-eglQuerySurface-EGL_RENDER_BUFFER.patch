@@ -1,0 +1,119 @@
+From 5e373f88a21b8aa190bf67eec8c6158d8642f289 Mon Sep 17 00:00:00 2001
+From: Kyle Brenneman <kbrenneman@nvidia.com>
+Date: Mon, 1 Dec 2025 13:33:44 -0700
+Subject: [PATCH 2/4] Handle eglQuerySurface(EGL_RENDER_BUFFER)
+
+Add a hook for eglQuerySurface to handle EGL_RENDER_BUFFER.
+
+For windows, always return EGL_BACK_BUFFER, and for pixmaps, always
+return EGL_SINGLE_BUFFER.
+---
+ src/x11/x11-platform.c | 56 ++++++++++++++++++++++++++++++++++++++++++
+ src/x11/x11-platform.h |  1 +
+ 2 files changed, 57 insertions(+)
+
+diff --git a/src/x11/x11-platform.c b/src/x11/x11-platform.c
+index 9be220e..1d73bdc 100644
+--- a/src/x11/x11-platform.c
++++ b/src/x11/x11-platform.c
+@@ -79,11 +79,13 @@ static void eplX11TerminateDisplay(EplPlatformData *plat, EplDisplay *pdpy);
+ static void eplX11DestroySurface(EplDisplay *pdpy, EplSurface *surf);
+ static void eplX11FreeSurface(EplDisplay *pdpy, EplSurface *surf);
+ static EGLBoolean eplX11WaitGL(EplDisplay *pdpy, EplSurface *psurf);
++static EGLBoolean eplX11HookQuerySurface(EGLDisplay edpy, EGLSurface esurf, EGLint attribute, EGLint *value);
+ 
+ static const EplHookFunc X11_HOOK_FUNCTIONS[] =
+ {
+     { "eglChooseConfig", eplX11HookChooseConfig },
+     { "eglGetConfigAttrib", eplX11HookGetConfigAttrib },
++    { "eglQuerySurface", eplX11HookQuerySurface },
+     { "eglSwapInterval", eplX11SwapInterval },
+ };
+ static const int NUM_X11_HOOK_FUNCTIONS = sizeof(X11_HOOK_FUNCTIONS) / sizeof(X11_HOOK_FUNCTIONS[0]);
+@@ -183,6 +185,7 @@ EGLBoolean eplX11LoadEGLExternalPlatformCommon(int major, int minor,
+ 
+     plat->priv->egl.QueryDisplayAttribKHR = driver->getProcAddress("eglQueryDisplayAttribKHR");
+     plat->priv->egl.SwapInterval = driver->getProcAddress("eglSwapInterval");
++    plat->priv->egl.QuerySurface = driver->getProcAddress("eglQuerySurface");
+     plat->priv->egl.QueryDmaBufFormatsEXT = driver->getProcAddress("eglQueryDmaBufFormatsEXT");
+     plat->priv->egl.QueryDmaBufModifiersEXT = driver->getProcAddress("eglQueryDmaBufModifiersEXT");
+     plat->priv->egl.CreateSync = driver->getProcAddress("eglCreateSync");
+@@ -202,6 +205,7 @@ EGLBoolean eplX11LoadEGLExternalPlatformCommon(int major, int minor,
+ 
+     if (plat->priv->egl.QueryDisplayAttribKHR == NULL
+             || plat->priv->egl.SwapInterval == NULL
++            || plat->priv->egl.QuerySurface == NULL
+             || plat->priv->egl.QueryDmaBufFormatsEXT == NULL
+             || plat->priv->egl.QueryDmaBufModifiersEXT == NULL
+             || plat->priv->egl.CreateSync == NULL
+@@ -1512,3 +1516,55 @@ uint32_t eplX11GetNativeXID(EplDisplay *pdpy, void *native_surface, EGLBoolean c
+ 
+     return xid;
+ }
++
++EGLBoolean eplX11HookQuerySurface(EGLDisplay edpy, EGLSurface esurf, EGLint attribute, EGLint *value)
++{
++    EplDisplay *pdpy = NULL;
++    EplSurface *psurf = NULL;
++    EGLBoolean ret = EGL_FALSE;
++
++    pdpy = eplDisplayAcquire(edpy);
++    if (pdpy == NULL)
++    {
++        return EGL_FALSE;
++    }
++
++    if (value == NULL)
++    {
++        eplSetError(pdpy->platform, EGL_BAD_ATTRIBUTE, "value pointer must not be NULL");
++        eplDisplayRelease(pdpy);
++        return EGL_FALSE;
++    }
++
++    psurf = eplSurfaceAcquire(pdpy, esurf);
++    if (psurf != NULL)
++    {
++        if (attribute == EGL_RENDER_BUFFER)
++        {
++            if (psurf->type == EPL_SURFACE_TYPE_WINDOW)
++            {
++                *value = EGL_BACK_BUFFER;
++            }
++            else
++            {
++                *value = EGL_SINGLE_BUFFER;
++            }
++            ret = EGL_TRUE;
++        }
++        else
++        {
++            ret = pdpy->platform->priv->egl.QuerySurface(pdpy->internal_display,
++                    psurf->internal_surface, attribute, value);
++        }
++        eplSurfaceRelease(pdpy, psurf);
++    }
++    else
++    {
++        // If we don't recognize the EGLSurface, then just pass the call
++        // through to the driver.
++        ret = pdpy->platform->priv->egl.QuerySurface(pdpy->internal_display, esurf, attribute, value);
++    }
++
++    eplDisplayRelease(pdpy);
++    return ret;
++}
+diff --git a/src/x11/x11-platform.h b/src/x11/x11-platform.h
+index c90f67d..62fd866 100644
+--- a/src/x11/x11-platform.h
++++ b/src/x11/x11-platform.h
+@@ -73,6 +73,7 @@ struct _EplImplPlatform
+     {
+         PFNEGLQUERYDISPLAYATTRIBKHRPROC QueryDisplayAttribKHR;
+         PFNEGLSWAPINTERVALPROC SwapInterval;
++        PFNEGLQUERYSURFACEPROC QuerySurface;
+         PFNEGLQUERYDMABUFFORMATSEXTPROC QueryDmaBufFormatsEXT;
+         PFNEGLQUERYDMABUFMODIFIERSEXTPROC QueryDmaBufModifiersEXT;
+         PFNEGLCREATESYNCPROC CreateSync;
+-- 
+2.51.0
+

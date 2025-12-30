@@ -1,0 +1,211 @@
+From e511d6586e261b54d4443e073c30615ea520b21b Mon Sep 17 00:00:00 2001
+From: Kyle Brenneman <kbrenneman@nvidia.com>
+Date: Mon, 1 Dec 2025 12:05:41 -0700
+Subject: [PATCH 1/4] Fix attribute handling for eglCreateWindow/PixmapSurface
+
+Fix eplX11CreateWindowSurface and eplX11CreatePixmapSurface so that they
+pass the attribute list from the application to
+eplX11GetInternalSurfaceAttribs.
+
+Currently, they pass NULL, and ignore the application's attributes.
+
+Also, update eplX11GetInternalSurfaceAttribs so that it'll check the
+EGL_RENDER_BUFFER attribute, without passing it to the driver. The
+driver doesn't accept EGL_RENDER_BUFFER for platform surfaces, since
+that's determined instead by whether we pass a GL_BACK attachment to
+eglPlatformCreateSurfaceNVX.
+
+egl-x11 doesn't currently support single-buffered windows, so it'll
+issue a warning if the application requests EGL_SINGLE_BUFFER but
+otherwise ignore it.
+---
+ src/x11/x11-pixmap.c   |  5 ++-
+ src/x11/x11-platform.c | 83 ++++++++++++++++++++++++++++++++++--------
+ src/x11/x11-platform.h |  5 ++-
+ src/x11/x11-window.c   |  9 ++++-
+ 4 files changed, 80 insertions(+), 22 deletions(-)
+
+diff --git a/src/x11/x11-pixmap.c b/src/x11/x11-pixmap.c
+index 0a8cb1c..e2d7dc4 100644
+--- a/src/x11/x11-pixmap.c
++++ b/src/x11/x11-pixmap.c
+@@ -370,6 +370,7 @@ static void PixmapDamageCallback(void *param, int syncfd, unsigned int flags)
+ void eplX11DestroyPixmap(EplSurface *surf)
+ {
+     X11Pixmap *ppix = (X11Pixmap *) surf->priv;
++
+     surf->priv = NULL;
+     if (ppix != NULL)
+     {
+@@ -468,10 +469,10 @@ EGLSurface eplX11CreatePixmapSurface(EplPlatformData *plat, EplDisplay *pdpy, Ep
+     fmt = eplFormatInfoLookup(configInfo->fourcc);
+     assert(fmt != NULL);
+ 
+-    internalAttribs = eplX11GetInternalSurfaceAttribs(plat, pdpy, internalAttribs);
++    internalAttribs = eplX11GetInternalSurfaceAttribs(plat, pdpy, EPL_SURFACE_TYPE_PIXMAP, attribs);
+     if (internalAttribs == NULL)
+     {
+-        goto done;
++        return EGL_NO_SURFACE;
+     }
+ 
+     geomCookie = xcb_get_geometry(inst->conn, xpix);
+diff --git a/src/x11/x11-platform.c b/src/x11/x11-platform.c
+index 13e67a1..9be220e 100644
+--- a/src/x11/x11-platform.c
++++ b/src/x11/x11-platform.c
+@@ -1311,34 +1311,85 @@ static EGLBoolean eplX11WaitGL(EplDisplay *pdpy, EplSurface *psurf)
+     return ret;
+ }
+ 
+-EGLAttrib *eplX11GetInternalSurfaceAttribs(EplPlatformData *plat, EplDisplay *pdpy, const EGLAttrib *attribs)
++EGLAttrib *eplX11GetInternalSurfaceAttribs(EplPlatformData *plat,
++        EplDisplay *pdpy, EplSurfaceType surface_type, const EGLAttrib *attribs)
+ {
+     EGLAttrib *internalAttribs = NULL;
+-    int count = 0;
++    int count = eplCountAttribs(attribs);
++
++    // Allocate extra space so that we can add EGL_SURFACE_Y_INVERTED_NVX below.
++    internalAttribs = malloc((count + 3) * sizeof(EGLAttrib));
++    if (internalAttribs == NULL)
++    {
++        eplSetError(plat, EGL_BAD_ALLOC, "Out of memory\n");
++        return NULL;
++    }
++
++    count = 0;
++    internalAttribs[count++] = EGL_SURFACE_Y_INVERTED_NVX;
++    internalAttribs[count++] = EGL_TRUE;
+ 
+     if (attribs != NULL)
+     {
+-        for (count = 0; attribs[count] != EGL_NONE; count += 2)
++        int i;
++        for (i=0; attribs[i] != EGL_NONE; i += 2)
+         {
+-            if (attribs[count] == EGL_SURFACE_Y_INVERTED_NVX)
++            if (attribs[i] == EGL_SURFACE_Y_INVERTED_NVX)
+             {
+-                eplSetError(plat, EGL_BAD_ATTRIBUTE, "Invalid attribute 0x%04x\n", attribs[count]);
++                eplSetError(plat, EGL_BAD_ATTRIBUTE, "Invalid attribute 0x%04x\n", attribs[i]);
++                free(internalAttribs);
+                 return NULL;
+             }
++            else if (attribs[i] == EGL_RENDER_BUFFER)
++            {
++                /*
++                 * eglPlatformCreateSurfaceNVX doesn't accept the
++                 * EGL_RENDER_BUFFER attribute, since it's the platform library
++                 * that allocates and specifies the front and back buffers, not
++                 * the driver.
++                 */
++                if (surface_type != EPL_SURFACE_TYPE_WINDOW)
++                {
++                    /*
++                     * The EGL_RENDER_BUFFER is not valid for pixmaps, since
++                     * they're always single-buffered.
++                     */
++                    eplSetError(plat, EGL_BAD_ATTRIBUTE, "EGL_RENDER_BUFFER is not valid for pixmaps");
++                    free(internalAttribs);
++                    return NULL;
++                }
++                else if (attribs[i + 1] == EGL_SINGLE_BUFFER)
++                {
++                    /*
++                     * We don't currently support single-buffered rendering for
++                     * a window, but this attribute is only a hint, so it's not
++                     * an error to request it.
++                     *
++                     * If we do implement EGL_SINGLE_BUFFER for windows in the
++                     * future, then we'd do that by passing only a GL_FRONT
++                     * buffer to eglPlatformCreateSurfaceNVX, like we do for
++                     * pixmaps.
++                     */
++                    plat->callbacks.debugMessage(EGL_DEBUG_MSG_WARN_KHR,
++                            "EGL_SINGLE_BUFFER requested, but single-buffered rendering is not supported");
++                }
++                else if (attribs[i + 1] != EGL_BACK_BUFFER)
++                {
++                    eplSetError(plat, EGL_BAD_ATTRIBUTE,
++                            "Invalid EGL_RENDER_BUFFER value 0x%04x", attribs[i + 1]);
++                    free(internalAttribs);
++                    return NULL;
++                }
++            }
++            else
++            {
++                internalAttribs[count++] = attribs[i];
++                internalAttribs[count++] = attribs[i + 1];
++            }
+         }
+     }
+ 
+-    internalAttribs = malloc((count + 3) * sizeof(EGLAttrib));
+-    if (internalAttribs == NULL)
+-    {
+-        eplSetError(plat, EGL_BAD_ALLOC, "Out of memory\n");
+-        return NULL;
+-    }
+-
+-    memcpy(internalAttribs, attribs, count * sizeof(EGLAttrib));
+-    internalAttribs[count] = EGL_SURFACE_Y_INVERTED_NVX;
+-    internalAttribs[count + 1] = EGL_TRUE;
+-    internalAttribs[count + 2] = EGL_NONE;
++    internalAttribs[count] = EGL_NONE;
+     return internalAttribs;
+ }
+ 
+diff --git a/src/x11/x11-platform.h b/src/x11/x11-platform.h
+index ebd8b8a..c90f67d 100644
+--- a/src/x11/x11-platform.h
++++ b/src/x11/x11-platform.h
+@@ -429,13 +429,14 @@ EGLBoolean eplX11InitConfigList(EplPlatformData *plat, X11DisplayInstance *inst)
+  *
+  * \param plat The platform data
+  * \param pdpy The display data
++ * \param surface_type The type of surface that the attributes are for.
+  * \param attribs The attribute list that was passed to eglCreateWindowSurface
+  *      or eglCreatePixmapSurface.
+  * \return The EGLAttrib array to pass to the driver, or NULL on error. The
+  *      caller must free the array using free().
+  */
+-
+-EGLAttrib *eplX11GetInternalSurfaceAttribs(EplPlatformData *plat, EplDisplay *pdpy, const EGLAttrib *attribs);
++EGLAttrib *eplX11GetInternalSurfaceAttribs(EplPlatformData *plat,
++        EplDisplay *pdpy, EplSurfaceType surface_type, const EGLAttrib *attribs);
+ 
+ EGLBoolean eplX11HookChooseConfig(EGLDisplay edpy, EGLint const *attribs,
+         EGLConfig *configs, EGLint configSize, EGLint *numConfig);
+diff --git a/src/x11/x11-window.c b/src/x11/x11-window.c
+index 2376b61..040d7bf 100644
+--- a/src/x11/x11-window.c
++++ b/src/x11/x11-window.c
+@@ -732,6 +732,11 @@ void eplX11FreeWindow(EplSurface *surf)
+ {
+     X11Window *pwin = (X11Window *) surf->priv;
+ 
++    if (pwin == NULL)
++    {
++        return;
++    }
++
+     FreeWindowBuffers(surf);
+ 
+     if (pwin->inst->conn != NULL && pwin->present_event != NULL)
+@@ -1308,10 +1313,10 @@ EGLSurface eplX11CreateWindowSurface(EplPlatformData *plat, EplDisplay *pdpy, Ep
+         return EGL_NO_SURFACE;
+     }
+ 
+-    internalAttribs = eplX11GetInternalSurfaceAttribs(plat, pdpy, internalAttribs);
++    internalAttribs = eplX11GetInternalSurfaceAttribs(plat, pdpy, EPL_SURFACE_TYPE_WINDOW, attribs);
+     if (internalAttribs == NULL)
+     {
+-        goto done;
++        return EGL_NO_SURFACE;
+     }
+ 
+     fmt = eplX11FindDriverFormat(inst, configInfo->fourcc);
+-- 
+2.51.0
+

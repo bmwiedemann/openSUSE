@@ -1,0 +1,247 @@
+From f0c64b0fd24b884247889cb86a343c2adf65edc7 Mon Sep 17 00:00:00 2001
+From: Kyle Brenneman <kbrenneman@nvidia.com>
+Date: Wed, 25 Jun 2025 17:17:15 -0600
+Subject: [PATCH 4/4] Enable implicit sync if we're talking to the NVIDIA Xorg
+ server module.
+
+Although the NVIDIA driver doesn't support implicit sync semantics, the
+NVIDIA Xorg driver will extract and attach the fence attached to the
+dma-buf when it processes a PresentPixmap or CopyArea request, which is
+enough for egl-x11 to use its implicit sync path.
+
+Thus, we can set supports_implicit_sync if the server is on a non-NV
+device, or if the server is running on the NVIDIA Xorg module (which we
+can check by looking for the NVIDIA-specific NV-GLX extension).
+
+Also added some environment variables to control the sync path:
+
+Setting __NV_X11_FORCE_IMPLICIT_SYNC=1 will force egl-x11 to enable its
+implicit sync path, though it will still use explicit sync first if
+that's available. Setting it to "0" will disable the implicit sync path.
+
+Setting __NV_X11_DISABLE_EXPLICIT_SYNC=1 will disable the explicit sync
+path.
+---
+ src/x11/x11-platform.c | 62 ++++++++++++++++++++++++++++++++----------
+ src/x11/x11-window.c   | 28 +++++++++++--------
+ 2 files changed, 64 insertions(+), 26 deletions(-)
+
+diff --git a/src/x11/x11-platform.c b/src/x11/x11-platform.c
+index 1d73bdc..a073f34 100644
+--- a/src/x11/x11-platform.c
++++ b/src/x11/x11-platform.c
+@@ -709,6 +709,21 @@ static void eplX11CleanupDisplay(EplDisplay *pdpy)
+     }
+ }
+ 
++static EGLBoolean CheckX11Extension(xcb_connection_t *conn, const char *name)
++{
++    xcb_generic_error_t *error = NULL;
++    xcb_query_extension_reply_t *reply = xcb_query_extension_reply(conn,
++            xcb_query_extension(conn, strlen(name), name), &error);
++    EGLBoolean ret = EGL_FALSE;
++    if (reply != NULL)
++    {
++        ret = (reply->present != 0);
++        free(reply);
++    }
++    free(error);
++    return ret;
++}
++
+ /**
+  * Checks whether the server has the necessary support that we need.
+  *
+@@ -727,7 +742,6 @@ static EGLBoolean CheckServerExtensions(X11DisplayInstance *inst)
+     xcb_dri3_query_version_reply_t *dri3Reply = NULL;
+     xcb_present_query_version_cookie_t presentCookie;
+     xcb_present_query_version_reply_t *presentReply = NULL;
+-    xcb_query_extension_reply_t *nvglxReply = NULL;
+     EGLBoolean success = EGL_FALSE;
+ 
+     // Check to make sure that we're using a domain socket, since we need to be
+@@ -765,17 +779,7 @@ static EGLBoolean CheckServerExtensions(X11DisplayInstance *inst)
+          * we could add some requests to NV-GLX to support older (pre DRI3 1.2)
+          * servers or non-Linux systems.
+          */
+-        const char NVGLX_EXTENSION_NAME[] = "NV-GLX";
+-        xcb_query_extension_cookie_t extCookie = xcb_query_extension(inst->conn,
+-                sizeof(NVGLX_EXTENSION_NAME) - 1, NVGLX_EXTENSION_NAME);
+-        nvglxReply = xcb_query_extension_reply(inst->conn, extCookie, &error);
+-        if (nvglxReply == NULL)
+-        {
+-            // XQueryExtension isn't supposed to generate any errors.
+-            goto done;
+-        }
+-
+-        if (nvglxReply->present)
++        if (CheckX11Extension(inst->conn, "NV-GLX"))
+         {
+             goto done;
+         }
+@@ -821,7 +825,6 @@ static EGLBoolean CheckServerExtensions(X11DisplayInstance *inst)
+     success = EGL_TRUE;
+ 
+ done:
+-    free(nvglxReply);
+     free(presentReply);
+     free(dri3Reply);
+     free(error);
+@@ -893,6 +896,7 @@ X11DisplayInstance *eplX11DisplayInstanceCreate(EplDisplay *pdpy, EGLBoolean fro
+     EplInternalDisplay *internalDpy = NULL;
+     EGLBoolean supportsDirect = EGL_FALSE;
+     EGLBoolean supportsLinear = EGL_FALSE;
++    const char *env;
+ 
+     inst = calloc(1, sizeof(X11DisplayInstance));
+     if (inst == NULL)
+@@ -1013,7 +1017,15 @@ X11DisplayInstance *eplX11DisplayInstanceCreate(EplDisplay *pdpy, EGLBoolean fro
+             return NULL;
+         }
+ 
+-        inst->supports_implicit_sync = EGL_FALSE;
++        /*
++         * The NVIDIA driver does not support implicit sync semantics in OpenGL
++         * and similar. However, if the NVIDIA server-side driver module for
++         * Xorg supports DRI3 1.2, then it will will extract and attach fences
++         * from the dma-buf when it processes a PresentPixmap or CopyArea
++         * request, which is all we actually need in order to use our implicit
++         * sync path.
++         */
++        inst->supports_implicit_sync = CheckX11Extension(inst->conn, "NV-GLX");
+     }
+     else
+     {
+@@ -1047,6 +1059,19 @@ X11DisplayInstance *eplX11DisplayInstanceCreate(EplDisplay *pdpy, EGLBoolean fro
+         inst->supports_implicit_sync = EGL_TRUE;
+     }
+ 
++    env = getenv("__NV_X11_FORCE_IMPLICIT_SYNC");
++    if (env != NULL)
++    {
++        if (strcmp(env, "1") == 0)
++        {
++            inst->supports_implicit_sync = EGL_TRUE;
++        }
++        else if (strcmp(env, "0") == 0)
++        {
++            inst->supports_implicit_sync = EGL_FALSE;
++        }
++    }
++
+     if (inst->device == EGL_NO_DEVICE_EXT)
+     {
+         if (from_init)
+@@ -1192,6 +1217,15 @@ X11DisplayInstance *eplX11DisplayInstanceCreate(EplDisplay *pdpy, EGLBoolean fro
+         }
+     }
+ 
++    if (inst->supports_explicit_sync)
++    {
++        env = getenv("__NV_X11_DISABLE_EXPLICIT_SYNC");
++        if (env != NULL && atoi(env) != 0)
++        {
++            inst->supports_explicit_sync = EGL_FALSE;
++        }
++    }
++
+     if (inst->force_prime && !inst->supports_prime)
+     {
+         if (from_init)
+diff --git a/src/x11/x11-window.c b/src/x11/x11-window.c
+index 040d7bf..5a458ba 100644
+--- a/src/x11/x11-window.c
++++ b/src/x11/x11-window.c
+@@ -340,15 +340,14 @@ static void FreeColorBuffer(X11DisplayInstance *inst, X11ColorBuffer *buffer)
+ static X11ColorBuffer *AllocOneColorBuffer(X11DisplayInstance *inst,
+         const EplFormatInfo *fmt, uint32_t width, uint32_t height,
+         const uint64_t *modifiers, int num_modifiers,
+-        EGLBoolean scanout)
++        EGLBoolean prime)
+ {
+-    int fd = -1;
+     uint32_t flags = 0;
+     X11ColorBuffer *buffer = NULL;
+ 
+     assert(num_modifiers > 0);
+ 
+-    if (scanout)
++    if (!prime)
+     {
+         flags |= GBM_BO_USE_SCANOUT;
+     }
+@@ -370,14 +369,14 @@ static X11ColorBuffer *AllocOneColorBuffer(X11DisplayInstance *inst,
+         goto done;
+     }
+ 
+-    fd = gbm_bo_get_fd(buffer->gbo);
+-    if (fd < 0)
++    buffer->fd = gbm_bo_get_fd(buffer->gbo);
++    if (buffer->fd < 0)
+     {
+         goto done;
+     }
+ 
+     buffer->buffer = inst->platform->priv->egl.PlatformImportColorBufferNVX(inst->internal_display->edpy,
+-            fd, width, height, gbm_bo_get_format(buffer->gbo),
++            buffer->fd, width, height, gbm_bo_get_format(buffer->gbo),
+             gbm_bo_get_stride(buffer->gbo),
+             gbm_bo_get_offset(buffer->gbo, 0),
+             gbm_bo_get_modifier(buffer->gbo));
+@@ -386,11 +385,15 @@ static X11ColorBuffer *AllocOneColorBuffer(X11DisplayInstance *inst,
+         goto done;
+     }
+ 
+-done:
+-    if (fd >= 0)
++    if (prime || !inst->supports_implicit_sync)
+     {
+-        close(fd);
++        // We only need to hold on to a file descriptor for a shared dma-buf,
++        // and only if we're using implicit sync.
++        close(buffer->fd);
++        buffer->fd = -1;
+     }
++
++done:
+     if (buffer->buffer == NULL)
+     {
+         FreeColorBuffer(inst, buffer);
+@@ -497,7 +500,7 @@ static EGLBoolean AllocWindowBuffers(EplSurface *surf,
+     EGLBoolean success = EGL_TRUE;
+ 
+     front = AllocOneColorBuffer(pwin->inst, pwin->format->fmt, pwin->pending_width, pwin->pending_height,
+-            modifiers, num_modifiers, !prime);
++            modifiers, num_modifiers, prime);
+     if (front == NULL)
+     {
+         goto done;
+@@ -508,7 +511,7 @@ static EGLBoolean AllocWindowBuffers(EplSurface *surf,
+     modifier = gbm_bo_get_modifier(front->gbo);
+ 
+     back = AllocOneColorBuffer(pwin->inst, pwin->format->fmt, pwin->pending_width, pwin->pending_height,
+-            &modifier, 1, !prime);
++            &modifier, 1, prime);
+     if (back == NULL)
+     {
+         goto done;
+@@ -1785,6 +1788,7 @@ static int CheckBufferReleaseImplicit(EplDisplay *pdpy, EplSurface *surf,
+     {
+         if (buffer != skip && buffer->status == BUFFER_STATUS_IDLE_NOTIFIED)
+         {
++            assert(buffer->fd >= 0);
+             buffers[count] = buffer;
+             fds[count].fd = buffer->fd;
+             fds[count].events = POLLOUT;
+@@ -2107,7 +2111,7 @@ static X11ColorBuffer *GetFreeBuffer(EplDisplay *pdpy, EplSurface *surf,
+             else
+             {
+                 buffer = AllocOneColorBuffer(pwin->inst, pwin->format->fmt, pwin->width, pwin->height,
+-                        &pwin->modifier, 1, !pwin->prime);
++                        &pwin->modifier, 1, pwin->prime);
+             }
+             if (buffer == NULL)
+             {
+-- 
+2.51.0
+

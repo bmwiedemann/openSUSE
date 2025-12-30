@@ -82,4 +82,12 @@
   * 0003-Fix-the-error-reporting-in-WaitTimelinePoint.patch</comment>
     <requestid>1299155</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>68929e83d22f09a95006794734a5b497</srcmd5>
+    <version>1.0.5</version>
+    <time>1767092484</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1324723</requestid>
+  </revision>
 </revisionlist>
