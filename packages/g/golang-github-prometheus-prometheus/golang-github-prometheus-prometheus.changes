@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 17 06:55:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 3.8.1:
+  * [BUGFIX] remote: Fix Remote Write receiver, so it does not send
+    wrong response headers for v1 flow and cause Prometheus senders
+    to emit false partial error log and metrics. #17683
+
+-------------------------------------------------------------------
 Fri Dec  5 06:38:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 3.8.0:
