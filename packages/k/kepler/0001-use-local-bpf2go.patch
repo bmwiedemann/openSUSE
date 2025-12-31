@@ -1,9 +1,0 @@
-Index: kepler-0.7.11/pkg/bpf/gen.go
-===================================================================
---- kepler-0.7.11.orig/pkg/bpf/gen.go
-+++ kepler-0.7.11/pkg/bpf/gen.go
-@@ -1,3 +1,3 @@
- package bpf
- 
--//go:generate go run github.com/cilium/ebpf/cmd/bpf2go@v0.15.0 kepler ../../bpf/kepler.bpf.c -- -I../../bpf/include
-+//go:generate bpf2go kepler ../../bpf/kepler.bpf.c -- -I../../bpf/include

@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Tue Dec 30 11:38:55 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Remove patches:
+  * 0001-use-local-bpf2go.patch
+  * 0002-change-data-path.patch
+  * 0003-Bump-x-net.patch
+
+- Update to version 0.11.3
+  * Security: CVE-2025-58190 Fix excessive memory consumption by
+    `html.ParseFragment` when processing specially crafted input
+    (bsc#1251632)
+  * Security: CVE-2025-47911 Fix various algorithms with quadratic
+    complexity when parsing HTML documents (bsc#1251427)
+
+- Update to version 0.11.2
+  * Fix: Fix node power metrics for Virtual Machines.
+  * Fix: Resolve an issue with pod energy metrics when a
+    container has no usage.
+
+- Update to version 0.11.1
+  * Fix: Added missing serviceaccount in the Helm chart.
+
+- Update to version 0.11.0
+  * Feature: Added support for platform power metrics (AC).
+  * Feature: Introduced experimental support for trained power
+    models.
+  * Fix: Improved the accuracy of power estimation for Virtual
+    Machines.
+  * Breaking Change: Metrics related to `kepler_vm_` have been
+    refactored.
+
+- Update to version 0.10.1
+  * Feature: Added support for the ARM64 architecture.
+  * Fix: Addressed issues when running on Virtual Machines
+    without RAPL.
+  * Fix: Includes several other bug fixes and stability
+    improvements.
+
+- Update to version 0.10.0
+  * Breaking Change: This is a major rewrite with significant
+    architectural changes.
+  * Breaking Change: Legacy versions (0.9.0 and earlier) are
+    now frozen, with no new features or bug fixes.
+  * Breaking Change: The configuration format has been updated.
+  * Breaking Change: The Kepler Model Server is not compatible
+    with this version and above.
+  * Feature: New modular architecture for better extensibility.
+  * Feature: Enhanced performance and accuracy with dynamic
+    detection of RAPL zones.
+  * Feature: Reduced security requirements, no longer needing
+    CAP_SYS_ADMIN or CAP_BPF capabilities.
+  * Fix: Significantly reduced resource usage.
+
+- Update to version 0.9.0
+  * Note: This is the final legacy release.
+  * Feature: Added support for GPU power monitoring.
+  * Feature: Introduced a model server for training power models.
+
+- Update to version 0.8.2
+  * Fix: Addressed a bug in RAPL power calculation on
+    multi-socket systems.
+
+- Update to version 0.8.1
+  * Fix: This version includes multiple bug fixes and
+    stability improvements.
+
+- Update to version 0.8.0
+  * Feature: Introduced a new estimator framework.
+  * Breaking Change: The API is backward incompatible with
+    previous versions.
+
+- Update to version 0.7.12
+  * Fix: This version includes multiple bug fixes and
+    stability improvements.
+
+-------------------------------------------------------------------
 Fri Jan 10 10:52:10 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Fix CVE-2024-45338 (bsc#1235311): Bump golang.org/x/net to 0.34.0

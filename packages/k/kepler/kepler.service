@@ -1,0 +1,15 @@
+[Unit]
+Description=Kepler
+
+[Service]
+WorkingDirectory=/usr/bin/
+ExecStart=kepler
+Restart=always
+User=root
+CPUAccounting=yes
+BlockIOAccounting=yes
+MemoryAccounting=yes
+LimitNOFILE=1048576
+
+[Install]
+WantedBy=multi-user.target
