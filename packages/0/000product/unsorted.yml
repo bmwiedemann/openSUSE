@@ -6987,13 +6987,6 @@ unsorted:
   - ghostscript-fonts-other 
   - ghostscript-mini 
   - ghostscript-mini-devel 
-  - ghostty 
-  - ghostty-bash-completion 
-  - ghostty-doc 
-  - ghostty-fish-completion 
-  - ghostty-neovim 
-  - ghostty-vim 
-  - ghostty-zsh-completion 
   - ghostview 
   - ghostwriter 
   - ghostwriter-lang 
@@ -19630,7 +19623,6 @@ unsorted:
   - nautilus-eiciel 
   - nautilus-extension-dropbox 
   - nautilus-extension-folder-color 
-  - nautilus-extension-ghostty 
   - nautilus-extension-nextcloud 
   - nautilus-extension-opencloud 
   - nautilus-extension-owncloud 
@@ -38474,7 +38466,6 @@ unsorted:
   - termcap-devel-static 
   - terminator 
   - terminator-lang 
-  - terminfo-ghostty 
   - terminology 
   - terminology-lang 
   - terminology-theme-Flat 
@@ -49673,6 +49664,7 @@ unsorted:
   - wrk 
   - wsdl4j 
   - wsdl4j-javadoc 
+  - wshowlyrics 
   - wsjtx 
   - wsl-appx 
   - wsl-firstboot 
