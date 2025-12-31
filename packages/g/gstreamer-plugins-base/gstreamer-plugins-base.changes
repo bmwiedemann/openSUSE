@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Dec 30 09:37:34 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.10:
+  + basetextoverlay: Don't negotiate if caps haven't changed
+  + codec-utils: Update mime codec strings
+  + fdmemory: Fix size calculation when sharing
+  + gl elements add a yellow bar on JPEGs with non-even heights
+  + glimagesink: Fix handling of odd height buffers
+  + glwindow_cocoa: fix window not closing (w/o user window handle)
+  + opusenc: Simplify Vorbis channel layout mapping code and fix
+    7.1 layout & use surround multistream encoder
+  + parsebin: Improve debug logging
+  + playbin3: ensure GST_EVENT_SELECT_STREAMS event is sent to
+    collection source
+  + tagdemux: propagate seek event seqnum to upstream
+  + videodecoder: Don't assume the ALLOCATION query contains a pool
+  + videodecoder, videoaggregator: Fix handling of buffer pool
+    configuration failures
+
+-------------------------------------------------------------------
 Sun Dec  7 08:16:18 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.9:
