@@ -333,4 +333,13 @@
   * /usr/share/doc/packages/mame/whatsnew-0.283.txt</comment>
     <requestid>1320544</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>b450ae09cfa24f18d4653860d9af7c18</srcmd5>
+    <version>0.284</version>
+    <time>1767174496</time>
+    <user>anag_factory</user>
+    <comment>- Updated to 0.284
+  * /usr/share/doc/packages/mame/whatsnew-0.284.txt</comment>
+    <requestid>1324873</requestid>
+  </revision>
 </revisionlist>
