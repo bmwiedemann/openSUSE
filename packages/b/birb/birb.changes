@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 30 16:11:34 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.6.1:
+  * Fix the license headers for the tests
+  * Add an override for the check-license-headers script
+  * Use int and char instead of gint and gchar
+
+-------------------------------------------------------------------
 Sat Dec 27 17:28:19 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 0.6.0:

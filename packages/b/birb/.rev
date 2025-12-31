@@ -34,4 +34,15 @@
     <comment></comment>
     <requestid>1324498</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a20822f3a5f925b1499c2c38783a735c</srcmd5>
+    <version>0.6.1</version>
+    <time>1767174493</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.6.1:
+  * Fix the license headers for the tests
+  * Add an override for the check-license-headers script
+  * Use int and char instead of gint and gchar (forwarded request 1324868 from rrahl0)</comment>
+    <requestid>1324869</requestid>
+  </revision>
 </revisionlist>

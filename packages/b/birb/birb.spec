@@ -18,7 +18,7 @@
 
 %define         sover 0
 Name:           birb
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        A library of utilities for GLib based apps
 License:        LGPL-2.1-or-later
