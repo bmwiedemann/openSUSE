@@ -1,10 +1,12 @@
+<!-- -*- xml -*- !-->
 <services>
   <service mode="manual" name="obs_scm">
-    <param name="versionformat">v2.6.2</param>
+    <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="url">https://github.com/doitsujin/dxvk.git</param>
     <param name="scm">git</param>
-    <param name="revision">v2.6.2</param>
+    <param name="revision">@PARENT_TAG@</param>
+    <param name="changesgenerate">enable</param>
   </service>
   <service mode="buildtime" name="tar" />
   <service mode="buildtime" name="recompress">

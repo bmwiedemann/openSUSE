@@ -218,4 +218,133 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 If you have any suggestions for improvement, please let me know! (forwarded request 1284964 from DarkWav)</comment>
     <requestid>1285186</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e3a20203c7f4fd7dfb66accc94472b46</srcmd5>
+    <version>2.7.1</version>
+    <time>1767174417</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.7.1:
+  * Fixed a regression that would cause MSAA resolves to look like
+    MSAA was not working in a number of D3D9 games.
+  * Improved performance in some D3D9 games by avoiding unnecessary
+    render pass barriers, such as Dead Space 2
+    (PR gh#doitsujin/dxvk#5112).
+  * Fixed the way tessellation factors are interpreted for line tessellation.
+    This fixes particle rendering in DCS World and potentially other issues.
+    (gh#doitsujin/dxvk#4327)
+  * Added the d3d9.modeCountCompatibility configuration option
+    to work around buffer overflows in older games that do not expect
+    monitors to support more than ~16 different display modes.
+    This fixes a crash in AquaNox 2.
+  * Alone in the Dark: Worked around a crash on start.
+    (PR gh#doitsujin/dxvk#5158)
+  * Comanche 4: Worked around an issue where the in-game anti-aliasing
+    option would only be exposed on certain GeForce4 Ti GPUs.
+  * Crysis 3: Removed GPU vendor override to work around an issue
+    where the game wouldn't start after recent EA app updates.
+  * Note that this change may cause a noticeable performance regression
+    on AMD systems due to less efficient code paths in the game.
+  * Dungeon Siege 2: Fixed a regression that would cause character
+    models to not show in the menu. (gh#doitsujin/dxvk#5175)
+  * Everybody's Gone to the Rapture: Worked around poor CPU-bound
+    performance. (PR gh#doitsujin/dxvk#5168)
+  * Fallout New Vegas: Added vendor override to work around an issue
+    with the FNV Reloaded mod using an unimplemented NVAPI function on Nvidia GPUs.
+    (PR gh#doitsujin/dxvk#5136)
+  * Guilty Gear: Added 60 FPS cap to work around the game speeding up at higher frame rates.
+    (gh#doitsujin/dxvk#5142, PR gh#doitsujin/dxvk#5143)
+  * PsiOps: Added 60 FPS cap to work around broken physics at higher
+    frame rates. (PR gh#doitsujin/dxvk#5145)
+  * Scarface: Worked around a rendering issue caused by breaking
+    changes in D3D9 API behaviour.
+  * Team Fortress 2: Fixed an MSAA-related rendering issue.
+    (gh#doitsujin/dxvk#5119, PR gh#doitsujin/dxvk#5132)
+  * The Witcher 1: Added 300 FPS cap to work around a game issue where
+    Geralt's hair would not render properly in the inventory menu.
+  * Top Spin 2004: Fixed a memory leak as well as rendering issues.
+    (PR gh#doitsujin/dxvk#5155)
+- Changes from 2.7.0:
+  * Driver support
+  The Vulkan extension VK_KHR_maintenance5 is now required.
+  DXVK has been relying on guarantees made by this extension since version 2.5,
+  so in order to remove some maintenance burden,
+  fallbacks that would allow older drivers to run were now removed.
+  Note: These changes will primarily affect Windows users on AMD Polaris and
+  Vega GPUs. On Linux, these older GPUs will keep working on RADV
+  when using Mesa 25.0 or newer.
+  * Binding model changes
+  Descriptor management was largely rewritten and modernized.
+  On newer AMD and Nvidia cards, VK_EXT_descriptor_buffer is now used by default,
+  which significantly reduces CPU overhead compared to the legacy binding model
+  and may thus improve CPU-bound performance in games such as
+  Final Fantasy XIV, God of War, Metaphor: ReFantazio, Watch Dogs 2 and others.
+  This feature remains disabled on older GPUs due to severe performance
+  regressions in some cases,
+  specifically on Nvidia Pascal or older, as well as AMD RDNA2 or older
+  when using AMDVLK or the AMD Windows driver.
+  RADV is unaffected by these issues.
+  Note: A small hit to GPU-bound performance is expected in some cases,
+  in exchange for more consistent overall performance.
+  Users can override the default behaviour with the dxvk.enableDescriptorBuffer option.
+  Enabling Resizeable BAR on supported systems is strongly recommended.
+  * Memory management
+   Memory defragmentation is now enabled by default on Intel Battlemage
+   and Lunar Lake GPUs. On older Intel GPUs, this feature remains
+   disabled as it may cause rendering issues for unknown reasons,
+   see gh#doitsujin/dxvk#4395.
+   On discrete GPUs, DXVK will now enforce the driver-reported VRAM
+   budget as much as possible, and dynamically evict unused resources
+   to system memory when under memory pressure.
+   This should improve performance in many Unity Engine titles on
+   VRAM-constrained systems, and may allow for higher texture quality
+   settings to be used in some games.
+   Temporary slowdowns and stutters are still expected when exceeding
+   VRAM capacity.
+   Note: This feature currently does not work as intended on AMD GPUs
+   due to kernel driver issues.
+   * Legacy feature removal
+   The state cache was introduced in Version 0.80 to reduce shader
+   compilation stutter, and has been largely unused since
+   the introduction of VK_EXT_graphics_pipeline_library in DXVK 2.0.
+   In order to reduce maintenance burden, particularly with pipeline-related
+   changes in this release, this legacy feature was now removed.
+   Additionally, the d3d9.forceSwapchainMSAA option was removed.
+   This feature was not really useful since most games either use additional
+   render targets or provide a built-in MSAA option themselves anyway.
+   For games that do not provide built-in MSAA, users are encouraged
+   to use Gamescope to run these games with a higher render resolution instead.
+   * Added support for planar video output views.
+     (PR gh#doitsujin/dxvk#4872).
+   * This is required for video playback in JR EAST Train Simulator.
+   * D3D11 shaders will now zero-initialize all variables and groupshared
+     memory by default in order to work around game bugs resulting in undefined behaviour.
+     The d3d11.zeroWorkgroupMemory option was removed accordingly.
+   * Optimized D3D9 StretchRect in certain multisample resolve cases
+      encountered in Source Engine. (PR gh#doitsujin/dxvk#5023)
+   * Fixed an instance of invalid Vulkan usage in Modulus,
+     and possibly other Unity Engine games that use the D3D11 video API.
+   * Implemented support for the ID3DDestructionNotifier interface.
+   * Vulkan devices that lack the required feature support to run
+     DXVK will no longer be listed as DXGI / D3D9 adapters.
+     This may fix crashes in case an outdated graphics driver or an
+     unsupported integrated GPU are present on the system.
+   * Trying to build DXVK in a MinGW environment with AVX enabled
+     will now result in a compile-time error.
+   * We cannot support AVX builds due to toolchain issues, nor is
+     it expected to be beneficial.
+   * Astebreed: Fixed crash when changing graphics options.
+     (PR gh#doitsujin/dxvk#5034)
+   * GTR - FIA GT Racing Game: Worked around a game issue that would
+     cause it to not start. (PR gh#doitsujin/dxvk#5072)
+   * LEGO City Undercover: Worked around a game issue that would
+     cause the intro video to be broken.
+     (gh#doitsujin/dxvk#4997, PR gh#doitsujin/dxvk#5000)
+   * Star Trek: Starfleet Command III: Worked around resource leak
+     in GOG build. (PR gh#doitsujin/dxvk#5056)
+   * Test Drive Unlimited 2: Worked around alt-tab issue causing
+     input loss. (PR gh#doitsujin/dxvk#5057)
+   * Wargame: European Escalation: Worked around gamma issue when
+     the game detects an Nvidia GPU. (PR gh#doitsujin/dxvk#5055) (forwarded request 1324727 from Thaodan)</comment>
+    <requestid>1324809</requestid>
+  </revision>
 </revisionlist>
