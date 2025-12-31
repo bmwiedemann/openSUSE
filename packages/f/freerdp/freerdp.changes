@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Dec 30 14:27:12 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.20.0:
+  * Mingw fixes (#12070)
+  * [crypto,certificate_data] add some hostname sanitation
+  * [client,common]: Fix loading of rdpsnd channel
+  * [client,sdl] set touch and pen hints
+- Changes from version 3.19.1:
+  * [core,transport] improve SSL error logging
+  * [utils,helpers] fix freerdp_settings_get_legacy_config_path
+  * From stdin and sdl-creds improve
+  * [crypto,certificate] sanitize hostnames
+  * [channels,drdynvc] propagate error in dynamic channel
+  * [CMake] make Mbed-TLS and LibreSSL experimental
+  * Json fix
+  * rdpecam: send sample only if it's available
+  * [channels,rdpecam] allow MJPEG frame skip and direct passthrough
+  * [winpr,utils] explicit NULL checks in jansson WINPR_JSON_ParseWithLength
+  * [packaging,flatpak] remove xprop
+- Changes from version 3.19.0:
+  * [client,common] fix retry counter
+  * [cmake] fix aarch64 neon detection
+  * Fix response body existence check when using RDP Gateway
+  * fix line clipping issue
+  * Clip coord fix
+  * [core,input] Add debug log to keyboard state sync
+  * Update command line usage for gateway option
+  * [codec,ffmpeg] 8.0 dropped AV_PROFILE_AAC_MAIN
+  * [channels,audin] fix pulse memory leak
+  * [channels,drive] Small performance improvements in drive channel
+  * [winpr,utils] fix command line error logging
+  * [common,test] Adjust AVC and H264 expectations
+  * drdynvc: implement compressed packet
+  * [channels,rdpecam] improve log messages
+  * Fix remote credential guard channel loading
+  * Fix inverted ifdef
+  * [core,nego] disable all enabled modes except the one requested
+  * rdpear: handle basic NTLM commands and fix server-side
+  * [smartcardlogon] Fix off-by-one error in `smartcard_hw_enumerateCerts`
+  * rdpecam: fix camera sample grabbing
+
+-------------------------------------------------------------------
 Thu Nov 20 15:13:39 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.18.0:
