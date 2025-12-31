@@ -17,7 +17,7 @@
 
 
 Name:           gkrellm-nvidia
-Version:        1.2
+Version:        1.3.2
 Release:        0
 Summary:        A plugin for GKrellM and Nvidia GPUs
 License:        GPL-2.0-or-later
@@ -26,6 +26,9 @@ Source:         https://github.com/carcass82/gkrellm-nvidia/archive/refs/tags/re
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gkrellm)
 Requires:       gkrellm
+%if 0%{?suse_version} < 1600
+BuildRequires:  gcc12
+%endif
 
 %description
 A simple GKrellM plugin for reading nvidia GPUs data. Clock, Temperature and
@@ -36,6 +39,9 @@ Fan Speed for multiple GPU are supported.
 sed -i "s:/lib/:/%{_lib}/:" Makefile
 
 %build
+%if 0%{?suse_version} < 1600
+export CC=gcc-12
+%endif
 %make_build
 
 %install
