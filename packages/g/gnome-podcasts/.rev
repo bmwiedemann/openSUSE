@@ -47,4 +47,36 @@
     <comment></comment>
     <requestid>1295895</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c2d277c0e9e76af6fb1db59dfacabd25</srcmd5>
+    <version>25.3</version>
+    <time>1767174406</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 25.3:
+   + Added:
+     - Episode Chapters are here
+     - Added alternative hotkeys and new playback-rate hotkeys
+     - Port to AdwShortcutsDialog
+  + Changed:
+    - Use rss content:encoded tag before description tag
+    - Align the context menu to the cursor
+    - Change the default icon when there is no show icon
+    - Make episode widget updates more efficient
+    - Use document font for the episode description
+    - Update gtk4-rs to 0.10
+    - Updated the user-agent used for downloads
+    - Use document font for the sheet description
+    - Hide duration label when its not available
+  + Fixed:
+    - Adapt to GTK 4.20 behavior changes
+    - Adapt Discovery page to not overflow on mobile layout
+    - Fix rendering of escape-sequences in description
+    - All play buttons now turn into pause buttons when currently
+      playing
+    - Prevent long_press from triggering on episode widget buttons
+    - Fix Wrapping of episode descriptions
+  + Updated translations
+</comment>
+    <requestid>1324786</requestid>
+  </revision>
 </revisionlist>

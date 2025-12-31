@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-podcasts
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2019 Bjørn Lie, Bryne, Norway.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           gnome-podcasts
-Version:        25.2
+Version:        25.3
 Release:        0
 Summary:        Podcast app for GNOME
 License:        GPL-3.0-or-later
@@ -45,7 +45,7 @@ BuildRequires:  pkgconfig(gstreamer-play-1.0) >= 1.22
 BuildRequires:  pkgconfig(gstreamer-plugins-bad-1.0) >= 1.22
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= 1.22
 BuildRequires:  pkgconfig(gtk4) >= 4.15.3
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.4
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8.alpha
 BuildRequires:  pkgconfig(openssl) >= 1.0
 BuildRequires:  pkgconfig(sqlite3) >= 3.20
 

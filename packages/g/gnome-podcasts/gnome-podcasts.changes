@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Dec 29 10:55:03 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 25.3:
+   + Added:
+     - Episode Chapters are here
+     - Added alternative hotkeys and new playback-rate hotkeys
+     - Port to AdwShortcutsDialog
+  + Changed:
+    - Use rss content:encoded tag before description tag
+    - Align the context menu to the cursor
+    - Change the default icon when there is no show icon
+    - Make episode widget updates more efficient
+    - Use document font for the episode description
+    - Update gtk4-rs to 0.10
+    - Updated the user-agent used for downloads
+    - Use document font for the sheet description
+    - Hide duration label when its not available
+  + Fixed:
+    - Adapt to GTK 4.20 behavior changes
+    - Adapt Discovery page to not overflow on mobile layout
+    - Fix rendering of escape-sequences in description
+    - All play buttons now turn into pause buttons when currently
+      playing
+    - Prevent long_press from triggering on episode widget buttons
+    - Fix Wrapping of episode descriptions
+  + Updated translations
+
+-------------------------------------------------------------------
 Sat Jul 26 11:38:02 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 25.2:
