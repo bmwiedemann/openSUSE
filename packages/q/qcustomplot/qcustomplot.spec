@@ -95,9 +95,9 @@ Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 %if 0%{?qt5}
 Requires:       pkgconfig(Qt5PrintSupport)
-# Last used 2018 with version 2.0.0
-Provides:       %{pname}-qt5-devel = %{version}
-Obsoletes:      %{pname}-qt5-devel < %{version}
+# Last used 2025-12-07, when package was changed to multibuild
+Provides:       %{pname}-devel = %{version}
+Obsoletes:      %{pname}-devel < %{version}
 Conflicts:      %{pname}-qt6-devel
 %endif
 %if 0%{?qt6}
@@ -152,6 +152,11 @@ Cflags: -I\${includedir}
 Libs: -L\${libdir} -lqcustomplot%{psuffix}
 EOF
 
+%if 0%{?qt5}
+# Install the legacy file name for qcustomplot.pc for the qt5 case - be backwards compatible
+ln -s %{name}.pc %{buildroot}%{_libdir}/pkgconfig/%{pname}.pc
+%endif
+
 # Only install documentation for one flavor (qt6)
 %if 0%{?qt6}
 install -Dm 0644 -t %{buildroot}%{_docdir}/%{pname}/ changelog.txt documentation/qcustomplot.qch
@@ -172,6 +177,9 @@ find %{buildroot}%{_docdir}/%{pname}/ -type f -exec chmod 0644 \{\} +
 %{_includedir}/qcustomplot.h
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
+%if 0%{?qt5}
+%{_libdir}/pkgconfig/%{pname}.pc
+%endif
 
 %if 0%{?qt6}
 %files -n %{pname}-doc

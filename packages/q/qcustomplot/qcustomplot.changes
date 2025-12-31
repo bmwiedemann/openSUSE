@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 30 11:07:25 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix provides/obsoletes of -qt5-devel package: provide/obsolete
+  the former qcustomplot-devel symbol, which some packages rely on.
+- Package qcustomplot.pc (legacy name) as part of
+  qcustomplot-qt5-devel.
+
+-------------------------------------------------------------------
 Fri Dec 19 18:16:40 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Build doc package only for a single flavour (qt6).
