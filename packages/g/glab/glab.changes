@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec 19 08:12:49 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.80.4 (.3 was not released):
+  * Bug Fixes
+    - e8b10d9d: fix(goreleaser): replace unsupported negative
+      lookahead with group reordering (Kai Armstrong
+      karmstrong@gitlab.com)
+  * Dependencies
+    - chore(deps): update module k8s.io/client-go to v0.35.0
+
+-------------------------------------------------------------------
 Thu Dec 18 06:03:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.80.2:
