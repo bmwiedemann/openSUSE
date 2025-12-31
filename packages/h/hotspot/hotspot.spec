@@ -1,7 +1,7 @@
 #
 # spec file for package hotspot
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,8 +28,8 @@ Source1:        https://github.com/KDAB/hotspot/releases/download/v%{version}/ho
 Source2:        https://github.com/KDAB/hotspot/releases/download/v%{version}/hotspot-PrefixTickLabels-v%{version}.tar.gz
 BuildRequires:  extra-cmake-modules
 %if 0%{?suse_version} == 1500
-BuildRequires:  gcc13-c++
 BuildRequires:  gcc13-PIE
+BuildRequires:  gcc13-c++
 %endif
 BuildRequires:  glibc-devel-static
 BuildRequires:  libdw-devel
@@ -62,7 +62,11 @@ BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(libdebuginfod)
+%if 0%{?suse_version} > 1600
+BuildRequires:  pkgconfig(qcustomplot-qt5)
+%else
 BuildRequires:  pkgconfig(qcustomplot)
+%endif
 Requires:       binutils
 Requires:       perf
 Requires:       pkexec
