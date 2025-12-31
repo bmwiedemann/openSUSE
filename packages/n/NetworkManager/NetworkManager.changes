@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Dec 29 11:45:09 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.54.3:
+  + For private connections (the ones that specify a user in the
+    "connection.permissions" property), verify that the user can
+    access the 802.1X certificates and keys set in the connection.
+  + Introduce a libnm function that can be used by VPN plugins to
+    check user permissions on certificate and keys.
+- Changes from version 1.54.2:
+  + Support reapplying the "sriov.vfs" property as long as
+    "sriov.total-vfs" is not changed.
+  + Support configuring the HSR protocol version via the
+    "hsr.protocol-version" property.
+  + Support configuring the HSR interlink port via the
+    "hsr.interlink" property.
+- Rebase 2298.patch
+
+-------------------------------------------------------------------
 Tue Nov 25 09:35:12 UTC 2025 - Antonio Feijoo <antonio.feijoo@suse.com>
 
 - Add patch 2312.patch to fix upstream issue

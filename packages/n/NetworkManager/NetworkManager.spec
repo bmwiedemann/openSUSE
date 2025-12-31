@@ -1,7 +1,6 @@
 #
 # spec file for package NetworkManager
 #
-# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -65,7 +64,7 @@
 %endif
 
 Name:           NetworkManager
-Version:        1.54.1
+Version:        1.54.3
 Release:        0
 Summary:        Standard Linux network configuration tool suite
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -460,6 +459,7 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 %{_libexecdir}/nm-dhcp-helper
 %{_libexecdir}/nm-dispatcher
 %{_libexecdir}/nm-initrd-generator
+%{_libexecdir}/nm-libnm-helper
 %{_libexecdir}/nm-priv-helper
 %dir %{_sysconfdir}/NetworkManager
 %dir %{_sysconfdir}/NetworkManager/VPN

@@ -254,3 +254,15 @@ index 57e732264cf..c746e714972 100644
 -- 
 GitLab
 
+diff --git a/src/libnm-core-impl/nm-utils.c b/src/libnm-core-impl/nm-utils.c
+index 9a78e9471c..d935e63978 100644
+--- a/src/libnm-core-impl/nm-utils.c
++++ b/src/libnm-core-impl/nm-utils.c
+@@ -6444,6 +6444,7 @@ nm_utils_copy_cert_as_user(const char *filename, const char *user, GError **erro
+                                     0600,
+                                     NULL,
+                                     NULL,
++                                    NULL,
+                                     error)) {
+         return NULL;
+     }
