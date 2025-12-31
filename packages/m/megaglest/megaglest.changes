@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 23 08:48:47 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire lua-devel istead of lua51-devel: build against
+  system lua version.
+
+-------------------------------------------------------------------
 Fri Feb 23 10:33:13 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
@@ -460,7 +466,6 @@ Thu Dec 28 12:59:40 CET 2006 - sndirsch@suse.de
 - use new jam package for building
 
 -------------------------------------------------------------------
-
 Sun Sep  3 22:07:24 CEST 2006 - sndirsch@suse.de
 
 - fixed version number in specfile
@@ -675,4 +680,3 @@ Sat Mar 26 14:51:21 CET 2005 - sndirsch@suse.de
 
 - created package
 
--------------------------------------------------------------------

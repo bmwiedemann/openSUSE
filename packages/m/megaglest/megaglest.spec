@@ -1,7 +1,7 @@
 #
 # spec file for package megaglest
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,7 +51,7 @@ BuildRequires:  libopenssl-devel
 BuildRequires:  libssh2-devel
 BuildRequires:  libvorbis-devel
 BuildRequires:  libxerces-c-devel
-BuildRequires:  lua51-devel
+BuildRequires:  lua-devel
 BuildRequires:  openal-soft-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  pkgconfig

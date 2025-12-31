@@ -65,4 +65,13 @@
     <comment></comment>
     <requestid>1156089</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>95a80ba690dfb9411460878feb8b68b3</srcmd5>
+    <version>3.13.0</version>
+    <time>1767174411</time>
+    <user>anag_factory</user>
+    <comment>- BuildRequire lua-devel istead of lua51-devel: build against
+  system lua version. (forwarded request 1324252 from dimstar)</comment>
+    <requestid>1324790</requestid>
+  </revision>
 </revisionlist>
