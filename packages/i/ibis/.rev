@@ -63,4 +63,17 @@
     <comment></comment>
     <requestid>1279016</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>87d9a3c9a3f80d50e92f4e2427d617d0</srcmd5>
+    <version>0.15.0</version>
+    <time>1767174491</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.15.0:
+  + Use strtoul instead of atoi when parsing hosts
+  + Rework the nick properties
+  + A few meson tweaks
+  + Fix a documentation warning
+  + Add a codespell unit test (forwarded request 1324866 from rrahl0)</comment>
+    <requestid>1324867</requestid>
+  </revision>
 </revisionlist>

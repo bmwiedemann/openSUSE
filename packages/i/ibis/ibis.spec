@@ -1,7 +1,7 @@
 #
 # spec file for package ibis
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         sover 0
 Name:           ibis
-Version:        0.14.0
+Version:        0.15.0
 Release:        0
 Summary:        Gobject based library
 License:        GPL-2.0-or-later
