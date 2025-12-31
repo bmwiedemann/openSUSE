@@ -33,7 +33,7 @@
 %define chromecast 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150600
 
 Name:           vlc
-Version:        3.0.21
+Version:        3.0.22
 Release:        0
 Summary:        Graphical media player
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -51,25 +51,10 @@ Patch2:         vlc-lua-5.3.patch
 Patch4:         fix-build-with-fdk-2.0.patch
 # PATCH-FIX-UPSTREAM -- Backport libplacebo v5 compatibility patch to vlc v3
 Patch5:         vlc-libplacebo-5.patch
-# PATCH-FIX-UPSTREAM vlc-taglib-2.0.patch dimstar@opensuse.org -- Fix build against taglib 2.0
-Patch6:         vlc-taglib-2.0.patch
-# PATCH-FIX-UPSTREAM
-Patch7:         https://code.videolan.org/videolan/vlc/-/merge_requests/5590.patch
 # PATCH-FEATURE-OPENSUSE vlc-projectM-qt5.patch -- Build against projectM-qt5; openSUSE provides projectM as -qt and -qt5 variant
 Patch100:       vlc-projectM-qt5.patch
 # PATCH-FIX-UPSTREAM -- Use OpenCV C++ API
 Patch103:       0001-Port-OpenCV-facedetect-example-to-C-API.patch
-
-# PATCH-FIX-UPSTREAM -- add support for ffmpeg 7.0 (without VAAPI)
-Patch111:       https://code.videolan.org/videolan/vlc/-/merge_requests/5574.patch
-# PATCH-FIX-UPSTREAM -- mux: avformat: fix avio callbacks signature with ffmpeg 6.1
-Patch112:       https://code.videolan.org/videolan/vlc/-/merge_requests/6168.patch
-# PATCH-FIX-UPSTREAM -- ffmpeg: backport more channel checks
-Patch113:       https://code.videolan.org/videolan/vlc/-/merge_requests/6273.patch
-# PATCH-FIX-UPSTREAM -- avcodec: vaapi: support VAAPI with latest FFmpeg
-Patch114:       https://code.videolan.org/videolan/vlc/-/merge_requests/6606.patch
-# PATCH-FIX-UPSTREAM -- nfs: fix libnfs API v2 support
-Patch115:       https://code.videolan.org/videolan/vlc/-/merge_requests/6527.patch
 
 BuildRequires:  Mesa-devel
 BuildRequires:  aalib-devel
@@ -400,18 +385,10 @@ default when `vlc` is invoked from an X session.
 %setup -q
 %patch -P 1 -p1
 %patch -P 4 -p1
-%patch -P 6 -p1
-%patch -P 7 -p1
 %if 0%{?suse_version} > 1320 && 0%{?suse_version} < 1550 && 0%{?sle_version} < 150200
 %patch -P 100 -p1
 %endif
 %patch -P 103 -p1
-
-%patch -P 111 -p1
-%patch -P 112 -p1
-%patch -P 113 -p1
-%patch -P 114 -p1
-%patch -P 115 -p1
 
 ### And LUA 5.3.1 has some more API changes
 if pkg-config --atleast-version 5.3.1 lua; then
@@ -634,7 +611,7 @@ fi
 %if 0%{?suse_version} < 1500
 %dir %{_datadir}/metainfo
 %endif
-%{_datadir}/metainfo/%{name}.appdata.xml
+%{_datadir}/metainfo/org.videolan.vlc.appdata.xml
 # The icon is the one referenced by the .desktop file
 %{_datadir}/pixmaps/vlc.png
 %{_datadir}/solid
@@ -955,6 +932,7 @@ fi
 %{_libdir}/vlc/plugins/demux/libdemux_stl_plugin.so
 %{_libdir}/vlc/plugins/demux/libdiracsys_plugin.so
 %{_libdir}/vlc/plugins/demux/libdirectory_demux_plugin.so
+%{_libdir}/vlc/plugins/demux/libdmxmus_plugin.so
 %{_libdir}/vlc/plugins/demux/libes_plugin.so
 %{_libdir}/vlc/plugins/demux/libflacsys_plugin.so
 %{_libdir}/vlc/plugins/demux/libgme_plugin.so

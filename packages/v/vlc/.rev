@@ -1635,4 +1635,41 @@ fixes build in packman, evergreen and all that. (forwarded request 230247 from o
     <comment></comment>
     <requestid>1309917</requestid>
   </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>024ac8b21b3e7f14c55f384ce575833c</srcmd5>
+    <version>3.0.22</version>
+    <time>1767174397</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.0.22:
+  + Core: Assume subpictures are in SDR by default
+  + Decoders:
+    * Fix Opus channel mapping
+    * Fix hardware decoding with VideoToolbox of XVID MPEG-4 video
+    * Add dav1d-all-layers option
+    * Fix DVD CEA-608 captions parsing
+    * Fix ProRes 4:4:4:4
+    * Disable decoding using libdca, libmpeg2 and liba52 by default in favor of libavcodec
+  + Demuxers:
+    * Add support for DMX audio music (MUS) files
+    * Handle mkv-use-chapter-codec option
+    * Add A_ATRAC/AT1 support in matroska
+    * Prevent FLAC seeking logic get stuck
+    * Handle pictures in FLAC
+    * Fix VOB/AOB LPCM/MLP detection failing occasionally
+    * Cut QNap title on first invalid character
+    * Fix display of certain JPEG files
+    * Fix playback of very short ASF files (duration less than 1s)
+    * Multiple fixes in MPEG-TS
+    * Fix crashes in multiple demuxers (reported by rub.de, oss-fuzz and others)
+  + Input: Fix SFTP seeking for large files on 32-bit OS
+  + Interface:
+    * Qt: Add option to use dark palette
+    * Qt: Add compilation support for newer versions of Qt5
+    * Qt: Fix scrolling on volume slider
+    * KDE: fix MPRIS state when started from file
+  + Service Discovery: UPnP: remove SAT&gt;IP channel list fallback
+  + Video Output:
+    * Use a better stretch mode in wingdi</comment>
+    <requestid>1324814</requestid>
+  </revision>
 </revisionlist>
