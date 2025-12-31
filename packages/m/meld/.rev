@@ -740,4 +740,12 @@
 - Switch to source service for tarball/sources. (forwarded request 1255381 from iznogood)</comment>
     <requestid>1255578</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>ae999e09be708a52f3ec0844103ad24b</srcmd5>
+    <version>3.23.1</version>
+    <time>1767174506</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1324879</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package meld
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           meld
-Version:        3.23.0
+Version:        3.23.1
 Release:        0
 Summary:        Visual diff and merge tool
 License:        GPL-2.0-or-later
@@ -25,7 +25,7 @@ Group:          Development/Tools/Other
 URL:            https://meldmerge.org/
 Source0:        %{name}-%{version}.tar.zst
 
-BuildRequires:  appstream-glib
+BuildRequires:  AppStream
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 # Needed for typelib() Requires
@@ -82,15 +82,14 @@ Subversion, Bazaar-ng and Mercurial can be browsed and viewed.
 %fdupes %{buildroot}%{_datadir}
 
 %check
-appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/org.gnome.Meld.appdata.xml
-desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Meld.desktop
+%meson_test
 
 %files
 %license COPYING
 %doc NEWS
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
-%{_datadir}/metainfo/org.gnome.Meld.appdata.xml
+%{_datadir}/metainfo/org.gnome.Meld.metainfo.xml
 %{_datadir}/applications/org.gnome.Meld.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.Meld.gschema.xml
 %doc %{_datadir}/help/C/meld/
