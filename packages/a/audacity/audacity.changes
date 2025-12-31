@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 30 20:56:53 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to 3.7.7
+  * #9940 Added checksum to WavPack export (thanks @ajsand)
+
+-------------------------------------------------------------------
 Thu Dec  4 20:06:50 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to 3.7.6
