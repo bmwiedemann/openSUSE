@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Dec 30 09:57:01 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.10:
+  + cctost2038anc: Fix typo with c_not_y_channel property
+    documentation
+  + dav1d: Stop iteration after finding first working pool
+  + dav1d: Various fixes to allocation query handling
+  + gtk4paintablesink: Propose a udmabuf pool / allocator if
+    upstream asks for sysmem
+  + gtk4: Fix typo in odd-size subsample workaround
+  + rtp: Update to rtcp-types 0.3
+  + st2038combiner: Some fixes
+  + st2038extractor: Add always-add-st2038-pad property
+  + threadshare: allow disabling the IPv4 or IPv6 socket in
+    ts-udpsink
+  + threadshare: Update to flume 0.12
+  + tracers: add function and signal for writing logs to
+    PadPushTimings
+  + version-helper: Update to toml_edit 0.24
+  + webrtc: mark static caps with
+    GST_MINI_OBJECT_FLAG_MAY_BE_LEAKED
+  + webrtcsink: don't upscale when mitigating low bitrate
+  + Fix new clippy 1.92 warnings
+  + Update dependencies
+
+-------------------------------------------------------------------
 Sun Dec  7 08:34:22 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.9:
