@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec 23 16:22:12 UTC 2025 - Hoyeon Lee <hoyeon.lee@suse.com>
+
+- Update to 0.24.2
+ * Fix incorrect pid/tid reporting in non-init namespaces
+ * Improve BTF handling for strings, anonymous structs/unions
+ * Fix multiple crashes and segfaults in printf, lhist output handling
+ * Correct function argument size checks and enum-typed tracepoint argument
+   resolution
+ * Fix incorrect output and truncation issues in join() and block
+   expressions
+
+-------------------------------------------------------------------
 Tue Oct  7 08:13:41 UTC 2025 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Update to 0.24.1
