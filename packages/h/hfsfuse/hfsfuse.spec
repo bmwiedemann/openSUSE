@@ -1,7 +1,7 @@
 #
 # spec file for package hfsfuse
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           hfsfuse
-Version:        0.307
+Version:        0.310
 Release:        0
 Summary:        FUSE driver for HFS+ filesystems
 License:        BSD-1-Clause AND BSD-2-Clause AND BSD-3-Clause AND MIT
