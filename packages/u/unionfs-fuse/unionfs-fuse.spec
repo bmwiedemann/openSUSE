@@ -18,7 +18,7 @@
 
 
 Name:           unionfs-fuse
-Version:        3.6
+Version:        3.7
 Release:        0
 Summary:        Userspace Unionfs File System
 License:        BSD-3-Clause

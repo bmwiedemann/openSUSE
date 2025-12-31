@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 24 10:54:24 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.7:
+  * fix chmod on symlink itself
+
+-------------------------------------------------------------------
 Fri Apr 25 17:19:58 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.6:
