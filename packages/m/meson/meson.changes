@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue Dec 30 09:49:55 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.10.0:
+  + Support for the counted_by attribute
+  + Added a values() method for dictionaries
+  + Add cmd_array method to ExternalProgram
+  + Microchip XC32 compiler support
+  + Added OS/2 support
+  + Android cross file generator
+  + Array .slice() method
+  + -Db_vscrt on clang
+  + Added build_subdir arg to various targets
+  + Support for Cargo workspaces
+  + Experimental Codegen module
+  + Methods from compiler object now accept strings for
+    include_directories
+  + meson format has a new --check-diff option
+  + -Db_thinlto_cache now supported for GCC
+  + Using meson.get_compiler() to get a language from another
+    project is marked broken
+  + Experimental C++ import std support
+  + Common Cargo.lock for all Cargo subprojects
+  + Add a configure log in meson-logs
+  + Added new namingscheme option
+  + Rewriter improvements
+  + Passing -C default-linker-libraries to rustc
+  + rustc will receive -C embed-bitcode=no and -C lto command line
+    options
+  + New method to handle GNU and Windows symbol visibility for
+    C/C++/ObjC/ObjC++
+  + Vala BuildTarget dependency enhancements
+  + i18n.xgettext now accepts CustomTarget and CustomTargetIndex as
+    sources
+
+-------------------------------------------------------------------
+Wed Nov 26 08:52:33 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.10.0rc2 (pre-release)
+- Rebase reproducible.patch
+- Drop meson-issue-15992.patch and
+  ensure-pending-subproject-options-are-validated.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
 Mon Oct  6 09:35:45 UTC 2025 - Mia Herkt <mia@0x0.st>
 
 - Add ensure-pending-subproject-options-are-validated.patch
