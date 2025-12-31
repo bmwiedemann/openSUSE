@@ -112,4 +112,12 @@ A dependency for poedit 1.6.x</comment>
   * fix build with boost 1.89 (forwarded request 1309340 from adkorte)</comment>
     <requestid>1309940</requestid>
   </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>44a5c7261b4cd82085b0f6f7c7d250ab</srcmd5>
+    <version>3.0.9</version>
+    <time>1767174464</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1324849</requestid>
+  </revision>
 </revisionlist>

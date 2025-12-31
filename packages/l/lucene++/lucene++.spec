@@ -1,7 +1,7 @@
 #
 # spec file for package lucene++
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,9 @@ Patch6:         lucene++-3.0.9-fix-linking-DefaultSimilarity.patch
 # PATCH-FIX-UPSTREAM https://github.com/luceneplusplus/LucenePlusPlus/pull/218
 Patch7:         lucene++-3.0.9-fix-cmake.patch
 # PATCH-FIX-UPSTREAM https://github.com/luceneplusplus/LucenePlusPlus/pull/219
-Patch8:        lucene++-3.0.9-fix-boost1.89.patch
+Patch8:         lucene++-3.0.9-fix-boost1.89.patch
+# PATCH-FIX-UPSTREAM -- Fix build against Boost 1.90
+Patch9:         https://patch-diff.githubusercontent.com/raw/luceneplusplus/LucenePlusPlus/pull/222.patch
 BuildRequires:  cmake >= 3.10
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_atomic-devel
@@ -75,6 +77,7 @@ Development files for lucene++, a high-performance, full-featured text search en
 %patch -p1 -P 7
 %if 0%{?suse_version} >= 1600
 %patch -p1 -P 8
+%patch -p1 -P 9
 %endif
 
 %build

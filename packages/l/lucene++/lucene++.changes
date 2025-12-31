@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 23 11:55:05 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 222.patch: Fix build against Boost 1.90.
+
+-------------------------------------------------------------------
 Sun Oct  5 21:00:33 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - Add lucene++-3.0.9-fix-cmake.patch
