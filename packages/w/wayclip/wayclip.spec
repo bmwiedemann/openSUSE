@@ -17,7 +17,7 @@
 
 
 Name:           wayclip
-Version:        0.4.2+git.1709775940.a62ac18
+Version:        0.5+git.1754102356.a0826e7
 Release:        0
 Summary:        Wayland clipboard utility
 License:        ISC

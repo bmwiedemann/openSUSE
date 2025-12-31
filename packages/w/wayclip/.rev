@@ -25,4 +25,13 @@
   * add primary clipboard support with -p</comment>
     <requestid>1266574</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>27e9c46e7ffa7072e46359670256c4d4</srcmd5>
+    <version>0.5+git.1754102356.a0826e7</version>
+    <time>1767174461</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.5+git.1754102356.a0826e7:
+  * replace wlr-data-control-unstable-v1 with ext-data-control-v1</comment>
+    <requestid>1324846</requestid>
+  </revision>
 </revisionlist>
