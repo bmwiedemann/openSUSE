@@ -58,6 +58,7 @@ Requires:       python3-argon2-cffi
 Requires:       python3-gobject-Gdk
 Requires:       python3-lxml
 Requires:       python3-pycryptodome
+Requires:       python3-pyhibp
 Requires:       python3-pykeepass
 Requires:       python3-pyotp
 Requires:       python3-python-yubico
