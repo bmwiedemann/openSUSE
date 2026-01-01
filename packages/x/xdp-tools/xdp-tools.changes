@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 23 15:19:23 UTC 2025 - Hoyeon Lee <hoyeon.lee@suse.com>
+
+- Update to v1.5.8
+ - xdp-trafficgen: add support for configuring the IPv6 hop limit
+   in UDP mode
+ - xdp-loader: ensure feature flag output more robust against newer
+   kernels
+
+-------------------------------------------------------------------
 Tue Oct 14 08:25:39 UTC 2025 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Update to v1.5.7

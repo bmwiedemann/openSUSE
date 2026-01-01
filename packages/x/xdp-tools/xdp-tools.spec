@@ -26,7 +26,7 @@
 # workaround binutils/strip issue with BPF object, see #boo#1217108
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 Name:           xdp-tools
-Version:        1.5.7
+Version:        1.5.8
 Release:        0
 Group:          Productivity/Networking/Other
 Summary:        Utilities and example programs for use with XDP
