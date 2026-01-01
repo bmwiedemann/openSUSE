@@ -29,6 +29,7 @@ Group:          System/Boot
 URL:            https://github.com/openSUSE/fde-tools
 Source:         https://github.com/openSUSE/%{name}/releases/download/%{version}/%{name}-%{version}.tar.bz2
 Source1:        fde-tools.service
+Source2:        fde-tools.conf
 Patch0:         fde-tools-firstboot-alp-snapshot.patch
 Patch1:         fde-tools-bsc1243877-firstboot-remove-key-conf.patch
 Patch2:         fde-tools-bsc1244323-firstboot-fix-lsinitrd.patch
@@ -116,12 +117,16 @@ mv %{buildroot}/etc/sysconfig/fde-tools %{buildroot}%{_fillupdir}/sysconfig.fde-
 mkdir -p %{buildroot}%{_unitdir}
 cp %{S:1} %{buildroot}%{_unitdir}/fde-tpm-enroll.service
 
+mkdir -p %{buildroot}%{_tmpfilesdir}
+install -m 0644 %{S:2} %{buildroot}%{_tmpfilesdir}/%{name}.conf
+
 %pre
 %service_add_pre fde-tpm-enroll.service
 
 %post
 %service_add_post fde-tpm-enroll.service
 %fillup_and_insserv
+%tmpfiles_create %{name}.conf
 
 %preun
 %service_del_preun fde-tpm-enroll.service
@@ -140,7 +145,7 @@ cp %{S:1} %{buildroot}%{_unitdir}/fde-tpm-enroll.service
 %{_mandir}/man8/fdectl.8.gz
 %dir %{_libdir}/cryptsetup/
 %{_libdir}/cryptsetup/libcryptsetup-token-*.so
-%dir %attr(750,root,root) %{_var}/log/fde
+%{_tmpfilesdir}/%{name}.conf
 
 %files bash-completion
 %{_datadir}/bash-completion/completions/fdectl
