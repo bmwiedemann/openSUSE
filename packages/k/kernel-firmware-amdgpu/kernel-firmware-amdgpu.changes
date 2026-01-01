@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec 31 08:43:18 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251228 (git commit 154800e88541):
+  * amdgpu: DMCUB updates for various ASICs
+
+-------------------------------------------------------------------
+Sat Dec 13 08:15:25 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251212 (git commit 6c60d1128566):
+  * amdgpu: DMCUB updates for various ASICs
+
+-------------------------------------------------------------------
 Thu Dec  4 07:27:50 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20251203 (git commit a0f0e52138e5):
