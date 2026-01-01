@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 24 06:26:43 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 9.0.21:
+  * Updated meta data, geocoding data and carrer data for many
+    country dialing codes
+
+-------------------------------------------------------------------
 Tue Oct  7 20:38:00 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Fix libphonenumber-devel dependencies.

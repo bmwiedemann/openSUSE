@@ -132,4 +132,12 @@
   contains Boost::date_time and Boost::thread (forwarded request 1309694 from krop)</comment>
     <requestid>1312813</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fd2f353f2583a2cd85794a7b5d257e62</srcmd5>
+    <version>9.0.21</version>
+    <time>1767275958</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1324855</requestid>
+  </revision>
 </revisionlist>
