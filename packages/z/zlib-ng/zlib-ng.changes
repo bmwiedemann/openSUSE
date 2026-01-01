@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 23 16:25:10 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 2.3.2:
+  * Chorba: Fix edge case bug for >256KB input #2033
+
+-------------------------------------------------------------------
 Tue Dec  2 14:34:12 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Remove WITH_RVV=OFF
