@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Dec 30 12:53:19 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.0.23:
+  + Codecs:
+    * Fix WebVTT line positioning
+    * Expose additional audio codec information (notably for Flac 24bit)
+  + Demuxers:
+    * fix some JPEG files wih JFIF headers
+  + Security:
+    * Fix null deref in libass, undefined shift in theora and cc-708, integer overflow in daala,
+      Infinite loop in h264 parsing, buffer overflow in png and multiple format-overflows
+  + Misc:
+    * Prepare compatibility for taglib 2.0, Qt6, FFmpeg8, mingw-w64 v13 and newer versions of
+      libplacebo and pupnp
+- Drop vlc-libplacebo-5.patch: fixed upstream
+- Convert to source service: 3.0.23 was only tagged, but no tarball
+  was published.
+- Unpin ffmpeg-version: build against ffmpeg-8
+
+-------------------------------------------------------------------
 Tue Dec 30 12:25:23 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.0.22:

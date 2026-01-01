@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="scm">git</param>
+    <param name="url">https://code.videolan.org/videolan/vlc.git</param>
+    <param name="revision">3.0.x</param>
+    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
+    <param name="versionrewrite-pattern">v?([^+-]*)(-rc\d+)?(-[12])?(\+0)?(\+\d+)?</param>
+    <param name="versionrewrite-replacement">\1\5</param>
+<!--    <param name="changesgenerate">enable</param> -->
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+</services>
+

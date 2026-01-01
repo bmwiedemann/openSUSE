@@ -27,30 +27,27 @@
 %endif
 %bcond_without gstreamer
 %bcond_without fluidsynth
+%bcond_with    vdpau
 # VNC support - the module is not really usable in most cases tested so far (e.g. against qemu-kvm -vnc :xx)
 %bcond_with vnc
 %bcond_without faad
 %define chromecast 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150600
 
 Name:           vlc
-Version:        3.0.22
+Version:        3.0.23
 Release:        0
 Summary:        Graphical media player
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Video/Players
 URL:            http://www.videolan.org
-Source:         http://download.videolan.org/%{name}/%{version}/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.zst
 Source2:        %{name}-rpmlintrc
-Source98:       http://download.videolan.org/%{name}/%{version}/%{name}-%{version}.tar.xz.asc
-Source99:       vlc.keyring
 # PATCH-FIX-UPSTREAM vlc-allow-deprecated-fribidi.patch dimstar@opensuse.org -- Allow usage of deprecated fribidi functions
 Patch1:         vlc-allow-deprecated-fribidi.patch
 # PATCH-FIX-UPSTREAM vlc-lua-5.3.patch dimstar@opensuse.org -- Replace lua_optlong with lua_optinteger
 Patch2:         vlc-lua-5.3.patch
 # PATCH-FIX-UPSTREAM fix-build-with-fdk-2.0.patch -- Fix building vlc with libfdk-aac v2
 Patch4:         fix-build-with-fdk-2.0.patch
-# PATCH-FIX-UPSTREAM -- Backport libplacebo v5 compatibility patch to vlc v3
-Patch5:         vlc-libplacebo-5.patch
 # PATCH-FEATURE-OPENSUSE vlc-projectM-qt5.patch -- Build against projectM-qt5; openSUSE provides projectM as -qt and -qt5 variant
 Patch100:       vlc-projectM-qt5.patch
 # PATCH-FIX-UPSTREAM -- Use OpenCV C++ API
@@ -60,15 +57,16 @@ BuildRequires:  Mesa-devel
 BuildRequires:  aalib-devel
 BuildRequires:  alsa-devel >= 1.0.24
 BuildRequires:  avahi-devel >= 0.6
+BuildRequires:  bison
 BuildRequires:  dirac-devel
 BuildRequires:  fdupes
 BuildRequires:  findutils
 BuildRequires:  flac-devel
+BuildRequires:  flex
 BuildRequires:  freetype2
 BuildRequires:  fribidi-devel
 BuildRequires:  gdk-pixbuf-devel
 BuildRequires:  gettext-devel
-#BuildRequires:  git
 BuildRequires:  gtk3-devel
 BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libavc1394-devel >= 0.5.3
@@ -126,9 +124,9 @@ BuildRequires:  pkgconfig(fdk-aac)
 BuildRequires:  pkgconfig(gnutls) >= 3.2.0
 BuildRequires:  pkgconfig(libarchive) >= 3.1.0
 BuildRequires:  pkgconfig(libass) >= 0.9.8
-BuildRequires:  pkgconfig(libavcodec) < 62
-BuildRequires:  pkgconfig(libavformat) < 62
-BuildRequires:  pkgconfig(libavutil) < 60
+BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libbluray) >= 0.6.2
 BuildRequires:  pkgconfig(libgme)
 #BuildRequires:  pkgconfig(libmodplug) >= 0.8.9
@@ -137,7 +135,6 @@ BuildRequires:  pkgconfig(libmtp) >= 1.0.0
 BuildRequires:  pkgconfig(libnfs)
 %endif
 BuildRequires:  pkgconfig(libnotify)
-BuildRequires:  pkgconfig(libpostproc)
 BuildRequires:  pkgconfig(libpulse) >= 1.0
 BuildRequires:  pkgconfig(libsecret-1) >= 0.18
 BuildRequires:  pkgconfig(libswscale)
@@ -151,7 +148,9 @@ BuildRequires:  pkgconfig(soxr)
 BuildRequires:  pkgconfig(speexdsp)
 BuildRequires:  pkgconfig(taglib) >= 1.9
 BuildRequires:  pkgconfig(twolame)
-# %dnl BuildRequires:  pkgconfig(vdpau) >= 0.6
+%if %{with vdpau}
+BuildRequires:  pkgconfig(vdpau) >= 0.6
+%endif
 BuildRequires:  pkgconfig(xcb) >= 1.6
 BuildRequires:  pkgconfig(xcb-composite)
 BuildRequires:  pkgconfig(xcb-keysyms) >= 0.3.4
@@ -247,7 +246,9 @@ Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       %{name}-jack = %{version}
 Requires:       %{name}-noX = %{version}
-# %dnl Requires:       %{name}-vdpau = %{version}
+%if %{with vdpau}
+Requires:       %{name}-vdpau = %{version}
+%endif
 
 %description devel
 These development headers are required if you plan on coding against VLC.
@@ -395,12 +396,10 @@ if pkg-config --atleast-version 5.3.1 lua; then
 %patch -P 2 -p1
 fi
 
-if pkg-config --atleast-version 5 libplacebo; then
-%patch -P 5 -p1
-fi
-
 # We do not rely on contrib but make use of system libraries
 rm -rf contrib
+
+[ ! -f src/revision.txt ] && echo "%version" > src/revision.txt
 
 %build
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
@@ -447,7 +446,6 @@ autoreconf -fiv
    --disable-mod                        \
    --enable-ogg                         \
    --enable-optimizations               \
-   --enable-postproc                    \
    --enable-pulse                       \
    --enable-realrtsp                    \
    --enable-sftp                        \
@@ -459,7 +457,11 @@ autoreconf -fiv
    --enable-twolame                     \
    --enable-v4l2                        \
    --enable-vcd                         \
-   --disable-vdpau                       \
+%if %{with vdpau}
+   --enable-vdpau                       \
+%else
+   --disable-vdpau                      \
+%endif
    --enable-vorbis                      \
    --enable-xcb                         \
    --enable-xvideo                      \
@@ -591,6 +593,7 @@ if [ -x %{_libdir}/vlc/vlc-cache-gen ]; then
 fi
 %endif
 
+%if %{with vdpau}
 %post -n %{name}-vdpau
 if [ -x %{_libdir}/vlc/vlc-cache-gen ]; then
   %{_libdir}/vlc/vlc-cache-gen %{_libdir}/vlc/plugins
@@ -600,6 +603,7 @@ fi
 if [ -x %{_libdir}/vlc/vlc-cache-gen ]; then
   %{_libdir}/vlc/vlc-cache-gen %{_libdir}/vlc/plugins
 fi
+%endif
 
 %files
 %exclude %{_libdir}/vlc/libcompat.a
@@ -1114,7 +1118,6 @@ fi
 %{_libdir}/vlc/plugins/video_filter/libmotiondetect_plugin.so
 %{_libdir}/vlc/plugins/video_filter/liboldmovie_plugin.so
 %{_libdir}/vlc/plugins/video_filter/libposterize_plugin.so
-%{_libdir}/vlc/plugins/video_filter/libpostproc_plugin.so
 %{_libdir}/vlc/plugins/video_filter/libpsychedelic_plugin.so
 %{_libdir}/vlc/plugins/video_filter/libpuzzle_plugin.so
 %{_libdir}/vlc/plugins/video_filter/libripple_plugin.so
@@ -1135,6 +1138,7 @@ fi
 %{_libdir}/vlc/plugins/video_output/libflaschen_plugin.so
 %{_libdir}/vlc/plugins/video_output/libglconv_vaapi_drm_plugin.so
 %{_libdir}/vlc/plugins/video_output/libglconv_vaapi_x11_plugin.so
+%{_libdir}/vlc/plugins/vaapi/libvaapi_filters_plugin.so
 %{_libdir}/vlc/plugins/video_output/libgl_plugin.so
 %{_libdir}/vlc/plugins/video_output/libvdummy_plugin.so
 %{_libdir}/vlc/plugins/video_output/libvmem_plugin.so
@@ -1142,7 +1146,6 @@ fi
 %{_libdir}/vlc/plugins/video_splitter/libclone_plugin.so
 %{_libdir}/vlc/plugins/video_splitter/libwall_plugin.so
 %{_libdir}/vlc/plugins/visualization/libvisual_plugin.so
-%{_libdir}/vlc/plugins/vaapi/libvaapi_filters_plugin.so
 %ifarch %{arm}
 %dir %{_libdir}/vlc/plugins/arm_neon
 %{_libdir}/vlc/plugins/arm_neon/libchroma_yuv_neon_plugin.so
@@ -1165,17 +1168,19 @@ fi
 %{_libdir}/vlc/plugins/codec/libfluidsynth_plugin.so
 %endif
 
-# %dnl files vdpau
-# %dnl dir %{_libdir}/vlc/plugins/vdpau
-# %dnl {_libdir}/vlc/libvlc_vdpau.so.0
-# %dnl {_libdir}/vlc/libvlc_vdpau.so.0.0.0
-# %dnl {_libdir}/vlc/plugins/vdpau/libvdpau_adjust_plugin.so
-# %dnl {_libdir}/vlc/plugins/vdpau/libvdpau_avcodec_plugin.so
-# %dnl {_libdir}/vlc/plugins/vdpau/libvdpau_chroma_plugin.so
-# %dnl {_libdir}/vlc/plugins/vdpau/libvdpau_deinterlace_plugin.so
-# %dnl {_libdir}/vlc/plugins/vdpau/libvdpau_display_plugin.so
-# %dnl {_libdir}/vlc/plugins/vdpau/libvdpau_sharpen_plugin.so
-# %dnl {_libdir}/vlc/plugins/video_output/libglconv_vdpau_plugin.so
+%if %{with vdpau}
+%files vdpau
+%dir %{_libdir}/vlc/plugins/vdpau
+%{_libdir}/vlc/libvlc_vdpau.so.0
+%{_libdir}/vlc/libvlc_vdpau.so.0.0.0
+%{_libdir}/vlc/plugins/vdpau/libvdpau_adjust_plugin.so
+%{_libdir}/vlc/plugins/vdpau/libvdpau_avcodec_plugin.so
+%{_libdir}/vlc/plugins/vdpau/libvdpau_chroma_plugin.so
+%{_libdir}/vlc/plugins/vdpau/libvdpau_deinterlace_plugin.so
+%{_libdir}/vlc/plugins/vdpau/libvdpau_display_plugin.so
+%{_libdir}/vlc/plugins/vdpau/libvdpau_sharpen_plugin.so
+%{_libdir}/vlc/plugins/video_output/libglconv_vdpau_plugin.so
+%endif
 
 %files -n libvlc%{libvlc}
 %{_libdir}/libvlc.so.%{libvlc}*
@@ -1195,7 +1200,9 @@ fi
 %{_libdir}/pkgconfig/libvlc.pc
 %{_libdir}/pkgconfig/vlc-plugin.pc
 %{_libdir}/vlc/libcompat.a
-# %dnl {_libdir}/vlc/libvlc_vdpau.so
+%if %{with vdpau}
+%{_libdir}/vlc/libvlc_vdpau.so
+%endif
 
 %if 0%{?BUILD_ORIG}
 %files codecs
