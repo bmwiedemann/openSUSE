@@ -265,4 +265,14 @@ After this PR, there will be a delete request for kernel-firmware.
   * mediatek MT7925: update bluetooth firmware to 20251124093155</comment>
     <requestid>1320755</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>7de78d0bd6cf34bf17ac2f2b72bdfefc</srcmd5>
+    <version>20251228</version>
+    <time>1767276011</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20251228 (git commit 154800e88541):
+  * mediatek MT7925: update bluetooth firmware to 20251210093205
+  * linux-firmware: update firmware for MT7925 WiFi device</comment>
+    <requestid>1324922</requestid>
+  </revision>
 </revisionlist>
