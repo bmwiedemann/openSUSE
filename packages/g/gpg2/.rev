@@ -1585,4 +1585,41 @@ Still valid</comment>
     <comment></comment>
     <requestid>1319687</requestid>
   </revision>
+  <revision rev="195" vrev="1">
+    <srcmd5>38a29d8cd52744b1cb3eee17eca75d21</srcmd5>
+    <version>2.5.16</version>
+    <time>1767275992</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.5.16:
+  * gpg: Fix a validation bug when using keyboxd
+  * gpg: Deprecate the option --not-dash-escaped and ignore the
+    NotDashEscaped armor header
+  * keyboxd: Fix migration to new schema
+  * dirmngr: New compatibility flag &quot;ocsp-sha256-certid&quot; to support
+    forthcoming libksba versions
+  * New translation to Georgian.
+
+- Update to 2.5.14 (bsc#1255715, CVE-2025-68973, bsc#1255714,
+  CVE-2025-68973):
+- note updated 2.5.x build dependencies
+  removes the -unknown suffix after the version number.
+  * Up to five times faster verification of detached signatures,
+  * Added and improved options for crypto options, and all-around
+  * dirmngr: With new LDAP keyservers store the new attributes.
+- GnuPG 2.2.23:
+- Code no longer uses libcurl, remove from buildrequires.
+  * wks: Add option --with-colons to the client.
+- Dropped gnupg-CVE-2018-9234.patch since it is included upstream
+  (bnc#1088255 CVE-2018-9234)
+  * modified gnupg-2.0.18-files-are-digests.patch to work with
+    Existing configurations are not touched.
+    drop gnupg-2.1.19-stronger-defaults.patch FATE#323084
+  * Many minor bug fixes and code cleanup.
+- Test suite hangs in qemu-arm, workaround.
+- link with -pie
+- add gnupg-dont-fail-with-seahorse-agent.patch (bnc#589994)
+- update to gnupg-2.0.15
+- fix build for older distributions</comment>
+    <requestid>1324888</requestid>
+  </revision>
 </revisionlist>

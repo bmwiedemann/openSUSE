@@ -1,7 +1,20 @@
 -------------------------------------------------------------------
+Tue Dec 30 09:10:46 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2.5.16:
+  * gpg: Fix a validation bug when using keyboxd
+  * gpg: Deprecate the option --not-dash-escaped and ignore the
+    NotDashEscaped armor header
+  * keyboxd: Fix migration to new schema
+  * dirmngr: New compatibility flag "ocsp-sha256-certid" to support
+    forthcoming libksba versions
+  * New translation to Georgian.
+
+-------------------------------------------------------------------
 Mon Nov 24 09:00:28 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
-- Update to 2.5.14:
+- Update to 2.5.14 (bsc#1255715, CVE-2025-68973, bsc#1255714,
+  CVE-2025-68973):
   * gpg: Fix possible memory corruption in the armor parser. [T7906]
   * gpgsm: Fix output of card serial number in colon listing. [T7914]
   * agent:ssh: Fix RSA signature handling for newer spec. [T7882]
@@ -263,7 +276,7 @@ Tue Jan 14 14:09:10 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
 -------------------------------------------------------------------
 Mon Jan  6 21:41:40 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- note updated 2.5.x build dependencies 
+- note updated 2.5.x build dependencies
 
 -------------------------------------------------------------------
 Wed Dec 11 12:12:50 UTC 2024 - Lucas Mulling <lucas.mulling@suse.com>
@@ -439,7 +452,7 @@ Mon Oct 30 15:01:05 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 Tue Oct 17 10:27:15 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Do not pull revision info from GIT when autoconf is run. This
-  removes the -unknown suffix after the version number.	
+  removes the -unknown suffix after the version number.
   * Add gnupg-nobetasuffix.patch [bsc#1216334]
 
 -------------------------------------------------------------------
@@ -746,11 +759,11 @@ Mon May 16 09:12:06 UTC 2022 - Marcus Meissner <meissner@suse.com>
 Mon Apr 25 19:09:32 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GnuPG 2.3.6:
-  * Up to five times faster verification of detached signatures, 
+  * Up to five times faster verification of detached signatures,
     doubled detached signing speed, threefold decryption speedup
     for large files, nearly double the AES256.OCB encryption speed
   * Add support for GeNUA cards
-  * Added and improved options for crypto options, and all-around 
+  * Added and improved options for crypto options, and all-around
     bug fixes
 
 -------------------------------------------------------------------
@@ -946,7 +959,7 @@ Tue Jan 12 22:45:11 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
   * gpg: Fix --trusted-key with fingerprint arg
   * scd: Fix writing of ECC keys to an OpenPGP card
   * scd: Make an USB error fix specific to SPR532 readers
-  * dirmngr: With new LDAP keyservers store the new attributes. 
+  * dirmngr: With new LDAP keyservers store the new attributes.
     Never store the useless pgpSignerID. Fix a long standing
     bug storing some keys on an ldap server.
   * dirmngr: Support the new Active Direcory LDAP schema for
@@ -996,7 +1009,7 @@ Tue Nov 17 21:52:38 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 -------------------------------------------------------------------
 Thu Sep  3 17:16:41 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- GnuPG 2.2.23: 
+- GnuPG 2.2.23:
   * gpg: fix AHEAD preference list overflow boo#1176034 /  CVE-2020-25125
   * gpg: fix possible segv in the key cleaning code
   * gpgsm: fix a minor RFC2253 parser gub
@@ -1358,11 +1371,11 @@ Fri Dec 14 16:11:56 UTC 2018 - atoptsoglou@suse.com
     path and query parts are kept.
   * dirmngr: New command FLUSHCRL to flush all CRLS from disk and
     memory.  [#3967]
-  
+
 -------------------------------------------------------------------
 Thu Nov  8 15:35:27 UTC 2018 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
-- Code no longer uses libcurl, remove from buildrequires. 
+- Code no longer uses libcurl, remove from buildrequires.
 
 -------------------------------------------------------------------
 Tue Nov  6 12:05:35 UTC 2018 - Karol Babioch <kbabioch@suse.com>
@@ -1380,7 +1393,7 @@ Tue Nov  6 12:05:35 UTC 2018 - Karol Babioch <kbabioch@suse.com>
   * dirmngr: In verbose mode print the OCSP responder id.
   * dirmngr: Fix parsing of the LDAP port.
   * wks: Add option --directory/-C to the server.
-  * wks: Add option --with-colons to the client. 
+  * wks: Add option --with-colons to the client.
   * Fix EBADF when gpg et al. are called by broken CGI scripts.
   * Fix some minor memory leaks and bugs.
 
@@ -1503,14 +1516,14 @@ Tue Apr 10 06:32:22 UTC 2018 - kbabioch@suse.com
   * dirmngr: Handle failures related to missing IPv6 support
     gracefully.
   * Allow the use of UNC directory names as homedir.  [#3818]
-- Dropped gnupg-CVE-2018-9234.patch since it is included upstream 
+- Dropped gnupg-CVE-2018-9234.patch since it is included upstream
 
 -------------------------------------------------------------------
 Thu Apr  5 08:38:58 UTC 2018 - kbabioch@suse.com
 
 - Added gnupg-CVE-2018-9234.patch: Enforce that key certification
   can only be done with the master key, and not a signing subkey.
-  (bnc#1088255 CVE-2018-9234) 
+  (bnc#1088255 CVE-2018-9234)
 
 -------------------------------------------------------------------
 Sun Feb 25 12:14:54 UTC 2018 - astieger@suse.com
@@ -1681,7 +1694,7 @@ Fri Jul 28 19:29:52 UTC 2017 - astieger@suse.com
 Fri May 19 11:59:24 UTC 2017 - marco.strigl@suse.com
 
 - GnuPG 2.1.21:
-  * modified gnupg-2.0.18-files-are-digests.patch to work with 
+  * modified gnupg-2.0.18-files-are-digests.patch to work with
     obs-sign again bsc#1039899
 
 -------------------------------------------------------------------
@@ -1693,12 +1706,12 @@ Mon May 15 20:49:25 UTC 2017 - astieger@suse.com
   * gpg,dirmngr: Removed the skeleton config file support
     New installations no longer generate a configuration file.
     In the absence of a file, SHA-2 family hashes are used.
-    Existing configurations are not touched.   
-    drop gnupg-2.1.19-stronger-defaults.patch FATE#323084 
+    Existing configurations are not touched.
+    drop gnupg-2.1.19-stronger-defaults.patch FATE#323084
   * gpg: Fixed import filter property match bug.
   * scd: Removed Linux support for Cardman 4040 PCMCIA reader.
   * scd: Fixed some corner case bugs in resume/suspend handling.
-  * Many minor bug fixes and code cleanup.  
+  * Many minor bug fixes and code cleanup.
 
 -------------------------------------------------------------------
 Tue Apr  4 14:00:36 UTC 2017 - astieger@suse.com
@@ -2415,7 +2428,7 @@ Thu Dec 25 18:09:11 UTC 2014 - dev@stellardeath.org
   of secmem bytes and IPC bytes to slightly larger values.
   See https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=739424
   * added gnupg-large_keys.patch
-  
+
 -------------------------------------------------------------------
 Wed Dec  3 22:37:59 UTC 2014 - andreas.stieger@gmx.de
 
@@ -2689,12 +2702,12 @@ Wed Nov 30 09:55:47 UTC 2011 - coolo@suse.com
 -------------------------------------------------------------------
 Sat Oct  1 15:53:04 UTC 2011 - crrodriguez@opensuse.org
 
-- Test suite hangs in qemu-arm, workaround. 
+- Test suite hangs in qemu-arm, workaround.
 
 -------------------------------------------------------------------
 Wed Aug 31 10:00:35 UTC 2011 - puzel@suse.com
 
-- link with -pie 
+- link with -pie
 
 -------------------------------------------------------------------
 Fri Aug 19 01:11:42 UTC 2011 - crrodriguez@opensuse.org
@@ -2777,12 +2790,12 @@ Fri Apr  9 12:47:11 UTC 2010 - chris@computersalat.de
 -------------------------------------------------------------------
 Wed Apr  7 14:19:11 UTC 2010 - puzel@novell.com
 
-- add gnupg-dont-fail-with-seahorse-agent.patch (bnc#589994) 
+- add gnupg-dont-fail-with-seahorse-agent.patch (bnc#589994)
 
 -------------------------------------------------------------------
 Wed Mar 31 13:47:00 UTC 2010 - puzel@novell.com
 
-- update to gnupg-2.0.15 
+- update to gnupg-2.0.15
  * New command --passwd for GPG.
  * Fixes a regression in 2.0.14 which prevented unprotection of new
    or changed gpg-agent passphrases.
@@ -2814,12 +2827,12 @@ Wed Feb 17 13:29:18 CET 2010 - dimstar@opensuse.org
 -------------------------------------------------------------------
 Thu Jan 28 14:15:24 UTC 2010 - puzel@novell.com
 
-- fix build for older distributions 
+- fix build for older distributions
 
 -------------------------------------------------------------------
 Wed Jan 27 16:30:41 UTC 2010 - puzel@novell.com
 
-- port files-are-digests patch from gpg1 (bnc#469229) 
+- port files-are-digests patch from gpg1 (bnc#469229)
 
 -------------------------------------------------------------------
 Tue Dec 15 20:56:35 CET 2009 - jengelh@medozas.de
@@ -2875,12 +2888,12 @@ Thu Jun 18 13:22:00 CEST 2009 - puzel@novell.com
 -------------------------------------------------------------------
 Thu Jun 11 11:19:58 CEST 2009 - puzel@suse.cz
 
-- change BuildRequires: (pth-devel -> libpth-devel) 
+- change BuildRequires: (pth-devel -> libpth-devel)
 
 -------------------------------------------------------------------
 Mon Jun  1 11:26:12 CEST 2009 - puzel@suse.cz
 
-- BuildRequires: pth-devel 
+- BuildRequires: pth-devel
 
 -------------------------------------------------------------------
 Wed Mar 18 13:51:30 CET 2009 - puzel@suse.cz
@@ -2906,12 +2919,12 @@ Thu Mar  5 13:39:42 CET 2009 - puzel@suse.cz
 -------------------------------------------------------------------
 Mon Mar  2 15:53:22 CET 2009 - puzel@suse.cz
 
-- gnupg-2.0.10-fix-missing-option.patch (bnc#477362) 
+- gnupg-2.0.10-fix-missing-option.patch (bnc#477362)
 
 -------------------------------------------------------------------
 Mon Jan 19 16:16:11 CET 2009 - puzel@suse.cz
 
-- add gnupg-2.0.10-fix-convert.patch 
+- add gnupg-2.0.10-fix-convert.patch
   - fix broken 'make check' on ppc, s390 and s390x
 
 -------------------------------------------------------------------
@@ -2919,7 +2932,7 @@ Tue Jan 13 10:38:38 CET 2009 - puzel@suse.cz
 
 - update to 2.0.10
   * New keyserver helper gpg2keys_kdns as generic DNS CERT
-    lookup.  
+    lookup.
   * New mechanisms "local" and "nodefault" for --auto-key-locate.
     Fixed a few problems with this option.
   * New command --locate-keys.
@@ -2940,7 +2953,7 @@ Tue Jan 13 10:38:38 CET 2009 - puzel@suse.cz
   * Support for version 2 OpenPGP cards.
 
 - specfile changes:
-  * require libadns 
+  * require libadns
   * explicit versions for some BuildRequires
   * BuildRequires libgpg-error
   * changed license to GPL v3
@@ -2965,7 +2978,7 @@ Fri Mar 28 16:14:33 CET 2008 - pcerny@suse.cz
   * fixes CVE-2008-1530 (bnc#374254)
   * removing gnupg-2.0.8-from-upstream.diff (included in release)
   * removing gnupg-2.0.4-oldkey.diff (accepted by upstream)
-  * removing gnupg-2.0.8-warningfixes.diff 
+  * removing gnupg-2.0.8-warningfixes.diff
     (also appears in upstream)
 - patch gnupg-2.0.9-RSA_ES.patch
   * adding back support for deprecated RSA_E, RSA_S algorithms
@@ -2989,7 +3002,7 @@ Tue Feb 12 19:24:37 CET 2008 - bk@suse.de
 -------------------------------------------------------------------
 Wed Feb  6 18:16:34 CET 2008 - bk@suse.de
 
-- add selected upstream fixes and fix gcc and rpmlint warnings 
+- add selected upstream fixes and fix gcc and rpmlint warnings
 
 -------------------------------------------------------------------
 Tue Jan  8 10:48:30 CET 2008 - sassmann@suse.de
@@ -3040,7 +3053,7 @@ Thu Jun 21 20:31:44 CEST 2007 - ro@suse.de
 
 - install compat symlinks for gpg2 and gpgv2
 - install gpg-zip and gpgsplit
-- added openldap2 to buildrequires (for gpgkeys_ldap) 
+- added openldap2 to buildrequires (for gpgkeys_ldap)
 - added fPIE/pie to CFLAGS/LDFLAGS for gpgsplit
 
 -------------------------------------------------------------------
@@ -3068,7 +3081,7 @@ Wed Apr  4 12:42:06 CEST 2007 - ltinkl@suse.cz
 -------------------------------------------------------------------
 Fri Mar 30 01:58:56 CEST 2007 - ro@suse.de
 
-- added zlib-devel to buildreq 
+- added zlib-devel to buildreq
 
 -------------------------------------------------------------------
 Wed Feb 14 15:14:44 CET 2007 - ltinkl@suse.cz
@@ -3078,7 +3091,7 @@ Wed Feb 14 15:14:44 CET 2007 - ltinkl@suse.cz
 -------------------------------------------------------------------
 Tue Jan 30 00:34:50 CET 2007 - ro@suse.de
 
-- fix build (exclude possible debuginfo directory) 
+- fix build (exclude possible debuginfo directory)
 
 -------------------------------------------------------------------
 Mon Jan 29 16:22:15 CET 2007 - ltinkl@suse.cz
@@ -3089,7 +3102,7 @@ Mon Jan 29 16:22:15 CET 2007 - ltinkl@suse.cz
 -------------------------------------------------------------------
 Thu Nov 30 16:59:25 CET 2006 - anicka@suse.cz
 
-- fix overflow in openfile.c (CVE-2006-6169, #224108) 
+- fix overflow in openfile.c (CVE-2006-6169, #224108)
 
 -------------------------------------------------------------------
 Mon Sep 11 13:44:21 CEST 2006 - pnemec@suse.cz
@@ -3112,7 +3125,7 @@ Thu Aug 17 11:55:09 CEST 2006 - pnemec@suse.de
 -------------------------------------------------------------------
 Wed Aug  9 09:32:56 CEST 2006 - pnemec@suse.cz
 
-- fix spec file to build with new gettext 0.15 
+- fix spec file to build with new gettext 0.15
 
 -------------------------------------------------------------------
 Mon Aug  7 11:06:19 CEST 2006 - pnemec@suse.cz
@@ -3144,7 +3157,7 @@ Fri Aug  5 12:52:44 CEST 2005 - postadal@suse.cz
 
 - updated to version to 1.9.18
 - removed obsoleted gcc patch
-- added patch tmpdir.diff for using $TMPDIR by gpg-agent [#bug95732] 
+- added patch tmpdir.diff for using $TMPDIR by gpg-agent [#bug95732]
 
 -------------------------------------------------------------------
 Tue Jul 12 14:17:11 CEST 2005 - postadal@suse.cz
@@ -3233,12 +3246,12 @@ Mon Aug 11 14:48:50 CEST 2003 - adrian@suse.de
 -------------------------------------------------------------------
 Mon Aug  4 15:28:41 CEST 2003 - ro@suse.de
 
-- added openct to neededforbuild 
+- added openct to neededforbuild
 
 -------------------------------------------------------------------
 Fri Jul 18 14:23:15 CEST 2003 - mc@suse.de
 
-- build against opensc 
+- build against opensc
 
 -------------------------------------------------------------------
 Thu Jun 19 19:04:45 CEST 2003 - schwab@suse.de
@@ -3255,5 +3268,5 @@ Mon Mar 17 15:25:30 CET 2003 - adrian@suse.de
 -------------------------------------------------------------------
 Tue Feb 11 15:38:30 CET 2003 - mc@suse.de
 
-- initial release 
+- initial release
 

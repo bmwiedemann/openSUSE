@@ -18,7 +18,7 @@
 
 
 Name:           gpg2
-Version:        2.5.14
+Version:        2.5.16
 Release:        0
 Summary:        File encryption, decryption, signature creation and verification utility
 License:        GPL-3.0-or-later
@@ -53,7 +53,7 @@ BuildRequires:  makeinfo
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(gnutls) >= 3.2
-BuildRequires:  pkgconfig(gpg-error) >= 1.51
+BuildRequires:  pkgconfig(gpg-error) >= 1.56
 BuildRequires:  pkgconfig(ksba) >= 1.6.3
 BuildRequires:  pkgconfig(ldap)
 BuildRequires:  pkgconfig(libassuan) >= 3.0.0
