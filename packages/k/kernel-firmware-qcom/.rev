@@ -334,4 +334,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: Add firmwares for sm8750 GPU</comment>
     <requestid>1323381</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>033864855cdde88e3d262b55546fd720</srcmd5>
+    <version>20251228</version>
+    <time>1767276016</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20251228 (git commit 154800e88541):
+  * qcom: Update CDSP firmware for qcm6490 platform</comment>
+    <requestid>1324924</requestid>
+  </revision>
 </revisionlist>
