@@ -49,4 +49,13 @@
     <comment></comment>
     <requestid>1324035</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1bce8579fecd4d29b7145aee0557d715</srcmd5>
+    <version>0.4.1</version>
+    <time>1767276050</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.1:
+  * feat(grammar): add field name for operators in expressions (forwarded request 1324913 from rrahl0)</comment>
+    <requestid>1324914</requestid>
+  </revision>
 </revisionlist>

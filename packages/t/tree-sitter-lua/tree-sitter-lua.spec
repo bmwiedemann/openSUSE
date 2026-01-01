@@ -18,7 +18,7 @@
 
 %define         _name lua
 Name:           tree-sitter-lua
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        Lua grammar for tree-sitter
 License:        MIT
