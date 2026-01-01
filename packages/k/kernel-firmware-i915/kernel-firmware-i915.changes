@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 31 08:43:28 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251228 (git commit 154800e88541):
+  * i915: Xe3LPD_3002 DMC v2.28
+  * i915: Xe3LPD DMC v2.33
+
+-------------------------------------------------------------------
 Wed Dec 17 13:35:20 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update aliases for 6.19-rc1

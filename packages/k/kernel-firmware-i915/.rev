@@ -175,4 +175,14 @@ After this PR, there will be a delete request for kernel-firmware.
   * xe: Update GUC to v70.55.3 for BMG, PTL</comment>
     <requestid>1323376</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e2c40ac1aede80731600f5e9a805874b</srcmd5>
+    <version>20251228</version>
+    <time>1767276003</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20251228 (git commit 154800e88541):
+  * i915: Xe3LPD_3002 DMC v2.28
+  * i915: Xe3LPD DMC v2.33</comment>
+    <requestid>1324919</requestid>
+  </revision>
 </revisionlist>
