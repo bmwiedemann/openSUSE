@@ -1,7 +1,7 @@
 #
 # spec file for package mingw64-binutils
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mingw64-binutils
-Version:        2.42
+Version:        2.45.1
 Release:        0
 Summary:        GNU Binutils
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -27,14 +27,13 @@ Source:         http://ftp.gnu.org/gnu/binutils/binutils-%{version}.tar.xz
 Source1:        http://ftp.gnu.org/gnu/binutils/binutils-%{version}.tar.xz.sig
 Source2:        mingw64-binutils.keyring
 Source99:       mingw64-binutils-rpmlintrc
-Patch0:         binutils-2.42-option-high-entry-va.patch
 #!BuildIgnore: post-build-checks
 BuildRequires:  bison
 BuildRequires:  flex
+BuildRequires:  makeinfo
 BuildRequires:  mingw64-cross-binutils
 BuildRequires:  mingw64-cross-gcc
 BuildRequires:  mingw64-filesystem
-BuildRequires:  texinfo
 BuildArch:      noarch
 %_mingw64_package_header_debug
 

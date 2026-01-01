@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec 29 16:30:23 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to version 2.45.1
+- Update mingw64-binutils.keyring
+- Use the makeinfo package instead of texinfo to reduce the
+  number of packages required for building
+- Remove the redundant patch for High-Entropy VA that
+  was applied to unsupported 32-bit support
+- Removed patch
+  * binutils-2.42-option-high-entry-va.patch
+
+-------------------------------------------------------------------
 Thu Jun 20 10:31:41 UTC 2024 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Fixes:
