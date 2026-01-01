@@ -16,4 +16,14 @@
 </comment>
     <requestid>1224503</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a8d3a11be928079f9d98bdc2523cfc2a</srcmd5>
+    <version>1.9</version>
+    <time>1767276047</time>
+    <user>dimstar_suse</user>
+    <comment>- Add recutils-fix_empty_password_vuln.patch
+  (fixes bsc#1255767 CVE-2025-65409)
+</comment>
+    <requestid>1324905</requestid>
+  </revision>
 </revisionlist>

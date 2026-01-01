@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 31 13:18:12 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Add recutils-fix_empty_password_vuln.patch
+  (fixes bsc#1255767 CVE-2025-65409)
+
+-------------------------------------------------------------------
 Fri Nov 15 18:19:34 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Fix Factory build

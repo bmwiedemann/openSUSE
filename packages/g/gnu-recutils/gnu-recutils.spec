@@ -1,7 +1,7 @@
 #
 # spec file for package gnu-recutils
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,9 @@ URL:            https://www.gnu.org/software/recutils
 Source0:        https://ftp.gnu.org/gnu/recutils/recutils-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/recutils/recutils-%{version}.tar.gz.sig
 Source2:        https://savannah.gnu.org/people/viewgpg.php?user_id=829#/%{name}.keyring
+# PATCH-FIX-UPSTREAM recutils-fix_empty_password_vuln.patch
+Patch0:         recutils-fix_empty_password_vuln.patch
+BuildRequires:  help2man
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bash)
 BuildRequires:  pkgconfig(check)
@@ -101,7 +104,7 @@ databases.
 %lang_package
 
 %prep
-%setup -q -n recutils-%{version}
+%autosetup -p1 -n recutils-%{version}
 
 %build
 export CFLAGS="%{optflags} -Wno-implicit-function-declaration -Wno-incompatible-pointer-types"
