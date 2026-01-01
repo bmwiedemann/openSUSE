@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec 28 23:29:56 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.36:
+  * enhanced Python interface.
+  * Probabilistic outputs for one-class SVM are now supported
+ - drop libsvm-java8.patch (java 11 is now default)
+
+-------------------------------------------------------------------
 Thu Sep 26 16:05:53 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
@@ -27,7 +35,7 @@ Tue Nov  8 23:02:48 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
   * Probabilistic outputs for one-class SVM are now supported.
 
 -------------------------------------------------------------------
-Tue Mar 16 23:03:23 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net> 
+Tue Mar 16 23:03:23 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Fix build by adding missing python-rpm-macros dependency.
 - Build Python bindings for current Python version.
@@ -86,7 +94,7 @@ Mon Oct 26 12:57:56 UTC 2015 - p.drouand@gmail.com
 -------------------------------------------------------------------
 Sat Apr  5 15:27:09 UTC 2014 - scorot@free.fr
 
-- fix permissions of %%doc in libsvm2 package 
+- fix permissions of %%doc in libsvm2 package
 
 -------------------------------------------------------------------
 Thu Mar 13 15:09:44 UTC 2014 - toddrme2178@gmail.com
@@ -97,7 +105,7 @@ Thu Mar 13 15:09:44 UTC 2014 - toddrme2178@gmail.com
 -------------------------------------------------------------------
 Fri Sep  7 18:25:49 UTC 2012 - scorot@free.fr
 
-- add python in build requirements 
+- add python in build requirements
 
 -------------------------------------------------------------------
 Fri Sep  7 18:03:49 UTC 2012 - scorot@free.fr

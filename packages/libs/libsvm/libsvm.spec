@@ -1,7 +1,7 @@
 #
 # spec file for package libsvm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,17 @@
 #
 
 
-%define libname libsvm3
-%define fileversion 3.3
+%define libname libsvm4
+%define fileversion 3.36
 
 Summary:        A Library for Support Vector Machines
 License:        BSD-3-Clause
 Group:          Development/Languages/Other
 Name:           libsvm
-Version:        3.30
+Version:        3.36
 Release:        0
 URL:            https://www.csie.ntu.edu.tw/~cjlin/libsvm/
 Source0:        https://www.csie.ntu.edu.tw/~cjlin/libsvm/%{name}-%{fileversion}.tar.gz
-Patch0:         libsvm-java8.patch
 Patch1:         libsvm-reproducible-jar-mtime.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  gcc-c++
@@ -97,7 +96,6 @@ This package contains the Java bindings for libsvm.
 
 %prep
 %setup -n %{name}-%{fileversion}
-%patch -P 0 -p1
 # The "--date" option was added into jar in OpenJDK 17
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
 %patch -P 1 -p1
@@ -128,8 +126,8 @@ install -m 755 ./tools/grid.py %{buildroot}%{_bindir}/svm-grid
 install -m 755 ./tools/subset.py %{buildroot}%{_bindir}/svm-subset
 install -m 755 ./tools/easy.py %{buildroot}%{_bindir}/svm-easy
 install -m 644 svm.h %{buildroot}%{_includedir}/libsvm/
-install -m 755 libsvm.so.3 %{buildroot}%{_libdir}
-ln -s %{_libdir}/libsvm.so.3 %{buildroot}%{_libdir}/libsvm.so
+install -m 755 libsvm.so.4 %{buildroot}%{_libdir}
+ln -s %{_libdir}/libsvm.so.4 %{buildroot}%{_libdir}/libsvm.so
 mv ./python/README README-python
 mv ./tools/README README-python-tools
 
@@ -156,7 +154,7 @@ install -m 755 ./java/%{name}.jar %{buildroot}%{_javadir}/%{name}.jar
 
 %files -n %{libname}
 %license COPYRIGHT
-%{_libdir}/libsvm.so.3
+%{_libdir}/libsvm.so.4
 
 %files devel
 %{_includedir}/libsvm
