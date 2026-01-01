@@ -671,4 +671,12 @@ bsc#1007869) (CVE-2016-8706)</comment>
   * mcmc: upstream updates</comment>
     <requestid>1303362</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>fb23909b74fbdc43b302a3e949c9d13e</srcmd5>
+    <version>1.6.40</version>
+    <time>1767275986</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1324859</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Dec 22 12:06:06 UTC 2025 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 1.6.40
+  * Reload TLS certificates on SIGHUP
+  * tests: fix race condition in slab mover test
+  * extstore: fix internal item flag loss on flush
+  * core: fix worker_logbuf_size start option
+  * proxy: remove buffer memory limit lock
+  * proxy: update backend logging options on reload
+  * slabs: fix page mover busy sleep backoff, add counter
+  * docs: info for listeners to help string
+  * core: fix verbose logging in get
+  * Fix format specifier for nums_napi_id
+  * extstore: fix start arg issue with page size
+  * proxy: add some inspection commands for req/res
+  * proxy: add tracebacks to lua errors in some cases
+
+-------------------------------------------------------------------
 Tue Sep  9 13:33:24 UTC 2025 - pgajdos@suse.com
 
 - version update to 1.6.39

@@ -1,6 +1,7 @@
 #
 # spec file for package memcached
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -33,7 +34,7 @@
 %bcond_with    tmpfiles
 %endif
 Name:           memcached
-Version:        1.6.39
+Version:        1.6.40
 Release:        0
 Summary:        A high-performance, distributed memory object caching system
 License:        BSD-3-Clause
