@@ -28,7 +28,7 @@
 %define idevice disabled
 %endif
 Name:           upower
-Version:        1.90.10
+Version:        1.91.0
 Release:        0
 Summary:        Power Device Enumeration Framework
 License:        GPL-2.0-or-later
@@ -45,10 +45,10 @@ BuildRequires:  libtool
 BuildRequires:  meson >= 0.60.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dbus-glib-1)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.66.0
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.66.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.76.0
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.76.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.76.0
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.76.0
 BuildRequires:  pkgconfig(gudev-1.0) >= 235
 BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.0
 BuildRequires:  pkgconfig(polkit-gobject-1)
@@ -127,6 +127,9 @@ system) are restricted using PolicyKit.
 %meson_install
 %find_lang %{name}
 
+%check
+%meson_test
+
 %pre
 %service_add_pre upower.service
 
@@ -149,6 +152,8 @@ system) are restricted using PolicyKit.
 %doc AUTHORS NEWS README.md
 %dir %{_sysconfdir}/UPower
 %config(noreplace) %{_sysconfdir}/UPower/UPower.conf
+%dir %{_sysconfdir}/UPower/UPower.conf.d
+%{_sysconfdir}/UPower/UPower.conf.d/README.md
 %{_bindir}/upower
 %dir %{_libexecdir}/upower
 %{_libexecdir}/upower/upowerd

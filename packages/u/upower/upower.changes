@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec 30 10:39:01 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.91.0:
+  + New feature: Support multiple keyboard backlight LED control
+  + Make installation of tests optional
+  + Support conf.d style config file
+  + Deprecate CapacityLevel property
+- Enable test suite in %check section
+
+-------------------------------------------------------------------
 Thu Sep  4 05:52:45 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.90.10:
