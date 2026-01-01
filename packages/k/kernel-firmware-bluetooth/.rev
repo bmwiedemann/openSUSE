@@ -269,4 +269,14 @@ After this PR, there will be a delete request for kernel-firmware.
   * linux-firmware: Update firmware file for Intel BlazarU core</comment>
     <requestid>1321334</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>c260ef58002dab5c9cc3c3180af85530</srcmd5>
+    <version>20251228</version>
+    <time>1767275999</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20251228 (git commit 154800e88541):
+  * rtl_bt: Update RTL8852BT/RTL8852BE-VT BT USB FW to 0x488C_DB55
+  * linux-firmware: Add firmware file for Intel Scorpius core</comment>
+    <requestid>1324918</requestid>
+  </revision>
 </revisionlist>

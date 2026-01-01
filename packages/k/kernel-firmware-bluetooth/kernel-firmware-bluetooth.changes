@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 31 08:47:41 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251228 (git commit 154800e88541):
+  * rtl_bt: Update RTL8852BT/RTL8852BE-VT BT USB FW to 0x488C_DB55
+  * linux-firmware: Add firmware file for Intel Scorpius core
+
+-------------------------------------------------------------------
 Wed Dec  3 06:18:30 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20251202 (git commit 685171356137):
