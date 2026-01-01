@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec 31 17:04:24 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to version 1.5.29:
+  * Fix printing rank-1-variable in Mat_VarPrint
+  * Fix array index out of bounds in Mat_VarPrint when printing
+    UTF-8 character data (boo#1239678, CVE-2025-2337)
+  * Fix heap-based buffer overflow in strdup_vprintf
+    (boo#1239677, CVE-2025-2338)
+  * Changed Mat_VarPrint to print all values of rank-2-variable
+  * Several other fixes, for example for access violations in
+    Mat_VarPrint
+
+-------------------------------------------------------------------
 Sat Dec 21 13:57:33 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.5.28:

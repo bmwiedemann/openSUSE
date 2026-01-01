@@ -2,6 +2,7 @@
 # spec file for package matio
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +20,7 @@
 %define libname lib%{name}
 %define major   13
 Name:           matio
-Version:        1.5.28
+Version:        1.5.29
 Release:        0
 Summary:        Library for reading and writing MATLAB MAT files
 License:        BSD-2-Clause
@@ -45,10 +46,11 @@ access or do not want to rely on MATLAB's shared library.
 
 %package     -n %{libname}-devel
 Summary:        Development files for %{name}
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(zlib) >= 1.2.3
 Requires:       %{libname}%{major} = %{version}
 Requires:       hdf5-devel
 Requires:       pkgconfig
-BuildRequires:  pkgconfig(zlib) >= 1.2.3
 
 %description -n %{libname}-devel
 matio is an open-source library for reading and writing MATLAB MAT files.
@@ -67,19 +69,20 @@ This library is designed for use by programs/libraries that do not have
 access or do not want to rely on MATLAB's shared library.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
   --enable-shared \
   --disable-static \
   --enable-mat73=yes \
-  --enable-extended-sparse=yes
+  --enable-extended-sparse=yes \
+  %{nil}
 %make_build
 
 %install
 %make_install
-find %{buildroot}%{_libdir} -name '*.la' -type f -delete -print
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
 export LD_LIBRARY_PATH=%{_buildroot}/%{libdir}
@@ -90,16 +93,18 @@ export LD_LIBRARY_PATH=%{_buildroot}/%{libdir}
 %files -n %{libname}%{major}
 %license COPYING
 %doc NEWS README
-%{_libdir}/libmatio.so.%{major}*
+%{_libdir}/libmatio.so.%{major}{,.*}
 
 %files tools
+%license COPYING
 %{_bindir}/matdump
 
 %files -n %{libname}-devel
+%license COPYING
 %{_includedir}/matio.h
 %{_includedir}/matio_pubconf.h
 %{_libdir}/libmatio.so
 %{_libdir}/pkgconfig/matio.pc
-%{_mandir}/man3/Mat_*.3.*
+%{_mandir}/man3/Mat_*.3%{?ext_man}
 
 %changelog
