@@ -158,4 +158,16 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: venus-5.4: remove unused firmware file</comment>
     <requestid>1320754</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>79e3e5bc3274efb42ced07afd462a537</srcmd5>
+    <version>20251228</version>
+    <time>1767276008</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20251228 (git commit 154800e88541):
+  * qcom: venus-5.4: fix ELF segment alignment to 4 bytes
+
+- Update to version 20251127 (git commit e3b0cfe73e95):
+  * qcom: vpu: update video firmware binary for SM8250</comment>
+    <requestid>1324921</requestid>
+  </revision>
 </revisionlist>

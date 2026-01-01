@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec 31 08:43:42 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251228 (git commit 154800e88541):
+  * qcom: venus-5.4: fix ELF segment alignment to 4 bytes
+
+-------------------------------------------------------------------
+Fri Nov 28 08:42:43 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20251127 (git commit e3b0cfe73e95):
+  * qcom: vpu: update video firmware binary for SM8250
+
+-------------------------------------------------------------------
 Mon Nov 24 07:18:30 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20251123 (git commit 9dba680579f4):
