@@ -1681,14 +1681,11 @@
     <package name="libavahi-core7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libavahi-glib1" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libavc1394-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libavcodec61" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libavcodec62" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libavfilter11" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libavformat61" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libavformat62" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libavif16" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libavtp0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libavutil59" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libavutil60" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libayatana-appindicator3-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libayatana-ido3-0_4-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -2538,7 +2535,6 @@
     <package name="libportal-gtk4-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libportal1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libportaudio2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libpostproc58" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libpotrace0" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="libppd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libppd2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2735,9 +2731,7 @@
     <package name="libsubid5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsuitesparseconfig7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsvrcore0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
-    <package name="libswresample5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libswresample6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libswscale8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libswscale9" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libsynctex2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsysfs2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->

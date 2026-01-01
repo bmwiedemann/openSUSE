@@ -12137,6 +12137,7 @@ unsorted:
   - libavc1394-tools 
   - libavcall1 
   - libavcodec58_134 
+  - libavcodec61 
   - libavcodec61-32bit 
   - libavcodec62-32bit 
   - libavdevice58_13 
@@ -12149,6 +12150,7 @@ unsorted:
   - libavfilter11-32bit 
   - libavfilter7_110 
   - libavformat58_76 
+  - libavformat61 
   - libavformat61-32bit 
   - libavformat62-32bit 
   - libavfs1 
@@ -12159,6 +12161,7 @@ unsorted:
   - libavtp-devel 
   - libavtp0-32bit 
   - libavutil56_70 
+  - libavutil59 
   - libavutil59-32bit 
   - libavutil60-32bit 
   - libaws-c-auth1_0_0 
@@ -15466,6 +15469,7 @@ unsorted:
   - libportaudiocpp0 
   - libportmidi2 
   - libpostproc55_9 
+  - libpostproc58 
   - libpostproc58-32bit 
   - libpostquantumcryptoengine1 
   - libpowerman0 
@@ -16497,15 +16501,17 @@ unsorted:
   - libsuseconnect 
   - libsvm-devel 
   - libsvm-java 
-  - libsvm3 
+  - libsvm4 
   - libsvn_auth_gnome_keyring-1-0 
   - libsvn_auth_kwallet-1-0 
   - libswitchboard-3-0 
   - libsword-1_9_0 
   - libswresample3_9 
+  - libswresample5 
   - libswresample5-32bit 
   - libswresample6-32bit 
   - libswscale5_9 
+  - libswscale8 
   - libswscale8-32bit 
   - libswscale9-32bit 
   - libsybdb5 
