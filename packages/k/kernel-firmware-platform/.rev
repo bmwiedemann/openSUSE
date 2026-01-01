@@ -176,4 +176,14 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment>- Update aliases for 6.19-rc1</comment>
     <requestid>1323379</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>af0ff36363d7345eae5d169f9f38e30e</srcmd5>
+    <version>20251228</version>
+    <time>1767276014</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20251228 (git commit 154800e88541):
+  * linux-firmware: Update AMD SEV firmware
+  * rcar_gen4_pcie: add firmware for Renesas R-Car Gen4 PCIe controller</comment>
+    <requestid>1324923</requestid>
+  </revision>
 </revisionlist>
