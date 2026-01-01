@@ -18,7 +18,7 @@
 
 
 Name:           gkrellm
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        Manages Multiple Stacked Monitors
 License:        GPL-3.0-or-later
@@ -200,6 +200,7 @@ ln -s /sbin/service %{buildroot}%{_sbindir}/rcgkrellmd
 %license COPYRIGHT
 %{_includedir}/gkrellm2/
 %{_libdir}/pkgconfig/gkrellm.pc
+%{_libdir}/pkgconfig/gkrellmd.pc
 
 %files lang -f %{name}.lang
 %license COPYRIGHT

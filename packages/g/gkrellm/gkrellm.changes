@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Dec 30 19:53:11 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.5.0:
+  * Add support for power sensors on Linux: power sensors can now
+    be read from sysfs or libsensors
+  * Automatically use MiB/GiB/TiB units for displaying memory
+    values instead of fixed MiB units.
+  * Remove non-working gtop backend which is not used on any of the
+    currently supported operating systems
+  * Add pkg-config file for gkrellmd plugins which only depends on
+    Glib instead of Gtk+
+  * Public header files are now C++ safe
+  * Build system fixes, translation updates, compiler fixes
+
+-------------------------------------------------------------------
 Sun Jun 29 18:32:42 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.4.0 (boo#1244666):
