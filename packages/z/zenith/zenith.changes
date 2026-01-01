@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Dec 31 12:44:11 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version 0.14.2:
+  * Release Workflow (#171)
+  * feat: add red/blue temperature color coding (#170)
+  * fix issue 167 where total ordering wasn't being returned and now requ… (#168)
+  * Render ptable refactor (#166)
+  * style: simplify some statements for readability (#165)
+  * update release
+  * Update sysinfo fork dependency
+  * valid json!
+  * set a prefix
+  * update release params
+  * update screenshot
+  * only run with features nvidia if we're on ubuntu
+  * configure ci
+  * update ci
+  * Bump version
+  * build both musl + gnu with nvidia
+  * Update ci
+  * fix command
+  * Add nvidia feature
+  * Update build action
+  * Upgrade dependencies (#162)
+  * Continue to build other release even if this one fails
+  * Update release.yml
+  * Add more platforms
+  * Create Changes.md
+  * fix typo
+  * Update action version
+  * Update release.yml
+  * Add github workflow for releases
+  * Fix for Issue 153 (#155)
+  * Need to include GraphicsDevice now for no graphics builds.
+  * move update total to a function
+  * Refactored to only create total device if there is more than one gfx card.
+  * Added support for gfx card totals
+
+-------------------------------------------------------------------
 Sat Jul 06 10:45:57 UTC 2024 - alessio.biancalana@suse.com
 
 - Add 001-strip-cargo-config.patch to remove clumsy cargo config
