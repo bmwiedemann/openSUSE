@@ -16,16 +16,15 @@
 #
 
 
+%define __builder ninja
 Name:           dolphin-emu
-Version:        2509
+Version:        2512
 Release:        0
 Summary:        Dolphin, a GameCube and Wii Emulator
 License:        (Apache-2.0 OR MIT) AND BSD-2-Clause AND libpng-2.0 AND GPL-2.0-or-later
 URL:            https://dolphin-emu.org
-# n=dolphin-emu && v=2509 && d=$n-$v && f=$d.tar.xz && cd /tmp && git clone -b$v https://github.com/$n/dolphin.git $n && pushd $n && git submodule && git submodule update --init --recursive Externals/SFML/SFML Externals/VulkanMemoryAllocator Externals/cubeb/cubeb Externals/enet/enet Externals/gtest Externals/implot/implot Externals/libspng/libspng Externals/minizip-ng/minizip-ng Externals/rcheevos/rcheevos Externals/tinygltf/tinygltf Externals/zlib-ng/zlib-ng Externals/watcher/watcher && git submodule status && rm -rf .??* && popd && mv $n $d && tar c --remove-files "$d" | xz -9e > "$f"
+# n=dolphin-emu && v=2512 && d=$n-$v && f=$d.tar.xz && cd /tmp && git clone -b$v https://github.com/$n/dolphin.git $n && pushd $n && git submodule && git submodule update --init --recursive Externals/SFML/SFML Externals/VulkanMemoryAllocator Externals/cpp-ipc/cpp-ipc Externals/cpp-optparse/cpp-optparse Externals/cubeb/cubeb Externals/gtest Externals/imgui/imgui Externals/implot/implot Externals/libspng/libspng Externals/minizip-ng/minizip-ng Externals/rcheevos/rcheevos Externals/tinygltf/tinygltf Externals/watcher/watcher Externals/zlib-ng/zlib-ng && git submodule status && rm -rf .??* && popd && mv $n $d && tar c --remove-files "$d" | xz -9e > "$f"
 Source0:        %{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM -- Qt 6.10 build fix
-Patch0:         dolphin-qt610.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  glslang-devel
@@ -52,6 +51,7 @@ BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libenet)
 BuildRequires:  pkgconfig(libevdev)
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(liblzma)
@@ -110,8 +110,8 @@ echo "%{_datadir}/%{name}/Sys/GC:" > font-licenses.txt
 cat Data/Sys/GC/font-licenses.txt >> font-licenses.txt
 
 %build
+export CMAKE_GENERATOR=Ninja
 export CMAKE_POLICY_VERSION_MINIMUM=3.5
-# FIXME: you should use the %%cmake macros
 cmake . -LA \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
 %if 0%{?sle_version} > 150000 && 0%{?sle_version} < 160000
@@ -128,15 +128,15 @@ cmake . -LA \
     -DENABLE_ANALYTICS=OFF \
     -DENABLE_LTO=ON \
     -DENCODE_FRAMEDUMPS=OFF \
+    -DQT_NO_PRIVATE_MODULE_WARNING=ON \
     -DUSE_DISCORD_PRESENCE=OFF \
     -DUSE_MGBA=OFF \
     -DUSE_SANITIZERS=OFF \
-    -DXXHASH_FOUND=ON \
-    -G Ninja
-ninja -v
+    -DXXHASH_FOUND=ON
+%cmake_build
 
 %install
-DESTDIR=%{buildroot} ninja install
+DESTDIR=%{buildroot} cmake --install . --verbose
 sed -i 's/^Exec=.*/Exec=%{name}/' %{buildroot}%{_datadir}/applications/%{name}.desktop
 install -Dpm0644 Data/51-usb-device.rules %{buildroot}%{_udevrulesdir}/51-nintendo-gamecube-wiimote.rules
 %fdupes -s %{buildroot}

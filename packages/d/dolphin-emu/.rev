@@ -218,4 +218,16 @@
     <comment>- Added patch dolphin-qt610.patch to fix Qt 6.10 build.</comment>
     <requestid>1311932</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>97a166dfaee04bb86bceafde426105e8</srcmd5>
+    <version>2512</version>
+    <time>1767276053</time>
+    <user>dimstar_suse</user>
+    <comment>- Switched enet to internal dependency.
+- Updated to 2512
+  * Removed dolphin-qt610.patch
+  * Used cpp-ipc, cpp-optparse and imgui from externals source.
+  * https://github.com/dolphin-emu/dolphin/compare/2509...2512</comment>
+    <requestid>1324929</requestid>
+  </revision>
 </revisionlist>

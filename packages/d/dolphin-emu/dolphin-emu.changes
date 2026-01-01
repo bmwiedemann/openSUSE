@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec 31 16:51:09 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Switched enet to internal dependency.
+- Updated to 2512
+  * Removed dolphin-qt610.patch
+  * Used cpp-ipc, cpp-optparse and imgui from externals source.
+  * https://github.com/dolphin-emu/dolphin/compare/2509...2512
+
+-------------------------------------------------------------------
 Mon Oct 13 19:01:56 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Added patch dolphin-qt610.patch to fix Qt 6.10 build.
