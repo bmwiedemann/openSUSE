@@ -1,7 +1,7 @@
 #
 # spec file for package wcslib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define libver  8
 Name:           wcslib
-Version:        8.2.2
+Version:        8.5
 Release:        0
 Summary:        An implementation of the FITS WCS standard
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.atnf.csiro.au/people/mcalabre/WCS/wcslib/
-Source0:        ftp://ftp.atnf.csiro.au/pub/software/wcslib/%{name}-%{version}.tar.bz2
+Source0:        https://www.atnf.csiro.au/computing/software/wcs/wcslib-releases/wcslib-%{version}.tar.bz2
 BuildRequires:  cfitsio-devel
 BuildRequires:  fdupes
 BuildRequires:  flex
