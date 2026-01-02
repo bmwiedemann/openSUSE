@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jan 01 19:27:31 UTC 2026 - Tristan Miller <psychonaut@nothingisreal.com>
+
+- update to SeaMonkey 2.53.23
+  * Use PluralForm for known networks in cZ bug 1986545.
+  * Use PluralForm better for known networks in cZ bug 1999832.
+  * Add ESR 140 links to debugQA bug 1993800.
+  * Incorrect SeaMonkey version number in BugSplat crash reports bug
+    1999135.
+  * Update service name in dataman.js bug 1489573.
+  * Fixed CSS issue by landing part 1 of bug 1363875.
+  * SeaMonkey 2.53.23 uses the same backend as Firefox and contains
+    the relevant Firefox 60.8 security fixes.
+  * SeaMonkey 2.53.23 shares most parts of the mail and news code with
+    Thunderbird. Please read the Thunderbird 60.8.0 release notes for
+    specific security fixes in this release.
+  * Additional important security fixes up to Current Firefox 140.6
+    and Thunderbird 140.6 ESR plus many enhancements have been
+    backported. We will continue to enhance SeaMonkey security in
+    subsequent 2.53.x beta and release versions as fast as we are able
+    to.
+- adapt seamonkey-2.53.7.1-man-page.patch for SeaMonkey 2.53.23
+- disable system ICU due to bmo#1933117
+- request inclusion in Leap 15.6 and 16.0:
+  https://bugzilla.opensuse.org/show_bug.cgi?id=1255830
+
+-------------------------------------------------------------------
 Sun Nov 02 02:29:10 UTC 2025 - Tristan Miller <psychonaut@nothingisreal.com>
 
 - update to SeaMonkey 2.53.22
@@ -65,6 +91,8 @@ Sun Nov 02 02:29:10 UTC 2025 - Tristan Miller <psychonaut@nothingisreal.com>
   was the last (upstream) release with official 32-bit support
 - Adapt seamonkey-2.53.20-system-av1.patch for SeaMonkey 2.53.22
 - Adapt seamonkey-2.53.19-bmo1896958.patch for SeaMonkey 2.53.22
+- request inclusion in Leap 15.6 and 16.0:
+  https://bugzilla.opensuse.org/show_bug.cgi?id=1253368
 
 -------------------------------------------------------------------
 Fri Aug 29 17:56:48 UTC 2025 - Tristan Miller <psychonaut@nothingisreal.com>

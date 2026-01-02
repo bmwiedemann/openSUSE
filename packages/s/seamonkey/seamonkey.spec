@@ -3,7 +3,7 @@
 #
 # Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
 #               2006-2018 Wolfgang Rosenauer
-#               2018-2025 Tristan Miller
+#               2018-2026 Tristan Miller
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,8 @@
 
 # System vs. bundled libraries
 %bcond_without	system_webp
-%bcond_without	system_icu
+# As of 2.53.23, disable system ICU due to bmo#1933117
+%bcond_with	system_icu
 %bcond_without	system_libvpx
 %bcond_without	system_ffi
 %bcond_without	system_nspr
@@ -51,11 +52,11 @@
 %define gnome_dir      %{_prefix}
 ### build options end
 
-%define releasedate 20251031000000
+%define releasedate 20251231000000
 
 Name:           seamonkey
 Summary:        An integrated web browser, composer, mail/news client, and IRC client
-Version:        2.53.22
+Version:        2.53.23
 Release:        0
 License:        MPL-2.0
 Group:          Productivity/Networking/Web/Browsers
@@ -291,7 +292,7 @@ cp %{SOURCE7} GNUmakefile
 %patch -P 1 -p1
 %patch -P 2 -p2
 %patch -P 3 -p1
-%patch -P 4 -p0
+%patch -P 4 -p1
 %patch -P 5 -p1
 %patch -P 6 -p1
 %patch -P 7 -p1
