@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Dec 29 18:37:35 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.20.3:
+  * I18n: Update po/LINGUAS list
+  * xfsettingsd: Fix check for libinput
+  * accessibility-dialog: Remove scrolled windows
+  * accessibility-dialog: Improve tooltip text
+  * appearance-settings: Synchronize org.x.apps.portal color-scheme
+    too
+  * display-settings: Fix string leak when deleting profile
+  * display-settings: Keep /ActiveProfile in a consistent state
+  * display-settings: Delete popup dialog asking to update profile
+  * display-settings: Save profile name in save function
+  * display-settings: Fix profile name lost when updating profile
+  * display-settings: Do not allow to apply profile if already
+    active
+  * x11: display-settings: Fix some return types
+  * display-settings: Match by EDID when loading output data from
+    xfconf
+  * x11: display-settings: Do not use output name to generate fallback 
+    EDID
+  * Translation Updates
+
+-------------------------------------------------------------------
 Thu Aug 14 14:00:41 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.20.2:
