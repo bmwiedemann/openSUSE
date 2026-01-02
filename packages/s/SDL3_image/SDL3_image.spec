@@ -1,7 +1,7 @@
 #
 # spec file for package SDL3_image
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           SDL3_image
 %define lname	libSDL3_image0
-Version:        3.2.4
+Version:        3.2.6
 Release:        0
 Summary:        Simple DirectMedia Layer image loading library
 License:        Zlib
