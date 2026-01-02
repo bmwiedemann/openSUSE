@@ -19,13 +19,12 @@
 %global pkg_name vault
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.3.1.5
+Version:        0.3.1.6
 Release:        0
 Summary:        A persistent store for values of arbitrary types
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/10.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
@@ -40,12 +39,10 @@ ExcludeArch:    %{ix86}
 
 %description
 A /vault/ is a persistent store for values of arbitrary types. It's like having
-first-class access to the storage space behind IORefs.
-
-The data structure is analogous to a bank vault, where you can access different
-bank boxes with different keys; hence the name.
-
-Also provided is a /locker/ type, representing a store for a single element.
+first-class access to the storage space behind IORefs. . The data structure is
+analogous to a bank vault, where you can access different bank boxes with
+different keys; hence the name. . Also provided is a /locker/ type,
+representing a store for a single element.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -75,7 +72,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

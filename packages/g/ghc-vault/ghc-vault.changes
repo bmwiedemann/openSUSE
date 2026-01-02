@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec 25 13:30:17 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update vault to version 0.3.1.6.
+  **0.3.1.6**
+
+  Added
+
+  * Add support for MicroHs
+
+  Removed
+
+  * Dropped support for `GHC < 8.4`
+
+-------------------------------------------------------------------
 Sun Mar  9 11:32:51 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update vault to version 0.3.1.5 revision 10.
