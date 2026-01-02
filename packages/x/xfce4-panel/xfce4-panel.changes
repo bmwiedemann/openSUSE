@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Dec 29 18:31:37 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.20.6
+  * arrow-fix: Restoring the button size after the arrow disappears
+  * build: Fix typo in optimization level
+  * wayland: Set plugins internal unless forced external
+  * prefs-dialog: Reset add/remove buttons sensitivity when needed
+  * wayland: Minimalist management of workspace group change when
+    unused
+  * pager: Add missing signal handler disconnections
+  * I18n: Update po/LINGUAS list
+  * libxfce4panel: Clarify doc
+  * Translation Updates
+
+-------------------------------------------------------------------
 Thu Aug 14 13:23:20 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.20.5
