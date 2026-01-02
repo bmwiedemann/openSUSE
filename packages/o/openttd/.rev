@@ -1325,4 +1325,15 @@ Note: OpenTTD was migrated to GitHub for 1.9, so SVN revision and FlySpray numbe
 - Fix changelog with source_validators/helpers/fix_changelog</comment>
     <requestid>1291539</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>f41a0fb5bc7bab6ce7e214b9f87061f7</srcmd5>
+    <version>15.0</version>
+    <time>1767360576</time>
+    <user>anag_factory</user>
+    <comment>- update to 15.0
+- Remove upstreamed patch 0001-icu-build-fix.patch
+- Remove unnecessary patch 0002-gcc15.patch
+</comment>
+    <requestid>1325034</requestid>
+  </revision>
 </revisionlist>

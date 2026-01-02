@@ -1,7 +1,7 @@
 #
 # spec file for package openttd
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2007-2012 The OpenTTD developers
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +22,7 @@
 %global force_gcc_version 12
 %endif
 Name:           openttd
-Version:        14.1
+Version:        15.0
 Release:        0
 Summary:        A clone of Chris Sawyer's Transport Tycoon Deluxe
 License:        GPL-2.0-only
@@ -31,8 +31,6 @@ URL:            https://openttd.org/
 Source:         https://cdn.openttd.org/openttd-releases/%{version}/%{name}-%{version}-source.tar.xz
 Source2:        openttd.appdata.xml
 # PATCH-FEATURE-UPSTREAM https://bugs.openttd.org/task/6490
-Patch1:         0001-icu-build-fix.patch
-Patch2:         0002-gcc15.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc%{?force_gcc_version}-c++
