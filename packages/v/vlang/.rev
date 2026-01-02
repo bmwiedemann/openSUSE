@@ -40,4 +40,23 @@ focus on simplicity and maintainability</comment>
 - Remove -prod flag for non-x86*</comment>
     <requestid>1313216</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7a37b605b54a2e2337fd0c8bbf7bd0e3</srcmd5>
+    <version>0.5</version>
+    <time>1767360563</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.5:
+  * Add comptime if is shared support
+  * Make defer{} scoped by default
+  * Add gotodef support for nested struct members, fn return types,
+    etc
+  * Add a new v.comptime stage COMPTIME, that runs after the
+    checker (CHECK), and before the transformer (TRANSFORM), to
+    simplify the work that later stages do
+  * Various fixes to parser and compiler internals
+  * Improvements to standard library functions
+  * Full changelog at https://github.com/vlang/v/releases/tag/0.5
+- Drop fix-already-unsafe.patch: upstreamed</comment>
+    <requestid>1325021</requestid>
+  </revision>
 </revisionlist>

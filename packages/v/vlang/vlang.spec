@@ -17,7 +17,7 @@
 #
 
 # git revision
-%global vc_gitrev  048a0a537560080eb73d56e2f3b644462fa9037a
+%global vc_gitrev  294bff4ef87427743d0b35c0f7eb1b34a6dd061b
 
 # custom paths and variables
 %global vflags      -cc gcc -d dynamic_boehm
@@ -25,7 +25,7 @@
 %global vexe        %{vexe_root}/%{name}
 
 Name:           vlang
-Version:        0.4.12
+Version:        0.5
 Release:        0
 Summary:        The V Programming Language
 License:        MIT AND BSD-2-Clause
@@ -33,7 +33,6 @@ URL:            https://vlang.io/
 Source0:        https://github.com/%{name}/v/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/%{name}/vc/raw/%{vc_gitrev}/v.c
 Source99:       vlang-rpmlintrc
-Patch0:         https://github.com/vlang/v/pull/25370.diff#/fix-already-unsafe.patch
 BuildRequires:  c_compiler
 BuildRequires:  diffutils
 BuildRequires:  fdupes

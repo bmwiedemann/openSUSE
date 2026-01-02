@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jan  1 15:30:45 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.5:
+  * Add comptime if is shared support
+  * Make defer{} scoped by default
+  * Add gotodef support for nested struct members, fn return types,
+    etc
+  * Add a new v.comptime stage COMPTIME, that runs after the
+    checker (CHECK), and before the transformer (TRANSFORM), to
+    simplify the work that later stages do
+  * Various fixes to parser and compiler internals
+  * Improvements to standard library functions
+  * Full changelog at https://github.com/vlang/v/releases/tag/0.5
+
+- Drop fix-already-unsafe.patch: upstreamed
+
+-------------------------------------------------------------------
 Fri Oct 17 10:18:26 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update v.c
