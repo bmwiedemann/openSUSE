@@ -139,4 +139,14 @@
   * Bump the actions group in /.github/workflows with 2 updates</comment>
     <requestid>1279585</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>89795e1ad9d602cb35532e1decb80c0f</srcmd5>
+    <version>0.2025.12.29.0.42.34</version>
+    <time>1767360565</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.2025.12.29.0.42.34  
+  * Update IERS Earth rotation and leap second tables
+- Switch build backend to hatchling</comment>
+    <requestid>1325026</requestid>
+  </revision>
 </revisionlist>

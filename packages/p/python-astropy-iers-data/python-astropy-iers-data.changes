@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan  1 16:19:32 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.2025.12.29.0.42.34  
+  * Update IERS Earth rotation and leap second tables
+- Switch build backend to hatchling
+
+-------------------------------------------------------------------
 Fri May 23 15:26:01 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.2025.5.19.0.38.36:
