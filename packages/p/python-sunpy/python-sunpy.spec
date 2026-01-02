@@ -1,7 +1,7 @@
 #
 # spec file for package python-sunpy
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?sle15_python_module_pythons}
+%define skip_python311 1
 Name:           python-sunpy
-Version:        7.0.2
+Version:        7.1.0
 Release:        0
 Summary:        SunPy core package: Python for Solar Physics
 License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT
@@ -28,10 +29,10 @@ Source0:        https://files.pythonhosted.org/packages/source/s/sunpy/sunpy-%{v
 Patch1:         sunpy-obs-profile.patch
 BuildRequires:  %{python_module aioftp}
 BuildRequires:  %{python_module astropy >= 6.1}
-BuildRequires:  %{python_module devel >= 3.11}
+BuildRequires:  %{python_module devel >= 3.12}
 BuildRequires:  %{python_module extension-helpers >= 1.3 with %python-extension-helpers < 2}
 BuildRequires:  %{python_module fsspec >= 2023.6.0}
-BuildRequires:  %{python_module numpy-devel >= 1.25 with %python-numpy-devel < 2.3}
+BuildRequires:  %{python_module numpy-devel >= 2}
 BuildRequires:  %{python_module packaging >= 23.2}
 BuildRequires:  %{python_module parfive >= 2.1.0}
 BuildRequires:  %{python_module pip}
@@ -44,11 +45,11 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-astropy >= 6.1
 Requires:       python-fsspec >= 2023.6.0
-Requires:       python-numpy >= 1.25
+Requires:       python-numpy >= 1.26
 Requires:       python-packaging >= 23.2
 Requires:       python-parfive >= 2.1.0
 Requires:       python-pyerfa >= 2.0.1.1
-Requires:       python-requests >= 2.32.0
+Requires:       python-requests >= 2.32.1
 # parfive[ftp], ignore rpmlint's python-leftover-require
 Requires:       python-aioftp >= 0.17.1
 # SECTION project.optional-dependencies:asdf
@@ -59,16 +60,16 @@ Recommends:     python-asdf-astropy >= 0.5
 Suggests:       python-dask-array >= 2023.6
 # /SECTION
 # SECTION project.optional-dependencies:image
-Recommends:     python-scipy >= 1.11
+Recommends:     python-scipy >= 1.12
 # /SECTION
 # SECTION project.optional-dependencies:jpeg2000
 Recommends:     python-Glymur >= 0.11
-Recommends:     python-lxml >= 4.9.1
+Recommends:     python-lxml >= 5.0.1
 # /SECTION
 # SECTION project.optional-dependencies:map
 Recommends:     python-matplotlib >= 3.8.0
 Recommends:     python-mpl-animators >= 1.2.0
-Recommends:     python-reproject >= 0.12.0
+Recommends:     python-reproject >= 0.13.0
 # scipy
 # /SECTION
 # SECTION project.optional-dependencies:net
@@ -86,13 +87,17 @@ Recommends:     python-scikit-image >= 0.21
 # SECTION project.optional-dependencies:timeseries
 Recommends:     python-cdflib >= 1.3.2
 Recommends:     python-h5netcdf >= 1.2
-Recommends:     python-h5py >= 3.9
-Recommends:     python-pandas >= 2.1
+Recommends:     python-h5py >= 3.10
+Recommends:     python-pandas >= 2.2
 #               matplotlib
 # /SECTION
 # SECTION project.optional-dependencies:visualization
 #               matplotlib
 #               mpl-animators
+# /SECTION
+# SECTION project.optional-dependencies:jupyter
+Recommends:     python-itables >= 2.2.4
+Recommends:     python-ipywidgets >= 8.1.0
 # /SECTION
 # SECTION test requirements (and extras)
 BuildRequires:  %{python_module asdf >= 3}
@@ -102,21 +107,24 @@ BuildRequires:  %{python_module cdflib >= 1.3.2}
 BuildRequires:  %{python_module dask-array >= 2023.6}
 BuildRequires:  %{python_module drms >= 0.7.1}
 BuildRequires:  %{python_module h5netcdf >= 1.2}
-BuildRequires:  %{python_module h5py >= 3.9}
+BuildRequires:  %{python_module h5py >= 3.10}
 BuildRequires:  %{python_module hypothesis >= 6.0.0}
+BuildRequires:  %{python_module ipywidgets >= 8.1.0}
+#BuildRequires: %%{python_module itables >= 2.2.4}
 BuildRequires:  %{python_module jplephem >= 2.19}
-BuildRequires:  %{python_module lxml >= 4.9.1}
+#BuildRequires:  %%{python_module pytest-mpl >= 0.18}
+BuildRequires:  %{python_module pytest-mpl >= 0.17}
+BuildRequires:  %{python_module lxml >= 5.0.1}
 BuildRequires:  %{python_module matplotlib >= 3.8.0}
 BuildRequires:  %{python_module mpl-animators >= 1.2.0}
-BuildRequires:  %{python_module pandas >= 2.1}
+BuildRequires:  %{python_module pandas >= 2.2}
 BuildRequires:  %{python_module pytest >= 7.1}
 BuildRequires:  %{python_module pytest-asdf-plugin >= 0.1.1}
 BuildRequires:  %{python_module pytest-astropy >= 0.11}
-BuildRequires:  %{python_module pytest-mpl >= 0.16}
 BuildRequires:  %{python_module pytest-xdist >= 3.0.2}
-BuildRequires:  %{python_module reproject >= 0.12}
+BuildRequires:  %{python_module reproject >= 0.13}
 BuildRequires:  %{python_module scikit-image >= 0.21}
-BuildRequires:  %{python_module scipy >= 1.11}
+BuildRequires:  %{python_module scipy >= 1.12}
 BuildRequires:  %{python_module zeep >= 4.3}
 BuildRequires:  python3-opencv
 # /SECTION

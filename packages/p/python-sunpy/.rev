@@ -481,4 +481,41 @@
 </comment>
     <requestid>1309370</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>0df20b4797635e9ae2203e37d8997ba2</srcmd5>
+    <version>7.1.0</version>
+    <time>1767360569</time>
+    <user>anag_factory</user>
+    <comment>- Update to 7.1.0
+  * Increased minimum versions for dependencies
+  ## Removals
+  * Removed backwards compatibility with the legacy keyword,
+    pattern within sunpy.net.Scraper (#8338)
+  * Remove deprecated assume_spherical_screen method in favor of
+    ~sunpy.coordinates.SphericalScreen. (#8386)
+  * Removed silence_errors keyword for input to both sunpy.map.Map
+    and sunpy.timeseries.TimeSeries constructors after its long
+    deprecation period. (#8397)
+  * Removed the ability to read SDO/EVE level 0CS average files in
+    sunpy.timeseries.TimeSeries after its long deprecation period.
+    (#8397)
+  * Removed all deprecated API (all_maps_same_shape,
+    at_least_one_map_has_mask, as_array, all_meta and derotate)
+    from sunpy.map.MapSequence after its long deprecation period.
+    In addition, derotate was removed from the initialization of
+    sunpy.map.MapSequence. Finally, resample keyword was removed
+    from the plotting method of sunpy.map.MapSequence. (#8397)
+  * Removed contour method on sunpy.map.Map after its long
+    deprecation period. (#8397)
+  * Removed deprecated arguments from
+    sunpy.net.vso.VSOClient.translate_and_query method (progress
+    and vso_response_format) after its long deprecation period.
+    (#8397)
+  * Removed legacy QueryResponse used by the sunpy.net.vso module
+    after its long deprecation period. (#8397)
+  * Removed legacy diff_rot after its long deprecation period.
+    (#8397)
+  * Removed legacy extend on sunpy.time.TimeRange after its long</comment>
+    <requestid>1325029</requestid>
+  </revision>
 </revisionlist>

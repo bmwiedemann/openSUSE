@@ -1,4 +1,130 @@
 -------------------------------------------------------------------
+Thu Jan  1 10:40:10 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.1.0
+  * Increased minimum versions for dependencies
+  ## Removals
+  * Removed backwards compatibility with the legacy keyword,
+    pattern within sunpy.net.Scraper (#8338)
+  * Remove deprecated assume_spherical_screen method in favor of
+    ~sunpy.coordinates.SphericalScreen. (#8386)
+  * Removed silence_errors keyword for input to both sunpy.map.Map
+    and sunpy.timeseries.TimeSeries constructors after its long
+    deprecation period. (#8397)
+  * Removed the ability to read SDO/EVE level 0CS average files in
+    sunpy.timeseries.TimeSeries after its long deprecation period.
+    (#8397)
+  * Removed all deprecated API (all_maps_same_shape,
+    at_least_one_map_has_mask, as_array, all_meta and derotate)
+    from sunpy.map.MapSequence after its long deprecation period.
+    In addition, derotate was removed from the initialization of
+    sunpy.map.MapSequence. Finally, resample keyword was removed
+    from the plotting method of sunpy.map.MapSequence. (#8397)
+  * Removed contour method on sunpy.map.Map after its long
+    deprecation period. (#8397)
+  * Removed deprecated arguments from
+    sunpy.net.vso.VSOClient.translate_and_query method (progress
+    and vso_response_format) after its long deprecation period.
+    (#8397)
+  * Removed legacy QueryResponse used by the sunpy.net.vso module
+    after its long deprecation period. (#8397)
+  * Removed legacy diff_rot after its long deprecation period.
+    (#8397)
+  * Removed legacy extend on sunpy.time.TimeRange after its long
+    deprecation period. (#8397)
+  * Removed legacy read_files and write_files methods in sunpy.io
+    after their long deprecation period. (#8397)
+  * Removed sunpy.coordinates.transformations module after its long
+    deprecation period. (#8397, #8397)
+  ## New Features
+  * Added support for querying data from solarnet API using a new
+    ~sunpy.net.solarnet.SOLARNETClient. (#7880)
+  * Added sunpy.net.fido_factory.UnifiedResponse.show_in_notebook
+    to render ~sunpy.net.Fido search results and
+    ~sunpy.net.attr.AttrMeta.show_in_notebook on all attrs to
+    render attrs tables in form of interactive table using itables
+    in Jupyter notebooks. (#7899)
+  * Added a helper function
+    (sunpy.coordinates.utils.get_heliocentric_angle) to get the
+    heliocentric angle of a coordinate on the solar disk, which can
+    be used to compute μ for limb-darkening calculations. (#7979)
+  * Enhanced sunpy.net.Fido's search method to be robust against
+    client errors. Any client error will be caught and attached to
+    .errors property on both the
+    ~sunpy.net.fido_factory.UnifiedResponse and individual
+    ~sunpy.net.base_client.QueryResponseTable, the search will
+    continue. (#8009)
+  * A ~sunpy.util.SunpyUserWarning will be raised when
+    sunpy.image.resample is used with method='spline' and a data
+    array containing nans and/or infinities. (#8185)
+  * Added support for ANA to compile and work on Windows. (#8372)
+  * Add a keyword argument to ~sunpy.map.GenericMap.reproject_to to
+    preserve the original observation time (typically the DATE-OBS
+    header key) instead of the observation time in the target WCS.
+    (#8382)
+  * Added Python 3.14 support with wheel builds for all supported
+    platforms. (#8391)
+  * Added a new map source for ASO-S mission, currently added
+    ~sunpy.map.sources.HXIMap for the Hard X-ray Imager (HXI)
+    payload. (#8398)
+  * Pass sleep, timeout, and retries_notfound from
+    ~sunpy.net.jsoc.JSOCClient.fetch to drms.ExportRequest.wait.
+    Previously, sleep was a keyword to
+    ~sunpy.net.jsoc.JSOCClient.fetch but was not being propagated
+    correctly. (#8409)
+  * Modified the approach of coordinate transformations between
+    Earth-centered frames in order to avoid internal origin shifts,
+    which could degrade numerical accuracy of coordinates close to
+    Earth center. (#8415)
+  * Modified the approach of coordinate transformations between
+    Earth-centered frames in order to minimize the unintended
+    triggering of a correction for stellar aberration (due to Earth
+    motion). (#8415)
+  * sunpy.time.parse_time now supports two new formats:
+    - "%Y-%m-%dT%H%M%SZ" - Example: 2010-08-30T111402Z
+    - "%Y-%m-%dT%H%M%S" - Example: 2010-08-30T111402 (#8419)
+  ## Bug Fixes
+  * ~sunpy.data.data_manager.cache.Cache will no longer delete a
+    stale file if the download fails, it will now return the
+    "stale" file. (#7935)
+  * Fixed a bug where the time format 2001-02-03T04:05:06Z was
+    being parsed through different code than 2001-02-03T04:05:06 or
+    2001-02-03T04:05:06.0Z. (#8265)
+  * Fixed a bug where sunpy.util.system_info would report sunpy as
+    an optional dependency of itself instead of properly reporting
+    all of the optional dependencies. (#8294)
+  * Fixed sunpy.util.system_info so that the version reported for a
+    development installation of sunpy itself or of a dependency is
+    accurate. (#8297)
+  * Fix inconsistent behaviour between local and remote (http/ftp)
+    ~`sunpy.net.scraper.Scraper` searches. Local searches will no
+    longer crash if an expected directory does not exist during
+    search. (#8316)
+  * Fixed a bug where the ~sunpy.net.jsoc.attrs.Cutout class for
+    requesting JSOC cutouts did not require the supplied coordinate
+    to be in the ~sunpy.coordinates.Helioprojective coordinate
+    frame. (#8346)
+  * For the ~sunpy.net.jsoc.attrs.Cutout class for requesting JSOC
+    cutouts, added protection to require the center of the cutout
+    to be on the solar disk when tracking is enabled, due to
+    confusing output from JSOC. (#8346)
+  * Fix GONGMagnetogramMap for headers which have standard DATE-OBS
+    keys vs ones which have split DATE-OBS & TIME-OBS. (#8347)
+  * Fixed a bug where ~sunpy.time.parse_time failed to parse time
+    strings stored in an astropy.table.Column or a pandas.Series
+    using the normal wide range of supported time-string formats.
+    (#8356)
+  * Fixed a bug where ~sunpy.time.parse_time could not accept
+    pandas.Index input. (#8356)
+  * Fix ~sunpy.net.dataretriever.ADAPTClient returning no results
+    for ADAPT maps after October 2024. The filename convention was
+    changed on the NSO server. (#8388)
+  * Fix unintended dependency of net module on map module due to
+    ~sunpy.net.jsoc.attrs.Cutout. (#8442)
+  * Fixed a bug with HMI and MDI magnetic-field maps where the data
+    array would always be read during map instantiation. (#8447)
+
+-------------------------------------------------------------------
 Sat Oct  4 17:56:57 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 7.0.2
