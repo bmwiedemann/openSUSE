@@ -98,4 +98,16 @@
     <comment></comment>
     <requestid>1265517</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>bbb0b7c3f40f228055de9b46bfc3168b</srcmd5>
+    <version>0.8.1</version>
+    <time>1767363082</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.8.1:
+  * Lower the minimum CMake version to 3.16
+  * fix: update xhalf_float_impl.hpp for modern clang and gcc to
+    avoid -Wdeprecated-literal-operator warning on Clang 16 that
+    will soon become a hard error.</comment>
+    <requestid>1325071</requestid>
+  </revision>
 </revisionlist>

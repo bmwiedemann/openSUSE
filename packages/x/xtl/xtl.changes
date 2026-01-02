@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan  2 09:10:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.1:
+  * Lower the minimum CMake version to 3.16
+  * fix: update xhalf_float_impl.hpp for modern clang and gcc to
+    avoid -Wdeprecated-literal-operator warning on Clang 16 that
+    will soon become a hard error.
+
+-------------------------------------------------------------------
 Sun Mar 30 07:42:54 UTC 2025 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - update to 0.8.0:
