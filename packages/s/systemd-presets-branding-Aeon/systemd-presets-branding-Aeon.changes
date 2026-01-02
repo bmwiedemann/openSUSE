@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 30 14:46:23 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
+
+- Modernize specfile
+- Update Supplements to new RPM format
+- Use RPM macros provided by systemd-presets-common-SUSE-devel
+
+-------------------------------------------------------------------
 Fri Sep 12 11:39:59 UTC 2025 - Richard Brown <rbrown@suse.com>
 
 - Disable getty@ service (managed by logind) 
