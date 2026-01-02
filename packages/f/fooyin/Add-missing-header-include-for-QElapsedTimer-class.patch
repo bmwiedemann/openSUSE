@@ -1,0 +1,12 @@
+diff --git a/src/plugins/vumeter/vumeterwidget.cpp b/src/plugins/vumeter/vumeterwidget.cpp
+index 786f24b5b..7ccd3db06 100644
+--- a/src/plugins/vumeter/vumeterwidget.cpp
++++ b/src/plugins/vumeter/vumeterwidget.cpp
+@@ -32,6 +32,7 @@
+ 
+ #include <QActionGroup>
+ #include <QBasicTimer>
++#include <QElapsedTimer>
+ #include <QContextMenuEvent>
+ #include <QJsonObject>
+ #include <QMenu>

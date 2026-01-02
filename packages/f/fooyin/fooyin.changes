@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan  1 12:36:52 UTC 2026 - Andreas Prittwitz <m4ng4n@gmx.de>
+
+- Fix build in openSUSE Tumbleweed
+  * add Fix-compatibility-with-Qt-6.10.1.patch
+  see https://github.com/fooyin/fooyin/issues/779
+  * add Add-missing-header-include-for-QElapsedTimer-class.patch
+  see https://github.com/fooyin/fooyin/pull/725
+  * add ffmpeg-7-mini-devel as BuildRequires, fixes conflict with
+  ffmepg-8-mini-devel
+
+-------------------------------------------------------------------
 Sun Sep 28 15:12:30 UTC 2025 - Egor Kuznetsov <egor.kuznetsov.26@gmail.com>
 
 - Drop fix-Qt_NoBrush.patch since the commit is included in the 0.9.0 release

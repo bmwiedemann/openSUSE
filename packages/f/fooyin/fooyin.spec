@@ -1,7 +1,7 @@
 #
 # spec file for package fooyin
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,10 +23,19 @@ Summary:        A customisable music player built with Qt
 License:        GPL-3.0-only
 URL:            https://www.fooyin.org/
 Source0:        https://github.com/fooyin/fooyin/archive/v%{version}/%{name}-%{version}.tar.gz
-
+# Patch0 fixes build with QT 6.10.1 in fooyin 0.9.2
+# see https://github.com/fooyin/fooyin/issues/779
+# fixed upstream in master-branch, can be removed in the next version
+Patch0:         Fix-compatibility-with-Qt-6.10.1.patch
+# Patch1 fixes build with QT 6.10.1 in fooyin 0.9.2
+# see https://github.com/fooyin/fooyin/pull/725
+# fixed upstream in master-branch, can be removed in the next version
+Patch1:         Add-missing-header-include-for-QElapsedTimer-class.patch
 BuildRequires:  c++_compiler
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
+# Fixes conflict with ffmepg-8-mini-devel
+BuildRequires:  ffmpeg-7-mini-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  ninja
 BuildRequires:  qt6-base-devel
