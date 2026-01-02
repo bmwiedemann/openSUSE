@@ -251,4 +251,12 @@
     <comment>- Update to 3.0.1 (bsc#1109179, CVE-2018-17175):</comment>
     <requestid>1241185</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>422396dafc62b056ea12c5bc663b5a3e</srcmd5>
+    <version>3.26.2</version>
+    <time>1767360432</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1324864</requestid>
+  </revision>
 </revisionlist>

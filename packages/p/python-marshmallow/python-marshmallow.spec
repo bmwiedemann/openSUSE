@@ -1,7 +1,7 @@
 #
 # spec file for package python-marshmallow
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,27 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "doc"
+%define psuffix -doc
+%bcond_without doc
+%else
+%define psuffix %{nil}
+%bcond_with doc
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-marshmallow
-Version:        3.20.2
+Version:        3.26.2
 Release:        0
 Summary:        ORM/ODM/framework-agnostic library to convert datatypes from/to Python types
 License:        BSD-3-Clause AND MIT
 Group:          Development/Languages/Python
 URL:            https://marshmallow.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/m/marshmallow/marshmallow-%{version}.tar.gz
-# https://github.com/humitos/sphinx-version-warning/issues/22
-Patch0:         python-marshmallow-no-version-warning.patch
 BuildRequires:  %{python_module autodocsumm}
 BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -39,22 +45,29 @@ Suggests:       %{name}-doc
 Suggests:       python-python-dateutil
 Suggests:       python-simplejson
 BuildArch:      noarch
+%if %{with doc}
 # SECTION doc build requirements
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} >= 150400
 BuildRequires:  %{python_module Sphinx}
-BuildRequires:  %{python_module alabaster}
+BuildRequires:  %{python_module furo}
+BuildRequires:  %{python_module marshmallow = %{version}}
+BuildRequires:  %{python_module sphinx-autodoc-typehints}
+BuildRequires:  %{python_module sphinx-copybutton}
 BuildRequires:  %{python_module sphinx-issues}
-BuildRequires:  %{python_module sphinx-version-warning}
+BuildRequires:  %{python_module sphinxext-opengraph}
 %else
 BuildRequires:  python3-Sphinx
-BuildRequires:  python3-alabaster
+BuildRequires:  python3-furo
+BuildRequires:  python3-marshmallow = %{version}
+BuildRequires:  python3-sphinx-autodoc-typehints
 BuildRequires:  python3-sphinx-issues
-BuildRequires:  python3-sphinx-version-warning
+BuildRequires:  python3-sphinxcontrib-copybutton
+BuildRequires:  python3-sphinxext-opengraph
 %endif
 # /SECTION
+%endif
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module simplejson}
 # /SECTION
 %python_subpackages
@@ -63,7 +76,7 @@ BuildRequires:  %{python_module simplejson}
 marshmallow is an ORM/ODM/framework-agnostic library for converting complex
 datatypes, such as objects, to and from native Python datatypes.
 
-%if 0%{?suse_version} > 1500
+%if %{with doc}
 %package -n %{name}-doc
 Summary:        Documentation files for %{name}
 Group:          Documentation/Other
@@ -79,26 +92,31 @@ HTML Documentation and examples for %{name}.
 %autopatch -p1
 
 %build
+%if !%{with doc}
 %pyproject_wheel
+%else
 sphinx-build docs/ docs/_build/html
 rm -r docs/_build/html/.buildinfo docs/_build/html/.doctrees
+%endif
 
 %install
+%if !%{with doc}
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# test_from_timestamp_with_overflow_value fails on 32bit with different error (the value gets caught earlier)
+%pytest -k "not test_from_timestamp_with_overflow_value"
 
 %files %{python_files}
-%doc AUTHORS.rst CHANGELOG.rst README.rst
+%doc CHANGELOG.rst README.rst
 %license LICENSE NOTICE
 %{python_sitelib}/marshmallow
 %{python_sitelib}/marshmallow-*.dist-info
+%else
 
-%if 0%{?suse_version} > 1500
 %files -n %{name}-doc
+%doc docs/examples docs/_build/html/
 %endif
-%doc examples docs/_build/html/
 
 %changelog
