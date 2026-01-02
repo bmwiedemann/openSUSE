@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan  2 09:46:52 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- freeciv 3.2.2, a compatible general bugfix release:
+  * Fix backward compatibility in loading unit actions from a savegame
+  * Fix crashes after continuing game from a savegame
+  * Fix an error after player is added mid-game
+  * Fix various crashes in client, and client UI tweaks
+
+-------------------------------------------------------------------
 Fri Oct 10 21:19:41 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - freeciv 3.2.1, a compatible general bugfix release:

@@ -254,4 +254,12 @@
     <comment>freeciv 3.2.1</comment>
     <requestid>1310646</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>42a615cb3fcada96410b5562633505f2</srcmd5>
+    <version>3.2.2</version>
+    <time>1767360598</time>
+    <user>anag_factory</user>
+    <comment>freeciv 3.2.2 (forwarded request 1325083 from AndreasStieger)</comment>
+    <requestid>1325084</requestid>
+  </revision>
 </revisionlist>

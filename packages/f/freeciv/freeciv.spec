@@ -2,7 +2,7 @@
 # spec file for package freeciv
 #
 # Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %bcond_with sdl3
 %endif
 Name:           freeciv
-Version:        3.2.1
+Version:        3.2.2
 Release:        0
 Summary:        Free Civilization Clone
 License:        GPL-2.0-or-later
