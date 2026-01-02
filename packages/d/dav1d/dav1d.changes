@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec 31 19:42:15 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.5.3
+  * Misc small optimizations
+  * RISC-V assembly optimizations for ipred, emu_edge and w_mask,
+    and VLEN 512 for blend functions
+  * Fix issue with ivf files with 0 frames in tools
+
+-------------------------------------------------------------------
 Sat Nov  1 11:15:04 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.5.2
