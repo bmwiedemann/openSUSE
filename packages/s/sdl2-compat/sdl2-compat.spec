@@ -1,7 +1,7 @@
 #
 # spec file for package sdl2-compat
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define lname libSDL2-2_0-0
 %global _lto_cflags %_lto_cflags -ffat-lto-objects
 Name:           sdl2-compat
-Version:        2.32.60
+Version:        2.32.62
 Release:        0
 Summary:        SDL-2.0 Compatibility Layer for Simple DirectMedia Layer 3.0
 License:        Zlib

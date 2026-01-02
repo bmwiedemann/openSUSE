@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan  1 17:03:15 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.32.62
+  * Fixed crash if HIDAPI strings are not available
+
+-------------------------------------------------------------------
 Thu Dec  4 05:02:05 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.32.60
