@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Fri Jan 2 08:31:24 UTC 2026 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1045
+- fixed compilation with c++26
+- 4.5.282
+
+--------------------------------------------------------------------
 Mon Dec 22 12:09:26 UTC 2025 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#1044
