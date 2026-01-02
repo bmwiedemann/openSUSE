@@ -1,7 +1,7 @@
 #
 # spec file for package python-dateparser
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ Source:         https://files.pythonhosted.org/packages/source/d/dateparser/date
 # PATCH-FIX-UPSTREAM mark-network-tests.patch gh#scrapinghub/dateparser#1059 mcepl@suse.com
 # mark test requiring network access
 Patch1:         mark-network-tests.patch
+# PATCH-FIX-UPSTREAM https://github.com/scrapinghub/dateparser/pull/1294 use current year in test_search_dates_with_prepositions
+Patch2:         happy-new-year.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
