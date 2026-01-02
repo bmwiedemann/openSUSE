@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Dec 29 16:40:56 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.20.5
+  * I18n: Update po/LINGUAS list
+  * build: Fix typo in optimization level
+  * XfwWorkspaceWayland: Add missing sanity check
+  * I18n: Update po/LINGUAS list
+  * XfwWindowX11: Readjust entire monitor list when one is
+    added/removed
+  * I18n: Update po/LINGUAS list
+  * autotools-build: Add *-docs.xml.in to EXTRA_DIST
+  * Translation Updates
+
+-------------------------------------------------------------------
 Thu Aug 14 07:42:44 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.20.4
