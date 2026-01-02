@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan  1 16:54:58 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.4.0
+  * Improved interoperability between the 3D GPU API and the 2D
+    rendering API, improved Emscripten support, improved pen
+    handling, and native support for PNG images.
+  * Added support for YUV textures and HDR colorspaces to the GPU
+    2D renderer.
+  * Added support for textures with palettes.
+  * Added enhanced support for 8BitDo, FlyDigi & Hand Held Legend
+    SInput controllers.
+  * Added atomic support for KMSDRM.
+
+-------------------------------------------------------------------
 Wed Dec  3 08:53:38 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.2.28

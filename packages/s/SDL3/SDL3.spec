@@ -1,7 +1,7 @@
 #
 # spec file for package SDL3
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sle_version 0
 Name:           SDL3
 %define lname   libSDL3-0
-Version:        3.2.28
+Version:        3.4.0
 Release:        0
 Summary:        Simple DirectMedia Layer Library
 License:        Zlib
@@ -64,6 +64,7 @@ BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xscrnsaver)
+BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(xxf86vm)
 
 %description
