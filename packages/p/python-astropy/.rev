@@ -2591,4 +2591,41 @@
 </comment>
     <requestid>1308856</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>e85a06143668194846decdf73e07d10f</srcmd5>
+    <version>7.2.0</version>
+    <time>1767360567</time>
+    <user>anag_factory</user>
+    <comment>- Update to 7.2.0
+  ## New Features
+  ### astropy.constants
+  * Added CODATA 2022 support in astropy.constants.
+  * This update affects the following constants while the rest are
+    unchanged from CODATA 2018:
+    - m_p (Proton mass)
+    - m_n (Neutron mass)
+    - m_e (Electron mass)
+    - u (Atomic mass)
+    - eps0 (Vacuum electric permittivity)
+    - Ryd (Rydberg constant)
+    - a0 (Bohr radius)
+    - muB (Bohr magneton)
+    - alpha (Fine-structure constant)
+    - mu0 (Vacuum magnetic permeability)
+    - sigma_T (Thomson scattering cross-section) [#18118]
+  ### astropy.coordinates
+  * Allow np.concatenate, np.stack and similar numpy functions to
+    be applied on representations and differentials.
+  * They can also be applied to coordinate frames and SkyCoord,
+    though with the same limitation as for setting elements of
+    frames and coordinates: all frame attributes have to be scalars
+    (or arrays with only identical elements). [#18193]
+  * The results of match_coordinates_3d(), match_coordinates_sky(),
+    search_around_3d() and search_around_sky() and the
+    corresponding SkyCoord methods now have named attributes.
+    [#18459]
+  ### astropy.cosmology
+  * The trait astropy.cosmology.traits.CurvatureComponent has been</comment>
+    <requestid>1325027</requestid>
+  </revision>
 </revisionlist>

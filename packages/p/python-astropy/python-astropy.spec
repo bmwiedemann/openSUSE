@@ -1,7 +1,7 @@
 #
 # spec file for package python-astropy
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,7 +49,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-astropy%{psuffix}
-Version:        7.1.0
+Version:        7.2.0
 Release:        0
 Summary:        Community-developed python astronomy tools
 License:        BSD-3-Clause
@@ -59,14 +59,13 @@ Source:         https://files.pythonhosted.org/packages/source/a/astropy/astropy
 # Mark wcs headers as false positives for devel-file-in-non-devel-package
 # These are used by the python files so they must be available.
 Source100:      python-astropy-rpmlintrc
-# PATCH-FIX-UPSTREAM astropy-pr18335-jplephem.patch gh#astropy/astropy#18335
-Patch1:         https://github.com/astropy/astropy/pull/18335.patch#/astropy-pr18335-jplephem.patch
 # https://docs.astropy.org/en/stable/install.html#requirements
 BuildRequires:  %{python_module Cython >= 3 with %python-Cython < 4}
 BuildRequires:  %{python_module devel >= 3.11}
-BuildRequires:  %{python_module extension-helpers >= 1.0 with %python-extension-helpers < 2}
+BuildRequires:  %{python_module extension-helpers >= 1.4 with %python-extension-helpers < 2}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pyerfa >= 2.0.1.1}
 BuildRequires:  %{python_module setuptools_scm >= 6.2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -75,8 +74,8 @@ BuildRequires:  hdf5-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 6
-Requires:       python-astropy-iers-data >= 0.2025.4.28.0.37.27
-Requires:       python-numpy >= 1.23.2
+Requires:       python-astropy-iers-data >= 0.2025.10.27.0.39.10
+Requires:       python-numpy >= 1.24
 Requires:       python-packaging >= 22
 Requires:       python-pyerfa >= 2.0.1.1
 Requires(post): update-alternatives
@@ -85,14 +84,16 @@ Requires(postun): update-alternatives
 Conflicts:      perl-Data-ShowTable
 # [recommended]
 Recommends:     python-scipy >= 1.9.2
-Recommends:     python-matplotlib >= 3.6
+Recommends:     python-matplotlib >= 3.8
+Recommends:     python-narwhals >= 1.42
 # [all]
-Suggests:       python-h5py
+Suggests:       libxml2-tools
 Suggests:       python-beautifulsoup4
 Suggests:       python-html5lib
 Suggests:       python-bleach
-Suggests:       libxml2-tools
-Suggests:       python-pandas
+Suggests:       python-dask-dataframe >= 2024.8.0
+Suggests:       python-h5py >= 3.9
+Suggests:       python-pandas >= 2
 Suggests:       python-sortedcontainers
 Suggests:       python-pytz
 Suggests:       python-jplephem
@@ -100,14 +101,14 @@ Suggests:       python-setuptools
 Suggests:       python-mpmath
 Suggests:       python-asdf-astropy >= 0.3
 Suggests:       python-Bottleneck
-Suggests:       python-pyarrow >= 10.0.1
+Suggests:       python-pyarrow >= 14.0.2
 Suggests:       python-fsspec >= 2023.4.0
 # Suggests:     python-s3fs
 %if %{with system_expat}
-BuildRequires:  pkgconfig(expat)
+BuildRequires:  pkgconfig(expat) >= 2.7.3
 %endif
 %if %{with system_wcslib}
-BuildRequires:  pkgconfig(wcslib) >= 8.1
+BuildRequires:  pkgconfig(wcslib) >= 8.3
 %endif
 %if %{with test}
 # SECTION [all]+[recommends]
@@ -115,20 +116,20 @@ BuildRequires:  %{python_module Bottleneck}
 BuildRequires:  %{python_module asdf-astropy >= 0.3}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module bleach}
-BuildRequires:  %{python_module dask-array >= 2022.5.1}
+BuildRequires:  %{python_module dask-dataframe >= 2024.8.0}
 BuildRequires:  %{python_module fsspec >= 2023.4.0}
-BuildRequires:  %{python_module h5py}
+BuildRequires:  %{python_module h5py >= 3.9.0}
 BuildRequires:  %{python_module html5lib}
-BuildRequires:  %{python_module jplephem}
-BuildRequires:  %{python_module matplotlib >= 3.6.0}
+BuildRequires:  %{python_module jplephem >= 2.17.0}
+BuildRequires:  %{python_module matplotlib >= 3.8.0}
 BuildRequires:  %{python_module mpmath}
-BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pandas >= 2}
 %ifnarch %arm
-BuildRequires:  %{python_module pyarrow >= 10.0.1}
+BuildRequires:  %{python_module pyarrow >= 14.0.2}
 %endif
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module scipy >= 1.9.2}
-BuildRequires:  %{python_module sortedcontainers}
+BuildRequires:  %{python_module sortedcontainers >= 2.1.0}
 BuildRequires:  %{python_module typing_extensions >= 4.0.0}
 BuildRequires:  libxml2-tools
 # /SECTION
@@ -136,7 +137,7 @@ BuildRequires:  libxml2-tools
 # We need the compiled package for testing
 BuildRequires:  %{python_module astropy = %{version}}
 BuildRequires:  %{python_module ipython >= 8}
-BuildRequires:  %{python_module objgraph}
+BuildRequires:  %{python_module objgraph >= 3.1.2}
 BuildRequires:  %{python_module pytest >= 7.3}
 BuildRequires:  %{python_module pytest-astropy >= 0.10}
 BuildRequires:  %{python_module pytest-astropy-header >= 0.2.1}
@@ -144,7 +145,7 @@ BuildRequires:  %{python_module pytest-doctestplus >= 0.12}
 BuildRequires:  %{python_module pytest-mpl}
 BuildRequires:  %{python_module pytest-xdist >= 2.5}
 BuildRequires:  %{python_module sgp4 >= 2.3}
-BuildRequires:  %{python_module skyfield}
+BuildRequires:  %{python_module skyfield >= 1.42.0}
 BuildRequires:  %{python_module threadpoolctl >= 3}
 # /SECTION
 %endif
