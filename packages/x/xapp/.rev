@@ -60,4 +60,31 @@
     <comment></comment>
     <requestid>1282484</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7b8167414a071384a48f52a44faf89ad</srcmd5>
+    <version>3.2.1</version>
+    <time>1767457626</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.1:
+  * l10n: Update translations
+  * test-scripts: Switch to XApp symbolic icons
+  * Add some of the generic icons used in nemo
+  * Add some of the generic icons used in cinnamon
+  * icons: Add common device icons
+  * icons: Switch to xapp-symbolic-icons (XSI)
+  * icons: Prefix non-prefixed icons
+  * Provide an alternative to Adwaita symbolic icons (#192)
+  * mate-xapp-status-applet.py: Don't use theme.has_icon() - not
+    all usable icons are in themes.
+  * xapp-gpu-offload-helper.h: Move new GpuInfo member to the
+    end.
+  * xapp-gpu-offload-helper: Remove XAppGpuInfo.is_discrete
+    member.
+  *  Improve discrete GPU detection using switcheroo-control
+  * xapp-favorites.c: Fix g-ir-scanner warning during build.
+  * debian/control: Clean up libgdk-pixbuf depends.
+  * Add xdg-desktop-portal accent-rgb setting. (#191)
+  * l10n: Update translations</comment>
+    <requestid>1325124</requestid>
+  </revision>
 </revisionlist>
