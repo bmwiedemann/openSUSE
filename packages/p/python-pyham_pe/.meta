@@ -1,0 +1,22 @@
+<package name="python-pyham_pe" project="openSUSE:Factory">
+  <title>Client implementation of the AGWPE protocol for packet radio</title>
+  <description>This package provides a client implementation of the AGWPE protocol, enabling
+and simplifying the creation of applications using that protocol in order to
+communicate with servers such as Direwolf or ldsped.
+
+A lower level API provides access to the protocol at a level close to that of
+individual AGWPE frames (not to be confused with AX.25 frames), enabling the
+ultimate level of control over communication with the server.
+
+A higher level API provides abstractions helpful in building more complex
+applications, transparently taking care of some of the details, such as
+connection management and monitoring.
+
+The AGWPE protocol, and thus this package, has the advantage, over other
+commonly used protocols such as KISS, that it can be easily used to create
+connected-mode sessions. As such, it can be used to create many types of ham
+radio software, from simple beaconing to full-fledged packet radio terminal
+applications akin to Linpac. (See PyHam’s Paracon software for an example of
+the latter.)</description>
+  <url>https://pyham-pe.readthedocs.io/en/latest/</url>
+</package>
