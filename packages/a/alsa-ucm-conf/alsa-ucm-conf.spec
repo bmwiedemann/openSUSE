@@ -1,7 +1,7 @@
 #
 # spec file for package alsa-ucm-conf
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           alsa-ucm-conf
-Version:        1.2.15
+Version:        1.2.15.1
 Release:        0
 Summary:        ALSA UCM Profiles
 License:        BSD-3-Clause
@@ -27,9 +27,6 @@ Source1:        %{url}/files/pub/lib/alsa-ucm-conf-%{version}.tar.bz2.sig
 # from https://www.alsa-project.org/files/pub/gpg-release-key-v1.txt
 Source2:        alsa-ucm-conf.keyring
 # upstream fixes
-Patch1:         0001-sof-soundwire-third-fix-for-multi-codec.patch
-Patch2:         0002-ucm2-sof-soundwire-Simplify-cs42l45-configs.patch
-Patch3:         0003-ucm2-codecs-rt722-add-condition-to-SetLED-for-mic.patch
 BuildRequires:  fdupes
 BuildArch:      noarch
 Requires:       libasound2 >= 1.2.6.1

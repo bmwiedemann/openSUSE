@@ -292,4 +292,12 @@ Now required by the upcoming alsa-1.2.1 release</comment>
     <comment></comment>
     <requestid>1323359</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>9b3fb0612a10ee8cc3077014e06d2f5a</srcmd5>
+    <version>1.2.15.1</version>
+    <time>1767457571</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1325113</requestid>
+  </revision>
 </revisionlist>
