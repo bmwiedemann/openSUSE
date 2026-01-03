@@ -177,4 +177,17 @@ is ready when we switch the default compiler.  Thanks! (forwarded request 118982
     <comment>- Update to 1.36 (bsc#1229277)</comment>
     <requestid>1198551</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>512975b494ac9789a17c944599d4c292</srcmd5>
+    <version>1.37.1.2</version>
+    <time>1767457612</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.37.1.2:
+  - Romanian man page translation update from Remus-Gabriel Chelu.
+  - Portuguese man page translation update from Américo Monteiro.
+  - German man page translation from Helge Kreutzmann.
+  - Patch from Julien Olivain to fix parallel build.
+  - Romanian man page translation update from Remus-Gabriel Chelu.</comment>
+    <requestid>1325105</requestid>
+  </revision>
 </revisionlist>

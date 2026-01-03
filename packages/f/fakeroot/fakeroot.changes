@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan  2 11:06:01 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.37.1.2:
+  - Romanian man page translation update from Remus-Gabriel Chelu.
+  - Portuguese man page translation update from Américo Monteiro.
+  - German man page translation from Helge Kreutzmann.
+  - Patch from Julien Olivain to fix parallel build.
+  - Romanian man page translation update from Remus-Gabriel Chelu.
+
+-------------------------------------------------------------------
 Wed Aug 28 08:31:20 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.36 (bsc#1229277)
