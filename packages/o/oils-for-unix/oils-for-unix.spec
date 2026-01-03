@@ -1,7 +1,7 @@
 #
 # spec file for package oils-for-unix
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           oils-for-unix
-Version:        0.36.0
+Version:        0.37.0
 Release:        0
 Summary:        A bash compatible shell and a new modern shell
 License:        Apache-2.0 AND CNRI-Python-GPL-Compatible
@@ -28,8 +28,8 @@ BuildRequires:  ninja
 BuildRequires:  readline-devel
 
 %description
-oils-for-unix contains two different shells: a POSIX and bash compatible shell called OSH,
-and a modern Python-like shell called YSH.
+oils-for-unix contains two different shells: a POSIX and bash compatible shell
+called OSH, and a modern Python-like shell called YSH.
 
 %prep
 %autosetup
