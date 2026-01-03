@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 30 15:55:43 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable build on aarch64 again but skip some tests
+
+-------------------------------------------------------------------
 Sat Dec 20 14:35:20 UTC 2025 - Mikhail Paulyshka <me@mixaill.net>
 
 - replace no-sphinx-qt-doc.patch with drop-unpackaged-sphinx-extensions.patch
