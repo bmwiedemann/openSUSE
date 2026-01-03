@@ -1,0 +1,13 @@
+<package name="python-pyham_ax25" project="openSUSE:Factory">
+  <title>Modules for working with AX.25 packets in an amateur packet radio env</title>
+  <description>The ax25 and ax25.netrom modules provide structure definitions together with
+methods to pack and unpack native AX.25 frames and NET/ROM routing table
+updates. These modules work on all platforms, and can be used together with
+the transport mechanism(s) of your choice.
+
+The ax25.ports and ax25.socket modules provide facilities for working with
+the Linux native AX.25 stack. Unlike other Python AX.25 packages, this includes
+the creation and use of connected-mode sessions, and thus it is not limited to
+unproto (UI frame) usage.</description>
+  <url>https://pyham-ax25.readthedocs.io/en/latest/</url>
+</package>
