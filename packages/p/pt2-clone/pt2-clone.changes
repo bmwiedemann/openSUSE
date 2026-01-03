@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan  2 14:26:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.80.1:
+  * Fixed Amiga audio filter error in v1.79 (pi instead of 2pi in
+    calculation)
+
+-------------------------------------------------------------------
 Thu Dec 18 21:12:00 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.79

@@ -158,4 +158,14 @@
     <comment></comment>
     <requestid>1323777</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>da285f61eabd3509911756996be3a60b</srcmd5>
+    <version>1.80.1</version>
+    <time>1767457657</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.80.1:
+  * Fixed Amiga audio filter error in v1.79 (pi instead of 2pi in
+    calculation)</comment>
+    <requestid>1325130</requestid>
+  </revision>
 </revisionlist>
