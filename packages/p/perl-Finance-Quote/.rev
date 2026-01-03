@@ -545,4 +545,23 @@ See https://bugzilla.novell.com/show_bug.cgi?id=800797 for more.
   	* Added methodinfo() to MarketWatch.pm and BorsaItaliana.pm</comment>
     <requestid>1313052</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>939c44f70e7423e2c6d6660e6c43c912</srcmd5>
+    <version>1.680.0</version>
+    <time>1767457650</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.680.0 (1.68)
+   see /usr/share/doc/packages/perl-Finance-Quote/Changes
+  1.68      2025-12-21 11:40:59-08:00 America/Los_Angeles
+  	* Changes to AlphaVantage.pm and CurrencyRates/AlphaVantage.pm to throttle queries - Issue #546
+  	* YahooJSON.pm - Add additional fields/labels - PR #544
+  	* New Module, USBonds.pm
+  	* MarketWatch.pm - Added headers to fix 401 code - Issue #542
+  	* Modified AEX.pm to return no data available is currency indicator is '%' (bonds return percentage of par/facevalue) - Issue #539
+  	* Fixed YahooWeb.pm - Issue #533 - PR #538
+  	* Removed CMBChina.pm - no longer working - Issue #534
+  	* Rewrote Union.pm for URL that returns JSON - Issue #516
+  	* Modified parsing in BVB.pm - Issue #513</comment>
+    <requestid>1325136</requestid>
+  </revision>
 </revisionlist>

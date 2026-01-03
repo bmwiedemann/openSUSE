@@ -18,10 +18,10 @@
 
 %define cpan_name Finance-Quote
 Name:           perl-Finance-Quote
-Version:        1.670.0
+Version:        1.680.0
 Release:        0
-# 1.67 -> normalize -> 1.670.0
-%define cpan_version 1.67
+# 1.68 -> normalize -> 1.680.0
+%define cpan_version 1.68
 #Upstream: GPL-1.0-or-later
 License:        GPL-2.0-or-later
 Summary:        Get stock and mutual fund quotes from various exchanges
@@ -124,7 +124,6 @@ Provides:       perl(Finance::Quote::BSEIndia) = %{version}
 Provides:       perl(Finance::Quote::BVB) = %{version}
 Provides:       perl(Finance::Quote::BorsaItaliana) = %{version}
 Provides:       perl(Finance::Quote::Bourso) = %{version}
-Provides:       perl(Finance::Quote::CMBChina) = %{version}
 Provides:       perl(Finance::Quote::CSE) = %{version}
 Provides:       perl(Finance::Quote::Comdirect) = %{version}
 Provides:       perl(Finance::Quote::Consorsbank) = %{version}
@@ -163,6 +162,7 @@ Provides:       perl(Finance::Quote::TesouroDireto) = %{version}
 Provides:       perl(Finance::Quote::Tradegate) = %{version}
 Provides:       perl(Finance::Quote::TreasuryDirect) = %{version}
 Provides:       perl(Finance::Quote::TwelveData) = %{version}
+Provides:       perl(Finance::Quote::USBonds) = %{version}
 Provides:       perl(Finance::Quote::Union) = %{version}
 Provides:       perl(Finance::Quote::UserAgent) = %{version}
 Provides:       perl(Finance::Quote::XETRA) = %{version}
