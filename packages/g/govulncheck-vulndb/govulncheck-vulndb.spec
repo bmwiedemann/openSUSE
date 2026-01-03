@@ -1,7 +1,7 @@
 #
 # spec file for package govulncheck-vulndb
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define shortname vulndb
 
 Name:           govulncheck-vulndb
-Version:        0.0.20251222T181535
+Version:        0.0.20251230T014957
 Release:        0
 Summary:        Local copy of Go vulnerability database
 License:        CC-BY-4.0
