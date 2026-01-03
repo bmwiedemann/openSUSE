@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Fri Jan  2 10:19:41 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.17.0:
+  * Custom "Prepare Commit Message" hooks, typically installed by
+    providing a script at .git/hooks/cola-prepare-commit-msg, can
+    now be used on Windows. (#1523)
+  * The File Browser tool will now retain its column widths when
+    files are added, removed or modified.
+  * Bold fonts can now be enabled throughout the entire interface
+    by setting the "Bold all fonts" option in the "Appearance"
+    settings. This setting corresponds to the cola.boldfonts git
+    configuration variable.
+  * Git Cola can now read hunspell spelling dictionaries. For
+    example, you can install the Spanish hunspell dictionary
+    using sudo apt install hunspell-es and then edit the
+    Additional spellcheck dictionary files value in the
+    Preferences to enable the dictionary.
+  * The amount of time to wait when coalescing filesystem change
+    notifications is now configurable through the Filesystem
+    Monitoring Event Delay value in the Preferences. This setting
+    corresponds to the cola.inotifydelay configuration value.
+  * ksshaskpass and the gnome-ssh-askpass programs are now
+    detected and used by default when prompting for credentials.
+    Usage of the GIT_ASKPASS environment variable was documented.
+  * The commit message is now properly cleared when aborting
+    merges.
+  * The keyboard shortcuts panel now displays macOS hotkeys
+    correctly.
+  * The Git DAG performance was improved when viewing large
+    repositories.
+  * Multiple instances of Git Cola and Git DAG can now be
+    prevented from running in the same repository using the -S |
+    --single-instance option.
+  * Updated Japanese translation.
+  * The "Revert Selected Lines" and "Revert Diff Hunk" actions
+    were sometimes disabled when they should have been enabled.
+  * Backwards-compatibility with PyQt5 and QThread's termination
+    behavior was improved.
+  * The stash can now switch modes using Ctrl + {1,2,3} and Save
+    stashes using Ctrl + s.
+  * git dag now displays the date for WORKTREE and STAGED entries
+    using the same format as configured in the cola.logdate
+    setting. Previously, the short and rfc2822 modes were not
+    implemented.
+  * The scrollbar handles colors have been adjusted to be more
+    visible when using the built-in Dark themes.
+  * Git Cola now has a non-interactive Sync action that directly
+    pulls changes from the configured tracking branch using git
+    pull.
+  * Git Cola now has a non-interactive Sync Out action that
+    directly pushes changes to the configured tracking branch
+    using git push.
+  * The DAG's filelist widget improved its backwards-
+    compatibility with Qt5.
+  * pyproject.toml was updated to use a string value for
+    project.license.
+  * Git Cola now supports Git repositories that were created
+    using the SHA-256 hash algorithm, e.g. using git init
+    --object-format=sha256.
+  * git dag will now open a repository when it is specified on
+    the command-line. Previously, the --repo option was required
+    in order to specify a repository. The git dag positional
+    arguments will now used when --repo is unspecified.
+  * git dag now special-cases the root commit when interacting
+    with difftool so that diffs are performed against git's
+    builtin empty tree. Other commits are diffed using git diff
+    {commit}~..{commit}.
+  * The spellcheck system now supports configuring multiple
+    dictionaries using git config --global --add cola.dictionary
+    <path> with the path to a newline-separated dictionary file.
+    Dictionary files must follow the same format as
+    /usr/share/dict/words.
+  * Git Cola can now read spelling dictionaries from the aspell
+    system. Configure git config --global cola.aspell.enabled
+    true and install aspell-* language packages to add additional
+    dictionaries.
+  * Diffing image files (e.g. *.svg) in plain text mode has been
+    fixed.
+
+-------------------------------------------------------------------
 Fri Aug 15 11:35:49 UTC 2025 - Marcin Bajor <marcin.bajor@gmail.com>
 
 - Update to 4.14.0

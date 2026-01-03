@@ -900,4 +900,41 @@ https://github.com/git-cola/git-cola/issues/991
     <comment>- Update to 4.14.0</comment>
     <requestid>1299832</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>e4bd9e7eeea6cf6efc109bb4ec0250cc</srcmd5>
+    <version>4.17.0</version>
+    <time>1767457593</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.17.0:
+  * Custom &quot;Prepare Commit Message&quot; hooks, typically installed by
+    providing a script at .git/hooks/cola-prepare-commit-msg, can
+    now be used on Windows. (#1523)
+  * The File Browser tool will now retain its column widths when
+    files are added, removed or modified.
+  * Bold fonts can now be enabled throughout the entire interface
+    by setting the &quot;Bold all fonts&quot; option in the &quot;Appearance&quot;
+    settings. This setting corresponds to the cola.boldfonts git
+    configuration variable.
+  * Git Cola can now read hunspell spelling dictionaries. For
+    example, you can install the Spanish hunspell dictionary
+    using sudo apt install hunspell-es and then edit the
+    Additional spellcheck dictionary files value in the
+    Preferences to enable the dictionary.
+  * The amount of time to wait when coalescing filesystem change
+    notifications is now configurable through the Filesystem
+    Monitoring Event Delay value in the Preferences. This setting
+    corresponds to the cola.inotifydelay configuration value.
+  * ksshaskpass and the gnome-ssh-askpass programs are now
+    detected and used by default when prompting for credentials.
+    Usage of the GIT_ASKPASS environment variable was documented.
+  * The commit message is now properly cleared when aborting
+    merges.
+  * The keyboard shortcuts panel now displays macOS hotkeys
+    correctly.
+  * The Git DAG performance was improved when viewing large
+    repositories.
+  * Multiple instances of Git Cola and Git DAG can now be
+    prevented from running in the same repository using the -S |</comment>
+    <requestid>1325088</requestid>
+  </revision>
 </revisionlist>
