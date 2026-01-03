@@ -74,4 +74,25 @@
     <comment></comment>
     <requestid>1317346</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b7cf4b89bfae2ec2194c5abaca7253fe</srcmd5>
+    <version>2.0.2</version>
+    <time>1767457584</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.2:
+  * l10n: Update translations
+  * Remove unnecessary pkg_resources import (#239)
+  * Update README.md
+  * Ipv6 support (#231)
+  * Switch to XApp symbolic icons
+  * Switch to xapp-symbolic-icons (XSI)
+  * Fix reconnecting when certificate is unchanged (#238)
+  * Ability to send text messages (#225)
+  * messages: Simplify ellipsizing, remove max-width-chars
+    restriction, detect urls and make them clickable in the
+    label.
+  * warpinator.py: Remove leftover print.
+  * l10n: Update POT</comment>
+    <requestid>1325073</requestid>
+  </revision>
 </revisionlist>

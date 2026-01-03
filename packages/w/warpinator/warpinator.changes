@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jan  2 09:13:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.2:
+  * l10n: Update translations
+  * Remove unnecessary pkg_resources import (#239)
+  * Update README.md
+  * Ipv6 support (#231)
+  * Switch to XApp symbolic icons
+  * Switch to xapp-symbolic-icons (XSI)
+  * Fix reconnecting when certificate is unchanged (#238)
+  * Ability to send text messages (#225)
+  * messages: Simplify ellipsizing, remove max-width-chars
+    restriction, detect urls and make them clickable in the
+    label.
+  * warpinator.py: Remove leftover print.
+  * l10n: Update POT
+
+-------------------------------------------------------------------
 Sun Nov  9 09:05:48 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.8.10:
