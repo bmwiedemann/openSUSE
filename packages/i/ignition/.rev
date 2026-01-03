@@ -881,4 +881,28 @@ This makes it possible to use Ignition also on bare metal (e.g. when dumping ima
 </comment>
     <requestid>1312438</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>2747e851f73b93659382ddd2d987b555</srcmd5>
+    <version>2.25.1</version>
+    <time>1767457573</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.25.1:
+  * Bug fixes
+    * Fix OpenStack provider returning empty JSON instead of empty
+      bytes when metadata has no config
+- Update to version 2.25.0:
+  * Features
+    * The name for custom clevis pins is not validated by Ignition
+      anymore, enabling the use of arbitrary custom pins (3.6.0-exp)
+    * Add NVIDIA BlueField provider
+  * Bug fixes
+    * Fix EnsureGroup to be idempotent when group already exists
+      (#2158)
+    * Fix invalid random source in FIPS 140-only mode in FIPS mode
+      (#2159)
+    * Only load kernel modules when actually necessary so that they
+      can be built-in (#2164)
+</comment>
+    <requestid>1325115</requestid>
+  </revision>
 </revisionlist>

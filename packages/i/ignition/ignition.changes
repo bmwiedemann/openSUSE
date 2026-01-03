@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jan 02 12:13:05 UTC 2026 - Ignaz Forster <iforster@suse.com>
+
+- Update to version 2.25.1:
+  * Bug fixes
+    * Fix OpenStack provider returning empty JSON instead of empty
+      bytes when metadata has no config
+- Update to version 2.25.0:
+  * Features
+    * The name for custom clevis pins is not validated by Ignition
+      anymore, enabling the use of arbitrary custom pins (3.6.0-exp)
+    * Add NVIDIA BlueField provider
+  * Bug fixes
+    * Fix EnsureGroup to be idempotent when group already exists
+      (#2158)
+    * Fix invalid random source in FIPS 140-only mode in FIPS mode
+      (#2159)
+    * Only load kernel modules when actually necessary so that they
+      can be built-in (#2164)
+
+-------------------------------------------------------------------
 Mon Oct 20 14:34:33 UTC 2025 - Ignaz Forster <iforster@suse.com>
 
 - Update to version 2.24.0:
