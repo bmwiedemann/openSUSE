@@ -16,7 +16,7 @@
 #
 
 Name:           btop
-Version:        1.4.5+git20251020.085c2da
+Version:        1.4.6+git20251226.5b920e3
 Release:        0
 Summary:        Usage and stats for processor, memory, disks, network and processes
 License:        Apache-2.0
@@ -30,12 +30,13 @@ Source100:      README.md
 Patch0:         Makefile.diff
 BuildRequires:  coreutils
 BuildRequires:  cmake
+BuildRequires:  lowdown
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  sed
-%if 0%{?suse_version} < 1550
-BuildRequires:  gcc13-c++
+%if 0%{?suse_version} == 1600
+BuildRequires:  gcc15-c++
 %define cxxflags CXXFLAGS="%{optflags} -fPIE"
-%define cxxopt CXX="g++-13" CC=gcc-13
+%define cxxopt CXX="g++-15" CC=gcc-15
 ### Throws:
 # ... relocation R_X86_64_32S against hidden symbol `_ZTVN3fmt3v1012format_errorE' can not be used when
 #   making a PIE object ..." error when '-pie' is used
@@ -43,13 +44,14 @@ BuildRequires:  gcc13-c++
 #####
 %define lddopt LDCXXFLAGS="-ldl -lpthread -DFMT_HEADER_ONLY"
 %else
-BuildRequires:  gcc-c++ >= 11
-BuildRequires:  lowdown
+BuildRequires:  gcc-c++ >= 14
 %define cxxflags %{nil}
 %define cxxopt %{nil}
 %define lddopt %{nil}
 %endif
+%if 0%{?suse_version} > 1600
 Recommends:     rocm-smi
+%endif
 
 %description
 Resource monitor that shows usage and stats for processor, memory, disks,
@@ -79,9 +81,7 @@ chmod -c 644 %{buildroot}%{_datadir}/%{name}/themes/*.theme
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/48x48/apps/%{name}.png
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
-%if 0%{?suse_version} > 1550
 %{_mandir}/man1/%{name}.1.gz
-%endif
 %license LICENSE
 
 %changelog

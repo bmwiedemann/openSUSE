@@ -402,4 +402,12 @@
   * Fix missing application entry in the snap distribution</comment>
     <requestid>1313911</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>67304d2979bddc2047ab0be1e4c00253</srcmd5>
+    <version>1.4.6+git20251226.5b920e3</version>
+    <time>1767457685</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1325170</requestid>
+  </revision>
 </revisionlist>

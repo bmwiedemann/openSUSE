@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Fri Dec 26 18:06:04 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 1.4.6+git20251226.5b920e3:
+  * v1.4.6 New features & Bug fixes
+  * Added "save_config_on_exit" option to configuration.
+  * chore: remove unused printf argument in makefile (#1423)
+  * ci: use proper link for pkg_add
+  * feat: default to lowercase truthy values
+  * fix: point log level description to new log file
+  * docs: update flags in manpage
+  * feat: add cli option to dump default config
+  * feat: mouse drag support for scrollbar  (#1401)
+  * fix: shorten humanized units and remove dead code (#1393)
+  * chore(deps): update actions/upload-artifact action to v6
+  * test: propagate libbtop link flags to tests
+  * Update link format for issue reference in CONTRIBUTING.md
+  * Update contributing guidelines
+  * Update README with AI contribution guidelines
+  * Update CONTRIBUTING.md with AI submission guidelines
+  * docs: add entry to man page and README for --themes-dir addition (#1387)
+  * fix: respect cpu_graph_lower = "Auto" (#1379)
+  * Fixed GPU box positions in low height settings
+  * Fixed GPU rendering
+  * Install README in its own subdirectory (#1373)
+  * test: add tests for string split
+  * refactor: use c++ 23 ranges for string split
+  * Bugfixes and improvements for NetBSD.
+  * Help btop find its themes in NetBSD.
+  * Revert off color changes when done.
+  * chore(deps): update actions/checkout action to v6
+  * Fix: Align boxes when Cpu bottom and Gpu on
+  * fix: cpu per-thread totals not reaching 100% (#1366)
+  * chore: add license header
+  * fix: add missing include
+  * Pass only static duration strings to Config::set in Config::apply_preset
+  * fix segfault on musl systems
+  * feat: add --themes-dir flag
+
+-------------------------------------------------------------------
+Sun Nov 16 02:55:09 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- btop now  gcc >= 14, Leap has 13 & 15 - so swapping over to 15
+  * "Requires at least GCC 14 or Clang 19."
+    - Commit e42fbf0
+
+-------------------------------------------------------------------
+Sun Nov 16 01:35:08 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 1.4.5+git20251111.69c2cda:
+  * fix: don't over-/underflow when parsing --update argument (#1359)
+  * build(cmake): don't set a default build type
+  * Fix: missed changing mouse mapping for hide button
+  * fix: skip first argument of argv (#1339)
+  * test: add test harness with ctest
+  * ci: bump freebsd toolchain to GCC 15
+  * Change snap test-build to use gcc-14 and g++-14
+  * Add snapcraft.yaml to workflow paths
+  * snapcraft.yaml Fix autotools config
+  * Update snapcraft.yaml from https://github.com/kz6fittycent
+  * fix tty theme for pause banner
+  * detailed view hide button highlights
+  * fix: stabilize sort in tree mode when filter is applied (#1328)
+  * continue on new processes while paused
+  * refactor: simplify get_log_file
+  * flip name, command, and user sorting
+  * Implement feat Process list pausing
+  * Add missed conditionals for terminal sync toggle
+  * Add configuration toggle for terminal synchronization
+  * refactor: use std::string::contains
+  * refactor: use std::ranges::to to construct iota views
+  * refactor: use std::expected to indicate failure
+  * ci: use default cc on openbsd
+  * feat: raise cpp standard to c++23
+  * ci: build without optimizations
+  * ci: simplify workflow
+  * ci: add cmake openbsd pipeline
+  * ci: update openbsd 7 runners to 7.8
+  * ci: use prebuilt musl-cross toolchains for cross compilation
+  * feat: display container engine
+  * feat: respect effective cpus from cgroup
+  * Fix load average and GPU watts leaking past box border (#1304)
+  * Fix redraw in proc list when changing sort order (#1309)
+  * Handle missing SMC gracefully on macOS (#1305)
+  * Update actions/upload-artifact action to v5 (#1310)
+
+-------------------------------------------------------------------
 Mon Oct 27 16:47:28 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Adding mention here for README.md, which is a suggested file on the gitea
