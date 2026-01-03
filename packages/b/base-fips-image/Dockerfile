@@ -23,7 +23,7 @@
 FROM opensuse/tumbleweed:latest
 
 RUN set -euo pipefail; \
-    zypper -n install --no-recommends openSUSE-release openSUSE-release-appliance-docker coreutils crypto-policies-scripts update-bootloader
+    zypper -n install --no-recommends coreutils crypto-policies-scripts openSUSE-release openSUSE-release-appliance-docker update-bootloader
 
 # cleanup logs and temporary files
 RUN set -euo pipefail; zypper -n clean -a; \
@@ -56,7 +56,7 @@ LABEL io.artifacthub.package.readme-url="%SOURCEURL_WITH(README.md)%"
 LABEL usage="This container should only be used on a FIPS enabled host (fips=1 on kernel cmdline)."
 
 RUN set -euo pipefail; fips-mode-setup --enable --no-bootcfg
-RUN set -euo pipefail; rpm -e libpython3_13-1_0 python313-base update-bootloader crypto-policies-scripts
+RUN set -euo pipefail; rpm -e crypto-policies-scripts libpython3_13-1_0 python313-base update-bootloader
 RUN set -euo pipefail; rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}; \
     rm -rf {/target,}/run/*; \
     rm -f {/target,}/etc/{shadow-,group-,passwd-,.pwd.lock}; \
