@@ -1,7 +1,7 @@
 #
 # spec file for package alsa
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@
 %endif
 
 Name:           alsa
-Version:        1.2.15
+Version:        1.2.15.1
 Release:        0
 Summary:        Advanced Linux Sound Architecture
 License:        LGPL-2.1-or-later
@@ -63,13 +63,6 @@ Source34:       alsa-init.sh
 # from https://www.alsa-project.org/files/pub/gpg-release-key-v1.txt
 Source35:       alsa.keyring
 # upstream fixes
-Patch1:         0001-ucm-use-closefrom-instead-of-close_range.patch
-Patch2:         0002-ucm-exec-fix-maxfd-used-warning.patch
-Patch3:         0003-conf-merge-card-specific-contents-per-file-whole-aft.patch
-Patch4:         0004-conf-fix-possible-memory-leak-in-config_file_open-er.patch
-Patch5:         0005-Revert-conf-fix-load_for_all_cards-do-not-merge-the-.patch
-Patch6:         0006-conf-USB-Audio-define-pcm-configuration-block-only-o.patch
-Patch7:         0007-conf-HDA-Intel-define-pcm-configuration-block-only-o.patch
 # rest suse fixes
 Patch101:       alsa-lib-ignore-non-accessible-ALSA_CONFIG_PATH.patch
 BuildRequires:  doxygen
