@@ -1,0 +1,9 @@
+<package name="kime" project="openSUSE:Factory">
+  <title>Korean IME</title>
+  <description>Project Repository: https://github.com/Riey/kime
+
+Kime is a Korean IME written in Rust.
+
+It aims to be a fast, lightweight, and correct Korean input method engine for the Linux desktop.
+</description>
+</package>

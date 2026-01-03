@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c7438d03eaae43088c4e296fa48fa700</srcmd5>
+    <version>3.1.1</version>
+    <time>1767457582</time>
+    <user>dimstar_suse</user>
+    <comment>kime is Korean IME about to Linux Systems.
+written in Rust and modern input manager.
+Linux in Korean (Hangul) users mostly use this program, but not package exist on openSUSE.</comment>
+    <requestid>1325051</requestid>
+  </revision>
+</revisionlist>
