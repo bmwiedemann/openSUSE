@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan  2 10:14:38 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.8.0
+  * Added readahead buffering to C decoder for improved performance.
+  * Fixed Python decoder not preserving share index when decoding
+    array items containing nested shareable tags, causing shared
+    references to resolve to wrong objects.
+  * Reset shared reference state at the start of each top-level
+    encode/decode operation.
+
+-------------------------------------------------------------------
 Thu Oct 30 13:11:54 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 5.7.1
