@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan  1 15:09:16 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 10.20:
+  * NEW: Quotes: New blockquotes extension added that uses a more
+    modern approach when compared to Python Markdown's default.
+
+-------------------------------------------------------------------
 Mon Dec 15 10:33:53 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 10.19.1:
