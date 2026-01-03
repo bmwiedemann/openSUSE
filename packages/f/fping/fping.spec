@@ -1,7 +1,7 @@
 #
 # spec file for package fping
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fping
-Version:        5.4
+Version:        5.5
 Release:        0
 Summary:        A program to ping multiple hosts
 License:        MIT

@@ -1,7 +1,40 @@
 -------------------------------------------------------------------
+Fri Jan  2 10:07:15 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.5:
+  * New option -J / --json for JSON output. See doc/fping-json.md
+    for the JSON schema. This feature is still in alpha and the
+    schema might change in future releases
+  * The -g, --generate option now also supports IPv6 addresses
+  * New option --seqmap-timeout to control the time after which
+    sequence numbers can be used again
+  * Fix OpenBSD sprintf() warning
+  * Fix fallback to SO\_TIMESTAMP if SO\_TIMESTAMPNS is not
+    available
+  * Typo fix in error message when SO\_BINDTODEVICE fails
+  * Options --print-tos and --print-ttl now also work for IPv6,
+    and no longer require privileges
+  * Report received ICMPv6 error messages
+  * Suppress duplicate reports in count mode with -q, --quiet or
+    -Q, --squiet
+  * Switch to alpine-based multi-stage Docker build to reduce
+    image size and improve build performance;
+  * Print receive ping moved to new functions
+  * Avoid unsigned overflow when determining the memory size to
+    save response times on systems where size\_t is the same as
+    unsigned int
+  * Document the new minimum value for the -p option
+  * Fix build without IPv6 support
+  * Fix debug build use of dbg_printf in fping.c
+  * Remove MacOS-specific test for -I option
+  * GitHub Actions fixes (thanks @gsnw-sebast)
+  * Fix measurement of time for timed reports (-Q) to start after
+    DNS name resolution.
+
+-------------------------------------------------------------------
 Thu Sep 25 05:23:24 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
 
-- Update to 5.4:  
+- Update to 5.4:
   * Memory allocation safety checks for event storage (thanks David.A for the bug report)
   * Fix off-by-one boundary check in seqmap code (thanks David.A for the bug report)
   * The minimum value for the period (-p flag) is now 0.001 milliseconds
