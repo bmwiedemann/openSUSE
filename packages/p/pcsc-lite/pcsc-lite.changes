@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan  2 13:12:49 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add Provides for pcscd to increase Debian compatibility
+
+-------------------------------------------------------------------
 Wed Apr  2 16:52:44 UTC 2025 - Axel Braun <axel.braun@gmx.de>
 
 - version 2.3.3

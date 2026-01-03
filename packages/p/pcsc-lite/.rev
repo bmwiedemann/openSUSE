@@ -843,4 +843,12 @@
   * Some other minor improvements (forwarded request 1266816 from DocB)</comment>
     <requestid>1275624</requestid>
   </revision>
+  <revision rev="108" vrev="2">
+    <srcmd5>6738d47f3c886b694254708261c3b876</srcmd5>
+    <version>2.3.3</version>
+    <time>1767457578</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1325165</requestid>
+  </revision>
 </revisionlist>

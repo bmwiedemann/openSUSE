@@ -59,6 +59,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  polkit-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(libudev)
+Provides:       pcscd
 %{?systemd_requires}
 %sysusers_requires
 
