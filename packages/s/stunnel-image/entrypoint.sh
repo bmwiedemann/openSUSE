@@ -4,6 +4,7 @@ set -eo pipefail
 
 STUNNEL_CERT="${STUNNEL_CERT:-/etc/stunnel/stunnel.pem}"
 STUNNEL_KEY="${STUNNEL_KEY:-/etc/stunnel/stunnel.key}"
+STUNNEL_CLIENT="${STUNNEL_CLIENT:-no}"
 
 if [[ -n ${STUNNEL_DEBUG} ]]; then
     echo "debug = ${STUNNEL_DEBUG}" > /etc/stunnel/conf.d/000debug.conf
@@ -19,6 +20,7 @@ if [[ -n "${STUNNEL_SERVICE_NAME}" ]] && [[ -n "${STUNNEL_ACCEPT}" ]] && [[ -n "
     echo "[${STUNNEL_SERVICE_NAME}]" > $conf
     echo "accept = ${STUNNEL_ACCEPT}" >> $conf
     echo "connect = ${STUNNEL_CONNECT}" >> $conf
+    echo "client = ${STUNNEL_CLIENT}" >> $conf
 fi
 
 exec "$@"

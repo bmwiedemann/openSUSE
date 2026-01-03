@@ -28,7 +28,7 @@ entry point defaults to `/etc/stunnel/stunnel.key` for `STUNNEL_KEY` and
 The entry point can set up a single service via environment variables, so that
 the user doesn't have to write and mount their own configuration file. This can
 be specified via the environment variables `STUNNEL_SERVICE_NAME`,
-`STUNNEL_ACCEPT` and `STUNNEL_CONNECT`:
+`STUNNEL_ACCEPT`, `STUNNEL_CONNECT`, and `STUNNEL_CLIENT`:
 
 - `STUNNEL_SERVICE_NAME`: name or otherwise unique identifier of the service
   (used for documentation purposes only)
@@ -40,6 +40,12 @@ be specified via the environment variables `STUNNEL_SERVICE_NAME`,
 - `STUNNEL_CONNECT`: address on which the unencrypted service is listening and
   to which stunnel connects. It can be either a hostname and port number or just
   a port number (in which case, localhost is assumed)
+
+- `STUNNEL_CLIENT`: sets the client mode (accepts `yes` or `no`). Defaults to
+  `no`, which means stunnel operates in server mode (accepts encrypted
+  connections and forwards them unencrypted). When set to `yes`, stunnel
+  operates in client mode (accepts unencrypted connections and forwards them
+  encrypted)
 
 
 For example, to create an SSL endpoint for a Web server listening on port `8000`
