@@ -1,7 +1,7 @@
 #
 # spec file for package freecell-solver
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define libname libfreecell-solver
 %bcond_with tests
 Name:           freecell-solver
-Version:        6.14.0
+Version:        6.16.0
 Release:        0
 Summary:        A Freecell Solver
 License:        MIT

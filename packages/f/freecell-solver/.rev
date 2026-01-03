@@ -120,4 +120,12 @@
     <comment>Update to 6.14.0</comment>
     <requestid>1304145</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b7c075eefab424a88aab881bb0eaef26</srcmd5>
+    <version>6.16.0</version>
+    <time>1767457674</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1325146</requestid>
+  </revision>
 </revisionlist>
