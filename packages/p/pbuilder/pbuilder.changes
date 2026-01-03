@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Jan  3 15:30:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.231.1:
+  * docs: remove the "masterpot" file, that is not serving any
+    purpose.
+  * modules: Configure APT with APT::Get::Always-Include-Phased-
+    Updates "true";
+  * buildpackage: remove duplicated chgrp
+  * Additional buildresults should be chowned too
+  * fix: Solve the problem of program entering umount loop caused
+    by umount failure.
+  * autopkgtest: minor stylistic improvements.
+  * autopkgtest: make build-procenv test as needs-internet
+  * pdebuild: Support --source-only-changes in pdebuild-internal
+  *     (Closes: #931580)
+  * Log a warning when an expected build result is not found
+  * pdebuild: use dpkg-parsechangelog -S instead of using sed
+  * pdebuild-internal: build up the source changes filename
+    before using it
+  * pdebuild: when in pdebuild-internal mode, look for the build
+    artifacts in the right place
+  * debconf: recognize https from the host's
+    /etc/apt/sources.list.
+  * Add a dependency on 'mount'. (Closes: #1077037)
+
+-------------------------------------------------------------------
 Thu Feb 29 14:52:51 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
@@ -23,7 +49,7 @@ Wed May  4 08:53:02 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
     * Only delete the temporary directory when not running through
       autopkgtest.
     * Stop explicitly requiring the archive signing key, since that is very
-      likely to already be installed anyway. 
+      likely to already be installed anyway.
 - Update to 0.230
   * createbuildenv:
     * Only try to print debootstrap.log if the file really exists.
@@ -64,7 +90,7 @@ Wed May  4 08:53:02 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 -------------------------------------------------------------------
 Sat Aug 23 19:04:08 UTC 2014 - dvlaeev@suse.com
 
-- Update pbuilder-ppc.patch to include ppc64el architecture 
+- Update pbuilder-ppc.patch to include ppc64el architecture
 
 -------------------------------------------------------------------
 Fri Apr  5 18:05:19 UTC 2013 - frank.lichtenheld@sophos.com
@@ -99,7 +125,7 @@ Mon Nov  5 21:38:38 UTC 2012 - frank.lichtenheld@sophos.com
 Thu Jul 19 06:49:31 UTC 2012 - dvaleev@suse.com
 
 - fix testsuite to run on ppc64
-- add man to BuildRequires, testsuite requires it 
+- add man to BuildRequires, testsuite requires it
 
 -------------------------------------------------------------------
 Wed May 30 21:22:22 UTC 2012 - frank.lichtenheld@sophos.com

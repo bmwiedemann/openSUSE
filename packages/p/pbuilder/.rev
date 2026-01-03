@@ -109,4 +109,37 @@ See http://lists.opensuse.org/opensuse-factory/2012-05/msg00164.html for a littl
     <comment></comment>
     <requestid>1153347</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d1907b8693b54cbbcffe29a4d51d7807</srcmd5>
+    <version>0.231.1</version>
+    <time>1767457724</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.231.1:
+  * docs: remove the &quot;masterpot&quot; file, that is not serving any
+    purpose.
+  * modules: Configure APT with APT::Get::Always-Include-Phased-
+    Updates &quot;true&quot;;
+  * buildpackage: remove duplicated chgrp
+  * Additional buildresults should be chowned too
+  * fix: Solve the problem of program entering umount loop caused
+    by umount failure.
+  * autopkgtest: minor stylistic improvements.
+  * autopkgtest: make build-procenv test as needs-internet
+  * pdebuild: Support --source-only-changes in pdebuild-internal
+  *     (Closes: #931580)
+  * Log a warning when an expected build result is not found
+  * pdebuild: use dpkg-parsechangelog -S instead of using sed
+  * pdebuild-internal: build up the source changes filename
+    before using it
+  * pdebuild: when in pdebuild-internal mode, look for the build
+    artifacts in the right place
+  * debconf: recognize https from the host's
+    /etc/apt/sources.list.
+  * Add a dependency on 'mount'. (Closes: #1077037)
+
+      likely to already be installed anyway.
+- Update pbuilder-ppc.patch to include ppc64el architecture
+- add man to BuildRequires, testsuite requires it</comment>
+    <requestid>1325207</requestid>
+  </revision>
 </revisionlist>

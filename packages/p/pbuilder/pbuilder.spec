@@ -1,7 +1,7 @@
 #
 # spec file for package pbuilder
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2012 Frank Lichtenheld <frank@lichtenheld.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           pbuilder
-Version:        0.231
+Version:        0.231.1
 Release:        0
 Summary:        Personal package builder for .deb packages
 License:        GPL-2.0-or-later
