@@ -1,0 +1,11 @@
+<package name="paracon" project="openSUSE:Factory">
+  <title>Packet radio terminal using the AGWPE protocol</title>
+  <description>Paracon is a packet radio terminal. It is focused on simplicity and ease of
+use, and incorporates the core functionality that most packet users need
+without trying to include all of the bells and whistles that few would use.
+
+It talks to the TNC using AGWPE and works well with the direwolf software TNC.
+If you have a classic KISS or 6PACK TNC you can use the classic Linux native
+AX.25 stack with ldsped on top to be able to speak AGWPE.</description>
+  <url>https://paracon.readthedocs.io/en/latest/</url>
+</package>

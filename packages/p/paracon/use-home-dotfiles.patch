@@ -1,0 +1,41 @@
+--- a/paracon/config.py	2025-12-23 16:30:10.850028852 +0100
++++ b/paracon/config.py	2025-12-23 16:31:19.497661883 +0100
+@@ -40,10 +40,9 @@
+         cfg_path = pathlib.Path.cwd() / cfg_name
+         if cfg_path.exists():
+             return cfg_path
++        cfg_name = '.paracon.cfg'
+         cfg_path = pathlib.Path.home() / cfg_name
+-        if cfg_path.exists():
+-            return cfg_path
+-        return None
++        return cfg_path
+ 
+     def load_config(self, cfg_file=None):
+         self.default_cfg = configparser.ConfigParser()
+--- a/paracon/paracon.py	2025-12-23 19:52:09.703675748 +0100
++++ b/paracon/paracon.py	2025-12-23 19:52:27.093108453 +0100
+@@ -829,7 +829,8 @@
+         self._server = None
+         self._ports = None
+         self._debug_engine = False
+-        self._log_dir = pathlib.Path.cwd()
++        self._log_dir = pathlib.Path.home() / '.local/share/paracon'
++        self._log_dir.mkdir(parents=True, exist_ok=True)
+ 
+     def set_log_dir(self, log_dir):
+         if log_dir:
+@@ -1549,11 +1550,11 @@
+     parser.add_argument(
+         '-c', '--config',
+         metavar='CONFIGFILE', default=None, action=ConfigFileCheckAction,
+-        help='full path to configuration file (default: current directory)')
++        help='full path to configuration file (default: ~/.paracon.cfg)')
+     parser.add_argument(
+         '-l', '--logdir',
+         default=None, action=LogDirCheckAction,
+-        help='full path to log file directory (default: current directory)')
++        help='full path to log file directory (default: ~/.local/share/paracon)')
+     parser.add_argument(
+         '-V', '--version',
+         action='version', version=f'Paracon {__version__}',

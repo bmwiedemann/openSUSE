@@ -1,0 +1,41 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "paracon"
+description = "Packet radio terminal using the AGWPE protocol"
+keywords = [
+        "ham radio", "amateur radio", "packet radio",
+        "AGWPE", "protocol", "connected mode", "unproto"
+]
+authors = [{name = "Martin F N Cooper", email = "mfncooper@gmail.com"}]
+readme = "README.md"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Communications :: Ham Radio"
+]
+requires-python = ">=3.9"
+dynamic = ["version"]
+
+[project.urls]
+Documentation = "https://paracon.readthedocs.io"
+"Source Code" = "https://github.com/mfncooper/paracon"
+"Change Log" = "https://github.com/mfncooper/paracon/blob/main/CHANGELOG.md"
+
+[tool.flit.module]
+name = "paracon"
+
+[tool.flit.sdist]
+include = [
+    "CHANGELOG.md",
+    "LICENSE",
+    "docs/",
+    "tox.ini"
+]
+exclude = [
+    "docs/_build/"
+]
