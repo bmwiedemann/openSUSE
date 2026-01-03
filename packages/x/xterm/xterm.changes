@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Jan  2 08:56:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 406:
+  * add option -emoji_width and resource emojiWidth
+
+-------------------------------------------------------------------
+Mon Dec  1 10:35:20 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 404:
+  * add numeric keypad codes to XTGETTCAP.
+  * implement parsing and cursor positioning for Unicode
+    variation selectors 15 and 16.
+  * improve limit-checking for mouse button and motion events
+  * fix a bug in printer code in xterm #403
+  * change wcwidth for private-use codes, to make them
+    consistently neutral width, i.e., single/double width
+    according to whether they are used for CJK.
+  * improve test-driver for wcwidth, adding options to
+    test the predefined ranges listed in UnicodeData, as well
+    as suppressing output where it only shows that the
+    system's wcwidth lacks a definition for codes.
+  * add  some  of  the  OpenBSD  local-patches,
+    including  an ifdef-improvement for DEF_DISALLOWED_WINDOW
+  * modify configure script macros to widen pattern for
+    $host_os from “linux*gnu” to “linux*gnu*” to cover targets
+    such as i686-pc-linux-gnut64 (GenToo #963725).
+
+-------------------------------------------------------------------
 Sat Oct 11 09:28:14 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 402:

@@ -1953,4 +1953,32 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     <comment>xterm 402 (forwarded request 1310706 from AndreasStieger)</comment>
     <requestid>1311143</requestid>
   </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>68711bd6d1e0829d3e10f83e52d1a769</srcmd5>
+    <version>406</version>
+    <time>1767457560</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 406:
+  * add option -emoji_width and resource emojiWidth
+
+- update to 404:
+  * add numeric keypad codes to XTGETTCAP.
+  * implement parsing and cursor positioning for Unicode
+    variation selectors 15 and 16.
+  * improve limit-checking for mouse button and motion events
+  * fix a bug in printer code in xterm #403
+  * change wcwidth for private-use codes, to make them
+    consistently neutral width, i.e., single/double width
+    according to whether they are used for CJK.
+  * improve test-driver for wcwidth, adding options to
+    test the predefined ranges listed in UnicodeData, as well
+    as suppressing output where it only shows that the
+    system's wcwidth lacks a definition for codes.
+  * add  some  of  the  OpenBSD  local-patches,
+    including  an ifdef-improvement for DEF_DISALLOWED_WINDOW
+  * modify configure script macros to widen pattern for
+    $host_os from “linux*gnu” to “linux*gnu*” to cover targets
+    such as i686-pc-linux-gnut64 (GenToo #963725). (forwarded request 1325067 from dirkmueller)</comment>
+    <requestid>1325089</requestid>
+  </revision>
 </revisionlist>
