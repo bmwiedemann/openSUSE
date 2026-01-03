@@ -1,7 +1,19 @@
 -------------------------------------------------------------------
+Fri Jan  2 17:53:50 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 2.5.2:
+  * The CoreAudio driver has gained iOS support
+  * Improve error handling and reporting when loading default
+    soundfont
+  * Improve logging and side-effect mitigation when basic channel
+    configuration changes
+  * Fix CVE-2025-68617 - a heap-based use-after-free involving DLS files
+    (GHSA-ffw2-xvvp-39ch) (bsc#1255519)
+
+-------------------------------------------------------------------
 Fri Oct 31 19:58:32 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
-- Updat eto version 2.5.1
+- Update to version 2.5.1
   * Previous versions have incorrectly exposed private C++ and
     inline symbols; they are now hidden from the library.
   * Fluidsynth now resets DataEntry values when it receives
