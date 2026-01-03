@@ -1,0 +1,82 @@
+From 5ca0f62213911a77dd4a62e843db7e420cc98b78 Mon Sep 17 00:00:00 2001
+From: Jacob Walls <jacobtylerwalls@gmail.com>
+Date: Thu, 11 Dec 2025 08:44:19 -0500
+Subject: [PATCH] [5.2.x] Refs #36499 -- Adjusted test_strip_tags following
+ Python behavior change for incomplete entities.
+
+Backport of 7b80b2186300620931009fd62c2969f108fe7a62 from main.
+---
+ tests/utils_tests/test_html.py | 35 +++++++++++++++++++++++++++++-----
+ 1 file changed, 30 insertions(+), 5 deletions(-)
+
+diff --git a/tests/utils_tests/test_html.py b/tests/utils_tests/test_html.py
+index 681071bf0313..89c97cee03a5 100644
+--- a/tests/utils_tests/test_html.py
++++ b/tests/utils_tests/test_html.py
+@@ -1,3 +1,4 @@
++import math
+ import os
+ import sys
+ from datetime import datetime
+@@ -124,7 +125,7 @@ def test_strip_tags(self):
+         # old and new results. The check below is temporary until all supported
+         # Python versions and CI workers include the fix. See:
+         # https://github.com/python/cpython/commit/6eb6c5db
+-        min_fixed = {
++        min_fixed_security = {
+             (3, 14): (3, 14),
+             (3, 13): (3, 13, 6),
+             (3, 12): (3, 12, 12),
+@@ -132,7 +133,28 @@ def test_strip_tags(self):
+             (3, 10): (3, 10, 19),
+             (3, 9): (3, 9, 24),
+         }
+-        htmlparser_fixed = sys.version_info >= min_fixed[sys.version_info[:2]]
++        htmlparser_fixed_security = (
++            sys.version_info >= min_fixed_security[sys.version_info[:2]]
++        )
++        # Similarly, there was a fix for terminating incomplete entities. See:
++        # https://github.com/python/cpython/commit/95296a9d
++        min_fixed_incomplete_entities = {
++            (3, 14): (3, 14, 1),
++            (3, 13): (3, 13, 10),
++            # Not fixed in the following versions.
++            (3, 12): (3, 12, math.inf),
++            (3, 11): (3, 11, math.inf),
++            (3, 10): (3, 10, math.inf),
++            (3, 9): (3, 9, math.inf),
++        }
++        major_version = sys.version_info[:2]
++        htmlparser_fixed_security = sys.version_info >= min_fixed_security.get(
++            major_version, major_version
++        )
++        htmlparser_fixed_incomplete_entities = (
++            sys.version_info
++            >= min_fixed_incomplete_entities.get(major_version, major_version)
++        )
+         items = (
+             (
+                 "<p>See: &#39;&eacute; is an apostrophe followed by e acute</p>",
+@@ -159,16 +181,19 @@ def test_strip_tags(self):
+             # https://bugs.python.org/issue20288
+             ("&gotcha&#;<>", "&gotcha&#;<>"),
+             ("<sc<!-- -->ript>test<<!-- -->/script>", "ript>test"),
+-            ("<script>alert()</script>&h", "alert()h"),
++            (
++                "<script>alert()</script>&h",
++                "alert()&h;" if htmlparser_fixed_incomplete_entities else "alert()h",
++            ),
+             (
+                 "><!" + ("&" * 16000) + "D",
+-                ">" if htmlparser_fixed else "><!" + ("&" * 16000) + "D",
++                ">" if htmlparser_fixed_security else "><!" + ("&" * 16000) + "D",
+             ),
+             ("X<<<<br>br>br>br>X", "XX"),
+             ("<" * 50 + "a>" * 50, ""),
+             (
+                 ">" + "<a" * 500 + "a",
+-                ">" if htmlparser_fixed else ">" + "<a" * 500 + "a",
++                ">" if htmlparser_fixed_security else ">" + "<a" * 500 + "a",
+             ),
+             ("<a" * 49 + "a" * 951, "<a" * 49 + "a" * 951),
+             ("<" + "a" * 1_002, "<" + "a" * 1_002),

@@ -1,0 +1,49 @@
+From 578ef30376fd279865d1719fcad064a00c625a6b Mon Sep 17 00:00:00 2001
+From: Natalia <124304+nessita@users.noreply.github.com>
+Date: Mon, 14 Jul 2025 14:45:03 -0300
+Subject: [PATCH] Fixed #36499 -- Adjusted
+ utils_tests.test_html.TestUtilsHtml.test_strip_tags following Python's
+ HTMLParser new behavior.
+
+---
+ tests/test_utils/tests.py      | 4 ++--
+ tests/utils_tests/test_html.py | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+Index: django-5.2.9/tests/test_utils/tests.py
+===================================================================
+--- django-5.2.9.orig/tests/test_utils/tests.py
++++ django-5.2.9/tests/test_utils/tests.py
+@@ -945,10 +945,10 @@ class HTMLEqualTests(SimpleTestCase):
+             self.assertHTMLEqual("", "<p>")
+         error_msg = (
+             "First argument is not valid HTML:\n"
+-            "('Unexpected end tag `div` (Line 1, Column 6)', (1, 6))"
++            "('Unexpected end tag `div` (Line 1, Column 0)', (1, 0))"
+         )
+         with self.assertRaisesMessage(AssertionError, error_msg):
+-            self.assertHTMLEqual("< div></div>", "<div></div>")
++            self.assertHTMLEqual("</div>", "<div></div>")
+         with self.assertRaises(HTMLParseError):
+             parse_html("</p>")
+ 
+Index: django-5.2.9/tests/utils_tests/test_html.py
+===================================================================
+--- django-5.2.9.orig/tests/utils_tests/test_html.py
++++ django-5.2.9/tests/utils_tests/test_html.py
+@@ -187,13 +187,13 @@ class TestUtilsHtml(SimpleTestCase):
+             ),
+             (
+                 "><!" + ("&" * 16000) + "D",
+-                ">" if htmlparser_fixed_security else "><!" + ("&" * 16000) + "D",
++                ">",
+             ),
+             ("X<<<<br>br>br>br>X", "XX"),
+             ("<" * 50 + "a>" * 50, ""),
+             (
+                 ">" + "<a" * 500 + "a",
+-                ">" if htmlparser_fixed_security else ">" + "<a" * 500 + "a",
++                ">",
+             ),
+             ("<a" * 49 + "a" * 951, "<a" * 49 + "a" * 951),
+             ("<" + "a" * 1_002, "<" + "a" * 1_002),
