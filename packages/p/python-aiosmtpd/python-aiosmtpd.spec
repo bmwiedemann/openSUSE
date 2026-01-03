@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiosmtpd
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ Source:         https://github.com/aio-libs/aiosmtpd/archive/v%{version}.tar.gz#
 Patch0:         support-python-313.patch
 # PATCH-FIX-OPENSUSE Use inspect.iscorountine
 Patch1:         support-python-314.patch
+# PATCH-FIX-UPSTREAM aiosmtpd-pr557-pkg_resources.patch gh#aio-libs/aiosmtpd#557
+Patch2:         aiosmtpd-pr557-pkg_resources.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

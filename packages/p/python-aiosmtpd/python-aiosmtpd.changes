@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan  2 12:16:00 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Add aiosmtpd-pr557-pkg_resources.patch gh#aio-libs/aiosmtpd#557
+  for setuptools 80
+
+-------------------------------------------------------------------
 Mon Nov 10 04:59:40 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-python-314.patch:

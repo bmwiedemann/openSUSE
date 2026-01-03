@@ -172,4 +172,12 @@
   * Use inspect.iscoroutine, rather than asyncio.</comment>
     <requestid>1316737</requestid>
   </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>83c47ac13b1f86a15ece7440cdbd77a6</srcmd5>
+    <version>1.4.6</version>
+    <time>1767457676</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1325152</requestid>
+  </revision>
 </revisionlist>
