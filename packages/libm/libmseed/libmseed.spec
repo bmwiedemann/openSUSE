@@ -1,7 +1,7 @@
 #
 # spec file for package libmseed
 #
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover 3
 Name:           libmseed
-Version:        3.2.2
+Version:        3.2.3
 Release:        0
 Summary:        MiniSEED data format library
 License:        Apache-2.0

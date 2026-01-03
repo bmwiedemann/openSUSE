@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan  2 10:38:34 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.2.3:
+  * Add mseh_get_ptr_type() to determine type of an extra header
+  * Add unsigned integer (uint64_t) support to mseh_set_ptr_r() and
+    mseh_get_ptr_r()
+
+-------------------------------------------------------------------
 Sat Dec 27 09:53:31 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.2.2:
