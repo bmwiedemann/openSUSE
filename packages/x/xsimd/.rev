@@ -111,4 +111,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1299871</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9d5644235412baaa1ec2886630344753</srcmd5>
+    <version>14.0.0</version>
+    <time>1767457558</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 14.0.0:
+  * New architecture: VMX with VSX extension
+  * [API] Add xsimd::bitwise_[l|r]shift&lt;N&gt;(...) and
+    xsimd::rot[l|r]&lt;N&gt;(...)
+  * [API] Add xsimd::widen to widen a batch to a batch twice as
+    big
+  * [API] Add xsimd::first() function to extract the first lane
+    from a batch
+  * [API] Reorder xsimd::make_batch_constant and
+    xsimd::make_batch_bool_constant template arguments
+  * Bump CMake requirement to 3.10
+  * Provide generic and specialize implementation of
+    xsimd::reduce_mul
+  * Have xsimd::max / min behave as std::max / min when one
+    argument is NaN
+  * Optimize batch_bool load/store from/to array of booleans
+  * Cleaner error when trying to instantiate a batch while no
+    arch is supported
+  * Fix XSIMD_INLINE for compilers that don't have always_inline
+  * Rename xsimd::generic in xsimd::common
+  * Fix xsimd::log10 implementation under -ffast-math, and add
+    -fast-math-support to generic math algorithm and tests
+  * Bump xtl dependency requirement
+  * Provide a generic implementation of swizzle with constant
+    mask
+  * Enable xsimd with only emulated arch
+  * Rename avx512vnni&lt;vbmi&gt; in avx512vnni&lt;vbmi2&gt;
+  * [SSE2] Fix and improve xsimd::swizzle on [u]int16
+  * [AVX512x] Specialize xsimd::insert, xsimd::incr_if,
+    xsimd::decr_if</comment>
+    <requestid>1325075</requestid>
+  </revision>
 </revisionlist>
