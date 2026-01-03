@@ -3,7 +3,7 @@
 #
 # Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2023 Wojciech Kazubski <wk@ire.pw.edu.pl>
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 
 %define pythons python3
 Name:           chirp
-Version:        20251219
+Version:        20260102
 Release:        0
 Summary:        Tool for programming amateur radio sets
 License:        GPL-3.0-only

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan  2 15:14:24 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20260102:
+  * uv17Pro: Add new model UV-5G Mini
+  * uv17pro: Refactor to support multiple idents
+  * ha1g: Airband Support
+  * Fix exporting CSV from drivers with negative specials
+
+-------------------------------------------------------------------
 Fri Dec 19 19:03:10 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20251219:
