@@ -1,0 +1,8 @@
+<package name="tncattach" project="openSUSE:Factory">
+  <title>Attach KISS TNC devices as network interfaces in Linux</title>
+  <description>Attach KISS TNC devices as network interfaces in Linux.
+This program allows you to attach TNCs or any KISS-compatible device as a
+network interface. This program does not need any kernel modules, and has
+no external dependencies outside the standard Linux and GNU C libraries.</description>
+  <url>https://github.com/markqvist/tncattach</url>
+</package>

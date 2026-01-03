@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Fri Dec 19 17:47:32 UTC 2025 - dheidler@suse.de
+
+- Update to version 20241222.c910421:
+  * Add IPv6 support (command-line and tuntap) (#16)
+  * chore: refine Makefile with Makefile Conventions
+  * Update README.md
+  * Version updated to 0.1.9
+  * Argparse variable init. Fixes #4.
+  * Cleaned install output
+  * Added mandb update to makefile
+  * now makefile for real.
+
+-------------------------------------------------------------------
+Fri Dec 19 17:46:51 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Initial checkin
