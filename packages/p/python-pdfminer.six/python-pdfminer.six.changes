@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Jan  2 14:02:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 20251230:
+  * Support for colored and uncolored tiling patterns per ISO
+    32000
+  * Pre-commit hooks for automated code quality checks
+  * Ruff rules for for modernized Python syntax
+  * Using makefile instead of nox for local development
+  * Fix `struct.error` when processing PDFs with odd-length font
+    encoding buffers
+  * `PSBaseParser` combines tokens split across streams
+  * Improve exception handling in `PDFDocument` with more precise
+    error propagation
+  * Support for Python 3.14
+  * Refuse to execute circular references to content streams
+    (including Form XObjects)
+  * `IndexError` when saving image with no filters``
+  * Copying color space scs and ncs
+  * Correct linewidth calculation in `PDFPageInterpreter.do_w`
+  * Support for Python 3.9
+
+-------------------------------------------------------------------
 Tue Nov 11 10:24:26 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 20251107 (CVE-2025-64512, bsc#1253228)

@@ -147,4 +147,29 @@
     <comment></comment>
     <requestid>1317092</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>388d522b8b8507001dd0781751ea487f</srcmd5>
+    <version>20251230</version>
+    <time>1767457637</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20251230:
+  * Support for colored and uncolored tiling patterns per ISO
+    32000
+  * Pre-commit hooks for automated code quality checks
+  * Ruff rules for for modernized Python syntax
+  * Using makefile instead of nox for local development
+  * Fix `struct.error` when processing PDFs with odd-length font
+    encoding buffers
+  * `PSBaseParser` combines tokens split across streams
+  * Improve exception handling in `PDFDocument` with more precise
+    error propagation
+  * Support for Python 3.14
+  * Refuse to execute circular references to content streams
+    (including Form XObjects)
+  * `IndexError` when saving image with no filters``
+  * Copying color space scs and ncs
+  * Correct linewidth calculation in `PDFPageInterpreter.do_w`
+  * Support for Python 3.9</comment>
+    <requestid>1325126</requestid>
+  </revision>
 </revisionlist>
