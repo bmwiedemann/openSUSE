@@ -63,4 +63,14 @@
     <comment></comment>
     <requestid>1271849</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9a5f537cf5f025c86289bbc10882f1a2</srcmd5>
+    <version>0.2.8</version>
+    <time>1767457624</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.8:
+  * change stale issue and discussion handling to run once a week
+  * Add combine functions for crc32/64</comment>
+    <requestid>1325120</requestid>
+  </revision>
 </revisionlist>

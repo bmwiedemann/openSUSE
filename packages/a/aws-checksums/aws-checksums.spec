@@ -1,7 +1,7 @@
 #
 # spec file for package aws-checksums
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define library_version 1.0.0
 %define library_soversion 1
 Name:           aws-checksums
-Version:        0.2.7
+Version:        0.2.8
 Release:        0
 Summary:        Checksums package for AWS SDK for C
 License:        Apache-2.0
