@@ -1,7 +1,7 @@
 #
 # spec file for package alsa-utils
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 
 Name:           alsa-utils
-Version:        1.2.15
+Version:        1.2.15.1
 Release:        0
 Summary:        Advanced Linux Sound Architecture Utilities
 License:        GPL-2.0-or-later
@@ -44,6 +44,8 @@ Source5:        load-sound-modules.sh
 # from https://www.alsa-project.org/files/pub/gpg-release-key-v1.txt
 Source6:        alsa-utils.keyring
 # upstream fixes
+Patch1:         0001-alsactl-add-missing-call-to-clean-card-specific-conf.patch
+Patch2:         0002-alsactl-fix-sequence-to-clean-card-specific-config-f.patch
 # downstream fixes
 Patch100:       alsa-info-no-update-for-distro-script.patch
 Patch101:       alsa-utils-configure-version-revert.patch
@@ -90,6 +92,8 @@ and test audio before and after PM state changes.
 
 %prep
 %setup -q
+%patch -P 1 -p1
+%patch -P 2 -p1
 %patch -P 100 -p1
 %if 0%{?do_autoreconf} || 0%{?build_from_git}
 %patch -P 101 -p1
@@ -135,23 +139,21 @@ rm -f %{buildroot}%{_mandir}/man*/alsaconf.*
 rmdir --ignore-fail-on-non-empty -p %{buildroot}%{_mandir}/*/man* %{buildroot}%{_mandir}/man*
 %find_lang %{name} --all-name
 ln -s alsa-restore.service %{buildroot}%{_unitdir}/alsasound.service
-mkdir -p %{buildroot}%{_localstatedir}/lib/alsa
 # systemd unit files
 install -c -m 0644 %{SOURCE3} %{buildroot}%{_unitdir}
 ln -s ../sound-extra.service %{buildroot}%{_unitdir}/sound.target.wants
 mkdir -p %{buildroot}%{_prefix}/lib/systemd/scripts
 install -c -m 0755 %{SOURCE5} %{buildroot}%{_prefix}/lib/systemd/scripts
+# install tmpfiles.d for /var/lib/alsa directory creation
+mkdir -p  %{buildroot}%{_prefix}/lib/tmpfiles.d
+echo 'd /var/lib/alsa 0755 - - -' > %{buildroot}%{_prefix}/lib/tmpfiles.d/alsa-utils.conf
 
 %pre
 %service_add_pre sound-extra.service
 
 %post
 %service_add_post sound-extra.service
-# migrate the old asound.state
-if [ ! -f %{_localstatedir}/lib/alsa/asound.state ]; then
-  test -f /etc/asound.state && \
-    cp -a /etc/asound.state %{_localstatedir}/lib/alsa/asound.state
-fi
+%tmpfiles_create alsa-utils.conf
 exit 0
 
 %preun
@@ -180,7 +182,7 @@ exit 0
 %{_unitdir}/*.service
 %{_unitdir}/sound.target.wants
 %{_prefix}/lib/systemd/scripts
-%{_localstatedir}/lib/alsa
+%{_prefix}/lib/tmpfiles.d/alsa-utils.conf
 
 %files -n alsabat
 %license COPYING

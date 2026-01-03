@@ -1,0 +1,154 @@
+From 254528c42706524ff82378cf740d07b472cba2cc Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Thu, 1 Jan 2026 18:39:38 +0100
+Subject: [PATCH 2/2] alsactl: fix sequence to clean card specific config files
+ for UCM
+
+For UCM, card-specific config files should be removed only when the fixed
+boot flag is set or if the card is not the primary card in a given card
+group.
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ alsactl/alsactl.h    |  2 +-
+ alsactl/init_parse.c |  2 +-
+ alsactl/init_ucm.c   | 25 ++++++++++++++++++++-----
+ alsactl/state.c      | 16 +++++++++-------
+ 4 files changed, 31 insertions(+), 14 deletions(-)
+
+diff --git a/alsactl/alsactl.h b/alsactl/alsactl.h
+index 2aefb899c30b..9f1728458883 100644
+--- a/alsactl/alsactl.h
++++ b/alsactl/alsactl.h
+@@ -68,7 +68,7 @@ int snd_card_iterator_error(struct snd_card_iterator *iter);
+ 
+ int load_configuration(const char *file, snd_config_t **top, int *open_failed);
+ int init(const char *cfgdir, const char *file, int flags, const char *cardname);
+-int init_ucm(int flags, int cardno);
++int init_ucm(const char *cfgdir, int flags, int cardno);
+ bool validate_boot_time(long long boot_time, long long current_time, long long synctime);
+ int read_boot_params(snd_ctl_t *handle, long long *boot_time, long long *sync_time, long long *restore_time, long long *primary_card);
+ int write_boot_params(snd_ctl_t *handle, long long boot_time, long long sync_time, long long restore_time, long long primary_card);
+diff --git a/alsactl/init_parse.c b/alsactl/init_parse.c
+index a34cb0e3f9c8..a437392b6061 100644
+--- a/alsactl/init_parse.c
++++ b/alsactl/init_parse.c
+@@ -1761,7 +1761,7 @@ int init(const char *cfgdir, const char *filename, int flags, const char *cardna
+ 				lasterr = err;
+ 			continue;
+ 		}
+-		err = init_ucm(flags, iter.card);
++		err = init_ucm(cfgdir, flags, iter.card);
+ 		if (err == 0 || card_state_is_okay(err))
+ 			continue;
+ 		err = init_space(&space, iter.card);
+diff --git a/alsactl/init_ucm.c b/alsactl/init_ucm.c
+index 60967c407be1..c16842739e17 100644
+--- a/alsactl/init_ucm.c
++++ b/alsactl/init_ucm.c
+@@ -137,11 +137,17 @@ static int reopen_ucm_manager(snd_use_case_mgr_t **uc_mgr, int cardno, int flags
+  * Helper: Execute boot sequences
+  * Returns: 0 on success, negative on error
+  */
+-static int execute_boot_sequences(snd_use_case_mgr_t *uc_mgr, int flags, bool fixed_boot)
++static int execute_boot_sequences(const char *cfgdir, snd_use_case_mgr_t *uc_mgr,
++				  int cardno, int flags, bool fixed_boot)
+ {
+ 	int err = 0;
+ 
+ 	if (fixed_boot) {
++		err = snd_card_clean_cfgdir(cfgdir, cardno);
++		if (err < 0) {
++			dbg("ucm clean cfgdir: %d", err);
++			return err;
++		}
+ 		err = snd_use_case_set(uc_mgr, "_fboot", NULL);
+ 		dbg("ucm _fboot: %d", err);
+ 		if (err == -ENOENT && (flags & FLAG_UCM_BOOT) != 0) {
+@@ -170,7 +176,7 @@ static int execute_boot_sequences(snd_use_case_mgr_t *uc_mgr, int flags, bool fi
+  * Handle also card groups.
+  * Returns: 0 = success, 1 = skip this card (e.g. linked or in-sync), negative on error
+  */
+-int init_ucm(int flags, int cardno)
++int init_ucm(const char *cfgdir, int flags, int cardno)
+ {
+ 	snd_use_case_mgr_t *uc_mgr;
+ 	char id[64];
+@@ -268,7 +274,7 @@ int init_ucm(int flags, int cardno)
+ 	}
+ 
+ _execute_boot:
+-	if (flags & FLAG_UCM_FBOOT)
++	if (fixed_boot)
+ 		restored = true;
+ 
+ 	if (boot_card_group) {
+@@ -277,7 +283,7 @@ _execute_boot:
+ 			goto _error;
+ 	}
+ 
+-	err = execute_boot_sequences(uc_mgr, flags, fixed_boot);
++	err = execute_boot_sequences(cfgdir, uc_mgr, cardno, flags, fixed_boot);
+ 	if (err < 0)
+ 		goto _error;
+ 
+@@ -286,6 +292,15 @@ _execute_boot:
+ _error:
+ 	snd_use_case_mgr_close(uc_mgr);
+ _fin:
++	if (fixed_boot && primary_card >= 0 && primary_card != cardno) {
++		/* remove card specific configuration files for other cards in group */
++		int clean_err = snd_card_clean_cfgdir(cfgdir, cardno);
++		if (clean_err < 0) {
++			dbg("ucm clean cfgdir: %d", clean_err);
++			if (err >= 0)
++				err = clean_err;
++		}
++	}
+ 	if (lock_fd >= 0)
+ 		group_state_unlock(lock_fd, groupfile);
+ 	if (ctl)
+@@ -298,7 +313,7 @@ _fin:
+ 
+ #else
+ 
+-int init_ucm(int flags, int cardno)
++int init_ucm(const char *cfgdir, int flags, int cardno)
+ {
+ 	return -ENXIO;
+ }
+diff --git a/alsactl/state.c b/alsactl/state.c
+index 7c6e6d1facb9..79bd309987e7 100644
+--- a/alsactl/state.c
++++ b/alsactl/state.c
+@@ -1790,18 +1790,20 @@ int load_state(const char *cfgdir, const char *file,
+ 			finalerr = lock_fd;
+ 			continue;
+ 		}
+-		err = snd_card_clean_cfgdir(cfgdir, iter.card);
+-		if (err < 0) {
+-			initfailed(iter.card, "cfgdir", err);
+-			finalerr = err;
+-			continue;
+-		}
+ 		/* error is ignored */
+-		err = init_ucm(initflags | FLAG_UCM_FBOOT, iter.card);
++		err = init_ucm(cfgdir, initflags | FLAG_UCM_FBOOT, iter.card);
+ 		/* return code 1 and 2 -> postpone initialization */
+ 		if (card_state_is_okay(err)) {
+ 			export_card_state_set(iter.card, err);
+ 			goto unlock_card;
++		} else if (err < 0) {
++			/* no UCM - remove card specific configuration */
++			err = snd_card_clean_cfgdir(cfgdir, iter.card);
++			if (err < 0) {
++				initfailed(iter.card, "cfgdir", err);
++				finalerr = err;
++				continue;
++			}
+ 		}
+ 		/* do a check if controls matches state file */
+ 		if (do_init && set_controls(iter.card, config, 0)) {
+-- 
+2.52.0
+

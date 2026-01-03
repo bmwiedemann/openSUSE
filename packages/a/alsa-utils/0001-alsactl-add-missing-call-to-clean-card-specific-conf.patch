@@ -1,0 +1,36 @@
+From 120568fbb5b2ea5d4359c8e37f6d47d712e14698 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Thu, 1 Jan 2026 17:51:25 +0100
+Subject: [PATCH 1/2] alsactl: add missing call to clean card specific config
+ files
+
+The card specific configuration files created at runtime must
+be removed before UCM fixed boot sequence in the standard
+restore operation.
+
+Fixes: https://github.com/alsa-project/alsa-lib/issues/492
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ alsactl/state.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/alsactl/state.c b/alsactl/state.c
+index 2942f3ffd741..7c6e6d1facb9 100644
+--- a/alsactl/state.c
++++ b/alsactl/state.c
+@@ -1790,6 +1790,12 @@ int load_state(const char *cfgdir, const char *file,
+ 			finalerr = lock_fd;
+ 			continue;
+ 		}
++		err = snd_card_clean_cfgdir(cfgdir, iter.card);
++		if (err < 0) {
++			initfailed(iter.card, "cfgdir", err);
++			finalerr = err;
++			continue;
++		}
+ 		/* error is ignored */
+ 		err = init_ucm(initflags | FLAG_UCM_FBOOT, iter.card);
+ 		/* return code 1 and 2 -> postpone initialization */
+-- 
+2.52.0
+

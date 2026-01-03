@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jan  2 11:41:53 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to alsa-utils 1.2.15.1:
+  * alsactl: fix build when in subdirectory
+  * aplay: add missing break before the default case
+- Backport upstream fixes for alsactl regression:
+  0001-alsactl-add-missing-call-to-clean-card-specific-conf.patch
+  0002-alsactl-fix-sequence-to-clean-card-specific-config-f.patch
+
+-------------------------------------------------------------------
+Tue Dec 16 14:25:01 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Create /var/lib/alsa via tmpfiles.d for Immutable Mode
+  (jsc#PED-14848)
+
+-------------------------------------------------------------------
 Mon Dec  8 14:44:35 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to alsa-utils 1.2.15:
