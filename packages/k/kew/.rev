@@ -260,4 +260,22 @@
     <comment></comment>
     <requestid>1322285</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>daea477d220f181eeec750bf6b1cedbd</srcmd5>
+    <version>3.7.3</version>
+    <time>1767457714</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.7.3:
+  * Added support for USLT lyrics tag including USLT with
+    embedded synchronized lrc content. Suggested by
+    @gzemlevskiy17.
+  * Change makefile and kew.c so that locale install dir derives
+    from PREFIX. Found by @yurivict.
+  * kew play \&lt;filepath\&gt; , plays a file or a the contents of a
+    directory. By @Overionised.
+
+- remove unneeded BuildRequires:
+  * Symlinked directories should work better now. Works best if</comment>
+    <requestid>1325187</requestid>
+  </revision>
 </revisionlist>

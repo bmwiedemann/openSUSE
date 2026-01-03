@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan  2 21:50:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.7.3:
+  * Added support for USLT lyrics tag including USLT with
+    embedded synchronized lrc content. Suggested by
+    @gzemlevskiy17.
+  * Change makefile and kew.c so that locale install dir derives
+    from PREFIX. Found by @yurivict.
+  * kew play \<filepath\> , plays a file or a the contents of a
+    directory. By @Overionised.
+
+-------------------------------------------------------------------
 Thu Dec 11 22:22:29 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 3.7.1
@@ -151,7 +163,7 @@ Mon Sep  8 22:14:36 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 - add gcc-c++ BuildRequires: needed for build v3
 - add libogg-devel BuildRequires: enable ogg support
 - add libtag-devel BuildRequires: enable tag support
-- remove unneeded BuildRequires: 
+- remove unneeded BuildRequires:
   * freeimage-devel
   * pkgconfig(libavformat)
 
@@ -249,7 +261,7 @@ Tue Jul  2 11:23:54 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
     stall of the app at startup if notify-send wasn't installed.
   * Search: Removed duplicate search result name variable. This
     means search results will now have a very low memory footprint.
-  * Symlinked directories should work better now. Works best if 
+  * Symlinked directories should work better now. Works best if
     the symlink and the destination directory has the same name.
 
 -------------------------------------------------------------------

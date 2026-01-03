@@ -2,7 +2,7 @@
 # spec file for package kew
 #
 # Copyright (c) 2025 mantarimay
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 
 %bcond_without aac
 Name:           kew
-Version:        3.7.1
+Version:        3.7.3
 Release:        0
 Summary:        A command-line music player
 License:        GPL-2.0-only
 URL:            https://github.com/ravachol/kew
 Source:         %{url}/archive/v%{version}/kew-%{version}.tar.gz
-BuildRequires:  libnotify-devel 
+BuildRequires:  libnotify-devel
 BuildRequires:  libogg-devel
 BuildRequires:  libtag-devel
 %if %{with aac}
