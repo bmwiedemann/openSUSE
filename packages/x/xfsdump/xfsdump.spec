@@ -1,7 +1,7 @@
 #
 # spec file for package xfsdump
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xfsdump
-Version:        3.1.12
+Version:        3.2.0
 Release:        0
 Summary:        Administrative Utilities for the XFS File System
 License:        GPL-2.0-or-later

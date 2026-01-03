@@ -319,4 +319,23 @@
     <comment></comment>
     <requestid>1254425</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>2abfa793ff8c962a43eb06cef9d42006</srcmd5>
+    <version>3.2.0</version>
+    <time>1767457556</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.0:
+  * xfsdump-3.2.0 (09 Sep 2024)
+  * don't use O_DIRECT on the RT device (Christoph Hellwig)
+  * Fix memory leak (Pavel Reichl)
+  * suggest -x rather than assert for false roots in restore
+    (Donald Douwsma)
+  * fix rootdir due to xfsdump bulkstat misuse (Gao Xiang)
+- update keyring
+
+  * xfsrestore: untangle inventory unpacking logic
+- Update to version 3.1.10
+- update to 2.0.0</comment>
+    <requestid>1325074</requestid>
+  </revision>
 </revisionlist>
