@@ -42,4 +42,26 @@
   * set default checksum type to sha256</comment>
     <requestid>1245859</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a60be5ba66e8fd8f58060e630c28a97c</srcmd5>
+    <version>0.3.12</version>
+    <time>1767457633</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.12:
+  * fix SparsePread() reading chunks smaller than grain size
+  * make SparsePread() thread safe by using stack for buffers
+  * vmdk-convert: multithreaded compression
+  * add `--detailed-info` option for `vmdk-convert -i`
+  * add configurable compression levels
+- update to 0.3.11:
+  * Fix `file_id` setting
+  * test_files: pass 'vmdk-convert' path to ova-compose.py
+  * add 'required' attribute to properties
+  * pytests: Add test_all_configs
+  * Fixed typo in README.md.
+  * pytests: Add conftest.py and other tests
+  * add support for optional ethernet mac address in hardware
+    config</comment>
+    <requestid>1325127</requestid>
+  </revision>
 </revisionlist>

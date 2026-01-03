@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jan  2 14:06:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.12:
+  * fix SparsePread() reading chunks smaller than grain size
+  * make SparsePread() thread safe by using stack for buffers
+  * vmdk-convert: multithreaded compression
+  * add `--detailed-info` option for `vmdk-convert -i`
+  * add configurable compression levels
+- update to 0.3.11:
+  * Fix `file_id` setting
+  * test_files: pass 'vmdk-convert' path to ova-compose.py
+  * add 'required' attribute to properties
+  * pytests: Add test_all_configs
+  * Fixed typo in README.md.
+  * pytests: Add conftest.py and other tests
+  * add support for optional ethernet mac address in hardware
+    config
+
+-------------------------------------------------------------------
 Fri Feb 14 10:57:15 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.3.10:
