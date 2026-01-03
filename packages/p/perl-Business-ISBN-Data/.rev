@@ -645,4 +645,17 @@
   	* data update for 2025-12-05</comment>
     <requestid>1323814</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>43a65e9f97639551eb42a3ea21bca318</srcmd5>
+    <version>20251219.1.0</version>
+    <time>1767457576</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 20251219.1.0 (20251219.001)
+   see /usr/share/doc/packages/perl-Business-ISBN-Data/Changes
+  20251219.001 2025-12-20T11:34:44Z
+  	* data update for 2025-12-19
+  20251216.001 2025-12-16T06:58:51Z
+  	* data update for 2025-12-16</comment>
+    <requestid>1325134</requestid>
+  </revision>
 </revisionlist>
