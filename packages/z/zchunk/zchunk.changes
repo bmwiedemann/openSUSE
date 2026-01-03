@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan  2 07:52:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.3:
+  * Rename internal close() functions to close_zck_component to
+    avoid POSIX conflict on AIX
+
+-------------------------------------------------------------------
 Mon Sep 15 15:51:32 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.2:
