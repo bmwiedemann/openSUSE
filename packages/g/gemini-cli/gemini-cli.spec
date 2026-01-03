@@ -1,7 +1,7 @@
 #
 # spec file for package gemini-cli
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gemini-cli
-Version:        0.22.4
+Version:        0.22.5
 Release:        0
 Summary:        An AI agent that brings the power of Gemini directly into your terminal
 License:        Apache-2.0

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan  2 14:28:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.22.5:
+  * fix(patch): cherry-pick 07e597d to release/v0.22.4-pr-15684
+
+-------------------------------------------------------------------
 Sun Dec 28 13:25:48 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.22.4:
