@@ -1,0 +1,36 @@
+From 9f1159e66e63502f66b210142136d0cca0bd0f1d Mon Sep 17 00:00:00 2001
+From: Shawn W Dunn <sfalken@opensuse.org>
+Date: Fri, 26 Dec 2025 09:45:05 -0800
+Subject: [PATCH] adjust-paths
+
+---
+ niri-settings    | 2 +-
+ niri_settings.py | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/niri-settings b/niri-settings
+index 987d2b2..1a55373 100755
+--- a/niri-settings
++++ b/niri-settings
+@@ -5,7 +5,7 @@ export PYTHONPYCACHEPREFIX=/tmp/pycache
+ if [ -f "$HOME/.local/lib/niri-settings/niri_settings.py" ]; then
+     exec python3 "$HOME/.local/lib/niri-settings/niri_settings.py"
+ else
+-    exec python3 "/usr/lib/niri-settings/niri_settings.py"
++    exec python3 "/usr/libexec/niri-settings/niri_settings.py"
+ fi
+ 
+ 
+diff --git a/niri_settings.py b/niri_settings.py
+index 567d452..0f7b1f6 100755
+--- a/niri_settings.py
++++ b/niri_settings.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ 
+ import sys
+ import os
+-- 
+2.52.0
+

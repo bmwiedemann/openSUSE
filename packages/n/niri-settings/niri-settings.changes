@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Fri Dec 26 17:42:45 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to version 0~git.20251225.d20e9f5:
+  * Updated Readme and demo
+  * Added syntax highlighter
+  * Added a file editor in Files tab; split it out; added trash and new file actions
+  * Translation updates from weblate (#16)
+  * Fix typo
+  * Cleanup; backup confirmation message; "hide backups" option; buttonicons; monospace in validator
+- Added 0001-adjust-paths.patch
+
+-------------------------------------------------------------------
+Thu Dec  4 19:48:41 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Initial Packaging
