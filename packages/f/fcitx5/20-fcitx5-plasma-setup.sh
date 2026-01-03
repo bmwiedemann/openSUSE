@@ -10,12 +10,12 @@ desktop_file="/usr/share/applications/org.fcitx.Fcitx5.desktop"
 
 # Do nothing for X11 session
 if [ "$XDG_SESSION_TYPE" != "wayland" ]; then
-    exit 0
+    return 0
 fi
 
 # Do nothing if kreadconfig6 is not available
 if ! command -v kreadconfig6 >/dev/null 2>&1; then
-    exit 0
+    return 0
 fi
 
 # check current virtual keyboard
@@ -35,7 +35,7 @@ if [ ! -e "$stamp_file" ]; then
     # check current virtual keyboard is None
     if [ -z "$current_im" ]; then
         # The virtual keyboard is not configured
-        echo "$0 is configuring the virtual keyboard for IBus."
+        echo "$0 is configuring the virtual keyboard for Fcitx."
         current_im=$desktop_file
         kwriteconfig6 --file kwinrc --group Wayland --key InputMethod $current_im
     else

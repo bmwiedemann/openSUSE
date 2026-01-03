@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 17 15:30:13 UTC 2025 - Fuminobu Takeyama <ftake@geeko.jp>
+
+- Use return instead of exit in 20-fcitx-plasma-setup.sh
+  * Fix boo#1255237
+- Replace "IBus" with "Fcitx" in a log message
+
+-------------------------------------------------------------------
 Mon Sep 15 13:40:18 UTC 2025 - Fuminobu Takeyama <ftake@geeko.jp>
 
 - Add an initial setup feature for Plasma Wayland
