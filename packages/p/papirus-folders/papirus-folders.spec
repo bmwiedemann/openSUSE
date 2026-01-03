@@ -1,7 +1,7 @@
 #
 # spec file for package papirus-folders
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           papirus-folders
-Version:        1.13.1
+Version:        1.14.0
 Release:        0
 Summary:        Change folders color of Papirus icon theme
 License:        MIT
@@ -29,8 +29,9 @@ Requires:       papirus-icon-theme
 BuildArch:      noarch
 
 %description
-Papirus Folders is a command-line utility that allows changing the color of folders in Papirus icon theme.
-Type 'papirus-folders --help' to see all options available.
+Papirus Folders is a command-line utility that allows changing the color of
+folders in Papirus icon theme.  Type 'papirus-folders --help' to see all
+options available.
 
 %prep
 %autosetup

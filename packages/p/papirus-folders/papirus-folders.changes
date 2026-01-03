@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan  2 14:20:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.14.0:
+  * Update icon caches for child themes automatically #44
+  * Added default color for Papirus-Light
+  * Delete default color for ePapirus
+
+-------------------------------------------------------------------
 Tue Jan 23 11:20:58 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.13.1:
@@ -41,7 +49,7 @@ Sun Nov  1 18:44:03 UTC 2020 - andy great <andythe_great@pm.me>
 - Update to version 1.8.0.
   * Added palebrown folder color that suitable to Adwaita GTK theme
   * Added breeze folder color that suitable to KDE Breeze theme
-  * Added paleorange folder color that suitable to the default 
+  * Added paleorange folder color that suitable to the default
     elementary OS theme
   * Update bash and zsh completion scripts
   * Drop KDE4 support
@@ -51,16 +59,16 @@ Sun Nov  1 18:44:03 UTC 2020 - andy great <andythe_great@pm.me>
   * Prevent changing user's icons when running with sudo
   * -t|--theme option now can accept a path to an icon theme as a
     value
-  * Added -o|--once option to skip saving the config file when 
+  * Added -o|--once option to skip saving the config file when
     changing color
   * Write messages to stdout instead of stderr
   * Changed exit code when parser fails
   * Added nordic folder color that suitable to Nordic GTK theme
   * Added deeporange folder color that suitable to Yaru GTK theme
   * Added indigo and white colors to completion scripts
-  * Added white folder colors 
+  * Added white folder colors
     PapirusDevelopmentTeam/papirus-icon-theme#1641
-  * Added indigo folder colors 
+  * Added indigo folder colors
     PapirusDevelopmentTeam/papirus-icon-theme#1632
   * Added pink and purple folder colors to papirus-icon-theme
   * Improved the message of usage
@@ -71,15 +79,15 @@ Sun Nov  1 18:44:03 UTC 2020 - andy great <andythe_great@pm.me>
   * Revert to default color works for unknown icon themes
   * Changed several error messages to make it more user-friendly
   * BSD and Linux versions of papirus-folders were merged into one
-  * Fixed bug with invalid symlinks that appears when changing 
+  * Fixed bug with invalid symlinks that appears when changing
     color to blue
   * Fixed find: ‘...’: No such file or directory crash
   * Fixed restore saved color when $HOME is unset
   * Fixed zsh completion for a case when icons_dir is a symlink
   * Added XDG Base Directory support
   * Improved bash/zsh completion scripts
-  * Added bluegrey folder color to match Adapta-BlueGrey(-Nokto) 
-    theme from adapta-gtk-theme-colorpack 
+  * Added bluegrey folder color to match Adapta-BlueGrey(-Nokto)
+    theme from adapta-gtk-theme-colorpack
     PapirusDevelopmentTeam/papirus-icon-theme#1177
   * Fixed paths to install the completion scripts
   * Added zsh and bash completions

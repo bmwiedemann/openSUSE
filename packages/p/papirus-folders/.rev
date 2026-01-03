@@ -48,4 +48,23 @@
     <comment></comment>
     <requestid>1184163</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3af97d1075ba513ea0406764fe14a4eb</srcmd5>
+    <version>1.14.0</version>
+    <time>1767457644</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.14.0:
+  * Update icon caches for child themes automatically #44
+  * Added default color for Papirus-Light
+  * Delete default color for ePapirus
+
+  * Added paleorange folder color that suitable to the default
+  * Added -o|--once option to skip saving the config file when
+  * Added white folder colors
+  * Added indigo folder colors
+  * Fixed bug with invalid symlinks that appears when changing
+  * Added bluegrey folder color to match Adapta-BlueGrey(-Nokto)
+    theme from adapta-gtk-theme-colorpack</comment>
+    <requestid>1325129</requestid>
+  </revision>
 </revisionlist>
