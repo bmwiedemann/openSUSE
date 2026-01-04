@@ -10221,6 +10221,12 @@ unsorted:
   - kimagemapeditor 
   - kimagemapeditor-lang 
   - kimap-devel 
+  - kime 
+  - kime-devel 
+  - kime-gtk3 
+  - kime-gtk4 
+  - kime-qt5 
+  - kime-qt6 
   - kind 
   - kind-bash-completion 
   - kind-fish-completion 
@@ -19881,6 +19887,7 @@ unsorted:
   - nintendo-gamecube-wiimote-udev-rules 
   - ninvaders 
   - niri 
+  - niri-settings 
   - nitrogen 
   - nitrogen-lang 
   - nix 
@@ -21071,6 +21078,7 @@ unsorted:
   - par 
   - par2cmdline 
   - par_text 
+  - paracon 
   - parallel-hashmap-devel 
   - parallel-printer-support 
   - paralleloverhead 
@@ -26752,6 +26760,8 @@ unsorted:
   - python311-pygn 
   - python311-pygraphviz 
   - python311-pygtkspellcheck 
+  - python311-pyham_ax25 
+  - python311-pyham_pe 
   - python311-pyhanko-certvalidator 
   - python311-pyhcl 
   - python311-pyhibp 
@@ -27922,6 +27932,7 @@ unsorted:
   - python312-Delorean 
   - python312-Deprecated 
   - python312-Django 
+  - python312-Django6 
   - python312-Dumper 
   - python312-Durus 
   - python312-EasyProcess 
@@ -30600,6 +30611,8 @@ unsorted:
   - python312-pygn 
   - python312-pygraphviz 
   - python312-pygtkspellcheck 
+  - python312-pyham_ax25 
+  - python312-pyham_pe 
   - python312-pyhanko-certvalidator 
   - python312-pyhcl 
   - python312-pyhibp 
@@ -31789,6 +31802,7 @@ unsorted:
   - python313-Delorean 
   - python313-Deprecated 
   - python313-Django 
+  - python313-Django6 
   - python313-Dumper 
   - python313-Durus 
   - python313-EasyProcess 
@@ -34425,6 +34439,8 @@ unsorted:
   - python313-pygn 
   - python313-pygraphviz 
   - python313-pygtkspellcheck 
+  - python313-pyham_ax25 
+  - python313-pyham_pe 
   - python313-pyhanko-certvalidator 
   - python313-pyhcl 
   - python313-pyhibp 
@@ -37398,6 +37414,7 @@ unsorted:
   - sddm 
   - sddm-conf 
   - sddm-conf-lang 
+  - sddm-config-wayland 
   - sddm-wayland-miriway 
   - sdgyrodsu 
   - sdl-asylum 
@@ -48157,6 +48174,7 @@ unsorted:
   - tmxtools 
   - tn5250 
   - tn5250-devel 
+  - tncattach 
   - tntdb-doc 
   - tntdb-mysql 
   - tntdb-postgresql 
