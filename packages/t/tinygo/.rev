@@ -97,4 +97,41 @@ It reuses libraries used by the Go language tools alongside LLVM to provide an a
   the testsuite runs at least (forwarded request 1313377 from favogt)</comment>
     <requestid>1313506</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fd7ae39da342ff1124026297567518d0</srcmd5>
+    <version>0.40.1</version>
+    <time>1767621128</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.40.1:
+  * nrf: fix flash writes when SoftDevice is enabled
+  * runtime: avoid fixed math/rand sequence on RP2040/RP2350
+  * runtime: add calls to initRand() during run() for all
+    schedulers
+  * runtime: call initRand() before initHeap() during
+    initialization
+  * runtime: use rand_hwrng hardwareRand for RP2040/RP2350
+  * picolibc: use updated location for git repo
+  * all: add full LLVM 20 support
+  * core: feat: enable //go:linkname pragma for globals
+  * core: feature: Add flag to ignore go compatibility matrix
+  * chore: update version for 0.40 development cycle
+  * emit an error when the actual arch doesn't match GOARCH
+  * mark string parameters as readonly
+  * use Tarjan's SCC algorithm to detect loops for defer
+  * lower &quot;large stack&quot; limit to 16kb
+  * shrink bdwgc library
+  * Fix linker errors for runtime.vgetrandom and
+    crypto/internal/sysrand.fatal
+  * fix: add TryLock to sync.RWMutex
+  * fix: correct linter issues exposed by the fix in #4679
+  * fix: don't hardcode success return state
+  * fix: expand RTT debugger compatibility
+  * internal/task (threads): save stack bounds instead of
+    scanning under a lock
+  * internal/task: create detached threads and fix error handling
+  * interp: better errors when debugging interp
+  * transform (gc): create stack slots in callers of external
+    functions</comment>
+    <requestid>1325238</requestid>
+  </revision>
 </revisionlist>

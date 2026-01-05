@@ -1,7 +1,7 @@
 #
 # spec file for package tinygo
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           tinygo
-Version:        0.39.0
+Version:        0.40.1
 Release:        0
 Summary:        Go toolchain targeting embedded devices and webassembly
 License:        Apache-2.0
