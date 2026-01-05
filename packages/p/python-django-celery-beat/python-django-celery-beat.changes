@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan  5 11:44:49 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.8.1
+  * Refactor / all_as_schedule crontab query optimization
+  * Consider server timezone on _get_timezone_offset instead of django's
+    settings
+  * Periodic task querying is a separate method
+- Add pytest9.patch to allow pytest 9
+
+-------------------------------------------------------------------
 Mon Apr 28 14:12:52 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Clean up the specfile a little bit

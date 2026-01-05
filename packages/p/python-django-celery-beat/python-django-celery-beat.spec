@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-celery-beat
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-django-celery-beat
-Version:        2.8.0
+Version:        2.8.1
 Release:        0
 Summary:        Database-backed Periodic Tasks
 License:        BSD-3-Clause
@@ -28,6 +28,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+# PATCH-FIX-UPSTREAM https://github.com/celery/django-celery-beat/pull/986 Allow pytest 9
+Patch0:         pytest9.patch
 Requires:       python-Django >= 3.2
 Requires:       python-celery >= 5.2.3
 Requires:       python-cron-descriptor >= 1.2.32
