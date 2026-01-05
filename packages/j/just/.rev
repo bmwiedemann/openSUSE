@@ -500,4 +500,26 @@
   * Remove redundant type annotation (forwarded request 1322617 from rrahl0)</comment>
     <requestid>1322618</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>1b8b148c40b5747c0aa66638453f0147</srcmd5>
+    <version>1.46.0</version>
+    <time>1767621251</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.46.0:
+  * Don't leak signal handler pipe into child processes
+  * Allow long to default to to parameter name
+  * Allow const expressions in all settings
+  * Allow const expressions in working-directory
+  * Add --usage subcommand and argument help strings
+  * Add flags without values
+  * Allow passing arguments as short -x options
+  * Allow recipes to take --long options
+  * Add original token to string literal
+  * Remove string literal lifetime
+  * Move overrides into config
+  * Test that options are passed as positional arguments
+  * Group arguments by parameter
+- enable tests again, needs package-meta, so switching to obs_scm (forwarded request 1325324 from rrahl0)</comment>
+    <requestid>1325325</requestid>
+  </revision>
 </revisionlist>

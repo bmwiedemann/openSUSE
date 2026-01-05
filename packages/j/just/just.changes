@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Jan  4 20:46:31 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.46.0:
+  * Don't leak signal handler pipe into child processes
+  * Allow long to default to to parameter name
+  * Allow const expressions in all settings
+  * Allow const expressions in working-directory
+  * Add --usage subcommand and argument help strings
+  * Add flags without values
+  * Allow passing arguments as short -x options
+  * Allow recipes to take --long options
+  * Add original token to string literal
+  * Remove string literal lifetime
+  * Move overrides into config
+  * Test that options are passed as positional arguments
+  * Group arguments by parameter
+- enable tests again, needs package-meta, so switching to obs_scm
+
+-------------------------------------------------------------------
 Fri Dec 12 13:42:28 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.45.0:

@@ -1,7 +1,21 @@
 <services>
-  <service name="download_files" mode="manual" />
+  <service name="obs_scm" mode="manual">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/casey/just.git</param>
+    <param name="revision">refs/tags/1.46.0</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="package-meta">yes</param>
+  </service>
+  <service name="set_version" mode="manual" />
+  <service name="tar" mode="buildtime">
+    <param name="package-meta">yes</param>
+  </service>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
   <service name="cargo_vendor" mode="manual">
-    <param name="src">just-*.tar.gz</param>
+    <param name="src">just</param>
     <param name="update">true</param>
   </service>
 </services>

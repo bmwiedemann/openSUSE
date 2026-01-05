@@ -1,7 +1,7 @@
 #
 # spec file for package just
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%bcond_with     tests
 Name:           just
-Version:        1.45.0
+Version:        1.46.0
 Release:        0
 Summary:        Commmand runner
 License:        (Apache-2.0 OR MIT) AND Unicode-DFS-2016 AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (MIT OR Unlicense) AND Apache-2.0 AND BSD-3-Clause AND CC0-1.0 AND MIT AND CC0-1.0
@@ -83,11 +82,8 @@ install -Dm0644 -T completions/%{name}.bash %{buildroot}%{_datadir}/bash-complet
 install -Dm0644 -T completions/%{name}.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/%{name}.fish
 install -Dm0644 -T completions/%{name}.zsh %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
 
-%if %{with tests}
 %check
-# we skip the tests, as they are super flakely
 %{cargo_test} --all
-%endif
 
 %files
 %license LICENSE
