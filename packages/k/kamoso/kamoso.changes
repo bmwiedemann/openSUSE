@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan  4 10:02:29 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change (kde#513544, boo#1255865)
+  * 0001-Revert-Use-KirigamiAddons-to-initialise-the-app.patch
+
+-------------------------------------------------------------------
 Sat Dec  6 11:40:25 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.0

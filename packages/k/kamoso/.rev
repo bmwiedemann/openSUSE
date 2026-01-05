@@ -759,4 +759,13 @@
     <comment>KDE release gear 25.12 (forwarded request 1321386 from krop)</comment>
     <requestid>1322340</requestid>
   </revision>
+  <revision rev="96" vrev="2">
+    <srcmd5>ad5b6d7b3c78501039812ebbf93ce318</srcmd5>
+    <version>25.12.0</version>
+    <time>1767621157</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream change (kde#513544, boo#1255865)
+  * 0001-Revert-Use-KirigamiAddons-to-initialise-the-app.patch</comment>
+    <requestid>1325251</requestid>
+  </revision>
 </revisionlist>
