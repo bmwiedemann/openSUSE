@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan  4 08:45:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.3:
+  * Fix inference of ``IfExp`` (ternary expression) nodes to
+    avoid prematurely narrowing results in the face of inference
+    ambiguity.
+  * Fix base class inference for dataclasses using the PEP 695
+    typing syntax.
+
+-------------------------------------------------------------------
 Mon Nov 17 04:33:23 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.0.2:

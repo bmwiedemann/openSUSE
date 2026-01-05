@@ -709,4 +709,17 @@ python-logilab-common is in openSUSE:Factory so this builds now.</comment>
     was added in Python 3.11, not 3.10</comment>
     <requestid>1318120</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>9fb7c0ea60dc44247f959bfc4b55c8e4</srcmd5>
+    <version>4.0.3</version>
+    <time>1767621015</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.0.3:
+  * Fix inference of ``IfExp`` (ternary expression) nodes to
+    avoid prematurely narrowing results in the face of inference
+    ambiguity.
+  * Fix base class inference for dataclasses using the PEP 695
+    typing syntax.</comment>
+    <requestid>1325245</requestid>
+  </revision>
 </revisionlist>
