@@ -1187,4 +1187,41 @@ nicer version with try-reload-or-restart</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1318544</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>5b667c9c82f784cfb3f809ce0a242cd8</srcmd5>
+    <version>0.4.8.21</version>
+    <time>1767621287</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.4.8.21:
+  * This release is a continuation of the previous one and
+    addresses additional Conflux-related issues identified through
+    further testing and feedback from relay operators. We strongly
+    recommend upgrading as soon as possible.
+  * Major bugfixes (conflux, exit):
+    - When dequeuing out-of-order conflux cells, the circuit
+    could be close in between two dequeue which could lead to a
+    mishandling of a NULL pointer. Fixes bug 41162;
+  * Add -mbranch-protection=standard for arm64.
+  * Regenerate fallback directories generated on November
+  * Update the geoip files to match the IPFire Location
+    Database, as retrieved on 2025/11/17.
+  * Fix a bug causing the initial tor process to hang
+    intead of exiting with RunAsDaemon, when pluggable transports
+    are used.
+
+    valid when it is successfully processed. This will quiet a
+  * CVE-2021-22929: do not log v2 onion services access attempt
+- tor 0.3.0.7:
+  quite a bit
+- Remove useless conditon for libevent, there is dependency for it
+  Clients using circuit isolation should upgrade;
+    load.
+    cell.
+- tor 0.2.4.22:
+  fixes potentially poor random number generation for users who
+  1) use OpenSSL 1.0.0 or later,
+  2) set &quot;HardwareAccel 1&quot; in their torrc file,
+  and (forwarded request 1325233 from dirkmueller)</comment>
+    <requestid>1325335</requestid>
+  </revision>
 </revisionlist>

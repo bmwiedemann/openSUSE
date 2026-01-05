@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Jan  3 21:31:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.8.21:
+  * This release is a continuation of the previous one and
+    addresses additional Conflux-related issues identified through
+    further testing and feedback from relay operators. We strongly
+    recommend upgrading as soon as possible.
+  * Major bugfixes (conflux, exit):
+    - When dequeuing out-of-order conflux cells, the circuit
+    could be close in between two dequeue which could lead to a
+    mishandling of a NULL pointer. Fixes bug 41162;
+  * Add -mbranch-protection=standard for arm64.
+  * Regenerate fallback directories generated on November
+  * Update the geoip files to match the IPFire Location
+    Database, as retrieved on 2025/11/17.
+  * Fix a bug causing the initial tor process to hang
+    intead of exiting with RunAsDaemon, when pluggable transports
+    are used.
+
+-------------------------------------------------------------------
 Wed Nov 12 03:28:25 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.de>
 
 - 0.4.8.20
@@ -108,7 +128,7 @@ Fri Nov  3 20:51:01 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
   * directory authority: Look at the network parameter
     "maxunmeasuredbw" with the correct spelling
   * vanguards addon support: Count the conflux linked cell as
-    valid when it is successfully processed. This will quiet a 
+    valid when it is successfully processed. This will quiet a
     spurious warn in the vanguards addon
 
 -------------------------------------------------------------------
@@ -161,7 +181,7 @@ Sun Jul 30 07:33:04 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - tor 0.4.7.14:
   *  bugfix affecting vanguards (onion service), and minor fixes
-  
+
 -------------------------------------------------------------------
 Fri Mar 10 08:27:57 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
@@ -203,14 +223,14 @@ Thu Nov 10 19:14:54 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
     client rendezvous circuit to avoid timeouts and retry load
   * Make the service retry a rendezvous if the circuit is being
     repurposed for measurements
-  
+
 -------------------------------------------------------------------
 Fri Aug 12 15:52:53 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - tor 0.4.7.10
   * IPFire location database did not have proper ARIN network
     allocations - affected circuit path selection and relay metrics
- 
+
 -------------------------------------------------------------------
 Thu Aug 11 16:39:24 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
@@ -276,7 +296,7 @@ Sat Nov 13 11:02:55 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
     errors by relays
   * Regenerate fallback directories for October 2021
   * Bug fixes for onion services
-  * CVE-2021-22929: do not log v2 onion services access attempt 
+  * CVE-2021-22929: do not log v2 onion services access attempt
     warnings on disk excessively (TROVE-2021-008, boo#1192658)
 
 -------------------------------------------------------------------
@@ -635,7 +655,7 @@ Sat Jul 14 18:31:57 UTC 2018 - astieger@suse.com
   * move to a new bridge authority
   * backport some bug fixes
 - refresh upstream signing keyring
-      
+
 -------------------------------------------------------------------
 Mon Jul  9 19:38:14 UTC 2018 - astieger@suse.com
 
@@ -783,7 +803,7 @@ Wed May 31 10:01:51 UTC 2017 - astieger@suse.com
 -------------------------------------------------------------------
 Tue May 16 00:26:43 UTC 2017 - astieger@suse.com
 
-- tor 0.3.0.7: 
+- tor 0.3.0.7:
   * Fix an assertion failure in the hidden service directory code,
     which could be used by an attacker to remotely cause a Tor
     relay process to exit. TROVE-2017-002 bsc#1039211
@@ -851,7 +871,7 @@ Sun Jan  1 11:43:02 UTC 2017 - tchvatal@suse.com
 
 - Remove conditionals for the sle11 as we won't build there due to
   openssl requirements. This reduces the logic in the spec file
-  quite a bit 
+  quite a bit
 
 -------------------------------------------------------------------
 Mon Dec 19 20:40:39 UTC 2016 - astieger@suse.com
@@ -964,7 +984,7 @@ Mon Mar 21 08:17:17 UTC 2016 - astieger@suse.com
 Fri Dec 11 14:41:37 UTC 2015 - mpluskal@suse.com
 
 - Make building more verbose
-- Remove useless conditon for libevent, there is dependency for it 
+- Remove useless conditon for libevent, there is dependency for it
   anyway
 
 -------------------------------------------------------------------
@@ -1022,7 +1042,7 @@ Sun Jul 12 20:54:48 UTC 2015 - astieger@suse.com
 Thu Jun 11 18:55:44 UTC 2015 - astieger@suse.com
 
 - tor 0.2.6.9:
-  Clients using circuit isolation should upgrade; 
+  Clients using circuit isolation should upgrade;
   all directory authorities should upgrade.
   * fixes a regression in the circuit isolation code
   * increases the requirements for receiving an HSDir flag
@@ -1067,7 +1087,7 @@ Mon Apr  6 18:56:30 UTC 2015 - astieger@suse.com
   - Decrease the amount of reattempts that a hidden service
     performs when its rendezvous circuits fail. This reduces the
     computational cost for running a hidden service under heavy
-    load. 
+    load.
 
 -------------------------------------------------------------------
 Sun Mar 29 11:51:09 UTC 2015 - astieger@suse.com
@@ -1193,7 +1213,7 @@ Wed Jul 30 22:52:17 UTC 2014 - andreas.stieger@gmx.de
     a small class of private ntor keys.
 - Minor bugfixes:
   - Warn and drop the circuit if we receive an inbound 'relay early'
-    cell. 
+    cell.
   - Correct a confusing error message when trying to extend a circuit
     via the control protocol but we don't know a descriptor or
     microdescriptor for one of the specified relays.
@@ -1209,7 +1229,7 @@ Fri Jun  6 18:51:36 UTC 2014 - andreas.stieger@gmx.de
 -------------------------------------------------------------------
 Sat May 17 23:13:54 UTC 2014 - andreas.stieger@gmx.de
 
-- tor 0.2.4.22: 
+- tor 0.2.4.22:
   Backports numerous high-priority fixes. These include blocking
   all authority signing keys that may have been affected by the
   OpenSSL "heartbleed" bug, choosing a far more secure set of TLS
@@ -1269,13 +1289,13 @@ Mon Jan 20 19:46:02 UTC 2014 - andreas.stieger@gmx.de
 Fri Dec 27 20:55:26 UTC 2013 - andreas.stieger@gmx.de
 
 - tor 0.2.4.20
-  fixes potentially poor random number generation for users who 
-  1) use OpenSSL 1.0.0 or later, 
-  2) set "HardwareAccel 1" in their torrc file, 
+  fixes potentially poor random number generation for users who
+  1) use OpenSSL 1.0.0 or later,
+  2) set "HardwareAccel 1" in their torrc file,
   3) have "Sandy Bridge" or "Ivy Bridge" Intel processors
-  and 
+  and
   4) have no state file in their DataDirectory (as would happen on
-  first start). 
+  first start).
   Users who generated relay or hidden service identity keys in such
   a situation should discard them and generate new ones.
   No 2 is not the default configuration for openSUSE.
@@ -1322,7 +1342,7 @@ Sat Dec 14 17:43:22 UTC 2013 - andreas.stieger@gmx.de
   transports, and a new "circuitmux" abstraction storing the queue of
   circuits for a channel. The release also includes many stability,
   security, and privacy fixes.
-- full changelog relative to 0.2.3.x and 0.2.4.x RC series: 
+- full changelog relative to 0.2.3.x and 0.2.4.x RC series:
   https://gitweb.torproject.org/tor.git?a=blob_plain;hb=release-0.2.4;f=ReleaseNotes
 
 -------------------------------------------------------------------
@@ -1367,13 +1387,13 @@ Tue Nov 27 21:46:02 UTC 2012 - andreas.stieger@gmx.de
   + significantly reduced directory overhead (via microdescriptors)
   + enormous crypto performance improvements for fast relays on new
      enough hardware
-  + new v3 TLS handshake protocol that can better resist 
+  + new v3 TLS handshake protocol that can better resist
     fingerprinting
   + support for protocol obfuscation plugins (pluggable transports)
   + better scalability for hidden services
   + IPv6 support for bridges
-  + performance improvements 
-  + new "stream isolation" design to isolate different applications 
+  + performance improvements
+  + new "stream isolation" design to isolate different applications
     on different circuits
   + many stability, security, and privacy fixes
   + Complete list of changes enumerated in:
@@ -1382,7 +1402,7 @@ Tue Nov 27 21:46:02 UTC 2012 - andreas.stieger@gmx.de
   + Tear down the circuit when receiving an unexpected SENDME cell.
     [bnc#791374] CVE-2012-5573
 - build using --enable-bufferevents provided by Libevent 2.0.13
- 
+
 -------------------------------------------------------------------
 Tue Nov 20 09:07:23 UTC 2012 - dimstar@opensuse.org
 
@@ -1394,7 +1414,7 @@ Sat Sep 15 14:08:49 UTC 2012 - andreas.stieger@gmx.de
 
 - update to 0.2.2.39 [bnc#780620]
   Changes in version 0.2.2.39 - 2012-09-11
-  Tor 0.2.2.39 fixes two more opportunities for remotely triggerable 
+  Tor 0.2.2.39 fixes two more opportunities for remotely triggerable
   assertions.
 
   o Security fixes:
@@ -1414,7 +1434,7 @@ Mon Aug 20 19:11:57 UTC 2012 - andreas.stieger@gmx.de
   Changes in version 0.2.2.38 - 2012-08-12
   Tor 0.2.2.38 fixes a rare race condition that can crash exit relays;
   fixes a remotely triggerable crash bug; and fixes a timing attack that
-  could in theory leak path information.  
+  could in theory leak path information.
   o Security fixes:
     - Avoid read-from-freed-memory and double-free bugs that could occur
       when a DNS request fails while launching it.
@@ -1618,7 +1638,7 @@ Mon Jan  2 16:51:20 UTC 2012 - andreas.stieger@gmx.de
 -------------------------------------------------------------------
 Fri Dec 16 20:37:05 UTC 2011 - andreas.stieger@gmx.de
 
-- update to upstream 0.2.2.35, which fixes a critical heap-overflow 
+- update to upstream 0.2.2.35, which fixes a critical heap-overflow
   security issue: CVE-2011-2778 For a full list of changes, see:
   https://gitweb.torproject.org/tor.git/blob_plain/release-0.2.2:/ReleaseNotes
 
@@ -3194,22 +3214,22 @@ Fri Nov 26 17:12:40 UTC 2010 - andreas.stieger@gmx.de
 Fri Aug  6 03:53:35 UTC 2010 - cristian.rodriguez@opensuse.org
 
 - %ghost the pid file so /var/run can be mounted tmpfs
-- require logrotate 
+- require logrotate
 
 -------------------------------------------------------------------
 Sat May 29 17:50:51 UTC 2010 - andreas.stieger@gmx.de
 
-- updated to upstream 0.2.1.26 
+- updated to upstream 0.2.1.26
 
 -------------------------------------------------------------------
 Sun Mar 28 17:00:30 UTC 2010 - andreas.stieger@gmx.de
 
-- updated to upstream 0.2.1.25 
+- updated to upstream 0.2.1.25
 
 -------------------------------------------------------------------
 Mon Mar  1 20:49:13 UTC 2010 - andreas.stieger@gmx.de
 
-- new upstream version (0.2.1.24) 
+- new upstream version (0.2.1.24)
 
 -------------------------------------------------------------------
 Fri Jan 29 13:34:55 UTC 2010 - puzel@novell.com
