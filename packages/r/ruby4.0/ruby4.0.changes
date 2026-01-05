@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Jan  2 21:48:32 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- BuildRequire gcc-c++ to fix building c++ based extensions
+
+-------------------------------------------------------------------
+Thu Dec 25 14:37:42 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- drop unneeded ruby32 provides
+
+-------------------------------------------------------------------
+Thu Dec 25 12:32:51 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.0.0
+  https://www.ruby-lang.org/en/news/2025/12/25/ruby-4-0-0-released/
+
+-------------------------------------------------------------------
+Thu Dec 18 18:46:39 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.0.0~preview3
+  https://www.ruby-lang.org/en/news/2025/12/18/ruby-4-0-0-preview3-released/
+- drop really-skip-the-sendmail-tests.patch
+
+-------------------------------------------------------------------
+Tue Dec  2 15:54:39 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Fix yjit build. the vendor tarball no longer needs to be unpacked
+  into the subdir.
+- also enable zjit with the yjit conditional. Both require rust so
+  there is no need to split it out into another conditional.
+
+-------------------------------------------------------------------
 Tue Dec  2 12:35:25 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Add missing +0 for the prerelease ABI 

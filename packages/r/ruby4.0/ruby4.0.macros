@@ -6,7 +6,7 @@
 #
 # IMPORTANT IMPORTANT IMPORTANT IMPORTANT  IMPORTANT IMPORTANT
 #
-%rubygemsruby40() rubygem(ruby:4.0.0+0:%{expand:%%rubygemsx%*} %{expand:%%{rubygems%*}}
+%rubygemsruby40() rubygem(ruby:4.0.0:%{expand:%%rubygemsx%*} %{expand:%%{rubygems%*}}
 %rubygemsxruby40() %{expand:%%{rubygemsx%*}}
 
 %rubyruby40() ruby4.0 %{expand:%%rubyx%*} %{expand:%%{ruby%*}}

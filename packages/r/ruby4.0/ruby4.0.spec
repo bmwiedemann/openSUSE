@@ -36,12 +36,12 @@
 
 %global patch_level p0
 Name:           ruby4.0%{psuffix}
-Version:        4.0.0~preview2
+Version:        4.0.0
 Release:        0
-%global pkg_version 4.0.0-preview2
+%global pkg_version %{version}
 # make the exported API version explicit
-# TODO: remove the +0 before the final release
-%global api_version 4.0.0+0
+# TODO: remove the +1 before the final release
+%global api_version 4.0.0
 %global rb_binary_suffix .ruby4.0
 %global rb_soname ruby4.0
 %global _rb_ua_weight 40
@@ -71,7 +71,7 @@ Release:        0
 %global rb_ua_weight %{_rb_ua_weight}
 %endif
 
-%define ua_binaries bundle bundler racc rake rbs rdoc ri typeprof rdbg syntax_suggest test-unit
+%define ua_binaries bundle bundler racc rake rbs rdoc ri typeprof rdbg syntax_suggest test-unit minitest
 # keep in sync with macro file!
 #
 # from valgrind.spec
@@ -98,14 +98,13 @@ Source5:        vendor.tar.xz
 Source98:       series
 Source99:       %{rb_soname}-rpmlintrc
 Patch:          use-pie.patch
-# PATCH-FIX-UPSTREAM - really skip all tests of the sendmail testsuite
-Patch1:         really-skip-the-sendmail-tests.patch
 BuildRequires:  ruby-bundled-gems-rpmhelper
 %if %{with clang}
 BuildRequires:  clang
 BuildRequires:  lld
 BuildRequires:  llvm-devel
 %endif
+BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
 %if %{with jemalloc}
 BuildRequires:  jemalloc-devel
@@ -153,7 +152,6 @@ BuildRequires:  valgrind-client-headers
 BuildRequires:  xz
 Provides:       ruby(abi) = %{rb_ver}
 Conflicts:      ruby(abi) = %{rb_ver}
-Provides:       ruby32  = %{version}-%{release}
 %if 0%{?is_default_ruby}
 Provides:       ruby-default = %{version}-%{release}
 Conflicts:      otherproviders(ruby-default)
@@ -306,10 +304,7 @@ tasks (as in Perl).  It is extensible.
 - Dynamic Loading of Object Files (on some architectures)
 
 %prep
-%autosetup -p1 -n ruby-%{pkg_version}
-pushd yjit
-tar xf %{SOURCE5}
-popd
+%autosetup -p1 -a5 -n ruby-%{pkg_version}
 
 find sample -type f -perm /a=x -ls -exec chmod a-x \{\} \+
 # replace "/usr/bin/env ruby" and "/usr/local/bin/ruby" with correct path
@@ -339,6 +334,7 @@ export ASFLAGS="$CFLAGS"
   %endif
   %if %{with yjit}
   --enable-yjit \
+  --enable-zjit \
   %endif
   %if %{with jemalloc}
   --with-jemalloc \
@@ -451,7 +447,7 @@ DISABLE_TESTS=""
 export OPENSSL_ENABLE_MD5_VERIFY=1
 export LD_LIBRARY_PATH="$PWD"
 export PATH=%{buildroot}%{_bindir}:$PATH
-make test test-tool test-all V=1 TESTOPTS="%{?_smp_mflags} -q --tty=no $DISABLE_TESTS" TESTS="-x test_rinda -x test_address_resolve -x test_tcp -x test_gem_installer -x test_readline -x test_reline"
+make test test-tool test-all V=1 TESTOPTS="%{?_smp_mflags} -q --tty=no $DISABLE_TESTS" TESTS="-x test_rinda -x test_address_resolve -x test_tcp -x test_gem_installer -x test_readline -x test_reline -x test_box -x test_ractor"
 
 %else
 
@@ -484,6 +480,7 @@ make test test-tool test-all V=1 TESTOPTS="%{?_smp_mflags} -q --tty=no $DISABLE_
 %{_bindir}/gem*
 %{_bindir}/rdbg*
 %{_bindir}/irb*
+%{_bindir}/minitest*
 %{_bindir}/rake*
 %{_bindir}/rdoc*
 %{_bindir}/rbs*

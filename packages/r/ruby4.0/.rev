@@ -7,4 +7,26 @@
     <comment>Meow Woof Moo</comment>
     <requestid>1320838</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2f56c541d0619380aaf66e373f1e8873</srcmd5>
+    <version>4.0.0</version>
+    <time>1767621085</time>
+    <user>anag_factory</user>
+    <comment>- BuildRequire gcc-c++ to fix building c++ based extensions
+
+- drop unneeded ruby32 provides
+
+- Update to 4.0.0
+  https://www.ruby-lang.org/en/news/2025/12/25/ruby-4-0-0-released/
+
+- Update to 4.0.0~preview3
+  https://www.ruby-lang.org/en/news/2025/12/18/ruby-4-0-0-preview3-released/
+- drop really-skip-the-sendmail-tests.patch
+
+- Fix yjit build. the vendor tarball no longer needs to be unpacked
+  into the subdir.
+- also enable zjit with the yjit conditional. Both require rust so
+  there is no need to split it out into another conditional.</comment>
+    <requestid>1325186</requestid>
+  </revision>
 </revisionlist>
