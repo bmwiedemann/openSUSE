@@ -1,7 +1,7 @@
 #
 # spec file for package headscale
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,7 +50,20 @@ a small open-source organisation.
 %autosetup -a1 -p1
 
 %build
-go build -v -buildmode=pie -mod=vendor -tags "ts2019" -ldflags "-X github.com/juanfont/headscale/hscontrol/types.Version=%{version} -X github.com/juanfont/headscale/hscontrol/types.GitCommitHash=v%{version}" ./cmd/headscale
+# currently setting the version and commit hash via ldflags does
+# not look functional. So we patch the values in via perl for now.
+
+DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
+BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
+
+version_file="hscontrol/types/version.go"
+
+perl -p -i.bak -e "s|(Version:\s+)\"dev\"|\$1\"%{version}\"|g ; s|(Commit:\s+)\"unknown\"|\$1\"v%{version}\"|g ; s|(BuildTime:\s+)\"unknown\"|\$1\"${BUILD_DATE}\"|g" ${version_file}
+diff -urN ${version_file}{.bak,} ||:
+rm -f ${version_file}.bak
+
+# non_working_ldflags='-ldflags "-X main.version=%{version} -X ${version_prefix}.Version=%{version} -X ${version_prefix}.GitCommitHash=v%{version} -X ${version_prefix}.BuildTime=${BUILD_DATE}"'
+go build -v -buildmode=pie -mod=vendor -o headscale ./cmd/headscale
 
 %sysusers_generate_pre %{SOURCE2} %{name} %{name}.conf
 
