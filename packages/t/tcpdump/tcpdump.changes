@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Fri Jan  2 08:55:43 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 4.99.6:
+  * Remove protocol decoding for:
+    - OTV (draft-hasmit-otv-04, this Internet-Draft is no longer active).
+  * Refine protocol decoding for:
+    - DNS: Use ND_TCHECK_LEN() instead of a custom bounds check.
+    - IPv6: Add a missing comma and remove a colon in the output.
+    - TCP: Note if the Urgent Pointer is non-zero while URG flag not set,
+           if the verbose level is > 1 (option -vv and more).
+    - TCP: Note if the Acknowledgment Number is non-zero while ACK flag
+           not set, if the verbose level is > 1 (option -vv and more).
+    - TCP: Fix Reset segment processing.
+    - IP, IPv6: Fix setting the snapshot length for the payload.
+    - IP: Use ND_TTEST_LEN() instead of a custom bounds check.
+    - frag6: Add a bounds check in non-verbose mode.
+    - PTP: Remove spaces before colons in output.
+    - PTP: Fix management packet fields.
+    - ISO: Avoid undefined behavior and integer overflow in the Fletcher
+           checksum calculation.
+    - NFS: Delete dead code.
+    - BOOTP: Use an uint16_t variable to get the result of a GET_BE_U_2().
+    - ZEP: use the existing NTP time formatting code.
+    - NTP: Fix p_ntp_time_fmt() using epoch 1/epoch 2 convention (RFC 4330).
+    - NTP: Update a field name with the RFC 5905 name (Origin Timestamp).
+    - IPv6 mobility: Modernize packet parsing and make fixes.
+    - IP6OPTS: Modernize packet parsing and make fixes.
+    - VXLAN: Add UDP port 8472 used by Linux as the default port.
+    - EGP: Replace custom code with tok2str(); Modernize packet parsing and
+           fix printing with -v option.
+  * User interface:
+    - Add optional unit suffix on -C file size.
+    - Improve the handling of size suffixes for -C.
+    - Print errors for options -A, -x[x] and -X[X] (mutually exclusive).
+    - Print errors about -C, -G and -z options usage.
+    - For PCAP_ERROR_CAPTURE_NOTSUP, show the error message provided
+      by libpcap for that error if it's non-empty.
+    - Update the -z option processing. Print "invalid option -- z" when it is.
+    - Add the -g option, causing IPv4 output in verbose mode to be on one line.
+  * Other:
+    - Avoid race condition when receiving signal during shutdown.
+    - Always show the interface name in error messages when the
+      interface can't be opened.
+    - Clean up the message shown if a -i flag is specified with an
+      interface index that's too large.
+  * Source code:
+    - Fix '-tt' option printing when time > 2106-02-07T06:28:15Z.
+    - Add sub-second packet timestamp checks for invalid micro/nano.
+    - Remove unused missing/snprintf.c.
+    - Use C99 macros to define 64-bit constants and maximum 64-bit values.
+  * Building and testing:
+    - Makefile.in: Use a local libpcap in the releasecheck target.
+    - Autoconf: Use AC_SYS_YEAR2038_RECOMMENDED when possible if the
+      environment variable BUILD_YEAR2038 = yes (via autogen.sh).
+    - Require config.h to be from the tcpdump build.
+    - AppVeyor: Update Npcap SDK to 1.15.
+  * Update tcpdump.keyring with upstream signing key.
+
+-------------------------------------------------------------------
 Wed Dec  4 08:40:11 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Update tcpdump.keyring with upstream RSA signing key.

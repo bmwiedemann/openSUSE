@@ -1,7 +1,7 @@
 #
 # spec file for package tcpdump
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define min_libpcap_version 1.10.0
 Name:           tcpdump
-Version:        4.99.5
+Version:        4.99.6
 Release:        0
 Summary:        A Packet Sniffer
 License:        BSD-3-Clause
