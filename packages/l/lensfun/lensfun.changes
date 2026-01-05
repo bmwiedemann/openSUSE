@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jan  3 15:56:44 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+-  Remove specfile python package handling and use
+   lensfun-pr2256-setuptools.patch instead.
+   * Backported from gh#lensfun/lensfun#2256
+   * Additionally, disable build isolation for offline build
+   * Replace -m build with -m pip wheel and keep the setup.py for
+     old distro compatibility (Also doesn't build again at install
+     phase)
+
+-------------------------------------------------------------------
+Fri Jan  2 20:56:13 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Python Package updates:
+  * Replace deprecated setup.py usage with PEP517 build
+  * It is a pure python package, thus noarch
+
+-------------------------------------------------------------------
 Tue Aug  5 09:23:51 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change (boo#1247449)

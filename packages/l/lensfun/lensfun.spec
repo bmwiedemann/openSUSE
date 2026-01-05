@@ -1,7 +1,7 @@
 #
 # spec file for package lensfun
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ Source1:        data-master.tar.xz
 Patch0:         lensfun-cmake4.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         lensfun-python314.patch
+# PATCH-FIX-UPSTREAM lensfun-pr2256-setuptools.patch gh#lensfun/lensfun#2256 backported and without build isolation for offline build
+Patch2:         lensfun-pr2256-setuptools.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -37,9 +39,11 @@ BuildRequires:  gcc-c++
 BuildRequires:  libpng-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3
+BuildRequires:  python3-base
 BuildRequires:  python3-docutils
+BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(glib-2.0)
 
@@ -93,6 +97,7 @@ Library files needed by the use the lensfun library/database.
 %package -n python3-lensfun
 Summary:        Python3 lensfun bindings
 Requires:       liblensfun%{sonum} = %{version}
+BuildArch:      noarch
 
 %description -n python3-lensfun
 Lensfun bindings for Python 3
@@ -109,6 +114,7 @@ adapters in lensfun.
 %package doc
 Summary:        Documentation for lensfun
 Requires:       lensfun-data
+BuildArch:      noarch
 
 %description doc
 Documentation and manual files for the lensfun library/database.
@@ -129,7 +135,10 @@ echo 'HTML_TIMESTAMP=NO' >> docs/doxyfile.in.cmake
 sed -i \
     -e "s|^#!/usr/bin/env python3$|#!/usr/bin/python3|g" \
   apps/lensfun-add-adapter \
-  apps/lensfun-update-data \
+  apps/lensfun-update-data
+# remove shebang from non-executable
+sed -i \
+    -e '1 {/^#!/d}' \
   apps/lensfun/__init__.py.in
 
 sed -i 's#/usr/bin/env sh#/usr/bin/sh#' apps/g-lensfun-update-data
@@ -149,16 +158,7 @@ sed -i 's#/usr/bin/env sh#/usr/bin/sh#' apps/g-lensfun-update-data
 %install
 %cmake_install
 
-pushd build/apps
-python3 setup.py install --root="%{buildroot}" --skip-build
-popd
-
-# Unneeded
-%if 0%{?suse_version} > 1500
-rm %{buildroot}%{python3_sitelib}/lensfun-*.egg
-%endif
-
-# Create udate folder for lensfun data
+# Create update folder for lensfun data
 mkdir -p %{buildroot}%{_localstatedir}/lib/lensfun-updates
 
 %fdupes %{buildroot}
@@ -187,7 +187,7 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}${LD_LIBRARY_PATH:+:${LD_LIBRARY_PA
 
 %files -n python3-lensfun
 %{python3_sitelib}/lensfun/
-%{python3_sitelib}/lensfun-*.egg-info
+%{python3_sitelib}/lensfun-%{version}.dist-info
 
 %files devel
 %{_includedir}/lensfun/

@@ -1,0 +1,115 @@
+From 7df6795e5d0fa768132dfce78148b363566de473 Mon Sep 17 00:00:00 2001
+From: Jonas Ott <git@jonas-ott.de>
+Date: Sun, 28 Jul 2024 21:54:37 +0200
+Subject: [PATCH 1/2] stop deprecated direct call of setup.py, install python
+ build in workflows
+
+
+Index: lensfun-0.3.4/apps/CMakeLists.txt
+===================================================================
+--- lensfun-0.3.4.orig/apps/CMakeLists.txt
++++ lensfun-0.3.4/apps/CMakeLists.txt
+@@ -1,14 +1,13 @@
+-IF(WIN32)
+-  SET(COMMON_LIBS getopt)
+-ENDIF()
+-
+ IF(BUILD_LENSTOOL)
+-    FIND_PACKAGE(PNG REQUIRED)
+-    INCLUDE_DIRECTORIES(${ZLIB_INCLUDE_DIR})
+-    INCLUDE_DIRECTORIES(${PNG_INCLUDE_DIR})
+-    INCLUDE_DIRECTORIES(${ZLIB_INCLUDE_DIR})
++    INCLUDE_DIRECTORIES(${ZLIB_INCLUDE_DIRS})
++    INCLUDE_DIRECTORIES(${PNG_INCLUDE_DIRS})
++    INCLUDE_DIRECTORIES(${ZLIB_INCLUDE_DIRS})
+     ADD_EXECUTABLE(lenstool lenstool/lenstool.cpp lenstool/image.cpp)
+-    TARGET_LINK_LIBRARIES(lenstool lensfun ${COMMON_LIBS} ${PNG_LIBRARY} ${ZLIB_LIBRARY})
++    TARGET_COMPILE_DEFINITIONS(lenstool PRIVATE -Dauxfun_EXPORTS)
++    TARGET_LINK_LIBRARIES(lenstool lensfun ${PNG_LIBRARIES} ${ZLIB_LIBRARIES})
++    IF(WIN32)
++      TARGET_LINK_LIBRARIES(lenstool getopt)
++    ENDIF()
+     INSTALL(TARGETS lenstool DESTINATION ${CMAKE_INSTALL_BINDIR})
+ ENDIF()
+ 
+@@ -20,27 +19,42 @@ ENDIF(INSTALL_HELPER_SCRIPTS)
+ 
+ 
+ # Inspired by http://bloerg.net/2012/11/10/cmake-and-distutils.html
++IF(INSTALL_PYTHON_MODULE)
++    FIND_PACKAGE (Python3 COMPONENTS Interpreter REQUIRED)
++    # Windows has a dummy python.exe in the PATH which opens the Microsoft Store, so check if Python is real.
++    EXECUTE_PROCESS(COMMAND ${Python3_EXECUTABLE} --version RESULT_VARIABLE PY_RESULT OUTPUT_QUIET)
++    IF (NOT PY_RESULT EQUAL 0)
++      MESSAGE(FATAL_ERROR "Python3 not found, it might be a dummy python.exe")
++    ENDIF()
+ 
+-FIND_PROGRAM(PYTHON "python3")
+-IF(PYTHON)
+-    SET(SETUP_PY_IN "${CMAKE_CURRENT_SOURCE_DIR}/setup.py.in")
+-    SET(SETUP_PY    "${CMAKE_CURRENT_BINARY_DIR}/setup.py")
+-    SET(DEPS_IN     "${CMAKE_CURRENT_SOURCE_DIR}/lensfun/__init__.py.in")
+-    SET(DEPS        "${CMAKE_CURRENT_BINARY_DIR}/lensfun/__init__.py")
+-    SET(OUTPUT      "${CMAKE_CURRENT_BINARY_DIR}/build/timestamp")
++    SET(SETUP_PY_IN       "${CMAKE_CURRENT_SOURCE_DIR}/setup.py.in")
++    SET(SETUP_PY          "${CMAKE_CURRENT_BINARY_DIR}/setup.py")
++    SET(PYPROJECT_TOML_IN "${CMAKE_CURRENT_SOURCE_DIR}/pyproject.toml.in")
++    SET(PYPROJECT_TOML    "${CMAKE_CURRENT_BINARY_DIR}/pyproject.toml")
++    SET(DEPS_IN           "${CMAKE_CURRENT_SOURCE_DIR}/lensfun/__init__.py.in")
++    SET(DEPS              "${CMAKE_CURRENT_BINARY_DIR}/lensfun/__init__.py")
++    SET(OUTPUT            "${CMAKE_CURRENT_BINARY_DIR}/build/timestamp")
+ 
++    FILE(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/build/")
++    FILE(TO_NATIVE_PATH "${CMAKE_CURRENT_BINARY_DIR}" PY_PACKAGE_DIR)
+     CONFIGURE_FILE(${SETUP_PY_IN} ${SETUP_PY})
++    CONFIGURE_FILE(${PYPROJECT_TOML_IN} ${PYPROJECT_TOML})
+     CONFIGURE_FILE(${DEPS_IN} ${DEPS})
+ 
+     ADD_CUSTOM_COMMAND(OUTPUT ${OUTPUT}
+-                       COMMAND ${PYTHON} ${SETUP_PY} build
++                       COMMAND ${Python3_EXECUTABLE} -m pip wheel
++                         --no-build-isolation
++                         --use-pep517
++                         --wheel-dir ${CMAKE_CURRENT_BINARY_DIR}/build
++                         ${CMAKE_CURRENT_BINARY_DIR} 
+                        COMMAND ${CMAKE_COMMAND} -E touch ${OUTPUT}
+-                       DEPENDS ${DEPS_IN})
++                       DEPENDS ${PYPROJECT_TOML_IN} ${DEPS_IN})
+ 
+     ADD_CUSTOM_TARGET(python-package ALL DEPENDS ${OUTPUT})
+ 
+-    IF(NOT DEFINED SETUP_PY_INSTALL_PREFIX)
+-      SET(SETUP_PY_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
++    IF(NOT DEFINED PY_INSTALL_PREFIX)
++      SET(PY_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
+     ENDIF()
+-    INSTALL(CODE "execute_process(COMMAND ${PYTHON} ${SETUP_PY} install --prefix=\$ENV{DESTDIR}${SETUP_PY_INSTALL_PREFIX})")
+-ENDIF(PYTHON)
++    INSTALL(CODE "execute_process(COMMAND ${Python3_EXECUTABLE} -m pip install --no-build-isolation --prefix=\$ENV{DESTDIR}${PY_INSTALL_PREFIX} ${CMAKE_CURRENT_BINARY_DIR}/build/lensfun-${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_MICRO}-py3-none-any.whl)")
++
++ENDIF()
+Index: lensfun-0.3.4/apps/pyproject.toml.in
+===================================================================
+--- /dev/null
++++ lensfun-0.3.4/apps/pyproject.toml.in
+@@ -0,0 +1,10 @@
++[build-system]
++requires = ["setuptools"]
++build-backend = "setuptools.build_meta"
++
++[project]
++name = "lensfun"
++version= "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_MICRO}"
++
++[tool.setuptools]
++packages = ["lensfun"]
+Index: lensfun-0.3.4/apps/setup.py.in
+===================================================================
+--- lensfun-0.3.4.orig/apps/setup.py.in
++++ lensfun-0.3.4/apps/setup.py.in
+@@ -8,5 +8,4 @@ from setuptools import setup
+ 
+ setup(name="lensfun",
+       version="${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_MICRO}",
+-      package_dir={"": "${CMAKE_CURRENT_BINARY_DIR}"},
+       packages=["lensfun"])

@@ -451,4 +451,20 @@
 - Update lens database</comment>
     <requestid>1297678</requestid>
   </revision>
+  <revision rev="54" vrev="6">
+    <srcmd5>42f8621b6bcd5efc5c112dbd3a98c05d</srcmd5>
+    <version>0.3.4</version>
+    <time>1767621071</time>
+    <user>anag_factory</user>
+    <comment>It now works for tumbleweed with setuptools 80 but still with leap 15.6 as well
+
+-  Remove specfile python package handling and use
+   lensfun-pr2256-setuptools.patch instead.
+   * Backported from gh#lensfun/lensfun#2256
+   * Additionally, disable build isolation for offline build
+   * Replace -m build with -m pip wheel and keep the setup.py for
+     old distro compatibility (Also doesn't build again at install
+     phase) (forwarded request 1325255 from bnavigator)</comment>
+    <requestid>1325285</requestid>
+  </revision>
 </revisionlist>
