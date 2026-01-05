@@ -1,7 +1,7 @@
 #
 # spec file for package ironwail
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ironwail
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        High-performance QuakeSpasm fork
 License:        GPL-2.0-or-later
@@ -55,10 +55,7 @@ for ironquake to start:
 
 %build
 export CFLAGS="%{optflags}"
-# LDFLAGS needed for link to not fail on Leap 15.5
-export LDFLAGS="-ldl"
 %make_build -C Quake\
-	    DO_USERDIRS=1 \
 	    USE_CODEC_FLAC=1 \
 	    USE_CODEC_OPUS=1 \
 	    USE_CODEC_MIKMOD=1 \

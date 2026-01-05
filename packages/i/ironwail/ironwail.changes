@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Jan  4 11:16:59 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to v0.8.1
+  * Added initial MD3 support (as an additional "Remastered" model type)
+    by @jjelliott for Quake Brutalist Jam III
+  * Improved controller support:
+      - fixed PlayStation Rumble & Gyro functionality under Bluetooth
+	    mode by @AL2009man
+      - smoother flick stick adjustments
+      - increased max gyro sensitivity in the menu from 8 to 20
+      - controller LED is turned off when exiting the game
+  * Changed rendering code to avoid issues with certain AMD GPU drivers
+  * Improved map leak visualization
+  * Fixed console links sometimes not working
+  * Reset music on game change
+  * Rich Presence: Show mapname if levelname is empty by @Prokopiy19
+  * Added scr_showspeed_ofs cvar (default: 0), currently not exposed in the menus
+  * Route extra texture types to developer > 1 by @jjelliott
+  * Fix base dir in current directory by @skalleAnka
+  * Enable DO_USERDIRS by default for Unix-like platforms by @4LT
+
+-------------------------------------------------------------------
 Sat Mar 15 12:16:34 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
 
 - added missing dependency 
