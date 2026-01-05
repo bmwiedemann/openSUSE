@@ -158,4 +158,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1190427</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0a1daf4829143ab0d1b3d2c4ada96505</srcmd5>
+    <version>1.1.8</version>
+    <time>1767621009</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.1.8:
+  * version 1.1.8 (released 2025-06-11)
+  * Fixed compilation warnings for clang 20
+  * Fixed some cmake issues
+- add gpg validation</comment>
+    <requestid>1325206</requestid>
+  </revision>
 </revisionlist>

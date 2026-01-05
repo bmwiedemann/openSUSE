@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan  3 15:28:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.8:
+  * version 1.1.8 (released 2025-06-11)
+  * Fixed compilation warnings for clang 20
+  * Fixed some cmake issues
+- add gpg validation
+
+-------------------------------------------------------------------
 Tue Jul 23 07:48:44 UTC 2024 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 1.1.7

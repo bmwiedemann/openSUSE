@@ -1,7 +1,7 @@
 #
 # spec file for package pam_wrapper
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 #
 ############################# NOTE ##################################
 Name:           pam_wrapper
-Version:        1.1.7
+Version:        1.1.8
 Release:        0
 Summary:        A tool to test PAM applications and PAM modules
 License:        GPL-3.0-or-later
@@ -31,6 +31,7 @@ URL:            https://cwrap.org/
 Source0:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz
 Source1:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}-rpmlintrc
+Source9:        %{name}.keyring
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  libcmocka-devel
