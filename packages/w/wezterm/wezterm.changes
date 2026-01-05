@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 11 18:21:24 UTC 2025 - Andreas Prittwitz <m4ng4n@gmx.de>
+
+- change 0%{?suse_version} to > 1600
+- remove redundant '--lockfile' parameter for builds 
+  0%{?suse_version} > 1600
+
+-------------------------------------------------------------------
 Sun Jan 12 08:54:24 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Add dmz-icon-theme-cursors to resolve bsc#1234979

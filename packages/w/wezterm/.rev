@@ -1023,4 +1023,14 @@ Using filterer cut 120+MB of dependencies to ~50MB
 </comment>
     <requestid>1237153</requestid>
   </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>8bbbea6fdf5fcce773c98ac1f28032e5</srcmd5>
+    <version>20240203.110809.5046fc22+git421</version>
+    <time>1767621324</time>
+    <user>anag_factory</user>
+    <comment>- change 0%{?suse_version} to &gt; 1600
+- remove redundant '--lockfile' parameter for builds 
+  0%{?suse_version} &gt; 1600 (forwarded request 1322265 from priand)</comment>
+    <requestid>1325389</requestid>
+  </revision>
 </revisionlist>

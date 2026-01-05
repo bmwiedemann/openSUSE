@@ -1,7 +1,7 @@
 #
 # spec file for package wezterm
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -107,8 +107,8 @@ printf "%{version}" > .tag
 %build
 # export CFLAGS="%%optflags"
 # export CXXFLAGS="%%optflags"
-%if 0%{?suse_version} > 1500
-%{cargo_build} --no-default-features --features vendored-fonts,wayland,distro-defaults --locked
+%if 0%{?suse_version} > 1600
+%{cargo_build} --no-default-features --features vendored-fonts,wayland,distro-defaults
 %else
 unset LIBSSH2_SYS_USE_PKG_CONFIG
 export CARGO_FEATURE_VENDORED=1
