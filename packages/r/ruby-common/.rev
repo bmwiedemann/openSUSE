@@ -324,4 +324,29 @@ For staging:n</comment>
 - do not generate unversioned conflicts</comment>
     <requestid>1239483</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>369173852f9e40ad1a8fc24851a919d1</srcmd5>
+    <version>4.0.0</version>
+    <time>1767621078</time>
+    <user>anag_factory</user>
+    <comment>- instead of always recommending the gem2rpm of the default ruby
+  version, lets recommend the version of ruby which we actually
+  install
+
+- Fix rubyX.Y-with(out)-yjit/jemalloc Requires. They failed when
+  using prerelease ruby packages. We introduce 2 new macros:
+  %requires_on_provides_eq
+  %requires_on_provides_ge
+  Which then are used by the subpackage template.
+  The macros are copies of the normal %requires_(eq|ge) with 2
+  changes
+  - only the first argument is used
+  - rpm -q is called with --whatprovides
+
+- Update gem_packages.spec.erb 
+  the has_rdoc? function was actually removed. I really thought
+  would never happen. Since it was removed without a replacement,
+  we disable the rdoc/ri packages all the time now.</comment>
+    <requestid>1324398</requestid>
+  </revision>
 </revisionlist>

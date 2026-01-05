@@ -1,7 +1,7 @@
 #
 # spec file for package ruby-common
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 
 Name:           ruby-common
-Version:        3.2.1
+Version:        4.0.0
 Release:        0
 # ruby-macros and ruby-common version
 %define rpm_macros_version 5
@@ -54,8 +54,21 @@ License:        MIT
 Group:          Development/Languages/Ruby
 URL:            https://github.com/openSUSE/ruby-packaging/
 Requires:       /usr/bin/getopt
+#
+# the requires
+#
 Requires:       rubygem(gem2rpm)
-Recommends:     rubygem(%{rb_default_ruby_abi}:gem2rpm)
+# old recommends
+# Recommends:     rubygem(%{rb_default_ruby_abi}:gem2rpm)
+# new recommends
+Recommends:     (rubygem(ruby:4.0.0:gem2rpm) if ruby4.0)
+Recommends:     (rubygem(ruby:2.1.0:gem2rpm) if ruby2.1)
+Recommends:     (rubygem(ruby:2.5.0:gem2rpm) if ruby2.5)
+Recommends:     (rubygem(ruby:3.3.0:gem2rpm) if ruby3.3)
+Recommends:     (rubygem(ruby:3.4.0:gem2rpm) if ruby3.4)
+#
+#/ The End
+#
 Requires:       fdupes
 BuildArch:      noarch
 Provides:       ruby-macros = %{rpm_macros_version}

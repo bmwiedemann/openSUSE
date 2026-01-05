@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Dec 25 00:05:50 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- instead of always recommending the gem2rpm of the default ruby
+  version, lets recommend the version of ruby which we actually
+  install
+
+-------------------------------------------------------------------
+Tue Dec  2 16:58:45 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Fix rubyX.Y-with(out)-yjit/jemalloc Requires. They failed when
+  using prerelease ruby packages. We introduce 2 new macros:
+
+  %requires_on_provides_eq
+  %requires_on_provides_ge
+
+  Which then are used by the subpackage template.
+
+  The macros are copies of the normal %requires_(eq|ge) with 2
+  changes
+  - only the first argument is used
+  - rpm -q is called with --whatprovides
+
+-------------------------------------------------------------------
+Tue Dec  2 14:49:26 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update gem_packages.spec.erb 
+  the has_rdoc? function was actually removed. I really thought
+  would never happen. Since it was removed without a replacement,
+  we disable the rdoc/ri packages all the time now.
+
+-------------------------------------------------------------------
 Wed Jan 22 10:27:14 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - do not generate unversioned conflicts

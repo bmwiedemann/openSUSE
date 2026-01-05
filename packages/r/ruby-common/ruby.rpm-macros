@@ -103,3 +103,6 @@ done \
 %gem_extensions %(%{rb_binary} -rrubygems -e 'print Gem::Specification.new.extensions_dir' || echo %{_libdir}/ruby/gems/%{rb_ver}/gems )
 %gem_doc_ext %(%{rb_binary} -r rubygems -e 'bs = Gem::Specification.new; rp = bs.extensions_dir.rpartition(bs.base_dir); print rp[1]+"/doc"+rp[2]' )
 %gem_platform %(%{rb_binary} -r rubygems -r rbconfig -e 'print Gem::Platform.new(RbConfig::CONFIG["arch"]).to_s' )
+
+%requires_on_provides_eq() %{expand:%(t=$(echo '%1' | LC_ALL=C xargs -r rpm -q --whatprovides --qf 'Requires: %1 = %%{epoch}:%%{version}\\n' | sed -e 's/ (none):/ /' -e 's/ 0:/ /' | grep -v "is not"); test -n "$t" || echo "%%{error: %%%%{requires_on_provides_eq %1} does not resolve}"; echo "$t")}
+%requires_on_provides_ge() %{expand:%(t=$(echo '%1' | LC_ALL=C xargs -r rpm -q --whatprovides --qf 'Requires: %1 >= %%{epoch}:%%{version}\\n' | sed -e 's/ (none):/ /' -e 's/ 0:/ /' | grep -v "is not"); test -n "$t" || echo "%%{error: %%%%{requires_on_provides_ge %1} does not resolve}"; echo "$t")}
