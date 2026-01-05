@@ -53,7 +53,7 @@ LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"
 # endlabelprefix
 LABEL io.artifacthub.package.readme-url="%SOURCEURL_WITH(README.md)%"
-LABEL usage="This container should only be used on a FIPS enabled host (fips=1 on kernel cmdline)."
+LABEL usage="This container should only be used on a FIPS-140-3-enabled host (fips=1 on kernel cmdline)."
 
 RUN set -euo pipefail; fips-mode-setup --enable --no-bootcfg
 RUN set -euo pipefail; rpm -e crypto-policies-scripts libpython3_13-1_0 python313-base update-bootloader
