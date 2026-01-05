@@ -1,7 +1,7 @@
 #
 # spec file for package lazygit
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lazygit
-Version:        0.57.0
+Version:        0.58.0
 Release:        0
 Summary:        Simple terminal UI for git commands
 License:        MIT

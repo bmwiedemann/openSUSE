@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Jan 04 12:48:38 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 0.58.0:
+  * Update docs and schema for release
+  * Update translations from Crowdin
+  * Show an error when checking out a file would overwrite local modifications
+  * Bump gocui
+  * Add a note about delta's --navigate option not working in lazygit
+  * Call gocui's SimpleEditor instead of duplicating its code
+  * Replace go-runewidth with uniseg
+  * Bump gocui (and tcell)
+  * Draw only visible part of the reflogs panel
+  * Rerender visible lines when scrolling by page
+  * Fix race condition in HandleRender
+  * When pressing up or down, scroll selection into view if it is outside, even if it didn't change
+  * Avoid scrolling the selection into view on refresh
+  * Extract a method for selecting the first branch (and first commit)
+  * Fix the main view display after reverting a commit
+  * Add test expectation showing a problem with revert
+  * Bump gocui
+  * feat: support custom keybinds in custom command prompt menus
+  * Revert "Update resolve conflict using p instead of k"
+  * Make menu keybindings take precedence over builtin ones, except for confirm/esc
+  * Rename KeepConfirmKeybindings to KeepConflictingKeybindings
+  * In menus, remove not just the confirm binding, but also esc and up/down
+  * Add a test that demonstrates problems with custom menu keybindings
+  * feat: add Codeberg as a supported git hosting service
+  * feat: add keys for command log menu items
+  * Add a missing quote
+  * Cleanup: use spaces instead of tab
+  * Remove confirmation for opening the merge tool
+
+-------------------------------------------------------------------
 Mon Dec 08 08:17:40 UTC 2025 - ecsos@opensuse.org
 
 - Update to version 0.57.0:
