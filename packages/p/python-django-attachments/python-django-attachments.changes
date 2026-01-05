@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan  5 11:56:41 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.12
+  * Make remove_file_from_disk() use Django's default_storage
+  * Modernize test matrix
+
+-------------------------------------------------------------------
 Tue Jun  3 06:48:51 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

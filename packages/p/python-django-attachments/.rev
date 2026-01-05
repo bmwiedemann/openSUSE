@@ -72,4 +72,14 @@
 - No more greedy globs in %files.</comment>
     <requestid>1282112</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d4e723c1e210a12ed929fd65806abeaa</srcmd5>
+    <version>1.12</version>
+    <time>1767625455</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.12
+  * Make remove_file_from_disk() use Django's default_storage
+  * Modernize test matrix</comment>
+    <requestid>1325395</requestid>
+  </revision>
 </revisionlist>
