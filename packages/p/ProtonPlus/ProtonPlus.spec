@@ -1,7 +1,7 @@
 #
 # spec file for package ProtonPlus
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appid com.vysp3r.ProtonPlus
 Name:           ProtonPlus
-Version:        0.5.14
+Version:        0.5.15
 Release:        0
 Summary:        A Wine and Proton-based compatibility tools manager for GNOME
 License:        GPL-3.0-only

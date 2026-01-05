@@ -270,4 +270,14 @@
   * Fix Proton-CachyOS invalid directory name (forwarded request 1322613 from rrahl0)</comment>
     <requestid>1322614</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>8844acdebfef5543e572e65a5e337b63</srcmd5>
+    <version>0.5.15</version>
+    <time>1767621247</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.5.15:
+  * Add DW-Proton
+  * Update translations (forwarded request 1325315 from rrahl0)</comment>
+    <requestid>1325316</requestid>
+  </revision>
 </revisionlist>
