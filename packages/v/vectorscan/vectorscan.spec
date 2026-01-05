@@ -1,7 +1,7 @@
 #
 # spec file for package vectorscan
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define so_suffix -vectorscan
 
 Name:           vectorscan
-Version:        5.4.11
+Version:        5.4.12
 Release:        0
 Summary:        Regular expression matching library
 License:        BSD-3-Clause

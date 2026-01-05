@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Jan  3 21:33:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.4.12:
+  * Speed up truffle with 256b TBL instructions
+  * Fix Clang Tidy warnings
+  * Clang 17+ is more restrictive on rebind on MacOS/Boost,
+    remove warning
+  * partial_load_u64 will fail if buf == NULL/c_len == 0
+  * Bugfix/fix avx512vbmi regressions
+  * fix missing hs_version.h header (closes #198)
+  * hs_valid_platform: Fix check for SSE4.2
+  * Fixed out of bounds read in AVX512VBMI version of
+    fdr_exec_fat_teddy …
+  * Fix noodle SVE2 off by one bug
+  * Make vectorscan accept \0 starting pattern
+  * Fix 5.4.11's config step regression
+  * Fix double shufti's vector end false positive
+
+-------------------------------------------------------------------
 Wed Apr  2 18:44:22 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - drop pcre build dependency used for hscollider which the package
@@ -8,7 +27,7 @@ Wed Apr  2 18:44:22 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 Tue Sep  3 11:58:05 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 5.4.11:
-  * Fix clang 15,16 compilation errors on all platforms, refactor 
+  * Fix clang 15,16 compilation errors on all platforms, refactor
     CMake build system by @markos in #181
   * Fix version getting out of sync #175 by @markos in #185
   * Ubuntu 20.04 gcc does not define HWCAP2_SVE2 #180 by @markos in #186

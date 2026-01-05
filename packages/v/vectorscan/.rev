@@ -72,4 +72,28 @@
     <comment></comment>
     <requestid>1266834</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>643ee386d1ea96905009f67fd0029a22</srcmd5>
+    <version>5.4.12</version>
+    <time>1767621147</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.4.12:
+  * Speed up truffle with 256b TBL instructions
+  * Fix Clang Tidy warnings
+  * Clang 17+ is more restrictive on rebind on MacOS/Boost,
+    remove warning
+  * partial_load_u64 will fail if buf == NULL/c_len == 0
+  * Bugfix/fix avx512vbmi regressions
+  * fix missing hs_version.h header (closes #198)
+  * hs_valid_platform: Fix check for SSE4.2
+  * Fixed out of bounds read in AVX512VBMI version of
+    fdr_exec_fat_teddy …
+  * Fix noodle SVE2 off by one bug
+  * Make vectorscan accept \0 starting pattern
+  * Fix 5.4.11's config step regression
+  * Fix double shufti's vector end false positive
+
+  * Fix clang 15,16 compilation errors on all platforms, refactor</comment>
+    <requestid>1325234</requestid>
+  </revision>
 </revisionlist>
