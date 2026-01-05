@@ -1,7 +1,7 @@
 #
 # spec file for package libfido2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover  1
 Name:           libfido2
-Version:        1.15.0
+Version:        1.16.0
 Release:        0
 Summary:        FIDO U2F and FIDO 2.0 protocols
 License:        BSD-2-Clause
