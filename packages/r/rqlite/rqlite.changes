@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Jan  4 09:09:54 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 9.3.9:
+  * Handle possible WAL checkpoint failure
+  * Add QueryWithContext() to DB layer
+  * Unit test forced checkpoint and truncation at Store level
+  * Improve MSRW Error structure
+  * Snapshot Sink sets owner when taking MSRW
+  * Log cancelled Snapshot Store LockingSinks
+  * Upgrade dependencies
+
+-------------------------------------------------------------------
+Sat Jan  3 15:50:05 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 9.3.7:
+  * Improve FSM Snapshot logging
+  * Upgrade SQLite
+
+-------------------------------------------------------------------
 Tue Dec 23 16:46:46 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 9.3.6:
