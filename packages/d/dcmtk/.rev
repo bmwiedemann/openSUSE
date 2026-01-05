@@ -334,4 +334,26 @@
   * CVE-2025-9732.patch</comment>
     <requestid>1302162</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>97f1e2d9bfe2f12c3b2702616416eb36</srcmd5>
+    <version>3.7.0</version>
+    <time>1767621162</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.7.0. See docs/CHANGES.370 for the full list of changes
+  * Fixes CVE-2025-14841 / boo#1255292
+  * Fixes CVE-2025-14607 / boo#1255464
+- Drop patches, merged upstream:
+  * 0001-Added-check-to-make-sure-HighBit-BitsAllocated.patch
+  * 0001-Fixed-issue-rendering-invalid-monochrome-image.patch
+  * 0001-Fixed-another-issue-with-invalid-mono-images.patch
+  * 0001-Replaced-call-of-delete-by-delete.patch
+  * 0001-Fixed-another-issue-with-invalid-DICOM-images.patch
+  * 0001-Fixed-issue-with-invalid-RLE-compressed-DICOM-images.patch
+  * CVE-2025-2357.patch
+  * CVE-2025-9732.patch
+
+- Add patch to avoid unnecessary dependencies (boo#1254123):
+  * 0001-dcmimage-Link-privately-to-libtiff-and-libpng.patch</comment>
+    <requestid>1325262</requestid>
+  </revision>
 </revisionlist>

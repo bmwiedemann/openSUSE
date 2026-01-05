@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Jan  4 10:12:31 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.7.0. See docs/CHANGES.370 for the full list of changes
+  * Fixes CVE-2025-14841 / boo#1255292
+  * Fixes CVE-2025-14607 / boo#1255464
+- Drop patches, merged upstream:
+  * 0001-Added-check-to-make-sure-HighBit-BitsAllocated.patch
+  * 0001-Fixed-issue-rendering-invalid-monochrome-image.patch
+  * 0001-Fixed-another-issue-with-invalid-mono-images.patch
+  * 0001-Replaced-call-of-delete-by-delete.patch
+  * 0001-Fixed-another-issue-with-invalid-DICOM-images.patch
+  * 0001-Fixed-issue-with-invalid-RLE-compressed-DICOM-images.patch
+  * CVE-2025-2357.patch
+  * CVE-2025-9732.patch
+
+-------------------------------------------------------------------
+Wed Nov 26 14:38:25 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to avoid unnecessary dependencies (boo#1254123):
+  * 0001-dcmimage-Link-privately-to-libtiff-and-libpng.patch
+
+-------------------------------------------------------------------
 Mon Sep  1 08:22:33 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change (CVE-2025-9732, boo#1248995)

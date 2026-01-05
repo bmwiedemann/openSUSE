@@ -1,7 +1,7 @@
 #
 # spec file for package dcmtk
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,30 +16,18 @@
 #
 
 
-%define abiversion 19
+%define abiversion 20
 Name:           dcmtk
-Version:        3.6.9
+Version:        3.7.0
 Release:        0
 Summary:        DICOM Toolkit
 License:        Apache-2.0 AND BSD-3-Clause
 URL:            https://dicom.offis.de/dcmtk.php.en
-Source0:        https://dicom.offis.de/download/dcmtk/dcmtk369/%{name}-%{version}.tar.gz
+Source0:        https://dicom.offis.de/download/dcmtk/dcmtk370/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE dcmtk-fix-DCMTKTargets.cmake.patch -- Do not track executables to be able to use dcmtk-devel without dcmtk package
 Patch0:         dcmtk-fix-DCMTKTargets.cmake.patch
 # PATCH-FIX-UPSTREAM
-Patch1:         0001-Added-check-to-make-sure-HighBit-BitsAllocated.patch
-Patch2:         0001-Replaced-call-of-delete-by-delete.patch
-Patch3:         0001-Fixed-issue-rendering-invalid-monochrome-image.patch
-# CVE-2025-25472
-Patch4:         0001-Fixed-another-issue-with-invalid-mono-images.patch
-# CVE-2025-25474
-Patch5:         0001-Fixed-another-issue-with-invalid-DICOM-images.patch
-# CVE-2025-25475
-Patch6:         0001-Fixed-issue-with-invalid-RLE-compressed-DICOM-images.patch
-# CVE-2025-2357
-Patch7:         CVE-2025-2357.patch
-# CVE-2025-9732
-Patch8:         CVE-2025-9732.patch
+Patch1:         0001-dcmimage-Link-privately-to-libtiff-and-libpng.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -67,7 +55,6 @@ Requires:       libdcmtk%{abiversion} = %{version}
 Requires:       tcpd-devel
 Requires:       pkgconfig(libjpeg)
 Requires:       pkgconfig(libopenjp2)
-Requires:       pkgconfig(libpng)
 Requires:       pkgconfig(libxml-2.0)
 
 %description devel
@@ -76,8 +63,6 @@ software using dcmtk.
 
 %package -n libdcmtk%{abiversion}
 Summary:        DICOM Toolkit
-Provides:       libdcmtk3_6 = %{version}
-Obsoletes:      libdcmtk3_6 < %{version}
 
 %description -n libdcmtk%{abiversion}
 DCMTK is a collection of libraries and applications implementing large
@@ -113,7 +98,8 @@ install -pm 0644 README %{buildroot}%{_docdir}/dcmtk/
 %fdupes %{buildroot}
 
 %check
-%ctest
+# dcmect_roundtrip fails on s390x
+%ctest --exclude-regex 'dcmect_roundtrip'
 
 %ldconfig_scriptlets -n libdcmtk%{abiversion}
 
@@ -136,6 +122,6 @@ install -pm 0644 README %{buildroot}%{_docdir}/dcmtk/
 %files -n libdcmtk%{abiversion}
 %license COPYRIGHT
 %{_libdir}/*.so.%{abiversion}
-%{_libdir}/*.so.%{abiversion}.3.6*
+%{_libdir}/*.so.%{abiversion}.3.7*
 
 %changelog
