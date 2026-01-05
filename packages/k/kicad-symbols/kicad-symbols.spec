@@ -1,7 +1,7 @@
 #
 # spec file for package kicad-symbols
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,8 +20,8 @@
 %define compatversion 9.0.0
 
 Name:           kicad-symbols
-Version:        9.0.6
-%define file_version 9.0.6
+Version:        9.0.7
+%define file_version 9.0.7
 Release:        0
 Summary:        Schematic symbol library for KiCad
 # License is CC-BY-SA-4.0 but there is an exception
