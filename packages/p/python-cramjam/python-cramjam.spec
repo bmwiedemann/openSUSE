@@ -1,7 +1,7 @@
 #
 # spec file for package python-cramjam
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@
 %define modname cramjam
 %{?sle15_python_module_pythons}
 Name:           python-cramjam%{psuffix}
-Version:        2.9.1
+Version:        2.11.0
 Release:        0
 Summary:        Thin Python bindings to de/compression algorithms in Rust
 License:        MIT
@@ -50,14 +50,14 @@ BuildRequires:  cmake
 BuildRequires:  libtool
 BuildRequires:  nasm
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(blosc2)
+# blosc2 disabled: see Patch0 and gh#milesgranger/cramjam#197
+#BuildRequires:  pkgconfig(blosc2)
 BuildRequires:  pkgconfig(libisal)
 BuildRequires:  pkgconfig(libzstd)
 # SECTION test dependencies
 %if %{with test}
 BuildRequires:  %{python_module %{modname} = %{version}}
 BuildRequires:  %{python_module hypothesis}
-BuildRequires:  %{python_module memory_profiler}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
@@ -87,7 +87,9 @@ export ZSTD_SYS_USE_PKG_CONFIG=1
 
 %check
 %if %{with test}
-%pytest_arch -n auto --ignore benchmarks
+# gh#milesgranger/cramjam#211
+donttest="(test_variants_raise_exception and deflate)"
+%pytest_arch -n auto --ignore benchmarks -k "not ($donttest)"
 %endif
 
 %if %{without test}

@@ -1,29 +1,46 @@
---- cramjam/pyproject.toml	2024-12-18 12:38:18.002576474 +0100
-+++ cramjam.patch/pyproject.toml	2024-12-18 14:11:22.834831651 +0100
-@@ -14,7 +14,25 @@
+Index: cramjam-2.11.0/pyproject.toml
+===================================================================
+--- cramjam-2.11.0.orig/pyproject.toml
++++ cramjam-2.11.0/pyproject.toml
+@@ -15,7 +15,26 @@ requires = ["maturin>=0.14"]
  build-backend = "maturin"
  
  [tool.maturin]
 -strip = true
++strip = false
 +no-default-features = true
 +features = [
-+	  "extension-module",
-+		"snappy",
-+		"lz4",
-+		"bzip2",
-+		"brotli",
-+		"zstd",
-+		"xz-shared",
-+		"igzip-shared",
-+		"ideflate-shared",
-+		"izlib-shared",
-+		"use-system-isal-shared",
-+		"gzip-shared",
-+		"zlib-shared",
-+		"deflate-shared",
-+		"blosc2-shared",
-+		"use-system-blosc2-shared"
++    "extension-module",
++    "snappy",
++    "lz4",
++    "bzip2",
++    "brotli",
++    "zstd",
++    "xz-shared",
++    "igzip-shared",
++    "ideflate-shared",
++    "izlib-shared",
++    "use-system-isal-shared",
++    "gzip-shared",
++    "zlib-shared",
++    "deflate-shared",
++#    "blosc2-shared",
++#    "use-system-blosc2-shared"
 +]
  
- [project.optional-dependencies]
+ [dependency-groups]
  dev = [
+Index: cramjam-2.11.0/Cargo.toml
+===================================================================
+--- cramjam-2.11.0.orig/Cargo.toml
++++ cramjam-2.11.0/Cargo.toml
+@@ -79,7 +79,8 @@ libcramjam = { version = "^0.8", default
+ pyo3-build-config = "^0.25"
+ 
+ [profile.release]
+-strip = true
++strip = "none"
++debug = true
+ lto = "fat"
+ codegen-units = 1
+ opt-level = 3

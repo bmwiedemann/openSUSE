@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Jan  2 16:11:13 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.11.0
+  * Initial impl zero-copy Buffer by @milesgranger in #209
+  * Buffer: Fix extended and negative int reads by @milesgranger in
+    #210
+  * Initial Type/JavaScript support by @milesgranger in #217
+  * Fix lz4.decompress_block_into w/o prepended size by
+    @milesgranger in #219
+  * Add typing stub files and proper docs site by @milesgranger in
+    #220
+  * Ban mutating immutable buffers on the free-threaded build by
+    @ngoldbaum in #214
+  * zstd: store size by @milesgranger in #225
+  * Add Python 3.14/t - Drop Python 3.8 by @milesgranger in #226
+- Release 2.10.0
+  * Remove experimental codecs in default builds by @milesgranger
+    in #197
+  * Bump libcramjam -> 0.7.0 by @milesgranger in #198
+  * Update PyO3 to 0.24 by @musicinmybrain in #207
+- Disable test_variants_raise_exception[deflate] 
+  * gh#milesgranger/cramjam#211
+- Disable blosc2 because it fails to compile right now and upstream
+  degraded it from the default feature set to experimental
+  * gh#milesgranger/cramjam#197
+- Add debuginfo
+
+-------------------------------------------------------------------
 Wed Dec 18 11:40:10 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.9.1
@@ -85,7 +113,7 @@ Mon Feb 19 09:16:39 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
   to run (about an hour).
 
 -------------------------------------------------------------------
-Fr- Jan 13 11:04:41 UTC 2023 - Ben Greiner <code@bnavigator.de>
+Fri Jan 13 11:04:41 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to v2.6.2
   * Bump pyo3, numpy and expand pyproject.toml by @milesgranger in
