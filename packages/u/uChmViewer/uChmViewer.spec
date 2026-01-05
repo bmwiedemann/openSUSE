@@ -1,7 +1,7 @@
 #
-# spec file for package kchmviewer
+# spec file for package uChmViewer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           uChmViewer
-Version:        8.4
+Version:        8.5
 Release:        0
 Summary:        CHM and ePub Viewer
 License:        GPL-3.0-only
@@ -30,14 +30,14 @@ Source:         https://github.com/eBookProjects/uChmViewer/archive/refs/tags/v%
 # PATCH-FIX-OPENSUSE
 Patch5:         InitialPreference-greater-than-okular.patch
 BuildRequires:  chmlib-devel
-BuildRequires:  cmake(libzip)
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6Core5Compat)
 BuildRequires:  cmake(Qt6Network)
 BuildRequires:  cmake(Qt6PrintSupport)
 BuildRequires:  cmake(Qt6WebEngineWidgets)
 BuildRequires:  cmake(Qt6Xml)
-BuildRequires:  hicolor-icon-theme
+BuildRequires:  cmake(libzip)
 Requires:       hicolor-icon-theme
 # Requires qtwebengine
 ExclusiveArch:  x86_64 %{x86_64} aarch64 riscv64
@@ -62,7 +62,6 @@ It supports complex searching for large books and has various viewing features.
 #Add compatibility symlink
 ln -srv %{buildroot}%{_bindir}/{u,k}chmviewer
 %find_lang uchmviewer
-
 
 %files -f uchmviewer.lang
 %license AUTHORS.md COPYING

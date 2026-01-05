@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jan  3 20:53:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.5:
+  * Raised CMake minimum version to 3.16
+  * Dropped KDE support
+  * Fixed index overflow
+  * Added support for hidpi icon and fractional scaling
+  * Improved CJK fonts rendering under Windows
+  * Fixed memory leaks
+  * Updated astyle.cfg for the 3.4 version and formatted
+  * Added the codespell support and fixed typos
+  * Added hdpi scaling in Qt5
+  * Fixed filename conversion from QString to char*
+
+-------------------------------------------------------------------
 Sun Feb  9 19:46:08 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 8.4
@@ -155,11 +170,11 @@ Sun Jan 16 09:15:41 UTC 2011 - tittiatcoke@gmail.com
 - Update to 5.3
   * Bugfix release:
     - Fixed spelling error (thx Razvan Visan)
-    - Changed encodings order for Chinese and Japanese languages 
+    - Changed encodings order for Chinese and Japanese languages
       (thanks Kai-Chieh Ku)
     - Fixed some grammatical errors (thanks Robin 'cheese' Lee)
-    - Fixed webkit engine for buggy CHMs which do not have all 
-      content, as well as cases when external references cannot be 
+    - Fixed webkit engine for buggy CHMs which do not have all
+      content, as well as cases when external references cannot be
       loaded. Thanks to Kai-Chieh Ku
   * Added Mac Support
   * Added translations: Ukrainian and Brazilian
@@ -194,9 +209,9 @@ Tue Dec 15 18:51:48 UTC 2009 - tittiatcoke@gmail.com
   * Major internal GUI redesign
   * Fixed settings Storage
   * Fixed index parser
-  * Default toolbars now use large icons and text labels, and is 
+  * Default toolbars now use large icons and text labels, and is
     configurable through settings
-  * Can start without opening a CHM file 
+  * Can start without opening a CHM file
   * Added configurable check if a new version is available
   * Added missing icons
 
@@ -219,10 +234,10 @@ Sat Jul 25 20:56:19 CEST 2009 - beineri@opensuse.org
 - Update to 4.1:
    * Updated Dutch and Turkish translations
    * Default toolbar button order changed to standard -/+
-   * Automatic encoding detection for KHTMLPart/WebKit is now 
+   * Automatic encoding detection for KHTMLPart/WebKit is now
      disabled by default
    * Fixed incorrest index string encoding for non-English strings
-   * Fixed text size auto-increase each time the file is loaded 
+   * Fixed text size auto-increase each time the file is loaded
      for WebKit browser.
    * License changed from GPLv2 to GPLv3
 
@@ -232,13 +247,13 @@ Mon Mar 16 13:57:54 CET 2009 - dmueller@suse.de
 - update to 4.0:
   * parsing of binary table of contents and indexes, which speeds
   up loading of CHM files up to five times. The most annoying
-  bugs were fixed as well. 
+  bugs were fixed as well.
   * port to KDE4
 
 -------------------------------------------------------------------
 Mon Oct 29 14:55:43 CET 2007 - dmueller@suse.de
 
-- fix build against gcc 4.3 
+- fix build against gcc 4.3
 
 -------------------------------------------------------------------
 Mon Oct  8 14:55:17 CEST 2007 - schwab@suse.de
@@ -273,7 +288,7 @@ Wed Mar 14 10:22:47 CET 2007 - stbinner@suse.de
    * Chm procesing code moved in a separate library and was rewritten
      resulted in up to 20x(!) speed increase for loading large chm files.
    * Fixed a lot of old bugs, including 'Copy' in KDE, removing a
-     duplicated application title, and incorrect popup menu position. 
+     duplicated application title, and incorrect popup menu position.
 
 -------------------------------------------------------------------
 Mon Jan 29 16:40:48 CET 2007 - stbinner@suse.de
@@ -281,13 +296,13 @@ Mon Jan 29 16:40:48 CET 2007 - stbinner@suse.de
 - patch internal chmlib copy with 0.39 fixes for KDE:Backports
 - update to version 2.7:
    * You can now switch between tabs using Alt+[number].
-   * Now current window size and splitter position is also stored 
+   * Now current window size and splitter position is also stored
      on exit - separately for each chm file.
    * Kchmviewer should now work correctly on non-x86 platforms,
      including the codepage autodetection.
    * TOC directory entries now could be opened/closed with double-
      click on the entry name/icon, not just +/- icons.
-   * Added a warning when the browser or browser settings are changed 
+   * Added a warning when the browser or browser settings are changed
      that application restart is required for changes to take effect.
 
 -------------------------------------------------------------------
@@ -338,8 +353,8 @@ Wed May 17 13:09:28 CEST 2006 - stbinner@suse.de
    * Switched to a new, correct automake file structure.
    * Fixed autotest.
    * Now kchmviewer uses system libchm if found, and no --with-builtin-chmlib configure switch defined.
-   * Made configure more compatible with newest autoconf and Debian - thanks to Jose Luis Tallon. 
-   * Added an application icon - thanks to Jose Luis Tallon. 
+   * Made configure more compatible with newest autoconf and Debian - thanks to Jose Luis Tallon.
+   * Added an application icon - thanks to Jose Luis Tallon.
    * Fixed index parser for PHP manual - thanks to Dmitry Bakshaev.
    * In full screen mode the menu bar and status bar are now hidden.
    * Added 'locate in content window' button to open currently opened topic in the content window.
@@ -377,18 +392,18 @@ Sun Oct 30 18:50:01 CET 2005 - stbinner@suse.de
 -------------------------------------------------------------------
 Wed Oct 26 17:50:10 CEST 2005 - stbinner@suse.de
 
-- update internal CHM lib copy to 0.37 to fix exploitable buffer 
+- update internal CHM lib copy to 0.37 to fix exploitable buffer
   overflow (#130751)
 
 -------------------------------------------------------------------
 Tue Oct 11 16:52:47 CEST 2005 - dmueller@suse.de
 
-- fix build 
+- fix build
 
 -------------------------------------------------------------------
 Tue Sep 27 14:49:33 CEST 2005 - dmueller@suse.de
 
-- fix build 
+- fix build
 
 -------------------------------------------------------------------
 Wed Aug 17 11:53:03 CEST 2005 - schwab@suse.de
