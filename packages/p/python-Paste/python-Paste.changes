@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan  2 12:02:51 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Add paste-pr105-partial-pkg_resources-remove.patch
+  * gh#pasteorg/paste#105
+  * Also remove from tests/__init__.py
+  * Ignore any warning from paste/__init__.py
+
+-------------------------------------------------------------------
 Tue Apr  1 12:32:11 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Make the dist-info name case-insensitive

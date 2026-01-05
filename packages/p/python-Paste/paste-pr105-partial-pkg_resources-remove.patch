@@ -1,0 +1,79 @@
+From 54a63ecf15c3deb934dc36f00bed829b9d071c80 Mon Sep 17 00:00:00 2001
+From: Gil Forcada Codinachs <gil.gnome@gmail.com>
+Date: Mon, 3 Mar 2025 18:07:11 +0100
+Subject: [PATCH] chore: drop pkg_resources usage
+
+---
+ paste/util/template.py     | 7 ++++---
+ tests/cgiapp_data/form.cgi | 9 ---------
+ 2 files changed, 4 insertions(+), 12 deletions(-)
+
+Index: paste-3.10.1/paste/util/template.py
+===================================================================
+--- paste-3.10.1.orig/paste/util/template.py
++++ paste-3.10.1/paste/util/template.py
+@@ -682,12 +682,13 @@ strings.
+ """
+ 
+ def fill_command(args=None):
+-    import sys, optparse, pkg_resources, os
++    import sys, optparse, os
++    from importlib.metadata import distribution
+     if args is None:
+         args = sys.argv[1:]
+-    dist = pkg_resources.get_distribution('Paste')
++    dist = distribution('Paste')
+     parser = optparse.OptionParser(
+-        version=str(dist),
++        version=dist.version,
+         usage=_fill_command_usage)
+     parser.add_option(
+         '-o', '--output',
+Index: paste-3.10.1/tests/cgiapp_data/form.cgi
+===================================================================
+--- paste-3.10.1.orig/tests/cgiapp_data/form.cgi
++++ paste-3.10.1/tests/cgiapp_data/form.cgi
+@@ -4,20 +4,11 @@ print('Content-type: text/plain')
+ print('')
+ 
+ import sys
+-import warnings
+ from os.path import dirname
+ 
+ base_dir = dirname(dirname(dirname(__file__)))
+ sys.path.insert(0, base_dir)
+ 
+-with warnings.catch_warnings():
+-    warnings.simplefilter("ignore", category=DeprecationWarning)
+-    try:
+-        import pkg_resources
+-    except ImportError:
+-        # Ignore
+-        pass
+-
+ from paste.util.field_storage import FieldStorage
+ 
+ class FormFieldStorage(FieldStorage):
+Index: paste-3.10.1/tests/__init__.py
+===================================================================
+--- paste-3.10.1.orig/tests/__init__.py
++++ paste-3.10.1/tests/__init__.py
+@@ -3,5 +3,3 @@ import sys
+ import os
+ 
+ sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
+-
+-import pkg_resources
+Index: paste-3.10.1/paste/__init__.py
+===================================================================
+--- paste-3.10.1.orig/paste/__init__.py
++++ paste-3.10.1/paste/__init__.py
+@@ -5,7 +5,7 @@ import warnings
+ 
+ try:
+     with warnings.catch_warnings():
+-        warnings.simplefilter("ignore", category=DeprecationWarning)
++        warnings.simplefilter("ignore")
+         import pkg_resources
+         pkg_resources.declare_namespace(__name__)
+ except (AttributeError, ImportError):

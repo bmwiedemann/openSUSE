@@ -1,7 +1,7 @@
 #
 # spec file for package python-Paste
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        MIT
 URL:            https://github.com/cdent/paste
 Source:         https://files.pythonhosted.org/packages/source/p/paste/paste-%{version}.tar.gz
 Patch0:         test_modified-fixup.patch
+# PATCH-FIX-UPSTREAM paste-pr105-partial-pkg_resources-remove.patch gh#pasteorg/paste#105 gh#pasteorg/paste#107
+Patch1:         paste-pr105-partial-pkg_resources-remove.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
