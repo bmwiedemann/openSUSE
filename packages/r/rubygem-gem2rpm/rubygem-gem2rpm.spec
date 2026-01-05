@@ -23,6 +23,7 @@
 %bcond_with     ruby33
 %bcond_with     ruby34
 %bcond_with     ruby35
+%bcond_with     ruby40
 
 Name:           rubygem-gem2rpm
 Version:        0.10.1
@@ -48,6 +49,9 @@ BuildRequires:  ruby3.4
 %endif
 %if %{with ruby35}
 BuildRequires:  ruby3.5
+%endif
+%if %{with ruby40}
+BuildRequires:  ruby4.0
 %endif
 BuildRequires:  ruby-macros >= 5
 %if %{with gem2rpm_bootstrap}
@@ -433,6 +437,66 @@ fi
 %files -n ruby3.5-rubygem-gem2rpm-doc
 %defattr(-,root,root,-)
 %doc %{_libdir}/ruby/gems/%{rb_350_abi}/doc/gem2rpm-%{version}
+%endif
+%endif
+
+%if %{with ruby40}
+%define rb_400_abi 4.0.0
+
+%package -n ruby4.0-rubygem-gem2rpm
+Summary:        Generate rpm specfiles from gems
+Group:          Development/Languages/Ruby
+Requires(post): update-alternatives
+Requires(preun): update-alternatives
+
+%description -n ruby4.0-rubygem-gem2rpm
+Generate source rpms and rpm spec files from a Ruby Gem.
+The spec file tries to follow the gem as closely as possible
+
+%package -n ruby4.0-rubygem-gem2rpm-doc
+Summary:        RDoc documentation for %{mod_name}
+Group:          Development/Languages/Ruby
+Requires:       ruby4.0-rubygem-gem2rpm = %{version}
+
+%description -n ruby4.0-rubygem-gem2rpm-doc
+Documentation generated at gem installation time.
+Usually in RDoc and RI formats.
+
+%post -n ruby4.0-rubygem-gem2rpm
+/usr/sbin/update-alternatives --install \
+    %{_bindir}/gem2rpm         gem2rpm         %{_bindir}/gem2rpm.ruby4.0-%{version} %{mod_weight}
+/usr/sbin/update-alternatives --install \
+    %{_bindir}/gem2rpm-%{version}   gem2rpm-%{version}   %{_bindir}/gem2rpm.ruby4.0-%{version} %{mod_weight}
+/usr/sbin/update-alternatives --install \
+    %{_bindir}/gem2rpm.ruby4.0 gem2rpm.ruby4.0 %{_bindir}/gem2rpm.ruby4.0-%{version} %{mod_weight}
+
+%preun -n ruby4.0-rubygem-gem2rpm
+if [ "$1" = 0 ] ; then
+    /usr/sbin/update-alternatives --remove gem2rpm          %{_bindir}/gem2rpm.ruby4.0-%{version}
+    /usr/sbin/update-alternatives --remove gem2rpm-%{version}    %{_bindir}/gem2rpm.ruby4.0-%{version}
+    /usr/sbin/update-alternatives --remove gem2rpm.ruby4.0  %{_bindir}/gem2rpm.ruby4.0-%{version}
+fi
+
+%files -n ruby4.0-rubygem-gem2rpm
+%defattr(-,root,root,-)
+%{_docdir}/ruby4.0-rubygem-gem2rpm
+#{_bindir}/gem2rpm-opensuse
+%{_bindir}/gem2rpm.ruby4.0-%{version}
+%ghost %{_bindir}/gem2rpm.ruby4.0
+%ghost %{_bindir}/gem2rpm-%{version}
+%ghost %{_bindir}/gem2rpm
+%ghost %{_sysconfdir}/alternatives/gem2rpm
+%ghost %{_sysconfdir}/alternatives/gem2rpm.ruby4.0
+%ghost %{_sysconfdir}/alternatives/gem2rpm-%{version}
+# cache file
+%{_libdir}/ruby/gems/%{rb_400_abi}/cache/gem2rpm-%{version}.gem
+%{_libdir}/ruby/gems/%{rb_400_abi}/gems/gem2rpm-%{version}
+%{_libdir}/ruby/gems/%{rb_400_abi}/specifications/gem2rpm-%{version}.gemspec
+
+%if %{with docs}
+%files -n ruby4.0-rubygem-gem2rpm-doc
+%defattr(-,root,root,-)
+%doc %{_libdir}/ruby/gems/%{rb_400_abi}/doc/gem2rpm-%{version}
 %endif
 %endif
 

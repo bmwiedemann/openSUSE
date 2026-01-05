@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Dec 25 12:29:21 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- use final 4.0 ABI
+
+-------------------------------------------------------------------
+Wed Dec 24 09:49:59 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- bump 4.0 ABI for preview 3
+
+-------------------------------------------------------------------
+Tue Dec  2 13:16:33 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update suse.patch:
+  the has_rdoc? function was actually removed. I really thought
+  would never happen. Since it was removed without a replacement,
+  we disable the rdoc/ri packages all the time now.
+
+-------------------------------------------------------------------
+Tue Dec  2 12:29:33 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add missing BR for 4.0 support
+
+-------------------------------------------------------------------
+Tue Nov 18 15:20:02 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Enable ruby 4.0 support
+
+-------------------------------------------------------------------
 Fri Aug 22 12:36:40 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - update suse.patch

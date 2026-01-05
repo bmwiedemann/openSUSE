@@ -430,4 +430,23 @@ A    0033-Use-File.exist-instead-of-File.exists-which-was-remo.patch
   rb_build_ruby_abis/rb_build_version</comment>
     <requestid>1300977</requestid>
   </revision>
+  <revision rev="39" vrev="28">
+    <srcmd5>8bf39c85fa4563a0792d26209d894669</srcmd5>
+    <version>0.10.1</version>
+    <time>1767621080</time>
+    <user>anag_factory</user>
+    <comment>- use final 4.0 ABI
+
+- bump 4.0 ABI for preview 3
+
+- Update suse.patch:
+  the has_rdoc? function was actually removed. I really thought
+  would never happen. Since it was removed without a replacement,
+  we disable the rdoc/ri packages all the time now.
+
+- Add missing BR for 4.0 support
+
+- Enable ruby 4.0 support</comment>
+    <requestid>1324400</requestid>
+  </revision>
 </revisionlist>

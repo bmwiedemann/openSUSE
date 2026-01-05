@@ -108,10 +108,10 @@ index 736a645..1f3ad64 100755
      end
 diff --git a/gem2rpm.yml.documentation b/gem2rpm.yml.documentation
 new file mode 100644
-index 0000000..ba7bc0f
+index 0000000..6c5c9f2
 --- /dev/null
 +++ b/gem2rpm.yml.documentation
-@@ -0,0 +1,81 @@
+@@ -0,0 +1,82 @@
 +# ---
 +# ## used by gem2rpm
 +# :summary: this is a custom summary
@@ -127,6 +127,7 @@ index 0000000..ba7bc0f
 +# ## used by gem2rpm and gem_packages
 +# :version_suffix: '-x.y'
 +# ## used by gem2rpm and gem_packages
++# ## deprecated as it was relying on has_rdoc? which is now deprecated
 +# :disable_docs: true
 +# ## used by gem2rpm
 +# :disable_automatic_rdoc_dep: true
@@ -264,10 +265,10 @@ index 9a8d5a1..2e4f7b2 100644
        super.map {|d| Gem2Rpm::Dependency.new d}
 diff --git a/templates/gem_packages.spec.erb b/templates/gem_packages.spec.erb
 new file mode 100644
-index 0000000..314b6e5
+index 0000000..14ee9ea
 --- /dev/null
 +++ b/templates/gem_packages.spec.erb
-@@ -0,0 +1,320 @@
+@@ -0,0 +1,298 @@
 +<%
 +
 +  begin
@@ -406,9 +407,6 @@ index 0000000..314b6e5
 +  #/ruby2.1
 +  gem_plugins_dir  = Gem.respond_to?(:plugindir) ? Gem.plugindir : nil
 +  has_plugins      = gem_plugins_dir && not( spec.files.select {|filename| filename =~ /rubygems_plugin#{Gem.suffix_regexp}\z/ }.empty? )
-+  if config[:disable_docs].nil?
-+    config[:disable_docs] ||= true
-+  end
 +  if config[:include_testsuite].nil?
 +    config[:include_testsuite] ||= false
 +  end
@@ -429,23 +427,13 @@ index 0000000..314b6e5
 +Requires(post): update-alternatives
 +<% end -%>
 +<% if has_plugins -%>
-+Conflicts:      rubygem(<%= rb_pkg_abi %>)
++Conflicts:      rubygem(<%= rb_pkg_abi %>) = %{version}
 +<% end -%>
 +Enhances:       <%= rb_pkgname %>
 +
 +%description -n <%= pkg_basename %><%= config[:version_suffix] %>
 +<%= config[:description] or spec.description -%>
 +
-+<% if spec.has_rdoc? && !(config[:disable_docs]) -%>
-+%package -n <%= pkg_basename %>-doc<%= config[:version_suffix] %>
-+Summary:        RDoc documentation for <%= spec.name %>
-+Requires:       <%= pkg_basename %><%= config[:version_suffix] %> = <%= spec.version %>
-+
-+%description -n <%= pkg_basename %>-doc<%= config[:version_suffix] %>
-+Documentation generated at gem installation time.
-+Usually in RDoc and RI formats.
-+
-+<% end -%>
 +<% test_frameworks = Hash.new
 +   docdirfiles = []
 +   format.file_entries.each do |entry|
@@ -546,15 +534,6 @@ index 0000000..314b6e5
 +<% end -%>
 +<%= gem_spec_dir %>/<%= mod_full_name -%>.gemspec
 +
-+<% if spec.has_rdoc? && !(config[:disable_docs]) -%>
-+%files -n <%= pkg_basename %>-doc<%= config[:version_suffix] %>
-+%defattr(-,root,root,-)
-+%doc <%= gem_doc_dir %>
-+<%   unless spec.extensions.empty? or gem_extension_doc.nil? -%>
-+%doc <%= gem_extension_doc %>
-+<%   end -%>
-+<% end -%>
-+
 +<% if config[:include_testsuite] and !test_frameworks.empty?  -%>
 +%files -n <%= pkg_basename %>-testsuite<%= config[:version_suffix] %>
 +%defattr(-,root,root,-)
@@ -589,7 +568,7 @@ index 0000000..314b6e5
 +   end
 +-%>
 diff --git a/templates/opensuse.spec.erb b/templates/opensuse.spec.erb
-index 37de592..080e76b 100644
+index 37de592..623e7d4 100644
 --- a/templates/opensuse.spec.erb
 +++ b/templates/opensuse.spec.erb
 @@ -1,7 +1,12 @@
@@ -607,7 +586,7 @@ index 37de592..080e76b 100644
  #
  # All modifications and additions to the file contributed by third parties
  # remain the property of their copyright owners, unless otherwise agreed
-@@ -12,61 +17,237 @@
+@@ -12,61 +17,235 @@
  # license that conforms to the Open Source Definition (Version 1.9)
  # published by the Open Source Initiative.
  
@@ -786,9 +765,7 @@ index 37de592..080e76b 100644
 +<% if config[:gem_install_args] -%>
 +<%= config[:gem_install_args] %> \
 +<% end -%>
-+<% if config[:disable_docs] -%>
 +  --no-rdoc --no-ri \
-+<% end -%>
 +<% unless spec.executables.empty? -%>
 +  --symlink-binaries \
 +<% end -%>
