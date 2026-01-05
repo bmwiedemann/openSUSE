@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jan  3 21:48:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.15.5:
+  * x86: Define cmm_smp_mb() as lock; addl rather than mfence
+  * Introduce barrier test
+  * Add test_uatomic to gitignore
+  * Cleanup: Remove stray space
+  * benchmark: Add uatomic benchmark
+  * uatomic: Fix redundant memory barriers for atomic builtin
+    operations
+  * Cleanup: Remove useless declarations from urcu-qsbr
+  * src/urcu-bp.c: assert => urcu_posix_assert
+  * ppc.h: improve ppc64 caa_get_cycles on Darwin
+
+-------------------------------------------------------------------
 Sat Jul  5 13:59:12 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update to 0.15.3
@@ -258,7 +273,7 @@ Sun Jan 23 10:46:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Fix: x86 and s390: uatomic __hp() macro C++ support
   * Fix: x86 and s390: uatomic __hp() macro clang support
   * Fix: x86 and s390 uatomic: __hp() macro warning with gcc 11
-  
+
 -------------------------------------------------------------------
 Wed Dec 15 21:11:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
@@ -374,7 +389,7 @@ Fri Sep  1 18:56:18 UTC 2017 - tonyj@suse.com
 -------------------------------------------------------------------
 Tue Mar 15 15:56:31 UTC 2016 - dvaleev@suse.com
 
-- userspace-rcu-ppc64le.patch use ppc for ppc64le 
+- userspace-rcu-ppc64le.patch use ppc for ppc64le
   http://git.lttng.org/?p=userspace-rcu.git;a=commit;h=61126bd9c901fa403315db71d8d5351d716717cb
 
 -------------------------------------------------------------------

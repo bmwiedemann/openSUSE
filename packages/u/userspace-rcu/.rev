@@ -388,4 +388,24 @@
 </comment>
     <requestid>1323693</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>79c045be87f6f2b231c5aba29dbc3fcb</srcmd5>
+    <version>0.15.5</version>
+    <time>1767621013</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.15.5:
+  * x86: Define cmm_smp_mb() as lock; addl rather than mfence
+  * Introduce barrier test
+  * Add test_uatomic to gitignore
+  * Cleanup: Remove stray space
+  * benchmark: Add uatomic benchmark
+  * uatomic: Fix redundant memory barriers for atomic builtin
+    operations
+  * Cleanup: Remove useless declarations from urcu-qsbr
+  * src/urcu-bp.c: assert =&gt; urcu_posix_assert
+  * ppc.h: improve ppc64 caa_get_cycles on Darwin
+
+- userspace-rcu-ppc64le.patch use ppc for ppc64le</comment>
+    <requestid>1325235</requestid>
+  </revision>
 </revisionlist>
