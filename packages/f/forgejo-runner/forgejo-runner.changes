@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan  4 20:24:48 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 12.4.0:
+  * feat: include all integration tests in make integration-test
+  * feat: request up to capacity jobs from Forgejo in one API call
+  * fix: remove cmd and ports from container schema
+  * fix: evaluate jobs.<job_id>.container.volumes
+  * fix: re-parsing incomplete jobs must use on.workflow_call.inputs, not
+    global inputs
+
+-------------------------------------------------------------------
 Thu Dec 25 01:23:30 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 12.3.1:

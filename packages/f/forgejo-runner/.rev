@@ -479,4 +479,18 @@
     <comment></comment>
     <requestid>1324386</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>8bb9cf9a78a67012093b2ce5d0e79c0c</srcmd5>
+    <version>12.4.0</version>
+    <time>1767621242</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 12.4.0:
+  * feat: include all integration tests in make integration-test
+  * feat: request up to capacity jobs from Forgejo in one API call
+  * fix: remove cmd and ports from container schema
+  * fix: evaluate jobs.&lt;job_id&gt;.container.volumes
+  * fix: re-parsing incomplete jobs must use on.workflow_call.inputs, not
+    global inputs (forwarded request 1325317 from rrahl0)</comment>
+    <requestid>1325318</requestid>
+  </revision>
 </revisionlist>

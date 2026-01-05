@@ -1,7 +1,7 @@
 #
 # spec file for package forgejo-runner
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define services %{name}.service
 Name:           forgejo-runner
-Version:        12.3.1
+Version:        12.4.0
 Release:        0
 Summary:        Daemon that connects to a Forgejo instance and runs CI jobs
 License:        GPL-3.0-or-later
@@ -28,7 +28,7 @@ Source1:        vendor.tar.gz
 Source2:        %{name}.service
 BuildRequires:  fish
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.23
+BuildRequires:  golang(API) >= 1.25
 BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(systemd)
 Requires:       git-core
