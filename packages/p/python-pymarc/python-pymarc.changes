@@ -1,7 +1,16 @@
 -------------------------------------------------------------------
+Sun Dec 28 21:05:57 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.3.1:
+  * Fixed: minor operations simplification
+  * Test the Record fields parameter
+  * Switch to using ruff
+  * added test for new Record fields parameter
+
+-------------------------------------------------------------------
 Thu Nov 14 08:56:21 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
-- Update to 5.3.3
+- Update to 5.2.3
   * A small bugfix release to ensure logging uses a namespace
     rather than the root logger !213. This should allow pymarc
     log messages to be more legible in applications that use it.
