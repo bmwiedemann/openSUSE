@@ -1922,4 +1922,12 @@ Currently, causes unresolvable builds in Leap 15.0 stagings. (forwarded request 
     <comment>submitted by snwint via jenkins</comment>
     <requestid>1324446</requestid>
   </revision>
+  <revision rev="240" vrev="1">
+    <srcmd5>6f13bdae2e848c6108c0fece770fba71</srcmd5>
+    <version>17.167</version>
+    <time>1767621083</time>
+    <user>anag_factory</user>
+    <comment>Ruby fixes </comment>
+    <requestid>1324471</requestid>
+  </revision>
 </revisionlist>
