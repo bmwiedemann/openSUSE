@@ -1,4 +1,155 @@
 -------------------------------------------------------------------
+Mon Jan  5 09:51:53 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 9.1.2050: 
+ * patch 9.1.2050: tests: Test_cd_completion may fail
+ * patch 9.1.2049: Vim9: unexpected E1209 error
+ * patch 9.1.2048: MS-Windows: backspace behavior wrong with ConPTY
+ * patch 9.1.2047: MS-Windows: style issue in gui_w32.c
+ * patch 9.1.2046: MS-Windows: compile warnings
+ * runtime(doc): Clarify visual mark behavior in getpos(), setpos()
+ * runtime: mention subscription only ml, fix typo in maintainer email
+ * translation(it): Update Italian translation
+ * patch 9.1.2045: Mac: Build failure with Mac OS X 10.6
+ * patch 9.1.2044: Inefficient use of ga_concat()
+ * patch 9.1.2043: filetype: kos files are not reconized
+ * patch 9.1.2042: filetype: systemd quadlet files are not recognized
+ * patch 9.1.2041: tests: test_menu.vim leaves swapfiles behind
+ * patch 9.1.2040: :tlunmenu incorrectly accepts a range
+ * runtime(logtalk): Update Logtalk runtime files for the latest language spec
+ * patch 9.1.2039: if_ruby: crash when using Ruby/dyn 4.0
+ * patch 9.1.2038: tests: test_marks.vim leaves swapfiles behind
+ * runtime: Revert several "mark invalid contact addresses" commits
+ * patch 9.1.2037: undo: cursor position not correctly restored
+ * patch 9.1.2036: if_ruby: build error with ruby 4.0
+ * runtime: mark more invalid email addresses
+ * runtime: mark more invalid email addresses
+ * runtime: mark invalid contact addresses
+ * patch 9.1.2035: filetype: filetype: Fennel fnlm files are not recognized
+ * patch 9.1.2034: filetype: Fennel fnml files are not recognized
+ * patch 9.1.2033: tests: Test_terminal_cwd flaky when using ConPTY
+ * patch 9.1.2032: Vim9: error when using class member in Lambda
+ * translation(zh_CN): Update the Simplify Chinese translation
+ * runtime(rust): Update indentation after nested array literal
+ * runtime(doc): Update Contributing.md on the use of AI
+ * runtime(doc): Emphasize adding tests when contributing
+ * runtime(rust): partly revert e426245b, it causes more issues than it solves
+ * patch 9.1.2031: Makefile: cannot run make installinks twice
+ * patch 9.1.2030: inefficient use of ga_concat()
+ * patch 9.1.2029: tests: the test_vim9_class.vim testfile is too long
+ * runtime(tutor): Improve Spanish translation for chapter 2 after 757b42a
+ * runtime(indent-tests): Include a simple Rust indent test
+ * runtime(rust): clean-up indent script, handle opening empty line correctly
+ * patch 9.1.2028: [security]: Buffer-overflow with incomplete multi-byte chars
+ * runtime(bpftrace): add indention plugin
+ * translation(zh_CN): Update the Simplify Chinese translation
+ * runtime(doc): improve :catch documentation
+ * patch 9.1.2027: filetype: bicep filetype used for 2 bicep file types
+ * patch 9.1.2026: tests: patch 9.1.2019 not tested properly
+ * patch 9.1.2025: conpty terminal process may not start
+ * patch 9.1.2024: 'fsync' option cannot be set per buffer
+ * patch 9.1.2023: [security]: Use-after-free in alist_add() with nasty autocmd
+ * runtime(compiler): add pyright Python type checker
+ * runtime(doc): remove some fixed items from todo.txt
+ * patch 9.1.2022: using C++ keyword class as member variable name
+ * runtime(netrw): Fix reading UNC paths on windows
+ * runtime(compiler): ignore 'Found' messages in ruff and ty compiler
+ * patch 9.1.2021: filetype: fluent files are not recognized
+ * runtime(termdebug): update v:shell_error condition test.
+ * patch 9.1.2020: tests: test_virtualedit.vim leaves swapfiles behind
+ * patch 9.1.2019: inconsistent cursor encoding past EOL with ve=all
+ * patch 9.1.2018: proto: ops.pro outdated
+ * runtime(osc52): A few minor fixes
+ * runtime(doc): add reference to searchcount() function
+ * runtime(doc): Improve :catch documentation
+ * runtime(make): Makefile highlighting breaks with ')' in string
+ * runtime(make): Move target greedy match after $() to avoid region matching overflow
+ * patch 9.1.2017: getregionpos() depends on 'linebreak' setting
+ * patch 9.1.2016: cindent wrong indentation after do-while loop
+ * patch 9.1.2015: blob2string() stopped after an empty line
+ * patch 9.1.2014: clipboard: clipboard register corrupted with clipboard provider
+ * patch 9.1.2013: tests: Test_terminal_shell_option fails with conpty
+ * patch 9.1.2012: Vim9: cannot initialize class member with protected var
+ * runtime(ftplugin): set different formatoptions for bpftrace
+ * patch 9.1.2011: crash when unreferencing gtk icon theme
+ * patch 9.1.2010: Missing out-of-memory checks in vim9class.c
+ * runtime(bpftrace): add base syntax plugin
+ * patch 9.1.2009: tests: "Xm4" test directory may not be deleted
+ * patch 9.1.2008: filetype: hylo files are not recognized
+ * translation(sr): Update Serbian message translation
+ * patch 9.1.2007: filetype: bpftrace hashbang lines are not recognized
+ * patch 9.1.2006: MS-Windows: ANSI colors not correct in terminal
+ * runtime(doc): Improve :help builtin-function-list table formatting
+ * patch 9.1.2005: MS-Windows: Missing fullscreen support for GUI version
+ * patch 9.1.2004: MS-Windows: executable() cannot find file in directory with single char
+ * runtime(ty): include ty compiler plugin
+ * patch 9.1.2003: tests: Test_glob_symlinks may fail on Window
+ * patch 9.1.2002: Vim9: heap-use-after-free when when accessing protect class member
+ * refactor(vim9): use 'start' open urls on win32
+ * runtime(vim9): Reset pwsh and powershell in Open()
+ * translation(hy): Update Armenian language translation
+ * runtime(openPlugin): start :Launch process in the background in GUI mode
+ * translation(zh_CN): Add license disclaimer
+ * runtime(getscript): GLVS plugin fails with wget.exe with PowerShell
+ * runtime(doc): Fix "Vim script" formatting at :help clipboard-providers
+ * patch 9.1.2001: cursor may end up in wrong window after :botright copen
+ * runtime(doc): clarify the behavior of CTRL-Z
+ * runtime(zip): Use :lcd instead of :cd in zip.vim
+ * patch 9.1.2000: Vim9: object member used char_u pointers
+ * translation(hy): Update Armenian language translation
+ * translation(zh_CN): Update the Simplify Chinese translation
+ * runtime(doc): fix outdated :function help
+ * runtime(osc52): Update documentation, send DA1 query when loading package
+ * patch 9.1.1999: clipboard provider does not respect 'clipboard' option
+ * runtime(tutor): Chapter 2: consistently use upper case letter, fix typo after 1e3e1ba067c79a
+ * runtime(compiler): improve rust errorformat
+ * patch 9.1.1998: tests: not enough tests for :setlocal omnifunc
+ * runtime(doc): use codepoint consistently
+ * runtime(tutor): Update Chapter 2, remove mentioning surround plugin
+ * patch 9.1.1997: Missing out-of-memory check in vim9class.c
+ * runtime(compiler): Match gcc.vim make error format
+ * patch 9.1.1996: tests: test_cmdline.vim leaves swapfiles behind
+ * patch 9.1.1995: tests: flaky test_cmdline.vim causes test failures
+ * patch 9.1.1994: CI: slow cursor positioning may cause flaky test failures
+ * runtime(doc): fix wrong help tag reference in eval.txt
+ * patch 9.1.1993: MS-Windows: compile error because of implicit type conversions
+ * patch 9.1.1992: Vim9: heap buffer overflow with COMPAREANY instruction
+ * patch 9.1.1991: :setlocal changes effective global 'omnifunc'
+ * patch 9.1.1990: tests: Test_term_gettty() fails when using conpty on Windows
+ * patch 9.1.1989: Vim intro screen shows register message
+ * patch 9.1.1988: osc52 package can be further improved
+ * patch 9.1.1987: assert_equal() prepends unnecessary ':' when typed
+ * patch 9.1.1986: clipboard provider does not work when redirecting messages
+ * runtime(tutor): Improve Spanish translations
+ * patch 9.1.1985: tests: test_sound.vim fails on Windows
+ * patch 9.1.1984: terminal OSC52 support can be improved
+ * patch 9.1.1983: Vim9: class_name definition can be improved
+ * patch 9.1.1982: Use after free with redraw_listener_add()
+ * patch 9.1.1981: tests: test suite may stop on error in gen_opt_test.vim
+ * translation(sr): Update the Serbian translation
+ * runtime(fvwm): Update fvwm keywords
+ * patch 9.1.1980: filetype: N-Quads files are not recognized
+ * patch 9.1.1979: :helpclose allows range and counts
+ * runtime(doc): Update version9.txt for v9.1.1966
+ * patch 9.1.1978: tests: Test_smoothscroll_number() may fail
+ * patch 9.1.1977: MS-Windows: missing dependency on optiondefs.h in Make_cyg_ming.mak
+ * patch 9.1.1976: Cannot define callbacks for redraw events
+ * nsis: add Chinese translation to nsis installer
+ * runtime(doc): Tweak documentation style in eval.txt and options.txt
+ * runtime(doc): Remove outdated agide.org link
+ * patch 9.1.1975: blob2str() may call STRNCPY() with a NULL pointer
+ * patch 9.1.1974: tests: missing cleanup in Test_bwipe_during_save()
+ * patch 9.1.1973: some minor problems with clipboard provider code
+ * patch 9.1.1972: No way to access the clipboard without X11/Wayland
+ * patch 9.1.1971: crash with invalid positional argument 0 in printf()
+ * patch 9.1.1971: Crash when buffer gets deleted inside charconvert during save
+ * patch 9.1.1970: visual end column returns wrong value after block edit
+ * runtime(doc): Rename NoDefaultCurrentDirectoryInExePath tag
+ * patch 9.1.1969: Wrong cursor position after formatting with long 'formatprg'
+ * patch 9.1.1968: tests: test_python3.vim leaves swapfiles behind
+ * patch 9.1.1967: if_python: 64bit numbers truncated
+
+-------------------------------------------------------------------
 Thu Dec 11 00:15:28 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 9.1.1966: 

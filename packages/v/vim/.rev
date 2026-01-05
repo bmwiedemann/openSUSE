@@ -8222,4 +8222,41 @@ always built-in because vim has direct perl dependencies anyway.
  * patch 9.1.1950: tests: Test_tagjump.vim leaves swapfiles behind</comment>
     <requestid>1322091</requestid>
   </revision>
+  <revision rev="393" vrev="1">
+    <srcmd5>5ed399cc8b51503e6d3671af9e486b03</srcmd5>
+    <version>9.1.2050</version>
+    <time>1767621087</time>
+    <user>anag_factory</user>
+    <comment>- update to 9.1.2050: 
+ * patch 9.1.2050: tests: Test_cd_completion may fail
+ * patch 9.1.2049: Vim9: unexpected E1209 error
+ * patch 9.1.2048: MS-Windows: backspace behavior wrong with ConPTY
+ * patch 9.1.2047: MS-Windows: style issue in gui_w32.c
+ * patch 9.1.2046: MS-Windows: compile warnings
+ * runtime(doc): Clarify visual mark behavior in getpos(), setpos()
+ * runtime: mention subscription only ml, fix typo in maintainer email
+ * translation(it): Update Italian translation
+ * patch 9.1.2045: Mac: Build failure with Mac OS X 10.6
+ * patch 9.1.2044: Inefficient use of ga_concat()
+ * patch 9.1.2043: filetype: kos files are not reconized
+ * patch 9.1.2042: filetype: systemd quadlet files are not recognized
+ * patch 9.1.2041: tests: test_menu.vim leaves swapfiles behind
+ * patch 9.1.2040: :tlunmenu incorrectly accepts a range
+ * runtime(logtalk): Update Logtalk runtime files for the latest language spec
+ * patch 9.1.2039: if_ruby: crash when using Ruby/dyn 4.0
+ * patch 9.1.2038: tests: test_marks.vim leaves swapfiles behind
+ * runtime: Revert several &quot;mark invalid contact addresses&quot; commits
+ * patch 9.1.2037: undo: cursor position not correctly restored
+ * patch 9.1.2036: if_ruby: build error with ruby 4.0
+ * runtime: mark more invalid email addresses
+ * runtime: mark more invalid email addresses
+ * runtime: mark invalid contact addresses
+ * patch 9.1.2035: filetype: filetype: Fennel fnlm files are not recognized
+ * patch 9.1.2034: filetype: Fennel fnml files are not recognized
+ * patch 9.1.2033: tests: Test_terminal_cwd flaky when using ConPTY
+ * patch 9.1.2032: Vim9: error when using class member in Lambda
+ * translation(zh_CN): Update the Simplify Chinese translation
+ * runtime(rust): Update indentation after nested array literal</comment>
+    <requestid>1325371</requestid>
+  </revision>
 </revisionlist>
