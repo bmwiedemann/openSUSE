@@ -40,7 +40,7 @@
 %bcond_with python3
 %endif
 Name:           tbb
-Version:        2022.2.0
+Version:        2022.3.0
 Release:        0
 Summary:        oneAPI Threading Building Blocks (oneTBB)
 License:        Apache-2.0
@@ -48,6 +48,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://uxlfoundation.github.io/oneTBB/
 Source0:        https://github.com/uxlfoundation/oneTBB/archive/v%{version}/%{name}-%{version}.tar.gz
 Source99:       tbb-rpmlintrc
+# PATCH-FIX-UPSTREAM tbb-python-setuptools.patch gh#uxlfoundation/oneTBB#1941, remove deprecated setup.py usage
+Patch1:         tbb-python-setuptools.patch
 # PATCH-FIX-OPENSUSE cmake-remove-include-path.patch -- openCV include error
 Patch2:         cmake-remove-include-path.patch
 Patch4:         add-cmake-check-for-libatomic-requirement-when-build.patch
@@ -193,8 +195,7 @@ scale the code.
 This package contains the header files needed for development with oneTBB.
 
 %prep
-%setup -q -n oneTBB-%{version}
-%autopatch -p1
+%autosetup -n oneTBB-%{version} -p1
 
 # fix python version
 sed -i 's/version\s*="0.2"/version = "%{version}"/' python/setup.py
@@ -225,29 +226,24 @@ sed -i '1{/^#!.*env python/ d}' python/TBB.py python/tbb/*.py
 %endif
 
 source */vars.sh
-cd ..
 
 # rebuild for every python flavor
 %if %{with python3}
-pushd python
+cd python/python_build
 %pyproject_wheel
-popd
+cd -
 %endif
 
 %install
-# create empty python build dir (?)
-mkdir -p build/python/build
 %cmake_install
 
-source build/*/vars.sh
+. build/*/vars.sh
 
 %if %{with python3}
-pushd python
+cd build/python/python_build/
 %pyproject_install
-%{python_expand %fdupes %{buildroot}%{$python_sitearch}
-    rm -rfv %{buildroot}%{$python_sitearch}/TBB-%{version}*.egg
-}
-popd
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
+cd -
 %endif
 
 # we install it into the devel package docdir
@@ -265,20 +261,16 @@ test -f %{buildroot}%{_libdir}/pkgconfig/tbb32.pc && mv %{buildroot}%{_libdir}/p
 %if %{with python3}
 # avoid shuffling the existing build dir
 mkdir python-test
-pushd python-test
+cd python-test
 export LD_LIBRARY_PATH="%{buildroot}%{_libdir}"
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} timeout 5m $python -m tbb test -v
-popd
+cd -
 %endif
 
-%post -n libtbb%{so_ver} -p /sbin/ldconfig
-%postun -n libtbb%{so_ver} -p /sbin/ldconfig
-%post -n libtbbmalloc%{so_ver_malloc} -p /sbin/ldconfig
-%postun -n libtbbmalloc%{so_ver_malloc} -p /sbin/ldconfig
-%post -n libirml%{so_ver_irml} -p /sbin/ldconfig
-%postun -n libirml%{so_ver_irml} -p /sbin/ldconfig
-%post -n libtbbbind%{tbbbind_suffix}-%{so_ver_bind} -p /sbin/ldconfig
-%postun -n libtbbbind%{tbbbind_suffix}-%{so_ver_bind} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libtbb%{so_ver}
+%ldconfig_scriptlets -n libtbbmalloc%{so_ver_malloc}
+%ldconfig_scriptlets -n libirml%{so_ver_irml}
+%ldconfig_scriptlets -n libtbbbind%{tbbbind_suffix}-%{so_ver_bind}
 
 %files -n libtbb%{so_ver}
 %{_libdir}/libtbb.so.%{so_ver}*

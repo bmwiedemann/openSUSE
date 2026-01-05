@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Jan  3 14:49:18 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Make build recipe POSIX sh compatible
+
+-------------------------------------------------------------------
+Fri Jan  2 21:06:28 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2022.3.0
+  * [Preview] Introduced API for setting dynamic task dependencies
+    in task_group. This allows successor tasks to execute only
+    after all their predecessors have completed.
+  * Extended task_arena with API support for enqueuing functions
+    into a task_group and waiting for the task_group to complete.
+  * Introduced API for setting and getting the assertion handler.
+    This allows applications to set their own assertion handling
+    functions.
+- Update cf-prot.patch, partially fixed upstream
+- Add tbb-python-setuptools.patch
+  * gh#uxlfoundation/oneTBB#1941
+  * replace setup.py direct call
+
+-------------------------------------------------------------------
 Wed Jul 30 03:38:43 UTC 2025 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - Change tbb-2022.2.0.tar.gz file [boo#1247142]

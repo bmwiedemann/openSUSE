@@ -1,0 +1,162 @@
+From c654cdc5916cfddbffeb056d9e80809e5ba17c33 Mon Sep 17 00:00:00 2001
+From: Ben Greiner <code@bnavigator.de>
+Date: Sat, 3 Jan 2026 14:24:05 +0100
+Subject: [PATCH] Replace 'setup.py build -I* -L*' usage with pip and
+ environment variables
+
+---
+ python/CMakeLists.txt | 18 +++++++++++-------
+ python/README.md      |  5 ++---
+ python/pyproject.toml |  3 +++
+ python/setup.py       | 30 +++++++++++++++++++++++-------
+ 4 files changed, 39 insertions(+), 17 deletions(-)
+ create mode 100644 python/pyproject.toml
+
+diff --git a/python/CMakeLists.txt b/python/CMakeLists.txt
+index 748921a592..e507b97c13 100644
+--- a/python/CMakeLists.txt
++++ b/python/CMakeLists.txt
+@@ -1,4 +1,5 @@
+-# Copyright (c) 2020-2023 Intel Corporation
++# Copyright (c) 2020-2025 Intel Corporation
++# Copyright (c) 2026 UXL Foundation Contributors
+ #
+ # Licensed under the Apache License, Version 2.0 (the "License");
+ # you may not use this file except in compliance with the License.
+@@ -27,7 +28,7 @@ add_custom_target(
+ get_target_property(TBB_INCLUDES tbb INTERFACE_INCLUDE_DIRECTORIES)
+ foreach(dir ${TBB_INCLUDES})
+     if (${dir} MATCHES "<BUILD_INTERFACE:" OR TBB_FOUND)
+-        set(TBB4PY_INCLUDE_STRING "-I${dir} ${TBB4PY_INCLUDE_STRING}")
++        set(TBB4PY_INCLUDE_STRING "${dir} ${TBB4PY_INCLUDE_STRING}")
+     endif()
+ endforeach()
+ string(STRIP "${TBB4PY_INCLUDE_STRING}" TBB4PY_INCLUDE_STRING)
+@@ -37,10 +38,13 @@ add_custom_target(
+     ALL
+     DEPENDS tbb python_copy
+     COMMAND
+-    ${PYTHON_EXECUTABLE} ${PYTHON_BUILD_WORK_DIR}/setup.py
+-        build -b${PYTHON_BUILD_WORK_DIR}
+-        build_ext ${TBB4PY_INCLUDE_STRING} -L$<TARGET_FILE_DIR:TBB::tbb>
+-        install --prefix build -f
++    ${CMAKE_COMMAND} -E env
++        TBB_INCLUDEDIRS="${TBB4PY_INCLUDE_STRING}"
++        TBB_LIBDIRS=$<TARGET_FILE_DIR:TBB::tbb>
++    ${PYTHON_EXECUTABLE} -m pip install
++        --no-build-isolation
++        --prefix build
++        ./${PYTHON_BUILD_WORK_DIR}
+     COMMENT "Build and install to work directory the oneTBB Python module"
+ )
+ 
+@@ -50,7 +54,7 @@ add_test(NAME python_test
+                  -DPYTHON_MODULE_BUILD_PATH=${PYTHON_BUILD_WORK_DIR}/build
+                  -P ${PROJECT_SOURCE_DIR}/cmake/python/test_launcher.cmake)
+ 
+-install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/${PYTHON_BUILD_WORK_DIR}/build/
++install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/build/
+         DESTINATION .
+         COMPONENT tbb4py)
+ 
+diff --git a/python/README.md b/python/README.md
+index e7e3318d30..30afe9a364 100644
+--- a/python/README.md
++++ b/python/README.md
+@@ -20,7 +20,7 @@ For more information and examples, please refer to [forum discussion](https://co
+  - **tbb** - The folder contains Python module sources.
+ 
+ ## Files
+- - **setup.py** - Standard Python setup script.
++ - **setup.py** - Standard Python setuptools script. Calling it directly is deprecated.
+  - **TBB.py** - Alternative entry point for Python module.
+ 
+ ## CMake predefined targets
+@@ -33,8 +33,7 @@ For more information and examples, please refer to [forum discussion](https://co
+  - `pydoc tbb` - Read built-in documentation for Python interfaces.
+  - `python3 -m tbb your_script.py` - Run your_script.py in context of `with tbb.Monkey():` when oneTBB is enabled. By default only multi-threading will be covered.
+  - `python3 -m tbb --ipc your_script.py` - Run your_script.py in context of `with tbb.Monkey():` when oneTBB enabled in both multi-threading and multi-processing modes.
+- - `python3 setup.py build -b<output_directory_path> -f check` - Build oneTBB module for Python. (Prerequisites: built and sourced oneTBB and IRML libraries)
+- - `python3 setup.py build -b<output_directory_path> build_ext -I<path_to_tbb_includes> -L<path_to_prebuilt_libraries> install -f <additional_flags> ` - Build and install oneTBB module for Python. (Prerequisites: built oneTBB and IRML libraries)
++ - `TBB_INCLUDEDIRS=<path_to_tbb_includes> TBB_LIBDIRS=<path_to_prebuilt_libraries> python3 -m pip install --no-build-isolation --prefix <output_directory_path>` - Build and install oneTBB module for Python. (Prerequisites: built oneTBB and IRML libraries)
+  - `python3 -m TBB test` - run test for oneTBB module for Python.
+  - `python3 -m tbb test` - run test for oneTBB module for Python.
+ 
+diff --git a/python/pyproject.toml b/python/pyproject.toml
+new file mode 100644
+index 0000000000..09977b5b8e
+--- /dev/null
++++ b/python/pyproject.toml
+@@ -0,0 +1,3 @@
++[build-system]
++requires = ["setuptools>=61"]
++build-backend = "setuptools.build_meta"
+diff --git a/python/setup.py b/python/setup.py
+index edf8580ff8..779660a594 100644
+--- a/python/setup.py
++++ b/python/setup.py
+@@ -1,4 +1,5 @@
+-# Copyright (c) 2016-2023 Intel Corporation
++# Copyright (c) 2016-2025 Intel Corporation
++# Copyright (c) 2026 UXL Foundation Contributors
+ #
+ # Licensed under the Apache License, Version 2.0 (the "License");
+ # you may not use this file except in compliance with the License.
+@@ -17,8 +18,12 @@
+ import platform
+ import os
+ 
+-from distutils.core import *
+-from distutils.command.build import build
++try:
++    from setuptools import setup, Extension
++    from setuptools.command.build import build
++except ImportError:
++    from distutils.core import setup, Extension
++    from distutils.command.build import build
+ 
+ rundir = os.getcwd()
+ os.chdir(os.path.abspath(os.path.dirname(__file__)))
+@@ -57,19 +62,31 @@
+     compile_flags = ['-std=c++11', '-Wno-unused-variable']
+     tbb_lib_name = 'tbb'
+ 
++tbb_includedirs = os.getenv("TBB_INCLUDEDIRS", "")
++tbb_libdirs = os.getenv("TBB_LIBDIRS", "")
++
++if use_compiler_tbb and (tbb_includedirs or tbb_libdirs):
++    print("Warning: Ignoring TBB_INCLUDEDIRS=%s and TBB_LIBDIRS=%s "
++          "because using oneTBB from Intel (R) C++ Compiler is set"
++          % (tbb_includedirs, tbb_libdirs))
++
+ _tbb = Extension("tbb._api", ["tbb/api.i"],
+-        include_dirs=[os.path.join(tbb_root, 'include')] if not use_compiler_tbb else [],
++        include_dirs=([os.path.join(tbb_root, 'include')]
++                      + tbb_includedirs.split()
++                     ) if not use_compiler_tbb else [],
+         swig_opts   =['-c++', '-O', '-threads'] + (  # add '-builtin' later
+               ['-I' + os.path.join(tbb_root, 'include')] if not use_compiler_tbb else []),
+         extra_compile_args=compile_flags + tbb_flag,
+         extra_link_args=tbb_flag,
+         libraries   =([tbb_lib_name] if not use_compiler_tbb else []) +
+                      (['irml'] if platform.system() == "Linux" else []),
+-        library_dirs=[ rundir,                                              # for custom-builds
++        library_dirs=([rundir,                                              # for custom-builds
+                        os.path.join(tbb_root, 'lib', 'intel64', 'gcc4.8'),  # for Linux
+                        os.path.join(tbb_root, 'lib'),                       # for MacOS
+                        os.path.join(tbb_root, 'lib', 'intel64', 'vc_mt'),   # for Windows
+-                     ] if not use_compiler_tbb else [],
++                      ]
++                      + tbb_libdirs.split()
++                     ) if not use_compiler_tbb else [],
+         language    ='c++',
+         )
+ 
+@@ -98,7 +115,6 @@ class TBBBuild(build):
+             'Intended Audience :: System Administrators',
+             'Intended Audience :: Other Audience',
+             'Intended Audience :: Science/Research',
+-            'License :: OSI Approved :: Apache Software License',
+             'Operating System :: MacOS :: MacOS X',
+             'Operating System :: Microsoft :: Windows',
+             'Operating System :: POSIX :: Linux',

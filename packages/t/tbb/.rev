@@ -488,4 +488,12 @@
     <comment>- Change tbb-2022.2.0.tar.gz file [boo#1247142]</comment>
     <requestid>1296540</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>ce626c7c127cbb6a7e11e316728ee1e1</srcmd5>
+    <version>2022.3.0</version>
+    <time>1767621069</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2022.3.0</comment>
+    <requestid>1325204</requestid>
+  </revision>
 </revisionlist>
