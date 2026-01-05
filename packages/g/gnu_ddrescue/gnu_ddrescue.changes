@@ -1,7 +1,28 @@
 -------------------------------------------------------------------
+Sun Jan  4 19:19:25 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.30
+  * Improved reading/positioning mechanism for hard disks with a
+    dead head
+  * Added a new option ``-N``/``--no-sweep``, which disables the
+    reading of skipped areas. The short name ``-N`` has been
+    reassigned from option ``--no-trim`` to option ``--no-sweep``.
+    Option ``--no-trim`` is no longer recommended because trimming
+    has now a higher probability of finding good data.
+  * Pass 2 now copies only the blocks adjacent to at least one
+    finished block. The trimming pass now trims only the edges
+    adjacent to a finished block. The goal is to delimit the bad
+    area as a whole.
+  * The initial skip size now defaults to ``infile_size / 32_768``
+    instead of ``infile_size / 100_000``.
+  * Added a new option ``-H``/``--make-test``, which creates a
+    mapfile for the test mode of ddrescue based on the disc
+    geometry given.
+
+-------------------------------------------------------------------
 Tue Oct  7 08:11:23 UTC 2025 - Frantisek Simorda <frantisek.simorda@suse.com>
 
-- update to 1.2.9:
+- update to 1.29:
   * The new option `--continue-on-errno` has been added.
   * If ddrescue exits because of a fatal read error, it now prints
     the value of the variable `errno` so that it can be used as
