@@ -32,7 +32,7 @@ rpm -e jdupes
 sed -i 's/^\([^:]*:[^:]*:\)[^:]*\(:.*\)$/\1\2/' /etc/shadow
 rpm -e sed
 
-# not making sense in a zypper-free image
+# makes no sense in a zypper-free image
 rm -vf /var/lib/zypp/AutoInstalled
 
 # includes device and inode numbers that change on deploy
