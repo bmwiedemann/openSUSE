@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Wed Dec 31 14:36:33 UTC 2025 - Andreas Prittwitz <m4ng4n@gmx.de>
+
+- Fix build on Tumbleweed and SLE/Leap 15.6
+  * fix failing "%define force_gcc_version" macro
+  * fix endless-sky-fix-data-path.patch to accommodate new
+    version 0.10.16
+  * remove unneeded BuildRequires for ninja
+  * add "BuildRequires: mold" for 0%{?suse_version} >= 1600
+    for better linking times as recommended by upstream
+  * remove redundant and unneeded export of Buildflags in
+    %prep and %install sections
+  * simplify BuildFlag handling of variables in %build section
+  * make use of %cmake, %cmake_build and %cmake_install macros
+    instead of manually calling cmake in the BE
+  * use the correct -DCMAKE flags in %build section
+  * use the %{name} variable in the %{_bindir} part of 
+    the %files section
+
+-------------------------------------------------------------------
+Sat Nov  1 17:36:57 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 0.10.16
+  * Reverted changes to movement AI from the previous release,
+    fixing various issues with ship movement introduced there.
+  * There is now a gamerule which controls if secondary weapon
+    ammunition can be resupplied at any outfitter.
+  * Scrollable text areas on the map and plugin panels now behave
+    correctly when the game window is resized.
+  * When landing, planetary security will no longer scan parked
+    ships for illegal outfits.
+  * Animations of features in the HUD are no longer affected by
+    the "pause" or "fast-forward" commands.
+- Changes in version 0.10.15
+  * Re-implementation of the "Hold Fire" command for escort ships.
+  * Improved the autopilot's ability to use reverse thrust and
+    handle ships with insufficient crew.
+  * Added animations to incoming in-flight messages, the mini-map
+    transitioning between systems, and zooming in and out in the
+    map panel.
+  * The Heavy Gust now becomes available shortly after the
+    Autumn Leaf.
+  * Some new and continued mission chains, including one involving
+    the Ka'het.
+  * Ramscoop fuel and solar energy collection are now based the
+    distances from each star in a system to a ship, instead of
+    from the ship to the center of the system.
+  * Sprites can now be loaded from AVIF files and music from
+    FLAC files.
+* Add BuildRequires pkgconfig(flac++) and pkgconfig(libavif)
+
+-------------------------------------------------------------------
 Thu Jul 17 22:24:53 UTC 2025 - Wladimir Palant <utfsuse@palant.de>
 
 - Fix building on openSUSE Leap 15.6

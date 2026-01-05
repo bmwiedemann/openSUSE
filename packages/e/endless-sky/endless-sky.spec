@@ -1,7 +1,7 @@
 #
 # spec file for package endless-sky
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,12 +17,12 @@
 #
 
 
-%if 0%{?sle_version} && 0%{?sle_version} < 160000
+%if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000
 %define force_gcc_version 13
 %endif
 %define lname   io.github.endless_sky.endless_sky
 Name:           endless-sky
-Version:        0.10.14
+Version:        0.10.16
 Release:        0
 Summary:        Space exploration, trading, and combat game
 License:        CC-BY-3.0 AND CC-BY-SA-3.0 AND CC-BY-SA-4.0 AND GPL-3.0-only
@@ -46,12 +46,16 @@ BuildRequires:  libjpeg8-devel
 BuildRequires:  libmad-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  minizip-devel
-BuildRequires:  ninja
+%if 0%{?suse_version} >= 1600
+BuildRequires:  mold
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  xdg-utils
+BuildRequires:  pkgconfig(flac++)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(glu)
+BuildRequires:  pkgconfig(libavif)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(mad)
 BuildRequires:  pkgconfig(openal)
@@ -66,43 +70,36 @@ find some friendly aliens whose culture is more civilized than your own...
 
 %prep
 %if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
-export CXXFLAGS="%{optflags} -fvisibility=hidden -fvisibility-inlines-hidden"
 export CC="gcc-%{?force_gcc_version}"
 export CXX="g++-%{?force_gcc_version}"
-%else
-export CXXFLAGS="%{optflags} -fvisibility=hidden -fvisibility-inlines-hidden -Wno-error=dangling-reference"
 %endif
 %autosetup -p1
-cmake --preset linux
 
 %build
+CXXFLAGS="%{optflags} -fvisibility=hidden -fvisibility-inlines-hidden"
+CFLAGS="%{optflags} -fvisibility=hidden"
 %if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
-export CXXFLAGS="%{optflags} -fvisibility=hidden -fvisibility-inlines-hidden"
 export CC="gcc-%{?force_gcc_version}"
 export CXX="g++-%{?force_gcc_version}"
 %else
-export CXXFLAGS="%{optflags} -fvisibility=hidden -fvisibility-inlines-hidden -Wno-error=dangling-reference"
+CXXFLAGS="%{optflags} -fvisibility=hidden -fvisibility-inlines-hidden -Wno-error=dangling-reference -fuse-ld=mold"
+CFLAGS="%{optflags} -fvisibility=hidden -fuse-ld=mold"
 %endif
-export CFLAGS="%{optflags} -fvisibility=hidden"
-cmake --build --preset linux-release --target EndlessSky
+%cmake -LA \
+    -DCMAKE_INSTALL_PREFIX="/usr/" \
+    -DCMAKE_C_FLAGS="$CFLAGS" \
+    -DCMAKE_CXX_FLAGS="$CXXFLAGS" \
+    -DCMAKE_BUILD_TYPE="Release"
+%cmake_build
 
 %install
-%if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
-export CXXFLAGS="%{optflags} -fvisibility=hidden -fvisibility-inlines-hidden"
-export CC="gcc-%{?force_gcc_version}"
-export CXX="g++-%{?force_gcc_version}"
-%else
-export CXXFLAGS="%{optflags} -fvisibility=hidden -fvisibility-inlines-hidden -Wno-error=dangling-reference"
-%endif
-export CFLAGS="%{optflags} -fvisibility=hidden"
-cmake --install build/linux --prefix %{buildroot}%{_prefix} --strip
-
+%cmake_install
 %fdupes %{buildroot}
 
 %files
 %license license.txt
 %doc README.md changelog copyright
-%{_bindir}/endless-sky
+%{_bindir}/%{name}
 %{_datadir}/%{name}/
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 %{_datadir}/applications/%{lname}.desktop

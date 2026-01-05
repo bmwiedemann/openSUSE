@@ -1,13 +1,13 @@
-Index: endless-sky-0.10.14/CMakeLists.txt
+Index: endless-sky-0.10.16/CMakeLists.txt
 ===================================================================
---- endless-sky-0.10.14.orig/CMakeLists.txt
-+++ endless-sky-0.10.14/CMakeLists.txt
+--- endless-sky-0.10.16.orig/CMakeLists.txt
++++ endless-sky-0.10.16/CMakeLists.txt
 @@ -312,7 +312,7 @@
  	include(CPack)
  elseif(UNIX)
  	# Install the binary.
 -	install(TARGETS EndlessSky CONFIGURATIONS Release RUNTIME DESTINATION games)
-+	install(TARGETS EndlessSky CONFIGURATIONS Release RUNTIME DESTINATION bin)
++	install(TARGETS EndlessSky CONFIGURATIONS Release RUNTIME DESTINATION /usr/bin)
  
  	# Install the desktop file.
  	install(FILES io.github.endless_sky.endless_sky.desktop DESTINATION share/applications)
@@ -33,10 +33,10 @@ Index: endless-sky-0.10.14/CMakeLists.txt
  endif()
  
  # Create symlink to compile_commands.json from build/ so it's LSP-discoverable.
-Index: endless-sky-0.10.14/endless-sky.6
+Index: endless-sky-0.10.16/endless-sky.6
 ===================================================================
---- endless-sky-0.10.14.orig/endless-sky.6
-+++ endless-sky-0.10.14/endless-sky.6
+--- endless-sky-0.10.16.orig/endless-sky.6
++++ endless-sky-0.10.16/endless-sky.6
 @@ -17,7 +17,7 @@ Most of the controls should be self\-exp
  
  For a manual and other information, visit https://endless\-sky.github.io
@@ -46,10 +46,10 @@ Index: endless-sky-0.10.14/endless-sky.6
  
  .SH OPTIONS
  .IP \fB\-h,\ \-\-help
-Index: endless-sky-0.10.14/source/Files.cpp
+Index: endless-sky-0.10.16/source/Files.cpp
 ===================================================================
---- endless-sky-0.10.14.orig/source/Files.cpp
-+++ endless-sky-0.10.14/source/Files.cpp
+--- endless-sky-0.10.16.orig/source/Files.cpp
++++ endless-sky-0.10.16/source/Files.cpp
 @@ -128,7 +128,7 @@ void Files::Init(const char * const *arg
  		// the end, so parent paths do not include it.
  		static const filesystem::path LOCAL_PATH = "/usr/local";
@@ -59,10 +59,10 @@ Index: endless-sky-0.10.14/source/Files.cpp
  
  		if(IsParent(LOCAL_PATH, resources))
  			resources = LOCAL_PATH / RESOURCE_PATH;
-Index: endless-sky-0.10.14/source/News.h
+Index: endless-sky-0.10.16/source/News.h
 ===================================================================
---- endless-sky-0.10.14.orig/source/News.h
-+++ endless-sky-0.10.14/source/News.h
+--- endless-sky-0.10.16.orig/source/News.h
++++ endless-sky-0.10.16/source/News.h
 @@ -20,6 +20,7 @@ this program. If not, see <https://www.g
  #include "Phrase.h"
  
