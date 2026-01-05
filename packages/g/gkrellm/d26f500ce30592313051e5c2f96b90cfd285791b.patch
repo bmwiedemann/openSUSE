@@ -1,0 +1,142 @@
+From d26f500ce30592313051e5c2f96b90cfd285791b Mon Sep 17 00:00:00 2001
+From: Stefan Gehn <stefan@srcbox.net>
+Date: Sat, 3 Jan 2026 11:34:20 +0100
+Subject: [PATCH] Optionally use libsystemd to read user count
+
+Newer Linux systems do not write a utmp file anymore. Add a user count
+based on systemd login sessions fetched via libsystemd when that
+library is found and systemd support has not been disabled via the
+'systemd' Meson option.
+
+This fix/feature requires building with Meson.
+
+Fixes #88
+---
+ CHANGELOG.md        |  1 +
+ meson.build         |  9 ++++++++-
+ meson.options       |  5 +++--
+ src/sysdeps/linux.c | 31 +++++++++++++++++++++++++++++++
+ 4 files changed, 43 insertions(+), 3 deletions(-)
+
+Index: b/CHANGELOG.md
+===================================================================
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -1,5 +1,9 @@
+ # GKrellM Changelog
+ 
++### Fixed
++ 
++- Linux: Fix user count on Linux distros that have disabled utmp writing but use systemd/logind. Only supported when building with Meson.
++
+ ## [2.5.0](https://git.srcbox.net/gkrellm/gkrellm/releases/tag/gkrellm-2.5.0) - 2025-12-14
+ 
+ - Add Meson build rules covering FreeBSD, Linux, macOS as well as Windows so
+Index: b/meson.build
+===================================================================
+--- a/meson.build
++++ b/meson.build
+@@ -1,4 +1,4 @@
+-# SPDX-FileCopyrightText: 2025 Stefan Gehn <stefan+gkrellm@srcbox.net>
++# SPDX-FileCopyrightText: 2025-2026 Stefan Gehn <stefan+gkrellm@srcbox.net>
+ # SPDX-License-Identifier: CC0-1.0
+ 
+ project(
+@@ -51,6 +51,12 @@ if intl_dep.found()
+   project_cflags += '-DENABLE_NLS'
+ endif
+ 
++systemd_opt = get_option('systemd').disable_auto_if(host_machine.system() != 'linux')
++libsystemd_dep = dependency('libsystemd', required: systemd_opt)
++if libsystemd_dep.found()
++  project_cflags += '-DHAVE_LIBSYSTEMD'
++endif
++
+ project_cflags_check = [
+   '-Wformat-security',
+   '-Wformat-y2k',
+@@ -70,6 +76,7 @@ common_deps = [
+   gthread_dep,
+   intl_dep,
+   lmsensors_dep,
++  libsystemd_dep,
+ ]
+ 
+ # linker args shared between gkrellmd and gkrellm
+Index: b/meson.options
+===================================================================
+--- a/meson.options
++++ b/meson.options
+@@ -1,4 +1,4 @@
+-# SPDX-FileCopyrightText: 2025 Stefan Gehn <stefan+gkrellm@srcbox.net>
++# SPDX-FileCopyrightText: 2025-2026 Stefan Gehn <stefan+gkrellm@srcbox.net>
+ # SPDX-License-Identifier: CC0-1.0
+ 
+ option(
+@@ -55,8 +55,9 @@ option(
+   'systemd',
+   type: 'feature',
+   value: 'auto',
+-  description: 'enable gkrellmd systemd service file (Linux only).',
++  description: 'enable gkrellmd systemd service file and logind user count (Linux only).',
+ )
++
+ option(
+   'systemd-unit-dir',
+   type: 'string',
+Index: b/src/sysdeps/linux.c
+===================================================================
+--- a/src/sysdeps/linux.c
++++ b/src/sysdeps/linux.c
+@@ -41,6 +41,9 @@
+ 
+ #include <inttypes.h>
+ 
++#if defined(HAVE_LIBSYSTEMD)
++#include <systemd/sd-login.h>
++#endif
+ 
+ static gboolean		need_locale_fix,
+ 					have_sysfs,
+@@ -664,6 +667,33 @@ gkrellm_sys_proc_read_data(void)
+ void
+ gkrellm_sys_proc_read_users(void)
+ 	{
++#if defined(HAVE_LIBSYSTEMD)
++	char **sessions = NULL;
++	const int sessions_count = sd_get_sessions(&sessions);
++	if (sessions_count < 0) {
++		return;
++	}
++
++	int users_count = 0;
++	for (int i = 0; i < sessions_count; ++i)
++		{
++		char *session_class = NULL;
++		if (sd_session_get_class(sessions[i], &session_class) < 0)
++			continue;
++
++		// only count actual users, not login managers or others
++		if (strcmp(session_class, "user") == 0)
++			++users_count;
++
++		free(session_class);
++		}
++
++	for (int i = 0; i < sessions_count; ++i)
++		free(sessions[i]);
++	free(sessions);
++
++	gkrellm_proc_assign_users(users_count);
++#else // read from utmp
+ 	struct utmp		*ut;
+ 	struct stat		s;
+ 	static time_t	utmp_mtime;
+@@ -679,6 +709,7 @@ gkrellm_sys_proc_read_users(void)
+ 		utmp_mtime = s.st_mtime;
+ 		gkrellm_proc_assign_users(n_users);
+ 		}
++#endif
+ 	}
+ 
+ gboolean

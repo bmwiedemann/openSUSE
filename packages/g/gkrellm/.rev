@@ -335,4 +335,17 @@
     <comment></comment>
     <requestid>1324930</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>707310f7cb591f5577f9c50143c13618</srcmd5>
+    <version>2.5.0</version>
+    <time>1767621312</time>
+    <user>anag_factory</user>
+    <comment>- Apply d26f500ce30592313051e5c2f96b90cfd285791b.patch with minor
+  adjustments
+- Add temporary build hack to build without switching to meson
+  implies systemd dependency is always on now
+- Remove build conditionals for suse_version &gt; 12.2
+- Refresh gkrellm-lib64-plugins-dir.patch (forwarded request 1325309 from frispete)</comment>
+    <requestid>1325378</requestid>
+  </revision>
 </revisionlist>

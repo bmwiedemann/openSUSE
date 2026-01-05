@@ -1,7 +1,7 @@
 #
 # spec file for package gkrellm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,17 +30,16 @@ Source2:        gkrellm-16.png
 Source3:        gkrellm-24.png
 Source4:        gkrellm-32.png
 Source5:        gkrellm-48.png
-%if 0%{?suse_version} > 1220
 Source6:        gkrellmd.service
-%endif
 # PATCH-FIX-OPENSUSE gkrellm-lib64-plugins-dir.patch pgajdos@suse.cz -- look also into /usr/lib64/gkrellm2/plugins
 Patch1:         %{name}-lib64-plugins-dir.patch
+# PATCH-FIX-UPSTREAM d26f500ce30592313051e5c2f96b90cfd285791b.patch hpj@urpla.net -- use libsystemd to read user count
+Patch2:         d26f500ce30592313051e5c2f96b90cfd285791b.patch
 BuildRequires:  gtk2-devel
 BuildRequires:  libsensors4-devel
-%if 0%{?suse_version} > 1220
-BuildRequires:  systemd-rpm-macros
-%endif
 BuildRequires:  openssl-devel
+BuildRequires:  systemd-devel
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-desktop-files
 BuildRequires:  xorg-x11-libSM-devel
 Recommends:     %{name}-lang
@@ -105,6 +104,8 @@ Files needed to build plugins for gkrellm2
 
 %prep
 %autosetup -p1
+sed -i 's|(SENSORS_LIBS)\\|(SENSORS_LIBS) -lsystemd\\|' src/Makefile
+sed -i 's|(SENSORS_LIBS)|(SENSORS_LIBS) -lsystemd|' server/Makefile
 
 %build
 cd src
@@ -112,7 +113,7 @@ cd src
 #e. g. bnc#803967 bnc#803081
 ./configure
 cd ..
-make CFLAGS="%{optflags} -Wno-error=incompatible-pointer-types" X11_LIBS="-L/usr/X11R6/%{_lib} -lX11 -lSM -lICE" GTOP_LIBS="-lgmodule-2.0" PREFIX=%{_prefix}
+make CFLAGS="%{optflags} -Wno-error=incompatible-pointer-types -DHAVE_LIBSYSTEMD" X11_LIBS="-L/usr/X11R6/%{_lib} -lX11 -lSM -lICE" GTOP_LIBS="-lgmodule-2.0" PREFIX=%{_prefix}
 
 %install
 make install STRIP= \

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan  4 17:43:56 UTC 2026 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Apply d26f500ce30592313051e5c2f96b90cfd285791b.patch with minor
+  adjustments
+- Add temporary build hack to build without switching to meson
+  implies systemd dependency is always on now
+- Remove build conditionals for suse_version > 12.2
+- Refresh gkrellm-lib64-plugins-dir.patch
+
+-------------------------------------------------------------------
 Tue Dec 30 19:53:11 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.5.0:
