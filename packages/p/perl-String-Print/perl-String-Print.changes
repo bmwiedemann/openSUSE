@@ -1,0 +1,98 @@
+-------------------------------------------------------------------
+Wed Dec 10 05:36:42 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.20.0 (1.02)
+   see /usr/share/doc/packages/perl-String-Print/ChangeLog
+
+  version 1.02: Tue  9 Dec 13:49:31 CET 2025
+  	Changes:
+  	- remove the blank before kB in BYTES.
+  	Fixes:
+  	- remove correct redundant separator from thousands in %d
+  	- do not use %F and %T in date formats, for broken Windows
+  	  github issue #2 [Phil Perry]
+  	Improvements:
+  	- flexible format for the DT modifier
+  	- formats for DATE modifier
+  version 1.01: Thu  4 Dec 16:43:36 CET 2025
+  	Improvements:
+  	- add UNKNOWN modifier
+  	- doc improvements
+  version 1.00: Wed  3 Dec 13:21:40 CET 2025
+  	Improvements:
+  	- add bugtracker to meta
+  	- add ellipsis EL modifier
+  	- add CHOP modifier
+  	- add defaults configuration
+  	- better document encodeFor()
+  	- add DateTime support for time modifiers
+  version 0.96: Fri 12 Sep 14:01:16 CEST 2025
+  	Improvements:
+  	- thousands markers in %d
+  	- add date modifier RFC5322
+  	- add modifier '='
+  	- further documentation improvements
+  version 0.95: Mon  8 Sep 14:06:53 CEST 2025
+  	Changes:
+  	- require 5.16
+  	Fixes:
+  	- printp formats which start with a '%' were not processed
+  	Improvements:
+  	- modifier HTML
+  	- add .gitignore
+  	- convert to OODoc 3.03
+
+-------------------------------------------------------------------
+Mon Mar  2 03:14:57 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.94
+   see /usr/share/doc/packages/perl-String-Print/ChangeLog
+
+-------------------------------------------------------------------
+Wed Feb  7 17:19:46 UTC 2018 - coolo@suse.com
+
+- updated to 0.93
+   see /usr/share/doc/packages/perl-String-Print/ChangeLog
+
+  version 0.93:
+  
+  	Improvements:
+  	- convert to GIT
+  	- publish via GitHUB
+
+-------------------------------------------------------------------
+Fri Jul  7 06:19:37 UTC 2017 - coolo@suse.com
+
+- updated to 0.92
+   see /usr/share/doc/packages/perl-String-Print/ChangeLog
+
+  version 0.92: Thu  6 Jul 12:31:36 CEST 2017
+  
+  	Fixes:
+  	- %F and %T not supported on Windows [cpantesters]
+
+-------------------------------------------------------------------
+Wed Jun 28 06:15:19 UTC 2017 - coolo@suse.com
+
+- updated to 0.91
+   see /usr/share/doc/packages/perl-String-Print/ChangeLog
+
+-------------------------------------------------------------------
+Thu Jun 15 06:17:39 UTC 2017 - coolo@suse.com
+
+- updated to 0.90
+   see /usr/share/doc/packages/perl-String-Print/ChangeLog
+
+  version 0.90: Wed 14 Jun 14:47:03 CEST 2017
+  
+  	Improvements:
+  	- spell-fix rt.cpan.org#96464 [Gregor Herrmann, Debian]
+  	- add output encoding (encodeFor)
+  	- add complex keys
+
+-------------------------------------------------------------------
+Tue Apr 14 18:50:42 UTC 2015 - coolo@suse.com
+
+- initial package $version
+ * created by $NAME $VERSION
+
