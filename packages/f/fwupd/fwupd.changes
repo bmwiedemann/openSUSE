@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jan  3 23:51:16 UTC 2026 - Holden Fried <holden@opensuse.org>
+
+- Actually build and install manpages:
+  * These were originally removed because including them would
+    have required pulling a nasty set of ghc/pandocs build
+    dependencies directly into Ring 1
+  * fwupd upstream quickly reverted this change in 1.8.13, but
+    the conditional to block building/installing the manpages by
+    default was never removed from the specfile
+  * This restores the fwupd manpages, which have been sorely
+    missing in openSUSE for a couple years
+
+-------------------------------------------------------------------
 Fri Dec 19 10:31:44 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.0.19:

@@ -1,7 +1,7 @@
 #
 # spec file for package fwupd
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,6 @@
 %endif
 
 %define shlib_sover  3
-%define docs 0
 
 Name:           fwupd
 Version:        2.0.19
@@ -85,9 +84,6 @@ BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(colorhug) >= 1.2.12
 %ifnarch s390x ppc64le
 BuildRequires:  pkgconfig(flashrom)
-%endif
-%if 0%{?docs}
-BuildRequires:  pandoc
 %endif
 BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.45.8
@@ -240,13 +236,9 @@ export CFLAGS="%{optflags} -D_GNU_SOURCE"
   -Dtests=false \
   -Dvalgrind=disabled \
   -Dvendor_ids_dir=/usr/share/hwdata \
+  -Dman=true \
 %ifarch s390x ppc64le
   -Dplugin_flashrom=disabled \
-%endif
-%if 0%{?docs}
-  -Dman=true \
-%else
-  -Dman=false \
 %endif
   %{nil}
 %meson_build
@@ -322,14 +314,13 @@ rm -fr %{buildroot}%{_datadir}/fish
 %{_datadir}/%{name}/metainfo/org.freedesktop.fwupd.remotes.lvfs-testing.metainfo.xml
 %{_datadir}/%{name}/metainfo/org.freedesktop.fwupd.remotes.lvfs.metainfo.xml
 %{_datadir}/%{name}/remotes.d/vendor/firmware/README.md
-%if 0%{?docs}
-%{_mandir}/man1/fwupdagent.1%{?ext_man}
 %{_mandir}/man1/fwupdmgr.1%{?ext_man}
 %{_mandir}/man1/fwupdtool.1%{?ext_man}
+%{_mandir}/man5/fwupd-remotes.d.5%{?ext_man}
+%{_mandir}/man5/fwupd.conf.5%{?ext_man}
+%{_mandir}/man8/fwupd-refresh.service.8%{?ext_man}
 %if %{with efi_fw_update}
 %{_mandir}/man1/dbxtool.1%{?ext_man}
-%{_mandir}/man1/fwupdate.1%{?ext_man}
-%endif
 %endif
 %{_datadir}/polkit-1/actions/org.freedesktop.fwupd.policy
 %ifnarch s390x
