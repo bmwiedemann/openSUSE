@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Dec 28 20:23:52 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.12.0:
+  * Support for enum kebab case.
+  * Apply source order: init > env > dotenv > secrets > defaults
+    and pres…
+  * Add NestedSecretsSettings source
+  * Strip non-explicit default values.
+  * Coerce env vars if strict is True.
+  * Restore init kwarg names before returning final state
+    dictionary.
+  * Drop Python3.9 support
+  * Adapt test_protected_namespace_defaults for dev. Pydantic
+  * Add Python 3.14
+  * Prepare release 2.12
+- update to 2.11.0:
+  * CLI Serialize Support
+  * Inspect type aliases to determine if an annotation is complex
+  * Remove parsing of command line arguments from
+    `CliSettingsSource.__init__`.
+  * turn off allow_abbrev on subparsers
+  * CLI Serialization Fixes
+  * Fix PydanticModel type checking.
+  * Avoid env_prefix falling back to env vars without prefix
+  * Warn if model_config sets unused keys for missing settings
+    sources
+  * Included endpoint_url kwarg in
+    AWSSecretsManagerSettingsSource class
+  * Fix typo ("Accesing") in the "Adding sources" docs
+  * CLI Windows Path Fix
+  * Cli root model support
+
+-------------------------------------------------------------------
 Tue Jul  1 08:46:12 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 2.10.1

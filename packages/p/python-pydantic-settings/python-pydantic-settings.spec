@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydantic-settings
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pydantic-settings%{psuffix}
-Version:        2.10.1
+Version:        2.12.0
 Release:        0
 Summary:        Settings management using Pydantic
 License:        MIT
