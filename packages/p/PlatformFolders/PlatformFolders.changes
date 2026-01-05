@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan  2 15:30:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.0:
+  * Exposed "sago::internal::getHome()". It might be useful when
+    converting from old file placement.
+  * Tested and supports newer versions of CMake
+
+-------------------------------------------------------------------
 Fri Feb 24 09:06:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - use fully qualified source url, spec file cleanups, fix devel

@@ -7,4 +7,15 @@
     <comment></comment>
     <requestid>1067557</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>97915aae30273faa5abcdeab10046341</srcmd5>
+    <version>4.3.0</version>
+    <time>1767621105</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.3.0:
+  * Exposed &quot;sago::internal::getHome()&quot;. It might be useful when
+    converting from old file placement.
+  * Tested and supports newer versions of CMake (forwarded request 1325147 from dirkmueller)</comment>
+    <requestid>1325220</requestid>
+  </revision>
 </revisionlist>

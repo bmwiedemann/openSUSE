@@ -1,7 +1,7 @@
 #
 # spec file for package PlatformFolders
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2022 Fabio Pesari
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           PlatformFolders
-Version:        4.2.0
+Version:        4.3.0
 Release:        0
 Summary:        Library for cross-platform detection of special directories
 License:        MIT
