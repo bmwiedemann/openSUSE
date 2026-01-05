@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jan  2 13:41:59 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.8.0:
+  * Python 3.10 or later is now required.
+  * CLI: The "otp settings" command now supports --serial-
+    usb-visible.
+  * CLI: List PIV "retired" key slots after normal slots.
+  * CLI: Add --no-update-chuid to "piv certificate" commands.
+  * CLI: Improve "fido" command error handing when FIDO2 is
+    disabled/missing.
+  * CLI: Support "fido reset" when multiple keys are
+    connected.
+  * Add "YkmanDevice.reinsert" method to simplify
+    reconnecting a YubiKey.
+  * PIV: Add "PivSession.get_serial" method.
+  * Windows and MacOS installers built with Python 3.13.7
+
+-------------------------------------------------------------------
 Tue Jun 10 14:28:14 UTC 2025 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - update to 5.7.2:

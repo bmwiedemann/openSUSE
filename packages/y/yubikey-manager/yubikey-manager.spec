@@ -1,7 +1,7 @@
 #
 # spec file for package yubikey-manager
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yubikey-manager
-Version:        5.7.2
+Version:        5.8.0
 Release:        0
 Summary:        Python 3 library and command line tool for configuring a YubiKey
 License:        BSD-2-Clause
@@ -28,6 +28,7 @@ Source1:        https://developers.yubico.com/yubikey-manager/Releases/yubikey_m
 Source2:        yubikey-manager.keyring
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
+BuildRequires:  python3-base >= 3.10
 BuildRequires:  python3-click
 BuildRequires:  python3-cryptography >= 3.0
 BuildRequires:  python3-fido2 >= 0.9
