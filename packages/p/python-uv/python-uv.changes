@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Jan  3 20:53:25 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.9.21 
+ * Bug fixes
+  * Avoid enforcing incorrect hash in mixed-hash settings 
+  * Fix retry counts in cached client 
+  * Respect UV_PYTHON_DOWNLOAD_MIRROR in uv python list 
+  * Support remote pylock.toml files 
+  * Avoid flagging proxied Git URLs as ambiguous authority 
+  * Fix dropped support of - in pip constraints, overrides, and excludes 
+  * Fix regression where zstd distribution hashes were not considered valid 
+ * Documentation
+  * Fix a typo in the resolution documentation 
+  * Fix a typo in python install --default documentation 
+ * Enhancements
+  * Allow uv pip compile to install missing python interpreters in cases where it would otherwise fail 
+  * Avoid creating file contents with uv init --bare --script 
+  * Respect --torch-backend in uv tool commands 
+  * Support comma-separated values in --no-binary and --only-binary 
+ * Preview features
+  * Summarize package changes in uv sync with JSON output format 
+ * Performance
+  * Avoid two hot String allocations in deserialization 
+  * Cache NVIDIA-hosted wheels by default 
+
+-------------------------------------------------------------------
 Sun Dec 21 12:43:52 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.9.18 

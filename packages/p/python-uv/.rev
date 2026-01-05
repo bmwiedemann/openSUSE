@@ -1872,4 +1872,33 @@
   * Better documentation for exclude-newer*</comment>
     <requestid>1323925</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>742d7e60ad67e24276d1a3e9977a83a4</srcmd5>
+    <version>0.9.21</version>
+    <time>1767621122</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.9.21 
+ * Bug fixes
+  * Avoid enforcing incorrect hash in mixed-hash settings 
+  * Fix retry counts in cached client 
+  * Respect UV_PYTHON_DOWNLOAD_MIRROR in uv python list 
+  * Support remote pylock.toml files 
+  * Avoid flagging proxied Git URLs as ambiguous authority 
+  * Fix dropped support of - in pip constraints, overrides, and excludes 
+  * Fix regression where zstd distribution hashes were not considered valid 
+ * Documentation
+  * Fix a typo in the resolution documentation 
+  * Fix a typo in python install --default documentation 
+ * Enhancements
+  * Allow uv pip compile to install missing python interpreters in cases where it would otherwise fail 
+  * Avoid creating file contents with uv init --bare --script 
+  * Respect --torch-backend in uv tool commands 
+  * Support comma-separated values in --no-binary and --only-binary 
+ * Preview features
+  * Summarize package changes in uv sync with JSON output format 
+ * Performance
+  * Avoid two hot String allocations in deserialization 
+  * Cache NVIDIA-hosted wheels by default</comment>
+    <requestid>1325232</requestid>
+  </revision>
 </revisionlist>
