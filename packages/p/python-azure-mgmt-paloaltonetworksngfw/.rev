@@ -41,4 +41,21 @@
 - Use modern RPM macros to express version dependencies (forwarded request 1164845 from glaubitz)</comment>
     <requestid>1165241</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4f20887912f8edf7b7f2764315ac8f8b</srcmd5>
+    <version>1.1.0</version>
+    <time>1767625471</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 1.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Remove unzip package from BuildRequires
+- Rename LICENSE.txt to LICENSE in %files section
+- Switch source archive format to TAR.GZ
+- Update Requires from pyproject.toml (forwarded request 1325374 from glaubitz)</comment>
+    <requestid>1325411</requestid>
+  </revision>
 </revisionlist>
