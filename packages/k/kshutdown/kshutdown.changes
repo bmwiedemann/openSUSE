@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Dec 28 08:49:30 UTC 2025 - munix9@googlemail.com
+
+- Update to version 6.2
+  * Minor UI tweaks
+  * More time presets in Date/Time menu
+  * Show message action: Added "Beep Sound" option
+  * Minor bugfixes
+  * Improved AppImage support
+  * Optimize startup time by skipping loading of nonexistent icons
+  * Correctly align text if an icon is missing
+  * Added basic D-Bus help (see main menu → Help → D-Bus)
+
+-------------------------------------------------------------------
 Sun Apr 20 09:57:05 UTC 2025 - munix9@googlemail.com
 
 - Update to version 6.0

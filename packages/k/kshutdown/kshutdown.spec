@@ -1,7 +1,7 @@
 #
 # spec file for package kshutdown
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright © 2010 Lubos Lunak <llunak@novell.com>
 # Copyright © 2011 Buschmann <buschmann23@opensuse.org>
 # Copyright © 2014–2019 Markus S <kamikazow@opensuse.org>
@@ -20,7 +20,7 @@
 
 
 Name:           kshutdown
-Version:        6.0
+Version:        6.2
 Release:        0
 Summary:        Graphical shutdown utility
 License:        GPL-2.0-or-later
