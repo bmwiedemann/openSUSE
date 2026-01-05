@@ -122,4 +122,18 @@
     CHANGELOG.md file provided with this package (forwarded request 1181410 from glaubitz)</comment>
     <requestid>1181671</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9d3daf56f5274cf6d56edf77680c942c</srcmd5>
+    <version>3.3.1</version>
+    <time>1767625470</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 3.3.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Rename LICENSE.txt to LICENSE in %files section (forwarded request 1325343 from glaubitz)</comment>
+    <requestid>1325407</requestid>
+  </revision>
 </revisionlist>
