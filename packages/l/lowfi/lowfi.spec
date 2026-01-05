@@ -1,7 +1,7 @@
 #
 # spec file for package lowfi
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lowfi
-Version:        1.7.2
+Version:        2.0.0
 Release:        0
 Summary:        An extremely simple lofi player
 License:        MIT

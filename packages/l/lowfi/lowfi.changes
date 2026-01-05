@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jan  4 14:10:09 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 2.0.0:
+  * added Clock component in the TUI interface with the -c flag
+  * French translations for documentation
+  * Refactored UI architecture
+  * Improved input handling and UI initialization flow
+  * Updated audio playback logic, including waiting/handling state changes
+  * Improved track listing and formatting
+  * Updated volume management and display
+  * Revised README and contributing guidelines
+  * Cleaned up dependencies and updated Cargo.toml / Cargo.lock
+  * Expanded error handling in track management
+
+-------------------------------------------------------------------
 Fri Oct  3 07:50:16 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.7.2:
