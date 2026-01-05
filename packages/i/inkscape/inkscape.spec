@@ -1,6 +1,7 @@
 #
 # spec file for package inkscape
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +18,7 @@
 
 
 Name:           inkscape
-Version:        1.4.2+git48.4b73df015e
+Version:        1.4.3+git2.fcd0343856
 Release:        0
 Summary:        Vector Illustration Program
 License:        GPL-3.0-only
@@ -27,12 +28,6 @@ Source:         inkscape-%{version}.tar.zst
 # openSUSE palette file
 Source1:        openSUSE.gpl
 Source2:        inkscape-split-extensions-extra.py
-# PATCH-FIX-UPSTREAM ce52c5f96106ae5747171663a46831f21aa52d95.patch -- Fix building with Poppler 25.07.0
-Patch:          ce52c5f96106ae5747171663a46831f21aa52d95.patch
-# PATCH-FIX-UPSTREAM b60d81745016b5f20d4c6aec6d073b8a6f3e499c.patch -- Fix building with Poppler 25.09.0
-Patch1:         b60d81745016b5f20d4c6aec6d073b8a6f3e499c.patch
-# PATCH-FIX-UPSTREAM ace884e13e413b0cc49ece80936584ef92c986f5.patch -- Fix building with Poppler 25.10.0
-Patch2:         ace884e13e413b0cc49ece80936584ef92c986f5.patch
 
 BuildRequires:  cmake
 BuildRequires:  double-conversion-devel

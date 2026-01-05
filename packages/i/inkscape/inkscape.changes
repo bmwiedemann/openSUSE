@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Sat Jan 03 22:47:37 UTC 2026 - thod_@gmx.de
+
+- Update to version 1.4.3+git2.fcd0343856:
+  * Fix: request display update when removing child from group
+  * Make po submodule shallow
+  * Add GioWin32-2.0.typelib to Windows
+  * Revert the backport of a fix causing regressions in textPath
+  * update translations
+  * Update Windows dependencies to r168
+  * Build GraphicsMagick on Windows ourselves again
+  * Update macOS build pipeline to v0.82-2-g21f3e2d
+  * Update docs for 1.4.3rc
+  * Fix crash on MacOS when opening file by right clicking on file.
+  * Handle `xml:lang`/`lang` attribute updates
+  * Fix commands toolbar glitching at exact size
+  * Fix code getting items under cursor
+  * Set Pango context language to undetermined
+  * Add commands toolbar to automatic toolbar policy
+  * Batch updates to layer selector
+  * SPLPEItem: ref group objects before recursion
+  * Make libdepixelize a submodule
+  * update translations
+  * Fix welcome dialog graphics
+  * Update macOS build pipeline to 0.82
+  * Add 'webp' to the list of file formats that Inkscape can import on MacOS.
+  * Add 'jpg' and 'jpeg' to the list of file formats that Inkscape can import on MacOS.
+  * Fix action accidentally marked for translation
+  * Make popovers stay open on spinbutton activate
+  * Fix crash in LPE path Parameters
+  * Add missed 1.4.3 artwork
+  * Add welcome screen only mode and remove timer
+  * update translations
+  * Include libtcp2 DLLs in Windows build
+  * 1.4.x: Fix: prevent sliders stealing scroll when not focused
+  * Update graphics for 1.4.3
+  * Make pattern name translatable
+  * Move revert further down the menu
+  * PDF import fixes
+  * Increase user and mac css style priority
+  * SPIPaint::read: Allow SPPaintServerReference to attach to document
+  * Fix crash on rendering TextPath with empty PathVector
+  * Relaxing PDF font name normalization to account for multiple 6-char tags.
+  * Explicit tuple include
+  * Libgc modified their warning function definition to take a const char* instead of a char*. This checks gc version >= 8.3 to create the correct version
+  * Unset fill/stroke opacity on mesh/pattern switch
+  * Fix Polka dots colorization
+  * Make layer change on object selection more robust
+  * Fix extension label alignment
+  * Fixing removeChild cached position logic
+  * Check for out of bounds in font axis value setter
+  * The default style shouldn't save CSS properties that aren't set.
+  * Allow effect XSLT extensions
+  * Revert back to Gtk::Menu for 1.4.x
+  * update translations
+  * Add Enable animations checkbutton
+  * Update Windows dependencies to r164
+  * Add compat for 1.5 page elements
+  * Make ccache ignore compiler mtime
+  * Use GraphicsMagick from msys2
+  * update translations
+  * Fix translation-weekly job
+  * Add LPE dialog option to convert Polygons, Polylines, and Lines to Paths. Backport
+  * Transientize colour picker when shown instead of constructed
+  * Make Commands bar items collapse individually
+  * Replace po/ with a submodule
+  * Replace po/ with a submodule
+  * Hide page selector when there is no pages
+  * Center template labels in Welcome dialog
+  * Unescape symbol in rotation button tooltip
+  * Remove size request from startup.cpp
+  * Replace getLength() with size() on a GooString (Poppler)
+  * Don't thread-unsafely access desktop in CanvasItem::_render()
+  * Fix handle orientation when Y axis is pointing up
+  * Fix dangling PathManipulator in node tool
+  * Remove NodeTool::_previous_selection
+  * Avoid dangling SPDrawAnchors
+  * Fix 'warning: result of comparison against a string literal is unspecified'
+  * Multiple bugfixes for align and distribute on circle.
+  * Use C locale for version parsing
+  * Prevent export-batch-path attribute from modifying document on load
+  * Adjust cursor shadows so they never get cut off
+  * Refactor extension error reporting
+  * Restrict broken image to a minimum size
+  * Defend against rogue clipboard managers
+  * If the name contains a relative path, use it as the export path
+  * Make Split Path and Break Apart handle nested paths
+  * Refactor pathv_fully_contains()
+  * Refactor pdf input preferences to standard extension prefs
+  * Chnage how maximise works on macOS and remove metadata from default templates
+  * Ignore no-op SatelliteParam updates
+  * Fix build with poppler 25.09.0
+  * Fix building with Poppler 25.07.0
+- remove patches, applied upstream
+  * ce52c5f96106ae5747171663a46831f21aa52d95.patch
+  * b60d81745016b5f20d4c6aec6d073b8a6f3e499c.patch
+  * ace884e13e413b0cc49ece80936584ef92c986f5.patch
+
+-------------------------------------------------------------------
 Thu Dec 11 09:37:23 UTC 2025 - Petr Gajdos <pgajdos@suse.com>
 
 - ace884e13e413b0cc49ece80936584ef92c986f5.patch had to be backported,
