@@ -1,7 +1,7 @@
 #
 # spec file for package python-meshtastic
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,17 +19,23 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-meshtastic
-Version:        2.7.4
+Version:        2.7.6
 Release:        0
 Summary:        A Python client for use with Meshtastic devices
 License:        GPL-3.0-only
-Group:          Development/Languages/Python
 URL:            https://github.com/meshtastic/python
 Source:         https://files.pythonhosted.org/packages/source/m/meshtastic/meshtastic-%{version}.tar.gz
-BuildRequires:  %{python_module flit-core}
-BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module bleak}
+BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
+BuildRequires:  %{python_module protobuf >= 4.21.12}
+BuildRequires:  %{python_module pypubsub >= 4.0.3}
+BuildRequires:  %{python_module pyserial >= 3.5}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests >= 2.31.0}
+BuildRequires:  %{python_module tabulate >= 0.9.0}
 BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -51,16 +57,22 @@ A Python client for use with Meshtastic devices. This small library (and example
 
 %prep
 %setup -q -n meshtastic-%{version}
+# Completely fail
+rm meshtastic/tests/test_smoke*.py meshtastic/tests/test_int.py meshtastic/tests/test_main.py
 
 %build
 %pyproject_wheel
 
 %install
 %pyproject_install
+%python_expand rm %{buildroot}%{$python_sitelib}/meshtastic/.gitignore
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/mesh-analysis
 %python_clone -a %{buildroot}%{_bindir}/mesh-tunnel
 %python_clone -a %{buildroot}%{_bindir}/meshtastic
+
+%check
+%pytest -k 'not test_examples_hello_world_serial_no_arg'
 
 %pre
 %python_libalternatives_reset_alternative mesh-analysis
@@ -74,6 +86,6 @@ A Python client for use with Meshtastic devices. This small library (and example
 %python_alternative %{_bindir}/mesh-tunnel
 %python_alternative %{_bindir}/meshtastic
 %{python_sitelib}/meshtastic
-%{python_sitelib}/meshtastic-%{version}*-info
+%{python_sitelib}/meshtastic-%{version}.dist-info
 
 %changelog

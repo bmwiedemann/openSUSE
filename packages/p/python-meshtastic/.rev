@@ -136,4 +136,17 @@
   * Add Channel Hash Utility to Node class</comment>
     <requestid>1318336</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>767fd46ea2b16048431958e8bc8cd429</srcmd5>
+    <version>2.7.6</version>
+    <time>1767621281</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.7.6:
+  * Add a bunch more detail to --device-metadata output, from fields we
+    weren't formerly using in the output.
+  * Splitting out true_defaults for moduleConfig in export_config()
+  * Reverted changes to close()
+- Actually run the testsuite.</comment>
+    <requestid>1325333</requestid>
+  </revision>
 </revisionlist>
