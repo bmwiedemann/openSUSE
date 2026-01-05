@@ -1,7 +1,7 @@
 #
 # spec file for package python-setuptools
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,12 +53,13 @@ ExclusiveArch:  do-not-build
 %define mypython python
 %{?sle15_python_module_pythons}
 Name:           %{pprefix}-setuptools%{psuffix}
-Version:        78.1.1
+Version:        80.9.0
 Release:        0
 Summary:        Download, build, install, upgrade, and uninstall Python packages
 License:        Apache-2.0 AND MIT AND BSD-2-Clause AND Python-2.0
 URL:            https://github.com/pypa/setuptools
 Source:         https://files.pythonhosted.org/packages/source/s/setuptools/setuptools-%{version}.tar.gz
+Source99:       python-setuptools.rpmlintrc
 Patch0:         sort-for-reproducibility.patch
 # Bootstrap: Don't BuildRequire pip here!
 BuildRequires:  %{python_module base >= 3.9}

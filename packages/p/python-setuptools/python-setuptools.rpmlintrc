@@ -1,0 +1,13 @@
+# These are false positives from the importlib call of rpmlint finding setuptools/_vendor/
+addFilter("python-missing-require autocommand")
+addFilter("python-missing-require backports.tarfile")
+addFilter("python-missing-require inflect")
+addFilter("python-missing-require jaraco.context")
+addFilter("python-missing-require jaraco.functools")
+addFilter("python-missing-require jaraco.text")
+addFilter("python-missing-require more-itertools")
+addFilter("python-missing-require typeguard")
+addFilter("python-missing-require typing-extensions")
+addFilter("python-missing-require zipp")
+# empty test files
+addFilter("zero-length .*/tests/")
