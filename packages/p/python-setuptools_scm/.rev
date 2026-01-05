@@ -375,4 +375,12 @@
   * fix #1080: clean pdm from PYTHONPATH to protect mercurial</comment>
     <requestid>1265296</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>a9ac175261a8ff0e926d7e3496f6b791</srcmd5>
+    <version>9.2.2</version>
+    <time>1767621065</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1325087</requestid>
+  </revision>
 </revisionlist>

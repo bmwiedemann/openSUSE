@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Jan  1 13:44:54 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Update to 9.2.2
+  * fix #1231: don't warn about tool.setuptools.dynamic.version
+    when only using file finder. The warning about combining
+    version guessing with setuptools dynamic versions should only
+    be issued when setuptools-scm is performing version inference,
+    not when it's only being used for its file finder
+    functionality.
+- Release 9.2.1
+  * fix #1216: accept and create a warning for usages of version =
+    attr: in setuptools config. unfortunately dozens of projects
+    cargo-culted that antipattern
+- Release
+  * add simplified activation via setuptools-scm[simple] extra
+  * A new streamlined way to enable version inference without
+    requiring a [tool.setuptools_scm] section. When
+    setuptools-scm[simple] is in build-system.requires and version
+    is in project.dynamic, version inference is automatically
+    enabled with default settings.
+  * unchecked simplified activation - too many projects use setups
+    where it would fail
+  * refine activation logic and add unittest for the relevant cases
+    instead of trying to speedrun setuptools
+- Release v8.3.1
+  * fixed #1131: allow self-build without importlib_metadata
+    available on python3.9
+- Release v8.3.0
+  * fix #1013: use modern importlib_metadata in all cases to dedup
+    distribution objects that must shadow based on pythonpath
+    priority starting with python 3.10 this is part of python
+    itself
+
+-------------------------------------------------------------------
 Fri Mar 28 20:47:53 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.2.0:
