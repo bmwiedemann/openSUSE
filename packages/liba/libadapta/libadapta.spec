@@ -20,7 +20,7 @@
 Name:           libadapta
 Version:        1.5.0
 Release:        0
-Summary:        LibAdwaita + theme support + a few extra
+Summary:        LibAdwaita with theme support and a few extras
 License:        LGPL-2.1-or-later
 URL:            https://github.com/xapp-project/libadapta
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
@@ -35,7 +35,7 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk4) >= 4.13.4
 
 %description
-libAdapta is libAdwaita with theme support and a few extra.
+libAdapta is libAdwaita with theme support and a few extras.
 
 It provides the same features and the same look as libAdwaita by default.
 
