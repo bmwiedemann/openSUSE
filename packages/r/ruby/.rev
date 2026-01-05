@@ -502,4 +502,14 @@
     <comment>- switch the default ruby to 3.4</comment>
     <requestid>1230620</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>046bb734b855db0560b12039f3b0f3c5</srcmd5>
+    <version>4.0</version>
+    <time>1767621076</time>
+    <user>anag_factory</user>
+    <comment>- Fix buildignore for gem2rpm
+
+- switch the default ruby to 4.0</comment>
+    <requestid>1324397</requestid>
+  </revision>
 </revisionlist>

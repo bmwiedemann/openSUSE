@@ -1,7 +1,7 @@
 #
 # spec file for package ruby
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ruby
-Version:        3.4
+Version:        4.0
 Release:        0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source:         README
@@ -27,7 +27,7 @@ License:        MIT
 Group:          Development/Languages/Ruby
 BuildRequires:  ruby%{version}-devel
 #!BuildIgnore:  ruby
-#!BuildIgnore:  rubygem-gem2rpm
+#!BuildIgnore:  rubygem(gem2rpm)
 %requires_ge ruby%{version}
 Provides:       rubygems = 1.8.15
 Obsoletes:      rubygems < 1.8.15
