@@ -2639,7 +2639,7 @@
     <package name="librscg1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="librsvg-2-2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="librubberband3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libruby3_4-3_4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
+    <package name="libruby4_0-4_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="libsamplerate0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libsane1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsasl2-3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -3800,17 +3800,18 @@
     <package name="ruby" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="ruby-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="ruby-solv" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="ruby3.4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
-    <package name="ruby3.4-rubygem-abstract_method" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
-    <package name="ruby3.4-rubygem-cfa" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
-    <package name="ruby3.4-rubygem-cfa_grub2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="ruby3.4-rubygem-cheetah" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
-    <package name="ruby3.4-rubygem-fast_gettext" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
-    <package name="ruby3.4-rubygem-gem2rpm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
-    <package name="ruby3.4-rubygem-nokogiri" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
-    <package name="ruby3.4-rubygem-ruby-augeas" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
-    <package name="ruby3.4-rubygem-ruby-dbus" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="ruby3.4-rubygem-simpleidn" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
+    <package name="ruby4.0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
+    <package name="ruby4.0-rubygem-abstract_method" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
+    <package name="ruby4.0-rubygem-cfa" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
+    <package name="ruby4.0-rubygem-cfa_grub2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="ruby4.0-rubygem-cgi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="ruby4.0-rubygem-cheetah" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
+    <package name="ruby4.0-rubygem-fast_gettext" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
+    <package name="ruby4.0-rubygem-gem2rpm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
+    <package name="ruby4.0-rubygem-nokogiri" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
+    <package name="ruby4.0-rubygem-ruby-augeas" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
+    <package name="ruby4.0-rubygem-ruby-dbus" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="ruby4.0-rubygem-simpleidn" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="salt" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="salt-master" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="salt-minion" supportstatus="unsupported"/> <!-- reason: dvd:salt-minion -->
