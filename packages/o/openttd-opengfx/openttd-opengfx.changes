@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jan  3 16:17:35 UTC 2026 - Jan Baier <jbaier@suse.com>
+
+- Update to version 8.0
+  * Feature: Bridge deck overlays for vanilla infrastructure types (#105)
+  * Feature: Rock and snowy rock overlays (#99)
+  * Feature: Badge menu vertical ellipsis icon (#101)
+  * Feature: Road waypoints (#90)
+  * Fix: [Makefile] Python2 is long dead (#97)
+  * Fix: [Makefile] GIMP3-compatible command-line (#95)
+  * Fix: Dead link in readme (#88)
+
+-------------------------------------------------------------------
 Thu Oct 21 12:53:49 UTC 2021 - Jan Baier <jbaier@suse.com>
 
 - Update to version 7.1

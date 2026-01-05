@@ -1,7 +1,7 @@
 #
 # spec file for package openttd-opengfx
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           openttd-opengfx
-Version:        7.1
+Version:        8.0
 Release:        0
 Summary:        Default baseset graphics for OpenTTD
 License:        GPL-2.0-only
