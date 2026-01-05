@@ -162,4 +162,15 @@
     <comment>Make it compatible with new setuptools</comment>
     <requestid>1266269</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c6922be65b7bea8d7decefd4b4365664</srcmd5>
+    <version>8.0</version>
+    <time>1767621275</time>
+    <user>anag_factory</user>
+    <comment>- Update to 8.0:
+  * Replace pkg_resources namespace with PEP 420 native namespace.
+  * Drop support for Python 3.8.
+  * Add preliminary support for Python 3.14.</comment>
+    <requestid>1325332</requestid>
+  </revision>
 </revisionlist>

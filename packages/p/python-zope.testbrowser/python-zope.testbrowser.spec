@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.testbrowser
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,13 +26,13 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-zope.testbrowser%{psuffix}
-Version:        7.0
+Version:        8.0
 Release:        0
 Summary:        Programmable browser for functional black-box tests
 License:        ZPL-2.1
 URL:            https://github.com/zopefoundation/zope.testbrowser
-Source:         https://files.pythonhosted.org/packages/source/z/zope.testbrowser/zope.testbrowser-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+Source:         https://files.pythonhosted.org/packages/source/z/zope.testbrowser/zope_testbrowser-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -41,13 +41,15 @@ BuildRequires:  python-rpm-macros
 Requires:       python-WSGIProxy2
 Requires:       python-WebTest >= 2.0.30
 Requires:       python-beautifulsoup4
-Requires:       python-pytz > dev
+Requires:       python-pytz
 Requires:       python-setuptools
 Requires:       python-soupsieve >= 1.9.0
 Requires:       python-zope.cachedescriptors
 Requires:       python-zope.interface
 Requires:       python-zope.schema
-Suggests:       python-mock
+%if 0%{python_version_nodots} > 312
+Requires:       python-legacy-cgi
+%endif
 Suggests:       python-zope.testing
 BuildArch:      noarch
 # SECTION test requirements
@@ -55,13 +57,14 @@ BuildArch:      noarch
 BuildRequires:  %{python_module WSGIProxy2}
 BuildRequires:  %{python_module WebTest >= 2.0.30}
 BuildRequires:  %{python_module beautifulsoup4}
-BuildRequires:  %{python_module pytz > dev}
+BuildRequires:  %{python_module legacy-cgi if %python-base > 3.12}
+BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module soupsieve >= 1.9.0}
 BuildRequires:  %{python_module zope.cachedescriptors}
 BuildRequires:  %{python_module zope.interface}
 BuildRequires:  %{python_module zope.schema}
-BuildRequires:  %{python_module zope.testbrowser}
+BuildRequires:  %{python_module zope.testbrowser = %{version}}
 BuildRequires:  %{python_module zope.testing}
 %endif
 # /SECTION
@@ -74,7 +77,7 @@ specific.  It can be used to test or otherwise interact with any web
 site.
 
 %prep
-%autosetup -p1 -n zope.testbrowser-%{version}
+%autosetup -p1 -n zope_testbrowser-%{version}
 
 %build
 %if !%{with test}
@@ -100,7 +103,6 @@ cd src
 %license LICENSE.rst
 %dir %{python_sitelib}/zope
 %{python_sitelib}/zope/testbrowser
-%{python_sitelib}/zope.testbrowser-%{version}-py*-nspkg.pth
 %{python_sitelib}/zope[_.]testbrowser-%{version}.dist-info
 %endif
 

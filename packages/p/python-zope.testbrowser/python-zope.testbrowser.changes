@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan  5 04:42:23 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 8.0:
+  * Replace pkg_resources namespace with PEP 420 native namespace.
+  * Drop support for Python 3.8.
+  * Add preliminary support for Python 3.14.
+
+-------------------------------------------------------------------
 Tue Apr  1 16:06:01 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Make it compatible with older setuptools
