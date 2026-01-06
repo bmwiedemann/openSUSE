@@ -258,4 +258,12 @@ Factory, SLE15-SP7:GA, and SLFO:Main.</comment>
     <comment>Update nbdkit to version 1.46.0</comment>
     <requestid>1324212</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e1133a6f8a8c98b4859a7c6e034252a1</srcmd5>
+    <version>1.46.1</version>
+    <time>1767717910</time>
+    <user>anag_factory</user>
+    <comment>Update nbdkit to version 1.46.1</comment>
+    <requestid>1325485</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jan 05 20:33:24 UTC 2026 - Charles Arnold <carnold@suse.com>
+
+- Update to version 1.46.1: (jsc#PED-14625)
+  * Version 1.46.1.
+  * docs/nbdkit_read_password.pod: Fix typo in Python description
+  * server: Rewrite ugly macros in nbdkit_debug_hexdump
+  * tests: Fix some copy/paste errors in debug_hexdump tests
+  * file: Link to delay filter in the SEE ALSO section
+  * file: Sort plugin names in SEE ALSO section
+  * file: Improve flow of documentation of dir parameter
+  * docs: Match all return value descriptions of nbdkit_parse_*
+  * docs: Fix thinko and clarify description of nbdkit_parse_* functions
+  * tests/test-ocaml-errorcodes.c: Fix typo in error messages
+  * ocaml: Fix comment about parse_* functions
+
+-------------------------------------------------------------------
 Mon Dec 22 15:25:22 UTC 2025 - Charles Arnold <carnold@suse.com>
 
 - Update to version 1.46.0:
