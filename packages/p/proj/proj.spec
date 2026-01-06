@@ -16,11 +16,11 @@
 #
 
 
-%define data_version 1.23
+%define data_version 1.24
 %define sover   25
 %define libname lib%{name}%{sover}
 Name:           proj
-Version:        9.7.0
+Version:        9.7.1
 Release:        0
 Summary:        Cartographic projection software
 License:        MIT
@@ -182,6 +182,7 @@ rm -rf %{buildroot}%{_datadir}/doc/${name}
 %{_datadir}/%{name}/README.DATA
 %{_datadir}/%{name}/cz_cuzk_CR-2005.tif
 %{_datadir}/%{name}/cz_cuzk_README.txt
+%{_datadir}/%{name}/cz_cuzk_table_-y-x_3_v1710.tif
 %{_datadir}/%{name}/deformation_model.schema.json
 %{_datadir}/%{name}/nad.lst
 %{_datadir}/%{name}/nad27

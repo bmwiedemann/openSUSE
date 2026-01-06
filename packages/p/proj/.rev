@@ -480,4 +480,12 @@ This package is included in Debian.
     <comment></comment>
     <requestid>1308578</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>27c15214919bd69bacd950092fb83443</srcmd5>
+    <version>9.7.1</version>
+    <time>1767717832</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1325441</requestid>
+  </revision>
 </revisionlist>
