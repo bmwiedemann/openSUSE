@@ -1,7 +1,7 @@
 #
 # spec file for package libguestfs
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libguestfs
 ExclusiveArch:  x86_64 ppc64 ppc64le s390x aarch64 riscv64
-Version:        1.56.2
+Version:        1.58.0
 Release:        0
 Summary:        Access and modify virtual machine disk images
 License:        GPL-2.0-or-later
@@ -32,9 +32,8 @@ Source100:      mount-rootfs-and-chroot.sh
 Source101:      README
 
 # Patches
-Patch1:         use-rtc-driftfix-slew-for-x86-only.patch
-Patch2:         reproducible-builds.patch
-Patch3:         drop-initviocons-from-package-list.patch
+Patch1:         reproducible-builds.patch
+Patch2:         drop-initviocons-from-package-list.patch
 Patch100:       use-fuse3-for-build.patch
 
 BuildRequires:  bison

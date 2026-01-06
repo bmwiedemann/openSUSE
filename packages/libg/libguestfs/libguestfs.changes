@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Mon Jan  5 10:58:48 MST 2026 - carnold@suse.com
+
+- Update to version 1.58.0 (jsc#PED-14625)
+  See release notes at,
+  https://libguestfs.org/guestfs-release-notes-1.58.1.html
+  * Fix inspection of SLES 15 guests that have an encrypted Btrfs
+    filesystem, by correctly parsing /etc/crypttab (Cole Robinson).
+  * Windows named drives (like D:) which point to completely blank
+    disks are now ignored instead of causing an error (thanks
+    Ming Xie, Ameen Barakat).
+  * Existing code in virt-v2v which recognized Windows Antivirus
+   (AV) software is now part of inspection.
+  * guestfs_selinux_relabel was deprecated, replaced by new
+    guestfs_setfiles and uses the setfiles(8) -A option to reduce
+    memory usage.
+  * New guestfs_ntfs_chmod API which changes the permissions of
+    Windows paths (Cole Robinson).
+  * In the list of structures returned by guestfs_inspect_get_applications2,
+    a new app2_class field has been added.
+  * New guestfs_inspect_get_windows_group_policy API which reports
+    whether Group Policy Objects were found in the Windows guest.
+  * guestfs_btrfs_subvolume_show would sometimes crash when parsing
+    the snapshots of a Btrfs subvolume. Furthermore, in any API
+    that returned a device name associated with a Btrfs volume, the
+    device name might not be translated correctly resulting in the
+    wrong device name being returned. (Both problems fixed by Arye
+    Yurkovsky.)
+  * Fix a memory leak in guestfs_filesystem_walk (Susant Sahani).
+  * In guestfs_disk_create, when creating raw block devices, check
+    for errors in the close(2) system call, ensuring we don't miss
+    any delayed I/O errors (Susant Sahani).
+  * In several LVM-related APIs, it was possible for an internal
+    failure to happen for logical volumes which are incomplete (eg.
+    missing a physical volume). This was fixed by skipping these
+    LVs (Arye Yurkovsky).
+  * Note that GObject / Javascript bindings will be removed in the
+    next release of libguestfs.
+  * Ruby deprecation warnings were fixed (Cole Robinson).
+  * libvirt ≥ 11.10.0 with passt support is now required.
+  * qemu ≥ 7.2.0 is now required.
+  * Change permission of guestfs folder created
+  * Adding the commands "lsblk", "cat /etc/fstab" and "blkid" to
+    the v2v debug log
+  * Parted fails to read a blank disk "virt-v2v: error: libguestfs
+    error: inspect_os: parted: /dev/sdb: parted exited with status
+    1: Error: /dev/sdb: unrecognised disk label: Invalid argument"
+    [rhel-9.7]
+  * [Testonly]virt-v2v of RHEL 8.10 VM fails because setfiles
+    invoked oom-killer
+  * Lots of memory used in 'setfiles' utility / 'restorecon_sb'
+    function
+  * [DEV Task]: The available subscriptions of guest sometimes
+    can't be shown unless use --sm-remove and --sm-unregister
+    options to remove all subscriptions from the guest
+  * [DEV Task]: Virt-v2v can't use --sm-remove and --sm-unregister
+    options to remove the subscriptions from guest if consumer
+    profile has been deleted from the guest.
+  * Use setfiles -A option when relabelling
+  * [libguestfs] [aarch64] libguestfs-test-tool failed with
+    LIBGUESTFS_BACKEND=direct
+  * virt-inspector detect if AV/GPOs are present in a VM
+  * virt-v2v can't convert sles15sp6 guest with encrypted brtfs
+    fliesystem
+  * Fails to build with macFUSE
+  * make -j8 check failures with selinux enforcing
+- Drop use-rtc-driftfix-slew-for-x86-only.patch
+
+-------------------------------------------------------------------
 Tue Aug 19 16:31:54 MDT 2025 - carnold@suse.com
 
 - Update to version 1.56.2 (jsc#PED-12706)

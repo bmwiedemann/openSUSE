@@ -41,8 +41,8 @@ Index: libguestfs-1.55.13/lib/fuse.c
       * not quite sure how this is ever supposed to work on large
       * directories. XXX
       */
--    if (filler (buf, ents->val[i].name, &stat, 0))
-+    if (filler (buf, ents->val[i].name, &stat, 0, flags))
+-    if (filler (buf, ents->val[i].name, &st, 0))
++    if (filler (buf, ents->val[i].name, &st, 0, flags))
        break;
    }
  
