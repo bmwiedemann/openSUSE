@@ -2739,7 +2739,6 @@ unsorted:
   - cpupower-bench 
   - cpupower-devel 
   - cpupower-rebuild 
-  - cpuset 
   - cpustat 
   - cpustat-bash-completion 
   - cracklib-devel 
@@ -8712,8 +8711,11 @@ unsorted:
   - hyprpicker 
   - hyprpolkitagent 
   - hyprshot 
+  - hyprsunset 
   - hyprutils-devel 
   - hyprwayland-scanner 
+  - hyprwire 
+  - hyprwire-devel 
   - i18nspector 
   - i2c-tools 
   - i2pd 
@@ -10427,7 +10429,6 @@ unsorted:
   - kpublictransport-devel 
   - kpublictransport-imports 
   - kpublictransport-lang 
-  - kqtquickcharts 
   - kquickimageeditor6-devel 
   - kquickimageeditor6-imports 
   - kraft 
@@ -11371,7 +11372,7 @@ unsorted:
   - libQCoro6WebSockets0 
   - libQXmppQt6-7 
   - libQXmppQt6-devel 
-  - libQgpsmm31 
+  - libQgpsmm32 
   - libQt53DAnimation-devel 
   - libQt53DAnimation5 
   - libQt53DCore-devel 
@@ -12042,7 +12043,7 @@ unsorted:
   - libapr-util1-0-dbd-mysql 
   - libapr-util1-0-dbd-pgsql 
   - libapr-util1-0-dbd-sqlite3 
-  - libaquamarine8 
+  - libaquamarine9 
   - libaravis-0_8-0 
   - libaravis-0_8-devel 
   - libarchive-devel 
@@ -13697,7 +13698,7 @@ unsorted:
   - libgnunettransportcommunicator0 
   - libgnunettransportcore0 
   - libgnunettransportmonitor0 
-  - libgnunetutil18 
+  - libgnunetutil20 
   - libgnunetvpn0 
   - libgnuradio-3_10_12 
   - libgnuradio-funcube-devel 
@@ -14025,7 +14026,8 @@ unsorted:
   - libhyprcursor0 
   - libhyprgraphics2 
   - libhyprlang2 
-  - libhyprutils7 
+  - libhyprutils10 
+  - libhyprwire2 
   - libi2c0 
   - libi2c0-devel 
   - libibdm1 
@@ -22005,6 +22007,7 @@ unsorted:
   - perl-Log-Log4perl 
   - perl-Log-Message 
   - perl-Log-Message-Simple 
+  - perl-Log-Report-Optional 
   - perl-MCE 
   - perl-MCP 
   - perl-MIME-Charset 

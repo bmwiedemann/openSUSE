@@ -1091,6 +1091,7 @@
     <package name="kpimtextedit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kpipewire6-imports" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kpkpass" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="kqtquickcharts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="krb5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="krb5-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="krb5-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
@@ -2070,7 +2071,7 @@
     <package name="libgpod-lang" supportstatus="unsupported"/> <!-- reason: dvd:amarok -->
     <package name="libgpod-tools" supportstatus="unsupported"/> <!-- reason: dvd:amarok -->
     <package name="libgpod4" supportstatus="unsupported"/> <!-- reason: dvd:amarok -->
-    <package name="libgps31" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libgps32" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libgraphene-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libgraphite2-3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libgravatar" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2195,6 +2196,7 @@
     <package name="libinih0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libinput-udev" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libinput10" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libionic1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libip4tc2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libip6tc2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libiptcdata" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
