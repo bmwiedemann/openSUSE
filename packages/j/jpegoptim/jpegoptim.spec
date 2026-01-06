@@ -17,7 +17,7 @@
 
 
 Name:           jpegoptim
-Version:        1.5.5
+Version:        1.5.6
 Release:        0
 Summary:        Utility for Optimizing JPEG Files
 License:        GPL-2.0-or-later
@@ -26,7 +26,7 @@ URL:            https://www.kokkonen.net/tjko/projects.html
 Source0:        https://github.com/tjko/jpegoptim/archive/refs/tags/v%{version}.tar.gz#/jpegoptim-%{version}.tar.gz
 Source1:        https://github.com/tjko/jpegoptim/releases/download/v%{version}/jpegoptim-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
-BuildRequires:  libjpeg-devel
+BuildRequires:  pkgconfig(libjpeg)
 
 %description
 jpegoptim is a utility for optimizing JPEG files. It provides lossless

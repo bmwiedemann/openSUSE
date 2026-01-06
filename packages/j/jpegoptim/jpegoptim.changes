@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 20 19:09:57 UTC 2025 - Alastor Tenebris <livingnightmare@thelivingnightmare.xyz>
+
+- update to 1.5.6:
+  * New command-line options: -r, --retry, --save-extra, --auto-mode
+  * Add initial unit tests
+  * Buffered Input
+  * Update printable man page generation
+  * OSSFuzz Integration
+  * Fix man page typos
+
+-------------------------------------------------------------------
 Sat Nov 18 16:59:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.5:
