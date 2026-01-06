@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan  5 10:10:09 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 3.20.2
+  * Support Unix systems without O_NOFOLLOW by @mwilliamson in #463
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci[bot] in #464
+- Update to 3.20.1 (fixes CVE-2025-68146, bsc#1255244)
+  * CVE-2025-68146: Fix TOCTOU symlink vulnerability in lock file creation
+    by @gaborbernat in #461
+
+-------------------------------------------------------------------
 Tue Oct 21 09:31:13 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.20.0
