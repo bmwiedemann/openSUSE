@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-online-accounts
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnome-online-accounts
-Version:        3.56.2
+Version:        3.56.3
 Release:        0
 Summary:        GNOME service to access online accounts
 License:        LGPL-2.0-or-later

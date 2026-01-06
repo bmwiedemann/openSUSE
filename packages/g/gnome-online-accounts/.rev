@@ -912,4 +912,16 @@
   + Updated translations. (forwarded request 1319340 from iznogood)</comment>
     <requestid>1319644</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>556fefe573bd3671c2858b3e01b344c6</srcmd5>
+    <version>3.56.3</version>
+    <time>1767717746</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.56.3:
+  + Bugs fixed:
+    - Add DAV detection and configuration for SOGo
+    - DAV discovery fails when certain SRV lookups fail
+  + Updated translations. (forwarded request 1325267 from iznogood)</comment>
+    <requestid>1325363</requestid>
+  </revision>
 </revisionlist>
