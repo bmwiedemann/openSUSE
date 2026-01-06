@@ -144,4 +144,21 @@
   + Updated translations. (forwarded request 1319170 from iznogood)</comment>
     <requestid>1319641</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>91735fa24f2217d429486bf0408f852f</srcmd5>
+    <version>49.3</version>
+    <time>1767717803</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 49.3:
+  + Bug fixes:
+    - help: Update icon
+    - Page number is not in the center of the number box
+    - Keyboard input unresponsive in presentation mode, unable to
+      exit with Esc
+    - Segmentation fault in papers-thumbnailer for archive files
+  + Updated translations.
+- Temp disable update of vendors tarball, go with upstream defined
+  versions, as updating them currently breaks the build. (forwarded request 1325350 from iznogood)</comment>
+    <requestid>1325366</requestid>
+  </revision>
 </revisionlist>

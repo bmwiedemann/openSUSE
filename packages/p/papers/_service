@@ -2,7 +2,8 @@
 <services>
   <service mode="manual" name="obs_scm">
     <param name="url">https://gitlab.gnome.org/GNOME/Incubator/papers.git</param>
-    <param name="revision">49.2</param>
+ <!-- ###FIXME### - set vendor update back to true on next version update -->
+    <param name="revision">49.3</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>
@@ -18,6 +19,7 @@
   <service name="cargo_vendor" mode="manual">
      <param name="src">papers</param>
      <param name="compression">zst</param>
-     <param name="update">true</param>
+ <!-- ###FIXME### - set vendor update back to true on next version update -->
+     <param name="update">false</param>
   </service>
 </services>
