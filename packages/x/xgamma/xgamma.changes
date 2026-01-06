@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan  2 08:58:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.8:
+  * man page: fix warnings from `mandoc -T lint`
+  * mandoc: xgamma.1:21:5: STYLE: lower case character in
+    document title: TH xgamma
+- xgamma.keyring: update
+
+-------------------------------------------------------------------
 Sun Dec  4 21:58:14 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.0.7
