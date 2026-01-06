@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan  6 07:48:57 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.1:
+  + Fix timezones for new events are always UTC
+  + Don't update recurrence limit if no repeat is set
+  + Update Flatpak manifest
+
+-------------------------------------------------------------------
 Mon Sep 15 06:20:01 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 49.0.1:
