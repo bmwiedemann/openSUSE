@@ -2,11 +2,11 @@
  Makefile.pre.in |    5 +++++
  1 file changed, 5 insertions(+)
 
-Index: Python-3.14.0/Makefile.pre.in
+Index: Python-3.14.2/Makefile.pre.in
 ===================================================================
---- Python-3.14.0.orig/Makefile.pre.in	2025-10-07 11:34:52.000000000 +0200
-+++ Python-3.14.0/Makefile.pre.in	2025-11-06 23:19:25.434995608 +0100
-@@ -1910,6 +1910,11 @@
+--- Python-3.14.2.orig/Makefile.pre.in	2025-12-11 18:11:54.290805770 +0100
++++ Python-3.14.2/Makefile.pre.in	2025-12-11 18:11:58.776792838 +0100
+@@ -1914,6 +1914,11 @@
  	      -DGITBRANCH="\"`LC_ALL=C $(GITBRANCH)`\"" \
  	      -o $@ $(srcdir)/Modules/getbuildinfo.c
  

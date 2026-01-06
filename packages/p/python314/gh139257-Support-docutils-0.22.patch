@@ -4,33 +4,151 @@ Date: Tue, 23 Sep 2025 10:20:16 +0200
 Subject: [PATCH 1/2] gh-139257: Support docutils >= 0.22
 
 ---
- Doc/tools/extensions/pyspecific.py |   12 +++++++++++-
- 1 file changed, 11 insertions(+), 1 deletion(-)
+ Doc/tools/extensions/pyspecific.py |   68 +++++++++++++++++++++++++------------
+ 1 file changed, 46 insertions(+), 22 deletions(-)
 
-Index: Python-3.14.0/Doc/tools/extensions/pyspecific.py
+Index: Python-3.14.2/Doc/tools/extensions/pyspecific.py
 ===================================================================
---- Python-3.14.0.orig/Doc/tools/extensions/pyspecific.py
-+++ Python-3.14.0/Doc/tools/extensions/pyspecific.py
-@@ -25,11 +25,21 @@ from sphinx.util.docutils import SphinxD
- SOURCE_URI = 'https://github.com/python/cpython/tree/3.14/%s'
+--- Python-3.14.2.orig/Doc/tools/extensions/pyspecific.py	2025-12-05 17:49:16.000000000 +0100
++++ Python-3.14.2/Doc/tools/extensions/pyspecific.py	2025-12-11 18:15:44.936875242 +0100
+@@ -1,12 +1,12 @@
+ # -*- coding: utf-8 -*-
+ """
+-    pyspecific.py
+-    ~~~~~~~~~~~~~
++pyspecific.py
++~~~~~~~~~~~~~
  
- # monkey-patch reST parser to disable alphabetic and roman enumerated lists
+-    Sphinx extension with Python doc-specific markup.
++Sphinx extension with Python doc-specific markup.
+ 
+-    :copyright: 2008-2014 by Georg Brandl.
+-    :license: Python license.
++:copyright: 2008-2014 by Georg Brandl.
++:license: Python license.
+ """
+ 
+ import re
+@@ -15,6 +15,7 @@
+ 
+ from docutils import nodes
+ from docutils.parsers.rst import directives
++from docutils.parsers.rst.states import Body
+ from docutils.utils import unescape
+ from sphinx import addnodes
+ from sphinx.domains.python import PyFunction, PyMethod, PyModule
+@@ -22,30 +23,48 @@
+ from sphinx.util.docutils import SphinxDirective
+ 
+ # Used in conf.py and updated here by python/release-tools/run_release.py
+-SOURCE_URI = 'https://github.com/python/cpython/tree/3.14/%s'
++SOURCE_URI = "https://github.com/python/cpython/tree/3.14/%s"
++
++
++# monkey-patch reST parser to disable alphabetic and roman enumerated lists
 +def _disable_alphabetic_and_roman(text):
 +    try:
 +        # docutils >= 0.22
 +        from docutils.parsers.rst.states import InvalidRomanNumeralError
++
 +        raise InvalidRomanNumeralError(text)
 +    except ImportError:
 +        # docutils < 0.22
 +        return None
 +
 +
- from docutils.parsers.rst.states import Body
- Body.enum.converters['loweralpha'] = \
-     Body.enum.converters['upperalpha'] = \
-     Body.enum.converters['lowerroman'] = \
--    Body.enum.converters['upperroman'] = lambda x: None
-+    Body.enum.converters['upperroman'] = _disable_alphabetic_and_roman
- 
++Body.enum.converters["loweralpha"] = Body.enum.converters["upperalpha"] = (
++    Body.enum.converters["lowerroman"]
++) = Body.enum.converters["upperroman"] = _disable_alphabetic_and_roman
++
  
  class PyAwaitableMixin(object):
+     def handle_signature(self, sig, signode):
+         ret = super(PyAwaitableMixin, self).handle_signature(sig, signode)
+-        signode.insert(0, addnodes.desc_annotation('awaitable ', 'awaitable '))
++        signode.insert(0, addnodes.desc_annotation("awaitable ", "awaitable "))
+         return ret
+ 
+ 
+ class PyAwaitableFunction(PyAwaitableMixin, PyFunction):
+     def run(self):
+-        self.name = 'py:function'
++        self.name = "py:function"
+         return PyFunction.run(self)
+ 
+ 
+ class PyAwaitableMethod(PyAwaitableMixin, PyMethod):
+     def run(self):
+-        self.name = 'py:method'
++        self.name = "py:method"
+         return PyMethod.run(self)
+ 
+ 
+ # Support for documenting Opcodes
+ 
+-opcode_sig_re = re.compile(r'(\w+(?:\+\d)?)(?:\s*\((.*)\))?')
++opcode_sig_re = re.compile(r"(\w+(?:\+\d)?)(?:\s*\((.*)\))?")
+ 
+ 
+ def parse_opcode_signature(env, sig, signode):
+@@ -64,7 +83,7 @@
+ 
+ # Support for documenting pdb commands
+ 
+-pdbcmd_sig_re = re.compile(r'([a-z()!]+)\s*(.*)')
++pdbcmd_sig_re = re.compile(r"([a-z()!]+)\s*(.*)")
+ 
+ # later...
+ # pdbargs_tokens_re = re.compile(r'''[a-zA-Z]+  |  # identifiers
+@@ -80,16 +99,16 @@
+     if m is None:
+         raise ValueError
+     name, args = m.groups()
+-    fullname = name.replace('(', '').replace(')', '')
++    fullname = name.replace("(", "").replace(")", "")
+     signode += addnodes.desc_name(name, name)
+     if args:
+-        signode += addnodes.desc_addname(' '+args, ' '+args)
++        signode += addnodes.desc_addname(" " + args, " " + args)
+     return fullname
+ 
+ 
+ def parse_monitoring_event(env, sig, signode):
+     """Transform a monitoring event signature into RST nodes."""
+-    signode += addnodes.desc_addname('sys.monitoring.events.', 'sys.monitoring.events.')
++    signode += addnodes.desc_addname("sys.monitoring.events.", "sys.monitoring.events.")
+     signode += addnodes.desc_name(sig, sig)
+     return sig
+ 
+@@ -102,7 +121,7 @@
+     As such, we link this to ``env-check-consistency``, even though it has
+     nothing to do with the environment consistency check.
+     """
+-    if app.builder.name != 'gettext':
++    if app.builder.name != "gettext":
+         return
+ 
+     # allow translating deprecated index entries
+@@ -119,10 +138,15 @@
+ 
+ 
+ def setup(app):
+-    app.add_object_type('opcode', 'opcode', '%s (opcode)', parse_opcode_signature)
+-    app.add_object_type('pdbcommand', 'pdbcmd', '%s (pdb command)', parse_pdb_command)
+-    app.add_object_type('monitoring-event', 'monitoring-event', '%s (monitoring event)', parse_monitoring_event)
+-    app.add_directive_to_domain('py', 'awaitablefunction', PyAwaitableFunction)
+-    app.add_directive_to_domain('py', 'awaitablemethod', PyAwaitableMethod)
+-    app.connect('env-check-consistency', patch_pairindextypes)
+-    return {'version': '1.0', 'parallel_read_safe': True}
++    app.add_object_type("opcode", "opcode", "%s (opcode)", parse_opcode_signature)
++    app.add_object_type("pdbcommand", "pdbcmd", "%s (pdb command)", parse_pdb_command)
++    app.add_object_type(
++        "monitoring-event",
++        "monitoring-event",
++        "%s (monitoring event)",
++        parse_monitoring_event,
++    )
++    app.add_directive_to_domain("py", "awaitablefunction", PyAwaitableFunction)
++    app.add_directive_to_domain("py", "awaitablemethod", PyAwaitableMethod)
++    app.connect("env-check-consistency", patch_pairindextypes)
++    return {"version": "1.0", "parallel_read_safe": True}
