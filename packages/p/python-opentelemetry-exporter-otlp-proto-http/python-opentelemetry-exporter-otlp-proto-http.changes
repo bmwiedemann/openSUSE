@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Dec 28 15:17:28 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.39.1:
+  * Silence events API warnings for internal users
+- update to 1.39.0:
+  * `opentelemetry-api`: Convert objects of any type other than
+    AnyValue in attributes to string to be exportable
+  * docs: Added sqlcommenter example
+  * build: bump ruff to 0.14.1
+  * Add `opentelemetry-exporter-credential-provider-gcp` as an
+    optional dependency to `opentelemetry-exporter-otlp-proto-
+    grpc`  and `opentelemetry-exporter-otlp-proto-http`
+  * semantic-conventions: Bump to 1.38.0
+  * [BREAKING] Remove LogData and extend SDK LogRecord to have
+    instrumentation scope
+  * [BREAKING] Rename several classes from Log to LogRecord
+
+-------------------------------------------------------------------
 Mon Nov 17 21:34:50 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.38.0:
