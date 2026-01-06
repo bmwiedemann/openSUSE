@@ -1,7 +1,21 @@
 -------------------------------------------------------------------
+Mon Jan  5 22:32:03 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.3:
+  + Applications: Fix monitoring app filter changes
+  + Date and Time:
+    - Make sure timezone dialog always shows search entry
+    - Fix timezone search assuming unicode casing
+  + Keyboard: Increase input dialog height
+  + Network: Actually turn off wifi when only managing a single
+    device
+  + Region: Always set all variables when setting system locale
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Nov 28 11:27:12 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
-- Update to version 49.2.1:
+- Update to version 49.2.2:
   + Revert libgxdp updates. The libgxdp updates depend on changes
     in gsettings-desktop-schemas that are part of the GNOME 50
     cycle. Revert the pinned ref to the one we had before, until we
