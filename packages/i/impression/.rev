@@ -63,4 +63,14 @@
     <comment></comment>
     <requestid>1321771</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9601c218bdb1672529d1c6b9e3f4fcd7</srcmd5>
+    <version>3.5.6</version>
+    <time>1767717787</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.5.6:
+  + Fix a bug where writing an image after downloading it would
+    write nothing (forwarded request 1325319 from rrahl0)</comment>
+    <requestid>1325355</requestid>
+  </revision>
 </revisionlist>

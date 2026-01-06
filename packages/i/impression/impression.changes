@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 30 16:14:11 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 3.5.6:
+  + Fix a bug where writing an image after downloading it would
+    write nothing
+
+-------------------------------------------------------------------
 Sat Dec  6 11:21:42 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 3.5.5:
