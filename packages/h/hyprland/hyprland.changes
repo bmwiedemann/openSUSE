@@ -1,4 +1,184 @@
 -------------------------------------------------------------------
+Fri Jan  2 21:47:17 UTC 2026 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to version 0.53.1:
+  + This is a standard patch release backporting a few fixes from
+    main.
+  + Fixes backported:
+    - desktopAnimationMgr: fix slide direction
+    - desktop/window: go back to the previously focused window in a
+      group
+    - input: guard null view() when processing mouse down
+    - desktop/LS: avoid creating an invalid LS if no monitor could be
+      found
+    - input/ti: avoid sending events to inactive TIs
+    - desktop/window: use workArea for idealBB
+    - desktop/window: read static rules before guessing initial size
+      if possible
+    - core/xwaylandmgr: fix min/max clamp potentially crashing
+    - desktop/layerRuleApplicator: fix an epic c+p fail
+
+-------------------------------------------------------------------
+Mon Dec 29 20:51:00 UTC 2025 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to version 0.53.0:
+  + Ladies and gentlemen, we made it before 2026.
+  + Breaking Changes
+    - Windowrule syntax has been completely overhauled. Please check
+      the wiki: https://wiki.hypr.land/Configuring/Window-Rules/
+    - misc:new_window_takes_over_fs replaces
+      misc:new_window_takes_over_fullscreen and
+      master:inherit_fullscreen
+  + New features:
+    - config/keybinds: add a submap universal keybind flag (#12100)
+    - config: added locale config option (#12416)
+    - deco/groupbar: add groupbar blur (#12310)
+    - hyprctl: add nix flag (#12653)
+    - renderer: add quirks:prefer_hdr to fix HDR activation for some
+      clients (#12436)
+    - renderer: add zoom with detached camera (#12548)
+    - tablet: added option to hide cursor (#12525)
+  + Fixes:
+    - CrashReporter.cpp: fix stderr conflict (#12440)
+    - compositor: fix isPointOnReservedArea
+    - cursor: fix m_cursorSurfaceInfo not being updated while a
+      cursor override is set (#12327)
+    - desktop/overridableVar: fix possible crash
+    - desktop/popup: fix invalid surface coord
+    - desktop/windowRules: fix disabling binary window rules with
+      override (#12635)
+    - example/hyprland.desktop: fix path
+    - examples: fix example config (#12394)
+    - groupbar: fix rounding logic for edge cases (#12366)
+    - hyprctl: fix no_vrr prop ref (#12410)
+    - input: fix pending perm keyboards being enabled
+    - internal: fix subtractWindow typo for POSYSTR (#12259)
+    - keybindmgr: fix focusCurrentOrLast
+    - keybinds: fix multikey binds breaking after scroll wheel events
+      (#12638)
+    - keybinds: fix previous workspace remembering (#12399)
+    - layouts: fix maximize size
+    - master: fix placement with center_ignores_reserved (#12695)
+    - protocols/cm: fix CColorManagementSurface m_imageDescription
+      init (#12734)
+    - protocols/compositor: fix null deref on unassigned surface
+      image desc
+    - protocols/lock: fix missing output enter on surface (#12448)
+    - protocols/outputMgmt: fix wlr-randr by defering success event
+      until monitor reloads (#12236)
+    - protocols/workspace: fix crash in initial group sending
+    - protocols/xdg-shell: fix crash on null parent in pin (#12694)
+    - renderer/cm: fix typo on color simage description op (#12551)
+    - renderer/ime: fix fcitx5 popup artifacts (#12263)
+    - renderer: add quirks:prefer_hdr to fix HDR activation for some
+      clients (#12436)
+    - renderer: fix fractional scale artifacts (#12287)
+    - renderer: fix noscreenshare layerrule popups (#12260)
+    - renderer: fix render_unfocused
+    - renderer: fix uv sufrace calc with scales < 1 (#12481)
+    - rules/windowRuleApplicator: fix min/max size effects (#12491)
+    - screencopy: fix possible crash in renderMon()
+    - windowrules: fix group rule recalcs (#12403)
+    - windowrules: fix matching against xdgTag (#12393)
+    - windowrules: fix persistent_size not applying (#12441)
+  + Other:
+    - CMakeLists.txt: improve libudis86 and librt detection (#12472)
+    - Desktop/history: Move history to desktop (#12676)
+    - animation: improve animations on multi refresh rate monitors
+      (#12418)
+    - animation: migrate PHLANIMVAR from SP to UP (#12486)
+    - animationmgr: avoid possible uaf in handling anim updates
+    - anr: don't create for anr dialogs (#12601)
+    - buffers: revert state merging (#12461)
+    - cm: allow force disabling WCG and HDR per monitor (#12733)
+    - cm: handle CM for SDR content with cm=hdr, cm_sdr_eotf=2
+      (#12127)
+    - cmake: fail if scripts/generateShaderIncludes.sh fails (#12588)
+    - cmake: only use system glaze package if above version 6.0.0
+      (#12559)
+    - cmake: track dependencies in pkgconfig file (#12543)
+    - compositor: Configurable behavior when window to be focused
+      conflicts with fullscreen (#12033)
+    - compositor: dont try to focus unmapped window (#12629)
+    - compositor: early return on no monitor (#12637)
+    - compositor: return nullptr when cursor is outside of a
+      maximized windows' box
+    - compositor: warn on start via a log about start-hyprland
+    - config: export version variable for versioned configs
+    - config: move config parsers to VarList2 (#12465)
+    - core/compositor: remove a monitor reset on cleanup (#12645)
+    - crashReporter: cleanup code (#12534)
+    - cursor: ensure cursor reset on changed window states (#12301)
+    - debug: move to hyprutils' logger (#12673)
+    - desktop/layer: store aboveFs property and use that
+    - desktop/overridableVar: improve performance
+    - desktop/popup: minor improvements
+    - desktop/rules: tag static rule being ignored (#12514)
+    - desktop/view: use aliveAndVisible for most things (#12631)
+    - desktop/window: improve fullscreen handling for grouped windows
+    - desktop/windowRule: force center and move rules to override
+      each other (#12618)
+    - desktop/windowRule: return reset props from resetProps and
+      recheck them (#12458)
+    - desktop: Update Exec command for UWSM Hyprland desktop entry
+      (#12580)
+    - desktop: cleanup, unify desktop elements as views (#12563)
+    - desktop: rewrite reserved area handling + improve tests
+      (#12383)
+    - dispatcher: include mirrors of monitor in dpms (#12552)
+    - dwindle: Revert rework split logic to be fully gap-aware
+      (#12047)
+    - example/config: use hyprshutdown if available
+    - example/hyprland.desktop: install with full path in Exec
+    - hyprctl: show contentType in activewindow (#12214)
+    - hyprctl: use new hyprpaper ipc format (#12537)
+    - i18n: Various translation updates
+    - input: cleanup sendMotionEventsToFocused()
+    - input: simplify mouseMoveUnified a tad
+    - internal/start: More careful signal handling (#12573)
+    - internal: put Linux-only header behind ifdef (#12300)
+    - keybinds: restore pointer warp on switch
+    - keybinds: simulate mouse movement after bringing active window
+      to top (#12703)
+    - layout: include reserved area in float fit (#12289)
+    - meson: drop
+    - monitor: remove monitor from list on disconnect before
+      unsafestate (#12544)
+    - opengl: default initialize m_capStatus (#12619)
+    - opengl: properly combine transforms in renderTexture
+    - plugin/hook: disallow multiple hooks per function (#12320)
+    - pointer: apply locked pointer workaround only on xwayland
+      (#12402)
+    - presentation: only send sync output on presented (#12255)
+    - protocols/cursor-shape: impl version 2 (#12270)
+    - protocols/datadevice: avoid double leave
+    - protocols/layershell: do not raise protocol error if layer
+      surface is not anchored (#12241)
+    - protocols/workspace: avoid crash on inert outputs
+    - render/cm: various updates, remove old protocols (#12693)
+    - renderer/cm: higher-quality tonemapping (#12204)
+    - renderer/cm: make needsHDRupdate per-monitor state (#12564)
+    - renderer: Allow DS for surfaces with inert subsurfaces (#12133)
+    - renderer: avoid crash on arrangeLayers for an empty mon
+    - renderer: remove unnecessary assert from renderRoundedShadow
+      (#12540)
+    - renderer: stop looping over null texture surfaces (#12446)
+    - rule: nuke parseRelativeVector
+    - src/protocols/types/DMABuffer.cpp: <sys/ioctl.h> is required
+      for ioctl(), not only linux (#12483)
+    - start: avoid crash in dtor after forceQuit
+    - start: init start-hyprland and safe mode (#12484)
+    - welcome: init welcome manager (#12409)
+    - window: automatically pin child windows (#12224)
+    - window: implement CWindow::getEnv() for BSDs (#12462)
+    - window: only damage floating on clamped size change (#12633)
+    - windowrules: bring back windowUpdateRules
+    - windowrules: rewrite completely (#12269)
+- Removed patch meson-verson-h-location.patch
+- Removed patch meson-missing-wayland-include.patch
+- Removed patch pkg-config-with-deps.patch
+
+-------------------------------------------------------------------
 Thu Dec  4 14:06:52 UTC 2025 - Florian "spirit" <sp1rit@disroot.org>
 
 - Update to version 0.52.2:

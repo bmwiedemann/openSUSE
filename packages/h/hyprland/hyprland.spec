@@ -1,9 +1,8 @@
 #
 # spec file for package hyprland
 #
-# Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2022-24 Florian "sp1rit" <packaging@sp1rit.anonaddy.me>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2022-25 Florian "sp1rit" <packaging@sp1rit.anonaddy.me>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,30 +17,25 @@
 #
 
 
-%bcond_without devel
-
 %define shortname hypr
 
 Name:           hyprland
-Version:        0.52.2
+Version:        0.53.1
 Release:        0
 Summary:        Dynamic tiling Wayland compositor
 License:        BSD-3-Clause
 URL:            https://hyprland.org/
 Source0:        %{name}-%{version}.tar.xz
 Source99:       %{name}.rpmlintrc
-Patch1:         meson-missing-wayland-include.patch
-Patch2:         disable-donation-nag-popup.patch
-Patch3:         pkg-config-with-deps.patch
-Patch4:         meson-verson-h-location.patch
+Patch0:         disable-donation-nag-popup.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++ >= 14
 BuildRequires:  git
 BuildRequires:  glaze-devel
 BuildRequires:  glslang-devel
-BuildRequires:  meson
+BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(aquamarine) >= 0.9.3
+BuildRequires:  pkgconfig(aquamarine) >= 0.10.0
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(gbm) >= 17.1.0
@@ -49,12 +43,14 @@ BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(hyprcursor) >= 0.1.9
 BuildRequires:  pkgconfig(hyprgraphics) >= 0.1.6
-BuildRequires:  pkgconfig(hyprlang) >= 0.3.2
-BuildRequires:  pkgconfig(hyprutils) >= 0.8.2
+BuildRequires:  pkgconfig(hyprlang) >= 0.6.7
+BuildRequires:  pkgconfig(hyprutils) >= 0.11.0
 BuildRequires:  pkgconfig(hyprwayland-scanner) >= 0.3.10
+BuildRequires:  pkgconfig(hyprwire) >= 0.2.1
 BuildRequires:  pkgconfig(libdrm) >= 2.4.118
-BuildRequires:  pkgconfig(libinput) >= 1.14.0
+BuildRequires:  pkgconfig(libinput) >= 1.28.0
 BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(muparser)
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(pangocairo)
 BuildRequires:  pkgconfig(pixman-1) >= 0.42.0
@@ -64,28 +60,21 @@ BuildRequires:  pkgconfig(tomlplusplus)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(vulkan) >= 1.2.182
 BuildRequires:  pkgconfig(wayland-client)
-BuildRequires:  pkgconfig(wayland-protocols) >= 1.26
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.45
 BuildRequires:  pkgconfig(wayland-scanner)
-BuildRequires:  pkgconfig(wayland-server) >= 1.22
+BuildRequires:  pkgconfig(wayland-server) >= 1.22.90
 BuildRequires:  pkgconfig(xcb)
+BuildRequires:  pkgconfig(xcb-errors)
 BuildRequires:  pkgconfig(xcb-icccm)
 BuildRequires:  pkgconfig(xcb-renderutil)
 BuildRequires:  pkgconfig(xcursor)
-BuildRequires:  pkgconfig(xkbcommon)
+BuildRequires:  pkgconfig(xkbcommon) >= 1.11.0
 BuildRequires:  pkgconfig(xwayland)
 %if 0%{?suse_version}
 BuildRequires:  Mesa-libGLESv3-devel
-%bcond_without  xcb_errors
-%else
-%bcond_with  xcb_errors
-%endif
-%if %{with xcb_errors}
-BuildRequires:  pkgconfig(xcb-errors)
 %endif
 Recommends:     %{name}-wallpapers
-%if %{with devel}
 Suggests:       %{name}-devel
-%endif
 
 %description
 Hyprland is a dynamic tiling Wayland compositor based on wlroots
@@ -101,7 +90,6 @@ BuildArch:      noarch
 %description wallpapers
 Additional wallpapers for hyprland.
 
-%if %{with devel}
 %package devel
 Summary:        Files required to build Hyprland plugins
 Requires:       %{name}
@@ -114,7 +102,6 @@ Requires:       Mesa-libGLESv3-devel
 %description devel
 This package contains the neccessary files that are required to
 build plugins for hyprland.
-%endif
 
 %package bash-completion
 Summary:        Bash Completion for %{name}
@@ -157,26 +144,24 @@ The official zsh completion script for %{name}.
 
 # compatability with previous versions
 sed \
-	-e "s/git_hash = .*/git_hash = '0000000000000000000000000000000000000000'/" \
-	-e "s/git_branch = .*/git_branch = 'openSUSE'/" \
-	-e "s/git_message = .*/git_message = 'Built for %_host'/" \
-	-e "s/git_date = .*/git_date = 'Thu Jan 01 00:00:00 1970'/" \
-	-e "s/git_dirty = .*/git_dirty = 'clean'/" \
-	-e "s/git_tag = .*/git_tag = '%{version}'/" \
-	-e "s/git_commits = .*/git_commits = '-1'/" \
-	-i meson.build
-
-sed -i 's;REPLACE_ME_WITH_PREFIX;%{_prefix};' hyprpm/src/core/DataState.cpp
+	-e 's/set(GIT_COMMIT_HASH .*/set(GIT_COMMIT_HASH "0000000000000000000000000000000000000000")/' \
+	-e 's/set(GIT_BRANCH .*/set(GIT_BRANCH "openSUSE")/' \
+	-e 's/set(GIT_COMMIT_MESSAGE .*/set(GIT_COMMIT_MESSAGE "Built for %_host")/' \
+	-e 's/set(GIT_COMMIT_DATE .*/set(GIT_COMMIT_DATE "Thu Jan 01 00:00:00 1970")/' \
+	-e 's/set(GIT_DIRTY .*/set(GIT_DIRTY "clean")/' \
+	-e 's/set(GIT_TAG .*/set(GIT_TAG "%{version}")/' \
+	-e 's/set(GIT_COMMITS .*/set(GIT_COMMITS "-1")/' \
+	-i CMakeLists.txt
 
 %build
-%meson \
-	-Dhyprpm=disabled \
-	-Duwsm=disabled \
-	-Dwlroots-hyprland:xcb-errors=%{?with_xcb_errors:enabled}%{!?with_xcb_errors:disabled}
-%meson_build
+%define __builder ninja
+%cmake \
+	-DNO_HYPRPM:STRING=True \
+	-DNO_UWSM:STRING=True
+%cmake_build
 
 %install
-%meson_install --tags runtime,man%{?with_devel:,devel}
+%cmake_install
 
 %files
 %license LICENSE
@@ -184,6 +169,7 @@ sed -i 's;REPLACE_ME_WITH_PREFIX;%{_prefix};' hyprpm/src/core/DataState.cpp
 %{_bindir}/Hyprland
 %{_bindir}/hyprland
 %{_bindir}/hyprctl
+%{_bindir}/start-hyprland
 %dir %{_datadir}/%{shortname}
 %{_datadir}/%{shortname}/hyprland.conf
 %{_datadir}/%{shortname}/lockdead.png
@@ -198,11 +184,9 @@ sed -i 's;REPLACE_ME_WITH_PREFIX;%{_prefix};' hyprpm/src/core/DataState.cpp
 %files wallpapers
 %{_datadir}/%{shortname}/wall*
 
-%if %{with devel}
 %files devel
 %{_includedir}/%{name}
 %{_datadir}/pkgconfig/%{name}.pc
-%endif
 
 %files bash-completion
 %dir %{_datadir}/bash-completion/

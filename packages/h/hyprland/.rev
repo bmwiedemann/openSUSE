@@ -354,4 +354,41 @@ depends on 1159012</comment>
     <comment></comment>
     <requestid>1321173</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>37ea44997a4d35013a7cb7e95ecafb82</srcmd5>
+    <version>0.53.1</version>
+    <time>1767717921</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.53.1:
+  + This is a standard patch release backporting a few fixes from
+    main.
+  + Fixes backported:
+    - desktopAnimationMgr: fix slide direction
+    - desktop/window: go back to the previously focused window in a
+      group
+    - input: guard null view() when processing mouse down
+    - desktop/LS: avoid creating an invalid LS if no monitor could be
+      found
+    - input/ti: avoid sending events to inactive TIs
+    - desktop/window: use workArea for idealBB
+    - desktop/window: read static rules before guessing initial size
+      if possible
+    - core/xwaylandmgr: fix min/max clamp potentially crashing
+    - desktop/layerRuleApplicator: fix an epic c+p fail
+
+- Update to version 0.53.0:
+  + Ladies and gentlemen, we made it before 2026.
+  + Breaking Changes
+    - Windowrule syntax has been completely overhauled. Please check
+      the wiki: https://wiki.hypr.land/Configuring/Window-Rules/
+    - misc:new_window_takes_over_fs replaces
+      misc:new_window_takes_over_fullscreen and
+      master:inherit_fullscreen
+  + New features:
+    - config/keybinds: add a submap universal keybind flag (#12100)
+    - config: added locale config option (#12416)
+    - deco/groupbar: add groupbar blur (#12310)
+    - hyprctl: add nix flag (#12653)</comment>
+    <requestid>1325567</requestid>
+  </revision>
 </revisionlist>
