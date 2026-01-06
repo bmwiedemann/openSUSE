@@ -29,6 +29,9 @@ Source4:        default-SUSE-user.preset
 Source5:        macros.systemd-preset
 BuildRequires:  pkgconfig(systemd)
 #!BuildIgnore:  systemd-presets-branding
+# selinux-policy needs to be able to check if cleanoldsepoldir.service is
+# in this package, otherwise store-root migration might break (PED-12492, bsc#1221342)
+Provides:       %{name}-selinux-storeroot-etc-service
 PreReq:         coreutils
 Supplements:    systemd
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

@@ -393,4 +393,15 @@ It fits better in common-SUSE. I'll remove it from branding. (forwarded request 
 </comment>
     <requestid>1322190</requestid>
   </revision>
+  <revision rev="46" vrev="46">
+    <srcmd5>87f7cb02f807b7b47f3cbfb99bb2d235</srcmd5>
+    <version>15</version>
+    <time>1767717683</time>
+    <user>anag_factory</user>
+    <comment>- Add Provides:  %{name}-selinux-storeroot-etc-service so that
+  selinux-policy can &quot;Conflicts:&quot; on versions without the
+  cleanoldesepoldir.service. Otherwise store-root migration might
+  break (PED-12492, bsc#1221342) (forwarded request 1324248 from cahu)</comment>
+    <requestid>1325396</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 23 08:17:49 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
+
+- Add Provides:  %{name}-selinux-storeroot-etc-service so that
+  selinux-policy can "Conflicts:" on versions without the
+  cleanoldesepoldir.service. Otherwise store-root migration might
+  break (PED-12492, bsc#1221342) 
+
+-------------------------------------------------------------------
 Wed Dec 10 14:28:32 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Enable polkit-agent-helper.socket (see [bsc#1251931] for details)
