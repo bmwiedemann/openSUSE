@@ -172,4 +172,13 @@
     <comment></comment>
     <requestid>1311116</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d44b07efe575c35094d0d02ac4b8a751</srcmd5>
+    <version>1.5.2</version>
+    <time>1767717729</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.5.2:
+  + Add functionallity for zoom-on-double-click (forwarded request 1325200 from iznogood)</comment>
+    <requestid>1325357</requestid>
+  </revision>
 </revisionlist>
