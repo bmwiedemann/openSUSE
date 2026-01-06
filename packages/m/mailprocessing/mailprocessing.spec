@@ -1,7 +1,7 @@
 #
 # spec file for package mailprocessing
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,9 @@ Group:          Productivity/Networking/Email/Utilities
 URL:            http://mailprocessing.github.io/mailprocessing
 Source0:        https://github.com/mailprocessing/mailprocessing/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
-BuildRequires:  python3-devel
+BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 Requires:       python3
 Obsoletes:      maildirproc < %{version}
 Provides:       maildirproc = %{version}
@@ -41,16 +42,16 @@ Python.
 %setup -q
 
 %build
-python3 setup.py build
+%python3_pyproject_wheel
 
 %install
-python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
+%python3_pyproject_install
 install -D -m 644 docs/imapproc.1 %{buildroot}/%{_mandir}/man1/imapproc.1
 install -D -m 644 docs/maildirproc.1 %{buildroot}/%{_mandir}/man1/maildirproc.1
 install -D -m 644 docs/mailprocessing.5 %{buildroot}/%{_mandir}/man5/mailprocessing.5
 install -d -m 755 %{buildroot}/%{_docdir}/%{name}
 cp -a docs/examples %{buildroot}/%{_docdir}/%{name}
-%fdupes %{buildroot}%{$python_sitelib}
+%fdupes %{buildroot}%{python3_sitelib}
 
 %files
 %license LICENSE
@@ -59,7 +60,8 @@ cp -a docs/examples %{buildroot}/%{_docdir}/%{name}
 %{_mandir}/man1/imapproc.1%{?ext_man}
 %{_mandir}/man1/maildirproc.1%{?ext_man}
 %{_mandir}/man5/mailprocessing.5%{?ext_man}
-%{python3_sitelib}
+%{python3_sitelib}/mailprocessing
+%{python3_sitelib}/mailprocessing-%{version}.dist-info
 %{_bindir}/maildirproc
 %{_bindir}/imapproc
 

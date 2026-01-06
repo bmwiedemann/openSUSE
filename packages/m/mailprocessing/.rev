@@ -58,4 +58,12 @@ continued that tradition.</comment>
   * Fix clean target in Makefile on MacOS</comment>
     <requestid>773711</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>71d81443dcdc8347480edc8670a5969d</srcmd5>
+    <version>1.2.7</version>
+    <time>1767717872</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1325445</requestid>
+  </revision>
 </revisionlist>
