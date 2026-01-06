@@ -1,48 +1,48 @@
 diff --git a/src/librygel-core/meson.build b/src/librygel-core/meson.build
-index 8d630062..3882642a 100644
+index 8d630062..f0622795 100644
 --- a/src/librygel-core/meson.build
 +++ b/src/librygel-core/meson.build
 @@ -62,6 +62,7 @@ if g_ir_compiler.found() and get_option('introspection').allowed()
  core_gir = custom_target('RygelCore-2.8.gir',
                command: [sed, '-e', 's,Rygel[.],RygelCore.,g',
                          '-e', 's,namespace name="Rygel",namespace name="RygelCore",g',
-+                        '-e', 's,.so.0.45.2,.so.0,g',
++                        '-e', 's,.so.' + lib_version + ',.so.0,g',
                          join_paths(meson.current_build_dir(), 'Rygel-2.8.gir')],
                depends: core_lib,
                output: 'RygelCore-2.8.gir',
 diff --git a/src/librygel-renderer-gst/meson.build b/src/librygel-renderer-gst/meson.build
-index 1c1b8797..6a491dbb 100644
+index 1c1b8797..c6ffee2a 100644
 --- a/src/librygel-renderer-gst/meson.build
 +++ b/src/librygel-renderer-gst/meson.build
 @@ -25,6 +25,7 @@ renderer_gst_gir = custom_target('RygelRendererGst-2.8.gir',
                               '-e', 's,RygelRendererGst[.]Plugin,RygelCore.Plugin,g',
                               '-e', 's,RygelRendererGst[.]DLNAProfile,RygelCore.DLNAProfile,g',
                               '-e', 's,<package name="rygel-renderer-gst-2.8"/>,<include name="RygelCore" version="2.8"/><include name="RygelRenderer" version="2.8"/><package name="rygel-renderer-gst-2.8"/>,',
-+                             '-e', 's,.so.0.45.2,.so.0,g',
++                             '-e', 's,.so.' + lib_version + ',.so.0,g',
                          join_paths(meson.current_build_dir(), 'Rygel-2.8.gir')],
                output: 'RygelRendererGst-2.8.gir',
                depends: renderer_gst_lib,
 diff --git a/src/librygel-renderer/meson.build b/src/librygel-renderer/meson.build
-index 27f7aabd..74c52f34 100644
+index 27f7aabd..babec947 100644
 --- a/src/librygel-renderer/meson.build
 +++ b/src/librygel-renderer/meson.build
 @@ -33,6 +33,7 @@ renderer_gir = custom_target('RygelRenderer-2.8.gir',
                                            '-e', 's,RygelRenderer[.]MediaDevice,RygelCore.MediaDevice,g',
                                            '-e', 's,RygelRenderer[.]DLNAProfile,RygelCore.DLNAProfile,g',
                                            '-e', 's|<package name="rygel-renderer-2.8"/>|<include name="RygelCore" version="2.8"/><package name="rygel-renderer-2.8"/>|',
-+                                          '-e', 's,.so.0.45.2,.so.0,g',
++                                          '-e', 's,.so.' + lib_version + ',.so.0,g',
                          join_paths(meson.current_build_dir(), 'Rygel-2.8.gir')],
                output: 'RygelRenderer-2.8.gir',
                depends: renderer_lib,
 diff --git a/src/librygel-server/meson.build b/src/librygel-server/meson.build
-index 473ea115..3ffe10ef 100644
+index 473ea115..6a07aac1 100644
 --- a/src/librygel-server/meson.build
 +++ b/src/librygel-server/meson.build
 @@ -114,6 +114,7 @@ server_gir = custom_target('RygelServer-2.8.gir',
                                            '-e', 's,RygelServer[.]IconInfo,RygelCore.IconInfo,g',
                                            '-e', 's,RygelServer[.]DLNAProfile,RygelCore.DLNAProfile,g',
                                            '-e', 's|<package name="rygel-server-2.8"/>|<include name="RygelCore" version="2.8"/><package name="rygel-server-2.8"/>|',
-+                                          '-e', 's,.so.0.45.2,.so.0,g',
++                                          '-e', 's,.so.' + lib_version + ',.so.0,g',
                          join_paths(meson.current_build_dir(), 'Rygel-2.8.gir')],
                output: 'RygelServer-2.8.gir',
                capture: true,

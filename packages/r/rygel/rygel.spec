@@ -1,7 +1,7 @@
 #
 # spec file for package rygel
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define typelibver 2_8
 
 Name:           rygel
-Version:        45.0
+Version:        45.1
 Release:        0
 Summary:        UPnP/DLNA home media server for GNOME
 License:        LGPL-2.0-or-later
