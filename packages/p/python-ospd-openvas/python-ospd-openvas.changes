@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Jan  6 04:23:26 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 22.10.0:
+  * fail if KDC element has an invalid separation
+  * Configuration to Limit KB usage per script
+  * make error statement when SMB and KRB5 are defined more clear.
+  * remove support for python 3.7 and 3.8
+  * set default log level explicitely for test_port_convert
+  * Make the alive_test_ports scanner preference visible for the clients.
+  * gpg verification failure handling of notus advisories sha256sums
+  * adjust the call to stop_scan_cleanup to pass the pid as argument
+  * receive the pid as string instead of the psutil.Popen object
+  * when sha256sums for notus are missing ignore instead of crash
+  * queued scan count
+  * ospd-openvas depends on mosquitto MQTT broker
+  * Change lock file location in default config file
+  * Don't crash if the pid file contains an invalid pid
+  * improve handling of malformed severity vectors.
+  * qod-type is in advisory not meta-data
+  * ospd-feed-preparer to copy recursively for script-dependencies
+  * use ~/.gnupg when /etc/openvas/gnupg is not available
+  * race condition within daemon and notus
+  * Stop and clean finished/running openvas process before resumming a scan
+  * enable hash sum verification for notus files
+  * Improve handling of unknown scan ids
+  * unable to restart container after it was killed
+  * Resubscribe when mqtt reconnects
+  * Use the agreed default directory for notus advisories
+- List directories under sitelib explicitly.
+
+-------------------------------------------------------------------
 Tue Jan 31 23:12:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 22.4.5:

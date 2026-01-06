@@ -1,7 +1,7 @@
 #
 # spec file for package python-ospd-openvas
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,22 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
 Name:           python-ospd-openvas
-Version:        22.4.5
+Version:        22.10.0
 Release:        0
 Summary:        An OSP server implementation
 License:        AGPL-3.0-or-later
 URL:            https://github.com/greenbone/ospd-openvas
 Source:         https://github.com/greenbone/ospd-openvas/archive/v%{version}.tar.gz#/ospd-openvas-%{version}.tar.gz
-Source98:       https://github.com/greenbone/ospd-openvas/releases/download/v%{version}/ospd-openvas-%{version}.tar.gz.asc
+Source98:       https://github.com/greenbone/ospd-openvas/releases/download/v%{version}/ospd-openvas-v%{version}.tar.gz.asc
 Source99:       https://www.greenbone.net/GBCommunitySigningKey.asc#/ospd-openvas.keyring
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module defusedxml >= 0.6}
 BuildRequires:  %{python_module gnupg >= 0.4.8}
 BuildRequires:  %{python_module lxml >= 4.5.2}
 BuildRequires:  %{python_module paho-mqtt >= 1.5.1}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-defusedxml >= 0.6
@@ -48,6 +44,8 @@ Requires:       python-redis >= 3.5.3
 Provides:       ospd-openvas = %{version}
 Provides:       python-ospd = %{version}
 Obsoletes:      python-ospd < %{version}
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Deprecated >= 1.2.10}
@@ -86,6 +84,7 @@ An OSP server implementation to allow GVM to remotely control OpenVAS.
 %doc CHANGELOG.md README.md
 %python_alternative %{_bindir}/ospd-openvas
 %{python_sitelib}/ospd
-%{python_sitelib}/ospd_openvas*
+%{python_sitelib}/ospd_openvas
+%{python_sitelib}/ospd_openvas-%{version}.dist-info
 
 %changelog
