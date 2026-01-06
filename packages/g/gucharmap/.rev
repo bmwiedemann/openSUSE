@@ -874,4 +874,13 @@ for -ldl. (forwarded request 586626 from jengelh)</comment>
     <comment></comment>
     <requestid>1304542</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>60c74ac5539c0dba5539aab13ef30cb4</srcmd5>
+    <version>17.0.1</version>
+    <time>1767717800</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 17.0.1:
+  + Updated translations. (forwarded request 1325268 from iznogood)</comment>
+    <requestid>1325364</requestid>
+  </revision>
 </revisionlist>
