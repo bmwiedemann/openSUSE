@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Dec 29 21:22:54 UTC 2025 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to version 0.6.7:
+  + core: add changeRootPath for CConfig
+  + core: fix dynamic env changes
+  + core: fix crash with same name special category and keyword
+
+- Changes from version 0.6.6:
+  + config/parser: don't return found on dontErrorOnMissing in
+    special
+
+- Changes from version 0.6.5:
+  + config: allow nesting if statements
+  + config: try variables before handlers if possible
+  + config/parser: fix invalid ptr after move
+  + parser: fix lingering currentSpecialCat after dynamic calls
+  + core: support nesting with special categories and fix explicit
+    key + nested 
+
+-------------------------------------------------------------------
 Wed Sep 10 20:10:57 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 0.6.4:

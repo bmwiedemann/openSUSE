@@ -19,7 +19,7 @@
 %define sover 2
 
 Name:           hyprlang
-Version:        0.6.4
+Version:        0.6.7
 License:        LGPL-3.0-only
 Release:        0
 Summary:        A configuration language for Linux applications
