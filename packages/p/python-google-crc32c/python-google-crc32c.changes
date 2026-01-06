@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan  5 10:57:04 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.8.0
+  * Support Python 3.14 (#315)
+  * Update toml file with setup.cfg content (#319)
+
+-------------------------------------------------------------------
 Tue Apr  1 12:41:57 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.7.1

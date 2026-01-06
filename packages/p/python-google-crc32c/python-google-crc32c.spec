@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %define modname google-crc32c
 Name:           python-google-crc32c
-Version:        1.7.1
+Version:        1.8.0
 Release:        0
 Summary:        A python wrapper of the C library 'Google CRC32C'
 License:        Apache-2.0
