@@ -1427,4 +1427,17 @@ New upstream release</comment>
   * widget: Fix scrollback-lines value for infinite scrollback (forwarded request 1319339 from iznogood)</comment>
     <requestid>1319643</requestid>
   </revision>
+  <revision rev="174" vrev="1">
+    <srcmd5>3b99de34a318412065fbb310f4e9e3c5</srcmd5>
+    <version>0.82.3</version>
+    <time>1767717731</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.82.3:
+  * lib: Filter out internal flags in public API
+  * parser: Remove incorrect CSI sequence
+  * build: Add missing output file
+  * emulation: Fix xtermcap entry
+  * widget: Fix fallback backspace binding without pty (forwarded request 1325253 from iznogood)</comment>
+    <requestid>1325358</requestid>
+  </revision>
 </revisionlist>
