@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan  5 11:08:01 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.2.5
+  * {Core} Add --cli-query filter for response by @AllyW in (#1288)
+  * {Core} Re-enable --force for restful api calling by @AllyW in (#1289)
+  * Update Aliyun OpenAPI meta data
+- from version 3.2.4
+  * Update Aliyun OpenAPI meta data
+
+-------------------------------------------------------------------
 Tue Dec 16 08:39:05 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.2.2

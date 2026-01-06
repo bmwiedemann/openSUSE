@@ -50,4 +50,17 @@
   * Update Aliyun OpenAPI meta data (forwarded request 1323073 from glaubitz)</comment>
     <requestid>1323133</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8fac4aa658f83b6ce1608a93f2d07c21</srcmd5>
+    <version>3.2.5</version>
+    <time>1767717816</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.2.5
+  * {Core} Add --cli-query filter for response by @AllyW in (#1288)
+  * {Core} Re-enable --force for restful api calling by @AllyW in (#1289)
+  * Update Aliyun OpenAPI meta data
+- from version 3.2.4
+  * Update Aliyun OpenAPI meta data (forwarded request 1325385 from glaubitz)</comment>
+    <requestid>1325410</requestid>
+  </revision>
 </revisionlist>
