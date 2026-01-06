@@ -520,4 +520,32 @@
   + Updated translations. (forwarded request 1318968 from iznogood)</comment>
     <requestid>1319632</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>53f875e5ba79a9a3748e83259920cbea</srcmd5>
+    <version>1.8.3</version>
+    <time>1767717743</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.8.3:
+  + Adaptive preview: Fix a leak when taking screenshots
+  + AdwAboutDialog: Fix an accessibility warning
+  + AdwAlert/MessageDialog: Fix extra padding with hidden extra
+    child
+  + AdwInlineViewSwitcher: Limit badges to 999+ to match
+    AdwViewSwitcher
+  + AdwNavigationView:
+    - Fix a crash
+    - Make :navigation-stack more robust
+  + AdwPreferencesGroup: Fix accessible label
+  + AdwPreferencesPage: Revert incompatible children warning from
+    1.8.2
+  + AdwShortcutsDialog
+    - Implement search activation
+    - Fix an accessibility warning
+  + AdwStatusPage: Implement focus() and grab_focus()
+  + AdwTabOverview: Implement search activation
+  + AdwViewStack: Fix accessible labels with underlines
+  + Docs: Fix banner-suggested screenshot
+  + Updated translations. (forwarded request 1325265 from iznogood)</comment>
+    <requestid>1325362</requestid>
+  </revision>
 </revisionlist>
