@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Mon Dec 29 21:26:11 UTC 2025 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to version 0.11.0:
+  + A new update with a few things, breaking ABI.
+  + Changes:
+    - logger: don't crash on failing to print to stdout
+    - cli/argumentParser: improve formatting of description
+    - cli/argumentParser: allow empty short
+    - animation: allow/intend for animated vars to be unique pointers
+    - memory/shared: add dynamicPointerCast
+  + Fixes:
+    - i18n: fix typo in sorting entries
+
+- Changes from version 0.10.4:
+  + A small patch release to add redirection to
+    CLI::CLoggerConnection
+  + Changes:
+    - cli/logger: add redirection
+    - src/cli/ArgumentParser.cpp: added <algorithm> include
+
+- Changes from version 0.10.3:
+  + A sizeable update with performance fixes and new CLI APIs.
+  + Changes:
+    - i18n/Engine: fix pure stem matches
+    - i18n/engine: optimize string generations
+    - cli: add CArgumentParser
+    - cli: add logger
+
+- Changes from version 0.10.2:
+  + A minor update with a few new things.
+  + Changes:
+    - i18n: add i18n engine
+    - string: add VarList2
+
+- Changes from version 0.10.1:
+  + A small patch release to add some fixes
+  + Changes:
+    - string/constVarList: fixed a UAF case
+    - Fix OOB in getYForPoint for non-monotonic 4-point curves
+
+- Changes from version 0.10.0:
+  + A new release fixing last release's region fuckup due to a stupid
+    library (thanks pixman) and adding a nice perf boost to our
+    pointer arch. Breaks ABI.
+  + Fixes:
+    - math/region: fix scale() on some systems
+  + Changes:
+    - memory: make SP/ASP control blocks type agnostic
+
+- Changes from version 0.9.0:
+  + This update breaks ABI, thus sover has been bumped.
+  + Changes:
+    - bezier: add setup4 for setting up a curve with 4 points
+    - region: avoid tons of allocs for scale()
+    - few memory fixups
+    - vector2d: make vector trivial
+
+-------------------------------------------------------------------
 Wed Sep 10 19:44:04 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 0.8.4:
