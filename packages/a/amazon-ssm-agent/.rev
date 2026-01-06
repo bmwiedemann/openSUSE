@@ -546,4 +546,20 @@
     <comment></comment>
     <requestid>1318444</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>18eff64bbf067c2a9266b9f771d8ddc4</srcmd5>
+    <version>3.3.3598.0</version>
+    <time>1767717817</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.3.3598.0
+  * Allow Patch execution to persist across reboots not registered to SSM Agent
+- from version 3.3.3572.0
+  * Fix ENV_VAR interpolation to work correctly with parameter store value
+  * Implement immediate retries for failed reply messages to MGS for RunCommand documents
+  * Improve ssm-cli get-diagnostics command log output
+  * Support DomainJoin endpoint for EU sovereign cloud
+  * Support dualstack S3 endpoint for distributor packages
+  * Upgrade Go version to 1.24.11 (forwarded request 1325409 from glaubitz)</comment>
+    <requestid>1325414</requestid>
+  </revision>
 </revisionlist>
