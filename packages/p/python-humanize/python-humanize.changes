@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan  5 13:40:10 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.15.0
+  * Add locale support for decimal separator in intword (#287)
+  * Add support for Python 3.15 (#275)
+  * Replace pre-commit with prek (#276)
+  * naturaldelta: round the value to nearest unit that makes sense (#272)
+  * Fix plural form for intword and improve performance (#273)
+  * Replace Exception with more specific FileNotFoundError (#286)
+
+-------------------------------------------------------------------
 Tue Nov 11 14:12:02 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 4.14.0
