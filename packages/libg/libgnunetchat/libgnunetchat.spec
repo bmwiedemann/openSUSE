@@ -17,7 +17,7 @@
 
 
 Name:           libgnunetchat
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        Library for applications to utilize the Messenger service of GNUnet
 License:        AGPL-3.0-or-later
@@ -26,6 +26,7 @@ Source:         https://ftp.gnu.org/pub/gnu/gnunet/%{name}-%{version}.tar.gz
 Source2:        https://ftp.gnu.org/pub/gnu/gnunet/%{name}-%{version}.tar.gz.sig
 # https://gnunet.org/~schanzen/3D11063C10F98D14BD24D1470B0998EF86F59B6A
 Source3:        %{name}.keyring
+Patch4:         libgnunetchat-0.6.1-gnunet-0.26.2.patch
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gnunetarm)

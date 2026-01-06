@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 25 15:46:54 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 0.6.1:
+  * Fix build compatibility with GNUnet 0.26.0
+- add libgnunetchat-0.6.1-gnunet-0.26.2.patch to fix build with
+  GNUnet 0.26.2
+
+-------------------------------------------------------------------
 Fri Sep 26 18:53:06 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 0.6.0:

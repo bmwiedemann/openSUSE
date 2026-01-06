@@ -1,0 +1,34 @@
+From 7f002cd889ff18ddad2f9a6f2b713a31e2ba3332 Mon Sep 17 00:00:00 2001
+From: Jacki <jacki@thejackimonster.de>
+Date: Sun, 21 Dec 2025 05:29:05 +0100
+Subject: [PATCH] Adjust usage of utf8_tolower()-function
+
+Signed-off-by: Jacki <jacki@thejackimonster.de>
+---
+ src/gnunet_chat_util.c | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/src/gnunet_chat_util.c b/src/gnunet_chat_util.c
+index 13e2d42..76e3a20 100644
+--- a/src/gnunet_chat_util.c
++++ b/src/gnunet_chat_util.c
+@@ -360,12 +360,11 @@ util_get_lower(const char *name)
+ {
+   GNUNET_assert(name);
+ 
+-  char *lower = GNUNET_malloc(strlen(name) + 1);
+-  if (GNUNET_OK == GNUNET_STRINGS_utf8_tolower(name, lower))
+-    return lower;
++  char *lower = GNUNET_STRINGS_utf8_tolower(name);
++  if (lower == NULL)
++    return GNUNET_strdup(name);
+ 
+-  GNUNET_free(lower);
+-  return GNUNET_strdup(name);
++  return lower;
+ }
+ 
+ int
+-- 
+2.52.0
+
