@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-terminal
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without  nautilus_extension
 Name:           gnome-terminal
-Version:        3.58.0
+Version:        3.58.1
 Release:        0
 Summary:        GNOME Terminal
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
