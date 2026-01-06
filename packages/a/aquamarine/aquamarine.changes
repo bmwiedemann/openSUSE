@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Dec 29 22:10:17 UTC 2025 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to aquamarine-0.10.0:
+  - A new ABI-breaking release.
+  - Changes:
+    * wayland: send commit after frame
+    * backend: implement hyprutils' cli::logger
+    * rendernode: dont bother finding one on evdi
+    * Ensure disconnect called for removed connectors
+    * minor renderer changes
+    * prevent use-after-free during DRM backend shutdown
+
+-------------------------------------------------------------------
 Wed Sep 10 19:39:13 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to aquamarine-0.9.4:
