@@ -1,7 +1,7 @@
 #
 # spec file for package goverlay
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,13 @@
 #
 
 
-%define real_version 1.4.1
-
 Name:           goverlay
-Version:        1.4.1
+Version:        1.6.7
 Release:        0
 Summary:        Graphical UI to help manage overlays
 License:        GPL-3.0-or-later
 URL:            https://github.com/benjamimgois/goverlay
-Source0:        https://github.com/benjamimgois/goverlay/archive/refs/tags/%{real_version}.tar.gz#/%{name}-%{real_version}.tar.gz
+Source0:        https://github.com/benjamimgois/goverlay/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE goverlay-enable-debuginfo-generation.patch andythe_great@pm.me -- Enable generate debuginfo
 Patch0:         goverlay-enable-debuginfo-generation.patch
 BuildRequires:  appstream-glib
@@ -35,7 +33,9 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gtk+-3.0)
 ExclusiveArch:  x86_64 aarch64
+Requires:       7zip
 Requires:       mangohud
+Requires:       wget
 Recommends:     Mesa-demo
 Recommends:     vkbasalt
 Recommends:     vulkan-tools
@@ -47,7 +47,7 @@ BuildRequires:  lazarus-lcl-qt6
 GOverlay is a graphical UI to manage Vulkan/OpenGL overlays.
 
 %prep
-%autosetup -p1 -n %{name}-%{real_version}
+%autosetup -p1
 chmod -x LICENSE README.md
 
 %build
@@ -69,7 +69,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/io.github.benjamimgoi
 %{_bindir}/%{name}
 %{_libdir}/%{name}
 %{_datadir}/applications/*.desktop
-%{_datadir}/icons/hicolor/*/apps/%{name}.png
+%{_datadir}/icons/hicolor/*/apps/*%{name}.png
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_datadir}/metainfo/io.github.benjamimgois.%{name}.metainfo.xml
 

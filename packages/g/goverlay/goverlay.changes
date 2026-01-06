@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Thu Jan  1 04:24:24 UTC 2026 - pallas wept <pallaswept@proton.me>
+
+- Update to version 1.6.4
+  * FSR4 Variant Management System: Switch between FP8 (latest) and INT8 (4.0.2) variants
+  * Automatic folder creation and setup during OptiScaler update
+  * User-selectable via dropdown menu
+  * Persistent configuration with automatic restoration
+  * FPS limit offset now correctly handles zero (unlimited) values (PR #222 by @LuanVSO)
+- Update to version 1.6.5
+  * Improved configuration persistence (network interface and font selections)
+  * More responsive UI during downloads and notifications
+  * Better compatibility with non-Steam launchers (absolute paths)
+  * Consistent vkBasalt paths across installation methods
+- Update to version 1.6.7
+  * Optiscaler channel selection (stable or bleeding-edge versions)
+  * Sync versions with Optiscaler (now we don't use decky-framegen builds anymore)
+  * GNOME Fixes: Tab text visibility on GNOME with dark themes
+  * Debug Logging: 50+ debug checkpoints throughout OptiScaler operations
+  * Flatpak Support: MangoHud configuration for Flatpak Steam
+
+-------------------------------------------------------------------
+Sun Dec 14 00:42:44 UTC 2025 - pallas wept <pallaswept@proton.me>
+
+- Update to version 1.6.3
+  * Steam Deck preset saving
+  * Fixed FPS cap offset calculation
+  * Improved vkBasalt detection (library + JSON config)
+  * Blacklisted apps moved to context menu
+  * Small syntax and stability fixes
+
+-------------------------------------------------------------------
+Fri Dec 12 11:11:11 UTC 2025 - pallas wept <pallaswept@proton.me>
+
+- Update to version 1.6.2
+  * Flatpak Support (Beta)
+  * MangoHud 0.8.2 Support
+  * OptiScaler 0.9 Compatibility
+  * New Light/Dark Theme System
+  * Bug Fixes
+  * Additional Improvements
+
+-------------------------------------------------------------------
+Mon Nov 17 02:09:42 UTC 2025 - pallas wept <pallaswept@proton.me>
+
+- Update to version 1.6.1
+  * Fix goverlay update function
+- Update to version 1.6.0
+  * Fixed waitOnExit handling when running external processes.
+  * Several small UI fixes and cleanup.
+  * Code cleanup and consistency updates.
+  * General UI layout and hint/tooltip improvements.
+  * Progress bar moved to mangobarPanel.
+  * Notifications now hide after menu interaction.
+  * Improved download button behavior.
+  * "About" moved to context menu.
+  * Added Ko-fi donation link.
+  * Added required external tools: p7zip and wget.
+- Update to version 1.5.1
+  * Reintroduced vkBasalt integration with improved handling
+  * Added pasCube (OpenGL demo cube) integration
+  * Automatic ZINK enforcement when launching OpenGL demos
+  * Various UI and stability improvements
+  * Minor fixes and internal refactors
+
+-------------------------------------------------------------------
 Thu Aug 21 08:48:40 UTC 2025 - Emiliano Langella <emiliano.langella@suse.com>
 
 - Update to version 1.4.1
