@@ -1,11 +1,22 @@
 -------------------------------------------------------------------
+Sun Dec 28 23:08:46 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.23.0:
+  * fix:Fixed build with -std=c++20
+  * fix:usr ptr surface type not set ext buffer flag
+  * fix:Fix coverity overflowed issues
+  * fix: remove useless code and fix code copy typo
+  * android: Support Android build
+  * sample: [HEVCe] update header logic
+
+-------------------------------------------------------------------
 Wed Jul  3 11:32:27 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 2.22.0
   * ci: correct the permission of workflows
   * fix: Fixed possible memory leak in h264encode
   * doc: Fix meson build options in README
-  * test/CheckEntrypointsForProfile: fix for limited profiles 
+  * test/CheckEntrypointsForProfile: fix for limited profiles
 
 -------------------------------------------------------------------
 Thu Dec 28 08:47:10 UTC 2023 - Dirk Müller <dmueller@suse.com>

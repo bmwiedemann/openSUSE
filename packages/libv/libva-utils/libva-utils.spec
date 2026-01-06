@@ -1,7 +1,7 @@
 #
 # spec file for package libva-utils
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libva-utils
-Version:        2.22.0
+Version:        2.23.0
 Release:        0
 Summary:        A collection of utilities and examples to exercise VA-API
 License:        EPL-1.0 AND MIT
