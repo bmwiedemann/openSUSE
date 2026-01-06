@@ -1,0 +1,89 @@
+-------------------------------------------------------------------
+Mon Oct  6 18:46:51 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.80.0 (1.08)
+   see /usr/share/doc/packages/perl-Log-Report-Optional/ChangeLog
+
+  version 1.08: Mon  8 Sep 14:39:55 CEST 2025
+
+  	Improvements:
+  	- better warning on translation domain conflict.
+  	- add .gitignore
+  	- convert to OODoc 3.03
+
+-------------------------------------------------------------------
+Sat Jan 16 03:07:47 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.07
+   see /usr/share/doc/packages/perl-Log-Report-Optional/ChangeLog
+
+  version 1.07: Fri 15 Jan 09:57:35 CET 2021
+
+  	Improvements:
+  	- expand_reasons 'FATAL' [Andrew Beverley]
+  	- expand_reasons 'NONE'
+  	- expand_reasons with ARRAY or undef
+
+-------------------------------------------------------------------
+Wed Feb  7 15:45:45 UTC 2018 - coolo@suse.com
+
+- updated to 1.06
+   see /usr/share/doc/packages/perl-Log-Report-Optional/ChangeLog
+
+  version 1.06: Fri  2 Feb 08:53:01 CET 2018
+  
+  	Fixes:
+  	- fix metadata [Mohammad S Anwar]
+  	- Accidentally removed from CPAN
+  
+  version 1.05: Tue Jan 23 22:44:26 CET 2018
+  
+  	Improvements:
+  	- convert to GIT
+  	- publish via GitHUB
+
+-------------------------------------------------------------------
+Tue Oct 31 06:31:13 UTC 2017 - coolo@suse.com
+
+- updated to 1.04
+   see /usr/share/doc/packages/perl-Log-Report-Optional/ChangeLog
+
+  version 1.04: Mon 30 Oct 17:37:49 CET 2017
+  
+  	accidentally removed 1.03 from CPAN
+
+-------------------------------------------------------------------
+Wed Jul 12 05:40:29 UTC 2017 - coolo@suse.com
+
+- updated to 1.03
+   see /usr/share/doc/packages/perl-Log-Report-Optional/ChangeLog
+
+  version 1.03: Tue 27 Jun 16:39:41 CEST 2017
+  
+  	Fixes:
+  	- manpage, change SYNOPSYS into SYNOPSIS
+  	  rt.cpan.org#113351 [Shlomi Fish]
+  	- formatter PRINTP cannot be used
+  
+  	Improvements:
+  	- more flexible formatter construction
+  	- textdomain compatible with full implementation
+  	- changed formatter constructor to be more flexible
+
+-------------------------------------------------------------------
+Tue Jan 19 10:03:37 UTC 2016 - coolo@suse.com
+
+- updated to 1.02
+   see /usr/share/doc/packages/perl-Log-Report-Optional/ChangeLog
+
+  version 1.02: Mon 18 Jan 13:53:03 CET 2016
+  
+  	Improvements:
+  	- add ::Util::to_html()
+
+-------------------------------------------------------------------
+Tue Apr 14 18:44:55 UTC 2015 - coolo@suse.com
+
+- initial package $version
+ * created by $NAME $VERSION
+
