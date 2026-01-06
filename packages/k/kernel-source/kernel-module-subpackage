@@ -1,0 +1,100 @@
+%package -n %{-n*}-kmp-%1
+%define _this_kmp_kernel_version k%(echo %2 | sed -r 'y/-/_/')
+%define _this_kmp_version %{-v*}_%_this_kmp_kernel_version
+Version: %_this_kmp_version
+Release: %{-r*}
+%(
+for spec in {%_sourcedir,%_specdir}/%name.spec /dev/null; do
+    [ -e $spec ] && break
+done
+awk '
+BEGIN		{ tags["summary"] = "Summary: %summary"
+		  tags["group"] = "" }
+/^%%/		{ in_pkg_header = \
+		  ($0 ~ /^%%package[ \t]+KMP[ \t]*$/ ||
+		   $0 ~ /^%%package[ \t]+-n[ \t]*%name-KMP[ \t]*$/)
+		  next }
+in_pkg_header && /^(Summary|Group):[ \t]*/ \
+		{ tag = tolower($1) ; sub(/:$/, "", tag)
+		  tags[tag] = $0 }
+END		{ print tags["summary"]
+		  if ( tags["group"] != "" ) print tags["group"] }
+' $spec
+)
+Provides: %{-n*}-kmp = %_this_kmp_version
+Provides: %{-n*}-kmp = %{-v*}
+Provides: multiversion(kernel)
+Provides: %{-n*}-kmp-%1-%_this_kmp_kernel_version
+Requires: coreutils grep
+Requires(pre):  suse-kernel-rpm-scriptlets
+Requires(post): suse-kernel-rpm-scriptlets
+Requires:       suse-kernel-rpm-scriptlets
+Requires(preun): suse-kernel-rpm-scriptlets
+Requires(postun): suse-kernel-rpm-scriptlets
+%{-c:Requires: %{-n*}-ueficert}
+Enhances: kernel-%1
+Supplements: packageand(kernel-%1:%{-n*})
+Conflicts: %{-n*}-kmp-%1-%_this_kmp_kernel_version
+AutoReqProv: on
+
+%define run_if_exists run_if_exists() { \
+if [ -x "$1" ] ; then                   \
+  "$@"                                  \
+else                                    \
+  echo Cannot execute "$1" >&2          \
+fi                                      \
+}                                       \
+run_if_exists
+
+%{-p:%{expand:%(cd %_sourcedir; cat %{-p*})}}
+%description -n %{-n*}-kmp-%1
+%(
+for spec in {%_sourcedir,%_specdir}/%name.spec /dev/null; do
+    [ -e $spec ] && break
+done
+awk '
+/^%%/		{ in_desc = \
+		  ($0 ~ /^%%description[ \t]+KMP[ \t]*$/ ||
+		   $0 ~ /^%%description[ \t]+-n[ \t]*%name-KMP[ \t]*$/)
+		  next }
+in_desc		{ print; good = 1 }
+END		{ exit(! good) }
+' $spec || \
+awk '
+/^%%/		{ in_desc = \
+		  ($0 ~ /^%%description[ \t]*$/ ||
+		   $0 ~ /^%%description[ \t]+-n[ \t]*%name[ \t]*$/)
+		  next }
+in_desc		{ print; good = 1 }
+END		{ exit(! good) }
+' $spec
+)
+%pre -n %{-n*}-kmp-%1
+%{-b:KMP_NEEDS_MKINITRD=1; export KMP_NEEDS_MKINITRD}
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/kmp-pre --name "%{-n*}-kmp-%1" \
+  --version "%_this_kmp_version" --release "%{-r*}" --kernelrelease "%2" \
+  --flavor "%1" --usrmerged "%{usrmerged}" "$@"
+%post -n %{-n*}-kmp-%1
+%{-b:KMP_NEEDS_MKINITRD=1; export KMP_NEEDS_MKINITRD}
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/kmp-post --name "%{-n*}-kmp-%1" \
+  --version "%_this_kmp_version" --release "%{-r*}" --kernelrelease "%2" \
+  --flavor "%1" --usrmerged "%{usrmerged}" "$@"
+%preun -n %{-n*}-kmp-%1
+%{-b:KMP_NEEDS_MKINITRD=1; export KMP_NEEDS_MKINITRD}
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/kmp-preun --name "%{-n*}-kmp-%1" \
+  --version "%_this_kmp_version" --release "%{-r*}" --kernelrelease "%2" \
+  --flavor "%1" --usrmerged "%{usrmerged}" "$@"
+%postun -n %{-n*}-kmp-%1
+%{-b:KMP_NEEDS_MKINITRD=1; export KMP_NEEDS_MKINITRD}
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/kmp-postun --name "%{-n*}-kmp-%1" \
+  --version "%_this_kmp_version" --release "%{-r*}" --kernelrelease "%2" \
+  --flavor "%1" --usrmerged "%{usrmerged}" "$@"
+%posttrans -n %{-n*}-kmp-%1
+%{-b:KMP_NEEDS_MKINITRD=1; export KMP_NEEDS_MKINITRD}
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/kmp-posttrans --name "%{-n*}-kmp-%1" \
+  --version "%_this_kmp_version" --release "%{-r*}" --kernelrelease "%2" \
+  --flavor "%1" --usrmerged "%{usrmerged}" "$@"
+%files -n %{-n*}-kmp-%1
+%{-f:%{expand:%(cd %_sourcedir; cat %{-f*})}}
+%{!-f:%defattr (-,root,root)}
+%{!-f:%{kernel_module_directory}/%2-%1}

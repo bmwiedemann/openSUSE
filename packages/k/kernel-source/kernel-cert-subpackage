@@ -1,0 +1,40 @@
+%package -n %{-n*}-ueficert
+Summary: UEFI Secure Boot Certificate For Package %{-n*}-kmp
+Group: System/Kernel
+Requires(pre):  suse-kernel-rpm-scriptlets
+Requires(post): suse-kernel-rpm-scriptlets
+Requires:       suse-kernel-rpm-scriptlets
+Requires(preun): suse-kernel-rpm-scriptlets
+Requires(postun): suse-kernel-rpm-scriptlets
+%description -n %{-n*}-ueficert
+This package contains the UEFI Secure Boot certificate used to sign
+modules in the %{-n*}-kmp packages.
+
+%define run_if_exists run_if_exists() { \
+if [ -x "$1" ] ; then                   \
+  "$@"                                  \
+else                                    \
+  echo Cannot execute "$1" >&2          \
+fi                                      \
+}                                       \
+run_if_exists
+
+%pre -n %{-n*}-ueficert
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/cert-pre --certs "@CERTS@" "$@"
+
+%post -n %{-n*}-ueficert
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/cert-post --certs "@CERTS@" "$@"
+
+%preun -n %{-n*}-ueficert
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/cert-preun --certs "@CERTS@" "$@"
+
+%postun -n %{-n*}-ueficert
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/cert-postun --certs "@CERTS@" "$@"
+
+%posttrans -n %{-n*}-ueficert
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/cert-posttrans --certs "@CERTS@" "$@"
+
+%files -n %{-n*}-ueficert
+%defattr(-, root, root)
+%dir /etc/uefi
+/etc/uefi/certs
