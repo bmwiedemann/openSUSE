@@ -417,4 +417,21 @@
   - UCT-SELF-Fix-config-type-for-num_devices.patch</comment>
     <requestid>1316570</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>c0aee51c588fcdaa77337ff0be811d55</srcmd5>
+    <version>1.19.1</version>
+    <time>1767717705</time>
+    <user>anag_factory</user>
+    <comment>- Update to v1.19.1
+  - Features
+    - UCP
+      - Do not require transport memory support if rendezvous protocol is not used
+    - Build
+      - Added CUDA 13 support to the release pipeline
+      - Added Rocky OS support to the release pipeline
+  - Bugfixes
+    - UCS
+      - Fixed Netlink fetch mechanism</comment>
+    <requestid>1325461</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan 02 14:32:48 UTC 2026 - Nicolas Morey <nmorey@suse.com>
+
+- Update to v1.19.1
+  - Features
+    - UCP
+      - Do not require transport memory support if rendezvous protocol is not used
+    - Build
+      - Added CUDA 13 support to the release pipeline
+      - Added Rocky OS support to the release pipeline
+  - Bugfixes
+    - UCS
+      - Fixed Netlink fetch mechanism
+
+-------------------------------------------------------------------
 Wed Nov  5 16:48:53 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Minor fixes to openucx-s390x-support.patch
