@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Dec 27 16:02:37 UTC 2025 - Andreas Prittwitz <m4ng4n@gmx.de>
+
+- Change BuildRequires: to  gtk4-layer-shell-devel
+
+-------------------------------------------------------------------
+Thu Oct 30 07:35:27 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.2.0:
+  * updated colour options
+    now supports full transparency with #RRGGBBAA syntax, in all of:
+    + -g, --colour-light (new, the colour of the light part of the termination curve)
+    + -n, --colour-land (alpha channel now makes main window transparent)
+    + -o, --colour-ocean
+    + -u, --colour-sun (new, for --show-sun)
+  * added -s, --show-sun to render a sun icon at the subsolar point
+  * fixed map sizing issue in #14
+
+-------------------------------------------------------------------
+Thu Oct 30 07:35:07 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.1.0:
+  * bumped to gkt4, gtk4-layer-shell
+  * solar terminator is now directly draw as an SVG path instead of
+    the astro wtab
+  * better anti-aliasing for map and solar terminator
+
+-------------------------------------------------------------------
 Thu May 20 07:39:01 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.0.0:
