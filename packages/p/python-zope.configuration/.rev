@@ -111,4 +111,14 @@ New dependency of python-pyramid</comment>
     <comment>Make it compatible with new setuptools</comment>
     <requestid>1266263</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7ed91726cdfdc093f810b7be9da83fe6</srcmd5>
+    <version>7.0</version>
+    <time>1767717948</time>
+    <user>anag_factory</user>
+    <comment>- Update to 7.0:
+  * Replace pkg_resources namespace with PEP 420 native namespace.
+- BuildRequire ourselves for the test flavor.</comment>
+    <requestid>1325518</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan  6 04:30:42 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 7.0:
+  * Replace pkg_resources namespace with PEP 420 native namespace.
+- BuildRequire ourselves for the test flavor.
+
+-------------------------------------------------------------------
 Tue Apr  1 16:05:15 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Make it compatible with older setuptools

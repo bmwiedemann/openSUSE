@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.configuration
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,13 +27,13 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-zope.configuration%{psuffix}
-Version:        6.0
+Version:        7.0
 Release:        0
 Summary:        Zope Configuration Markup Language (ZCML)
 License:        ZPL-2.1
 URL:            http://www.python.org/pypi/zope.configuration
 Source:         https://files.pythonhosted.org/packages/source/z/zope.configuration/zope_configuration-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -46,9 +46,7 @@ Requires:       python-zope.schema >= 4.9
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module manuel}
-BuildRequires:  %{python_module zope.i18nmessageid}
-BuildRequires:  %{python_module zope.interface}
-BuildRequires:  %{python_module zope.schema >= 4.9}
+BuildRequires:  %{python_module zope.configuration = %{version}}
 BuildRequires:  %{python_module zope.testing}
 BuildRequires:  %{python_module zope.testrunner}
 %endif
@@ -88,7 +86,6 @@ rm -rf zope.configuration.egg-info
 %dir %{python_sitelib}/zope
 %{python_sitelib}/zope/configuration
 %{python_sitelib}/zope[_.]configuration-%{version}.dist-info
-%{python_sitelib}/zope.configuration-6.0-*-nspkg.pth
 %endif
 
 %changelog
