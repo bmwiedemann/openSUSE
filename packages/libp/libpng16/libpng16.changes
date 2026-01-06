@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec 28 23:12:09 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.53:
+  * Fixed a build failure on RISC-V RVV caused by a misspelled
+    intrinsic.
+  * Fixed a build failure with CMake 4.1 or newer, on Windows,
+    when using Visual C++ without MASM installed.
+
+-------------------------------------------------------------------
 Fri Dec  5 08:49:45 UTC 2025 - Petr Gajdos <pgajdos@suse.com>
 
 - version update to 1.6.52
@@ -328,7 +337,7 @@ Wed Aug  1 08:01:23 UTC 2018 - pgajdos@suse.com
 -------------------------------------------------------------------
 Mon Feb  5 15:35:46 UTC 2018 - pgajdos@suse.com
 
-- %{libname} package provides libpng = %{version} again 
+- %{libname} package provides libpng = %{version} again
   [bsc#1079342]
 
 -------------------------------------------------------------------
@@ -462,7 +471,7 @@ Mon Aug  7 09:46:11 UTC 2017 - pgajdos@suse.com
 
 - update to 1.6.31:
   * Guard the definition of _POSIX_SOURCE in pngpriv.h.
-  * Revised pngpriv.h to work around failure to compile 
+  * Revised pngpriv.h to work around failure to compile
     arm/filter_neon.S.
   * Added "Requires: zlib" to libpng.pc.in.
   * Added special case for FreeBSD in arm/filter_neon.S.
@@ -653,7 +662,7 @@ Fri Nov 13 07:25:01 UTC 2015 - pgajdos@suse.com
   Fixed uninitialized variable in contrib/gregbook/rpng2-x.c
   Fixed the recently reported 1's complement security issue.
   Fixed png_save_int_32 when int is not 2's complement by replacing
-    the value that is illegal in the PNG spec, in both signed and 
+    the value that is illegal in the PNG spec, in both signed and
     unsigned values, with 0.
  etc., see ANNOUNCE and CHANGES for details
 - removed: libpng-rgb_to_gray-checks.patch (upstreamed)
@@ -739,7 +748,7 @@ Thu Jun 12 05:38:48 UTC 2014 - pgajdos@suse.com
 Fri Jun  6 06:19:35 UTC 2014 - pgajdos@suse.com
 
 - updated to 1.6.11:
-  * fixed CVE-2014-0333 
+  * fixed CVE-2014-0333
   * other bugfixes
 - removed libpng16-1.6.9-CVE-2014-0333.patch (upstreamed)
 
@@ -818,14 +827,14 @@ Mon Dec  2 09:35:17 UTC 2013 - pgajdos@suse.com
 Fri Nov 15 07:56:22 UTC 2013 - pgajdos@suse.com
 
 - updated to 1.6.7:
-  * Revised unknown chunk code to correct several bugs in the 
+  * Revised unknown chunk code to correct several bugs in the
     NO_SAVE_/NO_WRITE combination
-  * Check user callback behavior in pngunknown.c. Previous versions 
-    compiled if SAVE_UNKNOWN was not available but did nothing since the 
+  * Check user callback behavior in pngunknown.c. Previous versions
+    compiled if SAVE_UNKNOWN was not available but did nothing since the
     callback was never implemented.
-  * Merged pngunknown.c with 1.7 version and back ported 1.7 
+  * Merged pngunknown.c with 1.7 version and back ported 1.7
     improvements/fixes
-  * Revised pngvalid to generate size images with as many filters as 
+  * Revised pngvalid to generate size images with as many filters as
     it can manage, limited by the number of rows.
   * ARM improvements/fixes
 
@@ -840,10 +849,10 @@ Thu Sep 12 13:21:53 UTC 2013 - pgajdos@suse.com
 
 - updated to 1.6.4:
   * Added information about png_set_options() to the manual.
-  * Delay calling png_init_filter_functions() until a row with nonzero 
+  * Delay calling png_init_filter_functions() until a row with nonzero
     filter is found.
-  * Fixed inconsistent conditional compilation of 
-    png_chunk_unknown_handling() prototype, definition, and usage.  
+  * Fixed inconsistent conditional compilation of
+    png_chunk_unknown_handling() prototype, definition, and usage.
     Made it depend on PNG_HANDLE_AS_UNKNOWN_SUPPORTED everywhere.
 
 -------------------------------------------------------------------
@@ -854,7 +863,7 @@ Fri Aug 30 14:08:02 UTC 2013 - coolo@suse.com
 -------------------------------------------------------------------
 Thu Aug  8 15:19:27 UTC 2013 - pgajdos@suse.com
 
-- png-fix-too-far-back was actually renamed to pngfix. Adjusted rpm 
+- png-fix-too-far-back was actually renamed to pngfix. Adjusted rpm
   macro names accordingly, %png_fix and %png_fix_dir.
 
 -------------------------------------------------------------------
@@ -869,7 +878,7 @@ Tue Aug  6 08:53:22 UTC 2013 - pgajdos@suse.com
 -------------------------------------------------------------------
 Fri Jun 21 18:36:31 UTC 2013 - crrodriguez@opensuse.org
 
-- Build with LFS_CFLAGS in 32 bit archs otherwise calls such 
+- Build with LFS_CFLAGS in 32 bit archs otherwise calls such
  as png_image_begin_read_from_file() or png_image_write_to_file()
  will fail to read/write huge images.
 
@@ -923,7 +932,7 @@ Thu Mar 28 08:12:03 UTC 2013 - pgajdos@suse.com
     application/user to specify that 16-bit files contain sRGB data
     rather than the default linear.
   etc., see ANNOUNCE or CHANGES for details
-- dropped upstreamed 
+- dropped upstreamed
   0387-Reenable-code-to-allow-zero-length-PLTE-chunks-for-M.patch
 
 -------------------------------------------------------------------
@@ -1071,7 +1080,7 @@ Mon Dec 19 08:24:37 UTC 2011 - pgajdos@suse.com
 -------------------------------------------------------------------
 Thu Dec  1 10:48:53 UTC 2011 - idoenmez@suse.de
 
-- Name field shouldn't contain a macro 
+- Name field shouldn't contain a macro
 
 -------------------------------------------------------------------
 Thu Dec  1 10:26:43 UTC 2011 - coolo@suse.com
@@ -1131,7 +1140,7 @@ Thu Nov  3 09:10:05 UTC 2011 - pgajdos@suse.com
     (Mans Rullgard).
   Changed misleading "Missing PLTE before cHRM" warning to "Out of place cHRM"
   Added PNG_LSR() and PNG_LSL() macros to defend against buggy compilers that
-    evaluate non-taken code branches and complain about out-of-range shifts. 
+    evaluate non-taken code branches and complain about out-of-range shifts.
   Renamed the local variable 'byte' because it appears in a MSYS header
     file.
   Added #define PNG_ALIGN_TYPE PNG_ALIGN_NONE to contrib/pngminim/*/pngusr.h
@@ -1146,7 +1155,7 @@ Mon Sep 26 09:10:06 UTC 2011 - pgajdos@suse.com
 -------------------------------------------------------------------
 Tue Jul 26 13:15:52 UTC 2011 - pgajdos@novell.com
 
-- updated to 1.5.4, fixes:  
+- updated to 1.5.4, fixes:
   * CVE-2011-2501 [bnc#702578]
   * CVE-2011-2690 [bnc#706387]
   * CVE-2011-2691 [bnc#706388]
@@ -1157,22 +1166,22 @@ Thu Mar 31 20:41:23 CEST 2011 - pgajdos@suse.cz
 
 - updated to 1.5.2:
   * Turned on interlace handling in png_read_png().
-  * Fixed gcc pendantic warnings. 
-  * Fixed png_get_current_row_number() in the interlaced case. 
-  * Cleaned up ALPHA flags and transformations. 
-  * Implemented expansion to 16 bits. 
-  * etc, see 
+  * Fixed gcc pendantic warnings.
+  * Fixed png_get_current_row_number() in the interlaced case.
+  * Cleaned up ALPHA flags and transformations.
+  * Implemented expansion to 16 bits.
+  * etc, see
     http://sourceforge.net/projects/libpng/files/libpng15/1.5.2/
 
 -------------------------------------------------------------------
 Thu Feb  3 11:19:46 CET 2011 - pgajdos@suse.cz
 
 - updated to 1.5.1: new branch shortly after 1.4, many structural
-  changes, see CHANGELOG or 
+  changes, see CHANGELOG or
   http://sourceforge.net/projects/libpng/files/libpng15/1.5.0/
   and
   http://sourceforge.net/projects/libpng/files/libpng15/1.5.1/
-  
+
 
 -------------------------------------------------------------------
 Thu Sep 30 09:51:05 UTC 2010 - pgajdos@novell.com
@@ -1226,7 +1235,7 @@ Thu Apr 15 16:07:53 CEST 2010 - pgajdos@suse.cz
 -------------------------------------------------------------------
 Tue Apr  6 18:24:43 CEST 2010 - ro@suse.de
 
-- fix baselibs.conf 
+- fix baselibs.conf
 
 -------------------------------------------------------------------
 Thu Mar 25 18:58:26 CET 2010 - pgajdos@suse.cz
@@ -1259,10 +1268,10 @@ Mon Dec 14 20:31:24 CET 2009 - jengelh@medozas.de
 -------------------------------------------------------------------
 Mon Dec  7 09:43:11 CET 2009 - pgajdos@suse.cz
 
-- updated to 1.2.41: 
-  contains numerous cleanups, some new compile-time warnings about 
-  direct struct access (define PNG_NO_PEDANTIC_WARNINGS to enable), 
-  a new xcode build project, and a minor performance improvement 
+- updated to 1.2.41:
+  contains numerous cleanups, some new compile-time warnings about
+  direct struct access (define PNG_NO_PEDANTIC_WARNINGS to enable),
+  a new xcode build project, and a minor performance improvement
   (avoid building 16-bit gamma tables when not needed)
 
 -------------------------------------------------------------------
@@ -1283,11 +1292,11 @@ Thu Aug 13 15:56:07 CEST 2009 - pgajdos@suse.cz
 
 - updated to 1.2.39:
   * Added a prototype for png_64bit_product() in png.c
-  * Avoid a possible NULL dereference in debug build, 
+  * Avoid a possible NULL dereference in debug build,
     in png_set_text_2()
   * Relocated new png_64_bit_product() prototype into png.h
   * Replaced *.tar.lzma with *.txz in distribution.
-  * Reject attempt to write iCCP chunk with negative embedded 
+  * Reject attempt to write iCCP chunk with negative embedded
     profile length.
 
 -------------------------------------------------------------------
@@ -1356,12 +1365,12 @@ Mon Jun 23 19:17:51 CEST 2008 - pgajdos@suse.cz
 
 - updated to 1.2.29:
   * fixes to the configure-related build-scripts
-  * security fix that affects programs that attempt to do 
-    special handling of unknown PNG chunks (presumably very 
-    few such programs), along with a reversion to previous 
-    behavior for handling of images with out-of-range tRNS-chunk 
+  * security fix that affects programs that attempt to do
+    special handling of unknown PNG chunks (presumably very
+    few such programs), along with a reversion to previous
+    behavior for handling of images with out-of-range tRNS-chunk
     values [bnc#378634]
-  * fix for unintentional gray-to-RGB conversion in 
+  * fix for unintentional gray-to-RGB conversion in
     png_set_expand_gray_1_2_4_to_8()
   * various other minor fixes
 - removed makefile-am.patch, issue fixed upstream
@@ -1374,7 +1383,7 @@ Sun May 11 12:16:53 CEST 2008 - coolo@suse.de
 -------------------------------------------------------------------
 Tue Apr 22 15:17:41 CEST 2008 - pgajdos@suse.cz
 
-- $(ECHO) substituted by echo in Makefile.in -- fixes package 
+- $(ECHO) substituted by echo in Makefile.in -- fixes package
   build in beta (makefile-am.patch)
 
 -------------------------------------------------------------------
@@ -1387,8 +1396,8 @@ Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
 Thu Apr  3 13:05:17 CEST 2008 - pgajdos@suse.cz
 
 - updated to 1.2.26:
-  * fixed minor coding errors that could lead to crashes in 
-    exceptional cases 
+  * fixed minor coding errors that could lead to crashes in
+    exceptional cases
 
 -------------------------------------------------------------------
 Thu Dec  6 02:20:12 CET 2007 - mrueckert@suse.de
@@ -1463,7 +1472,7 @@ Mon Oct 10 14:59:41 CEST 2005 - nadvornik@suse.cz
 -------------------------------------------------------------------
 Thu May 19 03:14:59 CEST 2005 - ro@suse.de
 
-- fix libdir in pkgconfig file libpng.pc 
+- fix libdir in pkgconfig file libpng.pc
 
 -------------------------------------------------------------------
 Thu Jan 20 17:34:57 CET 2005 - nadvornik@suse.cz
@@ -1477,7 +1486,7 @@ Mon Sep 27 10:45:21 CEST 2004 - sf@suse.de
 
 -  fixed problem with wrong assumption for long on 64bit archs
    which prevents khunphan from working (#45738)
-	
+
 
 -------------------------------------------------------------------
 Wed Aug 25 11:11:53 CEST 2004 - kukuk@suse.de
@@ -1517,7 +1526,7 @@ Fri Oct 10 16:58:23 CEST 2003 - adrian@suse.de
 -------------------------------------------------------------------
 Tue Apr  8 01:34:48 CEST 2003 - ro@suse.de
 
-- fix tail calling syntax 
+- fix tail calling syntax
 
 -------------------------------------------------------------------
 Mon Feb 10 11:52:13 CET 2003 - nadvornik@suse.cz
@@ -1554,7 +1563,7 @@ Fri Jul 26 21:21:24 CEST 2002 - adrian@suse.de
 Wed Jul 24 17:32:50 CEST 2002 - nadvornik@suse.cz
 
 - updated to 1.2.4:
-  - fixed buffer overflow in pngpread.c when IDAT is 
+  - fixed buffer overflow in pngpread.c when IDAT is
     corrupted with extra data
 
 -------------------------------------------------------------------
@@ -1565,7 +1574,7 @@ Fri Jul 12 16:20:53 CEST 2002 - schwab@suse.de
 -------------------------------------------------------------------
 Fri Jul  5 10:41:39 CEST 2002 - kukuk@suse.de
 
-- Use %ix86 macro 
+- Use %ix86 macro
 
 -------------------------------------------------------------------
 Tue Jul  2 09:44:15 CEST 2002 - nadvornik@suse.cz
@@ -1588,7 +1597,7 @@ Thu Jan 31 14:10:01 CET 2002 - nadvornik@suse.cz
 
 - back to 1.0.12, libpng 1.2.x will be packed in separate package
 - created devel subpackage to allow parallel instalation of
-  shared libraries 
+  shared libraries
 
 -------------------------------------------------------------------
 Wed Jan  9 11:33:09 CET 2002 - nadvornik@suse.cz
@@ -1601,7 +1610,7 @@ Tue Dec  4 15:23:50 CET 2001 - nadvornik@suse.cz
 
 - update to 1.2.0
   - shared library version changed to 3.1.2.0
-  - new API for dynamically enabling and disabling certain optimizations  
+  - new API for dynamically enabling and disabling certain optimizations
 - added Provides: libpng-devel for compatibility [bug #11978]
 
 -------------------------------------------------------------------
@@ -1652,7 +1661,7 @@ Mon May 22 10:06:19 CEST 2000 - nadvornik@suse.cz
 Sat Apr 29 22:31:13 CEST 2000 - kukuk@suse.de
 
 - Make sure libpng.so.2 is linked against libz to avoid problems
-  with missing dependencies. 
+  with missing dependencies.
 
 -------------------------------------------------------------------
 Mon Apr 10 16:35:05 CEST 2000 - nadvornik@suse.cz

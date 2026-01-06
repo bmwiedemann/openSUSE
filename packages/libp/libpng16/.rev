@@ -925,4 +925,41 @@
     <comment>- version update to 1.6.52</comment>
     <requestid>1321241</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>b0f8654231cf4773678dc243f5779893</srcmd5>
+    <version>1.6.53</version>
+    <time>1767717679</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.6.53:
+  * Fixed a build failure on RISC-V RVV caused by a misspelled
+    intrinsic.
+  * Fixed a build failure with CMake 4.1 or newer, on Windows,
+    when using Visual C++ without MASM installed.
+
+- %{libname} package provides libpng = %{version} again
+  * Revised pngpriv.h to work around failure to compile
+    the value that is illegal in the PNG spec, in both signed and
+  * fixed CVE-2014-0333
+  * Revised unknown chunk code to correct several bugs in the
+  * Check user callback behavior in pngunknown.c. Previous versions
+    compiled if SAVE_UNKNOWN was not available but did nothing since the
+  * Merged pngunknown.c with 1.7 version and back ported 1.7
+  * Revised pngvalid to generate size images with as many filters as
+  * Delay calling png_init_filter_functions() until a row with nonzero
+  * Fixed inconsistent conditional compilation of
+    png_chunk_unknown_handling() prototype, definition, and usage.
+- png-fix-too-far-back was actually renamed to pngfix. Adjusted rpm
+- Build with LFS_CFLAGS in 32 bit archs otherwise calls such
+- dropped upstreamed
+- Name field shouldn't contain a macro
+    evaluate non-taken code branches and complain about out-of-range shifts.
+- updated to 1.5.4, fixes:
+  * Fixed gcc pendantic warnings.
+  * Fixed png_get_current_row_number() in the interlaced case.
+  * Cleaned up ALPHA flags and transformations.
+  * Implemented expansion to 16 bits.
+  * etc, see
+  changes, see CHANGELOG or (forwarded request 1324612 from dirkmueller)</comment>
+    <requestid>1325377</requestid>
+  </revision>
 </revisionlist>
