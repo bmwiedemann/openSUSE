@@ -1,3 +1,23 @@
+Libbytesize 2.12
+----------------
+
+Vojtech Trefny (8):
+
+- packit: Bump release only for daily Copr builds
+- tests: Split locale tests into multiple test cases
+- misc: Separate Ansible tasks into a different file
+- misc: Add build and test dependecies for CentOS
+- misc: Use --break-system-packages for pip on Debian
+- misc: Do not use "with_items" when installing packages
+- HACKING: Update directions for updating documentation
+- Fix compilation with C23
+
+dependabot[bot] (3):
+
+- infra: bump actions/checkout from 4 to 5
+- infra: bump actions/upload-artifact from 4 to 5
+- infra: bump actions/checkout from 5 to 6
+
 Libbytesize 2.11
 ----------------
 

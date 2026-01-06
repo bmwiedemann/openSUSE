@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan  2 21:43:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.12:
+  * New minor release of the libbytesize library. This release
+    contains fixes for an issue with compilation using the C23
+    standard and also includes some small testing infrastructure
+    and CI changes.
+
+-------------------------------------------------------------------
 Sun Mar 30 20:21:19 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.11:

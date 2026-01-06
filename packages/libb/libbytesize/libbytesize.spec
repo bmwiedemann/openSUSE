@@ -1,7 +1,7 @@
 #
 # spec file for package libbytesize
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define soversion 1
 
 Name:           libbytesize
-Version:        2.11
+Version:        2.12
 Release:        0
 Summary:        A library for working with sizes in bytes
 License:        LGPL-2.1-only
