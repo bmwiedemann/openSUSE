@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jan  6 02:46:39 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 8.1:
+  * Remove run-time dependency on setuptools.
+  * Replace pkg_resources namespace with PEP 420 native namespace.
+  * Add --auto-path option. This automatically adds the path of all packages
+    from the --package option to the test paths. (#198)
+  * Improve @unittest.expectedFailure support, especially regarding
+    post-mortem debugger. (#196)
+  * Re-add a single import of pkg_resources to avoid other import issues in
+    mixed pip/buildout environments. (#194)
+  * Replace pkg_resources with importlib.metadata.
+  * Remove setup.py ftest command. (#178)
+  * Remove zope.testrunner.eggsupport. It is no longer usable as of
+    setuptools 72.0.0. (#185)
+  * Drop support for Python 3.8.
+  * Add option --only-level=level to run tests only at the specified
+    level. (#188)
+- Clean up BuildRequires.
+
+-------------------------------------------------------------------
 Tue Aug 26 09:52:11 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems

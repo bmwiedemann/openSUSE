@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.testrunner
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,20 +31,18 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-zope.testrunner%{psuffix}
-Version:        6.6.1
+Version:        8.1
 Release:        0
 Summary:        Zope testrunner script
 License:        ZPL-2.1
 URL:            https://github.com/zopefoundation/zope.testrunner
 Source:         https://files.pythonhosted.org/packages/source/z/zope_testrunner/zope_testrunner-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module zope.exceptions}
-BuildRequires:  %{python_module zope.interface}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-setuptools
 Requires:       python-zope.exceptions
 Requires:       python-zope.interface
 BuildArch:      noarch
@@ -101,8 +99,8 @@ $python -m zope.testrunner --test-path=src -vv
 %license LICENSE.md
 %doc README.rst
 %python_alternative %{_bindir}/zope-testrunner
+%dir %{python_sitelib}/zope
 %{python_sitelib}/zope/testrunner
-%{python_sitelib}/zope.testrunner-%{version}-py*-nspkg.pth
 %{python_sitelib}/zope[_.]testrunner-%{version}.dist-info
 %endif
 
