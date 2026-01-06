@@ -1,8 +1,58 @@
 -------------------------------------------------------------------
+Tue Jan 06 10:33:03 UTC 2026 - Robert Frohl <rfrohl@suse.com>
+
+- Update to version 20260106:
+  * linuxptp: add support for dropping root privileges
+  * fail2ban: Tweak selinux regex for /run/fail2ban.
+  * Allow virtqemud setattr dri devices
+  * Allow irqbalance create and use netlink generic socket
+  * Allow thumb_t connect to XDM over a unix domain stream socket
+  * Allow systemd-homework to remove ~/.identity-blob
+  * Revert "Allow kl2tpd create and use netlink_generic_socket"
+  * Support cockpit privileged access for the staff user
+  * Update su_domain_type policy for kerberized su
+  * Allow sshd-session inherit limits from its parent process
+  * Allow systemd-machined read virtd process state
+  * Allow kl2tpd create and use netlink_generic_socket
+  * Update policy for redfish-finder
+  * Label the greetd login manager framework as a display manager
+  * Allow sshd-auth get attributes of sshd vsock socket
+  * Confine redfish_finder - host api discovery service
+  * Allow iptables read firewalld process state
+  * Allow tuned_t use its private tmpfs files
+  * The commit addresses the following AVC denials:
+  * Allow passwd read and write a sshd-session unnamed pipes
+  * Allow sshd-auth capabilities
+  * Allow sshd-auth read network sysctls
+  * Label /run/insights-client.ppid with insights_client_run_t
+  * fix: unbreak thumbnailing for Thunar/tumblerd
+  * Add files_mounton_generic_tmp_dirs() interface
+  * Add the rpm_signal() interface
+  * Allow session_bus_type get the attributes of the pidfs filesystem
+  * Allow pcscd get the attributes of the pidfs filesystem
+  * Allow sssd get the attributes of the pidfs filesystem
+  * Allow KDE Plasma Login Manager to function as a display manager
+  * Allow mdadm search filesystem_type directories
+  * Update policy for dhcpc_hook_t
+  * Label /usr/libexec/dhcpcd-run-hooks with dhcpc_hook_exec_t
+  * Allow staff role read/write cockpit-session unix stream sockets
+  * Allow stap server read virtual memory sysctls
+- Syncing with upstream rawhide selinux-policy up to:
+  * 415e98f61041ebd8158063d62e750cd391841e00
+- Update embedded container-selinux version to commit:
+  * 3f7c37e93e172f531de233f40a58a1b8ec6ff17d (v2.245.0)
+
+-------------------------------------------------------------------
 Fri Dec 19 11:11:46 UTC 2025 - Robert Frohl <rfrohl@suse.com>
 
 - Update to version 20251219:
   * Allow 'mysql-systemd-helper upgrade' to work correctly (bsc#1255024)
+
+-------------------------------------------------------------------
+Fri Dec 19 08:41:23 UTC 2025 - Danish Prakash <danish.prakash@suse.com>
+
+- macros.selinux-policy: Introduce %selinux_requires_min macro
+that requires all relevant dependencies except for *-python
 
 -------------------------------------------------------------------
 Thu Dec 18 08:27:32 UTC 2025 - Johannes Segitz <jsegitz@suse.com>

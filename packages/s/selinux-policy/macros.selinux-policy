@@ -33,8 +33,8 @@
 %_file_custom_defined_booleans %{_selinux_store_policy_path}/rpmbooleans.custom
 %_file_custom_defined_booleans_tmp %{_selinux_store_policy_path}/rpmbooleans.custom.tmp
 
-# %selinux_requires
-%selinux_requires \
+# %selinux_requires_min - minimal required set of packages
+%selinux_requires_min \
 Requires: selinux-policy >= %{_selinux_policy_version} \
 BuildRequires: pkgconfig(systemd) \
 BuildRequires: selinux-policy \
@@ -42,6 +42,11 @@ BuildRequires: selinux-policy-devel \
 Requires(post): selinux-policy-base >= %{_selinux_policy_version} \
 Requires(post): libselinux-utils \
 Requires(post): policycoreutils \
+%{nil}
+
+# %selinux_requires
+%selinux_requires \
+%selinux_requires_min \
 %if 0%{?fedora} || 0%{?rhel} > 7 || 0%{suse_version} > 1500\
 Requires(post): policycoreutils-python-utils \
 %else \
