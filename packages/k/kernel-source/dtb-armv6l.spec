@@ -1,7 +1,7 @@
 #
 # spec file for package dtb-armv6l
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define srcversion 6.18
-%define patchversion 6.18.2
+%define patchversion 6.18.3
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -25,9 +25,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-armv6l
-Version:        6.18.2
+Version:        6.18.3
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g9447271
+Release:        <RELEASE>.gc68e342
 %else
 Release:        0
 %endif

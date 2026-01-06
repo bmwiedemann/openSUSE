@@ -1,7 +1,7 @@
 #
 # spec file for package kernel-64kb
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.18
-%define patchversion 6.18.2
-%define git_commit 94472718bd34ca4adb72d325d55f37bd87bfde65
+%define patchversion 6.18.3
+%define git_commit c68e3426e0b2a1d150ad66242862075a7d4db450
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -40,9 +40,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-64kb
-Version:        6.18.2
+Version:        6.18.3
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g9447271
+Release:        <RELEASE>.gc68e342
 %else
 Release:        0
 %endif
