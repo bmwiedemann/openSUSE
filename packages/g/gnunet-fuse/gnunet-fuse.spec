@@ -18,7 +18,7 @@
 
 
 Name:           gnunet-fuse
-Version:        0.25.0
+Version:        0.26.0
 Release:        0
 Summary:        GNUnet FUSE interface
 License:        GPL-3.0-only
