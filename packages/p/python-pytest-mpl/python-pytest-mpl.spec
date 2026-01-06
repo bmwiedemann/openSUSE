@@ -18,36 +18,34 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-mpl
-Version:        0.17.0
+Version:        0.18.0
 Release:        0
 Summary:        Pytest plugin for testing Matplotlib figures
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/matplotlib/pytest-mpl
-# get the test reference data from the GitHub archive
-Source:         https://github.com/matplotlib/pytest-mpl/archive/v%{version}.tar.gz#/pytest-mpl-%{version}-gh.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pytest_mpl/pytest_mpl-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools_scm}
+# Upstream says >= 80 but that is a bit ambitious and not needed here
 BuildRequires:  %{python_module setuptools}
+# Upstream says >= 8 but that is not enough for the [simple] hook used
+BuildRequires:  %{python_module setuptools_scm >= 9}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Jinja2
-Requires:       python-Pillow
-Requires:       python-matplotlib
-Requires:       python-packaging
-Requires:       python-pytest
-%if %python_version_nodots < 39
-Requires:       python-importlib-resources
-%endif
+Requires:       python-Jinja2 >= 2.10.2
+Requires:       python-Pillow >= 8.1.1
+Requires:       python-matplotlib >= 3.3.3
+Requires:       python-packaging >= 22
+Requires:       python-pytest >= 5.4.0
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Pillow}
-BuildRequires:  %{python_module Jinja2}
-BuildRequires:  %{python_module importlib-resources if %python-base < 3.9}
-BuildRequires:  %{python_module matplotlib}
-BuildRequires:  %{python_module packaging}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module Jinja2 >= 2.10.2}
+BuildRequires:  %{python_module Pillow >= 8.1.1}
+BuildRequires:  %{python_module matplotlib >= 3.3.3}
+BuildRequires:  %{python_module packaging >= 22}
+BuildRequires:  %{python_module pytest >= 5.4}
 # /SECTION
 %python_subpackages
 
@@ -55,10 +53,9 @@ BuildRequires:  %{python_module pytest}
 This is a pytest plugin to help with testing figures output from Matplotlib.
 
 %prep
-%setup -q -n pytest-mpl-%{version}
+%setup -q -n pytest_mpl-%{version}
 
 %build
-export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %pyproject_wheel
 
 %install

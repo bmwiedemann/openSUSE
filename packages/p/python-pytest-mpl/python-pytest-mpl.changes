@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan  1 11:21:34 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.18.0
+  * Support generating summary reports when using pytest-xdist by
+    @ConorMacBride in #242
+
+-------------------------------------------------------------------
 Mon Sep 23 15:44:56 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

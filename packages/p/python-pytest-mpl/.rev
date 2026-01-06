@@ -50,4 +50,14 @@
     <comment></comment>
     <requestid>1202872</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c79dba7424272e788f600397e8257d9e</srcmd5>
+    <version>0.18.0</version>
+    <time>1767717992</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.18.0
+  * Support generating summary reports when using pytest-xdist by
+    @ConorMacBride in #242</comment>
+    <requestid>1325618</requestid>
+  </revision>
 </revisionlist>
