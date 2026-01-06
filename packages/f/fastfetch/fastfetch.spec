@@ -1,7 +1,7 @@
 #
 # spec file for package fastfetch
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,6 @@ URL:            https://github.com/fastfetch-cli/fastfetch
 Source:         %{name}-%{version}.tar.gz
 BuildRequires:  Mesa-devel
 BuildRequires:  cmake
-BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  opencl-headers
 BuildRequires:  vulkan-headers
@@ -40,9 +39,9 @@ BuildRequires:  pkgconfig(chafa)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dconf)
 BuildRequires:  pkgconfig(ddcutil)
+BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libelf)
 BuildRequires:  pkgconfig(libpulse)
-BuildRequires:  pkgconfig(libxfconf-0)
 BuildRequires:  pkgconfig(ocl-icd)
 BuildRequires:  pkgconfig(rpm)
 BuildRequires:  pkgconfig(sqlite3)
@@ -51,25 +50,13 @@ BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(zlib)
-Recommends:     ImageMagick
-Recommends:     Mesa
-Recommends:     chafa
-Recommends:     dbus-1
-Recommends:     dconf
-Recommends:     glib2-tools
-Recommends:     pciutils
-Recommends:     rpm
-Recommends:     sqlite3
-Recommends:     vulkan-tools
-Recommends:     xfconf
-Recommends:     xrandr
-Recommends:     zlib
+
+Recommends:     hwdata
 
 %description
 Fastfetch is a neofetch-like tool for fetching system information and
 displaying them in a pretty way.  It is written mainly in C, with performance and
-customizability in mind. Currently Linux, Android, FreeBSD,
-MacOS and Windows 7+ are supported.
+customizability in mind.
 
 %package        fish-completion
 Summary:        Fish Completion for %{name}
