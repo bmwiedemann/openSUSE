@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan  1 19:06:23 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- c-ares 1.35.6:
+  * CVE-2025-62408: use-after-free in read_answers() (boo#1254738)
+  * Ignore Windows IDN Search Domains until proper IDN support is
+    added
+  * Various bug fixes
+
+-------------------------------------------------------------------
 Tue Apr  8 15:54:34 UTC 2025 - Adam Majer <adam.majer@suse.de>
 
 - c-ares version 1.34.5

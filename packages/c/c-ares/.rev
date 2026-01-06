@@ -427,4 +427,16 @@ probably belongs in same stagings as nodejs22
 - a531524a3d085fcd9a5e25d5f6cbdb953082c2b9.patch: upstreamed, removed</comment>
     <requestid>1267943</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>ea3a6b1be9622b25b43fc9ba0cfb048c</srcmd5>
+    <version>1.34.6</version>
+    <time>1767717681</time>
+    <user>anag_factory</user>
+    <comment>- c-ares 1.35.6:
+  * CVE-2025-62408: use-after-free in read_answers() (boo#1254738)
+  * Ignore Windows IDN Search Domains until proper IDN support is
+    added
+  * Various bug fixes</comment>
+    <requestid>1325392</requestid>
+  </revision>
 </revisionlist>

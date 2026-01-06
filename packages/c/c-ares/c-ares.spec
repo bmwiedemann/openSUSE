@@ -2,7 +2,7 @@
 # spec file for package c-ares
 #
 # Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 
 Name:           c-ares%pkg_suffix
-Version:        1.34.5
+Version:        1.34.6
 Release:        0
 Summary:        Library for asynchronous name resolves
 License:        MIT
