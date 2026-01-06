@@ -49,7 +49,7 @@
 %define gegl_version            0.4.62
 %define gexiv2_version          0.14.0
 %define glib_version            2.70.0
-%define gtk3_version            3.24.51
+%define gtk3_version            3.24.50
 %define gudev_version           167
 %define harfbuzz_version        2.8.2
 %define lcms2_version           2.8

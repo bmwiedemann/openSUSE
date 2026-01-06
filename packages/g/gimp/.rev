@@ -2310,4 +2310,12 @@ General:
     <comment>Update changelog to recored security fix ID in previous update (CVE-2025-10922, ZDI-CAN-27863, bsc#1250497). (forwarded request 1320107 from qzhao)</comment>
     <requestid>1320136</requestid>
   </revision>
+  <revision rev="160" vrev="3">
+    <srcmd5>e04eecaa5a382a5a4648b9ab7d31be59</srcmd5>
+    <version>3.0.6</version>
+    <time>1767717699</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1325440</requestid>
+  </revision>
 </revisionlist>
