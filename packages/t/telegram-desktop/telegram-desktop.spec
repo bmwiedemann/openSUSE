@@ -1,7 +1,7 @@
 #
 # spec file for package telegram-desktop
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,9 +23,9 @@
 %define ada_ver   3.3.0
 %define h264_ver  2.6.0
 %define owt_ver   git20251128
-%define td_ver    git20251210
+%define td_ver    git20260103
 Name:           telegram-desktop
-Version:        6.3.9
+Version:        6.4.1
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
