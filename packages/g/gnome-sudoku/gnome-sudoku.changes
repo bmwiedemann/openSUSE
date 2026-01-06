@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan  2 18:31:53 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.3:
+  + Add support for running without installing
+  + Fix timer color when changing difficulty
+  + Fix cells being in the wrong order in RTL
+  + Fix stuck highlight after starting a custom game
+  + Fix earmark mode being disabled in custom games
+
+-------------------------------------------------------------------
 Fri Oct 17 17:45:26 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to verison 49.2:
