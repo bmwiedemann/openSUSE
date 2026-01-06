@@ -1,7 +1,7 @@
 #
 # spec file for package at-spi2-core
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define atspiconfdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}
 
 Name:           at-spi2-core
-Version:        2.58.2
+Version:        2.58.3
 Release:        0
 Summary:        Assistive Technology Service Provider Interface - D-Bus based implementation
 License:        LGPL-2.1-or-later

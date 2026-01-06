@@ -2785,4 +2785,14 @@
   + Fix several memory leaks. (forwarded request 1319342 from iznogood)</comment>
     <requestid>1319645</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>07f2bdb5e8b9f98db5b90425b2458e5a</srcmd5>
+    <version>2.58.3</version>
+    <time>1767717739</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.58.3:
+  + Fix atk_get_major_version etc not linking on C++
+  + python: Speed up __eq__ and __ne__ (forwarded request 1325264 from iznogood)</comment>
+    <requestid>1325361</requestid>
+  </revision>
 </revisionlist>
