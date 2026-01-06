@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 05 11:24:23 UTC 2026 - Nicolas Morey <nmorey@suse.com>
+
+- Update to rdma-core v61.0
+  - https://github.com/linux-rdma/rdma-core.git/releases/tag/v61.0
+
+-------------------------------------------------------------------
 Mon Oct 27 09:00:01 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Update to rdma-core v60.0

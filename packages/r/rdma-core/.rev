@@ -740,4 +740,13 @@
   - https://github.com/linux-rdma/rdma-core/releases/tag/v60.0</comment>
     <requestid>1314034</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>516e5fc25478869d1184dbb737738dc9</srcmd5>
+    <version>61.0</version>
+    <time>1767717701</time>
+    <user>anag_factory</user>
+    <comment>- Update to rdma-core v61.0
+  - https://github.com/linux-rdma/rdma-core.git/releases/tag/v61.0</comment>
+    <requestid>1325459</requestid>
+  </revision>
 </revisionlist>
