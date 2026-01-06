@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan  6 01:54:06 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Disable failing test everywhere.
+
+-------------------------------------------------------------------
 Wed Apr 23 20:26:25 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Add python-ftfy.rpmlintrc properly.

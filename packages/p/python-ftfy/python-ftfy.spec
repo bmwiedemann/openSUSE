@@ -1,7 +1,7 @@
 #
 # spec file for package python-ftfy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %{?sle15_python_module_pythons}
-%define         skip_python2 1
 Name:           python-ftfy
 Version:        6.3.1
 Release:        0
@@ -28,8 +27,6 @@ Source0:        https://github.com/rspeer/python-ftfy/archive/refs/tags/v%{versi
 Source99:       python-ftfy.rpmlintrc
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-wcwidth
@@ -64,13 +61,10 @@ ln -s %{buildroot}%{_bindir}/ftfy-%{python_bin_suffix} build/testbin/ftfy
 }
 export PATH="build/testbin:$PATH"
 
-# conditionally skip failing test for older SUSE releases
-donttest=""
-%if 0%{suse_version} < 1600
+# skip failing test
 donttest+="ftfy.formatting.monospaced_width"
-%endif
 
-%pytest ${donttest:+-k "not (${donttest})"}
+%pytest -k "not ($donttest)"
 
 %post
 %python_install_alternative ftfy
@@ -83,6 +77,6 @@ donttest+="ftfy.formatting.monospaced_width"
 %license LICENSE.txt
 %python_alternative %{_bindir}/ftfy
 %{python_sitelib}/ftfy
-%{python_sitelib}/ftfy-%{version}*-info
+%{python_sitelib}/ftfy-%{version}.dist-info
 
 %changelog

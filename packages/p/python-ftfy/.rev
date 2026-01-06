@@ -140,4 +140,12 @@
 </comment>
     <requestid>1272264</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>13a2bc20fa8512f891f42b114095ece7</srcmd5>
+    <version>6.3.1</version>
+    <time>1767717940</time>
+    <user>anag_factory</user>
+    <comment>- Disable failing test everywhere.</comment>
+    <requestid>1325511</requestid>
+  </revision>
 </revisionlist>
