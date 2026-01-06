@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jan  5 18:01:05 UTC 2026 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 10.6.1:
+  * Fix an issue where there were no bound checks when pressing the
+    delete key in the menu entry editor, sometimes causing out-of-bounds
+    accesses.
+  * Add many checks for return values of disk-related functions that
+    could fail.
+  * Fix a typo in the physical memory manager code where a pointer was
+    checked instead of the value it was pointing to. This could have in
+    theory caused 0-length usable memory entries to appear in the memory
+    map.
+  * Add checks to avoid division by 0 if the user-specified baud rate is
+    0.
+  * Fix broken calculation in the fb_clear() function that caused severe
+    out-of-bounds writes when the bits-per-pixel were not 32 or 16.
+  * Fix potential unaligned memory accesses in the BLAKE2B code. This
+    could have caused issues on RISC architectures like aarch64 or
+    riscv64.
+  * Fix missing continues in the riscv ISA string initialisation logic.
+    This could have caused HARTs with invalid ISA strings to be used
+    anyways instead of being ignored.
+  * More minor bug fixes for bugs discovered during static analysis.
+
+-------------------------------------------------------------------
 Sun Dec 28 23:48:58 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
 
 - Update to 10.6.0:
