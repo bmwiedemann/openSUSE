@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan  5 10:41:26 MST 2026 - carnold@suse.com
+
+- Update to database version 20251212 (jsc#PED-14625)
+  osinfo-db-20251212.tar.xz
+- Drop patches contained in new tarball
+  add-opensuse-leap-16.0-support.patch
+  add-sle15sp7-support.patch
+
+-------------------------------------------------------------------
 Thu Oct 23 15:54:52 MDT 2025 - carnold@suse.com
 
 - bsc#1252429 - virt-manager does not detect Leap 16.0 offline ISO

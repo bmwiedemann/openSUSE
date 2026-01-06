@@ -1,8 +1,8 @@
-Index: osinfo-db-20231215/os/opensuse.org/opensuse-tumbleweed.xml
+Index: osinfo-db-20251212/os/opensuse.org/opensuse-tumbleweed.xml
 ===================================================================
---- osinfo-db-20231215.orig/os/opensuse.org/opensuse-tumbleweed.xml
-+++ osinfo-db-20231215/os/opensuse.org/opensuse-tumbleweed.xml
-@@ -69,16 +69,6 @@
+--- osinfo-db-20251212.orig/os/opensuse.org/opensuse-tumbleweed.xml
++++ osinfo-db-20251212/os/opensuse.org/opensuse-tumbleweed.xml
+@@ -73,16 +73,6 @@
        <name xml:lang="de">openSUSE Tumbleweed (Kubic)</name>
      </variant>
      <!-- DVD Image -->
@@ -19,7 +19,7 @@ Index: osinfo-db-20231215/os/opensuse.org/opensuse-tumbleweed.xml
      <media arch="x86_64">
        <url>https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-DVD-x86_64-Current.iso</url>
        <iso>
-@@ -89,18 +79,17 @@
+@@ -93,18 +83,17 @@
        <kernel>boot/x86_64/loader/linux</kernel>
        <initrd>boot/x86_64/loader/initrd</initrd>
      </media>
@@ -41,7 +41,7 @@ Index: osinfo-db-20231215/os/opensuse.org/opensuse-tumbleweed.xml
      <media arch="x86_64">
        <variant id="netinst"/>
        <url>https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-NET-x86_64-Current.iso</url>
-@@ -112,6 +101,17 @@
+@@ -116,6 +105,17 @@
        <kernel>boot/x86_64/loader/linux</kernel>
        <initrd>boot/x86_64/loader/initrd</initrd>
      </media>

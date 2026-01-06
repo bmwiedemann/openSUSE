@@ -688,4 +688,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1314606</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>029b8b7e441d36a8d27a1dd64e53044f</srcmd5>
+    <version>20251212</version>
+    <time>1767717708</time>
+    <user>anag_factory</user>
+    <comment>Update osinfo-db database version to 20251212</comment>
+    <requestid>1325466</requestid>
+  </revision>
 </revisionlist>

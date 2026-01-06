@@ -1,6 +1,8 @@
---- osinfo-db-20240510/os/opensuse.org/opensuse-tumbleweed.xml.orig	2024-07-01 13:06:42.336848537 -0600
-+++ osinfo-db-20240510/os/opensuse.org/opensuse-tumbleweed.xml	2024-07-01 13:06:58.400848920 -0600
-@@ -134,14 +134,15 @@
+Index: osinfo-db-20251212/os/opensuse.org/opensuse-tumbleweed.xml
+===================================================================
+--- osinfo-db-20251212.orig/os/opensuse.org/opensuse-tumbleweed.xml
++++ osinfo-db-20251212/os/opensuse.org/opensuse-tumbleweed.xml
+@@ -138,14 +138,15 @@
        <!-- http://en.opensuse.org/Hardware_requirements -->
        <minimum>
          <cpu>1600000000</cpu>
