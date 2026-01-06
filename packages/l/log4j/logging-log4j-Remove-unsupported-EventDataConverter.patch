@@ -1,22 +1,3 @@
-From b017736fa1b58377b8bf1b89599b274a9cfb9956 Mon Sep 17 00:00:00 2001
-From: Dinesh Prasanth M K <dmoluguw@redhat.com>
-Date: Fri, 31 Jan 2020 13:00:05 -0500
-Subject: [PATCH] Remove unsupported EventDataConverter
-
-This deletes the EventDataConverter entirely from log4j-slf4j-impl
-entirely because EventData is not supported in 1.8.
-
-Signed-off-by: Dinesh Prasanth M K <dmoluguw@redhat.com>
----
- .../logging/slf4j/EventDataConverter.java     | 50 --------------
- .../org/apache/logging/slf4j/Log4jLogger.java | 22 +-----
- .../org/apache/logging/slf4j/LoggerTest.java  | 21 ------
- .../apache/logging/slf4j/OptionalTest.java    | 69 -------------------
- .../src/test/resources/log4j-test1.xml        |  7 --
- 5 files changed, 1 insertion(+), 168 deletions(-)
- delete mode 100644 log4j-slf4j-impl/src/main/java/org/apache/logging/slf4j/EventDataConverter.java
- delete mode 100644 log4j-slf4j-impl/src/test/java/org/apache/logging/slf4j/OptionalTest.java
-
 diff --git a/log4j-slf4j-impl/src/main/java/org/apache/logging/slf4j/EventDataConverter.java b/log4j-slf4j-impl/src/main/java/org/apache/logging/slf4j/EventDataConverter.java
 deleted file mode 100644
 index 620232a..0000000
@@ -74,7 +55,7 @@ index 620232a..0000000
 -    }
 -}
 diff --git a/log4j-slf4j-impl/src/main/java/org/apache/logging/slf4j/Log4jLogger.java b/log4j-slf4j-impl/src/main/java/org/apache/logging/slf4j/Log4jLogger.java
-index 1fa8080..90cfe4e 100644
+index 39cb2e7..1d654f8 100644
 --- a/log4j-slf4j-impl/src/main/java/org/apache/logging/slf4j/Log4jLogger.java
 +++ b/log4j-slf4j-impl/src/main/java/org/apache/logging/slf4j/Log4jLogger.java
 @@ -27,9 +27,7 @@ import org.apache.logging.log4j.message.Message;
@@ -84,14 +65,12 @@ index 1fa8080..90cfe4e 100644
 -import org.apache.logging.log4j.util.LoaderUtil;
  import org.slf4j.Marker;
 -import org.slf4j.MarkerFactory;
- import org.slf4j.impl.StaticMarkerBinder;
  import org.slf4j.spi.LocationAwareLogger;
  
-@@ -39,18 +37,13 @@ import org.slf4j.spi.LocationAwareLogger;
- public class Log4jLogger implements LocationAwareLogger, Serializable {
- 
+ /**
+@@ -40,10 +38,7 @@ public class Log4jLogger implements LocationAwareLogger, Serializable {
      public static final String FQCN = Log4jLogger.class.getName();
--
+ 
      private static final long serialVersionUID = 7869000638091304316L;
 -    private static final Marker EVENT_MARKER = MarkerFactory.getMarker("EVENT");
 -    private static final EventDataConverter CONVERTER = createConverter();
@@ -99,25 +78,28 @@ index 1fa8080..90cfe4e 100644
 -    private final boolean eventLogger;
      private transient ExtendedLogger logger;
      private final String name;
- 
-     public Log4jLogger(final ExtendedLogger logger, final String name) {
+     private transient Log4jMarkerFactory markerFactory;
+@@ -51,7 +46,6 @@ public class Log4jLogger implements LocationAwareLogger, Serializable {
+     public Log4jLogger(final Log4jMarkerFactory markerFactory, final ExtendedLogger logger, final String name) {
+         this.markerFactory = markerFactory;
          this.logger = logger;
 -        this.eventLogger = "EventLogger".equals(name);
          this.name = name;
      }
  
-@@ -363,9 +356,7 @@ public class Log4jLogger implements LocationAwareLogger, Serializable {
-             return;
+@@ -365,10 +359,7 @@ public class Log4jLogger implements LocationAwareLogger, Serializable {
          }
          final Message msg;
+         final Throwable actualThrowable;
 -        if (CONVERTER != null && eventLogger && marker != null && marker.contains(EVENT_MARKER)) {
 -            msg = CONVERTER.convertEvent(message, params, throwable);
+-            actualThrowable = throwable != null ? throwable : msg.getThrowable();
 -        } else if (params == null) {
 +        if (params == null) {
              msg = new SimpleMessage(message);
+             actualThrowable = throwable;
          } else {
-             msg = new ParameterizedMessage(message, params, throwable);
-@@ -410,15 +401,6 @@ public class Log4jLogger implements LocationAwareLogger, Serializable {
+@@ -402,15 +393,6 @@ public class Log4jLogger implements LocationAwareLogger, Serializable {
          aOutputStream.defaultWriteObject();
      }
  
@@ -134,7 +116,7 @@ index 1fa8080..90cfe4e 100644
          switch (i) {
          case TRACE_INT:
 diff --git a/log4j-slf4j-impl/src/test/java/org/apache/logging/slf4j/LoggerTest.java b/log4j-slf4j-impl/src/test/java/org/apache/logging/slf4j/LoggerTest.java
-index 0524074..c60f1ad 100644
+index 2239dc0..c09be84 100644
 --- a/log4j-slf4j-impl/src/test/java/org/apache/logging/slf4j/LoggerTest.java
 +++ b/log4j-slf4j-impl/src/test/java/org/apache/logging/slf4j/LoggerTest.java
 @@ -21,7 +21,6 @@ import static org.junit.Assert.assertNotNull;
@@ -143,9 +125,9 @@ index 0524074..c60f1ad 100644
  import java.util.List;
 -import java.util.Locale;
  
- import org.apache.logging.log4j.junit.LoggerContextRule;
- import org.apache.logging.log4j.test.appender.ListAppender;
-@@ -34,8 +33,6 @@ import org.slf4j.Logger;
+ import org.apache.logging.log4j.core.LogEvent;
+ import org.apache.logging.log4j.core.test.appender.ListAppender;
+@@ -35,8 +34,6 @@ import org.slf4j.Logger;
  import org.slf4j.LoggerFactory;
  import org.slf4j.MDC;
  import org.slf4j.Marker;
@@ -154,7 +136,7 @@ index 0524074..c60f1ad 100644
  import org.slf4j.ext.XLogger;
  import org.slf4j.ext.XLoggerFactory;
  import org.slf4j.spi.LocationAwareLogger;
-@@ -145,23 +142,6 @@ public class LoggerTest {
+@@ -146,23 +143,6 @@ public class LoggerTest {
          verify("List", "o.a.l.s.LoggerTest Hello, Log4j Log4j {} MDC{}" + Strings.LINE_SEPARATOR);
      }
  
@@ -175,19 +157,19 @@ index 0524074..c60f1ad 100644
 -        verify("EventLogger", "o.a.l.s.LoggerTest Transfer [Audit@18060 Amount=\"200.00\" FromAccount=\"123457\" ToAccount=\"123456\"] Transfer Complete" + Strings.LINE_SEPARATOR);
 -    }
 -
-     private void verify(final String name, final String expected) {
-         final ListAppender listApp = ctx.getListAppender(name);
-         assertNotNull("Missing Appender", listApp);
-@@ -177,6 +157,5 @@ public class LoggerTest {
-     public void cleanup() {
+     @Test
+     public void testThrowable() {
+         final Throwable expected = new RuntimeException();
+@@ -217,6 +197,5 @@ public class LoggerTest {
          MDC.clear();
          ctx.getListAppender("List").clear();
+         ctx.getListAppender("UnformattedList").clear();
 -        ctx.getListAppender("EventLogger").clear();
      }
  }
 diff --git a/log4j-slf4j-impl/src/test/java/org/apache/logging/slf4j/OptionalTest.java b/log4j-slf4j-impl/src/test/java/org/apache/logging/slf4j/OptionalTest.java
 deleted file mode 100644
-index a6e9fd5..0000000
+index 746eb61..0000000
 --- a/log4j-slf4j-impl/src/test/java/org/apache/logging/slf4j/OptionalTest.java
 +++ /dev/null
 @@ -1,69 +0,0 @@
@@ -211,8 +193,8 @@ index a6e9fd5..0000000
 -
 -import java.util.List;
 -
--import org.apache.logging.log4j.junit.LoggerContextRule;
--import org.apache.logging.log4j.test.appender.ListAppender;
+-import org.apache.logging.log4j.core.test.appender.ListAppender;
+-import org.apache.logging.log4j.core.test.junit.LoggerContextRule;
 -import org.apache.logging.log4j.util.Strings;
 -import org.junit.Before;
 -import org.junit.ClassRule;
@@ -261,7 +243,7 @@ index a6e9fd5..0000000
 -    }
 -}
 diff --git a/log4j-slf4j-impl/src/test/resources/log4j-test1.xml b/log4j-slf4j-impl/src/test/resources/log4j-test1.xml
-index a64bdfa..07a2be6 100644
+index 1ba09ca..2dee2c1 100644
 --- a/log4j-slf4j-impl/src/test/resources/log4j-test1.xml
 +++ b/log4j-slf4j-impl/src/test/resources/log4j-test1.xml
 @@ -6,9 +6,6 @@
@@ -274,7 +256,7 @@ index a64bdfa..07a2be6 100644
      <Console name="STDOUT">
        <PatternLayout pattern="%C{1.} %m MDC%X%n"/>
      </Console>
-@@ -24,10 +21,6 @@
+@@ -25,10 +22,6 @@
    </Appenders>
  
    <Loggers>

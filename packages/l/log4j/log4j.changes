@@ -1,4 +1,169 @@
 -------------------------------------------------------------------
+Mon Jan  5 18:13:34 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 2.18.0
+  * Added
+    + Add support for Jakarta Mail API in the SMTP appender.
+    + Add support for custom Log4j 1.x levels.
+    + Add support for adding and retrieving appenders in Log4j 1.x
+      bridge.
+    + Add support for custom LMAX disruptor WaitStrategy
+      configuration.
+    + Add support for Apache Extras' RollingFileAppender in Log4j
+      1.x bridge.
+    + Add MutableThreadContextMapFilter.
+    + Add support for 24 colors in highlighting
+  * Changed
+    + Improves ServiceLoader support on servlet containers.
+    + Make the default disruptor WaitStrategy used by Async Loggers
+      garbage-free.
+    + Do not throw UnsupportedOperationException when JUL
+      ApiLogger::setLevel is called.
+    + Support Spring 2.6.x.
+    + Move perf tests to log4j-core-its
+    + Upgrade the Flume Appender to Flume 1.10.0
+  * Fixed
+    + Fix minor typo #792.
+    + Improve validation and reporting of configuration errors.
+    + Allow enterprise id to be an OID fragment.
+    + Fix problem with non-uppercase custom levels.
+    + Avoid ClassCastException in JeroMqManager with custom
+      LoggerContextFactory #791.
+    + DirectWriteRolloverStrategy should use the current time when
+      creating files.
+    + Fixes the syslog appender in Log4j 1.x bridge, when used with
+      a custom layout.
+    + log4j-1.2-api 2.17.2 throws NullPointerException while
+      removing appender with name as null.
+    + Improve JsonTemplateLayout performance.
+    + Fix resolution of non-Log4j properties.
+    + Fixes Spring Boot logging system registration in a
+      multi-application environment.
+    + JAR file containing Log4j configuration isn’t closed.
+    + Properties defined in configuration using a value attribute
+      (as opposed to element) are read correctly.
+    + Syslog appender lacks the SocketOptions setting.
+    + Log4j 1.2 bridge should not wrap components unnecessarily.
+    + Update 3rd party dependencies for 2.18.0.
+    + SizeBasedTriggeringPolicy would fail to rename files properly
+      when integer pattern contained a leading zero.
+    + Fixes default SslConfiguration, when a custom keystore is
+      used.
+    + Fixes appender concurrency problems in Log4j 1.x bridge.
+    + Fix and test for race condition in FileUtils.mkdir().
+    + LocalizedMessage logs misleading errors on the console.
+    + Add missing message parameterization in RegexFilter.
+    + Add the missing context stack to JsonLayout template.
+    + HttpWatcher did not pass credentials when polling.
+    + UrlConnectionFactory.createConnection now accepts an
+      AuthorizationProvider as a parameter.
+    + The DirectWriteRolloverStrategy was not detecting the correct
+      index to use during startup.
+    + Async Loggers were including the location information by
+      default.
+    + ClassArbiter’s newBuilder method referenced the wrong class.
+    + Don’t use Paths.get() to avoid circular file systems.
+    + Fix parsing error, when XInclude is disabled.
+    + Fix LevelRangeFilterBuilder to align with log4j1’s behavior.
+    + Fixes problem with wrong ANSI escape code for bright colors
+    + Log4j 1.2 bridge should generate Log4j 2.x messages based on
+      the parameter runtime type.
+- Update to 2.19.0
+  * Added
+    + Add implementation of SLF4J2 fluent API.
+    + Add support for SLF4J2 stack-valued MDC.
+  * Changed
+    + Add getExplicitLevel method to LoggerConfig.
+    + Allow PropertySources to be added.
+    + Allow Plugins to be injected with the LoggerContext reference.
+  * Fixed
+    + Add correct manifest entries for OSGi to log4j-jcl
+    + Improve support for passwordless keystores.
+    + SystemPropertyArbiter was assigning the value as the name.
+    + Make JsonTemplateLayout stack trace truncation operate for
+      each label block.
+    + Fix recursion between Log4j 1.2 LogManager and Category.
+    + Fix resolution of properties not starting with log4j2..
+    + Logger$PrivateConfig.filter(Level, Marker, String) was
+      allocating empty varargs array.
+    + Allows a space separated list of style specifiers in the
+      %style pattern for consistency with %highlight.
+    + Fix NPE in log4j-to-jul in the case the root logger level is
+      null.
+    + Fix RollingRandomAccessFileAppender with
+      DirectWriteRolloverStrategy can’t create the first log file of
+      different directory.
+    + Generate new SSL certs for testing.
+    + Fix ServiceLoaderUtil behavior in the presence of a
+      SecurityManager.
+    + Fix regression in Rfc5424Layout default values.
+    + Harden InstantFormatter against delegate failures.
+    + Add async support to Log4jServletFilter.
+  * Removed
+    + Removed build page in favor of a single build instructions
+      file.
+    + Remove SLF4J 1.8.x binding.
+- Update to 2.20.0
+  * Added
+    + Add support for timezones in RollingFileAppender date pattern
+    + Add LogEvent timestamp to ProducerRecord in KafkaAppender
+    + Add PatternLayout support for abbreviating the name of all
+      logger components except the 2 rightmost
+    + Removes internal field that leaked into public API.
+    + Add a LogBuilder#logAndGet() method to emulate the
+      Logger#traceEntry method.
+  * Changed
+    + Simplify site generation
+    + Switch the issue tracker from JIRA to GitHub Issues
+    + Remove liquibase-log4j2 maven module
+    + Fix order of stacktrace elements, that causes cache misses in
+      ThrowableProxyHelper.
+    + Switch from com.sun.mail to Eclipse Angus.
+    + Add Log4j2 Core as default runtime dependency of the
+      SLF4J2-to-Log4j2 API bridge.
+    + Replace maven-changes-plugin with a custom changelog
+      implementation
+    + Moved log4j-api and log4j-core artifacts with classifier tests
+      to log4j-api-test and log4j-core-test respectively.
+  * Deprecated
+    + Deprecate support for package scanning for plugins
+  * Fixed
+    + Copy programmatically supplied location even if
+      includeLocation="false".
+    + Eliminate status logger warning, when disableAnsi or
+      noConsoleNoAnsi is used the style and highlight patterns.
+    + Fix detection of location requirements in RewriteAppender.
+    + Replace regex with manual code to escape characters in
+      Rfc5424Layout.
+    + Fix java.sql.Time object formatting in MapMessage
+    + Fix previous fire time computation in CronTriggeringPolicy
+    + Correct default to not include location for AsyncRootLoggers
+    + Make StatusConsoleListener use SimpleLogger internally.
+    + Lazily evaluate the level of a SLF4J LogEventBuilder
+    + Fixes priority of Legacy system properties, which are now back
+      to having higher priority than Environment variables.
+    + Protects ServiceLoaderUtil from unchecked ServiceLoader
+      exceptions.
+    + Fix Configurator#setLevel for internal classes
+    + Fix level propagation in Log4jBridgeHandler
+    + Disable OsgiServiceLocator if not running in OSGI container.
+    + When using a Date Lookup in the file pattern the current time
+      should be used.
+    + Fixed LogBuilder filtering in the presence of global filters.
+- Removed patch:
+  * log4j-java8compat.patch
+    + not needed with this version
+- Modified patch:
+  * logging-log4j-Remove-unsupported-EventDataConverter.patch
+    + rediff
+- Added patch:
+  * 0002-Remove-usage-of-toolchains.patch
+    + do not use the maven-toolchains-plugin
+  * log4j-CVE-2025-68161.patch
+    + bsc#1255427, CVE-2025-68161: absent TLS hostname verification
+      may allow a man-in-the-middle attack
+
+-------------------------------------------------------------------
 Fri Oct 11 11:36:49 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Build the extra modules even for SLE

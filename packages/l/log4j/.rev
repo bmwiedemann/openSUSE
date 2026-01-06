@@ -358,4 +358,12 @@
     <comment>Build the extra modules even for SLE</comment>
     <requestid>1207152</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>58707e89938f1e49b5e4626ec1b9cc88</srcmd5>
+    <version>2.20.0</version>
+    <time>1767717960</time>
+    <user>anag_factory</user>
+    <comment>2.20.0 + bsc#1255427, CVE-2025-68161</comment>
+    <requestid>1325545</requestid>
+  </revision>
 </revisionlist>
