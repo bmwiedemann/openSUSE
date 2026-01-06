@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -76,6 +76,7 @@ Source2:        NetworkManager.conf
 Source3:        baselibs.conf
 Source4:        conncheck-disabled.conf
 Source5:        00-server.conf
+Source6:        NetworkManager-tmpfiles.conf
 Source98:       macros.NetworkManager
 Source99:       NetworkManager-rpmlintrc
 
@@ -384,16 +385,16 @@ export PYTHON=%{_bindir}/python3
 %fdupes %{buildroot}%{_datadir}/gtk-doc/
 mkdir -p %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{_sysconfdir}/NetworkManager/{VPN,conf.d}
-mkdir -p %{buildroot}%{_localstatedir}/log/
-mkdir -p %{buildroot}%{_localstatedir}/lib/NetworkManager/dispatcher.d
 mkdir -p %{buildroot}%{_prefix}/lib/NetworkManager/VPN
-touch %{buildroot}%{_localstatedir}/log/NetworkManager
 mkdir -p %{buildroot}%{_sysconfdir}/NetworkManager/system-connections
 install -m 0755 %{SOURCE1} %{buildroot}%{_prefix}/lib/NetworkManager/dispatcher.d/
 install -m 0644 %{SOURCE2} %{buildroot}%{_prefix}/lib/NetworkManager/
 chmod 0644 %{buildroot}%{_prefix}/lib/NetworkManager/NetworkManager.conf
 install -m 0644 %{SOURCE4} %{buildroot}%{_prefix}/lib/NetworkManager/conf.d
 install -m 0644 %{SOURCE5} %{buildroot}%{_prefix}/lib/NetworkManager/conf.d
+# tmpfiles.d
+mkdir -p %{buildroot}%{_tmpfilesdir}
+install -m 0644 %{SOURCE6} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 # Install RPM macros to be consumed by plugins
 mkdir -p %{buildroot}%{_rpmmacrodir}
 install -m 0644 %{SOURCE98} %{buildroot}%{_rpmmacrodir}/
@@ -405,6 +406,7 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 %service_add_pre NetworkManager.service NetworkManager-dispatcher.service nm-priv-helper.service
 
 %post
+%tmpfiles_create %{_tmpfilesdir}/%{name}.conf
 %service_add_post NetworkManager.service NetworkManager-dispatcher.service nm-priv-helper.service
 
 %preun
@@ -438,7 +440,7 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 %{_datadir}/dbus-1/system-services/org.freedesktop.nm_dispatcher.service
 %{_datadir}/dbus-1/interfaces/org.freedesktop.NetworkManager.*
 %{_datadir}/polkit-1/actions/org.freedesktop.NetworkManager.policy
-%attr(0700,root,root) %{_localstatedir}/lib/NetworkManager
+%dir %attr(0700,root,root) %ghost %{_localstatedir}/lib/NetworkManager
 %{_mandir}/man1/nm-online.1%{?ext_man}
 %{_mandir}/man1/nmcli.1%{?ext_man}
 %{_mandir}/man5/nm-settings-keyfile.5%{?ext_man}
@@ -475,9 +477,10 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 %{_udevdir}/rules.d/85-nm-unmanaged.rules
 %{_udevdir}/rules.d/90-nm-thunderbolt.rules
 %{_unitdir}/nm-priv-helper.service
-%ghost %config(noreplace) %{_localstatedir}/log/NetworkManager
 %dir %{_prefix}/lib/NetworkManager
 %{_prefix}/lib/NetworkManager/NetworkManager.conf
+%dir %{_tmpfilesdir}
+%{_tmpfilesdir}/%{name}.conf
 %dir %{_prefix}/lib/NetworkManager/conf.d
 %dir %{_prefix}/lib/NetworkManager/dispatcher.d
 %dir %{_prefix}/lib/NetworkManager/dispatcher.d/no-wait.d
