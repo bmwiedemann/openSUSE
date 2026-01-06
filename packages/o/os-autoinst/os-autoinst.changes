@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 05 16:08:57 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1767623406.688dd0e:
+  * os-autoinst-generate-needle-preview: Embed PNG
+  * Tweak curl call not to hang
+  * Fix opencv dependency due to upstream changes
+  * Restore package  builds on older openSUSE versions
+  * Remove `ShellCheck` from devel dependencies on s390x
+
+-------------------------------------------------------------------
 Thu Dec 18 21:51:02 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1766037062.44c7d2a:
