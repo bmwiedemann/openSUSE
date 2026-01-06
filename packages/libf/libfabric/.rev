@@ -770,4 +770,41 @@ Binary file libfabric-1.6.0.0.0e74cba7ad59.tar.bz2 (revision 11) deleted</commen
     <comment>- Build with distro flags</comment>
     <requestid>1321980</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>99167c9c4538b59abafa7aa5cf669eb9</srcmd5>
+    <version>2.4.0</version>
+    <time>1767717703</time>
+    <user>anag_factory</user>
+    <comment>- Update to v2.4.0
+  - Core
+    - hmem/cuda: Adding more robust libgdrapi libpaths
+    - Update bindings/rust/README.md to reflect the recommended build process.
+    - Update build.rs to support both cargo build &amp; cargo publish work directories.
+    - Update Cargo.toml in preparation for crates.io publishing.
+    - configure: Fix sanitizer detection logic
+    - Introduce a lightweight Rust bindings for Libfabric, using bindgen.
+    - include/ofi_indexer: introduce new ofi_array_at_max function
+    - man/fi_cxi: fixup info for FI_CXI_RDZV_GET_MIN
+    - man/fi_getinfo: Update the capabilities with mode bits requirements
+    - man/fi_cq: Document `FI_GETWAITOBJ` for `fi_control`
+    - man/fi_fabric: Update `fi_tostr()` datatypes
+  - CXI
+    - Bump provider support up to libfabric 2.4
+    - Add domain rx match mode override
+    - Set rendezvous eager size default to 2K
+    - Change cuda dmabuf default to enabled
+    - Do not abort if MR match count do not reconcile
+    - Allow CP for triggered CQ to remap to Best Effort
+    - Fix sl-driver path for testing
+    - Set max domain TX CQs to 14
+    - Use cxil_alloc_trig_cp to distinguish trig and tx cmdqs
+    - Add FI_EBUSY debug messages
+    - Fix validation of service id
+    - Fix criterion test_sw tap files
+    - Cxip_cmdq_cp_modify fix
+    - Fix RNR protocol send byte/error counting
+    - Release TX credit when pending RNR retry
+    - Update rocr test fine grained flags</comment>
+    <requestid>1325460</requestid>
+  </revision>
 </revisionlist>

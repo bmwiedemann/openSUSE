@@ -1,4 +1,135 @@
 -------------------------------------------------------------------
+Fri Jan 02 13:41:31 UTC 2026 - Nicolas Morey <nmorey@suse.com>
+
+- Update to v2.4.0
+  - Core
+    - hmem/cuda: Adding more robust libgdrapi libpaths
+    - Update bindings/rust/README.md to reflect the recommended build process.
+    - Update build.rs to support both cargo build & cargo publish work directories.
+    - Update Cargo.toml in preparation for crates.io publishing.
+    - configure: Fix sanitizer detection logic
+    - Introduce a lightweight Rust bindings for Libfabric, using bindgen.
+    - include/ofi_indexer: introduce new ofi_array_at_max function
+    - man/fi_cxi: fixup info for FI_CXI_RDZV_GET_MIN
+    - man/fi_getinfo: Update the capabilities with mode bits requirements
+    - man/fi_cq: Document `FI_GETWAITOBJ` for `fi_control`
+    - man/fi_fabric: Update `fi_tostr()` datatypes
+  - CXI
+    - Bump provider support up to libfabric 2.4
+    - Add domain rx match mode override
+    - Set rendezvous eager size default to 2K
+    - Change cuda dmabuf default to enabled
+    - Do not abort if MR match count do not reconcile
+    - Allow CP for triggered CQ to remap to Best Effort
+    - Fix sl-driver path for testing
+    - Set max domain TX CQs to 14
+    - Use cxil_alloc_trig_cp to distinguish trig and tx cmdqs
+    - Add FI_EBUSY debug messages
+    - Fix validation of service id
+    - Fix criterion test_sw tap files
+    - Cxip_cmdq_cp_modify fix
+    - Fix RNR protocol send byte/error counting
+    - Release TX credit when pending RNR retry
+    - Update rocr test fine grained flags
+    - Fix DEVICE in fi_info_test
+    - Introduce non-debug tracing
+    - Reset timer on rx of ARM packet
+    - Fix performance issue with close_mc()
+    - Increase vni range in auth_key tests
+    - Support auth_key ranges
+    - Fix use of hw_cps and memory leak
+  - EFA
+    - Fix cq data size in efa-rdm pkt post
+    - fix test_efa_rdm_mr_reg_cuda_memory unit test
+    - adjust the memory barrier positions
+    - Optimize RTW packet sending by replacing efa_rdm_ope_post_send
+    - Adjust logging level for txe releases
+    - Add tracepoints for handshake
+    - Add flags to MR logs
+    - Grow efa_tx_pkt_pool and ope_pool during rdm ep creation
+    - Do not use rdma write when unsolicited recv support is inconsistent
+    - Determine whether using device rdma based on p2p
+    - Introduce pke generation counter for protocol path
+    - Enable data path direct for efa-rdm
+    - Update the function signature for efa_data_path_direct_cq_initialize
+    - Move efa_cq_open_ibv_cq to efa_cq.c
+    - Do not track rx pkt pool for non-debug build
+    - Temporarily disable FI_OPT_EFA_SENDRECV_IN_ORDER_ALIGNED_128_BYTES support for efa protocol
+    - do not ignore local read completion
+    - Add missing lttng tps in efa_post_send
+    - Fix the remote cq data flags for zcpy recv
+    - Optimize the WQE post in data path direct
+    - fix typos in error messages
+    - Only show help message for OPE warn logs
+    - configure: replace no-brake space with regular space character
+    - Remove unused function declarations
+    - Acquire CQ's `ep_list_lock` during counter progress
+    - Add asserts to detect erroneous CQE dereferences
+    - Ignore rma completion to a removed peer
+    - Remove the incorrect check for device max_msg_size
+    - Fix function signature mismatch
+    - Set FI_RX_CQ_DATA for efa direct with NULL hints
+    - Do not fail fi_getinfo for the wrong fabric
+    - Log warnings only for internal OPE failures or if CQ error entry not written
+    - Add unit tests for LRU AH eviction
+    - Evict AH with no explicit AV entries when AH limit reached
+    - Add locking assertions and update unit tests
+    - Remove efa_conn_release unsafe
+    - Require FI_RX_CQ_DATA on devices without unsolicited write recv
+    - Add LLTng tracepoints for direct data path operations
+    - Don't warn users about non-EFA devices
+    - Support FI_RX_CQ_DATA for efa-direct
+    - Fix deadlocks in AV insert/remove/close and CQ read paths
+    - Don't try to release a lock that is not taken
+    - set RUNPATH if custom rdma-core provided
+    - Remove rx_msg_flags from efa_rdm_msg_recv/efa_rdm_msg_recvv
+    - Update tracepoints in the receive path
+    - Slide recv-win on RTM/RTA error
+    - Insert read and write packets to tx debug list
+  - LNX
+    - remove force setting DEVICE_ONLY flag
+    - set core hints proto to UNSPEC
+    - remove iov count failures
+    - add wait object implementation
+  - OPX
+    - Don't fail configure when OPX unhappy
+    - Add note to FI_OPX_SDMA_MIN_PAYLOAD_BYTES doc
+    - Simplify uapi configuration
+    - Unionize 9B and 16B packet SCB models in endpoint structs.
+    - Support shared contexts in hfisvc bts
+    - Fix replays for multi-packet eager
+    - Don't retry forever in send rendezvous.
+    - Don't ACK packets that were never received
+    - Segfault in opx_hfi_rdma_context_open() on 2nd endpoint opened
+    - Fix seg fault in finalize
+    - Fix SDMA writev error when RDMA core functions are being used.
+    - Add back accidentally removed opx_domain_hfisvc_poll()
+    - Add missing function pointers for HFI service
+    - Check uapi for hfisvc/HFI1 direct verbs
+    - Rename hfisvc to opx-hfisvc
+    - Move submodule to rdma core
+    - Remove stx/srx support in OPX
+    - Register MRs with HFI service
+    - Ensure SDMA packet lengths are 8-byte multiples
+    - Use HFI service by default if enabled in the driver.
+    - fixup goto labels that need statements
+    - Update hfisvc_client to 64-bit atomics
+    - HFISVC: Fix replay payload
+    - Disable HFI Service by default.
+    - Disable use of HFI service when driver does not support it.
+    - Update hfisvc_client to latest patch
+    - Only open IPC cache if HMEM initialized and IPC enabled
+    - Handle extended rx bits in common 9B code
+    - Add IPC to 16B header path
+    - Make sriov-alpha limitations CN5000-only
+    - Remove cmake build for hfisvc_client library
+    - Handle completion errors from HFI service
+    - Fix setting of rc in deferred recv rts
+    - Additional HFI Service support changes
+    - HFI Service initial support
+    - Asynchronous HMEM memcopy for IPC
+
+-------------------------------------------------------------------
 Thu Dec  4 14:40:44 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Build with distro flags
