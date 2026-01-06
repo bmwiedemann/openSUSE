@@ -17,17 +17,18 @@
 
 
 #
-%define git_ver .0.0dc96e02
+%define git_ver .0.464539ec
 %define lib_major 9
 
 Name:           libvma
 Summary:        A library for boosting TCP and UDP traffic (over RDMA hardware)
 License:        BSD-2-Clause OR GPL-2.0-only
 Group:          Development/Libraries/C and C++
-Version:        9.8.80
+Version:        9.8.83
 Release:        0
 Source0:        %{name}-%{version}%{git_ver}.tar.gz
 Source1:        vma.service
+Source100:      README.md
 Patch1:         harden_vma.service.patch
 URL:            https://github.com/Mellanox/libvma
 BuildRequires:  autoconf

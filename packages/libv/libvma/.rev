@@ -162,4 +162,17 @@ Since previous request:
     <comment></comment>
     <requestid>1303664</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a1664942e28211e67994b7490f9119cf</srcmd5>
+    <version>9.8.83</version>
+    <time>1767717973</time>
+    <user>anag_factory</user>
+    <comment>- Update to 9.8.83
+  - Core
+    - RM #4607536 Improve VMA stability
+- Update to 9.8.82
+  - Core
+    - RM #4607536 Improve VMA stability</comment>
+    <requestid>1325564</requestid>
+  </revision>
 </revisionlist>
