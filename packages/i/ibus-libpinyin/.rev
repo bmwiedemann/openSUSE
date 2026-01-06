@@ -425,4 +425,15 @@
     <comment>Add 0001-Make-libpinyin-setup-could-response-build-config.patch, 0001-All-candidate-and-mode-buttons-created-in-dynamic-ar.patch: Backport 0e9bebe and 619f0d6 from upstream, Make libpinyin setup program could response build config to disable Lua script and user data input. (bsc#1246569) (forwarded request 1301215 from qzhao)</comment>
     <requestid>1301270</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>edacf7e88f2abce600fb8805659370da</srcmd5>
+    <version>1.16.5</version>
+    <time>1767717964</time>
+    <user>anag_factory</user>
+    <comment>- Update version to 1.16.5
+  * Fix bugs
+- Drop 0001-Make-libpinyin-setup-could-response-build-config.patch,
+  0001-All-candidate-and-mode-buttons-created-in-dynamic-ar.patch (forwarded request 1325540 from hillwood)</comment>
+    <requestid>1325543</requestid>
+  </revision>
 </revisionlist>

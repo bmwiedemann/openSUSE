@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-libpinyin
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2023 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -32,15 +32,13 @@
 %endif
 
 Name:           ibus-libpinyin
-Version:        1.16.4
+Version:        1.16.5
 Release:        0
 Summary:        Intelligent Pinyin engine based on libpinyin for IBus
 License:        GPL-3.0-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/libpinyin/ibus-libpinyin
 Source:         https://github.com/libpinyin/ibus-libpinyin/releases/download/%{version}/%{name}-%{version}.tar.gz
-Patch0:         0001-Make-libpinyin-setup-could-response-build-config.patch
-Patch1:         0001-All-candidate-and-mode-buttons-created-in-dynamic-ar.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
