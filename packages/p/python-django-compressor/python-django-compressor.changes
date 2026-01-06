@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Jan  6 12:41:12 UTC 2026 - Andreas Prittwitz <m4ng4n@gmx.de>
+
+- Update to version 4.6.0
+  * build with git-tarball instead of pypi-tarball because the
+    pypi-tarball fails 438 out of 511 tests
+  * change source link to git
+  * reflect changes in git-tarball compared to pypi-tarball for the
+    %prep section by adding two new definitions:
+    %define git_tarball_name django-compressor
+    %define git_tarball_internal_version 4.6
+  * change requirements for rcssmin to 1.2.1
+  * change requirements for rjsmin to 1.2.4
+  * comment out %autopatch. No patches available at the moment
+  * remove reference to output.e3b0c44298fc.css. File does not 
+    exist anymore
+  * Fixed compatibility with latest BS4.
+  * Removed top pin for rcssmin and rjsmin dependencies.
+  * Avoid compressing the same node concurrently in offline compression.
+  * Avoid use of deprecated ast.Constant.s
+  * Officially support Django 6.0
+  * Officially support Django 5.2
+  * Drop support for EOL Django 5.0
+  * Add support for Python 3.14.
+  * Add support for Python 3.13.
+  * Drop support for EOL Python 3.9.
+  * Drop support for EOL Python 3.8.
+
+-------------------------------------------------------------------
 Tue Jun  3 06:48:24 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
