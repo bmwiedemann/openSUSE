@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sun Dec 28 15:17:28 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.60b0:
+  * `opentelemetry-instrumentation-requests`, `opentelemetry-
+    instrumentation-wsgi`, `opentelemetry-instrumentation-asgi`
+    Detect synthetic sources on requests, ASGI, and WSGI.
+  * `opentelemetry-instrumentation-aiohttp-client`: add support
+    for url exclusions via `OTEL_PYTHON_EXCLUDED_URLS` /
+    `OTEL_PYTHON_AIOHTTP_CLIENT_EXCLUDED_URLS`
+  * `opentelemetry-instrumentation-httpx`: add support for url
+    exclusions via `OTEL_PYTHON_EXCLUDED_URLS` /
+    `OTEL_PYTHON_HTTPX_EXCLUDED_URLS`
+  * `opentelemetry-instrumentation-flask`: improve readthedocs
+    for sqlcommenter configuration.
+  * `opentelemetry-instrumentation-sqlalchemy`: improve
+    readthedocs for sqlcommenter configuration.
+  * `opentelemetry-instrumentation-mysql`, `opentelemetry-
+    instrumentation-mysqlclient`, `opentelemetry-instrumentation-
+    pymysql`: improve readthedocs for sqlcommenter configuration.
+  * `opentelemetry-instrumentation-django`: improve readthedocs
+    for sqlcommenter configuration.
+  * `opentelemetry-instrumentation-aiohttp-server`: add support
+    for custom header captures via
+    `OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SERVER_REQUEST`
+    and
+    `OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SERVER_RESPONSE`
+  * `opentelemetry-instrumentation-redis`: add support for
+    `suppress_instrumentation` context manager for both sync and
+    async Redis clients and pipelines
+  * `opentelemetry-instrumentation-django`: improve docs for
+    response_hook with examples of providing attributes from
+    middlewares
+  * Update for Log SDK breaking changes. Rename
+    InMemoryLogExporter to InMemoryLogRecordExporter in several
+    tests
+  * opentelemetry-instrumentation: allow to skip all
+    instrumentations loading with a wildcard
+  * `opentelemetry-instrumentation-redis`: add missing copyright
+    header for opentelemetry-instrumentation-redis
+
+-------------------------------------------------------------------
 Tue Nov 25 13:45:26 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - skip broken test because our fastapi is too new
