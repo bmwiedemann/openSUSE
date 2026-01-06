@@ -11,9 +11,10 @@
 #
 #
 
+export HTTPD_SYSCONFIG_FILE="/etc/sysconfig/apache2"
 . /usr/share/apache2/script-helpers
-
 find_mpm
+
 apache_bin="$HTTPD_SBIN_BASE-$HTTPD_MPM"
 if ! [ -x $apache_bin ]; then
 	echo >&2 "$apache_bin is not a valid httpd binary."

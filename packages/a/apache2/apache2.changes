@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan  4 20:47:09 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Include a sane HTTPD_SYSCONFIG_FILE env. variable when invoking
+  /usr/sbin/httpd.
+  The appropriate MPM was not being located when calling /usr/sbin/httpd
+  directly.
+- Rename event's 'mod_cgi' to 'mod_cgid' in loadmodule.conf, as that's what
+  the event MPM ships.
+
+-------------------------------------------------------------------
 Thu Dec  4 18:37:34 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - version update to 2.4.66
