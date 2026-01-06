@@ -76,4 +76,18 @@
   * Use Py_SIZE rather than PyTuple_GET_SIZE to avoid assertion failures.</comment>
     <requestid>1266983</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>745d8ae707fc48705dac0fb25064f12a</srcmd5>
+    <version>0.24</version>
+    <time>1767717943</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.24:
+  * Fix __annotations__ for python 3.14
+  * Start support of python 3.14
+  * Fix the bug with PyTuple_GET_SIZE (#13)
+  * Drop appveyor
+  * recordclass requires python &gt;= 3.8
+- Drop patch do-not-use-pytuple-get-size.patch, merged upstream.</comment>
+    <requestid>1325515</requestid>
+  </revision>
 </revisionlist>

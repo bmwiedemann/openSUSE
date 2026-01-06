@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan  6 03:05:29 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.24:
+  * Fix __annotations__ for python 3.14
+  * Start support of python 3.14
+  * Fix the bug with PyTuple_GET_SIZE (#13)
+  * Drop appveyor
+  * recordclass requires python >= 3.8
+- Drop patch do-not-use-pytuple-get-size.patch, merged upstream.
+
+-------------------------------------------------------------------
 Fri Apr  4 00:56:20 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch do-not-use-pytuple-get-size.patch:
