@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jan  3 11:51:05 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 1.2.5
+  * Report argument that caused error before printing usage message
+  * Add --help and --version options
+  * Strip trailing whitespace from source files
+  * writePCLT: Quiet 2 -Wunterminated-string-initialization warnings
+  * write.c: Handle two -Wsuggest-attribute=pure instances
+  * fonttosfnt.1: Some editorial changes for this man page [Debian
+    bug #1099774]
+
+-------------------------------------------------------------------
 Sat Oct 12 17:41:37 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 1.2.4

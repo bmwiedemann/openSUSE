@@ -147,4 +147,19 @@
 - refresh reproducible.patch</comment>
     <requestid>1207469</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>74dc85dfd14262b830c82ebdcb31a372</srcmd5>
+    <version>1.2.5</version>
+    <time>1767717985</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.2.5
+  * Report argument that caused error before printing usage message
+  * Add --help and --version options
+  * Strip trailing whitespace from source files
+  * writePCLT: Quiet 2 -Wunterminated-string-initialization warnings
+  * write.c: Handle two -Wsuggest-attribute=pure instances
+  * fonttosfnt.1: Some editorial changes for this man page [Debian
+    bug #1099774]</comment>
+    <requestid>1325612</requestid>
+  </revision>
 </revisionlist>
