@@ -297,4 +297,12 @@
     <comment>rqlite 9.3.9</comment>
     <requestid>1325249</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>b76e5a0511c9cf8793d1d62d0e7122be</srcmd5>
+    <version>9.3.10</version>
+    <time>1767717930</time>
+    <user>anag_factory</user>
+    <comment>rqlite 9.3.10</comment>
+    <requestid>1325487</requestid>
+  </revision>
 </revisionlist>

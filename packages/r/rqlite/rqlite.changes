@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 05 21:29:41 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 9.3.10:
+  * Remove any temporary WAL files if persisting a Snapshot fails
+    or is not even invoked
+  * Improve FSM logging
+  * Order alphabetically output of shell command .tables
+
+-------------------------------------------------------------------
 Sun Jan  4 09:09:54 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 9.3.9:
