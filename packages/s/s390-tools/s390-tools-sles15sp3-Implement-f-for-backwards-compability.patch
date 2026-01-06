@@ -13,9 +13,11 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  dasdfmt/dasdfmt.c |   10 ++++++++++
  2 files changed, 14 insertions(+), 1 deletion(-)
 
---- a/dasdfmt/dasdfmt.8
-+++ b/dasdfmt/dasdfmt.8
-@@ -11,7 +11,7 @@
+Index: s390-tools-2.40.0/dasdfmt/dasdfmt.8
+===================================================================
+--- s390-tools-2.40.0.orig/dasdfmt/dasdfmt.8
++++ s390-tools-2.40.0/dasdfmt/dasdfmt.8
+@@ -11,7 +11,7 @@ dasdfmt \- formatting of DASD (ECKD) dis
  .br
          [\-r \fIcylinder\fR] [\-b \fIblksize\fR] [\-l \fIvolser\fR] [\-d \fIlayout\fR]
  .br
@@ -24,7 +26,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  
  .SH DESCRIPTION
  \fBdasdfmt\fR formats one or several  DASD (ECKD) disk drive(s) to prepare them
-@@ -39,6 +39,9 @@
+@@ -39,6 +39,9 @@ out, what it \fBwould\fR do.
  .TP
  \fB\-v\fR
  Increases verbosity.
@@ -34,20 +36,22 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  
  .TP
  \fB\-y\fR
---- a/dasdfmt/dasdfmt.c
-+++ b/dasdfmt/dasdfmt.c
-@@ -113,6 +113,10 @@
+Index: s390-tools-2.40.0/dasdfmt/dasdfmt.c
+===================================================================
+--- s390-tools-2.40.0.orig/dasdfmt/dasdfmt.c
++++ s390-tools-2.40.0/dasdfmt/dasdfmt.c
+@@ -113,6 +113,10 @@ static void error(const char *format, ..
+ 		.option = { "max_parallel", required_argument, NULL, 'P' },
  		.desc = "Format devices in parallel",
  		.flags = UTIL_OPT_FLAG_NOLONG,
- 	},
 +	{
 +		.option = { "device", required_argument, NULL, 'f' },
 +		.desc = "Specify device to format",
 +	},
- 	UTIL_OPT_SECTION("FORMAT OPTIONS"),
- 	{
- 		.option = { "blocksize", required_argument, NULL, 'b' },
-@@ -1649,6 +1653,12 @@
+ 	},
+  */
+ static void calc_time(time_t time, int *d, int *h, int *m, int *s)
+@@ -1540,6 +1544,12 @@ int main(int argc, char *argv[])
  			}
  			g.layout_specified = 1;
  			break;

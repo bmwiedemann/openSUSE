@@ -15,9 +15,11 @@ Signed-off-by: Hannes Reinecke <hare@suse.de>
  fdasd/fdasd.c |    4 +++-
  1 file changed, 3 insertions(+), 1 deletion(-)
 
---- a/fdasd/fdasd.c
-+++ b/fdasd/fdasd.c
-@@ -1231,10 +1231,12 @@
+Index: s390-tools-2.40.0/fdasd/fdasd.c
+===================================================================
+--- s390-tools-2.40.0.orig/fdasd/fdasd.c
++++ s390-tools-2.40.0/fdasd/fdasd.c
+@@ -1232,10 +1232,12 @@ static int fdasd_get_volser(fdasd_anchor
   */
  static void fdasd_reread_partition_table(fdasd_anchor_t *anc)
  {

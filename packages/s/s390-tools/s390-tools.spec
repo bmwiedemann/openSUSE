@@ -1,7 +1,7 @@
 #
 # spec file for package s390-tools
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@
 %endif
 
 Name:           s390-tools
-Version:        2.39.0
+Version:        2.40.0
 Release:        0
 Summary:        S/390 tools like zipl and dasdfmt for s390x (plus selected tools for x86_64)
 License:        MIT
@@ -145,12 +145,12 @@ Patch903:       s390-tools-sles12-update-by_id-links-on-change-and-add-action.pa
 %endif
 Patch904:       s390-tools-sles15sp3-Allow-multiple-device-arguments.patch
 Patch905:       s390-tools-sles15sp3-Format-devices-in-parallel.patch
-Patch906:       s390-tools-sles15sp3-Implement-Y-yast_mode.patch
-Patch907:       s390-tools-sles15sp3-Implement-f-for-backwards-compability.patch
-Patch908:       s390-tools-sles15sp3-dasdfmt-retry-BIODASDINFO-if-device-is-busy.patch
-Patch909:       s390-tools-sles12-fdasd-skip-partition-check-and-BLKRRPART-ioctl.patch
-Patch910:       s390-tools-sles15sp1-11-zdev-Do-not-call-zipl-on-initrd-update.patch
-Patch911:       s390-tools-sles15sp5-remove-no-pie-link-arguments.patch
+Patch906:       s390-tools-sles15sp3-Format-devices-in-parallel-1.patch
+Patch907:       s390-tools-sles15sp3-Implement-Y-yast_mode.patch
+Patch908:       s390-tools-sles15sp3-Implement-f-for-backwards-compability.patch
+Patch909:       s390-tools-sles15sp3-dasdfmt-retry-BIODASDINFO-if-device-is-busy.patch
+Patch910:       s390-tools-sles12-fdasd-skip-partition-check-and-BLKRRPART-ioctl.patch
+Patch911:       s390-tools-sles15sp1-11-zdev-Do-not-call-zipl-on-initrd-update.patch
 Patch912:       s390-tools-ALP-zdev-live.patch
 Patch913:       s390-tools-sles15sp6-kdump-initrd-59-zfcp-compat-rules.patch
 ###
@@ -187,6 +187,8 @@ BuildRequires:  qclib-devel-static
 BuildRequires:  rust
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
+BuildRequires:  clang-devel
+BuildRequires:  llvm-devel
 BuildRequires:  openssl
 ###
 # Don't build with pie to avoid problems with zipl
@@ -196,6 +198,7 @@ Requires:       procps
 Requires:       util-linux
 %ifarch s390x
 Requires:       gawk
+BuildRequires:  libica-devel-static
 Requires:       perl-base
 Requires:       rsync
 Requires:       s390-tools-genprotimg-data
@@ -371,10 +374,12 @@ cp -vi %{SOURCE22} CAUTION
 # commands, since make install runs sed commands against various scripts to
 # modify the "-v" output appropriately.
 
-export OPT_FLAGS="%{optflags}"
+export OPT_FLAGS="$(echo "%{optflags}" | sed 's/-flto=auto//g')"
 export KERNELIMAGE_MAKEFLAGS="%%{?_smp_mflags}"
 
 %make_build \
+     ARCH=s390x \
+     RUSTFLAGS="-C link-arg=-fuse-ld=lld" \
      ZFCPDUMP_DIR=%{_prefix}/lib/s390-tools/zfcpdump \
      DISTRELEASE=%{rbrelease} \
      UDEVRUNDIR=/run/udev \
@@ -800,6 +805,7 @@ done
 %files genprotimg-data
 /lib/s390-tools/stage3.bin
 %dir %{_datadir}/s390-tools/pvimg
+%dir %{_datadir}/s390-tools/netboot
 %{_datadir}/s390-tools/pvimg/stage3a.bin
 %{_datadir}/s390-tools/pvimg/stage3b_reloc.bin
 
@@ -833,15 +839,18 @@ export KERNELIMAGE_MAKEFLAGS="%%{?_smp_mflags}"
 %files
 %{_prefix}/bin/*
 %dir %{_datadir}/s390-tools
-%dir %{_datadir}/s390-tools/pvimg
+%{_datadir}/s390-tools/pvimg/
+%{_datadir}/s390-tools/netboot/
 %{_datadir}/bash-completion/completions/genprotimg.bash
 %{_datadir}/bash-completion/completions/pvattest.bash
 %{_datadir}/bash-completion/completions/pvimg.bash
 %{_datadir}/bash-completion/completions/pvsecret.bash
+%{_datadir}/bash-completion/completions/pvverify.bash
 %{_datadir}/zsh/site-functions/_genprotimg
 %{_datadir}/zsh/site-functions/_pvattest
 %{_datadir}/zsh/site-functions/_pvimg
 %{_datadir}/zsh/site-functions/_pvsecret
+%{_datadir}/zsh/site-functions/_pvverify
 %{_mandir}/man1/*
 
 %endif

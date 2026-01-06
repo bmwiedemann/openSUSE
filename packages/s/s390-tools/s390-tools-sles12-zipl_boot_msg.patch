@@ -2,9 +2,11 @@
  zipl/boot/menu.c |    7 +++++--
  1 file changed, 5 insertions(+), 2 deletions(-)
 
---- a/zipl/boot/menu.c
-+++ b/zipl/boot/menu.c
-@@ -168,8 +168,11 @@
+Index: s390-tools-2.40.0/zipl/boot/menu.c
+===================================================================
+--- s390-tools-2.40.0.orig/zipl/boot/menu.c
++++ s390-tools-2.40.0/zipl/boot/menu.c
+@@ -191,8 +191,11 @@ int menu(void)
  	/* print config list */
  	menu_list();
  

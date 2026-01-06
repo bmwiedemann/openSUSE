@@ -11,8 +11,10 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  dasdfmt/dasdfmt.c |   73 ++++++++++++++++++++++++++++++++++++++++++++++++------
  2 files changed, 72 insertions(+), 8 deletions(-)
 
---- a/dasdfmt/dasdfmt.8
-+++ b/dasdfmt/dasdfmt.8
+Index: s390-tools-2.40.0/dasdfmt/dasdfmt.8
+===================================================================
+--- s390-tools-2.40.0.orig/dasdfmt/dasdfmt.8
++++ s390-tools-2.40.0/dasdfmt/dasdfmt.8
 @@ -7,7 +7,7 @@
  dasdfmt \- formatting of DASD (ECKD) disk drives.
  
@@ -22,7 +24,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  .br
          [\-r \fIcylinder\fR] [\-b \fIblksize\fR] [\-l \fIvolser\fR] [\-d \fIlayout\fR]
  .br
-@@ -112,6 +112,11 @@
+@@ -112,6 +112,11 @@ The value will be at least as big as the
  .br
  
  .TP
@@ -34,9 +36,11 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  \fB\-M\fR \fImode\fR or \fB\-\-mode\fR=\fImode\fR
  Specify the \fImode\fR to be used to format the device. Valid modes are:
  .RS
---- a/dasdfmt/dasdfmt.c
-+++ b/dasdfmt/dasdfmt.c
-@@ -83,6 +83,7 @@
+Index: s390-tools-2.40.0/dasdfmt/dasdfmt.c
+===================================================================
+--- s390-tools-2.40.0.orig/dasdfmt/dasdfmt.c
++++ s390-tools-2.40.0/dasdfmt/dasdfmt.c
+@@ -84,6 +84,7 @@ static struct dasdfmt_globals {
  	int   ese;
  	int   no_discard;
  	int   procnum;
@@ -44,18 +48,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  } g = {
  	.dasd_info = { 0 },
  };
-@@ -172,6 +173,10 @@
- 		.option = { "percentage", no_argument, NULL, 'Q' },
- 		.desc = "Show progress in percent",
- 	},
-+	{
-+		.option = { "yast_mode", no_argument, NULL, 'Y' },
-+		.desc = "YaST mode",
-+	},
- 	UTIL_OPT_SECTION("MISC"),
- 	{
- 		.option = { "check_host_count", no_argument, NULL, 'C' },
-@@ -318,7 +323,9 @@
+@@ -213,7 +214,9 @@ static void draw_progress(int cyl, unsig
  	}
  
  	if (g.print_hashmarks && (cyl / g.hashstep - hashcount) != 0) {
@@ -66,7 +59,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  		fflush(stdout);
  		hashcount++;
  	}
-@@ -392,7 +399,7 @@
+@@ -287,7 +290,7 @@ static void evaluate_format_error(format
  	unsigned int kl = 0;
  	int blksize = cdata->expect.blksize;
  
@@ -75,7 +68,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  		printf("\n");
  
  	/*
-@@ -780,8 +787,9 @@
+@@ -675,8 +678,9 @@ static void check_hashmarks(void)
  			g.hashstep = 10;
  		}
  
@@ -87,7 +80,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  	}
  }
  
-@@ -1462,17 +1470,19 @@
+@@ -1357,17 +1361,19 @@ static void do_format_dasd(volume_label_
  			break;
  		}
  
@@ -110,7 +103,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  			printf("ok\n");
  		}
  	}
-@@ -1548,6 +1558,7 @@
+@@ -1443,6 +1449,7 @@ void process_dasd(volume_label_t *orig_v
  		error("%s", str);
  
  	set_geo(&cylinders, &heads);
@@ -118,7 +111,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  	set_label(&vlabel, &format_params, cylinders);
  
  	if (g.check)
-@@ -1557,6 +1568,29 @@
+@@ -1452,6 +1459,29 @@ void process_dasd(volume_label_t *orig_v
  
  }
  
@@ -148,7 +141,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  int main(int argc, char *argv[])
  {
  	volume_label_t vlabel;
-@@ -1693,6 +1727,10 @@
+@@ -1588,6 +1618,10 @@ int main(int argc, char *argv[])
  		case OPT_NODISCARD:
  			g.no_discard = 1;
  			break;
@@ -159,7 +152,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  		case 'P':
  			max_parallel = atoi(optarg);
  			break;
-@@ -1728,6 +1766,21 @@
+@@ -1623,6 +1657,21 @@ int main(int argc, char *argv[])
  		reqsize = DEFAULT_REQUESTSIZE;
  	}
  
@@ -181,7 +174,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  	if (g.print_hashmarks)
  		PARSE_PARAM_INTO(g.hashstep, hashstep_str, 10, "hashstep");
  
-@@ -1747,6 +1800,12 @@
+@@ -1642,6 +1691,12 @@ int main(int argc, char *argv[])
  	if (numdev > 1 && g.labelspec)
  		error("Specifying a volser to be written doesn't make sense when formatting multiple DASD volumes.");
  

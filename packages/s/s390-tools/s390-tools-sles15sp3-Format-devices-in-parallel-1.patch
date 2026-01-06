@@ -1,0 +1,11 @@
+--- a/dasdfmt/dasdfmt_cli.h	2025-12-11 17:03:28.000000000 +0100
++++ b/dasdfmt/dasdfmt_cli.h	2026-01-05 13:25:46.220565369 +0100
+@@ -91,7 +91,7 @@
+ 		.desc = "Show a progressbar",
+ 	},
+ 	{
+-		.option = { "percentage", no_argument, NULL, 'P' },
++		.option = { "percentage", no_argument, NULL, 'Q' },
+ 		.desc = "Show progress in percent",
+ 	},
+ 	UTIL_OPT_SECTION("MISC"),

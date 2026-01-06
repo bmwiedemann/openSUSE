@@ -11,9 +11,11 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  dasdfmt/dasdfmt.c |  197 +++++++++++++++++++++++++++++++-----------------------
  2 files changed, 119 insertions(+), 84 deletions(-)
 
---- a/dasdfmt/dasdfmt.8
-+++ b/dasdfmt/dasdfmt.8
-@@ -11,14 +11,14 @@
+Index: s390-tools-2.40.0/dasdfmt/dasdfmt.8
+===================================================================
+--- s390-tools-2.40.0.orig/dasdfmt/dasdfmt.8
++++ s390-tools-2.40.0/dasdfmt/dasdfmt.8
+@@ -11,14 +11,14 @@ dasdfmt \- formatting of DASD (ECKD) dis
  .br
          [\-r \fIcylinder\fR] [\-b \fIblksize\fR] [\-l \fIvolser\fR] [\-d \fIlayout\fR]
  .br
@@ -31,18 +33,20 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  .br
  
  \fBWARNING\fR: Careless usage of \fBdasdfmt\fR can result in
---- a/dasdfmt/dasdfmt.c
-+++ b/dasdfmt/dasdfmt.c
-@@ -25,6 +25,8 @@
- 
+Index: s390-tools-2.40.0/dasdfmt/dasdfmt.c
+===================================================================
+--- s390-tools-2.40.0.orig/dasdfmt/dasdfmt.c
++++ s390-tools-2.40.0/dasdfmt/dasdfmt.c
+@@ -26,6 +26,8 @@
  #include "dasdfmt.h"
+ #include "dasdfmt_cli.h"
  
 +#define MAX_DEVICES 512
 +#define MAX_LENGTH 256
  #define BUSIDSIZE  8
  #define SEC_PER_DAY (60 * 60 * 24)
  #define SEC_PER_HOUR (60 * 60)
-@@ -57,7 +59,9 @@
+@@ -58,7 +60,9 @@ static const struct util_prg prg = {
  static struct dasdfmt_globals {
  	dasd_information2_t dasd_info;
  	char *dev_path; /* device path entered by user */
@@ -52,7 +56,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  	int   verbosity;
  	int   testmode;
  	int   withoutprompt;
-@@ -484,15 +488,15 @@
+@@ -379,15 +383,15 @@ static void program_interrupt_signal(int
  	program_interrupt_in_progress = 1;
  
  	if (disk_disabled) {
@@ -71,7 +75,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  	} else {
  		printf("Exiting...\n");
  	}
-@@ -512,9 +516,6 @@
+@@ -407,9 +411,6 @@ static void get_device_name(int optind,
  	unsigned int maj, min;
  	struct stat dev_stat;
  
@@ -81,7 +85,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  	if (optind >= argc)
  		error("No device specified!");
  
-@@ -610,10 +611,10 @@
+@@ -505,10 +506,10 @@ static void check_disk(void)
  		error("the ioctl call to retrieve read/write status information failed: %s",
  		      strerror(err));
  	if (ro)
@@ -94,7 +98,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  	}
  	if (strncmp(g.dasd_info.type, "ECKD", 4) != 0) {
  		warnx("Unsupported disk type");
-@@ -700,7 +701,7 @@
+@@ -595,7 +596,7 @@ static void set_geo(unsigned int *cylind
  	struct dasd_eckd_characteristics *characteristics;
  
  	if (g.verbosity > 0)
@@ -103,7 +107,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  
  	characteristics = (struct dasd_eckd_characteristics *)
  				&g.dasd_info.characteristics;
-@@ -728,13 +729,13 @@
+@@ -623,13 +624,13 @@ static void set_label(volume_label_t *vl
  			       "Cylinders above this limit will not be"
  			       " accessible as a linux partition!\n"
  			       "Type \"yes\" to continue, no will leave"
@@ -120,7 +124,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  				return;
  			}
  		}
-@@ -872,7 +873,7 @@
+@@ -767,7 +768,7 @@ static void check_disk_format(unsigned i
  	check_params->start_unit = 0;
  	check_params->stop_unit = (cylinders * heads) - 1;
  
@@ -129,7 +133,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  
  	if (g.testmode) {
  		printf("Test mode active, omitting ioctl.\n");
-@@ -896,7 +897,7 @@
+@@ -791,7 +792,7 @@ static void check_disk_format(unsigned i
  	if (process_tracks(cylinders, heads, check_params))
  		error("Use --mode=full to perform a clean format.");
  
@@ -138,7 +142,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  }
  
  /*
-@@ -946,8 +947,8 @@
+@@ -841,8 +842,8 @@ static void dasdfmt_print_info(volume_la
  
  	printf("Device Type: %s Provisioned\n",
  	       g.ese ? "Thinly" : "Fully");
@@ -149,7 +153,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  	printf("   Device number of device : 0x%x\n", g.dasd_info.devno);
  	printf("   Labelling device        : %s\n",
  	       (g.writenolabel) ? "no" : "yes");
-@@ -1012,7 +1013,7 @@
+@@ -907,7 +908,7 @@ static void dasdfmt_write_labels(volume_
  	int ipl1_record_len, ipl2_record_len;
  
  	if (g.verbosity > 0)
@@ -158,7 +162,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  
  	get_blocksize(&blksize);
  
-@@ -1030,7 +1031,7 @@
+@@ -925,7 +926,7 @@ static void dasdfmt_write_labels(volume_
  
  	/* write empty bootstrap (initial IPL records) */
  	if (g.verbosity > 0)
@@ -167,7 +171,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  
  	/*
  	 * Note: ldl labels do not contain the key field
-@@ -1089,7 +1090,7 @@
+@@ -984,7 +985,7 @@ static void dasdfmt_write_labels(volume_
  	label_position = g.dasd_info.label_block * blksize;
  
  	if (g.verbosity > 0)
@@ -176,7 +180,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  
  	rc = lseek(fd, label_position, SEEK_SET);
  	if (rc != label_position) {
-@@ -1120,7 +1121,7 @@
+@@ -1015,7 +1016,7 @@ static void dasdfmt_write_labels(volume_
  	}
  
  	if (g.verbosity > 0)
@@ -185,7 +189,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  
  	label_position = (VTOC_START_CC * heads + VTOC_START_HH) *
  		geo.sectors * blksize;
-@@ -1242,7 +1243,7 @@
+@@ -1137,7 +1138,7 @@ static void dasdfmt_release_space(void)
  	if (!g.ese || g.no_discard)
  		return;
  
@@ -194,7 +198,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  	err = dasd_release_space(g.dev_node, &r);
  	if (err)
  		error("Could not release space: %s", strerror(err));
-@@ -1261,20 +1262,21 @@
+@@ -1156,20 +1157,21 @@ static void dasdfmt_prepare_and_format(u
  	int err;
  
  	if (!(g.withoutprompt && g.verbosity < 1))
@@ -221,7 +225,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  
  	/* except track 0 from standard formatting procss */
  	p->start_unit = 1;
-@@ -1282,19 +1284,19 @@
+@@ -1177,19 +1179,19 @@ static void dasdfmt_prepare_and_format(u
  	process_tracks(cylinders, heads, p);
  
  	if (g.verbosity > 0)
@@ -244,7 +248,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  
  	disk_enable();
  }
-@@ -1306,18 +1308,18 @@
+@@ -1201,18 +1203,18 @@ static void dasdfmt_expand_format(unsign
  				  format_data_t *p)
  {
  	if (!(g.withoutprompt && g.verbosity < 1))
@@ -267,7 +271,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  
  	if (g.verbosity > 0)
  		printf("Re-accessing the device...\n");
-@@ -1426,16 +1428,16 @@
+@@ -1321,16 +1323,16 @@ static void do_format_dasd(volume_label_
  		if (!g.withoutprompt) {
  			printf("\n");
  			if (mode != EXPAND)
@@ -288,7 +292,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  				return;
  			}
  		}
-@@ -1453,12 +1455,12 @@
+@@ -1348,12 +1350,12 @@ static void do_format_dasd(volume_label_
  			break;
  		}
  
@@ -303,7 +307,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  		err = dasd_reread_partition_table(g.dev_node, 5);
  		if (err != 0) {
  			ERRMSG("%s: error during rereading the partition "
-@@ -1472,7 +1474,7 @@
+@@ -1367,7 +1369,7 @@ static void do_format_dasd(volume_label_
  static void eval_format_mode(void)
  {
  	if (!g.force && g.mode_specified && g.ese && mode == EXPAND) {
@@ -312,7 +316,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  		warnx("Format mode 'expand' is not feasible.");
  		error("Use --mode=full or --mode=quick to perform a clean format");
  	}
-@@ -1495,20 +1497,70 @@
+@@ -1390,20 +1392,70 @@ static void set_prog_name(char *s)
  		prog_name = p + 1;
  }
  
@@ -387,7 +391,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  
  	/* Establish a handler for interrupt signals. */
  	signal(SIGTERM, program_interrupt_signal);
-@@ -1644,6 +1696,9 @@
+@@ -1539,6 +1591,9 @@ int main(int argc, char *argv[])
  			break; /* exit loop if finished */
  	}
  
@@ -397,7 +401,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  	CHECK_SPEC_MAX_ONCE(g.blksize_specified, "blocksize");
  	CHECK_SPEC_MAX_ONCE(g.labelspec, "label");
  	CHECK_SPEC_MAX_ONCE(g.writenolabel, "omit-label-writing flag");
-@@ -1662,48 +1717,28 @@
+@@ -1557,49 +1612,29 @@ int main(int argc, char *argv[])
  	if (g.print_hashmarks)
  		PARSE_PARAM_INTO(g.hashstep, hashstep_str, 10, "hashstep");
  
@@ -409,11 +413,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
 -
 -	g.ese = dasd_sys_ese(g.dev_node);
 -	eval_format_mode();
-+	while (optind < argc) {
-+		get_device_name(optind, argc, argv);
-+		strncpy(g.dev_path_array[numdev], g.dev_path, strlen(g.dev_path));
-+		strncpy(g.dev_node_array[numdev], g.dev_node, strlen(g.dev_node));
- 
+-
 -	/* Either let the user specify the blksize or get it from the kernel */
 -	if (!g.blksize_specified) {
 -		if (!(mode == FULL ||
@@ -421,10 +421,8 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
 -			get_blocksize(&format_params.blksize);
 -		else
 -			format_params = ask_user_for_blksize(format_params);
-+		optind++;
-+		numdev++;
- 	}
- 
+-	}
+-
 -	if (g.keep_volser) {
 -		if (g.labelspec)
 -			error("The -k and -l options are mutually exclusive");
@@ -435,15 +433,31 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
 -			vtoc_volume_label_set_volser(&vlabel, old_volser);
 -		else
 -			error("VOLSER not found on device %s", g.dev_path);
--	}
++	while (optind < argc) {
++		get_device_name(optind, argc, argv);
++		strncpy(g.dev_path_array[numdev], g.dev_path, strlen(g.dev_path));
++		strncpy(g.dev_node_array[numdev], g.dev_node, strlen(g.dev_node));
++
++		optind++;
++		numdev++;
++	}
++
 +	if (!numdev)
 +		error("%s: No device specified!\n",
 +			prog_name);
- 
--	check_disk();
++
 +	if (numdev > 1 && g.labelspec)
 +		error("Specifying a volser to be written doesn't make sense when formatting multiple DASD volumes.");
++
++	for (i = 0; i < numdev; i++)
++	{
++		strncpy(g.dev_path, g.dev_path_array[i], strlen(g.dev_path_array[i])+1);
++		strncpy(g.dev_node, g.dev_node_array[i], strlen(g.dev_node_array[i])+1);
++		process_dasd(&vlabel, format_params);
+ 	}
  
+-	check_disk();
+-
 -	if (check_param(str, ERR_LENGTH, &format_params) < 0)
 -		error("%s", str);
 -
@@ -454,12 +468,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
 -		check_disk_format(cylinders, heads, &format_params);
 -	else
 -		do_format_dasd(&vlabel, &format_params, cylinders, heads);
-+	for (i = 0; i < numdev; i++)
-+	{
-+		strncpy(g.dev_path, g.dev_path_array[i], strlen(g.dev_path_array[i])+1);
-+		strncpy(g.dev_node, g.dev_node_array[i], strlen(g.dev_node_array[i])+1);
-+		process_dasd(&vlabel, format_params);
-+	}
- 
+-
  	free(g.dev_path);
  	free(g.dev_node);
+ 

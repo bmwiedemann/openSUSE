@@ -19,9 +19,11 @@ Signed-off-by: Hannes Reinecke <hare@suse.de>
  dasdfmt/dasdfmt.c |   19 ++++++++++++++++++-
  1 file changed, 18 insertions(+), 1 deletion(-)
 
---- a/dasdfmt/dasdfmt.c
-+++ b/dasdfmt/dasdfmt.c
-@@ -621,7 +621,7 @@
+Index: s390-tools-2.40.0/dasdfmt/dasdfmt.c
+===================================================================
+--- s390-tools-2.40.0.orig/dasdfmt/dasdfmt.c
++++ s390-tools-2.40.0/dasdfmt/dasdfmt.c
+@@ -512,7 +512,7 @@ static void check_layout(unsigned int in
   */
  static void check_disk(void)
  {
@@ -30,7 +32,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.de>
  	bool ro;
  
  	err = dasd_is_ro(g.dev_node, &ro);
-@@ -631,6 +631,23 @@
+@@ -522,6 +522,23 @@ static void check_disk(void)
  	if (ro)
  		error("Disk %s is read only!", g.dev_path);
  	if (!g.force) {

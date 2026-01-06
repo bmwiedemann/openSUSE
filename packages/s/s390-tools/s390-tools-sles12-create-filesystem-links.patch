@@ -2,9 +2,11 @@
  etc/udev/rules.d/59-dasd.rules |   10 +++++++++-
  1 file changed, 9 insertions(+), 1 deletion(-)
 
---- a/etc/udev/rules.d/59-dasd.rules
-+++ b/etc/udev/rules.d/59-dasd.rules
-@@ -15,7 +15,7 @@
+Index: s390-tools-2.40.0/etc/udev/rules.d/59-dasd.rules
+===================================================================
+--- s390-tools-2.40.0.orig/etc/udev/rules.d/59-dasd.rules
++++ s390-tools-2.40.0/etc/udev/rules.d/59-dasd.rules
+@@ -15,7 +15,7 @@ KERNEL=="dasd*[!0-9]", ENV{ID_XUID}=="?*
  
  LABEL="dasd_block_end"
  
@@ -13,7 +15,7 @@
  
  # for partitions import parent information
  KERNEL=="dasd*[0-9]", IMPORT{parent}=="ID_*"
-@@ -24,6 +24,14 @@
+@@ -24,6 +24,14 @@ KERNEL=="dasd*[0-9]", ENV{ID_SERIAL}=="?
  KERNEL=="dasd*[0-9]", ENV{ID_UID}=="?*", SYMLINK+="disk/by-id/$env{ID_BUS}-$env{ID_UID}-part%n"
  KERNEL=="dasd*[0-9]", ENV{ID_XUID}=="?*", SYMLINK+="disk/by-id/$env{ID_BUS}-$env{ID_XUID}-part%n"
  

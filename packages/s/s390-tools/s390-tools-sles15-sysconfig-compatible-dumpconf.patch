@@ -2,8 +2,10 @@
  etc/sysconfig/dumpconf |  133 +++++++++++++++++++++++++++++++++++++++++++++++++
  1 file changed, 133 insertions(+)
 
---- a/etc/sysconfig/dumpconf
-+++ b/etc/sysconfig/dumpconf
+Index: s390-tools-2.40.0/etc/sysconfig/dumpconf
+===================================================================
+--- s390-tools-2.40.0.orig/etc/sysconfig/dumpconf
++++ s390-tools-2.40.0/etc/sysconfig/dumpconf
 @@ -1,3 +1,4 @@
 +###########################################################################################
  #

@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Mon Jan  5 09:09:46 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade s390-tools to 2.40 (jsc#PED-14586)
+- Add new tools / libraries:
+  * Add project-wide .clang-tidy configuration
+  * libutil: Introduce util_time for time related functionality
+  * libutil: Introduce zsh/bash autocompletion tooling based on util_opt
+  * pvinfo: Tool to display Secure Execution system information
+  * pvverify: Tool to verify host-key documents
+- Changes of existing tools:
+  * cpumf: Implement zsh and bash autocompletion
+  * dasdfmt: Implement zsh and bash autocompletion
+  * dbginfo.sh: Add NetworkManager and netplan
+  * dbginfo.sh: Add kvm_stat
+  * dbginfo.sh: Adding stp time information
+  * dbginfo.sh: Simplify procfs collection
+  * hyptop: Add physical information row
+  * hyptop: Calculate sample time delta for physical partition
+  * hyptop: Replace long option names using _ with - for consistency
+    For example: --cpu_types -> --cpu-types
+    (Options with _ are still supported for backward compatibility)
+  * libekmfweb: Add function to validate a certificate against the identity key
+  * netboot: Add longer kernel command lines support
+  * udev/rules.d: Make virtio-blk devices non-rotational
+  * udev/rules.d: Set default io scheduler to 'none' for virtio-blk
+  * ziomon: Add support to sample device symlinks (/dev/disk/...)
+  * ziorep_config: Add fcp-lun details to -M option output
+  * ziorep_config: Add port_id and failed attributes to -A option output
+  * netboot: Install on non-s390 architectures
+- Bug Fixes:
+  * lib(ekmfweb|kmipclient): Use ln without -r
+  * s390-tools: Fix various compilation issues with musl libc
+  * zipl/boot: Fix unused loadparm when SCLP line-mode console is absent
+- Reworked patches
+  * s390-tools-sles12-create-filesystem-links.patch
+  * s390-tools-sles12-fdasd-skip-partition-check-and-BLKRRPART-ioctl.patch
+  * s390-tools-sles12-zipl_boot_msg.patch
+  * s390-tools-sles15-sysconfig-compatible-dumpconf.patch
+  * s390-tools-sles15sp3-Allow-multiple-device-arguments.patch
+  * s390-tools-sles15sp3-Format-devices-in-parallel.patch
+  * s390-tools-sles15sp3-Implement-Y-yast_mode.patch
+  * s390-tools-sles15sp3-Implement-f-for-backwards-compability.patch
+  * s390-tools-sles15sp3-dasdfmt-retry-BIODASDINFO-if-device-is-busy.patch
+- Removed obsolete patch
+  * s390-tools-sles15sp5-remove-no-pie-link-arguments.patch
+- Applied additional patch
+  * s390-tools-sles15sp3-Format-devices-in-parallel-1.patch
+- Re-vendor-ed vendor.tar.zst
+- Amended the .spec file, fixed Rust compilation errors
+
+-------------------------------------------------------------------
 Thu Oct 16 07:41:18 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade s390-tools to version 2.39 (jsc#PED-10303) 
