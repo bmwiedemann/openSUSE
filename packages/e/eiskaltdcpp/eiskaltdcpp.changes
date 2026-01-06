@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 30 08:58:45 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Disable LUA scripts support, it's only supported with LUA 5.1
+  and this version is being removed. (boo#1252922)
+
+-------------------------------------------------------------------
 Fri May  9 00:15:45 UTC 2025 - Илья Индиго <ilya@ilya.top>
 
 - Fixed the build with cmake4.

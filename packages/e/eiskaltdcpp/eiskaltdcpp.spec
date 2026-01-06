@@ -1,7 +1,7 @@
 #
 # spec file for package eiskaltdcpp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,7 +49,6 @@ BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(libidn)
 BuildRequires:  pkgconfig(libpcre2-8)
-BuildRequires:  pkgconfig(lua5.1)
 BuildRequires:  pkgconfig(miniupnpc)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(zlib)
@@ -130,7 +129,8 @@ export CMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake -LA \
        -DNO_UI_DAEMON=ON \
        -DUSE_CLI_JSONRPC=ON \
-       -DWITH_EXAMPLES=OFF
+       -DWITH_EXAMPLES=OFF \
+       -DLUA_SCRIPT=OFF
 %cmake_build
 
 %install
@@ -147,7 +147,6 @@ install -Dpm0644 %{SOURCE1} %{buildroot}%{_prefix}/lib/firewalld/services/%{name
 %doc AUTHORS ChangeLog.txt README.md TODO
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/emoticons
-%{_datadir}/%{name}/luascripts
 %{_datadir}/%{name}/sounds
 %{_datadir}/pixmaps/%{name}.png
 %{_datadir}/icons/hicolor/*/apps/%{name}.png

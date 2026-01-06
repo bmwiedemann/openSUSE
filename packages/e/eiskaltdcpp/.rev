@@ -95,4 +95,13 @@
     <comment>- Fixed the build with cmake4.</comment>
     <requestid>1275932</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>8bfa984f4773512e842934f5175e598f</srcmd5>
+    <version>2.4.2</version>
+    <time>1767717824</time>
+    <user>anag_factory</user>
+    <comment>- Disable LUA scripts support, it's only supported with LUA 5.1
+  and this version is being removed. (boo#1252922)</comment>
+    <requestid>1325416</requestid>
+  </revision>
 </revisionlist>
