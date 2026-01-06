@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Jan  5 15:06:29 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.10
+  * Fixed SLADE launching another copy when opening archives via a
+    file manager if SLADE is already running.
+  * PNG format handling has been reworked to use libpng instead of
+    wxWidgets. This should fix some issues related to PNGs saving
+    with compressed palettes.
+  * Heretic+Hexen (2025) widescreen raw gfx are now correctly
+    recognised and displayed.
+  * Fixed a freeze when using "Check Duplicate Entry Content"
+    maintenance tool with lots of duplicates
+  * Offsets are now kept when exporting a TEXTURES texture to an
+    individual image.
+
+-------------------------------------------------------------------
+Sun Nov 16 08:01:48 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.9
+  * A soundfont is now included with SLADE, which will be used as
+    the fallback soundfont for MIDI playback if none is set up in
+    preferences.
+  * Improved OpenGL initialization to hopefully fix issues some
+    users were having with graphical views.
+  * When saving a zip archive with duplicate named entries, added a
+    prompt to auto-rename the duplicates.
+  * Dark Forces graphic formats can now be viewed again.
+  * Improved speed of "Convert All" function in the Gfx Conversion
+    dialog.
+  * Fixed blank palettes on colour remap for paletted PNGs
+  * Fixed broken texture properties layout
+  * Fixed 3D mode camera spinning on Wayland (note that this fix
+    requires a new enough DE that implements the wp_pointer_warp_v1
+    Wayland protocol).
+
+-------------------------------------------------------------------
 Tue Oct 21 09:18:21 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.2.8
