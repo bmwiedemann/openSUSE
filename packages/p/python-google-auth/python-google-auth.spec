@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-auth
-Version:        2.43.0
+Version:        2.45.0
 Release:        0
 Summary:        Google Authentication Library
 License:        Apache-2.0
@@ -26,8 +26,6 @@ URL:            https://github.com/googleapis/google-auth-library-python
 Source:         https://files.pythonhosted.org/packages/source/g/google_auth/google_auth-%{version}.tar.gz
 # https://github.com/googleapis/google-auth-library-python/issues/1055
 Patch1:         python-google-auth-no-mock.patch
-# PATCH-FIX-UPSTREAM https://github.com/googleapis/google-auth-library-python/pull/1868 chore: update secret and fix pytest issue
-Patch2:         pytest9.patch
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module PyJWT >= 2.0}
 BuildRequires:  %{python_module aiohttp >= 3.6.2}

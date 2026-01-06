@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jan  5 10:54:00 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.45.0
+  * Adding Agent Identity bound token support and handling certificate
+    mismatches with retries (#1890)
+- from version 2.44.0
+  * MDS connections use mTLS (#1856)
+  * support Python 3.14 (#1822)
+  * add ecdsa p-384 support (#1872)
+  * Add shlex to correctly parse executable commands with spaces (#1855)
+  * Implement token revocation in STS client and add revoke() method
+    to ExternalAccountAuthorizedUser credentials (#1849)
+  * Add temporary patch to workload cert logic to accomodate Cloud Run
+    mis-configuration (#1880)
+  * Delegate workload cert and key default lookup to helper function (#1877)
+  * Use public refresh method for source credentials in
+    ImpersonatedCredentials (#1884)
+- Drop pytest9.patch, merged upstream
+- Refresh python-google-auth-no-mock.patch
+
+-------------------------------------------------------------------
 Thu Nov 27 09:54:02 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream pytest9.patch to fix tests
