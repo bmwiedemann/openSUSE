@@ -45,6 +45,7 @@ Source99:       baselibs.conf
 Patch0:         libaom-0001-Do-not-disable-_FORTIFY_SOURCE.patch
 Patch1:         system-gtest.patch
 Patch2:         system-yuv.patch
+Patch3:         libaom-cmake.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.9
@@ -85,6 +86,7 @@ video coding format designed for video transmissions over the Internet.
 Summary:        Development files for libaom, an AV1 codec library
 Group:          Development/Languages/C and C++
 Requires:       %{name}%{sover}%{_isa} = %{version}
+Requires:       aom-tools
 
 %description devel
 This package contains the development headers and library files for
@@ -152,7 +154,6 @@ sed -E -i 's|#include "third_party/googletest/src/googletest/include/([^"]*)"|#i
 %install
 %if "%{flavor}" == ""
 %cmake_install
-rm %{buildroot}%{_libdir}/%{name}.a
 
 %ldconfig_scriptlets -n %{name}%{sover}
 

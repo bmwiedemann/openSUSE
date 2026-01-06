@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan  4 14:46:46 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
+
+- Require aom-tools from the libaom-devel subpackage as the binaries
+  it supplies are in AOMTargets.cmake
+- Remove static library from AOMTargets.cmake [boo#1255861]
+  + libaom-cmake.patch
+
+-------------------------------------------------------------------
 Sat Nov  8 19:56:25 UTC 2025 - Mia Herkt <mia@0x0.st>
 
 - Update to version 3.13.1
