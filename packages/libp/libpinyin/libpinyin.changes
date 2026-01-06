@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan  6 08:02:43 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 2.10.3
+  * Fix bugs
+
+-------------------------------------------------------------------
 Tue Jul 29 14:32:01 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Disable ASLR during build for reproducible builds (bsc#1180734)
