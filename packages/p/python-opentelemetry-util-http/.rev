@@ -136,4 +136,25 @@
 </comment>
     <requestid>1318876</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c3e1457f194fe49c08a8f32a01215fcd</srcmd5>
+    <version>0.60b0</version>
+    <time>1767717783</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.60b0:
+  * Silence events API warnings for internal users
+  * `opentelemetry-api`: Convert objects of any type other than
+    AnyValue in attributes to string to be exportable
+  * docs: Added sqlcommenter example
+  * build: bump ruff to 0.14.1
+  * Add `opentelemetry-exporter-credential-provider-gcp` as an
+    optional dependency to `opentelemetry-exporter-otlp-proto-
+    grpc`  and `opentelemetry-exporter-otlp-proto-http`
+  * semantic-conventions: Bump to 1.38.0
+  * [BREAKING] Remove LogData and extend SDK LogRecord to have
+    instrumentation scope
+  * [BREAKING] Rename several classes from Log to LogRecord
+</comment>
+    <requestid>1325574</requestid>
+  </revision>
 </revisionlist>
