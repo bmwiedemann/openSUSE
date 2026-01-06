@@ -1,7 +1,7 @@
 #
 # spec file for package Printrun
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           Printrun
-Version:        2.0.0~rc7.1599393390.c451359
+Version:        2.2.0+73
 Release:        0
 Summary:        RepRap printer interface and tools
 License:        GPL-3.0-or-later
@@ -30,10 +30,10 @@ Source1:        pronsole.desktop
 Source2:        pronterface.desktop
 Source3:        plater.desktop
 
+BuildRequires:  gettext
 BuildRequires:  python3-Cython
 BuildRequires:  python3-pyserial
 BuildRequires:  python3-setuptools
-BuildRequires:  gettext
 %if 0%{?suse_version}
 BuildRequires:  fdupes
 BuildRequires:  update-desktop-files
@@ -84,8 +84,9 @@ It is a part of Printrun.
 %package     -n pronterface
 Summary:        GUI interface for RepRap
 Group:          Productivity/Graphics/Convertors
-Requires:       python3-wxPython
 Requires:       pronsole = %{version}-%{release}
+Requires:       python3-platformdirs
+Requires:       python3-wxPython
 BuildArch:      noarch
 
 %description -n pronterface
@@ -107,7 +108,6 @@ Plater is a GUI tool to prepare printing plate from STL files for ReRap.
 It is a part of Printrun.
 
 ###############################################
-
 
 %prep
 %setup -q
@@ -159,7 +159,6 @@ desktop-file-install --dir=%{buildroot}%{_datadir}/applications %{SOURCE3}
 %endif
 
 %{find_lang} pronterface
-%{find_lang} plater
 
 %files
 %doc README*
@@ -186,7 +185,7 @@ desktop-file-install --dir=%{buildroot}%{_datadir}/applications %{SOURCE3}
 %{_datadir}/metainfo/pronterface.appdata.xml
 %{_datadir}/applications/pronterface.desktop
 
-%files -n plater -f plater.lang
+%files -n plater
 %{_bindir}/plater.*
 %{_datadir}/pixmaps/plater.png
 %{_datadir}/applications/plater.desktop
