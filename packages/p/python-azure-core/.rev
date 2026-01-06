@@ -593,4 +593,15 @@
 - Update Requires from setup.py (forwarded request 1311458 from glaubitz)</comment>
     <requestid>1311539</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>b44257c809e66ca12e4d8a76ba0484d5</srcmd5>
+    <version>1.37.0</version>
+    <time>1767717695</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 1.37.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1325341 from glaubitz)</comment>
+    <requestid>1325405</requestid>
+  </revision>
 </revisionlist>
