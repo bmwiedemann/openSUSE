@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.schema
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,13 +26,13 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-zope.schema%{psuffix}
-Version:        7.0.1
+Version:        8.1
 Release:        0
 Summary:        Zope interface extension for defining data schemas
 License:        ZPL-2.1
 URL:            https://pypi.python.org/pypi/zope.schema
-Source:         https://files.pythonhosted.org/packages/source/z/zope.schema/zope.schema-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+Source:         https://files.pythonhosted.org/packages/source/z/zope.schema/zope_schema-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -41,9 +41,8 @@ Requires:       python-zope.event
 Requires:       python-zope.interface >= 5.0.0
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module zope.event}
 BuildRequires:  %{python_module zope.i18nmessageid}
-BuildRequires:  %{python_module zope.interface >= 3.6.0}
+BuildRequires:  %{python_module zope.schema = %{version}}
 BuildRequires:  %{python_module zope.testing}
 BuildRequires:  %{python_module zope.testrunner}
 %endif
@@ -60,7 +59,7 @@ specify characteristics such as its value being read-only or not
 required.
 
 %prep
-%setup -q -n zope.schema-%{version}
+%setup -q -n zope_schema-%{version}
 rm -rf zope.schema.egg-info
 
 %build
@@ -83,8 +82,7 @@ rm -rf zope.schema.egg-info
 %doc COPYRIGHT.txt CHANGES.rst README.rst
 %dir %{python_sitelib}/zope
 %{python_sitelib}/zope/schema
-%{python_sitelib}/zope[_.]schema-%{version}*info
-%{python_sitelib}/zope.schema-%{version}*pth
+%{python_sitelib}/zope[_.]schema-%{version}.dist-info
 %endif
 
 %changelog

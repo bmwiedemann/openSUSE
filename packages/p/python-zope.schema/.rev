@@ -148,4 +148,17 @@
     <comment></comment>
     <requestid>1274645</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3baa3279d7faacc6add120156538fe88</srcmd5>
+    <version>8.1</version>
+    <time>1767717951</time>
+    <user>anag_factory</user>
+    <comment>- Update to 8.1:
+  * Remove unnecessary setuptools runtime dependency.
+  * Replace pkg_resources namespace with PEP 420 native namespace.
+  * Add support for Python 3.12, 3.13.
+  * Drop support for Python 3.7, 3.8.
+- BuildRequire ourselves for the test flavor.</comment>
+    <requestid>1325519</requestid>
+  </revision>
 </revisionlist>

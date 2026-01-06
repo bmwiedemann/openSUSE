@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan  6 04:40:57 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 8.1:
+  * Remove unnecessary setuptools runtime dependency.
+  * Replace pkg_resources namespace with PEP 420 native namespace.
+  * Add support for Python 3.12, 3.13.
+  * Drop support for Python 3.7, 3.8.
+- BuildRequire ourselves for the test flavor.
+
+-------------------------------------------------------------------
 Mon May  5 11:08:56 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Modernize packaging
