@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jan  6 12:25:49 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.14.12
+  * Fix artifacts on Intel Meteor Lake and newer processors with integrated graphics.
+  * Preliminary support for kernel 6.19.
+  * Support for kernel 6.18.
+  * Fix EDID handling when size does not match the field.
+  * Fix building for RHEL 9 and 10 kernels.
+  * Fix "Failed to map scanout buffer" error.
+- adjusted buildfix.patch
+- superseded the following patches:
+  * 0001-Support-Linux-v6.18-No-need-to-lock-in-drm_gem_looku.patch
+  * 0002-Support-Linux-v6.18-Lock-on-dev-struct_mutex-unneces.patch
+  * 0003-Support-Linux-v6.18-Remove-lock-on-device-struct_mut.patch
+  * 0004-fix-README-Outdated-link-to-AUR-package.patch
+  * 0005-Fix-building-on-EL-10-kernels.patch
+
+-------------------------------------------------------------------
 Tue Dec  9 11:54:03 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - 0001-Support-Linux-v6.18-No-need-to-lock-in-drm_gem_looku.patch

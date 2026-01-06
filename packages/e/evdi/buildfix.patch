@@ -1,7 +1,7 @@
-Index: evdi-1.14.11/module/Makefile
+Index: evdi-1.14.12/module/Makefile
 ===================================================================
---- evdi-1.14.11.orig/module/Makefile
-+++ evdi-1.14.11/module/Makefile
+--- evdi-1.14.12.orig/module/Makefile
++++ evdi-1.14.12/module/Makefile
 @@ -6,17 +6,6 @@
  # more details.
  #
@@ -9,7 +9,7 @@ Index: evdi-1.14.11/module/Makefile
 -include /etc/os-release
 -
 -ifneq (,$(findstring rhel,$(ID_LIKE)))
--ELFLAG := -DEL$(VERSION_ID)
+-ELFLAG := -DEL$(shell echo $(VERSION_ID) | cut -d. -f1)
 -endif
 -
 -Raspbian := $(shell grep -Eic 'raspb(erry|ian)' /proc/cpuinfo /etc/os-release 2>/dev/null )

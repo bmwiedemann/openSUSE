@@ -1,7 +1,7 @@
 #
 # spec file for package evdi
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 Name:           evdi
 Release:        0
-Version:        1.14.11
+Version:        1.14.12
 Summary:        Extensible Virtual Display Interface (EVDI) is a Linux Kernel Module
 License:        GPL-2.0-only AND LGPL-2.1-only
 Group:          System/Kernel
@@ -30,11 +30,6 @@ Source0:        evdi-%{version}.tar.gz
 Source1:        evdi-kmp-preamble
 Source2:        evdi-rpmlintrc
 Patch0:         buildfix.patch
-Patch1:         0001-Support-Linux-v6.18-No-need-to-lock-in-drm_gem_looku.patch
-Patch2:         0002-Support-Linux-v6.18-Lock-on-dev-struct_mutex-unneces.patch
-Patch3:         0003-Support-Linux-v6.18-Remove-lock-on-device-struct_mut.patch
-Patch4:         0004-fix-README-Outdated-link-to-AUR-package.patch
-Patch5:         0005-Fix-building-on-EL-10-kernels.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  pesign-obs-integration
 BuildRequires:  pkgconfig
