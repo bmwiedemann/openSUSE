@@ -19,7 +19,7 @@
 
 
 Name:           gnunet
-Version:        0.25.1
+Version:        0.26.2
 Release:        0
 Summary:        Security focused Peer-to-Peer Framework
 License:        AGPL-3.0-or-later
@@ -28,6 +28,7 @@ URL:            https://www.gnunet.org/
 Source0:        https://ftp.gnu.org/pub/gnu/gnunet/%{name}-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/pub/gnu/gnunet/%{name}-%{version}.tar.gz.sig
 # https://gnunet.org/~schanzen/3D11063C10F98D14BD24D1470B0998EF86F59B6A
+# https://grothoff.org/christian/grothoff.asc
 Source2:        %{name}.keyring
 Patch0:         gnunet-0.25.1-underlaydummy-soname.patch
 BuildRequires:  libtool >= 2.2
@@ -122,7 +123,7 @@ GNUnet is a part of the GNU project (https://www.gnu.org/).
 %gnunet_libpackage -l gnunettransportcommunicator -s 0\
 %gnunet_libpackage -l gnunettransportcore -s 0\
 %gnunet_libpackage -l gnunettransportmonitor -s 0\
-%gnunet_libpackage -l gnunetutil -s 18\
+%gnunet_libpackage -l gnunetutil -s 20\
 %gnunet_libpackage -l gnunetvpn -s 0\
 %gnunet_libpackage -l nss_gns4 -s 2 -d \-\
 %gnunet_libpackage -l nss_gns6 -s 2 -d \-\

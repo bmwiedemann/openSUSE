@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Dec 26 01:54:52 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNUnet 0.26.2:
+  * pq: fix NULL reporting in arrays
+  * util: fix UTF-8 uppercase/lowercase conversion API insanity
+
+-------------------------------------------------------------------
+Sun Dec 21 16:17:24 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNUnet 0.26.1:
+  * pq: fix consistency check errors that would occur in some cases
+- includes changes from 0.26.0:
+  * util: Revise crypto API to prevent misuse of key material
+  * util: Add various TIME related helper APIs
+  * pils: Ship missing header
+- includes changes from 0.25.2:
+  * build: Various build system and detection logic improvements
+    incl. compiler warnings
+  * reintroduce some flat file storages
+
+-------------------------------------------------------------------
 Thu Sep 25 18:36:28 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNUnet 0.25.1:
