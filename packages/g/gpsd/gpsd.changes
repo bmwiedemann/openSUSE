@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Dec 30 14:45:29 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to version 3.27.3
+  * Fix API major value. 3 not 0.
+
+-------------------------------------------------------------------
+Wed Dec 24 10:38:36 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to version 3.27.2
+  * Fix a gpsd.rules warning. The warning drew complaint, nothing more.
+
+-------------------------------------------------------------------
+Thu Dec 18 21:57:56 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to version 3.27.1
+  * Fixes for two CVE.  Parsing failures on malicious packets.
+    - CVE-2025-67268 - Heap-based Out-of-bounds Write, NMEA2000
+    - CVE-2025-67269 - Integer Underflow, NovAtel
+  * Some ubxtool updates.
+
+-------------------------------------------------------------------
+Mon Nov 24 20:37:43 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to version 3.27
+  * Improve support for newer signal ids (L1/L2/L5, etc.).
+  * xgps add signal id names
+  * gpsrinex, support new signal ids.  Add -g and --gnss options.
+  * Initial SPARTNv2 support.  Disabled by default, terrible protocol.
+  * Many ubxtool updates for newer u-blox receivers.
+  * Update driver_ubx for newer u-blox receivers.
+  * Lexer() FFI interface is unused, and deprecated October 2025.
+  * xgps and xgpsspeed work under Wayland.
+  * Add support for Qt6.
+- Remove upstreamed add-qt6-support.patch
+
+-------------------------------------------------------------------
 Tue Oct 28 14:01:59 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Add add-qt6-support.patch: this allow us to build using Qt6 instead of Qt5

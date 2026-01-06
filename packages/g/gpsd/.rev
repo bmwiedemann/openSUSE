@@ -1084,4 +1084,32 @@ For more please read usr/share/doc/packages/gpsd/NEWS
     <comment></comment>
     <requestid>1314094</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>9ee77ed4b7e14aaaaa531e78d0c60618</srcmd5>
+    <version>3.27.3</version>
+    <time>1767717690</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.27.3
+  * Fix API major value. 3 not 0.
+- Update to version 3.27.2
+  * Fix a gpsd.rules warning. The warning drew complaint, nothing more.
+- Update to version 3.27.1
+  * Fixes for two CVE.  Parsing failures on malicious packets.
+    - CVE-2025-67268 - Heap-based Out-of-bounds Write, NMEA2000
+    - CVE-2025-67269 - Integer Underflow, NovAtel
+  * Some ubxtool updates.
+- Update to version 3.27
+  * Improve support for newer signal ids (L1/L2/L5, etc.).
+  * xgps add signal id names
+  * gpsrinex, support new signal ids.  Add -g and --gnss options.
+  * Initial SPARTNv2 support.  Disabled by default, terrible protocol.
+  * Many ubxtool updates for newer u-blox receivers.
+  * Update driver_ubx for newer u-blox receivers.
+  * Lexer() FFI interface is unused, and deprecated October 2025.
+  * xgps and xgpsspeed work under Wayland.
+  * Add support for Qt6.
+- Remove upstreamed add-qt6-support.patch
+</comment>
+    <requestid>1325403</requestid>
+  </revision>
 </revisionlist>

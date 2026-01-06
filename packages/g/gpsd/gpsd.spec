@@ -1,7 +1,7 @@
 #
 # spec file for package gpsd
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,13 @@
 #
 
 
-%define         sover 31
+%define         sover 32
 %define         libgps libgps%{sover}
 %define         libQgps libQgpsmm%{sover}
 %define         _udevdir %(pkg-config --variable udevdir udev)
 %bcond_without python2
 Name:           gpsd
-Version:        3.26.1
+Version:        3.27.3
 Release:        0
 Summary:        Service daemon for mediating access to a GPS
 License:        BSD-3-Clause
@@ -36,8 +36,6 @@ Source98:       https://download-mirror.savannah.gnu.org/releases/gpsd/%{name}-%
 Source99:       %{name}.keyring
 Patch0:         harden_gpsd.service.patch
 Patch1:         harden_gpsdctl@.service.patch
-# PATCH-FIX-UPSTREAM https://gitlab.com/gpsd/gpsd/-/commit/05c5300825742090d18bd6c5b01087f00d1c4360
-Patch2:         add-qt6-support.patch
 BuildRequires:  chrpath
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -182,7 +180,6 @@ tar -xf %{SOURCE0} -C %{name}-%{version}/python2
 pushd %{name}-%{version}/python2/%{name}-%{version}
 %patch -P 0
 %patch -P 1
-%patch -P 2
 popd
 %endif
 mkdir -p %{name}-%{version}/python3
@@ -190,7 +187,6 @@ tar -xf %{SOURCE0} -C %{name}-%{version}/python3
 pushd %{name}-%{version}/python3/%{name}-%{version}
 %patch -P 0
 %patch -P 1
-%patch -P 2
 popd
 
 %build
