@@ -58,6 +58,7 @@ BuildRequires:  pkgconfig(libxml-2.0)
 Requires:       kf6-kcoreaddons-imports >= %{kf6_version}
 Requires:       kf6-kirigami-imports >= %{kf6_version}
 Requires:       kf6-kquickcharts >= %{kf6_version}
+Requires:       kqtquickcharts
 Requires:       qt6-declarative-imports >= %{qt6_version}
 Requires:       qt6-qt5compat-imports >= %{qt6_version}
 Requires:       qt6-sql-sqlite >= %{qt6_version}

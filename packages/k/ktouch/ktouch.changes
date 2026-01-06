@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan  6 08:38:01 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Add missing kqtquickcharts runtime dependency (boo#1256035)
+
+-------------------------------------------------------------------
 Sat Dec  6 11:41:02 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.0
