@@ -1070,4 +1070,27 @@
 </comment>
     <requestid>1321915</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>13d925b61742187a4c8a9a0342b5322d</srcmd5>
+    <version>2.69.0</version>
+    <time>1767717893</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.69.0:
+  - Features
+    * feat: Add --pq flag to age-keygen command
+    * feat: Add support for transcrypt and git-crypt
+    * feat: Add support for Proton Pass password manager
+    * feat: Support TOML 1.1
+    * feat: Switch template function implementation to sprout
+  - Fixes
+    * fix: Revert to cosign v2.6.1 for release signing
+    * fix: Ignore templates in exact_ dirs in re-add command
+    * fix: Clean paths in external files
+    * fix: Reject invalid file and dir names in source dir
+    * fix: Fix check for adding files in protected directories
+  - Documentation
+    * docs: Fix typo in chezmoi add note
+</comment>
+    <requestid>1325457</requestid>
+  </revision>
 </revisionlist>
