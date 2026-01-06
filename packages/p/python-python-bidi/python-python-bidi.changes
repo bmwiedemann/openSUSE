@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan  6 05:02:15 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.6.7:
+  * Added 3.14 and pypy3.11 to targets
+  * Bumped pyo3 to 0.27.1
+- Run the testsuite.
+- Switch to using cargo-packaging, and cargo_vendor.
+
+-------------------------------------------------------------------
 Mon Mar 10 18:07:07 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - python-maturin is not required for running of the package.

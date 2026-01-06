@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-bidi
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,21 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python-bidi
-Version:        0.6.6
+Version:        0.6.7
 Release:        0
 Summary:        BiDi layout algorithm
 License:        LGPL-3.0-only
-Group:          Development/Languages/Python
 URL:            https://github.com/MeirKriheli/python-bidi
 Source:         https://files.pythonhosted.org/packages/source/p/python_bidi/python_bidi-%{version}.tar.gz
-Source1:        vendor.tar.gz
+Source1:        vendor.tar.xz
 BuildRequires:  %{python_module maturin > 1}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  cargo
+BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  rust
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %python_subpackages
@@ -52,9 +51,10 @@ A pure python implementation of the BiDi layout algorithm.
 %python_clone -a %{buildroot}%{_bindir}/pybidi
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
-#%%check
-#%%pyunittest_arch -v
-#%%pytest
+%check
+mv bidi bidi-do-not-use
+%pytest_arch
+mv bidi-do-not-use bidi
 
 %post
 %python_install_alternative pybidi

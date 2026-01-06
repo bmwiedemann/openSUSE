@@ -96,4 +96,16 @@
 </comment>
     <requestid>1251868</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f787690f18a61dcbba3fe5e965ee17aa</srcmd5>
+    <version>0.6.7</version>
+    <time>1767717953</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.6.7:
+  * Added 3.14 and pypy3.11 to targets
+  * Bumped pyo3 to 0.27.1
+- Run the testsuite.
+- Switch to using cargo-packaging, and cargo_vendor.</comment>
+    <requestid>1325520</requestid>
+  </revision>
 </revisionlist>
