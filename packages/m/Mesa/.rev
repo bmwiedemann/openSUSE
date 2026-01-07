@@ -6607,4 +6607,12 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
 - fixed build against s390x by removing &quot;display-info&quot; option</comment>
     <requestid>1321169</requestid>
   </revision>
+  <revision rev="563" vrev="1">
+    <srcmd5>65308ba2df0793808cd268358d902da0</srcmd5>
+    <version>25.3.3</version>
+    <time>1767798041</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1325616</requestid>
+  </revision>
 </revisionlist>
