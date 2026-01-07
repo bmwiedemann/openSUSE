@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Fri Jan  2 10:14:38 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
-- Update to 5.8.0
+- Update to 5.8.0 (CVE-2025-68131, bsc#1255783)
   * Added readahead buffering to C decoder for improved performance.
   * Fixed Python decoder not preserving share index when decoding
     array items containing nested shareable tags, causing shared

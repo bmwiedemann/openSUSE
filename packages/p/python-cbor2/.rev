@@ -204,4 +204,13 @@
     <comment></comment>
     <requestid>1325153</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>76ab7ea6161f25f1ee06a924d851dd96</srcmd5>
+    <version>5.8.0</version>
+    <time>1767798067</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.8.0 (CVE-2025-68131, bsc#1255783)
+</comment>
+    <requestid>1325773</requestid>
+  </revision>
 </revisionlist>
