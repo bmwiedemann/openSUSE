@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Dec 28 23:41:21 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.23.0:
+  * va: add VAProfileH264High422
+  * va: add av1 profile2
+  * va: correct the description of segment id map buffer for vp9e
+  * va: encode segmentation map refine
+  * va: add defintions for segment id block size
+  * trace: support more format surface dump
+  * trace:add vpp output surface dump support
+  * trace: add Y410 support in dump surface
+  * trace: add trace for vaDeriveImage
+  * trace: add missing trace fields for
+    VAProcPipelineParameterBuffer
+  * doc: add backward compatibility declarison declaration
+  * android: Remove unnecessary Android code
+  * android: Include directories and generated header files in
+    Android.bp
+  * android: Update Android.bp to generate va_version.h and build
+    only for x86_64
+  * android: Add Android.bp to replace mk files
+
+-------------------------------------------------------------------
 Wed Jul  3 08:17:21 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.22.0:
