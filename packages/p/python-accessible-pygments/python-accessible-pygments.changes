@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan  7 03:05:05 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.0.5:
+  * ENH - Move to hatch for dev/build
+  * ENH - Automate theme READMEs
+  * BUG - Ensure no local version
+  * BUG - Fix contrast failures for high contrast light theme
+  * ENH - Fix broken theme URLs in README, typo in demo html
+  * ENH - Update code to not get images from placeholder.com
+  * ENH - Reflect that rgb colors are in 0-1 and floats.
+  * ENH - Rename hex to float function
+  * ENH - Set a11y-light default background to #f2f2f2 (light gray)
+
+-------------------------------------------------------------------
 Fri Jun 13 05:35:04 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

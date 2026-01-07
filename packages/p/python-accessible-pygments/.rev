@@ -35,4 +35,21 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1285321</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ce6837d6e794809aefbdd036deb9451c</srcmd5>
+    <version>0.0.5</version>
+    <time>1767798127</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.0.5:
+  * ENH - Move to hatch for dev/build
+  * ENH - Automate theme READMEs
+  * BUG - Ensure no local version
+  * BUG - Fix contrast failures for high contrast light theme
+  * ENH - Fix broken theme URLs in README, typo in demo html
+  * ENH - Update code to not get images from placeholder.com
+  * ENH - Reflect that rgb colors are in 0-1 and floats.
+  * ENH - Rename hex to float function
+  * ENH - Set a11y-light default background to #f2f2f2 (light gray)</comment>
+    <requestid>1325687</requestid>
+  </revision>
 </revisionlist>

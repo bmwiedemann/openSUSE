@@ -1,7 +1,7 @@
 #
 # spec file for package python-accessible-pygments
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,16 +19,17 @@
 %define modname accessible-pygments
 %{?sle15_python_module_pythons}
 Name:           python-accessible-pygments
-Version:        0.0.4
+Version:        0.0.5
 Release:        0
 Summary:        A collection of accessible pygments styles
 License:        BSD-3-Clause
 URL:            https://github.com/Quansight-Labs/accessible-pygments
 Source:         https://github.com/Quansight-Labs/accessible-pygments/archive/refs/tags/v%{version}.tar.gz#/accessible-pygments-%{version}-gh.tar.gz
+BuildRequires:  %{python_module hatch-fancy-pypi-readme}
+BuildRequires:  %{python_module hatch-vcs}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pygments >= 1.5
@@ -45,16 +46,15 @@ A collection of accessible pygments styles
 %setup -q -n accessible-pygments-%{version}
 
 %build
+export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %pyproject_wheel
 
 %install
 %pyproject_install
-%python_expand rm -rf %{buildroot}%{$python_sitelib}/test
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export PYTHONPATH=$PWD
-%python_exec test/run_tests.py
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python test/render_html.py
 
 %files %{python_files}
 %doc README.md
