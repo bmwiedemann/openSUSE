@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec 28 22:57:12 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.5:
+  * libdecor: Fix set_visibility for SSD compositors
+  * Don't commit frame when with no content set
+  * Always apply limits no matter the window state
+  * Only query border size when decorated
+
+-------------------------------------------------------------------
 Thu Jul 18 14:16:13 UTC 2024 - Sean Baggaley <me@drinkybird.net>
 
 - Update to version 0.2.2:
@@ -55,4 +64,4 @@ Thu Apr 14 16:01:22 UTC 2022 - David Gow <david@davidgow.net>
 -------------------------------------------------------------------
 Wed Jan 26 20:08:00 UTC 2022 - Matthias Mailänder <mailaender@opensuse.org>
 
-- initial packaging of version 0.1.0 
+- initial packaging of version 0.1.0
