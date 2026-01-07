@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan  6 17:11:25 UTC 2026 - Matthias Bach <marix@marix.org> - 0.21.1
+
+- Update to 0.21.1
+  * Fix escaping in help text when rich is installed but not used.
+- Refreshed set-proper-pythonpath-for-tutorial-script-tests.patch.
+
+-------------------------------------------------------------------
 Sat Dec 20 13:14:39 UTC 2025 - Matthias Bach <marix@marix.org> - 0.20.1
 
 - Update to 0.20.1

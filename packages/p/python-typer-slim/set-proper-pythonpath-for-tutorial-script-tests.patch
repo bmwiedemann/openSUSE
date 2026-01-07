@@ -67,31 +67,31 @@ environment and that gets resolved by this commit:
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/tests/test_tutorial/test_subcommands/test_tutorial001.py b/tests/test_tutorial/test_subcommands/test_tutorial001.py
-index 1280e22..6f86826 100644
+index 293b8ed..0ec7cdf 100644
 --- a/tests/test_tutorial/test_subcommands/test_tutorial001.py
 +++ b/tests/test_tutorial/test_subcommands/test_tutorial001.py
 @@ -87,7 +87,7 @@ def test_scripts(mod):
-     from docs_src.subcommands.tutorial001 import items, users
+     from docs_src.subcommands.tutorial001_py39 import items, users
  
      env = os.environ.copy()
--    env["PYTHONPATH"] = ":".join(list(tutorial001.__path__))
-+    env["PYTHONPATH"] = ":".join(list(tutorial001.__path__) + [env["PYTHONPATH"]] if "PYTHONPATH" in env else [])
+-    env["PYTHONPATH"] = ":".join(list(tutorial001_py39.__path__))
++    env["PYTHONPATH"] = ":".join(list(tutorial001_py39.__path__) + [env["PYTHONPATH"]] if "PYTHONPATH" in env else [])
  
      for module in [mod, items, users]:
          result = subprocess.run(
 diff --git a/tests/test_tutorial/test_subcommands/test_tutorial003.py b/tests/test_tutorial/test_subcommands/test_tutorial003.py
-index 2d6149c..0a05ae0 100644
+index a680d29..98f1e00 100644
 --- a/tests/test_tutorial/test_subcommands/test_tutorial003.py
 +++ b/tests/test_tutorial/test_subcommands/test_tutorial003.py
 @@ -160,7 +160,7 @@ def test_scripts(mod):
-     from docs_src.subcommands.tutorial003 import items, lands, reigns, towns, users
+     from docs_src.subcommands.tutorial003_py39 import items, lands, reigns, towns, users
  
      env = os.environ.copy()
--    env["PYTHONPATH"] = ":".join(list(tutorial003.__path__))
-+    env["PYTHONPATH"] = ":".join(list(tutorial003.__path__) + [env["PYTHONPATH"]] if "PYTHONPATH" in env else [])
+-    env["PYTHONPATH"] = ":".join(list(tutorial003_py39.__path__))
++    env["PYTHONPATH"] = ":".join(list(tutorial003_py39.__path__) + [env["PYTHONPATH"]] if "PYTHONPATH" in env else [])
  
      for module in [mod, items, lands, reigns, towns, users]:
          result = subprocess.run(
 -- 
-2.35.3
+2.51.0
 

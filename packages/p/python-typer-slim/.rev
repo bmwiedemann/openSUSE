@@ -331,4 +331,15 @@ I tested the upgrade path and this will not break anybody relying on the package
 </comment>
     <requestid>1323837</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>7f25a1a07626dd49e7f72cfcceefde1f</srcmd5>
+    <version>0.21.1</version>
+    <time>1767798054</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.21.1
+  * Fix escaping in help text when rich is installed but not used.
+- Refreshed set-proper-pythonpath-for-tutorial-script-tests.patch.
+</comment>
+    <requestid>1325659</requestid>
+  </revision>
 </revisionlist>
