@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 18 14:29:29 UTC 2025 - Robert Frohl <rfrohl@suse.com>
+
+-  make 'mysql-systemd-helper upgrade' selinux aware (bsc#1255024)
+
+-------------------------------------------------------------------
 Thu Dec 11 09:41:07 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Add missing pam configuration file for the shipped auth_pam.so plugin

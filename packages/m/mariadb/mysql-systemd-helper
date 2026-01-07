@@ -97,6 +97,9 @@ mysql_upgrade() {
 		# Create a secure tmp dir
 		chown --no-dereference "$mysql_daemon_user:$mysql_daemon_group" "$protected" || die "Failed to set group/user to '$protected'"
 		chmod 0700  "$protected" || die "Failed to set permissions to '$protected'"
+		if command -v selinuxenabled > /dev/null && selinuxenabled; then
+			restorecon -R "$protected"
+		fi
 
 		# Run protected MySQL accessible only though socket in our directory
 		echo "Running protected MySQL... "

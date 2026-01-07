@@ -154,6 +154,9 @@ Requires:       perl-base
 Requires:       python3-mysqlclient
 Requires:       user(mysql)
 Requires(post): permissions
+# selinux dependencies for mysql-systemd-helper
+Requires:       (selinux-tools if selinux-policy)
+Requires:       (policycoreutils if selinux-policy)
 # Require mysql user
 Requires(pre):  user(mysql)
 Recommends:     logrotate
