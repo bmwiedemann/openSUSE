@@ -1,6 +1,7 @@
 #
 # spec file for package syncthing
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +18,7 @@
 
 
 Name:           syncthing
-Version:        2.0.12
+Version:        2.0.13
 Release:        0
 Summary:        Continuous File Synchronisation
 License:        MPL-2.0
