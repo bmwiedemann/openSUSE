@@ -1,7 +1,7 @@
 #
 # spec file for package python-furo
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-furo
-Version:        2024.8.6
+Version:        2025.12.19
 Release:        0
 Summary:        Clean customisable Sphinx documentation theme
 # This project is MIT.  Other files bundled with the documentation have the
@@ -53,7 +53,7 @@ Source1:        furo-%{version}-vendor.tar.xz
 Source2:        furo-%{version}-vendor-licenses.txt
 # Run without any arguments from this directory with the fresh Source0
 Source99:       prepare_vendor.sh
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module doc}
 BuildRequires:  %{python_module myst-parser}
 BuildRequires:  %{python_module pip}
@@ -69,13 +69,15 @@ BuildRequires:  npm-default
 BuildRequires:  python-rpm-macros
 BuildRequires:  rpmdevtools
 BuildRequires:  yarn
-Requires:       python-Sphinx >= 6.0
+Requires:       python-Sphinx >= 7.0
+Requires:       python-accessible-pygments >= 0.0.5
 Requires:       python-beautifulsoup4
 Requires:       python-pygments >= 2.7
 Requires:       python-sphinx-basic-ng >= 1.0.0.beta2
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Sphinx >= 6.0}
+BuildRequires:  %{python_module Sphinx >= 7.0}
+BuildRequires:  %{python_module accessible-pygments >= 0.0.5}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module nodeenv}
 BuildRequires:  %{python_module pygments >= 2.7}
@@ -103,7 +105,6 @@ Furo is a Sphinx theme, which is:
 
 %package -n %{name}-doc
 Summary:        Documentation files for %{name}
-Group:          Documentation/Other
 
 %description -n %{name}-doc
 HTML Documentation and examples for %{name}.

@@ -26,4 +26,27 @@ Fix missing Source OBS error.</comment>
   (CVE-2025-5889, bsc#1244347)</comment>
     <requestid>1288677</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fcd8096be131c3a123f84f59a29bfb9e</srcmd5>
+    <version>2025.12.19</version>
+    <time>1767798128</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2025.12.19:
+  * Add support for Sphinx 9.
+  * Drop support for Sphinx 6.
+  * Change the dark mode code back to native.
+  * Switch to accessible-pygments themes
+  * Prefetch the sidebar logos
+  * Add rel=edit attribute to “Edit this page” link/icon
+  * Bump NodeJS and npm dependency versions
+  * Bump Saas &amp; Webpack major versions
+  * Improve current page detection to be resilient to sticky elements above
+    header
+  * Modernise Sass and use @use + @forward
+  * Remove top of code border-radius with captions
+  * Remove “debug printf” for headerTop value
+  * Use distinct images for light and dark mode in the documentation
+  * Use the modern Saas Modules</comment>
+    <requestid>1325688</requestid>
+  </revision>
 </revisionlist>
