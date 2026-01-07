@@ -1,7 +1,7 @@
 #
 # spec file for package python-mocket
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,6 +61,7 @@ BuildRequires:  %{python_module asgiref}
 BuildRequires:  %{python_module fastapi}
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module httptools}
+BuildRequires:  %{python_module httpx}
 BuildRequires:  %{python_module mocket = %{version}}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest-asyncio}

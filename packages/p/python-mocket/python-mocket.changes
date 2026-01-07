@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan  6 13:43:58 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Explicitly BuildRequire python-httpx for the test suite. This
+  used to be pulled in by -geven in the past.
+
+-------------------------------------------------------------------
 Sat Oct 11 07:44:50 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
 
 - Update to version 3.14.0:
