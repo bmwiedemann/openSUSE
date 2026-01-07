@@ -121,4 +121,19 @@
   still be using imake 14 years from now.</comment>
     <requestid>1137656</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e2b180d48464209ce404fd1cc032ff59</srcmd5>
+    <version>1.0.11</version>
+    <time>1767798052</time>
+    <user>anag_factory</user>
+    <comment>- fixed config dir path (regression came with switch to meson)
+
+- Update to version 1.0.11
+  * This release adds user-contributed support for Linux on RISC-V &amp;
+    LoongArch platforms.
+  * This release also adds support for building with meson as well
+    as autoconf.
+- switch to meson build</comment>
+    <requestid>1325647</requestid>
+  </revision>
 </revisionlist>

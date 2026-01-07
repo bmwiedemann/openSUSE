@@ -1,7 +1,7 @@
 #
 # spec file for package imake
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           imake
-Version:        1.0.10
+Version:        1.0.11
 Release:        0
 Summary:        C preprocessor interface to the make utility
 License:        MIT
@@ -25,6 +25,7 @@ Group:          Development/Tools/Building
 URL:            https://xorg.freedesktop.org/
 Source0:        https://xorg.freedesktop.org/releases/individual/util/%{name}-%{version}.tar.xz
 BuildRequires:  gcc-c++
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(xorg-macros) >= 1.8
 BuildRequires:  pkgconfig(xproto)
@@ -48,11 +49,11 @@ converted.
 %setup -q
 
 %build
-%configure --with-config-dir=%{_datadir}/X11/config
-%make_build
+%meson -Dconfig-dir=%{_datadir}/X11/config
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 %files
 %license COPYING

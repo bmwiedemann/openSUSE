@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jan  6 15:12:33 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixed config dir path (regression came with switch to meson)
+
+-------------------------------------------------------------------
+Sat Jan  3 11:45:53 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.11
+  * This release adds user-contributed support for Linux on RISC-V &
+    LoongArch platforms.
+  * This release also adds support for building with meson as well
+    as autoconf.
+- switch to meson build
+
+-------------------------------------------------------------------
 Tue Jan  9 01:37:27 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.0.10
