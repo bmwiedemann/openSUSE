@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymisp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,9 @@
 #
 
 
-%define skip_python2 1
-%define misp_objects_revision 83271573312aebce971a0cf7ffbd04e784a58de3
+%define misp_objects_revision bdcc37547de6ca331e00d632bedd81207d26905d
 Name:           python-pymisp
-Version:        2.5.1
+Version:        2.5.17.3
 Release:        0
 Summary:        Python API for MISP
 License:        BSD-2-Clause
@@ -33,19 +32,17 @@ Source1:        https://github.com/MISP/misp-objects/archive/%{misp_objects_revi
 # packaging tool
 Source2:        update-misp-objects.sh
 Source3:        python-pymisp-doc-rpmlintrc
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Recommends:     python-oletools
-Requires:       python-Deprecated >= 1.2.14
-Requires:       python-python-dateutil >= 2.8.2
-Requires:       python-requests >= 2.31.0
+Recommends:     python-oletools >= 0.60.2
+Requires:       python-Deprecated >= 1.3.1
+Requires:       python-python-dateutil >= 2.9.0
+Requires:       python-requests >= 2.32.5
 Recommends:     %{name}-doc
-Recommends:     python-extract-msg >= 0.28.0
+Recommends:     python-extract-msg >= 0.55.0
 Recommends:     python-magic >= 0.4.27
 Recommends:     python-reportlab
 Recommends:     python3-beautifulsoup4 >= 4.12.2
@@ -61,20 +58,19 @@ Suggests:       python-pydeep
 #pyfaup = {version = "^1.2", optional = true}
 BuildArch:      noarch
 # SECTION tests
-BuildRequires:  %{python_module Deprecated >= 1.2.14}
-BuildRequires:  %{python_module oletools}
+BuildRequires:  %{python_module Deprecated >= 1.3.1}
+BuildRequires:  %{python_module oletools >= 0.60.2}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-dateutil >= 2.8.2}
+BuildRequires:  %{python_module python-dateutil >= 2.9.0}
 BuildRequires:  %{python_module python-magic >= 0.4.27}
 BuildRequires:  %{python_module reportlab}
 BuildRequires:  %{python_module requests >= 2.31.0}
 BuildRequires:  %{python_module requests-mock}
 # /SECTION
 # SECTION docs
-BuildRequires:  python3-CommonMark
-BuildRequires:  python3-Sphinx
-BuildRequires:  python3-recommonmark >= 0.7.1
-BuildRequires:  python3-sphinx-autodoc-typehints
+BuildRequires:  python3-Sphinx >= 8.2.3
+BuildRequires:  python3-myst-parser >= 4.0.1
+BuildRequires:  python3-sphinx-autodoc-typehints >= 3.5.2
 # /SECTION
 %python_subpackages
 %{?python_enable_dependency_generator}
@@ -118,13 +114,15 @@ popd
 export LANG=en_US.UTF-8
 # requires optional dependencies which we don't have (extract_msg, RTFDE etc.)
 rm tests/test_emailobject.py
-%pytest
+# requires network
+donttest="((TestPDFExport and test_utf) or test_mimeType)"
+%pytest -k "not $donttest"
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
 %{python_sitelib}/pymisp/
-%{python_sitelib}/pymisp-%{version}*-info
+%{python_sitelib}/pymisp-%{version}.dist-info
 
 %files -n %{name}-doc
 %doc examples docs/build/html

@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Jan  7 03:51:43 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.5.17.3:
+  * New:
+    + Use pure-magic-rs. [Raphaël Vinot]
+    + Optionally use faup-rs for URL parsing. [Raphaël Vinot]
+    + Enrich event/attribute endpoints. [Raphaël Vinot]
+    + Create a sign_blob method to sign events. [Raphaël Vinot]
+    + support for signing added. [iglocska]
+  * Changes:
+    + Properly support lief 0.17. [Raphaël Vinot]
+    + Exception when a first/last seen is invalid. [Raphaël Vinot]
+    + [emailobject] Improve parsing of the Received headers. [Sami Tainio]
+    + Remove top level files from wheel. [Raphaël Vinot]
+    + Remove tests from wheel. [Raphaël Vinot]
+    + Allow MD in docs. [Raphaël Vinot]
+    + Remove ref to recommonmark. [Raphaël Vinot]
+    + [AnalystData] Flattening analyst data based on the recent changes on
+      MISP standard format.
+    + [MISPAnalystData] Reverted the declaration of Analyst data objects
+      lists back to the mixin parent class.
+    + Bump version, deps, templates. [Raphaël Vinot]
+    + Drop python 3.8, add python 3.13. [Raphaël Vinot]
+    + Remove fonts from submodules, on-demand download if needed. [Raphaël
+      Vinot]
+  * Other:
+    + Replace deprecated ExpandedPyMISP with PyMISP. [Jure Sah]
+    + Improve the logging message. [Peter Leitmann]
+    + Add a check if add_attributes() method truly has values to add. [Peter
+      Leitmann]
+    + Testing Analyst Data in different scenarios.
+
+-------------------------------------------------------------------
 Fri Nov 15 06:37:54 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 2.5.1:
