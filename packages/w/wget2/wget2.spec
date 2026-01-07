@@ -17,8 +17,8 @@
 
 
 Name:           wget2
-%define lname libwget3
-Version:        2.2.0
+%define lname libwget4
+Version:        2.2.1
 Release:        0
 Summary:        A Tool for Mirroring FTP and HTTP Servers
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
