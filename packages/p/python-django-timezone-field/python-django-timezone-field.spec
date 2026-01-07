@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-timezone-field
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,27 +18,25 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-timezone-field
-Version:        7.0
+Version:        7.2.1
 Release:        0
 Summary:        Django app providing database and form fields for pytz timezone objects
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/mfogel/django-timezone-field/
 Source:         https://github.com/mfogel/django-timezone-field/archive/%{version}.tar.gz#/django-timezone-field-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 2.3
+Requires:       python-Django >= 3.2
 Recommends:     python-pytz
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Django >= 2.3}
+BuildRequires:  %{python_module Django >= 3.2}
 BuildRequires:  %{python_module djangorestframework}
 BuildRequires:  %{python_module pytest-django}
-BuildRequires:  %{python_module pytest-lazy-fixture}
+BuildRequires:  %{python_module pytest-lazy-fixtures}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 # /SECTION
@@ -68,6 +66,6 @@ export TEST_DB_ENGINE=sqlite
 %license LICENSE.txt
 %doc README.md
 %{python_sitelib}/timezone_field
-%{python_sitelib}/django[-_]timezone[-_]field*/
+%{python_sitelib}/django[-_]timezone[-_]field-%{version}.dist-info
 
 %changelog

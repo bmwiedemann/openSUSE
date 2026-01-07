@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan  7 00:44:15 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 7.2.1:
+  * Add missing python classifier to package metadata
+  * Add support for django 6,0, 5.2
+  * Add support for python 3.14
+  * Add support for python 3.13
+  * Switch to the maintained pytest-lazy-fixtures package
+
+-------------------------------------------------------------------
 Fri Jul 19 11:38:11 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 7.0

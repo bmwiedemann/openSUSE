@@ -60,4 +60,17 @@
     <comment></comment>
     <requestid>1188822</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c789e9bffe2b7b3bae514fa9a0481830</srcmd5>
+    <version>7.2.1</version>
+    <time>1767798125</time>
+    <user>anag_factory</user>
+    <comment>- Update to 7.2.1:
+  * Add missing python classifier to package metadata
+  * Add support for django 6,0, 5.2
+  * Add support for python 3.14
+  * Add support for python 3.13
+  * Switch to the maintained pytest-lazy-fixtures package</comment>
+    <requestid>1325685</requestid>
+  </revision>
 </revisionlist>
