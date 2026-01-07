@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan  6 16:31:23 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.33.1
+  Fixes:
+  * MD3 skinfile did not matched surface names properly.
+  * MD3/MD5 multiple skins were broken.
+  * Make View model rendered last (before UI) all the time.
+  * Some FTE extensions fixes.
+
+-------------------------------------------------------------------
 Sun Dec 14 09:25:53 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.33.0
