@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package xorgproto
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %define srcname xorgproto
 
 Name:           %{srcname}%{psuffix}
-Version:        2024.1
+Version:        2025.1
 Release:        0
 %if "%{flavor}" == "doc"
 Summary:        The X11 Protocol collection (documentation)

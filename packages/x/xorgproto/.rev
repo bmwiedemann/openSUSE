@@ -209,4 +209,14 @@ definitions updates:</comment>
     improvements.</comment>
     <requestid>1161687</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3d0def34fca7ddbbcc69b360550b9868</srcmd5>
+    <version>2025.1</version>
+    <time>1767798039</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2025.1
+  * This release contains a combination of new keysyms additions
+    with the usual housekeeping and maintenance:</comment>
+    <requestid>1325610</requestid>
+  </revision>
 </revisionlist>
