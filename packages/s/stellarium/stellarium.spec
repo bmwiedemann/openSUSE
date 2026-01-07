@@ -1,7 +1,7 @@
 #
 # spec file for package stellarium
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 
 Name:           stellarium
-Version:        25.3
+Version:        25.4
 Release:        0
 Summary:        Astronomical Sky Simulator
 License:        GPL-2.0-or-later
@@ -49,8 +49,8 @@ BuildRequires:  pkgconfig(md4c)
 BuildRequires:  pkgconfig(nlopt)
 BuildRequires:  pkgconfig(zlib)
 %if %{with Qt5}
-BuildRequires:  libQt5Core-private-headers-devel >= 5.9.0
-BuildRequires:  libQt5Gui-private-headers-devel >= 5.9.0
+BuildRequires:  libQt5Core-private-headers-devel >= 5.12.0
+BuildRequires:  libQt5Gui-private-headers-devel >= 5.12.0
 BuildRequires:  libqt5-qtpaths
 BuildRequires:  pkgconfig(Qt5Charts)
 BuildRequires:  pkgconfig(Qt5Concurrent)
