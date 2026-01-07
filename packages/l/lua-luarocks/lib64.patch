@@ -9,14 +9,14 @@ should use `lib64` rather than `lib`.
 
 Signed-off-by: Michel Alexandre Salim <michel@michel-slm.name>
 ---
- src/luarocks/core/cfg.lua | 12 ++++++++++++
+ src/luarocks/core/cfg.lua |   12 ++++++++++++
  1 file changed, 12 insertions(+)
 
-diff --git a/src/luarocks/core/cfg.lua b/src/luarocks/core/cfg.lua
-index 4ac5ee281..c7d2cb2cb 100644
---- a/src/luarocks/core/cfg.lua
-+++ b/src/luarocks/core/cfg.lua
-@@ -397,6 +397,18 @@ local function make_defaults(lua_version, target_cpu, platforms, home)
+Index: luarocks-3.13.0/src/luarocks/core/cfg.lua
+===================================================================
+--- luarocks-3.13.0.orig/src/luarocks/core/cfg.lua	2025-12-29 00:01:55.000000000 +0100
++++ luarocks-3.13.0/src/luarocks/core/cfg.lua	2026-01-06 07:56:43.952247974 +0100
+@@ -410,6 +410,18 @@
        local xdg_cache_home = os.getenv("XDG_CACHE_HOME") or home.."/.cache"
        defaults.local_cache = xdg_cache_home.."/luarocks"
        defaults.web_browser = "xdg-open"

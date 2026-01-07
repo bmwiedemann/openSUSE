@@ -26,7 +26,7 @@
 %else
 %define lua_value  %(echo "%{flavor}" |sed -e 's:lua::')
 %endif
-Version:        3.12.2
+Version:        3.13.0
 Release:        0
 Summary:        A deployment and management system for Lua modules
 License:        MIT

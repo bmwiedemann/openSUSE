@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan  6 06:55:21 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 3.13.0:
+  - Supports Lua 5.5!
+  - documentation fixes
+  - fix: check_lua_libdir reads liblua in binary mode
+
+-------------------------------------------------------------------
 Fri Oct 24 14:49:36 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Switch off building lua51 build of the package.

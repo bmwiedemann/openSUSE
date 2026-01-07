@@ -169,4 +169,15 @@
 - Update to LuaRocks 3.11.1:</comment>
     <requestid>1313557</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9e1be1ed6eec78690188c7a86fdb580a</srcmd5>
+    <version>3.13.0</version>
+    <time>1767798030</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.13.0:
+  - Supports Lua 5.5!
+  - documentation fixes
+  - fix: check_lua_libdir reads liblua in binary mode</comment>
+    <requestid>1325524</requestid>
+  </revision>
 </revisionlist>
