@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan  6 18:20:15 UTC 2026 - Matthias Bach <marix@marix.org> - 0.21.1
+
+- Update to 0.21.1
+  * Fix escaping in help text when rich is installed but not used.
+
+-------------------------------------------------------------------
 Sat Dec 20 13:41:29 UTC 2025 - Matthias Bach <marix@marix.org>
 
 - Update to 0.20.1

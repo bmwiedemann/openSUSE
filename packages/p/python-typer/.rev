@@ -508,4 +508,14 @@
 </comment>
     <requestid>1323838</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>41f08d11202d914d71cd06cae4ed1858</srcmd5>
+    <version>0.21.1</version>
+    <time>1767798055</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.21.1
+  * Fix escaping in help text when rich is installed but not used.
+</comment>
+    <requestid>1325661</requestid>
+  </revision>
 </revisionlist>
