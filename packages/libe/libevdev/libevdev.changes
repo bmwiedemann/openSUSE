@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan  2 21:52:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.13.6:
+  * include: sync event codes with kernel 6.18
+
+-------------------------------------------------------------------
 Mon Oct 20 19:23:55 UTC 2025 - Matthias Bach <marix@marix.org>
 
-- Update to 1.14.5
+- Update to 1.13.5
   * include: sync event codes with kernel 6.16 and kernel 6.17
   * util: change the bit to shift to ULL
 
@@ -23,7 +29,7 @@ Tue Jun 20 20:46:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.13.1:
   * include: sync event codes with kernel 6.2
-  * CI fixes 
+  * CI fixes
 
 -------------------------------------------------------------------
 Wed Aug 17 18:56:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -54,7 +60,7 @@ Sat Dec 11 23:38:55 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * include: sync event codes with kernel 5.15
   * tools: add a helper tool to list all currently known codes
   * libevdev 1.12.0
-  * make-event-names: Fix determinism issue 
+  * make-event-names: Fix determinism issue
 
 -------------------------------------------------------------------
 Fri Jun 25 20:36:15 UTC 2021 - Matej Cepl <mcepl@suse.com>
@@ -69,7 +75,7 @@ Tue Feb  9 23:26:35 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * One new API, libevdev_disable_property()
   * Kernel 5.8 changed the SW_MAX define from 0x0f to 0x10. In some niche cases
     this causes issues if libevdev and the software build against
-    different headers and thus end up with different values 
+    different headers and thus end up with different values
   * include: sync event codes with kernel 5.10
   * Fix included license to the "always intended" MIT license
 
@@ -78,7 +84,7 @@ Sun Aug 16 01:38:47 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.9.1
   * no changelog available
-- remove n_buildfix_for_opensuse_12_2.patch: obsolete 
+- remove n_buildfix_for_opensuse_12_2.patch: obsolete
 
 -------------------------------------------------------------------
 Mon Apr  6 09:22:38 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
@@ -103,9 +109,9 @@ Mon Dec  7 20:48:13 UTC 2015 - jengelh@inai.de
 Fri Nov 13 19:59:09 UTC 2015 - mpluskal@suse.com
 
 - Update to 1.4.5
-  * Only a small fix, the suggested hwdb entry that the 
-		touchpad-edge-detector printed used the wrong codes for ABS_X 
-		and ABS_Y. Fixed with this release, the output is now suitable 
+  * Only a small fix, the suggested hwdb entry that the
+		touchpad-edge-detector printed used the wrong codes for ABS_X
+		and ABS_Y. Fixed with this release, the output is now suitable
 		for copy/paste into the udev hwdb.
 - Add gpg signature
 
@@ -114,17 +120,17 @@ Fri Sep  4 07:23:46 UTC 2015 - mpluskal@suse.com
 
 - Update to 1.4.4
   * Fix invalid absinfo range values reported by certain mtk soc
-  * tools: print out evdev override udev rule from touchpad edge 
+  * tools: print out evdev override udev rule from touchpad edge
     detector
-  * tools - tweak-device: add a --resolution command 
+  * tools - tweak-device: add a --resolution command
   * tools - tweak-device: revamp to reduce use of globals
   * Note that libevdev_free() does not close the fd
-  * tool   - tweak-device: fix wrong error message if the LED 
+  * tool   - tweak-device: fix wrong error message if the LED
     doesn't exist
   * tools - tweak-device: close the fd on exit
 - Changes for 1.4.3
   * include: update to 4.1 header
-  * tools: complain about devices that don't have abs x/y axes in 
+  * tools: complain about devices that don't have abs x/y axes in
     the edge detector
   * tools: widen frequency resolution to µs in the DPI tool
 - Changes for 1.4.2
@@ -248,12 +254,12 @@ Wed Feb 26 22:59:18 UTC 2014 - hrvoje.senjan@gmail.com
 -------------------------------------------------------------------
 Thu Feb  6 11:08:51 UTC 2014 - sndirsch@suse.com
 
-- fixed license to MIT in specfile 
+- fixed license to MIT in specfile
 
 -------------------------------------------------------------------
 Wed Jan  8 10:25:12 UTC 2014 - sndirsch@suse.com
 
-- n_buildfix_for_opensuse_12_2.patch 
+- n_buildfix_for_opensuse_12_2.patch
   * buildfix for openSUSE 12.2 (Linux kernel headers too old)
 
 -------------------------------------------------------------------
