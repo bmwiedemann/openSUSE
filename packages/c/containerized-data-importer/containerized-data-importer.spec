@@ -1,7 +1,7 @@
 #
 # spec file for package containerized-data-importer
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 %endif
 
 Name:           containerized-data-importer
-Version:        1.62.0
+Version:        1.64.0
 Release:        0
 Summary:        Container native virtualization
 License:        Apache-2.0
@@ -203,6 +203,11 @@ export CDI_SOURCE_DATE_EPOCH="$(date -r LICENSE +%s)"
 export CDI_GIT_COMMIT='v%{version}'
 export CDI_GIT_VERSION='v%{version}'
 export CDI_GIT_TREE_STATE="clean"
+
+# CDI encountered build failures in vendor/libguestfs.org/libnbd/wrappers.h
+# when Factory switched to the C23 standard. Until libguestfs makes header
+# files C23 compliant, use C11 when building CGO dependencies
+export CGO_CFLAGS="-std=gnu11"
 
 GOFLAGS="-buildmode=pie ${GOFLAGS}" ./hack/build/build-go.sh build \
     cmd/cdi-apiserver \

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec 17 18:55:42 UTC 2025 - James Fehlig <jfehlig@suse.com>
+
+- Update to version 1.64.0
+  Release notes https://github.com/kubevirt/containerized-data-importer/releases/tag/v1.64.0
+- spec: Use C11 when building CGO dependencies
+
+-------------------------------------------------------------------
+Tue Nov 25 17:53:05 UTC 2025 - James Fehlig <jfehlig@suse.com>
+
+- Update to version 1.63.1
+  Release notes https://github.com/kubevirt/containerized-data-importer/releases/tag/v1.63.1
+
+-------------------------------------------------------------------
 Wed Apr 23 04:19:41 UTC 2025 - Caleb Crane <caleb.crane@suse.com>
 
 - Update to version 1.62.0
