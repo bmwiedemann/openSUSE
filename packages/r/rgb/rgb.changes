@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan  3 11:54:11 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.1.1
+  * Remove "All rights reserved" from Oracle copyright notices
+  * showrgb.man: Use bold instead of italic for program name
+  * Add --help and --version options
+  * Improve man page formatting
+  * Strip trailing whitespace from source files
+  * rgb: Make color entries uniform
+
+-------------------------------------------------------------------
 Sat Oct 29 20:31:17 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.1.0

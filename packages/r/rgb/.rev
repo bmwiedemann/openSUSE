@@ -78,4 +78,18 @@
     or to bypass libraries we do normally search for (like Berkeley db).</comment>
     <requestid>1032261</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e6f3eb8c48852febd8e64d4f2c6f1607</srcmd5>
+    <version>1.1.1</version>
+    <time>1767798041</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.1.1
+  * Remove &quot;All rights reserved&quot; from Oracle copyright notices
+  * showrgb.man: Use bold instead of italic for program name
+  * Add --help and --version options
+  * Improve man page formatting
+  * Strip trailing whitespace from source files
+  * rgb: Make color entries uniform</comment>
+    <requestid>1325613</requestid>
+  </revision>
 </revisionlist>

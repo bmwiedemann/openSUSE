@@ -1,7 +1,7 @@
 #
 # spec file for package rgb
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rgb
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        X color name database
 License:        MIT
