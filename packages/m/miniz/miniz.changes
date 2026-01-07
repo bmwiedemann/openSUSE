@@ -1,0 +1,59 @@
+-------------------------------------------------------------------
+Tue Jan  6 18:29:13 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.1.0
+  * Fix warnings: Ensure correct integer promotion when adding.
+  * Prevent min/max conflicts between windows.h and std namespace.
+  * Update miniz_tdef.c to enable compiling in forced-C++ mode.
+  * Fix missing large file support warning on 64-bit Linux.
+  * Remove parameter check in tinfl_decompress that breaks
+    tinfl_decompress_mem_to_heap.
+  * Do not redefine TDEFL_LESS_MEMORY if already defined.
+  * Fix unused arg warnings when building with MINIZ_NO_TIME.
+  * Support Zip archives not starting at zero offset.
+  * Fix offset detection for MZ_ZIP_TYPE_USER.
+  * Avoid fdreopen if possible.
+  * cmake: new option BUILD_NO_STDIO to enable MINIZ_NO_STDIO.
+  * Replace defines with function wrappers etc. as much as possible
+- Update to version 3.0.2
+  * Fix buffer overrun in mz_utf8z_to_widechar on Windows
+- Update to version 3.0.1
+  * Fix compilation error with
+    MINIZ_USE_UNALIGNED_LOADS_AND_STORES=1
+- Use ldconfig_scriptlets macro.
+
+-------------------------------------------------------------------
+Tue Oct 25 07:39:43 UTC 2022 - Yasin Ammons <ilikebreadtoomuch@gmail.com>
+
+- Update to 3.0.0
+  * Reduce memory usage for inflate
+  * Use _ftelli64, _fseeki64 and stat with MinGW32 and OpenWatcom
+  * Fix varios warnings with OpenWatcom compiler
+  * Avoid using unaligned memory access in UBSan builds
+  * Set MINIZ_LITTLE_ENDIAN only if not set
+  * Add MINIZ_NO_DEFLATE_APIS and MINIZ_NO_INFLATE_APIS
+  * Fix use of uninitialized memory in tinfl_decompress_mem_to_callback()
+  * Use level_and_flags after MZ_DEFAULT_COMPRESSION has been handled
+  * Improve endianess detection
+  * Don't use unaligned stores and loads per default
+  * Fix function declaration if MINIZ_NO_STDIO is used
+  * Fix MZ_ZIP_GENERAL_PURPOSE_BIT_FLAG_UTF8 not being set
+  * Remove total files check (its 32-bit uint)
+  * tinfl_decompress: avoid NULL ptr arithmetic UB
+  * miniz_zip: fix mz_zip_reader_extract_to_heap to read correct sizes
+  * Eliminate 64-bit operations on 32-bit machines
+  * Disable building shared lib via CMake by default
+  * Fixed get error string for MZ_ZIP_TOTAL_ERRORS
+  * Write correct FLEVEL 2-bit value in zlib header
+  * miniz.pc.in: fix include path not containing the "miniz" suffix
+  * pkg-config tweaks
+  * Fix integer overflow in header corruption check
+  * Fix some warnings
+  * tdefl_compress_normal: Avoid NULL ptr arithmetic UB
+  * replace use of stdint.h types with mz_ variants
+- Remove cmake-install.patch
+
+-------------------------------------------------------------------
+Sun Oct 16 16:39:51 UTC 2022 - Yasin Ammons <ilikebreadtoomuch@gmail.com> - 2.2.0
+
+- Initial package (Version 2.2.0) 
