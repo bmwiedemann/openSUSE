@@ -34,7 +34,7 @@ Name:           kImageAnnotator
 %else
 Name:           kImageAnnotator-Qt%{qtver}
 %endif
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        Tool for annotating images
 License:        GPL-2.0-or-later

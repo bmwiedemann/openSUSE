@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 29 12:08:33 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.7.2
+  * Don't call XCloseDisplay on null object.
+  * Revert Custom Scaling Handling for KDE / QT
+  * Fix result images being rescaled on HDPI monitors
+
+-------------------------------------------------------------------
 Fri Mar 15 19:12:36 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.7.1:
