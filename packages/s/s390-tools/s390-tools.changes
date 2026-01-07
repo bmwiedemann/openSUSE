@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan  7 09:16:27 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Amended the .spec file to fix Rust build errors
+
+-------------------------------------------------------------------
 Mon Jan  5 09:09:46 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade s390-tools to 2.40 (jsc#PED-14586)

@@ -379,7 +379,6 @@ export KERNELIMAGE_MAKEFLAGS="%%{?_smp_mflags}"
 
 %make_build \
      ARCH=s390x \
-     RUSTFLAGS="-C link-arg=-fuse-ld=lld" \
      ZFCPDUMP_DIR=%{_prefix}/lib/s390-tools/zfcpdump \
      DISTRELEASE=%{rbrelease} \
      UDEVRUNDIR=/run/udev \
@@ -393,6 +392,7 @@ gcc -static -o read_values ${OPT_FLAGS} %{SOURCE86} -lqc
 mkdir -p %{buildroot}/boot/zipl
 mkdir -p %{buildroot}%{_sysconfdir}/zkey/repository
 %make_install \
+     ARCH=s390x \
      ZFCPDUMP_DIR=%{_prefix}/lib/s390-tools/zfcpdump \
      DISTRELEASE=%{rbrelease} \
      SYSTEMDSYSTEMUNITDIR=%{_unitdir} \
