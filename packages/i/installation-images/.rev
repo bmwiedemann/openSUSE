@@ -1930,4 +1930,12 @@ Currently, causes unresolvable builds in Leap 15.0 stagings. (forwarded request 
     <comment>Ruby fixes </comment>
     <requestid>1324471</requestid>
   </revision>
+  <revision rev="241" vrev="1">
+    <srcmd5>ca17d7b8e6bbe11b4d21181ecfd74405</srcmd5>
+    <version>17.168</version>
+    <time>1767798037</time>
+    <user>anag_factory</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>1325754</requestid>
+  </revision>
 </revisionlist>
