@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx-inline-tabs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%global skip_python2 1
 Name:           python-sphinx-inline-tabs
-Version:        2023.4.21
+Version:        2025.12.21.14
 Release:        0
 Summary:        Add inline tabbed content to your Sphinx documentation
 License:        MIT
@@ -40,7 +38,7 @@ BuildArch:      noarch
 Add inline tabbed content to your Sphinx documentation.
 
 %prep
-%setup -q -n sphinx_inline_tabs-%{version}
+%autosetup -p1 -n sphinx_inline_tabs-%{version}
 
 %build
 %pyproject_wheel
@@ -48,6 +46,10 @@ Add inline tabbed content to your Sphinx documentation.
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+# there are tests, but they test older Sphinx and older docutils than we have
+# https://github.com/pradyunsg/sphinx-inline-tabs/issues/55
 
 %files %{python_files}
 %doc README.md

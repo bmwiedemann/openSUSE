@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan  5 13:41:40 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2025.12.21.14:
+  * Docutils 0.22 compatibility
+  * Modernise project metadata
+  * Add basic tests for HTML markup
+
+-------------------------------------------------------------------
 Sun May 14 18:42:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2023.4.21:
