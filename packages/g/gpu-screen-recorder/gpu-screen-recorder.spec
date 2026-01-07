@@ -1,7 +1,7 @@
 #
 # spec file for package gpu-screen-recorder
 #
-# Copyright (c) 2025 mantarimay
+# Copyright (c) 2026 mantarimay
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_with test
 Name:           gpu-screen-recorder
-Version:        20251207
+Version:        20260107
 Release:        0
 Summary:        An extremely fast hardware-accelerated screen recorder
 License:        GPL-3.0-only
@@ -90,6 +90,8 @@ rm %{buildroot}/usr/lib/modprobe.d/gsr-nvidia.conf
 %if 0%{?suse_version} >= 1600
 %{_modprobedir}/gsr-nvidia.conf
 %endif
+%{_mandir}/man1/gpu-screen-recorder.1.gz
+%{_mandir}/man1/gsr-kms-server.1.gz
 
 %files devel
 %dir %{_includedir}/gsr

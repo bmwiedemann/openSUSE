@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jan 07 05:47:55 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 20260107:
+  * Test audio node leak fix
+  * Fix incorrect padding when amd gpu doesn't support padding fix
+    for hevc
+  * Fix cursor flicker on nvidia when capturing monitor
+  * Add -ffmpeg-video-opts and -ffmpeg-audio-opts
+  * Add -ffmpeg-opts argument to pass additional options to ffmpeg
+  * Correct deactivation of mjpeg if libturbo not available
+  * Regression fix: hevc_10bit broken
+  * Correctly combine damage tracking when using multiple sources
+  * Support v4l2 yuyv on nvidia
+  * wip sync
+  * Fix v4l2 mjpeg on nvidia, yuyv on nvidia not done
+  * Fix -w screen
+  * Add support for camera (yuyv, mjpeg) and multiple capture sources
+  * Add gsr-kms-server man page
+  * Add man page
+  * Comment out vulkan for now
+  * nvfbc: fix scaled monitor capture not working correctly
+  * Fix high cpu usage when not receiving audio
+
+-------------------------------------------------------------------
 Sun Dec  7 21:22:05 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Fix macros for leap 16
