@@ -1,7 +1,7 @@
 #
 # spec file for package cpluff
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,17 +19,14 @@
 %define sover 0
 
 Name:           cpluff
-Version:        0.2.0
+Version:        0.2.1
 Release:        0
 Summary:        A plug-in framework for C
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/jlehtine/c-pluff
-Source0:        %{name}-%{version}.tar.xz
+Source0:        c-pluff-%{version}.tar.gz
 Patch0:         cpluff.patch
-# PATCH proposed upstram https://github.com/jlehtine/c-pluff/pull/12
-Patch1:         003-cpp17-const.patch
-Patch2:         004-cpp17-nothrow.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkg-config
@@ -76,7 +73,7 @@ This package contains libraries and header files for
 developing applications that use lib%{name}xx.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n c-pluff-%{version}
 
 %build
 ./autogen.sh

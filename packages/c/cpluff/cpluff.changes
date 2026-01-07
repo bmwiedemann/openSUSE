@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan  5 07:14:48 UTC 2026 - Christoph G <foss@grueninger.de>
+
+- update to version 0.2.1
+  * C++17 build compatibility.
+  * Cleanup compilation warnings with modern GCC.
+  * Documentation: Remove references to mailing lists not in use
+    anymore.
+  * Documentation: Clean up obsolete links and use HTTPS links.
+- Drop 003-cpp17-const.patch and 004-cpp17-nothrow.patch as they
+  are part of the release
+
+
+-------------------------------------------------------------------
 Tue Nov  4 21:04:32 UTC 2025 - Christoph G <foss@grueninger.de>
 
 - Add proposed patches to fix C++17 compatiblity

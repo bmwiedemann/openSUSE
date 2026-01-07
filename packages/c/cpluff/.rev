@@ -34,4 +34,19 @@
   https://github.com/jlehtine/c-pluff/pull/12 (forwarded request 1315604 from mathletic)</comment>
     <requestid>1315714</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1eaa743cdeee9a8bb9d255d9ae6595fe</srcmd5>
+    <version>0.2.1</version>
+    <time>1767798058</time>
+    <user>anag_factory</user>
+    <comment>- update to version 0.2.1
+  * C++17 build compatibility.
+  * Cleanup compilation warnings with modern GCC.
+  * Documentation: Remove references to mailing lists not in use
+    anymore.
+  * Documentation: Clean up obsolete links and use HTTPS links.
+- Drop 003-cpp17-const.patch and 004-cpp17-nothrow.patch as they
+  are part of the release (forwarded request 1325340 from mathletic)</comment>
+    <requestid>1325491</requestid>
+  </revision>
 </revisionlist>
