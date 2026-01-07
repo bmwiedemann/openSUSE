@@ -31,7 +31,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{php_name}-%{pkg_name}
-Version:        5.9.3
+Version:        5.10.0
 Release:        0
 Summary:        PHP Extension Module
 License:        BSD-3-Clause
@@ -39,12 +39,14 @@ Group:          Development/Libraries/PHP
 URL:            https://pecl.php.net/package/%{pkg_name}
 Source0:        https://pecl.php.net/get/%{pkg_name}-%{version}.tgz
 Source1:        php-%{pkg_name}-rpmlintrc
+# PATCH-FIX-OPENSUSE - use Zend/zend_smart_string.h
+Patch1:         phalcon-fix-build-8.5.patch
 BuildRequires:  %{php_name}-ctype
 BuildRequires:  %{php_name}-devel
 BuildRequires:  %{php_name}-pdo
 BuildRequires:  %{php_name}-psr >= 0.7.0
 BuildRequires:  gcc
-BuildRequires:  %{php_name} < 8.5
+BuildRequires:  %{php_name} < 8.6
 Requires:       %{php_name}-mysql
 
 %description
@@ -54,7 +56,7 @@ both dynamic and static typed and it supports the features we need to
 create and maintain a project like Phalcon.
 
 %prep
-%setup -q -n %{pkg_name}-%{version}
+%autosetup -p1 -n %{pkg_name}-%{version}
 
 %build
 export CFLAGS="%{optflags} -fvisibility=hidden -fpermissive"
