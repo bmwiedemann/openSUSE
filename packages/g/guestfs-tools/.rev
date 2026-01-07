@@ -215,4 +215,12 @@
     <comment>Update guestfs-tools to version 1.54.0</comment>
     <requestid>1279329</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>3263f63b9819699da9221a2065f249fb</srcmd5>
+    <version>1.55.3</version>
+    <time>1767798070</time>
+    <user>anag_factory</user>
+    <comment>Update guestfs-tools to version 1.55.3. Also fixes build against new libguestfs.</comment>
+    <requestid>1325651</requestid>
+  </revision>
 </revisionlist>

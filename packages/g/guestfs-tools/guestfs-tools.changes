@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan  6 10:27:16 MST 2026 - carnold@suse.com
+
+- Update to version 1.55.3 (jsc#PED-14625)
+  * builder/templates/make-template.ml: Add +str and +unix for OCaml 5
+  * builder/templates/make-template.ml: Use quoted string literals for regexps
+  * mlcustomize/firstboot.ml: Use quoted string literals for firstboot
+  * customize: Fixes for selinux relabelling and Windows firstboot
+  * mlstdutils: Add List.combine4 function
+  * mlcustomize/SELinux_relabel.ml: Add comment
+  * mlcustomize/SELinux_relabel.ml: Use new guestfs_setfiles API
+  * mlcustomize/SELinux_relabel.ml: Relabel every mountpoint
+  * builder: Replace -cpu host with -cpu max in example
+  * builder: Update link to templates to use https
+  * builder: Build fedora-42 template
+
+-------------------------------------------------------------------
 Tue May 20 16:14:35 MDT 2025 - carnold@suse.com
 
 - Update to version 1.54.0 (jsc#PED-12706)
