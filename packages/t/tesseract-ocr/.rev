@@ -276,4 +276,39 @@
 	* Use links to the git history and online release notes instead of local ChangeLog by @stweil in #4423</comment>
     <requestid>1284007</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>dd1db4fff779123378ee8477ea2e1b82</srcmd5>
+    <version>5.5.2</version>
+    <time>1767798150</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 5.5.2:
+  * Simplify code for osdetect by @stweil in #4436
+  * Fix and improve configuration for cmake builds by @stweil in #4437
+  * Modernize some for loops and fix some signed/unsigned issues by @stweil in #4438
+  * Cmake optimization with warp2 by @zdenop in #4452
+  * Update checkout action by @rettinghaus in #4461
+  * chore: fix cyrillic typo by @0xflotus in #4462
+  * Move version info. to appropriate ALTO element by @david-russo in #4464
+  * CI: Remove unneeded export statements from cmake workflow for macOS by @stweil in #4467
+  * Bump actions/checkout from 5 to 6 by @dependabot[bot] in #4485
+  * Bump github/codeql-action from 2 to 4 by @dependabot[bot] in #4488
+  * Bump actions/upload-artifact from 4 to 5 by @dependabot[bot] in #4487
+  * Bump mikepenz/action-junit-report from 4 to 6 by @dependabot[bot] in #4486
+  * Bump actions/upload-artifact from 5 to 6 by @dependabot[bot] in #4494
+
+  * Fix linear congruential random number generator by @stweil in #4357
+  * Make list classes templated by @egorpugin in #4356
+  * add cli -c parameter(s) to init vectors by @zdenop in #4363
+  * handle colormaps correctly by @zdenop in #4369
+  * use constexpr for kDawgMagicNumber by @zdenop in #4378
+  * Extend elf_aux_info() support for RISC-V on FreeBSD and OpenBSD by @brad0 in #4376
+  * Fix building elf_aux_info() support on OpenBSD/arm by @brad0 in #4383
+  * Fix invalid empty interval in punct_stripped() for all-punctuation words by @EnodoGH in #4404
+  * Fix function addAvailableLanguages (issue #4416) by @stweil in #4417
+  * Avoid error in pixSauvolaBinarizeTiled (issue #4390) by @stweil in #4418
+  * Fix duplicated IDs in ALTO XML when multiple pages are present by @jankal in #4386
+  * Remove unused include statements for tprintf.h by @stweil in #4419
+  * Use links to the git history and online release notes instead of local ChangeLog by @stweil in #4423</comment>
+    <requestid>1325726</requestid>
+  </revision>
 </revisionlist>
