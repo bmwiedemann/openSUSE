@@ -6066,4 +6066,12 @@ Thu Jun  12 09:05:12 UTC 2025 - Bernhard Wiedemann &lt;bwiedemann@suse.com&gt;
   * no cve listed yet</comment>
     <requestid>1323722</requestid>
   </revision>
+  <revision rev="495" vrev="1">
+    <srcmd5>d4332d9c3bb7227fda66606c79e087e0</srcmd5>
+    <version>143.0.7499.192</version>
+    <time>1767798100</time>
+    <user>anag_factory</user>
+    <comment>Chromium 143.0.7499.192 (boo#1256067)</comment>
+    <requestid>1325666</requestid>
+  </revision>
 </revisionlist>

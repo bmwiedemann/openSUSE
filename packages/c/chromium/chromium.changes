@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan  6 20:19:27 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 143.0.7499.192 (boo#1256067):
+  * CVE-2026-0628: Insufficient policy enforcement in WebView tag
+
+-------------------------------------------------------------------
 Fri Dec 19 18:04:53 CET 2025 - ro@suse.de
 
 - Chromium 143.0.7499.169 (stable released 2025-12-18)
