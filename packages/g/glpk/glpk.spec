@@ -1,7 +1,7 @@
 #
 # spec file for package glpk
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Source0:        https://ftp.gnu.org/gnu/glpk/%{name}-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/glpk/%{name}-%{version}.tar.gz.sig
 Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=%{name}&download=1#/%{name}.keyring
 Patch0:         glpk-no_random_return.patch
+Patch1:         bool.patch
 BuildRequires:  ghostscript
 BuildRequires:  gmp-devel
 BuildRequires:  libiodbc-devel
@@ -87,12 +88,12 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
   --enable-mysql \
   --disable-static
 %if %{do_profiling}
-  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_generate}" V=1
-  make check %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_generate}"
-  make %{?_smp_mflags} clean
-  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_feedback}" V=1
+  %make_build CFLAGS="%{optflags} %{cflags_profile_generate}" V=1
+  %make_build check CFLAGS="%{optflags} %{cflags_profile_generate}"
+  %make_build clean
+  %make_build CFLAGS="%{optflags} %{cflags_profile_feedback}" V=1
 %else
-  make %{?_smp_mflags} V=1
+  %make_build V=1
 %endif
 
 %install
@@ -101,24 +102,23 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 # creates support file for pkg-config
 mkdir -p %{buildroot}/%{_libdir}/pkgconfig
-tee %{buildroot}/%{_libdir}/pkgconfig/%{name}.pc << "EOF"
+cat >%{buildroot}/%{_libdir}/pkgconfig/%{name}.pc <<-EOF
 prefix=%{_prefix}
 exec_prefix=${prefix}
 libdir=${exec_prefix}/%{_lib}
 includedir=${prefix}/include
 
-Name: %{name}
+Name:           %{name}
 Description: GNU Linear Programming Kit
-Version: %{version}
+Version:        %{version}
 Libs: -lglpk
 Cflags: -I${includedir}
 EOF
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
-%post -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lname}
 
 %files
 %{_bindir}/glpsol
@@ -133,12 +133,7 @@ make %{?_smp_mflags} check
 %{_libdir}/pkgconfig/%{name}.pc
 
 %files doc
-%doc ChangeLog NEWS README
-%doc doc/*.txt doc/*.pdf
-%doc examples/*.mod
-%doc examples/*.c
-%doc examples/*.dat
-%doc examples/*.mps
-%doc examples/*.lp
+%doc ChangeLog NEWS README doc/*.txt doc/*.pdf
+%doc examples/*.mod examples/*.c examples/*.dat examples/*.mps examples/*.lp
 
 %changelog

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  5 12:43:30 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Add bool.patch to fix compile error with gcc15/16 and C23 mode.
+- Compact %files list.
+
+-------------------------------------------------------------------
 Tue Feb 27 11:03:29 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

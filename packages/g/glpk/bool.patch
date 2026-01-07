@@ -1,0 +1,33 @@
+From: Jan Engelhardt <ej@inai.de>
+Date: 2025-12-17 16:29:06.321837113 +0100
+References: https://lists.gnu.org/archive/html/bug-glpk/2025-08/msg00001.html
+
+In C99, ``_Bool`` was added as a keyword, and ``bool`` was made a
+convenience macro that could be redefined.
+In C23 now, ``bool`` was added as a keyword, which means
+``#undef bool`` stops working.
+
+minisat.h is not exposed, so it only affects glpk internally.
+Let's *hope* nobody used bool and treated like it had 4 bytes.
+(Compile-test only. glpk is archived on github - dead package?)
+
+---
+ src/minisat/minisat.h |    5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+Index: glpk-5.0/src/minisat/minisat.h
+===================================================================
+--- glpk-5.0.orig/src/minisat/minisat.h
++++ glpk-5.0/src/minisat/minisat.h
+@@ -34,10 +34,7 @@
+ /*====================================================================*/
+ /* Simple types: */
+ 
+-typedef int bool;
+-
+-#define true  1
+-#define false 0
++#include <stdbool.h>
+ 
+ typedef int  lit;
+ #if 0 /* by mao */
