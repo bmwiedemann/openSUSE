@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Wed Nov  5 23:32:58 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Do not build for Python 3.14, it is included in the stdlib.
+- Add patch do-not-abort-with-python313.patch:
+  * Do not abort with Python 3.13 when checking if a mutex is locked.
+
+-------------------------------------------------------------------
+Mon Nov  3 11:53:33 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- Initial packaging (1.0.0)
