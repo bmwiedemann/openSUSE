@@ -18,10 +18,10 @@
 
 %define cpan_name User-Identity
 Name:           perl-User-Identity
-Version:        3.0.0
+Version:        4.0.0
 Release:        0
-# 3.00 -> normalize -> 3.0.0
-%define cpan_version 3.00
+# 4.00 -> normalize -> 4.0.0
+%define cpan_version 4.00
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Collect information about a user
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -32,9 +32,11 @@ BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Hash::Ordered) >= 0.14
+BuildRequires:  perl(Log::Report) >= 1.420
 BuildRequires:  perl(Test::More) >= 1
 BuildRequires:  perl(Test::Pod) >= 1
 Requires:       perl(Hash::Ordered) >= 0.14
+Requires:       perl(Log::Report) >= 1.420
 Provides:       perl(Mail::Identity) = %{version}
 Provides:       perl(User::Identity) = %{version}
 Provides:       perl(User::Identity::Archive) = %{version}
@@ -56,9 +58,10 @@ informational objects which are related to one user. The 'User::Identity'
 module tries to be smart providing defaults, conversions and often required
 combinations.
 
-*This is a maintenance release for the old interface*. Read
-_https://github.com/markov2/perl5-Mail-Box/wiki/_ how to move towards
-version 4.
+*Be aware:* This module versions 4.0 and up is not fully compatible with
+older releases: mainly the exception handling has changed. When you need to
+upgrade, please read at https://github.com/markov2/perl5-Mail-Box/wiki/.
+*Version 3 is still maintained* and may see new releases as well.
 
 The identities are not implementing any kind of storage, and can therefore
 be created by any simple or complex Perl program. This way, it is more

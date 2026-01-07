@@ -66,4 +66,13 @@
   	- bump version to show it is not compatible with MailBox 4</comment>
     <requestid>1323811</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b4a9bc22a4dfdf0b1c16201f864ea1c7</srcmd5>
+    <version>4.0.0</version>
+    <time>1767798062</time>
+    <user>anag_factory</user>
+    <comment>- updated to 4.0.0 (4.00)
+   see /usr/share/doc/packages/perl-User-Identity/ChangeLog</comment>
+    <requestid>1325135</requestid>
+  </revision>
 </revisionlist>
