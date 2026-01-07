@@ -29,7 +29,7 @@
 
 Name:           libdrm
 # Please remember to adjust the version in the n_libdrm-drop-valgrind* patches
-Version:        2.4.130
+Version:        2.4.131
 Release:        0
 Summary:        Userspace Interface for Kernel DRM Services
 License:        MIT

@@ -1962,4 +1962,12 @@ Man pages are disabled for this build, upstream disabled them for this release. 
   * headers: drm: Sync virtgpu_drm.h with Linux v6.16</comment>
     <requestid>1321606</requestid>
   </revision>
+  <revision rev="188" vrev="1">
+    <srcmd5>6235ac3e315fc2b1842dfb31fd24551a</srcmd5>
+    <version>2.4.131</version>
+    <time>1767798046</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1325624</requestid>
+  </revision>
 </revisionlist>
