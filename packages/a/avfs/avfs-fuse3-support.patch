@@ -1,0 +1,363 @@
+From f7c2526778fc8323ff40137e7e3bcaab1d925020 Mon Sep 17 00:00:00 2001
+From: Ralf Hoffmann <ralf@boomerangsworld.de>
+Date: Fri, 19 Dec 2025 21:39:46 +0100
+Subject: [PATCH] add support for fuse3
+
+---
+ configure.ac | 34 +++++++++++++++++++++++-----------
+ fuse/avfsd.c | 52 ++++++++++++++++++++++++++++++++++++++++++++++++----
+ 2 files changed, 71 insertions(+), 15 deletions(-)
+
+!diff --git a/configure.ac b/configure.ac
+!index cd516a1..9e96097 100644
+!--- a/configure.ac
+!+++ b/configure.ac
+!@@ -288,24 +288,36 @@ if test $fuse_build = yes; then
+!   if test $run_fuse_test = yes; then
+!     AC_MSG_CHECKING([whether fuse is new enough])
+! 
+!-    pkg-config --atleast-version=2.6.0 fuse >/dev/null 2>/dev/null
+!-
+!-    if test $? != 0; then
+!-      dnl too old fuse or no fuse or no pkg-config
+!-      dnl in any case disable fuse_build
+!-      AC_MSG_RESULT([no])
+!-      fuse_build=no
+!-    else
+!+    pkg-config fuse3 >/dev/null 2>/dev/null
+!+    if test $? -eq 0; then
+!       AC_MSG_RESULT([yes])
+!+    else
+!+      pkg-config --atleast-version=2.6.0 fuse >/dev/null 2>/dev/null
+!+
+!+      if test $? -ne 0; then
+!+        dnl too old fuse or no fuse or no pkg-config
+!+        dnl in any case disable fuse_build
+!+        AC_MSG_RESULT([no])
+!+        fuse_build=no
+!+      else
+!+        AC_MSG_RESULT([yes])
+!+      fi
+!     fi
+!   fi
+! fi
+! 
+! if test $fuse_build = yes; then
+!     fuse_pkg_found=no
+!-    PKG_CHECK_EXISTS([fuse],[
+!-                     PKG_CHECK_MODULES([LIBFUSE],[fuse],
+!-                                       [fuse_pkg_found=yes])
+!+    PKG_CHECK_EXISTS([fuse3],[
+!+                     PKG_CHECK_MODULES([LIBFUSE],[fuse3],
+!+                                       [fuse_pkg_found=yes
+!+                                       AC_DEFINE(LIBFUSE_VERSION, 3, [Define to 2 or 3 according to libfuse major version])
+!+                                       ])
+!+                     ],
+!+                     [PKG_CHECK_MODULES([LIBFUSE],[fuse],
+!+                                        [fuse_pkg_found=yes
+!+                                         AC_DEFINE(LIBFUSE_VERSION, 2, [Define to 2 or 3 according to libfuse major version])
+!+                                        ])
+!                      ])
+! 
+!     if test "$fuse_pkg_found" = "yes" -o "$run_fuse_test" = "no"; then
+diff --git a/fuse/avfsd.c b/fuse/avfsd.c
+index c79cedc..9db9121 100644
+--- a/fuse/avfsd.c
++++ b/fuse/avfsd.c
+@@ -7,7 +7,12 @@
+     See the file COPYING.
+ */
+ 
+-#define FUSE_USE_VERSION 26
++#include "config.h"
++#if LIBFUSE_VERSION == 3
++#  define FUSE_USE_VERSION 31
++#else
++#  define FUSE_USE_VERSION 26
++#endif
+ 
+ #include <fuse.h>
+ #include <virtual.h>
+@@ -24,7 +29,11 @@ struct fuse *fuse;
+ 
+ static pthread_mutex_t avfsd_mutexlock = PTHREAD_MUTEX_INITIALIZER;
+ 
++#if LIBFUSE_VERSION == 3
++static int avfsd_getattr(const char *path, struct stat *stbuf, struct fuse_file_info *fi)
++#else
+ static int avfsd_getattr(const char *path, struct stat *stbuf)
++#endif
+ {
+     int res;
+ 
+@@ -48,8 +57,13 @@ static int avfsd_readlink(const char *path, char *buf, size_t size)
+ }
+ 
+ 
++#if LIBFUSE_VERSION == 3
++static int avfsd_readdir(const char *path, void *buf, fuse_fill_dir_t filler,
++                         off_t offset, struct fuse_file_info *fi, enum fuse_readdir_flags flags)
++#else
+ static int avfsd_readdir(const char *path, void *buf, fuse_fill_dir_t filler,
+                          off_t offset, struct fuse_file_info *fi)
++#endif
+ {
+     DIR *dp;
+     struct dirent *de;
+@@ -65,8 +79,13 @@ static int avfsd_readdir(const char *path, void *buf, fuse_fill_dir_t filler,
+         memset(&st, 0, sizeof(st));
+         st.st_ino = de->d_ino;
+         st.st_mode = de->d_type << 12;
++#if LIBFUSE_VERSION == 3
++        if (filler(buf, de->d_name, &st, 0, FUSE_FILL_DIR_DEFAULTS))
++            break;
++#else
+         if (filler(buf, de->d_name, &st, 0))
+             break;
++#endif
+     }
+ 
+     virt_closedir(dp);
+@@ -128,7 +147,11 @@ static int avfsd_symlink(const char *from, const char *to)
+     return 0;
+ }
+ 
++#if LIBFUSE_VERSION == 3
++static int avfsd_rename(const char *from, const char *to, unsigned int flags)
++#else
+ static int avfsd_rename(const char *from, const char *to)
++#endif
+ {
+     int res;
+ 
+@@ -150,7 +173,11 @@ static int avfsd_link(const char *from, const char *to)
+     return 0;
+ }
+ 
++#if LIBFUSE_VERSION == 3
++static int avfsd_chmod(const char *path, mode_t mode, struct fuse_file_info *fi)
++#else
+ static int avfsd_chmod(const char *path, mode_t mode)
++#endif
+ {
+     int res;
+ 
+@@ -161,7 +188,11 @@ static int avfsd_chmod(const char *path, mode_t mode)
+     return 0;
+ }
+ 
++#if LIBFUSE_VERSION == 3
++static int avfsd_chown(const char *path, uid_t uid, gid_t gid, struct fuse_file_info *fi)
++#else
+ static int avfsd_chown(const char *path, uid_t uid, gid_t gid)
++#endif
+ {
+     int res;
+ 
+@@ -172,7 +203,11 @@ static int avfsd_chown(const char *path, uid_t uid, gid_t gid)
+     return 0;
+ }
+ 
++#if LIBFUSE_VERSION == 3
++static int avfsd_truncate(const char *path, off_t size, struct fuse_file_info *fi)
++#else
+ static int avfsd_truncate(const char *path, off_t size)
++#endif
+ {
+     int res;
+ 
+@@ -183,11 +218,20 @@ static int avfsd_truncate(const char *path, off_t size)
+     return 0;
+ }
+ 
+-static int avfsd_utime(const char *path, struct utimbuf *buf)
++#if LIBFUSE_VERSION == 3
++static int avfsd_utime(const char *path, const struct timespec tv[2],
++                       struct fuse_file_info *fi)
++#else
++static int avfsd_utime(const char *path, const struct timespec tv[2])
++#endif
+ {
+     int res;
+ 
+-    res = virt_utime(path, buf);
++    struct utimbuf buf;
++    buf.actime = tv[0].tv_sec;
++    buf.modtime = tv[1].tv_sec;
++
++    res = virt_utime(path, &buf);
+     if (res == -1)
+         return -errno;
+ 
+@@ -300,7 +344,7 @@ static struct fuse_operations avfsd_oper = {
+     chmod:	avfsd_chmod,
+     chown:	avfsd_chown,
+     truncate:	avfsd_truncate,
+-    utime:	avfsd_utime,
++    utimens:	avfsd_utime,
+     open:	avfsd_open,
+     read:	avfsd_read,
+     write:	avfsd_write,
+-- 
+2.51.0
+
+--- a/configure
++++ b/configure
+@@ -14585,15 +15342,21 @@ if test $fuse_build = yes; then
+     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether fuse is new enough" >&5
+ printf %s "checking whether fuse is new enough... " >&6; }
+ 
+-    pkg-config --atleast-version=2.6.0 fuse >/dev/null 2>/dev/null
++    pkg-config fuse3 >/dev/null 2>/dev/null
++    if test $? -eq 0; then
++      { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: yes" >&5
++printf "%s\n" "yes" >&6; }
++    else
++      pkg-config --atleast-version=2.6.0 fuse >/dev/null 2>/dev/null
+ 
+-    if test $? != 0; then
+-                  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
++      if test $? -ne 0; then
++                        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+ printf "%s\n" "no" >&6; }
+-      fuse_build=no
+-    else
+-      { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: yes" >&5
++        fuse_build=no
++      else
++        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+ printf "%s\n" "yes" >&6; }
++      fi
+     fi
+   fi
+ fi
+@@ -14601,12 +15364,104 @@ fi
+ if test $fuse_build = yes; then
+     fuse_pkg_found=no
+     if test -n "$PKG_CONFIG" && \
+-    { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"fuse\""; } >&5
+-  ($PKG_CONFIG --exists --print-errors "fuse") 2>&5
++    { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"fuse3\""; } >&5
++  ($PKG_CONFIG --exists --print-errors "fuse3") 2>&5
++  ac_status=$?
++  printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
++  test $ac_status = 0; }; then
++
++
++pkg_failed=no
++{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for LIBFUSE" >&5
++printf %s "checking for LIBFUSE... " >&6; }
++
++if test -n "$LIBFUSE_CFLAGS"; then
++    pkg_cv_LIBFUSE_CFLAGS="$LIBFUSE_CFLAGS"
++ elif test -n "$PKG_CONFIG"; then
++    if test -n "$PKG_CONFIG" && \
++    { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"fuse3\""; } >&5
++  ($PKG_CONFIG --exists --print-errors "fuse3") 2>&5
++  ac_status=$?
++  printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
++  test $ac_status = 0; }; then
++  pkg_cv_LIBFUSE_CFLAGS=`$PKG_CONFIG --cflags "fuse3" 2>/dev/null`
++else
++  pkg_failed=yes
++fi
++ else
++    pkg_failed=untried
++fi
++if test -n "$LIBFUSE_LIBS"; then
++    pkg_cv_LIBFUSE_LIBS="$LIBFUSE_LIBS"
++ elif test -n "$PKG_CONFIG"; then
++    if test -n "$PKG_CONFIG" && \
++    { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"fuse3\""; } >&5
++  ($PKG_CONFIG --exists --print-errors "fuse3") 2>&5
+   ac_status=$?
+   printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+   test $ac_status = 0; }; then
++  pkg_cv_LIBFUSE_LIBS=`$PKG_CONFIG --libs "fuse3" 2>/dev/null`
++else
++  pkg_failed=yes
++fi
++ else
++    pkg_failed=untried
++fi
++
++
++
++if test $pkg_failed = yes; then
++
++if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
++        _pkg_short_errors_supported=yes
++else
++        _pkg_short_errors_supported=no
++fi
++        if test $_pkg_short_errors_supported = yes; then
++	        LIBFUSE_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors "fuse3" 2>&1`
++        else
++	        LIBFUSE_PKG_ERRORS=`$PKG_CONFIG --print-errors "fuse3" 2>&1`
++        fi
++	# Put the nasty error message in config.log where it belongs
++	echo "$LIBFUSE_PKG_ERRORS" >&5
++
++	as_fn_error $? "Package requirements (fuse3) were not met:
++
++$LIBFUSE_PKG_ERRORS
++
++Consider adjusting the PKG_CONFIG_PATH environment variable if you
++installed software in a non-standard prefix.
+ 
++Alternatively, you may set the environment variables LIBFUSE_CFLAGS
++and LIBFUSE_LIBS to avoid the need to call pkg-config.
++See the pkg-config man page for more details.
++" "$LINENO" 5
++elif test $pkg_failed = untried; then
++	{ { printf "%s\n" "$as_me:${as_lineno-$LINENO}: error: in '$ac_pwd':" >&5
++printf "%s\n" "$as_me: error: in '$ac_pwd':" >&2;}
++as_fn_error $? "The pkg-config script could not be found or is too old.  Make sure it
++is in your PATH or set the PKG_CONFIG environment variable to the full
++path to pkg-config.
++
++Alternatively, you may set the environment variables LIBFUSE_CFLAGS
++and LIBFUSE_LIBS to avoid the need to call pkg-config.
++See the pkg-config man page for more details.
++
++To get pkg-config, see <http://pkg-config.freedesktop.org/>.
++See 'config.log' for more details" "$LINENO" 5; }
++else
++	LIBFUSE_CFLAGS=$pkg_cv_LIBFUSE_CFLAGS
++	LIBFUSE_LIBS=$pkg_cv_LIBFUSE_LIBS
++        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: yes" >&5
++printf "%s\n" "yes" >&6; }
++	fuse_pkg_found=yes
++
++printf "%s\n" "#define LIBFUSE_VERSION 3" >>confdefs.h
++
++
++fi
++
++else
+ 
+ pkg_failed=no
+ { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for LIBFUSE" >&5
+@@ -14692,6 +15547,10 @@ else
+         { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+ printf "%s\n" "yes" >&6; }
+ 	fuse_pkg_found=yes
++
++printf "%s\n" "#define LIBFUSE_VERSION 2" >>confdefs.h
++
++
+ fi
+ 
+ fi
+--- a/config.h.in
++++ b/config.h.in
+@@ -54,6 +54,9 @@
+ /* Define to 1 if you have the 'pthread' library (-lpthread). */
+ #undef HAVE_LIBPTHREAD
+ 
++/* libfuse version */
++#undef LIBFUSE_VERSION
++
+ /* Define to 1 if your system has libzstd installed */
+ #undef HAVE_LIBZSTD
+ 

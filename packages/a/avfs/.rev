@@ -102,4 +102,13 @@
     <comment></comment>
     <requestid>1276803</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>64224f8e7a39015c175552d2f23eaf6c</srcmd5>
+    <version>1.2.0</version>
+    <time>1767798168</time>
+    <user>anag_factory</user>
+    <comment>- Add patch avfs-fuse3-support.patch
+  * Support avfsd by porting upstream commit f7c2526778fc8323ff40137e7e3bcaab1d925020</comment>
+    <requestid>1325770</requestid>
+  </revision>
 </revisionlist>

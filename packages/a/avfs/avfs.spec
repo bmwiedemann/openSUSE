@@ -1,7 +1,7 @@
 #
 # spec file for package avfs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,9 +27,11 @@ URL:            https://avf.sourceforge.net/
 Source0:        https://downloads.sf.net/avf/%{name}-%{version}.tar.bz2
 Source1:        https://downloads.sf.net/avf/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
+Patch0:         %{name}-fuse3-support.patch
 BuildRequires:  lzlib-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(fuse3)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(neon)
@@ -93,6 +95,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %doc doc/FORMAT
 %{_bindir}/davpass
 %{_bindir}/ftppass
+%{_bindir}/avfsd
+%{_bindir}/mountavfs
+%{_bindir}/umountavfs
 %dir %{_libdir}/avfs
 %dir %{_libdir}/avfs/extfs
 %{_libdir}/avfs/extfs/*

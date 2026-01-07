@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan  7 10:32:03 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch avfs-fuse3-support.patch
+  * Support avfsd by porting upstream commit f7c2526778fc8323ff40137e7e3bcaab1d925020
+
+-------------------------------------------------------------------
 Sat May 10 20:57:27 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.2.0:
