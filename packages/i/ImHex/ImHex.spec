@@ -1,7 +1,7 @@
 #
 # spec file for package ImHex
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define sover 1_38_0
+%define sover 1_38_1
 Name:           ImHex
-Version:        1.38.0
+Version:        1.38.1
 Release:        0
 Summary:        A Hex Editor for Reverse Engineers, Programmers
 License:        GPL-2.0-only
