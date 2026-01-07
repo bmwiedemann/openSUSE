@@ -1,0 +1,807 @@
+-------------------------------------------------------------------
+Fri Jan  2 15:30:14 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.440.0 (1.44)
+   see /usr/share/doc/packages/perl-Log-Report/ChangeLog
+
+  version 1.44: Mon 22 Dec 16:56:48 CET 2025
+  	Changes:
+  	- rename exception 'classes' into exception 'tags'.  Backwards compatible.
+  	Fixes:
+  	- converted die message get a 'die' tag, as the docs promissed.
+  	Improvements:
+  	- move documentation about format strings to ::Message.
+  	- minimize LR imports.
+
+-------------------------------------------------------------------
+Sat Dec  6 05:34:47 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.430.0 (1.43)
+   see /usr/share/doc/packages/perl-Log-Report/ChangeLog
+
+  version 1.43: Fri  5 Dec 11:32:36 CET 2025
+  	Improvements:
+  	- add bugtracker to meta
+  	- add github Funding references
+  	- explain formats better
+  version 1.42: Tue  4 Nov 10:24:16 CET 2025
+  	Changes:
+  	- the Dancer* modules moved to separate distribution Dancer2-Plugin-LogReport
+  	Fixes:
+  	- report to multiple dispatchers
+  	  [Sam Kington] github issue #17
+  version 1.41: Thu 11 Sep 13:01:50 CEST 2025
+  	Changes:
+  	- require Perl 5.16 (2012)
+  	Fixes:
+  	- remember message 'to' within try
+  	  [Andy Beverley] github issue #9
+  	Improvements:
+  	- reorder docs in ::Domain
+  	- remove unused fromTemplateToolkit()
+  	- convert to OODoc 3.03
+  	- protect original exception from before throw()
+
+-------------------------------------------------------------------
+Sun Apr 20 05:33:47 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.400.0 (1.40)
+   see /usr/share/doc/packages/perl-Log-Report/ChangeLog
+
+  version 1.40: Fri 18 Apr 17:05:09 CEST 2025
+
+  	Fixes:
+  	- own translation tables contained stuff moved to Lexicon
+
+  	Improvements:
+  	- reduce number of textdomain lookups at import.
+  	- refer to Dancer2::Template::TTLogReport
+  	- show version of XML::LibXML for tests 42/43
+  	- fix test for libxml2 use [cpantesters]
+
+-------------------------------------------------------------------
+Tue Sep 10 05:31:33 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.390.0 (1.39)
+   see /usr/share/doc/packages/perl-Log-Report/ChangeLog
+
+  version 1.39: Mon  9 Sep 19:57:06 CEST 2024
+  	Fixes:
+  	- fix output of error [Andy Beverley]
+  version 1.38: Mon  9 Sep 11:00:15 CEST 2024
+  	Fixes:
+  	- Require Dancer2 >= 0.207 for test [cpantesters], [GitHub issue #13]
+  	- error code must be set when the script exists with error or panic
+  	  [Any Beverley]
+  	Improvements:
+  	- add _errno attribute to messages
+
+-------------------------------------------------------------------
+Mon Jul  1 14:25:31 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- updated to 1.370.0 (1.37)
+   see /usr/share/doc/packages/perl-Log-Report/ChangeLog
+
+  version 1.37: Fri 28 Jun 11:08:19 CEST 2024
+
+  	Fixes:
+  	- Work with Dancer2 change to send_as [Andy Beverley]
+
+-------------------------------------------------------------------
+Fri Mar  8 22:41:40 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- Fix disabling of __perllib_provides
+
+-------------------------------------------------------------------
+Sat Oct 28 03:06:22 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.36
+   see /usr/share/doc/packages/perl-Log-Report/ChangeLog
+
+  version 1.36: Fri 27 Oct 15:05:13 CEST 2023
+  	Fixes:
+  	- Adapt test to new Dancer2 numbering scheme. [Petr Pisar]
+  version 1.35: Fri 27 Oct 08:27:54 CEST 2023
+  	Fixes:
+  	- Try blocks will always capture fatal messages, even when not
+  	  in the 'accept'-set. [Andy Beverley]
+  	- Adapt to new Dancer2 numbering scheme. [Tom Hukins]
+  	Improvements:
+  	- Dancer2 process() will warn when used incorrectly. [Andy Beverley]
+
+-------------------------------------------------------------------
+Fri Sep 16 03:07:04 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.34
+   see /usr/share/doc/packages/perl-Log-Report/ChangeLog
+
+  version 1.34: Thu 15 Sep 09:43:40 CEST 2022
+
+  	Fixes:
+  	- ::Exception::isFatal() did not respect the is_fatal overrule.
+  	  Spotted by [Andy Berverley]
+
+-------------------------------------------------------------------
+Sun Jul 18 03:06:32 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.33
+   see /usr/share/doc/packages/perl-Log-Report/ChangeLog
+
+  version 1.33: Sat Jul 17 10:56:52 CEST 2021
+
+  	Changes:
+  	- the $@->died with always return the original die causing object or
+  	  string.  In most cases, you want to use $@->wasFatal, which is the
+  	  translated (hence compatible) ::Exception object.  [Andy Beverley]
+
+-------------------------------------------------------------------
+Wed Jan 27 03:08:56 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.32
+   see /usr/share/doc/packages/perl-Log-Report/ChangeLog
+
+  version 1.32: Tue 26 Jan 09:13:31 CET 2021
+  	Fixes:
+  	- ::Dancer2, use correct VERSION, github issue#3
+  	- ::Dancer2, fix stacktrace sent to browser with show_errors disabled
+  	  by [Andy Beverley], github issue#7
+  version 1.31: Fri 15 Jan 16:35:39 CET 2021
+  	Fixes:
+  	- another attempt on issue #6, exceptions with specific destination
+  	  are not caught by ::Try
+  	- previous release broke ::Try::hide() [Andy Beverley]
+  version 1.30: Fri 15 Jan 12:46:14 CET 2021
+  	Fixes:
+  	- recursive errors when file cannot be written for ::File dispatcher
+  	  github issue#4 [Tom Hukins]
+  	- exceptions with specific destination are not caught by ::Try
+  	  github issue#6 [Andy Beverley]
+  	- redirected exception messages forget their explicit dispatcher
+  	  destination.  Github issue#6
+  	Improvements:
+  	- use ::Util::expand_reasons() for ::Try::hide()
+  	- require Log::Report::Options 1.07 for more expand_reasons options
+
+-------------------------------------------------------------------
+Sat Nov  9 10:25:12 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.29
+   see /usr/share/doc/packages/perl-Log-Report/ChangeLog
+
+-------------------------------------------------------------------
+Wed May 15 05:13:12 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.28
+   see /usr/share/doc/packages/perl-Log-Report/ChangeLog
+
+-------------------------------------------------------------------
+Sat Jun  2 05:34:01 UTC 2018 - coolo@suse.com
+
+- updated to 1.27
+   see /usr/share/doc/packages/perl-Log-Report/ChangeLog
+
+-------------------------------------------------------------------
+Wed Feb  7 15:45:29 UTC 2018 - coolo@suse.com
+
+- updated to 1.26
+   see /usr/share/doc/packages/perl-Log-Report/ChangeLog
+
+  version 1.26:
+  
+  	Improvements:
+  	- convert to GIT
+  	- publish via GitHUB
+
+-------------------------------------------------------------------
+Sat Dec  9 06:30:52 UTC 2017 - coolo@suse.com
+
+- updated to 1.25
+   see /usr/share/doc/packages/perl-Log-Report/ChangeLog
+
+  version 1.25: Fri  8 Dec 09:18:23 CET 2017
+  
+  	Fixes:
+  	- $msg->tostring on append/prepend object lost $locale.
+  
+  version 1.24: Fri  8 Dec 09:10:18 CET 2017
+  
+  	Fixes:
+  	- $msg->toString should stringify when append/prepend are objects.
+  	  rt.cpan.org#123835 [Andy Beverley]
+  
+  	Improvements:
+  	- Log4perl dispatcher: do accept init of Log::Log4perl outside the
+  	  dispatcher [Abe Timmerman]
+
+-------------------------------------------------------------------
+Fri Nov  3 06:32:01 UTC 2017 - coolo@suse.com
+
+- updated to 1.23
+   see /usr/share/doc/packages/perl-Log-Report/ChangeLog
+
+  version 1.23: Thu  2 Nov 10:40:24 CET 2017
+  
+  	Improvements:
+  	- understand objects in report()   rt.cpan.org #123241 [Andy Beverley]
+  	- understand DBIx::Class::Exception in try{}
+  	- understand XML::LibXML::Error in try{}
+
+-------------------------------------------------------------------
+Fri Oct 13 05:28:43 UTC 2017 - coolo@suse.com
+
+- updated to 1.22
+   see /usr/share/doc/packages/perl-Log-Report/ChangeLog
+
+  version 1.22: Thu 12 Oct 12:18:54 CEST 2017
+  
+  	Improvements:
+  	- try() also collects DEBUG info when one of the dispatches wants it.
+  	- document that ::Translator::POT does not require charset anymore.
+  	- support __p, __px, etc from Locale::TextDomain
+
+-------------------------------------------------------------------
+Sat Jul 15 05:42:39 UTC 2017 - coolo@suse.com
+
+- updated to 1.21
+   see /usr/share/doc/packages/perl-Log-Report/ChangeLog
+
+-------------------------------------------------------------------
+Mon Feb 13 12:22:00 UTC 2017 - coolo@suse.com
+
+- updated to 1.19
+   see /usr/share/doc/packages/perl-Log-Report/ChangeLog
+
+  version 1.19: Thu  9 Feb 17:35:43 CET 2017
+  
+  	Fixes:
+  	- Dancer2 change when a stack-level needs to be skipped for
+  	  reporting the location of the exception [Andrew Beverley]
+  	- more modules optional during Dancer2 tests
+  
+  	Improvements:
+  	- Dancer2 interface changes [Andrew Beverley]
+  	- spell fixes. rt.cpan.org#118561 [Gregor Herrmann, Debian]
+  	- spell fixes. rt.cpan.org#118562 [Gregor Herrmann, Debian]
+  	- free format calls in ::File and ::Syslog get additional info, which
+  	  can be used in line formatting.
+  	- Use Dancer2::Logger::LogReport without Dancer2::Plugin::LogReport
+  	  [Andrew Beverley]
+
+-------------------------------------------------------------------
+Sun Oct 23 05:39:21 UTC 2016 - coolo@suse.com
+
+- updated to 1.18
+   see /usr/share/doc/packages/perl-Log-Report/ChangeLog
+
+  version 1.18: Fri 21 Oct 09:50:51 CEST 2016
+  
+  	Fixes:
+  	- die_decode() should not return an 'ALERT' reason, because that is
+  	  not deadly.  Dies are always deadly.
+  
+  	Improvements:
+  	- ::Try has new attribute on_die, to specify whether a die in the
+  	  code should produce PANICs or ERRORs.  Request by [Andrew Beverley]
+  	- ::Die::die_decode() got on_die parameter.
+  	- the Dancer2 logger will always PANIC on dies.
+
+-------------------------------------------------------------------
+Thu Sep 22 05:37:17 UTC 2016 - coolo@suse.com
+
+- updated to 1.17
+   see /usr/share/doc/packages/perl-Log-Report/ChangeLog
+
+  version 1.17: Mon Sep 19 23:42:56 CEST 2016
+  
+  	Improvements:
+  	- typo rt.cpan.org#114072, second attempt [Gregor Herrmann, Debian]
+  	- include examples in manual pages.
+
+-------------------------------------------------------------------
+Sat May 28 10:04:40 UTC 2016 - coolo@suse.com
+
+- updated to 1.16
+   see /usr/share/doc/packages/perl-Log-Report/ChangeLog
+
+  version 1.16: Fri 27 May 08:54:01 CEST 2016
+  
+  	Fixes:
+  	- ::Dancer2: support for Dancer2 >v0.166001 [Russell Jenkins]
+  
+  	Improvements:
+  	- typo rt.cpan.org#114072 [Gregor Herrmann, Debian]
+
+-------------------------------------------------------------------
+Thu May  5 09:31:08 UTC 2016 - coolo@suse.com
+
+- updated to 1.15
+   see /usr/share/doc/packages/perl-Log-Report/ChangeLog
+
+  version 1.15: Mon 18 Apr 13:54:12 CEST 2016
+  
+  	Improvements:
+  	- dancer2: test import parameters [Andrew Beverley]
+  	  https://github.com/PerlDancer/Dancer2/issues/1156
+  
+  version 1.14: Tue 12 Apr 15:10:27 CEST 2016
+  
+  	Fixes:
+  	- dancer2: regression test only for recent Dancer2 [cpantesters]
+  
+  	Improvements:
+  	- typo rt.cpan.org#111985 [Gregor Herrmann, Debian]
+  	- dancer2: treat all exceptions equal [Andrew Beverley]
+
+-------------------------------------------------------------------
+Sun Feb  7 10:13:05 UTC 2016 - coolo@suse.com
+
+- updated to 1.13
+   see /usr/share/doc/packages/perl-Log-Report/ChangeLog
+
+  version 1.13: Wed  3 Feb 11:34:18 CET 2016
+  
+  	Fixes:
+  	- init of lexicon with HASH
+  	  rt.cpan.org#111420 [Paulo A Ferreira]
+  
+  	Improvements:
+  	- skip Log::Report wrappers from stacktrace and location.
+  	- added ::Dispatcher::addSkipStack() and ::skipStack()
+  	- add forward_url to Dancer2 plugin example [Andrew Beverley]
+  	- ignore $SIG{__DIE__} within try blocks [Milos Lazarevic]
+  	- dancer2: add regression test for plugin [Andrew Beverley]
+  	- dancer2: add forward_template option [Raj Barath]
+
+-------------------------------------------------------------------
+Tue Jan 19 10:03:21 UTC 2016 - coolo@suse.com
+
+- updated to 1.12
+   see /usr/share/doc/packages/perl-Log-Report/ChangeLog
+
+-------------------------------------------------------------------
+Sun Nov 29 09:55:39 UTC 2015 - coolo@suse.com
+
+- updated to 1.10
+   see /usr/share/doc/packages/perl-Log-Report/ChangeLog
+
+  version 1.10: Fri 27 Nov 11:43:46 CET 2015
+  
+  	Fixes:
+  	- Dancer2 object build  [Andrew Beverley]
+  	- ::Domain::setContext with PAIRS as parameter
+  	- collect stack for exceptions inside try block. [Andrew Beverley]
+  
+  	Improvements:
+  	- keep dispatchers ordered.
+  	- interpolate context setting inside msg_id's as well
+  	- add ::Domain::updateContext()
+  	- new option dispatcher 'do-not-reopen'
+  	- ::Dispatcher::File option format() with CODE, now calls with
+  	  additional parameter $msg.
+  	- ::Dispatcher::File option output() now with CODE, to dynamically
+  	  return the logfile name.
+  	- added t/55throw.t
+  	- new method ::Try::hide()
+  	- renamed internal fields of ::Dispatcher::File, to lead with LRDF_
+  	- new option ::Dispatcher::Syslog::new(format)
+
+-------------------------------------------------------------------
+Wed Oct 21 09:05:23 UTC 2015 - coolo@suse.com
+
+- updated to 1.09
+   see /usr/share/doc/packages/perl-Log-Report/ChangeLog
+
+  version 1.09: Tue 20 Oct 09:26:00 CEST 2015
+  
+  	Fixes:
+  	- try: do not ignore is_fatal parameter
+  
+  	Improvements:
+  	- dispatcher() new action 'active-try'
+  	- many, many improvements to Dancer2::*  [Andrew Beverley]
+
+-------------------------------------------------------------------
+Sat Oct 10 09:03:49 UTC 2015 - coolo@suse.com
+
+- updated to 1.08
+   see /usr/share/doc/packages/perl-Log-Report/ChangeLog
+
+  version 1.08: Thu  8 Oct 17:55:39 CEST 2015
+  
+  	Fixes:
+  	- tests on Windows [cpantesters]
+  
+  	Improvements:
+  	- avoid use of 'package Dancer::Logger' to circumvent complaints
+  	  of Pause.
+  	- Log::Report configure message_class [Andrew Beverley]
+  	- Dancer2 plugin improved a lot [Andrew Beverley]
+
+-------------------------------------------------------------------
+Wed Jul 22 09:02:11 UTC 2015 - coolo@suse.com
+
+- updated to 1.07
+   see /usr/share/doc/packages/perl-Log-Report/ChangeLog
+
+  version 1.07: Tue Jul 21 17:38:01 CEST 2015
+  
+  	Fixes:
+  	- remove superfluous blank lines, when (translated) message
+  	  ends on 
+. Reported by [Andrew Beverley]
+  	- Dancer2::Plugin:: deep recursion in ERROR handler [Andrew Beverley]
+  
+  	Improvements:
+  	- document HASH for ::Syslog::new(logsocket).
+  	  Idea of [Andrew Beverley]
+  	- add Log::Report::DBIC::Profiler [Andrew Beverley]
+  	- loads of documentation on using Log::Report in Dancer2,
+  	  written by [Andrew Beverley]
+  	- protect against two instances of ::Syslog at the same time: its
+  	  impossible.
+
+-------------------------------------------------------------------
+Tue Jun 16 08:39:40 UTC 2015 - coolo@suse.com
+
+- updated to 1.06
+   see /usr/share/doc/packages/perl-Log-Report/ChangeLog
+
+  version 1.06: Mon Jun 15 17:30:33 CEST 2015
+  
+  	Fixes:
+  	- t/60mojo.t will not run on old mojo's: requires 2.16 (2011)
+  	  [cpantesters]
+  	- ::Dispatcher::File do not use %F/%T in strfime, which is not
+  	  supported by Windows.
+  	- make ::Die understand multiline 'die()' messages.
+  	  rt.cpan.org#101389 [Ken Neighbors]
+  
+  	Improvements:
+  	- add Dancer::Log::Report and examples/dancer/
+  	- add Dancer2::*, contributed by [Andrew Beverly]
+
+-------------------------------------------------------------------
+Thu Apr 16 21:00:51 UTC 2015 - coolo@suse.com
+
+- updated to 1.05
+   see /usr/share/doc/packages/perl-Log-Report/ChangeLog
+
+  Unless noted otherwise, these changes where initiated and applied by
+  Mark Overmeer.
+  
+  TODO:
+    . connect to Message::Passing framework
+  
+  version 1.05: Tue Jun 24 09:38:15 CEST 2014
+  
+  	Fixes:
+  	- test in t/10interp.t failed for Perl 5.20, caused by a
+  	  bugfix or change in overload::Overloaded [cpantesters]
+  
+  version 1.04: Tue Jun  3 10:42:11 CEST 2014
+  
+  	Fixes:
+  	- float serialization under locale in test [cpantesters]
+  
+  version 1.03: Thu May 22 11:54:24 CEST 2014
+  
+  	Fixes:
+  	- float serialization under locale in test [cpantesters]
+  	- non-errors and ::Dispatcher::Perl
+  
+  	Improvements:
+  	- shorted display of string parameters in stack-trace to max 80 chars
+  	- Log4perl log-lines sometimes show dispatcher as source, skip them.
+  	- disable 'mode switch' trace for try()
+  
+  version 1.02: Mon Mar 10 16:03:13 CET 2014
+  
+  	Fixes:
+  	- add overload fallback to ::Exception and ::Dispatcher
+  	  rt.cpan.org#92970 [Lukas Mai]
+  	- ::Domain::new(translator) with HASH did not initialize
+  	- warn better with ::Optional modules are used before Log::Report
+  	  is used.
+  
+  	Improvements:
+  	- changed documentation style
+  	- ::Lexicon::Index dir-scan immediately, hopefully before fork()
+  
+  version 1.01: Mon Jan  6 23:21:37 CET 2014
+  
+  	Fixes:
+  	- LC_MESSAGE missing on Windows [Michael Long]
+  
+  version 1.00: Sun Jan  5 17:23:44 CET 2014
+  
+  	Split into four components, adding
+  	- String::Print for formatting, permits positionals now
+  	- Log::Report::Optional as base, super lightweight
+  	- Log::Report::Lexicon when you need translations
+  
+  	Changes:
+  	- configuration from ::translator() into ::Domain::configure()
+  	- domains are package bound, not line based.
+  	- removed isValidReason() and isFatal(), there are function in ::Util
+  	- dispatchers(list) inside try() also lists outside dispatchers
+  	- ::Dispatcher::Log4perl::new(accept) defaults to 'ALL', because the
+  	  log4perl configuration will select what to log.
+  	- exceptions which get re-thrown with an other reason get rewritten.
+  	- alert and failure messages will always show their location
+  	- "switching to mode" message from level info to trace
+  
+  	Fixes:
+  	- do not complain when N__w ends on 
+
+  	- incorrect initialization of log4perl dispatcher
+  	- try inside BEGIN did not catch but died.
+  	  rt.cpan.org#91671 [Kenney Westerhof]
+  
+  	Improvements:
+  	- ::Dispatcher::File uses locking to permit parallel writes
+  	- ::Dispatcher::File::new(format)
+  	- ::Dispatcher::File::rotate()
+  	- ::Dispatcher::Log4perl more docs
+  	- explain why Log::Log4perl::caller_depth concept is broken
+  	- ::Dispatcher::Log4perl support for categories
+  	- ::Dispatcher::Syslog::new(include_domain)
+  	- ::Dispatcher::Syslog::new(charset)
+  	- ::Dispatcher::*::log() knows about textdomain of msg
+  	- ::Message::new(_lang) overrides language to be used in translation
+  	- add MojoX::Log::Report
+  	- new ::Domain, move all domain specific config from ::import() into
+  	  that module (and/or ::Minimal::Domain)
+  	- ::textdomain()
+  	- ::Message overload fallback
+  	- remove "syntax => 'SHORT'" from examples: is the default
+  	- export level on Log::Report::import()
+  
+  version 0.999:
+  	Not (yet) released
+  
+  version 0.998: Tue Oct 22 09:55:06 CEST 2013
+  	Fixes:
+  	- xgettext-perl: actually use the provided template pattern
+  	- xgettext-perl: only take template from .tt and .tt2 files
+  	- xgettext-perl: accept '-' (STDIN) for --from
+  
+  	Improvements:
+  	- more documentation about the PPI extraction process, and how
+  	  to use ::Message::new(_domain)
+  	- Log::Report import option 'import'
+  
+  version 0.997: Fri Sep 27 17:37:11 CEST 2013
+  	Fixes:
+  	- error about double definedness of settings, dependent on the
+  	  order of inclusion of modules.
+  	- setlocale does not return the old locale, but the new.
+  
+  	Improvements:
+  	- xgettext-perl: do not PPI files unless they are Perl
+  	- xgettext-perl: do warn when ' (single quotes) are used, needs
+  	  " (double quote) with __x
+  	- __x() now can have a _domain parameter
+  
+  version 0.996: Wed Sep  4 17:23:11 CEST 2013
+  	Fixes:
+  	- you could not share one ::Translator::POT over two domains.
+  	  discovered by [Richard Still]
+  	- third attempt to fix errors in t/53log4perl.t on Windows
+  	  [cpantesters]
+  	- remove double reporting of errors which exceptions are caught
+  	  with eval().  But better use try().
+  
+  version 0.995: Thu Aug 29 09:19:13 CEST 2013
+  	Fixes:
+  	- twice path '\'  in t/53log4perl.t in Windows [cpantesters]
+  
+  version 0.994: Thu Aug 22 16:12:08 CEST 2013
+  	Fixes:
+  	- link to paper [Richard Still]
+  	- chicken-egg problem with error on illegal mode setting.
+  
+  	Improvements:
+  	- try to build new translation table at each 'make'
+  
+  version 0.993: Thu Mar 28 10:59:27 CET 2013
+  
+  	Fixes:
+  	- filename/linenumber caller-depth in Log4Perl.
+  	  rt.cpan.org#83736 [Dominik Jarmulowicz]
+  	- actually try to use existing mo files.
+  
+  	Improvements:
+  	- use Devel::GlobalDestruction
+  	  rt.cpan.org#80612 [Riba Sushi]
+  	- ::Template extractor of translatable strings now understands
+  	  [%|loc%]$msgid[%END%] and [%'$msgid'| loc %]
+  	- improvements on documentation.
+  	- move t/30index.t towards xt/30index.t, because the test is
+  	  too sensitive for the actual environment.
+  
+  version 0.992: Fri Dec 21 11:59:55 CET 2012
+  
+  	Improvements:
+  	- add support for msgctxt in po-files to Log::Report::Lexicon::POT*
+  	- new option Log::Report::Lexicon::PO::new(plural_forms)
+  	- new generic base-class  Log::Report::Lexicon::Table for
+  	  Log::Report::Lexicon::POT*
+  	- ::POT.pm ignores any index when the msgid has no plural form. This
+  	  results in a smaller memory foot-print.
+  	- support for MO files, in  Log::Report::Lexicon::MOTcompact
+  
+  version 0.991: Mon Nov 26 09:27:08 CET 2012
+  
+  	Fixes:
+  
+  	- t/50file.t test failed on HASH order [cpantesters]
+  
+  version 0.99: Wed Oct  3 09:13:58 CEST 2012
+  
+  	Changes:
+  
+  	- do not call overloaded stringification in stack-trace.
+  
+  	Fixes:
+  
+  	- do only include .po files in the index which are not
+  	  in a directory which starts with a dot (for instance,
+  	  not in /.svn/) or do not start with a dot.
+  	  [Richard Still]
+  
+  	Improvements:
+  
+  	- remove  from the end of comment lines in PO files.
+  
+  version 0.98: Thu Sep  6 14:46:52 CEST 2012
+  
+  	Changes:
+  
+  	- rewrote message-id extractor in ::Extract::Template to
+  	  support more TemplateToolkit features.
+  
+  	- print __x("who am i
+") is now interpreted as
+  	  print __x("who am i"), "
+";
+  	  So: no trailing newlines in the PO-tables.
+  
+  	Fixes:
+  
+  	- PO file parse errors reported on the wrong location.
+  
+  	- ::Message::toString() uses $" when an ARRAY of elements gets
+  	  inlined.  This should be the $" on the moment of message's
+  	  definition, not the $" when it gets stringified.
+  
+  	Improvements:
+  
+  	- new option ::Message::new(_join)
+  
+  version 0.97: Mon Sep  3 15:54:04 CEST 2012
+  
+  	Changes:
+  
+  	- repair mistake of 0.96: Log::Report::Translate::TemplateToolkit()
+  	  must have been Log::Report::Message::fromTemplateToolkit()
+  
+  	Improvements:
+  
+  	- count for message with plural can be ARRAY or HASH, which
+  	  get numified automatically.
+  
+  version 0.96: Fri Aug 31 16:43:31 CEST 2012
+  
+  	Fixes:
+  
+  	- scan templates for msgid containing white-space.
+  
+  	- ::Translate::translate() was documented to accept a language
+  	  parameter.  Fixed the docs and implemented it ;-)
+  
+  	Improvements:
+  
+  	- support for plural forms in templates.
+  
+  	- explanation/support method how to integrate the translations
+  	  with Template::Toolkit.
+  
+  version 0.95: Thu Aug 30 23:15:50 CEST 2012
+  
+  	Changes:
+  
+  	- new parameters for xgettext-perl, now also able to handle
+  	  extracting from templates.  Script needs man-page.
+  
+  	Fixes:
+  
+  	- xgettext-perl showed counts twice.
+  
+  	- text-domain specified as "qw/domain/" now gets recognized by PerlPPI.
+  
+  	Improvements:
+  
+  	- some spelling corrections by rt.cpan.org#70959 [Fabrizio Regalli]
+  
+  	- synopsis fix in ::Dispatcher::Callback by [gbjk]
+  
+  	- cleaned-up the synopsis of Log::Report a bit.
+  
+  	- split base-class Log::Report::Extract from ::Extract::PerlPPI
+  
+  	- remove dependency to Test::Pod
+  
+  	- add Log::Report::Extract::Template and t/42templ.t
+  
+  version 0.94: Tue Aug 23 11:14:59 CEST 2011
+  
+  	Changes:
+  
+  	- when an exception get throw()n again, but with a different
+  	  "reason", the fatality "is_fatal" will automatically adapt.
+  
+  	Improvements:
+  
+  	- add Log::Report::Exception::isFatal()
+  
+  version 0.93: Thu Jun 30 09:45:24 CEST 2011
+  
+  	Fixes:
+  
+  	- faults caused by $? should not exit with 0
+  	  rt.cpan.org #68496 [Zephaniah E. Hull]
+  
+  	- die's in try blocks did not produce a Log::Report::Message
+  	  reported by [Patrick Powell]
+  
+  	- fix use for non-admin Windows users
+  	  rt.cpan.org#67935 [unknown]
+  
+  	Improvements:
+  
+  	- ability to change message and reason of an ::Exception
+  
+  	- lazy-load Log::Report::Die
+
+-------------------------------------------------------------------
+Thu Apr 16 21:00:50 UTC 2015 - coolo@suse.com
+
+- updated to 0.94
+   see /usr/share/doc/packages/perl-Log-Report/ChangeLog
+
+  version 0.94: Tue Aug 23 11:14:59 CEST 2011
+  
+  	Changes:
+  
+  	- when an exception get throw()n again, but with a different
+  	  "reason", the fatality "is_fatal" will automatically adapt.
+  
+  	Improvements:
+  
+  	- add Log::Report::Exception::isFatal()
+  
+  version 0.93: Thu Jun 30 09:45:24 CEST 2011
+  
+  	Fixes:
+  
+  	- faults caused by $? should not exit with 0
+  	  rt.cpan.org #68496 [Zephaniah E. Hull]
+  
+  	- die's in try blocks did not produce a Log::Report::Message
+  	  reported by [Patrick Powell]
+  
+  	- fix use for non-admin Windows users
+  	  rt.cpan.org#67935 [unknown]
+  
+  	Improvements:
+  
+  	- ability to change message and reason of an ::Exception
+  
+  	- lazy-load Log::Report::Die
+
+-------------------------------------------------------------------
+Thu Apr 21 10:37:58 UTC 2011 - coolo@opensuse.org
+
+- initial package 0.92
+    * created by cpanspec 1.78.04
+
