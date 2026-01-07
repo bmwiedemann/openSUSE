@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan  2 09:07:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.5:
+  * man page: fix warnings from `mandoc -T lint` and `groff
+    -rCHECKSTYLE=10`
+- add gpg validation
+
+-------------------------------------------------------------------
 Sun Mar  9 04:00:16 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.1.4
@@ -53,7 +61,7 @@ Mon Nov 29 15:29:09 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to version 1.1.1
   * This is a minor bugfix release, including fixes for reported
-    crashes. 
+    crashes.
 
 -------------------------------------------------------------------
 Mon Mar 15 15:19:29 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -106,7 +114,7 @@ Fri Oct 25 14:48:02 UTC 2013 - sndirsch@suse.com
   * Fix for: If using GDM with XDMCP, then ssh is not able to start X11
     clients on the remote side. You get a "No xauth data; using fake
     authentication data for X11 forwarding." from SSH.
-- obsoletes xauth-1.0.2.diff, 
+- obsoletes xauth-1.0.2.diff,
   u_xauth_Look-for-FamilyLocal-if-inet-or-inet6-addr.patch
 - adjusted xauth-tolerant-hostname-changes.diff
 - added new test_xauth tool to %files section

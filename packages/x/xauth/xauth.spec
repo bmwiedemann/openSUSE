@@ -1,7 +1,7 @@
 #
 # spec file for package xauth
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,15 @@
 
 
 Name:           xauth
-Version:        1.1.4
+Version:        1.1.5
 Release:        0
 Summary:        Utility to edit and display the X authorization information
 License:        MIT
 Group:          System/X11/Utilities
 URL:            https://xorg.freedesktop.org/
 Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
+Source1:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz.sig
+Source9:        xauth.keyring
 Patch1:         xauth-tolerant-hostname-changes.diff
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
