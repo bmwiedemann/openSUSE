@@ -1,7 +1,7 @@
 #
 # spec file for package python-elastic-transport
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,6 +45,7 @@ BuildRequires:  %{python_module pytest-httpbin}
 BuildRequires:  %{python_module pytest-httpserver}
 BuildRequires:  %{python_module pytest-trio}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module respx}
 BuildRequires:  %{python_module sniffio}
 BuildRequires:  %{python_module trustme}

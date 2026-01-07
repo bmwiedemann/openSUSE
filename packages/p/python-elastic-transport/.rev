@@ -169,4 +169,12 @@
     <comment></comment>
     <requestid>1319107</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>65da2fcbfb60adca9304bc51050d71da</srcmd5>
+    <version>9.2.0</version>
+    <time>1767798028</time>
+    <user>anag_factory</user>
+    <comment>- Add missing BuildRequires on requests.</comment>
+    <requestid>1325510</requestid>
+  </revision>
 </revisionlist>
