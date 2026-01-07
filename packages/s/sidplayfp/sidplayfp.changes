@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jan  6 12:49:36 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.16.0
+  * Add USBSID support.
+  * Display the actual used SID model(s).
+  * Fix invalid filter range error.
+  * Add --version option.
+  * Replace non-ASCII characters with ASCII when iconv is not
+    enabled.
+  * Correctly restore ANSI console.
+  * Correctly display play errors.
+  * Handle negative fade out values in an useful way.
+  * Init driver output before parsing config.
+
+-------------------------------------------------------------------
 Sun Nov  2 09:27:39 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.15.2

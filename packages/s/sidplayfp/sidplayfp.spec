@@ -1,8 +1,8 @@
 #
 # spec file for package sidplayfp
 #
-# Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2023-2025, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2023-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           sidplayfp
-Version:        2.15.2
+Version:        2.16.0
 Release:        0
 Summary:        SID chip music module player
 License:        GPL-2.0-or-later
