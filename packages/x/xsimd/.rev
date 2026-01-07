@@ -148,4 +148,16 @@
     xsimd::decr_if</comment>
     <requestid>1325075</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>766ab8165caa8aeda7b76994d4d4b641</srcmd5>
+    <version>14.0.0</version>
+    <time>1767798026</time>
+    <user>anag_factory</user>
+    <comment>- add 0001-Revert-Extend-1172-approach-to-arm-store-version.patch
+  to fix test failures on aarch64 (gh#xtensor-stack/xsimd#1232)
+
+- Deduplicate files in %install using %fdupes macro
+- Make the -devel and the -doc packages noarch</comment>
+    <requestid>1325490</requestid>
+  </revision>
 </revisionlist>

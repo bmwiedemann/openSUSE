@@ -1,0 +1,83 @@
+From c489b1869aa1eb21d3dc7f361e30e9d0c1c823e9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Dirk=20M=C3=BCller?= <dirk@dmllr.de>
+Date: Mon, 5 Jan 2026 23:04:35 +0100
+Subject: [PATCH] Revert "Extend #1172 approach to arm - store version"
+
+This reverts commit eb17eaaa30129a65042bedf245658014ffd94232.
+---
+ include/xsimd/arch/xsimd_neon.hpp   | 37 -----------------------------
+ include/xsimd/arch/xsimd_neon64.hpp | 10 --------
+ 2 files changed, 47 deletions(-)
+
+diff --git a/include/xsimd/arch/xsimd_neon.hpp b/include/xsimd/arch/xsimd_neon.hpp
+index 55b3b8d..7e3c7bb 100644
+--- a/include/xsimd/arch/xsimd_neon.hpp
++++ b/include/xsimd/arch/xsimd_neon.hpp
+@@ -756,43 +756,6 @@ namespace xsimd
+             store_complex_aligned(dst, src, A {});
+         }
+ 
+-        /*********************
+-         * store<batch_bool> *
+-         *********************/
+-        template <class T, class A, detail::enable_sized_t<T, 1> = 0>
+-        XSIMD_INLINE void store(batch_bool<T, A> b, bool* mem, requires_arch<neon>) noexcept
+-        {
+-            uint8x16_t val = vshrq_n_u8(b.data, 7);
+-            vst1q_u8((uint8_t*)mem, val);
+-        }
+-
+-        template <class T, class A, detail::enable_sized_t<T, 2> = 0>
+-        XSIMD_INLINE void store(batch_bool<T, A> b, bool* mem, requires_arch<neon>) noexcept
+-        {
+-            uint8x8_t val = vshr_n_u8(vqmovn_u16(b.data), 7);
+-            vst1_u8((uint8_t*)mem, val);
+-        }
+-
+-        template <class T, class A, detail::enable_sized_t<T, 4> = 0>
+-        XSIMD_INLINE void store(batch_bool<T, A> b, bool* mem, requires_arch<neon>) noexcept
+-        {
+-            uint8x8_t val = vshr_n_u8(vqmovn_u16(vcombine_u16(vqmovn_u32(b.data), vdup_n_u16(0))), 7);
+-            vst1_lane_u32((uint32_t*)mem, vreinterpret_u32_u8(val), 0);
+-        }
+-
+-        template <class T, class A, detail::enable_sized_t<T, 8> = 0>
+-        XSIMD_INLINE void store(batch_bool<T, A> b, bool* mem, requires_arch<neon>) noexcept
+-        {
+-            uint8x8_t val = vshr_n_u8(vqmovn_u16(vcombine_u16(vqmovn_u32(vcombine_u32(vqmovn_u64(b.data), vdup_n_u32(0))), vdup_n_u16(0))), 7);
+-            vst1_lane_u16((uint16_t*)mem, vreinterpret_u16_u8(val), 0);
+-        }
+-
+-        template <class A>
+-        XSIMD_INLINE void store(batch_bool<float, A> b, bool* mem, requires_arch<neon>) noexcept
+-        {
+-            store(batch_bool<uint32_t, A>(b.data), mem, A {});
+-        }
+-
+         /*******
+          * neg *
+          *******/
+diff --git a/include/xsimd/arch/xsimd_neon64.hpp b/include/xsimd/arch/xsimd_neon64.hpp
+index 9f3c4bc..04eb51b 100644
+--- a/include/xsimd/arch/xsimd_neon64.hpp
++++ b/include/xsimd/arch/xsimd_neon64.hpp
+@@ -178,16 +178,6 @@ namespace xsimd
+             return store_aligned<A>(dst, src, A {});
+         }
+ 
+-        /*********************
+-         * store<batch_bool> *
+-         *********************/
+-
+-        template <class A>
+-        XSIMD_INLINE void store(batch_bool<double, A> b, bool* mem, requires_arch<neon>) noexcept
+-        {
+-            store(batch_bool<uint64_t, A>(b.data), mem, A {});
+-        }
+-
+         /****************
+          * load_complex *
+          ****************/
+-- 
+2.52.0
+

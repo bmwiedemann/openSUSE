@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  5 22:05:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- add 0001-Revert-Extend-1172-approach-to-arm-store-version.patch
+  to fix test failures on aarch64 (gh#xtensor-stack/xsimd#1232)
+
+-------------------------------------------------------------------
 Fri Jan  2 09:26:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 14.0.0:
@@ -51,8 +57,8 @@ Fri Jan  2 09:26:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Fri Aug  8 23:08:28 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
-- Deduplicate files in %install using %fdupes macro 
-- Make the -devel and the -doc packages noarch 
+- Deduplicate files in %install using %fdupes macro
+- Make the -devel and the -doc packages noarch
 
 -------------------------------------------------------------------
 Mon Aug  4 23:49:04 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
