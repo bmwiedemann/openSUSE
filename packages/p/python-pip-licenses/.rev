@@ -276,4 +276,16 @@
     <comment></comment>
     <requestid>1271143</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e5c17871bc69d3a62472201333807775</srcmd5>
+    <version>5.5.0</version>
+    <time>1767798124</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.5.0:
+  * Initial Implementation of PEP-639 support
+  * Initial support for builtin tomllib for Python 3.11+
+  * Fixes an edge case where packages are named with version info
+  * Declares support for Python 3.13 &amp; 3.14</comment>
+    <requestid>1325684</requestid>
+  </revision>
 </revisionlist>

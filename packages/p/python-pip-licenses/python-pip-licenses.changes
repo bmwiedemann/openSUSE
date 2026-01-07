@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan  7 00:38:19 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.5.0:
+  * Initial Implementation of PEP-639 support
+  * Initial support for builtin tomllib for Python 3.11+
+  * Fixes an edge case where packages are named with version info
+  * Declares support for Python 3.13 & 3.14
+
+-------------------------------------------------------------------
 Thu Apr 17 13:45:00 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
 
 - update to 5.0.0
