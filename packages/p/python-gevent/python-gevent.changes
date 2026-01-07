@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan  4 14:51:01 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Rework requirements:
+  * Add missing setuptools for building
+  * Remove obsolete requirements
+  * Don't hard require optional requirements. See comments in
+    setup.py
+- testrunner.py is no longer directly executable by default
+
+-------------------------------------------------------------------
 Mon Oct  6 13:08:13 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 25.9.1

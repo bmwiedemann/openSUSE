@@ -1,7 +1,7 @@
 #
 # spec file for package python-gevent
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,42 +36,48 @@ Source0:        https://github.com/gevent/gevent/archive/%{version}.tar.gz#/geve
 Source100:      %{name}-rpmlintrc
 # PATCH-FEATURE-OPENSUSE gevent-opensuse-nocolor-tests.patch code@bnavigator.de -- Avoid colorization of test output in obs runners
 Patch2:         gevent-opensuse-nocolor-tests.patch
-BuildRequires:  %{python_module Cython >= 3.0.2}
-BuildRequires:  %{python_module backports.entry_points_selectable}
+BuildRequires:  %{python_module Cython >= 3.0.11}
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel >= 3.8}
-BuildRequires:  %{python_module dnspython}
 BuildRequires:  %{python_module greenlet >= 3.2.2}
-BuildRequires:  %{python_module objgraph}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module psutil}
-BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module testsuite}
+BuildRequires:  %{python_module setuptools >= 40.8}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module zope.event}
 BuildRequires:  %{python_module zope.interface}
 BuildRequires:  fdupes
-# /etc/protocols needed for tests
-BuildRequires:  netcfg
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libcares)
 BuildRequires:  pkgconfig(libuv)
-Requires:       python-backports.entry_points_selectable
-Requires:       python-cffi
-Requires:       python-dnspython
 Requires:       python-greenlet >= 3.2.2
-Requires:       python-requests
 Requires:       python-zope.event
 Requires:       python-zope.interface
 %if ! 0%{use_bundled_libev}
 BuildRequires:  pkgconfig(libev)
 %endif
 %if 0%{?suse_version} || 0%{?fedora_version} ||  0%{?rhel} >= 8
+Recommends:     python-cffi
+Recommends:     python-dnspython
 Recommends:     python-psutil
 %else
+Requires:       python-cffi
+Requires:       python-dnspython
 Requires:       python-psutil
 %endif
+# SECTION test requirements
+# these are optional but not strict runtime requirements
+BuildRequires:  %{python_module dnspython}
+BuildRequires:  %{python_module psutil}
+# (cffi is already a build requirement)
+# these are extra test requirements or recommendations
+BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module objgraph}
+BuildRequires:  %{python_module testsuite}
+# (we don't need to check coverage)
+# /etc/protocols needed for tests
+BuildRequires:  netcfg
+# /SECTION
 %python_subpackages
 
 %description
@@ -117,10 +123,6 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 export LIBEV_EMBED=%{use_bundled_libev}
 export CARES_EMBED=0
 %pyproject_install
-%{python_expand # fix script interpreter-line and exec bit
-sed -i '1{s|^#!.*bin.*python.*$|#!%{__$python}|}' %{buildroot}%{$python_sitearch}/gevent/testing/testrunner.py
-chmod +x %{buildroot}%{$python_sitearch}/gevent/testing/testrunner.py
-}
 %{?python_compileall}
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
