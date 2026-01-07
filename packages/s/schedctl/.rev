@@ -27,4 +27,33 @@
     <comment>Update to v1.0.2</comment>
     <requestid>1314121</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0f0594edd0d32a9a618016e56efc0bc1</srcmd5>
+    <version>1.1.0</version>
+    <time>1767798482</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.1.0:
+  * feat: tabular output for ps (#73)
+  * feat: implement attach flag for podman too (#72)
+  * feat: allow monitor processes to be run sharing the same filesystem ns (#71)
+  * feat: collision detection for container names (#70)
+  * feat: pass arguments to the schedulers (#69)
+  * fix: rename CI steps (#68)
+  * chore: cmd unit tests (#67)
+  * feat: run arbitrary images (#66)
+  * chore(deps): bump golang.org/x/crypto from 0.45.0 to 0.46.0 (#61)
+  * chore(deps): bump github.com/spf13/cobra from 1.10.1 to 1.10.2 (#60)
+  * chore(deps): bump github.com/containers/podman/v5 from 5.7.0 to 5.7.1 (#62)
+  * chore(deps): bump github.com/containerd/containerd from 1.7.29 to 1.7.30 (#63)
+  * fix: revert to previous rootfs for tests (#65)
+  * docs: README updates about refreshing the QEMU rootfs and kernel image (#58)
+  * chore(deps): bump actions/checkout from 5 to 6 (#57)
+  * chore(deps): bump golang.org/x/crypto from 0.44.0 to 0.45.0 (#56)
+  * feat: dynamic listing of schedulers (#55)
+  * chore(deps): bump golang.org/x/crypto from 0.43.0 to 0.44.0 (#53)
+  * chore(deps): bump github.com/containers/podman/v5 from 5.6.2 to 5.7.0 (#52)
+  * chore(deps): bump golangci/golangci-lint-action from 8 to 9 (#51)
+  * chore(deps): bump github.com/containerd/containerd from 1.7.28 to 1.7.29 (#50)</comment>
+    <requestid>1325774</requestid>
+  </revision>
 </revisionlist>
