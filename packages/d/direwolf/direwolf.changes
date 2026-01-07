@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan  7 12:35:27 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch:
+  * 0001-Issue-617-Buffer-Overflow-in-KISS-code.patch
+    Fixes (boo#1255474)
+
+-------------------------------------------------------------------
 Thu Nov 13 19:21:42 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.8.1

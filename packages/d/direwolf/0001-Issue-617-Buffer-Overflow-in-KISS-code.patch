@@ -1,0 +1,245 @@
+From 694c95485b21c1c22bc4682703771dec4d7a374b Mon Sep 17 00:00:00 2001
+From: wb2osz <wb2osz@comcast.net>
+Date: Sun, 16 Nov 2025 15:46:15 -0500
+Subject: [PATCH] Issue 617 - Buffer Overflow in KISS code.
+
+---
+ CMakeLists.txt   | 12 +++++-----
+ src/deviceid.c   | 62 ++++++++++++++++++++++++++++++++++++++++++------
+ src/kiss_frame.c | 22 ++++++++++++-----
+ 3 files changed, 77 insertions(+), 19 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1d7dad1..794cf75 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -228,16 +228,16 @@ if (C_CLANG OR C_GCC)
+   # It might go back in someday when I have more patience to clean up all the warnings.
+   #
+ 
+-  # TODO:
+-  # Try error checking -fsanitize=bounds-strict -fsanitize=leak
+-  # Requires libubsan and liblsan, respectively.
+-  # Maybe -fstack-protector-all, -fstack-check
+ 
+-  ###set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Wvla -ffast-math -ftree-vectorize -D_XOPEN_SOURCE=600 -D_DEFAULT_SOURCE ${EXTRA_FLAGS}")
++  # Address Sanitizer.  See https://gcc.gnu.org/onlinedocs/gcc/Instrumentation-Options.html
++  # gcc links with libasan automatically when compiled with -fsanitize=address
++
++  # set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address -g -Og -fno-optimize-sibling-calls -fno-omit-frame-pointer")
++
++
+   if(FREEBSD)
+     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Wvla -ffast-math -ftree-vectorize -D_DEFAULT_SOURCE ${EXTRA_FLAGS}")
+   else()
+-    #set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wvla -ffast-math -ftree-vectorize -D_GNU_SOURCE -fsanitize=bounds-strict ${EXTRA_FLAGS}")
+     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wvla -ffast-math -ftree-vectorize -D_GNU_SOURCE ${EXTRA_FLAGS}")
+   endif()
+   #
+diff --git a/src/deviceid.c b/src/deviceid.c
+index 9a6fafc..4721993 100644
+--- a/src/deviceid.c
++++ b/src/deviceid.c
+@@ -1,7 +1,7 @@
+ //
+ //    This file is part of Dire Wolf, an amateur radio packet TNC.
+ //
+-//    Copyright (C) 2023  John Langner, WB2OSZ
++//    Copyright (C) 2023, 2025  John Langner, WB2OSZ
+ //
+ //    This program is free software: you can redistribute it and/or modify
+ //    it under the terms of the GNU General Public License as published by
+@@ -53,6 +53,8 @@ static void unquote (int line, char *pin, char *pout);
+ static int tocall_cmp (const void *px, const void *py);
+ static int mice_cmp (const void *px, const void *py);
+ 
++static void deviceid_term(void);
++
+ /*------------------------------------------------------------------
+  *
+  * Function:	main
+@@ -300,6 +302,7 @@ void deviceid_init(void)
+ 	  //dw_printf ("%d: %s\n", line, stuff);
+ #endif
+ 	  // This is not very robust; everything better be in exactly the right format.
++	  // TODO: Be more forgiving.
+ 
+ 	  if (strncmp(stuff, "mice:", strlen("mice:")) == 0) {
+ 	    section = mice_section;
+@@ -361,12 +364,18 @@ void deviceid_init(void)
+ 	        }
+ 	        if (strncmp(stuff+3, "tocall: ", strlen("tocall: ")) == 0) {
+ 	          // Remove trailing wildcard characters ? * n
++	          // "APZ*" has quotes around it, inconsistent with everything else.
+ 	          char *r = stuff + strlen(stuff) - 1;
+-	          while (r >= (char*)stuff && (*r == '?' || *r == '*' || *r == 'n')) {
++	          while (r >= (char*)stuff && (*r == '?' || *r == '*' || *r == 'n' || *r == '"')) {
+ 	            *r-- = '\0';
+ 	          }
+ 
+-	          strlcpy (ptocalls[tocalls_index].tocall, stuff+3+8, sizeof(ptocalls[tocalls_index].tocall));
++	          if (stuff[3+8] == '"') {
++	            strlcpy (ptocalls[tocalls_index].tocall, stuff+3+8 +1, sizeof(ptocalls[tocalls_index].tocall));
++	          }
++	          else {
++	            strlcpy (ptocalls[tocalls_index].tocall, stuff+3+8, sizeof(ptocalls[tocalls_index].tocall));
++	          }
+ 
+ 	          // Remove trailing CR/LF or spaces.
+ 	          char *p = stuff + strlen(stuff) - 1;
+@@ -375,10 +384,10 @@ void deviceid_init(void)
+ 	          }
+ 	        }
+ 	        else if (strncmp(stuff+3, "vendor: ", strlen("vendor: ")) == 0) {
+-	          ptocalls[tocalls_index].vendor = strdup(stuff+3+8);  
++	          ptocalls[tocalls_index].vendor = strdup(stuff+3+8);
+ 	        }
+ 	        else if (strncmp(stuff+3, "model: ", strlen("model: ")) == 0) {
+-	          ptocalls[tocalls_index].model = strdup(stuff+3+7);  
++	          ptocalls[tocalls_index].model = strdup(stuff+3+7);
+ 	        }
+ 	        break;
+ 	    }
+@@ -413,11 +422,10 @@ void deviceid_init(void)
+ 
+ 	qsort (ptocalls, tocalls_count, sizeof(struct tocalls), tocall_cmp);
+ 
+-
+ #if TEST
+ 	dw_printf ("MIC-E:\n");
+ 	for (int i = 0; i < mice_count; i++) {
+-	  dw_printf ("%s %s %s\n", pmice[i].suffix, pmice[i].vendor, pmice[i].model);
++	  dw_printf ("%s %s %s %s\n", pmice[i].prefix, pmice[i].suffix, pmice[i].vendor, pmice[i].model);
+ 	}
+ 	dw_printf ("TOCALLS:\n");
+ 	for (int i = 0; i < tocalls_count; i++) {
+@@ -425,11 +433,50 @@ void deviceid_init(void)
+ 	}
+ #endif
+ 
++	atexit (deviceid_term);
+ 	return;
+ 
+ } // end deviceid_init
+ 
+ 
++/*------------------------------------------------------------------
++ *
++ * Function:	deviceid_term
++ *
++ * Purpose:	Called when exiting to cleanup.
++ *
++ * In/Out:	pmice
++ *		mice_count
++ *		ptocalls
++ *		tocalls_count
++ *
++ * Description:	Free all the allocated memory.
++ *
++ * Mystery:	Why does Address Sanitizer complain about a data leak
++ *		for 62 strdups?
++ *
++ *------------------------------------------------------------------*/
++
++static void deviceid_term(void)
++{
++	for (int n = 0; n < tocalls_count; n++) {
++	  if (ptocalls[n].model != NULL) free (ptocalls[n].model);
++	  if (ptocalls[n].vendor != NULL) free (ptocalls[n].vendor);
++	}
++	tocalls_count = 0;
++	free (ptocalls);
++	ptocalls = NULL;
++
++	for (int n = 0; n < mice_count; n++) {
++	  if (pmice[n].model != NULL) free (pmice[n].model);
++	  if (pmice[n].vendor != NULL) free (pmice[n].vendor);
++	}
++	mice_count = 0;
++	free (pmice);
++	pmice = NULL;
++}
++
++
+ /*------------------------------------------------------------------
+  *
+  * Function:	unquote
+@@ -612,6 +659,7 @@ void deviceid_decode_dest (char *dest, char *device, size_t device_size)
+  *		https://github.com/wb2osz/aprsspec containing:
+  *			APRS Protocol Specification 1.2
+  *			Understanding APRS Packets
++ *
+  *------------------------------------------------------------------*/
+ 
+ // The strncmp documentation doesn't mention behavior if length is zero.
+diff --git a/src/kiss_frame.c b/src/kiss_frame.c
+index 65a0942..d644ff2 100644
+--- a/src/kiss_frame.c
++++ b/src/kiss_frame.c
+@@ -251,10 +251,12 @@ int kiss_encapsulate (unsigned char *in, int ilen, unsigned char *out)
+  *
+  * Inputs:	out	- Where to put the resulting frame without
+  *			  the escapes or FEND.
++ *			  Storage must be at least as long as input.
++ *			  Output can never be longer than input.
+  *			  First byte is the "type indicator" with type and 
+  *			  channel but we don't care about that here.
+  *			  We treat it like any other byte with special handling
+- *			  if it happens to be FESC.
++ *			  if it happens to be one of the escaped characters.
+  *			  Note that this is "binary" data and can contain
+  *			  nul (0x00) values.   Don't treat it like a text string!
+  *
+@@ -280,7 +282,7 @@ int kiss_unwrap (unsigned char *in, int ilen, unsigned char *out)
+ 	}
+ 
+ 	if (in[ilen-1] == FEND) {
+-	  ilen--;	/* Don't try to process below. */
++	  ilen--;	/* Remove FEND from he end. */
+ 	}
+ 	else {
+ 	  text_color_set(DW_COLOR_ERROR);
+@@ -342,6 +344,8 @@ int kiss_unwrap (unsigned char *in, int ilen, unsigned char *out)
+  *
+  * Inputs:	kf	- Current state of building a frame.
+  *		ch	- A byte from the input stream.
++ *			  Note that it can be any value 0-255.
++ *			  This is binary data, not a nul terminated string.
+  *		debug	- Activates debug output.
+  *		kps	- KISS TCP port status block.
+  *			  NULL for pseudo terminal and serial port.
+@@ -442,8 +446,9 @@ void kiss_rec_byte (kiss_frame_t *kf, unsigned char ch, int debug,
+ 
+      
+ 	    if (ch == FEND) {
+-	      
+-	      unsigned char unwrapped[AX25_MAX_PACKET_LEN];
++	      // Unwrapped result can't be longer than received encoded KISS.
++	      //  kf->kiss_msg is MAX_KISS_LEN so that is enough for here.    
++	      unsigned char unwrapped[MAX_KISS_LEN];
+ 	      int ulen;
+ 
+ 	      /* End of frame. */
+@@ -482,12 +487,17 @@ void kiss_rec_byte (kiss_frame_t *kf, unsigned char ch, int debug,
+ 	      return;
+ 	    }
+ 
+-	    if (kf->kiss_len < MAX_KISS_LEN) {
++	    // Issue 617.
++	    // In the KS_COLLECTING state, non-FEND bytes were being collected up until
++	    // the MAX_KISS_LEN limit, leaving no room for appending the final FEND byte
++	    // at the end. By reducing the collection limit by one, there is room for
++	    // that final byte. 
++	    if (kf->kiss_len < MAX_KISS_LEN - 1) {
+ 	      kf->kiss_msg[kf->kiss_len++] = ch;
+ 	    }
+ 	    else {	    
+ 	      text_color_set(DW_COLOR_ERROR);
+-	      dw_printf ("KISS message exceeded maximum length.\n");
++	      dw_printf ("KISS message exceeded maximum length.  Discarding excess.\n");
+ 	    }	      
+ 	    return;
+ 	    break;
+-- 
+2.52.0
+

@@ -3,12 +3,22 @@
 #
 # Copyright (c) 2017 Walter Fey DL8FCL
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
-# Copyright (c) 2025 SUSE LLC and contributors
-# 
+# Copyright (c) 2026 SUSE LLC and contributors
+#
 # This file is under MIT license
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           direwolf
 Version:        1.8.1
@@ -19,6 +29,7 @@ Group:          Productivity/Hamradio/Other
 URL:            https://github.com/wb2osz/direwolf
 Source0:        https://github.com/wb2osz/direwolf/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        direwolf.desktop
+Patch0:         0001-Issue-617-Buffer-Overflow-in-KISS-code.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
