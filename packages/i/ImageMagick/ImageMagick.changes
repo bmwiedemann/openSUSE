@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan  6 09:32:47 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 7.1.2.12
+  * no upstream changelog, see
+    https://github.com/ImageMagick/ImageMagick/compare/7.1.2-11..7.1.2-12
+  * fixes CVE-2025-68618 [bsc#1255821]
+          CVE-2025-68950 [bsc#1255822]
+          CVE-2025-69204 [bsc#1255823]
+
+-------------------------------------------------------------------
 Mon Dec 22 08:39:43 UTC 2025 - Petr Gajdos <pgajdos@suse.com>
 
 - version update to 7.1.2.11

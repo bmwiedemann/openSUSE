@@ -4217,4 +4217,12 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * ImageMagick-library-installable-in-parallel.patch (refreshed)</comment>
     <requestid>1324166</requestid>
   </revision>
+  <revision rev="322" vrev="1">
+    <srcmd5>2cd707044a74e3082da7e8f6b560571d</srcmd5>
+    <version>7.1.2.12</version>
+    <time>1767798033</time>
+    <user>anag_factory</user>
+    <comment>version update to 7.1.2.12</comment>
+    <requestid>1325562</requestid>
+  </revision>
 </revisionlist>
