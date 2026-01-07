@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jan  7 07:59:36 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to Apache Maven parent POM version 46
+  * Breaking changes
+    + Require Maven 3.6.3+ from plugins
+    + Update rat plugin configuration
+    + Use spotless 3 when running on JDK >= 17
+    + Drop Doxia Tools parent pom
+  * New features and improvements
+    + MPOM-387: Exclude test scope from enforcedBytecodeVersion
+    + feat: activate Fluido skin's anchorJs
+    + Enhance target JDK definition for JDK >= 9
+    + Always render a GitHub ribbon on the right-hand side
+  * Maintenance
+    + MPOM-277: Move maven-invoker-plugin configuration to one
+      place
+    + Remove doxia-tools from documentations
+    + feat: enable prevent branch protection rules
+    + Add Apache 2.0 LICENSE file
+
+-------------------------------------------------------------------
 Mon Nov  3 20:04:53 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to Apache Maven parent POM version 45

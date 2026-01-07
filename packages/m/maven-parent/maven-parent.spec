@@ -1,7 +1,7 @@
 #
 # spec file for package maven-parent
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           maven-parent
-Version:        45
+Version:        46
 Release:        0
 Summary:        Apache Maven parent POM
 License:        Apache-2.0
@@ -55,13 +55,13 @@ install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
 %{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
 %add_maven_depmap %{name}/%{name}.pom
 
-for i in doxia-tools maven-extensions maven-plugins maven-shared-components maven-skins; do
+for i in maven-extensions maven-plugins maven-shared-components maven-skins; do
     %{mvn_install_pom} ${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
     %add_maven_depmap %{name}/${i}.pom
 done
 
 %files -f .mfiles
-%license LICENSE
-%doc NOTICE
+%license LICENSE NOTICE
+%doc README.md
 
 %changelog
