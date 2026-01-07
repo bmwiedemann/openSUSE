@@ -1,7 +1,7 @@
 #
 # spec file for package libsidplayfp
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define soname 6
 %define stilview_soname 0
 Name:           libsidplayfp
-Version:        2.15.2
+Version:        2.16.0
 Release:        0
 Summary:        A library to play Commodore 64 music
 License:        GPL-2.0-or-later

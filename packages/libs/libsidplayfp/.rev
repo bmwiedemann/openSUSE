@@ -229,4 +229,12 @@ GStreamer.</comment>
   * Fixed crash in SidDatabase parser.</comment>
     <requestid>1315092</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>844cfdd9a69f545b85ff19ee4cba431a</srcmd5>
+    <version>2.16.0</version>
+    <time>1767798095</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1325655</requestid>
+  </revision>
 </revisionlist>
