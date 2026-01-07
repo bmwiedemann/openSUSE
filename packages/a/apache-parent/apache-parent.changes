@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jan  7 07:52:39 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 36:
+  * Breaking changes
+    + Update minimum maven version to match current stable version
+      (3.6.3 -> 3.9)
+    + Introduce javaVersion property for maven.compiler.*
+      configuration
+    + Switch JDK >= 9 to only use maven.compiler.release
+  * New features and improvements
+    + Add default specification and implementation for javadoc and
+      source manifest entries
+  * Documentation updates
+    + Clarify how to use Apache Snapshot repository
+    + activate Fluido skin's anchorJs
+  * Maintenance
+    + Avoid - WARNING: Use of the three-letter time zone ID ... on
+      JDK 25 for RAT plugin
+    + feat: enable prevent branch protection rules
+
+-------------------------------------------------------------------
 Tue Apr 30 11:26:34 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Simplify the spec: remove old macros and fetch updated keyring

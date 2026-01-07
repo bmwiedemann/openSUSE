@@ -61,4 +61,12 @@
     <comment>Simplify the spec: remove old macros and fetch updated keyring</comment>
     <requestid>1170969</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>588fac0e9c155ff45041bc998a4d2c8f</srcmd5>
+    <version>36</version>
+    <time>1767798147</time>
+    <user>anag_factory</user>
+    <comment>36</comment>
+    <requestid>1325719</requestid>
+  </revision>
 </revisionlist>
