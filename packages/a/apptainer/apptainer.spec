@@ -1,8 +1,7 @@
 #
 # spec file for package apptainer
 #
-# Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +25,7 @@ Summary:        Application and environment virtualization
 License:        BSD-3-Clause-LBNL AND OpenSSL
 Group:          Productivity/Clustering/Computing
 Name:           apptainer
-Version:        1.4.2
+Version:        1.4.5
 Release:        0
 # https://spdx.org/licenses/BSD-3-Clause-LBNL.html
 URL:            https://apptainer.org
@@ -47,11 +46,11 @@ BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  git
 BuildRequires:  go >= 1.19
+BuildRequires:  libseccomp-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  make
 BuildRequires:  openssl-devel
 BuildRequires:  sysuser-tools
-BuildRequires:  libseccomp-devel
 Requires:       squashfs
 Requires:       squashfuse
 Recommends:     fuse2fs

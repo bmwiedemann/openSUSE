@@ -467,4 +467,41 @@
     <comment></comment>
     <requestid>1315966</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>5873f82aaaaacb2593102bf931abc804</srcmd5>
+    <version>1.4.5</version>
+    <time>1767798144</time>
+    <user>anag_factory</user>
+    <comment>- Update ot 1.4.5
+  * Fix for moderate severity GO-2025-4176 / CVE-2025-65105 /
+    GHSA-j3rw-fx6g-q46j (bsc#1255462):
+    Ineffective application of selinux / apparmor --security option.
+    Updates of a few dependent go libraries for related security fixes.
+  * Other fix
+    Run FUSE processes in a separate process group. This detaches them
+    from the main process so they don't receive signals such as interrupts
+    sent to a terminal there. This was not a problem with interactive
+    shells because they start their own group, but was a problem with
+    some programs with interactive Read/Eval/Print/Loops such as python.
+    An interrupt there would kill the FUSE processes.
+- From 1.4.4
+  * By applying patches to the bundled fuse2fs, allow again the possibility
+    of using a non-writable ext3 image file as an overlay. Fixes regression
+    introduced in 1.4.3.
+  * If an overlay or bound data image is asked to be mounted writable but
+    the user has no write access to the image, show a warning message
+    instead of silently switching to readonly.
+  * Avoid a fatal error when starting fakeroot from suid mode while
+    in an NFS directory.
+  * Fix 32-bit builds which were accidentally broken by a library
+    upgrade that was done for a minor security issue.
+- Fix CVEs:
+  * GO-2025-4135 - CVE-2025-47914
+    Malformed constraint may cause denial of service in
+    golang.org/x/crypto/ssh/agent.
+  * GO-2025-4134 - CVE-2025-58181
+    Unbounded memory consumption in golang.org/x/crypto/ssh.
+  * GO-2025-4116 - CVE-2025-47913</comment>
+    <requestid>1325744</requestid>
+  </revision>
 </revisionlist>
