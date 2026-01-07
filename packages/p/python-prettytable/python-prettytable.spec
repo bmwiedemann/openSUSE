@@ -1,7 +1,7 @@
 #
 # spec file for package python-prettytable
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2011 Christian Berendt.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,18 +19,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-prettytable
-Version:        3.9.0
+Version:        3.17.0
 Release:        0
 Summary:        Library for displaying tabular data in formatted fashion
 License:        BSD-2-Clause
-URL:            https://github.com/jazzband/prettytable
+URL:            https://github.com/prettytable/prettytable
 Source0:        https://files.pythonhosted.org/packages/source/p/prettytable/prettytable-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling}
-BuildRequires:  %{python_module importlib-metadata if %python-base < 3.8}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest-lazy-fixture}
+BuildRequires:  %{python_module pytest-lazy-fixtures}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wcwidth}
 BuildRequires:  %{pythons}
@@ -38,7 +37,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 Requires:       python-wcwidth
-Requires:       (python-importlib-metadata if python-base < 3.8)
 Provides:       python-PrettyTable = %{version}-%{release}
 Obsoletes:      python-PrettyTable < %{version}-%{release}
 %python_subpackages

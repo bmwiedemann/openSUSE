@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Jan  7 00:33:38 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.17.0:
+  * Added
+    + Add support for Python 3.15
+    + Set dicts with column-specific config for all column-specific attrs
+    + Add add divider() method to create sections
+    + Use PEP 639 licence expression
+    + Add support for Python 3.14
+    + Add new themes to ColorTable
+    + Use SPDX license identifier
+    + Add field selection to CSV and JSON outputs
+    + Add options to disable escaping HTML tables
+    + Add support for Python 3.13
+  * Changed
+    + Drop support for Python 3.9
+    + Performance: remove unnecessary deepcopies and add some lru_caches
+    + Drop support for Python 3.8
+    + Update new home to prettytable/prettytable
+    + Speedup: lazy imports and remove import
+  * Fixed
+    + Fix IndexError for add_rows() with an empty list
+    + Fix sortby at class declaration
+    + Fix divider intersection for border styles
+    + Fix default styles not being reset between set_style() calls
+    + Fix add_autoindex alignment for HTML
+    + Consider column args when columns are set after initialization
+    + Change how size of headers are calculated to fix ColorTable with title
+    + Fix max table width calculation
+- Update URL to new home.
+
+-------------------------------------------------------------------
 Sat Oct  7 11:19:59 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 3.9.0:
