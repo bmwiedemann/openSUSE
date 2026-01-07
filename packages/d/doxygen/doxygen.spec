@@ -1,7 +1,7 @@
 #
 # spec file for package doxygen
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%global rdir Release_1_15_0
+%global rdir Release_1_16_0
 Name:           doxygen
-Version:        1.15.0
+Version:        1.16.0
 Release:        0
 Summary:        Automated C, C++, and Java Documentation Generator
 # qtools are used for building and they are GPL-3.0 licensed
@@ -29,8 +29,6 @@ Source0:        https://github.com/doxygen/doxygen/releases/download/%{rdir}/dox
 # suse specific
 Patch1:         %{name}-no-lowercase-man-names.patch
 Patch2:         reproducible.patch
-# https://github.com/doxygen/doxygen/pull/11864
-Patch3:         doxygen-testsuite-failure-final-solution.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 3.14
 BuildRequires:  flex

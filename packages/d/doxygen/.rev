@@ -2518,4 +2518,17 @@ On Leap15/SLE15 a newer GCC is needed to build against Qt6. On SLE15 the default
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1318694</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>608875538b57a437b7140abf38f4975a</srcmd5>
+    <version>1.16.0</version>
+    <time>1767798031</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.16.0
+  * Add support for specifying requirements.
+  * Improve support for C++ concepts by allowing individual parts
+    of the requirements expression to be documented
+- Drop doxygen-testsuite-failure-final-solution.patch which is
+  part of the release (forwarded request 1325494 from mathletic)</comment>
+    <requestid>1325537</requestid>
+  </revision>
 </revisionlist>
