@@ -1,7 +1,7 @@
 #
 # spec file for package wafw00f
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           wafw00f
-Version:        2.2.0
+Version:        2.3.2
 Release:        0
 Summary:        The Web Application Firewall Detection and Fingerprinting Toolkit
 License:        BSD-3-Clause

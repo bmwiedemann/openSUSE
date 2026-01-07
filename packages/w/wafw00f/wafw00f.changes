@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jan  2 09:11:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.2:
+  * New WAF detections:
+  * Baffin Bay
+  * Link11 WAAP
+  * A10 Networks WAF
+  * PanYun WAF
+  * More specific cookie matching for F5 ASM
+- update to 2.3.1:
+  * setup.py installs wafw00f binary twice
+- update to 2.3.0:
+  * We dropped support for Python 2 completely.
+  * PIP 24.3 compatibility.
+  * Couple of new interesting WAFs detections!
+
+-------------------------------------------------------------------
 Wed Aug 24 19:00:33 UTC 2022 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to version 2.2.0
