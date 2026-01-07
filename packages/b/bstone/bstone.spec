@@ -1,8 +1,8 @@
 #
 # spec file for package bstone
 #
-# Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2019-2025, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2019-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           bstone
-Version:        1.2.16
+Version:        1.3.2
 Release:        0
 Summary:        A source port of Blake Stone
 # bstone is GPL-2.0+, but statically links GLM (MIT license), STB (public domain or MIT), and xbrz (GPL-3.0+)
