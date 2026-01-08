@@ -1,7 +1,7 @@
 #
 # spec file for package wesnoth
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define boost_min_version 1.67
 Name:           wesnoth
-Version:        1.18.5
+Version:        1.18.6
 Release:        0
 Summary:        Fantasy Turn-Based Strategy Game
 License:        EPL-1.0 AND GPL-2.0-or-later
@@ -195,6 +195,8 @@ done
 %{_bindir}/campaignd
 
 %files fslayout
+%dir %{_mandir}/ar
+%dir %{_mandir}/ar/man6
 %dir %{_mandir}/bg
 %dir %{_mandir}/bg/man6
 %dir %{_mandir}/en_GB
