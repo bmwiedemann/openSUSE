@@ -1,6 +1,6 @@
 [Unit]
 Description=Zabbix Server
-After=syslog.target network.target mysql.service postgresql.service
+After=syslog.target network.target
 
 [Service]
 Type=simple

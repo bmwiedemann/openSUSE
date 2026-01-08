@@ -1,0 +1,40 @@
+--- a/src/libs/zbxpoller/checks_snmp.c
++++ b/src/libs/zbxpoller/checks_snmp.c
+@@ -2950,17 +2950,21 @@ static int	asynch_response(int operation
+ 			zabbix_log(LOG_LEVEL_DEBUG, "itemid:" ZBX_FS_UI64 " disconnected, snmp_error:%s",
+ 					snmp_context->item.itemid, snmp_api_errstring(SNMPERR_GENERR));
+ 			break;
++#ifdef NETSNMP_CALLBACK_OP_SEC_ERROR
+ 		case NETSNMP_CALLBACK_OP_SEC_ERROR:
+ 			stat = STAT_ERROR;
+ 			zabbix_log(LOG_LEVEL_DEBUG, "itemid:" ZBX_FS_UI64 " security error, snmp_error:%s",
+ 					snmp_context->item.itemid, snmp_api_errstring(SNMPERR_GENERR));
+ 			break;
++#endif
++#ifdef NETSNMP_CALLBACK_OP_RESEND
+ 		case NETSNMP_CALLBACK_OP_RESEND:
+ 			zabbix_log(LOG_LEVEL_DEBUG, "itemid:" ZBX_FS_UI64 " resend, snmp_error:%s",
+ 					snmp_context->item.itemid, snmp_api_errstring(SNMPERR_GENERR));
+ 			bulkwalk_context->reqid = reqid;
+ 			bulkwalk_context->waiting = 1;
+ 			goto out;
++#endif
+ 		case NETSNMP_CALLBACK_OP_CONNECT:
+ 			zabbix_log(LOG_LEVEL_DEBUG, "itemid:" ZBX_FS_UI64 " connect, snmp_error:%s",
+ 					snmp_context->item.itemid, snmp_api_errstring(SNMPERR_GENERR));
+@@ -3224,6 +3228,7 @@ static int	snmp_task_process(short event
+ 
+ 			snmp_sess_timeout(snmp_context->ssp);
+ 
++#ifdef NETSNMP_CALLBACK_OP_RESEND
+ 			if (NETSNMP_CALLBACK_OP_RESEND == bulkwalk_context->operation)
+ 			{
+ 				/* reset timeout and retry if read is requested after timeout */
+@@ -3234,6 +3239,7 @@ static int	snmp_task_process(short event
+ 				task_ret = ZBX_ASYNC_TASK_READ;
+ 				goto stop;
+ 			}
++#endif
+ 		}
+ 
+ 		char		buffer[MAX_OID_LEN];

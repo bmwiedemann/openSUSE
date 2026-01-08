@@ -1,8 +1,8 @@
 Index: m4/netsnmp.m4
 ===================================================================
---- m4/netsnmp.m4.orig	2023-09-25 12:26:59.951273749 +0200
-+++ m4/netsnmp.m4	2023-10-17 22:18:29.154010921 +0200
-@@ -169,7 +169,22 @@ session.securityAuthProto = usmHMAC384SH
+--- m4/netsnmp.m4.orig	2025-04-17 08:10:29.018991005 +0200
++++ m4/netsnmp.m4	2025-04-28 00:37:37.429780123 +0200
+@@ -175,7 +175,22 @@ session.securityAuthProto = usmHMAC384SH
  		],[
  		AC_MSG_RESULT(no)
  		])
@@ -26,13 +26,13 @@ Index: m4/netsnmp.m4
  		dnl Check for AES192/256 protocol support for privacy
  		AC_MSG_CHECKING(for strong AES privacy protocol support)
  		AC_LINK_IFELSE([AC_LANG_PROGRAM([[
-Index: src/zabbix_server/poller/checks_snmp.c
+Index: src/libs/zbxpoller/checks_snmp.c
 ===================================================================
---- src/zabbix_server/poller/checks_snmp.c.orig	2023-09-25 12:27:00.031274243 +0200
-+++ src/zabbix_server/poller/checks_snmp.c	2023-10-17 22:18:29.154010921 +0200
-@@ -356,10 +356,12 @@ static int	zbx_snmpv3_set_auth_protocol(
+--- src/libs/zbxpoller/checks_snmp.c.orig	2025-04-22 11:06:27.189800009 +0200
++++ src/libs/zbxpoller/checks_snmp.c	2025-04-28 00:37:37.430164603 +0200
+@@ -705,10 +705,12 @@ static int	zbx_snmpv3_set_auth_protocol(
  
- 	switch (item->snmpv3_authprotocol)
+ 	switch (snmpv3_authprotocol)
  	{
 +#ifdef usmHMACMD5AuthProtocol
  		case ITEM_SNMPV3_AUTHPROTOCOL_MD5:

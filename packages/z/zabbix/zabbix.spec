@@ -1,7 +1,7 @@
 #
 # spec file for package zabbix
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,14 +22,14 @@
 %define agent_group  zabbix
 
 Name:           zabbix
-Version:        6.0.36
+Version:        7.0.22
 Release:        0
 Summary:        Distributed monitoring system
 License:        Apache-2.0 AND GPL-2.0-or-later AND EPL-2.0 AND MPL-2.0 AND BSD-3-Clause
 Group:          System/Monitoring
 URL:            https://www.zabbix.com
-Source0:        https://cdn.zabbix.com/zabbix/sources/stable/6.0/zabbix-%{version}.tar.gz
-Source1:        rn6.0.0.html
+Source0:        https://cdn.zabbix.com/zabbix/sources/stable/7.0/zabbix-%{version}.tar.gz
+Source1:        rn7.0.0.html
 Source2:        zabbix-tmpfiles.conf
 Source3:        zabbix-java-gateway.sh
 Source4:        zabbix-logrotate.in
@@ -45,6 +45,8 @@ Source16:       system-user-zabbix.conf
 Patch0:         zabbix-6.0.12-netsnmp-fixes.patch
 # PATCH-FIX-OPENSUSE zabbix-reproducible-jar-mtime.patch reproducible jar mtime with openjdk17+
 Patch1:         zabbix-reproducible-jar-mtime.patch
+# PATCH-FIX-OPENSUSE zabbix-7.0.22-netsnmp-callback-fixes.patch fix for missing SNMP callback operations in SLE_15
+Patch2:         zabbix-7.0.22-netsnmp-callback-fixes.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel
 BuildRequires:  autoconf
@@ -52,6 +54,10 @@ BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  firewall-macros
 BuildRequires:  gcc
+%if 0%{?suse_version} >= 1507
+%define _with_golang 1
+BuildRequires:  golang-packaging
+%endif
 BuildRequires:  java-devel >= 1.6
 BuildRequires:  libmysqlclient-devel
 BuildRequires:  libtool
@@ -112,12 +118,29 @@ Conflicts:      zabbix-agent
 %description agent
 The Zabbix agent monitors local resources and relays information to the server.
 
+%{?_with_golang:%package agent2
+Summary:        Local resource monitor agent for Zabbix rewrite in golang
+Group:          System/Monitoring
+Requires:       logrotate
+Requires(pre):  %fillup_prereq
+Requires(pre):  shadow
+Requires:       update-alternatives
+Requires:       group(%{agent_group})
+Requires:       user(%{agent_user})
+Conflicts:      zabbix-agent2
+
+%description agent2
+The Zabbix agent monitors local resources and relays information to the server.
+}
+
 %package server
 Summary:        System files for the Zabbix server
 Group:          System/Monitoring
 Requires:       fping
 Requires:       logrotate
 Requires:       update-alternatives
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Requires:       zabbix_server_binary = %{version}-%{release}
 Requires(pre):  %fillup_prereq
 Requires(pre):  shadow
@@ -134,6 +157,8 @@ Group:          System/Monitoring
 Requires:       fping
 Requires:       logrotate
 Requires:       update-alternatives
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Requires:       zabbix_proxy_binary = %{version}-%{release}
 Requires(pre):  %fillup_prereq
 Requires(pre):  shadow
@@ -277,11 +302,12 @@ Zabbix users and groups required by zabbix packages
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
 %patch -P 1 -p1
 %endif
+%patch -P 2 -p1
 
 cp %{SOURCE6} .
 # fix source & config files to respect adapted names
 for file in src/zabbix_java/settings.sh src/zabbix_java/lib/logback.xml %{SOURCE3} conf/*.conf  misc/init.d/suse/*/zabbix_* src/zabbix_server/server.c \
-	src/zabbix_server/alerter/alerter.c src/zabbix_agent/zbxconf.c src/zabbix_agent/zabbix_agentd.c src/zabbix_proxy/proxy.c ChangeLog; do
+	src/libs/zbxalerter/alerter.c src/zabbix_agent/zabbix_agentd.c src/zabbix_proxy/proxy.c ChangeLog; do
 	sed -i -e "s@/home/zabbix/bin@%{_bindir}@g" \
 		-e "s@^[# ]*PidFile=/tmp/zabbix_@PidFile=%{_rundir}/%{agent_user}/zabbix_@g" \
 		-e "s@^[# ]*LogFile=/tmp/zabbix_@LogFile=%{_localstatedir}/log/%{agent_user}/zabbix_@g" \
@@ -311,7 +337,7 @@ done
 ##### Fix for date time macros
 REF_DATE=$(LANG=C date -r configure +"%%b %%d %%Y")
 REF_TIME=$(LANG=C date -r configure +"%%H:%%M:%%S")
-sed -i -e "s/__DATE__/\"${REF_DATE}\"/g" -e "s/__TIME__/\"${REF_TIME}\"/g" src/libs/zbxcommon/str.c
+sed -i -e "s/__DATE__/\"${REF_DATE}\"/g" -e "s/__TIME__/\"${REF_TIME}\"/g" src/libs/zbxstr/str.c
 #####
 ##### Fix location of zabbix java gateway location
 sed -ri 's@^(ZABBIX_JAVA_CONF=.\{ZABBIX_JAVA_CONF:=).*@\1%{_sysconfdir}/zabbix/zabbix-java-gateway.conf}@g' %{SOURCE3}
@@ -327,7 +353,7 @@ cd -
 
 %build
 %sysusers_generate_pre %{SOURCE16} zabbix system-user-zabbix.conf
-ZABBIX_BASIC_CONFIG="--enable-proxy --enable-server --enable-agent  --sysconfdir=%{_sysconfdir}/zabbix \
+ZABBIX_BASIC_CONFIG="--enable-proxy --enable-server --enable-agent %{?_with_golang:--enable-agent2} --sysconfdir=%{_sysconfdir}/zabbix \
                      --with-openipmi --enable-java --enable-ipv6 --with-ssh2 --with-ldap --with-unixodbc \
                      --with-libcurl --with-net-snmp --with-libxml2 --with-openssl --with-libpcre2 --with-libevent"
 
@@ -392,6 +418,8 @@ find %{buildroot}%{_datadir}/zabbix -name .htaccess -exec rm -v {} \;
 mkdir -p %{buildroot}%{_sysconfdir}/logrotate.d
 sed -e 's|COMPONENT|agentd|g; s|USER|zabbix|g' %{SOURCE4} > \
      %{buildroot}%{_sysconfdir}/logrotate.d/%{name}-agent
+%{?_with_golang:sed -e 's|COMPONENT|agentd|g; s|USER|zabbix|g' %{SOURCE4} > \
+     %{buildroot}%{_sysconfdir}/logrotate.d/%{name}-agent2}
 sed -e 's|COMPONENT|server|g; s|USER|zabbixs|g' %{SOURCE4} > \
      %{buildroot}%{_sysconfdir}/logrotate.d/%{name}-server
 sed -e 's|COMPONENT|proxy|g; s|USER|zabbixs|g' %{SOURCE4} > \
@@ -409,6 +437,7 @@ install -dm 0755 %{buildroot}/%{_unitdir}/zabbix_proxy.service.requires
 
 # set the rc sym links
 ln -s service %{buildroot}%{_sbindir}/rczabbix_agentd
+%{?_with_golang:ln -s service %{buildroot}%{_sbindir}/rczabbix_agent2}
 ln -s service %{buildroot}%{_sbindir}/rczabbix_server
 ln -s service %{buildroot}%{_sbindir}/rczabbix_proxy
 ln -s service %{buildroot}%{_sbindir}/rczabbix-java-gateway
@@ -434,11 +463,14 @@ ln -s %{_sysconfdir}/alternatives/zabbix_proxy %{buildroot}%{_sbindir}/zabbix_pr
 ln -s %{_sbindir}/zabbix_server %{buildroot}%{_sbindir}/zabbix-server
 ln -s %{_sbindir}/zabbix_server %{buildroot}%{_sbindir}/zabbix-proxy
 ln -s %{_sbindir}/zabbix_agentd %{buildroot}%{_sbindir}/zabbix-agentd
+%{?_with_golang:ln -s %{_sbindir}/zabbix_agent2 %{buildroot}%{_sbindir}/zabbix-agent2}
 ln -s %{_sbindir}/zabbix_sender %{buildroot}%{_sbindir}/zabbix-sender
 ln -s %{_bindir}/zabbix_get %{buildroot}%{_bindir}/zabbix-get
 
 # Remove Makefiles from database directories so they don't get picked up by %%doc
-rm database/*/Makefile*
+rm -f database/*/Makefile* database/*/*/Makefile*
+# Remove deeper nested Makefiles that the above pattern misses
+find database -name "Makefile*" -delete
 
 # Release Notes - what has changed against Zabbix 3.x
 cp %{SOURCE1} .
@@ -475,6 +507,7 @@ echo "Please read %{_docdir}/%{name}-server/README-SSL.SUSE to set up SSL on Zab
 %service_add_post zabbix_proxy.service
 %tmpfiles_create %{_tmpfilesdir}/zabbix_proxy.conf
 echo "Please read %{_docdir}/%{name}-proxy/README-SSL.SUSE to set up SSL on Zabbix proxy."
+echo "Please read upgrade notes for upgrading from version 6.0 to version 7.0."
 
 %post java-gateway
 %firewalld_reload
@@ -516,9 +549,18 @@ echo "Please read %{_docdir}/%{name}-agent/README-SSL.SUSE to set up SSL on Zabb
 
 %postun server
 %service_del_postun zabbix_server.service
+if [ "$1" = 0 ] ; then
+	%{_sbindir}/update-alternatives --remove zabbix_server %{_sbindir}/zabbix_server-mysql || :
+	%{_sbindir}/update-alternatives --remove zabbix_server %{_sbindir}/zabbix_server-postgresql || :
+fi
 
 %postun proxy
 %service_del_postun zabbix_proxy.service
+if [ "$1" = 0 ] ; then
+	%{_sbindir}/update-alternatives --remove zabbix_proxy %{_sbindir}/zabbix_proxy-mysql || :
+	%{_sbindir}/update-alternatives --remove zabbix_proxy %{_sbindir}/zabbix_proxy-postgresql || :
+	%{_sbindir}/update-alternatives --remove zabbix_proxy %{_sbindir}/zabbix_proxy-sqlite || :
+fi
 
 %postun java-gateway
 %service_del_postun zabbix-java-gateway.service
@@ -552,7 +594,7 @@ if [ "$1" = 0 ] ; then
 fi
 
 %files server
-%doc AUTHORS ChangeLog database/mysql database/oracle database/postgresql database/sqlite3 rn6.0.0.html README-SSL.SUSE
+%doc AUTHORS ChangeLog database/elasticsearch database/mysql database/oracle database/postgresql database/sqlite3 rn7.0.0.html README-SSL.SUSE
 %dir %{_sysconfdir}/zabbix
 %config(noreplace) %attr(0640, root, %{server_group}) %{_sysconfdir}/zabbix/zabbix_server.conf
 %{_bindir}/zabbix_get
@@ -569,7 +611,7 @@ fi
 %{_unitdir}/zabbix_server.service.requires
 %{_tmpfilesdir}/zabbix_server.conf
 %ghost %{_sysconfdir}/alternatives/zabbix_server
-%ghost %{_sysconfdir}/alternatives/zabbix_server.service
+%ghost %attr(0644,root,root) %{_sysconfdir}/alternatives/zabbix_server.service
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}-server
 
 %files proxy
@@ -586,7 +628,7 @@ fi
 %{_unitdir}/zabbix_proxy.service.requires
 %{_tmpfilesdir}/zabbix_proxy.conf
 %ghost %{_sysconfdir}/alternatives/zabbix_proxy
-%ghost %{_sysconfdir}/alternatives/zabbix_proxy.service
+%ghost %attr(0644,root,root) %{_sysconfdir}/alternatives/zabbix_proxy.service
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}-proxy
 
 %files agent
@@ -605,6 +647,20 @@ fi
 %{_unitdir}/zabbix_agentd.service
 %{_tmpfilesdir}/zabbix_agentd.conf
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}-agent
+
+%{?_with_golang:%files agent2
+%doc README-SSL.SUSE
+%dir %{_sysconfdir}/zabbix/zabbix_agent2.d
+%dir %{_sysconfdir}/zabbix/zabbix_agent2.d/plugins.d
+%config(noreplace) %attr(0640, root, %{agent_group}) %{_sysconfdir}/zabbix/zabbix_agent2.d/plugins.d/*.conf
+%{_sbindir}/rczabbix_agent2
+%{_sbindir}/zabbix_agent2
+%{_sbindir}/zabbix-agent2
+%attr(0770,root,%{agent_group}) %dir %{_localstatedir}/log/%{agent_user}
+%ghost %attr(0770,root,%{agent_group}) %dir %{_rundir}/%{agent_user}
+%{_mandir}/man8/zabbix_agent2.8%{?ext_man}
+%config(noreplace) %{_sysconfdir}/logrotate.d/%{name}-agent2
+}
 
 %files ui
 %doc README.SUSE
@@ -646,9 +702,9 @@ fi
 %{_bindir}/zabbix-java-gateway
 %{_prefix}/lib/zabbix-java-gateway/zabbix-java-gateway-%{version}%{?rclevel}.jar
 %{_prefix}/lib/zabbix-java-gateway/android-json-4.3_r3.1.jar
-%{_prefix}/lib/zabbix-java-gateway/slf4j-api-1.7.32.jar
-%{_prefix}/lib/zabbix-java-gateway/logback-core-1.2.9.jar
-%{_prefix}/lib/zabbix-java-gateway/logback-classic-1.2.9.jar
+%{_prefix}/lib/zabbix-java-gateway/slf4j-api-2.0.16.jar
+%{_prefix}/lib/zabbix-java-gateway/logback-core-1.5.16.jar
+%{_prefix}/lib/zabbix-java-gateway/logback-classic-1.5.16.jar
 %{_sbindir}/rczabbix-java-gateway
 %attr(0770,root,%{server_group}) %dir %{_localstatedir}/log/%{server_user}
 %ghost %attr(0770,root,%{server_group}) %dir %{_rundir}/%{server_user}
