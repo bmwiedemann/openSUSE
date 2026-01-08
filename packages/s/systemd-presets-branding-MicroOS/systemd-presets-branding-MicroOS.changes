@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 30 14:48:35 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
+
+- Modernize specfile
+- Update Supplements to new RPM format
+- Use RPM macros provided by systemd-presets-common-SUSE-devel
+
+-------------------------------------------------------------------
 Thu Dec 11 12:37:25 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - - Enable chronyd.service by default (boo#1254778).

@@ -120,4 +120,15 @@
 </comment>
     <requestid>1322236</requestid>
   </revision>
+  <revision rev="14" vrev="8">
+    <srcmd5>974baa8d4e077536b78008972dead309</srcmd5>
+    <version>20230214</version>
+    <time>1767882334</time>
+    <user>anag_factory</user>
+    <comment>- Modernize specfile
+- Update Supplements to new RPM format
+- Use RPM macros provided by systemd-presets-common-SUSE-devel
+</comment>
+    <requestid>1325784</requestid>
+  </revision>
 </revisionlist>
