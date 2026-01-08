@@ -1,8 +1,7 @@
 #
 # spec file for package hyprgraphics
 #
-# Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2024/25 Florian "sp1rit" <sp1rit@disroot.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,10 +17,10 @@
 #
 
 
-%define sover 2
+%define sover 4
 
 Name:           hyprgraphics
-Version:        0.3.0
+Version:        0.5.0
 Release:        0
 Summary:        Hyprland graphics / resource utilities
 License:        BSD-3-Clause

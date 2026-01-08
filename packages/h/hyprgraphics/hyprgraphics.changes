@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan  7 22:14:26 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 0.5.0:
+  * image: cleanup format detection
+  * image/svg: implement embeded
+  * resource/image: add byte stream
+  * image: fix missing svg byte stream
+- Changes from version 0.4.0:
+  * resource/AsyncResource: add await() for resources
+
+-------------------------------------------------------------------
 Fri Nov  7 21:21:42 UTC 2025 - Florian "spirit" <sp1rit@disroot.org>
 
 - Update to version 0.3.0:
