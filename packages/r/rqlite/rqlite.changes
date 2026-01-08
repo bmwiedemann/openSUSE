@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 07 19:06:58 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 9.3.11:
+  * Correctly handle EXPLAIN QUERY PLAN for mutations
+
+-------------------------------------------------------------------
 Mon Jan 05 21:29:41 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 9.3.10:
