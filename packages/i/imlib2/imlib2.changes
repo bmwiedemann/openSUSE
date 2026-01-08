@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Dec 17 10:50:41 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
+
+- Enable SVG
+- Disable HEIF on 15.6
+- Fix changelog
+
+-------------------------------------------------------------------
+Sun Sep  7 10:36:42 UTC 2025 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Do not link modules with libImlib2.la
+- Update to 1.12.5:
+  * autofoo: Optionally link modules with libImlib2.la
+  * autofoo: Use pkg-config for libyuv if available
+  * Y4M loader: add support for images with no framerate info
+  * SVG loader: Suppress warning
+  * imlib2_load/view: Show image alpha status too
+  * imlib2_load/view: Add -h option for help
+  * imlib2_conv: Optionally produce scaled image
+  * imlib2_conv: Optionally render image on background before saving
+  * savers: Add common save parameter handler
+  * add HEIF saver
+  * loaders: Fix gcc15 warnings
+  * SVG loader: Handle .svgz too
+  * image: Add optional alpha check requested by loaders
+  * SVG loader: Check alpha in pixel data
+  * imlib2_view: Optionally show crc32 of image data
+  * add AVIF saver and loader
+  * add QOI saver
+
+-------------------------------------------------------------------
 Sun Jul 14 13:12:04 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.12.3:
@@ -638,7 +668,7 @@ Fri Oct  5 00:56:21 UTC 2017 - sflees@suse.de
   * Various enhancements, maintenance.
 
 -------------------------------------------------------------------
-Wed May 10 00:56:21 UTC 2017   * sflees@suse.de
+Wed May 10 00:56:21 UTC 2017 - sflees@suse.de
 
 - Update to 1.4.10
   * PNM, TGA, XPM, and general loader fixes.
@@ -1002,5 +1032,3 @@ Wed May 28 15:28:32 CEST 2003 - ro@suse.de
 Fri Mar 14 00:08:04 CET 2003 - mmj@suse.de
 
 - Initial package of imlib2-1.0.6
-
--------------------------------------------------------------------

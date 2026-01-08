@@ -1,7 +1,7 @@
 #
 # spec file for package imlib2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,10 +23,15 @@
 %else
 %bcond_with jxl
 %endif
-%bcond_with svg
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150600
+%bcond_without heif
+%else
+%bcond_with heif
+%endif
+%bcond_without svg
 %bcond_with postscript
 Name:           imlib2
-Version:        1.12.3
+Version:        1.12.5
 Release:        0
 Summary:        Image handling and conversion library
 License:        BSD-3-Clause
@@ -39,18 +44,24 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(id3tag)
-BuildRequires:  pkgconfig(libheif)
+BuildRequires:  pkgconfig(libavif)
 BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libraw)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libwebpdemux)
+BuildRequires:  pkgconfig(libyuv)
 BuildRequires:  pkgconfig(x11-xcb)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-shm) >= 1.9
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(zlib)
 Recommends:     imlib2-loaders
+%if %{with heif}
+BuildRequires:  pkgconfig(libheif)
+%endif
 %if %{with jxl}
 BuildRequires:  pkgconfig(libjxl)
 BuildRequires:  pkgconfig(libjxl_threads)
@@ -101,6 +112,7 @@ This package has the basic set of plugin filters that come with Imlib2.
 Summary:        Imlib 2 - image loaders
 Group:          Development/Libraries/X11
 Provides:       imlib2-loader_argb
+Provides:       imlib2-loader_avif
 Provides:       imlib2-loader_bmp
 Provides:       imlib2-loader_bz2
 Provides:       imlib2-loader_gif
@@ -109,9 +121,13 @@ Provides:       imlib2-loader_j2k
 Provides:       imlib2-loader_jpeg
 Provides:       imlib2-loader_png
 Provides:       imlib2-loader_pnm
+Provides:       imlib2-loader_raw
 Provides:       imlib2-loader_tga
 Provides:       imlib2-loader_tiff
+Provides:       imlib2-loader_webp
 Provides:       imlib2-loader_xpm
+Provides:       imlib2-loader_xz
+Provides:       imlib2-loader_yuv
 Provides:       imlib2-loader_zlib
 %if %{with jxl}
 Provides:       imlib2-loader_jxl
@@ -127,6 +143,14 @@ Provides:       imlib2-loader_ps
 This package contains the imlib2 image loaders for: argb, bmp, gif,
 jpeg, png, pnm, tga, tiff, xpm, j2k, heif, jxl.
 
+%package demo
+Summary:        Imlib 2 - demo programs
+Group:          Development/Libraries/X11
+Requires:       %{lname} = %{version}
+
+%description demo
+This package contains the imlib2 demo programs.
+
 %prep
 %autosetup -p1
 
@@ -140,6 +164,8 @@ jpeg, png, pnm, tga, tiff, xpm, j2k, heif, jxl.
 	--enable-visibility-hiding \
 	--enable-doc-build \
 	--disable-static \
+        --enable-werror \
+        --disable-rtld-local-support \
 %if %{with jxl}
 	--with-jxl \
 %endif
@@ -165,15 +191,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files
 %license COPYING
 %doc AUTHORS README
-%{_bindir}/imlib2_bumpmap
-%{_bindir}/imlib2_colorspace
-%{_bindir}/imlib2_conv
-%{_bindir}/imlib2_load
-%{_bindir}/imlib2_poly
-%{_bindir}/imlib2_show
-%{_bindir}/imlib2_test
-%{_bindir}/imlib2_view
-%{_bindir}/imlib2_grab
 %attr(755,root,root) %dir %{_datadir}/imlib2
 %{_datadir}/imlib2/*
 
@@ -196,5 +213,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %license COPYING
 %attr(755,root,root) %dir %{_libdir}/imlib2
 %attr(755,root,root) %{_libdir}/imlib2/loaders
+
+%files demo
+%{_bindir}/imlib2_*
 
 %changelog
