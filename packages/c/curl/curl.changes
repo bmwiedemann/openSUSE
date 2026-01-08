@@ -1,4 +1,315 @@
 -------------------------------------------------------------------
+Wed Jan  7 11:48:31 UTC 2026 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 8.18.0:
+  * Security fixes:
+    - [bsc#1256105, CVE-2025-14017] ldap: call ldap_init() before setting the options
+    - [bsc#1255731, CVE-2025-14524] curl_sasl: if redirected, require permission to use bearer
+    - [bsc#1255734, CVE-2025-15224] libssh: require private key or user-agent for public key auth
+    - [bsc#1255732, CVE-2025-14819] openssl: toggling CURLSSLOPT_NO_PARTIALCHAIN makes a different CA cache
+    - [bsc#1255733, CVE-2025-15079] libssh: set both knownhosts options to the same file
+  * Changes:
+    - openssl: bump minimum OpenSSL version to 3.0.0
+  * Bugfixes:
+    - alt-svc: more flexibility on same destination
+    - altsvc: accept ma/persist per alternative entry
+    - altsvc: make it one malloc instead of three per entry
+    - asyn-ares: handle Curl_dnscache_mk_entry() OOM error
+    - asyn-ares: remove hostname free on OOM
+    - asyn-thrdd: fix Curl_async_getaddrinfo() on systems without getaddrinfo
+    - asyn-thrdd: release rrname if ares_init_options fails
+    - auth: always treat Curl_auth_ntlm_get() returning NULL as OOM
+    - autotools: add nettle library detection via pkg-config (for GnuTLS)
+    - autotools: drop autoconf <2.59 compatibility code (zz60-xc-ovr)
+    - autotools: fix LargeFile feature display on Windows (after prev patch)
+    - autotools: tidy-up 'if' expressions
+    - build: add build-level 'CURL_DISABLE_TYPECHECK' options
+    - build: exclude clang prereleases from compiler warning options
+    - build: replace '-pedantic' with '-Wpedantic' when supported
+    - build: set '-Wno-format-signedness'
+    - build: tidy-up MSVC CRT warning suppression macros
+    - ccsidcurl: make curl_mime_data_ccsid() use the converted size
+    - cf-h1-proxy: support folded headers in CONNECT responses
+    - cf-https-connect: allocate ctx at first in cf_hc_create()
+    - cf-socket: drop feature check for 'IPV6_V6ONLY' on Windows
+    - cf-socket: enable Win10 'TCP_KEEP*' options with old SDKs
+    - cf-socket: limit use of 'TCP_KEEP*' to Windows 10.0.16299+ at runtime
+    - cf-socket: return OOM error if socket() fails due to OOM
+    - cf-socket: trace ignored errors
+    - cfilters: make conn_forget_socket a private libssh function
+    - checksrc.pl: detect assign followed by more than one space
+    - cmake: adjust defaults for target platforms not supporting shared libs
+    - cmake: define dependencies as 'IMPORTED' interface targets
+    - cmake: delete unused file 'CMake/CMakeConfigurableFile.in'
+    - cmake: disable 'CURL_CA_PATH' auto-detection if 'USE_APPLE_SECTRUST=ON'
+    - cmake: fix 'ws2_32' reference in 'curl-config.cmake'
+    - cmake: honor 'CURL_DISABLE_INSTALL' and 'CURL_ENABLE_EXPORT_TARGET'
+    - cmake: replace deprecated 'OPENSSL_FOUND' with 'OpenSSL_FOUND'
+    - cmake: replace deprecated 'PERL_FOUND' with 'Perl_FOUND'
+    - cmake: save and restore 'CMAKE_MODULE_PATH' in 'curl-config.cmake'
+    - cmake: set found status to OFF when not found (for compression deps)
+    - code: minor indent fixes before closing braces
+    - config-win32.h: delete obsolete, non-Windows comments
+    - config-win32.h: drop unused/obsolete 'CURL_HAS_OPENLDAP_LDAPSDK'
+    - config2setopts: add space in cookie header with multiple -b
+    - config2setopts: bail out if curl_url_get() returns OOM
+    - config2setopts: exit if curl_url_set() fails on OOM
+    - configure: delete unused variable
+    - conncache: silence '-Wnull-dereference' on gcc 14 RISC-V 64
+    - conncontrol: reuse handling
+    - connect: reshuffle Curl_timeleft_ms to avoid 'redundant condition'
+    - connection: attached transfer count
+    - content_encoding: avoid strcpy
+    - cookie. return proper error on OOM
+    - cookie: allocate the main struct once cookie is fine
+    - cookie: flush better
+    - cookie: only keep and use the canonical cleaned up path
+    - cookie: propagate errors better, cleanup the internal API
+    - cookie: return error on OOM
+    - cookie: when parsing a cookie header, delay all allocations until okay
+    - cshutdn: acknowledge FD_SETSIZE for shutdown descriptors
+    - curl: fix progress meter in parallel mode
+    - curl_fopen: do not pass invalid mode flags to 'open()' on Windows
+    - curl_gssapi: make sure Curl_gss_log_error() has an initialized buffer
+    - curl_ntlm_core: fix DES_* symbols for some wolfSSL builds
+    - curl_quiche: refuse headers with CR, LF or null bytes
+    - curl_sasl: make Curl_sasl_decode_mech compare case insensitively
+    - curl_setup.h: document more funcs flagged by '_CRT_SECURE_NO_WARNINGS'
+    - curl_setup.h: drop stray '#undef stat' (Windows)
+    - curl_setup.h: drop superfluous parenthesis from 'Curl_safefree' macro
+    - curl_threads: don't do another malloc if the first fails
+    - curl_trc: delete unused DoH remains
+    - CURLINFO: remove 'get' and 'get the' from each short desc
+    - CURLINFO_SCHEME/PROTOCOL: they return the "scheme" for a "transfer"
+    - CURLINFO_TLS_SSL_PTR.md: remove CURLINFO_TLS_SESSION text
+    - CURLMOPT_SOCKETFUNCTION.md: fix the callback argument use
+    - CURLOPT_ACCEPT_ENCODING.md: warn about the expansion
+    - CURLOPT_FOLLOWLOCATION.md: s/Authentication:/Authorization:/
+    - CURLOPT_HAPROXY_CLIENT_IP.md: emphasize reused connection use
+    - CURLOPT_READFUNCTION.md: clarify the size of the buffer
+    - CURLOPT_SSH_KEYFUNCTION.md: fix minor indent mistake in example
+    - curlx/fopen: replace open CRT functions their with '_s' counterparts (Windows)
+    - curlx/multibyte: stop setting macros for non-Windows
+    - curlx/strerr: use 'strerror_s()' on Windows
+    - curlx: add 'curlx_rename()', fix to support long filenames on Windows
+    - curlx: curlx_strcopy() instead of strcpy()
+    - curlx: limit use of system allocators to the minimum possible
+    - curlx: replace 'mbstowcs'/'wcstombs' with '_s' counterparts (Windows)
+    - curlx: replace 'sprintf' with 'snprintf'
+    - curlx: use curl alloc in 'curlx_win32_stat()' (Windows)
+    - curlx: use curlx allocators in non-memdebug builds (Windows)
+    - DEPRECATE: add CMake <3.18 deprecation for April 2026
+    - digest: fix OWS and escaped quote handling
+    - digest_sspi: fix a memory leak on error path
+    - digest_sspi: properly free sspi identity
+    - doc: some returned in-memory data may not be altered
+    - docs: add a note about --compressed to note about binary output
+    - docs: clarify how to do unix domain sockets with SOCKS proxy
+    - docs: fix checksrc 'EQUALSPACE' warnings
+    - docs: fix time_posttransfer output unit as seconds
+    - docs: mention umask need when curl creates files
+    - docs: remove dead URLs
+    - docs: rename CURLcode variables to 'result'
+    - docs: spell it Rustls with a capital R
+    - docs: switch more URLs to https://
+    - docs: use mresult as variable name for CURLMcode
+    - escape: add a length check in curl_easy_escape
+    - file: do not pass invalid mode flags to 'open()' on upload (Windows)
+    - formdata: validate callback is non-NULL before use
+    - ftp: make EPRT connections non-blocking
+    - ftp: refactor a piece of code by merging the repeated part
+    - ftp: remove #ifdef for define that is always defined
+    - ftp: return better on OOM in two places
+    - ftp: return from ftp_state_use_port immediately on OOM
+    - getenv: drop internal 1-to-1 wrapper
+    - getinfo: improve perf in debug mode
+    - h2/h3: handle methods with spaces
+    - headers: add length argument to Curl_headers_push()
+    - hostcheck: fail wildcard match if host starts with a dot
+    - hostip.h: drop redundant 'setjmp.h' include
+    - hostip: don't store negative lookup on OOM
+    - hostip: make more functions return CURLcode
+    - hostip: only store negative response for CURLE_COULDNT_RESOLVE_HOST
+    - hsts: propagate and error out correctly on OOM
+    - hsts: use one malloc instead of two per entry
+    - http: acknowledge OOM errors from Curl_input_ntlm
+    - http: avoid two strdup()s and do minor simplifications
+    - http: error on OOM when creating range header
+    - http: fix OOM exit in Curl_http_follow
+    - http: handle oom error from Curl_input_digest()
+    - http: replace atoi use in Curl_http_follow with curlx_str_number
+    - http: return OOM errors from hsts properly
+    - http: the :authority header should never contain user+password
+    - http: unfold response headers earlier
+    - idn: avoid allocations and wcslen on Windows
+    - idn: clarify null-termination on Windows
+    - idn: fix memory leak in 'win32_ascii_to_idn()'
+    - idn: use curlx allocators on Windows
+    - imap: check buffer length before accessing it
+    - imap: make sure Curl_pgrsSetDownloadSize() does not overflow
+    - inet_ntop: avoid the strlen()
+    - krb5: fix detecting channel binding feature
+    - krb5_sspi: unify a part of error handling
+    - ldap: drop PP logic for old, unsupported, Windows SDKs
+    - ldap: improve detection of Apple LDAP
+    - ldap: provide version for "legacy" ldap as well
+    - lib/sendf.h: forward declare two structs
+    - lib: cleanup for some typos about spaces and code style
+    - lib: create unitprotos.h in the builddir, not srcdir
+    - lib: drop unused or duplicate 'curlx/timeval.h' includes
+    - lib: drop unused protocol headers
+    - lib: eliminate size_t casts
+    - lib: error for OOM when extracting URL query
+    - lib: fix formatting nits (part 2)
+    - lib: fix formatting nits (part 3)
+    - lib: fix formatting nits
+    - lib: fix gssapi.h include on IBMi
+    - lib: name the main CURLMcode variable 'mresult'
+    - lib: refactor the type of funcs which have useless return and checks
+    - lib: replace '_tcsncpy'/'wcsncpy'/'wcscpy' with '_s' counterparts (Windows)
+    - lib: timer stats improvements
+    - lib: use 'SOCKET_WRITABLE()'/'SOCKET_READABLE()' where possible
+    - libssh2: add paths to error messages for quote commands
+    - libssh2: cleanup ssh_force_knownhost_key_type
+    - libssh2: consider strdup() failures OOM and return correctly
+    - libssh2: replace atoi() in ssh_force_knownhost_key_type
+    - libssh: fix state machine loop to progress as it should
+    - libssh: properly free sftp_attributes
+    - libtests: replace 'atoi()' with 'curlx_str_number()'
+    - limit-rate: add example using --limit-rate and --max-time together
+    - localtime: detect thread-safe alternatives and use them
+    - m4/sectrust: fix test(1) operator
+    - manage: expand the 'libcurl support required' message
+    - mbedTLS: cleanup insecure/deprecated code
+    - mbedtls: fix potential use of uninitialized 'nread'
+    - mbedtls: sync format across log messages
+    - mbedtls_threadlock: avoid calloc, use array
+    - mdlinkcheck: ignore IP numbers, allow '@' in raw URLs
+    - mdlinkcheck: only look for markdown links in markdown files
+    - memdebug: add mutex for thread safety
+    - memdebug: fix realloc logging
+    - mk-ca-bundle.md: the file format docs URL is permaredirected
+    - mk-ca-bundle.pl: default to SHA256 fingerprints with '-t' option
+    - mk-ca-bundle.pl: use 'open()' with argument list to replace backticks
+    - mqtt: reject overly big messages
+    - mqtt: return error when a too large packet is decoded
+    - multi: make max_total_* members size_t
+    - multi: remove MSTATE_TUNNELING
+    - multi: simplify admin handle processing
+    - multibyte: limit 'curlx_convert_*wchar*()' functions to Unicode builds
+    - ngtcp2+openssl: fix leak of session
+    - ngtcp2: remove the unused Curl_conn_is_ngtcp2 function
+    - ngtcp2: retune window sizes
+    - noproxy: fix build on systems without IPv6
+    - noproxy: fix ipv6 handling
+    - noproxy: replace atoi with curlx_str_number
+    - openssl: exit properly on OOM when getting certchain
+    - openssl: fix a potential memory leak of bio_out
+    - openssl: fix a potential memory leak of params.cert
+    - openssl: fix building against no-dsa openssl
+    - openssl: fix building against no-ocsp openssl with Apple SecTrust
+    - openssl: no verify failf message unless strict
+    - openssl: release ssl_session if sess_reuse_cb fails
+    - openssl: remove code handling default version
+    - openssl: simplify 'HAVE_KEYLOG_CALLBACK' guard
+    - openssl: stop checking for 'OPENSSL_NO_SHA*' macros
+    - openssl: stop checking for 'OPENSSL_NO_TLSEXT' macro
+    - osslq: code readability
+    - progress: make it one column narrower
+    - progress: narrower time display, multiple fixes
+    - progress: show fewer digits
+    - quiche: use client writer
+    - ratelimit blocking: fix busy loop
+    - ratelimit: redesign
+    - rtmp: fix double-free on URL parse errors
+    - rtmp: precaution for a potential integer truncation
+    - rtmp: stop redefining 'setsockopt' system symbol on Windows
+    - schannel: cap the maximum allowed size for loading cert
+    - schannel: fix memory leak of cert_store_path on four error paths
+    - schannel: replace atoi() with curlx_str_number()
+    - schannel: use Win8 'CERT_NAME_SEARCH_ALL_NAMES_FLAG' with old SDKs
+    - schannel_verify: fix a memory leak of cert_context
+    - scripts: fix shellcheck SC2046 warnings
+    - scripts: use end-of-options marker in 'find -exec' commands
+    - setopt: disable CURLOPT_HAPROXY_CLIENT_IP on NULL
+    - setopt: when setting bad protocols, don't store them
+    - sftp: fix range downloads in both SSH backends
+    - slist: constify Curl_slist_append_nodup() string argument
+    - smb: fix a size check to be overflow safe
+    - socketpair: drop redundant '_WIN32' branch and include
+    - socks_sspi: use free() not FreeContextBuffer()
+    - source: misc typos
+    - speedcheck: do not trigger low speed cancel on transfers with CURL_READFUNC_PAUSE
+    - speedlimit: also reset on send unpausing
+    - src: drop redundant definition of 'BIT()'
+    - src: fix formatting nits
+    - ssh: tracing and better pollset handling
+    - sspi: fix memory leaks on error paths in 'Curl_create_sspi_identity()'
+    - sws: fix binding to unix socket on Windows
+    - synctime: tidy up, make it work on all platforms
+    - telnet: abort on bad suboption sequence
+    - telnet: replace atoi for BINARY handling with curlx_str_number
+    - tftp: release filename if conn_get_remote_addr fails
+    - tftpd: fix/tidy up 'open()' mode flags
+    - tidy-up: avoid '(())', clang-format fixes and more
+    - tidy-up: move 'CURL_UNCONST()' out from macro 'curl_unicodefree()'
+    - tidy-up: URLs (cont.) and mdlinkcheck
+    - tidy-up: URLs
+    - tool: consider (some) curl_easy_setopt errors fatal
+    - tool: log when loading .curlrc in verbose mode
+    - tool_cfgable: free ssl-sessions at exit
+    - tool_doswin: clear pointer when thread takes ownership
+    - tool_doswin: increase allowable length of path sanitizer
+    - tool_doswin: remove the max length check
+    - tool_getparam: simplify the --rate parser
+    - tool_getparam: use memdup0() instead of malloc + copy
+    - tool_getparam: verify that a file exists for some options
+    - tool_help: add checks to avoid unsigned wrap around
+    - tool_ipfs: check return codes better
+    - tool_msgs: make voutf() use stack instead of heap
+    - tool_operate: exit on curl_share_setopt errors
+    - tool_operate: fix a case of ignoring return code in operate()
+    - tool_operate: fix case of ignoring return code in single_transfer
+    - tool_operate: remove redundant condition
+    - tool_operate: return error for OOM in append2query
+    - tool_operate: use curlx_str_number instead of atoi
+    - tool_paramhlp: refuse --proto remove all protocols
+    - tool_paramhlp: remove a malloc+free from proto2num()
+    - tool_paramhlp: simplify number parsing
+    - tool_progress: fix large time outputs and decimal size display
+    - tool_urlglob: acknowledge OOM in peek_ipv6
+    - tool_urlglob: clean up used memory on errors better
+    - tool_urlglob: constify an argument
+    - tool_urlglob: fix propagating OOM error from 'sanitize_file_name()'
+    - tool_urlglob: support globs as long as config line lengths
+    - tool_writeout: bail out proper on OOM
+    - url: fix return code for OOM in parse_proxy()
+    - url: if curl_url_get() fails due to OOM, error out properly
+    - url: if OOM in parse_proxy() return error
+    - url: return error at once when OOM in netrc handling
+    - urlapi: fix mem-leaks in curl_url_get error paths
+    - urlapi: handle OOM properly when setting URL
+    - urlapi: return OOM correctly from parse_hostname_login()
+    - verify-release: update to avoid shellcheck warning SC2034
+    - vquic-tls/gnutls: call Curl_gtls_verifyserver unconditionally
+    - vquic: do not pass invalid mode flags to 'open()' (Windows)
+    - vquic: do_sendmsg full init
+    - vquic: ignore 0-length UDP packets
+    - vquic: initialize new callback in nghttp3 1.14.0+
+    - vtls: drop unused 'use_alpn' from 'ssl_connect_data' struct
+    - vtls: fix CURLOPT_CAPATH use
+    - vtls: handle possible malicious certs_num from peer
+    - vtls: pinned key check
+    - wcurl: import v2025.11.09
+    - wcurl: import v2026.01.05
+    - ws: replace a cast by matching the format string
+    - x509asn1: drop unused 'hostcheck.h', 'vtls_int.h' includes
+  * Rebase patches:
+    - libcurl-ocloexec.patch
+    - curl-secure-getenv.patch
+  * Remove patch curl-vtls-fix-CURLOPT_CAPATH-use.patch
+
+-------------------------------------------------------------------
 Wed Nov 19 13:07:46 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Fix a regression in curl 8.17.0: [bsc#1253116]

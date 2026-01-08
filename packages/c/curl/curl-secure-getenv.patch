@@ -1,10 +1,10 @@
-Index: curl-8.13.0/lib/getenv.c
+Index: curl-8.18.0/lib/getenv.c
 ===================================================================
---- curl-8.13.0.orig/lib/getenv.c
-+++ curl-8.13.0/lib/getenv.c
-@@ -29,6 +29,14 @@
- 
- #include "memdebug.h"
+--- curl-8.18.0.orig/lib/getenv.c
++++ curl-8.18.0/lib/getenv.c
+@@ -23,6 +23,14 @@
+  ***************************************************************************/
+ #include "curl_setup.h"
  
 +#ifndef HAVE_SECURE_GETENV
 +#  ifdef HAVE___SECURE_GETENV
@@ -14,23 +14,23 @@ Index: curl-8.13.0/lib/getenv.c
 +#  endif
 +#endif
 +
- static char *GetEnv(const char *variable)
+ char *curl_getenv(const char *variable)
  {
- #if defined(CURL_WINDOWS_UWP) || defined(UNDER_CE) || \
-@@ -69,7 +77,7 @@ static char *GetEnv(const char *variable
+ #if defined(CURL_WINDOWS_UWP) || \
+@@ -63,7 +71,7 @@ char *curl_getenv(const char *variable)
      /* else rc is bytes needed, try again */
    }
  #else
 -  char *env = getenv(variable);
 +  char *env = secure_getenv(variable);
-   return (env && env[0]) ? strdup(env) : NULL;
+   return (env && env[0]) ? curlx_strdup(env) : NULL;
  #endif
  }
-Index: curl-8.13.0/configure.ac
+Index: curl-8.18.0/configure.ac
 ===================================================================
---- curl-8.13.0.orig/configure.ac
-+++ curl-8.13.0/configure.ac
-@@ -5384,6 +5384,8 @@ fi
+--- curl-8.18.0.orig/configure.ac
++++ curl-8.18.0/configure.ac
+@@ -5528,6 +5528,8 @@ fi
  
  CURL_PREPARE_CONFIGUREHELP_PM
  

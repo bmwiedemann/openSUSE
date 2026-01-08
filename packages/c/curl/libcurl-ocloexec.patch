@@ -7,11 +7,11 @@ To make it portable you have to test O_CLOEXEC support at *runtime*
 compile time is not enough.
 
 
-Index: curl-8.17.0/lib/file.c
+Index: curl-8.18.0/lib/file.c
 ===================================================================
---- curl-8.17.0.orig/lib/file.c
-+++ curl-8.17.0/lib/file.c
-@@ -266,7 +266,7 @@ static CURLcode file_connect(struct Curl
+--- curl-8.18.0.orig/lib/file.c
++++ curl-8.18.0/lib/file.c
+@@ -258,7 +258,7 @@ static CURLcode file_connect(struct Curl
      }
    }
    #else
@@ -20,9 +20,9 @@ Index: curl-8.17.0/lib/file.c
    file->path = real_path;
    #endif
  #endif
-@@ -345,9 +345,9 @@ static CURLcode file_upload(struct Curl_
- 
- #if (defined(ANDROID) || defined(__ANDROID__)) && \
+@@ -339,9 +339,9 @@ static CURLcode file_upload(struct Curl_
+                   data->set.new_file_perms & (_S_IREAD | _S_IWRITE));
+ #elif (defined(ANDROID) || defined(__ANDROID__)) && \
    (defined(__i386__) || defined(__arm__))
 -  fd = curlx_open(file->path, mode, (mode_t)data->set.new_file_perms);
 +  fd = curlx_open(file->path, mode|O_CLOEXEC, (mode_t)data->set.new_file_perms);
@@ -32,11 +32,11 @@ Index: curl-8.17.0/lib/file.c
  #endif
    if(fd < 0) {
      failf(data, "cannot open %s for writing", file->path);
-Index: curl-8.17.0/lib/if2ip.c
+Index: curl-8.18.0/lib/if2ip.c
 ===================================================================
---- curl-8.17.0.orig/lib/if2ip.c
-+++ curl-8.17.0/lib/if2ip.c
-@@ -208,7 +208,7 @@ if2ip_result_t Curl_if2ip(int af,
+--- curl-8.18.0.orig/lib/if2ip.c
++++ curl-8.18.0/lib/if2ip.c
+@@ -202,7 +202,7 @@ if2ip_result_t Curl_if2ip(int af,
    if(len >= sizeof(req.ifr_name))
      return IF2IP_NOT_FOUND;
  
@@ -45,11 +45,11 @@ Index: curl-8.17.0/lib/if2ip.c
    if(CURL_SOCKET_BAD == dummy)
      return IF2IP_NOT_FOUND;
  
-Index: curl-8.17.0/configure.ac
+Index: curl-8.18.0/configure.ac
 ===================================================================
---- curl-8.17.0.orig/configure.ac
-+++ curl-8.17.0/configure.ac
-@@ -459,6 +459,8 @@ AC_DEFINE_UNQUOTED(CURL_OS, "${host}", [
+--- curl-8.18.0.orig/configure.ac
++++ curl-8.18.0/configure.ac
+@@ -504,6 +504,8 @@ AC_DEFINE_UNQUOTED(CURL_OS, "${host}", [
  # Silence warning: ar: 'u' modifier ignored since 'D' is the default
  AC_SUBST(AR_FLAGS, [cr])
  
@@ -58,19 +58,19 @@ Index: curl-8.17.0/configure.ac
  dnl This defines _ALL_SOURCE for AIX
  CURL_CHECK_AIX_ALL_SOURCE
  
-Index: curl-8.17.0/lib/hostip.c
+Index: curl-8.18.0/lib/hostip.c
 ===================================================================
---- curl-8.17.0.orig/lib/hostip.c
-+++ curl-8.17.0/lib/hostip.c
-@@ -46,6 +46,7 @@
+--- curl-8.18.0.orig/lib/hostip.c
++++ curl-8.18.0/lib/hostip.c
+@@ -43,6 +43,7 @@
+ #include <setjmp.h>  /* for sigjmp_buf, sigsetjmp() */
  #include <signal.h>
- #endif
  
 +#include <fcntl.h>
  #include "urldata.h"
- #include "sendf.h"
+ #include "curl_trc.h"
  #include "connect.h"
-@@ -704,7 +705,7 @@ bool Curl_ipv6works(struct Curl_easy *da
+@@ -689,7 +690,7 @@ bool Curl_ipv6works(struct Curl_easy *da
    else {
      int ipv6_works = -1;
      /* probe to see if we have a working IPv6 stack */
@@ -79,17 +79,17 @@ Index: curl-8.17.0/lib/hostip.c
      if(s == CURL_SOCKET_BAD)
        /* an IPv6 address was requested but we cannot get/use one */
        ipv6_works = 0;
-Index: curl-8.17.0/lib/cf-socket.c
+Index: curl-8.18.0/lib/cf-socket.c
 ===================================================================
---- curl-8.17.0.orig/lib/cf-socket.c
-+++ curl-8.17.0/lib/cf-socket.c
-@@ -366,7 +366,8 @@ static CURLcode socket_open(struct Curl_
+--- curl-8.18.0.orig/lib/cf-socket.c
++++ curl-8.18.0/lib/cf-socket.c
+@@ -345,7 +345,8 @@ static CURLcode socket_open(struct Curl_
    }
    else {
      /* opensocket callback not set, so simply create the socket now */
 -    *sockfd = CURL_SOCKET(addr->family, addr->socktype, addr->protocol);
 +    *sockfd = CURL_SOCKET(addr->family, addr->socktype|SOCK_CLOEXEC,
 +                          addr->protocol);
+     if((*sockfd == CURL_SOCKET_BAD) && (SOCKERRNO == SOCKENOMEM))
+       return CURLE_OUT_OF_MEMORY;
    }
- 
-   if(*sockfd == CURL_SOCKET_BAD) {
