@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec  4 05:36:43 UTC 2025 - Guang Yee <gyee@suse.com>
+
+- Update to 1.16.2
+  - Remove dead code (#393, #394) 
+  - Begin removing Python 2 compatibility code (#392, #401)
+  - Remove the Python 3.6 PyPI trove classifier (#389) 
+  - Adding python 3.14 and 3.15
+  - Pypandoc (test) on arm
+  - Improvements to CI
+
+-------------------------------------------------------------------
 Thu Feb 13 10:24:55 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.15

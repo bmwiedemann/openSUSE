@@ -1,7 +1,7 @@
 #
 # spec file for package python-pypandoc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define base_name pypandoc
 %{?sle15_python_module_pythons}
 Name:           python-pypandoc
-Version:        1.15
+Version:        1.16.2
 Release:        0
 Summary:        Thin wrapper for pandoc
 License:        MIT
