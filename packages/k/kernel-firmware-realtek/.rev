@@ -201,4 +201,12 @@ After this PR, there will be a delete request for kernel-firmware.
   * rtw89: 8852b: update fw to v0.29.29.15</comment>
     <requestid>1323382</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>99af185cbef0f43a2c801587ac3bd146</srcmd5>
+    <version>20251217</version>
+    <time>1767882333</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases for more Realtek WiFi devices (bsc#1255777)</comment>
+    <requestid>1325737</requestid>
+  </revision>
 </revisionlist>
