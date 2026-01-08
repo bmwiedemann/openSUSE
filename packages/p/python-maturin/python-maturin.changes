@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Wed Jan  7 14:22:35 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Update to version 1.11.2 (version bump only)
+- Changes in 1.11.1:
+  * Fix compiled artifacts being excluded by source path matching
+    gh#PyO3/maturin#2910
+  * Better error reporting for missing interpreters
+    gh#PyO3/maturin#2918
+  * Ignore unreadable excluded directories
+    gh#PyO3/maturin#2916
+- Changes in 1.11.0:
+  * Correct tagging for x86_64 iOS simulator wheels.
+    gh#PyO3/maturin#2851
+  * Bump MSRV to 1.85.0 and use Rust 2024 edition
+    gh#PyO3/maturin#2850
+  * Upgrade goblin to 0.10
+    gh#PyO3/maturin#2853
+  * Set entry type when adding to the tar file
+    gh#PyO3/maturin#2859
+  * Split up module_writer.rs code for code organization
+    gh#PyO3/maturin#2857
+  * Update environment variables for Android cross-compilation
+    support
+    gh#PyO3/maturin#2825
+  * Upgrade some Rust dependencies
+    gh#PyO3/maturin#2860
+  * Swap outer and inner loops in write_python_part()
+    gh#PyO3/maturin#2861
+  * Split out convenience methods from ModuleWriter trait
+    gh#PyO3/maturin#2842
+  * Update cargo_metadata to 0.20.0
+    gh#PyO3/maturin#2864
+  * Calculate file options for WheelWriter once and cache the
+    result
+    gh#PyO3/maturin#2865
+  * fix link to pyo3 config file documentation
+    gh#PyO3/maturin#2869
+  * Clean up internal fields of WheelWriter
+    gh#PyO3/maturin#2870
+  * chore: bump action versions in the generated ci file
+    gh#PyO3/maturin#2873
+  * Deprecate 'upload' and 'publish' CLI commands
+    gh#PyO3/maturin#2875
+  * Create a binding generator trait
+    gh#PyO3/maturin#2872
+  * Migrate cffi bindings to new BindingGenerator trait
+    gh#PyO3/maturin#2876
+  * Always emit deprecation warning for 'upload' and 'publish'
+    gh#PyO3/maturin#2879
+  * Migrate uniffi bindings to new BindingGenerator trait
+    gh#PyO3/maturin#2878
+  * Emit a warning if a file is excluded from the archive by
+    matching the target
+    gh#PyO3/maturin#2874
+  * Migrate bin bindings to new BindingGenerator trait
+    gh#PyO3/maturin#2880
+  * Clean up BindingGenerator interface
+    gh#PyO3/maturin#2881
+  * Update ModuleWriter logic to use ArchiveSource enum
+    gh#PyO3/maturin#2882
+  * Auto-enable required features for uniffi-bindgen
+    gh#PyO3/maturin#2886
+  * Add VirtualWriter to track and order archive entries
+    gh#PyO3/maturin#2887
+  * Remove maturin publish from docs
+    gh#PyO3/maturin#2904
+  * Stop hardcode platform tag when using zig
+    gh#PyO3/maturin#2905
+  * Make PEP 517 profile tests more resilient to cargo profiles
+    gh#PyO3/maturin#2902
+  * Update pyodide version to fix emscripten CI
+    gh#PyO3/maturin#2906
+  * Implement Android platform tag support
+    gh#PyO3/maturin#2900
+
+-------------------------------------------------------------------
 Wed Nov 19 17:14:57 UTC 2025 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.10.2

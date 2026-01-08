@@ -1417,4 +1417,41 @@
   * Correct wheel naming when targeting iOS</comment>
     <requestid>1318737</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>a4ac203713abea36bf7a4c333039556a</srcmd5>
+    <version>1.11.2</version>
+    <time>1767882339</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.11.2 (version bump only)
+- Changes in 1.11.1:
+  * Fix compiled artifacts being excluded by source path matching
+    gh#PyO3/maturin#2910
+  * Better error reporting for missing interpreters
+    gh#PyO3/maturin#2918
+  * Ignore unreadable excluded directories
+    gh#PyO3/maturin#2916
+- Changes in 1.11.0:
+  * Correct tagging for x86_64 iOS simulator wheels.
+    gh#PyO3/maturin#2851
+  * Bump MSRV to 1.85.0 and use Rust 2024 edition
+    gh#PyO3/maturin#2850
+  * Upgrade goblin to 0.10
+    gh#PyO3/maturin#2853
+  * Set entry type when adding to the tar file
+    gh#PyO3/maturin#2859
+  * Split up module_writer.rs code for code organization
+    gh#PyO3/maturin#2857
+  * Update environment variables for Android cross-compilation
+    support
+    gh#PyO3/maturin#2825
+  * Upgrade some Rust dependencies
+    gh#PyO3/maturin#2860
+  * Swap outer and inner loops in write_python_part()
+    gh#PyO3/maturin#2861
+  * Split out convenience methods from ModuleWriter trait
+    gh#PyO3/maturin#2842
+  * Update cargo_metadata to 0.20.0
+    gh#PyO3/maturin#2864</comment>
+    <requestid>1325799</requestid>
+  </revision>
 </revisionlist>
