@@ -562,4 +562,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1299213</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>4afc19974673b4ea2948bf769156d72f</srcmd5>
+    <version>3.21.2</version>
+    <time>1767882515</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.21.2:
+  * fix unstringing multiline string annotations
+  * vendor cookie_re from cpython
+  * regenerate symbols for --py314-plus
+  * Rewrite version_info[0] and version_info.major</comment>
+    <requestid>1325884</requestid>
+  </revision>
 </revisionlist>
