@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan  8 12:33:34 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.15.2
+  * Fix the GitHub release failures occurring in CI.
+  * Fixed the logic error where salt=0 was ignored in encrypt_cisco_type7.
+  * Fix PAN-OS banner parsing by removing IOS-style banner end normalization.
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Wed Nov  5 15:20:45 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.15.1

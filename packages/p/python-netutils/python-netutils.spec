@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-netutils
-Version:        1.15.1
+Version:        1.15.2
 Release:        0
 Summary:        Common helper functions useful in network automation
 License:        Apache-2.0
@@ -28,7 +28,7 @@ BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module jinja2}
 BuildRequires:  %{python_module legacycrypt if %python-base >= 3.13}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core >= 1}
+BuildRequires:  %{python_module poetry-core >= 2.0.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module toml}
 BuildRequires:  fdupes
