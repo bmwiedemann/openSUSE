@@ -139,4 +139,12 @@
     <comment></comment>
     <requestid>1324756</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>09cfde0860416a95bd1c6d5d50c73ded</srcmd5>
+    <version>2.3.7</version>
+    <time>1767882513</time>
+    <user>anag_factory</user>
+    <comment>- Add missing BuildRequires on urllib3.</comment>
+    <requestid>1325883</requestid>
+  </revision>
 </revisionlist>

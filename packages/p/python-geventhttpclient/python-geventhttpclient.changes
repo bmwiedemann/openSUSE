@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan  8 03:20:27 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing BuildRequires on urllib3.
+
+-------------------------------------------------------------------
 Mon Dec 29 21:45:41 UTC 2025 - Andreas Prittwitz <m4ng4n@gmx.de>
 
 - Update to 2.3.7

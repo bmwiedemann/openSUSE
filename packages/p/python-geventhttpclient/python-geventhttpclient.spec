@@ -1,7 +1,7 @@
 #
 # spec file for package python-geventhttpclient
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        2.3.7
 Release:        0
 Summary:        HTTP client library for gevent
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/gwik/geventhttpclient
 Source:         https://files.pythonhosted.org/packages/source/g/geventhttpclient/geventhttpclient-%{version}.tar.gz
 # Needed for tests
@@ -35,6 +34,7 @@ BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module urllib3}
 BuildRequires:  %{python_module wheel}
 %if 0%{?suse_version} <= 1500
 BuildRequires:  python-mock
@@ -87,6 +87,6 @@ rm -rf geventhttpclient-%{version}/tests/
 %doc README.md
 %license LICENSE-MIT
 %{python_sitearch}/geventhttpclient
-%{python_sitearch}/geventhttpclient-%{version}*-info
+%{python_sitearch}/geventhttpclient-%{version}.dist-info
 
 %changelog
