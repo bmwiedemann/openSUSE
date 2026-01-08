@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Jan  3 17:48:42 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 1.21.1:
+  * This patch release only fixes a build error with some GCC versions
+    because of a missing #include.
+
+- update to 1.21.0:
+  * This release adds full support for reading and writing HEIF image
+    sequences. libheif will now encode HEIF image sequences with all
+    included codecs.
+  * Since HEIF image sequences are very similar to MP4 videos, this new
+    version is also capable of decoding most MP4 videos (without audio,
+    of course).
+  * heif-enc documentation for sequence encoding
+  * API documentation for reading and writing sequences
+  * Support for image sequences with alpha channels. For most codecs,
+    the alpha channel will be stored in a separate, auxiliary,
+    monochrome track. For ISO/IEC 23001-17 (uncompressed) streams, the
+    alpha channel is stored in the main video track.
+  * Support for sequence track edit lists to define the number of
+    sequence repetitions (without actually repeating the video data).
+  * New encoder plugin using x264 to write H.264-compressed video
+    streams and images.
+  * The FFmpeg decoder plugin will now decode both H.265 and H.264.
+  * Support for HEIF text items and language properties.
+  * CVEs fixed: CVE-2025-68431
+
+-------------------------------------------------------------------
 Thu Sep 11 12:34:56 UTC 2025 - olaf@aepfle.de
 
 - version 1.20 requires at least ffmpeg 4, so go with version 7+

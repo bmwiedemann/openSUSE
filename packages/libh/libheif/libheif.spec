@@ -26,6 +26,7 @@
 %endif
 
 %define gdk_pixbuf_binary_version 2.10.0
+%bcond_with x264
 %bcond_with x265
 %bcond_with kvazaar
 %bcond_with openjpeg
@@ -45,7 +46,7 @@
 %bcond_with heif_view
 
 Name:           libheif%{?psuffix}
-Version:        1.20.2
+Version:        1.21.1
 Release:        0
 Summary:        HEIF/AVIF file format decoder and encoder
 License:        LGPL-3.0-only AND MIT
@@ -82,6 +83,9 @@ BuildRequires:  pkgconfig(openjph)
 BuildRequires:  pkgconfig(rav1e)
 %if %{with svtenc}
 BuildRequires:  pkgconfig(SvtAv1Enc)
+%endif
+%if %{with x264}
+BuildRequires:  pkgconfig(x264)
 %endif
 %if %{with x265}
 BuildRequires:  pkgconfig(libde265)
@@ -212,6 +216,17 @@ Requires:       libheif1 = %{version}-%{release}
 This plugin provides the SVT-AV1 encoder for AVIF to libheif. Packaged separately
 so that the libraries it requires are not pulled in by default by libheif.
 
+%package x264
+Summary:        Pluging for X264 encoder
+Group:          System/Libraries
+Supplements:    libheif1
+Requires:       libheif1 = %{version}-%{release}
+
+%description x264
+This plugin provides the X264 encoder to write H.264-compressed video to libheif.
+Packaged separately so that the libraries it requires are not pulled in by
+default by libheif.
+
 %package HEIF
 Summary:        Plugin for HEIF decoder and encoder
 Group:          System/Libraries
@@ -281,6 +296,12 @@ sed -i '/add_libheif_test(encode)/d' tests/CMakeLists.txt
 	-DWITH_AOM_ENCODER_PLUGIN=ON \
 	-DWITH_DAV1D=ON \
 	-DWITH_DAV1D_PLUGIN=ON \
+%if %{with x264}
+	-DWITH_X264=ON \
+	-DWITH_X264_PLUGIN=ON \
+%else
+	-DWITH_X264=OFF \
+%endif
 %if %{with x265}
 	-DWITH_X265=ON \
 	-DWITH_LIBDE265=ON \
@@ -424,6 +445,11 @@ rm -f %{buildroot}%{_datadir}/thumbnailers/heif.thumbnailer
 %if %{with svtenc}
 %files svtenc
 %{_libexecdir}/libheif/libheif-svtenc.so
+%endif
+
+%if %{with x264}
+%files x264
+%{_libexecdir}/libheif/libheif-x264.so
 %endif
 
 %if %{with x265}
