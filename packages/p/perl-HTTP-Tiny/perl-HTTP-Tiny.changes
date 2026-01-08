@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jan  2 15:28:43 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.092
+   see /usr/share/doc/packages/perl-HTTP-Tiny/Changes
+
+  0.092     2025-12-27 20:49:41+01:00 Europe/Berlin
+      - No changes from 0.091-TRIAL
+  0.091     2025-12-13 06:26:51+01:00 Europe/Brussels (TRIAL RELEASE)
+      [ADDED]
+      - Added keep_alive_timeout to force keepalive connections to be closed
+        based on a timeout.
+      [CHANGED]
+      - Optional tests are always required when releasing.
+      - Always use TCP_NODELAY option.
+      [FIXED]
+      - Fixed test incorrectly testing cookie jar interactions multiple times.
+      - Fixed perl version comparisons to work when not starting with 5.
+      - Fixed link to LIMITATIONS in documentation.
+
+-------------------------------------------------------------------
 Thu Dec 12 16:22:47 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.090

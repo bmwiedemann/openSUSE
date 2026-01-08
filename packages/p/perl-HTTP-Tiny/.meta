@@ -8,6 +8,5 @@ It is more correct and more complete than HTTP::Lite. It supports proxies
 correctly resumes after EINTR.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-HTTP-Tiny"/>
   <url>http://search.cpan.org/dist/HTTP-Tiny</url>
 </package>

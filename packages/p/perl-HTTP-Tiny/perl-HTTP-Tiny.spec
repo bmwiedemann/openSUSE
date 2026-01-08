@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTTP-Tiny
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,23 @@
 
 %define cpan_name HTTP-Tiny
 Name:           perl-HTTP-Tiny
-Version:        0.090
+Version:        0.092
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Small, simple, correct HTTP/1.1 client
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/H/HA/HAARG/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(IPC::Cmd)
 BuildRequires:  perl(Test::More) >= 0.96
-Recommends:     perl(HTTP::CookieJar) >= 0.001
+Recommends:     perl(HTTP::CookieJar) >= 0.1
 Recommends:     perl(IO::Socket::IP) >= 0.32
 Recommends:     perl(IO::Socket::SSL) >= 1.968
-Recommends:     perl(Net::SSLeay) >= 1.49
+Recommends:     perl(Net::SSLeay) >= 1.490
 %{perl_requires}
 
 %description
@@ -49,7 +50,7 @@ instead of IO::Socket::INET for transparent support for both IPv4 and IPv6.
 Cookie support requires HTTP::CookieJar or an equivalent class.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
