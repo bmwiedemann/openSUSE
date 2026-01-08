@@ -1,7 +1,7 @@
 #
 # spec file for package lsvpd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lsvpd
-Version:        1.7.15
+Version:        1.7.17
 Release:        0
 Summary:        VPD Hardware Inventory Utilities for Linux
 License:        GPL-2.0-or-later
@@ -30,6 +30,7 @@ BuildRequires:  librtas-devel
 BuildRequires:  libtool
 BuildRequires:  libvpd-devel
 BuildRequires:  sg3_utils-devel
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  zlib-devel
 Requires:       /bin/sed
 Recommends:     hwdata
@@ -46,8 +47,7 @@ system-specific information.  lsmcode lists microcode and firmware
 levels.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags} -UPCI_IDS -DPCI_IDS='\"%{_datadir}/hwdata/pci.ids\"' -UUSB_IDS -DUSB_IDS='\"%{_datadir}/hwdata/usb.ids\"'"
@@ -76,12 +76,21 @@ if [ -e %{_sysconfdir}/udev/rules.d/99-lsvpd.disabled ] ; then
 	rm %{_sysconfdir}/udev/rules.d/99-lsvpd.disabled
 fi
 
+%pre
+%service_add_pre vpdupdate.service
+
 %post
 if [ -d %{_localstatedir}/lib/lsvpd ] ; then
   rm -rf %{_localstatedir}/lib/lsvpd
 fi
 %{_sbindir}/vpdupdate
-exit 0
+%service_add_post vpdupdate.service
+
+%preun
+%service_del_preun vpdupdate.service
+
+%postun
+%service_del_postun vpdupdate.service
 
 %files
 %license COPYING
@@ -93,5 +102,6 @@ exit 0
 %endif
 %attr (755,root,root) %{_sbindir}/*
 %{_mandir}/*/*
+%{_unitdir}/vpdupdate.service
 
 %changelog

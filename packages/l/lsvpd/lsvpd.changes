@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jan  7 17:31:58 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- Update to version 1.7.17 (jsc#PED-14567, jsc#PED-14550)
+  * Add NVME-MI support for VPD data collection from NVMe devices.
+  * Enhance tools to display custom VPD for Nvidia-specific adapters.
+  * Enhance tools to display FC, CCIN VPD information for Spyre cards.
+  * Enhance lscfg verbose output to include Feature Code field display.
+  * Resolve critical race conditions that could cause SQLite logic errors
+    under concurrent access.
+- Update to version 1.7.16
+  * Add support for Spyre device VPD data collection and retention
+  * Enhance lsvpd to use IPS output for serial numbers and machine type/model
+  * Add systemd service support for vpdupdate
+  * Improve SCSI page code detection and fix comparison logic
+  * Add device information display in tuple format
+
+-------------------------------------------------------------------
 Mon Oct  2 17:43:06 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
 
 - Update to version 1.7.15 (jsc#PED-5074)
