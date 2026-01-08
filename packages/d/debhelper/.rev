@@ -274,4 +274,12 @@ Resubmit without Source URL</comment>
     <comment>Update to 13.28</comment>
     <requestid>1307656</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>8a5656ea9e542cfaf69d4cd7be0da1e1</srcmd5>
+    <version>13.29</version>
+    <time>1767882533</time>
+    <user>anag_factory</user>
+    <comment>update to 13.29</comment>
+    <requestid>1325943</requestid>
+  </revision>
 </revisionlist>

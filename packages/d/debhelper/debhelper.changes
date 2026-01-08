@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan  8 11:11:19 UTC 2026 - Jan Baier <jbaier@suse.com>
+
+- update to 13.29
+  * dh_assistant: Improve build system detection for compat checklist
+  * debhelper.pod: Provide on placement of the `#DEBHELPER#` token
+    (Closes: #1037204)
+  * remove transitional, virtual dh-buildinfo Provides:
+  * Pass also filename to Dpkg::Changelog::Parse::changelog_parse()
+  * Actually add Multi-Arch: same to -dbgsym packages (Closes: #1121566)
+  * de.po: Fix some minor issues with the German translation (Closes: #1118413)
+  * Update on Portuguese translation of man page (Closes: #1118373)
+
+-------------------------------------------------------------------
 Mon Sep 29 06:36:25 UTC 2025 - Jan Baier <jbaier@suse.com>
 
 - update to 13.28
