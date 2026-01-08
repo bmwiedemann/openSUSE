@@ -1,7 +1,7 @@
 #
 # spec file for package tslib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2012 Guillaume GARDET <guillaume@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,10 +18,10 @@
 
 
 Name:           tslib
-Version:        1.22
+Version:        1.24
 Release:        0
 Summary:        Abstraction layer for touchscreen
-License:        LGPL-2.1-or-later AND GPL-2.0-only
+License:        GPL-2.0-only AND LGPL-2.1-or-later
 Group:          Hardware/Other
 URL:            https://github.com/kergoth/tslib.git
 Source0:        https://github.com/kergoth/tslib/releases/download/%{version}/%{name}-%{version}.tar.xz

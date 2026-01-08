@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jan  3 16:36:37 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.24:
+  * improved release procedure
+  * debug fixes for 32bit systems
+  * CMake and autoconf updates for newer versions
+  * fixes for minor cppcheck errors
+  * ts_conf test program fixes
+  * new filter module: `module crop`
+  * some build and security fixes
+  * improved release procedure
+- updated keyring
+
+-------------------------------------------------------------------
 Thu Nov 26 19:46:02 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.22:
@@ -38,26 +52,26 @@ Mon Mar  5 10:39:37 UTC 2018 - guillaume@opensuse.org
 Wed Feb  28 10:37:04 UTC 2018 - martink@posteo.de
 
 - Update to version 1.15:
-  * This release includes libts version 0.9.0 and the following changes:            
-    - New ts_get_eventpath() API to learn the opened device file path               
-    - ts_test_mt shows the number of supported concurrent touch contacts            
-    - New filter module "invert"                                                    
+  * This release includes libts version 0.9.0 and the following changes:
+    - New ts_get_eventpath() API to learn the opened device file path
+    - ts_test_mt shows the number of supported concurrent touch contacts
+    - New filter module "invert"
     - ts_uinput: fallback to fb0 and new option --nofb
   * Bugfixes
 
 - Changes for version 1.14:
-  * This release includes libts version 0.8.1 and the following changes:            
-    - The following modules are now disabled in the default configuration run:      
-      `module_raw arctic2`                                                         
-      `module_raw corgi`                                                           
-      `module_raw collie`                                                          
-      `module_raw dmc`                                                             
-      `module_raw h3600`                                                           
-      `module_raw mk712`                                                           
-      `module_raw ucb1x00`                                                         
-      Users of those modules must enable them, like `./configure --enable-arctic2`   
-    - Automatic touchscreen device detection for Linux (if not defined by the user) 
-    - New filter plugin "lowpass"                                                   
+  * This release includes libts version 0.8.1 and the following changes:
+    - The following modules are now disabled in the default configuration run:
+      `module_raw arctic2`
+      `module_raw corgi`
+      `module_raw collie`
+      `module_raw dmc`
+      `module_raw h3600`
+      `module_raw mk712`
+      `module_raw ucb1x00`
+      Users of those modules must enable them, like `./configure --enable-arctic2`
+    - Automatic touchscreen device detection for Linux (if not defined by the user)
+    - New filter plugin "lowpass"
     - SPDX license identifiers in all C source files
   * Bugfixes
 
@@ -75,7 +89,7 @@ Wed Nov  8 10:02:27 UTC 2017 - guillaume@opensuse.org
 - Changes for version 1.12:
   * This release includes libts version 0.7.2 and the following changes:
     - Generate a tracking ID value for multitouch type A devices
-    - Add experimental --with-sdl2 configuration option for 
+    - Add experimental --with-sdl2 configuration option for
       ts_calibrate and ts_test_mt
   * Bugfix
 
@@ -174,5 +188,5 @@ Tue Dec 25 16:51:43 UTC 2012 - sleep_walker@suse.cz
 -------------------------------------------------------------------
 Thu Nov  8 14:49:02 UTC 2012 - guillaume@opensuse.org
 
-- Initial release (git f6c499a523) 
+- Initial release (git f6c499a523)
 
