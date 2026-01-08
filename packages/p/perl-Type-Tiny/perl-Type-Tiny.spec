@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Type-Tiny
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Type-Tiny
 Name:           perl-Type-Tiny
-Version:        2.008006
+Version:        2.010000
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Tiny, yet Moo(se)-compatible type constraint

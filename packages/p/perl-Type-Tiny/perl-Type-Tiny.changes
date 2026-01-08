@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Jan  2 15:33:24 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.010000
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  2.010000	2025-12-30
+   [ Documentation ]
+   - Update NEWS file.
+   - Update Type::Tiny::Manual::Policies with planned changes for Type::Tiny
+     3.
+   [ Test Suite ]
+   - Skip t/20-modules/Type-Tie/06clone.t on very old Perls.
+  2.009_003	2025-12-22
+   [ Documentation ]
+   - Fix syntax in some of the documentation for Type::Params.
+   - Update documentation to potential future changes to coercions in
+     Types::Standard.
+  2.009_002	2025-12-22
+   [ Documentation ]
+   - Add security policy to Type::Tiny::Manual::Policies.
+   - Document that Type::Tiny::Enum defines its own sorter.
+   [ Packaging ]
+   - Add test suggestion dependencies on Devel::Hide and namespace::clean.
+   [ Other ]
+   - If you lexically import `t` from Type::Registry, then it will no longer
+     be tied to the caller's per-package type registry.
+   - Type::Tiny::Enum now throws an exception if you try to pass a sorter
+     coderef to the constructor.
+  2.009_001	2025-12-09
+   - Added: Add `check_coerce` method to Type::Coercion.
+   - Added: Add `check_coerce` method to Type::Tiny.
+  2.009_000	2025-12-08
+   - Added: Add environment variables to affect how `signature_for` checks
+     appear in stack traces, debugging, and profiling.
+   - Added: Type::Params args objects now provide __TO_LIST__,
+     __TO_ARRAYREF__, and __TO_HASHREF__ methods.
+   - Added: Type::Params now provides hooks for the event of wrapping a sub
+     in a signature.
+   - Minor optimization to avoid wrapping certain inlined checks in do {...}
+     blocks.
+
+-------------------------------------------------------------------
 Thu Nov 27 05:36:33 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.008006
