@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Jan  3 21:53:29 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.6.6 (bsc#1254879, CVE-2025-66490, bsc#1254880,
+    CVE-2025-66491):
+  * [k8s/ingress,k8s] Fix Kubernetes Ingress provider
+    documentation
+  * [k8s/ingress-nginx] Add RBAC documentation for Ingress
+    NGINX provider
+  * [k8s] Improve the K8S multi-tenancy security note
+  * Restore documentation on http.maxHeaderBytes
+  * Fix Menu Item Naming
+  * [k8s/ingress-nginx] Fix NGINX sslredirect annotation
+    support
+  * [server] Print access logs for rejected requests and warn
+    about new behavior
+  * CVE-2025-66490 (Advisory GHSA-gm3x-23wp-hc2c): Breaking
+    Change please read the migration guide.
+  * CVE-2025-66491 (Advisory GHSA-7vww-mvcr-x6vj)
+  * **Important:** Please read the migration guide.
+  * [server] Reject suspicious encoded characters
+
+-------------------------------------------------------------------
 Wed Nov 19 10:30:09 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Version 3.6.2
@@ -15,7 +37,7 @@ Wed Nov 19 10:30:09 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
     * udp
       - Revert "Avoid allocations in readLoop by using sync.Pool"
     * webui
-      - Fix blocked navigation on Safari 
+      - Fix blocked navigation on Safari
       - Restore remote Upgrade to Hub button web component
 
 - Version 3.6.0
@@ -70,7 +92,7 @@ Thu Nov 13 15:16:12 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
   * updates
     - Bump github.com/go-acme/lego/v4 to v4.28.0
   * server
-    - Filter unknown nodes with file and env for the deprecation loader 
+    - Filter unknown nodes with file and env for the deprecation loader
 
 - Version 3.5.4
   * logs,metrics,tracing,accesslogs,otel
@@ -130,7 +152,7 @@ Fri Aug 29 14:44:19 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
   Bug fixes:
     * accesslogs,otel
-      - Provide Log Body in OTEL access Log 
+      - Provide Log Body in OTEL access Log
     * acme
       - Bump github.com/go-acme/lego/v4 to v4.25.2
     * k8s/gatewayapi
@@ -224,7 +246,7 @@ Tue Jul 22 13:38:51 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
     * Respect service.nativelb=false annotation when nativeLBByDefault is
       enabled (gh#traefik/traefik#11847 by sdelicata)
   - service
-    * Fix concurrent access to balancer status map in WRR and P2C 
+    * Fix concurrent access to balancer status map in WRR and P2C
       strategies (gh#traefik/traefik#11887 by kevinpollet)
 
 -------------------------------------------------------------------
@@ -432,8 +454,8 @@ Sun Jan 12 16:50:31 UTC 2025 - Eric Torres <eric.torres@its-et.me>
 Tue Jan  7 15:47:17 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Version 3.2.5
-  - websocket,server 
-    * Disable http2 connect setting for websocket by default 
+  - websocket,server
+    * Disable http2 connect setting for websocket by default
       (gh#traefik/traefik#11412)
 
 -------------------------------------------------------------------
@@ -457,7 +479,7 @@ Mon Jan  6 12:57:27 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 -------------------------------------------------------------------
 Mon Dec 16 13:27:07 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
-- Version 3.2.3 
+- Version 3.2.3
   - Fix for boo#1234513 CVE-2024-4533
   - acme
     * Update go-acme/lego to v4.20.4 (gh#traefik/traefik#11295)
@@ -481,7 +503,7 @@ Thu Nov 21 15:19:14 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
   - acme
     * Update go-acme/lego to v4.20.2 (gh#traefik/traefik#11263 by ldez)
   - logs
-    * Change level of peeking first byte error log to DEBUG for Postgres 
+    * Change level of peeking first byte error log to DEBUG for Postgres
       (gh#traefik/traefik#11270 by rtribotte)
   - k8s/ingress,k8s
     * Fix HostRegexp config for rule syntax v2 (gh#traefik/traefik#11288 by kevinpollet)
@@ -763,7 +785,7 @@ Mon May  6 12:59:25 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Update to version 3.0.0
   * Announcment: https://traefik.io/blog/announcing-traefik-proxy-v3-rc/
-    * added support for popular, emerging technologies—WebAssembly (Wasm), 
+    * added support for popular, emerging technologies—WebAssembly (Wasm),
       OpenTelemetry, and Kubernetes Gateway API
     * revamped some key parts of the routing rules
     * added support for some leading edge technologies like HTTP/3, SPIFFE, and Tailscale
@@ -780,7 +802,7 @@ Fri May  3 15:14:17 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Update to version 2.11.2
   * Fix for boo#1235167 CVE-2024-28180
-  
+
   * Important
     * Read the migration guide at https://doc.traefik.io/traefik/migration/v2/#v2112
 
@@ -817,7 +839,7 @@ Fri May  3 15:14:17 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 -------------------------------------------------------------------
 Wed Mar  6 11:13:51 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
-- Remove node_modules.sums left over by obs-service-node_modules 
+- Remove node_modules.sums left over by obs-service-node_modules
 
 -------------------------------------------------------------------
 Tue Mar  5 10:54:13 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
@@ -838,7 +860,7 @@ Tue Mar  5 10:54:13 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 - frontend packaging:
   * The frontend will now be packaged on OBS to have reproduceable builds.
 
-- Go packaging: 
+- Go packaging:
   * Added upstream patch traefik-fix-int-overflow-with-go-generate-10452.patch to
     allow packaging on 32bit architectures gh#traefik/traefik#10451
   * Enabled CGO because there is no cross compilation needed in OSB (we build
