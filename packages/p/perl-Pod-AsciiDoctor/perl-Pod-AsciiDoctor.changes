@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan  2 15:31:48 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.102003
+   see /usr/share/doc/packages/perl-Pod-AsciiDoctor/Changes
+
+  0.102003    2025-12-24
+
+      - Make bin/pod2asciidoctor handle UTF-8 properly
+
+-------------------------------------------------------------------
 Fri Mar 22 16:35:59 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.102002

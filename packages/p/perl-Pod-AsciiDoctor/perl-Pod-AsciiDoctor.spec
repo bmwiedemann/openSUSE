@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Pod-AsciiDoctor
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,24 +18,25 @@
 
 %define cpan_name Pod-AsciiDoctor
 Name:           perl-Pod-AsciiDoctor
-Version:        0.102002
+Version:        0.102003
 Release:        0
 License:        Apache-2.0
 Summary:        Convert from POD to AsciiDoc
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Module::Build) >= 0.28
+BuildRequires:  perl(Module::Build) >= 0.280
 BuildRequires:  perl(Path::Tiny)
-BuildRequires:  perl(Pod::Parser) >= 1.65
+BuildRequires:  perl(Pod::Parser) >= 1.650
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(autodie)
 BuildRequires:  perl(parent)
 Requires:       perl(Path::Tiny)
-Requires:       perl(Pod::Parser) >= 1.65
+Requires:       perl(Pod::Parser) >= 1.650
 Requires:       perl(autodie)
 Requires:       perl(parent)
 %{perl_requires}
@@ -47,7 +48,7 @@ BuildRequires:  perl(Pod::Parser)
 Convert from POD to AsciiDoc
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{version} -p1
 
 %build
 perl Build.PL --installdirs=vendor
