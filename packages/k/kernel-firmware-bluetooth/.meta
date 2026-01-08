@@ -1,5 +1,0 @@
-<package name="kernel-firmware-bluetooth" project="openSUSE:Factory">
-  <title>Kernel firmware files for various Bluetooth drivers</title>
-  <description>This package contains Linux kernel firmware files for various Bluetooth drivers.
-The package is managed semi-automatically via kernel-firmware-tools helper scripts.</description>
-</package>
