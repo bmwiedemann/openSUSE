@@ -4,14 +4,14 @@ Subject: build system
 
 ---
  Makefile      |   22 +++++++++++-----------
- src/Makefile  |   45 ++++++++++++++++++++++++++-------------------
+ src/Makefile  |   43 +++++++++++++++++++++++++------------------
  src/luaconf.h |    2 +-
- 3 files changed, 38 insertions(+), 31 deletions(-)
+ 3 files changed, 37 insertions(+), 30 deletions(-)
 
-Index: lua-5.5.0-beta/Makefile
+Index: lua-5.5.0/Makefile
 ===================================================================
---- lua-5.5.0-beta.orig/Makefile	2025-06-26 15:04:37.000000000 +0200
-+++ lua-5.5.0-beta/Makefile	2025-07-16 11:43:49.998066837 +0200
+--- lua-5.5.0.orig/Makefile	2025-06-26 15:04:37.000000000 +0200
++++ lua-5.5.0/Makefile	2025-12-31 02:22:49.285223272 +0100
 @@ -10,18 +10,18 @@
  # so take care if INSTALL_TOP is not an absolute path. See the local target.
  # You may want to make INSTALL_LMOD and INSTALL_CMOD consistent with
@@ -67,10 +67,10 @@ Index: lua-5.5.0-beta/Makefile
  	cd doc && $(INSTALL_DATA) $(TO_MAN) $(INSTALL_MAN)
  
  uninstall:
-Index: lua-5.5.0-beta/src/Makefile
+Index: lua-5.5.0/src/Makefile
 ===================================================================
---- lua-5.5.0-beta.orig/src/Makefile	2025-06-26 14:57:29.000000000 +0200
-+++ lua-5.5.0-beta/src/Makefile	2025-07-16 11:43:49.998317291 +0200
+--- lua-5.5.0.orig/src/Makefile	2025-07-07 02:19:14.000000000 +0200
++++ lua-5.5.0/src/Makefile	2025-12-31 02:22:49.285486108 +0100
 @@ -7,7 +7,7 @@
  PLAT= guess
  
@@ -151,15 +151,6 @@ Index: lua-5.5.0-beta/src/Makefile
  
  clean:
  	$(RM) $(ALL_T) $(ALL_O)
-@@ -127,7 +142,7 @@
- 	$(MAKE) $(ALL) SYSCFLAGS="-DLUA_USE_MACOSX -DLUA_USE_READLINE" SYSLIBS="-lreadline"
- 
- mingw:
--	$(MAKE) "LUA_A=lua54.dll" "LUA_T=lua.exe" \
-+	$(MAKE) "LUA_A=lua55.dll" "LUA_T=lua.exe" \
- 	"AR=$(CC) -shared -o" "RANLIB=strip --strip-unneeded" \
- 	"SYSCFLAGS=-DLUA_BUILD_AS_DLL" "SYSLIBS=" "SYSLDFLAGS=-s" lua.exe
- 	$(MAKE) "LUAC_T=luac.exe" luac.exe
 @@ -142,14 +157,6 @@
  .PHONY: all $(PLATS) help test clean default o a depend echo
  
@@ -175,10 +166,10 @@ Index: lua-5.5.0-beta/src/Makefile
  
  # DO NOT DELETE
  
-Index: lua-5.5.0-beta/src/luaconf.h
+Index: lua-5.5.0/src/luaconf.h
 ===================================================================
---- lua-5.5.0-beta.orig/src/luaconf.h	2025-06-28 12:06:32.000000000 +0200
-+++ lua-5.5.0-beta/src/luaconf.h	2025-07-16 11:43:49.998518156 +0200
+--- lua-5.5.0.orig/src/luaconf.h	2025-12-15 11:44:40.000000000 +0100
++++ lua-5.5.0/src/luaconf.h	2025-12-31 02:22:49.285795791 +0100
 @@ -239,7 +239,7 @@
  
  #else			/* }{ */

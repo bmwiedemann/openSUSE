@@ -2,10 +2,10 @@
  testes/files.lua |   12 +++++++++---
  1 file changed, 9 insertions(+), 3 deletions(-)
 
-Index: lua-5.5.0-beta/testes/files.lua
+Index: lua-5.5.0/testes/files.lua
 ===================================================================
---- lua-5.5.0-beta.orig/testes/files.lua	2025-06-28 12:06:33.000000000 +0200
-+++ lua-5.5.0-beta/testes/files.lua	2025-07-11 11:27:35.933693258 +0200
+--- lua-5.5.0.orig/testes/files.lua	2025-12-15 11:44:41.000000000 +0100
++++ lua-5.5.0/testes/files.lua	2025-12-31 02:22:53.840645621 +0100
 @@ -85,7 +85,7 @@
  
  if not _port then   -- invalid seek

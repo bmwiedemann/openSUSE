@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Dec 31 01:57:43 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add libdir-luaconf.patch making it possible for the build
+  process to be driven only by the command line arguments of
+  `make` without a need to modify `src/luaconf.h` "manually".
+- Add 32bit-check.patch to fix failed tests on 32bit platforms,
+  to fix 32-bit integer overflow in str_rep function.
+
+-------------------------------------------------------------------
+Wed Dec 31 01:24:14 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to the final release of 5.5.0, overview of the main
+  changes for this major version:
+  - declarations for global variables
+  - named vararg tables
+  - for-loop variables are read only
+  - floats are printed in decimal with enough digits to be read
+    back correctly.
+  - more levels for constructors
+  - table.create
+  - utf8.offset returns also final position of character
+  - external strings (that use memory not managed by Lua)
+  - new functions luaL_openselectedlibs and luaL_makeseed
+  - major garbage collections done incrementally
+  - more compact arrays (large arrays use about 60% less memory)
+  - lua.c loads 'readline' dynamically
+  - static (fixed) binaries (when loading a binary chunk in
+    memory, Lua can reuse its original memory in some of the
+    internal structures)
+  - dump and undump reuse all strings
+  - auxiliary buffer reuses buffer when it creates final string 
+
+-------------------------------------------------------------------
+Tue Nov 18 19:42:53 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 5.5.0-rc1:
+  bugfixes
+
+-------------------------------------------------------------------
 Mon Aug  4 11:52:13 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - interpreter should not conflict/provide lua symbol (bsc#1247521)

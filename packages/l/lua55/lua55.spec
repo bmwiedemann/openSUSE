@@ -27,16 +27,15 @@
 %endif
 %define major_version 5.5
 %define libname liblua5_5-5
-%define upversion 5.5.0-beta
 Name:           lua55%{name_ext}
-Version:        5.5.0~beta1
+Version:        5.5.0
 Release:        0
 Summary:        Small Embeddable Language with Procedural Syntax
 License:        MIT
 Group:          Development/Languages/Other
 URL:            https://www.lua.org
-Source:         https://www.lua.org/work/lua-%{upversion}.tar.gz
-Source1:        https://www.lua.org/work/lua-5.5.0-tests.tar.gz
+Source:         https://www.lua.org/ftp/lua-%{version}.tar.gz
+Source1:        https://www.lua.org/tests/lua-%{version}-tests.tar.gz
 Source99:       baselibs.conf
 # PATCH-FIX-SUSE tweak the buildsystem to produce what is needed for SUSE
 Patch0:         lua-build-system.patch
@@ -48,6 +47,13 @@ Patch3:         main_test.patch
 Patch6:         shared_link.patch
 # PATCH-FIX-UPSTREAM inspect errno only after failure
 Patch8:         execresult.patch
+# PATCH-FIX-UPSTREAM libdir-luaconf.patch mcepl@suse.com
+# Make the build system controlled only by the command line arguments
+# (no need to modify src/luaconf.h "manually")
+Patch9:         libdir-luaconf.patch
+# PATCH-FIX-UPSTREAM 32bit-check.patch mcepl@suse.com
+# fix 32-bit integer overflow in str_rep function
+Patch10:         32bit-check.patch
 BuildRequires:  lua-interpreter
 Requires:       alts
 Requires:       lua-interpreter
@@ -144,23 +150,25 @@ scripting, and rapid prototyping. Lua is implemented as a small library
 of C functions, written in ANSI C.
 
 %prep
-%setup -q -n lua-%{upversion} -a1
+%setup -q -n lua-5.5.0 -a1
 mv lua-5.5.0-tests testes
 %autopatch -p1
 
-# manpage
 %if %{without test}
+# manpage
 cat doc/lua.1  | sed 's/TH LUA 1/TH LUA%{major_version} 1/' > doc/lua%{major_version}.1
 cat doc/luac.1 | sed 's/TH LUAC 1/TH LUAC%{major_version} 1/' > doc/luac%{major_version}.1
 %endif
 
 %build
 %if %{without test}
-sed -i -e "s@lib/lua/@%{_lib}/lua/@g" src/luaconf.h
+MYCFLAGS="%{optflags} -std=gnu99 -D_GNU_SOURCE -fPIC -DLUA_COMPAT_MODULE" 
+MYCFLAGS="${MYCFLAGS} -DLUA_CDIR=\"%{_libdir}/lua/5.5/\""
+export MYCFLAGS
 %make_build linux -C src \
     CC="cc" LIBDIR="%{_libdir}" \
     LDFLAGS="-lm" \
-    MYCFLAGS="%{optflags} -std=gnu99 -D_GNU_SOURCE -fPIC -DLUA_COMPAT_MODULE" \
+    MYCFLAGS="${MYCFLAGS}"\
     V=%{major_version} \
     LIBTOOL="libtool --quiet"
 %endif

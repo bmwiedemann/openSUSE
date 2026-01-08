@@ -1,0 +1,26 @@
+---
+ src/lstrlib.c |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+Index: lua-5.5.0/src/lstrlib.c
+===================================================================
+--- lua-5.5.0.orig/src/lstrlib.c	2025-12-15 11:44:40.000000000 +0100
++++ lua-5.5.0/src/lstrlib.c	2025-12-31 13:24:10.526974226 +0100
+@@ -144,7 +144,7 @@
+   if (n <= 0)
+     lua_pushliteral(L, "");
+   else if (l_unlikely(len > MAX_SIZE - lsep ||
+-               cast_st2S(len + lsep) > cast_st2S(MAX_SIZE) / n))
++                (len + lsep > 0 && n > cast_st2S(MAX_SIZE) / cast_st2S(len + lsep))))
+     return luaL_error(L, "resulting string too large");
+   else {
+     size_t totallen = (cast_sizet(n) * (len + lsep)) - lsep;
+@@ -1726,7 +1726,7 @@
+     luaL_argcheck(L, opt != Kstring && opt != Kzstr, 1,
+                      "variable-length format");
+     size += ntoalign;  /* total space used by option */
+-    luaL_argcheck(L, totalsize <= LUA_MAXINTEGER - size,
++    luaL_argcheck(L, totalsize <= MAX_SIZE - size,
+                      1, "format result too large");
+     totalsize += size;
+   }
