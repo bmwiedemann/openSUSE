@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan  5 13:50:07 UTC 2026 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Remove /opt/opa-fm (jsc#PED-14802)
+
+-------------------------------------------------------------------
 Tue Dec  9 09:05:20 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Update to 10.14.4.0.20-1 (jsc#PED-13892)

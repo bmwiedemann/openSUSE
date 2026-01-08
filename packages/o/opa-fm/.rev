@@ -177,4 +177,12 @@ Fix build with rdma-core (vs previous OFED)</comment>
   - Build fixes</comment>
     <requestid>1321700</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>8a37b7006e8ca084e1f206a09f10dae2</srcmd5>
+    <version>10.14.4.0.20</version>
+    <time>1767882391</time>
+    <user>anag_factory</user>
+    <comment>- Remove /opt/opa-fm (jsc#PED-14802)</comment>
+    <requestid>1325816</requestid>
+  </revision>
 </revisionlist>

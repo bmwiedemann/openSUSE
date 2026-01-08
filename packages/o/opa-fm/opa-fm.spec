@@ -102,11 +102,9 @@ install -D stage.rpm/opaxmlextract %{buildroot}/%{pseudo_opt}/%{_sysconfdir}/opa
 install -D stage.rpm/opaxmlfilter %{buildroot}/%{pseudo_opt}/%{_sysconfdir}/opaxmlfilter
 
 mkdir -p %{buildroot}%{_sbindir}
-mkdir -p %{buildroot}/opt
 mkdir -p %{buildroot}%{opavarlibdir}
 ln -s /%{pseudo_opt}/bin/fm_cmd %{buildroot}%{_sbindir}/opafmcmd
 ln -s /%{pseudo_opt}/bin/fm_cmdall %{buildroot}%{_sbindir}/opafmcmdall
-ln -s %{pseudo_opt} %{buildroot}/opt/
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcopafm
 
 %pre
@@ -128,7 +126,6 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcopafm
 %dir %{pseudo_opt}/bin
 %dir %{pseudo_opt}/etc
 %dir %{pseudo_opt}/runtime
-/opt/opa-fm
 %config(noreplace) %{opasysconfdir}/opafm.xml
 
 %doc README
