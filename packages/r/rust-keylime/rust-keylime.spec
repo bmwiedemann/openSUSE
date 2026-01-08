@@ -1,7 +1,7 @@
 #
 # spec file for package rust-keylime
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
   %define _config_norepl %config(noreplace)
 %endif
 Name:           rust-keylime
-Version:        0.2.8+12
+Version:        0.2.8+96
 Release:        0
 Summary:        Rust implementation of the keylime agent
 License:        (Apache-2.0 OR MIT) AND BSD-3-Clause AND (Apache-2.0 OR MIT) AND Unicode-DFS-2016 AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR ISC OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND Apache-2.0 AND Apache-2.0 WITH LLVM-exception AND BSD-3-Clause AND ISC AND MIT
@@ -35,7 +35,7 @@ Source1:        vendor.tar.zst
 Source2:        cargo_config
 Source3:        keylime.xml
 Source4:        keylime-user.conf
-Source5:        tmpfiles.keylime
+Source5:        rust-keylime.conf
 Source6:        ima-policy
 Source7:        ima-policy.service
 Source8:        README.suse
@@ -97,12 +97,8 @@ install -Dpm 0644 ./dist/systemd/system/var-lib-keylime-secure.mount %{buildroot
 
 install -Dpm 0644 %{SOURCE3} %{buildroot}%{_prefix}/lib/firewalld/services/keylime.xml
 install -Dpm 0644 %{SOURCE4} %{buildroot}%{_sysusersdir}/keylime-user.conf
-install -Dpm 0644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}/keylime.conf
-install -d %{buildroot}%{_localstatedir}/log/keylime
+install -Dpm 0644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}/rust-keylime.conf
 install -d %{buildroot}%{_libexecdir}/keylime
-
-# Create work directory and the certificate directory
-mkdir -p %{buildroot}%{_sharedstatedir}/keylime/cv_ca
 
 install -Dpm 0644 %{SOURCE6} %{buildroot}%{_sysconfdir}/ima/ima-policy
 install -Dpm 0644 %{SOURCE7} %{buildroot}%{_unitdir}/ima-policy.service
@@ -116,7 +112,7 @@ install -Dpm 0644 %{SOURCE7} %{buildroot}%{_unitdir}/ima-policy.service
 
 %post
 %firewalld_reload
-%tmpfiles_create keylime.conf
+%tmpfiles_create %{_tmpfilesdir}/rust-keylime.conf
 %service_add_post keylime_agent.service
 %service_add_post var-lib-keylime-secure.mount
 
@@ -141,11 +137,9 @@ install -Dpm 0644 %{SOURCE7} %{buildroot}%{_unitdir}/ima-policy.service
 %dir %{_prefix}/lib/firewalld/services
 %{_prefix}/lib/firewalld/services/keylime.xml
 %{_sysusersdir}/keylime-user.conf
-%{_tmpfilesdir}/keylime.conf
-%dir %attr(0750,keylime,tss) %{_localstatedir}/log/keylime
+%dir %{_tmpfilesdir}
+%{_tmpfilesdir}/rust-keylime.conf
 %dir %attr(0750,keylime,tss) %{_libexecdir}/keylime
-%dir %attr(0700,keylime,tss) %{_sharedstatedir}/keylime
-%dir %attr(0700,keylime,tss) %{_sharedstatedir}/keylime/cv_ca
 
 %files -n keylime-ima-policy
 %dir %attr(0750,root,root) %{_sysconfdir}/ima

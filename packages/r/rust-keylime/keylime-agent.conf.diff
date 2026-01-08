@@ -1,8 +1,8 @@
 diff --git i/keylime-agent.conf w/keylime-agent.conf
-index d6e8615..75994c4 100644
+index 49124f3..5dd707b 100644
 --- i/keylime-agent.conf
 +++ w/keylime-agent.conf
-@@ -29,13 +29,15 @@ api_versions = "default"
+@@ -33,14 +33,16 @@ api_versions = "default"
  # of 'SHA256(public EK in PEM format)'.
  #
  # To override, set KEYLIME_AGENT_UUID environment variable.
@@ -10,7 +10,8 @@ index d6e8615..75994c4 100644
 +# uuid = "d432fbb3-d2f1-4a97-9ef7-75bd81c00000"
 +uuid = "generate"
  
- # The binding IP address and port for the agent server
+ # The binding IP address or hostname (FQDN) and port for the agent server
+ # Supports IPv4, IPv6, or fully qualified domain names
  #
  # To override ip, set KEYLIME_AGENT_IP environment variable.
  # To override port, set KEYLIME_AGENT_PORT environment variable.
@@ -19,8 +20,8 @@ index d6e8615..75994c4 100644
 +ip = "0.0.0.0"
  port = 9002
  
- # Address and port where the verifier and tenant can connect to reach the agent.
-@@ -51,7 +53,8 @@ contact_port = 9002
+ # Address (IP or hostname/FQDN) and port where the verifier and tenant can connect to reach the agent.
+@@ -58,7 +60,8 @@ contact_port = 9002
  # To override registrar_ip, set KEYLIME_AGENT_REGISTRAR_IP environment variable.
  # To override registrar_port, set KEYLIME_AGENT_REGISTRAR_PORT environment
  # variable.
@@ -30,7 +31,7 @@ index d6e8615..75994c4 100644
  registrar_port = 8890
  
  # Enable mTLS communication between agent, verifier and tenant.
-@@ -161,7 +164,8 @@ revocation_actions_dir = "/usr/libexec/keylime"
+@@ -191,7 +194,8 @@ revocation_actions_dir = "/usr/libexec/keylime"
  # KEYLIME_AGENT_REVOCATION_NOTIFICATION_IP environment variable.
  # To override revocation_notification_port, set
  # KEYLIME_AGENT_REVOCATION_NOTIFICATION_PORT environment variable.
