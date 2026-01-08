@@ -8890,6 +8890,7 @@ unsorted:
   - imhangul 
   - iml-devel 
   - imlib2 
+  - imlib2-demo 
   - imlib2-devel 
   - imlib2-filters 
   - immer-devel 
@@ -14024,7 +14025,7 @@ unsorted:
   - libhydrogen-core-devel 
   - libhyphen0-32bit 
   - libhyprcursor0 
-  - libhyprgraphics2 
+  - libhyprgraphics4 
   - libhyprlang2 
   - libhyprutils10 
   - libhyprwire2 
@@ -15018,6 +15019,7 @@ unsorted:
   - libnvidia-egl-wayland-devel 
   - libnvidia-egl-wayland1 
   - libnvidia-egl-wayland1-32bit 
+  - libnvidia-egl-wayland21 
   - libnvidia-egl-x11-devel 
   - libnvidia-egl-x111 
   - libnvidia-egl-x111-32bit 
@@ -15167,14 +15169,14 @@ unsorted:
   - libopentimelineio18 
   - libopentracing-cpp1 
   - libopenvdb12_0 
-  - libopenvino2540 
-  - libopenvino_c2540 
-  - libopenvino_ir_frontend2540 
-  - libopenvino_onnx_frontend2540 
-  - libopenvino_paddle_frontend2540 
-  - libopenvino_pytorch_frontend2540 
-  - libopenvino_tensorflow_frontend2540 
-  - libopenvino_tensorflow_lite_frontend2540 
+  - libopenvino2541 
+  - libopenvino_c2541 
+  - libopenvino_ir_frontend2541 
+  - libopenvino_onnx_frontend2541 
+  - libopenvino_paddle_frontend2541 
+  - libopenvino_pytorch_frontend2541 
+  - libopenvino_tensorflow_frontend2541 
+  - libopenvino_tensorflow_lite_frontend2541 
   - libopenvswitch-3_6-0 
   - liboping-devel 
   - liboping0 
@@ -26949,7 +26951,6 @@ unsorted:
   - python311-pytest-jupyter 
   - python311-pytest-jupyter-client 
   - python311-pytest-jupyter-server 
-  - python311-pytest-lazy-fixture 
   - python311-pytest-lazy-fixtures 
   - python311-pytest-listener 
   - python311-pytest-localserver 
@@ -30805,7 +30806,6 @@ unsorted:
   - python312-pytest-jupyter 
   - python312-pytest-jupyter-client 
   - python312-pytest-jupyter-server 
-  - python312-pytest-lazy-fixture 
   - python312-pytest-lazy-fixtures 
   - python312-pytest-listener 
   - python312-pytest-localserver 
@@ -34634,7 +34634,6 @@ unsorted:
   - python313-pytest-jupyter 
   - python313-pytest-jupyter-client 
   - python313-pytest-jupyter-server 
-  - python313-pytest-lazy-fixture 
   - python313-pytest-lazy-fixtures 
   - python313-pytest-listener 
   - python313-pytest-localserver 
@@ -50338,6 +50337,7 @@ unsorted:
   - z3 
   - z3-devel 
   - zabbix-agent 
+  - zabbix-agent2 
   - zabbix-java-gateway 
   - zabbix-proxy 
   - zabbix-proxy-mysql 
