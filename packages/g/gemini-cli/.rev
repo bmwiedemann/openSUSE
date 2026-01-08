@@ -106,4 +106,41 @@
   * fix(patch): cherry-pick 07e597d to release/v0.22.4-pr-15684</comment>
     <requestid>1325132</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4f02f19c3f2bf5cb82471f769d38c87d</srcmd5>
+    <version>0.23.0</version>
+    <time>1767882524</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.23.0:
+  * Code assist service metrics.
+  * chore/release: bump version to
+    0.21.0-nightly.20251216.bb0c0d8ee
+  * Use official ACP SDK and support HTTP/SSE based MCP servers
+  * Remove foreground for themes other than shades of purple and
+    holiday.
+  * Disallow unnecessary awaits.
+  * Add one to the padding in settings dialog to avoid flicker.
+  * feat(core): introduce remote agent infrastructure and rename
+    local executor
+  * feat(cli): Add `/auth logout` command to clear credentials
+    and auth state
+  * (fix) Automated pr labeller
+  * feat: launch Gemini 3 Flash in Gemini CLI ⚡️⚡️⚡️
+  * Respect previewFeatures value from the remote flag if
+    undefined
+  * feat(ui): add Windows clipboard image support and Alt+V paste
+    workaround
+  * chore(core): remove legacy fallback flags and migrate loop
+    detection
+  * fix(ui): Prevent eager slash command completion hiding
+    sibling commands
+  * Docs: Update Changelog for Dec 17, 2025
+  * Code Assist backend telemetry for user accept/reject of
+    suggestions
+  * fix(cli): correct initial history length handling for chat
+    commands
+  * chore/release: bump version to
+    0.21.0-nightly.20251218.739c02bd6</comment>
+    <requestid>1325922</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Wed Jan  7 11:59:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.23.0:
+  * Code assist service metrics.
+  * chore/release: bump version to
+    0.21.0-nightly.20251216.bb0c0d8ee
+  * Use official ACP SDK and support HTTP/SSE based MCP servers
+  * Remove foreground for themes other than shades of purple and
+    holiday.
+  * Disallow unnecessary awaits.
+  * Add one to the padding in settings dialog to avoid flicker.
+  * feat(core): introduce remote agent infrastructure and rename
+    local executor
+  * feat(cli): Add `/auth logout` command to clear credentials
+    and auth state
+  * (fix) Automated pr labeller
+  * feat: launch Gemini 3 Flash in Gemini CLI ⚡️⚡️⚡️
+  * Respect previewFeatures value from the remote flag if
+    undefined
+  * feat(ui): add Windows clipboard image support and Alt+V paste
+    workaround
+  * chore(core): remove legacy fallback flags and migrate loop
+    detection
+  * fix(ui): Prevent eager slash command completion hiding
+    sibling commands
+  * Docs: Update Changelog for Dec 17, 2025
+  * Code Assist backend telemetry for user accept/reject of
+    suggestions
+  * fix(cli): correct initial history length handling for chat
+    commands
+  * chore/release: bump version to
+    0.21.0-nightly.20251218.739c02bd6
+  * Change detailed model stats to use a new shared Table class
+    to resolve robustness issues.
+  * feat: add agent toml parser
+  * Add core tool that adds all context from the core package.
+  * (docs): Add reference section to hooks documentation
+  * feat(hooks): add support for friendly names and descriptions
+  * feat: Detect background color
+  * add 3.0 to allowed sensitive keywords
+  * feat: Pass additional environment variables to shell
+    execution
+  * Remove unused code
+  * Handle all 429 as retryableQuotaError
+  * Remove unnecessary dependencies
+  * fix: prevent infinite loop in prompt completion on error
+  * fix(ui): show command suggestions even on perfect match and
+    sort them
+  * feat(hooks): reduce log verbosity and improve error reporting
+    in UI
+  * feat: simplify tool confirmation labels for better UX
+  * chore/release: bump version to
+    0.21.0-nightly.20251219.70696e364
+  * feat(core): Implement JIT context memory loading and UI sync
+  * feat(ui): Put "Allow for all future sessions" behind a
+    setting off by default.
+  * fix(cli):change the placeholder of input during the shell
+    mode
+  * Validate OAuth resource parameter matches MCP server URL
+  * docs(cli): add System Prompt Override (GEMINI_SYSTEM_MD)
+  * more robust command parsing logs
+  * Introspection agent demo
+  * fix(core): sanitize hook command expansion and prevent
+    injection
+  * fix(folder trust): add validation for trusted folder level
+  * fix(cli): fix right border overflow in trust dialogs
+  * fix(policy): fix bug where accepting-edits continued after it
+    was turned off
+  * fix: prevent infinite relaunch loop when --resume fails
+  * chore/release: bump version to
+    0.21.0-nightly.20251220.41a1a3eed
+  * feat(telemetry): add clearcut logging for hooks
+  * fix(core): Add `.geminiignore` support to SearchText tool
+
+-------------------------------------------------------------------
 Fri Jan  2 14:28:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.22.5:
