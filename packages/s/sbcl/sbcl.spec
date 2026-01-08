@@ -1,7 +1,7 @@
 #
 # spec file for package sbcl
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -102,6 +102,8 @@ BuildRequires:  texlive-ec
 Patch0:         sbcl-1.1.2-install.patch
 # PATCH-FIX-UPSTREAM Remove obsolete qemu workarounds
 Patch1:         remove-qemu-workarounds.patch
+# PATCH-FIX-UPSTREAM Properly model the non-existing floating point traps on RISC-V
+Patch2:         riscv-float-traps.patch
 ExcludeArch:    s390x
 Requires:       sbcl-bin
 

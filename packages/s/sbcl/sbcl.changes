@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan  7 08:32:41 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- riscv-float-traps.patch: Properly model the non-existing floating point
+  traps on RISC-V
+
+-------------------------------------------------------------------
 Fri Jan  2 11:05:17 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.6.0
