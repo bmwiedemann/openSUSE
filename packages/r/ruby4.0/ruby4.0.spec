@@ -1,7 +1,7 @@
 #
 # spec file for package ruby4.0
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -75,7 +75,7 @@ Release:        0
 # keep in sync with macro file!
 #
 # from valgrind.spec
-%ifarch %ix86 aarch64 x86_64 ppc64le s390x
+%ifarch %ix86 aarch64 x86_64 ppc64le s390x riscv64
 %define use_valgrind 1
 %endif
 %bcond_without build_docs

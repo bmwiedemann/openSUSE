@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan  7 08:23:52 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- Enable valgrind support on riscv64
+
+-------------------------------------------------------------------
 Fri Jan  2 21:48:32 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - BuildRequire gcc-c++ to fix building c++ based extensions

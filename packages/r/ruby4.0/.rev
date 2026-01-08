@@ -29,4 +29,12 @@
   there is no need to split it out into another conditional.</comment>
     <requestid>1325186</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>f2475d5508920c736af5e6ceb8e967e2</srcmd5>
+    <version>4.0.0</version>
+    <time>1767882348</time>
+    <user>anag_factory</user>
+    <comment>- Enable valgrind support on riscv64</comment>
+    <requestid>1325836</requestid>
+  </revision>
 </revisionlist>
