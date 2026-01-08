@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan  8 10:14:17 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Modified the .spec file for Immutable Mode (jsc#PED-14798)
+
+-------------------------------------------------------------------
 Wed Nov 12 09:04:02 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade openCryptoki to 3.26

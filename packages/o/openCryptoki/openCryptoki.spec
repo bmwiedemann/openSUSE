@@ -1,7 +1,7 @@
 #
 # spec file for package openCryptoki
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -169,10 +169,25 @@ dos2unix doc/README.ep11_stdll
 %install
 %make_install
 install -d %{buildroot}%{_includedir}
-install -d %{buildroot}%{_localstatedir}/lib/opencryptoki
+# Move data templates from /var to /usr/share/opencryptoki for tmpfiles to use
+install -d %{buildroot}%{_datadir}/opencryptoki/templates
 install -d %{buildroot}%{_initddir}
 install -d %{buildroot}%{_sbindir}
 install -d %{buildroot}%{_prefix}/lib/tmpfiles.d
+# Define the tmpfiles.d configuration
+cat > %{buildroot}%{_prefix}/lib/tmpfiles.d/opencryptoki.conf <<EOF
+# Type Path        Mode UID  GID  Age Argument
+d /var/lib/opencryptoki 0755 root pkcs11 - -
+d /var/lib/opencryptoki/swtok 0770 root pkcs11 - -
+d /var/lib/opencryptoki/swtok/TOK_OBJ 0770 root pkcs11 - -
+d /var/lib/opencryptoki/tpm 0770 root pkcs11 - -
+d /var/lib/opencryptoki/icsf 0770 root pkcs11 - -
+d /var/log/opencryptoki 0770 root pkcs11 - -
+L+ /etc/pkcs11 - - - - /var/lib/opencryptoki
+EOF
+# Remove manual directory creation in %install that belongs in /var
+rm -rf %{buildroot}%{_localstatedir}/lib/opencryptoki
+rm -rf %{buildroot}%{_localstatedir}/log/opencryptoki
 #
 mkdir -p %{buildroot}%{_datadir}/opencryptoki
 cp %{buildroot}%{_datadir}/doc/opencryptoki/*.conf %{buildroot}%{_datadir}/opencryptoki
@@ -197,22 +212,13 @@ getent passwd pkcsslotd 2>/dev/null || %{_sbindir}/useradd -g %{pkcs_group} -r p
 %{service_del_preun pkcsslotd.service}
 
 %post
-# Symlink from /var/lib/opencryptoki to /etc/pkcs11
-if [ ! -L %{_sysconfdir}/pkcs11 ] ; then
-	if [ -e %{_sysconfdir}/pkcs11/pk_config_data ] ; then
-		mv %{_sysconfdir}/pkcs11/* %{_localstatedir}/lib/opencryptoki
-		cd %{_sysconfdir} && rm -rf pkcs11 && \
-			ln -sf %{_localstatedir}/lib/opencryptoki pkcs11
-	fi
-fi
+# Use the systemd-tmpfiles macro to ensure directories are created on next boot/transaction
+%tmpfiles_create %{_tmpfilesdir}/opencryptoki.conf
 /sbin/ldconfig
-%{?tmpfiles_create:%tmpfiles_create %{_tmpfilesdir}/opencryptoki.conf}
 %{service_add_post pkcsslotd.service}
 
 %postun
-if [ -L %{_sysconfdir}/pkcs11 ] ; then
-	rm %{_sysconfdir}/pkcs11
-fi
+/sbin/ldconfig
 %{service_del_postun pkcsslotd.service}
 
 %ifarch %{openCryptoki_32bit_arch}
@@ -280,8 +286,6 @@ ln -sf %{_libdir}/opencryptoki/libopencryptoki.so %{_prefix}/lib/pkcs11/PKCS11_A
 %ifnarch i586
 %config %{_sysconfdir}/opencryptoki/ccatok.conf
 %{_sbindir}/pkcscca
-%dir %attr(770,root,%{pkcs_group}) %{_localstatedir}/lib/opencryptoki/ccatok
-%dir %attr(770,root,%{pkcs_group}) %{_localstatedir}/lib/opencryptoki/ccatok/TOK_OBJ
 %endif
 %{_sbindir}/p11kmip
 %{_sbindir}/pkcsslotd
@@ -293,20 +297,12 @@ ln -sf %{_libdir}/opencryptoki/libopencryptoki.so %{_prefix}/lib/pkcs11/PKCS11_A
 %dir %{_libdir}/opencryptoki
 %dir %{_libdir}/opencryptoki/stdll
   # State and lock directories
-%dir %attr(755,root,%{pkcs_group}) %{_localstatedir}/lib/opencryptoki
-%dir %attr(770,root,%{pkcs_group}) %{_localstatedir}/lib/opencryptoki/swtok
-%dir %attr(770,root,%{pkcs_group}) %{_localstatedir}/lib/opencryptoki/swtok/TOK_OBJ
-%dir %attr(770,root,%{pkcs_group}) %{_localstatedir}/lib/opencryptoki/tpm
-%dir %attr(770,root,%{pkcs_group}) %{_localstatedir}/lib/opencryptoki/icsf
-%ifarch s390 s390x
-%dir %attr(770,root,%{pkcs_group}) %{_localstatedir}/lib/opencryptoki/ep11tok
-%dir %attr(770,root,%{pkcs_group}) %{_localstatedir}/lib/opencryptoki/ep11tok/TOK_OBJ
-%dir %attr(770,root,%{pkcs_group}) %{_localstatedir}/lib/opencryptoki/lite
-%dir %attr(770,root,%{pkcs_group}) %{_localstatedir}/lib/opencryptoki/lite/TOK_OBJ
-%endif
-%dir %attr(770,root,%{pkcs_group}) %{_localstatedir}/log/opencryptoki/
 %{_mandir}/man*/*
 %{_sbindir}/pkcshsm_mk_change
+#
+%{_prefix}/lib/tmpfiles.d/opencryptoki.conf
+# Ensure we don't package files in /var directly
+%ghost %dir %attr(755,root,%{pkcs_group}) %{_localstatedir}/lib/opencryptoki
 
 %files devel
 %dir %{_libdir}/opencryptoki
