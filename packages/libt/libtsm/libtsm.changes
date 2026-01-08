@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Dec  3 21:20:34 UTC 2025 - Adam Mizerski <adam@mizerski.pl>
+
+- changed git repo to https://github.com/kmscon/libtsm
+- update to 4.3.0
+  - Add OSC 4, 10 and 11 support (only read color, not set it)
+  - Add a new API, tsm_screen_selection_word() to select a word at a given position
+- update to 4.2.0:
+  - New features
+    - Add shift arrow keys
+    - Convert to Meson
+  - Bug fixes
+    - Meson: fix version-script
+
+-------------------------------------------------------------------
 Sat Aug  2 14:48:06 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.1.0

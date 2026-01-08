@@ -1,7 +1,7 @@
 #
 # spec file for package libtsm
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,18 +19,16 @@
 %global sover   4
 %global lname   libtsm%{sover}
 Name:           libtsm
-Version:        4.1.0
+Version:        4.3.0
 Release:        0
 Summary:        DEC-VT terminal emulator state machine
 License:        LGPL-2.1-or-later AND MIT
 Group:          Development/Libraries/C and C++
-URL:            https://github.com/Aetf/libtsm
-Source:         https://github.com/Aetf/libtsm/archive/refs/tags/v%version.tar.gz
-BuildRequires:  cmake
+URL:            https://github.com/kmscon/libtsm
+Source:         https://github.com/kmscon/libtsm/archive/refs/tags/v%version.tar.gz
+BuildRequires:  meson
 BuildRequires:  pkg-config
-BuildRequires:  xz
-BuildRequires:  pkgconfig(check)
-BuildRequires:  pkgconfig(xkbcommon)
+BuildRequires:  pkgconfig(xkbcommon) >= 0.5.0
 
 %description
 TSM is a state machine for DEC VT100-VT520 compatible terminal
@@ -69,11 +67,11 @@ in %{lname}.
 %autosetup -p1
 
 %build
-%cmake
-%make_build
+%meson -Dtests=false
+%meson_build
 
 %install
-%cmake_install
+%meson_install
 
 %ldconfig_scriptlets -n %{lname}
 
@@ -86,6 +84,5 @@ in %{lname}.
 %{_includedir}/libtsm.h
 %{_libdir}/libtsm.so
 %{_libdir}/pkgconfig/*.pc
-%{_libdir}/cmake/
 
 %changelog
