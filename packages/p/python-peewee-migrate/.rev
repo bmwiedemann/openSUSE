@@ -7,4 +7,15 @@
     <comment></comment>
     <requestid>1202907</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>952bafd291114b6e10bb9f034f4f9d90</srcmd5>
+    <version>1.14.3</version>
+    <time>1767882499</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.14.3 
+  - feat: drop py3.8, update indexes
+  - fix: ignore peewee defaults for migrations
+  - feat: tune migrations</comment>
+    <requestid>1325864</requestid>
+  </revision>
 </revisionlist>

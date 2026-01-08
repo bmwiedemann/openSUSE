@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec  3 22:09:20 UTC 2025 - Guang Yee <gyee@suse.com>
+
+- Update to 1.14.3 
+  - feat: drop py3.8, update indexes
+  - fix: ignore peewee defaults for migrations
+  - feat: tune migrations
+
+-------------------------------------------------------------------
 Mon Sep 23 07:12:23 UTC 2024 - Simon Lees <sflees@suse.de>
 
 - Fix the runtime requires

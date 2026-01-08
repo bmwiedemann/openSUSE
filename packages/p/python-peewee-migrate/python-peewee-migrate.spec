@@ -1,7 +1,7 @@
 #
 # spec file for package python-peewee-migrate
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-peewee-migrate
-Version:        1.13.0
+Version:        1.14.3
 Release:        0
 Summary:        Support for migrations in Peewee ORM
 License:        MIT
