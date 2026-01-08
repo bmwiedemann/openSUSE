@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jan  3 16:38:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.8:
+  * important: the caching feature was always enabled if keyutils
+    package is available and if using a password input method
+    other than the builtin dialog. This is now fixed.
+  * remove keyutils from CI workflow to avoid failure on
+    python>=3.11
+  * fix another problem in setup.py
+  * fix CI workflow failure
+  * add translations for zh_CN
+  * fix compatibility with setuptools v75.3.0 in setup.py
+  * deprecate installation via python setup.py install
+
+-------------------------------------------------------------------
 Tue Dec 10 11:54:37 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - fix install error
@@ -12,7 +27,7 @@ Thu Apr 25 13:21:10 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
   * fix --terminal command line option (was not doing anything)
   * fix AttributeError when python-keyring-keyutils is installed instead of
     keyutils
-    
+
 -------------------------------------------------------------------
 Mon Mar 11 18:15:48 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
@@ -59,7 +74,7 @@ Wed Mar  2 09:39:53 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 -------------------------------------------------------------------
 Tue May  5 13:18:13 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
-- Update to 2.1.1 
+- Update to 2.1.1
   * handle XDG_CONFIG_HOME variable without external pyxdg dependency
   * silence warning when using AppIndicator
   * make ``--appindicator`` sufficient to show icon (previously additionally
