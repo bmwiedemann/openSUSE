@@ -1,7 +1,7 @@
 #
 # spec file for package widelands
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,21 +28,16 @@
 %bcond_with glew
 %endif
 Name:           widelands
-Version:        1.2.1
+Version:        1.3
 Release:        0
 Summary:        Realtime strategy game involving map control
 License:        GPL-2.0-or-later
 URL:            https://www.widelands.org
-Source0:        https://codeberg.org/wl/widelands/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM compile_c_only_libs_with_c11_std.patch https://github.com/widelands/widelands/issues/6697
-Patch1:         compile_c_only_libs_with_c11_std.patch
-# PATCH-FIX-UPSTREAM include_missing_cstdint.patch https://github.com/widelands/widelands/commit/a6c5a51a15e08894b4260c90a7c08615c495465a
-Patch2:         include_missing_cstdint.patch
+Source0:        https://codeberg.org/wl/widelands/archive/v%{version}.tar.gz#/%{name}-v%{version}.tar.gz
 BuildRequires:  cmake >= 3.12
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc%{?force_gcc_version}-c++
-BuildRequires:  gettext
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
@@ -122,8 +117,6 @@ mkdir -p build/locale
 
 %fdupes %{buildroot}%{_datadir}
 
-%find_lang %{name} --all-name
-
 rm -f %{buildroot}%{_prefix}/{COPYING,CREDITS,ChangeLog,VERSION}
 
 %check
@@ -138,13 +131,10 @@ PATH=%{buildroot}%{_bindir}:$PATH %{name} --help | grep 'This is Widelands'
 %{_datadir}/icons/hicolor/*/apps/org.widelands.Widelands.png
 %{_datadir}/applications/org.widelands.Widelands.desktop
 %{_mandir}/man6/%{name}.*
-%{_datadir}/metainfo/org.widelands.Widelands.appdata.xml
+%{_datadir}/metainfo/org.widelands.Widelands.metainfo.xml
 
-%files data -f %{name}.lang
+%files data
 %dir %{_datadir}/%{name}
-%dir %{_datadir}/%{name}/locale
-%dir %{_datadir}/%{name}/locale/*
-%dir %{_datadir}/%{name}/locale/*/LC_MESSAGES
 %{_datadir}/%{name}/[^l]*
 
 %files debug
