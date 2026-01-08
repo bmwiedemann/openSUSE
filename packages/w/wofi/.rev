@@ -69,4 +69,12 @@ Wofi is a launcher/menu program for wlroots based wayland compositors such as sw
     <comment></comment>
     <requestid>1300017</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0660571a276e355ea6b97e7be5fb58b5</srcmd5>
+    <version>1.5.3</version>
+    <time>1767882690</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1325927</requestid>
+  </revision>
 </revisionlist>

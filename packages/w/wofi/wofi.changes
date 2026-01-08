@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan  8 09:42:08 UTC 2026 - Jan Baier <jbaier@suse.com>
+
+- Update to 1.5.3:
+  * Added support for loading configs and styling from /usr/etc/wofi and /etc/wofi, plugins can now be loaded from /usr/lib/wofi and /lib/wofi
+  * Fixed --lines when using a horizontal layout
+  * The size of the scrolled window is now handled correctly while preserving the behavior of --lines
+  * Backed out changeset a40edf527046
+  * footclient now comes after foot in the terminal order rather than at the end, this matches the documentation
+  * Amended the terminal_fix patch to use tabs and g_desktop_app_info_get_boolean()
+  * Added drun-terminal_fix
+  * Added title documentation to wofi(5)
+  * Add --title/-T option
+
+-------------------------------------------------------------------
 Fri Aug  8 06:37:03 UTC 2025 - Jan Baier <jbaier@suse.com>
 
 - update to 1.5.1:
