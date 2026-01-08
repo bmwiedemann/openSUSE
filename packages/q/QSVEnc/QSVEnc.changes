@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan 07 04:37:12 UTC 2026 - malcolmlewis@opensuse.org
+
+- Update to version 8.04+0:
+  * Add support for VapourSynth API V4.
+  * Add option to encode only when input audio codec differs from
+    codec specified by --audio-codec;
+    (--audio-encode-other-codec-only).
+- See /usr/share/doc/packages/QSVEnc/ReleaseNotes.md for earlier
+  updates.
+- Update placebo API in QSVEnc-enable-vulkan.patch
+
+-------------------------------------------------------------------
 Fri Oct 17 01:49:12 UTC 2025 - malcolmlewis@opensuse.org
 
 - Update to version 8.01+0:

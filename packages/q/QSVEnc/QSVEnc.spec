@@ -1,7 +1,7 @@
 #
 # spec file for package QSVEnc
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2024-2025 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           QSVEnc
-Version:        8.01+0
+Version:        8.04+0
 Release:        0
 Summary:        HW encoder (QSV) testing
 License:        MIT
@@ -48,6 +48,7 @@ Investigate performance and image quality of HW encoder (QSV) of Intel.
 %autosetup
 # Fix end of line encoding warning
 sed -i 's/\r//' QSVEncC_Options.en.md;
+sed -i 's/\r//' ReleaseNotes.md;
 
 %build
 ./configure --prefix=%{_prefix} \
