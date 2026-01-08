@@ -1,0 +1,74 @@
+From d1f80ea8ab4d3b808854673975dbf1e1ea9dac9d Mon Sep 17 00:00:00 2001
+From: Kyle Brenneman <kbrenneman@nvidia.com>
+Date: Tue, 21 Oct 2025 12:00:27 -0600
+Subject: [PATCH 10/18] Fix the version check for wl_surface.
+
+In eplWlSwapBuffers, fix the version check for whether
+wl_surface::damage_buffer is available. It was checking against version
+3, but that request was added in 4.
+
+Rather than hard-coding a version number, change it to check against
+WL_SURFACE_DAMAGE_BUFFER_SINCE_VERSION.
+
+Also change the other wl_proxy_get_version checks to use the
+*_SINCE_VERSION constants.
+---
+ src/wayland/wayland-dmabuf.c  | 7 ++++---
+ src/wayland/wayland-surface.c | 6 ++++--
+ 2 files changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/src/wayland/wayland-dmabuf.c b/src/wayland/wayland-dmabuf.c
+index 510bde3..2f90880 100644
+--- a/src/wayland/wayland-dmabuf.c
++++ b/src/wayland/wayland-dmabuf.c
+@@ -383,7 +383,8 @@ EGLBoolean GetDefaultFeedbackV4(DefaultFeedbackState *state,
+ 
+     glvnd_list_init(&state->tranches);
+ 
+-    assert(wl_proxy_get_version((struct wl_proxy *) wdmabuf) >= 4);
++    assert(wl_proxy_get_version((struct wl_proxy *) wdmabuf)
++            >= ZWP_LINUX_DMABUF_V1_GET_DEFAULT_FEEDBACK_SINCE_VERSION);
+ 
+     queue = wl_display_create_queue(wdpy);
+     if (queue == NULL)
+@@ -500,11 +501,11 @@ WlFormatList *eplWlDmaBufFeedbackGetDefault(struct wl_display *wdpy,
+     glvnd_list_init(&state.tranches);
+     wl_array_init(&state.tranche_formats);
+ 
+-    if (version >= 4)
++    if (version >= ZWP_LINUX_DMABUF_V1_GET_DEFAULT_FEEDBACK_SINCE_VERSION)
+     {
+         success = GetDefaultFeedbackV4(&state, wdpy, wdmabuf);
+     }
+-    else if (version >= 3)
++    else if (version >= ZWP_LINUX_DMABUF_V1_MODIFIER_SINCE_VERSION)
+     {
+         success = GetDefaultFeedbackV3(&state, wdpy, wdmabuf, queue);
+     }
+diff --git a/src/wayland/wayland-surface.c b/src/wayland/wayland-surface.c
+index 1c12de2..97185e2 100644
+--- a/src/wayland/wayland-surface.c
++++ b/src/wayland/wayland-surface.c
+@@ -450,7 +450,8 @@ static EGLBoolean CreateSurfaceFeedback(EplSurface *psurf)
+     SurfaceFeedbackState *state;
+     struct zwp_linux_dmabuf_v1 *wrapper = NULL;
+ 
+-    if (inst->force_prime || wl_proxy_get_version((struct wl_proxy *) inst->globals.dmabuf) < 4)
++    if (inst->force_prime || wl_proxy_get_version((struct wl_proxy *) inst->globals.dmabuf)
++            < ZWP_LINUX_DMABUF_V1_GET_SURFACE_FEEDBACK_SINCE_VERSION)
+     {
+         return EGL_TRUE;
+     }
+@@ -1349,7 +1350,8 @@ EGLBoolean eplWlSwapBuffers(EplPlatformData *plat, EplDisplay *pdpy,
+     assert(psurf->priv->current.last_swap_sync == NULL);
+ 
+     if (rects != NULL && n_rects > 0
+-            && wl_proxy_get_version((struct wl_proxy *) psurf->priv->current.wsurf) >= 3)
++            && wl_proxy_get_version((struct wl_proxy *) psurf->priv->current.wsurf)
++                >= WL_SURFACE_DAMAGE_BUFFER_SINCE_VERSION)
+     {
+         EGLint i;
+         for (i=0; i<n_rects; i++)
+-- 
+2.51.0
+

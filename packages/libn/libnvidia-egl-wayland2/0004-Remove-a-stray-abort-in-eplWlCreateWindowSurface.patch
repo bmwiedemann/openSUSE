@@ -1,0 +1,24 @@
+From fa3c994af319e265f3ff3da2bb2d76e0b993128a Mon Sep 17 00:00:00 2001
+From: Kyle Brenneman <kbrenneman@nvidia.com>
+Date: Tue, 14 Oct 2025 15:11:57 -0600
+Subject: [PATCH 04/18] Remove a stray abort() in eplWlCreateWindowSurface.
+
+---
+ src/wayland/wayland-surface.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/wayland/wayland-surface.c b/src/wayland/wayland-surface.c
+index d5e56e2..762e076 100644
+--- a/src/wayland/wayland-surface.c
++++ b/src/wayland/wayland-surface.c
+@@ -855,7 +855,6 @@ EGLSurface eplWlCreateWindowSurface(EplPlatformData *plat, EplDisplay *pdpy, Epl
+     else
+     {
+         priv->current.queue = wl_display_create_queue(inst->wdpy);
+-        abort();
+     }
+     if (priv->current.queue == NULL)
+     {
+-- 
+2.51.0
+

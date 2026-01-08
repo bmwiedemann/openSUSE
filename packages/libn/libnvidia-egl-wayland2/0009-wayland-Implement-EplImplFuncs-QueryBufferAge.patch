@@ -1,0 +1,142 @@
+From 40d205187661699d96d2e27ece56af9bf61295aa Mon Sep 17 00:00:00 2001
+From: Kyle Brenneman <kbrenneman@nvidia.com>
+Date: Tue, 14 Oct 2025 17:00:07 -0600
+Subject: [PATCH 09/18] wayland: Implement EplImplFuncs::QueryBufferAge.
+
+Add a buffer_age field to WlPresentBuffer, and add a new
+eplWlSwapChainUpdateBufferAge function to increment the ages of the
+buffers in a swapchain.
+
+Add an EplImplFuncs::QueryBufferAge implementation that returns the age
+of the current back buffer.
+---
+ src/wayland/wayland-platform.c  |  1 +
+ src/wayland/wayland-platform.h  |  2 ++
+ src/wayland/wayland-surface.c   | 15 +++++++++++++++
+ src/wayland/wayland-swapchain.c | 24 ++++++++++++++++++++++++
+ src/wayland/wayland-swapchain.h | 19 +++++++++++++++++++
+ 5 files changed, 61 insertions(+)
+
+diff --git a/src/wayland/wayland-platform.c b/src/wayland/wayland-platform.c
+index aad82af..a4b7c2b 100644
+--- a/src/wayland/wayland-platform.c
++++ b/src/wayland/wayland-platform.c
+@@ -60,6 +60,7 @@ static const EplImplFuncs WL_IMPL_FUNCS =
+     .SwapBuffers = eplWlSwapBuffers,
+     .WaitGL = eplWlWaitGL,
+     .SwapInterval = eplWlSwapInterval,
++    .QueryBufferAge = eplWlQueryBufferAge,
+ };
+ 
+ static EGLBoolean LoadProcHelper(EplPlatformData *plat, void *handle, void **ptr, const char *name)
+diff --git a/src/wayland/wayland-platform.h b/src/wayland/wayland-platform.h
+index 5f89c42..c85b656 100644
+--- a/src/wayland/wayland-platform.h
++++ b/src/wayland/wayland-platform.h
+@@ -140,4 +140,6 @@ EGLBoolean eplWlSwapInterval(EplDisplay *pdpy, EplSurface *psurf, EGLint interva
+ 
+ EGLBoolean eplWlWaitGL(EplDisplay *pdpy, EplSurface *psurf);
+ 
++EGLint eplWlQueryBufferAge(EplDisplay *pdpy, EplSurface *psurf);
++
+ #endif // WAYLAND_PLATFORM_H
+diff --git a/src/wayland/wayland-surface.c b/src/wayland/wayland-surface.c
+index 762e076..1c12de2 100644
+--- a/src/wayland/wayland-surface.c
++++ b/src/wayland/wayland-surface.c
+@@ -1518,6 +1518,9 @@ EGLBoolean eplWlSwapBuffers(EplPlatformData *plat, EplDisplay *pdpy,
+ 
+         psurf->priv->current.swapchain->current_back = next_back;
+         psurf->priv->current.swapchain->render_buffer = next_back->buffer;
++
++        eplWlSwapChainUpdateBufferAge(inst, psurf->priv->current.swapchain, present_buf);
++
+     }
+ 
+     // Note that for PRIME, since we don't have a front buffer at all, so we
+@@ -1586,3 +1589,15 @@ EGLBoolean eplWlWaitGL(EplDisplay *pdpy, EplSurface *psurf)
+ 
+     return ret;
+ }
++
++EGLint eplWlQueryBufferAge(EplDisplay *pdpy, EplSurface *psurf)
++{
++    if (psurf->priv->current.swapchain->prime)
++    {
++        return 0;
++    }
++    else
++    {
++        return psurf->priv->current.swapchain->current_back->buffer_age;
++    }
++}
+diff --git a/src/wayland/wayland-swapchain.c b/src/wayland/wayland-swapchain.c
+index 9afb0db..58eacd5 100644
+--- a/src/wayland/wayland-swapchain.c
++++ b/src/wayland/wayland-swapchain.c
+@@ -797,3 +797,27 @@ WlPresentBuffer *eplWlSwapChainFindFreePresentBuffer(WlDisplayInstance *inst,
+         }
+     }
+ }
++
++void eplWlSwapChainUpdateBufferAge(WlDisplayInstance *inst, WlSwapChain *swapchain,
++        WlPresentBuffer *presented_buffer)
++{
++    WlPresentBuffer *buf = NULL;
++
++    if (swapchain->prime)
++    {
++        return;
++    }
++
++    glvnd_list_for_each_entry(buf, &swapchain->present_buffers, entry)
++    {
++        if (buf != presented_buffer)
++        {
++            if (buf->buffer_age != 0)
++            {
++                buf->buffer_age++;
++            }
++        }
++    }
++
++    presented_buffer->buffer_age = 1;
++}
+diff --git a/src/wayland/wayland-swapchain.h b/src/wayland/wayland-swapchain.h
+index 145a805..5358bc3 100644
+--- a/src/wayland/wayland-swapchain.h
++++ b/src/wayland/wayland-swapchain.h
+@@ -72,6 +72,15 @@ typedef struct
+      */
+     WlBufferStatus status;
+ 
++    /**
++     * The value of the EGL_BUFFER_AGE_KHR attribute when this is the current
++     * back buffer.
++     *
++     * Note that with PRIME, this will never be the current back buffer, so it
++     * will always be zero.
++     */
++    EGLint buffer_age;
++
+     /**
+      * The wl_buffer object for this buffer.
+      */
+@@ -200,4 +209,14 @@ WlPresentBuffer *eplWlSwapChainCreatePresentBuffer(WlDisplayInstance *inst,
+ WlPresentBuffer *eplWlSwapChainFindFreePresentBuffer(WlDisplayInstance *inst,
+         WlSwapChain *swapchain);
+ 
++/**
++ * Updates the buffer age counters for each buffer.
++ *
++ * \param inst The WlDisplayInstance for the display
++ * \param swapchain The swapchain to update
++ * \param presented_buffer The buffer that we just presented.
++ */
++void eplWlSwapChainUpdateBufferAge(WlDisplayInstance *inst, WlSwapChain *swapchain,
++        WlPresentBuffer *presented_buffer);
++
+ #endif // WAYLAND_SWAPCHAIN_H
+-- 
+2.51.0
+

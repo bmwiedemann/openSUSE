@@ -1,0 +1,126 @@
+From a6d6523b6b7ec9e5649a0dd13d417586d814e209 Mon Sep 17 00:00:00 2001
+From: Kyle Brenneman <kbrenneman@nvidia.com>
+Date: Wed, 10 Dec 2025 08:19:14 -0700
+Subject: [PATCH 18/18] Replace SurfaceFeedbackState::modifiers_changed with a
+ counter
+
+Currently, we set the modifiers_changed flag upon receiving new surface
+feedback data, but we never clear it, and there isn't a good place to do
+so.
+
+We shouldn't clear the flag after calling SwapChainRealloc in
+SwapBuffers, because we haven't set the new swapchain yet, and we might
+hit an error before we actually call SetWindowSwapchain.
+
+We also shouldn't clear the flag when we call SetWindowSwapchain,
+because it's possible that another round of feedback data could arrive
+between SwapChainRealloc and SetWindowSwapchain.
+
+Instead, replace the modifiers_changed flag with a counter that we
+increment when we get a zwp_linux_dmabuf_feedback_v1::done event, and
+we record the value of that counter in WlSwapChain. If the swapchain's
+counter doesn't match the window's counter, then we know we need to scan
+the modifier list again.
+---
+ src/wayland/wayland-surface.c   | 31 ++++++++++++++++++++++++++-----
+ src/wayland/wayland-swapchain.h |  2 ++
+ 2 files changed, 28 insertions(+), 5 deletions(-)
+
+diff --git a/src/wayland/wayland-surface.c b/src/wayland/wayland-surface.c
+index f34489e..298b08a 100644
+--- a/src/wayland/wayland-surface.c
++++ b/src/wayland/wayland-surface.c
+@@ -88,9 +88,12 @@ typedef struct
+     EGLBoolean tranche_linear_supported;
+ 
+     /**
+-     * True if we've received new feedback data.
++     * A counter that we increment when we get a new round of feedback events.
++     *
++     * We record this counter in WlSwapChain to keep track of whether we need
++     * to reallocate the swapchain with a different modifier.
+      */
+-    EGLBoolean modifiers_changed;
++    uint32_t feedback_update_count;
+ } SurfaceFeedbackState;
+ 
+ struct _EplImplSurface
+@@ -429,7 +432,7 @@ static void OnSurfaceFeedbackDone(void *userdata,
+ 
+     state->linear_supported = EGL_FALSE;
+     state->tranche_linear_supported = EGL_FALSE;
+-    state->modifiers_changed = EGL_TRUE;
++    state->feedback_update_count++;
+     eplWlDmaBufFeedbackCommonDone(&state->base);
+ }
+ 
+@@ -559,7 +562,8 @@ static EGLBoolean SwapChainRealloc(EplSurface *psurf,
+     }
+     else if (allow_modifier_realloc
+             && psurf->priv->current.feedback != NULL
+-            && psurf->priv->current.feedback->modifiers_changed)
++            && psurf->priv->current.feedback->feedback_update_count
++                != psurf->priv->current.swapchain->feedback_update_count)
+     {
+         if (psurf->priv->current.swapchain->prime)
+         {
+@@ -571,18 +575,28 @@ static EGLBoolean SwapChainRealloc(EplSurface *psurf,
+         }
+         else
+         {
++            // We might need to transition from direct to either prime or
++            // direct with different modifiers.
+             size_t i;
+             needs_new = EGL_TRUE;
+             for (i=0; i<psurf->priv->current.num_surface_modifiers; i++)
+             {
+                 if (psurf->priv->current.swapchain->modifier == psurf->priv->current.surface_modifiers[i])
+                 {
+-                    // Transition from direct to either prime or direct with different modifiers
++                    // The current modifier is still valid.
+                     needs_new = EGL_FALSE;
+                     break;
+                 }
+             }
+         }
++
++        if (!needs_new)
++        {
++            // If the current modifier is still valid, then record the current
++            // feedback count so that we know not to check again next frame.
++            psurf->priv->current.swapchain->feedback_update_count =
++                psurf->priv->current.feedback->feedback_update_count;
++        }
+     }
+ 
+     if (needs_new)
+@@ -604,6 +618,13 @@ static EGLBoolean SwapChainRealloc(EplSurface *psurf,
+         {
+             goto done;
+         }
++        if (psurf->priv->current.feedback != NULL)
++        {
++            // Record the current feedback update count. In SwapChainRealloc,
++            // we'll use this to check if we need to reallocate the swapchain
++            // with different modifiers.
++            swapchain->feedback_update_count = psurf->priv->current.feedback->feedback_update_count;
++        }
+     }
+ 
+     success = EGL_TRUE;
+diff --git a/src/wayland/wayland-swapchain.h b/src/wayland/wayland-swapchain.h
+index 5358bc3..3316a03 100644
+--- a/src/wayland/wayland-swapchain.h
++++ b/src/wayland/wayland-swapchain.h
+@@ -175,6 +175,8 @@ typedef struct
+      * An event queue used internally by the swap chain itself.
+      */
+     struct wl_event_queue *queue;
++
++    uint32_t feedback_update_count;
+ } WlSwapChain;
+ 
+ /**
+-- 
+2.51.0
+

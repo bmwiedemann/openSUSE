@@ -1,0 +1,44 @@
+From 0c15809fcfb3fcf4b2eb2422fdd1dae4f9aea6ae Mon Sep 17 00:00:00 2001
+From: Kyle Brenneman <kbrenneman@nvidia.com>
+Date: Mon, 10 Nov 2025 14:41:53 -0700
+Subject: [PATCH 15/18] Disable multisampled windows on older drivers.
+
+Multisampled windows require additional driver support that was added in
+version 0.2 of the platform surface interface.
+
+On older drivers, don't set EGL_WINDOW_BIT on any multisampled
+EGLConfigs.
+---
+ src/wayland/wayland-fbconfig.c | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+
+diff --git a/src/wayland/wayland-fbconfig.c b/src/wayland/wayland-fbconfig.c
+index dba3ab1..c115b10 100644
+--- a/src/wayland/wayland-fbconfig.c
++++ b/src/wayland/wayland-fbconfig.c
+@@ -197,6 +197,22 @@ static EGLBoolean SetupConfig(EplPlatformData *plat,
+         config->fourcc = DRM_FORMAT_INVALID;
+     }
+ 
++    if (!EGL_PLATFORM_SURFACE_INTERFACE_CHECK_VERSION(plat->priv->egl.platform_surface_version,
++                EGL_PLATFORM_SURFACE_INTERNAL_SWAP_SINCE))
++    {
++        // Multisampled surfaces require additional driver support which was
++        // added in interface version 0.2.
++        EGLint msaa = 0;
++        if (plat->priv->egl.PlatformGetConfigAttribNVX(internal_display,
++                    config->config, EGL_SAMPLE_BUFFERS, &msaa))
++        {
++            if (msaa != 0)
++            {
++                return EGL_TRUE;
++            }
++        }
++    }
++
+     if (config->fourcc == DRM_FORMAT_INVALID)
+     {
+         // Without a format, we can't do anything with this config.
+-- 
+2.51.0
+

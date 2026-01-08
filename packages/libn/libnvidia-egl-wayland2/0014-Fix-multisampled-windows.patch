@@ -1,0 +1,130 @@
+From d67240ab29f0dd4af4320fc3288842b24b3c8777 Mon Sep 17 00:00:00 2001
+From: Kyle Brenneman <kbrenneman@nvidia.com>
+Date: Mon, 10 Nov 2025 14:34:04 -0700
+Subject: [PATCH 14/18] Fix multisampled windows.
+
+Multisampling requires the driver to downsample the image before
+presentation, which wasn't getting called.
+
+Version 0.2 of the driver's platform surface interface uses the driver's
+eglSwapBuffers functions to implement downsampling and any other
+per-present operations. The buffer shuffling and window-system protocol
+is still the platform library's responsibility, of course.
+---
+ src/wayland/driver-platform-surface.h | 15 +++++++++++----
+ src/wayland/wayland-platform.c        | 16 ++++++++++------
+ src/wayland/wayland-platform.h        |  2 ++
+ src/wayland/wayland-surface.c         | 10 ++++++++++
+ 4 files changed, 33 insertions(+), 10 deletions(-)
+
+diff --git a/src/wayland/driver-platform-surface.h b/src/wayland/driver-platform-surface.h
+index 2b523e3..9882d6e 100644
+--- a/src/wayland/driver-platform-surface.h
++++ b/src/wayland/driver-platform-surface.h
+@@ -56,7 +56,15 @@ extern "C" {
+ #define EGL_SURFACE_Y_INVERTED_NVX 0x31DB
+ 
+ #define EGL_PLATFORM_SURFACE_INTERFACE_MAJOR_VERSION 0
+-#define EGL_PLATFORM_SURFACE_INTERFACE_MINOR_VERSION 1
++
++/**
++ * Version 0.2 adds the ability to call eglSwapBuffers (or eglSwapBuffersWithDamage)
++ * to perform any internal operations that are necessary before presentation.
++ *
++ * This is used for downsampling or any other internal bookkeeping that the
++ * driver needs.
++ */
++#define EGL_PLATFORM_SURFACE_INTERNAL_SWAP_SINCE 2
+ 
+ static inline EGLint EGL_PLATFORM_SURFACE_INTERFACE_GET_MAJOR_VERSION(EGLint version)
+ {
+@@ -71,14 +79,13 @@ static inline EGLint EGL_PLATFORM_SURFACE_INTERFACE_GET_MINOR_VERSION(EGLint ver
+  * Checks if the version number reported by the driver is compatible.
+  *
+  * \param driver_version The version number reported by \c eglPlatformGetVersionNVX.
+- * \param major_version The major version number that the library expects.
+  * \param min_minor_version The minimum minor version number that the library requires.
+  * \return EGL_TRUE if the driver's version is compatible.
+  */
+ static inline EGLBoolean EGL_PLATFORM_SURFACE_INTERFACE_CHECK_VERSION(EGLint driver_version,
+-        EGLint major_version, EGLint min_minor_version)
++        EGLint min_minor_version)
+ {
+-    return EGL_PLATFORM_SURFACE_INTERFACE_GET_MAJOR_VERSION(driver_version) == major_version
++    return EGL_PLATFORM_SURFACE_INTERFACE_GET_MAJOR_VERSION(driver_version) == EGL_PLATFORM_SURFACE_INTERFACE_MAJOR_VERSION
+         && EGL_PLATFORM_SURFACE_INTERFACE_GET_MINOR_VERSION(driver_version) >= min_minor_version;
+ }
+ 
+diff --git a/src/wayland/wayland-platform.c b/src/wayland/wayland-platform.c
+index a4b7c2b..b3d32f4 100644
+--- a/src/wayland/wayland-platform.c
++++ b/src/wayland/wayland-platform.c
+@@ -28,7 +28,6 @@
+ #include "platform-utils.h"
+ #include "dma-buf.h"
+ 
+-static const EGLint NEED_PLATFORM_SURFACE_MAJOR = 0;
+ static const EGLint NEED_PLATFORM_SURFACE_MINOR = 1;
+ 
+ static void eplWlCleanupPlatform(EplPlatformData *plat);
+@@ -100,13 +99,18 @@ PUBLIC EGLBoolean loadEGLExternalPlatform(int major, int minor,
+         return EGL_FALSE;
+     }
+ 
++    // Check that the driver supports a compatible version of the platform
++    // surface interface.
+     ptr_eglPlatformGetVersionNVX = driver->getProcAddress("eglPlatformGetVersionNVX");
+-    if (ptr_eglPlatformGetVersionNVX == NULL
+-            || !EGL_PLATFORM_SURFACE_INTERFACE_CHECK_VERSION(ptr_eglPlatformGetVersionNVX(),
+-                NEED_PLATFORM_SURFACE_MAJOR, NEED_PLATFORM_SURFACE_MINOR))
++    if (ptr_eglPlatformGetVersionNVX == NULL)
++    {
++        eplPlatformBaseInitFail(plat);
++        return EGL_FALSE;
++    }
++    plat->priv->egl.platform_surface_version = ptr_eglPlatformGetVersionNVX();
++    if (!EGL_PLATFORM_SURFACE_INTERFACE_CHECK_VERSION(plat->priv->egl.platform_surface_version,
++                NEED_PLATFORM_SURFACE_MINOR))
+     {
+-        // The driver doesn't support a compatible version of the platform
+-        // surface interface.
+         eplPlatformBaseInitFail(plat);
+         return EGL_FALSE;
+     }
+diff --git a/src/wayland/wayland-platform.h b/src/wayland/wayland-platform.h
+index c85b656..2ed5745 100644
+--- a/src/wayland/wayland-platform.h
++++ b/src/wayland/wayland-platform.h
+@@ -57,6 +57,8 @@ struct _EplImplPlatform
+         pfn_eglPlatformCopyColorBufferNVX PlatformCopyColorBufferNVX;
+         pfn_eglPlatformAllocColorBufferNVX PlatformAllocColorBufferNVX;
+         pfn_eglPlatformExportColorBufferNVX PlatformExportColorBufferNVX;
++
++        EGLint platform_surface_version;
+     } egl;
+ 
+     struct
+diff --git a/src/wayland/wayland-surface.c b/src/wayland/wayland-surface.c
+index d854f45..214a7e5 100644
+--- a/src/wayland/wayland-surface.c
++++ b/src/wayland/wayland-surface.c
+@@ -1272,6 +1272,16 @@ EGLBoolean eplWlSwapBuffers(EplPlatformData *plat, EplDisplay *pdpy,
+     psurf->priv->params.skip_update_callback++;
+     pthread_mutex_unlock(&psurf->priv->params.mutex);
+ 
++    if (EGL_PLATFORM_SURFACE_INTERFACE_CHECK_VERSION(plat->priv->egl.platform_surface_version,
++                EGL_PLATFORM_SURFACE_INTERNAL_SWAP_SINCE))
++    {
++        // Call into the driver to do any extra pre-present work.
++        if (!plat->egl.SwapBuffers(inst->internal_display->edpy, psurf->internal_surface))
++        {
++            goto done;
++        }
++    }
++
+     // Dispatch any pending events, but don't block for them. This will ensure
+     // that we pick up any modifier changes that the server might have sent.
+     wl_display_dispatch_queue_pending(psurf->priv->inst->wdpy, psurf->priv->current.queue);
+-- 
+2.51.0
+

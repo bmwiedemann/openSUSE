@@ -1,0 +1,25 @@
+From bdf038ba6e2b31014ca232c849dd8610c2cb4b3f Mon Sep 17 00:00:00 2001
+From: Kyle Brenneman <kbrenneman@nvidia.com>
+Date: Thu, 16 Oct 2025 11:38:03 -0600
+Subject: [PATCH 05/18] Increment version number to 1.0.1.
+
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 781e4b2..7de161d 100644
+--- a/meson.build
++++ b/meson.build
+@@ -14,7 +14,7 @@
+ # limitations under the License.
+ 
+ project('nvidia-egl-wayland2', 'c',
+-  version : '1.0.0',
++  version : '1.0.1',
+   default_options : ['c_std=gnu99'],
+ )
+ 
+-- 
+2.51.0
+

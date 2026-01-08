@@ -1,0 +1,93 @@
+From eb31eb3674829a12e8b49dee17b5f3d3ab92d31d Mon Sep 17 00:00:00 2001
+From: Austin Shafer <ashafer@badland.io>
+Date: Fri, 5 Sep 2025 15:14:27 -0400
+Subject: [PATCH 03/18] egl-wayland2: Fix libdrm loading when wl_drm is not
+ available
+
+If the compositor does not support wl_drm and we fail to get the
+drmGetDeviceFromDevId symbol then the driver load will fail. This
+happens with steam due to it hijacking dlopen/dlsym. This change
+has us directly dlopen libdrm and get a symbol from it instead of
+relying on RTLD_DEFAULT.
+---
+ src/wayland/wayland-platform.c | 30 ++++++++++++++++++++++++------
+ src/wayland/wayland-platform.h |  1 +
+ 2 files changed, 25 insertions(+), 6 deletions(-)
+
+diff --git a/src/wayland/wayland-platform.c b/src/wayland/wayland-platform.c
+index 72f2779..aad82af 100644
+--- a/src/wayland/wayland-platform.c
++++ b/src/wayland/wayland-platform.c
+@@ -89,6 +89,7 @@ PUBLIC EGLBoolean loadEGLExternalPlatform(int major, int minor,
+     EplPlatformData *plat = NULL;
+     EGLBoolean timelineSupported = EGL_TRUE;
+     pfn_eglPlatformGetVersionNVX ptr_eglPlatformGetVersionNVX;
++    void *dlHandle = RTLD_DEFAULT;
+ 
+     plat = eplPlatformBaseAllocate(major, minor,
+         driver, extplatform, EGL_PLATFORM_WAYLAND_KHR, &WL_IMPL_FUNCS,
+@@ -151,18 +152,32 @@ PUBLIC EGLBoolean loadEGLExternalPlatform(int major, int minor,
+         return EGL_FALSE;
+     }
+ 
+-    plat->priv->drm.GetDeviceFromDevId = dlsym(RTLD_DEFAULT, "drmGetDeviceFromDevId");
+-
+     // wl_display_create_queue_with_name was added in libwayland 1.22.91. Use
+     // it if it's available, but we don't otherwise need anything that recent.
+-    plat->priv->wl.display_create_queue_with_name = dlsym(RTLD_DEFAULT, "wl_display_create_queue_with_name");
++    plat->priv->wl.display_create_queue_with_name = dlsym(RTLD_DEFAULT,
++                                                          "wl_display_create_queue_with_name");
++
++    // try to find drmGetDeviceFromDevId. First try the default search method,
++    // but certain application tricks may interfere with this. Most notably
++    // steam's overlay. If we can't find it through default methods fall back
++    // to directly opening libdrm.
++    plat->priv->drm.GetDeviceFromDevId = dlsym(RTLD_DEFAULT, "drmGetDeviceFromDevId");
++    if (!plat->priv->drm.GetDeviceFromDevId)
++    {
++        plat->priv->drm.libdrmDlHandle = dlopen("libdrm.so.2", RTLD_LAZY);
++        if (plat->priv->drm.libdrmDlHandle)
++        {
++            plat->priv->drm.GetDeviceFromDevId = dlsym(plat->priv->drm.libdrmDlHandle,
++                                                       "drmGetDeviceFromDevId");
++            dlHandle = plat->priv->drm.libdrmDlHandle;
++        }
++    }
+ 
+ #define LOAD_PROC(supported, prefix, group, name) \
+-    supported = supported && LoadProcHelper(plat, RTLD_DEFAULT, (void **) &plat->priv->group.name, prefix #name)
++    supported = supported && LoadProcHelper(plat, dlHandle, (void **) &plat->priv->group.name, prefix #name)
+ 
+     // Load the functions that we'll need for explicit sync, if they're
+     // available. If we don't find these, then it's not fatal.
+-    LOAD_PROC(timelineSupported, "drm", drm, GetDeviceFromDevId);
+     LOAD_PROC(timelineSupported, "drm", drm, GetCap);
+     LOAD_PROC(timelineSupported, "drm", drm, SyncobjCreate);
+     LOAD_PROC(timelineSupported, "drm", drm, SyncobjDestroy);
+@@ -192,7 +207,10 @@ PUBLIC EGLBoolean loadEGLExternalPlatform(int major, int minor,
+ 
+ void eplWlCleanupPlatform(EplPlatformData *plat)
+ {
+-    // Nothing to do here.
++    if (plat->priv->drm.libdrmDlHandle)
++    {
++        dlclose(plat->priv->drm.libdrmDlHandle);
++    }
+ }
+ 
+ const char *eplWlQueryString(EplPlatformData *plat, EplDisplay *pdpy, EGLExtPlatformString name)
+diff --git a/src/wayland/wayland-platform.h b/src/wayland/wayland-platform.h
+index 86747d4..5f89c42 100644
+--- a/src/wayland/wayland-platform.h
++++ b/src/wayland/wayland-platform.h
+@@ -61,6 +61,7 @@ struct _EplImplPlatform
+ 
+     struct
+     {
++        void *libdrmDlHandle;
+         int (* GetDeviceFromDevId) (dev_t dev_id, uint32_t flags, drmDevicePtr *device);
+         int (* GetCap) (int fd, uint64_t capability, uint64_t *value);
+         int (* SyncobjCreate) (int fd, uint32_t flags, uint32_t *handle);
+-- 
+2.51.0
+

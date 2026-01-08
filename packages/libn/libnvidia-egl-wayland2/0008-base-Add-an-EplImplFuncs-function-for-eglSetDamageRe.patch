@@ -1,0 +1,76 @@
+From 83c95316e8758ae46232d78d7425fdefcedb603c Mon Sep 17 00:00:00 2001
+From: Kyle Brenneman <kbrenneman@nvidia.com>
+Date: Tue, 14 Oct 2025 16:49:33 -0600
+Subject: [PATCH 08/18] base: Add an EplImplFuncs function for
+ eglSetDamageRegionKHR
+
+Add an optional EplImplFuncs::SetDamageRegion function to implement
+eglSetDamageRegionKHR.
+---
+ src/base/platform-base.c | 23 ++++++++++++++++-------
+ src/base/platform-impl.h | 14 ++++++++++++++
+ 2 files changed, 30 insertions(+), 7 deletions(-)
+
+diff --git a/src/base/platform-base.c b/src/base/platform-base.c
+index f746fe3..18196bd 100644
+--- a/src/base/platform-base.c
++++ b/src/base/platform-base.c
+@@ -1409,14 +1409,23 @@ static EGLBoolean HookSetDamageRegion(EGLDisplay edpy, EGLSurface esurf, EGLint
+             goto done;
+         }
+ 
+-        /*
+-         * Here's where we'd optionally call into the platform-specific code.
+-         * Since eglSetDamageRegionKHR is just a hint, it's also valid to just
+-         * ignore it.
+-         */
++        if (pdpy->platform->impl->SetDamageRegion != NULL)
++        {
++            ret = pdpy->platform->impl->SetDamageRegion(pdpy, psurf, rects, n_rects);
++        }
++        else
++        {
++            /*
++             * eglSetDamageRegionKHR is just a hint, so if the platform doesn't
++             * do anything with it, we can still return success.
++             */
++            ret = EGL_TRUE;
++        }
+ 
+-        psurf->setDamageRegionCalled = EGL_TRUE;
+-        ret = EGL_TRUE;
++        if (ret)
++        {
++            psurf->setDamageRegionCalled = EGL_TRUE;
++        }
+     }
+     else if (pdpy->platform->egl.SetDamageRegionKHR != NULL)
+     {
+diff --git a/src/base/platform-impl.h b/src/base/platform-impl.h
+index d767f3b..b6f5dad 100644
+--- a/src/base/platform-impl.h
++++ b/src/base/platform-impl.h
+@@ -321,6 +321,20 @@ typedef struct _EplImplFuncs
+      * \return The buffer age, or -1 on error.
+      */
+     EGLint (* QueryBufferAge) (EplDisplay *pdpy, EplSurface *psurf);
++
++    /**
++     * Implements eglSetDamageRegionKHR.
++     *
++     * This function is optional. If it's NULL, then the base library will
++     * ignore the damage areas and return success.
++     *
++     * \param pdpy The current display.
++     * \param psurf The current draw surface. This will never be NULL.
++     * \param rects The damage rectangles.
++     * \param n_rects The number of elements in the \p rects array.
++     * \return EGL_TRUE on success, or EGL_FALSE on failure.
++     */
++    EGLBoolean (* SetDamageRegion) (EplDisplay *pdpy, EplSurface *psurf, const EGLint *rects, EGLint n_rects);
+ } EplImplFuncs;
+ 
+ #ifdef __cplusplus
+-- 
+2.51.0
+

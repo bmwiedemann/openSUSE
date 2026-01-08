@@ -1,0 +1,34 @@
+From ab4d5af9899d05ccbc363c4ec0e4f02d6525bf3e Mon Sep 17 00:00:00 2001
+From: Kyle Brenneman <kbrenneman@nvidia.com>
+Date: Tue, 5 Aug 2025 16:41:23 -0600
+Subject: [PATCH 02/18] Update the wl_egl_window attached size.
+
+In eglSwapBuffers, after sending the wl_surface::commit request, update
+wl_egl_window::attached_width and attached_height to the size of the
+buffer.
+---
+ src/wayland/wayland-surface.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/src/wayland/wayland-surface.c b/src/wayland/wayland-surface.c
+index 27f98b9..d5e56e2 100644
+--- a/src/wayland/wayland-surface.c
++++ b/src/wayland/wayland-surface.c
+@@ -1455,6 +1455,14 @@ EGLBoolean eplWlSwapBuffers(EplPlatformData *plat, EplDisplay *pdpy,
+ 
+     wl_surface_commit(psurf->priv->current.wsurf);
+ 
++    pthread_mutex_lock(&psurf->priv->params.mutex);
++    if (psurf->priv->params.native_window != NULL)
++    {
++        psurf->priv->params.native_window->attached_width = psurf->priv->current.swapchain->width;
++        psurf->priv->params.native_window->attached_height = psurf->priv->current.swapchain->height;
++    }
++    pthread_mutex_unlock(&psurf->priv->params.mutex);
++
+     /*
+      * Send a wl_display::sync request after the commit.
+      *
+-- 
+2.51.0
+

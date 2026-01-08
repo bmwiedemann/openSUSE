@@ -1,0 +1,34 @@
+From 4b95dc9879a812a812f1e77d31f63220e378b5a7 Mon Sep 17 00:00:00 2001
+From: Kyle Brenneman <kbrenneman@nvidia.com>
+Date: Fri, 7 Nov 2025 11:47:29 -0700
+Subject: [PATCH 11/18] wayland: Flip the damage rectangles in
+ wl_surface_damage_buffer
+
+Flip the Y coordinate for the damage rectangles.
+
+eglSwapBuffersWithDamage takes the bottom-left coordiante for each
+rectangle, but wl_surface::damage_buffer takes the top-left coordinate.
+---
+ src/wayland/wayland-surface.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/wayland/wayland-surface.c b/src/wayland/wayland-surface.c
+index 97185e2..d854f45 100644
+--- a/src/wayland/wayland-surface.c
++++ b/src/wayland/wayland-surface.c
+@@ -1357,8 +1357,11 @@ EGLBoolean eplWlSwapBuffers(EplPlatformData *plat, EplDisplay *pdpy,
+         for (i=0; i<n_rects; i++)
+         {
+             const EGLint *rect = rects + (i * 4);
++            // Coordinate systems are flipped between eglSwapBuffersWithDamage
++            // and wl_surface_damage_buffer, so invert Y values.
++            int inv_y = psurf->priv->current.swapchain->height - (rect[1] + rect[3]);
+             wl_surface_damage_buffer(psurf->priv->current.wsurf,
+-                    rect[0], rect[1], rect[2], rect[3]);
++                    rect[0], inv_y, rect[2], rect[3]);
+         }
+     }
+     else
+-- 
+2.51.0
+
