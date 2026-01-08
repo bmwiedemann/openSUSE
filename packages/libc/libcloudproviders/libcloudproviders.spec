@@ -1,7 +1,7 @@
 #
 # spec file for package libcloudproviders
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _typelibdir %(pkg-config --variable=typelibdir gobject-introspection-1.0)
 %define _girdir %(pkg-config --variable=girdir gobject-introspection-1.0)
 Name:           libcloudproviders
-Version:        0.3.6
+Version:        0.4.0
 Release:        0
 Summary:        Library/Client to integrate cloud storage providers
 License:        LGPL-3.0-or-later
@@ -27,8 +27,7 @@ Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/World/libcloudproviders
 Source0:        %{name}-%{version}.tar.zst
 
-BuildRequires:  gtk-doc
-BuildRequires:  meson >= 0.42.0
+BuildRequires:  meson >= 1.9.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0) >= 2.51.2
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.51.2
@@ -73,7 +72,7 @@ developing applications that use %{name}.
 
 %build
 %meson \
-    -Denable-gtk-doc=true
+    %{nil}
 %meson_build
 
 %install
@@ -82,8 +81,7 @@ developing applications that use %{name}.
 %check
 %meson_test
 
-%post -n libcloudproviders0 -p /sbin/ldconfig
-%postun -n libcloudproviders0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libcloudproviders0
 
 %files -n libcloudproviders0
 %license LICENSE
@@ -94,7 +92,6 @@ developing applications that use %{name}.
 %{_typelibdir}/*.typelib
 
 %files devel
-%{_datadir}/gtk-doc/html/%{name}/
 %{_includedir}/cloudproviders/
 %{_libdir}/libcloudproviders.so
 %{_libdir}/pkgconfig/cloudproviders.pc

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan 06 12:06:26 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.4.0:
+  + Add dependencies to the pkg-config file
+  + Replace gtk-doc with gi-docgen
+  + Require meson 1.9.0
+  + Plug tiny memory leaks and reduce memory footprint of the
+    library
+- Drop gtk-doc BuildRequires following upstreams port. Stop
+  building API docs.
+- Use ldconfig_scriptlets macro for post(un) handling.
+
+-------------------------------------------------------------------
 Wed Mar 20 10:15:23 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.3.6:
