@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan  7 11:37:07 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.90.1:
+  + update libofx on the Windows build
+  + Bug fixes
+- Switch build system to meson:
+  + Add meson BuildRequires
+  + Replace %configure/%make/%make_install with their meson
+    equivalents %meson/%meson_build/%meson_install
+
+-------------------------------------------------------------------
 Tue Dec 30 10:31:29 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.90.0:

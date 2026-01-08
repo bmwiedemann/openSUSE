@@ -1,7 +1,7 @@
 #
 # spec file for package grisbi
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,17 @@
 
 
 Name:           grisbi
-Version:        3.90.0
+Version:        3.90.1
 Release:        0
 Summary:        Personal Accounting Application
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Finance
 URL:            http://www.grisbi.org
-Source0:        https://downloads.sourceforge.net/project/grisbi/grisbi%20stable/3.0.x/%{version}/%{name}-%{version}.tar.bz2
-Source1:        https://downloads.sourceforge.net/project/grisbi/grisbi%20stable/3.0.x/%{version}/%{name}-%{version}.tar.bz2.sig
+Source0:        https://downloads.sourceforge.net/project/grisbi/grisbi%20stable/3.0.x/%{version}/%{name}-%{version}.tar.xz
+Source1:        https://downloads.sourceforge.net/project/grisbi/grisbi%20stable/3.0.x/%{version}/%{name}-%{version}.tar.xz.sha256sum
 
 BuildRequires:  fdupes
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.56
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24
@@ -52,14 +53,13 @@ One notable feature is that it respects French accounting rules.
 %autosetup -p1
 
 %build
-%configure \
-	--disable-static \
-	--disable-schemas-compile \
-	%{nil}
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
+
+find %{buildroot}%{_datadir}/doc/%{name} -type f -exec chmod a-x {} \;
 
 # Those files are deprecated and not needed anymore
 rm %{buildroot}%{_datadir}/mime-info/grisbi.{keys,mime}
@@ -68,7 +68,7 @@ rm %{buildroot}%{_datadir}/mime-info/grisbi.{keys,mime}
 %fdupes -s %{buildroot}%{_datadir}
 
 %check
-%make_build check
+%meson_test
 
 %files
 %license COPYING
