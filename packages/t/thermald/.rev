@@ -203,4 +203,12 @@ A    thermal_daemon.obsinfo
     <comment></comment>
     <requestid>1319982</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>cf7cd3ead4932ed4ba6e4ef054a1f35f</srcmd5>
+    <version>2.5.10.4.git+f284686</version>
+    <time>1767882535</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1325947</requestid>
+  </revision>
 </revisionlist>

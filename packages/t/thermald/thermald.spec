@@ -93,7 +93,7 @@ NO_CONFIGURE=1 ./autogen.sh
 
 %if %{with_thermalmonitor}
 pushd tools/thermal_monitor
-%qmake5 ThermalMonitor.pro LIBS+=-lqcustomplot
+%qmake5 ThermalMonitor.pro LIBS+="$(pkg-config --libs qcustomplot)"
 %make_build
 popd
 %endif
