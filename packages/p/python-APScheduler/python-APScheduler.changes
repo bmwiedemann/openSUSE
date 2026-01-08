@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan  8 08:23:04 UTC 2026 - Anton Smorodskyi <anton.smorodskyi@suse.com>
+
+- Update to 3.11.2:
+  * Fixed an issue where a job using a CronTrigger scheduled
+    in a repeated time interval during DST transitions could
+    cause the scheduler to get stuck in an infinite loop 
+    (#1021; PR by @soulofakuma)
+- update build and runtime dependencies to latest state in upstream
+
+
+-------------------------------------------------------------------
 Fri Nov 21 09:53:15 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.11.1

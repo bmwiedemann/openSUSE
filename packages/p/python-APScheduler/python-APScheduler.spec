@@ -1,7 +1,7 @@
 #
 # spec file for package python-APScheduler
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-APScheduler
-Version:        3.11.1
+Version:        3.11.2
 Release:        0
 Summary:        In-process task scheduler with Cron-like capabilities
 License:        MIT
@@ -26,21 +26,25 @@ URL:            https://github.com/agronholm/apscheduler
 Source:         https://files.pythonhosted.org/packages/source/a/apscheduler/apscheduler-%{version}.tar.gz
 BuildRequires:  %{python_module SQLAlchemy >= 1.4}
 BuildRequires:  %{python_module Twisted}
+BuildRequires:  %{python_module anyio >= 4.0}
+BuildRequires:  %{python_module attrs >= 21.3}
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-tornado}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
-BuildRequires:  %{python_module setuptools >= 36.2.7}
-BuildRequires:  %{python_module setuptools_scm >= 1.7.0}
-BuildRequires:  %{python_module tornado}
-BuildRequires:  %{python_module tzlocal >= 2.0}
+BuildRequires:  %{python_module setuptools >= 77}
+BuildRequires:  %{python_module setuptools_scm >= 6.4}
+BuildRequires:  %{python_module tzlocal >= 3.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+
+Requires:       python-attrs >= 21.3
 Requires:       python-pytz
-Requires:       python-tzlocal >= 2.0
+Requires:       python-tzlocal >= 3.0
 Recommends:     python-SQLAlchemy >= 1.4
 Recommends:     python-Twisted
 Recommends:     python-gevent
@@ -49,17 +53,6 @@ Suggests:       python-pymongo >= 3.0
 Suggests:       python-redis
 Suggests:       python-tornado >= 4.3
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python-funcsigs
-BuildRequires:  python-futures
-BuildRequires:  python-mock
-BuildRequires:  python-trollius
-%endif
-%ifpython2
-Requires:       python-funcsigs
-Requires:       python-futures
-Requires:       python-trollius
-%endif
 %python_subpackages
 
 %description
@@ -85,7 +78,7 @@ APscheduler provides multiple job stores.
 
 %prep
 %setup -q -n apscheduler-%{version}
-sed -i 's/--cov//' setup.cfg
+sed -i 's/--cov//' pyproject.toml || true
 
 %build
 %pyproject_wheel
@@ -95,13 +88,11 @@ sed -i 's/--cov//' setup.cfg
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# https://github.com/agronholm/apscheduler/issues/601
-%pytest -k 'not test_broken_pool'
+%pytest -p asyncio -k "not (redis or mongodb or rethinkdb or zookeeper)"
 
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
-%doc examples/
 %{python_sitelib}/apscheduler
 %{python_sitelib}/[Aa][Pp][Ss]cheduler-%{version}.dist-info
 
