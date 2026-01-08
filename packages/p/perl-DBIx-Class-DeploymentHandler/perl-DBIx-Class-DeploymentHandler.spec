@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DBIx-Class-DeploymentHandler
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,52 +18,53 @@
 
 %define cpan_name DBIx-Class-DeploymentHandler
 Name:           perl-DBIx-Class-DeploymentHandler
-Version:        0.002234
+Version:        0.002235
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Extensible DBIx::Class deployment
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/W/WE/WESM/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Carp::Clan)
-BuildRequires:  perl(Context::Preserve) >= 0.01
-BuildRequires:  perl(DBD::SQLite) >= 1.35
-BuildRequires:  perl(DBIx::Class) >= 0.08121
-BuildRequires:  perl(Log::Contextual) >= 0.005005
-BuildRequires:  perl(Module::Runtime) >= 0.001
+BuildRequires:  perl(Context::Preserve) >= 0.10
+BuildRequires:  perl(DBD::SQLite) >= 1.350
+BuildRequires:  perl(DBIx::Class) >= 0.81.210
+BuildRequires:  perl(Log::Contextual) >= 0.5.5
+BuildRequires:  perl(Module::Runtime) >= 0.1
 BuildRequires:  perl(Moose) >= 1
-BuildRequires:  perl(MooseX::Role::Parameterized) >= 0.18
-BuildRequires:  perl(Path::Class) >= 0.26
-BuildRequires:  perl(SQL::SplitStatement) >= 1.00020
-BuildRequires:  perl(SQL::Translator) >= 1.63
+BuildRequires:  perl(MooseX::Role::Parameterized) >= 0.180
+BuildRequires:  perl(Path::Class) >= 0.260
+BuildRequires:  perl(SQL::SplitStatement) >= 1.0.200
+BuildRequires:  perl(SQL::Translator) >= 1.630
 BuildRequires:  perl(Sub::Exporter::Progressive)
-BuildRequires:  perl(Test::Fatal) >= 0.006
+BuildRequires:  perl(Test::Fatal) >= 0.6
 BuildRequires:  perl(Test::More) >= 0.88
-BuildRequires:  perl(Test::Requires) >= 0.06
-BuildRequires:  perl(Text::Brew) >= 0.02
+BuildRequires:  perl(Test::Requires) >= 0.60
+BuildRequires:  perl(Text::Brew) >= 0.20
 BuildRequires:  perl(Try::Tiny)
-BuildRequires:  perl(YAML) >= 0.66
+BuildRequires:  perl(YAML) >= 0.660
 BuildRequires:  perl(aliased)
 BuildRequires:  perl(autodie)
 BuildRequires:  perl(namespace::autoclean)
 BuildRequires:  perl(parent) >= 0.225
 Requires:       perl(Carp::Clan)
-Requires:       perl(Context::Preserve) >= 0.01
-Requires:       perl(DBIx::Class) >= 0.08121
-Requires:       perl(Log::Contextual) >= 0.005005
-Requires:       perl(Module::Runtime) >= 0.001
+Requires:       perl(Context::Preserve) >= 0.10
+Requires:       perl(DBIx::Class) >= 0.81.210
+Requires:       perl(Log::Contextual) >= 0.5.5
+Requires:       perl(Module::Runtime) >= 0.1
 Requires:       perl(Moose) >= 1
-Requires:       perl(MooseX::Role::Parameterized) >= 0.18
-Requires:       perl(Path::Class) >= 0.26
-Requires:       perl(SQL::SplitStatement) >= 1.00020
-Requires:       perl(SQL::Translator) >= 1.63
+Requires:       perl(MooseX::Role::Parameterized) >= 0.180
+Requires:       perl(Path::Class) >= 0.260
+Requires:       perl(SQL::SplitStatement) >= 1.0.200
+Requires:       perl(SQL::Translator) >= 1.630
 Requires:       perl(Sub::Exporter::Progressive)
-Requires:       perl(Text::Brew) >= 0.02
+Requires:       perl(Text::Brew) >= 0.20
 Requires:       perl(Try::Tiny)
-Requires:       perl(YAML) >= 0.66
+Requires:       perl(YAML) >= 0.660
 Requires:       perl(autodie)
 Requires:       perl(namespace::autoclean)
 Requires:       perl(parent) >= 0.225
@@ -101,7 +102,7 @@ That's really just a taste of some of the differences. Check out each role
 for all the details.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

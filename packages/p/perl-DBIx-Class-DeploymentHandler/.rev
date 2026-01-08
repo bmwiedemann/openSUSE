@@ -102,4 +102,15 @@
     <comment></comment>
     <requestid>1190269</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9557015693945476cae6e24f3a5e40bb</srcmd5>
+    <version>0.002235</version>
+    <time>1767882505</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.002235
+   see /usr/share/doc/packages/perl-DBIx-Class-DeploymentHandler/Changes
+  0.002235  2025-12-12 10:29:42-06:00 America/Chicago
+   - Load .pl migration scripts with do instead of require #83</comment>
+    <requestid>1325868</requestid>
+  </revision>
 </revisionlist>

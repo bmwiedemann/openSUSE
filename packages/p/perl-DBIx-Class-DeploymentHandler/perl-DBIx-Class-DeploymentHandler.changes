@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec 13 05:34:57 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.002235
+   see /usr/share/doc/packages/perl-DBIx-Class-DeploymentHandler/Changes
+
+  0.002235  2025-12-12 10:29:42-06:00 America/Chicago
+   - Load .pl migration scripts with do instead of require #83
+
+-------------------------------------------------------------------
 Fri Jul 26 05:30:37 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.002234
