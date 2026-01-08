@@ -109,4 +109,14 @@
     <comment></comment>
     <requestid>1233143</requestid>
   </revision>
+  <revision rev="15" vrev="19">
+    <srcmd5>baf17680a1c1e135020b008d6996ff5f</srcmd5>
+    <version>9.0.302</version>
+    <time>1767882532</time>
+    <user>anag_factory</user>
+    <comment>- remove unused variables CFLAGS and CXXFLAGS
+- add option -std=gnu11 to KFLAGS
+  * fix build with gcc15</comment>
+    <requestid>1325944</requestid>
+  </revision>
 </revisionlist>

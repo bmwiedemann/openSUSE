@@ -1,7 +1,7 @@
 #
 # spec file for package ckermit
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,8 +51,7 @@ This package contains the documentation and manual pages for ckermit.
 %autosetup -p1 -c
 
 %build
-export CFLAGS="%{optflags}"
-export CXXFLAGS="$CFLAGS"
+export KFLAGS="%{optflags} -std=gnu11"
 %make_build linux
 
 %install

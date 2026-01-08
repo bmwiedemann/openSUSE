@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 20 15:20:46 UTC 2025 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- remove unused variables CFLAGS and CXXFLAGS
+- add option -std=gnu11 to KFLAGS
+  * fix build with gcc15
+
+-------------------------------------------------------------------
 Thu Dec 19 15:36:33 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Add patch:
@@ -268,4 +275,3 @@ Fri Mar 10 19:37:35 MET 2000 - grimmer@suse.de
 - initial version (7.0.197)
 - added patch to correct location of docs (/usr/doc -> /usr/doc/packages)
 
--------------------------------------------------------------------
