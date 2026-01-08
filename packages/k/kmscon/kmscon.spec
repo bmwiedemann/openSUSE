@@ -1,7 +1,7 @@
 #
 # spec file for package kmscon
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2012 Adam Mizerski <adam@mizerski.pl>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,26 +18,23 @@
 
 
 Name:           kmscon
-Version:        9.1.0+git14
+Version:        9.2.1
 Release:        0
 Summary:        Linux KMS/DRM based virtual Console Emulator
 License:        MIT
 Group:          System/Console
-URL:            https://github.com/Aetf/kmscon/
+URL:            https://github.com/kmscon/kmscon
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  docbook-xsl-stylesheets
-BuildRequires:  libtsm-devel >= 4.0.2+git24
+BuildRequires:  libtsm-devel >= 4.3.0
 BuildRequires:  meson
 BuildRequires:  pkg-config
 BuildRequires:  xsltproc
-BuildRequires:  xz
-BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libudev) >= 172
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(pangoft2)
-BuildRequires:  pkgconfig(pixman-1)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(xkbcommon) >= 0.5.0
 # O/P added for 13.1
@@ -74,16 +71,17 @@ console.
 
 %files
 %license COPYING
+%dir %{_sysconfdir}/kmscon
+%config(noreplace) %{_sysconfdir}/kmscon/kmscon.conf
 %{_bindir}/%{name}
 %{_bindir}/%{name}-launch-gui
 %dir %{_libdir}/kmscon/
-%{_libdir}/kmscon/mod-bbulk.so
 %{_libdir}/kmscon/mod-pango.so
-%{_libdir}/kmscon/mod-pixman.so
 %{_libdir}/kmscon/mod-unifont.so
 %dir %{_libexecdir}/kmscon
 %{_libexecdir}/kmscon/kmscon
 %{_mandir}/man1/kmscon.1%{?ext_man}
+%{_mandir}/man1/kmscon.conf.1%{?ext_man}
 %{_unitdir}/kmscon.service
 %{_unitdir}/kmsconvt@.service
 

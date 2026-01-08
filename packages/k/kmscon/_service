@@ -1,8 +1,8 @@
 <services>
   <service mode="manual" name="obs_scm">
-    <param name="url">https://github.com/Aetf/kmscon.git</param>
+    <param name="url">https://github.com/kmscon/kmscon.git</param>
     <param name="scm">git</param>
-    <param name="revision">main</param>
+    <param name="revision">v9.2.1</param>
     <param name="changesgenerate">enable</param>
     <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">v(.*?)(\+git0)?$</param>

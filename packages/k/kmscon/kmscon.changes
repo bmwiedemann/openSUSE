@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Dec 03 21:03:49 UTC 2025 - Adam Mizerski <adam@mizerski.pl>
+
+- change repo to https://github.com/kmscon/kmscon
+- Update to version 9.2.1:
+  * Bump to version 9.2.1
+  * Remove release github workflow
+  * Fix typo in README.md
+  * Remove render-timing option from man pages and help
+  * Update Readme.md after moving back to github/kmscon/kmscon
+  * Remove bblit renderer and make bbulk built-in.
+  * Remove the blit callback, as it was only used by pixman
+  * Remove pixman text renderer
+  * print backends
+  * Fix mouse pointer stuck at up left corner
+
+-------------------------------------------------------------------
 Mon Aug 04 08:56:54 UTC 2025 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 9.1.0+git14:
