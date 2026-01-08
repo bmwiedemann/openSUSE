@@ -1,7 +1,7 @@
 #
 # spec file for package firejail
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           firejail
-Version:        0.9.76
+Version:        0.9.78
 Release:        0
 Summary:        Linux namepaces sandbox program
 License:        GPL-2.0-only
