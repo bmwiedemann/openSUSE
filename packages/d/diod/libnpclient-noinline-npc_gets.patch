@@ -1,0 +1,41 @@
+From 600c3c3002bb3e2c1a6516943486eb94fe62d9f5 Mon Sep 17 00:00:00 2001
+From: David Disseldorp <ddiss@suse.de>
+Date: Wed, 31 Dec 2025 13:07:12 +0100
+Subject: [PATCH] libnpclient: noinline npc_gets
+
+gcc-15 Factory builds are failing with:
+[   20s] In function 'npc_gets',
+[   20s]     inlined from 'cmd_showmount' at diodcli.c:496:12:
+[   20s] ../libnpclient/read.c:218:19: error: writing 1 byte into a region of size 0 [-Werror=stringop-overflow=]
+[   20s]   218 |         buf[done] = '\0';
+[   20s]       |                   ^
+[   20s] diodcli.c: In function 'cmd_showmount':
+[   20s] diodcli.c:465:10: note: at offset [-2147483648, -1] into destination object 'buf' of size 80
+[   20s]   465 |     char buf[80], *host, *p;
+[   20s]       |          ^
+[   21s] lto1: all warnings being treated as errors
+
+I've taken a quick look, and don't think that 'done' can cause a 'buf'
+overrun here, but I may be wrong (the code is pretty hairy).
+
+Attempt to workaround the compiler error by avoiding npc_gets inlining.
+---
+ src/libnpclient/read.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/libnpclient/read.c b/src/libnpclient/read.c
+index cbc78bc..e94ef09 100644
+--- a/src/libnpclient/read.c
++++ b/src/libnpclient/read.c
+@@ -190,7 +190,7 @@ _strnchr (char *s, char c, int len)
+ 	return NULL;
+ }
+ 
+-char *
++char * __attribute__ ((noinline))
+ npc_gets(Npcfid *fid, char *buf, u32 count)
+ {
+ 	int n = 0, done = 0, extra = 0;
+-- 
+2.52.0
+

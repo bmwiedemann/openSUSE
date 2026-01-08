@@ -1,7 +1,7 @@
-Index: diod-1.0.24+53.g0d87511/scripts/diod.service.in
+Index: diod/etc/diod.service.in
 ===================================================================
---- diod-1.0.24+53.g0d87511.orig/scripts/diod.service.in
-+++ diod-1.0.24+53.g0d87511/scripts/diod.service.in
+--- diod.orig/etc/diod.service.in
++++ diod/etc/diod.service.in
 @@ -2,6 +2,18 @@
  Description=9P File Server
  
@@ -18,6 +18,6 @@ Index: diod-1.0.24+53.g0d87511/scripts/diod.service.in
 +ProtectControlGroups=true
 +RestrictRealtime=true
 +# end of automatic additions 
- Type=forking
+ Type=exec
  ExecStart=@X_SBINDIR@/diod
- 
+ ExecReload=kill -HUP $MAINPID

@@ -1,4 +1,251 @@
 -------------------------------------------------------------------
+Wed Dec 31 09:03:18 UTC 2025 - David Disseldorp <ddiss@suse.de>
+
+- attempt to workaround gcc-15 -Werror=stringop-overflow failure
+  * add libnpclient-noinline-npc_gets.patch (boo#1255799)
+- Track dropped configs as ghost files
+- Specify --with-systemdsystemunitdir during configure
+- Drop diodmount rename, unneeded following upstream commit a6a077e
+- Add libcap dependency and drop unused libpcap
+- Rebase harden_diod.service.patch
+- Upgrade Lua version dependency to 1.3 (boo#1255720)
+- Drop optional tcmalloc dependency
+- Update to version 1.1.0+0.ga32f5a4:
+  * protocol.md: fix document links
+  * update README.md for 1.1.0
+  * scripts: add missing debian dependency
+  * NEWS.md: add release notes for 1.1.0
+  * add script to generate release notes
+  * testsuite: fix test output typo
+  * reorganize project metadata
+  * testsuite: temporarily disable security XATTR test
+  * diodcli: fix compliation issue on aarch64
+  * git: drop check in tests/kern
+  * .gitignore: remove ancient paths
+  * testsuite: drop third party tests
+  * testsuite: drop duplicate mode test
+  * testsuite: drop duplicate fsync test
+  * testsuite: migrate atomic create test to sharness
+  * testsuite: migrate create test to sharness
+  * testsuite: migrate xattr tests to sharness
+  * testsuite: migrate flock tests to sharness
+  * testsuite: drop duplicate rename test
+  * testsuite: migrate sgid dir test to sharness
+  * testsuite: drop unused suppl groups test program
+  * testsuite: drop duplicate stat test
+  * testsuite: migrate pathwalk test to sharness
+  * testsuite: drop duplicate statfs test
+  * testsuite: update mount options
+  * mount.diod(8): update mount options
+  * mount.diod: use access=client as the default
+  * diod(8): add SECURITY description
+  * testsuite: convert POSIX ACL test to sharness
+  * testsuite: fix POSIX ACL test
+  * demote diodload to an internal test program
+  * dioddate: drop old command
+  * diodcli(8): add date subcommand
+  * diodcli: add date subcommand
+  * diodshowmount: drop old command
+  * diodcli(8): add showmount subcommand
+  * diodcli: add showmount subcommand
+  * diodls: drop old command
+  * testsuite: use diodcli ls
+  * diodcli(8): add ls subcommand
+  * diodcli: add ls subcommand
+  * diodcli(8): fix typo
+  * diodcli(8): add man page, drop diodcat man page
+  * diodcat: drop redundant utility
+  * testsuite: use diodcli read instead of diodcat
+  * sharness: export DIOD_SOCKET in diod_start()
+  * diodcli: use "ctl" as the default aname
+  * diodcli: add --trace option
+  * diodcli: use DIOD_SOCKET, if set
+  * diodcli: make test-only subcommands invisible
+  * diodcli: drop sysgetattr subcommand
+  * diodcli: drop sysstat subcommand
+  * libnpclient: add NPC_TRACE flag
+  * diodcli: rename from npclient test program
+  * scripts: update install-deps-deb.sh
+  * diodrun: call setsid() in client fork
+  * libdiod: clean up inconsistent tab use
+  * fix typo in sharness scripts
+  * testsuite: add self-hosting test
+  * drop diod.conf, auto.diod
+  * mount.diod: rename from diodmount
+  * diod.spec: drop RPM spec file
+  * testsuite: cover mount helper
+  * diodmount(8): update v9fs mount options
+  * diodmount: allow more control over mount options
+  * libnpfs: fix access denied message
+  * diod: drop incorrect assertion
+  * libnpclient: implement npc_rename()
+  * libnpclient: drop NPC_MULTI_RPC
+  * testsuite: drop old tests
+  * github: add new test dependencies
+  * testsuite: add dbench, postmark, scrub, rsync tests
+  * testsuite: cover v9fs + diod in multiuser mode
+  * testsuite: cover v9fs + diod in allsquash mode
+  * testsuite: cover v9fs + diod in runasuser mode
+  * testsuite: define built-in prerequisites
+  * testsuite: add diodrun --socketpair
+  * testsuite: add method argument to test_under_diod
+  * libnpfs: fix unallocated free error
+  * drop extra comment from test script
+  * mergify: disable temporary PR branches
+  * ci: run tests with minimal config
+  * ci: get test results on failure
+  * testsuite: remove old "user" test
+  * testsuite: add t0006-npclient-issues.t
+  * testsuite: add t0005-npclient-xattr.t
+  * testsuite: add t0004-npclient-basic.t
+  * testsuite: add sharness test_under_diod()
+  * testsuite: make tattach look like other test progs
+  * testsuite: relocate tattachmt test program
+  * testsuite: make tflush look like other test progs
+  * testsuite: relocate tflush test program
+  * testsuite: add npclient test program
+  * testsuite: add diodrun test program
+  * ci: allow the nobody user into home directory
+  * testsuite: add t0003-basic-multiuser.t
+  * testsuite: add t0002-basic-allsquash.t
+  * testsuite: add t0001-basic-runasuser.t
+  * testsuite: create t1000-valgrind from old test
+  * testsuite: add diod-specific helper script
+  * diod: add --version option
+  * testsuite: add sudo prereq
+  * testsuite: add sharness test driver
+  * Fix autogen if autoconf-archive > 2023.02.20 (#142)
+  * diod: Implement Trenameat and Tunlinkat
+  * libnpfs: Fix assert failure when receiving R-type messages
+  * diod: Fix uint32 overflow when Tread/Twrite count > UINT32_MAX-IOHDRSZ
+  * diod: keep --foreground option for compatibility
+  * build: don't just warn if libcap is missing
+  * build: don't just warn if munge is missing
+  * diod: require --no-auth if not build with munge
+  * diod: make multi-user initialization errors fatal
+  * diod: refactor startup logic for clarity
+  * build: adjust multi-user configuration options
+  * diod: log access policy
+  * diod: use setgroups() on linux for transition
+  * diod: log user transition and simplify code
+  * diod: don't cache effective uid
+  * systemd: support systemctl reload diod
+  * diod: log listen addresses
+  * diod: drop program prefix from logs
+  * testsuite: fix test server TAP logging
+  * diod: initialize rdma after user transitions
+  * ci: add build-only check for RDMA
+  * ci: cull package dependencies
+  * build: fix rdma configure logic
+  * rdma: fix include paths
+  * systemd: switch to Type=exec from Type=forking
+  * man: drop --foreground from diod(8)
+  * diod: always run in the foreground
+  * man: drop syslog from diod(8), diod.conf(5)
+  * diod: drop --logdest=syslog[options]
+  * libdiod: drop leftover TCP Wrappers stuff
+  * testsuite: drop setgroups unit test
+  * diod: make SYS_setgroups test safer
+  * diod: improve supplementary group warning + comments
+  * build: drop FreeBSD automatic --disable-diodmount
+  * build: drop configure --disable-tests option
+  * build: drop checks for vsprintf(), vsscanf()
+  * drop TCP Wrappers support
+  * build: drop conditional getopt stuff
+  * build: drop libpopt references
+  * tests: Handle various time_t sizes in printf (#124)
+  * testsuite: drop unused tests
+  * testsuite: skip FALLOC_FL_PUNCH_HOLE in fsx
+  * testsuite: drop record locking kernel tests
+  * testsuite: drop fcntl locking test
+  * testsuite: add locking unit test
+  * libnpclient: add npc_lock() and npc_getlock()
+  * libnpfs: replace kernel 9p.h header
+  * don't include 9p.h directly
+  * testsuite: reduce unnecessary include directives
+  * headers include the headers they depend on
+  * add header guards
+  * testsuite: factor out duplicated server code
+  * testsuite: factor out duplicated thread code
+  * eliminate src/daemon directory
+  * testsuite: enable parallel test harness
+  * build: fix Makefile.am typo
+  * testsuite: make unit tests work w/parallel harness
+  * liblsd: clean up source directory dependencies
+  * ci: valgrind and sudo some unit tests
+  * testsuite: convert multiuser cli/srv test to TAP
+  * testsuite: convert dir/file cli/srv test to TAP
+  * testsuite: convert simple np cli/srv test to TAP
+  * testsuite: convert config file test to TAP
+  * testsuite: convert setreuid test to TAP
+  * testsuite: convert setgroups groups test to TAP
+  * testsuite: convert setfsuid test to TAP
+  * testsuite: convert fcntl locking test to TAP
+  * testsuite: convert capability test to TAP
+  * testsuite: convert list test to TAP
+  * testsuite: convert opt test to TAP
+  * testsuite: convert fidpool test to TAP
+  * testsuite: convert encoding test to TAP
+  * testsuite: add TAP unit test framework
+  * diodmount: drop --9nbd-attach, --9nbd-detach opts
+  * fix fsid in Rstatfs result
+  * doc: update Rstatfs description
+  * implement Tfsync datasync
+  * doc: Tfsync is missing 'datasync'
+  * libnpfs: catch overflow in np_deserialize_p9dirent
+  * build: add make deb target for debian package
+  * src: move source code to one directory
+  * man: move all man pages to one directory
+  * simplify autogen.sh script
+  * build: combine and simplify etc and scripts
+  * configure: normalize systemd unit install
+  * configure: drop AC_HEADER_STDC
+  * configure: use AC_CONFIG_HEADERS
+  * libnpfs: fix off by one buffer check
+  * diod: check offset in xattr read/write
+  * diod: handle xattr write errors properly
+  * ci: run kernel tests in CI
+  * testsuite: fix racy test looking for old bug
+  * ci: add scrub to github workflow
+  * testsuite: drop subversion test
+  * testsuite: remove security xattr XFAIL
+  * testsuite: add setfattr prereq to t46,t47
+  * testsuite: drop internal copy of dbench
+  * testsuite: remove dbench XFAIL
+  * testsuite: set root mount propagation to private
+  * Shutdown all connection threads when applications is terminated
+  * Signal that connection is done after all cleanup has finished
+  * Use a pthread_cleanup callback function in connection thread
+  * signal refcond in connection under lock
+  * tests: Skip kern tests t35 and t40 unless there is enough disk space
+  * Mark kernel tests t19 t23 t32 t37 t43 and t47 as XFAIL
+  * tests/kern/runtest: Delete PATH_EXPDIR and PATH_MNTDIR on failure
+  * tests/user/runtest: Delete PATH_EXPDIR when it is a file
+  * tests/user/t16: Delete the tempfile on failure
+  * Don't use pushd/popd in kern test t33
+  * Use grep -E instead of egrep in kern test t28
+  * kern test t28 requires rsync, skip if it not available
+  * Handle various time_t sizes in printf and scanf
+  * ci: drop deprecated 18.04 actions runner
+  * add mergify support
+
+-------------------------------------------------------------------
+Thu May  9 00:00:00 CEST 2024 - dsterba@suse.cz
+
+- Update to version 1.0.24+164.gb4b5e8e00ed11b:
+  * Add option to disable hostname lookups
+  * build: Install diod.service and auto.diod without install-data-local
+  * diod: Add support for IPv6 addresses
+  * diodmount: Add option to set privport
+  * diodmount: Add support for IPv6 addresses
+  * diodmount: update man page with privport option
+  * Document IPv6 address format
+  * Increase diod server maximum msize setting to 1MB
+  * libdiod: Set global options on exports specified on
+  * libdiod: Support ipv6 in diod_sock_connect
+  * libdiod: support privport on ipv6
+
+-------------------------------------------------------------------
 Mon Feb 26 08:06:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

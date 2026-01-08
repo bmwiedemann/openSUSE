@@ -1,7 +1,7 @@
 #
 # spec file for package diod
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           diod
-Version:        1.0.24+53.g0d87511
+Version:        1.1.0+0.ga32f5a4
 Release:        0
 Summary:        Distributed I/O Daemon - a 9P file server
 License:        GPL-2.0-or-later
@@ -25,6 +25,7 @@ Group:          System/Filesystems
 URL:            https://github.com/chaos/diod
 Source0:        %{name}-%{version}.tar.xz
 Patch0:         harden_diod.service.patch
+Patch1:         libnpclient-noinline-npc_gets.patch
 BuildRequires:  autogen
 BuildRequires:  automake
 BuildRequires:  c_compiler
@@ -32,9 +33,8 @@ BuildRequires:  git-core
 BuildRequires:  pkgconfig
 BuildRequires:  tcpd-devel
 BuildRequires:  pkgconfig(libattr)
-BuildRequires:  pkgconfig(libpcap)
-BuildRequires:  pkgconfig(libtcmalloc)
-BuildRequires:  pkgconfig(lua5.1)
+BuildRequires:  pkgconfig(libcap)
+BuildRequires:  pkgconfig(lua5.3)
 BuildRequires:  pkgconfig(munge)
 BuildRequires:  pkgconfig(ncurses)
 Recommends:     munge
@@ -48,14 +48,12 @@ that speaks 9P2000.L protocol.
 
 %build
 autoreconf -fiv
-export CPPFLAGS=-I%{_includedir}/lua5.1
-%configure
+export CPPFLAGS=-I%{_includedir}/lua5.3
+%configure --with-systemdsystemunitdir=%{_unitdir}
 make %{?_smp_mflags}
 
 %install
 %make_install
-mv %{buildroot}%{_sbindir}/diodmount %{buildroot}%{_sbindir}/mount.diod
-mv %{buildroot}%{_mandir}/man8/diodmount.8 %{buildroot}%{_mandir}/man8/mount.diod.8
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcdiod
 %if 0%{?suse_version} < 1550
 mkdir %{buildroot}/sbin
@@ -76,7 +74,7 @@ ln -s %{_sbindir}/mount.diod %{buildroot}/sbin/mount.diod
 
 %files
 %license COPYING
-%doc README.md AUTHORS NEWS
+%doc README.md NEWS.md
 
 %if 0%{?suse_version} < 1550
 /sbin/*
@@ -84,8 +82,8 @@ ln -s %{_sbindir}/mount.diod %{buildroot}/sbin/mount.diod
 %{_sbindir}/*
 %{_unitdir}/diod.service
 
-%config(noreplace) %{_sysconfdir}/diod.conf
-%config(noreplace) %{_sysconfdir}/auto.diod
+%ghost %{_sysconfdir}/diod.conf
+%ghost %{_sysconfdir}/auto.diod
 
 %{_mandir}/man8/*
 %{_mandir}/man5/*
