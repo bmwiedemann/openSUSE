@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan  2 15:32:32 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.80.0 (0.08)
+   see /usr/share/doc/packages/perl-Test-ExpectAndCheck/Changes
+
+  0.08    2026-01-01
+          [CHANGES]
+           * Optionally allow mock objects to claim to be instances of given
+             classes
+           * Treat "\r" as escapeable plain text when rendering argument strings
+
+-------------------------------------------------------------------
 Mon Oct 14 05:34:54 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.70.0 (0.07)

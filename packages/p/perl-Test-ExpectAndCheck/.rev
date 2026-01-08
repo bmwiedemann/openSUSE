@@ -24,4 +24,18 @@
     <comment></comment>
     <requestid>1235284</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b8163ce3ae89939f3a8b58364f3bbf14</srcmd5>
+    <version>0.80.0</version>
+    <time>1767882508</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.80.0 (0.08)
+   see /usr/share/doc/packages/perl-Test-ExpectAndCheck/Changes
+  0.08    2026-01-01
+          [CHANGES]
+           * Optionally allow mock objects to claim to be instances of given
+             classes
+           * Treat &quot;\r&quot; as escapeable plain text when rendering argument strings</comment>
+    <requestid>1325872</requestid>
+  </revision>
 </revisionlist>
