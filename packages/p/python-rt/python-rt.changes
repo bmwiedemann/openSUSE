@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Jan  1 10:24:10 UTC 2026 - Sebastian Wagner <sebix@sebix.at>
+
+- Update to version v3.4.0:
+ - Added
+ - Added functionality for some of the asset endpoints (get, create, edit, search, get history)
+ - Added functionality for the get catalog endpoint
+- Update to version v3.3.9:
+ - Fixes
+ - In debug mode, where content may be dumped, said content may not decode correctly if it is not utf-8. Ignore errors as we don't care about that in debug mode anyways (fixes #113)
+- Update to version v3.3.8:
+ - Added
+ - Allow for specifying a custom RT JSON filter when querying for attachments for a ticket (#110). This solved the issue with not returning attachment IDs in
+     case an attachment file name is empty as the default query explicitely excludes those.
+ - Changes
+ - Remove unused noqa directives
+ - Do not use len() in asset when no comparison is being done
+ - Add quotes to type expression in `typing.cast()`
+- Update to version v3.3.7:
+ - Changes
+ - Use RT v6 based docker image for tests
+ - Fixes
+ - Fix optional return types (#111)
+
+-------------------------------------------------------------------
 Fri Sep  5 20:03:55 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.6:
