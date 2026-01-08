@@ -1,7 +1,7 @@
 #
 # spec file for package perl-XML-Feed
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %define cpan_name XML-Feed
 Name:           perl-XML-Feed
-Version:        0.650.0
+Version:        1.0.0
 Release:        0
-# 0.65 -> normalize -> 0.650.0
-%define cpan_version 0.65
+# v1.0.0 -> normalize -> 1.0.0
+%define cpan_version v1.0.0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        XML Syndication Feed Support
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DA/DAVECROSS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -41,13 +42,13 @@ BuildRequires:  perl(Feed::Find)
 BuildRequires:  perl(HTML::Entities)
 BuildRequires:  perl(HTML::TokeParser)
 BuildRequires:  perl(LWP::UserAgent)
-BuildRequires:  perl(Module::Build) >= 0.42
+BuildRequires:  perl(Module::Build) >= 0.420
 BuildRequires:  perl(Module::Pluggable)
 BuildRequires:  perl(URI)
 BuildRequires:  perl(URI::Fetch)
-BuildRequires:  perl(XML::Atom) >= 0.38
-BuildRequires:  perl(XML::LibXML) >= 1.66
-BuildRequires:  perl(XML::RSS) >= 1.47
+BuildRequires:  perl(XML::Atom) >= 0.380
+BuildRequires:  perl(XML::LibXML) >= 1.660
+BuildRequires:  perl(XML::RSS) >= 1.470
 BuildRequires:  perl(XML::XPath)
 Requires:       perl(Class::ErrorHandler)
 Requires:       perl(DateTime)
@@ -62,18 +63,18 @@ Requires:       perl(HTML::TokeParser)
 Requires:       perl(LWP::UserAgent)
 Requires:       perl(Module::Pluggable)
 Requires:       perl(URI::Fetch)
-Requires:       perl(XML::Atom) >= 0.38
-Requires:       perl(XML::LibXML) >= 1.66
-Requires:       perl(XML::RSS) >= 1.47
+Requires:       perl(XML::Atom) >= 0.380
+Requires:       perl(XML::LibXML) >= 1.660
+Requires:       perl(XML::RSS) >= 1.470
 Provides:       perl(XML::Feed) = %{version}
-Provides:       perl(XML::Feed::Content) = %{version}
-Provides:       perl(XML::Feed::Enclosure) = %{version}
-Provides:       perl(XML::Feed::Entry) = %{version}
-Provides:       perl(XML::Feed::Entry::Format::Atom) = %{version}
-Provides:       perl(XML::Feed::Entry::Format::RSS) = %{version}
-Provides:       perl(XML::Feed::Format::Atom) = %{version}
-Provides:       perl(XML::Feed::Format::RSS) = %{version}
-Provides:       perl(XML::Feed::Util) = %{version}
+Provides:       perl(XML::Feed::Content) = 0.650.0
+Provides:       perl(XML::Feed::Enclosure) = 0.650.0
+Provides:       perl(XML::Feed::Entry) = 0.650.0
+Provides:       perl(XML::Feed::Entry::Format::Atom) = 0.650.0
+Provides:       perl(XML::Feed::Entry::Format::RSS) = 0.650.0
+Provides:       perl(XML::Feed::Format::Atom) = 0.650.0
+Provides:       perl(XML::Feed::Format::RSS) = 0.650.0
+Provides:       perl(XML::Feed::Util) = 0.650.0
 %undefine       __perllib_provides
 %{perl_requires}
 
@@ -102,7 +103,7 @@ for date handling, _XML::Feed_ converts all date formats transparently into
 DateTime objects, which it then returns to the caller.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Build.PL --installdirs=vendor

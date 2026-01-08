@@ -39,4 +39,17 @@
     <comment></comment>
     <requestid>1186856</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>878772b0f8c71fc6f188f98afca2850f</srcmd5>
+    <version>1.0.0</version>
+    <time>1767882506</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.0.0 (v1.0.0)
+   see /usr/share/doc/packages/perl-XML-Feed/ChangeLog.md
+  ## [v1.0.0] - 2025-11-17
+  ### Added
+  * Constructors (`new()` and `parse()`) accept a `{ useragent =&gt; $ua }` argument
+  * New `useragent()` accessor/mutator</comment>
+    <requestid>1325870</requestid>
+  </revision>
 </revisionlist>

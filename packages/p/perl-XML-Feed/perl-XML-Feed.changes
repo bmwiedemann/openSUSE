@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov 18 05:33:30 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.0.0 (v1.0.0)
+   see /usr/share/doc/packages/perl-XML-Feed/ChangeLog.md
+
+  ## [v1.0.0] - 2025-11-17
+
+  ### Added
+
+  * Constructors (`new()` and `parse()`) accept a `{ useragent => $ua }` argument
+  * New `useragent()` accessor/mutator
+
+-------------------------------------------------------------------
 Wed Jul 10 05:30:15 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.650.0 (0.65)
