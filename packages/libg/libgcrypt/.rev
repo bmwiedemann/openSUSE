@@ -962,4 +962,12 @@ This correction fixes the build failures we are currently seeing in Factory, etc
     <comment>libgcrypt 1.11.2 (forwarded request 1298440 from AndreasStieger)</comment>
     <requestid>1299109</requestid>
   </revision>
+  <revision rev="111" vrev="2">
+    <srcmd5>5dc1f13379789fd30f39a164066bc366</srcmd5>
+    <version>1.11.2</version>
+    <time>1767882350</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1325854</requestid>
+  </revision>
 </revisionlist>
