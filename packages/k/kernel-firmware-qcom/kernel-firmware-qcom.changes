@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan  7 08:52:54 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260106 (git commit e272e0d1edce):
+  * qcom: Update aic100 firmware files
+  * firmware: Revert kernel_boot.elf due to license compliance issue
+
+-------------------------------------------------------------------
 Wed Dec 31 08:44:04 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20251228 (git commit 154800e88541):

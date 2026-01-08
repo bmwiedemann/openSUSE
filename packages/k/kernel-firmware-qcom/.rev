@@ -343,4 +343,14 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: Update CDSP firmware for qcm6490 platform</comment>
     <requestid>1324924</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>89b924210057b49e8941813799e5da43</srcmd5>
+    <version>20260106</version>
+    <time>1767882332</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260106 (git commit e272e0d1edce):
+  * qcom: Update aic100 firmware files
+  * firmware: Revert kernel_boot.elf due to license compliance issue</comment>
+    <requestid>1325736</requestid>
+  </revision>
 </revisionlist>
