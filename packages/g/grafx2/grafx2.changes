@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan  6 17:36:17 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.9
+  * Load and save Apple 2GS formats.
+  * Load PI4 and PI5 formats (Atari TT/Falcon).
+  * Load more C64 and CPC file formats.
+  * Fix more crashes and bugs.
+- Fix URL
+- Build with support for SDL2
+
+-------------------------------------------------------------------
 Fri Apr 22 10:53:34 UTC 2022 - Matthias Mailänder <mailaender@opensuse.org>
 
 - Update to version 2.8.3124
