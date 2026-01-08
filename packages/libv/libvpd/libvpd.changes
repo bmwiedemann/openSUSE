@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan  7 17:39:40 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- Version 2.2.11 (jsc#PED-14544).
+  * Add Spyre PCI hotplug support with system readiness check
+
+-------------------------------------------------------------------
 Tue Sep 17 14:18:51 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
 
 - Version 2.2.10 (jsc#PED-9911).
