@@ -1,7 +1,7 @@
 #
 # spec file for package edgar
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           edgar
-Version:        1.37
+Version:        1.38
 Release:        0
 Summary:        2D platform game with a persistent world
 License:        GPL-2.0-or-later
