@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan  8 09:26:05 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.1.0
+  * Support for linux/riscv64 ELF binaries
+
+-------------------------------------------------------------------
 Sun Jul 20 16:56:08 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.0.2
