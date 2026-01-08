@@ -55,4 +55,12 @@
     <comment>- fix build without libalternatives</comment>
     <requestid>1291023</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ed2bc7d2c4c29825c609c23ea334a37e</srcmd5>
+    <version>5.16</version>
+    <time>1767885917</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1325967</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pyro5
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,12 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-Pyro5
-Version:        5.15
+Version:        5.16
 Release:        0
 Summary:        Distributed object middleware for Python (RPC)
 License:        MIT
 URL:            https://github.com/irmen/Pyro5
-Source:         https://files.pythonhosted.org/packages/source/P/Pyro5/Pyro5-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pyro5/pyro5-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -64,7 +64,7 @@ building distributed applications. Pyro is a pure Python library and
 runs on many different platforms and Python versions.
 
 %prep
-%autosetup -p1 -n Pyro5-%{version}
+%autosetup -p1 -n pyro5-%{version}
 
 %build
 %pyproject_wheel
