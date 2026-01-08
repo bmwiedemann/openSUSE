@@ -1,7 +1,7 @@
 #
 # spec file for package mpv-mpris
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,10 @@
 
 
 Name:           mpv-mpris
-Version:        1.1
+Version:        1.2
 Release:        0
 Summary:        MPRIS plugin for mpv
 License:        MIT
-Group:          Productivity/Multimedia/Video/Players
 URL:            https://github.com/hoyon/mpv-mpris
 Source0:        https://github.com/hoyon/mpv-mpris/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  dbus-1
@@ -43,16 +42,13 @@ multimedia keys in desktop environments such as GNOME and KDE
 as well as through tools like playerctl.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 %make_build
 
 %install
 install -Dm0755 mpris.so %{buildroot}%{_libdir}/mpv/mpris.so
-mkdir -p %{buildroot}%{_sysconfdir}/mpv/scripts
-ln -s %{_libdir}/mpv/mpris.so %{buildroot}%{_sysconfdir}/mpv/scripts/mpris.so
 
 # test suite does not work on OBS VM
 # %%check
@@ -61,7 +57,5 @@ ln -s %{_libdir}/mpv/mpris.so %{buildroot}%{_sysconfdir}/mpv/scripts/mpris.so
 %files
 %license LICENSE
 %{_libdir}/mpv
-%dir %{_sysconfdir}/mpv/scripts
-%{_sysconfdir}/mpv/scripts/mpris.so
 
 %changelog

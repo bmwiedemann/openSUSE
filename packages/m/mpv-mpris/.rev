@@ -80,4 +80,22 @@
   owned by a package</comment>
     <requestid>1224582</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fa8dacfe03e57e20b4fe40e35640793b</srcmd5>
+    <version>1.2</version>
+    <time>1767882374</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.2
+  * More consistent external album art finding with mpv
+  * Use audio-client-name when naming mpv session bus
+  * Fix shuffle functionality
+  * Fix race condition at initialisation which sometimes caused
+    error logging
+  * Fix using multiple instances with flatpak by using a random
+    string rather than pid to identify multiple players
+  * Now properly report of Next and previous are available based on
+    current position in playlist
+- Don’t create symlink in no-longer-packaged /etc/mpv directory</comment>
+    <requestid>1325795</requestid>
+  </revision>
 </revisionlist>

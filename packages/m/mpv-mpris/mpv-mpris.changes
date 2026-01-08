@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jan  7 14:11:04 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.2
+  * More consistent external album art finding with mpv
+  * Use audio-client-name when naming mpv session bus
+  * Fix shuffle functionality
+  * Fix race condition at initialisation which sometimes caused
+    error logging
+  * Fix using multiple instances with flatpak by using a random
+    string rather than pid to identify multiple players
+  * Now properly report of Next and previous are available based on
+    current position in playlist
+- Don’t create symlink in no-longer-packaged /etc/mpv directory
+
+-------------------------------------------------------------------
 Sat Nov 16 16:46:08 UTC 2024 - Mia Herkt <mia@0x0.st>
 
 - Fix package build failure due to mpv scripts directory not being
