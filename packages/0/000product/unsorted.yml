@@ -14089,7 +14089,7 @@ unsorted:
   - libime-devel 
   - libime-dicts 
   - libime-tools 
-  - libimhex1_38_0 
+  - libimhex1_38_1 
   - libiml0 
   - libimobiledevice-1_0-6-32bit 
   - libimobiledevice-devel 
@@ -14710,6 +14710,7 @@ unsorted:
   - libmimetic0 
   - libminisat2 
   - libminiupnpc-devel 
+  - libminiz3 
   - libminizinc-devel 
   - libminizip-ng4 
   - libminizip1-32bit 
@@ -17076,7 +17077,7 @@ unsorted:
   - libweston-14-0 
   - libwf-config1 
   - libwf-utils0 
-  - libwget3 
+  - libwget4 
   - libwhich 
   - libwiiuse0 
   - libwim15 
@@ -18936,6 +18937,7 @@ unsorted:
   - minitube 
   - minitube-lang 
   - miniupnpc 
+  - miniz-devel 
   - minizinc 
   - minizip-devel 
   - minizip-ng-devel 
@@ -22007,6 +22009,7 @@ unsorted:
   - perl-Log-Log4perl 
   - perl-Log-Message 
   - perl-Log-Message-Simple 
+  - perl-Log-Report 
   - perl-Log-Report-Optional 
   - perl-MCE 
   - perl-MCP 
@@ -23461,7 +23464,6 @@ unsorted:
   - prek-bash-completion 
   - prek-fish-completion 
   - prek-zsh-completion 
-  - premake4 
   - presage 
   - presenterm 
   - primecount 
@@ -24942,7 +24944,9 @@ unsorted:
   - python311-azure-template 
   - python311-babelfish 
   - python311-backoff 
+  - python311-backports.entry_points_selectable 
   - python311-backports.tarfile 
+  - python311-backports.zstd 
   - python311-backrefs 
   - python311-baron 
   - python311-base-32bit 
@@ -28744,6 +28748,7 @@ unsorted:
   - python312-backoff 
   - python312-backports.entry_points_selectable 
   - python312-backports.tarfile 
+  - python312-backports.zstd 
   - python312-backrefs 
   - python312-baron 
   - python312-base 
@@ -32606,6 +32611,7 @@ unsorted:
   - python313-backoff 
   - python313-backports.entry_points_selectable 
   - python313-backports.tarfile 
+  - python313-backports.zstd 
   - python313-backrefs 
   - python313-barbicanclient 
   - python313-baron 
