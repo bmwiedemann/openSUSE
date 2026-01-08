@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Thu Jan  1 10:20:01 UTC 2026 - Sebastian Wagner <sebix@sebix.at>
+
+- Update to version 0.22.0:
+ - ⚠ BREAKING CHANGES
+ - Remove aliases `ipynb`, `scp-resume` from builtin aliases and rename `xonsh-reset` to `xreset` ([#5992](https://github.com/xonsh/xonsh/issues/5992))
+ - Features
+ - added `xpython` and `xсontext` builtin aliases ([#5989](https://github.com/xonsh/xonsh/issues/5989)) ([4382735](https://github.com/xonsh/xonsh/commit/43827358d205855c6c1c68bed138d656f3657bc3))
+ - **events:** added `events.handlers()` to get info about registered event handlers and also `events.__repr__` to just `print(events)`. ([#5994](https://github.com/xonsh/xonsh/issues/5994)) ([166a1a6](https://github.com/xonsh/xonsh/commit/166a1a6a826669a24ae5df7a69193fa7bd1604c5))
+ - Bug Fixes
+ - allow spaces in auto-suggest completions ([#5993](https://github.com/xonsh/xonsh/issues/5993)) ([4332701](https://github.com/xonsh/xonsh/commit/4332701179c06d7a7ce2853043271eb1aa2e3214))
+ - docs publish ([#5985](https://github.com/xonsh/xonsh/issues/5985)) ([e666ea9](https://github.com/xonsh/xonsh/commit/e666ea9674d8715bf6e7e6b38f8d2cbfbeb9e284))
+ - **history:** Using absolute path to history file to prevent downstream issues ([#6002](https://github.com/xonsh/xonsh/issues/6002)) ([f1501b2](https://github.com/xonsh/xonsh/commit/f1501b257ce8ec40c10006c763321577bf5550fe))
+ - Documentation
+ - add description and examples for `@.env.register` ([#5990](https://github.com/xonsh/xonsh/issues/5990)) ([9ce5d5d](https://github.com/xonsh/xonsh/commit/9ce5d5d3d58b00b642856f4dc48dbac9b25f63c1))
+ - Update tutorial to replace prompt ([#6007](https://github.com/xonsh/xonsh/issues/6007)) ([3260b77](https://github.com/xonsh/xonsh/commit/3260b77ab4d4d8fa2dc5fb61e7509a0a7eaaa9bc))
+ - Update xonsh logo in the docs ([#6004](https://github.com/xonsh/xonsh/issues/6004)) ([dbeb276](https://github.com/xonsh/xonsh/commit/dbeb27688bdbbd5efd6ffcc246ce4181df4f66bc))
+ - Code Refactoring
+ - Remove aliases `ipynb`, `scp-resume` from builtin aliases and rename `xonsh-reset` to `xreset` ([#5992](https://github.com/xonsh/xonsh/issues/5992)) ([df3ff49](https://github.com/xonsh/xonsh/commit/df3ff497e9e73dbc3a1e86c6f14ad7e5e57bccaa))
+- Update to version 0.21.2:
+ - Bug Fixes
+ - appimage upload to release ([#5982](https://github.com/xonsh/xonsh/issues/5982)) ([7965b1f](https://github.com/xonsh/xonsh/commit/7965b1ffef2d934484a121a39bf7f789b3c22e0b))
+- Update to version 0.21.1:
+ - Bug Fixes
+ - conditional checks for docs deployment ([#5980](https://github.com/xonsh/xonsh/issues/5980)) ([addaffe](https://github.com/xonsh/xonsh/commit/addaffe986e006b9615091d6c7863e618edad5a0))
+- Update to version 0.21.0:
+ - ⚠ BREAKING CHANGES
+ - `$AUTO_SUGGEST` is now deprecated in favour of `$XONSH_PROMPT_AUTO_SUGGEST`
+ - Features
+ - Added `@` as a global object that provides easy access to `@.env`, `@. lastcmd ` and `@.imp`(inline-imports) ([#5956](https://github.com/xonsh/xonsh/issues/5956)) ([64e3a3c](https://github.com/xonsh/xonsh/commit/64e3a3c467e1b2a42083e5c2dae0dbd9e0910087))
+ - added support for multiline shebang (guix fixed) ([#5957](https://github.com/xonsh/xonsh/issues/5957)) ([e9e0055](https://github.com/xonsh/xonsh/commit/e9e0055c6cd5fd867c4268fa311d098e81d2beeb))
+ - added support for using a p-string as a context manager to temporarily change the working directory (e.g., with p'~/test'.mkdir().cd(): $[pwd]) ([d9a14c1](https://github.com/xonsh/xonsh/commit/d9a14c1f8c38d3e66c15a9ff39678b3f14893313))
+ - allow on_command_not_found handlers to return replacement commands ([#5952](https://github.com/xonsh/xonsh/issues/5952)) ([#5962](https://github.com/xonsh/xonsh/issues/5962)) ([14d9686](https://github.com/xonsh/xonsh/commit/14d9686b3f82d72749700a07b6da9f95c6959308))
+ - Bug Fixes
+ - allow numerical tokens in environment variable references ([#5891](https://github.com/xonsh/xonsh/issues/5891)) ([9ae6911](https://github.com/xonsh/xonsh/commit/9ae69117c65c305ef2511fe6a66e6965f01d174c))
+ - expand `~`(User's home path) in `xonsh.tools.chdir` function ([#5969](https://github.com/xonsh/xonsh/issues/5969)) ([192248a](https://github.com/xonsh/xonsh/commit/192248a0571a8a1dfa57e4bb7ac5fd784cad6a9f))
+ - Update tutorial example for piping into an alias ([#5955](https://github.com/xonsh/xonsh/issues/5955)) ([07d4334](https://github.com/xonsh/xonsh/commit/07d43341b981c251049855f04edaa025a4f1b1b7))
+ - Documentation
+ - Add verification file for ads.fund project ([#5946](https://github.com/xonsh/xonsh/issues/5946)) ([2482f06](https://github.com/xonsh/xonsh/commit/2482f06ef042d8a47f175e1eab45d6af4c9dcd0d))
+ - Update tutorial to reduce `${...}` accent ([#5975](https://github.com/xonsh/xonsh/issues/5975)) ([e229ea5](https://github.com/xonsh/xonsh/commit/e229ea555cd53902b3cc72033b6a25111fde6a55))
+ - Code Refactoring
+ - `$AUTO_SUGGEST` is now deprecated in favour of `$XONSH_PROMPT_AUTO_SUGGEST` ([1e5bda4](https://github.com/xonsh/xonsh/commit/1e5bda4402f4f3257b1aa68b01cb22a8c6c4b485))
+- Update to version 0.20.0:
+ - ⚠ BREAKING CHANGES
+ - drop support for Python versions below 3.11
+ - auto-load xontribs after loading RC files ([#5873](https://github.com/xonsh/xonsh/issues/5873))
+ - Features
+ - Allow sourcing files with different extensions ([#5938](https://github.com/xonsh/xonsh/issues/5938)) ([296a683](https://github.com/xonsh/xonsh/commit/296a6831e11380b37564f27e118629b78a19cfb9))
+ - allow specifying special files as scripts ([d487f06](https://github.com/xonsh/xonsh/commit/d487f06f9ded99039dd2bce35b807fa48213f76f))
+ - Allow specifying special files as scripts ([#5886](https://github.com/xonsh/xonsh/issues/5886)) ([d487f06](https://github.com/xonsh/xonsh/commit/d487f06f9ded99039dd2bce35b807fa48213f76f))
+ - **completers:** add completion for inline xonsh importer ([#5917](https://github.com/xonsh/xonsh/issues/5917)) ([e10a3aa](https://github.com/xonsh/xonsh/commit/e10a3aae5f2aa64bf140f8bfb4c75acfb7e8fc98))
+ - Keep hash (`#`) if it's part of the string in subprocess commands ([#5941](https://github.com/xonsh/xonsh/issues/5941)) ([2757a9a](https://github.com/xonsh/xonsh/commit/2757a9a79fe5c5854b60339d1ea99f12ceb1447c))
+ - Bug Fixes
+ - ensure PATH is EnvPath when using --no-env flag ([#5870](https://github.com/xonsh/xonsh/issues/5870)) ([#5903](https://github.com/xonsh/xonsh/issues/5903)) ([c73d599](https://github.com/xonsh/xonsh/commit/c73d599751d14c75aca15400fb3bfe21997a45a3))
+ - filter escape sequences after decoding in captured stdout and stderr ([#5939](https://github.com/xonsh/xonsh/issues/5939)) ([#5940](https://github.com/xonsh/xonsh/issues/5940)) ([9df5cce](https://github.com/xonsh/xonsh/commit/9df5ccedf00c8114225625974db11f4fe58b320a))
+ - map Name.Builtin to Color.GREEN when undefined ([#5908](https://github.com/xonsh/xonsh/issues/5908)) ([9a23e2e](https://github.com/xonsh/xonsh/commit/9a23e2ef40fce2f946bd01b2a9fc6855940ecc36))
+ - missing docstring for argument "verbose" of xontribs_unload and xontribs_reload ([#5922](https://github.com/xonsh/xonsh/issues/5922)) ([97265ed](https://github.com/xonsh/xonsh/commit/97265edffc6ad1084644ca5d3e2f1844904a13a0))
+ - remove redundant "command not found" ([#5915](https://github.com/xonsh/xonsh/issues/5915)) ([2db28a0](https://github.com/xonsh/xonsh/commit/2db28a0836374ad44e2ba34c5760b3353e06df67))
+ - Update release-please-config.json ([4c21211](https://github.com/xonsh/xonsh/commit/4c21211272f1a03e6b8ffc5f3307a1f9dafccfbd))
+ - Documentation
+ - update devguide ([911a2f8](https://github.com/xonsh/xonsh/commit/911a2f84e6d25dd82c8a4957bb966a80a8d3f244))
+ - update devguide ([eabf298](https://github.com/xonsh/xonsh/commit/eabf298c80e150faf76309c16eba735d4dd8b417))
+ - update hardlink to external site ([41b4c85](https://github.com/xonsh/xonsh/commit/41b4c851cb5c024c0ad94012b11b0c7a2da2985f))
+ - update TOC to include top level titles ([e21a326](https://github.com/xonsh/xonsh/commit/e21a326705d0317dd0218bf373b3ebbb5cc9f261))
+ - use soft-links for external docs ([1a49358](https://github.com/xonsh/xonsh/commit/1a4935820b72848072ba6d3eebd704fe8cacb432))
+ - use sphinx-autobuild for live reloaded docs ([174d2d8](https://github.com/xonsh/xonsh/commit/174d2d8551d3539c7f19c41c36c413b217d5f50d))
+ - Code Refactoring
+ - auto-load xontribs after loading RC files ([#5873](https://github.com/xonsh/xonsh/issues/5873)) ([bf4770a](https://github.com/xonsh/xonsh/commit/bf4770a0181f7019a695508cc05911d705a58d83))
+ - drop support for Python versions below 3.11 ([02f0ec4](https://github.com/xonsh/xonsh/commit/02f0ec47423af6e810ed7cb1699dde05e3e2bc34))
+- Update to version 0.19.9:
+ - Bug Fixes
+ - Update release-please.yml ([505a3a7](https://github.com/xonsh/xonsh/commit/505a3a7288f2840975265922a543e6296f6870de))
+
+-------------------------------------------------------------------
 Wed Jun 25 04:51:57 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use pyproject macros to build and install.
@@ -197,7 +270,7 @@ Mon Jun 26 20:20:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
     or not visible color codes and raises the error.
 
 -------------------------------------------------------------------
-Sat Dec 10 08:57:13 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sat Dec 10 08:57:13 UTC 2022 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.13.4:
  - Added:
@@ -228,7 +301,7 @@ Tue Dec  6 13:02:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
     ``noinherit`` style directives
 
 -------------------------------------------------------------------
-Tue Dec  6 08:55:15 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Tue Dec  6 08:55:15 UTC 2022 - Sebastian Wagner <sebix@sebix.at>
 
 - Update to version 0.13.2:
   * When there is no git repository, the values of all ``gitstatus`` prompt
@@ -245,7 +318,7 @@ Tue Dec  6 08:55:15 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
   * Fixed case when xpip returns None instead of command.
 
 -------------------------------------------------------------------
-Tue Aug 23 18:56:19 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Tue Aug 23 18:56:19 UTC 2022 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.13.1:
  - Added:
@@ -312,7 +385,7 @@ Tue Aug 23 18:56:19 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
  - Silence spurious errors on exit due to out-of-order cleanup
 
 -------------------------------------------------------------------
-Sun May 22 10:36:35 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sun May 22 10:36:35 UTC 2022 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.12.4:
 - update to version 0.12.3:
@@ -326,7 +399,7 @@ Sun May 22 10:36:35 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
  - Dictionaries are now pretty-printed with their items in the correct order
 
 -------------------------------------------------------------------
-Tue Apr 26 18:20:25 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Tue Apr 26 18:20:25 UTC 2022 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.12.2:
  - Fixed completions for command argument paths after equal signs
@@ -335,7 +408,7 @@ Tue Apr 26 18:20:25 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
  - `fixed <https://github.com/xonsh/xonsh/pull/4763>`_ ``vox rm`` crashing when user input is required
 
 -------------------------------------------------------------------
-Tue Apr 19 14:26:32 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Tue Apr 19 14:26:32 UTC 2022 - Sebastian Wagner <sebix@sebix.at>
 
 - removed obsolete fix-4550.patch
 - update to version 0.12.1:
@@ -451,12 +524,12 @@ Wed Feb  2 07:49:39 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 - drop non-deterministic sphinx artifacts
 
 -------------------------------------------------------------------
-Thu Nov 18 19:52:19 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Thu Nov 18 19:52:19 UTC 2021 - Sebastian Wagner <sebix@sebix.at>
 
 - add fix-4550.patch to fix doc build error and re-enable doc builds.
 
 -------------------------------------------------------------------
-Thu Nov 18 06:49:11 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Thu Nov 18 06:49:11 UTC 2021 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.11.0:
  - Added:
@@ -530,7 +603,7 @@ Thu Nov 18 06:49:11 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
  - Fix launching processes on Windows by using full paths (https://bugs.python.org/issue8557)
 
 -------------------------------------------------------------------
-Tue Jul 27 10:38:56 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Tue Jul 27 10:38:56 UTC 2021 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.10.1:
  - Fixed:
@@ -638,7 +711,7 @@ Tue Jul 27 10:38:56 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
  - SQLite History Backend: show message instead of exiting when disk is full.
 
 -------------------------------------------------------------------
-Mon Mar  8 20:59:07 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Mon Mar  8 20:59:07 UTC 2021 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.9.26:
  - Added:
@@ -648,7 +721,7 @@ Mon Mar  8 20:59:07 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
   - now xonsh stdout delegates ``isatty`` to wrapped io stream.
 
 -------------------------------------------------------------------
-Thu Feb  4 20:22:54 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Thu Feb  4 20:22:54 UTC 2021 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.9.25:
  - Added:
@@ -760,7 +833,7 @@ Thu Feb  4 20:22:54 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
   - The git customisation example in the .xonshrc docs uses the right module name
 
 -------------------------------------------------------------------
-Sun Nov  1 18:01:46 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sun Nov  1 18:01:46 UTC 2020 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.9.24:
  - Added:
@@ -787,7 +860,7 @@ Sun Nov  1 18:01:46 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
   - Fixed NO_COLOR to RESET in prompt_ret_code and mplhooks.
 
 -------------------------------------------------------------------
-Sun Oct 11 06:50:19 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sun Oct 11 06:50:19 UTC 2020 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.9.23:
  - Added:
@@ -863,7 +936,7 @@ Sun Oct 11 06:50:19 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
     (maybe was happening only on Windows?)
 
 -------------------------------------------------------------------
-Wed Sep 23 06:26:46 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Wed Sep 23 06:26:46 UTC 2020 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.9.22:
  - Added:
@@ -890,7 +963,7 @@ Wed Sep 23 06:26:46 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
   - Fixed issue where xontribs were failing from ``AttributeError: '_MergedKeyBindings' object has no attribute 'add'``
 
 -------------------------------------------------------------------
-Thu Sep  3 06:12:29 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Thu Sep  3 06:12:29 UTC 2020 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.9.21:
  - Added:
@@ -915,7 +988,7 @@ Thu Sep  3 06:12:29 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
   - Fixed parser not emmiting errors in some cases.
 
 -------------------------------------------------------------------
-Mon Aug 31 19:39:53 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Mon Aug 31 19:39:53 UTC 2020 - Sebastian Wagner <sebix@sebix.at>
 
 - No longer set `READTHEDOCS=True` for building the documentation, see https://github.com/xonsh/xonsh/issues/3741
 - update to version 0.9.20:
@@ -1051,7 +1124,7 @@ Mon Aug 31 19:39:53 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
   - Fixed formatting error in ``vox rm`` command.
 
 -------------------------------------------------------------------
-Thu May  7 18:19:05 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Thu May  7 18:19:05 UTC 2020 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.9.18:
  - Added:
@@ -1077,7 +1150,7 @@ Thu May  7 18:19:05 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
   - tests/test_builtins.py, fix test case test_convert_macro_arg_eval(kind).
 
 -------------------------------------------------------------------
-Sat Apr 11 20:17:38 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sat Apr 11 20:17:38 UTC 2020 - Sebastian Wagner <sebix@sebix.at>
 
 - add new build dependency python3-runthis-sphinxext.
 - update to version 0.9.17:
@@ -1106,7 +1179,7 @@ Sat Apr 11 20:17:38 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
     doesn't care about trailing spaces but ``os.scandir()`` does.
 
 -------------------------------------------------------------------
-Sun Mar 29 19:01:45 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sun Mar 29 19:01:45 UTC 2020 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.9.15:
  - Added:
@@ -1132,7 +1205,7 @@ Sun Mar 29 19:01:45 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
   - updated CONTRIBUTING.rst about running pylint for changed files
 
 -------------------------------------------------------------------
-Fri Feb 28 22:00:09 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Fri Feb 28 22:00:09 UTC 2020 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.9.14:
  - Added:
@@ -1211,7 +1284,7 @@ Fri Feb 28 22:00:09 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
     doc strings.
 
 -------------------------------------------------------------------
-Sun Oct  6 17:27:09 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sun Oct  6 17:27:09 UTC 2019 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.9.12:
  - Added:
@@ -1255,7 +1328,7 @@ Sun Oct  6 17:27:09 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
        there
 
 -------------------------------------------------------------------
-Sat Aug 10 06:07:58 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sat Aug 10 06:07:58 UTC 2019 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.9.10:
  - Added:
@@ -1269,7 +1342,7 @@ Sat Aug 10 06:07:58 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
     the default.
 
 -------------------------------------------------------------------
-Thu Jul 25 19:00:56 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Thu Jul 25 19:00:56 UTC 2019 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.9.9:
  - Added:
@@ -1294,7 +1367,7 @@ Thu Jul 25 19:00:56 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
     irrespective of cursor position
 
 -------------------------------------------------------------------
-Mon Jul  8 20:14:00 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Mon Jul  8 20:14:00 UTC 2019 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.9.8:
  - Fixed:
@@ -1304,7 +1377,7 @@ Mon Jul  8 20:14:00 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
     whitespace.
 
 -------------------------------------------------------------------
-Sun Jun 30 13:32:26 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sun Jun 30 13:32:26 UTC 2019 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.9.7:
  - Added:
@@ -1331,12 +1404,12 @@ Sun Jun 30 13:32:26 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
     and running a command in the ``xonshrc`` file would throw an error.
 
 -------------------------------------------------------------------
-Thu Jun  6 19:30:09 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Thu Jun  6 19:30:09 UTC 2019 - Sebastian Wagner <sebix@sebix.at>
 
 - remove docroot from a documentation file, workaround for rpmlint error file-contains-buildroot
 
 -------------------------------------------------------------------
-Sun Jun  2 13:45:11 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sun Jun  2 13:45:11 UTC 2019 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.9.5:
  - Fixed:
@@ -1438,7 +1511,7 @@ Sun Jun  2 13:45:11 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
     now passed by a portable hack in sh, not anymore by /usr/bin/env.
 
 -------------------------------------------------------------------
-Sat Mar 16 14:21:39 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sat Mar 16 14:21:39 UTC 2019 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.8.11
  - Added:
@@ -1515,7 +1588,7 @@ Sat Mar 16 14:21:39 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
   - Fixed regression with anaconda activate/deactivate scripts not wokring on Windows.
 
 -------------------------------------------------------------------
-Sun Feb 10 13:18:25 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sun Feb 10 13:18:25 UTC 2019 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.8.10
  - Added:
@@ -1585,7 +1658,7 @@ Sun Feb 10 13:18:25 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
   - Chad Kennedy
 
 -------------------------------------------------------------------
-Sat Jan  5 21:35:48 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sat Jan  5 21:35:48 UTC 2019 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.8.8
  - Added:
@@ -1595,7 +1668,7 @@ Sat Jan  5 21:35:48 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
   - ``lib.ChainDB`` now resolves results to the type of the inputs if possible
 
 -------------------------------------------------------------------
-Wed Jan  2 09:09:45 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Wed Jan  2 09:09:45 UTC 2019 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.8.7
  - Added:
@@ -1723,7 +1796,7 @@ Wed Jan  2 09:09:45 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
   - ``Makefile`` directive that updates vended version of ``ply``
 
 -------------------------------------------------------------------
-Tue Nov 13 19:37:28 UTC 2018 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Tue Nov 13 19:37:28 UTC 2018 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.8.2
  - Changed:
@@ -1742,7 +1815,7 @@ Mon Nov  5 18:08:28 UTC 2018 - Matej Cepl <mcepl@suse.com>
 - changelog.sh is an internal script for generating changelog.
 
 -------------------------------------------------------------------
-Sun Oct 21 08:48:16 UTC 2018 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sun Oct 21 08:48:16 UTC 2018 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.8.1
  - Added:
@@ -1853,7 +1926,7 @@ Sun Oct 21 08:48:16 UTC 2018 - Sebastian Wagner <sebix+novell.com@sebix.at>
       a
 
 -------------------------------------------------------------------
-Wed Sep 26 20:15:36 UTC 2018 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Wed Sep 26 20:15:36 UTC 2018 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.7.10
  - Added:
@@ -1909,7 +1982,7 @@ Wed Sep 26 20:15:36 UTC 2018 - Sebastian Wagner <sebix+novell.com@sebix.at>
     (note that fix is only for PTK2)
 
 -------------------------------------------------------------------
-Sun Sep  2 07:15:29 UTC 2018 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sun Sep  2 07:15:29 UTC 2018 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.7.7:
  - Added:
@@ -1959,7 +2032,7 @@ Sun Sep  2 07:15:29 UTC 2018 - Sebastian Wagner <sebix+novell.com@sebix.at>
     pygments 2.2.
 
 -------------------------------------------------------------------
-Sun Aug 26 13:02:45 UTC 2018 - sebix+novell.com@sebix.at
+Sun Aug 26 13:02:45 UTC 2018 - sebix@sebix.at
 
 - update to version 0.7.4:
  - Added:
@@ -1995,7 +2068,7 @@ Sun Aug 26 13:02:45 UTC 2018 - sebix+novell.com@sebix.at
   - ValueError when executing ``vox list``
 
 -------------------------------------------------------------------
-Wed Aug  8 19:51:24 UTC 2018 - sebix+novell.com@sebix.at
+Wed Aug  8 19:51:24 UTC 2018 - sebix@sebix.at
 
 - update to version 0.7.3:
  * Added:
@@ -2024,7 +2097,7 @@ Wed Aug  8 19:51:24 UTC 2018 - sebix+novell.com@sebix.at
   * The JupyterKernel has been fixed from a rather broken state.
 
 -------------------------------------------------------------------
-Sat Aug  4 07:25:38 UTC 2018 - sebix+novell.com@sebix.at
+Sat Aug  4 07:25:38 UTC 2018 - sebix@sebix.at
 
 - update to version 0.7.2:
  * Added:
@@ -2062,7 +2135,7 @@ Sat Aug  4 07:25:38 UTC 2018 - sebix+novell.com@sebix.at
   * Fixed async tokenizing issue on Python v3.7.
 
 -------------------------------------------------------------------
-Sun Jul 29 17:36:18 UTC 2018 - sebix+novell.com@sebix.at
+Sun Jul 29 17:36:18 UTC 2018 - sebix@sebix.at
 
 - update to version 0.7.0:
  * Added:
@@ -2076,7 +2149,7 @@ Sun Jul 29 17:36:18 UTC 2018 - sebix+novell.com@sebix.at
   - Restored AUGASSIGN_OPS definition, which was inadvertently removed.
 
 -------------------------------------------------------------------
-Sat Jul  7 08:53:48 UTC 2018 - sebix+novell.com@sebix.at
+Sat Jul  7 08:53:48 UTC 2018 - sebix@sebix.at
 
 - update to version 0.6.9:
  * Added:
@@ -2113,7 +2186,7 @@ Sat Jul  7 08:53:48 UTC 2018 - sebix+novell.com@sebix.at
     A copy is made on import instead.
 
 -------------------------------------------------------------------
-Sun Jun 10 20:20:03 UTC 2018 - sebix+novell.com@sebix.at
+Sun Jun 10 20:20:03 UTC 2018 - sebix@sebix.at
 
 - update to version 0.6.6:
  * Added:
@@ -2129,7 +2202,7 @@ Sun Jun 10 20:20:03 UTC 2018 - sebix+novell.com@sebix.at
   * issue 2313
 
 -------------------------------------------------------------------
-Thu May 31 21:20:01 UTC 2018 - sebix+novell.com@sebix.at
+Thu May 31 21:20:01 UTC 2018 - sebix@sebix.at
 
 - update to version 0.6.5:
  * Added:
@@ -2141,7 +2214,7 @@ Thu May 31 21:20:01 UTC 2018 - sebix+novell.com@sebix.at
     the storage of ``$XONSH_HISTORY_SIZE`` has been fixed.
 
 -------------------------------------------------------------------
-Mon May 21 06:52:00 UTC 2018 - sebix+novell.com@sebix.at
+Mon May 21 06:52:00 UTC 2018 - sebix@sebix.at
 
 - update to version 0.6.4:
  * Changed:
@@ -2156,7 +2229,7 @@ Mon May 21 06:52:00 UTC 2018 - sebix+novell.com@sebix.at
     Python 3.7.
 
 -------------------------------------------------------------------
-Sun May  6 08:31:32 UTC 2018 - sebix+novell.com@sebix.at
+Sun May  6 08:31:32 UTC 2018 - sebix@sebix.at
 
 - update to version 0.6.3:
  * Added:
@@ -2179,7 +2252,7 @@ Sun May  6 08:31:32 UTC 2018 - sebix+novell.com@sebix.at
     mode when the command could not be found or had incorrect permissions.
 
 -------------------------------------------------------------------
-Sun Apr 29 18:44:37 UTC 2018 - sebix+novell.com@sebix.at
+Sun Apr 29 18:44:37 UTC 2018 - sebix@sebix.at
 
 - update to version 0.6.2:
  * Added:
@@ -2198,7 +2271,7 @@ Sun Apr 29 18:44:37 UTC 2018 - sebix+novell.com@sebix.at
   * Files starting with # are auto-escaped by TAB completion
 
 -------------------------------------------------------------------
-Sat Apr 14 13:29:29 UTC 2018 - sebix+novell.com@sebix.at
+Sat Apr 14 13:29:29 UTC 2018 - sebix@sebix.at
 
 - update to version 0.6.1:
  * Added:
@@ -2234,19 +2307,19 @@ Sat Apr 14 13:29:29 UTC 2018 - sebix+novell.com@sebix.at
     while retaining all whitespace when there is other internal whitespace.
 
 -------------------------------------------------------------------
-Fri Dec  8 11:14:28 UTC 2017 - sebix+novell.com@sebix.at
+Fri Dec  8 11:14:28 UTC 2017 - sebix@sebix.at
 
 - change source URL to github as docs are included
 - add xonsh-doc package with HTML documentation
 
 -------------------------------------------------------------------
-Thu Dec  7 10:20:01 UTC 2017 - sebix+novell.com@sebix.at
+Thu Dec  7 10:20:01 UTC 2017 - sebix@sebix.at
 
 - run spec-cleaner
 - Add python3-ply as recommendation. It's included as fallback but defaults to the distribution's library.
 
 -------------------------------------------------------------------
-Mon Dec  4 19:18:18 UTC 2017 - sebix+novell.com@sebix.at
+Mon Dec  4 19:18:18 UTC 2017 - sebix@sebix.at
 
 - update to version 0.6.0
  * Fixed:
@@ -2258,7 +2331,7 @@ Mon Dec  4 19:18:18 UTC 2017 - sebix+novell.com@sebix.at
   * Fixed an potential ProcessLookupError issue, see #2288.
 
 -------------------------------------------------------------------
-Sat Jul 22 09:28:20 UTC 2017 - sebix+novell.com@sebix.at
+Sat Jul 22 09:28:20 UTC 2017 - sebix@sebix.at
 
 - update to version 0.5.12
  * Fixed release.xsh to prevent it from dirtying the repo on release and
@@ -2290,12 +2363,12 @@ Sat Jul 22 09:28:20 UTC 2017 - sebix+novell.com@sebix.at
 
 
 -------------------------------------------------------------------
-Thu Mar  9 21:12:40 UTC 2017 - sebix+novell.com@sebix.at
+Thu Mar  9 21:12:40 UTC 2017 - sebix@sebix.at
 
 - version 0.5.8
 
 -------------------------------------------------------------------
-Wed Feb  1 20:34:45 UTC 2017 - sebix+novell.com@sebix.at
+Wed Feb  1 20:34:45 UTC 2017 - sebix@sebix.at
 
 - version 0.5.3
 - Added:
@@ -2333,7 +2406,7 @@ Wed Feb  1 20:34:45 UTC 2017 - sebix+novell.com@sebix.at
   * The filename is applied to the target of the source alias, providing better tracebacks.
 
 -------------------------------------------------------------------
-Thu Jan  5 09:54:29 UTC 2017 - sebix+novell.com@sebix.at
+Thu Jan  5 09:54:29 UTC 2017 - sebix@sebix.at
 
 - version 0.5.2
 - Added:
@@ -2347,18 +2420,18 @@ Thu Jan  5 09:54:29 UTC 2017 - sebix+novell.com@sebix.at
   * Segfaults and other early exit signals are now reported correctly, again.
 
 -------------------------------------------------------------------
-Wed Dec 21 17:08:54 UTC 2016 - sebix+novell.com@sebix.at
+Wed Dec 21 17:08:54 UTC 2016 - sebix@sebix.at
 
 - update to 0.5.1
 
 -------------------------------------------------------------------
-Sun Dec 18 11:46:28 UTC 2016 - sebix+novell.com@sebix.at
+Sun Dec 18 11:46:28 UTC 2016 - sebix@sebix.at
 
 - update to 0.4.7
 - fix license
 
 -------------------------------------------------------------------
-Sat Aug 27 12:58:15 UTC 2016 - sebix+novell.com@sebix.at
+Sat Aug 27 12:58:15 UTC 2016 - sebix@sebix.at
 
 - initial package for xonsh
 
