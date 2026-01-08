@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec 27 19:22:41 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Modify tree-sitter-target.py to include not only parser.c, but
+  also scanner.c, if available.
+
+-------------------------------------------------------------------
 Sat Apr 12 10:32:50 UTC 2025 - Michal Vyskocil <michal.vyskocil@gmail.com>
 
 - update to 0.25.3:

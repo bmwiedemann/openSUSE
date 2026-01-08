@@ -38,6 +38,42 @@ with open(binding_gyp, 'r', encoding='utf8') as binding_raw:
 
 targets = binding['targets'][0]
 
+def apply_conditions(target: Dict):
+    """Apply conditions from binding.gyp to the target dictionary."""
+    if 'conditions' not in target:
+        return
+
+    # Check for any valid scanner extension in the src directory
+    scanner_extensions = ('.c', '.cc', '.cpp', '.cxx')
+    has_scanner = any(
+        Path('src').joinpath(f'scanner{ext}').exists()
+        for ext in scanner_extensions
+    )
+
+    for condition_block in target['conditions']:
+        condition = condition_block[0]
+        action = condition_block[1]
+
+        # Handle the dynamic addition of scanner sources
+        if condition == "has_scanner=='true'" and has_scanner:
+            if 'sources+' in action:
+                if 'sources' not in target:
+                    target['sources'] = []
+                for source in action['sources+']:
+                    if source not in target['sources']:
+                        target['sources'].append(source)
+
+        # Assuming non-windows as per user's environment
+        if condition == "OS!='win'":
+            for flag_type in ['cflags_c', 'cflags_cc']:
+                if flag_type in action:
+                    if flag_type not in target:
+                        target[flag_type] = []
+                    for flag in action[flag_type]:
+                        if flag not in target[flag_type]:
+                            target[flag_type].append(flag)
+
+
 def buildCompileCommand(target: Dict, grammars: Optional[List[str]] = None) -> Dict[
         str,
         List
@@ -51,8 +87,10 @@ def buildCompileCommand(target: Dict, grammars: Optional[List[str]] = None) -> D
     suffixes_cc = ['cc', 'cxx', 'cpp']
     if 'cflags_c' in target:
         cflags_c = target['cflags_c']
-    if 'clfags_cc' in target:
+    if 'cflags_cc' in target:
         cflags_cc = target['cflags_cc']
+
+    sources = target['sources']
 
     include_dirs = []
     for include_dir in target['include_dirs']:
@@ -64,26 +102,38 @@ def buildCompileCommand(target: Dict, grammars: Optional[List[str]] = None) -> D
         grammars = { "src" }
     for _grammar in grammars:
         command = copy(base_command)
+        seen_sources = set()
+
         for include_dir in include_dirs:
             command += '-I', include_dir
-        for source in target['sources']:
-            source = Path(source)
-            # We don't need node bindings
-            if source.parts[0] == "node":
+
+        for source_str in sources:
+            source = Path(source_str)
+
+            # STRENGHTENED SKIP: Skip if 'node' is anywhere in the path
+            if 'node' in source.parts or 'bindings' in source.parts:
                 continue
-            if not source.parts[0] == _grammar:
+
+            # Skip if we've already seen this file
+            if str(source) in seen_sources:
                 continue
-            for suffix_cc in suffixes_cc:
-                if source.name.endswith(suffix_cc):
-                    command+= '-xc++', source
-                    break
-            if source.name.endswith('.c'):
-                command+= '-xc', source
+
+            # Only include if it belongs to the grammar (or default 'src')
+            if _grammar == "src" or source.parts[0] == _grammar:
+                if any(source.name.endswith(s) for s in suffixes_cc):
+                    command += ['-xc++', str(source)]
+                    seen_sources.add(str(source))
+                elif source.name.endswith('.c'):
+                    command += ['-xc', str(source)]
+                    seen_sources.add(str(source))
         for flag in cflags_c, cflags_cc:
             if flag:
                 command += flag
         commands[_grammar] = command
     return commands
+
+
+apply_conditions(targets)
 
 if not args.grammars:
     args.grammars = ["src"]
