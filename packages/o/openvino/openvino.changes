@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Dec 28 02:04:43 UTC 2025 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Update to 2025.4.0
+* Preview: Mixture of Experts (MoE) models optimized for CPUs and 
+  GPUs, validated for GPT-OSS 20B model. How to convert model:
+  optimum-cli export openvino -m "openai/gpt-oss-20b" out_dir 
+  --weight-format int4
+* Fixed issue ID 174531: Accuracy regression of 
+  Mistral-7b-instruct-v0.2 and Mistral-7b-instruct-v0.3 
+  on all devices when executed with OpenVINO GenAI. 
+  As a workaround, use the IR converted with OpenVINO 2025.3.
+* Fixed issue ID 176777: Using the callback parameter with the 
+  Python API call generate() in Text2ImagePipeline, 
+  Image2ImagePipeline, InpaintingPipeline may cause the process 
+  to hang. As a workaround, do not use the callback parameter. 
+  C++ implementations was not affected.
+* Resolved an issue in the NPU plugin where the Level Zero (L0)
+  context was implemented as a static global object and only 
+  destroyed during DLL unload, even after unload_plugin() 
+  was called. This behavior prevented the driver from 
+  spawning threads required for certain optimizations and 
+  features.
+
+-------------------------------------------------------------------
 Tue Dec  2 22:43:52 UTC 2025 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - Update to 2025.4.0
