@@ -612,4 +612,15 @@
 </comment>
     <requestid>1322239</requestid>
   </revision>
+  <revision rev="73" vrev="29">
+    <srcmd5>5aacfe498f81b32fc4db90584e24dc22</srcmd5>
+    <version>12.2</version>
+    <time>1767882335</time>
+    <user>anag_factory</user>
+    <comment>- Modernize specfile
+- Update Supplements to new RPM format
+- Use RPM macros provided by systemd-presets-common-SUSE-devel
+</comment>
+    <requestid>1325786</requestid>
+  </revision>
 </revisionlist>

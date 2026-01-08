@@ -28,17 +28,15 @@ Source1:        default-openSUSE.preset
 # FIXME: why systemd is required ?
 BuildRequires:  pkgconfig(systemd)
 #!BuildIgnore:  systemd-presets-branding
-PreReq:         coreutils
-BuildRequires:  systemd-presets-common-SUSE
-Requires(pre):  systemd-presets-common-SUSE
+Requires(pre):  coreutils
+BuildRequires:  systemd-presets-common-SUSE-devel
 Provides:       %{generic_name} = %{version}
-Supplements:    packageand(systemd:branding-openSUSE)
-Conflicts:      otherproviders(%{generic_name})
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Supplements:    (systemd and branding-openSUSE)
+Conflicts:      %{generic_name}
 BuildArch:      noarch
-
 Requires(pre):  bash
 Requires(post): bash
+%{?systemd_preset_requires}
 
 %description
 Default presets for systemd on openSUSE distribution.
@@ -48,7 +46,7 @@ presets needed for all SUSE based distributions can be
 found in systemd-presets-common-SUSE.
 
 %prep
-%setup -q -T -c
+%autosetup -T -c
 
 %build
 
@@ -60,37 +58,13 @@ mkdir -p %{buildroot}%{_prefix}/lib/systemd/system-preset
 install -m644 %{SOURCE1}  %{buildroot}%{_prefix}/lib/systemd/system-preset/90-default-openSUSE.preset
 
 %pre
-# On initial installation, branding-preset-states does not yet exist,
-# which is why we also check for the file to be present/executable
-if [ $1 -gt 1 -a -x %{_prefix}/lib/%{generic_name}/branding-preset-states ]; then
-    #
-    # Save the old state so we can detect which package have its
-    # default changed later.
-    #
-    # Note: the old version of the script is used here.
-    #
-    %{_prefix}/lib/%{generic_name}/branding-preset-states save
-elif [ $1 -eq 1 ]; then
-    touch /run/rpm-%{name}-preset-all
-fi
+%systemd_preset_pre
 
 %post
-if [ $1 -gt 1 ]; then
-    #
-    # Now that the updated presets are installed, find the ones
-    # that have been changed and apply "systemct preset" on them.
-    #
-    %{_prefix}/lib/%{generic_name}/branding-preset-states apply-changes
-fi
+%systemd_preset_post
 
 %posttrans
-if [ -f /run/rpm-%{name}-preset-all ]; then
-    # Enable all services, which were installed before systemd
-    # Don't disable services, since this would disable the
-    # complete network stack.
-    systemctl preset-all --preset-mode=enable-only
-fi
-rm -f /run/rpm-%{name}-preset-all
+%systemd_preset_posttrans
 
 %files
 %defattr(-,root,root)
