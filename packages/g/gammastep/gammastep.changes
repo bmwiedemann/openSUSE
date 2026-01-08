@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jan  7 12:17:08 UTC 2026 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- update to v2.0.11
+  * fix: memory issues with output name
+  * fix: incompatible pointer type for noop functions
+
+- update to v2.0.10
+  * fix: wayland: potential uninitialized read
+  * fix: wayland: integer overflow with certain gamma sizes
+  * fix: hooks: close hooks directory
+  * feature: hooks: do not run files with a "~" suffix
+  * Update Swedish translation
+  * Update AppData content rating
+
+- gammastep-indicator now requires gammastep (boo#1255898)
+
+-------------------------------------------------------------------
 Tue Sep 19 19:43:26 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Correction of license based on legaldb report
