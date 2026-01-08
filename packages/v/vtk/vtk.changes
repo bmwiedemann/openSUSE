@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Dec 19 19:54:00 UTC 2025 - Vicente Adolfo Bolea Sanchez <vicente.bolea@kitware.com>
+
+- Enable modules needed for ParaView to build using external VTK.
+  Modules enabled:
+  * VTK::cli11
+  * VTK::FiltersParallelDIY2
+  * VTK::FiltersParallelStatistics                   
+  * VTK::FiltersParallelVerdict                      
+  * VTK::IOAvmesh                                    
+  * VTK::IOH5part                                    
+  * VTK::IOH5Rage                                    
+  * VTK::IOOMF                                       
+  * VTK::IOParallelExodus                            
+  * VTK::IOParallelLSDyna                            
+  * VTK::IOPIO                                       
+  * VTK::IOTRUCHAS                                   
+  * VTK::IOVPIC                                      
+  * VTK::IOXdmf2                                     
+  * VTK::RenderingMatplotlib                         
+  * VTK::RenderingParallel                           
+  * VTK::RenderingVolumeAMR                          
+  * VTK::WebCore                                     
+  * VTK::WebGLExporter                               
+  * VTK::WebPython       
+
+-------------------------------------------------------------------
 Wed Oct  1 13:48:54 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 9.5.2, see:

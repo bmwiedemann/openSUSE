@@ -1,6 +1,7 @@
 #
 # spec file for package vtk
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -40,10 +41,14 @@
 %bcond_with    haru
 %bcond_with    fmt
 %bcond_with    pugixml
+%bcond_with    nlohmann
+%bcond_with    cli11
 %else
 %bcond_without fast_float
 %bcond_without haru
 %bcond_without pugixml
+%bcond_without nlohmann
+%bcond_without cli11
 # fmt in Factory is too new
 %if 0%{?suse_version} <= 1600
 %bcond_without fmt
@@ -54,9 +59,10 @@
 %endif
 
 %bcond_with    system_pegtl
-%bcond_without netcdf
 %bcond_without gl2ps
 %bcond_without java
+%bcond_without netcdf
+%bcond_without verdict
 
 %if "%{flavor}" == ""
 %define my_suffix %{nil}
@@ -65,6 +71,7 @@
 %define my_libdir %_libdir
 %define my_incdir %_includedir
 %define my_datadir %_datadir
+%define my_python3_sitearch %{python3_sitearch}
 %endif
 
 %if "%{flavor}" == "openmpi4"
@@ -89,6 +96,7 @@
 %define my_libdir %{my_prefix}/%{_lib}/
 %define my_incdir %{my_prefix}/include/
 %define my_datadir %{my_prefix}/share/
+%define my_python3_sitearch %{mpiprefix}/%{_lib}/python%{python3_version}/site-packages
 %endif
 
 %define vtklib  lib%{pkgname}1%{?my_suffix}
@@ -146,6 +154,7 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-numpy-devel
 BuildRequires:  python3-qt5-devel
 BuildRequires:  python3-setuptools
+BuildRequires:  sqlite3
 BuildRequires:  utfcpp-devel
 BuildRequires:  cmake(Verdict)
 BuildRequires:  cmake(nlohmann_json)
@@ -168,9 +177,6 @@ BuildRequires:  pkgconfig(liblz4) >= 1.8.0
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libxml-2.0)
-%if %{with netcdf}
-BuildRequires:  pkgconfig(netcdf)
-%endif
 BuildRequires:  pkgconfig(proj) >= 5.0.0
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(theora)
@@ -180,6 +186,12 @@ BuildRequires:  pkgconfig(zlib)
 BuildRequires:  doxygen
 BuildRequires:  gnuplot
 BuildRequires:  graphviz
+%endif
+%if %{with netcdf}
+BuildRequires:  pkgconfig(netcdf)
+%endif
+%if %{with cli11}
+BuildRequires:  pkgconfig(CLI11)
 %endif
 %if %{with fmt}
 BuildRequires:  fmt-devel > 11.0
@@ -216,7 +228,6 @@ BuildRequires:  pkgconfig(pugixml) >= 1.11
 BuildRequires:  (pegtl-devel >= 2.0.0 with pegtl-devel < 3.0)
 %endif
 %if %{with testing}
-BuildRequires:  cli11-devel
 BuildRequires:  vtkdata = %{version}
 %endif
 
@@ -284,6 +295,7 @@ Requires:       pkgconfig(liblz4) >= 1.7.3
 Requires:       pkgconfig(liblzma)
 Requires:       pkgconfig(libpng)
 Requires:       pkgconfig(libswscale)
+Requires:       pkgconfig(proj) >= 5.0.0
 %if %{with netcdf}
 Requires:       pkgconfig(netcdf)
 %endif
@@ -294,6 +306,9 @@ Requires:       (pegtl-devel >= 2.0.0 with pegtl-devel < 3.0)
 %endif
 %if %{with pugixml}
 Requires:       pkgconfig(pugixml) >= 1.11
+%endif
+%if %{with cli11}
+Requires:       pkgconfig(CLI11)
 %endif
 Conflicts:      vtk-compat_gl-devel
 
@@ -421,9 +436,6 @@ languages.
 # otherwise it will break on symlinks.
 grep -rl '\.\./\.\./\.\./\.\./VTKData' . | xargs -r perl -pi -e's,\.\./\.\./\.\./\.\./VTKData,%{_datadir}/vtkdata,g'
 
-# Fix erroneous dependency on sqlite3 binary
-sed -i -e '/set(vtk_sqlite_build_binary 1)/ s/.*/#\0/' CMakeLists.txt
-
 # Allow testing also without external downloads - https://gitlab.kitware.com/vtk/vtk/-/issues/18692
 sed -i -e '/set(vtk_enable_tests "OFF")/ s/.*/#\0/' CMakeLists.txt
 
@@ -456,26 +468,19 @@ export CXXFLAGS="%{optflags}"
 # https://discourse.vtk.org/t/building-fails-generating-wrap-hierarchy-for-vtk-commoncore-unable-to-open-libvtkwrappingtools-so-1
 # Disable ioss module for MPI flavors, fails to build with 9.1.0, see MR 8565.
 %cmake \
-    -DCMAKE_INSTALL_PREFIX:PATH=%{my_prefix} \
-    -DCMAKE_INSTALL_LIBDIR:PATH=%{_lib} \
     -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name}-%{series} \
+    -DCMAKE_INSTALL_LIBDIR:PATH=%{_lib} \
+    -DCMAKE_INSTALL_PREFIX:PATH=%{my_prefix} \
+    -DCMAKE_NO_BUILTIN_CHRPATH:BOOL=ON \
+    -DVTK_BUILD_DOCUMENTATION:BOOL=%{?with_documentation:ON}%{!?with_documentation:OFF} \
+    -DVTK_BUILD_EXAMPLES:BOOL=%{?with_examples:ON}%{!?with_examples:OFF} \
+    -DVTK_BUILD_TESTING:BOOL=%{?with_testing:ON}%{!?with_testing:OFF} \
     -DVTK_FORBID_DOWNLOADS:BOOL=ON \
     -DVTK_PYTHON_OPTIONAL_LINK:BOOL=OFF \
-    -DVTK_BUILD_TESTING:BOOL=%{?with_testing:ON}%{!?with_testing:OFF} \
-    -DVTK_DATA_STORE:PATH=/usr/share/vtkdata/.ExternalData \
-    -DExternalData_NO_SYMLINKS:BOOL=ON \
-    -DVTK_BUILD_EXAMPLES:BOOL=%{?with_examples:ON}%{!?with_examples:OFF} \
-    -DVTK_BUILD_DOCUMENTATION:BOOL=%{?with_documentation:ON}%{!?with_documentation:OFF} \
-    -DCMAKE_NO_BUILTIN_CHRPATH:BOOL=ON \
 %if 0%{?suse_version} <= 1500
     -DCMAKE_SKIP_RPATH:BOOL=OFF \
     -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \
 %endif
-    -DVTK_MODULE_ENABLE_VTK_TestingCore=WANT \
-    -DVTK_MODULE_ENABLE_VTK_TestingRendering=WANT \
-    -DVTK_MODULE_ENABLE_VTK_RenderingContextOpenGL2=YES \
-    -DVTK_MODULE_ENABLE_VTK_RenderingLICOpenGL2=%{?with_gles:NO}%{!?with_gles:YES} \
-    -DVTK_MODULE_ENABLE_VTK_RenderingFreeTypeFontConfig=YES \
     -DVTK_CUSTOM_LIBRARY_SUFFIX="" \
     -DVTK_GROUP_ENABLE_Imaging=WANT \
 %if %{with mpi}
@@ -484,31 +489,62 @@ export CXXFLAGS="%{optflags}"
 %else
     -DVTK_USE_MPI:BOOL=OFF \
 %endif
+    -DOpenGL_GL_PREFERENCE:STRING='GLVND' \
     -DVTK_GROUP_ENABLE_Qt=WANT \
     -DVTK_GROUP_ENABLE_Rendering=WANT \
     -DVTK_GROUP_ENABLE_StandAlone=WANT \
     -DVTK_GROUP_ENABLE_Views=WANT \
-    -DVTK_PYTHON_VERSION=3 \
-    -DVTK_WRAP_JAVA:BOOL=%{?with_java:ON}%{!?with_java:OFF} \
     -DVTK_JAVA_RELEASE_VERSION:STRING='11' \
-    -DVTK_WRAP_PYTHON:BOOL=ON \
-    -DOpenGL_GL_PREFERENCE:STRING='GLVND' \
-    -DVTK_OPENGL_USE_GLES:BOOL=%{?with_gles:ON}%{!?with_gles:OFF} \
-    -DVTK_USE_EXTERNAL:BOOL=ON \
+    -DVTK_MODULE_ENABLE_VTK_cli11=WANT \
+    -DVTK_MODULE_ENABLE_VTK_FiltersParallelDIY2=WANT \
+    -DVTK_MODULE_ENABLE_VTK_FiltersParallelStatistics=WANT \
+    -DVTK_MODULE_ENABLE_VTK_FiltersParallelVerdict=WANT \
+    -DVTK_MODULE_ENABLE_VTK_IOAvmesh=WANT \
+    -DVTK_MODULE_ENABLE_VTK_IOH5part=WANT \
+    -DVTK_MODULE_ENABLE_VTK_IOH5Rage=WANT \
+    -DVTK_MODULE_ENABLE_VTK_IOMySQL=%{?with_mysql:ON}%{!?with_mysql:NO} \
+    -DVTK_MODULE_ENABLE_VTK_IOOMF=WANT \
+    -DVTK_MODULE_ENABLE_VTK_IOParallelExodus=WANT \
+    -DVTK_MODULE_ENABLE_VTK_IOParallelLSDyna=WANT \
+    -DVTK_MODULE_ENABLE_VTK_IOPIO=WANT \
+    -DVTK_MODULE_ENABLE_VTK_ioss:STRING=%{!?with_mpi:WANT}%{?with_mpi:NO} \
+    -DVTK_MODULE_ENABLE_VTK_IOTRUCHAS=WANT \
+    -DVTK_MODULE_ENABLE_VTK_IOVPIC=WANT \
+    -DVTK_MODULE_ENABLE_VTK_IOXdmf2=WANT \
+    -DVTK_MODULE_ENABLE_VTK_libharu:BOOL=YES \
+    -DVTK_MODULE_ENABLE_VTK_pegtl=YES \
+    -DVTK_MODULE_ENABLE_VTK_RenderingContextOpenGL2=YES \
+    -DVTK_MODULE_ENABLE_VTK_RenderingFreeTypeFontConfig=YES \
+    -DVTK_MODULE_ENABLE_VTK_RenderingLICOpenGL2=%{?with_gles:NO}%{!?with_gles:YES} \
+    -DVTK_MODULE_ENABLE_VTK_RenderingMatplotlib=WANT \
+    -DVTK_MODULE_ENABLE_VTK_RenderingParallel=WANT \
+    -DVTK_MODULE_ENABLE_VTK_RenderingVolumeAMR=WANT \
+    -DVTK_MODULE_ENABLE_VTK_TestingCore=WANT \
+    -DVTK_MODULE_ENABLE_VTK_TestingRendering=WANT \
+    -DVTK_MODULE_ENABLE_VTK_WebCore=WANT \
+    -DVTK_MODULE_ENABLE_VTK_WebGLExporter=WANT \
+    -DVTK_MODULE_ENABLE_VTK_WebPython=WANT \
+    -DVTK_MODULE_USE_EXTERNAL_VTK_cli11=%{?with_cli11:ON}%{!?with_cli11:OFF} \
     -DVTK_MODULE_USE_EXTERNAL_VTK_exprtk:BOOL=OFF \
     -DVTK_MODULE_USE_EXTERNAL_VTK_fast_float:BOOL=%{?with_fast_float:ON}%{!?with_fast_float:OFF} \
     -DVTK_MODULE_USE_EXTERNAL_VTK_fmt:BOOL=%{?with_fmt:ON}%{!?with_fmt:OFF} \
     -DVTK_MODULE_USE_EXTERNAL_VTK_gl2ps=%{?with_gl2ps:ON}%{!?with_gl2ps:OFF} \
     -DVTK_MODULE_USE_EXTERNAL_VTK_ioss:BOOL=OFF \
+    -DVTK_MODULE_USE_EXTERNAL_VTK_jsoncpp=%{?with_jsoncpp:ON}%{!?with_jsoncpp:OFF} \
     -DVTK_MODULE_USE_EXTERNAL_VTK_libharu=%{?with_haru:ON}%{!?with_haru:OFF} \
+    -DVTK_MODULE_USE_EXTERNAL_VTK_libproj=%{?with_proj:ON}%{!?with_proj:OFF} \
     -DVTK_MODULE_USE_EXTERNAL_VTK_netcdf:BOOL=%{?with_netcdf:ON}%{!?with_netcdf:OFF} \
+    -DVTK_MODULE_USE_EXTERNAL_VTK_nlohmannjson=%{?with_nlohmann:ON}%{!?with_nlohmann:OFF} \
     -DVTK_MODULE_USE_EXTERNAL_VTK_pegtl=%{?with_system_pegtl:YES}%{!?with_system_pegtl:NO} \
     -DVTK_MODULE_USE_EXTERNAL_VTK_pugixml=%{?with_pugixml:ON}%{!?with_pugixml:OFF} \
+    -DVTK_MODULE_USE_EXTERNAL_VTK_sqlite:BOOL=ON \
     -DVTK_MODULE_USE_EXTERNAL_VTK_token:BOOL=OFF \
-    -DVTK_MODULE_ENABLE_VTK_ioss:STRING=%{!?with_mpi:WANT}%{?with_mpi:NO} \
-    -DVTK_MODULE_ENABLE_VTK_pegtl:STRING=YES \
-    -DVTK_MODULE_ENABLE_VTK_zfp:STRING=NO \
-    -DVTK_MODULE_ENABLE_VTK_IOMySQL=%{?with_mysql:ON}%{!?with_mysql:NO} \
+    -DVTK_MODULE_USE_EXTERNAL_VTK_verdict=%{?with_verdict:ON}%{!?with_verdict:OFF} \
+    -DVTK_OPENGL_USE_GLES:BOOL=%{?with_gles:ON}%{!?with_gles:OFF} \
+    -DVTK_PYTHON_VERSION=3 \
+    -DVTK_USE_EXTERNAL:BOOL=ON \
+    -DVTK_WRAP_JAVA:BOOL=%{?with_java:ON}%{!?with_java:OFF} \
+    -DVTK_WRAP_PYTHON:BOOL=ON \
     %{nil}
 
 %cmake_build
@@ -518,6 +554,10 @@ find . -name \*.c -o -name \*.cxx -o -name \*.h -o -name \*.hxx -o -name \*.gif 
 
 %install
 %cmake_install
+
+# Unnecessary hash-bang
+sed -i "1{\@%{_bindir}/env@d}" %{buildroot}%{my_python3_sitearch}/vtkmodules/generate_pyi.py
+sed -i "1{\@%{_bindir}/env@d}" %{buildroot}%{my_python3_sitearch}/vtkmodules/test/rtImageTest.py
 
 %if %{with examples}
 # List of executable examples
@@ -641,6 +681,7 @@ find %{buildroot} . -name vtk.cpython-3*.pyc -print -delete # drop unreproducibl
 %{?with_mpi: %dir %{my_libdir}/cmake/}
 %{my_libdir}/cmake/%{pkgname}-%{series}/
 %{my_incdir}/%{pkgname}-%{series}/
+%{my_datadir}/vtk/
 # VTK JNI
 %exclude %{my_libdir}/libvtkJava.so
 %exclude %{my_libdir}/cmake/%{pkgname}-%{series}/VTKJava-*.cmake

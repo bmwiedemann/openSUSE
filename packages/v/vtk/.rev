@@ -643,4 +643,12 @@
     <comment>fix build in factory (forwarded request 1308456 from fstrba)</comment>
     <requestid>1308613</requestid>
   </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>32a3fc5e1b0cf46069ad665d5791ca8c</srcmd5>
+    <version>9.5.2</version>
+    <time>1767882434</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1325853</requestid>
+  </revision>
 </revisionlist>
