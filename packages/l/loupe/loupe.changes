@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Jan  2 13:52:27 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.2:
+  + Fixed:
+    - Check if the is-hidden property is available before reading
+      it.
+    - Considerably increased speed for listing other images in
+      folders, especially for remote locations. This allows for
+      switiching to other images to become available much quicker.
+    - Fix panics, probably occuring when using an action like
+      'copy', and then closing the window. The crash causes all
+      other windows to close.
+    - Force gufo-exif version 0.3.1 to fix the missing beginning of
+      user comments.
+    - Showing wrong mime type in error message if the file ending
+      for an image is wrong.
+    - The creation date for images that don't provide a timezone
+      was displayed as if the recorded date and time was in UTC.
+    - Zooming in would not work via the zoom menu, if the resulting
+      zoom state would still fit the image inside the window.
+  + Changed: Track the location in source code of errors trying to
+    get the root window.
+- Temp disable update of vendor tarball. Updated vendors currently
+  breaks the build.
+
+-------------------------------------------------------------------
 Fri Nov 14 07:55:56 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update vendor tarball (boo#1253488).
