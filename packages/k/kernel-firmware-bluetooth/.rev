@@ -1,0 +1,291 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5edb07d85ff6bb9ff31e57dc71b05d36</srcmd5>
+    <version>20250208</version>
+    <time>1739392617</time>
+    <user>anag+factory</user>
+    <comment>This is a rework of the kernel-firmware packaging.
+
+Instead of building all kernel-firwmare-* subpackages from a single repo
+(kernel-firmware), build them individually from the inididual sources,
+to allow the invidiaul updates.
+
+The package names and functionalities remain same.
+
+After this PR, there will be a delete request for kernel-firmware.
+
+</comment>
+    <requestid>1245286</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>955e397654a8651d209ff1cc5f9158db</srcmd5>
+    <version>20250219</version>
+    <time>1740170081</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1247383</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8bd255b22cc994da436d7932371939a5</srcmd5>
+    <version>20250310</version>
+    <time>1741874673</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20250310 (git commit 11c4e60f9573):
+  * QCA: Add Bluetooth firmwares for QCA2066 with USB transport
+  * QCA: Add two bluetooth firmware nvm files for QCA2066
+  * QCA: Update Bluetooth QCA2066 firmware to 2.1.0-00653
+  * QCA: Update Bluetooth WCN685x 2.1 firmware to 2.1.0-00653
+  * linux-firmware: Update firmware file for Intel BlazarU core
+  * linux-firmware: Update firmware file for Intel BlazarI core</comment>
+    <requestid>1252347</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>334a49c468b096896cf16c1c3d6c2bb7</srcmd5>
+    <version>20250318</version>
+    <time>1742495070</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1254165</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>5ff9b8fe1a20ec6b448076092e9f5d42</srcmd5>
+    <version>20250318</version>
+    <time>1743020229</time>
+    <user>anag+factory</user>
+    <comment>- Fix a typo in download URL
+
+- Correct aliases with comma (bsc#1239877)
+- Update spec to make kernel-firmware-tools downloadable</comment>
+    <requestid>1255831</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>62dab20ad2474cca5b766c9220389565</srcmd5>
+    <version>20250401</version>
+    <time>1743606560</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20250401 (git commit d864697fd38a):
+  * rtl_bt: Update RTL8852BT/RTL8852BE-VT BT USB FW to 0x17E9_16ED
+  * Revert &quot;rtl_bt: Update RTL8852BT/RTL8852BE-VT BT USB FW to 0x0471_70A6&quot;
+
+- Update to version 20250331 (git commit 0f7fe1e739bf):
+  * rtl_bt: Update RTL8852BT/RTL8852BE-VT BT USB FW to 0x0471_70A6</comment>
+    <requestid>1266533</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>20115921ad4ddcae924796ea5b0a9861</srcmd5>
+    <version>20250408</version>
+    <time>1744315055</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250408 (git commit c1a774f36657):
+  * QCA: Add 8 bluetooth nvm files for WCN785x btusb
+  * QCA: Update WCN785x btusb firmware to 2.0.0-00790-3</comment>
+    <requestid>1268114</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>af379cac73d4b7e491b6b92ae36d853d</srcmd5>
+    <version>20250422</version>
+    <time>1745414306</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250422 (git commit 944acaa23457):
+  * rtl_bt: Update RTL8852BT/RTL8852BE-VT BT USB FW to 0x1881_BA06</comment>
+    <requestid>1271969</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>c393ed2b8df7e3c92302c26c84116331</srcmd5>
+    <version>20250422</version>
+    <time>1745612308</time>
+    <user>anag_factory</user>
+    <comment>- Change conflicts filesystem &lt; 84 to conflicts filesystem without
+  may-perform-usrmerge. Version 84 is specific to Tumbleweed; CODE
+  16 uses Version 16; yet we need to ensure we get an up-to-date
+  version of filesystem. Relying on the recently introduced provides
+  instructing zypp about the usrmerge is perfect for this use case.</comment>
+    <requestid>1272718</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8dd6e017b5ec19ae585358e9bbd7658a</srcmd5>
+    <version>20250425</version>
+    <time>1747061134</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250425 (git commit 8d82acd29b5c):
+  * rtl_bt: Update RTL8852B BT USB FW to 0x098B_154B</comment>
+    <requestid>1276101</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>88fd3f7c12ddd3892965a76b6f5de8ae</srcmd5>
+    <version>20250516</version>
+    <time>1748003384</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250516 (git commit 759c4acafb4a):
+  * rtl_bt: Update RTL8822C BT USB and UART firmware to 0x7C20</comment>
+    <requestid>1278689</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f6cd4293049bfa151b3f19d6d334448c</srcmd5>
+    <version>20250603</version>
+    <time>1749538648</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250603 (git commit 3b75d677f898):
+  * linux-firmware: Update firmware file for Intel Pulsar core
+  * linux-firmware: Update firmware file for Intel BlazarI core
+  * linux-firmware: Update firmware file for Intel Quasar core
+  * linux-firmware: Update firmware file for Intel Solar core
+  * linux-firmware: Update firmware file for Intel Magnetar core
+  * linux-firmware: Update firmware file for Intel BlazarU core</comment>
+    <requestid>1283301</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>62a5aba43743d1a8a5f5c862f0e31e36</srcmd5>
+    <version>20250613</version>
+    <time>1750177209</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250613 (git commit 12fe085fa409):
+  * QCA: Update WCN785x btusb firmware to 2.0.0-00799-5</comment>
+    <requestid>1285896</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b9b110594443b2a14d7f5330f8bcb8b4</srcmd5>
+    <version>20250707</version>
+    <time>1752590528</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250707 (git commit ba5e4e381494):
+  * Revert &quot;linux-firmware: Update firmware file for Intel Pulsar core&quot;</comment>
+    <requestid>1293166</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>32a3a7d9da2a45f4647d18bdd54e06cb</srcmd5>
+    <version>20250714</version>
+    <time>1753281146</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250714 (git commit ecdbd2b8af04):
+  * linux-firmware: Update firmware file for Intel Solar core
+  * linux-firmware: Update firmware file for Intel BlazarU core
+  * linux-firmware: Update firmware file for Intel BlazarI core</comment>
+    <requestid>1295033</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ab212eaba17aa178fa35d7d175183fb4</srcmd5>
+    <version>20250808</version>
+    <time>1754762352</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20250808 (git commit 8f1ce114de6c):
+  * qca: Update Bluetooth WCN6750 1.1.3-00069 firmware to 1.1.3-00091</comment>
+    <requestid>1298508</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b4ee2919d3e7c458a298461936eeb0b0</srcmd5>
+    <version>20250820</version>
+    <time>1755877647</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250820 (git commit 70dda28e5098):
+  * Link rtl8723b_config.bin to rtl8723bs</comment>
+    <requestid>1300893</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>71ccb635da48da9112adfa64f2a85def</srcmd5>
+    <version>20250903</version>
+    <time>1757001542</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250903 (git commit c784990ba3d2):
+  * rtl_bt: Update RTL8822C BT USB firmware to 0x2B66_D962</comment>
+    <requestid>1302680</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>aef8e4e89e8a7d6a580efa45d39b7060</srcmd5>
+    <version>20251010</version>
+    <time>1760457987</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20251010 (git commit fef0b3bbf494):
+  * linux-firmware: Update firmware file for Intel Magnetar core
+  * linux-firmware: Update firmware file for Intel BlazarU core
+  * linux-firmware: Update firmware file for Intel BlazarI core
+
+- Update to version 20251010 (git commit 49fafa182b23):
+  * qca: Update Bluetooth WCN6750 1.1.3-00091 firmware to 1.1.3-00100
+
+- Update to version 20251004 (git commit 757854f42d83):
+  * rtl_bt: Update RTL8852BT/RTL8852BE-VT BT USB FW to 0x3BAC_ADBA</comment>
+    <requestid>1311173</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>10ecf7f920a0340c743a5e8c019515a5</srcmd5>
+    <version>20251024</version>
+    <time>1761659126</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251024 (git commit 9b899c779b8a):
+  * QCA: Update Bluetooth WCN6856 firmware 2.1.0-00653 to 2.1.0-00659</comment>
+    <requestid>1313866</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>73a1e399dd1854b6725dc9f50a5c781c</srcmd5>
+    <version>20251029</version>
+    <time>1762192483</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251029 (git commit bfc84303530a):
+  * rtl_bt: Add firmware and config files for RTL8761CUV</comment>
+    <requestid>1315089</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>3f39616c5dbbb824300e44555de988b1</srcmd5>
+    <version>20251106</version>
+    <time>1762718856</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20251106 (git commit b055b3e24542):
+  * linux-firmware: Update firmware file for Intel BlazarU core
+  * linux-firmware: Update firmware file for Intel BlazarI core</comment>
+    <requestid>1316553</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>e6996beb32bddbea4d7255f435ccd2b1</srcmd5>
+    <version>20251111</version>
+    <time>1763476230</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251111 (git commit 6fc940781a01):
+  * rtl_bt: Update RTL8922A BT USB firmware to 0x41C0_C905</comment>
+    <requestid>1317806</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>4119c0a9250a678f1846bfc13deab0d8</srcmd5>
+    <version>20251125</version>
+    <time>1764767504</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251125 (git commit 23568a4b9420):
+  * QCA: Add Bluetooth firmware for WCN685x uart interface
+
+- Update to version 20251121 (git commit ff6418d18552):
+  * rtl_bt: Update RTL8852B BT USB FW to 0x42D3_4E04</comment>
+    <requestid>1320750</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>a4e82eabed11a19dd08235b6f0590e77</srcmd5>
+    <version>20251202</version>
+    <time>1765191169</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251202 (git commit 685171356137):
+  * linux-firmware: Update firmware file for Intel Scorpius core
+  * linux-firmware: Update firmware file for Intel BlazarIGfP core
+  * linux-firmware: Update firmware file for Intel BlazarI core
+  * linux-firmware: Update firmware file for Intel BlazarU-HrPGfP core
+  * linux-firmware: Update firmware file for Intel BlazarU core</comment>
+    <requestid>1321334</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>c260ef58002dab5c9cc3c3180af85530</srcmd5>
+    <version>20251228</version>
+    <time>1767275999</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20251228 (git commit 154800e88541):
+  * rtl_bt: Update RTL8852BT/RTL8852BE-VT BT USB FW to 0x488C_DB55
+  * linux-firmware: Add firmware file for Intel Scorpius core</comment>
+    <requestid>1324918</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>3dfd87852862633814bf0c8d3e558c83</srcmd5>
+    <version>20260106</version>
+    <time>1767882330</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260106 (git commit e272e0d1edce):
+  * qca: Update Bluetooth WCN6750 1.1.3-00100 firmware to 1.1.3-00105</comment>
+    <requestid>1325733</requestid>
+  </revision>
+</revisionlist>
