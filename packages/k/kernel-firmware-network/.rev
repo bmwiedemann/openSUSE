@@ -109,4 +109,13 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment>- Update aliases for 6.17</comment>
     <requestid>1307945</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>357e3edf8d465a3f00a30f0c83542d22</srcmd5>
+    <version>20260106</version>
+    <time>1767882331</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260106 (git commit e272e0d1edce):
+  * linux-firmware: add firmware for an8811hb 2.5G ethernet phy</comment>
+    <requestid>1325734</requestid>
+  </revision>
 </revisionlist>
