@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Dec 18 07:28:31 UTC 2025 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Update to version 8.18.0:
+  * add dcrawload, dcrawload_source, dcrawload_buffer: load raw
+    camera files using libraw [lxsameer]
+  * add magickload_source: load from a source with imagemagick
+  * add vips__worker_exit(): enables fast threadpool shutdown
+  * larger mmap windows on 64-bit machines improve random access
+    mode for many file formats
+  * pdfload: control region to be rendered via `page_box` [lovell]
+  * system: add "cache" argument
+  * add vips_image_get_tile_width(), vips_image_get_tile_height():
+    get tile cache geometry hints [jbaiter]
+  * add vips_uhdrload(), vips_uhdrload_buffer(), vips_uhdrload_source():
+    load an UltraHDR image
+  * add vips_uhdrsave(), vips_uhdrsave_buffer(), vips_uhdrsave_target():
+   save an UltraHDR image
+  * fix cpp binding leak [VivitionDeveloper]
+  * add "gainmap" to VipsKeep
+  * add vips_image_get_gainmap()
+  * thumbnail updates gainmaps
+  * add "bitdepth" to jxlsave
+  * add "path" option to vipsthumbnail, deprecate "output" option [zjturner]
+  * add "exact" to webpsave
+  * add "uhdr2scRGB"
+  * dzsave has gainmap support
+  * cpp: add .gainmap(), .set(VImage)
+  * add support for Oklab and Oklch colourspaces
+  * add vips_Oklab2XYZ(), vips_XYZ2Oklab()
+  * add vips_Oklab2Oklch(), vips_OKlch2Oklab()
+  * add vips_interpretation_bands()
+  * heifsave: add "tune" parameter
+  * require C++14 as a minimum standard [kleisauke]
+  * prefer libpng over spng
+  * vipsthumbnail: fix pyramidal image layer selection [esiqveland]
+  * tools: fix possible deadlock during process exit on win32
+  * fix temp dir handling on win32 with Unicode usernames [kleisauke]
+  * pngsave, ppmsave: support for more image interpretations [gcsideal]
+  * tiffsave: fix saved resolution with a non-default
+    resolution-unit metadata item [machur]
+  * svgload: ensure short/malformed compressed input is ignored [kleisauke,lovell]
+  * dzsave: Zoomify: ensure correct tile count in ImageProperties.xml [kleisauke]
+  * VipsSaveable: reimplement with macros to help C++ compat [jcupitt]
+- Disable uhdr meson option
+
+-------------------------------------------------------------------
 Mon Sep 22 10:36:39 UTC 2025 - Enrico Belleri <kilgore.trout@idesmi.eu>
 
 - Update to version 8.17.2:

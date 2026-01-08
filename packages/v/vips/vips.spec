@@ -23,7 +23,7 @@
 %define short_version_ 8.0
 %define somajor 42
 Name:           vips
-Version:        8.17.2
+Version:        8.18.0
 Release:        0
 Summary:        C/C++ library for processing large images
 License:        LGPL-2.1-only
@@ -57,7 +57,7 @@ BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libjxl) >= 0.7
 BuildRequires:  pkgconfig(libjxl_threads) >= 0.7
 BuildRequires:  pkgconfig(libopenjp2) >= 2.4
-BuildRequires:  pkgconfig(libraw)
+BuildRequires:  pkgconfig(libraw) >= 0.14
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.40.3
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libwebp) >= 0.6
@@ -70,8 +70,8 @@ BuildRequires:  pkgconfig(poppler-glib) >= 0.16.0
 BuildRequires:  pkgconfig(pygobject-3.0)
 BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} > 1600
-BuildRequires:  pkgconfig(openslide) >= 3.4.0
 BuildRequires:  libspng-devel >= 0.7
+BuildRequires:  pkgconfig(openslide) >= 3.4.0
 %else
 BuildRequires:  pkgconfig(libpng) >= 1.2.9
 %endif
@@ -163,6 +163,7 @@ Bash command line completion support for %{name}.
   -Dcgif=disabled \
   -Dpdfium=disabled \
   -Dnifti=disabled \
+  -Duhdr=disabled \
 %if 0%{?suse_version} <= 1600
   -Dspng=disabled \
   -Dopenslide=disabled \
@@ -188,7 +189,7 @@ install -Dm644 completions/vips-completion.bash %{buildroot}%{_datadir}/bash-com
 
 %files modules-%{short_version}
 %license LICENSE
-%{_libdir}/vips-modules-8.17/
+%{_libdir}/vips-modules-8.18/
 
 %files -n typelib-1_0-Vips-%{short_version_}
 %license LICENSE
