@@ -67,4 +67,13 @@
    see /usr/share/doc/packages/perl-PDF-Builder/Changes</comment>
     <requestid>1279798</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fc1d24f4bc2fa53cff6d5ebd4fec1e63</srcmd5>
+    <version>3.28.0</version>
+    <time>1767882510</time>
+    <user>anag_factory</user>
+    <comment>- updated to 3.28.0 (3.028)
+   see /usr/share/doc/packages/perl-PDF-Builder/Changes</comment>
+    <requestid>1325874</requestid>
+  </revision>
 </revisionlist>

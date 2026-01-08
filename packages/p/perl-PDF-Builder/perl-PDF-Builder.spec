@@ -1,7 +1,7 @@
 #
 # spec file for package perl-PDF-Builder
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,25 +18,26 @@
 
 %define cpan_name PDF-Builder
 Name:           perl-PDF-Builder
-Version:        3.27.0
+Version:        3.28.0
 Release:        0
-# 3.027 -> normalize -> 3.27.0
-%define cpan_version 3.027
+# 3.028 -> normalize -> 3.28.0
+%define cpan_version 3.028
 License:        LGPL-2.1-or-later
 Summary:        Facilitates the creation and modification of PDF files
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PM/PMPERRY/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Compress::Zlib) >= 1
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.66
-BuildRequires:  perl(Font::TTF) >= 1.40.0
+BuildRequires:  perl(Font::TTF) >= 1.40
 BuildRequires:  perl(Test::Exception)
 BuildRequires:  perl(Test::Memory::Cycle) >= 1
 Requires:       perl(Compress::Zlib) >= 1
-Requires:       perl(Font::TTF) >= 1.40.0
+Requires:       perl(Font::TTF) >= 1.40
 Provides:       perl(PDF::Builder) = %{version}
 Provides:       perl(PDF::Builder::Annotation) = %{version}
 Provides:       perl(PDF::Builder::Basic::PDF) = %{version}
@@ -60,6 +61,7 @@ Provides:       perl(PDF::Builder::Basic::PDF::Pages) = %{version}
 Provides:       perl(PDF::Builder::Basic::PDF::String) = %{version}
 Provides:       perl(PDF::Builder::Basic::PDF::Utils) = %{version}
 Provides:       perl(PDF::Builder::Content) = %{version}
+Provides:       perl(PDF::Builder::Content::Column_docs) = %{version}
 Provides:       perl(PDF::Builder::Content::Hyphenate_basic) = %{version}
 Provides:       perl(PDF::Builder::Content::Text) = %{version}
 Provides:       perl(PDF::Builder::Docs) = %{version}
@@ -156,9 +158,7 @@ Provides:       perl(PDF::Builder::Win32) = %{version}
 Facilitates the creation and modification of PDF files
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
-
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -173,7 +173,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes CONTRIBUTING.md docs examples README.md
+%doc Changes CONTRIBUTING.md docs examples README.md SECURITY.md
 %license LICENSE
 
 %changelog
