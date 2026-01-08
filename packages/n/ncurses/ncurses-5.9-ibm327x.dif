@@ -22,7 +22,7 @@
  	use=ansi+local, use=ansi+rca, use=linux+sfkeys,
  	use=vt100+pf1-pf4, use=vt220+ufkeys, use=vt220+pcedit,
  
-@@ -18307,7 +18307,19 @@ hazel|exec80|h80|he80|Hazeltine Executiv
+@@ -18310,7 +18310,19 @@ hazel|exec80|h80|he80|Hazeltine Executiv
  
  ibm327x|line mode IBM 3270 style,
  	gn,

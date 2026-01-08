@@ -1,7 +1,7 @@
 #
 # spec file for package ncurses
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,9 +43,9 @@
 %endif
 
 %global patchlvl %(bash %{_sourcedir}/get_version_number.sh %{_sourcedir})
-%global basevers 6.5
+%global basevers 6.6
 %global tackvers 1.11
-%global tacklvl  20250503
+%global tacklvl  20251210
 
 Name:           ncurses
 #!BuildIgnore: terminfo
@@ -84,7 +84,7 @@ Obsoletes:      ncurses-64bit
 # but also build the ABI version 5 as this is part of the source
 # tar ball including the latest upstream fixes for ABI 5.
 #
-Version:        6.5.%{patchlvl}
+Version:        %{basevers}.%{patchlvl}
 Release:        0
 Summary:        Terminal control library
 #Git:           http://ncurses.scripts.mit.edu
@@ -107,7 +107,7 @@ Source11:       ncurses.keyring
 Source12:       ncursesnt
 Source42:       termerase.c
 Source43:       termerase.1
-Patch0:         ncurses-6.4.dif
+Patch0:         ncurses-6.6.dif
 Patch1:         ncurses-5.9-ibm327x.dif
 Patch2:         ncurses-5.7-tack.dif
 Patch3:         FORTIFY_SOURCE_3-fix.patch

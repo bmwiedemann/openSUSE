@@ -3,7 +3,8 @@
 sourcedir=$1
 test -n "${sourcedir}" || sourcedir=$PWD
 test -e ${sourcedir}/ncurses.spec  || exit 1
-version=$(sed -rn '/^Version:[[:space:]]+/{s/^Version:[[:space:]]+([0-9]+\.[0-9]+)(\.[^\.]+)?/\1/p}' ${sourcedir}/ncurses.spec) || exit 1
+basevers=$(sed -rn '/^%global[[:space:]]+basevers/{s/^%global[[:space:]]+basevers[[:space:]]+([0-9]+\.[0-9]+)/\1/p}' ${sourcedir}/ncurses.spec) || exit 1
+version=$(sed -rn "/^Version:[[:space:]]+/{s/^Version:[[:space:]]+%\{basevers\}\.%\{patchlvl\}/${basevers}/p}" ${sourcedir}/ncurses.spec) || exit 1
 test -e ${sourcedir}/ncurses-${version}.tar.gz || exit 1
 last=($(tar Oxf ${sourcedir}/ncurses-${version}.tar.gz ncurses-${version}/VERSION)) || exit 1
 test -e ${sourcedir}/ncurses-${version}-patches.tar.bz2 || echo ${last[2]}
