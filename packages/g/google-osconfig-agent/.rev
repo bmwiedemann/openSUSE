@@ -706,4 +706,24 @@
   * Revert &quot;Bump github.com/spdx/tools-golang from 0.5.3 to 0.5.5 (#887)&quot; (#893) (forwarded request 1321685 from glaubitz)</comment>
     <requestid>1321752</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>293cd56e4d498331373d18634308e5dd</srcmd5>
+    <version>20251230.00</version>
+    <time>1767882362</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20251230.00
+  * chore: Migrate gsutil usage to gcloud storage (#904)
+- from version 20251223.00
+  * fix e2e tests for report inventory (#903)
+- from version 20251222.01
+  * Revert &quot;Bump cloud.google.com/go/longrunning from 0.6.3 to 0.7.0 (#882)&quot; (#902)
+- from version 20251222.00
+  * Bump golang to the new version (#900)
+- from version 20251218.00
+  * add new CODEOWNERS (#901)
+- from version 20251217.00
+  * Bump cloud.google.com/go/longrunning from 0.6.3 to 0.7.0 (#882)
+- Bump the golang compiler version to 1.24.5 (forwarded request 1325757 from glaubitz)</comment>
+    <requestid>1325767</requestid>
+  </revision>
 </revisionlist>

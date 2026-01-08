@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jan  7 11:45:40 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20251230.00
+  * chore: Migrate gsutil usage to gcloud storage (#904)
+- from version 20251223.00
+  * fix e2e tests for report inventory (#903)
+- from version 20251222.01
+  * Revert "Bump cloud.google.com/go/longrunning from 0.6.3 to 0.7.0 (#882)" (#902)
+- from version 20251222.00
+  * Bump golang to the new version (#900)
+- from version 20251218.00
+  * add new CODEOWNERS (#901)
+- from version 20251217.00
+  * Bump cloud.google.com/go/longrunning from 0.6.3 to 0.7.0 (#882)
+- Bump the golang compiler version to 1.24.5
+
+-------------------------------------------------------------------
 Tue Dec  9 08:38:50 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20251202.00
