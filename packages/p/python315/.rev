@@ -62,4 +62,24 @@
       underlying buffer’s closed property calls detach().</comment>
     <requestid>1324009</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>5a27c12757c908e084edd7af07a7adba</srcmd5>
+    <version>3.15.0~a3</version>
+    <time>1767882500</time>
+    <user>anag_factory</user>
+    <comment>recover testing with test_curses
+
+It seems that it was actually ncurses bug, which should be fixed
+with 20251123 (so 20251206 we have in Factory, should be
+covered).
+- Add skip-test_thread_time.patch to skip
+  test.test_time.TimeTestCase.test_thread_time on s390x
+  (gh#python/cpython#143528).
+
+- recover testing with test_curses
+It seems that it was actually ncurses bug, which should be fixed
+with 20251123 (so 20251206 we have in Factory, should be
+covered).</comment>
+    <requestid>1325861</requestid>
+  </revision>
 </revisionlist>

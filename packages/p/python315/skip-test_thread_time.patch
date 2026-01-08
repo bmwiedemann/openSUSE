@@ -1,0 +1,16 @@
+---
+ Lib/test/test_time.py |    1 +
+ 1 file changed, 1 insertion(+)
+
+Index: Python-3.15.0a3/Lib/test/test_time.py
+===================================================================
+--- Python-3.15.0a3.orig/Lib/test/test_time.py	2026-01-06 16:57:59.278632516 +0100
++++ Python-3.15.0a3/Lib/test/test_time.py	2026-01-07 18:10:25.621075073 +0100
+@@ -570,6 +570,7 @@
+         self.assertTrue(info.monotonic)
+         self.assertFalse(info.adjustable)
+ 
++    @unittest.skipIf(platform.processor() == 's390x', "Fails on s390x, gh#python/cpython#143528")
+     def test_thread_time(self):
+         if not hasattr(time, 'thread_time'):
+             if sys.platform.startswith(('linux', 'android', 'win')):

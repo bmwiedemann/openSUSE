@@ -224,6 +224,9 @@ Patch40:        fix-test-recursion-limit-15.6.patch
 Patch41:        bsc1243155-sphinx-non-determinism.patch
 # PATCH-FIX-OPENSUSE gh139257-Support-docutils-0.22.patch gh#python/cpython#139257 daniel.garcia@suse.com
 Patch42:        gh139257-Support-docutils-0.22.patch
+# PATCH-FIX-UPSTREAM skip-test_thread_time.patch gh#python/cpython#143528 mcepl@suse.com
+# skip test.test_time.TimeTestCase.test_thread_time on s390x
+Patch43:        skip-test_thread_time.patch
 #### Python 3.15 DEVELOPMENT PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
@@ -663,8 +666,6 @@ EXCLUDE="$EXCLUDE test_multiprocessing_forkserver"
 %ifarch ppc ppc64 ppc64le
 # exclude test_faulthandler due to bnc#831629
 EXCLUDE="$EXCLUDE test_faulthandler"
-# exclude test_curse for gh#python/cpython#141534
-EXCLUDE="$EXCLUDE test_curses"
 %endif
 # some tests break in QEMU
 %if 0%{?qemu_user_space_build}

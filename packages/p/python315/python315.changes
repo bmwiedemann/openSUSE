@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jan  7 17:12:05 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add skip-test_thread_time.patch to skip
+  test.test_time.TimeTestCase.test_thread_time on s390x
+  (gh#python/cpython#143528).
+
+-------------------------------------------------------------------
+Mon Jan  5 17:23:03 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- recover testing with test_curses
+
+It seems that it was actually ncurses bug, which should be fixed
+with 20251123 (so 20251206 we have in Factory, should be
+covered).
+
+-------------------------------------------------------------------
 Fri Dec 19 01:05:54 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 Update to 3.15.0~a3:
