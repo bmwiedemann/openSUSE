@@ -186,4 +186,12 @@ After this PR, there will be a delete request for kernel-firmware.
   * rcar_gen4_pcie: add firmware for Renesas R-Car Gen4 PCIe controller</comment>
     <requestid>1324923</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>f053c6514bdf3f69bcaaea81aff8f7a8</srcmd5>
+    <version>20251228</version>
+    <time>1767882332</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases</comment>
+    <requestid>1325735</requestid>
+  </revision>
 </revisionlist>

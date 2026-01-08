@@ -81,6 +81,14 @@ panthor: of:N*T*Carm%2Cmali-valhall-csf
 panthor: of:N*T*Carm%2Cmali-valhall-csfC*
 panthor: of:N*T*Crockchip%2Crk3588-mali
 panthor: of:N*T*Crockchip%2Crk3588-maliC*
+pcie_rcar_gen4: of:N*T*Crenesas%2Cr8a779f0-pcie
+pcie_rcar_gen4: of:N*T*Crenesas%2Cr8a779f0-pcie-ep
+pcie_rcar_gen4: of:N*T*Crenesas%2Cr8a779f0-pcie-epC*
+pcie_rcar_gen4: of:N*T*Crenesas%2Cr8a779f0-pcieC*
+pcie_rcar_gen4: of:N*T*Crenesas%2Crcar-gen4-pcie
+pcie_rcar_gen4: of:N*T*Crenesas%2Crcar-gen4-pcie-ep
+pcie_rcar_gen4: of:N*T*Crenesas%2Crcar-gen4-pcie-epC*
+pcie_rcar_gen4: of:N*T*Crenesas%2Crcar-gen4-pcieC*
 pcnet_cs: pcmcia:m*c*f*fn*pfn*pa*pbA996D078pc*pd*
 pcnet_cs: pcmcia:m*c*f*fn*pfn*pa00B2E941pb43AC239Bpc*pd*
 pcnet_cs: pcmcia:m*c*f*fn*pfn*pa00B2E941pb4B0D829Epc*pd*

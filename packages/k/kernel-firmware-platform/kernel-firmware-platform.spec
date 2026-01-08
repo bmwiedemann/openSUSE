@@ -30,7 +30,7 @@ License:        GPL-2.0-or-later AND SUSE-Firmware AND GPL-2.0-only AND MPL-1.0 
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20251231.tar.gz#/kernel-firmware-tools-20251231.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20260107.tar.gz#/kernel-firmware-tools-20260107.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -101,6 +101,14 @@ Supplements:    modalias(of:N*T*Cnxp%2C88w8987-bt)
 Supplements:    modalias(of:N*T*Cnxp%2C88w8987-btC*)
 Supplements:    modalias(of:N*T*Cnxp%2C88w8997-bt)
 Supplements:    modalias(of:N*T*Cnxp%2C88w8997-btC*)
+Supplements:    modalias(of:N*T*Crenesas%2Cr8a779f0-pcie)
+Supplements:    modalias(of:N*T*Crenesas%2Cr8a779f0-pcie-ep)
+Supplements:    modalias(of:N*T*Crenesas%2Cr8a779f0-pcie-epC*)
+Supplements:    modalias(of:N*T*Crenesas%2Cr8a779f0-pcieC*)
+Supplements:    modalias(of:N*T*Crenesas%2Crcar-gen4-pcie)
+Supplements:    modalias(of:N*T*Crenesas%2Crcar-gen4-pcie-ep)
+Supplements:    modalias(of:N*T*Crenesas%2Crcar-gen4-pcie-epC*)
+Supplements:    modalias(of:N*T*Crenesas%2Crcar-gen4-pcieC*)
 Supplements:    modalias(of:N*T*Crockchip%2Crk3588-mali)
 Supplements:    modalias(of:N*T*Crockchip%2Crk3588-maliC*)
 Supplements:    modalias(of:N*T*Csilabs%2Cbrd4001a)
