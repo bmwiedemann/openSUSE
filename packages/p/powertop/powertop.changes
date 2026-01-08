@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan  7 15:53:49 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Fix the package for immutable mode (jsc#PED-14688)
+
+-------------------------------------------------------------------
 Thu Sep 29 14:13:21 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.15:

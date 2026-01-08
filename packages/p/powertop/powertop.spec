@@ -1,7 +1,7 @@
 #
 # spec file for package powertop
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Group:          System/Monitoring
 URL:            https://01.org/powertop/
 Source0:        https://github.com/fenrus75/powertop/archive/v%{version}.tar.gz
 Source1:        powertop.service
+Source2:        powertop.conf
 # they repeatedly forget to upload a release tarball and only have the one from
 # GitHub which doesnt contain configure thus adding:
 # autoconf, autoconf-archive, automake, libtool
@@ -66,10 +67,9 @@ export CFLAGS="%{optflags} -D_GNU_SOURCE -pthread"
 
 %install
 %make_install
-install -Dd %{buildroot}%{_localstatedir}/cache/powertop
-touch %{buildroot}%{_localstatedir}/cache/powertop/{saved_parameters.powertop,saved_results.powertop}
 install -D -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/powertop.service
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
+install -D -m 0644 %{SOURCE2} %{buildroot}%{_prefix}/lib/tmpfiles.d/%{name}.conf
 %find_lang %{name}
 
 %pre
@@ -77,9 +77,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
 %post
 %service_add_post %{name}.service
-# Hack for powertop not to show warnings on first start
-touch %{_localstatedir}/cache/powertop/saved_parameters.powertop
-touch %{_localstatedir}/cache/powertop/saved_results.powertop
+%tmpfiles_create %{_prefix}/lib/tmpfiles.d/%{name}.conf
 
 %preun
 %service_del_preun %{name}.service
@@ -90,9 +88,7 @@ touch %{_localstatedir}/cache/powertop/saved_results.powertop
 %files
 %license COPYING
 %doc README.md
-%dir %{_localstatedir}/cache/powertop
-%ghost %{_localstatedir}/cache/powertop/saved_parameters.powertop
-%ghost %{_localstatedir}/cache/powertop/saved_results.powertop
+%{_prefix}/lib/tmpfiles.d/%{name}.conf
 %{_sbindir}/%{name}
 %{_mandir}/man8/powertop.8%{?ext_man}
 %{_unitdir}/%{name}.service

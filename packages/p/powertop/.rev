@@ -520,4 +520,12 @@ A powertop_libc++_fix.patch</comment>
   * powertop-ryzen2.patch</comment>
     <requestid>1006971</requestid>
   </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>3138b1908ee89ed95f43b3eafc2cebac</srcmd5>
+    <version>2.15</version>
+    <time>1767882387</time>
+    <user>anag_factory</user>
+    <comment>Fix for immutable mode</comment>
+    <requestid>1325811</requestid>
+  </revision>
 </revisionlist>
