@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jan  6 14:34:31 MST 2026 - carnold@suse.com
+
+- Update to virt-v2v 2.10.0 (jsc#PED-14625)
+  * For a complete list of changes and bug fixes see,
+    https://libguestfs.org/virt-v2v-release-notes-2.10.1.html
+  * In -o kubevirt output mode, new -oo disk and -oo create options
+    let you respectively override the output disk names, and
+    avoid disk creation, letting you pre-create disks before running virt-v2v.
+  * VDDK: A new -io vddk-compression option lets you enable
+    compression for data read over the network.
+  * VDDK: -io vddk-thumbprint is now optional. If omitted, virt-v2v
+    will automatically work it out from the VMware server.
+  * New --memsize and --smp options which let you override the
+    default amount of memory and number of vCPUs assigned to the
+    appliance.
+  * virt-v2v-inspector(1) now detects Windows Antivirus and Group
+    policy, and if found adds <windows_antivirus/> and
+    <windows_group_policy/> elements respectively.
+  * The following virt-v2v options have been removed:
+    -io vddk-noextents
+    --sm* options
+
+-------------------------------------------------------------------
 Mon Jun 30 13:52:37 MDT 2025 - carnold@suse.com
 
 - Update to virt-v2v 2.8.1 (jsc#PED-12706)

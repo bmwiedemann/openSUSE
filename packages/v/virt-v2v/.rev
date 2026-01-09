@@ -231,4 +231,12 @@
     <comment>Update virt-v2v to version 2.8.1</comment>
     <requestid>1289364</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>5067a5dcea1e4ddcdb1eb10368aaf5fc</srcmd5>
+    <version>2.10.0</version>
+    <time>1767974640</time>
+    <user>anag_factory</user>
+    <comment>Update virt-v2v to version 2.10.0</comment>
+    <requestid>1326010</requestid>
+  </revision>
 </revisionlist>

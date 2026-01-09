@@ -1,7 +1,7 @@
 #
 # spec file for package virt-v2v
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,9 +21,9 @@
 %global patches_touch_autotools 1
 # The source directory.
 %global source_directory 2.8-stable
-#%%global source_directory 2.9-development
+#%%global source_directory 2.10-development
 Name:           virt-v2v
-Version:        2.8.1
+Version:        2.10.0
 Release:        0
 Summary:        Tools to convert a virtual machine to run on KVM
 License:        GPL-2.0-or-later
@@ -38,7 +38,7 @@ BuildRequires:  file-devel
 BuildRequires:  gcc
 BuildRequires:  gettext-devel
 BuildRequires:  glib2-devel
-BuildRequires:  libguestfs-devel >= 1.56.0
+BuildRequires:  libguestfs-devel >= 1.57.6
 BuildRequires:  libjson-c-devel
 BuildRequires:  libnbd
 BuildRequires:  libosinfo-devel
@@ -54,6 +54,7 @@ BuildRequires:  ocaml-libguestfs-devel
 BuildRequires:  ocaml-libvirt-devel
 BuildRequires:  ocaml-ounit-devel
 BuildRequires:  pcre2-devel
+BuildRequires:  perl-IPC-Run3
 BuildRequires:  pkgconfig
 BuildRequires:  po4a
 BuildRequires:  qemu-tools
@@ -66,9 +67,9 @@ Requires:       %{_bindir}/gzip
 Requires:       %{_bindir}/qemu-nbd
 Requires:       %{_bindir}/virsh
 Requires:       guestfs-tools >= 1.53.8
-Requires:       libguestfs >= 1.56.0
+Requires:       libguestfs >= 1.57.6
 Requires:       libguestfs-winsupport
-Requires:       libguestfs0 >= 1.56.0
+Requires:       libguestfs0 >= 1.57.6
 Requires:       libnbd
 Requires:       nbdkit
 Requires:       nbdkit-curl-plugin
@@ -204,6 +205,7 @@ mkdir -p %{buildroot}/%{_datadir}/virt-tools
 %{_mandir}/man1/virt-v2v-release-notes-2.4.1%{?ext_man}
 %{_mandir}/man1/virt-v2v-release-notes-2.6.1%{?ext_man}
 %{_mandir}/man1/virt-v2v-release-notes-2.8.1%{?ext_man}
+%{_mandir}/man1/virt-v2v-release-notes-2.10.1%{?ext_man}
 %{_mandir}/man1/virt-v2v-support.1%{?ext_man}
 %{_mandir}/man1/virt-v2v-inspector.1.gz
 %{_mandir}/man1/virt-v2v-release-notes-2.2.1.gz
