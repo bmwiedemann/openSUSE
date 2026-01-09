@@ -1,0 +1,17 @@
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="url">https://github.com/v-p-b/xer.git</param>
+    <param name="revision">main</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="versionformat">0.0.5+git%cd</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+  <service name="cargo_vendor" mode="manual">
+    <param name="srcdir">xer-*</param>
+  </service>
+</services>

@@ -1,0 +1,10 @@
+<package name="xer" project="openSUSE:Factory">
+  <title>Byte stream conversion utility</title>
+  <description>Command line byte encoding swiss army knife.
+The goal is to be the iconv of byte stream encodings.
+
+Have you ever spent precious time converting something
+like 0xde, 0xad,\r\n0xbe, 0xef to \xde\xad\xbe\xef ?
+If so, then xer is for you.</description>
+  <url>https://github.com/v-p-b/xer</url>
+</package>
