@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan  4 11:47:56 UTC 2026 - Callum Farmer <gmbr3@opensuse.org>
+
+- Move all created /run, /var/lib, /var/cache and /var/log
+  directories to systemd-tmpfiles
+
+-------------------------------------------------------------------
 Sun May 25 13:52:35 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
 
 - Fix build on Leap 15: Use gcc 13 

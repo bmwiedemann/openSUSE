@@ -33,7 +33,6 @@
 %define qt6_libname     lightdm-qt6-3
 %define qt6_lib         lib%{qt6_libname}-0
 %define typelibname     typelib-1_0-LightDM-1
-%define rundir          /run
 Name:           lightdm
 Version:        1.32.0
 Release:        0
@@ -53,6 +52,7 @@ Source8:        lightdm.pam
 Source9:        lightdm-autologin.pam
 Source10:       lightdm.sysusers
 Source11:       lightdm.service
+Source12:       lightdm.tmpfiles
 # PATCH-FEATURE-OPENSUSE lightdm-sysconfig-support.patch gber@opensuse.org -- Adds support for reading configuration options from /etc/sysconfig/displaymanager and /etc/sysconfig/windowmanager
 Patch0:         lightdm-sysconfig-support.patch
 # PATCH-FEATURE-OPENSUSE lightdm-xauthlocalhostname-support.patch boo#796230 gber@opensuse.org -- Set XAUTHLOCALHOSTNAME to the hostname for local logins to avoid issues in the session in case the hostname changes
@@ -294,11 +294,6 @@ install -d %{buildroot}%{_datadir}/lightdm/lightdm.conf.d
 install -d %{buildroot}%{_datadir}/lightdm/remote-sessions
 install -d %{buildroot}%{_datadir}/lightdm/sessions
 install -d %{buildroot}%{_datadir}/xgreeters
-install -d %{buildroot}%{_localstatedir}/cache/lightdm
-install -d %{buildroot}%{_localstatedir}/lib/lightdm
-install -d %{buildroot}%{_localstatedir}/lib/lightdm-data
-install -d %{buildroot}%{_localstatedir}/log/lightdm
-install -d %{buildroot}%{rundir}/lightdm
 
 install -Dpm 0644 %{SOURCE4} %{buildroot}%{_prefix}/lib/X11/displaymanagers/lightdm
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
@@ -316,6 +311,7 @@ sed -e 's-/usr/etc-%{_sysconfdir}-g' -i %{buildroot}%{_datadir}/lightdm/lightdm.
 
 install -Dm0644 %{SOURCE10} %{buildroot}%{_sysusersdir}/lightdm.conf
 install -Dm0644 %{SOURCE11} %{buildroot}%{_unitdir}/lightdm.service
+install -Dm0644 %{SOURCE12} %{buildroot}%{_tmpfilesdir}/lightdm.conf
 
 %find_lang %{name} %{?no_lang_C}
 
@@ -407,15 +403,16 @@ fi
 %{_datadir}/dbus-1/interfaces/org.freedesktop.DisplayManager.AccountsService.xml
 %{_datadir}/polkit-1/actions/org.freedesktop.DisplayManager.AccountsService.policy
 %dir %{_datadir}/xgreeters/
-%ghost %attr(711,lightdm,lightdm) %dir %{rundir}/lightdm/
-%attr(750,lightdm,lightdm) %dir %{_localstatedir}/log/lightdm/
-%attr(750,lightdm,lightdm) %dir %{_localstatedir}/lib/lightdm/
-%attr(750,lightdm,lightdm) %dir %{_localstatedir}/lib/lightdm-data/
-%attr(711,root,root) %dir %{_localstatedir}/cache/lightdm/
+%ghost %attr(0711,lightdm,lightdm) %dir %{_rundir}/lightdm
+%ghost %attr(0750,lightdm,lightdm) %dir %{_localstatedir}/log/lightdm
+%ghost %attr(0750,lightdm,lightdm) %dir %{_localstatedir}/lib/lightdm
+%ghost %attr(0750,lightdm,lightdm) %dir %{_localstatedir}/lib/lightdm-data
+%ghost %attr(0711,root,root) %dir %{_localstatedir}/cache/lightdm
 %{_mandir}/man1/lightdm.1%{?ext_man}
 %{_mandir}/man1/dm-tool.1%{?ext_man}
 %{_sysusersdir}/lightdm.conf
 %{_unitdir}/lightdm.service
+%{_tmpfilesdir}/lightdm.conf
 
 %files lang -f %{name}.lang
 
