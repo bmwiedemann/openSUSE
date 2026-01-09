@@ -368,4 +368,40 @@
     <comment>libsodium 1.0.20 (forwarded request 1176876 from AndreasStieger)</comment>
     <requestid>1176886</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>d15fb80df329c6cf831755a618f8f91b</srcmd5>
+    <version>1.0.21</version>
+    <time>1767974569</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.0.21:
+  * The new crypto_ipcrypt_* functions implement mechanisms for securely
+    encrypting and anonymizing IP addresses.
+  * The sodium_bin2ip and sodium_ip2bin helper functions have been added to
+    complement the crypto_ipcrypt_* functions and easily convert addresses
+    between bytes and strings.
+  * XOF: the crypto_xof_shake* and crypto_xof_turboshake* functions are
+  * standard
+    extendable output functions. From input of any length, they can derive
+    output of any length with the same properties as hash functions. These
+    primitives are required by many post-quantum mechanisms, but can also be
+    used for a wide range of applications, including key derivation, session
+    encryption and more.
+  * Performance of AES256-GCM and AEGIS on ARM has been improved with some
+    compilers
+  * Security: optblockers have been introduced in critical code paths to prevent
+    compilers from introducing unwanted side channels via conditional jumps. This
+    was observed on RISC-V targets with specific compilers and options.
+  * Security: crypto_core_ed25519_is_valid_point() now properly rejects
+    small-order points that are not in the main subgroup [bsc#1256070, CVE-2025-15444]
+  * ((nonnull)) attributes have been relaxed on some crypto_stream* functions to
+    allow NULL output buffers when the output length is zero
+  * A cross-compilation issue with old clang versions has been fixed
+  * crypto_aead_aes256gcm_is_available is exported to JavaScript
+  * Security: memory fences have been added after MAC verification in AEAD to
+    prevent speculative access to plaintext before authentication is complete
+  * Assembly files now include .gnu.property notes for proper IBT and Shadow
+    Stack support when building with CET instrumentation.
+- Add patch libsodium-Fix-compilation-with-GCC-on-aarch64.patch (forwarded request 1325970 from lmulling)</comment>
+    <requestid>1325971</requestid>
+  </revision>
 </revisionlist>

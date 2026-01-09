@@ -1,7 +1,7 @@
 #
 # spec file for package libsodium
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define sover   26
 %define lname   %{name}%{sover}
 Name:           libsodium
-Version:        1.0.20
+Version:        1.0.21
 Release:        0
 Summary:        Portable NaCl-based crypto library
 License:        ISC
@@ -30,6 +30,7 @@ Source0:        https://download.libsodium.org/libsodium/releases/%{name}-%{vers
 Source1:        https://download.libsodium.org/libsodium/releases/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
 Source99:       baselibs.conf
+Patch0:         libsodium-Fix-compilation-with-GCC-on-aarch64.patch
 BuildRequires:  pkgconfig
 
 %description
