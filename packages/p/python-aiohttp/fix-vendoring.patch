@@ -1,6 +1,8 @@
---- a/Makefile.orig	2025-10-16 13:56:38.297077787 +0200
-+++ b/Makefile	2025-10-16 13:59:43.532929894 +0200
-@@ -47,10 +47,8 @@
+Index: aiohttp-3.13.3/Makefile
+===================================================================
+--- aiohttp-3.13.3.orig/Makefile
++++ aiohttp-3.13.3/Makefile
+@@ -47,10 +47,8 @@ endif
  .SECONDARY: $(call to-hash,$(ALLS))
  
  .update-pip:
@@ -11,7 +13,7 @@
  	@touch .install-cython
  
  aiohttp/_find_header.c: $(call to-hash,aiohttp/hdrs.py ./tools/gen.py)
-@@ -85,7 +83,6 @@
+@@ -85,7 +83,6 @@ cythonize: .install-cython $(PYXS:.pyx=.
  cythonize-nodeps: $(PYXS:.pyx=.c) aiohttp/_websocket/reader_c.c
  
  .install-deps: .install-cython $(PYXS:.pyx=.c) aiohttp/_websocket/reader_c.c $(call to-hash,$(CYS) $(REQS))
@@ -19,7 +21,7 @@
  	@touch .install-deps
  
  .PHONY: lint
-@@ -100,7 +97,6 @@
+@@ -100,7 +97,6 @@ mypy:
  	mypy
  
  .develop: .install-deps generate-llhttp $(call to-hash,$(PYS) $(CYS) $(CS))
@@ -27,7 +29,7 @@
  	@touch .develop
  
  .PHONY: test
-@@ -110,12 +106,12 @@
+@@ -110,12 +106,12 @@ test: .develop
  .PHONY: vtest
  vtest: .develop
  	@pytest -s -v
@@ -42,7 +44,7 @@
  
  
  define run_tests_in_docker
-@@ -151,7 +147,7 @@
+@@ -151,7 +147,7 @@ clean:
  	@rm -rf build
  	@rm -rf cover
  	@make -C docs clean
@@ -51,7 +53,7 @@
  	@rm -f aiohttp/*.so
  	@rm -f aiohttp/*.pyd
  	@rm -f aiohttp/*.html
-@@ -182,7 +178,6 @@
+@@ -182,7 +178,6 @@ doc-spelling:
  
  .PHONY: install
  install: .update-pip
@@ -59,14 +61,16 @@
  
  .PHONY: install-dev
  install-dev: .develop
-@@ -190,4 +185,4 @@
+@@ -190,4 +185,4 @@ install-dev: .develop
  .PHONY: sync-direct-runtime-deps
  sync-direct-runtime-deps:
- 	@echo Updating 'requirements/runtime-deps.in' from 'setup.cfg'... >&2
+ 	@echo Updating 'requirements/runtime-deps.in' from 'pyproject.toml'... >&2
 -	@python requirements/sync-direct-runtime-deps.py
 +	python3 requirements/sync-direct-runtime-deps.py
---- a/tools/gen.py.orig	2025-10-16 14:00:10.257485651 +0200
-+++ a/tools/gen.py	2025-10-16 14:00:18.604659234 +0200
+Index: aiohttp-3.13.3/tools/gen.py
+===================================================================
+--- aiohttp-3.13.3.orig/tools/gen.py
++++ aiohttp-3.13.3/tools/gen.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python3

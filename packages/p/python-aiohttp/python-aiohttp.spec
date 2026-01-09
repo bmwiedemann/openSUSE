@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiohttp
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_with docs
 %{?sle15_python_module_pythons}
 Name:           python-aiohttp
-Version:        3.13.2
+Version:        3.13.3
 Release:        0
 Summary:        Asynchronous HTTP client/server framework
 License:        Apache-2.0
@@ -42,7 +42,7 @@ Requires:       python-frozenlist >= 1.1.1
 Requires:       (python-charset-normalizer >= 2.0 with python-charset-normalizer < 4)
 Requires:       (python-multidict >= 4.5 with python-multidict < 7)
 Requires:       (python-yarl >= 1.17.0 with python-yarl < 2)
-Recommends:     python-Brotli
+Recommends:     python-Brotli >= 1.2
 Recommends:     python-aiodns
 Recommends:     python-cChardet
 Suggests:       %{name}-doc
@@ -65,7 +65,7 @@ BuildRequires:  %{python_module multidict >= 4.5 with %python-multidict < 7}
 BuildRequires:  %{python_module yarl >= 1.17.0 with %python-yarl < 2}
 # /SECTION
 # SECTION test requirements
-BuildRequires:  %{python_module Brotli}
+BuildRequires:  %{python_module Brotli >= 1.2}
 BuildRequires:  %{python_module blockbuster}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module gunicorn}

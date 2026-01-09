@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Jan  9 01:40:14 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.13.3:
+  * Security
+    + Brotli and brotlicffi minimum version is now 1.2. Decompression now has
+      a default maximum output size of 32MiB per decompress call
+      (bsc#1256017, CVE-2025-69223, GHSA-6mq8-rvhq-8wgg)
+    + Check for ASCII in header values
+      (bsc#1256018, CVE-2025-69224, GHSA-69f9-5gxw-wvc2)
+    + Forbid non-ASCII decimals in the Range header
+      (bsc#1256019, CVE-2025-69225, GHSA-mqqc-3gqh-h2x8)
+    + Reject static URLs that traverse outside static root
+      (bsc#1256020, CVE-2025-69226, GHSA-54jq-c3m8-4m76)
+    + Raise exceptions when processing a POST body
+      (bsc#1256021, CVE-2025-69227, GHSA-jj3x-wxrx-4x23)
+    + Enforce client_max_size over entire multipart form
+      (bsc#1256022, CVE-2025-69228, GHSA-6jhg-hg63-jvvf)
+    + Pause reading of chunks when it reaches a high water mark
+      (bsc#1256023, CVE-2025-69229, GHSA-g84x-mcqj-x9qq)
+    + Log only once per Cookie header
+      (bsc#1256024, CVE-2025-69230, GHSA-fh55-r93g-j68g)
+  * Bug fixes
+    + Fixed proxy authorization headers not being passed when reusing a
+      connection, which caused 407 (Proxy authentication required) errors
+    + Fixed multipart reading failing when encountering an empty body part
+    + Fixed a case where the parser wasn't raising an exception for a
+      websocket continuation frame when there was no initial frame in context
+  * Miscellaneous internal changes
+    + Optimized web server performance when access logging is disabled by
+      reducing time syscalls
+    + Added regression test for cached logging status
+- Refreshed patch fix-vendoring.patch
+
+-------------------------------------------------------------------
 Fri Nov 14 03:13:57 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Skip a test broken by idna 3.11.
