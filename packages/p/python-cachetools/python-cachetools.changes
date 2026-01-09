@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan  8 13:09:06 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 6.2.4
+  * Fix license information displayed on PyPI be using an updated
+    version of ``twine`` for uploading.
+- from version 6.2.3
+  * Improve documentation regarding ``@cachedmethod`` with ``condition``
+    parameter.
+  * Minor style and readability improvements.
+  * Modernize build environment.
+  * Update CI environment.
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Thu Nov 20 08:21:17 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 6.2.2

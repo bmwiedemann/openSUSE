@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cachetools
-Version:        6.2.2
+Version:        6.2.4
 Release:        0
 Summary:        Extensible memoizing collections and decorators
 License:        MIT
@@ -26,7 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/tkem/cachetools
 Source:         https://files.pythonhosted.org/packages/source/c/cachetools/cachetools-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 61.0.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
