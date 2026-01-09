@@ -497,4 +497,24 @@ Used &quot;osc vc&quot; for once to document changes (forwarded request 78484 fr
     <comment></comment>
     <requestid>1232904</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>8b57922b045e04fa7d0906a5dc9c6faa</srcmd5>
+    <version>1.780.0</version>
+    <time>1767974534</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.780.0 (1.78)
+   see /usr/share/doc/packages/perl-DBD-SQLite/Changes
+  1.78 2026-01-02
+      - Switched to a production version
+  1.77_03 2025-12-27
+      - Upgraded SQLite to 3.51.1
+  1.77_02 2025-11-24
+      - Omit constants for newly added C-array extension
+      - SQLite 3.51.0 has two extensions (C-array and percentile) amalgamated
+        but both are disabled by default.
+  1.77_01 2025-11-24
+      - Upgraded SQLite to 3.51.0
+      - Make -&gt;column_info() also return generated columns (GH#119, Corion++)</comment>
+    <requestid>1325876</requestid>
+  </revision>
 </revisionlist>

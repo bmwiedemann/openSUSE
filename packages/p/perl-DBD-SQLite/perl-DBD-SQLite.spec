@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DBD-SQLite
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,23 +18,24 @@
 
 %define cpan_name DBD-SQLite
 Name:           perl-DBD-SQLite
-Version:        1.760.0
+Version:        1.780.0
 Release:        0
-# 1.76 -> normalize -> 1.760.0
-%define cpan_version 1.76
+# 1.78 -> normalize -> 1.780.0
+%define cpan_version 1.78
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Self Contained SQLite RDBMS in a DBI Driver
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 # PATCH-FIX-OPENSUSE use system sqlite
 Patch0:         perl-DBD-SQLite-use-external-sqlite3.patch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(DBI) >= 1.57
+BuildRequires:  perl(DBI) >= 1.570
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.48
 BuildRequires:  perl(Test::More) >= 0.88
-Requires:       perl(DBI) >= 1.57
+Requires:       perl(DBI) >= 1.570
 Provides:       perl(DBD::SQLite) = %{version}
 Provides:       perl(DBD::SQLite::Constants)
 Provides:       perl(DBD::SQLite::GetInfo)
@@ -90,7 +91,7 @@ currently many statement attributes are not implemented or are limited by
 the typeless nature of the SQLite database.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 # MANUAL BEGIN
 %if 0%{?sle_version} >= 140000 && 0%{?sle_version} <= 150400

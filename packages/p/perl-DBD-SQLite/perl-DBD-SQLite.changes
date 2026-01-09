@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jan  2 15:27:50 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.780.0 (1.78)
+   see /usr/share/doc/packages/perl-DBD-SQLite/Changes
+
+  1.78 2026-01-02
+      - Switched to a production version
+  1.77_03 2025-12-27
+      - Upgraded SQLite to 3.51.1
+  1.77_02 2025-11-24
+      - Omit constants for newly added C-array extension
+      - SQLite 3.51.0 has two extensions (C-array and percentile) amalgamated
+        but both are disabled by default.
+  1.77_01 2025-11-24
+      - Upgraded SQLite to 3.51.0
+      - Make ->column_info() also return generated columns (GH#119, Corion++)
+
+-------------------------------------------------------------------
 Sat Oct 19 05:31:06 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.760.0 (1.76)
