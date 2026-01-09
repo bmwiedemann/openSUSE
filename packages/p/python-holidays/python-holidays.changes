@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Wed Jan  7 15:37:54 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.88
+  * Refactor Macau holidays
+  * Refactor New Zealand holidays
+  * Add Bombay Stock Exchange (BSE) holidays
+  * Add `utils::list_long_breaks` function to find consecutive holidays
+  * Update .po files generator: refresh "PO-Revision-Date" on file changes
+  * Update Belarus holidays: 2026 substituted holidays
+  * Update Brazil holidays: add São Paulo Capital subdivision support
+  * Update Chile holidays: restore bank holiday Dec 31
+  * Update Malaysia holidays: add 2026 public holidays
+  * Update Malaysia holidays: update Birthday of the Governor of Sabah
+  * Update National Stock Exchange of India holidays: add Gujarati language support
+  * Update Sweden holidays: add legally-recognized
+    non-public holidays as `DE_FACTO` category
+  * Update Taiwan holidays in 2025-2026
+  * Update Turks and Caicos Islands holidays: 2026 changes
+  * Update United States holidays: add Diwali for California from 2026 onwards
+  * Update United States holidays: add federal (`GOVERNMENT`) special holidays
+  * Update United States holidays: update Alaska (AK) state holidays
+  * Update United States holidays: update Puerto Rico holidays
+  * Update Uzbekistan holidays: add 2025-2026 special holidays
+  * Update Venezuela holidays
+  * Update l10n test: check .po files for placeholders mismatch
+  * Update make script for Windows
+  * Add dependency upgrade Makefile target
+  * Move version source of truth to holidays/VERSION
+  * Run make upgrade
+  * l10n cleanup
+- from version 0.87
+  * Refactor `TestAllInSameYear` class
+  * Refactor tests: long holiday names representation cleanup
+  * Update Bangladesh holidays: add l10n support
+  * Update Chinese calendar: improve Qingming Festival date calculation
+  * Update Germany holidays
+  * Update India holidays: add Gujarati language support
+  * Update India holidays: correct dates for Maharana Pratap
+    Jayanti (RJ) and Bathukamma (TS)
+  * Update United States holidays: fix Washington's Birthday logic
+  * Update XNYS holidays: add half-day holidays
+  * Update documentation build settings
+  * Adjust project files after migration to `uv`
+  * Migrate to `uv` for dependency management
+  * Use explicit Python version during uv setup
+- from version 0.86
+  * Introduce `HolidayBase::_add_multiday_holiday` method
+  * Refactor Taiwan holidays
+  * Refactor some `HolidayBase` methods
+  * Fix typography: replace U+2019 with "'"
+  * Update .readthedocs.yaml: bump OS/Python versions
+  * Update Bulgaria holidays
+  * Update Estonia holidays
+  * Update Italy holidays: add new holiday Oct 4, historical holidays, l10n support
+  * Update Nepal holidays: add l10n support
+  * Update Sweden holidays: add categories support
+  * Update Taiwan holidays: fix l10n for substituted day off
+  * Update documentation: remove mixins from summary
+  * Add `assert{variant}HolidayDatesInYear`, `assert{variant}HolidaysInYear` test methods
+  * Add comprehensive holiday categories documentation
+  * Library-wide `th` l10n typo cleanup
+  * Migrate D-H countries to new test case standards
+
+-------------------------------------------------------------------
 Wed Nov 26 13:47:26 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.85
