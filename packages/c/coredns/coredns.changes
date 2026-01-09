@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Thu Jan 08 14:45:03 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- fix CVE-2025-68156 https://bugzilla.suse.com/show_bug.cgi?id=1255345
+- Update to version 1.14.0:
+  * core: Fix gosec G115 integer overflow warnings
+  * core: Add regex length limit
+  * plugin/azure: Fix slice init length
+  * plugin/errors: Add optional show_first flag to consolidate directive
+  * plugin/file: Fix for misleading SOA parser warnings
+  * plugin/kubernetes: Rate limits to api server
+  * plugin/metrics: Implement plugin chain tracking
+  * plugin/sign: Report parser err before missing SOA
+  * build(deps): bump github.com/expr-lang/expr from 1.17.6 to 1.17.7
+
+- Update to version 1.13.2:
+  * core: Add basic support for DoH3
+  * core: Avoid proxy unnecessary alloc in Yield
+  * core: Fix usage of sync.Pool to save an alloc
+  * core: Fix data race with sync.RWMutex for uniq
+  * core: Prevent QUIC reload panic by lazily initializing the listener
+  * core: Refactor/use reflect.TypeFor
+  * plugin/auto: Limit regex length
+  * plugin/cache: Remove superfluous allocations in item.toMsg
+  * plugin/cache: Isolate metadata in prefetch goroutine
+  * plugin/cache: Correct spelling of MaximumDefaultTTL in cache and dnsutil 
+    packages
+  * plugin/dnstap: Better error handling (redial & logging) when Dnstap is busy
+  * plugin/file: Performance finetuning
+  * plugin/forward: Disallow NOERROR in failover
+  * plugin/forward: Added support for per-nameserver TLS SNI
+  * plugin/forward: Prevent busy loop on connection err
+  * plugin/forward: Add max connect attempts knob
+  * plugin/geoip: Add ASN schema support
+  * plugin/geoip: Add support for subdivisions
+  * plugin/kubernetes: Fix kubernetes plugin logging
+  * plugin/multisocket: Cap num sockets to prevent OOM
+  * plugin/nomad: Support service filtering
+  * plugin/rewrite: Pre-compile CNAME rewrite regexp
+  * plugin/secondary: Fix reload causing secondary plugin goroutine to leak 
+
+- Update to version 1.13.1:
+  * core: Avoid string concatenation in loops
+  * core: Update golang to 1.25.2 and golang.org/x/net to v0.45.0 on CVE fixes
+  * plugin/sign: Reject invalid UTF‑8 dbfile token
+
+- Update to version 1.13.0:
+  * core: Export timeout values in dnsserver.Server
+  * core: Fix Corefile infinite loop on unclosed braces
+  * core: Fix Corefile related import cycle issue
+  * core: Normalize panics on invalid origins
+  * core: Rely on dns.Server.ShutdownContext to gracefully stop
+  * plugin/dnstap: Add bounds for plugin args
+  * plugin/file: Fix data race in tree Elem.Name
+  * plugin/forward: No failover to next upstream when receiving SERVFAIL or 
+    REFUSED response codes
+  * plugin/grpc: Enforce DNS message size limits
+  * plugin/loop: Prevent panic when ListenHosts is empty
+  * plugin/loop: Avoid panic on invalid server block
+  * plugin/nomad: Add a Nomad plugin
+  * plugin/reload: Prevent SIGTERM/reload deadlock
+
+
+-------------------------------------------------------------------
 Thu Sep 11 06:35:54 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - fix CVE-2025-58063 https://bugzilla.suse.com/show_bug.cgi?id=1249389

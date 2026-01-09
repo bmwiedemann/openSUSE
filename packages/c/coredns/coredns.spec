@@ -1,7 +1,7 @@
 #
 # spec file for package coredns
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define project github.com/coredns/coredns
 Name:           coredns
-Version:        1.12.4
+Version:        1.14.0
 Release:        0
 Summary:        DNS server written in Go
 License:        Apache-2.0
