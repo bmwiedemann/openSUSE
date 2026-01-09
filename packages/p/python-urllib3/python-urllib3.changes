@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Wed Jan  7 09:49:28 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 2.6.2
+  * Fixed HTTPResponse.read_chunked() to properly handle leftover data in the
+    decoder's buffer when reading compressed chunked responses.
+- Update to 2.6.1
+  * Restore previously removed HTTPResponse.getheaders() and
+    HTTPResponse.getheader() methods.
+- Update to 2.6.0
+  * Security:
+    - Fixed a security issue where streaming API could improperly handle highly
+      compressed HTTP content ("decompression bombs") leading to excessive
+      resource consumption even when a small amount of data was requested.
+      Reading small chunks of compressed data is safer and much more efficient
+      now. (CVE-2025-66471, GHSA-2xpw-w6gg-jr37, bsc#1254867)
+    - Fixed a security issue where an attacker could compose an HTTP response
+      with virtually unlimited links in the Content-Encoding header, potentially
+      leading to a denial of service (DoS) attack by exhausting system resources
+      during decoding. The number of allowed chained encodings is now limited to
+      5. (CVE-2025-66418, GHSA-gm62-xv2j-4w53, bsc#1254866)
+  * Features:
+    - Enabled retrieval, deletion, and membership testing in HTTPHeaderDict
+      using bytes keys.
+    - Added host and port information to string representations of
+      HTTPConnection.
+    - Added support for Python 3.14 free-threading builds explicitly.
+  * Removals:
+    - Removed the HTTPResponse.getheaders() method in favor of
+      HTTPResponse.headers. Removed the HTTPResponse.getheader(name, default)
+      method in favor of HTTPResponse.headers.get(name, default).
+  * Bugfixes:
+    - Fixed redirect handling in urllib3.PoolManager when an integer is passed
+      for the retries parameter.
+    - Fixed HTTPConnectionPool when used in Emscripten with no explicit port.
+    - Fixed handling of SSLKEYLOGFILE with expandable variables.
+  * Misc:
+    - Changed the zstd extra to install backports.zstd instead of zstandard on
+      Python 3.13 and before.
+    - Improved the performance of content decoding by optimizing
+      BytesQueueBuffer class.
+    - Allowed building the urllib3 package with newer setuptools-scm v9.x.
+    - Ensured successful urllib3 builds by setting Hatchling requirement
+      to ≥ 1.27.0.
+
+-------------------------------------------------------------------
 Mon Jun 23 02:03:12 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.5.0:

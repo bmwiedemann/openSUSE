@@ -1,7 +1,7 @@
 #
 # spec file for package python-urllib3
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-urllib3%{psuffix}
-Version:        2.5.0
+Version:        2.6.2
 Release:        0
 Summary:        HTTP library with thread-safe connection pooling, file post, and more
 License:        MIT
@@ -43,13 +43,13 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 #!BuildIgnore:  python-requests
 Requires:       ca-certificates-mozilla
-Recommends:     python-Brotli >= 1.0.9
+Recommends:     python-Brotli >= 1.2.0
 Recommends:     python-PySocks >= 1.7.1
 Recommends:     python-h2 >= 4
 Recommends:     python-zstandard >= 0.18
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module Brotli >= 1.0.9}
+BuildRequires:  %{python_module Brotli >= 1.2.0}
 BuildRequires:  %{python_module PySocks >= 1.7.1}
 BuildRequires:  %{python_module Quart >= 0.19}
 BuildRequires:  %{python_module cryptography >= 43}
