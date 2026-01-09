@@ -143,4 +143,13 @@ Forwarded request #1101518 from iznogood
     <comment></comment>
     <requestid>1286830</requestid>
   </revision>
+  <revision rev="17" vrev="13">
+    <srcmd5>33b5da6e7c9bba696cb3c8c85de893a9</srcmd5>
+    <version>2.74.3</version>
+    <time>1767974545</time>
+    <user>anag_factory</user>
+    <comment>- Add libsoup2-CVE-2025-14523.patch: Reject duplicated Host in
+  headers (bsc#1254876, CVE-2025-14523, glgo#GNOME/libsoup!491). (forwarded request 1325885 from AZhou)</comment>
+    <requestid>1325910</requestid>
+  </revision>
 </revisionlist>

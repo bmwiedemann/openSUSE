@@ -1,7 +1,7 @@
 #
 # spec file for package libsoup2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -80,6 +80,8 @@ Patch25:        libsoup-CVE-2025-4948.patch
 Patch26:        libsoup-CVE-2025-4969.patch
 # PATCH-FIX-UPSTREAM libsoup-CVE-2025-4945.patch boo#1243314 mgorse@suse.com -- add value checks for date/time parsing.
 Patch27:        libsoup-CVE-2025-4945.patch
+# PATCH-FIX-UPSTREAM libsoup2-CVE-2025-14523.patch bsc#1254876, CVE-2025-14523, glgo#GNOME/libsoup!491 alynx.zhou@suse.com -- Reject duplicated Host in headers
+Patch28:        libsoup2-CVE-2025-14523.patch
 
 BuildRequires:  glib-networking
 BuildRequires:  meson >= 0.50
