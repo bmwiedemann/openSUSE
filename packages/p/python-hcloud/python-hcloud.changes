@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan  7 15:41:14 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.13.0
+  * add per primary ip actions list operations (#608)
+  * deprecate datacenter in `primary ips` and `servers` (#609)
+- from version 2.12.0
+  * add update rrset records action to zone client (#597)
+  * add support for Storage Boxes (#524)
+
+-------------------------------------------------------------------
 Thu Nov 20 09:35:03 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.11.1
