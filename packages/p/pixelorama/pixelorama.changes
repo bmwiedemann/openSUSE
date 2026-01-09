@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jan 8 12:00:00 UTC 2026 - cunix@mail.de
+
+- Update to 1.1.8
+  * Multi frame/cel swapping
+  * Search and rename tilesets in the project properties dialog
+  * Recorder panel now has more options, such as the ability to use
+    FFMPEG to export the recording as a gif file
+  * Gif files are now being exported frame by frame
+  * The "override.cfg" file, which is used to store settings is now
+    stored in the same place as the "config.ini" file,
+    instead of the same folder as the Pixelorama executable
+  * Non-valid names for projects are no longer allowed in the project properties
+  and more
+
+-------------------------------------------------------------------
 Tue Dec 23 12:00:00 UTC 2025 - cunix@mail.de
 
 - Update to 1.1.7
