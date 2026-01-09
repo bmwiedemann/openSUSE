@@ -7465,8 +7465,6 @@ unsorted:
   - gnunet 
   - gnunet-devel 
   - gnunet-fuse 
-  - gnunet-gtk 
-  - gnunet-gtk-devel 
   - gnunet-lang 
   - gnunet-messenger-cli 
   - gnunet-messenger-gtk 
@@ -7825,6 +7823,9 @@ unsorted:
   - googleapis-source 
   - googler 
   - goose 
+  - goose-bash-completion 
+  - goose-fish-completion 
+  - goose-zsh-completion 
   - gopass 
   - gopass-bash-completion 
   - gopass-fish-completion 
@@ -8712,6 +8713,7 @@ unsorted:
   - hyprpolkitagent 
   - hyprshot 
   - hyprsunset 
+  - hyprtoolkit-devel 
   - hyprutils-devel 
   - hyprwayland-scanner 
   - hyprwire 
@@ -13661,7 +13663,6 @@ unsorted:
   - libgnunetgns0 
   - libgnunetgnsrecord0 
   - libgnunetgnsrecordjson0 
-  - libgnunetgtk4 
   - libgnunethello0 
   - libgnunetidentity1 
   - libgnunetjson3 
@@ -14027,6 +14028,7 @@ unsorted:
   - libhyprcursor0 
   - libhyprgraphics4 
   - libhyprlang2 
+  - libhyprtoolkit5 
   - libhyprutils10 
   - libhyprwire2 
   - libi2c0 
@@ -31328,6 +31330,7 @@ unsorted:
   - python312-sphinxcontrib-websupport 
   - python312-sphinxcontrib-youtube 
   - python312-sphinxext-opengraph 
+  - python312-sphinxnotes-mock 
   - python312-sphinxygen 
   - python312-sphobjinv 
   - python312-spidev 
@@ -35144,6 +35147,7 @@ unsorted:
   - python313-sphinxcontrib-websupport 
   - python313-sphinxcontrib-youtube 
   - python313-sphinxext-opengraph 
+  - python313-sphinxnotes-mock 
   - python313-sphinxygen 
   - python313-sphobjinv 
   - python313-spidev 
@@ -49846,6 +49850,7 @@ unsorted:
   - xen-tools 
   - xen-tools-domU 
   - xen-tools-xendomains-wait-disk 
+  - xer 
   - xerces-c 
   - xerces-c-doc 
   - xerces-j2 
