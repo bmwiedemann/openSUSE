@@ -1,7 +1,7 @@
 #
 # spec file for package xreader
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define         typelib1 typelib-1_0-XreaderDocument-1_5
 %define         typelib2 typelib-1_0-XreaderView-1_5
 Name:           xreader
-Version:        4.2.6
+Version:        4.6.1
 Release:        0
 Summary:        Document viewer for documents like PDF/PostScript
 License:        GPL-2.0-only AND LGPL-2.0-only
@@ -117,6 +117,7 @@ single page document formats like PDF and Postscript.
 
 #%description -n xreader-plugin-epubdocument
 #A plugin for Xreader to read EPUB documents.
+
 %package -n xreader-plugin-pdfdocument
 Summary:        PDF document support for Xreader
 Requires:       %{name}

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan  2 09:24:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.6.1:
+  * l10n: Update translations
+  * Switch to xapp-symbolic-icons (XSI)
+  * Fix a minor typo (#683)
+  * l10n: Update POT
+  * l10n: Update translations
+  * Made index treeview collapsed by default in call in
+    job_finished_callback() to gtk_tree_view_collapse_all()
+    (#672)
+
+-------------------------------------------------------------------
 Wed Jun 25 07:44:28 UTC 2025 - pgajdos@suse.com
 
 - version update to 4.2.6
