@@ -1,6 +1,5 @@
 <package name="perl-Test-Fork" project="openSUSE:Factory">
   <title>Test code which forks</title>
   <description>Because each test has a number associated with it, testing code which forks is problematic. Coordinating the test number amongst the parent and child processes is complicated. Test::Fork provides a function to smooth over the complications.</description>
-  <devel project="devel:languages:perl" package="perl-Test-Fork"/>
   <url>https://metacpan.org/release/Test-Fork</url>
 </package>

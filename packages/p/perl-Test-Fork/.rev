@@ -7,4 +7,13 @@
     <comment>Ooops. First submission had double changelog entry.</comment>
     <requestid>955116</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a5bf7b5df484e8b668b253698c58b4dd</srcmd5>
+    <version>0.20.0</version>
+    <time>1767974536</time>
+    <user>anag_factory</user>
+    <comment>- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details</comment>
+    <requestid>1325878</requestid>
+  </revision>
 </revisionlist>
