@@ -127,10 +127,10 @@ all common DC hub software.
 %build
 export CMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake -LA \
+       -DLUA_SCRIPT=OFF \
        -DNO_UI_DAEMON=ON \
        -DUSE_CLI_JSONRPC=ON \
-       -DWITH_EXAMPLES=OFF \
-       -DLUA_SCRIPT=OFF
+       -DWITH_EXAMPLES=OFF
 %cmake_build
 
 %install
