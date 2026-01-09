@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 08 17:47:42 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1767893100.fd5003c:
+  * Add documentation of APPEND variable
+  * Add undocumented KERNEL/INITRD to the supported variables
+  * os-autoinst-generate-needle-preview: Embed PNG
+  * Tweak curl call not to hang
+  * Fix opencv dependency due to upstream changes
+
+-------------------------------------------------------------------
 Mon Jan 05 16:08:57 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1767623406.688dd0e:
