@@ -1,7 +1,7 @@
 #
 # spec file for package kernel-syms-longterm
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,15 @@
 #
 
 
-%define git_commit f9723f85bcc5f5b87c3d631bdb7cd63f65b1bacb
+%define git_commit 85128acee2f2019953b5996795f5e4bc6c458bc8
 %define variant -longterm%{nil}
 
 %include %_sourcedir/kernel-spec-macros
 
 Name:           kernel-syms-longterm
-Version:        6.12.63
+Version:        6.12.64
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gf9723f8
+Release:        <RELEASE>.g85128ac
 %else
 Release:        0
 %endif

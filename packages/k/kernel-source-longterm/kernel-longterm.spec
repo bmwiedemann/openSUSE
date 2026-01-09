@@ -1,7 +1,7 @@
 #
 # spec file for package kernel-longterm
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.12
-%define patchversion 6.12.63
-%define git_commit f9723f85bcc5f5b87c3d631bdb7cd63f65b1bacb
+%define patchversion 6.12.64
+%define git_commit 85128acee2f2019953b5996795f5e4bc6c458bc8
 %define variant -longterm%{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -40,9 +40,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-longterm
-Version:        6.12.63
+Version:        6.12.64
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gf9723f8
+Release:        <RELEASE>.g85128ac
 %else
 Release:        0
 %endif
