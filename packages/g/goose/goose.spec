@@ -17,7 +17,7 @@
 
 
 Name:           goose
-Version:        1.18.0
+Version:        1.19.1
 Release:        0
 Summary:        A local, extensible, open source AI agent that automates engineering tasks
 License:        Apache-2.0
@@ -31,6 +31,37 @@ BuildRequires:  protobuf-devel
 
 %description
 Goose is an extensible open source AI agent that enhances your software development by automating coding tasks.
+
+%package bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Requires:       bash-completion
+BuildArch:      noarch
+Requires:       %{name}
+Supplements:    (%{name} and bash-completion)
+
+%description bash-completion
+The official bash completion script for %{name}, generated during the build.
+
+%package zsh-completion
+Summary:        ZSH Completion for %{name}
+Group:          System/Shells
+BuildArch:      noarch
+Requires:       %{name}
+Supplements:    (%{name} and zsh)
+
+%description zsh-completion
+The official zsh completion script for %{name}, generated during the build.
+
+%package fish-completion
+Summary:        Fish Completion for %{name}
+Group:          System/Shells
+BuildArch:      noarch
+Requires:       %{name}
+Supplements:    (%{name} and fish)
+
+%description fish-completion
+The official fish completion script for %{name}, generated during the build.
 
 %prep
 %autosetup -a1 -p0
@@ -49,6 +80,16 @@ mkdir -p %{buildroot}%{_bindir}
 
 install -m 0755 %{_builddir}/%{name}-%{version}/target/release/%{name} %{buildroot}%{_bindir}/%{name}
 
+# Build the shell autocomplete files
+%{buildroot}/%{_bindir}/%{name} completion bash > %{name}-autocomplete.bash
+%{buildroot}/%{_bindir}/%{name} completion zsh > %{name}-autocomplete.zsh
+%{buildroot}/%{_bindir}/%{name} completion fish > %{name}-autocomplete.fish
+
+# Install the shell autocomplete files
+install -Dm 644 %{name}-autocomplete.bash %{buildroot}%{_datadir}/bash-completion/completions/%{name}
+install -Dm 644 %{name}-autocomplete.zsh %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
+install -Dm 644 %{name}-autocomplete.fish %{buildroot}%{_datadir}/fish/completions/_%{name}
+
 %check
 # basic check
 %{buildroot}%{_bindir}/%{name} info
@@ -59,5 +100,15 @@ install -m 0755 %{_builddir}/%{name}-%{version}/target/release/%{name} %{buildro
 %files
 %license LICENSE
 %{_bindir}/%{name}
+
+# completions
+%files bash-completion
+%{_datadir}/bash-completion
+
+%files zsh-completion
+%{_datadir}/zsh
+
+%files fish-completion
+%{_datadir}/fish
 
 %changelog

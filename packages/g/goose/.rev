@@ -97,4 +97,41 @@
     <comment>v1.18.0</comment>
     <requestid>1324147</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f22306b6a187d707d30158a29df40168</srcmd5>
+    <version>1.19.1</version>
+    <time>1767974600</time>
+    <user>anag_factory</user>
+    <comment>- Add shell completions
+- Update to version 1.19.1:
+  * fix: prevent duplicate rendering when tool returns both mcp-ui and mcp-apps resources (#6378)
+  * fix: update MCP Apps _meta.ui.resourceUri to use nested format (SEP-1865) (#6372)
+  * fix: prevent infinite loop of tool-input notifications in MCP Apps (#6374)
+  * chore(release): release version 1.19.1
+  * Bump rust toolchain to 1.92 (current stable) (#6356)
+  * chore(release): release version 1.19.0
+  * fix(ci): prevent gh-pages branch bloat (#6340)
+  * chore(deps): bump qs and body-parser in /documentation (#6338)
+  * Skip the smoke tests for dependabot PRs (#6337)
+  * docs(blog): compress images to fix GitHub Pages deployment (#6339)
+  * fix(code-execution): support bracket notation and multiple import styles (#6290)
+  * chore(deps): bump qs from 6.14.0 to 6.14.1 in /ui/desktop (#6317)
+  * feat(cli): add subcommand `completion` to generate various shell completions (#6313)
+  * fix: Make Azure OpenAI API key optional to match documentation (#6215)
+  * Release 1.18.0
+  * Add recipe download and copy yaml (#6201)
+  * Add more logging and analytics to updater processes (#6208)
+  * MCP Apps Plumbing (#6286)
+  * docs(blog): Agentic Guardrails and Controls (#6329)
+  * fix: use minute-level granularity for MOIM timestamps (#6294)
+  * fix(install script): ensure script works when piped into bash (#6296)
+  * fix: Update tetrate signup step (#6324)
+  * fix(openai): handle interleaved streaming chunks in tool call (#6312)
+  * Add blog post: How I Taught My Agent My Design Taste (#6326)
+  * Have goose issue solver solve issues like a goose contributor (#6321)
+  * feat: add caching support for Anthropic models via Databricks (#6320)
+  * chore(deps): bump qs and express in /documentation (#6314)
+  * fix: handle toolnames without underscores (#6318)</comment>
+    <requestid>1325980</requestid>
+  </revision>
 </revisionlist>
