@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan  8 13:12:07 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- get rid of Mesa 24.1.7 used for s390x (boo#1233167), which
+  supersedes the following patches:
+  * python36-buildfix1-s390x.patch
+  * u_dep_xcb-s390x.patch
+  * u_mesa-CVE-2023-45913-s390x.patch
+
+-------------------------------------------------------------------
 Fri Jan  2 13:46:46 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to Mesa 25.3.3

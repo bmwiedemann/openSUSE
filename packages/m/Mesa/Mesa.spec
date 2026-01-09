@@ -47,11 +47,6 @@
 
 %define glamor 1
 %define _name_archive mesa
-%ifnarch s390x
-%define _version 25.3.3
-%else
-%define _version 24.1.7
-%endif
 %define with_opencl 0
 %define with_rusticl 0
 %define with_vulkan 0
@@ -128,19 +123,15 @@
 %endif
 
 Name:           Mesa%{psuffix}
-%ifnarch s390x
 Version:        25.3.3
-%else
-Version:        24.1.7
-%endif
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
 Group:          System/Libraries
 URL:            https://www.mesa3d.org
 #Git-Clone:     git://anongit.freedesktop.org/mesa/mesa
-Source0:        https://archive.mesa3d.org/%{_name_archive}-%{_version}.tar.xz
-Source1:        https://archive.mesa3d.org/%{_name_archive}-%{_version}.tar.xz.sig
+Source0:        https://archive.mesa3d.org/%{_name_archive}-%{version}.tar.xz
+Source1:        https://archive.mesa3d.org/%{_name_archive}-%{version}.tar.xz.sig
 # NVK aka Vulkan Nouveau dependencies
 # Explainer:
 # Since Rust crates are not installed or discouraged to be installed as system
@@ -161,34 +152,19 @@ Source9:        manual-pages.tar.bz2
 Source10:       Mesa-rpmlintrc
 Source11:       Mesa.keyring
 Source12:       README-suse-maintenance.md
-Source20:       https://archive.mesa3d.org/%{_name_archive}-25.3.3.tar.xz
-Source21:       https://archive.mesa3d.org/%{_name_archive}-25.3.3.tar.xz.sig
 # download with 'osc service runall download_files'; github tarballs have different checksums!
 Source22:       http://crates.io/api/v1/crates/rustc-hash/%{_rustc_hash_crate_ver}/download#/rustc-hash-%{_rustc_hash_crate_ver}.tar.gz
 Patch2:         n_add-Mesa-headers-again.patch
 Patch11:        u_0001-intel-genxml-Drop-from-__future__-import-annotations.patch
 Patch12:        u_0002-intel-genxml-Add-a-untyped-OrderedDict-fallback-for-.patch
-%ifnarch s390x
 Patch13:        python36-buildfix1.patch
-%else
-Patch13:        python36-buildfix1-s390x.patch
-%endif
 Patch17:        tlsdesc_test.patch
 # never to be upstreamed
 Patch54:        n_drirc-disable-rgb10-for-chromium-on-amd.patch
 Patch100:       U_fix-mpeg1_2-decode-mesa-20.2.patch
-%ifnarch s390x
 Patch500:       u_dep_xcb.patch
-%else
-Patch500:       u_dep_xcb-s390x.patch
-%endif
-%ifnarch s390x
 Patch700:       u_meson-lower-python-version-requirement.patch
 Patch800:       u_d3d12.patch
-%endif
-%ifarch s390x
-Patch1222040:   u_mesa-CVE-2023-45913-s390x.patch
-%endif
 Patch1222041:   u_mesa-CVE-2023-45919.patch
 Patch1222042:   u_mesa-CVE-2023-45922.patch
 
@@ -359,9 +335,6 @@ Requires:       Mesa-libEGL-devel = %{version}
 Requires:       Mesa-libGL-devel = %{version}
 Requires:       Mesa-libGLESv1_CM-devel = %{version}
 Requires:       Mesa-libGLESv2-devel = %{version}
-%ifarch s390x
-Requires:       Mesa-libglapi-devel = %{version}
-%endif
 Requires:       libgbm-devel = %{version}
 Provides:       Mesa-devel-static = %{version}
 Provides:       xorg-x11-Mesa-devel = %{version}
@@ -549,9 +522,7 @@ Requires:       libvulkan_lvp
 %endif
 Supplements:    Mesa
 # merged into libgallium in 25.0.0
-%ifnarch s390x
 Obsoletes:      Mesa-libglapi0 < 25.0.0
-%endif
 
 %description -n Mesa-dri
 This package contains Mesa DRI drivers for 3D acceleration.
@@ -743,7 +714,7 @@ Group:          System/Libraries
 This package contains the VK_MESA_Overlay Vulkan layer
 
 %prep
-%setup -q -n %{_name_archive}-%{_version} -b9
+%setup -q -n %{_name_archive}-%{version} -b9
 # remove some docs
 rm -rf docs/README.{VMS,WIN32,OS2}
 
@@ -768,13 +739,8 @@ cp %{SOURCE22} subprojects/packagecache/
 %endif
 %patch -P 100 -p1
 %patch -P 500 -p1
-%ifnarch s390x
 %patch -P 700 -p1
 %patch -P 800 -p1
-%endif
-%ifarch s390x
-%patch -P 1222040 -p1
-%endif
 %patch -P 1222041 -p1
 %patch -P 1222042 -p1
 # Remove requires to vulkan libs from baselibs.conf on platforms
@@ -808,9 +774,7 @@ egl_platforms=x11,wayland
             -Dxmlconfig=enabled \
             -Dexpat=enabled \
             -Dshader-cache=enabled \
-%ifnarch s390x
             -Dspirv-tools=enabled \
-%endif
 %else
             -Dglx=auto \
             -Dllvm=disabled \
@@ -822,13 +786,8 @@ egl_platforms=x11,wayland
             -Dgles2=enabled \
             -Degl=enabled \
             -Dallow-kcmp=enabled \
-%ifnarch s390x
             -Ddisplay-info=enabled \
-%endif
             -Dplatforms=$egl_platforms \
-%ifarch s390x
-            -Dshared-glapi=enabled \
-%endif
 %if %{glamor}
             -Dgbm=enabled \
 %endif
@@ -876,7 +835,7 @@ egl_platforms=x11,wayland
   %ifarch loongarch64 ppc64 ppc64le riscv64
             -Dgallium-drivers=r300,r600,radeonsi,nouveau,softpipe,llvmpipe,virgl,iris,zink \
   %else
-            -Dgallium-drivers=swrast \
+            -Dgallium-drivers=softpipe \
   %endif
   %endif
   %endif
@@ -884,11 +843,7 @@ egl_platforms=x11,wayland
             -Dllvm-orcjit=true \
 %endif
 %else
-%ifnarch s390x
             -Dgallium-drivers=softpipe \
-%else
-            -Dgallium-drivers=swrast \
-%endif
 %endif
 %ifarch aarch64 x86_64 ppc64le s390x riscv64
             -Dvalgrind=enabled \
@@ -947,11 +902,6 @@ rm -Rfv %{buildroot}/%{_includedir}/GLES3
 rm -Rfv %{buildroot}/%{_libdir}/libEGL_mesa.so* \
 	%{buildroot}/%{_datadir}/glvnd
 
-# in Mesa-libglapi0
-%ifarch s390x
-rm -v %{buildroot}/%{_libdir}/libglapi.so*
-%endif
-
 # in libwayland-egl1
 rm -fv %{buildroot}/%{_libdir}/libwayland-egl.so* \
 	%{buildroot}/%{_libdir}/pkgconfig/wayland-egl.pc
@@ -964,9 +914,7 @@ rm -Rfv %{buildroot}/%{_includedir}/KHR
 
 # in libgbm-devel
 rm -fv %{buildroot}%{_includedir}/gbm.h \
-%ifnarch s390x
 	%{buildroot}%{_includedir}/gbm_backend_abi.h \
-%endif
 	%{buildroot}%{_libdir}/libgbm.so* \
 	%{buildroot}%{_libdir}/pkgconfig/gbm.pc
 
@@ -1056,21 +1004,9 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 
 %files -n libgbm-devel
 %{_includedir}/gbm.h
-%ifnarch s390x
 %{_includedir}/gbm_backend_abi.h
-%endif
 %{_libdir}/libgbm.so
 %{_libdir}/pkgconfig/gbm.pc
-%endif
-
-%ifarch s390x
-%if "%{flavor}" != "drivers"
-%files libglapi0
-%{_libdir}/libglapi.so.0*
-
-%files libglapi-devel
-%{_libdir}/libglapi.so
-%endif
 %endif
 
 %if "%{flavor}" == "drivers"
@@ -1085,11 +1021,9 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %ifarch %{arm} aarch64
 %exclude %{_libdir}/dri/vc4_dri.so
 %endif
-%ifnarch s390x
-%{_libdir}/libgallium-%{_version}.so
+%{_libdir}/libgallium-%{version}.so
 %dir %{_libdir}/gbm/
 %{_libdir}/gbm/dri_gbm.so
-%endif
 
 %ifarch %{ix86} x86_64 aarch64 %{arm} loongarch64 ppc64 ppc64le riscv64
 %files -n Mesa-dri-nouveau
