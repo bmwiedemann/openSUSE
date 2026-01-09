@@ -1,7 +1,7 @@
 #
 # spec file for package openvswitch
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define ovs_lname libopenvswitch-3_6-0
 %define ovn_lname libovn-25_03-0
 %define ovs_version 3.6.1
-%define ovn_version 25.03.1
+%define ovn_version 25.03.2
 %define ovs_dir ovs-%{ovs_version}
 %define ovn_dir ovn-%{ovn_version}
 %define rpmstate %{_rundir}/openvswitch-rpm-state-
