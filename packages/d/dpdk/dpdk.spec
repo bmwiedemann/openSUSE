@@ -1,7 +1,7 @@
 #
 # spec file for package dpdk
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,7 @@
 # Add option to build without tools
 %bcond_without tools
 Name:           dpdk
-Version:        24.11.3
+Version:        24.11.4
 Release:        0
 Summary:        Set of libraries and drivers for fast packet processing
 License:        BSD-3-Clause AND GPL-2.0-only AND LGPL-2.1-only

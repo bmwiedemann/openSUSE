@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan  6 14:46:34 UTC 2026 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Update to version 24.11.4
+  * LTS update with ~250 fixes, details here:
+    https://doc.dpdk.org/guides-24.11/rel_notes/release_24_11.html#id10
+
+-------------------------------------------------------------------
 Tue Aug 19 10:57:34 UTC 2025 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - Update to version 24.11.3
