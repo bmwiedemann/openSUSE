@@ -1,7 +1,7 @@
 #
 # spec file for package sqlitebrowser
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sqlitebrowser
-Version:        3.13.1
+Version:        3.13.99
 Release:        0
 Summary:        Spreadsheet-like interface to SQLite databases
 License:        GPL-3.0-or-later AND MPL-2.0
@@ -27,28 +27,27 @@ Source0:        https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz
 Source1:        sqlitebrowser.1
 # PATCH-FIX-UPSTREAM switch_case_return.patch -- fisiu@opensuse.org
 Patch0:         switch_case_return.patch
+
+BuildRequires:  antlr-devel
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libqscintilla_qt5-devel
-BuildRequires:  libqt5-linguist-devel
 BuildRequires:  pkgconfig
+BuildRequires:  qscintilla-qt6-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  pkgconfig(Qt6Concurrent)
+BuildRequires:  pkgconfig(Qt6Core5Compat)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Linguist)
+BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6PrintSupport)
+BuildRequires:  pkgconfig(Qt6Test)
+BuildRequires:  pkgconfig(Qt6Widgets)
+BuildRequires:  pkgconfig(Qt6Xml)
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(qcustomplot)
+%if 0%{?suse_version} > 1600 && 0%{?is_opensuse}
 BuildRequires:  pkgconfig(qhexedit2)
-BuildRequires:  pkgconfig(sqlcipher)
-BuildRequires:  pkgconfig(sqlite3)
-# not on SLE-12
-%if 0%{?suse_version} != 1315 || 0%{?is_opensuse}
-BuildRequires:  antlr-devel
 %endif
+BuildRequires:  pkgconfig(sqlcipher)
 
 %description
 SQLite Database Browser is a visual tool for creating, designing and
@@ -73,14 +72,11 @@ Controls and guided dialogs are available for users to:
 
 %build
 %cmake \
-  -DQSCINTILLA_INCLUDE_DIR=%{_includedir}/qt5/Qsci \
-  -DQSCINTILLA_LIBRARY=%{_libdir}/libqscintilla2_qt5.so \
+  -DQT_MAJOR=Qt6 \
   -DBUILD_STABLE_VERSION=ON \
-  -DFORCE_INTERNAL_QCUSTOMPLOT=OFF \
+  -DBUILD_SHARED_LIBS=OFF \
+  -DFORCE_INTERNAL_QCUSTOMPLOT=ON \
   -DFORCE_INTERNAL_QHEXEDIT=OFF \
-%if 0%{?suse_version} && 0%{?suse_version} <= 1500
-  -DFORCE_INTERNAL_QSCINTILLA=ON \
-%endif
   -Dsqlcipher=1 \
   -Wno-dev
 
