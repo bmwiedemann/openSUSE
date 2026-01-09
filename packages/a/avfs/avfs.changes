@@ -1,7 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan  9 06:18:32 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix openSUSE Leap build, using fuse 2 (boo#1256109)
+
+-------------------------------------------------------------------
 Wed Jan  7 10:32:03 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
-- Add patch avfs-fuse3-support.patch
+- Add patch avfs-fuse3-support.patch (boo#1256109)
   * Support avfsd by porting upstream commit f7c2526778fc8323ff40137e7e3bcaab1d925020
 
 -------------------------------------------------------------------

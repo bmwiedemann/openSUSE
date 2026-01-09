@@ -111,4 +111,12 @@
   * Support avfsd by porting upstream commit f7c2526778fc8323ff40137e7e3bcaab1d925020</comment>
     <requestid>1325770</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>0092829076d4ec0c62e1225f204761ac</srcmd5>
+    <version>1.2.0</version>
+    <time>1767974660</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1326282</requestid>
+  </revision>
 </revisionlist>

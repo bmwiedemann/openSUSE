@@ -2,7 +2,7 @@
 # spec file for package avfs
 #
 # Copyright (c) 2026 SUSE LLC and contributors
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,12 @@
 
 
 %define sover 1
+%if 0%{?suse_version} > 1600
+# Leap 16.0 fuse3 is not current enough
+%define fuse_version 3
+%else
+%define fuse_version 2
+%endif
 Name:           avfs
 Version:        1.2.0
 Release:        0
@@ -31,11 +37,15 @@ Patch0:         %{name}-fuse3-support.patch
 BuildRequires:  lzlib-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bzip2)
-BuildRequires:  pkgconfig(fuse3)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(neon)
 BuildRequires:  pkgconfig(zlib)
+%if %{fuse_version} == 3
+BuildRequires:  pkgconfig(fuse3) >= 3.17.1
+%else
+BuildRequires:  pkgconfig(fuse)
+%endif
 
 %description
 AVFS is a filesystem which enables all programs to look inside archived or
@@ -75,6 +85,7 @@ or changing the kernel.
   --with-lzip \
   --with-xz \
   --with-zstd \
+  --enable-fuse \
   %{nil}
 %make_build
 
