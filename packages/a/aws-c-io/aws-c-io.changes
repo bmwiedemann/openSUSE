@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jan  5 08:47:46 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.24.2
+  * Fix compilation warnings by @sfod in (#783)
+- from version 0.24.1
+  * Add helper to check for transient errors by @azkrishpy in (#782)
+- from version 0.24.0
+  * macOS dispatch queue and secitem by @sbSteveK in (#758)
+- from version 0.23.4
+  * [bugfix][trivial] thread name too long on CPU with more than 100 cores
+    by @morotti in (#770)
+  * Clean up cond var after all referencing threads are joined
+    by @bretambrose in (#772)
+  * Disable clang-9 CI job by @sfod in (#780)
+  * Fix typos for DSA by @sfod in (#768)
+
+-------------------------------------------------------------------
 Tue Nov 11 08:31:58 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.23.3
