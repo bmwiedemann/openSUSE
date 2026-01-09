@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan  5 09:05:21 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.5.9
+  * Fix bind failure by @sfod in (#138)
+- from version 0.5.8
+  * Wait for RPC server listener setup by @sfod in (#136)
+
+-------------------------------------------------------------------
 Fri Sep 12 12:03:56 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.5.7

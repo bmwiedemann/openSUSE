@@ -21,7 +21,7 @@
 %define library_version 1.0.0
 %define library_soversion 1
 Name:           aws-c-event-stream
-Version:        0.5.7
+Version:        0.5.9
 Release:        0
 Summary:        C99 implementation of the vnd.amazon.eventstream content-type
 License:        Apache-2.0
