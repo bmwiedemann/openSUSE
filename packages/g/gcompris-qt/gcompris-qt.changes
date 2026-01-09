@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan  8 20:56:31 UTC 2026 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- Add gcompris-25.1.1-qt-6.10.patch from gentoo
+  * fix build with Qt 6.10
+- Add BuildRequires: cmake(Qt6QuickControls2Basic) and 
+  cmake(Qt6QuickControls2BasicStyleImpl)
+
+-------------------------------------------------------------------
 Wed May 21 14:32:41 UTC 2025 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to version 25.1 contains bug fixes and graphics

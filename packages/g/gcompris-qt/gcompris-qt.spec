@@ -1,7 +1,7 @@
 #
 # spec file for package gcompris-qt
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ URL:            https://gcompris.net
 Source0:        https://download.kde.org/stable/gcompris/qt/src/%{name}-%{version}.tar.xz
 Source1:        https://download.kde.org/stable/gcompris/qt/src/%{name}-%{version}.tar.xz.sig
 Source2:        https://share.kde.org/index.php/s/YjKzYs1bgDsOo5V/download#/%{name}.keyring
+#PATCH-FIX-OPENSUSE -- gcompris-25.1.1-qt-6.10.patch
+Patch1:         gcompris-25.1.1-qt-6.10.patch
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  pkgconfig
@@ -41,6 +43,8 @@ BuildRequires:  cmake(Qt6QmlTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QmlWorkerScript) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickControls2Basic) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickControls2BasicStyleImpl) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Sensors) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
