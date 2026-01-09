@@ -1,7 +1,7 @@
 #
 # spec file for package trytond_party
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2014-2024 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,7 +29,7 @@
 
 %define majorver 7.0
 Name:           trytond_party
-Version:        %{majorver}.6
+Version:        %{majorver}.7
 Release:        0
 Summary:        The "party" module for the Tryton ERP system
 License:        GPL-3.0-only
