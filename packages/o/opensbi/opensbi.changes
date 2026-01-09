@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan  8 13:45:42 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- Update to opensbi 1.8.1
+  * Typo fix in comments of sbi_hartindex_to_hartid()
+  * Fix hart protection abstraction for platforms without PMP
+
+-------------------------------------------------------------------
 Mon Dec 29 12:56:07 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Update to opensbi 1.8

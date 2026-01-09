@@ -306,4 +306,14 @@
   * HART protection abstraction (forwarded request 1324711 from Andreas_Schwab)</comment>
     <requestid>1324712</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4474afc41ca1c7663f09b654d06a80b3</srcmd5>
+    <version>1.8.1</version>
+    <time>1767974617</time>
+    <user>anag_factory</user>
+    <comment>- Update to opensbi 1.8.1
+  * Typo fix in comments of sbi_hartindex_to_hartid()
+  * Fix hart protection abstraction for platforms without PMP (forwarded request 1325986 from Andreas_Schwab)</comment>
+    <requestid>1325987</requestid>
+  </revision>
 </revisionlist>
