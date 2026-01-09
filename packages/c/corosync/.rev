@@ -1274,4 +1274,20 @@ v2.3.5
   * 779.patch</comment>
     <requestid>1323465</requestid>
   </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>b7f17cc2fe3903b69d5f8e589bb7a752</srcmd5>
+    <version>3.1.10</version>
+    <time>1767974593</time>
+    <user>anag_factory</user>
+    <comment>- Update corosync.spec:
+  * Drop /var/lib/corosync and /var/log/cluster for compatibility with immutable mode (jsc#PED-14799)
+  * Add tmpfiles.d/corosync.conf to create /var/log/cluster and /var/lib/corosync (jsc#PED-14799)
+  * Drop %config(noreplace) for fillup templates to ensure correct updates.
+  * Drop %config(noreplace) for config examples in /usr/share/doc.
+  * Add the missing %service_del_postun script.
+  * Remove legacy dir /usr/lib/corosync
+  * Remove legacy SLE 12 compatibility conditionals and macros.
+  * Migrate D-Bus configuration files from /etc to /usr/share.</comment>
+    <requestid>1326283</requestid>
+  </revision>
 </revisionlist>

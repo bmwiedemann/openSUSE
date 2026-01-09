@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Dec 26 08:56:37 UTC 2025 - Nicholas Yang <nicholas.yang@suse.com>
+
+- Update corosync.spec:
+  * Drop /var/lib/corosync and /var/log/cluster for compatibility with immutable mode (jsc#PED-14799)
+  * Add tmpfiles.d/corosync.conf to create /var/log/cluster and /var/lib/corosync (jsc#PED-14799)
+  * Drop %config(noreplace) for fillup templates to ensure correct updates.
+  * Drop %config(noreplace) for config examples in /usr/share/doc.
+  * Add the missing %service_del_postun script.
+  * Remove legacy dir /usr/lib/corosync
+  * Remove legacy SLE 12 compatibility conditionals and macros.
+  * Migrate D-Bus configuration files from /etc to /usr/share.
+
+-------------------------------------------------------------------
 Fri Dec 12 05:54:36 UTC 2025 - Nicholas Yang <nicholas.yang@suse.com>
 
 - Update to version 3.1.10:
@@ -344,7 +357,7 @@ Wed May 15 12:18:23 UTC 2024 - Emil Penchev <emil.penchev@suse.com>
   * totemconfig: Enhance totem.ip_version
   * totemip: Add debug information to totemip_parse
   * totemconfig: Add IPs to family mismatch error
-  * config: Look up hostnames in a defined order
+  * config: Look up hostnames in a defined order
   * Fix corosync.conf.5 manpage typos
   * man: Add some information about address resolution
   * totemconfig: Really use totemip_parse results

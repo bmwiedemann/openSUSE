@@ -1,7 +1,7 @@
 #
 # spec file for package corosync
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,36 +16,19 @@
 #
 
 
-#Compat macro for new _fillupdir macro introduced in Nov 2017
-%if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
-%endif
-
-# Conditionals
-# Invoke "rpmbuild --without <feature>" or "rpmbuild --with <feature>"
-# to disable or enable specific features
 %bcond_with watchdog
 %bcond_with monitoring
 %bcond_with snmp
-%bcond_with nozzle
 %bcond_with dbus
+%bcond_without systemd
 %bcond_with xmlconf
+%bcond_with nozzle
 %bcond_with vqsim
 %bcond_without runautogen
-%bcond_without systemd
 %bcond_with userflags
 
 %global gitver %{?numcomm:.%{numcomm}}%{?alphatag:.%{alphatag}}%{?dirty:.%{dirty}}
 %global gittarver %{?numcomm:.%{numcomm}}%{?alphatag:-%{alphatag}}%{?dirty:-%{dirty}}
-
-%if 0%{?sles_version} == 12
-%ifnarch s390 s390x
-%define buildib 1
-%endif
-%endif
-%if 0%{?suse_version}
-%define _libexecdir %{_libdir}
-%endif
 
 Name:           corosync
 Summary:        The Corosync Cluster Engine and Application Programming Interfaces
@@ -55,10 +38,10 @@ Version:        3.1.10
 Release:        0
 URL:            http://corosync.github.io/corosync/
 Source0:        %{name}-%{version}.tar.gz
+Source1:        %{name}.tmpfiles.d.conf
 Patch0:         0001-harden-services-with-systemd-sandboxing.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-# provide openais on purpose, the package has been deleted.
 
 # Runtime bits
 # The automatic dependency overridden in favor of explicit version lock
@@ -94,11 +77,9 @@ BuildRequires:  dbus-1-devel
 BuildRequires:  libnozzle-devel
 %endif
 %if %{with systemd}
+%{?systemd_requires}
 BuildRequires:  systemd-devel
 BuildRequires:  pkgconfig(systemd)
-Requires(post): systemd
-Requires(preun): systemd
-Requires(postun): systemd
 %endif
 %if %{with xmlconf}
 Requires:       libxslt
@@ -166,10 +147,11 @@ make %{_smp_mflags}
 %make_install
 
 %if %{with dbus}
-mkdir -p -m 0700 %{buildroot}/%{_sysconfdir}/dbus-1/system.d
-install -m 644 %{_builddir}/%{name}-%{version}/conf/corosync-signals.conf %{buildroot}/%{_sysconfdir}/dbus-1/system.d/corosync-signals.conf
+mkdir -p -m 0700 %{buildroot}/%{_datadir}/dbus-1/system.d
+install -m 644 %{_builddir}/%{name}-%{version}/conf/corosync-signals.conf %{buildroot}/%{_datadir}/dbus-1/system.d/corosync-signals.conf
 %endif
 %if %{with systemd}
+install -D -m 0644 %{SOURCE1} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rccorosync
 ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rccorosync-notifyd
 %endif
@@ -180,21 +162,21 @@ rm -f %{buildroot}%{_libdir}/*.a
 rm -f %{buildroot}%{_libdir}/*.la
 # drop docs and html docs for now
 rm -rf %{buildroot}%{_docdir}/*
-mkdir -p %{buildroot}%{_sysconfdir}/sysconfig
-mkdir -p  %{buildroot}/usr/share/doc/packages/corosync/
+
+rm -rf %{buildroot}/etc/logrotate.d/
+rm -rf %{buildroot}/etc/corosync/corosync.conf.example*
+rm -rf %{buildroot}%{localstatedir}/run/
+
 mkdir -p  %{buildroot}%{_fillupdir}/
-mkdir -p  %{buildroot}%{_sysconfdir}/init.d/
 # /etc/sysconfig/corosync-notifyd
 install -m 644 tools/corosync-notifyd.sysconfig.example \
    %{buildroot}%{_fillupdir}/sysconfig.corosync-notifyd
-install -m 0644 conf/corosync.conf.example* %{buildroot}/usr/share/doc/packages/corosync/
-mkdir -p %{buildroot}/usr/lib/corosync
-rm -rf %{buildroot}/etc/corosync/corosync.conf.example*
-rm -rf %{buildroot}/etc/logrotate.d/
-mkdir -p %{buildroot}%{_sysconfdir}/sysconfig
+# /etc/sysconfig/corosync
 install -m 644 init/corosync.sysconfig.example \
    %{buildroot}%{_fillupdir}/sysconfig.corosync
-rm -rf %{buildroot}%{localstatedir}/run/
+
+mkdir -p  %{buildroot}/%{_datadir}/doc/packages/corosync/
+install -m 0644 conf/corosync.conf.example* %{buildroot}/%{_datadir}/doc/packages/corosync/
 
 %description
 This package contains the Corosync Cluster Engine Executive, several default
@@ -206,15 +188,22 @@ APIs and libraries, default configuration files, and an init script.
 %post
 %{fillup_and_insserv -n corosync}
 %{fillup_and_insserv -n corosync-notifyd}
+%tmpfiles_create %{_tmpfilesdir}/%{name}.conf
 %service_add_post corosync.service corosync-notifyd.service
 
 rm -rf  %{_sysconfdir}/corosync/corosync.conf.example %{_sysconfdir}/corosync/corosync.conf.example.unicast
-ln -s /usr/share/doc/packages/corosync/corosync.conf.example %{_sysconfdir}/corosync/
+ln -s %{_datadir}/doc/packages/corosync/corosync.conf.example %{_sysconfdir}/corosync/
 
 %preun
+%if %{with systemd}
 %service_del_preun corosync.service corosync-notifyd.service
+%endif
 
 %postun
+%if %{with systemd}
+%service_del_postun corosync.service corosync-notifyd.service
+%endif
+
 if [ -f /etc/sysconfig/corosync ]; then
     rm /etc/sysconfig/corosync
 fi
@@ -245,13 +234,12 @@ fi
 %dir %{_sysconfdir}/corosync
 %dir %{_sysconfdir}/corosync/uidgid.d
 %dir %{_datadir}/doc/corosync/
-%dir /usr/lib/corosync/
-%config(noreplace) /usr/share/doc/packages/corosync/corosync.conf.example
-%config(noreplace) %{_fillupdir}/sysconfig.corosync-notifyd
-%config(noreplace) %{_fillupdir}/sysconfig.corosync
+%{_datadir}/doc/packages/corosync/corosync.conf.example
+%{_fillupdir}/sysconfig.corosync-notifyd
+%{_fillupdir}/sysconfig.corosync
 
 %if %{with dbus}
-%{_sysconfdir}/dbus-1/system.d/corosync-signals.conf
+%{_datadir}/dbus-1/system.d/corosync-signals.conf
 %endif
 %if %{with snmp}
 %{_datadir}/snmp/mibs/COROSYNC-MIB.txt
@@ -259,13 +247,14 @@ fi
 %if %{with systemd}
 %{_unitdir}/corosync.service
 %{_unitdir}/corosync-notifyd.service
+%{_tmpfilesdir}/%{name}.conf
 %else
 %dir %{_datadir}/corosync
 %{_datadir}/corosync/corosync
 %{_datadir}/corosync/corosync-notifyd
 %endif
-%dir %{_localstatedir}/lib/corosync
-%dir %{_localstatedir}/log/cluster
+%ghost %{_localstatedir}/lib/corosync
+%ghost %{_localstatedir}/log/cluster
 %{_mandir}/man7/corosync_overview.7*
 %{_mandir}/man8/corosync.8*
 %{_mandir}/man8/corosync-blackbox.8*
@@ -280,7 +269,7 @@ fi
 %{_mandir}/man7/cmap_keys.7*
 %{_datadir}/doc/corosync/*
 
-#library
+# library
 #
 %package libs
 Summary:        The corosync Cluster Engine Libraries
@@ -299,6 +288,7 @@ This package contains corosync libraries.
 %{_libdir}/libcorosync_common.so.*
 
 %post libs -p /sbin/ldconfig
+
 %postun libs -p /sbin/ldconfig
 
 %package devel
