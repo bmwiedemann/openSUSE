@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jan  7 13:32:03 MST 2026 - carnold@suse.com
+
+- Upstream features and bug fixes (bsc#1027942) (jsc#PED-14625)
+  003-virtinst-cloudinit-include-empty-meta-data-file.patch
+  009-avoid-NoneType-pixbuf.patch
+  012-virtManager-wrapped-details-hw-panel-with-GtkScrolledWindow.patch
+  013-virtinst-interface-add-support-for-backend.hostname-and-backend.fqdn.patch
+  014-virtinst-add-support-for-acpi-generic-initiator.patch
+  015-virtinst-add-support-for-pcihole64.patch
+  017-maint-use-constants-instead-of-strings-for-boot-devices.patch
+  018-virtinst-rework-get_boot_order.patch
+  019-virtinst-guest-introduce-can_use_device_boot_order.patch
+  020-virtinst-remove-legacy-attribute-from-set_boot_order-get_boot_order.patch
+  021-installer-add-support-to-use-device-boot-order.patch
+  024-virtinst-Fix-XDG_DATA_HOME-handling.patch
+- Dropped virtinst-fix-XDG_DATA_HOME-handling.patch
+
+-------------------------------------------------------------------
 Tue Dec  9 11:48:43 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add virtinst-fix-XDG_DATA_HOME-handling.patch: fix usage

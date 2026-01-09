@@ -16,7 +16,7 @@ Index: virt-manager-5.1.0/virtinst/guest.py
          self.skip_default_rng = False
          self.skip_default_tpm = False
          self.skip_default_input = False
-@@ -1195,7 +1198,7 @@ class Guest(XMLBuilder):
+@@ -1192,7 +1195,7 @@ class Guest(XMLBuilder):
          self.add_device(dev)
  
      def _add_default_video_device(self):

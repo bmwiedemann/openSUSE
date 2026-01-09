@@ -1,0 +1,26 @@
+Subject: virtinst: Fix XDG_DATA_HOME handling
+From: Callum Farmer gmbr3@opensuse.org Wed Nov 19 13:38:22 2025 +0000
+Date: Thu Dec 11 09:43:06 2025 +0100:
+Git: 35ad9057fef319046ad1348097e2f813a52a9021
+
+The default value of XDG_DATA_HOME should be ~/.local/share.
+
+It will not by default contain libvirt at the end of the path,
+so subsequently append libvirt after retrieving the value of XDG_DATA_HOME
+
+Signed-off-by: Callum Farmer <gmbr3@opensuse.org>
+
+diff --git a/virtinst/connection.py b/virtinst/connection.py
+index f2fcdd0c3..b565f1b41 100644
+--- a/virtinst/connection.py
++++ b/virtinst/connection.py
+@@ -186,7 +186,8 @@ class VirtinstConnection:
+     def get_libvirt_data_root_dir(self):
+         if self.is_privileged():
+             return "/var/lib/libvirt"
+-        return os.environ.get("XDG_DATA_HOME", os.path.expanduser("~/.local/share/libvirt"))
++        path = os.environ.get("XDG_DATA_HOME", os.path.expanduser("~/.local/share"))
++        return os.path.join(path, "libvirt")
+ 
+     ####################
+     # Polling routines #

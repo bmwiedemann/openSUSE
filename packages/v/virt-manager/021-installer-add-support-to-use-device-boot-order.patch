@@ -1,0 +1,2457 @@
+Subject: installer: add support to use device boot order
+From: Pavel Hrdina phrdina@redhat.com Wed Dec 3 15:42:03 2025 +0100
+Date: Thu Dec 4 16:55:51 2025 +0100:
+Git: a2baaf789cef57fbca0cd240cf14660f4169c0e6
+
+Until now installer always used legacy boot order when creating VM XML.
+Device boot order is supported for long time so start using it if
+possible instead of the legacy boot order.
+
+Signed-off-by: Pavel Hrdina <phrdina@redhat.com>
+
+diff --git a/tests/data/cli/compare/virt-install-aarch64-cdrom.xml b/tests/data/cli/compare/virt-install-aarch64-cdrom.xml
+index 61352ed25..2d4e7de39 100644
+--- a/tests/data/cli/compare/virt-install-aarch64-cdrom.xml
++++ b/tests/data/cli/compare/virt-install-aarch64-cdrom.xml
+@@ -13,8 +13,6 @@
+     <type arch="aarch64" machine="virt">hvm</type>
+     <loader>CODE.fd</loader>
+     <nvram template="VARS.fd"/>
+-    <boot dev="cdrom"/>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -29,12 +27,14 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="2"/>
+     </disk>
+     <disk type="file" device="cdrom">
+       <driver name="qemu"/>
+       <source file="TESTSUITE_SCRUBBED/tests/data/fakemedia/fake-f26-netinst.iso"/>
+       <target dev="sda" bus="scsi"/>
+       <readonly/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <controller type="scsi" model="virtio-scsi"/>
+@@ -96,7 +96,6 @@
+     <type arch="aarch64" machine="virt">hvm</type>
+     <loader>CODE.fd</loader>
+     <nvram template="VARS.fd"/>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -111,6 +110,7 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <disk type="file" device="cdrom">
+       <target dev="sda" bus="scsi"/>
+diff --git a/tests/data/cli/compare/virt-install-aarch64-cloud-init.xml b/tests/data/cli/compare/virt-install-aarch64-cloud-init.xml
+index 56b92612a..d3c877ec9 100644
+--- a/tests/data/cli/compare/virt-install-aarch64-cloud-init.xml
++++ b/tests/data/cli/compare/virt-install-aarch64-cloud-init.xml
+@@ -95,7 +95,6 @@
+   <vcpu>2</vcpu>
+   <os firmware="efi">
+     <type arch="aarch64" machine="virt">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -108,6 +107,7 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <controller type="pci" model="pcie-root"/>
+diff --git a/tests/data/cli/compare/virt-install-aarch64-firmware-no-override.xml b/tests/data/cli/compare/virt-install-aarch64-firmware-no-override.xml
+index 893c37502..e96fa355e 100644
+--- a/tests/data/cli/compare/virt-install-aarch64-firmware-no-override.xml
++++ b/tests/data/cli/compare/virt-install-aarch64-firmware-no-override.xml
+@@ -11,7 +11,6 @@
+   <vcpu>2</vcpu>
+   <os firmware="efi">
+     <type arch="aarch64" machine="virt">hvm</type>
+-    <boot dev="network"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -40,6 +39,7 @@
+       <source bridge="testsuitebr0"/>
+       <mac address="00:11:22:33:44:55"/>
+       <model type="virtio"/>
++      <boot order="1"/>
+     </interface>
+     <console type="pty"/>
+     <channel type="unix">
+@@ -81,7 +81,6 @@
+   <vcpu>2</vcpu>
+   <os firmware="efi">
+     <type arch="aarch64" machine="virt">hvm</type>
+-    <boot dev="network"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -110,6 +109,7 @@
+       <source bridge="testsuitebr0"/>
+       <mac address="00:11:22:33:44:55"/>
+       <model type="virtio"/>
++      <boot order="1"/>
+     </interface>
+     <console type="pty"/>
+     <channel type="unix">
+diff --git a/tests/data/cli/compare/virt-install-aarch64-kvm-gic.xml b/tests/data/cli/compare/virt-install-aarch64-kvm-gic.xml
+index 1480d8d5e..24e5e82b0 100644
+--- a/tests/data/cli/compare/virt-install-aarch64-kvm-gic.xml
++++ b/tests/data/cli/compare/virt-install-aarch64-kvm-gic.xml
+@@ -11,7 +11,6 @@
+   <vcpu>2</vcpu>
+   <os firmware="efi">
+     <type arch="aarch64" machine="virt">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -25,6 +24,7 @@
+       <driver name="qemu" type="qcow2" discard="unmap"/>
+       <source file="/var/lib/libvirt/images/fedora22.qcow2"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="scsi" model="virtio-scsi">
+       <address type="pci"/>
+diff --git a/tests/data/cli/compare/virt-install-aarch64-kvm-import.xml b/tests/data/cli/compare/virt-install-aarch64-kvm-import.xml
+index 57298f03f..686f0b5cf 100644
+--- a/tests/data/cli/compare/virt-install-aarch64-kvm-import.xml
++++ b/tests/data/cli/compare/virt-install-aarch64-kvm-import.xml
+@@ -11,7 +11,6 @@
+   <vcpu>2</vcpu>
+   <os firmware="efi">
+     <type arch="aarch64" machine="virt">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -24,6 +23,7 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <controller type="pci" model="pcie-root"/>
+diff --git a/tests/data/cli/compare/virt-install-aarch64-win11.xml b/tests/data/cli/compare/virt-install-aarch64-win11.xml
+index 392d452b7..75a35af6c 100644
+--- a/tests/data/cli/compare/virt-install-aarch64-win11.xml
++++ b/tests/data/cli/compare/virt-install-aarch64-win11.xml
+@@ -11,7 +11,6 @@
+   <vcpu>1</vcpu>
+   <os firmware="efi">
+     <type arch="aarch64" machine="virt">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -24,6 +23,7 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="sda" bus="usb"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <controller type="pci" model="pcie-root"/>
+diff --git a/tests/data/cli/compare/virt-install-amd-sev.xml b/tests/data/cli/compare/virt-install-amd-sev.xml
+index 68b236dde..c248ffb5a 100644
+--- a/tests/data/cli/compare/virt-install-amd-sev.xml
++++ b/tests/data/cli/compare/virt-install-amd-sev.xml
+@@ -12,7 +12,6 @@
+   <os>
+     <type arch="x86_64" machine="q35">hvm</type>
+     <loader readonly="yes" type="pflash">/usr/share/OVMF/OVMF_CODE.fd</loader>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -35,6 +34,7 @@
+       <driver name="qemu" type="qcow2" discard="unmap"/>
+       <source file="/var/lib/libvirt/images/linux2020.qcow2"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <controller type="pci" model="pcie-root"/>
+diff --git a/tests/data/cli/compare/virt-install-arm-kvm-import.xml b/tests/data/cli/compare/virt-install-arm-kvm-import.xml
+index 64e6b2703..b6467860c 100644
+--- a/tests/data/cli/compare/virt-install-arm-kvm-import.xml
++++ b/tests/data/cli/compare/virt-install-arm-kvm-import.xml
+@@ -11,7 +11,6 @@
+   <vcpu>2</vcpu>
+   <os firmware="efi">
+     <type arch="armv7l" machine="virt">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <cpu mode="host-passthrough"/>
+   <clock offset="utc"/>
+@@ -21,6 +20,7 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <controller type="pci" model="pcie-root"/>
+diff --git a/tests/data/cli/compare/virt-install-boot-uefi-oldcaps.xml b/tests/data/cli/compare/virt-install-boot-uefi-oldcaps.xml
+index 357f348b7..6622428d5 100644
+--- a/tests/data/cli/compare/virt-install-boot-uefi-oldcaps.xml
++++ b/tests/data/cli/compare/virt-install-boot-uefi-oldcaps.xml
+@@ -7,7 +7,6 @@
+   <os>
+     <type arch="x86_64" machine="q35">hvm</type>
+     <loader readonly="yes" secure="yes" type="pflash">/usr/share/edk2/ovmf/OVMF_CODE.secboot.fd</loader>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -31,6 +30,7 @@
+       <driver name="qemu" type="qcow2" discard="unmap"/>
+       <source file="/var/lib/libvirt/images/vm1.qcow2"/>
+       <target dev="sda" bus="sata"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="ich9-ehci1"/>
+     <controller type="usb" model="ich9-uhci1">
+diff --git a/tests/data/cli/compare/virt-install-boot-uefi.xml b/tests/data/cli/compare/virt-install-boot-uefi.xml
+index 2c23dbb9c..ad8cdfdb1 100644
+--- a/tests/data/cli/compare/virt-install-boot-uefi.xml
++++ b/tests/data/cli/compare/virt-install-boot-uefi.xml
+@@ -6,7 +6,6 @@
+   <vcpu>1</vcpu>
+   <os firmware="efi">
+     <type arch="x86_64" machine="pc-i440fx-6.1">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -29,6 +28,7 @@
+       <driver name="qemu" type="qcow2" discard="unmap"/>
+       <source file="/var/lib/libvirt/images/vm1.qcow2"/>
+       <target dev="hda" bus="ide"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="ich9-ehci1"/>
+     <controller type="usb" model="ich9-uhci1">
+diff --git a/tests/data/cli/compare/virt-install-cdrom-centos-label.xml b/tests/data/cli/compare/virt-install-cdrom-centos-label.xml
+index aae263247..177d2dbe8 100644
+--- a/tests/data/cli/compare/virt-install-cdrom-centos-label.xml
++++ b/tests/data/cli/compare/virt-install-cdrom-centos-label.xml
+@@ -11,8 +11,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="pc-i440fx-6.1">hvm</type>
+-    <boot dev="cdrom"/>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -35,12 +33,14 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="2"/>
+     </disk>
+     <disk type="file" device="cdrom">
+       <driver name="qemu"/>
+       <source file="TESTSUITE_SCRUBBED/tests/data/fakemedia/fake-centos65-label.iso"/>
+       <target dev="hda" bus="ide"/>
+       <readonly/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="ich9-ehci1"/>
+     <controller type="usb" model="ich9-uhci1">
+@@ -91,7 +91,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="pc-i440fx-6.1">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -114,6 +113,7 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <disk type="file" device="cdrom">
+       <target dev="hda" bus="ide"/>
+diff --git a/tests/data/cli/compare/virt-install-cdrom-double.xml b/tests/data/cli/compare/virt-install-cdrom-double.xml
+index 6b10c70b1..7a3905fad 100644
+--- a/tests/data/cli/compare/virt-install-cdrom-double.xml
++++ b/tests/data/cli/compare/virt-install-cdrom-double.xml
+@@ -6,8 +6,6 @@
+   <vcpu>1</vcpu>
+   <os>
+     <type arch="i686">hvm</type>
+-    <boot dev="cdrom"/>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <pae/>
+@@ -22,11 +20,13 @@
+     <disk type="file" device="disk">
+       <source file="/var/lib/libvirt/images/vm1.qcow2"/>
+       <target dev="hda" bus="ide"/>
++      <boot order="2"/>
+     </disk>
+     <disk type="file" device="cdrom">
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="hdb" bus="ide"/>
+       <readonly/>
++      <boot order="1"/>
+     </disk>
+     <disk type="file" device="cdrom">
+       <source file="/pool-dir/testvol2.img"/>
+@@ -59,7 +59,6 @@
+   <vcpu>1</vcpu>
+   <os>
+     <type arch="i686">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <pae/>
+@@ -74,6 +73,7 @@
+     <disk type="file" device="disk">
+       <source file="/var/lib/libvirt/images/vm1.qcow2"/>
+       <target dev="hda" bus="ide"/>
++      <boot order="1"/>
+     </disk>
+     <disk type="file" device="cdrom">
+       <target dev="hdb" bus="ide"/>
+diff --git a/tests/data/cli/compare/virt-install-cdrom-url.xml b/tests/data/cli/compare/virt-install-cdrom-url.xml
+index 0b68d1ed9..bcfee4cbf 100644
+--- a/tests/data/cli/compare/virt-install-cdrom-url.xml
++++ b/tests/data/cli/compare/virt-install-cdrom-url.xml
+@@ -6,7 +6,6 @@
+   <vcpu>1</vcpu>
+   <os>
+     <type arch="i686">hvm</type>
+-    <boot dev="cdrom"/>
+   </os>
+   <features>
+     <pae/>
+@@ -24,6 +23,7 @@
+       </source>
+       <target dev="hda" bus="ide"/>
+       <readonly/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="ich9-ehci1"/>
+     <controller type="usb" model="ich9-uhci1">
+@@ -51,7 +51,6 @@
+   <vcpu>1</vcpu>
+   <os>
+     <type arch="i686">hvm</type>
+-    <boot dev="cdrom"/>
+   </os>
+   <features>
+     <pae/>
+@@ -66,6 +65,7 @@
+     <disk type="file" device="cdrom">
+       <target dev="hda" bus="ide"/>
+       <readonly/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="ich9-ehci1"/>
+     <controller type="usb" model="ich9-uhci1">
+diff --git a/tests/data/cli/compare/virt-install-cloud-init-default.xml b/tests/data/cli/compare/virt-install-cloud-init-default.xml
+index 46cff8c09..a5f6e6353 100644
+--- a/tests/data/cli/compare/virt-install-cloud-init-default.xml
++++ b/tests/data/cli/compare/virt-install-cloud-init-default.xml
+@@ -94,7 +94,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -116,6 +115,7 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <controller type="pci" model="pcie-root"/>
+diff --git a/tests/data/cli/compare/virt-install-cloud-init-options1.xml b/tests/data/cli/compare/virt-install-cloud-init-options1.xml
+index 110730dd3..04e29dc83 100644
+--- a/tests/data/cli/compare/virt-install-cloud-init-options1.xml
++++ b/tests/data/cli/compare/virt-install-cloud-init-options1.xml
+@@ -102,7 +102,6 @@ chpasswd:
+   </sysinfo>
+   <os firmware="efi">
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="hd"/>
+     <smbios mode="sysinfo"/>
+   </os>
+   <features>
+@@ -125,6 +124,7 @@ chpasswd:
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <controller type="pci" model="pcie-root"/>
+diff --git a/tests/data/cli/compare/virt-install-cloud-init-options2.xml b/tests/data/cli/compare/virt-install-cloud-init-options2.xml
+index 0baf7db4c..1125ab459 100644
+--- a/tests/data/cli/compare/virt-install-cloud-init-options2.xml
++++ b/tests/data/cli/compare/virt-install-cloud-init-options2.xml
+@@ -76,7 +76,6 @@ ssh_authorized_keys:
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="i686">hvm</type>
+-    <boot dev="hd"/>
+     <smbios mode="none"/>
+   </os>
+   <features>
+@@ -92,6 +91,7 @@ ssh_authorized_keys:
+     <disk type="file" device="disk">
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="hda" bus="ide"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="ich9-ehci1"/>
+     <controller type="usb" model="ich9-uhci1">
+diff --git a/tests/data/cli/compare/virt-install-cloud-init-options3.xml b/tests/data/cli/compare/virt-install-cloud-init-options3.xml
+index 7f4c6d634..57306f0c9 100644
+--- a/tests/data/cli/compare/virt-install-cloud-init-options3.xml
++++ b/tests/data/cli/compare/virt-install-cloud-init-options3.xml
+@@ -75,7 +75,6 @@ users:
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="i686">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <pae/>
+@@ -90,6 +89,7 @@ users:
+     <disk type="file" device="disk">
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="hda" bus="ide"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="ich9-ehci1"/>
+     <controller type="usb" model="ich9-uhci1">
+diff --git a/tests/data/cli/compare/virt-install-cloud-init-options4.xml b/tests/data/cli/compare/virt-install-cloud-init-options4.xml
+index 0ddc52762..8dc83189f 100644
+--- a/tests/data/cli/compare/virt-install-cloud-init-options4.xml
++++ b/tests/data/cli/compare/virt-install-cloud-init-options4.xml
+@@ -68,7 +68,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="i686">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <pae/>
+@@ -83,6 +82,7 @@
+     <disk type="file" device="disk">
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="hda" bus="ide"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="ich9-ehci1"/>
+     <controller type="usb" model="ich9-uhci1">
+diff --git a/tests/data/cli/compare/virt-install-cloud-init-options5.xml b/tests/data/cli/compare/virt-install-cloud-init-options5.xml
+index 0ddc52762..8dc83189f 100644
+--- a/tests/data/cli/compare/virt-install-cloud-init-options5.xml
++++ b/tests/data/cli/compare/virt-install-cloud-init-options5.xml
+@@ -68,7 +68,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="i686">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <pae/>
+@@ -83,6 +82,7 @@
+     <disk type="file" device="disk">
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="hda" bus="ide"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="ich9-ehci1"/>
+     <controller type="usb" model="ich9-uhci1">
+diff --git a/tests/data/cli/compare/virt-install-cloud-init-options6.xml b/tests/data/cli/compare/virt-install-cloud-init-options6.xml
+index 0ddc52762..8dc83189f 100644
+--- a/tests/data/cli/compare/virt-install-cloud-init-options6.xml
++++ b/tests/data/cli/compare/virt-install-cloud-init-options6.xml
+@@ -68,7 +68,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="i686">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <pae/>
+@@ -83,6 +82,7 @@
+     <disk type="file" device="disk">
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="hda" bus="ide"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="ich9-ehci1"/>
+     <controller type="usb" model="ich9-uhci1">
+diff --git a/tests/data/cli/compare/virt-install-f21-kvm-remote.xml b/tests/data/cli/compare/virt-install-f21-kvm-remote.xml
+index f64e8056f..28997d5d5 100644
+--- a/tests/data/cli/compare/virt-install-f21-kvm-remote.xml
++++ b/tests/data/cli/compare/virt-install-f21-kvm-remote.xml
+@@ -11,7 +11,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="pc-i440fx-6.1">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -34,6 +33,7 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <interface type="network">
+diff --git a/tests/data/cli/compare/virt-install-fake-ftp.xml b/tests/data/cli/compare/virt-install-fake-ftp.xml
+index e3e3177b0..7bdbb009e 100644
+--- a/tests/data/cli/compare/virt-install-fake-ftp.xml
++++ b/tests/data/cli/compare/virt-install-fake-ftp.xml
+@@ -56,7 +56,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="i686">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <pae/>
+diff --git a/tests/data/cli/compare/virt-install-fake-http.xml b/tests/data/cli/compare/virt-install-fake-http.xml
+index 9bbce22aa..b4269525f 100644
+--- a/tests/data/cli/compare/virt-install-fake-http.xml
++++ b/tests/data/cli/compare/virt-install-fake-http.xml
+@@ -46,7 +46,6 @@
+   <vcpu>1</vcpu>
+   <os>
+     <type arch="i686">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <pae/>
+diff --git a/tests/data/cli/compare/virt-install-funny-passwords.xml b/tests/data/cli/compare/virt-install-funny-passwords.xml
+index 92dbe3b2d..cb034feeb 100644
+--- a/tests/data/cli/compare/virt-install-funny-passwords.xml
++++ b/tests/data/cli/compare/virt-install-funny-passwords.xml
+@@ -11,7 +11,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -33,6 +32,7 @@
+       <driver name="qemu" type="qcow2" discard="unmap"/>
+       <source file="/var/lib/libvirt/images/fedora.qcow2"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <controller type="pci" model="pcie-root"/>
+diff --git a/tests/data/cli/compare/virt-install-graphics-usb-disable.xml b/tests/data/cli/compare/virt-install-graphics-usb-disable.xml
+index 26a5da769..ddc51305a 100644
+--- a/tests/data/cli/compare/virt-install-graphics-usb-disable.xml
++++ b/tests/data/cli/compare/virt-install-graphics-usb-disable.xml
+@@ -11,7 +11,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -34,6 +33,7 @@
+       <driver name="qemu" type="qcow2" discard="unmap"/>
+       <source file="/var/lib/libvirt/images/fedora26.qcow2"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="none"/>
+     <controller type="pci" model="pcie-root"/>
+diff --git a/tests/data/cli/compare/virt-install-hvf-default-f27.xml b/tests/data/cli/compare/virt-install-hvf-default-f27.xml
+index 52480925e..5078cc3e6 100644
+--- a/tests/data/cli/compare/virt-install-hvf-default-f27.xml
++++ b/tests/data/cli/compare/virt-install-hvf-default-f27.xml
+@@ -11,7 +11,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -33,6 +32,7 @@
+       <driver name="qemu" type="qcow2" discard="unmap"/>
+       <source file="/var/lib/libvirt/images/foohvf.qcow2"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <controller type="pci" model="pcie-root"/>
+diff --git a/tests/data/cli/compare/virt-install-hyperv_disable_vpindex.xml b/tests/data/cli/compare/virt-install-hyperv_disable_vpindex.xml
+index 42f0121b5..bf40b2fa9 100644
+--- a/tests/data/cli/compare/virt-install-hyperv_disable_vpindex.xml
++++ b/tests/data/cli/compare/virt-install-hyperv_disable_vpindex.xml
+@@ -11,7 +11,6 @@
+   <vcpu>4</vcpu>
+   <os firmware="efi">
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+diff --git a/tests/data/cli/compare/virt-install-hyperv_enable_tlbflush_direct_and_extended.xml b/tests/data/cli/compare/virt-install-hyperv_enable_tlbflush_direct_and_extended.xml
+index 0a6a05ffe..62c7e39b1 100644
+--- a/tests/data/cli/compare/virt-install-hyperv_enable_tlbflush_direct_and_extended.xml
++++ b/tests/data/cli/compare/virt-install-hyperv_enable_tlbflush_direct_and_extended.xml
+@@ -11,7 +11,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -40,6 +39,7 @@
+       <driver name="qemu" type="qcow2" discard="unmap"/>
+       <source file="/var/lib/libvirt/images/fedora.qcow2"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <controller type="pci" model="pcie-root"/>
+diff --git a/tests/data/cli/compare/virt-install-hyperv_enable_xmm_and_emsr.xml b/tests/data/cli/compare/virt-install-hyperv_enable_xmm_and_emsr.xml
+index f2b8c30d2..a8a2ff56b 100644
+--- a/tests/data/cli/compare/virt-install-hyperv_enable_xmm_and_emsr.xml
++++ b/tests/data/cli/compare/virt-install-hyperv_enable_xmm_and_emsr.xml
+@@ -11,7 +11,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -38,6 +37,7 @@
+       <driver name="qemu" type="qcow2" discard="unmap"/>
+       <source file="/var/lib/libvirt/images/fedora.qcow2"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <controller type="pci" model="pcie-root"/>
+diff --git a/tests/data/cli/compare/virt-install-hyperv_no_domcaps.xml b/tests/data/cli/compare/virt-install-hyperv_no_domcaps.xml
+index e6abf6578..5525f2458 100644
+--- a/tests/data/cli/compare/virt-install-hyperv_no_domcaps.xml
++++ b/tests/data/cli/compare/virt-install-hyperv_no_domcaps.xml
+@@ -11,7 +11,6 @@
+   <vcpu>4</vcpu>
+   <os>
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+diff --git a/tests/data/cli/compare/virt-install-initrd-inject.xml b/tests/data/cli/compare/virt-install-initrd-inject.xml
+index 42cc96bae..3664d266e 100644
+--- a/tests/data/cli/compare/virt-install-initrd-inject.xml
++++ b/tests/data/cli/compare/virt-install-initrd-inject.xml
+@@ -56,7 +56,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="i686">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <pae/>
+diff --git a/tests/data/cli/compare/virt-install-kvm-centos7.xml b/tests/data/cli/compare/virt-install-kvm-centos7.xml
+index 3165c94a6..7521732c4 100644
+--- a/tests/data/cli/compare/virt-install-kvm-centos7.xml
++++ b/tests/data/cli/compare/virt-install-kvm-centos7.xml
+@@ -11,8 +11,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="network"/>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -35,12 +33,14 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="2"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <interface type="bridge">
+       <source bridge="testsuitebr0"/>
+       <mac address="00:11:22:33:44:55"/>
+       <model type="virtio"/>
++      <boot order="1"/>
+     </interface>
+     <console type="pty"/>
+     <channel type="unix">
+@@ -80,7 +80,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -103,6 +102,7 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <interface type="bridge">
+diff --git a/tests/data/cli/compare/virt-install-kvm-cpu-default-fallback.xml b/tests/data/cli/compare/virt-install-kvm-cpu-default-fallback.xml
+index d4e36aa6d..5c7c61b54 100644
+--- a/tests/data/cli/compare/virt-install-kvm-cpu-default-fallback.xml
++++ b/tests/data/cli/compare/virt-install-kvm-cpu-default-fallback.xml
+@@ -11,8 +11,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="pc-i440fx-6.1">hvm</type>
+-    <boot dev="network"/>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -37,12 +35,14 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="2"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <interface type="bridge">
+       <source bridge="testsuitebr0"/>
+       <mac address="00:11:22:33:44:55"/>
+       <model type="virtio"/>
++      <boot order="1"/>
+     </interface>
+     <console type="pty"/>
+     <channel type="unix">
+@@ -81,7 +81,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="pc-i440fx-6.1">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -106,6 +105,7 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <interface type="bridge">
+diff --git a/tests/data/cli/compare/virt-install-kvm-cpu-hostmodel-fallback.xml b/tests/data/cli/compare/virt-install-kvm-cpu-hostmodel-fallback.xml
+index 8b71596aa..a0910bc48 100644
+--- a/tests/data/cli/compare/virt-install-kvm-cpu-hostmodel-fallback.xml
++++ b/tests/data/cli/compare/virt-install-kvm-cpu-hostmodel-fallback.xml
+@@ -11,8 +11,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="pc-i440fx-6.1">hvm</type>
+-    <boot dev="network"/>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -35,12 +33,14 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="2"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <interface type="bridge">
+       <source bridge="testsuitebr0"/>
+       <mac address="00:11:22:33:44:55"/>
+       <model type="virtio"/>
++      <boot order="1"/>
+     </interface>
+     <console type="pty"/>
+     <channel type="unix">
+@@ -79,7 +79,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="pc-i440fx-6.1">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -102,6 +101,7 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <interface type="bridge">
+diff --git a/tests/data/cli/compare/virt-install-kvm-fedoralatest-url.xml b/tests/data/cli/compare/virt-install-kvm-fedoralatest-url.xml
+index 47603aac5..e5766c1a5 100644
+--- a/tests/data/cli/compare/virt-install-kvm-fedoralatest-url.xml
++++ b/tests/data/cli/compare/virt-install-kvm-fedoralatest-url.xml
+@@ -86,7 +86,6 @@
+   <os>
+     <type arch="x86_64" machine="q35">hvm</type>
+     <cmdline>foo bar baz</cmdline>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -109,6 +108,7 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <controller type="pci" model="pcie-root"/>
+diff --git a/tests/data/cli/compare/virt-install-kvm-i686-uefi.xml b/tests/data/cli/compare/virt-install-kvm-i686-uefi.xml
+index 0b30997de..6bb815eea 100644
+--- a/tests/data/cli/compare/virt-install-kvm-i686-uefi.xml
++++ b/tests/data/cli/compare/virt-install-kvm-i686-uefi.xml
+@@ -69,7 +69,6 @@
+   <vcpu>1</vcpu>
+   <os firmware="efi">
+     <type arch="i686" machine="pc-i440fx-6.1">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+diff --git a/tests/data/cli/compare/virt-install-kvm-rhel5.xml b/tests/data/cli/compare/virt-install-kvm-rhel5.xml
+index af097be98..a384b3ee9 100644
+--- a/tests/data/cli/compare/virt-install-kvm-rhel5.xml
++++ b/tests/data/cli/compare/virt-install-kvm-rhel5.xml
+@@ -11,8 +11,6 @@
+   <vcpu>1</vcpu>
+   <os>
+     <type arch="x86_64" machine="pc-i440fx-6.1">hvm</type>
+-    <boot dev="network"/>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -35,6 +33,7 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="hda" bus="ide"/>
++      <boot order="2"/>
+     </disk>
+     <controller type="usb" model="ich9-ehci1"/>
+     <controller type="usb" model="ich9-uhci1">
+@@ -50,6 +49,7 @@
+       <source bridge="testsuitebr0"/>
+       <mac address="00:11:22:33:44:55"/>
+       <model type="e1000"/>
++      <boot order="1"/>
+     </interface>
+     <console type="pty"/>
+     <channel type="spicevmc">
+@@ -81,7 +81,6 @@
+   <vcpu>1</vcpu>
+   <os>
+     <type arch="x86_64" machine="pc-i440fx-6.1">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -104,6 +103,7 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="hda" bus="ide"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="ich9-ehci1"/>
+     <controller type="usb" model="ich9-uhci1">
+diff --git a/tests/data/cli/compare/virt-install-kvm-rhel6.xml b/tests/data/cli/compare/virt-install-kvm-rhel6.xml
+index 8a2000983..406849b49 100644
+--- a/tests/data/cli/compare/virt-install-kvm-rhel6.xml
++++ b/tests/data/cli/compare/virt-install-kvm-rhel6.xml
+@@ -86,7 +86,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="pc-i440fx-6.1">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -109,6 +108,7 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="ich9-ehci1"/>
+     <controller type="usb" model="ich9-uhci1">
+diff --git a/tests/data/cli/compare/virt-install-kvm-rhel7.xml b/tests/data/cli/compare/virt-install-kvm-rhel7.xml
+index c80929660..c1c8a1ecf 100644
+--- a/tests/data/cli/compare/virt-install-kvm-rhel7.xml
++++ b/tests/data/cli/compare/virt-install-kvm-rhel7.xml
+@@ -80,7 +80,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="pc-i440fx-6.1">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -103,6 +102,7 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <interface type="bridge">
+diff --git a/tests/data/cli/compare/virt-install-kvm-session-defaults.xml b/tests/data/cli/compare/virt-install-kvm-session-defaults.xml
+index fe62a0686..80660b0d1 100644
+--- a/tests/data/cli/compare/virt-install-kvm-session-defaults.xml
++++ b/tests/data/cli/compare/virt-install-kvm-session-defaults.xml
+@@ -11,8 +11,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="pc-i440fx-6.1">hvm</type>
+-    <boot dev="cdrom"/>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -35,12 +33,14 @@
+       <driver name="qemu" type="qcow2" discard="unmap"/>
+       <source file="/tmp/.local/share/libvirt/images/fedora21.qcow2"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="2"/>
+     </disk>
+     <disk type="file" device="cdrom">
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="hda" bus="ide"/>
+       <readonly/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <interface type="user">
+@@ -85,7 +85,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="pc-i440fx-6.1">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -108,6 +107,7 @@
+       <driver name="qemu" type="qcow2" discard="unmap"/>
+       <source file="/tmp/.local/share/libvirt/images/fedora21.qcow2"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <disk type="file" device="cdrom">
+       <target dev="hda" bus="ide"/>
+diff --git a/tests/data/cli/compare/virt-install-kvm-win10.xml b/tests/data/cli/compare/virt-install-kvm-win10.xml
+index e259178ca..2db06fbc3 100644
+--- a/tests/data/cli/compare/virt-install-kvm-win10.xml
++++ b/tests/data/cli/compare/virt-install-kvm-win10.xml
+@@ -11,8 +11,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="cdrom"/>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -50,12 +48,14 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="sda" bus="sata"/>
++      <boot order="2"/>
+     </disk>
+     <disk type="file" device="cdrom">
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol2.img"/>
+       <target dev="sdb" bus="sata"/>
+       <readonly/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <controller type="pci" model="pcie-root"/>
+@@ -96,7 +96,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -134,6 +133,7 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="sda" bus="sata"/>
++      <boot order="1"/>
+     </disk>
+     <disk type="file" device="cdrom">
+       <driver name="qemu" type="qcow2"/>
+diff --git a/tests/data/cli/compare/virt-install-kvm-win2k3-cdrom.xml b/tests/data/cli/compare/virt-install-kvm-win2k3-cdrom.xml
+index 78f8e1794..c47fb3091 100644
+--- a/tests/data/cli/compare/virt-install-kvm-win2k3-cdrom.xml
++++ b/tests/data/cli/compare/virt-install-kvm-win2k3-cdrom.xml
+@@ -11,8 +11,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="pc-i440fx-6.1">hvm</type>
+-    <boot dev="cdrom"/>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -50,12 +48,14 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="hda" bus="ide"/>
++      <boot order="2"/>
+     </disk>
+     <disk type="file" device="cdrom">
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol2.img"/>
+       <target dev="hdb" bus="ide"/>
+       <readonly/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb"/>
+     <interface type="bridge">
+@@ -93,7 +93,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="pc-i440fx-6.1">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -131,6 +130,7 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="hda" bus="ide"/>
++      <boot order="1"/>
+     </disk>
+     <disk type="file" device="cdrom">
+       <driver name="qemu" type="qcow2"/>
+diff --git a/tests/data/cli/compare/virt-install-linux2020.xml b/tests/data/cli/compare/virt-install-linux2020.xml
+index b37b87758..05916ad6c 100644
+--- a/tests/data/cli/compare/virt-install-linux2020.xml
++++ b/tests/data/cli/compare/virt-install-linux2020.xml
+@@ -11,8 +11,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="network"/>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -35,6 +33,7 @@
+       <driver name="qemu" type="qcow2" discard="unmap"/>
+       <source file="/var/lib/libvirt/images/linux2020.qcow2"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="2"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <controller type="pci" model="pcie-root"/>
+@@ -56,6 +55,7 @@
+       <source bridge="testsuitebr0"/>
+       <mac address="00:11:22:33:44:55"/>
+       <model type="virtio"/>
++      <boot order="1"/>
+     </interface>
+     <console type="pty"/>
+     <channel type="unix">
+@@ -95,7 +95,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -118,6 +117,7 @@
+       <driver name="qemu" type="qcow2" discard="unmap"/>
+       <source file="/var/lib/libvirt/images/linux2020.qcow2"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <controller type="pci" model="pcie-root"/>
+diff --git a/tests/data/cli/compare/virt-install-location-iso-and-cloud-init.xml b/tests/data/cli/compare/virt-install-location-iso-and-cloud-init.xml
+index 287a4ba2d..219950ff2 100644
+--- a/tests/data/cli/compare/virt-install-location-iso-and-cloud-init.xml
++++ b/tests/data/cli/compare/virt-install-location-iso-and-cloud-init.xml
+@@ -102,7 +102,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="pc-i440fx-6.1">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -125,6 +124,7 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <disk type="file" device="cdrom">
+       <driver name="qemu"/>
+diff --git a/tests/data/cli/compare/virt-install-location-iso.xml b/tests/data/cli/compare/virt-install-location-iso.xml
+index 2ed1c836c..a1d480754 100644
+--- a/tests/data/cli/compare/virt-install-location-iso.xml
++++ b/tests/data/cli/compare/virt-install-location-iso.xml
+@@ -90,7 +90,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="pc-i440fx-6.1">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -113,6 +112,7 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <disk type="file" device="cdrom">
+       <driver name="qemu"/>
+diff --git a/tests/data/cli/compare/virt-install-location-manual-kernel.xml b/tests/data/cli/compare/virt-install-location-manual-kernel.xml
+index 7b8be1ac4..22333ca81 100644
+--- a/tests/data/cli/compare/virt-install-location-manual-kernel.xml
++++ b/tests/data/cli/compare/virt-install-location-manual-kernel.xml
+@@ -72,7 +72,6 @@
+   <vcpu>1</vcpu>
+   <os>
+     <type arch="x86_64" machine="pc-i440fx-6.1">hvm</type>
+-    <boot dev="cdrom"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -96,6 +95,7 @@
+       <source file="TESTSUITE_SCRUBBED/tests/data/fakemedia/fake-no-osinfo.iso"/>
+       <target dev="hda" bus="ide"/>
+       <readonly/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="ich9-ehci1"/>
+     <controller type="usb" model="ich9-uhci1">
+diff --git a/tests/data/cli/compare/virt-install-loongarch64-cdrom.xml b/tests/data/cli/compare/virt-install-loongarch64-cdrom.xml
+index f0b5d8565..70b56b100 100644
+--- a/tests/data/cli/compare/virt-install-loongarch64-cdrom.xml
++++ b/tests/data/cli/compare/virt-install-loongarch64-cdrom.xml
+@@ -11,8 +11,6 @@
+   <vcpu>2</vcpu>
+   <os firmware="efi">
+     <type arch="loongarch64" machine="virt">hvm</type>
+-    <boot dev="cdrom"/>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -24,12 +22,14 @@
+       <driver name="qemu" type="qcow2" discard="unmap"/>
+       <source file="/var/lib/libvirt/images/fedora29.qcow2"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="2"/>
+     </disk>
+     <disk type="file" device="cdrom">
+       <driver name="qemu"/>
+       <source file="TESTSUITE_SCRUBBED/tests/data/fakemedia/fake-f26-netinst.iso"/>
+       <target dev="sda" bus="scsi"/>
+       <readonly/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <controller type="scsi" model="virtio-scsi"/>
+@@ -90,7 +90,6 @@
+   <vcpu>2</vcpu>
+   <os firmware="efi">
+     <type arch="loongarch64" machine="virt">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -102,6 +101,7 @@
+       <driver name="qemu" type="qcow2" discard="unmap"/>
+       <source file="/var/lib/libvirt/images/fedora29.qcow2"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <disk type="file" device="cdrom">
+       <target dev="sda" bus="scsi"/>
+diff --git a/tests/data/cli/compare/virt-install-loongarch64-cloud-init.xml b/tests/data/cli/compare/virt-install-loongarch64-cloud-init.xml
+index 9c32f9238..4df9fc982 100644
+--- a/tests/data/cli/compare/virt-install-loongarch64-cloud-init.xml
++++ b/tests/data/cli/compare/virt-install-loongarch64-cloud-init.xml
+@@ -88,7 +88,6 @@
+   <vcpu>2</vcpu>
+   <os firmware="efi">
+     <type arch="loongarch64" machine="virt">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -100,6 +99,7 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <controller type="pci" model="pcie-root"/>
+diff --git a/tests/data/cli/compare/virt-install-loongarch64-graphics.xml b/tests/data/cli/compare/virt-install-loongarch64-graphics.xml
+index c6711da67..1e36632ad 100644
+--- a/tests/data/cli/compare/virt-install-loongarch64-graphics.xml
++++ b/tests/data/cli/compare/virt-install-loongarch64-graphics.xml
+@@ -11,7 +11,6 @@
+   <vcpu>2</vcpu>
+   <os firmware="efi">
+     <type arch="loongarch64" machine="virt">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -23,6 +22,7 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <controller type="pci" model="pcie-root"/>
+diff --git a/tests/data/cli/compare/virt-install-loongarch64-headless.xml b/tests/data/cli/compare/virt-install-loongarch64-headless.xml
+index 5671b2f22..ea1573e07 100644
+--- a/tests/data/cli/compare/virt-install-loongarch64-headless.xml
++++ b/tests/data/cli/compare/virt-install-loongarch64-headless.xml
+@@ -11,7 +11,6 @@
+   <vcpu>2</vcpu>
+   <os firmware="efi">
+     <type arch="loongarch64" machine="virt">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -23,6 +22,7 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <controller type="pci" model="pcie-root"/>
+diff --git a/tests/data/cli/compare/virt-install-loongarch64-unattended.xml b/tests/data/cli/compare/virt-install-loongarch64-unattended.xml
+index 183fa4e08..b8b78da26 100644
+--- a/tests/data/cli/compare/virt-install-loongarch64-unattended.xml
++++ b/tests/data/cli/compare/virt-install-loongarch64-unattended.xml
+@@ -88,7 +88,6 @@
+   <vcpu>2</vcpu>
+   <os firmware="efi">
+     <type arch="loongarch64" machine="virt">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -100,6 +99,7 @@
+       <driver name="qemu" type="qcow2" discard="unmap"/>
+       <source file="/var/lib/libvirt/images/fedora29.qcow2"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <controller type="pci" model="pcie-root"/>
+diff --git a/tests/data/cli/compare/virt-install-mdev-devices.xml b/tests/data/cli/compare/virt-install-mdev-devices.xml
+index a502910cc..45a2f08a4 100644
+--- a/tests/data/cli/compare/virt-install-mdev-devices.xml
++++ b/tests/data/cli/compare/virt-install-mdev-devices.xml
+@@ -11,7 +11,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -34,6 +33,7 @@
+       <driver name="qemu" type="qcow2" discard="unmap"/>
+       <source file="/var/lib/libvirt/images/fedora.qcow2"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <controller type="pci" model="pcie-root"/>
+diff --git a/tests/data/cli/compare/virt-install-memory-hotplug.xml b/tests/data/cli/compare/virt-install-memory-hotplug.xml
+index 23c0c2063..c673fcfed 100644
+--- a/tests/data/cli/compare/virt-install-memory-hotplug.xml
++++ b/tests/data/cli/compare/virt-install-memory-hotplug.xml
+@@ -10,8 +10,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="network"/>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -38,6 +36,7 @@
+       <driver name="qemu" type="qcow2" discard="unmap"/>
+       <source file="/var/lib/libvirt/images/fedora.qcow2"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="2"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <controller type="pci" model="pcie-root"/>
+@@ -59,6 +58,7 @@
+       <source bridge="testsuitebr0"/>
+       <mac address="00:11:22:33:44:55"/>
+       <model type="virtio"/>
++      <boot order="1"/>
+     </interface>
+     <console type="pty"/>
+     <channel type="unix">
+@@ -155,7 +155,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -182,6 +181,7 @@
+       <driver name="qemu" type="qcow2" discard="unmap"/>
+       <source file="/var/lib/libvirt/images/fedora.qcow2"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <controller type="pci" model="pcie-root"/>
+diff --git a/tests/data/cli/compare/virt-install-network-install-resources.xml b/tests/data/cli/compare/virt-install-network-install-resources.xml
+index 6a471e101..eed493fff 100644
+--- a/tests/data/cli/compare/virt-install-network-install-resources.xml
++++ b/tests/data/cli/compare/virt-install-network-install-resources.xml
+@@ -77,7 +77,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+diff --git a/tests/data/cli/compare/virt-install-openbsd-defaults.xml b/tests/data/cli/compare/virt-install-openbsd-defaults.xml
+index 64137916b..7c071d360 100644
+--- a/tests/data/cli/compare/virt-install-openbsd-defaults.xml
++++ b/tests/data/cli/compare/virt-install-openbsd-defaults.xml
+@@ -11,7 +11,6 @@
+   <vcpu>1</vcpu>
+   <os>
+     <type arch="x86_64" machine="pc-i440fx-6.1">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -34,6 +33,7 @@
+       <driver name="qemu" type="qcow2" discard="unmap"/>
+       <source file="/var/lib/libvirt/images/openbsd4.9.qcow2"/>
+       <target dev="hda" bus="ide"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="ich9-ehci1"/>
+     <controller type="usb" model="ich9-uhci1">
+diff --git a/tests/data/cli/compare/virt-install-os-detect-fail-fallback.xml b/tests/data/cli/compare/virt-install-os-detect-fail-fallback.xml
+index 7005f1224..73dbe1e47 100644
+--- a/tests/data/cli/compare/virt-install-os-detect-fail-fallback.xml
++++ b/tests/data/cli/compare/virt-install-os-detect-fail-fallback.xml
+@@ -11,7 +11,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="i686">hvm</type>
+-    <boot dev="network"/>
+   </os>
+   <features>
+     <pae/>
+@@ -36,6 +35,7 @@
+     <interface type="user">
+       <mac address="00:11:22:33:44:55"/>
+       <model type="e1000"/>
++      <boot order="1"/>
+     </interface>
+     <console type="pty"/>
+   </devices>
+@@ -54,7 +54,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="i686">hvm</type>
+-    <boot dev="network"/>
+   </os>
+   <features>
+     <pae/>
+@@ -79,6 +78,7 @@
+     <interface type="user">
+       <mac address="00:11:22:33:44:55"/>
+       <model type="e1000"/>
++      <boot order="1"/>
+     </interface>
+     <console type="pty"/>
+   </devices>
+diff --git a/tests/data/cli/compare/virt-install-os-detect-success-fallback.xml b/tests/data/cli/compare/virt-install-os-detect-success-fallback.xml
+index 8ff240545..7e107d4b5 100644
+--- a/tests/data/cli/compare/virt-install-os-detect-success-fallback.xml
++++ b/tests/data/cli/compare/virt-install-os-detect-success-fallback.xml
+@@ -56,7 +56,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="i686">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <pae/>
+diff --git a/tests/data/cli/compare/virt-install-osinfo-multiple-short-id.xml b/tests/data/cli/compare/virt-install-osinfo-multiple-short-id.xml
+index 57733cbdd..9e62c7815 100644
+--- a/tests/data/cli/compare/virt-install-osinfo-multiple-short-id.xml
++++ b/tests/data/cli/compare/virt-install-osinfo-multiple-short-id.xml
+@@ -11,8 +11,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="network"/>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -34,6 +32,7 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="2"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <controller type="pci" model="pcie-root"/>
+@@ -55,6 +54,7 @@
+       <source bridge="testsuitebr0"/>
+       <mac address="00:11:22:33:44:55"/>
+       <model type="virtio"/>
++      <boot order="1"/>
+     </interface>
+     <console type="pty"/>
+     <channel type="unix">
+@@ -81,7 +81,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -103,6 +102,7 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <controller type="pci" model="pcie-root"/>
+diff --git a/tests/data/cli/compare/virt-install-osinfo-netinst-unattended.xml b/tests/data/cli/compare/virt-install-osinfo-netinst-unattended.xml
+index f55ad4800..88a281803 100644
+--- a/tests/data/cli/compare/virt-install-osinfo-netinst-unattended.xml
++++ b/tests/data/cli/compare/virt-install-osinfo-netinst-unattended.xml
+@@ -83,7 +83,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="cdrom"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -106,6 +105,7 @@
+       <source file="TESTSUITE_SCRUBBED/tests/data/fakemedia/fake-f26-netinst.iso"/>
+       <target dev="sda" bus="sata"/>
+       <readonly/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <controller type="pci" model="pcie-root"/>
+diff --git a/tests/data/cli/compare/virt-install-osinfo-unattended-treeapis.xml b/tests/data/cli/compare/virt-install-osinfo-unattended-treeapis.xml
+index 5f3c3474e..86f550453 100644
+--- a/tests/data/cli/compare/virt-install-osinfo-unattended-treeapis.xml
++++ b/tests/data/cli/compare/virt-install-osinfo-unattended-treeapis.xml
+@@ -71,7 +71,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="pc-i440fx-6.1">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+diff --git a/tests/data/cli/compare/virt-install-osinfo-url-unattended.xml b/tests/data/cli/compare/virt-install-osinfo-url-unattended.xml
+index 2388120ac..9f635fc45 100644
+--- a/tests/data/cli/compare/virt-install-osinfo-url-unattended.xml
++++ b/tests/data/cli/compare/virt-install-osinfo-url-unattended.xml
+@@ -77,7 +77,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+diff --git a/tests/data/cli/compare/virt-install-osinfo-url-with-disk.xml b/tests/data/cli/compare/virt-install-osinfo-url-with-disk.xml
+index 11fce0aad..59ff017b8 100644
+--- a/tests/data/cli/compare/virt-install-osinfo-url-with-disk.xml
++++ b/tests/data/cli/compare/virt-install-osinfo-url-with-disk.xml
+@@ -87,7 +87,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -109,6 +108,7 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <disk type="file" device="disk">
+       <driver name="qemu" type="qcow2" discard="unmap"/>
+diff --git a/tests/data/cli/compare/virt-install-osinfo-url.xml b/tests/data/cli/compare/virt-install-osinfo-url.xml
+index ea1937a30..1d278fad6 100644
+--- a/tests/data/cli/compare/virt-install-osinfo-url.xml
++++ b/tests/data/cli/compare/virt-install-osinfo-url.xml
+@@ -77,7 +77,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+diff --git a/tests/data/cli/compare/virt-install-osinfo-win7-unattended.xml b/tests/data/cli/compare/virt-install-osinfo-win7-unattended.xml
+index ceac878d7..508a7dd4d 100644
+--- a/tests/data/cli/compare/virt-install-osinfo-win7-unattended.xml
++++ b/tests/data/cli/compare/virt-install-osinfo-win7-unattended.xml
+@@ -11,7 +11,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="cdrom"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -49,6 +48,7 @@
+       <source file="TESTSUITE_SCRUBBED/tests/data/fakemedia/fake-win7.iso"/>
+       <target dev="sda" bus="sata"/>
+       <readonly/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="ich9-ehci1"/>
+     <controller type="usb" model="ich9-uhci1">
+@@ -111,7 +111,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="cdrom"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -149,6 +148,7 @@
+       <source file="TESTSUITE_SCRUBBED/tests/data/fakemedia/fake-win7.iso"/>
+       <target dev="sda" bus="sata"/>
+       <readonly/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="ich9-ehci1"/>
+     <controller type="usb" model="ich9-uhci1">
+diff --git a/tests/data/cli/compare/virt-install-osvariant-defaults-pxe.xml b/tests/data/cli/compare/virt-install-osvariant-defaults-pxe.xml
+index 50b50e9b5..de6e58656 100644
+--- a/tests/data/cli/compare/virt-install-osvariant-defaults-pxe.xml
++++ b/tests/data/cli/compare/virt-install-osvariant-defaults-pxe.xml
+@@ -11,8 +11,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="i686">hvm</type>
+-    <boot dev="network"/>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <pae/>
+@@ -28,6 +26,7 @@
+     <disk type="file" device="disk">
+       <source file="/var/lib/libvirt/images/fedora26.qcow2"/>
+       <target dev="hda" bus="ide"/>
++      <boot order="2"/>
+     </disk>
+     <controller type="usb" model="ich9-ehci1"/>
+     <controller type="usb" model="ich9-uhci1">
+@@ -42,6 +41,7 @@
+     <interface type="user">
+       <mac address="00:11:22:33:44:55"/>
+       <model type="e1000"/>
++      <boot order="1"/>
+     </interface>
+     <console type="pty"/>
+     <channel type="spicevmc">
+@@ -73,7 +73,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="i686">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <pae/>
+@@ -89,6 +88,7 @@
+     <disk type="file" device="disk">
+       <source file="/var/lib/libvirt/images/fedora26.qcow2"/>
+       <target dev="hda" bus="ide"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="ich9-ehci1"/>
+     <controller type="usb" model="ich9-uhci1">
+diff --git a/tests/data/cli/compare/virt-install-ppc64le-kvm-import.xml b/tests/data/cli/compare/virt-install-ppc64le-kvm-import.xml
+index ab51f8131..220cd186b 100644
+--- a/tests/data/cli/compare/virt-install-ppc64le-kvm-import.xml
++++ b/tests/data/cli/compare/virt-install-ppc64le-kvm-import.xml
+@@ -11,7 +11,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="ppc64le" machine="pseries">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <clock offset="utc"/>
+   <devices>
+@@ -20,6 +19,7 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <interface type="bridge">
+diff --git a/tests/data/cli/compare/virt-install-q35-defaults.xml b/tests/data/cli/compare/virt-install-q35-defaults.xml
+index 4b9f97f64..aafbd52d0 100644
+--- a/tests/data/cli/compare/virt-install-q35-defaults.xml
++++ b/tests/data/cli/compare/virt-install-q35-defaults.xml
+@@ -6,8 +6,6 @@
+   <vcpu>1</vcpu>
+   <os>
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="cdrom"/>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -30,12 +28,14 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="sda" bus="sata"/>
++      <boot order="2"/>
+     </disk>
+     <disk type="file" device="cdrom">
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol2.img"/>
+       <target dev="sdb" bus="sata"/>
+       <readonly/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="ich9-ehci1"/>
+     <controller type="usb" model="ich9-uhci1">
+@@ -92,7 +92,6 @@
+   <vcpu>1</vcpu>
+   <os>
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -115,6 +114,7 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="sda" bus="sata"/>
++      <boot order="1"/>
+     </disk>
+     <disk type="file" device="cdrom">
+       <target dev="sdb" bus="sata"/>
+diff --git a/tests/data/cli/compare/virt-install-reinstall-cdrom.xml b/tests/data/cli/compare/virt-install-reinstall-cdrom.xml
+index 156da0341..c61020754 100644
+--- a/tests/data/cli/compare/virt-install-reinstall-cdrom.xml
++++ b/tests/data/cli/compare/virt-install-reinstall-cdrom.xml
+@@ -6,7 +6,6 @@
+   <vcpu placement="static">2</vcpu>
+   <os>
+     <type arch="i686">hvm</type>
+-    <boot dev="cdrom"/>
+   </os>
+   <clock offset="utc"/>
+   <on_poweroff>destroy</on_poweroff>
+@@ -18,6 +17,7 @@
+       <readonly/>
+       <address type="drive" controller="0" bus="1" target="0" unit="0"/>
+       <source file="TESTSUITE_SCRUBBED/tests/data/fakemedia/fake-win7.iso"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="ide" index="0"/>
+     <disk type="file" device="cdrom">
+diff --git a/tests/data/cli/compare/virt-install-reinstall-pxe.xml b/tests/data/cli/compare/virt-install-reinstall-pxe.xml
+index f92ee8844..0f7f91f0d 100644
+--- a/tests/data/cli/compare/virt-install-reinstall-pxe.xml
++++ b/tests/data/cli/compare/virt-install-reinstall-pxe.xml
+@@ -7,8 +7,6 @@
+   <os>
+     <type arch="i686">hvm</type>
+     <loader type="rom">/usr/lib/xen/boot/hvmloader</loader>
+-    <boot dev="network"/>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -25,11 +23,13 @@
+       <source file="/pool-dir/test-clone-simple.img"/>
+       <target dev="hda" bus="ide"/>
+       <address type="drive" controller="0" bus="0" target="0" unit="0"/>
++      <boot order="2"/>
+     </disk>
+     <controller type="ide" index="0"/>
+     <interface type="user">
+       <mac address="22:11:11:11:11:11"/>
+       <target dev="testnet0"/>
++      <boot order="1"/>
+     </interface>
+     <parallel type="file">
+       <source path="/tmp/foo.log"/>
+diff --git a/tests/data/cli/compare/virt-install-remote-storage.xml b/tests/data/cli/compare/virt-install-remote-storage.xml
+index 94866a51b..8b41d2ac4 100644
+--- a/tests/data/cli/compare/virt-install-remote-storage.xml
++++ b/tests/data/cli/compare/virt-install-remote-storage.xml
+@@ -6,8 +6,6 @@
+   <vcpu>1</vcpu>
+   <os>
+     <type arch="i686">hvm</type>
+-    <boot dev="network"/>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <pae/>
+@@ -22,6 +20,7 @@
+     <disk type="file" device="disk">
+       <source file="/foo/bar/baz"/>
+       <target dev="hda" bus="ide"/>
++      <boot order="2"/>
+     </disk>
+     <disk type="block" device="disk">
+       <source dev="/dev/zde"/>
+@@ -40,6 +39,7 @@
+     <interface type="user">
+       <mac address="00:11:22:33:44:55"/>
+       <model type="e1000"/>
++      <boot order="1"/>
+     </interface>
+     <console type="pty"/>
+   </devices>
+@@ -53,7 +53,6 @@
+   <vcpu>1</vcpu>
+   <os>
+     <type arch="i686">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <pae/>
+@@ -68,6 +67,7 @@
+     <disk type="file" device="disk">
+       <source file="/foo/bar/baz"/>
+       <target dev="hda" bus="ide"/>
++      <boot order="1"/>
+     </disk>
+     <disk type="block" device="disk">
+       <source dev="/dev/zde"/>
+diff --git a/tests/data/cli/compare/virt-install-riscv64-cdrom.xml b/tests/data/cli/compare/virt-install-riscv64-cdrom.xml
+index 1d6bd923c..b5e654a6e 100644
+--- a/tests/data/cli/compare/virt-install-riscv64-cdrom.xml
++++ b/tests/data/cli/compare/virt-install-riscv64-cdrom.xml
+@@ -11,8 +11,6 @@
+   <vcpu>2</vcpu>
+   <os firmware="efi">
+     <type arch="riscv64" machine="virt">hvm</type>
+-    <boot dev="cdrom"/>
+-    <boot dev="hd"/>
+   </os>
+   <cpu mode="maximum"/>
+   <clock offset="utc"/>
+@@ -22,12 +20,14 @@
+       <driver name="qemu" type="qcow2" discard="unmap"/>
+       <source file="/var/lib/libvirt/images/fedora29-riscv64.qcow2"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="2"/>
+     </disk>
+     <disk type="file" device="cdrom">
+       <driver name="qemu"/>
+       <source file="TESTSUITE_SCRUBBED/tests/data/fakemedia/fake-f26-netinst.iso"/>
+       <target dev="sda" bus="scsi"/>
+       <readonly/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <controller type="scsi" model="virtio-scsi"/>
+@@ -91,7 +91,6 @@
+   <vcpu>2</vcpu>
+   <os firmware="efi">
+     <type arch="riscv64" machine="virt">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <cpu mode="maximum"/>
+   <clock offset="utc"/>
+@@ -101,6 +100,7 @@
+       <driver name="qemu" type="qcow2" discard="unmap"/>
+       <source file="/var/lib/libvirt/images/fedora29-riscv64.qcow2"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <disk type="file" device="cdrom">
+       <target dev="sda" bus="scsi"/>
+diff --git a/tests/data/cli/compare/virt-install-riscv64-cloud-init.xml b/tests/data/cli/compare/virt-install-riscv64-cloud-init.xml
+index 815f93ea0..8cfa26b5f 100644
+--- a/tests/data/cli/compare/virt-install-riscv64-cloud-init.xml
++++ b/tests/data/cli/compare/virt-install-riscv64-cloud-init.xml
+@@ -86,7 +86,6 @@
+   <vcpu>2</vcpu>
+   <os firmware="efi">
+     <type arch="riscv64" machine="virt">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <cpu mode="maximum"/>
+   <clock offset="utc"/>
+@@ -96,6 +95,7 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <controller type="pci" model="pcie-root"/>
+diff --git a/tests/data/cli/compare/virt-install-riscv64-graphics.xml b/tests/data/cli/compare/virt-install-riscv64-graphics.xml
+index 04ab41933..72832bd2f 100644
+--- a/tests/data/cli/compare/virt-install-riscv64-graphics.xml
++++ b/tests/data/cli/compare/virt-install-riscv64-graphics.xml
+@@ -11,7 +11,6 @@
+   <vcpu>2</vcpu>
+   <os firmware="efi">
+     <type arch="riscv64" machine="virt">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <cpu mode="maximum"/>
+   <clock offset="utc"/>
+@@ -21,6 +20,7 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <controller type="pci" model="pcie-root"/>
+diff --git a/tests/data/cli/compare/virt-install-riscv64-headless.xml b/tests/data/cli/compare/virt-install-riscv64-headless.xml
+index 27328a123..557243bb3 100644
+--- a/tests/data/cli/compare/virt-install-riscv64-headless.xml
++++ b/tests/data/cli/compare/virt-install-riscv64-headless.xml
+@@ -11,7 +11,6 @@
+   <vcpu>2</vcpu>
+   <os firmware="efi">
+     <type arch="riscv64" machine="virt">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <cpu mode="maximum"/>
+   <clock offset="utc"/>
+@@ -21,6 +20,7 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <controller type="pci" model="pcie-root"/>
+diff --git a/tests/data/cli/compare/virt-install-riscv64-unattended.xml b/tests/data/cli/compare/virt-install-riscv64-unattended.xml
+index 7fdb32d04..8ef0d3d87 100644
+--- a/tests/data/cli/compare/virt-install-riscv64-unattended.xml
++++ b/tests/data/cli/compare/virt-install-riscv64-unattended.xml
+@@ -89,7 +89,6 @@
+   <vcpu>2</vcpu>
+   <os firmware="efi">
+     <type arch="riscv64" machine="virt">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <cpu mode="maximum"/>
+   <clock offset="utc"/>
+@@ -99,6 +98,7 @@
+       <driver name="qemu" type="qcow2" discard="unmap"/>
+       <source file="/var/lib/libvirt/images/fedora29-riscv64.qcow2"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <controller type="pci" model="pcie-root"/>
+diff --git a/tests/data/cli/compare/virt-install-s390x-default.xml b/tests/data/cli/compare/virt-install-s390x-default.xml
+index 1de705d1f..5aacc581b 100644
+--- a/tests/data/cli/compare/virt-install-s390x-default.xml
++++ b/tests/data/cli/compare/virt-install-s390x-default.xml
+@@ -11,7 +11,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="s390x" machine="s390-ccw-virtio">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <clock offset="utc"/>
+   <devices>
+diff --git a/tests/data/cli/compare/virt-install-s390x-headless.xml b/tests/data/cli/compare/virt-install-s390x-headless.xml
+index 0a687309b..5b470730c 100644
+--- a/tests/data/cli/compare/virt-install-s390x-headless.xml
++++ b/tests/data/cli/compare/virt-install-s390x-headless.xml
+@@ -11,7 +11,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="s390x" machine="s390-ccw-virtio">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <clock offset="utc"/>
+   <devices>
+@@ -20,6 +19,7 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <interface type="bridge">
+       <source bridge="testsuitebr0"/>
+diff --git a/tests/data/cli/compare/virt-install-simple-pxe.xml b/tests/data/cli/compare/virt-install-simple-pxe.xml
+index 02781e46d..ec3d33fb3 100644
+--- a/tests/data/cli/compare/virt-install-simple-pxe.xml
++++ b/tests/data/cli/compare/virt-install-simple-pxe.xml
+@@ -6,7 +6,6 @@
+   <vcpu>1</vcpu>
+   <os>
+     <type arch="i686">hvm</type>
+-    <boot dev="network"/>
+   </os>
+   <features>
+     <pae/>
+@@ -31,6 +30,7 @@
+     <interface type="user">
+       <mac address="00:11:22:33:44:55"/>
+       <model type="e1000"/>
++      <boot order="1"/>
+     </interface>
+     <console type="pty"/>
+   </devices>
+@@ -44,7 +44,6 @@
+   <vcpu>1</vcpu>
+   <os>
+     <type arch="i686">hvm</type>
+-    <boot dev="network"/>
+   </os>
+   <features>
+     <pae/>
+@@ -69,6 +68,7 @@
+     <interface type="user">
+       <mac address="00:11:22:33:44:55"/>
+       <model type="e1000"/>
++      <boot order="1"/>
+     </interface>
+     <console type="pty"/>
+   </devices>
+diff --git a/tests/data/cli/compare/virt-install-singleton-config-2.xml b/tests/data/cli/compare/virt-install-singleton-config-2.xml
+index 6b7e523c4..8dfc1f94f 100644
+--- a/tests/data/cli/compare/virt-install-singleton-config-2.xml
++++ b/tests/data/cli/compare/virt-install-singleton-config-2.xml
+@@ -13,8 +13,6 @@
+     <type arch="x86_64" machine="q35">hvm</type>
+     <loader readonly="yes" secure="no" type="rom" stateless="yes">/tmp/foo</loader>
+     <smbios mode="emulate"/>
+-    <boot dev="network"/>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -43,6 +41,7 @@
+       <driver name="qemu" type="qcow2" discard="unmap"/>
+       <source file="/var/lib/libvirt/images/fedora.qcow2"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="2"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <controller type="pci" model="pcie-root"/>
+@@ -64,6 +63,7 @@
+       <source bridge="testsuitebr0"/>
+       <mac address="00:11:22:33:44:55"/>
+       <model type="virtio"/>
++      <boot order="1"/>
+     </interface>
+     <console type="pty"/>
+     <channel type="unix">
+@@ -113,7 +113,6 @@
+   <os>
+     <type arch="x86_64" machine="q35">hvm</type>
+     <loader readonly="yes" secure="no" type="rom" stateless="yes">/tmp/foo</loader>
+-    <boot dev="hd"/>
+     <smbios mode="emulate"/>
+   </os>
+   <features>
+@@ -143,6 +142,7 @@
+       <driver name="qemu" type="qcow2" discard="unmap"/>
+       <source file="/var/lib/libvirt/images/fedora.qcow2"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <controller type="pci" model="pcie-root"/>
+diff --git a/tests/data/cli/compare/virt-install-storage-creation.xml b/tests/data/cli/compare/virt-install-storage-creation.xml
+index 567ad6ed1..63335e7ea 100644
+--- a/tests/data/cli/compare/virt-install-storage-creation.xml
++++ b/tests/data/cli/compare/virt-install-storage-creation.xml
+@@ -11,7 +11,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -34,6 +33,7 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <disk type="file" device="disk">
+       <driver name="qemu" type="qcow2" discard="unmap"/>
+diff --git a/tests/data/cli/compare/virt-install-testdriver-edgecases.xml b/tests/data/cli/compare/virt-install-testdriver-edgecases.xml
+index 3cc385c09..e59b8255c 100644
+--- a/tests/data/cli/compare/virt-install-testdriver-edgecases.xml
++++ b/tests/data/cli/compare/virt-install-testdriver-edgecases.xml
+@@ -11,7 +11,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="i686">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <pae/>
+@@ -30,6 +29,7 @@
+     <disk type="file" device="disk">
+       <source file="/var/lib/libvirt/images/fedora.qcow2"/>
+       <target dev="hda" bus="ide"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="ich9-ehci1"/>
+     <controller type="usb" model="ich9-uhci1">
+diff --git a/tests/data/cli/compare/virt-install-unattended-remote-cdrom.xml b/tests/data/cli/compare/virt-install-unattended-remote-cdrom.xml
+index 93b79c530..a09a9e8c3 100644
+--- a/tests/data/cli/compare/virt-install-unattended-remote-cdrom.xml
++++ b/tests/data/cli/compare/virt-install-unattended-remote-cdrom.xml
+@@ -11,7 +11,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="i686">hvm</type>
+-    <boot dev="cdrom"/>
+   </os>
+   <features>
+     <pae/>
+@@ -27,6 +26,7 @@
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="hda" bus="ide"/>
+       <readonly/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="ich9-ehci1"/>
+     <controller type="usb" model="ich9-uhci1">
+@@ -64,7 +64,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="i686">hvm</type>
+-    <boot dev="cdrom"/>
+   </os>
+   <features>
+     <pae/>
+@@ -80,6 +79,7 @@
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="hda" bus="ide"/>
+       <readonly/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="ich9-ehci1"/>
+     <controller type="usb" model="ich9-uhci1">
+diff --git a/tests/data/cli/compare/virt-install-virtio-sound-device.xml b/tests/data/cli/compare/virt-install-virtio-sound-device.xml
+index c696c4c2b..74ae2427b 100644
+--- a/tests/data/cli/compare/virt-install-virtio-sound-device.xml
++++ b/tests/data/cli/compare/virt-install-virtio-sound-device.xml
+@@ -11,7 +11,6 @@
+   <vcpu>2</vcpu>
+   <os>
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -34,6 +33,7 @@
+       <driver name="qemu" type="qcow2" discard="unmap"/>
+       <source file="/var/lib/libvirt/images/fedora.qcow2"/>
+       <target dev="vda" bus="virtio"/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <controller type="pci" model="pcie-root"/>
+diff --git a/tests/data/cli/compare/virt-install-w2k3-cdrom.xml b/tests/data/cli/compare/virt-install-w2k3-cdrom.xml
+index 7bea95d63..15fb5fe17 100644
+--- a/tests/data/cli/compare/virt-install-w2k3-cdrom.xml
++++ b/tests/data/cli/compare/virt-install-w2k3-cdrom.xml
+@@ -11,8 +11,6 @@
+   <vcpu>4</vcpu>
+   <os>
+     <type arch="i686">hvm</type>
+-    <boot dev="cdrom"/>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <pae/>
+@@ -30,11 +28,13 @@
+     <disk type="file" device="disk">
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="hda" bus="ide"/>
++      <boot order="2"/>
+     </disk>
+     <disk type="file" device="cdrom">
+       <source file="/pool-dir/testvol2.img"/>
+       <target dev="hdb" bus="ide"/>
+       <readonly/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="none"/>
+     <interface type="user">
+@@ -58,7 +58,6 @@
+   <vcpu>4</vcpu>
+   <os>
+     <type arch="i686">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <pae/>
+@@ -76,6 +75,7 @@
+     <disk type="file" device="disk">
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="hda" bus="ide"/>
++      <boot order="1"/>
+     </disk>
+     <disk type="file" device="cdrom">
+       <source file="/pool-dir/testvol2.img"/>
+diff --git a/tests/data/cli/compare/virt-install-win11-no-uefi.xml b/tests/data/cli/compare/virt-install-win11-no-uefi.xml
+index 58f559fd1..28396ef33 100644
+--- a/tests/data/cli/compare/virt-install-win11-no-uefi.xml
++++ b/tests/data/cli/compare/virt-install-win11-no-uefi.xml
+@@ -11,8 +11,6 @@
+   <vcpu>4</vcpu>
+   <os>
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="cdrom"/>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -50,12 +48,14 @@
+       <driver name="qemu" type="qcow2" discard="unmap"/>
+       <source file="/var/lib/libvirt/images/win11.qcow2"/>
+       <target dev="sda" bus="sata"/>
++      <boot order="2"/>
+     </disk>
+     <disk type="file" device="cdrom">
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="sdb" bus="sata"/>
+       <readonly/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <controller type="pci" model="pcie-root"/>
+@@ -108,7 +108,6 @@
+   <vcpu>4</vcpu>
+   <os>
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -146,6 +145,7 @@
+       <driver name="qemu" type="qcow2" discard="unmap"/>
+       <source file="/var/lib/libvirt/images/win11.qcow2"/>
+       <target dev="sda" bus="sata"/>
++      <boot order="1"/>
+     </disk>
+     <disk type="file" device="cdrom">
+       <driver name="qemu" type="qcow2"/>
+diff --git a/tests/data/cli/compare/virt-install-win11.xml b/tests/data/cli/compare/virt-install-win11.xml
+index bc825db4a..f37103987 100644
+--- a/tests/data/cli/compare/virt-install-win11.xml
++++ b/tests/data/cli/compare/virt-install-win11.xml
+@@ -11,8 +11,6 @@
+   <vcpu>4</vcpu>
+   <os firmware="efi">
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="cdrom"/>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -50,12 +48,14 @@
+       <driver name="qemu" type="qcow2" discard="unmap"/>
+       <source file="/var/lib/libvirt/images/win11.qcow2"/>
+       <target dev="sda" bus="sata"/>
++      <boot order="2"/>
+     </disk>
+     <disk type="file" device="cdrom">
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="sdb" bus="sata"/>
+       <readonly/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="qemu-xhci" ports="15"/>
+     <controller type="pci" model="pcie-root"/>
+@@ -111,7 +111,6 @@
+   <vcpu>4</vcpu>
+   <os firmware="efi">
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -149,6 +148,7 @@
+       <driver name="qemu" type="qcow2" discard="unmap"/>
+       <source file="/var/lib/libvirt/images/win11.qcow2"/>
+       <target dev="sda" bus="sata"/>
++      <boot order="1"/>
+     </disk>
+     <disk type="file" device="cdrom">
+       <driver name="qemu" type="qcow2"/>
+diff --git a/tests/data/cli/compare/virt-install-win7-uefi.xml b/tests/data/cli/compare/virt-install-win7-uefi.xml
+index 5f556dbcd..a76a29ecd 100644
+--- a/tests/data/cli/compare/virt-install-win7-uefi.xml
++++ b/tests/data/cli/compare/virt-install-win7-uefi.xml
+@@ -13,8 +13,6 @@
+     <type arch="x86_64" machine="q35">hvm</type>
+     <loader type="pflash">CODE.fd</loader>
+     <nvram template="VARS.fd"/>
+-    <boot dev="cdrom"/>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -52,12 +50,14 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="sda" bus="sata"/>
++      <boot order="2"/>
+     </disk>
+     <disk type="file" device="cdrom">
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol2.img"/>
+       <target dev="sdb" bus="sata"/>
+       <readonly/>
++      <boot order="1"/>
+     </disk>
+     <controller type="usb" model="ich9-ehci1"/>
+     <controller type="usb" model="ich9-uhci1">
+@@ -124,7 +124,6 @@
+     <type arch="x86_64" machine="q35">hvm</type>
+     <loader type="pflash">CODE.fd</loader>
+     <nvram template="VARS.fd"/>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+@@ -162,6 +161,7 @@
+       <driver name="qemu" type="qcow2"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="sda" bus="sata"/>
++      <boot order="1"/>
+     </disk>
+     <disk type="file" device="cdrom">
+       <driver name="qemu" type="qcow2"/>
+diff --git a/tests/data/cli/compare/virt-install-x86_64-launch-security-sev-snp-full.xml b/tests/data/cli/compare/virt-install-x86_64-launch-security-sev-snp-full.xml
+index d3b44e789..62423c164 100644
+--- a/tests/data/cli/compare/virt-install-x86_64-launch-security-sev-snp-full.xml
++++ b/tests/data/cli/compare/virt-install-x86_64-launch-security-sev-snp-full.xml
+@@ -6,7 +6,6 @@
+   <vcpu>1</vcpu>
+   <os firmware="efi">
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+diff --git a/tests/data/cli/compare/virt-install-x86_64-launch-security-sev-snp.xml b/tests/data/cli/compare/virt-install-x86_64-launch-security-sev-snp.xml
+index 2253bd055..d101aa56e 100644
+--- a/tests/data/cli/compare/virt-install-x86_64-launch-security-sev-snp.xml
++++ b/tests/data/cli/compare/virt-install-x86_64-launch-security-sev-snp.xml
+@@ -6,7 +6,6 @@
+   <vcpu>1</vcpu>
+   <os firmware="efi">
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+diff --git a/tests/data/cli/compare/virt-install-x86_64-launch-security-tdx-full.xml b/tests/data/cli/compare/virt-install-x86_64-launch-security-tdx-full.xml
+index 65fd4f746..faba38f28 100644
+--- a/tests/data/cli/compare/virt-install-x86_64-launch-security-tdx-full.xml
++++ b/tests/data/cli/compare/virt-install-x86_64-launch-security-tdx-full.xml
+@@ -6,7 +6,6 @@
+   <vcpu>1</vcpu>
+   <os firmware="efi">
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+diff --git a/tests/data/cli/compare/virt-install-x86_64-launch-security-tdx-qgs.xml b/tests/data/cli/compare/virt-install-x86_64-launch-security-tdx-qgs.xml
+index f6e5e150d..6a0df324e 100644
+--- a/tests/data/cli/compare/virt-install-x86_64-launch-security-tdx-qgs.xml
++++ b/tests/data/cli/compare/virt-install-x86_64-launch-security-tdx-qgs.xml
+@@ -6,7 +6,6 @@
+   <vcpu>1</vcpu>
+   <os firmware="efi">
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+diff --git a/tests/data/cli/compare/virt-install-x86_64-launch-security-tdx.xml b/tests/data/cli/compare/virt-install-x86_64-launch-security-tdx.xml
+index b691e0c96..f75e149b3 100644
+--- a/tests/data/cli/compare/virt-install-x86_64-launch-security-tdx.xml
++++ b/tests/data/cli/compare/virt-install-x86_64-launch-security-tdx.xml
+@@ -6,7 +6,6 @@
+   <vcpu>1</vcpu>
+   <os firmware="efi">
+     <type arch="x86_64" machine="q35">hvm</type>
+-    <boot dev="hd"/>
+   </os>
+   <features>
+     <acpi/>
+diff --git a/virtinst/guest.py b/virtinst/guest.py
+index 3f9eb0079..7331a725b 100644
+--- a/virtinst/guest.py
++++ b/virtinst/guest.py
+@@ -439,7 +439,7 @@ class Guest(XMLBuilder):
+     # Bootorder helpers #
+     #####################
+ 
+-    def _convert_old_boot_order(self, boot_order):
++    def convert_old_boot_order(self, boot_order):
+         """Converts the old boot order (e.g. <boot dev='hd'/>) into the
+         per-device boot order format.
+ 
+@@ -490,7 +490,7 @@ class Guest(XMLBuilder):
+ 
+     def get_boot_order(self):
+         if self.can_use_device_boot_order():
+-            return self._get_device_boot_order() or self._convert_old_boot_order(self.os.bootorder)
++            return self._get_device_boot_order() or self.convert_old_boot_order(self.os.bootorder)
+         return self.os.bootorder
+ 
+     def _set_device_boot_order(self, boot_order):
+@@ -513,6 +513,9 @@ class Guest(XMLBuilder):
+         else:
+             self.os.bootorder = boot_order
+ 
++    def has_boot_order(self):
++        return self.os.bootorder or any([d.boot.order for d in self.devices.get_all()])
++
+     def reorder_boot_order(self, dev, boot_index):
+         """Sets boot order of `dev` to `boot_index`
+ 
+diff --git a/virtinst/install/installer.py b/virtinst/install/installer.py
+index a507c3c7c..ce3dea6c6 100644
+--- a/virtinst/install/installer.py
++++ b/virtinst/install/installer.py
+@@ -230,14 +230,13 @@ class Installer:
+                 if bootdev not in bootorder:
+                     bootorder.append(bootdev)
+                 break
++
++        if guest.can_use_device_boot_order():
++            return guest.convert_old_boot_order(bootorder)
+         return bootorder
+ 
+     def _can_set_guest_bootorder(self, guest):
+-        return (
+-            not guest.os.is_container()
+-            and not guest.os.kernel
+-            and not any([d.boot.order for d in guest.devices.get_all()])
+-        )
++        return not guest.os.is_container() and not guest.os.kernel
+ 
+     def _alter_treemedia_bootconfig(self, guest):
+         if not self._treemedia:
+@@ -262,10 +261,11 @@ class Installer:
+         self._alter_treemedia_bootconfig(guest)
+ 
+         bootdev = self._install_bootdev
++        bootorder = []
+         if bootdev and self._can_set_guest_bootorder(guest):
+-            guest.os.bootorder = self._build_boot_order(guest, bootdev)
+-        else:
+-            guest.os.bootorder = []
++            bootorder = self._build_boot_order(guest, bootdev)
++
++        guest.set_boot_order(bootorder)
+ 
+     def _alter_install_resources(self, guest, meter):
+         """
+@@ -483,9 +483,9 @@ class Installer:
+ 
+         self._add_install_cdrom_device(guest)
+ 
+-        if not guest.os.bootorder and self._can_set_guest_bootorder(guest):
++        if not guest.has_boot_order() and self._can_set_guest_bootorder(guest):
+             bootdev = self._get_postinstall_bootdev(guest)
+-            guest.os.bootorder = self._build_boot_order(guest, bootdev)
++            guest.set_boot_order(self._build_boot_order(guest, bootdev))
+ 
+         if not self._is_reinstall:
+             guest.set_defaults(None)

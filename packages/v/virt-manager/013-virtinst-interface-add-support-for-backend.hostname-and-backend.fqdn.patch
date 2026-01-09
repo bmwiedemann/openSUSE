@@ -1,0 +1,61 @@
+Subject: virtinst: interface: add support for backend.hostname and backend.fqdn
+From: Pavel Hrdina phrdina@redhat.com Fri Nov 21 10:11:34 2025 +0100
+Date: Fri Nov 21 10:18:56 2025 +0100:
+Git: d57e2e738f37444a48c1e762ee63114583d6348f
+
+Signed-off-by: Pavel Hrdina <phrdina@redhat.com>
+
+diff --git a/tests/data/cli/compare/virt-install-many-devices.xml b/tests/data/cli/compare/virt-install-many-devices.xml
+index 9b8b3c6ba..5edca096d 100644
+--- a/tests/data/cli/compare/virt-install-many-devices.xml
++++ b/tests/data/cli/compare/virt-install-many-devices.xml
+@@ -680,6 +680,11 @@
+         <range start="5000" end="6000" to="5"/>
+       </portForward>
+     </interface>
++    <interface type="user">
++      <backend type="passt" hostname="test" fqdn="test.example.com"/>
++      <mac address="00:11:22:33:44:55"/>
++      <model type="virtio"/>
++    </interface>
+     <interface type="hostdev">
+       <mac address="00:11:22:33:44:55"/>
+       <model type="virtio"/>
+diff --git a/tests/test_cli.py b/tests/test_cli.py
+index b371e604b..741f1b4c2 100644
+--- a/tests/test_cli.py
++++ b/tests/test_cli.py
+@@ -675,6 +675,7 @@ source.reservations.managed=no,source.reservations.source.type=unix,source.reser
+ --network passt,portForward=8080
+ --network passt,portForward0=7000-8000/udp,portForward1=127.0.0.1:2222:22
+ --network passt,portForward0=2001:db8:ac10:fd01::1:10:3000-4000:30,portForward1=127.0.0.1:5000-6000:5
++--network passt,backend.hostname=test,backend.fqdn=test.example.com
+ --network type=hostdev,source.address.type=pci,source.address.domain=0x0,source.address.bus=0x00,source.address.slot=0x07,source.address.function=0x0
+ --network hostdev=pci_0000_00_09_0
+ --network hostdev=0:0:4.0
+diff --git a/virtinst/cli.py b/virtinst/cli.py
+index 1203b0c8d..ed97e8809 100644
+--- a/virtinst/cli.py
++++ b/virtinst/cli.py
+@@ -4272,6 +4272,8 @@ class ParserNetwork(VirtCLIParser):
+         # Standard XML options
+         cls.add_arg("type", "type", cb=cls.set_type_cb)
+         cls.add_arg("backend.type", "backend.type")
++        cls.add_arg("backend.hostname", "backend.hostname")
++        cls.add_arg("backend.fqdn", "backend.fqdn")
+         cls.add_arg("backend.logFile", "backend.logFile")
+         cls.add_arg("trustGuestRxFilters", "trustGuestRxFilters", is_onoff=True)
+ 
+diff --git a/virtinst/devices/interface.py b/virtinst/devices/interface.py
+index 333b92eca..9d82ab586 100644
+--- a/virtinst/devices/interface.py
++++ b/virtinst/devices/interface.py
+@@ -132,6 +132,8 @@ class _Backend(XMLBuilder):
+     XML_NAME = "backend"
+ 
+     type = XMLProperty("./@type")
++    hostname = XMLProperty("./@hostname")
++    fqdn = XMLProperty("./@fqdn")
+     logFile = XMLProperty("./@logFile", do_abspath=True)
+ 
+ 

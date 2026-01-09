@@ -2246,4 +2246,12 @@
     <comment>Fix usage of XDG_DATA_HOME (bsc#1253017)</comment>
     <requestid>1322218</requestid>
   </revision>
+  <revision rev="284" vrev="6">
+    <srcmd5>4d7e1e4922d5f63ba9b7957e0667a970</srcmd5>
+    <version>5.1.0</version>
+    <time>1767974586</time>
+    <user>anag_factory</user>
+    <comment>Several upstream features and bug fixes</comment>
+    <requestid>1326011</requestid>
+  </revision>
 </revisionlist>

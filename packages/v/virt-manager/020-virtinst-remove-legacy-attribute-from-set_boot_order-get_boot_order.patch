@@ -1,0 +1,115 @@
+Subject: virtinst: remove legacy attribute from set_boot_order/get_boot_order
+From: Pavel Hrdina phrdina@redhat.com Wed Dec 3 15:30:49 2025 +0100
+Date: Thu Dec 4 16:55:51 2025 +0100:
+Git: 3985b0746f79d108bab66a21b28e1ecf6e4c415f
+
+Only tests used manual value for the attribute, otherwise we always used
+what was detected by conn_device_boot_order() function.
+
+Remove that attribute and update tests to use unittest.mock.patch where
+needed.
+
+Signed-off-by: Pavel Hrdina <phrdina@redhat.com>
+
+diff --git a/tests/test_xmlparse.py b/tests/test_xmlparse.py
+index 052850437..6e641f33f 100644
+--- a/tests/test_xmlparse.py
++++ b/tests/test_xmlparse.py
+@@ -3,6 +3,8 @@
+ # This work is licensed under the GNU GPLv2 or later.
+ # See the COPYING file in the top-level directory.
+ 
++import unittest
++
+ import pytest
+ 
+ import virtinst
+@@ -652,7 +654,8 @@ def testGuestBootorder():
+     guest, outfile = _get_test_content(kvmconn, "bootorder")
+ 
+     assert guest.get_boot_order() == ["./devices/disk[1]"]
+-    assert guest.get_boot_order(legacy=True) == ["hd"]
++    with unittest.mock.patch("virtinst.Guest.can_use_device_boot_order", return_value=False):
++        assert guest.get_boot_order() == ["hd"]
+ 
+     legacy_order = ["hd", "fd", "cdrom", "network"]
+     dev_order = [
+@@ -661,13 +664,15 @@ def testGuestBootorder():
+         "./devices/disk[2]",
+         "./devices/interface[1]",
+     ]
+-    guest.set_boot_order(legacy_order, legacy=True)
++    with unittest.mock.patch("virtinst.Guest.can_use_device_boot_order", return_value=False):
++        guest.set_boot_order(legacy_order)
++        assert guest.get_boot_order() == legacy_order
+     assert guest.get_boot_order() == dev_order
+-    assert guest.get_boot_order(legacy=True) == legacy_order
+ 
+     guest.set_boot_order(dev_order)
+     assert guest.get_boot_order() == dev_order
+-    assert guest.get_boot_order(legacy=True) == []
++    with unittest.mock.patch("virtinst.Guest.can_use_device_boot_order", return_value=False):
++        assert guest.get_boot_order() == []
+ 
+     _alter_compare(kvmconn, guest.get_xml(), outfile)
+ 
+diff --git a/virtManager/object/domain.py b/virtManager/object/domain.py
+index b8273ba7d..3e005c0f6 100644
+--- a/virtManager/object/domain.py
++++ b/virtManager/object/domain.py
+@@ -762,8 +762,7 @@ class vmmDomain(vmmLibvirtObject):
+ 
+         guest = self._make_xmlobj_to_define()
+         if boot_order != _SENTINEL:
+-            legacy = not self.can_use_device_boot_order()
+-            guest.set_boot_order(boot_order, legacy=legacy)
++            guest.set_boot_order(boot_order)
+ 
+         if boot_menu != _SENTINEL:
+             guest.os.bootmenu_enable = bool(boot_menu)
+@@ -1372,8 +1371,7 @@ class vmmDomain(vmmLibvirtObject):
+         return self.get_xmlobj().description
+ 
+     def get_boot_order(self):
+-        legacy = not self.can_use_device_boot_order()
+-        return self.xmlobj.get_boot_order(legacy=legacy)
++        return self.xmlobj.get_boot_order()
+ 
+     def get_boot_menu(self):
+         guest = self.get_xmlobj()
+diff --git a/virtinst/guest.py b/virtinst/guest.py
+index d13049be0..3f9eb0079 100644
+--- a/virtinst/guest.py
++++ b/virtinst/guest.py
+@@ -488,10 +488,10 @@ class Guest(XMLBuilder):
+         order.sort(key=lambda p: p[1])
+         return [p[0] for p in order]
+ 
+-    def get_boot_order(self, legacy=False):
+-        if legacy:
+-            return self.os.bootorder
+-        return self._get_device_boot_order() or self._convert_old_boot_order(self.os.bootorder)
++    def get_boot_order(self):
++        if self.can_use_device_boot_order():
++            return self._get_device_boot_order() or self._convert_old_boot_order(self.os.bootorder)
++        return self.os.bootorder
+ 
+     def _set_device_boot_order(self, boot_order):
+         """Sets the new device boot order for the domain"""
+@@ -506,12 +506,12 @@ class Guest(XMLBuilder):
+         for boot_idx, dev_xml_id in enumerate(boot_order, 1):
+             dev_map[dev_xml_id].boot.order = boot_idx
+ 
+-    def set_boot_order(self, boot_order, legacy=False):
++    def set_boot_order(self, boot_order):
+         """Modifies the boot order"""
+-        if legacy:
+-            self.os.bootorder = boot_order
+-        else:
++        if self.can_use_device_boot_order():
+             self._set_device_boot_order(boot_order)
++        else:
++            self.os.bootorder = boot_order
+ 
+     def reorder_boot_order(self, dev, boot_index):
+         """Sets boot order of `dev` to `boot_index`

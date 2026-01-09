@@ -1,10 +1,10 @@
 References: bsc#1213790
 
-Index: virt-manager-4.1.0/ui/details.ui
+Index: virt-manager-5.1.0/ui/details.ui
 ===================================================================
---- virt-manager-4.1.0.orig/ui/details.ui
-+++ virt-manager-4.1.0/ui/details.ui
-@@ -810,7 +810,7 @@
+--- virt-manager-5.1.0.orig/ui/details.ui
++++ virt-manager-5.1.0/ui/details.ui
+@@ -780,7 +780,7 @@
                                  </child>
                                </object>
                                <packing>

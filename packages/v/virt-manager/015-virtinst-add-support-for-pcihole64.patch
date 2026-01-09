@@ -1,0 +1,64 @@
+Subject: virtinst: add support for pcihole64
+From: Nathan Chen nathanc@nvidia.com Fri Oct 24 21:39:45 2025 +0000
+Date: Fri Nov 21 10:47:37 2025 +0100:
+Git: 411f019f81a03ca99c8fa480c8af0974e7d4179a
+
+A minimal config to specify high MMIO region size would be
+
+$ virt-install
+  ...args...
+  --controller pci,index=0,model=pcie-root,pcihole64=4294967296,pcihole64.unit=KiB
+
+Signed-off-by: Nathan Chen <nathanc@nvidia.com>
+
+diff --git a/tests/data/cli/compare/virt-install-many-devices.xml b/tests/data/cli/compare/virt-install-many-devices.xml
+index 83d0b948c..ddfbbe058 100644
+--- a/tests/data/cli/compare/virt-install-many-devices.xml
++++ b/tests/data/cli/compare/virt-install-many-devices.xml
+@@ -485,6 +485,7 @@
+     </controller>
+     <controller type="pci" index="1" model="pci-root">
+       <target index="1"/>
++      <pcihole64 unit="KiB">4294967296</pcihole64>
+     </controller>
+     <controller type="pci" index="2" model="pci-bridge">
+       <target chassisNr="1" memReserve="8196"/>
+diff --git a/tests/test_cli.py b/tests/test_cli.py
+index da4fd3f45..99f4a59dc 100644
+--- a/tests/test_cli.py
++++ b/tests/test_cli.py
+@@ -703,7 +703,7 @@ source.reservations.managed=no,source.reservations.source.type=unix,source.reser
+ --controller scsi,,model=virtio-scsi,driver_queues=4,driver.queues=4,driver.iothread=2,vectors=15
+ --controller xenbus,maxGrantFrames=64
+ --controller pci,index=0,model=pcie-root-port,target.chassis=1,target.port=1,target.hotplug=off
+---controller pci,index=1,model=pci-root,target.index=1
++--controller pci,index=1,model=pci-root,target.index=1,pcihole64=4294967296,pcihole64.unit=KiB
+ --controller pci,index=2,model=pci-bridge,target.chassisNr=1,target.memReserve=8196
+ --controller pci,index=3,model=pci-expander-bus,target.busNr=252,target.node=1
+ --controller usb3
+diff --git a/virtinst/cli.py b/virtinst/cli.py
+index c9cb3fcfe..b1499ef67 100644
+--- a/virtinst/cli.py
++++ b/virtinst/cli.py
+@@ -4492,6 +4492,8 @@ class ParserController(VirtCLIParser):
+         cls.add_arg("target.index", "target_index")
+         cls.add_arg("target.node", "target_node")
+         cls.add_arg("target.memReserve", "target_memReserve")
++        cls.add_arg("pcihole64", "pcihole64")
++        cls.add_arg("pcihole64.unit", "pcihole64_unit")
+ 
+         cls.add_arg("address", None, lookup_cb=None, cb=cls.set_address_cb)
+         cls.add_arg("num_pcie_root_ports", None, lookup_cb=None, cb=cls.noset_cb)
+diff --git a/virtinst/devices/controller.py b/virtinst/devices/controller.py
+index 754bcd666..f3c4ce61d 100644
+--- a/virtinst/devices/controller.py
++++ b/virtinst/devices/controller.py
+@@ -91,6 +91,8 @@ class DeviceController(Device):
+     target_index = XMLProperty("./target/@index", is_int=True)
+     target_node = XMLProperty("./target/node", is_int=True)
+     target_memReserve = XMLProperty("./target/@memReserve", is_int=True)
++    pcihole64 = XMLProperty("./pcihole64", is_int=True)
++    pcihole64_unit = XMLProperty("./pcihole64/@unit")
+ 
+     def _get_attached_disk_devices(self, guest):
+         ret = []

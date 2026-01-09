@@ -6,7 +6,7 @@ Index: virt-manager-5.1.0/virtinst/install/installer.py
 ===================================================================
 --- virt-manager-5.1.0.orig/virtinst/install/installer.py
 +++ virt-manager-5.1.0/virtinst/install/installer.py
-@@ -241,7 +241,8 @@ class Installer:
+@@ -240,7 +240,8 @@ class Installer:
  
      def _alter_treemedia_bootconfig(self, guest):
          if not self._treemedia:

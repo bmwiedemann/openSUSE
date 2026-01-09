@@ -1,0 +1,27 @@
+Subject: Calling loader.close() before pixbuf assignment to avoid NoneType pixbuf
+From: ropbear ropbear@selfhosted.systems Fri Oct 31 17:41:15 2025 -0400
+Date: Tue Nov 11 08:48:15 2025 +0100:
+Git: f907ede75bbcfd87cc49f18d0da3e0bfec3d29f8
+
+In the case loader.close() has more parsing to do, get_pixbuf() can
+return a NoneType which causes issues in the snapshot view. Calling
+loader.close() before this allows for proper cleanup before calling
+get_pixbuf().
+
+https://docs.gtk.org/gdk-pixbuf/method.PixbufLoader.close.html
+https://docs.gtk.org/gdk-pixbuf/method.PixbufLoader.get_pixbuf.html
+
+diff --git a/virtManager/details/snapshots.py b/virtManager/details/snapshots.py
+index 0d413a98d..f2b229f5e 100644
+--- a/virtManager/details/snapshots.py
++++ b/virtManager/details/snapshots.py
+@@ -32,8 +32,8 @@ mimemap = {
+ def _make_screenshot_pixbuf(mime, sdata):
+     loader = GdkPixbuf.PixbufLoader.new_with_mime_type(mime)
+     loader.write(sdata)
+-    pixbuf = loader.get_pixbuf()
+     loader.close()
++    pixbuf = loader.get_pixbuf()
+ 
+     maxsize = 450
+ 

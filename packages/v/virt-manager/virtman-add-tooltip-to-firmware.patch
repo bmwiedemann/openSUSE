@@ -17,7 +17,7 @@ Index: virt-manager-5.1.0/virtManager/details/details.py
  from gi.repository import Gtk
  
  import libvirt
-@@ -395,7 +399,7 @@ class vmmDetails(vmmGObjectUI):
+@@ -398,7 +402,7 @@ class vmmDetails(vmmGObjectUI):
                  "on_overview_name_changed": _e(EDIT_NAME),
                  "on_overview_title_changed": _e(EDIT_TITLE),
                  "on_machine_type_changed": _e(EDIT_MACHTYPE),
@@ -26,7 +26,7 @@ Index: virt-manager-5.1.0/virtManager/details/details.py
                  "on_overview_chipset_changed": _e(EDIT_MACHTYPE),
                  "on_details_inspection_refresh_clicked": self._inspection_refresh_clicked_cb,
                  "on_cpu_vcpus_changed": self._config_vcpus_changed_cb,
-@@ -1073,6 +1077,52 @@ class vmmDetails(vmmGObjectUI):
+@@ -1076,6 +1080,52 @@ class vmmDetails(vmmGObjectUI):
          self.storage_browser.set_browse_reason(reason)
          self.storage_browser.show(self.topwin)
  

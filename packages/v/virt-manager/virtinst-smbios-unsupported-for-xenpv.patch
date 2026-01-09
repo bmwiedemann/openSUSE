@@ -4,7 +4,7 @@ Index: virt-manager-5.1.0/virtinst/guest.py
 ===================================================================
 --- virt-manager-5.1.0.orig/virtinst/guest.py
 +++ virt-manager-5.1.0/virtinst/guest.py
-@@ -788,6 +788,8 @@ class Guest(XMLBuilder):
+@@ -785,6 +785,8 @@ class Guest(XMLBuilder):
  
          if wants_default_type and self.conn.is_qemu() and self.os.is_x86() and self.type != "kvm":
              log.warning("KVM acceleration not available, using '%s'", self.type)  # pragma: no cover

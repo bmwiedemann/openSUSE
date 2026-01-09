@@ -1,7 +1,7 @@
 #
 # spec file for package virt-manager
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,6 +49,18 @@ Source1:        virt-install.rb
 Source2:        virt-install.desktop
 Source3:        virt-manager-supportconfig
 # Upstream Patches
+Patch1:         003-virtinst-cloudinit-include-empty-meta-data-file.patch
+Patch2:         009-avoid-NoneType-pixbuf.patch
+Patch3:         012-virtManager-wrapped-details-hw-panel-with-GtkScrolledWindow.patch
+Patch4:         013-virtinst-interface-add-support-for-backend.hostname-and-backend.fqdn.patch
+Patch5:         014-virtinst-add-support-for-acpi-generic-initiator.patch
+Patch6:         015-virtinst-add-support-for-pcihole64.patch
+Patch7:         017-maint-use-constants-instead-of-strings-for-boot-devices.patch
+Patch8:         018-virtinst-rework-get_boot_order.patch
+Patch9:         019-virtinst-guest-introduce-can_use_device_boot_order.patch
+Patch10:        020-virtinst-remove-legacy-attribute-from-set_boot_order-get_boot_order.patch
+Patch11:        021-installer-add-support-to-use-device-boot-order.patch
+Patch12:        024-virtinst-Fix-XDG_DATA_HOME-handling.patch
 # SUSE Only
 Patch150:       virtman-desktop.patch
 Patch151:       virtman-kvm.patch
@@ -70,7 +82,6 @@ Patch224:       virtinst-s390x-disable-graphics.patch
 Patch225:       virtinst-add-caasp-support.patch
 Patch226:       virtinst-add-sle15-detection-support.patch
 Patch227:       virtinst-media-detection.patch
-Patch228:       virtinst-fix-XDG_DATA_HOME-handling.patch
 # Bug Fixes
 Patch251:       virtman-increase-setKeepAlive-count.patch
 Patch252:       virtman-allow-destroy-from-shutdown-menu-of-crashed-vm.patch
