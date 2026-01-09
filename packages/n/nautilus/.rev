@@ -1808,4 +1808,19 @@ Hence, recommended to be added to 12.3</comment>
     <comment></comment>
     <requestid>1319705</requestid>
   </revision>
+  <revision rev="228" vrev="1">
+    <srcmd5>6b5d0de6c9cdf0ad245626d9a640d839</srcmd5>
+    <version>49.3</version>
+    <time>1767974537</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 49.3:
+  + Bugfixes:
+    - Don't waste resources on images with extreme dimensions
+    - Consider thumbnailing finished at correct time
+    - Redraw view when screen scale factor changes
+    - Fix potential outdated view item usage
+    - Correctly close mime type program chooser dialog
+  + Updated translations. (forwarded request 1325824 from iznogood)</comment>
+    <requestid>1325909</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan  7 17:18:20 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.3:
+  + Bugfixes:
+    - Don't waste resources on images with extreme dimensions
+    - Consider thumbnailing finished at correct time
+    - Redraw view when screen scale factor changes
+    - Fix potential outdated view item usage
+    - Correctly close mime type program chooser dialog
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Nov 24 08:46:29 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.2:
