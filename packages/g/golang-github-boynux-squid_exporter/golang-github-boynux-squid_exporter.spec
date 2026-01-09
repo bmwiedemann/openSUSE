@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-boynux-squid_exporter
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2019 João Cavalheiro <jcavalheiro@suse.com>
 #
 # All modifications and additions to the file contributed by third parties
