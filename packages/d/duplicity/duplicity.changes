@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec 31 15:34:59 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 3.0.7:
+  * fix: replace custom deltree with built-in shutil.rmtree.
+  * fix: delete duplicate code in DirDelta.
+  * fix: webdavs with "--concurrency 1" failed because of missing
+    auth header.
+  * fix: disable s3 checksum workaround, warn only...
+  * fix: --log-timestamp no longer working.
+  * fix: Combined fix to related issues 912 and 914.
+
+-------------------------------------------------------------------
 Sat Dec  6 02:22:04 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 3.0.6.3:
