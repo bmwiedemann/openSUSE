@@ -1,0 +1,76 @@
+#!/bin/bash -xe
+# %scriptdir/kernel-subpackage-build %kernel_package_name %rpm_kver-%rpm_krel %package_name-%version-%release
+
+scriptdir=$(dirname $0)
+kernel_package_name=$1
+kernel_nvrq=$(echo $1-$2 | sed -e 's/[.]/[.]/g')
+package_nvr=$3
+
+
+set -o pipefail
+install -d -m 0755 $RPM_BUILD_ROOT/boot
+
+$scriptdir/splitflist $kernel_package_name kernel.flist kernel-ghost.flist
+echo Ghost files:
+cat kernel-ghost.flist
+
+rpm -q --qf '%{PREIN}' $kernel_package_name | sed -e "s/$kernel_nvrq/$package_nvr/g" > prein.sh
+rpm -q --qf '%{POSTIN}' $kernel_package_name | sed -e "s/$kernel_nvrq/$package_nvr/g" > postin.sh
+rpm -q --qf '%{PREUN}' $kernel_package_name | sed -e "s/$kernel_nvrq/$package_nvr/g" > preun.sh
+rpm -q --qf '%{POSTUN}' $kernel_package_name | sed -e "s/$kernel_nvrq/$package_nvr/g" > postun.sh
+rpm -q --qf '%{POSTTRANS}' $kernel_package_name | sed -e "s/$kernel_nvrq/$package_nvr/g" > posttrans.sh
+
+[ -z "$(rpm -q --triggers $kernel_package_name)" ] # not handled
+
+KREL=$(sed -rne '/^(\/usr)?\/lib\/modules\/([^/]+)$/{s,.*/,,;p;q}' < kernel.flist)
+grep -q /usr/lib/modules/ kernel.flist && USR=/usr
+
+$scriptdir/mergedep $KREL > modules.dep
+
+
+$scriptdir/moddep modules.dep request-modules modules
+
+$scriptdir/modflist kernel.flist modules modules.flist /lib/modules/$KREL/modules.builtin
+grep -v "^$USR/lib/modules/$KREL\\(\$\\|/kernel\\)" < kernel.flist >> modules.flist || :
+
+tar -C / -cf- -T modules.flist | tar -C $RPM_BUILD_ROOT -xvf-
+
+[ -z "$USR" ] || ln -s usr/lib $RPM_BUILD_ROOT/lib
+moderr="$(/usr/sbin/depmod -b $RPM_BUILD_ROOT -e -F /boot/System.map-$KREL $KREL 2>&1 > /dev/null)"
+[ -z "$USR" ] || rm $RPM_BUILD_ROOT/lib
+
+if [ "$moderr" ] ; then
+echo Picked modules have errors:
+echo $moderr
+exit 1
+fi
+
+echo "%defattr(-,root,root)" > subpackage.flist
+echo "%dir $USR/lib/modules/$KREL" >> subpackage.flist
+grep -v "^$USR/lib/modules/$KREL\\(\$\\|/kernel\\)" < kernel.flist >> subpackage.flist || :
+echo $USR/lib/modules/$KREL/kernel >> subpackage.flist
+while read name rest; do
+echo "%ghost $name"
+done < kernel-ghost.flist >> subpackage.flist
+
+# recreate ghost files in build root
+while read name mode size mtime link; do
+  t=$(( mode&0170000 ))
+  p="${mode:0-4:4}"
+  (( p != 0 )) || p=''
+  if (( t == 0100000 )); then
+    install -D -m "${p:-0644}" /dev/null "$RPM_BUILD_ROOT$name"
+    if [ -f "$RPM_BUILD_ROOT$name".xz ] ; then xzcat "$RPM_BUILD_ROOT$name".xz > "$RPM_BUILD_ROOT$name"
+    elif [ -f "$RPM_BUILD_ROOT$name".gz ] ; then zcat "$RPM_BUILD_ROOT$name".gz > "$RPM_BUILD_ROOT$name"
+    elif [ -f "$RPM_BUILD_ROOT$name".zst ] ; then zstdcat "$RPM_BUILD_ROOT$name".zst > "$RPM_BUILD_ROOT$name"
+    else dd if=/dev/null bs=1 count=0 status=none seek="$size" of="$RPM_BUILD_ROOT$name"
+    fi
+    touch -h --date="@$mtime" "$RPM_BUILD_ROOT$name"
+  elif (( t == 0040000 )); then
+    install -d -m "${p:-0755}" "$RPM_BUILD_ROOT$name"
+    touch -h -date="@$mtime" "$RPM_BUILD_ROOT$name"
+  elif (( t == 0120000 )); then
+    ln -s "$link" "$RPM_BUILD_ROOT$name"
+    touch -h --date="@$mtime" "$RPM_BUILD_ROOT$name"
+  fi
+done < kernel-ghost.flist

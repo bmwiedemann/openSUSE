@@ -1,0 +1,318 @@
+#
+# spec file for package kernel-source
+#
+# Copyright (c) 2026 SUSE LLC
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
+%define srcversion 6.18
+%define patchversion 6.18.4
+%define git_commit 5b8e683cb1de7d365bb5e8458530a42e7234704b
+%define variant %{nil}
+%define gcc_package gcc
+%define gcc_compiler gcc
+
+%include %_sourcedir/kernel-spec-macros
+
+%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
+
+Name:           kernel-source
+Version:        6.18.4
+%if 0%{?is_kotd}
+Release:        <RELEASE>.g5b8e683
+%else
+Release:        0
+%endif
+Summary:        The Linux Kernel Sources
+License:        GPL-2.0-only
+Group:          Development/Sources
+URL:            https://www.kernel.org/
+AutoReqProv:    off
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
+BuildRequires:  bash-sh
+%endif
+BuildRequires:  coreutils
+BuildRequires:  fdupes
+BuildRequires:  python3-base
+BuildRequires:  sed
+BuildArch:      noarch
+Prefix:         /usr/src
+
+%define src_install_dir usr/src/linux-%kernelrelease%variant
+
+# if undefined use legacy location of before SLE15
+%if %{undefined _rpmmacrodir}
+%define _rpmmacrodir /etc/rpm
+%endif
+
+Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
+%if "https://www.kernel.org/pub/linux/kernel/v6.x/" != ""
+Source1:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.sign
+Source2:        linux.keyring
+%endif
+Source3:        kernel-source.rpmlintrc
+Source14:       series.conf
+Source16:       guards
+Source17:       apply-patches
+Source19:       kernel-binary-conflicts
+Source20:       obsolete-kmps
+Source21:       config.conf
+Source23:       supported.conf
+Source33:       check-for-config-changes
+Source35:       group-source-files.pl
+Source36:       README.PATCH-POLICY.SUSE
+Source37:       README.SUSE
+Source38:       README.KSYMS
+Source40:       source-timestamp
+Source46:       split-modules
+Source47:       modversions
+Source48:       macros.kernel-source
+Source49:       kernel-module-subpackage
+Source50:       kabi.pl
+Source52:       kernel-source%variant.changes
+Source57:       kernel-cert-subpackage
+Source60:       config.sh
+Source63:       arch-symbols
+Source65:       kernel-spec-macros
+Source75:       release-projects
+Source76:       check-module-license
+Source78:       modules.fips
+Source79:       splitflist
+Source80:       mergedep
+Source81:       moddep
+Source82:       modflist
+Source83:       kernel-subpackage-build
+Source84:       kernel-subpackage-spec
+Source85:       kernel-default-base.spec.txt
+Source86:       old_changelog.txt
+Source100:      config.tar.bz2
+Source101:      config.addon.tar.bz2
+Source102:      patches.arch.tar.bz2
+Source103:      patches.drivers.tar.bz2
+Source104:      patches.fixes.tar.bz2
+Source105:      patches.rpmify.tar.bz2
+Source106:      patches.suse.tar.bz2
+Source108:      patches.addon.tar.bz2
+Source109:      patches.kernel.org.tar.bz2
+Source110:      patches.apparmor.tar.bz2
+Source111:      patches.rt.tar.bz2
+Source113:      patches.kabi.tar.bz2
+Source114:      patches.drm.tar.bz2
+Source120:      kabi.tar.bz2
+Source121:      sysctl.tar.bz2
+Requires(post): coreutils sed
+# Source is only complete with devel files.
+Requires:       kernel-devel%variant = %version-%source_rel
+Provides:       %name = %version-%source_rel
+Provides:       %name-srchash-%git_commit
+Provides:       linux
+Provides:       multiversion(kernel)
+# extra packages needed for building a kernel from scratch
+Recommends:     bc
+Recommends:     bison
+Recommends:     flex
+Recommends:     libelf-devel
+Recommends:     openssl-devel
+# pahole needed for BTF
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
+Recommends:     dwarves >= 1.22
+%endif
+# dracut no longer carries installkernel
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
+Recommends:     kernel-install-tools
+%endif
+Recommends:     %gcc_package
+%obsolete_rebuilds %name
+
+# Force bzip2 instead of lzma compression to
+# 1) allow install on older dist versions, and
+# 2) decrease build times (bsc#962356 boo#1175882)
+%define _binary_payload w9.bzdio
+
+%define symbols %(set -- $([ -e %_sourcedir/extra-symbols ] && cat %_sourcedir/extra-symbols) ; echo $*)
+
+%define do_vanilla "%variant" == ""
+
+%description
+Linux kernel sources with many fixes and improvements.
+
+
+%source_timestamp
+
+%post
+%relink_function
+
+relink linux-%kernelrelease%variant /usr/src/linux%variant
+
+%files -f nondevel.files
+
+%package -n kernel-devel%variant
+Summary:        Development files needed for building kernel modules
+Group:          Development/Sources
+AutoReqProv:    off
+Provides:       kernel-devel%variant = %version-%source_rel
+Provides:       multiversion(kernel)
+Requires:       kernel-macros
+Requires(post): coreutils
+%obsolete_rebuilds kernel-devel%variant
+
+%description -n kernel-devel%variant
+Kernel-level headers and Makefiles required for development of
+external kernel modules.
+
+
+%source_timestamp
+
+%post -n kernel-devel%variant
+%relink_function
+
+relink linux-%kernelrelease%variant /usr/src/linux%variant
+
+%files -n kernel-devel%variant -f devel.files
+%ghost /usr/src/linux%variant
+%doc /usr/share/doc/packages/*
+
+# Note: The kernel-macros package intentionally does not provide
+# multiversion(kernel) nor is its name decorated with the variant (-rt)
+%package -n kernel-macros
+Summary:        RPM macros for building Kernel Module Packages
+Group:          Development/Sources
+Provides:       kernel-subpackage-macros
+
+%description -n kernel-macros
+This package provides the rpm macros and templates for Kernel Module Packages
+
+
+%source_timestamp
+
+%if "%variant" == ""
+%files -n kernel-macros
+%{_rpmmacrodir}/macros.kernel-source
+/usr/lib/rpm/kernel-*-subpackage
+%dir /usr/lib/rpm/kernel
+/usr/lib/rpm/kernel/*
+%endif
+
+%package vanilla
+%obsolete_rebuilds %name-vanilla
+Summary:        Vanilla Linux kernel sources with minor build fixes
+Group:          Development/Sources
+AutoReqProv:    off
+Provides:       %name-vanilla = %version-%source_rel
+Provides:       multiversion(kernel)
+Requires:       kernel-macros
+# dracut no longer carries installkernel
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
+Recommends:     kernel-install-tools
+%endif
+
+%description vanilla
+Vanilla Linux kernel sources with minor build fixes.
+
+
+%source_timestamp
+
+%if %do_vanilla
+%files vanilla
+/usr/src/linux-%kernelrelease-vanilla
+%endif
+
+%prep
+
+echo "Symbol(s): %symbols"
+
+# Unpack all sources and patches
+%setup -q -c -T -a 100 -a 101 -a 102 -a 103 -a 104 -a 105 -a 106 -a 108 -a 109 -a 110 -a 111 -a 113 -a 114 -a 120 -a 121
+
+%build
+%install
+mkdir -p %{buildroot}/usr/src
+pushd %{buildroot}/usr/src
+
+# Unpack the vanilla kernel sources
+tar -xf %{S:0}
+find . -xtype l -delete -printf "deleted '%f'\n"
+if test "%srcversion" != "%kernelrelease%variant"; then
+	mv linux-%srcversion linux-%kernelrelease%variant
+fi
+
+%if %do_vanilla
+	cp -al \
+	linux-%kernelrelease%variant linux-%kernelrelease-vanilla
+cd linux-%kernelrelease-vanilla
+%_sourcedir/apply-patches --vanilla %_sourcedir/series.conf %my_builddir %symbols
+sed -i -e 's/\$(CROSS_COMPILE)gcc/\$(CROSS_COMPILE)%gcc_compiler/g' Makefile
+grep '\$(CROSS_COMPILE)%gcc_compiler' Makefile
+rm -f $(find . -name ".gitignore")
+# Hardlink duplicate files automatically (from package fdupes).
+%fdupes $PWD
+cd ..
+%endif
+
+cd linux-%kernelrelease%variant
+%_sourcedir/apply-patches %_sourcedir/series.conf %my_builddir %symbols
+sed -i -e 's/\$(CROSS_COMPILE)gcc/\$(CROSS_COMPILE)%gcc_compiler/g' Makefile
+grep '\$(CROSS_COMPILE)%gcc_compiler' Makefile
+rm -f $(find . -name ".gitignore")
+
+if [ -f %_sourcedir/localversion ] ; then
+    cat %_sourcedir/localversion > localversion
+fi
+# Hardlink duplicate files automatically (from package fdupes).
+%fdupes $PWD
+cd ..
+popd
+
+# Install the documentation and example Kernel Module Package.
+DOC=/usr/share/doc/packages/%name-%kernelrelease
+mkdir -p %buildroot/$DOC
+cp %_sourcedir/README.SUSE %buildroot/$DOC
+ln -s $DOC/README.SUSE %buildroot/%src_install_dir/
+
+%if "%variant" == ""
+install -m 755 -d %{buildroot}%{_rpmmacrodir}
+install -m 644 %_sourcedir/macros.kernel-source %{buildroot}%{_rpmmacrodir}
+echo "%%kernel_module_directory %{kernel_module_directory}" >> %{buildroot}%{_rpmmacrodir}/macros.kernel-source
+
+install -m 755 -d %{buildroot}/usr/lib/rpm
+install -m 644 %_sourcedir/kernel-{module,cert}-subpackage \
+    %{buildroot}/usr/lib/rpm/
+install -m 755 -d %{buildroot}/usr/lib/rpm/kernel
+install -m 755 %_sourcedir/{splitflist,mergedep,moddep,modflist,kernel-subpackage-build} %{buildroot}/usr/lib/rpm/kernel
+install -m 644 %_sourcedir/kernel-subpackage-spec %{buildroot}/usr/lib/rpm/kernel
+install -m 644 %_sourcedir/kernel-spec-macros %{buildroot}/usr/lib/rpm/kernel
+install -m 644 -T %_sourcedir/kernel-default-base.spec.txt %{buildroot}/usr/lib/rpm/kernel/kernel-default-base.spec
+%endif
+
+pushd "%buildroot"
+perl "%_sourcedir/group-source-files.pl" \
+	-D "$OLDPWD/devel.files" -N "$OLDPWD/nondevel.files" \
+	-L "%src_install_dir"
+popd
+
+find %{buildroot}/usr/src/linux* -type f -name '*.[ch]' -perm /0111 -exec chmod -v a-x {} +
+# OBS checks don't like /usr/bin/env in script interpreter lines
+grep -Elr '^#! */(usr/)?bin/env ' %{buildroot}/usr/src/linux* | while read f; do
+    sed -re '1 { s_^#! */usr/bin/env +/_#!/_ ; s_^#! */usr/bin/env +([^/])_#!/usr/bin/\1_ }' \
+        -e  '1 { s_^#! */bin/env +/_#!/_ ; s_^#! */bin/env +([^/])_#!/usr/bin/\1_ }' -i "$f"
+done
+# kernel-source and kernel-$flavor-devel are built independently, but the
+# shipped sources (/usr/src/linux/) need to be older than generated files
+# (/usr/src/linux-obj). We rely on the git commit timestamp to not point into
+# the future and be thus lower than the timestamps of files built from the
+# source (bnc#669669).
+ts="$(head -n1 %_sourcedir/source-timestamp)"
+find %buildroot/usr/src/linux* ! -type l -print0 | xargs -0 touch -d "$ts"
+
+%changelog

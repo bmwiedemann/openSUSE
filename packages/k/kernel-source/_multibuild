@@ -1,0 +1,17 @@
+<multibuild>
+	<package>dtb-aarch64</package>
+	<package>dtb-armv6l</package>
+	<package>dtb-armv7l</package>
+	<package>dtb-riscv64</package>
+	<package>kernel-64kb</package>
+	<package>kernel-default</package>
+	<package>kernel-docs</package>
+	<package>kernel-kvmsmall</package>
+	<package>kernel-lpae</package>
+	<package>kernel-obs-build</package>
+	<package>kernel-obs-qa</package>
+	<package>kernel-pae</package>
+	<package>kernel-syms</package>
+	<package>kernel-vanilla</package>
+	<package>kernel-zfcpdump</package>
+</multibuild>
