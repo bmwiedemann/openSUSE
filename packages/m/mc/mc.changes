@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 31 01:14:34 UTC 2025 - J Santel <jsantel@automated.computer>
+
+- run obs/service/source_validators/helpers/fix_changelog
+
+-------------------------------------------------------------------
 Mon Jan 27 21:01:26 UTC 2025 - Adam Mizerski <adam@mizerski.pl>
 
 - Update to 4.8.33:
@@ -878,8 +883,8 @@ Tue Mar 24 18:45:13 UTC 2015 - astieger@suse.com
     + Better grammar mcedit user menu  
   * Various bug fixes  
 
--------------------------------------------------------------------
 
+-------------------------------------------------------------------
 Sat Sep  6 01:40:44 UTC 2014 - dnh@opensuse.org
 
 - remove file mc-Syntax.cmake.patch / cmds in .spec
@@ -908,6 +913,7 @@ Sat Mar 15 15:35:23 UTC 2014 - dnh@opensuse.org
   mc-vfs_fish_helpers_ls-formatstring.diff, thanks to andrew_b
   of upstream in mc-ticket:2983
 
+-------------------------------------------------------------------
 Sat Mar 15 13:58:42 UTC 2014 - dnh@opensuse.org
 
 - add mc-vfs_fish_helpers_ls-formatstring.diff
@@ -1228,6 +1234,7 @@ Wed Nov 23 09:28:21 UTC 2011 - coolo@suse.com
 
 - add libtool as buildrequire to avoid implicit dependency
 
+-------------------------------------------------------------------
 Thu Aug 11 08:44:25 UTC 2011 - vladspbru@gmail.com
 
 - update to 4.7.5.3
@@ -2166,49 +2173,49 @@ Tue Sep 22 17:51:18 MEST 1998 - ro@suse.de
 - update to mc 4.1.35 using diff from jurix mirror
   merged changes to mc.lib from mc-4.1.11-suse and current (+ibmpc3)
 
-----------------------------------------------------------------------------
+-------------------------------------------------------------------
 Wed Nov 19 13:01:54 MET 1997 - florian@suse.de
 
 - update to mc 4.1.11
 
-----------------------------------------------------------------------------
+-------------------------------------------------------------------
 Sun Nov 16 23:10:51 MET 1997 - florian@suse.de
 
 - oops, forgot mc.lib-changes from Werner
 
-----------------------------------------------------------------------------
+-------------------------------------------------------------------
 Fri Oct 10 13:16:04 MEST 1997 - florian@suse.de
 
 - update to version 4.1.4
 
-----------------------------------------------------------------------------
+-------------------------------------------------------------------
 Sun Jun 22 18:57:49 MEST 1997 - florian@suse.de
 
 - update to version 4.0
 
-----------------------------------------------------------------------------
+-------------------------------------------------------------------
 Wed May 28 17:03:24 MET DST 1997 - werner@suse.de
 
 - new mc.lib added
 
-----------------------------------------------------------------------------
+-------------------------------------------------------------------
 Wed Jan 22 22:24:11 CET 1997 - florian@suse.de
 
 - enable gpm support
 
-----------------------------------------------------------------------------
+-------------------------------------------------------------------
 Tue Nov 26 20:15:03 CET 1996 - florian@suse.de
 
 - update to version 3.2.11
 
-----------------------------------------------------------------------------
+-------------------------------------------------------------------
 Mon Sep  2 17:49:41 MET DST 1996 - florian@suse.de
 
 - Es wird nicht mehr mit libgpm-Unterstuetzung kompiliert, da slang
   und libgpm sich nicht vertragen. (libgpm laed libncurses, das geht
   mit libslang.a nicht...)
 
-----------------------------------------------------------------------
+-------------------------------------------------------------------
 Sun Aug 25 19:28:50 MET DST 1996 - florian@suse.de
 
 - new version 3.2.7

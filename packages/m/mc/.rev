@@ -884,4 +884,12 @@ SLE* needs fixing anyway (forwarded request 206981 from dnh)</comment>
     <comment></comment>
     <requestid>1248797</requestid>
   </revision>
+  <revision rev="96" vrev="2">
+    <srcmd5>bc2b2df50c2b95b423ccb73e01606e1c</srcmd5>
+    <version>4.8.33</version>
+    <time>1767974588</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1326268</requestid>
+  </revision>
 </revisionlist>
