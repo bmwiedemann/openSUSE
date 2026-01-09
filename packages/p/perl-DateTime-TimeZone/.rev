@@ -742,4 +742,16 @@
     changes for Chile. (forwarded request 1269379 from tinita)</comment>
     <requestid>1269437</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>1a77640dc6eecfa550d64f445d086279</srcmd5>
+    <version>2.660.0</version>
+    <time>1767974529</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.660.0 (2.66)
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+  2.66    2025-12-11
+  - This release is based on version 2025c of the Olson database. This release only includes
+    historical changes.</comment>
+    <requestid>1325869</requestid>
+  </revision>
 </revisionlist>

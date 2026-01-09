@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec 12 05:36:44 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.660.0 (2.66)
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  2.66    2025-12-11
+
+  - This release is based on version 2025c of the Olson database. This release only includes
+    historical changes.
+
+-------------------------------------------------------------------
 Wed Mar 26 05:34:42 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.650.0 (2.65)

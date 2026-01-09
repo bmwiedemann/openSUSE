@@ -7,5 +7,4 @@ offset from GMT for a given time period.
 Note that without the 'DateTime.pm' module, this module does not do much.
 It's primary interface is through a 'DateTime' object, and most users will
 not need to directly use 'DateTime::TimeZone' methods.</description>
-  <devel project="devel:languages:perl" package="perl-DateTime-TimeZone"/>
 </package>
