@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan  5 08:51:49 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.36.1
+  * Adding CRC combine functions and updating aws-checksums submodule
+    by @sbiscigl in (#806)
+- from version 0.36.0
+  * Update submodules by @sfod in (#802)
+  * Migrate to dispatch queue on macOS by @sfod in (#803)
+
+-------------------------------------------------------------------
 Wed Dec  3 10:13:51 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.35.4
