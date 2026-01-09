@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-settings-daemon
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -97,8 +97,6 @@ BuildRequires:  python3-gobject-devel
 BuildRequires:  python3-python-dbusmock
 #
 Requires:       gsettings-desktop-schemas
-# g-s-d uses the pkexec binary
-Requires:       /usr/bin/pkexec
 # For housekeeping plugin, that uses the nautilus dbus service
 Recommends:     nautilus
 %if %{with smartcard}

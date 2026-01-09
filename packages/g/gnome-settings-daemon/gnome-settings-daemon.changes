@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan  8 09:24:18 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop /usr/bin/pkexec Requires: this has not been needed anymore
+  since GMOME 3.37.
+
+-------------------------------------------------------------------
 Mon Oct 13 22:17:58 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.1:
