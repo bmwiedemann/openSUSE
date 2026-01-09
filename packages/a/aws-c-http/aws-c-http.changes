@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan  5 09:00:28 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.10.8
+  * Fix CI issues by @azkrishpy in (#538)
+  * Update cert as it's expired by @TingDaoK in (#539)
+  * Add helper to check for transient errors by @azkrishpy in (#537)
+
+-------------------------------------------------------------------
 Tue Nov 11 08:34:18 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.10.7
