@@ -8,6 +8,7 @@ export LANG="en_US.UTF-8"
 shopt -s nullglob
 for ruby in $(/usr/bin/ruby-find-versioned) ; do
   export GEM_HOME="$(${ruby} -r rubygems -e 'puts Gem.default_dir')"
+  export RUBY="${ruby}"
   $ruby -x $0 "$@"
 done
 exit $?

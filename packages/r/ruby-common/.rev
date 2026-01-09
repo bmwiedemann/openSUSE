@@ -349,4 +349,17 @@ For staging:n</comment>
   we disable the rdoc/ri packages all the time now.</comment>
     <requestid>1324398</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>f91c8875bdab884d27a0b43717b03186</srcmd5>
+    <version>4.0.0</version>
+    <time>1767974576</time>
+    <user>anag_factory</user>
+    <comment>- Some gems (especially rust based ones) start failing if
+  /usr/bin/ruby is not available. But they can take the desired
+  ruby binary from the RUBY environment variable. Since we can not
+  really set that properly via pre_install, set it within the loop
+  to the current ruby binary before calling the ruby part of
+  gem_install.sh.</comment>
+    <requestid>1325981</requestid>
+  </revision>
 </revisionlist>
