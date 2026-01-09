@@ -55,4 +55,15 @@
   * spec: Migrate to SPDX license</comment>
     <requestid>1323466</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>7b1fbc801e4282a6b5801783cda63e5e</srcmd5>
+    <version>3.0.4</version>
+    <time>1767974662</time>
+    <user>anag_factory</user>
+    <comment>- Update corosync-qdevice.spec:
+  * Drop /run/corosync-qdevice, /var/run/corosync-qdevice, /var/run/corosync-qnetd, and /var/run/corosync-qnetd as they are created in tmpfs
+  * Drop %config(noreplace) for fillup templates to ensure correct updates.
+</comment>
+    <requestid>1326284</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan  4 06:35:24 UTC 2026 - Nicholas Yang <nicholas.yang@suse.com>
+
+- Update corosync-qdevice.spec:
+  * Drop /run/corosync-qdevice, /var/run/corosync-qdevice, /var/run/corosync-qnetd, and /var/run/corosync-qnetd as they are created in tmpfs
+  * Drop %config(noreplace) for fillup templates to ensure correct updates.
+
+-------------------------------------------------------------------
 Fri Dec 12 06:13:06 UTC 2025 - Nicholas Yang <nicholas.yang@suse.com>
 
 - Update to version 3.0.4:

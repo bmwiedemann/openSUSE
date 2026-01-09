@@ -1,7 +1,7 @@
 #
 # spec file for package corosync-qdevice
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,11 +38,9 @@ Requires:       corosync-libs > 2.4.6
 Requires:       mozilla-nss-tools
 
 %if %{with systemd}
+%{?systemd_requires}
 BuildRequires:  systemd-devel
 BuildRequires:  pkgconfig(systemd)
-Requires(post): systemd
-Requires(preun): systemd
-Requires(postun): systemd
 %else
 Requires(post): /sbin/chkconfig
 Requires(preun): /sbin/chkconfig
@@ -127,28 +125,29 @@ sed -i -e 's/^COROSYNC_QNETD_RUNAS=""$/COROSYNC_QNETD_RUNAS="coroqnetd"/' \
 This package contains the Corosync Cluster Engine Qdevice, script for creating
 NSS certificates and an init script.
 
-%pre -n corosync-qdevice
+%pre
+%if %{with systemd}
 %service_add_pre corosync-qdevice.service
-
-%post -n corosync-qdevice
-%{fillup_and_insserv -n corosync-qdevice}
-%if %{sles_version} > 0
-ln -s /run/corosync-qdevice /var/run/
 %endif
+
+%post
+%if %{with systemd}
 %service_add_post corosync-qdevice.service
+%endif
+%{fillup_and_insserv -n corosync-qdevice}
 
-%preun -n corosync-qdevice
+%preun
+%if %{with systemd}
 %service_del_preun corosync-qdevice.service
-
-%if %{sles_version}
-unlink /var/run/corosync-qdevice
 %endif
 
-%postun -n corosync-qdevice
+%postun
+%if %{with systemd}
+%service_del_postun corosync-qdevice.service
+%endif
 if [ -f /etc/sysconfig/corosync-qdevice ]; then
     rm /etc/sysconfig/corosync-qdevice
 fi
-%service_del_postun corosync-qdevice.service
 
 %files
 %defattr(-,root,root,-)
@@ -159,7 +158,7 @@ fi
 %{_sbindir}/corosync-qdevice
 %{_sbindir}/corosync-qdevice-net-certutil
 %{_sbindir}/corosync-qdevice-tool
-%config(noreplace) %{_fillupdir}/sysconfig.corosync-qdevice
+%{_fillupdir}/sysconfig.corosync-qdevice
 %if %{with systemd}
 %{_unitdir}/corosync-qdevice.service
 %{_sbindir}/rccorosync-qdevice
@@ -197,25 +196,23 @@ getent passwd coroqnetd >/dev/null || useradd -r -g coroqnetd -u 701 -s /sbin/no
 exit 0
 
 %post -n corosync-qnetd
-%if %{sles_version} > 0
-ln -s /run/corosync-qnetd /var/run/
+%if %{with systemd}
+%service_add_post corosync-qnetd.service
 %endif
 %{fillup_and_insserv -n corosync-qnetd}
 
-%service_add_post corosync-qnetd.service
-
 %preun -n corosync-qnetd
+%if %{with systemd}
 %service_del_preun corosync-qnetd.service
-
-%if %{sles_version} > 0
-unlink /var/run/corosync-qnetd
 %endif
 
 %postun -n corosync-qnetd
+%if %{with systemd}
+%service_del_postun corosync-qnetd.service
+%endif
 if [ -f /etc/sysconfig/corosync-qnetd ];then
     rm /etc/sysconfig/corosync-qnetd
 fi
-%service_del_postun corosync-qnetd.service
 
 %files -n corosync-qnetd
 %defattr(-,root,root,-)
@@ -226,7 +223,7 @@ fi
 %{_bindir}/corosync-qnetd
 %{_bindir}/corosync-qnetd-certutil
 %{_bindir}/corosync-qnetd-tool
-%config(noreplace) %{_fillupdir}/sysconfig.corosync-qnetd
+%{_fillupdir}/sysconfig.corosync-qnetd
 %if %{with systemd}
 %{_unitdir}/corosync-qnetd.service
 %{_sbindir}/rccorosync-qnetd
