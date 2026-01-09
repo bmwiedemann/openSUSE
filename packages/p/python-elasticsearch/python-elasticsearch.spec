@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-elasticsearch
-Version:        9.2.0
+Version:        9.2.1
 Release:        0
 Summary:        Python client for Elasticsearch
 License:        Apache-2.0

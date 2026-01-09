@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jan  8 13:02:08 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 9.2.1
+  * Instrument ping with OTel
+  * Make positional arguments in DSL generated classes explicit
+  * Add warnings for private APIs
+  * ES|QL query builder: fix missing assignment
+  * Use relative imports to fix elasticsearch9 package imports
+  * Added transform.get_node_stats API
+  * Added requests_per_second argument to delete_by_query_rethrottle,
+    reindex_rethrottle and update_by_query_rethrottle APIs
+  * Added allow_closed, allow_no_indices, expand_wildcards, ignore_throttled
+    and ignore_available arguments to cat.segments API
+  * Added chunking_settings argument to inference.put_watsonxai API
+  * Added id argument to ml.stop_trained_model_deployment API
+  * Removed chunking_settings argument from inference.put_anthropic,
+    inference.put_contextualai, inference.put_deepseek APIs
+  * Removed on_disk_score argument from DenseVectorIndexOptions type
+
+-------------------------------------------------------------------
 Thu Nov 20 08:33:01 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 9.2.0
