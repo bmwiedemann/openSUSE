@@ -1,7 +1,7 @@
 #
 # spec file for package kime
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 Name:           kime
 Version:        3.1.1
-Release:        1
+Release:        2
 Summary:        Korean IME
 License:        GPL-3.0-or-later
 Group:          System/I18n/Korean
@@ -59,7 +59,7 @@ Development files (headers and library) for kime Korean Input Method Engine.
 Summary:        GTK3 input module for kime
 Group:          System/I18n/Korean
 Requires:       %{name} = %{version}
-Supplements:    (%{name} and gtk3)
+Supplements:    (%{name} and libgtk-3-0)
 
 %description gtk3
 GTK3 input module for kime Korean Input Method Engine.
@@ -68,7 +68,7 @@ GTK3 input module for kime Korean Input Method Engine.
 Summary:        GTK4 input module for kime
 Group:          System/I18n/Korean
 Requires:       %{name} = %{version}
-Supplements:    (%{name} and gtk4)
+Supplements:    (%{name} and libgtk-4-1)
 
 %description gtk4
 GTK4 input module for kime Korean Input Method Engine.
@@ -86,7 +86,7 @@ Qt5 input module for kime Korean Input Method Engine.
 Summary:        Qt6 input module for kime
 Group:          System/I18n/Korean
 Requires:       %{name} = %{version}
-Supplements:    (%{name} and qt6-gui)
+Supplements:    (%{name} and libQt6Gui6)
 
 %description qt6
 Qt6 input module for kime Korean Input Method Engine.
@@ -94,12 +94,27 @@ Qt6 input module for kime Korean Input Method Engine.
 %prep
 %autosetup -a1
 
+# Fix vendor checksum for config.guess/config.sub (non-x86_64 builds)
+# Define function once, call multiple times
+fix_vendor_checksums() {
+    for checksum_file in $(find vendor -name ".cargo-checksum.json" 2>/dev/null); do
+        pkg_dir=$(dirname "$checksum_file")
+        for config_file in $(find "$pkg_dir" -name "config.guess" -o -name "config.sub" 2>/dev/null); do
+            rel_path="${config_file#$pkg_dir/}"
+            actual_checksum=$(sha256sum "$config_file" | cut -d' ' -f1)
+            escaped_path=$(echo "$rel_path" | sed 's/\//\\\//g')
+            sed -i "s/\"$escaped_path\":\"[^\"]*\"/\"$escaped_path\":\"$actual_checksum\"/g" "$checksum_file"
+        done
+    done
+}
+fix_vendor_checksums
+
 mkdir -p src/frontends/qt6/src
 cp src/frontends/qt5/src/{*.cc,*.hpp,kime.json} src/frontends/qt6/src/
 mv src/frontends/qt6/src/kime-qt5.hpp src/frontends/qt6/src/kime-qt6.hpp
 
 sed -i 's/kime-qt5\.hpp/kime-qt6.hpp/g' src/frontends/qt6/src/*.cc src/frontends/qt6/src/*.hpp
-sed -i 's/QPlatformInputContextFactoryInterface_iid/"org.qt-project.Qt.QPlatformInputContextFactoryInterface"/g' src/frontends/qt6/src/plugin.hpp
+sed -i 's/QPlatformInputContextFactoryInterface_iid/"org.qt-project.Qt.QPlatformInputContextFactoryInterface.5.1"/g' src/frontends/qt6/src/plugin.hpp
 sed -i 's|../qt5/src/plugin.cc ../qt5/src/input_context.cc|src/plugin.cc src/input_context.cc|g' src/frontends/qt6/CMakeLists.txt
 sed -i 's|target_include_directories(kime-qt6 PRIVATE ${Qt6Gui_PRIVATE_INCLUDE_DIRS}|target_include_directories(kime-qt6 PRIVATE ${Qt6Gui_PRIVATE_INCLUDE_DIRS} ${Qt6Core_PRIVATE_INCLUDE_DIRS} ${Qt6_DIR}/../../../include/qt6/QtGui/${Qt6_VERSION} ${Qt6_DIR}/../../../include/qt6/QtGui/${Qt6_VERSION}/QtGui ${Qt6_DIR}/../../../include/qt6/QtCore/${Qt6_VERSION} ${Qt6_DIR}/../../../include/qt6/QtCore/${Qt6_VERSION}/QtCore|g' src/frontends/qt6/CMakeLists.txt
 
@@ -108,6 +123,20 @@ sed -i 's|#!/usr/bin/env sh|#!/bin/sh|g' res/kime-xdg-autostart
 %build
 export LIBCLANG_PATH=$(llvm-config --libdir)
 
+# Re-define function (RPM sections run in separate shells)
+fix_vendor_checksums() {
+    for checksum_file in $(find vendor -name ".cargo-checksum.json" 2>/dev/null); do
+        pkg_dir=$(dirname "$checksum_file")
+        for config_file in $(find "$pkg_dir" -name "config.guess" -o -name "config.sub" 2>/dev/null); do
+            rel_path="${config_file#$pkg_dir/}"
+            actual_checksum=$(sha256sum "$config_file" | cut -d' ' -f1)
+            escaped_path=$(echo "$rel_path" | sed 's/\//\\\//g')
+            sed -i "s/\"$escaped_path\":\"[^\"]*\"/\"$escaped_path\":\"$actual_checksum\"/g" "$checksum_file"
+        done
+    done
+}
+
+fix_vendor_checksums
 cargo build --release --locked -p kime-engine-capi -p kime-engine-cffi
 export LIBRARY_PATH="$PWD/target/release:$LIBRARY_PATH"
 

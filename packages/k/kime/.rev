@@ -9,4 +9,12 @@ written in Rust and modern input manager.
 Linux in Korean (Hangul) users mostly use this program, but not package exist on openSUSE.</comment>
     <requestid>1325051</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>931d988428c4d0345e64cde602acbe1f</srcmd5>
+    <version>3.1.1</version>
+    <time>1767974598</time>
+    <user>anag_factory</user>
+    <comment>- Fix vendor checksum to build other arch. package for 3.1.1</comment>
+    <requestid>1325907</requestid>
+  </revision>
 </revisionlist>

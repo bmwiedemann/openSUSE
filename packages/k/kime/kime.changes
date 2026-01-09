@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jan  8 05:44:34 UTC 2026 - Kim DaeHyun <kernalix7@kodenet.io>
+
+- Fix vendor checksum to build other arch. package for 3.1.1
+
+-------------------------------------------------------------------
+Wed Jan  7 04:34:52 UTC 2026 - Kim DaeHyun <kernalix7@kodenet.io>
+
+- Fix some requires and plugin settings. package for 3.1.1
+
+-------------------------------------------------------------------
+Sat Jan  3 05:29:53 UTC 2026 - Kim DaeHyun <kernalix7@kodenet.io>
+
+- Fix vendor: use Cargo.lock versions (update=false). package for 3.1.1
+
+-------------------------------------------------------------------
+Sat Jan  3 05:06:37 UTC 2026 - Kim DaeHyun <kernalix7@kodenet.io>
+
+- Add _service for vendor. package for 3.1.1
+
+-------------------------------------------------------------------
 Thu Jan  1 06:29:04 UTC 2026 - Kim DaeHyun <kernalix7@kodenet.io>
 
 - Splitting the package and optimizing OBS guidelines. package for 3.1.1
