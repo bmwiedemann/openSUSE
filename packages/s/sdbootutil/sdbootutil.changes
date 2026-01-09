@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 08 19:51:41 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20260108.be38224:
+  * Use tmpfiles.d for /var directories (PED-14900)
+
+-------------------------------------------------------------------
+Wed Jan 07 09:46:55 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20260107.2807c87:
+  * Enable armv7 builds (boo#1254865)
+
+-------------------------------------------------------------------
 Thu Dec 18 09:13:42 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20251218.1cd7294:
