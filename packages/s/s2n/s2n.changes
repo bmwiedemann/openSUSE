@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jan  5 08:44:23 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.6.3
+  * tests(integration): cases for TLS 1.3 group selection (#5652)
+  * fix: refactor negotiate loop to fix issue with async callback (#5641)
+- from version 1.6.2
+  * feat: add client hello random getter  (#5620)
+  * chore: Rust bindings release 0.3.30 (#5633)
+  * chore: s2n-tls-hyper version bump (#5636)
+  * build(deps): bump the all-gha-updates group across 1 directory with 2 updates (#5640)
+  * feat: add rfc9151 compat policies (#5615)
+  * feat: improve performance of getting validated cert chain from libcrypto (#5622)
+  * feat: additional rfc9151 compat policy without sha1 hmac (#5645)
+  * test: add test certs for cert intent validation (#5630)
+  * test(integv2): remove dynamic record sizing test and related cleanup (#5644)
+  * feat: add additional application context into Connection (#5637)
+  * chore(bindings-release): s2n-tls v0.3.31 release (#5649)
+  * fix: allow for warning level TLS alerts prior to version negotiation (#5646)
+  * test(integration): add mTLS integration tests (#5638)
+  * feat: Ability to set "strongly preferred" groups (#5634)
+  * refactor(tls-harness): use single test pair IO to allow for decryption (#5648)
+
+-------------------------------------------------------------------
 Wed Nov 26 12:54:08 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.6.1
