@@ -1,7 +1,7 @@
 #
 # spec file for package python-Django6
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %endif
 %define skip_python311 1
 Name:           python-Django6
-Version:        6.0
+Version:        6.0.1
 Release:        0
 Summary:        A high-level Python Web framework
 License:        BSD-3-Clause
@@ -36,8 +36,6 @@ Source:         https://www.djangoproject.com/m/releases/6.0/django-%{version}.t
 Source1:        https://www.djangoproject.com/m/pgp/Django-%{version}.checksum.txt
 Source2:        %{name}.keyring
 Source99:       python-Django-rpmlintrc
-# PATCH-FIX-UPSTREAM https://github.com/django/django/pull/20390 Refs #36499 -- Adjusted test_strip_tags following Python behavior change for incomplete entities.
-Patch0:         test_strip_tags_incomplete.patch
 # PATCH-FIX-UPSTREAM https://github.com/django/django/pull/19639 Fixed #36499 -- Adjusted utils_tests.test_html.TestUtilsHtml.test_strip_tags following Python's HTMLParser new behavior.
 # fixed and refined upstream, but some of our interpreters weren't updated to a new version yet and still only carry the patch, so providing the non-conditional version
 Patch1:         test_strip_tags.patch

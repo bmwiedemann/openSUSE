@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Jan  9 10:21:45 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 6.0.1
+  * Fixed a bug in Django 5.2 where data exceeding max_length was
+    silently truncated by QuerySet.bulk_create() on PostgreSQL
+  * Fixed a regression in Django 6.0 where querystring mishandled
+    multi-value QueryDict keys, both by only preserving the last
+    value and by incorrectly handling None values
+  * Fixed a regression in Django 6.0 that prevented changing the name
+    of a ManyToManyField from taking effect when applying migrations
+  * Fixed a bug where management command colorized help (introduced in
+    Python 3.14) ignored the --no-color option and the DJANGO_COLORS
+    setting
+  * Fixed a regression in Django 6.0 that caused bulk_create() to
+    crash when introspecting the connection on SQLite
+  * Fixed a visual regression in Django 6.0 for admin form fields
+    grouped under a <fieldset> in Safari
+  * Fixed a crash in Django 6.0 caused by infinite recursion when
+    calling repr() on an unevaluated django.utils.csp.LazyNonce
+    instance
+  * Fixed a regression in Django 6.0 where path() routes defined using
+    gettext_lazy() failed to resolve correctly
+  * Fixed a regression in Django 6.0 where the Widget.use_fieldset
+    attribute of ClearableFileInput was flipped from False to True
+  * Reverted an undocumented optimization in Django 6.0 that modified
+    permission name and codename values when renaming models via a
+    migration
+- Drop merged test_strip_tags_incomplete.patch
+
+-------------------------------------------------------------------
 Tue Dec 30 08:45:31 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 6.0
