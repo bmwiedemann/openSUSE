@@ -1,7 +1,7 @@
 #
 # spec file for package Komikku
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %define         appid info.febvre.Komikku
 Name:           Komikku
-Version:        1.98.0
+Version:        1.99.0
 Release:        0
 Summary:        A manga reader for GNOME
 # appdata.xml is CC-BY-4.0
 License:        CC-BY-4.0 AND GPL-3.0-or-later
 URL:            https://codeberg.org/valos/Komikku
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         convert-to-modern-colorthief.patch
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes

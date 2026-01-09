@@ -1,0 +1,33 @@
+diff -rubN komikku/komikku/models/database/mangas.py komikku-patched/komikku/models/database/mangas.py
+--- komikku/komikku/models/database/mangas.py	2026-01-05 01:59:13.000000000 +0100
++++ komikku-patched/komikku/models/database/mangas.py	2026-01-09 00:34:13.294683759 +0100
+@@ -13,7 +13,7 @@
+ import shutil
+ import time
+ 
+-from colorthief import ColorThief
++from modern_colorthief import get_pallete
+ from PIL import Image
+ from PIL import ImageFilter
+ from PIL import ImageStat
+@@ -143,7 +143,7 @@
+                 if '@define-color' not in data:
+                     return data
+ 
+-        palette = ColorThief(cover_path).get_palette(color_count=2, quality=1)[:2]
++        palette = get_pallete(cover_path).get_palette(color_count=2, quality=1)[:2]
+         if len(palette) != 2:
+             # Single color image?
+             return None
+diff -rubN komikku/requirements.txt komikku-patched/requirements.txt
+--- komikku/requirements.txt	2026-01-05 01:59:13.000000000 +0100
++++ komikku-patched/requirements.txt	2026-01-09 00:34:23.916562365 +0100
+@@ -4,7 +4,7 @@
+ 
+ beautifulsoup4
+ brotli >= 1.2.0
+-colorthief
++modern_colorthief
+ dateparser >= 1.1.6
+ emoji
+ keyring >= 21.6.0

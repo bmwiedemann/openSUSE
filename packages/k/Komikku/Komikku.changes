@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jan  8 23:24:26 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.99.0:
+  * [Servers] Anime-Sama (FR): Update
+  * [Servers] Cartel De Manhwas (ES): Re-enabled
+  * [Servers] Kavita: Fixed chapters recovery
+  * [Servers] Neko Scans (ES): Re-enabled
+  * [Servers] NHentai: Update
+  * [Servers] Rezo Scans (EN): Disabled
+  * [Servers] Rimu Scans (FR): Disabled
+  * [Servers] Team-X (AR): Update
+  * [L10n] Updated Indonesian and Spanish translations
+- Readd convert-to-modern-colorthief.patch, as upstream wants to
+  avoid 1.8 MB of (rust) dependencies
+
+-------------------------------------------------------------------
 Sun Dec 21 09:36:16 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.98.0:
