@@ -1,7 +1,7 @@
 #
 # spec file for package trytond
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2015-2025 Dr. Axel Braun <DocB@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,7 +30,7 @@
 ##%%endif
 
 Name:           trytond
-Version:        %{majorver}.42
+Version:        %{majorver}.43
 Release:        0
 Summary:        An Enterprise Resource Planning (ERP) system
 License:        GPL-3.0-or-later
