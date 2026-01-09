@@ -134,4 +134,20 @@ migrations as well as point release upgrades
   * Update opensuse-migration-tool</comment>
     <requestid>1318477</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>81d9a95c0579c08b1d41ddefa8cc585e</srcmd5>
+    <version>20260106.d2cfd39</version>
+    <time>1767974618</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260106.d2cfd39:
+  * Update scripts/20_pulse2pipewire.sh
+  * Update scripts/20_ia32.sh
+  * Consistent no-use of sudo in migration scripts
+  * Update scripts/10_keepapparmor.sh
+  * Update scripts/10_keepselinux.sh
+  * Update opensuse-migration-tool
+  * Improve DRYRUN option to work well even from scripts
+  * Enable migration to SElinux with proper dryrun</comment>
+    <requestid>1325990</requestid>
+  </revision>
 </revisionlist>

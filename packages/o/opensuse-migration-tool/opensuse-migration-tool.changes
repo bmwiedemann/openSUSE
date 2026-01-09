@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jan 08 17:09:32 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260106.d2cfd39:
+  * Update scripts/20_pulse2pipewire.sh
+  * Update scripts/20_ia32.sh
+  * Update scripts/20_pulse2pipewire.sh
+  * Consistent no-use of sudo in migration scripts
+  * Update scripts/10_keepapparmor.sh
+  * Update scripts/10_keepselinux.sh
+  * Update scripts/10_keepapparmor.sh
+  * Update scripts/10_keepapparmor.sh
+  * Update opensuse-migration-tool
+  * Update scripts/10_keepselinux.sh
+  * Improve DRYRUN option to work well even from scripts
+  * Enable migration to SElinux with proper dryrun
+  * Update 10_keepselinux.sh
+  * Update 10_keepapparmor.sh
+  * Update 10_keepapparmor.sh
+
+-------------------------------------------------------------------
 Fri Nov  7 11:05:51 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Drop accidentally created submodule
