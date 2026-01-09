@@ -1,7 +1,7 @@
 #
 # spec file for package gtkwave
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,22 @@
 
 
 Name:           gtkwave
-Version:        3.3.114
+Version:        3.3.126
 Release:        0
 Summary:        Waveform viewer for Ditital Signals
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Electronics
 URL:            https://gtkwave.sourceforge.net/
-Source0:        https://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+Source0:        https://downloads.sourceforge.net/%{name}/%{name}-gtk3-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  gperf
-BuildRequires:  gtk2-devel
+BuildRequires:  gtk3-devel
 BuildRequires:  judy-devel
+BuildRequires:  libtirpc-devel
 BuildRequires:  tcl-devel
 BuildRequires:  tk-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  xz-devel
 BuildRequires:  zlib-devel
 Recommends:     %{name}-doc
@@ -69,12 +69,15 @@ tools.
 This package contains examples for GTKWave
 
 %prep
-%setup -q
+%setup -q -n %{name}-gtk3-%{version}
 
 %build
 %configure \
         --disable-mime-update \
-        --enable-judy
+        --enable-gtk3 \
+        --enable-judy \
+        --with-gsettings \
+        --with-tirpc
 %make_build
 
 %install
@@ -84,22 +87,17 @@ install -D -m 644 share/icons/gnome/16x16/mimetypes/gtkwave.png %{buildroot}%{_d
 install -D -m 644 share/icons/gnome/32x32/mimetypes/gtkwave.png %{buildroot}%{_datadir}/icons/hicolor/32x32/apps/gtkwave.png
 install -D -m 644 share/icons/gnome/48x48/mimetypes/gtkwave.png %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/gtkwave.png
 
-%suse_update_desktop_file -i -r %{name} Education Engineering
-
-# non OSI compliant files [bnc#783166]
-rm -r %{buildroot}%{_datadir}/%{name}/examples/des*
-
 # move documentation
 install -d %{buildroot}%{_docdir}/%{name}/
-mv %{buildroot}%{_datadir}/%{name}/gtkwave.odt %{buildroot}%{_docdir}/%{name}/
+mv %{buildroot}%{_datadir}/%{name}-gtk3/gtkwave.odt %{buildroot}%{_docdir}/%{name}/
 # move examples
-mv %{buildroot}%{_datadir}/%{name}/examples %{buildroot}%{_docdir}/%{name}/
+mv %{buildroot}%{_datadir}/%{name}-gtk3/examples %{buildroot}%{_docdir}/%{name}/
 
 %fdupes %{buildroot}/%{_datadir}/icons/
 
 %files
 %license COPYING LICENSE.TXT
-%doc ChangeLog README
+%doc ChangeLog README.md
 %exclude %{_docdir}/%{name}/gtkwave.odt
 %exclude %{_docdir}/%{name}/examples/
 %{_bindir}/*
@@ -112,6 +110,7 @@ mv %{buildroot}%{_datadir}/%{name}/examples %{buildroot}%{_docdir}/%{name}/
 %{_datadir}/icons/gnome/*/mimetypes/*.png
 %{_datadir}/icons/gtkwave*
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
+%{_datadir}/glib-2.0/schemas/com.geda.gtkwave.gschema.xml
 %{_datadir}/mime/packages/x-gtkwave-extension*.xml
 
 %files doc

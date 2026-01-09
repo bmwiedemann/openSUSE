@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Jan  1 22:12:57 UTC 2026 - Andreas Prittwitz <m4ng4n@gmx.de>
+
+- Update to 3.3.126
+  * Added -H --noheader command line option for GTK3.
+  * Fix for rendering multiline string constants in dumps.
+  * Added headerbar rc variable to disable GTK3 headerbars.
+  * Add warning message for missing XPM loader.
+  * Updated libghw to current version.
+  * Changed behavior of X search in pattern search so it is
+  matched by a single X bit.
+
+- Changes in 3.3.125
+  * Added json2stems to distribution to support newer versions
+  of Verilator.
+  * VCD parser fix for colon in VCD variable name (Jasper).
+  * Parameter size 0 fix for Vivado: backs out very old fix
+  (for MTI) that converts 0 size signals to reals.
+  * Update vcd2fst so it handles MTI 0 size conversion.
+
+-------------------------------------------------------------------
+Tue Jul  8 15:01:41 UTC 2025 - Yousaf Kaukab <yousaf.kaukab@suse.com>
+
+- Update to gtkwave v3.3.124 with gtk3
+- Updates paths with -gtk3
+- Use libtirpc for RPC
+- Drop use of %suse_update_desktop_file as it is deprecated
+     https://en.opensuse.org/openSUSE:Update-desktop-files_deprecation
+- Remove handling of /usr/share/gtkwave/examples/des* as it doesn't exist anymore
+- Update documentation files
+- Update schemas 
+
+-------------------------------------------------------------------
 Sun Jan 22 16:20:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.114:
@@ -305,60 +337,48 @@ Tue Oct 07 19:47:50 CEST 2008 - bwalle@suse.de
 - Fix build on Factory.
 - Strip binaries.
 
--------------------------------------------------------------------
 Tue Oct  7 00:00:00 CEST 2008 - 
 
 - new version 3.1.10
 
--------------------------------------------------------------------
 Tue Oct  7 00:00:00 CEST 2008 - 
 
 - new version 3.1.7
 
--------------------------------------------------------------------
 Tue Oct  7 00:00:00 CEST 2008 - 
 
 - new version 3.1.6
 
--------------------------------------------------------------------
 Tue Oct  7 00:00:00 CEST 2008 - 
 
 - new version 3.1.2
 
--------------------------------------------------------------------
 Tue Oct  7 00:00:00 CEST 2008 - 
 
 - new version 3.1.1
 
--------------------------------------------------------------------
 Tue Oct  7 00:00:00 CEST 2008 - 
 
 - new version 3.0.30
 
--------------------------------------------------------------------
 Tue Oct  7 00:00:00 CEST 2008 - 
 
 - new version 3.0.29 with better build scripts
 
--------------------------------------------------------------------
 Tue Oct  7 00:00:00 CEST 2008 - 
 
 - new version 3.0.28
 
--------------------------------------------------------------------
 Tue Oct  7 00:00:00 CEST 2008 - 
 
 - new version 3.0.23
 
--------------------------------------------------------------------
 Tue Oct  7 00:00:00 CEST 2008 - 
 
 - updated to version 3.0.21
 - added dummyfiles src/lib{z,bz2}/Makefile.in
 
--------------------------------------------------------------------
 Tue Oct  7 00:00:00 CEST 2008 - 
 
 - first specfile, mostly copied from ftp://download.fedora.redhat.com/pub/fedora/linux/extras/3/SRPMS/gtkwave-3.0.5-1.fc3.src.rpm
 
--------------------------------------------------------------------
