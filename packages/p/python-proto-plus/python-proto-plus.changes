@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan  9 13:12:53 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.27.0
+  * Add classifier for Python 3.14 (#544)
+
+-------------------------------------------------------------------
 Wed Mar 19 09:55:07 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.26.1
