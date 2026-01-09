@@ -1,6 +1,7 @@
 #
 # spec file for package libsoup
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -44,6 +45,8 @@ Patch6:         libsoup-CVE-2025-4945.patch
 Patch7:         libsoup-CVE-2025-11021.patch
 # PATCH-FIX-UPSTREAM libsoup-CVE-2025-12105.patch bsc#1252555 mgorse@suse.com -- fix use after free caused by 'finishing' queued item twice.
 Patch8:         libsoup-CVE-2025-12105.patch
+# PATCH-FIX-UPSTREAM libsoup-CVE-2025-14523.patch bsc#1254876, CVE-2025-14523, glgo#GNOME/libsoup!491 alynx.zhou@suse.com -- Reject duplicated Host in headers
+Patch9:         libsoup-CVE-2025-14523.patch
 
 BuildRequires:  glib-networking
 BuildRequires:  meson >= 0.53

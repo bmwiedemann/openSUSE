@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan  8 05:12:46 UTC 2026 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add libsoup-CVE-2025-14523.patch: Reject duplicated Host in
+  headers (bsc#1254876, CVE-2025-14523, glgo#GNOME/libsoup!491).
+
+-------------------------------------------------------------------
 Tue Nov 18 19:58:09 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Add libsoup-CVE-2025-12105.patch: fix use after free caused by
