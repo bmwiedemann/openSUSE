@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan  9 10:05:01 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.66.2:
+  * Fix incorrect assembler directive in AArch64 code
+  * Fix the libwebsockets integration test script
+  * Remove pkcs8 expected in test
+  * Add randomized unit testing for EVP_CIPHERs
+  * fix(target): fix mipseb 64bit compile
+  * Consolidate FORMAT_DER/PEM in tool-openssl
+  * Replace password string with proper class
+  * Fix ppc64le; Improve platform detection
+
+-------------------------------------------------------------------
 Sun Dec 21 23:21:09 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.66.1:

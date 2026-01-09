@@ -222,4 +222,20 @@
     <comment></comment>
     <requestid>1324022</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>565ebcce449e36d2bffb42f16ae3e0e4</srcmd5>
+    <version>1.66.2</version>
+    <time>1767974684</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.66.2:
+  * Fix incorrect assembler directive in AArch64 code
+  * Fix the libwebsockets integration test script
+  * Remove pkcs8 expected in test
+  * Add randomized unit testing for EVP_CIPHERs
+  * fix(target): fix mipseb 64bit compile
+  * Consolidate FORMAT_DER/PEM in tool-openssl
+  * Replace password string with proper class
+  * Fix ppc64le; Improve platform detection (forwarded request 1326314 from rrahl0)</comment>
+    <requestid>1326315</requestid>
+  </revision>
 </revisionlist>

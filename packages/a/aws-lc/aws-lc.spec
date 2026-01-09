@@ -19,7 +19,7 @@
 %define         sover 0
 %define         __builder ninja
 Name:           aws-lc
-Version:        1.66.1
+Version:        1.66.2
 Release:        0
 Summary:        Checksums package for AWS SDK for C
 License:        Apache-2.0
