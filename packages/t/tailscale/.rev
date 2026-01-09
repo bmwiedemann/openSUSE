@@ -464,4 +464,17 @@
     results in a panic (forwarded request 1323400 from rrahl0)</comment>
     <requestid>1323401</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>6a1f3123952fe480fe3bdf23c0366652</srcmd5>
+    <version>1.92.5</version>
+    <time>1767974651</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.92.5:
+  * types/persist: omit Persist.AttestationKey based on IsZero
+  * disable hardware attestation for kubernetes
+  * allow opting out of ACME order replace extension
+- Update to version 1.92.4:
+  * nothing of importance (forwarded request 1326274 from rrahl0)</comment>
+    <requestid>1326275</requestid>
+  </revision>
 </revisionlist>

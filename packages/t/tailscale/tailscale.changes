@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan  9 00:06:05 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.92.5:
+  * types/persist: omit Persist.AttestationKey based on IsZero
+  * disable hardware attestation for kubernetes
+  * allow opting out of ACME order replace extension
+- Update to version 1.92.4:
+  * nothing of importance
+
+-------------------------------------------------------------------
 Wed Dec 17 13:24:06 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.92.3:
