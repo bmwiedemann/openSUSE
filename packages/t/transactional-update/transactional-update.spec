@@ -1,7 +1,7 @@
 #
 # spec file for package transactional-update
 #
-# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2021 Neal Gompa
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,7 @@
 #
 
 
-%global somajor 8
+%global somajor 4
 %global libprefix libtukit
 %global libname %{libprefix}%{somajor}
 %global devname %{libprefix}-devel
@@ -26,7 +26,7 @@
 %{!?_distconfdir: %global _distconfdir %{_prefix}%{_sysconfdir}}
 
 Name:           transactional-update
-Version:        6.0.3
+Version:        5.1.0
 Release:        0
 Summary:        Transactional Updates with btrfs and snapshots
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -149,7 +149,7 @@ Summary:        D-Bus controlling service for transactional updates
 License:        GPL-2.0-or-later
 Group:          System/Libraries
 Requires:       %{libname} = %{version}-%{release}
-Requires:       dbus-service
+Requires:       dbus-1
 
 %description -n tukitd
 This package provedes the D-Bus service to access %{libname}'s

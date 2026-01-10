@@ -1489,4 +1489,11 @@ Also requires https://build.opensuse.org/request/show/1167142.</comment>
 </comment>
     <requestid>1326341</requestid>
   </revision>
+  <revision rev="124" vrev="2">
+    <srcmd5>083c34e4491a5d18a1b3bf816d05ed3d</srcmd5>
+    <version>5.1.0</version>
+    <time>1768045684</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1256446</comment>
+  </revision>
 </revisionlist>
