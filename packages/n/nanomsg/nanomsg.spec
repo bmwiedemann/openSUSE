@@ -2,7 +2,7 @@
 # spec file for package nanomsg
 #
 # Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 %define sover 6
 Name:           nanomsg
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        Socket library providing several common communication patterns
 License:        MIT
@@ -27,8 +27,6 @@ Group:          Development/Languages/C and C++
 URL:            https://nanomsg.org/
 Source:         https://github.com/nanomsg/nanomsg/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         nanomsg-fix-rpath-issue.patch
-# https://github.com/nanomsg/nanomsg/issues/1111#issuecomment-2113151297
-Patch1:         fix-chunkref.patch
 BuildRequires:  cmake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -71,7 +69,7 @@ Development and header files for nanomsg.
 %files -n libnanomsg%{sover}
 %license COPYING
 %doc RELEASING AUTHORS README.md
-%{_libdir}/libnanomsg.so.*
+%{_libdir}/libnanomsg.so.%{sover}{,.*}
 
 %files devel
 %license COPYING

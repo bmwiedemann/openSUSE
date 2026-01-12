@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan  8 21:04:40 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.2.2:
+  * Fix for TCP client state machine error in bind logic from diff
+  * Fix for abort when closing file descriptors on POSIX results in
+    unrecognized errno
+- drop fix-chunkref.patch, now included
+
+-------------------------------------------------------------------
 Wed Sep 24 09:55:36 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Add fix-chunkref.patch.
