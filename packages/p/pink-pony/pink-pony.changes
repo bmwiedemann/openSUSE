@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 10 08:42:35 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Require glu to fix build
+
+-------------------------------------------------------------------
 Wed Mar 27 09:48:33 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Build with GCC13 on Leap 15

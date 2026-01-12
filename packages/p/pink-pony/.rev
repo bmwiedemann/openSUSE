@@ -79,4 +79,12 @@
     <comment></comment>
     <requestid>1166502</requestid>
   </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>fd0a208900db01921131a104ae067060</srcmd5>
+    <version>1.4.1</version>
+    <time>1768209757</time>
+    <user>anag_factory</user>
+    <comment>- Require glu to fix build (changelog fix to unlock Factory submission) (forwarded request 1326496 from AndreasStieger)</comment>
+    <requestid>1326505</requestid>
+  </revision>
 </revisionlist>

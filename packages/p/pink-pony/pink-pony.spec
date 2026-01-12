@@ -1,7 +1,7 @@
 #
 # spec file for package pink-pony
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,7 @@ BuildRequires:  ilmbase-devel
 BuildRequires:  libsigc++2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  scons
+BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(libglfw)
 BuildRequires:  pkgconfig(protobuf)
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
