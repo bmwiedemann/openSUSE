@@ -23,7 +23,7 @@
 
 %bcond_without released
 Name:           mimetreeparser
-Version:        25.12.0
+Version:        25.12.1
 Release:        0
 Summary:        Library to parse MIME trees
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
