@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jan 11 10:40:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.18.5 (.4 was not released):
+  * chore(deps): update library/golang:1.25.5-alpine docker digest
+    to ac09a5f
+  * chore(deps): update dependency kubernetes-sigs/kind to v0.31.0
+  * chore(deps): update all github action dependencies
+  * chore(deps): update actions/checkout action to v6.0.1
+  * chore(deps): update golang to v1.25.5
+  * chore(deps): update actions/checkout action to v6
+  * chore(deps): update actions/setup-go action to v6.1.0
+  * chore(deps): update all github action dependencies
+  * chore(deps): update golang to v1.25.4
+  * chore(deps): update dependency helm/helm to v3.19.1
+  * chore(deps): update helm/kind-action action to v1.13.0
+  * chore(deps): update library/golang:1.25.3-alpine docker digest
+    to aee43c3
+  * chore(deps): update dependency cilium/cilium to v1.18.3
+
+-------------------------------------------------------------------
 Mon Oct 27 05:52:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.18.3:
