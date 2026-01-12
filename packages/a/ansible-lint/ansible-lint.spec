@@ -1,7 +1,7 @@
 #
 # spec file for package ansible-lint
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright 2018 by Lars Vogdt
 #
 # All modifications and additions to the file contributed by third parties
@@ -39,7 +39,7 @@
 
 %global lib_name ansiblelint
 Name:           ansible-lint
-Version:        25.12.1
+Version:        26.1.0
 Release:        0%{?dist}
 Summary:        Best practices checker for Ansible
 License:        MIT
@@ -77,7 +77,9 @@ BuildRequires:  %{ansible_python}-filelock >= 3.8.2
 BuildRequires:  %{ansible_python}-importlib_metadata >= 8.7.0
 BuildRequires:  %{ansible_python}-jsonschema >= 4.10.0
 BuildRequires:  %{ansible_python}-packaging >= 22.0
-BuildRequires:  %{ansible_python}-pathspec >= 0.10.3
+# https://github.com/ansible/ansible-lint/blob/v26.1.0/pyproject.toml#L45
+# "current yamllint not compatible with newer version"
+BuildRequires:  (%{ansible_python}-pathspec >= 0.10.3 with %{ansible_python}-pathspec < 1.0.0)
 BuildRequires:  %{ansible_python}-PyYAML >= 6.0.1
 BuildRequires:  %{ansible_python}-referencing >= 0.36.2
 BuildRequires:  %{ansible_python}-ruamel.yaml >= 0.18.11
@@ -97,7 +99,9 @@ Requires:       %{ansible_python}-filelock >= 3.8.2
 Requires:       %{ansible_python}-importlib_metadata >= 8.7.0
 Requires:       %{ansible_python}-jsonschema >= 4.10.0
 Requires:       %{ansible_python}-packaging >= 22.0
-Requires:       %{ansible_python}-pathspec >= 0.10.3
+# https://github.com/ansible/ansible-lint/blob/v26.1.0/pyproject.toml#L45
+# "current yamllint not compatible with newer version"
+Requires:       (%{ansible_python}-pathspec >= 0.10.3 with %{ansible_python}-pathspec < 1.0.0)
 Requires:       %{ansible_python}-PyYAML >= 6.0.1
 Requires:       %{ansible_python}-referencing >= 0.36.2
 Requires:       %{ansible_python}-ruamel.yaml >= 0.18.11

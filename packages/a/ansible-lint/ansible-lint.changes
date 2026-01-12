@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Mon Jan 12 06:39:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 26.1.0:
+  * Fixes
+    - fix: implement precise filtering for bracketed sub-tags
+      (#4892) @Jkhall81
+    - fix: avoid unnecessary creation of .ansible folders (#4894)
+      @ssbarnea
+    - fix: refactor RulesCollection to always require app argument
+      (#4891) @ssbarnea
+    - fix: anchor kind discovery to project root (#4763) (#4889)
+      @Jkhall81
+    - fix: avoid creating cache directory when listing version
+      (#4865) @ssbarnea
+    - fix: ensure exclude_paths are honored for unparseable files
+      (#4886) @Jkhall81
+    - fix: avoid use of pathspec 1.0.0 until yamllint is updated
+      (#4887) @ssbarnea
+    - fix: allow valid tabs in lineinfile nested in blocks (#4719)
+      (#4881) @Jkhall81
+    - fix: update documentation to clarify requirement to run from
+      project … (#4885) @Jkhall81
+    - fix: replace hardcoded /tmp path with secure temp directory
+      (CWE… (#4878) @Jkhall81
+    - fix: handle missing keys in '_parse_failed_msg' to prevent
+      KeyError (#4879) @Jkhall81
+    - fix: add argument_specs to meta schema (#4762) (#4880)
+      @Jkhall81
+    - fix: retire -p/--parseable option (#4884) @ssbarnea
+    - fix: correct partial-become rule documentation comments
+      (#4876) @emmanuel-ferdman
+  * Maintenance
+    - chore: add almalinux platform to meta schemas (#4893)
+      @thelinuxracoon
+    - chore: refactor testing code to reduce use of get_app()
+      (#4890) @ssbarnea
+    - chore(deps): update all dependencies (#4877) @renovate[bot]
+
+-------------------------------------------------------------------
+Mon Jan 12 06:27:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.12.2:
+  * Fixes
+    - Update configuring.md to reflect correct precommit name
+      (#4872) @AgustinRamiroDiaz
+    - fix: prevent trailing space on blank comment lines (#4868)
+      @emmanuel-ferdman
+  * Maintenance
+    - chore(deps): update dependencies [security] - abandoned
+      (#4874) @renovate[bot]
+    - chore(deps): update all dependencies (#4867) @renovate[bot]
+    - chore(deps): update dependencies [security] (#4873)
+      @renovate[bot]
+    - chore(deps): bump filelock from 3.20.0 to 3.20.1 in /.config
+      (#4869) @dependabot[bot]
+    - chore(deps): update dependencies [security] (#4870)
+      @renovate[bot]
+
+-------------------------------------------------------------------
 Thu Dec 11 07:03:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 25.12.1:
