@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan  7 12:24:31 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.1/
+- Changes since 25.12.0:
+  * agendaview.cpp - use narrow formatted dates for the day label as needed (kde#210835)
+
+-------------------------------------------------------------------
 Sat Dec  6 11:40:18 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.0
