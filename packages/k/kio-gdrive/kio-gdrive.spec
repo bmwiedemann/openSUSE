@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           kio-gdrive
-Version:        25.12.0
+Version:        25.12.1
 Release:        0
 Summary:        Google Drive KIO slave for KDE applications
 License:        GPL-2.0-or-later
