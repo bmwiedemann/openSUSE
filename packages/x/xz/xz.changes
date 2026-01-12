@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jan  2 09:21:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.8.2:
+  * liblzma:
+    - Fix the build on ARM64 on glibc versions older than
+      2.24 (2016). They don't have HWCAP_CRC32 in <sys/auxv.h>.
+    - Disable CLMUL CRC code when building for 32-bit x86
+      with old MSVC versions. This avoids a compiler bug.
+  * xz:
+    - Add a workaround for Red Hat Enterprise Linux 9
+      kernel bug which made xz fail with "xz: Failed to enable the
+      sandbox".
+    - On AIX, don't use fsync() on directories because it
+      fails.
+    - Fix the build on Emscripten.
+    - Fix the build on clang-cl on Windows.
+    - Take resource limits (RLIMIT_DATA, RLIMIT_AS, and
+      RLIMIT_VMEM)
+
+-------------------------------------------------------------------
 Thu Apr  3 15:43:23 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 5.8.1:
