@@ -1,7 +1,7 @@
 #
 # spec file for package vifm
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,18 +26,17 @@ URL:            http://%{name}.info
 Source0:        https://github.com/vifm/vifm/releases/download/v%{version}/%{name}-%{version}.tar.bz2
 Source1:        https://github.com/vifm/vifm/releases/download/v%{version}/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
+# PATCH-FEATURE-OPENSUSE obscpio.patch mcepl@suse.com
+# Add recognition of the OBSCPIO archives
+Patch0:         obscpio.patch
 BuildRequires:  file-devel
 BuildRequires:  glib2-devel
 BuildRequires:  groff
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(x11)
 %if 0%{?suse_version}
 BuildRequires:  update-desktop-files
-%endif
-%if 0%{?suse_version} > 1110
-BuildRequires:  pkgconfig(x11)
-%else
-BuildRequires:  xorg-x11-devel
 %endif
 
 %description
@@ -47,7 +46,7 @@ It supports UTF-8, a quick file view similar to midnight commander's quick view,
 and configurable color schemes.
 
 %prep
-%setup -q
+%autosetup -p1
 sed -i 's/#!\/usr\/bin\/env perl/#!\/usr\/bin\/perl/' src/vifm-convert-dircolors
 
 %build

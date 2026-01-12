@@ -1,0 +1,26 @@
+---
+ data/vifmrc |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+Index: vifm-0.14.3/data/vifmrc
+===================================================================
+--- vifm-0.14.3.orig/data/vifmrc	2025-06-04 10:28:10.000000000 +0200
++++ vifm-0.14.3/data/vifmrc	2026-01-05 10:56:40.643847787 +0100
+@@ -392,7 +392,7 @@
+ 
+ " ArchiveMount
+ filetype {*.cpio,*.cpio.gz,*.rpm,*.tar,*.tar.bz2,*.tbz2,*.tgz,*.tar.gz,*.tar.xz,
+-         \*.txz,*.tar.zst,*.tzst},
++         \*.txz,*.tar.zst,*.tzst,*.obscpio},
+         \<application/x-cpio,application/x-rpm,application/x-tar>
+        \ {Mount with archivemount}
+        \ FUSE_MOUNT|archivemount %SOURCE_FILE %DESTINATION_DIR,
+@@ -401,7 +401,7 @@
+ fileviewer *.tar.xz,*.txz tar -tJf %c
+ fileviewer *.tar.zst,*.tzst tar -t --zstd -f %c
+ fileviewer {*.tar},<application/x-tar> tar -tf %c
+-fileviewer {*.cpio},<application/x-cpio> cpio -t < %c
++fileviewer {*.cpio,*.obscpio},<application/x-cpio> cpio -t < %c
+ fileviewer {*.rpm},<application/x-rpm> rpm -q --list %c%q 2> /dev/null
+ 
+ " Rar2FsMount and rar archives
