@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sun Jan 11 12:58:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.12.0:
+  * Features
+    - OSC 52 Clipboard Support for Remote Sessions (#901)
+      Added OSC 52 escape sequence clipboard support for
+      SSH/WSL/tmux/screen environments:
+      - New CLI option: --clipboard=auto|system|osc52 (default:
+        auto)
+      - Environment variable: KUBETUI_CLIPBOARD
+      - Auto detection: Automatically uses OSC 52 when SSH session
+        is detected (SSH_CONNECTION/SSH_CLIENT/SSH_TTY)
+      - Terminal-specific handling: Proper DCS wrapping for tmux
+        and screen
+
+        Terminal	Sequence
+        tmux	    DCS Ptmux wrapped OSC 52
+        screen	  DCS wrapped OSC 52
+        Other	    OSC 52 directly
+
+    - tmux Configuration (tmux 3.3a+):
+
+        set -g allow-passthrough on
+        set -g set-clipboard on
+
+  * Bug Fixes
+    - Defer initialization of inactive contexts to prevent startup
+      crashes (#898) - Fixed an issue where kubetui would crash on
+      startup if any non-selected context had authentication
+      errors. Contexts are now initialized only when selected.
+      Thanks @umegbewe!
+  * Dependencies
+    - Updated ratatui to 0.30.0 (#894)
+    - chore(deps): update github artifact actions (#888)
+    - chore(deps): update rust crate serde_json to v1.0.149 (#902)
+    - chore(deps): update rust crate tokio to v1.49.0 (#900)
+    - chore(deps): update rust crate clap to v4.5.54 (#899)
+    - chore(deps): update rust crate serde_json to v1.0.148 (#896)
+    - chore(deps): update rust crate unicode-width to v0.2.2 (#895)
+    - chore(deps): lock file maintenance (#893)
+    - chore(deps): update rust crate serde_json to v1.0.147 (#892)
+    - chore(deps): update rust crate serde_json to v1.0.146 (#890)
+    - chore(deps): lock file maintenance (#889)
+    - chore(deps): update rust crate k8s-openapi to v0.26.1 (#887)
+
+-------------------------------------------------------------------
 Mon Dec 08 08:05:59 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.11.0:
