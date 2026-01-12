@@ -343,4 +343,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * cirrus: cs35l41: Add support for new HP Clipper laptop</comment>
     <requestid>1323383</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>df9479165b83be024c7be332e84d6e17</srcmd5>
+    <version>20260110</version>
+    <time>1768217947</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260110 (git commit fd6473795fc6):
+  * linux-firmware: qcom: sync audioreach firmwares from v1.0.1 build</comment>
+    <requestid>1326594</requestid>
+  </revision>
 </revisionlist>
