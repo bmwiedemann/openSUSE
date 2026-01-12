@@ -1,4 +1,120 @@
 -------------------------------------------------------------------
+Tue Dec 23 04:44:48 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 0.26.3:
+  * vendor: github.com/moby/go-archive v0.2.0
+  * vendor: github.com/containerd/containerd v2.2.1
+  * Dockerfile: update xx to 1.9.0
+  * Dockerfile: update Delve to 1.25.2
+  * Dockerfile: update gotestsum to 1.13.0
+  * Dockerfile: update Azurite to 3.35.0
+  * Dockerfile: update Nydus to 2.3.9
+  * Dockerfile: update nerdctl to 2.2.0
+  * Dockerfile: update stargz-snapshotter to 0.18.1
+  * Dockerfile: update CNI plugins to 1.9.0
+  * Dockerfile: update RootlessKit to 2.3.6
+  * dockerfile: update containerd to 2.2.1
+  * Dockerfile: update runc to 1.3.4
+  * vendor: github.com/docker/cli v29.1.3
+  * Fix Windows copy operations with protected system files at mount roots
+  * exporter: expose build ref to the exporter as part of buildinfo
+  * build(deps): bump actions/upload-artifact from 5 to 6
+  * build(deps): bump actions/download-artifact from 6 to 7
+  * docs: update nydus repository URLs
+  * Dockerfile: update download URL for nydus snapshotter
+  * build(deps): bump actions/cache from 4 to 5
+  * gitsign: fix for RejectExpiredKeys logic
+  * Clarify what the ARG instruction actually does during build
+  * resolver: auth refactor for better readability
+  * Resolved Lint Errors
+  * build(deps): bump github.com/containernetworking/plugins
+  * frontend/dockerfile: Chomp heredoc before parsing shebang
+  * client: use inactivity timeout for status stream shutdown
+  * Resolved unnecessary files
+  * docs: ADD --checksum supports git sources
+  * vendor: github.com/klauspost/compress v1.18.2
+  * util/tracing: use ExceptionStacktrace helper
+  * build(deps): bump softprops/action-gh-release from 2.4.2 to 2.5.0
+  * util/tracing: switch to semconv v1.37.0
+  * vendor: otel/contrib v0.63.0
+  * policy: fix metadata resolve via sessionpolicy for git and attestations
+  * vendor: update github.com/opencontainers/selinux v1.13.1
+  * hack: use bake to build the dockerfile frontend
+  * Fix markdown/links for AWS auth
+  * build(deps): bump actions/checkout from 5 to 6
+  * Removed unwanted comma from the sentence.
+  * cache(s3): request checksum calculation when required
+  * build(deps): bump golang.org/x/crypto from 0.42.0 to 0.45.0
+  * Add corruption recovery to history.db
+  * contentutil: avoid defaulting to ReadAt for fetch
+  * vendor: github.com/docker/cli v29.0.1
+  * Fix flaky TestLLBMountPerformance test on Windows
+  * docs: add link to ADD --unpack flag and order sections chronologically
+  * dockerfile: add syntax to skip a check
+  * hack: enable oci-artifact for buildkit and frontend images
+  * linter: CopyIgnoredFile correctly cleans the path before attempting a match
+  * gateway: remove development gateway frontend
+  * gateway: add missing unlock in bridge forwarder
+  * vendor: github.com/vbatts/tar-split v0.12.2
+  * test: test updates for dockerd
+  * build(deps): bump softprops/action-gh-release from 2.4.1 to 2.4.2
+  * client: enable git signature checks via policy
+  * solver: add cap for source policy session
+  * sourcepolicy: fix possible concurrent map write on sourceCache
+  * sourcepolicy: make sure rule constraints are not used from selectorCache
+  * go.mod: github.com/containerd/containerd/v2 v2.2.0
+  * llbsolver: update policy validation to parallel
+  * client: add policy test for source meta resolver
+  * policysession: dynamic source policy support
+  * image: remove image manifest content from attestation chain
+  * image: add attestationchain resolving to resolvesourcemeta
+  * image: move image source resolver away from old interface
+  * contrib(nvidia): match right apt repo based on os release
+  * dockerfile: promote RUN --security flag from labs
+  * contentutil: allow referrers objects to be moved with CopyChain
+  * dockerfile: promote --parents flag from labs
+  * ci: create ubuntu tag for buildx image
+  * build(deps): bump github.com/cloudflare/circl from 1.6.0 to 1.6.1
+  * dockerfile: update runc to 1.3.3
+  * vendor: update containerd to v2.2.0-rc.1
+  * vendor: update go-securesystemslib to v0.9.1
+  * vendor: update x/crypto to v0.42
+  * vendor: update aws sdk to v1.38.1
+  * vendor: update opentelemetry
+  * vendor: update flock to v0.13.0
+  * vendor: update azcore to v1.18.2
+  * frontend/dockerfile: add Windows skip reasons and enable cross-platform tests
+  * vendor: update containerd to v2.2.0-rc.0
+  * fix metadata resp.Body leak
+  * build(deps): bump actions/download-artifact from 5 to 6
+  * build(deps): bump actions/upload-artifact from 4 to 5
+  * docs: explain ADD --unpack flag
+  * README: Update dalec URL
+  * Enable skipped E2E test on windows
+  * git: add signature verification to CacheKey and ResolveMetadata
+  * git: test SSH signature verification
+  * git: test PGP signature verification
+  * hack: ssh fixtures generation
+  * hack: gpg test fixtures generation
+  * dockerfile: add subrequest for converting LLB contents for dockerfile
+  * Enable Windows support for BuildKit integration tests
+  * ci: push latest-ubuntu tag
+  * client: add test for git metadata resolve with return object
+  * source: add raw commit/tag object access to resolveMetadata
+  * git: separate remoteFetch from checkout for better reuse
+  * git: add resolvercache support to git source
+  * solver: add ResolverCache support
+  * hack: use bake to build buildkit binaries
+  * ci: publish ubuntu variant with nvidia and venus build tags
+  * ci: publish ubuntu variant with nvidia build tag
+  * solver: add jobCtx support to metadata resolver
+  * http: fix release race between cache and snapshot
+  * solver: add cleanup function to jobctx and pass through sources
+  * frontend: add required paths to LLB and use it with --parents
+  * Fix xattr copy failures on SELinux systems
+  * docs/Dockerfile: document healthcheck timeout uses SIGKILL
+
+-------------------------------------------------------------------
 Tue Oct 14 07:01:36 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 0.25.1:
