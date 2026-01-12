@@ -515,4 +515,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * amdgpu: DMCUB updates for various ASICs</comment>
     <requestid>1324917</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>d8e75ecb1ba24beded436c4626d8bbf1</srcmd5>
+    <version>20260109</version>
+    <time>1768217933</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260109 (git commit 22a3f51d6a95):
+  * amdgpu: Update dcn314, dcn315 firmware to 0.1.42.0</comment>
+    <requestid>1326588</requestid>
+  </revision>
 </revisionlist>
