@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           akonadi-contacts
-Version:        25.12.0
+Version:        25.12.1
 Release:        0
 Summary:        KDE PIM Libraries for Akonadi Contacts
 License:        LGPL-2.1-or-later
