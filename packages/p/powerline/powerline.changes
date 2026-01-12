@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan  9 09:54:41 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Use %python3_fix_shebang_path to fix python binaries hashbangs
+  bsc#1255982
+
+-------------------------------------------------------------------
 Tue Mar 11 10:01:27 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add powerline-python3_13-compat.patch: Fix TypeError with python

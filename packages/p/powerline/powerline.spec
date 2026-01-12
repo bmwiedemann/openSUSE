@@ -1,7 +1,7 @@
 #
 # spec file for package powerline
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -115,11 +115,7 @@ to your ~/.tmux.conf file.
 sed -i -e '1{/^#!/ d}' powerline/bindings/pdb/__main__.py
 
 # Fix env dependent hashbangs
-sed -Ei "1{s@^#\!/usr/bin/env python@#\!%{_bindir}/python%{python3_version}@}" \
-  powerline/bindings/awesome/powerline-awesome.py \
-  powerline/bindings/bar/powerline-bar.py \
-  powerline/bindings/i3/powerline-i3.py \
-  powerline/bindings/lemonbar/powerline-lemonbar.py
+%python3_fix_shebang_path powerline/bindings/awesome/powerline-awesome.py powerline/bindings/bar/powerline-bar.py powerline/bindings/i3/powerline-i3.py powerline/bindings/lemonbar/powerline-lemonbar.py
 
 sed -i -e "/DEFAULT_SYSTEM_CONFIG_DIR/ s@None@'%{_sysconfdir}/xdg'@" powerline/config.py
 sed -i -e "/TMUX_CONFIG_DIRECTORY/ s@BINDINGS_DIRECTORY@'%{_prefix}/share'@" powerline/config.py
