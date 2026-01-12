@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kollision
-Version:        25.12.0
+Version:        25.12.1
 Release:        0
 Summary:        Kollision game
 License:        GPL-2.0-or-later
