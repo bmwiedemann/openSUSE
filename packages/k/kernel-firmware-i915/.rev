@@ -185,4 +185,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * i915: Xe3LPD DMC v2.33</comment>
     <requestid>1324919</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d18d9bb932e7ce16daa9bed9d050f983</srcmd5>
+    <version>20260109</version>
+    <time>1768217937</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260109 (git commit 22a3f51d6a95):
+  * i915: Xe3p_LPD DMC v2.33</comment>
+    <requestid>1326590</requestid>
+  </revision>
 </revisionlist>
