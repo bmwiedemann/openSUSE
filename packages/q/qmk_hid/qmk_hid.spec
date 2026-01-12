@@ -1,7 +1,7 @@
 #
 # spec file for package qmk_hid
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define qmk_version 0.28.5
 Name:           qmk_hid
-Version:        0.1.12+git44
+Version:        0.1.13
 Release:        0
 Summary:        Commandline tool for interacting with QMK devices over HID
 License:        BSD-3-Clause

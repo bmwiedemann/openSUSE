@@ -1,7 +1,7 @@
 #
 # spec file for package python-qmk_gui
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %bcond_without libalternatives
 %define tag_version 0.1.12
 Name:           python-qmk_gui
-Version:        0.1.12+git44
+Version:        0.1.13
 Release:        0
 Summary:        Python GUI for qmk_hid
 License:        BSD-3-Clause
