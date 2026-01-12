@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan  9 15:16:52 UTC 2026 - Axel Braun <axel.braun@gmx.de>
+
+- version 5.0.1
+  * Fix issue #11. default settings for federation.gnhealth.org not working
+  * allow Python 3.14
+
+-------------------------------------------------------------------
 Tue Jul  1 07:35:48 UTC 2025 - Axel Braun <axel.braun@gmx.de>
 
 - version 5.0.0

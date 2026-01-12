@@ -1,8 +1,8 @@
 #
 # spec file for package gnuhealth-client
 #
-# Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2015-2025 Dr. Axel Braun
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2015-2026 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %{?sle15_python_module_pythons}
 
 Name:           gnuhealth-client
-Version:        %{majorver}.0
+Version:        %{majorver}.1
 Release:        0
 Summary:        The client of the GNU Health Hospital system
 License:        GPL-3.0-only
@@ -80,7 +80,7 @@ BuildArch:      noarch
 The client of the GNU Health Hospital application
 
 %prep
-%autosetup
+%autosetup -n his-client
 
 pwd
 cd gnuhealth/plugins
@@ -121,8 +121,8 @@ cp %{buildroot}%{mysitelib}/gnuhealth/data/pixmaps/gnuhealth/gnuhealth-icon.png 
 %doc Changelog
 %license COPYRIGHT COPYING
 %{_datadir}/pixmaps/*
-%{mysitelib}/gnuhealth_client-5.0.0.dist-info
+%{mysitelib}/gnuhealth_client-%{version}.dist-info
 %{mysitelib}/gnuhealth
-%{mysitelib}/gnuhealth_client-5.0.0.dist-info/*
+%{mysitelib}/gnuhealth_client-%{version}.dist-info/*
 
 %changelog
