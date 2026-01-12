@@ -1,5 +1,46 @@
 -------------------------------------------------------------------
-Wed Dec 17 10:44:06 UTC 2025 - gerald_chen@foxmail.com
+Fri Jan 09 14:49:04 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Update to version 16.8.0:
+  * chore: release v16.8.0 (#1638)
+  * chore(deps): update lockfile (#1671)
+  * ci(release): fix OpenBSD release job (#1639)
+  * chore(pre-commit): autoupdate (#1668)
+  * chore(deps): lock file maintenance (#1666)
+  * chore(deps): update rust crate tokio to ~1.49.0 (#1663)
+  * chore(renovate): change semantic commit type to always be 'chore' (#1665)
+  * chore: fix category (os -> command-line-utlilities) in Cargo.toml (#1664)
+  * chore: remove deprecated authors field from Cargo.toml (#1661)
+  * chore: add authors and maintainers to pyproject.toml (#1662)
+  * feat(cursor): add cursor extension update support (#1659)
+  * chore(deps): update rust crate clap_complete to v4.5.64 (#1654)
+  * chore(deps): bump clap_complete (#1657)
+  * chore(pre-commit): autoupdate (#1655)
+  * chore(deps): update vmactions/openbsd-vm digest to 00753f2 (#1649)
+  * chore(deps): lock file maintenance (#1652)
+  * chore(deps): update rust crate serde_json to v1.0.148 (#1650)
+  * chore(deps): update rust crate serde_json to v1.0.147 (#1645)
+  * fix(deps): update rust crate tempfile to ~3.24.0 (#1646)
+  * chore: delete unused build-all.sh script (#1644)
+  * docs: update bug_report issue template (#1643)
+  * chore(deps): update rust crate serde_json to v1.0.146 (#1640)
+  * docs: add Discord link to Python package (#1641)
+  * chore(deps): pin vmactions/openbsd-vm action to a17ab0b (#1636)
+  * chore(deps): update actions/attest-build-provenance action to v3.1.0 (#1637)
+  * ci(release): add OpenBSD release steps (#1630)
+  * chore(deps): lock file maintenance (#1631)
+  * chore(deps): pin async-lock to prevent MSRV bump (#1635)
+  * chore(deps): pin async-lock to prevent MSRV bump (#1633)
+  * chore(deps): pin async-lock to prevent MSRV bump (#1632)
+  * chore(deps): update actions/attest-build-provenance action to v3.1.0 (#1629)
+  * chore(deps): update lockfile (#1628)
+  * chore(deps): update github/codeql-action action to v4.31.9 (#1620)
+  * fix(deps): update rust crate toml to v0.9.10 (#1625)
+  * ci(release): fix winget releases (#1623)
+  * ci(release): fix winget releases (#1621)
+
+-------------------------------------------------------------------
+Wed Dec 17 10:44:06 UTC 2025 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 16.7.0:
   * chore: release v16.7.0 (#1610)
@@ -21,7 +62,7 @@ Wed Dec 17 10:44:06 UTC 2025 - gerald_chen@foxmail.com
   * chore(deps): update release-plz/action digest to 487eb7b (#1590)
 
 -------------------------------------------------------------------
-Sun Dec 07 01:23:40 UTC 2025 - gerald_chen@foxmail.com
+Sun Dec 07 01:23:40 UTC 2025 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 16.6.1:
   * chore: release v16.6.1 (#1575)
@@ -37,7 +78,7 @@ Sun Dec 07 01:23:40 UTC 2025 - gerald_chen@foxmail.com
   * chore(deps): update mac-notification-sys (#1574)
 
 -------------------------------------------------------------------
-Tue Dec 02 15:20:18 UTC 2025 - gerald_chen@foxmail.com
+Tue Dec 02 15:20:18 UTC 2025 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 16.6.0:
   * chore: release v16.6.0 (#1565)
@@ -50,7 +91,7 @@ Tue Dec 02 15:20:18 UTC 2025 - gerald_chen@foxmail.com
   * docs: README.md fixes (#1564)
 
 -------------------------------------------------------------------
-Wed Nov 26 14:04:57 UTC 2025 - gerald_chen@foxmail.com
+Wed Nov 26 14:04:57 UTC 2025 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 16.5.0:
   * chore: release v16.5.0 (#1547)
@@ -86,7 +127,7 @@ Wed Nov 26 14:04:57 UTC 2025 - gerald_chen@foxmail.com
   * feat(containers): add option to run `system prune` (#1523)
 
 -------------------------------------------------------------------
-Mon Nov 17 16:08:44 UTC 2025 - gerald_chen@foxmail.com
+Mon Nov 17 16:08:44 UTC 2025 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Re-enable dependencies update in cargo_vendor service. Rust
   version conflict has been partially addressed by upstream. See
@@ -118,7 +159,7 @@ Mon Nov 17 16:08:44 UTC 2025 - gerald_chen@foxmail.com
   * feat(chezmoi): add `exclude_encrypted` config (#1453)
 
 -------------------------------------------------------------------
-Tue Nov 11 00:35:39 UTC 2025 - gerald_chen@foxmail.com
+Tue Nov 11 00:35:39 UTC 2025 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 16.2.1:
   * chore: release v16.2.1 (#1462)
@@ -180,7 +221,7 @@ Tue Nov 11 00:35:39 UTC 2025 - gerald_chen@foxmail.com
   * fix(release): Fix FreeBSD build and add manual workflow trigger (#1399)
 
 -------------------------------------------------------------------
-Sat Nov 01 14:45:33 UTC 2025 - gerald_chen@foxmail.com
+Sat Nov 01 14:45:33 UTC 2025 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 16.1.1:
   * chore: release v16.1.1 (#1392)
@@ -191,7 +232,7 @@ Sat Nov 01 14:45:33 UTC 2025 - gerald_chen@foxmail.com
   * fix(release): Fix FreeBSD release (#1391)
 
 -------------------------------------------------------------------
-Sat Nov 01 09:56:40 UTC 2025 - gerald_chen@foxmail.com
+Sat Nov 01 09:56:40 UTC 2025 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update cargo_vendor service config
   * Not update dependencies to avoid rust edition conflict
@@ -321,7 +362,7 @@ Sat Nov 01 09:56:40 UTC 2025 - gerald_chen@foxmail.com
   * Install rustfmt and clippy where necessary (#1171)
 
 -------------------------------------------------------------------
-Fri Jun 13 11:41:19 UTC 2025 - gerald_chen@foxmail.com
+Fri Jun 13 11:41:19 UTC 2025 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 16.0.4:
   * chore: release v16.0.4 (#1169)
@@ -351,7 +392,7 @@ Fri Jun 13 11:41:19 UTC 2025 - gerald_chen@foxmail.com
   * Downgrade `create_release_assets.yml` workflow (#1098)
 
 -------------------------------------------------------------------
-Thu Apr 03 11:16:30 UTC 2025 - gerald_chen@foxmail.com
+Thu Apr 03 11:16:30 UTC 2025 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 16.0.3:
   * chore: bump version to 16.0.3 (#1094)
@@ -390,7 +431,7 @@ Thu Apr 03 11:16:30 UTC 2025 - gerald_chen@foxmail.com
   * fix: dont ignore rpm-ostree when bootc is found (#999)
 
 -------------------------------------------------------------------
-Wed Jan 01 11:37:35 UTC 2025 - gerald_chen@foxmail.com
+Wed Jan 01 11:37:35 UTC 2025 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 16.0.2:
   * chore: release v16.0.2 (#995)
@@ -414,7 +455,7 @@ Wed Jan 01 11:37:35 UTC 2025 - gerald_chen@foxmail.com
   * ci: add bin pkg to aur (#944)
 
 -------------------------------------------------------------------
-Fri Oct 25 02:23:33 UTC 2024 - gerald_chen@foxmail.com
+Fri Oct 25 02:23:33 UTC 2024 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 16.0.1:
   * chore: release v16.0.1 (#940)
@@ -469,7 +510,7 @@ Fri Oct 25 02:23:33 UTC 2024 - gerald_chen@foxmail.com
   * docs: update release procedure (#845)
 
 -------------------------------------------------------------------
-Thu Jul 04 08:01:26 UTC 2024 - gerald_chen@foxmail.com
+Thu Jul 04 08:01:26 UTC 2024 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 15.0.0:
   * chore: prepare for v15.0.0 (#843)
