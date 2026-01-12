@@ -880,4 +880,12 @@ This should fix the problems reported with the previous openSUSE:Factory submiss
     * Update FreeType to 2.14.1 on macOS and Linux wheels #9217 [@radarhere]</comment>
     <requestid>1318702</requestid>
   </revision>
+  <revision rev="75" vrev="2">
+    <srcmd5>03e7e459b8d4a09389e6d48dd707c22f</srcmd5>
+    <version>12.0.0</version>
+    <time>1768217925</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1326491</requestid>
+  </revision>
 </revisionlist>
