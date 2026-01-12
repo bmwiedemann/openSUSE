@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Jan  7 12:24:59 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.1/
+- Changes since 25.12.0:
+  * Adapt to another Poppler 26.01 API change
+  * Port away from deprecated ZXing API
+  * Adapt extractor scripts to Poppler 26.01 whitespace changes
+  * Ensure we concatenate PDF page text with a line break
+  * Add support for gomus annual tickets
+  * Silence UIC ticket barcode runtime parser warnings
+  * Normalize whitespaces in reservation numbers
+  * Fix HTML document unit test on Windows
+  * klm: add parser for en "Ticket for your trip" emails
+  * Extract boardingGroup from KLM boarding passes
+  * Force Unix line breaks and physical layout for PDF text extraction
+  * Adapt to Poppler 26.01 API changes
+  * Fix crash on referenced but non-existent PDF masks (kde#513945)
+  * Extract station identifiers from domestic Czech train tickets
+  * Read passenger name from Czech 3697OT UIC ticket barcode blocks
+  * Handle 3697OT UIC vendor blocks in Czech railways extractor script
+  * Decode 3697OT UIC vendor blocks as 1154UT blocks too
+  * Build static extractor against release branch dependencies
+  * Support Italian booking.com confirmation emails
+  * Update DB ical extraction patterns for international trips
+  * Correctly merge Deutsche Bahn "code share" trains
+  * Update extractor script for DB seat reservations
+  * Fix MÁV v4 barcode matching pattern
+  * Handle MÁV Volan bus ticket barcodes
+  * Accept bus reservations with just a departure day as well
+
+-------------------------------------------------------------------
 Sat Dec  6 11:40:44 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.0
