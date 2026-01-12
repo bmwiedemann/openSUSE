@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan 10 07:59:39 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260109 (git commit 22a3f51d6a95):
+  * QCA: Add Bluetooth firmware for QCC2072 uart interface
+
+-------------------------------------------------------------------
 Wed Jan  7 08:52:34 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260106 (git commit e272e0d1edce):
