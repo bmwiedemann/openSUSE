@@ -20,12 +20,12 @@
 # https://github.com/telegramdesktop/tdesktop/blob/8fab9167beb2407c1153930ed03a4badd0c2b59f/snap/snapcraft.yaml#L87-L88
 %define api_id    611335
 %define api_hash  d524b414d21f4d37f08684c1df41ac9c
-%define ada_ver   3.3.0
+%define ada_ver   3.4.1
 %define h264_ver  2.6.0
 %define owt_ver   git20251128
-%define td_ver    git20260103
+%define td_ver    git20260108
 Name:           telegram-desktop
-Version:        6.4.1
+Version:        6.4.2
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
