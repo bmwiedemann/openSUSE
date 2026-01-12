@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kmahjongg
-Version:        25.12.0
+Version:        25.12.1
 Release:        0
 Summary:        Mahjongg game
 License:        GPL-2.0-or-later
