@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan  7 12:25:30 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.1/
+- Changes since 25.12.0:
+  * Fix extreme downscaling of custom stamps (kde#370382)
+  * DVI: account for page info being unknown in text handling (kde#513500)
+  * CI: Add documentation build
+  * Use custom std::numpunct to achieve the formatting we want
+
+-------------------------------------------------------------------
 Sun Dec 21 08:33:02 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Recommend a dingbats font for embedded forms
