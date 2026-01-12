@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           pimcommon
-Version:        25.12.0
+Version:        25.12.1
 Release:        0
 Summary:        Base package of KDE PIM PimCommon library
 License:        GPL-2.0-only AND LGPL-2.1-or-later
