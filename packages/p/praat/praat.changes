@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Jan  4 15:11:20 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.4.52:
+  * Prevented a crash when a “barren” edition tried to run
+    runAllTests_batch.praat.
+  * Sound: To PowerCepstrogram... now averages the power over
+    channels instead of taking only channel 1.
+- Changes from versions 6.4.49 to 6.4.51:
+  * A bit of speech recognition via Whisper.cpp (adapted to Praat
+    by Anastasia Shchupak), such as Transcribe interval in the
+    TextGrid window. 
+  * Open without error messages or warnings Kay files that have
+    one sample too few or too many.
+  * Linux: the standard Linux edition now runs equally well on
+    Ubuntu, Fedora, Debian and Centos.
+  * EditDistanceTable: made readable and writable.
+- Re-base patches for update:
+  * praat-allow-system-flags.patch
+  * praat-use_system_libs.patch
+
+-------------------------------------------------------------------
 Thu Dec 11 09:59:06 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.4.48:

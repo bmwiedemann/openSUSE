@@ -20,10 +20,10 @@ not recommendable for distro inclusion.
  melder/melder.cpp            |    2 +-
  7 files changed, 18 insertions(+), 23 deletions(-)
 
-Index: praat.github.io-6.4.39/melder/NUMlinprog.cpp
+Index: praat.github.io-6.4.52/melder/NUMlinprog.cpp
 ===================================================================
---- praat.github.io-6.4.39.orig/melder/NUMlinprog.cpp
-+++ praat.github.io-6.4.39/melder/NUMlinprog.cpp
+--- praat.github.io-6.4.52.orig/melder/NUMlinprog.cpp
++++ praat.github.io-6.4.52/melder/NUMlinprog.cpp
 @@ -17,7 +17,7 @@
   */
  
@@ -33,10 +33,10 @@ Index: praat.github.io-6.4.39/melder/NUMlinprog.cpp
  
  struct structNUMlinprog {
  	glp_prob *linearProgram;
-Index: praat.github.io-6.4.39/melder/NUMspecfunc.cpp
+Index: praat.github.io-6.4.52/melder/NUMspecfunc.cpp
 ===================================================================
---- praat.github.io-6.4.39.orig/melder/NUMspecfunc.cpp
-+++ praat.github.io-6.4.39/melder/NUMspecfunc.cpp
+--- praat.github.io-6.4.52.orig/melder/NUMspecfunc.cpp
++++ praat.github.io-6.4.52/melder/NUMspecfunc.cpp
 @@ -31,10 +31,10 @@
  #include "melder.h"
  #include "../dwsys/NUM2.h"   // NUMridders
@@ -52,10 +52,10 @@ Index: praat.github.io-6.4.39/melder/NUMspecfunc.cpp
  
  double NUMlnGamma (double x) {
  	gsl_sf_result result;
-Index: praat.github.io-6.4.39/melder/melder.cpp
+Index: praat.github.io-6.4.52/melder/melder.cpp
 ===================================================================
---- praat.github.io-6.4.39.orig/melder/melder.cpp
-+++ praat.github.io-6.4.39/melder/melder.cpp
+--- praat.github.io-6.4.52.orig/melder/melder.cpp
++++ praat.github.io-6.4.52/melder/melder.cpp
 @@ -24,7 +24,7 @@
  #include "melder_enums.h"
  
@@ -65,10 +65,10 @@ Index: praat.github.io-6.4.39/melder/melder.cpp
  #ifdef macintosh
  	#include <Carbon/Carbon.h>   // Gestalt
  #endif
-Index: praat.github.io-6.4.39/dwsys/Makefile
+Index: praat.github.io-6.4.52/dwsys/Makefile
 ===================================================================
---- praat.github.io-6.4.39.orig/dwsys/Makefile
-+++ praat.github.io-6.4.39/dwsys/Makefile
+--- praat.github.io-6.4.52.orig/dwsys/Makefile
++++ praat.github.io-6.4.52/dwsys/Makefile
 @@ -4,7 +4,7 @@
  
  include ../makefile.defs
@@ -85,10 +85,10 @@ Index: praat.github.io-6.4.39/dwsys/Makefile
 -$(OBJECTS): *.h ../melder/*.h ../stat/*.h ../sys/*.h ../fon/*.h ../external/gsl/*.h ../external/num/*.h ../dwsys/*.h ../kar/*.h
 +$(OBJECTS): *.h ../melder/*.h ../stat/*.h ../sys/*.h ../fon/*.h /usr/include/gsl/*.h ../external/num/*.h ../dwsys/*.h ../kar/*.h
  
-Index: praat.github.io-6.4.39/dwtools/Sound_extensions.cpp
+Index: praat.github.io-6.4.52/dwtools/Sound_extensions.cpp
 ===================================================================
---- praat.github.io-6.4.39.orig/dwtools/Sound_extensions.cpp
-+++ praat.github.io-6.4.39/dwtools/Sound_extensions.cpp
+--- praat.github.io-6.4.52.orig/dwtools/Sound_extensions.cpp
++++ praat.github.io-6.4.52/dwtools/Sound_extensions.cpp
 @@ -37,10 +37,10 @@
  #include "Manipulation.h"
  #include "NUMcomplex.h"
@@ -104,26 +104,40 @@ Index: praat.github.io-6.4.39/dwtools/Sound_extensions.cpp
  
  #include "enums_getText.h"
  #include "Sound_extensions_enums.h"
-Index: praat.github.io-6.4.39/Makefile
+Index: praat.github.io-6.4.52/dwtools/Makefile
 ===================================================================
---- praat.github.io-6.4.39.orig/Makefile
-+++ praat.github.io-6.4.39/Makefile
-@@ -21,27 +21,22 @@ all: all-external all-self
+--- praat.github.io-6.4.52.orig/dwtools/Makefile
++++ praat.github.io-6.4.52/dwtools/Makefile
+@@ -5,7 +5,7 @@
+ include ../makefile.defs
+ 
+ CPPFLAGS = -I . -I ../kar -I ../melder -I ../sys -I ../dwsys -I ../stat -I ../fon -I ../LPC -I ../foned -I ../EEG \
+-	-I ../external/clapack -I ../external/vorbis -I ../external/opusfile -I ../external/portaudio -I ../external/espeak \
++	-I ../external/clapack -I /usr/include/opus -I ../external/portaudio -I ../external/espeak \
+ 	-I ..external/num
+ 
+ OBJECTS = ActivationList.o AffineTransform.o AnalyticSound.o \
+Index: praat.github.io-6.4.52/Makefile
+===================================================================
+--- praat.github.io-6.4.52.orig/Makefile
++++ praat.github.io-6.4.52/Makefile
+@@ -21,28 +21,23 @@ all: all-external all-self
  		dwsys/libdwsys.a sys/libsys.a melder/libmelder.a kar/libkar.a \
  		external/espeak/libespeak.a \
  		external/portaudio/libportaudio.a \
 -		external/flac/libflac.a external/lame/liblame.a external/mp3/libmp3.a \
 -		external/glpk/libglpk.a \
-+ 		external/flac/libflac.a external/mp3/libmp3.a \
-+ 		`pkg-config --libs libpulse` -lglpk \
-+ 		`pkg-config --libs gsl` \
-+ 		`pkg-config --libs lame` \
++		external/flac/libflac.a external/mp3/libmp3.a \
++		`pkg-config --libs libpulse` -lglpk \
++		`pkg-config --libs gsl` \
++		`pkg-config --libs lame` \
  		external/clapack/libclapack.a \
 -		external/gsl/libgsl.a \
  		external/num/libnum.a \
 -		external/vorbis/libvorbis.a \
 -		external/opusfile/libopusfile.a \
-+ 		`pkg-config --libs vorbis vorbisfile ogg opusfile` \
++		`pkg-config --libs vorbis vorbisfile ogg opusfile` \
+ 		external/whispercpp/libwhisper.a \
  		$(LIBS)
  
  all-external:
@@ -138,19 +152,6 @@ Index: praat.github.io-6.4.39/Makefile
  	$(MAKE) -C external/espeak
 -	$(MAKE) -C external/vorbis
 -	$(MAKE) -C external/opusfile
+ 	$(MAKE) -C external/whispercpp
  
  all-self:
- 	$(MAKE) -C kar
-Index: praat.github.io-6.4.39/dwtools/Makefile
-===================================================================
---- praat.github.io-6.4.39.orig/dwtools/Makefile
-+++ praat.github.io-6.4.39/dwtools/Makefile
-@@ -5,7 +5,7 @@
- include ../makefile.defs
- 
- CPPFLAGS = -I . -I ../kar -I ../melder -I ../sys -I ../dwsys -I ../stat -I ../fon -I ../LPC -I ../foned -I ../EEG \
--	-I ../external/clapack -I ../external/vorbis -I ../external/opusfile -I ../external/portaudio -I ../external/espeak \
-+	-I ../external/clapack -I /usr/include/opus -I ../external/portaudio -I ../external/espeak \
- 	-I ..external/num
- 
- OBJECTS = ActivationList.o AffineTransform.o AnalyticSound.o \
