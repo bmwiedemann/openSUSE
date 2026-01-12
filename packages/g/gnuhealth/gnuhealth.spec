@@ -1,8 +1,8 @@
 #
 # spec file for package gnuhealth
 #
-# Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2014-2025 Dr. Axel Braun
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2014-2026 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 
 Name:           gnuhealth
 
-Version:        %{majorver}.2
+Version:        %{majorver}.5
 Release:        0
 URL:            https://health.gnu.org
 Summary:        A Health and Hospital Information System
@@ -38,7 +38,7 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Office/Management
 
 # As directory naming is inconsistent we use a local download
-## Source0:        https://ftp.gnu.org/gnu/health/%{name}-his-server-patchset-%{version}-bundle.tar.gz
+## %Source0:        https://ftp.gnu.org/gnu/health/%{name}-his-server-patchset-%{version}-bundle.tar.gz
 Source0:        %{name}-his-server-patchset-%{version}-bundle.tar.gz
 Source1:        GNUHealth.README.openSUSE
 Source2:        gnuhealth-control
@@ -47,6 +47,7 @@ Source4:        gnuhealth-webdav@.service
 Source5:        openSUSE-gnuhealth-setup
 Source6:        gnuhealth
 Source7:        gnuhealth-rpmlintrc
+Source8:        install_demo_database.sh
 ## Source8:        https://ftp.gnu.org/gnu/health/%{name}-his-server-patchset-%{version}-bundle.tar.gz.sig
 ## Source9:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=health&download=1#/%{name}.keyring
 
@@ -167,8 +168,7 @@ install -p -m 755 gnuhealth-control %{buildroot}%{_bindir}/gnuhealth-control
 install -p -m 755 %{S:5} %{buildroot}%{_bindir}/openSUSE-gnuhealth-setup
 install -p -m 755 %{S:6} %{buildroot}%{_bindir}/gnuhealth
 install -p -m 755 health_webdav3_server/bin/gnuhealth-webdav-server %{buildroot}%{_bindir}/gnuhealth-webdav-server
-#5.0A1 change:
-#%%install -p -m 755 scripts/demodb/install_demo_database.sh %{buildroot}%{_bindir}/install_demo_database.sh
+install -p -m 755 %{S:8} %{buildroot}%{_bindir}/install_demo_database.sh
 
 #delete empty demo directory
 rm -rf scripts/demodb
@@ -245,6 +245,7 @@ EOF
 %{_bindir}/gnuhealth-control
 %{_bindir}/gnuhealth-webdav-server
 %{_bindir}/openSUSE-gnuhealth-setup
+%{_bindir}/install_demo_database.sh
 #5.0A1 change:
 #%%{_bindir}/install_demo_database.sh
 %{_unitdir}/%{name}.service
