@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Fri Sep 26 09:33:36 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 1.34.0:
+  * Update k8s and ginkgo
+  * Bump the gomod group across 1 directory with 10 updates
+  * Update golangci-lint and config
+  * Bump crate-ci/typos from 1.35.3 to 1.35.4
+  * Bump actions/checkout from 4.2.2 to 5.0.0
+  * Vendor Kubernetes v1.34.0-rc.1
+  * Bump crate-ci/typos from 1.35.2 to 1.35.3
+  * Bump actions/cache from 4.2.3 to 4.2.4
+  * Bump crate-ci/typos from 1.35.1 to 1.35.2
+  * Bump the gomod group with 4 updates
+  * Bump crate-ci/typos from 1.34.0 to 1.35.1
+  * Bump github.com/docker/docker in the gomod group
+  * Bump sigs.k8s.io/yaml from 1.5.0 to 1.6.0 in the kubernetes group
+  * Bump the gomod group with 2 updates
+  * support to auto generate pod uuid
+  * add warning about empty cgroup_parent field in pod config
+  * Bump the kubernetes group with 7 updates
+  * Bump google.golang.org/grpc from 1.73.0 to 1.74.0 in the gomod group
+  * Update golangci-lint and config
+  * doc: add steps to use runp when systemd cgroup driver is used
+  * Bump crate-ci/typos from 1.33.1 to 1.34.0
+  * Bump the gomod group across 1 directory with 4 updates
+  * Switch to windows-2025 in CI
+  * Support websocket connections in `critest`
+  * Bump ncipollo/release-action from 1.16.0 to 1.18.0
+  * Bump the gomod group with 4 updates
+  * Bump sigs.k8s.io/yaml from 1.4.0 to 1.5.0 in the kubernetes group
+  * Bump github.com/docker/docker in the gomod group
+  * Bump the gomod group across 1 directory with 15 updates
+  * Bump creyD/prettier_action from 4.5 to 4.6
+  * Revert "Disable containerd hostport test"
+  * Fix regression in reading crictl config file
+  * Bump crate-ci/typos from 1.32.0 to 1.33.1
+  * Add --all flag to crictl stop command.
+  * rename the google group for sig node
+  * Bump the kubernetes group with 7 updates
+  * Fix containerd CI tests
+  * Bump google.golang.org/grpc from 1.72.0 to 1.72.1 in the gomod group
+  * Bump actions/setup-go from 5.4.0 to 5.5.0
+  * Bump creyD/prettier_action from 4.3 to 4.5
+  * Fix CRI-O CI
+  * Bump the gomod group with 3 updates
+  * Bump crate-ci/typos from 1.31.2 to 1.32.0
+  * reuse urfave/cli.Context instead of creating a new instance
+  * add local imports to goimports formatting settings
+  * Bump crate-ci/typos from 1.31.1 to 1.31.2
+  * Update release notes tool to v0.18.0
+  * Switch to k8s final
+  * Bump the kubernetes group with 7 updates
+  * fix the issue of regexp matching
+  * pass down the context object wrapped within the urfave/cli.Context struct
+  * Update cri-tools to v1.33.0 in README.md
+
+-------------------------------------------------------------------
 Sat Jun 07 11:55:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.33.0:

@@ -294,4 +294,12 @@
 - Avoid modifying permissions for man directory (forwarded request 1288807 from mchellamuthu)</comment>
     <requestid>1293450</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>e2619e7b1d5027674b77ea69716955f9</srcmd5>
+    <version>1.34.0</version>
+    <time>1768210026</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1326708</requestid>
+  </revision>
 </revisionlist>
