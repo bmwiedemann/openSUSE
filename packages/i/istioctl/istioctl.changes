@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jan 11 10:49:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.28.2:
+  https://istio.io/latest/news/releases/1.28.x/announcing-1.28.2/
+  * Security Update
+    - CVE-2025-62408 (CVSS score 5.3, Moderate): Use after free can
+      crash Envoy due to malfunctioning or compromised DNS. This is
+      a heap use-after-free vulnerability in the c-ares library
+      that can be exploited by an attacker controlling the local
+      DNS infrastructure to cause a Denial of Service (DoS) in
+      Envoy.
+  * no istioctl-related changes
+
+-------------------------------------------------------------------
 Thu Dec  4 07:03:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.28.1:
@@ -68,7 +82,7 @@ Thu Sep 18 13:20:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
   * Changes
     - Fixed a change in output of istioctl proxy-status to be more
       consistent with previous versions. (Issue #57339)
-  
+
 -------------------------------------------------------------------
 Thu Aug 21 04:58:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
@@ -144,7 +158,7 @@ Sat May 31 07:05:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
     - Fixed false positives when istioctl analyze raised error IST0134
       even when PILOT_ENABLE_IP_AUTOALLOCATE was set to true.
 	  (Issue #56083)
-	
+
 -------------------------------------------------------------------
 Fri May  9 05:44:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
