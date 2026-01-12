@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jan 10 10:29:59 UTC 2026 - Christian Boltz <suse-beta@cboltz.de>
+
+- update to AppArmor 4.1.3
+  - several profile updates
+  - add abi/4.0-ip and abstractions/golang
+  - minor fixes in parser and utils
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_4.1.3
+    for the detailed upstream changelog
+- remove upstreamed patches:
+  - dovecot24-part2.diff
+  - dovecot24-part3-mr1822.diff
+
+-------------------------------------------------------------------
 Sun Oct 19 10:41:36 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
 
 - add dovecot24-part3-mr1822.diff: allow writing /tmp/doveconf.* in

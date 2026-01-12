@@ -51,11 +51,11 @@
 %define CATALINA_HOME /usr/share/tomcat6
 %define JAR_FILE changeHatValve.jar
 
-%define tarversion v4.1.2
-%define pyeggversion 4.1.2
+%define tarversion v4.1.3
+%define pyeggversion 4.1.3
 
 Name:           apparmor
-Version:        4.1.2
+Version:        4.1.3
 Release:        0
 Summary:        AppArmor userlevel parser utility
 License:        GPL-2.0-or-later
@@ -84,12 +84,6 @@ Patch7:         apparmor-enable-precompiled-cache.diff
 
 # /usr/etc/krb5.conf - boo#1246689 - not submitted upstream yet since https://github.com/krb5/krb5/pull/1437/ is still open
 Patch11:        kerberosclient-usrmerge.diff
-
-# dovecot24: more permissions from boo#1247470
-Patch13:        dovecot24-part2.diff
-
-# dovecot24: allow writing /tmp/doveconf.* to more profiles - submitted upstream 2025-10-19 https://gitlab.com/apparmor/apparmor/-/merge_requests/1822 for 4.x and master
-Patch14:        dovecot24-part3-mr1822.diff
 
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -360,8 +354,6 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch -P 7
 %endif
 %patch -P 11 -p1
-%patch -P 13 -p1
-%patch -P 14 -p1
 
 %build
 export SUSE_ASNEEDED=0
@@ -595,6 +587,7 @@ rm -fv %{buildroot}%{_libdir}/libapparmor.la
 %dir %{_sysconfdir}/apparmor.d/abi
 %config(noreplace) %{_sysconfdir}/apparmor.d/abi/3.0
 %config(noreplace) %{_sysconfdir}/apparmor.d/abi/4.0
+%config(noreplace) %{_sysconfdir}/apparmor.d/abi/4.0-ip
 %config(noreplace) %{_sysconfdir}/apparmor.d/abi/kernel-5.4-outoftree-network
 %config(noreplace) %{_sysconfdir}/apparmor.d/abi/kernel-5.4-vanilla
 %dir %{_sysconfdir}/apparmor.d/abstractions

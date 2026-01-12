@@ -17,10 +17,10 @@
 #
 
 
-%define tarversion v4.1.2
+%define tarversion v4.1.3
 
 Name:           libapparmor
-Version:        4.1.2
+Version:        4.1.3
 Release:        0
 Summary:        Utility library for AppArmor
 License:        LGPL-2.1-or-later
