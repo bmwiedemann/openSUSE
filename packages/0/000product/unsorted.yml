@@ -11122,8 +11122,8 @@ unsorted:
   - libCSXCAD0 
   - libCbc3 
   - libCgl1 
-  - libClipper2-1 
-  - libClipper2Z1 
+  - libClipper2-2 
+  - libClipper2Z2 
   - libClp1 
   - libCoin60 
   - libCoin80 
@@ -19894,7 +19894,6 @@ unsorted:
   - nix 
   - nix-bash-completion 
   - nix-devel 
-  - nix-doc 
   - nix-fish-completion 
   - nix-zsh-completion 
   - nload 
