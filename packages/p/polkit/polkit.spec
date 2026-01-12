@@ -1,7 +1,7 @@
 #
 # spec file for package polkit
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %endif
 
 Name:           polkit
-Version:        126
+Version:        127
 Release:        0
 Summary:        PolicyKit Authorization Framework
 License:        LGPL-2.1-or-later
@@ -47,12 +47,6 @@ Patch1:         polkit-gettext.patch
 Patch3:         polkit-keyinit.patch
 # PATCH-FIX-OPENSUSE polkit-adjust-libexec-path.patch -- Adjust path to polkit-agent-helper-1 (bsc#1180474)
 Patch4:         polkit-adjust-libexec-path.patch
-# PATCH-FEATURE-UPSTREAM systemd-socket-activation.patch -- drop requirement for setuid binaries
-Patch5:         systemd-socket-activation.patch
-# PATCH-FIX-UPSTREAM auth_keep.patch -- fix remembering the authentication for 5 minutes like sudo
-Patch6:         auth_keep.patch
-# PATCH-FEATURE-UPSTREAM auth_keep.patch -- make environment more sudo compatible
-Patch7:         sudo_uid.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
@@ -257,6 +251,7 @@ mkdir %{buildroot}/%{_sysconfdir}/polkit-1/actions
 %{_mandir}/man1/pkaction.1%{?ext_man}
 %{_mandir}/man1/pkcheck.1%{?ext_man}
 %{_mandir}/man1/pkttyagent.1%{?ext_man}
+%{_mandir}/man5/polkitd.conf.5%{?ext_man}
 %{_mandir}/man8/polkitd.8%{?ext_man}
 %{_mandir}/man8/polkit.8%{?ext_man}
 %dir %{_datadir}/dbus-1
@@ -265,6 +260,7 @@ mkdir %{buildroot}/%{_sysconfdir}/polkit-1/actions
 %dir %{_datadir}/dbus-1/system.d
 %{_datadir}/dbus-1/system.d/org.freedesktop.PolicyKit1.conf
 %dir %{_datadir}/polkit-1
+%{_datadir}/polkit-1/polkitd.conf
 %{_datadir}/polkit-1/policyconfig-1.dtd
 %dir %{_datadir}/polkit-1/actions
 %{_datadir}/polkit-1/actions/org.freedesktop.policykit.policy

@@ -1,17 +1,21 @@
---- a/src/polkitagent/polkitagentsession.c
-+++ b/src/polkitagent/polkitagentsession.c
-@@ -596,7 +596,7 @@ polkit_agent_session_initiate (PolkitAge
-       goto error;
-     }
+Index: polkit-127/src/polkitagent/polkitagentsession.c
+===================================================================
+--- polkit-127.orig/src/polkitagent/polkitagentsession.c
++++ polkit-127/src/polkitagent/polkitagentsession.c
+@@ -640,7 +640,7 @@ polkit_agent_session_initiate (PolkitAge
  
--  helper_argv[0] = PACKAGE_PREFIX "/lib/polkit-1/polkit-agent-helper-1";
-+  helper_argv[0] = PACKAGE_PREFIX "/libexec/polkit-1/polkit-agent-helper-1";
-   helper_argv[1] = passwd->pw_name;
-   helper_argv[2] = NULL;
+   if (session->child_stdout == -1)
+     {
+-      helper_argv[0] = PACKAGE_PREFIX "/lib/polkit-1/polkit-agent-helper-1";
++      helper_argv[0] = PACKAGE_PREFIX "/libexec/polkit-1/polkit-agent-helper-1";
+       helper_argv[1] = passwd->pw_name;
+       helper_argv[2] = NULL;
  
---- a/meson.build
-+++ b/meson.build
-@@ -28,7 +28,7 @@ pk_sysconfdir = get_option('sysconfdir')
+Index: polkit-127/meson.build
+===================================================================
+--- polkit-127.orig/meson.build
++++ polkit-127/meson.build
+@@ -29,7 +29,7 @@ pk_sysconfdir = get_option('sysconfdir')
  pk_pkgdatadir = pk_datadir / pk_api_name
  pk_pkgincludedir = pk_includedir / pk_api_name
  # note that this is always 'lib', not lib64 or lib/x86_64-linux-gnu

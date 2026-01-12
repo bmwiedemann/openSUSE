@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jan  8 12:28:03 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- Updated to version 127:
+  - socket-activated polkit-agent-helper can now run without SETUID (Luca Boccassi)
+  - user id (UID) now accessible to JavaScript rules via subject.uid (Rosentti, Jan Rybar)
+  - INI config file support for polkitd with configurable auth expiration timer (Luca Boccassi)
+  - auth_keep: skip re-authentication if new process shares same UID/parent/cgroup/tty (Luca Boccassi)
+  - CheckAuthorization now returns 'polkit.result' in the details dict (Luca Boccassi)
+  - pkexec: set $SUDO_UID/$SUDO_GID for compatibility with sudo (Lennart Poettering)
+  - pkexec: use realpath when comparing org.freedesktop.policykit.exec.path (Walter Doekes)
+  - memory limits added to systemd unit to mitigate memory leaks (Alexander Meshcheryakov)
+  - new translations: Bulgarian (twlvnn kraftwerk), Occitan (Mejans)
+- systemd-socket-activation.patch: upstream, removed
+- auth_keep.patch: upstream, removed
+- sudo_uid.patch: upstream, removed
+- added polkitd.conf.5 manpage, added polkitd.conf
+
+-------------------------------------------------------------------
 Mon Oct 13 08:31:45 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Backport for NoNewPrivs support:

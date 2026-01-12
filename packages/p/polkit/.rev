@@ -886,4 +886,25 @@ can switch the default compiler. (forwarded request 1187079 from jamborm)</comme
   - sudo_uid.patch: also set $SUDO_UID/$SUDO_GID for compat with sudo (forwarded request 1315266 from kukuk)</comment>
     <requestid>1315270</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>d6f20d28568d3c36e971038adaf1dd0d</srcmd5>
+    <version>127</version>
+    <time>1768209046</time>
+    <user>anag_factory</user>
+    <comment>- Updated to version 127:
+  - socket-activated polkit-agent-helper can now run without SETUID (Luca Boccassi)
+  - user id (UID) now accessible to JavaScript rules via subject.uid (Rosentti, Jan Rybar)
+  - INI config file support for polkitd with configurable auth expiration timer (Luca Boccassi)
+  - auth_keep: skip re-authentication if new process shares same UID/parent/cgroup/tty (Luca Boccassi)
+  - CheckAuthorization now returns 'polkit.result' in the details dict (Luca Boccassi)
+  - pkexec: set $SUDO_UID/$SUDO_GID for compatibility with sudo (Lennart Poettering)
+  - pkexec: use realpath when comparing org.freedesktop.policykit.exec.path (Walter Doekes)
+  - memory limits added to systemd unit to mitigate memory leaks (Alexander Meshcheryakov)
+  - new translations: Bulgarian (twlvnn kraftwerk), Occitan (Mejans)
+- systemd-socket-activation.patch: upstream, removed
+- auth_keep.patch: upstream, removed
+- sudo_uid.patch: upstream, removed
+- added polkitd.conf.5 manpage, added polkitd.conf</comment>
+    <requestid>1326294</requestid>
+  </revision>
 </revisionlist>
