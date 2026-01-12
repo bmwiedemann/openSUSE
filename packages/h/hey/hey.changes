@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 12 06:52:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.5:
+  * Added Dockerfile by @jnovack in #226
+  * Fix DNS dialup detailed output in print.go by @tstraley in #207
+  * Upgrade deps by @chenrui333 in #178
+  * Updated User-Agent header logic by @phriscage in #87
+  * Introduce CI with GitHub Actions by @rakyll in #332
+
+-------------------------------------------------------------------
 Fri Oct 11 09:00:40 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package hey: HTTP load generator, ApacheBench (ab)

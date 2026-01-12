@@ -1,7 +1,7 @@
 #
 # spec file for package hey
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,15 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           hey
-Version:        0.1.4
+Version:        0.1.5
 Release:        0
 Summary:        HTTP load generator, ApacheBench (ab) replacement
 License:        Apache-2.0
 URL:            https://github.com/rakyll/hey
 Source:         hey-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.13
+BuildRequires:  golang(API) >= 1.24
 
 %description
 hey is a tiny program that sends some load to a web application.
