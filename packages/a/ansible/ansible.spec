@@ -43,7 +43,7 @@
 %endif
 
 Name:           ansible
-Version:        13.1.0
+Version:        13.2.0
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0-or-later
@@ -91,6 +91,9 @@ done
 # remove .keep and .gitignore files
 find ./ansible_collections/ -iname .gitignore -delete
 find ./ansible_collections/ -iname .keep -delete
+
+# remove forbidden backup file
+rm -f ./ansible_collections/purestorage/flasharray/plugins/modules/.purefa_directory.py.swp
 
 # azure collection has wrong file endings
 find ./ansible_collections/azure -type f -exec dos2unix {} \;
