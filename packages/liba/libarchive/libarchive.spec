@@ -1,7 +1,7 @@
 #
 # spec file for package libarchive
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define somajor 13
 %define libname libarchive%{somajor}
 Name:           libarchive
-Version:        3.8.4
+Version:        3.8.5
 Release:        0
 Summary:        Utility and C library to create and read several streaming archive formats
 License:        BSD-2-Clause
@@ -32,7 +32,6 @@ Source2:        libarchive.keyring
 Source1000:     baselibs.conf
 # https://github.com/libarchive/libarchive/issues/2804
 # https://github.com/libarchive/libarchive/pull/2809
-Patch0:         libarchive-3.8.4-tar-fix-tests.patch
 BuildRequires:  cmake
 BuildRequires:  ninja
 BuildRequires:  pkgconfig

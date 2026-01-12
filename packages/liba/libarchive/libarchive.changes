@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan  9 21:34:50 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
+
+- Update to 3.8.5:
+  * bsdtar: fix regression from 3.8.4 zero-length pattern issue bugfix (#2809)
+  * various small bugfixes in code and documentation
+- Remove libarchive-3.8.4-tar-fix-tests.patch to fix tests 
+
+-------------------------------------------------------------------
 Tue Dec  9 09:17:20 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 3.8.4:
