@@ -1,9 +1,0 @@
-<package name="kf6-kcompletion" project="openSUSE:Factory">
-  <title>Widgets with advanced completion support</title>
-  <description>KCompletion provides widgets with advanced completion support as well as a
-lower-level completion class which can be used with your own widgets.
-
-</description>
-  <devel project="KDE:Frameworks" package="kf6-kcompletion"/>
-  <url>https://www.kde.org</url>
-</package>
