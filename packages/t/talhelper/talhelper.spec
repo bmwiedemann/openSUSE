@@ -1,7 +1,7 @@
 #
 # spec file for package talhelper
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           talhelper
-Version:        3.0.43
+Version:        3.0.45
 Release:        0
 Summary:        Tool to help creating Talos kubernetes cluster
 License:        BSD-3-Clause
