@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan 10 17:37:43 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20260109:
+  * uv5r: Avoid breaking if VFOn frequency is invalid
+  * support additional fingerprint for Retevis RT86S
+  * support Retevis RB626 settings
+  * Updated Translations
+  * Fixes for 8.33kHz frequency and channel handling
+  * Add VX1R driver
+
+-------------------------------------------------------------------
 Fri Jan  2 15:14:24 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20260102:
