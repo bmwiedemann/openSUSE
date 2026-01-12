@@ -1,8 +1,8 @@
 #
 # spec file for package libxtrx
 #
-# Copyright (c) 2020-2021 SUSE LLC
-# Copyright (c) 2017-2020, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2017-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -102,12 +102,13 @@ A Soapy module that supports XTRX devices within the Soapy API.
 %cmake_install
 install -d %{buildroot}/%{_bindir}
 #install -m 0755 build/examples/xtrx_fft/mainwindow %%{buildroot}/%%{_bindir}/xtrx_fft
+%if 0%{?suse_version} < 1699
 mv %{buildroot}/%{_libdir}/xtrx/xtrx_fft %{buildroot}/%{_bindir}/xtrx_fft
+%endif
 mv %{buildroot}/%{_libdir}/xtrx/test_xtrx %{buildroot}/%{_bindir}/test_xtrx
 mv build/soapy/test_xtrx_soapy %{buildroot}/%{_bindir}/test_xtrx_soapy
 
-%post   -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files -n %{libname}
 %license LICENSE
@@ -127,6 +128,8 @@ mv build/soapy/test_xtrx_soapy %{buildroot}/%{_bindir}/test_xtrx_soapy
 %files -n xtrx-tools
 %{_bindir}/test_xtrx
 %{_bindir}/test_xtrx_soapy
+%if 0%{?suse_version} < 1699
 %{_bindir}/xtrx_fft
+%endif
 
 %changelog

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan  9 16:41:18 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Use %ldconfig_scriptlets
+- xtrx_fft fails to build on TW, disable for now.
+
+-------------------------------------------------------------------
 Thu May 29 21:23:42 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - SOAPY_SDR_ABI_VERSION bump -> "0.8-3"
