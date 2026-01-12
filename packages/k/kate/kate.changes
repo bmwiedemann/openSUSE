@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jan  7 12:24:40 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.1/
+- Changes since 25.12.0:
+  * fix link to texlab
+  * Only append child's children if there's something to append (kde#513758)
+  * Debounce project reloading
+  * Fix crash due to incorrect beginMoveRows call
+  * make the files relative to current dir (kde#512981)
+  * project-plugin: fix tree view crash (kde#513753)
+  * CI: Add documentation build
+
+-------------------------------------------------------------------
 Sat Dec  6 11:40:26 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.0
