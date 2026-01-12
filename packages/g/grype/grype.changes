@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Sun Jan 11 08:52:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.104.4:
+  * Bug Fixes
+    - preserve local version segment in constraints for PEP 440
+      comparison [#3146 @willmurphyscode]
+  * Additional Changes
+    - correct help text for return code for fail-on severity option
+      [#3138 @u-ways]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#3150)
+    - chore(deps): bump anchore/sbom-action from 0.20.11 to 0.21.0
+      (#3132)
+    - chore(deps): bump github.com/hashicorp/go-getter from 1.8.3
+      to 1.8.4 (#3140)
+    - chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.18
+      to 0.5.19 (#3143)
+    - chore(deps): update tools to latest versions (#3135)
+    - chore(deps): bump github.com/gocsaf/csaf/v3 from 3.5.0 to
+      3.5.1 (#3124)
+
+-------------------------------------------------------------------
+Sun Jan 11 08:46:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.104.3:
+  * Bug Fixes
+    - Use specifier matching rules when comparing python versions
+      [#3121 @wagoodman]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#3131)
+    - chore(deps): update tools to latest versions (#3127)
+    - chore(deps): bump github/codeql-action from 4.31.8 to 4.31.9
+      (#3125)
+    - chore(deps): bump anchore/sbom-action from 0.20.10 to 0.20.11
+      (#3104)
+    - chore(deps): update tools to latest versions (#3103)
+    - chore(deps): bump peter-evans/create-pull-request from 7.0.11
+      to 8.0.0 (#3105)
+    - chore(deps): bump github.com/anchore/stereoscope from 0.1.14
+      to 0.1.16 (#3110)
+    - chore(deps): bump github/codeql-action from 4.31.7 to 4.31.8
+      (#3112)
+    - chore(deps): bump github.com/gabriel-vasile/mimetype (#3115)
+    - chore(deps): bump actions/upload-artifact from 5.0.0 to 6.0.0
+      (#3116)
+    - chore(deps): bump actions/cache from 4.3.0 to 5.0.1 (#3117)
+    - chore(deps): bump actions/cache in /.github/actions/bootstrap
+      (#3118)
+
+-------------------------------------------------------------------
 Thu Dec 11 06:48:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.104.2:
