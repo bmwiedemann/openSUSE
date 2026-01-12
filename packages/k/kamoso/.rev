@@ -768,4 +768,12 @@
   * 0001-Revert-Use-KirigamiAddons-to-initialise-the-app.patch</comment>
     <requestid>1325251</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>d065e13cd42c7c53d7786885066f2158</srcmd5>
+    <version>25.12.1</version>
+    <time>1768209679</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 25.12.1</comment>
+    <requestid>1326264</requestid>
+  </revision>
 </revisionlist>

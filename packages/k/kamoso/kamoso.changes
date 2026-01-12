@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan  7 12:24:38 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.1/
+- Changes since 25.12.0:
+  * Revert "Use KirigamiAddons to initialise the app" (kde#513544)
+  * CI: Add documentation build
+- Drop patch:
+  * 0001-Revert-Use-KirigamiAddons-to-initialise-the-app.patch
+
+-------------------------------------------------------------------
 Sun Jan  4 10:02:29 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change (kde#513544, boo#1255865)
