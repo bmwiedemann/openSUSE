@@ -47,4 +47,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * WHENCE: extract more license statements</comment>
     <requestid>1295036</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b726947157078071235456f9f7afc450</srcmd5>
+    <version>20260110</version>
+    <time>1768217943</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260110 (git commit fd6473795fc6):
+  * Mellanox: Add new mlxsw_spectrum firmware xx.2016.3900</comment>
+    <requestid>1326592</requestid>
+  </revision>
 </revisionlist>

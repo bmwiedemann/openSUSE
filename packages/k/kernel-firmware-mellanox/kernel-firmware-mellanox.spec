@@ -20,17 +20,17 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 6fc20e018cca0ab954fe249afb60ac5af69f102a
+%define git_version fd6473795fc677b981a076e12ff10044d3e5dfa3
 
 Name:           kernel-firmware-mellanox
-Version:        20250717
+Version:        20260110
 Release:        0
 Summary:        Kernel firmware files for Mellanox Spectrum switch driver
 License:        GPL-2.0-or-later AND SUSE-Firmware AND GPL-2.0-only
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250718.tar.gz#/kernel-firmware-tools-20250718.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20260111.tar.gz#/kernel-firmware-tools-20260111.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
