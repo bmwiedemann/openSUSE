@@ -1,7 +1,7 @@
 #
 # spec file for package zenith
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           zenith
-Version:        0.14.2
+Version:        0.14.3
 Release:        0
 Summary:        Sort of like top or htop but with zoom-able charts
 License:        MIT
