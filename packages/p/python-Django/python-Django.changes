@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan  9 09:41:44 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.2.10
+  * Fixed a bug in Django 5.2 where data exceeding max_length was
+    silently truncated by QuerySet.bulk_create() on PostgreSQL
+  * Fixed a bug where management command colorized help (introduced
+    in Python 3.14) ignored the --no-color option and the DJANGO_COLORS
+    setting
+- Drop merged test_strip_tags_incomplete.patch
+
+-------------------------------------------------------------------
 Mon Dec 29 09:10:21 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Add test_strip_tags_incomplete.patch to fix behaviour with changes
