@@ -1,7 +1,7 @@
 #
 # spec file for package keylime
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           keylime
-Version:        7.13.0+40
+Version:        7.13.0+55
 Release:        0
 Summary:        Open source TPM software for Bootstrapping and Maintaining Trust
 License:        Apache-2.0 AND MIT AND BSD-3-Clause
@@ -40,7 +40,7 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        keylime.xml
 Source2:        %{name}-user.conf
 Source3:        logrotate.%{name}
-Source4:        tmpfiles.%{name}
+Source4:        %{name}.conf
 # openSUSE adjustments for generated configuration files
 Source10:       registrar.conf.diff
 Source11:       verifier.conf.diff
@@ -65,6 +65,8 @@ Requires:       python3-jsonschema
 Requires:       python3-lark
 Requires:       python3-packaging
 Requires:       python3-psutil
+Requires:       python3-pyasn1
+Requires:       python3-pyasn1-modules
 Requires:       python3-pyzmq
 Requires:       python3-requests
 Requires:       python3-tornado
@@ -198,11 +200,10 @@ install -Dpm 0644 %{SOURCE1} %{buildroot}%{_prefix}/lib/firewalld/services/%{src
 install -Dpm 0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/%{name}-user.conf
 install -Dpm 0644 %{SOURCE3} %{buildroot}%{_distconfdir}/logrotate.d/%{name}
 install -Dpm 0644 %{SOURCE4} %{buildroot}%{_tmpfilesdir}/%{name}.conf
-install -d %{buildroot}%{_localstatedir}/log/%{name}
 
-mkdir -p %{buildroot}/%{_sharedstatedir}/%{srcname}
-cp -r ./tpm_cert_store %{buildroot}%{_sharedstatedir}/%{srcname}/
-%fdupes %{buildroot}%{_sharedstatedir}/%{srcname}/
+mkdir -p %{buildroot}%{_prefix}/lib/%{srcname}
+cp -r ./tpm_cert_store %{buildroot}%{_prefix}/lib/%{srcname}/
+%fdupes %{buildroot}%{_prefix}/lib/%{srcname}/
 
 # %%check
 # %%pyunittest -v
@@ -252,7 +253,7 @@ cp -r ./tpm_cert_store %{buildroot}%{_sharedstatedir}/%{srcname}/
 %pre -n %{srcname}-tpm_cert_store -f %{srcname}.pre
 
 %post -n %{srcname}-tpm_cert_store
-%tmpfiles_create %{srcname}.conf
+%tmpfiles_create %{_tmpfilesdir}/%{srcname}.conf
 
 %pre -n %{srcname}-verifier
 %service_add_pre %{srcname}_verifier.service
@@ -306,13 +307,12 @@ cp -r ./tpm_cert_store %{buildroot}%{_sharedstatedir}/%{srcname}/
 %{_prefix}/lib/firewalld/services/%{srcname}.xml
 
 %files -n %{srcname}-tpm_cert_store
-%dir %attr(0700,keylime,tss) %{_sharedstatedir}/%{srcname}
-%dir %attr(0700,keylime,tss) %{_sharedstatedir}/%{srcname}/tpm_cert_store
-%attr(0600,keylime,tss) %{_sharedstatedir}/%{srcname}/tpm_cert_store/*
+%dir %attr(0700,keylime,tss) %{_prefix}/lib/%{srcname}
+%dir %attr(0700,keylime,tss) %{_prefix}/lib/%{srcname}/tpm_cert_store
+%attr(0600,keylime,tss) %{_prefix}/lib/%{srcname}/tpm_cert_store/*
 # We use this subpackage to store other unrelated things, as far as is
 # required by all the services
 %{_sysusersdir}/%{srcname}-user.conf
-%ghost %dir %attr(0700,keylime,tss) %{_rundir}/%{srcname}
 %{_tmpfilesdir}/%{srcname}.conf
 
 %files -n %{srcname}-registrar
@@ -331,6 +331,5 @@ cp -r ./tpm_cert_store %{buildroot}%{_sharedstatedir}/%{srcname}/
 
 %files -n %{srcname}-logrotate
 %_config_norepl %{_distconfdir}/logrotate.d/%{srcname}
-%dir %attr(0750,keylime,tss) %{_localstatedir}/log/%{srcname}
 
 %changelog

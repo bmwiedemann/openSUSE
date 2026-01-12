@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Jan  9 11:32:03 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add missing pyasn1 dependency
+
+-------------------------------------------------------------------
+Thu Jan 08 08:37:05 UTC 2026 - aplanas@suse.com
+
+- Use tmpfiles.d for /var directories (PED-14735)
+
+- Update to version 7.13.0+55:
+  * [Automatic] Update Keylime base image 2026-01-05
+  * docs: Document claims response from /verify/evidence
+  * verify/evidence: Use tee label for TEE verification
+  * verify/evidence: Change valid response to boolean
+  * tee/snp: Return SEV-SNP claims upon successful verification
+  * verify/evidence: Return TPM claims in response
+  * verify/evidence: Define empty response fields
+  * [Automatic] Update Keylime base image 2025-12-14
+  * Fix TypeError when using -m flag without IMA measurement list path
+  * Increase maximum_attestation_interval
+  * Do not require wheel for building
+  * Add session.refresh() before process_get_status()
+  * Fix PUSH mode attestation status race condition
+  * Add consecutive_attestation_failures column to legacy VerfierMain model
+  * Remove operational_state field from status response in push mode
+
+-------------------------------------------------------------------
 Tue Dec 09 13:34:39 UTC 2025 - aplanas@suse.com
 
 - Update to version 7.13.0+40 (CVE-2025-13609, bsc#1254199):
