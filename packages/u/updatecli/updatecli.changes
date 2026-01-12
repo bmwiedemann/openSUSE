@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Mon Jan 12 08:53:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.113.0:
+  * Features
+    - feat(replaceAll): add replaceAll method for converting
+      different semver conventions @josill (#7480)
+    - feat(autodiscovery): propagate npm resource-level spec
+      @loispostula (#7479)
+    - feat: Add support for custom autodiscovery plugin @olblak
+      (#7034)
+    - feat(terragrunt): add GitHub authentication support
+      @eugenestarchenko (#7359)
+    - chore: revamp scaffolded policy @olblak (#7308)
+    - feat: add --existing-only parameter @olblak (#7155)
+    - feat: add yaml support for multi document @olblak (#6771)
+  * Bug Fixes
+    - fix: autodiscovery container/helm auth @olblak (#7238)
+    - fix: udash publish without config file @olblak (#7394)
+    - fix: Support valid Terragrunt tfr:/// format in autodiscovery
+      @eugenestarchenko (#7357)
+    - fix(terragrunt): strip double slash path separator from git
+      URLs @eugenestarchenko (#7358)
+    - fix(gitlab): Panic when create merge request times out
+      @rb3ckers (#7296)
+    - Fix usage of versionfilter regex kind in autodiscovery
+      plugins @kevinleturc (#7223)
+  * Maintenance
+    - deps(go): bump module
+      github.com/aws/aws-sdk-go-v2/service/ec2 to v1.279.1
+      @updateclibot[bot] (#7471)
+    - deps(go): bump module gitlab.com/gitlab-org/api/client-go to
+      v1.11.0 @updateclibot[bot] (#7462)
+    - deps(go): bump module github.com/BurntSushi/toml to v1.6.0
+      @updateclibot[bot] (#7464)
+    - deps(go): bump module cuelang.org/go to v0.15.3
+      @updateclibot[bot] (#7460)
+    - deps(go): bump module github.com/yuin/goldmark to v1.7.16
+      @updateclibot[bot] (#7450)
+    - chore: Update Updatecli GHA workflow @updateclibot[bot]
+      (#7444)
+    - deps(go): bump module github.com/tetratelabs/wazero to
+      v1.11.0 @updateclibot[bot] (#7421)
+    - deps(go): bump module github.com/yuin/goldmark to v1.7.14
+      @updateclibot[bot] (#7417)
+    - chore(dockerfile): upgrade node version @updateclibot[bot]
+      (#7297)
+    - deps(go): bump module github.com/aws/aws-sdk-go-v2/config to
+      v1.32.6 @updateclibot[bot] (#7401)
+    - chore: publish Updatecli pipeline report to uda.sh @olblak
+      (#7376)
+    - deps(go): bump module golang.org/x/net to v0.48.0
+      @updateclibot[bot] (#7343)
+    - deps(go): bump module
+      github.com/aws/aws-sdk-go-v2/credentials to v1.19.6
+      @updateclibot[bot] (#7339)
+    - deps(go): bump module gitlab.com/gitlab-org/api/client-go to
+      v1.8.2 @updateclibot[bot] (#7317)
+    - deps(go): bump module helm.sh/helm/v3 to v3.19.4
+      @updateclibot[bot] (#7285)
+    - deps(go): bump module github.com/goccy/go-yaml to v1.19.1
+      @updateclibot[bot] (#7273)
+    - chore(dockerfile): upgrade node version @updateclibot[bot]
+      (#7210)
+    - deps(go): bump module github.com/moby/buildkit to v0.26.3
+      @updateclibot[bot] (#7225)
+  * Documentation
+    - Update conference links in README.adoc @olblak (#7321)
+    - chore: revamp scaffolded policy @olblak (#7308)
+
+-------------------------------------------------------------------
 Sun Dec 14 09:05:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.112.0:
