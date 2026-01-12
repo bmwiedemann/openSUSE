@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Jan 12 06:15:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.37.4:
+  * Create LicenseRefs for any non-standard SBOM identifier.
+
+-------------------------------------------------------------------
+Wed Jan 07 16:34:39 UTC 2026 - Thomas Bechtold <thomasbechtold@jpberlin.de>
+
+- Update to version 0.37.3:
+  * git pipeline: fix cherry-picking multiple commits (#2284)
+  * build(deps): bump github.com/spdx/tools-golang in the gomod
+    group (#2283)
+  * build(deps): bump chainguard.dev/apko in the gomod group
+    (#2281)
+  * pkg: Emit appCpe stanza (#2280)
+  * build(deps): bump golang.org/x/term from 0.37.0 to 0.38.0
+    (#2276)
+  * build(deps): bump golang.org/x/crypto from 0.45.0 to 0.46.0
+    (#2274)
+  * build(deps): bump the gomod group across 1 directory with 5
+    updates (#2279)
+  * build(deps): bump
+    go.opentelemetry.io/otel/exporters/stdout/stdouttrace (#2275)
+  * build(deps): bump actions/upload-artifact from 5.0.0 to 6.0.0
+    (#2273)
+  * build(deps): bump golang.org/x/text from 0.31.0 to 0.32.0
+    (#2272)
+  * build(deps): bump actions/download-artifact from 6.0.0 to 7.0.0
+    (#2270)
+  * build(deps): bump step-security/harden-runner in the actions
+    group (#2269)
+
+-------------------------------------------------------------------
 Mon Dec 15 05:53:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.37.0:
