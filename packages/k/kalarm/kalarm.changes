@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan  7 12:24:37 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.1/
+- Changes since 25.12.0:
+  * Add release documentation
+  * CI: Add documentation build
+  * Improve comment, remove an X11 reference
+  * If Defer is disabled for a notification alarm, don't show two Edit buttons
+  * Bug 512828: Prevent multiple Defer Alarm dialogs for the same event
+
+-------------------------------------------------------------------
 Sat Dec  6 11:40:23 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.0
