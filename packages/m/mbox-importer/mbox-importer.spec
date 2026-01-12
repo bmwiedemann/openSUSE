@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           mbox-importer
-Version:        25.12.0
+Version:        25.12.1
 Release:        0
 Summary:        Tool for importing mbox archives into akonadi
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
