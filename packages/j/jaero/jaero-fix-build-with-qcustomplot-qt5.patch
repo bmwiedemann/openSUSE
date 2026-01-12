@@ -1,0 +1,13 @@
+diff --git a/JAERO/JAERO.pro b/JAERO/JAERO.pro
+index 442ff17..2e0ac60 100644
+--- a/JAERO/JAERO.pro
++++ b/JAERO/JAERO.pro
+@@ -135,7 +135,7 @@ win32 {
+ LIBS += -lqcustomplot2 -llibzmq
+ } else {
+ #message("not windows")
+-LIBS += -lqcustomplot -lzmq
++LIBS += -lqcustomplot-qt5 -lzmq
+ }
+ 
+ FORMS    += mainwindow.ui \

@@ -1,8 +1,8 @@
 #
 # spec file for package jaero
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2017-2021, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2017-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,9 @@ URL:            https://jontio.zapto.org/hda1/jaero.html
 Source:         https://github.com/jontio/JAERO/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.xz
 # Bundled JFFT is licenced under MIT
 Source1:        https://github.com/jontio/JFFT/archive/refs/heads/master.zip
+%if 0%{?suse_version} > 1600
+Patch0:         jaero-fix-build-with-qcustomplot-qt5.patch
+%endif
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libcorrect-devel
@@ -45,7 +48,7 @@ BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(libacars)
 BuildRequires:  pkgconfig(libzmq)
-BuildRequires:  pkgconfig(qcustomplot)
+BuildRequires:  pkgconfig(qcustomplot-qt5)
 BuildRequires:  pkgconfig(vorbis)
 Requires:       unzip
 
@@ -61,7 +64,7 @@ low-gain antenna that can be home-brewed in conjunction with an
 RTL-SDR dongle.
 
 %prep
-%setup -q -n JAERO-%{version}
+%autosetup -p1 -n JAERO-%{version}
 unzip %{SOURCE1} && mv JFFT-master JFFT
 
 %build
