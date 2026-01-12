@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan 11 11:24:50 UTC 2026 - Nico Kruber <nico.kruber@gmail.com>
+
+- Update to 6.9.0:
+  + fixed problem with assert on SetSupportedCommand()
+  + added AB_Banking_ConstructMemoFromTemplate()
+  + remove superfluous spaces in result buffer
+  + fixed a typo (should fix https://www.aquamaniac.de/rdm/issues/338)
+  + restrict to ASCII
+
+-------------------------------------------------------------------
 Mon Dec 29 09:55:35 UTC 2025 - Nico Kruber <nico.kruber@gmail.com>
 
 - Update to 6.8.4:
