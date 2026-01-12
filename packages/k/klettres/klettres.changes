@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jan  7 12:25:01 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.1/
+- Changes since 25.12.0:
+  * CI: Add documentation build
+
+-------------------------------------------------------------------
+Sun Dec 28 12:36:52 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Drop unused phonon dependency
+
+-------------------------------------------------------------------
 Sat Dec  6 11:40:45 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.0

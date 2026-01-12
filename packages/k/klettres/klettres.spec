@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           klettres
-Version:        25.12.0
+Version:        25.12.1
 Release:        0
 Summary:        Alphabet Learning Game
 License:        GPL-2.0-or-later
@@ -40,7 +40,6 @@ BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6NewStuff) >= %{kf6_version}
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
-BuildRequires:  cmake(Phonon4Qt6)
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Multimedia) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
