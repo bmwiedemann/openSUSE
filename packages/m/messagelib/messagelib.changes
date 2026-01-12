@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jan  7 12:25:29 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.1/
+- Changes since 25.12.0:
+  * When we have several tab and we lock/unlock restore collection icon
+  * We can't have several selection folder
+  * simplify logic for activate tab
+  * don't call commit() we already did it previously
+  * Fix show mail when we open new tab
+  * Fix left-click not working on links with target="_blank" in HTML e-mails (kde#493325)
+
+-------------------------------------------------------------------
 Sat Dec  6 11:41:13 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.0
