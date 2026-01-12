@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Jan 11 08:14:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.88.0:
+  * Exciting New Features
+    - Added capability to support docker pull with image sha by
+      @fluxxBot in #3273
+    - support-conan-build info-collection by @reshmifrog in #3291
+  * Improvements
+    - Support multi user profile build-info collection by @fluxxBot
+      in #3296
+    - conan improvements by @reshmifrog in #3300
+  * Bug Fixes
+    - Fix inconsistent RequestedBy Paths for .NET Dependencies by
+      @bhanurp in #3279
+    - Unhide conan command by @reshmifrog in #3299
+  * Other Changes
+    - JFMIG-13 - Add ability to provide include files pattern to
+      migrate only a part of repository by @deepakkjfrog in #3266
+    - Fix/rteco 694 j frog cli command jf rbs versions not showing
+      results with project by @naveenku-jfrog in #3294
+    - Supporting Run native behavior for Gradle by @nitinp19 in
+      #3282
+    - fix for pypi different package having same checksum by
+      @nitinp19 in #3302
+
+-------------------------------------------------------------------
 Sat Dec 13 19:35:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.87.0:
