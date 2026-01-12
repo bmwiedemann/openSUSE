@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan  9 08:37:35 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to alsa-lib 1.2.15.2:
+  * ucm: add some traces for the config filenames
+  * fix a few error callback handlings
+
+-------------------------------------------------------------------
 Fri Jan  2 10:11:38 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to alsa-lib 1.2.15.1:
