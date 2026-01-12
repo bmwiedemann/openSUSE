@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jan  9 15:06:44 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.34.0
+  * `KEY_TYPE_error` keys new include a field that indicates the
+    reason and codepath they were created.
+  * We now run `check_snapshots` before deleting interior snapshot
+    nodes, after observing a bug where bad skiplist entries were
+    created due to prior corruption of the snapshot depth field.
+  * The compression code now always bounces the source buffer if it
+    may have been mapped to userspace; this should solve reports of
+    corruption with zstd.
+  * `str_hash` (dirents and xattrs) repair now handles keys in
+    different snapshots correctly.
+
+-------------------------------------------------------------------
 Thu Dec 25 23:04:13 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.33.4

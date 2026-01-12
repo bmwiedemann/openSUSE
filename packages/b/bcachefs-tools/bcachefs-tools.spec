@@ -1,7 +1,7 @@
 #
 # spec file for package bcachefs-tools
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           bcachefs-tools
-Version:        1.33.4
+Version:        1.34.0
 Release:        0
 Summary:        Configuration utilities for bcachefs
 License:        Apache-2.0 AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND MIT AND MPL-2.0 AND (MIT OR Unlicense) AND BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-only
