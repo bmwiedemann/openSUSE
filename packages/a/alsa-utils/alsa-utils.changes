@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan  9 08:41:15 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to alsa-utils 1.2.15.2:
+  * previous alsactl fixes
+  * alsaloop: only log xrun debug messages when verbose
+  * aplay: add support for G.711 A_LAW enconding in AU file format
+- Drop obsoleted patches:
+  0001-alsactl-add-missing-call-to-clean-card-specific-conf.patch
+  0002-alsactl-fix-sequence-to-clean-card-specific-config-f.patch
+
+-------------------------------------------------------------------
 Fri Jan  2 11:41:53 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to alsa-utils 1.2.15.1:
