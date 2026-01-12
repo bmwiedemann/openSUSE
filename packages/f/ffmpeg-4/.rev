@@ -823,4 +823,12 @@
   space for appended &quot;/&quot; (bsc#1251137, CVE-2025-59728).</comment>
     <requestid>1311467</requestid>
   </revision>
+  <revision rev="90" vrev="10">
+    <srcmd5>2a592a15e3d9d628e047513bde1a8b86</srcmd5>
+    <version>4.4.6</version>
+    <time>1768214956</time>
+    <user>anag_factory</user>
+    <comment>add a bunch of patches (CVE-2023-6601, bsc#1220545)</comment>
+    <requestid>1326658</requestid>
+  </revision>
 </revisionlist>

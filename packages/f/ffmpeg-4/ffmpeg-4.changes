@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Jan 08 10:04:01 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-4-CVE-2023-6601-shim01-6b1f68cc.patch:
+  Backport 6b1f68cc from upstream, fail on probing non hls/m3u8 file
+  extensions. Its unexpected that a .avi or other "standard" file turns
+  into a playlist. The goal of this patch is to avoid this unexpected
+  behavior and possible privacy or security differences.
+  (CVE-2023-6601, bsc#1220545)
+- Add ffmpeg-4-CVE-2023-6601-shim02-954d16fa.patch:
+  Backport 954d16fa from upstream, Try to implement RFC8216 playlist
+  refusal.
+  (CVE-2023-6601, bsc#1220545)
+- Add ffmpeg-4-CVE-2023-6601-shim03-a0cb5722.patch:
+  Backport a0cb5722 from upstream, Check mime_ok first, This should
+  be a few nano seconds faster (not measureable), But Collectively
+  the whole humankind watching hls will safe a minute.
+  (CVE-2023-6601, bsc#1220545)
+- Add ffmpeg-4-CVE-2023-6601-shim04-5b630743.patch:
+  Backport 5b630743 from upstream, Better message from hls_probe()
+  (CVE-2023-6601, bsc#1220545)
+- Add ffmpeg-4-CVE-2023-6601.patch:
+  Backport d09f50c0f from upstream, remove non standard hls
+  extension.
+  (CVE-2023-6601, bsc#1220545)
+
+-------------------------------------------------------------------
 Wed Oct 15 02:12:04 UTC 2025 - SongChuan Kang <sckang@suse.com>
 
 - Add ffmpeg-4-CVE-2025-59728.patch: avformat/dashdec: Allocate

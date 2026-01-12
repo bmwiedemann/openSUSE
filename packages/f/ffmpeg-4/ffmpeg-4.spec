@@ -145,6 +145,11 @@ Patch31:        ffmpeg-4-CVE-2024-36618.patch
 Patch32:        ffmpeg-4-CVE-2025-7700.patch
 Patch33:        glslang16.patch
 Patch34:        ffmpeg-4-CVE-2025-59728.patch
+Patch35:        ffmpeg-4-CVE-2023-6601-shim01-6b1f68cc.patch
+Patch36:        ffmpeg-4-CVE-2023-6601-shim02-954d16fa.patch
+Patch37:        ffmpeg-4-CVE-2023-6601-shim03-a0cb5722.patch
+Patch38:        ffmpeg-4-CVE-2023-6601-shim04-5b630743.patch
+Patch39:        ffmpeg-4-CVE-2023-6601.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel
