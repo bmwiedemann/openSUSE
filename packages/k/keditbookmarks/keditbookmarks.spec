@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           keditbookmarks
-Version:        25.12.0
+Version:        25.12.1
 Release:        0
 Summary:        KDE Bookmark Editor
 License:        GPL-2.0-only
