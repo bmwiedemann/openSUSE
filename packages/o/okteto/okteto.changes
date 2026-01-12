@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sun Jan 11 13:32:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.15.0:
+  * New Feature
+    - Unify CLI image configuration under a single OKTETO_CLI_IMAGE
+      environment variable by @pchico83 in #4840
+    - Default to okteto/okteto image hosted in GitHub Packages by
+      @pchico83 in #4843
+    - Implement Buildkit connection via port forward by @jLopezbarb
+      in #4831
+    - feat: reuse buildkit connector between command steps by
+      @jLopezbarb in #4844
+    - feat: add buildkit queue wait by @jLopezbarb in #4845
+    - feature(buildkit): add reconnection logic to port forward
+      connector by @jLopezbarb in #4847
+    - feat: add incluster buildkit connector by @jLopezbarb in
+      #4851
+  * Bug Fix
+    - fix(doctor): handle correctly okteto up sessions by
+      @jLopezbarb in #4832
+    - build(deps): update okteto clean version to 0.3.0 in
+      Dockerfile by @jLopezbarb in #4841
+    - Ignore discovery errors for "metrics.k8s.io/v1beta1" and
+      "custom.metr… by @pchico83 in #4850
+    - fix(log): mask platform env vars (DEV-1266) by @oktetobot in
+      #4846
+  * Dependencies
+    - chore: update dependency versions in Dockerfile and go.mod
+      (#4853) (#4860)
+    - build(deps): bump actions/cache from 4 to 5 (#4849)
+    - build(deps): update okteto clean version to 0.3.0 in
+      Dockerfile (#4841)
+    - build(deps): bump express from 4.20.0 to 4.22.0 in
+      /samples/node.js (#4839)
+    - build(deps): bump werkzeug from 3.0.6 to 3.1.4 in
+      /samples/python (#4838)
+    - build(deps): update kubectl and kustomize versions in
+      Dockerfile (#4833)
+
+-------------------------------------------------------------------
 Fri Dec 05 06:11:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.14.0:
