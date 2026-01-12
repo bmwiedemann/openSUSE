@@ -35,13 +35,13 @@ BuildRequires:  python-rpm-macros
 Requires:       python-branca >= 0.5.0
 Requires:       python-xyzservices >= 2021.8.1
 Requires:       (python-ipywidgets >= 7.6.0 with python-ipywidgets < 9)
-Requires:       (python-jupyter_leaflet >= 0.19 with python-jupyter_leaflet < 0.20)
+Requires:       (python-jupyter_leaflet >= 0.20 with python-jupyter_leaflet < 0.21)
 Requires:       (python-traittypes >= 0.2.1 with python-traittypes < 3)
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module ipywidgets >= 7.6.0 with %python-ipywidgets < 9}
 BuildRequires:  %{python_module branca >= 0.5.0}
-BuildRequires:  %{python_module jupyter_leaflet >= 0.19 with %python-jupyter_leaflet < 0.20}
+BuildRequires:  %{python_module jupyter_leaflet >= 0.20 with %python-jupyter_leaflet < 0.21}
 BuildRequires:  %{python_module jupyterlab}
 BuildRequires:  %{python_module nbclassic}
 BuildRequires:  %{python_module traittypes >= 0.2.1 with %python-traittypes < 3}

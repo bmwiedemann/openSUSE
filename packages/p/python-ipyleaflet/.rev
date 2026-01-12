@@ -255,4 +255,13 @@
   * geojson layers pmIgnore by @lopezvoliver in #1251</comment>
     <requestid>1287578</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>111e414590d593952ae83b5dc900169c</srcmd5>
+    <version>0.20.0</version>
+    <time>1768209998</time>
+    <user>anag_factory</user>
+    <comment>- Fix dependency in jupyter leaflet 
+</comment>
+    <requestid>1326645</requestid>
+  </revision>
 </revisionlist>
