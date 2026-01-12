@@ -1,7 +1,7 @@
 #
 # spec file for package python-pifpaf
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,10 @@
 #
 
 
+%{?sle15_python_module_pythons}
 %bcond_without libalternatives
 Name:           python-pifpaf
-Version:        3.3.0
+Version:        3.4.0
 Release:        0
 Summary:        Suite of tools and fixtures to manage daemons for testing
 License:        Apache-2.0

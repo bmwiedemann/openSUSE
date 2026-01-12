@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan  9 12:31:40 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.4.0
+  * valkey: Fix missing password in URL
+  * Remove Python 3.9 support
+  * Add /usr/libexec/rabbitmq to RabbitMQ search paths
+  * Remove "wheel" dependency from pyproject.toml
+  * Add ZooKeeper path for Gentoo
+  * redis/valkey: Adopt to recent log format from sentinel
+  * Bump etcd to 3.5.x
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Wed Jul 16 15:09:31 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.0:

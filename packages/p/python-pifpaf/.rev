@@ -230,4 +230,12 @@
 - Remove unneeded Requires on mock and six.</comment>
     <requestid>1293845</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>dda864ee150e45ca02c3db183fba38d0</srcmd5>
+    <version>3.4.0</version>
+    <time>1768215010</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1326739</requestid>
+  </revision>
 </revisionlist>
