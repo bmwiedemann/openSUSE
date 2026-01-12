@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Jan  7 12:24:49 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.1/
+- Changes since 25.12.0:
+  * Fix slow opening through file manager CCBUG: 513648
+  * Fix project monitor initialized at frame 1 in new projects (kde#513907)
+  * Rotoscoping: don't reset mask points when seeking while shape is not yet closed (kde#513801)
+  * minor cleanup media capture
+  * Audio capture: minor cleanup, ensure we use a channel count/sample rate compatible with mic.
+  * Fix crash on copy BUG: 513964 FIXED-IN: 25.12.1 (kde#513964)
+  * Use Qt native method to fetch audio level in capture. Related to #2116
+  * Fix crash toggling audio monitor Related to #2116
+  * Refresh monitor after changing interpolation
+  * Fix paste clips doesn't follow disabled state (kde#513473)
+  * Fix xmlgui related crash starting an older Kdenlive version (< 25.08.3)
+  * Keep duration info when moving ranged markers
+  * Don't load Kdenlive in the background if welcome screen is displayed to avoid busy cursor / greyed out screen on Wayland
+  * Fix window does not appear after crash and no welcome screen
+  * Ensure we cannot call a welcome screen action before it is connected
+  * FIx possible crash in welcome screen trying to open profile or file when mainwindow was not ready yet
+  * Fix changing keyframe type for multiple keyframes not working Fixes #2104
+  * CI: Add documentation build
+  * Add AMF encoding profile for Windows
+  * Don't allow savinf a custom effect with the name of an existing effect
+  * Fix horizontal editing layout not loaded
+  * hsvhold similarity must be > 0
+  * Fix copy paste resets keyframe type (kde#513053)
+  * Fix editing transform on monitor discards opacity Fixes #2108
+  * Don't check for readOnly in QStorageInfo on Mac
+  * Fix app not opening after crash and opening project from command line
+  * Don't incorrectly show warning about hidden monitor
+  * Fix project layout not correctly restored if opened from Welcome Screen
+
+-------------------------------------------------------------------
 Sat Dec  6 11:40:33 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.0
