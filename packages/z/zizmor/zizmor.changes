@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sun Jan 11 08:15:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.20.0:
+  * Enhancements
+    - The excessive-permissions audit is now aware of the
+      artifact-metadata and models permissions (#1461)
+    - The cache-poisoning audit is now aware of the
+      ramsey/composer-install action (#1489)
+    - The unpinned-images audit is now significantly more precise
+      in the presence of matrix references, e.g. image: ${{
+      matrix.image }} (#1482)
+  * Changes
+    - The default policy for the unpinned-uses audit has changed
+      from allowing ref-pinning for first-party actions (those
+      under actions/* and similar) to requiring hash-pinning. This
+      makes the default policy more strict, as well as more
+      consistent across the actions ecosystem.
+      Users who with to retain the old (permissive policy) for
+      first-party actions may configure it explicitly in their
+      zizmor.yml:
+
+        zizmor.yml
+        rules:
+          unpinned-uses:
+            config:
+              policies:
+                actions/*: ref-pin
+                github/*: ref-pin
+                dependabot/*: ref-pin
+
+  * Bug Fixes
+    - The dependabot-cooldown audit no longer flags missing
+      cooldowns on ecosystems that don't (yet) support cooldowns,
+      such as opentofu (#1480)
+    - Fixed a false positive in the cache-poisoning audit where
+      zizmor would treat empty strings (e.g. cache: '') as enabling
+      rather than disabling caching (#1482)
+    - Fixed two gaps in the use-trusted-publishing audit's
+      detection of common yarn publishing commands (#1495)
+  * Miscellaneous
+    - zizmor's configuration now has an official JSON schema that
+      will be available via SchemaStore soon!  Many thanks to
+      @kiwamizamurai for implementing this improvement!
+
+-------------------------------------------------------------------
 Fri Dec 19 08:16:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.19.0:
