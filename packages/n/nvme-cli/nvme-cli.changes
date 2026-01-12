@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Fri Jan 09 16:22:17 UTC 2026 - Daniel Wagner <dwagner@suse.de>
+
+- Update to version 2.16:
+  * plugin/dera: update dera smart-log-add command output
+  * plugins/ibm: show persist events log
+  * sndk: And support for new Sandisk devices
+  * sndk: Fix SN861 drive-resize capability
+  * sndk: Support fabric attached SN861
+  * plugins/amzn: Handle EC2 local storage controller devices
+  * nvme: update the tls 'compat' option documentation
+  * nvme-print-stdout: fix detailed list row field width
+  * zns: replace zns list with generic table
+  * plugins/amzn: Enable namespace metrics for EC2 local storage
+  * util: rename table_init() to table_create()
+  * util: move to add final padding printf between each columns
+  * util: use switch case statements instead of repeated else if
+  * nvme-print-stdout: replace nvme simple list with generic table
+  * util: remove unnecessary row end padding print
+  * util: allow table_add_columns() to set column width
+  * util: add table_init_with_columns() function
+  * nvme-print: print both celsius and fahrenheit temperature values
+  * sndk: Add drive-resize support for SN861 Drives
+  * wdc: Fix SN861 capabilities in NVME-OF cases
+  * plugins/solidigm: Added debug info to parse-telemetry-log.
+  * doc/nvme-write: fix short hand argument for --block-size
+  * docs: update with new --block-size= argument for compare/read/write
+  * completions: add --block-size option to io commands to bypass identify commands.
+  * nvme: add --block-size option to io commands to bypass identify commands.
+  * plugins/ibm: Add IBM specific plugins code
+  * nvme: add support for printing show-topology in tabular form
+  * nvme: add common APIs for printing tabular format output
+  * nvme: extend show-topology command to add support for multipath
+  * nvme: support <device> option in show-topology command
+  * completions: Added ocp get/set_error_injection options.
+  * plugins/ocp: Add --all-ns option to command get-error-injection.
+  * nvme: add --compat flag for 'gen-tls-key' and 'check-tls-key' (bsc#1246914)
+  * fabrics: set persistent when connecting to a discovery controller
+  * plugins/ocp: Add --all-ns option to command set-error-injection.
+  * ocp: Update completions for ocp internal-log and telemetry-string-log
+  * ocp: Update man page documentation for internal-log command
+  * ocp: Add support for retrieving telemetry data area 4
+  * plugins/amzn: Add stats support for EC2 local storage instance type
+  * ocp: Fix telemetry string log json format parsing
+  * ocp: Update/Fix Man page for telemetry-string-log command
+  * ocp: Fixes to telemetry-string-log command
+  * sndk: Use libnvme functions to set/clear etdas bit
+  * nvme: Enable retrieving telemetry log data area 4
+  * plugins/memblaze: update smart-log-add-x ids
+  * plugin/solidigm: Added EXTENDED vs-internal-log option.
+  * nvme: fix timeout ioctl arguments
+  * nvme-list: make verbose JSON output backward compatible
+  * nvme: Fix get-feature on big-endian systems
+  * plugin/solidigm: Additional product Telemetry parsing support.
+  * sndk: Add support for the Sandisk UUID
+  * udev: rename 71-nvme-hpe.rules to 71-nvmf-hpe.rules
+- rename hpe rule
+
+-------------------------------------------------------------------
 Fri Jul 25 11:09:41 UTC 2025 - Daniel Wagner <dwagner@suse.de>
 
 - Update to version 2.15:
@@ -27,8 +85,8 @@ Fri Jul 25 11:09:41 UTC 2025 - Daniel Wagner <dwagner@suse.de>
   * doc: add get-log command symbolic names
   * nvme: add get-log command symbolic names
   * CI: adopt kubevirt-action for self-hosted ARC
-  * netapp-smdev: update invalid device handling
-  * netapp-ontapdev: update invalid device handling
+  * netapp-smdev: update invalid device handling (bsc#1247017)
+  * netapp-ontapdev: update invalid device handling (bsc#1247017)
   * wdc: invalid customer ID fix
   * sndk: vs-internal-log udui support
   * nvme: fix mem leak in nvme copy (bsc#1243716)

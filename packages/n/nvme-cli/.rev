@@ -938,4 +938,12 @@
     <comment>Resubmit after bsc#1247053 was fixed</comment>
     <requestid>1296260</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>bef2a3ea84c21f06b2717d099f11ec15</srcmd5>
+    <version>2.16</version>
+    <time>1768217922</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1326373</requestid>
+  </revision>
 </revisionlist>

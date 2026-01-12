@@ -1,7 +1,7 @@
 #
 # spec file for package nvme-cli
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_without check
 
 Name:           nvme-cli
-Version:        2.15
+Version:        2.16
 Release:        0
 Summary:        NVM Express user space tools
 License:        GPL-2.0-only
@@ -172,7 +172,7 @@ fi
 %{_udevrulesdir}/65-persistent-net-nbft.rules
 %{_udevrulesdir}/70-nvmf-keys.rules
 %{_udevrulesdir}/70-nvmf-autoconnect.rules
-%{_udevrulesdir}/71-nvme-hpe.rules
+%{_udevrulesdir}/71-nvmf-hpe.rules
 %{_udevrulesdir}/71-nvmf-netapp.rules
 %{_udevrulesdir}/71-nvmf-vastdata.rules
 %{_unitdir}/nvmefc-boot-connections.service
