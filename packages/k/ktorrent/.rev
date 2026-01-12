@@ -1352,4 +1352,12 @@ This should fix the failures seen in Staging:E</comment>
     <comment>KDE release gear 25.12 (forwarded request 1321386 from krop)</comment>
     <requestid>1322468</requestid>
   </revision>
+  <revision rev="176" vrev="1">
+    <srcmd5>fd45ce875227fc51513d504733c417b7</srcmd5>
+    <version>25.12.1</version>
+    <time>1768209590</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 25.12.1 (forwarded request 1325801 from krop)</comment>
+    <requestid>1326196</requestid>
+  </revision>
 </revisionlist>
