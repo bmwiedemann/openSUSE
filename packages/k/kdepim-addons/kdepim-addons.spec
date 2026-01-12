@@ -23,7 +23,7 @@
 
 %bcond_without released
 Name:           kdepim-addons
-Version:        25.12.0
+Version:        25.12.1
 Release:        0
 Summary:        Addons for KDE PIM applications
 License:        GPL-2.0-only
