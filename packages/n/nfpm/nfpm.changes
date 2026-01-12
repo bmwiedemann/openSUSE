@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Jan 11 12:49:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.44.1:
+  * Dependency updates
+    - 519d36c: fix(deps): bump alpine from 3.22.2 to 3.23.0 (#1007)
+      (@dependabot[bot])
+    - de7ff4f: fix(deps): bump alpine from 3.23.0 to 3.23.2 (#1014)
+      (@dependabot[bot])
+    - 6adfb55: fix(deps): bump alpine from 3.23.0 to 3.23.2 in
+      /testdata/acceptance (#1015) (@dependabot[bot])
+    - 6fbefa1: fix(deps): update to go.yaml.in/yaml/v3 (@caarlos0)
+  * Build process updates
+    - 2e80cb0: ci(deps): bump the actions group across 1 directory
+      with 8 updates (#1011) (@dependabot[bot])
+    - a1752b7: ci(deps): bump the actions group with 3 updates
+      (#1013) (@dependabot[bot])
+    - cfff4ff: ci: update .goreleaser.yml (@caarlos0)
+  * Other work
+    - 8be055b: docs: update cmd docs (@caarlos0)
+
+-------------------------------------------------------------------
 Thu Dec 04 07:05:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.44.0:
