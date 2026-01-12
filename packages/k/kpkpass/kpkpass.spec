@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kpkpass
-Version:        25.12.0
+Version:        25.12.1
 Release:        0
 Summary:        Library to parse Passbook files
 License:        LGPL-2.1-or-later
