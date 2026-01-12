@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan  7 12:24:31 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.1/
+- Changes since 25.12.0:
+  * qml/HeaderBar: only replace image if it's loaded (kde#506959)
+  * qml/ContextView: allow header label to elide
+
+-------------------------------------------------------------------
 Sat Dec  6 11:40:17 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.0
