@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 09 12:19:46 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 20260108:
+  * Set /var/lib/logwatch to logwatch_var_lib_t (bsc#1255862)
+
+-------------------------------------------------------------------
 Tue Jan 06 10:33:03 UTC 2026 - Robert Frohl <rfrohl@suse.com>
 
 - Update to version 20260106:
