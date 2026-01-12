@@ -1,7 +1,7 @@
 #
 # spec file for package python-Authlib
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define modname authlib
 %{?sle15_python_module_pythons}
 Name:           python-Authlib
-Version:        1.6.5
+Version:        1.6.6
 Release:        0
 Summary:        Python library for building OAuth and OpenID Connect servers
 License:        BSD-3-Clause
