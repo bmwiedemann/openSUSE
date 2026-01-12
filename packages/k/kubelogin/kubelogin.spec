@@ -1,7 +1,7 @@
 #
 # spec file for package kubelogin
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           kubelogin
-Version:        0.2.13
+Version:        0.2.14
 Release:        0
 Summary:        Kubernetes client credential plugin implementing Azure authentication
 License:        MIT
 URL:            https://github.com/Azure/kubelogin
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go1.24 >= 1.24.7
+BuildRequires:  go1.24 >= 1.24.11
 BuildRequires:  golang-packaging
 %{go_provides}
 
