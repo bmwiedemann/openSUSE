@@ -1,7 +1,7 @@
 #
 # spec file for package gap-hap
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-hap
-Version:        1.73
+Version:        1.74
 Release:        0
 Summary:        GAP: Homological Algebra Programming
 License:        GPL-2.0-or-later
