@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jan  4 14:47:23 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.22.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.22.0
+- Changes since 6.21.0:
+  * Update dependency version to 6.22.0
+  * /etc/mtab not exists on OpenBSD
+  * Fix some missing overrides in win backend
+  * Update version to 6.22.0
+
+-------------------------------------------------------------------
 Fri Dec 12 20:17:37 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.21.0
