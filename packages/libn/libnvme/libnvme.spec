@@ -1,7 +1,7 @@
 #
 # spec file for package libnvme
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %bcond_without check
 
 Name:           libnvme
-Version:        1.15
+Version:        1.16.1
 Release:        0
 Summary:        Linux-native nvme device management library
 License:        LGPL-2.1-or-later

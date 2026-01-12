@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Jan 09 16:12:25 UTC 2026 - Daniel Wagner <dwagner@suse.de>
+
+- Update to version 1.16.1:
+  * tree: preserve dhchap_key to during scan
+  * test/mi: initialize struct args
+  * mi-mctp: Fix compile bug in test/mi-mctp.c when !HAVE_LINUX_MCTP_H
+  * linux: Add nvme_get_uuid_list function
+  * tree: support apple-nvme transport
+  * test: add hkdf_add1 test
+  * linux: use EVP_PKEY_CTX_add1_hkdf_info only once in compat function (bsc#1246914)
+  * nvme/linux: check for empty digest in gen_tls_identity() (bsc#1246914)
+  * examples/discover-loop.py: actually implement a discovery loop
+  * examples/discover-loop.py: rework to use 'with' statement
+  * python: support 'with' statement for objects
+  * python: remove "iter" elements
+  * python: fix iterators failing on empty lists
+  * libnvme/nvme.i: raise exception when disconnect fails
+  * python: Don't exit immediately on discovery fail.
+  * nvme/linux: add fallback implementation for nvme_insert_tls_key_compat() (bsc#1246914)
+  * examples/discovery-loop.py: update to use tcp transport
+  * libnvme/nvme.i: Update subsystem definitions
+  * nvme.i: fixup typo in nvme:discover
+  * libnvme: propagate the error to the caller if nvme_get_log_page() fails
+  * python: fix typo in nvmf_discovery_log
+  * linux: fix HKDF TLS key derivation back to OpenSSL 3.0.8 (bsc#1246914)
+  * nvme.i: decode 'tsas' discovery log page entry
+  * nvme.i: fix crash on ctrl.discover() without a connection
+  * docs: add missing API types documentation
+  * libnvme: TLS PSK derivation fixes (bsc#1246914)
+  * linux: rename __nvme_insert_tls_key_versioned() to __nvme_insert_tls_key() (bsc#1246914)
+  * linux: rename __nvme_insert_tls_key() to __nvme_import_tls_key() (bsc#1246914)
+  * test/psk: add testcase for TLS identity derivation (bsc#1246914)
+  * linux: set errno when nvme_generate_tls_key_identity() fails (bsc#1246914)
+  * linux:  Add functions to set and clear etdas bit
+  * tree: do not try to strdup NULL pointer (bsc#1247225)
+
+-------------------------------------------------------------------
 Fri Jul 25 09:50:15 UTC 2025 - Daniel Wagner <dwagner@suse.de>
 
 - Update to version 1.15:
