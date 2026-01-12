@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Jan 11 08:51:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.5.4:
+  * chore(deps): update anchore dependencies (#360)
+  * chore(deps): update tools to latest versions (#358)
+  * chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.7.7 to
+    6.7.8 (#357)
+  * chore(deps): bump modernc.org/sqlite from 1.41.0 to 1.42.2
+    (#359)
+
+-------------------------------------------------------------------
+Sun Jan 11 08:45:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.5.3:
+  * chore(deps): bump github.com/anchore/syft from 1.38.2 to 1.39.0
+    (#356)
+  * chore(deps): update tools to latest versions (#355)
+  * chore(deps): update tools to latest versions (#352)
+  * chore(deps): bump modernc.org/sqlite from 1.40.1 to 1.41.0
+    (#353)
+  * signpost to docs site (#351)
+  * chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.7.5 to
+    6.7.7 (#344)
+  * chore(deps): bump github.com/anchore/stereoscope from 0.1.14 to
+    0.1.16 (#346)
+  * chore(deps): update tools to latest versions (#340)
+  * chore(deps): bump peter-evans/create-pull-request from 7.0.11
+    to 8.0.0 (#345)
+  * chore(deps): bump actions/cache in /.github/actions/bootstrap
+    (#349)
+  * chore(deps): bump github/codeql-action from 4.31.7 to 4.31.9
+    (#350)
+  * chore(deps): update anchore dependencies (#341)
+
+-------------------------------------------------------------------
 Thu Dec 11 06:49:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.5.2:

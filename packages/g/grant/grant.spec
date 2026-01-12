@@ -1,7 +1,7 @@
 #
 # spec file for package grant
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           grant
-Version:        0.5.2
+Version:        0.5.4
 Release:        0
 Summary:        Search an SBOM for licenses and the packages they belong to
 License:        Apache-2.0
