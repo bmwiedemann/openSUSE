@@ -63,4 +63,17 @@
     <comment></comment>
     <requestid>1295635</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>01ca0c487207f35a4b23a8ff7ddd729a</srcmd5>
+    <version>0.8.1</version>
+    <time>1768209728</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.8.1
+- Changes since v0.7.5
+  * v0.7.6: New release with some nice things :)
+  * v0.8.0: This is a complete rewrite of hyprpaper into hyprtoolkit.
+    Please note configs are broken and much simplified.
+  * v0.8.1: A release with a few fixes for the new 0.8.0 release</comment>
+    <requestid>1326471</requestid>
+  </revision>
 </revisionlist>
