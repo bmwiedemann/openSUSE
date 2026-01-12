@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           grantlee-editor
-Version:        25.12.0
+Version:        25.12.1
 Release:        0
 Summary:        Messageviewer header theme editor based on Grantlee
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
