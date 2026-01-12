@@ -203,4 +203,17 @@ Update to version 3.11.2</comment>
     <comment>Update to 3.12.0</comment>
     <requestid>1217117</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>377473e34ea924a8060d57ef4ce1365c</srcmd5>
+    <version>3.12.0</version>
+    <time>1768209817</time>
+    <user>anag_factory</user>
+    <comment>- added fix-named-readtables-sbcl.patch to fix compilation failure
+  with SBCL 2.6.0
+- added fix-gdk-event.patch and fix-webkit2-web-view.patch to fix
+  blank window on startup due to GDK event failure
+- on NVIDIA, launch nyxt with WEBKIT_DISABLE_COMPOSITING_MODE=1 to
+  workaround blank window</comment>
+    <requestid>1326520</requestid>
+  </revision>
 </revisionlist>

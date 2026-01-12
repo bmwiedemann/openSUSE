@@ -29,6 +29,12 @@ URL:            https://nyxt.atlas.engineer
 Source:         nyxt-%{version}-source-with-submodules.tar.xz
 Source1:        nyxt-rpmlintrc
 Patch0:         so_ver_fix.patch
+# https://github.com/melisgl/named-readtables/commit/6eea56674442b884a4fee6ede4c8aad63541aa5b
+Patch1:         fix-named-readtables-sbcl.patch
+# https://cgit.freebsd.org/ports/tree/www/nyxt/files/patch-__build_cl-webkit_webkit2_webkit2.web-view.lisp?id=0529575a3639d40322e1634b0287fe56e0a40684
+Patch2:         fix-webkit2-web-view.patch
+# https://cgit.freebsd.org/ports/tree/www/nyxt/files/patch-source_renderer_gtk.lisp?id=0529575a3639d40322e1634b0287fe56e0a40684
+Patch3:         fix-gdk-event.patch
 BuildRequires:  gcc-c++
 BuildRequires:  git
 BuildRequires:  libfixposix-devel
@@ -71,6 +77,11 @@ strip -s %{buildroot}/%{_libdir}/nyxt/libnyxt.so
 mv "%{buildroot}%{_bindir}/nyxt" "%{buildroot}%{_bindir}/nyxt.bin"
 cat > "%{buildroot}%{_bindir}/nyxt" << EOF
 #!/bin/sh
+
+# must disable compositing on NVIDIA driver to workaround blank window
+if [ -x /usr/bin/nvidia-smi -a /usr/bin/nvidia-smi &> /dev/null ]; then
+        export WEBKIT_DISABLE_COMPOSITING_MODE=1
+fi
 
 # partial work-around for WebKitGTK gstreamer issue running nyxt sandboxed:
 # https://bugs.webkit.org/show_bug.cgi?id=268759
