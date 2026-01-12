@@ -18,7 +18,7 @@
 
 %define elixirdir %{_prefix}/lib/elixir
 Name:           elixir
-Version:        1.19.4
+Version:        1.19.5
 Release:        0
 Summary:        Functional meta-programming aware language built atop Erlang
 License:        Apache-2.0

@@ -367,4 +367,13 @@
     <comment>Update to v1.19.4</comment>
     <requestid>1320429</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>e79ccee93cc813a31921075ddc39bad6</srcmd5>
+    <version>1.19.5</version>
+    <time>1768209752</time>
+    <user>anag_factory</user>
+    <comment>- Upgrade to Elixir 1.19.5:
+  * Changelog available at https://hexdocs.pm/elixir/1.19.5/changelog.html</comment>
+    <requestid>1326507</requestid>
+  </revision>
 </revisionlist>
