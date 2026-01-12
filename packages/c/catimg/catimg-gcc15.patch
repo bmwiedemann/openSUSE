@@ -1,13 +1,22 @@
-Index: catimg-2.7.0/src/catimg.c
-===================================================================
---- catimg-2.7.0.orig/src/catimg.c
-+++ catimg-2.7.0/src/catimg.c
+From 31b39851ac0b67b8e26f397ac83caf68086d3732 Mon Sep 17 00:00:00 2001
+From: Felix Yan <felixonmars@archlinux.org>
+Date: Mon, 15 Dec 2025 00:22:35 +0900
+Subject: [PATCH] Fix build error on GCC 15 (#76)
+
+---
+ src/catimg.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/catimg.c b/src/catimg.c
+index 962ce5c..5dd5c3f 100644
+--- a/src/catimg.c
++++ b/src/catimg.c
 @@ -34,7 +34,7 @@ extern int optreset;
  volatile int loops = -1, loop = -1;
  volatile char stop = 0;
  
 -void intHandler() {
-+void intHandler(int) {
++void intHandler(int sig) {
      loops = loop;
      stop = 1;
  }

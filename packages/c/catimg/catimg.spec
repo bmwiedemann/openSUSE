@@ -2,6 +2,7 @@
 # spec file for package catimg
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +18,17 @@
 
 
 Name:           catimg
-Version:        2.7.0
+Version:        2.8.0
 Release:        0
-License:        MIT
 Summary:        Insanely fast image printing in your terminal
+License:        MIT
 Group:          Productivity/Graphics/Viewers
-URL:            http://posva.net/shell/retro/bash/2013/05/27/catimg
-Source:         https://github.com/posva/catimg/archive/refs/tags/%{version}.tar.gz
-# fix build with gcc15
-Patch0:          catimg-gcc15.patch
-BuildRequires:  cmake >= 3.5
-BuildRequires:  gcc
-BuildRequires:  gcc-c++
+URL:            https://posva.net/shell/retro/bash/2013/05/27/catimg
+Source:         https://github.com/posva/catimg/archive/refs/tags/v%{version}/%{name}-%{version}.tar.gz
+# https://github.com/posva/catimg/pull/76
+Patch0:         catimg-gcc15.patch
+BuildRequires:  c++_compiler
+BuildRequires:  cmake
 Requires:       ImageMagick
 
 %description
@@ -43,28 +43,27 @@ BuildArch:      noarch
 The official zsh completion script for catimg.
 
 %prep
-%autosetup -p1 -n %{name}-%{version}
+%autosetup -p1
 
 %build
-%cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5
-%make_build
+%cmake
+%cmake_build
 
 %install
-cd build
-%make_install
-
-install -Dm 0644 ../completion/_%{name}  %{buildroot}/%{_datadir}/zsh/site-functions/_%{name}
+%cmake_install
+install -Dm 0644 completion/_%{name}  %{buildroot}/%{_datadir}/zsh/site-functions/_%{name}
 
 %check
 %ctest
 
 %files
-%{_bindir}/*
-%_mandir/*/*
-%doc README.md
 %license LICENSE
+%doc README.md
+%{_bindir}/catimg
+%{_mandir}/man1/catimg.1%{?ext_man}
 
 %files zsh-completion
+%license LICENSE
 %{_datadir}/zsh
 
 %changelog

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan 11 12:53:35 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.8.0:
+  * compatibility with cmake 4
+- use cmake macros in packaging
+
+-------------------------------------------------------------------
 Mon Jun  9 09:22:55 UTC 2025 - pgajdos@suse.com
 
 - added patches
