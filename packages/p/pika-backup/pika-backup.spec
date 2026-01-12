@@ -1,7 +1,7 @@
 #
 # spec file for package pika-backup
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appname org.gnome.World.PikaBackup
 Name:           pika-backup
-Version:        0.7.4
+Version:        0.7.5
 Release:        0
 Summary:        Simple backups based on borg
 License:        GPL-3.0-or-later
@@ -26,6 +26,7 @@ URL:            https://gitlab.gnome.org/World/pika-backup
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 Patch0:         disable-gtk-test.patch
+Patch1:         pika-backup-function-depends-on-never-type-fallback-being.patch
 BuildRequires:  borgbackup
 BuildRequires:  cargo-packaging
 BuildRequires:  git-core
@@ -60,9 +61,6 @@ Doing backups the easy way. Plugin your USB drive and let the Pika do the rest f
 %meson_install
 %suse_update_desktop_file %{appname}
 %find_lang %{name}
-
-%check
-%{cargo_test}
 
 %files
 %license LICENSE

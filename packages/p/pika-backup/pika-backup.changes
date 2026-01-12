@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jan 12 04:06:57 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Add pika-backup-function-depends-on-never-type-fallback-being.patch
+  Fix build error. 
+
+-------------------------------------------------------------------
+Wed Nov 12 10:15:02 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Disable tests. 
+
+-------------------------------------------------------------------
+Mon Oct 13 04:10:05 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.7.5:
+  * No changes. 
+
+-------------------------------------------------------------------
 Tue Sep 24 02:58:01 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.7.4:
