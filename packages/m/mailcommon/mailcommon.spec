@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           mailcommon
-Version:        25.12.0
+Version:        25.12.1
 Release:        0
 Summary:        Base KDE PIM library for mail-handling applications
 License:        GPL-2.0-only AND LGPL-2.1-or-later
