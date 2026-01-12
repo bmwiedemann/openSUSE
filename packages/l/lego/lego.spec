@@ -1,7 +1,7 @@
 #
 # spec file for package lego
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lego
-Version:        4.30.1
+Version:        4.31.0
 Release:        0
 Summary:        Let's Encrypt/ACME client and library written in Go
 License:        MIT

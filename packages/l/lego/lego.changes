@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jan 11 13:10:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.31.0:
+  * c5a2595 Add DNS provider for 35.com/三五互联 (#2779)
+  * a6a7375 Add DNS provider for Alwaysdata (#2770)
+  * 96168f7 Add DNS provider for ISPConfig (#2762)
+  * dd6ab7c Add DNS provider for JDCloud (#2782)
+  * 1b63409 docs: remove email from examples (#2773)
+  * ee61641 f5xc: add an option to configure the domain of the
+    server (#2767)
+  * a5cc0e1 feat: improve ACME error types (#2761)
+  * ff885d9 gandiv5: fix API Key header (#2769)
+  * 2eede6d hetzner: fix compatibility with '_FILE' suffix (#2775)
+  * b77b870 namedotcom: follow CNAME (#2390)
+
+-------------------------------------------------------------------
 Wed Dec 17 06:20:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.30.1 (4.30.0 was not released):
