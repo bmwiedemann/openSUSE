@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 09 17:23:34 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 1699_20260109:
+  * etc/permissions: remove utempter entry which is no longer packaged
+  * profiles: remove unix2_chkpwd which is no longer packaged
+
+-------------------------------------------------------------------
 Wed Dec 17 09:51:34 UTC 2025 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Update to version 1699_20251217:

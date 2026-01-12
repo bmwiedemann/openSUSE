@@ -1650,4 +1650,15 @@ https://lists.opensuse.org/archives/list/packaging@lists.opensuse.org/message/5F
   * profiles: drop shadow related entries (bsc#1254844) (forwarded request 1323310 from wfrisch)</comment>
     <requestid>1324256</requestid>
   </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>a3fded80ec5d9c8dcdb920572b76de6c</srcmd5>
+    <version>1699_20260109</version>
+    <time>1768209382</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1699_20260109:
+  * etc/permissions: remove utempter entry which is no longer packaged
+  * profiles: remove unix2_chkpwd which is no longer packaged
+</comment>
+    <requestid>1326385</requestid>
+  </revision>
 </revisionlist>
