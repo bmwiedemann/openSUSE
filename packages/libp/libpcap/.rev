@@ -981,4 +981,41 @@
     <comment></comment>
     <requestid>1203533</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>670aa1e98662c1426049d9b4ebb1d7d4</srcmd5>
+    <version>1.10.6</version>
+    <time>1768209362</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.10.6: [bsc#1255765, CVE-2025-11961]
+  * General:
+    - Fix &quot;tcpdump -i &lt;n&gt;&quot; for something-only libpcap builds.
+    - gencode: Fix an undefined behavior in gen_mcode().
+    - gencode: Add a missing free() in gen_scode().
+    - Remove &quot;DLT_&quot; from the descriptions of two dlt_choices[] entries.
+    - Report the size of time_t in the version string.
+    - Validate remote capture source strings better.
+    - CVE-2025-11961: Fix OOBR and OOBW in pcap_ether_aton().
+  * Source code:
+    - Clean up code that computes the length of a netmask.
+    - Mind netmap support in pcap_lib_version().
+  * Link-layer types:
+    - Add LINKTYPE_ETW/DLT_ETW.
+    - Add LINKTYPE_NETANALYZER_NG/DLT_NETANALYZER_NG (pull request #1008).
+    - Add LINKTYPE_ZBOSS_NCP/DLT_ZBOSS_NCP.
+    - Add LINKTYPE_USB_2_0_LOW_SPEED/DLT_USB_2_0_LOW_SPEED,
+      LINKTYPE_USB_2_0_FULL_SPEED/DLT_USB_2_0_FULL_SPEED,
+      LINKTYPE_USB_2_0_HIGH_SPEED/DLT_USB_2_0_HIGH_SPEED
+    - Add LINKTYPE_AUERSWALD_LOG/DLT_AUERSWALD_LOG.
+    - Add LINKTYPE_ZWAVE_TAP/DLT_ZWAVE_TAP.
+    - Add LINKTYPE_SILABS_DEBUG_CHANNEL/DLT_SILABS_DEBUG_CHANNEL.
+    - Add LINKTYPE_FIRA_UCI/DLT_FIRA_UCI.
+    - Rename LINKTYPE_IPMB_LINUX/DLT_IPMB_LINUX to
+      LINKTYPE_I2C_LINUX/DLT_I2C_LINUX, as it's really just an
+      encapsulation of I2C, and is also being used for HDMI DDC.
+      Keep DLT_IPMB_LINUX around as a #define for backwards
+      compatibility.
+    - Add LINKTYPE_MDB/DLT_MDB.
+    - Add LINKTYPE_DECT_NR/DLT_DECT_NR. (forwarded request 1325077 from pmonrealgonzalez)</comment>
+    <requestid>1326305</requestid>
+  </revision>
 </revisionlist>
