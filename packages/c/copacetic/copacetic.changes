@@ -1,4 +1,120 @@
 -------------------------------------------------------------------
+Sun Jan 11 08:23:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.13.0:
+  * Notable Changes
+    - Can now use Copa as a Buildkit front end
+    - Bulk Image Patching to patch multiple images from a single
+      declarative config!
+    - .NET app-level patching
+    - SUSE distro support
+  * Changelog
+    - 28c466e feat: add support to SUSE and openSUSE distros with
+      Zypper (#1294)
+    - 358b2a9 build: update Go base image to 1.25.5-alpine3.23
+      (#1432)
+    - babc08e chore: bump github.com/charmbracelet/lipgloss from
+      0.7.1 to 0.13.1 (#1435)
+    - e07a778 chore: bump google.golang.org/grpc from 1.77.0 to
+      1.78.0 (#1434)
+    - bbb2395 chore: bump qs from 6.14.0 to 6.14.1 in /website
+      (#1431)
+    - 92d26c1 docs: Revert "docs: add distroless images support
+      documentation" (#1433)
+    - 95008df docs: add distroless images support documentation
+      (#1430)
+    - 9697ce8 chore: bump the all group across 1 directory with 7
+      updates (#1429)
+    - 153bd4d docs: update link for trivy installation guide
+      (#1426)
+    - 5c04112 chore: bump k8s.io/apimachinery from 0.34.3 to 0.35.0
+      (#1427)
+    - b4d40f4 chore: bump golang.org/x/term from 0.37.0 to 0.38.0
+      (#1416)
+    - 5d9a56a feat: Bulk Image Patching (#1235)
+    - 509008e fix: add registry authentication for platform
+      discovery (#1420)
+    - 3747056 chore: bump github.com/moby/buildkit from 0.26.2 to
+      0.26.3 (#1422)
+    - 71e55d9 feat: improve tui (#1421)
+    - 1faa7b9 feat: .NET app-level patching (#1106)
+    - d715e29 chore: bump the all group with 4 updates (#1418)
+    - e398be5 chore: bump the all group in /website with 2 updates
+      (#1417)
+    - 8a72242 chore: bump k8s.io/apimachinery from 0.34.2 to 0.34.3
+      (#1415)
+    - 1db23ce chore: bump github.com/moby/buildkit from 0.25.2 to
+      0.26.2 (#1413)
+    - 41db4e7 chore: bump the all group across 1 directory with 9
+      updates (#1412)
+    - a9dbb76 chore: bump the all group in /website with 2 updates
+      (#1410)
+    - 6e9ca5a chore: bump github.com/spf13/cobra from 1.10.1 to
+      1.10.2 (#1407)
+    - e5edca3 chore: bump mdast-util-to-hast from 13.1.0 to 13.2.1
+      in /website (#1404)
+    - 83ba211 fix: exit successfully and fix status for up to date
+      images (#1378)
+    - aa1b163 chore: bump express from 4.21.2 to 4.22.1 in /website
+      (#1403)
+    - 71f7c30 chore: bump the all group across 1 directory with 9
+      updates (#1401)
+    - b2a2000 chore: bump node-forge from 1.3.1 to 1.3.2 in
+      /website (#1400)
+    - f03e750 feat: add buildkit frontend (#1221)
+    - fe9c036 chore: bump google.golang.org/grpc from 1.76.0 to
+      1.77.0 (#1394)
+    - b852a63 fix: multi-platform url from docker when patching
+      (#1393)
+    - beeca06 fix: update test images for CVE fixes (#1398)
+    - 0301e4f docs: add multi-platform patch summary (#1392)
+    - c17bd47 chore: bump golang.org/x/crypto from 0.43.0 to 0.45.0
+      (#1389)
+    - 44ef770 chore: bump the all group with 2 updates (#1385)
+    - 0a3c3e0 chore: bump @tsconfig/docusaurus from 2.0.5 to 2.0.7
+      in /website in the all group (#1384)
+    - bf7e156 chore: bump golang.org/x/term from 0.36.0 to 0.37.0
+      (#1381)
+    - 8941fbd chore: bump k8s.io/apimachinery from 0.34.1 to 0.34.2
+      (#1380)
+    - 3c518cc fix: Node.js patching introduces new vulnerabilities
+      through transitive dependencies (#1379)
+    - b611800 chore: bump github.com/docker/docker from
+      28.5.1+incompatible to 28.5.2+incompatible (#1372)
+    - df8d3d6 chore: bump github.com/moby/buildkit from 0.25.1 to
+      0.25.2 (#1376)
+    - 04fdf4c chore: bump golang.org/x/sync from 0.17.0 to 0.18.0
+      (#1375)
+    - 5b60b0e chore: bump github.com/docker/cli from
+      28.5.1+incompatible to 28.5.2+incompatible (#1374)
+    - 6536384 chore: bump github.com/containerd/platforms from
+      1.0.0-rc.1 to 1.0.0-rc.2 (#1373)
+    - c801779 chore: bump the all group with 3 updates (#1371)
+    - 565da19 chore: bump github.com/containerd/containerd/v2 from
+      2.1.4 to 2.1.5 (#1370)
+    - d00d085 chore: bump github/codeql-action from 4.31.0 to
+      4.31.2 in the all group (#1368)
+    - 8925da4 chore: Generate v0.12.x docs (#1362)
+    - d488649 chore: bump @tsconfig/docusaurus from 2.0.4 to 2.0.5
+      in /website in the all group (#1367)
+    - 5d2dcb4 fix: version validation scripts for release tagging
+      (#1364)
+    - 0c86ad6 fix: Non Zero Exit code for no upgradable packages
+      causes build fail (#1274)
+    - 599e0ac fix: Trivy fails with "invalid tar header" when
+      scanning Copa-patched images (#1359)
+    - b742077 chore: bump github.com/quay/claircore from 1.5.44 to
+      1.5.45 (#1357)
+    - 4bee93a chore: bump the all group with 4 updates (#1356)
+    - d48007a fix: platform filtering (#1354)
+    - eb4f9e4 fix: handle missing OS field in Trivy report (#1353)
+    - da2b414 docs: fix eol admonition title (#1351)
+    - b96894f docs: enhance release process documentation (#1350)
+    - 7a3dc8e chore: bump the all group with 4 updates (#1347)
+    - afbaee7 chore: bump the all group in /website with 3 updates
+      (#1348)
+
+-------------------------------------------------------------------
 Mon Nov 03 09:15:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.12.0:
