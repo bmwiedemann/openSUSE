@@ -1,7 +1,7 @@
 #
 # spec file for package pocl
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2014 Guillaume GARDET <guillaume@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -39,7 +39,7 @@
 %bcond_with vulkan
 
 Name:           pocl
-Version:        7.0
+Version:        7.1
 Release:        0
 Summary:        Portable Computing Language - an OpenCL implementation
 # The whole code is under MIT
@@ -159,6 +159,8 @@ This subpackage provides the development files needed for pocl.
 %endif
 %if %{with ttb}
   -DENABLE_TBB_DEVICE=ON \
+  -DTBB_INCLUDE_DIRS=%{_includedir}/tbb/ \
+  -DTBB_LIBRARIES=%{_libdir}/ \
 %endif
 %if %{with levelzero}
   -DENABLE_LEVEL0=ON \
