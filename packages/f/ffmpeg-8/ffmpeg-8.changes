@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jan 10 19:47:20 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.0.1
+  * avcodec/videotoolboxenc: fix the loss of precision when
+    calculating quality
+  * avcodec/videotoolboxenc: support global_quality without qscale
+  * avformat/http: Handle IPv6 Zone ID in hostname
+  * avfilter/af_whisper: fix broken output for multibyte character
+  * avfilter/f_ebur128: Fix incorrect ebur128 peak calculation
+  * swscale/graph: fix double-free when legacy pass fails
+    initializing
+  * avformat/dhav: Fix off by length of read element error
+  * avcodec/ffv1enc: Consider variation in slice sizes
+
+-------------------------------------------------------------------
 Sun Aug 24 07:09:43 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Derive from ffmpeg-7.spec

@@ -1,7 +1,7 @@
 #
 # spec file for package ffmpeg-8
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -96,7 +96,7 @@
 %define _major_expected 9
 
 Name:           ffmpeg-8
-Version:        8.0
+Version:        8.0.1
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
@@ -773,7 +773,7 @@ done
 #
 #!BcntSyncTag:  ffmpeg-8
 Name:           ffmpeg-8-mini
-Version:        8.0
+Version:        8.0.1
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
