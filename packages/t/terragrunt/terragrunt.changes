@@ -1,4 +1,218 @@
 -------------------------------------------------------------------
+Mon Jan 12 07:54:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.97.2:
+  * Performance Improvements
+    - Partial parse used for get_working_dir()
+      To assess where Terragrunt is going to run OpenTofu, it needs
+      partially parsed information from the relevant terragrunt.hcl
+      file of the unit running the HCL get_working_dir() function.
+      The function was performing a full parse of the
+      terragrunt.hcl file, which can be slow for users with large
+      HCL configurations.
+      Given that the parse only requires access to the value of
+      source in the terraform block, a partial parse is now
+      performed by the function, only looking at the contents of
+      the terraform block, improving performance significantly.
+  * Bug Fixes
+    - False positive parsing errors suppressed
+      When parsing an include that defined dependencies, the HCL
+      parser used by Terragrunt would emit spurious errors that are
+      internally ignored. Those messages are now suppressed.
+    - Signal propagation for interrupts fixed
+      A bug in how Terragrunt forwarded signals to processes it
+      spawned (like running tofu) resulted in underlying processes
+      receiving SIGKILL signals rather than the original signal
+      (e.g. SIGINT) sent to the Terragrunt process. That has been
+      fixed.
+  * Chores
+    - Avoiding contextcheck suppression
+      While not changing much functionally in Terragrunt, this
+      release did involve quite a lot of changes to Terragrunt
+      internals. The majority of these changes related to better
+      propagation of the Golang
+      [context](https://pkg.go.dev/context) object to better obey
+      Golang best practices. These issues were reported by the
+      contextcheck linter in the codebase, but the findings were
+      suppressed due to the scope of work required to address them.
+      These changes should make it so that context is propagated
+      correctly more reliably in the codebase, increasing the
+      usefulness of things like OpenTelemetry tracing and reduced
+      resource usage.
+      Note that some public function signatures have changed in the
+      Terragrunt codebase, which may be a breaking change to users
+      consuming Terragrunt as a library. Given that we do not offer
+      any stability guarantees for usage of Terragrunt as a
+      library, these changes are still to be included in a patch
+      release.
+  * What's Changed
+    - fix: Fixing signal propagation issues (#5326)
+    - chore: Avoiding `contextcheck` suppression (#5320)
+    - build(deps): bump golang.org/x/crypto in /test/flake (#5322)
+    - fix: Locking during run ensure calls (#5312)
+    - build(deps): bump golang.org/x/oauth2 in /test/flake (#5323)
+    - build(deps): bump github.com/cloudflare/circl in /test/flake
+      (#5324)
+    - chore: Cleaning up HCL fn spans (#5315)
+    - fix: Using a partial parse for `get_working_dir()` (#5318)
+    - chore: Adding flake utility (#5311)
+    - fix: Fixing flaky tests (#5316)
+    - bug: false positive parsing errors (#5258)
+
+-------------------------------------------------------------------
+Mon Jan 12 07:34:51 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.97.1:
+  * New Features
+    - All HCL functions instrumented with OpenTelemetry
+      All Terragrunt HCL functions now emit OpenTelemetry spans
+      when they run, making it easier to understand HCL function
+      usage and performance.
+    - HCL parsing telemetry improved
+      Additional fidelity has been added to traces emitted during
+      parsing to give insight as to why configuration parsing is
+      being performed, and how.
+  * Bug Fixes
+    - plan -destroy called correctly for --filter-affected
+      A bug in the logic for --filter-affected resulted in removed
+      units getting planned/applied instead of being destroyed when
+      users supplied --filter-allow-destroy. That bug has been
+      fixed.
+    - Nested spans in track parents appropriately even when the
+      TRACEPARENT environment variable is used.
+      A bug in the logic for propagating TRACEPARENT as the
+      ultimate parent of traces started in Terragrunt prevented
+      child traces from properly tracking parent spans. That bug
+      has been fixed.
+    - Reports on runs in worktrees now use relative directories to
+      worktree root
+      Instead of displaying runs of units in Git worktrees during
+      Git-based filter expression runs with the absolute path of
+      their directories in a temporary directory, they now display
+      with the path to the unit relative to the root of the
+      worktree.
+    - Unnecessary relationship discovery prevented
+      Discovery of relationships between units has been made opt-in
+      in the discovery process. This will result in no changes to
+      usage of commands like run --all, but will significantly
+      improve the performance of commands like list and stack
+      generate.
+  * What's Changed
+    - chore: Increasing telemetry of config parsing (#5309)
+    - fix: Avoiding unnecessary relationship discovery (#5313)
+    - fix: Fixing worktree reports (#5308)
+    - chore: Adding spans for HCL functions (#5306)
+    - fix: Fixing nested spans (#5305)
+    - New ambassador (#5302)
+    - chore: Dropping usage of `MapToSlice` and `StringListInsert`
+      (#5297)
+    - fix: Fixing `plan -destroy` logic in Git-diffs (#5295)
+    - Adding ambassadors (#5296)
+
+-------------------------------------------------------------------
+Mon Jan 12 06:56:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.97.0:
+  * Breaking Changes
+    - The --queue-strict-include flag is deprecated
+      Terragrunt no longer automatically includes dependencies of
+      included units. As such the --queue-strict-include flag is no
+      longer useful in the Terragrunt CLI.
+      The flag has been deprecated, and no longer does anything.
+      This flag will not be removed before 2.0.
+    - Run report no longer reports --queue-exclude-dir as a reason
+      for exclusion
+      Run reports no longer report on units excluded from runs as a
+      consequence of the --queue-exclude-dir flag.
+    - The --units-that-include flag is deprecated
+      The --units-that-include flag is now an alias for the
+      reading= attribute filter, just like the
+      --queue-include-units-reading flag.
+      Given that the two flags no longer differ in functionality,
+      and that the functionality of the --units-that-include is no
+      longer strictly including units that are included, the flag
+      has been deprecated.
+    - The double-star strict control is complete
+      The globbing behavior of Terragrunt in CLI flags has been
+      updated to match all paths when ending with a trailing ** .
+  * Experiments Completed
+    - The filter-flag experiment is completed
+      The filter-flag experiment is completed, and the --filter
+      flag is now generally available.
+      You can use filter expressions as a single unified API for
+      controlling the Run Queue, replacing the need to use the
+      following CLI flags:
+
+      Legacy —queue flag 	                    Equivalent —filter expression
+
+      —-queue-include-dir=path 	              —-filter='{./path}'
+      —-queue-exclude-dir=path 	              —-filter='!{./path}'
+      --queue-include-units-reading=root.hcl 	--filter='reading=root.hcl'
+      --units-that-include=root.hcl 	        --filter='reading=root.hcl'
+      --queue-include-external-dependencies 	--filter='{./**}...'
+      --queue-excludes-file=excludes.txt 	    --filters-file='filters.txt' *
+      --graph 	                              --filter='...{.}'
+
+      Note that the file used for the --queue-excludes-file does
+      not directly translate to the kind of file you can use for a
+      --filters-file. To learn more, see the documentation.
+      The table above also explains the aliasing that has been done
+      internally to replace queue flags with their filter
+      equivalents. The aliasing for these queue flags is present
+      purely for backwards compatibility purposes, but they are not
+      going to emit deprecation warnings, and will not be removed
+      before the Terragrunt 1.0 release.
+      You are heavily encouraged to adopt the new --filter flag for
+      your infrastructure targeting needs as soon as feasible in
+      your workflows. It will offer a significantly more flexible
+      and powerful experience.
+      To learn more see the Filters feature documentation.
+      https://terragrunt.gruntwork.io/docs/features/filter
+  * Bug Fixes
+    - The get_original_terragrunt_dir() function is now supported
+      in terragrunt.stack.hcl files
+      When authoring explicit stacks, using the
+      get_original_terragrunt_dir() HCL function in
+      terragrunt.stack.hcl files will now return the directory
+      where the terragrunt.stack.hcl file lives, even when the
+      configuration is read from another stack/unit using
+      read_terragrunt_config().
+    - Using Git-based expressions with the --out-dir flag is fixed
+      When using Git-based expressions using the --filter flag, the
+      relative path of units relative to their respective Git
+      worktree roots is used for determining where the plan file
+      will be saved, rather than a path in the relevant Git
+      worktree.
+    - Color for output fetching is suppressed more reliably
+      Terragrunt will use tofu output -json / terraform output
+      -json more reliably when users expect a lack of colors (like
+      when colors are suppressed for Terragrunt).
+  * What's Changed
+    - fix: added git worktree cleanup on errors (#5254)
+    - chore: add no color for dependency fetching (#5285)
+    - fix: saving of plan in git based filtering (#5288)
+    - fix: `get_original_terragrunt_dir` during stack generate
+      (#5176)
+    - chore: opentelemetry and aws dependencies update (#5279)
+    - feat: on demand no proxy build execution (#5277)
+    - Adding ambassador (#5266)
+    - docs: Documenting backport of queue flags into filter flags
+      (#5263)
+    - chore: Backporting queue flags into filter flags (#5241)
+    - chore: Removing latest Terraform OSS workflows (#5262)
+    - Adding announcement banner (#5260)
+    - Adding ambassador (#5259)
+    - Adding ambassador (#5261)
+    - chore: Adding debug log for assume already applied (#5198)
+    - chore: Dropping `ListContains` and `ListEquals` and using
+      standard library instead (#5221)
+    - fix: improved log error messages (#5256)
+    - fix: Fixing report run duplication error (#5252)
+    - chore: Cleaning up test symlinks resolution (#5251)
+    - fix: Using `testing/synctest` to make
+      `TestWriteUnitLevelSummary` more reliable (#5253)
+
+-------------------------------------------------------------------
 Thu Dec 18 06:31:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.96.1:
