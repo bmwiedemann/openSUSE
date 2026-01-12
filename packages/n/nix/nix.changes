@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Jan  9 16:45:18 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 2.33.0:
+  * New command nix registry resolve
+  * nix flake clone supports all input types
+  * Performance improvements
+  * The JSON format emitted by nix path-info --json has been
+    updated to a new version with improved structure.
+  * The derivation JSON format has been updated from version 3 to
+    version 4
+- Add patch 0002-libutil-fix-unreachable-case.patch
+
+-------------------------------------------------------------------
+Fri Jan  2 16:29:53 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.32.5:
+  - various small bugfixes
+
+-------------------------------------------------------------------
+Tue Nov 11 17:41:43 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.32.4:
+  - various small bugfixes
+
+-------------------------------------------------------------------
 Fri Nov  7 10:25:59 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 2.32.3:

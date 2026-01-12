@@ -9,24 +9,27 @@ Subject: [PATCH 1/3] port option to disable functional tests to meson
  2 files changed, 14 insertions(+)
  create mode 100644 meson_options.txt
 
-Index: nix/meson.build
+Index: nix-2.33.0/meson.build
 ===================================================================
---- nix.orig/meson.build
-+++ nix/meson.build
-@@ -57,4 +57,6 @@ if get_option('unit-tests')
+--- nix-2.33.0.orig/meson.build
++++ nix-2.33.0/meson.build
+@@ -59,7 +59,9 @@ if get_option('unit-tests')
    subproject('libexpr-tests')
    subproject('libflake-tests')
  endif
 +if get_option('functional-tests').enabled()
  subproject('nix-functional-tests')
 +endif
-Index: nix/meson.options
+ if get_option('json-schema-checks')
+   subproject('json-schema-checks')
+ endif
+Index: nix-2.33.0/meson.options
 ===================================================================
---- nix.orig/meson.options
-+++ nix/meson.options
-@@ -27,3 +27,9 @@ option(
-   value : false,
-   description : 'Build benchmarks (requires gbenchmark)',
+--- nix-2.33.0.orig/meson.options
++++ nix-2.33.0/meson.options
+@@ -41,3 +41,9 @@ option(
+   value : true,
+   description : 'Check JSON schema validity of schemas and examples (requires jv)',
  )
 +
 +option(

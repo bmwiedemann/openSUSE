@@ -1,0 +1,12 @@
+Index: nix-2.33.0/src/libutil/nar-accessor.cc
+===================================================================
+--- nix-2.33.0.orig/src/libutil/nar-accessor.cc
++++ nix-2.33.0/src/libutil/nar-accessor.cc
+@@ -331,6 +331,7 @@ static ListNarResult<deep> listNarImpl(S
+     case SourceAccessor::Type::tUnknown:
+         assert(false); // cannot happen for NARs
+     }
++    __builtin_unreachable();
+ }
+ 
+ NarListing listNarDeep(SourceAccessor & accessor, const CanonPath & path)

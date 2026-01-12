@@ -141,4 +141,26 @@ support for software auditability among other things</comment>
     <comment>Update to version 2.32.3</comment>
     <requestid>1316478</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e94901fcee3967c6cfabeb08ff6b3d68</srcmd5>
+    <version>2.33.0</version>
+    <time>1768209814</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.33.0:
+  * New command nix registry resolve
+  * nix flake clone supports all input types
+  * Performance improvements
+  * The JSON format emitted by nix path-info --json has been
+    updated to a new version with improved structure.
+  * The derivation JSON format has been updated from version 3 to
+    version 4
+- Add patch 0002-libutil-fix-unreachable-case.patch
+
+- Update to version 2.32.5:
+  - various small bugfixes
+
+- Update to version 2.32.4:
+  - various small bugfixes</comment>
+    <requestid>1326516</requestid>
+  </revision>
 </revisionlist>

@@ -19,23 +19,14 @@
 
 %global services nix-daemon.socket nix-daemon.service
 
-%ifarch aarch64 x86_64
-  # only build docs on aarch64 and x86_64 (we need mdbook)
-  %if 0%{?suse_version} >= 1600
-  %bcond_without docs
-  %else
-  %bcond_with docs
-  %endif
-%else
-  %bcond_with docs
-%endif
+%bcond_with docs
 
 %if 0%{?suse_version} == 1500
 %global force_boost_version 1_75_0
 %endif
 
 Name:           nix
-Version:        2.32.3
+Version:        2.33.0
 Release:        0
 Summary:        The purely functional package manager
 License:        LGPL-2.1-only
@@ -45,6 +36,7 @@ Source1:        nix.conf
 Source2:        sysusers.conf
 Source9:        series
 Patch1:         0001-port-option-to-disable-functional-tests-to-meson.patch
+Patch2:         0002-libutil-fix-unreachable-case.patch
 BuildRequires:  bison
 BuildRequires:  boost-devel
 BuildRequires:  busybox-static
@@ -173,9 +165,12 @@ echo %{version} > .version
     --libdir=%{_libdir}/nix/ \
     -Dunit-tests=false \
     -Dfunctional-tests=disabled \
+    -Djson-schema-checks=false \
+    -Dkaitai-struct-checks=false \
     -Dlibcmd:readline-flavor=readline \
     -Dlibstore:embedded-sandbox-shell=true \
     -Dlibstore:sandbox-shell=busybox-static \
+    -Dlibstore:s3-aws-auth=disabled \
     %{?with_docs:-Ddoc-gen=true} \
     %{nil}
 
@@ -264,6 +259,7 @@ echo "%{_libdir}/nix/" > %{buildroot}/%{_sysconfdir}/ld.so.conf.d/nix.conf
 %{_includedir}/nix*.h
 %{_includedir}/nix*.hh
 %{_includedir}/nix/
+%{_includedir}/nix_api_store/
 %{_libdir}/pkgconfig/nix*
 
 # perl bindings
