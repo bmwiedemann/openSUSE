@@ -1812,4 +1812,12 @@ https://www.kde.org/announcements/announce-applications-16.08.2.php
     <comment>KDE release gear 25.12 (forwarded request 1321386 from krop)</comment>
     <requestid>1322530</requestid>
   </revision>
+  <revision rev="158" vrev="1">
+    <srcmd5>375e4667ecdcbf0cf4f84ea425f9ce87</srcmd5>
+    <version>25.12.1</version>
+    <time>1768209673</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 25.12.1 (forwarded request 1325801 from krop)</comment>
+    <requestid>1326259</requestid>
+  </revision>
 </revisionlist>
