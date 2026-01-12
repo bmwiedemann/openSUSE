@@ -1,7 +1,7 @@
 #
 # spec file for package hcloud-cli
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define executable_name hcloud
 
 Name:           hcloud-cli
-Version:        1.58.0
+Version:        1.59.0
 Release:        0
 Summary:        A command-line interface for Hetzner Cloud
 License:        MIT
@@ -29,7 +29,7 @@ Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.23
+BuildRequires:  golang(API) >= 1.24
 Provides:       hcloud = %{version}
 
 %description
