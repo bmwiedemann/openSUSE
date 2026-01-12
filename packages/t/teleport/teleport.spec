@@ -1,7 +1,7 @@
 #
 # spec file for package teleport
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           teleport
-Version:        17.7.11
+Version:        17.7.13
 Release:        0
 Summary:        Identity-aware, multi-protocol access proxy
 License:        AGPL-3.0-only
