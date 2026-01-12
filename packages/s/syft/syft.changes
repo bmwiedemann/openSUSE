@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Sun Jan 11 08:52:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.40.0:
+  * Added Features
+    - Exclude development or test dependencies for PNPM Package
+      type [#4430 #4487 @rezmoss]
+    - Catalog istio binary (pilot-discovery, pilot-agent) [#4508
+      #4521 @witchcraze]
+    - Catalog envoy binary [#4506 #4530 @witchcraze]
+    - Catalog grafana binary [#4505 #4516 @witchcraze]
+    - Add a binary classifier for valkey [#3400 #4509 @witchcraze]
+  * Bug Fixes
+    - old bitnami images without spdx files arent getting picked up
+      correctly in the catalog [#4529 #4532 @rezmoss]
+    - wrong traefik rc versions at binary detection [#3535 #4499
+      @rezmoss]
+    - FromPOSIX() in internals\windows\path.go assumes that all
+      Windows root paths must have a colon terminator [#4070 #4075
+      @luissantosHCIT]
+    - binary cataloger is picking up the go version instead of the
+      actual binary version in traefik experimental images [#4498
+      #4499 @rezmoss]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#4535)
+    - chore(deps): bump the go-minor-patch group with 3 updates
+      (#4524)
+    - chore(deps): bump the actions-minor-patch group across 1
+      directory with 2 updates (#4525)
+    - chore(deps): bump actions/download-artifact from 6.0.0 to
+      7.0.0 (#4526)
+    - chore(deps): bump actions/upload-artifact from 4.4.3 to 6.0.0
+      (#4527)
+    - chore(deps): bump modernc.org/sqlite from 1.41.0 to 1.42.2
+      (#4513)
+    - chore(deps): bump anchore/sbom-action from 0.20.11 to 0.21.0
+      (#4501)
+    - chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.7.7
+      to 6.7.8 (#4502)
+    - chore(deps): bump github.com/spdx/tools-golang from 0.5.5 to
+      0.5.6 (#4503)
+    - chore(deps): update tools to latest versions (#4504)
+    - chore(deps): bump github.com/hashicorp/go-getter from 1.8.3
+      to 1.8.4 (#4518)
+    - chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.18
+      to 0.5.19 (#4520)
+
+-------------------------------------------------------------------
+Sun Jan 11 08:46:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.39.0:
+  * Added Features
+    - add support for Gemfile.next.lock [#4457 @HatiCode]
+    - Command output to give more information on what catalogers
+      look for and what they can find [#4155 #4317 @wagoodman]
+    - Support reading lzma compressed .go.buildinfo sections with
+      upx [#4411 #4480 @wagoodman]
+    - Specify specific snap revision to pull [#4389 #4439
+      @VictorHuu]
+    - Cannot detect embedded deps.json metadata in single-file .NET
+      binaries [#4344 #4375 @rezmoss]
+    - ELF note cataloger does not pick up OS field, but should
+      [#4384 #4438 @VictorHuu]
+  * Bug Fixes
+    - remove debug print statement in dependency parser [#4412
+      @cgreeno]
+    - dotnet-deps cataloger should skip project references with
+      type "project" when building the sbom [#4423 #4436 @rezmoss]
+    - File digests not computed when using --base-path [#4410 #4478
+      @wagoodman]
+    - Syft should not define subpaths by default in PURLs [#4394
+      #4395 @rezmoss]
+    - go: valid purl but incorrect name [#1737 #4395 @rezmoss]
+    - Incorrect Go module PURL generation when module path contains
+      /vN (e.g. /v5) [#4316 #4395 @rezmoss]
+    - Failing to convert npm repository information correctly to
+      SPDX [#4362 #4390 @kendrickm]
+  * Dependencies
+    - chore(deps): update tools to latest versions (#4491)
+    - chore(deps): bump modernc.org/sqlite from 1.40.1 to 1.41.0
+      (#4489)
+    - chore(deps): bump github/codeql-action from 4.31.8 to 4.31.9
+      (#4481)
+    - chore(deps): bump github.com/goccy/go-yaml from 1.19.0 to
+      1.19.1 (#4482)
+    - chore(deps): bump actions/cache from 5.0.0 to 5.0.1 (#4476)
+    - chore(deps): bump actions/cache in /.github/actions/bootstrap
+      (#4477)
+    - chore(deps): update tools to latest versions (#4473)
+    - chore(deps): update tools to latest versions (#4466)
+    - chore(deps): bump github/codeql-action from 4.31.7 to 4.31.8
+      (#4468)
+    - chore(deps): bump actions/cache from 4.3.0 to 5.0.0 (#4469)
+    - chore(deps): bump github.com/anchore/stereoscope from 0.1.14
+      to 0.1.16 (#4470)
+    - chore(deps): bump actions/cache in /.github/actions/bootstrap
+      (#4471)
+    - chore(deps): update tools to latest versions (#4462)
+    - chore(deps): update tools to latest versions (#4456)
+    - chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.7.5
+      to 6.7.7 (#4460)
+    - chore(deps): bump peter-evans/create-pull-request from 7.0.11
+      to 8.0.0 (#4459)
+    - chore(deps): bump anchore/sbom-action from 0.20.10 to 0.20.11
+      (#4458)
+
+-------------------------------------------------------------------
 Thu Dec 11 06:48:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.38.2 (.1 was not released):
