@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan  9 08:39:31 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 2.8.3:
+  * Stable bug-fix release with minor extensions.
+
+- Update to 2.8.2:
+  * BITLK: Fix for BitLocker metadata validation on big-endian systems.
+
+-------------------------------------------------------------------
 Thu Aug 21 09:06:12 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 2.8.1:

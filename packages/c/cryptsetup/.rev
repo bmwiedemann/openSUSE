@@ -1226,4 +1226,12 @@ in future, e.g. &quot;Version: 2.0~beta1&quot; (forwarded request 160813 from je
   * Fixes for false-positive and annoying (optional) warnings added in recent compilers. (forwarded request 1300733 from pmonrealgonzalez)</comment>
     <requestid>1301272</requestid>
   </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>53174ad5a5e6b97afa6095c736acc855</srcmd5>
+    <version>2.8.3</version>
+    <time>1768209365</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1326306</requestid>
+  </revision>
 </revisionlist>
