@@ -1,7 +1,7 @@
 #
 # spec file for package mdevctl
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,10 +23,12 @@ Summary:        Mediated device management and persistence utility
 License:        LGPL-2.1-or-later
 URL:            https://github.com/mdevctl/mdevctl
 Source0:        %{name}-%{version}.tar.gz
-Source1:        vendor.tar.gz
+Source1:        vendor.tar.zst
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  python3-docutils
+BuildRequires:  rust
+BuildRequires:  zstd
 BuildRequires:  pkgconfig(udev)
 
 %description

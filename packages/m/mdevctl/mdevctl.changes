@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan  9 10:14:45 MST 2026 - carnold@suse.com
+
+- Convert vendor.tar.gz to vendor.tar.zst to reduce the size of the
+  tarball (jsc#PED-14625)
+
+-------------------------------------------------------------------
 Tue Jul  8 13:44:36 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Update vendor.tar.gz and Cargo.lock (boo#1244560)

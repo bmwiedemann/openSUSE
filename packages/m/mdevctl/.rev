@@ -99,4 +99,12 @@ in virtual machines.</comment>
     <comment></comment>
     <requestid>1291296</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>40b439493dbfef0cec01b254be5beee2</srcmd5>
+    <version>1.4.0</version>
+    <time>1768217923</time>
+    <user>anag_factory</user>
+    <comment>Convert vendor.tar.gz to vendor.tar.zst to reduce the size of the tarball (jsc#PED-14625)</comment>
+    <requestid>1326395</requestid>
+  </revision>
 </revisionlist>
