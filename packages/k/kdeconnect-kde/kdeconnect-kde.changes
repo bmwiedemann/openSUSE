@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan  7 12:24:46 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.1/
+- Changes since 25.12.0:
+  * Store the device capabilities, which I forgot to do
+  * Fix the initial disabledness of Bluetooth
+  * Initialize plugin and device name in KdeConnectPluginKcm constructor
+  * Try to fix https://crash-reports.kde.org/organizations/kde/issues/198014
+  * smsapp: Fix qt6 FilePicker property name
+
+-------------------------------------------------------------------
 Sat Dec  6 11:40:31 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.0
