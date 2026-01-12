@@ -1,7 +1,7 @@
 #
 # spec file for package linkerd-cli-edge
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define linkerd_executable_name linkerd
 
 Name:           linkerd-cli-edge
-Version:        25.12.3
+Version:        26.1.1
 Release:        0
 Summary:        CLI for the linkerd service mesh for Kubernetes
 License:        Apache-2.0
@@ -28,8 +28,8 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
+BuildRequires:  go1.25 >= 1.25.5
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.25
 
 # cannot be installed in parallel to the stable version
 Conflicts:      linkerd-cli

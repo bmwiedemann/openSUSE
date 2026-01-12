@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Jan 11 12:56:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 26.1.1:
+  * build(deps): bump github.com/prometheus/common from 0.67.4 to
+    0.67.5 (#14839)
+  * build(deps-dev): bump sinon from 21.0.0 to 21.0.1 in /web/app
+    (#14822)
+  * build(deps-dev): bump webpack from 5.103.0 to 5.104.1 in
+    /web/app (#14823)
+  * build(deps): bump docker/setup-buildx-action from 3.11.1 to
+    3.12.0 (#14824)
+  * build(deps): bump google.golang.org/grpc from 1.77.0 to 1.78.0
+    (#14829)
+  * build(deps): bump github.com/go-openapi/spec from 0.22.2 to
+    0.22.3 (#14831)
+  * build(deps): bump the kube group with 8 updates - update
+    related tests (#14817)
+  * build(deps): bump actions/setup-go from 6.0.0 to 6.1.0 (#14825)
+  * build(deps): bump docker/setup-buildx-action (#14826)
+  * chore(build): upgrade to go 1.25.5 (#14821)
+
+-------------------------------------------------------------------
 Fri Dec 19 08:13:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 25.12.3:
