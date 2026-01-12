@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           ksystemlog
-Version:        25.12.0
+Version:        25.12.1
 Release:        0
 Summary:        System Log Viewer Tool
 License:        GPL-2.0-only
