@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kdenetwork-filesharing
-Version:        25.12.0
+Version:        25.12.1
 Release:        0
 Summary:        KDE Network Libraries
 License:        GPL-2.0-or-later
@@ -31,6 +31,7 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+Patch0:         0001-filepropertiesplugin-Fix-regression-in-smbd-path-loo.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6Auth) >= %{kf6_version}
 BuildRequires:  cmake(KF6Completion) >= %{kf6_version}

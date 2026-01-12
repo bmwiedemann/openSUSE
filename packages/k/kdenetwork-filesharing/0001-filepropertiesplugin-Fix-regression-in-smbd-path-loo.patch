@@ -1,0 +1,41 @@
+From d8e360fdc21518af8a6485855265044eab967089 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Mon, 22 Dec 2025 06:16:23 +0100
+Subject: [PATCH] filepropertiesplugin: Fix regression in smbd path lookup
+
+Commit 6c01c16291b7 ("Use QStandardPaths::findExecutable() to find smbd")
+caused a regression for all distributions where PATH does not include
+`/usr{,/local}/sbin/`, notably Debian and openSUSE.
+---
+ samba/filepropertiesplugin/sambausershareplugin.cpp | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/samba/filepropertiesplugin/sambausershareplugin.cpp b/samba/filepropertiesplugin/sambausershareplugin.cpp
+index 869c051..bad81cc 100644
+--- a/samba/filepropertiesplugin/sambausershareplugin.cpp
++++ b/samba/filepropertiesplugin/sambausershareplugin.cpp
+@@ -46,6 +46,8 @@
+ 
+ K_PLUGIN_CLASS_WITH_JSON(SambaUserSharePlugin, "sambausershareplugin.json")
+ 
++using namespace Qt::StringLiterals;
++
+ SambaUserSharePlugin::SambaUserSharePlugin(QObject *parent)
+     : KPropertiesDialogPlugin(parent)
+     , m_url(properties->item().mostLocalUrl().toLocalFile())
+@@ -183,7 +185,11 @@ void SambaUserSharePlugin::initAddressList()
+ 
+ bool SambaUserSharePlugin::isSambaInstalled()
+ {
+-    return !QStandardPaths::findExecutable(QStringLiteral("smbd")).isEmpty();
++    if (QStandardPaths::findExecutable(u"smbd"_s).isEmpty()
++        && QStandardPaths::findExecutable(u"smbd"_s, {u"/usr/sbin/"_s, u"/usr/local/sbin/"_s}).isEmpty()) {
++        return false;
++    }
++    return true;
+ }
+ 
+ void SambaUserSharePlugin::showSambaStatus()
+-- 
+2.52.0
+
