@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Jan  4 14:47:06 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.22.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.22.0
+- Changes since 6.21.0:
+  * Update dependency version to 6.22.0
+  * [KEncodingProber] Add UTF16 surrogate pair support to state table
+  * [KEncodingProber] Stop rejecting valid MSBs in UTF-16 state machine
+  * [KEncodingProber] Reduce model switching in HandleData()
+  * [KEncodingProber] Avoid passing mangled data to the UnicodeGroupProber
+  * [KEncodingProber] Untangle HebrewProber and SBCharSetProber
+  * [KEncodingProber] Add test for Windows-1253/iso8859-7 CP (Greek)
+  * [KEncodingProber] Add some more testing for windows-1252 codepage
+  * [KEncodingProber] Add tests for Windows-1255 CP and UTF-8 Hebrew text
+  * [KEncodingProber] Simplify and improve unit test check condition
+  * [KEncodingProber] Verify short inputs cause no crash
+  * [KEncodingProber] Fix UTF-16 BOM detection
+  * [KEncodingProber] Verify confidence in unit tests
+  * [KEncodingProber] Remove no longer used dedicated Japanese/Chinese probers
+  * [KEncodingProber][MBCS] Allow to use only a subset of probers
+  * [KEncodingProber][MBCS] Remove unused includes from header file
+  * Update version to 6.22.0
+
+-------------------------------------------------------------------
 Fri Dec 12 20:17:20 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.21.0
