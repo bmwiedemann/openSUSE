@@ -1,7 +1,7 @@
 #
 # spec file for package python-phonenumbers
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-phonenumbers
-Version:        9.0.20
+Version:        9.0.21
 Release:        0
 Summary:        Python version of Google's common library for international phone numbers
 License:        Apache-2.0
