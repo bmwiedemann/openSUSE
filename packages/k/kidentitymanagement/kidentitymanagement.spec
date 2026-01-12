@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           kidentitymanagement
-Version:        25.12.0
+Version:        25.12.1
 Release:        0
 Summary:        KDE PIM Libraries: Identity Management
 License:        LGPL-2.1-or-later
