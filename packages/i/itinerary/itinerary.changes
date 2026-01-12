@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jan  7 12:24:35 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.12.1/
+- Changes since 25.12.0:
+  * Add 25.12.1 release notes
+  * EventEditor: Fix showing entrace date picker for events without valid start date
+  * Port LiveDataManager to QChronoTimer
+  * Fix stable APK builds
+  * Backport reservation manager sort order consistency fixes
+  * Deal with reservations getting timezone information as part of an update
+  * Disable HTTP2 for Nominatim queries in older Qt versions
+  * Rate-limit Nominatim requests in online post-processing
+  * Don't leak Nominatim replies in online post-processing
+  * Don't monitor batchAdded signals in the timeline model
+  * Fix unstable sort order of non-range entries with the same start time
+  * Fix storing changes in online post-processing
+  * Don't attempt to geocode places with identifier names
+  * Don't open empty place context menus
+  * Build packages against released dependencies
+  * Mark cancelled intermediate stops on the journey section map
+
+-------------------------------------------------------------------
 Sat Dec  6 11:40:21 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.0
