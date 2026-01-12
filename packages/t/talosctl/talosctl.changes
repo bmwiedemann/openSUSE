@@ -1,9 +1,53 @@
 -------------------------------------------------------------------
+Sun Jan 11 13:25:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.12.0:
+  Many changes, please see the full changelog at
+  https://github.com/siderolabs/talos/releases/tag/v1.12.0
+  CLI-related features
+  * Talos force reboot
+    Talos now supports a "force" reboot mode, which allows skipping
+    the graceful userland termination.
+    It can be used in situations where a userland service (e.g. the
+    kubelet) gets stuck during graceful shutdown, causing the
+    regular reboot flow to fail.
+    In addition, talosctl was updated to support this feature via
+    talosctl reboot --mode force.
+  * Kernel Log
+    The kernel log (dmesg) is now also available as the service log
+    named kernel (talosctl logs kernel).
+  * Kernel Security Posture Profile (KSPP)
+    Talos now enables a stricter set of KSPP sysctl settings by
+    default.
+    The list of overridden settings is available with talosctl get
+    kernelparamstatus command.
+  * talosctl image cache-serve
+    talosctl includes new subcommand image cache-serve.
+    It allows serving the created OCI image registry over
+    HTTP/HTTPS.
+    It is a read-only registry, meaning images cannot be pushed to
+    it, but the backing storage can be updated by re-running the
+    cache-create command;
+
+    Additionally talosctl image cache-create has some changes:
+    - new flag --layout: oci (default), flat:
+      - oci preserves current behavior;
+      - flat does not repack artifact layer, but moves it to a
+        destination directory, allowing it to be served by talosctl
+        image cache-serve;
+    - changed flag --platform: now can accept multiple os/arch
+      combinations:
+      - comma separated (--platform=linux/amd64,linux/arm64);
+      - multiple instances (--platform=linux/amd64
+        --platform=linux/arm64);
+
+-------------------------------------------------------------------
 Wed Dec 17 07:16:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.11.6:
   * talosctl-related changes
-    - c36ffc626 fix: disable kexec in talosctl cluster create on arm64
+    - c36ffc626 fix: disable kexec in talosctl cluster create on
+      arm64
   * Dependency Changes
     - github.com/containernetworking/plugins v1.7.1 -> v1.9.0
     - github.com/safchain/ethtool v0.6.1 -> v0.6.2

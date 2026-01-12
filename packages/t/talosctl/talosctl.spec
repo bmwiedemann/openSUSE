@@ -1,7 +1,7 @@
 #
 # spec file for package talosctl
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           talosctl
-Version:        1.11.6
+Version:        1.12.0
 Release:        0
 Summary:        CLI to interact with Talos Linux
 License:        MPL-2.0
@@ -26,7 +26,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.22
+BuildRequires:  go1.25 >= 1.25.3
 BuildRequires:  zsh
 
 %description
