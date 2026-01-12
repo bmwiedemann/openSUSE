@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Sun Jan 11 10:40:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.48.0:
+  * Welcome to the v0.48.0 of Inspektor Gadget. This is a rather
+    short release as there was a holidays period in between. These
+    are the most important changes:
+    - docs: self nominating matthyx as a maintainer by @matthyx in
+      #5132
+    - Update to Go 1.25.5 by @burak-ok in #5133
+    - tree-wide: Switch to go 1.25 by @mauriciovasquezbernal in
+      #5171
+    - New Gadget: Snapshot File by @Shaheer-Ahmd in #4514
+  * General Improvements
+    - charts: Add recommended labels by default by @mqasimsarfraz
+      in #5087
+    - Enable CLI clear-screen-before for profile gadgets by
+      @matthyx in #5121
+    - Ensure log records have a body if none set by @matthyx in
+      #5122
+    - pkg: signature: Use oras.ReadOnlyGraphTarget for
+      helpers.GetImageDigest(). by @eiffel-fl in #5128
+    - Support exclusion and multiple values in container selector
+      by @dorser in #5112
+    - oci: Warn if operator for layer is not found by
+      @mauriciovasquezbernal in #5110
+    - trace_exec: add from_rootfs by @dorser in #5078
+    - socket-enricher: Use bpf_core_field_exists() for new fields
+      by @mauriciovasquezbernal in #5123
+  * Bug Fixes
+    - gadgets: Use atomic operations when updating values by
+      @mauriciovasquezbernal in #5131
+    - fixes histogram slots for gadget where log2l is being used
+      and also changes it's implementation to counter the one-off
+      error by @bdharsan04 in #4583
+    - localmanager: fix memory leak on container detach by @flyth
+      in #5148
+  * Documentation Improvements
+    - docs: Split documentation about verifying in two files. by
+      @eiffel-fl in #5120
+  * Testing and Continue Integration
+    - ci: Force using legacy .sig format when signing with cosign.
+      by @eiffel-fl in #5147
+    - ci: Scan helper images for CVEs. by @eiffel-fl in #5164
+    - tree-wide: Use testify library in tests by
+      @mauriciovasquezbernal in #5150
+  * Dependencies
+    - go: bump github.com/containerd/containerd from 1.7.29 to
+      1.7.30
+    - go: bump github.com/docker/cli in the docker group across 1
+      directory
+    - go: bump github.com/docker/cli in the docker group across 1
+      directory
+    - go: bump github.com/docker/cli in the docker group across 1
+      directory
+    - go: bump github.com/expr-lang/expr from 1.17.6 to 1.17.7
+    - go: bump github.com/miekg/dns from 1.1.68 to 1.1.69 in
+      /tools/bench
+    - go: bump github.com/miekg/dns from 1.1.68 to 1.1.69 in
+      /tools/dnstester
+    - go: bump github.com/sigstore/sigstore from 1.9.5 to 1.10.3
+    - go: bump github.com/spf13/cobra from 1.10.1 to 1.10.2
+    - go: bump github.com/spf13/cobra from 1.10.1 to 1.10.2 in
+      /tools/bench
+    - go: bump github.com/tetratelabs/wazero from 1.10.1 to 1.11.0
+    - go: bump google.golang.org/protobuf from 1.36.10 to 1.36.11
+    - go: bump the golang-x group across 2 directories with 4
+      updates
+    - go: bump the k8s group across 2 directories with 7 updates
+    - go: bump the k8s group across 2 directories with 7 updates
+    - go: bump the otel group across 1 directory with 10 updates
+
+-------------------------------------------------------------------
 Thu Dec 04 06:06:49 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.47.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package inspektor-gadget
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           inspektor-gadget
-Version:        0.47.0
+Version:        0.48.0
 Release:        0
 Summary:        A eBPF tool and systems inspection framework
 License:        Apache-2.0
@@ -26,7 +26,7 @@ Source:         inspektor-gadget-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.22
+BuildRequires:  go >= 1.25
 BuildRequires:  zsh
 # /usr/bin/ig conflicts with igrep
 Conflicts:      igrep
