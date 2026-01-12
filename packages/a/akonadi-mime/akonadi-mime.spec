@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           akonadi-mime
-Version:        25.12.0
+Version:        25.12.1
 Release:        0
 Summary:        MIME email parser for KDE PIM
 License:        LGPL-2.1-or-later
