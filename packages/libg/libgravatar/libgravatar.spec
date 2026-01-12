@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           libgravatar
-Version:        25.12.0
+Version:        25.12.1
 Release:        0
 Summary:        Library to download and display gravatars
 License:        LGPL-2.1-or-later
