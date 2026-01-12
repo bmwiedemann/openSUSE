@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Jan 12 08:56:32 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.0.0+20260112.268a7f4d:
+  * Dev: unittests: Adjust unit test for previous commits
+  * Dev: sbd: Refactor to enable checking when cluster is down
+  * Dev: sbd: Add debug log for sbd checking results
+  * Dev: sbd: Check and fix fence_sbd agent
+  * Dev: sbd: Check if sbd.service is enabled on all nodes
+  * Dev: ui_sbd: Do sbd timeout-related configurations check on 'crm sbd status' as well
+  * Dev: sbd: Ignore comment line and blank line when checking consistency
+  * Dev: sbd: Check sbd systemd start timeout on all nodes
+  * Dev: sbd: Check if the drop-in file which to unset SBD_DELAY_START exists on all nodes
+  * Dev: sbd: Show multi errors or warnings at once if detected
+  * Dev: sbd: Enable to fix devices metadata consistency issue
+  * Dev: sbd: Show diff output after error output when checking consistency
+  * Dev: sbd: Check configurations consistency only if there are reachable nodes
+  * Dev: utils: Refactor utils.check_all_nodes_reachable
+  * Dev: sbd: Check and fix drop-in file which to unset SBD_DELAY_START
+  * Dev: behave: Adjust functional test for previous commit
+  * Dev: ui_sbd: Get minimum timeout value dynamically
+  * Dev: sbd: Calculate expected msgwait timeout correctly with crashdump timeout
+  * Dev: sbd: check SBD_DELAY_START for non integer case
+  * Dev: sbd: Check all nodes are reachable when checking SBD-related timeouts (jsc#PED-14995)
+
+-------------------------------------------------------------------
+Mon Dec 29 10:13:09 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20251229.0de9df82:
+  * Dev: bootstrap: Sync directory sbd.SBDManager.SBD_SYSTEMD_DELAY_START_DIR
+  * Dev: bootstrap: Refactor retrieve_all_config_files function
+
+-------------------------------------------------------------------
+Fri Dec 26 07:11:04 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20251226.05442e1e:
+  * Dev: behave_agent: Prevent client hang behind firewall during long cluster joins
+
+-------------------------------------------------------------------
 Mon Dec 22 08:26:28 UTC 2025 - XLiang@suse.com
 
 - Update to version 5.0.0+20251222.3aa2ace5:
