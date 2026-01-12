@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan 11 12:50:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.38.27:
+  * build(deps): bump actions/upload-artifact from 5.0.0 to 6.0.0
+    (#1817)
+
+-------------------------------------------------------------------
 Mon Dec 15 05:53:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.38.26:

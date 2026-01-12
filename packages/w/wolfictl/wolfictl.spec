@@ -1,7 +1,7 @@
 #
 # spec file for package wolfictl
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           wolfictl
-Version:        0.38.26
+Version:        0.38.27
 Release:        0
 Summary:        A CLI used to work with the Wolfi OSS project
 License:        Apache-2.0
