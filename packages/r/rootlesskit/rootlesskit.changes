@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec 23 04:53:07 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 2.3.6:
+  * v2.3.6
+  * ci: fix missing tag variable in release note generation
+  * go.mod: github.com/containernetworking/plugins v1.9.0
+  * v2.3.5+dev
+  * Build(deps): Bump golang.org/x/sys from 0.32.0 to 0.33.0
+
+-------------------------------------------------------------------
 Mon May 12 05:14:06 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 2.3.5:
