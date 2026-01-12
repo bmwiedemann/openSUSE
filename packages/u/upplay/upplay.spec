@@ -1,7 +1,7 @@
 #
 # spec file for package upplay
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           upplay
-Version:        1.9.7
+Version:        1.9.8
 Release:        0
 Summary:        UPnP and OpenHome audio Control Point
 License:        GPL-2.0-or-later
@@ -25,7 +25,6 @@ URL:            https://www.lesbonscomptes.com/upplay/
 Source0:        https://www.lesbonscomptes.com/upplay/downloads/upplay-%{version}.tar.gz
 Source1:        https://www.lesbonscomptes.com/upplay/downloads/upplay-%{version}.tar.gz.asc
 Source2:        https://www.lesbonscomptes.com/pages/jf-at-dockes.org.pub#/%{name}.keyring
-Patch:          disable-mpris.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -42,6 +41,7 @@ managed by your UPnP/DLNA media servers to your UPnP/DLNA/OpenHome players (rend
 %autosetup
 
 %build
+sed -i 's/config += dbus/QT += dbus/' upplay.pro
 %qmake6 QMAKE_POST_LINK='$(STRIP) $(TARGET)' WEBPLATFORM=webengine
 %make_build STRIP=%{_bindir}/strip
 

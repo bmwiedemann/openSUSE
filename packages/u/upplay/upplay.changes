@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan 11 12:03:42 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- removed disable-mpris.patch
+- Update to 1.9.8:
+  * Directory browser: improve synchronization and fix lockups in the
+    webengine builds.
+  * Display additional metadata in "show metadata" popups.
+  * Fix MPRIS metadata updates.
+  * Enable MPRIS with qt6 with a local build of the amber-mpris library 
+
+-------------------------------------------------------------------
 Sat Jun 14 13:51:48 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
 
 - compile with Qt 6
