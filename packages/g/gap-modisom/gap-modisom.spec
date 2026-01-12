@@ -1,7 +1,7 @@
 #
 # spec file for package gap-modisom
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-modisom
-Version:        3.0.1
+Version:        3.1.0
 Release:        0
 Summary:        GAP: Computing with nilpotent associative algebras
 License:        GPL-2.0-or-later
@@ -27,7 +27,8 @@ URL:            https://gap-packages.github.io/modisom/
 Source:         https://github.com/gap-packages/modisom/releases/download/v%version/modisom-%version.tar.gz
 BuildRequires:  gap-devel
 BuildRequires:  gap-rpm-devel
-Requires:       gap-core >= 4.7
+Requires:       gap-core >= 4.10
+Requires:       gap-laguna >= 3.8.0
 Requires:       gap-polycyclic >= 1.0
 
 %description
