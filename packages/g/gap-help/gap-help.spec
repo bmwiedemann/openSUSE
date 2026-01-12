@@ -17,7 +17,7 @@
 
 
 Name:           gap-help
-Version:        4.0
+Version:        4.1
 Release:        0
 Summary:        GAP: Hertweck-Luthar-Passi method
 License:        GPL-2.0-only
@@ -31,10 +31,10 @@ BuildArch:      noarch
 Requires:       4ti2 >= 1.6.5
 Requires:       gap-4ti2interface >= 2015.04.29
 Requires:       gap-atlasrep >= 1.5
-Requires:       gap-core >= 4.8.2
+Requires:       gap-core >= 4.13
 Requires:       gap-ctbllib >= 1.2.2
 Requires:       gap-io >= 4.2
-Requires:       gap-normalizinterface >= 0.9.6
+Requires:       gap-normalizinterface >= 1.4.1
 
 %description
 HeLP is a package to compute constraints on partial augmentations of

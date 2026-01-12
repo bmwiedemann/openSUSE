@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan  9 17:38:39 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.1
+  * When NormalizInterface or 4ti2 is not available, the functions
+    which use them are now not loaded.
+  * Test files adjusted to new structure and extended. Also by
+    requiring new version of CTblLib, an error which came up during
+    testing is resolved.
+
+-------------------------------------------------------------------
 Mon Mar  4 08:42:01 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.0
