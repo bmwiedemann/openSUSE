@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan  9 08:39:12 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to alsa-ucm-conf 1.2.15.2:
+  * fix common config
+  * USB-Audio: updates, Scarlett 18i20, Steinberg UR22C fixes
+  * ucm2: HDA: headphone handling fixes
+  * ucm2: sof-soundwire: cirrus codec fixes
+
+-------------------------------------------------------------------
 Fri Jan  2 11:46:30 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to alsa-ucm-conf 1.2.15.1:
