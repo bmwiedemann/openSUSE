@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Jan  4 14:47:13 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.22.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.22.0
+- Changes since 6.21.0:
+  * Update dependency version to 6.22.0
+  * Add manual test for FavIconRequestJob
+  * KFilePlacesModel: Set desktop file name for partition manager
+  * Remove duplicate headers in same file
+  * Deprecate PreviewJob::removeItem(QUrl)
+  * PreviewJob: fix empty enabledPlugins attribute set for thumbnail job
+  * PreviewItem struct: drop unused cacheSize member
+  * UDSEntryPrivate::load: reuse allocated buffer for string data
+  * UDSEntryPrivate::load: avoid repeated look-up in cachedStrings list
+  * kfileplacesview: remove DropAction::MoveAction from the list of supportedActions (kde#509231)
+  * RenameDialog: Add "Compare Files" button
+  * Use ECM_TEST_NAME_PREFIX
+  * Update version to 6.22.0
+
+-------------------------------------------------------------------
 Fri Dec 12 20:17:27 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.21.0
