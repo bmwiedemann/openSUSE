@@ -1,4 +1,134 @@
 -------------------------------------------------------------------
+Sun Jan 11 08:13:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.38.0:
+  * Feature: String Interpolation Support
+    v0.38.0 of your favorite Rego linter, debugger and language
+    server brings full support for OPA's new string interpolation
+    feature. This means not only that Regal lints code found inside
+    interpolated strings, but that you'll have access to all your
+    favorite language server features within them too — like code
+    completions, tooltips on hover, or document highlighting. You
+    can even use the debugger to step through interpolated
+    expressions! If you haven't yet tried it out, grab OPA v1.12.2,
+    Regal v0.38.0 and enjoy an absolutely awesome addition to the
+    Rego language!
+    In addition to this, we have a number of fun new features and
+    performance improvements.
+  * New Rule: disallow-rego-v1
+    Category: custom
+    This optional new rule flags the use of import rego.v1 in Rego
+    policies (#1778). Since OPA v1.0 (December 2024), this import
+    is a no-op and no longer needed. The rule helps users maintain
+    clean code by preventing this outdated import from appearing in
+    new policies. Teams standardizing on OPA 1.0+ can enable this
+    rule to enforce modern Rego standards.
+
+      package example
+
+      import rego.v1 # <-- Happy 2026! Time to stop doing this!
+
+  * New Fixers
+    @SeanLedford has also done some great work to help expand
+    Regal's auto-fixing capabilities by having regal fixers added
+    for three more rules.
+    - prefer-equals-comparison
+    - redundant-existence-check
+    - constant-condition
+    See (#1790) and (#1794) for more details.
+  * Performance
+    The fixer saw a 12% performance improvement by reusing the
+    linter, reducing allocations from 2.3M to 2.0M operations
+    (#1783). Additional optimizations include:
+    - faster file filtering by avoiding recompiled ignore patterns
+      (#1758),
+    - better built-in function handling by registering Regal's
+      functions globally only once (#1788),
+    - and more efficient AST location serialization (#1758)
+    To track ongoing performance work, a new post-merge
+    benchmark-recording workflow was added (#1793).
+  * LSP: New Ignore Code Action
+    The language server now supports a code action to quickly add
+    regal ignore configuration for specific rules directly from the
+    editor (#1777).
+  * Changelog
+    - ac35695: Various performance improvements (#1758)
+      (@anderseknert)
+    - 48cd03d: docs: Add custom head for regal index page (#1761)
+      (@charlieegan3)
+    - 728ae28: build(deps): bump golangci/golangci-lint-action
+      (#1762) (@dependabot[bot])
+    - 92cf6ca: explorer: allow hiding stages without an effect
+      (+misc) (#1760) (@srenatus)
+    - c000994: docs: Correct sidebar labels (#1763) (@charlieegan3)
+    - bf0b621: build(deps): bump
+      github.com/containerd/containerd/v2 in /e2e/testbuild (#1753)
+      (@dependabot[bot])
+    - 18e7a89: build(deps): bump
+      github.com/containerd/containerd/v2 (#1754)
+      (@dependabot[bot])
+    - ccab7bd: Rename: encoding/util -> encoding/write (#1764)
+      (@anderseknert)
+    - 54f7625: build: run windows in matrix with other jobs (#1770)
+      (@charlieegan3)
+    - 5c9e6f0: update: Update version checking logic (#1772)
+      (@charlieegan3)
+    - 5034776: build: Add badge update to readme script (#1773)
+      (@charlieegan3)
+    - 95e8220: Added OPA installation as a Regal prerequisite, and
+      fixed golangci-lint link. (#1774) (@SeanLedford)
+    - 149f71d: build(deps): bump js-yaml from 4.1.0 to 4.1.1 in
+      /build (#1775) (@dependabot[bot])
+    - b8f8b7f: Enable more golangci-lint linters (@anderseknert)
+    - e092627: build: Update mac runner (@charlieegan3)
+    - 877884c: lsp: Add code action and command to ignore rule
+      (#1777) (@charlieegan3)
+    - ece9ca2: build(deps): bump the dependencies group with 5
+      updates (@dependabot[bot])
+    - bd37bbd: build(deps): bump golang.org/x/crypto in /build/lsp
+      (@dependabot[bot])
+    - 17cc429: build(deps): bump golang.org/x/crypto in
+      /e2e/testbuild (@dependabot[bot])
+    - 415b05f: build(deps): bump golang.org/x/crypto from 0.43.0 to
+      0.45.0 (@dependabot[bot])
+    - e1bb975: Improve fixer performance (@anderseknert)
+    - 1b083ff: Added Rule: Disallow import rego.v1 (#1778)
+      (@SeanLedford)
+    - 9e43c50: Optimize and improve code for built-in functions
+      (@anderseknert)
+    - 64ce2aa: build(deps): bump glob and markdownlint-cli in
+      /build (#1779) (@dependabot[bot])
+    - 48fddeb: build(deps): bump github/codeql-action in the
+      dependencies group (#1787) (@dependabot[bot])
+    - bc41f63: pkg/linter: use errgroup, set limits + context on it
+      (@srenatus)
+    - f22c2aa: Add fixer for prefer-equals-comparison rule (#1790)
+      (@SeanLedford)
+    - cf88eb9: Fixers for redundant-existence-check and
+      constant-condition rules (#1794) (@SeanLedford)
+    - 36401a2: build(deps): bump the dependencies group across 1
+      directory with 7 updates (#1796) (@dependabot[bot])
+    - ecb23d3: version: Add OPA version to version output (#1798)
+      (@charlieegan3)
+    - 94ce038: build(deps): bump golang.org/x/crypto from 0.43.0 to
+      0.45.0 in /build/ws (#1791) (@dependabot[bot])
+    - 9ce1ddd: workflows: add post-merge benchmark-recording
+      workflow (@srenatus)
+    - e111443: workflows/benchmark: fix golang setup (@srenatus)
+    - 4bb2d5a: docs: Update messy rule docs (@charlieegan3)
+    - dec83ea: docs: Updates from opa website link scanner
+      (@charlieegan3)
+    - 8f544a6: fix typo in fix.go help message (#1807) (@gusega)
+    - 941b02e: build(deps): bump the dependencies group with 3
+      updates (#1804) (@dependabot[bot])
+    - 9f09e6e: build(deps): bump the dependencies group with 4
+      updates (#1808) (@dependabot[bot])
+    - 476ef89: OPA v1.12.2 and full string interpolation support
+      (#1811) (@anderseknert)
+    - a9843ab: Move chained-rule-body to custom category (#1812)
+      (@anderseknert)
+
+-------------------------------------------------------------------
 Fri Nov 07 08:50:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.37.0:
