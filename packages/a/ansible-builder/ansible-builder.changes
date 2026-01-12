@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan  6 22:31:16 UTC 2026 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
+
+- Fix pytest 9.0.2 compatibility: ignore PytestRemovedIn9Warning
+    pytest 9.0.2 treats deprecation warnings about marks on 
+    fixtures as errors. Add warning filters to suppress
+    PytestRemovedIn9Warning so tests can run successfully. 
+
+-------------------------------------------------------------------
 Tue Oct 28 05:46:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 3.1.1:

@@ -1,7 +1,7 @@
 #
 # spec file for package ansible-builder
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -105,6 +105,9 @@ https://ansible-builder.readthedocs.io/en/latest/
 sed -i '/cov/d' pytest.ini
 # disable color output
 sed -i '/color/d' pytest.ini
+# ignore pytest 9 deprecation warning for marks on fixtures
+echo "filterwarnings =" >> pytest.ini
+echo "    ignore::pytest.PytestRemovedIn9Warning" >> pytest.ini
 # add %{buildroot}%{_bindir} to PATH, so the executable is found
 export PATH=%{buildroot}%{_bindir}:$PATH
 # checks ignored, as they require podman
@@ -114,7 +117,7 @@ IGNORED_CHECKS="${IGNORED_CHECKS} or test_v3_complete"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_ansible_check_is_skipped"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_missing_ansible"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_missing_runner"
-%pytest -k "not (${IGNORED_CHECKS})"
+%pytest -W ignore::pytest.PytestRemovedIn9Warning -k "not (${IGNORED_CHECKS})"
 
 %files
 %doc README.md
