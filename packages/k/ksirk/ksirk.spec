@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           ksirk
-Version:        25.12.0
+Version:        25.12.1
 Release:        0
 Summary:        Risk-like game by KDE
 License:        GPL-2.0-or-later
