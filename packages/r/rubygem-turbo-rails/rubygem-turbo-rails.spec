@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-turbo-rails
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,11 @@
 #
 
 Name:           rubygem-turbo-rails
-Version:        2.0.11
+Version:        2.0.20
 Release:        0
 %define mod_name turbo-rails
 %define mod_full_name %{mod_name}-%{version}
-BuildRequires:  %{ruby >= 2.6.0}
+BuildRequires:  %{ruby >= 3.1}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/hotwired/turbo-rails

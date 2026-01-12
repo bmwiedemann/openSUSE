@@ -59,4 +59,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1221920</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ea324c86e41d1751d7bfbbc01f811f2f</srcmd5>
+    <version>2.0.20</version>
+    <time>1768209835</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1321306 from gladiac
+
+- New upstream release 2.0.20, no changelog found</comment>
+    <requestid>1326552</requestid>
+  </revision>
 </revisionlist>
