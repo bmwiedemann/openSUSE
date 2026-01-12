@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan  9 10:55:38 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Do not masked out the already existing %ghost file entry
+  (Accordingly to Packaging for Immutable Mode - Best Practices)
+
+-------------------------------------------------------------------
 Wed Dec 17 10:07:17 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Extend tmpfiles template man-db.conf (jsc#PED-14862)

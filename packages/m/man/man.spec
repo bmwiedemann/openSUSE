@@ -1,7 +1,7 @@
 #
 # spec file for package man
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -456,8 +456,6 @@ fi
 %dir %{_mandir}/tr
 %{_fillupdir}/sysconfig.cron-man
 %defattr(-,man,man)
-%if 0%{?_has_tmpfiled} == 0
 %ghost %{_localstatedir}/cache/man
-%endif
 
 %changelog

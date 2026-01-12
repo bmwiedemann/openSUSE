@@ -1148,4 +1148,13 @@
   * Create cache directories with systemd tmpfiles service</comment>
     <requestid>1323319</requestid>
   </revision>
+  <revision rev="108" vrev="3">
+    <srcmd5>ce22b889338a4bbb53ec96602aa855ed</srcmd5>
+    <version>2.13.1</version>
+    <time>1768209370</time>
+    <user>anag_factory</user>
+    <comment>- Do not masked out the already existing %ghost file entry
+  (Accordingly to Packaging for Immutable Mode - Best Practices)</comment>
+    <requestid>1326322</requestid>
+  </revision>
 </revisionlist>
