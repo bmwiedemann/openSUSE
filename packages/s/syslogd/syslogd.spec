@@ -1,7 +1,7 @@
 #
 # spec file for package syslogd
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -361,6 +361,7 @@ done
 %{_mandir}/man8/sysklogd.8%{ext_man}
 %{_unitdir}/syslogd.service
 %{_sbindir}/syslogd-service-prepare
+%attr(0755,root,root) %dir %ghost %{_rundir}/syslogd
 %{_sbindir}/syslogd
 %{_sbindir}/rcsyslogd
 %if 0%{?suse_version} < 1550

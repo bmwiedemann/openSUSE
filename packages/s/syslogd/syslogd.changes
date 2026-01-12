@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan  9 11:02:05 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Do not masked out the already existing %ghost file entry
+  (Accordingly to Packaging for Immutable Mode - Best Practices)
+
+-------------------------------------------------------------------
 Thu Dec 18 08:04:54 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Install tmpfile correctly as syslogd.conf (instead of

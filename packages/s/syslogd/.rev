@@ -912,4 +912,13 @@
 - Fix tmpfile handling for transactional updates (jsc#PED-14864)</comment>
     <requestid>1323782</requestid>
   </revision>
+  <revision rev="108" vrev="807">
+    <srcmd5>435c0f6342a511a175c4e831dee6f0a3</srcmd5>
+    <version>unknown</version>
+    <time>1768209372</time>
+    <user>anag_factory</user>
+    <comment>- Do not masked out the already existing %ghost file entry
+  (Accordingly to Packaging for Immutable Mode - Best Practices)</comment>
+    <requestid>1326325</requestid>
+  </revision>
 </revisionlist>
