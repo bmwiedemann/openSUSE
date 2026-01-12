@@ -1,7 +1,7 @@
 #
 # spec file for package libtasn1
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define somajor 6
 Name:           libtasn1
-Version:        4.20.0
+Version:        4.21.0
 Release:        0
 Summary:        ASN.1 parsing library
 License:        GFDL-1.3-or-later AND GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -94,7 +94,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files devel
 %license COPYING.LESSERv2
-%doc NEWS README THANKS
+%doc NEWS.md README THANKS
 %{_includedir}/*.h
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/libtasn1.pc

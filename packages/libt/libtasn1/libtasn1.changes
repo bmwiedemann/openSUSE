@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan  9 08:30:30 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to libtasn1 4.21.0: [bsc#1256341, CVE-2025-13151]
+  * Undocumented asn1Decoding --debug flag removed.
+  * Code coverage for src/ went from 35% to 82%.
+  * Fix of ASN.1 typo in manual.
+  * NEWS renamed to NEWS.md and uses markdown syntax.
+  * Update gnulib files and various build/maintenance fixes.
+  * Fix for vulnerability CVE-2025-13151 Stack-based buffer overflow:
+    - libtasn1: stack-based buffer overflow in asn1_expend_octet_string()
+
+-------------------------------------------------------------------
 Thu Feb  6 20:31:51 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - libtasn1 4.20.0:
