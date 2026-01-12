@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jan 10 19:36:43 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 2.1.0
+  * [AMD]
+    - [Zen5] Introducing Ryzen AI 400 Series "Gorgon Point"
+    - [GNR] Adding Ryzen 7 9850X3D
+    - [Castle Peak] Fixed a regression in the CCD topology
+  * [Kernel]
+    - [x86_64] Kernel version 6.18 drops export of x86_spec_ctrl_base
+  * [Doc]
+    Moved images of the README.md to .assets directory
+    Updated the " Copyright (C) 2015-2026 CYRIL COURTIAT "
+
+-------------------------------------------------------------------
 Tue Nov 11 12:30:12 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to 2.0.9
