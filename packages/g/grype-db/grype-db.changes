@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Jan 11 08:54:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.47.3:
+  * Dependencies
+    - chore(deps): update anchore dependencies (#797)
+    - chore(deps): update anchore dependencies (#795)
+    - chore(deps): Bump github.com/hashicorp/go-getter from 1.8.3
+      to 1.8.4 (#791)
+    - chore(deps): Bump astral-sh/setup-uv in
+      /.github/actions/bootstrap (#792)
+    - chore(deps): update tools to latest versions (#788)
+
+-------------------------------------------------------------------
+Sun Jan 11 08:46:49 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.47.2:
+  * Dependencies
+    - chore(deps): Bump github.com/anchore/grype from 0.104.2 to
+      0.104.3 (#787)
+    - chore(deps): update tools to latest versions (#780)
+    - chore(deps): Bump astral-sh/setup-uv in
+      /.github/actions/bootstrap (#785)
+    - chore(deps): Bump actions/cache in /.github/actions/bootstrap
+      (#784)
+    - chore(deps): Bump actions/cache from 4.3.0 to 5.0.1 (#783)
+    - chore(deps): Bump actions/checkout from 5.0.1 to 6.0.1 (#779)
+    - chore(deps): Bump peter-evans/create-pull-request from 7.0.11
+      to 8.0.0 (#777)
+
+-------------------------------------------------------------------
 Thu Dec 11 06:48:23 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.47.1:
