@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan 10 19:44:19 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.1.3
+  * No release notes were provided
+  * lavc/aarch64: Fix addp overflow in ff_pred16x16_plane_neon_10
+  * swscale/output: Fix integer overflow in yuv2ya16_X_c_template()
+  * avformat/avformat: clear FFFormatContext packet queue when
+    closing a muxer
+- Delete ffmpeg-7-CVE-2025-25473.patch (merged)
+
+-------------------------------------------------------------------
 Fri Sep 19 18:44:35 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 7.1.2:
@@ -312,6 +323,7 @@ Mon Jan 15 11:11:08 UTC 2024 - Enrico Belleri <kilgore.trout@idesmi.eu>
   * VAAPI AV1 encoder
   * ffprobe XML output schema changed to account for multiple variable-fields elements within the same parent element
   * ffprobe -output_format option added as an alias of -of
+  * avformat/hls: remove non standard hls extension. (CVE-2023-6601, bsc#1220545)
 - Remove patch6 0001-avfilter-vf_libplacebo-remove-deprecated-field.diff
 - Prefer libvpl to libmfx: the latter is deprecated
 - Delete ffmpeg-6-private-devel package as it is only needed to build libav-tools
