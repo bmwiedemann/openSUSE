@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sun Jan  4 14:47:14 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.22.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.22.0
+- Changes since 6.21.0:
+  * Fix Android icon bundling
+  * Update dependency version to 6.22.0
+  * controls/SwipeListItem: remove dead validate function
+  * Downgrade the message about not finding a plaform plugin to debug
+  * controls/NavigationTabButton: remove Qt 6.8 check
+  * layouts/FormLayout: avoid binding loop during initial load (kde#513185)
+  * controls/GlobalDrawer: explicitly pass backItem
+  * controls/private: pass refreshing to PullDownIndicator
+  * autotests: linting changes
+  * examples: linting
+  * drop non-existing handler parameters
+  * primitives/Separator: import primitives
+  * tests: various linting fixes for the manual tests
+  * SwipeListItem: Use implicitContentHeight/Width instead of contentItem.implicitHeight/Width
+  * avoid custom-parsed PropertyChanges
+  * remove unused imports
+  * port to ComponentBehavior Bound and required properties
+  * qualify access to parent properties
+  * controls/NavigationTabButton: fix pointSize binding
+  * templates/AbstractApplicationHeader: always set preferredHeight
+  * controls/Action: fix alternate shortcut
+  * port to Application.styleHints
+  * controls/AboutItem: qualify Separator
+  * SwipeListItem: Add back checking for parent width and implicitWidth
+  * Add extra margin only for default title
+  * Documentation fixes
+  * Document requirements for new components
+  * Add TitleSubtitleWithActions
+  * Update version to 6.22.0
+
+-------------------------------------------------------------------
 Fri Dec 12 20:17:27 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.21.0
