@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Dec 20 07:37:46 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.0.1
+  This release also includes the new (Constrained Delaunay)
+  Triangulation module.
+- drop no-static.patch
+
+-------------------------------------------------------------------
 Fri Oct 10 10:25:57 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Fix shared library packaging naming

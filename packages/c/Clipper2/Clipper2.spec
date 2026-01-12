@@ -17,8 +17,8 @@
 
 
 %bcond_with clipper2_testing
-%global sh_lib libClipper2-1
-%global sh_z_lib libClipper2Z1
+%global sh_lib libClipper2-2
+%global sh_z_lib libClipper2Z2
 %global broken_sh_lib libClipper2_1
 %global broken_sh_z_lib libClipper2Z_1
 
@@ -27,15 +27,13 @@
 %endif
 
 Name:           Clipper2
-Version:        1.5.4
+Version:        2.0.1
 Release:        0
 Summary:        Polygon Clipping and Offsetting
 # FIXME: Select a correct license from https://github.com/openSUSE/spec-cleaner#spdx-licenses
 License:        BSL-1.0
 URL:            https://github.com/AngusJohnson/Clipper2/tree/main?tab=BSL-1.0-1-ov-file#readme
 Source0:        https://github.com/AngusJohnson/Clipper2/archive/refs/tags/Clipper2_%{version}.tar.gz#/Clipper2-Clipper2_%{version}.tar.gz
-Source1:        series
-Patch1:         no-static.patch
 BuildRequires:  cmake
 BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  gtest
