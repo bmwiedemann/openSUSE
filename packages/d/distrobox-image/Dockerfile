@@ -17,8 +17,9 @@ PREFIXEDLABEL org.opencontainers.image.vendor="openSUSE Project"
 PREFIXEDLABEL org.openbuildservice.disturl="%DISTURL%"
 PREFIXEDLABEL org.opensuse.reference="registry.opensuse.org/opensuse/distrobox:%OS_VERSION_ID%.%RELEASE%"
 
-# Packagelist from https://github.com/89luca89/distrobox/blob/main/docs/distrobox_custom.md
+# Packagelist from https://github.com/89luca89/distrobox/blob/main/docs/posts/distrobox_custom.md
 # openSUSE-release included explicitly to ensure kiwi-metainfo-helper finds it for %OS_VERSION_ID%
+# dirmngr included explicitly to ensue gnupg can access keyservers
 RUN zypper --non-interactive install --no-recommends bash \
     Mesa-dri \
     bash-completion \
@@ -26,6 +27,7 @@ RUN zypper --non-interactive install --no-recommends bash \
     bzip2 \
     curl \
     diffutils \
+    dirmngr \
     findutils \
     glibc-locale \
     glibc-locale-base \

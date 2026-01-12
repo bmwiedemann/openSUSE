@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 24 11:20:25 UTC 2025 - Jan Fooken <jan.fooken@suse.com>
+
+- Add dirmngr package to ensure GnuPG can access keyservers
+- Update link to upstream package list
+
+-------------------------------------------------------------------
 Thu Mar 20 07:42:28 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Build on aarch64 as well
