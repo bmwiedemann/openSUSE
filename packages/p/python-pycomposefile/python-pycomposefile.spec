@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycomposefile
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pycomposefile
-Version:        0.0.32
+Version:        0.0.34
 Release:        0
 Summary:        Structured deserialization of Docker Compose files
 License:        MIT
 URL:            https://github.com/smurawski/pycomposefile
 Source:         https://files.pythonhosted.org/packages/source/p/pycomposefile/pycomposefile-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM p_fix-version-number.patch
-# https://github.com/smurawski/pycomposefile/issues/29
-Patch:          p_fix-version-number.patch
+BuildRequires:  %{python_module flit-core >= 3.11}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
