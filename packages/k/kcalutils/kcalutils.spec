@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           kcalutils
-Version:        25.12.0
+Version:        25.12.1
 Release:        0
 Summary:        Library with utility functions for handling calendar data
 License:        LGPL-2.1-or-later
