@@ -1,0 +1,186 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cafe59110eb5f33aacae5cb3946334b6</srcmd5>
+    <version>6.0.0</version>
+    <time>1710167110</time>
+    <user>anag+factory</user>
+    <comment>KDE Frameworks 6.0.0</comment>
+    <requestid>1150328</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1ea76741ccd4a03209921cc8cb643a79</srcmd5>
+    <version>6.1.0</version>
+    <time>1713204707</time>
+    <user>anag+factory</user>
+    <comment>KDE Frameworks 6.1.0 (forwarded request 1166463 from krop)</comment>
+    <requestid>1167173</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5c4f4d798a6be258d71bd51b90b51c14</srcmd5>
+    <version>6.2.0</version>
+    <time>1715444354</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 6.2.0 (forwarded request 1173094 from krop)</comment>
+    <requestid>1173122</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1eb1f4d37a194b93246a8cd8622290d2</srcmd5>
+    <version>6.3.0</version>
+    <time>1717957159</time>
+    <user>anag+factory</user>
+    <comment>KDE Frameworks 6.3.0 (forwarded request 1178724 from krop)</comment>
+    <requestid>1179264</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1d3ea64c3b8ae4be7a5dd62e8dfe11bf</srcmd5>
+    <version>6.4.0</version>
+    <time>1720939771</time>
+    <user>anag+factory</user>
+    <comment>KDE Frameworks 6.4.0 (forwarded request 1186902 from krop)</comment>
+    <requestid>1187100</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>38615a2678f4d08400609ccdb7cb76e1</srcmd5>
+    <version>6.5.0</version>
+    <time>1723309584</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 6.5.0 (forwarded request 1191717 from krop)</comment>
+    <requestid>1192861</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fb7a541c015d93f677d76872ddc36f29</srcmd5>
+    <version>6.6.0</version>
+    <time>1726396428</time>
+    <user>anag+factory</user>
+    <comment>KDE Frameworks 6.6.0 (forwarded request 1199844 from krop)</comment>
+    <requestid>1201001</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5b304ef8b89a7fb0c2d9927edc368131</srcmd5>
+    <version>6.7.0</version>
+    <time>1728732315</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 6.7.0 (forwarded request 1206249 from krop)</comment>
+    <requestid>1207186</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2946f248f8bd7d30605f063b0d68d701</srcmd5>
+    <version>6.8.0</version>
+    <time>1731181991</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 6.8.0 (forwarded request 1221715 from krop)</comment>
+    <requestid>1222770</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>563b15d3e18e06e354dd8d5872566cc9</srcmd5>
+    <version>6.9.0</version>
+    <time>1734262490</time>
+    <user>anag+factory</user>
+    <comment>KDE Frameworks 6.9.0 (forwarded request 1229222 from krop)</comment>
+    <requestid>1230837</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9d9d5694dbfa040895b3d937a137641d</srcmd5>
+    <version>6.10.0</version>
+    <time>1736676651</time>
+    <user>anag+factory</user>
+    <comment>KDE Frameworks 6.10.0 (forwarded request 1236149 from krop)</comment>
+    <requestid>1236315</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e06b82356ef8032114c47c518c1add9a</srcmd5>
+    <version>6.11.0</version>
+    <time>1739741879</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 6.11 (forwarded request 1244923 from krop)</comment>
+    <requestid>1245929</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ffb367345fab561403cd24602c791edb</srcmd5>
+    <version>6.12.0</version>
+    <time>1742246139</time>
+    <user>anag+factory</user>
+    <comment>KDE Frameworks 6.12.0 (forwarded request 1252307 from krop)</comment>
+    <requestid>1253189</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5fbb90cb3f7df620f980ab053ee56d0c</srcmd5>
+    <version>6.13.0</version>
+    <time>1744728179</time>
+    <user>anag_factory</user>
+    <comment>KDE Frameworks 6.13.0</comment>
+    <requestid>1268833</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a61c56a11a4c6479d189deb7428787f6</srcmd5>
+    <version>6.14.0</version>
+    <time>1747060998</time>
+    <user>anag_factory</user>
+    <comment>KDE Frameworks 6.14 (forwarded request 1275345 from krop)</comment>
+    <requestid>1276359</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0378f7a3f9064d813e346a314a6e5c29</srcmd5>
+    <version>6.15.0</version>
+    <time>1750254900</time>
+    <user>anag_factory</user>
+    <comment>KDE Frameworks 6.15 (forwarded request 1285029 from krop)</comment>
+    <requestid>1285565</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d5b19aa001f64062bcd04620b4dcc2b2</srcmd5>
+    <version>6.16.0</version>
+    <time>1752482901</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 6.16 (forwarded request 1292110 from krop)</comment>
+    <requestid>1292126</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f4b4dfeb67a37a4f0a3956ae08e363db</srcmd5>
+    <version>6.17.0</version>
+    <time>1754762261</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.17 (forwarded request 1298400 from krop)</comment>
+    <requestid>1298526</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d747c32891aed8a307669b5aa2146491</srcmd5>
+    <version>6.18.0</version>
+    <time>1757958560</time>
+    <user>anag_factory</user>
+    <comment>KDE Frameworks 6.18 (forwarded request 1303540 from krop)</comment>
+    <requestid>1304387</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>5b39652d89ce8a2757e68bab86f0cb2e</srcmd5>
+    <version>6.19.0</version>
+    <time>1760300502</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 6.19.0 (forwarded request 1310520 from krop)</comment>
+    <requestid>1310834</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ebef65c9ab2582a09fb957af9bde55e5</srcmd5>
+    <version>6.20.0</version>
+    <time>1763377776</time>
+    <user>anag_factory</user>
+    <comment>KDE Frameworks 6.20.0</comment>
+    <requestid>1317874</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>6b94e6dbc581682f4e233953c8ee0c45</srcmd5>
+    <version>6.21.0</version>
+    <time>1765896631</time>
+    <user>anag_factory</user>
+    <comment>KDE Frameworks 6.21</comment>
+    <requestid>1322699</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>7f6cc51bbbed2e36aeb8c3392babc1a0</srcmd5>
+    <version>6.22.0</version>
+    <time>1768209072</time>
+    <user>anag_factory</user>
+    <comment>KDE Frameworks 6.22 (forwarded request 1325304 from krop)</comment>
+    <requestid>1326411</requestid>
+  </revision>
+</revisionlist>
