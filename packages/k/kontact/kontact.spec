@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           kontact
-Version:        25.12.0
+Version:        25.12.1
 Release:        0
 Summary:        Personal Information Manager
 License:        GPL-2.0-or-later
