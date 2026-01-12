@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Jan 11 08:58:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.66.0:
+  * OPA Changes
+    - 08529c7: build(deps): bump github.com/open-policy-agent/opa
+      from 1.11.0 to 1.12.1 (#1240) (@dependabot[bot])
+  * Other Changes
+    - 10434c1: build(deps): bump actions/setup-python from 6.0.0 to
+      6.1.0 (#1225) (@dependabot[bot])
+    - 25bee5d: build(deps): bump alpine from 3.22.2 to 3.23.0
+      (#1229) (@dependabot[bot])
+    - 6cafc0f: build(deps): bump github.com/BurntSushi/toml from
+      1.5.0 to 1.6.0 (#1238) (@dependabot[bot])
+    - f6b8fa9: build(deps): bump github.com/moby/buildkit from
+      0.26.2 to 0.26.3 (#1235) (@dependabot[bot])
+    - 233776f: build(deps): bump golang from 1.25.4-alpine to
+      1.25.5-alpine (#1228) (@dependabot[bot])
+    - 7a86f94: chore: Remove dependency on github.com/pkg/errors
+      (#1233) (@jalseth)
+    - 5a394b8: ci(golangci-lint): Disable revive
+      skip-package-name-collision-with-go-std (#1232) (@jalseth)
+
+-------------------------------------------------------------------
 Thu Nov 27 05:51:19 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.65.0:
