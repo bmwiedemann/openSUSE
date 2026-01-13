@@ -61,4 +61,15 @@
     <comment></comment>
     <requestid>922288</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c4f675012ddc939d58e858ac7e9c4b11</srcmd5>
+    <version>0.0016</version>
+    <time>1768336474</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.0016
+   see /usr/share/doc/packages/perl-Devel-Hide/Changes
+  0.0016      2026-01-02
+     - Drop support for perl 5.6 (deprecated since 0.0012)</comment>
+    <requestid>1326994</requestid>
+  </revision>
 </revisionlist>

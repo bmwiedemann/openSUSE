@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jan  3 05:40:16 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.0016
+   see /usr/share/doc/packages/perl-Devel-Hide/Changes
+
+  0.0016      2026-01-02
+
+     - Drop support for perl 5.6 (deprecated since 0.0012)
+
+-------------------------------------------------------------------
 Wed Sep 29 03:06:10 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.0015

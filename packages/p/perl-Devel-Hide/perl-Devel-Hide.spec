@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Devel-Hide
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,19 @@
 
 %define cpan_name Devel-Hide
 Name:           perl-Devel-Hide
-Version:        0.0015
+Version:        0.0016
 Release:        0
-Summary:        Forces the unavailability of specified Perl modules (for testing)
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Forces the unavailability of specified Perl modules (for testing)
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DC/DCANTRELL/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Test::More) >= 0.82
+Requires:       perl(Test::More) >= 0.82
 %{perl_requires}
 
 %description
@@ -110,7 +112,7 @@ suppresses diagnostic output. You will still get told about errors. This is
 passed to child processes if -from:children is in effect.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
