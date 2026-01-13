@@ -17,7 +17,7 @@
 
 
 Name:           kryoptic
-Version:        1.3.1
+Version:        1.4.0
 Release:        0
 Summary:        PKCS #11 software token written in Rust
 License:        GPL-3.0-or-later
@@ -32,7 +32,7 @@ BuildRequires:  clang
 BuildRequires:  openssl-devel
 BuildRequires:  sqlite3-devel
 
-ExclusiveArch:  %{rust_tier1_arches} riscv64
+ExclusiveArch:  %{rust_tier1_arches} riscv64 i586
 
 Requires:       sqlite3
 

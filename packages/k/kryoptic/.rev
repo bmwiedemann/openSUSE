@@ -15,4 +15,32 @@
     <comment>- Enable build on riscv64 (forwarded request 1313851 from Andreas_Schwab)</comment>
     <requestid>1313875</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>855b116f4f7b9830f13c244981c4c306</srcmd5>
+    <version>1.4.0</version>
+    <time>1768336018</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.4.0:
+  * Set specific description for ossl crate
+  * Return more specific error for unsupported parameter set
+  * Add PKCS#11 3.2 attribute to NSSDB storage
+  * Fix Simple KDFs to work with token objects
+  * Add support for CKO_TRUST objects
+  * Fix ML-DSA, ML-KEM, SLH-DSA keys with NSSDB
+  * Use modern API for secure key parameter export
+  * Prevent dynamic linking in FIPS builds
+  * Fix runtime panics in date functions in pkcs11/mod.rs
+  * Implement simple derivation function that extracts a public key from a private key
+  * Support CKO_PROFILES objects in Kryoptic
+  * Clear errors from signature probe
+  * Minor doc fixes
+  * Store computed CKA_PUBLIC_KEY_INFO on keys
+  * Replace check_or_set_attr with ensure_* methods
+  * Use pkg-config to find OpenSSL headers, build with -std=c99 for OpenSSL &gt;= 3.6
+  * Remove explicit C standard from build script
+  * Add test for sensitive key attribute extraction
+  * Return error on subsequent C_Initialize calls
+- Enable build on i586 (forwarded request 1326797 from lmulling)</comment>
+    <requestid>1326798</requestid>
+  </revision>
 </revisionlist>
