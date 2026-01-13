@@ -678,4 +678,12 @@
     <comment></comment>
     <requestid>1325167</requestid>
   </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>d5b21af38979a4cde29e12e220b6dfc2</srcmd5>
+    <version>2.5.2</version>
+    <time>1768336217</time>
+    <user>anag_factory</user>
+    <comment>Add CVE reference in changelog</comment>
+    <requestid>1326785</requestid>
+  </revision>
 </revisionlist>

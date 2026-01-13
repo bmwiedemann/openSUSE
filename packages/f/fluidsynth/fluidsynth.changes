@@ -85,6 +85,7 @@ Wed Jul 16 17:01:35 UTC 2025 - Martin Hauke <mardnh@gmx.de>
     Soundfont files with unknown INFO subchunks.
   * Fix incorrect GS DT1 SysEx checksum validation.
   * Fix a NULL pointer dereference during legato mono playing.
+    (CVE-2025-56225, bsc#1256435)
 
 -------------------------------------------------------------------
 Sun May 11 07:58:30 UTC 2025 - Martin Hauke <mardnh@gmx.de>
