@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 13 06:44:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.2.3:
+  No CLI-related changes
+  Dependency updates
+  * chore(deps): bump golang.org/x/crypto from 0.42.0 to 0.46.0
+    (#25791)
+
+-------------------------------------------------------------------
 Thu Dec 18 11:54:29 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.2.2:
