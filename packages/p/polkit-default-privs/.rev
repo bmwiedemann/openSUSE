@@ -2432,4 +2432,14 @@ for 12.3</comment>
 </comment>
     <requestid>1322635</requestid>
   </revision>
+  <revision rev="261" vrev="1">
+    <srcmd5>e7305c74c25207bcfe1b11da1e4938cb</srcmd5>
+    <version>1550+20260108.4fc3a54</version>
+    <time>1768335151</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1550+20260108.4fc3a54:
+  * profiles: whitelist Foomuuri actions (bsc#1254385)
+</comment>
+    <requestid>1326383</requestid>
+  </revision>
 </revisionlist>

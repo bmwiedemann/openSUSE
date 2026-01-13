@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 09 17:22:54 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 1550+20260108.4fc3a54:
+  * profiles: whitelist Foomuuri actions (bsc#1254385)
+
+-------------------------------------------------------------------
 Fri Dec 12 14:54:46 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 1550+20251212.3e30f11:
