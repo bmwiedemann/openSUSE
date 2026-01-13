@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan  9 13:32:06 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.25.0
+  * Revert to commit 4c48e60 by @sbSteveK in (#787)
+
+-------------------------------------------------------------------
 Mon Jan  5 08:47:46 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.24.2
