@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 13 03:13:41 UTC 2026 - maurizio.galli@suse.com
+
+- Update to version 0.22+git0.98ad7e92:
+  * Address some icons not showing in Gtk4 apps
+  * MimeTypes: Add lossless audio symlinks
+  * Actions: Remove 96px, 128px action icons
+
+-------------------------------------------------------------------
 Tue Sep 30 07:45:39 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Rename elementary-xfce-gdb-pixbuf+glycin-loaders-workaround.patch
