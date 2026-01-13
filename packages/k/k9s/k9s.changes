@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jan 12 06:47:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.50.18:
+  Oops! I've missed a PR in the v0.50.17 excitement ;( Dropping
+  v0.50.18 with feelings...
+  * Resolved Issues
+    - #3649 Improved Column Sorting
+- update to 0.50.17:
+  * Resolved Issues
+    - #3765 quay.io docker images not up to date but referenced in
+      README.md
+    - #3762 Copy multiple selected items
+    - #3751 Improve visual distinction for cordoned nodes in Node
+      view
+    - #3735 Cannot decode secret if there is no get permissions for
+      all secrets
+    - #3708 Editing a single Namespace opens the editor with a list
+      of all Namespaces
+    - #3731 feat: add neat plugin
+    - #3735 Cannot decode secret if there is no get permissions for
+      all secrets
+    - #3708 Editing a single Namespace opens the editor with a list
+      of all Namespaces
+
+-------------------------------------------------------------------
 Mon Oct 20 05:43:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.50.16:
