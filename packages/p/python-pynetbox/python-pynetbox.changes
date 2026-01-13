@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jan 10 09:36:29 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.6.0
+  Breaking Changes
+  * Moved ObjectChange to core for NetBox 4.1.0 compatibility.
+  New Features
+  * Added support for v2 Tokens introduced in NetBox 4.5.0.
+  Enhancements
+  * Add SVG support for Rack Elevation endpoint.
+  Bugfixes
+  * Add token when getting NetBox version to prevent 403 error.
+
+-------------------------------------------------------------------
 Fri May 23 12:17:43 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 7.5.0
