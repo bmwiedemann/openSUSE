@@ -51,4 +51,16 @@
 - Remove temporary version override (forwarded request 1265676 from glaubitz)</comment>
     <requestid>1265877</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c76c9392d785c415701fc3c315aa9b68</srcmd5>
+    <version>2.0.0</version>
+    <time>1768336490</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 2.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from pyproject.toml (forwarded request 1327030 from glaubitz)</comment>
+    <requestid>1327051</requestid>
+  </revision>
 </revisionlist>
