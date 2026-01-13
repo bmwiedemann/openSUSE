@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan  9 22:25:53 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
+
+- Update to 2.5:
+  * The wait() helper has become an official part of the python-copr API
+  * Copr now allows storing wildcard strings in the "Packit allowed forge projects" field
+  * The Fedora Copr Frontend is now protected by Anubis to defend against unreasonable bot load
+- complete changelog:
+  * https://github.com/fedora-copr/copr/compare/python-copr-2.1-1...python-copr-2.5-1
+
+-------------------------------------------------------------------
 Mon Apr  7 10:43:51 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.1
