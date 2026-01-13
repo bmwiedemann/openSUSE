@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jan 10 20:42:54 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.1
+  * The Classic theme uses the proper warp icon geometry for full
+    compatibility with retro themes.
+  * Instead of just a list index the theme name is saved in the
+    config file to prevent unwanted switches on installing new
+    themes.
+  * The pseudo-set Random20 has been improved to discard "hard"
+    levels (too many difficult bricks, too close to paddle, ...)
+    to make it more casual and fun.
+
+-------------------------------------------------------------------
 Sat Sep 13 17:15:34 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.2
