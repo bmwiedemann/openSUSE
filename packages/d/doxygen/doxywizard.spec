@@ -16,9 +16,9 @@
 #
 
 
-%global rdir Release_1_16_0
+%global rdir Release_1_16_1
 Name:           doxywizard
-Version:        1.16.0
+Version:        1.16.1
 Release:        0
 Summary:        Graphical User Interface for Doxygen
 # qtools are used for building and they are GPL-3.0 licensed

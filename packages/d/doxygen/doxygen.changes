@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 11 16:28:34 UTC 2026 - Christoph G <foss@grueninger.de>
+
+- update to 1.16.1
+  * The group name is replaced with the group title inside the
+    @retval command
+  * Problem with `\satisfies` documentation in Doxyfile and
+    doxywizard
+
+-------------------------------------------------------------------
 Mon Jan  5 22:17:14 UTC 2026 - Christoph G <foss@grueninger.de>
 
 - update to 1.16.0

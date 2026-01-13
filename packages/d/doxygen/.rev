@@ -2531,4 +2531,16 @@ On Leap15/SLE15 a newer GCC is needed to build against Qt6. On SLE15 the default
   part of the release (forwarded request 1325494 from mathletic)</comment>
     <requestid>1325537</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>0533c1f3077eea3915b2550b47f1bf9f</srcmd5>
+    <version>1.16.1</version>
+    <time>1768335724</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.16.1
+  * The group name is replaced with the group title inside the
+    @retval command
+  * Problem with `\satisfies` documentation in Doxyfile and
+    doxywizard (forwarded request 1326654 from mathletic)</comment>
+    <requestid>1326694</requestid>
+  </revision>
 </revisionlist>
