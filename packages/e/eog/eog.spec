@@ -1,7 +1,7 @@
 #
 # spec file for package eog
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           eog
-Version:        47.0
+Version:        49.1
 Release:        0
 Summary:        Image Viewer for GNOME
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Graphics/Viewers
-URL:            https://wiki.gnome.org/Apps/EyeOfGnome
+URL:            https://gitlab.gnome.org/GNOME/eog
 Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  fdupes
@@ -97,8 +97,7 @@ developing eog plugins.
 %{_bindir}/%{name}
 %{_libdir}/%{name}/
 %{_datadir}/applications/org.gnome.eog.desktop
-%dir %{_datadir}/metainfo
-%{_datadir}/metainfo/%{name}.appdata.xml
+%{_datadir}/metainfo/org.gnome.eog.metainfo.xml
 %{_datadir}/icons/hicolor/*/apps/org.gnome.%{name}*.svg
 %{_datadir}/%{name}/
 %{_datadir}/GConf/gsettings/%{name}.convert

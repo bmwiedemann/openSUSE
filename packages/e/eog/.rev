@@ -1372,4 +1372,12 @@ New stable release</comment>
     <comment>Fix date format in old changelog entries (forwarded request 1277762 from dimstar)</comment>
     <requestid>1277950</requestid>
   </revision>
+  <revision rev="173" vrev="1">
+    <srcmd5>c28930e5f2d5bbbfd9de4d2a57903cfa</srcmd5>
+    <version>49.1</version>
+    <time>1768335956</time>
+    <user>anag_factory</user>
+    <comment> (forwarded request 1326493 from iznogood)</comment>
+    <requestid>1326744</requestid>
+  </revision>
 </revisionlist>

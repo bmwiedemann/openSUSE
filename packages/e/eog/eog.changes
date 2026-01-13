@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jan 10 07:41:38 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.1:
+  + Fix frequent crashes when with gdk-pixbuf 2.44
+  + Bug fixes and improvements:
+    - Add image/avif to the MimeType list in the .desktop
+    - appdata: Add missing developer name
+    - Set prgname to application ID
+    - data: Rename appdata to metainfo and use rDNS app id
+    - metadata: Hide unreachable help URL
+    - desktop: Add more keywords
+    - content type to mime type conversion
+    - Official website has been retired
+    - org.gnome.eog.desktop should list image/heic as MimeType
+    - Segfault SIGSEGV when switching images
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Sep  9 15:34:53 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.0:
