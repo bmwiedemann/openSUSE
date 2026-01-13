@@ -1,7 +1,7 @@
 #
 # spec file for package zot-registry
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define zui_version commit-f870292
 
 Name:           zot-registry
-Version:        2.1.11
+Version:        2.1.13
 Release:        0
 Summary:        Scale-out production-ready vendor-neutral OCI-native container image registry
 License:        Apache-2.0
@@ -45,7 +45,7 @@ BuildRequires:  bash-completion
 BuildRequires:  coreutils
 BuildRequires:  fish
 BuildRequires:  git-core
-BuildRequires:  go >= 1.23
+BuildRequires:  golang(API) >= 1.25
 BuildRequires:  sysuser-tools
 BuildRequires:  zsh
 #

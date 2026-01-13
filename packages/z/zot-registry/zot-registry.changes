@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Tue Jan 13 05:47:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.13:
+  * fix: do not reject requests having an Authorization header if
+    basic auth is disabled (#3673)
+
+-------------------------------------------------------------------
+Mon Jan 12 18:55:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.12:
+  * chore: fix dependabot alerts (#3660)
+  * fix: make sure the function and caller information are added to
+    log messages emitted by 3rd party libraries using slog
+    directly. (#3659)
+  * feat: add configurable mTLS identity extraction with fallback
+    chain (#3640)
+  * fix: prevent nil pointer dereference in RemoveImageFromRepoMeta
+    (#3658)
+  * chore: fix dependabot alerts (#3657)
+  * fix: more logging for sync extension (#3656)
+  * docs: fix deadlink and typo (#3641)
+  * refactor: enhance TLS cert generation and refactor HTTP client
+    architecture (#3638)
+  * fix: accept log levels supported by older zot versions,
+    validate configured log level (#3639)
+  * feat: support mTLS-only authn/authz with AccessControl and
+    allow combining mTLS with other auth mechanisms (#3624)
+  * chore: fix dependabot alerts (#3636)
+  * fix: remove misleading error messages on successful syncs
+    (#3619)
+  * ci: save unified coverage as build artifact (#3626)
+  * ci: split needsprivileges tests from devmode tests (#3625)
+  * refactor(test): new apis for creating temporary files (#3605)
+  * chore: Fix deps (#3620)
+  * fix(trivy): cleanup Trivy temporary directory (#3618)
+  * feat(config): validate storage root directories for path
+    conflicts (#3602)
+  * Fix error handling: return nil explicitly on successful
+    completion (#3603)
+  * fix(meta): handle cases when substores are nested (#3598)
+  * feat: explicitly log if each authentication method is enabled
+    (#3599)
+  * chore: Enable Go jsonv2 experiment and update the trivy
+    dependency (v0.67.2) (#3572)
+  * chore: fix dependabot alerts (#3595)
+  * fix(storage): enforce standard OCI blob path structure in
+    GetNextDigestWithBlobPaths (#3594)
+  * chore: sync golang 1.25 (#3596)
+  * fix: multiple fixes based on recent test failures (#3582)
+  * fix: sync should be disabled when enable is false (#3579)
+  * ci: use minio==7.2.18 (#3581)
+  * fix: handle zero time values in LastUpdated sorting functions
+    (#3580)
+  * refactor: optimize code with modern Go patterns and
+    pre-allocation (#3576)
+  * chore: update golangci-lint and fix all issues (#3575)
+  * fix: Add HTTP client timeouts to prevent indefinite hangs in
+    sync operations (#3574)
+  * docs: update examples with the sync config example (#3573)
+
+-------------------------------------------------------------------
 Fri Nov 21 06:16:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.1.11:
