@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan 12 06:28:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.16.43:
+  * chore(deps): upgrade jenkins-x-plugins/jx-health to version
+    0.0.83
+
+-------------------------------------------------------------------
+Mon Jan 12 06:16:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.16.42:
+  * chore(deps): upgrade jenkins-x-plugins/jx-project to version
+    0.2.83
+
+-------------------------------------------------------------------
 Wed Dec 17 07:02:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.16.41:
