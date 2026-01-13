@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Jan 13 08:08:33 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Firefox Extended Support Release 140.7.0 ESR
+  * Fixed: Various security fixes.
+- Mozilla Firefox ESR 140.7
+  https://www.mozilla.org/security/advisories/mfsa2026-03
+  MFSA 2026-03 (boo#1256340)
+  * CVE-2026-0877 (bmo#1999257)
+    Mitigation bypass in the DOM: Security component
+  * CVE-2026-0878 (bmo#2003989)
+    Sandbox escape due to incorrect boundary conditions in the
+    Graphics: CanvasWebGL component
+  * CVE-2026-0879 (bmo#2004602)
+    Sandbox escape due to incorrect boundary conditions in the
+    Graphics component
+  * CVE-2026-0880 (bmo#2005014)
+    Sandbox escape due to integer overflow in the Graphics
+    component
+  * CVE-2026-0882 (bmo#1924125)
+    Use-after-free in the IPC component
+  * CVE-2025-14327 (bmo#1970743)
+    Spoofing issue in the Downloads Panel component
+  * CVE-2026-0883 (bmo#1989340)
+    Information disclosure in the Networking component
+  * CVE-2026-0884 (bmo#2003588)
+    Use-after-free in the JavaScript Engine component
+  * CVE-2026-0885 (bmo#2003607)
+    Use-after-free in the JavaScript: GC component
+  * CVE-2026-0886 (bmo#2005658)
+    Incorrect boundary conditions in the Graphics component
+  * CVE-2026-0887 (bmo#2006500)
+    Clickjacking issue, information disclosure in the PDF Viewer
+    component
+  * CVE-2026-0890 (bmo#2005081)
+    Spoofing issue in the DOM: Copy & Paste and Drag & Drop
+    component
+  * CVE-2026-0891 (bmo#1964722, bmo#2000981, bmo#2003100,
+    bmo#2003278)
+    Memory safety bugs fixed in Firefox ESR 140.7, Thunderbird
+    ESR 140.7, Firefox 147 and Thunderbird 147
+
+-------------------------------------------------------------------
 Thu Dec 11 20:59:32 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 * Remove the Build1 tag from the last changes entry; no other change *
