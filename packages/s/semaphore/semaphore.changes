@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jan 13 06:06:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.16.51:
+  * Bugfixes
+    - Fix database migration (CRITICAL)
+
+-------------------------------------------------------------------
+Tue Jan 13 05:55:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.16.50 (.48 and .49 were not released):
+  * Bugfixes
+    - SQLite migration
+    - Task status logs (PRO)
+
+-------------------------------------------------------------------
 Thu Dec 18 08:08:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.16.47:
