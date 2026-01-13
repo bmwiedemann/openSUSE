@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Tue Jan 13 06:15:01 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.27 (.26 was not released):
+  * Highlights
+  * python/cpython is now using prek. That’s the highlight of this
+    release!
+  * Enhancements
+    - Add hook-level env option to set environment variables for
+      hooks (#1279) (#1285)
+    - Support apple's container for docker language (#1306)
+    - Skip cookiecutter template directories like
+      {{cookiecutter.project_slug}} during project discovery
+      (#1316)
+    - Use global CONCURRENCY for repo clone (#1292)
+    - untar: disallow external symlinks (#1314)
+  * Bug fixes
+    - Exit with success if no hooks match the hook stage (#1317)
+    - Fix Go template string to detect rootless podman (#1302)
+    - Panic on overly long filenames instead of silently dropping
+      files (#1287)
+  * Other changes
+    - Add python/cpython to users (#1308)
+    - Add MoonshotAI/kimi-cli to users (#1286)
+    - Drop powerpc64 wheels (#1319)
+- Update to version 0.2.25:
+  * Performance
+    - Use git cat-file -e in check if a rev exists (#1277)
+  * Bug fixes
+    - Fix priority not applied for remote hooks (#1281)
+    - Report config file parsing error in auto-update (#1274)
+    - Unset GIT_DIR for auto-update (#1269)
+- Update to version 0.2.24:
+  * Enhancements
+    - Build and publish docker image to ghcr.io/j178/prek (#1253)
+    - Support git urls for rust dependencies (#1256)
+  * Bug fixes
+    - Ensure running uv pip install inside the remote repo path
+      (#1262)
+    - Fix check-added-large-files for traced files (#1260)
+    - Respect GIT_DIR set by git (#1258)
+  * Documentation
+    - Add docker integration docs (#1254)
+    - Clarify priority scope across repos (#1251)
+    - Improve documentation for configurations (#1247)
+    - Render changelog in document site (#1248)
+
+-------------------------------------------------------------------
 Sat Dec 20 07:02:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.23:
