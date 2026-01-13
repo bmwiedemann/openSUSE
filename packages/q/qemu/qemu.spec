@@ -1,7 +1,7 @@
 #
 # spec file for package qemu
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -89,13 +89,12 @@ URL:            https://www.qemu.org/
 Summary:        Machine emulator and virtualizer
 License:        BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/Emulators/PC
-Version:        10.1.3
+Version:        10.2.0
 Release:        0
 Source0:        qemu-%{version}.tar.xz
 Source1:        common.inc
 Source303:      README.PACKAGING
 Source1000:     qemu-rpmlintrc
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ## Packages we REQUIRE during build
 %if %{build_x86_firmware}
 %ifnarch %ix86 x86_64
@@ -204,11 +203,6 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.56
 %if %{have_block_gluster}
 BuildRequires:  pkgconfig(glusterfs-api) >= 3
 %endif
-BuildRequires:  rdma-core-devel
-BuildRequires:  snappy-devel
-BuildRequires:  update-desktop-files
-BuildRequires:  usbredir-devel >= 0.6
-BuildRequires:  xfsprogs-devel
 BuildRequires:  pkgconfig(gnutls) >= 3.5.18
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 BuildRequires:  pkgconfig(jack)
@@ -232,6 +226,17 @@ BuildRequires:  pkgconfig(lzo2)
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(openssl) >= 1.0.0
 BuildRequires:  pkgconfig(pixman-1) >= 0.21.8
+%if %{with_sdl}
+BuildRequires:  pkgconfig(sdl2)
+%if %{with_sdl_image}
+BuildRequires:  pkgconfig(SDL2_image)
+%endif
+%endif
+BuildRequires:  rdma-core-devel
+BuildRequires:  snappy-devel
+BuildRequires:  update-desktop-files
+BuildRequires:  usbredir-devel >= 0.6
+BuildRequires:  xfsprogs-devel
 BuildRequires:  pkgconfig(slirp) >= 4.2.0
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(vdeplug)
@@ -256,7 +261,7 @@ Requires:       (qemu-guest-agent = %{version} if qemu-guest-agent)
 %ifarch s390x
 Requires:       qemu-hw-s390x-virtio-gpu-ccw
 %else
-%ifarch %{arm}
+%ifarch %{arm} %ix86 x86_64
 Requires:       qemu-hw-display-virtio-gpu-pci
 %else
 Recommends:     qemu-hw-display-virtio-gpu-pci
@@ -437,14 +442,7 @@ Conflicts:      qemu-tools > %{version}-%{release}
 meson subprojects packagefiles --apply berkeley-testfloat-3
 meson subprojects packagefiles --apply berkeley-softfloat-3
 
-# for the record, this set of firmware files is installed, but we don't
-# build (yet): bamboo.dtb canyonlands.dtb hppa-firmware.img hppa-firmware.img 64
-# openbios-ppc openbios-sparc32 openbios-sparc64 palcode-clipper petalogix-ml605.dtb
-# petalogix-s3adsp1800.dtb QEMU,cgthree.bin QEMU,tcx.bin qemu_vga.ndrv u-boot.e500
-# u-boot-sam460-20100605.bin opensbi-riscv32-generic-fw_dynamic.bin
-# opensbi-riscv32-generic-fw_dynamic.elfn ast27x0_bootrom.bin pcm7xx_bootrom.bin
-# vof.bin vof-nvram.bin npcm8xx_bootrom.bin pnv-pnor.bin vof.bin vof-nvram.bin
-
+# There (still) are some firmwares that are installed, but we don't build (yet).
 # Note that:
 # - default firmwares are built "by default", i.e., they're built automatically
 #   during the process of building QEMU (on each specific arch)
@@ -673,6 +671,7 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--enable-lzo \
 	--enable-modules \
 	--enable-mpath \
+	--disable-mshv \
 	--enable-opengl \
 	--enable-oss \
 	--enable-pa \
@@ -692,6 +691,12 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--enable-slirp-smbd \
 	--enable-smartcard \
 	--enable-snappy \
+%if %{with_sdl}
+	--enable-sdl \
+%if %{with_sdl_image}
+	--enable-sdl-image \
+%endif
+%endif
 %if 0%{with spice}
 	--enable-spice \
 	--enable-spice-protocol \
@@ -1206,13 +1211,15 @@ This package provides ppc and ppc64 emulation.
 %endif
 %_datadir/%name/dtb/bamboo.dtb
 %_datadir/%name/dtb/canyonlands.dtb
+%_datadir/%name/dtb/pegasos1.dtb
+%_datadir/%name/dtb/pegasos2.dtb
 %_datadir/%name/dtb/petalogix-ml605.dtb
 %_datadir/%name/dtb/petalogix-s3adsp1800.dtb
 %_datadir/%name/openbios-ppc
 %_datadir/%name/qemu_vga.ndrv
 %_datadir/%name/pnv-pnor.bin
 %_datadir/%name/u-boot.e500
-%_datadir/%name/u-boot-sam460-20100605.bin
+%_datadir/%name/u-boot-sam460.bin
 %_datadir/%name/vof*.bin
 %doc %_docdir/qemu-ppc
 
@@ -1393,6 +1400,20 @@ This package contains a module for Pipewire based audio support for QEMU.
 %files audio-pipewire
 %dir %_libdir/%name
 %_libdir/%name/audio-pipewire.so
+
+%if %{with_sdl}
+%package audio-sdl
+Summary:        SDL based audio support for QEMU
+Group:          System/Emulators/PC
+%{qemu_module_conflicts}
+
+%description audio-sdl
+This package contains a module for SDL based audio support for QEMU.
+
+%files audio-sdl
+%dir %_libdir/%name
+%_libdir/%name/audio-sdl.so
+%endif
 
 %package block-curl
 Summary:        cURL block support for QEMU
@@ -1641,6 +1662,20 @@ This package contains a module for doing OpenGL based UI for QEMU.
 %dir %_libdir/%name
 %_libdir/%name/ui-egl-headless.so
 %_libdir/%name/ui-opengl.so
+
+%if %{with_sdl}
+%package ui-sdl
+Summary:        SDL based UI support for QEMU
+Group:          System/Emulators/PC
+%{qemu_module_conflicts}
+
+%description ui-sdl
+This package contains a module for doing SDL based UI for QEMU.
+
+%files ui-sdl
+%dir %_libdir/%name
+%_libdir/%name/ui-sdl.so
+%endif
 
 %package vhost-user-gpu
 Summary:        Vhost user mode virtio-gpu 2D/3D rendering backend for QEMU
@@ -1947,7 +1982,7 @@ wider support than qboot, but still focuses on quick boot up.
 %package seabios
 Summary:        x86 Legacy BIOS for QEMU
 Group:          System/Emulators/PC
-Version:        10.1.3%{sbver}
+Version:        10.2.0%{sbver}
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0
@@ -1968,7 +2003,7 @@ is the default and legacy BIOS for QEMU.
 %package vgabios
 Summary:        VGA BIOSes for QEMU
 Group:          System/Emulators/PC
-Version:        10.1.3%{sbver}
+Version:        10.2.0%{sbver}
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0
@@ -1994,7 +2029,7 @@ video card. For use with QEMU.
 %package ipxe
 Summary:        PXE ROMs for QEMU NICs
 Group:          System/Emulators/PC
-Version:        10.1.3
+Version:        10.2.0
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0

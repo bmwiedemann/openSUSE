@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Fri Jan 09 16:59:54 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- Build ui-sdl and audio-sdl modules as some applications (like quickemu)
+  requires them.
+  * [openSUSE][RPM]: add enable-sdl and enable-sdl-image flags
+
+- Update to version 10.2.0 (jsc#PED-14599)
+  The full list of changes are available at:
+   https://wiki.qemu.org/ChangeLog/10.2
+  Highlights include:
+  * Arm
+    - New CPU architectural features emulated: FEAT_SCTLR2, FEAT_TCR2,
+      FEAT_CSSC, ...
+    - The deprecated pxa CPU family has now been removed
+    - The gdbstub now exposes the SME and SME2 registers to debuggers
+    - virt: You can now create multiple SMMUv3 devices on the command line,
+      to give separate PCIe roots their own IOMMU
+  * PowerPC
+    - Support for PowerNV11 and PPE42 CPU/Machines.
+    - FADUMP Support for pSeries
+    - Decodetree movement for some floating-point instructions
+    - Firmware updates for SLOF, sam460ex u-boot
+  * x86
+    - The HPET device does not take the big QEMU lock anymore.
+    - The isapc machine can only use 3.5G memory and will warn when used
+      with 64-bit CPUs. Also, when -cpu max is used with isapc it will pick
+      a Pentium III CPU.
+    - Support for a new accelerator, MSHV, which lets you create VMs from a
+      Hyper-V guest without using nested virtualization.
+  * VFIO
+    - Removal of the deprecated vfio-platform, vfio-calxeda-xgmac and
+      vfio-amd-xgbe devices
+  * TCG Plugins
+    - new uftrace plugin
+    - new hooks for discontinuity events (irqs, host calls and exceptions)
+  * Migration
+    - Supported new cpr-exec migration mode
+    - Supported mapped-ram on snapshot save/load
+    - Fixed a false positive TLS warning when postcopy preempt migration
+      is completing
+    - Fixed source QEMU hang when a postcopy migration failed at switchover phase
+    - Fixed a possible interrupt performance regression after migration when with
+      VFIO-PCI devices
+    - Fixed snapshot crash when migration capabilities were wrongly specified
+    - Fixed COLO regression (since QEMU 10.0)
+  * Block device backends and tools
+    - It is now possible to open both the server and client endpoints of an NBD
+      connection from the same process. Previously, attempting to connect QEMU
+      as an NBD client to a socket being served by the same process would deadlock.
+    - The block limits detected for a block backend (such as required request
+      alignment, maximum request size etc.) are now exposed in QMP as part of
+      the data returned by the 'query-block' and 'query-named-block-nodes'
+      commands. The same information is displayed in 'qemu-img info' if the
+      new option '--limits' is given.
+    - 'stats-intervals' can now be configured in '-device' for block devices.
+      Previously, this was only available in '-drive' (and therefore inaccessible
+      when using '-blockdev').
+  * Miscellaneous
+    - On host systems that support io_uring, QEMU's main loop is now based on
+      io_uring, which can improve performance in some cases and will enable new
+      features and potentially further performance improvements in the future.
+    - The '-run-with' argument gains a new 'exit-with-parent=on' parameter which,
+      on Linux, FreeBSD and macOS platforms, will ensure QEMU is terminated when
+      the parent process exists.
+    - Fixed possible memory leak on CPU hot plug / unplug
+    - Fixed TDX regression on using hugetlbfs
+    - Fixed guest-memfd use case on shmem
+    - Fixed possible poweroff hang on virtio devices with iommu_platform=on
+  * User-mode emulation
+    - various bugfixes and added features
+    - implement fchmodat2 syscall
+    - support MADV_DONTDUMP and MADV_DODUMP
+    - fix FIBMAP and FIGETBSZ ioctls
+    - permit sendto() with NULL buf and 0 len
+  * Guest agent
+    - Fix truncated output handling in guest-exec status reporting
+    - Fix 'retry_path' logic for Windows service (Windows only)
+    - VSS: Write the hex value of the error in the log (Windows only)
+
+-------------------------------------------------------------------
 Fri Dec 12 15:56:05 UTC 2025 - Dario Faggioli <dfaggioli@suse.com>
 
 - Update to stable release 10.1.3:

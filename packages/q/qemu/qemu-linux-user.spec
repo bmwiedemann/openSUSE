@@ -1,7 +1,7 @@
 #
 # spec file for package qemu-linux-user
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,14 +27,13 @@ URL:            https://www.qemu.org/
 Summary:        CPU emulator for user space
 License:        BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/Emulators/PC
-Version:        10.1.3
+Version:        10.2.0
 Release:        0
 Source0:        qemu-%{version}.tar.xz
 Source1:        common.inc
 Source200:      qemu-rpmlintrc
 Source303:      README.PACKAGING
 Source1000:     qemu-rpmlintrc
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  bison
 BuildRequires:  glib2-devel-static >= 2.56
 BuildRequires:  glibc-devel-static
