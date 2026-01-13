@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan  9 17:36:23 UTC 2026 - Marina Latini <marina.latini@suse.com>
+
+- Restore debug build:
+  - generate Build IDs where not available
+  - BuildRequires coreutils
+
+-------------------------------------------------------------------
 Fri Dec 12 11:29:05 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Require gcc11-c++ for building with SLE 12

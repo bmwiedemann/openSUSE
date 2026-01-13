@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-QubitProducts-exporter_exporter
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,7 @@
 #
 
 
-# build ids are not currently generated on RHEL/CentOS
-%undefine _missing_build_ids_terminate_build
+%{!?gobuild:%global gobuild go build}
 
 %global provider        github
 %global provider_tld    com
@@ -37,6 +36,10 @@ Source0:        %{repo}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        exporter_exporter.yaml
 Source3:        prometheus-exporter_exporter.service
+
+# Coreutils required for deterministic Build ID generation (sha1sum, cat)
+BuildRequires:  coreutils
+
 %if 0%{?suse_version} || 0%{?rhel} >= 8
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
@@ -68,6 +71,10 @@ Reverse proxy designed for Prometheus exporters
 %autosetup -a1 -n %{repo}-%{version}
 
 %build
+# Define common Linker Flags
+# -compressdwarf=false is required to fix the "Empty file .../debugsourcefiles.list" error on older rpmbuild tools
+export GO_LDFLAGS="-v -buildmode=pie -compressdwarf=false"
+
 %if 0%{?suse_version} || 0%{?rhel} >= 8
 %goprep %{import_path}
 %ifarch s390x armv7hl armv7l armv7l:armv6l:armv5tel armv6hl
@@ -77,10 +84,11 @@ export CC=gcc-11
 export CXX=g++-11
 %endif
 %endif
-%gobuild --mod=vendor "" ...
+%gobuild --mod=vendor -ldflags "$GO_LDFLAGS" ...
 %else
-mkdir -pv $HOME/go/src && cp -avr vendor/* $HOME/go/src/
-go build -mod=vendor -ldflags "-v -buildmode=pie -compressdwarf=false" -o %{repo}
+# Legacy logic: Generate and inject Deterministic Build ID
+BUILD_ID=$(cat %{_sourcedir}/%{SOURCE0} %{_sourcedir}/%{SOURCE1} | sha1sum | awk '{print $1}')
+go build -mod=vendor -ldflags "$GO_LDFLAGS -B 0x$BUILD_ID" -o %{repo}
 %endif
 
 %install
@@ -106,10 +114,6 @@ install -d -m 0755 %{buildroot}%{_sysconfdir}/%{repo}.d
 %check
 %if 0%{?suse_version} || 0%{?rhel} >= 8
   %gotest --mod=vendor "" ...
-%endif
-%if 0%{?rhel} == 8
-# Fix OBS debug_package execution.
-rm -f %{buildroot}/usr/lib/debug/%{_bindir}/exporter_exporter-%{version}-*.debug
 %endif
 
 %pre
