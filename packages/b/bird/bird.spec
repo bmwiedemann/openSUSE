@@ -1,7 +1,7 @@
 #
 # spec file for package bird
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,17 +21,17 @@
 %define bird_home %{_localstatedir}/lib/bird
 %define bird_runtimedir %{_rundir}/%{name}
 Name:           bird
-Version:        2.17.2
+Version:        2.18.0
 Release:        0
 Summary:        The BIRD Internet Routing Daemon
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Routing
 URL:            https://bird.network.cz/
-Source:         https://bird.nic.cz/download/bird-%{version}.tar.gz
+Source:         https://bird.nic.cz/download/bird-2.18.tar.gz
 Source1:        bird.service
 Source3:        bird.tmpfiles.d
 Source4:        system-user-bird.conf
-Source5:        https://bird.nic.cz/download/bird-doc-%{version}.tar.gz
+Source5:        https://bird.nic.cz/download/bird-doc-2.18.tar.gz
 Patch1:         log-commit.patch
 BuildRequires:  bison
 BuildRequires:  flex
@@ -80,7 +80,7 @@ systems and distributed under the GNU General Public License.
 This package holds the PDF documentation.
 
 %prep
-%autosetup -p1 -a 5
+%autosetup -p1 -a 5 -n bird-2.18
 
 %build
 export CFLAGS="%{optflags} -fpic -DPIC -fno-strict-aliasing -Wno-parentheses -Wno-pointer-sign"
@@ -132,6 +132,6 @@ install -D -m 0644 %{SOURCE4} %{buildroot}%{_sysusersdir}/system-user-bird.conf
 %files doc
 %doc NEWS README
 %doc doc/bird.conf.*
-%doc bird-doc-%{version}/doc/*.pdf
+%doc bird-doc-2.18/doc/*.pdf
 
 %changelog

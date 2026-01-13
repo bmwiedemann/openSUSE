@@ -195,4 +195,12 @@
   * Invalid check fix in text_or_ipa grammar</comment>
     <requestid>1302726</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>114ec3d22013a0f3e0f176fe7f498048</srcmd5>
+    <version>2.18.0</version>
+    <time>1768335991</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1326775</requestid>
+  </revision>
 </revisionlist>

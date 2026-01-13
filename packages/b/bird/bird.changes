@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Dec 29 08:19:17 UTC 2025 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- Update to version 2.18.0
+  * BGP: Support for dynamic onlink and link-local connections
+  * BGP: Listening socket refactoring
+  * BGP: Fix restart behavior on outgoing next hop setting
+  * BGP: Configuring global/link-local IPv6 nexthop
+  * BGP: Disallow AS Sets by default
+  * L3VPN: Support for import/export target none and import target all
+  * RAdv: P-flag to prefer prefix delegation in DHCPv6
+  * Filter: Merging of case intervals
+  * Filter: Append operator
+  * ASPA: Paths containing AS_SET are invalid
+  * Doc: Update website to bird.nic.cz
+  * CI: Upstream packaging cleanup and reproducible builds
+  * Various minor fixes in code, comments, documentation and tooling
+  * All fixes included in 2.17.0 -- 2.17.3
+
+-------------------------------------------------------------------
 Thu Sep  4 08:28:24 UTC 2025 - Michal Hrusecky <michal.hrusecky@opensuse.org>
 
 - Update to version 2.17.2
