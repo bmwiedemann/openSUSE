@@ -1,7 +1,7 @@
 #
 # spec file for package diun
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           diun
-Version:        4.30.0
+Version:        4.31.0
 Release:        0
 Summary:        Receive notifications when an image is updated on a Docker registry
 License:        MIT

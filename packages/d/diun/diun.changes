@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Mon Jan 12 18:54:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.31.0:
+  * update CHANGELOG
+  * chore(deps): bump google.golang.org/grpc from 1.77.0 to 1.78.0
+  * chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.7.7 to
+    6.7.8
+  * replace utl.Contains with slices.Contains from stdlib
+  * kubernetes: support negating namespaces
+  * docs: secrets loaded from files and trailing newlines
+  * notif(discord): add renderEmbeds option
+  * chore: update generated content
+  * vendor: update to github.com/hashicorp/nomad/api v1.11.1
+  * chore(deps): bump google.golang.org/grpc/cmd/protoc-gen-go-grpc
+  * switch to go tool directive
+  * chore(deps): bump github.com/go-playground/validator/v10
+  * ci: update docker scout to 1.19.0
+  * e2e: file provider testing
+  * chore(deps): bump maunium.net/go/mautrix from 0.25.2 to 0.26.1
+  * update to go 1.25
+  * update to alpine linux 3.23
+  * chore(deps): bump github.com/moby/buildkit from 0.25.2 to
+    0.26.3
+  * chore(deps): bump google.golang.org/grpc from 1.74.2 to 1.77.0
+  * dockerfile(gen): update base image to trixie
+  * chore: update generated content
+  * chore(deps): bump google.golang.org/protobuf from 1.36.10 to
+    1.36.11
+  * chore(deps): bump go.podman.io/image/v5 from 5.37.0 to 5.38.0
+  * chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.6.8 to
+    6.7.7
+  * Add RFC 5322 compliant Message-ID header to email notifications
+  * chore(deps): bump actions/download-artifact from 6 to 7
+  * chore(deps): bump actions/upload-artifact from 5 to 6
+  * fix(matrix): store credentials after mautrix login
+  * chore(deps): bump actions/checkout from 5 to 6
+  * chore(deps): bump golang.org/x/crypto from 0.43.0 to 0.45.0
+  * chore(deps): bump github.com/dromara/carbon/v2 from 2.6.14 to
+    2.6.15
+  * chore(deps): bump github.com/alecthomas/kong from 1.12.1 to
+    1.13.0
+  * chore(deps): bump golang.org/x/mod from 0.29.0 to 0.30.0
+  * chore(deps): bump github.com/containerd/platforms
+  * chore(deps): bump k8s.io/client-go from 0.33.3 to 0.34.1
+  * chore(deps): bump github.com/eclipse/paho.mqtt.golang
+  * chore(deps): bump github.com/go-playground/validator/v10
+  * chore(deps): bump github.com/moby/buildkit from 0.23.2 to
+    0.25.1
+  * chore(deps): bump github.com/docker/docker
+  * fix: replace gomatrix client with mautrix-go, fixes #1527
+  * gotify: use X-Gotify-Key header to send token
+  * chore(deps): bump github.com/dromara/carbon/v2 from 2.6.11 to
+    2.6.14
+  * chore(deps): bump actions/upload-artifact from 4 to 5
+  * chore(deps): bump actions/download-artifact from 5 to 6
+  * chore(deps): bump github/codeql-action from 3 to 4
+  * MkDocs Material 9.6.20
+  * switch to go.podman.io/image/v5
+  * fix CHANGELOG
+
+-------------------------------------------------------------------
 Tue Sep 02 05:56:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.30.0:
