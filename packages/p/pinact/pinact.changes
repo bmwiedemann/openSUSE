@@ -1,4 +1,107 @@
 -------------------------------------------------------------------
+Tue Jan 13 06:14:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.8.0:
+  * Features
+    - #1315 Support ghtkn integration
+      You can create a GitHub App User Access Token by ghtkn
+      integration.
+      About ghtkn, please see the document of ghtkn.
+      https://github.com/suzuki-shunsuke/ghtkn
+      You need to set up ghtkn first.
+
+        export PINACT_GHTKN=true
+
+  * Dependencies
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.450.0 (#1316)
+    - chore(deps): update dependency suzuki-shunsuke/pinact to
+      v3.7.4 (#1314)
+
+-------------------------------------------------------------------
+Tue Jan 13 06:05:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.7.4:
+  * Bug Fixes
+    - Ignore tags associated with releases #1313
+- Update to version 3.7.3:
+  * #1309 Fix some bugs
+    - -verify is ignored if -u is used
+    - versions aren't pinned and verified if version comments are
+      semver
+    Details see
+    https://github.com/suzuki-shunsuke/pinact/releases/tag/v3.7.3
+- Update to version 3.7.2:
+  * Fixes
+    - sarif: Add fixes field for reviewdog suggestion support
+  * Dependencies
+    - chore(deps): update dependency suzuki-shunsuke/pinact to
+      v3.7.3 (#1310)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.449.0 (#1311)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.448.1 (#1307)
+    - chore(deps): update dependency goreleaser/goreleaser to
+      v2.13.2 (#1306)
+    - chore(deps): update dependency suzuki-shunsuke/pinact to
+      v3.7.2 (#1305)
+- Update to version 3.7.1:
+  There is no change between v3.7.0 and v3.7.1.
+  There was an issue during the release of v3.7.0, so we released
+  v3.7.1.
+- Update to version 3.7.0:
+  * Features
+    - #1294 SARIF Output Support
+    - #1297 Support evironment variables PINACT_GITHUB_TOKEN and
+      PINACT_GHES_TOKEN
+  * SARIF Output Support
+    #1294
+    pinact can output the result in the SARIF format.
+
+      pinact run --format sarif
+
+    This format is useful to integration tools like reviewdog and
+    GitHub SARIF Code Scanning.
+
+    Reviewdog:
+
+      pinact run --diff --format sarif |
+        reviewdog -f sarif -name pinact -reporter github-pr-review
+
+  * GitHub SARIF Code Scanning:
+
+      - run: pinact run --diff --format sarif > sarif.json || true
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@5d4e8d1aca955e8d8589aabd499c5cae939e33c7 # v4.31.9
+        with:
+          sarif_file: sarif.json
+          category: pinact
+
+  * Support evironment variables PINACT_GITHUB_TOKEN and
+    PINACT_GHES_TOKEN
+    #1297 You can use different access tokens for pinact and
+    other tools.
+  * Dependencies
+    - chore(deps): update dependency suzuki-shunsuke/pinact to
+      v3.7.1 (#1302)
+    - chore(deps): update dependency aquaproj/aqua to v2.56.1
+      (#1296)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.448.0 (#1292)
+    - chore(deps): update dependency anchore/syft to v1.39.0
+      (#1291)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.447.1 (#1290)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.447.0 (#1289)
+    - chore(deps): update dependency aquaproj/aqua to v2.56.0
+      (#1288)
+    - fix(deps): update module github.com/goccy/go-yaml to v1.19.1
+      (#1287)
+    - chore(deps): update dependency suzuki-shunsuke/pinact to
+      v3.6.0 (#1285)
+
+-------------------------------------------------------------------
 Tue Dec 16 05:50:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.6.0:
