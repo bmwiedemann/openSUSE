@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jan 12 10:15:47 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 6.6.0 (bsc#1256463, CVE-2026-22690, bsc#1256464, CVE-2026-22691)
+  * Limit jbig2dec memory usage
+  * FontDescriptor: Initiate from embedded font resource
+  * Allow fallback to PBM files for jbig2dec without PNG support
+  * Use warning instead of error for early EOD for RunLengthDecode
+  * Test with macOS as well
+  * Improve handling of partially broken PDF files
+  * Block common page content modifications when assigned to reader
+  * Embellishments to generated text appearance streams
+  * Avoid empty FlateDecode outputs without warning
+  * Fix compatibility with Pillow >= 12.1.0
+
+-------------------------------------------------------------------
 Wed Nov 26 11:39:23 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 6.4.0 (fixes CVE-2025-66019, bsc#1254248)
