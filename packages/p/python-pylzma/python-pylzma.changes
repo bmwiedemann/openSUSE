@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jan 12 21:49:41 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.6.0
+  * Add support for BCJ2 streams.
+  * Fix compilation with Python 3.
+  * Improve handling of empty files.
+  * Support Delta streams in .7z files.
+  * Update to LZMA SDK 19.00
+  * Add support for PPMd compression.
+  * CI: Switch to GitHub actions.
+  * Support Python 3.12+
+  * Update to LZMA SDK 25.01 and always enable multithreading.
+  * Add ARM64 / RISCV converters.
+- Drop python-pylzma-gcc14.patch, fixed upstream
+- Drop python-pylzma-test-python3.patch, fixed upstream
+
+-------------------------------------------------------------------
 Thu Jun 13 11:16:31 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Cherry-pick upstream patch to fix build with GCC 14

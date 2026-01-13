@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylzma
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,12 @@
 
 %define oname   pylzma
 Name:           python-pylzma
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        Python bindings for the LZMA compression library
 License:        LGPL-2.1-only
 URL:            https://github.com/fancycode/pylzma
 Source0:        https://github.com/fancycode/pylzma/archive/v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM python-pylzma-test-python3.patch gh#fancycode/pylzma#76 mcepl@suse.com
-# use python3 syntax in test_usage.py
-Patch0:         python-pylzma-test-python3.patch
-# PATCH-FIX-UPSTREAM python-pylzma-gcc14.patch gh#fancycode/pylzma#81 glaubitz@suse.com
-Patch1:         python-pylzma-gcc14.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
