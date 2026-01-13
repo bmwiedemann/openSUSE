@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jan 13 05:47:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.13:
+  No CLI-related changes
+
+-------------------------------------------------------------------
+Mon Jan 12 18:55:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.12:
+  No CLI-related changes
+  Dependencies:
+  * chore: fix dependabot alerts (#3660)
+  * chore: fix dependabot alerts (#3657)
+  * chore: fix dependabot alerts (#3636)
+  * chore: Fix deps (#3620)
+  * chore: Enable Go jsonv2 experiment and update the trivy
+    dependency (v0.67.2) (#3572)
+  * chore: fix dependabot alerts (#3595)
+  * chore: sync golang 1.25 (#3596)
+
+-------------------------------------------------------------------
 Fri Nov 21 06:15:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.1.11:

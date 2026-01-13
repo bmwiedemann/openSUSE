@@ -17,7 +17,7 @@
 
 
 Name:           zli
-Version:        2.1.11
+Version:        2.1.13
 Release:        0
 Summary:        CLI for the Zot container registry
 License:        Apache-2.0
@@ -26,7 +26,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.23
+BuildRequires:  golang(API) >= 1.25
 BuildRequires:  zsh
 BuildRequires:  make
 
