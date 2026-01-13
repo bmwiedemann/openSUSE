@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 12 13:11:23 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1768209690.f34c2973:
+  * feat(scheduled-products): Allow adding note to result data
+  * docs: Use node_modules target
+  * docs: Mention minimum PostgreSQL version
+  * ci: Update PostgreSQL in CI/packaging to at least 14
+  * Revert "Add MCP tool annotations for Claude connector compliance"
+
+-------------------------------------------------------------------
 Thu Jan 08 17:20:06 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1767868268.dacbd3f7:
