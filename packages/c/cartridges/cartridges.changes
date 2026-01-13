@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jan  8 14:01:48 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 2.13.1:
+  * Remove the key for now as Glycin doesn't seem to support it
+- Update to version 2.13:
+  * Updated for GNOME 49, using the new keyboard shortcuts dialog
+- Update to version 2.12.1:
+  * Removed an option used for debugging that would accidentally show up for
+    all users
+- Update to version 2.12:
+  * Updated for GNOME 48
+- Update URL to new upstream
+- Update minimum versions for dependencies
+
+-------------------------------------------------------------------
 Sat Feb 15 20:54:18 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 2.11.1

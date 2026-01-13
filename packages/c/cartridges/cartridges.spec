@@ -2,7 +2,7 @@
 # spec file for package cartridges
 #
 # Copyright (c) 2025 mantarimay
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,21 +19,21 @@
 
 %define lname   page.kramo.Cartridges
 Name:           cartridges
-Version:        2.11.1
+Version:        2.13.1
 Release:        0
-Summary:        A GTK4 + Libadwaita game launcher 
+Summary:        A GTK4 and Libadwaita game launcher
 License:        GPL-3.0-only
-URL:            https://github.com/kra-mo/cartridges
-Source:         %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  blueprint-compiler
+URL:            https://codeberg.org/kramo/cartridges
+Source:         %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  desktop-file-utils
-BuildRequires:  meson
+BuildRequires:  meson >= 0.59.0
 BuildRequires:  pkgconfig(appstream-glib)
-BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.5.0
+BuildRequires:  pkgconfig(blueprint-compiler)
+BuildRequires:  pkgconfig(gtk4) >= 4.15.0
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8.beta
+Requires:       python3-Pillow
 Requires:       python3-gobject
 Requires:       python3-pyaml
-Requires:       python3-Pillow
 BuildArch:      noarch
 
 %description
@@ -43,7 +43,7 @@ Libadwaita.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -n %{name}
 
 %build
 %meson
