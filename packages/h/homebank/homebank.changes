@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Jan 11 18:55:45 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 5.9.7
+  * bugfix: lp#2137082 randomly locks up when apply ledger future
+    date range
+  * bugfix: lp#2137022 windows: from/to date with 2 digits inputs
+    gives erroneous date 
+- Changes in 5.9.6
+  * bugfix: changed the version storage into preference file
+  * bugfix: the currency was not displayed in scheduled
+    export/print
+  * bugfix: the scheduled export/print was wrong if column were
+    hidden
+  * bugfix: the scheduled export separator was incorrect
+  * bugfix: ledger date range faultly change to custom after
+    filter edit
+  * bugfix: lp#2136853 "Show future [xx] days ahead" adds days
+    to custom date filter
+  * bugfix: lp#2133905 budget report graph ellipsize and layout
+    problems
+  * bugfix: lp#2131030 manage account overwidth when template
+    memo is long
+  * bugfix: lp#2130483 your accounts "Sort by" selection is
+    incorrectly initialized
+  * bugfix: lp#2127104 ledger quicksearch do not find amount with
+    comma separator
+  * bugfix: lp#2125300 voiding a transfer only affects one side 
+  * wish  : lp#2132224 add appdata metadata "keywords" to make
+    the app easier to find in app stores
+
+-------------------------------------------------------------------
 Mon Sep 15 19:39:40 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 5.9.5
