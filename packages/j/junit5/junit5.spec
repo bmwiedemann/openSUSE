@@ -1,7 +1,7 @@
 #
 # spec file for package junit5
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,14 +22,14 @@
 %else
 %bcond_with bootstrap
 %endif
-%global platform_version 1.10.2
+%global platform_version 1.14.2
 %global jupiter_version %{version}
 %global vintage_version %{version}
 %global base_name junit5
 # The automatic requires would be java-headless >= 9, but the
 # binaries are java 8 compatible
 %define __requires_exclude java-headless
-Version:        5.10.2
+Version:        5.14.2
 Release:        0
 License:        EPL-2.0
 Group:          Development/Libraries/Java
@@ -61,7 +61,8 @@ Source400:      https://repo1.maven.org/maven2/org/junit/vintage/junit-vintage-e
 Source500:      https://repo1.maven.org/maven2/org/junit/junit-bom/%{version}/junit-bom-%{version}.pom
 Patch1:         0001-Drop-transitive-requirement-on-apiguardian.patch
 Patch2:         0002-Add-missing-module-static-requires.patch
-Patch3:         0003-Bump-open-test-reporting-to-0.1.0-M2.patch
+Patch3:         0003-Remove-legacy-XML-console-support.patch
+Patch4:         0004-Add-JRE-class-generated-from-template.patch
 BuildRequires:  apiguardian >= 1.1.2
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 9
@@ -78,18 +79,17 @@ BuildRequires:  javapackages-local >= 6
 Name:           %{base_name}
 Summary:        Java regression testing framework
 BuildRequires:  %{base_name}-minimal
-BuildRequires:  asciidoc
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.univocity:univocity-parsers)
 BuildRequires:  mvn(info.picocli:picocli)
 BuildRequires:  mvn(junit:junit)
-BuildRequires:  mvn(net.sf.jopt-simple:jopt-simple)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apiguardian:apiguardian-api)
 BuildRequires:  mvn(org.assertj:assertj-core)
-BuildRequires:  mvn(org.opentest4j.reporting:open-test-reporting-events)
+BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
 BuildRequires:  mvn(org.opentest4j:opentest4j)
 Requires:       %{base_name}-minimal >= %{version}
+Obsoletes:      %{base_name}-guide < %{version}
 %endif
 
 %description
@@ -110,19 +110,12 @@ Group:          Documentation/HTML
 %description javadoc
 Junit5 API documentation.
 
-%package guide
-Summary:        Documentation for %{name}
-Group:          Documentation/HTML
-Requires:       %{name}-javadoc = %{version}-%{release}
-
-%description guide
-JUnit 5 User Guide.
-
 %prep
-%setup -q -n %{base_name}-r%{version} -a1
+%setup -q -n junit-framework-r%{version} -a1
 %patch -P 1 -p1
 %patch -P 2 -p1
 %patch -P 3 -p1
+%patch -P 4 -p1
 find -name \*.jar -delete
 
 cp -p %{SOURCE100} pom.xml
@@ -163,13 +156,15 @@ done
 %pom_remove_parent junit-bom
 
 # Add deps which are shaded by upstream and therefore not present in POMs.
-%pom_add_dep net.sf.jopt-simple:jopt-simple:5.0.4 junit-platform-console
-%pom_add_dep com.univocity:univocity-parsers:2.5.4 junit-jupiter-params
-%pom_add_dep org.opentest4j.reporting:open-test-reporting-events:0.1.0-M2 junit-platform-reporting
+%pom_add_dep org.junit.platform:junit-platform-commons:%{platform_version} junit-platform-console
+%pom_add_dep org.junit.platform:junit-platform-launcher:%{platform_version} junit-platform-console
 %pom_add_dep info.picocli:picocli:4.7.5 junit-platform-console
+%pom_add_dep com.univocity:univocity-parsers:2.5.4 junit-jupiter-params
 
 # Disable the standalone console (just jar with shaded dependencies)
 %pom_disable_module junit-platform-console-standalone
+%pom_remove_dep org.junit.platform:junit-platform-reporting junit-platform-console
+
 # Disable the modules built in -minimal package
 %pom_disable_module junit-platform-commons
 %pom_disable_module junit-jupiter-api
@@ -185,11 +180,6 @@ build-jar-repository -s lib opentest4j/opentest4j apiguardian/apiguardian-api
 %else
 %{mvn_build} -f -- \
     -Dencoding=utf-8 -DlegacyMode=true -Dverbose=true -Dsource=8
-
-# Build docs.  Ignore exit asciidoc -- it fails for some reason, but
-# still produces readable docs.
-asciidoc documentation/src/docs/asciidoc/index.adoc || :
-ln -s ../../javadoc/junit5 documentation/src/docs/api
 %endif
 
 %install
@@ -208,7 +198,7 @@ done
 %else
 
 %mvn_install
-%jpackage_script org/junit/platform/console/ConsoleLauncher "" "" junit5:junit:hamcrest:opentest4j:open-test-reporting:picocli:jopt-simple:assertj-core %{name} true
+%jpackage_script org/junit/platform/console/ConsoleLauncher "" "" junit5:opentest4j:picocli:junit:hamcrest %{name} true
 %fdupes -s documentation/src/docs/
 
 %endif
@@ -216,26 +206,23 @@ done
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
-%license LICENSE.md LICENSE-notice.md
+%license LICENSE.md NOTICE.md
 
 %if %{without bootstrap}
 
 %{_bindir}/%{name}
 
 %files bom -f .mfiles-bom
-%license LICENSE.md LICENSE-notice.md
+%license LICENSE.md NOTICE.md
 
 %files javadoc -f .mfiles-javadoc
-%license LICENSE.md LICENSE-notice.md
-
-%files guide
-%doc documentation/src/docs/*
+%license LICENSE.md NOTICE.md
 
 %else
 
 %files javadoc
 %{_javadocdir}/%{name}
-%license LICENSE.md LICENSE-notice.md
+%license LICENSE.md NOTICE.md
 
 %endif
 

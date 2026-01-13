@@ -7,12 +7,12 @@
   <!-- that they should prefer consuming it instead. -->
   <!-- do_not_remove: published-with-gradle-metadata -->
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.junit.platform</groupId>
-  <artifactId>junit-platform-runner</artifactId>
-  <version>1.10.2</version>
-  <name>JUnit Platform Runner</name>
-  <description>Module "junit-platform-runner" of JUnit 5.</description>
-  <url>https://junit.org/junit5/</url>
+  <groupId>org.junit.jupiter</groupId>
+  <artifactId>junit-jupiter-migrationsupport</artifactId>
+  <version>5.14.2</version>
+  <name>JUnit Jupiter Migration Support</name>
+  <description>Module "junit-jupiter-migrationsupport" of JUnit 5.</description>
+  <url>https://junit.org/</url>
   <licenses>
     <license>
       <name>Eclipse Public License v2.0</name>
@@ -57,16 +57,16 @@
     </developer>
   </developers>
   <scm>
-    <connection>scm:git:git://github.com/junit-team/junit5.git</connection>
-    <developerConnection>scm:git:git://github.com/junit-team/junit5.git</developerConnection>
-    <url>https://github.com/junit-team/junit5</url>
+    <connection>scm:git:git://github.com/junit-team/junit-framework.git</connection>
+    <developerConnection>scm:git:git://github.com/junit-team/junit-framework.git</developerConnection>
+    <url>https://github.com/junit-team/junit-framework</url>
   </scm>
   <dependencyManagement>
     <dependencies>
       <dependency>
         <groupId>org.junit</groupId>
         <artifactId>junit-bom</artifactId>
-        <version>5.10.2</version>
+        <version>5.14.2</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -80,15 +80,9 @@
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>org.junit.platform</groupId>
-      <artifactId>junit-platform-launcher</artifactId>
-      <version>1.10.2</version>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.platform</groupId>
-      <artifactId>junit-platform-suite-api</artifactId>
-      <version>1.10.2</version>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>5.14.2</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
@@ -96,12 +90,6 @@
       <artifactId>apiguardian-api</artifactId>
       <version>1.1.2</version>
       <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.platform</groupId>
-      <artifactId>junit-platform-suite-commons</artifactId>
-      <version>1.10.2</version>
-      <scope>runtime</scope>
     </dependency>
   </dependencies>
 </project>

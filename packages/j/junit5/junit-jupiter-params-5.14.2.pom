@@ -8,11 +8,11 @@
   <!-- do_not_remove: published-with-gradle-metadata -->
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.junit.jupiter</groupId>
-  <artifactId>junit-jupiter</artifactId>
-  <version>5.10.2</version>
-  <name>JUnit Jupiter (Aggregator)</name>
-  <description>Module "junit-jupiter" of JUnit 5.</description>
-  <url>https://junit.org/junit5/</url>
+  <artifactId>junit-jupiter-params</artifactId>
+  <version>5.14.2</version>
+  <name>JUnit Jupiter Params</name>
+  <description>Module "junit-jupiter-params" of JUnit 5.</description>
+  <url>https://junit.org/</url>
   <licenses>
     <license>
       <name>Eclipse Public License v2.0</name>
@@ -57,16 +57,16 @@
     </developer>
   </developers>
   <scm>
-    <connection>scm:git:git://github.com/junit-team/junit5.git</connection>
-    <developerConnection>scm:git:git://github.com/junit-team/junit5.git</developerConnection>
-    <url>https://github.com/junit-team/junit5</url>
+    <connection>scm:git:git://github.com/junit-team/junit-framework.git</connection>
+    <developerConnection>scm:git:git://github.com/junit-team/junit-framework.git</developerConnection>
+    <url>https://github.com/junit-team/junit-framework</url>
   </scm>
   <dependencyManagement>
     <dependencies>
       <dependency>
         <groupId>org.junit</groupId>
         <artifactId>junit-bom</artifactId>
-        <version>5.10.2</version>
+        <version>5.14.2</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -76,20 +76,14 @@
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
-      <version>5.10.2</version>
+      <version>5.14.2</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-params</artifactId>
-      <version>5.10.2</version>
+      <groupId>org.apiguardian</groupId>
+      <artifactId>apiguardian-api</artifactId>
+      <version>1.1.2</version>
       <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-engine</artifactId>
-      <version>5.10.2</version>
-      <scope>runtime</scope>
     </dependency>
   </dependencies>
 </project>

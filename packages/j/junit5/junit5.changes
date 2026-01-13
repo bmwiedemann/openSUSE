@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Jan 13 14:21:13 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 5.14.2
+  * Principal changes:
+    + Introduce @ClassTemplate and @ParameterizedClass support in
+      JUnit Jupiter
+    + Access to ParameterInfo for JUnit Jupiter extensions
+    + New @SentenceFragment annotation for use with
+      IndicativeSentences display name generator
+    + Add --redirect-stdout and --redirect-stderr options to
+      ConsoleLauncher
+    + Introduce test discovery support in EngineTestKit
+    + Reporting of discovery issues for test engines
+    + Resource management for launcher sessions and execution
+      requests
+    + GraalVM: removal of native-image.properties files from JARs
+    + Bug fixes and other minor improvements
+    + Deprecations along with new APIs to ease migration to JUnit 6
+- Modified patches:
+  * 0001-Drop-transitive-requirement-on-apiguardian.patch
+  * 0002-Add-missing-module-static-requires.patch
+    + rediff
+- Removed patch:
+  * 0003-Bump-open-test-reporting-to-0.1.0-M2.patch
+    + not needed
+- Added patches:
+  * 0003-Remove-legacy-XML-console-support.patch
+    + Remove legacy XML console support
+  * 0004-Add-JRE-class-generated-from-template.patch
+    + Add file that is normally generated from template by gradle
+
+-------------------------------------------------------------------
 Fri Mar 28 18:22:24 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Fix errors in aggregator.pom and in ant build system that prevent

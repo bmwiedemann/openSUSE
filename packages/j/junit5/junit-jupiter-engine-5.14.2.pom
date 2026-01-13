@@ -7,12 +7,12 @@
   <!-- that they should prefer consuming it instead. -->
   <!-- do_not_remove: published-with-gradle-metadata -->
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.junit.platform</groupId>
-  <artifactId>junit-platform-launcher</artifactId>
-  <version>1.10.2</version>
-  <name>JUnit Platform Launcher</name>
-  <description>Module "junit-platform-launcher" of JUnit 5.</description>
-  <url>https://junit.org/junit5/</url>
+  <groupId>org.junit.jupiter</groupId>
+  <artifactId>junit-jupiter-engine</artifactId>
+  <version>5.14.2</version>
+  <name>JUnit Jupiter Engine</name>
+  <description>Module "junit-jupiter-engine" of JUnit 5.</description>
+  <url>https://junit.org/</url>
   <licenses>
     <license>
       <name>Eclipse Public License v2.0</name>
@@ -57,16 +57,16 @@
     </developer>
   </developers>
   <scm>
-    <connection>scm:git:git://github.com/junit-team/junit5.git</connection>
-    <developerConnection>scm:git:git://github.com/junit-team/junit5.git</developerConnection>
-    <url>https://github.com/junit-team/junit5</url>
+    <connection>scm:git:git://github.com/junit-team/junit-framework.git</connection>
+    <developerConnection>scm:git:git://github.com/junit-team/junit-framework.git</developerConnection>
+    <url>https://github.com/junit-team/junit-framework</url>
   </scm>
   <dependencyManagement>
     <dependencies>
       <dependency>
         <groupId>org.junit</groupId>
         <artifactId>junit-bom</artifactId>
-        <version>5.10.2</version>
+        <version>5.14.2</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -76,7 +76,13 @@
     <dependency>
       <groupId>org.junit.platform</groupId>
       <artifactId>junit-platform-engine</artifactId>
-      <version>1.10.2</version>
+      <version>1.14.2</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>5.14.2</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
