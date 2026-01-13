@@ -1,0 +1,23 @@
+From 7dfdb3c7bd4cc10e7e3bd52aec38a2052407fbc2 Mon Sep 17 00:00:00 2001
+From: Frank Denis <github@pureftpd.org>
+Date: Mon, 29 Dec 2025 23:06:30 +0100
+Subject: [PATCH] bugfix: duplicate command-line arguments
+
+Spotted by @two-heart, thanks!
+---
+ src/minisign.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/minisign.c b/src/minisign.c
+index 8f82304..df2160c 100644
+--- a/src/minisign.c
++++ b/src/minisign.c
+@@ -1002,7 +1002,7 @@ main(int argc, char **argv)
+         case '?':
+             usage();
+         }
+-        if (opt_flag > 0 && opt_flag <= (int) sizeof opt_seen / 8) {
++        if (opt_flag > 0 && opt_flag < (int) sizeof opt_seen * 8) {
+             if ((opt_seen[opt_flag / 8] & (1U << (opt_flag & 7))) != 0) {
+                 fprintf(stderr, "Duplicate option: -- %c\n\n", opt_flag);
+                 usage();

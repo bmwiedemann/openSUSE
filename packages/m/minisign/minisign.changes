@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jan 12 09:24:25 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Bugfix:
+  * bugfix: duplicate command-line arguments [7dfdb3c]
+  * Add minisign-dup-command-line-args.patch
+
+-------------------------------------------------------------------
+Mon Jan 12 09:15:13 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Security fix: [gpg.fail/trustcomment]
+  * Trusted comment injection (minisign) [6c59875]
+  * trim(): only trim trailing \r\n, reject straight \r characters
+  * Add minisign-gpg.fail-trustcomment.patch
+
+-------------------------------------------------------------------
+Mon Jan 12 09:05:55 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Security fix: [gpg.fail/minisign]
+  * Trusted comment injection (minisign) [a10dc92]
+  * Bail out if the signature file contains unprintable characters
+  * Add minisign-gpg.fail-minisign.patch
+
+-------------------------------------------------------------------
 Sat Feb  1 11:18:41 UTC 2025 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 0.12
