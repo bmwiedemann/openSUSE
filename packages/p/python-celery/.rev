@@ -544,4 +544,41 @@
     <comment>- Only require pytest-subtests with pytest &lt; 9.</comment>
     <requestid>1321486</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>f9ca752a0166b8b4a29f2283654b2e76</srcmd5>
+    <version>5.6.2</version>
+    <time>1768336228</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.6.2:
+  * Fix recursive WorkController instantiation in DjangoWorkerFixup +
+    AttributeError when pool_cls is a string
+  * Bugfix: Revoked tasks now immediately update backend status to REVOKED
+  * Fix Redis Sentinel ACL authentication support
+  * Fix: Broker heartbeats not sent during graceful shutdown
+  * close DB pools only in prefork mode
+  * Fix: Avoid unnecessary Django database connection creation during cleanup
+  * reliable prefork detection
+  * Stop importing pytest_subtests
+  * Only use exceptiongroup backport for Python &lt; 3.11
+  * Drop support for Python 3.8 (EOL).
+  * Fixed a security issue where broker URLs containing passwords were
+  * being logged in plaintext by the delayed delivery mechanism. Broker
+  * credentials are now properly sanitized in all log output.
+  * New configuration options allow specifying the queue type and exchange
+  * type when Celery auto-creates missing queues.
+  * asynpool: Don't return from inside a finally block
+  * Add support for Django Connection pool
+  * fix(worker): continue to attempt to bind other queues after a native
+    delayed delivery binding failure has occurred
+  * Handle UnpicklingError in persistent scheduler initialization
+  * Bug Fix: Nested Chords Fail When Using django-celery-results with a Redis
+    Backend
+  * Add support pymongo 4.12
+  * Feature: Add support credential_provider to Redis Backend
+  * Celery.timezone: try tzlocal.get_localzone() before using LocalTimezone
+  * Add documentation for task_id param for apply_async function
+  * Support redis client name
+  * fix: restrict disable-prefetch feature to Redis brokers only</comment>
+    <requestid>1326865</requestid>
+  </revision>
 </revisionlist>

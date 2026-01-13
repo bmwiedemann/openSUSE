@@ -1,7 +1,7 @@
 #
 # spec file for package python-celery
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python2 1
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -29,13 +28,14 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-celery%{psuffix}
-Version:        5.5.3
+Version:        5.6.2
 Release:        0
 Summary:        Distributed Task Queue module for Python
 License:        BSD-3-Clause
 URL:            https://celeryproject.org
 Source:         https://files.pythonhosted.org/packages/source/c/celery/celery-%{version}.tar.gz
 Patch0:         move-pytest-configuration-to-conftest.patch
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -44,16 +44,16 @@ BuildRequires:  fdupes
 BuildRequires:  netcfg
 BuildRequires:  python-rpm-macros
 Requires:       alts
-Requires:       python-billiard >= 4.1.0
-Requires:       python-click >= 8.0.3
-Requires:       python-click-didyoumean >= 0.0.3
+Requires:       python-billiard >= 4.2.1
+Requires:       python-click >= 8.1.2
+Requires:       python-click-didyoumean >= 0.3.0
 Requires:       python-click-plugins >= 1.1.1
 Requires:       python-click-repl >= 0.2.0
 Requires:       python-dbm
-Requires:       python-kombu >= 5.5
-Requires:       python-python-dateutil
-Requires:       python-tzdata
-Requires:       python-vine >= 5.0.0
+Requires:       python-kombu >= 5.6.0
+Requires:       python-python-dateutil >= 2.8.2
+Requires:       python-tzlocal
+Requires:       python-vine >= 5.1.0
 Recommends:     python-cryptography
 Recommends:     python-curses
 Suggests:       python-eventlet
@@ -118,7 +118,10 @@ scheduling as well.
 # test_aaa_eventlet_patch::test_aaa_blockdetecet - AssertionError: expected call not found.
 # test_AsynPool::test_gen_not_started
 
-%pytest -k "not test_check_privileges_no_fchown and not test_aaa_blockdetecet and not test_gen_not_started and not test_init_mongodb_dnspython2_pymongo4_seedlist"
+# Fails if the system timezone is UTC
+# test_uses_utc_timezone
+
+%pytest -k "not test_check_privileges_no_fchown and not test_aaa_blockdetecet and not test_gen_not_started and not test_init_mongodb_dnspython2_pymongo4_seedlist and not test_uses_utc_timezone"
 
 %endif
 
