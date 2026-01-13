@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan  2 21:42:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.87.0:
+  * This is a configure-ready release, derived from the master on
+    24 Dec 2025.
+- https://github.com/DanBloomberg/leptonica/compare/1.84.1...1.87.0
+
+-------------------------------------------------------------------
 Mon Mar 18 12:32:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.84.1:
@@ -27,7 +35,7 @@ Tue Jan  2 09:02:34 UTC 2024 - jun wang <jgwang@suse.com>
   * Put image processing and generation of output pdf from compresspdf
     and cleanpdf into functions in new files: pdfapp.c, pdfappstub.c.
   * Add versatile function for cropping an image and filling to
-    page size, along with prog/croppdf to do this on pdf file. 
+    page size, along with prog/croppdf to do this on pdf file.
 
 -------------------------------------------------------------------
 Tue Mar 14 22:37:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -36,7 +44,7 @@ Tue Mar 14 22:37:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * Fix jp2k header reader for header offset larger than assumed
     44 bytes
   * Fix issue 659: pdf generation for 1 bpp images fails,
-    breaking tesseract 
+    breaking tesseract
 
 -------------------------------------------------------------------
 Mon Jan  9 02:50:35 UTC 2023 - Mia Herkt <mia@0x0.st>
@@ -318,7 +326,7 @@ Fri Feb 17 14:45:41 UTC 2017 - idonmez@suse.com
 
 - Update to version 1.74.1
   Version 1.74.1 4 Jan 17
-  
+
   * Configuration changes to support the patch number in the
     version (major.minor.patch).
   * Removed all remaining pixDisplayWrite() calls in prog/.
