@@ -394,4 +394,17 @@
    - Added: Add environment variables to affect how `signature_for` checks</comment>
     <requestid>1325871</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>ff1c3a1951de45dac0f8b25eb2100e45</srcmd5>
+    <version>2.010001</version>
+    <time>1768336477</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.010001
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+  2.010001	2026-01-06
+   [ Bug Fixes ]
+   - Fix for $LIST_SEPARATOR changes breaking Type::Coercion, Types::Common,
+     Types::Standard.</comment>
+    <requestid>1326997</requestid>
+  </revision>
 </revisionlist>

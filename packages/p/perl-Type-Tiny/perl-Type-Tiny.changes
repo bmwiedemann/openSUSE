@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan  7 05:48:55 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.010001
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  2.010001	2026-01-06
+
+   [ Bug Fixes ]
+   - Fix for $LIST_SEPARATOR changes breaking Type::Coercion, Types::Common,
+     Types::Standard.
+
+-------------------------------------------------------------------
 Fri Jan  2 15:33:24 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.010000
