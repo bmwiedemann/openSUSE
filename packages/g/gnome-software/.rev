@@ -1345,4 +1345,18 @@ New stable release</comment>
   + Updated translations. (forwarded request 1318970 from iznogood)</comment>
     <requestid>1319634</requestid>
   </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>573a0c26d37a3e4efad1b2066e432007</srcmd5>
+    <version>49.3</version>
+    <time>1768335143</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 49.3:
+  + Improve display of long repository names
+  + Clarify warning about removing data when uninstalling an app
+  + Fix minor UI issues when scrolling using gestures on a touchpad
+  + Don’t show firmware warning on Installed Updates page
+  + Several fixes to update history on rpm-ostree systems
+  + Updated translations. (forwarded request 1326936 from iznogood)</comment>
+    <requestid>1326955</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 13 10:33:47 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.3:
+  + Improve display of long repository names
+  + Clarify warning about removing data when uninstalling an app
+  + Fix minor UI issues when scrolling using gestures on a touchpad
+  + Don’t show firmware warning on Installed Updates page
+  + Several fixes to update history on rpm-ostree systems
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Nov 21 06:49:16 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.2:
