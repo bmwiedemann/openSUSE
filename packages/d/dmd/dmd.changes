@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Jan 13 11:30:50 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- use embedded rdmd.d instead of dowloading from URL
+
+-------------------------------------------------------------------
+Fri Jan  9 15:56:02 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.112.0
+  * Compiler changes
+    + The compiler now lowers associative array operations to a templated
+      implementation in druntime
+    + Keywords auto and ref must be adjacent for auto ref return
+    + Bitfields Are Now Incorporated
+    + An error is now issued for dangling else statements
+    + The compiler now accepts -extern-std=c++23
+    + External import path switch
+    + C files can now include a module statement
+    + Implicit integer conversions in int op= float assignments has been 
+      deprecated
+  * Runtime changes
+    + Templatized _d_arraysetlengthT to remove TypeInfo dependency
+    + Templatize _d_arrayappendcTX runtime hook
+    + Templatize _d_arraysetcapacity runtime hook
+    + core.int128: Add mul and udivmod overloads for 64-bit operands
+    + Fixed generated binaries crashing on macOS 15.4
+    + C Macro translations in druntime have been translated to templates
+  * Library changes
+    + Add lazyCache to std.algorithm.iteration
+    + getrandom() backwards compatibility shim
+    + Add an internal multi-backend entropy system
+    + std.uni has been upgraded from Unicode 16.0.0 to 17.0.0
+    + Add uuid v7 support to std.uuid
+    + Add writeText, writeWText, and writeDText to std.conv
+
+- Added direct link URL for rdmd.d
+
+-------------------------------------------------------------------
 Fri Apr  4 09:29:24 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 2.111.0
