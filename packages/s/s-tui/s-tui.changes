@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jan 12 17:29:09 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.3.0
+  * A fix for #246 which as caused by a breaking change in urwid.
+  * Add a new feature, changing the colors of temperatures graphs
+    only if the specific sensor reaches alert temperature, instead
+    of all temperature graphs.
+  * load_config: do not treat ':' as delimiter.
+  * Fix unsucceful import of curses_display.
+  * display alert colors only for affected graph.
+  * Consier manually set temperature threshold for color change.
+- Update to version 1.2.0
+  * Add check/uncheck all buttons for sensor and graph menus.
+  * Some minor bug fixes and version bumps.
+
+-------------------------------------------------------------------
 Mon Feb 19 15:52:34 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to v1.1.6:
