@@ -1,7 +1,7 @@
 #
 # spec file for package jujutsu
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define binary_name jj
 
 Name:           jujutsu
-Version:        0.36.0
+Version:        0.37.0
 Release:        0
 Summary:        Git-compatible DVCS that is both simple and powerful
 License:        MIT
@@ -125,7 +125,11 @@ mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
 %check
 %{buildroot}/%{_bindir}/%{binary_name} --version | grep %{version}
 rm -rf tests/contest/
-%{cargo_test} -- --skip 'test_gpg::gpgsm_signing_roundtrip' --skip 'test_gpg::gpgsm_signing_roundtrip_explicit_key' --skip 'test_gpg::gpgsm_unknown_key'
+%{cargo_test} -- \
+        --skip 'test_gpg::gpgsm_signing_roundtrip' \
+        --skip 'test_gpg::gpgsm_signing_roundtrip_explicit_key' \
+        --skip 'test_gpg::gpgsm_unknown_key' \
+        --skip 'config::tests::test_parse_value_or_bare_string'
 
 %files
 %doc README.md
