@@ -1,7 +1,7 @@
 #
 # spec file for package python-ara
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@
 %define pythons python3
 %bcond_without libalternatives
 Name:           python-ara
-Version:        1.7.3
+Version:        1.7.4
 Release:        0
 Summary:        ARA Records Ansible
 License:        GPL-3.0-or-later

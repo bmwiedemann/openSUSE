@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jan  9 22:02:27 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
+
+- Update to 1.7.4:
+  * Loading or refreshing a page using the light theme should no longer flicker
+  * The playbook header at the top of a playbook report has been redesigned for clarity and mobile responsiveness
+  * The hosts, files and records sections have received similar treatment
+  * The recorded files are now displayed inside a file hierarchy browser
+  * Include the HTTP error code when logging about an API error
+  * Bumped fedora images to 43
+  * Maintenance for ansible-core 2.19/2.10 compatibility
+  * For ara's own tests, written in ansible. ara already worked with 2.19 and 2.20.
+  * Bumped tests up to fedora-43, debian-13 and ansible-core 2.20
+  * Improved how codeberg CI results are sent to demo.recordsansible.org
+
+-------------------------------------------------------------------
 Wed Sep 10 06:12:09 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.7.3
