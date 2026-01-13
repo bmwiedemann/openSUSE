@@ -296,4 +296,16 @@
 - Drop workaround to remove samples and tests from source (forwarded request 1314336 from glaubitz)</comment>
     <requestid>1314341</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>be8756f3bbc1d2d49156592c6421aa25</srcmd5>
+    <version>13.0.0</version>
+    <time>1768336487</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 13.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from pyproject.toml (forwarded request 1326992 from glaubitz)</comment>
+    <requestid>1327002</requestid>
+  </revision>
 </revisionlist>
