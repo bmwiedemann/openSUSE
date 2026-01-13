@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 12 06:40:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1.4:
+  * Bug fixes
+    - 8ea55b6: fix(darwin): filter out scoped, Supplemental and
+      domain-specific resolvers from scutil (@mr-karan)
+  * Others
+    - 84808d4: chore(deps): update dependencies (@mr-karan)
+    - b0c0e89: chore(web): add umami analytics script (@mr-karan)
+
+-------------------------------------------------------------------
 Sun Dec 21 06:28:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.1.3:
