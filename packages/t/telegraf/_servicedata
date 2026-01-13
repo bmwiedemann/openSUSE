@@ -1,4 +1,6 @@
 <servicedata>
-<service name="tar_scm">
-                <param name="url">https://github.com/influxdata/telegraf</param>
-              <param name="changesrevision">467473bdb7087e42a5c1c11e63d64731883eb079</param></service></servicedata>
+  <service name="tar_scm">
+    <param name="url">https://github.com/influxdata/telegraf</param>
+    <param name="changesrevision">3352c0d56e70ee8e60e5e1db7fe94a236a27ce45</param>
+  </service>
+</servicedatah
