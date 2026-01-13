@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Jan 13 12:29:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.20.0:
+  * feat: Add missing features
+  * fix: Fixes #139
+  * fix: resolve race conditions, type assertions, and convert
+    log.Fatal to error returns
+  * Dependencies
+    - chore(deps): update actions/checkout action to v5
+    - chore(deps): update actions/checkout action to v6
+    - chore(deps): update actions/checkout digest to 08eba0b
+    - chore(deps): update actions/checkout digest to 93cb6ef
+    - chore(deps): update actions/download-artifact digest to
+      d3f86a1
+    - chore(deps): update actions/setup-go action to v6
+    - chore(deps): update actions/setup-go digest to 4dc6199
+    - chore(deps): update actions/setup-go digest to d35c59a
+    - chore(deps): update actions/setup-go digest to f111f33
+    - chore(deps): update actions/upload-artifact digest to 65c4c4a
+    - chore(deps): update actions/upload-artifact digest to ea165f8
+    - chore(deps): update alpine docker tag to v3.22
+    - chore(deps): update alpine docker tag to v3.23
+    - chore(deps): update alpine:3.21 docker digest to 5405e8f
+    - chore(deps): update alpine:3.21 docker digest to 56fa17d
+    - chore(deps): update docker/login-action digest to 5e57cd1
+    - chore(deps): update github artifact actions
+    - chore(deps): update github artifact actions
+    - chore(deps): update goreleaser/goreleaser-action digest to
+      e435ccd
+    - fix(deps): update module github.com/magiconair/properties to
+      v1.8.10
+    - fix(deps): update module
+      github.com/santhosh-tekuri/jsonschema/v6 to v6.0.2
+    - fix(deps): update module github.com/spf13/cobra to v1.10.1
+    - fix(deps): update module github.com/spf13/cobra to v1.10.2
+    - fix(deps): update module github.com/spf13/viper to v1.21.0
+
+-------------------------------------------------------------------
 Tue Dec 31 10:27:44 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.18.1:
