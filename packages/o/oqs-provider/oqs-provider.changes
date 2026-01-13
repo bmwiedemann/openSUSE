@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan 13 10:51:30 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 0.11.0:
+  * Update CMakeLists.txt
+  * Hide all symbols except for OSSL_provider_init entrypoint
+  * corrects fixed test cert validity
+  * Update CROSS to version 2.2
+  * update contributing guide to point to more resilient script
+  * follow upstream and fixup Composites removal
+  * Add Brainpool hybrid KEM support
+  * Fix 'enable_tls' SIG algorithm mismatch
+
+-------------------------------------------------------------------
 Sun Sep 21 18:16:22 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
 
 - updated to 0.10.0:

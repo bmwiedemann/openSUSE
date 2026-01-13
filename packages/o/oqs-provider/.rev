@@ -174,4 +174,20 @@
   * Remove Composite Signature logic, templating, and documentation (forwarded request 1306621 from lmulling)</comment>
     <requestid>1306669</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>dc61581629cf6fdf82771fbe1bac2fe4</srcmd5>
+    <version>0.11.0</version>
+    <time>1768336449</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.11.0:
+  * Update CMakeLists.txt
+  * Hide all symbols except for OSSL_provider_init entrypoint
+  * corrects fixed test cert validity
+  * Update CROSS to version 2.2
+  * update contributing guide to point to more resilient script
+  * follow upstream and fixup Composites removal
+  * Add Brainpool hybrid KEM support
+  * Fix 'enable_tls' SIG algorithm mismatch (forwarded request 1326939 from pmonrealgonzalez)</comment>
+    <requestid>1326941</requestid>
+  </revision>
 </revisionlist>
