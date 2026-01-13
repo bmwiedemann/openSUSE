@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan  2 15:25:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.8:
+  * Fixed build with `-Wshorten-64-to-32`.
+
+-------------------------------------------------------------------
 Fri Aug 16 18:02:46 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - fix location of CMake files to be ".../pegtl"
