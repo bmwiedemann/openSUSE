@@ -1,7 +1,7 @@
 #
 # spec file for package cava
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,24 @@
 
 
 Name:           cava
-Version:        0.10.6
+Version:        0.10.7
 Release:        0
 Summary:        Console-based Audio Visualizer for Alsa
 License:        MIT
 Group:          Productivity/Multimedia/Sound/Visualization
 URL:            https://github.com/karlstav/cava
 Source:         https://github.com/karlstav/%{name}/archive/%{version}.tar.gz
-BuildRequires:  alsa-devel
-BuildRequires:  fftw3-devel
+BuildRequires:  autoconf-archive
+BuildRequires:  pkgconfig(SDL2_gfx)
+BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(fftw3)
+BuildRequires:  pkgconfig(gl)
 # Use system ini parser instead of building own lib
-BuildRequires:  libiniparser-devel >= 4.0
-BuildRequires:  libpulse-devel
 BuildRequires:  libtool
-BuildRequires:  ncurses-devel
-BuildRequires:  pipewire-devel
+BuildRequires:  pkgconfig(iniparser) >= 4.0
+BuildRequires:  pkgconfig(libpipewire-0.3)
+BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(ncurses)
 # Installing the psf in a directory that comes from kbd
 Requires:       kbd
 
