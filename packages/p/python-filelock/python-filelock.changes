@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 12 11:19:38 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 3.20.3 (fixes CVE-2026-22701, bsc#1256457)
+  * Fix TOCTOU symlink vulnerability in SoftFileLock by @gaborbernat in #465
+
+-------------------------------------------------------------------
 Mon Jan  5 10:10:09 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 3.20.2
