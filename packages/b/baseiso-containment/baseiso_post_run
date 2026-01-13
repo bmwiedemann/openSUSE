@@ -36,6 +36,7 @@ ARCH="$(uname -m)"
 set +e # we have set -e, so on Minimal VMs this needs to fail silently
 iso_file=`ls -1 /usr/src/packages/KIWI/agama-installer*.iso 2>/dev/null`
 pxe_file=`ls -1 /usr/src/packages/KIWI/agama-installer*.install.tar 2>/dev/null`
+milestone_file=`ls -1 /usr/src/packages/KIWI/agama-installer*.milestone 2>/dev/null`
 set -e
 
 # nothing to do for us
@@ -97,3 +98,9 @@ if [ -e $TOPDIR/RPMS/noarch/tftpboot-$iso_name$FLAVOR-$ARCH-$iso_version-$iso_bu
   mv $TOPDIR/RPMS/noarch/tftpboot-$iso_name$FLAVOR-$ARCH-$iso_version-$iso_build.noarch.rpm $TOPDIR/OTHER/
 fi
 mv $TOPDIR/SRPMS/baseiso-$iso_name$FLAVOR-$iso_version-$iso_build.src.rpm $TOPDIR/OTHER/
+if [ -e "$milestone_file" ]; then
+  for rpmpack in $TOPDIR/OTHER/*rpm ; do
+    test -e $rpmpack || continue
+    cp -a $milestone_file ${rpmpack%.rpm}.milestone
+  done
+fi
