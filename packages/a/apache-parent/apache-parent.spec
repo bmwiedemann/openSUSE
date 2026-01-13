@@ -17,7 +17,7 @@
 
 
 Name:           apache-parent
-Version:        36
+Version:        37
 Release:        0
 Summary:        Parent POM file for Apache projects
 License:        Apache-2.0
