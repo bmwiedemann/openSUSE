@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 12 18:56:27 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.139:
+  * fix approvers to be latest (#2529)
+  * log level arg (#2528)
+  * support debug log pass thru (#2527)
+  * support debug log pass thru (#2526)
+  * add input in the debug (#2525)
+  * doc: fix minor typo (#2523)
+  * docs: concepts/unit (#2520)
+
+-------------------------------------------------------------------
 Fri Dec 19 08:15:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.138:

@@ -1,7 +1,7 @@
 #
 # spec file for package digger-cli
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define executable_name digger
 
 Name:           digger-cli
-Version:        0.6.138
+Version:        0.6.139
 Release:        0
 Summary:        CLI for the digger open source IaC orchestration tool
 License:        Apache-2.0
