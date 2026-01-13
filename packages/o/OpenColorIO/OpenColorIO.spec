@@ -1,7 +1,7 @@
 #
 # spec file for package OpenColorIO
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ Name:           OpenColorIO
 %else
 Name:           OpenColorIO-tools
 %endif
-Version:        2.5.0
+Version:        2.5.1
 Release:        0
 Summary:        Color Management Solution Geared Towards Motion Picture Production
 License:        BSD-3-Clause

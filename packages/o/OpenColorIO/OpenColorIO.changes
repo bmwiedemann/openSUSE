@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jan 13 11:15:14 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.5.1
+  The two most notable changes are:
+  - The output of pure-gamma TRC curves in ICC profiles is no
+    longer clamped (issue #1915).
+  - The texture binding indices for Vulkan have been reworked
+    (issue #2225).
+
+  Bug fixes and minor enhancements:
+  - PR #2224, Remove [0,1] clamping from ICC transforms
+  - PR #2226, Fix Vulkan texture binding index issue
+  - PR #2204, Fix interop ID issue in ociocheck
+  - PR #2227, ACES2 Array subscript out of range exception
+  - PR #2206, Handle transposed matrices to applyRGB in Python
+  - PR #2231, Out-of-bounds issue in ThrowInvalidRegex
+
+-------------------------------------------------------------------
 Thu Oct 30 02:34:14 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - enforce recent enough yaml-cpp
