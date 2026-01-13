@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 13 13:49:07 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to Apache Maven parent POM version 47
+  * Dependency updates
+    + Bump parent to 37
+    + Bump org.junit:junit-bom from 5.14.1 to 5.14.2
+
+-------------------------------------------------------------------
 Wed Jan  7 07:59:36 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to Apache Maven parent POM version 46
