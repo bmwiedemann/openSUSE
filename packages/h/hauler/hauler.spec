@@ -1,7 +1,7 @@
 #
 # spec file for package hauler
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           hauler
-Version:        1.3.2
+Version:        1.4.0
 %global git_commit 5edc8802eec20adc7d0b75847f77446d6f531012
 Release:        0
 Summary:        Airgap Swiss Army Knife

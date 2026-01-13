@@ -215,4 +215,20 @@
   * Bump golang.org/x/crypto in the go_modules group across 1 directory (#476)</comment>
     <requestid>1324666</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>34a8a61d27c36ab19fac00f3e7df8c63</srcmd5>
+    <version>1.4.0</version>
+    <time>1768336513</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.4.0:
+  * added/updated logging for `serve` and `remove` (#487)
+  * added/fixed helm chart images/dependencies features (#485)
+  * more experimental feature updates (#486)
+  * add experimental notes (#483)
+  * updated tempdir flag to store persistent flags (#484)
+  * delete artifacts from store (#473)
+  * path rewrites (#475)
+  * updated/fixed workflow dependency versions (#478)</comment>
+    <requestid>1327019</requestid>
+  </revision>
 </revisionlist>

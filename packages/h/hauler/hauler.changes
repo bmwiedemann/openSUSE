@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan 13 13:57:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 1.4.0:
+  * added/updated logging for `serve` and `remove` (#487)
+  * added/fixed helm chart images/dependencies features (#485)
+  * more experimental feature updates (#486)
+  * add experimental notes (#483)
+  * updated tempdir flag to store persistent flags (#484)
+  * delete artifacts from store (#473)
+  * path rewrites (#475)
+  * updated/fixed workflow dependency versions (#478)
+
+-------------------------------------------------------------------
 Mon Dec 29 09:44:54 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 1.3.2:
