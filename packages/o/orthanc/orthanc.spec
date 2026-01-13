@@ -1,8 +1,8 @@
 #
 # spec file for package orthanc
 #
-# Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2019-2025 Dr. Axel Braun
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2019-2026 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,8 @@ Source10:       https://orthanc.uclouvain.be/downloads/third-party-downloads/dic
 Source11:       https://orthanc.uclouvain.be/downloads/third-party-downloads/dicom-web/axios-0.19.0.tar.gz
 Source12:       https://orthanc.uclouvain.be/downloads/third-party-downloads/jquery-3.4.1.min.js
 Source13:       https://orthanc.uclouvain.be/downloads/third-party-downloads/dicom-web/vuejs-2.6.10.tar.gz
-##%Patch0:         boost.patch
+Patch0:         370dir.diff
+Patch1:         dcmtk370.patch
 
 BuildRequires:  civetweb-devel
 BuildRequires:  cmake >= 2.8.0
@@ -194,8 +195,9 @@ mkdir -p -m 755 %{buildroot}/usr/src/%{name}
 # Copy sources
 tar --strip-components 1 -xzf %{S:0} -C %{buildroot}/usr/src/%{name}/
 
-#Apply boost patch to the source tree, this is needed by plugins
-## patch -d %{buildroot}/usr/src/%{name}/OrthancFramework -p2 < %{P:0}
+#Apply decmtk patch to the source tree, this is needed by plugins
+patch -d %{buildroot}/usr/src/%{name}/OrthancFramework -p2 < %{P:0}
+patch -d %{buildroot}/usr/src/%{name}/OrthancFramework -p2 < %{P:1}
 
 %if 0%{?suse_version} >= 1600
 # BOOST komponente system raus patchen

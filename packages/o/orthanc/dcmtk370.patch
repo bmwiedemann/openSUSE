@@ -1,0 +1,2822 @@
+
+# HG changeset patch
+# User Sebastien Jodogne <s.jodogne@gmail.com>
+# Date 1766155746 -3600
+# Node ID 5e961d92f655b5be9239abfae3fa3531990a66bf
+# Parent  5037896a19aec49f13518c43a9fd5bdf92dbf5a8
+upgraded to dcmtk 3.7.0
+
+diff -r 5037896a19ae -r 5e961d92f655 OrthancFramework/Resources/CMake/DcmtkConfiguration.cmake
+--- a/OrthancFramework/Resources/CMake/DcmtkConfiguration.cmake	Fri Dec 19 12:39:05 2025 +0100
++++ b/OrthancFramework/Resources/CMake/DcmtkConfiguration.cmake	Fri Dec 19 15:49:06 2025 +0100
+@@ -41,6 +41,8 @@
+     include(${CMAKE_CURRENT_LIST_DIR}/DcmtkConfigurationStatic-3.6.8.cmake)
+   elseif (DCMTK_STATIC_VERSION STREQUAL "3.6.9")
+     include(${CMAKE_CURRENT_LIST_DIR}/DcmtkConfigurationStatic-3.6.9.cmake)
++  elseif (DCMTK_STATIC_VERSION STREQUAL "3.7.0")
++    include(${CMAKE_CURRENT_LIST_DIR}/DcmtkConfigurationStatic-3.7.0.cmake)
+   else()
+     message(FATAL_ERROR "Unsupported version of DCMTK: ${DCMTK_STATIC_VERSION}")
+   endif()
+diff -r 5037896a19ae -r 5e961d92f655 OrthancFramework/Resources/CMake/DcmtkConfigurationStatic-3.7.0.cmake
+--- /dev/null	Thu Jan 01 00:00:00 1970 +0000
++++ b/OrthancFramework/Resources/CMake/DcmtkConfigurationStatic-3.7.0.cmake	Fri Dec 19 15:49:06 2025 +0100
+@@ -0,0 +1,311 @@
++# Orthanc - A Lightweight, RESTful DICOM Store
++# Copyright (C) 2012-2016 Sebastien Jodogne, Medical Physics
++# Department, University Hospital of Liege, Belgium
++# Copyright (C) 2017-2023 Osimis S.A., Belgium
++# Copyright (C) 2024-2025 Orthanc Team SRL, Belgium
++# Copyright (C) 2021-2025 Sebastien Jodogne, ICTEAM UCLouvain, Belgium
++#
++# This program is free software: you can redistribute it and/or
++# modify it under the terms of the GNU Lesser General Public License
++# as published by the Free Software Foundation, either version 3 of
++# the License, or (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful, but
++# WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
++# Lesser General Public License for more details.
++#
++# You should have received a copy of the GNU Lesser General Public
++# License along with this program. If not, see
++# <http://www.gnu.org/licenses/>.
++
++
++SET(DCMTK_VERSION_NUMBER 370)
++SET(DCMTK_PACKAGE_VERSION "3.7.0")
++SET(DCMTK_SOURCES_DIR ${CMAKE_BINARY_DIR}/dcmtk-3.7.0)
++SET(DCMTK_URL "https://orthanc.uclouvain.be/downloads/third-party-downloads/dcmtk-3.7.0.tar.gz")
++SET(DCMTK_MD5 "15531c6d20e188aa8b0f237a84b95bc2")
++
++macro(DCMTK_UNSET)
++endmacro()
++
++macro(DCMTK_UNSET_CACHE)
++endmacro()
++
++set(DCMTK_BINARY_DIR ${DCMTK_SOURCES_DIR}/)
++set(DCMTK_CMAKE_INCLUDE ${DCMTK_SOURCES_DIR}/)
++
++if (CMAKE_SYSTEM_NAME STREQUAL "Emscripten")
++  set(DCMTK_WITH_THREADS OFF)  # Disable thread support in wasm/asm.js
++else()
++  set(DCMTK_WITH_THREADS ON)
++endif()
++
++add_definitions(-DDCMTK_INSIDE_LOG4CPLUS=1)
++
++if (IS_DIRECTORY "${DCMTK_SOURCES_DIR}")
++  set(FirstRun OFF)
++else()
++  set(FirstRun ON)
++endif()
++
++DownloadPackage(${DCMTK_MD5} ${DCMTK_URL} "${DCMTK_SOURCES_DIR}")
++
++
++if (FirstRun)
++  # Apply the patches
++  execute_process(
++    COMMAND ${PATCH_EXECUTABLE} -p0 -N -i
++    ${CMAKE_CURRENT_LIST_DIR}/../Patches/dcmtk-3.7.0.patch
++    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
++    RESULT_VARIABLE Failure
++    )
++
++  if (Failure)
++    message(FATAL_ERROR "Error while patching a file")
++  endif()
++
++  if (MSVC)
++    # Older versions of Microsoft Visual Studio (notably MSVC2008)
++    # don't like void usage of function arguments in C source files,
++    # in order to avoid a warning about unused arguments. This patch
++    # removes such usages that were not present in DCMTK <= 3.6.6.
++    execute_process(
++      COMMAND ${PATCH_EXECUTABLE} -p0 -N -i
++      ${CMAKE_CURRENT_LIST_DIR}/../Patches/dcmtk-3.7.0-visual-studio.patch
++      WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
++      RESULT_VARIABLE Failure
++      )
++
++    if (Failure)
++      message(FATAL_ERROR "Error while patching a file")
++    endif()
++  endif()
++
++  configure_file(
++    ${CMAKE_CURRENT_LIST_DIR}/../Patches/dcmtk-dcdict_orthanc.cc
++    ${DCMTK_SOURCES_DIR}/dcmdata/libsrc/dcdict_orthanc.cc
++    COPYONLY)
++else()
++  message("The patches for DCMTK have already been applied")
++endif()
++
++
++include_directories(
++  ${DCMTK_SOURCES_DIR}/dcmiod/include
++  ${DCMTK_SOURCES_DIR}/oficonv/include
++  )
++
++
++# C_CHAR_UNSIGNED *must* be set before calling "GenerateDCMTKConfigure.cmake"
++IF (CMAKE_CROSSCOMPILING)
++  if (CMAKE_COMPILER_IS_GNUCXX AND
++      CMAKE_SYSTEM_NAME STREQUAL "Windows")  # MinGW
++    SET(C_CHAR_UNSIGNED 1 CACHE INTERNAL "Whether char is unsigned.")
++
++  elseif(CMAKE_SYSTEM_NAME STREQUAL "Emscripten")  # WebAssembly or asm.js
++
++    # Check out "../WebAssembly/ArithmeticTests/" to regenerate the
++    # "arith.h" file
++    configure_file(
++      ${CMAKE_CURRENT_LIST_DIR}/WebAssembly/arith.h
++      ${DCMTK_SOURCES_DIR}/config/include/dcmtk/config/arith.h
++      COPYONLY)
++
++    UNSET(C_CHAR_UNSIGNED CACHE)
++    SET(C_CHAR_UNSIGNED 0 CACHE INTERNAL "")
++
++  else()
++    message(FATAL_ERROR "Support your platform here")
++  endif()
++ENDIF()
++
++
++if ("${CMAKE_SYSTEM_VERSION}" STREQUAL "LinuxStandardBase")
++  SET(DCMTK_ENABLE_CHARSET_CONVERSION "iconv" CACHE STRING "")
++  SET(HAVE_SYS_GETTID 0 CACHE INTERNAL "")
++endif()
++
++
++SET(DCMTK_PERMIT_CXX98 ON)  # Needed since DCMTK 3.7.0
++
++SET(DCMTK_SOURCE_DIR ${DCMTK_SOURCES_DIR})
++include(GNUInstallDirs)  # Needed since DCMTK 3.6.9
++include(${DCMTK_SOURCES_DIR}/CMake/CheckFunctionWithHeaderExists.cmake)
++include(${DCMTK_SOURCES_DIR}/CMake/GenerateDCMTKConfigure.cmake)
++
++
++if (CMAKE_SYSTEM_NAME STREQUAL "Emscripten")  # WebAssembly or
++  # asm.js The macros below are not properly discovered by DCMTK
++  # when using WebAssembly. Check out "../WebAssembly/arith.h" for
++  # how we produced these values. This step MUST be after
++  # "GenerateDCMTKConfigure" and before the generation of
++  # "osconfig.h".
++  UNSET(SIZEOF_VOID_P   CACHE)
++  UNSET(SIZEOF_CHAR     CACHE)
++  UNSET(SIZEOF_DOUBLE   CACHE)
++  UNSET(SIZEOF_FLOAT    CACHE)
++  UNSET(SIZEOF_INT      CACHE)
++  UNSET(SIZEOF_LONG     CACHE)
++  UNSET(SIZEOF_SHORT    CACHE)
++  UNSET(SIZEOF_VOID_P   CACHE)
++
++  SET(SIZEOF_VOID_P 4   CACHE INTERNAL "")
++  SET(SIZEOF_CHAR 1     CACHE INTERNAL "")
++  SET(SIZEOF_DOUBLE 8   CACHE INTERNAL "")
++  SET(SIZEOF_FLOAT 4    CACHE INTERNAL "")
++  SET(SIZEOF_INT 4      CACHE INTERNAL "")
++  SET(SIZEOF_LONG 4     CACHE INTERNAL "")
++  SET(SIZEOF_SHORT 2    CACHE INTERNAL "")
++  SET(SIZEOF_VOID_P 4   CACHE INTERNAL "")
++endif()
++
++
++set(DCMTK_PACKAGE_VERSION_SUFFIX "")
++set(DCMTK_PACKAGE_VERSION_NUMBER ${DCMTK_VERSION_NUMBER})
++
++
++# For the dcmtls module, necessary since DCMTK 3.6.7 (cf. file
++# "dcmtls/libsrc/tlslayer.cc"). This must be done before the
++# invokation of "configure_file()"!
++if (STATIC_BUILD OR NOT USE_SYSTEM_OPENSSL)
++  # The "CHECK_FUNCTIONWITHHEADER_EXISTS()" provided by DCMTK only
++  # works with the system-wide version of OpenSSL. If statically
++  # linking against OpenSSL, we manually provide information about
++  # OpenSSL 3.0.x
++  set(HAVE_OPENSSL_PROTOTYPE_DH_BITS 1)
++  set(HAVE_OPENSSL_PROTOTYPE_EVP_PKEY_BASE_ID 1)
++  set(HAVE_OPENSSL_PROTOTYPE_SSL_CTX_GET0_PARAM 1)
++  set(HAVE_OPENSSL_PROTOTYPE_SSL_CTX_GET_CERT_STORE 1)
++  set(HAVE_OPENSSL_PROTOTYPE_SSL_CTX_GET_CIPHERS 1)
++  set(HAVE_OPENSSL_PROTOTYPE_X509_GET_SIGNATURE_NID 1)
++  set(HAVE_OPENSSL_PROTOTYPE_X509_STORE_GET0_PARAM 1)
++else()
++  CHECK_FUNCTIONWITHHEADER_EXISTS("DH_bits" "openssl/dh.h" HAVE_OPENSSL_PROTOTYPE_DH_BITS)
++  CHECK_FUNCTIONWITHHEADER_EXISTS("EVP_PKEY_base_id" "openssl/evp.h" HAVE_OPENSSL_PROTOTYPE_EVP_PKEY_BASE_ID)
++  CHECK_FUNCTIONWITHHEADER_EXISTS("SSL_CTX_get0_param" "openssl/ssl.h" HAVE_OPENSSL_PROTOTYPE_SSL_CTX_GET0_PARAM)
++  CHECK_FUNCTIONWITHHEADER_EXISTS("SSL_CTX_get_cert_store" "openssl/ssl.h" HAVE_OPENSSL_PROTOTYPE_SSL_CTX_GET_CERT_STORE)
++  CHECK_FUNCTIONWITHHEADER_EXISTS("SSL_CTX_get_ciphers" "openssl/ssl.h" HAVE_OPENSSL_PROTOTYPE_SSL_CTX_GET_CIPHERS)
++  CHECK_FUNCTIONWITHHEADER_EXISTS("X509_STORE_get0_param" "openssl/x509.h" HAVE_OPENSSL_PROTOTYPE_X509_STORE_GET0_PARAM)
++  CHECK_FUNCTIONWITHHEADER_EXISTS("X509_get_signature_nid" "openssl/x509.h" HAVE_OPENSSL_PROTOTYPE_X509_GET_SIGNATURE_NID)
++endif()
++
++
++# "DCMTK_ENABLE_CHARSET_CONVERSION" is defined by "osconfig.h.in"
++if (NOT DEFINED DCMTK_LOCALE_BACKEND OR   # This is the case if locale support is disabled (e.g. in Stone)
++    DCMTK_LOCALE_BACKEND STREQUAL "gcc")
++  set(DCMTK_ENABLE_CHARSET_CONVERSION "DCMTK_CHARSET_CONVERSION_STDLIBC_ICONV" CACHE STRING "" FORCE)
++elseif (DCMTK_LOCALE_BACKEND STREQUAL "libiconv")
++  set(DCMTK_ENABLE_CHARSET_CONVERSION "DCMTK_CHARSET_CONVERSION_ICONV" CACHE STRING "" FORCE)
++elseif (DCMTK_LOCALE_BACKEND STREQUAL "icu")
++  message(FATAL_ERROR "Support for ICU has been removed since DCMTK 3.6.9")
++elseif (DCMTK_LOCALE_BACKEND STREQUAL "oficonv")
++  set(DCMTK_ENABLE_CHARSET_CONVERSION "DCMTK_CHARSET_CONVERSION_OFICONV" CACHE STRING "" FORCE)
++else()
++  message(FATAL_ERROR "Invalid value for DCMTK_LOCALE_BACKEND: ${DCMTK_LOCALE_BACKEND}")
++endif()
++
++
++# Enable support of the 1.2.840.10008.1.2.1.99 transfer syntax in
++# static builds of Orthanc (Deflated Explicit VR Little
++# Endian). Defining "WITH_ZLIB" is always OK, as zlib is part of the
++# core dependencies of the Orthanc framework.
++# https://discourse.orthanc-server.org/t/transcoding-to-deflated-transfer-syntax-fails/
++set(WITH_ZLIB ON)
++
++CONFIGURE_FILE(
++  ${DCMTK_SOURCES_DIR}/CMake/osconfig.h.in
++  ${DCMTK_SOURCES_DIR}/config/include/dcmtk/config/osconfig.h)
++
++
++
++if (${CMAKE_SYSTEM_NAME} STREQUAL "Windows")
++  link_libraries(netapi32)  # For NetWkstaUserGetInfo@12
++  link_libraries(iphlpapi)  # For GetAdaptersInfo@8
++
++  # Configure Wine if cross-compiling for Windows
++  if (CMAKE_COMPILER_IS_GNUCXX)
++    include(${DCMTK_SOURCES_DIR}/CMake/dcmtkUseWine.cmake)
++    FIND_PROGRAM(WINE_WINE_PROGRAM wine)
++    FIND_PROGRAM(WINE_WINEPATH_PROGRAM winepath)
++    list(APPEND DCMTK_TRY_COMPILE_REQUIRED_CMAKE_FLAGS "-DCMAKE_EXE_LINKER_FLAGS=-static")
++  endif()
++endif()
++
++# This step must be after the generation of "osconfig.h" => Removed since DCMTK 3.6.9
++#if (NOT CMAKE_SYSTEM_NAME STREQUAL "Emscripten")
++#  INSPECT_FUNDAMENTAL_ARITHMETIC_TYPES()
++#endif()
++
++
++# Source for the logging facility of DCMTK
++AUX_SOURCE_DIRECTORY(${DCMTK_SOURCES_DIR}/oflog/libsrc DCMTK_SOURCES)
++if (${CMAKE_SYSTEM_NAME} STREQUAL "Linux" OR
++    ${CMAKE_SYSTEM_NAME} STREQUAL "Darwin" OR
++    ${CMAKE_SYSTEM_NAME} STREQUAL "FreeBSD" OR
++    ${CMAKE_SYSTEM_NAME} STREQUAL "kFreeBSD" OR
++    ${CMAKE_SYSTEM_NAME} STREQUAL "OpenBSD" OR
++    ${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
++  list(REMOVE_ITEM DCMTK_SOURCES
++    ${DCMTK_SOURCES_DIR}/oflog/libsrc/clfsap.cc
++    ${DCMTK_SOURCES_DIR}/oflog/libsrc/windebap.cc
++    ${DCMTK_SOURCES_DIR}/oflog/libsrc/winsock.cc
++    )
++
++elseif (${CMAKE_SYSTEM_NAME} STREQUAL "Windows")
++  list(REMOVE_ITEM DCMTK_SOURCES
++    ${DCMTK_SOURCES_DIR}/oflog/libsrc/unixsock.cc
++    ${DCMTK_SOURCES_DIR}/oflog/libsrc/clfsap.cc
++    )
++endif()
++
++
++# Starting with DCMTK 3.6.2, the Nagle algorithm is not disabled by
++# default since this does not seem to be appropriate (anymore) for
++# most modern operating systems. In order to change this default, the
++# environment variable NO_TCPDELAY can be set to "1" (see envvars.txt
++# for details). Alternatively, the macro DISABLE_NAGLE_ALGORITHM can
++# be defined to change this setting at compilation time (see
++# macros.txt for details).
++# https://forum.dcmtk.org/viewtopic.php?t=4632
++add_definitions(
++  -DDISABLE_NAGLE_ALGORITHM=1
++  )
++
++
++if (${CMAKE_SYSTEM_NAME} STREQUAL "Windows")
++  # For compatibility with Windows XP, avoid using fiber-local-storage
++  # in log4cplus, but use thread-local-storage instead. Otherwise,
++  # Windows XP complains about missing "FlsGetValue()" in KERNEL32.dll
++  add_definitions(
++    -DDCMTK_LOG4CPLUS_AVOID_WIN32_FLS
++    )
++
++  if (CMAKE_COMPILER_IS_GNUCXX OR             # MinGW
++      "${CMAKE_SIZEOF_VOID_P}" STREQUAL "4")  # MSVC for 32bit (*)
++
++    # (*) With multithreaded logging enabled, Visual Studio 2008 fails
++    # with error: ".\dcmtk-3.6.7\oflog\libsrc\globinit.cc(422) : error
++    # C2664: 'dcmtk::log4cplus::thread::impl::tls_init' : cannot
++    # convert parameter 1 from 'void (__stdcall *)(void *)' to
++    # 'dcmtk::log4cplus::thread::impl::tls_init_cleanup_func_type'"
++    #   None of the functions with this name in scope match the target type
++
++    add_definitions(
++      -DDCMTK_LOG4CPLUS_SINGLE_THREADED
++      )
++  endif()
++
++  if (CMAKE_COMPILER_IS_GNUCXX)  # MinGW
++    # Necessary since DCMTK 3.6.9
++    add_definitions(
++      -DENABLE_OLD_OFSTD_FTOA_IMPLEMENTATION
++      -DENABLE_OLD_OFSTD_ATOF_IMPLEMENTATION
++      )
++  endif()
++endif()
++
++
++if (DCMTK_LOCALE_BACKEND STREQUAL "oficonv")
++  AUX_SOURCE_DIRECTORY(${DCMTK_SOURCES_DIR}/oficonv/libsrc DCMTK_SOURCES)
++endif()
+diff -r 5037896a19ae -r 5e961d92f655 OrthancFramework/Resources/CMake/OrthancFrameworkParameters.cmake
+--- a/OrthancFramework/Resources/CMake/OrthancFrameworkParameters.cmake	Fri Dec 19 12:39:05 2025 +0100
++++ b/OrthancFramework/Resources/CMake/OrthancFrameworkParameters.cmake	Fri Dec 19 15:49:06 2025 +0100
+@@ -79,7 +79,7 @@
+ 
+ # Parameters specific to DCMTK
+ set(DCMTK_DICTIONARY_DIR "" CACHE PATH "Directory containing the DCMTK dictionaries \"dicom.dic\" and \"private.dic\" (only when using system version of DCMTK)")
+-set(DCMTK_STATIC_VERSION "3.6.9" CACHE STRING "Version of DCMTK to be used in static builds (can be \"3.6.0\", \"3.6.2\", \"3.6.4\", \"3.6.5\", \"3.6.6\", \"3.6.7\", \"3.6.8\", or \"3.6.9\")")
++set(DCMTK_STATIC_VERSION "3.7.0" CACHE STRING "Version of DCMTK to be used in static builds (can be \"3.6.0\", \"3.6.2\", \"3.6.4\", \"3.6.5\", \"3.6.6\", \"3.6.7\", \"3.6.8\", \"3.6.9\", or \"3.7.0\")")
+ set(USE_DCMTK_362_PRIVATE_DIC ON CACHE BOOL "Use the dictionary of private tags from DCMTK 3.6.2 if using DCMTK 3.6.0")
+ set(USE_SYSTEM_DCMTK ON CACHE BOOL "Use the system version of DCMTK")
+ set(ENABLE_DCMTK_LOG ON CACHE BOOL "Enable logging internal to DCMTK")
+diff -r 5037896a19ae -r 5e961d92f655 OrthancFramework/Resources/Patches/dcmtk-3.7.0-visual-studio.patch
+--- /dev/null	Thu Jan 01 00:00:00 1970 +0000
++++ b/OrthancFramework/Resources/Patches/dcmtk-3.7.0-visual-studio.patch	Fri Dec 19 15:49:06 2025 +0100
+@@ -0,0 +1,2173 @@
++diff -urEb dcmtk-3.7.0.orig/config/math.cc dcmtk-3.7.0/config/math.cc
++--- dcmtk-3.7.0.orig/config/math.cc	2025-12-19 14:51:32.420814222 +0100
+++++ dcmtk-3.7.0/config/math.cc	2025-12-19 14:54:07.699710064 +0100
++@@ -42,26 +42,46 @@
++ #include <windows.h>
++ #endif
++ 
+++#if defined(_MSC_VER)
+++#include <float.h>
+++#endif
+++
++ struct dcmtk_config_math
++ {
++   static inline OFBool isnan( float f )
++   {
+++#if defined(_MSC_VER)
+++    return _isnan(static_cast<double>(f)) != 0;
+++#else
++     return STD_NAMESPACE isnan(f);
+++#endif
++   }
++ 
++   static inline OFBool isnan( double d )
++   {
+++#if defined(_MSC_VER)
+++    return _isnan(d) != 0;
+++#else
++     return STD_NAMESPACE isnan(d);
+++#endif
++   }
++ 
++   static inline OFBool isinf( float f )
++   {
+++#if defined(_MSC_VER)
+++    return _finite(static_cast<double>(f)) != 0;
+++#else
++     return STD_NAMESPACE isinf( f );
+++#endif
++   }
++ 
++   static inline OFBool isinf( double d )
++   {
+++#if defined(_MSC_VER)
+++    return _finite(d) != 0;
+++#else
++     return STD_NAMESPACE isinf( d );
+++#endif
++   }
++ 
++   static inline double sqrt( double d )
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg12/jccoefct.c dcmtk-3.7.0/dcmjpeg/libijg12/jccoefct.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg12/jccoefct.c	2025-12-19 14:51:32.451814000 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg12/jccoefct.c	2025-12-19 14:54:35.055516562 +0100
++@@ -343,7 +343,7 @@
++ METHODDEF(boolean)
++ compress_output (j_compress_ptr cinfo, JSAMPIMAGE input_buf)
++ {
++-  (void)input_buf;
+++  //(void)input_buf;
++   j_lossy_c_ptr lossyc = (j_lossy_c_ptr) cinfo->codec;
++   c_coef_ptr coef = (c_coef_ptr) lossyc->coef_private;
++   JDIMENSION MCU_col_num;   /* index of current MCU within row */
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg12/jccolor.c dcmtk-3.7.0/dcmjpeg/libijg12/jccolor.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg12/jccolor.c	2025-12-19 14:51:32.451814000 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg12/jccolor.c	2025-12-19 15:09:42.504566395 +0100
++@@ -340,7 +340,7 @@
++ METHODDEF(void)
++ null_method (j_compress_ptr cinfo)
++ {
++-  (void) cinfo;
+++  //(void) cinfo;
++   /* no work needed */
++ }
++ 
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg12/jcdiffct.c dcmtk-3.7.0/dcmjpeg/libijg12/jcdiffct.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg12/jcdiffct.c	2025-12-19 14:51:32.452813993 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg12/jcdiffct.c	2025-12-19 14:55:01.682328471 +0100
++@@ -302,7 +302,7 @@
++ METHODDEF(boolean)
++ compress_output (j_compress_ptr cinfo, JSAMPIMAGE input_buf)
++ {
++-  (void)input_buf;
+++  //(void)input_buf;
++   j_lossless_c_ptr losslsc = (j_lossless_c_ptr) cinfo->codec;
++   c_diff_ptr diff = (c_diff_ptr) losslsc->diff_private;
++   /* JDIMENSION MCU_col_num; */ /* index of current MCU within row */
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg12/jclhuff.c dcmtk-3.7.0/dcmjpeg/libijg12/jclhuff.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg12/jclhuff.c	2025-12-19 14:51:32.451814000 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg12/jclhuff.c	2025-12-19 15:10:05.013448850 +0100
++@@ -569,7 +569,7 @@
++ METHODDEF(boolean)
++ need_optimization_pass (j_compress_ptr cinfo)
++ {
++-  (void)cinfo;
+++  //(void)cinfo;
++   return TRUE;
++ }
++ 
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg12/jcmarker.c dcmtk-3.7.0/dcmjpeg/libijg12/jcmarker.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg12/jcmarker.c	2025-12-19 14:51:32.451814000 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg12/jcmarker.c	2025-12-19 15:08:42.299873627 +0100
++@@ -224,7 +224,7 @@
++ /* Since the useful info is so small, we want to emit all the tables in */
++ /* one DAC marker.  Therefore this routine does its own scan of the table. */
++ {
++-  (void)cinfo;
+++  //(void)cinfo;
++ #ifdef C_ARITH_CODING_SUPPORTED
++   char dc_in_use[NUM_ARITH_TBLS];
++   char ac_in_use[NUM_ARITH_TBLS];
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg12/jcpred.c dcmtk-3.7.0/dcmjpeg/libijg12/jcpred.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg12/jcpred.c	2025-12-19 14:51:32.451814000 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg12/jcpred.c	2025-12-19 15:07:02.982354700 +0100
++@@ -213,7 +213,7 @@
++          const JSAMPROW input_buf, JSAMPROW prev_row,
++          JDIFFROW diff_buf, JDIMENSION width)
++ {
++-  (void)prev_row;
+++  //(void)prev_row;
++   DIFFERENCE_1D(INITIAL_PREDICTORx);
++ 
++   /*
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg12/jcsample.c dcmtk-3.7.0/dcmjpeg/libijg12/jcsample.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg12/jcsample.c	2025-12-19 14:51:32.451814000 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg12/jcsample.c	2025-12-19 15:09:09.294737204 +0100
++@@ -74,7 +74,7 @@
++ METHODDEF(void)
++ start_pass_downsample (j_compress_ptr cinfo)
++ {
++-  (void)cinfo;
+++  //(void)cinfo;
++   /* no work for now */
++ }
++ 
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg12/jcscale.c dcmtk-3.7.0/dcmjpeg/libijg12/jcscale.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg12/jcscale.c	2025-12-19 14:51:32.452813993 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg12/jcscale.c	2025-12-19 15:09:34.996605290 +0100
++@@ -34,7 +34,7 @@
++ noscale(j_compress_ptr cinfo,
++ 	JSAMPROW input_buf, JSAMPROW output_buf, JDIMENSION width)
++ {
++-  (void)cinfo;
+++  //(void)cinfo;
++   MEMCOPY(output_buf, input_buf, width * SIZEOF(JSAMPLE));
++   return;
++ }
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg12/jcshuff.c dcmtk-3.7.0/dcmjpeg/libijg12/jcshuff.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg12/jcshuff.c	2025-12-19 14:51:32.451814000 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg12/jcshuff.c	2025-12-19 15:09:49.765528629 +0100
++@@ -629,7 +629,7 @@
++ METHODDEF(boolean)
++ need_optimization_pass (j_compress_ptr cinfo)
++ {
++-  (void)cinfo;
+++  //(void)cinfo;
++   return TRUE;
++ }
++ 
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg12/jctrans.c dcmtk-3.7.0/dcmjpeg/libijg12/jctrans.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg12/jctrans.c	2025-12-19 14:51:32.451814000 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg12/jctrans.c	2025-12-19 15:07:28.076236451 +0100
++@@ -267,7 +267,7 @@
++ METHODDEF(boolean)
++ compress_output (j_compress_ptr cinfo, JSAMPIMAGE input_buf)
++ {
++-  (void)input_buf;
+++  //(void)input_buf;
++   j_lossy_c_ptr lossyc = (j_lossy_c_ptr) cinfo->codec;
++   c_coef_ptr coef = (c_coef_ptr) lossyc->coef_private;
++   JDIMENSION MCU_col_num;   /* index of current MCU within row */
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg12/jdatasrc.c dcmtk-3.7.0/dcmjpeg/libijg12/jdatasrc.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg12/jdatasrc.c	2025-12-19 14:51:32.451814000 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg12/jdatasrc.c	2025-12-19 15:08:57.706796040 +0100
++@@ -168,7 +168,7 @@
++ METHODDEF(void)
++ term_source (j_decompress_ptr cinfo)
++ {
++-  (void)cinfo;
+++  //(void)cinfo;
++   /* no work necessary here */
++ }
++ 
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg12/jdcoefct.c dcmtk-3.7.0/dcmjpeg/libijg12/jdcoefct.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg12/jdcoefct.c	2025-12-19 14:51:32.451814000 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg12/jdcoefct.c	2025-12-19 15:07:15.724294952 +0100
++@@ -229,7 +229,7 @@
++ METHODDEF(int)
++ dummy_consume_data (j_decompress_ptr cinfo)
++ {
++-  (void)cinfo;
+++  //(void)cinfo;
++   return JPEG_SUSPENDED;    /* Always indicate nothing was done */
++ }
++ 
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg12/jdcolor.c dcmtk-3.7.0/dcmjpeg/libijg12/jdcolor.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg12/jdcolor.c	2025-12-19 14:51:32.451814000 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg12/jdcolor.c	2025-12-19 15:09:59.200479340 +0100
++@@ -309,7 +309,7 @@
++ METHODDEF(void)
++ start_pass_dcolor (j_decompress_ptr cinfo)
++ {
++-  (void)cinfo;
+++  //(void)cinfo;
++   /* no work needed */
++ }
++ 
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg12/jddiffct.c dcmtk-3.7.0/dcmjpeg/libijg12/jddiffct.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg12/jddiffct.c	2025-12-19 14:51:32.451814000 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg12/jddiffct.c	2025-12-19 15:05:29.191944671 +0100
++@@ -238,7 +238,7 @@
++ METHODDEF(int)
++ dummy_consume_data (j_decompress_ptr cinfo)
++ {
++-  (void)cinfo;
+++  //(void)cinfo;
++   return JPEG_SUSPENDED;    /* Always indicate nothing was done */
++ }
++ 
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg12/jdmerge.c dcmtk-3.7.0/dcmjpeg/libijg12/jdmerge.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg12/jdmerge.c	2025-12-19 14:51:32.451814000 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg12/jdmerge.c	2025-12-19 15:10:43.280245916 +0100
++@@ -148,7 +148,7 @@
++             JDIMENSION out_rows_avail)
++ /* 2:1 vertical sampling case: may need a spare row. */
++ {
++-  (void) in_row_groups_avail;
+++  //(void) in_row_groups_avail;
++   my_upsample_ptr upsample = (my_upsample_ptr) cinfo->upsample;
++   JSAMPROW work_ptrs[2];
++   JDIMENSION num_rows;      /* number of rows returned to caller */
++@@ -198,8 +198,8 @@
++             JDIMENSION out_rows_avail)
++ /* 1:1 vertical sampling case: much easier, never need a spare row. */
++ {
++-  (void) in_row_groups_avail;
++-  (void) out_rows_avail;
+++  //(void) in_row_groups_avail;
+++  //(void) out_rows_avail;
++   my_upsample_ptr upsample = (my_upsample_ptr) cinfo->upsample;
++ 
++   /* Just do the upsampling. */
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg12/jdpostct.c dcmtk-3.7.0/dcmjpeg/libijg12/jdpostct.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg12/jdpostct.c	2025-12-19 14:51:32.451814000 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg12/jdpostct.c	2025-12-19 15:06:35.014488269 +0100
++@@ -161,8 +161,8 @@
++               JSAMPARRAY output_buf, JDIMENSION *out_row_ctr,
++               JDIMENSION out_rows_avail)
++ {
++-  (void) output_buf;
++-  (void) out_rows_avail;
+++  //(void) output_buf;
+++  //(void) out_rows_avail;
++   my_post_ptr post = (my_post_ptr) cinfo->post;
++   JDIMENSION old_next_row, num_rows;
++ 
++@@ -207,9 +207,9 @@
++             JSAMPARRAY output_buf, JDIMENSION *out_row_ctr,
++             JDIMENSION out_rows_avail)
++ {
++-  (void) input_buf;
++-  (void) in_row_group_ctr;
++-  (void) in_row_groups_avail;
+++  //(void) input_buf;
+++  //(void) in_row_group_ctr;
+++  //(void) in_row_groups_avail;
++ 
++   my_post_ptr post = (my_post_ptr) cinfo->post;
++   JDIMENSION num_rows, max_rows;
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg12/jdpred.c dcmtk-3.7.0/dcmjpeg/libijg12/jdpred.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg12/jdpred.c	2025-12-19 14:51:32.451814000 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg12/jdpred.c	2025-12-19 15:06:05.530692658 +0100
++@@ -101,8 +101,8 @@
++            const JDIFFROW diff_buf, const JDIFFROW prev_row,
++            JDIFFROW undiff_buf, JDIMENSION width)
++ {
++-  (void)cinfo;
++-  (void)comp_index;
+++  //(void)cinfo;
+++  //(void)comp_index;
++   UNDIFFERENCE_1D(INITIAL_PREDICTOR2);
++ }
++ 
++@@ -111,8 +111,8 @@
++            const JDIFFROW diff_buf, const JDIFFROW prev_row,
++            JDIFFROW undiff_buf, JDIMENSION width)
++ {
++-  (void)cinfo;
++-  (void)comp_index;
+++  //(void)cinfo;
+++  //(void)comp_index;
++   UNDIFFERENCE_2D(PREDICTOR2);
++   JPEG_UNUSED(Rc);
++   JPEG_UNUSED(Rb);
++@@ -123,8 +123,8 @@
++            const JDIFFROW diff_buf, const JDIFFROW prev_row,
++            JDIFFROW undiff_buf, JDIMENSION width)
++ {
++-  (void)cinfo;
++-  (void)comp_index;
+++  //(void)cinfo;
+++  //(void)comp_index;
++   UNDIFFERENCE_2D(PREDICTOR3);
++   JPEG_UNUSED(Rc);
++   JPEG_UNUSED(Rb);
++@@ -135,8 +135,8 @@
++            const JDIFFROW diff_buf, const JDIFFROW prev_row,
++            JDIFFROW undiff_buf, JDIMENSION width)
++ {
++-  (void)cinfo;
++-  (void)comp_index;
+++  //(void)cinfo;
+++  //(void)comp_index;
++   UNDIFFERENCE_2D(PREDICTOR4);
++   JPEG_UNUSED(Rc);
++   JPEG_UNUSED(Rb);
++@@ -147,8 +147,8 @@
++            const JDIFFROW diff_buf, const JDIFFROW prev_row,
++            JDIFFROW undiff_buf, JDIMENSION width)
++ {
++-  (void)cinfo;
++-  (void)comp_index;
+++  //(void)cinfo;
+++  //(void)comp_index;
++   SHIFT_TEMPS
++   UNDIFFERENCE_2D(PREDICTOR5);
++   JPEG_UNUSED(Rc);
++@@ -160,8 +160,8 @@
++            const JDIFFROW diff_buf, const JDIFFROW prev_row,
++            JDIFFROW undiff_buf, JDIMENSION width)
++ {
++-  (void)cinfo;
++-  (void)comp_index;
+++  //(void)cinfo;
+++  //(void)comp_index;
++   SHIFT_TEMPS
++   UNDIFFERENCE_2D(PREDICTOR6);
++   JPEG_UNUSED(Rc);
++@@ -173,8 +173,8 @@
++            const JDIFFROW diff_buf, const JDIFFROW prev_row,
++            JDIFFROW undiff_buf, JDIMENSION width)
++ {
++-  (void)cinfo;
++-  (void)comp_index;
+++  //(void)cinfo;
+++  //(void)comp_index;
++   SHIFT_TEMPS
++   UNDIFFERENCE_2D(PREDICTOR7);
++   JPEG_UNUSED(Rc);
++@@ -195,7 +195,7 @@
++                 JDIFFROW undiff_buf, JDIMENSION width)
++ {
++ 
++-  (void)prev_row;
+++  //(void)prev_row;
++   j_lossless_d_ptr losslsd = (j_lossless_d_ptr) cinfo->codec;
++ 
++   UNDIFFERENCE_1D(INITIAL_PREDICTORx);
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg12/jdsample.c dcmtk-3.7.0/dcmjpeg/libijg12/jdsample.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg12/jdsample.c	2025-12-19 14:51:32.451814000 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg12/jdsample.c	2025-12-19 15:10:15.655392798 +0100
++@@ -92,7 +92,7 @@
++           JSAMPARRAY output_buf, JDIMENSION *out_row_ctr,
++           JDIMENSION out_rows_avail)
++ {
++-  (void)in_row_groups_avail;
+++  //(void)in_row_groups_avail;
++   my_upsample_ptr upsample = (my_upsample_ptr) cinfo->upsample;
++   int ci;
++   jpeg_component_info * compptr;
++@@ -158,8 +158,8 @@
++ fullsize_upsample (j_decompress_ptr cinfo, jpeg_component_info * compptr,
++            JSAMPARRAY input_data, JSAMPARRAY * output_data_ptr)
++ {
++-  (void)cinfo;
++-  (void)compptr;
+++  //(void)cinfo;
+++  //(void)compptr;
++   *output_data_ptr = input_data;
++ }
++ 
++@@ -173,9 +173,9 @@
++ noop_upsample (j_decompress_ptr cinfo, jpeg_component_info * compptr,
++            JSAMPARRAY input_data, JSAMPARRAY * output_data_ptr)
++ {
++-  (void)cinfo;
++-  (void)compptr;
++-  (void)input_data;
+++  //(void)cinfo;
+++  //(void)compptr;
+++  //(void)input_data;
++   *output_data_ptr = NULL;  /* safety check */
++ }
++ 
++@@ -239,7 +239,7 @@
++ h2v1_upsample (j_decompress_ptr cinfo, jpeg_component_info * compptr,
++            JSAMPARRAY input_data, JSAMPARRAY * output_data_ptr)
++ {
++-  (void)compptr;
+++  //(void)compptr;
++   JSAMPARRAY output_data = *output_data_ptr;
++   register JSAMPROW inptr, outptr;
++   register JSAMPLE invalue;
++@@ -268,7 +268,7 @@
++ h2v2_upsample (j_decompress_ptr cinfo, jpeg_component_info * compptr,
++            JSAMPARRAY input_data, JSAMPARRAY * output_data_ptr)
++ {
++-  (void)compptr;
+++  //(void)compptr;
++   JSAMPARRAY output_data = *output_data_ptr;
++   register JSAMPROW inptr, outptr;
++   register JSAMPLE invalue;
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg12/jdscale.c dcmtk-3.7.0/dcmjpeg/libijg12/jdscale.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg12/jdscale.c	2025-12-19 14:51:32.451814000 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg12/jdscale.c	2025-12-19 15:10:57.995166893 +0100
++@@ -67,7 +67,7 @@
++ 	const JDIFFROW diff_buf, JSAMPROW output_buf,
++ 	JDIMENSION width)
++ {
++-  (void)cinfo;
+++  //(void)cinfo;
++   unsigned int xindex;
++ 
++   for (xindex = 0; xindex < width; xindex++)
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg12/jerror.c dcmtk-3.7.0/dcmjpeg/libijg12/jerror.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg12/jerror.c	2025-12-19 14:51:32.451814000 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg12/jerror.c	2025-12-19 15:24:56.796118240 +0100
++@@ -34,6 +34,10 @@
++ #define EXIT_FAILURE  1
++ #endif
++ 
+++#if defined(_MSC_VER) && _MSC_VER < 1900
+++#define snprintf _snprintf
+++#endif
+++
++ 
++ /*
++  * Create the message string table.
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg12/jmemnobs.c dcmtk-3.7.0/dcmjpeg/libijg12/jmemnobs.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg12/jmemnobs.c	2025-12-19 14:51:32.451814000 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg12/jmemnobs.c	2025-12-19 15:05:23.911981299 +0100
++@@ -29,15 +29,15 @@
++ GLOBAL(void *)
++ jpeg_get_small (j_common_ptr cinfo, size_t sizeofobject)
++ {
++-  (void) cinfo;
+++  //(void) cinfo;
++   return (void *) malloc(sizeofobject);
++ }
++ 
++ GLOBAL(void)
++ jpeg_free_small (j_common_ptr cinfo, void * object, size_t sizeofobject)
++ {
++-  (void) cinfo;
++-  (void) sizeofobject;
+++  //(void) cinfo;
+++  //(void) sizeofobject;
++   free(object);
++ }
++ 
++@@ -52,15 +52,15 @@
++ GLOBAL(void FAR *)
++ jpeg_get_large (j_common_ptr cinfo, size_t sizeofobject)
++ {
++-  (void) cinfo;
+++  //(void) cinfo;
++   return (void FAR *) malloc(sizeofobject);
++ }
++ 
++ GLOBAL(void)
++ jpeg_free_large (j_common_ptr cinfo, void FAR * object, size_t sizeofobject)
++ {
++-  (void) cinfo;
++-  (void) sizeofobject;
+++  //(void) cinfo;
+++  //(void) sizeofobject;
++   free(object);
++ }
++ 
++@@ -74,9 +74,9 @@
++ jpeg_mem_available (j_common_ptr cinfo, long min_bytes_needed,
++ 		    long max_bytes_needed, long already_allocated)
++ {
++-  (void) cinfo;
++-  (void) min_bytes_needed;
++-  (void) already_allocated;
+++  //(void) cinfo;
+++  //(void) min_bytes_needed;
+++  //(void) already_allocated;
++   return max_bytes_needed;
++ }
++ 
++@@ -91,8 +91,8 @@
++ jpeg_open_backing_store (j_common_ptr cinfo, backing_store_ptr info,
++ 			 long total_bytes_needed)
++ {
++-  (void) info;
++-  (void) total_bytes_needed;
+++  //(void) info;
+++  //(void) total_bytes_needed;
++   ERREXIT(cinfo, JERR_NO_BACKING_STORE);
++ }
++ 
++@@ -105,13 +105,13 @@
++ GLOBAL(long)
++ jpeg_mem_init (j_common_ptr cinfo)
++ {
++-  (void) cinfo;
+++  //(void) cinfo;
++   return 0;			/* just set max_memory_to_use to 0 */
++ }
++ 
++ GLOBAL(void)
++ jpeg_mem_term (j_common_ptr cinfo)
++ {
++-  (void) cinfo;
+++  //(void) cinfo;
++   /* no work */
++ }
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg12/jquant1.c dcmtk-3.7.0/dcmjpeg/libijg12/jquant1.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg12/jquant1.c	2025-12-19 14:51:32.451814000 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg12/jquant1.c	2025-12-19 15:07:52.641118462 +0100
++@@ -251,8 +251,8 @@
++    * (Forcing the upper and lower values to the limits ensures that
++    * dithering can't produce a color outside the selected gamut.)
++    */
++-  (void) cinfo;
++-  (void) ci;
+++  //(void) cinfo;
+++  //(void) ci;
++   return (int) (((IJG_INT32) j * MAXJSAMPLE + maxj/2) / maxj);
++ }
++ 
++@@ -262,8 +262,8 @@
++ /* Return largest input value that should map to j'th output value */
++ /* Must have largest(j=0) >= 0, and largest(j=maxj) >= MAXJSAMPLE */
++ {
++-  (void) cinfo;
++-  (void) ci;
+++  //(void) cinfo;
+++  //(void) ci;
++   /* Breakpoints are halfway between values returned by output_value */
++   return (int) (((IJG_INT32) (2*j + 1) * MAXJSAMPLE + maxj) / (2*maxj));
++ }
++@@ -744,7 +744,7 @@
++ METHODDEF(void)
++ start_pass_1_quant (j_decompress_ptr cinfo, boolean is_pre_scan)
++ {
++-  (void) is_pre_scan;
+++  //(void) is_pre_scan;
++   my_cquantize_ptr cquantize = (my_cquantize_ptr) cinfo->cquantize;
++   size_t arraysize;
++   int i;
++@@ -802,7 +802,7 @@
++ METHODDEF(void)
++ finish_pass_1_quant (j_decompress_ptr cinfo)
++ {
++-  (void) cinfo;
+++  //(void) cinfo;
++   /* no work in 1-pass case */
++ }
++ 
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg12/jquant2.c dcmtk-3.7.0/dcmjpeg/libijg12/jquant2.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg12/jquant2.c	2025-12-19 14:51:32.451814000 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg12/jquant2.c	2025-12-19 15:10:31.818307098 +0100
++@@ -224,7 +224,7 @@
++ prescan_quantize (j_decompress_ptr cinfo, JSAMPARRAY input_buf,
++           JSAMPARRAY output_buf, int num_rows)
++ {
++-  (void) output_buf;
+++  //(void) output_buf;
++   my_cquantize_ptr cquantize = (my_cquantize_ptr) cinfo->cquantize;
++   register JSAMPROW ptr;
++   register histptr histp;
++@@ -1156,7 +1156,7 @@
++ METHODDEF(void)
++ finish_pass2 (j_decompress_ptr cinfo)
++ {
++-  (void) cinfo;
+++  //(void) cinfo;
++   /* no work */
++ }
++ 
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg16/jccoefct.c dcmtk-3.7.0/dcmjpeg/libijg16/jccoefct.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg16/jccoefct.c	2025-12-19 14:51:32.452813993 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg16/jccoefct.c	2025-12-19 14:59:49.827306086 +0100
++@@ -343,7 +343,7 @@
++ METHODDEF(boolean)
++ compress_output (j_compress_ptr cinfo, JSAMPIMAGE input_buf)
++ {
++-  (void)input_buf;
+++  //(void)input_buf;
++   j_lossy_c_ptr lossyc = (j_lossy_c_ptr) cinfo->codec;
++   c_coef_ptr coef = (c_coef_ptr) lossyc->coef_private;
++   JDIMENSION MCU_col_num;   /* index of current MCU within row */
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg16/jccolor.c dcmtk-3.7.0/dcmjpeg/libijg16/jccolor.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg16/jccolor.c	2025-12-19 14:51:32.452813993 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg16/jccolor.c	2025-12-19 15:03:22.767822545 +0100
++@@ -367,7 +367,7 @@
++ METHODDEF(void)
++ null_method (j_compress_ptr cinfo)
++ {
++-  (void) cinfo;
+++  //(void) cinfo;
++   /* no work needed */
++ }
++ 
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg16/jcdiffct.c dcmtk-3.7.0/dcmjpeg/libijg16/jcdiffct.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg16/jcdiffct.c	2025-12-19 14:51:32.452813993 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg16/jcdiffct.c	2025-12-19 15:03:04.023952863 +0100
++@@ -302,7 +302,7 @@
++ METHODDEF(boolean)
++ compress_output (j_compress_ptr cinfo, JSAMPIMAGE input_buf)
++ {
++-  (void)input_buf;
+++  //(void)input_buf;
++   j_lossless_c_ptr losslsc = (j_lossless_c_ptr) cinfo->codec;
++   c_diff_ptr diff = (c_diff_ptr) losslsc->diff_private;
++   /* JDIMENSION MCU_col_num; */ /* index of current MCU within row */
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg16/jclhuff.c dcmtk-3.7.0/dcmjpeg/libijg16/jclhuff.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg16/jclhuff.c	2025-12-19 14:51:32.452813993 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg16/jclhuff.c	2025-12-19 15:03:43.280679986 +0100
++@@ -569,7 +569,7 @@
++ METHODDEF(boolean)
++ need_optimization_pass (j_compress_ptr cinfo)
++ {
++-  (void)cinfo;
+++  //(void)cinfo;
++   return TRUE;
++ }
++ 
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg16/jcmarker.c dcmtk-3.7.0/dcmjpeg/libijg16/jcmarker.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg16/jcmarker.c	2025-12-19 14:51:32.452813993 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg16/jcmarker.c	2025-12-19 15:02:17.296277934 +0100
++@@ -224,7 +224,7 @@
++ /* Since the useful info is so small, we want to emit all the tables in */
++ /* one DAC marker.  Therefore this routine does its own scan of the table. */
++ {
++-  (void)cinfo;
+++  //(void)cinfo;
++ #ifdef C_ARITH_CODING_SUPPORTED
++   char dc_in_use[NUM_ARITH_TBLS];
++   char ac_in_use[NUM_ARITH_TBLS];
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg16/jcpred.c dcmtk-3.7.0/dcmjpeg/libijg16/jcpred.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg16/jcpred.c	2025-12-19 14:51:32.452813993 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg16/jcpred.c	2025-12-19 15:00:46.470910730 +0100
++@@ -213,7 +213,7 @@
++          const JSAMPROW input_buf, JSAMPROW prev_row,
++          JDIFFROW diff_buf, JDIMENSION width)
++ {
++-  (void)prev_row;
+++  //(void)prev_row;
++   DIFFERENCE_1D(INITIAL_PREDICTORx);
++ 
++   /*
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg16/jcsample.c dcmtk-3.7.0/dcmjpeg/libijg16/jcsample.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg16/jcsample.c	2025-12-19 14:51:32.452813993 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg16/jcsample.c	2025-12-19 15:02:48.987057439 +0100
++@@ -74,7 +74,7 @@
++ METHODDEF(void)
++ start_pass_downsample (j_compress_ptr cinfo)
++ {
++-  (void)cinfo;
+++  //(void)cinfo;
++   /* no work for now */
++ }
++ 
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg16/jcscale.c dcmtk-3.7.0/dcmjpeg/libijg16/jcscale.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg16/jcscale.c	2025-12-19 14:51:32.452813993 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg16/jcscale.c	2025-12-19 15:03:14.704878597 +0100
++@@ -34,7 +34,7 @@
++ noscale(j_compress_ptr cinfo,
++ 	JSAMPROW input_buf, JSAMPROW output_buf, JDIMENSION width)
++ {
++-  (void)cinfo;
+++  //(void)cinfo;
++   MEMCOPY(output_buf, input_buf, width * SIZEOF(JSAMPLE));
++   return;
++ }
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg16/jcshuff.c dcmtk-3.7.0/dcmjpeg/libijg16/jcshuff.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg16/jcshuff.c	2025-12-19 14:51:32.452813993 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg16/jcshuff.c	2025-12-19 15:03:29.427776255 +0100
++@@ -629,7 +629,7 @@
++ METHODDEF(boolean)
++ need_optimization_pass (j_compress_ptr cinfo)
++ {
++-  (void)cinfo;
+++  //(void)cinfo;
++   return TRUE;
++ }
++ 
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg16/jctrans.c dcmtk-3.7.0/dcmjpeg/libijg16/jctrans.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg16/jctrans.c	2025-12-19 14:51:32.452813993 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg16/jctrans.c	2025-12-19 15:01:08.670755937 +0100
++@@ -267,7 +267,7 @@
++ METHODDEF(boolean)
++ compress_output (j_compress_ptr cinfo, JSAMPIMAGE input_buf)
++ {
++-  (void)input_buf;
+++  //(void)input_buf;
++   j_lossy_c_ptr lossyc = (j_lossy_c_ptr) cinfo->codec;
++   c_coef_ptr coef = (c_coef_ptr) lossyc->coef_private;
++   JDIMENSION MCU_col_num;   /* index of current MCU within row */
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg16/jdatasrc.c dcmtk-3.7.0/dcmjpeg/libijg16/jdatasrc.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg16/jdatasrc.c	2025-12-19 14:51:32.452813993 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg16/jdatasrc.c	2025-12-19 15:02:35.095154078 +0100
++@@ -168,7 +168,7 @@
++ METHODDEF(void)
++ term_source (j_decompress_ptr cinfo)
++ {
++-  (void)cinfo;
+++  //(void)cinfo;
++   /* no work necessary here */
++ }
++ 
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg16/jdcoefct.c dcmtk-3.7.0/dcmjpeg/libijg16/jdcoefct.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg16/jdcoefct.c	2025-12-19 14:51:32.452813993 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg16/jdcoefct.c	2025-12-19 15:00:53.031864973 +0100
++@@ -229,7 +229,7 @@
++ METHODDEF(int)
++ dummy_consume_data (j_decompress_ptr cinfo)
++ {
++-  (void)cinfo;
+++  //(void)cinfo;
++   return JPEG_SUSPENDED;    /* Always indicate nothing was done */
++ }
++ 
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg16/jdcolor.c dcmtk-3.7.0/dcmjpeg/libijg16/jdcolor.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg16/jdcolor.c	2025-12-19 14:51:32.452813993 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg16/jdcolor.c	2025-12-19 15:03:37.507720102 +0100
++@@ -309,7 +309,7 @@
++ METHODDEF(void)
++ start_pass_dcolor (j_decompress_ptr cinfo)
++ {
++-  (void)cinfo;
+++  //(void)cinfo;
++   /* no work needed */
++ }
++ 
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg16/jddiffct.c dcmtk-3.7.0/dcmjpeg/libijg16/jddiffct.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg16/jddiffct.c	2025-12-19 14:51:32.452813993 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg16/jddiffct.c	2025-12-19 14:57:40.154213605 +0100
++@@ -238,7 +238,7 @@
++ METHODDEF(int)
++ dummy_consume_data (j_decompress_ptr cinfo)
++ {
++-  (void)cinfo;
+++  //(void)cinfo;
++   return JPEG_SUSPENDED;    /* Always indicate nothing was done */
++ }
++ 
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg16/jdmerge.c dcmtk-3.7.0/dcmjpeg/libijg16/jdmerge.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg16/jdmerge.c	2025-12-19 14:51:32.452813993 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg16/jdmerge.c	2025-12-19 15:04:40.925279621 +0100
++@@ -169,7 +169,7 @@
++             JDIMENSION out_rows_avail)
++ /* 2:1 vertical sampling case: may need a spare row. */
++ {
++-  (void) in_row_groups_avail;
+++  //(void) in_row_groups_avail;
++   my_upsample_ptr upsample = (my_upsample_ptr) cinfo->upsample;
++   JSAMPROW work_ptrs[2];
++   JDIMENSION num_rows;      /* number of rows returned to caller */
++@@ -219,8 +219,8 @@
++             JDIMENSION out_rows_avail)
++ /* 1:1 vertical sampling case: much easier, never need a spare row. */
++ {
++-  (void) in_row_groups_avail;
++-  (void) out_rows_avail;
+++  //(void) in_row_groups_avail;
+++  //(void) out_rows_avail;
++   my_upsample_ptr upsample = (my_upsample_ptr) cinfo->upsample;
++ 
++   /* Just do the upsampling. */
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg16/jdpostct.c dcmtk-3.7.0/dcmjpeg/libijg16/jdpostct.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg16/jdpostct.c	2025-12-19 14:51:32.452813993 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg16/jdpostct.c	2025-12-19 15:00:17.435113323 +0100
++@@ -161,8 +161,8 @@
++               JSAMPARRAY output_buf, JDIMENSION *out_row_ctr,
++               JDIMENSION out_rows_avail)
++ {
++-  (void) output_buf;
++-  (void) out_rows_avail;
+++  //(void) output_buf;
+++  //(void) out_rows_avail;
++   my_post_ptr post = (my_post_ptr) cinfo->post;
++   JDIMENSION old_next_row, num_rows;
++ 
++@@ -207,9 +207,9 @@
++             JSAMPARRAY output_buf, JDIMENSION *out_row_ctr,
++             JDIMENSION out_rows_avail)
++ {
++-  (void) input_buf;
++-  (void) in_row_group_ctr;
++-  (void) in_row_groups_avail;
+++  //(void) input_buf;
+++  //(void) in_row_group_ctr;
+++  //(void) in_row_groups_avail;
++   my_post_ptr post = (my_post_ptr) cinfo->post;
++   JDIMENSION num_rows, max_rows;
++ 
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg16/jdpred.c dcmtk-3.7.0/dcmjpeg/libijg16/jdpred.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg16/jdpred.c	2025-12-19 14:51:32.452813993 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg16/jdpred.c	2025-12-19 15:22:20.039113188 +0100
++@@ -101,8 +101,8 @@
++            const JDIFFROW diff_buf, const JDIFFROW prev_row,
++            JDIFFROW undiff_buf, JDIMENSION width)
++ {
++-  (void)cinfo;
++-  (void)comp_index;
+++  //(void)cinfo;
+++  //(void)comp_index;
++   UNDIFFERENCE_1D(INITIAL_PREDICTOR2);
++ }
++ 
++@@ -111,8 +111,8 @@
++            const JDIFFROW diff_buf, const JDIFFROW prev_row,
++            JDIFFROW undiff_buf, JDIMENSION width)
++ {
++-   (void)cinfo;
++-  (void)comp_index;
+++  //(void)cinfo;
+++  //(void)comp_index;
++  UNDIFFERENCE_2D(PREDICTOR2);
++   JPEG_UNUSED(Rc);
++   JPEG_UNUSED(Rb);
++@@ -123,8 +123,8 @@
++            const JDIFFROW diff_buf, const JDIFFROW prev_row,
++            JDIFFROW undiff_buf, JDIMENSION width)
++ {
++-  (void)cinfo;
++-  (void)comp_index;
+++  //(void)cinfo;
+++  //(void)comp_index;
++   UNDIFFERENCE_2D(PREDICTOR3);
++   JPEG_UNUSED(Rc);
++   JPEG_UNUSED(Rb);
++@@ -135,8 +135,8 @@
++            const JDIFFROW diff_buf, const JDIFFROW prev_row,
++            JDIFFROW undiff_buf, JDIMENSION width)
++ {
++-  (void)cinfo;
++-  (void)comp_index;
+++  //(void)cinfo;
+++  //(void)comp_index;
++   UNDIFFERENCE_2D(PREDICTOR4A);
++   JPEG_UNUSED(Rc);
++   JPEG_UNUSED(Rb);
++@@ -147,8 +147,8 @@
++            const JDIFFROW diff_buf, const JDIFFROW prev_row,
++            JDIFFROW undiff_buf, JDIMENSION width)
++ {
++-  (void)cinfo;
++-  (void)comp_index;
+++  //(void)cinfo;
+++  //(void)comp_index;
++   UNDIFFERENCE_2D(PREDICTOR4);
++   JPEG_UNUSED(Rc);
++   JPEG_UNUSED(Rb);
++@@ -159,8 +159,8 @@
++            const JDIFFROW diff_buf, const JDIFFROW prev_row,
++            JDIFFROW undiff_buf, JDIMENSION width)
++ {
++-  (void)cinfo;
++-  (void)comp_index;
+++  //(void)cinfo;
+++  //(void)comp_index;
++   SHIFT_TEMPS
++   UNDIFFERENCE_2D(PREDICTOR5);
++   JPEG_UNUSED(Rc);
++@@ -172,8 +172,8 @@
++            const JDIFFROW diff_buf, const JDIFFROW prev_row,
++            JDIFFROW undiff_buf, JDIMENSION width)
++ {
++-  (void)cinfo;
++-  (void)comp_index;
+++  //(void)cinfo;
+++  //(void)comp_index;
++   SHIFT_TEMPS
++   UNDIFFERENCE_2D(PREDICTOR5A);
++   JPEG_UNUSED(Rc);
++@@ -185,8 +185,8 @@
++            const JDIFFROW diff_buf, const JDIFFROW prev_row,
++            JDIFFROW undiff_buf, JDIMENSION width)
++ {
++-  (void)cinfo;
++-  (void)comp_index;
+++  //(void)cinfo;
+++  //(void)comp_index;
++   SHIFT_TEMPS
++   UNDIFFERENCE_2D(PREDICTOR6);
++   JPEG_UNUSED(Rc);
++@@ -198,8 +198,8 @@
++            const JDIFFROW diff_buf, const JDIFFROW prev_row,
++            JDIFFROW undiff_buf, JDIMENSION width)
++ {
++-  (void)cinfo;
++-  (void)comp_index;
+++  //(void)cinfo;
+++  //(void)comp_index;
++   SHIFT_TEMPS
++   UNDIFFERENCE_2D(PREDICTOR6A);
++   JPEG_UNUSED(Rc);
++@@ -211,8 +211,8 @@
++            const JDIFFROW diff_buf, const JDIFFROW prev_row,
++            JDIFFROW undiff_buf, JDIMENSION width)
++ {
++-  (void)cinfo;
++-  (void)comp_index;
+++  //(void)cinfo;
+++  //(void)comp_index;
++   SHIFT_TEMPS
++   UNDIFFERENCE_2D(PREDICTOR7);
++   JPEG_UNUSED(Rc);
++@@ -224,8 +224,8 @@
++            const JDIFFROW diff_buf, const JDIFFROW prev_row,
++            JDIFFROW undiff_buf, JDIMENSION width)
++ {
++-  (void)cinfo;
++-  (void)comp_index;
+++  //(void)cinfo;
+++  //(void)comp_index;
++   SHIFT_TEMPS
++   UNDIFFERENCE_2D(PREDICTOR7A);
++   JPEG_UNUSED(Rc);
++@@ -245,7 +245,7 @@
++                 const JDIFFROW diff_buf, JDIFFROW prev_row,
++                 JDIFFROW undiff_buf, JDIMENSION width)
++ {
++-  (void)prev_row;
+++  //(void)prev_row;
++   j_lossless_d_ptr losslsd = (j_lossless_d_ptr) cinfo->codec;
++ 
++   UNDIFFERENCE_1D(INITIAL_PREDICTORx);
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg16/jdsample.c dcmtk-3.7.0/dcmjpeg/libijg16/jdsample.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg16/jdsample.c	2025-12-19 14:51:32.452813993 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg16/jdsample.c	2025-12-19 15:04:05.399526318 +0100
++@@ -92,7 +92,7 @@
++           JSAMPARRAY output_buf, JDIMENSION *out_row_ctr,
++           JDIMENSION out_rows_avail)
++ {
++-  (void)in_row_groups_avail;
+++  //(void)in_row_groups_avail;
++   my_upsample_ptr upsample = (my_upsample_ptr) cinfo->upsample;
++   int ci;
++   jpeg_component_info * compptr;
++@@ -158,8 +158,8 @@
++ fullsize_upsample (j_decompress_ptr cinfo, jpeg_component_info * compptr,
++            JSAMPARRAY input_data, JSAMPARRAY * output_data_ptr)
++ {
++-  (void)cinfo;
++-  (void)compptr;
+++  //(void)cinfo;
+++  //(void)compptr;
++   *output_data_ptr = input_data;
++ }
++ 
++@@ -173,9 +173,9 @@
++ noop_upsample (j_decompress_ptr cinfo, jpeg_component_info * compptr,
++            JSAMPARRAY input_data, JSAMPARRAY * output_data_ptr)
++ {
++-  (void)cinfo;
++-  (void)compptr;
++-  (void)input_data;
+++  //(void)cinfo;
+++  //(void)compptr;
+++  //(void)input_data;
++   *output_data_ptr = NULL;  /* safety check */
++ }
++ 
++@@ -239,7 +239,7 @@
++ h2v1_upsample (j_decompress_ptr cinfo, jpeg_component_info * compptr,
++            JSAMPARRAY input_data, JSAMPARRAY * output_data_ptr)
++ {
++-  (void)compptr;
+++  //(void)compptr;
++   JSAMPARRAY output_data = *output_data_ptr;
++   register JSAMPROW inptr, outptr;
++   register JSAMPLE invalue;
++@@ -268,7 +268,7 @@
++ h2v2_upsample (j_decompress_ptr cinfo, jpeg_component_info * compptr,
++            JSAMPARRAY input_data, JSAMPARRAY * output_data_ptr)
++ {
++-  (void)compptr;
+++  //(void)compptr;
++   JSAMPARRAY output_data = *output_data_ptr;
++   register JSAMPROW inptr, outptr;
++   register JSAMPLE invalue;
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg16/jdscale.c dcmtk-3.7.0/dcmjpeg/libijg16/jdscale.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg16/jdscale.c	2025-12-19 14:51:32.452813993 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg16/jdscale.c	2025-12-19 15:04:56.602170799 +0100
++@@ -67,7 +67,7 @@
++ 	const JDIFFROW diff_buf, JSAMPROW output_buf,
++ 	JDIMENSION width)
++ {
++-  (void)cinfo;
+++  //(void)cinfo;
++   unsigned int xindex;
++ 
++   for (xindex = 0; xindex < width; xindex++)
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg16/jerror.c dcmtk-3.7.0/dcmjpeg/libijg16/jerror.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg16/jerror.c	2025-12-19 14:51:32.452813993 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg16/jerror.c	2025-12-19 15:25:12.405018478 +0100
++@@ -34,6 +34,10 @@
++ #define EXIT_FAILURE  1
++ #endif
++ 
+++#if defined(_MSC_VER) && _MSC_VER < 1900
+++#define snprintf _snprintf
+++#endif
+++
++ 
++ /*
++  * Create the message string table.
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg16/jmemnobs.c dcmtk-3.7.0/dcmjpeg/libijg16/jmemnobs.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg16/jmemnobs.c	2025-12-19 14:51:32.452813993 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg16/jmemnobs.c	2025-12-19 14:57:34.138255801 +0100
++@@ -29,15 +29,15 @@
++ GLOBAL(void *)
++ jpeg_get_small (j_common_ptr cinfo, size_t sizeofobject)
++ {
++-  (void) cinfo;
+++  //(void) cinfo;
++   return (void *) malloc(sizeofobject);
++ }
++ 
++ GLOBAL(void)
++ jpeg_free_small (j_common_ptr cinfo, void * object, size_t sizeofobject)
++ {
++-  (void) cinfo;
++-  (void) sizeofobject;
+++  //(void) cinfo;
+++  //(void) sizeofobject;
++   free(object);
++ }
++ 
++@@ -52,15 +52,15 @@
++ GLOBAL(void FAR *)
++ jpeg_get_large (j_common_ptr cinfo, size_t sizeofobject)
++ {
++-  (void) cinfo;
+++  //(void) cinfo;
++   return (void FAR *) malloc(sizeofobject);
++ }
++ 
++ GLOBAL(void)
++ jpeg_free_large (j_common_ptr cinfo, void FAR * object, size_t sizeofobject)
++ {
++-  (void) cinfo;
++-  (void) sizeofobject;
+++  //(void) cinfo;
+++  //(void) sizeofobject;
++   free(object);
++ }
++ 
++@@ -74,9 +74,9 @@
++ jpeg_mem_available (j_common_ptr cinfo, long min_bytes_needed,
++ 		    long max_bytes_needed, long already_allocated)
++ {
++-  (void) cinfo;
++-  (void) min_bytes_needed;
++-  (void) already_allocated;
+++  //(void) cinfo;
+++  //(void) min_bytes_needed;
+++  //(void) already_allocated;
++   return max_bytes_needed;
++ }
++ 
++@@ -91,8 +91,8 @@
++ jpeg_open_backing_store (j_common_ptr cinfo, backing_store_ptr info,
++ 			 long total_bytes_needed)
++ {
++-  (void) info;
++-  (void) total_bytes_needed;
+++  //(void) info;
+++  //(void) total_bytes_needed;
++   ERREXIT(cinfo, JERR_NO_BACKING_STORE);
++ }
++ 
++@@ -105,13 +105,13 @@
++ GLOBAL(long)
++ jpeg_mem_init (j_common_ptr cinfo)
++ {
++-  (void) cinfo;
+++  //(void) cinfo;
++   return 0;			/* just set max_memory_to_use to 0 */
++ }
++ 
++ GLOBAL(void)
++ jpeg_mem_term (j_common_ptr cinfo)
++ {
++-  (void) cinfo;
+++  //(void) cinfo;
++   /* no work */
++ }
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg16/jquant1.c dcmtk-3.7.0/dcmjpeg/libijg16/jquant1.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg16/jquant1.c	2025-12-19 14:51:32.452813993 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg16/jquant1.c	2025-12-19 15:01:35.213570972 +0100
++@@ -251,8 +251,8 @@
++    * (Forcing the upper and lower values to the limits ensures that
++    * dithering can't produce a color outside the selected gamut.)
++    */
++-  (void) cinfo;
++-  (void) ci;
+++  //(void) cinfo;
+++  //(void) ci;
++   return (int) (((IJG_INT32) j * MAXJSAMPLE + maxj/2) / maxj);
++ }
++ 
++@@ -262,8 +262,8 @@
++ /* Return largest input value that should map to j'th output value */
++ /* Must have largest(j=0) >= 0, and largest(j=maxj) >= MAXJSAMPLE */
++ {
++-  (void) cinfo;
++-  (void) ci;
+++  //(void) cinfo;
+++  //(void) ci;
++   /* Breakpoints are halfway between values returned by output_value */
++   return (int) (((IJG_INT32) (2*j + 1) * MAXJSAMPLE + maxj) / (2*maxj));
++ }
++@@ -744,7 +744,7 @@
++ METHODDEF(void)
++ start_pass_1_quant (j_decompress_ptr cinfo, boolean is_pre_scan)
++ {
++-  (void) is_pre_scan;
+++  //(void) is_pre_scan;
++   my_cquantize_ptr cquantize = (my_cquantize_ptr) cinfo->cquantize;
++   size_t arraysize;
++   int i;
++@@ -802,7 +802,7 @@
++ METHODDEF(void)
++ finish_pass_1_quant (j_decompress_ptr cinfo)
++ {
++-  (void) cinfo;
+++  //(void) cinfo;
++   /* no work in 1-pass case */
++ }
++ 
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg16/jquant2.c dcmtk-3.7.0/dcmjpeg/libijg16/jquant2.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg16/jquant2.c	2025-12-19 14:51:32.452813993 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg16/jquant2.c	2025-12-19 15:04:24.684392384 +0100
++@@ -224,7 +224,7 @@
++ prescan_quantize (j_decompress_ptr cinfo, JSAMPARRAY input_buf,
++           JSAMPARRAY output_buf, int num_rows)
++ {
++-  (void) output_buf;
+++  //(void) output_buf;
++   my_cquantize_ptr cquantize = (my_cquantize_ptr) cinfo->cquantize;
++   register JSAMPROW ptr;
++   register histptr histp;
++@@ -1156,7 +1156,7 @@
++ METHODDEF(void)
++ finish_pass2 (j_decompress_ptr cinfo)
++ {
++-  (void) cinfo;
+++  //(void) cinfo;
++   /* no work */
++ }
++ 
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg8/jccoefct.c dcmtk-3.7.0/dcmjpeg/libijg8/jccoefct.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg8/jccoefct.c	2025-12-19 14:51:32.454813979 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg8/jccoefct.c	2025-12-19 15:11:58.797834968 +0100
++@@ -343,7 +343,7 @@
++ METHODDEF(boolean)
++ compress_output (j_compress_ptr cinfo, JSAMPIMAGE input_buf)
++ {
++-  (void)input_buf;
+++  //(void)input_buf;
++   j_lossy_c_ptr lossyc = (j_lossy_c_ptr) cinfo->codec;
++   c_coef_ptr coef = (c_coef_ptr) lossyc->coef_private;
++   JDIMENSION MCU_col_num;   /* index of current MCU within row */
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg8/jccolor.c dcmtk-3.7.0/dcmjpeg/libijg8/jccolor.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg8/jccolor.c	2025-12-19 14:51:32.453813986 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg8/jccolor.c	2025-12-19 15:15:25.917649634 +0100
++@@ -340,7 +340,7 @@
++ METHODDEF(void)
++ null_method (j_compress_ptr cinfo)
++ {
++-  (void) cinfo;
+++  //(void) cinfo;
++   /* no work needed */
++ }
++ 
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg8/jcdiffct.c dcmtk-3.7.0/dcmjpeg/libijg8/jcdiffct.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg8/jcdiffct.c	2025-12-19 14:51:32.454813979 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg8/jcdiffct.c	2025-12-19 15:15:07.256759365 +0100
++@@ -302,7 +302,7 @@
++ METHODDEF(boolean)
++ compress_output (j_compress_ptr cinfo, JSAMPIMAGE input_buf)
++ {
++-  (void)input_buf;
+++  //(void)input_buf;
++   j_lossless_c_ptr losslsc = (j_lossless_c_ptr) cinfo->codec;
++   c_diff_ptr diff = (c_diff_ptr) losslsc->diff_private;
++   /* JDIMENSION MCU_col_num; */ /* index of current MCU within row */
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg8/jclhuff.c dcmtk-3.7.0/dcmjpeg/libijg8/jclhuff.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg8/jclhuff.c	2025-12-19 14:51:32.454813979 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg8/jclhuff.c	2025-12-19 15:15:44.771538259 +0100
++@@ -569,7 +569,7 @@
++ METHODDEF(boolean)
++ need_optimization_pass (j_compress_ptr cinfo)
++ {
++-  (void)cinfo;
+++  //(void)cinfo;
++   return TRUE;
++ }
++ 
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg8/jcmarker.c dcmtk-3.7.0/dcmjpeg/libijg8/jcmarker.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg8/jcmarker.c	2025-12-19 14:51:32.454813979 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg8/jcmarker.c	2025-12-19 15:14:27.566991001 +0100
++@@ -224,7 +224,7 @@
++ /* Since the useful info is so small, we want to emit all the tables in */
++ /* one DAC marker.  Therefore this routine does its own scan of the table. */
++ {
++-  (void)cinfo;
+++  //(void)cinfo;
++ #ifdef C_ARITH_CODING_SUPPORTED
++   char dc_in_use[NUM_ARITH_TBLS];
++   char ac_in_use[NUM_ARITH_TBLS];
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg8/jcpred.c dcmtk-3.7.0/dcmjpeg/libijg8/jcpred.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg8/jcpred.c	2025-12-19 14:51:32.454813979 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg8/jcpred.c	2025-12-19 15:12:51.227542314 +0100
++@@ -213,7 +213,7 @@
++          const JSAMPROW input_buf, JSAMPROW prev_row,
++          JDIFFROW diff_buf, JDIMENSION width)
++ {
++-  (void)prev_row;
+++  //(void)prev_row;
++   DIFFERENCE_1D(INITIAL_PREDICTORx);
++ 
++   /*
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg8/jcsample.c dcmtk-3.7.0/dcmjpeg/libijg8/jcsample.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg8/jcsample.c	2025-12-19 14:51:32.454813979 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg8/jcsample.c	2025-12-19 15:14:54.073836574 +0100
++@@ -74,7 +74,7 @@
++ METHODDEF(void)
++ start_pass_downsample (j_compress_ptr cinfo)
++ {
++-  (void)cinfo;
+++  //(void)cinfo;
++   /* no work for now */
++ }
++ 
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg8/jcscale.c dcmtk-3.7.0/dcmjpeg/libijg8/jcscale.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg8/jcscale.c	2025-12-19 14:51:32.454813979 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg8/jcscale.c	2025-12-19 15:15:19.848685378 +0100
++@@ -34,7 +34,7 @@
++ noscale(j_compress_ptr cinfo,
++ 	JSAMPROW input_buf, JSAMPROW output_buf, JDIMENSION width)
++ {
++-  (void)cinfo;
+++  //(void)cinfo;
++   MEMCOPY(output_buf, input_buf, width * SIZEOF(JSAMPLE));
++   return;
++ }
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg8/jcshuff.c dcmtk-3.7.0/dcmjpeg/libijg8/jcshuff.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg8/jcshuff.c	2025-12-19 14:51:32.454813979 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg8/jcshuff.c	2025-12-19 15:15:31.926614192 +0100
++@@ -629,7 +629,7 @@
++ METHODDEF(boolean)
++ need_optimization_pass (j_compress_ptr cinfo)
++ {
++-  (void)cinfo;
+++  //(void)cinfo;
++   return TRUE;
++ }
++ 
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg8/jctrans.c dcmtk-3.7.0/dcmjpeg/libijg8/jctrans.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg8/jctrans.c	2025-12-19 14:51:32.454813979 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg8/jctrans.c	2025-12-19 15:13:07.840448439 +0100
++@@ -267,7 +267,7 @@
++ METHODDEF(boolean)
++ compress_output (j_compress_ptr cinfo, JSAMPIMAGE input_buf)
++ {
++-  (void)input_buf;
+++  //(void)input_buf;
++   j_lossy_c_ptr lossyc = (j_lossy_c_ptr) cinfo->codec;
++   c_coef_ptr coef = (c_coef_ptr) lossyc->coef_private;
++   JDIMENSION MCU_col_num;   /* index of current MCU within row */
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg8/jdatasrc.c dcmtk-3.7.0/dcmjpeg/libijg8/jdatasrc.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg8/jdatasrc.c	2025-12-19 14:51:32.454813979 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg8/jdatasrc.c	2025-12-19 15:14:42.162906102 +0100
++@@ -168,7 +168,7 @@
++ METHODDEF(void)
++ term_source (j_decompress_ptr cinfo)
++ {
++-  (void)cinfo;
+++  //(void)cinfo;
++   /* no work necessary here */
++ }
++ 
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg8/jdcoefct.c dcmtk-3.7.0/dcmjpeg/libijg8/jdcoefct.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg8/jdcoefct.c	2025-12-19 14:51:32.454813979 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg8/jdcoefct.c	2025-12-19 15:12:56.175514409 +0100
++@@ -229,7 +229,7 @@
++ METHODDEF(int)
++ dummy_consume_data (j_decompress_ptr cinfo)
++ {
++-  (void)cinfo;
+++  //(void)cinfo;
++   return JPEG_SUSPENDED;    /* Always indicate nothing was done */
++ }
++ 
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg8/jdcolor.c dcmtk-3.7.0/dcmjpeg/libijg8/jdcolor.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg8/jdcolor.c	2025-12-19 14:51:32.454813979 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg8/jdcolor.c	2025-12-19 15:15:38.962572627 +0100
++@@ -309,7 +309,7 @@
++ METHODDEF(void)
++ start_pass_dcolor (j_decompress_ptr cinfo)
++ {
++-  (void)cinfo;
+++  //(void)cinfo;
++   /* no work needed */
++ }
++ 
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg8/jddiffct.c dcmtk-3.7.0/dcmjpeg/libijg8/jddiffct.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg8/jddiffct.c	2025-12-19 14:51:32.454813979 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg8/jddiffct.c	2025-12-19 15:11:22.867032134 +0100
++@@ -238,7 +238,7 @@
++ METHODDEF(int)
++ dummy_consume_data (j_decompress_ptr cinfo)
++ {
++-  (void)cinfo;
+++  //(void)cinfo;
++   return JPEG_SUSPENDED;    /* Always indicate nothing was done */
++ }
++ 
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg8/jdmerge.c dcmtk-3.7.0/dcmjpeg/libijg8/jdmerge.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg8/jdmerge.c	2025-12-19 14:51:32.454813979 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg8/jdmerge.c	2025-12-19 15:16:27.518283952 +0100
++@@ -148,7 +148,7 @@
++             JDIMENSION out_rows_avail)
++ /* 2:1 vertical sampling case: may need a spare row. */
++ {
++-  (void) in_row_groups_avail;
+++  //(void) in_row_groups_avail;
++   my_upsample_ptr upsample = (my_upsample_ptr) cinfo->upsample;
++   JSAMPROW work_ptrs[2];
++   JDIMENSION num_rows;      /* number of rows returned to caller */
++@@ -198,8 +198,8 @@
++             JDIMENSION out_rows_avail)
++ /* 1:1 vertical sampling case: much easier, never need a spare row. */
++ {
++-  (void) in_row_groups_avail;
++-  (void) out_rows_avail;
+++  //(void) in_row_groups_avail;
+++  //(void) out_rows_avail;
++   my_upsample_ptr upsample = (my_upsample_ptr) cinfo->upsample;
++ 
++   /* Just do the upsampling. */
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg8/jdpostct.c dcmtk-3.7.0/dcmjpeg/libijg8/jdpostct.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg8/jdpostct.c	2025-12-19 14:51:32.454813979 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg8/jdpostct.c	2025-12-19 15:12:21.383709591 +0100
++@@ -161,8 +161,8 @@
++               JSAMPARRAY output_buf, JDIMENSION *out_row_ctr,
++               JDIMENSION out_rows_avail)
++ {
++-  (void) output_buf;
++-  (void) out_rows_avail;
+++  //(void) output_buf;
+++  //(void) out_rows_avail;
++   my_post_ptr post = (my_post_ptr) cinfo->post;
++   JDIMENSION old_next_row, num_rows;
++ 
++@@ -207,9 +207,9 @@
++             JSAMPARRAY output_buf, JDIMENSION *out_row_ctr,
++             JDIMENSION out_rows_avail)
++ {
++-  (void) input_buf;
++-  (void) in_row_group_ctr;
++-  (void) in_row_groups_avail;
+++  //(void) input_buf;
+++  //(void) in_row_group_ctr;
+++  //(void) in_row_groups_avail;
++   my_post_ptr post = (my_post_ptr) cinfo->post;
++   JDIMENSION num_rows, max_rows;
++ 
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg8/jdpred.c dcmtk-3.7.0/dcmjpeg/libijg8/jdpred.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg8/jdpred.c	2025-12-19 14:51:32.454813979 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg8/jdpred.c	2025-12-19 15:11:52.655868875 +0100
++@@ -101,8 +101,8 @@
++            const JDIFFROW diff_buf, const JDIFFROW prev_row,
++            JDIFFROW undiff_buf, JDIMENSION width)
++ {
++-  (void)cinfo;
++-  (void)comp_index;
+++  //(void)cinfo;
+++  //(void)comp_index;
++   UNDIFFERENCE_1D(INITIAL_PREDICTOR2);
++ }
++ 
++@@ -111,8 +111,8 @@
++            const JDIFFROW diff_buf, const JDIFFROW prev_row,
++            JDIFFROW undiff_buf, JDIMENSION width)
++ {
++-  (void)cinfo;
++-  (void)comp_index;
+++  //(void)cinfo;
+++  //(void)comp_index;
++   UNDIFFERENCE_2D(PREDICTOR2);
++   JPEG_UNUSED(Rc);
++   JPEG_UNUSED(Rb);
++@@ -123,8 +123,8 @@
++            const JDIFFROW diff_buf, const JDIFFROW prev_row,
++            JDIFFROW undiff_buf, JDIMENSION width)
++ {
++-  (void)cinfo;
++-  (void)comp_index;
+++  //(void)cinfo;
+++  //(void)comp_index;
++   UNDIFFERENCE_2D(PREDICTOR3);
++   JPEG_UNUSED(Rc);
++   JPEG_UNUSED(Rb);
++@@ -135,8 +135,8 @@
++            const JDIFFROW diff_buf, const JDIFFROW prev_row,
++            JDIFFROW undiff_buf, JDIMENSION width)
++ {
++-  (void)cinfo;
++-  (void)comp_index;
+++  //(void)cinfo;
+++  //(void)comp_index;
++   UNDIFFERENCE_2D(PREDICTOR4);
++   JPEG_UNUSED(Rc);
++   JPEG_UNUSED(Rb);
++@@ -147,8 +147,8 @@
++            const JDIFFROW diff_buf, const JDIFFROW prev_row,
++            JDIFFROW undiff_buf, JDIMENSION width)
++ {
++-  (void)cinfo;
++-  (void)comp_index;
+++  //(void)cinfo;
+++  //(void)comp_index;
++   SHIFT_TEMPS
++   UNDIFFERENCE_2D(PREDICTOR5);
++   JPEG_UNUSED(Rc);
++@@ -160,8 +160,8 @@
++            const JDIFFROW diff_buf, const JDIFFROW prev_row,
++            JDIFFROW undiff_buf, JDIMENSION width)
++ {
++-  (void)cinfo;
++-  (void)comp_index;
+++  //(void)cinfo;
+++  //(void)comp_index;
++   SHIFT_TEMPS
++   UNDIFFERENCE_2D(PREDICTOR6);
++   JPEG_UNUSED(Rc);
++@@ -173,8 +173,8 @@
++            const JDIFFROW diff_buf, const JDIFFROW prev_row,
++            JDIFFROW undiff_buf, JDIMENSION width)
++ {
++-  (void)cinfo;
++-  (void)comp_index;
+++  //(void)cinfo;
+++  //(void)comp_index;
++   SHIFT_TEMPS
++   UNDIFFERENCE_2D(PREDICTOR7);
++   JPEG_UNUSED(Rc);
++@@ -194,7 +194,7 @@
++                 const JDIFFROW diff_buf, JDIFFROW prev_row,
++                 JDIFFROW undiff_buf, JDIMENSION width)
++ {
++-  (void)prev_row;
+++  //(void)prev_row;
++   j_lossless_d_ptr losslsd = (j_lossless_d_ptr) cinfo->codec;
++ 
++   UNDIFFERENCE_1D(INITIAL_PREDICTORx);
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg8/jdsample.c dcmtk-3.7.0/dcmjpeg/libijg8/jdsample.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg8/jdsample.c	2025-12-19 14:51:32.454813979 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg8/jdsample.c	2025-12-19 15:15:56.723467400 +0100
++@@ -92,7 +92,7 @@
++           JSAMPARRAY output_buf, JDIMENSION *out_row_ctr,
++           JDIMENSION out_rows_avail)
++ {
++-  (void)in_row_groups_avail;
+++  //(void)in_row_groups_avail;
++   my_upsample_ptr upsample = (my_upsample_ptr) cinfo->upsample;
++   int ci;
++   jpeg_component_info * compptr;
++@@ -158,8 +158,8 @@
++ fullsize_upsample (j_decompress_ptr cinfo, jpeg_component_info * compptr,
++            JSAMPARRAY input_data, JSAMPARRAY * output_data_ptr)
++ {
++-  (void)cinfo;
++-  (void)compptr;
+++  //(void)cinfo;
+++  //(void)compptr;
++   *output_data_ptr = input_data;
++ }
++ 
++@@ -173,9 +173,9 @@
++ noop_upsample (j_decompress_ptr cinfo, jpeg_component_info * compptr,
++            JSAMPARRAY input_data, JSAMPARRAY * output_data_ptr)
++ {
++-  (void)cinfo;
++-  (void)compptr;
++-  (void)input_data;
+++  //(void)cinfo;
+++  //(void)compptr;
+++  //(void)input_data;
++   *output_data_ptr = NULL;  /* safety check */
++ }
++ 
++@@ -239,7 +239,7 @@
++ h2v1_upsample (j_decompress_ptr cinfo, jpeg_component_info * compptr,
++            JSAMPARRAY input_data, JSAMPARRAY * output_data_ptr)
++ {
++-  (void)compptr;
+++  //(void)compptr;
++   JSAMPARRAY output_data = *output_data_ptr;
++   register JSAMPROW inptr, outptr;
++   register JSAMPLE invalue;
++@@ -268,7 +268,7 @@
++ h2v2_upsample (j_decompress_ptr cinfo, jpeg_component_info * compptr,
++            JSAMPARRAY input_data, JSAMPARRAY * output_data_ptr)
++ {
++-  (void)compptr;
+++  //(void)compptr;
++   JSAMPARRAY output_data = *output_data_ptr;
++   register JSAMPROW inptr, outptr;
++   register JSAMPLE invalue;
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg8/jdscale.c dcmtk-3.7.0/dcmjpeg/libijg8/jdscale.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg8/jdscale.c	2025-12-19 14:51:32.453813986 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg8/jdscale.c	2025-12-19 14:57:10.252423426 +0100
++@@ -67,7 +67,7 @@
++ 	const JDIFFROW diff_buf, JSAMPROW output_buf,
++ 	JDIMENSION width)
++ {
++-  (void)cinfo;
+++  //(void)cinfo;
++   unsigned int xindex;
++ 
++   for (xindex = 0; xindex < width; xindex++)
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg8/jerror.c dcmtk-3.7.0/dcmjpeg/libijg8/jerror.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg8/jerror.c	2025-12-19 14:51:32.454813979 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg8/jerror.c	2025-12-19 15:25:22.319955051 +0100
++@@ -34,6 +34,10 @@
++ #define EXIT_FAILURE  1
++ #endif
++ 
+++#if defined(_MSC_VER) && _MSC_VER < 1900
+++#define snprintf _snprintf
+++#endif
+++
++ 
++ /*
++  * Create the message string table.
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg8/jmemnobs.c dcmtk-3.7.0/dcmjpeg/libijg8/jmemnobs.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg8/jmemnobs.c	2025-12-19 14:51:32.453813986 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg8/jmemnobs.c	2025-12-19 15:11:16.796065163 +0100
++@@ -29,15 +29,15 @@
++ GLOBAL(void *)
++ jpeg_get_small (j_common_ptr cinfo, size_t sizeofobject)
++ {
++-  (void) cinfo;
+++  //(void) cinfo;
++   return (void *) malloc(sizeofobject);
++ }
++ 
++ GLOBAL(void)
++ jpeg_free_small (j_common_ptr cinfo, void * object, size_t sizeofobject)
++ {
++-  (void) cinfo;
++-  (void) sizeofobject;
+++  //(void) cinfo;
+++  //(void) sizeofobject;
++   free(object);
++ }
++ 
++@@ -52,15 +52,15 @@
++ GLOBAL(void FAR *)
++ jpeg_get_large (j_common_ptr cinfo, size_t sizeofobject)
++ {
++-  (void) cinfo;
+++  //(void) cinfo;
++   return (void FAR *) malloc(sizeofobject);
++ }
++ 
++ GLOBAL(void)
++ jpeg_free_large (j_common_ptr cinfo, void FAR * object, size_t sizeofobject)
++ {
++-  (void) cinfo;
++-  (void) sizeofobject;
+++  //(void) cinfo;
+++  //(void) sizeofobject;
++   free(object);
++ }
++ 
++@@ -74,9 +74,9 @@
++ jpeg_mem_available (j_common_ptr cinfo, long min_bytes_needed,
++ 		    long max_bytes_needed, long already_allocated)
++ {
++-  (void) cinfo;
++-  (void) min_bytes_needed;
++-  (void) already_allocated;
+++  //(void) cinfo;
+++  //(void) min_bytes_needed;
+++  //(void) already_allocated;
++   return max_bytes_needed;
++ }
++ 
++@@ -91,8 +91,8 @@
++ jpeg_open_backing_store (j_common_ptr cinfo, backing_store_ptr info,
++ 			 long total_bytes_needed)
++ {
++-  (void) info;
++-  (void) total_bytes_needed;
+++  //(void) info;
+++  //(void) total_bytes_needed;
++   ERREXIT(cinfo, JERR_NO_BACKING_STORE);
++ }
++ 
++@@ -105,13 +105,13 @@
++ GLOBAL(long)
++ jpeg_mem_init (j_common_ptr cinfo)
++ {
++-  (void) cinfo;
+++  //(void) cinfo;
++   return 0;			/* just set max_memory_to_use to 0 */
++ }
++ 
++ GLOBAL(void)
++ jpeg_mem_term (j_common_ptr cinfo)
++ {
++-  (void) cinfo;
+++  //(void) cinfo;
++   /* no work */
++ }
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg8/jquant1.c dcmtk-3.7.0/dcmjpeg/libijg8/jquant1.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg8/jquant1.c	2025-12-19 14:51:32.454813979 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg8/jquant1.c	2025-12-19 15:13:31.435314227 +0100
++@@ -251,8 +251,8 @@
++    * (Forcing the upper and lower values to the limits ensures that
++    * dithering can't produce a color outside the selected gamut.)
++    */
++-  (void) cinfo;
++-  (void) ci;
+++  //(void) cinfo;
+++  //(void) ci;
++   return (int) (((IJG_INT32) j * MAXJSAMPLE + maxj/2) / maxj);
++ }
++ 
++@@ -262,8 +262,8 @@
++ /* Return largest input value that should map to j'th output value */
++ /* Must have largest(j=0) >= 0, and largest(j=maxj) >= MAXJSAMPLE */
++ {
++-  (void) cinfo;
++-  (void) ci;
+++  //(void) cinfo;
+++  //(void) ci;
++   /* Breakpoints are halfway between values returned by output_value */
++   return (int) (((IJG_INT32) (2*j + 1) * MAXJSAMPLE + maxj) / (2*maxj));
++ }
++@@ -744,7 +744,7 @@
++ METHODDEF(void)
++ start_pass_1_quant (j_decompress_ptr cinfo, boolean is_pre_scan)
++ {
++-  (void) is_pre_scan;
+++  //(void) is_pre_scan;
++   my_cquantize_ptr cquantize = (my_cquantize_ptr) cinfo->cquantize;
++   size_t arraysize;
++   int i;
++@@ -802,7 +802,7 @@
++ METHODDEF(void)
++ finish_pass_1_quant (j_decompress_ptr cinfo)
++ {
++-  (void) cinfo;
+++  //(void) cinfo;
++   /* no work in 1-pass case */
++ }
++ 
++diff -urEb dcmtk-3.7.0.orig/dcmjpeg/libijg8/jquant2.c dcmtk-3.7.0/dcmjpeg/libijg8/jquant2.c
++--- dcmtk-3.7.0.orig/dcmjpeg/libijg8/jquant2.c	2025-12-19 14:51:32.453813986 +0100
+++++ dcmtk-3.7.0/dcmjpeg/libijg8/jquant2.c	2025-12-19 15:16:14.085364127 +0100
++@@ -224,7 +224,7 @@
++ prescan_quantize (j_decompress_ptr cinfo, JSAMPARRAY input_buf,
++           JSAMPARRAY output_buf, int num_rows)
++ {
++-  (void) output_buf;
+++  //(void) output_buf;
++   my_cquantize_ptr cquantize = (my_cquantize_ptr) cinfo->cquantize;
++   register JSAMPROW ptr;
++   register histptr histp;
++@@ -1156,7 +1156,7 @@
++ METHODDEF(void)
++ finish_pass2 (j_decompress_ptr cinfo)
++ {
++-  (void) cinfo;
+++  //(void) cinfo;
++   /* no work */
++ }
++ 
++diff -urEb dcmtk-3.7.0.orig/oficonv/libsrc/citrus_bcs.h dcmtk-3.7.0/oficonv/libsrc/citrus_bcs.h
++--- dcmtk-3.7.0.orig/oficonv/libsrc/citrus_bcs.h	2025-12-19 14:51:32.440814079 +0100
+++++ dcmtk-3.7.0/oficonv/libsrc/citrus_bcs.h	2025-12-19 15:28:43.259661159 +0100
++@@ -37,7 +37,21 @@
++ #include <errno.h>
++ #include <stdint.h>
++ #include <limits.h>
+++
+++#undef EOPNOTSUPP
+++#define EOPNOTSUPP 130   // https://learn.microsoft.com/fr-fr/cpp/c-runtime-library/errno-constants
+++
+++#if (_MSC_VER >= 1900)
++ #include <stdbool.h>
+++#else
+++#define bool int
+++#define false 0
+++#define true 1
+++#endif
+++
+++#if defined(_MSC_VER) && _MSC_VER < 1900
+++#define snprintf _snprintf
+++#endif
++ 
++ #define CITRUS_DECONST(type, var)    ((type)(uintptr_t)(const void *)(var))
++ 
++diff -urEb dcmtk-3.7.0.orig/oficonv/libsrc/citrus_big5.c dcmtk-3.7.0/oficonv/libsrc/citrus_big5.c
++--- dcmtk-3.7.0.orig/oficonv/libsrc/citrus_big5.c	2025-12-19 14:51:32.431814143 +0100
+++++ dcmtk-3.7.0/oficonv/libsrc/citrus_big5.c	2025-12-19 15:29:26.484381052 +0100
++@@ -214,13 +214,6 @@
++     return (0);
++ }
++ 
++-static const _citrus_prop_hint_t root_hints[] = {
++-    _CITRUS_PROP_HINT_NUM("row", &_citrus_BIG5_fill_rowcol),
++-    _CITRUS_PROP_HINT_NUM("col", &_citrus_BIG5_fill_rowcol),
++-    _CITRUS_PROP_HINT_NUM("excludes", &_citrus_BIG5_fill_excludes),
++-    _CITRUS_PROP_HINT_END
++-};
++-
++ static void
++ /*ARGSUSED*/
++ _citrus_BIG5_encoding_module_uninit(_BIG5EncodingInfo *ei)
++@@ -241,6 +234,18 @@
++     const char *s;
++     int err;
++ 
+++    _citrus_prop_hint_t root_hints[4];
+++    root_hints[0].name = "row";
+++    root_hints[0].type = _CITRUS_PROP_NUM;
+++    root_hints[0].cb.num.func = _citrus_BIG5_fill_rowcol;
+++    root_hints[1].name = "col";
+++    root_hints[1].type = _CITRUS_PROP_NUM;
+++    root_hints[1].cb.num.func = _citrus_BIG5_fill_rowcol;
+++    root_hints[2].name = "excludes";
+++    root_hints[2].type = _CITRUS_PROP_NUM;
+++    root_hints[2].cb.num.func = _citrus_BIG5_fill_excludes;
+++    root_hints[3].name = NULL;  // _CITRUS_PROP_HINT_END
+++
++     memset((void *)ei, 0, sizeof(*ei));
++     TAILQ_INIT(&ei->excludes);
++ 
++diff -urEb dcmtk-3.7.0.orig/oficonv/libsrc/citrus_db_hash.h dcmtk-3.7.0/oficonv/libsrc/citrus_db_hash.h
++--- dcmtk-3.7.0.orig/oficonv/libsrc/citrus_db_hash.h	2025-12-19 14:51:32.430814151 +0100
+++++ dcmtk-3.7.0/oficonv/libsrc/citrus_db_hash.h	2025-12-19 15:29:39.684295407 +0100
++@@ -29,7 +29,7 @@
++ 
++ #include "dcmtk/config/osconfig.h"
++ #include "dcmtk/oficonv/oidefine.h"
++-#include <inttypes.h>
+++#include <stdint.h>
++ 
++ struct _citrus_region;
++ 
++diff -urEb dcmtk-3.7.0.orig/oficonv/libsrc/citrus_esdb.c dcmtk-3.7.0/oficonv/libsrc/citrus_esdb.c
++--- dcmtk-3.7.0.orig/oficonv/libsrc/citrus_esdb.c	2025-12-19 14:51:32.431814143 +0100
+++++ dcmtk-3.7.0/oficonv/libsrc/citrus_esdb.c	2025-12-19 15:30:05.057130649 +0100
++@@ -30,7 +30,15 @@
++ #include <sys/types.h>
++ #include <errno.h>
++ #include <limits.h>
+++
+++#if (_MSC_VER >= 1900)
++ #include <stdbool.h>
+++#else
+++#define bool int
+++#define false 0
+++#define true 1
+++#endif
+++
++ #include <stdio.h>
++ #include <stdlib.h>
++ #include <string.h>
++diff -urEb dcmtk-3.7.0.orig/oficonv/libsrc/citrus_esdb.h dcmtk-3.7.0/oficonv/libsrc/citrus_esdb.h
++--- dcmtk-3.7.0.orig/oficonv/libsrc/citrus_esdb.h	2025-12-19 14:51:32.432814136 +0100
+++++ dcmtk-3.7.0/oficonv/libsrc/citrus_esdb.h	2025-12-19 15:30:31.960955765 +0100
++@@ -29,7 +29,14 @@
++ 
++ #include "dcmtk/config/osconfig.h"
++ #include "citrus_types.h"
+++
+++#if (_MSC_VER >= 1900)
++ #include <stdbool.h>
+++#else
+++#define bool int
+++#define false 0
+++#define true 1
+++#endif
++ 
++ struct _citrus_esdb_charset {
++     _citrus_csid_t           ec_csid;
++diff -urEb dcmtk-3.7.0.orig/oficonv/libsrc/citrus_gbk2k.c dcmtk-3.7.0/oficonv/libsrc/citrus_gbk2k.c
++--- dcmtk-3.7.0.orig/oficonv/libsrc/citrus_gbk2k.c	2025-12-19 14:51:32.440814079 +0100
+++++ dcmtk-3.7.0/oficonv/libsrc/citrus_gbk2k.c	2025-12-19 15:30:53.793813715 +0100
++@@ -30,7 +30,15 @@
++ #include <sys/types.h>
++ #include <errno.h>
++ #include <limits.h>
+++
+++#if (_MSC_VER >= 1900)
++ #include <stdbool.h>
+++#else
+++#define bool int
+++#define false 0
+++#define true 1
+++#endif
+++
++ #include <stddef.h>
++ #include <stdio.h>
++ #include <stdlib.h>
++diff -urEb dcmtk-3.7.0.orig/oficonv/libsrc/citrus_hz.c dcmtk-3.7.0/oficonv/libsrc/citrus_hz.c
++--- dcmtk-3.7.0.orig/oficonv/libsrc/citrus_hz.c	2025-12-19 14:51:32.439814086 +0100
+++++ dcmtk-3.7.0/oficonv/libsrc/citrus_hz.c	2025-12-19 15:31:48.434457734 +0100
++@@ -569,13 +569,6 @@
++     return (0);
++ }
++ 
++-static const _citrus_prop_hint_t escape_hints[] = {
++-_CITRUS_PROP_HINT_STR("CH", &_citrus_HZ_parse_char),
++-_CITRUS_PROP_HINT_STR("GL", &_citrus_HZ_parse_graphic),
++-_CITRUS_PROP_HINT_STR("GR", &_citrus_HZ_parse_graphic),
++-_CITRUS_PROP_HINT_END
++-};
++-
++ static int
++ _citrus_HZ_parse_escape(void *context, const char *name, const char *s)
++ {
++@@ -583,6 +576,18 @@
++     escape_t *escape;
++     void *p[2];
++ 
+++    _citrus_prop_hint_t escape_hints[4];
+++    escape_hints[0].name = "CH";
+++    escape_hints[0].type = _CITRUS_PROP_STR;
+++    escape_hints[0].cb.str.func = _citrus_HZ_parse_char;
+++    escape_hints[1].name = "GL";
+++    escape_hints[1].type = _CITRUS_PROP_STR;
+++    escape_hints[1].cb.str.func = _citrus_HZ_parse_graphic;
+++    escape_hints[2].name = "GR";
+++    escape_hints[2].type = _CITRUS_PROP_STR;
+++    escape_hints[2].cb.str.func = _citrus_HZ_parse_graphic;
+++    escape_hints[3].name = NULL;  // _CITRUS_PROP_HINT_END
+++
++     ei = (_HZEncodingInfo *)context;
++     escape = calloc(1, sizeof(*escape));
++     if (escape == NULL)
++@@ -603,18 +608,21 @@
++         escape_hints, (void *)&p[0], s, strlen(s)));
++ }
++ 
++-static const _citrus_prop_hint_t root_hints[] = {
++-_CITRUS_PROP_HINT_STR("0", &_citrus_HZ_parse_escape),
++-_CITRUS_PROP_HINT_STR("1", &_citrus_HZ_parse_escape),
++-_CITRUS_PROP_HINT_END
++-};
++-
++ static int
++ _citrus_HZ_encoding_module_init(_HZEncodingInfo * ei,
++     const void * var, size_t lenvar)
++ {
++     int errnum;
++ 
+++    _citrus_prop_hint_t root_hints[3];
+++    root_hints[0].name = "0";
+++    root_hints[0].type = _CITRUS_PROP_STR;
+++    root_hints[0].cb.str.func = _citrus_HZ_parse_escape;
+++    root_hints[1].name = "1";
+++    root_hints[1].type = _CITRUS_PROP_STR;
+++    root_hints[1].cb.str.func = _citrus_HZ_parse_escape;
+++    root_hints[2].name = NULL;  // _CITRUS_PROP_HINT_END
+++
++     memset(ei, 0, sizeof(*ei));
++     TAILQ_INIT(E0SET(ei));
++     TAILQ_INIT(E1SET(ei));
++diff -urEb dcmtk-3.7.0.orig/oficonv/libsrc/citrus_iconv_local.h dcmtk-3.7.0/oficonv/libsrc/citrus_iconv_local.h
++--- dcmtk-3.7.0.orig/oficonv/libsrc/citrus_iconv_local.h	2025-12-19 14:51:32.440814079 +0100
+++++ dcmtk-3.7.0/oficonv/libsrc/citrus_iconv_local.h	2025-12-19 15:32:12.929297944 +0100
++@@ -29,7 +29,15 @@
++ 
++ #include "dcmtk/config/osconfig.h"
++ #include "dcmtk/oficonv/iconv.h"
+++
+++#if (_MSC_VER >= 1900)
++ #include <stdbool.h>
+++#else
+++#define bool int
+++#define false 0
+++#define true 1
+++#endif
+++
++ #include <stdint.h>
++ 
++ #ifdef HAVE_SYS_QUEUE_H
++diff -urEb dcmtk-3.7.0.orig/oficonv/libsrc/citrus_iconv_none.c dcmtk-3.7.0/oficonv/libsrc/citrus_iconv_none.c
++--- dcmtk-3.7.0.orig/oficonv/libsrc/citrus_iconv_none.c	2025-12-19 14:51:32.436814108 +0100
+++++ dcmtk-3.7.0/oficonv/libsrc/citrus_iconv_none.c	2025-12-19 15:32:25.843213651 +0100
++@@ -35,7 +35,15 @@
++ 
++ 
++ #include <errno.h>
+++
+++#if (_MSC_VER >= 1900)
++ #include <stdbool.h>
+++#else
+++#define bool int
+++#define false 0
+++#define true 1
+++#endif
+++
++ #include <stdlib.h>
++ #include <string.h>
++ 
++diff -urEb dcmtk-3.7.0.orig/oficonv/libsrc/citrus_iconv_std.c dcmtk-3.7.0/oficonv/libsrc/citrus_iconv_std.c
++--- dcmtk-3.7.0.orig/oficonv/libsrc/citrus_iconv_std.c	2025-12-19 14:51:32.436814108 +0100
+++++ dcmtk-3.7.0/oficonv/libsrc/citrus_iconv_std.c	2025-12-19 15:32:43.838096139 +0100
++@@ -36,7 +36,15 @@
++ 
++ #include <errno.h>
++ #include <limits.h>
+++
+++#if (_MSC_VER >= 1900)
++ #include <stdbool.h>
+++#else
+++#define bool int
+++#define false 0
+++#define true 1
+++#endif
+++
++ #include <stdio.h>
++ #include <stdlib.h>
++ #include <string.h>
++diff -urEb dcmtk-3.7.0.orig/oficonv/libsrc/citrus_iso2022.c dcmtk-3.7.0/oficonv/libsrc/citrus_iso2022.c
++--- dcmtk-3.7.0.orig/oficonv/libsrc/citrus_iso2022.c	2025-12-19 14:51:32.436814108 +0100
+++++ dcmtk-3.7.0/oficonv/libsrc/citrus_iso2022.c	2025-12-19 15:32:56.086016123 +0100
++@@ -31,7 +31,15 @@
++ #include <sys/types.h>
++ #include <errno.h>
++ #include <limits.h>
+++
+++#if (_MSC_VER >= 1900)
++ #include <stdbool.h>
+++#else
+++#define bool int
+++#define false 0
+++#define true 1
+++#endif
+++
++ #include <stddef.h>
++ #include <stdio.h>
++ #include <stdlib.h>
++diff -urEb dcmtk-3.7.0.orig/oficonv/libsrc/citrus_johab.c dcmtk-3.7.0/oficonv/libsrc/citrus_johab.c
++--- dcmtk-3.7.0.orig/oficonv/libsrc/citrus_johab.c	2025-12-19 14:51:32.438814093 +0100
+++++ dcmtk-3.7.0/oficonv/libsrc/citrus_johab.c	2025-12-19 15:33:09.682927265 +0100
++@@ -30,7 +30,15 @@
++ #include <sys/types.h>
++ #include <errno.h>
++ #include <limits.h>
+++
+++#if (_MSC_VER >= 1900)
++ #include <stdbool.h>
+++#else
+++#define bool int
+++#define false 0
+++#define true 1
+++#endif
+++
++ #include <stddef.h>
++ #include <stdint.h>
++ #include <stdio.h>
++diff -urEb dcmtk-3.7.0.orig/oficonv/libsrc/citrus_module.c dcmtk-3.7.0/oficonv/libsrc/citrus_module.c
++--- dcmtk-3.7.0.orig/oficonv/libsrc/citrus_module.c	2025-12-19 14:51:32.440814079 +0100
+++++ dcmtk-3.7.0/oficonv/libsrc/citrus_module.c	2025-12-19 15:33:21.398850671 +0100
++@@ -94,7 +94,15 @@
++ #endif
++ #include <errno.h>
++ #include <limits.h>
+++
+++#if (_MSC_VER >= 1900)
++ #include <stdbool.h>
+++#else
+++#define bool int
+++#define false 0
+++#define true 1
+++#endif
+++
++ #include <stddef.h>
++ #include <stdio.h>
++ #include <stdlib.h>
++diff -urEb dcmtk-3.7.0.orig/oficonv/libsrc/citrus_mskanji.c dcmtk-3.7.0/oficonv/libsrc/citrus_mskanji.c
++--- dcmtk-3.7.0.orig/oficonv/libsrc/citrus_mskanji.c	2025-12-19 14:51:32.439814086 +0100
+++++ dcmtk-3.7.0/oficonv/libsrc/citrus_mskanji.c	2025-12-19 15:33:28.291805599 +0100
++@@ -63,7 +63,15 @@
++ #include <sys/types.h>
++ #include <errno.h>
++ #include <limits.h>
+++
+++#if (_MSC_VER >= 1900)
++ #include <stdbool.h>
+++#else
+++#define bool int
+++#define false 0
+++#define true 1
+++#endif
+++
++ #include <stddef.h>
++ #include <stdio.h>
++ #include <stdlib.h>
++diff -urEb dcmtk-3.7.0.orig/oficonv/libsrc/citrus_prop.c dcmtk-3.7.0/oficonv/libsrc/citrus_prop.c
++--- dcmtk-3.7.0.orig/oficonv/libsrc/citrus_prop.c	2025-12-19 14:51:32.434814122 +0100
+++++ dcmtk-3.7.0/oficonv/libsrc/citrus_prop.c	2025-12-19 15:34:56.336229156 +0100
++@@ -30,7 +30,15 @@
++ 
++ #include <errno.h>
++ #include <limits.h>
+++
+++#if (_MSC_VER >= 1900)
++ #include <stdbool.h>
+++#else
+++#define bool int
+++#define false 0
+++#define true 1
+++#endif
+++
++ #include <stdio.h>
++ #include <stdlib.h>
++ #include <string.h>
++diff -urEb dcmtk-3.7.0.orig/oficonv/libsrc/citrus_region.h dcmtk-3.7.0/oficonv/libsrc/citrus_region.h
++--- dcmtk-3.7.0.orig/oficonv/libsrc/citrus_region.h	2025-12-19 14:51:32.436814108 +0100
+++++ dcmtk-3.7.0/oficonv/libsrc/citrus_region.h	2025-12-19 15:36:44.692518202 +0100
++@@ -31,7 +31,15 @@
++ #include "dcmtk/config/osconfig.h"
++ #include <stdint.h>
++ #include <string.h>
+++
+++#if (_MSC_VER >= 1900)
++ #include <stdbool.h>
+++#else
+++#define bool int
+++#define false 0
+++#define true 1
+++#endif
+++
++ #include <sys/types.h>
++ 
++ 
++diff -urEb dcmtk-3.7.0.orig/oficonv/libsrc/citrus_utf8.c dcmtk-3.7.0/oficonv/libsrc/citrus_utf8.c
++--- dcmtk-3.7.0.orig/oficonv/libsrc/citrus_utf8.c	2025-12-19 14:51:32.439814086 +0100
+++++ dcmtk-3.7.0/oficonv/libsrc/citrus_utf8.c	2025-12-19 15:35:06.552162192 +0100
++@@ -62,7 +62,15 @@
++ #include <sys/types.h>
++ #include <errno.h>
++ #include <limits.h>
+++
+++#if (_MSC_VER >= 1900)
++ #include <stdbool.h>
+++#else
+++#define bool int
+++#define false 0
+++#define true 1
+++#endif
+++
++ #include <stddef.h>
++ #include <stdio.h>
++ #include <stdlib.h>
++diff -urEb dcmtk-3.7.0.orig/oficonv/libsrc/oficonv_iconv.c dcmtk-3.7.0/oficonv/libsrc/oficonv_iconv.c
++--- dcmtk-3.7.0.orig/oficonv/libsrc/oficonv_iconv.c	2025-12-19 14:51:32.432814136 +0100
+++++ dcmtk-3.7.0/oficonv/libsrc/oficonv_iconv.c	2025-12-19 15:35:15.418104064 +0100
++@@ -37,7 +37,15 @@
++ #include <sys/types.h>
++ #include <errno.h>
++ #include <limits.h>
+++
+++#if (_MSC_VER >= 1900)
++ #include <stdbool.h>
+++#else
+++#define bool int
+++#define false 0
+++#define true 1
+++#endif
+++
++ #include <stdlib.h>
++ #include <string.h>
++ #include <stdio.h>
++diff -urEb dcmtk-3.7.0.orig/oficonv/libsrc/windows_mmap.h dcmtk-3.7.0/oficonv/libsrc/windows_mmap.h
++--- dcmtk-3.7.0.orig/oficonv/libsrc/windows_mmap.h	2025-12-19 14:51:32.431814143 +0100
+++++ dcmtk-3.7.0/oficonv/libsrc/windows_mmap.h	2025-12-19 15:42:36.269444850 +0100
++@@ -74,6 +74,12 @@
++ 
++ static void *mmap(void *start, size_t length, int prot, int flags, int fd, off_t offset)
++ {
+++  DWORD flProtect;
+++  DWORD dwDesiredAccess;
+++  HANDLE mmap_fd, h;
+++  off_t end;
+++  void *ret;
+++
++     (void) start;
++ 
++ 	if (prot & ~(PROT_READ | PROT_WRITE | PROT_EXEC))
++@@ -84,7 +90,6 @@
++ 	} else if (flags & MAP_ANON)
++ 		return MAP_FAILED;
++ 
++-	DWORD flProtect;
++     flProtect = 0;
++ 	if (prot & PROT_WRITE) {
++ 		if (prot & PROT_EXEC)
++@@ -99,8 +104,7 @@
++ 	} else
++ 		flProtect = PAGE_READONLY;
++ 
++-	off_t end = (off_t)(length + offset);
++-	HANDLE mmap_fd, h;
+++	end = (off_t)(length + offset);
++ 	if (fd == -1)
++ 		mmap_fd = INVALID_HANDLE_VALUE;
++ 	else
++@@ -109,7 +113,6 @@
++ 	if (h == NULL)
++ 		return MAP_FAILED;
++ 
++-	DWORD dwDesiredAccess;
++ 	if (prot & PROT_WRITE)
++ 		dwDesiredAccess = FILE_MAP_WRITE;
++ 	else
++@@ -118,7 +121,7 @@
++ 		dwDesiredAccess |= FILE_MAP_EXECUTE;
++ 	if (flags & MAP_PRIVATE)
++ 		dwDesiredAccess |= FILE_MAP_COPY;
++-	void *ret = MapViewOfFile(h, dwDesiredAccess, MM_DWORD_HI(offset), MM_DWORD_LO(offset), length);
+++	ret = MapViewOfFile(h, dwDesiredAccess, MM_DWORD_HI(offset), MM_DWORD_LO(offset), length);
++ 	if (ret == NULL) {
++ 		CloseHandle(h);
++ 		ret = MAP_FAILED;
++@@ -140,11 +143,13 @@
++ 
++ static void munmap(void *addr, size_t length)
++ {
+++  mmap_cleanup_t **prevPtr;
+++  mmap_cleanup_t *mc;
+++
++     (void) length;
++ 	UnmapViewOfFile(addr);
++ 	// Look up through the tracking elements to close the handle
++-	mmap_cleanup_t **prevPtr = &mmap_cleanup;
++-	mmap_cleanup_t *mc;
+++	prevPtr = &mmap_cleanup;
++ 	for (mc = *prevPtr; mc != NULL; prevPtr = &mc->next, mc = *prevPtr)
++ 	{
++ 		if (mc->addr == addr)
++diff -urEb dcmtk-3.7.0.orig/ofstd/include/dcmtk/ofstd/oftypes.h dcmtk-3.7.0/ofstd/include/dcmtk/ofstd/oftypes.h
++--- dcmtk-3.7.0.orig/ofstd/include/dcmtk/ofstd/oftypes.h	2025-12-19 14:51:32.443814058 +0100
+++++ dcmtk-3.7.0/ofstd/include/dcmtk/ofstd/oftypes.h	2025-12-19 15:39:04.630598021 +0100
++@@ -79,8 +79,9 @@
++ 
++ #include <cstddef>
++ BEGIN_EXTERN_C
+++#if defined(HAVE_STDINT_H) || _MSC_VER >= 1600
++ #include <stdint.h>
++-#include <inttypes.h>
+++#endif
++ END_EXTERN_C
++ 
++ #include "dcmtk/ofstd/ofstream.h"
+diff -r 5037896a19ae -r 5e961d92f655 OrthancFramework/Resources/Patches/dcmtk-3.7.0.patch
+--- /dev/null	Thu Jan 01 00:00:00 1970 +0000
++++ b/OrthancFramework/Resources/Patches/dcmtk-3.7.0.patch	Fri Dec 19 15:49:06 2025 +0100
+@@ -0,0 +1,293 @@
++diff -urEb dcmtk-3.7.0.orig/CMake/GenerateDCMTKConfigure.cmake dcmtk-3.7.0/CMake/GenerateDCMTKConfigure.cmake
++--- dcmtk-3.7.0.orig/CMake/GenerateDCMTKConfigure.cmake	2025-12-19 14:29:01.247154576 +0100
+++++ dcmtk-3.7.0/CMake/GenerateDCMTKConfigure.cmake	2025-12-19 14:29:46.562859573 +0100
++@@ -227,9 +227,12 @@
++ 
++ # Check the sizes of various types
++ include(CheckTypeSize)
+++if (NOT CMAKE_SYSTEM_NAME STREQUAL "Emscripten")
+++  # This doesn't work for wasm, Orthanc defines the macros manually
++ CHECK_TYPE_SIZE("int" SIZEOF_INT)
++ CHECK_TYPE_SIZE("long" SIZEOF_LONG)
++ CHECK_TYPE_SIZE("void*" SIZEOF_VOID_P)
+++endif()
++ 
++ # Check for include files, libraries, and functions
++ include("${DCMTK_CMAKE_INCLUDE}CMake/dcmtkTryCompile.cmake")
++diff -urEb dcmtk-3.7.0.orig/dcmdata/include/dcmtk/dcmdata/dcdict.h dcmtk-3.7.0/dcmdata/include/dcmtk/dcmdata/dcdict.h
++--- dcmtk-3.7.0.orig/dcmdata/include/dcmtk/dcmdata/dcdict.h	2025-12-19 14:29:01.223154732 +0100
+++++ dcmtk-3.7.0/dcmdata/include/dcmtk/dcmdata/dcdict.h	2025-12-19 14:30:11.875694664 +0100
++@@ -163,6 +163,12 @@
++     /// returns an iterator to the end of the repeating groups data dictionary
++     DcmDictEntryListIterator repeatingEnd() { return repDict.end(); }
++ 
+++    // Function by the Orthanc project to load a dictionary from a
+++    // memory buffer, which is necessary in sandboxed
+++    // environments. This is an adapted version of
+++    // DcmDataDictionary::loadDictionary().
+++    OFBool loadFromMemory(const std::string& content, OFBool errorIfAbsent = OFTrue);
+++    
++ private:
++ 
++     /** private undefined assignment operator
++diff -urEb dcmtk-3.7.0.orig/dcmdata/libsrc/dcdict.cc dcmtk-3.7.0/dcmdata/libsrc/dcdict.cc
++--- dcmtk-3.7.0.orig/dcmdata/libsrc/dcdict.cc	2025-12-19 14:29:01.230154687 +0100
+++++ dcmtk-3.7.0/dcmdata/libsrc/dcdict.cc	2025-12-19 14:32:07.304941668 +0100
++@@ -904,3 +904,5 @@
++   wrlock().clear();
++   wrunlock();
++ }
+++
+++#include "dcdict_orthanc.cc"
++diff -urEb dcmtk-3.7.0.orig/dcmdata/libsrc/dcpxitem.cc dcmtk-3.7.0/dcmdata/libsrc/dcpxitem.cc
++--- dcmtk-3.7.0.orig/dcmdata/libsrc/dcpxitem.cc	2025-12-19 14:29:01.226154713 +0100
+++++ dcmtk-3.7.0/dcmdata/libsrc/dcpxitem.cc	2025-12-19 14:32:22.058845317 +0100
++@@ -31,6 +31,8 @@
++ #include "dcmtk/dcmdata/dcostrma.h"    /* for class DcmOutputStream */
++ #include "dcmtk/dcmdata/dcwcache.h"    /* for class DcmWriteCache */
++ 
+++#undef max
+++#include "dcmtk/ofstd/oflimits.h"
++ 
++ // ********************************
++ 
++diff -urEb dcmtk-3.7.0.orig/dcmnet/libsrc/scu.cc dcmtk-3.7.0/dcmnet/libsrc/scu.cc
++--- dcmtk-3.7.0.orig/dcmnet/libsrc/scu.cc	2025-12-19 14:29:01.298154244 +0100
+++++ dcmtk-3.7.0/dcmnet/libsrc/scu.cc	2025-12-19 14:32:55.028558816 +0100
++@@ -19,6 +19,11 @@
++  *
++  */
++ 
+++#if defined(_WIN32)
+++#  define __STDC_LIMIT_MACROS   // Get access to UINT16_MAX
+++#  include <stdint.h>
+++#endif
+++
++ #include "dcmtk/config/osconfig.h" /* make sure OS specific configuration is included first */
++ 
++ #include "dcmtk/dcmdata/dcostrmf.h" /* for class DcmOutputFileStream */
++diff -urEb dcmtk-3.7.0.orig/oficonv/include/dcmtk/oficonv/iconv.h dcmtk-3.7.0/oficonv/include/dcmtk/oficonv/iconv.h
++--- dcmtk-3.7.0.orig/oficonv/include/dcmtk/oficonv/iconv.h	2025-12-19 14:29:01.259154498 +0100
+++++ dcmtk-3.7.0/oficonv/include/dcmtk/oficonv/iconv.h	2025-12-19 14:33:18.961339935 +0100
++@@ -53,7 +53,12 @@
++ #endif
++ 
++ struct __tag_iconv_t;
+++
+++#if defined(__LSB_VERSION__)
+++typedef void *iconv_t;
+++#else
++ typedef struct __tag_iconv_t *iconv_t;
+++#endif
++ 
++ #ifndef OFICONV_CITRUS_WC_T_DEFINED
++ #define OFICONV_CITRUS_WC_T_DEFINED
++diff -urEb dcmtk-3.7.0.orig/oficonv/libsrc/citrus_csmapper.c dcmtk-3.7.0/oficonv/libsrc/citrus_csmapper.c
++--- dcmtk-3.7.0.orig/oficonv/libsrc/citrus_csmapper.c	2025-12-19 14:29:01.260154492 +0100
+++++ dcmtk-3.7.0/oficonv/libsrc/citrus_csmapper.c	2025-12-19 14:34:19.900793503 +0100
++@@ -61,7 +61,8 @@
++ 
++ #ifdef WITH_THREADS
++ #ifdef HAVE_WINDOWS_H
++-static SRWLOCK ma_lock = SRWLOCK_INIT;
+++static int ma_lock_initialized = 0;
+++static CRITICAL_SECTION ma_lock;
++ #elif defined(HAVE_PTHREAD_H)
++ static pthread_rwlock_t ma_lock = PTHREAD_RWLOCK_INITIALIZER;
++ #endif
++@@ -380,6 +381,14 @@
++     char mapper_path[OFICONV_PATH_MAX];
++     unsigned long norm;
++     int ret;
+++
+++#if defined(WITH_THREADS) && defined(HAVE_WINDOWS_H)
+++    if (ma_lock_initialized == 0) { /* Very minor risk of race condition here */
+++      InitializeCriticalSection(&ma_lock);
+++      ma_lock_initialized = 1;
+++    }
+++#endif
+++  
++     norm = 0;
++ 
++     getCSMapperPath(mapper_path, sizeof(mapper_path), NULL);
++diff -urEb dcmtk-3.7.0.orig/oficonv/libsrc/citrus_iconv.c dcmtk-3.7.0/oficonv/libsrc/citrus_iconv.c
++--- dcmtk-3.7.0.orig/oficonv/libsrc/citrus_iconv.c	2025-12-19 14:29:01.284154336 +0100
+++++ dcmtk-3.7.0/oficonv/libsrc/citrus_iconv.c	2025-12-19 14:43:41.671257024 +0100
++@@ -47,7 +47,15 @@
++ #endif
++ 
++ #include <limits.h>
+++
+++#if (_MSC_VER >= 1900)
++ #include <stdbool.h>
+++#else
+++#define bool int
+++#define false 0
+++#define true 1
+++#endif
+++
++ #include <stdio.h>
++ #include <stdlib.h>
++ #include <string.h>
++@@ -78,7 +86,8 @@
++ 
++ #ifdef WITH_THREADS
++ #ifdef HAVE_WINDOWS_H
++-static SRWLOCK ci_lock = SRWLOCK_INIT;
+++static int ci_lock_initialized = 0;
+++static CRITICAL_SECTION ci_lock;
++ #elif defined(HAVE_PTHREAD_H)
++ static pthread_rwlock_t ci_lock = PTHREAD_RWLOCK_INITIALIZER;
++ #endif
++@@ -297,14 +306,24 @@
++ _citrus_iconv_open(struct _citrus_iconv * * rcv,
++     const char * src, const char * dst)
++ {
++-struct _citrus_iconv *cv = NULL;
+++#ifdef HAVE_WINDOWS_H
+++    char current_codepage[20];
+++#endif
+++
+++    struct _citrus_iconv *cv = NULL;
++     struct _citrus_iconv_shared *ci = NULL;
++     char realdst[OFICONV_PATH_MAX], realsrc[OFICONV_PATH_MAX];
++     int ret;
++ 
+++#if defined(WITH_THREADS) && defined(HAVE_WINDOWS_H)
+++    if (ci_lock_initialized == 0) { /* Very minor risk of race condition here */
+++      InitializeCriticalSection(&ci_lock);
+++      ci_lock_initialized = 1;
+++    }
+++#endif
+++
++     init_cache();
++ #ifdef HAVE_WINDOWS_H
++-    char current_codepage[20];
++     snprintf(current_codepage, sizeof(current_codepage), "%lu", (unsigned long) GetConsoleOutputCP());
++ #endif
++ 
++diff -urEb dcmtk-3.7.0.orig/oficonv/libsrc/citrus_lock.h dcmtk-3.7.0/oficonv/libsrc/citrus_lock.h
++--- dcmtk-3.7.0.orig/oficonv/libsrc/citrus_lock.h	2025-12-19 14:29:01.279154368 +0100
+++++ dcmtk-3.7.0/oficonv/libsrc/citrus_lock.h	2025-12-19 14:44:56.261698027 +0100
++@@ -31,11 +31,11 @@
++ 
++ #ifdef WITH_THREADS
++ 
++-#ifdef HAVE_WINDOWS_H
+++#if defined(HAVE_WINDOWS_H)
++ 
++ #include <windows.h>
++-#define WLOCK(lock)   AcquireSRWLockExclusive(lock);
++-#define UNLOCK(lock)  ReleaseSRWLockExclusive(lock);
+++#define WLOCK(lock)   EnterCriticalSection(lock);
+++#define UNLOCK(lock)  LeaveCriticalSection(lock);
++ #define RLOCK(lock)   AcquireSRWLockShared(lock);
++ #define UNRLOCK(lock) ReleaseSRWLockShared(lock);
++ 
++diff -urEb dcmtk-3.7.0.orig/oficonv/libsrc/citrus_mapper.c dcmtk-3.7.0/oficonv/libsrc/citrus_mapper.c
++--- dcmtk-3.7.0.orig/oficonv/libsrc/citrus_mapper.c	2025-12-19 14:29:01.274154401 +0100
+++++ dcmtk-3.7.0/oficonv/libsrc/citrus_mapper.c	2025-12-19 14:45:32.613427883 +0100
++@@ -60,7 +60,8 @@
++ 
++ #ifdef WITH_THREADS
++ #ifdef HAVE_WINDOWS_H
++-static SRWLOCK cm_lock = SRWLOCK_INIT;
+++static int cm_lock_initialized = 0;
+++static CRITICAL_SECTION cm_lock;
++ #elif defined(HAVE_PTHREAD_H)
++ static pthread_rwlock_t cm_lock = PTHREAD_RWLOCK_INITIALIZER;
++ #endif
++@@ -354,6 +355,13 @@
++     const char *module, *variable;
++     int hashval, ret;
++ 
+++#if defined(WITH_THREADS) && defined(HAVE_WINDOWS_H)
+++    if (cm_lock_initialized == 0) { /* Very minor risk of race condition here */
+++      InitializeCriticalSection(&cm_lock);
+++      cm_lock_initialized = 1;
+++    }
+++#endif
+++
++     variable = NULL;
++ 
++     WLOCK(&cm_lock);
++diff -urEb dcmtk-3.7.0.orig/oflog/include/dcmtk/oflog/thread/syncpub.h dcmtk-3.7.0/oflog/include/dcmtk/oflog/thread/syncpub.h
++--- dcmtk-3.7.0.orig/oflog/include/dcmtk/oflog/thread/syncpub.h	2025-12-19 14:29:01.190154947 +0100
+++++ dcmtk-3.7.0/oflog/include/dcmtk/oflog/thread/syncpub.h	2025-12-19 14:45:55.441258943 +0100
++@@ -63,7 +63,7 @@
++ 
++ DCMTK_LOG4CPLUS_INLINE_EXPORT
++ Mutex::Mutex (Mutex::Type t)
++-    : mtx (DCMTK_LOG4CPLUS_THREADED (new impl::Mutex (t) + 0))
+++    : mtx (DCMTK_LOG4CPLUS_THREADED (new impl::Mutex (t)))
++ { }
++ 
++ 
++@@ -106,7 +106,7 @@
++ DCMTK_LOG4CPLUS_INLINE_EXPORT
++ Semaphore::Semaphore (unsigned DCMTK_LOG4CPLUS_THREADED (max),
++     unsigned DCMTK_LOG4CPLUS_THREADED (initial))
++-    : sem (DCMTK_LOG4CPLUS_THREADED (new impl::Semaphore (max, initial) + 0))
+++    : sem (DCMTK_LOG4CPLUS_THREADED (new impl::Semaphore (max, initial)))
++ { }
++ 
++ 
++@@ -190,7 +190,7 @@
++ 
++ DCMTK_LOG4CPLUS_INLINE_EXPORT
++ ManualResetEvent::ManualResetEvent (bool DCMTK_LOG4CPLUS_THREADED (sig))
++-    : ev (DCMTK_LOG4CPLUS_THREADED (new impl::ManualResetEvent (sig) + 0))
+++    : ev (DCMTK_LOG4CPLUS_THREADED (new impl::ManualResetEvent (sig)))
++ { }
++ 
++ 
++@@ -252,7 +252,7 @@
++ 
++ DCMTK_LOG4CPLUS_INLINE_EXPORT
++ SharedMutex::SharedMutex ()
++-    : sm (DCMTK_LOG4CPLUS_THREADED (new impl::SharedMutex + 0))
+++    : sm (DCMTK_LOG4CPLUS_THREADED (new impl::SharedMutex))
++ { }
++ 
++ 
++diff -urEb dcmtk-3.7.0.orig/oflog/libsrc/oflog.cc dcmtk-3.7.0/oflog/libsrc/oflog.cc
++--- dcmtk-3.7.0.orig/oflog/libsrc/oflog.cc	2025-12-19 14:29:01.191154941 +0100
+++++ dcmtk-3.7.0/oflog/libsrc/oflog.cc	2025-12-19 14:46:16.546103212 +0100
++@@ -19,6 +19,11 @@
++  *
++  */
++ 
+++
+++#if defined(_WIN32)
+++#  include <winsock2.h>
+++#endif
+++
++ #include "dcmtk/config/osconfig.h"    /* make sure OS specific configuration is included first */
++ #include "dcmtk/oflog/oflog.h"
++ 
++diff -urEb dcmtk-3.7.0.orig/ofstd/include/dcmtk/ofstd/offile.h dcmtk-3.7.0/ofstd/include/dcmtk/ofstd/offile.h
++--- dcmtk-3.7.0.orig/ofstd/include/dcmtk/ofstd/offile.h	2025-12-19 14:29:01.292154283 +0100
+++++ dcmtk-3.7.0/ofstd/include/dcmtk/ofstd/offile.h	2025-12-19 14:46:45.533889981 +0100
++@@ -560,7 +560,7 @@
++    */
++   void setlinebuf()
++   {
++-#if defined(_WIN32) || defined(__hpux)
+++#if defined(_WIN32) || defined(__hpux) || defined(__LSB_VERSION__)
++     this->setvbuf(NULL, _IOLBF, 0);
++ #else
++     :: setlinebuf(file_);
++diff -urEb dcmtk-3.7.0.orig/ofstd/libsrc/ofstub.cc dcmtk-3.7.0/ofstd/libsrc/ofstub.cc
++--- dcmtk-3.7.0.orig/ofstd/libsrc/ofstub.cc	2025-12-19 14:29:01.294154271 +0100
+++++ dcmtk-3.7.0/ofstd/libsrc/ofstub.cc	2025-12-19 14:47:06.737734493 +0100
++@@ -35,6 +35,10 @@
++ #include <windows.h>
++ #endif /* HAVE_WINDOWS_H */
++ 
+++#if defined(__LSB_VERSION__)
+++#include <errno.h>
+++#endif
+++
++ #define EXITCODE_CANNOT_DETERMINE_DIR        90
++ #define EXITCODE_EXEC_FAILED                 91
++ #define EXITCODE_ILLEGAL_PARAMS              92
+

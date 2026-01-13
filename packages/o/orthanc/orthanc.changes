@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 13 09:30:09 UTC 2026 - Axel Braun <axel.braun@gmx.de>
+
+- dcmtk 370 breaks TW build
+  * 370dir.diff and dcmtk370.patch (from orthanc development) added
+
+-------------------------------------------------------------------
 Thu Dec 11 22:05:51 UTC 2025 - Axel Braun <axel.braun@gmx.de>
 
 - switch to lua 5.4

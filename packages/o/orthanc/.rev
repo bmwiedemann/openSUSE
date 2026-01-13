@@ -692,4 +692,14 @@
     <comment></comment>
     <requestid>1322769</requestid>
   </revision>
+  <revision rev="50" vrev="4">
+    <srcmd5>9415780c3277759e0f64f08840788afb</srcmd5>
+    <version>1.12.10</version>
+    <time>1768336453</time>
+    <user>anag_factory</user>
+    <comment>- dcmtk 370 breaks TW build
+  * 370dir.diff and dcmtk370.patch (from orthanc development) added
+</comment>
+    <requestid>1326945</requestid>
+  </revision>
 </revisionlist>
