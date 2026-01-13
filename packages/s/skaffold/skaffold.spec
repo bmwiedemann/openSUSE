@@ -1,7 +1,7 @@
 #
 # spec file for package skaffold
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           skaffold
-Version:        2.17.0
+Version:        2.17.1
 Release:        0
 Summary:        Easy and Repeatable Kubernetes Development
 License:        Apache-2.0
