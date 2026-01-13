@@ -82,6 +82,8 @@ Patch26:        libsoup-CVE-2025-4969.patch
 Patch27:        libsoup-CVE-2025-4945.patch
 # PATCH-FIX-UPSTREAM libsoup2-CVE-2025-14523.patch bsc#1254876, CVE-2025-14523, glgo#GNOME/libsoup!491 alynx.zhou@suse.com -- Reject duplicated Host in headers
 Patch28:        libsoup2-CVE-2025-14523.patch
+# PATCH-FIX-UPSTREAM libsoup2-CVE-2026-0719.patch bsc#1256399, CVE-2026-0719, glgo#GNOME/libsoup!493 alynx.zhou@suse.com -- Fix overflow for password md4sum
+Patch29:        libsoup2-CVE-2026-0719.patch
 
 BuildRequires:  glib-networking
 BuildRequires:  meson >= 0.50

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan  9 02:52:21 UTC 2026 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add libsoup2-CVE-2026-0719.patch: Fix overflow for password
+  md4sum (bsc#1256399, CVE-2026-0719, glgo#GNOME/libsoup!493).
+
+-------------------------------------------------------------------
 Thu Jan  8 05:11:30 UTC 2026 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add libsoup2-CVE-2025-14523.patch: Reject duplicated Host in

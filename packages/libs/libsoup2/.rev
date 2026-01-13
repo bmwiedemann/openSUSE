@@ -152,4 +152,13 @@ Forwarded request #1101518 from iznogood
   headers (bsc#1254876, CVE-2025-14523, glgo#GNOME/libsoup!491). (forwarded request 1325885 from AZhou)</comment>
     <requestid>1325910</requestid>
   </revision>
+  <revision rev="18" vrev="14">
+    <srcmd5>8767088975ea228f5bc69f563df4389e</srcmd5>
+    <version>2.74.3</version>
+    <time>1768335761</time>
+    <user>anag_factory</user>
+    <comment>- Add libsoup2-CVE-2026-0719.patch: Fix overflow for password
+  md4sum (bsc#1256399, CVE-2026-0719, glgo#GNOME/libsoup!493). (forwarded request 1326671 from AZhou)</comment>
+    <requestid>1326752</requestid>
+  </revision>
 </revisionlist>
