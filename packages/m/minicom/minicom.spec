@@ -1,7 +1,7 @@
 #
 # spec file for package minicom
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ Patch1:         openSUSE-no-root-setup.patch
 Patch3:         minicom-2.8-replace-sigrelse.patch
 # PATCH-FIX-UPSTREAM fix-undefined-reference.patch -- Fix undefined reference to external COLS and LINES
 Patch4:         minicom-2.8-fix-undefined-reference.patch
+Patch5:         minicom-2.10-src-sysdep.h-remove-cfset-i-o-speed-macros-for-glibc.patch
 BuildRequires:  ckermit
 BuildRequires:  gettext-devel
 BuildRequires:  ncurses-devel

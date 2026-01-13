@@ -1,0 +1,17 @@
+diff --git a/src/sysdep.h b/src/sysdep.h
+index b11945c..9ba8836 100644
+--- a/src/sysdep.h
++++ b/src/sysdep.h
+@@ -139,12 +139,3 @@
+ #  define cfsetospeed(tty, spd)
+ #endif
+ #endif
+-
+-/* Redefine cfset{i,o}speed for Linux > 1.1.68 && libc < 4.5.21 */
+-#if defined (__GLIBC__) && defined(CBAUDEX)
+-#  undef cfsetispeed
+-#  undef cfsetospeed
+-#  define cfsetispeed(xtty, xspd) \
+-		((xtty)->c_cflag = ((xtty)->c_cflag & ~CBAUD) | (xspd))
+-#  define cfsetospeed(tty, spd)
+-#endif

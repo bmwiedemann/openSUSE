@@ -378,4 +378,14 @@
     <comment></comment>
     <requestid>1319557</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>323e8c0e2de27b0b72e6e09f1327c93c</srcmd5>
+    <version>2.10</version>
+    <time>1768336028</time>
+    <user>anag_factory</user>
+    <comment>- add
+  minicom-2.10-src-sysdep.h-remove-cfset-i-o-speed-macros-for-glibc.patch:
+   * baudrate setting broken on Linux when compiling against glibc &gt;= 2.42</comment>
+    <requestid>1326837</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 17 22:02:07 UTC 2025 - Richard Weinberger <richard@nod.at>
+
+- add
+  minicom-2.10-src-sysdep.h-remove-cfset-i-o-speed-macros-for-glibc.patch:
+   * baudrate setting broken on Linux when compiling against glibc >= 2.42
+
+-------------------------------------------------------------------
 Thu Nov 20 15:31:09 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.10
