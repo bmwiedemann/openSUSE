@@ -373,4 +373,12 @@ It does NOT conflict with python38 standard library (see upstream description)</
     <comment></comment>
     <requestid>1296829</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>cf77438f85843e6d40719f72e215fe89</srcmd5>
+    <version>8.7.1</version>
+    <time>1768335787</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1326778</requestid>
+  </revision>
 </revisionlist>
