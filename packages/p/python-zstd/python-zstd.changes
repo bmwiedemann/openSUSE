@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 13 08:32:01 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.5.7.3
+  * Create context for compress one time on module init.
+    Performance gain around 6%.
+  * Init cores cache as early as possible on module init.
+
+-------------------------------------------------------------------
 Fri Jul 25 08:35:52 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.5.7.2
