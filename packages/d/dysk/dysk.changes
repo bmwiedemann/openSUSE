@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jan 12 06:35:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.6.0:
+  On linux, stats reading is now time bounded, which avoids freezes
+  on unresponding remote volumes or some invalid mounts.
+  A new launch argument lets you tune the timeout, eg dysk
+  --timeout no or dysk --timeout 5ms.
+  This should make the --remote-stats no parameter mostly useless.
+  * version 3.6.0
+  * add test script to gitignore
+  * Nobody ever gives feedback so I'm free to funk the site
+  * update changelog
+  * apply timeout to all disks
+  * allow removing timeout
+  * timeout checked when reading remote stats
+  * fix img links in readme
+  * improve ddoc
+  * website: search
+  * replace mkdocs with ddoc
+
+-------------------------------------------------------------------
 Thu Dec 04 06:24:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.5.0:
