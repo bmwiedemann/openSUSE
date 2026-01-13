@@ -1,7 +1,7 @@
 #
 # spec file for package supercollider
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           supercollider
-Version:        3.14.0~rc1
-%global tar_version 3.14.0-rc1
+Version:        3.14.1
+%global tar_version 3.14.1
 Release:        0
 Summary:        Programming environment for audio synthesis and composition
 License:        GPL-3.0-only
@@ -27,6 +27,8 @@ URL:            https://supercollider.github.io/
 Source0:        https://github.com/supercollider/supercollider/releases/download/Version-%{tar_version}/SuperCollider-%{tar_version}-Source.tar.bz2
 Source1:        https://github.com/supercollider/supercollider/releases/download/Version-%{tar_version}/SuperCollider-%{tar_version}-Source.tar.bz2.asc
 Source2:        supercollider.keyring
+Patch0:         000-SuperCollider-Fix-qt-6.10.1-build.patch
+Patch1:         001-SuperCollider-remove-NO_GPL3-option.patch
 BuildRequires:  alsa-lib-devel
 BuildRequires:  avahi-devel
 BuildRequires:  cmake
@@ -41,9 +43,6 @@ BuildRequires:  libcurl-devel
 # BuildRequires:  libcwiid-devel
 BuildRequires:  libicu-devel
 BuildRequires:  libjack-devel
-BuildRequires:  libqt5-qtbase-devel
-BuildRequires:  libqt5-qtlocation-devel
-BuildRequires:  libqt5-qttools-devel
 BuildRequires:  libsndfile-devel
 BuildRequires:  libtool
 BuildRequires:  libudev-devel
@@ -94,6 +93,7 @@ SuperCollider applications
 Summary:        SuperCollider support for Emacs
 Group:          Development/Tools/IDE
 Requires:       supercollider = %{version}-%{release}
+BuildArch:      noarch
 
 %description emacs
 SuperCollider support for the Emacs text editor.
@@ -102,12 +102,14 @@ SuperCollider support for the Emacs text editor.
 Summary:        SuperCollider support for Vim
 Group:          Development/Tools/IDE
 Requires:       supercollider = %{version}-%{release}
+BuildArch:      noarch
 
 %description vim
 SuperCollider support for the Vim text editor.
 
 %prep
 %setup -q -n SuperCollider-%{tar_version}-Source
+%autopatch -p1
 
 %build
 # remove exec flag from boost
@@ -188,7 +190,7 @@ rm -rf %{buildroot}%{_datadir}/doc/SuperCollider
 # %{_bindir}/sclangpipe_app
 # %{_bindir}/scvim
 # %{_datadir}/scvim
-# %{_datadir}/SuperCollider/Extensions/scvim
+%{_datadir}/SuperCollider/Extensions/scide_scvim/
 # %dir %{_datadir}/vim
 # %dir %{_datadir}/vim/addons
 # %dir %{_datadir}/vim/addons/ftplugin

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jan 10 23:11:22 UTC 2026 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- add 000-SuperCollider-Fix-qt-6.10.1-build.patch
+- add 001-SuperCollider-remove-NO_GPL3-option.patch see: 
+  https://github.com/supercollider/supercollider/commit/c00c36ffc571955d4cad8a22e80b4162fe5adb63
+  enable Vim extension build
+- set noarch for emacs and vim subpackages
+- refresh spec
+- update to 3.14.1:
+  * This release fixes a bug when setting args as keyword arguments
+    in class methods. It also fixes the content of some helpfiles,
+    boost libraries integration, build system, and the CI pipeline.
+
+- full 3.14 Changelog see:
+  https://github.com/supercollider/supercollider/blob/3.14/CHANGELOG.md
+
+-------------------------------------------------------------------
 Sun Jun 29 08:57:44 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.14.0~rc1:

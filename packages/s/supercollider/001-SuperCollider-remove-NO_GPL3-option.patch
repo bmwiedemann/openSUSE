@@ -1,0 +1,52 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ee8f655..58f1286 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -185,7 +185,6 @@ if(WIN32)
+ else(WIN32)
+     option(NO_AVAHI "Disable Avahi support. (Not recommended.)" OFF)
+ endif(WIN32)
+-option(NO_GPL3 "Disable GPL3 code, for pure-GPL2 situations. (Not recommended.)" OFF)
+ 
+ option(SCLANG_SERVER "Build with internal server." ON)
+ 
+@@ -437,10 +436,6 @@ elseif(CMAKE_COMPILER_IS_GNUCXX AND CMAKE_SYSTEM_PROCESSOR STREQUAL "armv6l")
+   endforeach()
+ endif()
+ 
+-if (NO_GPL3)
+-	add_definitions(-DNO_GPL3)
+-endif()
+-
+ if(SC_DISABLE_XCODE_CODESIGNING)
+     set(CMAKE_XCODE_ATTRIBUTE_CODE_SIGNING_REQUIRED "NO")
+     set(CMAKE_XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY "")
+diff --git a/HelpSource/Other/Licensing.html b/HelpSource/Other/Licensing.html
+index 55c7dff..856defa 100644
+--- a/HelpSource/Other/Licensing.html
++++ b/HelpSource/Other/Licensing.html
+@@ -26,7 +26,7 @@ span.s3 {text-decoration: underline ; color: #0039da}
+ <p class="p4"><br></p>
+ <p class="p3">--</p>
+ <p class="p3"><b>Some further notes:</b></p>
+-<p class="p3">SuperCollider was originally published under the terms of <b><i>version 2 or later</i></b> of the GPL, but the application now includes some GPL3-licensed code. If you have a need specifically for GPL2 compatibility then it is possible to recompile SuperCollider from source without the GPL3 elements.</p>
++<p class="p3">SuperCollider was originally published under the terms of <b><i>version 2 or later</i></b> of the GPL, but the application now includes some GPL3-licensed code.</p>
+ <p class="p3">SuperCollider's help documentation is published under <a href="HelpDocsLicensing.html"><span class="s3">a Creative Commons license</span></a>.</p>
+ </body>
+ </html>
+diff --git a/editors/CMakeLists.txt b/editors/CMakeLists.txt
+index b74b2f5..2225317 100644
+--- a/editors/CMakeLists.txt
++++ b/editors/CMakeLists.txt
+@@ -12,10 +12,6 @@ if(SC_EL)
+ endif()
+ 
+ if(SC_VIM)
+-	if(NO_GPL3)
+-		message(WARNING "SC_VIM requested, but NO_GPL3 flag is on, so not activated.")
+-	else()
+-		add_subdirectory(scvim)
+-	endif()
++	add_subdirectory(scvim)
+ endif()
+ 

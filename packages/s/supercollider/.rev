@@ -23,4 +23,12 @@
 - select pipewire-libjack over jack</comment>
     <requestid>1293424</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3e06203a8c3c9ac31046379b037e70cb</srcmd5>
+    <version>3.14.1</version>
+    <time>1768335998</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1326786</requestid>
+  </revision>
 </revisionlist>
