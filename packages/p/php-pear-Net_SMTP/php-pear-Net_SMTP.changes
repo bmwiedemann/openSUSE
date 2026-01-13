@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 10 20:24:24 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
+
+- New upstream release 1.12.2
+  * Bug: Add missing comma character after user (#85)
+  * Task: Update ci.yml (#84)
+
+-------------------------------------------------------------------
 Sun May 26 18:15:15 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - New upstream release 1.12.1
