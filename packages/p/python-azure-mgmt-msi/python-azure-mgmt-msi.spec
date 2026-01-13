@@ -18,14 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-msi
-Version:        7.0.0
+Version:        7.1.0
 Release:        0
 Summary:        Microsoft Azure MSI Management Client Library
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-msi/azure-mgmt-msi-%{version}.zip
-Source1:        LICENSE.txt
+Source:         https://files.pythonhosted.org/packages/source/a/azure_mgmt_msi/azure_mgmt_msi-%{version}.tar.gz
 BuildRequires:  %{python_module azure-mgmt-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
@@ -33,13 +32,12 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
 Requires:       python-azure-mgmt-nspkg >= 3.0.0
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-msrest >= 0.7.1
 Requires:       (python-azure-common >= 1.1 with python-azure-common < 2.0.0)
-Requires:       (python-azure-mgmt-core >= 1.3.2 with python-azure-mgmt-core < 2.0.0)
-Requires:       (python-typing_extensions >= 4.3.0 if python-base < 3.8)
+Requires:       (python-azure-mgmt-core >= 1.5.0 with python-azure-mgmt-core < 2.0.0)
+Requires:       (python-isodate >= 0.6.1 with python-isodate < 1.0.0)
+Requires:       python-typing_extensions >= 4.6.0
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
 Obsoletes:      python3-azure-mgmt-msi < 7.0.0
@@ -57,10 +55,9 @@ replace the old Azure Service Management (ASM).
 This package has been tested with Python 2.7, 3.4, 3.5, 3.6 and 3.7.
 
 %prep
-%setup -q -n azure-mgmt-msi-%{version}
+%setup -q -n azure_mgmt_msi-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-mgmt-msi-%{version}
 %pyproject_wheel
 
 %install
@@ -75,7 +72,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
-%license LICENSE.txt
+%license LICENSE
 %{python_sitelib}/azure/mgmt/msi
 %{python_sitelib}/azure_mgmt_msi-*.dist-info
 

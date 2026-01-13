@@ -131,4 +131,21 @@
     <comment></comment>
     <requestid>1298089</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>dd5b9319092215eac6287464bb8be75e</srcmd5>
+    <version>7.1.0</version>
+    <time>1768336488</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 7.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Remove unzip package from BuildRequires
+- Rename LICENSE.txt to LICENSE in %files section
+- Switch source archive format to TAR.GZ
+- Update Requires from setup.py (forwarded request 1327026 from glaubitz)</comment>
+    <requestid>1327036</requestid>
+  </revision>
 </revisionlist>
