@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan 13 11:09:21 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
+
+- Update to version 4.6
+  * Translation updates
+  * Dependency updates
+  * Fix translations pot file not being update
+
+-------------------------------------------------------------------
+Thu Jan 08 08:20:57 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
+
+- Update to version 4.5 fixes bsc#1255425 (CVE-2025-64718):
+  * Dependency updates
+
+-------------------------------------------------------------------
 Fri Sep 12 05:53:34 UTC 2025 - Miika Alikirri <miika.alikirri@suse.com>
 
 - Update to version 4.4:
