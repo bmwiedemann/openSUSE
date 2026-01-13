@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jan 13 06:52:23 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 26.1.1:
+  * Fixes
+    - fix: Update version and tests (#2084) @alisonlhart
+
+-------------------------------------------------------------------
+Tue Jan 13 06:47:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 26.1.0:
+  * Fixes
+    - fix: mount docker's proxy ssh agent socket when running on
+      macOS (#2055) (#2076) @joonashak
+    - fix: Use sys.executable instead of hardcoded Python paths for
+      introspection (#2072) @alisonlhart
+    - fix: Improve compatiblity with restrictive shell environments
+      (#2073) @alisonlhart
+
+-------------------------------------------------------------------
 Fri Dec 05 06:45:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 25.12.0:
