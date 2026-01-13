@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan 13 06:48:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.22.stable.1:
+  * Fix rke2 agent logs folder relabel after using restorecon
+  * rke2-selinux: remove unsupported restorecon -T flag for RHEL8
+  * Add centos10 for release
+  * Add changelog for the RPMs Add same packager for the changelog
+  * Add selinux for EL 10 Add centos10 in the build actions Update
+    el10 versions for .spec Add FRT for the .spec Change centos
+    stream to almalinux
+  * use restorecon -FRT 0
+  * add vendor/packager details
+
+-------------------------------------------------------------------
 Fri Aug 08 04:58:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.21.stable.1:

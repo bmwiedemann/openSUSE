@@ -1,7 +1,7 @@
 #
 # spec file for package rke2-selinux
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,7 +46,7 @@ restorecon -R /var/run/flannel
 %define container_policyver 2.164.2-1.1
 
 Name:           rke2-selinux
-Version:        0.21.stable.1
+Version:        0.22.stable.1
 Release:        0
 Summary:        SELinux policy module for rke2
 
