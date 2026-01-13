@@ -1,7 +1,7 @@
 #
 # spec file for package maven-plugin-testing
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           maven-plugin-testing
-Version:        3.4.0
+Version:        3.5.0
 Release:        0
 Summary:        Maven Plugin Testing
 License:        Apache-2.0
@@ -32,7 +32,7 @@ BuildRequires:  fdupes
 BuildRequires:  google-guice
 BuildRequires:  javapackages-local
 BuildRequires:  junit
-BuildRequires:  junit5-minimal
+BuildRequires:  junit5-minimal >= 5.12.2
 BuildRequires:  maven-lib
 BuildRequires:  maven-resolver-api
 BuildRequires:  maven-wagon-provider-api

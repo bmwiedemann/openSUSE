@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jan 13 14:16:15 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 3.5.0
+  * New features and improvements
+    + Set MavenProject.basedir early during mock creating
+    + Nested tests with class level annotations
+    + Provide more default values by generated mocks
+    + Support for Nested tests
+    + Support RepositorySession to interact with remote repositories
+    + Use generics for returned type of getVariableValueFromObject
+    + Improve InjectMojo annotation processing
+  * Documentation updates
+    + Rewrite documentation and examples with new MojoTest usage
+  * Maintenance
+    + Remove maven-compat from dependencies
+    + chore: Replace PlexusTestCase by PlexusExtension in
+      MavenProjectStub
+  * Build
+    + Deploy snapshot on Jenkins for 3.x branch
+  * Dependency updates
+    + Bump org.apache.maven:maven-parent from 45 to 46
+    + Bump org.codehaus.plexus:plexus-testing from 2.0.1 to 2.1.0
+    + Bump mavenVersion from 3.9.11 to 3.9.12
+    + Bump org.codehaus.plexus:plexus-archiver from 4.10.3 to 4.10.4
+
+-------------------------------------------------------------------
 Tue Nov  4 09:30:53 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 3.4.0
