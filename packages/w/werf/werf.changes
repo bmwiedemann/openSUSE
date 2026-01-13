@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jan 13 07:05:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.57.1:
+  * Miscellaneous Chores
+    - release: force 2.57.1 (9400070)
+
+-------------------------------------------------------------------
+Tue Jan 13 06:53:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.57.0:
+  * Features
+    - deploy: NELM_FEAT_MORE_DETAILED_EXIT_CODE_FOR_PLAN=true to
+      return exit code 3 on "no resource changes, but must install
+      release" if --exit-code (7dede71)
+  * Bug Fixes
+    - buildah: heredoc in the Dockerfile is not taken into account
+      during the build with staged: true (#7279) (3c73afb)
+    - build: fix image-spec immutability (#7288) (69e7154)
+    - deploy: panic in pre/post-delete hooks tracking (839074f)
+
+-------------------------------------------------------------------
 Thu Dec 18 06:13:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.56.2:
