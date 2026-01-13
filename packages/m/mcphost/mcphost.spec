@@ -14,28 +14,16 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-%global provider github
-%global provider_tld com
-%global project mark3labs
-%global repo mcphost
-%global import_path %{provider}.%{provider_tld}/%{project}/%{repo}
-%global name %{provider}-%{provider_tld}-%{project}-%{repo}
-%{!?goprep: %define goprep go version #}
-%{!?gobuild: %define gobuild go build -buildmode=pie -mod=vendor}
-%{!?goinstall: %define goinstall install -D -m 0755 %{repo} %{buildroot}%{_bindir}/%{repo}}
 
-Name:           %repo
-Version:        0.31.1
-Release:        4.mge
+Name:           mcphost
+Version:        0.32.0
+Release:        0
 Summary:        A CLI host application for the Model Context Protocol (MCP)
-License:        MIT and Apache-2.0 and BSD-2-Clause and BSD-3-Clause
+License:        MIT and Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause
 URL:            https://github.com/mark3labs/mcphost
-Source0:        https://%{import_path}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        %{name}-%{version}-vendor.tar.gz
-BuildRequires:  go >= 1.24
-%if 0%{?suse_version} >= 1500
-BuildRequires:  golang-packaging
-%endif
+Source0:        https://github.com/mark3labs/mcphost/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        vendor.tar.gz
+BuildRequires:  golang(API) >= 1.24
 
 %description
 A CLI host application that enables Large Language Models (LLMs) to interact
@@ -74,18 +62,15 @@ Supplements:    (%{name} and fish)
 The official fish completion script for %{name}, generated during the build.
 
 %prep
-# Setup the main source code
-%setup -q -n %{name}-%{version}
-%setup -q -D -T -a 1 -n %{name}-%{version}
-
-sed -i -e "s/go1.24.5/go1.24/g" go.mod
-%{goprep} %{import_path}
+%autosetup -a 1
 
 %build
-%{gobuild}
+go build \
+       -mod=vendor \
+       -buildmode=pie
 
 %install
-%{goinstall}
+install -D -m 0755 %{name} "%{buildroot}%{_bindir}/%{name}"
 
 # Build the shell autocomplete files
 %{buildroot}/%{_bindir}/%{name} completion bash > %{name}-autocomplete.bash

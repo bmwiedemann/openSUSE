@@ -1,7 +1,46 @@
 -------------------------------------------------------------------
+Fri Jan  2 17:24:56 UTC 2026 - Egbert Eich <eich@suse.com>
+
+- Fix CVEs
+  * GO-2025-4135 (CVE-2025-47914)
+    SSH Agent servers do not validate the size of messages
+    when processing new identity requests, which may cause
+    the program to panic if the message is malformed due to
+    an out of bounds read.
+  * GO-2025-4116 (CVE-2025-47913)
+    SSH clients receiving SSH_AGENT_SUCCESS when expecting a
+    typed response will panic and cause early termination of
+    the client process.
+  * GO-2025-4134 (CVE-2025-58181, bsc#1253952).
+    SSH servers parsing GSSAPI authentication
+    requests do not validate the number of mechanisms
+    specified in the request, allowing an attacker to cause
+    unbounded memory consumption.
+
+-------------------------------------------------------------------
+Wed Dec 10 11:52:10 UTC 2025 - Darragh O'Reilly <doreilly@suse.com>
+
+- Update to 0.32.0
+  Feat: Add option to require approval before tool.
+  Bump github.com/cloudwego/eino to fix panic.
+  Changes to 0.31.4:
+  Update dependencies.
+  Changes to 0.31.3:
+  Fix format & update models.
+  Changes to 0.31.2:
+  Fix: suppress health check logging to debug output only/
+  Changes to 0.31.1:
+  Update dependency update mcp-go.
+
+-------------------------------------------------------------------
 Wed Nov  5 10:17:13 UTC 2025 - Sai Karthik Karra <kskarthik@disroot.org>
 
-- Add shell completions & basic %check during build time 
+- Add shell completions & basic %check during build time.
+
+-------------------------------------------------------------------
+Fri Oct 24 11:26:42 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Modernise packaging
 
 -------------------------------------------------------------------
 Fri Oct 10 12:43:31 UTC 2025 - Egbert Eich <eich@suse.com>

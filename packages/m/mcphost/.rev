@@ -15,4 +15,40 @@
     <comment>- Add shell completions &amp; basic %check during build time</comment>
     <requestid>1316078</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3dce96cc6311e9df24ef92a46c7ca193</srcmd5>
+    <version>0.32.0</version>
+    <time>1768336008</time>
+    <user>anag_factory</user>
+    <comment>- Fix CVEs
+  * GO-2025-4135 (CVE-2025-47914)
+    SSH Agent servers do not validate the size of messages
+    when processing new identity requests, which may cause
+    the program to panic if the message is malformed due to
+    an out of bounds read.
+  * GO-2025-4116 (CVE-2025-47913)
+    SSH clients receiving SSH_AGENT_SUCCESS when expecting a
+    typed response will panic and cause early termination of
+    the client process.
+  * GO-2025-4134 (CVE-2025-58181, bsc#1253952).
+    SSH servers parsing GSSAPI authentication
+    requests do not validate the number of mechanisms
+    specified in the request, allowing an attacker to cause
+    unbounded memory consumption.
+
+- Update to 0.32.0
+  Feat: Add option to require approval before tool.
+  Bump github.com/cloudwego/eino to fix panic.
+  Changes to 0.31.4:
+  Update dependencies.
+  Changes to 0.31.3:
+  Fix format &amp; update models.
+  Changes to 0.31.2:
+  Fix: suppress health check logging to debug output only/
+  Changes to 0.31.1:
+  Update dependency update mcp-go.
+
+- Add shell completions &amp; basic %check during build time.</comment>
+    <requestid>1326790</requestid>
+  </revision>
 </revisionlist>

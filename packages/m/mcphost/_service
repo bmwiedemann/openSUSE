@@ -1,0 +1,7 @@
+<services>
+ <service name="go_modules" mode="manual">
+  <param name="replace">
+   golang.org/x/crypto=golang.org/x/crypto@v0.45.0
+  </param>
+ </service>
+</services>
