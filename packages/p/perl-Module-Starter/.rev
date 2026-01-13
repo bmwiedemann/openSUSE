@@ -133,4 +133,13 @@
     <comment></comment>
     <requestid>1279780</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8c7b3ca442960a032fadc612833d17df</srcmd5>
+    <version>1.790.0</version>
+    <time>1768336475</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.790.0 (1.79)
+   see /usr/share/doc/packages/perl-Module-Starter/Changes</comment>
+    <requestid>1326995</requestid>
+  </revision>
 </revisionlist>

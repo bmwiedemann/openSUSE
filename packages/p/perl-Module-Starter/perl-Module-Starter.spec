@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Module-Starter
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,25 +18,26 @@
 
 %define cpan_name Module-Starter
 Name:           perl-Module-Starter
-Version:        1.780.0
+Version:        1.790.0
 Release:        0
-# 1.78 -> normalize -> 1.780.0
-%define cpan_version 1.78
+# 1.79 -> normalize -> 1.790.0
+%define cpan_version 1.79
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Simple starter kit for any module
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/D/DB/DBOOK/%{cpan_name}-%{cpan_version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/X/XS/XSAWYERX/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Module::Runtime)
-BuildRequires:  perl(Software::License) >= 0.103005
+BuildRequires:  perl(Software::License) >= 0.103.5
 BuildRequires:  perl(Test::More) >= 0.94
 BuildRequires:  perl(parent)
 BuildRequires:  perl(version) >= 0.77
 Requires:       perl(Module::Runtime)
-Requires:       perl(Software::License) >= 0.103005
+Requires:       perl(Software::License) >= 0.103.5
 Requires:       perl(Test::More) >= 0.94
 Requires:       perl(parent)
 Requires:       perl(version) >= 0.77
@@ -58,7 +59,7 @@ basic builder scripts, tests, documentation, and module code. This is done
 through just one method, 'create_distro'.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

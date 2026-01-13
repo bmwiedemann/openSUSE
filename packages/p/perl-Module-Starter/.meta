@@ -7,5 +7,4 @@ the module-starter manpage instead.
 Module::Starter is used to create a skeletal CPAN distribution, including
 basic builder scripts, tests, documentation, and module code. This is done
 through just one method, 'create_distro'.</description>
-  <devel project="devel:languages:perl" package="perl-Module-Starter"/>
 </package>
