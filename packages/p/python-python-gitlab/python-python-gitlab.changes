@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jan 13 06:25:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 7.1.0:
+  * Bug Fixes
+    - utils: Prevent negative sleep time in rate limit retry
+      (4221195)
+  * Continuous Integration
+    - release: Use the correct token for publish to GitHub
+      (614a74c)
+  * Features
+    - registry-protection: Add support for registry protection rule
+      deletion (9dd62c3)
+  * Testing
+    - functional: Update to GitLab 18.6 and resolve issues found
+      (c7c139b)
+
+-------------------------------------------------------------------
 Sun Nov  2 10:50:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 7.0.0:
