@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jan 14 13:35:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.0.2:
+  * Refactor and export range retry transport (#2012)
+  * Handle race when removing a broken symlink (#2016)
+  * build(deps): bump actions/setup-go from 6.1.0 to 6.2.0 (#2013)
+  * build(deps): bump chainguard.dev/sdk from 0.1.45 to 0.1.46
+    (#2014)
+  * Replace SetClient usage with transport configuration (#2006)
+  * Parse PKGINFO once and reuse parsed structure everywhere
+    (#2002)
+
+-------------------------------------------------------------------
+Wed Jan 14 06:58:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.0.1:
+  * build(deps): bump gopkg.in/ini.v1 from 1.67.0 to 1.67.1 (#2010)
+  * build(deps): bump chainguard-dev/actions from 1.5.10 to 1.5.11
+    (#2009)
+  * build(deps): bump github/codeql-action from 4.31.9 to 4.31.10
+    (#2011)
+  * Add java truststore support to additional certificates (#1996)
+
+-------------------------------------------------------------------
 Mon Jan 12 05:04:35 UTC 2026 - Thomas Bechtold <thomasbechtold@jpberlin.de>
 
 - Update to version 1.0.0:
