@@ -1,7 +1,7 @@
 #
 # spec file for package ktop
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,24 @@
 
 
 Name:           ktop
-Version:        0.4.1
+Version:        0.5.3
 Release:        0
 Summary:        A top-like tool for your Kubernetes clusters
 License:        Apache-2.0
 URL:            https://github.com/vladimirvivien/ktop
 Source:         ktop-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.17
+BuildRequires:  golang(API) >= 1.24
 
 %description
 A top-like tool for your Kubernetes cluster.
 
-Following the tradition of Unix/Linux top tools, ktop is a tool that displays useful metrics information about nodes, pods, and other workload resources running in a Kubernetes cluster.
+Following the tradition of Unix/Linux top tools, ktop is a tool that displays
+useful metrics information about nodes, pods, and other workload resources
+running in a Kubernetes cluster.
 
 %prep
-%setup -q
-%setup -q -T -D -a 1
+%autosetup -p 1 -a 1
 
 %build
 go build \
@@ -43,7 +44,7 @@ go build \
 
 %install
 # Install the binary.
-install -D -m 0755 %{name} "%{buildroot}/%{_bindir}/%{name}"
+install -D -m 0755 %{name} %{buildroot}/%{_bindir}/%{name}
 
 %files
 %doc README.md

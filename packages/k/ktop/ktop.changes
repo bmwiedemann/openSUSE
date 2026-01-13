@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Tue Jan 13 13:17:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.5.3:
+  * Net and Disk I/O Visualization updates
+    - Node network and disk IO metrics have been updated with
+      better normalization logic to display metrics
+    - Pod detail view now shows disk read/write rates in the
+      visualization
+    - Pod network visualization is disabled per-pod for now
+- Update to version 0.5.2:
+  * Bug Fix
+    This release fixes UI issues and memory consumption that was
+    reported in #141.
+    - Fixes
+      - Internal refactor to better manage locks
+      - Introduction of scrape timeout to avoid freeze
+      - Reduce the number of metrics to only store 8 metrics that
+        ktop actually uses
+      - Add string interning for metrics label deduplication
+      - Reduce Prom MaxSamples to 50
+- Update to version 0.5.1:
+  * Bug Fix Release
+    This patch release fixes a critical startup hang that could
+    occur when using Prometheus metrics.
+
+    Problem: ktop would sometime hang indefinitely when using
+    Prometheus metrics source and one or more nodes were slow or
+    unresponsive.
+    Root Cause: The initial metrics collection blocked startup,
+    waiting synchronously for all nodes to respond. Sequential node
+    scraping meant one slow node would block all others, with no
+    per-request timeout.
+    Solution:
+    - Test connectivity before starting collection (fails fast on
+      RBAC issues)
+    - Non-blocking first collection with timeout
+    - Parallel node scraping instead of sequential
+    - Per-request timeout (30s) prevents indefinite blocking
+    Result: ktop now starts immediately and populates metrics in
+    the background.
+
+-------------------------------------------------------------------
+Tue Jan 13 13:11:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.5.0:
+  This is a massive release that updates ktop in several major
+  ways. First, this release introduces Prometheus as a (default)
+  metrics source, providing richer metrics and better accuracy when
+  available. Second, the UI has been significantly enhanced with
+  new detail views, improved navigation, and polished
+  visualizations to make ktop a tool you can use daily to watch
+  over your Kubernetes clusters.
+  * New Features
+    - Prometheus Metrics Support - Native Prometheus scraping from
+      kubelet, cAdvisor, and API server endpoints
+    - Prometheus as Default - Metrics source now defaults to
+      Prometheus with graceful fallback
+    - Runtime Namespace Filtering - Filter pods by namespace at
+      runtime
+    - Content Filtering - Search and filter content within views
+    - Column Sorting - Sort tables by clicking column headers
+    - Resource Detail Views - Drill-down detail pages for nodes,
+      pods, and containers
+    - Context-Aware Navigation - Navigation hints adapt to current
+      view
+    - Toast Notifications - User messages displayed via toast
+      windows
+  * Improvements
+    - Redesigned cluster summary panel
+    - Improved summary statistics display
+    - Enhanced health check reporting
+    - Enhanced sparkline visualizations
+    - Unified runtime storage backend for metrics
+    - Dynamic height adjustment on terminal resize
+  * Documentation
+    - Updated documentation to reflect the new changes
+    - New GitHub Pages published at
+      https://vladimirvivien.github.io/ktop/
+  * Dependencies
+    - Bump golang.org/x/oauth2 from 0.7.0 to 0.27.0 (#61)
+
+-------------------------------------------------------------------
 Mon Jul 07 06:01:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.4.1:
