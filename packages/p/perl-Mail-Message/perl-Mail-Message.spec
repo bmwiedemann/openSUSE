@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mail-Message
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,38 +18,48 @@
 
 %define cpan_name Mail-Message
 Name:           perl-Mail-Message
-Version:        3.17.0
+Version:        4.10.0
 Release:        0
-# 3.017 -> normalize -> 3.17.0
-%define cpan_version 3.017
+# 4.01 -> normalize -> 4.10.0
+%define cpan_version 4.01
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Processing MIME messages
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/M/MA/MARKOV/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Date::Format)
 BuildRequires:  perl(Date::Parse)
 BuildRequires:  perl(Encode) >= 2.26
+BuildRequires:  perl(IO::Lines)
 BuildRequires:  perl(IO::Scalar)
-BuildRequires:  perl(MIME::Types) >= 1.4.0
+BuildRequires:  perl(Log::Report) >= 1.420
+BuildRequires:  perl(MIME::Types) >= 1.4
 BuildRequires:  perl(Mail::Address) >= 2.170
+BuildRequires:  perl(String::Print) >= 1.10
+BuildRequires:  perl(Test::More) >= 1
+BuildRequires:  perl(Test::Pod) >= 1
 BuildRequires:  perl(Time::Zone)
 BuildRequires:  perl(URI) >= 1.230
-BuildRequires:  perl(User::Identity) >= 1.20.0
+BuildRequires:  perl(User::Identity) >= 4.0
 Requires:       perl(Date::Format)
 Requires:       perl(Date::Parse)
 Requires:       perl(Encode) >= 2.26
+Requires:       perl(IO::Lines)
 Requires:       perl(IO::Scalar)
-Requires:       perl(MIME::Types) >= 1.4.0
+Requires:       perl(Log::Report) >= 1.420
+Requires:       perl(MIME::Types) >= 1.4
 Requires:       perl(Mail::Address) >= 2.170
+Requires:       perl(String::Print) >= 1.10
 Requires:       perl(Time::Zone)
 Requires:       perl(URI) >= 1.230
-Requires:       perl(User::Identity) >= 1.20.0
+Requires:       perl(User::Identity) >= 4.0
 Provides:       perl(Mail::Box::FastScalar) = %{version}
 Provides:       perl(Mail::Box::Parser) = %{version}
+Provides:       perl(Mail::Box::Parser::Lines) = %{version}
 Provides:       perl(Mail::Box::Parser::Perl) = %{version}
 Provides:       perl(Mail::Message) = %{version}
 Provides:       perl(Mail::Message::Body) = %{version}
@@ -99,6 +109,12 @@ Provides:       perl(Mail::Message::TransferEnc::QuotedPrint) = %{version}
 Provides:       perl(Mail::Message::TransferEnc::SevenBit) = %{version}
 Provides:       perl(Mail::Reporter) = %{version}
 %undefine       __perllib_provides
+Recommends:     perl(HTML::FormatText) >= 2.10
+Recommends:     perl(HTML::TreeBuilder) >= 3.130
+Recommends:     perl(MIME::Entity) >= 3.0
+Recommends:     perl(Mail::Box) >= 4.0
+Recommends:     perl(Mail::Internet) >= 2.10
+Recommends:     perl(Mail::Transport) >= 4.0
 %{perl_requires}
 
 %description
@@ -109,7 +125,7 @@ this class. Methods which are related to folders is implemented in the
 Mail::Box::Message extension.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -124,6 +140,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc ChangeLog README README.md
+%doc ChangeLog README.md
 
 %changelog
