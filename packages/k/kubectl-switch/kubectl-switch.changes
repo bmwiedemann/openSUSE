@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Jan 12 06:35:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.4.3:
+  * Bug Fixes
+    - 684948f: fix: precompiled binaries not uploaded to releases
+      (@mircea-pavel-anton)
+  * CI/CD
+    - e8634a2: ci: remove commitlint and pr labelers
+      (@mircea-pavel-anton)
+    - 9f94bde: ci: replace semantic release with svu-based semantic
+      tags (@mircea-pavel-anton)
+    - 21e3a44: ci: use goreleaser to create releases from scratch
+      (@mircea-pavel-anton)
+
+-------------------------------------------------------------------
+Mon Jan 12 06:15:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.4.2:
+  * Bug Fixes
+    - go: update k8s.io/client-go ( v0.34.3 → v0.35.0 ) (1dec436)
+  * CI/CD
+    - github-action: update github/codeql-action ( v4.31.8 →
+      v4.31.9 ) (f26d1f2)
+    - github-action: update mirceanton/action-semver-release (
+      v2.2.0 → v2.2.1 ) (ea170bd)
+
+-------------------------------------------------------------------
 Fri Dec 19 08:17:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.4.1:
