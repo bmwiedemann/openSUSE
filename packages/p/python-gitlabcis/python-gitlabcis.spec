@@ -1,7 +1,7 @@
 #
 # spec file for package python-gitlabcis
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-gitlabcis
-Version:        1.15.16
+Version:        1.15.21
 Release:        0
 Summary:        An automated tool that assesses the GitLab CIS benchmarks against a project
 License:        MIT
@@ -41,7 +41,7 @@ BuildRequires:  %{python_module PyYAML >= 6.0.3}
 BuildRequires:  %{python_module defusedxml >= 0.7.1}
 BuildRequires:  %{python_module gql >= 3.5.3}
 BuildRequires:  %{python_module python-dateutil >= 2.9.0.post0}
-BuildRequires:  %{python_module python-gitlab >= 6.3.0}
+BuildRequires:  %{python_module python-gitlab >= 6.5.0}
 BuildRequires:  %{python_module tabulate >= 0.9.0}
 BuildRequires:  %{python_module tqdm >= 4.67.1}
 # /SECTION
@@ -56,7 +56,7 @@ Requires:       python-PyYAML >= 6.0.2
 Requires:       python-defusedxml >= 0.7.1
 Requires:       python-gql >= 3.5.3
 Requires:       python-python-dateutil >= 2.9.0.post0
-Requires:       python-python-gitlab >= 6.3.0
+Requires:       python-python-gitlab >= 6.5.0
 Requires:       python-tabulate >= 0.9.0
 Requires:       python-tqdm >= 4.67.1
 BuildArch:      noarch

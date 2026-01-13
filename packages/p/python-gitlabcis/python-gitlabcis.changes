@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Jan 13 06:31:27 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.15.21:
+  * Fix
+    - fix(deps): update dependency coverage to v7.13.1 (7296411)
+- update to 1.15.20:
+  * Fix
+    - fix(deps): update dependency python-gitlab to v6.5.0
+	  (7596ae6)
+
+-------------------------------------------------------------------
+Sun Dec 21 06:34:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.15.19:
+  * Fix
+    - fix(deps): update dependency pytest-cov to v6.3.0 (5e2433a)
+- update to 1.15.18:
+  * Fix
+    - fix(deps): update dependency pre-commit to ~=4.5.1 (c118b8c)
+
+-------------------------------------------------------------------
+Thu Dec 18 08:10:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.15.17:
+  * Fix
+    - fix(deps): update dependency pipdeptree to v2.30.0 (97a5fa7)
+
+-------------------------------------------------------------------
 Wed Dec 17 07:02:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.15.16:
