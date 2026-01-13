@@ -1,7 +1,7 @@
 #
 # spec file for package google-guest-configs
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define _udevdir %(pkg-config --variable udev_dir udev)
 %endif
 Name:           google-guest-configs
-Version:        20251014.00
+Version:        20260112.00
 Release:        0
 Summary:        Google Cloud Guest Configs
 License:        Apache-2.0
@@ -87,7 +87,7 @@ fi
 %endif
 %attr(0755, root, root) %{_bindir}/gce-nic-naming
 %dir %{_sysconfdir}/rsyslog.d
-%{_modprobedir}/gce-blacklist.conf
+%config(noreplace) %{_modprobedir}/gce-blacklist.conf
 %config %{_sysconfdir}/rsyslog.d/*
 %config %{_sysconfdir}/sysconfig/network/scripts/*
 %{_sysctldir}/*

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jan 13 08:42:31 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20260112.00
+  * Make c4x a "multinic accelerator platform"
+  * Merge pull request #140 from a-r-n:xps-many-numa
+  * set_multiqueue xps: stop assuming 2 numa nodes
+  * Merge pull request #137 from a-r-n:a4x-pick
+  * Add IDPF irq setting; improve a4x-max performance
+  * Merge pull request #133 from a-r-n:master
+  * Allow test injection of the root directory and metadata server endpoint
+  * add nic naming support for connextx VF in baremetal
+  * bugfix for idpf only rename got skipped.
+  * add a4x-max to google_set_multiqueue is_multinic_accelerator_platform
+  * remove unnecessary link up and down
+  * fix inconsistent NIC index between smart NICs and GPU NICs.
+- Mark %{_modprobedir}/gce-blacklist.conf as %config(noreplace) (bsc#1198323)
+
+-------------------------------------------------------------------
 Fri Nov  7 14:07:58 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20251014.00
