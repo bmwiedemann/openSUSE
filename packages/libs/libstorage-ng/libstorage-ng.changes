@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Mon Jan 12 15:56:33 UTC 2026 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1047
+- added support for squashfs and erofs
+- 4.5.284
+
+--------------------------------------------------------------------
 Mon Jan 5 13:17:56 UTC 2026 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#1046
