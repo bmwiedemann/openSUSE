@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Jan 12 05:04:35 UTC 2026 - Thomas Bechtold <thomasbechtold@jpberlin.de>
+
+- Update to version 1.0.0:
+  * sbom: Make reader interface read-only (#2004)
+  * fix(fs): fix dirFS caching bug where ReadFile returns zeros
+    (#1984)
+  * sbom: Refactor Generator interface to be pluggable. (#2000)
+  * sbom: Deduplicate filesystem arguments. (#2003)
+  * build(deps): bump google.golang.org/api from 0.258.0 to 0.259.0
+    (#1999)
+  * build(deps): bump golang.org/x/sys from 0.39.0 to 0.40.0
+    (#2001)
+  * Rework global APK cache as a flight cache (#1997)
+  * build(deps): bump google.golang.org/api from 0.257.0 to 0.258.0
+    (#1995)
+  * build(deps): bump k8s.io/apimachinery from 0.34.3 to 0.35.0
+    (#1993)
+  * Align go version when linting code with all other actions
+    (#1998)
+  * Detect broken symlinks in the cache and fix them (#1994)
+  * Use in-memory control data everywhere (#1986)
+  * Rework flight cache into a strongly typed version (#1989)
+  * Check for validity of the cached expanded APK more thoroughly
+    (#1987)
+
+-------------------------------------------------------------------
+Sun Jan 11 12:50:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.30.35:
+  * build(deps): bump google.golang.org/api from 0.257.0 to 0.258.0
+    (#1995)
+  * build(deps): bump k8s.io/apimachinery from 0.34.3 to 0.35.0
+    (#1993)
+  * Align go version when linting code with all other actions
+    (#1998)
+  * Detect broken symlinks in the cache and fix them (#1994)
+  * Use in-memory control data everywhere (#1986)
+  * Rework flight cache into a strongly typed version (#1989)
+  * Check for validity of the cached expanded APK more thoroughly
+    (#1987)
+
+-------------------------------------------------------------------
 Fri Dec 19 08:12:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.30.34:
