@@ -2931,4 +2931,37 @@
   * [pydocstyle] Suppress D417 for parameters with Unpack annotations</comment>
     <requestid>1323924</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>5193a173104d9a918f086b7e9cefea0d</srcmd5>
+    <version>0.14.11</version>
+    <time>1768335657</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.14.11
+  * Preview features
+  * Consolidate diagnostics for matched disable/enable suppression comments 
+  * Report diagnostics for invalid/unmatched range suppression comments 
+  * [airflow] Passing positional argument into airflow.lineage.hook.HookLineageCollector.create_asset is not allowed (AIR303) 
+  * [refurb] Mark FURB192 fix as always unsafe 
+  * [ruff] Add non-empty-init-module (RUF067) 
+ * Bug fixes
+  * [flake8-unused-arguments] Mark **kwargs in TypeVar as used (ARG001) 
+ * Rule changes
+  * Add help: subdiagnostics for several Ruff rules that can sometimes appear to disagree with ty 
+  * [pylint] Demote PLW1510 fix to display-only 
+  * [pylint] Ignore identical members (PLR1714) 
+  * [pylint] Improve diagnostic range for PLC0206 
+  * [ruff] Improve fix title for RUF102 invalid rule code 
+  * [flake8-simplify]: Avoid unnecessary builtins import for SIM105 
+ * Configuration
+  * Allow Python 3.15 as valid target-version value in preview 
+  * Check required-version before parsing rules 
+  * Include configured src directories when resolving graphs 
+ * Documentation
+  * Update T201 suggestion to not use root logger to satisfy LOG015 
+  * Fix iter example in unsafe fixes doc 
+  * [flake8_print] better suggestion for basicConfig in T201 docs 
+  * [pylint] Restore the fix safety docs for PLW0133 
+  * Fix Jupyter notebook discovery info for editors</comment>
+    <requestid>1326626</requestid>
+  </revision>
 </revisionlist>

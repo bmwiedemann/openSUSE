@@ -1,7 +1,7 @@
 #
 # spec file for package python-ruff
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-ruff
-Version:        0.14.10
+Version:        0.14.11
 Release:        0
 Summary:        An extremely fast Python linter, written in Rust
 License:        MIT
