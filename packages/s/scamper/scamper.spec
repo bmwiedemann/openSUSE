@@ -1,7 +1,7 @@
 #
 # spec file for package scamper
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2016, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           scamper
-Version:        20251020
+Version:        20260105
 Release:        0
 Summary:        Parallel Internet measurement utility
 License:        GPL-2.0-only
