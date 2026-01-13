@@ -1,7 +1,7 @@
 #
 # spec file for package spotify-launcher
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           spotify-launcher
-Version:        0.6.3
+Version:        0.6.4
 Release:        0
 Summary:        Client for spotify's apt repository written in Rust
 License:        Apache-2.0 OR MIT
