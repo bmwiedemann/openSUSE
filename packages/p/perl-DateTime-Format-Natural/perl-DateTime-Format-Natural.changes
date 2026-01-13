@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jan  5 05:53:32 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.230.0 (1.23)
+   see /usr/share/doc/packages/perl-DateTime-Format-Natural/Changes
+
+  1.23  2026-01-04  <schubiger@cpan.org>
+   - Merged development version to stable.
+  1.22_02  2026-01-03  <schubiger@cpan.org>
+   - Tighten time matching regexes.
+   - Document the new formats.
+   - Assert that parsing time with mixed characters fails.
+   - List "isla w" in credits.
+  1.22_01  2025-12-31  <schubiger@cpan.org>
+   - Add support for period character in time and am/pm.
+     [github #24 - isla w]
+
+-------------------------------------------------------------------
 Thu Oct  9 19:58:02 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.220.0 (1.22)

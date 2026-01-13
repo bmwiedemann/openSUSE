@@ -133,4 +133,23 @@
    - ::Extract: minor tweaks.</comment>
     <requestid>1310542</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>db531cb2627e44454ee5a00fbc315ef3</srcmd5>
+    <version>1.230.0</version>
+    <time>1768336476</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.230.0 (1.23)
+   see /usr/share/doc/packages/perl-DateTime-Format-Natural/Changes
+  1.23  2026-01-04  &lt;schubiger@cpan.org&gt;
+   - Merged development version to stable.
+  1.22_02  2026-01-03  &lt;schubiger@cpan.org&gt;
+   - Tighten time matching regexes.
+   - Document the new formats.
+   - Assert that parsing time with mixed characters fails.
+   - List &quot;isla w&quot; in credits.
+  1.22_01  2025-12-31  &lt;schubiger@cpan.org&gt;
+   - Add support for period character in time and am/pm.
+     [github #24 - isla w]</comment>
+    <requestid>1326996</requestid>
+  </revision>
 </revisionlist>
