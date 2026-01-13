@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Jan 13 06:30:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2025.12.1:
+  * Other Changes
+    - refactor(core): remove GitDir wrapper and use RepoGitDir
+      directly (f0777096)
+    - refactor(fs): rename RepoDir to RepoGitDir and simplify
+      directory structure (cec60dfc)
+- Update to version 2025.12.0:
+  * Features
+    - feat: migrate from kxio to tree-type filesystem abstraction
+      (f2eba3b7)
+  * Bug Fixes
+    - fix(ci): use correct release-plz forge parameter (960762cc)
+    - fix(docker): update rust image and fix musl linking issues
+      (65f6c4f0)
+    - fix: restore setting log level with RUST_LOG (9b7f2aff)
+  * Other Changes
+    - chore(deps): bump derive-with, mockall and retest (df06c694)
+    - build(ci): disable release-pr workflow (d039629e)
+    - build(ci): setup git credentials for release-pr (8d651d77)
+    - build(ci): switch to CrowCI (4f45e48c)
+    - docs: update repository URLs from git.kemitix.net to
+      codeberg.org (7e481d30)
+    - refactor: centralise github api requests (5daa2198)
+    - refactor: centralise forgejo api requests (1c520045)
+
+-------------------------------------------------------------------
 Mon Jul 07 05:26:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2025.7.1:
