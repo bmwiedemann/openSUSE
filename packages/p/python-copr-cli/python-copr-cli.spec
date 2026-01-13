@@ -1,7 +1,7 @@
 #
 # spec file for package python-copr-cli
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %bcond_without libalternatives
 Name:           python-copr-cli
-Version:        2.1
+Version:        2.4
 Release:        0
 Summary:        Copr cli
 License:        GPL-2.0-or-later
 URL:            https://github.com/fedora-copr/copr
-Source:         https://files.pythonhosted.org/packages/source/c/copr-cli/copr-cli-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/c/copr-cli/copr_cli-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -49,7 +49,7 @@ BuildRequires:  %{python_module responses}
 CLI tool to run copr.
 
 %prep
-%autosetup -p1 -n copr-cli-%{version}
+%autosetup -p1 -n copr_cli-%{version}
 
 sed -i '1{/#!/d}' copr_cli/package_build_order.py
 

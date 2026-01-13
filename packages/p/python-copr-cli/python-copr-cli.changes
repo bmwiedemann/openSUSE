@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan  9 22:15:50 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
+
+- Update to 2.4:
+  * There is a new API endpoint, along with CLI support, for re-generating API tokens (#3960)
+- full changelog at:
+  * https://github.com/fedora-copr/copr/compare/copr-cli-2.1-1...copr-cli-2.4-1
+
+-------------------------------------------------------------------
 Mon Jul  7 09:33:49 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives
