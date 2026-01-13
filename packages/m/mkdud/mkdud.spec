@@ -39,7 +39,7 @@ Requires:       gpg2
 Requires:       grep
 Requires:       gzip
 Requires:       kmod
-Requires:       osc
+Recommends:     osc
 Requires:       rpm
 Requires:       rpm-build
 Requires:       tar
@@ -49,7 +49,7 @@ Requires:       zstd
 Summary:        Create driver update from rpms
 License:        GPL-3.0-or-later
 Group:          Hardware/Other
-Version:        2.2
+Version:        2.3
 Release:        0
 Source:         %{name}-%{version}.tar.xz
 Url:            https://github.com/openSUSE/mkdud

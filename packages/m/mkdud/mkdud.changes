@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Mon Jan 12 17:22:48 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mkdud#46
+- make dependence on osc package optional (bsc#1254110)
+- 2.3
+
+--------------------------------------------------------------------
 Wed Sep 10 16:25:06 UTC 2025 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/mkdud#45
