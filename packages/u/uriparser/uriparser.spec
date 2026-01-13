@@ -1,7 +1,7 @@
 #
 # spec file for package uriparser
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,10 +24,10 @@
 
 %define so_ver  1
 Name:           uriparser
-Version:        0.9.8
+Version:        1.0.0
 Release:        0
 Summary:        A strictly RFC 3986 compliant URI parsing library
-License:        BSD-3-Clause AND LGPL-2.1-or-later
+License:        Apache-2.0 AND BSD-3-Clause AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://uriparser.github.io
 Source:         https://github.com/uriparser/uriparser/releases/download/uriparser-%{version}/uriparser-%{version}.tar.xz
@@ -128,16 +128,16 @@ unset MALLOC_CHECK_ MALLOC_PERTURB_
 %postun -n liburiparser%{so_ver} -p /sbin/ldconfig
 
 %files
-%license COPYING
+%license COPYING.BSD-3-Clause
 %{_bindir}/uriparse
 
 %files -n liburiparser%{so_ver}
-%license COPYING
+%license COPYING.BSD-3-Clause
 %{_libdir}/liburiparser.so.%{so_ver}
 %{_libdir}/liburiparser.so.%{so_ver}.*
 
 %files devel
-%license COPYING
+%license COPYING.BSD-3-Clause
 %doc ChangeLog THANKS AUTHORS
 %{_includedir}/%{name}/
 %{_libdir}/liburiparser.so
@@ -145,10 +145,10 @@ unset MALLOC_CHECK_ MALLOC_PERTURB_
 %{_libdir}/pkgconfig/liburiparser.pc
 
 %files doc
-%license COPYING
+%license COPYING.BSD-3-Clause
 %doc doc/Mainpage.txt
 %dir %{_docdir}/%{name}/
 %{_docdir}/%{name}/html/
-%{_docdir}/%{name}/%{name}-%{version}.qch
+%{_docdir}/%{name}/%{name}-%{version}-doc.qch
 
 %changelog

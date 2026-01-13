@@ -155,4 +155,41 @@
     <comment></comment>
     <requestid>1285443</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9a4263e83f8d7cfbbc01049b1423065b</srcmd5>
+    <version>1.0.0</version>
+    <time>1768336586</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.0.0 (bsc#1255000, CVE-2025-67899)
+  * Fixed: [CVE-2025-67899]
+      Protect from stack overflow during parsing by dissolving all 13 cases
+      of recursion, both direct and indirect. The attack vector was long
+      (or crafted) URI input. The known impact is denial of service or more.
+      Thanks for the report to Sergey Svistunov!
+      Thanks for in-depth review to Tim Düsterhus! (sponsored by Tideways GmbH)
+      Thanks for C callgraph tool &quot;egypt&quot; (https://www.gson.org/egypt/)
+        to Andreas Gustafsson and for &quot;dot_find_cycles.py&quot; to Jason Antman!
+  * Changed: Start requiring a C99 compiler (GitHub #264, GitHub #273)
+  * Changed: Require CMake &gt;=3.15.0 (GitHub #270)
+  * Fixed: Normalization of URIs with leading dot segments
+      produced ambiguous results in the sense that a reparse
+      after normalization would have misinterpreted path parts
+      as a host (GitHub #262, GitHub #263, GitHub #265)
+      Examples of affected URIs:
+      - &quot;scheme:/.//path1/path2&quot;
+      - &quot;/.//path1/path2&quot;
+      - &quot;.//path1/path2&quot;
+      The fix is to not remove that dot segment.
+      Thanks to Ignace Nyamagana Butera and to Tim Düsterhus for the report!
+  * Fixed: Insufficient pointer alignment from allocation wrappers
+      used in the implementation of function uriCompleteMemoryManager.
+      (GitHub #261)
+      Thanks to Matthew Fernandez and Rolf Eike Beer for the report and review!
+  * Fixed: Do not set `absolutePath` for empty paths when removing host
+      Thanks for the report and pull request to Tim Düsterhus!
+      (GitHub #275, GitHub #276)
+  * Fixed: Documentation of functions uriCompleteMemoryManager,
+      uriEmulateCalloc, uriEmulateReallocarray and uriTestMemoryManager</comment>
+    <requestid>1327052</requestid>
+  </revision>
 </revisionlist>
