@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu Jan  1 17:14:38 UTC 2026 - Andreas Prittwitz <m4ng4n@gmx.de>
+
+- Update to 0.28.0
+  Added:
+  * support choosing checkout branch method when status is not empty
+  * support pre-push hook
+  * message tab supports pageUp and pageDown
+  * files and status tab support pageUp and pageDown
+  * support loading custom syntax highlighting themes from a file
+  * select syntax highlighting theme out of the defaults
+    from syntect
+  * new command-line option to override the default log file
+  path (--logfile)
+  * dx: make check checks Cargo.toml dependency ordering
+  using cargo sort
+  * add use_selection_fg to theme file to allow customizing
+  selection foreground color
+  * add "go to line" command for the blame view 
+  * add --file cli flag to open the files tab with the given
+  file already selected
+  * add the ability to specify a custom keybinding/symbols
+  file via the cli
+  Changed:
+  * execute git-hooks directly if possible (on *nix) else use sh
+  instead of bash (without reading SHELL variable)
+  * improve error messages
+  * improve syntax highlighting file detection
+  * after commit: jump back to unstaged area
+  * the default key to close the commit error message popup
+  is now the Escape key
+  * use OSC52 copying in case other methods fail
+  * push: respect branch.*.merge when push default is upstream
+  * set the terminal title to gitui ({repo_path})
+  * respect .mailmap
+  * use gitoxide for get_tags
+  * increase MSRV to 1.82
+  Fixes:
+  * resolve core.hooksPath relative to GIT_WORK_TREE
+  * yanking commit ranges no longer generates incorrect dotted 
+  range notations, but lists each individual commit
+  * print slightly nicer errors when failing to create a directory
+  * when the terminal is insufficient to display all the commands, 
+    the cmdbar_bg configuration color does not fully take effect.
+  * disable blame and history popup keybinds for untracked files
+  * overwrites committer on amend of unsigned commits
+  * Updated project links to point to gitui-org 
+  instead of extrawurst
+
+-------------------------------------------------------------------
 Sun Jan 26 15:47:12 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.27.0:
