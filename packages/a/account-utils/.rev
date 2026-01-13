@@ -8,4 +8,15 @@
 Add conflicts to busybox-adduser</comment>
     <requestid>1323345</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>69f348c959882162ae785a92658b6f82</srcmd5>
+    <version>1.0+git20260112.87262b5</version>
+    <time>1768336015</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.0+git20260112.87262b5:
+  * Add pwaccessd and pwupdd manual pages
+  * check_caller_perms: rework function description
+  * map_range.h: add missing stdint include</comment>
+    <requestid>1326796</requestid>
+  </revision>
 </revisionlist>

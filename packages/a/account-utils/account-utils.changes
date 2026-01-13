@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 12 14:43:26 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.0+git20260112.87262b5:
+  * Add pwaccessd and pwupdd manual pages
+  * check_caller_perms: rework function description
+  * map_range.h: add missing stdint include
+
+-------------------------------------------------------------------
 Wed Dec 17 13:04:10 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add conflict with busybox-adduser
