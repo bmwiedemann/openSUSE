@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 10 08:28:49 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 9.3.14:
+  * Increase WAL Checkpoint busy timeout to 250ms
+  * Implement a must-checkpoint-WAL after multiple failures policy
+  * fix SQL comment handling in CLI
+
+-------------------------------------------------------------------
 Wed Jan 07 19:06:58 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 9.3.11:
