@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Jan  9 13:27:04 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.6.4
+  * build(deps): bump ytanikin/pr-conventional-commits from 1.4.2 to 1.5.1
+    in /.github/workflows in the all-gha-updates group (#5656)
+  * ci: add typo check to ci (#5491)
+  * Import Cloudfront PQ TLS Policies (#5539)
+  * feat(build): Improve OpenSSL libcrypto discovery (#5572)
+  * test: update CRL certs to comply with intent validation (#5651)
+  * (chore): Rust bindings bump 0.3.32 (#5662)
+  * ci: update clang format version (#5661)
+  * (chore): Revert "feat(build): Improve OpenSSL libcrypto discovery (#5572)" (#5664)
+  * feat: verify certificate issuer intent by default (#5657)
+  * chore: Fix increase in Rust unit test timings (#5677)
+  * feat: add handshake event (#5635)
+  * test(integration): add async cert verify and offload 'stress' test (#5653)
+  * test(integration): refactor PQ tests to utilize in-memory harness (#5667)
+  * build(deps): bump the all-gha-updates group across 1 directory with 4 updates (#5675)
+  * build(deps): bump cross-platform-actions/action from 0.31.0 to 0.32.0
+    in /.github/workflows in the all-gha-updates group (#5685)
+  * Fix: print diagnostics to stdout in s2n_resume_test (#5660)
+  * Fix: Unpin the rust nightly toolchain version (#5682)
+  * fix: incorrect group reported for TLS 1.2 session resumption (#5673)
+  * test: confirm errors for no matching parameters (#5679)
+  * test(integration): add rust test for prefer low latency (#5684)
+  * test(integration): add BoringSSL cohort to expand mTLS coverage (#5659)
+  * Fix unit test build errors under -Werror (#5686)
+
+-------------------------------------------------------------------
 Mon Jan  5 08:44:23 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.6.3
