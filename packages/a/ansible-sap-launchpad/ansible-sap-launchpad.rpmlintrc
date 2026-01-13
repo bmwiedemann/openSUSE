@@ -1,0 +1,6 @@
+# rpmlint configuration for ansible-sap-launchpad package.
+
+# Ansible modules are executed by the Ansible engine on managed nodes, not directly
+# as scripts on the control node. The shebang is retained for backwards
+# compatibility, but the executable bit is intentionally omitted.
+addFilter("E: non-executable-script .*/community/sap_launchpad/plugins/modules/.*\.py .*")

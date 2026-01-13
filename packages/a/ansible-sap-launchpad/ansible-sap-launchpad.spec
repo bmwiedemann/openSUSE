@@ -1,7 +1,7 @@
 #
 # spec file for package ansible-sap-launchpad
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,12 +21,13 @@
 Name:           ansible-sap-launchpad
 Summary:        Ansible collection community.sap_launchpad for SAP Automation
 License:        Apache-2.0
-Version:        1.2.1
+Version:        1.3.1
 Release:        0
 URL:            https://github.com/sap-linuxlab/community.sap_launchpad/
 Source0:        %{url}archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.yaml
 Source2:        transformation.py
+Source99:       %{name}.rpmlintrc
 
 BuildArch:      noarch
 
