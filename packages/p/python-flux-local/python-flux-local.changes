@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Jan 13 06:43:49 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 8.1.0:
+  * Apply cruft updates by @allenporter in #1046
+  * Update kubectl version in Dockerfile by @allenporter in #1047
+  * feat(tests): add new test cases for build hr-new command by
+    @allenporter in #1048
+  * chore(deps): update fluxcd/flux2 action to v2.7.4 by
+    @renovate[bot] in #1051
+  * Fix races in new controller flows by @allenporter in #1052
+  * Add get ks-new and hr-new for the new API by @allenporter in
+    #1053
+  * New updates detected with Cruft by @github-actions[bot] in
+    #1055
+  * Small fixes by @mouchar in #1065
+  * chore: Update snapshots for latest helm releases by
+    @allenporter in #1067
+  * chore(deps): update dependency coverage to v7.13.0 by
+    @renovate[bot] in #1057
+  * chore(deps): update codecov/codecov-action action to v5.5.2 by
+    @renovate[bot] in #1058
+  * chore(deps): update pre-commit hook astral-sh/ruff-pre-commit
+    to v0.14.10 by @renovate[bot] in #1062
+  * chore(deps): update dependency ruff to v0.14.10 - autoclosed by
+    @renovate[bot] in #1061
+  * chore(deps): update registry.k8s.io/kubectl docker tag to
+    v1.35.0 by @renovate[bot] in #1059
+  * chore(deps): update github artifact actions (major) by
+    @renovate[bot] in #1063
+  * chore(deps): update dependency mypy to v1.19.1 by
+    @renovate[bot] in #1064
+  * feat(gha): add skip-invalid-kustomization-paths to github
+    action by @layertwo in #1069
+
+-------------------------------------------------------------------
 Mon Nov 17 07:04:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 8.0.1:
