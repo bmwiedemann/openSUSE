@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jan 12 10:24:25 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.13.3:
+  * chore: auto-update generated files
+  * docs(deps): bump the docs group in /www with 2 updates (#6336)
+  * ci(deps): bump the actions group with 4 updates (#6335)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 1.10.0 to 1.11.0 in the gomod group (#6334)
+  * docs: small updates
+  * docs: update license year
+  * chore: typo
+  * ci: contents: read for generate job
+  * ci(deps): bump cargo-bins/cargo-binstall from 1.16.5 to 1.16.6 in the actions group (#6329)
+  * chore: auto-update generated files
+  * ci: fix sponsors script
+  * docs: Revert sponsor list removal and enforce error handling in update-sponsors.py (#6331)
+  * chore: auto-update generated files
+  * docs: better sponsors  (#6330)
+  * docs: fix auto-rebuild local
+  * chore: auto-update generated files
+  * refactor: fix deprecated method usage in tests  (#6325)
+  * test: fix deprecated method usage
+  * test: fix deprecated method usage
+  * fix(deps): update ko and docker/cli (#6323)
+  * fix: move log to debug
+  * ci(deps): bump the actions group with 3 updates (#6320)
+  * chore: auto-update generated files
+
+-------------------------------------------------------------------
 Fri Dec 26 07:59:52 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.com>
 
 - Update to version 2.13.2:
