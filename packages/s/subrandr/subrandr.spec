@@ -20,7 +20,7 @@
 %define libname libsubrandr
 
 Name:           subrandr
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Library to render non-ASS subtitles
 Group:          Development/Libraries/Rust

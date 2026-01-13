@@ -1,5 +1,6 @@
 <package name="subrandr" project="openSUSE:Factory">
   <title>Library to render non-ASS subtitles</title>
   <description>subrandr is a subtitle rendering library that aims to fill the gap in open-source rendering of non-ASS subtitles accurately.</description>
+  <devel project="multimedia:libs" package="subrandr"/>
   <url>https://github.com/afishhh/subrandr</url>
 </package>

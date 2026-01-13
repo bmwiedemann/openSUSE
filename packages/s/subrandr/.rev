@@ -84,4 +84,21 @@ DPIs other than 72.
 * Added Android NDK font provider for better font matching on Android. </comment>
     <requestid>1324270</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3438e9ff36a295f7dac69a7ef9f251b4</srcmd5>
+    <version>1.1.0</version>
+    <time>1768336217</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.1.0:
+* Fix typo
+* Add some `font-feature-settings` tests
+* Fix `font-feature-settings` tracking
+* Fix instanced rendering of antialiased rectangles
+* Closer match actual usage in instanced rendering tests
+* Fix rectangle blending in immediate rendering mode
+* Update CHANGELOG.md
+* Mark C instanced rendering API as stable
+* Fix UB in `blit_generic_unchecked` pointer operations </comment>
+    <requestid>1326860</requestid>
+  </revision>
 </revisionlist>
