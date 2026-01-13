@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 12 20:04:44 UTC 2026 - marec <marec@detebe.org>
+
+- Update to 6.9.1:
+  + aqhbci: set "accountNumber" for creaditcard jobs.
+  + Revert "fixed a typo (should fix #338)."
+  + Manually applied a change proposed by Hartmut Goebel (remove unused define).
+
+-------------------------------------------------------------------
 Sun Jan 11 11:24:50 UTC 2026 - Nico Kruber <nico.kruber@gmail.com>
 
 - Update to 6.9.0:
