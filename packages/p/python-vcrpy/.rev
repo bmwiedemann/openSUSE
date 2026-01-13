@@ -166,4 +166,37 @@
   * Use inspect.iscorountinefunction rather than asyncio.</comment>
     <requestid>1316361</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>cd1dcf34ebb56e3b96423f6a84e00e90</srcmd5>
+    <version>8.1.1</version>
+    <time>1768336574</time>
+    <user>anag_factory</user>
+    <comment>- Update to 8.1.1
+  * Fix sync requests in async contexts for HTTPX
+  * CI: bump peter-evans/create-pull-request from 7 to 8
+- Update to 8.1.0
+  * Enable brotli decompression if available
+    (via brotli, brotlipy or brotlicffi)
+  * Fix aiohttp allowing both data and json arguments when one is None
+  * Fix usage of io-like interface with VCR.py
+  * Migrate to declarative Python package config
+  * Various linting fixes
+  * CI: bump actions/checkout from 5 to 6
+- Update top 8.0.0
+  * Drop support for Python 3.9
+  * Drop support for urllib3 &lt; 2 - fixes CVE warnings from urllib3 1.x
+  * New drop_unused_requests option to remove unused interactions from
+    cassettes
+  * Rewrite httpx support to patch httpcore instead of httpx
+  * Fix HTTPS proxy handling - proxy address no longer ends up in cassette URIs
+  * Fix iscoroutinefunction deprecation warning on Python 3.14
+  * Only log message if response is appended
+  * Optimize urllib.parse calls
+  * Fix CI for Ubuntu 24.04
+  * Various CI improvements: migrate to uv, update GitHub Actions
+  * Various linting and test improvements
+- drop use-inspect-iscorountinefunction.patch, merged upstream
+</comment>
+    <requestid>1327039</requestid>
+  </revision>
 </revisionlist>

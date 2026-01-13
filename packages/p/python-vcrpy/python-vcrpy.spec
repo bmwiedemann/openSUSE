@@ -1,7 +1,7 @@
 #
 # spec file for package python-vcrpy
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2015 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,33 +19,25 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-vcrpy
-Version:        7.0.0
+Version:        8.1.1
 Release:        0
 Summary:        Python module to mock and replay HTTP interactions
 License:        MIT
 URL:            https://github.com/kevin1024/vcrpy
 Source:         https://files.pythonhosted.org/packages/source/v/vcrpy/vcrpy-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#kevin1024/vcrpy#910
-Patch0:         use-inspect-iscorountinefunction.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-httpbin}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-# gh#kevin1024/vcrpy#688
-BuildRequires:  %{python_module urllib3 < 2 if %python-base < 3.10}
+BuildRequires:  %{python_module urllib3}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module wrapt}
-BuildRequires:  %{python_module yarl}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
 Requires:       python-wrapt
-%if 0%{python_version_nodots} < 310
-Requires:       python-urllib3 < 2
-%endif
 BuildArch:      noarch
-Requires:       python-yarl
 %python_subpackages
 
 %description
