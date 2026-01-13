@@ -24,4 +24,12 @@
   * Added active option to `nmcli.connection.show`</comment>
     <requestid>1324570</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f82ca951c7f7ba0ab93351e6624cfc74</srcmd5>
+    <version>1.7.0</version>
+    <time>1768335976</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1326738</requestid>
+  </revision>
 </revisionlist>
