@@ -1,4 +1,227 @@
 -------------------------------------------------------------------
+Tue Jan 13 07:09:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.196:
+  * General
+    - cleanup relationships @aabidsofi19 (#16871)
+    - fix: alpine version upgrade @jagadish-7 (#16838)
+    - Delete
+      server/meshmodel/kubernetes/v1.35.0/v1.0.0/relationships
+      direc… @leecalcote (#16862)
+    - print body response as string @aabidsofi19 (#16851)
+  * Meshery CLI
+    - mesheryctl: registry generate enhancements @leecalcote
+      (#16863)
+    - Chore: fix lint checks in mesheryctl @leecalcote (#16868)
+  * Maintenance
+    - Update Minikube action version to v2.14.0 @pontusringblom
+      (#16866)
+  * Documentation
+    - Chore: fix lint checks in mesheryctl @leecalcote (#16868)
+    - Add note for default mesheryctl platform in docs @Kevindua26
+      (#16697)
+- update to 0.8.19:
+  * General
+    - bump meshkit @aabidsofi19 (#16850)
+  * Meshery CLI
+    - [mesheryctl] CustomLabels are necessary for docker compose up
+      @Shunpoco (#16780)
+    - [mesheryctl] Add BATS e2e test for 'system token list'
+      command @PragalvaXFREZ (#16820)
+    - fix: resolve provider token display and redirect loop issues
+      (#16679) @ItsYash1421 (#16732)
+  * Maintenance
+    - [mesheryctl] Add BATS e2e test for 'system token list'
+      command @PragalvaXFREZ (#16820)
+    - chore(ci): Add conditional execution for Kubernetes in
+      integration tests @lekaf974 (#16840)
+    - Fix integration test working directory for Docker commands
+      @lekaf974 (#16837)
+    - configure allure reporting for playwright @aabidsofi19
+      (#16839)
+    - Update staging playground workflow to OCI @sangramrath
+      (#16832)
+    - fix: prevent grep exit code from terminating with bash -e
+      @CodexRaunak (#16831)
+  * Documentation
+    - Revise Meshery Catalog documentation for clarity @leecalcote
+      (#16835)
+- update to 0.8.19:
+  * General
+    - fix relationship feasibility check for parent inventory
+      policy @aabidsofi19 (#16809)
+    - Modify ui-setup-ci to use npm ci @aabidsofi19 (#16810)
+    - Initialize and start instrumenting with Otel Tracer from
+      meshkit @aabidsofi19 (#16769)
+    - only install chrome @aabidsofi19 (#16807)
+    - fix ci setup command @aabidsofi19 (#16806)
+    - Fix Regal lint errors by setting rules to warning level
+      @copilot-swe-agent[bot] (#16804)
+    - refactor: improve Rego test structure and error handling
+      @leecalcote (#16802)
+    - fix: saving provider connections @leecalcote (#16801)
+    - chore: upgrade to meshkit v0.8.59 @leecalcote (#16798)
+    - relocate this agent description @leecalcote (#16793)
+  * Meshery CLI
+    - Fix spelling errors in mesheryctl testing utilities
+      @copilot-swe-agent[bot] (#16783)
+    - Fix CI test failures: Remove debug output and update error
+      validation @copilot-swe-agent[bot] (#16792)
+    - [CI] Meshery CLI Makefile overhaul @leecalcote (#16791)
+  * Meshery UI
+    - [CI] Migrate Provider UI from Babel to SWC @YASHMAHAKAL
+      (#16755)
+    - Add playwright trace artifact and enhance reporter
+      @aabidsofi19 (#16805)
+    - Add comprehensive integration tests for
+      Namespace-to-Namespace deny relationship policy
+      @copilot-swe-agent[bot] (#16803)
+    - Bump qs from 6.14.0 to 6.14.1 in /ui @dependabot[bot]
+      (#16795)
+    - separate remote and local provider test setups @aabidsofi19
+      (#16788)
+    - Fix E2e tests @aabidsofi19 (#16787)
+  * Maintenance
+    - Enhance Codecov configuration for accurate coverage tracking
+      @copilot-swe-agent[bot] (#16813)
+    - Delete .github/workflows/update-script-in-vm.yaml @leecalcote
+      (#16814)
+    - remove istio configuration @aabidsofi19 (#16808)
+    - Add playwright trace artifact and enhance reporter
+      @aabidsofi19 (#16805)
+    - Add comprehensive integration tests for
+      Namespace-to-Namespace deny relationship policy
+      @copilot-swe-agent[bot] (#16803)
+    - Fix bash arithmetic syntax error in rego-lint-and-test
+      workflow @copilot-swe-agent[bot] (#16800)
+    - Update Kubernetes and Minikube versions in workflow
+      @leecalcote (#16799)
+    - Bump qs from 6.14.0 to 6.14.1 in /ui @dependabot[bot]
+      (#16795)
+    - Update kind-action version in CI workflow @leecalcote
+      (#16797)
+    - Update GitHub Actions to use actions/github-script@v8
+      @marblom007 (#16790)
+    - Update eslint-check workflow to include all paths @miacycle
+      (#16796)
+    - Fix Namespace-to-Namespace relationship deny selector not
+      being honored @copilot-swe-agent[bot] (#16789)
+    - Update go-testing-ci.yml @leecalcote (#16786)
+    - [CI] refine trigger criteria @leecalcote (#16794)
+    - [CI] Meshery CLI Makefile overhaul @leecalcote (#16791)
+    - separate remote and local provider test setups @aabidsofi19
+      (#16788)
+    - Fix E2e tests @aabidsofi19 (#16787)
+  * Documentation
+    - docs: fix typos in relationship.md @parthivsaikia (#16748)
+    - [CI] Migrate Provider UI from Babel to SWC @YASHMAHAKAL
+      (#16755)
+    - docs: add real-world examples for mesheryctl connection
+      command @aravindhaj17 (#16761)
+- update to 0.8.193:
+  * Maintenance
+    - [CI] Add sustainable Rego testing with OPA Go SDK
+      @copilot-swe-agent[bot] (#16782)
+- update to 0.8.192:
+  * General
+    - Migrate user model to schemas @aabidsofi19 (#16740)
+    - chore: upgrade to Meshkit v0.8.56 @ritzorama (#16731)
+    - fix: suppress false positive unused warnings in GraphQL
+      resolvers @copilot-swe-agent[bot] (#16724)
+  * Meshery CLI
+    - [mesheryctl] Update environments command tests to get rid of
+      golden files @shri771 (#16774)
+    - [mesheryctl] Update organizations cmd unit tests to get rid
+      of golden files of error output @shri771 (#16777)
+    - chore: Add missing unit tests on meshery api client @lekaf974
+      (#16736)
+    - fix: Update component and workspace command tests to get rid
+      of golden files @lekaf974 (#16737)
+    - fix: resolve duplicate error code 1156 in mesheryctl
+      @1012Charan (#16729)
+  * Maintenance
+    - Revert broken Workflow Link @Kevindua26 (#16757)
+    - update workflow for meshery.io to fix path
+      @saurabhraghuvanshii (#16734)
+    - Fix Broken Workflow @Kevindua26 (#16727)
+    - chore: upgrade to golang 1.25 @leecalcote (#16723)
+  * Documentation
+    - Revert broken Workflow Link @Kevindua26 (#16757)
+    - Rename contributing guidelines to style guide @leecalcote
+      (#16682)
+    - Fix Broken Workflow @Kevindua26 (#16727)
+- update to 0.8.191:
+  * Meshery CLI
+    - [mesheryctl] Add timeout handling and progress feedback to
+      system start command @copilot-swe-agent[bot] (#16722)
+- update to 0.8.190:
+  * Documentation
+    - docs: update mesheryctl connection command examples
+      @aravindhaj17 (#16706)
+- update to 0.8.189:
+  * General
+    - No changes
+- update to 0.8.188:
+  * General
+    - bump fsevents @aabidsofi19 (#16719)
+  * Maintenance
+    - separate darwin and linux/windows targets @aabidsofi19
+      (#16717)
+    - Add GitHub Actions workflow for Meshery CLI build @leecalcote
+      (#16718)
+- update to 0.8.187:
+  * General
+    - No changes
+- update to 0.8.186:
+  * General
+    - No changes
+- update to 0.8.185:
+  * General
+    - chore: remove old model versions @leecalcote (#16712)
+- update to 0.8.184:
+  * General
+    - Fix system error on docker extension @aabidsofi19 (#16711)
+  * Maintenance
+    - fix: update fsevents dependency to v0.1.1 in go.mod @jamieplu
+      (#16705)
+- update to 0.8.183:
+  * Meshery CLI
+    - Refresh mesheryctl top-level command summaries for clarity
+      @copilot-swe-agent[bot] (#16691)
+    - [CLI] Remove "exit status 1" from Meshery Server
+      unavailability errors @copilot-swe-agent[bot] (#16685)
+    - Replace exec.Command docker-compose calls with docker compose
+      library @copilot-swe-agent[bot] (#16677)
+    - [DOCS] Update mesheryctl documentations for -p docker
+      @Kevindua26 (#16671)
+    - fix(api): add optional headers parameter to Add function
+      @leecalcote (#16680)
+    - feat: add connection management commands for create, view,
+      and delete operations @leecalcote (#16688)
+    - chore: Improve error handling in makeRequest function for
+      better connectivity feedback @lekaf974 (#16686)
+  * Maintenance
+    - fix: update archive formats for Windows builds in goreleaser
+      configuration @leecalcote (#16699)
+    - Bump github.com/docker/docker from 28.0.4+incompatible to
+      28.5.2+incompatible @dependabot[bot] (#16529)
+    - chore(deps): bump github.com/containerd/containerd/v2 from
+      2.1.4 to 2.1.5 @dependabot[bot] (#16693)
+    - Fix indentation for docker compose command @carlosriosilva
+      (#16694)
+    - Fix indentation for Docker compose command @pontusringblom
+      (#16692)
+    - Replace exec.Command docker-compose calls with docker compose
+      library @copilot-swe-agent[bot] (#16677)
+  * Documentation
+    - [DOCS] Update mesheryctl documentations for -p docker
+      @Kevindua26 (#16671)
+    - feat: add connection management commands for create, view,
+      and delete operations @leecalcote (#16688)
+    - docs: add id attribute to error code table rows @1012Charan
+      (#16690)
+
+-------------------------------------------------------------------
 Thu Dec 18 08:08:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.182:
