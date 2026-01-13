@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 13 11:08:56 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.38.0
+  * A bug leading to incorrect EVR expansion has been fixed. (#492)
+  * Prevented side-effects during condition evaluation that could
+    occur when expanding macros that manipulate other macros, leading
+    to misinterpreted validity of condition branches. (#499)
+
+-------------------------------------------------------------------
 Tue Nov  4 10:11:54 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.37.1
