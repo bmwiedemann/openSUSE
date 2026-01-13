@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 11 00:25:55 UTC 2026 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- add cxxopts_gcc15fix.patch
+  * fix build of third_party/cxxopts with gcc 15
+
+-------------------------------------------------------------------
 Mon May  5 06:08:49 UTC 2025 - Adrian Schröter <adrian@suse.de>
 
 - update to version 4.6.0

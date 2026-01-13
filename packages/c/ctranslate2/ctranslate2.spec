@@ -1,7 +1,7 @@
 #
 # spec file for package ctranslate2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        Library for efficient inference with Transformer models
 License:        MIT
 URL:            https://github.com/OpenNMT/CTranslate2
 Source:         CTranslate2-%version.tar.xz
+#PATCH-FIX-UPSTREAM -- cxxopts_gcc15fix.patch
+Patch1:         cxxopts_gcc15fix.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  openblas-devel

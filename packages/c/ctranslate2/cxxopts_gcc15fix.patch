@@ -1,0 +1,18 @@
+commit 63d1b65a694cfceafc20863afa75df49dfbe6b2a
+Author: pastalian <28638872+pastalian@users.noreply.github.com>
+Date:   Wed Aug 28 20:31:42 2024 +0900
+
+    Add missing header for gcc-15 (#438)
+
+diff --git a/third_party/cxxopts/include/cxxopts.hpp b/include/cxxopts.hpp
+index 991ba3f..a2e71fa 100644
+--- a/third_party/cxxopts/include/cxxopts.hpp
++++ b/third_party/cxxopts/include/cxxopts.hpp
+@@ -27,6 +27,7 @@ THE SOFTWARE.
+ #ifndef CXXOPTS_HPP_INCLUDED
+ #define CXXOPTS_HPP_INCLUDED
+ 
++#include <cstdint>
+ #include <cctype>
+ #include <cstring>
+ #include <exception>
