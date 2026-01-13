@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jan 13 14:53:37 UTC 2026 - RN <R_Nik_C@proton.me>
+
+- Update to version 2.57.0:
+  * Logo: general fixes
+  * Doc: updates changelog
+  * Logo (Builtin): update macOS variants
+  * Logo (Builtin): macOS large Apple logo: add missing warm band 
+    using ANSI LIGHT_RED (#2138)
+  * Doc: updates changelog
+  * Global: optimises usage of `FFstrbuf` and `FFlist`
+  * Shell: fixes xonsh version detection
+  * Processing (SunOS): tidy
+  * Shell (macOS): fixes `exePath` not reports absolute paths
+
+-------------------------------------------------------------------
 Mon Jan  5 14:57:12 UTC 2026 - RN <R_Nik_C@proton.me>
 
 - Add libdrm as build requirement
