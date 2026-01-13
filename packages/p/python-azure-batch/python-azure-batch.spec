@@ -16,11 +16,11 @@
 #
 
 
-%define realversion 15.0.0b1
+%define realversion 15.0.0b2
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-batch
-Version:        15.0.0~b1
+Version:        15.0.0~b2
 Release:        0
 Summary:        Microsoft Azure Batch Client Library
 License:        MIT
