@@ -1,7 +1,7 @@
 #
 # spec file for package cmocka
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %endif
 
 Name:           cmocka
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 Summary:        Lightweight library to simplify and generalize unit tests for C
 License:        Apache-2.0
@@ -35,7 +35,7 @@ Source0:        https://cmocka.org/files/2.0/%{name}-%{version}.tar.xz
 Source1:        https://cmocka.org/files/2.0/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
-Source4:        doxygen-awesome-css-2.4.1.tar.gz
+Source4:        https://github.com/jothepro/doxygen-awesome-css/archive/refs/tags/v2.4.1/doxygen-awesome-css-2.4.1.tar.gz
 
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -90,7 +90,7 @@ compilers.
 Summary:        Development headers for the cmocka library
 Group:          Development/Libraries/C and C++
 Requires:       libcmocka0 = %{version}
-Requires:       pkg-config
+Requires:       pkgconf-pkg-config
 Requires:       (libcmocka-cmake-devel if cmake)
 
 %description -n libcmocka-devel

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 13 06:56:03 UTC 2026 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 2.0.2
+  * Fixed a typo in CMOCKA_NO_DEPRECATION_WARNINGS
+
+-------------------------------------------------------------------
 Fri Dec 19 13:51:03 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 2.0.1

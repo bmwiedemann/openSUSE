@@ -725,4 +725,14 @@
 </comment>
     <requestid>1324715</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>2d94b5217b4dcc7fe5229ccde004abde</srcmd5>
+    <version>2.0.2</version>
+    <time>1768335141</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.0.2
+  * Fixed a typo in CMOCKA_NO_DEPRECATION_WARNINGS
+</comment>
+    <requestid>1326933</requestid>
+  </revision>
 </revisionlist>
