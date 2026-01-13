@@ -1,7 +1,7 @@
 #
 # spec file for package tail-tray
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tail-tray
-Version:        0.2.27
+Version:        0.2.28
 Release:        0
 Summary:        Tailscale tray menu and UI for the KDE Plasma Desktop
 License:        GPL-3.0-only
@@ -79,8 +79,8 @@ sed -i 's#Internet;##g' %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %files
 %{_bindir}/%{name}
-%{_datadir}/icons/hicolor/128x128/apps/tailscale.png
 %{_datadir}/applications/%{name}.desktop
-%{_libdir}/%{name}
+%{_datadir}/icons/hicolor/scalable/apps/tail-tray-dark.svg
+%{_datadir}/icons/hicolor/scalable/apps/tail-tray.svg
 
 %changelog

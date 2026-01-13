@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sun Jan 11 13:12:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.28:
+  * What's new in this release
+    We start the new year with a fresh release focusing on general
+    improvements and better look & feel.
+    - SVG based icons that automatically adapts to dark/light
+      themes as well as being monochrome to better fit the Plasma
+      desktop look & feel.
+    - A new devices tab has been added allowing desktops such as
+      Gnome to function the same way even though they do not
+      properly support tray menus nested several levels deep.
+    - UI Settings allowing the user to override the icon theme at
+      will
+    - You should now be able to login to a self hosted control node
+      such as head scale via the Account UI
+    - Bug fixes and minor other improvements
+  * Commits
+    - 48ba613: CMake generated version info (Marcus Grenängen)
+    - 0962d80: Tail Tray - Version Info in About (Marcus Grenängen)
+    - 59feebb: davfs - compile warning fix (Marcus Grenängen)
+    - b09d511: Fix spelling errors in nix-os.md (#101) (Bart
+      Louwers) #101
+    - e6f09d2: Middle Click #100 (#102) (Marcus Grenängen) #102
+    - 24d1362: [Feature] - Monocrome icons & theme aware icon(s)
+      (#98) (Marcus Grenängen) #98
+    - a4ab473: Code cleanup (Marcus Grenängen)
+    - 9716f80: UI fixes and cleanups (Marcus Grenängen)
+    - 5d714e6: Fix issues #94 - Add a Tab that lists all devices as
+      an additional alternative view compared to the tray menu
+      (#103) (Marcus Grenängen) #103
+    - 8c5380d: issues #97 - [headscale] i am unable to login to
+      selfhosted tailscale / headscale (#104) (Marcus Grenängen)
+      #104
+    - 3ba76b7: Code correctness (const et friends) (Marcus
+      Grenängen)
+    - c5f2a38: Fixing issues #80 - Update Readme & Screenshots for
+      next release (Marcus Grenängen)
+    - 062b47f: Bump version to 0.2.28 (Marcus Grenängen)
+
+-------------------------------------------------------------------
 Fri Nov 07 15:48:29 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.27:
