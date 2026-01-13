@@ -69,4 +69,23 @@
   * Dependency updates</comment>
     <requestid>1306667</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c6c664ad1ff7bfa7f359ba63ab0cda2f</srcmd5>
+    <version>14.2</version>
+    <time>1768336569</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 14.2
+  * Changes since 14
+    - 14.2
+      * Fix unable to register extensions
+    - 14.1
+      * Translation updates
+      * Dependency updates
+      * Fix out of date pot file
+
+- Update to version 14
+  * Add registration server fields to register code form
+  * Update dependencies</comment>
+    <requestid>1327024</requestid>
+  </revision>
 </revisionlist>

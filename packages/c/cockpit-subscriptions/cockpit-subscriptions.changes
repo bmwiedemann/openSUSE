@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jan 13 12:38:49 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
+
+- Update to version 14.2
+  * Changes since 14
+    - 14.2
+      * Fix unable to register extensions
+    - 14.1
+      * Translation updates
+      * Dependency updates
+      * Fix out of date pot file
+
+-------------------------------------------------------------------
+Thu Jan  8 09:26:17 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
+
+- Update to version 14
+  * Add registration server fields to register code form
+  * Update dependencies
+
+-------------------------------------------------------------------
 Fri Sep 12 05:35:03 UTC 2025 - Miika Alikirri <miika.alikirri@suse.com>
 
 - Update to version 13
