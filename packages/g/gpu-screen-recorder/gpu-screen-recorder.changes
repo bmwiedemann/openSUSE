@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 12 20:20:16 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 20260108:
+  * Correctly reconnect default audio device when changing it on
+    the system
+  * Fix application audio node getting recreated by pipewire after
+    suspended (idle) for 30 seconds
+
+-------------------------------------------------------------------
 Wed Jan 07 05:47:55 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 20260107:
