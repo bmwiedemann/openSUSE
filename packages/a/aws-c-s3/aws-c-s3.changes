@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan  9 13:24:04 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.11.4
+  * Regression test for wrong assertion by @TingDaoK in (#605)
+  * Update rule set by @TingDaoK in (#599)
+  * Skip test on Apple by @azkrishpy in (#606)
+  * Auto - Update S3 Ruleset & Partition by @aws-crt-bot in (#610)
+  * Revert "Skip test on Apple" by @azkrishpy in (#611)
+
+-------------------------------------------------------------------
 Tue Dec  9 08:45:18 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.11.3
