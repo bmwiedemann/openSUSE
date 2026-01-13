@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Mon Jan 12 07:24:16 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.5.13:
+  * Additions & Enhancements:
+    - Added internal filter graph support for audio nodes, allowing
+      users to create audio preprocessing and postprocessing chains
+      without exposing filters to applications, useful for software
+      DSP (!743 (merged))
+    - Added new Lua Properties API that significantly improves
+      performance by avoiding constant serialization between
+      WpProperties and Lua tables, resulting in approximately 40%
+      faster node linking (!757 (merged))
+    - Added WpIterator Lua API for more efficient parameter
+      enumeration (!746 (merged))
+    - Added bash completions for wpctl command (!762 (merged))
+    - Added script to find suitable volume control when using
+      role-based policy, allowing volume sliders to automatically
+      adjust the volume of the currently active role (e.g.,
+      ringing, call, media) (!711 (merged))
+    - Added experimental HDMI channel detection setting to use HDMI
+      ELD information for channel configuration (!749 (merged))
+    - Enhanced role-based policy to allow setting preferred target
+      sinks for media role loopbacks via
+      policy.role-based.preferred-target (!754 (merged))
+    - Enhanced Bluetooth profile autoswitch logic to be more robust
+      and handle saved profiles correctly, including support for
+      loopback sink nodes (!739 (merged))
+    - Enhanced ALSA monitor to include alsa.* device properties on
+      nodes for rule matching (!761 (merged))
+    - Optimized stream node linking for common cases to reduce
+      latency when new audio/video streams are added (!760)
+    - Improved event dispatcher performance by using hash table
+      registration for event hooks, eliminating performance
+      degradation as more hooks are registered (!765 (merged))
+    - Increased audio headroom for VMware and VirtualBox virtual
+      machines (!756 (merged))
+    - Added setting to prevent restoring "Off" profiles via
+      session.dont-restore-off-profile property (!753 (merged))
+    - Added support for 128 audio channels when compiled with a
+      recent version of PipeWire (pipewire#4995 (closed))
+  * Fixes:
+    - Fixed memory leaks and issues in the modem manager module
+      (!770 (merged), !764 (merged))
+    - Fixed MPRIS module incorrectly treating GHashTable as
+      GObject (!759 (merged))
+    - Fixed warning messages when process files in /proc/<pid>/*
+      don't exist, particularly when processes are removed quickly
+      (#816 (closed), !717 (merged))
+    - Fixed MONO audio configuration to only apply to device sink
+      nodes, allowing multi-channel mixing in the graph (!769)
+    - Fixed event dispatcher hook registration and removal to avoid
+      spurious errors (!747 (merged))
+    - Improved logging for standard-link activation failures (!744)
+    - Simplified event-hook interest matching for better
+      performance (!758 (merged))
+- Remove patch already included by upstream:
+  * 0001-automute-alsa-routes.lua-Dont-register_remove-hooks-if.patch
+
+-------------------------------------------------------------------
 Thu Oct 16 09:29:51 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.5.12:

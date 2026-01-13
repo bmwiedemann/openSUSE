@@ -22,7 +22,7 @@
 %define sover 0
 %define libwireplumber libwireplumber-%{apiver_str}-%{sover}
 Name:           wireplumber
-Version:        0.5.12
+Version:        0.5.13
 Release:        0
 Summary:        Session / policy manager implementation for PipeWire
 License:        MIT
@@ -31,7 +31,6 @@ URL:            https://gitlab.freedesktop.org/pipewire/wireplumber
 Source0:        wireplumber-%{version}.tar.xz
 Source1:        wireplumber.env
 # PATCH-FIX-UPSTREAM
-Patch0:         0001-automute-alsa-routes.lua-Dont-register_remove-hooks-if.patch
 Patch100:       set-profile-in-service.patch
 # docs
 BuildRequires:  doxygen
@@ -162,6 +161,16 @@ BuildArch:      noarch
 %description zsh-completion
 Optional dependency offering zsh completion for various wpctl parameters.
 
+%package bash-completion
+Summary:        Wireplumber Bash completion
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (wireplumber and bash-completion)
+
+%description bash-completion
+Optional dependency offering bash completion for wpctl.
+
 %prep
 %autosetup -p1
 
@@ -291,5 +300,10 @@ fi
 %dir %{_datarootdir}/zsh
 %dir %{_datarootdir}/zsh/site-functions/
 %{_datarootdir}/zsh/site-functions/_wpctl
+
+%files bash-completion
+%dir %{_datadir}/bash-completion
+%dir %{_datadir}/bash-completion/completions
+%{_datadir}/bash-completion/completions/wpctl
 
 %changelog
