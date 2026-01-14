@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jan 14 07:13:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.28:
+  * Enhancements
+    - Avoid running git diff for skipped hooks (#1335)
+    - More accurate command line length limit calculation (#1348)
+    - Raise platform command line length upper limit (#1347)
+    - Use /bin/sh in generated git hook scripts (#1333)
+  * Bug fixes
+    - Avoid rewriting if config is up-to-date (#1346)
+  * Documentation
+    - Add ty to the users of prek (#1342)
+    - Add ruff to the users of prek (#1334)
+    - Complete configuration document (#1338)
+    - Document UV environment variable inheritance in prek (#1339)
+
+-------------------------------------------------------------------
 Tue Jan 13 06:15:01 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.27 (.26 was not released):
