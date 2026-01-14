@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan 13 08:43:27 UTC 2026 - maurizio.galli@suse.com
+
+- Update to version 4.0.0+git141.1892c79:
+  * feat(gnome): Add extra styles for better toolbar displaying
+  * Gnome: Improve Menu and MenuBar appearance
+  * Gnome: Improve Window assistant appearance
+  * Gnome: Improve toolbar buttons appearance
+  * Gnome: Improve appearance of suggested/destructive action buttons
+  * Gnome: Improve nautilus grid view appaearance
+  * Gnome 49: Fix calendar app appearance
+  * Gnome: Fix appearance of some buttons in bottom bars
+
+-------------------------------------------------------------------
 Mon Oct 27 09:28:59 UTC 2025 - maurizio.galli@suse.com
 
 - Update to version 4.0.0+git133.cd80d5a:
