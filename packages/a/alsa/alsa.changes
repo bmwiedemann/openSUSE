@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 13 15:50:37 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to alsa-lib 1.2.15.3:
+  * seq: return back old snd_seq_drain_output behaviour for -EAGAIN
+
+-------------------------------------------------------------------
 Fri Jan  9 08:37:35 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to alsa-lib 1.2.15.2:

@@ -35,7 +35,7 @@
 %endif
 
 Name:           alsa
-Version:        1.2.15.2
+Version:        1.2.15.3
 Release:        0
 Summary:        Advanced Linux Sound Architecture
 License:        LGPL-2.1-or-later
