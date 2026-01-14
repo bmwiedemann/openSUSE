@@ -50,6 +50,8 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Management
 URL:            https://fwupd.org/
 Source:         %{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM -- Allow fwupd to interace with cdrom; boo#1256507, gh#fwupd/fwupd#9770
+Patch0:         0001-Allow-systemd-service-to-access-block-sr-cdrom-devic.patch
 
 # PATCH-FIX-OPENSUSE fwupd-bsc1130056-shim-path.patch bsc#1130056
 Patch99:        fwupd-bsc1130056-change-shim-path.patch

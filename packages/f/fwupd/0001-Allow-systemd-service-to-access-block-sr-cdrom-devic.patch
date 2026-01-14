@@ -1,0 +1,25 @@
+From 4a64cf72a1713e4bc91783e924bcaf4c943b41e7 Mon Sep 17 00:00:00 2001
+From: Dominique Leuenberger <dimstar@opensuse.org>
+Date: Tue, 13 Jan 2026 16:09:10 +0100
+Subject: [PATCH] Allow systemd service to access block-sr (cdrom) devices
+
+Otherwise the daemon can't interact with them.
+---
+ data/meson.build | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/data/meson.build b/data/meson.build
+index 5716669f0..70d08c55e 100644
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -94,6 +94,7 @@ if build_daemon
+ 
+     device_allows = [
+       'block-sd',
++      'block-sr',
+       'char-aux',
+       'char-cpu/*',
+       'char-drm',
+-- 
+2.52.0
+

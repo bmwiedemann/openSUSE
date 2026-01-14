@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 13 15:16:45 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 0001-Allow-systemd-service-to-access-block-sr-cdrom-devic.patch:
+  allow fwupd.service to interact with cdrom (boo#1256507)
+
+-------------------------------------------------------------------
 Sat Jan  3 23:51:16 UTC 2026 - Holden Fried <holden@opensuse.org>
 
 - Actually build and install manpages:
