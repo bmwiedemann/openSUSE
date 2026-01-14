@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Jan 13 19:52:59 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.35.0
+  * The requirement that devices must have matched bucket sizes to
+    be members of the same stripes has been removed.
+  * Stripes may be reshaped (number of blocks increased or
+    decreased), as needed; this improves EC's handling of device
+    failures.
+  * Significantly improved evacuate, rereplicate performance on
+    rotating disks: we now launch one thread per device being read
+    from (i.e. every device that shared data with the device going
+    away); each device is read from in parallel with reads across
+    the whole device done in sorted order.
+  * `backpointer_scan_iter`, for improved performance for code
+    doing backpointer -> extent walks, including but not limited to
+    reconcile; this is quite significant on systems with metadata
+    on rotating disk and relatively limited memory.
+  * The bug with reconcile where btree roots wouldn't be processed
+    has been fixed.
+  * A few bugs with reconcile's handling of cached data have been
+    fixed.
+  * The reconcile tracepoints, especially `reconcile_set_pending`,
+    now give significantly more information.
+  * Reconcile now knows how to wait on copygc when a device it
+    wants to write to is full, rather than (incorrectly) marking
+    the extent as pending.
+  * Fixed several memory reclaim recursion bugs; performance under
+    memory pressure should be improved.
+  * Various allocation watermark fixes; btree updates now only run
+    with high priority watermarks when necessary. This fixes some
+    allocator deadlocks on open bucket allocation.
+  * 'encoded_extent_max` settings of 1MB and greater now work
+    properly; previously, this could cause backpointer issues if
+    compression was enabled.
+
+-------------------------------------------------------------------
 Fri Jan  9 15:06:44 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.34.0
