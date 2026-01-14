@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 13 11:37:05 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 12.9.1:
+  * Add graphical guideline creation
+  * Add whatsthis in settings dialogs
+  * State save / undo / redo functionality
+  * Port the code to build with Qt6
+- Clean up spec file, adapt for Qt6 transition
+
+-------------------------------------------------------------------
 Wed Aug  3 14:51:00 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Remove RPATH from executable

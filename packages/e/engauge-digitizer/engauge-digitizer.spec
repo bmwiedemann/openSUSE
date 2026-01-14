@@ -1,7 +1,7 @@
 #
 # spec file for package engauge-digitizer
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,36 +17,32 @@
 
 
 Name:           engauge-digitizer
-Version:        12.1
+Version:        12.9.1
 Release:        0
 Summary:        Ditigizer software that converts old graphs into numbers again
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Other
 URL:            https://markummitchell.github.io/engauge-digitizer/
-Source0:        https://github.com/markummitchell/%{name}/archive/v%{version}.tar.gz
+Source0:        https://github.com/akhuettel/engauge-digitizer/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  icns-utils
 BuildRequires:  optipng
+BuildRequires:  qt6-tools-helpgenerators
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Help)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Sql)
-BuildRequires:  pkgconfig(Qt5UiTools)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Help)
+BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6PrintSupport)
+BuildRequires:  pkgconfig(Qt6Widgets)
+BuildRequires:  pkgconfig(Qt6Xml)
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(log4cpp)
-BuildRequires:  pkgconfig(poppler-qt5)
-Requires(post): desktop-file-utils
-Requires(postun): desktop-file-utils
+BuildRequires:  pkgconfig(poppler-qt6)
 Suggests:       %{name}-doc
 
 %description
@@ -76,8 +72,6 @@ This package contains the development documentation for Engauge Digitizer.
 %prep
 %autosetup -p1
 
-# UNNECESSARY EXEC PERM
-chmod -x help/build_qt5_12_0.bash
 # Remove any RUNPATH, we don't use the wrapper script or private libraries
 sed -i -e '/QMAKE_LFLAGS.*ORIGIN/ d' engauge.pro
 
@@ -85,28 +79,24 @@ sed -i -e '/QMAKE_LFLAGS.*ORIGIN/ d' engauge.pro
 # ADD JPEG2000 SUPPORT
 export OPENJPEG_INCLUDE=$(pkg-config --cflags-only-I libopenjp2 | sed -e 's@-I\(\S\+\).*@\1@g')
 export OPENJPEG_LIB=%{_libdir}
-export POPPLER_INCLUDE=%{_includedir}/poppler/qt5
+export POPPLER_INCLUDE=%{_includedir}/poppler/qt6
 export POPPLER_LIB=%{_libdir}
 
-qmake-qt5 engauge.pro \
+qmake6 engauge.pro \
   "DEFINES+=HELPDIR=%{_docdir}/%{name}/" \
   QMAKE_CFLAGS="%optflags -fno-strict-aliasing" \
   QMAKE_CXXFLAGS="%optflags -fno-strict-aliasing" \
   CONFIG+="pdf jpeg2000"
-make %{?_smp_mflags}
+%make_build
 
 # HELP files
 pushd help
 # CRLF -> LF
 sed -i 's/\r$//' engauge.qhcp dateformats.css dateformats.html
 optipng -o2 *png
-%if 0%{?suse_version} > 1500
-qhelpgenerator-qt5 engauge.qhcp -o engauge.qhc
-%else
-qcollectiongenerator-qt5 engauge.qhcp -o engauge.qhc
-%endif
+%{_libexecdir}/qt6/qhelpgenerator engauge.qhcp -o engauge.qhc
 mv engauge.qch engauge.qhc ../
-rm engauge.qhcp .gitignore build.bash
+rm engauge.qhcp .gitignore build.bash build.windows
 popd
 
 # Generate source code documentation in HTML format
@@ -116,7 +106,7 @@ doxygen
 popd
 
 %install
-install -Dm 755 bin/engauge %{buildroot}%{_bindir}/engauge
+install -Dm 755 bin/Engauge %{buildroot}%{_bindir}/engauge
 
 # INSTALL HI-RES ICONS
 pushd src/img
@@ -126,14 +116,11 @@ for sz in 16 32 128 256 512; do
 done
 popd
 
-%suse_update_desktop_file -i %{name}
-
-# INSTALL APPDATA
+# Install appdata and desktop file
 install -Dm 0644 dev/gnome/engauge-digitizer.appdata.xml \
             %{buildroot}%{_datadir}/metainfo/%{name}.appdata.xml
-
-# REMOVE UNNECESSARY windows BUILD FILE
-find ./ -name build.windows -delete -print
+install -Dm 0644 dev/engauge-digitizer.desktop \
+            %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %fdupes -s doc/doxygen/html
 
