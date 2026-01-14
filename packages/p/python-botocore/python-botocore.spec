@@ -1,7 +1,7 @@
 #
 # spec file for package python-botocore
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-botocore%{?psuffix}
-Version:        1.42.6
+Version:        1.42.27
 Release:        0
 Summary:        Python interface for AWS
 License:        Apache-2.0
