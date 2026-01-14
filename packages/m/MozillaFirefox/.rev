@@ -7917,4 +7917,41 @@
     <comment></comment>
     <requestid>1323597</requestid>
   </revision>
+  <revision rev="474" vrev="1">
+    <srcmd5>b44f6c4fe0cd09f8d93e56bc66f6a8ca</srcmd5>
+    <version>147.0</version>
+    <time>1768404044</time>
+    <user>anag_factory</user>
+    <comment>- Mozilla Firefox 147.0
+  https://www.firefox.com/en-US/firefox/147.0/releasenotes
+  MFSA 2026-01 (bsc#1256340)
+  * CVE-2026-0877 (bmo#1999257)
+    Mitigation bypass in the DOM: Security component
+  * CVE-2026-0878 (bmo#2003989)
+    Sandbox escape due to incorrect boundary conditions in the
+    Graphics: CanvasWebGL component
+  * CVE-2026-0879 (bmo#2004602)
+    Sandbox escape due to incorrect boundary conditions in the
+    Graphics component
+  * CVE-2026-0880 (bmo#2005014)
+    Sandbox escape due to integer overflow in the Graphics
+    component
+  * CVE-2026-0881 (bmo#2005845)
+    Sandbox escape in the Messaging System component
+  * CVE-2026-0882 (bmo#1924125)
+    Use-after-free in the IPC component
+  * CVE-2026-0883 (bmo#1989340)
+    Information disclosure in the Networking component
+  * CVE-2026-0884 (bmo#2003588)
+    Use-after-free in the JavaScript Engine component
+  * CVE-2026-0885 (bmo#2003607)
+    Use-after-free in the JavaScript: GC component
+  * CVE-2026-0886 (bmo#2005658)
+    Incorrect boundary conditions in the Graphics component
+  * CVE-2026-0887 (bmo#2006500)
+    Clickjacking issue, information disclosure in the PDF Viewer
+    component
+  * CVE-2026-0888 (bmo#1985996)</comment>
+    <requestid>1327189</requestid>
+  </revision>
 </revisionlist>

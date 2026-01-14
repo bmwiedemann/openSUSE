@@ -1,5 +1,5 @@
 # HG changeset patch
-# Parent  41e111c9b1b0e1a27baf311089787df66216bfb0
+# Parent  a05bd055f1c92d210fa44a3071a17a3bd4df3a93
 
 diff --git a/gfx/skia/skia/include/codec/SkEncodedOrigin.h b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
 --- a/gfx/skia/skia/include/codec/SkEncodedOrigin.h
@@ -461,7 +461,7 @@ diff --git a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/thi
                         VideoStreamInputState input_state)
      : validation_id_(validation_id),
        status_(Status::kValid),
-@@ -394,16 +395,17 @@ VideoStreamAdapter::RestrictionsOrState 
+@@ -395,16 +396,17 @@ VideoStreamAdapter::RestrictionsOrState 
      case DegradationPreference::MAINTAIN_RESOLUTION: {
        // Scale up framerate.
        return IncreaseFramerate(input_state, current_restrictions_);
@@ -479,7 +479,7 @@ diff --git a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/thi
    ++adaptation_validation_id_;
    RestrictionsOrState restrictions_or_state =
        GetAdaptationDownStep(input_state, current_restrictions_);
-@@ -474,16 +476,17 @@ VideoStreamAdapter::GetAdaptationDownSte
+@@ -475,16 +477,17 @@ VideoStreamAdapter::GetAdaptationDownSte
      }
      case DegradationPreference::MAINTAIN_RESOLUTION: {
        return DecreaseFramerate(input_state, current_restrictions);
@@ -497,7 +497,7 @@ diff --git a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/thi
    int target_pixels =
        GetLowerResolutionThan(input_state.frame_size_pixels().value());
    // Use single active stream if set, this stream could be lower than the input.
-@@ -627,16 +630,18 @@ Adaptation VideoStreamAdapter::GetAdaptD
+@@ -628,16 +631,18 @@ Adaptation VideoStreamAdapter::GetAdaptD
      case DegradationPreference::MAINTAIN_FRAMERATE:
        return GetAdaptationDown();
      case DegradationPreference::BALANCED: {
@@ -584,7 +584,7 @@ diff --git a/third_party/libwebrtc/media/base/codec_comparators.cc b/third_party
 diff --git a/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc b/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc
 --- a/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc
 +++ b/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc
-@@ -380,12 +380,12 @@ std::unique_ptr<ClippingPredictor> Creat
+@@ -382,12 +382,12 @@ std::unique_ptr<ClippingPredictor> Creat
            config.reference_window_delay, config.clipping_threshold,
            /*adaptive_step_estimation=*/true);
      case ClippingPredictorMode::kFixedStepClippingPeakPrediction:
@@ -838,10 +838,10 @@ diff --git a/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_tempo
  
  }  // namespace
  
- constexpr size_t DefaultTemporalLayers::kNumReferenceBuffers;
- 
  std::vector<DefaultTemporalLayers::DependencyInfo>
  DefaultTemporalLayers::GetDependencyInfo(size_t num_layers) {
+   // For indexing in the patterns described below (which temporal layers they
+   // belong to), see the diagram above.
 diff --git a/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc b/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc
 --- a/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc
 +++ b/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc
@@ -887,7 +887,7 @@ diff --git a/third_party/libwebrtc/modules/video_coding/h26x_packet_buffer.cc b/
 diff --git a/third_party/libwebrtc/net/dcsctp/packet/parameter/reconfiguration_response_parameter.cc b/third_party/libwebrtc/net/dcsctp/packet/parameter/reconfiguration_response_parameter.cc
 --- a/third_party/libwebrtc/net/dcsctp/packet/parameter/reconfiguration_response_parameter.cc
 +++ b/third_party/libwebrtc/net/dcsctp/packet/parameter/reconfiguration_response_parameter.cc
-@@ -56,16 +56,17 @@ absl::string_view ToString(Reconfigurati
+@@ -55,16 +55,17 @@ absl::string_view ToString(Reconfigurati
      case ReconfigurationResponseParameter::Result::
          kErrorRequestAlreadyInProgress:
        return "Error: request already in progress";
@@ -929,7 +929,7 @@ diff --git a/third_party/libwebrtc/net/dcsctp/public/dcsctp_handover_state.cc b/
 diff --git a/third_party/libwebrtc/net/dcsctp/rx/data_tracker.cc b/third_party/libwebrtc/net/dcsctp/rx/data_tracker.cc
 --- a/third_party/libwebrtc/net/dcsctp/rx/data_tracker.cc
 +++ b/third_party/libwebrtc/net/dcsctp/rx/data_tracker.cc
-@@ -355,16 +355,17 @@ absl::string_view DataTracker::ToString(
+@@ -352,16 +352,17 @@ absl::string_view DataTracker::ToString(
        return "IDLE";
      case AckState::kBecomingDelayed:
        return "BECOMING_DELAYED";
@@ -1035,11 +1035,11 @@ diff --git a/third_party/libwebrtc/net/dcsctp/timer/timer.cc b/third_party/libwe
  }
  }  // namespace
  
- constexpr TimeDelta Timer::kMaxTimerDuration;
- 
  Timer::Timer(TimerID id,
               absl::string_view name,
               OnExpired on_expired,
+              UnregisterHandler unregister_handler,
+              std::unique_ptr<Timeout> timeout,
 diff --git a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc b/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
 --- a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
 +++ b/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc

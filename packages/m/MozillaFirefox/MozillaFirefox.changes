@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sun Jan 11 08:55:43 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 147.0
+  https://www.firefox.com/en-US/firefox/147.0/releasenotes
+  MFSA 2026-01 (bsc#1256340)
+  * CVE-2026-0877 (bmo#1999257)
+    Mitigation bypass in the DOM: Security component
+  * CVE-2026-0878 (bmo#2003989)
+    Sandbox escape due to incorrect boundary conditions in the
+    Graphics: CanvasWebGL component
+  * CVE-2026-0879 (bmo#2004602)
+    Sandbox escape due to incorrect boundary conditions in the
+    Graphics component
+  * CVE-2026-0880 (bmo#2005014)
+    Sandbox escape due to integer overflow in the Graphics
+    component
+  * CVE-2026-0881 (bmo#2005845)
+    Sandbox escape in the Messaging System component
+  * CVE-2026-0882 (bmo#1924125)
+    Use-after-free in the IPC component
+  * CVE-2026-0883 (bmo#1989340)
+    Information disclosure in the Networking component
+  * CVE-2026-0884 (bmo#2003588)
+    Use-after-free in the JavaScript Engine component
+  * CVE-2026-0885 (bmo#2003607)
+    Use-after-free in the JavaScript: GC component
+  * CVE-2026-0886 (bmo#2005658)
+    Incorrect boundary conditions in the Graphics component
+  * CVE-2026-0887 (bmo#2006500)
+    Clickjacking issue, information disclosure in the PDF Viewer
+    component
+  * CVE-2026-0888 (bmo#1985996)
+    Information disclosure in the XML component
+  * CVE-2026-0889 (bmo#1999084)
+    Denial-of-service in the DOM: Service Workers component
+  * CVE-2026-0890 (bmo#2005081)
+    Spoofing issue in the DOM: Copy & Paste and Drag & Drop
+    component
+  * CVE-2026-0891 (bmo#1964722, bmo#2000981, bmo#2003100,
+    bmo#2003278)
+    Memory safety bugs fixed in Firefox ESR 140.7, Thunderbird
+    ESR 140.7, Firefox 147 and Thunderbird 147
+  * CVE-2026-0892 (bmo#1986912, bmo#1996718, bmo#1999633,
+    bmo#2001081, bmo#2004443)
+    Memory safety bugs fixed in Firefox 147 and Thunderbird 147
+- requires NSS >= 3.119
+- Added upstream patch mozilla-bmo2008777.patch to fix KDE crash (boo#1256513)
+
+-------------------------------------------------------------------
 Thu Dec 18 17:45:32 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Firefox 146.0.1
