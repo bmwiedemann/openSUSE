@@ -1,7 +1,7 @@
 #
 # spec file for package nfswatch
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,13 @@
 
 
 Name:           nfswatch
-Version:        4.99.11
+Version:        4.99.14
 Release:        0
 Summary:        An NFS traffic monitoring tool
 License:        BSD-2-Clause
 Group:          Productivity/Networking/NFS
 URL:            http://nfswatch.sourceforge.net
 Source:         %{name}-%{version}.tar.gz
-Patch0:         makefile.patch
-Patch1:         nfswatch-4.99.11-sysmacros.patch
-Patch2:         nfswatch-fix-proto.patch
 BuildRequires:  libpcap-devel
 BuildRequires:  ncurses-devel
 %if 0%{?suse_version} >= 1500
@@ -40,11 +37,6 @@ network interface or on all interfaces.
 
 %prep
 %setup -q
-%if 0%{?suse_version} >= 1500
-%patch -P 0 -p1
-%endif
-%patch -P 1 -p1
-%patch -P 2 -p1
 
 %build
 

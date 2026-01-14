@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Jan 13 17:33:05 UTC 2026 - Andreas Prittwitz <m4ng4n@gmx.de>
+
+- Update to version 4.99.14
+  * remove makefile.patch, fixed upstream
+  * remove nfswatch-4.99.11-sysmacros.patch, fixed upstream
+  * remove nfswatch-fix-proto.patch, fixed upstream
+  * Fix to allow build using gcc version 15 due to problems with
+    old-style function definitions
+- Changes in version 4.99.13
+  * Warn only once when receiving packets for an unsupported
+    NFS version
+  * nfswatch fails to cross build from source, because the
+    upstream Makefile hard codes the build architecture
+    pkg-config. After making it substitutable, it cross builds
+    just fine as dh_auto_build passes the standard substitution.
+  * Fix typo in error mesage when filelist is missing
+  * Correct manpage sections.
+  * rm ChangeLog now that we are in git; note one more change in spec
+    and README
+- Changes in version 4.99.12
+  * use libtirpc
+  * replace sighold() and sigrelse() by sigprocmask()
+  * include <sys/sysmacros.h> in util.c
+  * fix printf format issues in screen.c
+  * fix prototype of rpcxdr_getargs() in rpcutil.c
+
+-------------------------------------------------------------------
 Mon Dec 16 12:55:20 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - nfswatch-fix-proto.patch: fixed build with gcc14.
@@ -33,4 +60,3 @@ Mon Jul  13 14:54:45 CEST 2008 - mseben@suse.cz
 
 - Initial package
 
--------------------------------------------------------------------
