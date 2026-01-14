@@ -1,7 +1,7 @@
 #
 # spec file for package python-boto3
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,14 +23,14 @@
 %define pytestjobs -n ${RPM_BUILD_NCPUS:-1}
 %endif
 Name:           python-boto3
-Version:        1.42.5
+Version:        1.42.27
 Release:        0
 Summary:        Amazon Web Services Library
 License:        Apache-2.0
 URL:            https://github.com/boto/boto3
 Source:         https://github.com/boto/boto3/archive/%{version}.tar.gz
 # Related test dependencies
-BuildRequires:  %{python_module botocore >= 1.42.5 with %python-botocore < 1.43.0}
+BuildRequires:  %{python_module botocore >= 1.42.27 with %python-botocore < 1.43.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
@@ -39,7 +39,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       (python-botocore >= 1.42.5 with python-botocore < 1.43.0)
+Requires:       (python-botocore >= 1.42.27 with python-botocore < 1.43.0)
 Requires:       (python-jmespath >= 0.7.1 with python-jmespath < 2.0.0)
 Requires:       (python-s3transfer >= 0.16.0 with python-s3transfer < 0.17.0)
 BuildArch:      noarch
@@ -60,6 +60,7 @@ http://boto3.readthedocs.org/en/latest/
 # Note to maintainers also familia with python-boto:
 # The documentation generation requires access to AWS, thus it is not
 # possible to generate the documentation in OBS
+
 %prep
 %setup -q -n boto3-%{version}
 
