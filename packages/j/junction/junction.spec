@@ -1,7 +1,7 @@
 #
 # spec file for package junction
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appname re.sonny.Junction
 Name:           junction
-Version:        1.11
+Version:        1.12
 Release:        0
 Summary:        Application/browser chooser
 License:        GPL-3.0-only

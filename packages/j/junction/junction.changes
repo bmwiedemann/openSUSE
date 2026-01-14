@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan 14 10:08:43 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.12:
+  + Add http and https MIME types in desktop entry
+  + Use a wrapper script to set XDG_DATA_DIRS
+  + Run in the background
+  + Use file basename as app id
+  + Fix app label text size/style
+  + Move back to GLib
+  + Fix launch command
+  + Fix build for aarch64
+
+-------------------------------------------------------------------
 Thu Dec 25 05:30:47 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.11:
