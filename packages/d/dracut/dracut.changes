@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 08 11:48:38 UTC 2026 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.787.gfb86123e:
+  * fix(dracut.spec): switch to tmpfiles based file creation (jsc#PED-14786)
+
+-------------------------------------------------------------------
 Fri Dec 19 09:30:07 UTC 2025 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.785.g17d177bb:

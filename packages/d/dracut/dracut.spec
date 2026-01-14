@@ -1,7 +1,7 @@
 #
 # spec file for package dracut
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 
 Name:           dracut
-Version:        059+suse.785.g17d177bb
+Version:        059+suse.787.gfb86123e
 Release:        0
 Summary:        Event driven initramfs infrastructure
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -35,6 +35,7 @@ URL:            https://github.com/dracutdevs/dracut/wiki
 Source0:        dracut-%{version}.tar.xz
 Source1:        dracut-rpmlintrc
 Source2:        README.susemaint
+Source3:        dracut-rpm-tmpfiles.conf
 BuildRequires:  asciidoc
 BuildRequires:  bash
 BuildRequires:  cargo
@@ -156,11 +157,6 @@ rm -rf %{buildroot}%{dracutlibdir}/modules.d/95znet
 rm -rf %{buildroot}%{dracutlibdir}/modules.d/00warpclock
 %endif
 
-mkdir -p %{buildroot}/boot/dracut
-mkdir -p %{buildroot}%{_localstatedir}/lib/dracut/overlay
-mkdir -p %{buildroot}%{_localstatedir}/log
-touch %{buildroot}%{_localstatedir}/log/dracut.log
-
 install -D -m 0644 dracut.conf.d/suse.conf.example %{buildroot}%{dracutlibdir}/dracut.conf.d/01-dist.conf
 install -m 0644 suse/99-debug.conf %{buildroot}%{_sysconfdir}/dracut.conf.d/99-debug.conf
 %ifnarch %ix86
@@ -184,6 +180,10 @@ ln -s %{dracutlibdir}/modules.d/45ifcfg/write-ifcfg-redhat.sh %{buildroot}%{drac
 
 # create a link to dracut-util to be able to parse kernel command line arguments at generation time
 ln -s %{dracutlibdir}/dracut-util %{buildroot}%{dracutlibdir}/dracut-getarg
+
+#switch to tmpfiles config
+mkdir -p %{buildroot}%{_tmpfilesdir}
+install -m 644 %{SOURCE3} %{buildroot}%{_tmpfilesdir}/dracut.conf
 
 %post
 # check whether /var/run has been converted to a symlink
@@ -265,9 +265,7 @@ rm -f /var/adm/fillup-templates/sysconfig.kernel-mkinitrd
 %files tools
 %{_bindir}/dracut-catimages
 %{_mandir}/man8/dracut-catimages.8*
-%dir /boot/dracut
-%dir %{_localstatedir}/lib/dracut
-%dir %{_localstatedir}/lib/dracut/overlay
+%{_tmpfilesdir}/dracut.conf
 
 %files extra
 %license COPYING

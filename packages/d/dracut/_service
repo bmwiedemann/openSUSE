@@ -6,6 +6,7 @@
     <param name="versionformat">@PARENT_TAG@+suse.@TAG_OFFSET@.g%h</param>
     <param name="extract">suse/dracut.spec</param>
     <param name="extract">suse/README.susemaint</param>
+    <param name="extract">suse/dracut-rpm-tmpfiles.conf</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="set_version" mode="manual" />
