@@ -1,7 +1,7 @@
 #
 # spec file for package ovmf
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %endif
 
 Name:           ovmf
-Version:        202508
+Version:        202511
 Release:        0
 Summary:        Open Virtual Machine Firmware
 License:        BSD-2-Clause-Patent
@@ -50,7 +50,7 @@ Source9:        public-mipi-sys-t-1.1-edk2.tar.gz
 # mbedtls: https://github.com/Mbed-TLS/mbedtls
 Source10:       mbedtls-3.3.0.tar.gz
 # brotli: https://github.com/google/brotli
-Source11:       brotli-f4153a09f87cbb9c826d8fc12c74642bb2d879ea.tar.gz
+Source11:       brotli-e230f474b87134e8c6c85b630084c612057f253e.tar.gz
 # libspdm: https://github.com/DMTF/libspdm.git
 Source12:       libspdm-50924a4c8145fc721e17208f55814d2b38766fe6.tar.gz
 # pylibfdt: https://github.com/devicetree-org/pylibfdt
@@ -61,11 +61,9 @@ Patch1:         %{name}-gdb-symbols.patch
 Patch2:         %{name}-pie.patch
 Patch3:         %{name}-disable-ia32-firmware-piepic.patch
 Patch4:         %{name}-OvmfPkg-Adjust-Memory-Layout-for-2MB-OVMF.patch
-# Bug 1249349 - Tcg2Pei.efi installation failure when TPM enable in ovmf edk2-stable202508
-Patch5:         %{name}-Revert-SecurityPkg-Add-Additional-TPM-Logging-at-DEB.patch
 Patch6:         %{name}-ignore-spurious-GCC-12-warning.patch
-# Bug 1245329 - The edk2-stable202505 OVMF firmware UI shows a mess when using libvirt with ncurses
-Patch7:         %{name}-MdeModulePkg-Fix-malformed-terminal-control-sequence.patch
+# Bug 1255113 - Build Failure for RISC-V 64 When Secure Boot is Enabled Due to SecureBootDefaultKeysInit module
+Patch7:         %{name}-Revert-OvmfPkg-RiscVVirt-Add-SecureBootDefaultKeysIn.patch
 # Bug 1207095 - ASSERT [ArmCpuDxe] /home/abuild/rpmbuild/BUILD/edk2-edk2-stable202211/ArmPkg/Library/DefaultExceptionHandlerLib/AArch64/DefaultExceptionHandler.c(333): ((BOOLEAN)(0==1))
 Patch8:         %{name}-Revert-ArmVirtPkg-make-EFI_LOADER_DATA-non-executabl.patch
 # Bug 1205613 - L3: win 2k22 UEFI xen VMs cannot boot in xen after upgrade
@@ -77,8 +75,6 @@ Patch10:        %{name}-Revert-Add-Stack-Cookie-Support-to-MSVC-and-GCC.patch
 Patch11:        %{name}-BaseTools-Using-gcc12-for-building-image.patch
 %endif
 %endif
-# Bug 1245454 - iSCSI boot support is disabled in OVMF images
-Patch12:        %{name}-OvmfPkg-Add-NETWORK_ISCSI_DEFAULT_ENABLE-build-flag.patch
 # Bug 1240420 - UEFI boot breaks: X64 Exception Type - 0E(#PF - Page-Fault) CPU Apic ID - 00000000
 Patch13:        %{name}-UefiCpuPkg-Disable-EFI-memory-attributes-protocol.patch
 # Bug 1244218 - ovmf: non-deterministic .bin files (about unreproducible)
@@ -142,19 +138,6 @@ firmware for Virtual Machines using the edk2 code base.
 
 This package contains the tools from edk2.
 
-%package -n qemu-ovmf-ia32
-Summary:        Open Virtual Machine Firmware - QEMU rom images (IA32)
-Group:          System/Emulators/PC
-Requires:       qemu
-BuildArch:      noarch
-
-%description -n qemu-ovmf-ia32
-The Open Virtual Machine Firmware (OVMF) project aims to support
-firmware for Virtual Machines using the edk2 code base.
-
-This package contains UEFI rom images for exercising UEFI secure
-boot in a qemu environment (IA32)
-
 %package -n qemu-ovmf-x86_64
 Summary:        Open Virtual Machine Firmware - QEMU rom images (x86_64)
 Group:          System/Emulators/PC
@@ -188,15 +171,6 @@ BuildArch:      noarch
 
 %description -n qemu-uefi-aarch64
 This package contains the UEFI rom image (AArch64) for QEMU cortex-a57
-virt board.
-
-%package -n qemu-uefi-aarch32
-Summary:        UEFI QEMU rom image (AArch32)
-Group:          System/Emulators/PC
-BuildArch:      noarch
-
-%description -n qemu-uefi-aarch32
-This package contains the UEFI rom image (AArch32) for QEMU cortex-a15
 virt board.
 
 %if %{with build_riscv64}
@@ -282,19 +256,6 @@ echo `gcc -dumpversion`
 TOOL_CHAIN=GCC$(gcc -dumpversion|sed 's/\([0-9]\)\.\([0-9]\).*/\1\2/')
 %endif
 
-# Flavors for x86
-FLAVORS_X86=("ovmf-ia32")
-BUILD_OPTIONS_X86=" \
-	$OVMF_FLAGS \
-	-D FD_SIZE_2MB \
-	-D SECURE_BOOT_ENABLE \
-	-D BUILD_SHELL=FALSE \
-	-a IA32 \
-	-p OvmfPkg/OvmfPkgIa32.dsc \
-	-b DEBUG \
-	-t $TOOL_CHAIN \
-"
-
 # Flavors for x86_64: 2MB, 4MB, 4MB+SMM and AMD SEV
 FLAVORS_X64=("ovmf-x86_64" "ovmf-x86_64-4m" "ovmf-x86_64-smm" "ovmf-x86_64-sev" "ovmf-x86_64-tdx")
 # Flavors will NOT enroll default kek/db keys
@@ -322,14 +283,6 @@ BUILD_OPTIONS_AA64=" \
 	-t $TOOL_CHAIN \
 "
 
-# Flavors for arm
-FLAVORS_AA32=("aavmf-aarch32")
-BUILD_OPTIONS_AA32=" \
-	-a ARM \
-	-p ArmVirtPkg/ArmVirtQemu.dsc \
-	-b DEBUG \
-	-t $TOOL_CHAIN \
-"
 %if %{with build_riscv64}
 # Flavors for riscv
 FLAVORS_RV64=("riscv")
@@ -361,20 +314,6 @@ export CXX=g++-12
 
 # Import the build functions
 source ./edksetup.sh
-
-### Build x86 UEFI Images ###
-%ifnarch %{ix86} x86_64
-# Assign the cross-compiler prefix
-export ${TOOL_CHAIN}_BIN="x86_64-suse-linux-"
-%endif
-build $BUILD_OPTIONS_X86
-
-cp Build/OvmfIa32/DEBUG_*/FV/OVMF.fd ovmf-ia32.bin
-cp Build/OvmfIa32/DEBUG_*/FV/OVMF_CODE.fd ovmf-ia32-code.bin
-cp Build/OvmfIa32/DEBUG_*/FV/OVMF_VARS.fd ovmf-ia32-vars.bin
-
-# Remove the temporary build files to reduce the disk usage (bsc#1178244)
-rm -rf Build/OvmfIa32/
 
 ### Build x86_64 UEFI Images ###
 %ifarch x86_64
@@ -414,7 +353,7 @@ OUTDIR_X64=(
 	[ovmf-x86_64-4m]="OvmfX64"
 	[ovmf-x86_64-smm]="Ovmf3264"
 	[ovmf-x86_64-sev]="OvmfX64"
-	[ovmf-x86_64-tdx]="OvmfX64"
+	[ovmf-x86_64-tdx]="IntelTdx"
 )
 
 %ifnarch x86_64
@@ -474,33 +413,16 @@ export ${TOOL_CHAIN}_AARCH64_PREFIX="aarch64-suse-linux-"
 # Build the UEFI image without keys
 build $BUILD_OPTIONS_AA64
 
-cp Build/ArmVirtQemu-AARCH64/DEBUG_GCC*/FV/QEMU_EFI.fd qemu-uefi-aarch64.bin
-cp Build/ArmVirtQemu-AARCH64/DEBUG_GCC*/FV/QEMU_EFI.fd aavmf-aarch64-code.bin
+cp Build/ArmVirtQemu-AArch64/DEBUG_GCC*/FV/QEMU_EFI.fd qemu-uefi-aarch64.bin
+cp Build/ArmVirtQemu-AArch64/DEBUG_GCC*/FV/QEMU_EFI.fd aavmf-aarch64-code.bin
 truncate -s 64M aavmf-aarch64-code.bin
-cp Build/ArmVirtQemu-AARCH64/DEBUG_GCC*/FV/QEMU_VARS.fd aavmf-aarch64-vars.bin
+cp Build/ArmVirtQemu-AArch64/DEBUG_GCC*/FV/QEMU_VARS.fd aavmf-aarch64-vars.bin
 truncate -s 64M aavmf-aarch64-vars.bin
 
 # Remove the temporary build files to reduce the disk usage (bsc#1178244)
-rm -rf Build/ArmVirtQemu-AARCH64/
+rm -rf Build/ArmVirtQemu-AArch64/
 
 # Build with keys done later (shared between archs)
-
-### Build AARCH32 UEFI Images ###
-%ifnarch armv7hl
-# Assign the cross-compiler prefix
-export ${TOOL_CHAIN}_ARM_PREFIX="arm-suse-linux-gnueabi-"
-%endif
-# Build the UEFI image
-build $BUILD_OPTIONS_AA32
-
-cp Build/ArmVirtQemu-ARM/DEBUG_GCC*/FV/QEMU_EFI.fd qemu-uefi-aarch32.bin
-cp Build/ArmVirtQemu-ARM/DEBUG_GCC*/FV/QEMU_EFI.fd aavmf-aarch32-code.bin
-truncate -s 64M aavmf-aarch32-code.bin
-cp Build/ArmVirtQemu-ARM/DEBUG_GCC*/FV/QEMU_VARS.fd aavmf-aarch32-vars.bin
-truncate -s 64M aavmf-aarch32-vars.bin
-
-# Remove the temporary build files to reduce the disk usage (bsc#1178244)
-rm -rf Build/ArmVirtQemu-ARM/
 
 ### Build RISCV64 UEFI Images ###
 %if %{with build_riscv64}
@@ -649,13 +571,6 @@ rm %{buildroot}%{_datadir}/qemu/firmware/*-riscv64*.json
 %doc BaseTools/UserManuals/EfiRom_Utility_Man_Page.rtf
 %{_bindir}/EfiRom
 
-%files -n qemu-ovmf-ia32
-%license License.txt License-ovmf.txt
-%dir %{_datadir}/qemu/
-%{_datadir}/qemu/ovmf-ia32*.bin
-%dir %{_datadir}/qemu/firmware
-%{_datadir}/qemu/firmware/*-ia32*.json
-
 %files -n qemu-ovmf-x86_64
 %license License.txt License-ovmf.txt
 %dir %{_datadir}/qemu/
@@ -680,15 +595,6 @@ rm %{buildroot}%{_datadir}/qemu/firmware/*-riscv64*.json
 %{_datadir}/qemu/aavmf-aarch64-*vars.bin
 %dir %{_datadir}/qemu/firmware
 %{_datadir}/qemu/firmware/*-aarch64*.json
-
-%files -n qemu-uefi-aarch32
-%license License.txt
-%dir %{_datadir}/qemu/
-%{_datadir}/qemu/qemu-uefi-aarch32.bin
-%{_datadir}/qemu/aavmf-aarch32-code.bin
-%{_datadir}/qemu/aavmf-aarch32-vars.bin
-%dir %{_datadir}/qemu/firmware
-%{_datadir}/qemu/firmware/*-aarch32*.json
 
 %if %{with build_riscv64}
 %files -n qemu-uefi-riscv64
