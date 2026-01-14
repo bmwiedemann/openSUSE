@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 14 08:57:04 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- make sure entrypoint script uses exception mode, fix fallout
+
+-------------------------------------------------------------------
 Thu Jan  1 14:16:34 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
 
 - update copyright year
