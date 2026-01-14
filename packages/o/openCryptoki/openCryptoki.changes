@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 14 13:06:33 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied a patch (bsc#1256673, CVE-2026-22791)
+  * openCryptoki-CVE-2026-22791-commit-e37e912.patch
+
+-------------------------------------------------------------------
 Thu Jan  8 10:14:17 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Modified the .spec file for Immutable Mode (jsc#PED-14798)

@@ -41,6 +41,8 @@ Source3:        openCryptoki-rpmlintrc
 # and because we don't want(?) various file and directory permissions to be 0700.
 Patch000:       ocki-3.26-remove-make-install-chgrp.patch
 #
+Patch010:       openCryptoki-CVE-2026-22791-commit-e37e912.patch
+#
 BuildRequires:  bison
 BuildRequires:  dos2unix
 BuildRequires:  flex
