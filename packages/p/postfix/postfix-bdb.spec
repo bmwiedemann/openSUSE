@@ -1,7 +1,7 @@
 #
 # spec file for package postfix-bdb
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,12 +41,7 @@
 %define vmdir                /srv/maildirs
 %endif
 %define mail_group           mail
-%define conf_backup_dir      %{_localstatedir}/adm/backup/postfix
 %define unitdir %{_prefix}/lib/systemd
-#Compat macro for new _fillupdir macro introduced in Nov 2017
-%if ! %{defined _fillupdir}
-  %define _fillupdir %{_localstatedir}/adm/fillup-templates
-%endif
 %if 0%{?suse_version} >= 1320 || ( 0%{?suse_version} == 1315 && 0%{?is_opensuse} )
 %bcond_without lmdb
 %else
@@ -59,7 +54,7 @@
 %endif
 %bcond_without ldap
 Name:           postfix-bdb
-Version:        3.10.6
+Version:        3.10.7
 Release:        0
 Summary:        A fast, secure, and flexible mailer
 License:        EPL-2.0 OR IPL-1.0
@@ -78,8 +73,6 @@ Source13:       postfix-vmail-user.conf
 Patch1:         postfix-no-md5.patch
 Patch2:         pointer_to_literals.patch
 Patch3:         ipv6_disabled.patch
-Patch4:         postfix-bdb-main.cf.patch
-Patch5:         postfix-master.cf.patch
 Patch6:         postfix-linux45.patch
 Patch7:         postfix-ssl-release-buffers.patch
 Patch8:         postfix-vda-v14-3.0.3.patch
@@ -108,8 +101,7 @@ BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(systemd)
 Requires:       iproute2
 Requires(post): permissions
-Requires(pre):  %fillup_prereq
-Requires(pre):  permissions
+
 Conflicts:      exim
 Conflicts:      postfix
 Conflicts:      sendmail
@@ -133,14 +125,9 @@ Requires(pre):  shadow
 Requires:       /usr/bin/cmp
 # /usr/lib/postfix/bin//post-install: line 667: ed: command not found
 Requires(pre):  /usr/bin/ed
-Requires(preun):/usr/bin/ed
+Requires(preun): /usr/bin/ed
 Requires(post): /usr/bin/ed
-Requires(postun):/usr/bin/ed
-# /usr/sbin/config.postfix needs perl
-Requires(pre):  perl
-Requires(preun):perl
-Requires(post): perl
-Requires(postun):perl
+Requires(postun): /usr/bin/ed
 
 %description
 Postfix aims to be an alternative to the widely-used sendmail program with bdb support
@@ -171,10 +158,6 @@ lmdb.
 unset AUXLIBS AUXLIBS_LDAP AUXLIBS_PCRE AUXLIBS_MYSQL AUXLIBS_PGSQL AUXLIBS_SQLITE AUXLIBS_CDB
 
 export CCARGS="${CCARGS} %{optflags} -fcommon -Wno-comments -Wno-missing-braces -fPIC"
-
-%if 0%{?suse_version} >= 1600
-export CCARGS="${CCARGS} -std=gnu17"
-%endif
 
 %ifarch s390 s390x ppc
 export CCARGS="${CCARGS} -fsigned-char"
@@ -284,10 +267,8 @@ for i in qmqp-source smtp-sink smtp-source; do
 	install -m 755 bin/$i %{buildroot}%{_sbindir}/$i
 done
 mkdir -p %{buildroot}/sbin/conf.d
-mkdir -p %{buildroot}%{_sysconfdir}/permissions.d
 mkdir -p %{buildroot}/%{_libdir}/sasl2
 mkdir -p %{buildroot}%{_sbindir}
-mkdir -p %{buildroot}/%{conf_backup_dir}
 mkdir -p %{buildroot}/%{pf_sample_directory}
 mkdir -p %{buildroot}/%{pf_html_directory}
 mkdir -p %{buildroot}%{_includedir}/postfix
@@ -298,46 +279,12 @@ mkdir -p %{buildroot}%{_includedir}/postfix
     mkdir -p %{buildroot}%{_sysconfdir}/pam.d
     install -m 644 postfix-SUSE/smtp %{buildroot}%{_sysconfdir}/pam.d/smtp
 %endif
-mkdir -p %{buildroot}%{_fillupdir}
-sed -e 's;@lib@;%{_lib};g' postfix-SUSE/sysconfig.postfix > %{buildroot}%{_fillupdir}/sysconfig.postfix
-install -m 644 postfix-SUSE/sysconfig.mail-postfix %{buildroot}%{_fillupdir}/sysconfig.mail-postfix
-sed -e 's;@lib@;%{_lib};g' \
-    -e 's;@conf_backup_dir@;%{conf_backup_dir};' \
-    -e 's;@daemon_directory@;%{pf_daemon_directory};' \
-    -e 's;@readme_directory@;%{pf_readme_directory};' \
-    -e 's;@html_directory@;%{pf_html_directory};' \
-    -e 's;@sendmail_path@;%{pf_sendmail_path};' \
-    -e 's;@setgid_group@;%{pf_setgid_group};' \
-    -e 's;@manpage_directory@;%{_mandir};' \
-    -e 's;@newaliases_path@;%{pf_newaliases_path};' \
-    -e 's;@sample_directory@;%{pf_sample_directory};' \
-    -e 's;@mailq_path@;%{pf_mailq_path};' postfix-SUSE/config.postfix > %{buildroot}%{_sbindir}/config.postfix
-chmod 755 %{buildroot}%{_sbindir}/config.postfix
-install -m 644 postfix-SUSE/dynamicmaps.cf %{buildroot}%{_sysconfdir}/postfix/dynamicmaps.cf
-install -m 644 postfix-SUSE/ldap_aliases.cf %{buildroot}%{_sysconfdir}/postfix/ldap_aliases.cf
-install -m 644 postfix-SUSE/helo_access %{buildroot}%{_sysconfdir}/postfix/helo_access
-install -m 644 postfix-SUSE/permissions %{buildroot}%{_sysconfdir}/permissions.d/postfix
-install -m 644 postfix-SUSE/sender_canonical %{buildroot}%{_sysconfdir}/postfix/sender_canonical
-install -m 644 postfix-SUSE/relay %{buildroot}%{_sysconfdir}/postfix/relay
-install -m 644 postfix-SUSE/relay_ccerts %{buildroot}%{_sysconfdir}/postfix/relay_ccerts
-install -m 600 postfix-SUSE/sasl_passwd %{buildroot}%{_sysconfdir}/postfix/sasl_passwd
 mkdir -p %{buildroot}%{_sysconfdir}/sasl2
+mkdir -p %{buildroot}%{_sysconfdir}/permissions.d
+install -pm 0644 postfix-SUSE/permissions %{buildroot}%{_sysconfdir}/permissions.d/postfix
+install -pm 0644 postfix-SUSE/permissions.paranoid %{buildroot}%{_sysconfdir}/permissions.d/postfix.paranoid
+
 install -m 600 postfix-SUSE/smtpd.conf %{buildroot}%{_sysconfdir}/sasl2/smtpd.conf
-install -m 644 postfix-SUSE/openssl_postfix.conf.in %{buildroot}%{_sysconfdir}/postfix/openssl_postfix.conf.in
-install -m 755 postfix-SUSE/mkpostfixcert %{buildroot}%{_sbindir}/mkpostfixcert
-{
-cat<<EOF
-#
-# -----------------------------------------------------------------------
-# NOTE: Many parameters have already been added to the end of this file
-#       by config.postfix. So take care that you don't uncomment
-#       and set a parameter without checking whether it has been added
-#       to the end of this file.
-# -----------------------------------------------------------------------
-#
-EOF
-cat conf/main.cf
-} > %{buildroot}%{_sysconfdir}/postfix/main.cf
 %{buildroot}%{_sbindir}/postconf -c %{buildroot}%{_sysconfdir}/postfix \
         -e "manpage_directory = %{_mandir}" \
            "setgid_group      = %{pf_setgid_group}" \
@@ -353,10 +300,6 @@ cat conf/main.cf
 	   "disable_vrfy_command = yes" \
 	   'smtpd_banner      = $myhostname ESMTP'
 #Set Permissions
-install -m 644 postfix-SUSE/postfix-files %{buildroot}%{pf_shlib_directory}/postfix-files
-# create paranoid permissions file
-printf '%%-38s %%-18s %%s\n' %{_sbindir}/postdrop "root.%{pf_setgid_group}" "0755" >> %{buildroot}%{_sysconfdir}/permissions.d/postfix.paranoid
-printf '%%-38s %%-18s %%s\n' %{_sbindir}/postqueue "root.%{pf_setgid_group}" "0755" >> %{buildroot}%{_sysconfdir}/permissions.d/postfix.paranoid
 install -m 644 include/*.h %{buildroot}%{_includedir}/postfix/
 # some rpmlint stuff
 # remove unneeded examples/chroot-setup
@@ -375,11 +318,8 @@ rm -f %{buildroot}%{_sysconfdir}/postfix/*.orig
 mkdir -p %{buildroot}%{_unitdir}
 mkdir -p %{buildroot}%{pf_shlib_directory}/systemd
 install -m 0644 postfix-SUSE/postfix.service         %{buildroot}%{_unitdir}/postfix.service
-install -m 0755 postfix-SUSE/config_postfix.systemd  %{buildroot}%{pf_shlib_directory}/systemd/config_postfix
 install -m 0755 postfix-SUSE/update_chroot.systemd   %{buildroot}%{pf_shlib_directory}/systemd/update_chroot
-install -m 0755 postfix-SUSE/update_postmaps.systemd %{buildroot}%{pf_shlib_directory}/systemd/update_postmaps
 install -m 0755 postfix-SUSE/wait_qmgr.systemd       %{buildroot}%{pf_shlib_directory}/systemd/wait_qmgr
-install -m 0755 postfix-SUSE/cond_slp.systemd        %{buildroot}%{pf_shlib_directory}/systemd/cond_slp
 %if 0%{?suse_version} < 1599
 ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rcpostfix
 %endif
@@ -402,7 +342,6 @@ install -m 644 %{SOURCE13} %{buildroot}%{_sysusersdir}/
 %endif
 
 #Clean up for postfix-bdb
-rm -rf %{buildroot}/etc/postfix/ldap_aliases.cf
 rm -rf %{buildroot}/usr/lib/debug/usr/lib/postfix/postfix-ldap.so-3.5.8-2.11.1.x86_64.debug
 rm -rf %{buildroot}/usr/lib/debug/usr/lib/postfix/postfix-mysql.so-3.5.8-2.11.1.x86_64.debug
 rm -rf %{buildroot}/usr/lib/debug/usr/lib/postfix/postfix-pgsql.so-3.5.8-2.11.1.x86_64.debug
@@ -445,35 +384,18 @@ fi
 # ---------------------------------------------------------------------------
 
 %post
-# We never have to run suseconfig for postfix after installation
-# We only start postfix own upgrade-configuration by update
-if [ ${1:-0} -gt 1 ]; then
-	touch %{_localstatedir}/adm/postfix.configured
-        echo "Executing upgrade-configuration."
-        %{_sbindir}/postfix set-permissions upgrade-configuration setgid_group=%{pf_setgid_group} || :
-        if [ "$(%{_sbindir}/postconf -h daemon_directory)" != "%{pf_daemon_directory}" ]; then
-                %{_sbindir}/postconf daemon_directory=%{pf_daemon_directory}
-        fi
-fi
-
 %service_add_post postfix.service
-
+/sbin/ldconfig
 %set_permissions %{_sbindir}/postdrop
 %set_permissions %{_sbindir}/postlog
 %set_permissions %{_sbindir}/postqueue
-%set_permissions %{_sysconfdir}/postfix/sasl_passwd
-%set_permissions %{_sbindir}/sendmail
-
-%{fillup_only postfix}
-%{fillup_only -an mail}
-/sbin/ldconfig
+%set_permissions /var/spool/mail/
 
 %verifyscript
-%verify_permissions -e %{_sbindir}/postdrop
-%verify_permissions -e %{_sbindir}/postlog
-%verify_permissions -e %{_sbindir}/postqueue
-%verify_permissions -e %{_sysconfdir}/postfix/sasl_passwd
-%verify_permissions -e %{_sbindir}/sendmail
+%verify_permissions %{_sbindir}/postdrop
+%verify_permissions %{_sbindir}/postlog
+%verify_permissions %{_sbindir}/postqueue
+%verify_permissions -e /var/spool/mail/
 
 %postun
 %service_del_postun postfix.service
@@ -489,28 +411,13 @@ fi
 %else
 %config %{_sysconfdir}/pam.d/*
 %endif
-%{_fillupdir}/sysconfig.postfix
-%{_fillupdir}/sysconfig.mail-postfix
 %dir %{_sysconfdir}/postfix
-%config %{_sysconfdir}/postfix/main.cf.default
-%config(noreplace) %{_sysconfdir}/postfix/[^mysql]*[^mysql]
-%config(noreplace) %{_sysconfdir}/postfix/access
-%config(noreplace) %{_sysconfdir}/postfix/aliases
-%config(noreplace) %{_sysconfdir}/postfix/canonical
-%config(noreplace) %{_sysconfdir}/postfix/header_checks
-%config(noreplace) %{_sysconfdir}/postfix/helo_access
-%config(noreplace) %{_sysconfdir}/postfix/main.cf
-%config(noreplace) %{_sysconfdir}/postfix/master.cf
+%exclude %{_sysconfdir}/postfix/*mysql*
+%config(noreplace) %{_sysconfdir}/postfix/*
 %attr(0750,root,root) %config %{_sysconfdir}/postfix/post-install
 %attr(0750,root,root) %config %{_sysconfdir}/postfix/postfix-tls-script
 %attr(0750,root,root) %config %{_sysconfdir}/postfix/postfix-wrapper
 %attr(0750,root,root) %config %{_sysconfdir}/postfix/postmulti-script
-%config(noreplace) %{_sysconfdir}/postfix/postfix-files
-%config(noreplace) %{_sysconfdir}/postfix/relay
-%config(noreplace) %{_sysconfdir}/postfix/relay_ccerts
-%config(noreplace) %{_sysconfdir}/postfix/sasl_passwd
-%config(noreplace) %{_sysconfdir}/postfix/sender_canonical
-%config(noreplace) %{_sysconfdir}/postfix/virtual
 
 %dir %{_sysconfdir}/sasl2
 %config(noreplace) %{_sysconfdir}/sasl2/smtpd.conf
@@ -532,7 +439,6 @@ fi
 %verify(not mode) %attr(2755,root,%{pf_setgid_group}) %{_sbindir}/postdrop
 %verify(not mode) %attr(2755,root,%{pf_setgid_group}) %{_sbindir}/postlog
 %verify(not mode) %attr(2755,root,%{pf_setgid_group}) %{_sbindir}/postqueue
-%attr(0755,root,root) %{_sbindir}/config.postfix
 %attr(0755,root,root) %{_sbindir}/sendmail
 %attr(0755,root,root) %{_sbindir}/postalias
 %attr(0755,root,root) %{_sbindir}/postcat
@@ -548,9 +454,7 @@ fi
 %attr(0755,root,root) %{_sbindir}/qmqp-source
 %attr(0755,root,root) %{_sbindir}/smtp-sink
 %attr(0755,root,root) %{_sbindir}/smtp-source
-%attr(0755,root,root) %{_sbindir}/mkpostfixcert
 %attr(0755,root,root) %{_sbindir}/check_mail_queue
-%attr(0755,root,root) %{_sbindir}/config.postfix
 %if 0%{?suse_version} < 1599
 %{_sbindir}/rcpostfix
 %endif
@@ -567,7 +471,6 @@ fi
 %{pf_shlib_directory}/main.cf.proto
 %{pf_shlib_directory}/master.cf.proto
 
-%{conf_backup_dir}
 %dir %attr(0700,postfix,root) %{pf_data_directory}
 %exclude %{_mandir}/man5/ldap_table.5*
 %exclude %{_mandir}/man5/lmdb_table.5*

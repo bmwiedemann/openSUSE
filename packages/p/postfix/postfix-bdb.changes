@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sun Dec 21 20:53:29 UTC 2025 - Peter Varkoly <varkoly@suse.com>
+
+- (jsc#PED-14859) Fix packages for Immutable Mode - postfix
+
+-------------------------------------------------------------------
+Sun Dec 14 18:45:30 UTC 2025 - Peter Varkoly <varkoly@suse.com>
+
+- Put /etc/permissions.d/postfix.paranoid into the postfix-SUSE.tar.gz
+
+-------------------------------------------------------------------
+Thu Dec 11 13:08:02 UTC 2025 - Stefan Botter <obs@botter.cc>
+
+- fix postfix-SUSE.tar.gz, postfix.service: correct path for postalias
+  from /sbin/postalias to /usr/sbin/postalias
+
+-------------------------------------------------------------------
+Wed Dec 10 20:00:47 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 3.10.7
+  * This patch addresses build errors on recent Linux distributions.
+    With the patch, Postfix builds will run the compiler with a
+    backwards compatibility option that is supported by Gcc and Clang.
+    For other compilers, an error message provides hints.
+
+-------------------------------------------------------------------
+Wed Dec 10 14:35:46 UTC 2025 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Add /var/spool/mail to the permissions.d drop-in. This directory used to be
+  whitelisted globally in the permissions package but an update for the exim
+  mail server changed that (bsc#1254597 bsc#1240755).
+- Reintroduce permissions.d/postfix-paranoid drop-in that was removed in r534.
+
+-------------------------------------------------------------------
+Fri Dec  5 09:37:39 UTC 2025 - Peter Varkoly <varkoly@suse.com>
+
+- postfix is unable to send mail by default (bsc#1253775)
+  o Clean up the package
+    * Get rid of config.postfix script to avoid unintentional changes
+      of the configuration. The sysconfig files mail and postfix
+      were removed also.
+    * Deliver the original main.cf and master.cf
+    * Remove a lot of deprecated stuff from the package.
+    * Remove the ExecStartPre scripts to maintain the postmaps
+      and the chroot environment.
+    * A new ExecStartPre script manages the default alias map which
+      is part of the default configuration of postfix.
+      /sbin/postalias /etc/aliases
+    * Do not use the permissions framework. A new ExecStartPre script
+      takes care of the right permissions: /usr/sbin/postfix set-permissions
+    * Remove mkpostfixcert
+  o Remove patches:
+    * postfix-master.cf.patch
+    * postfix-main.cf.patch
+    * postfix-bdb-main.cf.patch
+
+-------------------------------------------------------------------
 Wed Nov 26 19:27:24 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 3.10.6

@@ -1,7 +1,7 @@
 #
 # spec file for package postfix
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,12 +35,7 @@
 %define pf_data_directory    %{_localstatedir}/lib/%{name}
 %define pf_database_convert  %{_rundir}/%{name}-needs-convert
 %define mail_group           mail
-%define conf_backup_dir      %{_localstatedir}/adm/backup/%{name}
 %define unitdir %{_prefix}/lib/systemd
-#Compat macro for new _fillupdir macro introduced in Nov 2017
-%if ! %{defined _fillupdir}
-  %define _fillupdir %{_localstatedir}/adm/fillup-templates
-%endif
 %if 0%{?suse_version} < 1599
 %bcond_without libnsl
 %else
@@ -48,7 +43,7 @@
 %endif
 %bcond_without ldap
 Name:           postfix
-Version:        3.10.6
+Version:        3.10.7
 Release:        0
 Summary:        A fast, secure, and flexible mailer
 License:        EPL-2.0 OR IPL-1.0
@@ -66,8 +61,6 @@ Source13:       postfix-vmail-user.conf
 Patch1:         %{name}-no-md5.patch
 Patch2:         pointer_to_literals.patch
 Patch3:         ipv6_disabled.patch
-Patch4:         %{name}-main.cf.patch
-Patch5:         %{name}-master.cf.patch
 Patch6:         %{name}-linux45.patch
 Patch7:         %{name}-ssl-release-buffers.patch
 Patch8:         %{name}-vda-v14-3.0.3.patch
@@ -95,9 +88,8 @@ BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(systemd)
 Requires:       iproute2
 Requires(post): permissions
-Requires(pre):  %fillup_prereq
+
 Requires(pre):  group(%{mail_group})
-Requires(pre):  permissions
 Requires(pre):  user(nobody)
 Conflicts:      exim
 Conflicts:      postfix-bdb
@@ -117,14 +109,9 @@ BuildRequires:  libnsl-devel
 Requires:       /usr/bin/cmp
 # /usr/lib/postfix/bin//post-install: line 667: ed: command not found
 Requires(pre):  /usr/bin/ed
-Requires(preun):/usr/bin/ed
+Requires(preun): /usr/bin/ed
 Requires(post): /usr/bin/ed
-Requires(postun):/usr/bin/ed
-# /usr/sbin/config.postfix needs perl
-Requires(pre):  perl
-Requires(preun):perl
-Requires(post): perl
-Requires(postun):perl
+Requires(postun): /usr/bin/ed
 
 %description
 Postfix aims to be an alternative to the widely-used sendmail program.
@@ -151,7 +138,6 @@ This package contains the documentation for %{name}
 Summary:        Postfix plugin to support MySQL maps
 Group:          Productivity/Networking/Email/Servers
 Requires(pre):  %{name} = %{version}
-%sysusers_requires
 %if 0%{?suse_version} < 1550
 Provides:       group(vmail)
 %endif
@@ -192,10 +178,6 @@ maps with Postfix, you need this.
 unset AUXLIBS AUXLIBS_LDAP AUXLIBS_PCRE AUXLIBS_MYSQL AUXLIBS_PGSQL AUXLIBS_SQLITE AUXLIBS_CDB
 
 export CCARGS="${CCARGS} %{optflags} -fcommon -Wno-comments -Wno-missing-braces -fPIC"
-
-%if 0%{?suse_version} >= 1600
-export CCARGS="${CCARGS} -std=gnu17"
-%endif
 
 %ifarch s390 s390x ppc
 export CCARGS="${CCARGS} -fsigned-char"
@@ -275,10 +257,6 @@ export PIE=-pie
 %install
 mkdir -p %{buildroot}/%{_libdir}
 mkdir -p %{buildroot}%{_sysconfdir}/%{name}
-# create our default postfix ssl DIR (/etc/postfix/ssl)
-mkdir -p %{buildroot}%{_sysconfdir}/%{name}/ssl/certs
-# link cacerts to /etc/ssl/certs
-ln -s ../../ssl/certs %{buildroot}%{_sysconfdir}/%{name}/ssl/cacerts
 cp lib/lib%{name}-*  %{buildroot}/%{_libdir}
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}/%{_libdir}
 sh postfix-install -non-interactive \
@@ -304,7 +282,6 @@ mkdir -p %{buildroot}/sbin/conf.d
 mkdir -p %{buildroot}%{_sysconfdir}/permissions.d
 mkdir -p %{buildroot}/%{_libdir}/sasl2
 mkdir -p %{buildroot}%{_sbindir}
-mkdir -p %{buildroot}/%{conf_backup_dir}
 mkdir -p %{buildroot}/%{pf_sample_directory}
 mkdir -p %{buildroot}/%{pf_html_directory}
 mkdir -p %{buildroot}%{_includedir}/%{name}
@@ -318,46 +295,8 @@ mkdir -p %{buildroot}%{_includedir}/%{name}
 mkdir -p %{buildroot}/%{pf_queue_directory}
 mkdir -p %{buildroot}/var/spool/mail
 ln -s spool/mail %{buildroot}/var/mail
-mkdir -p %{buildroot}%{_fillupdir}
-sed -e 's;@lib@;%{_lib};g' %{name}-SUSE/sysconfig.%{name} > %{buildroot}%{_fillupdir}/sysconfig.%{name}
-install -pm 0644 %{name}-SUSE/sysconfig.mail-%{name} %{buildroot}%{_fillupdir}/sysconfig.mail-%{name}
-sed -e 's;@lib@;%{_lib};g' \
-    -e 's;@conf_backup_dir@;%{conf_backup_dir};' \
-    -e 's;@daemon_directory@;%{pf_daemon_directory};' \
-    -e 's;@readme_directory@;%{pf_readme_directory};' \
-    -e 's;@html_directory@;%{pf_html_directory};' \
-    -e 's;@sendmail_path@;%{pf_sendmail_path};' \
-    -e 's;@setgid_group@;%{pf_setgid_group};' \
-    -e 's;@manpage_directory@;%{_mandir};' \
-    -e 's;@newaliases_path@;%{pf_newaliases_path};' \
-    -e 's;@sample_directory@;%{pf_sample_directory};' \
-    -e 's;@mailq_path@;%{pf_mailq_path};' %{name}-SUSE/config.%{name} > %{buildroot}%{_sbindir}/config.%{name}
-chmod 0755 %{buildroot}%{_sbindir}/config.%{name}
-install -pm 0644 %{name}-SUSE/ldap_aliases.cf %{buildroot}%{_sysconfdir}/%{name}/ldap_aliases.cf
-install -pm 0644 %{name}-SUSE/helo_access %{buildroot}%{_sysconfdir}/%{name}/helo_access
-install -pm 0644 %{name}-SUSE/permissions %{buildroot}%{_sysconfdir}/permissions.d/%{name}
-install -pm 0644 %{name}-SUSE/sender_canonical %{buildroot}%{_sysconfdir}/%{name}/sender_canonical
-install -pm 0644 %{name}-SUSE/relay %{buildroot}%{_sysconfdir}/%{name}/relay
-install -pm 0644 %{name}-SUSE/relay_ccerts %{buildroot}%{_sysconfdir}/%{name}/relay_ccerts
-install -pm 0644 %{name}-SUSE/relay_recipients %{buildroot}%{_sysconfdir}/%{name}/relay_recipients
-install -pm 0600 %{name}-SUSE/sasl_passwd %{buildroot}%{_sysconfdir}/%{name}/sasl_passwd
 mkdir -p %{buildroot}%{_sysconfdir}/sasl2
 install -pm 0600 %{name}-SUSE/smtpd.conf %{buildroot}%{_sysconfdir}/sasl2/smtpd.conf
-install -pm 0644 %{name}-SUSE/openssl_%{name}.conf.in %{buildroot}%{_sysconfdir}/%{name}/openssl_%{name}.conf.in
-install -pm 0755 %{name}-SUSE/mk%{name}cert %{buildroot}%{_sbindir}/mk%{name}cert
-{
-cat<<EOF
-#
-# -----------------------------------------------------------------------
-# NOTE: Many parameters have already been added to the end of this file
-#       by config.postfix. So take care that you don't uncomment
-#       and set a parameter without checking whether it has been added
-#       to the end of this file.
-# -----------------------------------------------------------------------
-#
-EOF
-cat conf/main.cf
-} > %{buildroot}%{_sysconfdir}/%{name}/main.cf
 %{buildroot}%{_sbindir}/postconf -c %{buildroot}%{_sysconfdir}/%{name} \
         -e "manpage_directory = %{_mandir}" \
            "setgid_group      = %{pf_setgid_group}" \
@@ -373,6 +312,8 @@ cat conf/main.cf
 	   "disable_vrfy_command = yes" \
 	   'smtpd_banner      = $myhostname ESMTP'
 #Set Permissions
+install -pm 0644 %{name}-SUSE/permissions %{buildroot}%{_sysconfdir}/permissions.d/%{name}
+install -pm 0644 %{name}-SUSE/permissions.paranoid %{buildroot}%{_sysconfdir}/permissions.d/%{name}.paranoid
 sed -i	-e 's/\(.*ldap.*\)/#\1/g' \
 	-e 's/\(.*mysql.*\)/#\1/g' \
 	-e 's/\(.*pgsql.*\)/#\1/g' \
@@ -385,9 +326,6 @@ mkdir -p %{buildroot}%{pf_meta_directory}/postfix-files.d
 # postfix-mysql
 install -pm 0644 %{name}-mysql/main.cf-mysql %{buildroot}%{_sysconfdir}/%{name}/main.cf-mysql
 install -pm 0640 %{name}-mysql/*_maps.cf     %{buildroot}%{_sysconfdir}/%{name}/
-# create paranoid permissions file
-printf '%%-38s %%-18s %%s\n' %{_sbindir}/postdrop "root.%{pf_setgid_group}" "0755" >> %{buildroot}%{_sysconfdir}/permissions.d/%{name}.paranoid
-printf '%%-38s %%-18s %%s\n' %{_sbindir}/postqueue "root.%{pf_setgid_group}" "0755" >> %{buildroot}%{_sysconfdir}/permissions.d/%{name}.paranoid
 install -pm 0644 include/*.h %{buildroot}%{_includedir}/%{name}/
 # some rpmlint stuff
 # remove unneeded examples/chroot-setup
@@ -406,11 +344,7 @@ rm -f %{buildroot}%{_sysconfdir}/%{name}/*.orig
 mkdir -p %{buildroot}%{_unitdir}/mail-transfer-agent.target.wants/
 mkdir -p %{buildroot}%{pf_systemd_directory}
 install -pm 0644 %{name}-SUSE/%{name}.service         %{buildroot}%{_unitdir}/%{name}.service
-install -pm 0755 %{name}-SUSE/config_%{name}.systemd  %{buildroot}%{pf_systemd_directory}/config_%{name}
-install -pm 0755 %{name}-SUSE/update_chroot.systemd   %{buildroot}%{pf_systemd_directory}/update_chroot
-install -pm 0755 %{name}-SUSE/update_postmaps.systemd %{buildroot}%{pf_systemd_directory}/update_postmaps
 install -pm 0755 %{name}-SUSE/wait_qmgr.systemd       %{buildroot}%{pf_systemd_directory}/wait_qmgr
-install -pm 0755 %{name}-SUSE/cond_slp.systemd        %{buildroot}%{pf_systemd_directory}/cond_slp
 %if 0%{?suse_version} < 1599
 ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %endif
@@ -447,66 +381,26 @@ install -m 755 bin/posttls-finger %{buildroot}%{_sbindir}/
 # ---------------------------------------------------------------------------
 
 %pre -f postfix.pre
-# If existing default database type is hash, we need to convert the
-# databases because hash (and btree) is no longer supported after
-# the upgrade
-if [ -x %{_sbindir}/postconf ]; then
-	DEF_DB_TYPE=$(postconf default_database_type)
-	case $DEF_DB_TYPE in *hash)
-		touch %{pf_database_convert}
-	esac
-fi
 %service_add_pre %{name}.service
 
 %preun
 %service_del_preun %{name}.service
 
 %post
-# We never have to run suseconfig for postfix after installation
-# We only start postfix own upgrade-configuration by update
-#
-# If the default database type of the previous installation was
-# hash, we also need to rebuild the databases in the new lmdb
-# format
-if [ ${1:-0} -gt 1 ]; then
-	touch %{_localstatedir}/adm/%{name}.configured
-	echo "Executing upgrade-configuration."
-	%{_sbindir}/%{name} set-permissions upgrade-configuration setgid_group=%{pf_setgid_group} || :
-	if [ "$(%{_sbindir}/postconf -h daemon_directory)" != "%{pf_daemon_directory}" ]; then
-		%{_sbindir}/postconf daemon_directory=%{pf_daemon_directory}
-	fi
-	if [ -e %{pf_database_convert} ]; then
-		sed -i -E "s/(btree|hash):/lmdb:/g" %{pf_config_directory}/{main.cf,master.cf}
-		for i in $(find %{pf_config_directory} -name "*.db"); do
-			postmap ${i%.db}
-		done
-		for i in $(find %{_sysconfdir}/aliases.d/ -name "*.db"); do
-			postalias ${i%.db}
-		done
-		if [ -e %{_sysconfdir}/aliases.db ]; then
-			postalias %{_sysconfdir}/aliases
-		fi
-		rm %{pf_database_convert}
-	fi
-fi
+%service_add_post %{name}.service
 %set_permissions %{_sbindir}/postdrop
 %set_permissions %{_sbindir}/postlog
 %set_permissions %{_sbindir}/postqueue
-%set_permissions %{_sysconfdir}/%{name}/sasl_passwd
-%set_permissions %{_sbindir}/sendmail
-%{fillup_only postfix}
-%{fillup_only -an mail}
-%service_add_post %{name}.service
+%set_permissions /var/spool/mail/
+
+%verifyscript
+%verify_permissions %{_sbindir}/postdrop
+%verify_permissions %{_sbindir}/postlog
+%verify_permissions %{_sbindir}/postqueue
+%verify_permissions -e /var/spool/mail/
 
 %postun
 %service_del_postun %{name}.service
-
-%verifyscript
-%verify_permissions -e %{_sbindir}/postdrop
-%verify_permissions -e %{_sbindir}/postlog
-%verify_permissions -e %{_sbindir}/postqueue
-%verify_permissions -e %{_sysconfdir}/%{name}/sasl_passwd
-%verify_permissions -e %{_sbindir}/sendmail
 
 # ---------------------------------------------------------------------------
 
@@ -524,51 +418,35 @@ fi
 %files
 %license LICENSE TLS_LICENSE
 %doc RELEASE_NOTES
+%exclude %{_sysconfdir}/%{name}/*mysql*
+%exclude %{_sysconfdir}/%{name}/LICENSE
+%exclude %{_sysconfdir}/%{name}/TLS_LICENSE
+%exclude %{_mandir}/man5/ldap_table.5*
+%exclude %{_mandir}/man5/mysql_table.5*
+%exclude %{_mandir}/man5/pgsql_table.5*
 %if 0%{?suse_version} >= 1600
 %{_pam_vendordir}/smtp
 %else
 %config %{_sysconfdir}/pam.d/*
 %endif
-%{_fillupdir}/sysconfig.%{name}
-%{_fillupdir}/sysconfig.mail-%{name}
 %dir %{_sysconfdir}/%{name}
-%config %{_sysconfdir}/%{name}/main.cf.default
-%config(noreplace) %{_sysconfdir}/%{name}/[^mysql]*[^mysql]
-%config(noreplace) %{_sysconfdir}/%{name}/access
-%config(noreplace) %{_sysconfdir}/%{name}/aliases
-%config(noreplace) %{_sysconfdir}/%{name}/canonical
-%config(noreplace) %{_sysconfdir}/%{name}/header_checks
-%config(noreplace) %{_sysconfdir}/%{name}/helo_access
-%config(noreplace) %{_sysconfdir}/%{name}/main.cf
-%config(noreplace) %{_sysconfdir}/%{name}/master.cf
-%config(noreplace) %{_sysconfdir}/%{name}/relay
-%config(noreplace) %{_sysconfdir}/%{name}/relay_ccerts
-%config(noreplace) %{_sysconfdir}/%{name}/relay_recipients
-%config(noreplace) %{_sysconfdir}/%{name}/sasl_passwd
-%config(noreplace) %{_sysconfdir}/%{name}/sender_canonical
-%config(noreplace) %{_sysconfdir}/%{name}/virtual
+%config(noreplace) %{_sysconfdir}/%{name}/*
 %ghost %attr(0644,root,root) %{_sysconfdir}/%{name}/*.lmdb
 %ghost %attr(0644,root,root) %{_sysconfdir}/aliases.lmdb
 %dir %{_sysconfdir}/sasl2
 %config(noreplace) %{_sysconfdir}/sasl2/smtpd.conf
-%exclude %{_sysconfdir}/%{name}/LICENSE
-%exclude %{_sysconfdir}/%{name}/TLS_LICENSE
 %config %{_sysconfdir}/permissions.d/%{name}
 %config %{_sysconfdir}/permissions.d/%{name}.paranoid
 %{pf_meta_directory}/%{name}-files
-# create our default postfix ssl DIR (/etc/postfix/ssl)
-%dir %{_sysconfdir}/%{name}/ssl
-%dir %{_sysconfdir}/%{name}/ssl/certs
-%{_sysconfdir}/%{name}/ssl/cacerts
 %dir %{pf_systemd_directory}
 %attr(0755,root,root) %{pf_systemd_directory}/*
 %{_unitdir}/%{name}.service
 %{_unitdir}/mail-transfer-agent.target.wants
+%{_bindir}/mailq
+%{_bindir}/newaliases
 %verify(not mode) %attr(2755,root,%{pf_setgid_group}) %{_sbindir}/postdrop
 %verify(not mode) %attr(2755,root,%{pf_setgid_group}) %{_sbindir}/postlog
 %verify(not mode) %attr(2755,root,%{pf_setgid_group}) %{_sbindir}/postqueue
-%{_bindir}/mailq
-%{_bindir}/newaliases
 %attr(0755,root,root) %{_sbindir}/sendmail
 %attr(0755,root,root) %{_sbindir}/postalias
 %attr(0755,root,root) %{_sbindir}/postcat
@@ -584,9 +462,7 @@ fi
 %attr(0755,root,root) %{_sbindir}/qmqp-source
 %attr(0755,root,root) %{_sbindir}/smtp-sink
 %attr(0755,root,root) %{_sbindir}/smtp-source
-%attr(0755,root,root) %{_sbindir}/mk%{name}cert
 %attr(0755,root,root) %{_sbindir}/check_mail_queue
-%attr(0755,root,root) %{_sbindir}/config.%{name}
 %if 0%{?suse_version} < 1599
 %{_sbindir}/rc%{name}
 %endif
@@ -609,11 +485,7 @@ fi
 %dir %{pf_meta_directory}/dynamicmaps.cf.d
 %dir %{pf_meta_directory}/postfix-files.d
 
-%{conf_backup_dir}
 %dir %attr(0700,%{name},root) %{pf_data_directory}
-%exclude %{_mandir}/man5/ldap_table.5*
-%exclude %{_mandir}/man5/mysql_table.5*
-%exclude %{_mandir}/man5/pgsql_table.5*
 %{_mandir}/man?/*%{?ext_man}
 %dir %attr(0755,root,root) /%{pf_queue_directory}
 %dir %attr(0755,root,root) /%{pf_queue_directory}/pid
@@ -657,7 +529,6 @@ fi
 
 %if %{with ldap}
 %files ldap
-%config(noreplace) %{_sysconfdir}/%{name}/ldap_aliases.cf
 %{pf_shlib_directory}/%{name}-ldap.so
 %{pf_meta_directory}/dynamicmaps.cf.d/%{name}-ldap.cf
 %{_mandir}/man5/ldap_table.5%{?ext_man}

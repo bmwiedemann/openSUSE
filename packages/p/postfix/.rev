@@ -2509,4 +2509,41 @@ successfully tested on Tumbleweed x86_64</comment>
     <comment></comment>
     <requestid>1320355</requestid>
   </revision>
+  <revision rev="259" vrev="1">
+    <srcmd5>dfce251d89b0d9446b7cca1ab102f34b</srcmd5>
+    <version>3.10.7</version>
+    <time>1768403968</time>
+    <user>anag_factory</user>
+    <comment>- (jsc#PED-14859) Fix packages for Immutable Mode - postfix
+
+- Put /etc/permissions.d/postfix.paranoid into the postfix-SUSE.tar.gz
+
+- fix postfix-SUSE.tar.gz, postfix.service: correct path for postalias
+  from /sbin/postalias to /usr/sbin/postalias
+
+- update to 3.10.7
+  * This patch addresses build errors on recent Linux distributions.
+    With the patch, Postfix builds will run the compiler with a
+    backwards compatibility option that is supported by Gcc and Clang.
+    For other compilers, an error message provides hints.
+
+- Add /var/spool/mail to the permissions.d drop-in. This directory used to be
+  whitelisted globally in the permissions package but an update for the exim
+  mail server changed that (bsc#1254597 bsc#1240755).
+- Reintroduce permissions.d/postfix-paranoid drop-in that was removed in r534.
+
+- postfix is unable to send mail by default (bsc#1253775)
+  o Clean up the package
+    * Get rid of config.postfix script to avoid unintentional changes
+      of the configuration. The sysconfig files mail and postfix
+      were removed also.
+    * Deliver the original main.cf and master.cf
+    * Remove a lot of deprecated stuff from the package.
+    * Remove the ExecStartPre scripts to maintain the postmaps
+      and the chroot environment.
+    * A new ExecStartPre script manages the default alias map which
+      is part of the default configuration of postfix.
+      /sbin/postalias /etc/aliases</comment>
+    <requestid>1327227</requestid>
+  </revision>
 </revisionlist>
