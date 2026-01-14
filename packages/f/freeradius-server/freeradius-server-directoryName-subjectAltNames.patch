@@ -1,0 +1,127 @@
+From 3ad8ceac8c065ec46f0036cb5722d78b5a249862 Mon Sep 17 00:00:00 2001
+From: William <william@blackhats.net.au>
+Date: Wed, 7 Jan 2026 11:14:23 +1000
+Subject: [PATCH] Add support for directoryName subjectAltNames
+
+This adds support to extract and provide directoryName's from the
+subjectAltName extension to modules.
+---
+ share/dictionary.freeradius.internal |  9 ++++++-
+ src/main/tls.c                       | 39 ++++++++++++++++++++++++++--
+ 2 files changed, 45 insertions(+), 3 deletions(-)
+
+diff --git a/share/dictionary.freeradius.internal b/share/dictionary.freeradius.internal
+index 6c35fe65b4..8679870be7 100644
+--- a/share/dictionary.freeradius.internal
++++ b/share/dictionary.freeradius.internal
+@@ -599,6 +599,13 @@ ATTRIBUTE	TLS-Client-Cert-Subject-Alt-Name-Uri	1935	string
+ ATTRIBUTE	TLS-Client-Cert-X509v3-Extended-Key-Usage-OID 1936	string
+ ATTRIBUTE	TLS-Client-Cert-Valid-Since		1937	string
+ ATTRIBUTE	TLS-Cache-Method			1938	integer
++
++#	1960 - 1970
++ATTRIBUTE	TLS-Cert-Subject-Alt-Name-Directory-Name	1960	string
++ATTRIBUTE	TLS-Cert-Subject-Alt-Name-Directory-Name-Common-Name	1961	string
++ATTRIBUTE	TLS-Client-Cert-Subject-Alt-Name-Directory-Name	1962	string
++ATTRIBUTE	TLS-Client-Cert-Subject-Alt-Name-Directory-Name-Common-Name	1963	string
++
+ VALUE	TLS-Cache-Method		save			1
+ VALUE	TLS-Cache-Method		load			2
+ VALUE	TLS-Cache-Method		clear			3
+@@ -632,7 +639,7 @@ ATTRIBUTE	TLS-Cert-CRL-Distribution-Points	1960	string
+ ATTRIBUTE	TLS-Client-Cert-CRL-Distribution-Points	1961	string
+ 
+ #
+-#	Range:	1960-2099
++#	Range:	1970-2099
+ #		Free
+ #
+ #	Range:	2100-2199
+diff --git a/src/main/tls.c b/src/main/tls.c
+index c04f3228e4..f7e80979bf 100644
+--- a/src/main/tls.c
++++ b/src/main/tls.c
+@@ -2845,7 +2845,7 @@ ocsp_end:
+ /*
+  *	For creating certificate attributes.
+  */
+-static char const *cert_attr_names[11][2] = {
++static char const *cert_attr_names[13][2] = {
+ 	{ "TLS-Client-Cert-Serial",			"TLS-Cert-Serial" },
+ 	{ "TLS-Client-Cert-Expiration",			"TLS-Cert-Expiration" },
+ 	{ "TLS-Client-Cert-Subject",			"TLS-Cert-Subject" },
+@@ -2857,6 +2857,8 @@ static char const *cert_attr_names[11][2] = {
+ 	{ "TLS-Client-Cert-Valid-Since",		"TLS-Cert-Valid-Since" },
+ 	{ "TLS-Client-Cert-Subject-Alt-Name-Uri",	"TLS-Cert-Subject-Alt-Name-Uri" },
+ 	{ "TLS-Client-Cert-CRL-Distribution-Points",	"TLS-Cert-CRL-Distribution-Points"},
++	{ "TLS-Client-Cert-Subject-Alt-Name-Directory-Name",	"TLS-Cert-Subject-Alt-Name-Directory-Name" },
++	{ "TLS-Client-Cert-Subject-Alt-Name-Directory-Name-Common-Name",	"TLS-Cert-Subject-Alt-Name-Directory-Name-Common-Name" },
+ };
+ 
+ #define FR_TLS_SERIAL		(0)
+@@ -2870,6 +2872,9 @@ static char const *cert_attr_names[11][2] = {
+ #define FR_TLS_VALID_SINCE	(8)
+ #define FR_TLS_SAN_URI		(9)
+ #define FR_TLS_CDP		(10)
++#define FR_TLS_SAN_DIRNAME	(11)
++#define FR_TLS_SAN_DIRNAME_CN	(12)
++
+ 
+ /*
+  *	Extract Certification Distribution point URL from the certificate
+@@ -2899,7 +2904,6 @@ static const char *get_cdp_url(DIST_POINT *dp)
+ 	return NULL;
+ }
+ 
+-
+ /*
+  *	Before trusting a certificate, you must make sure that the
+  *	certificate is 'valid'. There are several steps that your
+@@ -2934,6 +2938,8 @@ int cbtls_verify(int ok, X509_STORE_CTX *ctx)
+ 	char		common_name[1024];
+ 	char		cn_str[1024];
+ 	char		buf[64];
++	char		dirname[1024]; /* Used for the san:dirname */
++	char		dirname_common_name[1024];
+ 	X509		*client_cert;
+ #if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
+ 	const STACK_OF(X509_EXTENSION) *ext_list;
+@@ -3176,6 +3182,35 @@ int cbtls_verify(int ok, X509_STORE_CTX *ctx)
+ 					rdebug_pair(L_DBG_LVL_2, request, vp, NULL);
+ 					break;
+ #endif /* GEN_URI */
++#ifdef GEN_DIRNAME
++                case GEN_DIRNAME:
++					dirname[0] = '\0';
++
++					X509_NAME_oneline(name->d.directoryName, dirname,
++							  sizeof(dirname));
++					dirname[sizeof(dirname) - 1] = '\0';
++					if (!dirname[0]) {
++						RWARN("Invalid Directory Name in Subject Alt Name");
++						break;
++					}
++
++					vp = fr_pair_make(talloc_ctx, certs, cert_attr_names[FR_TLS_SAN_DIRNAME][lookup],
++								dirname, T_OP_SET);
++					rdebug_pair(L_DBG_LVL_2, request, vp, NULL);
++
++					dirname_common_name[0] = '\0';
++					X509_NAME_get_text_by_NID(name->d.directoryName,
++								NID_commonName, dirname_common_name, sizeof(dirname_common_name));
++					dirname_common_name[sizeof(dirname_common_name) - 1] = '\0';
++
++					if (dirname_common_name[0]) {
++						vp = fr_pair_make(talloc_ctx, certs, cert_attr_names[FR_TLS_SAN_DIRNAME_CN][lookup],
++									dirname_common_name, T_OP_SET);
++						rdebug_pair(L_DBG_LVL_2, request, vp, NULL);
++					}
++
++					break;
++#endif /* GEN_DIRNAME */
+ 				default:
+ 					/* XXX TODO handle other SAN types */
+ 					break;
+-- 
+2.51.0
+

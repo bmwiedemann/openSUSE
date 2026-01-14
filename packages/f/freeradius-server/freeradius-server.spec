@@ -1,7 +1,7 @@
 #
 # spec file for package freeradius-server
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define unitname radiusd
 Name:           freeradius-server
-Version:        3.2.5
+Version:        3.2.8
 Release:        0
 
 # Disable FreeTDS on SLE12. We never shipped it enabled with FreeTDS.
@@ -47,6 +47,7 @@ Patch5:         freeradius-server-rlm_sql_unixodbc-configure.patch
 Patch6:         freeradius-server-radclient-init-error-buffer.patch
 Patch7:         freeradius-server-opensslversion.patch
 Patch8:         freeradius-server-enable-python3.patch
+Patch9:         freeradius-server-directoryName-subjectAltNames.patch
 BuildRequires:  apache2-devel
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  db-devel
@@ -232,6 +233,7 @@ export LDFLAGS="-pie"
   --with-udpfromto \
   --without-rlm_eap_ikev2 \
   --without-rlm_eap_tnc \
+  --without-rlm_kafka \
   --with-rlm-krb5-lib-dir=%{_libdir} \
   --without-rlm_opendirectory \
   --without-rlm_sql_db2 \
@@ -308,6 +310,9 @@ rm -r %{buildroot}%{_sysconfdir}/raddb/mods-config/sql/dhcp/oracle
 rm -r %{buildroot}%{_sysconfdir}/raddb/mods-config/sql/main/oracle
 rm -r %{buildroot}%{_sysconfdir}/raddb/mods-config/sql/ippool/oracle
 rm -r %{buildroot}%{_sysconfdir}/raddb/mods-config/sql/ippool-dhcp/oracle
+rm -r %{buildroot}%{_sysconfdir}/raddb/mods-config/kafka
+rm %{buildroot}%{_sysconfdir}/raddb/mods-available/kafka
+rm %{buildroot}%{_sysconfdir}/raddb/mods-available/kafka_async
 rm %{buildroot}%{_sysconfdir}/raddb/mods-available/python
 rm %{buildroot}%{_sysconfdir}/raddb/mods-config/sql/ippool/mongo/queries.conf
 rm %{buildroot}%{_sysconfdir}/raddb/mods-config/sql/main/mongo/queries.conf
@@ -514,6 +519,7 @@ done
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/pap
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/passwd
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/preprocess
+%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/proxy_rate_limit
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/python3
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/radutmp
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/realm
@@ -563,6 +569,7 @@ done
 %config(missingok) %{_sysconfdir}/raddb/mods-enabled/ntlm_auth
 %config(missingok) %{_sysconfdir}/raddb/mods-enabled/pap
 %config(missingok) %{_sysconfdir}/raddb/mods-enabled/passwd
+%config(missingok) %{_sysconfdir}/raddb/mods-enabled/proxy_rate_limit
 %config(missingok) %{_sysconfdir}/raddb/mods-enabled/preprocess
 %config(missingok) %{_sysconfdir}/raddb/mods-enabled/radutmp
 %config(missingok) %{_sysconfdir}/raddb/mods-enabled/realm
@@ -650,6 +657,7 @@ done
 %{_libdir}/freeradius/rlm_pap.so
 %{_libdir}/freeradius/rlm_passwd.so
 %{_libdir}/freeradius/rlm_preprocess.so
+%{_libdir}/freeradius/rlm_proxy_rate_limit.so
 %{_libdir}/freeradius/rlm_radutmp.so
 %{_libdir}/freeradius/rlm_realm.so
 %{_libdir}/freeradius/rlm_replicate.so

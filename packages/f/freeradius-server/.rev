@@ -1066,4 +1066,43 @@ Bug Fixes
     <comment></comment>
     <requestid>1195073</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>2814939e0d80a30d0bfd9b94393cd749</srcmd5>
+    <version>3.2.8</version>
+    <time>1768404204</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1325702 from firstyear
+
+- Add freeradius-server-directoryName-subjectAltNames.patch
+
+- update to 3.2.8
+  Configuration changes
+  * Replace dictionary.infinera with the correct one.
+  * Update dictionary.alteon
+  Feature improvements
+  * Add support for automated fuzzing. This doesn't affect normal operations, but it does allow for testing of the RADIUS decoder.
+  * Allow tagged attributes to use :V as a tag in some cases. The tag is then read from the value which is being assigned to the attribute. This functionality is allowed in 'update' sections, including 'update' in module configurations. See mods-available/ldap for an example.
+  * Add kafka module. See mods-available/kafka.
+  * Allow &amp;control:Packet-SRC-IP-Address to be used when proxying needs a given source address.
+  * Change lower limit for reject_delay to 0.5s. Apparently some NASes will panic and go crazy with a 1s reject_delay.
+  * Rate limit complaints when limiting new connections.
+  * Update raddb/certs/Makefile to support DER output.
+  * Elapsed statistics for packets do not include proxy timers, which helps clarify where any issues are. The total time is still available by adding &quot;our&quot; time to the &quot;proxy&quot; time.
+  * json module can now print dates as integers. See mods-available/json
+  * The debug output now points to the online documentation in many cases, when there are syntax errors in the configuration.
+  * Add support for 389ds password hashes. Patch from Gerald Vogt.
+  * reject_delay does not add a delay, but instead ensures that the reject is delayed for at least that time. This change means that reject_delay can be set in more situations, including for proxies.
+  * Add delay_proxy_rejects. By default, proxied rejects are not delayed. Setting this flag means that reject_delay is applied to proxied rejects, too.
+  * The proxy_rate_limit module can now be listed in the &quot;authorize&quot; section.
+  * Update dpsk module to be faster, and be easier to configure with databases. See mods-available/dpsk
+  Bug fixes
+  * Move assertion in thread / queue code, which only affects debug builds. Fixes #5512.
+  * Update CRL checks to avoid crash in some cases. Fixes #5515
+  * More tweaks to the TEAP code.
+  * Allow building when OpenSSL is missing PSK. Fixes #5520
+  * Move assertion so that it isn't triggered when the incoming queue is full, and the server is blocked. Fixes #5512
+  * Fix crash when multiple certs are used along with CRL distribution points. Fixes #5515
+  * Fix typo in rlm_cache which could cause crashes. Fixes #5522</comment>
+    <requestid>1327153</requestid>
+  </revision>
 </revisionlist>
