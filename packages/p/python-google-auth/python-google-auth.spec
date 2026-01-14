@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-auth
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-auth
-Version:        2.45.0
+Version:        2.47.0
 Release:        0
 Summary:        Google Authentication Library
 License:        Apache-2.0
 URL:            https://github.com/googleapis/google-auth-library-python
 Source:         https://files.pythonhosted.org/packages/source/g/google_auth/google_auth-%{version}.tar.gz
-# https://github.com/googleapis/google-auth-library-python/issues/1055
-Patch1:         python-google-auth-no-mock.patch
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module PyJWT >= 2.0}
 BuildRequires:  %{python_module aiohttp >= 3.6.2}
 BuildRequires:  %{python_module aioresponses}
-BuildRequires:  %{python_module cachetools >= 2.0.0}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module pip}
@@ -48,7 +45,6 @@ BuildRequires:  %{python_module urllib3}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-cachetools >= 2.0.0
 Requires:       python-pyasn1-modules >= 0.2.1
 Requires:       python-rsa >= 3.1.4
 Requires:       python-urllib3

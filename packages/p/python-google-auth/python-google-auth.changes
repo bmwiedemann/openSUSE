@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jan 12 11:00:50 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.47.0
+  * drop `cachetools` dependency in favor of simple local implementation (#1590)
+  * Python 3.8 support (#1918)
+- from version 2.46.0
+  * update urllib3 docstrings for v2 compatibility (#1903)
+  * Recognize workload certificate config in has_default_client_cert_source
+    for mTLS for Agentic Identities (#1907)
+  * add types to default and verify_token and Request __init__ based on comments
+    in the source code. (#1588)
+  * fix the document of secure_authorized_session (#1536)
+  * remove setup.cfg configuration for creating universal wheels (#1693)
+  * use .read() instead of .content.read() in aiohttp transport (#1899)
+  * raise RefreshError for missing token in impersonated credentials (#1897)
+  * Fix test coverage for mtls_helper (#1886)
+- Drop python-google-auth-no-mock.patch, fixed upstream
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Mon Jan  5 10:54:00 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.45.0
