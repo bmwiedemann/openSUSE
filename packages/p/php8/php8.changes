@@ -57,6 +57,9 @@ Fri Dec 19 07:51:15 UTC 2025 - Petr Gajdos <pgajdos@suse.com>
         Don't truncate return value of zip_fread() with user sizes.
     Zlib:
         Fix assertion failures resulting in crashes with stream filter object parameters.
+- fixes CVE-2025-14178 [bsc#1255711]
+        CVE-2025-14180 [bsc#1255712]
+        CVE-2025-14177 [bsc#1255710]
 
 -------------------------------------------------------------------
 Thu Dec 18 09:34:11 UTC 2025 - Petr Gajdos <pgajdos@suse.com>
