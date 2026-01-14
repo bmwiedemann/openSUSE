@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jan 14 06:32:48 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 26.01
+  * Pre-defined audio and video filters: Extra Stereo,
+    Compressor and Crossfeed for audio, and Deinterlace for video.
+  * Fast seeking is used by default when hardware decoding isn't
+    available
+  * Support for many video modifications: zoom, switch to 4:3
+    aspect ratio, free video resize, video move, rotate and
+    horizontal flip.
+  * Move File to Trash feature which lets you sift through
+    videos or music and remove unwanted ones by pressing a key.
+  * You can now set custom mpv options in Options > Tweaks.
+
+-------------------------------------------------------------------
 Fri Oct  3 12:45:25 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Do not require libboost_system-devel in Factory 

@@ -1,7 +1,7 @@
 #
 # spec file for package mpc-qt
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mpc-qt
-Version:        25.07
+Version:        26.01
 Release:        0
 Summary:        Media Player Classic Qute Theater
 License:        GPL-2.0-only
@@ -72,6 +72,6 @@ rm -r %{buildroot}%{_datadir}/doc/mpc-qt
 %{_bindir}/%{name}
 %{_datadir}/applications/io.github.mpc_qt.mpc-qt.desktop
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
-%{_datadir}/metainfo/io.github.mpc_qt.mpc-qt.appdata.xml
+%{_datadir}/metainfo/io.github.mpc_qt.mpc-qt.metainfo.xml
 
 %changelog
