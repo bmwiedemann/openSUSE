@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Dec 26 21:47:24 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.4.10
+  * Changed the preferred/first printer URI to use the "ipps"
+    scheme.
+  * Updated the USB serial number code to better support
+    non-compliant printers such as those from DYMO.
+  * Now shows the default and supported "output-bin" options.
+  * Now suppresses a duplicate 'auto' value for
+    "media-source-supported" to work around a bug in the
+    legacy-printer-app.
+  * Now logs the TLS version and cipher suite, when available.
+  * Now creates spool files with read-only permissions.
+  * Now supports setting "media-ready" with the modify sub-command.
+  * Fixed attribute copying issue from multiple client threads.
+  * Fixed driver validation for raw printing (Issue #391).
+  * Fixed a deadlock issue in the web interface (Issue #406).
+
+-------------------------------------------------------------------
 Sat Mar 22 21:25:22 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.4.9
