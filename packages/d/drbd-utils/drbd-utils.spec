@@ -1,6 +1,7 @@
 #
 # spec file for package drbd-utils
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -170,6 +171,7 @@ rm -rf %{buildroot}%{libdir}/drbd/crm-*fence-peer.sh     # bsc#1204276
 
 %package -n drbd-selinux
 Summary:        SElinux policy for DRBD
+BuildArch:      noarch
 BuildRequires:  checkpolicy
 BuildRequires:  selinux-policy
 BuildRequires:  selinux-policy-%{selinuxtype}
