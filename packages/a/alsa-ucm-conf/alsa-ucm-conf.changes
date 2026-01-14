@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 13 15:51:24 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to alsa-ucm-conf 1.2.15.3:
+  * Fixes for HDA-analog, sof-hda-dsp and USB-audio
+
+-------------------------------------------------------------------
 Fri Jan  9 08:39:12 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to alsa-ucm-conf 1.2.15.2:
