@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan 14 07:03:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.11.3:
+  * BUG FIXES:
+    - Fix crash when the executed configuration contains an import
+      block that points to unexisting configuration block (#3616)
+    - Fixed tofu test with mock_provider failing during cleanup
+      when lifecycle { ignore_changes } references a block. (#3644)
+    - Fixed state lock not being released when tofu apply is
+      interrupted with Ctrl+C while using the HTTP backend. (#3624)
+    - azure backend: resolve OIDC token dynamically to support ADO
+      refresh. (#3594)
+
+-------------------------------------------------------------------
 Sat Dec 20 07:01:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.11.2:
