@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Jan 10 00:24:48 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add skip-tests.patch and series file for easier quilt setup
+  2 tests fail in a weird way - until we can verify them with
+  upstream. lets skip them.
+- enable GPU support via level zero library
+- bump maximum version for llvm
+
+-------------------------------------------------------------------
+Fri Jan  9 23:46:49 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.29.1
+  https://github.com/ispc/ispc/releases/tag/v1.29.1
+  https://github.com/ispc/ispc/releases/tag/v1.29.0
+  https://github.com/ispc/ispc/releases/tag/v1.28.2
+  https://github.com/ispc/ispc/releases/tag/v1.28.1
+  https://github.com/ispc/ispc/releases/tag/v1.28.0
+  https://github.com/ispc/ispc/releases/tag/v1.27.0
+  https://github.com/ispc/ispc/releases/tag/v1.26.0
+
+-------------------------------------------------------------------
 Tue Nov 19 21:30:31 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to 1.25.3

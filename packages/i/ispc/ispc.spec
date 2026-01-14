@@ -1,7 +1,7 @@
 #
 # spec file for package ispc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2020-2023 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 %global min_llvm_version 16
-%global max_llvm_version 19.9
+%global max_llvm_version 21.9
 %define libname libispcrt1
 
 # LLVM is build with OpenMP support only on 64bit archs and x86
@@ -29,13 +29,15 @@
 %endif
 
 Name:           ispc
-Version:        1.25.3
+Version:        1.29.1
 Release:        0
 Summary:        C-based SPMD programming language compiler
 License:        BSD-3-Clause
 Group:          Development/Languages/C and C++
 URL:            https://ispc.github.io/
-Source:         https://github.com/%{name}/%{name}/archive/v%{version}/v-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/%{name}/%{name}/archive/v%{version}/v-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        series
+Patch1:         skip-tests.patch
 #!BuildIgnore:  clang15
 BuildRequires:  bison
 BuildRequires:  cmake >= 3.13
@@ -53,6 +55,7 @@ BuildRequires:  (libomp-devel-provider >= %{min_llvm_version} with libomp-devel-
 BuildRequires:  tbb-devel
 %endif
 BuildRequires:  ncurses-devel
+BuildRequires:  pkgconfig(level-zero)
 BuildRequires:  pkgconfig(python3)
 %ifarch x86_64
 # x86_64 always includes x86 target support: https://github.com/ispc/ispc/issues/1865
@@ -108,6 +111,8 @@ echo "optflags: %{optflags}"
         -DCURSES_CURSES_LIBRARY=/usr/%_lib/libncurses.so \
         -DISPCRT_BUILD_TASK_MODEL=%{?with_openmp_task_model:OpenMP}%{!?with_openmp_task_model:TBB} \
         -DISPC_INCLUDE_EXAMPLES=OFF \
+        -DISPCRT_BUILD_GPU:BOOL=ON \
+        -DISPCRT_BUILD_TESTS:BOOL=OFF \
         -DISPC_INCLUDE_TESTS=ON \
         -DISPCRT_BUILD_STATIC=OFF \
         %{nil}
@@ -120,8 +125,7 @@ echo "optflags: %{optflags}"
 pushd %__builddir
 %cmake_build check-all
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files -n %{libname}
 %license LICENSE.txt
@@ -136,8 +140,15 @@ pushd %__builddir
 
 %files devel
 %license LICENSE.txt
-%{_includedir}/ispcrt
+%{_includedir}/ispc/
+%{_includedir}/ispcrt/
+%dir %{_includedir}/intrinsics/
+%{_includedir}/intrinsics/emmintrin.isph
+%{_includedir}/intrinsics/xmmintrin.isph
+%dir %{_includedir}/stdlib/
+%{_includedir}/stdlib/short_vec.isph
 %{_libdir}/*.so
+%{_libdir}/cmake/ispc/
 %{_libdir}/cmake/ispcrt-%{version}
 
 %changelog

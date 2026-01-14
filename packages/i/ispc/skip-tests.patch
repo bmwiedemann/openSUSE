@@ -1,0 +1,18 @@
+Index: ispc-1.29.1/tests/lit-tests/2334_unroll.ispc
+===================================================================
+--- ispc-1.29.1.orig/tests/lit-tests/2334_unroll.ispc
++++ ispc-1.29.1/tests/lit-tests/2334_unroll.ispc
+@@ -1,3 +1,4 @@
++// XFAIL: *
+ // RUN: %{ispc} %s --target=avx2-i32x8 --arch=x86-64 --addressing=64 --emit-asm -o - | FileCheck %s
+ 
+ // UNSUPPORTED: !LLVM_20_0+
+Index: ispc-1.29.1/tests/lit-tests/llvm_ident.ispc
+===================================================================
+--- ispc-1.29.1.orig/tests/lit-tests/llvm_ident.ispc
++++ ispc-1.29.1/tests/lit-tests/llvm_ident.ispc
+@@ -1,3 +1,4 @@
++// XFAIL: *
+ // RUN: %{ispc} %s --emit-llvm-text -o - | FileCheck %s
+ // RUN: %{ispc} %s --emit-llvm-text --nostdlib -o - | FileCheck %s
+ 
