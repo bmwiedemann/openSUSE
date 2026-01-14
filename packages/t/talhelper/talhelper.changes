@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Jan 14 07:00:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.1.0:
+  * fix(deps): update module
+    github.com/siderolabs/talos/pkg/machinery to v1.13.0-alpha.0
+  * fix(deps): update module golang.org/x/mod to v0.32.0
+  * chore(github-action): update actions/setup-go action to v6.2.0
+  * chore(github-action): update renovatebot/github-action action
+    to v44.2.4
+  * fix(lint): fix golangci-lint error
+  * feat(flake): update go version
+  * feat(genconfig): add warning message about LinkAliasConfig
+    selector
+  * feat(genconfig): add multidoc configuration for bonds, vip,
+    dhcp
+  * chore(container): update goreleaser/goreleaser docker tag to
+    v2.13.3
+  * chore(container): update golangci/golangci-lint docker tag to
+    v2.8.0
+  * docs: update CLI reference documentation (#1370)
+  * chore(deps): update dependency siderolabs/talos to v1.12.1
+  * chore(container): update ghcr.io/siderolabs/talosctl docker tag
+    to v1.12.1
+  * chore(schema): update talos-extensions.yaml JSON schema (#1369)
+  * chore(github-action): update renovatebot/github-action action
+    to v44.2.3
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+    v3.0.45
+  * feat: update Scoop for talhelper version v3.0.45
+  * feat: update flake (#1364)
+
+-------------------------------------------------------------------
 Sun Jan 11 13:11:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.0.45:
