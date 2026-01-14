@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Wed Jan 14 07:28:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.38.1:
+  This patch release fixes several bugs including some found in the
+  recent v0.38.0 release, as well some other improvements.
+  * Bug Fixes
+    - Fix for prefer-equals-comparison fixer failing to parse
+      policies with multiple "=" in expressions (#1824, fixes #1818
+      reported by @gusega)
+    - Fix for incorrect fixable violation count display in lint
+      output (#1825, fixes #1813 reported by @gusega)
+    - Fix for false positive in prefer-equals-comparison rule with
+      comprehension term vars (#1828, fixes #1826 reported by
+      @SeanLedford)
+    - bundle: Surface configured rule notices as messages in lint
+      output (#1827, fixes #1795 reported by @ghmer)
+  * Improvements
+    - Code action for prefer-equals-comparison fixer now available
+      in the language server (#1810)
+    - New option for prefer-value-in-head rule to count
+      interpolated strings as scalars (#1817)
+    - Minor performance improvement for any_set_item, used for
+      selecting items from sets (#1815)
+  * Changelog
+    - f1c5f74: bundle: Improve performance of any_set_item (#1815)
+      (@charlieegan3)
+    - 9300420: Implemented Code action for prefer-equals-comparison
+      fixer (#1810) (@SeanLedford)
+    - 28121f0: build(deps): bump github/codeql-action in the
+      dependencies group (#1823) (@dependabot[bot])
+    - 54cdcb6: Add prefer-value-in-head option to count
+      interpolated string as scalar (#1817) (@anderseknert)
+    - e68184d: Fix false positivie in prefer-equals-comparison
+      (#1828) (@anderseknert)
+    - 593e221: fix: Prefer-Equals-Comparison Edge Case With
+      Multiple "=" (#1824) (@SeanLedford)
+    - 3dc28bb: bundle: Surface configured rule notices (#1827)
+      (@charlieegan3)
+    - aac9618: Updated lint reporter to track fixable violation
+      count separate from fixable violation Set (#1825)
+      (@SeanLedford)
+    - fd6dd4d: Updated example for prefer-equals-comparison edge
+      case to not include false positive (#1829) (@SeanLedford)
+
+-------------------------------------------------------------------
 Sun Jan 11 08:13:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.38.0:

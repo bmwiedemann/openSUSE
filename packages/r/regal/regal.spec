@@ -17,7 +17,7 @@
 
 
 Name:           regal
-Version:        0.38.0
+Version:        0.38.1
 Release:        0
 Summary:        Linter and language server for Rego
 License:        Apache-2.0
