@@ -5450,4 +5450,19 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
 </comment>
     <requestid>1323662</requestid>
   </revision>
+  <revision rev="521" vrev="1">
+    <srcmd5>4d9604c7c28062a12deeff84806956a7</srcmd5>
+    <version>2.8.0+git20260109.9de011f4</version>
+    <time>1768403962</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.8.0+git20260109.9de011f4:
+  * systemd-tmpfiles: whitelist dracut /boot/dracut cleanup entry (bsc#1256380)
+  * configs/openSUSE: whitelist Foomuuri D-Bus and sysctl files (bsc#1254385)
+  * systemd-tmpfiles: add aaa_base /var/adm dirs (bsc#1255794)
+  * DBusPolicyCheck: Catch unsafe wildcard allow lists in policies (bsc#1215247)
+- Update to version 2.8.0+git20260107.d0f65b36:
+  * permissions-whitelist: update postfix (bsc#1254597)
+</comment>
+    <requestid>1326381</requestid>
+  </revision>
 </revisionlist>

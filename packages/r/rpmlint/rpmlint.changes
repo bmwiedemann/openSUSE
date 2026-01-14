@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jan 09 17:21:54 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.8.0+git20260109.9de011f4:
+  * systemd-tmpfiles: whitelist dracut /boot/dracut cleanup entry (bsc#1256380)
+  * configs/openSUSE: whitelist Foomuuri D-Bus and sysctl files (bsc#1254385)
+  * systemd-tmpfiles: add aaa_base /var/adm dirs (bsc#1255794)
+  * DBusPolicyCheck: Catch unsafe wildcard allow lists in policies (bsc#1215247)
+
+-------------------------------------------------------------------
+Wed Jan 07 13:52:34 UTC 2026 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to version 2.8.0+git20260107.d0f65b36:
+  * permissions-whitelist: update postfix (bsc#1254597)
+
+-------------------------------------------------------------------
 Fri Dec 19 11:41:46 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.8.0+git20251215.35efabff:
