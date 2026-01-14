@@ -2,7 +2,7 @@
 # spec file for package protobuf
 #
 # Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define tarname protobuf
 # see cmake/abseil-cpp.cmake and src/google/protobuf/port_def.inc
 %define abseil_min_version 20250512.1
-%global         sover 33_2_0
+%global         sover 33_3_0
 %if 0%{?gcc_version} < 11
 %define with_gcc 11
 %endif
@@ -66,7 +66,7 @@
 %global protoc_arch sparc_64
 %endif
 Name:           protobuf
-Version:        33.2
+Version:        33.3
 Release:        0
 Summary:        Protocol Buffers - Google's data interchange format
 License:        BSD-3-Clause

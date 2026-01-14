@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 10 11:50:18 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 33.3, a general maintenance release:
+  * Java: Correctly apply JSON recursion limit when parsing an
+    Any-of-Any
+  * Updates to tests, and developer visible bug fixes
+
+-------------------------------------------------------------------
 Sun Dec  7 19:33:12 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 33.2:

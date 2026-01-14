@@ -2,7 +2,7 @@
 # spec file for package python-protobuf
 #
 # Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 #
 
 
-%define baseversion 33.2
+%define baseversion 33.3
 %{?sle15_python_module_pythons}
 Name:           python-protobuf
 Version:        6.%{baseversion}
