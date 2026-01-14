@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jan 13 13:06:25 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.0.1
+  This release includes a bugfix for spurious wakeup from
+  Kernel#sleep when subprocess exits in another thread, along with
+  other bugfixes. Please see the GitHub releases for further
+  details.
+
+  - Bug #21812: Kernel#sleep without arguments returns immediately
+    when subprocess exits in another thread (regression in Ruby
+    4.0) - Ruby - Ruby Issue Tracking System
+  - Bug #21828: An incorrect warning message related to benchmark
+    is shown when using benchmark-ips - Ruby - Ruby Issue Tracking
+    System
+  - Bug #21811: Fix underflow in Array#pack - Ruby - Ruby Issue
+    Tracking System
+  - Bug #21814: 0.pow(2,-9999999999999999990) should be zero - Ruby
+    - Ruby Issue Tracking System
+  - Bug #21819: A Data object should be frozen even if it has no
+    members - Ruby - Ruby Issue Tracking System
+
+  https://github.com/ruby/ruby/compare/v4.0.0...v4.0.1
+
+-------------------------------------------------------------------
 Wed Jan  7 08:23:52 UTC 2026 - Andreas Schwab <schwab@suse.de>
 
 - Enable valgrind support on riscv64
