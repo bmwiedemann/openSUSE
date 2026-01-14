@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 13 20:37:53 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Enable polydb for Tumbleweed / suse_version>=1690
+  <https://github.com/passagemath/passagemath/pull/1978>
+
+-------------------------------------------------------------------
+Tue Jan 13 12:38:43 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Reenable callable library mode [boo#1256453]
+
+-------------------------------------------------------------------
 Wed Oct  1 07:07:49 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.15

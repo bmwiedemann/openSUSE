@@ -1,7 +1,7 @@
 #
 # spec file for package polymake
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,6 +41,8 @@ BuildRequires:  memory-constraints
 BuildRequires:  ninja
 BuildRequires:  normaliz-devel
 BuildRequires:  perl
+BuildRequires:  ppl-devel
+BuildRequires:  sympol-devel
 BuildRequires:  perl(JSON)
 BuildRequires:  perl(Term::ReadKey)
 BuildRequires:  perl(Term::ReadLine::Gnu)
@@ -51,8 +53,10 @@ BuildRequires:  pkgconfig(flint)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(mpfr)
 BuildRequires:  pkgconfig(readline) >= 5
-BuildRequires:  ppl-devel
-BuildRequires:  sympol-devel
+%if 0%{?suse_version} >= 1690
+BuildRequires:  pkgconfig(libbson-1.0)
+BuildRequires:  pkgconfig(libmongoc-1.0)
+%endif
 Requires:       perl(JSON)
 Requires:       perl(Term::ReadKey)
 Requires:       perl(Term::ReadLine::Gnu)
@@ -72,6 +76,16 @@ Suggests:       mimehandler(application/pdf)
 # web_browser used for displaying SVG
 
 %description
+polymake is a tool to study the combinatorics and the geometry of
+convex polytopes and polyhedra. It is also capable of dealing with
+simplicial complexes, matroids, polyhedral fans, graphs, tropical
+objects, and other objects.
+
+%package -n %lname
+Summary:        Library for studying combinatorics and geometry of convex polytopes
+Group:          System/Libraries
+
+%description -n %lname
 polymake is a tool to study the combinatorics and the geometry of
 convex polytopes and polyhedra. It is also capable of dealing with
 simplicial complexes, matroids, polyhedral fans, graphs, tropical
@@ -98,7 +112,7 @@ rm -rf bundled/libnormaliz/external
 ./configure --prefix="%_prefix" --libdir="%_libdir" \
 	--libexecdir="%_libdir/%name-%version" --without-native \
 	--with-bliss="%_prefix" --with-sympol="%_prefix" --with-cdd="%_prefix" \
-	--with-permlib="%_prefix"  --with-lrs="%_prefix" --without-callable \
+	--with-permlib="%_prefix"  --with-lrs="%_prefix" \
 	CFLAGS="%optflags" CXXFLAGS="%optflags -g0" CXXOPT="%optflags"
 # can't replace limit_build by _constraints file:
 # * asking memoryperjob=3400 -> unsatisfiable i586 workers
@@ -112,6 +126,8 @@ make NINJA="ninja %{?_smp_mflags} -v"
 find "%buildroot/%_includedir" -type f -exec chmod a-x {} +
 %fdupes %buildroot/%_prefix
 
+%ldconfig_scriptlets -n %lname
+
 %files
 %_bindir/polymake
 %_datadir/polymake/
@@ -120,8 +136,12 @@ find "%buildroot/%_includedir" -type f -exec chmod a-x {} +
 %doc ChangeLog
 %license COPYING
 
+%files -n %lname
+%_libdir/libpolymake*.so.*
+
 %files devel
 %_bindir/polymake-config
 %_includedir/polymake/
+%_libdir/libpolymake*.so
 
 %changelog

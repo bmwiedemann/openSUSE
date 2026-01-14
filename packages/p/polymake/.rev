@@ -47,4 +47,13 @@
     <comment>- Update to release 4.15</comment>
     <requestid>1308331</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>7f1feab3d3c1df12f522affd981484a6</srcmd5>
+    <version>4.15</version>
+    <time>1768404124</time>
+    <user>anag_factory</user>
+    <comment>- Enable polydb for Tumbleweed
+- Reenable callable library mode [boo#1256453]</comment>
+    <requestid>1327087</requestid>
+  </revision>
 </revisionlist>
