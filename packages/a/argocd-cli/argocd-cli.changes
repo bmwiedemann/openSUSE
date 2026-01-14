@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 14 07:04:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.2.4:
+  No CLI-related changes
+  Dependency updates
+  * chore(deps): bump go to 1.25.5 (cherry-pick) (#25805)
+
+-------------------------------------------------------------------
 Tue Jan 13 06:44:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.2.3:

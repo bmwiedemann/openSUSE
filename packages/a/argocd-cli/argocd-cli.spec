@@ -19,7 +19,7 @@
 %define executable_name argocd
 
 Name:           argocd-cli
-Version:        3.2.3
+Version:        3.2.4
 Release:        0
 Summary:        CLI for the ArgoCD declarative continuous deployment tool
 License:        Apache-2.0
@@ -27,8 +27,8 @@ URL:            https://github.com/argoproj/argo-cd
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
+BuildRequires:  go1.25 >= 1.25.5
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.25
 
 %description
 Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes.
