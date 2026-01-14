@@ -1,7 +1,7 @@
 #
 # spec file for package atuin
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           atuin
-Version:        18.10.0
+Version:        18.11.0
 Release:        0
 Summary:        Magical shell history
 License:        MIT
@@ -27,8 +27,9 @@ Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
-BuildRequires:  cargo >= 1.88
+BuildRequires:  cargo >= 1.91
 BuildRequires:  cargo-packaging
+BuildRequires:  cmake
 BuildRequires:  protobuf-devel
 BuildRequires:  zstd
 

@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Jan 13 10:20:36 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
+
+- Bump rust to 1.91 (see upstream changelog)
+- Add cmake as build requirement (fixes build on non-x86)
+- Update to version 18.11.0:
+  * chore: remove x86_64 mac from build targets (#3052)
+  * chore: update changelog
+  * chore(release): prepare for release 18.11.0 (#3051)
+  * feat: add session and uuid column support to history list (#3049)
+  * feat: consider atuin dotfile aliases when calculating atuin wrapped (#3048)
+  * chore: add AGENTS.md
+  * fix(powershell): add error safety and cleanup (#3040)
+  * fix(powershell): run `atuin history end` in the background (#3034)
+  * feat: allow disabling sync v1 (#3030)
+  * feat: add support for read replicas to postgres (#3029)
+  * fix: Move thorough search through search.filters w/ workspaces (#2703)
+  * docs: Migrate docs from separate repo to `docs` subfolder (#3018)
+  * fix: prevent interactive search crash when update check fails (#3016)
+  * ci: fix github action syntax for variables (#2998)
+  * feat: add colors to --help/-h (#3000)
+  * feat: support additional history filenames in replxx importer (#3005)
+  * build(nix): prevent deprecation warning on evaluation (#3006)
+  * chore: clarify docstring of the enter_accept config key (#3003)
+  * chore(deps): Update some packages realated to ring and aws-lc (#2991)
+  * build(nix): update rust toolchain hash (#2990)
+  * chore(deps): bump lukemathwalker/cargo-chef from latest-rust-1.91.0-slim-bookworm to latest-rust-1.91.1-slim-bookworm (#2995)
+  * fix: highlight the correct place when multibyte characters are involved (#2965)
+  * chore: fix typo (#2994)
+  * chore(deps): Update the directories dependency to 6.0.0 (#2982)
+  * chore: remove trailing whitespace (#2985)
+  * chore(deps): bump debian from bookworm-20250929-slim to bookworm-20251103-slim (#2986)
+  * chore: Add Atuin Desktop information to install script
+  * chore(deps): bump lukemathwalker/cargo-chef from latest-rust-1.90.0-slim-bookworm to latest-rust-1.91.0-slim-bookworm (#2978)
+  * chore: update to rust 1.91 (#2981)
+  * fix(bash): work around a keybinding bug of Bash 5.1 (#2975)
+  * fix(bash/blesh): suppress error message for auto-complete source (#2976)
+  * fix(bash): fix issues with intermediate key sequences in the vi editing mode (#2977)
+  * ci: add Windows builds, second try (#2966)
+  * chore: adjust update wording (#2974)
+  * feat Add PowerShell support (#2543)
+  * chore: update changelog
+
+-------------------------------------------------------------------
 Thu Oct 23 16:46:23 UTC 2025 - Andrei Dziahel <develop7@develop7.info>
 
 - Update to version 18.10.0:

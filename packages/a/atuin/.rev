@@ -1362,4 +1362,14 @@
     <comment>Update to version 18.10.0: (forwarded request 1313249 from develop7)</comment>
     <requestid>1313250</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b9c6e08c1837eadd24073fce02eeaf48</srcmd5>
+    <version>18.11.0</version>
+    <time>1768404106</time>
+    <user>anag_factory</user>
+    <comment>- Bump rust to 1.91 (see upstream changelog)
+- Add cmake as build requirement (fixes build on non-x86)
+- Update to version 18.11.0</comment>
+    <requestid>1327068</requestid>
+  </revision>
 </revisionlist>
