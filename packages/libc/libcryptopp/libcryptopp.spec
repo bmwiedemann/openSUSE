@@ -1,7 +1,7 @@
 #
 # spec file for package libcryptopp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,6 +59,8 @@ Patch2:         libcryptopp-CVE-2023-50980.patch
 Patch3:         libcryptopp-CVE-2023-50981.patch
 # PATCH-FIX-SUSE: [bsc#1224280] CVE-2024-28285 potential leak of secret key of ElGamal encryption via fault injection
 Patch4:         libcryptopp-CVE-2024-28285.patch
+# PATCH-FIX-UPSTREAM: [bsc#1218217,  CVE-2023-50979] side-channel leakage during decryption with PKCS#1v1.5 padding  (marvin )
+Patch5:         libcryptopp-CVE-2023-50979.patch
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig

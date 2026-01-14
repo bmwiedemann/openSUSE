@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 14 09:08:04 UTC 2026 - Angel Yankov <angel.yankov@suse.com>
+
+- Security fix [bsc#1218217, CVE-2023-50979]
+  * Fix  side-channel leakage during decryption with PKCS#1v1.5 padding
+  * Added patch libcryptopp-CVE-2023-50979.patch
+  * https://github.com/Coralesoft/cryptopp/commit/0923d82f5c3ac8cf6c99108be2ad9260f2a61f6c 
+
+-------------------------------------------------------------------
 Fri Oct 24 06:59:04 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix build on aarch64

@@ -387,4 +387,12 @@ Filter out -flto= flag for arm7 see cryptopp issue#865</comment>
     <comment></comment>
     <requestid>1313356</requestid>
   </revision>
+  <revision rev="44" vrev="6">
+    <srcmd5>016604a3589bd2d8b935526914127fb0</srcmd5>
+    <version>8.9.0</version>
+    <time>1768404269</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1327180</requestid>
+  </revision>
 </revisionlist>
