@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jan 14 09:37:28 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.9.25
+ * Enhancements
+  * Add --compile-bytecode to uv python install and uv python upgrade to compile the standard library 
+  * Allow disabling exclude-newer per package 
+  * Broadcast WM_SETTINGCHANGE on uv tool update-shell 
+ * Preview features
+  * Detect workspace from uv run target 
+ * Bug fixes
+  * Avoid unwrapping size for file responses 
+  * Use keyring authentication when retrieving tool@latest version 
+  * Use latest Pyodide version for each python version 
+  * Improve trampoline file handle closing 
+  * Fix error message when installing musl python on armv7 
+
+-------------------------------------------------------------------
 Sun Jan 11 16:45:37 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.9.24 

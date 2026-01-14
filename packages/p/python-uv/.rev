@@ -1932,4 +1932,24 @@
   * Add Rust language classifier</comment>
     <requestid>1326950</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>524a4de5a0c19f172af03a4828b7aea8</srcmd5>
+    <version>0.9.25</version>
+    <time>1768404260</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.9.25
+ * Enhancements
+  * Add --compile-bytecode to uv python install and uv python upgrade to compile the standard library 
+  * Allow disabling exclude-newer per package 
+  * Broadcast WM_SETTINGCHANGE on uv tool update-shell 
+ * Preview features
+  * Detect workspace from uv run target 
+ * Bug fixes
+  * Avoid unwrapping size for file responses 
+  * Use keyring authentication when retrieving tool@latest version 
+  * Use latest Pyodide version for each python version 
+  * Improve trampoline file handle closing 
+  * Fix error message when installing musl python on armv7</comment>
+    <requestid>1327181</requestid>
+  </revision>
 </revisionlist>
