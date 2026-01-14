@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Dec 16 07:21:10 UTC 2025 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- update to NSS 3.119.1
+  * bmo#2004866 - restore coreconf/Darwin.mk behavior for intel archs
+
+- update to NSS 3.119
+  * bmo#1983320 - Fix ml-dsa return value for  SECKEY_PrivateKeyStrengthInBits.
+  * bmo#1986352 - Make sure we don't accept ECH if the HRR cookie is ill-formatted.
+  * bmo#2002246 - Add a pkcs12 fuzzer with crypto stubbed out.
+  * bmo#2003314 - handle errors while setting sanitizers cflags in build.
+  * bmo#1986912 - Ignore IVs for AES KW.
+  * bmo#2003286 - Update Cryptofuzz version.
+  * bmo#2001932 - Fix incorrect logic for SNI selection when ECH is available but disabled.
+  * bmo#1975855 - fix forwarding of sqlite_libs in sqlite.gyp.
+  * bmo#1999204 - fix CPU_ARCH setting for arm64 makefile builds.
+  * bmo#1998094 - remove unused calcThreads variable from cmd/rsaperf.
+  * bmo#1978348 - Solving the incorrect tests introduced by extending EKU.
+  * bmo#1972054 - Memory leaks in pkcs12 and pkcs7 decoders.
+  * bmo#1978348 - Extending parsing with Microsoft Document Signing EKU.
+  * bmo#1978348 - Extending parsing with Adobe Document Signing EKU.
+  * bmo#1978348 - Extending pkix parsing with document signing EKUs.
+  * bmo#2000737 - fix compilation failure on ia32.
+  * bmo#2000737 - use hardware x64 GCM in static builds.
+  * bmo#2000737 - separate ppc sha512 library from ppc gcm library.
+  * bmo#2000737 - simplify cross-compilation from build.sh.
+  * bmo#1724353 - use clang's integrated assembler.
+  * bmo#2000737 - remove unused MP_IS_LITTLE_ENDIAN defines.
+  * bmo#2000737 - fix logic for disabling altivec in gyp builds.
+  * bmo#1964722 - free digest objects in SEC_PKCS7DecoderFinish if they haven't already been freed.
+  * bmo#1972825 - Add TLS interoperability tests with openssl and gnutls.
+  * bmo#1314849 - Ensure we don't send a DTLS1.3 cookie after DTLS1.2 HelloVerifyRequest.
+  * bmo#1965329 - add failure checks to pk11_mergeTrust() .
+  * bmo#1999517 - pk11wrap selects incorrect slot for CKM_ML_KEM*.
+
+- Adjusted for changed naming scheme of tarballs for this release by upstream
+
+-------------------------------------------------------------------
 Thu Nov 20 08:56:04 UTC 2025 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - update to NSS 3.118.1
