@@ -11266,11 +11266,8 @@ unsorted:
   - libLHAPDF-6_5_5 
   - libLLVM15 
   - libLLVM18 
-  - libLLVM18-32bit 
   - libLLVM19 
-  - libLLVM19-32bit 
   - libLLVM20 
-  - libLLVM20-32bit 
   - libLLVM21-32bit 
   - libLLVMSPIRVLib-devel 
   - libLLVMSPIRVLib21 
@@ -11596,6 +11593,7 @@ unsorted:
   - libSDL2_gfx-1_0-0 
   - libSDL2_gfx-devel 
   - libSDL2_image-2_0-0 
+  - libSDL2_image-2_0-0-32bit 
   - libSDL2_mixer-2_0-0 
   - libSDL2_net-2_0-0 
   - libSDL2_sound2 
@@ -12655,11 +12653,8 @@ unsorted:
   - libclFFT2 
   - libclang-cpp15 
   - libclang-cpp18 
-  - libclang-cpp18-32bit 
   - libclang-cpp19 
-  - libclang-cpp19-32bit 
   - libclang-cpp20 
-  - libclang-cpp20-32bit 
   - libclang-cpp21 
   - libclang-cpp21-32bit 
   - libclang13 
