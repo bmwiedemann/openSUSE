@@ -246,4 +246,29 @@
     <comment>- Update to 1.18.0:</comment>
     <requestid>1323115</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4df6f9c11828dac94c73bd2c55db5620</srcmd5>
+    <version>1.19.0</version>
+    <time>1768403973</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.19.0:
+  * ngtcp2_log: Add missing error codes
+  * ngtcp2_str: Remove redundant assignment
+  * Update RTT when the largest packet number is acked
+  * ngtcp2_qlog: Add const qualifier to vec_pkt_type*
+  * bbr: Remove CWND reduction on congestion event
+  * bbr: More backups for spurious losses
+  * Add ngtcp2_vec_drop
+  * Rewrite get_uvarint
+  * Rework ngtcp2_frame union to avoid potential UB
+  * ksl: Rework key storage to avoid struct hack
+  * acktr: Refactor ACK creation function
+  * ngtcp2_ksl: Remove alignment enforcement for keys
+  * Bump urlparse
+  * Refactor with compound literals
+  * Add libngtcp2 to pkg-config Requires.private
+  * Revise libngtcp2 include dir setup
+  * Export CMake target for ngtcp2_crypto_ossl(_static) (forwarded request 1326938 from pmonrealgonzalez)</comment>
+    <requestid>1326961</requestid>
+  </revision>
 </revisionlist>

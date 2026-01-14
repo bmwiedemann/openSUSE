@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jan 13 10:19:26 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.19.0:
+  * ngtcp2_log: Add missing error codes
+  * ngtcp2_str: Remove redundant assignment
+  * Update RTT when the largest packet number is acked
+  * ngtcp2_qlog: Add const qualifier to vec_pkt_type*
+  * bbr: Remove CWND reduction on congestion event
+  * bbr: More backups for spurious losses
+  * Add ngtcp2_vec_drop
+  * Rewrite get_uvarint
+  * Rework ngtcp2_frame union to avoid potential UB
+  * ksl: Rework key storage to avoid struct hack
+  * acktr: Refactor ACK creation function
+  * ngtcp2_ksl: Remove alignment enforcement for keys
+  * Bump urlparse
+  * Refactor with compound literals
+  * Add libngtcp2 to pkg-config Requires.private
+  * Revise libngtcp2 include dir setup
+  * Export CMake target for ngtcp2_crypto_ossl(_static)
+
+-------------------------------------------------------------------
 Tue Dec 16 10:33:33 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.18.0:
