@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 13 09:40:54 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.6.3
+  * Fixed a high-severity security issue where decompression-bomb safeguards of
+    the streaming API were bypassed when HTTP redirects were followed.
+    (GHSA-38jv-5279-wg99) (bsc#1256331, CVE-2026-21441)
+  * Started treating ``Retry-After`` times greater than 6 hours as 6 hours by
+    default. (#3743)
+  * Fixed ``urllib3.connection.VerifiedHTTPSConnection`` on Emscripten. (#3752)
+
+-------------------------------------------------------------------
 Wed Jan  7 09:49:28 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 2.6.2
