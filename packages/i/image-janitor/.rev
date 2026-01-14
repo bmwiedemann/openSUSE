@@ -15,4 +15,12 @@
     <comment>- Fix git url in _service</comment>
     <requestid>1319740</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>93853d1bc56ef085349584eabddbbf72</srcmd5>
+    <version>0.2.0</version>
+    <time>1768404275</time>
+    <user>anag_factory</user>
+    <comment>- Remove obscpio file, not needed</comment>
+    <requestid>1327196</requestid>
+  </revision>
 </revisionlist>
