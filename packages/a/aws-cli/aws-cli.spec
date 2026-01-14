@@ -1,7 +1,7 @@
 #
 # spec file for package aws-cli
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %global _sitelibdir %{%{pythons}_sitelib}
 
 Name:           aws-cli
-Version:        1.43.12
+Version:        1.44.17
 Release:        0
 Summary:        Amazon Web Services Command Line Interface
 License:        Apache-2.0
@@ -42,7 +42,7 @@ BuildRequires:  %{pythons}-pip
 BuildRequires:  %{pythons}-setuptools
 BuildRequires:  %{pythons}-wheel
 Requires:       %{pythons}
-Requires:       %{pythons}-botocore >= 1.42.6
+Requires:       %{pythons}-botocore >= 1.42.27
 Requires:       %{pythons}-six
 Requires:       (%{pythons}-PyYAML >= 3.10 with %{pythons}-PyYAML <= 6.1)
 Requires:       (%{pythons}-colorama >= 0.2.5 with %{pythons}-colorama <= 0.5.0)
