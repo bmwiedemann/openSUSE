@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsonschema
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,13 +33,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jsonschema%{psuffix}
-Version:        4.25.1
+Version:        4.26.0
 Release:        0
 Summary:        An implementation of JSON-Schema validation for Python
 License:        MIT
 URL:            https://github.com/python-jsonschema/jsonschema
 Source:         https://files.pythonhosted.org/packages/source/j/jsonschema/jsonschema-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling}
