@@ -1,7 +1,7 @@
 #
 # spec file for package x3270
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,6 @@ URL:            https://x3270.miraheze.org
 #Git-Clone:     https://github.com/pmattes/x3270
 Source0:        https://downloads.sourceforge.net/project/x3270/x3270/%{version}%{_suffix}/%{_fullname}-src.tgz#/%{_fullname}-src.tar.gz
 Source1:        https://downloads.sourceforge.net/project/x3270/x026/%{_x026ver}/x026-%{_x026ver}.tgz
-Source2:        x3270.desktop
 Patch0:         mknod.patch
 Patch100:       usr_local_bin.patch
 Patch102:       x026-offset.diff
@@ -53,7 +52,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  readline-devel
 BuildRequires:  tcl-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xaw7)
@@ -187,15 +185,10 @@ cp -pr --parents tcl3270/{Examples,html} %{buildroot}%{_docdir}/%{name}
 # create symlinks in documentation
 %fdupes -s %{buildroot}/%{_docdir}
 
-install -D -m 0644 %{SOURCE2} %{buildroot}%{_datadir}/applications/x3270.desktop
-%suse_update_desktop_file x3270
-
 %post
-%desktop_database_post
 %reconfigure_fonts_post
 
 %postun
-%desktop_database_postun
 %reconfigure_fonts_postun
 
 %posttrans
@@ -220,7 +213,6 @@ install -D -m 0644 %{SOURCE2} %{buildroot}%{_datadir}/applications/x3270.desktop
 %{_mandir}/man1/x3270.1%{?ext_man}
 %doc %{_docdir}/%{name}/x3270/Examples
 %doc %{_docdir}/%{name}/x3270/html
-%{_datadir}/applications/x3270.desktop
 # b3270
 %{_bindir}/b3270
 %{_mandir}/man1/b3270.1%{?ext_man}
