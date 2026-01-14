@@ -17,7 +17,7 @@
 
 
 Name:           melange
-Version:        0.37.4
+Version:        0.37.5
 Release:        0
 Summary:        Build APKs from source code
 License:        Apache-2.0
@@ -26,8 +26,8 @@ Source:         melange-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.23
 BuildRequires:  zsh
+BuildRequires:  golang(API) >= 1.25
 
 %description
 Build apk packages using declarative pipelines.

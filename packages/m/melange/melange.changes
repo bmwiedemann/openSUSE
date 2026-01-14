@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jan 14 06:58:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.37.5:
+  * build(deps): bump actions/setup-go in the actions group (#2296)
+  * build(deps): bump the gomod group with 2 updates (#2295)
+  * build(deps): bump golang.org/x/crypto from 0.46.0 to 0.47.0
+    (#2294)
+  * build(deps): bump chainguard.dev/apko from 0.30.34 to 1.0.0
+    (#2291)
+  * build(deps): bump golang.org/x/text from 0.32.0 to 0.33.0
+    (#2293)
+  * build(deps): bump the gomod group with 2 updates (#2288)
+  * build(deps): bump golang.org/x/term from 0.38.0 to 0.39.0
+    (#2289)
+  * build(deps): bump docker/setup-docker-action in the actions
+    group (#2292)
+  * qemu_runner: Improve error output when tarring workspace
+    (#2287)
+
+-------------------------------------------------------------------
 Mon Jan 12 06:15:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.37.4:
