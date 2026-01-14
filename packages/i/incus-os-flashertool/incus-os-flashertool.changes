@@ -1,0 +1,174 @@
+-------------------------------------------------------------------
+Wed Jan 14 06:14:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 202601100100:
+  large update after this has been accepted to
+  Virtualization:containers
+  Full changelog see
+  https://github.com/lxc/incus-os/compare/202511280022...202601100100
+
+-------------------------------------------------------------------
+Fri Nov 28 16:23:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 202511280022:
+  * doc/contributing: Tweak wording about build environment
+  * incus-osd/systemd/networkd: Treat REFUSED as functional DNS
+  * incus-osd/systemd/networkd: Treat NXDOMAIN as functional DNS
+  * doc/installation/physical: Mention disabling RAID mode
+  * image-customizer/html: Add warning about generated certificate
+  * image-customizer/html: Add certificate generation
+  * image-customizer/html: Improve instructions
+  * image-customizer/html: Re-order form (based on user feedback)
+  * image-customizer: Add certificate generation API
+  * incus-osd: Display an application's TLS certificate
+    fingerprint, if it has one
+  * incus-osd/tests: Handle occasional swapping of target drive
+    listing
+  * incus-osd/tests: Make test passphrase longer
+  * incus-osd/tests: Add tests exercising user-provided external
+    seed data
+  * incus-osd/applications: Don't create Incus storage pool if
+    "local" pool isn't present
+  * doc/reference/system/network: Add proxy examples
+  * incus-osd/tests: Display journalctl entries when a test fails
+    to find expected entry
+  * incus-osd/tests: Add tests for incus-ceph and incus-linstor
+  * incus-osd/tests: Add test of incus application API
+  * incus-osd/services/linstor: Use EnableUnit
+  * incus-osd/providers/operations_center: Handle server switching
+    away from self-signed
+  * incus-osd/providers/operations-center: Use tryRequest
+  * doc: Cover TPM support in vSphere
+  * incus-osd/seed: Copy any external seeds to target seed
+    partition post install
+  * incus-osd/seed: Make determining the seed path an internal
+    implementation detail
+  * incus-osd: Adjust update sleep logic to choose the minimum of
+    the configured frequency and start of next maintenance window
+  * incus-osd/api: Add methods to determine how long until a
+    migration window will be active
+  * doc: Update documentation to reflect recovery passphrase
+    requirements
+  * incus-osd/rest: Add new recovery passphrases before removing
+    old ones
+  * base: Add the cracklib-small dictionary to base images
+  * incus-osd/systemd: Enforce minimum recovery passphrase length
+    and complexity
+  * image-customizer: Rework introduction
+  * base: Add FibreChannel controllers to early boot
+  * image-customizer: Improve layout
+  * image-customizer: Update bootstrap
+  * doc/tutorials: Add tutorial for preparing Incus storage pool
+  * incus-osd: Add check to ensure any applications a given
+    application depends on are also installed
+  * incus-osd/applications: Add GetDependencies() method
+  * incus-osd/api: Fix recording of encryption key retrieval in
+    state file
+  * app-build: Update dependencies
+  * image-customizer: Implement dark mode
+  * incus-osd/tests: Add tests to exercise empty install seeds
+  * .github/workflows/daily: Add new dependencies for running tests
+  * incus-osd/tests: Add helper method to create test USB/ISO
+    images
+  * incus-osd/tests: Support tests with no seed data
+  * incus-osd/tests: Add AttachISO() method
+  * incus-osd/seed: Improve handling of empty install seed
+  * incus-osd/seed: Don't ignore empty seed files from
+    user-provided exteranal seed configuration
+  * base: Add script to show hardware information if IncusOS fails
+    to start
+  * incus-osd/manifests: Adjust offset so we can find the arm64
+    initrd
+  * incus-osd/rest: Properly record registration
+  * doc: Cover storage pool volumes
+  * doc: Update rest-api.yaml
+  * incus-osd/zfs: Set incusos:use on local/incus during import
+  * incus-osd/rest: Prevent abuse of volume create/delete
+  * incus-osd/cli: Add create-volume and delete-volume
+  * incus-osd/rest: Add delete-volume
+  * incus-osd/zfs: Add DestroyDataset
+  * incus-osd/rest: Add create-volume
+  * incus-osd/zfs: Add CreateDataset
+  * incus-osd/storage: Fill in volume data
+  * incus-osd/api: Add SystemStoragePoolVolume
+  * generate-manifests: Add initrd modules to base manifest
+  * generate-manifests/manifests: Add getInitrdModuleInfo() method
+  * mkosi: Fix typo
+  * doc/reference/applications/: Add listings for debug,
+    incus-ceph, and incus-linstor applications
+  * doc/reference/services/: Add mention of required ceph or
+    linstor applications to enable service
+  * doc/getting-started/access: Add tip about generating a PKCS#12
+    certificate
+  * doc/reference/system/backup: Fix list formatting
+  * doc/getting-started/access: Switch to using `incus admin os`
+    for example
+  * doc/getting-started/access: Fix example IP address
+  * doc/getting-started/access: Convert to using tabs for cli/ui
+    sections
+  * doc/contributing: Document the use of the debug application
+  * debug: Include nano
+  * base: Add intel_iommu=on amd_iommu=o to kernel command line
+  * doc/tutorials: Add basic tutorial on VLAN tagging
+  * doc/tutorials/network-direct-attach: Minor tweaks and add
+    example of creating a managed network
+  * doc/reference/system/network: Add section about roles
+  * incus-osd/tests: Add test for recovery of "local" pool on fresh
+    install
+  * incus-osd/tests: Add test to exercise importing of external
+    pools
+  * doc: Update pool import examples
+  * doc: Update rest-api.yaml
+  * cli: Update for changed import pool endpoint
+  * incus-osd/rest: Rename API endpoint
+    /1.0/system/storage/:import-encryption-key to
+    /1.0/system/storage/:import-pool
+  * incus-osd/zfs: Extend logic for importing an encrypted pool and
+    move to zfs package
+  * incus-osd/zfs: Only import pools that are managed by IncusOS
+  * incus-osd/cli: Fix target on list
+  * incus-osd/cli: Fix application add
+  * incus-osd/rest: Don't use ContentLength
+  * incus-osd/tests: Update logic for picking prior IncusOS release
+    to only consider stable releases
+  * doc: Update wordlist.txt
+  * doc/tutorials: Add tutorial to expand the "local" storage pool
+  * incus-osd/tests: Add tests exercising "local" pool APIs
+  * incus-osd/storage: Detect when a drive is part of the "local"
+    pool
+  * incus-osd/zfs: Attempt to handle degraded local pool state on
+    start
+  * incus-osd/zfs: Extend logic for creating "local" ZFS pool to
+    handle simple RAID0 and RAID1 configurations
+  * doc/reference/system/network: Update for struct renaming and
+    addition of timezone field
+  * incus-osd/secureboot: Include underlying error when we cannot
+    read an EFI variable
+  * Makefile: Add missing applications to test-applications and
+    test-update targets
+  * doc/reference/system/update: Update to reflect maintenance
+    windows are configured in system's timezone
+  * incus-osd: Consistently use system local time
+  * image-publisher: Always use UTC for PublishedAt field
+  * incus-osd/tui: Display time in local timezone
+  * doc: Update rest-api.yaml
+  * incus-osd/rest: Update swagger examples and provide default
+    timezone if not set
+  * incus-osd/systemd: Apply timezone update, if specified
+  * incus-osd/backup: Set timezone from backup when restoring
+  * incus-osd: Apply timezone from seed on first boot
+  * incus-osd/seed: Default timezone to UTC if not provided in seed
+  * incus-osd/api: Add Timezone field to SystemNetworkTime
+  * base: Add tzdata package to base image
+  * incus-osd/state: Implement state migration logic for renaming
+    of SystemNetworkNTP struct
+  * incus-osd/api: Rename SystemNetworkNTP struct to
+    SystemNetworkTime
+  * image-publisher: Recognize incus-ceph and incus-linstor
+    applications
+  * doc/getting-started/physical: Align wording with OS customizer
+
+-------------------------------------------------------------------
+Mon Nov 17 11:45:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package incus-os-flashertool: download and customize an image to install IncusOS

@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/lxc/incus-os.git</param>
+              <param name="changesrevision">0dea36da84f277200dfe41c518b3292d221e2b3d</param></service></servicedata>
