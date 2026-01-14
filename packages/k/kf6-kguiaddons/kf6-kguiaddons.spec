@@ -33,10 +33,11 @@
 %endif
 
 # Full KF6 version (e.g. 6.22.0)
-%{!?_kf6_version: %global _kf6_version %{version}}
+# %%{!?_kf6_version: %%global _kf6_version %%{version}}
+%global _kf6_version 6.22.0
 %bcond_without released
 Name:           kf6-kguiaddons
-Version:        6.22.0
+Version:        6.22.1
 Release:        0
 Summary:        Utilities for graphical user interfaces
 License:        LGPL-2.1-or-later
