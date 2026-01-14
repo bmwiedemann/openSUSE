@@ -4210,6 +4210,7 @@
     <package name="wireless-regdb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="wireless-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="wireplumber" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="wireplumber-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="wireplumber-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="wmctrl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="wol" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->

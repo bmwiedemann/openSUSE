@@ -9708,7 +9708,6 @@ unsorted:
   - junit-manual 
   - junit5 
   - junit5-bom 
-  - junit5-guide 
   - junit5-javadoc 
   - junit5-minimal 
   - junit5-minimal-javadoc 
@@ -15381,7 +15380,7 @@ unsorted:
   - libphdi-devel 
   - libphdi-tools 
   - libphdi1 
-  - libphobos2-0_111 
+  - libphobos2-0_112 
   - libphobos2-ldc110 
   - libphonenumber-devel 
   - libphysfs-devel 
@@ -25167,6 +25166,7 @@ unsorted:
   - python311-cramjam 
   - python311-crashtest 
   - python311-crayons 
+  - python311-crccheck 
   - python311-crcmod 
   - python311-crispy-bootstrap3 
   - python311-crispy-bootstrap4 
@@ -27686,6 +27686,7 @@ unsorted:
   - python311-ujson 
   - python311-uncertainties 
   - python311-unearth 
+  - python311-unicode-segmentation-rs 
   - python311-unicodecsv 
   - python311-unicodedata2 
   - python311-unidiff 
@@ -28976,6 +28977,7 @@ unsorted:
   - python312-cramjam 
   - python312-crashtest 
   - python312-crayons 
+  - python312-crccheck 
   - python312-crcmod 
   - python312-crispy-bootstrap3 
   - python312-crispy-bootstrap4 
@@ -31556,6 +31558,7 @@ unsorted:
   - python312-ujson 
   - python312-uncertainties 
   - python312-unearth 
+  - python312-unicode-segmentation-rs 
   - python312-unicodecsv 
   - python312-unicodedata2 
   - python312-unidiff 
@@ -32832,6 +32835,7 @@ unsorted:
   - python313-cramjam 
   - python313-crashtest 
   - python313-crayons 
+  - python313-crccheck 
   - python313-crcmod 
   - python313-crispy-bootstrap3 
   - python313-crispy-bootstrap4 
@@ -35375,6 +35379,7 @@ unsorted:
   - python313-ujson 
   - python313-uncertainties 
   - python313-unearth 
+  - python313-unicode-segmentation-rs 
   - python313-unicodecsv 
   - python313-unicodedata2 
   - python313-unidiff 
@@ -35702,6 +35707,7 @@ unsorted:
   - qemu-audio-oss 
   - qemu-audio-pa 
   - qemu-audio-pipewire 
+  - qemu-audio-sdl 
   - qemu-block-dmg 
   - qemu-block-iscsi 
   - qemu-block-ssh 
@@ -35721,6 +35727,7 @@ unsorted:
   - qemu-uefi-aarch64 
   - qemu-uefi-riscv64 
   - qemu-ui-dbus 
+  - qemu-ui-sdl 
   - qemu-vhost-user-gpu 
   - qgis 
   - qgis-devel 
