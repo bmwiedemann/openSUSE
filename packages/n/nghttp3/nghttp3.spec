@@ -1,7 +1,7 @@
 #
 # spec file for package nghttp3
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global soname  libnghttp3
 %global sover   9
 Name:           nghttp3
-Version:        1.13.1
+Version:        1.14.0
 Release:        0
 Summary:        Implementation of Hypertext Transfer Protocol version 3 in C
 License:        MIT
@@ -32,7 +32,6 @@ Source3:        baselibs.conf
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(cunit)
 
 %description
 nghttp3 is an implementation of RFC 9114 HTTP/3 mapping over QUIC and
@@ -75,7 +74,6 @@ Hypertext Transfer Protocol version 3.
   --disable-static        \
   --disable-silent-rules  \
   --enable-lib-only       \
-  --with-cunit            \
   %{nil}
 %make_build all
 

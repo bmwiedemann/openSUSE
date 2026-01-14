@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Jan 13 10:36:46 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Remove the unrecogninzed configure option --with-cunit and the
+  cunit build dependency
+
+-------------------------------------------------------------------
+Tue Jan 13 10:33:55 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.14.0:
+  * Fix header name validation on a platform where char is unsigned
+  * nghttp3_http: Use int8_t for the lookup tables consistently
+  * More use of designated initializers
+  * Rework nghttp3_frame union to avoid potential UB
+  * Rewrite nghttp3_get_varint
+  * Port ngtcp2_ksl changes
+  * Add nghttp3_recv_settings2 and deprecate nghttp3_recv_settings
+  * tnode: Remove unused num_children
+  * Refactor with compound literals
+  * stream: Simplify settings entry assignment
+  * Port ngtcp2 changes
+  * Fix ENABLE_CONNECT_PROTOCOL setting handling
+  * datalen must not be zero
+  * Fix missing error handling
+  * Remove unused tx.hstate from nghttp3_stream
+  * Clarify field size limits
+
+-------------------------------------------------------------------
 Tue Dec 16 10:29:17 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.13.1:
