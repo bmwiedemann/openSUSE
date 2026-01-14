@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Tue Jan 13 18:23:11 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.145.0
+  - Features
+    - Add memberships endpoint to the admin API. This is useful for
+      forensics and T&S purpose. (#19260)
+    - Server admins can bypass the quarantine media check when
+      downloading media by setting the
+      admin_unsafely_bypass_quarantine query parameter to true on
+      Client-Server API media download requests. (#19275)
+    - Implemented pagination for the MSC2666 mutual rooms endpoint.
+      Contributed by @tulir @ Beeper. (#19279)
+    - Admin API: add worker support to GET
+      /_synapse/admin/v2/users/<user_id>. (#19281)
+    - Improve proxy support for the federation_client.py dev
+      script. Contributed by Denis Kasak (@dkasak). (#19300)
+  - Bugfixes
+    - Fix sliding sync performance slow down for long lived
+      connections. (#19206)
+    - Fix a bug where Mastodon posts (and possibly other embeds)
+      have the wrong description for URL previews. (#19231)
+    - Fix bug where Duration was logged incorrectly. (#19267)
+    - Fix bug introduced in 1.143.0 that broke support for versions
+      of zope-interface older than 6.2. (#19274)
+    - Transform events with client metadata before serialising in
+      /event response. (#19340)
+  - Updates to the Docker image
+    - Add a way to expose metrics from the Docker image
+      (SYNAPSE_ENABLE_METRICS). (#19324)
+  - Improved Documentation
+    - Document the importance of public_baseurl when configuring
+      OpenID Connect authentication. (#19270)
+  - Deprecations and Removals
+    - Ubuntu 25.04 (Plucky Puffin) will be end of life on Jan 17,
+      2026. Synapse will stop building packages for Ubuntu 25.04
+      shortly thereafter.
+    - Remove the "Updates to locked dependencies" section from the
+      changelog due to lack of use and the maintenance burden.
+      (#19254)
+  - Internal Changes
+    - Group together dependabot update PRs to reduce the review
+      load. (#18402)
+    - Fix HomeServer.shutdown() failing if the homeserver hasn't
+      been setup yet. (#19187)
+    - Respond with useful error codes with Content-Length header/s
+      are invalid. (#19212)
+    - Fix HomeServer.shutdown() failing if the homeserver failed to
+      start. (#19232)
+    - Switch the build backend from poetry-core to maturin.
+      (#19234)
+    - Raise the limit for concurrently-open non-security
+      @dependabot PRs from 5 to 10. (#19253)
+    - Require 14 days to pass before pulling in general dependency
+      updates to help mitigate upstream supply chain attacks.
+      (#19258)
+    - Drop the broken netlify documentation workflow until a new
+      one is implemented. (#19262)
+    - Don't include debug logs in Clock unless explicitly enabled.
+      (#19278)
+    - Use uv to test olddeps to ensure all transitive dependencies
+      use minimum versions. (#19289)
+    - Add a config to be able to rate limit search in the user
+      directory. (#19291)
+    - Log the original bind exception when encountering Failed to
+      listen on 0.0.0.0, continuing because listening on [::].
+      (#19297)
+    - Unpin the version of Rust we use to build Synapse wheels (was
+      1.82.0) now that MacOS support has been dropped. (#19302)
+    - Make it more clear how shared_extra_conf is combined in our
+      Docker configuration scripts. (#19323)
+    - Update CI to stream Complement progress and format logs in a
+      separate step after all tests are done. (#19326)
+    - Format .github/workflows/tests.yml. (#19327)
+- refresh matrix-synapse-1.4.1-paths.patch
+- manually install the shared library with the rust code. the new
+  installer does not handle it yet.
+- patch out the runtime dependency for setuptools-rust
+
+-------------------------------------------------------------------
 Tue Dec  9 20:58:11 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.144.0

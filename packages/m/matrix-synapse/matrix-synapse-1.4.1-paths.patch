@@ -37,7 +37,7 @@ Index: synapse/synapse/config/logger.py
 ===================================================================
 --- synapse.orig/synapse/config/logger.py
 +++ synapse/synapse/config/logger.py
-@@ -158,7 +158,7 @@ class LoggingConfig(Config):
+@@ -157,7 +157,7 @@ class LoggingConfig(Config):
      def generate_config_section(
          self, config_dir_path: str, server_name: str, **kwargs: Any
      ) -> str:
@@ -50,12 +50,12 @@ Index: synapse/synapse/config/server.py
 ===================================================================
 --- synapse.orig/synapse/config/server.py
 +++ synapse/synapse/config/server.py
-@@ -813,7 +813,7 @@ class ServerConfig(Config):
-             bind_port = 8448
-             unsecure_port = 8008
- 
+@@ -931,7 +931,7 @@ class ServerConfig(Config):
+         listeners: list[dict] | None = None,
+         **kwargs: Any,
+     ) -> str:
 -        pid_file = os.path.join(data_dir_path, "homeserver.pid")
 +        pid_file = os.path.join("/run/matrix-synapse", "homeserver.pid")
  
-         secure_listeners = []
-         unsecure_listeners = []
+         http_bindings = "[]"
+         private_addresses = ["::1", "127.0.0.1"]

@@ -1,7 +1,7 @@
 #
 # spec file for package matrix-synapse
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,8 @@
 %global bcrypt_version                4.3.0
 %global bleach_version                6.1.0
 %global canonicaljson_version         2.0.0
-%global cryptography_version          43.0.3
+# TODO 46.0.3
+%global cryptography_version          46.0.2
 %global immutabledict_version         4.2.1
 %global idna_version                  3.11
 %global ijson_version                 3.4.0.post0
@@ -73,6 +74,40 @@
 %global python_multipart_version      0.0.9
 # TODO: 0.30.0
 %global rpds_py_verison               0.27.0
+## indirect dependencies which need to be guarded for matrix-synapse to work
+# pysaml2
+%global defusedxml_version            0.7.1
+%global pytz_version                  2025.2
+# Transitive dependency constraints
+# These dependencies aren't directly required by Synapse.
+# However, in order for Synapse to build, Synapse requires a higher minimum version
+# for these dependencies than the minimum specified by the direct dependency.
+# We should periodically check to see if these dependencies are still necessary and
+# remove any that are no longer required.
+# via cryptography
+%global cffi_version                  2.0.0
+# via signedjson
+%global pynacl_version                1.6.1
+# packaging
+%global pyparsing_version             2.4
+# jsonschema
+%global pyrsistent_version            0.20.0
+# 2.16.0+ no longer vendors urllib3, avoiding Python 3.10+ incompatibility
+%global requests_version              2.16.0
+# via treq; 1.26.5 fixes Python 3.10+ collections.abc compatibility
+# TODO 2.6.0
+%global urllib3_version               2.5.0
+# 5.2 is the current version in Debian oldstable. If we don't care to support that, then 5.4 is
+# the minimum version from Ubuntu 22.04 and RHEL 9. (as of 2025-12)
+# When bumping this version to 6.2 or above, refer to https://github.com/element-hq/synapse/pull/19274
+# for details of Synapse improvements that may be unlocked. Particularly around the use of `|`
+# syntax with zope interface types.
+# via twisted
+%global zope_interface_version        5.2
+# via jaeger-client
+%global thrift_version                0.10
+# via jaeger-client
+%global tornado_version               6.0
 %else
 # some version locks based on poetry.lock
 %global Jinja2_version                3.0
@@ -95,7 +130,7 @@
 %global phonenumbers_version          8.13.37
 %global prometheus_client_version     0.6.0
 %global psutil_version                2.0.0
-%global pyOpenSSL_version             16.0.0
+%global pyOpenSSL_version             16.2.0
 %global pyasn1_version                0.1.9
 %global pyasn1_modules_version        0.0.7
 %global pymacaroons_version           0.13.0
@@ -122,6 +157,39 @@
 %global Pympler_version               1.0.1
 %global pydantic_version              1.7.4
 %global python_multipart_version      0.0.9
+## indirect dependencies which need to be guarded for matrix-synapse to work
+# pysaml2
+%global defusedxml_version            0.7.1
+%global pytz_version                  2018.3
+# Transitive dependency constraints
+# These dependencies aren't directly required by Synapse.
+# However, in order for Synapse to build, Synapse requires a higher minimum version
+# for these dependencies than the minimum specified by the direct dependency.
+# We should periodically check to see if these dependencies are still necessary and
+# remove any that are no longer required.
+# via cryptography
+%global cffi_version                  1.15
+# via signedjson
+%global pynacl_version                1.3
+# packaging
+%global pyparsing_version             2.4
+# jsonschema
+%global pyrsistent_version            0.18.0
+# 2.16.0+ no longer vendors urllib3, avoiding Python 3.10+ incompatibility
+%global requests_version              2.16.0
+# via treq; 1.26.5 fixes Python 3.10+ collections.abc compatibility
+%global urllib3_version               1.26.5
+# 5.2 is the current version in Debian oldstable. If we don't care to support that, then 5.4 is
+# the minimum version from Ubuntu 22.04 and RHEL 9. (as of 2025-12)
+# When bumping this version to 6.2 or above, refer to https://github.com/element-hq/synapse/pull/19274
+# for details of Synapse improvements that may be unlocked. Particularly around the use of `|`
+# syntax with zope interface types.
+# via twisted
+%global zope_interface_version        5.2
+# via jaeger-client
+%global thrift_version                0.10
+# via jaeger-client
+%global tornado_version               6.0
 %endif
 
 %define requires_peq() %(echo '%*' | LC_ALL=C xargs -r rpm -q --whatprovides --qf 'Requires: %%{name} = %%{epoch}:%%{version}\\n' | sed -e 's/ (none):/ /' -e 's/ 0:/ /' | grep -v "is not")
@@ -159,7 +227,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.144.0
+Version:        1.145.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        AGPL-3.0-or-later
@@ -304,6 +372,10 @@ BuildRequires:  %{use_python}-jaeger-client >= %{jaeger_client_version}
 %requires_peq   %{use_python}-jaeger-client
 BuildRequires:  %{use_python}-opentracing   >= %{opentracing_version}
 %requires_peq   %{use_python}-opentracing
+BuildRequires:  %{use_python}-tornado >= %{tornado_version}
+%requires_peq   %{use_python}-tornado
+BuildRequires:  %{use_python}-thrift >= %{thrift_version}
+%requires_peq   %{use_python}-thrift
 %endif
 %if %{with synapse_redis}
 BuildRequires:  %{use_python}-hiredis >= %{hiredis_version}
@@ -313,6 +385,27 @@ BuildRequires:  %{use_python}-txredisapi >= %{txredisapi_version}
 %endif
 BuildRequires:  %{use_python}-Pympler >= %{Pympler_version}
 %requires_peq   %{use_python}-Pympler
+## indirect dependencies which need to be guarded for matrix-synapse to work
+BuildRequires:  %{use_python}-defusedxml >= %{defusedxml_version}
+%requires_peq   %{use_python}-defusedxml
+BuildRequires:  %{use_python}-pytz >= %{pytz_version}
+%requires_peq   %{use_python}-pytz
+BuildRequires:  %{use_python}-cffi >= %{cffi_version}
+%requires_peq   %{use_python}-cffi
+BuildRequires:  %{use_python}-PyNaCl >= %{pynacl_version}
+%requires_peq   %{use_python}-PyNaCl
+BuildRequires:  %{use_python}-pyparsing >= %{pyparsing_version}
+%requires_peq   %{use_python}-pyparsing
+BuildRequires:  %{use_python}-pyrsistent >= %{pyrsistent_version}
+%requires_peq   %{use_python}-pyrsistent
+BuildRequires:  %{use_python}-requests >= %{requests_version}
+%requires_peq   %{use_python}-requests
+BuildRequires:  %{use_python}-urllib3 >= %{urllib3_version}
+%requires_peq   %{use_python}-urllib3
+BuildRequires:  %{use_python}-zope.interface >= %{zope_interface_version}
+%requires_peq   %{use_python}-zope.interface
+# BuildRequires:  %%{use_python}- >= %{}
+# %%requires_peq   %%{use_python}-
 # We only provide/obsolete python2 to ensure that users upgrade.
 Obsoletes:      python2-matrix-synapse < %{version}-%{release}
 Provides:       python2-matrix-synapse = %{version}-%{release}
@@ -347,6 +440,9 @@ cp %{S:48} README.SUSE
 # We install scripts into /usr/lib to avoid silly conflicts with other pkgs.
 install -d -m 0755 %{buildroot}%{_libexecdir}/%{pkgname}
 %pyproject_install
+
+perl -p -i -e 's|Requires-Dist: setuptools-rust.*\n||g' \
+  %{buildroot}%{python_sitearch}/%{eggname}-*-info/METADATA
 
 install -d -m 0755 %{buildroot}%{_bindir} %{buildroot}%{_libexecdir}/%{pkgname}/
 # move scripts to the old place.
