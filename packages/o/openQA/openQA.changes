@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan 13 23:23:36 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1768323619.9a70ab91:
+  * refactor: Extend tests of df-based cleanup
+  * fix: Avoid wrong deletion of archived jobs in df-based cleanup
+  * refactor: Move logic for validating percentage into helper
+  * refactor: Clarify wording in comment regarding job cleanup
+  * Use template literals in certain JavaScript code
+  * Retry delete_needles job on server restart
+  * Add test for _delete_needles
+  * feat(OpenQA::Git): Cleanup git dir in commit() on shutdown
+  * feat: Improve rendering results on the scheduled product page
+
+-------------------------------------------------------------------
 Mon Jan 12 13:11:23 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1768209690.f34c2973:
