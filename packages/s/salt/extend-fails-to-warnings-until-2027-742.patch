@@ -1,0 +1,164 @@
+From 85d5cab70fc36994427fb4d4ca483b09f55d28f7 Mon Sep 17 00:00:00 2001
+From: Marek Czernek <marek.czernek@suse.com>
+Date: Thu, 8 Jan 2026 09:17:14 +0100
+Subject: [PATCH] Extend fails to warnings until 2027 (#742)
+
+---
+ salt/_logging/handlers.py          | 6 +++---
+ salt/log/__init__.py               | 2 +-
+ salt/log/handlers/__init__.py      | 2 +-
+ salt/log/mixins.py                 | 2 +-
+ salt/log/setup.py                  | 4 ++--
+ salt/modules/aptpkg.py             | 2 +-
+ salt/modules/cassandra_mod.py      | 2 +-
+ salt/returners/cassandra_return.py | 2 +-
+ salt/returners/django_return.py    | 2 +-
+ 9 files changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/salt/_logging/handlers.py b/salt/_logging/handlers.py
+index d8bc68a49db..6b1521d7915 100644
+--- a/salt/_logging/handlers.py
++++ b/salt/_logging/handlers.py
+@@ -36,7 +36,7 @@ class TemporaryLoggingHandler(logging.NullHandler):
+ 
+     def __init__(self, level=logging.NOTSET, max_queue_size=10000):
+         warn_until_date(
+-            "20260101",
++            "20270101",
+             "Please stop using '{name}.TemporaryLoggingHandler'. "
+             "'{name}.TemporaryLoggingHandler' will go away after "
+             "{{date}}.".format(name=__name__),
+@@ -229,7 +229,7 @@ if sys.version_info < (3, 7):
+         def __init__(self, queue):  # pylint: disable=useless-super-delegation
+             super().__init__(queue)
+             warn_until_date(
+-                "20260101",
++                "20270101",
+                 "Please stop using '{name}.QueueHandler' and instead "
+                 "use 'logging.handlers.QueueHandler'. "
+                 "'{name}.QueueHandler' will go away after "
+@@ -287,7 +287,7 @@ else:
+         def __init__(self, queue):  # pylint: disable=useless-super-delegation
+             super().__init__(queue)
+             warn_until_date(
+-                "20260101",
++                "20270101",
+                 "Please stop using '{name}.QueueHandler' and instead "
+                 "use 'logging.handlers.QueueHandler'. "
+                 "'{name}.QueueHandler' will go away after "
+diff --git a/salt/log/__init__.py b/salt/log/__init__.py
+index 69bfa8ed15b..392fd1561dd 100644
+--- a/salt/log/__init__.py
++++ b/salt/log/__init__.py
+@@ -24,7 +24,7 @@ from salt.log.setup import (
+ from salt.utils.versions import warn_until_date
+ 
+ warn_until_date(
+-    "20260101",
++    "20270101",
+     "Please stop using '{name}' and instead use 'salt._logging'. "
+     "'{name}' will go away after {{date}}.".format(name=__name__),
+     stacklevel=3,
+diff --git a/salt/log/handlers/__init__.py b/salt/log/handlers/__init__.py
+index 55cf10cdb78..f6f8102fd65 100644
+--- a/salt/log/handlers/__init__.py
++++ b/salt/log/handlers/__init__.py
+@@ -12,7 +12,7 @@ from salt._logging.handlers import (
+ from salt.utils.versions import warn_until_date
+ 
+ warn_until_date(
+-    "20260101",
++    "20270101",
+     "Please stop using '{name}' and instead use 'salt._logging.handlers'. "
+     "'{name}' will go away after {{date}}.".format(name=__name__),
+ )
+diff --git a/salt/log/mixins.py b/salt/log/mixins.py
+index 65f5ed7f78a..4564ac225c3 100644
+--- a/salt/log/mixins.py
++++ b/salt/log/mixins.py
+@@ -11,7 +11,7 @@ from salt.utils.versions import warn_until_date
+ # pylint: enable=unused-import
+ 
+ warn_until_date(
+-    "20260101",
++    "20270101",
+     "Please stop using '{name}' and instead use 'salt._logging.mixins'. "
+     "'{name}' will go away after {{date}}.".format(name=__name__),
+ )
+diff --git a/salt/log/setup.py b/salt/log/setup.py
+index f4c80b0f280..5435d6de88f 100644
+--- a/salt/log/setup.py
++++ b/salt/log/setup.py
+@@ -21,7 +21,7 @@ from salt._logging.impl import set_log_record_factory as setLogRecordFactory
+ from salt.utils.versions import warn_until_date
+ 
+ warn_until_date(
+-    "20260101",
++    "20270101",
+     "Please stop using '{name}' and instead use 'salt._logging'. "
+     "'{name}' will go away after {{date}}. Do note however that "
+     "'salt._logging' is now considered a non public implementation "
+@@ -34,7 +34,7 @@ def _deprecated_warning(func):
+     @wraps(func)
+     def wrapper(*args, **kwargs):
+         warn_until_date(
+-            "20260101",
++            "20270101",
+             "Please stop using 'salt.log.setup.{name}()' as it no longer does anything and "
+             "will go away after {{date}}.".format(name=func.__qualname__),
+             stacklevel=4,
+diff --git a/salt/modules/aptpkg.py b/salt/modules/aptpkg.py
+index 8244c639e85..f7884d9ccde 100644
+--- a/salt/modules/aptpkg.py
++++ b/salt/modules/aptpkg.py
+@@ -3215,7 +3215,7 @@ def expand_repo_def(**kwargs):
+         NOT USABLE IN THE CLI
+     """
+     warn_until_date(
+-        "20260101",
++        "20270101",
+         "The pkg.expand_repo_def function is deprecated and set for removal "
+         "after {date}. This is only unsed internally by the apt pkg state "
+         "module. If that's not the case, please file an new issue requesting "
+diff --git a/salt/modules/cassandra_mod.py b/salt/modules/cassandra_mod.py
+index db9c8821920..660a1ff70dd 100644
+--- a/salt/modules/cassandra_mod.py
++++ b/salt/modules/cassandra_mod.py
+@@ -45,7 +45,7 @@ def __virtual__():
+         )
+ 
+     warn_until_date(
+-        "20260101",
++        "20270101",
+         "The cassandra returner is broken and deprecated, and will be removed"
+         " after {date}. Use the cassandra_cql returner instead",
+     )
+diff --git a/salt/returners/cassandra_return.py b/salt/returners/cassandra_return.py
+index 5fcc00ee8ce..00c6748eaeb 100644
+--- a/salt/returners/cassandra_return.py
++++ b/salt/returners/cassandra_return.py
+@@ -53,7 +53,7 @@ def __virtual__():
+     if not HAS_PYCASSA:
+         return False, "Could not import cassandra returner; pycassa is not installed."
+     warn_until_date(
+-        "20260101",
++        "20270101",
+         "The cassandra returner is broken and deprecated, and will be removed"
+         " after {date}. Use the cassandra_cql returner instead",
+     )
+diff --git a/salt/returners/django_return.py b/salt/returners/django_return.py
+index 474653f3831..46f5c8791e8 100644
+--- a/salt/returners/django_return.py
++++ b/salt/returners/django_return.py
+@@ -57,7 +57,7 @@ __virtualname__ = "django"
+ 
+ def __virtual__():
+     warn_until_date(
+-        "20260101",
++        "20270101",
+         "The django returner is broken and deprecated, and will be removed"
+         " after {date}.",
+     )
+-- 
+2.52.0
+

@@ -598,6 +598,19 @@ Patch187:       fix-tls-and-x509-modules-for-older-cryptography-modu.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/issues/68469
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/739
 Patch188:       backport-3006.17-security-fixes-739.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/742
+Patch189:       extend-fails-to-warnings-until-2027-742.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/68253
+Patch190:       simplify-utils.json.find_json-function.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/68595
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/68611
+# PATCH-FIX_UPSTREAM: https://github.com/tornadoweb/tornado/pull/3553
+# PATCH-FIX_UPSTREAM: https://github.com/tornadoweb/tornado/commit/771472cfdaeebc0d89a9cc46e249f8891a6b29cd
+Patch191:       fixes-for-security-issues-cve-2025-13836-cve-2025-67.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/68251
+Patch192:       speedup-wheel-key.finger-call-bsc-1240532-713.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/67956
+Patch193:       use-internal-salt.utils.pkg.deb-classes-instead-of-a.patch
 
 
 ### IMPORTANT: The line below is used as a snippet marker. Do not touch it.

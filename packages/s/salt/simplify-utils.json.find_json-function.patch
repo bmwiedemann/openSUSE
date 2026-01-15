@@ -1,0 +1,173 @@
+From 7cbb68f36824161743f4cc60d8920e2cea039e5e Mon Sep 17 00:00:00 2001
+From: Marek Czernek <marek.czernek@suse.com>
+Date: Fri, 9 Jan 2026 16:49:19 +0100
+Subject: [PATCH] Simplify utils.json.find_json function
+
+The previous implementation computed all combinations of potential JSON
+documents and tried to `json.loads()`them. That resumted in num({) *
+num(}) tries, which could take hours on large inputs.
+
+The approach implemented with this change simplifies the work we do: we
+only look for opening '{' and '[' characters, and try to parse the rest
+of input string with JSONDecoder.raw_decode. This method ignores
+extraneous data at the end and is faster than doing it ourselves in
+Python.
+
+Co-authored-by: Alexander Graul <agraul@suse.com>
+---
+ changelog/68258.fixed.md              |  1 +
+ salt/utils/json.py                    | 80 ++++++---------------------
+ tests/pytests/unit/utils/test_json.py |  5 --
+ tests/unit/utils/test_json.py         | 12 ++++
+ 4 files changed, 31 insertions(+), 67 deletions(-)
+ create mode 100644 changelog/68258.fixed.md
+
+diff --git a/changelog/68258.fixed.md b/changelog/68258.fixed.md
+new file mode 100644
+index 0000000000..a9afeccef7
+--- /dev/null
++++ b/changelog/68258.fixed.md
+@@ -0,0 +1 @@
++Simplied and sped up `utils.json.find_json` function
+diff --git a/salt/utils/json.py b/salt/utils/json.py
+index 26cb38cdbe..1605e75f9f 100644
+--- a/salt/utils/json.py
++++ b/salt/utils/json.py
+@@ -2,7 +2,7 @@
+ Functions to work with JSON
+ """
+ 
+-
++import contextlib
+ import json
+ import logging
+ 
+@@ -25,69 +25,25 @@ def __split(raw):
+     return raw.splitlines()
+ 
+ 
+-def find_json(raw):
+-    """
+-    Pass in a raw string and load the json when it starts. This allows for a
+-    string to start with garbage and end with json but be cleanly loaded
+-    """
+-    ret = {}
+-    lines = __split(raw)
+-    lengths = list(map(len, lines))
+-    starts = []
+-    ends = []
+-
+-    # Search for possible starts end ends of the json fragments
+-    for ind, _ in enumerate(lines):
+-        line = lines[ind].lstrip()
+-        line = line[0] if line else line
+-        if line == "{" or line == "[":
+-            starts.append((ind, line))
+-        if line == "}" or line == "]":
+-            ends.append((ind, line))
+-
+-    # List all the possible pairs of starts and ends,
+-    # and fill the length of each block to sort by size after
+-    starts_ends = []
+-    for start, start_br in starts:
+-        for end, end_br in reversed(ends):
+-            if end > start and (
+-                (start_br == "{" and end_br == "}")
+-                or (start_br == "[" and end_br == "]")
+-            ):
+-                starts_ends.append((start, end, sum(lengths[start : end + 1])))
+-
+-    # Iterate through all the possible pairs starting from the largest
+-    starts_ends.sort(key=lambda x: (x[2], x[1] - x[0], x[0]), reverse=True)
+-    for start, end, _ in starts_ends:
+-        working = "\n".join(lines[start : end + 1])
+-        try:
+-            ret = json.loads(working)
+-            return ret
+-        except ValueError:
+-            pass
+-        # Try filtering non-JSON text right after the last closing curly brace
+-        end_str = lines[end].lstrip()[0]
+-        working = "\n".join(lines[start : end]) + end_str
+-        try:
+-            ret = json.loads(working)
+-            return ret
+-        except ValueError:
+-            continue
++def find_json(s: str):
++    """Pass in a string and load JSON within it.
+ 
+-    # Fall back to old implementation for backward compatibility
+-    # excpecting json after the text
+-    for ind, _ in enumerate(lines):
+-        working = "\n".join(lines[ind:])
+-        try:
+-            ret = json.loads(working)
+-        except ValueError:
+-            continue
+-        if ret:
+-            return ret
++    The string may contain non-JSON text before and after the JSON document.
+ 
+-    if not ret:
+-        # Not json, raise an error
+-        raise ValueError
++    Raises ValueError if no valid JSON was found.
++    """
++    decoder = json.JSONDecoder()
++
++    # We look for the beginning of JSON objects / arrays and let raw_decode() handle
++    # extraneous data at the end.
++    for idx, char in enumerate(s):
++        if char == "{" or char == "[":
++            # JSONDecodeErrors are expected on stray '{'/'[' in the non-JSON part
++            with contextlib.suppress(json.JSONDecodeError):
++                data, _ = decoder.raw_decode(s[idx:])
++                return data
++
++    raise ValueError
+ 
+ 
+ def import_json():
+diff --git a/tests/pytests/unit/utils/test_json.py b/tests/pytests/unit/utils/test_json.py
+index 72b1023003..f7aed28b42 100644
+--- a/tests/pytests/unit/utils/test_json.py
++++ b/tests/pytests/unit/utils/test_json.py
+@@ -107,11 +107,6 @@ def test_find_json():
+     ret = salt.utils.json.find_json(garbage_around_json)
+     assert ret == expected_ret
+ 
+-    # Now pre-pend small json and re-test
+-    small_json_pre_json = f"{test_small_json}{test_sample_json}"
+-    ret = salt.utils.json.find_json(small_json_pre_json)
+-    assert ret == expected_ret
+-
+     # Now post-pend small json and re-test
+     small_json_post_json = f"{test_sample_json}{test_small_json}"
+     ret = salt.utils.json.find_json(small_json_post_json)
+diff --git a/tests/unit/utils/test_json.py b/tests/unit/utils/test_json.py
+index 5ea409a705..f5dcc1f72d 100644
+--- a/tests/unit/utils/test_json.py
++++ b/tests/unit/utils/test_json.py
+@@ -49,6 +49,18 @@ class JSONTestCase(TestCase):
+         )
+     )
+ 
++    def test_find_json_unbalanced_brace_in_string(self):
++        test_sample_json = '{"title": "I like curly braces like this one:{"}'
++        expected_ret = {"title": "I like curly braces like this one:{"}
++        ret = salt.utils.json.find_json(test_sample_json)
++        self.assertDictEqual(ret, expected_ret)
++
++    def test_find_json_unbalanced_square_bracket_in_string(self):
++        test_sample_json = '{"title": "I like square brackets like this one:["}'
++        expected_ret = {"title": "I like square brackets like this one:["}
++        ret = salt.utils.json.find_json(test_sample_json)
++        self.assertDictEqual(ret, expected_ret)
++
+     def test_find_json(self):
+         test_sample_json = """
+                             {
+-- 
+2.52.0
+

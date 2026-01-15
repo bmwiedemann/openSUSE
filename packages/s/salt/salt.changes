@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jan 14 14:19:10 UTC 2026 - Marek Czernek <marek.czernek@suse.com>
+
+- Use internal deb classes instead of external aptsource lib
+- Speed up wheel key.finger call (bsc#1240532)
+- Add security patches (bsc#1254903,bsc#1254905,bsc#1254904)
+- Simplify and speed up utils.find_json function (bsc#1246130)
+
+- Added:
+  * use-internal-salt.utils.pkg.deb-classes-instead-of-a.patch
+  * speedup-wheel-key.finger-call-bsc-1240532-713.patch
+  * fixes-for-security-issues-cve-2025-13836-cve-2025-67.patch
+  * simplify-utils.json.find_json-function.patch
+
+-------------------------------------------------------------------
+Thu Jan  8 08:37:04 UTC 2026 - Marek Czernek <marek.czernek@suse.com>
+
+- Extend warn_until period to 2027
+
+- Added:
+  * extend-fails-to-warnings-until-2027-742.patch
+
+-------------------------------------------------------------------
 Tue Nov 25 16:48:02 UTC 2025 - Alexander Graul <alexander.graul@suse.com>
 
 - Add minimum_auth_version to enforce security (CVE-2025-62349)

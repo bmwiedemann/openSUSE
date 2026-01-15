@@ -1,0 +1,91 @@
+From c4542e59844bce3a65726564fa364170c1fe7b8c Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Wed, 14 Jan 2026 14:12:44 +0100
+Subject: [PATCH] Speedup wheel key.finger call (bsc#1240532) (#713)
+
+* Reduce the number of os.path.basename calls with key.finger
+
+* Simplify and speedup salt.key.Key.name_match
+
+* Avoid not needed printing while calling wheel from master
+
+* Populate missing parts for clear_load
+
+* Remove redundant events to be fired
+---
+ salt/key.py    | 20 ++++++++++----------
+ salt/master.py | 11 ++++++++---
+ 2 files changed, 18 insertions(+), 13 deletions(-)
+
+diff --git a/salt/key.py b/salt/key.py
+index b15b80eca3..8cd248bb8c 100644
+--- a/salt/key.py
++++ b/salt/key.py
+@@ -491,16 +491,15 @@ class Key:
+         ret = {}
+         if "," in match and isinstance(match, str):
+             match = match.split(",")
++        if not isinstance(match, list):
++            match = [match]
+         for status, keys in matches.items():
++            if match == ["*"] and keys:
++                ret[status] = keys
++                continue
+             for key in salt.utils.data.sorted_ignorecase(keys):
+-                if isinstance(match, list):
+-                    for match_item in match:
+-                        if fnmatch.fnmatch(key, match_item):
+-                            if status not in ret:
+-                                ret[status] = []
+-                            ret[status].append(key)
+-                else:
+-                    if fnmatch.fnmatch(key, match):
++                for match_item in match:
++                    if fnmatch.fnmatch(key, match_item):
+                         if status not in ret:
+                             ret[status] = []
+                         ret[status].append(key)
+@@ -543,12 +542,13 @@ class Key:
+         for dir_ in key_dirs:
+             if dir_ is None:
+                 continue
+-            ret[os.path.basename(dir_)] = []
++            base_dir = os.path.basename(dir_)
++            ret[base_dir] = []
+             try:
+                 for fn_ in salt.utils.data.sorted_ignorecase(os.listdir(dir_)):
+                     if not fn_.startswith("."):
+                         if os.path.isfile(os.path.join(dir_, fn_)):
+-                            ret[os.path.basename(dir_)].append(
++                            ret[base_dir].append(
+                                 salt.utils.stringutils.to_unicode(fn_)
+                             )
+             except OSError:
+diff --git a/salt/master.py b/salt/master.py
+index 09ce7d36a7..b9f009a028 100644
+--- a/salt/master.py
++++ b/salt/master.py
+@@ -2093,12 +2093,17 @@ class ClearFuncs(TransportMethods):
+                 "tag": tag,
+                 "user": username,
+             }
+-
+-            self.event.fire_event(data, tagify([jid, "new"], "wheel"))
++            clear_load.update(
++                {
++                    "__jid__": jid,
++                    "__tag__": tag,
++                    "__user__": username,
++                    "print_event": clear_load.get("print_event", False),
++                }
++            )
+             ret = self.wheel_.call_func(fun, full_return=True, **clear_load)
+             data["return"] = ret["return"]
+             data["success"] = ret["success"]
+-            self.event.fire_event(data, tagify([jid, "ret"], "wheel"))
+             return {"tag": tag, "data": data}
+         except Exception as exc:  # pylint: disable=broad-except
+             log.error("Exception occurred while introspecting %s: %s", fun, exc)
+-- 
+2.52.0
+
