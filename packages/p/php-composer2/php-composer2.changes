@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jan 15 13:17:09 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 2.9.3
+  * Security: Fixed ANSI sequence injection (GHSA-59pp-r3rg-353g / CVE-2025-67746)
+  * Fixed COMPOSER_NO_SECURITY_BLOCKING env var not being respected (#12677)
+  * Fixed update --lock / update mirrors not working when locked packages contain vulnerabilities (#12645)
+  * Fixed client-certificate authentication implementation (#12667)
+  * Fixed php-ext schema not being validated in ValidatingArrayLoader (#12694)
+  * Fixed crash when --bump-after-update is used and the lock file is disabled (#12660)
+  * Fixed support for SecureTransport + LibreSSL on macOS (#12615)
+  * Fixed display of reasons for why advisories are ignored (#12668)
+  * Fixed compatibility issues when git has log.showSignature enabled (#12666)
+  * Fixed curl downloader not retrying when a timeout (err 28) failure occurs (#12662)
+  * Fixed EventDispatcher requiring a full Composer instance to function (#12629)
+- fixes [bsc#1255768]
+
+-------------------------------------------------------------------
 Mon Dec 22 13:40:32 UTC 2025 - Petr Gajdos <pgajdos@suse.com>
 
 - version update to 2.9.2
