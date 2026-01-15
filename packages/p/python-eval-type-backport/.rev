@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7dda5621f90b83f897d33222be700f3f</srcmd5>
+    <version>0.3.1</version>
+    <time>1768492050</time>
+    <user>anag_factory</user>
+    <comment>Required by `python-mistralai`, which is in turn one of dependencies of `python-mistral-vibe`.</comment>
+    <requestid>1327298</requestid>
+  </revision>
+</revisionlist>
