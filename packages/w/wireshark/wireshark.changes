@@ -1,9 +1,20 @@
 -------------------------------------------------------------------
+Thu Jan 15 08:51:27 UTC 2026 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 4.6.3
+  * CVE-2026-0961: BLF file parser crash (bsc#1256738).
+  * CVE-2026-0959: IEEE 802.11 dissector crash (bsc#1256734).
+  * CVE-2026-0962: SOME/IP-SD dissector crash (bsc#1256739).
+  * CVE-2026-0960: HTTP3 dissector infinite loop (bsc#1256736).
+- Many more features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-4.6.3.html
+
+-------------------------------------------------------------------
 Wed Dec  3 20:17:55 UTC 2025 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 4.6.2
   * CVE-2025-13945: HTTP3 dissector crash (bsc#1254471).
-  * MCVE-2025-13946: MEGACO dissector infinite loop (bsc#1254472).
+  * CVE-2025-13946: MEGACO dissector infinite loop (bsc#1254472).
 - Many more features, bug fixes and updated protocol support as listed in:
   https://www.wireshark.org/docs/relnotes/wireshark-4.6.2.html
 
