@@ -1,0 +1,16 @@
+--- open-gpu-kernel-modules-580.126.09/kernel-open/nvidia-uvm/uvm_pmm_gpu.c.orig	2026-01-13 19:18:18.022084000 +0100
++++ open-gpu-kernel-modules-580.126.09/kernel-open/nvidia-uvm/uvm_pmm_gpu.c	2026-01-13 19:30:36.214892000 +0100
+@@ -3282,11 +3282,13 @@ static void device_p2p_page_free(struct
+     nv_kref_put(&p2p_mem->refcount, device_p2p_page_free_wake);
+ }
+ 
++#if defined(NV_PAGEMAP_OPS_HAS_FOLIO_FREE)
+ static void device_p2p_folio_free(struct folio *folio)
+ {
+     device_p2p_page_free(&folio->page);
+ }
+ #endif
++#endif
+ 
+ #if UVM_CDMM_PAGES_SUPPORTED()
+ static void device_coherent_page_free(struct page *page)

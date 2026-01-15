@@ -1,7 +1,7 @@
 #
 # spec file for package nvidia-open-driver-G06-signed
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,12 @@
 #
 
 
-%define gfx_aarch64_version 580.119.02
+%define gfx_aarch64_version 580.126.09
 
 %ifarch aarch64
 %define gfx_version %gfx_aarch64_version
 %else
-%define gfx_version 580.119.02
+%define gfx_version 580.126.09
 %endif
 %define cuda_version 580.105.08
 
@@ -103,6 +103,10 @@ Source17:       kmp-post.sh
 Source18:       Check4WrongSupplements.sh
 %if "%{flavor}" == "cuda"
 Patch0:         kernel-6.18.patch
+%else
+%if 0%{?sle_version} < 150500
+Patch0:         kernel-5.14.patch
+%endif
 %endif
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  fdupes

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 13 18:42:37 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- kernel-5.14.patch
+  * fixes build for sle15-sp4
+
+-------------------------------------------------------------------
+Sat Jan  3 14:39:53 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- update non-CUDA variant to version 580.126.09 (boo#1255858)
+
+-------------------------------------------------------------------
 Thu Dec 11 15:49:40 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - readded kernel-6.18.patch still needed for cuda driver version

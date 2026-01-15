@@ -971,4 +971,15 @@
 - update non-CUDA variant to version 580.119.02 (boo#1254801)</comment>
     <requestid>1322245</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>deac17b9e87a3ab6407415f102ab4d9d</srcmd5>
+    <version>580.126.09</version>
+    <time>1768491813</time>
+    <user>anag_factory</user>
+    <comment>- kernel-5.14.patch
+  * fixes build for sle15-sp4
+
+- update non-CUDA variant to version 580.126.09 (boo#1255858)</comment>
+    <requestid>1327081</requestid>
+  </revision>
 </revisionlist>
