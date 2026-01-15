@@ -1,7 +1,7 @@
 #
 # spec file for package helmfile
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #               2021-2025 Manfred Hollstein <manfred.h@gmx.net>
 #
 # All modifications and additions to the file contributed by third parties
@@ -32,8 +32,6 @@ Recommends:     helm >= 3.19.4
 BuildRequires:  golang-packaging
 BuildRequires:  xz
 BuildRequires:  golang(API) >= 1.25
-Obsoletes:      %{name}-bash-completion < %{version}
-Obsoletes:      %{name}-zsh-completion < %{version}
 
 %description
 Helmfile is a declarative spec for deploying helm charts. It lets you...

@@ -743,4 +743,13 @@
     <comment></comment>
     <requestid>1323757</requestid>
   </revision>
+  <revision rev="81" vrev="2">
+    <srcmd5>07caf1713a4379eefd96dbbe8a4bc8b0</srcmd5>
+    <version>1.2.3</version>
+    <time>1768492118</time>
+    <user>anag_factory</user>
+    <comment>- remove two obsoletes for still existing subpackages.
+</comment>
+    <requestid>1327378</requestid>
+  </revision>
 </revisionlist>
