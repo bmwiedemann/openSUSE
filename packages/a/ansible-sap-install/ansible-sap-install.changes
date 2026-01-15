@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Tue Jan 13 09:01:00 UTC 2026 - Marcel Mamula <marcel.mamula@suse.com>
+
+- 1.8.0
+  - Minor Changes:
+    - collection - Add Matrix to Sanity tests and ignore files up to 2.25
+    - collection - Adjust roles for ansible-core 2.19 part 2
+    - collection - Adjust roles for ansible-core 2.19 part 1
+    - sap_ha_install_hana_hsr - Rework role with new features, validations and compatibility for 2.20
+    - sap_hana_install - Rework tags
+    - sap_hana_install - simplified and more flexible SELinux and fapolicyd handling
+    - sap_hana_install - Inventory based Scale-Out and idempotency validations
+    - sap_hana_install - Enhance variable validation and account for missed variable combinations
+    - sap_hana_install - Idempotency Rework
+    - sap_hana_preconfigure - Sync with SAP note 3108302
+    - sap_hana_preconfigure - Add sap_hana preconfigure vars prefix
+    - sap_netweaver_preconfigure - Add sap_netweaver preconfigure vars prefix
+    - sap_*_preconfigure/SLES - Improved pattern check, sanitize log output and add loop_vars
+    - sap_storage_setup/SUSE - Add btrfs support for SLES 16
+    - sap_swpm - Enhance detection of multiple files
+    - sap_swpm - extensive variable input validation
+    - sap_swpm - Implement a test and a filter for validating hostnames
+  - Bugfixes:
+    - collection - Fix linting errors in 2.20 with facts and register var names
+    - collection - Update linting workflows and configuration to latest version
+    - collection - Update sanity github action and add missing ignore files for 2.19 and 2.20
+    - sap_ha_install_hana_hsr - Fix linter failures
+    - sap_ha_pacemaker_cluster - Fix linting errors
+    - sap_hostagent - Fix linting errors
+    - sap_install_media_detect - Fix linting errors
+
+- 1.7.1
+  - Bugfixes:
+    - sap_hana_install - Enhance validation of variables
+    - sap_hana_preconfigure - New mechanism for loading rhel minor plus vars without having to use "find" files on localhost.
+    - sap_hana_preconfigure/RHEL - Be more flexible with boot command line args
+
+- 1.7.0
+  - Minor Changes:
+    - sap_hana_preconfigure - Implement SAP note 3108302 v.13
+    - sap_ha_install_hana_hsr - Add backup location detection and user variable
+  - Bugfixes:
+    - collection - Cleanup scripts
+    - sap_hana_preconfigure - Replace grub2-mkconfig for RHEL by grubby from RHEL 8 onward
+    - sap_hana_install - Enhance SAPCAR detection functionality and handling of multiple files
+    - sap_ha_pacemaker_cluster - Enhance handling of cluster properties and improve ASCS ERS post steps
+
+- 1.6.1
+  - Bugfixes:
+    - sap_ha_pacemaker_cluster - Remove NIC parameter from IPaddr2 resource agents
+    - sap_*_preconfigure - Assert the presence of the IBM tools only if necessary
+    - sap_*_preconfigure - Define needs-restarting also for RHEL 10, assert mode
+    - sap_*_preconfigure - Define needs-restarting also for RHEL 10
+
+-------------------------------------------------------------------
 Tue Jul  8 13:37:03 UTC 2025 - Marcel Mamula <marcel.mamula@suse.com>
 
 - 1.6.0

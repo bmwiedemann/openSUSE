@@ -42,4 +42,12 @@ Downstream source is located at https://github.com/SUSE/community.sap_install</c
     - sap_swpm - Sanitize hostname length (#1042)</comment>
     <requestid>1291666</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>46326f3aa4752f12feff72581bc9936d</srcmd5>
+    <version>1.8.0</version>
+    <time>1768492132</time>
+    <user>anag_factory</user>
+    <comment>Release 1.8.0 with new features and compatibility fixes for ansible-core 2.19.</comment>
+    <requestid>1327403</requestid>
+  </revision>
 </revisionlist>
