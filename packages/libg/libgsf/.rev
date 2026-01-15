@@ -588,4 +588,14 @@
   + Various build fixes. (forwarded request 1321889 from iznogood)</comment>
     <requestid>1323139</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>2906824fe0d48cea05e4cae8983c4692</srcmd5>
+    <version>1.14.55</version>
+    <time>1768491755</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.14.55:
+  + Reduce stack usage.
+  + Documentation fixes. (forwarded request 1327148 from iznogood)</comment>
+    <requestid>1327173</requestid>
+  </revision>
 </revisionlist>
