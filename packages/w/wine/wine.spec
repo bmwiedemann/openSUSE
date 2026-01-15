@@ -1,7 +1,7 @@
 #
 # spec file for package wine
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -68,8 +68,8 @@
 
 %define         _lto_cflags %{nil}
 Name:           wine%{psuffix}
-%define downloadver  11.0-rc4
-Version:        11.0~rc4
+%define downloadver  11.0
+Version:        11.0
 Release:        0
 Summary:        An MS Windows Emulator
 Group:          System/Emulators/PC
@@ -218,14 +218,14 @@ Conflicts:      wine-32bit
 Provides:       wine-32bit = %{version}-%{release}
 %endif
 ExclusiveArch:  aarch64 %{ix86} x86_64
-Provides:       bundled(FAudio) = 25.09
+Provides:       bundled(FAudio) = 25.12
 Provides:       bundled(capstone) = 5.0.3
-Provides:       bundled(fluidsynth) = 2.4.0
+Provides:       bundled(fluidsynth) = 2.4.2
 Provides:       bundled(jpeg) = 9f
 Provides:       bundled(libgsm) = 1.10.19
 Provides:       bundled(libjxr) = 1.1
 Provides:       bundled(liblcms2) = 2.17
-Provides:       bundled(libpng) = 1.6.50
+Provides:       bundled(libpng) = 1.6.51
 Provides:       bundled(libxml2) = 2.12.10
 Provides:       bundled(libxslt) = 1.1.43
 Provides:       bundled(mpg123) = 1.33.0
@@ -234,7 +234,7 @@ Provides:       bundled(openldap2) = 2.5.18
 Provides:       bundled(tiff) = 4.7.1
 Provides:       bundled(tomcrypt) = 1.18.2
 Provides:       bundled(tommath) = 1.1.0
-Provides:       bundled(vkd3d) = 1.17
+Provides:       bundled(vkd3d) = 1.18
 Provides:       bundled(zlib) = 1.3.1
 
 %description
