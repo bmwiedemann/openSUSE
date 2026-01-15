@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Mon Dec 29 10:16:30 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
-- Skip tests failing on recent python interpreters
+- Skip tests failing on recent python interpreters (bsc#1256318)
 
 -------------------------------------------------------------------
 Mon Aug 25 14:08:25 UTC 2025 - Markéta Machová <mmachova@suse.com>
