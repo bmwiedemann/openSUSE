@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Mon Dec 29 10:10:20 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
-- Update to 2.8.1
+- Update to 2.8.1 (bsc#1256316)
   * FIX: Changes in tests to accommodate latest Python HTML parser changes.
 
 -------------------------------------------------------------------
