@@ -1,7 +1,7 @@
 #
 # spec file for package woodpecker
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %define server_executable_name woodpecker-server
 
 Name:           woodpecker
-Version:        3.12.0
+Version:        3.13.0
 Release:        0
 Summary:        Simple yet powerful CI/CD engine with great extensibility
 License:        Apache-2.0
@@ -39,7 +39,7 @@ Source4:        Makefile
 Source11:       woodpecker-server.service
 Source12:       woodpecker-agent.service
 Source21:       system-user-woodpecker.conf
-BuildRequires:  go >= 1.23.4
+BuildRequires:  golang(API) >= 1.25
 
 %description
 Woodpecker is a simple yet powerful CI/CD engine with great extensibility

@@ -1,4 +1,225 @@
 -------------------------------------------------------------------
+Wed Jan 14 13:44:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.13.0:
+  * Security
+    - Update quic-go/qpack & quic-go/quic-go [#5885]
+    - fix: updateRepoPermissions to cleanup old permissions [#5790]
+  * Features
+    - Add cli contexts [#5929]
+  * Enhancement
+    - Allow to add a note to secrets [#5898]
+    - Log addon errors [#5923]
+    - Custom vars for crons [#5897]
+    - Allow to disable a cron [#5896]
+    - Add background to status icons [#5880]
+    - Fix dead page and cleanup router [#5519]
+    - feat(kubernetes): add support for pod affinity and
+      anti-affinity configurations [#5854]
+    - Public key endpoint [#5860]
+    - Allow untrusted repo to still drop network for steps [#5820]
+    - Add support for headless Kubernetes services [#5764]
+    - server/forge: rename var to be more descriptive and test
+      value [#5806]
+    - add events query parameter to badge url [#5728]
+    - Extract default step-builder options into server [#5785]
+    - feat: include CI_COMMIT_TAG env in deployment events [#5773]
+  * Bug Fixes
+    - Use repo-user for api call of cron [#5967]
+    - Close opened file on LogFind [#5961]
+    - Delete/Deactivate repo ignores missing repo at forge [#5953]
+    - Correctly update repo permissions [#5928]
+    - Revert repos pagination for GH and BB [#5924]
+    - fix: send correct argument to rpc call for name/url [#5922]
+    - fix: secrets-file flag [#5909]
+    - Do not run crons for disabled repos [#5884]
+    - Show warning if there is no workflow to run [#5883]
+    - fix(datastore): fix pagination bug in workflowsDelete
+      skipping records [#5881]
+    - Remove rounded corners in fullscreen log view [#5879]
+    - Fix some ListItems and Queue view background in dark mode
+      [#5878]
+    - Make disabled checkboxes match overall style [#5869]
+    - Fix CLI trusted updating [#5861]
+    - Send configuration as part of the request for external
+      configuration [#5831]
+    - fix(bitbucketdatacenter): fix CI_COMMIT_PULL_REQUEST [#5769]
+    - On set/get of repo make sure forge_id is set and on fetch
+      respected [#5717]
+    - Improve repair endpoints [#5767]
+  * Documentation
+    - chore(deps): lock file maintenance [#5963]
+    - chore(deps): update dependency @types/node to v24.10.7
+      [#5954]
+    - chore(deps): update dependency @types/react to v19.2.8
+      [#5941]
+    - chore(deps): update dependency @types/node to v24.10.6
+      [#5935]
+    - chore(deps): update dependency @types/node to v24.10.5
+      [#5933]
+    - fix(docs): update woodpecker-cli secret command [#5927]
+    - Update Docs and nix-flake to reflect current dev environment
+      [#5926]
+    - Update Helm chart installation command [#5872]
+    - docs: add BunnyCDN Cache Purge Plugin [#5906]
+    - chore(deps): update dependency isomorphic-dompurify to
+      v2.35.0 [#5904]
+    - chore(deps): update dependency @types/node to v24.10.4
+      [#5862]
+    - chore(deps): update docs npm deps non-major [#5855]
+    - chore(deps): update docs npm deps non-major [#5829]
+    - Update link for Codeberg Pages Deploy plugin [#5811]
+    - chore(deps): update dependency yaml to v2.8.2 [#5803]
+    - chore(deps): update dependency prettier to v3.7.3 [#5799]
+    - chore(deps): update docs npm deps non-major [#5791]
+    - chore(deps): update dependency isomorphic-dompurify to
+      v2.33.0 [#5778]
+    - chore(deps): update docs npm deps non-major [#5774]
+  * Dependency
+    - fix(deps): update module gitlab.com/gitlab-org/api/client-go
+      to v1.14.0 [#5969]
+    - fix(deps): update golang-packages [#5966]
+    - fix(deps): update module gitlab.com/gitlab-org/api/client-go
+      to v1.12.0 [#5962]
+    - chore(deps): update dependency simple-icons to v16.5.0
+      [#5957]
+    - fix(deps): update golang-packages [#5956]
+    - chore(deps): update dependency @types/node to v24.10.7
+      [#5955]
+    - fix(deps): update module github.com/google/go-github/v80 to
+      v81 [#5946]
+    - chore(deps): update woodpeckerci/plugin-git docker tag to
+      v2.8.0 [#5945]
+    - chore(deps): update golangci/golangci-lint docker tag to
+      v2.8.0 [#5944]
+    - chore(deps): update docker.io/woodpeckerci/plugin-codecov
+      docker tag to v2.2.0 [#5943]
+    - chore(deps): update web npm deps non-major [#5942]
+    - chore(deps): update
+      docker.io/woodpeckerci/plugin-surge-preview docker tag to
+      v1.4.2 [#5938]
+    - chore(deps): update
+      docker.io/woodpeckerci/plugin-ready-release-go docker tag to
+      v3.4.1 [#5937]
+    - chore(deps): update
+      docker.io/woodpeckerci/plugin-docker-buildx docker tag to
+      v6.0.4 [#5936]
+    - chore(deps): update
+      docker.io/woodpeckerci/plugin-editorconfig-checker docker tag
+      to v0.3.3 [#5934]
+    - fix(deps): update module gitlab.com/gitlab-org/api/client-go
+      to v1.11.0 [#5919]
+    - chore(deps): lock file maintenance [#5916]
+    - chore(deps): update dependency simple-icons to v16.4.0
+      [#5915]
+    - fix(deps): update module github.com/mattn/go-sqlite3 to
+      v1.14.33 [#5910]
+    - chore(deps): lock file maintenance [#5913]
+    - chore(deps): lock file maintenance [#5907]
+    - chore(deps): update dependency simple-icons to v16.3.0
+      [#5905]
+    - chore(deps): update web npm deps non-major [#5903]
+    - fix(deps): update module google.golang.org/grpc to v1.78.0
+      [#5901]
+    - chore(deps): lock file maintenance [#5895]
+    - fix(deps): update module github.com/tink-crypto/tink-go/v2 to
+      v2.6.0 [#5894]
+    - chore(deps): update dependency @antfu/eslint-config to v6.7.2
+      [#5893]
+    - chore(deps): update dependency vue-i18n to v11.2.7 [#5892]
+    - chore(deps): update dependency vue-tsc to v3.2.0 [#5891]
+    - Migrate to maintained tink-go [#5886]
+    - chore(deps): update web npm deps non-major [#5887]
+    - fix(deps): update module gitlab.com/gitlab-org/api/client-go
+      to v1.10.0 [#5888]
+    - fix(deps): update golang-packages [#5877]
+    - fix(deps): update module gitlab.com/gitlab-org/api/client-go
+      to v1.9.0 [#5873]
+    - fix(deps): update golang-packages [#5870]
+    - chore(deps): lock file maintenance [#5868]
+    - fix(deps): update module github.com/gdgvda/cron to v0.6.0
+      [#5867]
+    - chore(deps): update dependency @intlify/unplugin-vue-i18n to
+      v11.0.3 [#5866]
+    - chore(deps): update dependency @antfu/eslint-config to v6.7.1
+      [#5865]
+    - chore(deps): update web npm deps non-major [#5864]
+    - chore(deps): update dependency @types/node to v24.10.4
+      [#5863]
+    - chore(deps): update web npm deps non-major [#5859]
+    - chore(deps): update pre-commit hook
+      igorshubovych/markdownlint-cli to v0.47.0 [#5858]
+    - fix(deps): update golang-packages [#5856]
+    - fix(deps): update golang-packages [#5851]
+    - fix(deps): update golang-packages [#5849]
+    - chore(deps): lock file maintenance [#5847]
+    - chore(deps): update web npm deps non-major [#5837]
+    - chore(deps): update dependency golangci/golangci-lint to
+      v2.7.2 [#5845]
+    - chore(deps): update pre-commit hook golangci/golangci-lint to
+      v2.7.2 [#5846]
+    - fix(deps): update module gitlab.com/gitlab-org/api/client-go
+      to v1.7.0 [#5840]
+    - fix(deps): update module github.com/google/go-github/v79 to
+      v80 [#5838]
+    - chore(deps): update pre-commit non-major [#5836]
+    - chore(deps): update docker.io/lycheeverse/lychee docker tag
+      to v0.22.0 [#5833]
+    - chore(deps): update dependency golangci/golangci-lint to
+      v2.7.1 [#5832]
+    - chore(deps): update docker.io/alpine docker tag to v3.23
+      [#5830]
+    - chore(deps): update docker.io/woodpeckerci/plugin-trivy
+      docker tag to v1.4.4 [#5828]
+    - chore(deps): update dependency golang to v1.25.5 [#5827]
+    - fix(deps): update golang-packages [#5816]
+    - fix(deps): update module gitlab.com/gitlab-org/api/client-go
+      to v1.3.1 [#5812]
+    - fix(deps): update module gitlab.com/gitlab-org/api/client-go
+      to v1.3.0 [#5807]
+    - chore(deps): lock file maintenance [#5808]
+    - chore(deps): update pre-commit hook rbubley/mirrors-prettier
+      to v3.7.3 [#5804]
+    - fix(deps): update dependency simple-icons to v16 [#5802]
+    - fix(deps): update module github.com/docker/cli to
+      v29.1.1+incompatible [#5801]
+    - chore(deps): update dependency prettier to v3.7.3 [#5800]
+    - chore(deps): update pre-commit hook rbubley/mirrors-prettier
+      to v3.7.2 [#5795]
+    - fix(deps): update module gitlab.com/gitlab-org/api/client-go
+      to v1 [#5794]
+    - chore(deps): update web npm deps non-major [#5792]
+    - chore(deps): update pre-commit hook rbubley/mirrors-prettier
+      to v3.7.1 [#5793]
+    - fix(deps): update module github.com/docker/cli to
+      v29.1.0+incompatible [#5789]
+    - fix(deps): update golang-packages [#5787]
+    - chore(deps): lock file maintenance [#5784]
+    - chore(deps): update dependency simple-icons to v15.22.0
+      [#5782]
+    - chore(deps): update dependency vue-tsc to v3.1.5 [#5781]
+    - chore(deps): update dependency @types/lodash to v4.17.21
+      [#5780]
+    - chore(deps): update dependency vue-i18n to v11.2.1 [#5779]
+    - chore(deps): update pre-commit hook
+      igorshubovych/markdownlint-cli to v0.46.0 [#5776]
+    - chore(deps): update web npm deps non-major [#5775]
+    - fix(deps): update golang-packages [#5770]
+    - fix(deps): update golang-packages [#5765]
+  * Misc
+    - Revert "Send configuration as part of the request for
+      external configuration" [#5835]
+    - Allow packagers to set WebUI root to custom path [#5809]
+    - fix(queue): force agent cancellation on lease expiration
+      [#5823]
+    - Extract interval into composition [#5818]
+    - Fix outdated Makefile target [#5817]
+    - Makefile: add target to generate man pages [#5810]
+    - Split make install targets [#5796]
+    - Use golangci docker image [#5797]
+    - Clarify envvars documentation [#5788]
+
+-------------------------------------------------------------------
 Wed Nov 19 05:55:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.12.0:
