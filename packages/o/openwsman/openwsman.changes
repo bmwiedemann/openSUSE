@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 15 14:36:39 UTC 2026 - Klaus Kämpf <kkaempf@suse.de>
+
+- fix Ruby 4.0 build
+  fix-rdoc-call.diff
+
+-------------------------------------------------------------------
 Fri Oct 17 15:00:44 UTC 2025 - Klaus Kämpf <kkaempf@suse.de>
 
 - fix rdoc 3.4 compatibility
