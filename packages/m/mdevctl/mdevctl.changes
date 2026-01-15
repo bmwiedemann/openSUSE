@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 14 14:28:19 MST 2026 - carnold@suse.com
+
+- Fix up the source services files to function by updating the
+  _service file and adding a _servicedata file.
+
+-------------------------------------------------------------------
 Fri Jan  9 10:14:45 MST 2026 - carnold@suse.com
 
 - Convert vendor.tar.gz to vendor.tar.zst to reduce the size of the

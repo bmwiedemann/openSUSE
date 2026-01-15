@@ -107,4 +107,12 @@ in virtual machines.</comment>
     <comment>Convert vendor.tar.gz to vendor.tar.zst to reduce the size of the tarball (jsc#PED-14625)</comment>
     <requestid>1326395</requestid>
   </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>966464fdab6c7ce66e487713a4659560</srcmd5>
+    <version>1.4.0</version>
+    <time>1768491831</time>
+    <user>anag_factory</user>
+    <comment>Update the _service file and add the _servicedata file for easy updates using source services. No code change.</comment>
+    <requestid>1327301</requestid>
+  </revision>
 </revisionlist>

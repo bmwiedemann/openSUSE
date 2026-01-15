@@ -1,26 +1,18 @@
 <services>
-  <service name="obs_scm" mode="disabled">
-    <param name="url">https://github.com/mdevctl/mdevctl</param>
-    <param name="scm">git</param>
+  <service name="tar_scm" mode="manual">
     <param name="filename">mdevctl</param>
     <param name="revision">v1.4.0</param>
+    <param name="scm">git</param>
+    <param name="submodules">disable</param>
+    <param name="url">https://github.com/mdevctl/mdevctl.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">[v]?([^\+]+)(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
   </service>
-
-  <service name="set_version" mode="disabled"/>
-
-  <service name="tar" mode="disabled"/>
-
-  <service name="recompress" mode="disabled">
+  <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
     <param name="compression">gz</param>
   </service>
-
-  <service name="cargo_vendor" mode="disabled">
-     <param name="srcdir">mdevctl</param>
-     <param name="compression">gz</param>
-     <param name="update">true</param>
-  </service>
+  <service name="set_version" mode="manual"/>
 </services>
