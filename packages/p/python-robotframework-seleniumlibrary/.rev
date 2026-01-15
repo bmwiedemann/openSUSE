@@ -7,4 +7,14 @@
     <comment>The Harbor/SUSE Private Registry testsuite requires this and it might also be useful for others.</comment>
     <requestid>1306778</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2ae5f97213ee5f8c93fba2d375bb251e</srcmd5>
+    <version>6.8.0</version>
+    <time>1768492062</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.8.0:
+  * Option to return embed screenshot while using Capture Page Screenshot
+  * Loosen restriction on the upper Python version</comment>
+    <requestid>1327308</requestid>
+  </revision>
 </revisionlist>
