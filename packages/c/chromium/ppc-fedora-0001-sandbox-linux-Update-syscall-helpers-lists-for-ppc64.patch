@@ -58,7 +58,7 @@ Index: chromium-136.0.7103.48/sandbox/linux/seccomp-bpf-helpers/syscall_paramete
      !defined(PTRACE_GET_THREAD_AREA)
  // Also include asm/ptrace-abi.h since ptrace.h in older libc (for instance
  // the one in Ubuntu 16.04 LTS) is missing PTRACE_GET_THREAD_AREA.
-@@ -50,6 +50,11 @@
+@@ -52,6 +52,11 @@
  #include <asm/ptrace-abi.h>
  #endif
  
@@ -68,8 +68,8 @@ Index: chromium-136.0.7103.48/sandbox/linux/seccomp-bpf-helpers/syscall_paramete
 +#endif
 +
  #if BUILDFLAG(IS_ANDROID)
+ #include "base/android/background_thread_pool_field_trial.h"
  
- #if !defined(F_DUPFD_CLOEXEC)
 @@ -107,6 +112,15 @@
  #endif
  }
@@ -631,5 +631,3 @@ Index: chromium-136.0.7103.48/sandbox/linux/services/syscall_wrappers.cc
    // CONFIG_CLONE_BACKWARDS defined.
    return syscall(__NR_clone, flags, child_stack, ptid, tls, ctid);
  #endif
---- syscall_parameters_restrictions.cc	2025/10/01 15:32:29	1.1
-+++ syscall_parameters_restrictions.cc	2025/10/01 15:32:47

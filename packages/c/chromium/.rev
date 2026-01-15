@@ -6074,4 +6074,41 @@ Thu Jun  12 09:05:12 UTC 2025 - Bernhard Wiedemann &lt;bwiedemann@suse.com&gt;
     <comment>Chromium 143.0.7499.192 (boo#1256067)</comment>
     <requestid>1325666</requestid>
   </revision>
+  <revision rev="496" vrev="1">
+    <srcmd5>2b650fa00498a456f5de7349d2a5001e</srcmd5>
+    <version>144.0.7559.59</version>
+    <time>1768491882</time>
+    <user>anag_factory</user>
+    <comment>- Chromium 144.0.7559.59 (boo#1256614)
+  * CVE-2026-0899: Out of bounds memory access in V8
+  * CVE-2026-0900: Inappropriate implementation in V8
+  * CVE-2026-0901: Inappropriate implementation in Blink
+  * CVE-2026-0902: Inappropriate implementation in V8
+  * CVE-2026-0903: Insufficient validation of untrusted input in Downloads
+  * CVE-2026-0904: Incorrect security UI in Digital Credentials
+  * CVE-2026-0905: Insufficient policy enforcement in Network
+  * CVE-2026-0906: Incorrect security UI
+  * CVE-2026-0907: Incorrect security UI in Split View
+  * CVE-2026-0908: Use after free in ANGLE
+- added patches:
+  * chromium-144-rust-adler2.patch
+    (with system rust-1.86, we still have adler2)
+  * chromium-144-revert_gfx_value_or.patch
+    (looks like third_party/skia is outdated)
+  * chromium-144-revert-libxml-2.13.patch
+    (conditionally applied if libxml &lt; 2.13)
+- modified patches:
+  * chromium-125-compiler.patch
+  * chromium-127-bindgen.patch
+  * chromium-127-rust-clanglib.patch
+    (rust nightly features are now guarded, drop hunk)
+  * gcc-enable-lto.patch
+  * ppc-fedora-0001-sandbox-linux-Update-syscall-helpers-lists-for-ppc64.patch
+  * ppc-fedora-0002-regenerate-xnn-buildgn.patch
+    (regenerated)
+- dropped patches:
+  * ppc-fedora-fix-clang-selection.patch (upstream)
+  * chromium-140-keep-__rust_no_alloc_shim_is_unstable.patch</comment>
+    <requestid>1327197</requestid>
+  </revision>
 </revisionlist>

@@ -59,6 +59,7 @@
 %bcond_without qt6
 %bcond_with system_ffmpeg
 %endif
+%bcond_without noopenh264
 %define ffmpeg_version 59
 %bcond_with system_zstd
 %define node_ver 22
@@ -96,6 +97,11 @@
 %else
 %bcond_with libxml2_2_12
 %endif
+%if %{pkg_vcmp libxml2-devel >= 2.13}
+%bcond_without libxml2_2_13
+%else
+%bcond_with libxml2_2_13
+%endif
 %if %{pkg_vcmp gtk4-devel >= 4.19}
 %bcond_without gtk4_4_19
 %else
@@ -118,7 +124,7 @@
 %global official_build 1
 
 Name:           chromium%{n_suffix}
-Version:        143.0.7499.192
+Version:        144.0.7559.59
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -167,15 +173,14 @@ Patch371:       chromium-133-bring_back_and_disable_allowlist.patch
 Patch373:       chromium-134-type-mismatch-error.patch
 Patch375:       chromium-131-fix-qt-ui.pach
 Patch377:       chromium-139-deterministic.patch
-Patch379:       chromium-140-keep-__rust_no_alloc_shim_is_unstable.patch
 Patch380:       chromium-141-use_libcxx_modules.patch
 Patch381:       chromium-141-csss_style_sheet.patch
 Patch382:       chromium-141-no_cxx_modules.patch
-Patch383:       chromium-142-rust-revert_should_panic.patch
 Patch385:       chromium-142-rust_no_sanitize.patch
 Patch386:       chromium-143-libpng-unbundle.patch
 Patch387:       chromium-143-cookie_string_view.patch
 Patch389:       chromium-143-revert_rust_is_multiple_of.patch
+Patch390:       chromium-144-revert_gfx_value_or.patch
 # conditionally applied patches ppc64le only
 Patch401:       ppc-fedora-add-ppc64-architecture-string.patch
 Patch402:       ppc-fedora-0001-linux-seccomp-bpf-ppc64-glibc-workaround-in-SIGSYS-h.patch
@@ -216,7 +221,6 @@ Patch436:       ppc-fedora-skia-vsx-instructions.patch
 Patch437:       ppc-fedora-0001-Implement-support-for-ppc64-on-Linux.patch
 Patch438:       ppc-fedora-0001-Implement-support-for-PPC64-on-Linux.patch
 Patch439:       ppc-fedora-0001-Force-baseline-POWER8-AltiVec-VSX-CPU-features-when-.patch
-Patch440:       ppc-fedora-fix-clang-selection.patch
 Patch442:       ppc-fedora-fix-rust-linking.patch
 Patch443:       ppc-fedora-fix-breakpad-compile.patch
 Patch444:       ppc-fedora-fix-partition-alloc-compile.patch
@@ -239,8 +243,12 @@ Patch460:       ppc-debian-0003-third_party-ffmpeg-Add-ppc64-generated-config.pa
 # conditionally applied patches
 # patch where libxml < 2.12
 Patch1010:      chromium-124-system-libxml.patch
-# patch where rust <= 1.85
+# patch where libxml < 2.13
+Patch1011:      chromium-144-revert-libxml-2.13.patch
+# patch where rust = 1.85
 Patch1030:      chromium-134-revert-rust-adler2.patch
+# patch where rust = 1.86
+Patch1031:      chromium-144-rust-adler2.patch
 # gtk4 is too old
 Patch1040:      gtk-414.patch
 Patch1041:      gtk-414-2.patch
@@ -410,6 +418,9 @@ BuildRequires:  pkgconfig(freetype2)
 %if %{with system_zlib}
 BuildRequires:  pkgconfig(zlib)
 %endif
+%if %{with noopenh264}
+BuildRequires: pkgconfig(openh264)
+%endif
 %if %{with gtk4}
 BuildRequires:  pkgconfig(atk-bridge-2.0)
 BuildRequires:  pkgconfig(gtk4)
@@ -499,8 +510,16 @@ WebDriver is an open source tool for automated testing of webapps across many br
 %patch -p1 -P 1010
 %endif
 
+%if %{without libxml2_2_13}
+%patch -p1 -P 1011
+%endif
+
 %if "%{?rust_version}" == "1.85"
 %patch -p1 -P 1030
+%endif
+
+%if "%{?rust_version}" == "1.86"
+%patch -p1 -P 1031
 %endif
 
 %if %{without gtk4_4_19}
@@ -723,6 +742,7 @@ keeplibs=(
     third_party/pdfium/third_party/libtiff
     third_party/perfetto
     third_party/perfetto/protos/third_party/chromium
+    third_party/perfetto/protos/third_party/pprof
     third_party/perfetto/protos/third_party/simpleperf
     third_party/pffft
     third_party/ply
@@ -989,6 +1009,9 @@ gn_system_libraries+=( zstd )
 %if %{with system_zlib}
 gn_system_libraries+=( zlib )
 %endif
+%if %{with noopenh264}
+gn_system_libraries+=( openh264 )
+%endif
 
 build/linux/unbundle/replace_gn_files.py --system-libraries ${gn_system_libraries[@]}
 
@@ -1042,12 +1065,16 @@ myconf_gn+=" use_partition_alloc=true"
 myconf_gn+=" disable_fieldtrial_testing_config=true"
 myconf_gn+=" use_unofficial_version_number=false"
 myconf_gn+=" use_vaapi=true"
-myconf_gn+=" use_sysroot=false"
 myconf_gn+=" treat_warnings_as_errors=false"
 myconf_gn+=" enable_widevine=true"
 myconf_gn+=" use_dbus=true"
+%if %{with noopenh264}
+myconf_gn+=" media_use_openh264=true"
+myconf_gn+=" rtc_use_h264=true"
+%else
 myconf_gn+=" media_use_openh264=false"
 myconf_gn+=" rtc_use_h264=false"
+%endif
 myconf_gn+=" use_v8_context_snapshot=true"
 myconf_gn+=" v8_use_external_startup_data=true"
 myconf_gn+=" rust_sysroot_absolute=\"%{_prefix}\""
@@ -1115,6 +1142,7 @@ myconf_gn+=" google_api_key=\"${google_api_key}\""
 if [ "$clang_version" -lt 20 ] ; then
 myconf_gn+=" clang_warning_suppression_file=\"\""
 fi
+myconf_gn+=" chrome_pgo_phase=0"
 
 # GN does not support passing cflags:
 #  https://bugs.chromium.org/p/chromium/issues/detail?id=642016

@@ -8,14 +8,16 @@ we'd expect libclang to be in the same directory as bindgen. That
 fix should probably go upstream.
 
 
---- a/build/rust/rust_bindgen.gni
-+++ b/build/rust/rust_bindgen.gni
-@@ -18,7 +18,7 @@ if (host_os == "win") {
+Index: chromium-144.0.7524.0/build/rust/rust_bindgen.gni
+===================================================================
+--- chromium-144.0.7524.0.orig/build/rust/rust_bindgen.gni
++++ chromium-144.0.7524.0/build/rust/rust_bindgen.gni
+@@ -19,7 +19,7 @@ if (host_os == "win") {
  
  # On Windows, the libclang.dll is beside the bindgen.exe, otherwise it is in
  # ../lib.
 -_libclang_path = rust_bindgen_root
 +_libclang_path = clang_base_path
- if (host_os == "win") {
-   _libclang_path += "/bin"
- } else {
+ if (!use_chromium_rust_toolchain &&
+     (current_cpu == "ppc64" || current_cpu == "s390x")) {
+   _libclang_path = rust_sysroot_absolute + "/lib64"

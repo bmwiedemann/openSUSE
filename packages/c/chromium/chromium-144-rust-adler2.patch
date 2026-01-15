@@ -1,0 +1,11 @@
+--- chromium-144.0.7524.0/build/rust/std/BUILD.gn	2025/11/17 13:27:46	1.1
++++ chromium-144.0.7524.0/build/rust/std/BUILD.gn	2025/11/17 13:27:58
+@@ -58,7 +58,7 @@
+     if (rustc_nightly_capability) {
+       stdlib_files += [ "adler2" ]
+     } else {
+-      stdlib_files += [ "adler" ]
++      stdlib_files += [ "adler2" ]
+     }
+   }
+ 

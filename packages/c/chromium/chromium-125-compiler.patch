@@ -1,8 +1,8 @@
-Index: chromium-142.0.7444.3/build/config/compiler/BUILD.gn
+Index: chromium-144.0.7524.0/build/config/compiler/BUILD.gn
 ===================================================================
---- chromium-142.0.7444.3.orig/build/config/compiler/BUILD.gn
-+++ chromium-142.0.7444.3/build/config/compiler/BUILD.gn
-@@ -345,9 +345,7 @@ config("compiler") {
+--- chromium-144.0.7524.0.orig/build/config/compiler/BUILD.gn
++++ chromium-144.0.7524.0/build/config/compiler/BUILD.gn
+@@ -357,9 +357,7 @@ config("compiler") {
  
    configs += [
      # See the definitions below.
@@ -12,7 +12,7 @@ Index: chromium-142.0.7444.3/build/config/compiler/BUILD.gn
      ":compiler_codegen",
      ":compiler_deterministic",
      ":clang_warning_suppression",
-@@ -657,61 +655,6 @@ config("compiler") {
+@@ -669,61 +667,6 @@ config("compiler") {
      ldflags += [ "-Wl,-z,keep-text-section-prefix" ]
    }
  
@@ -74,7 +74,7 @@ Index: chromium-142.0.7444.3/build/config/compiler/BUILD.gn
    # C11/C++11 compiler flags setup.
    # ---------------------------
    if (is_linux || is_chromeos || is_android || current_os == "aix") {
-@@ -1683,43 +1626,6 @@ config("compiler_deterministic") {
+@@ -1671,43 +1614,6 @@ config("compiler_deterministic") {
      }
    }
  
@@ -118,7 +118,7 @@ Index: chromium-142.0.7444.3/build/config/compiler/BUILD.gn
    # Tells the compiler not to use absolute paths when passing the default
    # paths to the tools it invokes. We don't want this because we don't
    # really need it and it can mess up the RBE cache entries.
-@@ -1746,88 +1652,6 @@ config("compiler_deterministic") {
+@@ -1740,88 +1646,6 @@ config("compiler_deterministic") {
    }
  }
  
@@ -207,7 +207,7 @@ Index: chromium-142.0.7444.3/build/config/compiler/BUILD.gn
  # Controls the usage of a warning suppression mapping (WSM) file to suppress
  # warnings based on the path of the file they come from. It's controlled by the
  # `clang_warning_suppression_file` gn argument , which points to a text file
-@@ -2318,10 +2142,6 @@ config("chromium_code") {
+@@ -2338,10 +2162,6 @@ config("chromium_code") {
      }
    } else {
      cflags = [ "-Wall" ]
@@ -218,14 +218,14 @@ Index: chromium-142.0.7444.3/build/config/compiler/BUILD.gn
  
      # In Chromium code, we define __STDC_foo_MACROS in order to get the
      # C99 macros on Mac and Linux.
-@@ -2330,24 +2150,6 @@ config("chromium_code") {
+@@ -2350,24 +2170,6 @@ config("chromium_code") {
        "__STDC_FORMAT_MACROS",
      ]
  
 -    if (!is_debug && !using_sanitizer && current_cpu != "s390x" &&
--        current_cpu != "s390" && current_cpu != "ppc64" &&
--        current_cpu != "mips" && current_cpu != "mips64" &&
--        current_cpu != "riscv64" && current_cpu != "loong64") {
+-        current_cpu != "ppc64" && current_cpu != "mips" &&
+-        current_cpu != "mips64" && current_cpu != "riscv64" &&
+-        current_cpu != "loong64") {
 -      # Non-chromium code is not guaranteed to compile cleanly with
 -      # _FORTIFY_SOURCE. Also, fortified build may fail when optimizations are
 -      # disabled, so only do that for Release build.
@@ -243,7 +243,7 @@ Index: chromium-142.0.7444.3/build/config/compiler/BUILD.gn
      if (is_apple) {
        cflags_objc = [ "-Wimplicit-retain-self" ]
        cflags_objcc = [ "-Wimplicit-retain-self" ]
-@@ -2775,7 +2577,8 @@ config("default_stack_frames") {
+@@ -2795,7 +2597,8 @@ config("default_stack_frames") {
  # [0]: https://pinpoint-dot-chromeperf.appspot.com/job/147634a8be0000
  # [1]: https://pinpoint-dot-chromeperf.appspot.com/job/132bc772be0000
  # [2]: https://crrev.com/c/5447532
@@ -253,7 +253,7 @@ Index: chromium-142.0.7444.3/build/config/compiler/BUILD.gn
    if (is_win) {
      # clang-cl's /O2 corresponds to clang's -O3, and really want -O2 for
      # consistency with the other platforms.
-@@ -2824,7 +2627,8 @@ config("optimize") {
+@@ -2844,7 +2647,8 @@ config("optimize") {
  }
  
  # Turn off optimizations.
@@ -263,7 +263,7 @@ Index: chromium-142.0.7444.3/build/config/compiler/BUILD.gn
    if (is_win) {
      cflags = [
        "/Od",  # Disable optimization.
-@@ -2859,7 +2663,8 @@ config("no_optimize") {
+@@ -2879,7 +2683,8 @@ config("no_optimize") {
  # Turns up the optimization level. Used to explicitly enable -O2 instead of
  # -Os for select targets on platforms that use optimize_for_size. No-op
  # elsewhere.
@@ -273,7 +273,7 @@ Index: chromium-142.0.7444.3/build/config/compiler/BUILD.gn
    ldflags = common_optimize_on_ldflags
    if (is_win) {
      # Favor speed over size, /O2 must be before the common flags.
-@@ -2880,7 +2685,8 @@ config("optimize_max") {
+@@ -2900,7 +2705,8 @@ config("optimize_max") {
  #
  # TODO(crbug.com/41259697) - rework how all of these configs are related
  # so that we don't need this disclaimer.
@@ -283,7 +283,7 @@ Index: chromium-142.0.7444.3/build/config/compiler/BUILD.gn
    ldflags = common_optimize_on_ldflags
    if (is_win) {
      # Favor speed over size, /O2 must be before the common flags.
-@@ -2897,7 +2703,8 @@ config("optimize_speed") {
+@@ -2917,7 +2723,8 @@ config("optimize_speed") {
    rustflags = [ "-Copt-level=3" ]
  }
  
@@ -293,7 +293,7 @@ Index: chromium-142.0.7444.3/build/config/compiler/BUILD.gn
    cflags = [ "-O1" ] + common_optimize_on_cflags
    rustflags = [ "-Copt-level=1" ]
    ldflags = common_optimize_on_ldflags
-@@ -3024,7 +2831,8 @@ config("win_pdbaltpath") {
+@@ -3044,7 +2851,8 @@ config("win_pdbaltpath") {
  }
  
  # Full symbols.
@@ -303,7 +303,7 @@ Index: chromium-142.0.7444.3/build/config/compiler/BUILD.gn
    rustflags = []
    configs = []
    if (is_win) {
-@@ -3189,7 +2997,8 @@ config("symbols") {
+@@ -3209,7 +3017,8 @@ config("symbols") {
  # Minimal symbols.
  # This config guarantees to hold symbol for stack trace which are shown to user
  # when crash happens in unittests running on buildbot.
@@ -313,7 +313,7 @@ Index: chromium-142.0.7444.3/build/config/compiler/BUILD.gn
    rustflags = []
    if (is_win) {
      # Functions, files, and line tables only.
-@@ -3265,7 +3074,8 @@ config("minimal_symbols") {
+@@ -3285,7 +3094,8 @@ config("minimal_symbols") {
  # This configuration contains function names only. That is, the compiler is
  # told to not generate debug information and the linker then just puts function
  # names in the final debug information.
