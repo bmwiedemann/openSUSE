@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan 15 12:58:34 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20260115.cd41d07:
+  * sdbootutil: ignore devices that aren't listed in /etc/crypttab
+  * Print message about debug log to stderr
+
+-------------------------------------------------------------------
+Wed Jan 14 10:44:23 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20260114.371a8b3:
+  * Create the /var/lib/sdbootutil directory during installation
+  * Make fde-tools file optional
+
+-------------------------------------------------------------------
 Thu Jan 08 19:51:41 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20260108.be38224:
