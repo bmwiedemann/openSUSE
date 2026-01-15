@@ -1,7 +1,7 @@
 #
 # spec file for package liboggz
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,6 +27,7 @@ Group:          System/Libraries
 URL:            https://xiph.org/oggz/
 Source0:        https://downloads.xiph.org/releases/liboggz/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
+Patch0:         0001-oggz-comment-Set-last-header-flag-for-vorbis-comment.patch
 BuildRequires:  doxygen
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(ogg)

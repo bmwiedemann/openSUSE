@@ -1,0 +1,50 @@
+From c01b93c23654f6942f391e84e297af6f3dfb9df7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Mon, 12 Jan 2026 17:32:36 +0100
+Subject: [PATCH] oggz-comment: Set last-header flag for vorbis comment in flac
+ when needed
+
+The comment may be trailed by other headers like padding or picture,
+but if it is the last one/only header the appropriate flag has to be set.
+
+See liboggz#18.
+---
+ src/tools/oggz-comment.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/src/tools/oggz-comment.c b/src/tools/oggz-comment.c
+index 2ac4edd..572cea6 100644
+--- a/src/tools/oggz-comment.c
++++ b/src/tools/oggz-comment.c
+@@ -272,6 +272,7 @@ read_packet (OGGZ * oggz, oggz_packet * zp, long serialno, void * user_data)
+   const char * vendor;
+   int flush, copy_op_flush = 0;
+   int ret;
++  int flac_last_header = 0;
+ 
+ #ifdef USE_FLUSH_NEXT
+   flush = flush_next;
+@@ -302,6 +303,11 @@ read_packet (OGGZ * oggz, oggz_packet * zp, long serialno, void * user_data)
+       copy_op_flush = flush;
+       flush = 1;
+     }
++    /* For FLAC, the last header packet has to be flagged */
++    if (oggz_stream_get_content (oggz, serialno) == OGGZ_CONTENT_FLAC &&
++        oggz_stream_get_numheaders (oggz, serialno) == 1) {
++        flac_last_header = 1;
++    }
+ 
+     vendor = oggz_comment_get_vendor (ocdata->reader, serialno);
+ 
+@@ -316,7 +322,7 @@ read_packet (OGGZ * oggz, oggz_packet * zp, long serialno, void * user_data)
+     oggz_comment_set_vendor (ocdata->writer, serialno, vendor);
+ 
+     /* Generate the replacement comments packet */
+-    op = oggz_comments_generate (ocdata->writer, serialno, 0);
++    op = oggz_comments_generate (ocdata->writer, serialno, flac_last_header);
+   }
+ 
+   /* Feed the packet into the writer */
+-- 
+2.52.0
+
