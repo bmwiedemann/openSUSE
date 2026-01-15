@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Jan 14 10:12:53 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.52.0:
+  + Verify file permissions for private connections to prevent
+    unprivileged user from using other user's certs (CVE-2025-9615).
+  + Fixes CVE-2025-9615 in combination with NetworkManager 1.52.2,
+    1.54.3 or 1.56.0 and later. See:
+    https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/merge_requests/2324
+  + Fixes Warning g_dbus_method_invocation_take_error: assertion
+    'error != NULL' failed for some strongswan failed IPsec
+    connections.
+  + Merge translations from NetworkManager-fortisslvpn,
+    NetworkManager-libreswan and NetworkManager-openvpn
+
+-------------------------------------------------------------------
+Tue Dec 30 10:34:57 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.20.22:
+  + Add group read permission to /etc/ipsec.d/ipsec.nm-l2tp.secrets.
+    Required when Gentoo strongswan package is built with the
+    "non-root" local USE flag, otherwise charon daemon does not
+    have the privileges to read the ipsec.nm-l2tp.secrets file.
+  + Stored PSK is no longer visible in auth-dialog.
+  + Stored machine certificate passphrase is no longer visible in
+    auth-dialog.
+  + Check the presence of the L2TP editor plugin and provide
+    feedback via the capabilities.
+  + Wide character password fix.
+  + Port auth-dialog Gtk4
+  + Update and improve zh_TW Traditional Chinese locale.
+
+-------------------------------------------------------------------
 Tue Sep 23 08:06:42 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.20.20:
