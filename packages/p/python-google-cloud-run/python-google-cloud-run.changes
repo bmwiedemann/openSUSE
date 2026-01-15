@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Jan 15 14:43:06 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.14.0
+  * auto-enable mTLS when supported certificates are detected
+  * check Python and dependency versions in generated GAPICs
+- from version 0.13.0
+  * A comment for field `custom_audiences` in message `.google.cloud.run.v2.WorkerPool` is changed
+  * A comment for field `limits` in message `.google.cloud.run.v2.ResourceRequirements` is changed
+  * A comment for field `etag` in message `.google.cloud.run.v2.Service` is changed
+  * A comment for field `etag` in message `.google.cloud.run.v2.Job` is changed
+  * A comment for field `items` in message `.google.cloud.run.v2.SecretVolumeSource` is changed
+  * A comment for field `invoker_iam_disabled` in message `.google.cloud.run.v2.Service` is changed
+  * A comment for field `etag` in message `.google.cloud.run.v2.WorkerPool` is changed
+  * A comment for field `observed_generation` in message `.google.cloud.run.v2.WorkerPool` is changed
+  * A comment for field `name` in message `.google.cloud.run.v2.Service` is changed
+  * A comment for field `latest_ready_revision` in message `.google.cloud.run.v2.WorkerPool` is changed
+  * A comment for field `reconciling` in message `.google.cloud.run.v2.WorkerPool` is changed
+  * add SourceCode proto to Run container config
+- from version 0.12.0
+  * Add support for Python 3.14
+  * Deprecate credentials_file argument
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Fri Oct 17 12:33:06 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.11.0

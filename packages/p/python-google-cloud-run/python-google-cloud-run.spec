@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-cloud-run
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-run
-Version:        0.11.0
+Version:        0.14.0
 Release:        0
 Summary:        Google Cloud Run API client library
 License:        Apache-2.0
 URL:            https://github.com/googleapis/google-cloud-python/tree/main/packages/google-cloud-run
 Source:         https://files.pythonhosted.org/packages/source/g/google_cloud_run/google_cloud_run-%{version}.tar.gz
+BuildRequires:  %{python_module grpcio >= 1.33.2 if %python-base < 3.14}
+BuildRequires:  %{python_module grpcio >= 1.75.1 if %python-base >= 3.14}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
@@ -33,6 +35,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-google-api-core >= 1.34.1
 Requires:       python-google-auth >= 2.14.1
 Requires:       python-grpc-google-iam-v1 >= 0.12.4
+Requires:       python-grpcio >= 1.33.2
 Requires:       python-proto-plus >= 1.22.3
 Requires:       python-protobuf >= 3.20.2
 BuildArch:      noarch
