@@ -1,7 +1,7 @@
 #
 # spec file for package folks
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %define with_zeitgeist  0
 
 Name:           folks
-Version:        0.15.9
+Version:        0.15.12
 Release:        0
 Summary:        Library to create metacontacts from multiple sources
 License:        LGPL-2.1-or-later
@@ -41,7 +41,7 @@ BuildRequires:  readline-devel
 BuildRequires:  vala >= 0.22.0.28
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gee-0.8) >= 0.8.6
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.44.0
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.80.0
 BuildRequires:  pkgconfig(libebook-1.2) >= 3.38.0
 BuildRequires:  pkgconfig(libebook-contacts-1.2) >= 3.38.0
 BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.38.0

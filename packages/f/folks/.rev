@@ -511,4 +511,20 @@
     <comment></comment>
     <requestid>1203594</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>8d1c9d3c2aabd3f5874d2b1e863f2e9b</srcmd5>
+    <version>0.15.12</version>
+    <time>1768491805</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.15.12:
+  + Major changes: backend: Adapt to evolution-data-server 3.59.1
+    API changes
+  + Bugs fixed:
+    - CI fixes
+    - eds backend: Correct patch for evolution-data-server 3.59.1
+      API changes
+    - meson: Set minimum GLib version to 2.80
+</comment>
+    <requestid>1327225</requestid>
+  </revision>
 </revisionlist>

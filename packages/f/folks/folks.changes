@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan 14 08:04:53 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.15.12:
+  + Major changes: backend: Adapt to evolution-data-server 3.59.1
+    API changes
+  + Bugs fixed:
+    - CI fixes
+    - eds backend: Correct patch for evolution-data-server 3.59.1
+      API changes
+    - meson: Set minimum GLib version to 2.80
+
+-------------------------------------------------------------------
 Mon Aug 19 11:29:16 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire gettext-devel instead of gettext: allow OBS to
