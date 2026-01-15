@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jan 15 14:38:13 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.34.0
+  * support mTLS certificates when available (#1566)
+- from version 2.33.0
+  * Add AwsKinesisFailureReason.ApiViolationReason (ac68093)
+  * Add tags to Subscription, Topic, and CreateSnapshotRequest messages
+    for use in CreateSubscription, CreateTopic, and CreateSnapshot requests
+    respectively (ac68093)
+  * Annotate some resource fields with their corresponding API types (ac68093)
+  * Deprecate credentials_file argument (ac68093)
+  * A comment for field `received_messages` in message
+    `.google.pubsub.v1.StreamingPullResponse` is changed (ac68093)
+- from version 2.32.0
+  * Adds Python 3.14 support (#1512)
+  * Debug logs (#1460)
+  * Support the protocol version in StreamingPullRequest (#1455)
+  * Ignore future warnings on python versions (#1546)
+- Stop installing fixup scripts which have been removed upstream
+- Update BuildRequires from setup.py
+
+-------------------------------------------------------------------
 Mon Oct 20 09:30:26 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.31.1

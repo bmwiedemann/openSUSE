@@ -36,4 +36,29 @@
 * Update readme links (#1409) (forwarded request 1312347 from glaubitz)</comment>
     <requestid>1312379</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cc784fdff7c4b24c16366a4789ead423</srcmd5>
+    <version>2.34.0</version>
+    <time>1768492941</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.34.0
+  * support mTLS certificates when available (#1566)
+- from version 2.33.0
+  * Add AwsKinesisFailureReason.ApiViolationReason (ac68093)
+  * Add tags to Subscription, Topic, and CreateSnapshotRequest messages
+    for use in CreateSubscription, CreateTopic, and CreateSnapshot requests
+    respectively (ac68093)
+  * Annotate some resource fields with their corresponding API types (ac68093)
+  * Deprecate credentials_file argument (ac68093)
+  * A comment for field `received_messages` in message
+    `.google.pubsub.v1.StreamingPullResponse` is changed (ac68093)
+- from version 2.32.0
+  * Adds Python 3.14 support (#1512)
+  * Debug logs (#1460)
+  * Support the protocol version in StreamingPullRequest (#1455)
+  * Ignore future warnings on python versions (#1546)
+- Stop installing fixup scripts which have been removed upstream
+- Update BuildRequires from setup.py (forwarded request 1327418 from glaubitz)</comment>
+    <requestid>1327431</requestid>
+  </revision>
 </revisionlist>
