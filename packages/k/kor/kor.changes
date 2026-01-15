@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Jan 15 05:56:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.7:
+  * chore: bump chart version (#552)
+  * chore(deps): bump k8s.io/apiextensions-apiserver from 0.34.3 to
+    0.35.0 (#540)
+  * Update API extensions client initialization in tests (#550)
+  * The script discovered false-positive default resources in the
+    cluster and saved them to the exceptions/ directory: (#551)
+  * chore: replace deprecated fake.NewSimpleClientset with
+    fake.NewClientset (#549)
+  * chore: update go to 1.25 (#543)
+  * fix: resolve golangci-lint errcheck and staticcheck violations
+    (#547)
+  * fix: Add `endpointslices` to list of `resources` in chart roles
+    (#545)
+  * korpro (#542)
+  * feat: separate Helm chart releases from application releases
+    (#537)
+  * fix(helm): move imagePullPolicy and terminationMessagePath to
+    proper … (#535)
+  * feat: Detect pods in crashloopbackoff (#534)
+  * docs: add pods to reamde table and sort
+  * chore(deps): bump k8s.io/apiextensions-apiserver from 0.34.2 to
+    0.34.3 (#529)
+  * chore(deps): bump github.com/spf13/cobra from 1.10.1 to 1.10.2
+    (#527)
+  * exceptions: add new resource for EKS extension metrics
+    apiserver (#524)
+
+-------------------------------------------------------------------
 Thu Nov 20 05:48:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.6:
