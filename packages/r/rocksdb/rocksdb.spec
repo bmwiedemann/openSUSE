@@ -1,7 +1,7 @@
 #
 # spec file for package rocksdb
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define lib_name librocksdb10
 %bcond_with jemalloc
 Name:           rocksdb
-Version:        10.7.5
+Version:        10.9.1
 Release:        0
 Summary:        Library for embeddable, persistent and fast key-value store
 License:        (Apache-2.0 OR GPL-2.0-only) AND BSD-2-Clause

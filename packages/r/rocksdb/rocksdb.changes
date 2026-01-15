@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sat Jan 10 16:03:39 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 10.9.1:
+  * Fix resumable compaction incorrectly allowing resumption from a truncated 
+    range deletion that is not well handled currently.
+
+- update to 10.9.0:
+  * Added an auto-tuning feature for DB manifest file size 
+  * Add a new option allow_trivial_move in CompactionOptions to allow 
+    CompactFiles to perform trivial move if possible.
+  * To reduce risk of ODR violations or similar, ROCKSDB_USING_THREAD_STATUS 
+    has been removed from public headers and replaced with static const bool 
+    ThreadStatus::kEnabled.
+  * PosixWritableFile now repositions the seek pointer to the new end of file
+    after a call to Truncate.
+  * Updated standalone range deletion L0 file compaction behavior to avoid 
+    compacting with any newer L0 files (which is expensive and not useful)
+  * Fix a bug where compaction with range deletion can persist kTypeMaxValid
+    in MANIFEST as file metadata.
+  * Fixed a bug where DB::GetSortedWalFiles() could hang when waiting for a 
+    purge operation that found nothing to do
+  * Fixed a bug in MultiScan where max_sequential_skip_in_iterations could 
+    cause the iterator to seek backward to already-unpinned blocks
+  * Fixed a bug for WAL_ttl_seconds > 0 use cases where the newest archived WAL
+    files could be incorrectly deleted when the system clock moved backwards.
+  * Added optimization that allowed for the asynchronous prefetching of all 
+    data outlined in a multiscan iterator.
+
+- update to 10.8.3:
+  * Add a GetColumnFamilyMetaData API variant in DB to get the SST files 
+    intersecting a given key range.
+
+- update to 10.8.0:
+  * Add kFSPrefetch to FSSupportedOps enum to allow file systems to indicate
+    prefetch support capability, avoiding unnecessary prefetch system calls 
+    on file systems that don't support them.
+  * Added experimental support OpenAndCompactOptions::allow_resumption for
+    resumable compaction that persists progress during OpenAndCompact(),
+    allowing interrupted compactions to resume from the last progress 
+    persitence. The default behavior is to not persist progress.
+  * Allow specifying output temperature in CompactionOptions
+  * Added DB::FlushWAL(const FlushWALOptions&) 
+  * The MultiScan API contract is updated. 
+  * kChangeTemperature FIFO compaction will now honor compaction_target_temp
+    to all levels regardless of cf_options::last_level_temperature
+  * Allow UDIs with a non BytewiseComparator
+  * Fix incorrect MultiScan seek error status due to bugs in handling range
+    limit falling between adjacent SST files key range.
+  * Fix a bug in Page unpinning in MultiScan
+  * Fixed a performance regression in LZ4 compression that started in version 10.6.0
+
+-------------------------------------------------------------------
 Sat Oct 25 17:53:17 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 10.7.5:
