@@ -146,4 +146,12 @@ and python-pydantic-settings</comment>
     <comment>- Only require pytest-subtests with pytest &lt; 9.</comment>
     <requestid>1321489</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5e86e908a24ae99ae09c6476d004640d</srcmd5>
+    <version>0.31.1</version>
+    <time>1768491829</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1327291</requestid>
+  </revision>
 </revisionlist>

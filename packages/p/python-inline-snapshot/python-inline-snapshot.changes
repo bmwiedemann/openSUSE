@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Dec  9 21:37:47 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.31.1:
+  - Format commands with pipelines (using |) now properly fail
+    when any command in the pipeline returns a non-zero exit code
+    (#320). Previously, only the last command's exit code was
+    considered, which could allow formatting to succeed even when
+    intermediate commands failed.
+- Update to 0.31.0:
+  - BREAKING CHANGE: An exception is now raised when you use
+    external() in files that are not inside your tests/ directory
+    (or any other directory that you can configure with
+    tool.inline-snapshot.test-dir).
+  - Users are now notified if they use the same UUID for multiple
+    external snapshots, which can happen when copying one test as
+    a template for a new test. The snapshots should be reset to
+    an empty external() and recreated with inline-snapshot.
+  - Updated --snapshot flag to --inline-snapshot in session hints.
+  - The lookup for external snapshots has been improved.
+- Update to 0.30.1:
+  - Disable ensure ascii in json.dump to support non-ASCII
+    characters in external files
+- Update to 0.30.0:
+  - The test-dir config option can now also be a list of paths
+  - added Python 3.14 support
+- Update to 0.29.4:
+  - External.run_inline() now uses the same logic as
+    External.run_pytest.
+  - inline-snapshot now supports different Python file encodings
+    and recognizes encoding comments such as # -*- coding:
+    windows-1251 -*-.
+- Update to 0.29.3:
+  - xdist is now detected properly
+- Update to 0.29.2:
+  - fixed string formatting with black which caused invalid
+    snapshots
+    assert " a " == snapshot("a")
+
+-------------------------------------------------------------------
 Mon Dec  8 04:29:16 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Only require pytest-subtests with pytest < 9.
