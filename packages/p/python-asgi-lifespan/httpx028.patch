@@ -1,0 +1,13 @@
+Index: asgi-lifespan-2.1.0/tests/test_manager.py
+===================================================================
+--- asgi-lifespan-2.1.0.orig/tests/test_manager.py
++++ asgi-lifespan-2.1.0/tests/test_manager.py
+@@ -241,7 +241,7 @@ async def test_lifespan_state_async_cm()
+ 
+     async with LifespanManager(app) as manager:
+         async with httpx.AsyncClient(
+-            app=manager.app, base_url="http://example.org"
++            transport=httpx.ASGITransport(manager.app), base_url="http://example.org"
+         ) as client:
+             response = await client.get("/get")
+             assert response.status_code == 200
