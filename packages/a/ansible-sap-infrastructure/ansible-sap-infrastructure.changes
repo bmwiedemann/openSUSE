@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Jan 13 08:17:39 UTC 2026 - Marcel Mamula <marcel.mamula@suse.com>
+
+- 1.3.1
+  - Minor Changes:
+    - collection - Update workflows with dedicated github actions
+    - collection - Add contributors list and sanity ignore files for future-proofing
+    - collection - Add linting rule to ignore stricter var naming rule in 2.20
+    - collection - Add kubernetes.core 5.3.0 to requirements
+    - sap_vm_provision - Remove ansible.posix dependency for issue 126
+    - sap_vm_provision - Add SLES 16 images, fix sshd_config and add python311 workaround
+    - sap_vm_provision/kubevirt_vm - Make usage of hugepages configurable
+    - sap_hypervisor_node_preconfigure - Update until conditional for ansible-core 2.19
+    - sap_hypervisor_node_preconfigure - Add check for webhook endpoint availability
+  - Bugfixes:
+    - sap_hypervisor_node_preconfigure/kubevirt_vm - Fix installation of CNV operator
+
+- 1.3.0
+  - Minor Changes:
+    - collection - Adjustment of the roles for ansible-core 2.19
+    - collection - Update ansible-lint actions and configuration
+    - collection - Update Documentation
+    - sap_vm_provision - Add variable validations
+    - sap_vm_provision - Append VMware notes for Issue 82
+    - sap_vm_provision - Update SLES images and add SLES 15 SP7
+  - Bugfixes:
+    - sap_hypervisor_node_preconfigure - Fix ansible-lint errors from issue 101
+    - sap_vm_provision - Removed update-ca-certificates for issue 119
+
+- 1.2.0
+  - Minor Changes:
+    - collection - Readme update to align with project readme update
+    - sap_hypervisor_node_preconfigure - Readme update to align with project readme update
+    - sap_hypervisor_node_preconfigure - Updated redhat_ocpv
+    - sap_vm_provision - Updated kubevirt_vm
+
+-------------------------------------------------------------------
 Tue Jul  8 13:44:21 UTC 2025 - Marcel Mamula <marcel.mamula@suse.com>
 
 - 1.1.3
@@ -9,7 +45,7 @@ Tue Jul  8 13:44:21 UTC 2025 - Marcel Mamula <marcel.mamula@suse.com>
 Thu Apr 10 14:42:45 UTC 2025 - Marcel Mamula <marcel.mamula@suse.com>
 
 - 1.1.2
-  - Bugfixes
+  - Bugfixes:
     - collection - Bump vmware.vmware_rest to 4.5.0
     - collection - Use amazon.aws.ec2_placement_group
     - collection - implement changelogs/changelog.yaml
