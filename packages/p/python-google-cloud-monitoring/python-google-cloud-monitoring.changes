@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 15 14:27:33 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.29.0
+  * auto-enable mTLS when supported certificates are detected
+  * check Python and dependency versions in generated GAPICs
+
+-------------------------------------------------------------------
 Mon Oct 20 09:26:46 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.28.0

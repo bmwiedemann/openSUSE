@@ -28,4 +28,14 @@
 - Update BuildRequires and Requires from setup.py (forwarded request 1312346 from glaubitz)</comment>
     <requestid>1312378</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5494c8047d9d79980c8bfacc8f5e2024</srcmd5>
+    <version>2.29.0</version>
+    <time>1768492941</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.29.0
+  * auto-enable mTLS when supported certificates are detected
+  * check Python and dependency versions in generated GAPICs (forwarded request 1327412 from glaubitz)</comment>
+    <requestid>1327430</requestid>
+  </revision>
 </revisionlist>

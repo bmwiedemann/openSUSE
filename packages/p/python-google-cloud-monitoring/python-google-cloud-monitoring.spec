@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-cloud-monitoring
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-monitoring
-Version:        2.28.0
+Version:        2.29.0
 Release:        0
 Summary:        Google Cloud Monitoring API client library
 License:        Apache-2.0
