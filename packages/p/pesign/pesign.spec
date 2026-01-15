@@ -1,7 +1,7 @@
 #
 # spec file for package pesign
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -80,7 +80,6 @@ export CPPFLAGS="%{optflags} -D_GLIBCXX_ASSERTIONS"
 make %{?_smp_mflags} CFLAGS="%{optflags}" LDFLAGS="${LDFLAGS} -pie" libexecdir=%{_libexecdir}
 
 %install
-mkdir -p %{buildroot}%{_localstatedir}/lib/pesign
 mkdir -p %{buildroot}%{_sbindir}
 make INSTALLROOT=%{buildroot} \
      UNITDIR=%{_unitdir} \
@@ -132,12 +131,11 @@ systemd-tmpfiles --create %{_tmpfilesdir}/pesign.conf || :
 %{_libexecdir}/pesign/pesign-rpmbuild-helper
 %dir %{_sysconfdir}/pki/
 %dir %attr(0775,pesign,pesign) %{_sysconfdir}/pki/pesign
-%ghost %dir %attr(0770,pesign,pesign) /run/%{name}
-%dir %attr(0770,pesign,pesign) %{_localstatedir}/lib/%{name}
 
 %files systemd
 %{_sbindir}/rcpesign
 %{_unitdir}/pesign.service
 %{_tmpfilesdir}/pesign.conf
+%ghost %dir %attr(0770,pesign,pesign) /run/%{name}
 
 %changelog

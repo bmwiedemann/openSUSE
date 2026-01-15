@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 13 08:13:01 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Use /var/lib/empty as the the home directory of the pesign system
+  user and remove /var/lib/pesign (jsc#PED-14755)
+- Move '/run/pesign' to pesign-systemd which creates the directory
+  in the post script
+
+-------------------------------------------------------------------
 Mon Mar  3 02:52:58 UTC 2025 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add pesign-bsc1238023-initialize-pwdata.patch to fall back to

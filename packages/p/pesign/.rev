@@ -411,4 +411,15 @@ issuer's certificate is not available (forwarded request 183593 from gary_lin)</
     <comment></comment>
     <requestid>1249964</requestid>
   </revision>
+  <revision rev="50" vrev="9">
+    <srcmd5>0c9adb0a7af3241de89b3f9be6ef9453</srcmd5>
+    <version>116</version>
+    <time>1768491820</time>
+    <user>anag_factory</user>
+    <comment>- Use /var/lib/empty as the the home directory of the pesign system
+  user and remove /var/lib/pesign (jsc#PED-14755)
+- Move '/run/pesign' to pesign-systemd which creates the directory
+  in the post script</comment>
+    <requestid>1327105</requestid>
+  </revision>
 </revisionlist>
