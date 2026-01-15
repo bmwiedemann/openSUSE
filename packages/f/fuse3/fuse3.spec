@@ -1,7 +1,7 @@
 #
 # spec file for package fuse3
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 Name:           fuse3
+%define lname   libfuse3-4
 Version:        3.18.1
 Release:        0
 Summary:        Reference implementation of the "Filesystem in Userspace"
@@ -44,11 +45,13 @@ This package contains helper programs for using FUSE mounts.
 FUSE file systems are typically implemented as a standalone
 applications in their own right and are packaged separately.
 
-%package -n libfuse3-4
+%package -n %lname
 Summary:        Library of FUSE, the User space File System for GNU/Linux and BSD
 Group:          System/Filesystems
+# The library does an execve; oh well
+Requires:       %_bindir/fusermount3
 
-%description -n libfuse3-4
+%description -n %lname
 FUSE (Filesystem in Userspace) is an interface by the Linux kernel
 for userspace programs to export a filesystem to the kernel.
 
@@ -66,9 +69,9 @@ This package contains the documentation for FUSE (userspace filesystem).
 %package devel
 Summary:        Development package for FUSE (userspace filesystem) modules
 Group:          Development/Languages/C and C++
+Requires:       %lname = %version
 Requires:       fuse3 = %version
 Requires:       glibc-devel
-Requires:       libfuse3-4 = %version
 
 %description devel
 This package contains all include files, libraries and configuration
@@ -101,7 +104,7 @@ rm -Rfv "%buildroot/%_prefix/lib/udev" "%buildroot/%_initddir"
 %verifyscript
 %verify_permissions -e %_bindir/fusermount3
 
-%ldconfig_scriptlets -n libfuse3-4
+%ldconfig_scriptlets -n %lname
 
 %files
 %license LICENSE GPL2.txt LGPL2.txt
@@ -112,7 +115,7 @@ rm -Rfv "%buildroot/%_prefix/lib/udev" "%buildroot/%_initddir"
 %_mandir/man1/*
 %_mandir/man8/*
 
-%files -n libfuse3-4
+%files -n %lname
 %_libdir/libfuse3.so.*
 
 %files doc

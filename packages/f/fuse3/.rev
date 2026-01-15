@@ -311,4 +311,12 @@
     <comment>- Update to release 3.18.1</comment>
     <requestid>1323849</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>b05be6d9eba630e38fd75081bc2c8026</srcmd5>
+    <version>3.18.1</version>
+    <time>1768491811</time>
+    <user>anag_factory</user>
+    <comment>- Add dependency from libfuse3-4 to fusermount3 program [boo#1256466]</comment>
+    <requestid>1327080</requestid>
+  </revision>
 </revisionlist>
