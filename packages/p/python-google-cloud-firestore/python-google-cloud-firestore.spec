@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-cloud-firestore
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-firestore
-Version:        2.21.0
+Version:        2.23.0
 Release:        0
 Summary:        Google Cloud Firestore API client library
 License:        Apache-2.0
@@ -54,21 +54,11 @@ Google Cloud Firestore API client library
 
 %install
 %pyproject_install
-%python_clone -a %{buildroot}%{_bindir}/fixup_firestore_admin_v1_keywords.py
-%python_clone -a %{buildroot}%{_bindir}/fixup_firestore_v1_keywords.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-
-%post
-%python_install_alternative fixup_firestore_admin_v1_keywords.py fixup_firestore_v1_keywords.py
-
-%postun
-%python_uninstall_alternative fixup_firestore_admin_v1_keywords.py
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%python_alternative %{_bindir}/fixup_firestore_admin_v1_keywords.py
-%python_alternative %{_bindir}/fixup_firestore_v1_keywords.py
 %{python_sitelib}/google/cloud/firestore*
 %{python_sitelib}/google_cloud_firestore-%{version}.dist-info
 

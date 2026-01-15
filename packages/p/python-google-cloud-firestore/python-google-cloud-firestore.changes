@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jan 15 12:50:18 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.23.0
+  * pipelines preview (#1156)
+  * stream generator type (#1148)
+- from version 2.22.0
+  * support mTLS certificates when available (#1140)
+  * Add support for Python 3.14 (#1110)
+  * Expose tags field in Database and RestoreDatabaseRequest public protos (#1074)
+  * Added read_time as a parameter to various calls (synchronous/base classes) (#1050)
+  * improve typing (#1136)
+  * update the async transactional types (#1066)
+- Stop installing fixup scripts which have been removed upstream
+
+-------------------------------------------------------------------
 Fri Oct 17 11:51:12 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.21.0

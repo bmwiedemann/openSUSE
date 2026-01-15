@@ -25,4 +25,22 @@
   * Add missing DocumentReference return value to .document (#1053) (forwarded request 1312009 from glaubitz)</comment>
     <requestid>1312041</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4ab5ca3dcd77002dddf2fe1645f8b231</srcmd5>
+    <version>2.23.0</version>
+    <time>1768492937</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.23.0
+  * pipelines preview (#1156)
+  * stream generator type (#1148)
+- from version 2.22.0
+  * support mTLS certificates when available (#1140)
+  * Add support for Python 3.14 (#1110)
+  * Expose tags field in Database and RestoreDatabaseRequest public protos (#1074)
+  * Added read_time as a parameter to various calls (synchronous/base classes) (#1050)
+  * improve typing (#1136)
+  * update the async transactional types (#1066)
+- Stop installing fixup scripts which have been removed upstream (forwarded request 1327380 from glaubitz)</comment>
+    <requestid>1327388</requestid>
+  </revision>
 </revisionlist>
