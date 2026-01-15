@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Jan  7 13:52:46 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.15.1
+  * Batch automatic translation can now be manually triggered at project language,
+    category or component level
+  * Added ability to completely disable the admin contact form by setting CONTACT_FORM
+    to "disabled"
+  * Added new Ollama machinery tool for local Ollama AI model integration
+  * XLIFF 2.0, Nextcloud Apps JSON files, JavaScript Resource Files (RESJSON), and TOML
+    are now supported file formats
+  * Added disk usage overview in Performance report
+  * Compatibility with Git SHA256 repositories
+  * Improper invitation validation upon accepting
+    (CVE 2025-64725 / GHSA-m6hq-f4w9-qrjj)
+  * Server-Side Request Forgery while cloning repository
+    (CVE 2025-66407 / GHSA-hfpv-mc5v-p9mm)
+  * Over‑permissive webhook endpoint enabling mass repository updates plus component
+    enumeration
+    (CVE 2025-67492 / GHSA-pj86-258h-qrvf)
+  * Notification settings disclosure via Weblate API
+    (CVE 2025-67715 / GHSA-3pmh-24wp-xpf4)
+  * Git config file overwrite remote code execution
+    (CVE 2025-68398 / GHSA-8vcg-cfxj-p5m3)
+  * Arbitrary file read via symbolic links
+    (CVE 2025-68279 / GHSA-g925-f788-4jh7)
+  * Python 3.12 or newer is now required
+  * GLib 2.80 or newer is now required
+- Drop merged patches:
+  * CVE-2025-68398_2.patch
+  * CVE-2025-68398_1.patch
+  * site-url.patch
+
+-------------------------------------------------------------------
 Mon Dec 29 16:11:28 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream patches CVE-2025-68398_1.patch and CVE-2025-68398_2.patch
