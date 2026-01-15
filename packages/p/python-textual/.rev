@@ -23,4 +23,41 @@
     <comment></comment>
     <requestid>1300699</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c47946f02826fc7817bb31de26f4715c</srcmd5>
+    <version>7.2.0</version>
+    <time>1768492056</time>
+    <user>anag_factory</user>
+    <comment>- Convert to multibuild to break a build cycle with python-pytest-textual-snapshot
+
+- Update to 7.2.0:
+  - The help panel will look at ancestor widgets for a HELP
+    attribute if there isn't one on the focused widget #6320
+- Update to 7.1.0:
+  - Fixed issue with missing refresh
+  - Added Widget.BLANK which can optimize rendering of large
+    widgets (typically containers that scroll)
+- Update to 7.0.3:
+  - Fixed performance issue with large scrollable containers
+    #6317
+- Update to 7.0.2:
+  - Removed superfluous style udpates when setting display
+    attribute. #6316
+- Update to 7.0.1:
+  - Added a refresh_styles boolean to the ScreenResult message
+    which reduces style updates when popping screens
+- Update to 7.0.0:
+  - Node.update_node_styles has grown a animate parameter
+  - Added atom-one-dark and atom-one-light themes @NSPC911 #6301
+- Update to 6.12.0:
+  - Fixed unnecessary style update when popping screens, which
+    may have caused noticable pauses changing screens (with a lot
+    of widgets) #6304
+  - Promoted private _update_styes to update_node_styles #6304
+- Update to 6.11.0:
+  - Added a TextSelected event. #6290
+- Update to 6.10.0:
+  - Fixed broken themes #6286</comment>
+    <requestid>1327345</requestid>
+  </revision>
 </revisionlist>

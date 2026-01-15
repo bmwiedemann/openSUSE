@@ -1,7 +1,7 @@
 #
 # spec file for package python-textual
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,17 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
 %{?sle15_python_module_pythons}
-Name:           python-textual
-Version:        5.3.0
+Name:           python-textual%{psuffix}
+Version:        7.2.0
 Release:        0
 Summary:        TUI framework for Python
 License:        MIT
@@ -28,22 +36,19 @@ Source:         https://files.pythonhosted.org/packages/source/t/textual/textual
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
-# SECTION runtime requirements
-BuildRequires:  %{python_module markdown-it-py >= 2.1.0}
+%if %{with test}
+BuildRequires:  %{python_module jinja2}
 BuildRequires:  %{python_module linkify-it-py}
-BuildRequires:  %{python_module platformdirs >= 3.6.0 with %python-platformdirs < 5}
-BuildRequires:  %{python_module pygments >= 2.19.2 with %python-pygments < 2.20}
-BuildRequires:  %{python_module rich >= 13.3.3}
-BuildRequires:  %{python_module typing-extensions >= 4.4.0 with %python-typing-extensions < 5}
-# /SECTION
-# SECTION test requirements
 BuildRequires:  %{python_module pytest >= 8.3.1}
 BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-textual-snapshot >= 1.1.0}
 BuildRequires:  %{python_module pytest-xdist >= 3.6.1}
+BuildRequires:  %{python_module syrupy}
+BuildRequires:  %{python_module textual = %{version}}
 BuildRequires:  %{python_module tree-sitter}
 BuildRequires:  tree-sitter
 BuildRequires:  tree-sitter-python
-# /SECTION
+%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 #
@@ -52,6 +57,7 @@ Requires:       python-rich >= 13.3.3
 Requires:       (python-platformdirs >= 3.6.0 with python-platformdirs < 5)
 Requires:       (python-pygments >= 2.19.2 with python-pygments < 2.20)
 Requires:       (python-typing-extensions >= 4.4.0 with python-typing-extensions < 5)
+Suggests:       python-jinja2
 Suggests:       python-tree-sitter
 Suggests:       python-tree-sitter-languages
 BuildArch:      noarch
@@ -77,10 +83,13 @@ and web experience.
 %pyproject_wheel
 
 %install
+%if %{without test}
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
+%if %{with test}
 # fixture 'snap_compare' not found
 rm -f tests/snapshot_tests/test_snapshots.py
 IGNORED_CHECKS="test_textual_env_var"
@@ -110,11 +119,14 @@ IGNORED_CHECKS="${IGNORED_CHECKS} or test_setting_builtin_themes"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_setting_unknown_theme_raises_exception"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_registering_and_setting_theme"
 %pytest -k "not (${IGNORED_CHECKS})"
+%endif
 
+%if %{without test}
 %files %{python_files}
 %license LICENSE
 %doc README.md
 %{python_sitelib}/textual
 %{python_sitelib}/textual-%{version}*-info
+%endif
 
 %changelog
