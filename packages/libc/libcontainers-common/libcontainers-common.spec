@@ -17,17 +17,17 @@
 
 
 # commonver - version from containers/common
-%define commonver 0.62.3
+%define commonver 0.64.1
 # storagever - version from containers/storage
-%define storagever 1.57.2
+%define storagever 1.59.1
 # imagever - version from containers/image
-%define imagever 5.34.3
+%define imagever 5.36.0
 # skopeover - version from containers/skopeo
-%define skopeover 1.14.4
+%define skopeover 1.21.0
 # https://github.com/containers/shortnames
 %define shortnamesver 8ce3e7d11ca3425a9899fc7291f4256ba5da225c
 Name:           libcontainers-common
-Version:        20250409
+Version:        20260112
 Release:        0
 Summary:        Configuration files common to github.com/containers
 License:        Apache-2.0
