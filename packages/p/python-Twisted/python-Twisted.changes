@@ -2,6 +2,7 @@
 Mon Dec 29 09:46:30 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Add createElement.patch to fix tests with fixed python interpreters
+  (bsc#1256325)
 
 -------------------------------------------------------------------
 Fri Sep 26 09:06:02 UTC 2025 - Markéta Machová <mmachova@suse.com>
