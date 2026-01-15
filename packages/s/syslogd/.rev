@@ -921,4 +921,13 @@
   (Accordingly to Packaging for Immutable Mode - Best Practices)</comment>
     <requestid>1326325</requestid>
   </revision>
+  <revision rev="109" vrev="808">
+    <srcmd5>e028b0e44c3776d76692e762c014b4f5</srcmd5>
+    <version>unknown</version>
+    <time>1768491832</time>
+    <user>anag_factory</user>
+    <comment>- Avoid restarting klog.service and klogd.service in postun as
+  both services should be started once (boo#1243035#c14)</comment>
+    <requestid>1327331</requestid>
+  </revision>
 </revisionlist>

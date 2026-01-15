@@ -328,7 +328,7 @@ done
 %endif
 
 %postun -n syslog-service
-%service_del_postun klog.service
+%service_del_postun_without_restart klog.service
 
 %pre -n klogd
 %service_add_pre klogd.service
@@ -349,7 +349,7 @@ done
 %service_del_preun klogd.service
 
 %postun -n klogd
-%service_del_postun klogd.service
+%service_del_postun_without_restart klogd.service
 
 %files
 %defattr(-,root,root)

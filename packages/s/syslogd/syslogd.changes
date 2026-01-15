@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 15 07:39:03 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Avoid restarting klog.service and klogd.service in postun as
+  both services should be started once (boo#1243035#c14)
+
+-------------------------------------------------------------------
 Fri Jan  9 11:02:05 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Do not masked out the already existing %ghost file entry
