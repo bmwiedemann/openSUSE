@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 14 13:54:51 UTC 2026 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Added simplescreenrecorder-ffmpeg-memory-leak.patch that closes
+  bnc#1254146 (upstream merged) [gh#MaartenBaert/ssr#1075].
+
+-------------------------------------------------------------------
 Mon Oct 13 06:32:29 UTC 2025 - munix9@googlemail.com
 
 - Add simplescreenrecorder-ffmpeg-8-compat.patch: ffmpeg 8

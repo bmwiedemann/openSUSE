@@ -1,0 +1,13 @@
+diff --git a/src/AV/Output/BaseEncoder.cpp b/src/AV/Output/BaseEncoder.cpp
+index 5e8f5c82..d2ef34c7 100644
+--- a/src/AV/Output/BaseEncoder.cpp
++++ b/src/AV/Output/BaseEncoder.cpp
+@@ -178,6 +178,8 @@ void BaseEncoder::Free() {
+ 	if(m_codec_opened) {
+ #if !SSR_USE_AVCODEC_CLOSE_DEPRECATED
+ 		avcodec_close(m_codec_context);
++#else
++		avcodec_free_context(&m_codec_context);
+ #endif
+ 		m_codec_opened = false;
+ 	}

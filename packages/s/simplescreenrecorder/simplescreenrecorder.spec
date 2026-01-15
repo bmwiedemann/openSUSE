@@ -30,6 +30,8 @@ Patch0:         https://github.com/MaartenBaert/ssr/commit/768957a8de1534f0aa91b
 Patch1:         simplescreenrecorder-ffmpeg-7-compat.patch
 # PATCH-FIX-UPSTREAM munix9@googlemail.com -- Compatibility for ffmpeg 8; patch taken from upstream commits
 Patch2:         simplescreenrecorder-ffmpeg-8-compat.patch
+# PATCH-FIX-UPSTREAM Memory leak via ffmpeg fix; patch taken from upstream merged commits
+Patch3:         simplescreenrecorder-ffmpeg-memory-leak.patch
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
