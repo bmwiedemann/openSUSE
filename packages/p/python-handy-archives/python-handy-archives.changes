@@ -3,7 +3,7 @@ Fri Oct 17 09:41:50 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Skip some zip64 tests that fails with latest python interpreter
   because there are more consistency checks in zipfile
-  gh#python/cpython#139700
+  gh#python/cpython#139700 bsc#1256310
 
 -------------------------------------------------------------------
 Thu Feb 27 10:10:12 UTC 2025 - ecsos <ecsos@opensuse.org>
