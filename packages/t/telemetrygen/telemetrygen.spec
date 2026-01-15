@@ -1,7 +1,7 @@
 #
 # spec file for package telemetrygen
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           telemetrygen
-Version:        0.137.0
+Version:        0.142.0
 Release:        0
 Summary:        Telemetry generator for OpenTelemetry
 License:        Apache-2.0
