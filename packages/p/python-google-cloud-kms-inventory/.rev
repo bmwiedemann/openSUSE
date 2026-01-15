@@ -37,4 +37,14 @@
     <comment></comment>
     <requestid>1312066</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c22e9a1cb81f019f75718de851288306</srcmd5>
+    <version>0.4.0</version>
+    <time>1768492939</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.4.0
+  * auto-enable mTLS when supported certificates are detected
+  * check Python and dependency versions in generated GAPICs (forwarded request 1327408 from glaubitz)</comment>
+    <requestid>1327426</requestid>
+  </revision>
 </revisionlist>
