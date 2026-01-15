@@ -831,4 +831,14 @@
     <comment>add a bunch of patches (CVE-2023-6601, bsc#1220545)</comment>
     <requestid>1326658</requestid>
   </revision>
+  <revision rev="91" vrev="11">
+    <srcmd5>acf1832e8133cafb3a0ef1aa17d3368b</srcmd5>
+    <version>4.4.6</version>
+    <time>1768492103</time>
+    <user>anag_factory</user>
+    <comment>- Add ffmpeg-4-CVE-2025-63757.patch: Backport 0c6b7f948 from
+  upstream. swscale/output: Fix integer overflow in
+  yuv2ya16_X_c_template() (bsc#1255392, CVE-2025-63757).</comment>
+    <requestid>1327349</requestid>
+  </revision>
 </revisionlist>

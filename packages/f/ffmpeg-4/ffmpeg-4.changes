@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 15 07:36:04 UTC 2026 - SongChuan Kang <sckang@suse.com>
+
+- Add ffmpeg-4-CVE-2025-63757.patch: Backport 0c6b7f948 from
+  upstream. swscale/output: Fix integer overflow in
+  yuv2ya16_X_c_template() (bsc#1255392, CVE-2025-63757).
+
+-------------------------------------------------------------------
 Sun Jan 08 10:04:01 UTC 2026 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-4-CVE-2023-6601-shim01-6b1f68cc.patch:

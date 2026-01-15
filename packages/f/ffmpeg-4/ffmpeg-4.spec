@@ -150,6 +150,7 @@ Patch36:        ffmpeg-4-CVE-2023-6601-shim02-954d16fa.patch
 Patch37:        ffmpeg-4-CVE-2023-6601-shim03-a0cb5722.patch
 Patch38:        ffmpeg-4-CVE-2023-6601-shim04-5b630743.patch
 Patch39:        ffmpeg-4-CVE-2023-6601.patch
+Patch40:        ffmpeg-4-CVE-2025-63757.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel
