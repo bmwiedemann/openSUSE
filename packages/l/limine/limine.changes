@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jan 14 18:16:37 UTC 2026 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 10.6.3:
+  * Fix an issue with the `limine` host tool where the files read by or
+    created by the `bios-install` command with the
+    `--uninstall-data-file=` flag were prefixed by `=` due to an
+    off-by-one error.
+  * Fix an issue with the `limine` host tool where the `--quiet` and
+    `--reset` flags could cause the next flag to be ignored due to an
+    off-by-one error.
+  * Fix an issue with the `limine` host tool that would allow a user to
+    provide a GPT BIOS boot partition to the `bios-install` command that
+    was 1 greater than the maximum number of partitions due to an
+    off-by-one error.
+  * Fix internal module path corruption in the Limine boot protocol code,
+    caused by a static buffer reuse bug.
+  * Add timeout for A20 address line initialisation in the keyboard
+    controller code path. Lack of this could cause hangs on certain older
+    "legacy-free" PCs.
+  * Fix a couple of minor memory leaks.
+  * Undo several overzealous "bug fixes" done since 10.5.0 for issues
+    that were impossible or highly unlikely to trigger in practice.
+  * Miscellaneous bug fixes.
+
+-------------------------------------------------------------------
 Mon Jan  5 18:01:05 UTC 2026 - Marvin Friedrich <contact@marvinf.com>
 
 - Update to 10.6.1:
