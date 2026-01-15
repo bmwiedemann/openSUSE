@@ -1,0 +1,67 @@
+.\" Manpage for jmol.
+.\" Contact thod_@gmx.de to correct errors or typos.
+.TH man 1 "24 May 2015" "INST_VERSION" "jmol man page"
+.SH NAME
+jmol \- INST_SUMMARY
+.SH SYNOPSIS
+jmol [options]
+.SH DESCRIPTION
+Jmol is an open-source Java viewer for chemical structures in 3D with features for chemicals, crystals, materials and biomolecules.
+.SH OPTIONS
+ -o,--noconsole               no console -- all output to sysout
+ -c,--check                   check script syntax only - no file loading
+ -k,--kiosk                   kiosk mode -- no frame
+ -C,--checkload               check script syntax only - with file loading
+ -s,--script                  script file to execute or '-' for System.in
+ -q,--quality                 JPG image quality (1-100; default 75) or PNG
+                              image compression (0-9; default 2, maximum compression 9)
+ -g,--geometry                window width x height, e.g. -g500x500
+ -p,--printOnly               send only output from print messages to
+                              console (implies -i)
+ -x,--exit                    exit after script (implicit with -n)
+ -j,--jmolscript2             Jmol script to execute AFTER -s option
+ -J,--jmolscript1             Jmol script to execute BEFORE -s option
+ -P,--port                    port for JSON/MolecularPlayground-style
+                              communication
+ -D <property=value>          supported options are given below
+ -I,--input                   allow piping of input from System.Input
+ -L,--nosplash                start with no splash screen
+ -M,--multitouch              use multitouch interface (requires
+                              "sparshui" parameter
+ -R,--restricted              restrict local file access
+ -T,--headlessmaxtime         headless max time (sec)
+ -b,--backgroundtransparent   transparent background
+ -d,--debug                   debug
+ -h,--help                    give this help page
+ -i,--silent                  silent startup operation
+ -l,--list                    list commands during script execution
+ -m,--menu                    menu file to use
+ -n,--nodisplay               no display (and also exit when done)
+ -r,--restrictSpt             restrict local file access (allow reading of
+                              SPT files)
+ -t,--threaded                independent command thread
+ -w,--write                   CLIP or GIF|JPG|JPG64|PNG|PPM:filename
+.SH EXAMPLES
+Jmol -ions myscript.spt -w JPEG:myfile.jpg > output.txt
+
+The -D options are as follows (defaults in parenthesis) and must be called preceding '-jar Jmol.jar':
+
+  cdk.debugging=[true|false] (false)
+  cdk.debug.stdout=[true|false] (false)
+  display.speed=[fps|ms] (ms)
+  logger.debug=[true|false] (false)
+  logger.error=[true|false] (true)
+  logger.fatal=[true|false] (true)
+  logger.info=[true|false] (true)
+  logger.logLevel=[true|false] (false)
+  logger.warn=[true|false] (true)
+  plugin.dir (unset)
+  user.language=[ca|cs|de|en_GB|en_US|es|fr|hu|it|ko|nl|pt_BR|tr|zh_TW] (en_US)
+.SH SEE ALSO
+java(1)
+
+For more information, see also <http://jmol.sourceforge.net/>
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+Jmol authors (jmol-developers@lists.sf.net)
