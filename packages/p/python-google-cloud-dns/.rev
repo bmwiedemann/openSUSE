@@ -20,4 +20,14 @@
 - Update upstream_name to google_cloud_dns (forwarded request 1311938 from glaubitz)</comment>
     <requestid>1312003</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7bfc8f77966e4f1edacbe59ae00c14c4</srcmd5>
+    <version>0.36.0</version>
+    <time>1768492938</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.36.0
+  * Add support for Python 3.14 (#321)
+  * Adds Python 3.13 support (#319) (forwarded request 1327368 from glaubitz)</comment>
+    <requestid>1327389</requestid>
+  </revision>
 </revisionlist>

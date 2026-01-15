@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 15 11:28:20 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.36.0
+  * Add support for Python 3.14 (#321)
+  * Adds Python 3.13 support (#319)
+
+-------------------------------------------------------------------
 Fri Oct 17 08:30:36 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.35.1
