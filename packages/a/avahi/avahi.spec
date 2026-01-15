@@ -1,7 +1,7 @@
 #
 # spec file for package avahi
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -135,6 +135,12 @@ Patch37:        avahi-CVE-2024-52616.patch
 Patch38:        0001-Enable-building-with-Qt6.patch
 # PATCH-FIX-UPSTREAM avahi-CVE-2024-52615.patch CVE-2024-52615 bsc#1233421 qzhao@suse.com -- Resolve fixed source ports for wide-area DNS queries cause DNS responses be injected.
 Patch39:        avahi-CVE-2024-52615.patch
+# PATCH-FIX-UPSTREAM avahi-CVE-2025-68468.patch CVE-2025-68468 bsc#1256499 qzhao@suse.com -- fix DoS bug by removing incorrect assertion.
+Patch40:        avahi-CVE-2025-68468.patch
+# PATCH-FIX-UPSTREAM avahi-CVE-2025-68471.patch CVE-2025-68471 bsc#1256500 qzhao@suse.com -- fix DoS bug by changing assert to return.
+Patch41:        avahi-CVE-2025-68471.patch
+# PATCH-FIX-UPSTREAM avahi-CVE-2025-68276.patch CVE-2025-68276 bsc#1256498 qzhao@suse.com -- refuse to create wide-area record browsers when wide-area is off.
+Patch42:        avahi-CVE-2025-68276.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gdbm-devel

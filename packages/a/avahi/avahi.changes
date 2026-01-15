@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jan 13 04:23:18 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add avahi-CVE-2025-68276.patch:
+  Backport 0c013e2 from upstream, refuse to create wide-area record
+  browsers when wide-area is off.
+  (CVE-2025-68276, bsc#1256498)
+
+-------------------------------------------------------------------
+Tue Jan 13 04:23:18 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add avahi-CVE-2025-68471.patch: 
+  Backport 9c6eb53 from upstream, fix DoS bug by changing assert to
+  return.
+  (CVE-2025-68471, bsc#1256500)
+
+-------------------------------------------------------------------
+Tue Jan 13 04:23:18 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add avahi-CVE-2025-68468.patch:
+  Backport f66be13 from upstream, fix DoS bug by removing incorrect
+  assertion.
+  (CVE-2025-68468, bsc#1256499)
+
+-------------------------------------------------------------------
 Mon Sep 15 14:32:04 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 
 - Add avahi-CVE-2024-52615.patch:
