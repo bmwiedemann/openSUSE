@@ -1,7 +1,7 @@
 #
 # spec file for package ansible-sap-playbooks
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 Name:           ansible-sap-playbooks
 Summary:        Ansible Playbooks for SAP Automation
 License:        Apache-2.0
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 URL:            https://github.com/SUSE/ansible.playbooks_for_sap/
 Source0:        %{url}archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
