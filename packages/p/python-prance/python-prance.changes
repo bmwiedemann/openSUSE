@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Tue Dec  9 19:04:37 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.25.04.08.0:
+  - Compatibility changes
+    - migrate from jsonschema to referencing for references
+    - drop unmaintained python 3.8/3.9
+    - add support + ci for python 3.11/3.12/3.14
+    - migrate convert from mermade.org.uk to converter.swagger.io
+    - switch yaml mimetype from the x-yaml form to the official yaml form
+    - include petstore example data to ease testing without the git subrepo
+    - explicitly use openapi-spec-validator backends in tests
+    - drop dependency on setuptools and six
+- Update to 0.23.06.21.0:
+    - first release to do away with zerover
+    - prance now uses calver by date
+- Update to 0.23.02.22.0:
+    - note: due to a mistake in tagging this was released as
+      0.22.2.22.0 and was not found as the latest release
+    - Update packaging to use modern setuptools and drop
+      python3.7. (#147)
+    - Fixed bug where user's HOMEDRIVE exists, but HOMEDRIVE is
+      offline. (#142)
+
+-------------------------------------------------------------------
+Fri Nov  4 23:34:04 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v0.22.11.4.0
+
+-------------------------------------------------------------------
+Fri Sep  2 05:27:56 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Add pr_132.patch to resolve incompatibility with openapi-spec-validator
+- Update to v0.21.8.0
+
+-------------------------------------------------------------------
+Sun Dec 20 11:57:52 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v0.20.0
+
+-------------------------------------------------------------------
+Sat May 23 23:09:24 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v0.18.2
+
+-------------------------------------------------------------------
+Tue Sep 17 02:53:23 PM UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v0.16.0
