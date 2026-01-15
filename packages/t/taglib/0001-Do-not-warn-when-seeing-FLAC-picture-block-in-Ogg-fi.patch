@@ -1,0 +1,46 @@
+From d832128bc77258300c81c71f7ddca378422138da Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Tue, 13 Jan 2026 00:15:21 +0100
+Subject: [PATCH 1/4] Do not warn when seeing FLAC picture block in Ogg files
+
+---
+ taglib/ogg/flac/oggflacfile.cpp | 17 ++++++++++++++++-
+ 1 file changed, 16 insertions(+), 1 deletion(-)
+
+diff --git a/taglib/ogg/flac/oggflacfile.cpp b/taglib/ogg/flac/oggflacfile.cpp
+index c283eddf..92fc4fd5 100644
+--- a/taglib/ogg/flac/oggflacfile.cpp
++++ b/taglib/ogg/flac/oggflacfile.cpp
+@@ -290,13 +290,28 @@ void Ogg::FLAC::File::scan()
+     if(blockType == 1) {
+       // debug("Ogg::FLAC::File::scan() -- Padding found");
+     }
++    else if(blockType == 2) {
++      // debug("Ogg::FLAC::File::scan() -- Application block found");
++    }
++    else if(blockType == 3) {
++      // debug("Ogg::FLAC::File::scan() -- Seek table found");
++    }
+     else if(blockType == 4) {
+       // debug("Ogg::FLAC::File::scan() -- Vorbis-comments found");
+       d->xiphCommentData = metadataHeader.mid(4, length);
+       d->hasXiphComment = true;
+       d->commentPacket = ipacket;
+     }
+-    else if(blockType > 5) {
++    else if(blockType == 5) {
++      // debug("Ogg::FLAC::File::scan() -- Cuesheet found");
++    }
++    else if(blockType == 6) {
++      // debug("Ogg::FLAC::File::scan() -- Picture found");
++    }
++    else if(blockType == 127) {
++      debug("Ogg::FLAC::File::scan() -- Forbidden block type found");
++    }
++    else if(blockType > 6) {
+       debug("Ogg::FLAC::File::scan() -- Unknown metadata block");
+     }
+   }
+-- 
+2.52.0
+

@@ -1,0 +1,52 @@
+From 5187aeb7f727216771089e5eb0d44c40f6e15f4c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Tue, 13 Jan 2026 02:15:22 +0100
+Subject: [PATCH 4/4] Fix reading of last page in ogg stream
+
+When trying to read a packet from the last page the readPages() method
+would return false for all packets on the last page.
+
+Move the lastPage check just before trying to create the next page, and
+after the packetIndex check of the last fetched page.
+---
+ taglib/ogg/oggfile.cpp | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/taglib/ogg/oggfile.cpp b/taglib/ogg/oggfile.cpp
+index 29f1803a..c08ffde8 100644
+--- a/taglib/ogg/oggfile.cpp
++++ b/taglib/ogg/oggfile.cpp
+@@ -191,12 +191,15 @@ bool Ogg::File::readPages(unsigned int i)
+       const Page *page = d->pages.back();
+       packetIndex = nextPacketIndex(page);
+       offset = page->fileOffset() + page->size();
+-    }
+-
+-    // Enough pages have been fetched.
+ 
+-    if(packetIndex > i)
+-      return true;
++      // Enough pages have been fetched.
++      if(packetIndex > i) {
++        return true;
++      }
++      else if(page->header()->lastPageOfStream()) {
++        return false;
++      }
++    }
+ 
+     // Read the next page and add it to the page list.
+ 
+@@ -208,9 +211,6 @@ bool Ogg::File::readPages(unsigned int i)
+ 
+     nextPage->setFirstPacketIndex(packetIndex);
+     d->pages.append(nextPage);
+-
+-    if(nextPage->header()->lastPageOfStream())
+-      return false;
+   }
+ }
+ 
+-- 
+2.52.0
+

@@ -1,0 +1,72 @@
+From 8d693ba57e887df8502b4b09f5a51853a0d45e3a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Tue, 13 Jan 2026 00:31:45 +0100
+Subject: [PATCH 2/4] Set last header flag in FLAC Metadata block type field
+
+In case the Vorbis comment block is the last one the last block flag
+has to be set.
+
+As the other metadata blocks are kept as is, and in original order,
+and no other metadata blocks are added/inserted, these can be kept
+as is.
+
+Also warn if the header scan loop detects a frame sync sequence (which
+is the head of the first non-header packet). Previously, this was
+detected as the last header packet, but streamStart and streamLength
+are unused, and all packets but the vorbis comment packet are just copied
+in order.
+
+See taglib#1297
+---
+ taglib/ogg/flac/oggflacfile.cpp | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+diff --git a/taglib/ogg/flac/oggflacfile.cpp b/taglib/ogg/flac/oggflacfile.cpp
+index 92fc4fd5..a64e7470 100644
+--- a/taglib/ogg/flac/oggflacfile.cpp
++++ b/taglib/ogg/flac/oggflacfile.cpp
+@@ -46,6 +46,7 @@ public:
+ 
+   bool hasXiphComment { false };
+   int commentPacket { 0 };
++  int lastHeaderPacket { 0 };
+ };
+ 
+ ////////////////////////////////////////////////////////////////////////////////
+@@ -129,6 +130,12 @@ bool Ogg::FLAC::File::save()
+ 
+   v[0] = 4;
+ 
++  // If the comment block is the last one, set the corresponding bit
++
++  if (d->commentPacket == d->lastHeaderPacket) {
++    v[0] = 0x84;
++  }
++
+   // Append the comment-data after the 32 bit header
+ 
+   v.append(d->xiphCommentData);
+@@ -282,6 +289,12 @@ void Ogg::FLAC::File::scan()
+       return;
+     }
+ 
++    if(((header[0] & 0xff) == 0xff) && ((header[1] & 0xff) == 0xf8)) {
++      ipacket--;
++      debug("Ogg::FLAC::File::scan() -- Found frame sync marker, possibly missing last block marker");
++      break;
++    }
++
+     blockType = header[0] & 0x7f;
+     lastBlock = (header[0] & 0x80) != 0;
+     length = header.toUInt(1, 3, true);
+@@ -315,6 +328,7 @@ void Ogg::FLAC::File::scan()
+       debug("Ogg::FLAC::File::scan() -- Unknown metadata block");
+     }
+   }
++  d->lastHeaderPacket = ipacket;
+ 
+   // End of metadata, now comes the datastream
+   d->streamStart = overhead;
+-- 
+2.52.0
+

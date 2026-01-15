@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 13 01:17:21 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix writing of Vorbis comment for FLAC in Ogg, add patches:
+  * 0001-Do-not-warn-when-seeing-FLAC-picture-block-in-Ogg-fi.patch
+  * 0002-Set-last-header-flag-in-FLAC-Metadata-block-type-fie.patch
+  * 0003-Avoid-corrupting-an-invalid-FLAC-Ogg-file-without-Vo.patch
+  * 0004-Fix-reading-of-last-page-in-ogg-stream.patch
+- Remove obsolete library dependency, obsolete with SOVERSION bump.
+- Remove long obsolete susehelp fragments, drop corresponding
+  taglib.desktop file, remove deprecated update-desktop-file.
+
+-------------------------------------------------------------------
 Thu Sep 25 05:13:20 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
 
 - Update to version 2.1.1

@@ -1,0 +1,32 @@
+From 360de943f3d0990f44257c1ab83ad7855121b996 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Tue, 13 Jan 2026 00:35:15 +0100
+Subject: [PATCH 3/4] Avoid corrupting an (invalid) FLAC Ogg file without
+ Vorbis comment
+
+FLAC in Ogg must have a Vorbis comment Metadata block, but in case
+the file still has none avoid overwriting the first packet, i.e.
+the Streaminfo Metadata block.
+---
+ taglib/ogg/flac/oggflacfile.cpp | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/taglib/ogg/flac/oggflacfile.cpp b/taglib/ogg/flac/oggflacfile.cpp
+index a64e7470..f0b485b1 100644
+--- a/taglib/ogg/flac/oggflacfile.cpp
++++ b/taglib/ogg/flac/oggflacfile.cpp
+@@ -107,6 +107,11 @@ Properties *Ogg::FLAC::File::audioProperties() const
+ 
+ bool Ogg::FLAC::File::save()
+ {
++  if (d->commentPacket == 0) {
++    debug("Ogg::FLAC::File::save() -- Invalid, file has no Vorbis comment metadata block.");
++    return false;
++  }
++
+   d->xiphCommentData = d->comment->render(false);
+ 
+   // Create FLAC metadata-block:
+-- 
+2.52.0
+
