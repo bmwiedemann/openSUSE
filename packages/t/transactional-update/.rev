@@ -1496,4 +1496,75 @@ Also requires https://build.opensuse.org/request/show/1167142.</comment>
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1256446</comment>
   </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>3ac23d4a5489ef0b66098f9899e0112f</srcmd5>
+    <version>6.0.5</version>
+    <time>1768491825</time>
+    <user>anag_factory</user>
+    <comment>- Version 6.0.5
+  - t-u: FIPS - use package's own command to set up [bsc#1256446]
+- Version 6.0.4
+  - t-u: Remove &quot;kdump&quot; command
+    [gh#openSUSE/transactional-update#119]
+  - Select output channel of snapshot deletion message
+    [bsc#1256446]
+- Version 6.0.3
+  - Only try logging to journald when socket exists; would lead to
+    messages about missing stream fds otherwise, which happened
+    when running in combustion's chroot environment
+- Version 6.0.2
+  Don't print reboot hints as errors to prevent failed openQA test
+  - t-u: Add new &quot;warning&quot; log level
+  - t-u: Adjust log level of reboot hints
+- Version 6.0.1
+  Adjustments to avoid logging with error log level to the journal
+  when there is no actual error
+  - tukit: Adjust selinux_restorecon log levels
+  - t-u: Print grub-mkconfig output to stdout
+- Temporarily disable default soft-reboot again to unblock other
+  projects while systemd 258 (required for correct console
+  switching used during the openQA tests) isn't ready yet.
+- Version 6.0.0
+  - Bump major version number to fix self-update due to new .so
+    library version in 5.5.0
+  - t-u: Fix syntax error introduced in 5.5.1 [boo#1254253]
+- Fix dbus dependency
+- Version 5.5.1
+  - t-u: Fix hanging t-u process when files were changed in /var
+  - t-u: Don't ask for key import during self-update [bsc#1239721]
+  - t-u: Fix stray output of &quot;/etc&quot;
+- Version 5.5.0
+  - t-u: The &quot;run&quot; command will return the exit status of the
+    command now and if it is non-zero, the snapshot will be
+    discarded. The --keep option or wrapping the command into a
+    bash script can be used if the command is expected to return
+    with a specific non-zero return code.
+    [bsc#1216504] [gh#openSUSE/transactional-update#134]
+    [gh#openSUSE/transactional-update#135]
+  - t-u / tukit: The --keep option will close the snapshot now also
+    in error case, but not set it as default or remove the
+    in-progress attribute; with this change the snapshot can be
+    used as a base for another snapshot when the changes are
+    verified as good.
+  - C API: rename loglevel to tukit_loglevel (API change)
+  - C API: removed the experimental status
+  - Rework logging to support syslog / journald:
+    - Also log to journald when calling t-u manually
+    - Introduce logging for libtukit: By default it will log
+      syslog / journald. This will finally make it possible to see
+      what happened during manual tukit calls or via the API
+    - Add option to specify desired logging mechanisms (&quot;console&quot;,
+      &quot;syslog&quot;) via tukit and API
+  - Fixed --discard option on rw systems
+  - Support SELinux outside /var/lib/selinux [jsc#PED-12492]
+  - sync-etc-state: Detect changes in xattrs with null bytes
+  - tukit: Added forgotten short option -k for tukit --keep
+  - t-u: Fix shellcheck hints
+  - README.md: Updated link to Salt executor
+- Enable soft-reboot by default again
+- Increase so version number because of the incompatible changes
+  from above
+</comment>
+    <requestid>1327009</requestid>
+  </revision>
 </revisionlist>
