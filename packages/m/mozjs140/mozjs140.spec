@@ -1,7 +1,7 @@
 #
 # spec file for package mozjs140
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2023 Frantisek Zatloukal <fzatlouk@redhat.com>
 # Copyright (c) 2014 Wolfgang Rosenauer
 #
@@ -41,7 +41,7 @@
 %global big_endian 1
 %endif
 Name:           mozjs%{major}
-Version:        140.6.0
+Version:        140.7.0
 Release:        1%{?dist}
 Summary:        SpiderMonkey JavaScript library
 License:        MPL-2.0
