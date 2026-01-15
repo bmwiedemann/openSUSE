@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 14 17:21:35 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.69.1:
+  - Fixes
+    * fix: Revert to sprig for template function implementations
+    * fix: Fix external size check without secure hashes
+  - Documentation
+    * docs: Fix protonPassJSON example
+
+-------------------------------------------------------------------
 Mon Jan  5 16:29:42 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.69.0:

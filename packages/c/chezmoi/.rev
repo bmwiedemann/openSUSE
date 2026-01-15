@@ -1093,4 +1093,18 @@
 </comment>
     <requestid>1325457</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>ed7b08f6a998a3319dfe0ac4b7540435</srcmd5>
+    <version>2.69.1</version>
+    <time>1768492034</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.69.1:
+  - Fixes
+    * fix: Revert to sprig for template function implementations
+    * fix: Fix external size check without secure hashes
+  - Documentation
+    * docs: Fix protonPassJSON example
+</comment>
+    <requestid>1327270</requestid>
+  </revision>
 </revisionlist>
