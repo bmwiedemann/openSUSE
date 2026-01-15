@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Tue Dec  9 21:22:28 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 3.1.0
+  - Optimize patching of uuid module. By avoiding using
+    unittest.mock, this small overhead from starting
+    time_machine.travel() has been reduced about 20x, from ~600ns
+    to ~30ns by one benchmark.
+- Update to 3.0.0
+  - Remove mocking of time.monotonic() and time.monotonic_ns().
+    This mocking caused too many issues, such as causing freezes
+    in asyncio event loops (Issue #387), preventing
+    pytest-durations from timing tests correctly (Issue #505),
+    and triggering timeouts in psycopg (Issue #509). The root
+    cause here is that mocking the monotonic clock breaks its
+    contract, allowing it to move backwards when it’s meant to
+    only move forwards.
+    As an alternative, use unittest.mock to mock the monotonic
+    function for the specific tested modules that need it. That
+    means that your code should import monotonic() or
+    monotonic_ns() directly, so that your tests can mock it in
+    those places only.
+  - Parse str destinations with datetime.fromisoformat() first,
+    before falling back to dateutil if installed.
+    datetime.fromisoformat() can parse most valid ISO 8601
+    formats, with better performance and no extra dependencies.
+  - Make the dependency on dateutil optional.
+  - Rename the Coordinates class to Traveller, to match the
+    recommended context manager variable name.
+  - Drop Python 3.9 support.
+  - Make the escape_hatch functions raise ValueError when called
+    outside of time-travelling, rather than triggering
+    segmentation faults.
+- Update to 2.19.0
+  - Add marker support to the pytest plugin. Decorate tests with
+    @pytest.mark.time_machine(<destination>) to set time during a test,
+    affecting function-level fixtures as well.
+  - Add asynchronous context manager support to time_machine.travel(). You can
+    now use async with time_machine.travel(...): in asynchronous code, per the
+    documentation.
+  - Import date and time functions once in the C extension.
+  - This should improve speed a little bit, and avoid segmentation faults when
+    the functions have been swapped out, such as when freezegun is in effect.
+    (time-machine still won’t apply if freezegun is in effect.)
+- Update to 2.18.0
+  - Update the migration CLI to detect unittest classes based on whether they
+    use self.assert* methods like self.assertEqual().
+  - Fix free-threaded Python warning: RuntimeWarning: The global interpreter
+    lock (GIL) has been enabled... as seen on Python 3.13+.
+  - Add support to travel() for datetime destinations with tzinfo set to
+    datetime.UTC (datetime.timezone.utc).
+  - Prevent segmentation faults in unlikely scenarios, such as if the
+    time_machine module cannot be imported.
+  - Make travel() fully unpatch date and time functions when travel ends. This
+    may fix certain edge cases.
+- Update to 2.17.0
+  - Include wheels for Python 3.14.
+  - Support free-threaded Python.
+  - Add a new CLI for migrating code from freezegun to time-machine.
+  - Install with pip install time-machine[cli] and run with python -m
+    time_machine migrate.
+  - Move the documentation to Read the Docs, and add a retro-futuristic logo.
+
+-------------------------------------------------------------------
 Wed Oct 30 19:50:38 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.16.0:

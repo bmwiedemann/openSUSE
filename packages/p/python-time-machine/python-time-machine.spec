@@ -1,7 +1,7 @@
 #
 # spec file for package python-time-machine
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,12 @@
 #
 
 
-%{?sle15_python_module_pythons}
 Name:           python-time-machine
-Group:          Development/Languages/Python
-Version:        2.16.0
+Version:        3.1.0
 Release:        0
 Summary:        Travel through time in your tests
 License:        MIT
+Group:          Development/Languages/Python
 URL:            https://github.com/adamchainz/time-machine
 # pypi packages don't contain the tests anymore since 2.2.0, see changelog
 Source:         https://github.com/adamchainz/time-machine/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -30,17 +29,19 @@ BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-generators
 BuildRequires:  python-rpm-macros
+Requires:       python-python-dateutil
+Requires:       python-tokenize-rt
+Requires:       timezone
 # SECTION tests
 BuildRequires:  %{python_module backports.zoneinfo if %python-base < 3.9}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
+BuildRequires:  %{python_module tokenize-rt}
 BuildRequires:  timezone
 # /SECTION
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-generators
-Requires:       python-python-dateutil
-Requires:       timezone
 %python_subpackages
 
 %description
@@ -55,7 +56,7 @@ It can be used independently, as a function decorator, or as a context manager.
 
 %install
 %pyproject_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
 %pytest_arch
@@ -65,6 +66,6 @@ It can be used independently, as a function decorator, or as a context manager.
 %license LICENSE
 %{python_sitearch}/time_machine
 %{python_sitearch}/_time_machine.*.so
-%{python_sitearch}/time_machine-%{version}.dist-info
+%{python_sitearch}/time_machine-%{version}*-info
 
 %changelog
