@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 14 21:32:47 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.25.0:
+  - chore: add FUNDING.yml
+  - build(rust): add LICENSE file
+  - fix: remove double parenthesis as valid opening to arithmetic
+    expasion
+  - updates various dependencies
+- Build also python-* subpackage.
+
+-------------------------------------------------------------------
 Wed Dec  4 21:46:43 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.23.3:
