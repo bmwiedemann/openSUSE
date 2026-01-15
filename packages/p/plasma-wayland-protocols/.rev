@@ -174,4 +174,22 @@
   * plasma-virtual-desktop: Make virtual desktop updates globally atomic (forwarded request 1306754 from Vogtinator)</comment>
     <requestid>1306769</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>25298e44e5f6fad72ec9fc5f46d77970</srcmd5>
+    <version>1.20.0</version>
+    <time>1768491808</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.20.0:
+  * Bump version to 1.20.0
+  * outputdevice/-management: add a setting for automatic brightness
+  * outputdevice, -management: add support for custom modes
+  * output management: adjust description of set_priority to match protocol changes
+  * output device: add &quot;priority&quot; event
+  * plasma-window-management: Add exclude_from_capture state
+  * cmake: write arch-independent cmake version file
+  * cmake: manually call write_basic_package_version_file()
+  * cmake: bump required version to 3.16
+  * appmenu: Relicense to MIT (forwarded request 1326980 from Vogtinator)</comment>
+    <requestid>1327076</requestid>
+  </revision>
 </revisionlist>

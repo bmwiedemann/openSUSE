@@ -1,7 +1,7 @@
 #
 # spec file for package plasma-wayland-protocols
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           plasma-wayland-protocols
-Version:        1.19.0
+Version:        1.20.0
 Release:        0
 Summary:        Wayland protocols used by Plasma
 License:        BSD-3-Clause AND LGPL-2.1-only AND LGPL-2.1-or-later AND MIT
@@ -50,6 +50,7 @@ KDE Plasma.
 %files
 %license COPYING* LICENSES/*.txt
 %{_kf6_sharedir}/plasma-wayland-protocols/
-%{_kf6_cmakedir}/PlasmaWaylandProtocols/
+%dir %{_kf6_sharedir}/cmake/
+%{_kf6_sharedir}/cmake/PlasmaWaylandProtocols/
 
 %changelog

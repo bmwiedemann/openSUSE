@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jan 13 11:44:14 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 1.20.0:
+  * Bump version to 1.20.0
+  * outputdevice/-management: add a setting for automatic brightness
+  * outputdevice, -management: add support for custom modes
+  * output management: adjust description of set_priority to match protocol changes
+  * output device: add "priority" event
+  * plasma-window-management: Add exclude_from_capture state
+  * cmake: write arch-independent cmake version file
+  * cmake: manually call write_basic_package_version_file()
+  * cmake: bump required version to 3.16
+  * appmenu: Relicense to MIT
+
+-------------------------------------------------------------------
 Tue Sep 23 12:01:56 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 1.19.0:
