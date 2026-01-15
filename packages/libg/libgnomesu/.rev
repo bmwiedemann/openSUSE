@@ -518,4 +518,14 @@
     <comment></comment>
     <requestid>1266014</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>91c0d00f4dcebc8f4873356775b4857c</srcmd5>
+    <version>2.0.10</version>
+    <time>1768491747</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.0.10:
+  * Add support for pam_env module
+  * Updated translations. (forwarded request 1327109 from sbrabec)</comment>
+    <requestid>1327171</requestid>
+  </revision>
 </revisionlist>
