@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Wed Jan 14 10:37:03 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.8.1
+  - handle CPE id checks case sensitive, but also write it always
+    lower case.
+
+-------------------------------------------------------------------
+Tue Jan 13 08:04:23 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.8.0
+
+  *** INCOMPATIBLE CHANGE ***
+
+  Always enforce /o in cpe-ids, dropping /a support.
+  This was decided in architecture forum for SLFO.
+
+-------------------------------------------------------------------
+Wed Dec 10 13:14:29 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.7.3
+  - new no_product_provides build_option
+
+-------------------------------------------------------------------
+Wed Dec 10 10:54:50 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.7.2:
+  - relax CPE id check case insensitive
+  - give a warning on empty media
+
+-------------------------------------------------------------------
+Wed Dec 10 09:33:55 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.7.1:
+  - relax CPE id check on empty medium. We assume online
+    installation here which needs to be checked when creating that
+    resource.
+
+-------------------------------------------------------------------
+Fri Nov 14 08:57:50 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.7.0:
+  - adds validating of CPE ids with release package.
+
+-------------------------------------------------------------------
+Thu Nov 13 15:26:44 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.6.18:
+  - Fix filtering of not used rpms in updateinfo
+
+-------------------------------------------------------------------
+Tue Nov 11 09:40:29 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.6.17:
+  - fix multiarch media handling of updateinfo id's
+
+-------------------------------------------------------------------
+Thu Oct 30 13:21:10 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.6.16:
+  - merge updateinfo's with same id into one
+  - error out on updateinfo with same id, but non-mergable content
+
+-------------------------------------------------------------------
+Wed Oct 29 07:27:35 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.6.15:
+  * Support updateinfo handling in arch specific meta data
+
+-------------------------------------------------------------------
+Tue Aug 26 10:56:21 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.6.14:
+  * option to disable joliet extensions on media
+  * no joliet extensions on source and debug media anymore
+
+-------------------------------------------------------------------
 Wed Aug 20 08:25:30 UTC 2025 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.6.13:

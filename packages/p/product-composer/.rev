@@ -546,4 +546,40 @@
   * switching back to SHA-256 for CHECKSUMS file (boo#1247507)</comment>
     <requestid>1300435</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>89e405991a2a6ada3e06fa7f9b5d7e0a</srcmd5>
+    <version>0.8.1</version>
+    <time>1768491881</time>
+    <user>anag_factory</user>
+    <comment>- update to version 0.8.1
+  - handle CPE id checks case sensitive, but also write it always
+    lower case.
+
+- update to version 0.8.0
+  *** INCOMPATIBLE CHANGE ***
+  Always enforce /o in cpe-ids, dropping /a support.
+  This was decided in architecture forum for SLFO.
+
+- update to version 0.7.3
+  - new no_product_provides build_option
+
+- update to version 0.7.2:
+  - relax CPE id check case insensitive
+  - give a warning on empty media
+
+- update to version 0.7.1:
+  - relax CPE id check on empty medium. We assume online
+    installation here which needs to be checked when creating that
+    resource.
+
+- update to version 0.7.0:
+  - adds validating of CPE ids with release package.
+
+- update to version 0.6.18:
+  - Fix filtering of not used rpms in updateinfo
+
+- update to version 0.6.17:
+  - fix multiarch media handling of updateinfo id's</comment>
+    <requestid>1327191</requestid>
+  </revision>
 </revisionlist>
