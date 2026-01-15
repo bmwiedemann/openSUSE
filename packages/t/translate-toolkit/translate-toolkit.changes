@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 12 15:29:17 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.18.0
+  * Added support for TOML, XLIFF 2.0, Nextcloud JSON, and RESJSON formats.
+  * Improvements in PO, CSV, Properties, YAML, HTML, PHP, DTD, RC, TMX and Markdown formats.
+  * Dropped Python 3.10 compatibility.
+  * Improvements in the PO, XLIFF, TXT, RC, Properties and HTML formats.
+  * Removed Directory and ZIPFile storages.
+
+-------------------------------------------------------------------
 Fri Nov 14 11:16:08 UTC 2025 - Luiz Fernando Ranghetti <elchevive@opensuse.org>
 
 - Update various (build)requires versions
