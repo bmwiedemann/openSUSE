@@ -1,7 +1,7 @@
 #
 # spec file for package python-virtualenv
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,18 +31,18 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-virtualenv%{psuffix}
-Version:        20.29.3
+Version:        20.36.1
 Release:        0
 Summary:        Virtual Python Environment builder
 License:        MIT
 URL:            https://virtualenv.pypa.io/
 # SourceRepository: https://github.com/pypa/virtualenv
 Source:         https://files.pythonhosted.org/packages/source/v/virtualenv/virtualenv-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
 Requires:       (python-distlib >= 0.3.7 with python-distlib < 1)
-Requires:       (python-filelock >= 3.12.2 with python-filelock < 4)
+Requires:       (python-filelock >= 3.20.3 with python-filelock < 4)
 Requires:       (python-platformdirs >= 3.9.1 with python-platformdirs < 5)
 BuildArch:      noarch
 %if !%{with test}
@@ -115,12 +115,10 @@ rm -r tests/unit/activation
 %check
 # online tests downloads from pypi
 donttest="test_seed_link_via_app_data"
+donttest+=" or test_py_info_cache_invalidation_on_py_info_change" # https://github.com/pypa/virtualenv/issues/2939
 # take the first wheels directory we can find, they all contain the same file
 export PIP_FIND_LINKS=$(ls -1d /usr/lib/python3.*/wheels | head -n 1)
 %pytest -k "not ($donttest)"
-# test the special case with the bundles (for all flavors)
-export VIRTUALENV_SETUPTOOLS=bundle
-export VIRTUALENV_WHEEL=bundle
 donttest+=" or test_embed_wheel_versions"
 %pytest -k "not ($donttest)"
 %endif

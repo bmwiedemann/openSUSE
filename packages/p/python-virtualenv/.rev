@@ -1688,4 +1688,12 @@ ers toes by using a lock while creating the base images. By :user:`gaborbernat`.
     <comment>- Convert to libalternatives on SLE-16-based and newer systems</comment>
     <requestid>1301397</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>aaf3e4a9fa0912ec7ad010a4b681b5f8</srcmd5>
+    <version>20.36.1</version>
+    <time>1768491834</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1327332</requestid>
+  </revision>
 </revisionlist>
