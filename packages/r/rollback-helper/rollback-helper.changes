@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 14 15:22:44 UTC 2026 - Ignaz Forster <iforster@suse.com>
+
+- Update to version 1.0+git20260114.38e2a69:
+  * Use correct shebang for Bash script
+  * Use systemd-tmpfiles to create directory in /var
+    [jsc#PED-14777]
+- Update syntax in spec file for "Supplements"
+
+-------------------------------------------------------------------
 Fri Mar 01 13:02:59 UTC 2024 - kukuk@suse.com
 
 - Update to version 1.0+git20240301.73ac53e:

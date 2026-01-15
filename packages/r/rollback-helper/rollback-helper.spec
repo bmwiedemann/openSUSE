@@ -17,7 +17,7 @@
 
 
 Name:           rollback-helper
-Version:        1.0+git20240301.73ac53e
+Version:        1.0+git20260114.38e2a69
 Release:        0
 Summary:        Helper Scripts for system rollback
 License:        GPL-2.0-or-later
@@ -26,7 +26,7 @@ URL:            https://github.com/openSUSE/rollback-helper
 Source:         rollback-helper-%{version}.tar.xz
 Source1:        README.packaging.txt
 Requires:       SUSEConnect
-Supplements:    packageand(snapper:SUSEConnect)
+Supplements:    (snapper and SUSEConnect)
 BuildArch:      noarch
 %{?systemd_requires}
 # SUSEConnect does not build for i586 and s390 and is not supported on those architectures
@@ -45,11 +45,12 @@ registered products on SCC or SMT.
 
 %install
 install -d "%{buildroot}%{_prefix}/lib/snapper/plugins"
-install -d "%{buildroot}/%{_var}/lib/rollback"
 install -d "%{buildroot}%{_unitdir}"
+install -d "%{buildroot}%{_tmpfilesdir}"
 install -d "%{buildroot}%{_sbindir}"
 cp plugins/rollback %{buildroot}%{_prefix}/lib/snapper/plugins/
 cp systemd/rollback.service %{buildroot}%{_unitdir}/
+cp tmpfiles/rollback-helper.conf %{buildroot}%{_tmpfilesdir}/
 cp sbin/rollback-reset-registration %{buildroot}%{_sbindir}/
 
 %pre
@@ -57,6 +58,7 @@ cp sbin/rollback-reset-registration %{buildroot}%{_sbindir}/
 
 %post
 %service_add_post rollback.service
+%tmpfiles_create rollback-helper.conf
 
 %preun
 %service_del_preun rollback.service
@@ -70,7 +72,7 @@ cp sbin/rollback-reset-registration %{buildroot}%{_sbindir}/
 %dir %{_prefix}/lib/snapper/plugins
 %{_prefix}/lib/snapper/plugins/rollback
 %{_unitdir}/rollback.service
+%{_tmpfilesdir}/rollback-helper.conf
 %{_sbindir}/rollback-reset-registration
-%dir %{_var}/lib/rollback
 
 %changelog
