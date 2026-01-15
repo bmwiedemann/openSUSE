@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 15 12:43:26 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Remove dependency on update-desktop-files (jsc#PED-15228)
+
+-------------------------------------------------------------------
 Sat Nov 22 22:22:22 UTC 2025 - olaf@aepfle.de
 
 - Update to mutt 2.2.16 (Bug fix release)

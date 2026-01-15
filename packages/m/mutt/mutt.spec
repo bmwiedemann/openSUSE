@@ -1,7 +1,7 @@
 #
 # spec file for package mutt
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -115,9 +115,6 @@ BuildRequires:  libkyotocabinet-devel
 BuildRequires:  pkgconfig(libidn2)
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(shared-mime-info)
-%if 0%{?suse_version}
-BuildRequires:  update-desktop-files
-%endif
 Requires(post): shared-mime-info
 Requires(postun): shared-mime-info
 
@@ -289,10 +286,6 @@ install -D -m 644 doc/manual.pdf %{buildroot}%{_docdir}/%{name}/
 
 mv  %{buildroot}%{_sysconfdir}/Muttrc %{buildroot}%{_datadir}/%{name}/Muttrc
 sed -rn '/Command formats for gpg/,$p' %{SOURCE5} >> %{buildroot}%{_datadir}/%{name}/Muttrc
-
-%if 0%{?suse_version}
-%suse_update_desktop_file mutt
-%endif
 
 %if 0%{suse_version} >= 1500
 mkdir -p %{buildroot}%{_docdir}/%{name}

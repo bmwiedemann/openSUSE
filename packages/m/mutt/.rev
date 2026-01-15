@@ -1518,4 +1518,12 @@ with a run of spec-cleaner (forwarded request 826781 from AndreasStieger)</comme
     <comment></comment>
     <requestid>1324302</requestid>
   </revision>
+  <revision rev="123" vrev="2">
+    <srcmd5>eed57c11bdba9a7db59e98cde0f68491</srcmd5>
+    <version>2.2.16</version>
+    <time>1768492126</time>
+    <user>anag_factory</user>
+    <comment>- Remove dependency on update-desktop-files (jsc#PED-15228)</comment>
+    <requestid>1327391</requestid>
+  </revision>
 </revisionlist>
