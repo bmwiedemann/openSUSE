@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f575c38ea3c2100d8c075f5fcb81d246</srcmd5>
+    <version>0.42.2</version>
+    <time>1768492052</time>
+    <user>anag_factory</user>
+    <comment>Required by `python-agent-client-protocol`, which is in turn one of dependencies of `python-mistral-vibe`.</comment>
+    <requestid>1327304</requestid>
+  </revision>
+</revisionlist>
