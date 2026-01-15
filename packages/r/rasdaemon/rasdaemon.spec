@@ -1,7 +1,7 @@
 #
 # spec file for package rasdaemon
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,20 @@
 
 
 Name:           rasdaemon
-Version:        0.8.3.0.git+db0870e
+Version:        0.8.4+git11.485d0a6
 Release:        0
 Summary:        Utility to receive RAS error tracings
 License:        GPL-2.0-only
 Group:          Hardware/Other
 URL:            http://git.infradead.org/users/mchehab/rasdaemon.git
 Source:         %{name}-%{version}.tar.xz
-Patch1:         Fix-buffer-overflow-in-add_event_handler-read.patch
-Patch2:         rasdaemon-skip-doesn-t-exist-event.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gettext-devel
 BuildRequires:  libtool
 BuildRequires:  libtraceevent-devel
 BuildRequires:  sqlite3-devel
+BuildRequires:  pkgconfig(libpci)
 Requires:       perl-DBD-SQLite
 Requires(pre):  %fillup_prereq
 %{?systemd_ordering}
@@ -60,9 +59,30 @@ an utility for reporting current error counts from the EDAC sysfs files.
 # on old autoconf versions
 ln -s README.md README
 autoreconf -fvi
-%configure --enable-all \
-	   --with-sysconfdefdir=%{_sysconfdir}/sysconfig
-CFLAGS="%{optflags}" make %{?_smp_mflags} V=1
+%configure                     \
+  --enable-sqlite3             \
+  --enable-aer                 \
+  --enable-non-standard        \
+  --enable-arm                 \
+  --enable-mce                 \
+  --enable-extlog              \
+  --enable-devlink             \
+  --enable-diskerror           \
+  --enable-memory-failure      \
+  --enable-cxl                 \
+  --enable-abrt-report         \
+  --enable-hisi-ns-decode      \
+  --enable-memory-ce-pfa       \
+  --enable-memory-row-ce-pfa   \
+  --enable-amp-ns-decode       \
+  --enable-openbmc-unified-sel \
+  --enable-jaguar-ns-decode    \
+  --enable-cpu-fault-isolation \
+  --enable-yitian-ns-decode    \
+  --disable-signal             \
+  --enable-erst                \
+  --with-sysconfdefdir=%{_sysconfdir}/sysconfig
+make %{?_smp_mflags} V=1
 
 %install
 %make_install
@@ -106,5 +126,9 @@ mv %{buildroot}%{_sysconfdir}/sysconfig/rasdaemon %{buildroot}/%{_fillupdir}/sys
 %dir %{_localstatedir}/lib/rasdaemon
 %ghost %{_localstatedir}/lib/rasdaemon/ras-mc_event.db
 %attr (644,root,root) %{_fillupdir}/sysconfig.rasdaemon
+%{_datadir}/bash-completion/completions/ras-mc-ctl
+%dir %{_datadir}/zsh/
+%dir %{_datadir}/zsh/site-functions/
+%{_datadir}/zsh/site-functions/_ras-mc-ctl
 
 %changelog
