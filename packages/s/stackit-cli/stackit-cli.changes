@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Jan 14 14:25:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.51.0:
+  * fix(deps): update module
+    github.com/stackitcloud/stackit-sdk-go/services/secretsmanager
+    to v0.14.0 (#1227)
+  * escape html encoding to marshal json output completely (#1226)
+  * Initial release of the STACKIT Edge-Cloud service CLI (BETA)
+    (#1223)
+  * feat(goreleaser): Ship FreeBSD binaries (#1048)
+  * chore(deps): update renovatebot/github-action action to v44.2.4
+    (#1224)
+  * chore(deps): update module golang.org/x/tools to v0.41.0
+    (#1225)
+  * refactor(printer): move AssumeYes logic into printer itself
+    (#1217)
+  * fix(ske): add profile email to cacheKey on login (#1080)
+  * fix(deps): update module golang.org/x/text to v0.33.0 (#1220)
+  * fix(deps): update module golang.org/x/term to v0.39.0 (#1219)
+  * fix(deps): update module golang.org/x/mod to v0.32.0 (#1218)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/alb (#1215)
+  * chore(deps): update module github.com/golangci/golangci-lint/v2
+    to v2.8.0 (#1211)
+  * fix(deps): update module github.com/goccy/go-yaml to v1.19.2
+    (#1210)
+  * fix(deps): update stackit sdk modules (#1208)
+  * chore(deps): bump renovatebot/github-action from 44.2.0 to
+    44.2.3 (#1209)
+  * chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.7.7 to
+    6.7.8 (#1206)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/sqlserverflex
+    (#1200)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/mongodbflex
+    (#1198)
+
+-------------------------------------------------------------------
 Sat Dec 20 07:15:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.50.0:
