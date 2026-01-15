@@ -169,4 +169,16 @@
 - Adjust upstream source name in spec file (forwarded request 1272445 from glaubitz)</comment>
     <requestid>1272452</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f06ea660c1dbcfd121bdb5651d2be01d</srcmd5>
+    <version>2.5.0</version>
+    <time>1768492936</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.5.0
+  * Add Python 3.14 support (#333)
+  * Remove setup.cfg configuration for creating universal wheels (#332)
+  * Resolve issue where pre-release versions of dependencies are installed (#329)
+- Update BuildRequires from setup.py (forwarded request 1327379 from glaubitz)</comment>
+    <requestid>1327387</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 15 12:43:41 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.5.0
+  * Add Python 3.14 support (#333)
+  * Remove setup.cfg configuration for creating universal wheels (#332)
+  * Resolve issue where pre-release versions of dependencies are installed (#329)
+- Update BuildRequires from setup.py
+
+-------------------------------------------------------------------
 Thu Apr 24 13:52:15 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.4.3
