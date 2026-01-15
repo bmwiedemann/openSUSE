@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Jan 15 05:56:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.3.2:
+  This release includes performance improvements for local
+  scanning, reducing memory usage and avoiding unnecessary advisory
+  loading. It also fixes issues with MCP's
+  get_vulnerability_details tool, git queries in osv-scanner.json,
+  and ignore entry tracking, along with documentation updates.
+  * Fixes:
+    - Bug #2415 Add more PURL-to-ecosystem mappings
+    - Bug #2422 MCP error for get_vulnerability_id because type
+      definition is incorrect.
+    - Bug #2460 Enable osv-scanner.json git queries
+    - Bug #2456 Properly track if an ignore entry has been used
+    - Bug #2450 Performance: Avoid loading the entire advisory
+      unless it will actually be used
+    - Bug #2445 Performance: Don't read the entire zip into memory
+    - Bug #2433 Allow specifying user agent in v2 osvscanner
+      package
+  * Misc:
+    - Misc #2453 Switch from gopkg.in/yaml.v3 to go.yaml.in/yaml/v3
+    - Misc #2447 Include bun.lock as a supported lockfile
+    - Misc #2444 Document GoVersionOverride in configuration.md
+  * Dependencies
+    - fix(deps): update osv-scanner minor (#2459)
+    - chore(deps): update ruby docker tag to v4 (#2432)
+    - chore(deps): update alpine:3.23 docker digest to 865b95f
+      (#2425)
+    - chore(deps): update docker/setup-buildx-action digest to
+      8d2750c (#2426)
+    - chore(deps): switch from gopkg.in/yaml.v3 to
+      go.yaml.in/yaml/v3 (#2453)
+    - fix(deps): update osv-scanner minor (#2427)
+    - chore(deps): update alpine docker tag to v3.23 (#2401)
+    - chore(deps): update workflows (#2417)
+    - fix(deps): update osv-scanner minor (#2418)
+    - chore(deps): update workflows (major) (#2419)
+
+-------------------------------------------------------------------
 Thu Dec 11 07:55:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.3.1:
