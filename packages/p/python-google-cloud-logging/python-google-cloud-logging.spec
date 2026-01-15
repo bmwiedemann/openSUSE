@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-cloud-logging
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-logging
-Version:        3.12.1
+Version:        3.13.0
 Release:        0
 Summary:        Stackdriver Logging API client library
 License:        Apache-2.0

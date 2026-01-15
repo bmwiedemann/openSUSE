@@ -30,4 +30,14 @@
     <comment></comment>
     <requestid>1272661</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3ab0afda9f0acd3bbc0a872aaa7b1d9a</srcmd5>
+    <version>3.13.0</version>
+    <time>1768492939</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.13.0
+  * Add support for python 3.14 (#1065)
+  * remove setup.cfg configuration for creating universal wheels (#981) (forwarded request 1327410 from glaubitz)</comment>
+    <requestid>1327429</requestid>
+  </revision>
 </revisionlist>
