@@ -9046,8 +9046,6 @@ unsorted:
   - iperf 
   - iperf-devel 
   - iperf2 
-  - ipmctl 
-  - ipmctl-devel 
   - ipmitool-bmc-snmp-proxy 
   - ipmiutil 
   - ipmiutil-devel 
@@ -9585,6 +9583,7 @@ unsorted:
   - jmock 
   - jmock-demo 
   - jmock-javadoc 
+  - jmol 
   - jna 
   - jna-contrib 
   - jna-javadoc 
@@ -24282,6 +24281,7 @@ unsorted:
   - python311-PyRect 
   - python311-PySDL2 
   - python311-PyScreeze 
+  - python311-PySnooper 
   - python311-PyTrie 
   - python311-PyTweening 
   - python311-PyVirtualDisplay 
@@ -24464,6 +24464,7 @@ unsorted:
   - python311-asdf-unit-schemas 
   - python311-asdf-wcs-schemas 
   - python311-ase 
+  - python311-asgi-lifespan 
   - python311-asgiref 
   - python311-asn1crypto 
   - python311-aspectlib 
@@ -25211,6 +25212,7 @@ unsorted:
   - python311-dask-test 
   - python311-dataclasses-json 
   - python311-datadiff 
+  - python311-datamodel-code-generator 
   - python311-datashader 
   - python311-dateparser 
   - python311-dateutils 
@@ -25466,6 +25468,7 @@ unsorted:
   - python311-et_xmlfile 
   - python311-etcd 
   - python311-ethtool 
+  - python311-eval-type-backport 
   - python311-evdev 
   - python311-eventlet 
   - python311-evilunit 
@@ -25765,6 +25768,7 @@ unsorted:
   - python311-httpsig_cffi 
   - python311-httptools 
   - python311-httpx-socks 
+  - python311-httpx-sse 
   - python311-httpx-ws 
   - python311-huey 
   - python311-huggingface-hub 
@@ -26587,6 +26591,7 @@ unsorted:
   - python311-pprintpp 
   - python311-pproxy 
   - python311-praatio 
+  - python311-prance 
   - python311-pre-commit 
   - python311-precis-i18n 
   - python311-preggy 
@@ -26996,6 +27001,7 @@ unsorted:
   - python311-pytest-system-statistics 
   - python311-pytest-testconfig 
   - python311-pytest-testinfra 
+  - python311-pytest-textual-snapshot 
   - python311-pytest-timeout 
   - python311-pytest-tldr 
   - python311-pytest-tornado 
@@ -27478,6 +27484,7 @@ unsorted:
   - python311-srcinfo 
   - python311-srt 
   - python311-ssdeep 
+  - python311-sse-starlette 
   - python311-sseclient 
   - python311-sshpubkeys 
   - python311-sshtunnel 
@@ -27632,6 +27639,7 @@ unsorted:
   - python311-translationstring 
   - python311-translitcodec 
   - python311-tree-sitter 
+  - python311-tree-sitter-bash 
   - python311-treq 
   - python311-tri.struct 
   - python311-trio 
@@ -28075,6 +28083,7 @@ unsorted:
   - python312-PyRect 
   - python312-PySDL2 
   - python312-PyScreeze 
+  - python312-PySnooper 
   - python312-PySocks 
   - python312-PyTrie 
   - python312-PyTweening 
@@ -28266,6 +28275,7 @@ unsorted:
   - python312-asdf-unit-schemas 
   - python312-asdf-wcs-schemas 
   - python312-ase 
+  - python312-asgi-lifespan 
   - python312-asgiref 
   - python312-asn1crypto 
   - python312-aspectlib 
@@ -29024,6 +29034,7 @@ unsorted:
   - python312-dask-test 
   - python312-dataclasses-json 
   - python312-datadiff 
+  - python312-datamodel-code-generator 
   - python312-datashader 
   - python312-dateparser 
   - python312-dateutils 
@@ -29282,6 +29293,7 @@ unsorted:
   - python312-et_xmlfile 
   - python312-etcd 
   - python312-ethtool 
+  - python312-eval-type-backport 
   - python312-evdev 
   - python312-eventlet 
   - python312-evilunit 
@@ -29591,6 +29603,7 @@ unsorted:
   - python312-httptools 
   - python312-httpx 
   - python312-httpx-socks 
+  - python312-httpx-sse 
   - python312-httpx-ws 
   - python312-huey 
   - python312-huggingface-hub 
@@ -30433,6 +30446,7 @@ unsorted:
   - python312-pprintpp 
   - python312-pproxy 
   - python312-praatio 
+  - python312-prance 
   - python312-pre-commit 
   - python312-precis-i18n 
   - python312-preggy 
@@ -30853,6 +30867,7 @@ unsorted:
   - python312-pytest-system-statistics 
   - python312-pytest-testconfig 
   - python312-pytest-testinfra 
+  - python312-pytest-textual-snapshot 
   - python312-pytest-timeout 
   - python312-pytest-tldr 
   - python312-pytest-tornado 
@@ -31346,6 +31361,7 @@ unsorted:
   - python312-srcinfo 
   - python312-srt 
   - python312-ssdeep 
+  - python312-sse-starlette 
   - python312-sseclient 
   - python312-sshpubkeys 
   - python312-sshtunnel 
@@ -31502,6 +31518,7 @@ unsorted:
   - python312-translationstring 
   - python312-translitcodec 
   - python312-tree-sitter 
+  - python312-tree-sitter-bash 
   - python312-treq 
   - python312-tri.struct 
   - python312-trio 
@@ -31947,6 +31964,7 @@ unsorted:
   - python313-PyRect 
   - python313-PySDL2 
   - python313-PyScreeze 
+  - python313-PySnooper 
   - python313-PyTrie 
   - python313-PyTweening 
   - python313-PyVirtualDisplay 
@@ -32131,6 +32149,7 @@ unsorted:
   - python313-asdf-unit-schemas 
   - python313-asdf-wcs-schemas 
   - python313-ase 
+  - python313-asgi-lifespan 
   - python313-asgiref 
   - python313-asn1crypto 
   - python313-aspectlib 
@@ -32878,6 +32897,7 @@ unsorted:
   - python313-dask-test 
   - python313-dataclasses-json 
   - python313-datadiff 
+  - python313-datamodel-code-generator 
   - python313-datashader 
   - python313-dateparser 
   - python313-dateutils 
@@ -33133,6 +33153,7 @@ unsorted:
   - python313-et_xmlfile 
   - python313-etcd 
   - python313-ethtool 
+  - python313-eval-type-backport 
   - python313-evdev 
   - python313-eventlet 
   - python313-evilunit 
@@ -33438,6 +33459,7 @@ unsorted:
   - python313-httptools 
   - python313-httpx 
   - python313-httpx-socks 
+  - python313-httpx-sse 
   - python313-httpx-ws 
   - python313-huey 
   - python313-huggingface-hub 
@@ -34277,6 +34299,7 @@ unsorted:
   - python313-pprintpp 
   - python313-pproxy 
   - python313-praatio 
+  - python313-prance 
   - python313-pre-commit 
   - python313-precis-i18n 
   - python313-preggy 
@@ -34684,6 +34707,7 @@ unsorted:
   - python313-pytest-system-statistics 
   - python313-pytest-testconfig 
   - python313-pytest-testinfra 
+  - python313-pytest-textual-snapshot 
   - python313-pytest-timeout 
   - python313-pytest-tldr 
   - python313-pytest-tornado 
@@ -35165,6 +35189,7 @@ unsorted:
   - python313-srcinfo 
   - python313-srt 
   - python313-ssdeep 
+  - python313-sse-starlette 
   - python313-sseclient 
   - python313-sshpubkeys 
   - python313-sshtunnel 
@@ -35324,6 +35349,7 @@ unsorted:
   - python313-translationstring 
   - python313-translitcodec 
   - python313-tree-sitter 
+  - python313-tree-sitter-bash 
   - python313-treq 
   - python313-tri.struct 
   - python313-trio 
@@ -36834,10 +36860,8 @@ unsorted:
   - ruby3.4-doc 
   - ruby3.4-doc-ri 
   - ruby3.4-rubygem-faraday-follow_redirects 
-  - ruby3.4-rubygem-hoe 
   - ruby3.4-rubygem-ruby_parser 
   - ruby3.4-rubygem-sexp_processor 
-  - ruby3.4-rubygem-xmlhash 
   - ruby4.0-devel 
   - ruby4.0-devel-extra 
   - ruby4.0-doc 
@@ -36959,6 +36983,7 @@ unsorted:
   - ruby4.0-rubygem-hashie 
   - ruby4.0-rubygem-highline 
   - ruby4.0-rubygem-hitimes 
+  - ruby4.0-rubygem-hoe 
   - ruby4.0-rubygem-html2haml 
   - ruby4.0-rubygem-http-cookie 
   - ruby4.0-rubygem-http-form_data 
@@ -37159,6 +37184,7 @@ unsorted:
   - ruby4.0-rubygem-websocket-driver 
   - ruby4.0-rubygem-websocket-extensions 
   - ruby4.0-rubygem-xml-simple 
+  - ruby4.0-rubygem-xmlhash 
   - ruby4.0-rubygem-xmlrpc 
   - ruby4.0-rubygem-yajl-ruby 
   - ruby4.0-rubygem-yard 
