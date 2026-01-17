@@ -46,16 +46,16 @@ BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(imlib2)
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(liba52)
-BuildRequires:  pkgconfig(libavcodec) >= 58
-BuildRequires:  pkgconfig(libavformat) >= 58
-BuildRequires:  pkgconfig(libavutil) >= 56
+BuildRequires:  ffmpeg-4-libavcodec-devel
+BuildRequires:  ffmpeg-4-libavformat-devel
+BuildRequires:  ffmpeg-4-libavutil-devel
 BuildRequires:  pkgconfig(libbluray)
 BuildRequires:  pkgconfig(libcdio)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libmng)
 BuildRequires:  pkgconfig(libmodplug)
 BuildRequires:  pkgconfig(libmpeg2)
-BuildRequires:  pkgconfig(libpostproc) >= 55
+BuildRequires:  ffmpeg-4-libpostproc-devel
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libv4l2)
 BuildRequires:  pkgconfig(libvcdinfo)
