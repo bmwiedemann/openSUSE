@@ -1614,4 +1614,17 @@
   * GO-2026-4303 CVE-2017-18900 GHSA-8q4v-35v6-g8wr (forwarded request 1327107 from jfkw)</comment>
     <requestid>1327108</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>eafd41938a8cc8e397c8dc26b455e459</srcmd5>
+    <version>0.0.20260114T191543</version>
+    <time>1768658166</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.20260114T191543 2026-01-14T19:15:43Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2025-4248 CVE-2025-62690 GHSA-q66g-q98c-q454
+  * GO-2025-4251 CVE-2025-63389 GHSA-f6mr-38g8-39rg
+  * GO-2026-4273 CVE-2025-14987 GHSA-hmhp-gh8m-c8xp (forwarded request 1327691 from jfkw)</comment>
+    <requestid>1327692</requestid>
+  </revision>
 </revisionlist>
