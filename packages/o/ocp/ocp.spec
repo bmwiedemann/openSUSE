@@ -1,7 +1,7 @@
 #
 # spec file for package ocp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ocp
-Version:        3.0.1
+Version:        3.1.0
 Release:        0
 Summary:        Open Cubic Player for MOD/S3M/XM/IT/MIDI music files
 # Code is GPL-2.0-or-later, Graphics and animations are CC-BY-3.0
