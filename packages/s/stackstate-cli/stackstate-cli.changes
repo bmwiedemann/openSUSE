@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan 17 07:15:38 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version 3.2.0:
+  * STAC-23880: change stackpack package extension from .zip to .sts
+  * STAC-24106: Pin the openapi generator to the version we used to have before the update of the flake.nix file
+  * STAC-23271 Remove unused const
+  * STAC-23271 Fix yaml parsing
+  * STAC-23271 Remove dashboard feature flag
+  * Use yaml for dashboard interactions instead of json More user friendly and matches the behavior we have for the `settings` command.
+
+-------------------------------------------------------------------
 Mon Nov 24 11:35:47 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Update to version 3.1.4:
