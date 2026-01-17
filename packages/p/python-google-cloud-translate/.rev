@@ -199,4 +199,22 @@
   * Update import statement example in README (0131a33) (forwarded request 1312035 from glaubitz)</comment>
     <requestid>1312039</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f60afa48d86d6eda4eea7440a9caa052</srcmd5>
+    <version>3.24.0</version>
+    <time>1768658094</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.24.0
+  * auto-enable mTLS when supported certificates are detected
+  * check Python and dependency versions in generated GAPICs
+- from version 3.23.0
+  * Adds support for RefineText
+  * Adds option for pdf_native only document translation
+  * Adds option for contextual translation with glossaries
+- from version 3.22.0
+  * Add support for Python 3.14
+  * Deprecate credentials_file argument
+- Update BuildRequires and Requires from setup.py (forwarded request 1327674 from glaubitz)</comment>
+    <requestid>1327701</requestid>
+  </revision>
 </revisionlist>
