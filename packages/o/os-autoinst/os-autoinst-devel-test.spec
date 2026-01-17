@@ -1,7 +1,7 @@
 #
 # spec file for package os-autoinst-devel-test
 #
-# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         short_name os-autoinst-devel
 Name:           %{short_name}-test
-Version:        5.1767893100.fd5003c
+Version:        5.1768577300.b85e486
 Release:        0
 Summary:        Test package for %{short_name}
 License:        GPL-2.0-or-later

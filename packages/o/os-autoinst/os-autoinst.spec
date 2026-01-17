@@ -1,7 +1,7 @@
 #
 # spec file for package os-autoinst
 #
-# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        5.1767893100.fd5003c
+Version:        5.1768577300.b85e486
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -263,6 +263,10 @@ rm t/02-test_ocr.t
 %if 0%{?qemu_user_space_build}
 # qemu emulation always starts a separate thread
 rm t/28-signalblocker.t
+%endif
+%ifarch aarch64
+# https://progress.opensuse.org/issues/194359
+rm -f t/28-signalblocker.t
 %endif
 
 %build
