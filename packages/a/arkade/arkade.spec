@@ -17,7 +17,7 @@
 
 
 Name:           arkade
-Version:        0.11.62
+Version:        0.11.63
 Release:        0
 Summary:        Open Source Kubernetes Marketplace
 License:        Apache-2.0
