@@ -1,7 +1,7 @@
 #
 # spec file for package perl-File-BaseDir
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,16 @@
 
 %define cpan_name File-BaseDir
 Name:           perl-File-BaseDir
-Version:        0.09
+Version:        0.90.0
 Release:        0
-Summary:        Use the Freedesktop.org base directory specification
+# 0.09 -> normalize -> 0.90.0
+%define cpan_version 0.09
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Use the Freedesktop.org base directory specification
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -32,6 +35,10 @@ BuildRequires:  perl(File::Which)
 BuildRequires:  perl(IPC::System::Simple)
 BuildRequires:  perl(Test::More) >= 0.98
 Requires:       perl(IPC::System::Simple)
+Provides:       perl(File::BaseDir) = %{version}
+Provides:       perl(File::IconTheme) = %{version}
+Provides:       perl(File::UserDirs) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -47,7 +54,7 @@ This module forked from File::MimeInfo.
 This module follows version 0.6 of BaseDir specification.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -62,7 +69,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc author.yml Changes README
+%doc Changes README
 %license LICENSE
 
 %changelog
