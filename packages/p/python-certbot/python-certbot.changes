@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 15 13:55:32 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.2.2
+  * Support for Python 3.14 was added.
+  * While nothing significant should have changed from the user's perspective,
+    we've been doing a lot of internal refactoring in preparation for soon
+    adding support for IP address certificates to Certbot.
+  * Fixed a regression that caused certbot to crash if multiple --webroot-path
+    values were set on the command line.
+
+-------------------------------------------------------------------
 Tue Oct 14 07:59:15 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.1.0
