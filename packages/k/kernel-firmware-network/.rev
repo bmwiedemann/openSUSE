@@ -118,4 +118,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * linux-firmware: add firmware for an8811hb 2.5G ethernet phy</comment>
     <requestid>1325734</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1e91985a1ad9ea70a5b22e40d01a5809</srcmd5>
+    <version>20260116</version>
+    <time>1768682521</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20260116 (git commit 2b93c4fc3564):
+  * linux-firmware: Add firmware for airoha-npu-7583 driver</comment>
+    <requestid>1327795</requestid>
+  </revision>
 </revisionlist>

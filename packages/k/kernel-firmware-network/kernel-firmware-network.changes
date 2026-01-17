@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 16 16:43:36 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260116 (git commit 2b93c4fc3564):
+  * linux-firmware: Add firmware for airoha-npu-7583 driver
+
+-------------------------------------------------------------------
 Wed Jan  7 08:52:47 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260106 (git commit e272e0d1edce):
