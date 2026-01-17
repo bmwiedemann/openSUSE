@@ -1,1 +1,10 @@
-d  /run/sendmail 0750 root mail -
+d /run/sendmail                        0750 root mail -
+d /var/lib/sendmail                    0750 root root -
+f /var/lib/sendmail/statistics         0600 root root -
+L /etc/mail/statistics                 -    -    -    - /var/lib/sendmail/statistics
+d /var/spool/clientmqueue              0770 mail mail -
+f /var/spool/clientmqueue/sm-client.st 0660 root mail -
+d /var/spool/mail                      1777 root root -
+L /var/mail                            -    -    -    - /var/spool/mail
+d /var/spool/mqueue                    0700 root root -
+d /var/spool/mqueue/.hoststat          0700 root root -

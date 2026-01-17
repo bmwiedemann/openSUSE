@@ -1336,4 +1336,16 @@ SUSE- proprietary prefix added until Sendmail is accepted as valid SPDX license 
   to fixup changes to current standard. (forwarded request 1291006 from msmeissn)</comment>
     <requestid>1291171</requestid>
   </revision>
+  <revision rev="130" vrev="9">
+    <srcmd5>ca42d726a9aca5f52d0710d5bfa794f5</srcmd5>
+    <version>8.18.1</version>
+    <time>1768657875</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct group permission of /var/spool/clientmqueue to make
+  sendmail work again (boo#1255437) 
+
+- Support Immutable Mode (jsc#PED-14688)
+  * Note that still sendmail is not part of SLES-16 and above</comment>
+    <requestid>1325711</requestid>
+  </revision>
 </revisionlist>

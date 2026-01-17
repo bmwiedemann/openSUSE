@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan  7 07:21:04 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Correct group permission of /var/spool/clientmqueue to make
+  sendmail work again (boo#1255437) 
+
+-------------------------------------------------------------------
+Wed Dec 17 12:43:20 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Support Immutable Mode (jsc#PED-14688)
+  * Note that still sendmail is not part of SLES-16 and above
+
+-------------------------------------------------------------------
 Mon Jul  7 09:39:00 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - ran /usr/lib/obs/service/source_validators/helpers/fix_changelog

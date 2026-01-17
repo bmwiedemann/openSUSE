@@ -1,7 +1,7 @@
 #
 # spec file for package sendmail
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,6 +54,7 @@ BuildRequires:  openldap2-devel
 BuildRequires:  pam-devel
 %if 0%{?suse_version} >= 1600
 BuildRequires:  permissions-config
+BuildRequires:  rpm_macro(_tmpfilesdir)
 %endif
 BuildRequires:  permissions
 BuildRequires:  procmail
@@ -249,17 +250,19 @@ processed mail on to the MTA (e.g. sendmail).
     cat <<-EOF > file-list
 	%%defattr(-,root,root)
 	%%dir %{_tmpfilesdir}/
-	%{_tmpfilesdir}/sendmail.conf
+	%%attr(0644,root,root) %%{_tmpfilesdir}/sendmail.conf
+%if ! %{defined tmpfiles_create}
 	%%dir    %%attr(0750,root,root)        %{_localstatedir}/lib/sendmail/
 	%%attr(0600,root,root)                 %{_localstatedir}/lib/sendmail/statistics
-	%%attr(0600,root,root)                 %{_mailcnfdir}/statistics
+	%{_mailcnfdir}/statistics
 	%%dir    %%attr(0700,root,root)        %{_localstatedir}/spool/mqueue/
 	%%dir    %%attr(0700,root,root)        %{_localstatedir}/spool/mqueue/.hoststat/
 	# Part of filesystem RPM
 	# %%dir    %%attr(0770,root,mail)      %{_localstatedir}/spool/clientmqueue/
 	%%attr(0660,root,mail)                 %{_localstatedir}/spool/clientmqueue/sm-client.st
+%endif
 %if 0%{?suse_version} >= 1600
-	%%attr(0755,root,root)        %{_datadir}/permissions/permissions.d/
+	%%dir %%attr(0755,root,root)  %{_datadir}/permissions/permissions.d/
 	%%attr(0644,root,root)        %{_datadir}/permissions/permissions.d/sendmail
 	%%attr(0644,root,root)        %{_datadir}/permissions/permissions.d/sendmail.paranoid
 %else
@@ -358,7 +361,9 @@ processed mail on to the MTA (e.g. sendmail).
     mkdir -p %{buildroot}%{_mandir}/man8
     mkdir -p %{buildroot}%{_fillupdir}
     mkdir -p %{buildroot}/var/spool/mail
+%if ! %{defined tmpfiles_create}
     ln -s spool/mail %{buildroot}/var/mail
+%endif
     mkdir -p %{buildroot}%{_unitdir}
     mkdir -p %{buildroot}%{_mailcnfdir}/system
     chmod 0755 %{buildroot}%{_mailcnfdir}/system
@@ -371,6 +376,9 @@ processed mail on to the MTA (e.g. sendmail).
 	MANROOTMAN=%{_mandir}/man \
 	MANROOT=%{_mandir}/cat \
 	install
+%if %{defined tmpfiles_create}
+    rm -rf %{buildroot}%{_localstatedir}/lib/sendmail/statistics
+%endif
     # needed to be able to comple a milter which uses libsm, i.e. amavis-milter
     cd include/sm
     ln -s os/sm_os_linux.h sm_os.h
@@ -387,6 +395,7 @@ processed mail on to the MTA (e.g. sendmail).
     ln -sf %{_sbindir}/sendmail %{buildroot}%{_prefix}/lib/sendmail
     mv %{buildroot}%{_sbindir}/praliases \
 			      %{buildroot}%{_bindir}/praliases
+%if ! %{defined tmpfiles_create}
     mkdir -p           %{buildroot}%{_localstatedir}/spool/mqueue/.hoststat
     test "$ID" -ne 0 || \
     chown -R root:root %{buildroot}%{_localstatedir}/spool/mqueue
@@ -407,6 +416,7 @@ processed mail on to the MTA (e.g. sendmail).
     test "$ID" -ne 0 || \
     chown -R root:mail %{buildroot}%{_localstatedir}/spool/clientmqueue/sm-client.st
     chmod 0660         %{buildroot}%{_localstatedir}/spool/clientmqueue/sm-client.st
+%endif
     chmod 0755         %{buildroot}%{_libexecdir}/sendmail.d
     chmod 0755         %{buildroot}%{_libexecdir}/sendmail.d/bin
     chmod 0644         %{buildroot}%{_libdir}/*.a
@@ -464,7 +474,6 @@ processed mail on to the MTA (e.g. sendmail).
 		    local-host-names %{buildroot}%{_mailcnfdir}/
     install -m 0600 auth-info %{buildroot}%{_mailcnfdir}/auth/
     install -m 0755 sendmail.nissl %{buildroot}%{_sbindir}/
-echo XXXXX %suse_version
 %if 0%{?suse_version} >= 1600
     mkdir -p %{buildroot}%{_datadir}/permissions/permissions.d
     install -m 0644 permissions %{buildroot}%{_datadir}/permissions/permissions.d/sendmail
@@ -477,7 +486,6 @@ echo XXXXX %suse_version
     test 1777 = "$(stat --printf='%a' /var/spool/mail/)" || exit 1
 %endif
     mkdir -p %{buildroot}%{_tmpfilesdir}
-    install -m 0644 tmpfile %{buildroot}%{_tmpfilesdir}/sendmail.conf
 %if 0%{?suse_version} >= 1600
     sed -ri '\@/etc/init.d/sendmail@d' %{buildroot}%{_datadir}/permissions/permissions.d/sendmail
     sed -ri '\@/etc/init.d/sendmail@d' %{buildroot}%{_datadir}/permissions/permissions.d/sendmail.paranoid
@@ -590,7 +598,9 @@ echo XXXXX %suse_version
 %endif
 
 %post
-%{?tmpfiles_create:%tmpfiles_create %{_prefix}/lib/tmpfiles.d/sendmail.conf}
+%if %{defined tmpfiles_create}
+%tmpfiles_create %{_tmpfilesdir}/sendmail.conf
+%endif
 # Trigger rebuild of old db's
 for db in /etc/aliases.db /etc/aliases.d/*.db /etc/mail/*.db /etc/mail/*/*.db ; do
   test -e "$db"       || continue
@@ -678,15 +688,15 @@ done
 %files -f file-list
 %defattr(-,root,root)
 %dir %{_mailcnfdir}/
-# %{_sysconfdir}/aliases.d is part of aaa_dir
-# %dir %attr(0750,root,mail) %{_sysconfdir}/aliases.d/
+# %%{_sysconfdir}/aliases.d is part of aaa_dir
+# %%dir %%attr(0750,root,mail) %%{_sysconfdir}/aliases.d/
 %dir %attr(0750,root,root) %{_mailcnfdir}/auth/
 %dir %attr(0750,root,root) %{_mailcnfdir}/certs/
 %dir %attr(0755,root,root) %{_mailcnfdir}/system/
 %ghost %attr(0750,root,mail) /run/sendmail/
 %config(noreplace) %verify(not md5 size mtime) %{_sysconfdir}/sendmail.cf
-# %{_sysconfdir}/aliases is part of netcfg
-# %config(noreplace) %{_sysconfdir}/aliases
+# %%{_sysconfdir}/aliases is part of netcfg
+# %%config(noreplace) %%{_sysconfdir}/aliases
 %doc               %{_mailcnfdir}/README
 %config(noreplace) %{_mailcnfdir}/Makefile
 # this is a link
@@ -725,13 +735,12 @@ done
 %config %attr(0644,root,root) %{_unitdir}/sendmail.service
 %config %attr(0644,root,root) %{_unitdir}/sendmail-client.service
 %config %attr(0755,root,root) %{_mailcnfdir}/system/sm-client.pre
-%attr(0644,root,root) %{_tmpfilesdir}/sendmail.conf
 %{_bindir}/hoststat
 %{_bindir}/mailq
 %{_bindir}/newaliases
 %{_bindir}/praliases
 %{_bindir}/purgestat
-#%{_bindir}/rmail
+#%%{_bindir}/rmail
 %{_prefix}/lib/sendmail
 %dir %attr(0755,root,root) %{_libexecdir}/sendmail.d/
 %dir %attr(0755,root,root) %{_libexecdir}/sendmail.d/bin/
@@ -746,7 +755,7 @@ done
 %doc %{_mandir}/man5/aliases.5.gz
 %doc %{_mandir}/man8/editmap.8.gz
 %doc %{_mandir}/man8/makemap.8.gz
-#%doc %{_mandir}/man8/rmail.8.gz
+#%%doc %%{_mandir}/man8/rmail.8.gz
 %doc %{_mandir}/man8/sendmail.8.gz
 %doc %{_mandir}/man8/smrsh.8.gz
 %doc %{_mandir}/man8/mail.local.8.gz
@@ -759,10 +768,12 @@ done
 %attr(2555,root,mail) %{_sbindir}/sendmail
 %{_sbindir}/sendmail.nissl
 %{_sbindir}/rcsendmail*
+%if ! %{defined tmpfiles_create}
 %if 0%{?suse_version} >= 1600
 %dir %attr(1777,root,root) /var/spool/mail/
 %endif
 /var/mail
+%endif
 
 %files devel
 %defattr(-,root,root)
