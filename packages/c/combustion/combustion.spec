@@ -1,7 +1,7 @@
 #
 # spec file for package combustion
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           combustion
-Version:        1.5+git3
+Version:        1.5+git8
 Release:        0
 Summary:        System for initial configuration of appliances
 License:        GPL-2.0-or-later
