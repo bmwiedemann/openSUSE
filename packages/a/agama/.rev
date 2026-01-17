@@ -526,4 +526,41 @@
   leaking them (bsc#1251898).</comment>
     <requestid>1317453</requestid>
   </revision>
+  <revision rev="32" vrev="32">
+    <srcmd5>d7e2079f90b0d0fe383dd52998f00f0d</srcmd5>
+    <version>0</version>
+    <time>1768657889</time>
+    <user>dimstar_suse</user>
+    <comment>- Implement support for users and authentication configuration.
+- Initialize and copy the network configuration to the target
+  system.
+- Execute post-installation scripts.
+
+- Version 19.pre
+- Introduce the version 2 of the HTTP API (gh#agama-project/agama#2997).
+- Add new services, ported from Ruby:
+  - hostname
+  - files
+  - manager
+  - storage
+- Replace the old API with the new one.
+- Adapt most parts of the CLI to the new HTTP API.
+- Missing pieces:
+  - Users and authentication handling.
+  - iSCSI, DASD, zFCP.
+  - Network proxy.
+  - IPMI.
+  - Use self-signed certificates for registration.
+
+- Do not build on 32bit arches (like i586) and PPC64-BE,
+  the dependant libsuseconnect does not support these (bsc#1251846)
+
+- Fixed passing arguments when &quot;agama config generate&quot; with an
+  AutoYast profile.
+- Removed unhandled unwrap, reorganized validation result reporting
+  (gh#agama-project/agama#2893).
+
+- Version 18</comment>
+    <requestid>1327356</requestid>
+  </revision>
 </revisionlist>

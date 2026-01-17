@@ -1,14 +1,94 @@
 -------------------------------------------------------------------
+Wed Jan 14 23:27:16 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Implement support for users and authentication configuration.
+- Initialize and copy the network configuration to the target
+  system.
+- Execute post-installation scripts.
+
+-------------------------------------------------------------------
+Fri Jan  9 14:43:59 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Version 19.pre
+- Introduce the version 2 of the HTTP API (gh#agama-project/agama#2997).
+- Add new services, ported from Ruby:
+  - hostname
+  - files
+  - manager
+  - storage
+- Replace the old API with the new one.
+- Adapt most parts of the CLI to the new HTTP API.
+- Missing pieces:
+  - Users and authentication handling.
+  - iSCSI, DASD, zFCP.
+  - Network proxy.
+  - IPMI.
+  - Use self-signed certificates for registration.
+
+-------------------------------------------------------------------
+Wed Nov 19 14:49:59 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
+
+- Do not build on 32bit arches (like i586) and PPC64-BE,
+  the dependant libsuseconnect does not support these (bsc#1251846)
+
+-------------------------------------------------------------------
+Tue Nov 18 08:47:11 UTC 2025 - Michal Filka <mfilka@suse.com>
+
+- Fixed passing arguments when "agama config generate" with an
+  AutoYast profile.
+- Removed unhandled unwrap, reorganized validation result reporting
+  (gh#agama-project/agama#2893).
+
+-------------------------------------------------------------------
+Wed Nov 12 15:42:27 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Version 18
+
+-------------------------------------------------------------------
+Wed Nov 12 13:14:21 UTC 2025 - Michal Filka <mfilka@suse.com>
+
+- Fixed output of "agama config generate"
+
+-------------------------------------------------------------------
+Mon Nov 10 14:35:25 UTC 2025 - Michal Filka <mfilka@suse.com>
+
+- Created ProfileClient based on HTTP API base client for profile
+  validation requests and refactored / cleaned relevant code
+  (gh#agama-project/agaam#2778).
+
+-------------------------------------------------------------------
 Tue Oct 14 10:36:49 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Do not log errors when retrieving NetworkManager secrets to prevent
   leaking them (bsc#1251898).
 
 -------------------------------------------------------------------
+Tue Oct  7 09:55:46 UTC 2025 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Add IpConfig.link_local4 to specify ZeroConf/AutoIP behavior.
+  (gh#agama-project/agama#2792).
+
+-------------------------------------------------------------------
+Wed Oct  1 13:45:23 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
+
+- Autoinstallation schema improvements (gh#agama-project/agama#2773):
+  - Added product name examples
+  - Allow using "$schema" key for linking the schema definition,
+    some editors like VSCode uses that for validaing the file
+    automatically
+  - Use "agama-project" in the GitHub URLs
+
+-------------------------------------------------------------------
 Mon Sep 15 21:09:06 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Do not log the events to prevent leaking passwords (bsc#1249622).
 - Set logs permissions to 0o600.
+
+-------------------------------------------------------------------
+Tue Sep  2 12:24:00 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Drop the D-Bus interface to localization configuration
+  (gh#agama-project/agama#2684).
 
 -------------------------------------------------------------------
 Thu Aug 28 10:15:23 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
@@ -20,6 +100,20 @@ Thu Aug 28 05:26:06 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Include the output of the "agama config" commands when
   agama-autoinstall fails (related to bsc#1248779).
+
+-------------------------------------------------------------------
+Wed Aug 27 08:57:02 UTC 2025 - Knut Anderssen <kanderssen@suse.com>
+
+- Add the zFCP controller internal id to the device when some
+  update is notified (bsc#1247445).
+
+-------------------------------------------------------------------
+Mon Aug 25 16:13:43 UTC 2025 - Michal Filka <mfilka@suse.com>
+
+- bsc#1247424
+  - introduced --local option for agama config validate CLI command
+    to make validation working without connecting to remote agama
+    server
 
 -------------------------------------------------------------------
 Tue Aug 19 12:38:40 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
