@@ -194,4 +194,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * i915: Xe3p_LPD DMC v2.33</comment>
     <requestid>1326590</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e011a740e85c75bb4fd372297ddf8bec</srcmd5>
+    <version>20260114</version>
+    <time>1768682518</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20260114 (git commit e477bd5942f4):
+  * xe: Add GSC 105.0.2.1301 for PTL</comment>
+    <requestid>1327792</requestid>
+  </revision>
 </revisionlist>
