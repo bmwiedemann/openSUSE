@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 16 05:58:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.0.3:
+  * sbom: Make sure sbom packages are connected to the document
+    root. (#2021)
+  * build(deps): bump google.golang.org/api from 0.259.0 to 0.260.0
+    (#2020)
+
+-------------------------------------------------------------------
 Wed Jan 14 13:35:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.0.2:
