@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jan 16 18:23:11 UTC 2026 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 2026.01.1
+  * HackRF Pro, a new hardware platform, is now supported. Initially
+    HackRF Pro supports a legacy radio configuration mode that makes
+    it compatible with software designed for use with HackRF One.
+    Future releases will enable extended precision and other modes.
+  * Improved build system and documentation.
+  * Added support for newer PortaPacks with AGM Microelectronics
+    CPLDs.
+  * Updated libhackrf version to be more consistent with Semantic
+    Versioning.
+  * There have been many enhancements and bug fixes. For a full
+    list of changes, see the git log.
+
+-------------------------------------------------------------------
 Wed Mar  6 20:25:54 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to version 2024.02.1
