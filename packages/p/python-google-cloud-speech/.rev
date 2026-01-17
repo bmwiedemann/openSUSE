@@ -269,4 +269,12 @@
   * Updated description of sample_rate_hertz (c522070) (forwarded request 1312054 from glaubitz)</comment>
     <requestid>1312057</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a05cc23ff054e5025a79a823f252c40a</srcmd5>
+    <version>2.36.0</version>
+    <time>1768658090</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1327655</requestid>
+  </revision>
 </revisionlist>
