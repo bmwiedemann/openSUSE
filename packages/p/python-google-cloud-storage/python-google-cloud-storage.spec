@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-cloud-storage
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-storage%{pkg_suffix}
-Version:        3.4.1
+Version:        3.8.0
 Release:        0
 Summary:        Google Cloud Storage API python client library
 License:        Apache-2.0
@@ -37,12 +37,26 @@ Source:         https://files.pythonhosted.org/packages/source/g/google-cloud-st
 # PATCH-FIX-UPSTREAM demock.patch gh#googleapis/python-storage#770 mcepl@suse.com
 # Don’t use external mock package
 Patch1:         demock.patch
+BuildRequires:  %{python_module grpcio >= 1.33.2 if %python-base < 3.14}
+BuildRequires:  %{python_module grpcio >= 1.75.1 if %python-base >= 3.14}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module proto-plus >= 1.22.3 if %python-base < 3.13}
+BuildRequires:  %{python_module proto-plus >= 1.25.0 if %python-base >= 3.13}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-google-api-core >= 2.15.0
+%if %python_version_nodots < 314
+Requires:       python-grpcio >= 1.33.2
+%else
+Requires:       python-grpcio >= 1.75.1
+%endif
+%if %python_version_nodots < 313
+Requires:       python-proto-plus >= 1.22.3
+%else
+Requires:       python-proto-plus >= 1.25.0
+%endif
+Requires:       python-google-api-core >= 2.27.0
 Requires:       python-google-auth >= 2.26.1
 Requires:       python-google-cloud-core >= 2.4.2
 Requires:       python-google-crc32c >= 1.1.3
@@ -55,10 +69,10 @@ Obsoletes:      python3-google-cloud-storage < %{version}
 %endif
 # SECTION test requirements
 %if %{with test}
-BuildRequires:  %{python_module google-api-core >= 2.15.0}
+BuildRequires:  %{python_module google-api-core >= 2.27.0}
 BuildRequires:  %{python_module google-auth >= 2.26.1}
 BuildRequires:  %{python_module google-cloud-core >= 2.4.2}
-BuildRequires:  %{python_module google-cloud-iam}
+BuildRequires:  %{python_module google-cloud-iam >= 0.14.0}
 BuildRequires:  %{python_module google-cloud-storage}
 BuildRequires:  %{python_module google-crc32c >= 1.1.3}
 BuildRequires:  %{python_module google-resumable-media >= 2.7.2}

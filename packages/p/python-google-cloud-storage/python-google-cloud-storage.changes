@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Fri Jan 16 13:44:36 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Fix incorrect Python package names in Requires
+
+-------------------------------------------------------------------
+Fri Jan 16 13:04:01 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.8.0
+  * flush the last chunk in append method (#1699)
+  * add write resumption strategy (#1663)
+  * add bidi stream retry manager. (#1632)
+  * implement "append_from_file" (#1686)
+  * make flush size configurable (#1677)
+  * compute chunk wise checksum for bidi_writes (#1675)
+  * expose persisted size in mrd (#1671)
+  * add system test for opening with read_handle (#1672)
+  * no state lookup while opening bidi-write stream (#1636)
+  * close write object stream always (#1661)
+- from version 3.7.0
+  * Auto enable mTLS when supported certificates are detected (#1637)
+  * Send entire object checksum in the final api call of resumable upload (#1654)
+  * Support urllib3 >= 2.6.0 (#1658)
+  * Fix for move_blob failure when the new blob name contains characters that
+    need to be url encoded (#1605)
+- from version 3.6.0
+  * Add support for partial list buckets (#1606)
+  * Make return_partial_success and unreachable fields public for list Bucket (#1601)
+  * **zb-experimental:** Add async write object stream
+  * **zb-experimental:** Add async write object stream (#1612)
+  * Dont pass credentials to StorageClient (#1608)
+- from version 3.5.0
+  * **experimental:** Add base resumption strategy for bidi streams (#1594)
+  * **experimental:** Add checksum for bidi reads operation (#1566)
+  * **experimental:** Add read resumption strategy (#1599)
+  * **experimental:** Handle BidiReadObjectRedirectedError for bidi reads (#1600)
+  * Indicate that md5 is used as a CRC (#1522)
+  * Provide option to update user_agent (#1596)
+  * Deprecate credentials_file argument
+  * Flaky system tests for resumable_media (#1592)
+  * Make `download_ranges` compatible with `asyncio.create_task(..)` (#1591)
+  * Make `download_ranges` compatible with `asyncio.create_task(..)` (#1591)
+  * Redact sensitive data from OTEL traces and fix env var parsing (#1553)
+  * Redact sensitive data from OTEL traces and fix env var parsing (#1553)
+  * Use separate header object for each upload in Transfer Manager MPU (#1595)
+- Refresh demock.patch
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Mon Oct 20 09:09:39 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.4.1

@@ -368,4 +368,12 @@
 - Adjust python folder names in %files section (forwarded request 1312341 from glaubitz)</comment>
     <requestid>1312377</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>d1376d989b9258a622ad30a6e5353f1d</srcmd5>
+    <version>3.8.0</version>
+    <time>1768658097</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix incorrect Python package names in Requires (forwarded request 1327682 from glaubitz)</comment>
+    <requestid>1327705</requestid>
+  </revision>
 </revisionlist>
