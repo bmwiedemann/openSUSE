@@ -1,7 +1,7 @@
 #
 # spec file for package glew
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 %global pname glew
 # If you change so_ver, then you have to update baselibs.conf as well.
-%define so_ver 2_2
+%define so_ver 2_3
 
 %if "%{flavor}" == ""
 %bcond_with egl
@@ -33,7 +33,7 @@
 %define shlib libGLEW%{?pkg_suffix}%{so_ver}
 
 Name:           %{pname}%{?pkg_suffix}
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        OpenGL Extension Wrangler Library
 # was http://glew.sourceforge.net/
@@ -43,9 +43,6 @@ URL:            https://github.com/nigels-com/glew
 Source0:        https://downloads.sourceforge.net/%{pname}/%{pname}-%{version}.tgz
 Source1:        baselibs.conf
 Patch0:         glew-2.2.0-mesa-24.patch
-# PATCH-FIX-UPSTREAM See (cherry picked from) line in the patch file from
-# https://github.com/nigels-com/glew/commits/master/
-Patch1:         glew-2.2.0-fix-cmake.patch
 # PATCH-FEATURE-OPENSUSE glew-rename-EGL-library.patch badshah400@gmail.com -- Append suffix to shared library built with EGL support to allow parallel installation with the GLX compatible flavor
 Patch2:         glew-rename-EGL-library.patch
 BuildRequires:  cmake

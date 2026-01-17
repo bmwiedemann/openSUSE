@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Jan 16 03:54:12 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.3.0:
+  * New extensions: GL_ARM_shader_core_properties,
+    GL_EXT_EGL_image_storage_compression,
+    GL_EXT_framebuffer_blit_layers, GL_EXT_separate_depth_stencil,
+    GL_EXT_shader_clock, GL_EXT_shader_samples_identical,
+    GL_EXT_texture_storage_compression,
+    GL_IMG_pvric_end_to_end_signature,
+    GL_IMG_tile_region_protection, GL_MESA_bgra,
+    GL_MESA_framebuffer_flip_x, GL_MESA_framebuffer_swap_xy,
+    GL_MESA_texture_const_bandwidth, GL_NV_memory_object_sparse,
+    GL_NV_primitive_shading_rate, GL_NV_timeline_semaphore,
+    GL_NV_uniform_buffer_std430_layout,
+    GL_QCOM_frame_extrapolation, GL_QCOM_motion_estimation,
+    GL_QCOM_render_sRGB_R8_RG8, GL_QCOM_render_shared_exponent,
+    GL_QCOM_shading_rate, GL_QCOM_texture_lod_bias,
+    GL_QCOM_ycbcr_degamma, EGL_ANDROID_telemetry_hint,
+    EGL_ANGLE_sync_control_rate, EGL_EXT_config_select_group,
+    EGL_EXT_device_drm_render_node, EGL_EXT_device_persistent_id,
+    EGL_EXT_device_query_name, EGL_EXT_display_alloc,
+    EGL_EXT_explicit_device, EGL_EXT_gl_colorspace_bt2020_hlg,
+    EGL_EXT_platform_xcb, EGL_EXT_present_opaque,
+    EGL_EXT_query_reset_notification_strategy,
+    EGL_EXT_surface_compression, EGL_NV_stream_consumer_eglimage,
+    EGL_NV_stream_consumer_eglimage_use_scanout_attrib,
+    EGL_QNX_image_native_buffer, EGL_QNX_platform_screen,
+    GLX_EXT_get_drawable_type.
+- Drop glew-2.2.0-fix-cmake.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Tue Apr 22 14:30:48 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use static baselibs.conf.

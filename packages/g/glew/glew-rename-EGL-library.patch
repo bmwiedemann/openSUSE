@@ -7,11 +7,11 @@ Subject: [PATCH] Rename library when building with EGL.
  build/cmake/CMakeLists.txt | 3 +++
  1 file changed, 3 insertions(+)
 
-diff --git a/build/cmake/CMakeLists.txt b/build/cmake/CMakeLists.txt
-index 5d7c287..203eea8 100644
---- a/build/cmake/CMakeLists.txt
-+++ b/build/cmake/CMakeLists.txt
-@@ -55,6 +55,9 @@ else ()
+Index: glew-2.3.0/build/cmake/CMakeLists.txt
+===================================================================
+--- glew-2.3.0.orig/build/cmake/CMakeLists.txt
++++ glew-2.3.0/build/cmake/CMakeLists.txt
+@@ -57,6 +57,9 @@ else ()
    set (GLEW_LIB_NAME GLEW)
    set (DLL_PREFIX lib)
  endif ()
@@ -21,6 +21,3 @@ index 5d7c287..203eea8 100644
  
  add_definitions (-DGLEW_NO_GLU)
  
--- 
-2.49.0
-
