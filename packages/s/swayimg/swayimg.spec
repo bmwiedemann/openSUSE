@@ -1,7 +1,7 @@
 #
 # spec file for package swayimg
 #
-# Copyright (c) 2025 mantarimay
+# Copyright (c) 2026 mantarimay
 # Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %bcond_with test
 Name:           swayimg
-Version:        4.6
+Version:        4.7
 Release:        0
 Summary:        Image viewer for Sway/Wayland
 License:        MIT

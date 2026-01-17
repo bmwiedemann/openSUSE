@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan 15 19:05:27 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 4.7:
+  * viewer: Fixed overlay mode support in Hyprland
+  * viewer: Fixed bug with spaces in paths
+  * viewer: Fixed bug with timeout
+  * viewer: Added the ability to switch modes using a custom list
+  * jpeg: Added support for CMYK images
+  * gallery: Added configurable border for selected thumbnail
+  * gallery: Added option for thumbnail aspect ratio
+  * gallery: Added option for selected thumbnail scale
+  * gallery: Added option for padding
+
+-------------------------------------------------------------------
 Wed Dec 17 10:59:03 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Fix leap build: disable svg support for leap 15 (version too old)
