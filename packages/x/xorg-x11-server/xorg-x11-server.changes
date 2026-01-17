@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 16 13:26:56 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- fix installation of directory for compiled keyboard layouts for
+  Immutable mode (jsc#PED-14914)
+
+-------------------------------------------------------------------
 Tue Nov 25 12:36:00 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 21.1.21

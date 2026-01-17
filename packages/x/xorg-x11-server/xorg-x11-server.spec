@@ -1,7 +1,7 @@
 #
 # spec file for package xorg-x11-server
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -521,7 +521,6 @@ chmod 0755 %{buildroot}/usr/src/xserver/install-sh
 %{?python3_fix_shebang_path:%python3_fix_shebang_path %{buildroot}/usr/src/xserver/hw/xwin/glx/gen_gl_wrappers.py}
 
 %post
-%tmpfiles_create xkb.conf
 %{fillup_only -an displaymanager}
 # Move SaX2 generated xorg.conf file to xorg.conf.sle11
 #
@@ -551,6 +550,9 @@ fi
 %endif
 exit 0
 
+%posttrans
+%tmpfiles_create xkb.conf
+
 %if 0%{?suse_version} >= 1315
 %postun
 if [ "$1" = 0 ] ; then
@@ -577,8 +579,6 @@ fi
 %{_datadir}/X11/xorg.conf.d/*.conf
 %endif
 %{_tmpfilesdir}/xkb.conf
-%dir %{_localstatedir}/lib/xkb
-%dir %{_localstatedir}/lib/xkb/compiled
 %dir %{_libdir}/xorg
 %{_libdir}/xorg/protocol.txt
 %{_mandir}/man1/*

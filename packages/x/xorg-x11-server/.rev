@@ -4378,4 +4378,13 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
   * xorg-x11-server-byte-order.patch</comment>
     <requestid>1320004</requestid>
   </revision>
+  <revision rev="446" vrev="2">
+    <srcmd5>a3c3f386fa5bca38a9737bbad094c18d</srcmd5>
+    <version>21.1.21</version>
+    <time>1768682510</time>
+    <user>dimstar_suse</user>
+    <comment>- fix installation of directory for compiled keyboard layouts for
+  Immutable mode (jsc#PED-14914)</comment>
+    <requestid>1327677</requestid>
+  </revision>
 </revisionlist>
