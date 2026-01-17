@@ -1,7 +1,7 @@
 #
 # spec file for package sonivox
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,18 @@
 #
 
 
-%define soversion 3
+%define soversion 4
 Name:           sonivox
-Version:        3.6.16
+Version:        4.0.0
 Release:        0
 Summary:        Fork of the AOSP 'platform_external_sonivox' project
 License:        Apache-2.0
 URL:            https://github.com/pedrolcl/sonivox
 Source:         https://github.com/pedrolcl/sonivox/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  cmake >= 3.14
+BuildRequires:  cmake >= 3.21
 %if 0%{?suse_version} == 1500
-BuildRequires:  gcc13-c++
-BuildRequires:  gcc13-PIE
+BuildRequires:  gcc14-PIE
+BuildRequires:  gcc14-c++
 %endif
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -70,7 +70,7 @@ Development files for the sonivox library.
 
 %build
 %if 0%{?suse_version} == 1500
-export CC=gcc-13 CXX=g++-13
+export CC=gcc-14 CXX=g++-14
 %endif
 
 %cmake -DBUILD_SONIVOX_STATIC:BOOL=FALSE \
@@ -83,6 +83,10 @@ export CC=gcc-13 CXX=g++-13
 %cmake_install
 
 %ldconfig_scriptlets -n libsonivox%{soversion}
+
+%files
+%{_bindir}/sonivoxrender
+%{_mandir}/man1/sonivoxrender.1%{?ext_man}
 
 %files -n libsonivox%{soversion}
 %license LICENSE

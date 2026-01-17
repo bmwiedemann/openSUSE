@@ -31,4 +31,12 @@
     <comment>Update to 3.6.16</comment>
     <requestid>1270036</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ae4f24a603502c14f42c080d60779dc4</srcmd5>
+    <version>4.0.0</version>
+    <time>1768682566</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.0.0</comment>
+    <requestid>1327806</requestid>
+  </revision>
 </revisionlist>
