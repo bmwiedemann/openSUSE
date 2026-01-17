@@ -1,7 +1,7 @@
 #
 # spec file for package kompose
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           kompose
-Version:        1.37.0
+Version:        1.38.0
 Release:        0
 Summary:        Go from Docker Compose to Kubernetes
 License:        Apache-2.0
