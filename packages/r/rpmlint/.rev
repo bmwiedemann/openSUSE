@@ -5465,4 +5465,19 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
 </comment>
     <requestid>1326381</requestid>
   </revision>
+  <revision rev="522" vrev="1">
+    <srcmd5>47412a6cd4a39d7ad41dface2e0c0083</srcmd5>
+    <version>2.8.0+git20260113.b6544793</version>
+    <time>1768657878</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.8.0+git20260113.b6544793:
+  * polkit-rules-whitelist: add systemd-259 empower.rules (bsc#1255368)
+- Update to version 2.8.0+git20260113.b7794751:
+  * dbus-services: whitelist bootkitd (bsc#1256421)
+- Update to version 2.8.0+git20260112.61bffa2a:
+  * systemd-tmpfiles: whitelist sendmail spool directory (bsc#1256160)
+  * dbus-services: whitelist snapd (bsc#1256175)
+</comment>
+    <requestid>1327264</requestid>
+  </revision>
 </revisionlist>
