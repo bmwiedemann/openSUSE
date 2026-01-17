@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jan 16 05:58:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.40.1:
+  * Bug Fixes
+    - mongodb binary not detected manual/source install [#4540
+      #4541 @rezmoss]
+    - chore: sync generated file immediately (#4538)
+  * Dependencies
+    - chore(deps): update anchore dependencies (#4552)
+    - chore(deps): update tools to latest versions (#4551)
+    - chore(deps): update tools to latest versions (#4545)
+    - chore(deps): update tools to latest versions (#4542)
+    - chore(deps): bump the go-minor-patch group with 4 updates
+      (#4543)
+    - chore(deps): bump anchore/sbom-action (#4544)
+    - chore(deps): update tools to latest versions (#4537)
+
+-------------------------------------------------------------------
 Sun Jan 11 08:52:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.40.0:
