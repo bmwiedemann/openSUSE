@@ -1,7 +1,7 @@
 #
 # spec file for package velero
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           velero
-Version:        1.17.1
+Version:        1.17.2
 Release:        0
 Summary:        Backup program with deduplication and encryption
 License:        Apache-2.0

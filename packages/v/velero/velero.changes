@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan 16 06:19:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.17.2:
+  * Track actual resource names for GenerateName in restore status
+    (#9409, @shubham-pampattiwar)
+  * Fix managed fields patch for resources using GenerateName
+    (#9408, @shubham-pampattiwar)
+  * don't copy securitycontext from first container if configmap
+    found (#9394, @sseago)
+  * Add Role, RoleBinding, ClusterRole, and ClusterRoleBinding in
+    restore sequence. (#9479, @blackpiglet)
+
+-------------------------------------------------------------------
 Fri Nov 07 13:05:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.17.1:
