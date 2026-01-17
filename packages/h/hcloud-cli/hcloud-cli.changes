@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Jan 16 15:21:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.60.0:
+  * Storage Box Subaccounts are no longer identified by username
+    Storage Box Subaccounts now have a name property, allowing
+    users to specify custom names for their Subaccounts.
+    More importantly, Storage Box Subaccounts (<subaccount>) are
+    now identified by id or name, instead of by id or username.
+
+       hcloud storage-box subaccount describe <storage-box> <subaccount>
+      -hcloud storage-box subaccount describe my-storage-box u1337-sub1
+      +hcloud storage-box subaccount describe my-storage-box my-subaccount
+
+    Existing Subaccounts have been updated to use their username as
+    name value.
+    See our changelog for more details.
+    https://docs.hetzner.cloud/changelog#2026-01-15-storage-box-subaccount-name
+  * Features
+    - table: mark columns as deprecated and show warning (#1300)
+    - server: deprecate datacenter column (#1301)
+    - storage-box: add name property to subaccounts (#1315)
+  * Dependencies
+    - deps: update module github.com/hetznercloud/hcloud-go/v2 to
+      v2.35.0 (#1314)
+    - deps: update dependency go to v1.25.6 (#1312)
+    - deps: update golang.org/x/ (#1307)
+    - deps: update dependency jdx/mise to v2026.1.2 (#1310)
+    - deps: update dependency goreleaser/goreleaser to v2.13.3
+      (#1308)
+    - deps: update dependency jdx/mise to v2026.1.1 (#1302)
+    - deps: update module github.com/hetznercloud/hcloud-go/v2 to
+      v2.34.0 (#1303)
+    - deps: update dependency jdx/mise to v2026 (#1297)
+    - deps: update module github.com/goccy/go-yaml to v1.19.2
+      (#1299)
+    - deps: update dependency golangci/golangci-lint to v2.8.0
+      (#1298)
+
+-------------------------------------------------------------------
 Sun Jan 11 08:52:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.59.0:
