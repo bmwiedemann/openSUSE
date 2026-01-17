@@ -43,4 +43,14 @@
     <comment>Early Staging of GNOME 48.rc</comment>
     <requestid>1251356</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2314443b03e3e8fa639bd4c5d49043ee</srcmd5>
+    <version>0.3.4</version>
+    <time>1768682501</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.4:
+  + Remove drive bundles duplicates
+  + doc: Update URL to libsoup (forwarded request 1327202 from iznogood)</comment>
+    <requestid>1327628</requestid>
+  </revision>
 </revisionlist>
