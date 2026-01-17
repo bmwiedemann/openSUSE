@@ -4363,4 +4363,12 @@
     <comment>submit new version 5.0.18</comment>
     <requestid>1325637</requestid>
   </revision>
+  <revision rev="569" vrev="1">
+    <srcmd5>1d526f335936fbf8ff2c2d99af92f638</srcmd5>
+    <version>5.0.19</version>
+    <time>1768657896</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 5.0.19</comment>
+    <requestid>1327424</requestid>
+  </revision>
 </revisionlist>
