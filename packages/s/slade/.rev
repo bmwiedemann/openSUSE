@@ -179,4 +179,12 @@
     <comment>- Update to release 3.2.10</comment>
     <requestid>1325458</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>28a616cda805a1a0b48e3086ab008061</srcmd5>
+    <version>3.2.11</version>
+    <time>1768682578</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.2.11</comment>
+    <requestid>1327890</requestid>
+  </revision>
 </revisionlist>

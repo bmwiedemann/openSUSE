@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jan 17 17:38:36 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.11
+  * Fixed circular references in `TEXTURES` causing a crash when
+    trying to view the affected textures anywhere in the program.
+  * Fixed a crash on loading PNGs with higher than 8-bit color
+    depth.
+  * Fixed wrong transparency when writing a paletted PNG.
+  * Fixed ROTT fullscreen images being drawn upside-down.
+  * Fixed ANSI viewer not updating when switching between multiple
+    ANSI entries.
+  * Fixed a possible crash on closing an archive after/while an OGG
+    entry is open.
+  * Fixed patch offsets changing after replacing a patch in a
+    TEXTURES texture.
+
+-------------------------------------------------------------------
 Mon Jan  5 15:06:29 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.2.10
