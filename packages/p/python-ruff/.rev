@@ -2964,4 +2964,29 @@
   * Fix Jupyter notebook discovery info for editors</comment>
     <requestid>1326626</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>2e42e0af50c29c2a5eee01175529743d</srcmd5>
+    <version>0.14.13</version>
+    <time>1768682512</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.14.13 
+ * Preview features
+  * [flake8-blind-except] Allow more logging methods (BLE001) 
+  * [ruff] Respect lint.pydocstyle.property-decorators in RUF066 
+ * Bug fixes
+  * Fix configuration path in --show-settings 
+  * Respect fmt: skip for multiple statements on the same logical line 
+ * Rule changes
+  * [pydocstyle] Update Rust crate imperative to v1.0.7 (D401) 
+  * [isort] Insert imports in alphabetical order (I002) 
+ * Documentation
+  * Add llms.txt support for documentation 
+  * Use prek in documentation and CI 
+  * [flake8-pytest-style] Add check parameter example to PT017 docs 
+  * [ruff] Make example error out-of-the-box (RUF103) 
+  * [ruff] document RUF100 trailing comment fix behavior 
+ * Other changes
+  * wasm: Require explicit logging initialization</comment>
+    <requestid>1327697</requestid>
+  </revision>
 </revisionlist>
