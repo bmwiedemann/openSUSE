@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Jan 16 14:03:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.29:
+  * Highlights
+    files / exclude now support globs (including glob lists),
+    making config filters much easier to read and maintain than
+    heavily-escaped regex.
+
+    Before (regex):
+
+      files: "^(src/.*\\.rs$|crates/[^/]+/src/.*\\.rs$)"
+
+    After (glob list):
+
+      files:
+        glob:
+          - src/**/*.rs
+          - crates/**/src/**/*.rs
+
+  * Enhancements
+    - Add check-json5 as builtin hooks (#1367)
+    - Add glob list support for file patterns (files and exclude)
+      (#1197)
+  * Bug fixes
+    - Fix missing commit hash from version info (#1352)
+    - Remove git env vars from uv pip install subprocess (#1355)
+    - Set TERM=dumb under PTY to prevent capability-probe hangs
+      (#1363)
+  * Documentation
+    - Add home-assistant/core to the users of prek (#1350)
+    - Document builtin hooks (#1370)
+    - Explain project configuration scope (#1373)
+
+-------------------------------------------------------------------
 Wed Jan 14 07:13:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.28:
