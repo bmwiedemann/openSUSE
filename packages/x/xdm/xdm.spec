@@ -1,7 +1,7 @@
 #
 # spec file for package xdm
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,8 @@ Source4:        display-manager-legacy.service
 Source5:        xsession.desktop
 # Upstream version doesn't handle display-manager.service
 Source6:        xdm.service
+# Immutable mode (jsc#PED-14915)
+Source7:        xdm.tmpfiles
 Patch1:         xdm-tolerant-hostname-changes.diff
 Patch2:         xdm-tarball.patch
 Patch3:         n_Allow-the-greeter-to-set-the-input-fields-bg-color.patch
@@ -208,6 +210,10 @@ mv %{buildroot}%{_sysconfdir}/logrotate.d/xdm %{buildroot}%{_distconfdir}/logrot
 
 install -Dm0644 %{SOURCE6} %{buildroot}%{_unitdir}/xdm.service
 
+# Immutable mode (jsc#PED-14915)
+mkdir -p %{buildroot}%{_prefix}/lib/tmpfiles.d
+install -m 644 %{SOURCE7} %{buildroot}%{_prefix}/lib/tmpfiles.d/xdm.conf
+
 %post
 # enable Xorg on s390x with virtio (Redhat PCI ID 1af4:1050) on installation (but not upgrade)
 if [ $1 -eq 1 ] ; then
@@ -254,6 +260,10 @@ sed -i 's/DISPLAYMANAGER=.*//g' %{_sysconfdir}/sysconfig/displaymanager
 %post -n displaymanager-sysconfig
 %{fillup_only -n displaymanager}
 
+# Immutable mode (jsc#PED-14915)
+%posttrans
+%tmpfiles_create xdm.conf
+
 %files
 %license COPYING
 %doc AUTHORS ChangeLog README.md
@@ -291,8 +301,8 @@ sed -i 's/DISPLAYMANAGER=.*//g' %{_sysconfdir}/sysconfig/displaymanager
 %config(noreplace) %{_sysconfdir}/pam.d/xdm
 %config(noreplace) %{_sysconfdir}/pam.d/xdm-np
 %endif
-%dir %{_localstatedir}/lib/xdm/
-%{_localstatedir}/lib/xdm/authdir/
+# Immutable mode (jsc#PED-14915)
+%{_tmpfilesdir}/xdm.conf
 %ghost %{_localstatedir}/log/xdm.errors
 %{_bindir}/chooser
 %{_bindir}/xdm

@@ -1167,4 +1167,13 @@
     <comment>- no longer require xinit so it can be dropped from SLE16</comment>
     <requestid>1282897</requestid>
   </revision>
+  <revision rev="114" vrev="4">
+    <srcmd5>7000ee180ed249404b213e94e34ced34</srcmd5>
+    <version>1.1.17</version>
+    <time>1768682509</time>
+    <user>dimstar_suse</user>
+    <comment>- fix installation of authfiles directory for Immutable mode
+  (jsc#PED-14915)</comment>
+    <requestid>1327671</requestid>
+  </revision>
 </revisionlist>

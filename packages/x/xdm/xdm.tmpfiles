@@ -1,0 +1,4 @@
+# Immutable mode (jsc#PED-14915)
+d /var/lib/xdm 0755 root root
+d /var/lib/xdm/authdir/ 0700 root root
+d /var/lib/xdm/authdir/authfiles 0700 root root
