@@ -225,4 +225,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1326956 from glaubitz)</comment>
     <requestid>1326971</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>50be3809bf6ffe2426797811e4f82a41</srcmd5>
+    <version>4.14.5</version>
+    <time>1768658190</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 4.14.5
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1327709 from glaubitz)</comment>
+    <requestid>1327711</requestid>
+  </revision>
 </revisionlist>
