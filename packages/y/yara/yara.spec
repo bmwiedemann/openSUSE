@@ -1,7 +1,7 @@
 #
 # spec file for package yara
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global soname 10
 Name:           yara
-Version:        4.5.2
+Version:        4.5.5
 Release:        0
 Summary:        A malware identification and classification tool
 License:        BSD-3-Clause

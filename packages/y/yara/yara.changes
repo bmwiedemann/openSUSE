@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Jan  2 09:30:20 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.5.5:
+  * Implement the `--no-follow-symlinks` option in Windows
+    (6e11b5a).
+  * BUGFIX: Revert YR_RE_SCAN_LIMIT back to 4096 (#2177).
+  * BUGFIX: infinite loop while parsing corrupt resource
+    directory in PE module (#2162).
+  * BUGFIX: improved detection whether a string requires all
+    matches (#2167).
+  * BUGFIX: Heap overflow while loading hand-crafted compiled
+    rules (#2178). Thanks to Momoko Shiraishi
+  * for the report.
+- update to 4.5.3:
+  * BUGFIX: Escape new new and carriage return characters when
+    printing file  paths (credits to:  Rajesh Pangare).
+  * BUGFIX: Avoid infinite loop while iterating Mach-O regions.
+  * BUGFIX: High memory consumption while parsing corrupted PE
+    files.
+  * BUGFIX: Issue while parsing imports in 32-bits PE files.
+  * BUGFIX: Integer overflow while parsing ELF files.
+
+-------------------------------------------------------------------
 Fri Mar 21 15:25:57 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - remove unused pcre build dependency
