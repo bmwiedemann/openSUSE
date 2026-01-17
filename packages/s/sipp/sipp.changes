@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jan 10 11:40:52 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.7.7
+  * Fix const-correctness by @lemenkov in #826
+- Update to version 3.7.6
+  * Add support for 'r' wildcard in call ID formatting.
+  * Introduce StringBuilder as snprintf replacement.
+  * Build: Export symbols to support plugins.
+  * JLSRTP: Add comments explaining string reserve sizes.
+  * SRTP: Fix mis-parsing of long input line.
+  * SRTP: Consolidate Srtp{Audio,Video}InfoParams.
+
+-------------------------------------------------------------------
 Thu Nov 20 15:25:57 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.7.5
