@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 10 18:25:08 UTC 2026 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Use Qt6 for Tumbleweed and Leap 16
+- Add a patch wfview-add-qcustomplot-library-name.patch with a name
+  of Qt6 version of qcustomplot library
+
+-------------------------------------------------------------------
 Mon May 26 23:01:49 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to version 2.11:

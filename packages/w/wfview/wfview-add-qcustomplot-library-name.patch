@@ -1,0 +1,19 @@
+diff -up wfview-v2.11/wfview.pro.aaaa wfview-v2.11/wfview.pro
+--- wfview-v2.11/wfview.pro.aaaa	2025-05-11 01:12:46.000000000 +0200
++++ wfview-v2.11/wfview.pro	2026-01-10 09:30:11.992238855 +0100
+@@ -180,6 +180,7 @@ CONFIG(debug, release|debug) {
+     linux:LIBS += $$system("/sbin/ldconfig -p | awk '/libQCustomPlotdQt6.so/ {print \"-lQCustomPlotdQt6\"}'")
+     linux:LIBS += $$system("/sbin/ldconfig -p | awk '/libqcustomplotd2qt6.so/ {print \"-lqcustomplotd2qt6\"}'")
+     linux:LIBS += $$system("/sbin/ldconfig -p | awk '/libqcustomplotdqt6.so/ {print \"-lqcustomplotdqt6\"}'")
++    linux:LIBS += $$system("/sbin/ldconfig -p | awk '/libqcustomplot-qt6.so/ {print \"-lqcustomplot-qt6\"}'")
+   }
+ 
+   win32 {
+@@ -221,6 +222,7 @@ CONFIG(debug, release|debug) {
+     linux:LIBS += $$system("/sbin/ldconfig -p | awk '/libQCustomPlotQt6.so/ {print \"-lQCustomPlotQt6\"}'")
+     linux:LIBS += $$system("/sbin/ldconfig -p | awk '/libqcustomplot2qt6.so/ {print \"-lqcustomplot2qt6\"}'")
+     linux:LIBS += $$system("/sbin/ldconfig -p | awk '/libqcustomplotqt6.so/ {print \"-lqcustomplotqt6\"}'")
++    linux:LIBS += $$system("/sbin/ldconfig -p | awk '/libqcustomplot-qt6.so/ {print \"-lqcustomplot-qt6\"}'")
+   }
+   win32 {
+     contains(QMAKE_TARGET.arch, x86_64) {

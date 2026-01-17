@@ -15,6 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%if 0%{?suse_version} >= 1600
+%define with_qt6 1
+%else
+%define with_qt6 0
+%endif
 
 Name:           wfview
 Version:        2.11
@@ -24,18 +29,31 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Hamradio/Other
 URL:            https://wfview.org/
 Source:         https://gitlab.com/eliggett/%{name}/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
+Patch0:         wfview-add-qcustomplot-library-name.patch
 BuildRequires:  eigen3-devel
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libhidapi-devel
 BuildRequires:  libopus-devel
+%if 0%{with_qt6}
+BuildRequires:  qt6-multimedia-devel
+BuildRequires:  qt6-printsupport-devel
+BuildRequires:  qt6-serialport-devel
+BuildRequires:  qt6-websockets-devel
+BuildRequires:  qt6-xml-devel
+%else
 BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  libqt5-qtgamepad-devel
 BuildRequires:  libqt5-qtmultimedia-devel
 BuildRequires:  libqt5-qtserialport-devel
 BuildRequires:  libqt5-qtwebsockets-devel
+%endif
 BuildRequires:  portaudio-devel
+%if 0%{with_qt6}
+BuildRequires:  qcustomplot-qt6-devel
+%else
 BuildRequires:  qcustomplot-devel
+%endif
 BuildRequires:  rtaudio-devel
 BuildRequires:  update-desktop-files
 Requires:       hicolor-icon-theme
@@ -51,7 +69,11 @@ loopback (windows), or hamlib-compatible rigctld server.
 %autosetup -p1 -n %{name}-v%{version}
 
 %build
+%if 0%{with_qt6}
+%qmake6 \
+%else
 %qmake5 \
+%endif
 	%{name}.pro \
 	PREFIX=%{_prefix} \
 	%{nil}
