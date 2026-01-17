@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Protocol-Redis-Faster
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,40 +16,41 @@
 #
 
 
-Name:           perl-Protocol-Redis-Faster
-Version:        0.003
-Release:        0
 %define cpan_name Protocol-Redis-Faster
-Summary:        Optimized pure-perl Redis protocol parser/encoder
+Name:           perl-Protocol-Redis-Faster
+Version:        0.4.0
+Release:        0
+# 0.004 -> normalize -> 0.4.0
+%define cpan_version 0.004
 License:        Artistic-2.0
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/D/DB/DBOOK/%{cpan_name}-%{version}.tar.gz
+Summary:        Optimized pure-perl Redis protocol parser/encoder (DEPRECATED)
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/D/DB/DBOOK/%{cpan_name}-%{cpan_version}.tar.gz
+Source100:      README.md
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Protocol::Redis) >= 1.0000
+BuildRequires:  perl(Protocol::Redis) >= 1.0
 BuildRequires:  perl(Protocol::Redis::Test)
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(parent)
-Requires:       perl(Protocol::Redis) >= 1.0000
+Requires:       perl(Protocol::Redis) >= 1.0
 Requires:       perl(parent)
+Provides:       perl(Protocol::Redis::Faster) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
-This module implements the Protocol::Redis API with more optimized
-pure-perl internals. See Protocol::Redis for usage documentation.
-
-This is a low level parsing module, if you are looking to use Redis in
-Perl, try Redis, Redis::hiredis, or Mojo::Redis.
+This is an empty subclass of Protocol::Redis. The optimizations it used to
+contain have been implemented in the base class. Consider
+Protocol::Redis::XS for faster parsing.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -60,7 +61,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes CONTRIBUTING.md README
 %license LICENSE
 

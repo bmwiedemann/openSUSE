@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan  8 05:44:55 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.4.0 (0.004)
+   see /usr/share/doc/packages/perl-Protocol-Redis-Faster/Changes
+
+  0.004     2026-01-07 01:53:35 EST
+    - Deprecate and replace with an empty subclass as the optimizations have been integrated into Protocol::Redis.
+
+-------------------------------------------------------------------
 Mon Sep  2 08:09:46 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 0.003

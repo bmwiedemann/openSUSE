@@ -15,4 +15,15 @@
     <comment></comment>
     <requestid>727975</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>dc5d7d0c970732712e7dd9912fdd0fe4</srcmd5>
+    <version>0.4.0</version>
+    <time>1768658113</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.4.0 (0.004)
+   see /usr/share/doc/packages/perl-Protocol-Redis-Faster/Changes
+  0.004     2026-01-07 01:53:35 EST
+    - Deprecate and replace with an empty subclass as the optimizations have been integrated into Protocol::Redis.</comment>
+    <requestid>1327635</requestid>
+  </revision>
 </revisionlist>
