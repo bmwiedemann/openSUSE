@@ -1622,4 +1622,12 @@ Still valid</comment>
 - fix build for older distributions</comment>
     <requestid>1324888</requestid>
   </revision>
+  <revision rev="196" vrev="2">
+    <srcmd5>4dc642a4f04c7f7530cd910866821718</srcmd5>
+    <version>2.5.16</version>
+    <time>1768682505</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1327658</requestid>
+  </revision>
 </revisionlist>
