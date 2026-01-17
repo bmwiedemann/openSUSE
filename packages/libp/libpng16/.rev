@@ -962,4 +962,20 @@
   changes, see CHANGELOG or (forwarded request 1324612 from dirkmueller)</comment>
     <requestid>1325377</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>0b4cd973d84fca2952f77faba21687e1</srcmd5>
+    <version>1.6.54</version>
+    <time>1768682524</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 1.6.54:
+  * Fixed CVE-2026-22695 (medium severity):
+      Heap buffer over-read in `png_image_read_direct_scaled.
+      (Reported and fixed by Petr Simecek.)
+  * Fixed CVE-2026-22801 (medium severity):
+      Integer truncation causing heap buffer over-read in `png_image_write_*`.
+  * Implemented various improvements in oss-fuzz.
+      (Contributed by Philippe Antoine.)
+- fixes [bsc#1256526] and [bsc#1256525]</comment>
+    <requestid>1327363</requestid>
+  </revision>
 </revisionlist>

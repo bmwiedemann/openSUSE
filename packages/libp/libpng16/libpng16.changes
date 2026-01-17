@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan 15 11:00:13 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 1.6.54:
+  * Fixed CVE-2026-22695 (medium severity):
+      Heap buffer over-read in `png_image_read_direct_scaled.
+      (Reported and fixed by Petr Simecek.)
+  * Fixed CVE-2026-22801 (medium severity):
+      Integer truncation causing heap buffer over-read in `png_image_write_*`.
+  * Implemented various improvements in oss-fuzz.
+      (Contributed by Philippe Antoine.)
+- fixes [bsc#1256526] and [bsc#1256525]
+
+-------------------------------------------------------------------
 Sun Dec 28 23:12:09 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.53:
