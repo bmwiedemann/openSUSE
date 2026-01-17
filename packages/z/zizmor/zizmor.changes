@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jan 16 06:17:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.21.0:
+  * New Features
+    - New audit: misfeature detects usage of GitHub Actions
+      features that are considered "misfeatures." (#1517)
+  * Enhancements
+    - zizmor now uses exit code 3 to signal an audit that has
+      failed because no input files were collected. See the exit
+      code documentation for details (#1515)
+    - The unpinned-uses audit now supports auto-fixes for many
+      findings (#1525)
+  * Changes
+    - The obfuscation audit no longer flags shell: cmd. That check
+      has been moved to the new misfeature audit. Users may need to
+      update their ignore comments and/or configuration (#1517)
+  * Bug Fixes
+    - The unpinned-uses audit now flags reusable workflows that are
+      unpinned, in addition to actions (#1509)
+
+-------------------------------------------------------------------
 Sun Jan 11 08:15:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.20.0:
