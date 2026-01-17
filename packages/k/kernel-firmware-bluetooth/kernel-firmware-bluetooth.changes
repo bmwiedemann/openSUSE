@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jan 17 09:24:21 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260116 (git commit c2912a665205):
+  * linux-firmware: Add firmware file for Intel ScorpiusGfp2 core
+  * linux-firmware: Update firmware file for Intel Scorpius core
+  * linux-firmware: Update firmware file for Intel BlazarIGfP core
+  * linux-firmware: Update firmware file for Intel BlazarI core
+  * linux-firmware: Update firmware file for Intel BlazarU-HrPGfP core
+  * linux-firmware: Update firmware file for Intel BlazarU core
+
+-------------------------------------------------------------------
+Fri Jan 16 16:43:15 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260116 (git commit 2b93c4fc3564):
+  * rtl_bt: Update RTL8852BT/RTL8852BE-VT BT USB FW to 0x06EB_C65F
+
+-------------------------------------------------------------------
 Sat Jan 10 07:59:39 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260109 (git commit 22a3f51d6a95):
