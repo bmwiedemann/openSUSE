@@ -363,4 +363,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: Update DSP firmware for qcs8300 platform</comment>
     <requestid>1326593</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>97c3a7fcd2c2dd0643c928ae3965fea3</srcmd5>
+    <version>20260114</version>
+    <time>1768682522</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20260114 (git commit e477bd5942f4):
+  * qcom: Update DSP firmware for QCM6490 platform</comment>
+    <requestid>1327797</requestid>
+  </revision>
 </revisionlist>
