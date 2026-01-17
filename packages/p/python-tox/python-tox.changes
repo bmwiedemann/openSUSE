@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jan 16 09:40:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+update to 4.27.0:
+  * Feat: include free_threaded flag in result-json
+  * Add security policy
+  * Fix dependency-group name normalization
+  * Log environment variables sorted by key while redacting
+    values of unsafe ones
+- update to 4.26.0:
+  * Add a missing quote in a TOML example @ `config.rst`
+  * Add colour to GitHub Actions CI logs
+  * Fix using deprecated virtualenv option `--wheel`
+  * Fix custom HelpFormatter for Python 3.14
+  * Drop support for EOL Python 3.8
+  * Test with Python 3.14
+  * Fix for tox4 regression issue with setenv file and
+    substitutions
+  * Feat: free-threaded python support
+
+-------------------------------------------------------------------
 Tue Jul  8 11:50:14 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.25.0:

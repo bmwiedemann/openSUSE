@@ -1,7 +1,7 @@
 #
 # spec file for package python-tox
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %bcond_with devpi_process
 %endif
 Name:           python-tox
-Version:        4.25.0
+Version:        4.27.0
 Release:        0
 Summary:        Virtualenv-based automation of test activities
 License:        MIT
@@ -54,7 +54,7 @@ BuildRequires:  %{python_module re-assert}
 BuildRequires:  %{python_module setuptools >= 41.0.1}
 BuildRequires:  %{python_module setuptools_scm >= 2.0.0}
 BuildRequires:  %{python_module time-machine >= 2.13}
-BuildRequires:  %{python_module virtualenv >= 20.29.1}
+BuildRequires:  %{python_module virtualenv >= 20.31}
 BuildRequires:  %{python_module wheel >= 0.42}
 %if %{with devpi_process}
 BuildRequires:  %{python_module devpi-process > 1}
@@ -71,7 +71,7 @@ Requires:       python-packaging >= 24.2
 Requires:       python-platformdirs >= 4.3.6
 Requires:       python-pluggy >= 1.5
 Requires:       python-pyproject-api >= 1.8
-Requires:       python-virtualenv >= 20.29.1
+Requires:       python-virtualenv >= 20.31
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 # last detox version is 0.19

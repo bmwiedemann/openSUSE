@@ -770,4 +770,27 @@ please add to Staging:E, should fix the tox failure</comment>
   * Removed unused line from the 'fresh_subprocess' documentation.</comment>
     <requestid>1291245</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>27a705205eac783a134379570017fe00</srcmd5>
+    <version>4.27.0</version>
+    <time>1768658101</time>
+    <user>dimstar_suse</user>
+    <comment>update to 4.27.0:
+  * Feat: include free_threaded flag in result-json
+  * Add security policy
+  * Fix dependency-group name normalization
+  * Log environment variables sorted by key while redacting
+    values of unsafe ones
+- update to 4.26.0:
+  * Add a missing quote in a TOML example @ `config.rst`
+  * Add colour to GitHub Actions CI logs
+  * Fix using deprecated virtualenv option `--wheel`
+  * Fix custom HelpFormatter for Python 3.14
+  * Drop support for EOL Python 3.8
+  * Test with Python 3.14
+  * Fix for tox4 regression issue with setenv file and
+    substitutions
+  * Feat: free-threaded python support</comment>
+    <requestid>1327617</requestid>
+  </revision>
 </revisionlist>
