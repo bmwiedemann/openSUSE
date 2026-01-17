@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Fri Jan 16 13:45:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 6.0.0:
+  * Add architecture detection: aarch64, arm, armv6l, armv7l,
+    armv8l, i386, i586, i686, loongarch64, mips, mips64, mips64el,
+    mipsel, ppc, ppc64, ppc64le, riscv32, riscv64, s390x, sparc,
+    sparc64, unknown_architecture, wasm32, wasm64, x86_64.
+  * Architectures, platforms and CI systems are now known as
+    traits.
+  * Add new current_traits() method to return all traits matching
+    the current environment: architecture, platforms and CI
+    systems. Deprecate current_platforms() in favor of it.
+  * Add new current_architecture() and current_ci() methods to
+    return the current architecture and CI system.
+  * Rename:
+    - current_os() to current_platform().
+    - platforms_from_ids() to traits_from_ids().
+    - CI group to ALL_CI. CI now refers to the CI(Trait) class.
+    - ALL_PLATFORM_IDS constant to ALL_TRAIT_IDS.
+    - Group.platforms to Group.members.
+    - Group.platform_ids to Group.member_ids.
+    - Group._extract_platforms() to Group._extract_members()
+  * Group.members is now an immutable MappingProxyType.
+  * Add more in-place operators (|=, &=, -=, ^=) and set-like
+    behavior to Group.
+  * Add canonical attribute to Group.
+  * Add new ALL_ARCHITECTURES, ANY_ARM, X86, LOONGARCH, ANY_MIPS,
+    POWERPC, RISCV, ANY_SPARC, IBM_MAINFRAME, WEBASSEMBLY and
+    ALL_TRAITS groups.
+  * Deprecate ALL_PLATFORMS_WITHOUT_CI group is favor of
+    ALL_PLATFORMS.
+  * Add new ALL_ARCHITECTURE_GROUPS, ALL_PLATFORM_GROUPS and
+    ALL_CI_GROUPS collections of groups.
+  * Remove utilization workaround for macos-15-intel.
+  * Replace deprecated codecov/test-results-action by
+    codecov/codecov-action.
+  * Move auto-lock time from 8:43 to 4:43.
+- switch to tarball from GitHub, as the one from PyPi does no
+  longer container the tests directory
+
+-------------------------------------------------------------------
+Tue Dec  9 06:44:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 5.1.0:
+  * Change Amazon Linux icon.
+  * Add cooldown period for dependabot and uv.lock updates.
+  * Merge all label jobs into a single one.
+  * Change the test, typing and docs extra dependency groups into
+    development dependency groups.
+  * Uncap all dependencies.
+  * Run tests on Python 3.14t and 3.15t free-threaded variants.
+  * Run tests on ubuntu-slim GitHub Actions runner.
+  * Run docs update job on ubuntu-slim runner.
+  * Unlock a CPU core stuck at 100% utilization on macos-15-intel.
+
+-------------------------------------------------------------------
 Mon Nov 17 06:55:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 5.0.1:

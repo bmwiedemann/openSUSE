@@ -1,7 +1,7 @@
 #
 # spec file for package python-extra-platforms
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-extra-platforms
-Version:        5.0.1
+Version:        6.0.0
 Release:        0
 Summary:        Detect platforms and group them by family
 License:        GPL-2.0-or-later
 URL:            https://github.com/kdeldycke/extra-platforms
-Source:         https://files.pythonhosted.org/packages/source/e/extra-platforms/extra_platforms-%{version}.tar.gz
+Source:         https://github.com/kdeldycke/extra-platforms/archive/refs/tags/v%{version}.tar.gz#/extra_platforms-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module uv-build}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION runtime requirements
@@ -48,7 +49,7 @@ BuildArch:      noarch
 Detect platforms and group them by family
 
 %prep
-%autosetup -p1 -n extra_platforms-%{version}
+%autosetup -p1 -n extra-platforms-%{version}
 
 %build
 %pyproject_wheel
