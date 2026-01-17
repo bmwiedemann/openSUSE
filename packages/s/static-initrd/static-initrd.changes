@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 16 18:46:00 UTC 2026 - Martin Wilck <mwilck@suse.com>
+
+- Remove dependency on dmraid.
+
+-------------------------------------------------------------------
 Fri May 23 22:01:38 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Build all static dedicated initrd against each kernel flavors.

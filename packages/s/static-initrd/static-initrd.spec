@@ -127,7 +127,6 @@ BuildRequires:  cifs-utils
 BuildRequires:  curl
 BuildRequires:  dbus-1-daemon
 BuildRequires:  dbus-broker
-BuildRequires:  dmraid
 BuildRequires:  fcoe-utils
 BuildRequires:  gpg2
 BuildRequires:  iproute2
