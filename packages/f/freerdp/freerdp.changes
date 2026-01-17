@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Jan 16 08:26:35 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.20.2:
+  + Patch release fixing a regression with gateway connections
+    introduced with 3.20.1
+    ## What's Changed
+    * Warnings and missing enumeration types (#12137)
+- Changes from version 3.20.1:
+  + New years cleanup release. Fixes some issues reported and does
+    a cleaning sweep to bring down warnings.
+    Thanks to @ehdgks0627 doing some code review/testing we've
+    uncovered the following (medium) vulnerabilities:
+    * CVE-2026-22851
+    * CVE-2026-22852
+    * CVE-2026-22853
+    * CVE-2026-22854
+    * CVE-2026-22855
+    * CVE-2026-22856
+    * CVE-2026-22857
+    * CVE-2026-22858
+    * CVE-2026-22859
+  + These affect FreeRDP based clients only, with the exception of
+    CVE-2026-22858 also affecting FreeRDP proxy. FreeRDP based
+    servers are not affected.
+
+-------------------------------------------------------------------
 Tue Dec 30 14:27:12 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.20.0:
