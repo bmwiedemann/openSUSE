@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan 16 17:53:36 UTC 2026 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20260114.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20260114
+  * Added 3.2.10
+- Changes from version 20260113:
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20260113
+  * Added 4.0.1
+- Changes from version 20260110:
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20260110
+  * Add definition for Ruby 4.1-dev by @koic in #2593
+  * Add TruffleRuby and TruffleRuby GraalVM 33.0.0 by @eregon in #2597
+
+-------------------------------------------------------------------
 Fri Dec 26 00:23:27 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20251225.
