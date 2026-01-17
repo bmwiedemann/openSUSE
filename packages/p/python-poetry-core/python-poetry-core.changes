@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jan 16 10:16:45 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 2.2.1
+  * Fix an issue where it was not possible to declare a PEP 735 dependency
+    group as optional
+- Update to 2.2.0
+  * Add support for nesting dependency groups
+  * Add support for PEP 735 dependency groups
+  * Add support for PEP 639 license clarity
+  * Add support for Python 3.14
+  * Normalize dependency group names
+  * Deprecate table values and values that are not valid SPDX expressions for
+    [project.license]
+  * Update list of supported licenses
+  * Fix an issue where explicitly included files that are in .gitignore were
+    not included in the distribution
+  * Fix an issue where marker operations could result in invalid markers
+
+-------------------------------------------------------------------
 Tue Aug 19 08:55:20 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.1.3

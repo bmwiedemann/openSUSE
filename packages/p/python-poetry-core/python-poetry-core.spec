@@ -1,7 +1,7 @@
 #
 # spec file for package python-poetry-core
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-poetry-core
-Version:        2.1.3
+Version:        2.2.1
 Release:        0
 Summary:        Poetry PEP 517 Build Backend
 License:        Apache-2.0 AND BSD-2-Clause AND MIT AND Python-2.0
