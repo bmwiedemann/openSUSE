@@ -471,6 +471,7 @@ unsorted:
   - agama-cli-bash-completion 
   - agama-cli-fish-completion 
   - agama-cli-zsh-completion 
+  - agama-common 
   - agama-integration-tests 
   - agama-openapi 
   - agama-products-opensuse 
@@ -23868,7 +23869,6 @@ unsorted:
   - python3-ansible-compat 
   - python3-ara 
   - python3-arpack-ng 
-  - python3-atspi 
   - python3-avahi-gtk 
   - python3-avocado 
   - python3-avocado-plugins-golang 
@@ -24494,6 +24494,7 @@ unsorted:
   - python311-atomicwrites 
   - python311-atomicwrites-doc 
   - python311-atpublic 
+  - python311-atspi 
   - python311-attr 
   - python311-aubio 
   - python311-audible 
@@ -28305,6 +28306,7 @@ unsorted:
   - python312-atomicwrites 
   - python312-atomicwrites-doc 
   - python312-atpublic 
+  - python312-atspi 
   - python312-attr 
   - python312-attrs 
   - python312-aubio 
@@ -32179,6 +32181,7 @@ unsorted:
   - python313-atomicwrites 
   - python313-atomicwrites-doc 
   - python313-atpublic 
+  - python313-atspi 
   - python313-attr 
   - python313-aubio 
   - python313-audible 
@@ -36859,7 +36862,6 @@ unsorted:
   - ruby3.4-devel-extra 
   - ruby3.4-doc 
   - ruby3.4-doc-ri 
-  - ruby3.4-rubygem-faraday-follow_redirects 
   - ruby3.4-rubygem-ruby_parser 
   - ruby3.4-rubygem-sexp_processor 
   - ruby4.0-devel 
@@ -36976,7 +36978,6 @@ unsorted:
   - ruby4.0-rubygem-gssapi 
   - ruby4.0-rubygem-gyoku 
   - ruby4.0-rubygem-haml 
-  - ruby4.0-rubygem-haml-rails 
   - ruby4.0-rubygem-hashdiff 
   - ruby4.0-rubygem-hashery 
   - ruby4.0-rubygem-hashicorp-checkpoint 
@@ -36984,7 +36985,6 @@ unsorted:
   - ruby4.0-rubygem-highline 
   - ruby4.0-rubygem-hitimes 
   - ruby4.0-rubygem-hoe 
-  - ruby4.0-rubygem-html2haml 
   - ruby4.0-rubygem-http-cookie 
   - ruby4.0-rubygem-http-form_data 
   - ruby4.0-rubygem-http_parser.rb 
@@ -50325,6 +50325,8 @@ unsorted:
   - yast2-usbauth 
   - yast2-widget-demo 
   - yast2-ycp-ui-bindings-devel 
+  - yast2-ycp-ui-bindings-dummy 
+  - yast2-ycp-ui-bindings-dummy-devel 
   - yate 
   - yate-bts 
   - yate-devel 
