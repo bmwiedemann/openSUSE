@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jan 16 07:51:53 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.19.0
+  * update the description of ExportArtifact
+  * add Fingerprint to Artifact Registry Version resource
+  * auto-enable mTLS when supported certificates are detected
+  * check Python and dependency versions in generated GAPICs
+- from version 1.18.0
+  * A comment for enum value `ENABLEMENT_CONFIG_UNSPECIFIED` in enum `EnablementConfig` is changed
+  * A comment for field `name` in message `.google.devtools.artifactregistry.v1.DockerImage` is changed
+  * A comment for field `satisfies_pzs` in message `.google.devtools.artifactregistry.v1.Repository` is changed
+  * A comment for field `satisfies_pzi` in message `.google.devtools.artifactregistry.v1.Repository` is changed
+  * add ExportArtifact API
+  * add artifact_type field in DockerImage
+  * add image_manifest field in DockerImage
+  * add Ruby format in VulnerabilityScanningConfig
+
+-------------------------------------------------------------------
 Mon Oct 20 08:36:31 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.17.0
