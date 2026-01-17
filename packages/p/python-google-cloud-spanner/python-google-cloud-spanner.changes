@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Jan 16 09:21:00 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.62.0
+  * add uuid support (#1310)
+  * handle errors during stream restart in snapshot (#1471)
+  * resolve pre-release dependency failures and sqlparse recursion (#1472)
+  * transaction_tag should be set on BeginTransactionRequest (#1463)
+- from version 3.61.0
+  * support mTLS certificates when available (#1467)
+- from version 3.60.0
+  * Update description for the BatchCreateSessionsRequest and Session
+  * Update description for the IsolationLevel
+  * make built-in metrics enabled by default (#1459)
+  * Add Spanner location API (#1457)
+  * Add Send and Ack mutations for Queues
+  * Add QueryAdvisorResult for query plan
+  * add cloud.region, request_tag and transaction_tag in span attributes (#1449)
+  * Exposing AutoscalingConfig in InstancePartition
+  * enable OpenTelemetry metrics and tracing by default (#1410)
+  * add support for experimental host (#1452)
+  * Provide Spanner Option to disable metrics (#1460)
+  * Deprecate credentials_file argument
+  * configure keepAlive time for gRPC TCP connections (#1448)
+- from version 3.59.0
+  * **spanner:** Add lazy decode to partitioned query (#1411)
+  * **spanner:** Resolve TypeError in metrics resource detection (#1446)
+  * Add snippet for Repeatable Read configuration at client and transaction (#1326)
+
+-------------------------------------------------------------------
 Mon Oct 27 10:05:03 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Replace bash scriptlet to remove mock usage from source code
