@@ -1,7 +1,7 @@
 #
 # spec file for package emacs
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -112,7 +112,6 @@ BuildRequires:  alts
 %else
 BuildRequires:  update-alternatives
 %endif
-BuildRequires:  update-desktop-files
 #BuildRequires:  xdotool
 #BuildRequires:  xorg-x11-Xvfb
 BuildRequires:  xz
@@ -233,6 +232,7 @@ Patch5:         emacs-24.4-ps-bdf.patch
 Patch6:         emacs-30.1-silent.patch
 Patch7:         emacs-24.1-ps-mule.patch
 Patch8:         emacs-24.4-nonvoid.patch
+Patch9:         desktop.patch
 Patch12:        emacs-24.3-x11r7.patch
 Patch15:        emacs-24.3-iconic.patch
 Patch16:        emacs-24.4-flyspell.patch
@@ -433,6 +433,7 @@ and most assembler-like syntaxes.
 %patch -P6  -p0 -b .silent
 %patch -P7  -p0 -b .psmu
 %patch -P8  -p0 -b .nvoid
+%patch -P9  -p0
 %patch -P12 -p0 -b .x11r7
 %patch -P15 -p0 -b .iconic
 %patch -P16 -p0 -b .flyspell
@@ -994,7 +995,8 @@ xargs -n 2 | while read first second; do
 done
 # install desktop file
 test -e etc/emacs.desktop || exit 1
-cp etc/images/icons/hicolor/32x32/apps/emacs.png $RPM_SOURCE_DIR/emacs.png
+mkdir -p %{buildroot}%{_datadir}/pixmaps
+install etc/images/icons/hicolor/32x32/apps/emacs.png %{buildroot}%{_datadir}/pixmaps/emacs.png
 for df in %{buildroot}%{_datadir}/emacs/%{version}/etc/emacs*.desktop
 do
     test -e "$df" || break
@@ -1003,7 +1005,6 @@ do
     cp $df etc/${base}
     echo 'X-KDE-StartupNotify=false' >> etc/${base}
     rm -vf $df
-    %suse_update_desktop_file -r -i ${base%%.desktop} TextEditor Utility
 done
 %if %{with libalternatives}
 mkdir -p %{buildroot}%{_datadir}/libalternatives/ctags

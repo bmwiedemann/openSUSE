@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 14 13:09:16 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+* Add patch desktop.patch and then remove dependency on
+  update-desktop-files (jsc#PED-15201)
+
+-------------------------------------------------------------------
 Fri Nov 28 10:37:55 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Avoid direct dependencies to X11 libraries for wayland port 

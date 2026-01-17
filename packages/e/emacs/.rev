@@ -2283,4 +2283,13 @@ Now one could consider building emacs with gsettings support (both debian and fe
     <comment>- Avoid direct dependencies to X11 libraries for wayland port</comment>
     <requestid>1320497</requestid>
   </revision>
+  <revision rev="214" vrev="4">
+    <srcmd5>2748921319d0494cfd8e8673222c6aaa</srcmd5>
+    <version>30.2</version>
+    <time>1768682530</time>
+    <user>dimstar_suse</user>
+    <comment>* Add patch desktop.patch and then remove dependency on
+  update-desktop-files (jsc#PED-15201)</comment>
+    <requestid>1327401</requestid>
+  </revision>
 </revisionlist>
