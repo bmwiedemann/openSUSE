@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 16 11:37:15 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Does not need libpostproc, removing the BuildRequires allows to
+  move to ffmpeg-8
+
+-------------------------------------------------------------------
 Sat Sep 13 07:26:53 UTC 2025 - Edgar Aichinger <edogawa@aon.at>
 
 - Update to 2.5.3

@@ -2,7 +2,7 @@
 #
 # spec file for package mixxx
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2010-2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -85,7 +85,6 @@ BuildRequires:  pkgconfig(libebur128)
 BuildRequires:  pkgconfig(libkeyfinder)
 BuildRequires:  pkgconfig(libmodplug)
 BuildRequires:  pkgconfig(libmp3lame)
-BuildRequires:  pkgconfig(libpostproc)
 BuildRequires:  pkgconfig(libprofiler)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libtcmalloc)

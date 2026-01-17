@@ -56,4 +56,12 @@ Exactly the same as https://build.opensuse.org/requests/1288941 that was mistake
   * Tracks: prevent reorder with Alt keys when model (playlist) is locked #15135</comment>
     <requestid>1304592</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>166c46da61da72849207a1a238f96262</srcmd5>
+    <version>2.5.3</version>
+    <time>1768658120</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1327648</requestid>
+  </revision>
 </revisionlist>
