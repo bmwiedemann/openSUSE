@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-ruby-bindings
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-ruby-bindings
-Version:        5.0.5
+Version:        5.0.6
 Release:        0
 URL:            https://github.com/yast/yast-ruby-bindings
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -35,9 +35,18 @@ Requires:       rubygem(%{rb_default_ruby_abi}:fast_gettext) < 3.0
 BuildRequires:  %{rubydevel}
 Requires:       yast2-core >= 3.2.2
 BuildRequires:  yast2-core-devel >= 3.2.2
+
+# use the standard UI in openSUSE Tumbleweed or Leap
+%if 0%{?suse_version} == 1699 || 0%{?is_opensuse}
 # MenuBar-shortcuts-test.rb
 Requires:       yast2-ycp-ui-bindings       >= 4.3.7
 BuildRequires:  yast2-ycp-ui-bindings-devel >= 4.3.7
+%else
+# use dummy UI in SLES
+Requires:       yast2-ycp-ui-bindings-dummy
+BuildRequires:  yast2-ycp-ui-bindings-dummy-devel
+%endif
+
 # requirement for testing locale dependent methods.
 # Keep it only build requirement to not force installation of this package everywhere
 BuildRequires:  glibc-locale

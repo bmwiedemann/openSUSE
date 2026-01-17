@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 15 08:26:47 UTC 2026 - Ladislav Slezák <lslezak@suse.com>
+
+- Drop libyui dependency in SLES (related to bsc#1254978)
+- 5.0.6
+
+-------------------------------------------------------------------
 Wed Jul 16 13:02:54 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Allow building using CMake 4.0 by bumping the minimum for cmake
