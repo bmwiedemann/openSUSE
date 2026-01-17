@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Fri Jan 16 14:04:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.34.0 (.33 was not released):
+  * Features
+    - datastore: add index on layers id column (90da9c5)
+    - tolerate unknown DB migrations during rolling upgrade
+      (2cef90b)
+  * Bug Fixes
+    - handlers: stale repository cache after rename (25c2a59)
+  * Reverts
+    - deps: update module google.golang.org/api to v0.258.0
+      (b0123fb)
+  * Dependencies
+    - build(deps): update module github.com/aws/aws-sdk-go-v2 to
+      v1.41.1
+    - build(deps): update module cloud.google.com/go/storage to
+      v1.59.0
+    - build(deps): update module golang.org/x/oauth2 to v0.34.0
+    - revert(deps): update module google.golang.org/api to v0.258.0
+    - build(deps): update module github.com/schollz/progressbar/v3
+      to v3.19.0
+    - build(deps): update module github.com/jackc/pgx/v5 to v5.8.0
+    - build(deps): update module
+      github.com/aws/aws-sdk-go-v2/service/s3 to v1.95.0
+    - build(deps): update module google.golang.org/api to v0.258.0
+    - build(deps): update module golang.org/x/oauth2 to v0.34.0
+    - build(deps): update module golang.org/x/net to v0.48.0
+    - build(deps): update module golang.org/x/crypto to v0.46.0
+    - build(deps): update module gitlab.com/gitlab-org/labkit to
+      v1.34.0
+    - build(deps): update module
+      github.com/aws/aws-sdk-go-v2/config to v1.32.6
+    - build(deps): update module
+      github.com/testcontainers/testcontainers-go/modules/postgres
+      to v0.40.0
+    - build(deps): update module
+      github.com/aws/aws-sdk-go-v2/service/s3 to v1.94.0
+    - build(deps): update module
+      gitlab.com/gitlab-org/api/client-go to v0.161.1
+    - build(deps): update module
+      github.com/testcontainers/testcontainers-go to v0.40.0
+    - build(deps): update module github.com/getsentry/sentry-go to
+      v0.40.0
+    - build(deps): update module
+      github.com/aws/aws-sdk-go-v2/config to v1.32.5
+    - build(deps): update module
+      github.com/aws/aws-sdk-go-v2/service/s3 to v1.93.2
+    - build(deps): update module cloud.google.com/go/storage to
+      v1.58.0
+    - build(deps): update module github.com/spf13/cobra to v1.10.2
+    - build(deps): update module
+      github.com/aws/aws-sdk-go-v2/feature/cloudfront/sign to
+      v1.9.16
+    - build(deps): update module
+      github.com/aws/aws-sdk-go-v2/config to v1.32.4
+    - build(deps): update module github.com/aws/aws-sdk-go-v2 to
+      v1.40.1
+    - build(deps): update module github.com/aws/smithy-go to
+      v1.24.0
+    - build(deps): update module
+      github.com/aws/aws-sdk-go-v2/service/s3 to v1.92.1
+    - build(deps): update module github.com/redis/go-redis/v9 to
+      v9.17.2
+    - build(deps): update module github.com/olekukonko/tablewriter
+      to v1.1.2
+    - build(deps): update module
+      github.com/aws/aws-sdk-go-v2/feature/cloudfront/sign to
+      v1.9.14
+    - build(deps): update module
+      github.com/aws/aws-sdk-go-v2/config to v1.32.2
+    - build(deps): update module github.com/redis/go-redis/v9 to
+      v9.17.1
+    - build(deps): update module
+      github.com/aws/aws-sdk-go-v2/credentials to v1.19.2
+    - build(deps): update module github.com/rubenv/sql-migrate to
+      v1.8.1
+    - build(deps): update module github.com/aws/aws-sdk-go-v2 to
+      v1.40.0
+    - build(deps): update module
+      github.com/aws/aws-sdk-go-v2/feature/cloudfront/sign to
+      v1.9.13
+
+-------------------------------------------------------------------
 Tue Nov 25 13:47:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.32.0:
