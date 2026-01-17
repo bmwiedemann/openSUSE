@@ -1,4 +1,106 @@
 -------------------------------------------------------------------
+Wed Jan 14 16:26:33 UTC 2026 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 1.18:
+  - libvkd3d
+    The CreateCommandList1() method of the ID3D12Device4 interface
+    is implemented.
+  - libvkd3d-shader
+    Several new features and improvements for the HLSL source
+    type:
+      Flattening of branched code. I.e., code using if/else
+      statements can beturned into conditional moves when that's
+      either advantageous or necessary. Cases where this is
+      necessary include targeting shader model 2.0 or earlier, as
+      well as code using the ‘flatten’ attribute.
+      More constant folding improvements. For example:
+        Iasfloat(), asint(), asuint(), cos(), mad(), round(), and
+        sin() operations are constant folded.
+        ‘true ? x : y’ is folded to ‘x’
+        ‘x ? true : false’ is folded to ‘x’
+        ‘||x||’ is folded to ‘|x|’
+        ‘~~x’ is folded to ‘x’
+        ‘x < 0’ is folded to ‘false’ for unsigned ‘x’
+      The following intrinsic functions:
+        countbits()
+        firstbithigh()
+        firstbitlow()
+        frexp()
+        texCUBEbias()
+      Integer-typed conditional expressions in shader model 1-3
+      target profiles. Previously these were only supported in
+      shader model 4+ target profiles.
+      Resource loads from ‘StructuredBuffer’ resources.
+      ‘centroid’ interpolation modifiers in shader model 1-3
+      target profiles.
+      Support for ‘_centroid’ modifier suffixes on I/O semantics.
+      I.e., ‘float2 t : TEXCOORD0_centroid’ is equivalent to
+      ‘centroid float2 t : TEXCOORD0’.
+    The following legacy Direct3D byte-code instructions are
+    implemented:
+      bem
+      tex
+      texbem
+      texbeml
+      texcoord
+    The experimental Metal Shading Language (MSL) target supports
+    the following features:
+      Compute shaders.
+      Immediate-constant buffers.
+      Standard, inverse, and hyperbolic trigonometric functions.
+      Integer division and remainder operations.
+      Floating-point remainder operations.
+      Bit scanning and counting operations.
+      Boolean operands, as produced by DXIL sources.
+      Barrier operations.
+    When the experimental MSL target is enabled, the ‘hlsl’ source
+    type can be used in combination with the ‘msl’ target type to
+    convert HLSL shaders to MSL.
+    Signed integer operations like min() and max() are correctly
+    translated from DXIL to MSL. Previously these would end up
+    getting translated as unsigned operations, and would thus
+    mishandle negative values.
+    The experimental OpenGL Shading Language (GLSL) target
+    supports the following features:
+      Screen-space partial derivatives.
+      sin() and cos() operations.
+      Unsigned integer division and remainder operations.
+      Static texel offsets on texture load operations.
+      ‘SV_Coverage’ fragment shader outputs.
+      ‘SV_InstanceID’ inputs.
+    Textual output formats are documented to have a zero byte
+    following their output. This can be convenient for passing
+    such output to functions expecting a null-terminated string.
+    For some output formats this was already true in earlier
+    versions of vkd3d, but not guaranteed by the API.
+    New interfaces:
+      The vkd3d_shader_d3dbc_source_info structure extends the
+      vkd3d_shader_compile_info structure, and can be used to
+      specify auxiliary information for legacy Direct3D byte-code
+      (‘d3dbc’) shaders that's necessary for target formats like
+      SPIR-V and GLSL, but not specified by ‘d3dbc’ shaders.
+      In particular, it allows specifying resource/sampler types
+      for shader model 1 fragment shaders, as well as which
+      samplers are comparison-mode samplers for shader model 1-3
+      shaders.
+      The vkd3d_shader_scan_thread_group_size_info structure
+      extends the vkd3d_shader_compile_info structure, and can be
+      used to to retrieve the thread group size expected by a
+      compute shader. This information is particularly useful when
+      targeting Metal environments, because the Metal API requires
+      the thread group size to be specified through its dispatch
+      API, instead of being specified by the shader.
+      The VKD3D_SHADER_PARAMETER_NAME_BUMP_LUMINANCE_OFFSET_[0-5]
+      shader parameters specify the corresponding bump-mapping
+      luminance offsets.
+      The VKD3D_SHADER_PARAMETER_NAME_BUMP_LUMINANCE_SCALE_[0-5]
+      shader parameters specify the corresponding bump-mapping
+      luminance scale factors.
+      The VKD3D_SHADER_PARAMETER_NAME_BUMP_MATRIX_[0-5] shader
+      parameters specify the corresponding bump-mapping
+      transformation matrices.
+
+-------------------------------------------------------------------
 Sun Aug 24 08:56:58 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - Update to version 1.17:

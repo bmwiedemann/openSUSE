@@ -1,7 +1,7 @@
 #
 # spec file for package vkd3d
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         major 1
 Name:           vkd3d
-Version:        1.17
+Version:        1.18
 Release:        0
 Summary:        Direct3D 12 to Vulkan translation library
 License:        LGPL-2.1-or-later
