@@ -73,4 +73,18 @@
   * Update import statement example in README (forwarded request 1312339 from glaubitz)</comment>
     <requestid>1312375</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ebab9815976dfe2be2b94afb1f03a75d</srcmd5>
+    <version>1.15.0</version>
+    <time>1768658097</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.15.0
+  * auto-enable mTLS when supported certificates are detected
+  * check Python and dependency versions in generated GAPICs
+- from version 1.14.0
+  * Add support for Python 3.14
+  * Deprecate credentials_file argument
+- Update BuildRequires and Requires from setup.py (forwarded request 1327680 from glaubitz)</comment>
+    <requestid>1327703</requestid>
+  </revision>
 </revisionlist>
