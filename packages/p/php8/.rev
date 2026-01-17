@@ -1585,4 +1585,49 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1327064</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>9da618053356ac5d00c6c576f2617290</srcmd5>
+    <version>8.4.17</version>
+    <time>1768682544</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 8.4.17
+    Core:
+        Fix OSS-Fuzz #465488618 (Wrong assumptions when dumping function signature with dynamic class const lookup default argument).
+        Fixed bug GH-20695 (Assertion failure in normalize_value() when parsing malformed INI input via parse_ini_string()).
+        Fixed bug GH-20714 (Uncatchable exception thrown in generator).
+        Fixed bug GH-20352 (UAF in php_output_handler_free via re-entrant ob_start() during error deactivation).
+    Bz2:
+        Fixed bug GH-20620 (bzcompress overflow on large source size).
+    DOM:
+        Fixed bug GH-20722 (Null pointer dereference in DOM namespace node cloning via clone on malformed objects).
+        Fixed bug GH-20444 (Dom\XMLDocument::C14N() seems broken compared to DOMDocument::C14N()).
+    GD:
+        Fixed bug GH-20622 (imagestring/imagestringup overflow).
+    Intl:
+        Fix leak in umsg_format_helper().
+    LDAP:
+        Fix memory leak in ldap_set_options().
+    Mbstring:
+        Fixed bug GH-20674 (mb_decode_mimeheader does not handle separator).
+    PCNTL:
+        Fixed bug with pcntl_getcpuaffinity() on solaris regarding invalid process ids handling.
+    Phar:
+        Fixed bug GH-20732 (Phar::LoadPhar undefined behavior when reading fails).
+        Fix SplFileInfo::openFile() in write mode.
+        Fix build on legacy OpenSSL 1.1.0 systems.
+        Fixed bug #74154 (Phar extractTo creates empty files).
+    POSIX:
+        Fixed crash on posix groups to php array creation on macos.
+    SPL:
+        Fixed bug GH-20678 (resource created by GlobIterator crashes with fclose()).
+    Sqlite3:
+        Fixed bug GH-20699 (SQLite3Result fetchArray return array|false, null returned).
+    Standard:
+        Fix error check for proc_open() command.
+        Fix memory leak in mail() when header key is numeric.
+        Fixed bug GH-20582 (Heap Buffer Overflow in iptcembed).
+    Zlib:
+        Fix OOB gzseek() causing assertion failure. (forwarded request 1327462 from adkorte)</comment>
+    <requestid>1327548</requestid>
+  </revision>
 </revisionlist>
