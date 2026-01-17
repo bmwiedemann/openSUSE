@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jan 11 05:45:41 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20260110.0.0 (20260110)
+   see /usr/share/doc/packages/perl-Test-PerlTidy/Changes
+
+  20260110        2026-01-10
+
+              * Check .psgi and cpanfile files.
+                  * https://github.com/shlomif/Test-PerlTidy/pull/11
+                      * Thanks to @dboehmer !
+
+-------------------------------------------------------------------
 Mon Feb 27 03:07:46 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 20230226

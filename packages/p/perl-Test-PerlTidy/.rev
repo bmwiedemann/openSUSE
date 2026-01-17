@@ -81,4 +81,17 @@
     <comment></comment>
     <requestid>1070667</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a398872c9b68b7fb1dc50197f4dcee50</srcmd5>
+    <version>20260110.0.0</version>
+    <time>1768658118</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 20260110.0.0 (20260110)
+   see /usr/share/doc/packages/perl-Test-PerlTidy/Changes
+  20260110        2026-01-10
+              * Check .psgi and cpanfile files.
+                  * https://github.com/shlomif/Test-PerlTidy/pull/11
+                      * Thanks to @dboehmer !</comment>
+    <requestid>1327642</requestid>
+  </revision>
 </revisionlist>
