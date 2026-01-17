@@ -1,7 +1,7 @@
 #
 # spec file for package wxMaxima
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define __builder ninja
 %define tarname wxmaxima
 Name:           wxMaxima
-Version:        25.04.0
+Version:        26.01.0
 Release:        0
 Summary:        Graphical User Interface for the maxima Computer Algebra System
 License:        GPL-2.0-or-later
@@ -40,7 +40,6 @@ BuildRequires:  maxima >= 5.30.0
 BuildRequires:  maxima-exec-sbcl
 BuildRequires:  ninja
 BuildRequires:  po4a
-BuildRequires:  update-desktop-files
 BuildRequires:  wxGTK3-devel >= 3.1.5
 # gnuplot is needed for plotting
 Requires:       gnuplot
@@ -74,9 +73,6 @@ based on wxWidgets.
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/scalable/mimetypes
 install -m0644 -t %{buildroot}%{_datadir}/icons/hicolor/scalable/mimetypes data/text-x-wx*.svg
 
-# Remove unnecessary icons out of pixmaps
-rm %{buildroot}%{_datadir}/pixmaps/*
-
 # Remove non-standard hicolor icon sizes
 for sz in 150 310 44 42 8
 do
@@ -86,7 +82,6 @@ done
 # Remove license installed by make install, we include them by using %%license
 rm %{buildroot}%{_datadir}/doc/%{tarname}/{COPYING,GPL.txt}
 
-%suse_update_desktop_file io.github.wxmaxima_developers.wxMaxima
 %fdupes %{buildroot}%{_prefix}
 %find_lang %{name} %{?no_lang_C}
 
@@ -102,7 +97,7 @@ popd
 %files
 %license COPYING GPL.txt
 %doc %{_datadir}/doc/%{tarname}/
-%{_bindir}/*
+%{_bindir}/wxmaxima
 %{_datadir}/wxMaxima/
 %{_datadir}/icons/hicolor/*/apps/io.github.wxmaxima_developers.wxMaxima.*
 %{_datadir}/icons/hicolor/*/mimetypes/text-x-wx*.svg
@@ -112,6 +107,7 @@ popd
 %{_mandir}/man1/wxmaxima*%{ext_man}
 %{_mandir}/*/man1/wxmaxima*%{ext_man}
 %{_datadir}/mime/packages/*.xml
+%{_datadir}/pixmaps/*
 
 %files lang -f %{name}.lang
 

@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Jan 15 18:43:35 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 26.01.0:
+  * Keep the wxm/mac difference when saving wxm/exporting mac.
+  * Replace unicode fractions in math input.
+  * Use wxArtProvider images for the copy/print icons in the
+    config dialogue.
+  * Support webp images if wxWidgets >= 3.3.0 is used.
+  * Fix the General Math sidebar resize issue
+    (gh#wxMaxima-developers/wxmaxima#2022).
+  * Fix the resizing of the 'Insert cell' sidebar (same problem as
+    the 'General Math' sidebar).
+  * Fix a crash when copying a input cell (collapsed to only show
+    the input).
+  * Fix a crash when deleting a text cell
+    (gh#wxMaxima-developers/wxmaxima#2041).
+  * Fix subscripts of greek letters
+    (gh#wxMaxima-developers/wxmaxima#2045).
+  * Fix the "Numerical solutions of polynomial" (with and without
+    bigfloats) wizards.
+  * Save the chosen invertion status in the configuration. Fixes
+    issue gh#wxMaxima-developers/wxmaxima#2049.
+  * Try to highlight input text that coincides with selected
+    output text.
+  * diff() now doesn't add a ",1" if only the 1st derivate is
+    meant.
+  * A more consistent worksheet zoom feature.
+- Drop use of deprecated %suse_update_desktop_file macro.
+
+-------------------------------------------------------------------
+Wed Nov 19 17:16:39 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Don't remove pixmaps icons.
+
+-------------------------------------------------------------------
 Fri May  2 08:44:50 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 25.04.0:
