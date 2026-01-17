@@ -15,4 +15,19 @@
     <comment></comment>
     <requestid>1294558</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>53b11ea0d7953c81a0c499a6b08e5d41</srcmd5>
+    <version>0.160.0</version>
+    <time>1768658116</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.160.0 (0.16)
+   see /usr/share/doc/packages/perl-Test-Future-IO-Impl/Changes
+  0.16    2026-01-07
+          [BUGFIXES]
+           * Be less sensitive to `-&gt;send` failure in peer-closed case, as OS
+             behaviour differs here
+           * sleep() unconditionally after closing listening server in connect
+             test, as most OSes need it. 100msec is sufficient</comment>
+    <requestid>1327640</requestid>
+  </revision>
 </revisionlist>
