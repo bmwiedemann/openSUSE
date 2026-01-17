@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 16 12:06:02 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
+
+- Remove update-crypto-cve-2025-47913.patch: This was fixed upstream in v0.2.84
+- Update to version 0.2.84:
+  * chore: bump VERSION to 0.2.84
+  * fix: explode yaml anchors (#5987)
+  * chore(deps): Security update December 2025 (#5984)
+  * chore: bump VERSION to 0.2.83
+  * chore(mergify) Add merge queue configuration to .mergify.yml (#5944)
+
+-------------------------------------------------------------------
 Sun Nov 16 20:31:41 UTC 2025 - Matthias Eliasson <elimat@opensuse.org>
 
 - Security fix for bsc#1253608, CVE-2025-47913, GO-2025-4116
