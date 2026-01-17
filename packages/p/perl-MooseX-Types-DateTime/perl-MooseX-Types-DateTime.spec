@@ -1,7 +1,7 @@
 #
 # spec file for package perl-MooseX-Types-DateTime
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,50 +12,55 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-MooseX-Types-DateTime
-Version:        0.13
-Release:        0
 %define cpan_name MooseX-Types-DateTime
-Summary:        L<DateTime> related constraints and coercions for Moose
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/MooseX-Types-DateTime/
-Source0:        http://www.cpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{version}.tar.gz
+Name:           perl-MooseX-Types-DateTime
+Version:        0.140.0
+Release:        0
+# 0.14 -> normalize -> 0.140.0
+%define cpan_version 0.14
+License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        DateTime related constraints and coercions for Moose
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(DateTime) >= 0.4302
-BuildRequires:  perl(DateTime::Duration) >= 0.4302
-BuildRequires:  perl(DateTime::Locale) >= 0.400100
-BuildRequires:  perl(DateTime::TimeZone) >= 0.95
-BuildRequires:  perl(Module::Build::Tiny) >= 0.034
-BuildRequires:  perl(Moose) >= 0.41
+BuildRequires:  perl(DateTime) >= 0.430.200
+BuildRequires:  perl(DateTime::Duration) >= 0.430.200
+BuildRequires:  perl(DateTime::Locale) >= 0.400.100
+BuildRequires:  perl(DateTime::TimeZone) >= 0.950
+BuildRequires:  perl(Module::Build)
+BuildRequires:  perl(Module::Build::Tiny) >= 0.34
+BuildRequires:  perl(Module::Metadata)
+BuildRequires:  perl(Moose) >= 0.410
 BuildRequires:  perl(Moose::Util::TypeConstraints)
-BuildRequires:  perl(MooseX::Types) >= 0.30
-BuildRequires:  perl(MooseX::Types::Moose) >= 0.30
+BuildRequires:  perl(MooseX::Types) >= 0.300
+BuildRequires:  perl(MooseX::Types::Moose) >= 0.300
 BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::More) >= 0.88
-BuildRequires:  perl(namespace::clean) >= 0.19
+BuildRequires:  perl(namespace::clean) >= 0.190
 BuildRequires:  perl(ok)
-Requires:       perl(DateTime) >= 0.4302
-Requires:       perl(DateTime::Duration) >= 0.4302
-Requires:       perl(DateTime::Locale) >= 0.400100
-Requires:       perl(DateTime::TimeZone) >= 0.95
-Requires:       perl(Moose) >= 0.41
-Requires:       perl(MooseX::Types) >= 0.30
-Requires:       perl(MooseX::Types::Moose) >= 0.30
-Requires:       perl(namespace::clean) >= 0.19
+Requires:       perl(DateTime) >= 0.430.200
+Requires:       perl(DateTime::Duration) >= 0.430.200
+Requires:       perl(DateTime::Locale) >= 0.400.100
+Requires:       perl(DateTime::TimeZone) >= 0.950
+Requires:       perl(Moose) >= 0.410
+Requires:       perl(MooseX::Types) >= 0.300
+Requires:       perl(MooseX::Types::Moose) >= 0.300
+Requires:       perl(namespace::clean) >= 0.190
+Provides:       perl(MooseX::Types::DateTime) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
-This module packages several the Moose::Util::TypeConstraints manpage with
-coercions, designed to work with the the DateTime manpage suite of objects.
+This module packages several Moose::Util::TypeConstraints with coercions,
+designed to work with the DateTime suite of objects.
 
 Namespaced Example:
 
@@ -70,10 +75,10 @@ Namespaced Example:
     Class->new( time_zone => "Africa/Timbuktu" );
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Build.PL --installdirs=vendor
+perl Build.PL --installdirs=vendor
 ./Build build --flags=%{?_smp_mflags}
 
 %check
@@ -84,7 +89,7 @@ Namespaced Example:
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes CONTRIBUTING LICENCE README
+%doc Changes CONTRIBUTING README
+%license LICENCE
 
 %changelog
