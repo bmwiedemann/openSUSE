@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 10 13:12:51 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop obsolete update-desktop-files BuildRequires and
+  corresponding macro.
+- Add fdupes BuildRequires and macro, remove duplicate files.
+
+-------------------------------------------------------------------
 Mon Jan  5 09:59:39 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Add obscpio.patch making OBSCPIO archives an equivalent of the

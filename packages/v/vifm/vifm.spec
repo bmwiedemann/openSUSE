@@ -29,15 +29,13 @@ Source2:        %{name}.keyring
 # PATCH-FEATURE-OPENSUSE obscpio.patch mcepl@suse.com
 # Add recognition of the OBSCPIO archives
 Patch0:         obscpio.patch
+BuildRequires:  fdupes
 BuildRequires:  file-devel
 BuildRequires:  glib2-devel
 BuildRequires:  groff
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
-%if 0%{?suse_version}
-BuildRequires:  update-desktop-files
-%endif
 
 %description
 Vifm is a ncurses based file manager with vi like keybindings that allow complete
@@ -60,14 +58,12 @@ gzip -9c ChangeLog > ChangeLog.gz
 
 %install
 make install DESTDIR="%{?buildroot}"
-%if 0%{?suse_version}
-%suse_update_desktop_file %{name}
-%endif
 rm -rf %{buildroot}%{_datadir}/doc/vifm/*
 rm -rf %{buildroot}%{_datadir}/vifm/vifmrc-osx
 rm -rf %{buildroot}%{_datadir}/vifm/vifm-media-osx
 rm -rf %{buildroot}%{_datadir}/vifm/vim-doc/doc/tags
 rm -rf %{buildroot}%{_datadir}/vifm/vim-doc/doc/vifm-app.txt
+%fdupes %{buildroot}%{_datadir}
 
 %files
 %license COPYING
@@ -77,7 +73,10 @@ rm -rf %{buildroot}%{_datadir}/vifm/vim-doc/doc/vifm-app.txt
 %dir %{_datadir}/%{name}/vim-doc/doc
 %doc %{_datadir}/%{name}/%{name}-help.txt
 %doc %{_datadir}/%{name}/vim-doc/doc/%{name}-lua.txt
-%{_bindir}/*
+%{_bindir}/vifm
+%{_bindir}/vifm-convert-dircolors
+%{_bindir}/vifm-pause
+%{_bindir}/vifm-screen-split
 %{_datadir}/%{name}/vim
 %{_datadir}/%{name}/%{name}rc
 %{_datadir}/%{name}/colors/
