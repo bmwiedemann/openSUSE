@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jan 16 20:50:34 UTC 2026 - RN <R_Nik_C@proton.me>
+
+- Update to version 2.57.1:
+  * DisplayServer (Linux): cleanup code
+  * Release: v2.57.1
+  * Common: ensures thread safety of `ffTimeInitQpcMultiplier`
+  * Logo: removes unneeded `#include`s
+  * Common: add `on_scope_exit` utility for scope-based resource
+    management
+  * Platform (Windows): improves hostname retrieval by adding
+    fallback to NetBIOS name
+  * macOS: uses `MACH_PORT_NULL` to maintain compatibility with
+    older SDKs
+  * Logo (Builtin): updates PrismLinux and adds a small variant
+    (#2141)
+  * DisplayServer (Linux): refactors property handling in xcb and
+    xlib
+
+-------------------------------------------------------------------
 Tue Jan 13 14:53:37 UTC 2026 - RN <R_Nik_C@proton.me>
 
 - Update to version 2.57.0:
