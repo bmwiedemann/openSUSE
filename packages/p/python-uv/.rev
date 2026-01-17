@@ -1952,4 +1952,26 @@
   * Fix error message when installing musl python on armv7</comment>
     <requestid>1327181</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>390d995e81afb777f4d4222250266dee</srcmd5>
+    <version>0.9.26</version>
+    <time>1768658171</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.26 
+ * Enhancements
+  * Add a hint to update uv when a managed Python download is not found 
+  * Improve cache initialization failure error message 
+  * Improve error message for abi3 wheels on free-threaded Python 
+  * Add support for --no-sources-package 
+ * Preview features
+  * Add METADATA.json and WHEEL.json in uv build backend 
+  * Add support for GCS request signing 
+  * Adjust the process ulimit to the maximum allowed on startup 
+ * Bug fixes
+  * Lock to avoid concurrent refresh of pyx tokens 
+ * Documentation
+  * Add linting and formatting instructions to the CONTRIBUTING guide 
+  * Avoid rendering pyproject.toml examples for more system-level settings</comment>
+    <requestid>1327698</requestid>
+  </revision>
 </revisionlist>
