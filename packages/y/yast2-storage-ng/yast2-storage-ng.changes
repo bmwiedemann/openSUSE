@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 15 08:26:47 UTC 2026 - Ladislav Slezák <lslezak@suse.com>
+
+- Drop the yast2-ycp-ui-bindings dependency to avoid installing
+  libyui in SLES (related to bsc#1254978)
+- 5.0.39
+
+-------------------------------------------------------------------
 Thu Nov  6 16:57:22 UTC 2025 - Stefan Schubert <schubi@suse.de>
 
 - Suggesting PbkdFunction::PBKDF2 for none efi systems in the
