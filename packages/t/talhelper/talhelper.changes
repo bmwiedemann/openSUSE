@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan 16 06:14:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.1.1:
+  * add common function for buildingRoutes
+  * chore(schema): update talos-extensions.yaml JSON schema (#1381)
+  * chore(schema): update talos-extensions.yaml JSON schema (#1379)
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+    v3.1.0
+  * feat: update Scoop for talhelper version v3.1.0
+  * feat: update flake (#1377)
+
+-------------------------------------------------------------------
 Wed Jan 14 07:00:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.1.0:
