@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan 16 08:24:55 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.9.0
+  * Marking MODIFIED_CUSTOMER_INITIATED_ACCESS and
+    MODIFIED_GOOGLE_INITIATED_SYSTEM_OPERATION Key Access
+    Justification codes as deprecated in favor of
+    GOOGLE_RESPONSE_TO_PRODUCTION_ALERT
+- from version 3.8.0
+  * auto-enable mTLS when supported certificates are detected
+  * check Python and dependency versions in generated GAPICs
+
+-------------------------------------------------------------------
 Fri Oct 17 12:20:31 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.7.0
