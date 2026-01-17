@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 16 00:40:45 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.58.1:
+  + Fix a traceback in the collection tests.
+  + Make cache fns raise errors, not just silently fail.
+  + pasy: Fix reporting exceptions.
+  + Fix creating dom nodes.
+  + Add a pyproject.toml file to allow building with pip.
+- Create versioned python packages again (bsc#1256795)
+
+-------------------------------------------------------------------
 Wed Sep 17 11:27:04 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.58.0:

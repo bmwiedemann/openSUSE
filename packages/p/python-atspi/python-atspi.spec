@@ -1,7 +1,7 @@
 #
 # spec file for package python-atspi
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,10 +30,10 @@ ExcludeArch:    %arm ppc64le
 BuildArch:      noarch
 %endif
 
-%global pythons python3
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define _name   pyatspi
 Name:           python-atspi%{psuffix}
-Version:        2.58.0
+Version:        2.58.1
 Release:        0
 Summary:        Python bindings for the Assistive Technology Service Provider Interface
 License:        LGPL-2.0-only
@@ -43,6 +43,8 @@ Source0:        https://download.gnome.org/sources/pyatspi/2.58/%{_name}-%{versi
 BuildRequires:  %{python_module dbus-python}
 BuildRequires:  %{python_module gobject >= 2.90.1}
 BuildRequires:  %{python_module gobject-devel >= 2.90.1}
+BuildRequires:  %{python_module meson-python}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  meson
@@ -89,10 +91,12 @@ This package contains the python bindings for AT-SPI.
 %build
 %meson
 %meson_build
+%pyproject_wheel
 
 %install
 %if ! %{with test}
 %meson_install
+%pyproject_install
 %endif
 
 %if %{with test}
@@ -105,6 +109,7 @@ This package contains the python bindings for AT-SPI.
 %license COPYING
 %doc AUTHORS NEWS README.md
 %{python_sitelib}/pyatspi/
+%{python_sitelib}/pyatspi-%{version}.dist-info
 %endif
 
 %changelog

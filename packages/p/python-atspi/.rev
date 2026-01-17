@@ -599,4 +599,12 @@
     <comment>Update to 2.58.0 (forwarded request 1305352 from dimstar)</comment>
     <requestid>1305522</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>e94537c01f6b8760655c34f5655cfdf8</srcmd5>
+    <version>2.58.1</version>
+    <time>1768658110</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.58.1 (forwarded request 1327493 from mgorse)</comment>
+    <requestid>1327629</requestid>
+  </revision>
 </revisionlist>
