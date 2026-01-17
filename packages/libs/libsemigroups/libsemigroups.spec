@@ -1,7 +1,7 @@
 #
 # spec file for package libsemigroups
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libsemigroups
 %define lname	libsemigroups3
-Version:        3.2.0
+Version:        3.4.0
 Release:        0
 Summary:        Library with algorithms for computing finite and finitely presented semigroups
 License:        GPL-3.0-or-later

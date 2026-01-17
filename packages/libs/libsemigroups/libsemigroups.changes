@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 17 14:55:06 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.4.0
+  * Deprecate `report_every`
+  * Implement `to<WordGraph>`
+  * Fix behavior of `recursive_path_compare` for empty strings
+
+-------------------------------------------------------------------
 Thu Oct  2 09:11:32 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.2.0
