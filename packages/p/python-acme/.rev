@@ -900,4 +900,13 @@
     and will be removed in a future release.</comment>
     <requestid>1311313</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>fdba829d44f5a607cf6bcfdf81b6121a</srcmd5>
+    <version>5.2.2</version>
+    <time>1768658060</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.2
+  * Support for Python 3.14 was added.</comment>
+    <requestid>1327568</requestid>
+  </revision>
 </revisionlist>
