@@ -21,7 +21,7 @@
 %endif
 
 Name:           comet
-Version:        0.3.1
+Version:        0.3.2
 Release:        0
 Summary:        Communication service for Heroic Games Launcher
 License:        GPL-3.0-only

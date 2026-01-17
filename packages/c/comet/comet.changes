@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan 15 22:28:31 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to 0.3.2
+  * fix: create named pipes immediately instead of polling for pipe name by @imLinguin in 7f71ff5
+  * chore: improve code readability by @imLinguin in 1d5290a
+  * Add Heretic + Hexen to Game-Compatibility.md by @nemesisx00 in #74
+  * docs: add flashback to game-compatibility.md by @mrcaique in #76
+  * Add Streets of Rage 4 to Game-Compatibility.md by @nemesisx00 in #77
+  * Update Game-Compatibility.md by @AaronEldreth in #78
+  * Added "X4: Foundations" to the game compatibility list. by @gabriel-eladi in #81
+  * Add Indiana Jones and The Great Circle to Game Compatability List by @TheManInBlack-Gaming in #84
+ 
+
+-------------------------------------------------------------------
 Thu Nov 13 23:26:35 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - /usr/lib/obs/service/format_spec_file; modernize constructs; compact description 

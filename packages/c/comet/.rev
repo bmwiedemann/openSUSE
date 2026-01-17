@@ -8,4 +8,20 @@
 This is also a dependency for heroic-games-launcher package.</comment>
     <requestid>1320363</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3b75866e2f08db70eeb6c1f43eb42c5d</srcmd5>
+    <version>0.3.2</version>
+    <time>1768657984</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.2
+  * fix: create named pipes immediately instead of polling for pipe name by @imLinguin in 7f71ff5
+  * chore: improve code readability by @imLinguin in 1d5290a
+  * Add Heretic + Hexen to Game-Compatibility.md by @nemesisx00 in #74
+  * docs: add flashback to game-compatibility.md by @mrcaique in #76
+  * Add Streets of Rage 4 to Game-Compatibility.md by @nemesisx00 in #77
+  * Update Game-Compatibility.md by @AaronEldreth in #78
+  * Added &quot;X4: Foundations&quot; to the game compatibility list. by @gabriel-eladi in #81
+  * Add Indiana Jones and The Great Circle to Game Compatability List by @TheManInBlack-Gaming in #84</comment>
+    <requestid>1327482</requestid>
+  </revision>
 </revisionlist>
