@@ -336,4 +336,14 @@ gh#kubernetes-client/python#2178 - merged upstream and released.
 - remove pinneded verion dependency from python-oauthlib module</comment>
     <requestid>1309762</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>01de16c4b909014049320d0ef46fa879</srcmd5>
+    <version>35.0.0</version>
+    <time>1768682543</time>
+    <user>dimstar_suse</user>
+    <comment>version update to 35.0.0
+
+ref: https://github.com/kubernetes-client/python/releases/tag/v35.0.0</comment>
+    <requestid>1327547</requestid>
+  </revision>
 </revisionlist>

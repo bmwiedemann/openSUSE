@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jan 16 06:50:08 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- version update to 35.0.0
+  * please refer to the changelog at https://github.com/kubernetes-client/python/blob/v35.0.0/CHANGELOG.md#v3500
+
+- add the following build and runtime requirements (to match the requirements.txt)
+  ref: https://github.com/kubernetes-client/python/blob/v35.0.0/test-requirements.txt
+  * BuildConflicts: %{python_module urllib3 = 2.6.0}
+  * BuildConflicts: %{python_module websocket-client = 0.41.0}
+  * BuildConflicts: %{python_module websocket-client = 0.41.1}
+  * Conflicts:      python-urllib3 = 2.6.0
+  * Conflicts:      python-websocket-client = 0.40.0
+  * Conflicts:      python-websocket-client = 0.41.0
+  * Conflicts:      python-websocket-client = 0.41.1
+
+-------------------------------------------------------------------
 Wed Oct  8 07:19:11 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - version update to 34.1.0
