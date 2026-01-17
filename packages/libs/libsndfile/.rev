@@ -549,4 +549,12 @@
   libsndfile-CVE-2024-50612.patch</comment>
     <requestid>1226501</requestid>
   </revision>
+  <revision rev="68" vrev="4">
+    <srcmd5>7220597180338e27d242d5173d6532fb</srcmd5>
+    <version>1.2.2</version>
+    <time>1768682546</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1327786</requestid>
+  </revision>
 </revisionlist>

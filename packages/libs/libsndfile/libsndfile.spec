@@ -1,7 +1,7 @@
 #
 # spec file for package libsndfile
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ Source2:        libsndfile.keyring
 Source3:        baselibs.conf
 Patch1:         libsndfile-CVE-2022-33065.patch
 Patch2:         libsndfile-CVE-2024-50612.patch
+Patch3:         libsndfile-CVE-2025-56226.patch
+Patch4:         sndfile-convert-CVE-2025-56226.patch
 # PATCH-FIX-OPENSUSE
 Patch100:       sndfile-ocloexec.patch
 BuildRequires:  cmake
@@ -79,7 +81,9 @@ libsndfile library.
 %autosetup -p1
 
 %build
-%cmake -DENABLE_EXPERIMENTAL=ON -DBUILD_EXAMPLES=OFF -DCMAKE_INSTALL_DOCDIR=%{_defaultdocdir}/libsndfile
+%cmake \
+  -DBUILD_EXAMPLES=OFF \
+  -DCMAKE_INSTALL_DOCDIR=%{_defaultdocdir}/libsndfile
 %cmake_build
 
 %install
@@ -90,8 +94,7 @@ rm -rf %{buildroot}%{_bindir}
 rm -rf %{buildroot}%{_mandir}/man1
 rm -rf %{buildroot}%{_datadir}/doc/libsndfile
 
-%post -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lname}
 
 %check
 # ctest fails?!

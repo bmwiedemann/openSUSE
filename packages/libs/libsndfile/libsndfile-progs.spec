@@ -1,7 +1,7 @@
 #
 # spec file for package libsndfile-progs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ Source1:        https://github.com/libsndfile/libsndfile/releases/download/%{ver
 Source2:        libsndfile.keyring
 Patch1:         libsndfile-CVE-2022-33065.patch
 Patch2:         libsndfile-CVE-2024-50612.patch
+Patch3:         libsndfile-CVE-2025-56226.patch
+Patch4:         sndfile-convert-CVE-2025-56226.patch
 # PATCH-FIX-OPENSUSE
 Patch100:       sndfile-ocloexec.patch
 BuildRequires:  alsa-devel
@@ -49,7 +51,9 @@ This package includes the example programs for libsndfile.
 %autosetup -p1 -n libsndfile-%{version}
 
 %build
-%cmake -DENABLE_EXPERIMENTAL=ON -DBUILD_EXAMPLES=OFF -DCMAKE_INSTALL_DOCDIR=%{_defaultdocdir}/libsndfile
+%cmake \
+  -DBUILD_EXAMPLES=OFF \
+  -DCMAKE_INSTALL_DOCDIR=%{_defaultdocdir}/libsndfile
 %cmake_build
 
 %install
