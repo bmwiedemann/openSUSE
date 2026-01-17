@@ -1,7 +1,7 @@
 #
 # spec file for package agama-yast
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           agama-yast
-Version:        17.devel439.4e1b20660
+Version:        19.pre.devel983.96cbd286a
 Release:        0
 %define mod_name agama-yast
 %define mod_full_name %{mod_name}-%{version}
@@ -26,6 +26,9 @@ BuildRequires:  dbus-1-common
 BuildRequires:  gettext-runtime
 Requires:       dbus-1-common
 Requires:       rubygem(agama-yast)
+
+# do not build on 32bits, the dependant libsuseconnect is 64bit only
+ExcludeArch:    %ix86 s390 ppc64
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  ruby-macros >= 5
@@ -80,7 +83,6 @@ sh "%{SOURCE2}" "%{SOURCE1}"
 %{_datadir}/dbus-1/agama-services/org.opensuse.Agama*.service
 %{_unitdir}/agama.service
 %{_unitdir}/agama-dbus-monitor.service
-%{_unitdir}/agama-proxy-setup.service
 %dir %{_datadir}/agama
 %dir %{_datadir}/agama/conf.d
 %{_datadir}/agama/conf.d

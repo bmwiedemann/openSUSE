@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-agama-yast
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-agama-yast
-Version:        17.devel439.4e1b20660
+Version:        19.pre.devel983.96cbd286a
 Release:        0
 %define mod_name agama-yast
 %define mod_full_name %{mod_name}-%{version}
@@ -52,6 +52,7 @@ D-Bus service exposing some YaST features that are useful for Agama.
 
 %install
 %gem_install \
+  --no-rdoc --no-ri \
   --symlink-binaries \
   -f
 

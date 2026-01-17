@@ -497,4 +497,33 @@
   MD RAIDs are created (bsc#1253145).</comment>
     <requestid>1317454</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>ee180558e28edde4f026889765c5492d</srcmd5>
+    <version>19.pre.devel983.96cbd286a</version>
+    <time>1768657888</time>
+    <user>dimstar_suse</user>
+    <comment>- Properly disable BLS according to the selected product
+  (gh#agama-project/agama#3011).
+
+- Version 19.pre
+- Introduce the version 2 of the HTTP API (gh#agama-project/agama#2997).
+- Drop most of the services because they have been ported to Rust.
+- Adapt the storage D-Bus service API to the new approach.
+
+- Fix systemd target import from AutoYaST profiles
+  (gh#agama-project/agama#2826).
+  
+
+- Do not build on 32bit arches (like i586) and PPC64-BE,
+  the dependant libsuseconnect does not support these (bsc#1251846)
+
+- Version 18
+
+- Use a version of yast2-iscsi-client that fixes the errors
+  reported at bsc#1247711.
+
+- Do not use the D-Bus interface for localization
+  (gh#agama-project/agama#2684).</comment>
+    <requestid>1327355</requestid>
+  </revision>
 </revisionlist>
