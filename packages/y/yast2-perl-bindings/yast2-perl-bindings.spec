@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-perl-bindings
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-perl-bindings
-Version:        5.0.4
+Version:        5.0.5
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -28,13 +28,20 @@ BuildRequires:  libtool
 BuildRequires:  yast2-core-devel
 BuildRequires:  yast2-devtools >= 3.1.10
 BuildRequires:  yast2-ruby-bindings >= 1.0.0
-BuildRequires:  yast2-ycp-ui-bindings-devel
+
+# use the standard UI in openSUSE Tumbleweed or Leap
+%if 0%{?suse_version} == 1699 || 0%{?is_opensuse}
+BuildRequires:  yast2-ycp-ui-bindings-devel >= 2.16.37
+Requires:       yast2-ycp-ui-bindings       >= 2.16.37
+%else
+# use dummy UI in SLES
+Requires:       yast2-ycp-ui-bindings-dummy
+BuildRequires:  yast2-ycp-ui-bindings-dummy-devel
+%endif
 
 # ErrorNamespace
 Requires:       yast2-core >= 3.2.1
-BuildRequires:  yast2-ycp-ui-bindings-devel >= 2.16.37
 Requires:       perl = %{perl_version}
-Requires:       yast2-ycp-ui-bindings       >= 2.16.37
 %if 0%{?suse_version} < 1220
 BuildRequires:  libxcrypt-devel
 %endif

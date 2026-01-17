@@ -385,4 +385,12 @@
     <comment>submit new version 5.0.4</comment>
     <requestid>1165660</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>cc074b4c78b42de0e3024649fe77d73e</srcmd5>
+    <version>5.0.5</version>
+    <time>1768657892</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 5.0.5</comment>
+    <requestid>1327417</requestid>
+  </revision>
 </revisionlist>
