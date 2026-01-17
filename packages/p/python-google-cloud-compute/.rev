@@ -73,4 +73,17 @@
 - Update BuildRequires and Requires from setup.py (forwarded request 1312001 from glaubitz)</comment>
     <requestid>1312055</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>76794e353e47114b5368253aa4319c3c</srcmd5>
+    <version>1.42.0</version>
+    <time>1768658095</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.42.0
+  * Update Compute Engine v1 API to revision 20251210 (#1137)
+  * Update Compute Engine v1 API to revision 20251031
+- from version 1.41.0
+  * auto-enable mTLS when supported certificates are detected
+  * check Python and dependency versions in generated GAPICs (forwarded request 1327679 from glaubitz)</comment>
+    <requestid>1327702</requestid>
+  </revision>
 </revisionlist>
