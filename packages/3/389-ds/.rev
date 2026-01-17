@@ -821,4 +821,12 @@ RelEng emergencyfix</comment>
     <comment></comment>
     <requestid>1309715</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>b3fa8ee996505601afae3521465a7350</srcmd5>
+    <version>3.2.0~git7.7c8a16c6b</version>
+    <time>1768682540</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1327495</requestid>
+  </revision>
 </revisionlist>

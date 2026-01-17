@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Fri Jan 16 01:23:29 UTC 2026 - william.brown@suse.com
+
+- Update to version 3.2.0~git7.7c8a16c6b:
+  * Issue 7152 - ns-slapd fails to shutdown when deferred memberof update is in progress (#7187)
+  * Issue 6753 - Port ticket 548 test (#7101)
+  * Issue 7172 - (2nd) Index ordering mismatch after upgrade (#7180)
+  * Issue 7172 - Index ordering mismatch after upgrade (#7173)
+  * Issue 7108 - Fix shutdown crash in entry cache destruction (#7163)
+  * Issue - Revise paged result search locking
+  * Issue 7096 - During replication online total init the function idl_id_is_in_idlist is not scaling with large database (#7145)
+  * Bump version to 3.2.0
+  * Issue 7160 - Add lib389 version sync check to configure (#7165)
+  * Issue 7166 - db_config_set asserts because of dynamic list (#7167)
+  * Issue 6951 - Dynamic Certificate refresh phase 3 - Certificates switch (#7157)
+  * Issue 7155 - build_candidate_list - Database error 11 with range search (#7156)
+  * Make nss include paths platform-agnostic (#7159)
+  * Issue 6753 - Port ticket47953 test to acl/misc_test.py using DSLdapObject (#7153)
+  * Issue 6951 - Dynamic Certificate refresh phase 2 - Add/Modify/Delete support (#7140)
+  * Issue 6753 - Port ticket47970 test to sasl/regression_test.py using DSLdapObject (#7146)
+  * Issue 7150 - Compressed access log rotations skipped, accesslog-list out of sync (#7151)
+  * Issue: 7147 - entrycache_eviction_test is failing (#7148)
+  * Issue 1793 - RFE - Dynamic lists - UI and CLI updates
+  * Issue 7119 - Fix DNA shared config replication test (#7143)
+  * Issue 7081 - Repl Log Analysis - Implement data sampling with performance and timezone fixes (#7086)
+  * Issue 1793 - RFE - Implement dynamic lists
+  * Issue 7112 - dsctrl dblib bdb2mdb core dumps and won't allow conversion (#7144)
+  * Issue 7053 - Remove memberof_del_dn_from_groups from MemberOf plugin (#7064)
+  * Issue 7138 - test_cleanallruv_repl does not restart supplier3 (#7139)
+  * Issue 6753 - Port ticket47921 test to indirect_cos_test using DSLdapObject (#7134)
+  * Issue 7128 - memory corruption in alias entry plugin (#7131)
+  * Issue 7091 - Duplicate local password policy entries listed (#7092)
+  * Issue 7124 - BDB cursor race condition with transaction isolation (#7125)
+  * Issue 6951 - Dynamic Certificate refresh phase 1 - Search support (#7117)
+  * Issue 7132 - Keep alive entry updated too soon after an offline import (#7133)
+  * Issue 7135 - Not enough space for tests on GH runner (#7136)
+  * Issue 7121 - LeakSanitizer: various leaks during replication (#7122)
+  * Issue 7115 - LeakSanitizer: leak in `slapd_bind_local_user()` (#7116)
+  * Issue 7109 - AddressSanitizer: SEGV ldap/servers/slapd/csnset.c:302 in csnset_dup (#7114)
+  * Issue 7119 - Harden DNA plugin locking for shared server list operations (#7120)
+  * Issue 7084 - UI - schema - sorting attributes breaks expanded row
+  * Issue 6753 - Port ticket47910 test to logconv_test using DSLdapObject (#7098)
+  * Issue 6753 - Port ticket47920 test to ldap_controls_test using DSLdapObject (#7103)
+  * Issue 7007 - Improve paged result search locking
+  * Issue 7041 - Add WebUI test for group member management (#7111)
+  * Issue 3555 - UI - Fix audit issue with npm - glob (#7107)
+  * Issue 7089 - Fix dsconf certificate list (#7090)
+  * Issue 7076, 6992, 6784, 6214 - Fix CI test failures (#7077)
+  * Bump js-yaml from 4.1.0 to 4.1.1 in /src/cockpit/389-console (#7097)
+  * Issue 7069 - Fix error reporting in HAProxy trusted IP parsing (#7094)
+  * Issue 7049 - RetroCL plugin generates invalid LDIF
+  * Issue 7055 - Online initialization of consumers fails with error -23 (#7075)
+  * Issue 6753 - Remove ticket 47900 test (#7087)
+  * Issue 6753 - Port ticket 49008 test (#7080)
+  * Issue 7042 - Enable global_backend_lock when memberofallbackend is enabled (#7043)
+  * Issue 7078 - audit json logging does not encode binary values
+  * Issue 7069 - Add Subnet/CIDR Support for HAProxy Trusted IPs (#7070)
+  * Issue 7056 - DSBLE0007 doesn't generate remediation steps for missing indexes
+  * Issue 6660 - CLI, UI - Improve replication log analyzer usability (#7062)
+  * Issue 7065 - A search filter containing a non normalized DN assertion does not return matching entries (#7068)
+  * Issue 7071 - search filter (&(cn:dn:=groups)) no longer returns results
+  * Issue 7073 - Add NDN cache size configuration and enforcement tests (#7074)
+  * Issue 6753 - Removing ticket 47871 test and porting to DSLdapObject (#7045)
+  * Issue 7041 - CLI/UI - memberOf - no way to add/remove specific group filters
+  * Issue 6753 - Port ticket 48228 test (#7067)
+  * Issue 7029 - Add test case to measure ndn cache performance impact (#7030)
+  * Issue 7061 - CLI/UI - Improve error messages for dsconf localpwp list
+  * Issue 7059 - UI - unable to upload pem file
+  * Issue 7032 - The new ipahealthcheck test ipahealthcheck.ds.backends.BackendsCheck raises CRITICAL issue (#7036)
+  * Issue 7047 - MemberOf plugin logs null attribute name on fixup task completion (#7048)
+  * Issue 7044 - RFE - index sudoHost by default (#7046)
+  * Issue 6846 - Attribute uniqueness is not enforced with modrdn (#7026)
+  * Issue 6784 - Support of Entry cache pinned entries (#6785)
+  * Issue 6979 - Improve the way to detect asynchronous operations in the access logs (#6980)
+  * Issue 6753 - Port ticket 47931 test (#7038)
+  * Issue 7035 - RFE - memberOf - adding scoping for specific groups
+  * Issue - CLI/UI - Add option to delete all replication conflict entries
+  * Issue 7033 - lib389 -  basic plugin status not in JSON
+
+-------------------------------------------------------------------
 Wed Oct 08 01:25:10 UTC 2025 - william.brown@suse.com
 
 - Move librobdb.so from devel to main package
