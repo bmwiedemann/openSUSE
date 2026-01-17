@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 17 07:47:40 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20260116:
+  * Add support for Baofeng BF-F8HP PRO firmware v0.52
+  * BTech UV-25X2_G2 lengthen timeout when downloading
+  * ha1g - Add bank support
+  * anytone779: support sql_mode when setting
+
+-------------------------------------------------------------------
 Sat Jan 10 17:37:43 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20260109:
