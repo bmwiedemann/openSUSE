@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Jan 16 06:14:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.4.4:
+  * Bug Fixes
+    - 5caa034: fix(go): update github.com/sirupsen/logrus ( v1.9.3
+      → v1.9.4 ) (@mr-borboto[bot])
+  * CI/CD
+    - 71bf269: ci(github-action): update renovatebot/github-action
+      ( v44.2.0 → v44.2.1 ) (@mr-borboto[bot])
+    - 5b5a7f1: ci(github-action): update renovatebot/github-action
+      ( v44.2.1 → v44.2.2 ) (@mr-borboto[bot])
+    - 071d18e: ci(github-action): update renovatebot/github-action
+      ( v44.2.2 → v44.2.3 ) (@mr-borboto[bot])
+    - d335b91: ci(github-action): update renovatebot/github-action
+      ( v44.2.3 → v44.2.4 ) (@mr-borboto[bot])
+    - f0fd543: ci: remove custom codeql workflow -> will use
+      "default" one? (@mircea-pavel-anton)
+  * Code Style
+    - db5a10f: style: fix actionlint (@mircea-pavel-anton)
+  * Chores
+    - 04b43e5: chore(goreleaser): fix changelog headers
+      (@mircea-pavel-anton)
+    - 987723a: chore(mise): update aqua:golangci/golangci-lint (
+      2.7.2 → 2.8.0 ) (@mr-borboto[bot])
+    - 1251944: chore(mise): update aqua:goreleaser/goreleaser (
+      2.13.1 → 2.13.2 ) (@mr-borboto[bot])
+    - 3cdb09c: chore(mise): update aqua:goreleaser/goreleaser (
+      2.13.2 → 2.13.3 ) (@mr-borboto[bot])
+
+-------------------------------------------------------------------
 Mon Jan 12 06:35:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.4.3:
