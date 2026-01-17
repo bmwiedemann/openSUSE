@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 15 13:58:30 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- update to version 5.2.2
+  * Support for Python 3.14 was added.
+  * Removed vhost_combined and vhost_common log formats from included
+    Apache configuration file.
+
+-------------------------------------------------------------------
 Tue Oct 14 08:03:16 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - update to version 5.1.0
