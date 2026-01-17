@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Fri Jan 16 07:07:21 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 3.1.0
+  - accumulate to join
+  - Add community scripts
+  - add missing array headers
+  - add missing headers from headers
+  - Align transcoding flag documentation and code
+  - Avoid string_view conversion
+  - Bump actions/cache from 4 to 5
+  - Bump actions/checkout from 5 to 6
+  - Bump actions/upload-artifact from 5 to 6
+  - Bump js-yaml from 4.1.0 to 4.1.1 in /gerbera-web
+  - Bump min-document from 2.19.0 to 2.19.2 in /gerbera-web
+  - CI: Add debug docker image
+  - CI: Add test to docker
+  - Clean up obsolete includes
+  - don't use references for node()
+  - enable i2i for HAVE_CURL
+  - Extract default database configuration strings
+  - fix compilation under OmniOS
+  - fix definition of client-without-flag
+  - fix edit for container
+  - fix error handling in string_converter
+  - fix sortKey for extra long numbers
+  - fix typos in documentation
+  - Fix Wavpack context
+  - Fix Wavpack importer
+  - Gerbera welcomes 2026
+  - github CI: add loongarch64
+  - header removals and destructor fix.
+  - Improve date parsing
+  - improve Samsung TVs quirks
+  - JS: allow disabling boxes in initals audio layout
+  - More CI checks
+  - More FFMPeg Resource Information
+  - more pugi forward declarations
+  - Negation of client-flags
+  - New import scripts for images and videos
+  - Refactor Quirks to enum
+  - remove unique_ptr from std::vector
+  - remove unique_ptr from xml_document
+  - remove various string_view data usages
+  - replaced lock_guard with scoped_lock
+  - samsung bookmark save/restore
+  - simplify using quirks
+  - transcoding: filtering of clients without flags
+  - UI: Add ZIP download of container
+  - Update Alpine to v3.23
+  - Update Conan integration
+  - Update ffmpegthumbnailer to 2.2.4
+  - Update ffmpegthumbnailer to 2.3.0
+  - Update screenshots
+  - Update spdlog to 1.17.0
+  - use correct name for boxlayout enabled years
+  - use more fmt::join
+  - use optional instead of unique_ptr
+  - use Quirk::DCM10 flag
+
+-------------------------------------------------------------------
 Sat Nov  8 21:31:49 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to 3.0.0

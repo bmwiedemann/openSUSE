@@ -1,7 +1,7 @@
 #
 # spec file for package gerbera
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global force_gcc_version 12
 %endif
 Name:           gerbera
-Version:        3.0.0
+Version:        3.1.0
 Release:        0
 Summary:        UPnP Media Server
 License:        GPL-2.0-only
@@ -132,6 +132,7 @@ sed -i -e '/test_server/d' test/CMakeLists.txt
 %if %{pkg_vcmp libpqxx-devel < 7.10.3}
   -DWITH_PGSQL=OFF \
 %endif
+  -DWITH_ZIP=OFF \
   -DWITH_TESTS=ON
 %cmake_build
 
