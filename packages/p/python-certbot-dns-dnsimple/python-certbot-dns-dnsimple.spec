@@ -1,7 +1,7 @@
 #
 # spec file for package python-certbot-dns-dnsimple
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-certbot-dns-dnsimple
-Version:        5.1.0
+Version:        5.2.2
 Release:        0
 Summary:        DNSimple Authenticator plugin for Certbot
 License:        Apache-2.0
