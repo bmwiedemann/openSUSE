@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 13 16:39:31 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Move config files in systemd tmpfiles dir for immutable mode
+  (jsc#PED-14747)
+  * Add distribution-registry.tmpfiles
+
+-------------------------------------------------------------------
 Mon Jun 30 13:34:28 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.0 (jsc#PED-11728):

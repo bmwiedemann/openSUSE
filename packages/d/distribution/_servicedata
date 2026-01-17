@@ -1,6 +1,4 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/distribution/distribution.git</param>
-              <param name="changesrevision">b5ca020cfbe998e5af3457fda087444cf5116496</param></service><service name="tar_scm">
-                <param name="url">https://github.com/docker/distribution.git</param>
-              <param name="changesrevision">9ed95e7365224025ee89365e12cf128e1f1bf965</param></service></servicedata>
+              <param name="changesrevision">b5ca020cfbe998e5af3457fda087444cf5116496</param></service></servicedata>

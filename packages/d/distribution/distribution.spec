@@ -1,7 +1,7 @@
 #
 # spec file for package distribution
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ URL:            https://github.com/distribution/distribution
 Source0:        distribution-%{version}.tar.zst
 Source1:        registry-configuration.yml
 Source2:        registry.service
+Source3:        %{name}-registry.tmpfiles
 Source4:        README-registry.SUSE
 Source10:       system-user-registry.conf
 BuildRequires:  golang-packaging
@@ -94,11 +95,18 @@ install -Dd -m 0755  %{buildroot}%{_sbindir}
 install -D  -m 0644  %{SOURCE2} %{buildroot}%{_unitdir}/registry.service
 ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rcregistry
 
+#
+# systemd tmpfiles for transactional-update
+#
+mkdir -p %{buildroot}%{_tmpfilesdir}
+install -m 0644 %{SOURCE3} %{buildroot}%{_tmpfilesdir}/%{name}-registry.conf
+
 %pre registry -f registry.pre
 %service_add_pre registry.service
 
 %post registry
 %service_add_post registry.service
+%tmpfiles_create %{name}-registry.conf
 
 %preun registry
 %service_del_preun registry.service
@@ -117,6 +125,6 @@ ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rcregistry
 %{_sysusersdir}/system-user-registry.conf
 %config %{_sysconfdir}/registry
 %config(noreplace) %{_sysconfdir}/registry/config.yml
-%attr(-,registry,registry) %{_localstatedir}/lib/docker-registry
+%{_tmpfilesdir}/%{name}-registry.conf
 
 %changelog
