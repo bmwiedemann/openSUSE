@@ -1,7 +1,7 @@
-Index: micro-2.0.14/Makefile
+Index: micro-2.0.15/Makefile
 ===================================================================
 --- micro-2.0.14.orig/Makefile
-+++ micro-2.0.14/Makefile
++++ micro-2.0.15/Makefile
 @@ -1,9 +1,9 @@
  .PHONY: runtime build generate build-quick
  

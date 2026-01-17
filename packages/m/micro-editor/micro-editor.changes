@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jan 15 13:04:30 UTC 2026 - Gabriel Bazzotti <gabriel.bazzotti@suse.com>
+
+- Update to version 2.0.15:
+  * truecolor (supersedes the MICRO_TRUECOLOR environment variable)
+  * showchars (deprecates indentchar)
+  * lockbindings for completely disallowing plugins to modify keybindings
+  * helpsplit for changing default split type for the help command
+  * pageoverlap for setting number of lines kept during page up/page down
+  * Added FirstTab, LastTab, FirstSplit and LastSplit commands
+  * SkipMultiCursorBack as a counterpart to SkipMultiCursor
+  * CursorToViewTop, CursorToViewCenter, CursorToViewBottom 
+  * Duplicate for duplicating the selection only, not the whole line
+  * Plugins never write to settings.json or bindings.json anymore
+  * Add onBufferOptionChanged callback 
+  * Add SpawnCursorAtLoc() 
+  * Expose bufpane's DoubleClick and TripleClick to plugins
+  * Pass mouse info to {on,pre}MouseXXX callbacks 
+  * Support goto statement from Lua 5.2 
+  * Various Syntax Highlighting improvements
+  
+-------------------------------------------------------------------
 Mon Oct 13 14:43:00 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 2.0.14:

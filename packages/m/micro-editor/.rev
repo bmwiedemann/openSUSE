@@ -913,4 +913,12 @@
   * Fix various crashes (forwarded request 1311162 from amanzini)</comment>
     <requestid>1311188</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>dc2d89836812f41d47bbe41f7221fe2a</srcmd5>
+    <version>2.0.15</version>
+    <time>1768657958</time>
+    <user>dimstar_suse</user>
+    <comment>Update to fix issues commented on the last SR, adds a new line to the .changes file latest-entry and removes _build* files</comment>
+    <requestid>1327446</requestid>
+  </revision>
 </revisionlist>

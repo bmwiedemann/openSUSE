@@ -20,7 +20,7 @@
 %global compiledate     Oct\ 13,\ 2025
 
 Name:           micro-editor
-Version:        2.0.14
+Version:        2.0.15
 Release:        0
 License:        MIT
 Summary:        Micro is a terminal-based text editor that aims to be easy to use and intuitive
@@ -28,9 +28,10 @@ URL:            https://github.com/zyedidia/micro
 Group:          Productivity/Text/Editors
 Source0:        micro-%{version}.tar.gz
 Source1:        vendor.tar.gz
-Patch0:         micro-editor-Makefile.patch
+Source2:        micro-editor-Makefile.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  golang-packaging
+BuildRequires:  git-core
 BuildRequires:  golang(API) >= 1.15
 
 %description
@@ -47,22 +48,22 @@ or because you need to (over ssh).
 %prep
 %setup -q -n micro-%{version}
 %setup -q -T -D -a 1 -n micro-%{version}
-%patch -P 0 -p1
+rm -rf vendor
+tar -xf %{SOURCE1}
 
 %build
-
-export EXTRAFLAGS="-mod=vendor"
+export GOFLAGS="-mod=vendor"
 
 %ifnarch ppc64 ppc64le
-    export EXTRAFLAGS="${EXTRAFLAGS} -buildmode=pie"
+    export GOFLAGS="${GOFLAGS} -buildmode=pie"
 %endif
 
 export DATE="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%s)} --iso-8601)"
 export HASH="%{shortcommit}"
 export VERSION="%{version}"
 
-%make_build generate
-%make_build build-quick
+make build VERSION="2.0.15" HASH="rpmbuild" DATE="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+
 
 %install
 export GOPATH="%{_builddir}/go:$GOPATH"
