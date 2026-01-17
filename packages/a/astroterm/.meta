@@ -2,5 +2,6 @@
   <title>Terminal-based planetarium</title>
   <description>A planetarium for your terminal! Explore stars, planets, constellations, and
 more, all rendered right in the command line - no telescope required.</description>
+  <devel project="utilities" package="astroterm"/>
   <url>https://github.com/da-luce/astroterm</url>
 </package>

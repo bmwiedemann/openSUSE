@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan 17 15:34:34 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.0.10:
+  * fix a stack buffer overflow in constellation table
+
+-------------------------------------------------------------------
 Thu Dec  4 21:13:01 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - initial version 1.0.9
