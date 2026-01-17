@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jan 15 16:47:44 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.12.0
+  * Fixed CVE-2025-11561 by disabling an2ln in the default
+    implicitly created Kerberos configuration snippet, typically in
+    /var/lib/sss/pubconf/krb5.include.d/localauth_plugin.
+  * SSSD now allows using machine credentials from a trusted AD
+    domain or Kerberos realm if no suitable domain-local
+    credentials are available.
+  * SSSD now supports authentication mechanism selection through
+    PAM using a JSON-based protocol. This feature enables
+    passwordless authentication mechanisms in GUI login
+    environments that support the protocol (e.g. GNOME 50).
+  * The generic SSSD LDAP provider (id_provider = ldap) now
+    supports fetching subid ranges, a feature previously supported
+    only by the IPA provider.
+  * The default value of the `session_provider` option was changed
+    to `none` (i.e. disabled) no matter what id_provider is used.
+- Delete 0002-krb5-disable-Kerberos-localauth-an2ln-plugin-for-AD-.patch
+  (merged)
+
+-------------------------------------------------------------------
 Tue Nov 18 09:38:39 UTC 2025 - Samuel Cabrero <scabrero@suse.de>
 
 - Disable Kerberos localauth an2ln plugin for AD; (CVE-2025-11561);

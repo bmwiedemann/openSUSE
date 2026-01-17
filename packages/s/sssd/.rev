@@ -1276,4 +1276,12 @@ goes in line with 946250</comment>
     <comment>- Disable Kerberos localauth an2ln plugin for AD; (CVE-2025-11561);</comment>
     <requestid>1318458</requestid>
   </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>9ad962d836bb6f5d2d58fe743663e6e2</srcmd5>
+    <version>2.12.0</version>
+    <time>1768682536</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.12.0</comment>
+    <requestid>1327459</requestid>
+  </revision>
 </revisionlist>

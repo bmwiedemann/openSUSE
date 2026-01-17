@@ -1,7 +1,7 @@
 #
 # spec file for package sssd
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,20 @@
 
 
 Name:           sssd
-Version:        2.11.1
+Version:        2.12.0
 Release:        0
 Summary:        System Security Services Daemon
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          System/Daemons
 URL:            https://github.com/SSSD/sssd
 #Git-Clone:	https://github.com/SSSD/sssd
+#Changelog:     https://sssd.io/release-notes/sssd-2.12.0.html
 Source:         https://github.com/SSSD/sssd/releases/download/%version/%name-%version.tar.gz
 Source2:        https://github.com/SSSD/sssd/releases/download/%version/%name-%version.tar.gz.asc
 Source3:        baselibs.conf
 Source5:        %name.keyring
 Source6:        %name-rpmlintrc
 Patch1:         0001-TOOL-Fix-build-parameter-name-omitted.patch
-Patch2:         0002-krb5-disable-Kerberos-localauth-an2ln-plugin-for-AD-.patch
 Patch11:        krb-noversion.diff
 Patch12:        harden_sssd-ifp.service.patch
 Patch13:        harden_sssd-kcm.service.patch
@@ -48,17 +48,17 @@ BuildRequires:  libcmocka-devel
 %if 0%{?suse_version} >= 1600
 BuildRequires:  libsubid-devel
 %endif
+BuildRequires:  libopenssl-3-devel
 BuildRequires:  libtool
 BuildRequires:  libunistring-devel
 BuildRequires:  libxml2-tools
 BuildRequires:  libxslt-tools
-BuildRequires:  libopenssl-3-devel
 BuildRequires:  nss_wrapper
 BuildRequires:  openldap2-devel
 BuildRequires:  pam-devel
 BuildRequires:  pkg-config >= 0.21
-BuildRequires:  python3-wheel
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  uid_wrapper
@@ -125,7 +125,6 @@ Obsoletes:      sssd-common < %version-%release
 %define keytabdir	%sssdstatedir/keytabs
 %define mcpath		%sssdstatedir/mc
 %define ldbdir %(pkg-config ldb --variable=modulesdir)
-
 
 %if 0%{?suse_version} >= 1600
 %define permissions_path %_datadir/permissions/permissions.d/
@@ -409,17 +408,17 @@ autoreconf -fiv
 	--with-pid-path="%_rundir/sssd" \
 	--enable-pammoddir="%_pam_moduledir" \
 	--with-ldb-lib-dir="%ldbdir" \
-	--with-os=suse \
 	--disable-ldb-version-check \
 	--without-python2-bindings \
 	--without-oidc-child \
 	--with-sssd-user="%sssd_user" \
 %if 0%{?suse_version} >= 1600
 	--with-selinux=yes \
-	--with-subid
+	--with-subid \
 %else
-	--with-selinux=no
+	--with-selinux=no \
 %endif
+	--with-os=suse
 %make_build all
 
 %install
@@ -529,7 +528,6 @@ if [ "$1" = "0" ] && [ -x "%_sbindir/pam-config" ]; then
 fi
 # del_postun includes a try-restart
 %service_del_postun sssd.service sssd-autofs.service sssd-autofs.socket sssd-nss.service sssd-nss.socket sssd-pac.service sssd-pac.socket sssd-pam.service sssd-pam.socket sssd-ssh.service sssd-ssh.socket sssd-sudo.service sssd-sudo.socket
-
 
 %ldconfig_scriptlets -n libsss_certmap0
 %ldconfig_scriptlets -n libipa_hbac0
@@ -663,6 +661,7 @@ fi
 %_mandir/man5/sssd-ldap-attributes.5*
 %_mandir/man5/sssd-session-recording.5*
 %_mandir/man5/sssd-simple.5*
+%_mandir/*/man5/sssd-simple.5*
 %_mandir/man5/sssd-sudo.5*
 %_mandir/man5/sssd.conf.5*
 %_mandir/man8/sssd.8*
@@ -752,6 +751,7 @@ fi
 %exclude %_libdir/sssd/libsss_idp.so
 %exclude %_libdir/%name/modules/sssd_krb5_idp_plugin.so
 %exclude %_mandir/man5/sssd-idp*
+%exclude %_mandir/*/man5/sssd-idp*
 
 %files ad
 %dir %_libdir/%name/
