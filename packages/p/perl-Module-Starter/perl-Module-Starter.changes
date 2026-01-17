@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jan 11 05:44:49 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.820.0 (1.82)
+   see /usr/share/doc/packages/perl-Module-Starter/Changes
+
+  1.82      2026-01-10 21:22:39 CET
+          * Fix compilations on 5.12 and earlier. (Grinnz)
+  1.81      2026-01-09 21:41:05 CET
+          * Fixed breakage from 1.80.
+          * Try to resolve wild dzil auto-version.
+  1.80      2026-01-09 11:39:15 CET
+          * Fixed problems with the multi-author feature in last release.
+            (Thanks, @ryoskzypu!)
+
+-------------------------------------------------------------------
 Sun Jan  4 05:44:05 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.790.0 (1.79)

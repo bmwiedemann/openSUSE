@@ -18,10 +18,10 @@
 
 %define cpan_name Module-Starter
 Name:           perl-Module-Starter
-Version:        1.790.0
+Version:        1.820.0
 Release:        0
-# 1.79 -> normalize -> 1.790.0
-%define cpan_version 1.79
+# 1.82 -> normalize -> 1.820.0
+%define cpan_version 1.82
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Simple starter kit for any module
 URL:            https://metacpan.org/release/%{cpan_name}

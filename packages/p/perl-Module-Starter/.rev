@@ -142,4 +142,21 @@
    see /usr/share/doc/packages/perl-Module-Starter/Changes</comment>
     <requestid>1326995</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c62a5af9cf0637b8e2c13ec74d65c9ed</srcmd5>
+    <version>1.820.0</version>
+    <time>1768658114</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.820.0 (1.82)
+   see /usr/share/doc/packages/perl-Module-Starter/Changes
+  1.82      2026-01-10 21:22:39 CET
+          * Fix compilations on 5.12 and earlier. (Grinnz)
+  1.81      2026-01-09 21:41:05 CET
+          * Fixed breakage from 1.80.
+          * Try to resolve wild dzil auto-version.
+  1.80      2026-01-09 11:39:15 CET
+          * Fixed problems with the multi-author feature in last release.
+            (Thanks, @ryoskzypu!)</comment>
+    <requestid>1327636</requestid>
+  </revision>
 </revisionlist>
