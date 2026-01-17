@@ -1,7 +1,7 @@
 #
 # spec file for package archmage
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ Requires:       python-beautifulsoup4
 Requires:       python-pychm
 Requires:       python-sgmllib3k
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module beautifulsoup4}
@@ -40,7 +40,7 @@ BuildRequires:  %{python_module pychm}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sgmllib3k}
 # /SECTION
-%ifpython38
+%if "%{python_flavor}" == "%{primary_python}"
 Provides:       archmage = %{version}
 Obsoletes:      archmage < %{version}
 %endif
