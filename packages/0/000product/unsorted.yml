@@ -11153,9 +11153,9 @@ unsorted:
   - libGIMPACTUtils3_17 
   - libGLC-devel 
   - libGLC0 
-  - libGLEW2_2 
-  - libGLEW2_2-32bit 
-  - libGLEW_EGL2_2 
+  - libGLEW2_3 
+  - libGLEW2_3-32bit 
+  - libGLEW_EGL2_3 
   - libGLU1-32bit 
   - libGLw-devel 
   - libGLw1 
@@ -16302,7 +16302,7 @@ unsorted:
   - libsolv-devel 
   - libsolv-devel-static 
   - libsolv-tools 
-  - libsonivox3 
+  - libsonivox4 
   - libsord-0-0-32bit 
   - libsoundio-devel 
   - libsoundio2 
@@ -37832,6 +37832,7 @@ unsorted:
   - sonatype-oss-parent 
   - sonatype-plugins-parent 
   - sonic-visualiser 
+  - sonivox 
   - sonivox-devel 
   - sonnet-devel 
   - sonnet-voikko 
