@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Sat Jan 17 19:05:15 UTC 2026 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Update to version 1.0.0:
+  * Version bump to 1.0.0
+  * Document zypp history filters
+  * Wider columns in zypp history
+  * zypp history filters are working
+  * New classes for zypp history filters
+  * Use [OK] as the default dialog button
+  * Suppress Qt bullshit messages that keep flooding the log
+  * Add zypp history filter dialog
+  * Add infrastructure for zypp history filters
+  * Extend zypp history browser time line to today if the last activity date was just 10 or less days ago
+  * Zypp history error handling
+  * Fix (+/-) count conditions
+  * Show (+/-) count in zypp history only for nontrivial transactions
+  * Reasonable column widths in zypp history browser
+  * Initial selection in zypp history browser
+  * Added new zypp history browser to features in README.md
+  * Show (+/-) count for commands in zypp history
+  * Show --zypp-history in usage message as normal, not debugging option
+  * Use standard columns in zypp history only for packages and patches
+  * Fixed column spanning for parent items
+  * Working zypp history browser navigation
+  * Populated history events tree
+  * First populated timeline (navigation) tree for the zypp history
+  * First rough parsing tests ok
+  * Add Ctrl+Shift+H shortcut to show zypp history
+  * First new (still empty) ZyppHistoryBrowser, drop old YQPkgHistoryDialog
+  * Code reorg + consistency
+  * Handle incomplete zypp history files
+  * New designer form for the zypp history browser
+  * More zypp history test data
+  * Add zypp history test data
+  * Factor out ZyppHistoryEvents
+  * Use a namespace for better organization
+  * Lots of boring zypp history parser code
+  * Parse zypp history command events
+  * Filling ZyppHistoryParser with life
+  * Filling ZyppHistoryParser with life
+  * New class ZyppHistoryParser
+  * New class ZyppHistory
+  * Handle command line options with additional argument
+  * Make sure at least one "search in" check box is checked when searching
+  * Support searching in RPM recommends, too
+  * Added tooltip for auto search default mode button
+  * Right-align auto search default mode button
+  * Enable switching the default auto search mode between "Starts With" and "Contains"
+  * New icons
+  * Allow no parent
+  * Unneeded includes
+  * Fixed script she-bang
+  * Class rename MyrlynTranslator -> Translator
+  * Generalize MyrlynTranslator
+  * Re-imported latest QDirStat logger
+  * Show special resolver modes (up/dup) in status line
+  * Silenced left-over debug output
+  * Support using ~/.config/openSUSE/myrlyn-sudo.conf
+  * Fixed typo in .desktop file
+  * Added Video LAN community repo (also serves libdvdcss)
+  * Log the Qt environment
+  * More HiDPI hints in .desktop files
+  * Ensure the popup is centered
+  * Commented out unavailable/redundant community repos on 16.x
+  * No progress bar during post-transaction scripts
+  * Actually use myrlyn-run0 in myrlyn-run0.desktop
+  * Added systemd run0 support (#122 by @zeusgoose)
+  * Updated docs: Stability and maturity
+  * Added myrlyn-stable for Leap 15.6 from OBS home:shundhammer to downloads
+
+-------------------------------------------------------------------
 Mon Oct 13 09:52:28 UTC 2025 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Update to version 0.9.9:

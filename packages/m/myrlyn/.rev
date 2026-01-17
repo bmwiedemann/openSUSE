@@ -132,4 +132,41 @@
   * Don't show service filter view by default</comment>
     <requestid>1311099</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2391090f3a05c8f19c9de9e191958246</srcmd5>
+    <version>1.0.0</version>
+    <time>1768682580</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.0:
+  * Version bump to 1.0.0
+  * Document zypp history filters
+  * Wider columns in zypp history
+  * zypp history filters are working
+  * New classes for zypp history filters
+  * Use [OK] as the default dialog button
+  * Suppress Qt bullshit messages that keep flooding the log
+  * Add zypp history filter dialog
+  * Add infrastructure for zypp history filters
+  * Extend zypp history browser time line to today if the last activity date was just 10 or less days ago
+  * Zypp history error handling
+  * Fix (+/-) count conditions
+  * Show (+/-) count in zypp history only for nontrivial transactions
+  * Reasonable column widths in zypp history browser
+  * Initial selection in zypp history browser
+  * Added new zypp history browser to features in README.md
+  * Show (+/-) count for commands in zypp history
+  * Show --zypp-history in usage message as normal, not debugging option
+  * Use standard columns in zypp history only for packages and patches
+  * Fixed column spanning for parent items
+  * Working zypp history browser navigation
+  * Populated history events tree
+  * First populated timeline (navigation) tree for the zypp history
+  * First rough parsing tests ok
+  * Add Ctrl+Shift+H shortcut to show zypp history
+  * First new (still empty) ZyppHistoryBrowser, drop old YQPkgHistoryDialog
+  * Code reorg + consistency
+  * Handle incomplete zypp history files
+  * New designer form for the zypp history browser</comment>
+    <requestid>1327892</requestid>
+  </revision>
 </revisionlist>
