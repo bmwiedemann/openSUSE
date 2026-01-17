@@ -1,7 +1,54 @@
 -------------------------------------------------------------------
+Wed Jan 14 23:27:16 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Reorganize the user interface:
+  - The new interface is built around the new overview page.
+  - Remove the sidebar and the menu.
+  - Bring back the installation progress page.
+- Adapt to the new API to handle users and authentication
+  configuration.
+- Extend the overview with information about authentication
+  and registration.
+
+-------------------------------------------------------------------
+Fri Jan  9 14:43:59 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Version 19.pre
+- Adapt to the version 2 of the HTTP API (gh#agama-project/agama#2997).
+- Introduce a new overview page.
+- Missing pieces:
+  - Installation progress.
+  - Add-ons registration.
+  - iSCSI, DASD and zFCP support.
+
+-------------------------------------------------------------------
+Tue Dec 16 08:32:09 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
+
+- Added a new TranslatedString type to require a translated string
+  in the code, this should lower the risk of missing translations
+  (gh#agama-project/agama#2928)
+
+-------------------------------------------------------------------
 Fri Nov 21 08:17:06 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
 
 - Fixed missing translations (error cases for software repos, iSCSI, DASD; bsc#1250059)
+
+-------------------------------------------------------------------
+Thu Nov 13 13:30:58 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
+
+- Do not build on 32bit arches (like i586) and PPC64-BE,
+  the dependant libsuseconnect does not support these (bsc#1251846)
+
+-------------------------------------------------------------------
+Wed Nov 12 15:42:28 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Version 18
+
+-------------------------------------------------------------------
+Tue Oct 28 16:34:22 UTC 2025 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Rearrange the information in the storage page
+  (gh#agama-project/agama#2767).
 
 -------------------------------------------------------------------
 Mon Oct 27 15:51:48 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
@@ -14,11 +61,17 @@ Fri Oct 17 12:30:56 UTC 2025 - David Diaz <dgonzalez@suse.com>
 
 - Preserve installer options values after successful submission
   (bsc#1249636).
-  
+
 -------------------------------------------------------------------
 Tue Oct 14 14:01:15 UTC 2025 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Fixed the check about which DASDs can be formatted (bsc#1243795).
+
+-------------------------------------------------------------------
+Thu Sep 18 08:57:11 UTC 2025 - David Diaz <dgonzalez@suse.com>
+
+- Preserve installer options values after successful submission
+  (bsc#1249636).
 
 -------------------------------------------------------------------
 Tue Sep 16 09:20:40 UTC 2025 - David Diaz <dgonzalez@suse.com>
@@ -32,6 +85,12 @@ Fri Sep 12 08:14:28 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
 - Update translations (bsc#1249378)
 
 -------------------------------------------------------------------
+Tue Sep 2 08:24:38 UTC 2025 - David Diaz <dgonzalez@suse.com>
+
+- Allow sorting devices by name or size in storage selector
+  (gh#agama-project/agama#2672).
+
+-------------------------------------------------------------------
 Mon Sep  1 18:22:38 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - The Chinese languages do not include the territory (bsc#1248826).
@@ -41,6 +100,18 @@ Thu Aug 28 05:26:38 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Report the underlying problem for the "load.retry" question
   (related to bsc#1248779).
+
+-------------------------------------------------------------------
+Wed Aug 27 08:39:36 UTC 2025 - Knut Anderssen <kanderssen@suse.com>
+
+- Invalidate zFCP controllers query after some controller change
+  is notified (bsc#1247445).
+
+-------------------------------------------------------------------
+Tue Aug 26 07:23:00 UTC 2025 - David Diaz <dgonzalez@suse.com>
+
+- Updated Node.js dependencies to their latest available versions
+  as of 2025-08-25 (gh#agama-project/agama#2440).
 
 -------------------------------------------------------------------
 Wed Aug 20 10:27:07 UTC 2025 - David Diaz <dgonzalez@suse.com>
@@ -292,7 +363,7 @@ Thu Jun  5 11:26:05 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
 Thu Jun  5 10:35:40 UTC 2025 - David Diaz <dgonzalez@suse.com>
 
 - Updated Node.js dependencies to their latest available versions
-  as of 2024-06-03 (gh#agama-project/agama#2440).
+  as of 2025-06-03 (gh#agama-project/agama#2440).
 
 -------------------------------------------------------------------
 Mon Jun  2 22:29:03 UTC 2025 - David Diaz <dgonzalez@suse.com>

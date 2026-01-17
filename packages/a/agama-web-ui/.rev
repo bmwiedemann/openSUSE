@@ -501,4 +501,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1320745</requestid>
   </revision>
+  <revision rev="31" vrev="31">
+    <srcmd5>460ad8fa8f5aab1608e28b16ab6d21d4</srcmd5>
+    <version>0</version>
+    <time>1768657890</time>
+    <user>dimstar_suse</user>
+    <comment>- Reorganize the user interface:
+  - The new interface is built around the new overview page.
+  - Remove the sidebar and the menu.
+  - Bring back the installation progress page.
+- Adapt to the new API to handle users and authentication
+  configuration.
+- Extend the overview with information about authentication
+  and registration.
+
+- Version 19.pre
+- Adapt to the version 2 of the HTTP API (gh#agama-project/agama#2997).
+- Introduce a new overview page.
+- Missing pieces:
+  - Installation progress.
+  - Add-ons registration.
+  - iSCSI, DASD and zFCP support.
+
+- Added a new TranslatedString type to require a translated string
+  in the code, this should lower the risk of missing translations
+  (gh#agama-project/agama#2928)
+
+- Do not build on 32bit arches (like i586) and PPC64-BE,
+  the dependant libsuseconnect does not support these (bsc#1251846)
+
+- Version 18
+
+- Rearrange the information in the storage page
+  (gh#agama-project/agama#2767).
+
+- Preserve installer options values after successful submission</comment>
+    <requestid>1327357</requestid>
+  </revision>
 </revisionlist>
