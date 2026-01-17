@@ -3360,4 +3360,12 @@
     <comment>submit new version 5.0.10</comment>
     <requestid>1321155</requestid>
   </revision>
+  <revision rev="449" vrev="1">
+    <srcmd5>5e41e5286308b2d960e83185df151731</srcmd5>
+    <version>5.0.11</version>
+    <time>1768657893</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 5.0.11</comment>
+    <requestid>1327419</requestid>
+  </revision>
 </revisionlist>
