@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 16 05:58:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.38.0:
+  * build(deps): bump chainguard.dev/apko in the gomod group
+    (#2298)
+  * build(deps): bump the gomod group with 2 updates (#2297)
+  * feat: add QEMU_ADDITIONAL_PACKAGES environment variable (#2266)
+
+-------------------------------------------------------------------
 Wed Jan 14 06:58:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.37.5:
