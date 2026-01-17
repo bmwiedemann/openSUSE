@@ -131,4 +131,15 @@
 </comment>
     <requestid>1325784</requestid>
   </revision>
+  <revision rev="15" vrev="9">
+    <srcmd5>c7e08f9da94067a9c4f20e6787b847c3</srcmd5>
+    <version>20230214</version>
+    <time>1768682534</time>
+    <user>dimstar_suse</user>
+    <comment>- Re-number role/sub-distro preset to 87
+  (SUSE default is 95, openSUSE sub is 90, display managers
+  will be 85 - systemd counts down regardless of directory)
+</comment>
+    <requestid>1327423</requestid>
+  </revision>
 </revisionlist>
