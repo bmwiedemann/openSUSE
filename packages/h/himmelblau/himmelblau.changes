@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Jan 15 21:22:11 UTC 2026 - David Mulder <david.mulder@suse.com>
+
+- Update to version 2.3.1+git0.2418ec2:
+  * Version 2.3.1
+  * Remove references to qrcodegen (these are 3.x features)
+  * QR Greeter compatibility for old GNOME
+  * Enable QR greeter automatically
+  * ci: Use latest cargo-vet from git to fix CI
+  * Fix HSM pin migration failure on Debian/Ubuntu upgrades from v1.4.x
+  * Version 2.3.0
+  * cargo vet
+  * Update make vet from main branch
+  * Autostart the daemons on fresh install or upgrade
+  * Restart sshd when installing the ssh config
+  * Allow tasks daemon to write krb ccache
+  * Do not enumerate mapped users in NSS
+  * deps(rust): bump the all-cargo-updates group across 1 directory with 8 updates
+  * Update libhimmelblau to latest version
+  * Fix Tumbleweed build
+  * cargo vet
+  * Version 2.2.0
+  * Update libhimmelblau to 0.8.x series
+  * deps(rust): bump the all-cargo-updates group with 17 updates
+  * Only use OpenSSH bug workaround for ssh service
+  * Fix debug noise from removing user from sudo group
+  * systemd: install files to /usr/lib/, not /etc/
+  * Version 2.1.0
+  * Fix nightly authselect build failure
+  * Generate the authselect profiles for each distro
+  * Improve pam config handling in aad-tool
+  * Make `aad-tool configure-pam` detect location of pam files
+  * Version 2.0.5
+  * /var/lib/private/himmelblaud should be owned by root
+  * Use tmpfiles.d to create himmelblaud private data directory
+
+-------------------------------------------------------------------
 Mon Nov 24 19:58:32 UTC 2025 - David Mulder <david.mulder@suse.com>
 
 - Resolve mode mismatch with Chromium package.
