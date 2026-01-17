@@ -7,4 +7,16 @@
     <comment>Dep to perl-Modile=Build-XSUtil</comment>
     <requestid>713427</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c7ad3acad49eb50756593dfcc308c7fd</srcmd5>
+    <version>0.9.0</version>
+    <time>1768658117</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.9.0 (0.009)
+   see /usr/share/doc/packages/perl-Perl-Critic-Policy-Variables-ProhibitLoopOnHash/Changes
+  0.009     2026-01-12 09:57:39+01:00 Europe/Amsterdam
+      * Don't crash on `for my $foo @bar {...}`. (Graham @haarg Knop)
+      * License is now MIT.</comment>
+    <requestid>1327641</requestid>
+  </revision>
 </revisionlist>

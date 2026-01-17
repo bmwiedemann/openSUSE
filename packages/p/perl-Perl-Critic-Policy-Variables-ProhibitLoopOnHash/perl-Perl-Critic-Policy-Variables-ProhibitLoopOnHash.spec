@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Perl-Critic-Policy-Variables-ProhibitLoopOnHash
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,19 @@
 #
 
 
-Name:           perl-Perl-Critic-Policy-Variables-ProhibitLoopOnHash
-Version:        0.008
-Release:        0
 %define cpan_name Perl-Critic-Policy-Variables-ProhibitLoopOnHash
+Name:           perl-Perl-Critic-Policy-Variables-ProhibitLoopOnHash
+Version:        0.9.0
+Release:        0
+# 0.009 -> normalize -> 0.9.0
+%define cpan_version 0.009
+License:        MIT
 Summary:        Don't write loops on hashes, only on keys and values of hashes
-License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/X/XS/XSAWYERX/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/X/XS/XSAWYERX/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(List::Util) >= 1.33
@@ -36,6 +37,8 @@ BuildRequires:  perl(parent)
 Requires:       perl(List::Util) >= 1.33
 Requires:       perl(Perl::Critic) >= 1.126
 Requires:       perl(parent)
+Provides:       perl(Perl::Critic::Policy::Variables::ProhibitLoopOnHash) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -57,11 +60,11 @@ An effort is made to detect expressions:
 found a variation of it in real code.)
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -72,7 +75,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 %license LICENSE
 

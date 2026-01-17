@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 13 05:44:59 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.9.0 (0.009)
+   see /usr/share/doc/packages/perl-Perl-Critic-Policy-Variables-ProhibitLoopOnHash/Changes
+
+  0.009     2026-01-12 09:57:39+01:00 Europe/Amsterdam
+
+      * Don't crash on `for my $foo @bar {...}`. (Graham @haarg Knop)
+      * License is now MIT.
+
+-------------------------------------------------------------------
 Tue Apr 23 05:21:43 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 0.008
