@@ -84,6 +84,7 @@ if [ -n "\$target_dir" ]; then
     '\\{"name":"%{NAME}","version":"%{VERSION}","release":"%{RELEASE}","arch":"%{ARCH}"\\}' \\
     | chroot "\$mount_dir2" /usr/bin/jq -s 'sort_by(.name|ascii_downcase)' \\
     | gzip > "\$target_dir/LiveOS/.packages.json.gz"
+
   # copy the build info file if present
   if [ -f "\$mount_dir2"/var/log/build/info ]; then
     cp -a "\$mount_dir2"/var/log/build/info "\$target_dir/LiveOS/.info"

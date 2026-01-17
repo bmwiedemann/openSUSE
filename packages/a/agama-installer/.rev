@@ -394,4 +394,35 @@
   target systems if user keep it for agama on kernel command line</comment>
     <requestid>1317456</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>e2d838799983822f31e172b8ad625a7a</srcmd5>
+    <version>19.pre.0.0</version>
+    <time>1768657891</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 19.pre
+
+- Hide the data sharing notification in the Firefox browser
+  (bsc#1252961)
+
+- Added new boot option &quot;live.net_config=1&quot; to interactively
+  configure network settings (gh#agama-project/agama#2923)
+
+- Version 18
+
+- Fixed creating the /LiveOS/.packages.json.gz file in SLE builds
+  (gh#agama-project/agama#2771)
+
+- Dump some Live ISO root image data directly to the ISO image,
+  added files:
+  /LiveOS/.info - a copy of the /var/log/build/info file from
+    the root image
+  /LiveOS/.packages.gz - list of installed package (plain text,
+    basically a `rpm -qa` dump)
+  /LiveOS/.packages.json.gz - list of installed packages (JSON
+    format, better suitable for processing by scripts or tools)
+  (gh#agama-project/agama#2717)
+
+- live-root: update final EULAs with the June 2024 delivery</comment>
+    <requestid>1327362</requestid>
+  </revision>
 </revisionlist>
