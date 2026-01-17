@@ -5005,4 +5005,15 @@ a previous changelog entry.
     <comment>Deactive gluster backend, package is going away for being unmaintained</comment>
     <requestid>1323034</requestid>
   </revision>
+  <revision rev="436" vrev="1">
+    <srcmd5>e54090f020ac70cb37841523a3ce0f86</srcmd5>
+    <version>12.0.0</version>
+    <time>1768682537</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to libvirt 12.0.0
+  - jsc#PED-14592, jsc#PED-14597, jsc#PED-14623, jsc#PED-15320
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v12-0-0-2026-01-15</comment>
+    <requestid>1327477</requestid>
+  </revision>
 </revisionlist>

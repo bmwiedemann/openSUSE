@@ -145,7 +145,7 @@
 
 Name:           libvirt
 URL:            https://libvirt.org/
-Version:        11.10.0
+Version:        12.0.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -1232,9 +1232,6 @@ fi
 
 %preun daemon-common
 %service_del_preun libvirt-guests.service
-if [ $1 = 0 ]; then
-    rm -f /var/lib/%{name}/libvirt-guests
-fi
 
 %postun daemon-common
 /sbin/ldconfig
