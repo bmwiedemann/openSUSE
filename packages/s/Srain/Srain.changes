@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Dec 23 22:38:41 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.8.1:
+  * Update metainfo
+  * Remove bool typedef in C23
+- Update to version 1.8.0:
+  * Add configuration chat-list-order = "recent|alphabet" for
+    changing chat list order
+  * Add ctrl+q Hot Keys for quitting Srain
+  * Add /pass command for sending connection password to server
+  * Convert IRCv3 received server-time to local timezone
+  * Fix release assets
+- Update URL, old domain doesn't exist anymore
+
+-------------------------------------------------------------------
 Sat Sep 21 08:16:23 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.7.0:

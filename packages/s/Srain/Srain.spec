@@ -1,7 +1,7 @@
 #
 # spec file for package Srain
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,20 @@
 #
 
 
+%define         appid im.srain.Srain
 Name:           Srain
-Version:        1.7.0
+Version:        1.8.1
 Release:        0
 Summary:        An IRC client
 License:        GPL-3.0-or-later AND ISC
-URL:            https://srain.im
-Source:         https://github.com/SrainApp/srain/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/SrainApp/srain
+Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  ImageMagick
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.47.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Sphinx
+BuildRequires:  python3-sphinxnotes-mock
 BuildRequires:  pkgconfig(appstream)
 BuildRequires:  pkgconfig(ayatana-appindicator3-0.1)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.39.3
@@ -59,17 +61,17 @@ IRC client written in GTK3+.
 %files
 %license LICENSE
 %doc README.rst
+%config %{_sysconfdir}/srain/builtin.cfg
 %dir %{_datadir}/srain
 %dir %{_datadir}/srain/themes
 %dir %{_sysconfdir}/srain
-%config %{_sysconfdir}/srain/builtin.cfg
 %{_bindir}/srain
-%{_datadir}/applications/im.srain.%{name}.desktop
-%{_datadir}/icons/hicolor/128x128/apps/im.srain.%{name}.png
-%{_datadir}/icons/hicolor/128x128/apps/im.srain.%{name}.Red.png
-%{_datadir}/metainfo/im.srain.%{name}.metainfo.xml
+%{_datadir}/applications/%{appid}.desktop
+%{_datadir}/icons/hicolor/128x128/apps/%{appid}.Red.png
+%{_datadir}/icons/hicolor/128x128/apps/%{appid}.png
+%{_datadir}/metainfo/%{appid}.metainfo.xml
 %{_datadir}/srain/themes/*.css
-%{_mandir}/man1/srain.1%{?ext_man}
+%{_mandir}/man?/srain.?%{?ext_man}
 
 %files lang -f srain.lang
 
