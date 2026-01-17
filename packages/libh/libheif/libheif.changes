@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 16 08:12:26 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 1.21.2:
+  * build script for JS/WASM now supports building with JPEG2000 and
+    "ISO23001-17 Uncompressed" support.
+  * image sequence SAI data now works when using the OpenH264 decoder
+    plugin
+
+-------------------------------------------------------------------
 Sat Jan  3 17:48:42 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 1.21.1:

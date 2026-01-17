@@ -1,7 +1,7 @@
 #
 # spec file for package libheif
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,7 +46,7 @@
 %bcond_with heif_view
 
 Name:           libheif%{?psuffix}
-Version:        1.21.1
+Version:        1.21.2
 Release:        0
 Summary:        HEIF/AVIF file format decoder and encoder
 License:        LGPL-3.0-only AND MIT
