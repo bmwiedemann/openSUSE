@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 16 10:58:25 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade x3270 to version 4.5ga5
+- Release Notes: https://x3270.miraheze.org/wiki/Release_Notes/suite3270/4.5ga5 
+- Removed obsolete patches
+  * x3270-dependency.patch
+  * x3270-notparallel.patch 
+
+-------------------------------------------------------------------
 Wed Jan 14 13:50:43 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Amended the .spec file (jsc#PED-15247)

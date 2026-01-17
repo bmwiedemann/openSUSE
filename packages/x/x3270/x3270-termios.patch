@@ -1,6 +1,10 @@
---- a/Common/x3270if.c	2025-04-25 17:07:13.000000000 +0200
-+++ b/Common/x3270if.c	2025-10-24 07:23:30.404621282 +0200
-@@ -89,6 +89,8 @@
+---
+ Common/x3270if.c |    2 ++
+ 1 file changed, 2 insertions(+)
+
+--- a/Common/x3270if.c
++++ b/Common/x3270if.c
+@@ -97,6 +97,8 @@
  # endif /*]*/
  #endif
  

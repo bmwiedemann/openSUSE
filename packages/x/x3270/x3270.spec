@@ -16,29 +16,26 @@
 #
 
 
-%define _suffix ga6
+%define _suffix ga5
 %define _fullname suite3270-%{version}%{_suffix}
 %define _x026ver 1.2
 Name:           x3270
-Version:        4.4
+Version:        4.5
 Release:        0
 Summary:        A Family of IBM 3270 Terminal Emulators
 License:        MIT
 Group:          System/X11/Terminals
 URL:            https://x3270.miraheze.org
 #Git-Clone:     https://github.com/pmattes/x3270
-Source0:        https://downloads.sourceforge.net/project/x3270/x3270/%{version}%{_suffix}/%{_fullname}-src.tgz#/%{_fullname}-src.tar.gz
+Source0:        https://downloads.sourceforge.net/project/x3270/x3270/%{version}%{_suffix}/%{_fullname}-src.tgz#/%{_fullname}-src.tgz
 Source1:        https://downloads.sourceforge.net/project/x3270/x026/%{_x026ver}/x026-%{_x026ver}.tgz
 Patch0:         mknod.patch
 Patch100:       usr_local_bin.patch
-Patch102:       x026-offset.diff
+Patch101:       x026-offset.diff
 # fix build with gcc 15
-Patch103:       x3270-gcc15.patch
-# upstream commit to make it parallel build
-Patch104:       x3270-dependency.patch
-Patch105:       x3270-notparallel.patch
+Patch102:       x3270-gcc15.patch
 #
-Patch106:       x3270-termios.patch
+Patch103:       x3270-termios.patch
 #
 BuildRequires:  bdftopcf
 BuildRequires:  fdupes
@@ -117,11 +114,9 @@ x026 is a fun toy which emulates an x026 puncher.
 %setup -q -n suite3270-%{version} -a1
 %patch -P 0
 %patch -P 100
+%patch -P 101
 %patch -P 102
-%patch -P 103
-%patch -P 104 -p 1
-%patch -P 105 -p 1
-%patch -P 106 -p 1
+%patch -P 103 -p 1
 
 find . -name ".gitignore" -delete
 
@@ -142,10 +137,9 @@ export LIBX3270DIR=%{_sysconfdir}/x3270
   --with-fontdir=%{_miscfontsdir}
 # There is broken generated makefile
 sed -i -e 's:$(FALLBACKS_:$(FALLBACKS):g' x3270/Makefile
-if test -n "$SOURCE_DATE_EPOCH"
-then
-    # there is a mistake in Common/mkersion.py
-    SOURCE_DATE_EPOCH="$(date --date="@$SOURCE_DATE_EPOCH" +'%%a %%b %%d %%H:%%M:%%S %%Z %%Y')"
+# Ensure SOURCE_DATE_EPOCH remains an integer for tools like mkversion.py
+if [ -n "$SOURCE_DATE_EPOCH" ]; then
+    export SOURCE_DATE_EPOCH="${SOURCE_DATE_EPOCH}"
 fi
 %make_build LIBX3270DIR=${LIBX3270DIR} unix CC="gcc ${CFLAGS}"
 # the IBM 026 keypunch emulator
