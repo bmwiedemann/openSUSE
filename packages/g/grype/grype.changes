@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jan 16 05:59:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.105.0:
+  * Added Features
+    - Add archlinux matcher to grype [#3154 @willmurphyscode]
+    - test: update quality gate db to latest version (#3141)
+  * Dependencies
+    - chore(deps): update anchore dependencies (#3165)
+    - chore(deps): update tools to latest versions (#3161)
+    - chore(deps): bump golang.org/x/tools from 0.40.0 to 0.41.0
+      (#3158)
+    - chore(deps): bump github.com/go-viper/mapstructure/v2 (#3159)
+    - chore(deps): bump github/codeql-action from 4.31.9 to 4.31.10
+      (#3160)
+    - chore(deps): bump actions/setup-go in
+      /.github/actions/bootstrap (#3162)
+    - chore(deps): update tools to latest versions (#3152)
+    - chore(deps): bump anchore/sbom-action from 0.21.0 to 0.21.1
+      (#3153)
+
+-------------------------------------------------------------------
 Sun Jan 11 08:52:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.104.4:
