@@ -34,7 +34,7 @@
 %endif
 
 Name:           nodejs24
-Version:        24.12.0
+Version:        24.13.0
 Release:        0
 
 # Double DWZ memory limits
