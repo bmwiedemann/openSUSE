@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 17 14:09:38 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1768564451.45d5d5b2:
+  * OpenSuseIssueReporter: Avoid multiple push calls
+  * unit_tests: Add unit tests for OpenSuseBugzillaUtils
+  * unit_tests: Adapt the UI tests to the new kernel bug button
+  * plugins: Introduce OpenSuseIssueReporter for external issue reporting
+
+-------------------------------------------------------------------
 Thu Jan 15 20:43:21 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1768402729.462b3957:
