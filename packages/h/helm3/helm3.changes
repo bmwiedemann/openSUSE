@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jan 15 05:58:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.19.5:
+  * Notable Changes
+    - Fixed bug where removing subchart value via override resulted
+      in warning #31118
+    - Fixed bug where helm uninstall with --keep-history did not
+      suspend previous deployed releases #12556
+  * Changelog
+    - fix(rollback): errors.Is instead of string comp 4a19a5b
+      (Hidde Beydals)
+    - fix(uninstall): supersede deployed releases 7a00235 (Hidde
+      Beydals)
+    - fix null merge 578564e (Ben Foster)
+
+-------------------------------------------------------------------
 Sat Dec 13 19:26:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.19.4:

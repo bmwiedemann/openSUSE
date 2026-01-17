@@ -1,7 +1,7 @@
 #
 # spec file for package helm3
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define goipath helm.sh/helm/v3
 %define git_dirty clean
 Name:           helm3
-Version:        3.19.4
+Version:        3.19.5
 Release:        0
 Summary:        The Kubernetes Package Manager
 License:        Apache-2.0
