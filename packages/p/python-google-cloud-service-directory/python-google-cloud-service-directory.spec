@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-cloud-service-directory
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,26 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-service-directory
-Version:        1.14.2
+Version:        1.16.0
 Release:        0
 Summary:        Google Cloud Service Directory API client library
 License:        Apache-2.0
 URL:            https://github.com/googleapis/google-cloud-python/tree/main/packages/google-cloud-service-directory
 Source:         https://files.pythonhosted.org/packages/source/g/google_cloud_service_directory/google_cloud_service_directory-%{version}.tar.gz
+BuildRequires:  %{python_module grpcio >= 1.33.2 if %python-base < 3.14}
+BuildRequires:  %{python_module grpcio >= 1.75.1 if %python-base >= 3.14}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %python_version_nodots < 314
+Requires:       python-grpcio >= 1.33.2
+%else
+Requires:       python-grpcio >= 1.75.1
+%endif
 Requires:       python-google-api-core >= 1.34.0
 Requires:       python-google-auth >= 2.14.1
 Requires:       python-grpc-google-iam-v1 >= 0.12.4

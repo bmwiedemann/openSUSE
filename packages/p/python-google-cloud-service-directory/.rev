@@ -75,4 +75,12 @@
 - Update BuildRequires and Requires from setup.py (forwarded request 1272624 from glaubitz)</comment>
     <requestid>1272659</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b94555333ffc26697836a9483fa5357a</srcmd5>
+    <version>1.16.0</version>
+    <time>1768658088</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1327654</requestid>
+  </revision>
 </revisionlist>
