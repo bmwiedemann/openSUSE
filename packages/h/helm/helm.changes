@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Thu Jan 15 05:58:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.0.5:
+  * Notable Changes
+    - Fixed bug where helm uninstall with --keep-history did not
+      suspend previous deployed releases #12556
+    - Fixed rollback error when a manifest is removed in a failed
+      upgrade #13437
+    - Fixed check to ensure CLI plugin does not load with the same
+      name as an existing Helm command
+    - Fixed helm test --logs failure with hook-delete-policy
+      "hook-failed" or "hook-succeed" #9098
+    - Fixed a bug where empty dependency lists were incorrectly
+      treated as present
+    - Fixed a bug where the watch library did not only watch
+      namespaces associated with the objects
+    - Fixed regression in downloader plugins environment variables
+      #31612
+    - Fixed bug where --server-side flag is not respected with helm
+      upgrade --install #31627
+    - For SDK users: exposed KUBECONFIG to env
+  * Changelog
+    - fix(upgrade): pass --server-side flag to install when using
+      upgrade --install 1b6053d (Evans Mungai)
+    - fix(cli): handle nil config in EnvSettings.Namespace()
+      1e3ee1d (Zadkiel AHARONIAN)
+    - fix(getter): pass settings environment variables 31bd995
+      (Zadkiel AHARONIAN)
+    - test(statuswait): fix Copilot code review suggestion for
+      goroutine in tests 41a6b36 (Mohsen Mottaghi)
+    - test(statuswait): add more tests suggested by Copilot code
+      review 2a2e6f7 (Mohsen Mottaghi)
+    - test(statuswait): add some tests for statuswait 3818c02
+      (Mohsen Mottaghi)
+    - fix: use namespace-scoped watching to avoid cluster-wide LIST
+      permissions 66cab24 (Mohsen Mottaghi)
+    - Use length check for MetaDependencies instead of nil
+      comparison abf2007 (Calvin Bui)
+    - Deal with golint warning with private executeShutdownFunc
+      4b3de18 (Benoit Tigeot)
+    - Code review 3212770 (Benoit Tigeot)
+    - Fix linting issue 417aae9 (Benoit Tigeot)
+    - Update pkg/action/hooks.go 6c838b4 (Michelle Fernandez
+      Bieber)
+    - added check for nil shutdown c5d87f2 (Michelle Fernandez
+      Bieber)
+    - cleaned up empty line 53175b7 (Michelle Fernandez Bieber)
+    - updated comment and made defer of shutdown function return
+      errors as before and not the possible shutdown error d2df1ab
+      (Michelle Fernandez Bieber)
+    - added shutdown hook that is executed after the logs have been
+      retrieved 5b223de (Michelle Fernandez Bieber)
+    - Fix TestCliPluginExitCode e845b68 (tison)
+    - Check plugin name is not used 30bfd57 (tison)
+    - Fix rollback for missing resources 0fd2c41 (Feruzjon
+      Muyassarov)
+    - fix: assign KUBECONFIG environment variable value to
+      env.Kubeconfig b456e27 (LinPr)
+    - fix(rollback): errors.Is instead of string comp e2021f8
+      (Hidde Beydals)
+    - fix(uninstall): supersede deployed releases af7c153 (Hidde
+      Beydals)
+
+-------------------------------------------------------------------
 Sat Dec 13 19:26:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.0.4 (4.0.3 was not released):
