@@ -1,7 +1,7 @@
 #
 # spec file for package nextcloud
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,7 +47,7 @@
 %endif
 
 Name:           nextcloud
-Version:        32.0.3
+Version:        32.0.5
 Release:        0
 Summary:        File hosting service
 License:        AGPL-3.0-only

@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Fri Jan 16 13:37:54 UTC 2026 - ecsos <ecsos@opensuse.org> - 32.0.5
+
+- Update to 32.0.5
+  * server
+    - Feat: restrict calendar invitation participants (server#57461)
+    - Feat: Add appconfig to disable fixed userfolder permissions optimization (server#57542)
+    - Fix(mounts): only remove existing index (server#57589)
+  * serverinfo
+    - Improve table templating and styling (serverinfo#926)
+
+-------------------------------------------------------------------
+Thu Jan 15 11:59:34 UTC 2026 - ecsos <ecsos@opensuse.org> - 32.0.4
+
+- Update to 32.0.4
+  * server
+    - Fix(sharing): Adapt share suggestions to match trusted servers configs (server#55642)
+    - Feat(log): Add script name and occ command to log details (server#56851)
+    - Fix(settings): Improve mail test error handling and logging (server#56935)
+    - Fix: legal footer on public page (server#56936)
+    - Fix: calendar subscription memory exhaustion (server#56937)
+    - Fix: Fix orphan shares blocking moving other shares (server#56969)
+    - Fix(unified-search): prevent provider disabling on content filter apply (server#56974)
+    - Fix(files_sharing): Normalize dir type to folder for federated shares (server#57001)
+    - Fix(templates): deduplicate provider templates (server#57016)
+    - Fix: do not truncate birth year to 1970 (server#57049)
+    - Fix caching routes by users with an active session (server#57085)
+    - Fix(css): correct boundaries of breaking points (server#57086)
+    - Fix(TaskProcessing): Increase EShapeType::Text limit to 512 KB (server#57088)
+    - Fix(dav): catch NotFound exception in UploadHome::childExists() (server#57104)
+    - Fix(shares): Fix infinite loop when all shares are invalid (server#57107)
+    - Fix(unified-search): Add missing supports active filters calculation (server#57108)
+    - Fix(sharing): allow federated shares to non-trusted servers (server#57109)
+    - Fix(UserMountCache): Add back unique index for oc_mounts and use normal insert (server#57122)
+    - Chore: Update `@nextcloud/dialogs` to v7.0.0 (server#57129)
+    - Fix(IpNormalizer): Added `inet_pton()` check before bitwise operations (server#57150)
+    - Fix(lib): include headers from OC\Template\Template as well in produced HTML (server#57171)
+    - Build(deps): Bump the symfony group with 9 updates (server#57173)
+    - Build(deps): bump doctrine/dbal from 3.10.2 to 3.10.4 (server#57181)
+    - Fix(ocm): fully disable signed request on config (server#57184)
+    - Build(deps): Bump web-auth/webauthn-lib from 4.9.1 to 4.9.2 (server#57187)
+    - Fix(NewUserDialog): update group selection to prevent admin group from being assigned as subadmin (server#57293)
+    - Feat: add an option to filter what paths get checked for updates (server#57299)
+    - Feat: add fileid to exception message when reading a dav file fails (server#57312)
+    - Feat: don't gate perBucket object store configuration behind multibucket (server#57346)
+    - Fix: Ensure CLOUD key exists before resolving Cloud ID (server#57358)
+    - Fix: allow moving from of non-resharable to other share if the user has delete permissions (server#57368)
+    - Fix(team-manager): team is already teamid (server#57378)
+    - Feat(Config.php): change `array_merge` to `array_replace_recursive` when merging configs (server#57401)
+    - Fix: Unify handling of exclude groups in contacts menu and sharing (server#57416)
+    - Fix(controller): Support native int ranges (server#57418)
+    - Fix(l10n): Fix language selection (server#57420)
+    - Chore: add chunked queries on `occ sharing:delete-orphan-shares` (server#57425)
+    - Build(deps): bump aws/aws-sdk-php from 3.349.3 to 3.369.9 (server#57426)
+    - Fix: adjust public page footer logic (server#57430)
+    - Perf: log slow DNS operations (server#57433)
+    - Fix(session): handle null logger (server#57457)
+  * 3rdparty
+    - Build(deps): bump aws/aws-sdk-php from 3.349.3 to 3.369.9 (3rdparty#2255)
+  * circles
+    - Fix empty memberlist (circles#2271)
+    - Fix: allow owner to leave a circle (circles#2284)
+    - Fix(deps): npm audit fix (circles#2286)
+  * logreader
+    - Fix(LogController): prevent iterator from jumping over the last item (logreader#1865)
+  * recommendations
+    - Fix(deps): bump axios (recommendations#965)
+  * serverinfo
+    - Fix: add localization to uptime strings (serverinfo#918)
+  * text
+    - Feat: Add table-only editor API (text#8026)
+    - Fix updating node dist files (text#8049)
+    - Fix(FloatingButtons): Add missing `aria-label` to NcButton components (text#8057)
+    - Fix(ci): add back token parameter to checkout action in update-node-dist (text#8061)
+    - Fix: first action in empty document cannot be undone (text#8068)
+    - Fix(ImageView): Use `mouseenter` instead of `mouseover` (text#8070)
+    - Fix(files): Disable suggestions bar output for not rich workspace (text#8076)
+    - Fix(editor): bring back placeholder (text#8078)
+    - Fix: expose getHtml() to editor api (text#8110)
+    - Main] fix(ci): Only build Assistant from git for main branch (text#8117)
+    - Fix: constrain height of video preview (text#8125)
+  * twofactor_totp
+    - Fix(deps): apply npm audit prod suggestions (twofactor_totp#1696)
+  * viewer
+    - Fixupdate axios version (viewer#3048)
+
+-------------------------------------------------------------------
 Thu Dec 11 10:23:33 UTC 2025 - ecsos <ecsos@opensuse.org> - 32.0.3
 
 - Update to 32.0.3
