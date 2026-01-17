@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan 17 11:44:55 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 9.3.15:
+  * Upgrade rqlite-go-sqlite3 and SQL parser bundled dependencies
+
+-------------------------------------------------------------------
 Sat Jan 10 08:28:49 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 9.3.14:
