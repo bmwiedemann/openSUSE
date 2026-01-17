@@ -291,4 +291,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * linux-firmware: update firmware for MT7920 WiFi device</comment>
     <requestid>1326591</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>98e863cfcfbf9f3e7d3071f2665b3967</srcmd5>
+    <version>20260114</version>
+    <time>1768682520</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20260114 (git commit e477bd5942f4):
+  * mediatek: rename MT8188 SCP firmware</comment>
+    <requestid>1327794</requestid>
+  </revision>
 </revisionlist>
