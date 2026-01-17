@@ -1,0 +1,22 @@
+From: Andreas Stieger <Andreas.Stieger@gmx.de>
+Date: Fri, 09 Jan 2026 21:26:35 +0100
+Subject: [PATCH] Support gpgme 2 (libgpgme.so.45)
+References: https://bugzilla.mozilla.org/show_bug.cgi?id=1967121 https://bugzilla.opensuse.org/show_bug.cgi?id=1253718
+
+--- thunderbird-140.5.0/comm/mail/extensions/openpgp/content/modules/GPGMELib.sys.mjs	
++++ thunderbird-140.5.0/comm/mail/extensions/openpgp/content/modules/GPGMELib.sys.mjs	
+@@ -78,6 +78,14 @@ function loadExternalGPGMELib() {
+     }
+ 
+     if (!libgpgme) {
++      tryLoadGPGME("gpgme", ".45");
++    }
++
++    if (!libgpgme) {
++      tryLoadGPGME("gpgme.45", "");
++    }
++
++    if (!libgpgme) {
+       tryLoadGPGME("gpgme", ".11");
+     }
+ 

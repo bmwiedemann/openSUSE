@@ -1,8 +1,8 @@
 #
 # spec file for package MozillaThunderbird
 #
-# Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2006-2025 Wolfgang Rosenauer <wr@rosenauer.org>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2006-2026 Wolfgang Rosenauer <wr@rosenauer.org>
 # Copyright (c) 2025 Tristan Miller <psychonaut@nothingisreal.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,8 +30,8 @@
 # major 69
 # mainver %%major.99
 %define major          140
-%define mainver        %major.6.0
-%define orig_version   140.6.0
+%define mainver        %major.7.0
+%define orig_version   140.7.0
 %define orig_suffix    esr
 %define update_channel esr
 %define source_prefix  thunderbird-%{orig_version}
@@ -211,6 +211,7 @@ Patch18:        mozilla-silence-no-return-type.patch
 Patch20:        one_swizzle_to_rule_them_all.patch
 Patch21:        svg-rendering.patch
 Patch22:        thunderbird-silence-no-return.patch
+Patch23:        mozilla-bmo1967121.patch
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 PreReq:         /bin/sh

@@ -6176,4 +6176,12 @@ I cannot test locally unfortunately.
     ESR 140.6, Firefox 146 and Thunderbird 146</comment>
     <requestid>1322223</requestid>
   </revision>
+  <revision rev="378" vrev="1">
+    <srcmd5>5334d75c93396d828b10b9c10a971e58</srcmd5>
+    <version>140.7.0</version>
+    <time>1768657915</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1327542</requestid>
+  </revision>
 </revisionlist>
