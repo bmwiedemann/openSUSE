@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan  7 21:47:30 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- Update project URL
+- Update to 1.12.6:
+  * XPM progress callback fix
+  * gradient fixes
+  * Y4M improvements to support more formats
+  * resize image when imlib_view window is resized
+
+-------------------------------------------------------------------
 Wed Dec 17 10:50:41 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
 
 - Enable SVG
