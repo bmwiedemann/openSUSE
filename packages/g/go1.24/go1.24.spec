@@ -1,7 +1,7 @@
 #
 # spec file for package go1.24
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -107,7 +107,7 @@
 %endif
 
 Name:           go1.24
-Version:        1.24.11
+Version:        1.24.12
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
