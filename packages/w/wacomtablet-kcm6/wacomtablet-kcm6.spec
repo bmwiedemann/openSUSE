@@ -1,7 +1,7 @@
 #
 # spec file for package wacomtablet-kcm6
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %bcond_without released
 # wacomtablet is too generic for this package
 Name:           wacomtablet-kcm6
-Version:        6.5.4
+Version:        6.5.5
 Release:        0
 Summary:        Wacom drivers KCM
 License:        GPL-2.0-or-later
