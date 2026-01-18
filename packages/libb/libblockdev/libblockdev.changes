@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 17 09:20:46 UTC 2026 - Martin Wilck <martin.wilck@suse.com>
+
+- Remove dependency from dmraid (already removed upstream in 3.0)
+
+-------------------------------------------------------------------
 Thu Sep  4 13:39:04 UTC 2025 - Thomas Blume <Thomas.Blume@suse.com>
 
 - update to 3.3.1

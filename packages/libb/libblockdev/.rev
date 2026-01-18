@@ -236,4 +236,13 @@
     <comment></comment>
     <requestid>1303125</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>3c6fed9fdd3a9db1117c9bedd577472f</srcmd5>
+    <version>3.3.1</version>
+    <time>1768771121</time>
+    <user>anag_factory</user>
+    <comment>- Remove dependency from dmraid (already removed upstream in 3.0)
+</comment>
+    <requestid>1327785</requestid>
+  </revision>
 </revisionlist>

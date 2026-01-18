@@ -281,7 +281,6 @@ with the libbd_crypto plugin/library..
 Summary:        The Device Mapper plugin for the LibBlockDev library
 Group:          System/Libraries
 Requires:       device-mapper
-Requires:       dmraid
 Requires:       libbd_utils%{soversion} >= %{version}
 Provides:       libblockdev-dm = %{version}
 
@@ -297,7 +296,6 @@ provides functionality related to Device Mapper.
 Summary:        Development files for the libbd_dm plugin/library
 Group:          Development/Libraries/C and C++
 Requires:       device-mapper-devel
-Requires:       dmraid-devel
 Requires:       glib2-devel
 Requires:       libbd_dm%{soversion} >= %{version}
 Requires:       libbd_utils-devel
