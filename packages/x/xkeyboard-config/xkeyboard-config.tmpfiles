@@ -1,0 +1,3 @@
+# Immutable mode (jsc#PED-14831)
+d /var/lib/xkb/ 0755 root root
+d /var/lib/xkb/compiled 0755 root root

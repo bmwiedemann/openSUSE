@@ -1,7 +1,7 @@
 #
 # spec file for package xkeyboard-config
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/X11/Utilities
 URL:            https://www.freedesktop.org/Software/XKeyboardConfig
 Source:         https://xorg.freedesktop.org/archive/individual/data/%{name}/%{name}-%{version}.tar.xz
+# Immutable mode (jsc#PED-14831)
+Source1:        xkeyboard-config.tmpfiles
 # PATCH-FIX-OPENSUSE disable-2xalt_2xctrl-toggle.diff fdo#4927 -- This is just a workaround until fdo#4927 is fixed
 Patch109:       n_disable-2xalt_2xctrl-toggle.diff
 Patch110:       n_fi-kotoistus-metainfo.patch
@@ -73,6 +75,9 @@ mkdir -p %{buildroot}%{_localstatedir}/lib/xkb/compiled/
 ln -snf %{_localstatedir}/lib/xkb/compiled/ %{buildroot}%{_datadir}/xkeyboard-config-2/compiled
 %find_lang %{name}
 %fdupes -s %{buildroot}%{_datadir}/X11/xkb
+# Immutable mode (jsc#PED-14831)
+mkdir -p %{buildroot}%{_prefix}/lib/tmpfiles.d
+install -m 644 %{SOURCE1} %{buildroot}%{_prefix}/lib/tmpfiles.d/xkeyboard-config.conf
 
 # migration to 2.45 (boo#1246516)
 %pretrans -p <lua>
@@ -102,11 +107,15 @@ end
 %post
 rm -rf %{_localstatedir}/lib/xkb/compiled/server*.xkm
 
+# Immutable mode (jsc#PED-14831)
+%posttrans
+%tmpfiles_create xkeyboard-config.conf
+
 %files
 %license COPYING
 %doc AUTHORS docs/HOWTO.* docs/README.*
-%dir %{_localstatedir}/lib/xkb
-%dir %{_localstatedir}/lib/xkb/compiled
+# Immutable mode (jsc#PED-14831)
+%{_tmpfilesdir}/xkeyboard-config.conf
 %dir %{_datadir}/X11
 %{_datadir}/xkeyboard-config-2
 %{_datadir}/X11/xkb

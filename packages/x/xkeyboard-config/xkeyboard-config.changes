@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 16 13:04:26 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- fix installation of directory for compiled layouts for Immutable
+  mode (jsc#PED-14831)
+
+-------------------------------------------------------------------
 Mon Oct 13 17:51:43 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - replaced hotfix u_ua-winkeysenhanced-fix.patch with official fix

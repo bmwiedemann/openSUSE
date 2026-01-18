@@ -1134,4 +1134,13 @@ Everything below symbols/sun_vndr/ is CDDL-1.0 licensed (forwarded request 13624
 - remove ineffectual xkb-base build option</comment>
     <requestid>1311204</requestid>
   </revision>
+  <revision rev="113" vrev="2">
+    <srcmd5>77bc4fcf9f1507cea25c3548e4997af4</srcmd5>
+    <version>2.46</version>
+    <time>1768771128</time>
+    <user>anag_factory</user>
+    <comment>- fix installation of directory for compiled layouts for Immutable
+  mode (jsc#PED-14831)</comment>
+    <requestid>1327669</requestid>
+  </revision>
 </revisionlist>
