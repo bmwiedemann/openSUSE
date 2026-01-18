@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 12 10:10:52 UTC 2026 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- update to 0.20.00:
+  * new stressor: varyload - generate variable CPU load over time with various
+    user selectable loading patterns and loading change rates
+  * new option: make-it-fail - enable /proc/self/make-it-fail for child stress
+    processes, useful for Linux error injection
+
+-------------------------------------------------------------------
 Thu Nov  6 15:25:31 UTC 2025 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
 
 - update to 0.19.06:
