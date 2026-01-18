@@ -146,7 +146,7 @@ xvfb-run -s '-noreset +render' \
   ctest \
   --output-on-failure \
   --force-new-ctest-process \
-  --parallel %{_smp_build_ncpus}
+  %{?_smp_mflags}
 popd
 
 %ldconfig_scriptlets -n libKF6UserFeedbackCore6
