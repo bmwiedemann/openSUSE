@@ -1,7 +1,7 @@
 #
 # spec file for package plymouth-theme-breeze6
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2016 Markus S., kamikazow@opensuse.org
 #
 # All modifications and additions to the file contributed by third parties
@@ -40,7 +40,7 @@ BuildRequires:  fix-version-checks-in-here
 
 %bcond_without released
 Name:           plymouth-theme-breeze6
-Version:        6.5.4
+Version:        6.5.5
 Release:        0
 Summary:        Plymouth "Breeze" theme
 License:        GPL-2.0-or-later
