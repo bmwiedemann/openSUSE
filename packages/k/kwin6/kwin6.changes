@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jan 13 14:38:04 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.5:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.5
+- Changes since 6.5.4:
+  * Update version for new release 6.5.5
+  * useractions: use output order for "switch to screen i" shortcuts
+  * useractions: use output order for "move window to screen i" shortcuts (kde#514465)
+  * backends/wayland: fix the cursor hotspot with scaling
+  * wayland/linuxdmabuf: drop buffers instead of deleting directly
+  * Handle key repeat state from input method keys (kde#513637)
+  * compositor: don't attempt to use cursor sizes other than the recommended one (kde#513810)
+  * wayland/outputmanagement: reject clearly nonsensical positions
+  * scene/workspacescene: ignore items with an opacity of zero (kde#513203)
+  * core/sessions: don't take ownership of an fd that Qt will close (kde#513151)
+  * Missing exported header file a11ykeyboardmonitor.h added
+  * wayland: Fix sending wl_data_source::dnd_action(0) after drop (kde#512235)
+  * rules: pass an activation token to the window rules KCM
+  * xwayland: Fix keysniffing repeating keys (kde#510404)
+- Drop patches, now upstream:
+  * 0001-core-sessions-don-t-take-ownership-of-an-fd-that-Qt-.patch
+
+-------------------------------------------------------------------
 Sat Dec 13 11:41:24 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix kwin freezes (kde#513151):
