@@ -1,7 +1,7 @@
 #
 # spec file for package plasma6-pa
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-pa
-Version:        6.5.4
+Version:        6.5.5
 Release:        0
 Summary:        The Plasma6 Volume Manager
 License:        GPL-2.0-or-later
