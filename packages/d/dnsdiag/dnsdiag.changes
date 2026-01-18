@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Jan 18 09:07:10 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.9.2
+  Bug Fixes
+  * Network Resilience: dnsping now survives transient network
+    errors instead of exiting fatally. When WiFi is toggled,
+    network cable is unplugged, or the system sleeps/resumes,
+    dnsping prints the error message and continues with the next
+    ping attempt, behaving like traditional ping. The fix also
+    improves error handling and makes it platform-portable.
+  * Answer Display: The -a flag in dnsping now displays the first
+    answer from the response regardless of record type, with the
+    type prepended for clarity
+    (e.g., [RDATA: CNAME res130.qams5.on.quad9.net.] or
+    [RDATA: A 142.250.179.174]). Previously it filtered by the
+    requested type only, which meant CNAME responses were silently
+    ignored.
+  * JSONL Output: The -j flag in dnseval now outputs valid JSONL
+    format with one JSON object per line, instead of
+    concatenating JSON objects back-to-back. The old format was
+    not parse-able by standard JSON parsers. Each line can now be
+    independently parsed with tools like jq.
+  * NSID Option Consistency: Fixed NSID EDNS option in dnsping to
+    use bytes instead of string for consistency with the rest of
+    the codebase and correct wire format.
+  * Exit Code Handling: All tools now return exit code 0 when
+    invoked with the --help flag, following standard conventions.
+  * Race Condition Fix: Fixed a time-of-check to time-of-use race
+    condition in dnsping that could cause negative sleep duration
+    in the interruptible sleep loop.
+
+-------------------------------------------------------------------
 Fri Oct 31 10:49:42 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.9.1

@@ -1,8 +1,8 @@
 #
 # spec file for package dnsdiag
 #
-# Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2017-2025, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2017-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define pythons python3
 %bcond_with test
 Name:           dnsdiag
-Version:        2.9.1
+Version:        2.9.2
 Release:        0
 Summary:        DNS request auditing toolset
 License:        BSD-3-Clause
