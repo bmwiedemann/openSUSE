@@ -102,6 +102,14 @@ Patch2:         gimp-2.99.19-external-help-browser.patch
 Patch3:         gimp-2.99.19-no-phone-home-default.patch
 # PATCH-FIX-UPSTREAM gimp-CVE-2025-15059.patch CVE-2025-15059 bsc#1255766 xwang@suse.com -- vulnerability in file-psp
 Patch4:         gimp-CVE-2025-15059.patch
+# PATCH-FIX-UPSTREAM gimp-CVE-2025-14422.patch bsc#1255293 mgorse@suse.com -- fix an overflow in the pnm parser.
+Patch5:         gimp-CVE-2025-14422.patch
+# PATCH-FIX-UPSTREAM gimp-CVE-2025-14423.patch bsc#1255294 mgorse@suse.com -- fix an overflow parsing LBM files.
+Patch6:         gimp-CVE-2025-14423.patch
+# PATCH-FIX-UPSTREAM gimp-CVE-2025-14424.patch bsc#1255295 mgorse@suse.com -- fix a use after free in the XCF parser.
+Patch7:         gimp-CVE-2025-14424.patch
+# PATCH-FIX-UPSTREAM gimp-CVE-2025-14425.patch bsc#1255296 mgorse@suse.com -- fix an overflow when reading jp2 files.
+Patch8:         gimp-CVE-2025-14425.patch
 %if %{with debug_in_build_gimp}
 BuildRequires:  gdb
 %endif

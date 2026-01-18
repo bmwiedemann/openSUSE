@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 16 17:52:35 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Add CVE fixes:
+  + gimp-CVE-2025-14422.patch (bsc#1255293 CVE-2025-14422)
+  + gimp-CVE-2025-14423.patch (bsc#1255294 CVE-2025-14423)
+  + gimp-CVE-2025-14424.patch (bsc#1255295 CVE-2025-14424)
+  + gimp-CVE-2025-14425.patch (bsc#1255296 CVE-2025-14425)
+
+-------------------------------------------------------------------
 Wed Jan  7 06:06:45 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Add gimp-CVE-2025-15059.patch: vulnerability in file-psp
