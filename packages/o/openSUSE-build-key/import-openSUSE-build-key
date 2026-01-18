@@ -1,33 +1,35 @@
-#!/bin/bash
-#
+#!/bin/sh
+
 triggerfile=/var/lib/openSUSE-build-key/imported
 
 # if zypp is running we will get into lock conflicts, and zypper might die
 # unexpectedly.
 if [ -s /run/zypp.pid ]; then
-	exit 0
+    echo "Aborted, zypper is running"
+    exit 0
 fi
 
 # first remove trigger file
 rm -f $triggerfile
 
 # The import might fail if something has locked the RPM database. in that case we retry again on next boot or so.
-
-
-# Example here is from SLES, but we can use it for openSUSE when needed:
-
-# Upcoming SLES 15 4096 bit RSA key
-#if test -f /usr/lib/rpm/gnupg/keys/gpg-pubkey-3fa1d6ce-63c9481c.asc; then
-#	rpm -q gpg-pubkey-3fa1d6ce > /dev/null ||
-#		rpm --import /usr/lib/rpm/gnupg/keys/gpg-pubkey-3fa1d6ce-63c9481c.asc || touch $triggerfile
-#fi
-#if test -f /usr/lib/rpm/gnupg/keys/gpg-pubkey-d588dc46-63c939db.asc; then
-#	rpm -q gpg-pubkey-d588dc46 > /dev/null ||
-#		rpm --import /usr/lib/rpm/gnupg/keys/gpg-pubkey-d588dc46-63c939db.asc || touch $triggerfile
-#fi
+for KFN in /usr/lib/rpm/gnupg/keys/gpg-pubkey-*.asc; do
+    if [ ! -e "$KFN" ];then
+        #
+        # check if file exists because if the glob match did
+        # not find files bash will use the glob string as
+        # result and we just continue in this case
+        #
+        continue
+    fi
+    KEY=$(basename "$KFN" .asc)
+    rpm -q "$KEY" >/dev/null && continue
+    echo "Importing $KEY to rpm database"
+    rpm --import "$KFN" || touch "$triggerfile"
+done
 
 # if we have finished import, disable and stop the timer.
-if [ ! -f $triggerfile -a -x /usr/bin/systemctl ] ; then
-	systemctl stop openSUSE-build-key-import.timer
-	systemctl disable openSUSE-build-key-import.timer
+if [ ! -f "$triggerfile" ] && [ -x /usr/bin/systemctl ] ; then
+    systemctl stop openSUSE-build-key-import.timer
+    systemctl disable openSUSE-build-key-import.timer
 fi

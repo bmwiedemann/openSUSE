@@ -471,4 +471,12 @@ However, it would be good to have these out before we do switch. (forwarded requ
     <comment>fix Backports 15 key is not packaged (forwarded request 1307367 from mlin7442)</comment>
     <requestid>1307368</requestid>
   </revision>
+  <revision rev="53" vrev="62">
+    <srcmd5>f600c0b9e49088c651f1556493a82963</srcmd5>
+    <version>1.0</version>
+    <time>1768771122</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1327788</requestid>
+  </revision>
 </revisionlist>
