@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Sat Jan 17 15:18:11 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.24.0:
+  * MesonToolchain needs_exe_wrapper property now listens to can_run() function
+  * Workspace super-install now follows layout()
+  * Make diff symbols in conan report diff ... -f=html non-selectable
+  * Add more public sub Python APIs, some more typing and fix docstrings
+  * Represent missing packages in graph.html output
+  * conan cache check-integrity: new JSON output format
+  * New conan workspace complete command to open/add intermediate packages to 
+    the workspace
+  * Inject hashlib in the global.conf jinja2 rendering to be able to compute 
+    hashes (for paths, for example)
+  * Introduce new conanconfig.yml file that can store packages for multiple 
+    automatic conan config install-pkg
+  * defines and frameworks now also generate CMakeConfigDeps targets
+  * Warn on version ranges in reference pattern, which have no effect 
+    (ie -o="foo/[>1]:shared=True")
+  * Fixed conan_config.json storage to use only RecipeReferences (not 
+    PackageReferences)
+  * conan config install-pkg will report for order-changing updates to i
+    existing configuration installs, allowing to -force to change the order
+  * Do correct scoping of conan install --requires=dep/[*] -o myoption=value
+  * fix new core.graph:compatibility_mode=optimized with multiple repos
+  * Fix crash for conan workspace build with external global editables
+  * Fix CMakeConfigDeps flags handling of generator expressions with separators
+  * Fix logic in EnvVars generation of .sh and .ps1 scripts for "unset" vs 
+    "empty" definition
+  * Fix Workspace crash when passing per-package configuration
+  * Fix version range pattern replacement in replace_requires
+
+- Update to version 2.23.0:
+  * Adding optional cli_args to meson install
+  * Improve conan pkglist find-remote to handle partial information, like not 
+    providing revisions
+  * Add message when compatibility does not find a matching package
+  * Improve Workspace error reporting for user code, and allow workspace 
+    conanfile to execute self.run() commands
+  * Introduce workspace_packages so workspace super-install can collect 
+    information from workspace packages
+  * New parameter to support custom Premake configuration names
+  * Add collapse all and expand level buttons to conan report diff html output
+  * Show provides conflicts in conan graph info -f=html
+  * Allow source_credentials.json and the source auth plugin to define headers
+  * Let conan install/create output the resulting graph.json/html even when 
+    there are build failures, to allow listing possible packages that have been
+    built
+  * Document the Remote() constructor as public API
+  * CMake.ctest() runner new tools.cmake:ctest_args conf
+  * Add some more useful output to conan audit
+  * Allow distro 1.19 python pip package dependency for broader compatibility
+  * Support metadata files addition without previously downloading other 
+    metadata files
+  * Add rename info for files in conan report diff
+  * Add conan run command to run commands from packages
+  * Compatibility checks are now performed in a single request to each remote
+  * Propagate verbosity confs to CMakeToolchain
+  * Fix 15.7 version in settings.yml
+  * Remove empty value from --verbose choice help string
+  * Improve error message referencing non existing git_excluded, use 
+    core.scm:excluded instead
+  * CMakeConfigDeps management of cmake_extra_interface_libs per component
+  * Added deployer arguments to workspace super-install command
+  * Added format_graph_json formatter to workspace super-install command
+  * Make layout() have higher precedence for 
+    self.layouts.build.xxxenv_info/conf_info
+  * Fix bug in conan new cmake_lib template without arguments, incorrect 
+    function name
+  * Conanfile.run's quiet parameter now silences the output of the command
+  * Verbosity level quiet now also silences the output of tools ran by Conan
+
+-------------------------------------------------------------------
 Sun Nov  9 09:15:03 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.22.2:
