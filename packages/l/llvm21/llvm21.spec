@@ -1,7 +1,7 @@
 #
 # spec file for package llvm21
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global _sonum  21
 %global _minor  %{_sonum}.1
 %global _soname %{_minor}%{?_rc:-rc%_rc}
-%global _patch_level 7
+%global _patch_level 8
 %global _relver %{_minor}.%{_patch_level}
 %global _version %_relver%{?_rc:-rc%_rc}
 %global _itsme21 1

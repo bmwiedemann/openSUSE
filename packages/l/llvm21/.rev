@@ -126,4 +126,15 @@
 - Run testsuite also in qemu emulation.</comment>
     <requestid>1323168</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1e9bdeff3ee15a05c8810bdefcf8a548</srcmd5>
+    <version>21.1.8</version>
+    <time>1768771105</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 21.1.8.
+  * This release contains bug-fixes for the LLVM 21.1.0 release.
+    This release is API and ABI compatible with 21.1.0.
+- Rebase llvm-do-not-install-static-libraries.patch.</comment>
+    <requestid>1327491</requestid>
+  </revision>
 </revisionlist>

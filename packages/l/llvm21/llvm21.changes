@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 15 22:21:35 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 21.1.8.
+  * This release contains bug-fixes for the LLVM 21.1.0 release.
+    This release is API and ABI compatible with 21.1.0.
+- Rebase llvm-do-not-install-static-libraries.patch.
+
+-------------------------------------------------------------------
 Sat Dec 13 21:51:21 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 21.1.7.
