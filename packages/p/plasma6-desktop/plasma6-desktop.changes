@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jan 13 14:40:55 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.5.5:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.5.5
+- Changes since 6.5.4:
+  * Update version for new release 6.5.5
+  * CI: Add documentation build
+  * applets/Kickoff: use Control as base for Badge (kde#514247)
+  * containments/desktop: constrain delegate size by cell size (kde#508684)
+  * [kcms/landingpage] Don't show unauthorized KCMs (kde#511381)
+  * views/Desktop: Set applets property explicitly to list of strings (kde#511729)
+  * containments/desktop: fix back button
+
+-------------------------------------------------------------------
 Tue Dec  9 12:02:48 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.5.4:
