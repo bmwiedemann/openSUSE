@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jan 18 08:13:06 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.28.0:
+  * Replace '!' for selecting process by pid with '='
+  * Replaced tui-textarea with tui-input
+  * Correct line count calculation for process details scrolling
+- Version 0.27.0:
+  * Fixed missing initial query
+  * Added support for multiple key modifiers and readline editing
+- Version 0.26.1:
+  * Improved startup performance and refresh speed
+- Version 0.26.0:
+  * Fixed terminal clear up after closing app
+  * Performance improvement
+
+-------------------------------------------------------------------
 Thu Sep 18 05:12:50 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.25.0:
