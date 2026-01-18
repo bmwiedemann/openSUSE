@@ -1,7 +1,7 @@
 #
 # spec file for package plasma6-disks
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define rname plasma-disks
 %bcond_without released
 Name:           plasma6-disks
-Version:        6.5.4
+Version:        6.5.5
 Release:        0
 Summary:        Plasma service for monitoring disk health
 License:        GPL-2.0-only OR GPL-3.0-only
