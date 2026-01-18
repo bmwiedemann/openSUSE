@@ -1,7 +1,7 @@
 #
 # spec file for package plasma6-thunderbolt
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 
 %bcond_without released
 Name:           plasma6-thunderbolt
-Version:        6.5.4
+Version:        6.5.5
 Release:        0
 Summary:        Plasma frontend for Thunderbolt 3 security levels
 License:        GPL-2.0-or-later
