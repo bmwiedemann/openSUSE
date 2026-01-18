@@ -1,7 +1,7 @@
 #
 # spec file for package plasma6-print-manager
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 24.9.90 Raymond Wooninck <tittiatcoke@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,7 +27,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-print-manager
-Version:        6.5.4
+Version:        6.5.5
 Release:        0
 Summary:        Tools for managing print jobs and printers
 License:        GPL-2.0-or-later
