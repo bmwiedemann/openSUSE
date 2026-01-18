@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jan 17 13:42:38 UTC 2026 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Fix test provider path
+
+-------------------------------------------------------------------
+Tue Nov 11 13:54:49 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 1.31.0:
+  * reading: fix mutex handling for cond_wait, thanks to Gleb Popov.
+  * mbed: initialize certificate early using mbedtls_x509_crt_init.
+  * util: fix deserialize buffer overflow. thanks to Aarnav Bos.
+- Enable tests
+- Add patch Disable-interactive-tests.patch
+
+-------------------------------------------------------------------
 Sun Feb 11 19:01:57 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.30.0:

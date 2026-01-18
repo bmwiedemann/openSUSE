@@ -1,0 +1,44 @@
+From 3551870f8eeb40d9b72e27c8ba2cdff6eb3827fb Mon Sep 17 00:00:00 2001
+From: Lucas Mulling <lucas.mulling@suse.com>
+Date: Wed, 12 Nov 2025 14:14:18 -0300
+Subject: [PATCH] Disable interactive tests
+
+Signed-off-by: Lucas Mulling <lucas.mulling@suse.com>
+---
+ configure.ac      | 3 ---
+ tests/Makefile.am | 5 +----
+ 2 files changed, 1 insertion(+), 7 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 05f4a32..00a0255 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -627,9 +627,6 @@ AC_CONFIG_FILES([
+ 	distro/debian/Makefile
+ 	tests/Makefile
+ 	tests/test-basic/Makefile
+-	tests/test-certificate/Makefile
+ 	tests/test-fork/Makefile
+-	tests/test-openssl/Makefile
+-	tests/test-slotevent/Makefile
+ ])
+ AC_OUTPUT
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index 277de2a..1cfcd4a 100644
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -52,10 +52,7 @@ MAINTAINERCLEANFILES=$(srcdir)/Makefile.in
+ 
+ COMMON= \
+ 	test-basic \
+-	test-fork \
+-	test-certificate \
+-	test-openssl \
+-	test-slotevent
++	test-fork
+ 
+ if ENABLE_TESTS
+ SUBDIRS = $(COMMON)
+-- 
+2.51.1
+
