@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Jan 15 18:33:24 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.12.0:
+  * Fixes:
+    - Fixed unscoped messages after a passing fast-pathed
+      assertion being lost.
+    - Fixed the help string for `--order` to mention random order
+      as the default (gh#catchorg/Catch2#3045).
+    - Fixed small documentation typos (gh#catchorg/Catch2#3039).
+    - Fixed compilation with `CATCH_CONFIG_THREAD_SAFE_ASSERTIONS`
+      for older C++ standards.
+    - Fixed a thread-safety issue with message macros being used
+      too early after the process starts.
+    - Fixed automatic configuration to properly handle PlayStation
+      platform (gh#catchorg/Catch2#3054).
+    - Fixed the _weird_ behaviour of section filtering when
+      specifying multiple filters (gh#catchorg/Catch2#3038).
+  * Improvements:
+    - Added `lifetimebound` attribute to various places.
+    - Minor compile-time improvements to stringification
+      (gh#catchorg/Catch2#3028).
+    - Global variables will only be marked with `thread_local` in
+      thread-safe builds (gh#catchorg/Catch2#3044).
+  * Miscellaneous:
+    - The thread safety support is no longer experimental.
+
+-------------------------------------------------------------------
 Tue Oct 28 18:34:54 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.11.0:
