@@ -1,0 +1,959 @@
+-------------------------------------------------------------------
+Wed Dec 03 15:36:39 UTC 2025 - alessio.biancalana@suse.com
+
+- Update to version 2.0.2~0:
+  * build(deps): bump github.com/lima-vm/sshocker from 0.3.8 to 0.3.9
+  * vz: make ssh-over-vsock error less scary
+  * portfwd: make errors less scary
+  * Don't add reverse-sshfs mounts to cloud-init user-data
+  * build(deps): bump golangci/golangci-lint-action from 9.0.0 to 9.1.0
+  * Allow partial validation of templates with missing drivers
+  * docs: krunkit: update installation steps
+  * refactor: use constant for sleep delay
+  * chore: simplify perfsprint linter configuration
+  * CI: remove "Relaxing systemd tests for fedora" workaround
+  * templates: update
+  * templates: fedora-43: disable ssh.overVsock as a workaround for SELinux issue
+  * Move env var LIMA_SSH_OVER_VSOCK to YAML field .ssh.overVsock
+  * docs: kubernetes: add RKE2 example
+  * build(deps): bump actions/checkout from 5.0.1 to 6.0.0
+  * build(deps): bump actions/setup-go from 6.0.0 to 6.1.0
+  * Don't trim whitespace from boot commands
+  * refactor: fix modernize.stringsbuilder lint issues
+  * build(deps): bump golang.org/x/crypto from 0.44.0 to 0.45.0
+  * kubernetes: add multi-node test and docs
+  * Fix #4173: glob returns an error instead of an empty list
+  * pkg/driver: deduplicate EnsureDisk() across vz and krunkit
+  * CI, docs: update socket_vmnet (1.2.2)
+  * build(deps): bump github/codeql-action from 4.31.3 to 4.31.4
+  * fix mismatch of signals for stopping external vms
+  * refactor: fix modernize lint issues
+  * dns: simplify newStaticClientConfig implementation
+  * docs/talks: add Open Source Summit Europe 2024
+  * docs/talks: fix a typo
+  * docs/talks: add KubeCon North America 2025
+  * build(deps): bump github.com/lima-vm/go-qcow2reader from 0.6.0 to 0.7.1
+  * templates/_images/fedora-43.yaml: Change `https://dl.fedora...` to `https://download.fedora...`
+  * hack/update-template-fedora.sh: Fix overriding to avoid detecting upgraded version
+  * build(deps): bump google.golang.org/grpc from 1.76.0 to 1.77.0
+  * build(deps): bump github.com/golangci/golangci-lint/v2 in /hack/tools
+  * build(deps): bump google.golang.org/grpc in /hack/tools
+  * build(deps): bump github.com/mikefarah/yq/v4 from 4.48.1 to 4.48.2
+  * build(deps): bump actions/checkout from 5.0.0 to 5.0.1
+  * build(deps): bump codespell-project/actions-codespell from 2.1 to 2.2
+  * build(deps): bump the k8s group across 1 directory with 3 updates
+  * .github/workflows/test.yml: Fix injecting `no_timer_check` to kernel cmdline
+  * build(deps): bump golangci/golangci-lint-action from 8.0.0 to 9.0.0
+  * build(deps): bump the golang-x group across 1 directory with 4 updates
+  * build(deps): bump github/codeql-action from 4.31.2 to 4.31.3
+  * .github/workflows/test.yml: Use QEMU 10.1.1 on macOS runner
+  * mcp: create parent directories in write_file
+  * Makefile: include `TEMPLATE_DEFAULTS` in release artifacts
+  * Makefile: Include `TEMPLATE_IMAGES` in release artifacts
+  * pkg/networks/usernet: Add fallback to `SIGKILL`
+  * pkg/networks/usernet: Use `SIGINT` instead of `SIGKILL`
+  * templates: experimental/ubuntu-next: point to ubuntu-26.04
+  * `limactl start`: Fix autostart registered instance did not start usernet.
+  * Fix small error in github url scheme docs
+  * Add documentation for the github: URL scheme
+  * nerdctl: update from v2.2.0-rc.0 to v2.2.0
+  * pkg/networks/usernet: Prefer SysKill over pkill
+  * templates: update
+  * Add libexecPaths to `limactl info` output
+  * fix llama.cpp build
+  * pkg/usrlocal.LibexecLima: add delve path
+  * pkg/usrlocalsharelima: simplify and allow multiple paths
+  * pkg/usrlocalsharelima: fix a typo (preserve -> reserve)
+  * docs: releases: add lifecycle table
+  * docs: releases/breaking: new page
+  * docs: releases/deprecated: update
+  * docs: config/gpu: new page
+  * docs: tidy up experimental pages
+  * docs: krunkit: needs macOS 14 at least
+  * Fix libexec dir detection on Homebrew
+  * make uninstall: uninstall lima-driver-krunkit
+  * Change all template:// references to use template:
+  * build(deps): bump github.com/golangci/golangci-lint/v2 in /hack/tools
+  * For github: URLs any *.yaml file can be a redirect or symlink
+  * Makefile: native, artifact: include limactl-plugins and additional-drivers
+  * Makefile: set ADDITIONAL_DRIVERS=krunkit by default
+  * krunkit: move install-vulkan-gpu.sh to docs
+  * Use Vulkan GPU inside container to run AI models
+  * Add `--start` Flag to `limactl shell`
+  * build(deps): bump github.com/cilium/ebpf from 0.19.0 to 0.20.0
+  * pkg/sshutil: Add `IsControlMasterExisting()` to check if `ssh.sock` exists in the instance directory,
+  * hack/test-templates.sh: Loosen SSH over VSOCK detection tests
+  * pkg/hostagent/requirements.go: Avoid command substitution when creating pipe inputs on executing requirements
+  * nerdctl: update from v2.1.6 to v2.2.0-rc.0
+  * templates: update
+  * pkg/hostagent: Remove ControlPath options from ssh execution in requirements on Windows
+  * Move `06-enable-mdns-on-systemd.sh` from `pkg/driver/vz` to `pkg/cidata`
+  * pkg/autostart: Avoid importing code that is not used during runtime.
+  * Apply reviews
+  * Use `//go:build !windows` to exclude tests
+  * pkg/autostart/launchd: call `launchctl bootout` before calling `launchctl bootstrap`
+  * autostart: Ensure instance is started/stopped by `launchd` or `systemctl`
+  * autostart: Refactor to add `autoStartManager`
+  * Handle compressed guestagent binary
+  * 06-enable-mdns-on-systemd.sh: Add checking `systemd-resolved.service` is enabled
+  * pkg/driver/vz: Enable mDNS in guest using `systemd` on macOS host
+  * Embedded files with tabs or return characters must be base64 encoded
+  * build(deps): bump github.com/modelcontextprotocol/go-sdk
+  * build(deps): bump github/codeql-action from 4.31.0 to 4.31.2
+  * `lima-guestagent`: Handle SIGTERM, support save/restore `eventState` on stop/start
+  * guestagent: Avoid restarting in the boot script if the executable and config have no changes.
+  * Add global LIMA_BATS_ALL_TESTS_RETRIES variable
+  * .github/workflows/spell.yml: set token permissions
+  * build(deps): bump github.com/golangci/golangci-lint/v2 in /hack/tools
+  * pkg/driver: Add `Driver.AdditionalSetupForSSH()`
+  * Bump k8s flannel version from 0.26.7 to 0.27.4
+  * docs/talks: add presentation at EuroBSDCon 2025
+  * add caveat pointer for cpu inferencing in krunkit
+  * support for libkrun using krunkit
+  * templates/README.md: remove a dead link
+  * templates: update Fedora to 43
+  * build(deps): bump actions/upload-artifact from 4.6.2 to 5.0.0
+  * build(deps): bump github/codeql-action from 4.30.9 to 4.31.0
+  * build(deps): bump actions/download-artifact from 5.0.0 to 6.0.0
+  * Use --start flag to start VM for 'clone' 'edit' and 'rename' commands
+  * templates: alpine: remove outdated comment about nerdctl
+  * Improve GPRC performance with optimised configs for client and server
+  * build(deps): bump github.com/google/yamlfmt from 0.19.0 to 0.20.0
+  * build(deps): bump github.com/pkg/sftp from 1.13.9 to 1.13.10
+  * pkg/sshutil: Fix `SSHOptsRemovingControlPath()` to avoid changing the original `opts`
+  * pkg/hostagent: Fix `setupMount()` to avoid changing `HostAgent.sshConfig`
+  * pkg/hostagent: Update all `ssh` execution to support SSH address other than "127.0.0.1"
+  * docs: kubernetes: fix a dead link
+  * pkg/portfwdserver: Remove workaround for WSL2
+  * pkg/portfwdserver: Close `stream` by returning from the handler method
+  * add Oracle Linux 10 support
+  * pkg/portfwd: Refactor `Forwarder.OnEvent()`
+  * kubernetesservice: support forwarding UDP
+  * template: k8s: keep KUBECONFIG in the guest unmodified
+  * add compilation support for Fedora, RHEL, and related distributions, as well as openSUSE
+  * templates: tumbleweed: allow 9p and virtiofs
+  * templates: update openSUSE Leap to 16
+  * build(deps): bump github.com/google/yamlfmt from 0.18.1 to 0.19.0
+  * build(deps): bump github/codeql-action from 4.30.8 to 4.30.9
+  * Add additional port forwarding tests
+  * The `limactl list --json` option is not legacy or deprecated
+  * Make Probe.Script a pointer
+  * Fill provision.Script with default value in FillDefault()
+  * The url-github.bats test needs a GITHUB_TOKEN
+  * Change default for GuestIPMustBeZero when GuestIP is 0.0.0.0
+  * docs: fix markdown errors
+  * build(deps): bump github.com/google/yamlfmt from 0.18.0 to 0.18.1
+  * Fix revive.package-directory-mismatch lint issues
+  * Make Provision.Script a pointer
+  * templates: update Ubuntu to 25.10
+  * Add `limactl rename OLD NEW`
+  * Avoid relying on extra kubernetes packages
+  * qemu: fallback to TCG when KVM is not available
+  * limayaml: remove implementation details of QEMU
+  * docs: promote from CNCF Sandbox to Incubating
+  * guestagent: create the parent (install) directory
+  * build(deps): bump github.com/google/yamlfmt from 0.17.2 to 0.18.0
+  * editflags: support multiple `--set` flags instead of ignoring all but the first such parameter
+  * docs: examples/gha: remove deprecated lima-vm/lima-actions/ssh
+  * docs: fix a typo
+  * pkg/hostagent: Fix to `SkipSocketForwarding`
+  * Bump alpine-iso from 3.21.3 → 3.22.2
+  * build(deps): bump github.com/mikefarah/yq/v4 from 4.47.2 to 4.48.1
+  * build(deps): bump github/codeql-action from 4.30.7 to 4.30.8
+  * The main containerd config is now version 3
+  * Bump alpine from 3.22.0 → 3.22.2
+  * docs: usage: split SSH to a separate page
+  * website: enhance container examples
+  * docs: update config/multi-arch
+  * CI: disable CodeQL for doc-only PRs
+  * docs: remove redundant description about env vars
+  * Convert limayaml.VMType to an abstract map
+  * Create BATS tests for limactl-mcp
+  * pkg/hostagent: Remove `ControlMaster` related args from reversesshfs config on Windows
+  * print an error that wraps ExitError
+  * hack/test-templates.sh: Drop step executing `test-port-forwarding.pl` with `nc`
+  * hack/test-templates.sh: Include an output of `journalctl -b` to `diagnose`
+  * hack/test-port-forwarding.pl: Use `-G` for connection timeout to `nc` on macOS
+  * hack/test-port-forwarding.pl: support `socat` as listener and writer
+  * CI: run spell checks for doc-only PRs too
+  * docs: add vzNAT and lima:shared to benchmark results
+  * build(deps): bump the golang-x group across 1 directory with 3 updates
+  * CI: skip `release.yml` on doc-only changes
+  * build(deps): bump google.golang.org/protobuf in /hack/tools
+  * build(deps): bump golang.org/x/net
+  * build(deps): bump github/codeql-action from 3.30.6 to 4.30.7
+  * CI: split QEMU installer to hack/install-qemu.sh
+  * docs: update port benchmark results
+  * hack: remove unused fix-qemu-signature.sh
+  * CI: test Kubernetes port forwarder
+  * Allow github:ORG// repos to redirect to other repos in the same org
+  * pkg/portfwd: Remove `SO_REUSEPORT`
+  * make generate: improve reproducibility
+  * docs: dev/testing: fix a typo
+  * build(deps): bump google.golang.org/grpc in /hack/tools
+  * hack/test-port-forwarding.pl: add reporting "failed to listen tcp"
+  * build(deps): bump google.golang.org/grpc from 1.75.1 to 1.76.0
+  * docs: mention BATS tests
+  * docs: fix the description about the default driver
+  * CI: split the BATS tests into a separate job
+  * bats: drop {00, 01, ..}- prefix
+  * hack/test-templates.sh: remove `--cpus 1 --memory 1`
+  * pkg/imgutil/nativeimgutil: Change file permission to 644 in `convertRawToRaw()`
+  * pkg/driver/qemu: Avoid calling `checkBinarySignature()` from `FillConfig()`.
+  * docs: examples/ai: fix typo
+  * Use driver feature instead of the name
+  * improve flexibility of limactl shell cmd
+  * Implement custom github URL scheme in Go
+  * docs: examples/gha: add more examples
+  * docs: fix links
+  * Don't hide template subcommand anymore but mark it EXPERIMENTAL
+  * Allow passing guestagent location to instance.StartWithPath
+  * docs: add examples/vscode
+  * pkg/hostagent: Disable `ControlMaster` options on executing SSH until the 2nd essential requirement is satisfied
+  * build(deps): bump google.golang.org/protobuf from 1.36.9 to 1.36.10
+  * build(deps): bump github/codeql-action from 3.30.5 to 3.30.6
+  * Move example in copy command from Long to Example
+  * Escape text in the command markdown documentation
+  * pkg/hostagent: Ensure calling `HostAgent.close()` before cancelling the context.
+  * pkg/hostagent: Add `HostAgent.onCloseMu`
+  * docs: add examples for AI agents
+  * mcp: search_file_content: fix "path is empty" error
+  * mcp: use StructuredContent
+  * guestagent: reuse netlink connections
+  * guestagent: fix CPU 100% usage
+  * build(deps): bump github.com/modelcontextprotocol/go-sdk
+  * build(deps): bump ossf/scorecard-action from 2.4.2 to 2.4.3
+  * guestagent: remove iptables watcher for rootful nerdctl
+  * nerdctl: update from v2.1.5 to v2.1.6
+  * feat(guestagent/sockets): replace /proc/net parsing with NETLINK_INET_DIAG
+  * `limactl shell`, `ssh.config`: Remove ControlMaster, ControlPath, and ControlPersist options on Windows
+  * Bump k8s flannel version from 0.26.2 to 0.26.7
+  * CI: test UDP port forwarding
+  * cidata: containerd: avoid overwriting existing config files
+  * template:k8s: fix "toml: table io.containerd.grpc.v1.cri already exists"
+  * Switch to RFC compliant opaque template:name URLs
+  * build(deps): bump github.com/modelcontextprotocol/go-sdk
+  * build(deps): bump github/codeql-action from 3.30.4 to 3.30.5
+  * Add a plugin mechanism to provide custom locator URL schemes
+  * Add port monitoring test script
+  * Simplify plugin support code
+  * nerdctl: update from v2.1.4 to v2.1.5
+  * build(deps): bump github/codeql-action from 3.30.3 to 3.30.4
+  * Make sure we always run BATS with --errexit
+  * build(deps): bump github.com/modelcontextprotocol/go-sdk
+  * build(deps): bump actions/cache from 4.2.4 to 4.3.0
+  * `--progress`: remove waiting 'SSH Ready'
+  * docs: generate MCP docs
+  * Makefile: move limactl-mcp from bin to libexec/lima
+  * CI: fix ls-lint failure about docs/README.md
+  * rm docs/*.md; add docs/README.md for the website link
+  * guestagent: ticker: watch sys_exit_bind with eBPF
+  * hack/test-port-forwarding.pl: Add a test using `hostSocket`
+  * portfwd: support HostSocket
+  * CI: use macos-26 for release and lint jobs
+  * Define "MCP Sandbox Interface" and implement `limactl mcp serve`
+  * build(deps): bump github.com/golangci/golangci-lint/v2 in /hack/tools
+  * Add `hack/codesign/debugserver` that wraps the LLDB debugserver to codesign the target executable.
+  * vm_darwin.go: remove `filesToRemove`
+  * vm_darwin.go: The `startVM` function waits until the `sshLocalPort` becomes available.
+  * hack/test-templates.sh: Add "ssh-over-vsock"
+  * vz: add SSH over AF_VSOCK
+  * guestagent: start iptables audit watcher when auditing already enabled
+  * Add context parameter to the WSL2 status check
+  * Use net module instead of checking string prefix
+  * Restore DynamicSSHAddress functionality for WSL2
+  * Don't read VMOpts.VZ struct from cidata directly
+  * limayaml/defaults.go: allow automatic UDP forwarding
+  * prefer `errors.Is(err, net.ErrClosed)` over detecting "use of closed network connection"
+  * Formatting changes for readability
+  * Change limactl list --format json not to include empty objects
+  * editflags: update the expression for mount flag
+  * `Makefile`: Fix `templates/{_default,_images}` handling
+  * portfwd: close `ClosableListeners` on exit
+  * Merge mounts in FillDefault based on mountPoint instead of location
+  * `limactl hostagent`: check process is actually running on detecting `ha.pid`
+  * `Makefile`: Add the `DEBUG` flag to build binaries with debug information for use by `dlv exec`.
+  * fix: update the qemu option 'readonly' to 'readonly=on'
+  * fix make uninstall should remove external drivers
+  * Add feature for CloudInit instead of VMType name
+  * Remove VMType check from the lima-init boot script
+  * bug fix: static port forward works in plain-mode
+  * `limactl usernet`: handle signal to close GVisorNetstack
+  * build(deps): bump github/codeql-action from 3.30.2 to 3.30.3
+  * Add foundational BATS tests for limactl yq and limactl list
+  * make debian trixie as default image for templates
+  * add rsync flag option to copy files using rsync
+  * build(deps): bump google.golang.org/grpc in /hack/tools
+  * build(deps): bump google.golang.org/grpc from 1.75.0 to 1.75.1
+  * build(deps): bump the k8s group across 1 directory with 3 updates
+  * `--progress`: use `journalctl -u cloud-init-main.service` if `cloud-init-main.service` is detected
+  * vz: Before calling `stopUsernet`, ensure it’s not `nil`.
+  * `limactl prune --keep-referred`: Do not skip template on failing `driverutil.ResolveVMType()`
+  * Properly embed base templates in `limactl prune`
+  * Fixing up the codeql-action version string which has gotten out-of-sync
+  * build(deps): bump google.golang.org/protobuf from 1.36.8 to 1.36.9
+  * build(deps): bump the golang-x group across 2 directories with 1 update
+  * `usrlocalsharelima`: execute `Dir()` once
+  * build(deps): bump github/codeql-action from 3.30.1 to 3.30.2
+  * Allow multiple `--yq` options for `limactl ls`
+  * build(deps): bump github.com/mikefarah/yq/v4 from 4.47.1 to 4.47.2
+  * build(deps): bump the golang-x group across 2 directories with 1 update
+  * MAINTAINERS: Invite Ansuman Sahoo (unsuman) as a Reviewer)
+  * Deprecate host attributes in instance info
+  * Add hostArch, hostOS, and identityFile to `limactl info`
+  * build(deps): bump the golang-x group across 2 directories with 2 updates
+  * build(deps): bump github/codeql-action from 3.30.0 to 3.30.1
+  * `--rosetta`: change to set `.vmOpts.vz.rosetta`
+  * Add --yq option to `limactl list` and `limactl info`
+  * Make `limactl ls --format yaml` use the same schema as the json output
+  * Drop the log message that qemu is properly signed
+  * Abort as soon as possible when running as root
+  * fix prune by warning off driver validation error
+  * Add BATS for integration tests
+  * docs/talks: update
+  * docs: move CLI plugin docs from `usage` to `config/plugin`
+  * docs/installation: add hint to install HEAD version via Homebrew
+  * docs/config/vmtype: split to multiple pages
+  * docs: remove references to beta versions
+  * docs/config/multi-arch: fix typo
+  * docs: remove explicit `--mount-type=virtiofs`
+  * docs: move "Command Reference" to the end of sidebar
+  * docs/config/vmtype: vz: fix description about legacyBIOS
+  * nerdctl: update from v2.1.3 to v2.1.4
+  * mounts: prohibit relative paths in YAML
+  * build(deps): bump actions/setup-go from 5.5.0 to 6.0.0
+  * driverutil: allow external driver stderr
+  * make check-generated: check reproducibility of *.pb.go too
+  * build(deps): bump github.com/spf13/pflag from 1.0.9 to 1.0.10
+  * make generate
+  * make generate: update pkg/driver/external
+  * docs: dev/drivers: fix required Lima version
+  * templates: default: remove /tmp/lima
+  * `vm_darwin.go`: Fix: `default_ep.sock` was not removed on exit
+  * editflags: add `--mount-only` flag
+  * build(deps): bump github/codeql-action from 3.29.11 to 3.30.0
+  * build(deps): bump github.com/spf13/cobra from 1.9.1 to 1.10.1
+  * Plain mode: support port forwarding #3699.
+  * build(deps): bump google.golang.org/grpc from 1.74.2 to 1.75.0
+  * vzNAT: fix regression
+  * `docker{,-rootful}.yaml`: Enable the containerd image store by default
+  * build(deps): bump github.com/spf13/pflag from 1.0.7 to 1.0.8
+  * `hostagent`: Fix: `ha.sock` was not removed on exit
+  * Use errors.As() instead of type assertions
+  * Add documentation about Rosetta AOT Caching
+  * update go.sum of website
+  * add docs for internal and external drivers
+  * feature: use Rosetta AOT Caching with CDI
+  * build(deps): bump actions/attest-build-provenance from 2.4.0 to 3.0.0
+  * `docker-rootful.yaml`: Fix path to `/etc/systemd/system/docker.socket.d/override.conf`
+  * feature: "yq" provision mode
+  * build(deps): bump github.com/Code-Hex/vz/v3 from 3.7.0 to 3.7.1
+  * build(deps): bump the k8s group across 1 directory with 3 updates
+  * docs: replace `neofetch` with `uname -a`
+  * driver: remove AcceptConfig
+  * Add yq subcommands to limactl and lima-guestagent
+  * driver: move back DriverName from DriverFeatures to Info
+  * `cidata.go`: Fix RosettaBinFmt did not pass to `lima.env`
+  * `--progress`: start printing log from the beginning of the current boot session
+  * support external drivers to recent changes
+  * Decompress the guestagent if required
+  * Use temporary file names for installing
+  * Add command to install the guest components
+  * build(deps): bump github.com/yoheimuta/protolint in /hack/tools
+  * Move NerdctlArchiveCache function to cacheutil
+  * `05-rosetta-volume.sh`: fix unregister rosetta
+  * `limactl restart`: add `--progress`
+  * Document GitHub teams and repo access rules
+  * decouple vm-type specific default filling and validation for internal drivers
+  * extract common types and function from limayaml
+  * add timeout to cloud init progress monitoring
+  * build(deps): bump github.com/diskfs/go-diskfs
+  * Add tilde expansion to file locators
+  * Display the error when the plugin command failed to run
+  * add preserve-env variable to doc and also add an integration test
+  * Use https://github.com/diskfs/go-diskfs/pull/296
+  * Don't configure video or keyboard devices when -display is "none"
+  * build(deps): bump google.golang.org/protobuf in /hack/tools
+  * Also check "data" provisioning scripts for param usage
+  * build(deps): bump google.golang.org/protobuf from 1.36.7 to 1.36.8
+  * feat: add warning message for both blocklist and allowlist are set
+  * ci: set GitHub Actions user to prevent brew command failure
+  * build(deps): bump github.com/yoheimuta/protolint in /hack/tools
+  * build(deps): bump the k8s group across 1 directory with 3 updates
+  * build(deps): bump github/codeql-action from 3.29.10 to 3.29.11
+  * fix: restructure `limactl start --help  output for better readability
+  * README.md: add meeting information
+  * refactor: pass through all context to avoid context.TODO() use
+  * refactor: replace context.Background() with t.Context() in tests
+  * build(deps): bump google.golang.org/grpc in /hack/tools
+  * build(deps): bump github.com/mikefarah/yq/v4 from 4.45.1 to 4.47.1
+  * build(deps): bump github/codeql-action from 3.29.9 to 3.29.10
+  * Add a context argument to the wsl commands
+  * Add fallback for busybox hostname with wsl2
+  * Revert "Use loopback for SSH connection in WSL2"
+  * community: set up regular Zoom meetings
+  * Fix usetesting linter errors
+  * Fix noctx linter errors
+  * hack/tools/go.mod: github.com/golangci/golangci-lint/v2 v2.4.0
+  * go.mod: go 1.24.0
+  * CI: use Go 1.25
+  * limactl (create|start) --help: indent examples
+  * fix server shutdown bug
+  * docs: update git workflow documentation
+  * docs: improve contributing guide with community engagement and getting started info
+  * docs: link `community/contributing` from `dev`
+  * Stop using hard-coded port 60022 for "default" instance
+  * docs: clarify how to report issues
+  * Revert "guestagent/procnettcp: remove unused, unexport funcs"
+  * For IsNFS check all parent directories up to the root until one exist
+  * add progress tracking flag to monitor VM startup state using cloud-init
+  * Get rid of `fetch-depth: 1`
+  * fix limactl run bug  by treating unparseable versions as latest instead of crashing during template validation.
+  * feat: add command aliasing via PATH lookup
+  * shutdown server if no client gets connected
+  * guestagent/procnettcp: remove unused, unexport funcs
+  * Fix problem with test symlink under msys2
+  * build(deps): bump github.com/containers/gvisor-tap-vsock
+  * implement preserving env from host into vm in shell command
+  * hack/test-templates.sh: fix LIMACTL_CREATE_ARGS: unbound variable
+  * Look for both ssh service names also for openrc
+  * build(deps): bump actions/checkout from 4.2.2 to 5.0.0
+  * build(deps): bump github/codeql-action from 3.29.8 to 3.29.9
+  * Disable shellcheck warning about env var
+  * Set permissions for ssh in wsl2 setup script
+  * Don't use sudo for root user in the wsl2 setup
+  * Create the home directory when using wsl2 setup
+  * Set the user shell when using wsl2 setup script
+  * Skip loading modules if modprobe is missing
+  * CI: redundant go test on Windows
+  * add contributing link to readme
+  * refactor: use netip.AddrPort
+  * refactor: replace net.ParseIP("0.0.0.0") with net.IPv4zero
+  * fix: fix creating bridged network interface
+  * build(deps): bump github/codeql-action from 3.29.7 to 3.29.8
+  * Don't generate null mounts cloud-config entry
+  * build(deps): bump the golang-x group across 2 directories with 3 updates
+  * build(deps): bump actions/cache from 4.2.3 to 4.2.4
+  * build(deps): bump google.golang.org/protobuf in /hack/tools
+  * build(deps): bump google.golang.org/protobuf from 1.36.6 to 1.36.7
+  * docs: clarify maintainers' affiliation
+  * docs: add a placeholder for emeritus maintainers
+  * build(deps): bump actions/download-artifact from 4.3.0 to 5.0.0
+  * bugfix:fix limactl panic because of invalid digest
+  * editflags: add `--ssh-port` flag
+  * build(deps): bump github.com/miekg/dns from 1.1.67 to 1.1.68
+  * The wsl2 image source moved upstream in finch
+  * fix: appease linter, ensure no mutation
+  * fix: remove redundant LookPath call in detectOpenSSHInfo
+  * refactor: centralize SSH executable creation
+  * fix: properly support multi-word SSH commands
+  * build(deps): bump github/codeql-action from 3.29.4 to 3.29.5
+  * build(deps): bump github/codeql-action from 3.29.3 to 3.29.4
+  * build(deps): bump google.golang.org/grpc in /hack/tools
+  * build(deps): bump mvdan.cc/sh/v3 from 3.8.0 to 3.12.0 in /hack/tools
+  * build(deps): bump google.golang.org/grpc from 1.74.0 to 1.74.2
+  * chore: enable dependabot for upgrading Go tools
+  * build(deps): bump github/codeql-action from 3.29.2 to 3.29.3
+  * set sshlocalport to instance
+  * pkg/instance/start.go: fix lint error on windows
+  * qemuimgutil: fix "Failed to get \"write\" lock" error
+  * Embed templates edited from the user interface
+  * build(deps): bump github.com/spf13/pflag from 1.0.6 to 1.0.7
+  * build(deps): bump google.golang.org/grpc from 1.73.0 to 1.74.0
+  * build(deps): bump the k8s group with 3 updates
+  * fix registration of .exe files
+  * add unit tests for Registry pkg
+  * Fix proto style issues; enable protolint
+  * Remove Kconfig and config.mk
+  * go.mod: github.com/lima-vm/lima/v2
+  * Added k0s template
+  * rename UDPEstablished to UDPUnconnected
+  * external driver plugin system and update Makefile to build exteral bins
+  * remove unnecessary legacyBIOS setting this setting is not necessary anymore on Oracle Linux 9, but produces a warning on vz vm types
+  * portfwd: create separate gRPC streams for each UDP client
+  * guestagent cidata: pass debug flag to guestagent systemd unit
+  * internal driver plugin system
+  * build(deps): bump golang.org/x/net in the golang-x group
+  * build(deps): bump github.com/miekg/dns from 1.1.66 to 1.1.67
+  * portfwdserver: use `tcpproxy` to fix `w3m -dump` issue
+  * CI: test portfwd issue (`w3m -dump` hangs)
+  * build(deps): bump the golang-x group with 3 updates
+  * registry for drivers and expose plugin info in CLI
+  * editflags: fix shell completion for containerd
+  * De-deprecate LIMA_SSH_PORT_FORWARDER
+  * Fix kernel decompression
+  * Kconfig: deprecate
+  * refactor: migrate cpuType to qemu
+  * templates: update
+  * CI: unify Windows runners to `windows-2025`
+  * Implement `limactl clone`
+  * nerdctl: update from v2.1.2 to v2.1.3
+  * Implement `limactl network (list|create|delete)`
+  * Bump alpine-lima to v0.2.44
+  * refactor(BaseDriver, drivers, image-downloader): remove driver.BaseDriver, move drivers and image-downloader to pkg/driver
+  * hostagent: Log ssh forwarding command
+  * guestagent: Fix isEmptyEvent check
+  * refactor: Fix staticcheck QF* issues
+  * Fix tunneling of connection when keepalive is set
+  * Add tests for timezone validation, split platforms
+  * refactor: Avoid os.Getenv duplication
+  * chore: Enable unconvert linter
+  * Add timezone validation
+  * test: Add unit tests for Validate minimumLimaVersion in YAML
+  * Document SSH config Include usage for easier Lima instance access
+  * docs: fix the URL to faasd
+  * chore: Update golangci-lint from v2.1 to v2.2
+  * defined a common interface for nativeimgutil & qemuimgutil
+  * Pin ltag version
+  * build(deps): bump github/codeql-action from 3.29.1 to 3.29.2
+  * Avoid segfault with unknown versions
+  * docs: remove unnecessary references to macOS
+  * build(deps): bump github/codeql-action from 3.29.0 to 3.29.1
+  * Bump ltag to fix module name
+  * refactor: Limayaml validation functions
+  * hack/test-templates.sh: workaround for agetty segfault
+  * templates: fedora: use Fedora 42
+  * templates: default: use Ubuntu 25.04 (enables 9p again)
+  * limayaml: windows: disable 9p
+  * Search for the data directory using real executable on non-Linux
+  * build(deps): bump github.com/google/yamlfmt from 0.17.1 to 0.17.2
+  * Embed templates selected from the user interface
+  * reject shrinking disk during YAML validation
+  * editflags: add `--mount-none`
+  * add warning log when non-existent directory
+  * Remove unused textutil.TrimString
+  * templates: add experimental/ubuntu-next
+  * templates: add experimental/debian-testing
+  * reporting  all the validation errors in the template
+  * templates: almalinux-10: add ppc64le
+  * templates: rocky-9: bump up to 9.6 and add s390x
+  * templates: add rocky-10
+  * build(deps): bump github.com/google/yamlfmt from 0.17.0 to 0.17.1
+  * build(deps): bump the k8s group with 3 updates
+  * sshutil: suppress warnings when SSH lacks GSSAPI
+  * fix: update provision mode validation error message
+  * build(deps): bump actions/setup-go from 5.4.0 to 5.5.0
+  * Add QEMU on Windows to CI
+  * docs: update links to policies
+  * website: update link to Nix file
+  * fix(edk2): update candidates path on Arch Linux
+  * limactl create: do not show "hidden" templates
+  * build(deps): bump actions/attest-build-provenance from 2.3.0 to 2.4.0
+  * build(deps): bump github/codeql-action from 3.28.19 to 3.29.0
+  * Search for the data directory using argv[0] *and* os.Executable()
+  * Add badge to DeepWiki AI docs
+  * build(deps): bump github.com/Code-Hex/vz/v3 from 3.6.0 to 3.7.0
+  * docs: fix a small typo in the link to the vmnet page
+  * chore: Fix lint warnings in default.yaml
+  * chore: Do not install already installed jq and curl
+  * build(deps): bump google.golang.org/grpc from 1.72.2 to 1.73.0
+  * build(deps): bump the golang-x group with 3 updates
+  * build(deps): bump ls-lint/action from 2.3.0 to 2.3.1
+  * templates: Add almalinux-10
+  * Run golangci-lint on macOS and Windows; fix lint issues
+  * build(deps): bump github/codeql-action from 3.28.18 to 3.28.19
+  * build(deps): bump ossf/scorecard-action from 2.4.1 to 2.4.2
+  * Fix installation of dummy WSL2 distro
+  * build(deps): bump github.com/goccy/go-yaml from 1.17.1 to 1.18.0
+  * chore: Fix typos in comments
+  * Add conf.d for lima-guestagent service
+  * Change package name of instance/hostname from instance to hostname
+  * build(deps): bump google.golang.org/grpc from 1.72.1 to 1.72.2
+  * go.mod: drop dependency on github.com/containerd/containerd
+  * Split imports into sections: std, default, local
+  * Move identifierutil → instance/hostname
+  * build(deps): bump github.com/santhosh-tekuri/jsonschema/v6
+  * build(deps): bump github.com/google/yamlfmt from 0.16.0 to 0.17.0
+  * Allow dotted instance names in `limactl start`
+  * CI: release: avoid running apt-get twice
+  * info: silence "guest agent binary could not be found"
+  * Locate the limactl executable via os.Args[0] instead of os.Executable()
+  * feat: add disk guide Signed-off-by: Animesh Pathak <kurosakiichigo.songoku@gmail.com> Co-authored-by: Akihiro Suda <suda.kyoto@gmail.com>
+  * make update-templates
+  * nerdctl: update from v2.1.1 to v2.1.2
+  * Use unique function and variable names for update-template-almalinux-kitten.sh
+  * fix(cidata): do not overwrite bash in alpine vm
+  * Rename infoutil.GetInfo() to info.New()
+  * build(deps): bump github/codeql-action from 3.28.17 to 3.28.18
+  * Don't use securejoin(templateDir, templateName)
+  * build(deps): bump the k8s group with 3 updates
+  * build(deps): bump google.golang.org/grpc from 1.72.0 to 1.72.1
+  * Always return an error when a requested instance is not found
+  * Make sure the local version of hugo is installed
+  * Update docsy to version 0.11.0 and hugo to 0.133.1
+  * vz: Intel Mac: warn if macOS < 15.5
+  * Revert yq/v4 from v4.45.2 → v4.45.1
+  * Update cmd/limactl/editflags/editflags.go
+  * nerdctl: update from v2.0.5 to v2.1.1
+  * feat: edit disk size by flag
+  * CI: set GOTOOLCHAIN=local to prevent auto update of Go
+  * feat: support resizing guestOS disk
+  * Kconfig: set CONFIG_GUESTAGENT_COMPRESS=y by default
+  * templates: oraclelinux-8: known to work on M1
+  * removing fallback for inspectDiskSize
+  * decoupling imgutils from filenams
+  * Move jsonschema validation into a utility dir
+  * hostagent: verify existence of guestagent earlier
+  * limactl info: show the detected guest agent paths
+  * guestagent: prioritize BIN.gz over BIN
+  * build(deps): bump actions/setup-go from 5.4.0 to 5.5.0
+  * Clean up codes for QEMU < 7.0
+  * CI: cross-compile GOOS=netbsd,dragonfly
+  * Make the jsonschema validate the base
+  * chore: move CreateDataDisk and ResizeDataDisk to util
+  * website: add back `limactl sudoers`
+  * build(deps): bump the k8s group with 3 updates
+  * build(deps): bump github.com/containers/gvisor-tap-vsock
+  * build(deps): bump github.com/miekg/dns from 1.1.65 to 1.1.66
+  * website: unlink hijacked devops toolkit series link
+  * Makefile: split lima-additional-guestagents-*.tar.gz from lima-*.tar.gz
+  * Makefile: infer NATIVE_GUESTAGENT_ARCH from GOARCH
+  * website: add DragonFlyBSD
+  * Makefile: artifacts: call clean before artifact
+  * Makefile: native: add template_experimentals
+  * move environment variables
+  * build(deps): bump the golang-x group with 4 updates
+  * Bump golangci-lint 2.0.1 → 2.1.0
+  * build(deps): bump github.com/mikefarah/yq/v4 from 4.45.1 to 4.45.2
+  * build(deps): bump golangci/golangci-lint-action from 7.0.0 to 8.0.0
+  * build(deps): bump github/codeql-action from 3.28.16 to 3.28.17
+  * Add update-template script by copy-and-paste
+  * templates: add almalinux-kitten-10
+  * decouple qemu internal from pkg/instance & pkg/limayaml
+  * qemu: experimental support for PPC64LE
+  * qemu: tcg: use `max` by default
+  * Makefile: add `update-templates`
+  * templates: update
+  * Add dirnames.TemplatesDir() function
+  * Set riscv64 cpu to max
+  * nerdctl: update to v2.0.5
+  * Search $LIMA_HOME/_templates before /usr/local/share/lima/templates
+  * Make sure the Templates() function returns all templates from LIMA_TEMPLATES_PATH
+  * Don't ignore error returned by Templates()
+  * Add {{.Temp}} variable to host templates
+  * build(deps): bump google.golang.org/grpc from 1.71.1 to 1.72.0
+  * fix: hiding private snippets from bashCompletion
+  * Deprecate the ansible provision mode and playbook
+  * build(deps): bump actions/attest-build-provenance from 2.2.3 to 2.3.0
+  * Fix version parsing in case of dirty checkout of a tag
+  * refactor: simplify parsePortsFromRules
+  * build(deps): bump github.com/cpuguy83/go-md2man/v2 from 2.0.6 to 2.0.7
+  * build(deps): bump actions/download-artifact from 4.2.1 to 4.3.0
+  * Enable usetesting linter
+  * build(deps): bump github/codeql-action from 3.28.15 to 3.28.16
+  * Fix `nativeimgutil_test.go` on Windows with QEMU installed
+  * qemu: Add paths to riscv64 efi binaries
+  * templates: Add Debian and Fedora riscv64 images
+  * templates: add linuxbrew
+  * Graduate base/file embedding
+  * Refactor Ubuntu images into base templates
+  * build(deps): bump github.com/lima-vm/sshocker from 0.3.6 to 0.3.8
+  * Move the allowed licenses to a separate file
+  * Add license checking to lint
+  * support: limactl disk import command
+  * templates: add ubuntu-25.04
+  * oraclelinux: fix virtiofs support
+  * ResolveVMType: ignore legacyBIOS on non-Intel
+  * rootless: allow UID >= 524288
+  * templates: add fedora-42
+  * Enable gRPC port forwarder by default again
+  * sudoers: show the command only on darwin
+  * build(deps): bump github.com/diskfs/go-diskfs from 1.5.2 to 1.6.0
+  * Allow drivers to negotiate transport independent of hostagent
+  * Embed binary files as base64 encoded strings
+  * Disable ControlPersist for sshfs connections on Windows
+  * update: capitalize command & command flag descriptions (for consistency and clarity)
+  * Fix slow image pull caused by delayed DNS response
+  * Add context to StopGracefully
+  * CI: fix the commit hash of golangci-lint-action
+  * build(deps): bump github/codeql-action from 3.28.13 to 3.28.15
+  * build(deps): bump golang.org/x/net in the golang-x group
+  * refactor: add error wrapping
+  * build(deps): bump github.com/miekg/dns from 1.1.64 to 1.1.65
+  * build(deps): bump the golang-x group with 3 updates
+  * Remove redundant major version number from instance name
+  * build(deps): bump golang.org/x/net in the golang-x group
+  * build(deps): bump github.com/goccy/go-yaml from 1.16.0 to 1.17.1
+  * build(deps): bump google.golang.org/grpc from 1.71.0 to 1.71.1
+  * refactor: Simplify code with gopls modernize
+  * fix(docs): Fix link to user-v2 networking.
+  * build(deps): bump ls-lint/action from 2.2.3 to 2.3.0
+  * build(deps): bump golangci/golangci-lint-action
+  * Bind QEMU GA socket only in virtio mode
+  * disk: Round up disk size to 512 bytes
+  * replaced usages of usr.HomeDir
+  * feat: added a default `--yes` flag to set the tty
+  * build(deps): bump github/codeql-action from 3.28.12 to 3.28.13
+  * build(deps): bump google.golang.org/protobuf from 1.36.5 to 1.36.6
+  * Upgrade golangci-lint to v2
+  * Unify Lima user home inside guest for all platforms
+  * Make sure that ansible params check the playbook
+  * templates: update
+  * build(deps): bump actions/cache from 4.2.2 to 4.2.3
+  * nerdctl: update to v2.0.4
+  * build(deps): bump actions/upload-artifact from 4.6.1 to 4.6.2
+  * build(deps): bump github/codeql-action from 3.28.11 to 3.28.12
+  * build(deps): bump actions/setup-go from 5.3.0 to 5.4.0
+  * build(deps): bump actions/download-artifact from 4.2.0 to 4.2.1
+  * Fix mount support in QEMU on Windows hosts
+  * Start QEMU binary as a background process
+  * Enable port forwarding tests for WSL2
+  * Add support for restarting a instance
+  * build(deps): bump github.com/containers/gvisor-tap-vsock
+  * build(deps): bump actions/download-artifact from 4.1.9 to 4.2.0
+  * build(deps): bump github.com/miekg/dns from 1.1.63 to 1.1.64
+  * build(deps): bump github.com/elastic/go-libaudit/v2 from 2.6.1 to 2.6.2
+  * Improve Subsystem paths handling on Windows hosts
+  * added binary installation docs
+  * build(deps): bump github.com/containerd/containerd from 1.7.26 to 1.7.27
+  * build(deps): bump github.com/goccy/go-yaml from 1.15.23 to 1.16.0
+  * build(deps): bump golangci/golangci-lint-action from 6.5.1 to 6.5.2
+  * Add initial support for DragonFly BSD
+  * Support setting extra entries for PATH env variable on Windows hosts
+  * qemu: experimental support for S390X
+  * build(deps): bump the k8s group with 3 updates
+  * Update WSL2 tempate and enable systemd tests on Windows
+  * build(deps): bump golangci/golangci-lint-action from 6.5.0 to 6.5.1
+  * Do tilde-expansion only once in FillDefaults()
+  * Allow an image URL instead of a template reference
+  * included Kernel and Initrd
+  * Add support for exiting ssh session
+  * Implement "data" provision mode
+  * feat: ask to start instance if not running in limactl shell
+  * build(deps): bump github.com/diskfs/go-diskfs from 1.5.1 to 1.5.2
+  * templates: add experimental/debian-sid
+  * build(deps): bump github/codeql-action from 3.28.10 to 3.28.11
+  * build(deps): bump al.essio.dev/pkg/shellescape from 1.5.1 to 1.6.0
+  * build(deps): bump github.com/lima-vm/sshocker from 0.3.5 to 0.3.6
+  * build(deps): bump github.com/containers/gvisor-tap-vsock
+  * Create `limactl tmpl yq` command to query a template
+  * docs/examples/gha: use lima-actions
+  * build(deps): bump the golang-x group with 4 updates
+  * build(deps): bump actions/attest-build-provenance from 2.2.2 to 2.2.3
+  * build(deps): bump golang.org/x/net in the golang-x group
+  * build(deps): bump google.golang.org/grpc from 1.70.0 to 1.71.0
+  * added the yq check to test-template
+  * Adjust for recent changes to test-templates.sh
+  * Add copyright headers to new files
+  * Document that template embedding is experimental
+  * Throw validation error when a template digest is specified
+  * Make sure that all the standard templates are embedded correctly
+  * Make test-misc template based on ubuntu-22.04 template
+  * Template validation needs to embed all bases first
+  * Add optional support for specifying digests for template locators
+  * Add --embed-all option to `limactl tmpl copy` command
+  * Upgrade additionalDisk entries from string to map when adding fields
+  * Mark the limactl template command and template embedding as experimental
+  * Rename basedOn → base
+  * Update locator functions to handle Windows file names
+  * Assemble templates using the new basedOn setting
+  * Use common Windows Subsystem path helper for calling tools on Windows
+  * Use loopback for SSH connection in WSL2
+  * chore: update wsl2 rootfs
+  * Add "Copyright The Lima Authors" boilterplate
+  * build(deps): bump github.com/cheggaaa/pb/v3 from 3.1.6 to 3.1.7
+  * chore: Remove redundant build tags
+  * Enable Integration tests in Windows CI
+  * build(deps): bump actions/attest-build-provenance from 2.2.1 to 2.2.2
+  * build(deps): bump actions/cache from 4.2.1 to 4.2.2
+  * build(deps): bump github.com/containerd/containerd from 1.7.25 to 1.7.26
+  * build(deps): bump actions/attest-build-provenance from 2.2.0 to 2.2.1
+  * refactor: Simplify slice concatenation with slices.Concat
+  * Don't use the result of yaml.Unmarshal after it returns an error
+  * Don't try to unregister an instance that failed validation
+  * build(deps): bump golang.org/x/crypto from 0.33.0 to 0.35.0
+  * refactor: Simplify yqutil.Join
+  * build(deps): bump nick-fields/retry from 3.0.1 to 3.0.2
+  * build(deps): bump actions/download-artifact from 4.1.8 to 4.1.9
+  * build(deps): bump github.com/diskfs/go-diskfs from 1.5.0 to 1.5.1
+  * Only try to stop qemu-binfmt service on Alpine if it exists
+  * Add optional loading of UEFI firmware via -bios parameter in QEMU
+  * networks.yaml: clean up outdated comments
+  * build(deps): bump github/codeql-action from 3.28.9 to 3.28.10
+  * build(deps): bump actions/upload-artifact from 4.6.0 to 4.6.1
+  * build(deps): bump ossf/scorecard-action from 2.4.0 to 2.4.1
+  * build(deps): bump github.com/google/go-cmp from 0.6.0 to 0.7.0
+  * build(deps): bump actions/cache from 4.2.0 to 4.2.1
+  * go.mod: clean up gomodjail comments
+  * docs/config/network: follow-up
+  * build(deps): bump github.com/goccy/go-yaml from 1.15.22 to 1.15.23
+  * build(deps): bump nick-fields/retry from 3.0.0 to 3.0.1
+  * Use SSHAddress for SSH forwarding in QEMU
+  * build(deps): bump github.com/pierrec/lz4/v4 from 4.1.17 to 4.1.22
+  * build(deps): bump github.com/google/btree from 1.1.2 to 1.1.3
+  * build(deps): bump github.com/mailru/easyjson from 0.7.7 to 0.9.0
+  * build(deps): bump github.com/emicklei/go-restful/v3
+  * build(deps): bump github.com/go-openapi/jsonreference
+  * build(deps): bump sigs.k8s.io/structured-merge-diff/v4
+  * build(deps): bump github.com/containerd/errdefs from 0.3.0 to 1.0.0
+  * build(deps): bump github.com/spf13/cobra from 1.8.1 to 1.9.1
+  * build(deps): bump github.com/mdlayher/socket from 0.4.1 to 0.5.1
+  * build(deps): bump golangci/golangci-lint-action from 6.4.0 to 6.5.0
+  * splitted network page
+  * go.mod: experimental integration of gomodjail (library sandbox)
+  * Makefile: allow setting KEEP_SYMBOLS=1
+  * install-containerd.sh: check RefuseManualStart property of dbus
+  * build(deps): bump the k8s group with 3 updates
+  * build(deps): bump golangci/golangci-lint-action from 6.3.2 to 6.4.0
+  * WSL: Create symlink at /mnt/lima-cidata
+  * templates: update
+  * qemu: upgrade Cortex-A72 to Cortex-A76
+  * qemu: revert "Restrict pessimization of M4 arch to macOS 15.2"
+  * Fix incorrect firmware path suggestion for aarch64 in qemu.go
+  * build(deps): bump github.com/goccy/go-yaml from 1.15.17 to 1.15.22
+  * build(deps): bump the k8s group across 1 directory with 3 updates
+  * CI: use Go 1.24
+  * CI: use golangci-lint 1.64.2
+  * test: Update ubuntu runner as 20.04 is going away
+  * build(deps): bump golangci/golangci-lint-action from 6.3.0 to 6.3.2
+  * build(deps): bump github.com/google/yamlfmt from 0.15.0 to 0.16.0
+  * build(deps): bump golang.org/x/net in the golang-x group
+  * build(deps): bump github/codeql-action from 3.28.8 to 3.28.9
+  * build(deps): bump gotest.tools/v3 from 3.5.1 to 3.5.2
+  * Add example with containers on Podman Engine
+  * Make it possible to configure user shell
+  * Refactor os and arch conditionals in Makefile
+  * CI: integrate govulncheck
+  * Fix `panic: 15.2 is not in dotted-tri format`
+  * build(deps): bump google.golang.org/protobuf from 1.36.4 to 1.36.5
+  * build: quote CC in Makefile
+  * Checking for protected dirs must be against mountPoint and not location
+  * Restrict pessimization of M4 arch to macOS 15.2
+  * build(deps): bump golangci/golangci-lint-action from 6.2.0 to 6.3.0
+  * build(deps): bump the golang-x group with 3 updates
+  * templates: update
+  * use temp directory as destination directory for copy command
+  * Update go-diskfs package to 1.5.0
+  * build(deps): bump github.com/containers/gvisor-tap-vsock
+  * build(deps): bump github.com/goccy/go-yaml from 1.15.16 to 1.15.17
+  * refactor: use math/rand/v2 instead of math/rand
+  * build(deps): bump github.com/goccy/go-yaml from 1.15.15 to 1.15.16
+  * limactl disk: Do not use qemu-img for raw disks
+  * build(deps): bump github/codeql-action from 3.28.6 to 3.28.8
+  * build(deps): bump github.com/spf13/pflag from 1.0.5 to 1.0.6
+  * build(deps): bump github.com/cyphar/filepath-securejoin
+  * website gha.md: write LIMA_VERSION to $GITHUB_ENV
+  * build(deps): bump github/codeql-action from 3.28.5 to 3.28.6
+  * build(deps): bump google.golang.org/protobuf from 1.36.3 to 1.36.4
+  * build(deps): bump github.com/miekg/dns from 1.1.62 to 1.1.63
+  * build(deps): bump github/codeql-action from 3.28.4 to 3.28.5
+  * Remove unnecessary platform specific workaround in iso9660util
+  * build(deps): bump google.golang.org/grpc from 1.69.4 to 1.70.0
+  * build(deps): bump github/codeql-action from 3.28.3 to 3.28.4
+  * Return error early when instance already exists
+  * Revert "fix inconsistency error in limactl create command intance name exists"
+  * build(deps): bump actions/attest-build-provenance from 2.1.0 to 2.2.0
+  * build(deps): bump github/codeql-action from 3.28.2 to 3.28.3
+  * build(deps): bump github/codeql-action from 3.28.1 to 3.28.2
+  * build(deps): bump actions/setup-go from 5.2.0 to 5.3.0
+  * build(deps): bump github.com/cheggaaa/pb/v3 from 3.1.5 to 3.1.6
+  * templates: update
+  * nerdctl: update to v2.0.3
+  * templates: centos-stream-10: update comment
+  * Add mutex for the shared sshVersions map
+  * Respect the SSH environment variable if any
+  * Add the size and the mtime to the cache key
+  * Cache the OpenSSH version if it is needed again
+  * Refactor: deduplicate common code into sshutil
+  * build(deps): bump github.com/containers/gvisor-tap-vsock
+  * build(deps): bump github.com/goccy/go-yaml from 1.15.14 to 1.15.15
+  * cidata: Use mac address as dhcpd identifier
+  * fix inconsistency error in limactl create command intance name exists
+  * build(deps): bump golangci/golangci-lint-action from 6.1.1 to 6.2.0
+  * build(deps): bump github.com/goccy/go-yaml from 1.15.13 to 1.15.14
+  * build(deps): bump google.golang.org/protobuf from 1.36.2 to 1.36.3
+  * change adds validation for AdditionalDisks
+  * refactor: replace interface{} with any
+  * build(deps): bump github.com/cyphar/filepath-securejoin
+  * build(deps): bump google.golang.org/grpc from 1.69.2 to 1.69.4
+  * build(deps): bump github.com/mikefarah/yq/v4 from 4.44.6 to 4.45.1
+  * build(deps): bump github.com/google/yamlfmt from 0.14.0 to 0.15.0
+  * build(deps): bump github.com/containerd/containerd from 1.7.24 to 1.7.25
+  * build(deps): bump github/codeql-action from 3.28.0 to 3.28.1
+  * Un-deprecate non-strict YAML
+  * build(deps): bump actions/upload-artifact from 4.5.0 to 4.6.0
+  * Only install fuse-sshfs from epel
+  * redirect user to release page on github
+  * Disable the epel-cisco-openh264 repository
+  * k8s: wait for images to be pulled
+  * k8s: turn off kubelet while pulling images
+  * build(deps): bump google.golang.org/protobuf from 1.36.1 to 1.36.2
+  * Bump k8s flannel version from 0.26.1 to 0.26.2
+  * build(deps): bump github.com/Code-Hex/vz/v3 from 3.5.1 to 3.6.0
+  * build(deps): bump golang.org/x/net in the golang-x group
+  * build(deps): bump golang.org/x/sys in the golang-x group
+  * Refactor the containerd archive compression
+  * website: add simple makefile for testing locally
+  * Use sync.OnceValue to implement hasSMEDarwin()
+  * Fix internal links on the website
+  * Revert to quiet log level for older ssh versions
+  * build(deps): bump github.com/invopop/jsonschema from 0.12.0 to 0.13.0
+  * Disable AVX-512 support for macOS Intel host
+  * website: disable the sidebar search box
+  * website: unify and enhance styling of search boxes
+  * add nestedVirtualization documentation to default.yaml
+  * templates: add centos-stream-10
+  * enable search on website
+  * website: docs/installation: update
+  * docs/internals.md: fix a broken symlink
+  * change make logs quiet by default and adds a verbose flag to enable verbose log output
+  * template: opensuse: virtiofs is not supported
+  * limactl shell: avoid silencing errors
+  * templates: archlinux: allow 9p again
+  * qemu: avoid `Property 'host-arm-cpu.sme' not found`
+  * templates: update
+  * Revamp GRPC Port forwarding tunnels to use existing proxy
+  * build(deps): bump google.golang.org/protobuf from 1.36.0 to 1.36.1
+  * build(deps): bump github/codeql-action from 3.27.9 to 3.28.0
+  * build(deps): bump github.com/goccy/go-yaml from 1.15.11 to 1.15.13
+  * Move template locator and reader code into new limatmpl package
+  * Setup sshfs in fuse.conf before setup dns iptables
+  * build(deps): bump github.com/goccy/go-yaml from 1.15.10 to 1.15.11
+  * build(deps): bump google.golang.org/grpc from 1.69.0 to 1.69.2
+  * build(deps): bump golang.org/x/net in the golang-x group
+  * review
+  * add comment & ignore .idea dir
+  * ci: raise timeout for golangci
+  * build(deps): bump actions/upload-artifact from 4.4.3 to 4.5.0
+  * build(deps): bump github.com/cyphar/filepath-securejoin
+  * build(deps): bump github.com/cpuguy83/go-md2man/v2 from 2.0.5 to 2.0.6
+  * build(deps): bump google.golang.org/protobuf from 1.35.2 to 1.36.0
+  * build(deps): bump github.com/goccy/go-yaml from 1.15.9 to 1.15.10
+  * Allow running Enterprise Linux release 10 too
+  * build(deps): bump github/codeql-action from 3.27.7 to 3.27.9
+  * build(deps): bump google.golang.org/grpc from 1.68.1 to 1.69.0
+  * build(deps): bump github.com/goccy/go-yaml from 1.15.8 to 1.15.9
+  * build(deps): bump github.com/lima-vm/sshocker from 0.3.4 to 0.3.5
+  * build(deps): bump actions/setup-go from 5.1.0 to 5.2.0
+  * build(deps): bump golang.org/x/crypto from 0.30.0 to 0.31.0
+  * Silence `WARN[0000] vmType vz: ignoring networks[0]: [Metric]`
+  * Use yq string evaluator instead of stream evaluator
+  * build(deps): bump github/codeql-action from 3.27.6 to 3.27.7
+  * build(deps): bump the k8s group with 3 updates
+  * Fix typo in Port Forwarding documentation
+  * sysprof,osutil: simplify with sync.OnceValues
+  * build(deps): bump actions/attest-build-provenance from 2.0.1 to 2.1.0
+  * build(deps): bump github.com/goccy/go-yaml from 1.15.7 to 1.15.8
+  * build(deps): bump actions/attest-build-provenance from 2.0.0 to 2.0.1
+  * Bump the kubeadm config beta version
+  * Make sure to install podman package from repo
+  * guestagent: Improve startup logging
+  * gueestagenet: Clarify error handling
+  * Bump k8s flannel version from 0.26.0 to 0.26.1
+  * build(deps): bump github.com/mikefarah/yq/v4 from 4.44.5 to 4.44.6
+  * build(deps): bump github.com/cyphar/filepath-securejoin
+  * build(deps): bump actions/cache from 4.1.2 to 4.2.0
+  * build(deps): bump github.com/goccy/go-yaml from 1.15.6 to 1.15.7
+  * build(deps): bump the golang-x group with 4 updates
+  * build(deps): bump google.golang.org/grpc from 1.67.1 to 1.68.1
+  * build(deps): bump actions/attest-build-provenance from 1.4.4 to 2.0.0
+  * CI and docs: update socket_vmnet (1.2.0)
+  * build(deps): bump github/codeql-action from 3.27.5 to 3.27.6
+  * portfwd: Fix handling the last UDP  message
+  * portfwd: Optimize errors.Is() checks
+  * docs/examples/gha: verify GitHub Attestations
+
+-------------------------------------------------------------------
+Tue Dec 17 17:44:52 UTC 2024 - Alessio Biancalana <alessio.biancalana@suse.com>
+
+- Add initial lima package 

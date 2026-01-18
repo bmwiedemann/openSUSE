@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/lima-vm/lima.git</param>
+              <param name="changesrevision">91200bc655134d90e3462df8c2166f434ea89607</param></service></servicedata>
