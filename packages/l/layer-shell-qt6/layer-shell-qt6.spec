@@ -1,7 +1,7 @@
 #
 # spec file for package layer-shell-qt6
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2021 Fabian Vogt
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,7 +27,7 @@
 %define rname layer-shell-qt
 %bcond_without released
 Name:           layer-shell-qt6
-Version:        6.5.4
+Version:        6.5.5
 Release:        0
 Summary:        wlr-layer-shell integration for Qt
 License:        LGPL-3.0-or-later
