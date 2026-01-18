@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 15 08:26:47 UTC 2026 - Ladislav Slezák <lslezak@suse.com>
+
+- Drop the libyui dependency (related to bsc#1254978)
+- 5.0.8
+
+-------------------------------------------------------------------
 Fri May 16 17:29:09 UTC 2025 - Knut Anderssen <kanderssen@suse.com>
 
 - Move also the firewall section before software in inst_autosetup

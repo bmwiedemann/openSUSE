@@ -1,7 +1,7 @@
 #
 # spec file for package autoyast2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 
 Name:           autoyast2
-Version:        5.0.7
+Version:        5.0.8
 Release:        0
 Summary:        YaST2 - Automated Installation
 License:        GPL-2.0-only
@@ -122,7 +122,6 @@ Requires:       yast2
 Requires:       yast2-bootloader
 Requires:       yast2-core
 Requires:       yast2-country
-Requires:       yast2-ncurses
 # ProductSpec API
 Requires:       yast2-packager >= 4.4.13
 # ServicesManagerTargetClass::BaseTargets
