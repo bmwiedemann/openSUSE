@@ -1,7 +1,7 @@
 #
 # spec file for package krdp6
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2024 Fabian Vogt
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,7 +27,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           krdp6
-Version:        6.5.4
+Version:        6.5.5
 Release:        0
 Summary:        RDP Server for Plasma
 License:        LGPL-2.1-or-later
