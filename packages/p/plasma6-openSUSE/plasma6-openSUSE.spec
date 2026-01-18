@@ -1,7 +1,7 @@
 #
 # spec file for package plasma6-openSUSE
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 
 # Plasma 6 pulls in Qt 5 as well, tell qml-autoreqprov what to use
 %global __qml_requires_opts --qtver 6
-%global plasma_version 6.5.4
+%global plasma_version 6.5.5
 Name:           plasma6-openSUSE
 Version:        84.87~git20240313T170730~9c664b7
 Release:        0

@@ -288,4 +288,12 @@
     <comment>Plasma 6.5.4 (forwarded request 1321831 from Vogtinator)</comment>
     <requestid>1322051</requestid>
   </revision>
+  <revision rev="36" vrev="35">
+    <srcmd5>8d754d8c178279c054cd09dc2897abac</srcmd5>
+    <version>84.87~git20240313T170730~9c664b7</version>
+    <time>1768771176</time>
+    <user>anag_factory</user>
+    <comment>Plasma 6.5.5, hopefully boring (forwarded request 1327258 from Vogtinator)</comment>
+    <requestid>1327871</requestid>
+  </revision>
 </revisionlist>
