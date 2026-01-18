@@ -1361,4 +1361,12 @@ New stable rel</comment>
     - Various subsetting, build, fuzzing, and documentation fixes. (forwarded request 1324573 from iznogood)</comment>
     <requestid>1324682</requestid>
   </revision>
+  <revision rev="133" vrev="2">
+    <srcmd5>1340f759542d9b52036ee249885cc44a</srcmd5>
+    <version>12.3.0</version>
+    <time>1768771113</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1327784</requestid>
+  </revision>
 </revisionlist>

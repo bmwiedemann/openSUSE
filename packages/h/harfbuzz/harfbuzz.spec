@@ -1,7 +1,7 @@
 #
 # spec file for package harfbuzz
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,6 +25,8 @@ License:        MIT
 URL:            https://www.freedesktop.org/wiki/Software/HarfBuzz
 Source0:        %{name}-%{version}.tar.zst
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM harfbuzz-CVE-2026-22693.patch bsc#1246459 mgorse@suse.com -- fix a NULL pointer dereference.
+Patch0:         harfbuzz-CVE-2026-22693.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
