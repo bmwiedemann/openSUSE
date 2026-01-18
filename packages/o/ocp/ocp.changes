@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 18 08:51:14 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.1.1
+  Bugfix release
+  * [MIDI] loading files would cause crash (null dereference) if
+    ~/.timidity.cfg not present.
+  * Avoid using extended SED syntax in stuff/Makefile.
+
+-------------------------------------------------------------------
 Fri Jan 16 16:28:54 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.1.0
