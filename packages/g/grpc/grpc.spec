@@ -34,6 +34,7 @@ Patch3:         return-values.patch
 Patch4:         telemetry.patch
 Patch14:        ARM-Unaligned-access-fixes.patch
 Patch15:        Fix-compilation-on-RHEL-7-ppc64le-gcc-4.8.patch
+Patch16:        grpc_missing_includes.patch
 BuildRequires:  abseil-cpp-devel >= 20240722
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -131,6 +132,7 @@ This subpackage contains source code of the gRPC reference implementation.
 
 %prep
 %autosetup -p1
+
 find "." -type f -exec grep -l '/usr/bin/python' {} + |
 	xargs -r perl -i -lpe \
 	's{#! ?/usr/bin/python\S*}{#!/usr/bin/python3}g;'

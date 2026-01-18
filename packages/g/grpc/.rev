@@ -688,4 +688,12 @@ fixed in that other package, after which it will trickle down.</comment>
     <comment>- Update to version 1.76.0:</comment>
     <requestid>1316610</requestid>
   </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>31740aaab2a0867df8aeae7e7ffda283</srcmd5>
+    <version>1.76.0</version>
+    <time>1768771109</time>
+    <user>anag_factory</user>
+    <comment>- Added patch grpc_missing_includes.patch</comment>
+    <requestid>1327729</requestid>
+  </revision>
 </revisionlist>

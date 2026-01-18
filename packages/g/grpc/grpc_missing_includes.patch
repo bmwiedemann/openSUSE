@@ -1,0 +1,33 @@
+--- grpc-1.76.0/include/grpc/event_engine/memory_request.h	2026-01-16 16:08:49.306769226 +0100
++++ grpc-1.76.0/include/grpc/event_engine/memory_request.h	2026-01-16 16:09:25.308460657 +0100
+@@ -17,6 +17,8 @@
+ #include <grpc/support/port_platform.h>
+ #include <stddef.h>
+ 
++#include <string>
++
+ #include "absl/strings/string_view.h"
+ 
+ namespace grpc_event_engine {
+--- grpc-1.76.0/src/core/channelz/v2tov1/property_list.cc	2026-01-16 16:08:49.318359694 +0100
++++ grpc-1.76.0/src/core/channelz/v2tov1/property_list.cc	2026-01-16 16:36:07.696439170 +0100
+@@ -14,6 +14,8 @@
+ 
+ #include "src/core/channelz/v2tov1/property_list.h"
+ 
++#include <algorithm>
++#include <limits>
+ #include <cstdint>
+ #include <optional>
+ #include <string>
+--- grpc-1.76.0/src/core/util/glob.cc	2026-01-16 16:08:49.411203729 +0100
++++ grpc-1.76.0/src/core/util/glob.cc	2026-01-16 16:10:43.618327606 +0100
+@@ -14,6 +14,8 @@
+ 
+ #include "absl/strings/string_view.h"
+ 
++#include <algorithm>
++
+ namespace grpc_core {
+ 
+ namespace {
