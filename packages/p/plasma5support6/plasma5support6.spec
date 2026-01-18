@@ -1,7 +1,7 @@
 #
 # spec file for package plasma5support6
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %bcond_without released
 # Note: despite being in the plasma namespace upstream, the build system follows the frameworks conventions
 Name:           plasma5support6
-Version:        6.5.4
+Version:        6.5.5
 Release:        0
 Summary:        KF6 Porting aid
 License:        LGPL-2.0-or-later
