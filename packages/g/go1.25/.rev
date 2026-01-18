@@ -220,4 +220,30 @@
   * go#76360 os: on windows RemoveAll removing directories containing read-only files errors with unlinkat ... Access is denied, ReOpenFile error handling followup (forwarded request 1320928 from jfkw)</comment>
     <requestid>1320929</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>71aa99c92a389ada9f8e7e76b6292941</srcmd5>
+    <version>1.25.6</version>
+    <time>1768771108</time>
+    <user>anag_factory</user>
+    <comment>- go1.25.6 (released 2026-01-15) includes security fixes to the go
+  command, and the archive/zip, crypto/tls, and net/url packages,
+  as well as bug fixes to the compiler, the runtime, and the
+  crypto/tls, errors, and os packages.
+  Refs boo#1244485 go1.25 release tracking
+  CVE-2025-61726 CVE-2025-61728 CVE-2025-61730 CVE-2025-61731 CVE-2025-68119 CVE-2025-68121
+  * go#76855 go#76443 boo#1256821 security: fix CVE-2025-61730 crypto/tls: handshake messages may be processed at the incorrect encryption level
+  * go#77104 go#77099 boo#1256820 security: fix CVE-2025-68119 cmd/go: unexpected code execution when invoking toolchain
+  * go#77106 go#77100 boo#1256819 security: fix CVE-2025-61731 cmd/go: bypass of flag sanitization can lead to arbitrary code execution
+  * go#77108 go#77101 boo#1256817 security: fix CVE-2025-61726 net/http: memory exhaustion in Request.ParseForm
+  * go#77110 go#77102 boo#1256816 security: fix CVE-2025-61728 archive/zip: denial of service when parsing arbitrary ZIP archives
+  * go#77115 go#77113 boo#1256818 security: fix CVE-2025-68121 crypto/tls: Config.Clone copies automatically generated session ticket keys, session resumption does not account for the expiration of full certificate chain
+  * go#76392 os: package initialization hangs is Stdin is blocked
+  * go#76409 crypto/tls: earlyTrafficSecret should use ClientHelloInner if ECH enabled
+  * go#76620 os: on Unix, Readdirnames skips directory entries with zero inodes
+  * go#76761 runtime: stack split at bad time in os/signal with Go 1.25.4 windows 386
+  * go#76776 runtime: race detector crash on ppc64le
+  * go#76967 cmd/compile/internal/ssa: Compile.func1(): panic during sccp while compiling &lt;function&gt;: runtime error: index out of range
+  * go#76973 errors: errors.Join behavior changed in 1.25 (forwarded request 1327527 from jfkw)</comment>
+    <requestid>1327532</requestid>
+  </revision>
 </revisionlist>
