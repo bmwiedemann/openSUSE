@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 16 06:54:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 52.11.7 (versions between .0 and this one were
+  not released):
+  * Release Highlights
+    - This release includes a complementary license, enabling
+      Kubeshark to run in clusters of up to 100 nodes, free
+  * Bug Fixes & New Features
+    - Extended complementary license
+
+-------------------------------------------------------------------
 Wed Dec 17 06:34:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 52.11.0:
