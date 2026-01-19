@@ -1,7 +1,7 @@
 #
 # spec file for package warewulf4
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,23 +29,19 @@
 ExclusiveArch:  x86_64 aarch64
 
 Name:           warewulf4
-Version:        4.6.4
+Version:        4.6.5
 Release:        0
 Summary:        A suite of tools for clustering
 License:        BSD-3-Clause
 Group:          Productivity/Clustering/Computing
 URL:            https://warewulf.org
-Source0:        warewulf-%{version}.tar
-Source1:        vendor.tar.xz
+Source0:        https://github.com/warewulf/warewulf/releases/download/v%{version}/warewulf-%{version}.tar.gz#/warewulf4-v%{version}.tar.gz
+Source1:        vendor.tar.gz
 Source5:        warewulf4-rpmlintrc
 Source10:       config-ww4.sh
 Source11:       adjust_overlays.sh
 Source20:       README.dnsmasq
 Source21:       README.RKE2.md
-Patch0:         switched-to-dnsmasq-as-default-dhcp-and-tftp-service.patch
-Patch1:         fix-CVE-2025-58058.patch
-#Patch1:         overlay.patch
-#Patch2:         upstream.patch
 
 BuildRequires:  %{python_module Sphinx-latex}
 BuildRequires:  distribution-release
@@ -66,7 +62,6 @@ BuildRequires:  pkgconfig(gpgme)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %sysusers_requires
 Requires:       %{name}-overlay = %{version}
-Requires:       firewalld
 Requires:       iproute2
 Requires:       ipxe-bootimgs
 Requires:       logrotate
@@ -201,7 +196,10 @@ yq e '
   .tftp.ipxe."00:09" = "ipxe-x86_64.efi" |
   .tftp.ipxe."00:0B" = "snp-arm64.efi" |
   .["image mounts"] += {"source": "/etc/SUSEConnect", "dest": "/etc/SUSEConnect", "readonly": true} |
-  .["image mounts"] += {"source": "/etc/zypp/credentials.d/SCCcredentials", "dest": "/etc/zypp/credentials.d/SCCcredentials", "readonly": true}' \
+  .["image mounts"] += {"source": "/etc/zypp/credentials.d/SCCcredentials", "dest": "/etc/zypp/credentials.d/SCCcredentials", "readonly": true} |
+  .dhcp.["systemd name"] = "dnsmasq" |
+  .tftp.["systemd name"] = "dnsmasq"
+  ' \
   -i %{buildroot}%{_sysconfdir}/warewulf/warewulf.conf
 # SUSE starts user UIDs at 1000
 #sed -i -e 's@\(.* \$_UID \(>\|-ge\) \)500\(.*\)@\11000\3@' %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/rootfs/etc/profile.d/ssh_setup.*sh.ww
