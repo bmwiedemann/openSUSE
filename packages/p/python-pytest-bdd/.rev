@@ -210,4 +210,12 @@
     + Drop compatibility with pytest &lt; 7.0.0.</comment>
     <requestid>1302511</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>a58f0a06142950b3400e065c6c238fd0</srcmd5>
+    <version>8.1.0</version>
+    <time>1768844210</time>
+    <user>anag_factory</user>
+    <comment>- Use poetry-core for building, rather than poetry.</comment>
+    <requestid>1327974</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 19 04:05:49 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use poetry-core for building, rather than poetry.
+
+-------------------------------------------------------------------
 Wed Sep  3 01:15:42 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 8.1.0:

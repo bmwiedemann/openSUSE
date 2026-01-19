@@ -16,5 +16,4 @@ just-enough specification of the requirements without maintaining any context ob
 containing the side effects of the Gherkin imperative declarations.
 
 </description>
-  <devel project="devel:languages:python:pytest" package="python-pytest-bdd"/>
 </package>
