@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jan 18 23:22:40 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.27.2:
+  * Forbid using declarations inside switch clauses (#4323)
+  * Additional minification of switch statements (#4176, #4359)
+  * Automatically add the -webkit-mask prefix (#4357, #4358)
+  * Allow import path specifiers starting with #/ (#4361)
+- from 0.27.1:
+  * Allow tree-shaking of the Symbol constructor
+  * The minifier now strips empty finally clauses (#4353)
+  * Inline IIFEs containing a single expression (#4354)
+  * Fix minifier bug with for inside try inside label (#4351)
+  * Fix bundler bug with var nested inside if (#4348)
+
+-------------------------------------------------------------------
 Wed Nov 19 22:25:27 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
 
 - update to 0.27.0:

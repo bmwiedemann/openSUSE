@@ -419,4 +419,22 @@ Index: esbuild-0.25.3.tar.gz
 Binary file esbuild-0.25.3.tar.gz (revision 17) deleted</comment>
     <requestid>1318935</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>01dd1299a1f66f699a8073f3e6de5795</srcmd5>
+    <version>0.27.2</version>
+    <time>1768844190</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.27.2:
+  * Forbid using declarations inside switch clauses (#4323)
+  * Additional minification of switch statements (#4176, #4359)
+  * Automatically add the -webkit-mask prefix (#4357, #4358)
+  * Allow import path specifiers starting with #/ (#4361)
+- from 0.27.1:
+  * Allow tree-shaking of the Symbol constructor
+  * The minifier now strips empty finally clauses (#4353)
+  * Inline IIFEs containing a single expression (#4354)
+  * Fix minifier bug with for inside try inside label (#4351)
+  * Fix bundler bug with var nested inside if (#4348)</comment>
+    <requestid>1327966</requestid>
+  </revision>
 </revisionlist>
