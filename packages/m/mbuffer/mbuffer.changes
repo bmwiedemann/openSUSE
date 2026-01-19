@@ -1,8 +1,39 @@
 -------------------------------------------------------------------
+Mon Jan 19 08:53:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 20251025:
+  * updated config.sub, config.guess, and instal-sh
+  * added MacOS support (submitted by Grady McBride)
+  * update for configure script
+  * added condition variables based infra structure for MacOS
+  * fix cmake build issue
+  * fix some warnings on intentionally ignored return values
+  * get number of available pages on NetBSD via sysctl
+  * use SYSCONFDIR instead of 'PREFIX "/etc"'
+  * clang configure fix for tapedrive emulation
+  * minor code updates
+  * build fix for -Wincompatible-pointer-types
+  * configure script update to autoconf version 2.71
+  * updated default buffer calculation for more sane defaults
+  * minor updates for debug messages
+  * fix port range check (Peter Pentchev)
+  * fix ipv6 only mode
+  * enhanced incoming host check to work with IP, hostname, FQHN
+  * enhanced ipv6 hostname parsing
+  * fix IPv4 address printing
+  * listen on IPv6 and IPv4 if possible
+  * add debug messages for defaults on address family
+  * build fix for systems without getaddrinfo
+  * gracefully handle empty address infos
+  * corrections for documentation and help output
+  * (patch by Andreas Hartmann)
+  * added environment variables for auto-loader command
+
+-------------------------------------------------------------------
 Fri May 24 08:12:05 UTC 2024 - ming li <mli@suse.com>
 
 - Update to version 20231216:
-  * changed from `which` to `command` for Debian forward compatibility 
+  * changed from `which` to `command` for Debian forward compatibility
 
 -------------------------------------------------------------------
 Mon May 29 19:38:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -14,7 +45,7 @@ Mon May 29 19:38:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
 Sun May 29 19:34:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 20220418:
-  * fix handling of filesystem full on stdout 
+  * fix handling of filesystem full on stdout
 
 -------------------------------------------------------------------
 Mon Jan 31 20:28:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -117,7 +148,7 @@ Sat Jan 24 21:55:43 UTC 2015 - andreas.stieger@gmx.de
   + updated usage to include option -W
   + man page formatting fixes
   + configure updates
-  + support compiling on systems that do not define PATH_MAX 
+  + support compiling on systems that do not define PATH_MAX
 
 -------------------------------------------------------------------
 Wed Apr 16 22:51:24 UTC 2014 - crrodriguez@opensuse.org
