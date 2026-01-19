@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 19 06:32:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.38.1:
+  * build(deps): bump the gomod group with 2 updates (#2302)
+  * qemu: support injecting kernel cmdline args via
+    QEMU_KERNEL_CMDLINE (#2207)
+  * build(deps): bump github.com/klauspost/compress in the gomod
+    group (#2299)
+
+-------------------------------------------------------------------
 Fri Jan 16 05:58:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.38.0:
