@@ -150,4 +150,37 @@
     <comment></comment>
     <requestid>1319815</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0820064b963412646e0206422e180a7e</srcmd5>
+    <version>3.3.1</version>
+    <time>1768844323</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.3.1:
+  * __main__: Move handling of SIGINT into main function (fixes #814) #816
+  * Clean up (potentially stale) icon symlinks to avoid icon issues (fixes #815) #819
+  * Update repository references to github.com/slgobinath/safeeyes (all lowercase) (related to #820) #823
+  * Use name &quot;Safe Eyes&quot; in translations (part of #820) #822
+  * Report on icons and desktop symlink handling when running with --debug #818
+  * Use name &quot;Safe Eyes&quot; more consistently (part of #820) #821
+  * metadata: Add more URLs #826
+  * Use 0600 for ~/.config/safeeyes/safeeyes.json instead of 0666 #817
+  * update version #831
+  * Release new version #832
+- Update URL
+
+- Update to 3.2.0:
+  * x11: fix break screen on multiple monitors #794
+  * update version to 3.2.0 #796
+  * Release 3.2.0 #797
+
+- Update to 3.0.0b1:
+  * Update to GTK4
+  * Improved Wayland support (keyboard locking, idle detection, window icons,
+    fullscreen)
+  * Internal refactoring (linting, formatting, typechecking on CI)
+  * Improved handling of custom user stylesheets: always fall back to internal
+    styles, with a lower priority
+  * Translations</comment>
+    <requestid>1328065</requestid>
+  </revision>
 </revisionlist>

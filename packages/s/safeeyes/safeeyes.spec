@@ -1,7 +1,7 @@
 #
 # spec file for package safeeyes
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2017 Malcolm J Lewis <malcolmlewis@opensuse.org>
 # Copyright (c) 2020 opensuse.lietuviu.kalba@gmail.com
 #
@@ -19,28 +19,29 @@
 
 
 Name:           safeeyes
-Version:        2.2.3
+Version:        3.3.1
 Release:        0
 Summary:        Tool for reminding the user to take breaks
 License:        GPL-3.0-only
 Group:          Productivity/Graphics/Visualization/Other
-URL:            https://github.com/slgobinath/SafeEyes
+URL:            https://slgobinath.github.io/safeeyes/
 Source0:        %{name}-%{version}.tar.xz
 Source99:       safeeyes-rpmlintrc
+BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Babel
-%if 0%{?suse_version} == 1500
-BuildRequires:  python3-devel >= 3.6
-%else
-BuildRequires:  python3-devel >= 3.10
-%endif
-BuildRequires:  fdupes
 BuildRequires:  python3-pip
 BuildRequires:  python3-psutil
 BuildRequires:  python3-python-xlib
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-wheel
+BuildArch:      noarch
+%if 0%{?suse_version} == 1500
+BuildRequires:  python3-devel >= 3.6
+%else
+BuildRequires:  python3-devel >= 3.10
+%endif
 # MANUAL BEGIN
 Requires:       python3-Babel
 Requires:       python3-cairo >= 1.11.1
@@ -53,7 +54,6 @@ Requires:       typelib(AppIndicator3)
 Requires:       typelib(Notify)
 Recommends:     xprintidle
 # MANUAL END
-BuildArch:      noarch
 
 %description
 This utility reminds the user to take breaks whilst they are working
@@ -64,8 +64,8 @@ at the computer in an effort to alleviate eye strain (asthenopia).
 %prep
 %setup -q
 #Fix rpm runtime dependency rpmlint error replace the shebang in all the scripts with %%{_bindir}/python3
-find . -type f -exec perl -pi -e 'BEGIN{undef $/};s[^#\!/usr/bin/env python3][#\!%{_bindir}/python3]' {} \;
-find . -type f -exec perl -pi -e 'BEGIN{undef $/};s[^#\!/usr/bin/env python][#\!%{_bindir}/python3]' {} \;
+find . -type f -exec perl -pi -e 'BEGIN{undef $/};s[^#\!%{_bindir}/env python3][#\!%{_bindir}/python3]' {} \;
+find . -type f -exec perl -pi -e 'BEGIN{undef $/};s[^#\!%{_bindir}/env python][#\!%{_bindir}/python3]' {} \;
 # SmartPause: Increase default idle time to pause SafeEyes
 sed 's/"default": 5,/"default": 60,/' -i safeeyes/plugins/smartpause/config.json
 %if 0%{?suse_version} == 1500
@@ -76,14 +76,10 @@ sed 's/"default": 5,/"default": 60,/' -i safeeyes/plugins/smartpause/config.json
 %python3_pyproject_wheel
 
 %install
-%python3_pyproject_install
-%fdupes %{buildroot}%{python3_sitelib}
-# pip is only allowed to write to sitelib
-mkdir -p %{buildroot}%{_datadir}/applications
-mv %{buildroot}%{python3_sitelib}%{_datadir}/applications/* %{buildroot}%{_datadir}/applications
-mv %{buildroot}%{python3_sitelib}%{_datadir}/icons %{buildroot}%{_datadir}
-rm -r %{buildroot}%{python3_sitelib}/usr
-rm -r %{buildroot}%{python3_sitelib}/%{name}/platform
+python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
+install -Dm644 ./safeeyes/platform/io.github.slgobinath.SafeEyes.desktop %{buildroot}%{_datadir}/applications/io.github.slgobinath.SafeEyes.desktop
+mkdir -p %{buildroot}%{_datadir}/icons
+cp -r ./safeeyes/platform/icons/hicolor %{buildroot}%{_datadir}/icons
 
 # localization
 %find_lang %{name}
@@ -94,8 +90,7 @@ rm -r %{buildroot}%{python3_sitelib}/%{name}/platform
 %{_bindir}/safeeyes
 %{_datadir}/applications/io.github.slgobinath.SafeEyes.desktop
 %{_datadir}/icons/hicolor/*/*/
-%{python3_sitelib}/%{name}
-%{python3_sitelib}/%{name}-%{version}.dist-info
+%{python3_sitelib}/%{name}*
 %exclude %{python3_sitelib}/%{name}/config/locale
 
 %files lang -f %{name}.lang
