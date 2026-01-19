@@ -562,4 +562,12 @@ Adding the LPPL as many files are licensed under this license (forwarded request
     <comment>Update to TeXLive 2025</comment>
     <requestid>1254624</requestid>
   </revision>
+  <revision rev="59" vrev="62">
+    <srcmd5>595623a4f7cbecdca1f53b694b5856d0</srcmd5>
+    <version>unknown</version>
+    <time>1768844161</time>
+    <user>anag_factory</user>
+    <comment>Support Immutable Mode (jsc#PED-14907 and jsc#PED-14906)</comment>
+    <requestid>1327601</requestid>
+  </revision>
 </revisionlist>
