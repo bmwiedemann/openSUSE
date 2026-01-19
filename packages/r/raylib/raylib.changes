@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 19 13:05:48 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- security update:
+  * CVE-2025-15533 [bsc#1256900]
+    Fix heap-based buffer overflow via GenImageFontAtlas function manipulation
+  * CVE-2025-15534 [bsc#1256901]
+    Fix integer overflow vulnerability in LoadFontData
+  * Add raylib-CVE-2025-15533-CVE-2025-15534.patch
+
+-------------------------------------------------------------------
 Wed Nov 27 07:53:33 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 5.5:

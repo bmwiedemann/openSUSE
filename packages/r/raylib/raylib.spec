@@ -1,7 +1,7 @@
 #
 # spec file for package raylib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        Zlib
 Group:          Development/Libraries/C and C++
 URL:            https://www.raylib.com
 Source:         raylib-%{version}.tar.xz
+Patch0:         raylib-CVE-2025-15533-CVE-2025-15534.patch
 BuildRequires:  Mesa-libGL-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -57,7 +58,7 @@ Group:          System/Libraries
 A C library for learning video game programming.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake \

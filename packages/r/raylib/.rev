@@ -319,4 +319,17 @@
     functionality, with several issues reviewed, but also adds support for the</comment>
     <requestid>1226807</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>44cb218c113070ed7de7e5bbf9e2455a</srcmd5>
+    <version>5.5</version>
+    <time>1768844346</time>
+    <user>anag_factory</user>
+    <comment>- security update:
+  * CVE-2025-15533 [bsc#1256900]
+    Fix heap-based buffer overflow via GenImageFontAtlas function manipulation
+  * CVE-2025-15534 [bsc#1256901]
+    Fix integer overflow vulnerability in LoadFontData
+  * Add raylib-CVE-2025-15533-CVE-2025-15534.patch</comment>
+    <requestid>1328092</requestid>
+  </revision>
 </revisionlist>
