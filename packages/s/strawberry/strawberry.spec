@@ -1,7 +1,7 @@
 #
 # spec file for package strawberry
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           strawberry
-Version:        1.2.16
+Version:        1.2.17
 Release:        0
 Summary:        A music player and music collection organizer
 License:        GPL-3.0-or-later
