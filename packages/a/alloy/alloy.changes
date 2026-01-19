@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jan 13 05:53:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.12.2:
+  * Bug Fixes
+    - Add missing configuration parameter
+      deployment_name_from_replicaset to k8sattributes processor
+      (5b90a9d) (@dehaansa)
+    - database_observability: Fix schema_details collector to fetch
+      column definitions with case sensitive table names (#4872)
+      (560dff4) (@jharvey10, @fridgepoet)
+    - deps: Update jose2go to 1.7.0 (#4858) (dfdd341) (@jharvey10)
+    - deps: Update npm dependencies [backport] (#5201) (8e06c26)
+      (@jharvey10)
+    - Ensure the squid exporter wrapper properly brackets ipv6
+      addresses [backport] (#5205) (e329cc6) (@dehaansa)
+    - Preserve meta labels in loki.source.podlogs (#5097) (ab4b21e)
+      (@kalleep)
+    - Prevent panic in import.git when update fails [backport]
+      (#5204) (c82fbae) (@dehaansa, @jharvey10)
+    - show correct fallback alloy version instead of v1.13.0
+      (#5110) (b72be99) (@dehaansa, @jharvey10)
+
+-------------------------------------------------------------------
 Tue Dec 16 06:09:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.12.1:
