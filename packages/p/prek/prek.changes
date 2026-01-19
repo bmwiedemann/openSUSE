@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jan 19 06:38:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.30:
+  * Enhancements
+    - Build binaries using minimal-size profile (#1376)
+    - Check for duplicate keys in check-json5 builtin hook (#1387)
+    - Preserve quoting style in auto-update (#1379)
+    - Show warning if file lock acquiring blocks for long time
+      (#1353)
+    - Singleflight Python health checks with cached interpreter
+      info (#1381)
+  * Bug fixes
+    - Do not resolve entry for docker_image (#1386)
+    - Fix command lookup on Windows (#1383)
+  * Documentation
+    - Document language support details (#1380)
+    - Document that check-json5 now rejects duplicate keys (#1391)
+
+-------------------------------------------------------------------
 Fri Jan 16 14:03:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.29:

@@ -17,7 +17,7 @@
 
 
 Name:           prek
-Version:        0.2.29
+Version:        0.2.30
 Release:        0
 Summary:        Reimagined version of pre-commit, built in Rust
 License:        MIT
