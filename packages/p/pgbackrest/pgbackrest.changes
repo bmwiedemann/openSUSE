@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Jan 19 11:41:20 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.58.0
+  IMPORTANT NOTE: The minimum values for the
+  repo-storage-upload-chunk-size option have increased. They now
+  represent the minimum allowed by the vendors.
+
+  - Bug Fixes:
+    - Fix deadlock due to logging in signal handler. (Fixed by
+      Maxim Michkov. Reviewed by David Steele.)
+  - Features:
+    - HTTP support for S3, GCS, and Azure. (Contributed by Will
+      Morland. Reviewed by David Steele.)
+    - Allow expiration of oldest full backup regardless of current
+      retention. (Contributed by Stefan Fercot. Reviewed by David
+      Steele. Suggested by Ron Johnson.)
+    - Support for Azure managed identities. (Contributed by Moiz
+      Ibrar, Matthew Mols. Reviewed by David Steele.)
+    - Experimental support for S3 EKS pod identity. (Contributed by
+      Pierre BOUTELOUP. Reviewed by David Steele.)
+    - Allow configuration of TLS cipher suites. (Contributed by
+      Gunnar "Nick" Bluth. Reviewed by David Steele.)
+    - Allow process priority to be set. (Reviewed by Douglas J
+      Hunley.)
+  - Improvements:
+    - Allow dots in S3 bucket names when using path-style URIs.
+      (Contributed by Joakim Hindersson. Reviewed by David Steele.)
+    - Require TLS >= 1.2 unless verification is disabled. (Reviewed
+      by Douglas J Hunley, Gunnar "Nick" Bluth.)
+    - Dynamically size S3/GCS/Azure chunks for large uploads.
+      (Reviewed by Douglas J Hunley. Suggested by Timothée
+      Peignier.)
+    - Optimize S3/GCS/Azure chunk size for small files. (Reviewed
+      by Douglas J Hunley.)
+    - Remove support for PostgreSQL 9.5. (Reviewed by Douglas J
+      Hunley.)
+    - Improve logging of default for options with an unresolved
+      dependency. (Reviewed by Stefan Fercot.)
+  - Documentation Improvements:
+    - Remove explicit max_wal_senders/wal_level configuration from
+      user guide. (Suggested by Jamie Nguyen.)
+    - Clarify that bundling is useful for filesystems with large
+      block sizes. (Suggested by Ron Johnson.)
+- refresh use-run-pgbackrest.patch
+
+-------------------------------------------------------------------
 Sat Oct 18 12:17:19 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 2.57.0

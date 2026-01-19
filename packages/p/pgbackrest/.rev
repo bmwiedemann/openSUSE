@@ -217,4 +217,41 @@ The package has 2 maintainers/bugowner and the binary has shown its stability du
       Christensen.)</comment>
     <requestid>1312154</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>84f4d2c744feae02b89dd7929679a04e</srcmd5>
+    <version>2.58.0</version>
+    <time>1768844335</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.58.0
+  IMPORTANT NOTE: The minimum values for the
+  repo-storage-upload-chunk-size option have increased. They now
+  represent the minimum allowed by the vendors.
+  - Bug Fixes:
+    - Fix deadlock due to logging in signal handler. (Fixed by
+      Maxim Michkov. Reviewed by David Steele.)
+  - Features:
+    - HTTP support for S3, GCS, and Azure. (Contributed by Will
+      Morland. Reviewed by David Steele.)
+    - Allow expiration of oldest full backup regardless of current
+      retention. (Contributed by Stefan Fercot. Reviewed by David
+      Steele. Suggested by Ron Johnson.)
+    - Support for Azure managed identities. (Contributed by Moiz
+      Ibrar, Matthew Mols. Reviewed by David Steele.)
+    - Experimental support for S3 EKS pod identity. (Contributed by
+      Pierre BOUTELOUP. Reviewed by David Steele.)
+    - Allow configuration of TLS cipher suites. (Contributed by
+      Gunnar &quot;Nick&quot; Bluth. Reviewed by David Steele.)
+    - Allow process priority to be set. (Reviewed by Douglas J
+      Hunley.)
+  - Improvements:
+    - Allow dots in S3 bucket names when using path-style URIs.
+      (Contributed by Joakim Hindersson. Reviewed by David Steele.)
+    - Require TLS &gt;= 1.2 unless verification is disabled. (Reviewed
+      by Douglas J Hunley, Gunnar &quot;Nick&quot; Bluth.)
+    - Dynamically size S3/GCS/Azure chunks for large uploads.
+      (Reviewed by Douglas J Hunley. Suggested by Timothée
+      Peignier.)
+    - Optimize S3/GCS/Azure chunk size for small files. (Reviewed</comment>
+    <requestid>1328079</requestid>
+  </revision>
 </revisionlist>

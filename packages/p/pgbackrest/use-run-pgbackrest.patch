@@ -1,7 +1,7 @@
-Index: pgbackrest-release-2.56.0/CODING.md
+Index: pgbackrest-release-2.58.0/CODING.md
 ===================================================================
---- pgbackrest-release-2.56.0.orig/CODING.md
-+++ pgbackrest-release-2.56.0/CODING.md
+--- pgbackrest-release-2.58.0.orig/CODING.md
++++ pgbackrest-release-2.58.0/CODING.md
 @@ -268,11 +268,11 @@ Continuation characters should be aligne
  
  This function can be called without variable parameters:
@@ -16,11 +16,11 @@ Index: pgbackrest-release-2.56.0/CODING.md
  ```
  If the majority of functions in a module or object are variadic it is best to provide macros for all functions even if they do not have variable parameters. Do not use the base function when variadic macros exist.
  
-Index: pgbackrest-release-2.56.0/doc/resource/git-history.cache
+Index: pgbackrest-release-2.58.0/doc/resource/git-history.cache
 ===================================================================
---- pgbackrest-release-2.56.0.orig/doc/resource/git-history.cache
-+++ pgbackrest-release-2.56.0/doc/resource/git-history.cache
-@@ -9209,7 +9209,7 @@
+--- pgbackrest-release-2.58.0.orig/doc/resource/git-history.cache
++++ pgbackrest-release-2.58.0/doc/resource/git-history.cache
+@@ -9664,7 +9664,7 @@
      {
          "commit": "a1365b26d4c2383eaacea3714eeb521435ca79aa",
          "date": "2021-01-18 23:41:09 -0500",
@@ -29,7 +29,7 @@ Index: pgbackrest-release-2.56.0/doc/resource/git-history.cache
      },
      {
          "commit": "8322dfd7af97e307b952cfb37e6a65b65f55be0f",
-@@ -12025,8 +12025,8 @@
+@@ -12480,8 +12480,8 @@
      {
          "commit": "3fbfcba811499a59b943dd893eef9ff52090f7b6",
          "date": "2020-03-16 17:27:01 -0400",
@@ -40,7 +40,7 @@ Index: pgbackrest-release-2.56.0/doc/resource/git-history.cache
      },
      {
          "commit": "46911c64c19dc8ff76d2a6ff4548fc01647043e0",
-@@ -13926,7 +13926,7 @@
+@@ -14381,7 +14381,7 @@
          "commit": "45881c74aeff4bb25559ec0254fa7fc1960d9cab",
          "date": "2019-10-08 12:06:30 -0400",
          "subject": "Allow most unit tests to run outside of a container.",
@@ -49,7 +49,7 @@ Index: pgbackrest-release-2.56.0/doc/resource/git-history.cache
      },
      {
          "commit": "77b0c6c993a0e6ff45a6a99f343c3709a016d152",
-@@ -22413,7 +22413,7 @@
+@@ -22868,7 +22868,7 @@
          "commit": "18fd25233b1db7b3197f5d8dc537d239dcfc7aba",
          "date": "2016-04-14 09:30:54 -0400",
          "subject": "New simpler configuration and consistent project/exe/path naming.",
@@ -58,10 +58,10 @@ Index: pgbackrest-release-2.56.0/doc/resource/git-history.cache
      },
      {
          "commit": "885797e4b58a675487a3531ba16908c1d1e9f970",
-Index: pgbackrest-release-2.56.0/doc/xml/coding.xml
+Index: pgbackrest-release-2.58.0/doc/xml/coding.xml
 ===================================================================
---- pgbackrest-release-2.56.0.orig/doc/xml/coding.xml
-+++ pgbackrest-release-2.56.0/doc/xml/coding.xml
+--- pgbackrest-release-2.58.0.orig/doc/xml/coding.xml
++++ pgbackrest-release-2.58.0/doc/xml/coding.xml
 @@ -365,13 +365,13 @@ void storagePathCreate(const Storage *th
              <p>This function can be called without variable parameters:</p>
  
@@ -78,24 +78,11 @@ Index: pgbackrest-release-2.56.0/doc/xml/coding.xml
              </code-block>
  
              <p>If the majority of functions in a module or object are variadic it is best to provide macros for all functions even if they do not have variable parameters. Do not use the base function when variadic macros exist.</p>
-Index: pgbackrest-release-2.56.0/doc/xml/release/2016/1.00.xml
+Index: pgbackrest-release-2.58.0/src/build/config/config.yaml
 ===================================================================
---- pgbackrest-release-2.56.0.orig/doc/xml/release/2016/1.00.xml
-+++ pgbackrest-release-2.56.0/doc/xml/release/2016/1.00.xml
-@@ -43,7 +43,7 @@
-                     <release-item-contributor id="david.steele"/>
-                 </release-item-contributor-list> -->
- 
--                <p>Lock files are now stored in <path>/tmp/pgbackrest</path> by default. These days <path>/run/pgbackrest</path> is the preferred location but that would require init scripts which are not part of this release. The <setting>lock-path</setting> option can be used to configure the lock directory.</p>
-+                <p>Lock files are now stored in <path>/run/pgbackrest</path> by default. These days <path>/run/pgbackrest</path> is the preferred location but that would require init scripts which are not part of this release. The <setting>lock-path</setting> option can be used to configure the lock directory.</p>
-             </release-item>
- 
-             <release-item>
-Index: pgbackrest-release-2.56.0/src/build/config/config.yaml
-===================================================================
---- pgbackrest-release-2.56.0.orig/src/build/config/config.yaml
-+++ pgbackrest-release-2.56.0/src/build/config/config.yaml
-@@ -922,7 +922,7 @@ option:
+--- pgbackrest-release-2.58.0.orig/src/build/config/config.yaml
++++ pgbackrest-release-2.58.0/src/build/config/config.yaml
+@@ -834,7 +834,7 @@ option:
    lock-path:
      section: global
      type: path
@@ -104,12 +91,12 @@ Index: pgbackrest-release-2.56.0/src/build/config/config.yaml
      command:
        annotate: {}
        archive-get: {}
-Index: pgbackrest-release-2.56.0/src/config/parse.auto.c.inc
+Index: pgbackrest-release-2.58.0/src/config/parse.auto.c.inc
 ===================================================================
---- pgbackrest-release-2.56.0.orig/src/config/parse.auto.c.inc
-+++ pgbackrest-release-2.56.0/src/config/parse.auto.c.inc
-@@ -14,7 +14,7 @@ static const StringPubConst parseRuleVal
-     PARSE_RULE_STRPUB("-1"),                                                                                              // val/str
+--- pgbackrest-release-2.58.0.orig/src/config/parse.auto.c.inc
++++ pgbackrest-release-2.58.0/src/config/parse.auto.c.inc
+@@ -16,7 +16,7 @@ static const StringPubConst parseRuleVal
+     PARSE_RULE_STRPUB("-20"),                                                                                             // val/str
      PARSE_RULE_STRPUB("-5"),                                                                                              // val/str
      PARSE_RULE_STRPUB("-7"),                                                                                              // val/str
 -    PARSE_RULE_STRPUB("/tmp/pgbackrest"),                                                                                 // val/str
@@ -117,11 +104,11 @@ Index: pgbackrest-release-2.56.0/src/config/parse.auto.c.inc
      PARSE_RULE_STRPUB("/var/lib/pgbackrest"),                                                                             // val/str
      PARSE_RULE_STRPUB("/var/log/pgbackrest"),                                                                             // val/str
      PARSE_RULE_STRPUB("/var/spool/pgbackrest"),                                                                           // val/str
-Index: pgbackrest-release-2.56.0/test/ci.pl
+Index: pgbackrest-release-2.58.0/test/ci.pl
 ===================================================================
---- pgbackrest-release-2.56.0.orig/test/ci.pl
-+++ pgbackrest-release-2.56.0/test/ci.pl
-@@ -196,8 +196,8 @@ eval
+--- pgbackrest-release-2.58.0.orig/test/ci.pl
++++ pgbackrest-release-2.58.0/test/ci.pl
+@@ -186,8 +186,8 @@ eval
              $strPackage .= " libdbd-pg-perl";
          }
  
@@ -132,10 +119,10 @@ Index: pgbackrest-release-2.56.0/test/ci.pl
          processEnd();
  
          processBegin('install test packages');
-Index: pgbackrest-release-2.56.0/test/src/module/command/helpTest.c
+Index: pgbackrest-release-2.58.0/test/src/module/command/helpTest.c
 ===================================================================
---- pgbackrest-release-2.56.0.orig/test/src/module/command/helpTest.c
-+++ pgbackrest-release-2.56.0/test/src/module/command/helpTest.c
+--- pgbackrest-release-2.58.0.orig/test/src/module/command/helpTest.c
++++ pgbackrest-release-2.58.0/test/src/module/command/helpTest.c
 @@ -267,7 +267,7 @@ testRun(void)
              "                                      [default=n]\n"
              "  --io-timeout                        I/O timeout [default=1m]\n"
@@ -143,5 +130,5 @@ Index: pgbackrest-release-2.56.0/test/src/module/command/helpTest.c
 -            "                                      [default=/tmp/pgbackrest]\n"
 +            "                                      [default=/run/pgbackrest]\n"
              "  --neutral-umask                     use a neutral umask [default=y]\n"
+             "  --priority                          set process priority\n"
              "  --process-max                       max processes to use for\n"
-             "                                      compress/transfer [default=1]\n"

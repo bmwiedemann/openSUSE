@@ -1,7 +1,7 @@
 #
 # spec file for package pgbackrest
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2019-2022 Ioda-Net Sàrl, Charmoille, Switzerland.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define services pgbackrest.target pgbackrest-diff@.service pgbackrest-full@.service pgbackrest-incr@.service pgbackrest.service pgbackrest-diff@.timer pgbackrest-full@.timer pgbackrest-incr@.timer
 Name:           pgbackrest
-Version:        2.57.0
+Version:        2.58.0
 Release:        0
 Summary:        Reliable PostgreSQL Backup & Restore
 License:        MIT
