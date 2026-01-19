@@ -134,4 +134,12 @@
   * fix: handle toolnames without underscores (#6318)</comment>
     <requestid>1325980</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5f26ab21739b518520e766b06dc0153d</srcmd5>
+    <version>1.20.1</version>
+    <time>1768844333</time>
+    <user>anag_factory</user>
+    <comment>v1.20.1</comment>
+    <requestid>1328078</requestid>
+  </revision>
 </revisionlist>
