@@ -1,7 +1,7 @@
 #
 # spec file for package util-linux
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -85,9 +85,10 @@ Group:          Development/Languages/Python
 %endif
 # ulbuild == python
 
-Version:        2.41.2
+Version:        2.41.3
 Release:        0
 License:        GPL-2.0-or-later
+#Git-Clone:     https://github.com/util-linux/util-linux
 URL:            https://www.kernel.org/pub/linux/utils/util-linux/
 Source:         https://www.kernel.org/pub/linux/utils/util-linux/v2.41/util-linux-%{version}.tar.xz
 Source2:        util-linux-login_defs-check.sh
@@ -1463,8 +1464,10 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 
 # Exclude core binaries bash-completion
 %exclude %{_datadir}/bash-completion/completions/addpart
+%exclude %{_datadir}/bash-completion/completions/bits
 %exclude %{_datadir}/bash-completion/completions/blkdiscard
 %exclude %{_datadir}/bash-completion/completions/blkid
+%exclude %{_datadir}/bash-completion/completions/blkpr
 %exclude %{_datadir}/bash-completion/completions/blkzone
 %exclude %{_datadir}/bash-completion/completions/blockdev
 %exclude %{_datadir}/bash-completion/completions/cal
@@ -1513,6 +1516,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %exclude %{_datadir}/bash-completion/completions/losetup
 %exclude %{_datadir}/bash-completion/completions/lsclocks
 %exclude %{_datadir}/bash-completion/completions/lscpu
+%exclude %{_datadir}/bash-completion/completions/lsfd
 %exclude %{_datadir}/bash-completion/completions/lsipc
 %exclude %{_datadir}/bash-completion/completions/lsirq
 %exclude %{_datadir}/bash-completion/completions/lslocks

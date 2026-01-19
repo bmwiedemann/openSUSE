@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Jan 15 17:58:48 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
+
+- Fix filelist for systemd flavor.
+
+-------------------------------------------------------------------
+Sat Jan  3 16:31:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.41.3 (bsc#1254666, CVE-2025-14104):
+  * added bash-completion for lsfd, blkpr
+  * added missing mount options for bash-completion
+  * libfdisk: fix off-by-one in maximum last sector calculation
+    within MS-DOS-style partition tables
+  * login-utils: fix setpwnam() buffer use [CVE-2025-14104]
+  * losetup: sort 'O' correctly for the mutual-exclusive check to
+    work
+  * lscpu: use maximum CPU speed from DMI, avoid duplicate version
+    string
+  * lscpu: add a few missing ARM CPU identifiers
+  * lsfd: fix memory leak related to stat_error_class
+  * umount: consider helper return status for success message
+  * wdctl: remove -d option leftover
+  * misc: fix memory leak in setpwnam()
+
+-------------------------------------------------------------------
 Thu Oct 16 01:24:14 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Include agetty netlink fixes from the final upstream commits
