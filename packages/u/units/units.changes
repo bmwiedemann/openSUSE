@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Jan 18 08:14:30 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- units 2.25:
+  * Changed units_cur to ignore invalid CPI data
+  * Add support for multivariate functions
+  * Because comma is used for multivariate functions, the comma is
+    no longer allowed in unit names.  Four units whose names
+    contained the comma were renamed with an underscore replacing
+    the comma. Affected units: lambda_C,p; lambda_C,n; lambda_C,mu;
+    and lambda_C,tau.
+  * Extended (hyperbolic) trigonometric functions to include secant,
+    csc cot, sech, coth, csch and their inverses.
+  * Added some multvariate units like windchill, heatindex, bmi,
+    hypot
+  * Added "search _" to list the run-time variables (which start
+    with _)
+  * Added --list-units (noniteractive) and "search ." (interactive)
+    to list all unit definitions.
+- drop units-gcc15.patch, includes upstream
+
+-------------------------------------------------------------------
 Mon Jul 14 08:53:22 UTC 2025 - pgajdos@suse.com
 
 - upstream patch to fix build with C23

@@ -2,7 +2,7 @@
 # spec file for package units
 #
 # Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 %bcond_without	units_cur
 Name:           units
-Version:        2.24
+Version:        2.25
 Release:        0
 Summary:        Conversion Utility
 License:        GPL-3.0-or-later
@@ -28,8 +28,6 @@ URL:            https://www.gnu.org/software/units/
 Source0:        http://ftp.gnu.org/gnu/units/units-%{version}.tar.gz
 Source1:        http://ftp.gnu.org/gnu/units/units-%{version}.tar.gz.sig
 Source2:        https://savannah.gnu.org/people/viewgpg.php?user_id=33238#/%{name}.keyring
-# fix build with gcc15
-Patch0:         units-gcc15.patch
 BuildRequires:  bison
 BuildRequires:  readline-devel
 %if %{with units_cur}

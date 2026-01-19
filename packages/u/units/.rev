@@ -345,4 +345,12 @@
   + units-gcc15.patch (forwarded request 1293072 from pgajdos)</comment>
     <requestid>1293073</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>79e0015b962b18a08591a3f32cd00a4a</srcmd5>
+    <version>2.25</version>
+    <time>1768844251</time>
+    <user>anag_factory</user>
+    <comment>units 2.25 (forwarded request 1327909 from AndreasStieger)</comment>
+    <requestid>1327997</requestid>
+  </revision>
 </revisionlist>
