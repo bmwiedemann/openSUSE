@@ -1,7 +1,7 @@
 #
 # spec file for package qdirstat
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,20 @@
 
 
 Name:           qdirstat
-Version:        1.9
+Version:        2.0
 Release:        0
 Summary:        Directory Statistics
 License:        GPL-2.0-only
-URL:            https://github.com/shundhammer/qdirstat
-Source0:        %{name}-%{version}.tar.bz2
-BuildRequires:  libQt5Core-devel
-BuildRequires:  libQt5Widgets-devel
-BuildRequires:  libqt5-qtbase-common-devel
+Url:            https://github.com/shundhammer/qdirstat
+Source:         %{name}-%{version}.tar.zst
+
+BuildRequires:  qt6-core-devel
+BuildRequires:  qt6-gui-devel
+BuildRequires:  qt6-widgets-devel
+BuildRequires:  qt6-qt5compat-devel
+BuildRequires:  qt6-base-common-devel
 BuildRequires:  zlib-devel
+Recommends:	xdg-utils
 
 %description
 
@@ -90,14 +94,14 @@ and the local documentation in
     /usr/share/doc/packages/qdirstat/README.md
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-qmake-qt5
-make
+%qmake6
+%make_build
 
 %install
-make install INSTALL_ROOT=%{buildroot} %{?_smp_mflags}
+%qmake6_install
 
 # %suse_update_desktop_file -N "QDirStat" -G "Directory Statistics" %name Filesystem
 
@@ -110,7 +114,7 @@ make install INSTALL_ROOT=%{buildroot} %{?_smp_mflags}
 %dir %{_datadir}/icons/hicolor/scalable/apps
 %{_datadir}/icons/hicolor/scalable/apps/qdirstat.svg
 %license %{_docdir}/qdirstat/LICENSE
-%doc README.md doc/cache-file-format.txt doc/*.md
+%doc README.md doc/*.txt doc/*.md
 %dir %{_docdir}/%{name}/stats
 %{_docdir}/%{name}/stats/*.md
 %{_mandir}/man1/qdirstat.1.gz

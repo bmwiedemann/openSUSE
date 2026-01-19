@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Jan 18 17:46:37 UTC 2026 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Update to version 2.0:
+  * Change log and version bump to 2.0
+  * Suppress Qt bullshit messages that keep flooding the log
+  * No duplicate %d in 'open with filemanager here' std cleanup (Closes #297)
+  * Added missing section end
+  * Document current development status
+  * Use imported Myrlyn Translator class
+  * Added LogStream manipulators hex and dec
+  * QStorageInfo is now available on all Qt6 platforms
+  * Drop Qt4 support
+  * Get rid of now obsolete Qt4 QProcess wrapper class
+
+-------------------------------------------------------------------
+Wed Feb 19 12:39:16 UTC 2025 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Removed the FlatPak metainfo again (not useful for an RPM build)
+
+-------------------------------------------------------------------
+Sat Feb 15 15:27:21 UTC 2025 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Added FlatPak AppStream metainfo to files list (gh#278)
+
+-------------------------------------------------------------------
 Sun Jan 14 14:13:55 UTC 2024 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Update to V1.9:
@@ -17,7 +42,7 @@ Thu Jun 30 08:50:08 UTC 2022 - Stefan Hundhammer <shundhammer@suse.com>
   - New treemap interaction: Middle click to show parent hierarchy
   - Some small improvements
   - Bug fixes
-  
+
 -------------------------------------------------------------------
 Sat Aug 28 18:39:57 UTC 2021 - Stefan Hundhammer <shundhammer@suse.com>
 
@@ -120,4 +145,3 @@ Mon May 16 16:29:52 CEST 2016 - Stefan.Hundhammer@gmx.de
 
 - Initial stable release V1.0
 
--------------------------------------------------------------------
