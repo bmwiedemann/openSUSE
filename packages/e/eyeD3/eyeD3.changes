@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jan 18 13:17:31 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.9.9
+  * Remove eyed3.utils.console.getTtySize() implementation by
+    @nicfit in #682
+  * Resolve logger warnings by @emmanuel-ferdman in #668
+  * User expanduser instead of expandvars by @nicfit in #670
+  * fix: catch GenreException by @nicfit in #676
+  * Fix links in docs by @gene1wood in #677
+  * Add Python 3.14, and EOL 3.9 by @nicfit in #681
+- Cleanup dependencies
+  * Remove old unused dependencies
+  * Remove hard requirements that aren't
+  * Remove unused poetry build backend from requirements: they
+    switched in 0.9.8
+- Use test data
+
+-------------------------------------------------------------------
 Sat Jul 19 15:41:01 UTC 2025 - marec <marec@detebe.org>
 
 - update to 0.9.8:
