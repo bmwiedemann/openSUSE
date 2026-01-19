@@ -1,7 +1,7 @@
 #
 # spec file for package notcurses
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2020-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,7 +24,7 @@
 %bcond_without  pandoc
 %endif
 Name:           notcurses
-Version:        3.0.16
+Version:        3.0.17
 Release:        0
 Summary:        Character graphics and TUI library
 License:        Apache-2.0

@@ -228,4 +228,15 @@
     <comment></comment>
     <requestid>1306534</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>9040ae081c82095bbc0acad2a82e8ee6</srcmd5>
+    <version>3.0.17</version>
+    <time>1768844287</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.0.17:
+  * Fix build problems on Windows and Mac OSX.
+
+  https://github.com/dankamongmen/notcurses/releases/tag/v3.0.8</comment>
+    <requestid>1328039</requestid>
+  </revision>
 </revisionlist>
