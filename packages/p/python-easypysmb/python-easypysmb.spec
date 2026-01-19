@@ -1,7 +1,7 @@
 #
 # spec file for package python-easypysmb
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,10 @@ Group:          Development/Languages/Python
 URL:            https://github.com/pschmitt/easypysmb
 Source:         https://files.pythonhosted.org/packages/source/e/easypysmb/easypysmb-%{version}.tar.gz
 Source99:       https://raw.githubusercontent.com/pschmitt/easypysmb/master/LICENSE
+# PATCH-FIX-UPSTREAM easypysmb-poetry-core.patch gh#pschmitt/easypysmb#67
+Patch0:         easypysmb-poetry-core.patch
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pysmb
@@ -38,7 +40,7 @@ BuildArch:      noarch
 easypysmb is a Python library that wraps around the pysmb library.
 
 %prep
-%setup -q -n easypysmb-%{version}
+%autosetup -p1 -n easypysmb-%{version}
 cp %{S:99} .
 
 %build

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 18 14:21:40 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Add easypysmb-poetry-core.patch and use poetry-core
+  * gh#pschmitt/easypysmb#67
+
+-------------------------------------------------------------------
 Mon Jun 16 02:38:18 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use pyproject macros to build and install.
