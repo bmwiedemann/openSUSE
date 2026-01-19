@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan 19 11:45:31 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Fix CVE-2026-22029 and CVE-2026-22036 affecting undici
+  versions 6.21.2 and 7.8.0, @remix-run/router below 1.23.2,
+  and react-router below 7.0.0.
+- Bump undici to 7.18.0, @remix-run/router to 1.23.2,
+  and react-router to 7.12.0. 
+
+-------------------------------------------------------------------
+Sun Jan 18 16:00:42 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Fix CVE-2026-22029 and CVE-2026-22036 that affect undici versions (6.21.2,7.8.0) and @remix-run/router below 1.23.2 and react-router below 7.0.0. Undici bumped to 6.21.0, @remix-run/router bumped to 1.23.2 and react-router bumped to 7.12.0.
+
+-------------------------------------------------------------------
 Fri Nov 28 04:18:06 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Fix Slowroll build  by reduce pnpm version requirements to 10.17.1. 

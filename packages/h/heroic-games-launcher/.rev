@@ -7,4 +7,19 @@
     <comment>Fixing build errors from different versions of pnpm</comment>
     <requestid>1320450</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f42662d79a02cf258c76235c50927388</srcmd5>
+    <version>2.18.1</version>
+    <time>1768844185</time>
+    <user>anag_factory</user>
+    <comment>CVE-2026-22029 and CVE-2026-22036 affecting Undici versions (6.21.2, 7.8.0) and @remix-run/router below version 1.23.2 and react-router below version 7.0.0 have been fixed.
+Undici has been updated to version 7.18.0, @remix-run/router fixed to latest version 1.23.2, and react-router to version 7.12.0.
+
+This update is to address the security requests from Bugzilla below:
+
+https://bugzilla.suse.com/show_bug.cgi?id=1256475
+
+https://bugzilla.suse.com/show_bug.cgi?id=1256845</comment>
+    <requestid>1328107</requestid>
+  </revision>
 </revisionlist>
