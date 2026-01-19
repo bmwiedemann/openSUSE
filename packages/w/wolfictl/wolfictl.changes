@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jan 19 06:32:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.38.28:
+  * build(deps): bump the chainguard group with 2 updates (#1830)
+  * build(deps): bump github.com/go-git/go-billy/v5 from 5.6.2 to
+    5.7.0 (#1828)
+  * build(deps): bump github.com/github/go-spdx/v2 from 2.3.5 to
+    2.3.6 (#1827)
+  * build(deps): bump chainguard.dev/apko in the chainguard group
+    (#1826)
+  * build(deps): bump cloud.google.com/go/storage from 1.56.1 to
+    1.59.0 (#1825)
+  * build(deps): bump the chainguard group with 2 updates (#1822)
+  * build(deps): bump actions/setup-go in /.github/actions (#1824)
+  * build(deps): bump actions/setup-go from 6.1.0 to 6.2.0 (#1823)
+  * build(deps): bump chainguard-dev/actions from 1.5.9 to 1.5.11
+    (#1819)
+  * build(deps): bump the chainguard group across 1 directory with
+    4 updates (#1818)
+  * lint: Handle multiple args
+
+-------------------------------------------------------------------
 Sun Jan 11 12:50:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.38.27:
