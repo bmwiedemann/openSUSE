@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 19 06:31:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.0.4:
+  * Fix retry handling of the range retry transport (#2025)
+  * build(deps): bump github.com/klauspost/compress from 1.18.2 to
+    1.18.3 (#2024)
+  * Export tarfs under the expandapk package (#2022)
+  * Introduce a plug point to exchange the package cache (#2017)
+  * build(deps): bump chainguard.dev/sdk from 0.1.46 to 0.1.47
+    (#2019)
+
+-------------------------------------------------------------------
 Fri Jan 16 05:58:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.0.3:
