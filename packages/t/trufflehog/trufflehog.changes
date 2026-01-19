@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jan 19 09:51:01 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 3.92.5:
+  * [INS-243] Fix jdbc detector detecting incomplete connection string and fixed invalid… (#4636)
+  * added monthly requests limit to postman api request metrics collection (#4667)
+  * fix: report accurate line numbers for chunked file scanning (#1876) (#4615)
+  * fix(git): use `--iso-strict` git arg to prevent locale issue (#4653)
+  * Gitlab Source: Backoff from Scan2 which is experimental to legacy pagination API call (#4608)
+  * Rework JWT detector to better block local IPs; add HTTP instrumentation (#4607)
+  * Fix typo in help description for Postman API metric (#4656)
+  * detectors/twilio: add exponential backoff retry logic (#4652)
+  * [INS-170] Unify JDBC URL Parsing Across Detector and Analyzer (Continued) (#4606)
+  * [INS-232] Fix S3 Source "panic: runtime error: index out of range" bug (#4610)
+  * [INS-120] Increase test coverage for nested items(scanItem) function (#4648)
+  * Fix syslog test failing due to hardcoded timestamp (#4646)
+  * [INS-242] Add more validations to Custom Detector config (#4642)
+  * [INS-206] Store Gitlab Project ID in secret location metadata (#4601)
+
+-------------------------------------------------------------------
 Fri Dec 26 07:36:55 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.com>
 
 - Update to version 3.92.4:
