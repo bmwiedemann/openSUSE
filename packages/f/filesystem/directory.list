@@ -28,6 +28,7 @@
 0755 root root /usr/etc/default
 0755 root root /usr/etc/profile.d
 0755 root root /usr/etc/logrotate.d
+0755 root root /usr/etc/security/pam_env.conf.d
 0755 root root /usr/etc/skel
 0700 root root /usr/etc/skel/.cache
 0700 root root /usr/etc/skel/.config

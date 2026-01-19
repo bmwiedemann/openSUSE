@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 19 10:26:11 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Own /usr/etc/security/pam_env.conf.d as aaa_base installs a base
+  configuration there.
+
+-------------------------------------------------------------------
 Wed Sep 24 10:51:12 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Own base directory layout of polkit.
