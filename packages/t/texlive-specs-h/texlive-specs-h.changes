@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan 15 11:33:50 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Support Immutable Mode (jsc#PED-14907)
+  * Simply remove xetex_runfiles.list as now
+    /var/lib/texmf/fonts/conf is in tmpfiles list (jsc#PED-14906)
+
+-------------------------------------------------------------------
+Tue Sep  2 07:37:00 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Increase pool_size and pool_free for both xmltex and pdfxmltex
+  to get formats created and xmlto runing again (boo#1248830)
+
+-------------------------------------------------------------------
 Mon Mar 24 12:45:45 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch eolang_pl.dif

@@ -572,4 +572,12 @@
   * texlive-scripts_scripts.dif</comment>
     <requestid>1255654</requestid>
   </revision>
+  <revision rev="56" vrev="59">
+    <srcmd5>9c9abee199db6e691c2fc7da8697f615</srcmd5>
+    <version>unknown</version>
+    <time>1768844136</time>
+    <user>anag_factory</user>
+    <comment>Support Immutable Mode (jsc#PED-14907 and jsc#PED-14906)</comment>
+    <requestid>1327577</requestid>
+  </revision>
 </revisionlist>
