@@ -18,7 +18,7 @@
 
 
 Name:           makeself
-Version:        2.5.0
+Version:        2.7.1
 Release:        0
 Summary:        Make self-extractable archives on Unix
 License:        GPL-2.0-or-later
