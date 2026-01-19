@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 19 09:21:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- add
+  0001-Fix-privilege-escalation-via-spoofed-identity-header.patch:
+  (bsc#1256800, CVE-2026-22797)
+
+-------------------------------------------------------------------
 Mon Nov 10 13:13:55 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - add conflicts/obsoletes

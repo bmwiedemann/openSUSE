@@ -1,7 +1,7 @@
 #
 # spec file for package python-keystonemiddleware
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/keystonemiddleware
 Source0:        https://files.pythonhosted.org/packages/source/k/keystonemiddleware/keystonemiddleware-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Fix-privilege-escalation-via-spoofed-identity-header.patch
 BuildRequires:  %{python_module WebOb >= 1.7.1}
 BuildRequires:  %{python_module WebTest}
 BuildRequires:  %{python_module cryptography}
