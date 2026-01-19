@@ -17,6 +17,9 @@
 
 
 %define         _name javascript
+%define         python_subpackage_only 1
+%define         python_libname tree_sitter_javascript
+%{?sle15_python_module_pythons}
 Name:           tree-sitter-javascript
 Version:        0.23.1
 Release:        0
@@ -24,26 +27,44 @@ Summary:        Javascript grammar for tree-sitter
 License:        MIT
 URL:            https://github.com/tree-sitter/tree-sitter-javascript
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source99:       tree-sitter-javascript-rpmlintrc
 BuildRequires:  tree-sitter
 %treesitter_grammars %{_name}
 
 %description
 %{summary}.
 
+%package -n python-tree-sitter-javascript
+Summary:        Python bindings for JavaScript TS grammar
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
+BuildRequires:  fdupes
+%python_subpackages
+
+%description -n python-tree-sitter-javascript
+Python bindings for the JavaScript grammar for tree-sitter.
+
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %treesitter_configure
 %treesitter_build
+%pyproject_wheel
 
 %install
 %treesitter_install
 %treesitter_devel_install
+%pyproject_install
 
 #neovim stuff
 install -d %{buildroot}%{_libdir}/tree_sitter
 ln -s %{_libdir}/lib%{name}.so %{buildroot}%{_libdir}/tree_sitter/%{_name}.so
+
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %files
 %license LICENSE
@@ -54,5 +75,17 @@ ln -s %{_libdir}/lib%{name}.so %{buildroot}%{_libdir}/tree_sitter/%{_name}.so
 %endif
 
 %treesitter_devel_package
+
+%files %{python_files %{name}}
+%dir %{python_sitearch}/%{python_libname}
+%dir %{python_sitearch}/%{python_libname}/queries
+%pycache_only %{python_sitearch}/%{python_libname}/__pycache__
+%{python_sitearch}/%{python_libname}/__init__.py
+%{python_sitearch}/%{python_libname}/__init__.pyi
+%{python_sitearch}/%{python_libname}/_binding.abi3.so
+%{python_sitearch}/%{python_libname}/binding.c
+%{python_sitearch}/%{python_libname}/py.typed
+%{python_sitearch}/%{python_libname}/queries/*.scm
+%{python_sitearch}/%{python_libname}-%{version}.dist-info
 
 %changelog

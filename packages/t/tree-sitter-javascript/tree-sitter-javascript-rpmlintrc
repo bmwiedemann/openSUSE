@@ -1,0 +1,2 @@
+# nothing we can do about that in case of Python
+addFilter("^python31\d-tree-sitter-javascript\.x86_64: E: devel-file-in-non-devel-package /usr/lib64/python3\.1\d/site-packages/tree_sitter_javascript/binding\.c$")

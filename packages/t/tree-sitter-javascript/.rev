@@ -55,4 +55,15 @@
   * fix: un-inline statement</comment>
     <requestid>1229617</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>79d5c58a8234fa858fff349b936091a7</srcmd5>
+    <version>0.23.1</version>
+    <time>1768844195</time>
+    <user>anag_factory</user>
+    <comment>- Add Source line for rpmlintrc file
+- Deduplicate files in python_sitearch.
+
+- Build and package Python bindings</comment>
+    <requestid>1327969</requestid>
+  </revision>
 </revisionlist>
