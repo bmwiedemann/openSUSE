@@ -1,0 +1,183 @@
+-------------------------------------------------------------------
+Mon Jan 19 08:04:55 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- drop vendor tarball
+
+-------------------------------------------------------------------
+Sun Jan 18 01:44:42 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Fix Requires for the libs package
+
+-------------------------------------------------------------------
+Sun Jan 18 01:35:39 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- disable mold on aarch64
+
+-------------------------------------------------------------------
+Sun Oct 19 18:01:39 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add implementation provides
+
+-------------------------------------------------------------------
+Sun Oct 19 00:51:06 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- No longer obsolete older packages in case we need older versions working
+
+-------------------------------------------------------------------
+Sun Sep 21 04:51:50 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Ensure obsoletion of older than the current version.
+
+-------------------------------------------------------------------
+Sat Sep 20 22:47:27 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- back to clang and mold. gcc or lld didnt help
+
+-------------------------------------------------------------------
+Sat Sep 20 18:20:58 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- simplify forced gcc version handling
+- build with gcc instead of clang as it seems to crash in stage 2
+  https://bugzilla.opensuse.org/show_bug.cgi?id=1250228
+  https://github.com/ziglang/zig/issues/23978
+
+-------------------------------------------------------------------
+Mon Jun  9 21:42:43 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- Update to version 0.14.1:
+  Bugfixes
+  ** CHANGELOG TOO LONG **
+  See https://github.com/ziglang/zig/compare/0.14.0...0.14.1
+- Update to version 0.14.0:
+  ** CHANGELOG TOO LONG **
+  See https://ziglang.org/download/0.14.0/release-notes.html
+  * Release focuses more on the LLVM19 support
+
+-------------------------------------------------------------------
+Fri Jan 31 03:58:41 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to fix reproducible-builds issues (boo#1100677)
+  https://github.com/ziglang/zig/issues/22663
+
+-------------------------------------------------------------------
+Sun Jun 23 08:41:29 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Cleanup specfile
+- Workaround for test
+  * add vendored cache dependencies.
+- Fix check section for tests
+- Add -DZIG_USE_LLVM_CONFIG=ON option
+- Add patch skip-localhost-test.patch
+- Add liburing-devel for test suites
+- Set mold as linker. Efficient and fast at utilising computer resources
+  unlike GNU ld.
+- Enable tests
+- remove some outdated comments in specfile
+
+-------------------------------------------------------------------
+Wed Jun 12 11:45:34 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Reduce constraints
+
+-------------------------------------------------------------------
+Fri Jun  7 17:56:48 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update patchsets for llvm18 changes
+  ./0000-remove-lld-in-cmakelist.patch
+  ./0001-invoke-lld.patch
+
+-------------------------------------------------------------------
+Fri Jun  7 17:35:24 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.13.0:
+  ** CHANGELOG TOO LONG **
+  See https://ziglang.org/download/0.12.0/release-notes.html
+  * Release focuses more on the LLVM18 support
+
+-------------------------------------------------------------------
+Sat May  4 15:13:58 UTC 2024 - Michael Burge <michael.burge77@gmail.com>
+
+- Update to version 0.12.0:
+  ** CHANGELOG TOO LONG **
+  See https://ziglang.org/download/0.12.0/release-notes.html
+- Now requires llvm17, all patches and specfile updated accordingly
+
+-------------------------------------------------------------------
+Tue Nov  7 02:58:39 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update macros.zig
+  * Change %zig to %__zig to avoid confusion between `zig` or `%zig`.
+
+-------------------------------------------------------------------
+Sat Oct 21 06:20:47 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Drelease-safe is now Doptimize
+
+-------------------------------------------------------------------
+Wed Oct 18 10:55:45 UTC 2023 - Soc Virnyl S. Estela <contact@uncomfyhalomacro.pl>
+
+- Change builder to ninja. change c and c++ compiler to clang
+
+-------------------------------------------------------------------
+Thu Sep  7 11:16:24 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Remove comment since it builds now on latest glibc.
+
+-------------------------------------------------------------------
+Fri Aug  4 06:18:37 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.11.0:
+  ** CHANGELOG TOO LONG **
+  See https://ziglang.org/download/0.11.0/release-notes.html
+- Update patchsets:
+  * remove 0000-invoke-lld-llvm15.patch
+  * add 0000-remove-lld-in-cmakelist.patch
+  * add 0001-invoke-lld.patch
+  * update 0002-no-lld-libs-and-includes.patch
+  * change to llvm16
+- Update specfile to use LLVM version 16.x. This will be removed in the future.
+
+-------------------------------------------------------------------
+Thu Feb  2 02:13:28 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Enable build with riscv64 and %{mips64} arches.
+
+-------------------------------------------------------------------
+Mon Jan 30 13:41:31 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Declare Group as "Development/Languages/Other" to remove some warnings.
+
+-------------------------------------------------------------------
+Mon Jan 30 13:12:39 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Fix version required for LLVM on Leap.
+
+-------------------------------------------------------------------
+Wed Jan 25 03:31:57 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add rpm-macros to recommends.
+- Simplify to just use ExclusiveArch declaration.
+
+-------------------------------------------------------------------
+Tue Jan 24 16:22:36 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Improve specfile: from %{_rpmconfigdir}/macros.d to %{_rpmmacrodir}
+
+-------------------------------------------------------------------
+Tue Jan 24 15:45:26 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add zig-rpmlintrc to specfile as one of sources.
+
+-------------------------------------------------------------------
+Tue Jan 24 12:18:58 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Increase physical memory to 64G on riscv, and aarch.
+  * Note: ppc architectures won't build. Placeholder for now.
+- Set physical memory to 8G for arm architectures. Placeholder for now
+- Set physical memory to 32G for i586 archictectures.
+- ExcludeArch for ppc and arm architectures.
+
+-------------------------------------------------------------------
+Mon Jan 23 03:58:18 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Initial spec for zig 0.10.1
