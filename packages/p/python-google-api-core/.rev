@@ -455,4 +455,24 @@
   * Support for async bidi streaming apis (#836) (forwarded request 1314093 from glaubitz)</comment>
     <requestid>1314109</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>3f0572fc34593cae9392667a0e76ebf0</srcmd5>
+    <version>2.29.0</version>
+    <time>1768844329</time>
+    <user>anag_factory</user>
+    <comment>- fix tests
+
+- Update to 2.29.0
+  * Auto enable mTLS when supported certificates are detected (#869)
+  * make parse_version_to_tuple public (#864)
+  * flaky tests due to imprecision in floating point calculation and
+    performance test setup (#865)
+  * remove call to importlib.metadata.packages_distributions() for py38/py39 (#859)
+  * Log version check errors (#858)
+  * closes tailing streams in bidi classes. (#851)
+
+- Update to 2.28.1
+  * Remove dependency on packaging and pkg_resources (#852)</comment>
+    <requestid>1328093</requestid>
+  </revision>
 </revisionlist>
