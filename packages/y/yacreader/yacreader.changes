@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Sat Jan 17 07:22:34 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 9.16.3
+  + YACReader
+    - Fix current page/time label content when the content is too
+      long.
+  + YACReaderLibrary
+    - Fix table view last section stretch (previously worked
+      randomly).
+    - Fix empty table view caused by wrong state being saved.
+      Note: You’ll need to reconfigure the table view headers after
+      this fix.
+    - Fix open comic shortcut in fullscreen mode.
+- Version 9.16.2
+  + YACReaderLibrary
+    - Add customizable Comic Vine User Agent string via
+      `YACReaderLibrary.ini` in the `[ComicVine]` section using the
+      `COMIC_VINE_USER_AGENT` key.
+    - Prevent crash when opening the folders context menu if a
+      folder is not selected.
+    - Fix crash when using the “Set type” menu on libraries.
+- Version 9.16.1
+  + YACReaderLibrary
+    - Fix cover loading in the Comic Vine scraper.
+- Version 9.16.0
+  + YACReader
+    - Disable scroll animations on macOS by default to improve
+      HiDPI scrolling.
+    - Add new toolbar on macOS.
+    - Add new mouse modes to turn pages:
+      + Use left/right mouse buttons.
+      + Click left/right part of the screen.
+    - Add setting to control whether the time is shown in the
+      “current page / total” label.
+  + YACReaderLibrary
+    - Improve flexibility of the open comic in third party app
+      setting so more complex commands can be used.
+      e.g. `open -a "/Applications/My Reader.app"
+      "{comic_file_path}"`.
+    - Fix setting the comic rating in the table view.
+    - Log libraries validation when the app starts.
+    - Add new toolbar on macOS.
+    - Add Comic Vine scraper setting to force exact volume
+      matches.
+    - Improve default search query in the Comic Vine scraper.
+    - Improve navigation in Comic Vine scraper, keeping the
+      current query for easier edits.
+    - Add support for custom covers for any folder using the
+      context menu.
+    - Improve edit cover buttons with looping page navigation.
+    - Add support for custom covers for comics using the edit
+      metadata dialog.
+    - Allow bulk setting of covers for multiple comics.
+    - Add button to reset to the default cover of a comic.
+    - Add support for storing new image filters from iOS and
+      Android apps.
+  + YACReaderLibraryServer
+    - Log libraries validation when the app starts.
+  + All apps
+    - Update PDF libraries for all Windows builds.
+- Remove unneeded patch, BuildRequires, Requires and source
+  + remove p7zip_16.02_src_all.tar.bz2
+    - unbuild and purpuse to build rar support will be make
+      license issue
+  + remove 0001-fix-unarr.patch
+    - rewrite into sed on spec file
+  + remove 0002-fix_building_with_qt_6_9_0.patch
+    - fix upstream
+  + remove 0003-add_missing_QVariantMap_include.patch
+    - fix upstream
+  + remove hicolor-icon-theme Requires
+    - unneeded to put on Requires
+  + remove update-desktop-files update-desktop-files BuildRequires
+    - deprecated
+  + remove unzip BuildRequires
+    - unneeded anymore
+- cleanup spec and fix rpmlint issues
+
+-------------------------------------------------------------------
 Wed Jul  9 14:57:41 UTC 2025 - Martin Jambor <mjambor@suse.com>
 
 - Add 0002-fix_building_with_qt_6_9_0.patch and
