@@ -946,4 +946,25 @@
   * See https://github.com/djcb/mu/releases/tag/v1.12.13 for details</comment>
     <requestid>1304743</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>e31f066c0440757496fbb9bb3f2242c1</srcmd5>
+    <version>1.12.15</version>
+    <time>1768844281</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.12.15:
+  * fix the dbus install issue #2894
+  * save all attachments if none are selected
+  * documentation improvements
+
+- Update to 1.12.14:
+  * improved guix (and other systems) compatibility: make fewer assumptions
+    about where system programs are
+  * documentations improvements, in manpages and the mu4e reference manual
+  * labels: better messages when importing
+  * scm: stabilize tests. tweaks api.
+  * mu4e: add mu4e-view-mark-and-next
+  * mu4e: mu4e-dbus-mode; a new experimental minor in which mu4e exposes
+    some of its data over DBus.</comment>
+    <requestid>1328013</requestid>
+  </revision>
 </revisionlist>

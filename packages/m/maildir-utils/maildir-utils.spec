@@ -1,7 +1,7 @@
 #
 # spec file for package maildir-utils
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           maildir-utils
-Version:        1.12.13
+Version:        1.12.15
 Release:        0
 Summary:        Maildir indexer and searcher
 License:        GPL-3.0-or-later

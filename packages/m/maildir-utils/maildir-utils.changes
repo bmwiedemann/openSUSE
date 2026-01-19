@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jan 19 08:03:22 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.12.15:
+  * fix the dbus install issue #2894
+  * save all attachments if none are selected
+  * documentation improvements
+
+-------------------------------------------------------------------
+Mon Jan 19 08:02:57 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.12.14:
+  * improved guix (and other systems) compatibility: make fewer assumptions
+    about where system programs are
+  * documentations improvements, in manpages and the mu4e reference manual
+  * labels: better messages when importing
+  * scm: stabilize tests. tweaks api.
+  * mu4e: add mu4e-view-mark-and-next
+  * mu4e: mu4e-dbus-mode; a new experimental minor in which mu4e exposes
+    some of its data over DBus.
+
+-------------------------------------------------------------------
 Mon Sep 15 08:03:03 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.12.13:
