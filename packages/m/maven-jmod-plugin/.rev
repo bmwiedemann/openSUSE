@@ -31,4 +31,12 @@
     <comment>Explicit dependency on maven-compat</comment>
     <requestid>1302485</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8b95eb254a8b9af3bef5f54180c277cd</srcmd5>
+    <version>3.0.0</version>
+    <time>1768844354</time>
+    <user>anag_factory</user>
+    <comment>3.0.0</comment>
+    <requestid>1328094</requestid>
+  </revision>
 </revisionlist>

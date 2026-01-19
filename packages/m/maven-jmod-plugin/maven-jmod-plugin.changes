@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Jan  5 08:08:21 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 3.0.0
+  * Breaking changes
+    + MJMOD-30: require maven 3.6.3
+    + MJMOD-29: use Java 8; update report requirements
+  * New features and improvements
+    + MJMOD-20: set jmod --main-class argument if it is set.
+  * Bug Fixes
+    + MJMOD-8: NullPointerException on create
+  * Maintenance
+    + Cleanup site gen
+    + Bump m-invoker-p to 3.9.1
+    + Enable Notification after Migration
+    + Disable Notification before Migration
+    + Enable GitHub Issue
+    + MNGSITE-529: Rename "Goals" to "Plugin Documentation"
+    + Construct create command in memory
+    + use strings instead of file for describe and list commands
+    + Use modern I/O
+    + Prefer Guice injection
+    + MJMOD-33: Remove duplicate reporting section
+    + set version to 3.0.0-SNAPSHOT
+    + MJMOD-28: update parent to v41
+    + MJMOD-29: update enforcer rule to Java 8
+    + (chore) add workflows
+    + (DOCS) update README.md and PR template
+    + [SECURITY] Use HTTPS to resolve dependencies in Maven Build
+  * Build
+    + Update Maven to 3.9.11
+  * Dependency updates
+    + Bump mavenVersion from 3.9.11 to 3.9.12
+    + Bump org.apache.maven.plugins:maven-plugins from 44 to 45
+    + Update parent 44
+    + Declare used dependencies
+    + Bump apache/maven-gh-actions-shared from 3 to 4
+    + MJMOD-32: remove dependency to commons-lang3
+    + Bump org.apache.maven.shared:maven-shared-utils from 3.3.3 to
+      3.4.2
+    + MJMOD-31: fix plugin scope
+    + MJMOD-30: require maven 3.6.3
+    + Bump maven-shared-utils from 3.2.1 to 3.3.3
+- Removed patch:
+  * maven-jmod-plugin-plexus-languages-1.0.patch
+    + not needed anymore
+
+-------------------------------------------------------------------
 Tue Sep  2 18:14:36 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Explicit dependency on maven-compat

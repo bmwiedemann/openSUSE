@@ -1,7 +1,7 @@
 #
 # spec file for package maven-jmod-plugin
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,14 @@
 #
 
 
-%global basever 3.0.0
-%global opt alpha
-%global optver 1
 Name:           maven-jmod-plugin
-Version:        %{basever}~%{opt}%{optver}
+Version:        3.0.0
 Release:        0
 Summary:        Apache Maven JMod Plugin
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/plugins/maven-jmod-plugin/
-Source0:        https://archive.apache.org/dist/maven/plugins/%{name}-%{basever}-%{opt}-%{optver}-source-release.zip
-Patch0:         maven-jmod-plugin-plexus-languages-1.0.patch
+Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugins/%{name}/%{version}/%{name}-%{version}-source-release.zip
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  unzip
@@ -53,11 +49,7 @@ Group:          Documentation/HTML
 API documentation for %{name}.
 
 %prep
-%setup -q -n %{name}-%{basever}-%{opt}-%{optver}
-%patch -P 0 -p1
-
-%pom_add_dep org.apache.maven:maven-compat:\${mavenVersion}
-%pom_xpath_remove pom:project/pom:parent/pom:relativePath
+%setup -q
 
 %build
 %{mvn_build} -f \
