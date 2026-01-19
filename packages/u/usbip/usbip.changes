@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Mon Aug  7 12:51:16 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
+
+- drop the source tarball and use the sources from kernel-source
+- Add a rebuild sub-package so usbip gets rebuilt everytime the
+  kernel-source package is update (similar to perf)
+- Add the license and the readme to the package documentation
+- run spec-cleaner on the spec file
+
+-------------------------------------------------------------------
+Fri Jul 19 20:40:55 UTC 2019 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 2.0, from linux kernel 5.2 tree (tools/usb/usbip)
+
+-------------------------------------------------------------------
+Tue Mar 13 08:48:30 UTC 2012 - dchang@suse.com
+
+- updated usbip to version 1.1.1 which are from linux kernel tree
+  (drivers/staging/usbip/userspace), git commit fde7d904, since
+  usbip had huge change in the kernel modules.
+
+-------------------------------------------------------------------
+Tue Nov 15 13:16:46 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue Sep  7 20:25:09 UTC 2010 - aj@suse.de
+
+- BuildRequire sysfsutils-devel
+
+-------------------------------------------------------------------
+Wed Jan 13 15:44:42 UTC 2010 - hvogel@novell.com
+
+- usbip-0.1.6-usb.ids_path.patch:
+  Use correct path to usb.ids [bnc#529364]
+
+-------------------------------------------------------------------
+Sat Oct 10 12:53:52 UTC 2009 - crrodriguez@opensuse.org
+
+- usbip-0.1.6-3.23: missing call to closedir [bnc#531223] 
+
+-------------------------------------------------------------------
+Fri Jan  9 04:09:53 CET 2009 - crrodriguez@suse.de
+
+- remove static libraries and "la" files 
+
+-------------------------------------------------------------------
+Wed Nov 19 16:31:10 EST 2008 - mauro@suse.de
+
+- Adding to SUSE.
