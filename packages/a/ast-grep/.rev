@@ -990,4 +990,41 @@
   * chore(deps): update dependency oxlint to v1.25.0 0c09885</comment>
     <requestid>1316597</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>d470d606090b169e30a36c06ba86b508</srcmd5>
+    <version>0.40.5</version>
+    <time>1768844310</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.40.5:
+  * fix: fix error code returning 1 for non-result related error #2403
+  * feat: support case insensitive option in files/ignores #2432
+  * chore(deps): update dependency @ast-grep/napi to v0.40.4 4fca101
+  * chore(deps): update dependency oxlint to v1.38.0 622da37
+  * chore(deps): update dependency oxlint to v1.37.0 1a021ba
+
+- Update to 0.40.4:
+  * feat: support --files-with-matches to list all files like ripgrep #2371
+  * fix: use new assert_cmd command #2399
+  * chore(deps): update dependency dprint to v0.51.1 9d00e5b
+  * chore(deps): update dependency @ast-grep/napi to v0.40.3 80f9c2b
+  * chore(deps): update dependency oxlint to v1.36.0 dea9153
+
+- Update to 0.40.3:
+  * chore(deps): update dependency @types/node to v24.10.4 6a429db
+  * fix: remove debug println! from KindMatcher fa5cc7b
+
+- Update to 0.40.2:
+  * fix: exit status to 1 when no match #2392
+  * fix: reject unknown keys for pattern #2390
+  * fix: allow number in identifier #2387
+  * chore(deps): update dependency @napi-rs/cli to v3.5.0 090fcd0
+  * chore(deps): update dependency @ast-grep/napi to v0.40.1 ac69fd7
+  * chore: bump lsp version 58138ad
+
+- Update to 0.40.1:
+  * chore: add a link to the badges #2370
+  * fix: fix AST strictness check #2361
+  * chore(deps): update dependency @ast-grep/napi to v0.40.0 c98f0dc</comment>
+    <requestid>1328031</requestid>
+  </revision>
 </revisionlist>
