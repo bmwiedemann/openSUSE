@@ -1,7 +1,7 @@
 #
 # spec file for package texlive-specs-z
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define texlive_version  2025
 %define texlive_previous 2022
 %define texlive_release  20250308
-%define texlive_noarch   218
+%define texlive_noarch   221
 %define biber_version    2.20
 
 #!BuildIgnore:          texlive
@@ -67,6 +67,9 @@ Release:        0
 BuildRequires:  ed
 BuildRequires:  fontconfig
 BuildRequires:  fontpackages-devel
+%if 0%{?suse_version} >= 1600
+BuildRequires:  pkgconfig(systemd)
+%endif
 BuildRequires:  mkfontdir
 BuildRequires:  mkfontscale
 BuildRequires:  t1utils
@@ -7470,7 +7473,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/xetex/base/XeTeX-notes.tex
 
 %files -n texlive-xetex
-%dir %{_texmfvardir}/fonts/conf
 %{_texmfdistdir}/fonts/misc/xetex/fontmapping/base/qx-unicode.map
 %{_texmfdistdir}/fonts/misc/xetex/fontmapping/base/qx-unicode.tec
 %{_texmfdistdir}/fonts/misc/xetex/fontmapping/base/tex-text.map
@@ -44251,7 +44253,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     pushd %{buildroot}%{_datadir}/texlive/texmf-dist
 	patch --reject-format=unified --quoting-style=literal -f -p1 -F0 -T < %{S:79}
     popd
-    mkdir -p %{buildroot}%{_texmfvardir}/fonts/conf
     tar --use-compress-program=xz -xf %{S:80} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:81} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:82} -C %{buildroot}%{_datadir}/texlive/texmf-dist
