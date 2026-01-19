@@ -1,7 +1,7 @@
 #
 # spec file for package texlive-specs-p
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define texlive_version  2025
 %define texlive_previous 2022
 %define texlive_release  20250308
-%define texlive_noarch   218
+%define texlive_noarch   221
 %define biber_version    2.20
 
 #!BuildIgnore:          texlive
@@ -67,6 +67,9 @@ Release:        0
 BuildRequires:  ed
 BuildRequires:  fontconfig
 BuildRequires:  fontpackages-devel
+%if 0%{?suse_version} >= 1600
+BuildRequires:  pkgconfig(systemd)
+%endif
 BuildRequires:  mkfontdir
 BuildRequires:  mkfontscale
 BuildRequires:  t1utils
