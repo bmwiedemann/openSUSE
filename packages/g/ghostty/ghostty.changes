@@ -1,0 +1,226 @@
+-------------------------------------------------------------------
+Thu Oct 23 18:03:41 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.2.3
+  https://ghostty.org/docs/install/release-notes/1-2-2
+  https://ghostty.org/docs/install/release-notes/1-2-3
+
+-------------------------------------------------------------------
+Mon Oct  6 17:45:03 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.2.1
+  https://ghostty.org/docs/install/release-notes/1-2-1
+
+-------------------------------------------------------------------
+Mon Sep 22 19:48:41 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- add OFL to the license string as we embed the fonts.
+
+-------------------------------------------------------------------
+Mon Sep 22 11:25:28 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.2.0
+  https://ghostty.org/docs/install/release-notes/1-2-0
+- Add BuildRequires for pkgconfig(gtk4-layer-shell-0) which is
+  needed now. but not in the distro yet.
+- update vendor.sh based on nix/build-support/fetch-zig-cache.sh
+- regenerate the vendor tarball
+
+-------------------------------------------------------------------
+Mon Sep 22 11:19:28 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- remove duplicated description
+
+-------------------------------------------------------------------
+Sat Sep 20 15:37:30 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- limit zig versions
+
+-------------------------------------------------------------------
+Fri Aug  8 14:27:28 UTC 2025 - Jan Fooken <jan.fooken@suse.com>
+
+- Fix wrong requirement on neovim for supplementary package
+  ghostty-vim
+
+-------------------------------------------------------------------
+Mon Mar 24 19:58:31 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to 1.1.3
+  * see: https://ghostty.org/docs/install/release-notes/1-1-3
+  * OSC 21 (Kitty color protocol): Ghostty no longer sends a
+    response for non-query requests. #5770
+  * The pty no longer has an initialize size of 0x0. The size is
+    something non-zero but may still be incorrect due to a race
+    condition between initializing the pty and drawing the GUI
+    window. We do not consider this a bug. #5776
+  * Increase the maximum number of parameters for CSI sequences
+    to 24. This fixes some SGR sequences that were not working
+    properly in Kakoune. #5949
+  * The default binding for equalize_splits is now usable by
+    default for US (and similar) keyboard layouts. It was
+    previously an impossible binding.
+    The binding is super+ctrl+shift+plus. #5646
+  * The elvish shell integration sudo feature now works properly. #5992
+  * GTK: Fix various rendering issues with the "ngl" GSK renderer.
+    This resolves compatibility issues with GTK 4.18 and Gnome 48. #6877
+  * GTK: Treat negative content scale values from GTK as 1.0.
+    This fixes some known default setting issues on Gentoo systems. #5954
+  * GTK: Make the split drag handle area smaller to allow
+    selecting text on the boundary. This fix isn't perfect but is
+    an improvement. A more comprehensive fix is planned for 1.2.0. #6000
+  * GTK: The title configuration is now respected when a new tab
+    is created from the tab overview. #6032
+  * GTK: Improve the reliability of Korean input methods,
+    SPECIFICALLY THE FCITX5-HANGUL INPUT METHOD. #6779
+
+-------------------------------------------------------------------
+Thu Feb 13 21:52:36 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.1.1
+  https://ghostty.org/docs/install/release-notes/1-1-1
+- incorporated fetch-zig-cache.sh into vendor.sh as it was removed
+  upstream
+
+-------------------------------------------------------------------
+Tue Feb  4 15:58:47 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- fix debuginfo generation by disabling strip in the zig build
+
+-------------------------------------------------------------------
+Fri Jan 31 00:29:14 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- with the gobject-introspection we no longer need python3-nautilus
+  replace the BuildRequites with python-nautilus-common-files 
+
+-------------------------------------------------------------------
+Fri Jan 31 00:12:45 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- add gobject-introspection as BuildRequires to get the GI based
+  dependencies
+
+-------------------------------------------------------------------
+Thu Jan 30 23:43:50 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Rename the nautilus plugin to just ghostty.py:
+  It looks like the loader interprets the path
+  com.mitchellh.ghostty.py as a python class hierachy and fails to
+  load the plugin because of that.
+
+-------------------------------------------------------------------
+Thu Jan 30 22:14:55 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.1.0
+  https://ghostty.org/docs/install/release-notes/1-1-0
+- drop https://github.com/ghostty-org/ghostty/commit/f60068eabd94e6784f3b557c7287c49dd36bb24c.diff
+- new subpackage for nautilus plugin
+  new BuildRequires python3-nautilus python3-gobject
+
+-------------------------------------------------------------------
+Thu Jan 16 10:44:40 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- testing shows that we can not rely on the terminfo files coming
+  from the ncurses package. reenable the terminfo-ghostty package 
+  - we drop the conflicts with the terminfo package as the ghostty
+    files should be dropped from that package now.
+
+-------------------------------------------------------------------
+Mon Jan 13 11:49:23 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- now that we have the proper files in the terminfo we can switch
+  to using the distro provided terminfo files again.
+
+-------------------------------------------------------------------
+Sun Jan 12 12:04:10 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- As we actually have a file conflict we should also have a
+  conflict for the package. (boo#1235689)
+
+-------------------------------------------------------------------
+Sun Jan 12 11:39:10 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- reenable the the standalone terminfo package. the ghostty
+  terminfo file in the main terminfo package is broken.
+  (boo#1235689)
+
+-------------------------------------------------------------------
+Sun Jan 12 11:19:32 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Disable the standalone terminfo package as the same file is now
+  in the default terminfo package.
+
+-------------------------------------------------------------------
+Mon Jan  6 21:21:49 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
+
+- refetch f60068eabd94e6784f3b557c7287c49dd36bb24c.diff
+
+-------------------------------------------------------------------
+Fri Jan  3 00:45:13 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- replace no-strip.patch with the official patch, which also covers
+  more cases:
+  https://github.com/ghostty-org/ghostty/commit/f60068eabd94e6784f3b557c7287c49dd36bb24c.diff
+
+-------------------------------------------------------------------
+Wed Jan  1 22:44:31 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- switch to the official tarball for 1.0.1 and add minisign file
+  plus verification step.
+
+-------------------------------------------------------------------
+Wed Jan  1 21:41:42 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- lock zig dependency to the same limits as upstream.
+
+-------------------------------------------------------------------
+Wed Jan  1 16:52:54 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add no-strip.patch
+  disable strip for the binary
+
+-------------------------------------------------------------------
+Wed Jan  1 16:42:44 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- move trim-deps.sh to vendor.sh and make it do all the steps to
+  cache the dependencies into vendor/zig
+- make the test file cleanup more robust
+
+-------------------------------------------------------------------
+Wed Jan  1 16:39:59 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.0.1
+  https://github.com/ghostty-org/ghostty/compare/v1.0.0...v1.0.1  
+- drop 3426.patch
+
+-------------------------------------------------------------------
+Wed Jan  1 16:00:57 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- simplify filelist
+
+-------------------------------------------------------------------
+Wed Jan  1 15:55:05 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- add https://patch-diff.githubusercontent.com/raw/ghostty-org/ghostty/pull/3426.patch 
+  Fix missing DESTDIR handling for the terminfo step.
+
+-------------------------------------------------------------------
+Wed Jan  1 15:33:13 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- set the build option to have a clean version string
+- set the cpu=baseline define so we get the more portable binary
+- refactor out common build options into a define to ease
+  maintenance
+
+-------------------------------------------------------------------
+Wed Jan  1 14:29:33 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- also split out the neovim files
+
+-------------------------------------------------------------------
+Wed Jan  1 13:53:55 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- split out the terminfo files
+
+-------------------------------------------------------------------
+Thu Dec 26 21:00:05 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- initial package @v1.0.0
