@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan 19 15:16:26 UTC 2026 - ecsos <ecsos@opensuse.org> - 3.1.1
+
+- Update to 3.1.1
+  * FIXES
+    - docker startup under default user
+  * Code Improvements
+    - Update maximum versions of wavpack (5.9.0), cmake (4.2.1)
+  * Changes
+    - Gerbera 3.1.1 (#3762)
+    - Update wavpack to 5.9.0 (#3759)
+    - cope with su-exec breaking change (#3757)
+    - Bump master (#3758)
+
+-------------------------------------------------------------------
 Fri Jan 16 07:07:21 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to 3.1.0
