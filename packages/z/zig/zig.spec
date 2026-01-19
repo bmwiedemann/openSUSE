@@ -15,63 +15,21 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%global _lto_cflags %{nil}
-%global __builder   ninja
+%global version_suffix 0.15
+%global version_current 0.15.1
 %bcond_without  macro
-%bcond_without  test
 
 Name:           zig
-Version:        0.15.1
+Version:        %{version_current}
 Release:        0
 Summary:        Compiler for the Zig language
 License:        MIT
 Group:          Development/Languages/Other
 URL:            https://ziglang.org/
-Source0:        https://ziglang.org/download/%{version}/%{name}-%{version}.tar.xz
-Source1:        macros.%{name}
-# The vendored tarball is for tests. This contains the
-# cached deps. See https://en.opensuse.org/Zig#Packaging
-Source2:        vendor.tar.zst
-Source3:        zig-rpmlintrc
-Patch0:         0000-remove-lld-in-cmakelist.patch
-Patch1:         0001-invoke-lld.patch
-Patch2:         0002-no-lld-libs-and-includes.patch
-# Just copying from Archlinux. Thanks
-Patch3:         https://gitlab.archlinux.org/archlinux/packaging/packages/zig/-/raw/main/skip-localhost-test.patch
-# to improve reproducible-builds -- https://github.com/ziglang/zig/pull/22673
-Patch4:         reproducible.patch
-BuildRequires:  clang20
-BuildRequires:  clang20-devel
-BuildRequires:  cmake
-BuildRequires:  elfutils
-BuildRequires:  gcc-c++
-BuildRequires:  glibc
-BuildRequires:  glibc-devel
-BuildRequires:  glibc-devel-32bit
-BuildRequires:  help2man
-BuildRequires:  libelf-devel
-BuildRequires:  liburing-devel
-BuildRequires:  lld20
-BuildRequires:  llvm20-devel
-BuildRequires:  mold
-BuildRequires:  ninja
-BuildRequires:  zlib-devel
-BuildRequires:  zstd
-BuildRequires:  (gcc13-c++ if gcc13)
-BuildRequires:  (gcc14-c++ if gcc14)
-BuildRequires:  (gcc15-c++ if gcc15)
-Requires:       lld20
+Source0:        README
+Requires:       zig-implementation
+Recommends:     zig%{version_suffix}
 
-# llvm-config is missing targets for ppc and arm architectures.
-# ExcludeArch:    ppc64 ppc64le %%arm %%ix86
-ExclusiveArch:  x86_64 aarch64 riscv64 %{mips64}
-
-# Zig needs this to work
-Requires:       %{name}-libs = %{version}
-
-# Zig Macros
-Recommends:     %{name}-rpm-macros
 
 %description
 General-purpose programming language and toolchain for maintaining robust, optimal, and reusable software.
@@ -85,103 +43,35 @@ The language imposes a low overhead to reading code and is resilient to changing
 %package libs
 Summary:        Zig Standard Library
 BuildArch:      noarch
+Requires:       zig-libs-implementation
+Recommends:     zig-libs%{version_suffix}
+#obsolete_zig_versioned zig-libs
 
 %description libs
-%{name} Standard Library
+%{name} %{version_current} Standard Library
 
 %if %{with macro}
 %package        rpm-macros
 Summary:        Common RPM macros for %{name}
 Requires:       rpm
+Requires:       zig-rpm-macros-implementation
+Recommends:     zig-rpm-macros%{version_suffix}
 BuildArch:      noarch
+#obsolete_zig_versioned zig-rpm-macros
 
 %description    rpm-macros
-This package contains common RPM macros for %{name}.
+This package contains common RPM macros for %{name} version %{version_current}.
 %endif
 
 %prep
-%autosetup -n %{name}-%{version} -p1 -a2
 
 %build
-# CMAKE on Tumbleweed has the CMAKE_LINKER_TYPE option
-%if 0%{?suse_version} > 1600
-
-%cmake \
-%ifarch aarch64 s390x
-  -DCMAKE_BUILD_TYPE=Release \
-%endif
-  -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-  -DCMAKE_C_COMPILER="clang-20" \
-  -DCMAKE_CXX_COMPILER="clang++-20" \
-  -DCMAKE_LINKER_TYPE=MOLD \
-  -DZIG_SHARED_LLVM=On \
-  -DZIG_USE_LLVM_CONFIG=ON \
-  -DZIG_TARGET_MCPU="baseline" \
-  -DZIG_VERSION:STRING="%{version}"
-
-%else
-
-%cmake \
-%ifarch aarch64 s390x
-  -DCMAKE_BUILD_TYPE=Release \
-%endif
-  -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-  -DCMAKE_C_COMPILER="clang-20" \
-  -DCMAKE_CXX_COMPILER="clang++-20" \
-  -DZIG_SHARED_LLVM=On \
-  -DZIG_USE_LLVM_CONFIG=ON \
-  -DZIG_TARGET_MCPU="baseline" \
-  -DZIG_VERSION:STRING="%{version}"
-
-%endif
-
-# Workaround since CMAKE on Leap does not have
-# the CMAKE_LINKER_TYPE option
-%if 0%{?suse_version} > 1600
-%cmake_build
-%else
-mold -run %cmake_build
-%endif
 
 %install
-%cmake_install
-mkdir -p %{buildroot}%{_mandir}/man1
-help2man --no-discard-stderr "%{buildroot}%{_bindir}/%{name}" --version-option=version --output=%{buildroot}%{_mandir}/man1/%{name}.1
-
-mkdir -p %{buildroot}%{_rpmconfigdir}/macros.d/
-install -p -m644 %{SOURCE1} %{buildroot}%{_rpmmacrodir}
-
-sed -i -e "s|@@ZIG_VERSION@@|%{version}|"  %{buildroot}%{_rpmmacrodir}/macros.%{name}
-
-mv -v doc/langref.html.in doc/langref.html
-
-%if 0%{?with test}
-%check
-./build/stage3/bin/zig build test -Dconfig_h=build/config.h \
-	-Dcpu=baseline \
-	-Dskip-debug \
-	-Dskip-release-safe \
-	-Dskip-release-small \
-        -Dstatic-llvm=false \
-	-Denable-llvm=true \
-	-Dskip-non-native=true
-%endif
+install -D -m 0644 %{S:0} %{buildroot}%{_datadir}/doc/packages/zig/README
 
 %files
-%license LICENSE
-%{_bindir}/zig
-%{_mandir}/man1/%{name}.1%{?ext_man}
-%doc README.md
-%doc lib/docs
-%doc doc/langref.html
-
-%files libs
-%dir %{_prefix}/lib/%{name}
-%{_prefix}/lib/%{name}/*
-
-%if %{with macro}
-%files rpm-macros
-%{_rpmmacrodir}/macros.%{name}
-%endif
+%defattr(-,root,root,-)
+%doc %{_datadir}/doc/packages/zig
 
 %changelog

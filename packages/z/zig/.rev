@@ -101,4 +101,15 @@
 These allow reducing most spec file boilerplate to a simple BuildSystem: zig (forwarded request 1313383 from mia)</comment>
     <requestid>1314099</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>616cf91252a10cbf37680db7bfaf8bdb</srcmd5>
+    <version>0.15.1</version>
+    <time>1768844276</time>
+    <user>anag_factory</user>
+    <comment>- no longer hard enforce the latest version. Require any version
+  but recommend the latest
+- No longer obsolete older packages in case we need older versions working
+- Initial package for zig stub package. This package will point to latest zig version.</comment>
+    <requestid>1328022</requestid>
+  </revision>
 </revisionlist>
