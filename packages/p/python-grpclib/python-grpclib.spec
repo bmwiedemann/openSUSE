@@ -1,7 +1,7 @@
 #
 # spec file for package python-grpclib
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-grpclib
-Version:        0.4.8
+Version:        0.4.9
 Release:        0
 Summary:        Pure-Python gRPC implementation for asyncio
 License:        BSD-3-Clause
 URL:            https://github.com/vmagamedov/grpclib
 Source:         https://github.com/vmagamedov/grpclib/archive/v%{version}.tar.gz#/grpclib-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#vmagamedov/grpclib#205
-Patch0:         support-new-pytest-asyncio.patch
-# PATCH-FIX-UPSTREAM gh#vmagamedov/grpclib#208
-Patch1:         support-python-314.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 40.6.0}
 BuildRequires:  %{python_module wheel}

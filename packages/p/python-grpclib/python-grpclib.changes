@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 19 10:48:52 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.4.9
+  * Added Python 3.14 support; pull request courtesy Thomas J. Fan @thomasjpfan
+  * Dropped Python 3.8 and 3.9 support
+  * Added support for a custom ``DescriptorPool`` for the server reflection
+    (#204); pull request courtesy Eric Daniels @edaniels
+- Drop support-new-pytest-asyncio.patch, merged upstream
+- Drop support-python-314.patch, merged upstream
+
+-------------------------------------------------------------------
 Thu Oct 30 04:35:21 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-python-314.patch:
