@@ -256,4 +256,21 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1318323</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>20fa268a30680b205f3e56d429422357</srcmd5>
+    <version>26.1.0</version>
+    <time>1768844181</time>
+    <user>anag_factory</user>
+    <comment>- Update to 26.1.0; changes since 25.3.4
+  * Update descriptions of dispatcher API query funcs
+  * VPL Encode Log Enhancement using AI.
+  * Changed LA_STATS_SIZE from calculated value (32 * 2) to
+    hardcoded 480. This removes the comment about enlarging size
+    for VdencHevcLaStats future usage and replaces the expression
+    with its evaluated result. The change maintains the same buffer
+    size (480 bytes) but makes the constant more explicit and
+    removes dependency on the previous calculation rationale.
+  * Add new member and enum for dec csc and scale caps</comment>
+    <requestid>1327956</requestid>
+  </revision>
 </revisionlist>

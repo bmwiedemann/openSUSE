@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jan 18 18:37:10 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 26.1.0; changes since 25.3.4
+  * Update descriptions of dispatcher API query funcs
+  * VPL Encode Log Enhancement using AI.
+  * Changed LA_STATS_SIZE from calculated value (32 * 2) to
+    hardcoded 480. This removes the comment about enlarging size
+    for VdencHevcLaStats future usage and replaces the expression
+    with its evaluated result. The change maintains the same buffer
+    size (480 bytes) but makes the constant more explicit and
+    removes dependency on the previous calculation rationale.
+  * Add new member and enum for dec csc and scale caps
+
+-------------------------------------------------------------------
 Mon Nov 10 20:01:34 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to 25.3.4; changes since 25.2.4
