@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 19 10:33:39 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.2.4
+  * support google-auth >= 2.46.0 (#433)
+- from version 1.2.3
+  * Add upper-bound to google-auth dependency (#423)
+  * Drop support for Python 3.6
+  * Explicitly declare Python 3.13 support
+- Drop python-google-auth-oauthlib-no-mock.patch, fixed upstream
+
+-------------------------------------------------------------------
 Mon May 19 13:49:14 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.2.2

@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-auth-oauthlib
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-auth-oauthlib
-Version:        1.2.2
+Version:        1.2.4
 Release:        0
 Summary:        Google authentication library
 License:        Apache-2.0
 URL:            https://github.com/googleapis/google-auth-library-python-oauthlib
 Source:         https://files.pythonhosted.org/packages/source/g/google_auth_oauthlib/google_auth_oauthlib-%{version}.tar.gz
-# https://github.com/googleapis/google-auth-library-python-oauthlib/issues/207
-Patch0:         python-google-auth-oauthlib-no-mock.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
