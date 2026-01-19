@@ -1,4 +1,116 @@
 -------------------------------------------------------------------
+Mon Jan 19 06:38:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.0.221:
+  * Added
+    - Embedded markdown linting in fenced code blocks
+      - Lint markdown content inside ```markdown code blocks
+      - Provides lint warnings for markdown examples in
+        documentation
+      - Auto-fix support formats embedded markdown preserving code
+        fence indentation
+  * Fixed
+    - MD064: Remove max-consecutive-spaces config, improve sentence
+      detection
+      - Removed conceptually inconsistent max-consecutive-spaces
+        option
+      - Share sentence detection logic with text reflow (DRY)
+      - Add proper abbreviation detection (Dr., Prof., e.g., i.e.,
+        Mr., Mrs.)
+      - Add CJK sentence-ending punctuation support (。, ！, ？)
+      - Fix UTF-8 byte boundary handling for multi-byte characters
+    - MD055/MD056: Handle tables inside blockquotes in fix mode
+      - Tables within blockquotes now preserve > prefix when fixed
+      - Pipe style and column count fixes work correctly in nested
+        contexts
+    - MD060: Improve alignment detection for CJK and delimiter
+      styles
+      - Better handling of CJK character widths in table alignment
+      - Improved delimiter row style detection
+    - MD069: Respect inline disable comments in fix mode
+      - <!-- markdownlint-disable MD069 --> now properly prevents
+        fixes
+      - Exposed inline config checks for rule disable detection
+    - MD058/MD065: Recognize blockquote continuation lines as blank
+      - Lines with only > are now treated as blank for table
+        separation rules
+      - Fixes false positives in blockquoted content
+    - Text reflow: Recognize sentence boundaries with quotation
+      marks
+      - Sentences ending with closing quotes (.\", !\", ?\") now
+        detected correctly
+      - Supports both straight and curly quotation marks
+  * Changed
+    - Refactored sentence detection into shared module
+      - New sentence_utils module provides reusable sentence
+        boundary detection
+      - Used by both MD064 (consecutive spaces) and text reflow
+        (MD013)
+      - Reduces code duplication by ~100 lines
+- Update to version 0.0.220:
+  * Added
+    - RUMDL_OUTPUT_FORMAT environment variable (#297)
+      - Override output format in CI/CD without modifying config
+        files
+      - Precedence: CLI flag → env var → config → default
+      - Example: RUMDL_OUTPUT_FORMAT=github rumdl check .
+  * Fixed
+    - MD050: Skip math blocks to avoid false positives in Quarto
+      - LaTeX subscripts (x_1) and exponentiation (a**b) were
+        incorrectly flagged as strong emphasis
+      - Now correctly skips content inside $$...$$ math blocks
+  * Changed
+    - Documentation: Clarify CommonMark 0.31.2 spec version (#298)
+      - Explicitly document that rumdl uses CommonMark 0.31.2 via
+        pulldown-cmark
+      - Clarify that standard flavor includes GFM extensions
+        (tables, task lists, strikethrough, autolinks)
+      - Document commonmark as alias for standard, github as alias
+        for gfm
+      - Add output-format setting documentation with all 12
+        available formats
+- Update to version 0.0.219:
+  * Added
+    - Comprehensive markdown flavor support
+      - GFM flavor: Security-sensitive HTML tag detection in MD033,
+        extended autolinks including xmpp: protocol in MD034
+      - MkDocs flavor: mkdocstrings block support, extended
+        markdown syntax (keys [[Ctrl]], caret ^^sup^^, mark
+        ==highlight==, ins ++inserted++, tilde ~sub~)
+      - MDX flavor: JSX attribute detection (className, htmlFor,
+        onClick, etc.), JSX expression handling, ESM import/export
+        support
+      - Quarto flavor: Pandoc citation syntax (@ref, [@ref]),
+        shortcode detection ({{< >}}), div blocks and callouts (:::
+        {.callout-*}), math block handling for emphasis rules
+    - Comprehensive UTF-8 stress tests
+      - Systematic testing of all rules against 11 scripts
+        (Bengali, Arabic, Chinese, Japanese, Korean, Thai, Hindi,
+        Russian, Greek, Emoji, ZWJ sequences)
+      - Tests for check(), fix(), and fix range character
+        boundaries
+      - Catches UTF-8 panics before they reach production
+  * Fixed
+    - MD034: UTF-8 panic with multi-byte text before emails
+      - Fixed crash when email follows Bengali, Chinese, Arabic, or
+        other multi-byte UTF-8 text
+      - The xmpp: prefix check was slicing at invalid character
+        boundaries
+      - Discovered during testing against kubernetes/website
+    - MD031: Blank line detection after MkDocs admonition blocks
+      - Corrected blank line requirements after admonition content
+    - MkDocs: Nested admonition handling
+      - Implemented stack-based detection for properly nested
+        admonitions
+  * Changed
+    - Documentation: Split flavor docs into separate files
+      - docs/flavors.md is now a concise overview with links
+      - Each flavor has its own file: docs/flavors/standard.md,
+        gfm.md, mkdocs.md, mdx.md, quarto.md
+      - Easier to find, reference, and maintain flavor-specific
+        documentation
+
+-------------------------------------------------------------------
 Fri Jan 16 06:38:01 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.0.218:
