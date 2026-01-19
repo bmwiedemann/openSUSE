@@ -1,7 +1,7 @@
 #
 # spec file for package texlive-specs-m
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,12 +14,14 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+##### WARNING: Please do not edit this auto generated spec file.
+#
 
 
 %define texlive_version  2025
 %define texlive_previous 2022
 %define texlive_release  20250308
-%define texlive_noarch   220
+%define texlive_noarch   221
 %define biber_version    2.20
 
 #!BuildIgnore:          texlive
@@ -65,6 +67,9 @@ Release:        0
 BuildRequires:  ed
 BuildRequires:  fontconfig
 BuildRequires:  fontpackages-devel
+%if 0%{?suse_version} >= 1600
+BuildRequires:  pkgconfig(systemd)
+%endif
 BuildRequires:  mkfontdir
 BuildRequires:  mkfontscale
 BuildRequires:  t1utils
@@ -73,7 +78,7 @@ BuildRequires:  xorg-x11-fonts-core
 BuildRequires:  xz
 BuildArch:      noarch
 Summary:        Meta package for m
-License:        Apache-1.0 AND BSD-3-Clause AND GFDL-1.3-or-later AND GPL-2.0-or-later AND LGPL-2.1-or-later AND LPPL-1.0 AND LPPL-1.3c AND OFL-1.1 AND SUSE-Public-Domain AND SUSE-TeX
+License:        Apache-1.0 and BSD-3-Clause and GFDL-1.3-or-later and GPL-2.0-or-later and LGPL-2.1-or-later and LPPL-1.0 and LPPL-1.3c and OFL-1.1 and SUSE-Public-Domain and SUSE-TeX
 URL:            https://build.opensuse.org/package/show/Publishing:TeXLive/Meta
 Group:          Productivity/Publishing/TeX/Base
 Source0:        texlive-specs-m-rpmlintrc

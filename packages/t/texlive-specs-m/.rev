@@ -581,4 +581,12 @@
   * Resolve missing local perl package tools.pm with upstream fix</comment>
     <requestid>1302357</requestid>
   </revision>
+  <revision rev="58" vrev="61">
+    <srcmd5>b5ea195f631a45dd3377eb36a4c00e19</srcmd5>
+    <version>unknown</version>
+    <time>1768844146</time>
+    <user>anag_factory</user>
+    <comment>Support Immutable Mode (jsc#PED-14907 and jsc#PED-14906)</comment>
+    <requestid>1327582</requestid>
+  </revision>
 </revisionlist>
