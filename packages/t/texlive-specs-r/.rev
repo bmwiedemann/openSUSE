@@ -553,4 +553,12 @@
     <comment>Update to TeXLive 2025</comment>
     <requestid>1254620</requestid>
   </revision>
+  <revision rev="53" vrev="56">
+    <srcmd5>4974847e3d3d288c29da9a0e913753be</srcmd5>
+    <version>unknown</version>
+    <time>1768844155</time>
+    <user>anag_factory</user>
+    <comment>Support Immutable Mode (jsc#PED-14907 and jsc#PED-14906)</comment>
+    <requestid>1327593</requestid>
+  </revision>
 </revisionlist>
