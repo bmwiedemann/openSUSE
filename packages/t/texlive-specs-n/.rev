@@ -574,4 +574,20 @@
     <comment>Update to TeXLive 2025</comment>
     <requestid>1254616</requestid>
   </revision>
+  <revision rev="56" vrev="59">
+    <srcmd5>16a5d80b202b73e91d631f013d7cd341</srcmd5>
+    <version>unknown</version>
+    <time>1768844169</time>
+    <user>anag_factory</user>
+    <comment>- Support Immutable Mode (jsc#PED-14907)
+  * Simply remove xetex_runfiles.list as now
+    /var/lib/texmf/fonts/conf is in tmpfiles list (jsc#PED-14906)
+
+- Increase pool_size and pool_free for both xmltex and pdfxmltex
+  to get formats created and xmlto runing again (boo#1248830)
+
+- Add patch eolang_pl.dif
+  * Resolve missing local perl package tools.pm with upstream fix</comment>
+    <requestid>1328095</requestid>
+  </revision>
 </revisionlist>
