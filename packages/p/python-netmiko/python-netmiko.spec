@@ -1,7 +1,7 @@
 #
 # spec file for package python-netmiko
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,28 +26,28 @@ URL:            https://github.com/ktbyers/netmiko
 Source:         https://files.pythonhosted.org/packages/source/n/netmiko/netmiko-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
-BuildRequires:  %{python_module setuptools >= 65.0.0}
-BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 6.0.2
-Requires:       python-cffi >= 1.17.0
 Requires:       python-ntc-templates >= 3.1.0
 Requires:       python-paramiko >= 2.9.5
 Requires:       python-pyserial >= 3.3
+Requires:       python-rich >= 13.8
+Requires:       python-ruamel.yaml >= 0.17
 Requires:       python-scp >= 0.13.6
-Requires:       python-setuptools
-Requires:       python-tenacity
 Requires:       python-textfsm >= 1.1.3
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
-# SECTION test requirements
-BuildRequires:  %{python_module PyYAML >= 5.3}
-BuildRequires:  %{python_module paramiko >= 2.6.0}
+# SECTION at least check for the runtime requirements
+BuildRequires:  %{python_module PyYAML >= 6.0.2}
+BuildRequires:  %{python_module ntc-templates >= 3.1.0}
+BuildRequires:  %{python_module paramiko >= 2.9.5}
 BuildRequires:  %{python_module pyserial >= 3.3}
-BuildRequires:  %{python_module scp >= 0.13.2}
+BuildRequires:  %{python_module rich >= 13.8}
+BuildRequires:  %{python_module ruamel.yaml >= 0.17}
+BuildRequires:  %{python_module scp >= 0.13.6}
 BuildRequires:  %{python_module textfsm >= 1.1.3}
 # /SECTION
 %python_subpackages
@@ -59,8 +59,14 @@ Multi-vendor library to simplify Paramiko SSH connections to network devices.
 %setup -q -n netmiko-%{version}
 # drop shebang
 sed -i -e '/^#!\//, 1d' \
+  netmiko/nokia/nokia_srl.py \
   netmiko/nokia/nokia_sros.py \
-  netmiko/cdot/cdot_cros_ssh.py
+  netmiko/cdot/cdot_cros_ssh.py \
+  netmiko/cli_tools/netmiko_*.py
+chmod -x \
+  netmiko/nokia/__init__.py \
+  netmiko/ssh_dispatcher.py \
+  netmiko/cli_tools/netmiko_*.py
 
 %build
 %pyproject_wheel
@@ -73,11 +79,6 @@ sed -i -e '/^#!\//, 1d' \
 %python_clone -a %{buildroot}%{_bindir}/netmiko-grep
 %python_clone -a %{buildroot}%{_bindir}/netmiko-show
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-# Fix python-bytecode-inconsistent-mtime
-pushd %{buildroot}%{python_sitelib}
-find . -name '*.pyc' -exec rm -f '{}' ';'
-python%python_bin_suffix -m compileall *.py ';'
-popd
 
 %check
 # NOTE: for testing, we have to manually run it against a given device.
@@ -86,6 +87,7 @@ popd
 #
 # Unfortunately, we can't do that during build as those doesn't appeared
 # to be unit tests.
+# (there are unit tests in the github repo, but not in the sdist. See github workflow.)
 
 %post
 %python_install_alternative netmiko-bulk-encrypt
