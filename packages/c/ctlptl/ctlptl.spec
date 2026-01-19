@@ -1,7 +1,7 @@
 #
 # spec file for package ctlptl
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ctlptl
-Version:        0.8.44
+Version:        0.9.0
 Release:        0
 Summary:        CLI for declaratively setting up local Kubernetes clusters
 License:        Apache-2.0
