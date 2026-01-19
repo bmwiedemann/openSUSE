@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 19 06:31:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.22.0:
+  * Changes
+    - The misfeature audit now only shows non-"well known" shell:
+      findings when running with the "auditor" persona (#1532)
+  * Bug Fixes
+    - Fixed a bug where inputs containing CRLF line endings were
+      not patched correctly by the unpinned-uses audit (#1536)
+
+-------------------------------------------------------------------
 Fri Jan 16 06:17:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.21.0:
