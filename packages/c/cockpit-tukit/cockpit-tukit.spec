@@ -16,7 +16,7 @@
 #
 
 Name:           cockpit-tukit
-Version:        0.1.5
+Version:        0.1.7~git0.61e54f1
 Release:        0%{?dist}
 Summary:        Cockpit module for Transactional Update
 License:        LGPL-2.1-or-later
@@ -49,6 +49,7 @@ Cockpit module for Transactional Update
 rm -f package-lock.json
 rm -rf node_modules
 local-npm-registry %{_sourcedir} install --include=dev --ignore-scripts|| ( find ~/.npm/_logs -name '*-debug.log' -print0 | xargs -0 cat; false)
+touch package-lock.json
 
 %build
 mkdir -p pkg

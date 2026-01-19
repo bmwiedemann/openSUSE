@@ -166,4 +166,15 @@
   * Dependency updates</comment>
     <requestid>1306666</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ec4b49f4f5084c040ce7b11608f56e05</srcmd5>
+    <version>0.1.7~git0.61e54f1</version>
+    <time>1768844340</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.1.7~git0.61e54f1:
+  * Dependency updates
+  * Translation updates
+  * Fix non-x86 builds</comment>
+    <requestid>1328081</requestid>
+  </revision>
 </revisionlist>
