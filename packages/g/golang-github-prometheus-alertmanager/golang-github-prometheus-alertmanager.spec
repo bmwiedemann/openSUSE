@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-prometheus-alertmanager
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           golang-github-prometheus-alertmanager
-Version:        0.30.0
+Version:        0.30.1
 Release:        0
 Summary:        Prometheus Alertmanager
 License:        Apache-2.0
