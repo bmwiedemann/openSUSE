@@ -565,4 +565,12 @@ Aggregate licenses for spec file without subpackages (forwarded request 131950 f
     <comment>Update to TeXLive 2025</comment>
     <requestid>1254608</requestid>
   </revision>
+  <revision rev="56" vrev="59">
+    <srcmd5>3b98e15c3735cb42cdecbf24e121cd3d</srcmd5>
+    <version>unknown</version>
+    <time>1768844133</time>
+    <user>anag_factory</user>
+    <comment>Support Immutable Mode (jsc#PED-14907 and jsc#PED-14906)</comment>
+    <requestid>1327575</requestid>
+  </revision>
 </revisionlist>
