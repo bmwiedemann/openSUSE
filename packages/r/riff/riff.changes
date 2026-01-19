@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 19 08:23:41 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.6.1:
+  * Before this release, piped riff output could contain OSC hyperlinks,
+    potentially messing up for other tools.
+    With this release, riff will no longer emit hyperlinks when its
+    output is not a terminal.
+
+-------------------------------------------------------------------
 Sat Nov  8 16:52:18 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.6.0:

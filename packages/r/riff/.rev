@@ -324,4 +324,16 @@
     the new default, and no options are needed for that any more.</comment>
     <requestid>1316602</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>22e58a53847c8f342d2791667d69076f</srcmd5>
+    <version>3.6.1</version>
+    <time>1768844284</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.6.1:
+  * Before this release, piped riff output could contain OSC hyperlinks,
+    potentially messing up for other tools.
+    With this release, riff will no longer emit hyperlinks when its
+    output is not a terminal.</comment>
+    <requestid>1328026</requestid>
+  </revision>
 </revisionlist>
