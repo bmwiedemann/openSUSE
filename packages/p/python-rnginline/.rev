@@ -48,4 +48,14 @@
 - Less globs in %files.</comment>
     <requestid>1158850</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>c429e2ce03a9b45ed45720d4791a1973</srcmd5>
+    <version>1.0.0</version>
+    <time>1768844214</time>
+    <user>anag_factory</user>
+    <comment>- Use poetry-core rather than poetry for building.
+- Add patch support-python-314.patch:
+  * Support Python 3.14 normalizing.</comment>
+    <requestid>1327975</requestid>
+  </revision>
 </revisionlist>

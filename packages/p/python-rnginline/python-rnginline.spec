@@ -1,7 +1,7 @@
 #
 # spec file for package python-rnginline
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,9 +24,10 @@ Summary:        Python libary to flatten multi-file RELAX NG schemas
 License:        Apache-2.0
 URL:            https://github.com/h4l/rnginline
 Source:         https://files.pythonhosted.org/packages/source/r/rnginline/rnginline-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Support Python 3.14 normalizing
+Patch0:         support-python-314.patch
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-docopt
@@ -55,7 +56,7 @@ multi-file RELAX NG schemas from arbitary URLs, and flattening them
 into a single RELAX NG schema.
 
 %prep
-%setup -q -n rnginline-%{version}
+%autosetup -p1 -n rnginline-%{version}
 
 %build
 %pyproject_wheel

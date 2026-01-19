@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 19 05:07:20 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use poetry-core rather than poetry for building.
+- Add patch support-python-314.patch:
+  * Support Python 3.14 normalizing.
+
+-------------------------------------------------------------------
 Mon Mar 18 04:38:41 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing importlib_metadata to {Build,}Requires.
