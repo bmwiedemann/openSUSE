@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Mon Jan 12 09:46:26 UTC 2026 - Detlef Steuer <detlef.steuer@gmx.de>
+
+-  VERSION 06.02.02 - 2026-01-10
+
+- NEW FEATURE: remind: Turn reminders with a "Url:" INFO string into
+  hyperlinks if you set the $TerminalHyperlinks system variable to 1.
+  Note that your terminal must support the "OSC 8" hyperlink escape
+  sequence; see
+  https://gist.github.com/egmontkob/eb114294efbcd5adb1944c9f3cb5feda
+  for details.
+
+  For backward compatibility, the 'z' flag of the "-c" command-line
+  option sets $TerminalHyperlinks to 1.
+
+- NEW FEATURE: remind: Add another parameter to the "-w" option to
+  remove blank lines between reminders, thereby making the calendar
+  more compact.
+
+- IMPROVEMENT: TkRemind: Make the window that pops up for background
+  reminders obey the color options chosen under "Options..."
+
+- CHANGE: remind: The header <wchar.h> and the functions mbstowcs and
+  wcstombs are now mandatory.  This should not affect any vaguely modern
+  UNIX system.
+
+- IMPROVEMENT: remind: Allow Hebrew spellings of Hebrew month names.
+  For example, you can use "Iyar" or "אייר".
+
+- IMPROVEMENT: remind: Allow different Hebrew transliterations of month
+  names. For example, you can use "Shvat" or "Shevat".  See the man page
+  for the full list of possibilities.
+
+- IMPROVEMENT: remind: Add the mbpad() function, which is the
+  character-oriented counterpart to pad().
+
+- MINOR NEW FEATURE: Add a "make uninstall-script" Makefile target.
+  This generates a script that if run as root after "make install", will
+  remove Remind.
+
+- MINOR IMPROVEMENT: remind: Make COMPLETED-THROUGH a synonym for
+  COMPLETE-THROUGH.
+
+- BUG FIX: TkRemind: When we print a weekly calendar, make sure we start
+  from the same date as the currently-displayed calendar.
+
+- BUG FIX: remind: Fix an edge case where a REM command with a WARN
+  function may not trigger on its actual trigger date.
+
+- BUG FIX: include/holidays/jewish.rem: Split Chanukah into separate
+  reminders to improve iCal export.
+
+- DOC FIX: remind.1: Fix bad man page formatting.
+
+- DOC FIX: Document that now() returns 00:00 in Calendar Mode.
+
+-------------------------------------------------------------------
 Tue Nov 11 22:53:45 UTC 2025 - Detlef Steuer <detlef.steuer@gmx.de>
 
 * VERSION 06.02.01 - 2025-11-10

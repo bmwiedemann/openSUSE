@@ -1,7 +1,7 @@
 #
 # spec file for package remind
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 Name:           remind
-Version:        6.2.1
+Version:        6.2.2
 Release:        0
-%define tar_version 06.02.01
+%define tar_version 06.02.02
 Summary:        A sophisticated calendar and alarm program
 License:        GPL-2.0-only
 Group:          Productivity/Office/Organizers
@@ -667,6 +667,21 @@ make DESTDIR=%{buildroot} install
 /usr/share/remind/holidays/ws.rem
 /usr/share/remind/holidays/za.rem
 /usr/share/remind/holidays/zm.rem
+
+%dir /usr/share/remind/translations
+/usr/share/remind/translations/README.txt
+%dir /usr/share/remind/translations/de
+%dir /usr/share/remind/translations/de/holidays
+/usr/share/remind/translations/de/holidays/chinese-new-year.rem
+/usr/share/remind/translations/de/moonphases.rem
+/usr/share/remind/translations/de/seasons.rem
+/usr/share/remind/translations/de/sun.rem
+%dir /usr/share/remind/translations/nl
+%dir /usr/share/remind/translations/nl/holidays
+/usr/share/remind/translations/nl/holidays/chinese-new-year.rem
+/usr/share/remind/translations/nl/moonphases.rem
+/usr/share/remind/translations/nl/seasons.rem
+/usr/share/remind/translations/nl/sun.rem
 
 /usr/share/remind/lang/auto.rem
 /usr/share/remind/lunar-eclipses.rem

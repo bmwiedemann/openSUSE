@@ -1012,4 +1012,12 @@
   Remove that test so all tests pass under MUSL.</comment>
     <requestid>1317204</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>e1a7f55f766497d85c620ccd75b67d5e</srcmd5>
+    <version>6.2.2</version>
+    <time>1768844320</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1328059</requestid>
+  </revision>
 </revisionlist>
