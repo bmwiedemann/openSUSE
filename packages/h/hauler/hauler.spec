@@ -17,8 +17,8 @@
 
 
 Name:           hauler
-Version:        1.4.0
-%global git_commit 5edc8802eec20adc7d0b75847f77446d6f531012
+Version:        1.4.1
+%global git_commit 4a2b7b13a7a3e3dab926893c0be1a67dea6d8457
 Release:        0
 Summary:        Airgap Swiss Army Knife
 License:        Apache-2.0

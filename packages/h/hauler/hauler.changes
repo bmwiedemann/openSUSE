@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 19 12:38:03 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 1.4.1 (bsc#1256546, CVE-2026-22772):
+  * fixed typos for containerd imports (#493)
+  * fix and support containerd imports of `hauls` (#492)
+  * bump github.com/sigstore/fulcio (#489)
+
+-------------------------------------------------------------------
 Tue Jan 13 13:57:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 1.4.0:

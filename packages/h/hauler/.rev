@@ -231,4 +231,15 @@
   * updated/fixed workflow dependency versions (#478)</comment>
     <requestid>1327019</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a01797a2f70e217728a9a03124fd913b</srcmd5>
+    <version>1.4.1</version>
+    <time>1768844342</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.4.1 (bsc#1256546, CVE-2026-22772):
+  * fixed typos for containerd imports (#493)
+  * fix and support containerd imports of `hauls` (#492)
+  * bump github.com/sigstore/fulcio (#489)</comment>
+    <requestid>1328091</requestid>
+  </revision>
 </revisionlist>
