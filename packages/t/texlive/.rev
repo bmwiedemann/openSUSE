@@ -1314,4 +1314,12 @@
     header</comment>
     <requestid>1306554</requestid>
   </revision>
+  <revision rev="110" vrev="113">
+    <srcmd5>f5dccabec177b5d0b295b2b8428cd95e</srcmd5>
+    <version>unknown</version>
+    <time>1768844117</time>
+    <user>anag_factory</user>
+    <comment>Support Immutable Mode (jsc#PED-14907 and jsc#PED-14906)</comment>
+    <requestid>1327567</requestid>
+  </revision>
 </revisionlist>

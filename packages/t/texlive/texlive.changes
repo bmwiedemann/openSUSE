@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 16 08:08:15 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Support Immutable Mode (jsc#PED-14907 and jsc#PED-14906) 
+
+-------------------------------------------------------------------
 Sat Sep 20 12:04:50 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - Fix boost2.dif build with boost 1.89.0 (boo#1249956)

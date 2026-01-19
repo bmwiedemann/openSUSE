@@ -1,7 +1,7 @@
 #
 # spec file for package texlive
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define texlive_version  2025
 %define texlive_previous 2022
 %define texlive_release  20250308
-%define texlive_noarch   220
+%define texlive_noarch   221
 %define texlive_source   texlive-20250308-source
 %define biber_version    2.20
 
@@ -31,6 +31,12 @@
 %global perl_version %(rpm -q --qf '%%{VERSION}' perl)
 %endif
 %global perl_versnum %(rpm -q --qf '%%{VERSION}' perl | sed 's/\\.//g')
+
+%if 0%{?suse_version} >= 1600
+%bcond_without  immutable
+%else
+%bcond_with     immutable
+%endif
 
 #
 # LuaJIT -- does not build nor support all architectures
@@ -191,6 +197,9 @@ BuildRequires:  zlib-ng-compat-devel
 BuildRequires:  zlib-devel
 %endif
 BuildRequires:  zziplib-devel
+%if 0%{?suse_version} >= 1600
+BuildRequires:  pkgconfig(systemd)
+%endif
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xaw7)
 BuildRequires:  pkgconfig(xi)
@@ -4469,6 +4478,12 @@ popd
     cp -vf %{S:4} $paths
 
 %build
+    for flag in s l m
+    do
+	ulimit -H$flag unlimited || :
+	ulimit -S$flag unlimited || :
+    done
+
     # Extend the options file
     echo "world=${PWD}/world" >> %{options}
     echo "prefix=${PWD}/prefix" >> %{options}
@@ -5168,6 +5183,12 @@ popd
 	    ln -sf ../share/texmf/scripts/memoize/${m}.pl $m
 	done
     popd
+
+# Final remove all below /var/
+%if %{with immutable}
+    rm -vrf %{buildroot}%{_texmfvardir}
+    rm -vrf %{buildroot}%{_texmfcache}
+%endif
 
 %if %{defined verify_permissions}
 %verifyscript kpathsea-bin
