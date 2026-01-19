@@ -1,0 +1,5 @@
+addFilter("devel-file-in-non-devel-package")
+addFilter("files-duplicate")
+addFilter("name-repeated-in-summary")
+addFilter("hidden-file-or-dir")
+addFilter("zero-length")

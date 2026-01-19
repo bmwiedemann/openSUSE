@@ -1,0 +1,280 @@
+-------------------------------------------------------------------
+Mon Jan 19 08:05:33 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Drop vendor tarball
+
+-------------------------------------------------------------------
+Sun Jan 18 00:59:01 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Fix Requires for the libs package
+
+-------------------------------------------------------------------
+Tue Jan  6 06:00:15 UTC 2026 - Mihai Petracovici <petracvv@opensuse.org>
+
+- Update to version 0.15.2
+  - use older std.mem function names
+  - std.crypto.tls.Client: fix infinite loop in std.Io.Writer.writeAll
+  - std.fs.File.Reader.seekTo: fix one more logical position bug
+  - std.Io.Reader: rework peekDelimiterInclusive
+  - Fix Reader.Limited end of stream conditions
+  - std: std.fs.File fix sendFile with buffered data
+  - std.Io.Reader: fix delimiter bugs
+  - std: fix sendFileReading not accounting for buffer
+  - std: fix File.Writer sendfile with buffered contents
+  - Reader.peekDelimiterInclusive: Fix handling of `stream` implementations that return 0
+  - std.Build: duplicate sub_path for LazyPath's dependency variant
+  - std.c: Add missing SIG constants for serenity
+  - libcxxabi: don't build cxa_noexception.cpp if exceptions are enabled
+  - libcxxabi: sort file list according to upstream CMakeLists.txt
+  - libcxxabi: define _LIBCPP_BUILDING_LIBRARY in addition to _LIBCXXABI_BUILDING_LIBRARY
+  - std.zig.system: handle or1k in getExternalExecutor()
+  - fix read of undefined in http tests
+  - don't pass zero-length `@memset` to the backend
+  - InternPool: use sequential string indices instead of byte offsets
+  - x86_64: fix bool vector init register clobber
+  - Lld: fix implib emit path
+  - resinator: fix an alignment problem
+  - translate_c: fix ternary operator output in C macros
+  - Fix zig build lazy -> eager dependency promotion
+  - libcxx: respond to some feature macro changes in LLVM 20
+  - test: remove `pie` test case from test-standalone
+  - Compilation: --debug-rt always Debug
+  - Update descriptions of -f[no-]error-tracing to match the actual behavior
+  - bootstrap: Add support for DragonFly
+  - lib/std/c: sync "struct stat" for DragonFly
+  - musl: add missing fenv C dummy functions for loongarch64-linux-muslsf
+  - Revert "x86_64: improve support for large enums"
+  - x86_64: improve support for large enums
+  - Fix PowerPC `restore_rt`
+  - x86_64: support more in/out forms
+  - Fix PowerPC syscalls causing invalid code from CBE
+  - glibc: guard inet-fortified.h
+  - use copy_file_range syscall on linux
+  - std: always allow spawning processes when an env map is explicitly provided (#25092)
+  - compiler: don't use self-hosted backend on any BSD yet
+  - std.posix: remove bogus assert that SIGRTMAX < NSIG
+  - test: disable test-link on FreeBSD
+  - test: disable some stack trace tests on FreeBSD
+  - std.pie: fix register constraint in getDynamicSymbol() for s390x (#25327)
+  - Revert "frontend: another packedStructFieldPtrInfo fix"
+  - Revert "x86_64: fix safety crashes in `storeRegs`"
+  - x86_64: rewrite vector element pointer access
+  - ci: temporarily disable riscv64-linux
+  - standalone: fix misaligned stack crash
+  - aarch64: fix behavior failures
+  - aarch64/zonCast: don't return a pointer to a stack element
+  - x86 codegen: handle spilled tuples
+  - x86_64: fix safety crashes in `storeRegs`
+  - frontend: additionally handle C pointers in ptrOptPayload
+  - frontend: fix too strict assertion
+  - frontend: another packedStructFieldPtrInfo fix
+  - Zcu: fix analysis of type of decl with inferred type
+  - std.zon.parse: fix not initializing array sentinel
+  - Reader.defaultReadVec: Workaround bad `r.end += r.vtable.stream()` behavior
+  - Fix duplicate LC_RPATH entries on macOS Tahoe
+  - std.mem: work around LoongArch inline asm bug in doNotOptimizeAway()
+  - zig fmt help: mention that the argument can be a directory
+  - std.sort.pdq: fix out-of-bounds access in partialInsertionSort (#25253)
+  - langref: mention union support of `@fieldParentPtr`
+  - mem.replace: Document that input/output cannot overlap
+  - Merge pull request #25201 from jacobly0/x86_64-addsat
+  - Elf: implement `linksection`
+  - fix handling of comptime-only union fields in `Type.getUnionLayout` (#25182)
+  - llvm: fix tagged union payload size in debug info
+  - std.math.big.int: normalize zero result for small multiplications
+  - bpf: use bitCast instead of intCast in ld_imm_impl
+  - frontend: fix reference tracking through coerced function bodies
+  - compiler-rt: export __aeabi_read_tp for arm-freebsd
+  - langref: added missing newlines to destructuring tuples example
+  - std.debug.assertAligned: support const pointers
+  - webui: fixup build errors in fuzz / time_report
+  - langref: update "Choosing an Allocator" section
+  - BitcodeReader: parse blockinfo inside block
+  - Fix `-M` and `--dep` splitting on every = instead of just the first
+  - Fix regression: std.http.Client basic authorization sending user:user instead of user:password when passed in URI
+  - Populate MSG struct for OpenBSD (#25076)
+  - std.Thread: make unreachable errors in sleep() clearer
+  - std.Target: fix alignment for int/long types on m68k
+  - LLVM backend:fix align 1 sret parameter load returned
+  - process.totalSystemMemory: Avoid overflow on Linux when totalram is a 32-bit usize
+  - std.os.uefi: fix type error at MemoryType.format()
+  - std.os.linux: powerpc syscalls clobber ctr and xer
+  - x86_64: fix multiplication overflow detection with adx
+  - std.c: add correct SOMAXCONN for BSDs
+  - Fix TLS 1.2 client key exchange to use negotiated named group (#25007)
+  - std.Build.WebServer: fix race
+  - std.Build.Step.TranslateC: forward --cache-dir and --global-cache-dir flags
+  - std.Build.Step.Compile: fix race condition in args file creation
+  - os.linux: faccessat wrapper prefer to faccessat syscall when flags is zero.
+  - add macOS handling for totalSystemMemory (#24903)
+  - zig cc: don't pass -mcmodel for assembly files
+  - Update powi.zig to fix docstring formatting
+  - fix: fix typo in comment by removing repeated 'business' word
+  - lib: Reword documentation for realloc to clarify size
+  - Add `test-obj` to the help message
+  - Compilation: avoid ZCU strategy for ubsan-rt in Windows DLLs
+  - ubsan-rt: export symbols with hidden visibility
+  - std.zig.system: fix check for sparc "v8+" in getExternalExecutor()
+  - Fix #24999: copy left-overs before we XOR into c. (#25001)
+  - std.fs.Dir: fix updateFile() to flush the file before updating its times
+  - Merge pull request #24926 from mrjbq7/http-fetch
+  - zig reduce: adapt to new Writer API
+  - std: remove lossy int to float coercion on json parse
+  - std.os.uefi: Fix typo that causes compile time error #22809"
+  - Use readStreaming, not readPositional, for streaming file readVec on Windows
+
+-------------------------------------------------------------------
+Sun Oct 19 18:01:39 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add implementation provides
+
+-------------------------------------------------------------------
+Sun Oct 19 00:51:06 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- No longer obsolete older packages in case we need older versions working
+
+-------------------------------------------------------------------
+Sun Sep 21 04:53:06 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Ensure obsoletion of older than the current version.
+
+-------------------------------------------------------------------
+Tue Sep 16 13:56:45 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Remove unused build requires
+
+-------------------------------------------------------------------
+Wed Aug 27 14:05:32 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 0.15.1:
+  ** CHANGELOG TOO LONG **
+  See https://ziglang.org/download/0.15.1/release-notes.html
+
+-------------------------------------------------------------------
+Fri Jan 31 03:58:41 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to fix reproducible-builds issues (boo#1100677)
+  https://github.com/ziglang/zig/issues/22663
+
+-------------------------------------------------------------------
+Sun Jun 23 08:41:29 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Cleanup specfile
+- Workaround for test
+  * add vendored cache dependencies.
+- Fix check section for tests
+- Add -DZIG_USE_LLVM_CONFIG=ON option
+- Add patch skip-localhost-test.patch
+- Add liburing-devel for test suites
+- Set mold as linker. Efficient and fast at utilising computer resources
+  unlike GNU ld.
+- Enable tests
+- remove some outdated comments in specfile
+
+-------------------------------------------------------------------
+Wed Jun 12 11:45:34 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Reduce constraints
+
+-------------------------------------------------------------------
+Fri Jun  7 17:56:48 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update patchsets for llvm18 changes
+  ./0000-remove-lld-in-cmakelist.patch
+  ./0001-invoke-lld.patch
+
+-------------------------------------------------------------------
+Fri Jun  7 17:35:24 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.13.0:
+  ** CHANGELOG TOO LONG **
+  See https://ziglang.org/download/0.13.0/release-notes.html
+  * Release focuses more on the LLVM18 support
+
+-------------------------------------------------------------------
+Sat May  4 15:13:58 UTC 2024 - Michael Burge <michael.burge77@gmail.com>
+
+- Update to version 0.12.0:
+  ** CHANGELOG TOO LONG **
+  See https://ziglang.org/download/0.12.0/release-notes.html
+- Now requires llvm17, all patches and specfile updated accordingly
+
+-------------------------------------------------------------------
+Tue Nov  7 02:58:39 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update macros.zig
+  * Change %zig to %__zig to avoid confusion between `zig` or `%zig`.
+
+-------------------------------------------------------------------
+Sat Oct 21 06:20:47 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Drelease-safe is now Doptimize
+
+-------------------------------------------------------------------
+Wed Oct 18 10:55:45 UTC 2023 - Soc Virnyl S. Estela <contact@uncomfyhalomacro.pl>
+
+- Change builder to ninja. change c and c++ compiler to clang
+
+-------------------------------------------------------------------
+Thu Sep  7 11:16:24 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Remove comment since it builds now on latest glibc.
+
+-------------------------------------------------------------------
+Fri Aug  4 06:18:37 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.11.0:
+  ** CHANGELOG TOO LONG **
+  See https://ziglang.org/download/0.11.0/release-notes.html
+- Update patchsets:
+  * remove 0000-invoke-lld-llvm15.patch
+  * add 0000-remove-lld-in-cmakelist.patch
+  * add 0001-invoke-lld.patch
+  * update 0002-no-lld-libs-and-includes.patch
+  * change to llvm16
+- Update specfile to use LLVM version 16.x. This will be removed in the future.
+
+-------------------------------------------------------------------
+Thu Feb  2 02:13:28 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Enable build with riscv64 and %{mips64} arches.
+
+-------------------------------------------------------------------
+Mon Jan 30 13:41:31 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Declare Group as "Development/Languages/Other" to remove some warnings.
+
+-------------------------------------------------------------------
+Mon Jan 30 13:12:39 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Fix version required for LLVM on Leap.
+
+-------------------------------------------------------------------
+Wed Jan 25 03:31:57 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add rpm-macros to recommends.
+- Simplify to just use ExclusiveArch declaration.
+
+-------------------------------------------------------------------
+Tue Jan 24 16:22:36 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Improve specfile: from %{_rpmconfigdir}/macros.d to %{_rpmmacrodir}
+
+-------------------------------------------------------------------
+Tue Jan 24 15:45:26 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add zig-rpmlintrc to specfile as one of sources.
+
+-------------------------------------------------------------------
+Tue Jan 24 12:18:58 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Increase physical memory to 64G on riscv, and aarch.
+  * Note: ppc architectures won't build. Placeholder for now.
+- Set physical memory to 8G for arm architectures. Placeholder for now
+- Set physical memory to 32G for i586 archictectures.
+- ExcludeArch for ppc and arm architectures.
+
+-------------------------------------------------------------------
+Mon Jan 23 03:58:18 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Initial spec for zig 0.10.1

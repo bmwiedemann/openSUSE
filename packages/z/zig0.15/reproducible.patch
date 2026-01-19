@@ -1,0 +1,29 @@
+diff -ruN zig-0.15.1.orig/lib/compiler/build_runner.zig zig-0.15.1/lib/compiler/build_runner.zig
+--- zig-0.15.1.orig/lib/compiler/build_runner.zig	2025-08-27 22:13:36.317431953 +0800
++++ zig-0.15.1/lib/compiler/build_runner.zig	2025-08-27 22:40:22.550530377 +0800
+@@ -67,6 +67,14 @@
+         .handle = try std.fs.cwd().makeOpenPath(global_cache_root, .{}),
+     };
+ 
++    // Avoid using native binaries during build to not influence zig-cache hashes
++    const host_query: std.Target.Query = .{
++        .cpu_model = .baseline,
++        .os_tag = builtin.target.os.tag,
++    };
++
++    
++
+     var graph: std.Build.Graph = .{
+         .arena = arena,
+         .cache = .{
+@@ -78,8 +86,8 @@
+         .global_cache_root = global_cache_directory,
+         .zig_lib_directory = zig_lib_directory,
+         .host = .{
+-            .query = .{},
+-            .result = try std.zig.system.resolveTargetQuery(.{}),
++            .query = host_query,
++            .result = try std.zig.system.resolveTargetQuery(host_query),
+         },
+         .time_report = false,
+     };
