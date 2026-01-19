@@ -6988,6 +6988,14 @@ unsorted:
   - ghostscript-fonts-other 
   - ghostscript-mini 
   - ghostscript-mini-devel 
+  - ghostty 
+  - ghostty-bash-completion 
+  - ghostty-doc 
+  - ghostty-fish-completion 
+  - ghostty-lang 
+  - ghostty-neovim 
+  - ghostty-vim 
+  - ghostty-zsh-completion 
   - ghostview 
   - ghostwriter 
   - ghostwriter-lang 
@@ -19630,6 +19638,7 @@ unsorted:
   - nautilus-eiciel 
   - nautilus-extension-dropbox 
   - nautilus-extension-folder-color 
+  - nautilus-extension-ghostty 
   - nautilus-extension-nextcloud 
   - nautilus-extension-opencloud 
   - nautilus-extension-owncloud 
@@ -25007,7 +25016,6 @@ unsorted:
   - python311-branca 
   - python311-breathe 
   - python311-brewer2mpl 
-  - python311-browsers 
   - python311-bsddb3 
   - python311-bsddb3-devel 
   - python311-bson 
@@ -27640,6 +27648,7 @@ unsorted:
   - python311-translitcodec 
   - python311-tree-sitter 
   - python311-tree-sitter-bash 
+  - python311-tree-sitter-javascript 
   - python311-treq 
   - python311-tri.struct 
   - python311-trio 
@@ -28820,7 +28829,6 @@ unsorted:
   - python312-branca 
   - python312-breathe 
   - python312-brewer2mpl 
-  - python312-browsers 
   - python312-bsddb3 
   - python312-bsddb3-devel 
   - python312-bson 
@@ -31518,6 +31526,7 @@ unsorted:
   - python312-translitcodec 
   - python312-tree-sitter 
   - python312-tree-sitter-bash 
+  - python312-tree-sitter-javascript 
   - python312-treq 
   - python312-tri.struct 
   - python312-trio 
@@ -32690,7 +32699,6 @@ unsorted:
   - python313-branca 
   - python313-breathe 
   - python313-brewer2mpl 
-  - python313-browsers 
   - python313-bsddb3 
   - python313-bsddb3-devel 
   - python313-bson 
@@ -35348,6 +35356,7 @@ unsorted:
   - python313-translitcodec 
   - python313-tree-sitter 
   - python313-tree-sitter-bash 
+  - python313-tree-sitter-javascript 
   - python313-treq 
   - python313-tri.struct 
   - python313-trio 
@@ -36857,8 +36866,6 @@ unsorted:
   - ruby3.4-devel-extra 
   - ruby3.4-doc 
   - ruby3.4-doc-ri 
-  - ruby3.4-rubygem-ruby_parser 
-  - ruby3.4-rubygem-sexp_processor 
   - ruby4.0-devel 
   - ruby4.0-devel-extra 
   - ruby4.0-doc 
@@ -38523,6 +38530,7 @@ unsorted:
   - termcap-devel-static 
   - terminator 
   - terminator-lang 
+  - terminfo-ghostty 
   - terminology 
   - terminology-lang 
   - terminology-theme-Flat 
@@ -49087,6 +49095,9 @@ unsorted:
   - usbguard 
   - usbguard-devel 
   - usbguard-tools 
+  - usbip 
+  - usbip-devel 
+  - usbip-rebuild 
   - usbredir 
   - usbredir-devel 
   - usbsdmux-udev 
@@ -50413,8 +50424,12 @@ unsorted:
   - zfp-devel 
   - zhu3d 
   - zig 
-  - zig-libs 
-  - zig-rpm-macros 
+  - zig-libs0.14 
+  - zig-libs0.15 
+  - zig-rpm-macros0.14 
+  - zig-rpm-macros0.15 
+  - zig0.14 
+  - zig0.15 
   - zile 
   - zim 
   - zim-lang 
