@@ -1,7 +1,7 @@
 #
 # spec file for package libopusenc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define sover  0
 Name:           libopusenc
-Version:        0.2.1
+Version:        0.3
 Release:        0
 Summary:        A way to encode Ogg Opus files
 License:        BSD-3-Clause
 Group:          System/Libraries
-URL:            http://opus-codec.org/
-Source0:        https://archive.mozilla.org/pub/opus/%{name}-%{version}.tar.gz
+URL:            https://opus-codec.org/
+Source0:        https://downloads.xiph.org/releases/opus/libopusenc-%{version}.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(opus) >= 1.1
 
@@ -55,7 +55,7 @@ Files for development with libopusenc.
 	--disable-doc \
 	--disable-examples \
 	%{nil}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -64,8 +64,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 # Remove duplicate COPYING etc.
 rm -rf %{buildroot}%{_datadir}/doc/libopusenc/
 
-%post -n libopusenc%{sover} -p /sbin/ldconfig
-%postun -n libopusenc%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libopusenc%{sover}
 
 %files -n libopusenc%{sover}
 %license COPYING

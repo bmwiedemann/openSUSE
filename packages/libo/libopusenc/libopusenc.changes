@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jan 18 14:24:10 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.3
+  * Fix ope_encoder_drain() assertion failures.
+  * Fix use of uninitialized fields.
+  * Fix undefined behaviour in picture.c
+  * Fix various warnings under C23.
+  * Drop use of private __opus_check_* macros.
+  * Port update_version from bash to sh.
+  * Clean up documentation files.
+- Use %ldconfig_scriptlets macro
+- Update URL
+
+-------------------------------------------------------------------
 Mon Feb 18 08:45:53 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Ensure neutrality of descriptions.
