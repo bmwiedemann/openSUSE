@@ -7312,4 +7312,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.18.5 &amp; alsa fix; bugs: bsc#1012628 bsc#1255395 bsc#1255405 bsc#1255416 bsc#1255417 bsc#1255480 bsc#1255481 bsc#1255482 bsc#1255483 bsc#1255525 bsc#1255526 bsc#1255527 bsc#1255529 bsc#1255530 bsc#1255531 bsc#1255533 bsc#1255534 bsc#1255535 bsc#1255536 bsc#1255537 bsc#1255539 bsc#1255541 bsc#1255542 bsc#1255544 bsc#1255547 bsc#1255548 bsc#1255550 bsc#1255552 bsc#1255553 bsc#1255556 bsc#1255567 bsc#1255568 bsc#1255569 bsc#1255572 bsc#1255575 bsc#1255580 bsc#1255592 bsc#1255593 bsc#1255598 bsc#1255599 bsc#1255601 bsc#1255602 bsc#1255603 bsc#1255610 bsc#1255611 bsc#1255614 bsc#1255615 bsc#1255622 bsc#1255625 bsc#1255688 bsc#1255692 bsc#1255694 bsc#1255695 bsc#1255696 bsc#1255698 bsc#1255699 bsc#1255700 bsc#1255701 bsc#1255703 bsc#1255706 bsc#1255707 bsc#1255708 bsc#1255709 bsc#1255721 bsc#1255722 bsc#1255723 bsc#1255724 bsc#1255811 bsc#1255812 bsc#1255813 bsc#1255816 bsc#1255929 bsc#1255930 bsc#1255931 bsc#1255932 bsc#1255934 bsc#1255935 bsc#1255936 bsc#1255937 bsc#1255940 bsc#1255942 bsc#1255943 bsc#1255944 bsc#1255945 bsc#1256007 bsc#1256237 bsc#1256238 bsc#1256240</comment>
     <requestid>1326698</requestid>
   </revision>
+  <revision rev="820" vrev="1">
+    <srcmd5>488581440f7eb62271bf01d06cd45997</srcmd5>
+    <version>6.18.6</version>
+    <time>1768844106</time>
+    <user>anag_factory</user>
+    <comment>6.18.6; bugs: bsc#1012628</comment>
+    <requestid>1327925</requestid>
+  </revision>
 </revisionlist>
