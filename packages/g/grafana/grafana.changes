@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 19 11:53:57 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- CVE-2025-68156: Fix potential DoS via unbounded recursion in
+  builtin functions (bsc#1255340)
+- Add 0003-Bump-expr-lang.patch
+
+-------------------------------------------------------------------
 Fri Oct 24 12:01:51 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Use forked wire from Grafana repository instead of external

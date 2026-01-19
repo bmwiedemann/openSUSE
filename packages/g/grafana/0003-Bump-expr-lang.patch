@@ -1,0 +1,56 @@
+diff --git a/pkg/codegen/go.mod b/pkg/codegen/go.mod
+index 1de4e884420..398d54ad264 100644
+--- a/pkg/codegen/go.mod
++++ b/pkg/codegen/go.mod
+@@ -16,7 +16,7 @@ require (
+ 	github.com/dave/jennifer v1.7.1 // indirect
+ 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
+ 	github.com/emicklei/proto v1.13.2 // indirect
+-	github.com/expr-lang/expr v1.17.0 // indirect
++	github.com/expr-lang/expr v1.17.7 // indirect
+ 	github.com/getkin/kin-openapi v0.132.0 // indirect
+ 	github.com/go-openapi/jsonpointer v0.21.0 // indirect
+ 	github.com/go-openapi/swag v0.23.0 // indirect
+diff --git a/pkg/codegen/go.sum b/pkg/codegen/go.sum
+index 0fb82ac718c..94b1beedb45 100644
+--- a/pkg/codegen/go.sum
++++ b/pkg/codegen/go.sum
+@@ -11,8 +11,8 @@ github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc h1:U9qPSI2PIWSS1
+ github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
+ github.com/emicklei/proto v1.13.2 h1:z/etSFO3uyXeuEsVPzfl56WNgzcvIr42aQazXaQmFZY=
+ github.com/emicklei/proto v1.13.2/go.mod h1:rn1FgRS/FANiZdD2djyH7TMA9jdRDcYQ9IEN9yvjX0A=
+-github.com/expr-lang/expr v1.17.0 h1:+vpszOyzKLQXC9VF+wA8cVA0tlA984/Wabc/1hF9Whg=
+-github.com/expr-lang/expr v1.17.0/go.mod h1:8/vRC7+7HBzESEqt5kKpYXxrxkr31SaO8r40VO/1IT4=
++github.com/expr-lang/expr v1.17.7 h1:Q0xY/e/2aCIp8g9s/LGvMDCC5PxYlvHgDZRQ4y16JX8=
++github.com/expr-lang/expr v1.17.7/go.mod h1:8/vRC7+7HBzESEqt5kKpYXxrxkr31SaO8r40VO/1IT4=
+ github.com/getkin/kin-openapi v0.132.0 h1:3ISeLMsQzcb5v26yeJrBcdTCEQTag36ZjaGk7MIRUwk=
+ github.com/getkin/kin-openapi v0.132.0/go.mod h1:3OlG51PCYNsPByuiMB0t4fjnNlIDnaEDsjiKUV8nL58=
+ github.com/go-openapi/jsonpointer v0.21.0 h1:YgdVicSA9vH5RiHs9TZW5oyafXZFc6+2Vc1rr/O9oNQ=
+diff --git a/pkg/plugins/codegen/go.mod b/pkg/plugins/codegen/go.mod
+index cdd505e18b4..bae9cc88f1e 100644
+--- a/pkg/plugins/codegen/go.mod
++++ b/pkg/plugins/codegen/go.mod
+@@ -17,7 +17,7 @@ require (
+ 	github.com/cockroachdb/apd/v3 v3.2.1 // indirect
+ 	github.com/dave/dst v0.27.3 // indirect
+ 	github.com/emicklei/proto v1.13.2 // indirect
+-	github.com/expr-lang/expr v1.17.0 // indirect
++	github.com/expr-lang/expr v1.17.7 // indirect
+ 	github.com/getkin/kin-openapi v0.132.0 // indirect
+ 	github.com/go-openapi/jsonpointer v0.21.0 // indirect
+ 	github.com/go-openapi/swag v0.23.0 // indirect
+diff --git a/pkg/plugins/codegen/go.sum b/pkg/plugins/codegen/go.sum
+index 5f251bb8b75..a29aa5f779e 100644
+--- a/pkg/plugins/codegen/go.sum
++++ b/pkg/plugins/codegen/go.sum
+@@ -12,8 +12,8 @@ github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc h1:U9qPSI2PIWSS1
+ github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
+ github.com/emicklei/proto v1.13.2 h1:z/etSFO3uyXeuEsVPzfl56WNgzcvIr42aQazXaQmFZY=
+ github.com/emicklei/proto v1.13.2/go.mod h1:rn1FgRS/FANiZdD2djyH7TMA9jdRDcYQ9IEN9yvjX0A=
+-github.com/expr-lang/expr v1.17.0 h1:+vpszOyzKLQXC9VF+wA8cVA0tlA984/Wabc/1hF9Whg=
+-github.com/expr-lang/expr v1.17.0/go.mod h1:8/vRC7+7HBzESEqt5kKpYXxrxkr31SaO8r40VO/1IT4=
++github.com/expr-lang/expr v1.17.7 h1:Q0xY/e/2aCIp8g9s/LGvMDCC5PxYlvHgDZRQ4y16JX8=
++github.com/expr-lang/expr v1.17.7/go.mod h1:8/vRC7+7HBzESEqt5kKpYXxrxkr31SaO8r40VO/1IT4=
+ github.com/getkin/kin-openapi v0.132.0 h1:3ISeLMsQzcb5v26yeJrBcdTCEQTag36ZjaGk7MIRUwk=
+ github.com/getkin/kin-openapi v0.132.0/go.mod h1:3OlG51PCYNsPByuiMB0t4fjnNlIDnaEDsjiKUV8nL58=
+ github.com/go-openapi/jsonpointer v0.21.0 h1:YgdVicSA9vH5RiHs9TZW5oyafXZFc6+2Vc1rr/O9oNQ=

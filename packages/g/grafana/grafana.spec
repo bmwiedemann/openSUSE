@@ -1,7 +1,7 @@
 #
 # spec file for package grafana
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,7 @@ Source3:        README
 Source4:        Makefile
 Source5:        0001-Add-source-code-reference.patch
 Patch2:         0002-Use-bash-instead-of-env.patch
+Patch3:         0003-Bump-expr-lang.patch
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  golang(API) >= 1.25
