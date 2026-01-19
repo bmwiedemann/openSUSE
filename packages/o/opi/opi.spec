@@ -1,7 +1,7 @@
 #
 # spec file for package opi
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define pythons %{use_python}
 
 Name:           opi
-Version:        5.9.0
+Version:        5.10.0
 Release:        0
 Summary:        OBS Package Installer (CLI)
 License:        GPL-3.0-only

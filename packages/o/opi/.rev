@@ -808,4 +808,13 @@
   * Add onlyoffice</comment>
     <requestid>1317630</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>4d719efa7abc226460ddf3f5016a0aa8</srcmd5>
+    <version>5.10.0</version>
+    <time>1768844330</time>
+    <user>anag_factory</user>
+    <comment>- Version 5.10.0
+  * Add antigravity (fixes #214)</comment>
+    <requestid>1328070</requestid>
+  </revision>
 </revisionlist>
