@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 18 14:09:20 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Nobody needs full poetry to build a rpm package
+- Remove pytest-cov, we don't care about upstreams coverage
+
+-------------------------------------------------------------------
 Mon Jan 13 03:01:27 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.13.3:

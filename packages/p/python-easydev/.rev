@@ -101,4 +101,12 @@
 - Drop patch support-poetry-core-2.patch, included upstream.</comment>
     <requestid>1237217</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>c52840b1721d42288e88ab799fe26637</srcmd5>
+    <version>0.13.3</version>
+    <time>1768844267</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1328000</requestid>
+  </revision>
 </revisionlist>

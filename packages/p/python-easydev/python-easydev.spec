@@ -1,7 +1,7 @@
 #
 # spec file for package python-easydev
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,8 @@ Summary:        Common utilities to ease the development of Python packages
 License:        BSD-3-Clause
 URL:            https://github.com/cokelaer/easydev
 Source:         https://github.com/cokelaer/easydev/archive/refs/tags/v%{version}.tar.gz#/easydev-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-colorama
@@ -39,10 +41,7 @@ BuildRequires:  %{python_module colorama}
 BuildRequires:  %{python_module colorlog}
 BuildRequires:  %{python_module line_profiler}
 BuildRequires:  %{python_module pexpect}
-BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module platformdirs}
-BuildRequires:  %{python_module poetry}
-BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 # /SECTION
