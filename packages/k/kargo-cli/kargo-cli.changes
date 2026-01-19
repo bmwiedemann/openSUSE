@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jan 19 06:50:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.8.6:
+  This release contains no code changes compared to v1.8.5. It has
+  been retagged to address CI pipeline issues in the release
+  process.
+- Update to version 1.8.5:
+  * chore(backport release-1.8): chore(deps): bump
+    github.com/expr-lang/expr from 1.17.6 to 1.17.7 (#5515)
+  * chore(backport release-1.8): chore: port conflict for
+    development clusters (#5493)
+  * chore(backport release-1.8): docs: update CLI auth callback URL
+    to use HTTP (#5441)
+
+-------------------------------------------------------------------
 Wed Nov 26 06:22:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.8.4:
