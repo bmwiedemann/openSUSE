@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 19 08:26:51 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3.1:
+  * Add Windows ARM + MSVC support to CI workflow
+
+-------------------------------------------------------------------
 Mon Jul 28 09:17:39 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Add openhtj2k-0.3.0-tiff.patch:

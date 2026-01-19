@@ -7,4 +7,13 @@
     <comment></comment>
     <requestid>1296166</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2dbc0a90da2842a8ef84e401d722fc11</srcmd5>
+    <version>0.3.1</version>
+    <time>1768844282</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.3.1:
+  * Add Windows ARM + MSVC support to CI workflow</comment>
+    <requestid>1328027</requestid>
+  </revision>
 </revisionlist>
