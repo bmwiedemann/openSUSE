@@ -47,7 +47,6 @@ Requires:       bcache-tools
 Requires:       btrfsprogs
 Requires:       cryptsetup
 Requires:       device-mapper
-Requires:       dmraid
 Requires:       e2fsprogs
 Requires:       exfatprogs
 Requires:       fcoe-utils

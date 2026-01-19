@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 16 19:38:00 UTC 2026 - Martin Wilck <mwilck@suse.com>
+
+- Remove dependency on dmraid.
+
+-------------------------------------------------------------------
 Tue Sep 28 14:52:36 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Install to /usr/bin/ on usrmerged systems
