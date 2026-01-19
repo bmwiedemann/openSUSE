@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Jan 19 06:52:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.198:
+  * Maintenance
+    - Revert to react 17 and skip broken tests @aabidsofi19
+      (#17003)
+  * Documentation
+    - [DOCS] Replace absolute URLs in tutorials @Siddhi-sahu
+      (#17001)
+- update to 0.8.197:
+  * General
+    - Bump axios from 1.8.2 to 1.12.0 in
+      /install/docker-extension/ui @dependabot[bot] (#15816)
+      Meshery CLI
+    - [mehseryctl] Get rid of golden files in design command and
+      add new unit tests @shri771 (#16842)
+    - feat: add GetConnectionByID endpoint and update connection
+      status constants @leecalcote (#16948)
+    - [WIP] Fix issues in GetConnectionByID endpoint and helper
+      function usage @copilot-swe-agent[bot] (#16950)
+    - Replace fmt.Errorf with meshkit error handlers in connections
+      view command @copilot-swe-agent[bot] (#16949)
+    - [mesheryctl] Update system context outdated golden files
+      @shri771 (#16940)
+  * Maintenance
+    - [Chore]: Update to Sistent v0.16.4 @l5io (#16978)
+    - [CI] Fix mesheryctl e2e tests - version incompatibilities
+      @PragalvaXFREZ (#16973)
+    - chore: remove codecov integration @jeetburman (#16914)
+    - Fix ESLint errors in e2e test files @copilot-swe-agent[bot]
+      (#16947)
+    - fix broken tests @aabidsofi19 (#16936)
+  * Documentation
+    - [DOCS/Tutorial] Add kubernetes Services Labs @Siddhi-sahu
+      (#16659)
+    - DOCS: Fix minor link in Meshery CLI Style Guide @Siddhi-sahu
+      (#16976)
+    - Use column names instead of indexes for fields in permissions
+      table @Siddhi-sahu (#15789)
+    - Fix: Update the FullscreenLoader to be consistent between
+      prereact and postreact renders @aabidsofi19 (#16957)
+
+-------------------------------------------------------------------
 Tue Jan 13 07:09:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.196:
