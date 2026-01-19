@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Jan 19 02:10:06 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.5.1:
+  * Features
+    + Add pre-commit hazmat.
+    + Add --fail-fast option to pre-commit
+    + Upgrade ruby-build / rbenv.
+    + Add language: unsupported / language: unsupported_script as aliases for
+      language: system / language: script (which will eventually be
+      deprecated).
+    + Add support docker-in-docker detection for cgroups v2.
+    + language: docker / language: docker_image: detect rootless docker.
+    + For language: python first attempt a versioned python executable for
+      the default language version before consulting a potentially
+      unversioned sys.executable.
+    + language: julia: avoid startup.jl when executing hooks
+    + language: dart: support latest dart versions which require a higher sdk
+    + Add language: julia.
+  * Fixes
+    + Fix language: python with repo: local without additional_dependencies.
+    + Handle when docker gives SecurityOptions: null.
+    + Fix error context for invalid stages in .pre-commit-config.yaml.
+    + Handle error during conflict detection when a file is named "HEAD"
+    + Disable automatic toolchain switching for language: golang.
+    + Fix language: r installation when initiated by RStudio.
+
+-------------------------------------------------------------------
 Fri Nov 15 10:58:24 UTC 2024 - Marina Latini <marina.latini@suse.com>
 
 - spec file changes:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pre-commit
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pre-commit
-Version:        4.0.1
+Version:        4.5.1
 Release:        0
 Summary:        Multi-language pre-commit hooks
 License:        MIT
@@ -94,6 +94,7 @@ export GIT_AUTHOR_NAME=test GIT_COMMITTER_NAME=test \
 EXCLUDED_TESTS="test_main or test_run_a_node_hook or test_run_versioned_node_hook or test_additional_node_dependencies_installed or test_node_hook_with_npm_userconfig_set"
 EXCLUDED_TESTS="$EXCLUDED_TESTS or test_run_versioned_ruby_hook or test_run_ruby_hook_with_disable_shared_gems or test_additional_dependencies_roll_forward"
 EXCLUDED_TESTS="$EXCLUDED_TESTS or test_golang or test_additional_ruby_ or test_additional_golang_ or test_additional_rust_ or test_rust"
+EXCLUDED_TESTS="$EXCLUDED_TESTS or test_automatic_toolchain_switching"
 EXCLUDED_TESTS="$EXCLUDED_TESTS or test_switch_language_versions_doesnt_clobber or test_run_a_ruby_hook or test_local_golang_additional_deps"
 EXCLUDED_TESTS="$EXCLUDED_TESTS or test_local_rust_additional_dependencies or test_installed_from_venv"
 EXCLUDED_TESTS="$EXCLUDED_TESTS or conda or test_perl_hook or test_local_perl_additional_dependencies"
@@ -109,6 +110,18 @@ EXCLUDED_TESTS="$EXCLUDED_TESTS or test_lua_additional_dependencies"
 EXCLUDED_TESTS="$EXCLUDED_TESTS or (golang_test and test_during_commit_all)"
 # requires swift
 EXCLUDED_TESTS="$EXCLUDED_TESTS or test_swift_language"
+# requires juliaup which require network
+EXCLUDED_TESTS="$EXCLUDED_TESTS or test_julia_hook or test_julia_repo_local"
+# requires setuptools, does not respect PIP_WHEEL_DIR
+EXCLUDED_TESTS="$EXCLUDED_TESTS or test_healthy_default_creator or test_healthy_venv_creator"
+EXCLUDED_TESTS="$EXCLUDED_TESTS or test_unhealthy_python_goes_missing or test_unhealthy_with_version_change"
+EXCLUDED_TESTS="$EXCLUDED_TESTS or test_unhealthy_system_version_changes or test_unhealthy_old_virtualenv"
+EXCLUDED_TESTS="$EXCLUDED_TESTS or test_unhealthy_unexpected_pyvenv or test_unhealthy_then_replaced"
+EXCLUDED_TESTS="$EXCLUDED_TESTS or test_language_versioned_python_hook or test_simple_python_hook"
+EXCLUDED_TESTS="$EXCLUDED_TESTS or test_simple_python_hook_default_version or test_python_hook_weird_setup_cfg"
+EXCLUDED_TESTS="$EXCLUDED_TESTS or test_repository_state_compatibility or test_reinstall"
+EXCLUDED_TESTS="$EXCLUDED_TESTS or test_control_c_control_c_on_install or test_invalidated_virtualenv"
+EXCLUDED_TESTS="$EXCLUDED_TESTS or test_really_long_file_paths or test_local_python_repo"
 %if 0%{?sle_version} <= 150700
 # requires network on Leap or SUSE Linux Enterprise
 EXCLUDED_TESTS="$EXCLUDED_TESTS or test_perl_install"
