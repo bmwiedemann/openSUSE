@@ -204,4 +204,29 @@
   * BOSH + Websocket: Show warning if connection is unencrypted.</comment>
     <requestid>1307648</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a0c0973e0addde389ab781bba046991e</srcmd5>
+    <version>0.6.0</version>
+    <time>1768939498</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.6.0:
+  * Add flag --client-dtls for adding arbitrary targets for C2S with direct TLS.
+  * Add flag --client-stls for adding arbitrary targets for C2S with StartTLS.
+  * Add flag --server-dtls for adding arbitrary targets for S2S with direct TLS.
+  * Add flag --server-stls for adding arbitrary targets for S2S with StartTLS.
+
+- Update to 0.5.6:
+  * Update link relations to version of 2025-10-14.
+  * Only resolve IPs when -v is set.
+
+- Update to 0.5.5:
+  * Print expiry date when certificate expires within the next 14
+    days (only xmpp and xmpps connections).
+  * Add flag --force-fallback to enforce checks on standard ports,
+    even if SRV records are provided.
+
+- Update to 0.5.4:
+  * Fix calculation of remaining days for certificate expiry warning.</comment>
+    <requestid>1328217</requestid>
+  </revision>
 </revisionlist>
