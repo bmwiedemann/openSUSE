@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 19 17:13:46 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Add pytest9.patch to fix build with pytest 9
+
+-------------------------------------------------------------------
 Tue May 13 13:43:11 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

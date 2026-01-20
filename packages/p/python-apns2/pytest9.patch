@@ -1,0 +1,12 @@
+Index: apns2-0.7.2/test/test_client.py
+===================================================================
+--- apns2-0.7.2.orig/test/test_client.py
++++ apns2-0.7.2/test/test_client.py
+@@ -22,7 +22,6 @@ def notifications(tokens):
+     return [Notification(token=token, payload=payload) for token in tokens]
+ 
+ 
+-@patch('apns2.credentials.init_context')
+ @pytest.fixture
+ def client(respx_mock, notifications):
+     return APNsClient(credentials=Credentials())

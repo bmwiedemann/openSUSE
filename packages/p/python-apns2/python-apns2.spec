@@ -1,7 +1,7 @@
 #
 # spec file for package python-apns2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ Source0:        https://files.pythonhosted.org/packages/source/a/apns2/apns2-%{v
 Patch0:         pr_122.patch
 # PATCH-FIX-OPENSUSE Based on gh#Pr0Ger/PyAPNs2#149, is gross
 Patch1:         use-httpx.patch
+# PATCH-FIX-UPSTREAM https://github.com/Pr0Ger/PyAPNs2/pull/163 Fix tests with pytest 9
+Patch2:         pytest9.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
