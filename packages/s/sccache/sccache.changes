@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Tue Jan 20 03:39:35 UTC 2026 - william.brown@suse.com
+
+- Update to version 0.13.0~1:
+  * Add experimental concurrent cache support
+  * github action: fix the syntax - fails in the ci
+  * sccache: prepare a new release
+  * msvc: add msbuild support test
+  * msvc: fix detect_showincludes_prefix with MSBuild
+  * chore: update to gzp 2
+  * build(deps): bump rsa from 0.9.6 to 0.9.10
+  * codspeed: evaluate the memory benchmarking
+  * remove too quick benchmarks
+  * codspeed: move to simulation mode
+  * Add realistic LRU cache access pattern benchmarks
+  * Add compression characteristics benchmarks
+  * Add build workflow simulation benchmarks
+  * Add hash computation scenario benchmarks
+  * Add batch cache entry benchmarks
+  * Add cache artifact serialization benchmarks
+  * Add /etc/ld.so.conf.d (if present) to compiler package
+  * Assembly language support
+  * fix(ci): pin serde_json to avoid zmij dependency
+  * fix(ci): update zmij to fix s390x cross-compilation
+  * Fix the run of the CI
+  * run the benchmark in the ci
+  * add benchmarks
+  * dedup some code
+  * Fix hash logging prefix
+  * Add support for C preprocessor output
+  * Add GCC pipe flag support
+  * Improve save-temps gcc flags detection
+  * MSVC: support forward slash as an output dir marker
+  * add clang -fplugin=x regression test
+  * canbeconcatenated is not accounted for in cmp
+  * Reversed the order for looking `rustc`, added comment
+  * Fix failing test_rlib_dep_reader_call for omit CARGO_HOME
+  * fix: don't hash -parallel-jobs in Clang
+  * docs: add installation steps for nix (#2523)
+  * Support clang -fexperimental-assignment-tracking option (#2517)
+  * add a nix flake (#2518)
+  * Switch from the unmaintained daemonize crate to a maintained fork
+  * chore: update to fs-err 3
+  * Fix grammar of error message
+  * Add server name info to stderr of remote jobs that ran, but failed
+  * Remove another pointless destructuring
+  * try to unbreak the ci
+  * fix s390x build error
+  * Add riscv64 support
+  * fix: make aarch64-pc-windows-msvc also zip not tar.gz
+  * Free up disk space in CI
+  * MSVC on Windows only
+  * Avoid 'No space left on device' errors in CI
+  * GitHub dropped macos-13 runners
+  * Proper function pointer to int cast
+  * Avoid unused structs with dist-server disabled
+  * no check cfg (#2507)
+  * chore: switch once_cell crate to standard library (#2499)
+  * Avoid unreliable assert_cmd::cargo::cargo_bin (#2489)
+  * Fix build on macOS which doesn't have separate 32-bit dirent (#2492)
+  * Fix Clippy warnings (#2490)
+  * docs: bump MSRV to 1.85.0
+  * msvc: handle '/FoRelease\' command-line argument
+  * chore: drop tower dependency
+  * chore: update to itertools 0.14
+  * Use generator in CMAKE_MSVC_DEBUG_INFORMATION_FORMAT in README
+  * Update directories to 6.0
+  * Configuration.md - note logging env variables
+  * chore: update to env_logger 0.11
+  * deps: update blake3
+
+-------------------------------------------------------------------
 Tue Oct 21 02:12:40 UTC 2025 - william.brown@suse.com
 
 - Update to version 0.12.0~1:
