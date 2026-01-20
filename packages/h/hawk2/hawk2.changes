@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 20 13:47:29 UTC 2026 - aburlakov@suse.com
+
+- Update to version 2.7.0+git.1768223657.3a8bb29f:
+  * Dev: bump e2e image leap:15.4 --> leap:15.5
+  * Dev: Update LLC year --> 2026
+  * Tests: add /cib/live/primitives/{primitive-id}/edit tests
+  * Dev: add a new route /internal/auth to check if authenticated
+  * Dev: add created/updated/delete flash url argument to notify the hawk-apserver
+  * Dev: Update LLC year --> 2025
+
+-------------------------------------------------------------------
 Thu Oct 16 08:07:04 UTC 2025 - Aleksei Burlakov <aburlakov@suse.com>
 
 - bump ruby gem rack to 3.1.18  (bsc#1251939)

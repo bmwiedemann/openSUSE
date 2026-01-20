@@ -4,10 +4,10 @@ Date:   Thu Aug 28 14:31:40 2025 +0200
 
     fix mtime, so that gz files are determenistic
 
-diff --git a/hawk/vendor/gems/sprockets-4.2.1/lib/sprockets/utils/gzip.rb b/hawk/vendor/gems/sprockets-4.2.1/lib/sprockets/utils/gzip.rb
+diff --git a/hawk/vendor/gems/sprockets-4.2.2/lib/sprockets/utils/gzip.rb b/hawk/vendor/gems/sprockets-4.2.2/lib/sprockets/utils/gzip.rb
 index 3fd5228..cd2599e 100644
---- a/hawk/vendor/gems/sprockets-4.2.1/lib/sprockets/utils/gzip.rb
-+++ b/hawk/vendor/gems/sprockets-4.2.1/lib/sprockets/utils/gzip.rb
+--- a/hawk/vendor/gems/sprockets-4.2.2/lib/sprockets/utils/gzip.rb
++++ b/hawk/vendor/gems/sprockets-4.2.2/lib/sprockets/utils/gzip.rb
 @@ -10,13 +10,13 @@ module Sprockets
        # writes contents to the `file` passed in. Sets `mtime` of
        # written file to passed in `mtime`
