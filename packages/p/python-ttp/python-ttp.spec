@@ -1,7 +1,7 @@
 #
 # spec file for package python-ttp
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,7 +42,6 @@ BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module deepdiff}
 BuildRequires:  %{python_module jinja2}
 BuildRequires:  %{python_module openpyxl}
-BuildRequires:  %{python_module poetry}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tabulate}
 BuildRequires:  %{python_module ttp = %{version}}

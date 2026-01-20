@@ -70,4 +70,12 @@
 - Drop patch fix-tests.patch, merged upstream.</comment>
     <requestid>1318546</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>6b139afe91d492b1d5b45e39df4ec90b</srcmd5>
+    <version>0.10.0</version>
+    <time>1768939405</time>
+    <user>anag_factory</user>
+    <comment>- Do not require poetry for tests.</comment>
+    <requestid>1328169</requestid>
+  </revision>
 </revisionlist>
