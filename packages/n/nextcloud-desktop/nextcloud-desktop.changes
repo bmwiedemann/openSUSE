@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan 20 09:23:10 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.0.5:
+  * Detect upgrade-only scenario (gh#nextcloud/desktop#9296).
+  * Restore server subscription per account from config
+    (gh#nextcloud/desktop#9262).
+  * Various strings are now escaped (gh#nextcloud/desktop#9329).
+  * Fixed a crash for when too many sync errors occurred
+    (gh#nextcloud/desktop#9258).
+  * Removed redundant checks for nonexistent files during activity
+    list cleanup (gh#nextcloud/desktop#9251).
+
+-------------------------------------------------------------------
 Tue Dec 16 08:11:45 UTC 2025 - Natasha Ament <stacheldrahtje@gmail.com>
 
 - Update to version 4.0.4:
