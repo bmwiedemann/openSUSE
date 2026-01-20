@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 13 09:49:18 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260113.a71c9a09:
+  * Properly use openqa_dry_run flag
+  * Handle different build messages
+
+-------------------------------------------------------------------
 Thu Dec 18 21:04:30 UTC 2025 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20251218.fb2f3072:
