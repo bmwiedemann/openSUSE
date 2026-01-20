@@ -2,7 +2,7 @@
 # spec file for package nix
 #
 # Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2025 Eyad Issa
+# Copyright (c) 2026 Eyad Issa
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 
 Name:           nix
-Version:        2.33.0
+Version:        2.33.1
 Release:        0
 Summary:        The purely functional package manager
 License:        LGPL-2.1-only

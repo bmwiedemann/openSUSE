@@ -163,4 +163,18 @@ support for software auditability among other things</comment>
   - various small bugfixes</comment>
     <requestid>1326516</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>21741cfb7141d89779b63d3470ca6fc9</srcmd5>
+    <version>2.33.1</version>
+    <time>1768939365</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.33.1:
+  * Fix a heap-use-after-free bug on libstore
+  * libfetchers: Bump tarball-cache version to v2
+  * libutil: Gracefully fall back from unsupported O_TMPFILE
+  * libstore: include path in the world-writable error
+  * libutil/union-source-accessor: Barf on non-existent
+    directories</comment>
+    <requestid>1328148</requestid>
+  </revision>
 </revisionlist>
