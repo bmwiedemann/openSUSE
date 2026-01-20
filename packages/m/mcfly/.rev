@@ -128,4 +128,17 @@
   * Hopefully fix occasional sort panics</comment>
     <requestid>1245240</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>72fec0d6116810c368d1436e578b387c</srcmd5>
+    <version>0.9.4</version>
+    <time>1768939487</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.9.4:
+  * Implement case sensitivity for inputs containing uppercase letters,
+    highlighing only matched characters
+  * Fish fixes
+  * Make the result selection in dark mode easier to see
+  * Upgrade Rust to 2024 edition</comment>
+    <requestid>1328206</requestid>
+  </revision>
 </revisionlist>

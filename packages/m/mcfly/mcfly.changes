@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 20 09:11:02 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.4:
+  * Implement case sensitivity for inputs containing uppercase letters,
+    highlighing only matched characters
+  * Fish fixes
+  * Make the result selection in dark mode easier to see
+  * Upgrade Rust to 2024 edition
+
+-------------------------------------------------------------------
 Wed Feb 12 07:41:58 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.9.3:
