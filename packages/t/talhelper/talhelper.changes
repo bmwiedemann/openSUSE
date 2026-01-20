@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jan 20 05:38:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.1.2:
+  * chore(github-action): update renovatebot/github-action action
+    to v44.2.5
+  * fix(genconfig): vlan parent interface should get a LinkConfig
+  * fix(genconfig): a lot of silent errors
+  * fix(lint): shut golangci-lint up
+  * fix(genconfig): VLAN with DHCP set to true should generate
+    DHCPConfigs
+  * chore(schema): update talos-extensions.yaml JSON schema (#1389)
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+    v3.1.1
+  * fix(deps): update module github.com/sirupsen/logrus to v1.9.4
+  * feat: update Scoop for talhelper version v3.1.1
+  * feat: update flake
+
+-------------------------------------------------------------------
 Fri Jan 16 06:14:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.1.1:
