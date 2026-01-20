@@ -1,7 +1,7 @@
 #
 # spec file for package casacore
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define sover 8
+%define sover 9
 %global shlib lib%{name}%{sover}
 %define srcname casacore
 
@@ -60,14 +60,13 @@
 # /SECTION
 
 Name:           %{pname}
-Version:        3.7.1
+Version:        3.8.0
 Release:        0
 Summary:        A suite of C++ libraries for radio astronomy data processing
 License:        LGPL-2.0-or-later
 URL:            https://github.com/casacore/casacore
 Source:         https://github.com/casacore/casacore/archive/v%{version}.tar.gz#/%{srcname}-%{version}.tar.gz
 Source99:       casacore-rpmlintrc
-Patch1:         use_c17.patch
 BuildRequires:  bison
 BuildRequires:  blas-devel
 BuildRequires:  cmake
@@ -127,7 +126,7 @@ Casacore provides a suite of C++ libraries for radio astronomy data processing.
 This package provides the headers and sources for developing software with casacore.
 
 %prep
-%autosetup -p1 -n %{srcname}-%{version}
+%autosetup -n %{srcname}-%{version}
 
 %build
 %if %{with mpi}

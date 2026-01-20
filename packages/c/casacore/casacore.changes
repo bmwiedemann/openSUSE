@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Jan 16 04:27:34 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.8.0:
+  * General
+    - Updates for compatibility with more recent compiler versions
+      (gh#casacore/casacore#1418, gh#casacore/casacore#1419,
+      gh#casacore/casacore#1435).
+    - Updates related to measures data tarball
+      (gh#casacore/casacore#1413, gh#casacore/casacore#1429,
+      gh#casacore/casacore#1411).
+    - Improvements to thread safety, particularly in Measures
+      (gh#casacore/casacore#1421, gh#casacore/casacore#1422,
+      gh#casacore/casacore#1423,  gh#casacore/casacore#1425,
+      gh#casacore/casacore#1426, gh#casacore/casacore#1430,
+      gh#casacore/casacore#1424, gh#casacore/casacore#1431).
+    - Improvements to MSConcat (gh#casacore/casacore#1433,
+      gh#casacore/casacore#1443).
+    - Fix math within FFTServer for non-integer shifts
+      (gh#casacore/casacore#1282).
+    - Avoid overflow in LatticeStatistics
+      (gh#casacore/casacore#1441).
+    - Various small improvements (gh#casacore/casacore#1428,
+      gh#casacore/casacore#1437, gh#casacore/casacore#1444,
+      gh#casacore/casacore#1445, gh#casacore/casacore#1412).
+  * Storage manager related
+    - Fix an indexing bug in DataManInfo::removeDminfoColumns
+      (gh#casacore/casacore#1410).
+    - Allow MPI data updates to tiled column data
+      (gh#casacore/casacore#1308).
+    - New storage manager named Sisco for (simulated) data without
+      noise (gh#casacore/casacore#1436, gh#casacore/casacore#1438,
+      gh#casacore/casacore#1439, gh#casacore/casacore#1446,
+      gh#casacore/casacore#1447).
+    - Improve metadata compression (gh#casacore/casacore#1409).
+- Drop use_c17.patch: upstreamed.
+- Bump so version to 9.
+
+-------------------------------------------------------------------
 Fri Jun 13 13:26:33 UTC 2025 - Martin Jambor <mjambor@suse.com>
 
 - Backport use_c17.patch from upstream to allow building with GCC 15.
