@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jan 20 04:14:41 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.0.0+20260120.522c67b3:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: behave: Adjust functional test for previous commit
+  * Dev: sbd: Replace "recommend" with "required" for log error message
+  * Dev: sbd: Check and fix stonith_enabled property
+
+-------------------------------------------------------------------
+Wed Jan 14 07:11:48 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.0.0+20260114.2a676131:
+  * Dev: options: Change 'force' option to be session-only (bsc#1254892)
+
+-------------------------------------------------------------------
 Mon Jan 12 08:56:32 UTC 2026 - XLiang@suse.com
 
 - Update to version 5.0.0+20260112.268a7f4d:
