@@ -125,4 +125,18 @@
   * Add experimental HTTP/3 support, see #425</comment>
     <requestid>1307654</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>35161f572f898507fca8a53713d11108</srcmd5>
+    <version>0.25.3</version>
+    <time>1768939477</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.25.3:
+  Features:
+  * Add colors to --help/-h, see #432
+  Bug fixes:
+  * Don't fail on error code 416 if resuming download, see #434
+  Other:
+  * Upgrade brotli to latest version, see #438</comment>
+    <requestid>1328204</requestid>
+  </revision>
 </revisionlist>

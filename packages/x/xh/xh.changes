@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 20 09:01:51 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.25.3:
+  Features:
+  * Add colors to --help/-h, see #432
+  Bug fixes:
+  * Don't fail on error code 416 if resuming download, see #434
+  Other:
+  * Upgrade brotli to latest version, see #438
+
+-------------------------------------------------------------------
 Mon Sep 29 06:09:08 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.25.0:

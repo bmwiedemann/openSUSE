@@ -1,7 +1,7 @@
 #
 # spec file for package xh
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xh
-Version:        0.25.0
+Version:        0.25.3
 Release:        0
 Summary:        Tool for sending HTTP requests
 License:        MIT
