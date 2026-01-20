@@ -1,0 +1,15 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>77cf1a5de9898071c8dff85e09031d63</srcmd5>
+    <version>0.3</version>
+    <time>1768939421</time>
+    <user>anag_factory</user>
+    <comment>New package
+
+This can be used with LD_PRELOAD to enable sending of tcp-keepalive packets.
+
+This helps with certain corporate firewalls, that forget about established conne
+ctions and then silently discard further traffic in both directions.</comment>
+    <requestid>1328175</requestid>
+  </revision>
+</revisionlist>
