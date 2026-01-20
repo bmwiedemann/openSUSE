@@ -1,4 +1,122 @@
 -------------------------------------------------------------------
+Thu Jan 15 17:31:13 UTC 2026 - Jeff Mahoney <jeffm@suse.com>
+
+- Update to version 1.8.2:
+  * pkglib: untangle WithBuildDocker and DryRun
+  * pkglib/build: make dockerRunner public
+  * when comparing builder config files, ensure only compare post-processed
+  * validate linuxkit yaml for unknown fields
+  * validate yaml for extraneous fields in pkg build
+
+- Update to version 1.8.1:
+  * cache/provider: use lock correctly
+  * pkglib/git: remove trailing spaces of GOPKGVERSION (#4164)
+
+- Update to version 1.8.0:
+  * bump runc to v1.3.0 and containerd to v2.1.4 (#4165)
+  * add support for pkg build dry-run (#4163)
+  * erofs output (#4162)
+  * bump alpine; add erofs-utils package (#4161)
+  * update debian for binfmt (#4159)
+  * simplify sharding in package tests for CI; increase to 12 shards (#4158)
+  * add support for dynamically calculated build arg sets (#4156)
+  * add support for custom build args (#4155)
+  * add support for specifying additional certificates (#4153)
+  * option to pull down required images from  to the cache, so that buildkit never gets them over the network (#4149)
+  * provide mirror support (#4148)
+  * check lock when reading cache provider index (#4147)
+
+- Update to version 1.7.1:
+  * fix registry auth (#4146)
+  * for pkg build builder, copy config over rather than bind-mounting it (#4145)
+  * add missing CRLF in log message (#4144)
+  * swap 'pkg push' for 'pkg build --push', keeping 'pkg push' as deprecated but still working (#4141)
+
+- Update to version 1.7.0:
+  * add support for pkg build authentication (#4137)
+
+- Update to version 1.6.5:
+  * simplify cache locking (#4136)
+  * docs: Add instructions for OCI export from Docker (#4135)
+
+- Update to version 1.6.4:
+  * ensure that new index does not break on missing lock file (#4134)
+
+- Update to version 1.6.3:
+  * check for dirty tree without update-index, which is not parallel-safe (#4133)
+  * Centralize safe cache writes (#4132)
+
+- Update to version 1.6.2:
+  * git: synchronize `update-index` with a mutex (#4130)
+  * more builder race condition; do restart if could not remove, and only go via container ID (#4129)
+
+- Update to version 1.6.1:
+  * Bump buildkit (#4128)
+  * pkg build: handle race condition where builder is started at same time (#4127)
+  * feat: add riscv64 as supported arch (#4124)
+
+- Update to version 1.6.0:
+  * when updating an index, remove sboms or other manifests that reference unknown digests (#4117)
+  * bump golangci-lint to v2.0.2 and update all lint issues (#4116)
+  * add efi_gop module to grub (#4113)
+  * Containerd v2.0.3 (#4112)
+  * containerd 20 (#4100)
+  * Buildkit builder 0.20.0 (#4110)
+  * bump golangci-lint-action (#4109)
+  * Enable riscv64 default (#4108)
+  * riscv64 kernel (#4106)
+  * always tee test linuxkit run to tty, so if it gets stuck, we see why (#4107)
+  * Add alpine bcc tools (#4105)
+  * pkg/extend fix panic for empty partition tables (#4101)
+  * Try resizing all found devices (#4099)
+  * Fix raw efi build image size calculation (#4097)
+  * Update use of test packages to latest
+  * Update use of tools to latest
+  * add riscv64 to mkimage-qcow2-efi
+  * Update use of test packages to latest
+  * Update use of tools to latest
+  * Update package tags
+  * pkgs: Update packages to the latest linuxkit/alpine
+  * Update use of test packages to latest
+  * tests: Update packages to the latest linuxkit/alpine
+  * Update use of tools to latest
+  * tools: Update to the latest linuxkit/alpine
+  * tools/alpine: Update to latest
+  * Update linuxkit/alpine
+  * node_exporter to v1.8.2
+  * Update package tags
+  * pkgs: Update packages to the latest linuxkit/alpine
+  * Update use of test packages to latest
+  * tests: Update packages to the latest linuxkit/alpine
+  * Update use of tools to latest
+  * tools: Update to the latest linuxkit/alpine
+  * tools/alpine: Update to latest
+  * Update linuxkit/alpine
+  * update built-in images in linuxkit cmd
+  * Update package tags
+  * pkgs: Update packages to the latest linuxkit/alpine
+  * Update use of test packages to latest
+  * tests: Update packages to the latest linuxkit/alpine
+  * Update use of tools to latest
+  * tools: Update to the latest linuxkit/alpine
+  * remove grub-dev in favour of grub package
+  * update alpine install docs with riscv64 and no grub-dev
+  * tools/alpine: Update to latest
+  * Update linuxkit/alpine
+  * update example for tss
+  * bump alpine in some test cases
+  * fix tss compilation with patches
+  * Update package tags
+  * pkgs: Update packages to the latest linuxkit/alpine
+  * Update use of test packages to latest
+  * tests: Update packages to the latest linuxkit/alpine
+  * Update use of tools to latest
+  * tools: Update to the latest linuxkit/alpine
+  * include riscv64 in push-manifest script
+  * tools/alpine: Update to latest
+  * Update linuxkit/alpine
+
+-------------------------------------------------------------------
 Sat Mar 08 16:02:29 UTC 2025 - andrea.manzini@suse.com
 
 - Update to version 1.5.3:

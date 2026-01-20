@@ -1,7 +1,7 @@
 #
 # spec file for package linuxkit
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           linuxkit
-Version:        1.5.3
+Version:        1.8.2
 Release:        0
 Summary:        Toolkit for building secure, portable and lean operating systems for containers
 License:        Apache-2.0
