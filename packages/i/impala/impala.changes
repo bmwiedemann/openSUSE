@@ -1,0 +1,61 @@
+-------------------------------------------------------------------
+Tue Jan 20 08:20:43 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7.2:
+  * Bump dependencies
+
+-------------------------------------------------------------------
+Tue Jan 20 08:20:33 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7.1:
+  * Fix ttls validation
+
+-------------------------------------------------------------------
+Tue Jan 20 08:20:17 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7.0:
+  * Support hidden networks
+  * Static binaries
+  * fix scroll on known networks
+  * Show passphrase when sharing network
+
+-------------------------------------------------------------------
+Tue Jan 20 08:19:57 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.0:
+  * Show all the configured networks
+  * Encode network names correctly
+  * Share network with QR code
+  * Breaking change: remove config for connect. set to space or enter.
+
+-------------------------------------------------------------------
+Tue Jan 20 08:19:31 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.0:
+  * Support for WPA2 Entreprise
+  * Support for Eduroam
+  * Make help banner responsive
+  * Improve error messages
+  * Fix crash when wifi adapter is switched off
+  * Reset terminal on error
+
+-------------------------------------------------------------------
+Wed Oct 29 10:48:37 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.1:
+  * Fix display issue on light mode background
+
+-------------------------------------------------------------------
+Wed Oct 29 10:48:04 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.0:
+  * Adjust new network section size.
+  * Rearrange sections for better layout.
+  * Update Rust edition.
+  * Replace help popup with help banner.
+  * Enable network connect/disconnect with Enter key.
+
+-------------------------------------------------------------------
+Wed Sep 10 09:00:08 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- impala 0.3.0 for openSUSE
