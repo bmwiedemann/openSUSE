@@ -1,7 +1,7 @@
 #
 # spec file for package vapoursynth
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           vapoursynth
-Version:        72
+Version:        73
 Release:        0
 Summary:        A video processing framework
 License:        LGPL-2.1-only
@@ -27,8 +27,6 @@ Source0:        https://github.com/vapoursynth/vapoursynth/archive/R%{version}.t
 # PATCH-FIX-OPENSUSE vapoursynth-version.patch -- makes sure that we have
 # some sort of version for othervise unversioned .so files
 Patch0:         vapoursynth-version.patch
-# Patch to revert for Leap 15.x builds
-Patch1:         ac62a4d2a54bacccd09b97453bffe759c01f18ef.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -109,9 +107,6 @@ VapourSynth.
 %prep
 %setup -q -n %{name}-R%{version}
 %patch -P 0 -p1
-%if 0%{?suse_version} <= 1500
-%patch -P 1 -p1 -R
-%endif
 
 %build
 %if 0%{?suse_version} <= 1500

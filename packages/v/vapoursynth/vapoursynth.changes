@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan 20 07:38:22 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 73:
+  * many minor python improvements (ichunjo)
+  * the api r3 headers are no longer distributed with the windows binaries,
+    general api r3 support for plugins remains for now
+  * vsscript r3 api support has been completely removed since nobody has used it for 3+ years
+  * fixed mirroring at edges in convolution filters to be more consistent
+  * fixed cache state not being updated properly for nodes with no
+    consumers ever and no calls to setcache
+- Drop ac62a4d2a54bacccd09b97453bffe759c01f18ef.patch:
+  No difference in build results
+
+-------------------------------------------------------------------
 Mon Jun  2 17:05:59 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 72:
