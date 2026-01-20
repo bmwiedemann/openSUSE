@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst-distri-opensuse-deps
-Version:        1.1749130322.047961dc
+Version:        1.1768906106.3eb55338
 Release:        0
 Summary:        Metapackage that contains the dependencies of os-autoinst-distri-opensuse
 License:        MIT
@@ -42,6 +42,7 @@ Requires:       perl(File::Copy)
 Requires:       perl(File::Find)
 Requires:       perl(File::Path)
 Requires:       perl(File::Temp)
+Requires:       perl(Inline::Python)
 Requires:       perl(IO::File)
 Requires:       perl(IO::Socket::INET)
 Requires:       perl(List::MoreUtils)
@@ -80,6 +81,10 @@ Requires:       perl(YAML::PP)
 Recommends:     os-autoinst-devel
 # This package is required for Agama profile generation with JSONNET tool, ticket link: https://progress.opensuse.org/issues/175728
 Requires:       golang-github-google-jsonnet
+# Required to get information from Agama isos
+Requires:       mkisofs
+Requires:       jq
+Requires:       gzip
 
 %description
 Metapackage that contains the dependencies of os-autoinst-distri-opensuse.
