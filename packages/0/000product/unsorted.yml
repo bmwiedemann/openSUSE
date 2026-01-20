@@ -8906,6 +8906,7 @@ unsorted:
   - imlib2-filters 
   - immer-devel 
   - imobiledevice-tools 
+  - impala 
   - import-properties-plugin 
   - impression 
   - impression-lang 
@@ -12511,7 +12512,7 @@ unsorted:
   - libcairo2-32bit 
   - libcaja-extension1 
   - libcal3d12 
-  - libcalc2_16_0_0 
+  - libcalc2_16_1_2 
   - libcallaudio0_1-0 
   - libcallback1 
   - libcamd-doc 
@@ -12554,9 +12555,9 @@ unsorted:
   - libcaption-devel 
   - libcares2-32bit 
   - libcaribou0 
-  - libcasacore8 
-  - libcasacore8-openmpi4 
-  - libcasacore8-openmpi5 
+  - libcasacore9 
+  - libcasacore9-openmpi4 
+  - libcasacore9-openmpi5 
   - libcblas3-32bit 
   - libcbor-devel 
   - libcbor-doc 
@@ -14294,6 +14295,7 @@ unsorted:
   - libkeccak-devel 
   - libkeccak1 
   - libkeduvocdocument-devel 
+  - libkeepalive 
   - libkexiv2-qt6-devel 
   - libkeybinder0 
   - libkeyfinder-devel 
@@ -15396,6 +15398,8 @@ unsorted:
   - libpixman-1-0-devel 
   - libpkcs11-helper1-32bit 
   - libpkgconf-devel 
+  - libpkgmanifest-devel 
+  - libpkgmanifest0 
   - libplacebo-devel 
   - libplacebo351-32bit 
   - libplacebo5-devel 
@@ -16099,7 +16103,6 @@ unsorted:
   - librttr_core0_9_6 
   - librubberband-devel 
   - librubberband3-32bit 
-  - libruby3_4-3_4 
   - librvngabw-0_0-0 
   - librvngabw-devel 
   - librvngabw-devel-doc 
@@ -16889,7 +16892,7 @@ unsorted:
   - libvamp-hostsdk3-32bit 
   - libvamp-sdk2 
   - libvamp-sdk2-32bit 
-  - libvapoursynth-72 
+  - libvapoursynth-73 
   - libvapoursynth-script0 
   - libvarlink-devel 
   - libvarlink0 
@@ -24002,6 +24005,7 @@ unsorted:
   - python3-libnvme 
   - python3-liborcus 
   - python3-libpamtest 
+  - python3-libpkgmanifest 
   - python3-librepo 
   - python3-libreport 
   - python3-libsoc 
@@ -36861,11 +36865,6 @@ unsorted:
   - ruby-selinux 
   - ruby-xapian 
   - ruby-yui 
-  - ruby3.4 
-  - ruby3.4-devel 
-  - ruby3.4-devel-extra 
-  - ruby3.4-doc 
-  - ruby3.4-doc-ri 
   - ruby4.0-devel 
   - ruby4.0-devel-extra 
   - ruby4.0-doc 
