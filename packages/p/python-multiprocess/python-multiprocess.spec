@@ -1,7 +1,7 @@
 #
 # spec file for package python-multiprocess
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 Name:           python-multiprocess
-Version:        0.70.18
+Version:        0.70.19
 Release:        0
-Summary:        better multiprocessing and multithreading in Python
+Summary:        Better multiprocessing and multithreading in Python
 License:        BSD-3-Clause
 URL:            https://github.com/uqfoundation/multiprocess
 Source:         https://files.pythonhosted.org/packages/source/m/multiprocess/multiprocess-%{version}.tar.gz
@@ -29,23 +29,23 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 42}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module dill >= 0.4.0}
+BuildRequires:  %{python_module dill >= 0.4.1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module testsuite}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-dill >= 0.4.0
+Requires:       python-dill >= 0.4.1
 BuildArch:      noarch
 %python_subpackages
 
 %description
-better multiprocessing and multithreading in Python
+Better multiprocessing and multithreading in Python
 
 %prep
 %autosetup -p1 -n multiprocess-%{version}
 
 %build
-# We need to build this three times, for each version of Python, as opposed
+# We need to build this multiple times, for each version of Python, as opposed
 # to just once, because that will only be compatible for the first version
 # of Python built.
 %python_exec -m build -wn -o build

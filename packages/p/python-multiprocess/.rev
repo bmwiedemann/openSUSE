@@ -7,4 +7,29 @@
     <comment>- Initial release of 0.70.18.</comment>
     <requestid>1295993</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>32eeaf1340563bda8ca25591ef2e9cca</srcmd5>
+    <version>0.70.19</version>
+    <time>1768939401</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.70.19:
+  * drop formal support for python 3.8
+  * update for python3.14.0b1
+  * sync with python 3.14.0b2
+  * sync with python 3.13.4
+  * update to python3.14.0b4; update travis
+  * sync with python 3.13.7 and 3.14.0rc2
+  * sync with python 3.13.8
+  * formal support for 3.14; prep for 3.15
+  * sync code with python 3.15.0a1
+  * sync with rtd 15.4.1
+  * sync with python 3.15.0a2
+  * sync with 3.13.11 and 3.14.2
+  * sync with python 3.15.0a3
+  * update copyright for 2026, urllib3 to 2.6.0
+  * sync with rtfd 15.10.0
+  * sync with python3.15.0a5
+  * increase short timeout in test_interrupt for py3.15</comment>
+    <requestid>1328160</requestid>
+  </revision>
 </revisionlist>
