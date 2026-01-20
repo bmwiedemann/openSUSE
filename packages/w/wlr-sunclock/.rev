@@ -35,4 +35,13 @@
     <comment></comment>
     <requestid>1325424</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>19213bad12e5e7f765eb9ce5e9bff533</srcmd5>
+    <version>1.2.1</version>
+    <time>1768939423</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.2.1:
+  * Add optional argp dependency to allow builds on musl-based systems</comment>
+    <requestid>1328187</requestid>
+  </revision>
 </revisionlist>

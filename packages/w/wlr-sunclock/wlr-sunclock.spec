@@ -1,7 +1,7 @@
 #
 # spec file for package wlr-sunclock
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           wlr-sunclock
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        Wayland desktop widget to show to the sun's shadows on earth
 License:        MIT
