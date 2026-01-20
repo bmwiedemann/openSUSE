@@ -1231,4 +1231,12 @@ run -osc service localrun format_spec_file to fix copyright
   * Error messages being written to stdout rather than stderr</comment>
     <requestid>1307652</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>470b6c744af150a028115336766c6ca6</srcmd5>
+    <version>2.42</version>
+    <time>1768939353</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1328145</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package newsboat
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           newsboat
-Version:        2.41
+Version:        2.42
 Release:        0
 Summary:        RSS/Atom Feed Reader for Text Terminals
 License:        MIT
@@ -45,7 +45,7 @@ BuildRequires:  nlohmann_json-devel
 #BuildRequires:  libboost_program_options-devel
 BuildRequires:  optional-lite-devel
 BuildRequires:  pkgconfig
-BuildRequires:  rust >= 1.68.2
+BuildRequires:  rust >= 1.88.0
 BuildRequires:  sqlite3-devel >= 3.5
 BuildRequires:  zlib-devel
 BuildRequires:  rubygem(asciidoctor)

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jan 19 08:11:41 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.42:
+  Added:
+  * Option toggleitemread-jumps-to-next (#2271)
+  Changed:
+  * In documentation, references to other sections turned into hyperlinks for
+    easier navigation
+  * Updated translations
+  * Bumped minimum supported Rust version to 1.88.0
+  Fixed:
+  * No error messages when OPML import fails
+  * Build failure on macOS
+  * Position in article not updated unless the window is resized (#3204)
+  * Typo in documentation
+  * Cookies not written with curl 8.17 (#3221)
+
+-------------------------------------------------------------------
 Mon Sep 29 06:04:01 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.41:
