@@ -81,7 +81,16 @@ At the moment, the supported file formats for the reference files are:
 %check
 # not installed in :test multiflavor
 export PYTHONPATH="$PWD"
-%pytest
+BASEPATH=$PYTHONPATH
+
+# Don't run the tests with %%pytest macro as it sets the
+# XDG_CONFIG_HOME env variable that conflicts with the .astropy/config
+# folder.
+export -n XDG_CONFIG_HOME
+%{python_expand #
+export PYTHONPATH=${BASEPATH}:%{buildroot}%{$python_sitelib} PYTHONDONTWRITEBYTECODE=1
+$python -m pytest -v
+}
 %endif
 
 %if !%{with test}

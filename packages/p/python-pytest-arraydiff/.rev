@@ -49,4 +49,13 @@
 - Do not build :test on Python 3.6, due to no NumPy.</comment>
     <requestid>1133204</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>f4bcd293965cf8161632b5a997161b27</srcmd5>
+    <version>0.6.1</version>
+    <time>1768939510</time>
+    <user>anag_factory</user>
+    <comment>- Do not use %pytest macro for running tests as it conflicts with
+  internal .astropy/config</comment>
+    <requestid>1328263</requestid>
+  </revision>
 </revisionlist>
