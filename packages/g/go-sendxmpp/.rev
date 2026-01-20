@@ -372,4 +372,29 @@
     <comment>bsc#1251461, CVE-2025-47911 and bsc#1251677, CVE-2025-58190</comment>
     <requestid>1317243</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>a89db53caa58e19729a9ce23bb6d2aed</srcmd5>
+    <version>0.15.5</version>
+    <time>1768939497</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.15.5:
+  * Fix SASL SCRAM Downgrade Protection in case of server providing
+    different mechanisms for SASL and SASL2 (requires go-xmpp &gt;0 v0.3.2).
+
+- Update to 0.15.4:
+  * http-upload: Manually set content length for HTTP request (fixes
+    issues with certain http modules/proxies).
+
+- Update to 0.15.3:
+  * Fix PLAIN authentication for SASL2 (requires go-xmpp &gt;= v0.3.1).
+
+- Update to 0.15.2:
+  * Use UUIDv7 instead of UUIDv4 for stanza IDs (requires go-xmpp &gt;= v0.2.19).
+  * Fix stanza syntax error for legacy PGP messages.
+  * Print error if legacy PGP and Ox are requested simultaneously.
+  * Reworked OOB file sending and http-upload to use new functions
+    from go-xmpp library (requires go-xmpp &gt;= v0.3.0).
+  * Try password login if FAST login fails.</comment>
+    <requestid>1328216</requestid>
+  </revision>
 </revisionlist>
