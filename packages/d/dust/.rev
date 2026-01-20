@@ -129,4 +129,31 @@
   * release: increment version</comment>
     <requestid>1297396</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>302dfe21147b40bfc13daca56dc335c9</srcmd5>
+    <version>1.2.4</version>
+    <time>1768939438</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.2.4:
+  * version: increment version
+  * Revert &quot;build: Attempt to add deb musl build.&quot;
+  * build: Attempt to add deb musl build.
+  * Fix: windows build missed in nu_ansi_term upgrade
+  * deps: update dependencies
+  * build: Attempt to add deb musl build.
+  * deps: switch from ansi_term to nu_ansi_term
+  * docs: Update README.md
+  * docs: update description of 'n'
+  * tests: Update assert_cmd
+  * deps: update libraries
+  * chore: Retire directories library
+  * Update directories from 4 to 6
+  * fix: dont format filecount when output is set to json
+  * style: fix clippy
+  * deps: cargo update
+  * fix: number-of-lines option in config file is ignored (#528)
+  * feat: support --files-from/--files0-from
+  * Update README.md</comment>
+    <requestid>1328190</requestid>
+  </revision>
 </revisionlist>

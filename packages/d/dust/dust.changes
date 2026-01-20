@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jan 20 08:16:32 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 1.2.4:
+  * version: increment version
+  * Revert "build: Attempt to add deb musl build."
+  * build: Attempt to add deb musl build.
+  * Fix: windows build missed in nu_ansi_term upgrade
+  * deps: update dependencies
+  * build: Attempt to add deb musl build.
+  * deps: switch from ansi_term to nu_ansi_term
+  * docs: Update README.md
+  * docs: update description of 'n'
+  * tests: Update assert_cmd
+  * deps: update libraries
+  * chore: Retire directories library
+  * Update directories from 4 to 6
+  * fix: dont format filecount when output is set to json
+  * style: fix clippy
+  * deps: cargo update
+  * fix: number-of-lines option in config file is ignored (#528)
+  * feat: support --files-from/--files0-from
+  * Update README.md
+
+-------------------------------------------------------------------
 Mon Aug 04 06:55:31 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to version 1.2.3:
