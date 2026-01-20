@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Jan 17 15:34:46 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.26:
+  * criu: enable setting of RPC config file via annotation org.criu.config 
+    crun also reads /etc/criu/crun.conf or /etc/criu/runc.conf for CRIU 
+    configuration.
+  * linux: run createContainer hooks before making root read-only
+  * utils: handle NULL container passed to libcrun_open_proc_file()
+  * container: fix error release on failure paths.
+
+- update to 1.25.1:
+  * linux: harden opens under /proc. Use fsopen, when available, to get 
+    a trusted reference to the proc file system and use it for all subsequent
+    accesses instead of relying on the /proc path directly
+
+- update to 1.25:
+  * cgroup: enable all accounting properties to ensure stats are readable
+  * intelrdt: honor default closID
+  * src: fix some double allocations on errors
+
+-------------------------------------------------------------------
 Thu Sep 11 20:08:17 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.24:

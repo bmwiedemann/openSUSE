@@ -298,4 +298,12 @@
   * libcrun: setup /dev/console as a symlink to pty instead of bind mount when possible.</comment>
     <requestid>1304150</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>3238d3f028b3eaf8dbe79294d2a1d3b4</srcmd5>
+    <version>1.26</version>
+    <time>1768939508</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1328249</requestid>
+  </revision>
 </revisionlist>

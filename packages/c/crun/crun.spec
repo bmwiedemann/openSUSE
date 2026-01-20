@@ -1,7 +1,7 @@
 #
 # spec file for package crun
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %endif
 
 Name:           crun
-Version:        1.24
+Version:        1.26
 Release:        0
 Summary:        OCI runtime written in C
 License:        GPL-2.0-or-later
