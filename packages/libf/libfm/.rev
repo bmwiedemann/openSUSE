@@ -560,4 +560,16 @@ No GPL-2.0 (i.e. version 2 &quot;only&quot;) licenses found in the package (forw
 - Drop upstreamed: fix-gcc14.patch</comment>
     <requestid>1247681</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>9e1ca8c9121e897b9f41cc293529a67e</srcmd5>
+    <version>1.4.1</version>
+    <time>1768939492</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.4.1:
+  * Fixed missing smooth up/down scrolling in compact view.
+  * Updated the list of mime types handled by xarchiver, file-roller,
+    engrampa and ark.
+  * Updated Catalan translation.</comment>
+    <requestid>1328215</requestid>
+  </revision>
 </revisionlist>

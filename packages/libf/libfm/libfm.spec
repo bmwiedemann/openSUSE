@@ -17,7 +17,7 @@
 
 
 Name:           libfm
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        A glib/gio-based lib used to develop file managers
 License:        GPL-2.0-or-later

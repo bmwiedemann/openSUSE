@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 20 09:17:39 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.4.1:
+  * Fixed missing smooth up/down scrolling in compact view.
+  * Updated the list of mime types handled by xarchiver, file-roller,
+    engrampa and ark.
+  * Updated Catalan translation.
+
+-------------------------------------------------------------------
 Fri Feb 21 15:47:05 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.4.0:
