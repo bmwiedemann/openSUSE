@@ -1,4 +1,133 @@
 -------------------------------------------------------------------
+Tue Jan 20 10:03:09 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.16.1.2:
+  * Fixed a bug where the calc command history was not being properly
+    saved in the history file.  Thanks go to the GitHub user @Vekhir
+    for both reporting this problem and helping come up with a solution.
+  * Per request, we expanded number of entries to save from 1024 to 4096.
+
+-------------------------------------------------------------------
+Tue Jan 20 10:02:18 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.16.1.1:
+  * Fix compiler warning for `custom/u_pfe.c`.
+  * Update the `ARCH_CFLAGS` make symbol comments in `Makefile.config`.
+  * Add `ARCH_CFLAGS` to `COMMON_CFLAGS` in `Makefile.config`.
+  * Add "RHEL (Linux) Address Sanitizer (ASAN) for i686" commented out
+    section to `Makefile.local`.
+  * Improve comments in `Makefile.local` related to "Address Sanitizer (ASAN)".
+  * Add `junk4200` to `.gitignore`.
+  * Use `-${Q}` instead of `-@` while build hsrc files in `Makefile`.
+  * Fix `pseudo_seed()` in `seed.c` to handle 32-bit architectures.
+  * Fixed `reopenid()` in `file.c` to handle 32-bit architectures and
+    to avoid "glibc detected an invalid stdio handle" using `freopen(3)`.
+  * Fixed bug in `c_power()` in `comfunc.c` that caused 32-bit
+    architectures to dump core.
+  * Fixed bug in `zrandom()` in `zrandom.c` where results from a
+    Blum-Blum-Shub operation were incorrectly copied into a ZVALUE
+    for 32-bit architectures.
+  * Fixed comment typo in `cal/regress.cal` before test 5305.
+
+-------------------------------------------------------------------
+Tue Jan 20 10:01:27 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.16.1.0:
+  * Added a new `.clang-format` file as the basis for using the
+    `clang-format(1)` tool to format calc source in a consistent way.
+    This code re-formatting will make it easier to work in calc v3 code
+    changes in the future by making the calc source much more consistent.
+  * Removed `.clang-format` exclusion from `.gitignore`.
+  * Modified `func.c` to prevent the `clang-format(1)` tool from formatting
+    the `builtins[]` table that builtin make rule in `help/Makefile` uses to
+    format the `help/builtin` file.  We can live with the `builtins[]`
+    table as it is today, for now.
+  * Add `make clang-format` make rule to top level `Makefile` and
+    to the `custom/Makefile`.
+  * Reformatted C code as per the `clang-format(1)` and the
+    `.clang-format` file: using the `make clang-format` make rule.
+
+-------------------------------------------------------------------
+Tue Jan 20 10:00:04 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.16.0.3:
+  * The segmentation fault as reported in issue #174 has been fixed.
+    When the `powervalue()` function was expanded to (in `value.c`), to
+    process complex powers, the author forgot that the function `c_power()`
+    returns NULL when the result is too large to represent in memory.  Now,
+    when `c_power()` returns NULL within the `powervalue()` function, the
+    `E_POWER_4` math error ("Too-large value for power") will be raised.
+    Thanks go to the GitHub user @mengrj for reporting this problem
+    in issue #174 in a clear and concise way such that we were able
+    to fix this problem.
+  * Reduced `MAXCMD` (maximum length of command invocation) in `calv.h`
+    from 16384 to 5120.  On most systems, commands longer than 5.6k would
+    hit the soft stack size limit and trigger a stack overflow condition
+    causing calc to crash with a SIGSEGV (segmentation violation).
+  * If you need a super-long calc commands, consider increasing
+  * the `MAXCMD` value in `calc.h`, and increase the stack size
+  * limits for your calc run.  For example under Linux to increase
+  * the maximum stack size to 2^28 bytes:
+    prlimit --stack=268435456 calc
+    or:
+    ulimit -s 49152
+    calc
+  * Resolved, as much we can, issue #175.
+  * Recommend `-fstack-protector-all` in `Makefile.local` comments.
+  * Fixed signed integer overflow in `c_power()`.
+  * The `c_power(COMPLEX *c1, COMPLEX *c2, NUMBER *epsilon)` function in
+    `comfunc.c` no longer triggers a signed integer overflow.
+  * Added `qqbitvalue(NUMBER pos)` to `qmarth.c`: like `qbitvalue(long n)`
+    but with a NUMBER arg, and will return NULL if the shifted bit is too
+    large to hold in memory.
+  * Added `zzbitvalue(ZVALUE pos, ZVALUE *res)`: similar to the
+    `zbitvalue(long n, ZVALUE *res)` function but with a `ZVALUE` arg,
+    and returns a boolean, and does not call math_error().
+  * Added `ZVALUE _baseb_` to hold the `BASEB` as a `ZVALUE`.
+  * Added `MAXDATA_LOG2` to hold the log base 2 value of `MAXDATA`.
+  * Added `MAXLEN_LOG2` to hold the log base 2 value of `MAXLEN`.
+  * Added `HALF_BITS` as an alias for `BASEB`.
+  * Added to `cal/regress.cal`, regression test 9758 to test for
+    the condition that issue #174 was about.
+  * Improved the Common Address Sanitizer (ASAN) comments in
+    `Makefile.config` and `Makefile.local`.
+  * Resolved issue #176.
+
+-------------------------------------------------------------------
+Tue Jan 20 09:58:56 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.16.0.2:
+  * Fixed bug, when custom functions were enabled, where returning a
+    value from the sysinfo custom function such as:
+    custom("sysinfo","DEFAULTSHELL")
+    would cause a segmentation violation due to an improper `free(3)`.
+  * Fixed a memory leak that was related to the sysinfo custom function.
+  * Added paranoia checks on shell value when processing commands
+    read from the tty that start with the "!" character.
+  * Improved code that converts between UPPER CASE and lower case.
+  * Verify that the default underlying shell defaults to the shell
+    as given by the `$SHELL` environment variable if that environment
+    variable is set and is NOT empty, otherwise the `DEFAULTSHELL`
+    (as defined in `calc.h`) value will be used as the underlying shell.
+  * Fixed memory leaks related to various environment variable values
+    used by calc code.  All various environment variable values used
+    used by calc code are processed by `strdup(3)`.
+  * The `libcalc_call_me_last()` function frees any non-NULL values set
+    by `initenv()`.
+  * If the readline tilde_expand fails to expand "~/.calc_history",
+    then ".calc_history" will be used as the name of the history file.
+  * Added HIST_NULL_HIST code to indicate that name of the history file
+    could not be set.
+
+-------------------------------------------------------------------
+Tue Jan 20 09:58:02 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.16.0.1:
+  * Adding support for "pipe/fork/exec and friends" via custom functions
+  * We to address a bug after adding support for pipe/fork/exec (and
+    friends) via custom functions
+
+-------------------------------------------------------------------
 Mon Aug 18 07:43:30 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.16.0.0:

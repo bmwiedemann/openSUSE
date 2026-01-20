@@ -596,4 +596,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1301218</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>f74f4ebab1293e16c8078a966b2a9490</srcmd5>
+    <version>2.16.1.2</version>
+    <time>1768939506</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.16.1.2:
+  * Fixed a bug where the calc command history was not being properly
+    saved in the history file.  Thanks go to the GitHub user @Vekhir
+    for both reporting this problem and helping come up with a solution.
+  * Per request, we expanded number of entries to save from 1024 to 4096.
+
+- Update to 2.16.1.1:
+  * Fix compiler warning for `custom/u_pfe.c`.
+  * Update the `ARCH_CFLAGS` make symbol comments in `Makefile.config`.
+  * Add `ARCH_CFLAGS` to `COMMON_CFLAGS` in `Makefile.config`.
+  * Add &quot;RHEL (Linux) Address Sanitizer (ASAN) for i686&quot; commented out
+    section to `Makefile.local`.
+  * Improve comments in `Makefile.local` related to &quot;Address Sanitizer (ASAN)&quot;.
+  * Add `junk4200` to `.gitignore`.
+  * Use `-${Q}` instead of `-@` while build hsrc files in `Makefile`.
+  * Fix `pseudo_seed()` in `seed.c` to handle 32-bit architectures.
+  * Fixed `reopenid()` in `file.c` to handle 32-bit architectures and
+    to avoid &quot;glibc detected an invalid stdio handle&quot; using `freopen(3)`.
+  * Fixed bug in `c_power()` in `comfunc.c` that caused 32-bit
+    architectures to dump core.
+  * Fixed bug in `zrandom()` in `zrandom.c` where results from a
+    Blum-Blum-Shub operation were incorrectly copied into a ZVALUE
+    for 32-bit architectures.
+  * Fixed comment typo in `cal/regress.cal` before test 5305.
+
+- Update to 2.16.1.0:
+  * Added a new `.clang-format` file as the basis for using the
+    `clang-format(1)` tool to format calc source in a consistent way.
+    This code re-formatting will make it easier to work in calc v3 code
+    changes in the future by making the calc source much more consistent.</comment>
+    <requestid>1328226</requestid>
+  </revision>
 </revisionlist>
