@@ -1,7 +1,7 @@
 #
 # spec file for package onefetch
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           onefetch
-Version:        2.25.0
+Version:        2.26.1
 Release:        0
 Summary:        Git repository summary on your terminal
 License:        GPL-2.0-only AND MIT

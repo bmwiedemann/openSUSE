@@ -498,4 +498,23 @@
 - bsc#1230085: This updates gix-path to 0.10.11</comment>
     <requestid>1291402</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>f249feb5b84b259aa6e9601f41fe6048</srcmd5>
+    <version>2.26.1</version>
+    <time>1768939432</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.26.1:
+  * Fix CD pipeline
+
+- Update to 0.26.0:
+  New Features:
+  * Add colors to --help #1633
+  Chores:
+  * No unsafe #1646
+  * bump cargo edition to 2024
+  * increase default color resolution for sixel
+  Bug Fixes:
+  * skip get_main_language call if no language detected</comment>
+    <requestid>1328186</requestid>
+  </revision>
 </revisionlist>

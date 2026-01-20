@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jan 20 08:05:45 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.26.1:
+  * Fix CD pipeline
+
+-------------------------------------------------------------------
+Tue Jan 20 08:04:33 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.26.0:
+  New Features:
+  * Add colors to --help #1633
+  Chores:
+  * No unsafe #1646
+  * bump cargo edition to 2024
+  * increase default color resolution for sixel
+  Bug Fixes:
+  * skip get_main_language call if no language detected
+
+-------------------------------------------------------------------
 Wed Jul  9 06:22:16 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.25.0:
