@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Tue Jan 20 01:41:55 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Removing xpra-icon.png as a source file
+
+-------------------------------------------------------------------
+Mon Jan 12 15:43:51 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Removing 'xpra-icon.png' as /usr/share/pixmaps/xpra.png is supplied
+- Update to version 6.4.1:
+  * https://github.com/Xpra-org/xpra/releases/tag/v6.4.1
+    - Platforms, build and packaging:
+      * cython 3.2.4
+      * AMF headers include path
+      * can't use loose match without difflib
+    - MS Windows issues:
+      * client errors on control-c
+      * packaging fix for python-pillow
+      * directsound device queries
+      * warnings when named-pipes are the only local sockets available
+      * shadow server info errors
+    - Major:
+      * printer cannot be enabled
+      * virtual monitor geometry synchronization
+      * broken Gtk Wayland clipboard
+      * exit-ssh option was getting lost
+      * auto-reconnect from seamless ssh start
+      * handle paramiko failure to compare agent keys more gracefully
+      * Wayland client crash loading X11 bindings
+      * ibus deamonizer fails with non-default interpreter + fixup
+      * proxy server startup is incomplete
+      * missing audio on remote ssh start + update unit tests
+    - Keyboard:
+      * secondary connections cannot use keyboard when sharing
+      * default keyboard configuration should have default modifier mappings
+      * help clients figure out modifier mappings
+      * use a default translation map if we don't have keycode definitions
+      * some keys could not be accessed
+      * skip modifiers warning during initialization
+      * clear modifiers before changing the keymap
+      * client keyboard 'options' attribute was not forwarded
+      * honour layout and variant overrides
+    - Minor:
+      * expose desktop flag for desktop windows
+      * future correctness: use argument provided
+      * Qt6 client failed to run
+      * handle missing gtk widget component more gracefully
+      * cleanup errors if setup failed
+      * wrong location for handler registration
+      * window size changed mis-detection
+      * missing packet handlers
+      * make locating the interpreter more resilient + fixup
+      * exec auth can use http headers + fixup
+      * client can specify username using environment variable
+    - Cosmetic:
+      * splash screen warnings
+      * misplaced packet handler registration
+      * remove unused cython functions
+      * remove duplicated methods
+      * remove Gtk keymap warning
+      * confusing message
+      * more useful message
+      * show the source of the error
+      * some exceptions have no message
+      * prevent cleanup warnings
+      * more resilient mmap cleanup
+      * broken links in documentation
+      * overwritten cursor attributes
+      * always log full failure details at debug level
+      * printing debug logging is incorrect
+      * debug logging record misformed
+      * invalid type hint
+
+-------------------------------------------------------------------
 Thu Dec  4 16:11:17 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to version 6.4:

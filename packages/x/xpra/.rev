@@ -787,4 +787,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1322249</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>bc19fe1daa9587421d2255bffcea7ee2</srcmd5>
+    <version>6.4.1</version>
+    <time>1768939378</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit
+- Removing xpra-icon.png as a source file
+
+- Removing 'xpra-icon.png' as /usr/share/pixmaps/xpra.png is supplied
+- Update to version 6.4.1:
+  * https://github.com/Xpra-org/xpra/releases/tag/v6.4.1
+    - Platforms, build and packaging:
+      * cython 3.2.4
+      * AMF headers include path
+      * can't use loose match without difflib
+    - MS Windows issues:
+      * client errors on control-c
+      * packaging fix for python-pillow
+      * directsound device queries
+      * warnings when named-pipes are the only local sockets available
+      * shadow server info errors
+    - Major:
+      * printer cannot be enabled
+      * virtual monitor geometry synchronization
+      * broken Gtk Wayland clipboard
+      * exit-ssh option was getting lost
+      * auto-reconnect from seamless ssh start
+      * handle paramiko failure to compare agent keys more gracefully
+      * Wayland client crash loading X11 bindings
+      * ibus deamonizer fails with non-default interpreter + fixup
+      * proxy server startup is incomplete
+      * missing audio on remote ssh start + update unit tests
+    - Keyboard:
+      * secondary connections cannot use keyboard when sharing
+      * default keyboard configuration should have default modifier mappings</comment>
+    <requestid>1328162</requestid>
+  </revision>
 </revisionlist>

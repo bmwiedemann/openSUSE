@@ -1,7 +1,7 @@
 #
 # spec file for package xpra
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 
 %global __requires_exclude ^typelib\\(GtkosxApplication\\)|typelib\\(GdkGLExt\\)|typelib\\(GtkGLExt\\).*$
 Name:           xpra
-Version:        6.4
+Version:        6.4.1
 Release:        0
 Summary:        Remote display server for applications and desktops
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT
@@ -38,7 +38,6 @@ Group:          System/X11/Utilities
 URL:            https://www.xpra.org/
 Source0:        %{name}-%{version}.tar.gz
 #Source0:        https://github.com/Xpra-org/xpra/archive/refs/tags/v%%{version}.tar.gz#/%%{name}-%%{version}.tar.gz
-Source1:        xpra-icon.png
 Source99:       xpra-rpmlintrc
 Source100:      README.md
 #Patch0:         FIX-is_distribution_variant.diff
@@ -161,7 +160,6 @@ find \( -name xpraforwarder \
   -o -name xdg-open \
   -o -name xpra_signal_listener \) \
   -exec sed -i 's@#!%{_bindir}/env python3$@#!%{_bindir}/python3@' {} +
-install -m0644 %{SOURCE1} -T fs/share/icons/xpra.png
 # misc fixes for SUSE specific differences upstream
 baselibexec=$(basename $(rpm -E '%{_libexecdir}'))
 sed -e 's|__FILLUPDIR__|%{_fillupdir}|' \
