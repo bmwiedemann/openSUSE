@@ -668,4 +668,18 @@
     <comment></comment>
     <requestid>1319566</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>39df2b1b8777bd43799e9111a046ef46</srcmd5>
+    <version>1.6.3</version>
+    <time>1768939362</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.6.3:
+  * Fixed an asymmetry between the forward and backward searches/replacements
+    if some text was selected.
+  * Made replacing after searching easier (without needing to clear the
+    selection first).
+  * Fixed showing of ampersand in the recent files menus.
+  * Fixed highlighting of C++ numbers with single quote as separator.</comment>
+    <requestid>1328149</requestid>
+  </revision>
 </revisionlist>
