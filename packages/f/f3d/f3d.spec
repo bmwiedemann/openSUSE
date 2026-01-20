@@ -1,7 +1,7 @@
 #
 # spec file for package f3d
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define c_lib   libf3d3
 Name:           f3d
-Version:        3.3.0
+Version:        3.4.1
 Release:        0
 Summary:        Fast and minimalist 3D viewer
 License:        BSD-3-Clause

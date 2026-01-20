@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Jan 20 08:47:11 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.4.1:
+  * BEHAVIOR CHANGE: Changed the behavior of gaussian point sprites, it now require the use of --point-sprites-absolute-size
+  * BEHAVIOR CHANGE: Changed the default configuration for alembic to NOT display scalar by default
+  * Added a CLI option to control if point sprites should be scaled or not: --point-sprites-absolute-size
+  * Added HDRI filename display CLI option and interaction (Shift+N)
+  * Added progress support to QuakeMDL importer
+  * Added point sprites modes switch interaction (O)
+  * Added console auto completion for all libf3d options with a domain and filepath
+  * Added support for Alembic XForm animation
+  * Added an interaction to play animation backward: Ctrl+Shift+Space
+  * Added a console command to play animation backward: toggle_animation_backward
+  * Added support for importing Alembic file with curves
+  * Added a jump_to_frame command
+  * Added axes and grid color configuration with a CLI option --x/y/z-color
+  * Added proper support for composite data
+  * Added an interaction to change the up direction Ctrl+Y and Ctrl+Z and dynamic up support
+  * Improved the documentation on https://f3d.app
+  * Improved style of progress and animation bar to fit F3D style
+  * Improved color logging
+  * Reduced VRAM usage of antialiasing and HDRI rendering
+  * Fixed an issue where the camera would reset after volume rendering
+  * Fixed multiple issue with temporal anti-aliasing
+  * Fixed an issue with parsing none CLI options
+  * Fixed small issues with the event loop
+  * Fixed a blending issue with external rendering context
+  * Fixed an issue with display of Ctrl+Shift+ bindings
+  * Fixed many memory issues in QuakeMDL reader
+  * Fixed an issue with elevation and azimuth options
+  * Fixed a small display issue in the cheatsheet
+  * Deprecated --anti-aliasing-mode in favor of simply --anti-aliasing
+  * Deprecated --point-sprites-type in favor of simply --point-sprites
+
+-------------------------------------------------------------------
 Thu Oct 30 07:59:49 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.3.0:
