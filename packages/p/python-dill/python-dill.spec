@@ -1,7 +1,7 @@
 #
 # spec file for package python-dill
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,16 +23,14 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-dill
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        Module to serialize all of Python
 License:        BSD-3-Clause
 URL:            https://github.com/uqfoundation/dill
 Source:         https://github.com/uqfoundation/dill/archive/refs/tags/%{version}.tar.gz#/dill-%{version}.tar.gz
-#PATCH-FIX-UPSTREAM fix-contextvars.patch based on gh#uqfoundation/dill#717
-Patch0:         fix-contextvars.patch
 BuildRequires:  %{python_module dbm}
-BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module objgraph >= 1.7.2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

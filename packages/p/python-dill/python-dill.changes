@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jan 20 01:52:03 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.4.1:
+  * drop formal support for python 3.8
+  * use get_file_type to open _pyio file types
+  * update rtfd to 3.12 and docs requirements
+  * formal support for 3.14; init support for 3.15
+  * dict and weakref descriptors are singletons in 3.15
+  * sync with rtd 15.4.1
+  * ensure valid class qualname in getsource
+  * avoid numpy segfault for 3.15.0a3
+  * update copyright for 2026, urllib3 to 2.6.0
+- Drop patch fix-contextvars.patch, merged upstream.
+
+-------------------------------------------------------------------
 Fri Nov 14 10:48:35 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
 
 - added a fix-contextvars.patch:
