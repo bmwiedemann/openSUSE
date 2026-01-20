@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 20 04:06:55 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.3.2:
+  * Upgrade Astroid to version 3
+  * Use tomllib for Python that provide him
+- Use poetry-core rather than poetry for building.
+- Drop patch fix-astroid-import.patch, merged upstream.
+
+-------------------------------------------------------------------
 Wed Mar 27 03:30:23 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.2.2:

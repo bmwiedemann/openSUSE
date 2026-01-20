@@ -1,7 +1,7 @@
 #
 # spec file for package python-requirements-detector
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,18 @@
 
 
 Name:           python-requirements-detector
-Version:        1.2.2
+Version:        1.3.2
 Release:        0
 Summary:        Python tool to find and list requirements of a Python project
 License:        MIT
 URL:            https://github.com/landscapeio/requirements-detector
 Source:         https://github.com/landscapeio/requirements-detector/archive/%{version}.tar.gz
-Patch0:         fix-astroid-import.patch
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
-BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-astroid >= 2.0
+Requires:       python-astroid >= 3.0
 Requires:       python-packaging >= 21.3
 Requires:       python-semver >= 3
 Requires:       python-toml >= 0.10
@@ -38,7 +36,7 @@ Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module astroid >= 2.0}
+BuildRequires:  %{python_module astroid >= 3.0}
 BuildRequires:  %{python_module packaging >= 21.3}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module semver >= 3}
