@@ -175,4 +175,14 @@ Since previous request:
     - RM #4607536 Improve VMA stability</comment>
     <requestid>1325564</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>4839819370699f8b227e5b2e8c03670f</srcmd5>
+    <version>9.8.84</version>
+    <time>1768939524</time>
+    <user>anag_factory</user>
+    <comment>- Update to 9.8.84
+  - Core
+    - RM #4607536 Improve VMA stability</comment>
+    <requestid>1328277</requestid>
+  </revision>
 </revisionlist>
