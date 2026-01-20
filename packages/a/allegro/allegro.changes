@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Tue Jan 20 08:00:46 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 5.2.11.2:
+  Primitives addon:
+  * Re-export al_draw_soft_line (#1691)
+  * Initialize an uninitialized variable
+  * Re-enable pre-compiled shaders for D3D9X to avoid a dll dependency (#1694)
+  * Revert the primitives state setup/revert back to the old primitives addon
+    logic
+
+-------------------------------------------------------------------
+Tue Jan 20 08:00:26 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 5.2.11.1:
+  Primitives addon:
+  * Fix segfault when resizing display
+  * Fix linking issue on Windows (#1691)
+  Examples:
+  * Fix ex_prim_wrap
+
+-------------------------------------------------------------------
+Tue Jan 20 07:58:38 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 5.2.11:
+  Core:
+  * Remove tabs and trailing spaces from source files
+  * Disable DebugOutputString on windows for logs by default (#1548)
+  * Fixed initialization of the resize event thread when calling al_init after al_uninstall_system
+  * Add "gamepad" support. This uses the community sourced SDL controller database. See ex_joystick_events for how to use this.
+  * Fix assorted issues with joystick hotplugging
+  * Add locks to avoid stale clipboard text (#1629)
+  * Reset the GL_UNPACK_ROW_LENGTH after unlocking certain bitmaps
+  Linux:
+  * Fixed memory leak
+  * Fix crash when using the LC_CTYPE=eo.ut8 on X11 (#1651)
+  * Improve behavior when the display is disconnected
+  TTF addon:
+  * Add color emoji support
+  Audio addon:
+  * Fix a race between detaching instances from mixers and reading from them
+  Image addon:
+  * Fix loading of padded PCX files
+  Video addon:
+  * Add al_open_video_f
+  Primitives addon:
+  * Move the most of the implementation into the core. This should be feature-neutral, but will enable future unification (#1003)
+  * Populate the UV coordinates for the vertices in many high-level primitives which enables some shader effects. See ex_prim example for how this looks.
+  Documentation:
+  * Document ALLEGRO_MOUSE_STATE.display
+  * Remove GETTER/SETTER from generated docs
+  * Fix the the return value of al_insert_menu_item (#1648)
+  Build system:
+  * CMake improvements
+  * Export build tree with CMake to ease debugging
+  * Allow using SIMD instruction sets besides SSE
+  * Check vcpkg locations for dependencies
+  * Assorted CI improvements
+  Examples:
+  * ex_joystick_hotplugging is now more exciting
+
+-------------------------------------------------------------------
 Wed Jan  8 08:40:12 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 5.2.10.1:

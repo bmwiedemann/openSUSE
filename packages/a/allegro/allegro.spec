@@ -1,7 +1,7 @@
 #
 # spec file for package allegro
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ developers are free to design and structure the program as desired.
 %define allegro_so_nr 5_2
 %define dot_allegro_so_nr %(echo %{allegro_so_nr} | sed s/_/./)
 Name:           allegro
-Version:        5.2.10.1
+Version:        5.2.11.2
 Release:        0
 Summary:        A game programming library
 License:        BSD-3-Clause AND Zlib
