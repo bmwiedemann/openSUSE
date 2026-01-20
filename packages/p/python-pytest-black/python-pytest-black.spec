@@ -25,6 +25,9 @@ URL:            https://github.com/coherent-oss/pytest-black
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-black/pytest_black-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM Update pytest fixtures
 Patch0:         https://github.com/coherent-oss/pytest-black/commit/75e0012.patch#/fix-pytest-makefile.patch
+# PATCH-FIX-OPENSUSE pytest9.patch make it work with pytest 9.0
+# https://docs.pytest.org/en/latest/deprecations.html#py-path-local-arguments-for-hooks-replaced-with-pathlib-path
+Patch1:         pytest9.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}

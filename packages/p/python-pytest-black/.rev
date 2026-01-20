@@ -63,4 +63,13 @@
 - Refresh fix-pytest-makefile.patch to match what was merged upstream.</comment>
     <requestid>1319908</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>7779536d56885927f205a0a84a20f56a</srcmd5>
+    <version>0.6.0</version>
+    <time>1768939526</time>
+    <user>anag_factory</user>
+    <comment>- Add patch pytest9.patch make it work with pytest 9.0
+  https://docs.pytest.org/en/latest/deprecations.html#py-path-local-arguments-for-hooks-replaced-with-pathlib-path</comment>
+    <requestid>1328293</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 20 14:40:05 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add patch pytest9.patch make it work with pytest 9.0
+  https://docs.pytest.org/en/latest/deprecations.html#py-path-local-arguments-for-hooks-replaced-with-pathlib-path
+
+-------------------------------------------------------------------
 Tue Nov 25 00:42:23 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.6.0:
