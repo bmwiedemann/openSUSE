@@ -208,4 +208,12 @@ Factory, SLE15-SP7:GA, and SLFO:Main.</comment>
     <comment>Update libnbd to version 1.24.0. Include CVE and bug numbers in prior changelog entry.</comment>
     <requestid>1324237</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>360a39774503009496022a90ad61d150</srcmd5>
+    <version>1.24.0</version>
+    <time>1768939346</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1328134</requestid>
+  </revision>
 </revisionlist>

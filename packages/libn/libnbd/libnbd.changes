@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Tue Dec 16 16:29:46 UTC 2025 - Charles Arnold <carnold@suse.com>
 
-- Update to version 1.24.0:
+- Update to version 1.24.0: (jsc#PED-14625)
   * Version 1.24.0.
   * docs: Finalize release notes for libnbd 1.24
   * ci/lcitool/projects/libnbd.yml: Add 'tar' as an explicit dependency
