@@ -19,4 +19,14 @@
 </comment>
     <requestid>1247696</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>306ef75b1dff023d2bd53a192de1ab37</srcmd5>
+    <version>1.3</version>
+    <time>1768939341</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.3
+ * In perl.req use &gt;= instead of = again
+</comment>
+    <requestid>1328103</requestid>
+  </revision>
 </revisionlist>

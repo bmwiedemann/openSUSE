@@ -1,7 +1,7 @@
 #
 # spec file for package perl-rpm-packaging
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-rpm-packaging
-Version:        1.2
+Version:        1.3
 Release:        0
 Summary:        RPM dependency generator for Perl
 Group:          Development/Languages/Python
