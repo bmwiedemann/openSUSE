@@ -60,4 +60,12 @@
     <comment>- Correct %doc and %license locations.</comment>
     <requestid>1236764</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>b89789dd0abe1442b3aba236d75faf6a</srcmd5>
+    <version>3.7.0</version>
+    <time>1768939402</time>
+    <user>anag_factory</user>
+    <comment>- Correct BuildRequires WRT poetry-core vs poetry.</comment>
+    <requestid>1328164</requestid>
+  </revision>
 </revisionlist>

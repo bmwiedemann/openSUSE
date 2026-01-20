@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-keycloak
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,15 +25,15 @@ License:        MIT
 URL:            https://github.com/marcospereirampj/python-keycloak
 Source:         https://github.com/marcospereirampj/python-keycloak/archive/refs/tags/v%{version}.tar.gz#/python-keycloak-%{version}.tar.gz
 Patch0:         fix-version.patch
-BuildRequires:  %{python_module base}
+BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module deprecation}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module httmock}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-jose}
-BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module requests-toolbelt}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-deprecation

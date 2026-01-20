@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 20 03:38:44 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Correct BuildRequires WRT poetry-core vs poetry.
+
+-------------------------------------------------------------------
 Fri Jan 10 05:03:51 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Correct %doc and %license locations. 
