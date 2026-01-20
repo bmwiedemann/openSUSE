@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Jan 19 07:17:50 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20260117
+  + add "alt_" to special key-prefix check for "djgpp" terminfo
+  + provide a generated list of user-defined special keys (adapted from
+    patch by Jakub Horky) -TD
+  + rename vt100+keypad, etc., to vt100+keypad+sco, etc., to keep
+    historical blocks while providing for renaming of vt220+keypad as
+    vt100+keypad (prompted by patch by Jakub Horky) -TD
+  + use vt100+keypad instead of vt220+keypad (patch by Jakub Horky)
+  + use vt100+keypad in putty+keypad, replacing kpXX extension -TD
+  + remove vt100+fnkeys-sco from putty -TD 
+  + fix link_test.c for configuration without extended colors by
+    adjusting ifdefs and improving MKlib_gen.sh by checking for #if
+    statements with only a 0 or 1 parameter.
+  + fixes for "make check" (report by Brian Inglis):
+    + adjust definition of USE_TRACEF
+    + modify ncurses/wcwidth.h
+    + modify makefile to add dependencies needed in shared library
+    + modify makefile to work with libtool
+    + separate ncurses/tty/lib_mvcur.c test-driver from routine checks
+  + add a paragraph to user_caps.5 to mention extended capabilities which
+    are not documented as part of ncurses.
+  + use symbol DEFAULT_TERM_VAR for several cases where getenv("TERM")
+    returns null pointer.
+  + modify test/demo_new_pair.c to fix build with SmartOS (report by
+    Thomas Klausner).
+- Port patch ncurses-6.6.dif
+
+-------------------------------------------------------------------
 Wed Jan  7 12:46:32 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20251231

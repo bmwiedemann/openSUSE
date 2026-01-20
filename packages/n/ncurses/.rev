@@ -5500,4 +5500,37 @@
   + make win32_curses.h obsolete in favor of nc_win32.h</comment>
     <requestid>1325791</requestid>
   </revision>
+  <revision rev="319" vrev="92">
+    <srcmd5>5f899af5fc71582a174d972232896da4</srcmd5>
+    <version>unknown</version>
+    <time>1768939340</time>
+    <user>anag_factory</user>
+    <comment>- Add ncurses patch 20260117
+  + add &quot;alt_&quot; to special key-prefix check for &quot;djgpp&quot; terminfo
+  + provide a generated list of user-defined special keys (adapted from
+    patch by Jakub Horky) -TD
+  + rename vt100+keypad, etc., to vt100+keypad+sco, etc., to keep
+    historical blocks while providing for renaming of vt220+keypad as
+    vt100+keypad (prompted by patch by Jakub Horky) -TD
+  + use vt100+keypad instead of vt220+keypad (patch by Jakub Horky)
+  + use vt100+keypad in putty+keypad, replacing kpXX extension -TD
+  + remove vt100+fnkeys-sco from putty -TD 
+  + fix link_test.c for configuration without extended colors by
+    adjusting ifdefs and improving MKlib_gen.sh by checking for #if
+    statements with only a 0 or 1 parameter.
+  + fixes for &quot;make check&quot; (report by Brian Inglis):
+    + adjust definition of USE_TRACEF
+    + modify ncurses/wcwidth.h
+    + modify makefile to add dependencies needed in shared library
+    + modify makefile to work with libtool
+    + separate ncurses/tty/lib_mvcur.c test-driver from routine checks
+  + add a paragraph to user_caps.5 to mention extended capabilities which
+    are not documented as part of ncurses.
+  + use symbol DEFAULT_TERM_VAR for several cases where getenv(&quot;TERM&quot;)
+    returns null pointer.
+  + modify test/demo_new_pair.c to fix build with SmartOS (report by
+    Thomas Klausner).
+- Port patch ncurses-6.6.dif</comment>
+    <requestid>1328025</requestid>
+  </revision>
 </revisionlist>
