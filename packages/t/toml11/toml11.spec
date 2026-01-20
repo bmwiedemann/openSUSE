@@ -1,7 +1,7 @@
 #
 # spec file for package toml11
 #
-# Copyright (c) 2023 Neal Gompa
+# Copyright (c) 2026 Neal Gompa
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,7 @@ C++ standard library.
 
 
 Name:           toml11
-Version:        3.7.1
+Version:        4.4.0
 Release:        0
 Summary:        TOML for Modern C++
 
@@ -77,7 +77,7 @@ Development files for %{name}.
 %license LICENSE
 %doc README.md
 %{_includedir}/*.hpp
-%{_includedir}/toml/
+%{_includedir}/%{name}/
 %{_libdir}/cmake/%{name}/
 
 

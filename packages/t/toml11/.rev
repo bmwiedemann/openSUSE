@@ -7,4 +7,13 @@
     <comment>Initial package for openSUSE</comment>
     <requestid>1089574</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3d54dbd3fe83e296b5efea439ccc0539</srcmd5>
+    <version>4.4.0</version>
+    <time>1768939416</time>
+    <user>anag_factory</user>
+    <comment>- Rebase to v4.4.0
+  + See https://toruniina.github.io/toml11/docs/changelog/#v440 for details</comment>
+    <requestid>1328157</requestid>
+  </revision>
 </revisionlist>

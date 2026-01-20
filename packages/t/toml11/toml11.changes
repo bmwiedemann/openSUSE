@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 20 01:26:50 UTC 2026 - Neal Gompa <ngompa@opensuse.org>
+
+- Rebase to v4.4.0
+  + See https://toruniina.github.io/toml11/docs/changelog/#v440 for details
+
+-------------------------------------------------------------------
 Sat May 20 22:42:29 UTC 2023 - Neal Gompa <ngompa@opensuse.org>
 
 - Initial package based on Fedora packaging
