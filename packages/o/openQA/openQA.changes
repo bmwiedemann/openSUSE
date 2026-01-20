@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 20 13:17:03 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1768856318.847e4fc7:
+  * fix(systemd): prevent openqa-gru starting while mounts are unavailable
+  * fix(systemd): try restarts on failure to be more resilient
+  * feat: Show when "Next & Previous" jobs are limited
+  * refactor: Format SQL code for "Next & Previous" jobs more nicely
+  * refactor: Simplify determining latest job in "Next & Previous" list
+
+-------------------------------------------------------------------
 Sat Jan 17 14:09:38 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1768564451.45d5d5b2:
