@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 13 09:03:20 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20260108.00
+  * Source the contents of /var/google-users.d config files. (#586)
+
+-------------------------------------------------------------------
 Mon Jan  5 13:20:03 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20251223.00

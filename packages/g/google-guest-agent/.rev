@@ -1005,4 +1005,13 @@
   * Update go version for stable branch to 1.25 (#571) (forwarded request 1325420 from glaubitz)</comment>
     <requestid>1325425</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>605934888bcfb2e0e4257564905e4429</srcmd5>
+    <version>20260108.00</version>
+    <time>1768939519</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260108.00
+  * Source the contents of /var/google-users.d config files. (#586) (forwarded request 1328270 from glaubitz)</comment>
+    <requestid>1328272</requestid>
+  </revision>
 </revisionlist>
