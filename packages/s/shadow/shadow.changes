@@ -1,4 +1,128 @@
 -------------------------------------------------------------------
+Mon Jan 19 13:39:42 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.19.2:
+  Regression fixes usermod(8):
+  * Revert an incorrect commit. See #1509 and #1510.
+
+-------------------------------------------------------------------
+Mon Jan 19 13:38:37 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.19.1:
+  Regression fixes in chpasswd(8):
+  * Don't reject leading '!' in password hashes or a hash consisting
+    of "*". These were accidentally rejected in 4.19.0.
+    See #1483 and #1486.
+  * Don't reject a passwordless account ("" or "!").
+    See #1483 (comment) and #1505.
+
+-------------------------------------------------------------------
+Wed Dec 31 10:50:15 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.19.0:
+  Breaking changes:
+  * Remove support for escaped newlines in configuration files.
+    It never worked correctly.
+    b0a7ce5 (2025-12-05; "lib/, po/: Remove fgetsx() and fputsx()")
+  * Some user names and group names are too dangerous and are rejected,
+    even with --badname.
+    25aea74 (2025-12-25; "lib/chkname.c, src/: Strictly disallow really bad names")
+  Future breaking changes:
+  * SHA512 and SHA256 will be supported unconditionally in the next
+    release. The build-time flag '--with-sha-crypt' will be removed.
+    See #1452.
+  Support:
+  * Several years ago, there were talks about deprecating su(1) and
+    login(1), back when this project was maintained as part of Debian.
+    However, nothing was clearly stated, and there were doubts about the
+    status of these programs. Let's clarify them now.
+  * Our implementations of su(1) and login(1) are fully supported, and we
+    don't have any plans to remove them. They are NOT deprecated.
+    See #464.
+  Deprecations:
+  * groupmems(8)
+    The program will be removed in a future release.
+    See #1343.
+  * logoutd(8)
+    The program will be removed in the next release.
+    See #999,
+    and #1344.
+  * DES
+    This hashing algorithm has been deprecated for a long time,
+    and support for it will be removed in a future release.
+    See #1456
+  * MD5
+    This hashing algorithm has been deprecated for a long time,
+    and support for it will be removed in a future release.
+    See #1457
+  * login.defs(5): MD_CRYPT_ENAB
+    This feature had been deprecated for decades. It will be
+    removed in a future release.
+    The command-line equivalents (-m, --md5) of this feature in
+    chpasswd(8) and chgpasswd(8) will also be removed in a future
+    release.
+    See #1455.
+  * login.defs(5): PASS_MAX_LEN
+    This feature is ignored except for DES. Once DES is removed,
+    it makes no sense keeping it. It may be removed in a future
+    release.
+  * Password aging
+    Scientific research shows that periodic password expiration
+    leads to predictable password patterns, and that even in a
+    theoretical scenario where that wouldn't happen the gains in
+    security are mathematically negligible.
+    https://people.scs.carleton.ca/~paulv/papers/expiration-authorcopy.pdf
+  * Modern security standards, such as NIST SP 800-63B-4 in the USA,
+    prohibit periodic password expiration.
+    https://pages.nist.gov/800-63-4/sp800-63b.html#passwordver
+    https://pages.nist.gov/800-63-FAQ/#q-b05
+    https://www.ncsc.gov.uk/collection/passwords/updating-your-approach#PasswordGuidance:UpdatingYourApproach-Don'tenforceregularpasswordexpiry
+  * To align with these, we're deprecating the ability to
+    periodically expire passwords. The specifics and long-term
+    roadmap are currently being discussed, and we invite feedback
+    from users, particularly from those in regulated environments.
+    See #1432.
+  * This deprecation includes the following programs and features:
+    + expiry(1)
+    + chage(1):
+         -I,--inactive (also the interactive version)
+         -m,--mindays (also the interactive version)
+         -M,--maxdays (also the interactive version)
+         -W,--warndays (also the interactive version)
+    + passwd(1):
+         -k,--keep-tokens
+         -n,--mindays
+         -x,--maxdays
+         -i,--inactive
+         -w,--warndays
+    + useradd(8):
+         -f,--inactive
+    + usermod(8):
+         -f,--inactive
+    + login.defs(5):
+         PASS_MIN_DAYS
+         PASS_MAX_DAYS
+         PASS_WARN_AGE
+    + /etc/default/useradd:
+         INACTIVE
+    + shadow(5):
+         sp_lstchg: Restrict to just the values 0 and empty.
+         sp_min
+         sp_max
+         sp_warn
+         sp_inact
+  * We recognize that many users operate in environments with
+    regulatory or contractual requirements that still mandate
+    password aging. To minimize disruption, these features will
+    remain functional for a significant period. However, we
+    encourage administrators to review their internal policies,
+    talk to their regulators if appropriate, and participate in the
+    roadmap discussion linked above.
+- Update patches:
+  * shadow-login_defs-suse.patch
+  * shadow-login_defs-unused-by-pam.patch
+
+-------------------------------------------------------------------
 Thu Dec 11 11:00:51 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add permissions file for shadow-pw-mgmt

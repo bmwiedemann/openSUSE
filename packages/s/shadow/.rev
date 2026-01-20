@@ -1295,4 +1295,41 @@
     <comment></comment>
     <requestid>1322917</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>d9dc604d49451fc7c54d11cbee3cdd30</srcmd5>
+    <version>4.19.2</version>
+    <time>1768939335</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.19.2:
+  Regression fixes usermod(8):
+  * Revert an incorrect commit. See #1509 and #1510.
+
+- Update to 4.19.1:
+  Regression fixes in chpasswd(8):
+  * Don't reject leading '!' in password hashes or a hash consisting
+    of &quot;*&quot;. These were accidentally rejected in 4.19.0.
+    See #1483 and #1486.
+  * Don't reject a passwordless account (&quot;&quot; or &quot;!&quot;).
+    See #1483 (comment) and #1505.
+
+- Update to 4.19.0:
+  Breaking changes:
+  * Remove support for escaped newlines in configuration files.
+    It never worked correctly.
+    b0a7ce5 (2025-12-05; &quot;lib/, po/: Remove fgetsx() and fputsx()&quot;)
+  * Some user names and group names are too dangerous and are rejected,
+    even with --badname.
+    25aea74 (2025-12-25; &quot;lib/chkname.c, src/: Strictly disallow really bad names&quot;)
+  Future breaking changes:
+  * SHA512 and SHA256 will be supported unconditionally in the next
+    release. The build-time flag '--with-sha-crypt' will be removed.
+    See #1452.
+  Support:
+  * Several years ago, there were talks about deprecating su(1) and
+    login(1), back when this project was maintained as part of Debian.
+    However, nothing was clearly stated, and there were doubts about the
+    status of these programs. Let's clarify them now.
+  * Our implementations of su(1) and login(1) are fully supported, and we</comment>
+    <requestid>1328142</requestid>
+  </revision>
 </revisionlist>

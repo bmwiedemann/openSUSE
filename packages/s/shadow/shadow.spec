@@ -1,7 +1,7 @@
 #
 # spec file for package shadow
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
   %define no_config 1
 %endif
 Name:           shadow
-Version:        4.18.0
+Version:        4.19.2
 Release:        0
 Summary:        Utilities to Manage User and Group Accounts
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -154,6 +154,7 @@ autoreconf -fvi
   --with-selinux \
   --without-libcrack \
   --without-libbsd \
+  --disable-logind \
 %if 0%{?suse_version} >= 1600
   --without-sssd \
 %endif
