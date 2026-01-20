@@ -1,7 +1,7 @@
 #
 # spec file for package grml-zsh-config
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           grml-zsh-config
-Version:        0.19.25
+Version:        0.19.26
 Release:        0
 Summary:        Zsh config ujed by grml
 License:        GPL-2.0-only

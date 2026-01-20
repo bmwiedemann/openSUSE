@@ -245,4 +245,13 @@
   * script-functions: drop various functions</comment>
     <requestid>1316596</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>eca0be4745864513692bcc1d24d0ef66</srcmd5>
+    <version>0.19.26</version>
+    <time>1768939429</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.19.26:
+  * Add myip function</comment>
+    <requestid>1328189</requestid>
+  </revision>
 </revisionlist>
