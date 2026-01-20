@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 20 08:11:19 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.2:
+  * libseat/seatd: Remove read_and_execute
+  * libseat/seatd: Read remaining events after processing responses
+  * libseat/seatd: Cleanup of request error handling
+  * libseat/seatd: Set EINVAL if target session is invalid
+  * libseat/seatd: Set backend error if poll fails
+  * seatd: Add validation of device path libseat/seatd: Add validation of seat_name
+  * seatd: Add strict message size comparison
+
+-------------------------------------------------------------------
 Thu Oct 31 17:06:26 UTC 2024 - llyyr <llyyr@yukari.in>
 
 - Update to 0.9.1
