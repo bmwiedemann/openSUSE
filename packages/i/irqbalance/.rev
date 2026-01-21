@@ -705,4 +705,12 @@ A irqbalance_banmod.diff
   by licensedigger</comment>
     <requestid>1272050</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>c519b01d99286a2f53bb224b7357ce94</srcmd5>
+    <version>1.9.5.0.git+cf76396</version>
+    <time>1769001076</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1328132</requestid>
+  </revision>
 </revisionlist>

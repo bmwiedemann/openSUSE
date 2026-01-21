@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 19 17:35:31 UTC 2026 - Thomas Renninger <trenn@suse.de>
+
+- Update to version 1.9.5.0.git+cf76396:
+  * Update configure.ac/meson.build for irqbalance 1.9.5
+  * meson: force systemd-service installation with a seperate option
+  * Fixed incorrect comparison in snprintf() in procinterrupts.c.
+  * Added missing '/' and fixed message in procinterrupts.c.
+  * Safer string handling in procinterrupts.c.
+
+-------------------------------------------------------------------
 Wed Apr 23 05:13:16 UTC 2025 - Thomas Renninger <trenn@suse.de>
 
 - Adopt license to GPL-2.0-only according to COPYING as suggested

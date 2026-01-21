@@ -17,7 +17,7 @@
 
 %bcond_with meson
 Name:           irqbalance
-Version:        1.9.4.77.git+d913f60
+Version:        1.9.5.0.git+cf76396
 Release:        0
 Summary:        Daemon to balance IRQs on SMP machines
 License:        GPL-2.0-only
