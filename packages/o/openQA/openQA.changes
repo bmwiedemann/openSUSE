@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 20 20:12:31 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1768919350.40d92537:
+  * tests: Improve/add tests for "no products found" case
+  * KernelBug: Extend the kernel bug template
+  * feat: Improve error message when falling back to version `*`
+
+-------------------------------------------------------------------
 Tue Jan 20 13:17:03 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1768856318.847e4fc7:
