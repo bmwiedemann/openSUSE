@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Mon Jan 19 08:40:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.21:
+  * Optionally create intermediate directories when creating
+    mailboxes.
+  * New stream flag is introduced: MU_STREAM_INTERDIR.  Used
+    together with
+  * MU_STREAM_CREAT, it instructs mailutils to create any missing
+    intermediate directories, when creating file.
+  * New configuration statement "homedir" declares the action to
+    take if a user home directory does not exits.
+  * The statement is used by imap4d, lmtpd, mda, and putmail
+    utilities.
+  * The option informs fileinto that it should create missing
+    intermediate directories when creating a mailbox.
+  * Variable expansions in configuration statements.
+  * New commands in string expansions
+  * Sieve: fix coredump on parsing "fileinto :permission"
+    action.
+  * Sieve: fix optimizer.
+  * Library: fix parsing ls-compatible permission strings.
+  * Library: fix mu_sieve_machine_clone function.
+  * Configuration: use '\' to escape delimiters in some
+    statements.
+  * This affects statements whose arguments are colon- or comma-
+    delimited strings, e.g. ldap.field-map.
+  * ** Library: fix localized help output
+  * Help entries now use the correct translation domain.  The bug
+    was originally reported and discussed in
+  * Setting synchronization mode allows the user to keep messages
+    in remote source mailbox, while downloading only recently
+    received messages.  The mode is defined via the "--sync"
+    command line option or "sync" configuration statement.
+  * ** The --reverse option removed
+  * The option made little sense for movemail and was never used.
+  * ** The --max-messages option
+  * This options sets the maximum number of latest messages to
+    process.
+  * New Sieve test: uidnew
+  * The "uidnew" test keeps track of the processed messages.  It
+    evaluates to true if the current message was not processed
+    before.
+  * filters: revise buffer requirements when requesting more
+    input/output
+  * libproto tests: link using the libtool archives
+  * Fix testsuite (mda & mail) to work with arbitrary default
+    mailbox type
+  * Minor fix in handling of EHLO command in smtp client.
+  * Improve docs.
+  * Minor fix in mhn and related tests.
+  * mail utility: use the "mailer" configuration capability.
+- update mailutils.keyring
+
+-------------------------------------------------------------------
 Mon Apr 21 09:20:38 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - add -std=gnu17 to CFLAGS to fix gcc15 compile time error
@@ -8,7 +62,7 @@ Thu Oct 24 12:41:23 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch MALLOC_PERTURB_.patch
   * Fix memory pool handling which otherwise cause failing
-    mimeview due missing mime types due set MALLOC_PERTURB_ 
+    mimeview due missing mime types due set MALLOC_PERTURB_
     environment variable
 
 -------------------------------------------------------------------
@@ -61,7 +115,7 @@ Tue Aug  9 18:55:18 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Bugfixes in quoted-printable and fromrd filters
   * Various fixes in mbox and dotmail format libraries
   * Fix compilation with flex version 2.6.1
-   
+
 -------------------------------------------------------------------
 Mon Jun 20 13:39:33 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
@@ -265,14 +319,14 @@ Wed Oct 30 10:27:43 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 -------------------------------------------------------------------
 Fri Nov 30 08:41:21 UTC 2018 - Dr. Werner Fink <werner@suse.de>
 
-- Dynamic determine and use guile version in spec file 
+- Dynamic determine and use guile version in spec file
 
 -------------------------------------------------------------------
 Wed Nov 21 10:32:35 UTC 2018 - Dr. Werner Fink <werner@suse.de>
 
 - Add mailutils-3.5-guile-2.0.patch and mailutils-3.5-guile-2.0.tar.xz
   to port the guile-2.0 interface of mailutils-3.4 back to mailutils-3.5
-  as it seems that guile-2.2 is currently not doable 
+  as it seems that guile-2.2 is currently not doable
 
 -------------------------------------------------------------------
 Mon Nov 19 10:24:58 UTC 2018 - Dr. Werner Fink <werner@suse.de>
@@ -297,7 +351,7 @@ Tue Oct 30 10:40:54 UTC 2018 - Dr. Werner Fink <werner@suse.de>
   * Define sieve variables from the command line
     The sieve utility now allows you to supply initial values for
     RFC 5229 variables using the --variable command line option, e.g.
-    sieve --variable mailbox=outgoing 
+    sieve --variable mailbox=outgoing
   * Support for Berkeley DB versions 5 and 6
   * headline variable in the mail utility
     The new %D specifier has been implemented, which allows the user to
@@ -321,13 +375,13 @@ Tue Oct 30 10:40:54 UTC 2018 - Dr. Werner Fink <werner@suse.de>
 -------------------------------------------------------------------
 Fri Aug  3 09:45:20 UTC 2018 - werner@suse.de
 
-- Add some more conflicts to other imap/pop3 services 
+- Add some more conflicts to other imap/pop3 services
 
 -------------------------------------------------------------------
 Tue Jul 31 10:56:24 UTC 2018 - werner@suse.de
 
 - Generate soem manual pages with help2man
-- Move manual pages of system binaries to the appropiate package 
+- Move manual pages of system binaries to the appropiate package
 
 -------------------------------------------------------------------
 Sun Jun 10 23:33:31 UTC 2018 - jengelh@inai.de
@@ -356,7 +410,7 @@ Thu Jun  7 08:36:16 UTC 2018 - werner@suse.de
 -------------------------------------------------------------------
 Tue May 29 16:14:43 UTC 2018 - werner@suse.de
 
-- Initial package mailutils as required by GNU Emacs 
+- Initial package mailutils as required by GNU Emacs
   Added two patches
   * mimeview_lexer_format-security.patch
   * lisp-load-silent.patch

@@ -338,4 +338,41 @@
     <comment></comment>
     <requestid>1274466</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>5adaddb86cae3cb2583e95fd1f49dba1</srcmd5>
+    <version>3.21</version>
+    <time>1769001068</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.21:
+  * Optionally create intermediate directories when creating
+    mailboxes.
+  * New stream flag is introduced: MU_STREAM_INTERDIR.  Used
+    together with
+  * MU_STREAM_CREAT, it instructs mailutils to create any missing
+    intermediate directories, when creating file.
+  * New configuration statement &quot;homedir&quot; declares the action to
+    take if a user home directory does not exits.
+  * The statement is used by imap4d, lmtpd, mda, and putmail
+    utilities.
+  * The option informs fileinto that it should create missing
+    intermediate directories when creating a mailbox.
+  * Variable expansions in configuration statements.
+  * New commands in string expansions
+  * Sieve: fix coredump on parsing &quot;fileinto :permission&quot;
+    action.
+  * Sieve: fix optimizer.
+  * Library: fix parsing ls-compatible permission strings.
+  * Library: fix mu_sieve_machine_clone function.
+  * Configuration: use '\' to escape delimiters in some
+    statements.
+  * This affects statements whose arguments are colon- or comma-
+    delimited strings, e.g. ldap.field-map.
+  * ** Library: fix localized help output
+  * Help entries now use the correct translation domain.  The bug
+    was originally reported and discussed in
+  * Setting synchronization mode allows the user to keep messages
+    in remote source mailbox, while downloading only recently
+    received messages.  The mode is defined via the &quot;--sync&quot; (forwarded request 1328030 from dirkmueller)</comment>
+    <requestid>1328061</requestid>
+  </revision>
 </revisionlist>

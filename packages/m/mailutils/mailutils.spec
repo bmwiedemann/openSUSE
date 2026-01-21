@@ -1,7 +1,7 @@
 #
 # spec file for package mailutils
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@
 %bcond_with     guile_22
 %bcond_with     check
 Name:           mailutils
-Version:        3.17
+Version:        3.21
 Release:        0
 Summary:        GNU Mailutils
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -79,7 +79,7 @@ BuildRequires:  alts
 Requires:       alts
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 Requires:       guile = %(rpm -q --queryformat '%%{VERSION}' guile-devel)
 %if 0
@@ -88,7 +88,7 @@ BuildRequires:  freeradius-server-devel
 %endif
 %if %{with set_user_identity}
 Requires(post): permissions
-Requires(verify):permissions
+Requires(verify): permissions
 %endif
 # Hard requirement as mimeview uses /usr/share/cups/mime/mime.types
 Requires:       cups
