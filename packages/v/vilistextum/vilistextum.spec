@@ -1,7 +1,7 @@
 #
 # spec file for package vilistextum
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,6 +51,7 @@ make %{?_smp_mflags}
 make %{?_smp_mflags} test
 
 %post
+
 %postun
 
 %files

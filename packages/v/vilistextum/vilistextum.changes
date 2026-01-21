@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 20 14:30:48 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix build with GCC 16
+
+-------------------------------------------------------------------
 Mon Oct  5 10:51:05 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
 
 - Fix Factory build
