@@ -1,7 +1,7 @@
 #
 # spec file for package opendkim
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -236,6 +236,9 @@ This package holds the development files.
 %patch -P 9 -p1
 
 %build
+%if %{pkg_vcmp gcc >= 15}
+export CFLAGS="%{optflags} -std=gnu17"
+%endif
 autoreconf -iv
 %configure                            \
   --includedir=%{_includedir}/%{name} \

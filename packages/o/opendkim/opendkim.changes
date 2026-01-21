@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 20 14:35:37 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Fix build with GCC 15 
+
+-------------------------------------------------------------------
 Wed Nov 13 03:18:29 UTC 2024 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Added rev-ares-deletion.patch
