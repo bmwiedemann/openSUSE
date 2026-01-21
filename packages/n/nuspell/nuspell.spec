@@ -1,7 +1,7 @@
 #
 # spec file for package nuspell
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,10 +24,10 @@
 %else
 %bcond_without tests
 %endif
-# Ring1 package, avoid pandoc requirement by disabling mnan file generation
+# Ring1 package, avoid pandoc requirement by disabling man file generation
 %bcond_with man
 Name:           nuspell
-Version:        5.1.6
+Version:        5.1.7
 Release:        0
 Summary:        A spell checker library and command-line tool
 License:        LGPL-3.0-or-later
@@ -115,23 +115,17 @@ This package provides API documentation for Nuspell.
 %endif
        -DBUILD_TESTING:BOOL=%{?with_tests:ON}%{!?with_tests:OFF}  \
        -DCMAKE_SKIP_RPATH:BOOL=OFF \
-       -DBUILD_DOCS=%{?with_man:ON}%{!?with_man:OFF} \
+       -DBUILD_API_DOCS=ON \
+       -DBUILD_MAN=%{?with_man:ON}%{!?with_man:OFF} \
+       -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name}-doc \
        %{nil}
 %cmake_build
 
-cd ../
-doxygen
-
 %install
 %cmake_install
-
-# Install API doc manually so we can run fdupes on buildroot
-mkdir -p %{buildroot}%{_docdir}/%{name}
-cp -pR doxygen/html %{buildroot}%{_docdir}/%{name}-doc/
 %fdupes %{buildroot}%{_docdir}/%{name}-doc/
 
-%post -n %{libname}%{sonum} -p /sbin/ldconfig
-%postun -n %{libname}%{sonum} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}%{sonum}
 
 %if %{with tests}
 %check
