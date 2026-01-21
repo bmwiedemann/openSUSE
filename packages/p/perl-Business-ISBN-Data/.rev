@@ -669,4 +669,15 @@
   	* data update for 2025-12-23</comment>
     <requestid>1325877</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>b30ca04331aa84b1548ad85ace32c3cf</srcmd5>
+    <version>20260109.1.0</version>
+    <time>1769001185</time>
+    <user>anag_factory</user>
+    <comment>- updated to 20260109.1.0 (20260109.001)
+   see /usr/share/doc/packages/perl-Business-ISBN-Data/Changes
+  20260109.001 2026-01-09T04:28:20Z
+  	* data update for 2026-01-08</comment>
+    <requestid>1327637</requestid>
+  </revision>
 </revisionlist>
