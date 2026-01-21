@@ -18,7 +18,7 @@
 
 %define         sover 0
 Name:           seagull
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        A SQLite helper library
 License:        LGPL-2.1-or-later

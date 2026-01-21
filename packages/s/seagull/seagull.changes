@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 20 23:29:36 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.6.1:
+  * Add a codespell unit tests
+  * Allow passing NULL to Seagull.Statement.bind_time_zone
+  * Add an explicit test for Seagull.Statement.bind_text with a NULL value
+
+-------------------------------------------------------------------
 Sat Dec  6 11:55:29 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 0.6.0:

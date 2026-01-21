@@ -47,4 +47,15 @@
   * Add support for reading and writing GBytes</comment>
     <requestid>1321355</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4ae38d0f8d6df691988a5afb888eeaac</srcmd5>
+    <version>0.6.1</version>
+    <time>1769001472</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.6.1:
+  * Add a codespell unit tests
+  * Allow passing NULL to Seagull.Statement.bind_time_zone
+  * Add an explicit test for Seagull.Statement.bind_text with a NULL value</comment>
+    <requestid>1328393</requestid>
+  </revision>
 </revisionlist>
