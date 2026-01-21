@@ -4,7 +4,7 @@
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">pam-config</param>
-    <param name="versionformat">2.13+git.%cd</param>
+    <param name="versionformat">2.14+git.%cd</param>
   </service>
   <service mode="manual" name="recompress">
     <param name="file">*.tar</param>

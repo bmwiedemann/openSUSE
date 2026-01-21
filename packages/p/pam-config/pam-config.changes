@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jan 20 10:59:52 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add libeconf to BuildRequires
+- Update to version 2.14+git.20260120:
+  * Release version 2.14
+  * Explain custom pam-config modules in the man page
+  * Enable the configurable fallback when called
+  * Ensure we call fallback stacks
+  * Ensure each configurable module uses it's own opt_sets
+  * Only free configurable pam modules
+  * Permit module behavior fallback
+  * Replace libinih with libeconf
+  * Ensure we don't duplicate custom configs
+  * Cause custom configs to override built-ins
+  * Dynamicaly load pam modules from configuration
+  * Give pam modules priorities
+
+-------------------------------------------------------------------
 Wed Dec 03 11:02:30 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2.13+git.20251203:

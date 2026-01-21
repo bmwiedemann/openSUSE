@@ -17,7 +17,7 @@
 
 
 Name:           pam-config
-Version:        2.13+git.20251203
+Version:        2.14+git.20260120
 Release:        0
 Summary:        Utility to modify common PAM configuration files
 License:        GPL-2.0-only
@@ -29,6 +29,8 @@ Source1:        pam-config-rpmlintrc
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libeconf)
 PreReq:         pam >= 1.3.0
 PreReq:         pam-extra
 Recommends:     pam_pwquality

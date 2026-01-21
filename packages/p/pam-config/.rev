@@ -933,4 +933,25 @@
   * pam_sss has no debug option</comment>
     <requestid>1320991</requestid>
   </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>8b7abe0e68a3085e161def49d8fa0d7f</srcmd5>
+    <version>2.14+git.20260120</version>
+    <time>1769001130</time>
+    <user>anag_factory</user>
+    <comment>- Add libeconf to BuildRequires
+- Update to version 2.14+git.20260120:
+  * Release version 2.14
+  * Explain custom pam-config modules in the man page
+  * Enable the configurable fallback when called
+  * Ensure we call fallback stacks
+  * Ensure each configurable module uses it's own opt_sets
+  * Only free configurable pam modules
+  * Permit module behavior fallback
+  * Replace libinih with libeconf
+  * Ensure we don't duplicate custom configs
+  * Cause custom configs to override built-ins
+  * Dynamicaly load pam modules from configuration
+  * Give pam modules priorities</comment>
+    <requestid>1328243</requestid>
+  </revision>
 </revisionlist>
