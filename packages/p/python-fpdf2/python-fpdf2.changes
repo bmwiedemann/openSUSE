@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 19 15:16:04 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.8.5
+  * added tutorial "tuto7" (in English and German) with documentation to create PDF/A files with fpdf2
+  * support for many different text/paragraph formatings added
+  * improved SVG image parsing speed by 50% to 70%
+  * Python 3.14 is now officially supported
+  * changed libtiff detection logic to maintain compatibility with pillow v12
+  * many more bug fixes and improvements, see upstream CHANGELOG.md
+
+-------------------------------------------------------------------
 Tue Feb  4 09:48:58 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.8.2

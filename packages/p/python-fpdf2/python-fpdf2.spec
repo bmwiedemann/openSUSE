@@ -1,7 +1,7 @@
 #
 # spec file for package python-fpdf2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-fpdf2
-Version:        2.8.2
+Version:        2.8.5
 Release:        0
 Summary:        Simple & fast PDF generation for Python
 License:        LGPL-3.0-or-later
@@ -28,7 +28,7 @@ URL:            https://py-pdf.github.io/fpdf2/
 Source:         fpdf2-%{version}.tar.xz
 BuildRequires:  %{python_module Pillow >= 6.2.2}
 BuildRequires:  %{python_module defusedxml}
-BuildRequires:  %{python_module fonttools >= 4.34.0}
+BuildRequires:  %{python_module fonttools >= 4.59.2}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -51,7 +51,8 @@ BuildRequires:  java
 BuildRequires:  fdupes
 Requires:       python-Pillow >= 6.2.2
 Requires:       python-defusedxml
-Requires:       python-fonttools >= 4.34.0
+# uses features from newer version than is documented upstream
+Requires:       python-fonttools >= 4.59.2
 BuildArch:      noarch
 %python_subpackages
 
