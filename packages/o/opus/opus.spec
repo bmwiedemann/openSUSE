@@ -1,7 +1,7 @@
 #
 # spec file for package opus
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define sover   0
 Name:           opus
-Version:        1.6
+Version:        1.6.1
 Release:        0
 Summary:        Audio Codec Library
 License:        BSD-3-Clause
