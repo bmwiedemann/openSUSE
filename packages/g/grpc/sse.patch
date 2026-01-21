@@ -1,0 +1,23 @@
+From: Jan Engelhardt <ej@inai.de>
+Date: 2026-01-19 19:40:23.831898851 +0100
+
+Stop forcing -msse on the command-line; it is not guaranteed
+to exist on all platforms (especially i586).
+
+---
+ CMakeLists.txt |    2 --
+ 1 file changed, 2 deletions(-)
+
+Index: grpc-1.76.0/CMakeLists.txt
+===================================================================
+--- grpc-1.76.0.orig/CMakeLists.txt
++++ grpc-1.76.0/CMakeLists.txt
+@@ -277,8 +277,6 @@ if(UNIX)
+   if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+     set(_gRPC_PLATFORM_LINUX ON)
+     if(NOT CMAKE_CROSSCOMPILING AND CMAKE_SIZEOF_VOID_P EQUAL 4)
+-      message("+++ Enabling SSE2 for ${CMAKE_SYSTEM_PROCESSOR}")
+-      set(_gRPC_C_CXX_FLAGS "${_gRPC_C_CXX_FLAGS} -msse2")
+     endif()
+   elseif(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+     set(_gRPC_PLATFORM_MAC ON)

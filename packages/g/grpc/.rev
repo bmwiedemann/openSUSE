@@ -696,4 +696,14 @@ fixed in that other package, after which it will trickle down.</comment>
     <comment>- Added patch grpc_missing_includes.patch</comment>
     <requestid>1327729</requestid>
   </revision>
+  <revision rev="85" vrev="3">
+    <srcmd5>e2c8d06c65b7c899a4779e47ce0e2aa8</srcmd5>
+    <version>1.76.0</version>
+    <time>1769001081</time>
+    <user>anag_factory</user>
+    <comment>- Add sse.patch
+
+send to staging:F</comment>
+    <requestid>1328141</requestid>
+  </revision>
 </revisionlist>

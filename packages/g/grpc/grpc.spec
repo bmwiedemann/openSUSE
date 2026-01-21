@@ -32,6 +32,7 @@ Patch1:         terminate.patch
 Patch2:         link-failure.patch
 Patch3:         return-values.patch
 Patch4:         telemetry.patch
+Patch5:         sse.patch
 Patch14:        ARM-Unaligned-access-fixes.patch
 Patch15:        Fix-compilation-on-RHEL-7-ppc64le-gcc-4.8.patch
 Patch16:        grpc_missing_includes.patch
