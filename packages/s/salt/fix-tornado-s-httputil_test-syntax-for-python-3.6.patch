@@ -1,0 +1,25 @@
+From f5ac4c6f38cf9db39a8fbd31a101f155de40f37c Mon Sep 17 00:00:00 2001
+From: Alexander Graul <agraul@suse.com>
+Date: Fri, 16 Jan 2026 17:34:18 +0100
+Subject: [PATCH] Fix tornado's httputil_test syntax for Python 3.6
+
+---
+ salt/ext/tornado/test/httputil_test.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/salt/ext/tornado/test/httputil_test.py b/salt/ext/tornado/test/httputil_test.py
+index bdbfaa2b6a..cacd31aa05 100644
+--- a/salt/ext/tornado/test/httputil_test.py
++++ b/salt/ext/tornado/test/httputil_test.py
+@@ -266,7 +266,7 @@ Foo
+         d1 = f(1_000)
+         d2 = f(10_000)
+         if d2 / d1 > 20:
+-            self.fail(f"Disposition param parsing is not linear: {d1=} vs {d2=}")
++            self.fail(f"Disposition param parsing is not linear: d1={d1} vs d2={d2}")
+ 
+ 
+ class HTTPHeadersTest(unittest.TestCase):
+-- 
+2.52.0
+
