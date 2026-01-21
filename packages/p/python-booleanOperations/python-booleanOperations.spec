@@ -1,7 +1,7 @@
 #
 # spec file for package python-booleanOperations
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,12 +25,12 @@
 %bcond_with test
 %endif
 Name:           python-booleanOperations%{psuffix}
-Version:        0.9.0
+Version:        0.10.0
 Release:        0
 Summary:        Boolean operations on paths
 License:        MIT
 URL:            https://github.com/typemytype/booleanOperations
-Source:         https://files.pythonhosted.org/packages/source/b/booleanOperations/booleanOperations-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/b/booleanoperations/booleanoperations-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
@@ -54,7 +54,7 @@ BuildRequires:  %{python_module pytest}
 Boolean operations on paths.
 
 %prep
-%setup -q -n booleanOperations-%{version}
+%setup -q -n booleanoperations-%{version}
 
 %build
 %pyproject_wheel
