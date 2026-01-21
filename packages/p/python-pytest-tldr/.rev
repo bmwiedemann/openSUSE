@@ -80,4 +80,13 @@
   * Support pytest output change.</comment>
     <requestid>1290577</requestid>
   </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>b414dfd20e40b5b4a7e5cc21dde69363</srcmd5>
+    <version>0.2.5</version>
+    <time>1769002063</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream patch pytest9.patch to make it compatible with pytest
+  9.0, gh#freakboy3742/pytest-tldr@861b6a06575e</comment>
+    <requestid>1328471</requestid>
+  </revision>
 </revisionlist>

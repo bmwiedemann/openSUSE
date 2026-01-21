@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 21 10:59:09 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add upstream patch pytest9.patch to make it compatible with pytest
+  9.0, gh#freakboy3742/pytest-tldr@861b6a06575e
+
+-------------------------------------------------------------------
 Fri Jul  4 05:41:05 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-pytest-cov-6.patch:

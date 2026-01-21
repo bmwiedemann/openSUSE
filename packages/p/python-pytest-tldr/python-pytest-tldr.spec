@@ -24,6 +24,8 @@ License:        BSD-3-Clause
 URL:            https://github.com/freakboy3742/pytest-tldr
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-tldr/pytest-tldr-%{version}.tar.gz
 Patch0:         support-pytest-cov-6.patch
+# PATCH-FIX-UPSTREAM pytest9.patch gh#freakboy3742/pytest-tldr@861b6a06575e
+Patch1:         pytest9.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 3.5.0}
 BuildRequires:  %{python_module pytest-cov}
