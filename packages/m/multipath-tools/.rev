@@ -2137,4 +2137,37 @@ by an upstream reviewed commit. (forwarded request 1109432 from mwilck)</comment
   * CI: GitHub workflow updates. No code changes.</comment>
     <requestid>1323419</requestid>
   </revision>
+  <revision rev="174" vrev="1">
+    <srcmd5>5b1d87eba48da02267ff14435185eb66</srcmd5>
+    <version>0.14.0+207+suse.18c17be5</version>
+    <time>1769001170</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.14.0+207+suse.18c17be5
+- New features from upstream 0.14.0:
+  * add support for automatically purging SCSI devices that become
+    disconnected at the storage target (purge_disconnected option).
+    See NEWS.md.
+- Bug fixes from upstream 0.14.0 (bsc#1257007, see NEWS.md for details):
+  * Make sure multipathd registers keys all paths of a multipath map after
+    mpathpersist registered a key for a map.
+  * Fix `mpathpersist --report-capabilities` output.
+  * Improve error handling when retrying REGISTER AND IGNORE.
+  * Fix command descriptions in the multipathd man page.
+  * Fix ISO C23 compatibility issue causing errors with new compilers.
+  * Fix memory leak caused by not joining the &quot;init unwinder&quot; thread.
+  * Fix memory leaks in kpartx.
+  * Print the warning &quot;setting scsi timeouts is unsupported for protocol&quot; only
+    once per protocol.
+  * Make sure multipath-tools is compiled with the compiler flag
+    `-fno-strict-aliasing`. (gh#opensvc/multipath-tools#130)
+- Other changes from upstream 0.14.0:
+  * Add wrapper code for libudev to avoid potential issues with calling libudev
+    from a multi-threaded program.
+  * Clean up the code for freeing struct path and struct multipath objects.
+  * Hardware table: add Seagate Exos and Nytro series.
+  * Avoid joining threads twice with liburcu 0.14.0 and newer.
+  * Remove the obsolete &quot;hotplug&quot; mode of kpartx.
+  * CI updates.</comment>
+    <requestid>1328376</requestid>
+  </revision>
 </revisionlist>
