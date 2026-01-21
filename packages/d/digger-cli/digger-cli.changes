@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 21 06:13:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.141:
+  * fix: add pagination to GetUserTeams for teams and members
+    (#2545)
+  * improve error messages for units when permission denied (#2539)
+  * Update GCP link in README.md (#2535)
+  * Docs/envref (#2532)
+  * docs: replace broken url (#2531)
+
+-------------------------------------------------------------------
 Fri Jan 16 06:20:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.140:
