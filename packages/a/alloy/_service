@@ -11,6 +11,7 @@
   <service name="set_version" mode="manual">
   </service>
   <service name="go_modules" mode="manual">
+    <param name="replace">github.com/expr-lang/expr=github.com/expr-lang/expr@v1.17.7</param>
   </service>
   <!-- services below are running at buildtime -->
   <service name="tar" mode="buildtime">
