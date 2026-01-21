@@ -454,4 +454,13 @@
     <comment></comment>
     <requestid>1308981</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>d5eefce5245bcf5346579e6634d4a3b0</srcmd5>
+    <version>0.26.1</version>
+    <time>1769001268</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.26.1:
+  * trust: Ensure compatibility of CKA_NSS_TRUST and CKA_TRUST (forwarded request 1328203 from pmonrealgonzalez)</comment>
+    <requestid>1328265</requestid>
+  </revision>
 </revisionlist>

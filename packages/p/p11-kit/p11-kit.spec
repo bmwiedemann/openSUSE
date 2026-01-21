@@ -1,7 +1,7 @@
 #
 # spec file for package p11-kit
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define trustdir_cfg     %{pkidir_cfg}/trust
 %define trustdir_static  %{pkidir_static}/trust
 Name:           p11-kit
-Version:        0.25.10
+Version:        0.26.1
 Release:        0
 Summary:        Library to work with PKCS#11 modules
 License:        BSD-3-Clause
@@ -127,7 +127,7 @@ install -d %{buildroot}%{_sysconfdir}/pkcs11/modules
 install -d m 755 %{buildroot}%{_docdir}/libp11-kit0
 mv %{buildroot}%{_sysconfdir}/pkcs11/pkcs11.conf.example %{buildroot}%{_docdir}/libp11-kit0
 find %{buildroot} -type f -name "*.la" -delete -print
-#
+
 install -d -m 755 %{buildroot}%{_rpmmacrodir}
 cat <<'FIN' >%{buildroot}%{_rpmmacrodir}/macros.%{name}
 # Macros from p11-kit package
@@ -136,10 +136,10 @@ cat <<'FIN' >%{buildroot}%{_rpmmacrodir}/macros.%{name}
 %%trustdir_cfg           %{trustdir_cfg}
 %%trustdir_static        %{trustdir_static}
 FIN
-#
+
 # nss compat lib
 ln -s %{_libdir}/pkcs11/p11-kit-trust.so %{buildroot}%{_libdir}/libnssckbi.so
-#
+
 # call update-ca-certificates when trust changes
 rm %{buildroot}%{_libexecdir}/%{name}/trust-extract-compat
 ln -s ../../sbin/update-ca-certificates %{buildroot}%{_libexecdir}/%{name}/p11-kit-extract-trust
@@ -151,8 +151,7 @@ export NO_BRP_STALE_LINK_ERROR=yes # *grr*
 %meson_test
 %endif
 
-%post -n libp11-kit0 -p /sbin/ldconfig
-%postun -n libp11-kit0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libp11-kit0
 
 %files -f %{name}.lang
 %dir %{_libdir}/pkcs11

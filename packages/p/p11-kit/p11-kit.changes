@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan 20 09:09:29 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 0.26.1:
+  * trust: Ensure compatibility of CKA_NSS_TRUST and CKA_TRUST
+
+-------------------------------------------------------------------
+Sat Jan 17 13:11:05 UTC 2026 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 0.26.0:
+  * pkcs11: Update PKCS11 headers to version 3.2
+  * trust: Lookup DNs in reverse order (RFC4514 section 2.1)
+  * Update translations
+
+-------------------------------------------------------------------
 Sat Oct  4 14:00:50 UTC 2025 - Angel Yankov <angel.yankov@suse.com>
 
 - Update to 0.25.10:
