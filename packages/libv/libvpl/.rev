@@ -213,4 +213,14 @@
     <comment></comment>
     <requestid>1277049</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0b9a7fc7495408fa16b40b3b169d37b9</srcmd5>
+    <version>2.16.0</version>
+    <time>1769001195</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.16.0
+  * Intel® VPL API 2.16 support, including new AI-assisted encoder
+    APIs and documentation updates</comment>
+    <requestid>1327960</requestid>
+  </revision>
 </revisionlist>
