@@ -236,4 +236,13 @@
     <comment></comment>
     <requestid>1290621</requestid>
   </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>b8eb4fd2f1392ec9ec7f87ed7785a26a</srcmd5>
+    <version>12.0.1</version>
+    <time>1769001149</time>
+    <user>anag_factory</user>
+    <comment>- Add patch to fix compilation with GCC 16 (bsc#1256971):
+  - libpsm2-gcc16-fixes.patch</comment>
+    <requestid>1328323</requestid>
+  </revision>
 </revisionlist>

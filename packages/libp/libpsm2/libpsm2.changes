@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 20 12:53:12 UTC 2026 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Add patch to fix compilation with GCC 16 (bsc#1256971):
+  - libpsm2-gcc16-fixes.patch
+
+-------------------------------------------------------------------
 Fri Jul  4 06:43:53 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Add libpsm2-disable-AVX.patch to completely disable AVX support

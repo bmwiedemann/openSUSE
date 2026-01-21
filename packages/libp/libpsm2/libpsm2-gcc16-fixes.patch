@@ -1,0 +1,31 @@
+commit ae8ed797f23b904a80d054ef10e286abe854a3ba
+Author: Nicolas Morey <nmorey@suse.com>
+Date:   Tue Jan 20 13:50:57 2026 +0100
+
+    libpsm2: gcc16 fixes
+    
+    Signed-off-by: Nicolas Morey <nmorey@suse.com>
+
+diff --git psm_mpool.c psm_mpool.c
+index e36e91724333..2a42e6e12287 100644
+--- psm_mpool.c
++++ psm_mpool.c
+@@ -435,8 +435,6 @@ void psmi_mpool_chunk_dealloc(mpool_t mp, int idx)
+ void psmi_mpool_destroy(mpool_t mp)
+ {
+ 	int i = 0;
+-	size_t nbytes = mp->mp_num_obj * mp->mp_elm_size;
+-
+ 	for (i = 0; i < mp->mp_elm_vector_size; i++) {
+ 		if (mp->mp_elm_vector[i]) {
+ #ifdef PSM_CUDA
+@@ -447,9 +445,7 @@ void psmi_mpool_destroy(mpool_t mp)
+ 		}
+ 	}
+ 	psmi_free(mp->mp_elm_vector);
+-	nbytes += mp->mp_elm_vector_size * sizeof(struct mpool_element *);
+ 	psmi_free(mp);
+-	nbytes += sizeof(struct mpool);
+ }
+ 
+ /**

@@ -5,5 +5,4 @@ user-level communications interface for the Truescale
 family of products. PSM users are enabled with mechanisms
 necessary to implement higher level communications
 interfaces in parallel environments.</description>
-  <devel project="science:HPC" package="libpsm2"/>
 </package>

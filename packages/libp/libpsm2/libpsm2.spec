@@ -34,9 +34,11 @@ URL:            https://github.com/cornelisnetworks/opa-psm2/
 Source0:        %{name}-%{version}%{git_ver}.tar.bz2
 Source1:        libpsm2.changelog
 Source2:        libpsm2-rpmlintrc
+Source100:      README.md
 Patch2:         libpsm2-use_RPM_OPT_FLAGS.patch
 Patch3:         libpsm2-use-exported-variable-for-version-and-release.patch
 Patch4:         libpsm2-disable-AVX.patch
+Patch5:         libpsm2-gcc16-fixes.patch
 BuildRequires:  libnuma-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  pkgconfig
