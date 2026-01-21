@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Tue Jan 20 18:58:33 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
+
+- Update to version 0.110.0:
+  + `let` can be used in pipelines
+  + Destroying variables with `unlet`
+  + Polars plugin supports selectors
+  + Polars plugin supports more cloud providers
+    * Azure support
+    * Google Cloud support
+  + `explore regex`
+  + New `explore config` TUI
+  + Faster `ls` on Windows
+  + Improvements to `error make`
+  + Breaking changes
+    * Renamed `$nu.temp-path` and `$nu.home-path`
+    * `*` no longer matches dotfiles in `mv`/`cp`/`du` by default
+    * Use labels for multiple labels in `error make`
+    * IDE menu `min_description_width` should be non-zero
+    * `to md` formats lists as unordered Markdown lists
+  + Additions
+    * New Configuration Option: `$env.config.show_hints`
+    * Configuring errors
+    * Added record conversion to `into list`
+    * Include MCP server support by default
+    * Connection pool for `http` commands
+    * New `--output` flag for `timeit`
+    * Allow disabling filtering in custom completions
+    * New plugin interface `get_block_ir`
+    * New `--list` flag to control list formatting in `to md`
+    * Add `--icons` option to table for `ls` tables
+    * Alias definitions shown in `which` command
+    * Allow serializing as raw strings in `to nuon`
+    * Other additions
+  + Removals
+    * Replace deprecated `current_dir` usage with `EngineState::cwd` 
+      in multiple files
+  + Other changes
+    * Update `explore regex` command to look more helpful and professional
+    * More descriptive error messages for `rm`
+    * Some Nushell commands no longer canonicalize paths
+    * Add REPL-style state persistence across evaluations for MCP server
+    * Use structured response format for MCP server
+    * Additional changes
+  + Bug fixes
+    * Fixed parsing of ranges with parentheses
+    * Fixed parsing issue with multiarm match + guard
+    * Infinite sequences can be terminated when piped to other commands
+    * Pipefail works with `try` block
+    * Nushell exits early when running scripts or commands with 
+      bad config files
+    * Fix `http` DNS resolution "Service not supported" error 
+      in Docker containers
+    * Fix variables remaining active after overlay hide
+    * Other fixes
+  + For a full list of changes with detailed descriptions, see:
+    https://www.nushell.sh/blog/2026-01-17-nushell_v0_110_0.html
+-------------------------------------------------------------------
 Wed Dec  3 08:02:57 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.109.1:

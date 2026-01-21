@@ -1,7 +1,7 @@
 #
 # spec file for package nushell
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           nushell
-Version:        0.109.1
+Version:        0.110.0
 Release:        0
 Summary:        A new type of shell
 License:        MIT
