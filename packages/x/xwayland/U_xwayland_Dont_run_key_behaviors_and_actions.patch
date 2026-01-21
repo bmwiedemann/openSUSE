@@ -46,11 +46,11 @@ Part-of: <https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/2060>
  xkb/xkbPrKeyEv.c             | 2 +-
  4 files changed, 14 insertions(+), 6 deletions(-)
 
-diff --git a/hw/xwayland/xwayland-input.c b/hw/xwayland/xwayland-input.c
-index d5bce37835..51efdb5fb8 100644
---- a/hw/xwayland/xwayland-input.c
-+++ b/hw/xwayland/xwayland-input.c
-@@ -1284,11 +1284,12 @@ keyboard_handle_modifiers(void *data, struct wl_keyboard *keyboard,
+Index: xwayland-24.1.9/hw/xwayland/xwayland-input.c
+===================================================================
+--- xwayland-24.1.9.orig/hw/xwayland/xwayland-input.c
++++ xwayland-24.1.9/hw/xwayland/xwayland-input.c
+@@ -1284,11 +1284,12 @@ keyboard_handle_modifiers(void *data, st
          old_state = dev->key->xkbInfo->state;
          new_state = &dev->key->xkbInfo->state;
  
@@ -65,7 +65,7 @@ index d5bce37835..51efdb5fb8 100644
  
          XkbComputeDerivedState(dev->key->xkbInfo);
  
-@@ -1676,6 +1677,7 @@ add_device(struct xwl_seat *xwl_seat,
+@@ -1680,6 +1681,7 @@ add_device(struct xwl_seat *xwl_seat,
      dev->public.devicePrivate = xwl_seat;
      dev->type = SLAVE;
      dev->spriteInfo->spriteOwner = FALSE;
@@ -73,7 +73,7 @@ index d5bce37835..51efdb5fb8 100644
  
      return dev;
  }
-@@ -3597,6 +3599,7 @@ InitInput(int argc, char *argv[])
+@@ -3601,6 +3603,7 @@ InitInput(int argc, char *argv[])
  
      mieqInit();
  
@@ -81,10 +81,10 @@ index d5bce37835..51efdb5fb8 100644
      xwl_screen->input_registry = wl_display_get_registry(xwl_screen->display);
      wl_registry_add_listener(xwl_screen->input_registry, &input_listener,
                               xwl_screen);
-diff --git a/include/inputstr.h b/include/inputstr.h
-index 24dd48841e..269399e1d2 100644
---- a/include/inputstr.h
-+++ b/include/inputstr.h
+Index: xwayland-24.1.9/include/inputstr.h
+===================================================================
+--- xwayland-24.1.9.orig/include/inputstr.h
++++ xwayland-24.1.9/include/inputstr.h
 @@ -631,6 +631,8 @@ typedef struct _DeviceIntRec {
      DeviceSendEventsProc sendEventsProc;
  
@@ -94,11 +94,11 @@ index 24dd48841e..269399e1d2 100644
  } DeviceIntRec;
  
  typedef struct {
-diff --git a/xkb/xkbActions.c b/xkb/xkbActions.c
-index 5e9a6b6d6e..8dd9d7da01 100644
---- a/xkb/xkbActions.c
-+++ b/xkb/xkbActions.c
-@@ -1368,9 +1368,12 @@ XkbHandleActions(DeviceIntPtr dev, DeviceIntPtr kbd, DeviceEvent *event)
+Index: xwayland-24.1.9/xkb/xkbActions.c
+===================================================================
+--- xwayland-24.1.9.orig/xkb/xkbActions.c
++++ xwayland-24.1.9/xkb/xkbActions.c
+@@ -1368,9 +1368,12 @@ XkbHandleActions(DeviceIntPtr dev, Devic
                    (event->type == ET_ButtonPress));
  
      if (pressEvent) {
@@ -114,11 +114,11 @@ index 5e9a6b6d6e..8dd9d7da01 100644
              act = XkbGetButtonAction(kbd, dev, key);
              key |= BTN_ACT_FLAG;
          }
-diff --git a/xkb/xkbPrKeyEv.c b/xkb/xkbPrKeyEv.c
-index d2c7e33f42..53a31b7272 100644
---- a/xkb/xkbPrKeyEv.c
-+++ b/xkb/xkbPrKeyEv.c
-@@ -68,7 +68,7 @@ XkbProcessKeyboardEvent(DeviceEvent *event, DeviceIntPtr keybd)
+Index: xwayland-24.1.9/xkb/xkbPrKeyEv.c
+===================================================================
+--- xwayland-24.1.9.orig/xkb/xkbPrKeyEv.c
++++ xwayland-24.1.9/xkb/xkbPrKeyEv.c
+@@ -68,7 +68,7 @@ XkbProcessKeyboardEvent(DeviceEvent *eve
      /* do anything to implement the behavior, but it *does* report that */
      /* key is hardwired */
  
@@ -127,6 +127,3 @@ index d2c7e33f42..53a31b7272 100644
          switch (behavior.type) {
          case XkbKB_Default:
              /* Neither of these should happen in practice, but ignore them
--- 
-GitLab
-

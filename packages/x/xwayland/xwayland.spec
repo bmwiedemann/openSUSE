@@ -1,7 +1,7 @@
 #
 # spec file for package xwayland
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %endif
 
 Name:           xwayland
-Version:        24.1.8
+Version:        24.1.9
 Release:        0
 URL:            http://xorg.freedesktop.org
 Summary:        Xwayland Xserver
@@ -36,14 +36,7 @@ Group:          System/X11/Servers/XF86_4
 Source0:        %{url}/archive/individual/xserver/%{name}-%{version}.tar.xz
 Source1:        %{url}/archive/individual/xserver/%{name}-%{version}.tar.xz.sig
 Source2:        xwayland.keyring
-Patch0:         U_randr_Do_not_leak_provider_property.patch
-Patch1:         U_xwayland_Dispatch_tablet_tool_tip_events.patch
-Patch2:         U_glamor_Fix_dual_blend_on_GLES3.patch
 Patch3:         U_xwayland_Dont_run_key_behaviors_and_actions.patch
-Patch1251958:   bsc1251958_CVE-2025-62229_0001-present-Fix-use-after-free-in-present_create_notifie.patch
-Patch1251959:   bsc1251959_CVE-2025-62230_0001-xkb-Make-the-RT_XKBCLIENT-resource-private.patch
-Patch1251960:   bsc1251959_CVE-2025-62230_0002-xkb-Free-the-XKB-resource-when-freeing-XkbInterest.patch
-Patch1251961:   bsc1251960_CVE-2025-62231_0001-xkb-Prevent-overflow-in-XkbSetCompatMap.patch
 
 BuildRequires:  meson
 BuildRequires:  ninja

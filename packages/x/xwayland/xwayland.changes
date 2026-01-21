@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Jan 18 20:29:00 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 24.1.9
+  * This release contains the fixes for the issues reported in
+    security advisory:
+    https://lists.x.org/archives/xorg-announce/2025-October/003635.html
+    + CVE-2025-62229
+    + CVE-2025-62230
+    + CVE-2025-62231
+  * Additionally, it contains a number of additional fixes:
+- supersedes the following patches
+  * bsc1251958_CVE-2025-62229_0001-present-Fix-use-after-free-in-present_create_notifie.patch
+  * bsc1251959_CVE-2025-62230_0001-xkb-Make-the-RT_XKBCLIENT-resource-private.patch
+  * bsc1251959_CVE-2025-62230_0002-xkb-Free-the-XKB-resource-when-freeing-XkbInterest.patch
+  * bsc1251960_CVE-2025-62231_0001-xkb-Prevent-overflow-in-XkbSetCompatMap.patch
+  * U_glamor_Fix_dual_blend_on_GLES3.patch
+  * U_randr_Do_not_leak_provider_property.patch
+  * U_xwayland_Dispatch_tablet_tool_tip_events.patch
+- adjusted U_xwayland_Dont_run_key_behaviors_and_actions.patch
+
+-------------------------------------------------------------------
 Tue Oct 28 03:13:49 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - bsc1251958_CVE-2025-62229_0001-present-Fix-use-after-free-in-present_create_notifie.patch
