@@ -63,7 +63,11 @@
   %ifarch %{ix86} x86_64
     %define with_vulkan 1
     %if 0%{?suse_version} > 1600
-    %define vulkan_drivers swrast,amd,intel,intel_hasvk,nouveau,microsoft-experimental,imagination
+       %ifarch x86_64
+       %define vulkan_drivers swrast,amd,intel,intel_hasvk,nouveau,microsoft-experimental,imagination,asahi
+       %else
+       %define vulkan_drivers swrast,amd,intel,intel_hasvk,nouveau,microsoft-experimental,imagination
+       %endif
     %else
     %define vulkan_drivers swrast,amd,intel,intel_hasvk
     %endif
@@ -71,7 +75,11 @@
   %ifarch %{arm} aarch64
     %define with_vulkan 1
     %if 0%{?suse_version} > 1600
-      %define vulkan_drivers swrast,amd,broadcom,freedreno,intel,intel_hasvk,nouveau,panfrost,imagination
+       %ifarch aarch64
+       %define vulkan_drivers swrast,amd,broadcom,freedreno,intel,intel_hasvk,nouveau,panfrost,imagination,asahi
+       %else
+       %define vulkan_drivers swrast,amd,broadcom,freedreno,intel,intel_hasvk,nouveau,panfrost,imagination
+       %endif
     %else
       %if 0%{?suse_version} == 1600
         %define vulkan_drivers swrast,amd,broadcom,freedreno,intel,intel_hasvk,panfrost
@@ -618,6 +626,16 @@ This package contains the Vulkan parts for Mesa.
 
 # Only available on Tumbleweed because of rust-cbindgen >= 1.25 requirement
 %if 0%{?suse_version} > 1600
+%ifarch x86_64 aarch64
+%package -n libvulkan_asahi
+Summary:        Mesa vulkan driver for Asahi (Apple Silicon)
+Group:          System/Libraries
+Requires:       Mesa-vulkan-device-select = %{version}
+
+%description -n libvulkan_asahi
+This package contains the Vulkan parts for Mesa.
+%endif
+
 %package -n libvulkan_nouveau
 Summary:        Mesa vulkan driver for NVK (Nouveau Vulkan)
 Group:          System/Libraries
@@ -819,7 +837,11 @@ egl_platforms=x11,wayland
             -Dvulkan-drivers= \
 %endif
   %ifarch %{ix86} x86_64
+          %ifarch x86_64
+            -Dgallium-drivers=r300,r600,radeonsi,nouveau,softpipe,llvmpipe,svga,virgl,iris,crocus,i915,asahi,d3d12,zink \
+          %else
             -Dgallium-drivers=r300,r600,radeonsi,nouveau,softpipe,llvmpipe,svga,virgl,iris,crocus,i915,d3d12,zink \
+          %endif
             -Dgallium-d3d12-graphics=enabled \
           %ifarch x86_64
             -Dintel-rt=enabled \
@@ -827,7 +849,11 @@ egl_platforms=x11,wayland
   %else
   %ifarch %{arm} aarch64
 %if 0%{?suse_version} >= 1550
+          %ifarch aarch64
+            -Dgallium-drivers=r300,r600,radeonsi,nouveau,softpipe,llvmpipe,virgl,iris,freedreno,vc4,etnaviv,lima,panfrost,v3d,svga,tegra,asahi,zink \
+          %else
             -Dgallium-drivers=r300,r600,radeonsi,nouveau,softpipe,llvmpipe,virgl,iris,freedreno,vc4,etnaviv,lima,panfrost,v3d,svga,tegra,zink \
+          %endif
 %else
             -Dgallium-drivers=r300,r600,radeonsi,nouveau,softpipe,llvmpipe,virgl,iris,freedreno,vc4,lima,panfrost,v3d,svga,tegra,zink \
 %endif
@@ -1084,6 +1110,14 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %ifarch %{ix86} x86_64 aarch64 %{arm} loongarch64
 # Only available on Tumbleweed because of rust-cbindgen >= 1.25 requirement
 %if 0%{?suse_version} > 1600
+%ifarch x86_64 aarch64
+%files -n libvulkan_asahi
+%{_libdir}/libvulkan_asahi.so
+%{_datadir}/vulkan/icd.d/asahi_icd.*.json
+%dir %{_datadir}/vulkan
+%dir %{_datadir}/vulkan/icd.d
+%endif
+
 %files -n libvulkan_nouveau
 %{_libdir}/libvulkan_nouveau.so
 %{_datadir}/vulkan/icd.d/nouveau_icd.*.json

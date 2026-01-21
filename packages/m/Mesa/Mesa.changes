@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jan 20 23:14:21 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- includes the fixes for bsc#1245034, bsc#1241370, bsc#1241701
+- includes the following patches:
+  * U_0001-svga-add-svga_resource_create_with_modifiers-functio.patch
+  * U_0002-svga-fix-printing-64-bit-value-for-32-bit-build.patch
+  * U_gbm-fix-get_back_bo-failure-with-gbm_surface-and-imp.patch
+  * U_egl-never-select-swrast-for-vmwgfx.patch
+
+-------------------------------------------------------------------
+Sat Jan 17 15:02:15 UTC 2026 - Neal Gompa <ngompa@opensuse.org>
+
+- Enable Asahi DRI and Vulkan drivers for x86_64 and AArch64
+
+-------------------------------------------------------------------
 Thu Jan  8 13:12:07 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - get rid of Mesa 24.1.7 used for s390x (boo#1233167), which
