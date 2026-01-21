@@ -285,4 +285,20 @@
   * Fixed various issues with command-line import/export (forwarded request 1324201 from rrahl0)</comment>
     <requestid>1324202</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>4d0b918b012a66eb8d319534f5c07b3b</srcmd5>
+    <version>2.0.4</version>
+    <time>1769001451</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.0.4:
+  * Use Minder file icon for .minder files
+  * Changed importing to use an unnamed filename after import
+  * Minor memory optimizations for nodes
+  * Changed node styling for main nodes that have siblings to use sibling
+    styling instead of default styling
+  * Fixed issue with updating font UI in style sidebar
+  * Fixed several issues with closing sidebar with Escape key
+  * Fixed issues with importing legacy portable Minder files (forwarded request 1328394 from rrahl0)</comment>
+    <requestid>1328395</requestid>
+  </revision>
 </revisionlist>

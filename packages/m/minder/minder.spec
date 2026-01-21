@@ -1,7 +1,7 @@
 #
 # spec file for package minder
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appid com.github.phase1geo.minder
 Name:           minder
-Version:        2.0.3
+Version:        2.0.4
 Release:        0
 Summary:        Mind-mapping app
 License:        GPL-3.0-only
@@ -70,6 +70,7 @@ A program to create, develop, visualize, organize and manage ideas.
 %{_datadir}/applications/%{appid}.desktop
 %{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/%{appid}.svg
+%{_datadir}/icons/hicolor/scalable/mimetypes/application-%{appid}.svg
 %{_datadir}/metainfo/%{appid}.appdata.xml
 %{_datadir}/mime/packages/%{appid}.xml
 %{_datadir}/%{name}
