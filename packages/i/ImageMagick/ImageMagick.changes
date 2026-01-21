@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 19 18:33:04 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
+
+- version update to 7.1.2.13
+  * no upstream changelog, see
+    https://github.com/ImageMagick/ImageMagick/compare/7.1.2-12..7.1.2-13
+- modified patches
+  * ImageMagick-configuration-SUSE.patch (refreshed)
+
+-------------------------------------------------------------------
 Tue Jan  6 09:32:47 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - version update to 7.1.2.12

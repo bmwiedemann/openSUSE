@@ -2,7 +2,7 @@ diff -ur ImageMagick-7.1.2-8_fix/config/policy-secure.xml ImageMagick-7.1.2-8_fi
 --- ImageMagick-7.1.2-8/config/policy-secure.xml	2025-11-06 15:30:11.995056081 +0100
 +++ ImageMagick-7.1.2-8_fix/config/policy-secure.xml	2025-11-06 15:46:05.605527563 +0100
 @@ -62,7 +62,7 @@
-   <policy domain="resource" name="disk" value="1GiB"/>
+   <policy domain="resource" name="disk" value="2GiB"/>
    <!-- Set the maximum length of an image sequence.  When this limit is
         exceeded, an exception is thrown. -->
 -  <policy domain="resource" name="list-length" value="32"/>
