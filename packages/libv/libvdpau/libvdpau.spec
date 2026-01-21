@@ -1,7 +1,7 @@
 #
 # spec file for package libvdpau
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,14 +32,12 @@ License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://www.freedesktop.org/wiki/Software/VDPAU/
 Source:         https://gitlab.freedesktop.org/vdpau/libvdpau/-/archive/%{version}/%{name}-%{version}.tar.bz2
-Source1:        https://gitlab.freedesktop.org/vdpau/vdpauinfo/-/archive/1.4/vdpauinfo-1.4.tar.bz2
+Source1:        https://gitlab.freedesktop.org/vdpau/vdpauinfo/-/archive/1.5/vdpauinfo-1.5.tar.bz2
 Source2:        README
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 Patch0:         n_UsrEtc.patch
-Patch1:         U_Support-AV1.patch
-Patch2:         U_av1-trace.patch
-
+Patch1:         U_av1-trace.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  doxygen
@@ -94,11 +92,7 @@ Its usage is documented in the README.
 
 %prep
 %setup -q -b1
-%patch -P 0 -p1
-pushd ../vdpauinfo-*
-%patch -P 1 -p1
-popd
-%patch -P 2 -p1
+%autopatch -p1
 
 %build
 %meson

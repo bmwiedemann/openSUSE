@@ -401,4 +401,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1307925</requestid>
   </revision>
+  <revision rev="42" vrev="5">
+    <srcmd5>66471d940c3d3b56cf24d26ab2007357</srcmd5>
+    <version>1.5</version>
+    <time>1769001205</time>
+    <user>anag_factory</user>
+    <comment>- Update to vdpauinfo 1.5
+  * AV1 Support added
+- supersedes U_Support-AV1.patch</comment>
+    <requestid>1327963</requestid>
+  </revision>
 </revisionlist>
