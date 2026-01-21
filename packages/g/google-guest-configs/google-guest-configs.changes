@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 20 14:31:53 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20260116.00 (bsc#1256906)
+  * set_multiqueue: Only set XPS on "multinic accelerator platforms"
+
+-------------------------------------------------------------------
 Tue Jan 13 08:42:31 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20260112.00

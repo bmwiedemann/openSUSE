@@ -450,4 +450,13 @@
 - Mark %{_modprobedir}/gce-blacklist.conf as %config(noreplace) (bsc#1198323) (forwarded request 1326926 from glaubitz)</comment>
     <requestid>1327003</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>e2ab9997080b80741554f93ceba9c7e1</srcmd5>
+    <version>20260116.00</version>
+    <time>1769001418</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260116.00 (bsc#1256906)
+  * set_multiqueue: Only set XPS on &quot;multinic accelerator platforms&quot; (forwarded request 1328326 from glaubitz)</comment>
+    <requestid>1328355</requestid>
+  </revision>
 </revisionlist>
