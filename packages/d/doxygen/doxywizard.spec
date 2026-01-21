@@ -1,6 +1,7 @@
 #
 # spec file for package doxywizard
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,6 +27,7 @@ License:        GPL-2.0-or-later
 Group:          Development/Tools/Doc Generators
 URL:            https://github.com/doxygen/doxygen
 Source:         https://github.com/doxygen/doxygen/releases/download/%{rdir}/doxygen-%{version}.src.tar.gz
+# https://github.com/doxygen/doxygen/issues/11957
 Source1:        doxywizard.desktop
 BuildRequires:  bison
 BuildRequires:  cmake >= 3.14
@@ -39,7 +41,6 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  python3-xml
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(Qt6Gui)
 BuildRequires:  pkgconfig(Qt6Svg)
@@ -83,7 +84,8 @@ rm %{buildroot}%{_bindir}/doxygen
 mkdir -p %{buildroot}%{_mandir}/man1/
 install -m 644 doc/doxywizard.1 %{buildroot}%{_mandir}/man1/
 rm %{buildroot}%{_mandir}/man1/doxygen.1
-%suse_update_desktop_file -i doxywizard Development Documentation
+mkdir -p %{buildroot}%{_datadir}/applications/
+cp %{SOURCE1} %{buildroot}%{_datadir}/applications/
 
 %files
 %attr(755,root,root) %{_bindir}/doxywizard

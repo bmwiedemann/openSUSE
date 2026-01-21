@@ -2543,4 +2543,14 @@ On Leap15/SLE15 a newer GCC is needed to build against Qt6. On SLE15 the default
     doxywizard (forwarded request 1326654 from mathletic)</comment>
     <requestid>1326694</requestid>
   </revision>
+  <revision rev="112" vrev="2">
+    <srcmd5>4599c76dde382cad4f46c72abf71ddcb</srcmd5>
+    <version>1.16.1</version>
+    <time>1769001137</time>
+    <user>anag_factory</user>
+    <comment>- drop %suse_update_desktop_file usage
+- modified sources
+  * doxywizard.desktop</comment>
+    <requestid>1328250</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 20 08:50:22 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- drop %suse_update_desktop_file usage
+- modified sources
+  * doxywizard.desktop
+
+-------------------------------------------------------------------
 Sun Jan 11 16:28:34 UTC 2026 - Christoph G <foss@grueninger.de>
 
 - update to 1.16.1
