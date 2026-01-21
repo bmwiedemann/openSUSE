@@ -31,7 +31,7 @@
 %endif
 
 Name:           nodejs22
-Version:        22.21.1
+Version:        22.22.0
 Release:        0
 
 # Double DWZ memory limits
@@ -409,7 +409,7 @@ Provides:       bundled(node-amaro) = 1.1.4
 Provides:       bundled(node-cjs-module-lexer) = 2.1.0
 Provides:       bundled(node-corepack) = 0.34.0
 Provides:       bundled(node-minimatch) = 10.0.3
-Provides:       bundled(node-undici) = 6.22.0
+Provides:       bundled(node-undici) = 6.23.0
 
 %description
 Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js

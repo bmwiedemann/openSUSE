@@ -237,4 +237,21 @@
   * worker: add cpu profile APIs for worker</comment>
     <requestid>1320385</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0e2b7b10010da4e1b2b2613aa0d570bb</srcmd5>
+    <version>22.22.0</version>
+    <time>1769001134</time>
+    <user>anag_factory</user>
+    <comment>- Update to 22.22.0:
+  * deps: updated undici to 6.23.0 (bsc#1256848, CVE-2026-22036)
+  * deps: updated bundled c-ares to 1.34.6 (if used)
+  * add TLSSocket default error handler (bsc#1256573, CVE-2025-59465)
+  * disable futimes when permission model is enabled (bsc#1256571, CVE-2025-55132)
+  * require full read and write to symlink APIs (bsc#1256569, CVE-2025-55130)
+  * rethrow stack overflow exceptions in async_hooks (bsc#1256574, CVE-2025-59466)
+  * refactor unsafe buffer creation to remove zero-fill toggle (bsc#1256570, CVE-2025-55131)
+  * route callback exceptions through error handlers (bsc#1256576, CVE-2026-21637)
+- node-gyp-addon-gypi.patch: remove double createBuildDir()</comment>
+    <requestid>1328248</requestid>
+  </revision>
 </revisionlist>

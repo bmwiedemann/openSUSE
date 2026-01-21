@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan 19 17:22:03 UTC 2026 - Adam Majer <adam.majer@suse.de>
+
+- Update to 22.22.0:
+  * deps: updated undici to 6.23.0 (bsc#1256848, CVE-2026-22036)
+  * deps: updated bundled c-ares to 1.34.6 (if used)
+  * add TLSSocket default error handler (bsc#1256573, CVE-2025-59465)
+  * disable futimes when permission model is enabled (bsc#1256571, CVE-2025-55132)
+  * require full read and write to symlink APIs (bsc#1256569, CVE-2025-55130)
+  * rethrow stack overflow exceptions in async_hooks (bsc#1256574, CVE-2025-59466)
+  * refactor unsafe buffer creation to remove zero-fill toggle (bsc#1256570, CVE-2025-55131)
+  * route callback exceptions through error handlers (bsc#1256576, CVE-2026-21637)
+- node-gyp-addon-gypi.patch: remove double createBuildDir()
+
+-------------------------------------------------------------------
 Thu Nov 27 14:28:26 UTC 2025 - Adam Majer <adam.majer@suse.de>
 
 - icu_781.patch: Add support for ICU 78.1

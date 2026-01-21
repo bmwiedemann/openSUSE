@@ -53,7 +53,7 @@ Index: node-v21.7.1/deps/npm/node_modules/node-gyp/lib/configure.js
  
        if (!release.semver) {
          // could not parse the version string with semver
-@@ -54,6 +50,12 @@ async function configure (gyp, argv) {
+@@ -54,6 +50,11 @@ async function configure (gyp, argv) {
  
        log.verbose('get node dir', 'target node version installed:', release.versionDir)
        nodeDir = path.resolve(gyp.devDir, release.versionDir)
@@ -61,7 +61,6 @@ Index: node-v21.7.1/deps/npm/node_modules/node-gyp/lib/configure.js
 +        // if no --target was specified then use RPM-installed headers
 +        log.verbose('get node dir', 'no --target version specified, falling back to RPM installed headers')
 +        nodeDir = '/usr/include/node22'
-+        createBuildDir()
 +      }
      }
  
