@@ -22,7 +22,7 @@
 %define         _udevdir %(pkg-config --variable udevdir udev)
 %bcond_without python2
 Name:           gpsd
-Version:        3.27.3
+Version:        3.27.5
 Release:        0
 Summary:        Service daemon for mediating access to a GPS
 License:        BSD-3-Clause
