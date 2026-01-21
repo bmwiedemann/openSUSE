@@ -69,10 +69,6 @@ make keyboards more accessible to people with physical impairments.
 
 %install
 %{meson_install}
-mkdir -p %{buildroot}%{_localstatedir}/lib/xkb
-# Bug 335553
-mkdir -p %{buildroot}%{_localstatedir}/lib/xkb/compiled/
-ln -snf %{_localstatedir}/lib/xkb/compiled/ %{buildroot}%{_datadir}/xkeyboard-config-2/compiled
 %find_lang %{name}
 %fdupes -s %{buildroot}%{_datadir}/X11/xkb
 # Immutable mode (jsc#PED-14831)

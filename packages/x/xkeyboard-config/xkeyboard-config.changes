@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 19 12:29:36 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- move 'compiled' symlink to tmpfiles (boo#1256912)
+
+-------------------------------------------------------------------
 Fri Jan 16 13:04:26 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - fix installation of directory for compiled layouts for Immutable

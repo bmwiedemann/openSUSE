@@ -1143,4 +1143,12 @@ Everything below symbols/sun_vndr/ is CDDL-1.0 licensed (forwarded request 13624
   mode (jsc#PED-14831)</comment>
     <requestid>1327669</requestid>
   </revision>
+  <revision rev="114" vrev="3">
+    <srcmd5>06abb3045c0091138ad74a80262b3426</srcmd5>
+    <version>2.46</version>
+    <time>1769001261</time>
+    <user>anag_factory</user>
+    <comment>- move 'compiled' symlink to tmpfiles (boo#1256912)</comment>
+    <requestid>1328086</requestid>
+  </revision>
 </revisionlist>
