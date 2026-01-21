@@ -1938,4 +1938,12 @@ Currently, causes unresolvable builds in Leap 15.0 stagings. (forwarded request 
     <comment>submitted by snwint via jenkins</comment>
     <requestid>1325754</requestid>
   </revision>
+  <revision rev="242" vrev="1">
+    <srcmd5>707717ae1124afc0feaf0b3062e353d9</srcmd5>
+    <version>17.170</version>
+    <time>1769001106</time>
+    <user>anag_factory</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>1328221</requestid>
+  </revision>
 </revisionlist>

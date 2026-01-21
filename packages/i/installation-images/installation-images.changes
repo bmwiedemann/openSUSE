@@ -1,4 +1,23 @@
 --------------------------------------------------------------------
+Tue Jan 20 09:44:11 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#780
+- Trigger systemd-tmpfiles for xkeyboard-config
+- 17.170
+
+--------------------------------------------------------------------
+Mon Jan 19 11:31:12 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#779
+- adjust to new libzypp config
+- 17.169
+
+--------------------------------------------------------------------
+Mon Jan 19 11:16:21 UTC 2026 - wfeldt@opensuse.org
+
+- adjust to new libzypp config file structure (bsc#1256694)
+
+--------------------------------------------------------------------
 Wed Jan 7 10:54:24 UTC 2026 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#776
