@@ -2598,4 +2598,16 @@ New Features
   [CVE-2025-40780, bsc#1252380]</comment>
     <requestid>1313051</requestid>
   </revision>
+  <revision rev="225" vrev="2">
+    <srcmd5>4896995b11ed3b2abed93b9cdfde08df</srcmd5>
+    <version>9.20.15</version>
+    <time>1769001070</time>
+    <user>anag_factory</user>
+    <comment>- Remove packaging support for releases prior to SLES 15 SP4/Leap 15.4.
+  - The builds have dependencies that are no longer met by these older
+    releases.
+- Fix Sphinx processing of documentation on SLES/Leap 15.
+</comment>
+    <requestid>1328116</requestid>
+  </revision>
 </revisionlist>

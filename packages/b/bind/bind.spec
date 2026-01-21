@@ -1,7 +1,7 @@
 #
 # spec file for package bind
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,34 +30,9 @@
 # end DLZ modules
 
 %define	VENDOR SUSE
-%if 0%{?suse_version} >= 1500
-%define with_systemd 1
-%else
-%define with_systemd 0
-# Defines for user and group add
-%define	NAMED_UID 44
-%define	NAMED_UID_NAME named
-%define	NAMED_GID 44
-%define	NAMED_GID_NAME named
-%define	NAMED_COMMENT Name server daemon
-%define	NAMED_HOMEDIR %{_localstatedir}/lib/named
-%define	NAMED_SHELL /bin/false
-%define	GROUPADD_NAMED getent group %{NAMED_GID_NAME} >/dev/null || %{_sbindir}/groupadd -g %{NAMED_GID} -o -r %{NAMED_GID_NAME}
-%define	USERADD_NAMED getent passwd %{NAMED_UID_NAME} >/dev/null || %{_sbindir}/useradd -r -o -g %{NAMED_GID_NAME} -u %{NAMED_UID} -s %{NAMED_SHELL} -c "%{NAMED_COMMENT}" -d %{NAMED_HOMEDIR} %{NAMED_UID_NAME}
-%define	USERMOD_NAMED getent passwd %{NAMED_UID_NAME} >/dev/null || %{_sbindir}/usermod -s %{NAMED_SHELL} -d  %{NAMED_HOMEDIR} %{NAMED_UID_NAME}
-%endif
-%if 0%{?suse_version} < 1315
-%define with_sfw2 1
-%else
-%define with_sfw2 0
-%endif
 
 %define dlz_modules_hash 5923650
 
-#Compat macro for new _fillupdir macro introduced in Nov 2017
-%if ! %{defined _fillupdir}
-  %define _fillupdir %{_localstatedir}/adm/fillup-templates
-%endif
 Name:           bind
 Version:        9.20.15
 Release:        0
@@ -107,13 +82,8 @@ Provides:       bind9 = %{version}
 Provides:       dns_daemon
 Obsoletes:      bind8 < %{version}
 Obsoletes:      bind9 < %{version}
-%if %{with_systemd}
 BuildRequires:  sysuser-tools
 %sysusers_requires
-%else
-Requires(post): %insserv_prereq
-Requires(pre):  shadow
-%endif
 
 %description
 Berkeley Internet Name Domain (BIND) is an implementation of the Domain
@@ -252,8 +222,22 @@ for file in docu/README* config/{README,named.conf} sysconfig/named-named; do
 done
 popd
 
-%if 0%{?sle_version} >= 150000 && 0%{?sle_version} <= 150400
-# the Administration Reference Manual doesn't build with Leap/SLES due to an way too old Sphinx package
+%if 0%{?suse_version} == 1500
+# Sphinx in SLE15 doesn't allow :option:`+option` or :option:`cmd +option` so we
+# replace it with :code:
+sed -i -E 's#:option:(`[^`]*)\+([[:alnum:]_-]+)#:code:\1\+\2#g' bin/delv/delv.rst bin/dig/dig.rst bin/tools/mdig.rst doc/notes/notes-9.20.0.rst
+# Liberal use of :any: confuses the version of Sphinx in SLES/Leap 15. Converting it to :code:
+# will at least make it readable.
+awk '
+  /^\.\. namedconf:statement::/ { in_stmt=1; print; next }
+  in_stmt && /^[^[:space:]]/ && $0 !~ /^$/ { in_stmt=0 }
+  in_stmt && /^[[:space:]]/ {
+    $0 = gensub(/:any:`([^`]+)`/, ":code:`\\1`", "g")
+  }
+  { print }
+' doc/arm/reference.rst > doc/arm/reference.rst.new && mv doc/arm/reference.rst.new doc/arm/reference.rst
+
+# the Administration Reference Manual doesn't build with Leap/SLES 15 due to an way too old Sphinx package
 # that is missing sphinx.util.docutils.ReferenceRole.
 # patch68 disables this extension, and here, we're removing the :gl: tags in the notes
 sed -i 's|:gl:||g' doc/notes/notes*.rst
@@ -286,9 +270,7 @@ export LDFLAGS="-pie"
 	--enable-fixed-rrset \
 	--enable-filter-aaaa \
         --enable-dnstap \
-%if %{with_systemd}
         --with-systemd \
-%endif
 %if %{with check}
 	--enable-querytrace \
 %endif
@@ -303,9 +285,7 @@ sed -i '
 for d in arm; do
 	make -C doc/${d} SPHINXBUILD=sphinx-build doc
 done
-%if %{with_systemd}
 %sysusers_generate_pre %{SOURCE72} named named.conf
-%endif
 # special build for the plugins
 for d in dlz-modules-%{dlz_modules_hash}/modules/*; do
        [ -e $d/Makefile ] && make -C $d
@@ -330,9 +310,6 @@ mkdir -p \
 	%{buildroot}/%{_rundir} \
 	%{buildroot}%{_includedir}/bind/dns \
 	%{buildroot}%{_libexecdir}/bind
-%if %{with_sfw2}
-mkdir -p %{buildroot}/%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services
-%endif
 %make_install
 # remove useless .h files
 rm -rf %{buildroot}%{_includedir}
@@ -369,23 +346,16 @@ mv vendor-files/config/bind.reg %{buildroot}/%{_sysconfdir}/slp.reg.d
 %endif
 mv vendor-files/config/rndc-access.conf %{buildroot}/%{_sysconfdir}/named.d
 
-%if %{with_systemd}
-	for file in named; do
-        	install -D -m 0644 vendor-files/system/${file}.service %{buildroot}%{_unitdir}/${file}.service
-                sed -e "s,@LIBEXECDIR@,%{_libexecdir},g" -i %{buildroot}%{_unitdir}/${file}.service
-		install -m 0755 vendor-files/system/${file}.prep %{buildroot}%{_libexecdir}/bind/${file}.prep
-		ln -s /sbin/service %{buildroot}%{_sbindir}/rc${file}
-	done
-	install -D -m 0644 %{SOURCE70} %{buildroot}%{_prefix}/lib/tmpfiles.d/bind.conf
-	install -D -m 0644 %{_sourcedir}/named.root %{buildroot}%{_datadir}/factory%{_localstatedir}/lib/named/root.hint
-	install -m 0644 vendor-files/config/{127.0.0,localhost}.zone %{buildroot}%{_datadir}/factory%{_localstatedir}/lib/named
-	install -d -m 0755 %{buildroot}/%{_unitdir}/named.service.d
-%else
-	for file in named; do
-		install -m 0754 vendor-files/init/${file} %{buildroot}%{_initddir}/${file}
-		ln -sf %{_initddir}/${file} %{buildroot}%{_sbindir}/rc${file}
-	done
-%endif
+for file in named; do
+       	install -D -m 0644 vendor-files/system/${file}.service %{buildroot}%{_unitdir}/${file}.service
+        sed -e "s,@LIBEXECDIR@,%{_libexecdir},g" -i %{buildroot}%{_unitdir}/${file}.service
+	install -m 0755 vendor-files/system/${file}.prep %{buildroot}%{_libexecdir}/bind/${file}.prep
+	ln -s /sbin/service %{buildroot}%{_sbindir}/rc${file}
+done
+install -D -m 0644 %{SOURCE70} %{buildroot}%{_prefix}/lib/tmpfiles.d/bind.conf
+install -D -m 0644 %{_sourcedir}/named.root %{buildroot}%{_datadir}/factory%{_localstatedir}/lib/named/root.hint
+install -m 0644 vendor-files/config/{127.0.0,localhost}.zone %{buildroot}%{_datadir}/factory%{_localstatedir}/lib/named
+install -d -m 0755 %{buildroot}/%{_unitdir}/named.service.d
 install -m 0644 %{_sourcedir}/named.root %{buildroot}%{_localstatedir}/lib/named/root.hint
 mv vendor-files/config/{127.0.0,localhost}.zone %{buildroot}%{_localstatedir}/lib/named
 install -m 0755 vendor-files/tools/bind.genDDNSkey %{buildroot}/%{_bindir}/genDDNSkey
@@ -396,9 +366,6 @@ find %{buildroot}/%{_libdir} -type f -name '*.so*' -exec chmod 0755 {} +
 for file in named-named; do
 	install -m 0644 vendor-files/sysconfig/${file} %{buildroot}%{_fillupdir}/sysconfig.${file}
 done
-%if %{with_sfw2}
-install -m 644 vendor-files/sysconfig/SuSEFirewall.named %{buildroot}/%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/bind
-%endif
 %if ! %{with check}
 # Cleanup doc
 rm doc/misc/Makefile*
@@ -424,24 +391,13 @@ done
 # ---------------------------------------------------------------------------
 # remove useless Makefiles and Makefile skeletons
 find %{buildroot}/%{_defaultdocdir}/bind \( -name Makefile -o -name Makefile.in \) -exec rm {} +
-%if %{with_systemd}
 mkdir -p %{buildroot}%{_sysusersdir}
 install -m 644 %{SOURCE72} %{buildroot}%{_sysusersdir}/
-%endif
 find %{buildroot}/usr/share/doc/packages/bind -name cfg_test* -exec rm {} \;
 rm -rf %{buildroot}/usr/share/doc/packages/bind/misc/.libs
 
-%if %{with_systemd}
 %pre -f named.pre
 %service_add_pre named.service
-%else
-
-%pre
-%{GROUPADD_NAMED}
-%{USERADD_NAMED}
-# Might be an update.
-%{USERMOD_NAMED}
-%endif
 
 %if %{with check}
 %check
@@ -450,35 +406,15 @@ make test
 %endif
 
 %preun
-%if %{with_systemd}
 %service_del_preun named.service
-%else
-%stop_on_removal named
-%endif
 
 %post
-%if %{with_systemd}
 %{fillup_only -nsa named named}
 %service_add_post named.service
 %tmpfiles_create bind.conf
-%else
-%{fillup_and_insserv -nf named}
-if [ -x %{_bindir}/systemctl ]; then
-# make sure systemctl knows about the service
-# Without this, systemctl status named would return
-#     Unit named.service could not be found.
-# until systemctl daemon-reload has been executed
-    %{_bindir}/systemctl daemon-reload || :
-fi
-%endif
 
 %postun
-%if %{with_systemd}
 %service_del_postun named.service
-%else
-%restart_on_update named
-%insserv_cleanup
-%endif
 
 %post   -n bind-utils -p /sbin/ldconfig
 %postun -n bind-utils -p /sbin/ldconfig
@@ -490,18 +426,11 @@ fi
 %dir %{_sysconfdir}/slp.reg.d
 %attr(0644,root,root) %config /%{_sysconfdir}/slp.reg.d/bind.reg
 %endif
-%if %{with_systemd}
 %{_unitdir}/named.service
 %dir %{_unitdir}/named.service.d
 %{_prefix}/lib/tmpfiles.d/bind.conf
 %{_sysusersdir}/named.conf
 %{_datadir}/factory
-%else
-%config /%{_sysconfdir}/init.d/named
-%endif
-%if %{with_sfw2}
-%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/bind
-%endif
 %dir %{_sysconfdir}/crypto-policies
 %dir %{_sysconfdir}/crypto-policies/back-ends
 %{_bindir}/named-rrchecker

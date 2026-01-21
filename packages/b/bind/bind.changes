@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 17 00:30:28 UTC 2025 - Jeff Mahoney <jeffm@suse.com>
+
+- Remove packaging support for releases prior to SLES 15 SP4/Leap 15.4.
+  - The builds have dependencies that are no longer met by these older
+    releases.
+- Fix Sphinx processing of documentation on SLES/Leap 15.
+
+-------------------------------------------------------------------
 Wed Oct 22 14:14:38 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Upgrade to release 9.20.15
