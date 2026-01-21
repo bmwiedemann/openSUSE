@@ -477,4 +477,25 @@
   * nothing of importance (forwarded request 1326274 from rrahl0)</comment>
     <requestid>1326275</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>376ef45fee75a3bfc3dd34b544f17293</srcmd5>
+    <version>1.94.0</version>
+    <time>1769001483</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.94.0:
+  * derp/derpserver: add a unique sender cardinality estimate
+  * syncs: add means of declare locking assumptions for debug mode
+  * cmd/k8s-operator: add support for taiscale.com/http-redirect
+  * cmd/k8s-operator fix populateTLSSecret on tests
+  * feature/posture: log method and full URL for posture identity requests
+  * k8s-operator: Fix typos in egress-pod-readiness.go
+  * cmd/tailscale,ipn: add Unix socket support for serve
+  * client/systray: change systray to start after graphical.target
+  * cmd/k8s-operator: warn if users attempt to expose a headless Service
+  * cmd/tailscale/cli, util/qrcodes: format QR codes on Linux consoles
+  * tsnet: ensure funnel listener cleans up after itself when closed
+  * ipn/store/kubestore: don't load write replica certs in memory
+  * tsnet: allow for automatic ID token generation (forwarded request 1328413 from rrahl0)</comment>
+    <requestid>1328414</requestid>
+  </revision>
 </revisionlist>

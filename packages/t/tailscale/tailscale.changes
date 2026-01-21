@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jan 21 01:30:13 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.94.0:
+  * derp/derpserver: add a unique sender cardinality estimate
+  * syncs: add means of declare locking assumptions for debug mode
+  * cmd/k8s-operator: add support for taiscale.com/http-redirect
+  * cmd/k8s-operator fix populateTLSSecret on tests
+  * feature/posture: log method and full URL for posture identity requests
+  * k8s-operator: Fix typos in egress-pod-readiness.go
+  * cmd/tailscale,ipn: add Unix socket support for serve
+  * client/systray: change systray to start after graphical.target
+  * cmd/k8s-operator: warn if users attempt to expose a headless Service
+  * cmd/tailscale/cli, util/qrcodes: format QR codes on Linux consoles
+  * tsnet: ensure funnel listener cleans up after itself when closed
+  * ipn/store/kubestore: don't load write replica certs in memory
+  * tsnet: allow for automatic ID token generation
+
+-------------------------------------------------------------------
 Fri Jan  9 00:06:05 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.92.5:
