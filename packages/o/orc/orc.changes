@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Jan 18 22:05:43 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.4.42:
+  + Initial 64-bit RISC-V support
+  + Add 64-bit LoongArch support
+  + Implement release and reuse of temporary registers for some
+    targets
+  + x86: Implement EVEX encoding and an opcode validation system
+  + x86: Opcode refactor, improved constant handling and various
+    other fixes
+  + x86: add missing rounding operands for AVX and SSE
+  + x86: Implement 64-bit single move constant load
+  + includes: stop exporting the private compiler and OrcTarget
+    definitions
+  + Use hotdoc instead of gtk-doc to generate the documentation
+  + ORC_DEBUG_FATAL environment variable allows abort on log
+    messages of a certain level
+  + Error message improvements and NEON backend clean-ups
+  + Fix a few valgrind issues
+  + Build: enable tools such as orcc and orc-bugreport by default
+  + Various build fixes
+- Replace gtk-doc with python3-hotdoc BuildRequires following
+  upstreams port.
+- Add fdupes BuildRequires and macro, remove duplicate files.
+- Package doc sub-package as noarch.
+
+-------------------------------------------------------------------
 Tue Feb 18 11:52:33 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.4.41:

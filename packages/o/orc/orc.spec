@@ -1,7 +1,7 @@
 #
 # spec file for package orc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2010 Dominique Leuenberger, Amsterdam, Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           orc
-Version:        0.4.41
+Version:        0.4.42
 Release:        0
 Summary:        The Oil Runtime Compiler
 License:        BSD-3-Clause
@@ -27,9 +27,10 @@ URL:            https://gitlab.freedesktop.org/gstreamer/orc
 Source:         https://gstreamer.freedesktop.org/src/orc/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 Patch0:         relax-tests.patch
-BuildRequires:  gtk-doc >= 1.12
+BuildRequires:  fdupes
 BuildRequires:  meson >= 0.47.0
 BuildRequires:  pkgconfig
+BuildRequires:  python3-hotdoc
 BuildRequires:  pkgconfig(glib-2.0)
 Provides:       %{name}-devel = %{version}
 
@@ -54,6 +55,7 @@ arithmetic operations.
 %package doc
 Summary:        The Oil Runtime Compiler Library - Documentation
 Group:          Documentation/HTML
+BuildArch:      noarch
 
 %description doc
 Orc is a library and set of tools for compiling and executing very simple
@@ -77,6 +79,7 @@ arithmetic operations.
 %meson_install
 rm %{buildroot}%{_bindir}/orc-bugreport
 rm %{buildroot}%{_libdir}/pkgconfig/orc-test-0.4.pc
+%fdupes -s %{buildroot}%{_datadir}/doc/orc
 
 %check
 # Disable testsuite for almost all arches, it's only stable on x86_64
@@ -84,8 +87,7 @@ rm %{buildroot}%{_libdir}/pkgconfig/orc-test-0.4.pc
 %meson_test
 %endif
 
-%post -n liborc-0_4-0 -p /sbin/ldconfig
-%postun -n liborc-0_4-0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n liborc-0_4-0
 
 %files
 %{_bindir}/orcc
@@ -94,9 +96,7 @@ rm %{buildroot}%{_libdir}/pkgconfig/orc-test-0.4.pc
 %{_libdir}/pkgconfig/orc-0.4.pc
 
 %files doc
-%dir %{_datadir}/gtk-doc
-%dir %{_datadir}/gtk-doc/html
-%{_datadir}/gtk-doc/html/orc/
+%{_datadir}/doc/orc/
 
 %files -n liborc-0_4-0
 %{_libdir}/liborc*-0.4.so.*
