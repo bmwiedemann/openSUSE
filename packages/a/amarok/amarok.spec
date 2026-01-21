@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           amarok
-Version:        3.3.1
+Version:        3.3.2
 Release:        0
 Summary:        Media Player
 License:        GPL-2.0-or-later
@@ -134,6 +134,9 @@ This package provides documentation for the Amarok media player.
 
 %prep
 %autosetup -p1
+
+# Reduce size of the context widget
+sed -i 's#1.7#1.12#' src/MainWindow.cpp
 
 %build
 %cmake_kf6

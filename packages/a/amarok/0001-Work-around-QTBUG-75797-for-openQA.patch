@@ -8,10 +8,10 @@ Subject: [PATCH] Work around QTBUG-75797 for openQA
  1 file changed, 6 insertions(+)
 
 diff --git a/src/main.cpp b/src/main.cpp
-index 6bb07b64a7..d35fda12fb 100644
+index 293a41323a..09f558bd17 100644
 --- a/src/main.cpp
 +++ b/src/main.cpp
-@@ -31,6 +31,7 @@
+@@ -29,6 +29,7 @@
  
  #include <QCommandLineParser>
  #include <QStandardPaths>
@@ -19,9 +19,9 @@ index 6bb07b64a7..d35fda12fb 100644
  #include <QtGlobal>
  
  #include <csignal>
-@@ -44,6 +45,11 @@ int main( int argc, char *argv[] )
+@@ -41,6 +42,11 @@ int main( int argc, char *argv[] )
+ {
      QCoreApplication::setAttribute(Qt::AA_ShareOpenGLContexts);
-     QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
  
 +    QSurfaceFormat fmt = QSurfaceFormat::defaultFormat();
 +    if(fmt.redBufferSize() < 8)
@@ -31,5 +31,3 @@ index 6bb07b64a7..d35fda12fb 100644
      App app(argc, argv);
  
      app.setApplicationDisplayName(i18n("Amarok"));
--- 
-2.46.0
