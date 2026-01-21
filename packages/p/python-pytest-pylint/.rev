@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>1198078</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0290546e6194b686fe06204d3e1158d9</srcmd5>
+    <version>0.21.0</version>
+    <time>1769002059</time>
+    <user>anag_factory</user>
+    <comment>- Add pytest9.patch to fix tests with pytest 9.0</comment>
+    <requestid>1328454</requestid>
+  </revision>
 </revisionlist>

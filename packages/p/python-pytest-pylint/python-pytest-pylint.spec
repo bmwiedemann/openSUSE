@@ -27,6 +27,8 @@ URL:            https://github.com/carsongee/pytest-pylint
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-pylint/pytest-pylint-%{version}.tar.gz
 # Remove archived https://github.com/pytest-dev/pytest-runner from setup_requires
 Patch0:         rm-pytest-runner.patch
+# PATCH-FIX-OPENSUSE pytest9.patch
+Patch1:         pytest9.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
