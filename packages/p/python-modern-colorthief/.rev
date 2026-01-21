@@ -43,4 +43,23 @@
   * Update pyo3 for supporting python3.14 (forwarded request 1321817 from rrahl0)</comment>
     <requestid>1321818</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>32e676d676fa4685ecb52e651c94c953</srcmd5>
+    <version>0.1.12</version>
+    <time>1769001476</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.1.12:
+  * nothing relevant
+- Update to version 0.1.11:
+  * Add CLI Docs
+- Update to version 0.1.10:
+  * relocate license file
+  * fix wheels
+  * fix: path
+- Update to version 0.1.9:
+  * Add CLI tool
+  * feat: improve the commands
+  * feat: split python file (forwarded request 1328401 from rrahl0)</comment>
+    <requestid>1328402</requestid>
+  </revision>
 </revisionlist>

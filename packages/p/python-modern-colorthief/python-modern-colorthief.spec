@@ -1,7 +1,7 @@
 #
 # spec file for package python-modern-colorthief
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %define         pyname modern_colorthief
 Name:           python-modern-colorthief
-Version:        0.1.8
+Version:        0.1.12
 Release:        0
 Summary:        Colorthief reimagined
 License:        MIT
@@ -47,15 +47,17 @@ Python-modern-colorthief is a rewritten rust python-colorthief replacement
 
 %install
 %pyproject_install
-%fdupes %{buildroot}
+%python_clone -a %{buildroot}%{_bindir}/modern-colorthief
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
 # the singular test is relying on the old abandoned python-colorthief.
 
 %files %{python_files}
 %license LICENSE
-%{python_sitearch}/%{pyname}
 %pycache_only %{python_sitearch}/%{pyname}/__pycache__
+%python_alternative %{_bindir}/modern-colorthief
+%{python_sitearch}/%{pyname}
 %{python_sitearch}/%{pyname}-%{version}.dist-info
 
 %changelog
