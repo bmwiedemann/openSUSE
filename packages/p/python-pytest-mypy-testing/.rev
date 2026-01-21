@@ -24,4 +24,12 @@
   * Support newer mypy than upstream.</comment>
     <requestid>1297340</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>12704d27c5d03e0cb3669fe989c32ba8</srcmd5>
+    <version>0.1.3</version>
+    <time>1769001589</time>
+    <user>anag_factory</user>
+    <comment>- Update support-new-mypy.patch to support modern mypy</comment>
+    <requestid>1328448</requestid>
+  </revision>
 </revisionlist>

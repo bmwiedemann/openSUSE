@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 21 09:28:56 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update support-new-mypy.patch to support modern mypy
+
+-------------------------------------------------------------------
 Mon Aug  4 02:27:17 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-new-mypy.patch:
