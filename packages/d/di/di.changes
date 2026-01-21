@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan 20 18:22:37 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 6.2.1:
+  * Manual page updates and fixes
+  * Normalize -B (--block-size) argument processing to match
+    environment variable processing
+  * Use BLOCK_SIZE environment variable if present
+  * When the display size is set to bytes, ensure the value is
+    correctly printed
+  * Added support for the mpdecimal multi-precision library
+  * bug fixes
+
+-------------------------------------------------------------------
 Sun Mar 16 11:19:47 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 6.0.0:

@@ -2,7 +2,7 @@
 # spec file for package di
 #
 # Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 
 %define sover 6
 Name:           di
-Version:        6.0.0
+Version:        6.2.1
 Release:        0
 Summary:        Disk Information Utility
 License:        Zlib
 URL:            https://diskinfo-di.sourceforge.io/
 Source:         https://sourceforge.net/projects/diskinfo-di/files/%{name}-%{version}.tar.gz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.18
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libtirpc)
 %if 0%{?sle_version} <= 150600 && 0%{?is_opensuse}
@@ -75,14 +75,13 @@ This package contains the files needed to develop using libdi.
 
 %files -f %{name}.lang
 %license LICENSE.txt
-%doc README.txt
+%doc README.md
 %{_bindir}/di
 %{_mandir}/man1/di.1%{?ext_man}
 
 %files -n libdi%{sover}
 %license LICENSE.txt
-%{_libdir}/libdi.so.%{sover}
-%{_libdir}/libdi.so.%{sover}.*
+%{_libdir}/libdi.so.%{sover}{,.*}
 
 %files devel
 %license LICENSE.txt
