@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan 20 13:51:50 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
+
+- Add the relax_assertion.patch: relax PreloadTest assertion, preserving test intent and fixing openSUSE builds  
+  (gh#jnwatson/py-lmdb#400) 
+
+-------------------------------------------------------------------
+Fri Nov 21 12:30:26 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.7.5
+  * CI-only: Fix generation of 3.14 binaries.
+- from version 1.7.4
+  * CI-only: Generate Python 3.14 binaries.
+
+-------------------------------------------------------------------
 Mon Jul 28 08:42:04 UTC 2025 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.7.3:

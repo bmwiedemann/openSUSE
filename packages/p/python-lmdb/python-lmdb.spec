@@ -1,7 +1,7 @@
 #
 # spec file for package python-lmdb
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-lmdb
-Version:        1.7.3
+Version:        1.7.5
 Release:        0
 Summary:        Universal Python binding for the LMDB 'Lightning' Database
 License:        OLDAP-2.8
 Group:          Development/Languages/Python
 URL:            https://github.com/dw/py-lmdb/
 Source:         https://files.pythonhosted.org/packages/source/l/lmdb/lmdb-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM relax_assertion.patch -- based on PR 400
+Patch0:         relax_assertion.patch
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
