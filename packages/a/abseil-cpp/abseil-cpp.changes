@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jan 15 07:46:13 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * test_instance_tracker.patch
+    + do not accidentally depend on an internal test library
+
+-------------------------------------------------------------------
+Sat Jan 10 13:00:15 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 20260107.0 (Abseil LTS branch, January 2026):
+  * absl::StringResizeAndOverwrite(): A new function that acts as a
+    polyfill for C++23's std::basic_string::resize_and_overwrite.
+  * absl::chunked_queue: A new container optimized for use as a
+    FIFO (First-In, First-Out) queue.
+  * absl::linked_hash_map and absl::linked_hash_set: New hash
+    containers that maintain iteration order matching the
+    insertion order.
+  * absl::down_cast: This function provides a safer way to
+    perform downcasts in a polymorphic type hierarchy.
+  * Breaking change: Mutex Deprecations: Legacy Mutex methods
+    and MutexLock pointer constructors have been marked as
+    deprecated. Users should migrate to the recommended APIs.
+  * Breaking change: The polyfill type absl::string_view is now an
+    alias for std::string_view in all builds.
+
+-------------------------------------------------------------------
 Mon Sep 22 19:26:07 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 20250814.1 (Abseil LTS branch, Aug 2025, Patch 1):

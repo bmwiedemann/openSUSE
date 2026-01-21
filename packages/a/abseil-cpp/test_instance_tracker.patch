@@ -1,0 +1,10 @@
+--- abseil-cpp-20260107.0/absl/container/CMakeLists.txt	2026-01-15 09:05:01.099736976 +0100
++++ abseil-cpp-20260107.0/absl/container/CMakeLists.txt	2026-01-15 09:05:37.233089454 +0100
+@@ -1119,6 +1119,7 @@
+     absl::config
+     absl::test_instance_tracker
+     GTest::gmock
++  TESTONLY
+ )
+ 
+ absl_cc_library(

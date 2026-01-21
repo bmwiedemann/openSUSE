@@ -1,8 +1,8 @@
 #
 # spec file for package abseil-cpp
 #
-# Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 #
 
 
-%global soversion so.2508.0.0
-%global lname_suffix 2508_0_0
+%global soversion so.2601.0.0
+%global lname_suffix 2601_0_0
 Name:           abseil-cpp
-Version:        20250814.1
+Version:        20260107.0
 Release:        0
 Summary:        C++ libraries which augment the C++ stdlib
 License:        Apache-2.0
@@ -28,6 +28,7 @@ URL:            https://abseil.io/
 Source0:        https://github.com/abseil/abseil-cpp/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 Patch0:         options-cxx17.patch
+Patch1:         test_instance_tracker.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -42,6 +43,7 @@ library. It also provides features incorporated into later C++ standards.
 
 %define abseil_libs \
 %abseil_libpackage -l libabsl_base \
+%abseil_libpackage -l libabsl_borrowed_fixup_buffer \
 %abseil_libpackage -l libabsl_city \
 %abseil_libpackage -l libabsl_civil_time \
 %abseil_libpackage -l libabsl_cord \
@@ -73,6 +75,7 @@ library. It also provides features incorporated into later C++ standards.
 %abseil_libpackage -l libabsl_flags_reflection \
 %abseil_libpackage -l libabsl_flags_usage \
 %abseil_libpackage -l libabsl_flags_usage_internal \
+%abseil_libpackage -l libabsl_generic_printer_internal \
 %abseil_libpackage -l libabsl_graphcycles_internal \
 %abseil_libpackage -l libabsl_hash \
 %abseil_libpackage -l libabsl_hashtable_profiler \
@@ -122,7 +125,6 @@ library. It also provides features incorporated into later C++ standards.
 %abseil_libpackage -l libabsl_str_format_internal \
 %abseil_libpackage -l libabsl_strings \
 %abseil_libpackage -l libabsl_strings_internal \
-%abseil_libpackage -l libabsl_string_view \
 %abseil_libpackage -l libabsl_symbolize \
 %abseil_libpackage -l libabsl_synchronization \
 %abseil_libpackage -l libabsl_throw_delegate \
