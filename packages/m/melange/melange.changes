@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 21 06:09:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.39.0:
+  * feat: add retry with backoff to git-checkout (#2301)
+  * build(deps): bump the gomod group with 2 updates (#2303)
+
+-------------------------------------------------------------------
 Mon Jan 19 06:32:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.38.1:
