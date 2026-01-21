@@ -157,4 +157,23 @@
   * Make aligned_alloc/free C functions #227</comment>
     <requestid>1316603</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>bf8c60d74596c592fa768bd472f518d3</srcmd5>
+    <version>0.26.0</version>
+    <time>1769001237</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.26.0:
+  * Rename src/core/common to src/core/openjph
+  * Modify error message names. This may break your code.
+    The modified versions are more descriptive, and less likely to
+    be caught in a preprocessor macro.
+  * Address an issue identified by @clshortfuse.  During compilation
+    on windows using clang-cl, the compiler may received flags
+    designed for clang or gcc.
+
+- Update to 0.25.3:
+  * apps: ojph_sockets: Detect GLIBC before using GNU-flavour strerror_r #229
+  * Modify the declaration of aligned allocation for better compatibility #231</comment>
+    <requestid>1328028</requestid>
+  </revision>
 </revisionlist>
