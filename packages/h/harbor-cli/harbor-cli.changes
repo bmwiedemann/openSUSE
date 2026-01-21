@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jan 20 15:08:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.0.16:
+  * Feature: Moving to pure Dagger based CI/CD Pipeline from
+    Goreleaser (#547)
+  * Fix Robot Account Login (#590)
+  * build(deps): bump golang.org/x/term from 0.38.0 to 0.39.0
+    (#592)
+  * readme: say that Homebrew is now available (#594)
+  * build(deps): bump golang.org/x/text from 0.31.0 to 0.33.0
+    (#593)
+  * fix(ci): fix vulnerability check failure in dagger pipeline
+    (#588)
+  * build(deps): bump golang.org/x/term from 0.37.0 to 0.38.0
+    (#583)
+  * build(deps): bump github.com/spf13/cobra from 1.10.1 to 1.10.2
+    (#582)
+  * chore: migrate from deprecated `gopkg.in/yaml.v3` to
+    `go.yaml.in/yaml/v4` (#581)
+  * chore: Update the goreleaser.yaml according to newer version
+    2.13.0 (#578)
+
+-------------------------------------------------------------------
 Wed Nov 26 06:22:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.0.15:
