@@ -99,4 +99,17 @@
     saving the data to disk.</comment>
     <requestid>1319615</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2f6f59de0b86a51b594e8b495f5d57ba</srcmd5>
+    <version>2.9.1</version>
+    <time>1769001208</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.9.1:
+  * Fix type annotation for data_regression.check.
+  * ImageRegression.check now supports receiving an PIL.Image object
+    directly.
+  * Support for Python 3.14 has been added, while Python 3.9 (EOL) has been
+    dropped.</comment>
+    <requestid>1327967</requestid>
+  </revision>
 </revisionlist>

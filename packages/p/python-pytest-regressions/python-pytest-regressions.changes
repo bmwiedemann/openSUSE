@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 19 00:33:00 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.9.1:
+  * Fix type annotation for data_regression.check.
+  * ImageRegression.check now supports receiving an PIL.Image object
+    directly.
+  * Support for Python 3.14 has been added, while Python 3.9 (EOL) has been
+    dropped.
+
+-------------------------------------------------------------------
 Mon Nov 24 03:50:29 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.8.3:
