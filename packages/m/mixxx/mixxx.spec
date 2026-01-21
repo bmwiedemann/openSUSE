@@ -23,7 +23,7 @@
 %endif
 
 Name:           mixxx
-Version:        2.5.3
+Version:        2.5.4
 Release:        0
 Summary:        DJ mixing application
 License:        GPL-3.0-or-later
