@@ -168,4 +168,11 @@
     <comment>Update to 1.1768906106.3eb55338</comment>
     <requestid>1328273</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>5675c5d0224e056749060f89a5cbef40</srcmd5>
+    <version>1.1768906106.3eb55338</version>
+    <time>1768971561</time>
+    <user>dimstar_suse</user>
+    <comment>Forbidden control chars found (ASCII values &lt;32 except 9, 10 and 13).</comment>
+  </revision>
 </revisionlist>
