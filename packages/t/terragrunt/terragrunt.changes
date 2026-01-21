@@ -1,4 +1,107 @@
 -------------------------------------------------------------------
+Tue Jan 20 14:47:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.98.0:
+  * New Features
+    - The --filter flag now implies --all
+      When using the --filter flag, it is now optional to also
+      supply --all. Terragrunt will automatically set the --all
+      flag when you use the --filter flag.
+  * Bug Fixes
+    - Plan files are now correctly passed as CLI arguments for
+      destroy operations
+      A bug in the logic used for injecting plan files as arguments
+      to the apply -destroy command resulted in the plan file
+      argument being injected prior to the -auto-approve flag,
+      which is disallowed in OpenTofu/Terraform. That bug has been
+      fixed.
+    - GCS bootstrap authentication fixed
+      A bug in the authentication logic for GCS backends prevented
+      successful bootstrapping of backends when using the
+      --auth-provider-cmd flag. That bug has been fixed.
+    - Git-based and Graph-based combinations fixed
+      A bug in the discovery logic for Git worktrees prevented
+      using a combination of Git-based and Graph-based filter
+      expressions in the same filter from working correctly.
+      e.g.
+
+        terragrunt find --filter '...^[HEAD^...HEAD]...'
+
+      That bug has been fixed.
+    - Proper exit codes returned from -detailed-exitcode
+      A bug in the logic for handling retries combined with the
+      OpenTofu/Terraform plan -detailed-exitcode and the Terragrunt
+      --all flag resulted in the wrong exit code being returned
+      when a failed run succeeded on a subsequent retry with a
+      status code related to drift (exit code 2).
+      That logic has been corrected, and properly follows the rules
+      outlined under the --all flag:
+
+      When not using -detailed-exitcode:
+      - Terragrunt will return the highest exit code of all runs
+        performed.
+
+      When using -detailed-exitcode:
+      - If any run has an exit code that is 1, or greater than 2,
+        run --all will return the highest exit code.
+      - Otherwise, if any run returns an exit code of 2, run --all
+        will return an exit code of 2.
+      - Otherwise, run --all will return an exit code of 0.
+
+    - OpenTelemetry traces in console mode fixed
+      A bug in OpenTelemetry trace exporting prevented traces from
+      being exported when in console mode. That bug has been fixed.
+    - Negation logic fixed
+      A bug in how negation logic was handled in filter expressions
+      prevented successful exclusion of stacks from generation and
+      over excluded units in runs when users only supplied negative
+      filters.
+  * Process Improvements
+    - Upgrade to Go 1.25.5
+      The Golang toolchain used to build Terragrunt has been
+      upgraded to v1.25.5.
+    - Package reorganization
+      All top-level Golang packages in the Terragrunt project have
+      been migrated to either internal or pkg. The distinction
+      between the two indicates maintainer expectations as to
+      whether either are being actively being consumed as libraries
+      by third parties (with internal being impossible to import
+      without vendoring in go modules).
+      Note that this does not indicate any backwards compatibility
+      guarantee for usage of the Terragrunt as a library. It will
+      remain unstable, and can change at any time.
+  * What's Changed
+    - docs: Cleaning up references to filter as an experiment
+      (#5366)
+    - chore: cloud dependencies update (#5374)
+    - fix: Fixing negation logic (#5368)
+    - fix: Cleanup from #5342 (#5356)
+    - Fix link to Dallas Slaughter (#5370)
+    - fix: traces output in console mode (#5329)
+    - fix: Addressing #5355 feedback (#5363)
+    - fix: Fixing `-detailed-exitcode` (#5362)
+    - chore: Remove `RunTarget` from `options` (#5264)
+    - chore: Lint everything when linting (#5344)
+    - chore: Dropping more utils (#5300)
+    - fix: Fixing Git-expression + Graph-expression filter
+      combinations (#5355)
+    - chore: moved cli package to internal/cli (#5345)
+    - chore: internal packages update (#5360)
+    - chore: pkg packages organisation (#5358)
+    - feat: Automatically enable `--all` when using `--filter`
+      (#5265)
+    - fix: Fixing auth in GCS bootstrap (#5342)
+    - chore: scripts directories cleanup (#5343)
+    - chore: move engine to internal package (#5340)
+    - feat: release files signing (#5291)
+    - chore: Undo `--all` and `--graph` wrap (#5257)
+    - chore: go 1.25.5 version update (#5339)
+    - bug: Fixed passing of existing destroy plan files (#5327)
+    - Typo (#5331)
+    - Adding ambassadors (#5330)
+    - build(deps): bump @smithy/config-resolver (#5328)
+
+-------------------------------------------------------------------
 Mon Jan 12 07:54:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.97.2:
