@@ -124,4 +124,17 @@
   	* require a newer version.pm for v5.10.1 tests (forwarded request 1278600 from tinita)</comment>
     <requestid>1279034</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1b615b3a10dc71f6956372a2ad682d40</srcmd5>
+    <version>1.233.0</version>
+    <time>1769001189</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.233.0 (1.233)
+   see /usr/share/doc/packages/perl-Tie-Cycle/Changes
+  1.233 2026-01-07T15:26:59Z
+  	* remove errant file from MANIFEST (#14)
+  1.232 2026-01-06T09:19:34Z
+  	* refresh for latest release process</comment>
+    <requestid>1327639</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan  8 05:46:11 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.233.0 (1.233)
+   see /usr/share/doc/packages/perl-Tie-Cycle/Changes
+
+  1.233 2026-01-07T15:26:59Z
+  	* remove errant file from MANIFEST (#14)
+
+  1.232 2026-01-06T09:19:34Z
+  	* refresh for latest release process
+
+-------------------------------------------------------------------
 Mon Apr 14 05:40:18 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.231.0 (1.231)
