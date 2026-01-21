@@ -1567,4 +1567,13 @@ Also requires https://build.opensuse.org/request/show/1167142.</comment>
 </comment>
     <requestid>1327009</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>3f4f0158a0689e73859b92831fccccdc</srcmd5>
+    <version>6.0.6</version>
+    <time>1769001078</time>
+    <user>anag_factory</user>
+    <comment>- Version 6.0.6:
+  - t-u: Use pattern to download correct libtukit[0-9]+ for selfupdate</comment>
+    <requestid>1328139</requestid>
+  </revision>
 </revisionlist>

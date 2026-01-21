@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 19 18:47:48 UTC 2026 - Ignaz Forster <iforster@suse.com>
+
+- Version 6.0.6:
+  - t-u: Use pattern to download correct libtukit[0-9]+ for
+    selfupdate
+
+-------------------------------------------------------------------
 Tue Jan 13 13:04:26 UTC 2026 - Ignaz Forster <iforster@suse.com>
 
 - Version 6.0.5
