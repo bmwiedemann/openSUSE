@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<services>
+
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://gitlab.freedesktop.org/rncbc/qpwgraph.git</param>
+    <param name="scm">git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="revision">v0.9.8</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+
+  <service name="set_version" mode="manual"/>
+
+  <service name="tar" mode="manual"/>
+  <service name="recompress" mode="manual">
+    <param name="compression">gz</param>
+    <param name="file">*.tar</param>
+  </service>
+
+</services>

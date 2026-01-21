@@ -1,4 +1,118 @@
 -------------------------------------------------------------------
+Mon Jan 19 16:38:33 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 0.9.8:
+  * An End-of-Year'25 Beta Release (v0.9.8)
+  * - Fixed 'mime-info' file to the correct MIME-type icon names.
+
+-------------------------------------------------------------------
+Mon Jan 19 16:38:16 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 0.9.7:
+  * An Autumn'25 Beta Release (v0.9.7)
+  * compile fix std::isfinite
+  * - Avoid to arrange/topological-sort on less than two nodes.
+  * - Updated change-log.
+  * - Arrange Nodes (via topological sort) now applies to selected nodes only (not all nodes as before).
+  * [mb-add-topological-node-arrangement] Expand arrangement to fill viewport width when possible. (viewport cordinate regreassion)
+  * [mb-add-topological-node-arrangement] Expand arrangement to fill viewport width when possible.
+  * [mb-add-topological-node-arrangement] Overall code restyling. - Dropped qpwgraph_arrange_command traded for additional qpwgraph_move_command ctor. - Trade QHash (unordered_map) for QMap and only use the later when strictly meaningful.
+  * Add topological node arrangement (GH PR#71)
+
+-------------------------------------------------------------------
+Mon Jan 19 16:38:08 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 0.9.6:
+  * An Early-Fall'25 Beta Release (v0.9.6)
+  * - Prepping for Qt6.10 and definitely dropping old/dead Qt5 build support (rpm .spec; fix)
+  * - Prepping for Qt6.10 and definitely dropping old/dead Qt5 build support (rpm .spec)
+  * - Add  to the .desktop laucher file.
+  * - Allow the complete node name to get the same treatment in the   Graph/Options.../Filter as same for Merger. (EXPERIMENTAL)
+  * - Add platform name (eg. xcb, wayland) to session restart command.
+  * - Add underlying platform name (eg. xcb, wayland) to Qt version string.
+  * - Get rid of CONFIG_WAYLAND build config option.
+
+-------------------------------------------------------------------
+Mon Jan 19 16:37:46 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 0.9.5:
+  * A Mid-Summer'25 Beta Release (v0.9.5)
+  * - Make all node-names in merger list (Graph/Options.../Merger)   implicitly exclusive for Patchbay persistence. (GL Issue #105)
+  * - Cope with in-flight node/port count changing. (bis)
+  * - Cope with in-flight node/port count changing. (EXPERIMENTAL)
+
+-------------------------------------------------------------------
+Mon Jan 19 16:37:39 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 0.9.4:
+  * An Early-Summer'25 Beta Release (v0.9.4)
+  * - Correct highlight when drag-connect and hovering ports. (bis)
+  * - Correct highlight when drag-connect and hovering ports. (EXPERIMENTAL)
+  * - Give a proper object-name to Patchbay/Manage... dialog.
+  * - Also make Patchbay/Manage... dialog size and position persistent.
+  * - Indulged on a new 'Add' (pinned connection) button into the   Patchbay/Manage... dialog. (EXPERIMENTAL)
+  * - Removed probably dead-code on recycled pipewire node and port changes.
+  * - Removed probably dead-code on pipewire node media.name changes.
+  * - Dropped the experimental status on patchbay user manual.
+  * - Introducing Graph/Options.../Merger to unify node-names for   Patchbay persistence, especially useful to PipeWire clients   that spawn more than one node, having the very same name (eg.   web browsers). (EXPERIMENTAL)
+
+-------------------------------------------------------------------
+Mon Jan 19 16:37:31 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 0.9.3:
+  * An End-of-Spring'25 Beta Release (v0.9.3)
+  * - Corrected node position salvage when Repel Overlapping Nodes option is on.
+  * - Corrected (again) salvage of node positions that possible have   the very same and exact name. (bis)
+  * - Corrected debian build control, rules.
+  * - Corrected (again) salvage of node positions that possible have   the very same and exact name. (EXPERIMENTAL)
+
+-------------------------------------------------------------------
+Mon Jan 19 16:37:22 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 0.9.2:
+  * A Mid-Spring'25 Hot-Fix Beta Release (v0.9.2)
+  * - Save node positions as soon as they taken or are moved around,   avoiding accidental re-positioning to the previous or original   state. (EXPERIMENTAL)
+  * - Regression to the late uniform and generic patchbay node-names   which was a terrible mistake: while it sort of fixed some issues   regarding multimedia players, it sent all other cases bonkers.   So sorry for all the foul play or inconvenience. (EXPERIMENTAL)
+
+-------------------------------------------------------------------
+Mon Jan 19 16:37:11 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 0.9.1:
+  * A Mid-Spring'25 Beta Release (v0.9.1)
+  * - Unused code clean-up.
+  * - Patchbay node-name persistence is now made uniform and generic   for most if not all multimedia players (eg. web browsers) that   usually tend to power-cycle their PipeWire client/driver on a   whim (eg. pause, skip,... whatever) (EXPERIMENTAL)
+
+-------------------------------------------------------------------
+Mon Jan 19 16:36:02 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 0.9.0:
+  * A Spring'25 Beta Release (v0.9.0)
+  * - Stepping up next development cycle (Qt >= 6.9)
+  * - Mitigate an alternate re-positioning to some application nodes   (eg. Discord) on each screen refresh (F5). (EXPERIMENTAL) (#116)
+
+-------------------------------------------------------------------
+Mon Jan 19 16:33:29 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 0.8.3:
+  * An Early Spring'25 Beta Release (v0.8.3)
+  * - Loading a patchbay profile (*.qpwgraph) from the command line,   is now properly shown on the main window title and toolbar.
+  * - Added PipeWire command line version information.
+
+-------------------------------------------------------------------
+Mon Jan 19 16:31:13 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 0.8.2:
+  * An End-of-Winter'25 Beta Release (v0.8.2)
+  * - Port colors: new PypeWire MIDI 2 (UMP) port type is now aliased   to the same as (now old) MIDI port type. (EXPERIMENTAL)
+  * Remove screenshot tag, that not actually has a screenshot
+  * - Fixed command line parsing (QCommandLineParser/Option) to not   exiting the application with a segfault when showing help and   version information.
+  * - Early copyright headers update into the New Year'25...
+  * An End-of-Year'24 Beta Release (v0.8.1)
+  * - Refactored (again) the system-tray 'Presets' menu initialization.
+  * - Refactored system-tray 'Presets' menu initialization (regression).
+  * - Refactored system-tray 'Presets' menu initialization.
+
+-------------------------------------------------------------------
 Sat Nov 22 21:24:20 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove unused BuildRequires: update-desktop-files.
