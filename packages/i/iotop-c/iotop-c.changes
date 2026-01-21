@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 21 07:33:32 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.31:
+  * less operations to read processes' info
+  * improved test if /proc is mounted
+  * improved test if PID is a process
+  * add alpine linux installation instructions #88
+  * add autopkgtests #95
+
+-------------------------------------------------------------------
 Mon Jun  2 05:32:41 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.30:

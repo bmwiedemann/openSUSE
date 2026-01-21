@@ -105,4 +105,17 @@
   * flush stdout after each batch run</comment>
     <requestid>1281728</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5e950372a7447339676b455751fa3854</srcmd5>
+    <version>1.31</version>
+    <time>1769001572</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.31:
+  * less operations to read processes' info
+  * improved test if /proc is mounted
+  * improved test if PID is a process
+  * add alpine linux installation instructions #88
+  * add autopkgtests #95</comment>
+    <requestid>1328434</requestid>
+  </revision>
 </revisionlist>
