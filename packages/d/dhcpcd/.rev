@@ -96,4 +96,13 @@
   * eloop: vastly reworked, kqueue and epoll support on by default</comment>
     <requestid>1320172</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>dd4ee413966e1d53b426b5f9dfaabfaf</srcmd5>
+    <version>10.3.0</version>
+    <time>1769001074</time>
+    <user>anag_factory</user>
+    <comment>- Use systemd tmpfiles to create /var/lib/dhcpcd directory for
+  better immutable os compatibility</comment>
+    <requestid>1328127</requestid>
+  </revision>
 </revisionlist>

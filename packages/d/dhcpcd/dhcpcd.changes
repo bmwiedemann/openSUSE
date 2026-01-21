@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 19 12:20:48 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Use systemd tmpfiles to create /var/lib/dhcpcd directory for
+  better immutable os compatibility
+
+-------------------------------------------------------------------
 Wed Nov 26 12:24:43 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to 10.3.0

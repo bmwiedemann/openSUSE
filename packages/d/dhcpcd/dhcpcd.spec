@@ -25,9 +25,10 @@ URL:            https://github.com/NetworkConfiguration/dhcpcd
 Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-Source3:        dhcpcd.conf
-Source4:        dhcpcd.service
-Source5:        dhcpcd@.service
+Source3:        dhcpcd-sysusers.conf
+Source4:        dhcpcd-tmpfiles.conf
+Source5:        dhcpcd.service
+Source6:        dhcpcd@.service
 BuildRequires:  sysuser-tools
 %sysusers_requires
 
@@ -53,16 +54,17 @@ mostly without configuration.
 
 %install
 %make_install
-install -D -m 0644 %{SOURCE4} %{buildroot}%{_unitdir}/dhcpcd.service
-install -D -m 0644 %{SOURCE5} %{buildroot}%{_unitdir}/dhcpcd@.service
+install -D -m 0644 %{SOURCE5} %{buildroot}%{_unitdir}/dhcpcd.service
+install -D -m 0644 %{SOURCE6} %{buildroot}%{_unitdir}/dhcpcd@.service
 install -D -m 0644 %{SOURCE3} %{buildroot}%{_sysusersdir}/dhcpcd.conf
-install -d %{buildroot}%{_sharedstatedir}/dhcpcd
+install -D -m 0644 %{SOURCE4} %{buildroot}%{_tmpfilesdir}/dhcpcd.conf
 
 %pre -f dhcpcd.pre
 %service_add_pre dhcpcd.service
 
 %post
 %service_add_post dhcpcd.service
+%tmpfiles_create dhcpcd.conf
 
 %preun
 %service_del_preun dhcpcd.service
@@ -91,6 +93,6 @@ install -d %{buildroot}%{_sharedstatedir}/dhcpcd
 %{_unitdir}/dhcpcd.service
 %{_unitdir}/dhcpcd@.service
 %{_sysusersdir}/dhcpcd.conf
-%attr(0750,root,root) %dir %{_sharedstatedir}/dhcpcd
+%{_tmpfilesdir}/dhcpcd.conf
 
 %changelog
