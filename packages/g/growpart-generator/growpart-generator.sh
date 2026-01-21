@@ -17,6 +17,13 @@ for mnt in $(findmnt --fstab --options x-growpart.grow --output TARGET --noheadi
 	# Last number in the device name: /dev/nvme0n1p42 -> 42
 	partnum="$(echo "${dev}" | sed 's/^.*[^0-9]\([0-9]\+\)$/\1/')"
 
+	# systemd uses a different unit name for growfs for /...
+	if [ "$mnt" = "/" ]; then
+		growfs_unit="systemd-growfs-root.service"
+	else
+		growfs_unit="systemd-growfs@${mnt_esc}.service"
+	fi
+
 	mkdir -p "${UNIT_DIR}/${mnt_esc}.mount.wants"
 	cat > "${UNIT_DIR}/growpart@${dev_esc}.service" <<EOF
 [Unit]
@@ -28,7 +35,7 @@ After=${mnt_esc}.mount
 Before=shutdown.target local-fs.target
 
 # Resize the partition before (possibly) resizing the file system
-Before=systemd-growfs@${mnt_esc}.service
+Before=${growfs_unit}
 
 # growpart requires /tmp to operate
 Requires=tmp.mount

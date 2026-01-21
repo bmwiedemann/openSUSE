@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 19 11:26:19 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Support growpart for /
+
+-------------------------------------------------------------------
 Mon Jul 15 13:17:26 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Remove meanwhile unnecessary /bin/sh -c indirection
