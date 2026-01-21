@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 19 07:47:28 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 0.6.2 (fixes CVE-2026-2141, bsc#1256331)
+  * Fixed continuation octet limits in OID/RELATIVE-OID decoder (CVE-2026-23490).
+  * Added support for Python 3.14.
+  * Added SECURITY.md policy.
+  * Migrated to pyproject.toml packaging.
+- fix broken changelog entries
+
+-------------------------------------------------------------------
 Mon Oct  7 09:45:53 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.6.1
@@ -205,7 +215,6 @@ Thu Sep  7 09:24:51 UTC 2017 - michael@stroeder.com
 - updated to upstream release 0.3.4
 
 Revision 0.3.4, released 07-09-2017
------------------------------------
 
 - Fixed Native encoder to handle SEQUENCE/SET objects without
   the componentType property
@@ -217,7 +226,6 @@ Revision 0.3.4, released 07-09-2017
   unicode decoding may have scrambled the data
 
 Revision 0.3.3, released 27-08-2017
------------------------------------
 
 - Improved ASN.1 types instantiation performance
 - Improved BER/CER/DER decoder performance by not unconditionally casting
@@ -237,7 +245,6 @@ Tue Aug 15 17:32:13 UTC 2017 - michael@stroeder.com
 - updated to upstream release 0.3.2
 
 Revision 0.3.2, released 04-08-2017
------------------------------------
 
 - Fixed SequenceOf/SetOf types initialization syntax to remain
   backward compatible with pyasn1 0.2.*
@@ -259,7 +266,6 @@ Sat Jul 29 21:01:20 UTC 2017 - michael@stroeder.com
 - do not ship doc/source/
 
 Revision 0.3.1, released 26-07-2017
------------------------------------
 
 - ASN.1 types __init__(), .clone() and .subtype() signatures
   refactored into keyword arguments to simplify their signatures.
@@ -339,7 +345,6 @@ Mon Mar  6 13:28:21 UTC 2017 - michael@stroeder.com
 - updated to upstream release 0.2.3
 
 Revision 0.2.3, released 25-02-2017
------------------------------------
 
 - Improved SEQUENCE/SET/CHOICE decoding performance by maintaining a single shared
   NamedType object for all instances of SEQUENCE/SET object.
@@ -376,7 +381,6 @@ Tue Feb  7 07:35:04 UTC 2017 - michael@stroeder.com
 - updated project and source URLs and list of doc files
 
 Revision 0.2.2, released 07-02-2017
------------------------------------
 
 - FIX TO A SECURITY WEAKNESS: define length only decoders could have successfully
   processed indefinite length serialization.
@@ -385,7 +389,6 @@ Revision 0.2.2, released 07-02-2017
 - Broken Enumerated subtyping fixed.
 
 Revision 0.2.1, released 05-02-2017
------------------------------------
 
 - FIX TO A SECURITY WEAKNESS: BER decoder improperly cached long tags.
 - New "native" codec implemented to transform pyasn1 types to Python built-in types and back.
