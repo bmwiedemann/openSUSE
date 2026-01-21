@@ -1,7 +1,26 @@
 -------------------------------------------------------------------
+Wed Jan 21 07:33:02 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Don't fail strip on non-existing files (easy hack to fix 32bit
+  builds).
+
+-------------------------------------------------------------------
+Thu Jan 15 17:53:42 UTC 2026 - Peter Varkoly <varkoly@suse.com>
+
+- fix (bsc#1256462) [Build 12.10] openQA test fails in mta: Failed to start postfix.service
+  Remove postfix set-permisson from all spaces
+- Strip binaries
+
+-------------------------------------------------------------------
+Tue Jan 13 20:27:51 UTC 2026 - Peter Varkoly <varkoly@suse.com>
+
+- fix (bsc#1256462) [Build 12.10] openQA test fails in mta: Failed to start postfix.service
+  Put postfix set-permisson into %post
+
+-------------------------------------------------------------------
 Sun Dec 21 20:52:29 UTC 2025 - Peter Varkoly <varkoly@suse.com>
 
-- (jsc#PED-14859) Fix packages for Immutable Mode - postfix  
+- (jsc#PED-14859) Fix packages for Immutable Mode - postfix
 
 -------------------------------------------------------------------
 Sun Dec 14 18:45:30 UTC 2025 - Peter Varkoly <varkoly@suse.com>

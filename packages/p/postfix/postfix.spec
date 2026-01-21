@@ -54,7 +54,7 @@ Source1:        https://de.postfix.org/ftpmirror/official/postfix-%{version}.tar
 Source2:        %{name}-SUSE.tar.gz
 Source3:        %{name}-mysql.tar.bz2
 Source4:        postfix.keyring
-Source10:       %{name}-rpmlintrc
+Source10:       postfix-rpmlintrc
 Source11:       check_mail_queue
 Source12:       postfix-user.conf
 Source13:       postfix-vmail-user.conf
@@ -177,7 +177,7 @@ maps with Postfix, you need this.
 %build
 unset AUXLIBS AUXLIBS_LDAP AUXLIBS_PCRE AUXLIBS_MYSQL AUXLIBS_PGSQL AUXLIBS_SQLITE AUXLIBS_CDB
 
-export CCARGS="${CCARGS} %{optflags} -fcommon -Wno-comments -Wno-missing-braces -fPIC"
+export CCARGS="${CCARGS} %{optflags} -s -fcommon -Wno-comments -Wno-missing-braces -fPIC"
 
 %ifarch s390 s390x ppc
 export CCARGS="${CCARGS} -fsigned-char"
@@ -378,6 +378,10 @@ install -m 644 %{SOURCE13} %{buildroot}%{_sysusersdir}/
 # posttls-finger is built but not installed
 install -m 755 bin/posttls-finger %{buildroot}%{_sbindir}/
 
+for i in /usr/lib/postfix/postfix-lmdb.so /usr/lib/postfix/postfix-pcre.so /usr/lib64/libpostfix-dns.so /usr/lib64/libpostfix-global.so /usr/lib64/libpostfix-master.so /usr/lib64/libpostfix-tls.so /usr/lib64/libpostfix-util.so /usr/lib/postfix/postfix-ldap.so /usr/lib/postfix/postfix-mysql.so /usr/lib/postfix/postfix-pgsql.so
+do
+	strip --strip-all %{buildroot}${i} || :
+done
 # ---------------------------------------------------------------------------
 
 %pre -f postfix.pre
@@ -391,13 +395,11 @@ install -m 755 bin/posttls-finger %{buildroot}%{_sbindir}/
 %set_permissions %{_sbindir}/postdrop
 %set_permissions %{_sbindir}/postlog
 %set_permissions %{_sbindir}/postqueue
-%set_permissions /var/spool/mail/
 
 %verifyscript
 %verify_permissions %{_sbindir}/postdrop
 %verify_permissions %{_sbindir}/postlog
 %verify_permissions %{_sbindir}/postqueue
-%verify_permissions -e /var/spool/mail/
 
 %postun
 %service_del_postun %{name}.service
@@ -502,9 +504,9 @@ install -m 755 bin/posttls-finger %{buildroot}%{_sbindir}/
 %dir %attr(0700,%{name},root) /%{pf_queue_directory}/trace
 %dir %attr(0730,%{name},maildrop) /%{pf_queue_directory}/maildrop
 %dir %attr(0710,%{name},maildrop) /%{pf_queue_directory}/public
-%dir %attr(1777,root,root) /var/spool/mail
-/var/mail
 %{_sysusersdir}/postfix-user.conf
+/var/mail
+/var/spool/mail
 
 %files devel
 %{_includedir}/%{name}/

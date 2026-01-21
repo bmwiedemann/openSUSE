@@ -1,7 +1,2 @@
-addFilter("dir-or-file-outside-snapshot /var/adm/backup/postfix")
-addFilter("dir-or-file-outside-snapshot /var/lib/postfix")
-addFilter("dir-or-file-outside-snapshot /var/mail")
-addFilter("dir-or-file-outside-snapshot /var/spool/mail")
-addFilter("dir-or-file-outside-snapshot /var/spool/postfix")
-addFilter("non-standard-dir-in-var*")
+addFilter("W: no-%check-section")
 addFilter(".*[WE]:.*filelist-forbidden-fhs23.*/var/mail.*")

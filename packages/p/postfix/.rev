@@ -2546,4 +2546,15 @@ successfully tested on Tumbleweed x86_64</comment>
       /sbin/postalias /etc/aliases</comment>
     <requestid>1327227</requestid>
   </revision>
+  <revision rev="260" vrev="2">
+    <srcmd5>1a77f0dd0ef8ca45436501ac97348029</srcmd5>
+    <version>3.10.7</version>
+    <time>1769001271</time>
+    <user>anag_factory</user>
+    <comment>- Don't fail strip on non-existing files (easy hack to fix 32bit
+  builds).
+
+- (jsc#PED-14859) Fix packages for Immutable Mode - postfix (forwarded request 1328433 from dimstar)</comment>
+    <requestid>1328436</requestid>
+  </revision>
 </revisionlist>
