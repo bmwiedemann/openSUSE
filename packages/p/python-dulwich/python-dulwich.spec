@@ -1,7 +1,7 @@
 #
 # spec file for package python-dulwich
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %{?sle15_python_module_pythons}
 %define oldpython python
 Name:           python-dulwich
-Version:        0.22.8
+Version:        0.25.2
 Release:        0
 Summary:        Pure-Python Git Library
 License:        Apache-2.0 OR GPL-2.0-or-later
@@ -40,20 +40,22 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with test}
-BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module fastimport}
 BuildRequires:  %{python_module geventhttpclient}
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module gpg}
+BuildRequires:  %{python_module merge3}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module typing_extensions if %python-base < 3.8}
+BuildRequires:  %{python_module typing_extensions if %python-base < 3.12}
 BuildRequires:  %{python_module urllib3 >= 1.24.1}
+BuildRequires:  openssh-common
 %if 0%{?suse_version} <= 1500
 BuildRequires:  python-mock
 %endif
 %endif
 Requires:       python-urllib3 >= 1.24.1
-%if %{python_version_nodots} < 38
+%if %{python_version_nodots} < 312
 Requires:       python-typing_extensions
 %endif
 Requires(post): update-alternatives
@@ -69,10 +71,13 @@ is the place where Mr. and Mrs. Git live in one of the Monty Python sketches.
 
 %prep
 %autosetup -p1 -n dulwich-dulwich-%{version}
-sed -i '/usr\/bin\/env/d' dulwich/contrib/diffstat.py
+sed -i '/usr\/bin\/env/d' dulwich/diffstat.py
 
 %build
 export CFLAGS="%{optflags}"
+# Rust extensions currently don't build because
+# of missing vendoring
+# TODO: fix building with Rust extensions
 %pyproject_wheel
 
 %install
@@ -85,7 +90,10 @@ export CFLAGS="%{optflags}"
 
 %check
 %if %{with test}
-%python_expand $python -m unittest tests.test_suite
+# These tests break the testsuite with a NameError if type checking is not enabled
+rm tests/contrib/test_swift.py
+rm tests/contrib/test_swift_smoke.py
+%pytest tests/ -k "not (test_filter_branch_index_filter)"
 %endif
 
 %post

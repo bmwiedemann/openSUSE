@@ -1,4 +1,118 @@
 -------------------------------------------------------------------
+Fri Jan 16 10:24:18 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 0.25.2
+  * Fix test failure when GPG raises ``InvalidSigners`` instead of
+    ``GPGMEError`` on systems without usable secret keys.
+  * Object store ``close()`` methods can now be called multiple times safely.
+    Object stores now raise ``ResourceWarning`` when destroyed with unclosed
+    resources.
+- Update to 0.25.1
+  * Add signature vendor system for signing and verifying Git objects.
+    Supports GPG, SSH signatures, and X.509 certificates.
+  * Add support for partial clone with object filtering.
+  * Fix sparse pattern matching in worktree operations.
+  * ``dulwich.porcelain.status`` now returns regular strings.
+  * Fix AssertionError when accessing ref names with length matching binary
+    hash length (e.g., 32 bytes for SHA-256).
+  * Fix commit graph parsing failure when processing commits with 3+ parents
+    (octopus merges) with incomplete EXTRA_EDGE_LIST chunk data.
+  * Add ``parse_commit_broken`` function to parse broken commits.
+  * Add basic ``dulwich.aiohttp`` module that provides server support.
+  * Add callback-based authentication support for HTTP and proxy authentication
+    in ``Urllib3HttpGitClient``. This allows applications to handle
+    authentication dynamically without intercepting exceptions. Callbacks
+    receive the authentication scheme information (via WWW-Authenticate or
+    Proxy-Authenticate headers) and can provide credentials or cancel.
+- Update to 0.25.0
+  * **PLEASE NOTE**: This release makes quite a lot of changes to public APIs.
+    This is ahead of a 1.0 release, after which API changes will be kept
+    backwards compatible.
+  * Split out worktree module from porcelain into separate ``dulwich.worktree``
+    module for better code organization.
+  * Split porcelain module into separate submodules: ``dulwich.porcelain.tags``,
+    ``dulwich.porcelain.notes``, ``dulwich.porcelain.submodule``, and
+    ``dulwich.porcelain.lfs``. Main porcelain module re-exports all functions
+    for backward compatibility.
+  * Ensure ``dulwich.porcelain`` package is properly installed as a directory
+    structure with submodules.
+  * Add tests for consistent license preamble across codebase and prevent
+    ``os.environ`` usage in lower layers.
+  * Add ``__all__`` exports to all modules for better API clarity and wildcard
+    import support.
+  * Fix ParamikoSSHVendor interface compatibility with SSHVendor.
+  * Add fallback when HEAD is missing in dumb HTTP protocol, improving
+    compatibility with repositories that don't have a HEAD reference.
+  * Fix smudge filter subprocess fallback for special characters in path.
+  * Fix UTF-8 decode error in process filter protocol when handling binary
+    files.
+  * Fix ``porcelain.add()`` to correctly handle ``None`` values in pathspec
+    parameter.
+  * Add ``--stat`` argument to ``dulwich diff`` command to display diffstat
+    summary showing files changed and line additions/deletions.
+  * Avoid signing commits in ``porcelain.stash()`` operations to prevent
+    GPG prompt interruptions during automated stashing.
+  * Improve error handling when trying to remove non-empty directories during
+    worktree operations.
+  * Move greenthreads support to dulwich/contrib.
+    This code isn't really developed and only used
+    by the swift support.
+  * Move protocol-level peeled tags functions (``serialize_refs()``,
+    ``write_info_refs()``, ``split_peeled_refs()``, ``strip_peeled_refs()``)
+    from ``dulwich.refs`` to ``dulwich.protocol``. The ``^{}`` peeled tags syntax
+    is now properly isolated to protocol-level code. Remove ``InfoRefsContainer``
+    class (functionality inlined into ``SwiftInfoRefsContainer``).
+  * Fix ``get_unstaged_changes()`` to correctly pass Blob objects to filter
+    callbacks instead of raw bytes. This fixes crashes when using
+    ``.gitattributes`` files with filter callbacks like ``checkin_normalize``.
+  * The ``ObjectID`` and ``Ref`` types are now newtypes, making it harder to
+    accidentally pass the wrong type - as notified by mypy. Most of this is in
+    lower-level code.
+  * Implement support for ``core.sharedRepository`` configuration option.
+    Repository files and directories now respect shared repository permissions
+    for group-writable or world-writable repositories. Affects loose objects,
+    pack files, pack indexes, index files, and other git metadata files.
+  * Optimize status performance by using stat matching to skip reading
+    and filtering unchanged files. This provides significant performance
+    improvements for repositories with LFS filters, where filter operations can
+    be very expensive. The optimization matches Git's behavior of using mtime
+    and size comparisons to determine if files need processing. File entries
+    now use nanosecond-resolution timestamps for more accurate change detection
+  * Add support for multi-pack index (MIDX) files for improved performance with
+    multiple pack files. Supports reading and writing MIDX files, including mmap
+    support for efficient loading. Enables faster object lookups across multiple
+    packs.
+  * Implement ``git restore`` and ``git switch`` commands with corresponding
+    porcelain functions. The ``restore`` command allows restoring files from
+    commits or the index, while ``switch`` provides branch switching functionality.
+  * Add support for ``core.protectHFS`` configuration option to protect against
+    HFS+ filesystem vulnerabilities.
+  * Skip tests that require the merge3 module when it is not available, improving
+    test compatibility across different Python environments.
+  * Drop support for Python 3.9.
+  * Add support for pack bitmap indexes for fast reachability queries.
+  * Add support for ``git rerere`` (reuse recorded resolution) with CLI
+    subcommands and porcelain functions. Supports ``rerere.enabled`` and
+    ``rerere.autoupdate`` configuration.
+  * Add support for ``git mailinfo`` command to extract patch information from
+    email messages. Implements ``dulwich mailinfo`` CLI command,
+    ``porcelain.mailinfo()``, and ``patch.mailinfo()`` with support for subject
+    munging, -k/-b flags, --scissors, --encoding, and --message-id options.
+  * Add support for column formatting.
+  * Add ``dulwich diagnose`` command to display diagnostic information about
+    the Python environment including Python version, PYTHONPATH, sys.path,
+    Dulwich version, and installed dependencies with their versions.
+  * Add support for SHA256 repositories. Dulwich can now read and write Git
+    repositories using SHA256 object format. This includes support for loose
+    objects, pack files (v1 and v2 indexes), tree parsing with SHA256 hashes,
+    pack bitmap indexes, commit graphs, and network protocol operations
+    (clone, fetch, push). The Rust extensions have been updated to support
+    variable hash lengths. SHA256 repositories require format version 1 and the
+    objectFormat extension. The ``dulwich init`` command now supports
+    ``--objectformat`` option to create SHA256 repositories. Client and server
+    implementations advertise and negotiate object-format capabilities.
+
+-------------------------------------------------------------------
 Wed Apr 23 15:06:24 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 0.22.8.
