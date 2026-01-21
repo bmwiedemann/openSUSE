@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Tue Jan 20 06:54:31 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 12.1.0
+  * Deprecations
+    * Deprecate getdata(), in favour of new get_flattened_data() #9292 [@radarhere]
+  * Documentation
+    * Specify APNG duration type when opening #9368 [@radarhere]
+    * Added release notes for #9350 #9366 [@radarhere]
+    * Update ImageMorph documentation #9349 [@radarhere]
+    * Docs: update major bump cadence #9334 [@hugovk]
+    * Add release notes for #9070 #9320 [@radarhere]
+    * Updated Ubuntu version #9306 [@radarhere]
+    * Update macOS tested Pillow versions #9265 [@radarhere]
+  * Dependencies
+    * Update harfbuzz to 12.3.0 #9355 [@radarhere]
+    * Update xz to 5.8.2 #9343 [@radarhere]
+    * Updated libjpeg-turbo to 3.1.3 #9333 [@radarhere]
+    * Updated zlib-ng to 2.3.2 #9324 [@radarhere]
+    * Updated libpng to 1.6.53 #9325 [@radarhere]
+    * Update actions/checkout action to v6 #9323 [@renovate[bot]]
+    * Update dependency mypy to v1.19.0 #9322 [@renovate[bot]]
+    * Updated libpng to 1.6.51 #9305 [@radarhere]
+    * Updated brotli to 1.2.0 #9284 [@radarhere]
+    * Update libimagequant to 4.4.1 #9301 [@radarhere]
+    * Update zlib-ng to 2.3.1, except on manylinux2014 aarch64 #9312 [@radarhere]
+    * Updated harfbuzz to 12.2.0 #9289 [@radarhere]
+    * Update github-actions #9277 [@renovate[bot]]
+  * Testing
+    * Replace pre-commit with prek #9360 [@hugovk]
+    * Test PyQt6 on Python 3.14 on Windows #9353 [@radarhere]
+    * Test 32-bit Windows on Windows Server 2022 #9345 [@radarhere]
+    * Correct variable type #9335 [@radarhere]
+    * Fix ResourceWarnings in selftest.py #9332 [@hugovk]
+    * Fix testing good P mode BMP images #9319 [@radarhere]
+    * Test Python 3.15 pre-release #9331 [@hugovk]
+    * Test ImageFont.ImageFont, in case freetype2 is not supported #9287 [@radarhere]
+    * Add Fedora 43 #9290 [@radarhere]
+    * Remove Fedora 41 #9260 [@radarhere]
+  * Type hints
+    * Add ImageFile context manager #9367 [@radarhere]
+    * Assert fp is not None #8617 [@radarhere]
+    * Added return type to ImageFile _close_fp() #9356 [@radarhere]
+    * Use different variables for Image and ImageFile instances #9316 [@radarhere]
+    * Correct variable type #9335 [@radarhere]
+    * Improve type hints #9317 [@radarhere]
+    * Use different variables for Image and ImageFile instances #9268 [@radarhere]
+    * Added type hints #9269 [@radarhere]
+    * Correct getitem return type #9264 [@radarhere]
+  * Other changes
+    * Simplify band splitting #9291 [@radarhere]
+    * Support saving APNG float durations #9365 [@radarhere]
+    * Allow 1 mode images in MorphOp #9348 [@radarhere]
+    * Use minimum supported Python version for Lint #9364 [@radarhere]
+    * Allow for duplicate font variation styles #9362 [@radarhere]
+    * Call parent verify method #9357 [@radarhere]
+    * Return LUT from LutBuilder build_default_lut() #9350 [@radarhere]
+    * Simplify WebP code #9329 [@radarhere]
+    * Use unsigned long for DWORD #9352 [@radarhere]
+    * Cast to UINT32 before shifting bits #9347 [@radarhere]
+    * [pre-commit.ci] pre-commit autoupdate #9318 [@pre-commit-ci[bot]]
+    * Allow window ID to be passed to ImageGrab.grab() on macOS #9070 [@yankeguo]
+    * Apply encoder options when saving multiple PNG frames #9300 [@radarhere]
+    * Read all non-zero transparency from mode 1 PNG images as 255 #9282 [@radarhere]
+    * Support writing IFD, SIGNED_RATIONAL and InkNames TIFF tags #9276 [@radarhere]
+    * Remove unused modes #9275 [@radarhere]
+    * Correct allocating new color to RGBA palette #9313 [@radarhere]
+    * Close image on ImageFont exception #9304 [@radarhere]
+    * Reapply "Use macos-latest for iOS arm64 simulator" #9259 [@radarhere]
+    * Escape period in pre-commit-config #9036 [@radarhere]
+    * Add Apache-2.0 notice to IcoImagePlugin #8947 [@stefan6419846]
+    * [pre-commit.ci] pre-commit autoupdate #9288 [@pre-commit-ci[bot]]
+    * Simplify code now that I;16* modes are the only IMAGING_TYPE_SPECIAL #9263 [@radarhere]
+    * Remove BytesIO from DdsImagePlugin #9273 [@radarhere]
+    * Fix ZeroDivisionError in DdsImagePlugin #9272 [@radarhere]
+    * Fix warnings #9257 [@radarhere]
+
+-------------------------------------------------------------------
 Fri Jan  9 23:15:51 UTC 2026 - Mia Herkt <mia@0x0.st>
 
 - Enable AVIF support via libavif
