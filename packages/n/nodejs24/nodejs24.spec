@@ -249,7 +249,7 @@ BuildRequires:  bundled_openssl_should_not_be_required
 %if ! 0%{with intree_cares}
 BuildRequires:  pkgconfig(libcares) >= 1.17.0
 %else
-Provides:       bundled(libcares2) = 1.34.5
+Provides:       bundled(libcares2) = 1.34.6
 %endif
 
 %if %node_version_number >= 22
@@ -341,7 +341,7 @@ Provides:       bundled(node-amaro) = 1.1.4
 Provides:       bundled(node-cjs-module-lexer) = 2.1.0
 Provides:       bundled(node-corepack) = 0.34.2
 Provides:       bundled(node-minimatch) = 10.0.3
-Provides:       bundled(node-undici) = 7.16.0
+Provides:       bundled(node-undici) = 7.18.2
 
 %description
 Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js

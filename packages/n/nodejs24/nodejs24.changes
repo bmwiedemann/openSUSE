@@ -2,6 +2,8 @@
 Thu Jan 15 14:18:29 UTC 2026 - Adam Majer <adam.majer@suse.de>
 
 - Update to 24.13.0:
+  * deps: updated undici to 7.18.2 (bsc#1256848, CVE-2026-22036)
+  * deps: updated bundled c-ares to 1.34.6 (if used)
   * add TLSSocket default error handler (bsc#1256573, CVE-2025-59465)
   * disable futimes when permission model is enabled (bsc#1256571, CVE-2025-55132)
   * require full read and write to symlink APIs (bsc#1256569, CVE-2025-55130)
