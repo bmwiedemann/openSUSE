@@ -7,4 +7,26 @@
     <comment></comment>
     <requestid>1308148</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2e53c624368e3a734cc08312c1f00aab</srcmd5>
+    <version>0.11.24</version>
+    <time>1769001480</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.11.24:
+  * Fixed a possible glitch when processing the audio of a ma_sound when doing
+    resampling
+  * Fixed a possible crash in the node graph relating to scheduled starts and stops
+  * Fixed a bug where MA_NO_DECODING would disable the WAV encoder
+  * Fixed a pthread compatibility issue
+  * Fixed a possible crash in the resource manager
+  * Fixed a possible double-uninit error when a decoder fails to initialize
+  * Addressed a few errors found through static analysis, particularly around
+    possible null pointer dereferences
+  * ma_sound_is_playing() will now correctly return false when called from
+    inside the end callback of a sound
+  * Miscellaneous compiler compatibility and warning fixes
+  * PulseAudio: Fix a resource leak when a context fails to connect
+  * Web: Fixed an error when uninitializing a context</comment>
+    <requestid>1328410</requestid>
+  </revision>
 </revisionlist>

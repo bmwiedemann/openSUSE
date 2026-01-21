@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jan 21 00:56:53 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.11.24:
+  * Fixed a possible glitch when processing the audio of a ma_sound when doing
+    resampling
+  * Fixed a possible crash in the node graph relating to scheduled starts and stops
+  * Fixed a bug where MA_NO_DECODING would disable the WAV encoder
+  * Fixed a pthread compatibility issue
+  * Fixed a possible crash in the resource manager
+  * Fixed a possible double-uninit error when a decoder fails to initialize
+  * Addressed a few errors found through static analysis, particularly around
+    possible null pointer dereferences
+  * ma_sound_is_playing() will now correctly return false when called from
+    inside the end callback of a sound
+  * Miscellaneous compiler compatibility and warning fixes
+  * PulseAudio: Fix a resource leak when a context fails to connect
+  * Web: Fixed an error when uninitializing a context
+
+-------------------------------------------------------------------
 Sat Sep 20 16:46:22 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - initial packaging
