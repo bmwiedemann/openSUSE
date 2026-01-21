@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 20 08:42:09 UTC 2026 - Robert Frohl <rfrohl@suse.com>
+
+- Update to version 20260120:
+  * Allow bluetoothd to access alsa config (bsc#1255866)
+  * Allow snapper_sdbootutil_plugin to set targets file context during 'mv' (bsc#1256419)
+
+-------------------------------------------------------------------
 Fri Jan 09 12:19:46 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 20260108:
