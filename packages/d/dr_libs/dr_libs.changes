@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 21 01:02:00 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 20260117:
+  * dr_mp3: Fix some compilation warnings
+  * dr_wav: Fix some compilation warnings
+  * dr_flac: Fix a compilation warning
+  * dr_flac: Fix a compiler compatibility issue with some inlined assembly
+  * dr_mp3: Fix an error in drmp3_open_and_read_pcm_frames_s16() and family
+
+-------------------------------------------------------------------
 Sat Dec  6 18:29:04 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 20251202:
