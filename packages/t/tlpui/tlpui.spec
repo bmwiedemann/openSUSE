@@ -1,7 +1,7 @@
 #
 # spec file for package tlpui
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define pythons python3
 Name:           tlpui
-Version:        1.8.1
+Version:        1.9.0
 Release:        0
 Summary:        A GTK user interface for TLP
 License:        CC-BY-SA-4.0 AND GPL-2.0-or-later
