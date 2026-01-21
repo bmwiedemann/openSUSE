@@ -24,6 +24,8 @@ Summary:        Pretty printer for pytest progress
 License:        BSD-3-Clause
 URL:            https://github.com/Frozenball/pytest-sugar
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-sugar/pytest-sugar-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM: drop-pytest6-support.patch gh#Teemu/pytest-sugar@05a1e912fd9f
+Patch0:         drop-pytest6-support.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -40,7 +42,7 @@ BuildArch:      noarch
 pytest-sugar is a plugin for py.test that shows failures and errors instantly and shows a progress bar.
 
 %prep
-%setup -q -n pytest-sugar-%{version}
+%autosetup -p1 -n pytest-sugar-%{version}
 
 %build
 %pyproject_wheel

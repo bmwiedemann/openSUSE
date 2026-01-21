@@ -131,4 +131,13 @@
     and display</comment>
     <requestid>1304656</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>b272b14fe0d2e79471d492cb08142c3f</srcmd5>
+    <version>1.1.1</version>
+    <time>1769002060</time>
+    <user>anag_factory</user>
+    <comment>- Make it compatible with pytest 9.0. Add upstream patch
+  drop-pytest6-support.patch, gh#Teemu/pytest-sugar@05a1e912fd9f</comment>
+    <requestid>1328468</requestid>
+  </revision>
 </revisionlist>

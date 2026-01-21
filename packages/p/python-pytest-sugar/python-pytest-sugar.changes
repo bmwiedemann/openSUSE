@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 21 10:40:25 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Make it compatible with pytest 9.0. Add upstream patch
+  drop-pytest6-support.patch, gh#Teemu/pytest-sugar@05a1e912fd9f
+
+-------------------------------------------------------------------
 Sun Sep 14 18:27:57 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.1:
