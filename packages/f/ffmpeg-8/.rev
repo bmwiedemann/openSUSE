@@ -29,4 +29,13 @@
     <comment>- Update to release 8.0.1</comment>
     <requestid>1326556</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>7a9de5b16f5fe777b7e310ee69df0069</srcmd5>
+    <version>8.0.1</version>
+    <time>1769001140</time>
+    <user>anag_factory</user>
+    <comment>- Enable some more codecs based on package availability and
+  based on comparison with Fedora's ffmpeg package.</comment>
+    <requestid>1328316</requestid>
+  </revision>
 </revisionlist>

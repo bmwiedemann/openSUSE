@@ -36,6 +36,7 @@ adpcm_ima_moflex
 adpcm_ima_mtf
 adpcm_ima_oki
 adpcm_ima_qt
+adpcm_ima_qt_at
 adpcm_ima_rad
 adpcm_ima_smjpeg
 adpcm_ima_ssi
@@ -55,6 +56,7 @@ adpcm_xa
 adpcm_xmd
 adpcm_yamaha
 adpcm_zork
+aic
 alac
 alias_pix
 amrnb # opencore-amr
@@ -115,6 +117,7 @@ dfa
 dfpwm
 dirac # dirac
 dnxhd
+dnxhr
 dolby_e
 dpx
 dsd_lsbf
@@ -160,6 +163,7 @@ gif # libpng
 gremlin_dpcm
 gsm # libgsm
 gsm_ms
+gsm_ms_at
 h261
 h263
 h263_v4l2m2m # passthrough
@@ -199,14 +203,18 @@ libaom # libaom
 libaom_av1 # libaom
 libcodec2 # codec2
 libdav1d # av1
+libfdk_aac # fdk-aac-free
 libgsm # libgsm
 libgsm_ms # libgsm
+libilbc # ilbc
 libjxl # libjxl
+liblc3 # liblc3
 libopencore_amrnb # opencore-amr
 libopencore_amrwb # opencore-amr
 libopenh264 # passthrough/dlopen
 libopenjpeg # openjpeg
 libopus # opus
+librsvg # librsvg
 libschroedinger # schroedinger
 libspeex # speex
 libvorbis # libvorbis
@@ -265,6 +273,7 @@ msnsiren
 msp2
 msrle
 mss1
+mss2
 msvideo1
 mszh
 mts2
@@ -338,6 +347,7 @@ qcelp
 qdm2
 qdmc
 qdraw
+qoa
 qoi
 qpeg
 qtrle

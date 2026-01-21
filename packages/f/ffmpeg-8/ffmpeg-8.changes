@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 20 12:51:56 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Enable some more codecs based on package availability and
+  based on comparison with Fedora's ffmpeg package.
+
+-------------------------------------------------------------------
 Sat Jan 10 19:47:20 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 8.0.1
