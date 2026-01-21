@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Jan 21 06:10:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.48.0:
+  * Added Features
+    - enable arch provider [#814 @willmurphyscode]
+  * Additional Changes
+    - fix incremental providers list [#809 @willmurphyscode]
+    - enable more frequent runs of incremental providers [#808
+      @willmurphyscode]
+    - allow overriding provider selection [#806 @willmurphyscode]
+  * Dependencies
+    - chore(deps-dev): Bump pytest from 7.4.4 to 9.0.2 (#833)
+    - chore(deps): Bump the python-minor-and-patch group with 15
+      updates (#832)
+    - chore(deps): Bump requests from 2.32.3 to 2.32.5 (#830)
+    - chore(deps): Bump actions/setup-python in
+      /.github/actions/bootstrap (#816)
+    - chore(deps): Bump actions/setup-go in
+      /.github/actions/bootstrap (#819)
+    - chore(deps): update anchore dependencies (#812)
+    - chore(deps): update tools to latest versions (#810)
+    - chore(deps): update anchore dependencies (#811)
+    - chore(deps): update tools to latest versions (#796)
+    - chore(deps): Bump golang.org/x/text from 0.32.0 to 0.33.0
+      (#800)
+
+-------------------------------------------------------------------
 Sun Jan 11 08:54:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.47.3:
