@@ -677,4 +677,13 @@
   * Use xterm-256color on WSL based hosts boo#1237756</comment>
     <requestid>1291276</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>7c28ca621781ecd47cca5467feee001f</srcmd5>
+    <version>1.5.9</version>
+    <time>1769001116</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.5.9:
+  * Use snapper create on transactional systems again</comment>
+    <requestid>1328211</requestid>
+  </revision>
 </revisionlist>

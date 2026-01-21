@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 20 08:01:25 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.5.9:
+  * Use snapper create on transactional systems again
+
+-------------------------------------------------------------------
 Tue Jul 08 13:12:31 UTC 2025 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 1.5.8:

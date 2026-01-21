@@ -23,7 +23,7 @@
 %endif
 
 Name:           jeos-firstboot
-Version:        1.5.8
+Version:        1.5.9
 Release:        0
 Summary:        Simple text based JeOS first boot wizard
 License:        MIT
@@ -41,6 +41,8 @@ Requires:       timezone
 %if 0%{?suse_version} >= 1550
 Requires:       ssh-pairing
 %endif
+# Used by jeos-firstboot-snapshot
+Requires:       /usr/bin/findmnt
 Requires:       ((/usr/bin/qrencode and /usr/bin/oathtool) if pam_oath)
 Requires:       (/usr/bin/nmtui if NetworkManager)
 BuildArch:      noarch

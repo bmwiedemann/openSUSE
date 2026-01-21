@@ -2,6 +2,5 @@
   <title>Files and scripts for JeOS first boot</title>
   <description>Files and scripts for JeOS first boot
 </description>
-  <devel project="devel:openSUSE:Factory" package="jeos-firstboot"/>
   <url>https://github.com/openSUSE/jeos-firstboot</url>
 </package>
