@@ -1,0 +1,25 @@
+From 96ba83b67daac9d45efb5e5d7d4c904aee8446ac Mon Sep 17 00:00:00 2001
+From: Simon McVittie <smcv@debian.org>
+Date: Fri, 19 Dec 2025 18:07:02 +0000
+Subject: [PATCH] video_test: Skip SDL_SetWindowMouseRect with sdl2-compat
+ dummy driver
+
+This driver doesn't implement mouse confinement.
+
+Signed-off-by: Simon McVittie <smcv@debian.org>
+---
+ sdl2/test/video_test.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/sdl2/test/video_test.py b/sdl2/test/video_test.py
+index 0b8801f..a216906 100644
+--- a/sdl2/test/video_test.py
++++ b/sdl2/test/video_test.py
+@@ -730,6 +730,7 @@ def test_SDL_GetGrabbedWindow(window):
+     # NOTE: Should implement this once the above tests are fixed
+     pass
+ 
++@pytest.mark.skipif(DRIVER_DUMMY, reason="Not implemented by dummy driver")
+ @pytest.mark.skipif(sdl2.dll.version < 2018, reason="not available")
+ def test_SDL_GetSetWindowMouseRect(with_sdl):
+     flags = sdl2.SDL_WINDOW_BORDERLESS

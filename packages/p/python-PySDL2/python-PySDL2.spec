@@ -1,7 +1,7 @@
 #
 # spec file for package python-PySDL2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,10 @@ Summary:        Python ctypes wrapper around SDL2
 License:        SUSE-Public-Domain
 URL:            https://github.com/py-sdl/py-sdl2
 Source:         https://files.pythonhosted.org/packages/source/p/%{lname}/%{lname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/py-sdl/py-sdl2/pull/290 surface_test: Expect intended behaviour if SDL2 is new enough
+Patch0:         surface_test.patch
+# PATCH-FIX-UPSTREAM https://github.com/py-sdl/py-sdl2/pull/291 video_test: Skip SDL_SetWindowMouseRect with sdl2-compat dummy driver
+Patch1:         video_test.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

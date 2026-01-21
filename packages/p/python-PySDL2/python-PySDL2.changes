@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 21 11:12:54 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream PRs fixing test failures:
+  * surface_test.patch
+  * video_test.patch
+
+-------------------------------------------------------------------
 Wed Apr 30 00:41:39 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Adjust run-time dependencies to avoid old virtual provides.
