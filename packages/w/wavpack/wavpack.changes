@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jan 18 08:57:24 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.9.0
+  * added: new feature to wvtag to copy tags from one WavPack file
+    to another.
+  * improved: minor tweaks to the new DNS (dynamic noise shaping)
+    algorithm.
+  * improved: better handling of specfic non-standard WAV and AIFF
+    files.
+  * fixed: issues related to encoding from an unknown length
+    (e.g., pipes).
+  * fixed: several fuzzer-revealed issues related to multithreading
+  * fixed: potential buffer overruns in WavpackOpenRawDecoder().
+
+-------------------------------------------------------------------
 Sun Feb  9 21:33:33 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.8.1:
