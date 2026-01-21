@@ -19,4 +19,14 @@ Add conflicts to busybox-adduser</comment>
   * map_range.h: add missing stdint include</comment>
     <requestid>1326796</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>701bca6ded420489de85f2e4d076ba65</srcmd5>
+    <version>1.0.1+git20260121.39eee92</version>
+    <time>1769001576</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.0.1+git20260121.39eee92:
+  * Release version 1.0.1
+  * drop_privs: don't run the check as root</comment>
+    <requestid>1328440</requestid>
+  </revision>
 </revisionlist>

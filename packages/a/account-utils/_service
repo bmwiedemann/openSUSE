@@ -5,7 +5,7 @@
     <param name="changesgenerate">enable</param>
     <param name="filename">account-utils</param>
     <param name="revision">main</param>
-    <param name="versionformat">1.0+git%cd.%h</param>
+    <param name="versionformat">1.0.1+git%cd.%h</param>
   </service>
   <service mode="manual" name="recompress">
     <param name="file">*.tar</param>

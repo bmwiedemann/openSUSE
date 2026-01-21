@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 21 08:36:15 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.0.1+git20260121.39eee92:
+  * Release version 1.0.1
+  * drop_privs: don't run the check as root
+
+-------------------------------------------------------------------
 Mon Jan 12 14:43:26 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 1.0+git20260112.87262b5:
