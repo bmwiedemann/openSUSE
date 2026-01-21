@@ -1630,4 +1630,12 @@
         Fix OOB gzseek() causing assertion failure. (forwarded request 1327462 from adkorte)</comment>
     <requestid>1327548</requestid>
   </revision>
+  <revision rev="100" vrev="2">
+    <srcmd5>58434565472d9bc35aa1d663ff0e5b6b</srcmd5>
+    <version>8.4.17</version>
+    <time>1769001248</time>
+    <user>anag_factory</user>
+    <comment>remove a patch, which breaks phar.phar [bsc#1256905]</comment>
+    <requestid>1328029</requestid>
+  </revision>
 </revisionlist>

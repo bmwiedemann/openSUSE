@@ -1,6 +1,7 @@
 #
 # spec file for package php8
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -89,8 +90,6 @@ Patch3:         php-ini.patch
 Patch4:         php-systzdata-v24.patch
 # adjust upstream systemd unit to SUSE needs
 Patch5:         php-systemd-unit.patch
-# PATCH-FEATURE-OPENSUSE use ordered input files for reproducible /usr/bin/phar.phar
-Patch6:         php-sort-filelist-phar.patch
 ## Bugfix patches
 # should be upstreamed, will do later
 Patch22:        php-date-regenerate-lexers.patch

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 19 08:21:08 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- remove a patch, which breaks phar.phar [bsc#1256905]
+  * php-sort-filelist-phar.patch (upstreamed)
+- modified patches
+  * php-build-reproducible-phar.patch (refreshed)
+
+-------------------------------------------------------------------
 Thu Jan 15 19:55:23 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
 
 - version update to 8.4.17
