@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Mon Jan 19 19:51:37 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.6.5:
+  * This is a minor update that includes several crash fixes as well
+    as improvements to chord symbols, which should prevent them from
+    unintentionally moving in the score.
+  * Also included is an audio export fix, where rests at the start
+    of the score were being skipped.
+
+-------------------------------------------------------------------
+Mon Jan 19 19:49:45 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update 4.6.4:
+  Online sounds:
+  * Various optimisations and improved messaging for online sounds (Windows and macOS only)
+  Playback:
+  * VSTs now receive playback time position (enables synced video playback with the score)
+  * Notated tempo BPM values are converted to playback speeds with greater precision
+  * We've switched back to ALSA as the audio server on Linux (PipeWire is still available via Preferences)
+  Engraving:
+  * Slurs from grace notes to tied non-grace notes now stop at the first note of the tie
+  * Parentheses around noteheads no longer touch ledger lines below the staff
+  * Restored the ability to create frames with negative margins (not recommended)
+  * Fixed display of invisible multimeasure rest numbers
+  * Fixed horizontal spacing of cue notes under a trill line
+  * Fixed hiding of courtesy clefs, key and time signatures near a section break
+  * Fixed hiding of measure numbers when all instruments are hidden
+  * Fixed vertical alignment of voice 1 rests at "gaps" where rests in higher voices were deleted
+  * Fixed regression where measure numbers collided with brackets around single line percussion staves
+  Chord symbols:
+  * Fixed rendering of accidentals when using the "Legacy MuseScore" style with a font other than Edwin
+  * Fixed vertical layout of chord symbols and RNA that include parentheses
+  * Fixed double layout problem that caused unnecessary stave separation after edits to chord symbols
+  Interaction:
+  * Single notes now become selected after being pasted
+  * Fixed issue causing slurs to change shape unnecessarily when other objects are moved
+  * Fixed regression causing grip anchor visualisations to not update on adjustment
+  UI:
+  * The Welcome dialog no longer appear over app update dialogs
+  * Restored the "Align with preceding dynamic" checkbox in the Properties panel for expression text
+  * Opacity / alpha transparency is now available in the color picker dialog
+  * Custom colors saved in the color picker dialog now persist between launches on Windows
+  * The modern print dialog is now shown on Windows 11 rather than the legacy Windows dialog
+  * Fixed regression causing some error dialogs to appear multiple times despite "Don't show again" being selected
+  * Fixed regression causing menus to appear in the wrong position on Linux
+  * Fixed regression in the Percussion panel where pads were drawn with hard corners instead of rounded
+  * Fixed regression where the special characters dialog was modal, preventing interaction with the score
+  Import/export:
+  * TablEdit: Fixed import of pickup measures and measures with gaps in voice 1
+  Accessibility:
+  * Fixed keyboard input in spin boxes when running under XWayland on Linux
+  Plugin API:
+  * Fixed Spanner::endElement() and Tie::endNote() to return the end element rather than the start element
+  * Slur offsets (slurUoff1 – slurUoff4 ) are now properties of SpannerSegment and return correct values
+  Stability:
+  * Fixed crash on deleting instrument after using Tools > Implode
+  * Fixed crash on pressing Esc after entering notes via MIDI keyboard
+  * Fixed crash on adding a system marking to a score with large time signatures
+  * Fixed crash on pasting multiple fermatas where the lowest would go below the bottom staff
+  * Fixed crash on pasting the repeat-measure symbol onto a measure with notes in higher voices
+  * Fixed crash on entering an invalid chord symbol
+  * Fixed crashes during use of network connections
+- Drop musescore-fix-build-against-qt-6-10.patch
+
+-------------------------------------------------------------------
 Thu Oct 30 08:01:45 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.6.3:
