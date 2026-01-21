@@ -1,7 +1,7 @@
 #
 # spec file for package clusterctl
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define version_git_minor %(echo %{version} | awk 'BEGIN { FS=\".\"}; {print $2}')
 
 Name:           clusterctl
-Version:        1.12.1
+Version:        1.12.2
 Release:        0
 Summary:        CLI tool to handle the lifecycle of a Cluster API management cluster
 License:        Apache-2.0
