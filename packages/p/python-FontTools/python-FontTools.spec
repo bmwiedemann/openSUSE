@@ -1,7 +1,7 @@
 #
 # spec file for package python-FontTools
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-FontTools%{psuffix}
-Version:        4.59.1
+Version:        4.61.1
 Release:        0
 Summary:        Suite of Tools and Libraries for Manipulating Fonts
 License:        MIT AND OFL-1.1
@@ -48,16 +48,14 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Recommends:     python-Brotli >= 1.1.0
 Recommends:     python-freetype-py >= 2.4.0
-# some packages should require fonttools[ufo], but fs is not a hard dependency anymore.
-Recommends:     python-fs >= 2.2.0
 Recommends:     python-lxml
 Recommends:     python-munkres >= 1.1.4
 Recommends:     python-reportlab
 Recommends:     python-scipy >= 1.11.4
 Recommends:     python-sympy >= 1.12
 Recommends:     python-ufoLib2 >= 0.16.0
-Recommends:     python-unicodedata2 >= 15.1.0
-Recommends:     python-zopfli >= 0.2.3
+Recommends:     python-unicodedata2 >= 17.0.0
+Recommends:     python-zopfli >= 0.1.4
 Provides:       python-fonttools = %{version}-%{release}
 Obsoletes:      fonttools < %{version}-%{release}
 Provides:       fonttools = %{version}-%{release}
@@ -71,7 +69,6 @@ Requires(postun): update-alternatives
 %endif
 %if %{with test}
 BuildRequires:  %{python_module Brotli >= 1.1.0}
-BuildRequires:  %{python_module fs >= 2.4.16}
 BuildRequires:  %{python_module pytest}
 %endif
 %python_subpackages

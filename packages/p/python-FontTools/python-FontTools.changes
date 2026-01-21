@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan 19 15:31:56 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.61.1 (bsc#1254366)
+  * [pointPen] Allow reverseFlipped parameter of DecomposingPointPen to take a ReverseFlipped enum value
+  * [filterPen] Added ContourFilterPointPen, base pen for buffered contour operations, and
+    OnCurveStartPointPen filter to ensure contours start with an on-curve point
+  * [varLib.main]: SECURITY Only use basename(vf.filename) to prevent path traversal attacks when running
+    fonttools varLib command, or code which invokes fonttools.varLib.main(). Fixes CVE-2025-66034
+  * [feaLib] Sort BaseLangSysRecords by tag
+  * [instancer] Support --remove-overlaps for fonts with CFF2 table
+  * [unicodedata] Update to Unicode 17
+  * More changes, see upstream changelog
+
+-------------------------------------------------------------------
 Tue Aug 19 14:08:50 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 4.59.1
