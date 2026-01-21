@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jan 20 20:37:03 UTC 2026 - Neal Gompa <ngompa@opensuse.org>
+
+- Update to 5.3.0.0
+  + 5.3.0.0 changelog: https://github.com/rpm-software-management/dnf5/releases/tag/5.3.0.0
+  + 5.2.17.0 changelog: https://github.com/rpm-software-management/dnf5/releases/tag/5.2.17.0
+  + 5.2.16.0 changelog: https://github.com/rpm-software-management/dnf5/releases/tag/5.2.16.0
+  + 5.2.15.0 changelog: https://github.com/rpm-software-management/dnf5/releases/tag/5.2.15.0
+- Backport fixes from upstream to fix builds for non-x86 arches
+  + Patch: 0001-test_conf.cpp-make-comparing-size_type-cross-platfor.patch
+  + Patch: 0002-python_plugins_loader-disable-sign-compare-check-err.patch
+- Backport fix for handling disabling gpg checks properly
+  + Patch: 0003-Move-libdnf5-conf-config.h-creation-after-feature-de.patch
+- Run tests during package builds again
+
+-------------------------------------------------------------------
 Fri Jul 18 11:58:58 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
 
 - Do not install polkit rules allowing privileged actions for wheel
