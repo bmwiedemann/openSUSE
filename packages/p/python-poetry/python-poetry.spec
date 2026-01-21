@@ -1,8 +1,7 @@
 #
 # spec file for package python-poetry
 #
-# Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,28 +27,30 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-poetry%{psuffix}
-Version:        2.1.4
+Version:        2.2.1
 Release:        0
 Summary:        Python dependency management and packaging
 License:        MIT
 URL:            https://python-poetry.org/
 # PyPI sdist doesn't contain tests
 Source:         https://github.com/python-poetry/poetry/archive/%{version}.tar.gz#/poetry-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM support-dulwich-0_25.patch gh#python-poetry/poetry#10674
+Patch0:         support-dulwich-0_25.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 2.1}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-poetry-core = 2.1.3
+Requires:       python-poetry-core = 2.2.1
 Requires:       (python-build >= 1.2.1 with python-build < 2.0.0)
 Requires:       (python-cachecontrol >= 0.14.0 with python-cachecontrol < 0.15.0)
 # from cachecontrol[filecache]
 Requires:       python-filelock >= 3.8.0
 # /cachecontrol[filecache]
 Requires:       (python-cleo >= 2.1.0 with python-cleo < 3.0.0)
-Requires:       python-packaging >= 24.0
+Requires:       python-packaging >= 24.2
 Requires:       python-trove-classifiers >= 2022.5.19
-Requires:       (python-dulwich >= 0.22.6 with python-dulwich < 0.23.0)
+Requires:       (python-dulwich >= 0.25.0 with python-dulwich < 0.26.0)
 Requires:       (python-fastjsonschema >= 2.18.0 with python-fastjsonschema < 3.0.0)
 Requires:       (python-installer >= 0.7.0 with python-installer < 0.8.0)
 Requires:       (python-keyring >= 25.1.0 with python-keyring < 26.0.0)
@@ -61,9 +62,9 @@ Requires:       (python-requests-toolbelt >= 1.0.0 with python-requests-toolbelt
 Requires:       (python-shellingham >= 1.5 with python-shellingham < 2.0)
 # allow findpython 0.7.0 https://github.com/python-poetry/poetry/issues/10468
 Requires:       (python-findpython >= 0.6.2 with python-findpython < 0.8.0)
+Requires:       python-virtualenv >= 20.26.6
 Requires:       (python-pbs-installer >= 2025.1.6 with python-pbs-installer < 2026.0.0)
 Requires:       (python-tomlkit >= 0.11.4 with python-tomlkit < 1.0.0)
-Requires:       (python-virtualenv >= 20.26.6 with python-virtualenv < 20.33.0)
 # python-pbs-installer[download,install]
 Requires:       (python-httpx >= 0.27.0 with python-httpx < 1)
 Requires:       python-zstandard >= 0.21.0

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Jan 16 10:09:38 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 2.2.1
+  * Fix an issue where poetry self show failed with a message about an invalid
+    output format
+  * Remove outdated statements about dependency groups
+- Update to 2.2.0
+  * Add support for nesting dependency groups
+  * Add support for PEP 735 dependency groups
+  * Add support for PEP 639 license clarity
+  * Add a --format option to poetry show to alternatively output json format
+  * Add official support for Python 3.14
+  * Normalize dependency group names
+  * Change installer.no-binary and installer.only-binary so that explicit
+    package names will take precedence over :all:
+  * Improve log output during poetry install when a wheel is built from source
+  * Improve error message in case a file lock could not be acquired while
+    cloning a git repository
+  * Require dulwich>=0.24.0
+  * Allow virtualenv>=20.33 again
+  * Allow findpython>=0.7
+  * Allow importlib-metadata>=8.7
+  * Fix an issue where poetry new did not create the project structure in an
+    existing empty directory
+  * Fix an issue where a dependency that was required for a specific Python
+    version was not installed into an environment of a pre-release Python
+    version
+- Add support-dulwich-0_25.patch to support new dulwich version
+
+-------------------------------------------------------------------
 Tue Aug 19 09:07:02 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.1.4
