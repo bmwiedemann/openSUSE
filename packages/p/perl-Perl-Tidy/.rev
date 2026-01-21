@@ -611,4 +611,41 @@
       - The parameter --integer-range-check no longer accepts a 0 value, which</comment>
     <requestid>1310546</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>534059e938d7336680a8a83f2b6f8bab</srcmd5>
+    <version>20260109.0.0</version>
+    <time>1769001191</time>
+    <user>anag_factory</user>
+    <comment>- updated to 20260109.0.0 (20260109)
+   see /usr/share/doc/packages/perl-Perl-Tidy/CHANGES.md
+  ## 2026 01 09
+      - A new parameter --break-at-old-trailing-loops, or -botl, keeps
+        existing line breaks at these trailing loop control keywords:
+           'for', 'foreach', 'while', 'until'.
+        This is the default. For example, given the following two input lines:
+          FindExt::scan_ext(&quot;../$_&quot;)
+            foreach qw(cpan dist ext);
+        The new default keeps two lines. The previous version flattened the
+        statement, since it fits on a single line:
+          FindExt::scan_ext(&quot;../$_&quot;) foreach qw(cpan dist ext);
+        Use -nbotl to deactivate this new option.
+      - A related new parameter --break-at-old-trailing-conditionals, or -botc
+        keeps existing line breaks at trailing conditional control keywords:
+            'if', 'unless'.
+        This is the default.  The capability was previously handled by
+        parameter --break-at-old-logical-breakpoints, or -bol, which was also
+        true by default, but which also also controls logical breakpoints,
+        such as '&amp;&amp;'. This change simplifies the input.
+        Use -nbotc to deactivate this option.
+      - A new switch --blanks-before-opening-comments, -bboc, has been added
+        for issue git #192.  This is on by default and allows perltidy to insert
+        a blank line before full-line comments which start at a new indentation
+        level.  Use the negated form to prevent such blank lines, -nbboc
+        or --noblanks-before-opening-comments
+      - A new parameter --dump-keyword-usage, or -dku, can be used to dump a
+        list of the the perl builtin keywords used in a file. A companion flag
+        --dump-keyword-usage-list=s can be used to give a specific list of
+        keywords or user functions to be included in the list.</comment>
+    <requestid>1327643</requestid>
+  </revision>
 </revisionlist>
