@@ -7,4 +7,28 @@
     <comment></comment>
     <requestid>1242104</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7895d3e9715097de81f5bb843f97cf70</srcmd5>
+    <version>0.5.0</version>
+    <time>1769001473</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.5.0:
+  * Fix a doc comment that was no longer true
+  * Make sure gi-docgen is scanning build headers
+  * Implement Hasl.Gs2Header.parse
+  * Use g_set_str everywhere
+  * Add hasl_str_is_empty and use it everywhere
+  * Add Hasl.Gs2Header.parse_full which returns the length of the header
+  * Make sure the documentation dependency is before other dependencies
+  * Add hasl_saslname_encode and hasl_saslname_decode
+  * Remove HASL_DOMAIN
+  * Replace CONTEXT_DOMAIN with CONTEXT_ERROR
+  * Replace MECHANISM_ANONYMOUS_DOMAIN with MECHANISM_ANONYMOUS_ERROR
+  * Clean up the error domains and enums for GS2Headers
+  * Add missing Since tags
+  * A few meson tweaks
+  * Add a codespell unit test
+- remove nls meson option, as it got removed (forwarded request 1328397 from rrahl0)</comment>
+    <requestid>1328398</requestid>
+  </revision>
 </revisionlist>

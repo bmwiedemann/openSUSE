@@ -1,7 +1,7 @@
 #
 # spec file for package hasl
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         sover 0
 Name:           hasl
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        Hassle-free Authentication and Security Layer
 License:        LGPL-2.1-or-later
@@ -74,8 +74,7 @@ Provides:       %{name} = %{version}
 %build
 %meson \
   -Ddoc=true \
-  -Dintrospection=true \
-  -Dnls=true
+  -Dintrospection=true
 %meson_build
 
 %install
