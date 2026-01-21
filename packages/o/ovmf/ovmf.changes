@@ -402,7 +402,7 @@ Tue Dec 16 04:19:11 UTC 2025 - Richard Lyu <richard.lyu@suse.com>
   - Remove the revert patch ovmf-Revert-SecurityPkg-Add-Additional-TPM-Logging-at-DEB.patch
     because the upstream has resolved this issue. (bsc#1249349) 
         21eff866e7 SecurityPkg/Tpm2DeviceLibDTpm: Remove global variable for command code
-  - Remove the IA32 and AARCH32 OVMF image (jsc#PED-13429)
+  - Remove the IA32 and AARCH32 OVMF image (jsc#PED-13429, jsc#PED-15004)
       - Remove qemu-ovmf-ia32
       - Remove qemu-uefi-aarch32
   - Refresh patche:
