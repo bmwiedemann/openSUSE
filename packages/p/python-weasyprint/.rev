@@ -364,4 +364,45 @@
     <comment></comment>
     <requestid>1304340</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>7c2d94da65f6d8a86361eda8e65d07aa</srcmd5>
+    <version>68.0</version>
+    <time>1769001311</time>
+    <user>anag_factory</user>
+    <comment>Depends on:
+ - New python-Pillow: sr#1328176
+ - New python-tinycss2: sr#1328174
+
+- Update to 68.0 (bsc#1256936, CVE-2025-68616):
+  # Security
+  * Always use URL fetcher for HTTP redirects
+  # Python API
+  * default_url_fetcher() is deprecated, use the new URLFetcher class
+    instead, see URL Fetchers for more information about URL fetchers
+  * DocumentMetadata.generate_rdf_metadata is now a method that can be
+    overridden instead of a parameter, see Factur-X / ZUGFeRD
+    (Electronic Invoices) for examples to create e-invoices
+  # Features
+  * #2609, #2603, #351: Refactor URL fetcher API
+  * #2632: Support legacy 0 value for angles
+  * #2627: Add font-face support to SVG
+  * #2646, #2255: Add font shorthand support for SVG text elements
+  * #2590, #1749: Honor language-specific rules for text-transform
+  * #2645, #2613: Improve SVG and SVG emojis rendering
+  * #2658, #2583: Add CLI for Factur-X / ZUGFeRD e-invoices
+  # Bug fixes
+  * #2649: Refactor URL fetcher API
+  * #2643, #2628: Handle box-sizing: border-box in grid layout
+  * #2641, #1875: Process whitespace after checking all pending targets
+  * #2488, #2485: Preserve page groups during layout repagination
+  * #2642, #2631: Don’t use isolated transparency groups
+  * #2637: Fix repeating radial gradients rendering
+  * #2622: Fix validation of colors
+  * #2626: Share grid items rendering advancement between a box and its copies
+  * #2621: Correctly handle fallback values of attr()
+  * #2619: Fix SVG fonts
+  * #2629: Always define extra skip height that may be used after
+  * #2648: Fix numbers validation in font-feature-settings</comment>
+    <requestid>1328178</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Tue Jan 20 06:29:53 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 68.0 (bsc#1256936, CVE-2025-68616):
+  # Security
+  * Always use URL fetcher for HTTP redirects
+  # Python API
+  * default_url_fetcher() is deprecated, use the new URLFetcher class
+    instead, see URL Fetchers for more information about URL fetchers
+  * DocumentMetadata.generate_rdf_metadata is now a method that can be
+    overridden instead of a parameter, see Factur-X / ZUGFeRD
+    (Electronic Invoices) for examples to create e-invoices
+  # Features
+  * #2609, #2603, #351: Refactor URL fetcher API
+  * #2632: Support legacy 0 value for angles
+  * #2627: Add font-face support to SVG
+  * #2646, #2255: Add font shorthand support for SVG text elements
+  * #2590, #1749: Honor language-specific rules for text-transform
+  * #2645, #2613: Improve SVG and SVG emojis rendering
+  * #2658, #2583: Add CLI for Factur-X / ZUGFeRD e-invoices
+  # Bug fixes
+  * #2649: Refactor URL fetcher API
+  * #2643, #2628: Handle box-sizing: border-box in grid layout
+  * #2641, #1875: Process whitespace after checking all pending targets
+  * #2488, #2485: Preserve page groups during layout repagination
+  * #2642, #2631: Don’t use isolated transparency groups
+  * #2637: Fix repeating radial gradients rendering
+  * #2622: Fix validation of colors
+  * #2626: Share grid items rendering advancement between a box and its copies
+  * #2621: Correctly handle fallback values of attr()
+  * #2619: Fix SVG fonts
+  * #2629: Always define extra skip height that may be used after
+  * #2648: Fix numbers validation in font-feature-settings
+  * #2648: Fix keyword values for text-decoration-thickness
+  * #2661: Respect inline images when defining minimum table width
+
+- 67.0:
+  # Features
+  * #2560, #640, #844, #1091, #2517: Support CMYK colors, PDF/X, color profiles and light-dark() function
+  * #2558, #1175: Support ::first-line, with financial support from Karte Technology
+  * #2552: Support CSS layers, with financial support from Code & Co.
+  * #2564, #2599, #2397: Allow page breaks in grid rows, with financial support from Ocean Recap
+  * #2568, #357: Support calc() and other mathematical functions
+  * #2575, #2574: Support PDF/A-1a, PDF/A-2a and PDF/A-3a
+  * #2611, #2573: Support PDF/A-4e and PDF/A-4f
+  * #2523: Display tofu for missing glyphs
+  * #2581: Add option to disable protocols in URL resolution
+  * #2570: Support rch, cap, rcap, rex, ic and ric font-relative units
+  * #2547, #2140: Support "only" keyword in media queries
+  # Bug fixes
+  * #2516, #1510: Fix rendering of first line of text with nested right float
+  * #2510, #1073, #2507: Avoid Pango crashes and font mismatches with @font-face rules referencing local fonts
+  * #2532, #2531: Use fonttools instancer instead of deprecated mutator API
+  * #2541: Fix syntax of functions
+  * #2543: Allow font-related units to access @font-face fonts
+  * #2525: Respect top margins and avoid overlapping footnotes for columns, with financial support from Code & Co.
+  * #2536: Remove Subtype key from font descriptor
+  * #2539: Fix min width for SVGs with intrinsic ratio but no intrinsic size
+  * #2537, #2533: Fix order of operators when drawing SVGs
+  * #2538: Don’t crash with nested unknown functions
+  * #2542: Don’t crash when lh and rlh are used for line height or font size
+  * #2540, #2528: Use locale encoding instead of filesystem encoding for font paths
+  * #2563, #2479: Don’t avoid float collisions for atomic flex items
+  * #2569: Don’t be case-sensitive for units
+  * #2567, #2566: Add x-default attribute for metadata description to be compliant with PDF/A
+  * #2586, #2571: Improve formatting contexts management
+  * #2600: Fix SVG image aspect ratio when only width or height is specified
+  * #2612, #2595: Clean block layout and fix corner cases
+  * #2522: Ignore preserveAspectRatio when SVG has no viewBox
+  * #2544: Allow to use a variable twice in a function
+  * #2555: Fix flex gap in right-to-left context
+  * #2591: Respect non-auto widths and fix padding of grid items
+  * #2601: Don’t crash when tagged tables are not displayed as tables
+  * #2607: Fix rendering of multiline textareas with PDF forms
+  * #2106: Force variable initialization to avoid crashes during column layout
+  * #2618, #2617: Fix rendering of relative grid and flex items
+
+-------------------------------------------------------------------
 Fri Sep 12 14:38:56 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 66.0

@@ -1,7 +1,7 @@
 #
 # spec file for package python-weasyprint
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,15 +21,21 @@
 %global cssselect2_min_version 0.8.0
 %global fonttools_min_version  4.0.0
 %global tinyhtml5_min_version  2.0.0
-%global Pillow_min_version     9.1.0
+%global Pillow_min_version     12.1.0
 %global pypdf_min_version      0.11.0
 %global Pyphen_min_version     0.9.1
-%global tinycss2_min_version   1.4.0
+%global tinycss2_min_version   1.5.0
 %global zopfli_min_version     0.1.4
+
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 
 %{?sle15_python_module_pythons}
 Name:           python-weasyprint
-Version:        66.0
+Version:        68.0
 Release:        0
 Summary:        Python module to convert web documents to PDF
 License:        BSD-3-Clause
@@ -42,8 +48,13 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 39.2.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%endif
 Requires:       libgobject-2_0-0
 Requires:       pango
 Requires:       python-Pillow >= %{Pillow_min_version}
@@ -51,7 +62,6 @@ Requires:       python-Pyphen >= %{Pyphen_min_version}
 Requires:       python-base >= 3.9
 Requires:       python-cffi >= %{cffi_min_version}
 Requires:       python-cssselect2 >= %{cssselect2_min_version}
-Requires:       python-html5lib >= %{html5lib_min_version}
 Requires:       python-pydyf >= %{pypdf_min_version}
 Requires:       python-tinycss2 >= %{tinycss2_min_version}
 Requires:       python-tinyhtml5 >= %{tinyhtml5_min_version}
@@ -106,6 +116,10 @@ export PYTHONPATH=$PWD
 
 %check
 %pytest -k 'not test_linear_gradients and (5 or 12)'  tests
+
+%pre
+# removing old update-alternatives entries
+%python_libalternatives_reset_alternative weasyprint
 
 %post
 %python_install_alternative weasyprint
