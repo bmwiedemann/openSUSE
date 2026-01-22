@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jan 20 23:19:02 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 8.1.2:
+  * Fixed: warnings when parsing HLS playlists with private-use language
+    subtags
+  * youtube: fixed live streams
+- Update to version 8.1.1:
+  * Fixed: --stream-segmented-queue-deadline not being applied correctly to the
+    Streamlink session options
+  * Changed: --hls-segment-ignore-names to not hardcode .ts HLS segment file
+    name extensions
+  * dailymotion: fixed 403 HLS playlist responses
+  * pluto: fixed url matchers and ad detection
+  * soop: fixed CDN mapping for ld_cdn based regions
+  * Build: removed unneeded wheel dependency
+
+-------------------------------------------------------------------
 Tue Dec 16 18:38:06 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 8.1.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package streamlink
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %endif
 %{?sle15_python_module_pythons}%{!?sle15_python_module_pythons:%define pythons python3}
 Name:           streamlink%{psuffix}
-Version:        8.1.0
+Version:        8.1.2
 Release:        0
 Summary:        Program to pipe streams from services into a video player
 License:        Apache-2.0 AND BSD-2-Clause
@@ -49,7 +49,6 @@ BuildRequires:  %{python_module trio-websocket >= 0.9.0}
 BuildRequires:  %{python_module urllib3 >= 2.0.0}
 BuildRequires:  %{python_module versioningit >= 2.0.0}
 BuildRequires:  %{python_module websocket-client >= 1.2.1}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 
 %if "%{flavor}" == "test"
