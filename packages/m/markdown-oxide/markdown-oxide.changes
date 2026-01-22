@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 13 19:49:31 UTC 2026 - Andreas Prittwitz <m4ng4n@gmx.de>
+
+- Fix build in openSUSE Tumbleweed by refreshing sources. A service 
+  run  was needed.
+  * Remove extra "--lockfile" flag in the %install section,
+    not needed anymore with refreshed sources.
+
+-------------------------------------------------------------------
 Sat Apr  5 02:06:28 UTC 2025 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 0.25.1:

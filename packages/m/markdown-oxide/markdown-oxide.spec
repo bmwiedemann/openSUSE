@@ -1,7 +1,7 @@
 #
 # spec file for package markdown-oxide
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,8 +41,7 @@ provide a feature rich and advanced note taking experience.
 %{cargo_test}
 
 %install
-# locked is required due to a missing lockfile on tower-lsp
-%{cargo_install} --locked
+%{cargo_install}
 
 %files
 %doc README.md
