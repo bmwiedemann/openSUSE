@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-flake8
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,15 @@
 Name:           python-pytest-flake8
 Version:        1.3.0
 Release:        0
-Summary:        Pytest plugin to check flake8 requirements
+Summary:        Plugin for pytest to check FLAKE8 requirements
 License:        MIT
 URL:            https://github.com/coherent-oss/pytest-flake8
-Source:         https://files.pythonhosted.org/packages/source/p/pytest-flake8/pytest_flake8-1.3.0.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pytest-flake8/pytest_flake8-%{version}.tar.gz
 Patch0:         support-pytest-9.patch
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61.2}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module flake8 >= 4.0}
 BuildRequires:  %{python_module pytest >= 7.0}
@@ -49,7 +49,7 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-pytest plugin to check FLAKE8 requirements
+Plugin for pytest for efficiently checking PEP8 compliance.
 
 %prep
 %autosetup -p1 -n pytest_flake8-%{version}
