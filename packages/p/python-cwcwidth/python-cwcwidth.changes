@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 22 14:22:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.1.12:
+  * Drop support for Python 3.10.
+  * Add support for building extensions with limited API.
+  * Build wheels for PyPI with limited API.
+  * Drop support for Python 3.9.
+  * Add support for Python 3.14.
+
+-------------------------------------------------------------------
 Wed Mar 19 08:57:46 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.1.10
@@ -25,7 +35,7 @@ Fri Nov 10 13:26:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Mon Nov  7 21:09:44 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 0.1.8 
+- Update to version 0.1.8
   Set build-backend in pyproject.toml.
 
 -------------------------------------------------------------------
@@ -49,7 +59,7 @@ Tue Sep 27 15:29:14 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
   * Use libc's implementation on Mac OS.
 - Update to version 0.1.2
   * Also build wheels with cibuildwheel.
-  * Provide type information for mypy. 
+  * Provide type information for mypy.
 
 -------------------------------------------------------------------
 Tue Apr  6 14:50:58 UTC 2021 - Arun Persaud <arun@gmx.de>
