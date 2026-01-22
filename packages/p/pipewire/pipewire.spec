@@ -1,7 +1,7 @@
 #
 # spec file for package pipewire
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2018 Luciano Santos, luc14n0@linuxmail.org.
 #
 # All modifications and additions to the file contributed by third parties
@@ -69,7 +69,7 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        1.5.84
+Version:        1.5.85
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -79,8 +79,6 @@ Source0:        %{name}-%{version}.tar.zst
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE reduce-meson-dependency.patch
 Patch0:         reduce-meson-dependency.patch
-# PATCH-FIX-UPSTREAM remove-mappable.patch -- based on commit 0d7cb9b39f5b23610ecee75fb3080f6b3dfa26c7
-Patch1:         remove-mappable.patch
 
 BuildRequires:  docutils
 %if 0%{suse_version} > 1500
@@ -253,6 +251,7 @@ for libjack.
 %package -n gstreamer-plugin-pipewire
 Summary:        Gstreamer Plugin for PipeWire
 Group:          System/Libraries
+Supplements:    (pipewire and gstreamer)
 
 %description -n gstreamer-plugin-pipewire
 PipeWire is a server and user space API to deal with multimedia pipelines.
