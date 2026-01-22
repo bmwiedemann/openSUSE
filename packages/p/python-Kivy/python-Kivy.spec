@@ -1,7 +1,7 @@
 #
 # spec file for package python-Kivy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,8 @@ License:        Apache-2.0 AND MIT AND LGPL-2.1-or-later AND GPL-2.0-or-later AN
 URL:            https://kivy.org/
 Source:         https://github.com/kivy/kivy/archive/%{version}.tar.gz#/kivy-%{version}.tar.gz
 Source99:       python-Kivy.rpmlintrc
+# PATCH-FIX-UPSTREAM pytest_compatibility.patch based on PR 9245
+Patch0:         pytest_compatibility.patch
 BuildRequires:  %{mypython}-Sphinx
 BuildRequires:  %{python_module Cython with %python-Cython < 3}
 BuildRequires:  %{python_module Pillow}
@@ -116,7 +118,7 @@ Kivy is a library for development of applications that make use of
 user interfaces, such as multi-touch apps.
 
 %prep
-%setup -q -n kivy-%{version}
+%autosetup -p1 -n kivy-%{version}
 # remove the legacy garden install script as python requirement, get it from PyPI or https://github.com/kivy-garden/garden/ if you need it
 sed -i '/Kivy-Garden/d' setup.cfg
 # remove shebang
@@ -132,6 +134,7 @@ sed -i "/^#!/ c #!%{__mypython}" kivy/tools/image-testsuite/gimp28-testsuite.py
 sed -i "/^#!/ c #!`which sh`" kivy/tools/image-testsuite/imagemagick-testsuite.sh
 # remove benchmark from tests
 sed -i /addopts/d pyproject.toml
+sed -i '/\[tool.pytest.ini_options\]/a asyncio_mode = "auto"' pyproject.toml
 chmod -x kivy/tools/pep8checker/pre-commit.githook
 
 %build

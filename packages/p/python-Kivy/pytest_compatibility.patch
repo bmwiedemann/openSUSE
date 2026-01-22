@@ -1,0 +1,13 @@
+Index: kivy-2.3.1/kivy/tests/common.py
+===================================================================
+--- kivy-2.3.1.orig/kivy/tests/common.py
++++ kivy-2.3.1/kivy/tests/common.py
+@@ -498,7 +498,7 @@ def async_run(func=None, app_cls_func=No
+         if kivy_eventloop == 'asyncio':
+             try:
+                 import pytest_asyncio
+-                return pytest.mark.asyncio(pytest_asyncio.fixture(func))
++                return pytest.mark.asyncio(func)
+             except ImportError:
+                 return pytest.mark.skip(
+                     reason='KIVY_EVENTLOOP == "asyncio" but '

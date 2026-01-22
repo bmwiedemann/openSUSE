@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 21 15:27:48 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
+
+- Add pytest_compatibility.patch: Fix pytest9 compatibility
+- Add asyncio_mode = "auto"' to pyproject.toml in spec file
+  (gh#kivy/kivy#9245)
+
+-------------------------------------------------------------------
 Mon Apr 14 06:01:10 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Support both lowercased and unnormalized metadata directory names.
