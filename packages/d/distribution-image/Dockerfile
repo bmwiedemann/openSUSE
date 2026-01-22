@@ -64,5 +64,6 @@ LABEL io.artifacthub.package.readme-url="%SOURCEURL_WITH(README.md)%"
 ENTRYPOINT ["/usr/bin/registry"]
 CMD ["serve", "/etc/registry/config.yml"]
 EXPOSE 5000/tcp
+RUN set -euo pipefail; install -d -m 0755 -o registry -g registry /var/lib/docker-registry
 USER registry
 VOLUME /var/lib/docker-registry
