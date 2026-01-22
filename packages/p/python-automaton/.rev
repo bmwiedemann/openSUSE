@@ -273,4 +273,29 @@
     <comment>switch to singlespec</comment>
     <requestid>1316750</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>af7829cfe557e6b46af22d68ce5ee555</srcmd5>
+    <version>3.3.0</version>
+    <time>1769091488</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.3.0:
+  * add pyproject.toml to support pip 23.1
+  * Skip installation to speed up pep8
+  * Run pyupgrade to clean up Python 2 syntaxes
+  * reno: Update master for unmaintained/2023.1
+  * Drop alpha status
+  * Declare Python 3.12 support
+  * reno: Update master for unmaintained/zed
+  * Remove old excludes
+  * reno: Update master for unmaintained/xena
+  * reno: Update master for unmaintained/wallaby
+  * reno: Update master for unmaintained/victoria
+  * reno: Update master for unmaintained/yoga
+  * pre-commit: Bump versions
+  * Move reno to doc requirements
+  * Bump hacking
+  * Test python 3.10 and 3.11
+  * Update master for stable/2023.2</comment>
+    <requestid>1328627</requestid>
+  </revision>
 </revisionlist>

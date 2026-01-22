@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jan 22 08:45:10 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.0:
+  * add pyproject.toml to support pip 23.1
+  * Skip installation to speed up pep8
+  * Run pyupgrade to clean up Python 2 syntaxes
+  * reno: Update master for unmaintained/2023.1
+  * Drop alpha status
+  * Declare Python 3.12 support
+  * reno: Update master for unmaintained/zed
+  * Remove old excludes
+  * reno: Update master for unmaintained/xena
+  * reno: Update master for unmaintained/wallaby
+  * reno: Update master for unmaintained/victoria
+  * reno: Update master for unmaintained/yoga
+  * pre-commit: Bump versions
+  * Move reno to doc requirements
+  * Bump hacking
+  * Test python 3.10 and 3.11
+  * Update master for stable/2023.2
+
+-------------------------------------------------------------------
 Sun Nov  9 14:27:32 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - switch to singlespec
