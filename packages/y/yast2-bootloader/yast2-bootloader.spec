@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-bootloader
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-bootloader
-Version:        5.0.29
+Version:        5.0.30
 Release:        0
 Summary:        YaST2 - Bootloader Configuration
 License:        GPL-2.0-or-later

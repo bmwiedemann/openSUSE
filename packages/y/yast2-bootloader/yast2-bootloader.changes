@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 21 08:40:53 UTC 2026 - Josef Reidinger <jreidinger@suse.com>
+
+- Allow to set explicitly os-prober availability
+  (gh#yast/yast-bootloader#730)
+- 5.0.30
+
+-------------------------------------------------------------------
 Fri Nov 21 15:23:42 UTC 2025 - Stefan Schubert <schubi@suse.de>
 
 - Enable grub2-bls for arm and riscv64 (bnc#1253222).
