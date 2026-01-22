@@ -1,7 +1,7 @@
 #
 # spec file for package seadrive-fuse
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,11 +23,12 @@ Summary:        SeaDrive daemon with FUSE interface
 License:        GPL-2.0-only
 URL:            https://github.com/haiwen/seadrive-fuse/
 Source0:        https://github.com/haiwen/seadrive-fuse/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         fuse3.patch
 BuildRequires:  argon2-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
-BuildRequires:  fuse-devel >= 2.7.3
+BuildRequires:  fuse3-devel >= 3.0.0
 BuildRequires:  intltool
 BuildRequires:  libsearpc-devel
 BuildRequires:  libtool

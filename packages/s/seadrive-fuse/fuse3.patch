@@ -1,0 +1,257 @@
+commit f646ef885f969b15ce59911e5b9b7e16b047da05
+Author: Paolo Stivanin <info@paolostivanin.com>
+Date:   Tue Jan 13 13:56:28 2026 +0100
+
+    Port to fuse3
+
+diff --git a/README.md b/README.md
+index 8be6fc9..f2af371 100644
+--- a/README.md
++++ b/README.md
+@@ -4,7 +4,7 @@ SeaDrive daemon with FUSE interface
+ # Building
+ ## Ubuntu Linux
+ ```
+-sudo apt-get install autoconf automake libtool libevent-dev libcurl4-openssl-dev libgtk2.0-dev uuid-dev intltool libsqlite3-dev valac libjansson-dev libssl-dev
++sudo apt-get install autoconf automake libtool libevent-dev libcurl4-openssl-dev libgtk2.0-dev uuid-dev intltool libsqlite3-dev valac libjansson-dev libssl-dev libfuse3-dev
+ ```
+ 
+ First, you shoud get the latest source of [libsearpc](https://github.com/haiwen/libsearpc) with `v3.2-latest` tag and [seadrive-fuse](https://github.com/haiwen/seadrive-fuse).
+diff --git a/configure.ac b/configure.ac
+index 3860ee5..7129f83 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -154,7 +154,7 @@ GLIB_REQUIRED=2.16.0
+ SEARPC_REQUIRED=1.0
+ JANSSON_REQUIRED=2.2.1
+ CURL_REQUIRED=7.17
+-FUSE_REQUIRED=2.7.3
++FUSE_REQUIRED=3.0.0
+ ZLIB_REQUIRED=1.2.0
+ WS_REQUIRED=4.0.20
+ GNUTLS_REQUIRED=3.3.0
+@@ -208,7 +208,7 @@ AC_SUBST(ZLIB_CFLAGS)
+ AC_SUBST(ZLIB_LIBS)
+ 
+ if test "${blinux}" = "true" -o "$bmac" = "true"; then
+-   PKG_CHECK_MODULES(FUSE, [fuse >= $FUSE_REQUIRED])
++   PKG_CHECK_MODULES(FUSE, [fuse3 >= $FUSE_REQUIRED])
+    AC_SUBST(FUSE_CFLAGS)
+    AC_SUBST(FUSE_LIBS)
+ fi
+diff --git a/src/fuse-ops.c b/src/fuse-ops.c
+index afd4936..cb5d4e5 100644
+--- a/src/fuse-ops.c
++++ b/src/fuse-ops.c
+@@ -2,8 +2,8 @@
+ 
+ #if defined __linux__ || defined __APPLE__
+ 
+-#define FUSE_USE_VERSION  26
+-#include <fuse.h>
++#define FUSE_USE_VERSION 30
++#include <fuse3/fuse.h>
+ 
+ #ifdef __APPLE__
+ #include <libproc.h>
+@@ -297,7 +297,7 @@ path_comps_free (FusePathComps *comps)
+         account_info_free (comps->account_info);
+ }
+ 
+-static void
++static void G_GNUC_UNUSED
+ notify_fs_op_error (const char *type, const char *path)
+ {
+     json_t *msg = json_object();
+@@ -327,8 +327,9 @@ get_category_dir_mtime (const char *server, const char *user, RepoType type)
+ }
+ 
+ int
+-seadrive_fuse_getattr(const char *path, struct stat *stbuf)
++seadrive_fuse_getattr(const char *path, struct stat *stbuf, struct fuse_file_info *fi)
+ {
++    (void)fi;
+     FusePathComps comps;
+     int ret = 0;
+     uid_t uid;
+@@ -438,7 +439,7 @@ readdir_root_accounts (void *buf, fuse_fill_dir_t filler)
+     }
+     for (ptr = accounts; ptr; ptr = ptr->next) {
+         account = ptr->data;
+-        filler (buf, account->name, NULL, 0);
++        filler (buf, account->name, NULL, 0, 0);
+     }
+     g_list_free_full (accounts, (GDestroyNotify)seaf_account_free);
+ 
+@@ -459,10 +460,10 @@ readdir_root (AccountInfo *account, void *buf, fuse_fill_dir_t filler)
+         type_str = ptr->data;
+ #ifdef __APPLE__
+         dname_nfd = g_utf8_normalize (type_str, -1, G_NORMALIZE_NFD);
+-        filler (buf, dname_nfd, NULL, 0);
++        filler (buf, dname_nfd, NULL, 0, 0);
+         g_free (dname_nfd);
+ #else
+-        filler (buf, type_str, NULL, 0);
++        filler (buf, type_str, NULL, 0, 0);
+ #endif
+     }
+ 
+@@ -498,10 +499,10 @@ readdir_category (AccountInfo *account, RepoType type, void *buf, fuse_fill_dir_
+         dname = g_path_get_basename (info->display_name);
+ #ifdef __APPLE__
+         dname_nfd = g_utf8_normalize (dname, -1, G_NORMALIZE_NFD);
+-        filler (buf, dname_nfd, NULL, 0);
++        filler (buf, dname_nfd, NULL, 0, 0);
+         g_free (dname_nfd);
+ #else
+-        filler (buf, dname, NULL, 0);
++        filler (buf, dname, NULL, 0, 0);
+ #endif
+ 
+         g_free (dname);
+@@ -550,7 +551,7 @@ readdir_repo (const char *repo_id, const char *path, void *buf, fuse_fill_dir_t
+         if (seaf_repo_manager_is_path_invisible (seaf->repo_mgr, repo_id, dname)) {
+             continue;
+         }
+-        filler (buf, dname, NULL, 0);
++        filler (buf, dname, NULL, 0, 0);
+     }
+     g_hash_table_destroy (dirents);
+ 
+@@ -562,8 +563,10 @@ out:
+ int
+ seadrive_fuse_readdir(const char *path, void *buf,
+                       fuse_fill_dir_t filler, off_t offset,
+-                      struct fuse_file_info *info)
++                      struct fuse_file_info *info,
++                      enum fuse_readdir_flags flags)
+ {
++    (void)flags;
+     FusePathComps comps;
+     int ret = 0;
+ 
+@@ -572,8 +575,8 @@ seadrive_fuse_readdir(const char *path, void *buf,
+     if (!seaf->started)
+         return 0;
+ 
+-    filler(buf, ".", NULL, 0);
+-    filler(buf, "..", NULL, 0);
++    filler(buf, ".", NULL, 0, 0);
++    filler(buf, "..", NULL, 0, 0);
+ 
+     memset (&comps, 0, sizeof(comps));
+ 
+@@ -1225,8 +1228,11 @@ out:
+     return ret;
+ }
+ 
+-int seadrive_fuse_rename (const char *oldpath, const char *newpath)
++int seadrive_fuse_rename (const char *oldpath, const char *newpath, unsigned int flags)
+ {
++    if (flags != 0)
++        return -EINVAL;
++
+     FusePathComps comps1, comps2;
+     int ret = 0;
+ 
+@@ -1556,8 +1562,9 @@ int seadrive_fuse_release (const char *path, struct fuse_file_info *info)
+ }
+ 
+ int
+-seadrive_fuse_truncate (const char *path, off_t length)
++seadrive_fuse_truncate (const char *path, off_t length, struct fuse_file_info *fi)
+ {
++    (void)fi;
+     FusePathComps comps;
+     char *repo_id, *file_path;
+     FileCacheStat st;
+@@ -1697,8 +1704,9 @@ seadrive_fuse_statfs (const char *path, struct statvfs *buf)
+ }
+ 
+ int
+-seadrive_fuse_chmod (const char *path, mode_t mode)
++seadrive_fuse_chmod (const char *path, mode_t mode, struct fuse_file_info *fi)
+ {
++    (void)fi;
+     FusePathComps comps;
+ 
+     seaf_debug ("chmod %s called. mode = %o.\n", path, mode);
+@@ -1713,8 +1721,9 @@ seadrive_fuse_chmod (const char *path, mode_t mode)
+ }
+ 
+ int
+-seadrive_fuse_utimens (const char *path, const struct timespec tv[2])
++seadrive_fuse_utimens (const char *path, const struct timespec tv[2], struct fuse_file_info *fi)
+ {
++    (void)fi;
+     RepoTreeStat tree_st;
+     char *repo_id = NULL, *file_path = NULL;
+     SeafRepo *repo = NULL;
+diff --git a/src/fuse-ops.h b/src/fuse-ops.h
+index 22339a4..3dc90d9 100644
+--- a/src/fuse-ops.h
++++ b/src/fuse-ops.h
+@@ -3,13 +3,17 @@
+ 
+ #if defined __linux__ || defined __APPLE__
+ 
+-#include <fuse.h>
++#ifndef FUSE_USE_VERSION
++#define FUSE_USE_VERSION 30
++#endif
++#include <fuse3/fuse.h>
+ 
+-int seadrive_fuse_getattr(const char *path, struct stat *stbuf);
++int seadrive_fuse_getattr(const char *path, struct stat *stbuf, struct fuse_file_info *fi);
+ 
+ int seadrive_fuse_readdir(const char *path, void *buf,
+                           fuse_fill_dir_t filler, off_t offset,
+-                          struct fuse_file_info *info);
++                          struct fuse_file_info *info,
++                          enum fuse_readdir_flags flags);
+ 
+ int seadrive_fuse_mknod (const char *path, mode_t mode, dev_t dev);
+ 
+@@ -19,7 +23,7 @@ int seadrive_fuse_unlink (const char *path);
+ 
+ int seadrive_fuse_rmdir (const char *path);
+ 
+-int seadrive_fuse_rename (const char *oldpath, const char *newpath);
++int seadrive_fuse_rename (const char *oldpath, const char *newpath, unsigned int flags);
+ 
+ int seadrive_fuse_open (const char *path, struct fuse_file_info *info);
+ 
+@@ -31,13 +35,13 @@ int seadrive_fuse_write (const char *path, const char *buf, size_t size,
+ 
+ int seadrive_fuse_release (const char *path, struct fuse_file_info *fi);
+ 
+-int seadrive_fuse_truncate (const char *path, off_t length);
++int seadrive_fuse_truncate (const char *path, off_t length, struct fuse_file_info *fi);
+ 
+ int seadrive_fuse_statfs (const char *path, struct statvfs *buf);
+ 
+-int seadrive_fuse_chmod (const char *path, mode_t mode);
++int seadrive_fuse_chmod (const char *path, mode_t mode, struct fuse_file_info *fi);
+ 
+-int seadrive_fuse_utimens (const char *, const struct timespec tv[2]);
++int seadrive_fuse_utimens (const char *, const struct timespec tv[2], struct fuse_file_info *fi);
+ 
+ int seadrive_fuse_symlink (const char *from, const char *to);
+ 
+diff --git a/src/seadrive.c b/src/seadrive.c
+index 63271f3..667a64d 100644
+--- a/src/seadrive.c
++++ b/src/seadrive.c
+@@ -41,9 +41,9 @@ static void print_version ()
+ #include <fcntl.h>
+ #include <sys/file.h>
+ 
+-#define FUSE_USE_VERSION  26
+-#include <fuse.h>
+-#include <fuse_opt.h>
++#define FUSE_USE_VERSION 30
++#include <fuse3/fuse.h>
++#include <fuse3/fuse_opt.h>
+ 
+ #include "fuse-ops.h"
+ 
