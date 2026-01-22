@@ -73,4 +73,15 @@
   * Support Python 3.13.</comment>
     <requestid>1242831</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e59e843425c3b9e10dcb53a3e17d3877</srcmd5>
+    <version>2026.1.8</version>
+    <time>1769091529</time>
+    <user>anag_factory</user>
+    <comment>- update to 2026.1.8:
+  * Improve code quality.
+  * Improve code quality.
+  * Drop support for Python 3.10, support Python 3.14.</comment>
+    <requestid>1328633</requestid>
+  </revision>
 </revisionlist>
