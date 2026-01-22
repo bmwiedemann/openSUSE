@@ -18,8 +18,8 @@
 
 %define flavor @BUILD_FLAVOR@
 %define mod_name luafilesystem
-%define pversion 1.8.0
-%define _pversion 1_8_0
+%define pversion 1.9.0
+%define _pversion 1_9_0
 
 %if %{undefined lua_provides}
 %define lua_provides \
@@ -63,7 +63,7 @@ make %{?_make_output_sync} CFLAGS="%{optflags} -fPIC -I%{lua_incdir}"
 %make_install LUA_LIBDIR='%{lua_archdir}'
 
 %files
-%doc doc/us/*
+%doc docs/*
 %{lua_archdir}/lfs.so
 
 %changelog

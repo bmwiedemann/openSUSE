@@ -98,4 +98,15 @@
 - Add luajit version to _multibuild</comment>
     <requestid>1315169</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4383c404392abf5fa4cda7d6de854b53</srcmd5>
+    <version>1.9.0</version>
+    <time>1769101147</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.9.0:
+  - Lua 5.5 support
+  - Fixed some compiler warnings
+  - Assorted improvements for Windows</comment>
+    <requestid>1328697</requestid>
+  </revision>
 </revisionlist>
