@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan 21 00:29:54 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 144.0.7559.96 (boo#1257011)
+  * CVE-2026-1220: Race in V8
+
+-------------------------------------------------------------------
+Tue Jan 20 15:12:18 CET 2026 - ro@suse.de
+
+- update INSTALL.sh to handle the addded tags in the
+  desktop file (boo#1256938) 
+
+-------------------------------------------------------------------
 Wed Jan 14 11:31:48 CET 2026 - Ruediger Oertel <ro@suse.de>
 
 - Chromium 144.0.7559.59 (boo#1256614)

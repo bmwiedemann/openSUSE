@@ -33,6 +33,8 @@ HELPURL="https://chromium.googlesource.com/chromium/src/+/main/docs/linux/debugg
 MENUNAME="Chromium Web Browser"
 CHANNEL="stable"
 INSTALLDIR="${LIBDIR}/chromium"
+URI_SCHEME=""
+EXTRA_DESKTOP_ENTRIES=""
 
 install -m 755 -d \
     "${STAGEDIR}/${INSTALLDIR}" \
@@ -176,6 +178,8 @@ sed \
     -e "s#@@MENUNAME@@#${MENUNAME}#g" \
     -e "s#@@USR_BIN_SYMLINK_NAME@@#${PACKAGE}#g" \
     -e "s#@@PACKAGE@@#${PACKAGE}#g" \
+    -e "s#@@URI_SCHEME@@#${URI_SCHEME}#g" \
+    -e "s#@@EXTRA_DESKTOP_ENTRIES@@#${EXTRA_DESKTOP_ENTRIES}#g" \
     "chrome/installer/linux/common/desktop.template" > "${STAGEDIR}/usr/share/applications/${PACKAGE}.desktop"
 chmod 644 "${STAGEDIR}/usr/share/applications/${PACKAGE}.desktop"
 

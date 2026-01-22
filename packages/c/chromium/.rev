@@ -6111,4 +6111,12 @@ Thu Jun  12 09:05:12 UTC 2025 - Bernhard Wiedemann &lt;bwiedemann@suse.com&gt;
   * chromium-140-keep-__rust_no_alloc_shim_is_unstable.patch</comment>
     <requestid>1327197</requestid>
   </revision>
+  <revision rev="497" vrev="1">
+    <srcmd5>0889d0cb1850b901da5b8e7ebb76a0ab</srcmd5>
+    <version>144.0.7559.96</version>
+    <time>1769091222</time>
+    <user>anag_factory</user>
+    <comment>Chromium 144.0.7559.96 (boo#1257011)</comment>
+    <requestid>1328404</requestid>
+  </revision>
 </revisionlist>
