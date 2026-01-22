@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan 21 15:40:31 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 6.2.1
+  Bugfix Release
+  * R6: fix valgrind error.
+  * tokeninfo: fix null pointer crash in tokenDelete function.
+  * ada: Fix crash with `is` at EOF. #4284
+  * Cxx: limit recursion when parsing too deep blocks.
+  * C++: Update the parser version to 2.2
+- Package readtags
+
+-------------------------------------------------------------------
 Tue Oct 21 12:13:36 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 6.2.0:

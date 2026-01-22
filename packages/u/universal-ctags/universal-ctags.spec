@@ -1,7 +1,7 @@
 #
 # spec file for package universal-ctags
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -69,12 +69,17 @@ autoreconf -fiv
 %make_build -C man
 
 %install
+# ctags
 install -D -m 755 ctags %{buildroot}/%{_bindir}/universal-ctags
 install -D -m 644 man/ctags.1 %{buildroot}/%{_mandir}/man1/universal-ctags.1
 install -D -m 644 man/ctags-incompatibilities.7 %{buildroot}/%{_mandir}/man7/universal-ctags-incompatibilities.7
 install -D -m 644 man/ctags-optlib.7 %{buildroot}/%{_mandir}/man7/universal-ctags-optlib.7
-
+# readtags
+install -D -m 755 readtags %{buildroot}/%{_bindir}/universal-readtags
+install -D -m 644 man/readtags.1 %{buildroot}/%{_mandir}/man1/universal-readtags.1
+#
 %if %{with libalternatives}
+# ctags
 mkdir -p %{buildroot}%{_datadir}/libalternatives/ctags
 ln -sf %{_bindir}/alts %{buildroot}%{_bindir}/ctags
 cat > %{buildroot}%{_datadir}/libalternatives/ctags/25.conf <<-EOF
@@ -82,39 +87,69 @@ cat > %{buildroot}%{_datadir}/libalternatives/ctags/25.conf <<-EOF
 	man=universal-ctags.1
 	group=ctags
 	EOF
+# readtags
+mkdir -p %{buildroot}%{_datadir}/libalternatives/readtags
+ln -sf %{_bindir}/alts %{buildroot}%{_bindir}/readtags
+cat > %{buildroot}%{_datadir}/libalternatives/readtags/25.conf <<-EOF
+	binary=%{_bindir}/universal-readtags
+	man=universal-readtags.1
+	group=ctags
+	EOF
 %else
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
+# ctags
 ln -s %{_sysconfdir}/alternatives/ctags %{buildroot}%{_bindir}/ctags
 ln -s %{_sysconfdir}/alternatives/ctags.1%{?ext_man}  %{buildroot}%{_mandir}/man1/ctags.1%{?ext_man}
+# readtags
+ln -s %{_sysconfdir}/alternatives/readtags %{buildroot}%{_bindir}/readtags
+ln -s %{_sysconfdir}/alternatives/readtags.1%{?ext_man}  %{buildroot}%{_mandir}/man1/readtags.1%{?ext_man}
 %endif
 
 %if ! %{with libalternatives}
 %post
+# ctags
 test -L %{_bindir}/ctags || rm -f %{_bindir}/ctags
 update-alternatives --install  %{_bindir}/ctags ctags %{_bindir}/universal-ctags 25 \
   --slave %{_mandir}/man1/ctags.1.gz ctags.1 %{_mandir}/man1/universal-ctags.1.gz
+# readtags
+test -L %{_bindir}/readtags || rm -f %{_bindir}/readtags
+update-alternatives --install  %{_bindir}/readtags readtags %{_bindir}/universal-readtags 25 \
+  --slave %{_mandir}/man1/readtags.1.gz readtags.1 %{_mandir}/man1/universal-readtags.1.gz
 
 %postun
+# ctags
 if [ ! -f %{_bindir}/ctags ] ; then
    update-alternatives --remove ctags %{_bindir}/universal-ctags
+fi
+# readtags
+if [ ! -f %{_bindir}/readtags ] ; then
+   update-alternatives --remove readtags %{_bindir}/universal-readtags
 fi
 %endif
 
 %files
 %license COPYING
 %{_bindir}/ctags
+%{_bindir}/readtags
 %{_bindir}/universal-ctags
+%{_bindir}/universal-readtags
 %{_mandir}/man1/universal-ctags.1%{?ext_man}
+%{_mandir}/man1/universal-readtags.1%{?ext_man}
 %{_mandir}/man7/universal-ctags-incompatibilities.7%{?ext_man}
 %{_mandir}/man7/universal-ctags-optlib.7%{?ext_man}
 %if %{with libalternatives}
 %dir %{_datadir}/libalternatives/
 %dir %{_datadir}/libalternatives/ctags/
 %{_datadir}/libalternatives/ctags/25.conf
+%dir %{_datadir}/libalternatives/readtags/
+%{_datadir}/libalternatives/readtags/25.conf
 %else
 %{_mandir}/man1/ctags.1%{ext_man}
+%{_mandir}/man1/readtags.1%{ext_man}
 %ghost %{_sysconfdir}/alternatives/ctags
 %ghost %{_sysconfdir}/alternatives/ctags.1%{?ext_man}
+%ghost %{_sysconfdir}/alternatives/readtags
+%ghost %{_sysconfdir}/alternatives/readtags.1%{?ext_man}
 %endif
 
 %changelog
