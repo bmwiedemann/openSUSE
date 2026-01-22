@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
-Tue Jan 20 20:12:31 UTC 2026 - okurz@suse.com
+Wed Jan 21 13:01:48 UTC 2026 - okurz@suse.com
 
-- Update to version 5.1768919350.40d92537:
+- Update to version 5.1768996386.e3f58202:
+  * fix: Avoid Perl warning if product spec contains undef values
+  * GenericBug: Add [QE] to the subject
+  * doc: Mention version lookup of mediums and special value `*`
+  * doc: Wrap section about medium types consistently at 80 characters
+  * doc: Remove surplus white-space
+  * chore: Improve indentation/wrapping of comment
+  * feat: Improve error message when product contains no templates
   * tests: Improve/add tests for "no products found" case
   * KernelBug: Extend the kernel bug template
   * feat: Improve error message when falling back to version `*`
