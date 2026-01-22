@@ -654,4 +654,30 @@ because we don't need git-web and the other stuff here (forwarded request 125417
     <comment></comment>
     <requestid>1324368</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>35b057ef645640f2b41effcf30451c78</srcmd5>
+    <version>0.14.2</version>
+    <time>1769091344</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.14.2:
+  * New models: TranslateGemma
+  * Shift + Enter will now enter a newline in Ollama's CLI
+  * Improve /v1/responses API to better confirm to OpenResponses
+    specification
+- Update to version 0.14.1:
+  * Experimental image generation models are available Linux (CUDA)
+    `ollama run x/z-image-turbo`
+
+- Update to version 0.14.0:
+  * ollama run --experimental CLI will now open a new Ollama CLI
+    that includes an agent loop and the bash tool
+  * Anthropic API compatibility: support for the /v1/messages API
+  * A new REQUIRES command for the Modelfile allows declaring which
+    version of Ollama is required for the model
+  * For older models, Ollama will avoid an integer underflow on low
+    VRAM systems during memory estimation
+  * More accurate VRAM measurements for AMD iGPUs
+  * An error will now return when embeddings return NaN or -Inf</comment>
+    <requestid>1328568</requestid>
+  </revision>
 </revisionlist>

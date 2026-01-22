@@ -1,7 +1,7 @@
 #
 # spec file for package ollama
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@
 %define cuda_version %{cuda_version_major}-%{cuda_version_minor}
 
 Name:           ollama
-Version:        0.13.5
+Version:        0.14.2
 Release:        0
 Summary:        Tool for running AI models on-premise
 License:        MIT
