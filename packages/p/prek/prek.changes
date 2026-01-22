@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Jan 22 07:00:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.3.0:
+  * Highlights
+    - prek cache gc (also available via prek gc for pre-commit
+      compatibility) is finally here! You can now run prek cache gc
+      to clean up unused repos, hook envs and tool versions from
+      prek cache.
+    - language: bun is now supported, making it possible to write
+      and run hooks with Bun.
+  * Enhancements
+    - Implement prek cache gc (#1410)
+      - Bootstrap tracking configs from workspace cache (#1417)
+      - Show total size prek cache gc removed (#1418)
+      - Show accurate repo and hook details in prek cache gc -v
+        (#1420)
+      - prek cache gc remove specific unused tool versions (#1422)
+      - Fix unused tool versions not removed in prek cache gc
+        (#1436)
+    - Add language: bun support (#1411)
+      - Use git ls-remote --tags to list bun versions (#1439)
+    - Accept --stage as an alias for --hook-stage in prek run
+      (#1398)
+    - Expand ~ tilde in PREK_HOME (#1431)
+    - Support refs to trees (#1449)
+  * Bug fixes
+    - Avoid file lock warning for in-process contention (#1406)
+    - Resolve relative repo paths from config file directory
+      (#1443)
+    - fix: use split() instead of resolve(None) for builtin hook
+      argument parsing (#1415)
+  * Documentation
+    - Add simple-icons and ast-grep to the users of prek (#1403)
+    - Improve JSON schema for repo field (#1432)
+    - Improve JSON schema for builtin and meta hooks (#1427)
+    - Add pronunciation entry to FAQ (#1442)
+    - Add commitizen to the list of projects using prek (#1413)
+    - Move docs to zensical (#1421)
+  * Other Changes
+    - Refactor config layout (#1407)
+
+-------------------------------------------------------------------
 Mon Jan 19 06:38:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.30:
