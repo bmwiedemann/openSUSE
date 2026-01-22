@@ -2610,4 +2610,14 @@ New Features
 </comment>
     <requestid>1328116</requestid>
   </revision>
+  <revision rev="226" vrev="1">
+    <srcmd5>70c4d3a2896b52ecaff1c576b238c7bb</srcmd5>
+    <version>9.20.18</version>
+    <time>1769091139</time>
+    <user>anag_factory</user>
+    <comment>- Upgrade to release 9.20.18
+  (CVE-2025-13878)
+  [bsc#1256997]</comment>
+    <requestid>1328514</requestid>
+  </revision>
 </revisionlist>

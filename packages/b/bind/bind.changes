@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed Jan 21 13:03:10 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Upgrade to release 9.20.18
+  Security Fixes:
+  * Fix incorrect length checks for BRID and HHIT records. 
+  (CVE-2025-13878)
+  [bsc#1256997]
+
+  Feature Changes:
+  * Add more information to the rndc recursing output about
+    fetches.
+  * Reduce the number of outgoing queries.
+  * Provide more information when memory allocation fails.
+
+  Bug Fixes:
+  * Make DNSSEC key rollovers more robust.
+  * Fix a catalog zone issue, where member zones could fail to
+    load.
+  * Allow glue in delegations with QTYPE=ANY.
+  * Fix slow speed when signing a large delegation zone with NSEC3
+    opt-out.
+  * Reconfiguring an NSEC3 opt-out zone to NSEC caused the zone to
+    be invalid.
+  * Fix a possible catalog zone issue during reconfiguration.
+  * Fix the charts in the statistics channel.
+  * Adding NSEC3 opt-out records could leave invalid records in
+    chain.
+  * Fix spurious timeouts while resolving names.
+  * Fix bug where zone switches from NSEC3 to NSEC after
+    retransfer.
+  * AMTRELAY type 0 presentation format handling was wrong.
+  * Fix parsing bug in remote-servers with key or TLS.
+  * Fix DoT reconfigure/reload bug in the resolver.
+  * Skip unsupported algorithms when looking for a signing key.
+  * Fix dnssec-keygen key collision checking for KEY RRtype keys.
+  * dnssec-verify now uses exit code 1 when failing due to illegal
+    options.
+  * Prevent assertion failures of dig when a server is specified
+    before the -b option.
+  * Skip buffer allocations if not logging.
+
+-------------------------------------------------------------------
 Wed Dec 17 00:30:28 UTC 2025 - Jeff Mahoney <jeffm@suse.com>
 
 - Remove packaging support for releases prior to SLES 15 SP4/Leap 15.4.
