@@ -1,7 +1,7 @@
 #
 # spec file for package python-rq
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-rq%{psuffix}
-Version:        2.4.1
+Version:        2.6.1
 Release:        0
 Summary:        Easy Job Queues for Python
 License:        Apache-2.0
@@ -45,6 +45,7 @@ BuildRequires:  psmisc
 BuildRequires:  python-rpm-macros
 BuildRequires:  redis
 Requires:       python-click >= 5.0.0
+Requires:       python-croniter
 Requires:       python-redis >= 3.5.0
 Requires(post): update-alternatives
 Requires(postun): update-alternatives

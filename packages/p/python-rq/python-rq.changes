@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan 21 13:47:53 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.6.1
+  * CronScheduler now supports running periodic jobs based on cron string.
+  * Fixed an issue where SpawnWorker does not properly register successful
+    job executions.
+  * Fixed an issue where Worker may fail to register custom job and queue
+    classes.
+  * Added result.worker_name to easily trace which Worker generated the
+    result.
+  * Added CronScheduler.all() that returns a list of active schedulers.
+  * Updated CronScheduler to accept job_timeout instead of timeout argument.
+
+-------------------------------------------------------------------
 Wed Jul 23 10:45:51 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.4.1
