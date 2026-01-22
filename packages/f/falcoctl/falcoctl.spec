@@ -1,7 +1,7 @@
 #
 # spec file for package falcoctl
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           falcoctl
-Version:        0.11.4
+Version:        0.12.1
 Release:        0
 Summary:        CLI / Administrative tooling for Falco
 License:        Apache-2.0
@@ -26,11 +26,12 @@ Source:         falcoctl-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.23.4
 BuildRequires:  zsh
+BuildRequires:  golang(API) >= 1.25
 
 %description
-The official CLI tool for working with [Falco](https://github.com/falcosecurity/falco) and its ecosystem components.
+The official CLI tool for working with
+[Falco](https://github.com/falcosecurity/falco) and its ecosystem components.
 
 %package -n %{name}-bash-completion
 Summary:        Bash Completion for %{name}

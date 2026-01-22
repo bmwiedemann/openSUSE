@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Thu Jan 22 06:28:51 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.12.1:
+  * doc: improve state dir config documentation
+  * feat(artifact): add config file support for stateDir option
+
+-------------------------------------------------------------------
+Wed Jan 21 12:20:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.12.0:
+  * fix: use cached cosign trusted root
+  * fix: support cosign v3 also for local images, improve
+    trustedRoot creation behavior
+  * feat(cosign): upgrade to v3 with bundle format support
+  * fix: resolve file descriptor leak in follower and clarify test
+    expectation
+  * test(artifact): add ValidateVersion tests to document strict
+    semver enforcement
+  * doc: explain new behavior on tolerant semver install command
+  * fix: enforce semver version validation on pushed artifact
+  * fix: linting
+  * fix(cmd/artifact/install): accept major-only and major.minor
+    versions
+  * chore(deps): Bump golangci/golangci-lint-action
+  * chore(deps): Bump actions/setup-go in the actions group
+  * fix: patch dependencies
+  * chore(deps): Bump sigstore/cosign-installer from 3.10.0 to
+    4.0.0
+  * fix(.golangci.yml): correct config again
+  * fix(.github): upgrade golangci-lint action to v7.0.0
+  * fix(cmd/artifact/install): correctly handle error in deferred
+    file close
+  * chore: upgrade golangci to v2
+  * fix: upgrade driverkit and transitive deps
+  * chore(deps): Bump github.com/sigstore/fulcio from 1.6.6 to
+    1.8.5
+  * fix(install): fix file descriptor leak and improve error
+    messages
+  * fix: change artifactRef with artifact.ref after the rebase
+  * fix: use a dedicated directory for artifact state to avoid
+    writing in a watched folder of Falco, improve tests
+  * added tests to state, install and follower - some other minor
+    changes
+  * added shared state between install and follow
+  * fix: improve documentation and logs
+  * fix: avoid usage of resolved refs during signature, resolve
+    alternative artifact reference, add tests to
+    prepareArtifactList
+  * fix: change copyright year
+  * fix: add cap to slice and map, make the PrepareArtifactList not
+    exported
+  * create specific method to prepare reference list
+  * fixed logic to deduplicate refs and dependencies during
+    artifact install command
+  * chore(deps): Bump docker/setup-buildx-action in the actions
+    group
+  * chore(deps): Bump actions/checkout from 5.0.0 to 6.0.1
+  * chore(deps): Bump actions/upload-artifact from 4.6.2 to 6.0.0
+  * chore(deps): Bump the actions group with 2 updates
+  * chore: bump golanci-linter version
+  * feat: add start-up behaviour configuration for follow
+  * chore: reduce version check frequency to 7 days to reduce
+    registry load
+  * chore(deps): Bump the actions group across 1 directory with 5
+    updates
+
+-------------------------------------------------------------------
 Wed Sep 24 12:36:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.11.4:
