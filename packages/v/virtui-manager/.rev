@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e6d3a4870f7411dd30673a00e28024d9</srcmd5>
+    <version>0.9.9</version>
+    <time>1769091235</time>
+    <user>anag_factory</user>
+    <comment>Initial release. text-based Terminal User Interface (TUI) application for managing QEMU/KVM virtual machines using the libvirt Python API.</comment>
+    <requestid>1328484</requestid>
+  </revision>
+</revisionlist>
