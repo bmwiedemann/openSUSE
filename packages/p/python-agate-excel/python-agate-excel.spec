@@ -1,7 +1,7 @@
 #
 # spec file for package python-agate-excel
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-agate-excel
-Version:        0.4.1
+Version:        0.4.2
 Release:        0
 Summary:        Read support for Excel files (xls and xlsx) for agate
 License:        MIT

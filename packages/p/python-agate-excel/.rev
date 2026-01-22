@@ -102,4 +102,14 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1275955</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>249774acd43680c1187d6b1a0b8289e3</srcmd5>
+    <version>0.4.2</version>
+    <time>1769101155</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.4.2:
+  * Add Python 3.13 and 3.14 support. Drop support for end-of-
+    life versions 3.8 and 3.9.</comment>
+    <requestid>1328712</requestid>
+  </revision>
 </revisionlist>
