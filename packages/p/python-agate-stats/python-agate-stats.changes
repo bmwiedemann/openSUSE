@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 22 14:37:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.3:
+  * Add Python 3.13 and 3.14 support. Drop support for end-of-
+    life versions 3.8 and 3.9.
+
+-------------------------------------------------------------------
 Fri Mar 22 19:42:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.4.2:

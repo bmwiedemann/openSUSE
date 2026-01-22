@@ -1,7 +1,7 @@
 #
 # spec file for package python-agate-stats
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-agate-stats
-Version:        0.4.2
+Version:        0.4.3
 Release:        0
 License:        MIT
 Summary:        Additional statistical methods for agate
