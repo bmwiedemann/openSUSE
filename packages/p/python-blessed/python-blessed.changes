@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jan 22 14:36:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.27:
+  * fix flit/delete MANIFEST.in for re-release,
+- update to 1.26:
+  * mypy check no-untyped-call and type-var
+  * test length with characters where wcwidth returns -1
+  * Add optional testing for Python 3.15
+  * ci/docformatter/lint fixes
+  * call length() less in wrap()
+  * Add break_on_hyphens support (rework of #330)
+  * Add Terminal.color_hex('#rgb'), Bugfix get_fgcolor()
+  * Add Terminal.scroll_region() context manager
+  * Add Terminal.no_line_wrap() context manager
+  * Bugfix: Variation Selector-16/ZWJ and starting sequences in
+    wrap()
+  * New method: Terminal.detect_ambiguous_width() -> [1, 2]
+
+-------------------------------------------------------------------
 Wed Nov 26 08:54:06 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.25
@@ -138,14 +157,14 @@ Wed Jan 22 15:36:56 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 1.17.0
   * 24-bit color support
-  * move_up(), move_down(), Terminal.move_left(), move_right() which 
-    are strings that move the cursor one cell in the respective 
-    direction, are now also callables for moving n cells to the 
+  * move_up(), move_down(), Terminal.move_left(), move_right() which
+    are strings that move the cursor one cell in the respective
+    direction, are now also callables for moving n cells to the
     given direction, such as term.move_right(9).
-  * Context Managers, fullscreen(), hidden_cursor(), and keypad() 
+  * Context Managers, fullscreen(), hidden_cursor(), and keypad()
     now flush the stream after writing their sequences.
-  * deprecated: superscript, subscript, shadow, and dim are no longer 
-    “compoundable” with colors. Use Unicode text or 256 or 24-bit 
+  * deprecated: superscript, subscript, shadow, and dim are no longer
+    “compoundable” with colors. Use Unicode text or 256 or 24-bit
     color codes instead.
   * more on https://blessed.readthedocs.io/en/latest/history.html
 

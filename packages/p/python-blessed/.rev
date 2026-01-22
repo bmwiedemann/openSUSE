@@ -166,4 +166,33 @@
     <comment></comment>
     <requestid>1320156</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>54163ed58feb4f19b59f923e44a866a7</srcmd5>
+    <version>1.27.0</version>
+    <time>1769101153</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.27:
+  * fix flit/delete MANIFEST.in for re-release,
+- update to 1.26:
+  * mypy check no-untyped-call and type-var
+  * test length with characters where wcwidth returns -1
+  * Add optional testing for Python 3.15
+  * ci/docformatter/lint fixes
+  * call length() less in wrap()
+  * Add break_on_hyphens support (rework of #330)
+  * Add Terminal.color_hex('#rgb'), Bugfix get_fgcolor()
+  * Add Terminal.scroll_region() context manager
+  * Add Terminal.no_line_wrap() context manager
+  * Bugfix: Variation Selector-16/ZWJ and starting sequences in
+    wrap()
+  * New method: Terminal.detect_ambiguous_width() -&gt; [1, 2]
+
+  * move_up(), move_down(), Terminal.move_left(), move_right() which
+    are strings that move the cursor one cell in the respective
+    direction, are now also callables for moving n cells to the
+  * Context Managers, fullscreen(), hidden_cursor(), and keypad()
+  * deprecated: superscript, subscript, shadow, and dim are no longer
+    “compoundable” with colors. Use Unicode text or 256 or 24-bit</comment>
+    <requestid>1328708</requestid>
+  </revision>
 </revisionlist>
