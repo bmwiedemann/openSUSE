@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 22 14:20:23 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- remove packaged /var/log/usbguard directory (jsc#PED-14795)
+
+-------------------------------------------------------------------
 Sun Sep  7 08:21:07 UTC 2025 - munix9@googlemail.com
 
 - Add usbguard.logrotate based on

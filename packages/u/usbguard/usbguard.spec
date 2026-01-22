@@ -1,7 +1,7 @@
 #
 # spec file for package usbguard
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -164,7 +164,6 @@ find %{buildroot} \( -name '*.la' -o -name '*.a' \) -delete
 %doc README.adoc CHANGELOG.md
 %license LICENSE
 %{_sbindir}/usbguard-daemon
-%dir %{_localstatedir}/log/usbguard
 %dir %{_sysconfdir}/usbguard
 %{_sbindir}/rcusbguard
 %{_sbindir}/usbguard-dbus
