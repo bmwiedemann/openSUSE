@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 22 08:37:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.8:
+  * fix bug (#146) so that `return` from a Procedure does not
+    interrupt the calling code block
+  * remove numpy.memmap from default methods
+  * add discussion of numpy functions/objects that can open files
+  * add support and tests for `lambda` expressions
+  * add default permissions to github actions
+  * update README, doc, remove cruft
+
+-------------------------------------------------------------------
 Thu Nov 13 14:25:13 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.0.7

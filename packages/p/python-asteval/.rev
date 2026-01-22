@@ -246,4 +246,19 @@
     <comment></comment>
     <requestid>1317640</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>678f3acc6bdc43ba5bed8f41e36ba3d8</srcmd5>
+    <version>1.0.8</version>
+    <time>1769091483</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.0.8:
+  * fix bug (#146) so that `return` from a Procedure does not
+    interrupt the calling code block
+  * remove numpy.memmap from default methods
+  * add discussion of numpy functions/objects that can open files
+  * add support and tests for `lambda` expressions
+  * add default permissions to github actions
+  * update README, doc, remove cruft</comment>
+    <requestid>1328623</requestid>
+  </revision>
 </revisionlist>
