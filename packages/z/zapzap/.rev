@@ -62,4 +62,41 @@
   * Fix issue while saving files #43</comment>
     <requestid>1170910</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0fcf2e2d4bb72f3a26c3daf6bcaa24f8</srcmd5>
+    <version>6.2.8</version>
+    <time>1769091539</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.2.7:
+  * fix: refactor clipboard logic to prevent wayland segfault #514
+
+- Update to 6.2.6:
+  * Update pt_PT.po #510
+  * Guard WebEngine extensions based on Qt version (Debian build fix) #515
+
+- Update to 6.2.5:
+  * Integration with deb version #480
+  * Add uv tool installation instructions to README #502
+  * Fixing Chromium Flags being ignored and Wayland support #506
+  * Custom theming support via Chrome extension #490
+
+- Update to 6.2.2:
+  * Update pt_BR.po #464
+  * Add translation Portuguese Portugal #463
+  * Revise Hebrew translations and update metadata #462
+
+- Update to 6.2.1:
+  * Fix: Can't paste images from clipboard (via browsers).
+  * Fix: Dictionary for spelling correction.
+
+- Update to 6.2:
+  * Message context menu on right-click #403
+  * Update it.po #414
+
+- Update to 6.1:
+  * Update ZapZap UI Colors with Latest WhatsApp Theme #341
+  * Update pl.po #345
+  * Add Hebrew translations #375</comment>
+    <requestid>1328646</requestid>
+  </revision>
 </revisionlist>

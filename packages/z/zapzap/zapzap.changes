@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Thu Jan 22 08:50:12 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 6.2.7:
+  * fix: refactor clipboard logic to prevent wayland segfault #514
+
+-------------------------------------------------------------------
+Thu Jan 22 08:49:58 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 6.2.6:
+  * Update pt_PT.po #510
+  * Guard WebEngine extensions based on Qt version (Debian build fix) #515
+
+-------------------------------------------------------------------
+Thu Jan 22 08:49:47 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 6.2.5:
+  * Integration with deb version #480
+  * Add uv tool installation instructions to README #502
+  * Fixing Chromium Flags being ignored and Wayland support #506
+  * Custom theming support via Chrome extension #490
+
+-------------------------------------------------------------------
+Thu Jan 22 08:49:34 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 6.2.2:
+  * Update pt_BR.po #464
+  * Add translation Portuguese Portugal #463
+  * Revise Hebrew translations and update metadata #462
+
+-------------------------------------------------------------------
+Thu Jan 22 08:49:23 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 6.2.1:
+  * Fix: Can't paste images from clipboard (via browsers).
+  * Fix: Dictionary for spelling correction.
+
+-------------------------------------------------------------------
+Thu Jan 22 08:49:13 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 6.2:
+  * Message context menu on right-click #403
+  * Update it.po #414
+
+-------------------------------------------------------------------
+Thu Jan 22 08:48:57 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 6.1:
+  * Update ZapZap UI Colors with Latest WhatsApp Theme #341
+  * Update pl.po #345
+  * Add Hebrew translations #375
+
+-------------------------------------------------------------------
+Thu Jan 22 08:48:21 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 6.0.1:
+  * Typing mistake #306
+  * Update ui_page_general.ui #308
+  * Update German Translation #311
+
+-------------------------------------------------------------------
+Thu Jan 22 08:48:03 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 6.0.0:
+  * Updated translation for Bosnian language #273
+  * Update bs.po #298
+  * Added Dutch translation #299
+  * Patch 1 #301
+  * Update es.po #302
+
+-------------------------------------------------------------------
+Thu Jan 22 08:47:18 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 5.3.8:
+  * Patch unhandled dbus exception #241
+
+-------------------------------------------------------------------
+Thu Jan 22 08:45:34 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 5.3.6:
+  * Fix grammar and typos #196
+  * Improvements to README and metainfo files #197
+  * Some more updates to the README and the .xml file that I forgot to submit a pull request for #202
+
+-------------------------------------------------------------------
 Tue Apr 30 06:15:43 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 5.3.1:
