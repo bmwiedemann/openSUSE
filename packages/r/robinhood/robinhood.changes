@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jan 22 08:35:31 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- update to version 3.2.0 with following changes:
+  * Add features for Lustre's project quota:
+    - Retrieve project id when scanning and reading changelogs
+    - Add report: rbh-report --project-info
+    - New filtering options in rbh-report: --filter-project
+    - New option --split-user-projects to split user's usage per project
+    - Display project-info with 'rbh-find --printf %RP'
+    - Filter project with 'rbh-find -projid num'
+    - New 'projid' trigger target on command line
+  * To enable these features, set "lustre_projid = yes;" in the general config
+    section.
+  * Implement policy sort order by size, e.g. lru_sort_attr = size;
+  * Implement asc/desc modifiers for sort order, e.g. lru_sort_attr = size(desc);
+  * Implement policy trigger thresholds as percentage of available inodes:
+    high/low_threshold_cntpct = xx%;
+  * Policy optimization: no DB update when pre_sched_match and post_sched_match
+    are set to "none or "cache_only".
+  * Fix errors "Out of range value for size columns" due to DB triggers
+  * Adaptations for Lustre 2.15
+
+-------------------------------------------------------------------
 Fri Feb 23 11:42:23 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
