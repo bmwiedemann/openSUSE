@@ -143,4 +143,41 @@
     0.21.0-nightly.20251218.739c02bd6</comment>
     <requestid>1325922</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>869b7334cbe54dd635232c1ca268e5d2</srcmd5>
+    <version>0.25.0</version>
+    <time>1769091223</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.25.0:
+  * feat(core): improve activate_skill tool and use lowercase XML
+    tags
+  * Add initiation method telemetry property
+  * Hx support
+  * [Skills] Foundation: Centralize management logic and feedback
+    rendering
+  * Introduce GEMINI_CLI_HOME for strict test isolation
+  * [Skills] Multi-scope skill enablement and shadowing fix
+  * policy: extract legacy policy from core tool scheduler to
+    policy engine
+  * Enhance TestRig with process management and timeouts
+  * Update troubleshooting doc for
+    UNABLE_TO_GET_ISSUER_CERT_LOCALLY
+  * Add keytar to dependencies
+  * Simplify extension settings command
+  * feat(admin): implement extensions disabled
+  * Core data structure updates for Rewind functionality
+  * feat(hooks): simplify hook firing with HookSystem wrapper
+    methods
+  * Add exp.gws_experiment field to LogEventEntry
+  * Revert &quot;feat(admin): implement extensions disabled&quot;
+  * feat(core): Decouple enabling hooks UI from subsystem.
+  * docs: add docs for hooks + extensions
+  * feat(core): Preliminary changes for subagent model routing.
+  * Optimize CI workflow: Parallelize jobs and cache linters
+  * Add option to fallback for capacity errors in ProQuotaDi…
+  * feat: add confirmation details support + jsonrpc vs http rest
+    support
+  * fix(workflows): fix and limit labels for pr-triage.sh script</comment>
+    <requestid>1328478</requestid>
+  </revision>
 </revisionlist>
