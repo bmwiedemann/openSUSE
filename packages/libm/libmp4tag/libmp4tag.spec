@@ -1,7 +1,7 @@
 #
 # spec file for package libmp4tag
 #
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define sover 2_0_0
+%define sover 2
 Name:           libmp4tag
-Version:        2.0.0
+Version:        2.0.2
 Release:        0
 Summary:        MP4 tagging library
 License:        Zlib
@@ -83,13 +83,13 @@ This package contains the CLI tools built from %{name}.
 
 %files tools
 %license LICENSE.txt
-%doc README.txt
+%doc README.md
 %{_bindir}/mp4tagcli
 %{_mandir}/man1/mp4tagcli.1%{?ext_man}
 
 %files -n %{name}%{sover}
 %license LICENSE.txt
-%{_libdir}/libmp4tag.so.*
+%{_libdir}/libmp4tag.so.%{sover}{,.*}
 
 %files devel
 %license LICENSE.txt

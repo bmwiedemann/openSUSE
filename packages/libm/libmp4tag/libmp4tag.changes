@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 21 18:59:58 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.0.2:
+  * fix build with nodiscard
+
+-------------------------------------------------------------------
 Fri Dec 20 14:55:33 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - initial version
