@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>57bc09c36c61f815b55902072aa62801</srcmd5>
+    <version>0.26.0</version>
+    <time>1769091216</time>
+    <user>anag_factory</user>
+    <comment>UWSM provides a set of Systemd units and helpers to set up the environment and manage standalone Wayland compositor sessions. It is useful for managing apps that don't provide Systemd user services for Wayland compositors like Hyprland, Sway, LabWC or Wayfire.
+
+Meson clean up and fixes regression on Leap 15.6.</comment>
+    <requestid>1328300</requestid>
+  </revision>
+</revisionlist>

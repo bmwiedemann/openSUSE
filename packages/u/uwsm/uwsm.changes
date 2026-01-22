@@ -1,0 +1,248 @@
+-------------------------------------------------------------------
+Tue Jan 20 14:30:52 UTC 2026 - Alexey Kolos <lioli7k@gmail.com>
+
+- Update fix-quotes-in-f-string-for-python-before-3.12.patch status
+
+-------------------------------------------------------------------
+Sun Jan 18 20:42:58 UTC 2026 - Alexey Kolos <lioli7k@gmail.com>
+
+- Fix build on Leap 15.6
+  * add fix-quotes-in-f-string-for-python-before-3.12.patch
+
+-------------------------------------------------------------------
+Sun Jan 18 17:11:58 UTC 2026 - Alexey Kolos <lioli7k@gmail.com>
+
+- Move meson setup into build section
+
+-------------------------------------------------------------------
+Sun Jan 18 16:25:23 UTC 2026 - Alexey Kolos <lioli7k@gmail.com>
+
+- Add a simple check to make package build fail if uwsm can't run
+
+-------------------------------------------------------------------
+Sun Jan 18 16:19:10 UTC 2026 - Alexey Kolos <lioli7k@gmail.com>
+
+- Clean up meson option for Leap 15.6
+
+-------------------------------------------------------------------
+Fri Jan 16 19:27:36 UTC 2026 - Alexey Kolos <lioli7k@gmail.com>
+
+- Clean up for the Factory
+
+-------------------------------------------------------------------
+Thu Jan  8 01:31:22 UTC 2026 - Alexey Kolos <lioli7k@gmail.com>
+
+- Exclude systemd presets
+
+-------------------------------------------------------------------
+Thu Jan 08 00:55:33 UTC 2026 - Alexey Kolos <lioli7k@gmail.com>
+
+- Update to version 0.26.0:
+  * docs: update readme and manpage
+  * fix!: demote compositor executable to the last resort fallback for desktop names
+  * fix: address some pylint issues
+  * fix: probe for $DBUS_SESSION_BUS_ADDRESS before trying to talk to DBus in checks
+  * build: bump meson version due to follow_symlinks param
+  * build: add actual plugin symlink to track, cleanup unneeded debian/watch params
+  * fix: properly name plugin and function by bin_id rules
+  * fix: properly name plugin by bin_id rules
+  * build: cherry pick some changes from official debian packaging
+  * fix(uuctl): properly fallback cleanup function to true
+  * fix: add plugin link for start-hyprland
+  * style: black
+  * fix: autolaunch bindpid service on login session leader if none running
+  * fix: match session to VTNr actually by VTNr
+  * feat: session envelope target
+  * fix: improve desktop names parsing/propagation (fixes #186), session vars fallback saving
+  * fix!: bake in transient session vars behavior and drop test switch var
+  * fix: always log to journal in signal handler
+  * fix!: drop non-static units
+  * fix: do not auto-add executable name to XDG_CURRENT_DESKTOP if entry's DesktopNames has content, fixes #186
+  * fix: STATIC_UNITS boolean configuration templating
+  * refactor: move shell code from main body to libexec dir
+
+-------------------------------------------------------------------
+Thu Jan 08 00:54:59 UTC 2026 - Alexey Kolos <lioli7k@gmail.com>
+
+- Update to version 0.25.3:
+  * build: "public-modules" option to install python modules to public dir
+  * fix: unconditionally reset terminal opts during argument parsing, fixes #185
+
+-------------------------------------------------------------------
+Wed Dec 10 21:03:00 UTC 2025 - Alexey Kolos <lioli7k@gmail.com>
+
+- Add optional dependency for ttyautolock
+
+-------------------------------------------------------------------
+Wed Dec 10 19:02:48 UTC 2025 - Alexey Kolos <lioli7k@gmail.com>
+
+- Update to version 0.25.2:
+  * fix: observe silent mode in signal handler, ignore fb kmscon
+  * docs: update readme
+  * fix: more terminal-related vars to not export
+  * feat: kmscon support, detect kmscon and print background/foreground requests
+  * fix: use escaped specifier in autoready and finalize, fixes #182
+
+-------------------------------------------------------------------
+Sun Nov 23 01:24:45 UTC 2025 - Alexey Kolos <lioli7k@gmail.com>
+
+- Enable wait-tray script
+
+-------------------------------------------------------------------
+Sun Nov 23 00:03:10 UTC 2025 - Alexey Kolos <lioli7k@gmail.com>
+
+- Update to version 0.24.3:
+  * fix(uwsm-app): drop hacky ps/kill logic, apply more traps, prevent zombies. Fixes #177
+  * fix(wait-tray): add optional delay and usage message
+  * feat: add wait-tray script
+
+-------------------------------------------------------------------
+Sat Nov 01 22:20:29 UTC 2025 - Alexey Kolos <lioli7k@gmail.com>
+
+- Update to version 0.24.2:
+  * fix: use correct waitpid path in wayland-session-bindpid@.service unit (#175)
+
+-------------------------------------------------------------------
+Fri Oct 10 21:51:28 UTC 2025 - Alexey Kolos <lioli7k@gmail.com>
+
+- Update to version 0.24.1:
+  * fix: uwsm start help (#173)
+
+-------------------------------------------------------------------
+Fri Oct 10 16:43:12 UTC 2025 - Alexey Kolos <lioli7k@gmail.com>
+
+- Update to version 0.24.0:
+  * fix(fumon): also preserve backslashes in initial notification
+  * fix: drop deprecated -S, -A options
+  * fix: save backslashes in fumon notifications
+  * build: ensure proper version gets into params.py via build-deb.sh
+  * build: parametrize waitpid in wayland-session-bindpid@.service
+  * docs: update readme
+  * build: Make external program paths configurable (#171)
+  * docs: reflect uwsm-app.sh fix
+  * fix: add mutex to uwsm-app.sh
+
+-------------------------------------------------------------------
+Mon Sep 08 14:20:00 UTC 2025 - Alexey Kolos <lioli7k@gmail.com>
+
+- Update to version 0.23.3:
+  * fix(uuctl): whitespace in prompt
+  * docs: entry example (#162)
+  * fix: make session holder wait through all potential timeouts, closes #76
+  * fix: debug function dummy args
+  * feat(app): -p for unit property pass-through, closes #161
+  * style: formatting, comments, local var renames
+  * feat(uuctl): seamless/background mode for walker (closes #165)
+  * fix: consolidate icons and summaries in notifications
+  * fix: only warn about invalid Entry ID if entry is given as path, fixes #155
+
+-------------------------------------------------------------------
+Thu Aug 14 21:07:27 UTC 2025 - Alexey Kolos <lioli7k@gmail.com>
+
+- Update to version 0.23.2:
+  * fix: previous miscommit drop-in paths, fixes #151
+  * fix: restore startup timeout customization with static units
+  * docs: tweak launcher table
+  * docs: Add Albert applications command prefix example (#149)
+
+-------------------------------------------------------------------
+Sat Jul 19 12:25:21 UTC 2025 - Alexey Kolos <lioli7k@gmail.com>
+
+- Update to version 0.23.0+git3:
+  * build: python version check (#147)
+  * feat: run xdg-user-dirs-update at the end of env preloader if available
+
+-------------------------------------------------------------------
+Thu Jul 17 12:35:05 UTC 2025 - Alexey Kolos <lioli7k@gmail.com>
+
+- Fix build for OpenSUSE 15.6
+
+-------------------------------------------------------------------
+Mon Jun 30 19:02:54 UTC 2025 - Alexey Kolos <lioli7k@gmail.com>
+
+- Update to version 0.23.0:
+  * chore: bump version (minor)
+  * fix: script perms, debug unit paths
+  * docs: update readme and man
+  * fix: -T back switch for no tweaks, sort out "tweaks" keyword/mark
+  * docs: update readme and man
+  * fix: drop unneeded setting from kde portal tweak
+  * fix: update labwc reload drop-in placement
+  * fix: control unit file rungs and categories
+  * refactor: move fumon.service to other unit files
+  * fix(!): deprecate -S|-A start options and UWSM_USE_SESSION_SLICE
+
+-------------------------------------------------------------------
+Sat Jun 14 18:44:03 UTC 2025 - Alexey Kolos <lioli7k@gmail.com>
+
+- Update to version 0.21.8:
+  * chore: bump version (patch)
+  * fix(uuctl): repair broken menu autodetection, also parse targets
+  * chore: bump version (patch)
+  * fix(plugins): variable expansion to whitespace in UWSM_FINALIZE_VARNAMES (#131)
+  * chore: bump version (patch)
+  * fix: read xdg-terminals.list in data dirs as xdg-terminal-exec does, closes #128
+  * docs: extend uuctl manpage
+  * fix: message for unsupported menu
+  * docs: add manpages for uwsm-app, uuctl, misc help fixes.
+  * fix: generalize env string to boolean handling
+
+-------------------------------------------------------------------
+Fri Jun 06 21:52:09 UTC 2025 - Alexey Kolos <lioli7k@gmail.com>
+
+- Update to version 0.21.7:
+  * fix(plugins): variable expansion to whitespace in UWSM_FINALIZE_VARNAMES (#131)
+
+-------------------------------------------------------------------
+Thu Jun 05 12:05:03 UTC 2025 - Alexey Kolos <lioli7k@gmail.com>
+
+- Update to version 0.21.6:
+  * fix: read xdg-terminals.list in data dirs as xdg-terminal-exec does, closes #128
+  * docs: extend uuctl manpage
+  * fix: message for unsupported menu
+  * docs: add manpages for uwsm-app, uuctl, misc help fixes.
+  * fix: generalize env string to boolean handling
+  * fix: s/UWSM_WAITENV_TIMEOUT/UWSM_WAIT_VARNAMES_TIMEOUT/, also apply to units
+  * feat: show version
+
+-------------------------------------------------------------------
+Tue Apr 29 02:37:50 UTC 2025 - Alexey Kolos <lioli7k@gmail.com>
+
+- Revert module path fix
+
+-------------------------------------------------------------------
+Sat Mar 29 01:00:50 UTC 2025 - Alexey Kolos <lioli7k@gmail.com>
+
+- Update to version 0.21.3
+
+-------------------------------------------------------------------
+Sat Mar 29 00:46:31 UTC 2025 - Alexey Kolos <lioli7k@gmail.com>
+
+- Set up OBS service
+
+-------------------------------------------------------------------
+Tue Mar 11 17:51:58 UTC 2025 - Alexey Kolos <lioli7k@gmail.com>
+
+- Update to 0.21.2
+  * Use python3-base over python3 package
+
+-------------------------------------------------------------------
+Sun Feb 23 19:39:47 UTC 2025 - Alexey Kolos <lioli7k@gmail.com>
+
+- Update to 0.21.1
+  * Remove 0001-fix-meson-warnings.patch (accepted upstream)
+
+-------------------------------------------------------------------
+Sun Feb 16 22:10:45 UTC 2025 - Alexey Kolos <lioli7k@gmail.com>
+
+- Clean up spec file
+
+-------------------------------------------------------------------
+Sun Feb 16 21:16:52 UTC 2025 - Alexey Kolos <lioli7k@gmail.com>
+
+- Update to 0.21.0
+
+-------------------------------------------------------------------
+Sun Feb 16 20:23:53 UTC 2025 - Alexey Kolos <lioli7k@gmail.com>
+
+- Initial version

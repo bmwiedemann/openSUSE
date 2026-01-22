@@ -1,0 +1,5 @@
+<package name="uwsm" project="openSUSE:Factory">
+  <title>Universal Wayland Session Manager</title>
+  <description>Wraps standalone Wayland compositors into a set of Systemd units on the fly. This provides robust session management including environment, XDG autostart support, bi-directional binding with login session, and clean shutdown.</description>
+  <url>https://github.com/Vladimir-csp/uwsm</url>
+</package>
