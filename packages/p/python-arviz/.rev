@@ -171,4 +171,16 @@
     <comment></comment>
     <requestid>1324295</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5489e00bc56da153e462ff9fa9829bcd</srcmd5>
+    <version>0.23.1</version>
+    <time>1769091529</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.23.1:
+  * Patch release to handle the recent 1.8 h5netcdf release.
+    h5netcdf now has two potential backends, and one must be
+    chosen explicitly to get an install capable of
+    reading/writing netcdf files.</comment>
+    <requestid>1328635</requestid>
+  </revision>
 </revisionlist>
