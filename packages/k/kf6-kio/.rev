@@ -212,4 +212,12 @@
     <comment>KDE Frameworks 6.22 (forwarded request 1325304 from krop)</comment>
     <requestid>1326432</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>e4efcda6a241bb07139b390ef89b2b5f</srcmd5>
+    <version>6.22.1</version>
+    <time>1769091147</time>
+    <user>anag_factory</user>
+    <comment>hotfix release, dependent packages will likely need to be rebuilt</comment>
+    <requestid>1328561</requestid>
+  </revision>
 </revisionlist>
