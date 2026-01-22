@@ -116,4 +116,13 @@
 - remove patch fix-CVE-2025-22869.patch, fixed upstream (forwarded request 1321348 from rrahl0)</comment>
     <requestid>1321349</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f1f098ba22a33e5ab0021b1e3f62e0cb</srcmd5>
+    <version>1.10.2</version>
+    <time>1769091218</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.10.2:
+  * Fix panic when using use_system_route_table (forwarded request 1328569 from rrahl0)</comment>
+    <requestid>1328570</requestid>
+  </revision>
 </revisionlist>

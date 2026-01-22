@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jan 21 20:34:05 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.10.2:
+  * Fix panic when using use_system_route_table
+
+-------------------------------------------------------------------
+Tue Jan 20 23:44:43 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.10.1:
+  * Fix a bug where an unsafe route derived from the system route table could
+    be lost on a config reload
+  * Fix the PEM banner for ECDSA P256 public keys
+  * Fix a bug in handshake processing when a peer sends an unexpected public key
+  * Add a config option to control accepting recv_error packets which defaults
+    to always
+
+-------------------------------------------------------------------
 Sat Dec  6 11:29:27 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.10.0:
