@@ -637,4 +637,19 @@
     <comment></comment>
     <requestid>1320155</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>48cd6a010ce5caa2dfa89089f2b4a422</srcmd5>
+    <version>4.13.1</version>
+    <time>1769091485</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.13.1:
+  * Remove use of ABCMeta for formatters
+  * Run mypy from tox
+  * Deprecate CommandManager namespace argument
+  * Warn on duplicate commands in the same namespace
+  * Revert &quot;Implement conflict resolution&quot;
+  * Implement conflict resolution
+  * typing: Fixups for typed stevedore</comment>
+    <requestid>1328626</requestid>
+  </revision>
 </revisionlist>

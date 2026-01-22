@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 22 08:41:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.13.1:
+  * Remove use of ABCMeta for formatters
+  * Run mypy from tox
+  * Deprecate CommandManager namespace argument
+  * Warn on duplicate commands in the same namespace
+  * Revert "Implement conflict resolution"
+  * Implement conflict resolution
+  * typing: Fixups for typed stevedore
+
+-------------------------------------------------------------------
 Wed Nov 26 08:49:45 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 4.12.0

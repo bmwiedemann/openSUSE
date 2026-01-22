@@ -1,7 +1,7 @@
 #
 # spec file for package python-cliff
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cliff
-Version:        4.12.0
+Version:        4.13.1
 Release:        0
 Summary:        Command Line Interface Formulation Framework
 License:        Apache-2.0
