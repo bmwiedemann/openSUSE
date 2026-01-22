@@ -100,7 +100,7 @@
 %global pkg_name blender
 
 Name:           blender-5.0
-Version:        5.0.0
+Version:        5.0.1
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later
@@ -123,6 +123,8 @@ Source10:       SUSE-NVIDIA-OptiX-rendering.txt
 Source99:       series
 # PATCH-FIX-UPSTREAM https://projects.blender.org/blender/blender/pulls/115320
 Patch1:         cmake_manpage_fix.patch
+# PATCH-FIX-OPENSUSE on 15.6 fstream is not included indirectly pull it in directly here
+Patch2:         octree-missing-fstream.patch
 BuildRequires:  %{py3pkg}-devel
 BuildRequires:  %{py3pkg}-numpy-devel
 BuildRequires:  %{py3pkg}-requests
@@ -158,13 +160,13 @@ BuildRequires:  cmake(manifold)
 %if %{with oidn}
 BuildRequires:  cmake(OpenImageDenoise)
 %endif
-BuildRequires:  (pkgconfig(libavcodec) >= 61.19.101 with pkgconfig(libavcodec) < 62.11.100)
-BuildRequires:  (pkgconfig(libavdevice) >= 61.3.100 with pkgconfig(libavdevice) < 62.1.100)
-BuildRequires:  (pkgconfig(libavfilter) >= 10.4.100 with pkgconfig(libavfilter) < 11.4.100)
-BuildRequires:  (pkgconfig(libavformat) >= 61.7.100 with pkgconfig(libavformat) < 62.3.100)
-BuildRequires:  (pkgconfig(libavutil) >= 59.39.100  with pkgconfig(libavutil) < 60.8.100)
-BuildRequires:  (pkgconfig(libswresample) >= 5.3.100 with pkgconfig(libswresample) < 6.1.100)
-BuildRequires:  (pkgconfig(libswscale) >= 8.3.100    with pkgconfig(libswscale) < 9.1.100)
+BuildRequires:  pkgconfig(libavcodec) >= 61.19.101
+BuildRequires:  pkgconfig(libavdevice) >= 61.3.100
+BuildRequires:  pkgconfig(libavfilter) >= 10.4.100
+BuildRequires:  pkgconfig(libavformat) >= 61.7.100
+BuildRequires:  pkgconfig(libavutil) >= 59.39.100
+BuildRequires:  pkgconfig(libswresample) >= 5.3.100
+BuildRequires:  pkgconfig(libswscale) >= 8.3.100
 BuildRequires:  cmake(TBB)
 BuildRequires:  cmake(Tiff)
 BuildRequires:  cmake(pugixml)

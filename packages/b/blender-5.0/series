@@ -1,2 +1,3 @@
 # PATCH-FIX-UPSTREAM https://projects.blender.org/blender/blender/pulls/115320
 cmake_manpage_fix.patch
+octree-missing-fstream.patch

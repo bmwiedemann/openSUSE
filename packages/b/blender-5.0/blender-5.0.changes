@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jan 15 23:22:20 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Allow ffmpeg 8
+
+-------------------------------------------------------------------
+Wed Dec 17 10:39:41 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 5.0.1
+  https://developer.blender.org/docs/release_notes/5.0/corrective_releases/#blender-501 
+
+-------------------------------------------------------------------
+Mon Nov 24 14:39:15 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add octree-missing-fstream.patch:
+  on 15.6 fstream is not included indirectly pull it in directly here
+
+-------------------------------------------------------------------
 Fri Nov 21 11:03:34 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - do not provide/obsolete the unversioned package name anymore. it

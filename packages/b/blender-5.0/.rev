@@ -7,4 +7,18 @@
     <comment>Should go to adi16...</comment>
     <requestid>1319114</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>32db996bb3cb4b0b1209a5e1d7442bc7</srcmd5>
+    <version>5.0.1</version>
+    <time>1769091361</time>
+    <user>anag_factory</user>
+    <comment>- Allow ffmpeg 8
+
+- Update to 5.0.1
+  https://developer.blender.org/docs/release_notes/5.0/corrective_releases/#blender-501 
+
+- Add octree-missing-fstream.patch:
+  on 15.6 fstream is not included indirectly pull it in directly here</comment>
+    <requestid>1328586</requestid>
+  </revision>
 </revisionlist>
