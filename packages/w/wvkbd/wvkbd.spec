@@ -17,7 +17,7 @@
 
 
 Name:           wvkbd
-Version:        0.17
+Version:        0.19
 Release:        0
 Summary:        Wayland on-screen keyboard
 License:        GPL-3.0-only

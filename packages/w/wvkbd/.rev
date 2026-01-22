@@ -7,4 +7,34 @@
     <comment></comment>
     <requestid>1287853</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4fcf9cceb3894c15e90351d079412a7a</srcmd5>
+    <version>0.19</version>
+    <time>1769091470</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.19:
+  * Overhaul the output available dimension detection
+  * Send press and release events for modifier keys
+  * Fixes for complying with wlr-layer-shell-unstable-v1 and
+    preventing crashes
+    + update touch/pointer event checks in order to sequence drawing
+      to a surface before configured.
+    + cancel pending frame callback before destroying surface and
+      ignore old surfaces
+
+- Update to 0.18:
+  * Added deskintl (desktop international) layout (#103, #67).
+    This layout features a more full-sized keyboard modelled after
+    hardware keyboards.
+  * The layout that is built is determined at compile time: to opt
+    for this layout instead of the default mobile international
+    (mobintl) layout, run make LAYOUT=deskintl instead of plain
+    make.
+  * Added cyrillic layer (russian ЙЦУКЕН) for new desktop layout
+  * Added SHIFT_SPACE_IS_TAB as a compile-time parameter
+  * Fix landscape appearance bug in multi-monitor setup
+  * Added --non-exclusive parameter to skip requesting exclusive
+    zone from compositor (#102, #93)</comment>
+    <requestid>1328611</requestid>
+  </revision>
 </revisionlist>
