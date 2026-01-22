@@ -2,6 +2,7 @@
 # spec file for package suricata
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 Eyad Issa <eyadlorenzo@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +17,7 @@
 #
 
 
-%define soname 8_0_1
+%define soname 8_0_3
 
 # Handling libxdp support
 %if (0%{?suse_version} <= 1500) && (0%{?sle_version} <= 150500) && (0%{?is_opensuse})
@@ -47,7 +48,7 @@
 %endif
 
 Name:           suricata
-Version:        8.0.1
+Version:        8.0.3
 Release:        0
 Summary:        Open Source Next Generation Intrusion Detection and Prevention Engine
 License:        GPL-2.0-only
@@ -229,7 +230,7 @@ suricata-update
 
 %files
 %license COPYING
-%doc doc/AUTHORS doc/Basic_Setup.txt doc/GITGUIDE doc/Setting_up_IPSinline_for_Linux.txt doc/Third_Party_Installation_Guides.txt doc/TODO
+%doc doc/AUTHORS doc/Basic_Setup.txt doc/Setting_up_IPSinline_for_Linux.txt doc/Third_Party_Installation_Guides.txt doc/TODO
 %config(noreplace)%{_sysconfdir}/suricata
 %{_bindir}/suricata
 %{_bindir}/suricatasc

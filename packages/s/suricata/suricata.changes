@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Jan 21 20:53:04 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 8.0.3:
+  * CVE-2026-22260: HIGH
+  * CVE-2026-22263: HIGH
+  * CVE-2026-22258: CRITICAL
+  * CVE-2026-22259: HIGH
+  * CVE-2026-22261: MODERATE
+  * CVE-2026-22262: HIGH
+  * CVE-2026-22264: HIGH
+  * All tickets available at:
+    https://redmine.openinfosecfoundation.org/versions/227 
+
+-------------------------------------------------------------------
+Sat Nov 22 17:08:47 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 8.0.2:
+  * CVE-2025-64344: HIGH (boo#1254278)
+  * CVE-2025-64333: HIGH (boo#1254281)
+  * CVE-2025-64332: HIGH (boo#1254282)
+  * CVE-2025-64331: HIGH (boo#1254284)
+  * CVE-2025-64330: HIGH (boo#1254283)
+  * CVE-2025-64335: HIGH (boo#1254279)
+  * CVE-2025-64334: HIGH (boo#1254280)
+  * Various security, performance, accuracy, and stability issues
+    have been fixed
+  * All tickets available at
+  	https://redmine.openinfosecfoundation.org/versions/225
+
+-------------------------------------------------------------------
 Tue Sep 30 13:11:00 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Syncronize suricata.keyring with the published version.
@@ -14,10 +44,10 @@ Fri Sep 26 12:49:01 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 - Update to version 8.0.1:
   * Various security, performance, accuracy, and stability issues
     have been fixed.
-  * CVE-2025-59147: HIGH
-  * CVE-2025-59148: HIGH
-  * CVE-2025-59149: MODERATE
-  * CVE-2025-59150: HIGH
+  * CVE-2025-59147: HIGH (boo#1250920)
+  * CVE-2025-59148: HIGH (boo#1250921)
+  * CVE-2025-59149: MODERATE (boo#1250925)
+  * CVE-2025-59150: HIGH (boo#1250922)
 - The OISF signing key has been updated to have a later expiration
   date.
 - https://forum.suricata.io/t/suricata-8-0-1-and-7-0-12-released/6018

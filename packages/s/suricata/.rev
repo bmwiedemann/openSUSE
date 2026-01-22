@@ -28,4 +28,13 @@
 - https://forum.suricata.io/t/suricata-8-0-1-and-7-0-12-released/6018</comment>
     <requestid>1308215</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8fa874aa437ee955790f1ca07121b428</srcmd5>
+    <version>8.0.3</version>
+    <time>1769091356</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 8.0.3:
+- Update to version 8.0.2:</comment>
+    <requestid>1328574</requestid>
+  </revision>
 </revisionlist>
