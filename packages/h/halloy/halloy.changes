@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Jan 21 17:37:20 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2026.1:
+  + Added:
+    - Open URL entry to URL context menus
+    - Setting to not hide consecutive if previous
+      message was an image preview
+    - Channel discovery buffer to view all channels
+      on a server
+    - Setting to hide server icons in sidemenu
+    - Setting to adjust buffer padding and server
+      spacing in sidemenu
+    - Setting to adjust entry padding in context menus
+    - Support for configuring a regex-based allowlist
+      of URL patterns for Preview
+    - Setting to open a new pane, replace current
+      pane, or open a new window after /join
+    - Emoji, channel, and user completion can be used
+      with commands
+    - Auto-completion (emoji/channel/user) will
+      auto-complete at the text cursor
+    - Insert-nickname will place the nickname at the
+      text cursor
+    - Backlog separator can be customized with a
+      custom color and text
+    - Setting to disable unread indicators for specified
+      channels/servers
+    - Users and messages can be filtered using regular
+      expressions
+    - Added ability to set default QUIT and PART reason
+    - /connect command to temporarily connect to a server
+    - Setting for the font size of messages that contain
+      only emojis
+  + Fixed:
+    - No longer any delay in showing a tooltip after
+      hovering
+    - Ignored users will not be suggested by user
+      auto-completion
+    - Channel auto-completion works with all channel
+      prefixes
+    - Number pad enter now sends messages instead of
+      adding a new line
+    - Join & monitor commands respect TARGMAX limits
+    - /sysinfo is cleared from input when sent
+    - Channel and user links in messages in the highlight
+      buffer
+    - Remember fullscreen state across sessions
+
+-------------------------------------------------------------------
 Thu Dec  4 21:19:12 UTC 2025 - Mia Herkt <mia@0x0.st>
 
 - Update to version 2025.12:
