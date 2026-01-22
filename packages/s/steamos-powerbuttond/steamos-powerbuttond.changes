@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Oct 20 11:13:55 UTC 2025 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- add fix-cmdline-overflow.patch: this fixes memory corruption if more than
+  MAX_DEVS command line arguments are passed.
+
+  An invocation like:
+
+  /usr/lib/hwsupport/steamos-powerbuttond /dev/input/event0 /dev/input/event1 /dev/input/event2 /dev/input/event3 /dev/input/event4 /dev/input/event5 /dev/input/event0
+
+  otherwise ends up in a segmentation fault or similar issues.
+
+  Finding in the context of the review bug bsc#1249602.
+
+  The upstream repository is only a mirror from semi-public Valve sources, so
+  submitting it there doesn't seem to make sense at the moment.
+
+-------------------------------------------------------------------
 Fri Oct 03 13:22:50 UTC 2025 - Tobias Görgens <suse.snooper541@passmail.net>
 
 - Initial version 3.3:

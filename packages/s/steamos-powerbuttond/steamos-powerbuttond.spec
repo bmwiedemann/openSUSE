@@ -23,6 +23,7 @@ License:        BSD-2-Clause
 URL:            https://gitlab.com/evlaV/powerbuttond
 Source:         %{name}-%{version}.tar.xz
 Patch0:         steamos-powerbuttond-service.patch
+Patch1:         fix-cmdline-overflow.patch
 
 BuildRequires:  gcc
 BuildRequires:  make

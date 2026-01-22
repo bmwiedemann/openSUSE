@@ -1,0 +1,15 @@
+Index: steamos-powerbuttond-3.3/powerbuttond.c
+===================================================================
+--- steamos-powerbuttond-3.3.orig/powerbuttond.c
++++ steamos-powerbuttond-3.3/powerbuttond.c
+@@ -134,7 +134,9 @@ int main(int argc, char* argv[]) {
+ 	struct pollfd pfds[MAX_DEVS] = {0};
+ 	size_t num_devs = 0;
+ 
+-	if (argc >= 2) {
++	if (argc > MAX_DEVS)
++		return 1;
++	else if (argc >= 2) {
+ 		int i;
+ 		for (i = 0; i < argc - 1; ++i) {
+ 			devs[num_devs] = open_dev(argv[i + 1]);
