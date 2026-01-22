@@ -137,4 +137,18 @@
 - No more greedy globs in %files.</comment>
     <requestid>1282115</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c5dc6ee1aca65e0047cc7cbdba7bc463</srcmd5>
+    <version>6.7.3</version>
+    <time>1769091502</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.7.3:
+  * metadata updates (no code changes)
+
+  * Added a new ckeditor/fixups.js script which disables the version check again
+    (if something slips through by accident) and which disables the behavior
+    where CKEditor 4 would automatically attach itself to unrelated HTML elements
+    with a contenteditable attribute (see CKEDITOR.disableAutoInline in the</comment>
+    <requestid>1328634</requestid>
+  </revision>
 </revisionlist>
