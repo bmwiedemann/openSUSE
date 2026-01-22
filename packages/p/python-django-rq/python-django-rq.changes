@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 21 13:55:19 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.2.2
+  * Added /metrics endpoint to expose RQ metrics in Prometheus format.
+  * Migrated Django-RQ to use Python's modern packaging standard.
+  * Added support for RQ's new CronScheduler.
+  * Refactored the codebase to follow modern Django and Python best practices.
+  * Changed CronJob argument from timeout to job_timeout to match RQ's
+    implementation.
+
+-------------------------------------------------------------------
 Tue Jun  3 06:48:31 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

@@ -112,4 +112,12 @@ already being maintained over a long period by https://build.opensuse.org/users/
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1282139</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2e2d6d211b738c8da802d0554fb0fcc2</srcmd5>
+    <version>3.2.2</version>
+    <time>1769101140</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1328688</requestid>
+  </revision>
 </revisionlist>
