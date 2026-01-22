@@ -1680,4 +1680,17 @@ fixes build in packman, evergreen and all that. (forwarded request 230247 from o
     <comment></comment>
     <requestid>1324890</requestid>
   </revision>
+  <revision rev="161" vrev="2">
+    <srcmd5>97517acad6cf88c75664be550f901003</srcmd5>
+    <version>3.0.23</version>
+    <time>1769091106</time>
+    <user>anag_factory</user>
+    <comment>- Explicitly pass --disable-postproc to configure to not have a
+  difference between ffmpeg-7 and ffmpeg-8 builds.
+- Change compression type of tarball to tar.xz: 3rd-party OBS
+  instances build VLC also for older distros, which might not
+  understand zstd compression.
+</comment>
+    <requestid>1328439</requestid>
+  </revision>
 </revisionlist>

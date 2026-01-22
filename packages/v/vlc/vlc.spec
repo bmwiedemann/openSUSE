@@ -1,7 +1,7 @@
 #
 # spec file for package vlc
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2012 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -40,7 +40,7 @@ Summary:        Graphical media player
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Video/Players
 URL:            http://www.videolan.org
-Source:         %{name}-%{version}.tar.zst
+Source:         %{name}-%{version}.tar.xz
 Source2:        %{name}-rpmlintrc
 # PATCH-FIX-UPSTREAM vlc-allow-deprecated-fribidi.patch dimstar@opensuse.org -- Allow usage of deprecated fribidi functions
 Patch1:         vlc-allow-deprecated-fribidi.patch
@@ -465,6 +465,7 @@ autoreconf -fiv
    --enable-vorbis                      \
    --enable-xcb                         \
    --enable-xvideo                      \
+   --disable-postproc                   \
    --with-default-font=%{_datadir}/fonts/truetype/FreeSerifBold.ttf \
    --with-default-monospace-font=%{_datadir}/fonts/truetype/FreeMono.ttf \
 %if %{with opengles}
