@@ -1,7 +1,7 @@
 #
 # spec file for package docker-compose
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           docker-compose
-Version:        5.0.1
+Version:        5.0.2
 Release:        0
 Summary:        Define and run multi-container applications with Docker
 License:        Apache-2.0
