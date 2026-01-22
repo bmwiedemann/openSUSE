@@ -905,4 +905,12 @@ This makes it possible to use Ignition also on bare metal (e.g. when dumping ima
 </comment>
     <requestid>1325115</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>f3ed8c1e7e7af85bfb4a4281902b7f80</srcmd5>
+    <version>2.25.1</version>
+    <time>1769091142</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1328545</requestid>
+  </revision>
 </revisionlist>

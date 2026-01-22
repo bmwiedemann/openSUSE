@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan 16 14:12:31 UTC 2026 - Antonio Feijoo <antonio.feijoo@suse.com>
+
+- Adapt code to the new initrd services provided by NetworkManager
+  upstream, used in dracut-ng:
+  * ignition-enable-network.service: Also order it before
+    NetworkManager-initrd.service.
+  * ignition-enable-network.sh: This script sets `rd.neednet` in
+    /etc/cmdline.d/40-ignition-neednet.conf after dracut's cmdline
+    hooks run, so it manually sources network-manager's cmdline hook
+    `/lib/dracut/hooks/cmdline/99-nm-config.sh` to call
+    nm-initrd-generator and generate connections. This is done now by
+    NetworkManager-config-initrd.service.
+
+-------------------------------------------------------------------
 Fri Jan 02 12:13:05 UTC 2026 - Ignaz Forster <iforster@suse.com>
 
 - Update to version 2.25.1:

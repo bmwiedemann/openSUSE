@@ -15,7 +15,7 @@ Before=ignition-fetch.service
 # See hack in coreos-enable-network, as well as coreos-copy-firstboot-network.service;
 # adapted for SUSE / wicked use
 After=dracut-cmdline.service
-Before=dracut-initqueue.service nm-initrd.service
+Before=dracut-initqueue.service nm-initrd.service NetworkManager-initrd.service
 
 [Service]
 Type=oneshot

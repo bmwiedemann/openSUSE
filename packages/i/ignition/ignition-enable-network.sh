@@ -14,5 +14,8 @@ if [ -f /run/ignition/neednet ] && ! getargbool 0 'rd.neednet'; then
     else
         # NetworkManager
         . /lib/dracut/hooks/cmdline/99-nm-config.sh
+        if [ -e /usr/lib/systemd/system/NetworkManager-config-initrd.service ]; then
+            systemctl restart NetworkManager-config-initrd.service
+        fi
     fi
 fi
