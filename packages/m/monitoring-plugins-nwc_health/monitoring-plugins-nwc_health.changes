@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jan 19 09:22:42 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 12.10.2
+  * fix issue #351 "Mode count-connections is not working anymore
+    for firepower-devices since 12.5".
+  * fix issue #356 "Mode "vpn-status" does not work anymore after
+    latest cisco bugfix".
+- Update to version 12.10.1
+  * add mode smart-home-device-humidity for humidity sensors over
+    fritzbox.
+  * Improved Return Information of interface check - include ifName.
+  * Broaden regex to match more Ivanti product names.
+- Update to version 12.10
+  * add Audiocodes
+- Update to version 12.9
+  * add Fortinet FortiMail
+
+-------------------------------------------------------------------
 Sun Oct  5 06:20:07 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 12.8:
