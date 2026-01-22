@@ -1,7 +1,7 @@
 #
 # spec file for package taplo
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           taplo
-Version:        0.9.3
+Version:        0.10.0
 Release:        0
 Summary:        A TOML toolkit written in Rust
 License:        MIT
@@ -45,7 +45,7 @@ install -Dm 755 -t "%{buildroot}%{_bindir}" target/release/%{name}
 
 %files
 %doc README.md
-%license LICENSE.md
+%license LICENSE
 %{_bindir}/%{name}
 
 %changelog
