@@ -178,4 +178,15 @@
     <comment></comment>
     <requestid>1273615</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>7ad7c461d2e21ba64c50fab37bb3f1be</srcmd5>
+    <version>25.2</version>
+    <time>1769101154</time>
+    <user>anag_factory</user>
+    <comment>- update to 25.2:
+  * Added testing for Django 6.0.
+  * Dropped support for Django &lt;5.2 LTS
+  * Dropped support for Python 3.9.</comment>
+    <requestid>1328709</requestid>
+  </revision>
 </revisionlist>
