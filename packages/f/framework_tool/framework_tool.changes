@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Mon Jan 19 10:01:20 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 0.5.0
+  * --inputdeck: Try Framework 16 if can't detect system type
+    by @JohnAZoidberg in #188
+  * --versions: Add OS and tool version by @JohnAZoidberg in #178
+  * devenv: Add dependencies to build and run uefi tool in QEMU
+    by @JohnAZoidberg in #190
+  * [Please test] Fix build errors with table length by @tripplehelix in #193
+  * gh-actions: Also upload linux release build by @JohnAZoidberg in #194
+  * Framework 13 and 16 AMD Ryzen 7040 Windows driver by @JohnAZoidberg in #197
+  * Return unnecessary return statements by @JohnAZoidberg in #199
+  * EXAMPLES_ADVANCED: Document --tablet-mode by @JohnAZoidberg in #200
+  * Reading usb hub firmware version by @quinchou77 in #202
+  * Clean up README by @JohnAZoidberg in #201
+  * guid-create: All changes merged upstream by @JohnAZoidberg in #203
+  * Update lockfile by @JohnAZoidberg in #204
+  * Add support for Framework 16 AMD AI 300 Series by @JohnAZoidberg in #206
+  * copilot keyboard: Add comment by @JohnAZoidberg in #209
+  * Typo in README.md by @GhelloZ in #210
+  * Windows Driver: Show supported BIOS version in error message
+    by @JohnAZoidberg in #207
+  * rgbkbd: Name arguments by @JohnAZoidberg in #212
+  * README: fix Archlinux installation instruction by @qwertviop in #213
+  * GpuVendor: Add Nvidia GN22 ID by @JohnAZoidberg in #214
+  * README: Add OpenSUSE installation instructions by @JohnAZoidberg in #216
+  * commandline: Print Parade retimer ver in --versions
+    by @JohnAZoidberg in #217
+  * esrt: Get full ESRT table entries on Windows by @JohnAZoidberg in #220
+  * power: Fix position of port 3 by @JohnAZoidberg in #223
+  * Dump NVMe firwmare version on Linux by @JohnAZoidberg in #225
+  * Framework 13: Print audio and touch board ID by @JohnAZoidberg in #228
+  * autofanctrl: Allow specifying fan index by @JohnAZoidberg in #229
+  * GPU_descriptor: replaced underscores with hyphens by @JJ-Shapiro in #230
+  * --versions: Add support for Genesys GL3590 Hub Firmware Version
+    by @JohnAZoidberg in #231
+  * --test-retimer: Allow testing retimer update mode by @JohnAZoidberg in #232
+  * --flash-ec: Check platform before flashing by @JohnAZoidberg in #237
+  * Build FreeBSD on GH Actions in VM by @JohnAZoidberg in #234
+  * Parade no errror by @JohnAZoidberg in #238
+  * Add more PD test binaries by @JohnAZoidberg in #239
+  * clap_std: Remove unused import by @JohnAZoidberg in #241
+  * docs: add Fedora installation method via the Terra by @Owen-sz in #242
+  * fix (README): missing parentheses in Fedora line by @Owen-sz in #243
+  * commandline: Add --uptimeinfo by @JohnAZoidberg in #244
+  * Add i2c_write_block function by @JohnAZoidberg in #245
+  * Add --s0ix-counter command by @JohnAZoidberg in #246
+  * --versions: Add support for dumping NVIDIA graphics info
+    by @JohnAZoidberg in #208
+  * .gitignore: Ignore claude's temp files by @JohnAZoidberg in #247
+  * turn on bay power when programming eeprom by @kiram9 in #240
+  * i2c_passthru: Don't panic if error by @JohnAZoidberg in #248
+  * Fix clippy warnings on windows by @JohnAZoidberg in #249
+  * Update deps jan 2026 by @JohnAZoidberg in #251
+  * GetCmdVersion: Don't fall back to v0 if >0xFF by @JohnAZoidberg in #250
+  * chromium_ec: Add host command to read board ID by @JohnAZoidberg in #236
+  * Prepare v0.5.0 by @JohnAZoidberg in #252
+- drop make-reproducable.patch, fixed upstream
+
+-------------------------------------------------------------------
 Thu Aug 14 11:35:24 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - regenerate vendor tarball to update slab to 0.4.11 to fix

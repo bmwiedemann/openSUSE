@@ -20,15 +20,13 @@
 %define completion_dir_bash %{_datadir}/bash-completion/completions
 %define completion_dir_zsh %{_datadir}/zsh/functions/Completion
 Name:           framework_tool
-Version:        0.4.5
+Version:        0.5.0
 Release:        0
 Summary:        Rust tools to interact with the Framework Computer systems
 License:        BSD-3-Clause
 URL:            https://github.com/FrameworkComputer/framework-system
 Source0:        https://github.com/FrameworkComputer/framework-system/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-# PATCH-FIX-OPENSUSE make-reproducable.patch
-Patch0:         make-reproducable.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  pkg-config
 BuildRequires:  systemd-devel
