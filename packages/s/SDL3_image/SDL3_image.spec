@@ -18,7 +18,7 @@
 
 Name:           SDL3_image
 %define lname	libSDL3_image0
-Version:        3.2.6
+Version:        3.4.0
 Release:        0
 Summary:        Simple DirectMedia Layer image loading library
 License:        Zlib
@@ -26,7 +26,6 @@ Group:          Development/Libraries/X11
 URL:            https://github.com/libsdl-org/SDL_image
 Source:         https://github.com/libsdl-org/SDL_image/releases/download/release-%version/SDL3_image-%version.tar.gz
 Source2:        https://github.com/libsdl-org/SDL_image/releases/download/release-%version/SDL3_image-%version.tar.gz.sig
-Source9:        %name.keyring
 BuildRequires:  cmake
 BuildRequires:  libjpeg-devel
 BuildRequires:  libtiff-devel

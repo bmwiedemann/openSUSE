@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jan 22 01:22:07 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.4.0
+  * Added IMG_GetClipboardImage() to get the image currently in the
+    clipboard
+  * Added IMG_isANI() to detect animated cursors
+  * Added IMG_CreateAnimatedCursor() to create an animated cursor
+    from an animation
+  * Added functions to save images
+  * Added functions to load images into GPU textures
+  * Added functions to load and save animations
+  * Added functions to load/save animations one frame at a time
+- Delete SDL3_image.keyring: a new key is in use, but no keyring
+  is available
+
+-------------------------------------------------------------------
 Thu Jan  1 18:21:10 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.2.6
