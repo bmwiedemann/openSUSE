@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 21 11:21:41 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- add gcc16-compat.patch (bsc#1256989): gcc16 complains about an unused
+  variable in strpbrk_s. It seems the `slen` parameter is not enforced at all.
+  The patch changes that, hopefully without causing regressions.
+
+-------------------------------------------------------------------
 Wed Jul 16 09:04:58 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - updated to version 20250417: v1.11.10

@@ -750,4 +750,14 @@
   using CET (bsc#1246573) (forwarded request 1293792 from msmeissn)</comment>
     <requestid>1294047</requestid>
   </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>d0116253227771a0bad1736bb5226580</srcmd5>
+    <version>20250417_1.11.10</version>
+    <time>1769091227</time>
+    <user>anag_factory</user>
+    <comment>- add gcc16-compat.patch (bsc#1256989): gcc16 complains about an unused
+  variable in strpbrk_s. It seems the `slen` parameter is not enforced at all.
+  The patch changes that, hopefully without causing regressions.</comment>
+    <requestid>1328479</requestid>
+  </revision>
 </revisionlist>

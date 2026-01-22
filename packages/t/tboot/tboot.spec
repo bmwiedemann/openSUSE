@@ -1,7 +1,7 @@
 #
 # spec file for package tboot
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,7 @@ Patch4:         tboot-grub2-refuse-secure-boot.patch
 Patch5:         tboot-bsc#1207833-copy-mbi.patch
 Patch6:         tboot-fix-alloc-size-warning.patch
 Patch7:         tboot-cet.patch
+Patch8:         gcc16-compat.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64
 BuildRequires:  openssl-devel
