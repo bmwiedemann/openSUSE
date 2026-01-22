@@ -18,7 +18,7 @@
 
 
 Name:           pocketbase
-Version:        0.30.3
+Version:        0.36.1
 Release:        0
 Summary:        Open Source realtime backend
 License:        MIT

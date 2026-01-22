@@ -35,4 +35,41 @@
 - Update to version 0.29.1:</comment>
     <requestid>1311551</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>73bdd078ed65365c537ba9aa861b1883</srcmd5>
+    <version>0.36.1</version>
+    <time>1769091356</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.36.1:
+  * Reverted the DISTINCT with GROUP BY replacement optimization
+  * Updated modernc.org/sqlite to v1.44.2 (SQLite 3.51.2).
+- Update to version 0.36.0:
+  * List query and API rules optimizations
+  * Added strftime(format, timevalue, modifiers...) date formatting
+    filter and API rules function.
+  * Minor changes to the search.ResolverResult struct
+    (mostly used internally)
+  * Updated modernc.org/sqlite to v1.44.1 (SQLite 3.51.1).
+- Update to version 0.35.1:
+  * Updated modernc.org/sqlite to v1.43.0 (query cancellation race 
+  	fix).
+  * Minor UI fixes
+
+- Update to version 0.35.0:
+  * Added nullString(), nullInt(), nullFloat(), nullBool,
+    nullArray(), nullObject() JSVM helpers for scanning nullable
+    columns.
+  * Store the correct image/png as attrs content type when
+    generating a thumb fallback (e.g. for webp).
+  * Trimmed custom uploaded file name and extension from leftover
+    . characters after filesystem.File normalization.
+- Update to version 0.34.0:
+  * Added @request.body.someField:changed modifier.
+  * Updated the backup restore popup with a short info about the
+    performed restore steps.
+- Update to version 0.33.0:
+  * Added extra id characters validation in addition to the user
+    specified regex pattern.</comment>
+    <requestid>1328576</requestid>
+  </revision>
 </revisionlist>

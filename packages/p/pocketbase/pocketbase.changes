@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Wed Jan 21 21:53:02 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.36.1:
+  * Reverted the DISTINCT with GROUP BY replacement optimization
+  * Updated modernc.org/sqlite to v1.44.2 (SQLite 3.51.2).
+- Update to version 0.36.0:
+  * List query and API rules optimizations
+  * Added strftime(format, timevalue, modifiers...) date formatting
+    filter and API rules function.
+  * Minor changes to the search.ResolverResult struct
+    (mostly used internally)
+  * Updated modernc.org/sqlite to v1.44.1 (SQLite 3.51.1).
+- Update to version 0.35.1:
+  * Updated modernc.org/sqlite to v1.43.0 (query cancellation race 
+  	fix).
+  * Minor UI fixes
+
+-------------------------------------------------------------------
+Thu Jan  1 23:23:56 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.35.0:
+  * Added nullString(), nullInt(), nullFloat(), nullBool,
+    nullArray(), nullObject() JSVM helpers for scanning nullable
+    columns.
+  * Store the correct image/png as attrs content type when
+    generating a thumb fallback (e.g. for webp).
+  * Trimmed custom uploaded file name and extension from leftover
+    . characters after filesystem.File normalization.
+
+- Update to version 0.34.0:
+  * Added @request.body.someField:changed modifier.
+  * Updated the backup restore popup with a short info about the
+    performed restore steps.
+
+- Update to version 0.33.0:
+  * Added extra id characters validation in addition to the user
+    specified regex pattern.
+  * Added {ALERT_INFO} placeholder to the auth alert mail template.
+
+- Update to version 0.32.0:
+  * Added extra List/Search API rules checks for the client-side
+    filter/sort relations. This is continuation of the effort to
+    eliminate the risk of information disclosure (and eventually
+    the side-channel attacks that may originate from that).
+  * Increased the default SQLite PRAGMA cache_size to ~32MB.
+  * Fixed deadlock when manually triggering the OnTerminate hook.
+
+- Update to version 0.31.0:
+  * Display presentable multiple relation fields.
+  * Support Ed25519 in the optional OIDC id_token signature
+    validation.
+  * Disallow client-side filtering and sorting of relations where
+    the collection of the last targeted relation field has
+    superusers-only List/Search API rule to further minimize the
+    risk of eventual side-channel attack.
+
+-------------------------------------------------------------------
 Wed Oct 15 21:16:56 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Disable building on x86 and arm 32bit architectures
