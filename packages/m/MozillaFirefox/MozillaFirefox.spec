@@ -29,8 +29,8 @@
 # major 69
 # mainver %%major.99
 %define major          147
-%define mainver        %major.0
-%define orig_version   147.0
+%define mainver        %major.0.1
+%define orig_version   147.0.1
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -229,7 +229,6 @@ Patch19:        mozilla-bmo531915.patch
 Patch20:        one_swizzle_to_rule_them_all.patch
 Patch21:        svg-rendering.patch
 Patch24:        mozilla-bmo1746799.patch
-Patch25:        mozilla-bmo2008777.patch
 # Firefox/browser
 Patch102:       firefox-branded-icons.patch
 %endif

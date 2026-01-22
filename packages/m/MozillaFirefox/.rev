@@ -7954,4 +7954,21 @@
   * CVE-2026-0888 (bmo#1985996)</comment>
     <requestid>1327189</requestid>
   </revision>
+  <revision rev="475" vrev="1">
+    <srcmd5>b3436ce10edce2aca0f3dfe4aa057638</srcmd5>
+    <version>147.0.1</version>
+    <time>1769091149</time>
+    <user>anag_factory</user>
+    <comment>- Mozilla Firefox 147.0.1
+  * Fixed compatibility problems with websites that use the new
+    Compression Dictionaries technology, such as ChatGPT, by
+    temporarily disabling the feature. (bmo#2010712)
+  * Fixed an issue where an unnecessary empty directory was created
+    on Linux systems. (bmo#2001887)
+  * Fixed an issue where time formats could cause certain
+    websites to display incorrectly. (bmo#2010411)
+- drop mozilla-bmo2008777.patch, included
+</comment>
+    <requestid>1328619</requestid>
+  </revision>
 </revisionlist>

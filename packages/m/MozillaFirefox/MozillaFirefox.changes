@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan 20 17:52:28 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 147.0.1
+  * Fixed compatibility problems with websites that use the new
+    Compression Dictionaries technology, such as ChatGPT, by
+    temporarily disabling the feature. (bmo#2010712)
+  * Fixed an issue where an unnecessary empty directory was created
+    on Linux systems. (bmo#2001887)
+  * Fixed an issue where time formats could cause certain
+    websites to display incorrectly. (bmo#2010411)
+- drop mozilla-bmo2008777.patch, included
+
+-------------------------------------------------------------------
 Sun Jan 11 08:55:43 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 147.0
