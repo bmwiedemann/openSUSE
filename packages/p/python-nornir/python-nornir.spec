@@ -26,7 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/nornir-automation/nornir
 Source:         https://github.com/nornir-automation/nornir/archive/v%{version}.tar.gz#/nornir-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
+BuildRequires:  %{python_module poetry-core >= 1}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-ruamel.yaml >= 0.17
