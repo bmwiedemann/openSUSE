@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 22 08:46:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5:
+  * Confirmed support for Python 3.14.
+  * Confirmed support for Django 6.0.
+  * Dropped support for Python 3.8.
+
+-------------------------------------------------------------------
 Tue Apr 15 08:23:12 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4:

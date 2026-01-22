@@ -182,4 +182,15 @@
   * Confirmed support for Django 5.2.</comment>
     <requestid>1269484</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5b5b7ee19db4f7c244983a8d3ded4141</srcmd5>
+    <version>2.5</version>
+    <time>1769091494</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.5:
+  * Confirmed support for Python 3.14.
+  * Confirmed support for Django 6.0.
+  * Dropped support for Python 3.8.</comment>
+    <requestid>1328628</requestid>
+  </revision>
 </revisionlist>
