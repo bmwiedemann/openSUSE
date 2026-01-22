@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 22 10:09:11 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
+
+- Update to 8.0.6:
+  * Prevent access to object paths containing __globals__ or __builtins__ in invoke(). Attempting to access these keys will raise a ``KeyError
+- Updated patch support-new-mypy.patch
+
+-------------------------------------------------------------------
 Mon Aug  4 02:14:58 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-new-mypy.patch:

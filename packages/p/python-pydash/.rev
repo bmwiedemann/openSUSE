@@ -121,4 +121,12 @@
   * Support newer mypy than upstream.</comment>
     <requestid>1297339</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ac3403deb17d756ae7ee8ff9a0eff90d</srcmd5>
+    <version>8.0.6</version>
+    <time>1769091547</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1328661</requestid>
+  </revision>
 </revisionlist>

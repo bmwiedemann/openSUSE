@@ -1,21 +1,115 @@
-Index: pydash-8.0.5/pyproject.toml
+Index: pydash-8.0.6/pyproject.toml
 ===================================================================
---- pydash-8.0.5.orig/pyproject.toml
-+++ pydash-8.0.5/pyproject.toml
+--- pydash-8.0.6.orig/pyproject.toml
++++ pydash-8.0.6/pyproject.toml
 @@ -106,7 +106,7 @@ docstring-code-format = true
  
  [tool.mypy]
  mypy_path = ["src"]
--python_version = "3.8"
-+python_version = "3.9"
+-python_version = "3.9"
++python_version = "3.13"
  exclude = [
      "tests/pytest_mypy_testing",
  ]
-Index: pydash-8.0.5/tests/pytest_mypy_testing/test_arrays.py
+Index: pydash-8.0.6/tests/pytest_mypy_testing/test_arrays.py
 ===================================================================
---- pydash-8.0.5.orig/tests/pytest_mypy_testing/test_arrays.py
-+++ pydash-8.0.5/tests/pytest_mypy_testing/test_arrays.py
-@@ -408,7 +408,7 @@ def test_mypy_unshift() -> None:
+--- pydash-8.0.6.orig/tests/pytest_mypy_testing/test_arrays.py
++++ pydash-8.0.6/tests/pytest_mypy_testing/test_arrays.py
+@@ -93,8 +93,8 @@ def test_mypy_find_last_index() -> None:
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_flatten() -> None:
+-    my_list: t.List[t.List[t.Union[int, t.List[int]]]] = [[1], [2, [3]], [[4]]]
+-    reveal_type(_.flatten(my_list))  # R: builtins.list[Union[builtins.int, builtins.list[builtins.int]]]
++    my_list: t.List[t.List[int | t.List[int]]] = [[1], [2, [3]], [[4]]]
++    reveal_type(_.flatten(my_list))  # R: builtins.list[builtins.int | builtins.list[builtins.int]]
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -109,8 +109,8 @@ def test_mypy_flatten_depth() -> None:
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_from_pairs() -> None:
+-    my_list: t.List[t.List[t.Union[str, int]]] = [['a', 1], ['b', 2]]
+-    reveal_type(_.from_pairs(my_list))  # R: builtins.dict[Union[builtins.str, builtins.int], Union[builtins.str, builtins.int]]
++    my_list: t.List[t.List[str | int]] = [['a', 1], ['b', 2]]
++    reveal_type(_.from_pairs(my_list))  # R: builtins.dict[builtins.str | builtins.int, builtins.str | builtins.int]
+ 
+     my_list2: t.List[t.Tuple[str, int]] = [('a', 1), ('b', 2)]
+     reveal_type(_.from_pairs(my_list2))  # R: builtins.dict[builtins.str, builtins.int]
+@@ -118,7 +118,7 @@ def test_mypy_from_pairs() -> None:
+ #
+ @pytest.mark.mypy_testing
+ def test_mypy_head() -> None:
+-    reveal_type(_.head([1, 2, 3, 4]))  # R: Union[builtins.int, None]
++    reveal_type(_.head([1, 2, 3, 4]))  # R: builtins.int | None
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -135,7 +135,8 @@ def test_mypy_initial() -> None:
+ @pytest.mark.mypy_testing
+ def test_mypy_intercalate() -> None:
+     my_list: t.List[t.List[int]] = [[2], [3]]
+-    reveal_type(_.intercalate(my_list, 'x'))  # R: builtins.list[Union[builtins.int, builtins.str]]
++    reveal_type(_.intercalate(my_list, 'x'))  # R: builtins.list[builtins.int | builtins.str]
++
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -168,13 +169,13 @@ def test_mypy_intersection_with() -> Non
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_intersperse() -> None:
+-    my_list: t.List[t.Union[int, t.List[int]]] = [1, [2], [3], 4]
+-    reveal_type(_.intersperse(my_list, 'x'))  # R: builtins.list[Union[builtins.int, builtins.list[builtins.int], builtins.str]]
++   my_list: t.List[int | t.List[int]] = [1, [2], [3], 4]
++   reveal_type(_.intersperse(my_list, 'x'))  # R: builtins.list[builtins.int | builtins.list[builtins.int] | builtins.str]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_last() -> None:
+-    reveal_type(_.last([1, 2, 3, 4]))  # R: Union[builtins.int, None]
++    reveal_type(_.last([1, 2, 3, 4]))  # R: builtins.int | None
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -193,8 +194,8 @@ def test_mypy_mapcat() -> None:
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_nth() -> None:
+-    reveal_type(_.nth([1, 2, 3], 0))  # R: Union[builtins.int, None]
+-    reveal_type(_.nth([11, 22, 33]))  # R: Union[builtins.int, None]
++    reveal_type(_.nth([1, 2, 3], 0))  # R: builtins.int | None
++    reveal_type(_.nth([11, 22, 33]))  # R: builtins.int | None
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -235,8 +236,7 @@ def test_mypy_pull_at() -> None:
+ @pytest.mark.mypy_testing
+ def test_mypy_push() -> None:
+     array = [1, 2, 3]
+-    reveal_type(_.push(array, [4], [6]))  # R: builtins.list[Union[builtins.int, builtins.list[builtins.int]]]
+-
++    reveal_type(_.push(array, [4], [6]))  # R: builtins.list[builtins.int | builtins.list[builtins.int]]
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_remove() -> None:
+@@ -366,7 +366,7 @@ def test_mypy_take_while() -> None:
+ @pytest.mark.mypy_testing
+ def test_mypy_union() -> None:
+     reveal_type(_.union([1, 2, 3], [2, 3, 4], [3, 4, 5]))  # R: builtins.list[builtins.int]
+-    reveal_type(_.union([1, 2, 3], ["hello"]))  # R: builtins.list[Union[builtins.int, builtins.str]]
++    reveal_type(_.union([1, 2, 3], ["hello"]))  # R: builtins.list[builtins.int | builtins.str]
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -403,12 +403,12 @@ def test_mypy_uniq_with() -> None:
+ def test_mypy_unshift() -> None:
+     array = [1, 2, 3, 4]
+     reveal_type(_.unshift(array, -1, -2))  # R: builtins.list[builtins.int]
+-    reveal_type(_.unshift(array, "hello"))  # R: builtins.list[Union[builtins.int, builtins.str]]
++    reveal_type(_.unshift(array, "hello"))  # R: builtins.list[builtins.int | builtins.str]
+ 
  
  @pytest.mark.mypy_testing
  def test_mypy_unzip() -> None:
@@ -35,10 +129,19 @@ Index: pydash-8.0.5/tests/pytest_mypy_testing/test_arrays.py
  
  
  @pytest.mark.mypy_testing
-Index: pydash-8.0.5/tests/pytest_mypy_testing/test_functions.py
+Index: pydash-8.0.6/tests/pytest_mypy_testing/test_functions.py
 ===================================================================
---- pydash-8.0.5.orig/tests/pytest_mypy_testing/test_functions.py
-+++ pydash-8.0.5/tests/pytest_mypy_testing/test_functions.py
+--- pydash-8.0.6.orig/tests/pytest_mypy_testing/test_functions.py
++++ pydash-8.0.6/tests/pytest_mypy_testing/test_functions.py
+@@ -12,7 +12,7 @@ def test_mypy_after() -> None:
+ 
+     after_func = _.after(func, 1)
+     reveal_type(after_func)  # R: pydash.functions.After[[a: builtins.int, b: builtins.dict[builtins.str, builtins.int], c: builtins.bytes], builtins.str]
+-    reveal_type(after_func(1, {}, b""))  # R: Union[builtins.str, None]
++    reveal_type(after_func(1, {}, b""))  # R: builtins.str | None
+ 
+ 
+ @pytest.mark.mypy_testing
 @@ -21,8 +21,8 @@ def test_mypy_ary() -> None:
          return (a, b, c, d)
  
@@ -55,7 +158,7 @@ Index: pydash-8.0.5/tests/pytest_mypy_testing/test_functions.py
  
      before_func = _.before(func, 3)
 -    reveal_type(before_func(1, 2, 3))  # R: Union[Tuple[builtins.int, builtins.int, builtins.int], None]
-+    reveal_type(before_func(1, 2, 3))  # R: Union[tuple[builtins.int, builtins.int, builtins.int], None]
++    reveal_type(before_func(1, 2, 3))  # R: tuple[builtins.int, builtins.int, builtins.int] | None
  
  
  @pytest.mark.mypy_testing
@@ -151,11 +254,72 @@ Index: pydash-8.0.5/tests/pytest_mypy_testing/test_functions.py
 -    reveal_type(wrapper(1))  # R: Tuple[builtins.str, builtins.int]
 +    reveal_type(wrapper)  # R: pydash.functions.Partial[tuple[builtins.str, builtins.int]]
 +    reveal_type(wrapper(1))  # R: tuple[builtins.str, builtins.int]
-Index: pydash-8.0.5/tests/pytest_mypy_testing/test_objects.py
+Index: pydash-8.0.6/tests/pytest_mypy_testing/test_objects.py
 ===================================================================
---- pydash-8.0.5.orig/tests/pytest_mypy_testing/test_objects.py
-+++ pydash-8.0.5/tests/pytest_mypy_testing/test_objects.py
-@@ -299,8 +299,8 @@ def test_mypy_to_number() -> None:
+--- pydash-8.0.6.orig/tests/pytest_mypy_testing/test_objects.py
++++ pydash-8.0.6/tests/pytest_mypy_testing/test_objects.py
+@@ -81,8 +81,8 @@ def test_mypy_find_key() -> None:
+     def is_one(x: int) -> bool:
+         return x == 1
+ 
+-    reveal_type(_.find_key({"a": 1, "b": 2, "c": 3}, is_one))  # R: Union[builtins.str, None]
+-    reveal_type(_.find_key([1, 2, 3, 4], is_one))  # R: Union[builtins.int, None]
++    reveal_type(_.find_key({"a": 1, "b": 2, "c": 3}, is_one))  # R: builtins.str | None
++    reveal_type(_.find_key([1, 2, 3, 4], is_one))              # R: builtins.int | None
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -90,8 +90,8 @@ def test_mypy_find_last_key() -> None:
+     def is_one(x: int) -> bool:
+         return x == 1
+ 
+-    reveal_type(_.find_last_key({"a": 1, "b": 2, "c": 3}, is_one))  # R: Union[builtins.str, None]
+-    reveal_type(_.find_last_key([1, 2, 3, 1], is_one))  # R: Union[builtins.int, None]
++    reveal_type(_.find_last_key({"a": 1, "b": 2, "c": 3}, is_one))  # R: builtins.str | None
++    reveal_type(_.find_last_key([1, 2, 3, 1], is_one))              # R: builtins.int | None
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -115,7 +115,7 @@ def test_mypy_get() -> None:
+     reveal_type(_.get({}, "a.b.c"))  # R: Any
+     reveal_type(_.get({"a": {"b": {"c": [1, 2, 3, 4]}}}, "a.b.c[1]"))  # R: Any
+     reveal_type(_.get({"a": {"b": [0, {"c": [1, 2]}]}}, "a.b.1.c.2"))  # R: Any
+-    reveal_type(_.get(["a", "b"], 0))  # R: Union[builtins.str, None]
++    reveal_type(_.get(["a", "b"], 0))  # R: builtins.str | None
+     reveal_type(_.get(["a", "b"], 0, "c"))  # R: builtins.str
+     reveal_type(_.get(MyClass(), "x"))  # R: Any
+ 
+@@ -220,8 +220,8 @@ def test_mypy_omit_by() -> None:
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_parse_int() -> None:
+-    reveal_type(_.parse_int("5"))  # R: Union[builtins.int, None]
+-    reveal_type(_.parse_int("12", 8))  # R: Union[builtins.int, None]
++    reveal_type(_.parse_int("5"))        # R: builtins.int | None
++    reveal_type(_.parse_int("12", 8))    # R: builtins.int | None
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -260,7 +260,7 @@ def test_mypy_set_with() -> None:
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_to_boolean() -> None:
+-    reveal_type(_.to_boolean("true"))  # R: Union[builtins.bool, None]
++    reveal_type(_.to_boolean("true"))  # R: builtins.bool | None
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -292,15 +292,15 @@ def test_mypy_to_list() -> None:
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_to_number() -> None:
+-    reveal_type(_.to_number("1234.5678"))  # R: Union[builtins.float, None]
+-    reveal_type(_.to_number("1234.5678", 4))  # R: Union[builtins.float, None]
+-    reveal_type(_.to_number(1, 2))  # R: Union[builtins.float, None]
++    reveal_type(_.to_number("1234.5678"))      # R: builtins.float | None
++    reveal_type(_.to_number("1234.5678", 4))   # R: builtins.float | None
++    reveal_type(_.to_number(1, 2))             # R: builtins.float | None
+ 
  
  @pytest.mark.mypy_testing
  def test_mypy_to_pairs() -> None:
@@ -166,3 +330,83 @@ Index: pydash-8.0.5/tests/pytest_mypy_testing/test_objects.py
      reveal_type(_.to_pairs(MyClass()))  # R: builtins.list[Any]
  
  
+Index: pydash-8.0.6/tests/pytest_mypy_testing/test_collections.py
+===================================================================
+--- pydash-8.0.6.orig/tests/pytest_mypy_testing/test_collections.py
++++ pydash-8.0.6/tests/pytest_mypy_testing/test_collections.py
+@@ -7,8 +7,8 @@ import pydash as _
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_at() -> None:
+-    reveal_type(_.at([1, 2, 3, 4], 0, 2))  # R: builtins.list[Union[builtins.int, None]]
+-    reveal_type(_.at({"a": 1, "b": 2, "c": 3, "d": 4}, "a", "c"))  # R: builtins.list[Union[builtins.int, None]]
++    reveal_type(_.at([1, 2, 3, 4], 0, 2))  # R: builtins.list[builtins.int | None]
++    reveal_type(_.at({"a": 1, "b": 2, "c": 3, "d": 4}, "a", "c"))  # R: builtins.list[builtins.int | None]
+     reveal_type(_.at({"a": 1, "b": 2, "c": {"d": {"e": 3}}}, "a", ["c", "d", "e"]))  # R: builtins.list[Any]
+ 
+ 
+@@ -38,14 +38,14 @@ def test_mypy_filter_() -> None:
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_find() -> None:
+-    reveal_type(_.find([1, 2, 3, 4], lambda x: x >= 3))  # R: Union[builtins.int, None]
+-    reveal_type(_.find([{"a": 1}, {"b": 2}, {"a": 1, "b": 2}], {"a": 1}))  # R: Union[builtins.dict[builtins.str, builtins.int], None]
++    reveal_type(_.find([1, 2, 3, 4], lambda x: x >= 3))  # R: builtins.int | None
++    reveal_type(_.find([{"a": 1}, {"b": 2}, {"a": 1, "b": 2}], {"a": 1}))  # R: builtins.dict[builtins.str, builtins.int] | None
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_find_last() -> None:
+-    reveal_type(_.find_last([1, 2, 3, 4], lambda x: x >= 3))  # R: Union[builtins.int, None]
+-    reveal_type(_.find_last([{"a": 1}, {"b": 2}, {"a": 1, "b": 2}], {"a": 1}))  # R: Union[builtins.dict[builtins.str, builtins.int], None]
++    reveal_type(_.find_last([1, 2, 3, 4], lambda x: x >= 3))  # R: builtins.int | None
++    reveal_type(_.find_last([{"a": 1}, {"b": 2}, {"a": 1, "b": 2}], {"a": 1}))  # R: builtins.dict[builtins.str, builtins.int] | None
+ 
+ 
+ @pytest.mark.mypy_testing
+Index: pydash-8.0.6/tests/pytest_mypy_testing/test_numerical.py
+===================================================================
+--- pydash-8.0.6.orig/tests/pytest_mypy_testing/test_numerical.py
++++ pydash-8.0.6/tests/pytest_mypy_testing/test_numerical.py
+@@ -87,8 +87,8 @@ def test_mypy_max_by() -> None:
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_median() -> None:
+-    reveal_type(_.median([1, 2, 3, 4, 5]))  # R: Union[builtins.float, builtins.int]
+-    reveal_type(_.median([1, 2, 3, 4]))  # R: Union[builtins.float, builtins.int]
++    reveal_type(_.median([1, 2, 3, 4, 5]))  # R: builtins.float | builtins.int
++    reveal_type(_.median([1, 2, 3, 4]))     # R: builtins.float | builtins.int
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -130,7 +130,7 @@ def test_mypy_multiply() -> None:
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_power() -> None:
+-    reveal_type(_.power(5, 2))  # R: Union[builtins.int, builtins.float]
++    reveal_type(_.power(5, 2))     # R: builtins.int | builtins.float
+     reveal_type(_.power(12.5, 3))  # R: builtins.float
+ 
+ 
+Index: pydash-8.0.6/tests/pytest_mypy_testing/test_utilities.py
+===================================================================
+--- pydash-8.0.6.orig/tests/pytest_mypy_testing/test_utilities.py
++++ pydash-8.0.6/tests/pytest_mypy_testing/test_utilities.py
+@@ -10,7 +10,7 @@ def test_mypy_attempt() -> None:
+     def divide_by_zero(n: int) -> float:
+         return n/0
+ 
+-    reveal_type(_.attempt(divide_by_zero, 1))  # R: Union[builtins.float, builtins.Exception]
++    reveal_type(_.attempt(divide_by_zero, 1))  # R: builtins.float | builtins.Exception
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -182,7 +182,7 @@ def test_mypy_properties() -> None:
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_property_of() -> None:
+-    reveal_type(_.property_of({'a': 1, 'b': 2, 'c': 3}))  # R: def (Union[typing.Hashable, builtins.list[typing.Hashable]]) -> Any
++    reveal_type(_.property_of({'a': 1, 'b': 2, 'c': 3}))  # R: def (typing.Hashable | builtins.list[typing.Hashable]) -> Any
+ 
+ 
+ @pytest.mark.mypy_testing
