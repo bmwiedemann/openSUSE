@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jan 19 07:23:47 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.10.1:
+  + rust: use the linker exe for the linker and not the rustc command list
+  + compilers/detect: Update the build machine information for ASM
+  + gnome: look up g-ir-scanner as a host tool
+  + compilers: add link always args if CompileCheckMode.LINK
+  + compilers: clike: Deduplicate compile and link args from actually used arg list
+  + compilers: Error out on unknown files in compiler checks for MSVC
+  + options: canonicalize to host options anything that is not per-machine
+  + coredata: lookup options for the correct machine
+  + interpreter: listify the values when a dict is passed for the env kwarg
+  + cmake: Fix version kwarg being added to static_library targets
+
+-------------------------------------------------------------------
 Tue Dec 30 09:49:55 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.10.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package meson
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -35,7 +35,7 @@
 %{!?vim_data_dir:%global vim_data_dir %{_datadir}/vim}
 %bcond_without  mono
 Name:           meson%{name_ext}
-Version:        1.10.0
+Version:        1.10.1
 Release:        0
 Summary:        Python-based build system
 License:        Apache-2.0
