@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Fri Jan 16 16:59:07 UTC 2026 - Pavel Dostál <pdostal@suse.com>
+
+- Update to version 2.85.0:
+  * fix: simplify set-default remote parsing
+  * Handle repo argument before remote name
+  * chore: update licenses
+  * chore(deps): bump github.com/yuin/goldmark from 1.7.13 to 1.7.16
+  * chore: update licenses using `go-licenses@v2`
+  * chore: install `go-licenses@v2` in scripts
+  * Update go-licenses for 1.25
+  * chore: update licenses
+  * chore: bump `github.com/sigstore/sigstore-go` to `v1.1.4`
+  * chore: remove redundant comment
+  * ci: enable noop linters
+  * Add shell specification for temporary tag creation
+  * ci: shorten `run` block
+  * ci: improve step name
+  * ci: tag per build job
+  * Update Azure Code Signing endpoint URL
+  * Update Azure Code Signing client to 1.0.95
+  * Update actions/checkout to v6 in extension workflow templates
+  * feat: allow git remote names in gh repo set-default
+  * Add test to ensure null values are skipped
+  * ci: disable create storage record for artifacts
+  * chore(deps): bump actions/attest-build-provenance from 3.0.0 to 3.1.0
+  * chore: run `go mod tidy`
+  * chore: update licenses
+  * chore: upgrade `github.com/cli/oauth` to `v1.2.1`
+  * fix: prevent panic when processing null project items
+  * ci: fix binary artficat dirs used in macos job
+  * ci: fix binary artifact dir paths used in Windows job
+  * ci: upgrade to GoReleaser v2 CLI syntax for `--skip`
+  * ci: limit deb/rpm packages to `linux` build
+  * ci: replace `archives.format` with `archives.formats` array
+  * ci: remove redundant `archives.rlcp`
+  * ci: replace `archives.builds` with `archives.ids`
+  * ci: quote 386 arch
+  * ci: upgrade `.goreleaser.yml` to v2
+  * ci: upgrade to GoReleaser v2
+  * chore: update licenses
+  * chore(deps): bump golang.org/x/crypto from 0.45.0 to 0.46.0
+  * chore: update licenses
+  * chore(deps): bump github.com/gdamore/tcell/v2 from 2.13.2 to 2.13.4
+  * chore(deps): bump golangci/golangci-lint-action from 9.1.0 to 9.2.0
+  * chore: update licenses
+  * chore: update licenses
+  * chore(deps): bump github.com/spf13/cobra from 1.10.1 to 1.10.2
+  * chore: update licenses
+  * chore(deps): bump golang.org/x/term from 0.37.0 to 0.38.0
+  * chore: update licenses
+  * chore(deps): bump golang.org/x/text from 0.31.0 to 0.32.0
+  * chore: update licenses
+  * chore(deps): bump golang.org/x/sync from 0.18.0 to 0.19.0
+  * Fix Debian CLI package link in installation guide
+  * Add tests of browse --actions
+  * Add gh browse --actions flag
+  * chore(deps): bump github.com/gdamore/tcell/v2 from 2.13.1 to 2.13.2
+
+-------------------------------------------------------------------
 Mon Dec 15 16:23:25 UTC 2025 - Pavel Dostál <pdostal@suse.com>
 
 - Update to version 2.83.2:
