@@ -31,4 +31,30 @@
     <comment></comment>
     <requestid>1272977</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f1dc956f452dfddc38183141b9327ae6</srcmd5>
+    <version>0.3.0</version>
+    <time>1769091271</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.3.0:
+  * filter arguments to filter STDIN for address lines only
+  * read and make cdb files
+  * example cdb maker
+  * countseen adds occurrence count of IP when in encapsulating and group mode, this option automatically sets encapsulating and group to 128
+  * abuseipdb support
+  * add cdb pairs to output when no format is specified
+  * when cdb or abuseipdb are present, without a format, all key pairs will be shown
+  * option makethymecdb to download IP information from thyme.apnic.net, options --data-raw-table, --ipv6-raw-table, --data-used-autnums can be used with a file or URL if format is specified filter should output that style
+  * add a useragent string to http client
+  * basic top-like function with --delay, --noclear and --iterations arguments --group4 and --group6 to override --group respectively
+  * experimental geoip2 lite support
+  * adding network match iter
+  * bump nix -&gt; 0.30
+  * making Ip functions pub
+  * quiet option
+  * use a /32 mask for encapsulation if --mask is not present and addresses are from command line arguments
+  * assume v4/32 and v6/128 in csv if not specified
+</comment>
+    <requestid>1328540</requestid>
+  </revision>
 </revisionlist>

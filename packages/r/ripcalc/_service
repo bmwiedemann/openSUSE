@@ -5,7 +5,7 @@
     <param name="changesgenerate">enable</param>
     <param name="filename">ripcalc</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">v0.2.5</param>
+    <param name="revision">v0.3.0</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>
@@ -16,7 +16,7 @@
     <param name="compression">xz</param>
   </service>
   <service name="cargo_vendor" mode="manual">
-     <param name="src">ripcalc</param>
+     <param name="srcdir">ripcalc</param>
      <param name="compression">zst</param>
      <param name="update">true</param>
   </service>

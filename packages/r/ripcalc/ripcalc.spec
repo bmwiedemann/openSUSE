@@ -1,7 +1,7 @@
 #
 # spec file for package ripcalc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           ripcalc
-Version:        0.2.5
+Version:        0.3.0
 Release:        0
 Summary:        Tool for network addresses
 License:        GPL-3.0-or-later
@@ -27,7 +27,8 @@ URL:            https://www.usenix.org.uk/content/ripcalc.html
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
-BuildRequires:  rust >= 1.69
+BuildRequires:  rust >= 1.88
+BuildRequires:  pkgconfig(openssl)
 ExclusiveArch:  %{rust_tier1_arches}
 
 %description
@@ -36,9 +37,6 @@ file formats for network information lists.
 
 %prep
 %autosetup -p1 -a1
-%if 0%{?suse_version} < 1600
-find Cargo.lock vendor/ -type f -name Cargo.lock -exec sed -Ei 's/^version = 4$/version = 3/g' {} \;
-%endif
 
 %build
 %{cargo_build}
