@@ -1,7 +1,7 @@
 #
 # spec file for package rsyslog
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -219,6 +219,7 @@ Source16:       journald-rsyslog.conf
 Source17:       acpid.frule
 Source18:       firewall.frule
 Source19:       NetworkManager.frule
+Source20:       rsyslog-tmpfiles.conf
 
 # this is a dirty hack since % dir does only work for the specified directory and nothing above
 # but I want to be able to switch this to /etc/apparmor.d once the profiles received more testing
@@ -774,7 +775,6 @@ ln -svf service %buildroot/%{_sbindir}/rc%{name}
 #
 install -d -m0755 %{buildroot}%{_sysconfdir}/rsyslog.d
 install -d -m0755 %{buildroot}%{_localstatedir}/run/rsyslog
-install -d -m0755 %{buildroot}%{_localstatedir}/spool/rsyslog
 for file in rsyslog.conf rsyslog.d.remote.conf ; do
 	sed \
 %ifarch s390 s390x
@@ -816,9 +816,6 @@ install -m644 %{SOURCE3} %{buildroot}%{_unitdir}/
 install -d -m0755 %{buildroot}%{_prefix}/lib/systemd/journald.conf.d
 install -m644 %{SOURCE16} %{buildroot}%{_prefix}/lib/systemd/journald.conf.d/30-rsyslog.conf
 # create ghosts
-install -d -m0755 %{buildroot}%{rsyslog_rundir}
-touch %{buildroot}%{rsyslog_sockets_cfg}
-chmod 644 %{buildroot}%{rsyslog_sockets_cfg}
 mkdir -p %{buildroot}%{APPARMOR_PROFILE_PATH}/rsyslog.d/
 install -m0640 %{SOURCE6} %{buildroot}%{APPARMOR_PROFILE_PATH}/
 install -m0600 %{SOURCE17} %{buildroot}%{_sysconfdir}/rsyslog.d/
@@ -846,6 +843,10 @@ install -m0600 %{SOURCE19} %{buildroot}%{_sysconfdir}/rsyslog.d/
 %endif \
 %{nil}
 
+#switch to tmpfiles config
+mkdir -p %{buildroot}%{_tmpfilesdir}
+install -m 644 %{SOURCE20} %{buildroot}%{_tmpfilesdir}/rsyslog.conf
+
 %pre
 %{service_add_pre rsyslog.service}
 
@@ -872,29 +873,6 @@ install -m0600 %{SOURCE19} %{buildroot}%{_sysconfdir}/rsyslog.d/
 if grep -qs '^local[0246],' etc/rsyslog.conf ; then
    sed -i -e 's/^local\([0246]\),/local\1.*;/g' etc/rsyslog.conf
 fi
-#
-# create dirs, touch log default files
-#
-if [ "$1" = "1" ] ; then  # first install
-mkdir -p var/log
-touch var/log/messages;  chmod 640 var/log/messages
-touch var/log/mail;      chmod 640 var/log/mail
-touch var/log/mail.info; chmod 640 var/log/mail.info
-touch var/log/mail.warn; chmod 640 var/log/mail.warn
-touch var/log/mail.err;  chmod 640 var/log/mail.err
-#
-# touch the additional log files we are using
-#
-touch var/log/acpid;            chmod 640 var/log/acpid
-touch var/log/firewall;         chmod 640 var/log/firewall
-touch var/log/NetworkManager;   chmod 640 var/log/NetworkManager
-#
-# touch the additional log sockets config file
-#
-mkdir -p -m750 ".%{rsyslog_rundir}"
-touch ".%{rsyslog_sockets_cfg}"
-chmod 640 ".%{rsyslog_sockets_cfg}"
-fi # first install
 #
 # Enable the rsyslogservice to be started by systemd
 #
@@ -1080,15 +1058,13 @@ fi # first install
 %doc %{rsyslogdocdir}/ChangeLog
 %doc %{rsyslogdocdir}/README
 %doc %{rsyslogdocdir}/AUTHORS
-%dir %{_localstatedir}/spool/rsyslog
 %{_fillupdir}/sysconfig.syslog-rsyslog
-%attr(0755,root,root) %dir %ghost %{rsyslog_rundir}
-%attr(0644,root,root) %ghost %{rsyslog_sockets_cfg}
 %{_sbindir}/rsyslog-service-prepare
 %{_unitdir}/rsyslog.service
 %{_sbindir}/rc%{name}
 %{APPARMOR_PROFILE_PATH_DIR_COMMANDS}
 %{APPARMOR_PROFILE_PATH}/usr.sbin.rsyslogd
+%{_tmpfilesdir}/rsyslog.conf
 
 %files doc
 %defattr(-,root,root)
