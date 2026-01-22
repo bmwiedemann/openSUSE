@@ -1,21 +1,6 @@
 <services>
-  <service name="obs_scm" mode="manual">
-    <param name="url">https://github.com/Lusitaniae/apache_exporter</param>
-    <param name="scm">git</param>
-    <param name="exclude">.git</param>
-    <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">v1.0.10</param>
-    <param name="versionrewrite-pattern">v(.*)</param>
-  </service>
-  <service name="tar" mode="buildtime"/>
-  <service name="recompress" mode="buildtime">
-    <param name="file">*.tar</param>
-    <param name="compression">gz</param>
-  </service>
-  <service name="set_version" mode="manual">
-    <param name="basename">apache_exporter</param>
-  </service>
+  <service name="download_files" mode="manual" />
   <service name="go_modules" mode="manual">
-    <param name="archive">apache_exporter-1.0.10.obscpio</param>
+    <param name="archive">apache_exporter-*.tar.gz</param>
   </service>
 </services>

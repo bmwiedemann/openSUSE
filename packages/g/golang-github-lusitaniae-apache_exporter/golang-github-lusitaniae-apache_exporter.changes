@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 21 13:33:35 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Replace cpio with tar
+  * remove obs_scm service
+  * add download URL to the spec
+
+-------------------------------------------------------------------
 Mon Dec  8 12:25:24 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Build without apparmor for openSUSE Leap 16, SLES 16 or newer

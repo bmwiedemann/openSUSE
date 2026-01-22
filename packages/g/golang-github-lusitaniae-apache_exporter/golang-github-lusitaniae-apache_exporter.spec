@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-lusitaniae-apache_exporter
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2019 João Cavalheiro <jcavalheiro@suse.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -51,8 +51,8 @@ Release:        0
 Summary:        Apache Exporter for Prometheus
 License:        MIT
 Group:          System/Management
-URL:            http://%{githubrepo}
-Source:         %{upstreamname}-%{version}.tar.gz
+URL:            https://%{githubrepo}
+Source:         %{URL}/archive/refs/tags/v%{version}.tar.gz#/%{upstreamname}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        %{targetname}.service
 Source3:        apparmor-usr.bin.%{targetname}
