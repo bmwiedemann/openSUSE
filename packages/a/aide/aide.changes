@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 21 13:56:05 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- generate the /var/lib/aide directory via tmpfiles (jsc#PED-14791)
+
+-------------------------------------------------------------------
 Tue Aug 19 14:16:44 UTC 2025 - Alexander Bergmann <abergmann@suse.com>
 
 - Update to 0.19.2 (2025-08-13):

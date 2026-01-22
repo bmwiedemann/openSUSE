@@ -1,7 +1,7 @@
 #
 # spec file for package aide
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -86,7 +86,7 @@ autoreconf -fiv
 
 %install
 %make_install
-install -m 700 -d     %{buildroot}%{_localstatedir}/lib/aide
+#install -m 700 -d     %{buildroot}%{_localstatedir}/lib/aide
 install -m 700 -d     %{buildroot}%{_sysconfdir}
 install -m 700 -d     %{buildroot}%{_unitdir}/
 install -m 700 -d     %{buildroot}%{_mandir}/man8
@@ -102,6 +102,9 @@ gzip -9 %{buildroot}%{_mandir}/man8/aide.timer.8
 mkdir -p doc/examples%{_sysconfdir}/cron.daily/
 cp -a %{SOURCE2} doc/examples%{_sysconfdir}/cron.daily/aide.sh
 
+mkdir %{buildroot}%{_tmpfilesdir}
+echo "d %{_localstatedir}/lib/aide 0700 - - -" > %{buildroot}%{_tmpfilesdir}/aide-tmpfiles.conf
+
 %pre
 %service_add_pre %{name}.service %{name}.timer
 
@@ -113,6 +116,7 @@ if ! grep -q "database_in" %{_sysconfdir}/aide.conf ; then
   sed -i 's/\t/ /g' %{_sysconfdir}/aide.conf
 fi
 %service_add_post %{name}.service %{name}.timer
+%tmpfiles_create %{_tmpfilesdir}/aide-tmpfiles.conf
 
 %preun
 %service_del_preun %{name}.service %{name}.timer
@@ -152,9 +156,10 @@ rm -rf $TESTDIR
 %{_bindir}/aide
 /%{_mandir}/man1/aide.1.gz
 /%{_mandir}/man5/aide.conf.5.gz
-%{_localstatedir}/lib/aide
 %config(noreplace) %{_sysconfdir}/aide.conf
 %config(noreplace) %{_sysconfdir}/aide_service.conf
+%{_tmpfilesdir}/aide-tmpfiles.conf
+#{_localstatedir}/lib/aide
 %{_unitdir}/aide.service
 %{_unitdir}/aide.timer
 %{_mandir}/man8/aide.timer.8%{?ext_man}

@@ -394,4 +394,12 @@
       incorrectly encoded xattr attributes from database (bsc#1247885) (forwarded request 1300312 from abergmann)</comment>
     <requestid>1300543</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>f67d8919422e5092afbfbad8cd47fb23</srcmd5>
+    <version>0.19.2</version>
+    <time>1769091280</time>
+    <user>anag_factory</user>
+    <comment>- generate the /var/lib/aide directory via tmpfiles (jsc#PED-14791) (forwarded request 1328537 from msmeissn)</comment>
+    <requestid>1328538</requestid>
+  </revision>
 </revisionlist>
