@@ -344,4 +344,19 @@
     <comment>switch to singlespec</comment>
     <requestid>1316752</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>796db546fa01a3e6af4997214cb3aeda</srcmd5>
+    <version>5.5.0</version>
+    <time>1769091489</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.5.0:
+  * reno: Update master for unmaintained/2024.1
+  * Migrate bandit options to pyproject.toml
+  * pre-commit: Bump dependencies
+  * Migrate setup configuration to pyproject.toml
+  * Drop Python 3.9 support
+  * Fix missing session options in [barbican] section
+  * Update master for stable/2025.2</comment>
+    <requestid>1328632</requestid>
+  </revision>
 </revisionlist>

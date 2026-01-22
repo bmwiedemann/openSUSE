@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 22 08:52:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.5.0:
+  * reno: Update master for unmaintained/2024.1
+  * Migrate bandit options to pyproject.toml
+  * pre-commit: Bump dependencies
+  * Migrate setup configuration to pyproject.toml
+  * Drop Python 3.9 support
+  * Fix missing session options in [barbican] section
+  * Update master for stable/2025.2
+
+-------------------------------------------------------------------
 Sun Nov  9 19:06:57 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.4.1:
