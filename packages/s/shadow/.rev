@@ -1332,4 +1332,12 @@
   * Our implementations of su(1) and login(1) are fully supported, and we</comment>
     <requestid>1328142</requestid>
   </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>637894e1384b658a81c624312c7fca94</srcmd5>
+    <version>4.19.2</version>
+    <time>1769091204</time>
+    <user>anag_factory</user>
+    <comment>  * gpasswd: Fix password leak (bsc#1214806, CVE-2023-4641)</comment>
+    <requestid>1328649</requestid>
+  </revision>
 </revisionlist>

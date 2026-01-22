@@ -537,7 +537,7 @@ Thu Aug 17 06:43:38 UTC 2023 - Michael Vetter <mvetter@suse.com>
   * lastlog: fix alignment of Latest header
   * Fix yescrypt support #748
   * chgpasswd: Fix segfault in command-line options
-  * gpasswd: Fix password leak
+  * gpasswd: Fix password leak (bsc#1214806, CVE-2023-4641)
   * Add --prefix to passwd, chpasswd and chage #714 (bsc#1206627)
   * usermod: fix off-by-one issues #701
   * ch(g)passwd: Check selinux permissions upon startup #675
