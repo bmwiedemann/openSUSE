@@ -1,0 +1,6 @@
+<package name="soju" project="openSUSE:Factory">
+  <title>IRCv3 bouncer</title>
+  <description>Soju is an IRC bouncer. It connects to upstream IRC servers on behalf of the user to provide extra functionality and supports features such as multiple users, numerous IRCv3 extensions, chat history playback and detached channels. It is well-suited for both small and large deployments.
+
+</description>
+</package>
