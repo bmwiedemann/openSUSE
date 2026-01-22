@@ -59,4 +59,16 @@ focus on simplicity and maintainability</comment>
 - Drop fix-already-unsafe.patch: upstreamed</comment>
     <requestid>1325021</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>c1be70b18556ad88613e291f413d7104</srcmd5>
+    <version>0.5</version>
+    <time>1769091358</time>
+    <user>anag_factory</user>
+    <comment>- Enable self testing
+  * Add 0002-Disable-vdoc-testing.patch
+- Link to distro provided mbedtls via
+  0001-Link-to-distro-provided-mbedtls.patch
+  [CVE-2025-59438] (boo#1252434)</comment>
+    <requestid>1328583</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 21 23:10:54 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Enable self testing
+  * Add 0002-Disable-vdoc-testing.patch
+- Link to distro provided mbedtls via
+  0001-Link-to-distro-provided-mbedtls.patch
+  [CVE-2025-59438] (boo#1252434)
+
+-------------------------------------------------------------------
 Thu Jan  1 15:30:45 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 0.5:

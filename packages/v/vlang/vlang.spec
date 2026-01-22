@@ -33,18 +33,27 @@ URL:            https://vlang.io/
 Source0:        https://github.com/%{name}/v/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/%{name}/vc/raw/%{vc_gitrev}/v.c
 Source99:       vlang-rpmlintrc
-BuildRequires:  c_compiler
+Patch1:         0001-Link-to-distro-provided-mbedtls.patch
+Patch2:         0002-Disable-vdoc-testing.patch
+BuildRequires:  (c_compiler or gcc)
 BuildRequires:  diffutils
 BuildRequires:  fdupes
 BuildRequires:  findutils
 BuildRequires:  pkgconfig
 # For VFLAGS="-d dynamic_boehm"
 BuildRequires:  pkgconfig(bdw-gc)
+BuildRequires:  pkgconfig(mbedcrypto)
+BuildRequires:  pkgconfig(mbedtls)
+BuildRequires:  pkgconfig(mbedx509)
 # For vshare tool
 BuildRequires:  pkgconfig(x11)
 # For VFLAGS="-d dynamic_boehm"
 # Required by compiler at runtime
 Requires:       pkgconfig(bdw-gc)
+# For the net.mbedtls module
+Requires:       pkgconfig(mbedcrypto)
+Requires:       pkgconfig(mbedtls)
+Requires:       pkgconfig(mbedx509)
 
 %description
 V is a statically typed compiled programming language inspired
@@ -62,12 +71,6 @@ This package contains examples for the V Programming Language.
 
 %prep
 %autosetup -n v-%{version} -p1
-
-# Remove .gitignore files
-find . -type f -name '.gitignore' -print -delete
-
-# Replace hardcoded path to v in examples
-sed -i -e '1s:%{_prefix}/local/bin/v:%{_bindir}/%{name}:' examples/v_script.vsh
 
 %build
 export CC=cc
@@ -128,7 +131,7 @@ export VJOBS="%{?jobs:%jobs}"
 ./%{name} doctor
 
 # Build V tools
-# ./%%{name} test-self
+./%{name} test-self
 ./%{name} -v build-tools
 
 # Do not attempt to rebuild after installation
@@ -160,6 +163,12 @@ rm -rf \
 	vlib/*/*/*/testdata \
 	vlib/v/pkgconfig/test_samples \
 	vlib/net/http/mime/build.vsh \
+
+# Remove .gitignore files
+find . -type f -name '.gitignore' -print -delete
+
+# Replace hardcoded path to v in examples
+sed -i -e '1s:%{_prefix}/local/bin/v:%{_bindir}/%{name}:' examples/v_script.vsh
 
 # Copy files
 install -D -m 0755 %{name} %{buildroot}%{vexe}
@@ -208,9 +217,6 @@ sed -i 's|%{buildroot}||g' %{buildroot}%{_datadir}/fish/vendor_completions.d/%{n
 # Remove duplicate files
 %fdupes %{buildroot}%{_libexecdir}/%{name}/
 %fdupes %{buildroot}%{_datadir}/doc/%{name}/examples
-
-# %%check
-# %%{name} test-self
 
 
 %files

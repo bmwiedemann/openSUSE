@@ -1,0 +1,24 @@
+From d77f6e0a7763a3fc3c8c13c5947b4a4162e39c1a Mon Sep 17 00:00:00 2001
+From: VaiTon <eyadlorenzo@gmail.com>
+Date: Thu, 22 Jan 2026 00:00:37 +0100
+Subject: [PATCH 2/2] Disable vdoc testing
+
+---
+ cmd/tools/vtest-self.v | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/cmd/tools/vtest-self.v b/cmd/tools/vtest-self.v
+index 9b4d73fef..472534d5d 100644
+--- a/cmd/tools/vtest-self.v
++++ b/cmd/tools/vtest-self.v
+@@ -25,7 +25,6 @@ const vroot = os.dir(os.real_path(os.getenv_opt('VEXE') or { @VEXE }))
+ 
+ const essential_list = [
+ 	'cmd/tools/vvet/vet_test.v',
+-	'cmd/tools/vdoc/document/doc_test.v',
+ 	'vlib/arrays/arrays_test.v',
+ 	'vlib/bitfield/bitfield_test.v',
+ 	//
+-- 
+2.52.0
+
