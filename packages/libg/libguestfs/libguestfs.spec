@@ -18,7 +18,7 @@
 
 Name:           libguestfs
 ExclusiveArch:  x86_64 ppc64 ppc64le s390x aarch64 riscv64
-Version:        1.58.0
+Version:        1.58.1
 Release:        0
 Summary:        Access and modify virtual machine disk images
 License:        GPL-2.0-or-later
@@ -32,6 +32,7 @@ Source100:      mount-rootfs-and-chroot.sh
 Source101:      README
 
 # Patches
+Patch0:         001-Avoid-not-available-macro-for-OCaml-functions.patch
 Patch1:         reproducible-builds.patch
 Patch2:         drop-initviocons-from-package-list.patch
 Patch100:       use-fuse3-for-build.patch

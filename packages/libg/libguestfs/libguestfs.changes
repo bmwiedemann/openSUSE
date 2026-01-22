@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan 21 11:44:42 MST 2026 - carnold@suse.com
+
+- Update to version 1.58.1 (jsc#PED-14625)
+  * daemon/selinux.c: Fix compilation when no libselinux
+  * lib/qemu.c: Don't start the guest when checking QMP properties
+  * lib/qemu.c: Add debugging to generic_qmp_test()
+  * lib/qemu.c: Turn debug messages which are really errors into
+    error()
+- Add upstream fix
+  001-Avoid-not-available-macro-for-OCaml-functions.patch
+
+-------------------------------------------------------------------
 Mon Jan  5 10:58:48 MST 2026 - carnold@suse.com
 
 - Update to version 1.58.0 (jsc#PED-14625)
