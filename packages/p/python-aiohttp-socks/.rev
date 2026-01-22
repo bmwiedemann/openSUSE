@@ -124,4 +124,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1234669</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>93d61d75f743a19ba3186bcf3791cd32</srcmd5>
+    <version>0.11.0</version>
+    <time>1769091483</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.11.0:
+  * Fixed https://github.com/romis2012/aiohttp-socks/issues/52</comment>
+    <requestid>1328621</requestid>
+  </revision>
 </revisionlist>
