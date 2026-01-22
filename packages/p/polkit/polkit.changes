@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 20 08:46:38 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- change to /var/lib/polkit-1 being tmpfiles created (jsc#PED-14794)
+
+-------------------------------------------------------------------
 Thu Jan  8 12:28:03 UTC 2026 - Marcus Meissner <meissner@suse.com>
 
 - Updated to version 127:

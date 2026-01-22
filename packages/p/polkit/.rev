@@ -907,4 +907,12 @@ can switch the default compiler. (forwarded request 1187079 from jamborm)</comme
 - added polkitd.conf.5 manpage, added polkitd.conf</comment>
     <requestid>1326294</requestid>
   </revision>
+  <revision rev="98" vrev="2">
+    <srcmd5>8077f461f3395b4894b3c83601702ddc</srcmd5>
+    <version>127</version>
+    <time>1769091109</time>
+    <user>anag_factory</user>
+    <comment>- change to /var/lib/polkit-1 being tmpfiles created (jsc#PED-14794) (forwarded request 1328198 from msmeissn)</comment>
+    <requestid>1328443</requestid>
+  </revision>
 </revisionlist>

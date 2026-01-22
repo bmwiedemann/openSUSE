@@ -199,9 +199,6 @@ install -d %{buildroot}%{_localstatedir}/lib/polkit
 
 install -m0644 %{SOURCE4} %{buildroot}/%{_polkit_rulesdir}/50-default.rules
 
-# delete tmpfiles.d file for now
-rm %{buildroot}/usr/lib/tmpfiles.d/polkit-tmpfiles.conf
-
 # create actions dir in /etc
 mkdir %{buildroot}/%{_sysconfdir}/polkit-1/actions
 
@@ -222,6 +219,7 @@ mkdir %{buildroot}/%{_sysconfdir}/polkit-1/actions
 %post
 %set_permissions %{_libexecdir}/polkit-1/polkit-agent-helper-1
 %service_add_post polkit.service
+%tmpfiles_create %{_tmpfilesdir}/polkit-tmpfiles.conf
 
 %verifyscript -n pkexec
 %verify_permissions -e %{_bindir}/pkexec
@@ -266,6 +264,7 @@ mkdir %{buildroot}/%{_sysconfdir}/polkit-1/actions
 %{_datadir}/polkit-1/actions/org.freedesktop.policykit.policy
 %attr(0555,root,root) %dir %{_polkit_rulesdir}
 %{_polkit_rulesdir}/50-default.rules
+%{_tmpfilesdir}/polkit-tmpfiles.conf
 %{_pam_vendordir}/polkit-1
 %dir %{_sysconfdir}/polkit-1
 %attr(0750,root,polkitd) %dir %{_sysconfdir}/polkit-1/rules.d
@@ -277,7 +276,7 @@ mkdir %{buildroot}/%{_sysconfdir}/polkit-1/actions
 %{_libexecdir}/polkit-1/polkitd
 %verify(not mode) %attr(4755,root,root) %{_libexecdir}/polkit-1/polkit-agent-helper-1
 # $HOME for polkit user
-%dir %{_localstatedir}/lib/polkit
+#dir %{_localstatedir}/lib/polkit
 %{_sysusersdir}/polkit.conf
 %{_unitdir}/polkit.service
 %{_unitdir}/polkit-agent-helper.socket
