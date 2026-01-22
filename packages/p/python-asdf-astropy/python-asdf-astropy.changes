@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan 21 12:29:38 UTC 2026 - Benjamin Greiner <code@bnavigator.de>
+
+- Revert to %pytest macro. Create XDG_CACHE_HOME for astropy
+  warning to disappear.
+
+-------------------------------------------------------------------
+Wed Jan 21 11:43:13 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Fix tests. Do not use %pytest macro for running tests as it
+  conflicts with internal .astropy/config
+
+-------------------------------------------------------------------
 Fri Dec 12 10:44:44 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-asdf-astropy
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -80,6 +80,8 @@ done
 
 %if %{with test}
 %check
+export XDG_CACHE_HOME=$PWD/astropy_cache
+mkdir -p $XDG_CACHE_HOME
 %pytest -n auto
 %endif
 

@@ -164,4 +164,16 @@ This is just to get rid of the build failure in d:l:p. It is not suitable for an
   * require asdf 3.3 and drop support for astropy 5.2</comment>
     <requestid>1322579</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>86a1d9cc3fc4dcf7bfb97954e183dad2</srcmd5>
+    <version>0.9.0</version>
+    <time>1769091236</time>
+    <user>anag_factory</user>
+    <comment>- Revert to %pytest macro. Create XDG_CACHE_HOME for astropy
+  warning to disappear.
+- Fix tests. Do not use %pytest macro for running tests as it
+  conflicts with internal .astropy/config
+</comment>
+    <requestid>1328501</requestid>
+  </revision>
 </revisionlist>
