@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 21 14:16:18 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20260121.010c05a:
+  * Remove x-growpart.grow flag for encrypted devices
+  * Requires combustion for firstboot.target
+  * Drop x-initrd.attach for cr_etc and cr_var
+
+-------------------------------------------------------------------
 Wed Jul 30 06:54:53 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20250729.d86f79f:
