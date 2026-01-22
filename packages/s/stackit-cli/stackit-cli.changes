@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jan 22 06:01:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.52.0:
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/serverbackup
+    from v1.3.4 to v1.3.5 (#1239)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/alb (#1237)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/loadbalancer
+    (#1238)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/edge (#1235)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/ske (#1236)
+  * feat(config): add ignore-existing for profile create (#1094)
+  * Feat/stackittpr 442 depedency cooldowns (#1233)
+  * Update to stackit-sdk-go/services/edge v0.3.0 (#1231)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/edge from 0.2.0
+    to 0.3.0 (#1228)
+
+-------------------------------------------------------------------
 Wed Jan 14 14:25:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.51.0:
