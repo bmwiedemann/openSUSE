@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jan 19 09:02:38 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.15.0:
+  * Build path list in a background thread to prevent UI blocking.
+  * Add a loading status page when dropping files.
+  * Port GtkShortcutsWindow to AdwShortcutsDialog.
+- Changes from version 1.14.0:
+  * Add D-Bus service file.
+  * Add new preference to select between prefix and suffix for new
+    files.
+  * Fix handling file not found error.
+  * Raise existing window instead of opening new one on
+    activation.
+  * Prevent creation of new file when skipped.
+
+-------------------------------------------------------------------
 Wed Apr 23 04:48:00 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.13.0:

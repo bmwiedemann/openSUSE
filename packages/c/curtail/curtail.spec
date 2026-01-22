@@ -1,7 +1,7 @@
 #
 # spec file for package curtail
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           curtail
-Version:        1.13.0
+Version:        1.15.0
 Release:        0
 Summary:        A simple and useful image compressor
 License:        GPL-3.0-or-later
@@ -65,11 +65,12 @@ modes with an option to whether keep or not metadata of images.
 %license COPYING
 %doc CHANGELOG.md README.md
 %{_bindir}/curtail
-%{_datadir}/metainfo/*.xml
-%{_datadir}/curtail/
 %{_datadir}/applications/*.desktop
+%{_datadir}/curtail/
+%{_datadir}/dbus-1/services/*.Curtail.service
 %{_datadir}/glib-2.0/schemas/*.xml
 %{_datadir}/icons/hicolor/*/apps/*.svg
+%{_datadir}/metainfo/*.xml
 
 %files lang -f %{name}.lang
 
