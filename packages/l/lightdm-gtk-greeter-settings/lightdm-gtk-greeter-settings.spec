@@ -1,7 +1,7 @@
 #
 # spec file for package lightdm-gtk-greeter-settings
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           lightdm-gtk-greeter-settings
-Version:        1.2.2
+Version:        1.2.3
 Release:        0
 Summary:        Settings editor for the LightDM GTK+ Greeter
 License:        GPL-3.0-or-later
 Group:          System/GUI/Other
-URL:            https://launchpad.net/lightdm-gtk-greeter-settings
-Source:         https://launchpad.net/lightdm-gtk-greeter-settings/1.2/%{version}/+download/lightdm-gtk-greeter-settings-%{version}.tar.gz
+URL:            https://github.com/Xubuntu/lightdm-gtk-greeter-settings
+Source:         https://github.com/Xubuntu/lightdm-gtk-greeter-settings/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  desktop-file-utils
 BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
@@ -70,7 +70,7 @@ done
 desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
 
 %files
-%doc NEWS README
+%doc NEWS README.md
 %license COPYING
 %{_bindir}/%{name}*
 %{python3_sitelib}/lightdm_gtk_greeter_settings-*

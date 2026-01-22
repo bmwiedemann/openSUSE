@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan  8 05:14:02 UTC 2026 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Updated to version 1.2.3 (bsc#1254530):
+  * Bump Glade project versions
+  * Renamed 'LightDM GTK+ Greeter Settings' to 'LightDM GTK Greeter Settings'
+  * Replace 'Large font' with 'Large text'
+  * Replace README with more useful README.md
+  * Updated project URL
+  * Enable local installation
+
+- Use source from https://github.com/Xubuntu/lightdm-gtk-greeter-settings 
+  as the new upstream
+
+-------------------------------------------------------------------
 Mon Nov 24 00:05:46 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove unused BuildRequires: update-desktop-files.

@@ -24,4 +24,21 @@
     <comment></comment>
     <requestid>1319727</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>30004086ff64e55250e13354b62abf76</srcmd5>
+    <version>1.2.3</version>
+    <time>1769091392</time>
+    <user>anag_factory</user>
+    <comment>- Updated to version 1.2.3 (bsc#1254530):
+  * Bump Glade project versions
+  * Renamed 'LightDM GTK+ Greeter Settings' to 'LightDM GTK Greeter Settings'
+  * Replace 'Large font' with 'Large text'
+  * Replace README with more useful README.md
+  * Updated project URL
+  * Enable local installation
+- Use source from https://github.com/Xubuntu/lightdm-gtk-greeter-settings 
+  as the new upstream
+</comment>
+    <requestid>1328605</requestid>
+  </revision>
 </revisionlist>
