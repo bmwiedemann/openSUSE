@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 22 08:38:48 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.0.0:
+  * Fix files not closed in create_thumbnail
+  * Add Django 5.2 and 6.0 support
+  * Add Python 3.13, 3.14 support
+  * Drop Python 3.8, 3.9 support
+
+-------------------------------------------------------------------
 Thu Feb  6 08:44:35 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-avatar
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-avatar
-Version:        8.0.1
+Version:        9.0.0
 Release:        0
 Summary:        Django-avatar package
 License:        BSD-3-Clause

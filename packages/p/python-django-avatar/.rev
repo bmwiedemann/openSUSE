@@ -162,4 +162,17 @@
 - No more greedy globs in %files.</comment>
     <requestid>1243580</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d906ad2f0817d2c5527c6b0102282f0f</srcmd5>
+    <version>9.0.0</version>
+    <time>1769091510</time>
+    <user>anag_factory</user>
+    <comment>- update to 9.0.0:
+  * Fix files not closed in create_thumbnail
+  * Add Django 5.2 and 6.0 support
+  * Add Python 3.13, 3.14 support
+  * Drop Python 3.8, 3.9 support
+</comment>
+    <requestid>1328643</requestid>
+  </revision>
 </revisionlist>
