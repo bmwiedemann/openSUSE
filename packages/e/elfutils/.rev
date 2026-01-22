@@ -1181,4 +1181,12 @@ Fixes CVE-2018-18310, CVE-2018-18520 and CVE-2018-18521.
     <comment>- Add fix-static-linking.patch (bsc#1234445) (forwarded request 1230649 from ateixeira)</comment>
     <requestid>1238095</requestid>
   </revision>
+  <revision rev="116" vrev="3">
+    <srcmd5>97d670516c0ba68980ba3f7ac8c79923</srcmd5>
+    <version>0.192</version>
+    <time>1769091101</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1328548</requestid>
+  </revision>
 </revisionlist>

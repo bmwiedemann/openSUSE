@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 14 15:51:25 UTC 2026 - Michael Matz <matz@suse.com>
+
+- Move debuginfod homedir creation to tmpfiles.d
+
+-------------------------------------------------------------------
 Mon Dec  2 13:14:04 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - Add pkgconfig(json-c) to reenable debuginfod support

@@ -1,0 +1,2 @@
+# the home dir for debuginfod, unaged, but removed on --remove
+D /var/cache/debuginfod 0700 debuginfod debuginfod -

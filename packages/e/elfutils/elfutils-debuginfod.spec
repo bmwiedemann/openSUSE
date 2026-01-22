@@ -1,7 +1,7 @@
 #
 # spec file for package elfutils-debuginfod
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Source:         https://sourceware.org/elfutils/ftp/%{version}/elfutils-%{versio
 Source1:        https://sourceware.org/elfutils/ftp/%{version}/elfutils-%{version}.tar.bz2.sig
 Source3:        elfutils.keyring
 Source4:        %{name}.sysusers
+Source5:        %{name}.tmpfiles
 Patch1:         harden_debuginfod.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -182,6 +183,7 @@ install -d -m 755 %{buildroot}%{_fillupdir}
 cp config/debuginfod.sysconfig %{buildroot}%{_fillupdir}/sysconfig.debuginfod
 
 install -Dm0644 %{SOURCE4} %{buildroot}%{_sysusersdir}/%{name}.conf
+install -Dm0644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 
 mkdir -p %{buildroot}%{_localstatedir}/cache/debuginfod
 touch %{buildroot}%{_localstatedir}/cache/debuginfod/debuginfod.sqlite
@@ -204,9 +206,10 @@ export XFAIL_TESTS="dwfl-proc-attach run-backtrace-dwarf.sh run-backtrace-native
 %{_mandir}/man8/debuginfod.8*
 %{_fillupdir}/sysconfig.debuginfod
 %{_sysusersdir}/%{name}.conf
+%{_tmpfilesdir}/%{name}.conf
 %{_mandir}/man8/debuginfod.service.8.*
 
-%dir %attr(0700,debuginfod,debuginfod) %{_localstatedir}/cache/debuginfod
+%ghost %{_localstatedir}/cache/debuginfod
 %ghost %attr(0600,debuginfod,debuginfod) %{_localstatedir}/cache/debuginfod/debuginfod.sqlite
 
 %files -n libdebuginfod1
@@ -239,6 +242,7 @@ export XFAIL_TESTS="dwfl-proc-attach run-backtrace-dwarf.sh run-backtrace-native
 
 %post
 %service_add_post debuginfod.service
+%tmpfiles_create %{name}.conf
 %{fillup_only -n debuginfod}
 
 %preun
