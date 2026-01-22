@@ -52,4 +52,17 @@
     <comment>- Convert to libalternatives</comment>
     <requestid>1286087</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>83189d2a702e9e79730b60dfad1f90af</srcmd5>
+    <version>0.6.14</version>
+    <time>1769101143</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.6.14:
+  * Experimental support for free-threaded Python.
+  * Fix memory leak in acebitstream module.
+  * Add pytest smoke tests and configure GitHub Actions CI for
+    testing.
+  * Remove deprecated setup.py features.</comment>
+    <requestid>1328692</requestid>
+  </revision>
 </revisionlist>
