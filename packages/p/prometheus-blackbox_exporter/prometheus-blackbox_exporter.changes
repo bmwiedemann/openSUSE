@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 21 11:59:39 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Replace cpio with tar
+  * Add full download path to the spec file
+  * Remove obs_scm service
+
+-------------------------------------------------------------------
 Wed Dec 17 11:15:45 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Require gcc11-c++ for building with SLE 12

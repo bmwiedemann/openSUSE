@@ -1,7 +1,7 @@
 #
 # spec file for package prometheus-blackbox_exporter
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ Summary:        Prometheus blackbox prober exporter
 License:        Apache-2.0
 Group:          System/Monitoring
 URL:            https://prometheus.io/
-Source0:        blackbox_exporter-%{version}.tar.gz
+Source0:        https://github.com/prometheus/blackbox_exporter/archive/refs/tags/v%{version}.tar.gz#/blackbox_exporter-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        prometheus-blackbox_exporter.service
 # This patch has been applied before generating vendor tarball
