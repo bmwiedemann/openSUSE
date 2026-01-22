@@ -30,7 +30,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  polkit
 BuildRequires:  python3
 BuildRequires:  python3-pip
-BuildRequires:  python3-poetry
+BuildRequires:  python3-poetry-core
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-wheel
 Requires:       python3-PyYAML

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 21 12:36:24 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Build with just poetry-core
+  * https://src.opensuse.org/python/_ObsPrj/issues/638
+
+-------------------------------------------------------------------
 Fri Jan 16 03:44:00 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.9.0:
