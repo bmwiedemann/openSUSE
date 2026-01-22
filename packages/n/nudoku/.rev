@@ -137,4 +137,13 @@
   gettext macros not being available at build time.</comment>
     <requestid>1300473</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>17b853fb8505feb8a563f628a875bc50</srcmd5>
+    <version>7.0.0</version>
+    <time>1769091210</time>
+    <user>anag_factory</user>
+    <comment>- Update to 7.0.0:
+  * Implement better sudoku solver (pr #78)</comment>
+    <requestid>1328240</requestid>
+  </revision>
 </revisionlist>
