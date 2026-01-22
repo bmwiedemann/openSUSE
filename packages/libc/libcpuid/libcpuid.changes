@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 10 10:27:01 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Enable build on riscv64
+
+-------------------------------------------------------------------
 Thu Nov  6 12:48:09 UTC 2025 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - Use ExclusiveArch to avoid build failures on unsupported architectures.

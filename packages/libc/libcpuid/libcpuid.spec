@@ -27,7 +27,7 @@ Source0:        https://github.com/anrieff/libcpuid/releases/download/v%{version
 BuildRequires:  help2man
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
-ExclusiveArch:  %arm64 %arm32 %ix86 %x86_64
+ExclusiveArch:  %arm64 %arm32 %ix86 %x86_64 riscv64
 
 %description
 Libcpuid provides CPU identification for the x86 (and x86_64) architectures.
