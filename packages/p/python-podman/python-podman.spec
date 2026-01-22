@@ -1,7 +1,7 @@
 #
 # spec file for package python-podman
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-podman%{psuffix}
-Version:        5.6.0
+Version:        5.7.0
 Release:        0
 Summary:        A library to interact with a Podman server
 License:        Apache-2.0
@@ -42,6 +42,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  distribution-release
 Requires:       (python-tomli >= 1.2.3 if python-base < 3.11)
 Requires:       python-requests >= 2.24
 Requires:       python-urllib3
@@ -57,7 +58,6 @@ BuildRequires:  %{python_module setuptools >= 39}
 BuildRequires:  %{python_module dataclasses}
 %endif
 BuildRequires: podman
-BuildRequires: distribution-release
 # /SECTION
 %endif
 %python_subpackages

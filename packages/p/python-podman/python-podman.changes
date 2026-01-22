@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Jan 21 12:30:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 5.7.0:
+  * Fix attr getters in Network Resource by @nlacasse in #576
+  * Include test files in the source distribution by @mgorny in
+    #586
+  * Inknos update publish to pypy steps by @inknos in #590
+  * Update testing section by @inknos in #591
+  * Add support for export and import commands by @Riushda in #593
+  * fix: use active service connection when no explicit connection
+    specified by @Honny1 in #597
+  * Add direct support to --manifest when building container
+    images. by @MisterOwlPT in #596
+  * fix: typing in podman.domain.containers_run by @dklimpel in
+    #599
+  * misc: improve type checking by @dklimpel in #601
+  * bump tmt pre-commit hook to 1.62.1 by @Honny1 in #606
+  * Enable tests downstream via packit/tmt by @inknos in #588
+  * Add support to --secrets when building container images by
+    @gsilva00 in #603
+  * fix image build not using cache by @fulminemizzega in #559
+  * Delete custom cached_property in favor of
+    functools.cached_property by @yangdanny97 in #607
+  * Fixed filtering for networks by @sekyHC in #616
+  * networks_manager: fix dns_enabled parameter description by
+    @sekyHC in #615
+  * Bump release to 5.7.0 by @inknos in #620
+
+-------------------------------------------------------------------
 Fri Sep 19 12:41:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 5.6.0:
