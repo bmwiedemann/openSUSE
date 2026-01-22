@@ -1,7 +1,7 @@
 #
 # spec file for package grandorgue
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define version_suffix 1
 
 Name:           grandorgue
-Version:        3.16.2
+Version:        3.16.3
 Release:        0
 Summary:        Virtual Pipe Organ Software
 License:        GPL-2.0-or-later
