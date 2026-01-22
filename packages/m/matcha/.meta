@@ -1,0 +1,11 @@
+<package name="matcha" project="openSUSE:Factory">
+  <title>A terminal email client</title>
+  <description>Matcha is a terminal email client for users who prefer keyboards
+over mice and terminals over browsers.
+
+It is built with Go and the Bubble Tea TUI framework. It supports
+email providers such as Gmail and iCloud. Mail can be read, composed
+and managed entirely from the command line.
+</description>
+  <url>https://github.com/floatpane/matcha</url>
+</package>
