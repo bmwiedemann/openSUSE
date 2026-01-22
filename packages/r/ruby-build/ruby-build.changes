@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 22 14:27:00 UTC 2026 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20260121.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20260121
+  * Use OpenSSL 3.5.x LTS version with next stable version by @hsbt in #2599
+  * Add TruffleRuby and TruffleRuby GraalVM 33.0.1 by @eregon in #2600
+
+-------------------------------------------------------------------
 Fri Jan 16 17:53:36 UTC 2026 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20260114.
