@@ -72,4 +72,13 @@
   * Update Aliyun OpenAPI meta data (forwarded request 1325803 from glaubitz)</comment>
     <requestid>1325964</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9e78380e3b28b89facaf1842521cf818</srcmd5>
+    <version>3.2.7</version>
+    <time>1769091251</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.2.7
+  * Update Aliyun OpenAPI meta data (forwarded request 1328494 from glaubitz)</comment>
+    <requestid>1328518</requestid>
+  </revision>
 </revisionlist>
