@@ -1,7 +1,7 @@
 #
 # spec file for package glab
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2021-2022 Orville Q. Song <orville@anislet.dev>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           glab
-Version:        1.80.4
+Version:        1.81.0
 Release:        0
 Summary:        A GitLab command line tool
 License:        MIT

@@ -1,4 +1,189 @@
 -------------------------------------------------------------------
+Wed Jan 21 12:29:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.81.0:
+  * Features
+    - 508116ae: feat(attestation): implement attestation
+      verification in glab (Sam Roque-Worcel
+      sroque-worcel@gitlab.com)
+    - f1dc549a: feat(ci-autologin): exclusively use predefined vars
+      when enabled (Timo Furrer tfurrer@gitlab.com)
+    - 476c3902: feat(stacked-diffs): allow multiline stack ref
+      descriptions (Kev Kloss kkloss@gitlab.com)
+    - 84176fbc: feat: add --active flag to repo clone command for
+      group filtering (Kai Armstrong karmstrong@gitlab.com)
+    - 48970633: feat: implement Executor factory function (Timo
+      Furrer tfurrer@gitlab.com)
+  * Bug Fixes
+    - b514a082: fix(auth login): Fix missing-client_id message
+      (FeRD (Frank Dana) ferdnyc@gmail.com)
+    - 971f673c: fix: allow approving and revoking approvals on
+      draft merge requests (Kai Armstrong karmstrong@gitlab.com)
+    - d156ceb9: fix: ci lint --dry-run fails with 'Reference not
+      found' when --ref is not specified (Kai Armstrong
+      karmstrong@gitlab.com)
+    - 2eb49b9b: fix: directly open external editor when using -d-
+      flag (Kai Armstrong karmstrong@gitlab.com)
+    - 66ff43ee: fix: prevent panic when baseRepoFactory is not
+      initialized in project mirror (Kai Armstrong
+      karmstrong@gitlab.com)
+    - 09779a25: fix: properly propagate errors in mr create when
+      outside git repo (Kai Armstrong karmstrong@gitlab.com)
+    - 5887ad30: fix: properly setup SIGTERM and SIGINT signal
+      handling (Timo Furrer tfurrer@gitlab.com)
+  * Documentation
+    - 754cadaf: docs: improve project mirror command documentation
+      and error messages (Kai Armstrong karmstrong@gitlab.com)
+  * Dependencies
+    - 21f0a360: chore(deps): update dependency @commitlint/cli to
+      ^20.3.0 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - 01a7223c: chore(deps): update dependency @commitlint/cli to
+      ^20.3.1 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - eb4f9e30: chore(deps): update dependency
+      @commitlint/config-conventional to ^20.3.0 (GitLab Renovate
+      Bot gitlab-bot@gitlab.com)
+    - 478b5921: chore(deps): update dependency @commitlint/format
+      to ^20.3.1 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - 4ad653dc: chore(deps): update dependency @commitlint/read to
+      ^20.3.1 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - 2f85f2c8: chore(deps): update module github.com/docker/cli to
+      v29.1.5+incompatible (GitLab Renovate Bot
+      gitlab-bot@gitlab.com)
+    - 8e9988f4: chore(deps): update module
+      github.com/docker/docker-credential-helpers to v0.9.5 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - 47d3b309: chore(deps): update module
+      github.com/gdamore/tcell/v2 to v2.13.7 (GitLab Renovate Bot
+      gitlab-bot@gitlab.com)
+    - 04c8e4e2: chore(deps): update module
+      github.com/google/renameio/v2 to v2.0.2 (GitLab Renovate Bot
+      gitlab-bot@gitlab.com)
+    - 6e727e16: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go to v1.10.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - 810aadad: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go to v1.11.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - a2e643ac: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go to v1.12.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - f0f30513: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go to v1.13.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - 2790055a: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go to v1.14.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - 5495005e: chore(deps): update module golang.org/x/crypto to
+      v0.47.0 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - 91c50a8f: chore(deps): update module golang.org/x/term to
+      v0.39.0 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+  * Maintenance
+    - a5f6780c: chore(ci): improve caching with separate cache keys
+      per job type (Kai Armstrong karmstrong@gitlab.com)
+    - bfff40a4: chore(makedeb removal): removing unmaintained
+      software documentation (Filip Aleksic faleksic@gitlab.com)
+    - f1d59ace: chore: fix dupword lint issues (Oleksandr Redko
+      oleksandr.red+gitlab@gmail.com)
+    - 72a7a06d: chore: fix typos in comments and variable names
+      across multiple files (Oleksandr Redko
+      oleksandr.red+gitlab@gmail.com)
+    - f5f3d18c: ci: allow failure in snap release job (Timo Furrer
+      tfurrer@gitlab.com)
+    - f3db768a: refactor(alias): use cmdtest.SetupCmdForTest
+      instead of custom cmd setup (Timo Furrer tfurrer@gitlab.com)
+    - 1c988f4d: refactor(attestation): use new command executor
+      interface (Timo Furrer tfurrer@gitlab.com)
+    - f88498a8: refactor(auth): use cmdtest.SetupCmdForTest instead
+      of custom cmd setup (Timo Furrer tfurrer@gitlab.com)
+    - ea264208: refactor(ci): use GitLab client-go mocking instead
+      of HTTP mocks (Timo Furrer tfurrer@gitlab.com)
+    - d6f8fdfc: refactor(ci): use cmdtest.SetupCmdForTest instead
+      of custom cmd setup (Timo Furrer tfurrer@gitlab.com)
+    - 33006b32: refactor(ci): use cmdtest.SetupCmdForTest instead
+      of custom cmd setup (Timo Furrer tfurrer@gitlab.com)
+    - ce81090c: refactor(commands): use context from cobra cmd
+      instead of Background (Timo Furrer tfurrer@gitlab.com)
+    - f1028d1b: refactor(deploy key): use GitLab client-go mocking
+      instead of HTTP mocks (Timo Furrer tfurrer@gitlab.com)
+    - f99ed615: refactor(duo): use GitLab client-go mocking instead
+      of HTTP mocks (Timo Furrer tfurrer@gitlab.com)
+    - b8936f99: refactor(gpg-key): use cmdtest.SetupCmdForTest
+      instead of custom cmd setup (Timo Furrer tfurrer@gitlab.com)
+    - 6b5e8803: refactor(httpmock): remove unused httpmock package
+      (Timo Furrer tfurrer@gitlab.com)
+    - 4da67d62: refactor(issuable): use GitLab client-go mocking
+      instead of HTTP mocks (Timo Furrer tfurrer@gitlab.com)
+    - ff522b28: refactor(issuable): use cmdtest.SetupCmdForTest
+      instead of custom cmd setup (Timo Furrer tfurrer@gitlab.com)
+    - 228ff301: refactor(issue): use GitLab client-go mocking
+      instead of HTTP mocks (Timo Furrer tfurrer@gitlab.com)
+    - d4f360c6: refactor(iteration): use GitLab client-go mocking
+      instead of HTTP mocks (Timo Furrer tfurrer@gitlab.com)
+    - 76448cd6: refactor(label): use GitLab client-go mocking
+      instead of HTTP mocks (Timo Furrer tfurrer@gitlab.com)
+    - 080c872d: refactor(mr): use GitLab client-go mocking instead
+      of HTTP mocks (Timo Furrer tfurrer@gitlab.com)
+    - 21c3f34f: refactor(mr): use cmdtest.SetupCmdForTest instead
+      of custom cmd setup (Timo Furrer tfurrer@gitlab.com)
+    - aa479583: refactor(opentofu): use new factory executor for tf
+      subprocesses (Timo Furrer tfurrer@gitlab.com)
+    - 94a13bb1: refactor(project): use GitLab client-go mocking
+      instead of HTTP mocks (Timo Furrer tfurrer@gitlab.com)
+    - c1d841ed: refactor(project): use cmdtest.SetupCmdForTest
+      instead of custom cmd setup (Timo Furrer tfurrer@gitlab.com)
+    - 889b6a0a: refactor(release): use GitLab client-go mocking
+      instead of HTTP mocks (Timo Furrer tfurrer@gitlab.com)
+    - 5944cd40: refactor(schedule): use GitLab client-go mocking
+      instead of HTTP mocks (Timo Furrer tfurrer@gitlab.com)
+    - 89df3156: refactor(securefile): use GitLab client-go mocking
+      instead of HTTP mocks (Timo Furrer tfurrer@gitlab.com)
+    - 299328d3: refactor(securefile): use cmdtest.SetupCmdForTest
+      instead of custom cmd setup (Timo Furrer tfurrer@gitlab.com)
+    - 0a19d0ab: refactor(snippet): use GitLab client-go mocking
+      instead of HTTP mocks (Timo Furrer tfurrer@gitlab.com)
+    - 89dae8c8: refactor(stack): use cmdtest.SetupCmdForTest
+      instead of custom cmd setup (Timo Furrer tfurrer@gitlab.com)
+    - 7f83526b: refactor(stacks): use GitLab client-go mocking
+      instead of HTTP mocks (Timo Furrer tfurrer@gitlab.com)
+    - af34285b: refactor(testing): allow to override test IOStreams
+      (Timo Furrer tfurrer@gitlab.com)
+    - 543cc13e: refactor(testing): isolate integration test-only
+      helpers (Timo Furrer tfurrer@gitlab.com)
+    - f0b6a94c: refactor(testing): move api test helper to
+      dedicated file (Timo Furrer tfurrer@gitlab.com)
+    - a09aa417: refactor(testing): move factory test helper to
+      dedicated file (Timo Furrer tfurrer@gitlab.com)
+    - 48dba104: refactor(testing): move generic test tools to
+      dedicated file (Timo Furrer tfurrer@gitlab.com)
+    - 9368f8b5: refactor(testing): move iostreams test helper to
+      dedicated file (Timo Furrer tfurrer@gitlab.com)
+    - 8fbfe78b: refactor(testing): remove tests without value (Timo
+      Furrer tfurrer@gitlab.com)
+    - aae3766a: refactor(token): use GitLab client-go mocking
+      instead of HTTP mocks (Timo Furrer tfurrer@gitlab.com)
+    - 9705ecae: refactor(update): use GitLab client-go mocking
+      instead of HTTP mocks (Timo Furrer tfurrer@gitlab.com)
+    - c9eba1ae: refactor(update): use cmdtest.SetupCmdForTest
+      instead of custom cmd setup (Timo Furrer tfurrer@gitlab.com)
+    - 396ed205: refactor(variable): use GitLab client-go mocking
+      instead of HTTP mocks (Timo Furrer tfurrer@gitlab.com)
+    - f468a8ad: refactor: allow attestation verify cmd tests to run
+      in parallel (Timo Furrer tfurrer@gitlab.com)
+    - ce31da55: refactor: remove execext package (Timo Furrer
+      tfurrer@gitlab.com)
+    - fafb990e: refactor: remove unused global variable (Timo
+      Furrer tfurrer@gitlab.com)
+    - 4ccb6536: refactor: rename attestation verify command ctor
+      (Timo Furrer tfurrer@gitlab.com)
+    - 37dd5d47: refactor: rename attestation verify command files
+      (Timo Furrer tfurrer@gitlab.com)
+  * Others
+    - 87acb329: test: adjust whitespace in issuable list test (Jay
+      McCure jmccure@gitlab.com)
+    - 751e6793: test: update ci get test expectations for api
+      client v1.14.0 (Tomas Vik tvik@gitlab.com)
+
+-------------------------------------------------------------------
 Fri Dec 19 08:12:49 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.80.4 (.3 was not released):
