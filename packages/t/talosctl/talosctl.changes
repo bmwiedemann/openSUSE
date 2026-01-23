@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jan 23 06:20:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.12.2:
+  https://github.com/siderolabs/talos/releases/tag/v1.12.2
+  * talosctl images talos-bundle can ignore reaching to the
+    registry
+    The talosctl images talos-bundle command now accepts optional
+    --ovelays and --extensions flags.
+    If those are set to false, the command will not attempt to
+    reach out to the container registry to fetch the latest
+    versions and digests of the overlays and extensions.
+  * 9f8d938db fix: print talosctl images to release notes
+- update to 1.12.1:
+  https://github.com/siderolabs/talos/releases/tag/v1.12.1
+  * no CLI-related changes in the Changelog
+
+-------------------------------------------------------------------
 Sun Jan 11 13:25:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.12.0:
