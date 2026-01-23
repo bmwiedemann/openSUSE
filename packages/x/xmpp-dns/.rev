@@ -229,4 +229,14 @@
   * Fix calculation of remaining days for certificate expiry warning.</comment>
     <requestid>1328217</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c88b41806dba57aa8e030237779826a7</srcmd5>
+    <version>0.6.1</version>
+    <time>1769186029</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.6.1:
+  * Remove unnecessary printing of argv.
+  * Print [WARN] instead of [OK] if the certificate expires within the next 14 days.</comment>
+    <requestid>1328795</requestid>
+  </revision>
 </revisionlist>

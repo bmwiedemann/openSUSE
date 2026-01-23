@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 23 07:31:45 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.1:
+  * Remove unnecessary printing of argv.
+  * Print [WARN] instead of [OK] if the certificate expires within the next 14 days.
+
+-------------------------------------------------------------------
 Tue Jan 20 09:19:28 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.6.0:
