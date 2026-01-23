@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jan 19 05:52:40 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.240.0 (1.24)
+   see /usr/share/doc/packages/perl-DateTime-Format-Natural/Changes
+
+  1.24  2026-01-18  <schubiger@cpan.org>
+   - Merged development version to stable.
+  1.23_03  2026-01-13  <schubiger@cpan.org>
+   - Don't use _{set,get}_truncated() when no value is truncated.
+   - Use hash slices instead of passing values one by one.
+  1.23_02  2026-01-12  <schubiger@cpan.org>
+   - Support fractional seconds in iso8601 strings.
+     [github #27 - isla w]
+  1.23_01  2026-01-09  <schubiger@cpan.org>
+   - Support optional time zone information in iso8601 time strings.
+     [github #26 - isla w]
+
+-------------------------------------------------------------------
 Mon Jan  5 05:53:32 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.230.0 (1.23)

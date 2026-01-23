@@ -18,10 +18,10 @@
 
 %define cpan_name DateTime-Format-Natural
 Name:           perl-DateTime-Format-Natural
-Version:        1.230.0
+Version:        1.240.0
 Release:        0
-# 1.23 -> normalize -> 1.230.0
-%define cpan_version 1.23
+# 1.24 -> normalize -> 1.240.0
+%define cpan_version 1.24
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Parse informal natural language date/time strings
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -58,8 +58,8 @@ Provides:       perl(DateTime::Format::Natural::Extract) = 0.140.0
 Provides:       perl(DateTime::Format::Natural::Formatted) = 0.120.0
 Provides:       perl(DateTime::Format::Natural::Helpers) = 0.70.0
 Provides:       perl(DateTime::Format::Natural::Lang::Base) = 1.80.0
-Provides:       perl(DateTime::Format::Natural::Lang::EN) = 1.730.0
-Provides:       perl(DateTime::Format::Natural::Rewrite) = 0.90.0
+Provides:       perl(DateTime::Format::Natural::Lang::EN) = 1.740.0
+Provides:       perl(DateTime::Format::Natural::Rewrite) = 0.100.0
 Provides:       perl(DateTime::Format::Natural::Test) = 0.130.0
 Provides:       perl(DateTime::Format::Natural::Utils) = 0.80.0
 Provides:       perl(DateTime::Format::Natural::Wrappers) = 0.30.0

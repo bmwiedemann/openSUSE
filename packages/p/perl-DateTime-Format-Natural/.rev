@@ -152,4 +152,24 @@
      [github #24 - isla w]</comment>
     <requestid>1326996</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>04b881505ff8837ba11faccbf6dcc72f</srcmd5>
+    <version>1.240.0</version>
+    <time>1769186048</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.240.0 (1.24)
+   see /usr/share/doc/packages/perl-DateTime-Format-Natural/Changes
+  1.24  2026-01-18  &lt;schubiger@cpan.org&gt;
+   - Merged development version to stable.
+  1.23_03  2026-01-13  &lt;schubiger@cpan.org&gt;
+   - Don't use _{set,get}_truncated() when no value is truncated.
+   - Use hash slices instead of passing values one by one.
+  1.23_02  2026-01-12  &lt;schubiger@cpan.org&gt;
+   - Support fractional seconds in iso8601 strings.
+     [github #27 - isla w]
+  1.23_01  2026-01-09  &lt;schubiger@cpan.org&gt;
+   - Support optional time zone information in iso8601 time strings.
+     [github #26 - isla w]</comment>
+    <requestid>1328819</requestid>
+  </revision>
 </revisionlist>
