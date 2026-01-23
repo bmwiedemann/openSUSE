@@ -1340,4 +1340,13 @@
     <comment>  * gpasswd: Fix password leak (bsc#1214806, CVE-2023-4641)</comment>
     <requestid>1328649</requestid>
   </revision>
+  <revision rev="83" vrev="3">
+    <srcmd5>3c8ba9420db32ab5f6cd6993551143de</srcmd5>
+    <version>4.19.2</version>
+    <time>1769185968</time>
+    <user>anag_factory</user>
+    <comment>  * Change lock mechanism #605 (bsc#1213189)
+  * Send UID range warning to stderr (bsc#1230972)</comment>
+    <requestid>1328842</requestid>
+  </revision>
 </revisionlist>

@@ -561,6 +561,7 @@ Thu Aug 17 06:43:38 UTC 2023 - Michael Vetter <mvetter@suse.com>
   * chfn: new_fields: fix wrong fields printed
   * Allow supplementary groups to be added via config file #586
   * useradd: check if subid range exists for user #592 (rh#2012929)
+  * Change lock mechanism #605 (bsc#1213189)
 - Refresh useradd-default.patch
 - Remove upstreamed patches:
   * useradd-userkeleton.patch
@@ -964,6 +965,7 @@ Tue Aug 17 15:08:09 UTC 2021 - Michael Vetter <mvetter@suse.com>
   * getdefs: add foreign
   * buffer overflow fixes
   * Adding run-parts style for pre and post useradd/del
+  * Send UID range warning to stderr (bsc#1230972)
 - Refresh:
   * shadow-login_defs-unused-by-pam.patch
   * userdel-script.patch
