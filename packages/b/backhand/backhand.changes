@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan 18 19:04:33 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.24.1:
+  backhand
+  * Add a method to create an XzFilter.
+  * impl Seek for SquashfsReadFile.
+  * Update dependencies.
+  backhand-cli
+  * Update dependencies.
+
+-------------------------------------------------------------------
 Sun Dec 07 08:56:44 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.24.0:
