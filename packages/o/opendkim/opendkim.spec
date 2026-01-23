@@ -65,6 +65,8 @@ Patch7:         ares-missing-space.patch
 Patch8:         ftbfs-gcc-14-1075339.patch
 # PATCH-FIX-UPSTREAM opendkim-2.10.3-incompatible-pointer-types.patch -- ref: https://bugs.gentoo.org/919366
 Patch9:         opendkim-2.10.3-incompatible-pointer-types.patch
+# PATCH-FIX_UPSTREAM lua5.3.patch https://github.com/trusteddomainproject/OpenDKIM/pull/70
+Patch10:        lua-5.3.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  curl-devel
@@ -73,7 +75,7 @@ BuildRequires:  db-devel
 BuildRequires:  libbsd-devel
 BuildRequires:  libevent-devel
 BuildRequires:  libtool
-BuildRequires:  lua51-devel
+BuildRequires:  lua53-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  postgresql-devel
@@ -234,6 +236,7 @@ This package holds the development files.
 %patch -P 7 -p1
 %patch -P 8 -p1
 %patch -P 9 -p1
+%patch -P 10 -p1
 
 %build
 %if %{pkg_vcmp gcc >= 15}

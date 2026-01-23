@@ -101,4 +101,13 @@
     <comment></comment>
     <requestid>1328295</requestid>
   </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>578345e33def4ebfa5457d95c0335d51</srcmd5>
+    <version>unknown</version>
+    <time>1769186059</time>
+    <user>anag_factory</user>
+    <comment>- Add patch to support Lua 5.3
+  * lua-5.3.patch</comment>
+    <requestid>1328849</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 20 15:00:31 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Add patch to support Lua 5.3
+  * lua-5.3.patch
+
+-------------------------------------------------------------------
 Tue Jan 20 14:35:37 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Fix build with GCC 15 

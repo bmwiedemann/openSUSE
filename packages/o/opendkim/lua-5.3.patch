@@ -1,0 +1,337 @@
+Description: Add support for Lua 5.3
+Author: Matt Domsch <matt@domsch.com>
+Bug: https://github.com/trusteddomainproject/OpenDKIM/pull/70
+
+--- a/miltertest/miltertest.c
++++ b/miltertest/miltertest.c
+@@ -4009,12 +4009,12 @@
+ 	}
+ 
+ 	/* register functions */
+-#if LUA_VERSION_NUM == 502
+-        luaL_newlib(l, mt_library);
++#if LUA_VERSION_NUM >= 502
++	luaL_newlib(l, mt_library);
+ 	lua_setglobal(l, "mt");
+-#else /* LUA_VERSION_NUM == 502 */
++#else /* LUA_VERSION_NUM >= 502 */
+ 	luaL_register(l, "mt", mt_library);
+-#endif /* LUA_VERSION_NUM == 502 */
++#endif /* LUA_VERSION_NUM >= 502 */
+ 	lua_pop(l, 1);
+ 
+ 	/* register constants */
+@@ -4163,13 +4163,13 @@
+ 	lua_setglobal(l, "SMFIF_SETSYMLIST");
+ #endif /* SMFIF_SETSYMLIST */
+ 
+-#if LUA_VERSION_NUM == 502
++#if LUA_VERSION_NUM >= 502
+ 	switch (lua_load(l, mt_lua_reader, (void *) &io,
+ 	                 script == NULL ? "(stdin)" : script, NULL))
+-#else /* LUA_VERSION_NUM == 502 */
++#else /* LUA_VERSION_NUM >= 502 */
+ 	switch (lua_load(l, mt_lua_reader, (void *) &io,
+ 	                 script == NULL ? "(stdin)" : script))
+-#endif /* LUA_VERSION_NUM == 502 */
++#endif /* LUA_VERSION_NUM >= 502 */
+ 	{
+ 	  case 0:
+ 		break;
+--- a/opendkim/opendkim-lua.c
++++ b/opendkim/opendkim-lua.c
+@@ -285,11 +285,11 @@
+ 		free(ptr);
+ 		return NULL;
+ 	}
+-# if LUA_VERSION_NUM == 502
++# if LUA_VERSION_NUM >= 502
+ 	else if (nsize != 0 && ptr == NULL)
+-# else /* LUA_VERSION_NUM == 502 */
++# else /* LUA_VERSION_NUM >= 502 */
+ 	else if (nsize != 0 && osize == 0)
+-# endif /* LUA_VERSION_NUM == 502 */
++# endif /* LUA_VERSION_NUM >= 502 */
+ 	{
+ 		return malloc(nsize);
+ 	}
+@@ -485,12 +485,12 @@
+ 	**  Register functions.
+ 	*/
+ 
+-# if LUA_VERSION_NUM == 502
++# if LUA_VERSION_NUM >= 502
+ 	luaL_newlib(l, dkimf_lua_lib_setup);
+ 	lua_setglobal(l, "odkim");
+-# else /* LUA_VERSION_NUM == 502 */
++# else /* LUA_VERSION_NUM >= 502 */
+ 	luaL_register(l, "odkim", dkimf_lua_lib_setup);
+-# endif /* LUA_VERSION_NUM == 502 */
++# endif /* LUA_VERSION_NUM >= 502 */
+ 	lua_pop(l, 1);
+ 
+ 	/*
+@@ -532,11 +532,11 @@
+ 	/* import other globals */
+ 	dkimf_import_globals(ctx, l);
+ 
+-# if LUA_VERSION_NUM == 502
++# if LUA_VERSION_NUM >= 502
+ 	switch (lua_load(l, dkimf_lua_reader, (void *) &io, name, NULL))
+-# else /* LUA_VERSION_NUM == 502 */
++# else /* LUA_VERSION_NUM >= 502 */
+ 	switch (lua_load(l, dkimf_lua_reader, (void *) &io, name))
+-# endif /* LUA_VERSION_NUM == 502 */
++# endif /* LUA_VERSION_NUM >= 502 */
+ 	{
+ 	  case 0:
+ 		break;
+@@ -564,8 +564,12 @@
+ 		io.lua_io_len = 0;
+ 		io.lua_io_alloc = 0;
+ 
++#if LUA_VERSION_NUM >= 503
++		if (lua_dump(l, dkimf_lua_writer, &io, 0) == 0)
++#else
+ 		if (lua_dump(l, dkimf_lua_writer, &io) == 0)
+-		{
++#endif
++	        {
+ 			*keep = (void *) io.lua_io_script;
+ 			*funclen = io.lua_io_len;
+ 		}
+@@ -640,12 +644,12 @@
+ 	**  Register functions.
+ 	*/
+ 
+-# if LUA_VERSION_NUM == 502
++# if LUA_VERSION_NUM >= 502
+ 	luaL_newlib(l, dkimf_lua_lib_screen);
+ 	lua_setglobal(l, "odkim");
+-# else /* LUA_VERSION_NUM == 502 */
++# else /* LUA_VERSION_NUM >= 502 */
+ 	luaL_register(l, "odkim", dkimf_lua_lib_screen);
+-# endif /* LUA_VERSION_NUM == 502 */
++# endif /* LUA_VERSION_NUM >= 502 */
+ 	lua_pop(l, 1);
+ 
+ 	/*
+@@ -677,11 +681,11 @@
+ 	/* import other globals */
+ 	dkimf_import_globals(ctx, l);
+ 
+-# if LUA_VERSION_NUM == 502
++# if LUA_VERSION_NUM >= 502
+ 	switch (lua_load(l, dkimf_lua_reader, (void *) &io, name, NULL))
+-# else /* LUA_VERSION_NUM == 502 */
++# else /* LUA_VERSION_NUM >= 502 */
+ 	switch (lua_load(l, dkimf_lua_reader, (void *) &io, name))
+-# endif /* LUA_VERSION_NUM == 502 */
++# endif /* LUA_VERSION_NUM >= 502 */
+ 	{
+ 	  case 0:
+ 		break;
+@@ -709,7 +713,11 @@
+ 		io.lua_io_len = 0;
+ 		io.lua_io_alloc = 0;
+ 
++#if LUA_VERSION_NUM >= 503
++		if (lua_dump(l, dkimf_lua_writer, &io, 0) == 0)
++#else
+ 		if (lua_dump(l, dkimf_lua_writer, &io) == 0)
++#endif
+ 		{
+ 			*keep = (void *) io.lua_io_script;
+ 			*funclen = io.lua_io_len;
+@@ -785,12 +793,12 @@
+ 	**  Register functions.
+ 	*/
+ 
+-# if LUA_VERSION_NUM == 502
++# if LUA_VERSION_NUM >= 502
+ 	luaL_newlib(l, dkimf_lua_lib_stats);
+ 	lua_setglobal(l, "odkim");
+-# else /* LUA_VERSION_NUM == 502 */
++# else /* LUA_VERSION_NUM >= 502 */
+ 	luaL_register(l, "odkim", dkimf_lua_lib_stats);
+-# endif /* LUA_VERSION_NUM == 502 */
++# endif /* LUA_VERSION_NUM >= 502 */
+ 	lua_pop(l, 1);
+ 
+ 	/*
+@@ -914,11 +922,11 @@
+ 	/* import other globals */
+ 	dkimf_import_globals(ctx, l);
+ 
+-# if LUA_VERSION_NUM == 502
++# if LUA_VERSION_NUM >= 502
+ 	switch (lua_load(l, dkimf_lua_reader, (void *) &io, name, NULL))
+-# else /* LUA_VERSION_NUM == 502 */
++# else /* LUA_VERSION_NUM >= 502 */
+ 	switch (lua_load(l, dkimf_lua_reader, (void *) &io, name))
+-# endif /* LUA_VERSION_NUM == 502 */
++# endif /* LUA_VERSION_NUM >= 502 */
+ 	{
+ 	  case 0:
+ 		break;
+@@ -946,7 +954,11 @@
+ 		io.lua_io_len = 0;
+ 		io.lua_io_alloc = 0;
+ 
++#if LUA_VERSION_NUM >= 503
++		if (lua_dump(l, dkimf_lua_writer, &io, 0) == 0)
++#else
+ 		if (lua_dump(l, dkimf_lua_writer, &io) == 0)
++#endif
+ 		{
+ 			*keep = (void *) io.lua_io_script;
+ 			*funclen = io.lua_io_len;
+@@ -1022,12 +1034,12 @@
+ 	**  Register functions.
+ 	*/
+ 
+-# if LUA_VERSION_NUM == 502
++# if LUA_VERSION_NUM >= 502
+ 	luaL_newlib(l, dkimf_lua_lib_final);
+ 	lua_setglobal(l, "odkim");
+-# else /* LUA_VERSION_NUM == 502 */
++# else /* LUA_VERSION_NUM >= 502 */
+ 	luaL_register(l, "odkim", dkimf_lua_lib_final);
+-# endif /* LUA_VERSION_NUM == 502 */
++# endif /* LUA_VERSION_NUM >= 502 */
+ 	lua_pop(l, 1);
+ 
+ 	/*
+@@ -1151,11 +1163,11 @@
+ 	/* import other globals */
+ 	dkimf_import_globals(ctx, l);
+ 
+-# if LUA_VERSION_NUM == 502
++# if LUA_VERSION_NUM >= 502
+ 	switch (lua_load(l, dkimf_lua_reader, (void *) &io, name, NULL))
+-# else /* LUA_VERSION_NUM == 502 */
++# else /* LUA_VERSION_NUM >= 502 */
+ 	switch (lua_load(l, dkimf_lua_reader, (void *) &io, name))
+-# endif /* LUA_VERSION_NUM == 502 */
++# endif /* LUA_VERSION_NUM >= 502 */
+ 	{
+ 	  case 0:
+ 		break;
+@@ -1183,7 +1195,11 @@
+ 		io.lua_io_len = 0;
+ 		io.lua_io_alloc = 0;
+ 
++#if LUA_VERSION_NUM >= 503
++		if (lua_dump(l, dkimf_lua_writer, &io, 0) == 0)
++#else
+ 		if (lua_dump(l, dkimf_lua_writer, &io) == 0)
++#endif
+ 		{
+ 			*keep = (void *) io.lua_io_script;
+ 			*funclen = io.lua_io_len;
+@@ -1252,11 +1268,11 @@
+ 		lua_pushstring(l, query);
+ 	lua_setglobal(l, "query");
+ 
+-# if LUA_VERSION_NUM == 502
++# if LUA_VERSION_NUM >= 502
+ 	switch (lua_load(l, dkimf_lua_reader, (void *) &io, script, NULL))
+-# else /* LUA_VERSION_NUM == 502 */
++# else /* LUA_VERSION_NUM >= 502 */
+ 	switch (lua_load(l, dkimf_lua_reader, (void *) &io, script))
+-# endif /* LUA_VERSION_NUM == 502 */
++# endif /* LUA_VERSION_NUM >= 502 */
+ 	{
+ 	  case 0:
+ 		break;
+@@ -1284,7 +1300,11 @@
+ 		io.lua_io_len = 0;
+ 		io.lua_io_alloc = 0;
+ 
++#if LUA_VERSION_NUM >= 503
++		if (lua_dump(l, dkimf_lua_writer, &io, 0) == 0)
++#else
+ 		if (lua_dump(l, dkimf_lua_writer, &io) == 0)
++#endif
+ 		{
+ 			*keep = (void *) io.lua_io_script;
+ 			*funclen = io.lua_io_len;
+--- a/configure.ac
++++ b/configure.ac
+@@ -1517,7 +1517,7 @@
+ 
+ if test \(  x"$luapath" = x"auto" -o x"$luapath" = x"yes" \) -a x"$PKG_CONFIG" != x""
+ then
+-        PKG_CHECK_MODULES([LIBLUA], [lua5.1],
++        PKG_CHECK_MODULES([LIBLUA], [lua5.3],
+ 	                  [
+ 				lua_found="yes"
+ 				LIBLUA_INCDIRS="$LIBLUA_CFLAGS"
+@@ -1555,6 +1555,18 @@
+ 			AC_SUBST([LUA_MANNOTICE], "")
+ 			lua_found="yes"
+ 			break
++		elif test -f $d/include/lua53/lua.h
++		then
++			AC_MSG_RESULT($d)
++			LIBLUA_INCDIRS="-I$d/include/lua53"
++			LIBLUA_LIBDIRS="-L$d/lib/lua53"
++			LIBLUA_LIBS="-llua -lm"
++			AC_SEARCH_LIBS([dlopen], [dl])
++			AC_DEFINE([USE_LUA], 1,
++			          [support for Lua scripting])
++			AC_SUBST([LUA_MANNOTICE], "")
++			lua_found="yes"
++			break
+ 		elif test -f $d/include/lua5.1/lua.h
+ 		then
+ 			AC_MSG_RESULT($d)
+@@ -1579,6 +1591,18 @@
+ 			AC_SUBST([LUA_MANNOTICE], "")
+ 			lua_found="yes"
+ 			break
++		elif test -f $d/include/lua5.3/lua.h
++		then
++			AC_MSG_RESULT($d)
++			LIBLUA_INCDIRS="-I$d/include/lua5.3"
++			LIBLUA_LIBDIRS="-L$d/lib"
++			LIBLUA_LIBS="-llua5.3 -lm"
++			AC_SEARCH_LIBS([dlopen], [dl])
++			AC_DEFINE([USE_LUA], 1,
++			          [support for Lua scripting])
++			AC_SUBST([LUA_MANNOTICE], "")
++			lua_found="yes"
++			break
+ 		elif test -f $d/include/lua.h
+ 		then
+ 			AC_MSG_RESULT($d)
+@@ -1620,6 +1644,14 @@
+ 		LIBLUA_LIBS="-llua -lm"
+ 		AC_SEARCH_LIBS([dlopen], [dl])
+ 		lua_found="yes"
++	elif test -f $luapath/include/lua53/lua.h
++	then
++		AC_MSG_RESULT($luapath)
++		LIBLUA_INCDIRS="-I$luapath/include/lua53"
++		LIBLUA_LIBDIRS="-L$luapath/lib/lua53"
++		LIBLUA_LIBS="-llua -lm"
++		AC_SEARCH_LIBS([dlopen], [dl])
++		lua_found="yes"
+ 	elif test -f $luapath/include/lua5.1/lua.h
+ 	then
+ 		AC_MSG_RESULT($luapath)
+@@ -1636,6 +1668,14 @@
+ 		LIBLUA_LIBS="-llua5.2 -lm"
+ 		AC_SEARCH_LIBS([dlopen], [dl])
+ 		lua_found="yes"
++	elif test -f $luapath/include/lua5.3/lua.h
++	then
++		AC_MSG_RESULT($luapath)
++		LIBLUA_INCDIRS="-I$luapath/include/lua5.3"
++		LIBLUA_LIBDIRS="-L$luapath/lib"
++		LIBLUA_LIBS="-llua5.3 -lm"
++		AC_SEARCH_LIBS([dlopen], [dl])
++		lua_found="yes"
+ 	elif test -f $luapath/include/lua.h
+ 	then
+ 		AC_MSG_RESULT($luapath)
