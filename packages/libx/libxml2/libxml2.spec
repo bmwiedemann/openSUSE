@@ -1,7 +1,7 @@
 #
 # spec file for package libxml2
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,6 +45,9 @@ Patch0:         libxml2-python3-unicode-errors.patch
 Patch1:         libxml2-python3-string-null-check.patch
 # CVE-2025-7425 [bsc#1246296], Heap Use-After-Free in libxslt caused by atype corruption in xmlAttrPtr
 Patch2:         libxml2-CVE-2025-7425.patch
+# PATCH-FIX-UPSTREAM libxml2-CVE-2026-0989.patch bsc#1256805 daniel.garcia@suse.com
+# https://gitlab.gnome.org/GNOME/libxml2/-/merge_requests/374
+Patch3:         libxml2-CVE-2026-0989.patch
 #
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig

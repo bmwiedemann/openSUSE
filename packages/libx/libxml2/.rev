@@ -1375,4 +1375,15 @@
 </comment>
     <requestid>1309722</requestid>
   </revision>
+  <revision rev="138" vrev="2">
+    <srcmd5>2a2ed124fd543ff63fa866f0622f7c71</srcmd5>
+    <version>2.14.5</version>
+    <time>1769185914</time>
+    <user>anag_factory</user>
+    <comment>- Add patch libxml2-CVE-2026-0989.patch, to fix call stack exhaustion
+  leading to application crash due to RelaxNG parser not limiting the
+  recursion depth when resolving `&lt;include&gt;` directives
+  CVE-2026-0989, bsc#1256805, https://gitlab.gnome.org/GNOME/libxml2/-/merge_requests/374 (forwarded request 1328521 from dgarcia)</comment>
+    <requestid>1328657</requestid>
+  </revision>
 </revisionlist>

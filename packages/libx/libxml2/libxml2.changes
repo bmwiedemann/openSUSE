@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 21 13:38:18 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add patch libxml2-CVE-2026-0989.patch, to fix call stack exhaustion
+  leading to application crash due to RelaxNG parser not limiting the
+  recursion depth when resolving `<include>` directives
+  CVE-2026-0989, bsc#1256805, https://gitlab.gnome.org/GNOME/libxml2/-/merge_requests/374
+
+-------------------------------------------------------------------
 Wed Aug 27 13:33:48 UTC 2025 - pgajdos@suse.com
 
 - version update to 2.14.5
