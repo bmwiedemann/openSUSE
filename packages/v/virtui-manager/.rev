@@ -7,4 +7,19 @@
     <comment>Initial release. text-based Terminal User Interface (TUI) application for managing QEMU/KVM virtual machines using the libvirt Python API.</comment>
     <requestid>1328484</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e3e490e9f23cada42d87fb7f50b9ca4a</srcmd5>
+    <version>1.0.7</version>
+    <time>1769186061</time>
+    <user>anag_factory</user>
+    <comment>- version 1.0.7:
+  * major update of the documentation
+  * add cpu tune and numa tune capabilities
+  * support pip3 install (including old python 3.6)
+  * add new suppress_vm_events and unsuppress_vm_events to avoid freezing UI in VM actions
+  * add more threading lock (sparkline and monitoring)
+  * lot of other small fixes
+</comment>
+    <requestid>1328865</requestid>
+  </revision>
 </revisionlist>

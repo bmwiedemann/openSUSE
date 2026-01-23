@@ -15,16 +15,22 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%{?!python_module:%define python_module() python3-%{**}}
+%define pythons python3
+
 Name:           virtui-manager
-Version:        0.9.9
-Release:        1
+Version:        1.0.7
+Release:        0
 Summary:        Terminal-based interface to manage virtual machines using libvirt
 License:        GPL-3.0-or-later
 URL:            https://aginies.github.io/virtui-manager/
 Source:         %{name}-%{version}.tar.gz
+Group: 		System/Monitoring
 BuildRequires:  fdupes
-BuildRequires:  python3-base
-BuildRequires:  python3-setuptools
+BuildRequires:  %{python_module base}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 # Runtime dependencies
 Requires:       python3-libvirt-python
 Requires:       python3-textual >= 0.40.0
@@ -60,48 +66,12 @@ It supports VNC and SPICE protocols.
 
 %prep
 %setup -q
-rm -vf src/vmanager/.gitignore
-rm -vf srv/vmanager/virtui-remote-viewer_gtk4.py
 
 %build
-# No build required for pure python source install strategy
-# We verify the build works though
-# python3 -m build --wheel --no-isolation || true
+%python3_pyproject_wheel
 
 %install
-# Install the application source to /usr/share/virtui-manager
-mkdir -p %{buildroot}%{_datadir}/virtui-manager
-cp -a src/vmanager %{buildroot}%{_datadir}/virtui-manager/
-
-# Create binary wrappers
-mkdir -p %{buildroot}%{_bindir}
-
-# virtui-manager wrapper
-cat > %{buildroot}%{_bindir}/virtui-manager <<EOF
-#!/bin/sh
-export PYTHONPATH=%{_datadir}/virtui-manager
-cd %{_datadir}/virtui-manager/vmanager
-exec python3 vmanager.py "\$@"
-EOF
-chmod +x %{buildroot}%{_bindir}/virtui-manager
-
-# virtui-manager-cmd wrapper
-cat > %{buildroot}%{_bindir}/virtui-manager-cmd <<EOF
-#!/bin/sh
-export PYTHONPATH=%{_datadir}/virtui-manager
-cd %{_datadir}/virtui-manager/vmanager
-exec python3 vmanager_cmd.py "\$@"
-EOF
-chmod +x %{buildroot}%{_bindir}/virtui-manager-cmd
-
-# virtui-remote-viewer wrapper
-cat > %{buildroot}%{_bindir}/virtui-remote-viewer <<EOF
-#!/bin/sh
-export PYTHONPATH=%{_datadir}/virtui-manager
-cd %{_datadir}/virtui-manager/vmanager
-exec python3 virtui-remote-viewer.py "\$@"
-EOF
-chmod +x %{buildroot}%{_bindir}/virtui-remote-viewer
+%python3_pyproject_install
 
 # Install docs
 mkdir -p %{buildroot}%{_docdir}/%{name}/html
@@ -112,7 +82,7 @@ fi
 cp README.md FEATURES.md %{buildroot}%{_docdir}/%{name}/
 
 # Deduplicate files
-%fdupes %{buildroot}%{_datadir}/virtui-manager
+%fdupes %{buildroot}%{python3_sitelib}
 %fdupes %{buildroot}%{_docdir}/%{name}
 
 %files
@@ -120,8 +90,8 @@ cp README.md FEATURES.md %{buildroot}%{_docdir}/%{name}/
 %doc README.md FEATURES.md
 %{_bindir}/virtui-manager
 %{_bindir}/virtui-manager-cmd
-%dir %{_datadir}/virtui-manager
-%{_datadir}/virtui-manager/vmanager
+%{python3_sitelib}/vmanager
+%{python3_sitelib}/virtui_manager-*-info
 
 %files doc
 %dir %{_docdir}/%{name}

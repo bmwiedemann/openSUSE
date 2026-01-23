@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 23 09:51:07 UTC 2026 - Antoine Ginies <aginies@suse.com>
+
+- version 1.0.7:
+  * major update of the documentation
+  * add cpu tune and numa tune capabilities
+  * support pip3 install (including old python 3.6)
+  * add new suppress_vm_events and unsuppress_vm_events to avoid freezing UI in VM actions
+  * add more threading lock (sparkline and monitoring)
+  * lot of other small fixes
+
+-------------------------------------------------------------------
 Wed Jan 21 10:24:33 UTC 2026 - Antoine Ginies <aginies@suse.com>
 
 - initial version 0.9.9
