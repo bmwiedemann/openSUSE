@@ -1,7 +1,7 @@
 #
 # spec file for package perl-CPAN-Perl-Releases
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name CPAN-Perl-Releases
 Name:           perl-CPAN-Perl-Releases
-Version:        5.202.512.200
+Version:        5.202.601.190
 Release:        0
-# 5.20251220 -> normalize -> 5.202.512.200
-%define cpan_version 5.20251220
+# 5.20260119 -> normalize -> 5.202.601.190
+%define cpan_version 5.20260119
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Mapping Perl releases on CPAN to the location of the tarballs
 URL:            https://metacpan.org/release/%{cpan_name}
