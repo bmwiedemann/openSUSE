@@ -177,7 +177,7 @@ maps with Postfix, you need this.
 %build
 unset AUXLIBS AUXLIBS_LDAP AUXLIBS_PCRE AUXLIBS_MYSQL AUXLIBS_PGSQL AUXLIBS_SQLITE AUXLIBS_CDB
 
-export CCARGS="${CCARGS} %{optflags} -s -fcommon -Wno-comments -Wno-missing-braces -fPIC"
+export CCARGS="${CCARGS} %{optflags} -fcommon -Wno-comments -Wno-missing-braces -fPIC"
 
 %ifarch s390 s390x ppc
 export CCARGS="${CCARGS} -fsigned-char"
@@ -377,11 +377,6 @@ install -m 644 %{SOURCE13} %{buildroot}%{_sysusersdir}/
 
 # posttls-finger is built but not installed
 install -m 755 bin/posttls-finger %{buildroot}%{_sbindir}/
-
-for i in /usr/lib/postfix/postfix-lmdb.so /usr/lib/postfix/postfix-pcre.so /usr/lib64/libpostfix-dns.so /usr/lib64/libpostfix-global.so /usr/lib64/libpostfix-master.so /usr/lib64/libpostfix-tls.so /usr/lib64/libpostfix-util.so /usr/lib/postfix/postfix-ldap.so /usr/lib/postfix/postfix-mysql.so /usr/lib/postfix/postfix-pgsql.so
-do
-	strip --strip-all %{buildroot}${i} || :
-done
 # ---------------------------------------------------------------------------
 
 %pre -f postfix.pre

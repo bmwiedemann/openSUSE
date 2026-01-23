@@ -354,6 +354,7 @@ rm -rf %{buildroot}/%{_includedir}/postfix/
 
 # posttls-finger is built but not installed
 install -m 755 bin/posttls-finger %{buildroot}%{_sbindir}/
+# ---------------------------------------------------------------------------
 
 %if 0%{?suse_version} >= 1330
 %pre -f postfix.pre

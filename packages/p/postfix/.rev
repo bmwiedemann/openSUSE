@@ -2557,4 +2557,27 @@ successfully tested on Tumbleweed x86_64</comment>
 - (jsc#PED-14859) Fix packages for Immutable Mode - postfix (forwarded request 1328433 from dimstar)</comment>
     <requestid>1328436</requestid>
   </revision>
+  <revision rev="261" vrev="3">
+    <srcmd5>fad55bf0d69a76d3d4dfed4311cbb311</srcmd5>
+    <version>3.10.7</version>
+    <time>1769185908</time>
+    <user>anag_factory</user>
+    <comment>- Do not strip binaries at all
+- also drop &quot; -s &quot; from the CCARGS to prevent stripping there
+
+- Re-add dropped change:
+- fix postfix-SUSE.tar.gz, postfix.service: correct path for postalias
+  from /sbin/postalias to /usr/sbin/postalias
+
+- Don't fail strip on non-existing files (easy hack to fix 32bit
+  builds).
+
+- Do not strip binaries at all
+- also drop &quot; -s &quot; from the CCARGS to prevent stripping there
+
+- Re-add dropped change:
+- fix postfix-SUSE.tar.gz, postfix.service: correct path for postalias
+  from /sbin/postalias to /usr/sbin/postalias</comment>
+    <requestid>1328660</requestid>
+  </revision>
 </revisionlist>

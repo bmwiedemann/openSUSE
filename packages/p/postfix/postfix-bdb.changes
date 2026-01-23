@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jan 22 10:59:46 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Do not strip binaries at all
+- also drop " -s " from the CCARGS to prevent stripping there
+
+-------------------------------------------------------------------
+Thu Jan 22 10:09:40 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Re-add dropped change:
+- fix postfix-SUSE.tar.gz, postfix.service: correct path for postalias
+  from /sbin/postalias to /usr/sbin/postalias
+
+-------------------------------------------------------------------
+Wed Jan 21 07:33:02 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Don't fail strip on non-existing files (easy hack to fix 32bit
+  builds).
+
+-------------------------------------------------------------------
 Thu Jan 15 17:53:42 UTC 2026 - Peter Varkoly <varkoly@suse.com>
 
 - fix (bsc#1256462) [Build 12.10] openQA test fails in mta: Failed to start postfix.service
