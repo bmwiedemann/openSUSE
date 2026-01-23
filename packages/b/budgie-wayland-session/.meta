@@ -1,6 +1,0 @@
-<package name="budgie-wayland-session" project="openSUSE:Factory">
-  <title>Wayland session for the Budgie Desktop using Magpie v1</title>
-  <description>This project contains the scripts and data files for setting up the Budgie Desktop to run in a Wayland environment
-</description>
-  <devel project="X11:Solus" package="budgie-wayland-session"/>
-</package>
