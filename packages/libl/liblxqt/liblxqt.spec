@@ -1,7 +1,7 @@
 #
 # spec file for package liblxqt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,7 +43,7 @@ Provides:       liblxqt-qt5 = %{version}
 # moved files to correct location in liblxqt1 (/lxqt-backlight_backend, power.conf, polkit)
 Conflicts:      liblxqt0
 Conflicts:      liblxqt1
-Requires:       /usr/bin/pkexec
+Requires:       pkexec
 
 %description
 liblxqt represents the core library of LXQt providing essential
