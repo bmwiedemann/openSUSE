@@ -2,7 +2,7 @@
 # spec file for package dnf
 #
 # Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2021-2023 Neal Gompa <ngompa@opensuse.org>.
+# Copyright (c) 2021-2026 Neal Gompa <ngompa@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,6 +44,16 @@
 %global yum_subpackage_name dnf-yum
 %endif
 
+# De-conflict dnf with dnf5 and allow dnf5
+# to replace dnf as primary implementation
+%bcond_without dnf5_obsoletes_dnf
+
+%if %{with dnf5_obsoletes_dnf}
+%global dnf_package_name dnf4
+%else
+%global dnf_package_name dnf
+%endif
+
 # Tests fail (possibly due to failures in libdnf tests on SUSE)
 # Until those are resolved, these will remain disabled
 %bcond_with tests
@@ -73,6 +83,9 @@ BuildRequires:  python3-Sphinx
 BuildRequires:  python3-bugzilla
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(bash-completion)
+BuildArch:      noarch
+
+%if %{without dnf5_obsoletes_dnf}
 Requires:       python3-dnf = %{version}-%{release}
 Recommends:     %{yum_subpackage_name}
 Recommends:     dnf-plugins-core
@@ -100,16 +113,55 @@ Provides:       dnf-command(repository-packages)
 Provides:       dnf-command(search)
 Provides:       dnf-command(updateinfo)
 Provides:       dnf-command(upgrade)
-BuildArch:      noarch
 %{?systemd_ordering}
+%endif
 
 %description
 DNF is a package manager for RPM systems that was forked from Yum. Among the
 many improvements, it uses libsolv as a dependency resolver.
 
+%if %{with dnf5_obsoletes_dnf}
+%package -n %{dnf_package_name}
+Summary:        Package manager forked from Yum, using libsolv as a dependency resolver
+Requires:       python3-dnf = %{version}-%{release}
+Recommends:     %{yum_subpackage_name}
+Recommends:     dnf-plugins-core
+Conflicts:      dnf-plugins-core < %{min_plugins_core}
+Provides:       dnf-command(alias)
+Provides:       dnf-command(autoremove)
+Provides:       dnf-command(check-update)
+Provides:       dnf-command(clean)
+Provides:       dnf-command(distro-sync)
+Provides:       dnf-command(downgrade)
+Provides:       dnf-command(group)
+Provides:       dnf-command(history)
+Provides:       dnf-command(info)
+Provides:       dnf-command(install)
+Provides:       dnf-command(list)
+Provides:       dnf-command(makecache)
+Provides:       dnf-command(mark)
+Provides:       dnf-command(provides)
+Provides:       dnf-command(reinstall)
+Provides:       dnf-command(remove)
+Provides:       dnf-command(repolist)
+Provides:       dnf-command(repoquery)
+Provides:       dnf-command(repository-packages)
+Provides:       dnf-command(search)
+Provides:       dnf-command(updateinfo)
+Provides:       dnf-command(upgrade)
+%{?systemd_ordering}
+
+%description -n %{dnf_package_name}
+DNF is a package manager for RPM systems that was forked from Yum. Among the
+many improvements, it uses libsolv as a dependency resolver.
+%endif
+
 %package data
 Summary:        Common data and configuration files for DNF
 Group:          System/Packages
+%if %{with dnf5_obsoletes_dnf}
+Requires:       /etc/dnf/dnf.conf
+%endif
 Obsoletes:      dnf-conf < 4.4.2
 Provides:       dnf-conf = %{version}-%{release}
 Recommends:     logrotate
@@ -186,7 +238,7 @@ Obsoletes:      python2-dnf < 4.0.10
 %description -n python3-dnf
 This package provides the Python 3 interface to DNF.
 
-%lang_package
+%lang_package -n %{dnf_package_name}
 
 %package automatic
 Summary:        Alternative CLI to "dnf upgrade" suitable for automatic, regular execution
@@ -231,7 +283,7 @@ mkdir -p %{buildroot}%{_localstatedir}/log
 mkdir -p %{buildroot}%{_var}/cache/dnf
 touch %{buildroot}%{_localstatedir}/log/%{name}.log
 
-
+%if %{without dnf5_obsoletes_dnf}
 ln -sr %{buildroot}%{_bindir}/dnf-3 %{buildroot}%{_bindir}/dnf
 ln -sr %{buildroot}%{_datadir}/bash-completion/completions/dnf-3 %{buildroot}%{_datadir}/bash-completion/completions/dnf
 for file in %{buildroot}%{_mandir}/man[578]/dnf4[-.]*; do
@@ -239,15 +291,37 @@ for file in %{buildroot}%{_mandir}/man[578]/dnf4[-.]*; do
     filename=$(basename $file)
     mv $file $dir/${filename/dnf4/dnf}
 done
+%endif
 
 ln -sr %{buildroot}%{_bindir}/dnf-3 %{buildroot}%{_bindir}/dnf4
+%if %{without dnf5_obsoletes_dnf}
 mv %{buildroot}%{_bindir}/dnf-automatic-3 %{buildroot}%{_bindir}/dnf-automatic
+%endif
 rm -vf %{buildroot}%{_bindir}/dnf-automatic-*
 
+%if %{without dnf5_obsoletes_dnf}
 # Create protected.d file for dnf
 echo "dnf" > %{buildroot}%{confdir}/protected.d/dnf.conf
+%endif
 
-%if %{with as_yum}
+%if %{with dnf5_obsoletes_dnf}
+rm %{buildroot}%{confdir}/automatic.conf
+rm %{buildroot}%{confdir}/%{name}.conf
+rm %{buildroot}%{_mandir}/man8/%{name}-automatic.8*
+rm %{buildroot}%{_mandir}/man8/yum2dnf.8*
+rm %{buildroot}%{_unitdir}/%{name}-automatic.service
+rm %{buildroot}%{_unitdir}/%{name}-automatic.timer
+rm %{buildroot}%{_unitdir}/%{name}-automatic-notifyonly.service
+rm %{buildroot}%{_unitdir}/%{name}-automatic-notifyonly.timer
+rm %{buildroot}%{_unitdir}/%{name}-automatic-download.service
+rm %{buildroot}%{_unitdir}/%{name}-automatic-download.timer
+rm %{buildroot}%{_unitdir}/%{name}-automatic-install.service
+rm %{buildroot}%{_unitdir}/%{name}-automatic-install.timer
+rm %{buildroot}%{_unitdir}/%{name}-makecache.service
+rm %{buildroot}%{_unitdir}/%{name}-makecache.timer
+%endif
+
+%if %{with as_yum} && %{without dnf5_obsoletes_dnf}
 ln -sr %{buildroot}%{_bindir}/dnf-3 %{buildroot}%{_bindir}/yum
 mkdir -p %{buildroot}%{_sysconfdir}/yum
 ln -sr  %{buildroot}%{confdir}/%{name}.conf %{buildroot}%{_sysconfdir}/yum/yum.conf
@@ -256,7 +330,8 @@ ln -sr  %{buildroot}%{confdir}/protected.d %{buildroot}%{_sysconfdir}/yum/protec
 ln -sr  %{buildroot}%{confdir}/repos.d %{buildroot}%{_sysconfdir}/yum/repos.d
 ln -sr  %{buildroot}%{confdir}/vars %{buildroot}%{_sysconfdir}/yum/vars
 %else
-# We don't want this just yet...
+rm %{buildroot}%{_mandir}/man[158]/yum*
+# We don't want this...
 rm -f %{buildroot}%{confdir}/protected.d/yum.conf
 %endif
 
@@ -275,20 +350,27 @@ make ARGS="-V" test
 popd
 %endif
 
-%files
+%files -n %{dnf_package_name}
 %license COPYING PACKAGE-LICENSING
 %doc AUTHORS README.rst
 %{_bindir}/dnf4
+%dir %{_var}/cache/dnf
+%if %{without dnf5_obsoletes_dnf}
 %{_bindir}/dnf
 %{_mandir}/man8/dnf.8*
 %{_mandir}/man8/yum2dnf.8*
 %{_mandir}/man7/dnf.modularity.7*
 %{_mandir}/man5/dnf-transaction-json.5*
-%dir %{_var}/cache/dnf
 %{_unitdir}/dnf-makecache.service
 %{_unitdir}/dnf-makecache.timer
+%else
+%{_mandir}/man8/dnf4.8*
+%{_mandir}/man5/dnf4.conf.5*
+%{_mandir}/man7/dnf4.modularity.7*
+%{_mandir}/man5/dnf4-transaction-json.5*
+%endif
 
-%files lang -f %{name}.lang
+%files -n %{dnf_package_name}-lang -f %{name}.lang
 
 %files data
 %license COPYING PACKAGE-LICENSING
@@ -301,9 +383,11 @@ popd
 %dir %{confdir}/protected.d
 %dir %{confdir}/repos.d
 %dir %{confdir}/vars
-%config(noreplace) %{confdir}/%{name}.conf
 %config(noreplace) %{confdir}/aliases.d/zypper.conf
+%if %{without dnf5_obsoletes_dnf}
+%config(noreplace) %{confdir}/%{name}.conf
 %config(noreplace) %{confdir}/protected.d/%{name}.conf
+%endif
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
 %ghost %{_localstatedir}/log/hawkey.log
 %ghost %{_localstatedir}/log/%{name}.log
@@ -315,11 +399,14 @@ popd
 %ghost %{persistdir}/yumdb
 %ghost %{persistdir}/history
 %ghost %{_sharedstatedir}/%{name}
-%{_datadir}/bash-completion/completions/dnf
-%{_datadir}/bash-completion/completions/dnf-3
+%if %{without dnf5_obsoletes_dnf}
 %{_mandir}/man5/dnf.conf.5.*
+%{_datadir}/bash-completion/completions/dnf
+%endif
+%{_datadir}/bash-completion/completions/dnf-3
 %{_tmpfilesdir}/dnf.conf
 
+%if %{without dnf5_obsoletes_dnf}
 %files -n %{yum_subpackage_name}
 %license COPYING PACKAGE-LICENSING
 %doc AUTHORS README.rst
@@ -337,6 +424,7 @@ popd
 %{_sysconfdir}/yum/vars
 %config(noreplace) %{confdir}/protected.d/yum.conf
 %endif
+%endif
 
 %files -n python3-dnf
 %license COPYING PACKAGE-LICENSING
@@ -347,6 +435,7 @@ popd
 %{python3_sitelib}/dnf-*.dist-info/
 %dir %{py3pluginpath}
 
+%if %{without dnf5_obsoletes_dnf}
 %files automatic
 %license COPYING PACKAGE-LICENSING
 %doc AUTHORS
@@ -380,6 +469,7 @@ popd
 
 %postun automatic
 %systemd_postun_with_restart %{name}-automatic.timer %{name}-automatic-notifyonly.timer %{name}-automatic-download.timer %{name}-automatic-install.timer
+%endif
 
 %pretrans -n %{name}-data -p <lua>
 -- Migrate DNF state data to /usr/lib/sysimage if it is still in /var/lib

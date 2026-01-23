@@ -690,4 +690,12 @@
     <comment></comment>
     <requestid>1254414</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>91f02e5e774384197179b20ae1b21cc7</srcmd5>
+    <version>4.23.0</version>
+    <time>1769185858</time>
+    <user>anag_factory</user>
+    <comment>- Add logic to support coexistence with dnf5 being the primary DNF implementation</comment>
+    <requestid>1328526</requestid>
+  </revision>
 </revisionlist>

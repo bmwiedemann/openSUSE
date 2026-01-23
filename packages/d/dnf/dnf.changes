@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 20 21:27:50 UTC 2026 - Neal Gompa <ngompa@opensuse.org>
+
+- Add logic to support coexistence with dnf5 being the primary DNF implementation
+
+-------------------------------------------------------------------
 Wed Mar 19 12:50:43 UTC 2025 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 4.23.0
