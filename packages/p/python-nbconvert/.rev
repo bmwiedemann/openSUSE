@@ -493,4 +493,13 @@
 </comment>
     <requestid>1283947</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>7b4e7d25806891a98987f0842e0da7ed</srcmd5>
+    <version>7.16.6</version>
+    <time>1769186062</time>
+    <user>anag_factory</user>
+    <comment>- Relaxed tinycss2 upper bound to enable build
+</comment>
+    <requestid>1328869</requestid>
+  </revision>
 </revisionlist>

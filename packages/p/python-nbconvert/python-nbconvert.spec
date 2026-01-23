@@ -58,8 +58,9 @@ Requires:       python-nbformat >= 5.7
 Requires:       python-packaging
 Requires:       python-pandocfilters >= 1.4.1
 Requires:       python-traitlets >= 5.1
-Requires:       (python-tinycss2 >= 1.1.0 with python-tinycss2 < 1.5)
+Requires:       (python-tinycss2 >= 1.1.0 with python-tinycss2 < 1.6)
 ## pyproject.toml says bleach[css], this is bleach w/ tinycss2, see above
+## relaxing tinycss2 upper bound as proposed in https://github.com/Kozea/WeasyPrint/issues/2657
 Requires:       (python-bleach without python-bleach = 5.0.0)
 Requires:       (python-mistune >= 2.0.3 with python-mistune < 4)
 Recommends:     pandoc >= 2.9.2
