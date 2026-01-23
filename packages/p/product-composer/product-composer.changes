@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 23 09:35:49 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.8.2
+  - special handling for i686/i586 products where only a few
+    i686 rpms are available, but no own release package
+
+-------------------------------------------------------------------
 Wed Jan 14 10:37:03 UTC 2026 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.8.1

@@ -582,4 +582,14 @@
   - fix multiarch media handling of updateinfo id's</comment>
     <requestid>1327191</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>829d3fa7a4c41b7f80fa979490a7a7bd</srcmd5>
+    <version>0.8.2</version>
+    <time>1769186059</time>
+    <user>anag_factory</user>
+    <comment>- update to version 0.8.2
+  - special handling for i686/i586 products where only a few
+    i686 rpms are available, but no own release package</comment>
+    <requestid>1328838</requestid>
+  </revision>
 </revisionlist>
