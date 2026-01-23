@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jan 20 16:23:50 UTC 2026 - Neal Gompa <ngompa@opensuse.org>
+
+- Rebase to version 1.3.3
+  + See included NEWS file for details between 1.2.8 to 1.3.3
+- Drop patches included upstream
+  + PackageKit-dynamic-export.patch
+  + PackageKit-fix-crash-pre-dbus.patch
+  + PackageKit-fix-pkcon-permission.patch
+  + PackageKit-mark-as-compulsory.patch
+  + PackageKit-zypp-disable-upgrade-system-in-sle.patch
+  + PackageKit-zypp-dont-install-updateCandidateObj.patch
+  + PackageKit-zypp-parallel-package-downloads.patch
+- Backport dnf5 backend and add patch to transition dnf users to dnf5
+  + PackageKit-1.3.3-Initial-DNF5-Backend.patch
+  + PackageKit-alias-dnf-to-dnf5.patch
+- Drop legacy dnf backend and related patches
+  + PackageKit-dnf-Add-support-for-AppStream-repodata-basenames-use.patch
+- Drop patches for support for SUSE Linux < 16
+  + PackageKit-find-python-3-6.patch
+
+-------------------------------------------------------------------
 Thu Aug 21 08:47:17 UTC 2025 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add PackageKit-zypp-parallel-package-downloads.patch:

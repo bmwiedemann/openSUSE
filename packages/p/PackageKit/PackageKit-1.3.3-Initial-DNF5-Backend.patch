@@ -1,0 +1,2629 @@
+From 02c96b6d49025921d7b6757e11bc2102c92ff8f5 Mon Sep 17 00:00:00 2001
+From: Neal Gompa <neal@gompa.dev>
+Date: Tue, 30 Dec 2025 19:44:19 -0500
+Subject: [PATCH 1/4] backends: Initial implementation of the DNF5 backend
+
+This provides a complete implementation for PackageKit to leverage
+libdnf5 as the backing package management interface for RPM-based
+operating systems.
+---
+ AUTHORS                                       |   3 +
+ backends/dnf5/README.md                       |  19 +
+ backends/dnf5/dnf5-backend-thread.cpp         | 722 ++++++++++++++++++
+ backends/dnf5/dnf5-backend-thread.hpp         |  28 +
+ backends/dnf5/dnf5-backend-utils.cpp          | 593 ++++++++++++++
+ backends/dnf5/dnf5-backend-utils.hpp          |  91 +++
+ backends/dnf5/dnf5-backend-vendor-fedora.cpp  |  35 +
+ backends/dnf5/dnf5-backend-vendor-mageia.cpp  |  47 ++
+ .../dnf5/dnf5-backend-vendor-openmandriva.cpp |  47 ++
+ .../dnf5/dnf5-backend-vendor-opensuse.cpp     |  44 ++
+ backends/dnf5/dnf5-backend-vendor-rosa.cpp    |  44 ++
+ backends/dnf5/dnf5-backend-vendor.hpp         |  25 +
+ backends/dnf5/meson.build                     |  27 +
+ backends/dnf5/pk-backend-dnf5.cpp             | 367 +++++++++
+ meson_options.txt                             |  15 +-
+ 15 files changed, 2106 insertions(+), 1 deletion(-)
+ create mode 100644 backends/dnf5/README.md
+ create mode 100644 backends/dnf5/dnf5-backend-thread.cpp
+ create mode 100644 backends/dnf5/dnf5-backend-thread.hpp
+ create mode 100644 backends/dnf5/dnf5-backend-utils.cpp
+ create mode 100644 backends/dnf5/dnf5-backend-utils.hpp
+ create mode 100644 backends/dnf5/dnf5-backend-vendor-fedora.cpp
+ create mode 100644 backends/dnf5/dnf5-backend-vendor-mageia.cpp
+ create mode 100644 backends/dnf5/dnf5-backend-vendor-openmandriva.cpp
+ create mode 100644 backends/dnf5/dnf5-backend-vendor-opensuse.cpp
+ create mode 100644 backends/dnf5/dnf5-backend-vendor-rosa.cpp
+ create mode 100644 backends/dnf5/dnf5-backend-vendor.hpp
+ create mode 100644 backends/dnf5/meson.build
+ create mode 100644 backends/dnf5/pk-backend-dnf5.cpp
+
+diff --git a/AUTHORS b/AUTHORS
+index 3f624dce2..aa4c6dcbb 100644
+--- a/AUTHORS
++++ b/AUTHORS
+@@ -13,6 +13,9 @@ Backend: dnf
+     Richard Hughes <richard@hughsie.com>
+     Neal Gompa <ngompa13@gmail.com>
+ 
++Backend: dnf5
++    Neal Gompa <neal@gompa.dev>
++
+ Backend: eopkg
+     Joey Riches <josephriches@gmail.com> <joey@getsol.us>
+ 
+diff --git a/backends/dnf5/README.md b/backends/dnf5/README.md
+new file mode 100644
+index 000000000..276123d6d
+--- /dev/null
++++ b/backends/dnf5/README.md
+@@ -0,0 +1,19 @@
++DNF5 PackageKit Backend
++----------------------
++
++It uses the following libraries:
++
++ * libdnf5 : for the actual package management functions
++ * rpm : for actually installing the packages on the system
++
++For AppStream data, the libdnf5 AppStream plugin is used.
++
++These are some key file locations:
++
++* /var/cache/PackageKit/$releasever/metadata/ : Used to store the repository metadata
++* /var/cache/PackageKit/$releasever/metadata/*/packages : Used for cached packages
++* $libdir/packagekit-backend/ : location of PackageKit backend objects
++
++Things we haven't yet decided:
++
++* How to access comps data
+diff --git a/backends/dnf5/dnf5-backend-thread.cpp b/backends/dnf5/dnf5-backend-thread.cpp
+new file mode 100644
+index 000000000..30e71fe00
+--- /dev/null
++++ b/backends/dnf5/dnf5-backend-thread.cpp
+@@ -0,0 +1,722 @@
++/* -*- Mode: C++; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*-
++ *
++ * Copyright (C) 2025 Neal Gompa <neal@gompa.dev>
++ *
++ * Licensed under the GNU General Public License Version 2
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, see <https://www.gnu.org/licenses/>.
++ */
++
++#include "dnf5-backend-thread.hpp"
++#include "dnf5-backend-utils.hpp"
++#include <libdnf5/base/goal.hpp>
++#include <libdnf5/comps/environment/query.hpp>
++#include <libdnf5/comps/group/query.hpp>
++#include <libdnf5/advisory/advisory_query.hpp>
++#include <libdnf5/rpm/reldep_list.hpp>
++#include <libdnf5/base/transaction.hpp>
++#include <libdnf5/repo/package_downloader.hpp>
++#include <libdnf5/conf/config_parser.hpp>
++#include <packagekit-glib2/pk-common-private.h>
++#include <packagekit-glib2/pk-update-detail.h>
++#include <rpm/rpmlib.h>
++#include <glib/gstdio.h>
++#include <filesystem>
++#include <map>
++
++void
++dnf5_query_thread (PkBackendJob *job, GVariant *params, gpointer user_data)
++{
++	PkBackend *backend = (PkBackend *) pk_backend_job_get_backend (job);
++	PkBackendDnf5Private *priv = (PkBackendDnf5Private *) pk_backend_get_user_data (backend);
++	PkRoleEnum role = pk_backend_job_get_role (job);
++	
++	g_autoptr(GMutexLocker) locker = g_mutex_locker_new (&priv->mutex);
++	
++	try {
++		if (role == PK_ROLE_ENUM_SEARCH_NAME || role == PK_ROLE_ENUM_SEARCH_DETAILS || role == PK_ROLE_ENUM_SEARCH_FILE || role == PK_ROLE_ENUM_RESOLVE || role == PK_ROLE_ENUM_WHAT_PROVIDES) {
++			PkBitfield filters;
++			g_auto(GStrv) values = NULL;
++			g_variant_get (params, "(t^as)", &filters, &values);
++			
++			g_debug("Query role=%d, filters=%lu", role, (unsigned long)filters);
++			
++			std::vector<libdnf5::rpm::Package> results;
++			libdnf5::rpm::PackageQuery query(*priv->base);
++			
++			std::vector<std::string> search_terms;
++			for (int i = 0; values[i]; i++) search_terms.push_back(values[i]);
++			
++			if (role == PK_ROLE_ENUM_SEARCH_NAME) {
++				query.filter_name(search_terms, libdnf5::sack::QueryCmp::ICONTAINS);
++			} else if (role == PK_ROLE_ENUM_SEARCH_FILE) {
++				query.filter_file(search_terms);
++			} else if (role == PK_ROLE_ENUM_RESOLVE) {
++				// For RESOLVE, filter by name FIRST, then apply other filters
++				// This matches the old DNF backend behavior
++				for (const auto &term : search_terms)
++					g_debug("Resolving package name: %s", term.c_str());
++				query.filter_name(search_terms, libdnf5::sack::QueryCmp::EQ);
++				g_debug("After filter_name: query has %zu packages", query.size());
++			} else if (role == PK_ROLE_ENUM_WHAT_PROVIDES) {
++				std::vector<std::string> provides;
++				for (const auto &term : search_terms) {
++					provides.push_back(term);
++					provides.push_back("gstreamer0.10(" + term + ")");
++					provides.push_back("gstreamer1(" + term + ")");
++					provides.push_back("font(" + term + ")");
++					provides.push_back("mimehandler(" + term + ")");
++					provides.push_back("postscriptdriver(" + term + ")");
++					provides.push_back("plasma4(" + term + ")");
++					provides.push_back("plasma5(" + term + ")");
++					provides.push_back("language(" + term + ")");
++				}
++				query.filter_provides(provides);
++			} else if (role == PK_ROLE_ENUM_SEARCH_DETAILS) {
++				libdnf5::rpm::PackageQuery query_sum(*priv->base);
++				query.filter_description(search_terms, libdnf5::sack::QueryCmp::ICONTAINS);
++				query_sum.filter_summary(search_terms, libdnf5::sack::QueryCmp::ICONTAINS);
++				// Apply filters to both queries before merging
++				dnf5_apply_filters(*priv->base, query, filters);
++				dnf5_apply_filters(*priv->base, query_sum, filters);
++				for (auto p : query_sum) {
++					if (dnf5_package_filter(p, filters))
++						results.push_back(p);
++				}
++			}
++			
++			// Apply filters AFTER filtering by name/file/provides for most roles
++			// Exception: SEARCH_DETAILS already applied filters above
++			if (role != PK_ROLE_ENUM_SEARCH_DETAILS) {
++				g_debug("Before dnf5_apply_filters: query has %zu packages", query.size());
++				dnf5_apply_filters(*priv->base, query, filters);
++				g_debug("After dnf5_apply_filters: query has %zu packages", query.size());
++			}
++			
++			// For RESOLVE, we've already applied all necessary filters via dnf5_apply_filters
++			// Don't apply dnf5_package_filter again as it causes incorrect filtering
++			if (role == PK_ROLE_ENUM_RESOLVE) {
++				for (auto p : query) {
++					results.push_back(p);
++				}
++			} else {
++				for (auto p : query) {
++					if (dnf5_package_filter(p, filters))
++						results.push_back(p);
++				}
++			}
++			g_debug("Final results: %zu packages", results.size());
++			dnf5_sort_and_emit(job, results);
++
++
++			
++		} else if (role == PK_ROLE_ENUM_DEPENDS_ON || role == PK_ROLE_ENUM_REQUIRED_BY) {
++			PkBitfield filters;
++			g_auto(GStrv) package_ids = NULL;
++			gboolean recursive;
++			g_variant_get (params, "(t^asb)", &filters, &package_ids, &recursive);
++			
++			auto input_pkgs = dnf5_resolve_package_ids(*priv->base, package_ids);
++			std::vector<libdnf5::rpm::Package> results;
++			for (const auto &pkg : input_pkgs) {
++				auto deps = dnf5_process_dependency(*priv->base, pkg, role, recursive);
++				for (auto dep : deps) {
++					if (dnf5_package_filter(dep, filters))
++						results.push_back(dep);
++				}
++			}
++			dnf5_sort_and_emit(job, results);
++
++		} else if (role == PK_ROLE_ENUM_GET_PACKAGES || role == PK_ROLE_ENUM_GET_UPDATES) {
++			PkBitfield filters;
++			g_variant_get (params, "(t)", &filters);
++			
++			libdnf5::rpm::PackageQuery query(*priv->base);
++			dnf5_apply_filters(*priv->base, query, filters);
++			
++			if (role == PK_ROLE_ENUM_GET_UPDATES) {
++				libdnf5::Goal goal(*priv->base);
++				if (dnf5_force_distupgrade_on_upgrade (*priv->base))
++					goal.add_rpm_distro_sync();
++				else
++					goal.add_rpm_upgrade();
++				auto trans = goal.resolve();
++				
++				std::vector<libdnf5::rpm::Package> update_pkgs;
++				for (const auto &item : trans.get_transaction_packages()) {
++					auto action = item.get_action();
++					if (action == libdnf5::transaction::TransactionItemAction::UPGRADE || action == libdnf5::transaction::TransactionItemAction::INSTALL) {
++						update_pkgs.push_back(item.get_package());
++					}
++				}
++				
++				libdnf5::advisory::AdvisoryQuery adv_query(*priv->base);
++				libdnf5::rpm::PackageSet pkg_set(priv->base->get_weak_ptr());
++				for (const auto &pkg : update_pkgs) pkg_set.add(pkg);
++				adv_query.filter_packages(pkg_set);
++				
++				std::map<std::string, libdnf5::advisory::Advisory> pkg_to_advisory;
++				for (const auto &adv_pkg : adv_query.get_advisory_packages_sorted(pkg_set)) {
++					std::string key = adv_pkg.get_name() + ";" + adv_pkg.get_evr() + ";" + adv_pkg.get_arch();
++					pkg_to_advisory.emplace(key, adv_pkg.get_advisory());
++				}
++				
++				for (const auto &pkg : update_pkgs) {
++					if (dnf5_package_filter(pkg, filters)) {
++						PkInfoEnum info = PK_INFO_ENUM_UNKNOWN;
++						PkInfoEnum severity = PK_INFO_ENUM_UNKNOWN;
++						
++						std::string key = pkg.get_name() + ";" + pkg.get_evr() + ";" + pkg.get_arch();
++						auto it = pkg_to_advisory.find(key);
++						if (it != pkg_to_advisory.end()) {
++							info = dnf5_advisory_kind_to_info_enum(it->second.get_type());
++							severity = dnf5_update_severity_to_enum(it->second.get_severity());
++						}
++						dnf5_emit_pkg(job, pkg, info, severity);
++					}
++				}
++			} else {
++				std::vector<libdnf5::rpm::Package> results;
++				for (auto p : query) {
++					if (dnf5_package_filter(p, filters))
++						results.push_back(p);
++				}
++				dnf5_sort_and_emit(job, results);
++			}
++		} else if (role == PK_ROLE_ENUM_GET_DETAILS || role == PK_ROLE_ENUM_GET_FILES || role == PK_ROLE_ENUM_DOWNLOAD_PACKAGES || role == PK_ROLE_ENUM_GET_UPDATE_DETAIL) {
++			g_auto(GStrv) package_ids = NULL;
++			if (role == PK_ROLE_ENUM_DOWNLOAD_PACKAGES) {
++				gchar *directory = NULL;
++				g_variant_get (params, "(^as&s)", &package_ids, &directory);
++				auto pkgs = dnf5_resolve_package_ids(*priv->base, package_ids);
++				libdnf5::repo::PackageDownloader downloader(*priv->base);
++				uint64_t total_download_size = 0;
++				for (const auto &pkg : pkgs) total_download_size += pkg.get_download_size();
++				
++				priv->base->set_download_callbacks(std::make_unique<Dnf5DownloadCallbacks>(job, total_download_size));
++				for (auto &pkg : pkgs) {
++					dnf5_emit_pkg(job, pkg, PK_INFO_ENUM_DOWNLOADING);
++					downloader.add(pkg, directory);
++				}
++				downloader.download();
++				
++				std::vector<char*> files_c;
++				for (auto &pkg : pkgs) {
++					std::string path = pkg.get_package_path();
++					if (!path.empty()) files_c.push_back(g_strdup(path.c_str()));
++				}
++				files_c.push_back(nullptr);
++				pk_backend_job_files (job, NULL, files_c.data());
++				for (auto p : files_c) g_free(p);
++				pk_backend_job_finished (job);
++				return;
++			} else {
++				g_variant_get (params, "(^as)", &package_ids);
++			}
++			
++			auto pkgs = dnf5_resolve_package_ids(*priv->base, package_ids);
++			if (role == PK_ROLE_ENUM_GET_UPDATE_DETAIL) {
++				libdnf5::advisory::AdvisoryQuery adv_query(*priv->base);
++				libdnf5::rpm::PackageSet pkg_set(priv->base->get_weak_ptr());
++				for (const auto &pkg : pkgs) pkg_set.add(pkg);
++				adv_query.filter_packages(pkg_set);
++				
++				std::map<std::string, libdnf5::advisory::AdvisoryPackage> pkg_to_adv_pkg;
++				for (const auto &adv_pkg : adv_query.get_advisory_packages_sorted(pkg_set)) {
++					std::string key = adv_pkg.get_name() + ";" + adv_pkg.get_evr() + ";" + adv_pkg.get_arch();
++					pkg_to_adv_pkg.emplace(key, adv_pkg);
++				}
++				
++				g_autoptr(GPtrArray) update_details = g_ptr_array_new_with_free_func ((GDestroyNotify) g_object_unref);
++				for (auto &pkg : pkgs) {
++					std::string repo_id = pkg.get_repo_id();
++					if (pkg.get_install_time() > 0) repo_id = "installed";
++					std::string pid = pkg.get_name() + ";" + pkg.get_evr() + ";" + pkg.get_arch() + ";" + repo_id;
++					
++					std::string key = pkg.get_name() + ";" + pkg.get_evr() + ";" + pkg.get_arch();
++					auto it = pkg_to_adv_pkg.find(key);
++					if (it != pkg_to_adv_pkg.end()) {
++						auto advisory = it->second.get_advisory();
++						g_autoptr(PkUpdateDetail) item = pk_update_detail_new ();
++						
++						std::vector<std::string> bugzilla_urls, cve_urls, vendor_urls;
++						for (const auto &ref : advisory.get_references()) {
++							if (ref.get_url().empty()) continue;
++							if (ref.get_type() == "bugzilla") bugzilla_urls.push_back(ref.get_url());
++							else if (ref.get_type() == "cve") cve_urls.push_back(ref.get_url());
++							else if (ref.get_type() == "vendor") vendor_urls.push_back(ref.get_url());
++						}
++						
++						auto buildtime = advisory.get_buildtime();
++						g_autoptr(GDateTime) dt = g_date_time_new_from_unix_local(buildtime);
++						g_autofree gchar *date_str = g_date_time_format(dt, "%Y-%m-%d");
++						
++						PkRestartEnum restart = PK_RESTART_ENUM_NONE;
++						if (it->second.get_reboot_suggested()) restart = PK_RESTART_ENUM_SYSTEM;
++						else if (it->second.get_restart_suggested()) restart = PK_RESTART_ENUM_APPLICATION;
++						else if (it->second.get_relogin_suggested()) restart = PK_RESTART_ENUM_SESSION;
++						
++						g_auto(GStrv) bugzilla_strv = (gchar **) g_new0 (gchar *, bugzilla_urls.size() + 1);
++						for (size_t i = 0; i < bugzilla_urls.size(); i++) bugzilla_strv[i] = g_strdup(bugzilla_urls[i].c_str());
++						g_auto(GStrv) cve_strv = (gchar **) g_new0 (gchar *, cve_urls.size() + 1);
++						for (size_t i = 0; i < cve_urls.size(); i++) cve_strv[i] = g_strdup(cve_urls[i].c_str());
++						g_auto(GStrv) vendor_strv = (gchar **) g_new0 (gchar *, vendor_urls.size() + 1);
++						for (size_t i = 0; i < vendor_urls.size(); i++) vendor_strv[i] = g_strdup(vendor_urls[i].c_str());
++						
++						g_object_set (item,
++								  "package-id", pid.c_str(),
++								  "bugzilla-urls", bugzilla_strv,
++								  "cve-urls", cve_strv,
++								  "vendor-urls", vendor_strv,
++								  "update-text", advisory.get_description().c_str(),
++								  "restart", restart,
++								  "state", PK_UPDATE_STATE_ENUM_STABLE,
++								  "issued", date_str,
++								  "updated", date_str,
++								  NULL);
++						g_ptr_array_add (update_details, g_steal_pointer (&item));
++					}
++				}
++				pk_backend_job_update_details (job, update_details);
++				pk_backend_job_finished (job);
++				return;
++			}
++			
++			for (auto &pkg : pkgs) {
++				std::string repo_id = pkg.get_repo_id();
++				if (pkg.get_install_time() > 0) repo_id = "installed";
++				std::string pid = pkg.get_name() + ";" + pkg.get_evr() + ";" + pkg.get_arch() + ";" + repo_id;
++				
++				if (role == PK_ROLE_ENUM_GET_DETAILS) {
++					std::string license = pkg.get_license();
++					if (license.empty()) license = "unknown";
++					pk_backend_job_details(job, pid.c_str(), pkg.get_summary().c_str(), license.c_str(), PK_GROUP_ENUM_UNKNOWN, pkg.get_description().c_str(), pkg.get_url().c_str(), pkg.get_install_size(), pkg.get_download_size());
++				} else if (role == PK_ROLE_ENUM_GET_FILES) {
++					auto files_vec = pkg.get_files();
++					std::vector<char*> files_c;
++					for (const auto &f : files_vec) files_c.push_back(const_cast<char*>(f.c_str()));
++					files_c.push_back(nullptr);
++					pk_backend_job_files(job, pid.c_str(), files_c.data());
++				}
++			}
++		} else if (role == PK_ROLE_ENUM_GET_DETAILS_LOCAL || role == PK_ROLE_ENUM_GET_FILES_LOCAL) {
++			g_auto(GStrv) files = NULL;
++			g_variant_get (params, "(^as)", &files);
++			libdnf5::Base local_base;
++			local_base.load_config();
++			local_base.get_config().get_pkg_gpgcheck_option().set(false);
++			local_base.setup();
++			std::vector<std::string> paths;
++			for (int i = 0; files[i]; i++) paths.push_back(files[i]);
++			auto added = local_base.get_repo_sack()->add_cmdline_packages(paths);
++			for (const auto &pair : added) {
++				const auto &pkg = pair.second;
++				std::string pid = pkg.get_name() + ";" + pkg.get_evr() + ";" + pkg.get_arch() + ";" + (pkg.get_repo_id().empty() ? "local" : pkg.get_repo_id());
++				if (role == PK_ROLE_ENUM_GET_DETAILS_LOCAL) {
++					pk_backend_job_details(job, pid.c_str(), pkg.get_summary().c_str(), pkg.get_license().c_str(), PK_GROUP_ENUM_UNKNOWN, pkg.get_description().c_str(), pkg.get_url().c_str(), pkg.get_install_size(), 0);
++				} else {
++					auto files_vec = pkg.get_files();
++					std::vector<char*> files_c;
++					for (const auto &f : files_vec) files_c.push_back(const_cast<char*>(f.c_str()));
++					files_c.push_back(nullptr);
++					pk_backend_job_files(job, pid.c_str(), files_c.data());
++				}
++			}
++		} else if (role == PK_ROLE_ENUM_GET_REPO_LIST) {
++			PkBitfield filters;
++			g_variant_get (params, "(t)", &filters);
++			libdnf5::repo::RepoQuery query(*priv->base);
++			for (auto repo : query) {
++				std::string id = repo->get_id();
++				if (id == "@System" || id == "@commandline") continue;
++				if (!dnf5_backend_pk_repo_filter(*repo, filters)) continue;
++				pk_backend_job_repo_detail(job, id.c_str(), repo->get_name().c_str(), repo->is_enabled());
++			}
++		}
++	} catch (const std::exception &e) {
++		pk_backend_job_error_code (job, PK_ERROR_ENUM_TRANSACTION_ERROR, "%s", e.what());
++	}
++	pk_backend_job_finished (job);
++}
++
++void
++dnf5_transaction_thread (PkBackendJob *job, GVariant *params, gpointer user_data)
++{
++	PkBackend *backend = (PkBackend *) pk_backend_job_get_backend (job);
++	PkBackendDnf5Private *priv = (PkBackendDnf5Private *) pk_backend_get_user_data (backend);
++	PkRoleEnum role = pk_backend_job_get_role (job);
++	
++	g_autoptr(GMutexLocker) locker = g_mutex_locker_new (&priv->mutex);
++	
++	try {
++		if (role == PK_ROLE_ENUM_UPGRADE_SYSTEM) {
++			gchar *distro_id = NULL;
++			PkUpgradeKindEnum upgrade_kind;
++			PkBitfield transaction_flags;
++			g_variant_get (params, "(t&su)", &transaction_flags, &distro_id, &upgrade_kind);
++			if (distro_id) {
++				dnf5_setup_base(priv, TRUE, TRUE, distro_id);
++				
++				g_debug("Checking repositories for system upgrade to %s:", distro_id);
++				// ... logging code ...
++				libdnf5::repo::RepoQuery query(*priv->base);
++				for (auto repo : query) {
++					// Check if baseurl contains the correct version
++					auto baseurl = repo->get_config().get_baseurl_option().get_value();
++					std::string url_str = baseurl.empty() ? "null" : baseurl[0];
++					g_debug("Repo %s: enabled=%d, url=%s",
++						repo->get_id().c_str(),
++						repo->is_enabled(),
++						url_str.c_str());
++				}				
++			}
++		}
++
++		libdnf5::Goal goal(*priv->base);
++		PkBitfield transaction_flags = 0;
++		
++		if (role == PK_ROLE_ENUM_INSTALL_PACKAGES || role == PK_ROLE_ENUM_UPDATE_PACKAGES || role == PK_ROLE_ENUM_REMOVE_PACKAGES) {
++			g_auto(GStrv) package_ids = NULL;
++			if (role == PK_ROLE_ENUM_REMOVE_PACKAGES) {
++				gboolean allow_deps, autoremove;
++				g_variant_get (params, "(t^asbb)", &transaction_flags, &package_ids, &allow_deps, &autoremove);
++				if (autoremove) priv->base->get_config().get_clean_requirements_on_remove_option().set(true);
++			} else {
++				g_variant_get (params, "(t^as)", &transaction_flags, &package_ids);
++			}
++			
++			auto pkgs = dnf5_resolve_package_ids(*priv->base, package_ids);
++			if (pkgs.empty() && role != PK_ROLE_ENUM_UPDATE_PACKAGES) {
++				pk_backend_job_error_code (job, PK_ERROR_ENUM_PACKAGE_NOT_FOUND, "No packages found");
++				pk_backend_job_finished (job);
++				return;
++			}
++			
++			for (auto &pkg : pkgs) {
++				if (role == PK_ROLE_ENUM_INSTALL_PACKAGES) goal.add_rpm_install(pkg);
++				else if (role == PK_ROLE_ENUM_REMOVE_PACKAGES) goal.add_rpm_remove(pkg);
++				else if (role == PK_ROLE_ENUM_UPDATE_PACKAGES) goal.add_rpm_upgrade(pkg);
++			}
++			if (role == PK_ROLE_ENUM_UPDATE_PACKAGES && pkgs.empty()) {
++				if (dnf5_force_distupgrade_on_upgrade (*priv->base))
++					goal.add_rpm_distro_sync();
++				else
++					goal.add_rpm_upgrade();
++			}
++			
++		} else if (role == PK_ROLE_ENUM_INSTALL_FILES) {
++			g_auto(GStrv) full_paths = NULL;
++			g_variant_get (params, "(t^as)", &transaction_flags, &full_paths);
++			std::vector<std::string> paths;
++			for (int i = 0; full_paths[i]; i++) paths.push_back(full_paths[i]);
++			auto added = priv->base->get_repo_sack()->add_cmdline_packages(paths);
++			for (const auto &p : added) goal.add_rpm_install(p.second);
++		} else if (role == PK_ROLE_ENUM_UPGRADE_SYSTEM) {
++			const gchar *distro_id = NULL;
++			PkUpgradeKindEnum upgrade_kind;
++			g_variant_get (params, "(t&su)", &transaction_flags, &distro_id, &upgrade_kind);
++			
++			// System upgrades require allowing erasure of packages (e.g. obsoletes)
++			// and downgrades if necessary to match repo versions.
++			goal.set_allow_erasing(true);
++			goal.add_rpm_distro_sync();
++			// System upgrades require processing groups to be upgraded
++			libdnf5::comps::GroupQuery q_groups(*priv->base);
++			q_groups.filter_installed(true);
++			for (const auto & grp : q_groups) {
++				goal.add_group_upgrade(grp.get_groupid());
++			}
++			libdnf5::comps::EnvironmentQuery q_environments(*priv->base);
++			q_environments.filter_installed(true);
++			for (const auto & env : q_environments) {
++				goal.add_group_upgrade(env.get_environmentid());
++            }
++		} else if (role == PK_ROLE_ENUM_REPAIR_SYSTEM) {
++			g_variant_get (params, "(t)", &transaction_flags);
++			if (pk_bitfield_contain (transaction_flags, PK_TRANSACTION_FLAG_ENUM_SIMULATE)) {
++				pk_backend_job_finished (job);
++				return;
++			}
++			std::filesystem::path rpm_db_path("/var/lib/rpm");
++			if (std::filesystem::exists(rpm_db_path) && std::filesystem::is_directory(rpm_db_path)) {
++				for (const auto& entry : std::filesystem::directory_iterator(rpm_db_path)) {
++					if (entry.is_regular_file() && entry.path().filename().string().starts_with("__db.")) {
++						std::filesystem::remove(entry.path());
++					}
++				}
++			}
++			pk_backend_job_finished (job);
++			return;
++		}
++		
++		pk_backend_job_set_status (job, PK_STATUS_ENUM_QUERY);
++		auto trans = goal.resolve();
++		auto problems = trans.get_transaction_problems();
++		if (!problems.empty()) {
++			std::string msg;
++			for (const auto &p : problems) msg += p + "; ";
++			pk_backend_job_error_code (job, PK_ERROR_ENUM_DEP_RESOLUTION_FAILED, "%s", msg.c_str());
++			pk_backend_job_finished (job);
++			return;
++		}
++
++		g_debug("Resolved transaction has %zu packages", trans.get_transaction_packages().size());
++		for (const auto &item : trans.get_transaction_packages()) {
++			g_debug("Transaction item: %s - %d", item.get_package().get_name().c_str(), (int)item.get_action());
++		}
++		
++		if (pk_bitfield_contain (transaction_flags, PK_TRANSACTION_FLAG_ENUM_SIMULATE)) {
++			std::set<std::string> continuing_names;
++			for (const auto &item : trans.get_transaction_packages()) {
++				auto action = item.get_action();
++				if (action == libdnf5::transaction::TransactionItemAction::UPGRADE ||
++				    action == libdnf5::transaction::TransactionItemAction::DOWNGRADE ||
++				    action == libdnf5::transaction::TransactionItemAction::REINSTALL) {
++					continuing_names.insert(item.get_package().get_name());
++				}
++			}
++
++			for (const auto &item : trans.get_transaction_packages()) {
++				auto action = item.get_action();
++				PkInfoEnum info = PK_INFO_ENUM_UNKNOWN;
++				if (action == libdnf5::transaction::TransactionItemAction::INSTALL) info = PK_INFO_ENUM_INSTALLING;
++				else if (action == libdnf5::transaction::TransactionItemAction::UPGRADE) info = PK_INFO_ENUM_UPDATING;
++				else if (action == libdnf5::transaction::TransactionItemAction::REMOVE) info = PK_INFO_ENUM_REMOVING;
++				else if (action == libdnf5::transaction::TransactionItemAction::REINSTALL) info = PK_INFO_ENUM_REINSTALLING;
++				else if (action == libdnf5::transaction::TransactionItemAction::DOWNGRADE) info = PK_INFO_ENUM_DOWNGRADING;
++				else if (action == libdnf5::transaction::TransactionItemAction::REPLACED) {
++					if (continuing_names.find(item.get_package().get_name()) == continuing_names.end()) {
++						info = PK_INFO_ENUM_OBSOLETING;
++					}
++				}
++				
++				if (info != PK_INFO_ENUM_UNKNOWN)
++					dnf5_emit_pkg(job, item.get_package(), info);
++			}
++			pk_backend_job_finished (job);
++			return;
++		}
++		
++		pk_backend_job_set_status (job, PK_STATUS_ENUM_DOWNLOAD);
++		
++		uint64_t total_download_size = 0;
++		for (const auto &item : trans.get_transaction_packages()) {
++			if (libdnf5::transaction::transaction_item_action_is_inbound(item.get_action())) {
++				auto pkg = item.get_package();
++				if (!pkg.is_available_locally()) {
++					total_download_size += pkg.get_download_size();
++				}
++			}
++		}
++		
++		priv->base->set_download_callbacks(std::make_unique<Dnf5DownloadCallbacks>(job, total_download_size));
++		trans.download();
++
++		if (pk_bitfield_contain (transaction_flags, PK_TRANSACTION_FLAG_ENUM_ONLY_DOWNLOAD)) {
++			// Iterate over transaction items and report them as if they were being processed
++			for (const auto &item : trans.get_transaction_packages()) {
++				auto action = item.get_action();
++				PkInfoEnum info = PK_INFO_ENUM_UNKNOWN;
++				
++				if (action == libdnf5::transaction::TransactionItemAction::INSTALL) info = PK_INFO_ENUM_INSTALLING;
++				else if (action == libdnf5::transaction::TransactionItemAction::UPGRADE) info = PK_INFO_ENUM_UPDATING;
++				else if (action == libdnf5::transaction::TransactionItemAction::REMOVE) info = PK_INFO_ENUM_REMOVING;
++				else if (action == libdnf5::transaction::TransactionItemAction::REINSTALL) info = PK_INFO_ENUM_REINSTALLING;
++				else if (action == libdnf5::transaction::TransactionItemAction::DOWNGRADE) info = PK_INFO_ENUM_DOWNGRADING;
++				
++				if (info != PK_INFO_ENUM_UNKNOWN)
++					dnf5_emit_pkg(job, item.get_package(), info);
++			}
++			pk_backend_job_finished (job);
++			return;
++		}
++
++		pk_backend_job_set_status (job, PK_STATUS_ENUM_RUNNING);
++		trans.set_callbacks(std::make_unique<Dnf5TransactionCallbacks>(job));
++		auto res = trans.run();
++		g_debug("Transaction run result: %s", libdnf5::base::Transaction::transaction_result_to_string(res).c_str());
++		if (res != libdnf5::base::Transaction::TransactionRunResult::SUCCESS) {
++			std::string msg;
++			for (const auto &p : trans.get_transaction_problems()) msg += p + "; ";
++			pk_backend_job_error_code (job, PK_ERROR_ENUM_TRANSACTION_ERROR, "Transaction failed: %s", msg.c_str());
++		}
++		
++		// Post-transaction base re-initialization to ensure state consistency
++		dnf5_setup_base (priv);
++		
++	} catch (const std::exception &e) {
++		pk_backend_job_error_code (job, PK_ERROR_ENUM_TRANSACTION_ERROR, "%s", e.what());
++	}
++	pk_backend_job_finished (job);
++}
++
++void
++dnf5_repo_thread (PkBackendJob *job, GVariant *params, gpointer user_data)
++{
++	PkBackend *backend = (PkBackend *) pk_backend_job_get_backend (job);
++	PkBackendDnf5Private *priv = (PkBackendDnf5Private *) pk_backend_get_user_data (backend);
++	PkRoleEnum role = pk_backend_job_get_role (job);
++	
++	g_autoptr(GMutexLocker) locker = g_mutex_locker_new (&priv->mutex);
++	
++	try {
++		if (role == PK_ROLE_ENUM_REPO_ENABLE || role == PK_ROLE_ENUM_REPO_SET_DATA) {
++			gchar *repo_id = NULL;
++			const gchar *parameter, *value;
++			if (role == PK_ROLE_ENUM_REPO_ENABLE) {
++				gboolean enabled;
++				g_variant_get (params, "(&sb)", &repo_id, &enabled);
++				parameter = "enabled";
++				value = enabled ? "1" : "0";
++			} else {
++				g_variant_get (params, "(&s&s&s)", &repo_id, &parameter, &value);
++			}
++			
++			libdnf5::repo::RepoQuery query(*priv->base);
++			query.filter_id(repo_id);
++			for (auto repo : query) {
++				if (g_strcmp0(parameter, "enabled") == 0) {
++					bool enable = (g_strcmp0(value, "1") == 0 || g_strcmp0(value, "true") == 0);
++					if (repo->is_enabled() == enable) {
++						pk_backend_job_error_code (job, PK_ERROR_ENUM_REPO_ALREADY_SET, "Repo already in state");
++						pk_backend_job_finished (job);
++						return;
++					}
++					if (enable) repo->enable(); else repo->disable();
++					libdnf5::ConfigParser parser;
++					parser.read(repo->get_repo_file_path());
++					parser.set_value(repo_id, "enabled", value);
++					parser.write(repo->get_repo_file_path(), false);
++				}
++			}
++			dnf5_setup_base (priv);
++		} else if (role == PK_ROLE_ENUM_REPO_REMOVE) {
++			gchar *repo_id = NULL;
++			gboolean autoremove;
++			PkBitfield transaction_flags;
++			g_variant_get (params, "(t&sb)", &transaction_flags, &repo_id, &autoremove);
++			
++			libdnf5::repo::RepoQuery query(*priv->base);
++			query.filter_id(repo_id);
++			std::string repo_file;
++			for (auto repo : query) {
++				repo_file = repo->get_repo_file_path();
++				break;
++			}
++			
++			if (repo_file.empty()) {
++				pk_backend_job_error_code (job, PK_ERROR_ENUM_REPO_NOT_FOUND, "Repo %s not found", repo_id);
++				pk_backend_job_finished (job);
++				return;
++			}
++			
++			g_debug("Repo %s uses file %s", repo_id, repo_file.c_str());
++
++			// Find all repos in the same file to track all packages that should be removed
++			std::vector<std::string> all_repo_ids;
++			libdnf5::repo::RepoQuery all_repos_query(*priv->base);
++			for (auto repo : all_repos_query) {
++				if (repo->get_repo_file_path() == repo_file) {
++					all_repo_ids.push_back(repo->get_id());
++				}
++			}
++
++			libdnf5::Goal goal(*priv->base);
++			
++			// Remove the owner package(s) of the repo file
++			libdnf5::rpm::PackageQuery owner_query(*priv->base);
++			owner_query.filter_installed();
++			owner_query.filter_file({repo_file});
++			
++			if (owner_query.empty()) {
++				g_debug("filter_file failed, trying provides for %s", repo_file.c_str());
++				owner_query.filter_provides(repo_file);
++			}
++
++			for (auto pkg : owner_query) {
++				g_debug("Adding owner package %s to removal goal", pkg.get_name().c_str());
++				goal.add_remove(pkg.get_name());
++			}
++			
++			// If autoremove is true, also remove packages installed from these repos
++			if (autoremove) {
++				libdnf5::rpm::PackageQuery inst_query(*priv->base);
++				inst_query.filter_installed();
++				for (auto pkg : inst_query) {
++					std::string from_repo = pkg.get_from_repo_id();
++					for (const auto &id : all_repo_ids) {
++						if (from_repo == id) {
++							goal.add_remove(pkg.get_name());
++							break;
++						}
++					}
++				}
++				// Also enable unused dependency removal
++				priv->base->get_config().get_clean_requirements_on_remove_option().set(true);
++			}
++			
++			pk_backend_job_set_status (job, PK_STATUS_ENUM_QUERY);
++			auto trans = goal.resolve();
++			g_debug("Transaction has %zu packages", trans.get_transaction_packages().size());
++			if (!trans.get_transaction_packages().empty()) {
++				for (const auto &item : trans.get_transaction_packages()) {
++					auto action = item.get_action();
++					PkInfoEnum info = PK_INFO_ENUM_UNKNOWN;
++					if (action == libdnf5::transaction::TransactionItemAction::INSTALL || action == libdnf5::transaction::TransactionItemAction::UPGRADE) info = PK_INFO_ENUM_INSTALLING;
++					else if (action == libdnf5::transaction::TransactionItemAction::REMOVE || action == libdnf5::transaction::TransactionItemAction::REPLACED) info = PK_INFO_ENUM_REMOVING;
++					else if (action == libdnf5::transaction::TransactionItemAction::REINSTALL) info = PK_INFO_ENUM_REINSTALLING;
++					else if (action == libdnf5::transaction::TransactionItemAction::DOWNGRADE) info = PK_INFO_ENUM_DOWNGRADING;
++					
++					dnf5_emit_pkg(job, item.get_package(), info);
++				}
++			}
++
++			if (!trans.get_transaction_problems().empty()) {
++				std::string msg;
++				for (const auto &p : trans.get_transaction_problems()) msg += p + "; ";
++				pk_backend_job_error_code (job, PK_ERROR_ENUM_DEP_RESOLUTION_FAILED, "%s", msg.c_str());
++				pk_backend_job_finished (job);
++				return;
++			}
++			
++			if (role == PK_ROLE_ENUM_REPO_REMOVE || !pk_bitfield_contain (transaction_flags, PK_TRANSACTION_FLAG_ENUM_SIMULATE)) {
++				pk_backend_job_set_status (job, PK_STATUS_ENUM_DOWNLOAD);
++				g_debug("Starting transaction download...");
++				trans.download();
++				pk_backend_job_set_status (job, PK_STATUS_ENUM_RUNNING);
++				g_debug("Starting transaction execution...");
++				trans.set_description("PackageKit: repo-remove " + std::string(repo_id));
++				auto res = trans.run();
++				g_debug("Transaction run result: %s", libdnf5::base::Transaction::transaction_result_to_string(res).c_str());
++				if (res != libdnf5::base::Transaction::TransactionRunResult::SUCCESS) {
++					std::vector<std::string> problems = trans.get_transaction_problems();
++					std::string msg;
++					for (const auto &p : problems) msg += p + "; ";
++					g_warning("Transaction failed: %s", msg.c_str());
++					pk_backend_job_error_code (job, PK_ERROR_ENUM_TRANSACTION_ERROR, "Transaction failed: %s", msg.c_str());
++				} else {
++					g_debug("Transaction completed successfully");
++				}
++				dnf5_setup_base (priv);
++			} else {
++				g_debug("Simulation completed, finishing job...");
++			}
++		}
++	} catch (const std::exception &e) {
++		g_warning("Exception in dnf5_repo_thread: %s", e.what());
++		pk_backend_job_error_code (job, PK_ERROR_ENUM_TRANSACTION_ERROR, "%s", e.what());
++	}
++	g_debug("Calling pk_backend_job_finished in dnf5_repo_thread");
++	pk_backend_job_finished (job);
++}
+diff --git a/backends/dnf5/dnf5-backend-thread.hpp b/backends/dnf5/dnf5-backend-thread.hpp
+new file mode 100644
+index 000000000..99c683150
+--- /dev/null
++++ b/backends/dnf5/dnf5-backend-thread.hpp
+@@ -0,0 +1,28 @@
++/* -*- Mode: C++; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*-
++ *
++ * Copyright (C) 2025 Neal Gompa <neal@gompa.dev>
++ *
++ * Licensed under the GNU General Public License Version 2
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, see <https://www.gnu.org/licenses/>.
++ */
++
++#pragma once
++
++#include <pk-backend.h>
++#include <glib.h>
++
++void dnf5_query_thread(PkBackendJob *job, GVariant *params, gpointer user_data);
++void dnf5_transaction_thread(PkBackendJob *job, GVariant *params, gpointer user_data);
++void dnf5_repo_thread(PkBackendJob *job, GVariant *params, gpointer user_data);
+diff --git a/backends/dnf5/dnf5-backend-utils.cpp b/backends/dnf5/dnf5-backend-utils.cpp
+new file mode 100644
+index 000000000..8ae910fc2
+--- /dev/null
++++ b/backends/dnf5/dnf5-backend-utils.cpp
+@@ -0,0 +1,593 @@
++/* -*- Mode: C++; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*-
++ *
++ * Copyright (C) 2025 Neal Gompa <neal@gompa.dev>
++ *
++ * Licensed under the GNU General Public License Version 2
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, see <https://www.gnu.org/licenses/>.
++ */
++
++#include "dnf5-backend-utils.hpp"
++#include <packagekit-glib2/pk-common-private.h>
++#include <packagekit-glib2/pk-update-detail.h>
++#include <libdnf5/conf/config_parser.hpp>
++#include <libdnf5/conf/const.hpp>
++#include <libdnf5/logger/logger.hpp>
++#include <libdnf5/rpm/arch.hpp>
++#include <libdnf5/repo/package_downloader.hpp>
++#include <libdnf5/base/goal.hpp>
++#include <libdnf5/advisory/advisory_query.hpp>
++#include <libdnf5/rpm/reldep_list.hpp>
++#include <libdnf5/base/transaction.hpp>
++#include <rpm/rpmlib.h>
++#include <glib/gstdio.h>
++#include <algorithm>
++#include <set>
++#include <queue>
++#include <filesystem>
++#include <map>
++#include "dnf5-backend-vendor.hpp"
++
++void
++dnf5_setup_base (PkBackendDnf5Private *priv, gboolean refresh, gboolean force, const char *releasever)
++{
++	priv->base = std::make_unique<libdnf5::Base>();
++
++	priv->base->load_config();
++
++	auto &config = priv->base->get_config();
++	if (priv->conf != NULL) {
++		g_autofree gchar *destdir = g_key_file_get_string (priv->conf, "Daemon", "DestDir", NULL);
++		if (destdir != NULL) {
++			config.get_installroot_option().set(libdnf5::Option::Priority::COMMANDLINE, destdir);
++		}
++
++		gboolean keep_cache = g_key_file_get_boolean (priv->conf, "Daemon", "KeepCache", NULL);
++		config.get_keepcache_option().set(libdnf5::Option::Priority::COMMANDLINE, keep_cache != FALSE);
++
++		g_autofree gchar *distro_version = NULL;
++		if (releasever == NULL) {
++			g_autoptr(GError) error = NULL;
++			distro_version = pk_get_distro_version_id (&error);
++		} else {
++			distro_version = g_strdup(releasever);
++		}
++
++		if (distro_version != NULL) {
++			priv->base->get_vars()->set("releasever", distro_version);
++			const char *root = (destdir != NULL) ? destdir : "/";
++			g_autofree gchar *cache_dir = g_build_filename (root, "/var/cache/PackageKit", distro_version, "metadata", NULL);
++			g_debug("Using cachedir: %s", cache_dir);
++			config.get_cachedir_option().set(libdnf5::Option::Priority::COMMANDLINE, cache_dir);
++		}
++
++		auto &optional_metadata_types = config.get_optional_metadata_types_option();
++		auto &optional_metadata_types_setting = optional_metadata_types.get_value();
++		if (!optional_metadata_types_setting.contains(libdnf5::METADATA_TYPE_ALL)) {
++			// Ensure all required repodata types are downloaded
++			if(!optional_metadata_types_setting.contains(libdnf5::METADATA_TYPE_COMPS)) {
++				optional_metadata_types.add_item(libdnf5::Option::Priority::RUNTIME, libdnf5::METADATA_TYPE_COMPS);
++			}
++			if(!optional_metadata_types_setting.contains(libdnf5::METADATA_TYPE_UPDATEINFO)) {
++				optional_metadata_types.add_item(libdnf5::Option::Priority::RUNTIME, libdnf5::METADATA_TYPE_UPDATEINFO);
++			}
++			if(!optional_metadata_types_setting.contains(libdnf5::METADATA_TYPE_APPSTREAM)) {
++				optional_metadata_types.add_item(libdnf5::Option::Priority::RUNTIME, libdnf5::METADATA_TYPE_APPSTREAM);
++			}
++		}
++		
++		// Always assume yes to avoid interactive prompts failing the transaction
++		// TODO: Drop this once InstallSignature is implemented
++		config.get_assumeyes_option().set(libdnf5::Option::Priority::COMMANDLINE, true);
++	}
++
++	priv->base->setup();
++	
++	// Ensure releasever is set AFTER setup() because setup() might run auto-detection and overwrite it.
++	if (priv->conf != NULL) {
++		g_autofree gchar *distro_version = NULL;
++		if (releasever == NULL) {
++			g_autoptr(GError) error = NULL;
++			distro_version = pk_get_distro_version_id (&error);
++		} else {
++			distro_version = g_strdup(releasever);
++		}
++		if (distro_version != NULL) {
++			priv->base->get_vars()->set("releasever", distro_version);
++		}
++	}
++	
++	auto repo_sack = priv->base->get_repo_sack();
++	repo_sack->create_repos_from_system_configuration();
++	repo_sack->get_system_repo();
++
++	if (refresh && force) {
++		libdnf5::repo::RepoQuery query(*priv->base);
++		for (auto repo : query) {
++			if (repo->is_enabled()) {
++				g_debug("Expiring repository metadata: %s", repo->get_id().c_str());
++				repo->expire();
++			}
++		}
++	}
++
++	g_debug("Loading repositories");
++	repo_sack->load_repos();
++
++	libdnf5::repo::RepoQuery query(*priv->base);
++	query.filter_enabled(true);
++	for (auto repo : query) {
++		g_debug("Enabled repository: %s", repo->get_id().c_str());
++	}
++}
++
++void
++dnf5_refresh_cache(PkBackendDnf5Private *priv, gboolean force)
++{
++	dnf5_setup_base(priv, TRUE, force);
++}
++
++PkInfoEnum
++dnf5_advisory_kind_to_info_enum (const std::string &type)
++{
++	if (type == "security")
++		return PK_INFO_ENUM_SECURITY;
++	if (type == "bugfix")
++		return PK_INFO_ENUM_BUGFIX;
++	if (type == "enhancement")
++		return PK_INFO_ENUM_ENHANCEMENT;
++	if (type == "newpackage")
++		return PK_INFO_ENUM_NORMAL;
++	return PK_INFO_ENUM_UNKNOWN;
++}
++
++PkInfoEnum
++dnf5_update_severity_to_enum (const std::string &severity)
++{
++	if (severity == "low")
++		return PK_INFO_ENUM_LOW;
++	if (severity == "moderate")
++		return PK_INFO_ENUM_NORMAL;
++	if (severity == "important")
++		return PK_INFO_ENUM_IMPORTANT;
++	if (severity == "critical")
++		return PK_INFO_ENUM_CRITICAL;
++	return PK_INFO_ENUM_UNKNOWN;
++}
++
++bool
++dnf5_force_distupgrade_on_upgrade (libdnf5::Base &base)
++{
++	std::vector<std::string> distroverpkg_names = { "system-release", "distribution-release" };
++	std::vector<std::string> distupgrade_provides = { "system-upgrade(dsync)", "product-upgrade() = dup" };
++
++	libdnf5::rpm::PackageQuery query(base);
++	query.filter_installed();
++	query.filter_name(distroverpkg_names);
++	query.filter_provides(distupgrade_provides);
++
++	return !query.empty();
++}
++
++bool
++dnf5_repo_is_devel (const libdnf5::repo::Repo &repo)
++{
++	std::string id = repo.get_id();
++	return (id.ends_with("-debuginfo") || id.ends_with("-debugsource") || id.ends_with("-devel"));
++}
++
++bool
++dnf5_repo_is_source (const libdnf5::repo::Repo &repo)
++{
++	std::string id = repo.get_id();
++	return id.ends_with("-source");
++}
++
++bool
++dnf5_repo_is_supported (const libdnf5::repo::Repo &repo)
++{
++	return dnf5_validate_supported_repo(repo.get_id());
++}
++
++bool
++dnf5_backend_pk_repo_filter (const libdnf5::repo::Repo &repo, PkBitfield filters)
++{
++	if (pk_bitfield_contain (filters, PK_FILTER_ENUM_DEVELOPMENT) && !dnf5_repo_is_devel (repo))
++		return false;
++	if (pk_bitfield_contain (filters, PK_FILTER_ENUM_NOT_DEVELOPMENT) && dnf5_repo_is_devel (repo))
++		return false;
++
++	if (pk_bitfield_contain (filters, PK_FILTER_ENUM_SOURCE) && !dnf5_repo_is_source (repo))
++		return false;
++	if (pk_bitfield_contain (filters, PK_FILTER_ENUM_NOT_SOURCE) && dnf5_repo_is_source (repo))
++		return false;
++
++	if (pk_bitfield_contain (filters, PK_FILTER_ENUM_INSTALLED) && !repo.is_enabled())
++		return false;
++	if (pk_bitfield_contain (filters, PK_FILTER_ENUM_NOT_INSTALLED) && repo.is_enabled())
++		return false;
++
++	if (pk_bitfield_contain (filters, PK_FILTER_ENUM_SUPPORTED) && !dnf5_repo_is_supported (repo))
++		return false;
++	if (pk_bitfield_contain (filters, PK_FILTER_ENUM_NOT_SUPPORTED) && dnf5_repo_is_supported (repo))
++		return false;
++
++	return true;
++}
++
++bool
++dnf5_package_is_gui (const libdnf5::rpm::Package &pkg)
++{
++	for (const auto &provide : pkg.get_provides()) {
++		std::string name = provide.get_name();
++		if (name.starts_with("application("))
++			return true;
++	}
++	return false;
++}
++
++bool
++dnf5_package_filter (const libdnf5::rpm::Package &pkg, PkBitfield filters)
++{
++	if (pk_bitfield_contain (filters, PK_FILTER_ENUM_GUI) && !dnf5_package_is_gui (pkg))
++		return false;
++	if (pk_bitfield_contain (filters, PK_FILTER_ENUM_NOT_GUI) && dnf5_package_is_gui (pkg))
++		return false;
++
++	if (pk_bitfield_contain (filters, PK_FILTER_ENUM_DOWNLOADED) && !pkg.is_available_locally())
++		return false;
++	if (pk_bitfield_contain (filters, PK_FILTER_ENUM_NOT_DOWNLOADED) && pkg.is_available_locally())
++		return false;
++
++	if (pk_bitfield_contain (filters, PK_FILTER_ENUM_DEVELOPMENT) ||
++	    pk_bitfield_contain (filters, PK_FILTER_ENUM_NOT_DEVELOPMENT) ||
++	    pk_bitfield_contain (filters, PK_FILTER_ENUM_SOURCE) ||
++	    pk_bitfield_contain (filters, PK_FILTER_ENUM_NOT_SOURCE) ||
++	    pk_bitfield_contain (filters, PK_FILTER_ENUM_SUPPORTED) ||
++	    pk_bitfield_contain (filters, PK_FILTER_ENUM_NOT_SUPPORTED)) {
++		auto repo_weak = pkg.get_repo();
++		if (repo_weak.is_valid()) {
++			if (!dnf5_backend_pk_repo_filter(*repo_weak, filters))
++				return false;
++		}
++	}
++
++	return true;
++}
++
++std::vector<libdnf5::rpm::Package>
++dnf5_process_dependency (libdnf5::Base &base, const libdnf5::rpm::Package &pkg, PkRoleEnum role, gboolean recursive)
++{
++	std::vector<libdnf5::rpm::Package> results;
++	std::set<std::string> visited;
++	std::queue<libdnf5::rpm::Package> queue;
++	queue.push(pkg);
++	visited.insert(pkg.get_name() + ";" + pkg.get_evr() + ";" + pkg.get_arch());
++	
++	while (!queue.empty()) {
++		auto curr = queue.front();
++		queue.pop();
++		libdnf5::rpm::ReldepList reldeps(base);
++		if (role == PK_ROLE_ENUM_DEPENDS_ON) reldeps = curr.get_requires();
++		else reldeps = curr.get_provides();
++		
++		for (const auto &reldep : reldeps) {
++			std::string req = reldep.to_string();
++			libdnf5::rpm::PackageQuery query(base);
++			if (role == PK_ROLE_ENUM_DEPENDS_ON) query.filter_provides(req);
++			else query.filter_requires(req);
++			
++			// Filter for latest version and supported architectures to avoid duplicates
++			// for available packages
++			query.filter_latest_evr();
++			query.filter_arch(libdnf5::rpm::get_supported_arches());
++			
++			for (const auto &res : query) {
++				std::string res_nevra = res.get_name() + ";" + res.get_evr() + ";" + res.get_arch();
++				if (visited.find(res_nevra) == visited.end()) {
++					visited.insert(res_nevra);
++					results.push_back(res);
++					if (recursive) queue.push(res);
++				}
++			}
++		}
++	}
++	return results;
++}
++
++void
++dnf5_emit_pkg (PkBackendJob *job, const libdnf5::rpm::Package &pkg, PkInfoEnum info, PkInfoEnum severity)
++{
++	if (info == PK_INFO_ENUM_UNKNOWN) {
++		info = PK_INFO_ENUM_AVAILABLE;
++		if (pkg.get_install_time() > 0) {
++			info = PK_INFO_ENUM_INSTALLED;
++		}
++	}
++	
++	std::string evr = pkg.get_evr();
++	std::string repo_id = pkg.get_repo_id();
++	if (pkg.get_install_time() > 0) {
++		repo_id = "installed";
++	}
++	
++	std::string package_id = pkg.get_name() + ";" + evr + ";" + pkg.get_arch() + ";" + repo_id;
++	if (severity != PK_INFO_ENUM_UNKNOWN) {
++		pk_backend_job_package_full (job, info, package_id.c_str(), pkg.get_summary().c_str(), severity);
++	} else {
++		pk_backend_job_package (job, info, package_id.c_str(), pkg.get_summary().c_str());
++	}
++}
++
++void
++dnf5_sort_and_emit (PkBackendJob *job, std::vector<libdnf5::rpm::Package> &pkgs)
++{
++	std::sort(pkgs.begin(), pkgs.end(), [](const libdnf5::rpm::Package &a, const libdnf5::rpm::Package &b) {
++		bool a_installed = (a.get_install_time() > 0);
++		bool b_installed = (b.get_install_time() > 0);
++		if (a_installed != b_installed) return a_installed; 
++		if (a.get_name() != b.get_name()) return a.get_name() < b.get_name();
++		if (a.get_arch() != b.get_arch()) return a.get_arch() < b.get_arch();
++		return a.get_evr() < b.get_evr();
++	});
++
++	std::set<std::string> seen_nevras;
++	for (auto &pkg : pkgs) {
++		std::string nevra = pkg.get_name() + ";" + pkg.get_evr() + ";" + pkg.get_arch();
++		if (seen_nevras.find(nevra) == seen_nevras.end()) {
++			dnf5_emit_pkg(job, pkg);
++			seen_nevras.insert(nevra);
++		}
++	}
++}
++
++void
++dnf5_apply_filters (libdnf5::Base &base, libdnf5::rpm::PackageQuery &query, PkBitfield filters)
++{
++	gboolean installed = pk_bitfield_contain (filters, PK_FILTER_ENUM_INSTALLED);
++	gboolean available = pk_bitfield_contain (filters, PK_FILTER_ENUM_NOT_INSTALLED);
++
++	if (installed && !available) {
++		query.filter_installed();
++	} else if (!installed && available) {
++		query.filter_available();
++	}
++
++	if (pk_bitfield_contain (filters, PK_FILTER_ENUM_ARCH)) {
++		auto vars = base.get_vars();
++		if (vars.is_valid()) {
++			std::string arch = vars->get_value("arch");
++			if (!arch.empty()) {
++				query.filter_arch({arch, "noarch"});
++			} else {
++				query.filter_arch(libdnf5::rpm::get_supported_arches());
++			}
++		}
++	}
++
++	if (pk_bitfield_contain (filters, PK_FILTER_ENUM_NEWEST)) {
++		query.filter_latest_evr();
++	}
++}
++
++std::vector<libdnf5::rpm::Package>
++dnf5_resolve_package_ids(libdnf5::Base &base, gchar **package_ids)
++{
++	std::vector<libdnf5::rpm::Package> pkgs;
++	if (!package_ids) return pkgs;
++	
++	for (int i = 0; package_ids[i] != NULL; i++) {
++		// Check if this is a simple package name (no semicolons) or a full package ID
++		if (strchr(package_ids[i], ';') == NULL) {
++			// Simple package name - search by name and get latest available
++			try {
++				g_debug("Resolving simple package name: %s", package_ids[i]);
++				libdnf5::rpm::PackageQuery query(base);
++				query.filter_name(std::string(package_ids[i]), libdnf5::sack::QueryCmp::EQ);
++				query.filter_available();
++				query.filter_latest_evr();
++				query.filter_arch(libdnf5::rpm::get_supported_arches());
++
++				
++				if (!query.empty()) {
++					for (auto pkg : query) {
++						g_debug("Found package: name=%s, evr=%s, arch=%s, repo=%s",
++							pkg.get_name().c_str(), pkg.get_evr().c_str(), 
++							pkg.get_arch().c_str(), pkg.get_repo_id().c_str());
++						pkgs.push_back(pkg);
++						break; // Take the first match
++					}
++				} else {
++					g_debug("No available package found for name: %s", package_ids[i]);
++				}
++			} catch (const std::exception &e) {
++				g_debug("Exception resolving package name %s: %s", package_ids[i], e.what());
++			}
++			continue;
++		}
++		
++		// Full package ID - use existing logic
++		g_auto(GStrv) split = pk_package_id_split(package_ids[i]);
++		if (!split) continue;
++		
++		try {
++			libdnf5::rpm::PackageQuery query(base);
++			g_debug("Resolving package ID: name=%s, version=%s, arch=%s, repo=%s",
++				split[PK_PACKAGE_ID_NAME], split[PK_PACKAGE_ID_VERSION],
++				split[PK_PACKAGE_ID_ARCH], split[PK_PACKAGE_ID_DATA]);
++			query.filter_name(split[PK_PACKAGE_ID_NAME]);
++			query.filter_evr(split[PK_PACKAGE_ID_VERSION]);
++			query.filter_arch(split[PK_PACKAGE_ID_ARCH]);
++			
++			if (g_strcmp0(split[PK_PACKAGE_ID_DATA], "installed") == 0) {
++				query.filter_installed();
++			} else {
++				 query.filter_repo_id(split[PK_PACKAGE_ID_DATA]);
++			}
++			
++			if (query.empty()) {
++				g_debug("No exact match for ID: %s. Listing similar packages...", package_ids[i]);
++				libdnf5::rpm::PackageQuery fallback(base);
++				fallback.filter_name(split[PK_PACKAGE_ID_NAME]);
++				for (const auto &p : fallback) {
++					g_debug("Found similar package: name=%s, evr=%s, arch=%s, repo=%s",
++						p.get_name().c_str(), p.get_evr().c_str(), p.get_arch().c_str(), p.get_repo_id().c_str());
++				}
++			}
++
++			for (auto pkg : query) {
++				pkgs.push_back(pkg);
++				break;
++			}
++		} catch (const std::exception &e) {
++			g_debug("Exception resolving package ID %s: %s", package_ids[i], e.what());
++		}
++	}
++	return pkgs;
++}
++
++
++void
++dnf5_remove_old_cache_directories (PkBackend *backend, const gchar *release_ver)
++{
++	PkBackendDnf5Private *priv = (PkBackendDnf5Private *) pk_backend_get_user_data (backend);
++	g_assert (priv->conf != NULL);
++
++	/* cache cleanup disabled? */
++	if (g_key_file_get_boolean (priv->conf, "Daemon", "KeepCache", NULL)) {
++		g_debug ("KeepCache config option set; skipping old cache directory cleanup");
++		return;
++	}
++
++	/* only do cache cleanup for regular installs */
++	g_autofree gchar *destdir = g_key_file_get_string (priv->conf, "Daemon", "DestDir", NULL);
++	if (destdir != NULL) {
++		g_debug ("DestDir config option set; skipping old cache directory cleanup");
++		return;
++	}
++
++	std::filesystem::path cache_path("/var/cache/PackageKit");
++	if (!std::filesystem::exists(cache_path) || !std::filesystem::is_directory(cache_path))
++		return;
++
++	/* look at each subdirectory */
++	for (const auto &entry : std::filesystem::directory_iterator(cache_path)) {
++		if (!entry.is_directory())
++			continue;
++
++		std::string filename = entry.path().filename().string();
++
++		/* is the version older than the current release ver? */
++		if (rpmvercmp (filename.c_str(), release_ver) < 0) {
++			g_debug ("removing old cache directory %s", entry.path().c_str());
++			std::error_code ec;
++			std::filesystem::remove_all(entry.path(), ec);
++			if (ec)
++				g_warning ("failed to remove directory %s: %s", entry.path().c_str(), ec.message().c_str());
++		}
++	}
++}
++
++Dnf5DownloadCallbacks::Dnf5DownloadCallbacks(PkBackendJob *job, uint64_t total_size)
++    : job(job), total_size(total_size), finished_size(0), next_id(1) {}
++
++void *
++Dnf5DownloadCallbacks::add_new_download(void *user_data, const char *description, double total_to_download)
++{
++	std::lock_guard<std::mutex> lock(mutex);
++	void *id = reinterpret_cast<void*>(next_id++);
++	item_progress[id] = 0;
++	return id;
++}
++
++int
++Dnf5DownloadCallbacks::progress(void *user_cb_data, double total_to_download, double downloaded)
++{
++	std::lock_guard<std::mutex> lock(mutex);
++	item_progress[user_cb_data] = downloaded;
++	
++	if (total_size > 0) {
++		double current_total = finished_size;
++		for (auto const& [id, prog] : item_progress) {
++			current_total += prog;
++		}
++		pk_backend_job_set_percentage(job, (uint)(current_total * 100 / total_size));
++	}
++	return 0;
++}
++
++int
++Dnf5DownloadCallbacks::end(void *user_cb_data, TransferStatus status, const char *msg)
++{
++	std::lock_guard<std::mutex> lock(mutex);
++	finished_size += item_progress[user_cb_data];
++	item_progress.erase(user_cb_data);
++	return 0;
++}
++
++Dnf5TransactionCallbacks::Dnf5TransactionCallbacks(PkBackendJob *job)
++    : job(job), total_items(0), current_item_index(0) {}
++
++void
++Dnf5TransactionCallbacks::before_begin(uint64_t total)
++{
++	total_items = total;
++}
++
++void
++Dnf5TransactionCallbacks::elem_progress(const libdnf5::base::TransactionPackage &item, uint64_t amount, uint64_t total)
++{
++	current_item_index = amount;
++}
++
++void
++Dnf5TransactionCallbacks::install_progress(const libdnf5::base::TransactionPackage &item, uint64_t amount, uint64_t total)
++{
++	if (total_items > 0 && total > 0) {
++		double item_frac = (double)amount / total;
++		pk_backend_job_set_percentage(job, (uint)((current_item_index + item_frac) * 100 / total_items));
++	}
++}
++
++void
++Dnf5TransactionCallbacks::install_start(const libdnf5::base::TransactionPackage &item, uint64_t total)
++{
++	auto action = item.get_action();
++	PkInfoEnum info = PK_INFO_ENUM_INSTALLING;
++	if (action == libdnf5::transaction::TransactionItemAction::UPGRADE ||
++	    action == libdnf5::transaction::TransactionItemAction::DOWNGRADE) {
++		info = PK_INFO_ENUM_UPDATING;
++	}
++	dnf5_emit_pkg(job, item.get_package(), info);
++}
++
++void
++Dnf5TransactionCallbacks::uninstall_progress(const libdnf5::base::TransactionPackage &item, uint64_t amount, uint64_t total)
++{
++	if (total_items > 0 && total > 0) {
++		double item_frac = (double)amount / total;
++		pk_backend_job_set_percentage(job, (uint)((current_item_index + item_frac) * 100 / total_items));
++	}
++}
++
++void
++Dnf5TransactionCallbacks::uninstall_start(const libdnf5::base::TransactionPackage &item, uint64_t total)
++{
++	auto action = item.get_action();
++	PkInfoEnum info = PK_INFO_ENUM_REMOVING;
++	if (action == libdnf5::transaction::TransactionItemAction::REPLACED) {
++		info = PK_INFO_ENUM_CLEANUP;
++	}
++	dnf5_emit_pkg(job, item.get_package(), info);
++}
+diff --git a/backends/dnf5/dnf5-backend-utils.hpp b/backends/dnf5/dnf5-backend-utils.hpp
+new file mode 100644
+index 000000000..4b4d0c23a
+--- /dev/null
++++ b/backends/dnf5/dnf5-backend-utils.hpp
+@@ -0,0 +1,91 @@
++/* -*- Mode: C++; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*-
++ *
++ * Copyright (C) 2025 Neal Gompa <neal@gompa.dev>
++ *
++ * Licensed under the GNU General Public License Version 2
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, see <https://www.gnu.org/licenses/>.
++ */
++
++#pragma once
++
++#include <pk-backend.h>
++#include <libdnf5/base/base.hpp>
++#include <libdnf5/rpm/package_query.hpp>
++#include <libdnf5/repo/repo_query.hpp>
++#include <libdnf5/repo/download_callbacks.hpp>
++#include <libdnf5/rpm/transaction_callbacks.hpp>
++#include <glib.h>
++#include <memory>
++#include <mutex>
++#include <string>
++#include <vector>
++
++// Private data structures
++typedef struct {
++	std::unique_ptr<libdnf5::Base> base;
++	GKeyFile *conf;
++	GMutex mutex;
++} PkBackendDnf5Private;
++
++void dnf5_setup_base(PkBackendDnf5Private *priv, gboolean refresh = FALSE, gboolean force = FALSE, const char *releasever = nullptr);
++void dnf5_refresh_cache(PkBackendDnf5Private *priv, gboolean force);
++PkInfoEnum dnf5_advisory_kind_to_info_enum(const std::string &type);
++PkInfoEnum dnf5_update_severity_to_enum(const std::string &severity);
++bool dnf5_force_distupgrade_on_upgrade(libdnf5::Base &base);
++bool dnf5_repo_is_devel(const libdnf5::repo::Repo &repo);
++bool dnf5_repo_is_source(const libdnf5::repo::Repo &repo);
++bool dnf5_repo_is_supported(const libdnf5::repo::Repo &repo);
++bool dnf5_backend_pk_repo_filter(const libdnf5::repo::Repo &repo, PkBitfield filters);
++bool dnf5_package_is_gui(const libdnf5::rpm::Package &pkg);
++bool dnf5_package_filter(const libdnf5::rpm::Package &pkg, PkBitfield filters);
++std::vector<libdnf5::rpm::Package> dnf5_process_dependency(libdnf5::Base &base, const libdnf5::rpm::Package &pkg, PkRoleEnum role, gboolean recursive);
++void dnf5_emit_pkg(PkBackendJob *job, const libdnf5::rpm::Package &pkg, PkInfoEnum info = PK_INFO_ENUM_UNKNOWN, PkInfoEnum severity = PK_INFO_ENUM_UNKNOWN);
++void dnf5_sort_and_emit(PkBackendJob *job, std::vector<libdnf5::rpm::Package> &pkgs);
++void dnf5_apply_filters(libdnf5::Base &base, libdnf5::rpm::PackageQuery &query, PkBitfield filters);
++std::vector<libdnf5::rpm::Package> dnf5_resolve_package_ids(libdnf5::Base &base, gchar **package_ids);
++
++
++
++void dnf5_remove_old_cache_directories(PkBackend *backend, const gchar *release_ver);
++
++class Dnf5DownloadCallbacks : public libdnf5::repo::DownloadCallbacks {
++public:
++	explicit Dnf5DownloadCallbacks(PkBackendJob *job, uint64_t total_size = 0);
++	void * add_new_download(void *user_data, const char *description, double total_to_download) override;
++	int progress(void *user_cb_data, double total_to_download, double downloaded) override;
++	int end(void *user_cb_data, TransferStatus status, const char *msg) override;
++private:
++	PkBackendJob *job;
++	uint64_t total_size;
++	double finished_size;
++	std::map<void*, double> item_progress;
++	std::mutex mutex;
++	uint64_t next_id;
++};
++
++class Dnf5TransactionCallbacks : public libdnf5::rpm::TransactionCallbacks {
++public:
++	explicit Dnf5TransactionCallbacks(PkBackendJob *job);
++	void before_begin(uint64_t total) override;
++	void elem_progress(const libdnf5::base::TransactionPackage &item, uint64_t amount, uint64_t total) override;
++	void install_progress(const libdnf5::base::TransactionPackage &item, uint64_t amount, uint64_t total) override;
++	void install_start(const libdnf5::base::TransactionPackage &item, uint64_t total) override;
++	void uninstall_progress(const libdnf5::base::TransactionPackage &item, uint64_t amount, uint64_t total) override;
++	void uninstall_start(const libdnf5::base::TransactionPackage &item, uint64_t total) override;
++private:
++	PkBackendJob *job;
++	uint64_t total_items;
++	uint64_t current_item_index;
++};
+diff --git a/backends/dnf5/dnf5-backend-vendor-fedora.cpp b/backends/dnf5/dnf5-backend-vendor-fedora.cpp
+new file mode 100644
+index 000000000..5b1ac9542
+--- /dev/null
++++ b/backends/dnf5/dnf5-backend-vendor-fedora.cpp
+@@ -0,0 +1,35 @@
++/* -*- Mode: C++; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*-
++ *
++ * Copyright (C) 2025 Neal Gompa <neal@gompa.dev>
++ *
++ * Licensed under the GNU General Public License Version 2
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, see <https://www.gnu.org/licenses/>.
++ */
++
++#include "dnf5-backend-vendor.hpp"
++#include <vector>
++#include <string>
++#include <algorithm>
++
++bool dnf5_validate_supported_repo(const std::string &id)
++{
++	const std::vector<std::string> default_repos = {
++		"fedora",
++		"rawhide",
++		"updates"
++	};
++
++	return std::find(default_repos.begin(), default_repos.end(), id) != default_repos.end();
++}
+diff --git a/backends/dnf5/dnf5-backend-vendor-mageia.cpp b/backends/dnf5/dnf5-backend-vendor-mageia.cpp
+new file mode 100644
+index 000000000..e4c89659f
+--- /dev/null
++++ b/backends/dnf5/dnf5-backend-vendor-mageia.cpp
+@@ -0,0 +1,47 @@
++/* -*- Mode: C++; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*-
++ *
++ * Copyright (C) 2025 Neal Gompa <neal@gompa.dev>
++ *
++ * Licensed under the GNU General Public License Version 2
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, see <https://www.gnu.org/licenses/>.
++ */
++
++#include "dnf5-backend-vendor.hpp"
++#include <vector>
++#include <string>
++
++bool dnf5_validate_supported_repo(const std::string &id)
++{
++	const std::vector<std::string> valid_sourcesect = { "", "-core", "-nonfree", "-tainted" };
++	const std::vector<std::string> valid_sourcetype = { "", "-debuginfo", "-source" };
++	const std::vector<std::string> valid_arch = { "x86_64", "i586", "armv7hl", "aarch64" };
++	const std::vector<std::string> valid_stage = { "", "-updates", "-testing" };
++	const std::vector<std::string> valid = { "mageia", "updates", "testing", "cauldron" };
++
++	for (const auto &v : valid) {
++		for (const auto &s : valid_stage) {
++			for (const auto &a : valid_arch) {
++				for (const auto &sec : valid_sourcesect) {
++					for (const auto &t : valid_sourcetype) {
++						if (id == v + s + "-" + a + sec + t) {
++							return true;
++						}
++					}
++				}
++			}
++		}
++	}
++	return false;
++}
+diff --git a/backends/dnf5/dnf5-backend-vendor-openmandriva.cpp b/backends/dnf5/dnf5-backend-vendor-openmandriva.cpp
+new file mode 100644
+index 000000000..6a3665aa9
+--- /dev/null
++++ b/backends/dnf5/dnf5-backend-vendor-openmandriva.cpp
+@@ -0,0 +1,47 @@
++/* -*- Mode: C++; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*-
++ *
++ * Copyright (C) 2025 Neal Gompa <neal@gompa.dev>
++ *
++ * Licensed under the GNU General Public License Version 2
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, see <https://www.gnu.org/licenses/>.
++ */
++
++#include "dnf5-backend-vendor.hpp"
++#include <vector>
++#include <string>
++
++bool dnf5_validate_supported_repo(const std::string &id)
++{
++	const std::vector<std::string> valid_sourcesect = { "", "-extra", "-restricted", "-non-free" };
++	const std::vector<std::string> valid_sourcetype = { "", "-debuginfo", "-source" };
++	const std::vector<std::string> valid_arch = { "znver1", "x86_64", "i686", "aarch64", "armv7hnl", "riscv64" };
++	const std::vector<std::string> valid_stage = { "", "-updates", "-testing" };
++	const std::vector<std::string> valid = { "openmandriva", "updates", "testing", "cooker", "rolling", "rock", "release" };
++
++	for (const auto &v : valid) {
++		for (const auto &s : valid_stage) {
++			for (const auto &a : valid_arch) {
++				for (const auto &sec : valid_sourcesect) {
++					for (const auto &t : valid_sourcetype) {
++						if (id == v + s + "-" + a + sec + t) {
++							return true;
++						}
++					}
++				}
++			}
++		}
++	}
++	return false;
++}
+diff --git a/backends/dnf5/dnf5-backend-vendor-opensuse.cpp b/backends/dnf5/dnf5-backend-vendor-opensuse.cpp
+new file mode 100644
+index 000000000..e50cfcd40
+--- /dev/null
++++ b/backends/dnf5/dnf5-backend-vendor-opensuse.cpp
+@@ -0,0 +1,44 @@
++/* -*- Mode: C++; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*-
++ *
++ * Copyright (C) 2025 Neal Gompa <neal@gompa.dev>
++ *
++ * Licensed under the GNU General Public License Version 2
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, see <https://www.gnu.org/licenses/>.
++ */
++
++#include "dnf5-backend-vendor.hpp"
++#include <vector>
++#include <string>
++
++bool dnf5_validate_supported_repo(const std::string &id)
++{
++	const std::vector<std::string> valid_sourcesect = { "-oss", "-non-oss" };
++	const std::vector<std::string> valid_sourcetype = { "", "-debuginfo", "-source" };
++	const std::vector<std::string> valid_sourcechan = { "", "-update" };
++	const std::vector<std::string> valid = { "opensuse-tumbleweed", "opensuse-leap" };
++
++	for (const auto &v : valid) {
++		for (const auto &sec : valid_sourcesect) {
++			for (const auto &c : valid_sourcechan) {
++				for (const auto &t : valid_sourcetype) {
++					if (id == v + sec + c + t) {
++						return true;
++					}
++				}
++			}
++		}
++	}
++	return false;
++}
+diff --git a/backends/dnf5/dnf5-backend-vendor-rosa.cpp b/backends/dnf5/dnf5-backend-vendor-rosa.cpp
+new file mode 100644
+index 000000000..98afe3f86
+--- /dev/null
++++ b/backends/dnf5/dnf5-backend-vendor-rosa.cpp
+@@ -0,0 +1,44 @@
++/* -*- Mode: C++; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*-
++ *
++ * Copyright (C) 2025 Neal Gompa <neal@gompa.dev>
++ *
++ * Licensed under the GNU General Public License Version 2
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, see <https://www.gnu.org/licenses/>.
++ */
++
++#include "dnf5-backend-vendor.hpp"
++#include <vector>
++#include <string>
++
++bool dnf5_validate_supported_repo(const std::string &id)
++{
++	const std::vector<std::string> valid_sourcesect = { "", "-main", "-contrib", "-non-free" };
++	const std::vector<std::string> valid_sourcetype = { "", "-debuginfo", "-source" };
++	const std::vector<std::string> valid_arch = { "x86_64", "i686", "aarch64", "loongarch64", "riscv64", "e2kv4", "e2kv5", "e2kv6" };
++	const std::vector<std::string> valid = { "rosa", "updates", "testing" };
++
++	for (const auto &v : valid) {
++		for (const auto &a : valid_arch) {
++			for (const auto &sec : valid_sourcesect) {
++				for (const auto &t : valid_sourcetype) {
++					if (id == v + "-" + a + sec + t) {
++						return true;
++					}
++				}
++			}
++		}
++	}
++	return false;
++}
+diff --git a/backends/dnf5/dnf5-backend-vendor.hpp b/backends/dnf5/dnf5-backend-vendor.hpp
+new file mode 100644
+index 000000000..3c9d254b4
+--- /dev/null
++++ b/backends/dnf5/dnf5-backend-vendor.hpp
+@@ -0,0 +1,25 @@
++/* -*- Mode: C++; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*-
++ *
++ * Copyright (C) 2025 Neal Gompa <neal@gompa.dev>
++ *
++ * Licensed under the GNU General Public License Version 2
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, see <https://www.gnu.org/licenses/>.
++ */
++
++#pragma once
++
++#include <string>
++
++bool dnf5_validate_supported_repo(const std::string &id);
+diff --git a/backends/dnf5/meson.build b/backends/dnf5/meson.build
+new file mode 100644
+index 000000000..efb2b6be3
+--- /dev/null
++++ b/backends/dnf5/meson.build
+@@ -0,0 +1,27 @@
++
++add_languages('cpp', native: false)
++
++dnf5_dep = dependency('libdnf5', version: '>=5.2.17.0')
++libdnf5_version = dnf5_dep.version().split('.')
++
++shared_module(
++  'pk_backend_dnf5',
++  'pk-backend-dnf5.cpp',
++  'dnf5-backend-utils.cpp',
++  'dnf5-backend-thread.cpp',
++  'dnf5-backend-vendor-@0@.cpp'.format(get_option('dnf_vendor')),
++  dependencies: [
++    dnf5_dep,
++    packagekit_glib2_dep,
++  ],
++  cpp_args: [
++    '-std=c++20',
++    '-DLIBDNF5_VERSION_MAJOR=' + libdnf5_version[0],
++    '-DLIBDNF5_VERSION_MINOR=' + libdnf5_version[1],
++    '-DLIBDNF5_VERSION_PATCH=' + libdnf5_version[2],
++    '-DG_LOG_DOMAIN="PackageKit-DNF5"',
++  ],
++  include_directories: packagekit_src_include,
++  install: true,
++  install_dir: pk_plugin_dir,
++)
+diff --git a/backends/dnf5/pk-backend-dnf5.cpp b/backends/dnf5/pk-backend-dnf5.cpp
+new file mode 100644
+index 000000000..421ba61d1
+--- /dev/null
++++ b/backends/dnf5/pk-backend-dnf5.cpp
+@@ -0,0 +1,367 @@
++/* -*- Mode: C++; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*-
++ *
++ * Copyright (C) 2025 Neal Gompa <neal@gompa.dev>
++ *
++ * Licensed under the GNU General Public License Version 2
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, see <https://www.gnu.org/licenses/>.
++ */
++
++#include "dnf5-backend-utils.hpp"
++#include "dnf5-backend-thread.hpp"
++#include <packagekit-glib2/pk-common-private.h>
++#include <packagekit-glib2/pk-debug.h>
++
++// Backend API Implementation
++
++extern "C" {
++
++const char *
++pk_backend_get_description (PkBackend *backend)
++{
++	return "DNF5 package manager backend";
++}
++
++const char *
++pk_backend_get_author (PkBackend *backend)
++{
++	return "Neal Gompa <neal@gompa.dev>";
++}
++
++gboolean
++pk_backend_supports_parallelization (PkBackend *backend)
++{
++	return TRUE;
++}
++
++gchar **
++pk_backend_get_mime_types (PkBackend *backend)
++{
++	const gchar *mime_types[] = { "application/x-rpm", NULL };
++	return g_strdupv ((gchar **) mime_types);
++}
++
++PkBitfield
++pk_backend_get_roles (PkBackend *backend)
++{
++	return pk_bitfield_from_enums (
++		PK_ROLE_ENUM_DEPENDS_ON,
++		PK_ROLE_ENUM_DOWNLOAD_PACKAGES,
++		PK_ROLE_ENUM_GET_DETAILS,
++		PK_ROLE_ENUM_GET_DETAILS_LOCAL,
++		PK_ROLE_ENUM_GET_FILES,
++		PK_ROLE_ENUM_GET_FILES_LOCAL,
++		PK_ROLE_ENUM_GET_PACKAGES,
++		PK_ROLE_ENUM_GET_REPO_LIST,
++		PK_ROLE_ENUM_INSTALL_FILES,
++		PK_ROLE_ENUM_INSTALL_PACKAGES,
++		PK_ROLE_ENUM_REMOVE_PACKAGES,
++		PK_ROLE_ENUM_UPDATE_PACKAGES,
++		PK_ROLE_ENUM_REPAIR_SYSTEM,
++		PK_ROLE_ENUM_UPGRADE_SYSTEM,
++		PK_ROLE_ENUM_REPO_ENABLE,
++		PK_ROLE_ENUM_REPO_REMOVE,
++		PK_ROLE_ENUM_REPO_SET_DATA,
++		PK_ROLE_ENUM_REQUIRED_BY,
++		PK_ROLE_ENUM_RESOLVE,
++		PK_ROLE_ENUM_REFRESH_CACHE,
++		PK_ROLE_ENUM_GET_UPDATES,
++		PK_ROLE_ENUM_GET_UPDATE_DETAIL,
++		PK_ROLE_ENUM_WHAT_PROVIDES,
++		PK_ROLE_ENUM_SEARCH_NAME,
++		PK_ROLE_ENUM_SEARCH_DETAILS,
++		PK_ROLE_ENUM_SEARCH_FILE,
++		PK_ROLE_ENUM_CANCEL,
++		-1);
++}
++
++void
++pk_backend_initialize (GKeyFile *conf, PkBackend *backend)
++{
++	g_autofree gchar *release_ver = NULL;
++	g_autoptr(GError) error = NULL;
++
++	// use logging
++	pk_debug_add_log_domain (G_LOG_DOMAIN);
++	pk_debug_add_log_domain ("DNF5");
++
++	PkBackendDnf5Private *priv = g_new0 (PkBackendDnf5Private, 1);
++
++	g_debug ("Using libdnf5 %i.%i.%i",
++		 LIBDNF5_VERSION_MAJOR,
++		 LIBDNF5_VERSION_MINOR,
++		 LIBDNF5_VERSION_PATCH);
++
++	g_mutex_init (&priv->mutex);
++	priv->conf = g_key_file_ref (conf);
++
++	pk_backend_set_user_data (backend, priv);
++
++	release_ver = pk_get_distro_version_id (&error);
++	if (release_ver == NULL) {
++		g_warning ("Failed to parse os-release: %s", error->message);
++	} else {
++		/* clean up any cache directories left over from a distro upgrade */
++		dnf5_remove_old_cache_directories (backend, release_ver);
++	}
++
++	try {
++		dnf5_setup_base (priv);
++	} catch (const std::exception &e) {
++		g_warning ("Init failed: %s", e.what());
++	}
++}
++
++void
++pk_backend_destroy (PkBackend *backend)
++{
++	PkBackendDnf5Private *priv = (PkBackendDnf5Private *) pk_backend_get_user_data (backend);
++	priv->base.reset();
++	if (priv->conf != NULL)
++		g_key_file_unref (priv->conf);
++	g_mutex_clear (&priv->mutex);
++	g_free (priv);
++}
++
++void
++pk_backend_start_job (PkBackend *backend, PkBackendJob *job)
++{
++}
++
++void
++pk_backend_stop_job (PkBackend *backend, PkBackendJob *job)
++{
++}
++
++void
++pk_backend_search_names (PkBackend *backend, PkBackendJob *job, PkBitfield filters, gchar **values)
++{
++	g_autoptr(GVariant) params = g_variant_new ("(t^as)", filters, values);
++	pk_backend_job_set_parameters (job, g_steal_pointer (&params));
++	pk_backend_job_thread_create (job, dnf5_query_thread, NULL, NULL);
++}
++
++void
++pk_backend_search_details (PkBackend *backend, PkBackendJob *job, PkBitfield filters, gchar **values)
++{
++	g_autoptr(GVariant) params = g_variant_new ("(t^as)", filters, values);
++	pk_backend_job_set_parameters (job, g_steal_pointer (&params));
++	pk_backend_job_thread_create (job, dnf5_query_thread, NULL, NULL);
++}
++
++void
++pk_backend_search_files (PkBackend *backend, PkBackendJob *job, PkBitfield filters, gchar **values)
++{
++	g_autoptr(GVariant) params = g_variant_new ("(t^as)", filters, values);
++	pk_backend_job_set_parameters (job, g_steal_pointer (&params));
++	pk_backend_job_thread_create (job, dnf5_query_thread, NULL, NULL);
++}
++
++void
++pk_backend_get_packages (PkBackend *backend, PkBackendJob *job, PkBitfield filters)
++{
++	g_autoptr(GVariant) params = g_variant_new ("(t)", filters);
++	pk_backend_job_set_parameters (job, g_steal_pointer (&params));
++	pk_backend_job_thread_create (job, dnf5_query_thread, NULL, NULL);
++}
++
++void
++pk_backend_resolve (PkBackend *backend, PkBackendJob *job, PkBitfield filters, gchar **package_ids)
++{
++	g_autoptr(GVariant) params = g_variant_new ("(t^as)", filters, package_ids);
++	pk_backend_job_set_parameters (job, g_steal_pointer (&params));
++	pk_backend_job_thread_create (job, dnf5_query_thread, NULL, NULL);
++}
++
++void
++pk_backend_get_details (PkBackend *backend, PkBackendJob *job, gchar **package_ids)
++{
++	g_autoptr(GVariant) params = g_variant_new ("(^as)", package_ids);
++	pk_backend_job_set_parameters (job, g_steal_pointer (&params));
++	pk_backend_job_thread_create (job, dnf5_query_thread, NULL, NULL);
++}
++
++void
++pk_backend_get_files (PkBackend *backend, PkBackendJob *job, gchar **package_ids)
++{
++	g_autoptr(GVariant) params = g_variant_new ("(^as)", package_ids);
++	pk_backend_job_set_parameters (job, g_steal_pointer (&params));
++	pk_backend_job_thread_create (job, dnf5_query_thread, NULL, NULL);
++}
++
++void
++pk_backend_get_repo_list (PkBackend *backend, PkBackendJob *job, PkBitfield filters)
++{
++	g_autoptr(GVariant) params = g_variant_new ("(t)", filters);
++	pk_backend_job_set_parameters (job, g_steal_pointer (&params));
++	pk_backend_job_thread_create (job, dnf5_query_thread, NULL, NULL);
++}
++
++void
++pk_backend_get_updates (PkBackend *backend, PkBackendJob *job, PkBitfield filters)
++{
++	g_autoptr(GVariant) params = g_variant_new ("(t)", filters);
++	pk_backend_job_set_parameters (job, g_steal_pointer (&params));
++	pk_backend_job_thread_create (job, dnf5_query_thread, NULL, NULL);
++}
++
++void
++pk_backend_what_provides (PkBackend *backend, PkBackendJob *job, PkBitfield filters, gchar **search)
++{
++	g_autoptr(GVariant) params = g_variant_new ("(t^as)", filters, search);
++	pk_backend_job_set_parameters (job, g_steal_pointer (&params));
++	pk_backend_job_thread_create (job, dnf5_query_thread, NULL, NULL);
++}
++
++void
++pk_backend_depends_on (PkBackend *backend, PkBackendJob *job, PkBitfield filters, gchar **package_ids, gboolean recursive)
++{
++	g_autoptr(GVariant) params = g_variant_new ("(t^asb)", filters, package_ids, recursive);
++	pk_backend_job_set_parameters (job, g_steal_pointer (&params));
++	pk_backend_job_thread_create (job, dnf5_query_thread, NULL, NULL);
++}
++
++void
++pk_backend_required_by (PkBackend *backend, PkBackendJob *job, PkBitfield filters, gchar **package_ids, gboolean recursive)
++{
++	g_autoptr(GVariant) params = g_variant_new ("(t^asb)", filters, package_ids, recursive);
++	pk_backend_job_set_parameters (job, g_steal_pointer (&params));
++	pk_backend_job_thread_create (job, dnf5_query_thread, NULL, NULL);
++}
++
++void
++pk_backend_get_update_detail (PkBackend *backend, PkBackendJob *job, gchar **package_ids)
++{
++	g_autoptr(GVariant) params = g_variant_new ("(^as)", package_ids);
++	pk_backend_job_set_parameters (job, g_steal_pointer (&params));
++	pk_backend_job_thread_create (job, dnf5_query_thread, NULL, NULL);
++}
++
++void
++pk_backend_download_packages (PkBackend *backend, PkBackendJob *job, gchar **package_ids, const gchar *directory)
++{
++	g_autoptr(GVariant) params = g_variant_new ("(^as&s)", package_ids, directory);
++	pk_backend_job_set_parameters (job, g_steal_pointer (&params));
++	pk_backend_job_thread_create (job, dnf5_query_thread, NULL, NULL);
++}
++
++void
++pk_backend_get_details_local (PkBackend *backend, PkBackendJob *job, gchar **files)
++{
++	g_autoptr(GVariant) params = g_variant_new ("(^as)", files);
++	pk_backend_job_set_parameters (job, g_steal_pointer (&params));
++	pk_backend_job_thread_create (job, dnf5_query_thread, NULL, NULL);
++}
++
++void
++pk_backend_get_files_local (PkBackend *backend, PkBackendJob *job, gchar **files)
++{
++	g_autoptr(GVariant) params = g_variant_new ("(^as)", files);
++	pk_backend_job_set_parameters (job, g_steal_pointer (&params));
++	pk_backend_job_thread_create (job, dnf5_query_thread, NULL, NULL);
++}
++
++void
++pk_backend_install_packages (PkBackend *backend, PkBackendJob *job, PkBitfield transaction_flags, gchar **package_ids)
++{
++	g_autoptr(GVariant) params = g_variant_new ("(t^as)", transaction_flags, package_ids);
++	pk_backend_job_set_parameters (job, g_steal_pointer (&params));
++	pk_backend_job_thread_create (job, dnf5_transaction_thread, NULL, NULL);
++}
++
++void
++pk_backend_remove_packages (PkBackend *backend, PkBackendJob *job, PkBitfield transaction_flags, gchar **package_ids, gboolean allow_deps, gboolean autoremove)
++{
++	g_autoptr(GVariant) params = g_variant_new ("(t^asbb)", transaction_flags, package_ids, allow_deps, autoremove);
++	pk_backend_job_set_parameters (job, g_steal_pointer (&params));
++	pk_backend_job_thread_create (job, dnf5_transaction_thread, NULL, NULL);
++}
++
++void
++pk_backend_update_packages (PkBackend *backend, PkBackendJob *job, PkBitfield transaction_flags, gchar **package_ids)
++{
++	g_autoptr(GVariant) params = g_variant_new ("(t^as)", transaction_flags, package_ids);
++	pk_backend_job_set_parameters (job, g_steal_pointer (&params));
++	pk_backend_job_thread_create (job, dnf5_transaction_thread, NULL, NULL);
++}
++
++void
++pk_backend_install_files (PkBackend *backend, PkBackendJob *job, PkBitfield transaction_flags, gchar **full_paths)
++{
++	g_autoptr(GVariant) params = g_variant_new ("(t^as)", transaction_flags, full_paths);
++	pk_backend_job_set_parameters (job, g_steal_pointer (&params));
++	pk_backend_job_thread_create (job, dnf5_transaction_thread, NULL, NULL);
++}
++
++void
++pk_backend_upgrade_system (PkBackend *backend, PkBackendJob *job, PkBitfield transaction_flags, const gchar *distro_id, PkUpgradeKindEnum upgrade_kind)
++{
++	g_autoptr(GVariant) params = g_variant_new ("(t&su)", transaction_flags, distro_id, upgrade_kind);
++	pk_backend_job_set_parameters (job, g_steal_pointer (&params));
++	pk_backend_job_thread_create (job, dnf5_transaction_thread, NULL, NULL);
++}
++
++void
++pk_backend_repair_system (PkBackend *backend, PkBackendJob *job, PkBitfield transaction_flags)
++{
++	g_autoptr(GVariant) params = g_variant_new ("(t)", transaction_flags);
++	pk_backend_job_set_parameters (job, g_steal_pointer (&params));
++	pk_backend_job_thread_create (job, dnf5_transaction_thread, NULL, NULL);
++}
++
++void
++pk_backend_repo_enable (PkBackend *backend, PkBackendJob *job, const gchar *repo_id, gboolean enabled)
++{
++	g_autoptr(GVariant) params = g_variant_new ("(sb)", repo_id, enabled);
++	pk_backend_job_set_parameters (job, g_steal_pointer (&params));
++	pk_backend_job_thread_create (job, dnf5_repo_thread, NULL, NULL);
++}
++
++void
++pk_backend_repo_set_data (PkBackend *backend, PkBackendJob *job, const gchar *repo_id, const gchar *parameter, const gchar *value)
++{
++	g_autoptr(GVariant) params = g_variant_new ("(sss)", repo_id, parameter, value);
++	pk_backend_job_set_parameters (job, g_steal_pointer (&params));
++	pk_backend_job_thread_create (job, dnf5_repo_thread, NULL, NULL);
++}
++
++void
++pk_backend_repo_remove (PkBackend *backend, PkBackendJob *job, PkBitfield transaction_flags, const gchar *repo_id, gboolean autoremove)
++{
++	g_autoptr(GVariant) params = g_variant_new ("(t&sb)", transaction_flags, repo_id, autoremove);
++	pk_backend_job_set_parameters (job, g_steal_pointer (&params));
++	pk_backend_job_thread_create (job, dnf5_repo_thread, NULL, NULL);
++}
++
++void
++pk_backend_refresh_cache (PkBackend *backend, PkBackendJob *job, gboolean force)
++{
++	pk_backend_job_set_status (job, PK_STATUS_ENUM_REFRESH_CACHE);
++	PkBackendDnf5Private *priv = (PkBackendDnf5Private *) pk_backend_get_user_data (backend);
++	g_autoptr(GMutexLocker) locker = g_mutex_locker_new (&priv->mutex);
++	try {
++		dnf5_refresh_cache (priv, force);
++	} catch (const std::exception &e) {
++		pk_backend_job_error_code (job, PK_ERROR_ENUM_INTERNAL_ERROR, "%s", e.what());
++	}
++	pk_backend_job_finished (job);
++}
++
++void
++pk_backend_cancel (PkBackend *backend, PkBackendJob *job)
++{
++}
++
++}
+diff --git a/meson_options.txt b/meson_options.txt
+index 7136d1b40..0dbfbd232 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -10,7 +10,20 @@ option('maintainer',
+ 
+ option('packaging_backend',
+     type : 'array',
+-    choices : ['alpm', 'apt', 'dnf', 'dummy', 'entropy', 'eopkg', 'pisi', 'poldek', 'portage', 'slack', 'zypp', 'nix', 'freebsd'],
++    choices : ['alpm',
++               'apt',
++               'dnf',
++               'dnf5',
++               'dummy',
++               'entropy',
++               'eopkg',
++               'pisi',
++               'poldek',
++               'portage',
++               'slack',
++               'zypp',
++               'nix',
++               'freebsd'],
+     value : ['dummy'],
+     description : 'The name of the backend to use'
+ )
+-- 
+2.52.0
+
+
+From 512df952c4c53a6671dc68ac1a0909ff1f7c4480 Mon Sep 17 00:00:00 2001
+From: Gordon Messmer <gordon.messmer@gmail.com>
+Date: Fri, 2 Jan 2026 21:50:18 -0800
+Subject: [PATCH 2/4] dnf5: Invalidate context when receiving updates-changed
+ signal
+
+This uses the PkBackend object's updates-changed signal to invalidate
+the dnf5 base object and reload all data from the system.
+---
+ backends/dnf5/pk-backend-dnf5.cpp | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+diff --git a/backends/dnf5/pk-backend-dnf5.cpp b/backends/dnf5/pk-backend-dnf5.cpp
+index 421ba61d1..cc5c3f118 100644
+--- a/backends/dnf5/pk-backend-dnf5.cpp
++++ b/backends/dnf5/pk-backend-dnf5.cpp
+@@ -87,6 +87,19 @@ pk_backend_get_roles (PkBackend *backend)
+ 		-1);
+ }
+ 
++static void
++pk_backend_context_invalidate_cb (PkBackend *backend, PkBackend *backend_data)
++{
++	g_return_if_fail (PK_IS_BACKEND (backend));
++
++	g_debug ("invalidating dnf5 base");
++
++	PkBackendDnf5Private *priv = (PkBackendDnf5Private *) pk_backend_get_user_data (backend);
++	g_autoptr(GMutexLocker) locker = g_mutex_locker_new (&priv->mutex);
++
++	dnf5_setup_base (priv);
++}
++
+ void
+ pk_backend_initialize (GKeyFile *conf, PkBackend *backend)
+ {
+@@ -119,6 +132,8 @@ pk_backend_initialize (GKeyFile *conf, PkBackend *backend)
+ 
+ 	try {
+ 		dnf5_setup_base (priv);
++		g_signal_connect (backend, "updates-changed",
++				  G_CALLBACK (pk_backend_context_invalidate_cb), backend);
+ 	} catch (const std::exception &e) {
+ 		g_warning ("Init failed: %s", e.what());
+ 	}
+-- 
+2.52.0
+
+
+From abd71b176412682ff16ba0e5bce03faea5d4570b Mon Sep 17 00:00:00 2001
+From: Gordon Messmer <gordon.messmer@gmail.com>
+Date: Fri, 9 Jan 2026 12:57:53 -0800
+Subject: [PATCH 3/4] dnf5: Inhibit handling duplicate/redundant change
+ notifications
+
+This ensures we do not handle potentially duplicate change notifications from
+multiple producers within the same transaction to avoid wasting cycles.
+---
+ backends/dnf5/dnf5-backend-thread.cpp |  7 ++++++-
+ backends/dnf5/dnf5-backend-utils.hpp  |  1 +
+ backends/dnf5/pk-backend-dnf5.cpp     | 20 ++++++++++++++++++++
+ 3 files changed, 27 insertions(+), 1 deletion(-)
+
+diff --git a/backends/dnf5/dnf5-backend-thread.cpp b/backends/dnf5/dnf5-backend-thread.cpp
+index 30e71fe00..8ad82caa3 100644
+--- a/backends/dnf5/dnf5-backend-thread.cpp
++++ b/backends/dnf5/dnf5-backend-thread.cpp
+@@ -550,8 +550,11 @@ dnf5_transaction_thread (PkBackendJob *job, GVariant *params, gpointer user_data
+ 			std::string msg;
+ 			for (const auto &p : trans.get_transaction_problems()) msg += p + "; ";
+ 			pk_backend_job_error_code (job, PK_ERROR_ENUM_TRANSACTION_ERROR, "Transaction failed: %s", msg.c_str());
++		} else {
++			// Update timestamp to inhibit notifications from our own transaction
++			priv->last_notification_timestamp = g_get_monotonic_time ();
+ 		}
+-		
++
+ 		// Post-transaction base re-initialization to ensure state consistency
+ 		dnf5_setup_base (priv);
+ 		
+@@ -707,6 +710,8 @@ dnf5_repo_thread (PkBackendJob *job, GVariant *params, gpointer user_data)
+ 					pk_backend_job_error_code (job, PK_ERROR_ENUM_TRANSACTION_ERROR, "Transaction failed: %s", msg.c_str());
+ 				} else {
+ 					g_debug("Transaction completed successfully");
++					// Update timestamp to inhibit notifications from our own transaction
++					priv->last_notification_timestamp = g_get_monotonic_time ();
+ 				}
+ 				dnf5_setup_base (priv);
+ 			} else {
+diff --git a/backends/dnf5/dnf5-backend-utils.hpp b/backends/dnf5/dnf5-backend-utils.hpp
+index 4b4d0c23a..39ae9b30d 100644
+--- a/backends/dnf5/dnf5-backend-utils.hpp
++++ b/backends/dnf5/dnf5-backend-utils.hpp
+@@ -37,6 +37,7 @@ typedef struct {
+ 	std::unique_ptr<libdnf5::Base> base;
+ 	GKeyFile *conf;
+ 	GMutex mutex;
++	gint64 last_notification_timestamp;
+ } PkBackendDnf5Private;
+ 
+ void dnf5_setup_base(PkBackendDnf5Private *priv, gboolean refresh = FALSE, gboolean force = FALSE, const char *releasever = nullptr);
+diff --git a/backends/dnf5/pk-backend-dnf5.cpp b/backends/dnf5/pk-backend-dnf5.cpp
+index cc5c3f118..06dc0b772 100644
+--- a/backends/dnf5/pk-backend-dnf5.cpp
++++ b/backends/dnf5/pk-backend-dnf5.cpp
+@@ -87,6 +87,22 @@ pk_backend_get_roles (PkBackend *backend)
+ 		-1);
+ }
+ 
++static int
++pk_backend_dnf5_inhibit_notify (PkBackend *backend)
++{
++	PkBackendDnf5Private *priv = (PkBackendDnf5Private *) pk_backend_get_user_data (backend);
++	gint64 current_time = g_get_monotonic_time ();
++	gint64 time_since_last_notification = current_time - priv->last_notification_timestamp;
++
++	/* Inhibit notifications for 5 seconds to avoid processing our own RPM transactions */
++	if (time_since_last_notification < 5 * G_USEC_PER_SEC) {
++		g_debug ("Ignoring signal: too soon after last notification (%" G_GINT64_FORMAT " µs)",
++			 time_since_last_notification);
++		return 1;
++	}
++	return 0;
++}
++
+ static void
+ pk_backend_context_invalidate_cb (PkBackend *backend, PkBackend *backend_data)
+ {
+@@ -94,10 +110,13 @@ pk_backend_context_invalidate_cb (PkBackend *backend, PkBackend *backend_data)
+ 
+ 	g_debug ("invalidating dnf5 base");
+ 
++	if (pk_backend_dnf5_inhibit_notify (backend)) return;
++
+ 	PkBackendDnf5Private *priv = (PkBackendDnf5Private *) pk_backend_get_user_data (backend);
+ 	g_autoptr(GMutexLocker) locker = g_mutex_locker_new (&priv->mutex);
+ 
+ 	dnf5_setup_base (priv);
++	priv->last_notification_timestamp = g_get_monotonic_time ();
+ }
+ 
+ void
+@@ -119,6 +138,7 @@ pk_backend_initialize (GKeyFile *conf, PkBackend *backend)
+ 
+ 	g_mutex_init (&priv->mutex);
+ 	priv->conf = g_key_file_ref (conf);
++	priv->last_notification_timestamp = 0;
+ 
+ 	pk_backend_set_user_data (backend, priv);
+ 
+-- 
+2.52.0
+
+
+From 96da00e0a78886c3e779416cfc29fdcd71002d43 Mon Sep 17 00:00:00 2001
+From: Gordon Messmer <gordon.messmer@gmail.com>
+Date: Fri, 9 Jan 2026 12:48:30 -0800
+Subject: [PATCH 4/4] dnf5: Add rpm plugin to notify PackageKit when
+ transactions complete
+
+This specifically is used to ensure that even if PackageKit
+is asleep, it will wake up via D-Bus to refresh its caches.
+---
+ .../dnf5/macros.transaction_notify_packagekit |   1 +
+ backends/dnf5/meson.build                     |  29 ++++
+ backends/dnf5/notify_packagekit.cpp           | 156 ++++++++++++++++++
+ 3 files changed, 186 insertions(+)
+ create mode 100644 backends/dnf5/macros.transaction_notify_packagekit
+ create mode 100644 backends/dnf5/notify_packagekit.cpp
+
+diff --git a/backends/dnf5/macros.transaction_notify_packagekit b/backends/dnf5/macros.transaction_notify_packagekit
+new file mode 100644
+index 000000000..3dedf51bf
+--- /dev/null
++++ b/backends/dnf5/macros.transaction_notify_packagekit
+@@ -0,0 +1 @@
++%__transaction_notify_packagekit    %{__plugindir}/notify_packagekit.so
+diff --git a/backends/dnf5/meson.build b/backends/dnf5/meson.build
+index efb2b6be3..236220744 100644
+--- a/backends/dnf5/meson.build
++++ b/backends/dnf5/meson.build
+@@ -25,3 +25,32 @@ shared_module(
+   install: true,
+   install_dir: pk_plugin_dir,
+ )
++
++# Build rpm plugin for notifying PackageKit
++rpm_dep = dependency('rpm', version: '>=4.20')
++sdbus_cpp_dep = dependency('sdbus-c++')
++sdbus_cpp_version = sdbus_cpp_dep.version().split('.')
++
++rpm_plugindir = rpm_dep.get_variable(pkgconfig: 'rpmplugindir')
++rpm_macrosdir = rpm_dep.get_variable(pkgconfig: 'rpmhome') + '/macros.d'
++
++shared_module(
++  'notify_packagekit',
++  'notify_packagekit.cpp',
++  cpp_args: [
++    '-std=c++20',
++    '-DSDBUSCPP_VERSION_MAJOR=' + sdbus_cpp_version[0],
++  ],
++  dependencies: [
++    rpm_dep,
++    sdbus_cpp_dep,
++  ],
++  name_prefix: '',
++  install: true,
++  install_dir: rpm_plugindir,
++)
++
++install_data(
++  'macros.transaction_notify_packagekit',
++  install_dir: rpm_macrosdir,
++)
+diff --git a/backends/dnf5/notify_packagekit.cpp b/backends/dnf5/notify_packagekit.cpp
+new file mode 100644
+index 000000000..403e07298
+--- /dev/null
++++ b/backends/dnf5/notify_packagekit.cpp
+@@ -0,0 +1,156 @@
++// RPM plugin to notify PackageKit that the system changed
++// Copyright (C) 2026 Gordon Messmer <gordon.messmer@gmail.com>
++// SPDX-License-Identifier: GPL-2.0-or-later
++//
++// Based on https://github.com/rpm-software-management/rpm/blob/master/plugins/dbus_announce.c
++// Copyright (C) 2021 by Red Hat, Inc.
++// SPDX-License-Identifier: GPL-2.0-or-later
++//
++// and backends/dnf/notify_packagekit.cpp
++// Copyright (C) 2024 Alessandro Astone <ales.astone@gmail.com>
++// SPDX-License-Identifier: LGPL-2.1-or-later
++
++#include <rpm/rpmlog.h>
++#include <rpm/rpmstring.h>
++#include <rpm/rpmts.h>
++#include <rpm/rpmplugin.h>
++
++#include <sdbus-c++/sdbus-c++.h>
++
++#include <cstdlib>
++#include <memory>
++
++using namespace std::literals;
++
++namespace {
++
++constexpr const char * PLUGIN_NAME = "notify_packagekit";
++
++struct NotifyPackagekitData {
++    std::unique_ptr<sdbus::IConnection> connection{nullptr};
++    std::unique_ptr<sdbus::IProxy> proxy{nullptr};
++
++    void close_bus() noexcept {
++        proxy.reset();
++        connection.reset();
++    }
++
++    rpmRC open_dbus(rpmPlugin plugin, rpmts ts) noexcept {
++        // Already open
++        if (connection) {
++            return RPMRC_OK;
++        }
++
++        // ...don't notify on test transactions
++        if (rpmtsFlags(ts) & (RPMTRANS_FLAG_TEST | RPMTRANS_FLAG_BUILD_PROBS)) {
++            return RPMRC_OK;
++        }
++
++        // ...don't notify on chroot transactions
++        if (!rstreq(rpmtsRootDir(ts), "/")) {
++            return RPMRC_OK;
++        }
++
++        try {
++#if SDBUSCPP_VERSION_MAJOR >= 2
++            auto serviceName = sdbus::ServiceName{"org.freedesktop.PackageKit"};
++            auto objectPath = sdbus::ObjectPath{"/org/freedesktop/PackageKit"};
++#else
++            auto serviceName = "org.freedesktop.PackageKit"s;
++            auto objectPath = "/org/freedesktop/PackageKit"s;
++#endif
++
++            connection = sdbus::createSystemBusConnection();
++            proxy = sdbus::createProxy(
++                std::move(connection),
++                std::move(serviceName),
++                std::move(objectPath),
++                sdbus::dont_run_event_loop_thread);
++        } catch (const sdbus::Error & e) {
++            rpmlog(RPMLOG_DEBUG,
++                   "%s plugin: Error connecting to dbus (%s)\n",
++                   PLUGIN_NAME, e.what());
++            connection.reset();
++            proxy.reset();
++        }
++
++        return RPMRC_OK;
++    }
++
++    rpmRC send_state_changed() noexcept {
++        if (!proxy) {
++            return RPMRC_OK;
++        }
++
++        try {
++#if SDBUSCPP_VERSION_MAJOR >= 2
++            auto interfaceName = sdbus::InterfaceName{"org.freedesktop.PackageKit"};
++            auto methodName = sdbus::MethodName{"StateHasChanged"};
++#else
++            auto interfaceName = "org.freedesktop.PackageKit"s;
++            auto methodName = "StateHasChanged"s;
++#endif
++
++            auto method = proxy->createMethodCall(std::move(interfaceName), std::move(methodName));
++            method << "posttrans";
++
++#if SDBUSCPP_VERSION_MAJOR >= 2
++            proxy->callMethodAsync(method, sdbus::with_future);
++#else
++            proxy->callMethod(method, sdbus::with_future);
++#endif
++        } catch (const sdbus::Error & e) {
++            rpmlog(RPMLOG_WARNING,
++                   "%s plugin: Error sending message (%s)\n",
++                   PLUGIN_NAME, e.what());
++        }
++
++        return RPMRC_OK;
++    }
++};
++
++}  // namespace
++
++// C linkage for RPM plugin interface
++extern "C" {
++
++static rpmRC notify_packagekit_init(rpmPlugin plugin, rpmts ts) {
++    auto * state = new (std::nothrow) NotifyPackagekitData();
++    if (state == nullptr) {
++        return RPMRC_FAIL;
++    }
++    rpmPluginSetData(plugin, state);
++    return RPMRC_OK;
++}
++
++static void notify_packagekit_cleanup(rpmPlugin plugin) {
++    auto * state = static_cast<NotifyPackagekitData *>(rpmPluginGetData(plugin));
++    delete state;
++}
++
++static rpmRC notify_packagekit_tsm_pre(rpmPlugin plugin, rpmts ts) {
++    auto * state = static_cast<NotifyPackagekitData *>(rpmPluginGetData(plugin));
++    return state->open_dbus(plugin, ts);
++}
++
++static rpmRC notify_packagekit_tsm_post(rpmPlugin plugin, rpmts ts, int res) {
++    auto * state = static_cast<NotifyPackagekitData *>(rpmPluginGetData(plugin));
++    return state->send_state_changed();
++}
++
++struct rpmPluginHooks_s notify_packagekit_hooks = {
++    .init = notify_packagekit_init,
++    .cleanup = notify_packagekit_cleanup,
++    .tsm_pre = notify_packagekit_tsm_pre,
++    .tsm_post = notify_packagekit_tsm_post,
++    .psm_pre = NULL,
++    .psm_post = NULL,
++    .scriptlet_pre = NULL,
++    .scriptlet_fork_post = NULL,
++    .scriptlet_post = NULL,
++    .fsm_file_pre = NULL,
++    .fsm_file_post = NULL,
++    .fsm_file_prepare = NULL,
++};
++
++}  // extern "C"
+-- 
+2.52.0
+

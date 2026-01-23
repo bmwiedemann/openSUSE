@@ -2,6 +2,7 @@
 # spec file for package PackageKit
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 Neal Gompa
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +17,17 @@
 #
 
 
-%if 0%{?sle_version} && 0%{?sle_version} < 160000
-%bcond_with offline_updates
-%else
-%bcond_without offline_updates
-%endif
-
-# Only make DNF backend available openSUSE Leap 15.1+
-%if 0%{?sle_version} >= 150100 || 0%{?suse_version} >= 1550
-%bcond_without dnf
+# Only make DNF backend available openSUSE Leap 16+
+%if 0%{?suse_version} >= 1600
+%bcond_without dnf5
 %bcond_with cnf
 %else
-%bcond_with dnf
+%bcond_with dnf5
 %bcond_with cnf
 %endif
 
 Name:           PackageKit
-Version:        1.2.8
+Version:        1.3.3
 Release:        0
 Summary:        Simple software installation management software
 License:        GPL-2.0-or-later
@@ -43,29 +38,14 @@ Source1:        %{url}/releases/%{name}-%{version}.tar.xz.asc
 Source3:        PackageKit.tmpfiles
 Source99:       PackageKit.keyring
 
+# PATCH-FEATURE-UPSTREAM PackageKit-1.3.3-Initial-DNF5-Backend.patch neal@gompa.dev -- Add DNF5 backend
+Patch0:         PackageKit-1.3.3-Initial-DNF5-Backend.patch
 # PATCH-FEATURE-OPENSUSE PackageKit-systemd-timers.patch bsc#1115410 sckang@suse.com -- Migrate from cron to systemd timers
 Patch1:         PackageKit-systemd-timers.patch
 # PATCH-FIX-OPENSUSE PackageKit-remove-polkit-rules.patch bsc#1125434 sckang@suse.com -- Remove polkit rules file
 Patch2:         PackageKit-remove-polkit-rules.patch
-# PATCH-FIX-OPENSUSE PackageKit-dnf-Add-support-for-AppStream-repodata-basenames-use.patch ngompa13@gmail.com -- Band-aid to deal with OBS producing differently named appstream repodata files
-Patch3:         PackageKit-dnf-Add-support-for-AppStream-repodata-basenames-use.patch
-# PATCH-FIX-UPSTREAM PackageKit-fix-crash-pre-dbus.patch gh#hughsie/PackageKit!436 -- Do not crash when calling pk_dbus_get_uid() before D-Bus is  setup
-Patch4:         PackageKit-fix-crash-pre-dbus.patch
-# PATCH-FIX-UPSTREAM PackageKit-zypp-disable-upgrade-system-in-sle.patch gh#PackageKit/PackageKit/commit/0fcd820c2 sckang@suse.com -- zypp: Disable upgrade-system support in SLE
-Patch7:         PackageKit-zypp-disable-upgrade-system-in-sle.patch
-# PATCH-FIX-UPSTREAM PackageKit-fix-pkcon-permission.patch gh#PackageKit/PackageKit/commit/47b7f97bc, bsc#1209138 sckang@suse.com -- trivial: Drop unnecessary x permission
-Patch15:        PackageKit-fix-pkcon-permission.patch
-# PATCH-FIX-UPSTREAM PackageKit-dynamic-export.patch boo#1213309 dimstar@opensuse.org -- Fix loading modules when built with glib 2.70
-Patch16:        PackageKit-dynamic-export.patch
-# PATCH-FIX-UPSTREAM PackageKit-mark-as-compulsory.patch bsc#1226269 alynx.zhou@suse.com -- Prevent PackageKit from user uninstallable
-Patch17:        PackageKit-mark-as-compulsory.patch
-# PATCH-FIX-UPSTREAM PackageKit-zypp-dont-install-updateCandidateObj.patch bsc#1227389, gh#PackageKit/PackageKit/commit/209aa6295 sckang@suse.com -- zypp: Mark the correct packages to-be-installed
-Patch18:        PackageKit-zypp-dont-install-updateCandidateObj.patch
-# PATCH-FIX-UPSTREAM PackageKit-zypp-parallel-package-downloads.patch gh#PackageKit/PackageKit/commit/dd39d2982, bsc#1244920 sckang@suse.com -- zypp: Implement parallel downloading
-Patch19:        PackageKit-zypp-parallel-package-downloads.patch
-
-# PATCH-FIX-SLE PackageKit-find-python-3-6.patch alynx.zhou@suse.com -- Build PackageKit with Python 3.6
-Patch1001:      PackageKit-find-python-3-6.patch
+# PATCH-FIX-OPENSUSE PackageKit-alias-dnf-to-dnf5.patch ngompa@opensuse.org -- Handle replacing dnf with dnf5
+Patch3:         PackageKit-alias-dnf-to-dnf5.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -77,10 +57,10 @@ BuildRequires:  gtk3-devel
 BuildRequires:  intltool
 BuildRequires:  libarchive-devel
 BuildRequires:  libcppunit-devel
-%if %{with dnf}
-BuildRequires:  appstream-glib-devel
-BuildRequires:  libdnf-devel >= 0.43.1
-BuildRequires:  pkgconfig(appstream)
+%if %{with dnf5}
+BuildRequires:  libdnf5-devel >= 5.2.14.0
+BuildRequires:  rpm-devel >= 4.20
+BuildRequires:  sdbus-cpp-devel
 %endif
 BuildRequires:  libgudev-1_0-devel
 BuildRequires:  libtool
@@ -135,21 +115,25 @@ all the software graphical tools used in different distributions, and
 use some of the latest technology like PolicyKit to make the process
 suck less.
 
-%if %{with dnf}
-%package backend-dnf
-Summary:        DNF backend for the PackageKit installation management software
+%if %{with dnf5}
+%package backend-dnf5
+Summary:        DNF5 backend for the PackageKit installation management software
 License:        GPL-2.0-or-later
 Group:          System/Daemons
 Requires:       %{name} = %{version}
 Provides:       %{name}-backend = %{version}
 Conflicts:      %{name}-backend
-Supplements:    (%{name} and dnf-data)
+Obsoletes:      %{name}-backend-dnf < %{version}
+Provides:       %{name}-backend-dnf = %{version}
+Supplements:    (%{name} and libdnf5)
 Recommends:     rpm-repos-openSUSE
 Suggests:       PackageKit-command-not-found
+# Ensure AppStream repodata is processed
+Requires:       libdnf5-plugin-appstream
 # Stricter dependency to keep things sane
-%requires_ge %(rpm -qf "$(readlink -f %{_libdir}/libdnf.so)")
+%requires_ge %(rpm -qf "$(readlink -f %{_libdir}/libdnf5.so)")
 
-%description backend-dnf
+%description backend-dnf5
 PackageKit is a system designed to make installing and updating
 software on your computer easier.  The primary design goal is to unify
 all the software graphical tools used in different distributions, and
@@ -162,7 +146,6 @@ suck less.
 Summary:        Command Not Found using PackageKit
 License:        GPL-2.0-or-later
 Group:          System/Daemons
-Obsoletes:      command-not-found
 Provides:       command-not-found
 Conflicts:      command-not-found
 # zypp backend lacks full functionality for this to make sense
@@ -280,29 +263,17 @@ This package provides the upstream default configuration for PackageKit.
 %lang_package
 
 %prep
-%setup -q
-%patch -P 1 -p1
-%patch -P 2 -p1
-%patch -P 3 -p1
-%patch -P 4 -p1
-%patch -P 7 -p1
-%patch -P 15 -p1
-%patch -P 16 -p1
-%patch -P 17 -p1
-%patch -P 18 -p1
-%patch -P 19 -p1
-%if 0%{?sle_version} && 0%{?sle_version} < 160000
-%patch -P 1001 -p1
-%endif
+%autosetup -p1
+# XXX: Temporarily downgrade minimum version for dnf5
+sed -e "s/5.2.17.0/5.2.14.0/g" -i backends/dnf5/meson.build
 
 %build
 %meson \
         -Dgtk_doc=true \
         -Dpython_backend=false \
-        -Dpackaging_backend=%{?with_dnf:dnf,}zypp \
-        %{?with_dnf:-Ddnf_vendor=opensuse} \
+        -Dpackaging_backend=%{?with_dnf5:dnf5,}zypp \
+        %{?with_dnf5:-Ddnf_vendor=opensuse} \
         %{!?with_cnf:-Dbash_command_not_found=false} \
-        %{!?with_offline_updates:-Doffline_update=false} \
         -Dcron=false \
         -Dlocal_checkout=false \
         -Ddbus_sys=%{_datadir}/dbus-1/system.d
@@ -311,16 +282,14 @@ This package provides the upstream default configuration for PackageKit.
 %install
 %meson_install
 
-%if %{with offline_updates}
 # enable packagekit-offline-updates.service here for now, till we
 # decide how to do it upstream after the meson conversion:
 # https://github.com/hughsie/PackageKit/issues/401
 # https://bugzilla.redhat.com/show_bug.cgi?id=1833176
 mkdir -p %{buildroot}%{_unitdir}/system-update.target.wants/
 ln -sf ../packagekit-offline-update.service %{buildroot}%{_unitdir}/system-update.target.wants/packagekit-offline-update.service
-%endif
 
-# create a link that GStreamer will recognise
+# create a link that GStreamer will recognize
 pushd %{buildroot}%{_libexecdir} > /dev/null
 ln -s pk-gstreamer-install gst-install-plugins-helper
 popd > /dev/null
@@ -338,50 +307,35 @@ install -m 0644 %{SOURCE3} %{buildroot}%{_prefix}/lib/tmpfiles.d/%{name}.conf
 %pre
 %service_add_pre packagekit.service
 %service_add_pre packagekit-background.service packagekit-background.timer
-%if %{with offline_updates}
 %service_add_pre packagekit-offline-update.service
-%endif
 
 %post
 %mime_database_post
 %service_add_post packagekit.service
 %service_add_post packagekit-background.service packagekit-background.timer
-%if %{with offline_updates}
 %service_add_post packagekit-offline-update.service
-%else
-  if [ -L system-update ]; then
-    rm system-update
-  fi
-  if [ -f var/lib/PackageKit/prepared-update ]; then
-    rm var/lib/PackageKit/prepared-update
-  fi
-%endif
 %tmpfiles_create %_tmpfilesdir/%{name}.conf
 
 %preun
 %service_del_preun packagekit.service
 %service_del_preun packagekit-background.service packagekit-background.timer
-%if %{with offline_updates}
 %service_del_preun packagekit-offline-update.service
-%endif
 
 %postun
 %mime_database_postun
 # Do not restart PackageKit on upgrade - it kills the transaction
 %service_del_postun_without_restart packagekit.service
 %service_del_postun_without_restart packagekit-background.service packagekit-background.timer
-%if %{with offline_updates}
 %service_del_postun_without_restart packagekit-offline-update.service
-%endif
 
-%post -n libpackagekit-glib2-18 -p /sbin/ldconfig
-%postun -n libpackagekit-glib2-18 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libpackagekit-glib2-18
 
 %files lang -f %{name}.lang
 
 %files
 %license COPYING
-%doc AUTHORS HACKING NEWS README policy/org.freedesktop.packagekit.rules
+%doc AUTHORS CONTRIBUTING NEWS README.md
+%doc policy/org.freedesktop.packagekit.rules
 %dir %{_sysconfdir}/PackageKit
 %dir %{_datadir}/PackageKit
 %dir %{_datadir}/PackageKit/helpers
@@ -407,12 +361,10 @@ install -m 0644 %{SOURCE3} %{buildroot}%{_prefix}/lib/tmpfiles.d/%{name}.conf
 %{_unitdir}/packagekit-background.timer
 %{_mandir}/man?/*%{ext_man}
 %{_tmpfilesdir}/PackageKit.conf
-%if %{with offline_updates}
 %{_libexecdir}/pk-offline-update
 %{_unitdir}/packagekit-offline-update.service
 %dir %{_unitdir}/system-update.target.wants
 %{_unitdir}/system-update.target.wants/packagekit-offline-update.service
-%endif
 %ghost %dir %{_localstatedir}/lib/PackageKit
 %ghost %dir %{_localstatedir}/cache/PackageKit
 %ghost %{_localstatedir}/lib/PackageKit/transactions.db
@@ -420,11 +372,11 @@ install -m 0644 %{SOURCE3} %{buildroot}%{_prefix}/lib/tmpfiles.d/%{name}.conf
 %files backend-zypp
 %{_libdir}/packagekit-backend/libpk_backend_zypp.so
 
-%if %{with dnf}
-%files backend-dnf
-%{_libdir}/packagekit-backend/libpk_backend_dnf.so
-%{_libexecdir}/packagekit-dnf-refresh-repo
-%{python3_sitelib}/dnf-plugins/
+%if %{with dnf5}
+%files backend-dnf5
+%{_libdir}/packagekit-backend/libpk_backend_dnf5.so
+%{_libdir}/rpm-plugins/notify_packagekit.so
+%{_rpmmacrodir}/macros.transaction_notify_packagekit
 %endif
 
 %if %{with cnf}
