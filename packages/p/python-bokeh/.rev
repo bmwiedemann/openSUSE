@@ -496,4 +496,19 @@
     <comment></comment>
     <requestid>1305511</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>d9ed96e19d62147f14fef674afbb0e4c</srcmd5>
+    <version>3.8.2</version>
+    <time>1769186066</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.8.2:
+  * #14768 [component: server] Incomplete Origin Validation in
+    WebSockets in Bokeh server applications
+  * #14618 [component: docs] Local documentation build fails
+    with `Extension error (sphinxext.opengraph)`
+  * #14626 [component: docs] Local documentation fails on
+    Windows because of missing svg icons
+</comment>
+    <requestid>1328887</requestid>
+  </revision>
 </revisionlist>

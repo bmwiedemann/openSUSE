@@ -1,3 +1,21 @@
+2026-01-06    3.8.2:
+--------------------
+  * bugfixes:
+    - #14768 [component: server] Incomplete Origin Validation in WebSockets in Bokeh server applications
+
+  * tasks:
+    - #14767 Backports for 3.8.2
+
+2025-11-07    3.8.1:
+--------------------
+  * bugfixes:
+    - #14618 [component: docs] Local documentation build fails with `Extension error (sphinxext.opengraph)`
+    - #14626 [component: docs] Local documentation fails on Windows because of missing svg icons
+    - #14651 [component: bokehjs] HoverTool parameter @$name for stacked bar chart not working in version 3.8.0
+
+  * tasks:
+    - #14704 Backports for 3.8.1
+
 2025-08-29      3.8:
 --------------------
   * bugfixes:

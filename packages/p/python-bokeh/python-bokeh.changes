@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 22 08:51:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.8.2:
+  * #14768 [component: server] Incomplete Origin Validation in
+    WebSockets in Bokeh server applications
+  * #14618 [component: docs] Local documentation build fails
+    with `Extension error (sphinxext.opengraph)`
+  * #14626 [component: docs] Local documentation fails on
+    Windows because of missing svg icons
+
+-------------------------------------------------------------------
 Wed Sep 17 15:43:24 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.8.0

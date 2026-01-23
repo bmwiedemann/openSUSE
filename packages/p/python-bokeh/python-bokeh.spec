@@ -1,7 +1,7 @@
 #
 # spec file for package python-bokeh
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-bokeh%{psuffix}
-Version:        3.8.0
+Version:        3.8.2
 Release:        0
 Summary:        Interactive plots and applications in the browser from Python
 License:        BSD-3-Clause
@@ -86,6 +86,7 @@ BuildRequires:  %{python_module pygraphviz}
 BuildRequires:  %{python_module pyshp}
 BuildRequires:  %{python_module pytest-asyncio >= 0.18.1 with %python-pytest-asyncio < 0.23}
 BuildRequires:  %{python_module pytest-timeout}
+BuildRequires:  %{python_module pytest-tornado}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 1.2.3}
