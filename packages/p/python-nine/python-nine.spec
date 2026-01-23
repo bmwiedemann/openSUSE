@@ -1,7 +1,7 @@
 #
 # spec file for package python-nine
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,10 @@ Version:        1.2.0
 Release:        0
 Summary:        Python 2 / 3 compatibility, like six, but favouring Python 3
 License:        SUSE-Public-Domain
-Group:          Development/Languages/Python
 URL:            https://github.com/nandoflorestan/nine
 Source:         https://files.pythonhosted.org/packages/source/n/nine/nine-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

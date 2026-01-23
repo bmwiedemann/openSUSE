@@ -31,4 +31,12 @@
     <comment></comment>
     <requestid>1246526</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>9e768d797155bf8f369ff9657db19627</srcmd5>
+    <version>1.2.0</version>
+    <time>1769186020</time>
+    <user>anag_factory</user>
+    <comment>- Use poetry-core for building.</comment>
+    <requestid>1328766</requestid>
+  </revision>
 </revisionlist>
