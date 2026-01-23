@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 23 06:18:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.12.3:
+  * Chore
+    - Update Hetzner CSI driver to v2.18.3 #3935 @kron4eg
+  * Fixes of Bugs or Regressions
+    - fix:(addons) Migrate cluster-autoscaler deployment if
+      matchLabels changed #3960 @kron4eg
+
+-------------------------------------------------------------------
 Fri Dec 05 07:46:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.12.2:

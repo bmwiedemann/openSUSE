@@ -1,7 +1,7 @@
 #
 # spec file for package kubeone
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,11 @@
 
 
 # https://github.com/kubermatic/kubeone/blob/main/Makefile#L40
-# curl -SsL https://dl.k8s.io/release/stable-1.31.txt
-%define KUBERNETES_STABLE_VERSION v1.31.3
+# curl -SsL https://dl.k8s.io/release/stable-1.34.txt
+%define KUBERNETES_STABLE_VERSION v1.34.3
 
 Name:           kubeone
-Version:        1.12.2
+Version:        1.12.3
 Release:        0
 Summary:        CLI for the kubeone cluster automation
 License:        Apache-2.0
@@ -30,8 +30,8 @@ Source:         kubeone-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.23.4
 BuildRequires:  zsh
+BuildRequires:  golang(API) >= 1.24
 
 %description
 Kubermatic KubeOne automates cluster operations on all your cloud, on-prem,
