@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 22 13:39:59 UTC 2026 - Neal Gompa <ngompa@opensuse.org>
+
+- Drop Werror to fix build on 32-bit arches
+
+-------------------------------------------------------------------
 Tue Jan 20 00:45:47 UTC 2026 - Neal Gompa <ngompa@opensuse.org>
 
 - Initial package based on Fedora packaging

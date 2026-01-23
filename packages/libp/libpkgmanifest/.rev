@@ -7,4 +7,12 @@
     <comment>Initial package for openSUSE Factory (required for dnf5 &gt;= 5.3)</comment>
     <requestid>1328156</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ba5a3db7a96db5f302f3e3975bdad686</srcmd5>
+    <version>0.5.9</version>
+    <time>1769185893</time>
+    <user>anag_factory</user>
+    <comment>- Drop Werror to fix build on 32-bit arches</comment>
+    <requestid>1328689</requestid>
+  </revision>
 </revisionlist>

@@ -121,6 +121,9 @@ Python 3 bindings for the %{name} library.
 %prep
 %autosetup -p1
 
+# Drop Werror to fix bindings build on 32-bit arches
+sed -e "s/-Werror//" -i CMakeLists.txt
+
 %build
 %cmake \
     -DWITH_DOCS=%{?with_docs:ON}%{!?with_docs:OFF} \
