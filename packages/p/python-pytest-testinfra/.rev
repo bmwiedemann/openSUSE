@@ -127,4 +127,22 @@
 - Switch to pyproject macros.</comment>
     <requestid>1228145</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ee41f7238c1afa3e073e94b94696ebc1</srcmd5>
+    <version>10.2.2</version>
+    <time>1769186022</time>
+    <user>anag_factory</user>
+    <comment>- Update to 10.2.2:
+  * Remove crypt lib from testing
+  * Prevent Paramiko deadlock when test sends more than 2MB to stdout
+  * Extend backend documentation with a general host spec section
+  * Fix KeyError in MountPoint.repr()
+  * Fix systemctl is active
+  * Extended testing of group_names
+  * Query all usernames and group names
+  * Use builtin dict, list and tuple for typing
+  * Use hatchling instead of setuptools
+- Drop patch support-python-313.patch, included upstream.</comment>
+    <requestid>1328769</requestid>
+  </revision>
 </revisionlist>

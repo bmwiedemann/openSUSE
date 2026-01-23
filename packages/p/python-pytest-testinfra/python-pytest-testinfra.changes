@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jan 23 04:03:00 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 10.2.2:
+  * Remove crypt lib from testing
+  * Prevent Paramiko deadlock when test sends more than 2MB to stdout
+  * Extend backend documentation with a general host spec section
+  * Fix KeyError in MountPoint.repr()
+  * Fix systemctl is active
+  * Extended testing of group_names
+  * Query all usernames and group names
+  * Use builtin dict, list and tuple for typing
+  * Use hatchling instead of setuptools
+- Drop patch support-python-313.patch, included upstream.
+
+-------------------------------------------------------------------
 Wed Dec  4 06:04:30 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-python-313.patch:

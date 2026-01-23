@@ -18,24 +18,21 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-testinfra
-Version:        10.1.1
+Version:        10.2.2
 Release:        0
 Summary:        Python module to test infrastructures
 License:        Apache-2.0
 URL:            https://github.com/pytest-dev/pytest-testinfra
-Source:         https://files.pythonhosted.org/packages/source/p/pytest-testinfra/pytest-testinfra-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pytest-testinfra/pytest_testinfra-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE testinfra-parametrize-backends-test.patch -- make backends deselectable which are not available for testing
 Patch0:         testinfra-parametrize-backends-test.patch
-# PATCH-FIX-UPSTREAM gh#pytest-dev/pytest-testinfra#764
-Patch1:         support-python-313.patch
 BuildRequires:  %{python_module paramiko}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pywinrm}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module tornado}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  ansible
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -55,11 +52,7 @@ Testinfra is like a Serverspec equivalent in Python, and is written
 as a plugin to the Pytest test engine.
 
 %prep
-%autosetup -p1 -n pytest-testinfra-%{version}
-# register custom markers for test suite in order to avoid warning clutter
-sed -i -e '/\[tool:pytest\]/ a markers = \
-  testinfra_hosts\
-  destructive' setup.cfg
+%autosetup -p1 -n pytest_testinfra-%{version}
 
 %build
 %pyproject_wheel
@@ -79,7 +72,7 @@ fi
 %pytest -ra -k "not ($donttest ${$python_donttest})" test
 
 %files %{python_files}
-%doc CHANGELOG.rst README.rst
+%doc README.rst
 %license LICENSE
 %{python_sitelib}/testinfra
 %{python_sitelib}/pytest_testinfra-%{version}.dist-info
