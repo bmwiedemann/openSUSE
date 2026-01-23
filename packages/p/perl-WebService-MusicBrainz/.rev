@@ -38,4 +38,32 @@ MusicBrainz support.</comment>
     <comment></comment>
     <requestid>1203932</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8d4c24845df55810ba78ac98eadefd44</srcmd5>
+    <version>1.0.10</version>
+    <time>1769186046</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.0.10
+   see /usr/share/doc/packages/perl-WebService-MusicBrainz/Changes
+  1.0.5 Tuesday March 19th 2019
+  	- Fix Area.t ext:score -&gt; ns2:score.  See https://github.com/bfaist/webservice-musicbrainz/pull/7 - &quot;Tests: Modifying area code as it fails&quot;.  See https://github.com/bfaist/webservice-musicbrainz/issues/8 - &quot;Bug on compiling under Xenial&quot;.
+  1.0.6 Tuesday July 26th 2022
+     - MusicBrainz.pm - Use 'release-group' as key on $search_fields.
+     - Request.pm - Updated url_base from http to https.
+  1.0.7 Monday July 24th 2024
+  	- Artist.t - Account for searching on a artist/group can return one or more results.  In this case, searching on &quot;Van Halen&quot; returns all the Van Halen tribute bands.  See https://github.com/bfaist/webservice-musicbrainz/pull/15 - &quot;Fix t/Artist.t: Van Halen is not unique any more.&quot;
+  1.0.8 Monday Jan 12 2026
+  	- Add Mojo::UserAgent::Role::Retry to dependencies in README.md
+  	- Create a github Action to run tests.
+  	- Changes missing data for 1.0.5, 1.0.6, and 1.0.7
+  	- MANIFEST is missing t/DiscID.t
+  	- Test t/Recording.t is failing.
+  	- Many tests fail due to &quot;SSL connect attempt failed&quot;
+  	- Merge 1.0.7
+  1.0.9 Wednesday Jan 14 2026
+  	- Fix VERSION and update Changes
+  1.0.10 Monday Jan 19 2026
+  	- Move Mojo::UserAgent::Role::Retry to a recommended/optional module</comment>
+    <requestid>1328814</requestid>
+  </revision>
 </revisionlist>
