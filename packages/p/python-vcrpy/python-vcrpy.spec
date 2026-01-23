@@ -26,7 +26,9 @@ License:        MIT
 URL:            https://github.com/kevin1024/vcrpy
 Source:         https://files.pythonhosted.org/packages/source/v/vcrpy/vcrpy-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-httpbin}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}

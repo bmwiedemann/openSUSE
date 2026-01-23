@@ -199,4 +199,12 @@
 </comment>
     <requestid>1327039</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>2d2e44333e2eed4731398e8b92c3eaf7</srcmd5>
+    <version>8.1.1</version>
+    <time>1769186019</time>
+    <user>anag_factory</user>
+    <comment>- Add missing BuildRequires on pytest-asyncio.</comment>
+    <requestid>1328761</requestid>
+  </revision>
 </revisionlist>

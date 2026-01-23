@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 23 01:17:47 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing BuildRequires on pytest-asyncio.
+
+-------------------------------------------------------------------
 Fri Jan  9 10:22:55 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 8.1.1
