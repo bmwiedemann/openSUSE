@@ -190,4 +190,14 @@ bugowner: varkoly</comment>
 - ------------------------------------------------------------------</comment>
     <requestid>1324249</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>bf95bf659f3c91164d5c26099296ae76</srcmd5>
+    <version>2.4.2</version>
+    <time>1769186070</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1328735 from frispete
+
+- dovecot will not compile with older gcc's. Force a newer one.</comment>
+    <requestid>1328881</requestid>
+  </revision>
 </revisionlist>

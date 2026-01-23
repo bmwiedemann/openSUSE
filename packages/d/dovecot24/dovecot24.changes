@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 22 18:04:34 UTC 2026 - Hans-Peter Jansen <hpj@urpla.net>
+
+- dovecot will not compile with older gcc's. Force a newer one.
+
+-------------------------------------------------------------------
 Tue Dec 23 08:21:20 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - While we are at it backport some fixes for the authentication

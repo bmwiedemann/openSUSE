@@ -1,7 +1,7 @@
 #
 # spec file for package dovecot24
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,6 +43,10 @@
 %endif
 %bcond_with run_tests
 
+%if 0%{?suse_version} < 1600
+%global force_gcc_version   15
+%endif
+
 Name:           dovecot24
 Version:        2.4.2
 Release:        0
@@ -76,6 +80,7 @@ BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
+BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  libtool
 BuildRequires:  lua-devel
 BuildRequires:  lua-dkjson
@@ -305,6 +310,11 @@ dovecot tree.
 gzip -9v ChangeLog
 
 %build
+%if 0%{?force_gcc_version}
+export CC="gcc-%{?force_gcc_version}"
+export CXX="g++-%{?force_gcc_version}"
+%endif
+
 # export CFLAGS="%%{optflags} -Wno-sign-compare"
 # ./autogen.sh
 %configure                                          \
