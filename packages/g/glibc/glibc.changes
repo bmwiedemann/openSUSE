@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan  7 11:55:12 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- Manage files in /var with systemd-tmpfiles (bsc#1253139)
+
+-------------------------------------------------------------------
 Mon Sep 15 14:37:58 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - inet-fortified-namespace.patch: inet-fortified: fix namespace violation

@@ -3208,4 +3208,12 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
   return values larger than INT_MAX (BZ #33245) (forwarded request 1305694 from Andreas_Schwab)</comment>
     <requestid>1305695</requestid>
   </revision>
+  <revision rev="302" vrev="3">
+    <srcmd5>555f157d0deebe043959646cd7b99441</srcmd5>
+    <version>2.42</version>
+    <time>1769185852</time>
+    <user>anag_factory</user>
+    <comment>- Manage files in /var with systemd-tmpfiles (bsc#1253139)</comment>
+    <requestid>1328106</requestid>
+  </revision>
 </revisionlist>

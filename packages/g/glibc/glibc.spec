@@ -1,7 +1,7 @@
 #
 # spec file for package glibc
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -1068,6 +1068,9 @@ include /etc/ld.so.conf.d/*.conf
 EOF
 # Add ldconfig cache directory for directory ownership
 mkdir -p %{buildroot}/var/cache/ldconfig
+mkdir -p %{buildroot}%{_tmpfilesdir}
+echo 'd /var/cache/ldconfig 0700 root root' > %{buildroot}%{_tmpfilesdir}/glibc.conf
+
 # Empty the ld.so.cache:
 rm -f %{buildroot}/etc/ld.so.cache
 touch %{buildroot}/etc/ld.so.cache
@@ -1083,12 +1086,12 @@ rm -f %{buildroot}%{slibdir}/libnsl.so.1
 
 %if %{with nscd}
 %ifnarch i686
-mkdir -p %{buildroot}/usr/lib/tmpfiles.d/
-install -m 644 %{SOURCE20} %{buildroot}/usr/lib/tmpfiles.d/
+mkdir -p %{buildroot}%{_tmpfilesdir}
+install -m 644 %{SOURCE20} %{buildroot}%{_tmpfilesdir}/
 mkdir -p %{buildroot}/usr/lib/systemd/system
 install -m 644 %{SOURCE21} %{buildroot}/usr/lib/systemd/system
-mkdir -p %{buildroot}/usr/lib/sysusers.d/
-install -m 644 %{SOURCE22} %{buildroot}/usr/lib/sysusers.d/nscd.conf
+mkdir -p %{buildroot}%{_sysusersdir}/
+install -m 644 %{SOURCE22} %{buildroot}%{_sysusersdir}/nscd.conf
 %endif
 %endif
 
@@ -1127,6 +1130,8 @@ rm -f %{buildroot}%{_sbindir}/nscd
 mkdir %{buildroot}%{_prefix}/share/misc
 mv %{buildroot}/var/lib/misc/Makefile %{buildroot}%{_prefix}/share/misc/Makefile.makedb
 ln -s %{_prefix}/share/misc/Makefile.makedb %{buildroot}/var/lib/misc/Makefile
+mkdir -p %{buildroot}%{_tmpfilesdir}/
+echo 'L /var/lib/misc/Makefile - - - - /usr/share/misc/Makefile.makedb' > %{buildroot}%{_tmpfilesdir}/glibc-extra.conf
 %endif
 
 %endif
@@ -1292,7 +1297,6 @@ end
 
 %post -n nscd
 %service_add_post nscd.service
-%tmpfiles_create /usr/lib/tmpfiles.d/nscd.conf
 # Previously we had nscd.socket, remove it
 test -x /usr/bin/systemctl && /usr/bin/systemctl stop nscd.socket 2>/dev/null || :
 test -x /usr/bin/systemctl && /usr/bin/systemctl disable nscd.socket 2>/dev/null  || :
@@ -1364,7 +1368,7 @@ exit 0
 %ifarch %libutil_archs
 %{slibdir}/libutil.so.1
 %endif
-%dir %attr(0700,root,root) /var/cache/ldconfig
+%dir %attr(0700,root,root) %ghost /var/cache/ldconfig
 %{rootsbindir}/ldconfig
 %{_bindir}/gencat
 %{_bindir}/getconf
@@ -1395,6 +1399,7 @@ exit 0
 %{_libdir}/gconv/UTF8_UTF16_Z9.so
 %endif
 %attr(0644,root,root) %verify(not md5 size mtime) %ghost %{_libdir}/gconv/gconv-modules.cache
+%{_tmpfilesdir}/glibc.conf
 
 %files gconv-modules-extra
 %dir %{_libdir}/gconv
@@ -1508,14 +1513,14 @@ exit 0
 %{_sbindir}/nscd
 %{_sbindir}/rcnscd
 /usr/lib/systemd/system/nscd.service
-%dir /usr/lib/tmpfiles.d
-/usr/lib/tmpfiles.d/nscd.conf
-%dir /usr/lib/sysusers.d
-/usr/lib/sysusers.d/nscd.conf
+%dir %{_tmpfilesdir}
+%{_tmpfilesdir}/nscd.conf
+%dir %{_sysusersdir}
+%{_sysusersdir}/nscd.conf
 %dir %attr(0755,root,root) %ghost /run/nscd
 %attr(0644,root,root) %verify(not md5 size mtime) %ghost %config(missingok,noreplace) /run/nscd/nscd.pid
 %attr(0666,root,root) %verify(not md5 size mtime) %ghost %config(missingok,noreplace) /run/nscd/socket
-%dir %attr(0755,root,root) /var/lib/nscd
+%dir %attr(0755,root,root) %ghost /var/lib/nscd
 %attr(0600,root,root) %verify(not md5 size mtime) %ghost %config(missingok,noreplace) /var/lib/nscd/passwd
 %attr(0600,root,root) %verify(not md5 size mtime) %ghost %config(missingok,noreplace) /var/lib/nscd/group
 %attr(0600,root,root) %verify(not md5 size mtime) %ghost %config(missingok,noreplace) /var/lib/nscd/hosts
@@ -1550,7 +1555,8 @@ exit 0
 %defattr(-,root,root)
 %{_bindir}/makedb
 %{_prefix}/share/misc/Makefile.makedb
-/var/lib/misc/Makefile
+%ghost /var/lib/misc/Makefile
+%{_tmpfilesdir}/glibc-extra.conf
 
 %files lang -f libc.lang
 %endif
