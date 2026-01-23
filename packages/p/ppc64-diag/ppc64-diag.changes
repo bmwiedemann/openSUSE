@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 23 08:57:41 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- Version 2.6.11 (jsc#PED-14542)
+- Remove upstreamed patches
+  * Added-Power11-support-for-diag_nvme.patch
+  * 0001-scripts-ppc64_diag_mkrsrc-Fix-typo-to-avoid-syntax-e.patch
+  * platform.h-fix-ifdef-guard-typo.patch
+  * Replace-custom-boolean-type-with-stdbool.h-for-C23-c.patch
+
+-------------------------------------------------------------------
 Mon Aug  4 10:22:16 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
 
 - Fix Factory build
