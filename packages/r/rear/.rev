@@ -310,4 +310,12 @@
     <comment>Version upgrade to ReaR 2.9 (forwarded request 1268301 from jsmeix)</comment>
     <requestid>1268302</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>4e3962d0669204f2967451e35ffa0672</srcmd5>
+    <version>2.9</version>
+    <time>1769186076</time>
+    <user>anag_factory</user>
+    <comment>Fix for Immutable Mode jsc#PED-14776 from epic jsc#PED-14688 (forwarded request 1328889 from jsmeix)</comment>
+    <requestid>1328890</requestid>
+  </revision>
 </revisionlist>

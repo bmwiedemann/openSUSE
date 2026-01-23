@@ -1,7 +1,7 @@
 #
 # spec file for package rear
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -352,7 +352,6 @@ make install DESTDIR="%{buildroot}"
 %{_mandir}/man8/rear.8*
 %config(noreplace) %{_sysconfdir}/rear/
 %config(noreplace) %{_datadir}/rear/
-%{_localstatedir}/lib/rear/
 %{_sbindir}/rear
 
 %changelog

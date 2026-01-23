@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 23 11:55:47 UTC 2026 - Johannes Meixner <jsmeix@suse.com>
+
+- Do no longer provide the directory /var/lib/rear/ in the RPM
+  (not needed in the RPM because 'rear' creates it as needed)
+  to "Fix packages for Immutable Mode - rear29a"
+  (implementation task jsc#PED-14776 from epic jsc#PED-14688)
+
+-------------------------------------------------------------------
 Thu Apr 10 07:14:32 UTC 2025 - Johannes Meixner <jsmeix@suse.com>
 
 - Version upgrade to 2.9
