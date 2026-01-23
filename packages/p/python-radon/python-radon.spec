@@ -1,7 +1,7 @@
 #
 # spec file for package python-radon
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,14 +27,13 @@ Source:         https://files.pythonhosted.org/packages/source/r/radon/radon-%{v
 # PATCH-FIX-UPSTREAM gh#rubik/radon#250
 Patch0:         add-scripts-to-pyproject.toml.patch
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
-BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-colorama >= 0.4.1
 Requires:       python-mando >= 0.6
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module colorama >= 0.4.1}
