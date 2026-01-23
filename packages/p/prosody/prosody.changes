@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Fri Jan 23 13:06:26 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 13.0.3:
+  Fixes and improvements:
+  * mod_storage_sql: Set configurable wait time for locked SQLite3 database
+  * net.server_event: Port TLS 1.3 channel binding method to libevent backend
+  * mod_roster: Add command for cleaning out invalid contact JIDs
+  * migrator: Allow migrating between different configs of the same driver
+  * mod_admin_shell: Allow pinging any JID with xmpp:ping()
+  * mod_invites: Accept –admin flag as shortcut for –role prosody:admin
+  * mod_mam: Add send_legacy_offline_messages_to_mam_clients config option
+  * mod_limits: Allow configuration of general ‘s2s’ limit, and have s2sout inherit from s2sin
+  * mod_storage_internal: Return item-not-found for unknown before/after ids
+  * MUC: Fixes for room avatar caching
+  Minor changes:
+  * core.configmanager: Fix referencing previous config options #1950
+  * MUC: Ensure allow MUC PM setting has valid value (fixes #1933: PM does not work on new MUCs)
+  * mod_storage_sql: Assert that serialization of archive:set() payload succeeds
+  * mod_smacks: Remove extra optional from sm element
+  * mod_s2s_auth_dane_in: Fix caching SHA2-512 hash
+  * MUC: Fix muc_room_default_presence_broadcast option not working
+  * util.sslconfig: Fix error when applying ssl={[port]=…}
+  * net.server_epoll: Restore idle checks after pause (e.g. rate limits)
+  * util.jid: Validate domainparts using IDNA or as IP literals (fixes #1903: Invalid JID in Roster)
+  * util.datamanager: Fix detection of index files created on different architectures
+  * util.startup: Inform process manager about failure to reload config
+  * mod_muc: Revert f4e16e6265e6 and invalidate avatar cache only on vcard change
+  * mod_http_file_share: Improve debug logging around unexpected file sizes
+  * mod_admin_shell: Ensure JIDs are normalized in xmpp:ping()
+  * mod_invites: Return error when generating password reset for non-existent account
+  * util.uuid: Update UUIDv7 to match RFC 9562
+- bsc#1254309: Fix starting prosody
+  Update prodody.service with content from https://hg.prosody.im/debian/file/default/prosody.service
+
+-------------------------------------------------------------------
+Fri Jan 23 13:05:40 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 13.0.2:
+  Fixes and improvements:
+  * mod_storage_internal: Fix queries with only start returning extra items
+  * mod_invites_register: Stricter validation of registration events
+  Minor changes:
+  * MUC: Ensure allow MUC PM setting has valid value (fixes #1933: PM does not work on new MUCs)
+  * mod_storage_sql: Delay showing SQL library error until attempted load
+  * mod_storage_sql: Handle failure to deploy new UNIQUE index
+  * mod_storage_sql: Add shell command to create tables and indices (again)
+  * mod_s2s: Fix log to use formatting instead of concatenation (fixes #1461: Logging issues uncovered by mod_log_json)
+  * modulemanager, util.pluginloader: Improve error message when load fails but some candidates were filtered
+  * prosodyctl check config: add recommendation to switch from admin_telnet to shell
+  * mod_storage_sql: Retrieve all indices to see if the new one exists
+  * prosodyctl check config: List modules which Prosody cannot successfully load
+  * net.http.files: Fix issue with caching
+  * util.jsonschema: Fix handling of false as schema
+  * mod_invites: Consider password reset a distinct type wrt invite page
+  * configmanager: Emit config warning when referencing non-existent value
+  * mod_admin_shell: Add role:list() and role:show() commands
+  * MUC: Fix nickname registration form error handling (#1930)
+  * MUC: Fix Error when join stanza sent without resource (#1934)
+  * MUC: Factor out identification of join stanza
+  * mod_invites_register: Don’t restrict username for roster invites (thanks lissine)
+  * mod_admin_shell: Fix matching logic in s2s:close (Thanks Menel)
+  * mod_authz_internal: Improve error message when invalid role specified
+  * mod_http_file_share: Add media-src ‘self’ to Content-Security-Policy header
+  * mod_admin_shell: Visual tweaks to the output of debug:cert_index()
+  * mod_http: Log problems parsing IP addresses in X-Forwarded-For (Thanks Boris)
+  * mod_http: Fix IP address normalization (Thanks Boris)
+  * util.prosodyctl.check: Improve reporting of DNS lookup problems
+
+-------------------------------------------------------------------
+Fri Jan 23 13:05:01 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 13.0.1:
+  Fixes and improvements:
+  * mod_admin_shell: Add debug:cert_index() command to aid debugging of automatic certificate selection
+  * mod_tls: Enable Prosody’s certificate checking for incoming s2s connections (fixes #1916: Impossible to override certificate verification policy in 13.0)
+  * portmanager: Multiple fixes to use correct certificates for direct TLS ports (fixes #1915)
+  * net.server_epoll: Use correct connection timeout when initiating Direct TLS
+  * mod_roster: Fix shell commands when a component is involved (fixes #1908: error in prosodyctl shell roster attempting to subscribe a component)
+  * mod_http_file_share: Explicitly reject all unsupported ranges
+  * mod_http_file_share: Fix off by one in Range response
+  * mod_admin_shell, prosodyctl shell: Report command failure when no password entered (fixes #1907: prosodyctl adduser: unexpected account creation on password mismatch)
+  Minor changes:
+  * mod_storage_sql: Drop legacy index without confirmation to ease upgrades
+  * util.adminstream: Fix traceback on double-close (fixes #1913: Prosody fails to completely stop while shell watch:log is active)
+  * certmanager: Improve logging for all cases where certs are skipped
+  * mod_tls: Collect full certificate chain validation information
+  * mod_s2s: Fix error detection with newer versions of OpenSSL
+  * portmanager: Add debug log message to state which certificate we end up using
+  * prosodyctl check certs: Use correct hostname in warning message about HTTPS
+  * prosodyctl check: Be more robust against invalid disco_items, and show warning
+  * spec/tls: Add TLS/certificate integration tests
+  * mod_http_file_share: Improve error reporting by using util.error more
+  * core.storagemanager: Fix tests by removing an assert that upset luarocks
+  * core.usermanager: Fix COMPAT layer for legacy is_admin() function
+  * certmanager: Remove obsolete and verbose index log (replaced by shell command)
+  * doap: Add XEP-0333, XEP-0334, XEP-0156 and mod_http_altconnect
+
+-------------------------------------------------------------------
 Tue Mar 18 07:02:01 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 13.0.0:

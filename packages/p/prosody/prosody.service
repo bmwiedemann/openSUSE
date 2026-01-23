@@ -1,6 +1,9 @@
 [Unit]
-Description=Jabber/XMPP Server
-After=network-online.target mysql.service
+Description=Prosody XMPP Server
+Documentation=https://prosody.im/doc
+
+Requires=network-online.target
+After=network-online.target network.target mariadb.service mysql.service postgresql.service
 
 [Service]
 # added automatically, for details please see
@@ -16,11 +19,36 @@ ProtectKernelLogs=true
 ProtectControlGroups=true
 RestrictRealtime=true
 # end of automatic additions 
-Type=forking
-PIDFile=/run/prosody/prosody.pid
-ExecStart=/usr/bin/prosodyctl start
-ExecStop=/usr/bin/prosodyctl stop
+Type=notify
+
+# Start by executing the main executable
+ExecStart=/usr/bin/prosody -F
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-abnormal
+
+User=prosody
+Group=prosody
+UMask=0027
+
+RuntimeDirectory=prosody
+ConfigurationDirectory=prosody
+StateDirectory=prosody
+StateDirectoryMode=0750
+LogsDirectory=prosody
+WorkingDirectory=~
+
+# Set stdin to /dev/null since Prosody does not need it
+StandardInput=null
+
+# Direct stdout/-err to journald for use with log = "*stdout"
+StandardOutput=journal
+StandardError=inherit
+
+# Allow binding low ports
+AmbientCapabilities=CAP_NET_BIND_SERVICE
 
 [Install]
 WantedBy=multi-user.target
 Alias=org.prosody.service
+
+# vim: filetype=systemd

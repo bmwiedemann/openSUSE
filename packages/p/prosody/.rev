@@ -754,4 +754,41 @@
     + Persistent rooms can only be created by local users (parent host) by default</comment>
     <requestid>1315198</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>f56aeec8eb945944b8b9cf2d2cc4255b</srcmd5>
+    <version>13.0.3</version>
+    <time>1769186078</time>
+    <user>anag_factory</user>
+    <comment>- Update to 13.0.3:
+  Fixes and improvements:
+  * mod_storage_sql: Set configurable wait time for locked SQLite3 database
+  * net.server_event: Port TLS 1.3 channel binding method to libevent backend
+  * mod_roster: Add command for cleaning out invalid contact JIDs
+  * migrator: Allow migrating between different configs of the same driver
+  * mod_admin_shell: Allow pinging any JID with xmpp:ping()
+  * mod_invites: Accept –admin flag as shortcut for –role prosody:admin
+  * mod_mam: Add send_legacy_offline_messages_to_mam_clients config option
+  * mod_limits: Allow configuration of general ‘s2s’ limit, and have s2sout inherit from s2sin
+  * mod_storage_internal: Return item-not-found for unknown before/after ids
+  * MUC: Fixes for room avatar caching
+  Minor changes:
+  * core.configmanager: Fix referencing previous config options #1950
+  * MUC: Ensure allow MUC PM setting has valid value (fixes #1933: PM does not work on new MUCs)
+  * mod_storage_sql: Assert that serialization of archive:set() payload succeeds
+  * mod_smacks: Remove extra optional from sm element
+  * mod_s2s_auth_dane_in: Fix caching SHA2-512 hash
+  * MUC: Fix muc_room_default_presence_broadcast option not working
+  * util.sslconfig: Fix error when applying ssl={[port]=…}
+  * net.server_epoll: Restore idle checks after pause (e.g. rate limits)
+  * util.jid: Validate domainparts using IDNA or as IP literals (fixes #1903: Invalid JID in Roster)
+  * util.datamanager: Fix detection of index files created on different architectures
+  * util.startup: Inform process manager about failure to reload config
+  * mod_muc: Revert f4e16e6265e6 and invalidate avatar cache only on vcard change
+  * mod_http_file_share: Improve debug logging around unexpected file sizes
+  * mod_admin_shell: Ensure JIDs are normalized in xmpp:ping()
+  * mod_invites: Return error when generating password reset for non-existent account
+  * util.uuid: Update UUIDv7 to match RFC 9562
+- bsc#1254309: Fix starting prosody</comment>
+    <requestid>1328898</requestid>
+  </revision>
 </revisionlist>
