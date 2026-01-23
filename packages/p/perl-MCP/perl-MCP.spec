@@ -1,7 +1,7 @@
 #
 # spec file for package perl-MCP
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name MCP
 Name:           perl-MCP
-Version:        0.60.0
+Version:        0.70.0
 Release:        0
-# 0.06 -> normalize -> 0.60.0
-%define cpan_version 0.06
+# 0.07 -> normalize -> 0.70.0
+%define cpan_version 0.07
 License:        MIT
 Summary:        Connect Perl with AI using MCP (Model Context Protocol)
 URL:            https://metacpan.org/release/%{cpan_name}

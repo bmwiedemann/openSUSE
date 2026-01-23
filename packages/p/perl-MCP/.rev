@@ -40,4 +40,15 @@
     - Added prompts, resources, and tools events to MCP::Server.</comment>
     <requestid>1323806</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b80c08bc7e16c5aa64ed1f9b52b042de</srcmd5>
+    <version>0.70.0</version>
+    <time>1769186046</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.70.0 (0.07)
+   see /usr/share/doc/packages/perl-MCP/Changes
+  0.07  2026-01-16
+    - Fixed bug in MCP::Prompt where text prompts had the wrong format.</comment>
+    <requestid>1328815</requestid>
+  </revision>
 </revisionlist>
