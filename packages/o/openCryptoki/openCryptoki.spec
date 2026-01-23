@@ -26,6 +26,16 @@
 %define pkcs_group pkcs11
 %define oc_cvs_tag opencryptoki
 
+%ifarch s390 s390x
+    %define ocki_conf_flags --enable-icatok --enable-ccatok --enable-ep11tok --enable-pkcsep11_migrate
+%else
+    %ifnarch i586
+        %define ocki_conf_flags --disable-icatok --enable-ccatok --disable-ep11tok --disable-pkcsep11_migrate --enable-pkcscca_migrate
+    %else
+        %define ocki_conf_flags --disable-icatok --disable-ccatok --disable-ep11tok --disable-pkcsep11_migrate --disable-pkcscca_migrate
+    %endif
+%endif
+
 Name:           openCryptoki
 Version:        3.26.0
 Release:        0
@@ -42,6 +52,7 @@ Source3:        openCryptoki-rpmlintrc
 Patch000:       ocki-3.26-remove-make-install-chgrp.patch
 #
 Patch010:       openCryptoki-CVE-2026-22791-commit-e37e912.patch
+Patch011:       openCryptoki-CVE-2026-23893-commit-5e6e4b4.patch
 #
 BuildRequires:  bison
 BuildRequires:  dos2unix
@@ -155,15 +166,7 @@ cp %{SOURCE2} .
 %ifarch aarch64  # Apparently, gcc for aarch64 doesn't support transactional memory
     --enable-locks \
 %endif
-%ifarch s390 s390x
-    --enable-icatok --enable-ccatok --enable-ep11tok --enable-pkcsep11_migrate
-%else
-%ifnarch i586
-    --disable-icatok --enable-ccatok --disable-ep11tok --disable-pkcsep11_migrate --enable-pkcscca_migrate
-%else
-    --disable-icatok --disable-ccatok --disable-ep11tok --disable-pkcsep11_migrate --disable-pkcscca_migrate
-%endif
-%endif
+    %{ocki_conf_flags}
 
 make %{?_smp_mflags}
 dos2unix doc/README.ep11_stdll

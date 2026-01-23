@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 22 16:34:43 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied a patch (bsc#1257116,  CVE-2026-23893) 
+ * openCryptoki-CVE-2026-23893-commit-5e6e4b4.patch
+
+-------------------------------------------------------------------
 Wed Jan 14 13:06:33 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Applied a patch (bsc#1256673, CVE-2026-22791)
