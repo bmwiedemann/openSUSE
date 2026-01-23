@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan 23 06:13:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.89.0:
+  * Exciting New Features
+    - feature: Automatically set CI VCS properties on uploaded
+      artifacts by @bhanurp in #3309
+  * Other Changes
+    - JGC-489 - Fix release by @RemiBou in #3305
+    - RTDEV-73424 - Set
+      TestReleaseBundleCreationFromMultipleSourcesUsingSp… by
+      @rimapol in #3315
+
+-------------------------------------------------------------------
 Sun Jan 11 08:14:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.88.0:
