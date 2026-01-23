@@ -414,6 +414,7 @@ unsorted:
   - adaptx-javadoc 
   - adcli 
   - adcli-doc 
+  - add 
   - addrwatch 
   - ade-devel 
   - adinatha-fonts 
@@ -1721,7 +1722,6 @@ unsorted:
   - budgie-takeabreak-applet 
   - budgie-visualspace-applet 
   - budgie-wallstreet 
-  - budgie-wayland-session 
   - budgie-weathershow-applet 
   - budgie-window-shuffler 
   - budgie-workspace-stopwatch-applet 
@@ -2537,6 +2537,7 @@ unsorted:
   - compsize 
   - conan 
   - conauto 
+  - conflict 
   - conftest 
   - conftest-bash-completion 
   - conftest-fish-completion 
@@ -3321,12 +3322,10 @@ unsorted:
   - dmenu 
   - dmraid-devel 
   - dmz-icon-theme-cursors 
-  - dnf 
-  - dnf-automatic 
-  - dnf-lang 
   - dnf-plugins-core 
   - dnf-plugins-core-lang 
-  - dnf5 
+  - dnf4 
+  - dnf4-lang 
   - dnf5-devel 
   - dnf5-plugin-automatic 
   - dnf5-plugin-manifest 
@@ -12956,13 +12955,10 @@ unsorted:
   - libdnet1 
   - libdnf-devel 
   - libdnf5-cli-devel 
-  - libdnf5-cli3 
   - libdnf5-devel 
   - libdnf5-plugin-actions 
-  - libdnf5-plugin-appstream 
   - libdnf5-plugin-expired-pgp-keys 
   - libdnf5-plugin-local 
-  - libdnf5_2 
   - libdnnl3 
   - libdns_sd 
   - libdns_sd-32bit 
@@ -13311,7 +13307,6 @@ unsorted:
   - libfmos-devel 
   - libfmos1 
   - libfmt10 
-  - libfmt12 
   - libfmt12-32bit 
   - libfmt9 
   - libfole-devel 
@@ -14580,7 +14575,7 @@ unsorted:
   - libm2pim20 
   - libm2pim20-32bit 
   - libm4ri-devel 
-  - libm4ri1 
+  - libm4ri2 
   - libm4rie-devel 
   - libm4rie1 
   - libmaa-devel 
@@ -16162,7 +16157,6 @@ unsorted:
   - libscrypt0 
   - libscrypt0-x86-64-v3 
   - libsdb2_2_4 
-  - libsdbus-c++2 
   - libseafile0 
   - libseagull0 
   - libsearpc-devel 
@@ -18223,7 +18217,6 @@ unsorted:
   - magic-wormhole.rs-fish-completion 
   - magic-wormhole.rs-zsh-completion 
   - magpie 
-  - magpie-1 
   - magpie-devel 
   - magpie-lang 
   - mailcommon-devel 
@@ -18801,6 +18794,7 @@ unsorted:
   - miao-fonts 
   - micro-editor 
   - microcom 
+  - microdnf 
   - microos-devel-tools 
   - micropython 
   - micropython-lib 
@@ -24397,11 +24391,11 @@ unsorted:
   - python311-agate-remote 
   - python311-agate-sql 
   - python311-agate-stats 
+  - python311-agent-client-protocol 
   - python311-ahocorasick-rs 
   - python311-aiocsv 
   - python311-aiodataloader 
   - python311-aiodns 
-  - python311-aioeventlet 
   - python311-aiofiles 
   - python311-aioftp 
   - python311-aiohappyeyeballs 
@@ -28203,11 +28197,11 @@ unsorted:
   - python312-agate-remote 
   - python312-agate-sql 
   - python312-agate-stats 
+  - python312-agent-client-protocol 
   - python312-ahocorasick-rs 
   - python312-aiocsv 
   - python312-aiodataloader 
   - python312-aiodns 
-  - python312-aioeventlet 
   - python312-aiofiles 
   - python312-aioftp 
   - python312-aiohappyeyeballs 
@@ -32080,11 +32074,11 @@ unsorted:
   - python313-agate-remote 
   - python313-agate-sql 
   - python313-agate-stats 
+  - python313-agent-client-protocol 
   - python313-ahocorasick-rs 
   - python313-aiocsv 
   - python313-aiodataloader 
   - python313-aiodns 
-  - python313-aioeventlet 
   - python313-aiofiles 
   - python313-aioftp 
   - python313-aiohappyeyeballs 
@@ -50384,7 +50378,6 @@ unsorted:
   - yubico-piv-tool 
   - yubikey-manager 
   - yudit 
-  - yum 
   - yum-utils 
   - yyjson-devel 
   - z 
