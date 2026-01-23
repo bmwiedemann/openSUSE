@@ -1,7 +1,7 @@
 #
 # spec file for package tdom
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Name:           tdom
 Summary:        A XML/DOM/XPath/XSLT Implementation for Tcl
 License:        MPL-2.0
 Group:          Development/Libraries/Tcl
-Version:        0.9.5
+Version:        0.9.6
 Release:        0
 URL:            http://tdom.org
 BuildRequires:  autoconf
@@ -31,8 +31,6 @@ BuildRequires:  libexpat-devel
 BuildRequires:  tcl-devel
 BuildRequires:  tcllib
 Source0:        http://tdom.org/downloads/tdom-%{version}-src.tgz
-# https://tdom.org/index.html/info/2db2c391674a7cc3
-Patch0:         tdom-gcc15.patch
 
 %description
 tDOM combines high performance XML data processing with easy and
@@ -52,6 +50,8 @@ This package contains files for developing software based on tdom.
 
 %prep
 %autosetup -p0 -n %{name}-%{version}-src
+# Make sure we use the system's libexpat except for the nametab header.
+rm $(ls expat/* | grep -vF expat/nametab.h)
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

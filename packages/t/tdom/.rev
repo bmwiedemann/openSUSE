@@ -203,4 +203,24 @@
     <comment></comment>
     <requestid>1280256</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>ec0ef59b8ac5f1c913b11c3d337cf9e9</srcmd5>
+    <version>0.9.6</version>
+    <time>1769185931</time>
+    <user>anag_factory</user>
+    <comment>- bsc#1254321, CVE-2025-66382: Make sure we don't use the embedded
+  copy of libexpat.
+- Update to 0.9.6:
+  * Obsoletes tdom-gcc15.patch
+  * Added documentation for the scripted additional XPath
+    functions feature. Thanks to Peter Piwowarski for his valuable
+    input.
+  * Added the dom command method fromScriptContext.
+  * Added a way to create XML namespaced attributes in *FromScripts.
+  * Added the &quot;virtual&quot; JSON type BOOLEAN for text nodes. If the
+    text node value is a boolean in the sense of Tcl then the node
+    serialize to the approprate JSON type. Otherwise it will be a
+    JSON string.</comment>
+    <requestid>1328736</requestid>
+  </revision>
 </revisionlist>
