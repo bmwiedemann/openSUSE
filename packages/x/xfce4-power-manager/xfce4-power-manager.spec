@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-power-manager
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -62,7 +62,7 @@ BuildRequires:  pkgconfig(xrandr) >= 1.5.0
 %if %{with git}
 BuildRequires:  xfce4-dev-tools
 %endif
-Requires:       /usr/bin/pkexec
+Requires:       pkexec
 Requires:       systemd
 Requires:       upower
 Recommends:     %{name}-lang = %{version}

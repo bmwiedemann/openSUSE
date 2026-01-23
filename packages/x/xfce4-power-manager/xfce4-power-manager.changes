@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 22 14:27:03 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require pkexec instead of /usr/bin/pkexec: the package split
+  happened very long tmie ago, but with a 2nd provider for
+  /usr/bin/pkexec (run0-wrappers) we need to be more specific which
+  one we want to use (switch to run0-providers is still possible,
+  as it does provide pkexec, but at a lower version)
+
+-------------------------------------------------------------------
 Tue Dec 31 11:08:48 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Add 0002-remove-pm-helper-policy.patch to remove the pm-helper
