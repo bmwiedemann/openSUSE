@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan 23 06:48:10 UTC 2026 - Natasha Ament <stacheldrahtje@gmail.com>
+
+- Update to version 4.0.6:
+  * Handle manual redirects only unless specified otherwise
+    (gh#nextcloud/desktop#9352)
+  * Ensure more libraries are bundled in the AppImage
+    (gh#nextcloud/desktop#9356)
+  * Remove Ubuntu Plucky and add Resolute
+    (gh#nextcloud/desktop#9355)
+  * Bundle OpenGL drivers in the AppImage
+    (gh#nextcloud/desktop#9365) 
+
+-------------------------------------------------------------------
 Tue Jan 20 09:23:10 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 4.0.5:
