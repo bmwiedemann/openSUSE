@@ -66,4 +66,14 @@
 </comment>
     <requestid>1326284</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>ab86cdb42565d92e9a21e8e9095d815a</srcmd5>
+    <version>3.0.4</version>
+    <time>1769186027</time>
+    <user>anag_factory</user>
+    <comment>- Update corosync-qdevice.spec:
+  * Drop %ghost files in /run
+</comment>
+    <requestid>1328802</requestid>
+  </revision>
 </revisionlist>

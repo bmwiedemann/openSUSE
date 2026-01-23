@@ -154,7 +154,6 @@ fi
 %dir %{_sysconfdir}/corosync/qdevice
 %dir %config(noreplace) %{_sysconfdir}/corosync/qdevice/net
 #change corosync-qdevice to /run as /var/run is symlink nowdays
-%ghost /run/corosync-qdevice
 %{_sbindir}/corosync-qdevice
 %{_sbindir}/corosync-qdevice-net-certutil
 %{_sbindir}/corosync-qdevice-tool
@@ -218,8 +217,6 @@ fi
 %defattr(-,root,root,-)
 %license LICENSE
 %dir %config(noreplace) %attr(770, coroqnetd, coroqnetd) %{_sysconfdir}/corosync/qnetd
-#change corosync-qnetd to /run as /var/run is just symlink nowadays
-%ghost %attr (750, coroqnetd, coroqnetd) /run/corosync-qnetd
 %{_bindir}/corosync-qnetd
 %{_bindir}/corosync-qnetd-certutil
 %{_bindir}/corosync-qnetd-tool

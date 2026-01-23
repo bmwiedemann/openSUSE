@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 12 09:21:45 UTC 2026 - Nicholas Yang <nicholas.yang@suse.com>
+
+- Update corosync-qdevice.spec:
+  * Drop %ghost files in /run
+
+-------------------------------------------------------------------
 Sun Jan  4 06:35:24 UTC 2026 - Nicholas Yang <nicholas.yang@suse.com>
 
 - Update corosync-qdevice.spec:
