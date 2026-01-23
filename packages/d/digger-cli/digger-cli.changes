@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 23 06:15:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.142:
+  * Auto-succeed digger/apply check when plan shows zero changes
+    (#2548)
+  * Fix/handle missing digger config gracefully (#2517)
+  * docs: Update README (#2521)
+  * docs: update reference and include terragrunt (#2546)
+
+-------------------------------------------------------------------
 Wed Jan 21 06:13:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.141:
