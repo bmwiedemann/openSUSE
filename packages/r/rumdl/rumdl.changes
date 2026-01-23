@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jan 23 06:35:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.0.224:
+  * Added
+    - GitHub Action: fail-on-error and output-file inputs (#324,
+      #325)
+      - fail-on-error: Control whether the workflow fails on
+        violations (default: true)
+      - output-file: Write lint results to a file for use in
+        subsequent steps
+    - LSP: source.fixAll.rumdl code action for fix-on-save
+      - Enables VS Code's "Fix All on Save" feature for rumdl
+      - Configure with editor.codeActionsOnSave: {
+        "source.fixAll.rumdl": "explicit" }
+
+-------------------------------------------------------------------
 Thu Jan 22 06:09:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.0.223:
