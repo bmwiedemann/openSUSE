@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Tue Dec  9 18:08:03 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Initial packaging effort for python-agent-client-protocol 0.7.0.
+- Unfortunately, the whole class of tests (test_rpc) had to be
+  switched off because they were hanging the system.
