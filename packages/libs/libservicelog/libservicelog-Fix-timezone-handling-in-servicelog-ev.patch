@@ -1,0 +1,48 @@
+From e04118be57df7647ccee5b09393866d2b0a678ec Mon Sep 17 00:00:00 2001
+From: Sathvika Vasireddy <sv@linux.ibm.com>
+Date: Thu, 8 Jan 2026 12:26:31 +0530
+Subject: [PATCH] libservicelog: Fix timezone handling in servicelog event
+ parsing
+
+Replace mktime() with timegm() when parsing datetime fields from SQLite
+database. SQLite's DATETIME('NOW') returns UTC timestamps, but mktime()
+treats input as local time, causing incorrect timezone conversions.
+
+Use timegm() to correctly interpret the UTC timestamps from the database,
+ensuring accurate time representation.
+
+Tested-by: Krishan Gopal Saraswat <krishang@linux.ibm.com>
+Reviewed-by: Mahesh Salgaonkar <mahesh@linux.ibm.com>
+Signed-off-by: Sathvika Vasireddy <sv@linux.ibm.com>
+---
+ src/event.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/event.c b/src/event.c
+index 32c6a9c..11358a1 100644
+--- a/src/event.c
++++ b/src/event.c
+@@ -620,17 +620,17 @@ servicelog_event_query(servicelog *slog, char *query,
+ 			else if (!strcmp(name, "time_logged")) {
+ 				strptime((char*)sqlite3_column_text(stmt, i),
+ 					 "%Y-%m-%d %T", &t);
+-				e->time_logged = mktime(&t);
++				e->time_logged = timegm(&t);
+ 			}
+ 			else if (!strcmp(name, "time_event")) {
+ 				strptime((char*)sqlite3_column_text(stmt, i),
+ 					 "%Y-%m-%d %T", &t);
+-				e->time_event = mktime(&t);
++				e->time_event = timegm(&t);
+ 			}
+ 			else if (!strcmp(name, "time_last_update")) {
+ 				strptime((char*)sqlite3_column_text(stmt, i),
+ 					 "%Y-%m-%d %T", &t);
+-				e->time_last_update = mktime(&t);
++				e->time_last_update = timegm(&t);
+ 			}
+ 			else if (!strcmp(name, "type"))
+ 				e->type = sqlite3_column_int(stmt, i);
+-- 
+2.51.0
+

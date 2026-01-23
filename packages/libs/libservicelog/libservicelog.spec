@@ -1,7 +1,7 @@
 #
 # spec file for package libservicelog
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,7 @@ Source0:        https://github.com/power-ras/libservicelog/archive/v%{version}.t
 Source1:        baselibs.conf
 Source2:        libservicelog-rpmlintrc
 Source3:        system-group-service.conf
+Patch1:         libservicelog-Fix-timezone-handling-in-servicelog-ev.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  librtas-devel
