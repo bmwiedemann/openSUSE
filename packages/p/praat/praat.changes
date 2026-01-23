@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jan 19 02:48:33 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.4.55:
+  * Plug-ins: fixed a problem introduced in 6.4.52 by which menu
+    commands with pause forms didn’t work.
+  * Scripting: fixed some problems introduced in version 6.4.52
+    concerning the interaction between pause windows and the Demo
+    window.
+  * Opening TIFF files with Read from file..., as well as Insert
+    picture from file...: rid a bug that would show monochrome
+    TIFF files in four vertical stripes.
+  * Scripting: in pause forms, allow vector expressions as
+    defaults in vector fields.
+  * Backslash trigraph for apico-postalveolars: ṣ (s\.v),
+    following Ladefoged & Maddieson (1996), who wanted to
+    distinguish them from the more extreme retroflexes, i.e.
+    apico-palatals such as ʂ (\s.).
+- Changes from version 6.4.54:
+  * No Linux specific changes.
+- Changes from version 6.4.53:
+  * Scripting: fixed some problems introduced in version 6.4.52
+    concerning the interaction between pause windows and editor
+    scripts.
+  * Scripting: runSubprocess and runSystem now support
+    asynchronous, with which you can spawn a subprocess without
+    waiting for it to finish.
+
+-------------------------------------------------------------------
 Sun Jan  4 15:11:20 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.4.52:
