@@ -1,6 +1,0 @@
-<package name="magpie-1" project="openSUSE:Factory">
-  <title>Magpie v1</title>
-  <description>Magpie v1 is a wlroots-based Wayland compositor designed for the Budgie Desktop.
-</description>
-  <devel project="X11:Solus" package="magpie-1"/>
-</package>
