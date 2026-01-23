@@ -14789,7 +14789,7 @@ unsorted:
   - libmp3lame0-32bit 
   - libmp4tag-devel 
   - libmp4tag-tools 
-  - libmp4tag2_0_0 
+  - libmp4tag2 
   - libmpc3-32bit 
   - libmpcdec-devel 
   - libmpcdec5 
@@ -16512,7 +16512,7 @@ unsorted:
   - libsuperlu7 
   - libsuperlu7-32bit 
   - libsurgescript0_6_1 
-  - libsuricata8_0_1 
+  - libsuricata8_0_3 
   - libsuseconnect 
   - libsvm-devel 
   - libsvm-java 
@@ -17771,7 +17771,6 @@ unsorted:
   - loudmouth-devel 
   - lout 
   - love 
-  - love-0_7_2 
   - low-memory-monitor 
   - low-memory-monitor-doc 
   - lowdown 
@@ -17977,6 +17976,7 @@ unsorted:
   - lua55 
   - lua55-devel 
   - lua55-doc 
+  - lua55-luafilesystem 
   - luabind-devel 
   - luajit 
   - luajit-alt-getopt 
@@ -18328,6 +18328,7 @@ unsorted:
   - marvin-zsh-completion 
   - massif-visualizer 
   - massif-visualizer-lang 
+  - matcha 
   - mate-applet-dock 
   - mate-applet-dock-lang 
   - mate-applet-indicator 
@@ -37818,6 +37819,7 @@ unsorted:
   - softhsm 
   - softhsm-devel 
   - software-o-o-launcher 
+  - soju 
   - solaar 
   - solaar-doc 
   - solaar-lang 
@@ -48420,6 +48422,8 @@ unsorted:
   - tree-sitter-meson 
   - tree-sitter-odin 
   - tree-sitter-odin-devel 
+  - tree-sitter-org 
+  - tree-sitter-org-devel 
   - tree-sitter-pem 
   - tree-sitter-pem-devel 
   - tree-sitter-po 
@@ -48455,6 +48459,8 @@ unsorted:
   - tree-sitter-ron-devel 
   - tree-sitter-rpmspec 
   - tree-sitter-rpmspec-devel 
+  - tree-sitter-rst 
+  - tree-sitter-rst-devel 
   - tree-sitter-ruby 
   - tree-sitter-ruby-devel 
   - tree-sitter-rust 
@@ -49147,6 +49153,7 @@ unsorted:
   - uwsgi-pypy 
   - uwsgi-sqlite3 
   - uwsgi-xslt 
+  - uwsm 
   - uzdoom 
   - v2ray-core 
   - v4l-conf 
@@ -49361,6 +49368,9 @@ unsorted:
   - virtualbox-qt 
   - virtualbox-vnc 
   - virtualbox-websrv 
+  - virtui-manager 
+  - virtui-manager-doc 
+  - virtui-remote-viewer 
   - viruskiller 
   - vis 
   - visio2svg-conv 
