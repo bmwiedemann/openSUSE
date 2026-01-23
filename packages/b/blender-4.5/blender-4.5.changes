@@ -1,4 +1,165 @@
 -------------------------------------------------------------------
+Fri Jan 23 09:57:28 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.5.6
+  - Fix #153033: Walk navigation causes EEVEE camera view to render
+    incorrectly
+  - Cleanup: make format
+  - Fix #145770: UV sync select hides unselected faces
+  - Fix #145600: UV Editor crash with Text objects
+  - Fix #144035: Image Editor ignores face selection
+  - Mesh: Parallelize edit UV triangle index buffer creation
+  - Mesh: Extend GPU batch limit from 32 to 64
+  - Fix #152216: copy global transforms python error - 4.5 backport
+  - Fix #152099: 4.5 LTS crash dragging and dropping many images
+  - Revert "Fix #149437: Curves Sculpt 'Smooth' mode in keymap has
+    no effect"
+  - Fix: Outliner: Moving collections reorders them unexpectedly
+  - Fix: Outliner: Moving collections deletes them unexpectedly
+  - Fix #71397: Cannot "batch" edit a Lattice resolution u, v, w at
+    once
+  - Fix #151841: Crash weightpainting after Convert to GP from Mesh
+  - Fix #151425: Outliner: Activating a camera clears the scene
+    camera
+  - Fix #151241: Arrow Gizmo crashes when python modal operator
+    finishes
+  - Fix #151083: Separate by Material breaks custom normals part II
+  - Fix #151083: Separate by Material breaks custom normals
+  - Fix: renaming pose bones via F2 does not refresh the Outliner
+  - Fix #152040: Triangles to Quads ignores float colors when
+    comparing
+  - Fix #152624: Copy driver to selected on non-array properties
+  - Fix: fix b-bone keying set property identifiers
+  - Fix #152609: LineArt: Prevent `depth_offset` slider from moving
+    too fast
+  - Fix #151586: EEVEE: Wrong projection when using Render Region +
+    Fly/Walk Navigation
+  - Fix #145599: asset screenshot incorrect when looking through a
+    camera
+  - Fix #152292: Pose brush crash with more segments requested than
+    on mesh
+  - Fix #152215: LineArt: Prevent `lmd->runtime` init on invalid
+    source
+  - Fix #151940: Denoise node has a memory leak
+  - Core: Fix (unreported) issue in Main merge code with linked
+    data.
+  - Fix #151744: Crash when copying Workspace from RNA API.
+  - Fix #150364: Breakdowner not working with armature instances
+  - Fix #151760: Adjusting pose asset refreshes thumbnail
+  - Fix #151676: Packed geometry nodes bake cache frame ordering
+  - Fix #151572: Keying Screen crashes with unset movie clip
+  - Fix: Improper duplicate BlendShape handling in USD import
+  - Fix #151033: File Output crashes if a single value vector
+    exists
+  - Release: Go back to 4.5.6 candidate
+  - Release: Bump to 4.5.6 release
+  - LineArt: Backports for recent fixes
+  - Fix #146596: OpenGL Subprocess Compilation: `ERROR (17):
+    SharedMemory : handle_: File exists` (4.5 backport)
+  - Fix #150441: Cycles OSL multi device GPU rendering crash
+  - Fix #150957: Image changes in 'Single Image' mode don't update
+    viewport
+  - Fix #141896: Grease Pencil Draw tool Surface depth does not
+    interpolate
+  - Fix #149039: Image datablock stuck in invalid state after
+    FBX/OBJ import
+  - Fix: Make script_pyapi_bpy_driver_secure_eval pass with python
+    >3.11
+  - Fix #150336: Vulkan: Incorrect Face Selection
+  - Fix #150414: Copying value to clipboard causes Steam to crash
+    on Linux X11
+  - Fix #150408: NlaStrip creation doesn't respect name parameter
+  - Fix #150289: Linked actions being reused
+  - Fix #130465: Squash/Stretch deform for pose brush can apply NaN
+  - Fix #149724: Baking animation removes constraints from linked
+    file
+  - Fix #139555: Broken Selection Drawing For Flat Objects In Ortho
+    View
+  - Fix: glTF exporter: Fix exporting not normalized lamp
+  - Fix #150019: EEVEE: AOV causes viewport to stop updating
+  - Fix: glTF exporter: Fix lamp temperature convertion
+  - Fix #150257: Sculpt Undo crashes after redoing with non-brush
+    last step
+  - Fix #149843: Eevee Reference Spheres offset to the bottom and
+    cropped
+  - Fix #150014: Crash in Vertex Paint after redoing mode toggle
+  - Fix #149437: Curves Sculpt 'Smooth' mode in keymap has no
+    effect
+  - Fix #150016: Remesh converts vertex groups to regular
+    attributes
+  - Fix #150036: FCurve normalization with preview range in empty
+    area
+  - Fix #149942: missing RNA defaults for FCurve modifiers
+  - Fix #145985: Cycles: OSL Memory leak
+  - Fix #149795: Grab 2D Brush crashes with Use Active Vertex
+  - Fix #149765: VSE: Editing Speed Control "Frame Number" doesn't
+    update Preview
+  - Fix #149837: Crash when pasting strokes in object with no
+    materials
+  - Fix #147705: Slider overlapping header UI
+  - Fix: Incorrect action reference counts after make_single_user
+
+-------------------------------------------------------------------
+Thu Jan 15 23:32:48 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.5.5
+  - Python API docs: backport fixes for Enum values
+  - Fix: Python API: bpy.app.is_job_running('SHADER_COMPILATION')
+  - Fix: Error when connecting Boolean sockets to Material Output
+    in Material Nodes
+  - Fix: Parent type not reset after 'Clear and Keep Transforms'
+  - Fix #148792: Trace Image To Grease Pencil crashes in Blender
+    4.5.4
+  - Fix: Nodes: missing undo step when editing node socket items
+  - Fix #148664: animation is lost when creating group from single
+    node
+  - Fix #148979: Grease Pencil: Reproject operator keep radius
+    consistent
+  - Fix #149172: Missing relations for cameras referenced by
+    markers
+  - Fix #149201: Cloth sim init writes to original mesh but is
+    deform-only
+  - Fix: Backport outline fixes to 4.5
+  - Fix #146700: Preserve better Materials orders per object.
+  - Fix: OptiX denoiser showing up on devices without OptiX
+    compatible GPUs
+  - Fix #143853: NLA apply scale was no longer working
+  - Fix #146795: Grease Pencil reproject needs to use per-thread
+    snap context
+  - Fix #141853: Enum values aren't quoted in API doc function
+    signatures
+  - Fix #149070: Missing Runtime Libraries
+  - Fix #140719 Don't allow duplicate preset names
+  - Fix: Grease Pencil: UI: Wrong usage of contains operator
+  - Fix #147394: Grease Pencil: Opacity operator missing for the
+    menu
+  - Fix #148244: Pose asset operators don't create undo steps
+  - Fix #148736: LineArt: Correct vertex weight transfer
+    implementation
+  - Fix #144361: Grease Pencil: Crash after deleting the Default
+    Eraser
+  - Fix #148478: Renaming bone can rename channels in all action
+    slots
+  - Fix #148750: Crash entering a group node
+  - Fix #148338: Renaming a bone can rename channel in unassociated
+    action
+  - Fix: error in wayland_dynload wl_display_dispatch_pending
+    wrapper
+  - Fix #148777: regression in BMFace.calc_tangent_edge_pair()
+  - Fix #148685: missing handling of custom group nodes without
+    draw function
+  - Fix #148121: Thumbnails are refreshed when adding keyframes to
+    strip
+  - Fix #141190: Strip cache not invalidated when keyframe is added
+  - Fix (unreported) assert on unknown DNA struct
+    `ViewLayerEngineData`.
+  - Fix #148683: temp_data().images.load fails to handle relative
+    paths
+  - Fix #144460: Use natural sorting in the channelbox
+  - Fix #148490: Python: wrong operator used in ui tool template
+  - Fix #141165: Unroll light probe volume load cell loop
+
+-------------------------------------------------------------------
 Fri Nov 21 11:03:34 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - do not provide/obsolete the unversioned package name anymore. it
