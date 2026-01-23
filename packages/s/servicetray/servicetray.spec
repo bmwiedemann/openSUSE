@@ -19,7 +19,7 @@
 %define use_python python3
 %define pythons %{use_python}
 Name:           servicetray
-Version:        0.1
+Version:        0.2
 Release:        0
 Summary:        Tool to start and stop systemd services as a normal user via a tray applet
 License:        GPL-3.0-or-later
@@ -30,6 +30,7 @@ BuildRequires:  fdupes
 BuildRequires:  sudo
 Requires:       python3
 Requires:       python3-pyside6
+Requires:       python3-toml
 Requires:       sudo
 Requires:       systemd
 BuildArch:      noarch

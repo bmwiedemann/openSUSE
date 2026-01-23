@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 22 15:16:27 UTC 2026 - Dominik Heidler <dheidler@suse.de>
+
+- Version 0.2: Gracefully handle config with no services declared
+
+-------------------------------------------------------------------
+Thu Jan 22 15:02:40 UTC 2026 - Dominik Heidler <dheidler@suse.de>
+
+- Add missing dependency python3-toml
+
+-------------------------------------------------------------------
 Tue Dec  2 15:53:08 UTC 2025 - Dominik Heidler <dheidler@suse.de>
 
 - Initial checkin
