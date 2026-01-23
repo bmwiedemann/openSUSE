@@ -1,7 +1,7 @@
 #
 # spec file for package easyeffects
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           easyeffects
-Version:        8.0.9
+Version:        8.1.0
 Release:        0
 Summary:        Simple audio effects
 License:        GPL-3.0-or-later
@@ -58,6 +58,7 @@ BuildRequires:  pkgconfig(lilv-0)
 BuildRequires:  pkgconfig(rnnoise)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(soundtouch)
+BuildRequires:  pkgconfig(speexdsp)
 BuildRequires:  pkgconfig(tbb)
 BuildRequires:  pkgconfig(webrtc-audio-processing-2)
 Requires:       kf6-kirigami
