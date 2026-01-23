@@ -361,4 +361,18 @@
     running, it will be finished.</comment>
     <requestid>1291879</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>278c777ca6eefc2524cea86bc543ece8</srcmd5>
+    <version>1.4.1</version>
+    <time>1769185940</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.4.1:
+  * Installations now report more intermediate steps like checksum
+    verifications to the UI.
+  * Fix bugs related to error handling of ongoing installations.
+  * Fix an issue where CJK characters in game library path prevents
+    the config file from being loaded properly.
+  * Automatically add Weblate contributions to README and About dialog on release.</comment>
+    <requestid>1328745</requestid>
+  </revision>
 </revisionlist>
