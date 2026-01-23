@@ -140,4 +140,13 @@
 - Run tests during package builds again</comment>
     <requestid>1328380</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>50075503d2254ff40614e6d55b1005e0</srcmd5>
+    <version>5.3.0.0</version>
+    <time>1769185880</time>
+    <user>anag_factory</user>
+    <comment>- Enable dnf5 to replace dnf, microdnf, and yum
+- Add Provides to libdnf5 package for /etc/dnf/dnf.conf for dnf4</comment>
+    <requestid>1328584</requestid>
+  </revision>
 </revisionlist>

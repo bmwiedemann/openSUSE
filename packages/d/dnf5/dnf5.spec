@@ -19,9 +19,10 @@
 
 # ========== build options ==========
 
-%bcond_with    as_microdnf
-%bcond_with    as_dnf
-%bcond_with    as_yum
+# As of openSUSE Tumbleweed 20260122, DNF5 replaces all legacy implementations
+%bcond_without as_microdnf
+%bcond_without as_dnf
+%bcond_without as_yum
 
 %bcond_without dnf5daemon_client
 %bcond_without dnf5daemon_server
@@ -391,6 +392,10 @@ Requires:       libmodulemd2%{?_isa} >= %{libmodulemd_version}
 Requires:       librepo0%{?_isa} >= %{librepo_version}
 Requires:       libsolv1%{?_isa} >= %{libsolv_version}
 Requires:       libsqlite3-0%{?_isa} >= %{sqlite_version}
+%if %{with as_dnf}
+# So OBS can detect this
+Provides:       %{_sysconfdir}/dnf/dnf.conf
+%endif
 
 %description -n %{libname}
 Package management library.
