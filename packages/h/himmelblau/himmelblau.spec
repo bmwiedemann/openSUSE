@@ -30,7 +30,7 @@
 %endif
 
 Name:           himmelblau
-Version:        2.3.1+git0.2418ec2
+Version:        2.3.2+git0.5a7a598
 Release:        0
 Summary:        Interoperability suite for Microsoft Azure Entra Id
 License:        GPL-3.0-or-later
@@ -39,17 +39,19 @@ Group:          Productivity/Networking/Security
 Source:         %{name}-%{version}.tar.bz2
 Source1:        vendor.tar.zst
 Source2:        cargo_config
+BuildRequires:  binutils
+BuildRequires:  cargo
+BuildRequires:  cargo-packaging
+BuildRequires:  clang-devel
+BuildRequires:  patchelf
+BuildRequires:  systemd-rpm-macros
 %if !0%{?suse_version}
 BuildRequires:  authselect
 %endif
 BuildRequires:  autoconf
-BuildRequires:  binutils
 BuildRequires:  ca-certificates
-BuildRequires:  cargo
-BuildRequires:  cargo-packaging
 BuildRequires:  checkpolicy
 BuildRequires:  clang
-BuildRequires:  clang-devel
 BuildRequires:  cmake
 BuildRequires:  curl
 BuildRequires:  dbus-1-devel
@@ -66,23 +68,23 @@ BuildRequires:  libunistring-devel
 BuildRequires:  make
 BuildRequires:  openssl-devel
 BuildRequires:  pam-devel
-BuildRequires:  patchelf
 BuildRequires:  pcre2-devel
 BuildRequires:  pkg-config
 BuildRequires:  policycoreutils
 BuildRequires:  policycoreutils-devel
 BuildRequires:  python3
-BuildRequires:  systemd-rpm-macros
-%if 0%{?suse_version} > 1600 || 0%{?sle_version} >= 160000
-BuildRequires:  selinux-policy-devel
-BuildRequires:  selinux-tools
-%endif
 BuildRequires:  sqlite3-devel
 BuildRequires:  systemd-mini
 BuildRequires:  tpm2-0-tss-devel
 BuildRequires:  wget
+%if 0%{?suse_version} > 1600 || 0%{?sle_version} >= 160000
+BuildRequires:  selinux-policy-devel
+BuildRequires:  selinux-tools
+%endif
 ExclusiveArch:  %{rust_tier1_arches}
+Requires:       make
 Requires:       policycoreutils
+Requires:       selinux-policy-devel
 Recommends:     cron
 Recommends:     krb5
 Recommends:     libnss_himmelblau2
@@ -147,6 +149,7 @@ web apps for common Office 365 applications (Teams, Outlook, etc).
 Summary:        Azure Entra Id DAG URL QR code GNOME Shell extension
 Requires:       gnome-shell
 Recommends:     systemd-container
+BuildArch:      noarch
 
 %description -n himmelblau-qr-greeter
 GNOME Shell extension that adds a QR code to authentication prompts
@@ -182,8 +185,10 @@ install -m 0644 src/nss/src/nss-himmelblau.tmpfiles.conf %{buildroot}/%{_tmpfile
 
 # PAM
 install -D -d -m 0755 %{buildroot}/%{_pam_moduledir}
+install -D -d -m 0755 %{buildroot}/usr/lib/pam-config.d
 strip --strip-unneeded target/release/libpam_himmelblau.so
 install -m 0755 target/release/libpam_himmelblau.so %{buildroot}/%{_pam_moduledir}/pam_himmelblau.so
+install -m 0644 platform/opensuse/pam-config %{buildroot}/usr/lib/pam-config.d/himmelblau.conf
 %if !0%{?suse_version}
 install -D -d -m 0755 %{buildroot}/%{_datadir}/authselect/vendor/himmelblau/
 install -m 0755 platform/el/authselect/* %{buildroot}/%{_datadir}/authselect/vendor/himmelblau/
@@ -204,6 +209,7 @@ install -D -d -m 0755 %{buildroot}/%{_tmpfilesdir}/
 install -D -d -m 0755 %{buildroot}%{_mandir}/man1
 install -D -d -m 0755 %{buildroot}%{_mandir}/man5
 install -D -d -m 0755 %{buildroot}%{_mandir}/man8
+install -D -d -m 0755 %{buildroot}%{_libexecdir}
 strip --strip-unneeded target/release/himmelblaud
 strip --strip-unneeded target/release/himmelblaud_tasks
 strip --strip-unneeded target/release/broker
@@ -214,6 +220,8 @@ install -m 0644 src/config/gdm3_service_override.conf %{buildroot}/%{_unitdir}/d
 install -m 0755 target/release/aad-tool %{buildroot}/%{_bindir}/
 install -m 0644 platform/opensuse/himmelblaud-tasks.service %{buildroot}/%{_unitdir}/
 install -m 0644 platform/opensuse/himmelblaud.service %{buildroot}/%{_unitdir}/
+install -m 0644 platform/opensuse/himmelblau-hsm-pin-init.service %{buildroot}/%{_unitdir}/
+install -m 0755 src/daemon/scripts/himmelblau-init-hsm-pin %{buildroot}/%{_libexecdir}/
 install -m 0755 target/release/himmelblaud %{buildroot}/%{_sbindir}/
 install -m 0755 target/release/himmelblaud_tasks %{buildroot}/%{_sbindir}/
 install -m 0644 README.md %{buildroot}/%{_datadir}/doc/himmelblau/README
@@ -225,11 +233,10 @@ install -m 0644 man/man8/himmelblaud_tasks.8 %{buildroot}/%{_mandir}/man8/
 install -m 0644 src/daemon/src/himmelblau-policies.tmpfiles.conf %{buildroot}/%{_tmpfilesdir}/himmelblau-policies.conf
 install -m 0644 src/daemon/src/himmelblaud.tmpfiles.conf %{buildroot}/%{_tmpfilesdir}/himmelblaud.conf
 %if 0%{?suse_version} > 1600 || 0%{?sle_version} >= 160000
-install -D -d -m 0755 %{buildroot}/%{_selinux_pkgdir}
+install -D -d -m 0755 %{buildroot}/%{_selinux_pkgdir}/himmelblaud
 install -D -d -m 0755 %{buildroot}/%{_selinux_docdir}
-install -m 0644 target/release/himmelblaud.pp %{buildroot}/%{_selinux_pkgdir}/himmelblaud.pp
-install -m 0644 src/selinux/src/himmelblaud.te %{buildroot}/%{_selinux_docdir}/himmelblaud.te
-install -m 0644 src/selinux/src/himmelblaud.fc %{buildroot}/%{_selinux_docdir}/himmelblaud.fc
+install -m 0644 src/selinux/src/himmelblaud.te %{buildroot}/%{_selinux_pkgdir}/himmelblaud/himmelblaud.te
+install -m 0644 src/selinux/src/himmelblaud.fc %{buildroot}/%{_selinux_pkgdir}/himmelblaud/himmelblaud.fc
 %endif
 pushd %{buildroot}%{_sbindir}
 ln -s himmelblaud rchimmelblaud
@@ -256,8 +263,8 @@ install -D -d -m 0755 %{buildroot}%{_iconsdir}/hicolor/256x256/apps
 install -m 0755 src/o365/src/o365.sh %{buildroot}/%{_bindir}/o365
 install -m 0755 src/o365/src/o365-multi.sh %{buildroot}/%{_bindir}/o365-multi
 install -m 0755 src/o365/src/o365-url-handler.sh %{buildroot}/%{_bindir}/o365-url-handler
-install -m 0755 src/o365/generated/*.desktop %{buildroot}/%{_datadir}/applications/
-install -m 0755 src/o365/src/*.png %{buildroot}/%{_iconsdir}/hicolor/256x256/apps/
+install -m 0644 src/o365/generated/*.desktop %{buildroot}/%{_datadir}/applications/
+install -m 0644 src/o365/src/*.png %{buildroot}/%{_iconsdir}/hicolor/256x256/apps/
 install -m 0755 target/release/linux-entra-sso %{buildroot}/%{_bindir}/linux-entra-sso
 install -m 0644 src/sso/src/firefox/linux_entra_sso.json %{buildroot}/%{_libdir}/mozilla/native-messaging-hosts/
 install -m 0644 src/sso/src/firefox/policies.json %{buildroot}/%{_sysconfdir}/firefox/policies/
@@ -306,10 +313,86 @@ if [ ! -e /lib64/security/pam_himmelblau.so ]; then
     mkdir -p /lib64/security
     ln -s /usr/lib64/security/pam_himmelblau.so /lib64/security/pam_himmelblau.so
 fi
+
+# 1) authselect first (if available)
 if command -v authselect >/dev/null 2>&1; then
     feats="$(authselect current 2>/dev/null | awk '"'"'/Enabled features:/{f=1;next} f && /^-/{print $2}'"'"')"
     authselect select himmelblau $feats --force >/dev/null 2>&1 || :
     authselect apply-changes >/dev/null 2>&1 || :
+fi
+
+# Helper: validate/fix pam-config account line for pam_himmelblau
+fix_pam_config_account_line() {
+    local pc="/etc/pam.d/common-account-pc"
+    local plain="/etc/pam.d/common-account"
+
+    [ -f "$pc" ] || return 1
+
+    # Detect the known-bad pam-config output:
+    #   account required pam_himmelblau.so ignore_unknown_user
+    if ! grep -Eq '^[[:space:]]*account[[:space:]]+required[[:space:]]+pam_himmelblau\.so([[:space:]]+|$).*ignore_unknown_user' "$pc"; then
+        return 0
+    fi
+
+    # Ensure we have a self-managed common-account
+    if [ ! -f "$plain" ]; then
+        sed '/^[[:space:]]*#/d' "$pc" >"$plain" || return 1
+        chmod --reference="$pc" "$plain" || :
+    fi
+
+    # Fix required -> sufficient in the self-managed file
+    sed -i -E \
+        's/^([[:space:]]*account[[:space:]]+)required([[:space:]]+pam_himmelblau\.so([[:space:]]+|$).*ignore_unknown_user)/\1sufficient\2/' \
+        "$plain" || return 1
+
+    return 0
+}
+
+# 2) pam-config second (if available)
+pam_config_ok=0
+if command -v pam-config >/dev/null 2>&1; then
+    # Attempt to add himmelblau via pam-config. Older pam-config may not recognize --himmelblau at all.
+    if pam-config --add --himmelblau >/dev/null 2>&1; then
+        pam_config_ok=1
+
+        # Validate/fix the known-bad older behavior (account required)
+        fix_pam_config_account_line >/dev/null 2>&1 || :
+    fi
+fi
+
+pamconfig_optout_self_managed_common() {
+    # Convert pam-config-generated common-*-pc into self-managed common-*
+    # per pam-config’s own header instructions.
+    local i pc plain
+
+    for i in account auth password session; do
+        pc="/etc/pam.d/common-${i}-pc"
+        plain="/etc/pam.d/common-${i}"
+
+        [ -f "$pc" ] || continue
+
+        # Only create/refresh common-* if it doesn't exist yet.
+        # (If it already exists, assume admin/system is already self-managed.)
+        if [ ! -f "$plain" ]; then
+            # Strip comment lines (pam-config’s suggestion)
+            sed '/^[[:space:]]*#/d' "$pc" >"$plain" || return 1
+            chmod --reference="$pc" "$plain" 2>/dev/null || :
+        fi
+    done
+
+    return 0
+}
+
+# 3) Final fallback: aad-tool configure-pam --really
+# Only do this if pam-config wasn't used successfully.
+if [ "$pam_config_ok" -ne 1 ]; then
+    if command -v aad-tool >/dev/null 2>&1; then
+        # Opt out of pam-config-managed common-*-pc so future pam-config runs
+        # don’t overwrite the configuration we’re about to install.
+        pamconfig_optout_self_managed_common >/dev/null 2>&1 || :
+
+        aad-tool configure-pam --really >/dev/null 2>&1 || :
+    fi
 fi
 
 %postun -n pam-himmelblau
@@ -335,6 +418,18 @@ fi
 %post
 %service_add_post himmelblaud.service himmelblaud-tasks.service
 
+# Detect if running on a Live system where service start should be skipped
+is_live_system() {
+    # Check common Live system indicators
+    grep -q 'boot=live' /proc/cmdline 2>/dev/null && return 0
+    grep -q 'rd.live' /proc/cmdline 2>/dev/null && return 0
+    [ -d /run/live ] && return 0
+    [ -f /.live-installer ] && return 0
+    # Check if running in a container (dracut/systemd-nspawn)
+    systemd-detect-virt -c -q 2>/dev/null && return 0
+    return 1
+}
+
 # Ensure cache directory is created with correct permissions
 systemd-tmpfiles --create /usr/lib/tmpfiles.d/himmelblau-policies.conf 2>/dev/null || true
 
@@ -359,64 +454,23 @@ if command -v systemctl >/dev/null 2>&1; then
     systemctl daemon-reload || true
 fi
 
-gen_pin_hex() {
-    if command -v openssl >/dev/null 2>&1; then
-        openssl rand -hex 24 | tr -d '\n'
-    else
-        head -c 24 /dev/urandom | od -An -t x1 | tr -d ' \n'
-    fi
-}
-
-if command -v systemd-creds >/dev/null 2>&1; then
-    # Migrate the hsm-pin to a TPM bound cred (where a TPM is available)
-    LEGACY=/var/lib/private/himmelblaud/hsm-pin
-    CRED=/var/lib/private/himmelblaud/hsm-pin.enc
-
-    if [ -f $LEGACY ] && [ -f $CRED ]; then
-        # Both files exist - this can happen if a previous upgrade failed due to
-        # missing LoadCredentialEncrypted in the service file (issue #987).
-        # The daemon would have generated a new plaintext hsm-pin which is now
-        # the active PIN matching the machine key. Try starting the daemon first
-        # to see if it works, and only re-encrypt if we get an HSM pin error.
-        echo "Both hsm-pin and hsm-pin.enc exist, checking if recovery is needed..."
-        if command -v systemctl >/dev/null 2>&1; then
-            # Try to restart the daemon and capture the result
-            systemctl restart himmelblaud.service 2>/dev/null || true
-            sleep 2
-            # Check if the daemon failed with an HSM pin error
-            if ! systemctl is-active --quiet himmelblaud.service; then
-                DAEMON_LOG=$(journalctl -u himmelblaud.service -n 50 --no-pager 2>/dev/null || true)
-                if echo "$DAEMON_LOG" | grep -q "Unable to load machine root key"; then
-                    echo "Re-encrypting HSM-PIN (recovering from failed upgrade)"
-                    HSM_PIN=$(cat $LEGACY)
-                    printf '%s' "$HSM_PIN" | systemd-creds encrypt --name=hsm-pin --with-key=auto --tpm2-device=auto - "$CRED" && rm -f $LEGACY
-                fi
-            else
-                # Daemon is running fine, just clean up the legacy file
-                echo "Daemon running successfully, removing legacy hsm-pin file"
-                rm -f $LEGACY
-            fi
-        fi
-    elif [ ! -f $CRED ]; then
-        # Generate a new PIN if one doesn't exist, otherwise use the existing one
-        if [ ! -f $LEGACY ]; then
-            HSM_PIN=$(gen_pin_hex)
-        else
-            echo "Migrating existing HSM-PIN to encrypted credential"
-            HSM_PIN=$(cat $LEGACY)
-        fi
-
-        # Encrypt the PIN
-        printf '%s' "$HSM_PIN" | systemd-creds encrypt --name=hsm-pin --with-key=auto --tpm2-device=auto - "$CRED" && (rm -f $LEGACY || true)
-    fi
-fi
-
 # Enable and start Himmelblau daemons if systemd is available
+# On Live systems, skip service start - the HSM PIN will be generated at first boot
+# via the himmelblau-hsm-pin-init.service oneshot when deployed to real hardware.
 if command -v systemctl >/dev/null 2>&1; then
-    echo "Enabling and starting Himmelblau services..."
-    systemctl daemon-reload || true
-    systemctl enable himmelblaud.service himmelblaud-tasks.service || true
-    systemctl restart himmelblaud.service himmelblaud-tasks.service || true
+    if is_live_system; then
+        echo "Live system detected - skipping service start (HSM PIN will be initialized at first boot)"
+        # Only enable services so they start on first real boot
+        systemctl enable himmelblaud.service himmelblaud-tasks.service 2>/dev/null || true
+        # Enable HSM PIN init service separately (may not exist on older systemd)
+        systemctl enable himmelblau-hsm-pin-init.service 2>/dev/null || true
+    else
+        echo "Enabling and starting Himmelblau services..."
+        systemctl enable himmelblaud.service himmelblaud-tasks.service 2>/dev/null || true
+        # Enable HSM PIN init service separately (may not exist on older systemd)
+        systemctl enable himmelblau-hsm-pin-init.service 2>/dev/null || true
+        systemctl restart himmelblaud.service himmelblaud-tasks.service 2>/dev/null || true
+    fi
 fi
 
 %postun
@@ -435,31 +489,50 @@ fi
 %service_del_preun himmelblaud.service himmelblaud-tasks.service
 
 %posttrans
+SELINUX_SRC_DIR="/usr/share/selinux/packages/himmelblaud"
+SELINUX_MAKEFILE="/usr/share/selinux/devel/Makefile"
+
 if command -v selinuxenabled >/dev/null 2>&1 && selinuxenabled; then
-  if semodule -i /usr/share/selinux/packages/himmelblaud.pp; then
-    semanage fcontext -a -t himmelblau_var_cache_t '/var/cache/himmelblaud'
-    #restorecon -v -h /var/cache/himmelblaud
-    TARGET="$(readlink -f /var/cache/himmelblaud)"
-    semanage fcontext -a -t himmelblau_var_cache_t "${TARGET}(/.*)?"
-    #restorecon -Rv "${TARGET}"
+  # Check if SELinux development tools are available
+  if [ ! -f "$SELINUX_MAKEFILE" ]; then
+    echo "Warning: SELinux development Makefile not found at $SELINUX_MAKEFILE"
+    echo "Please install selinux-policy-devel and re-run this script"
+    exit 0
+  fi
 
-    # Relabel installed binaries (fc covers /usr/bin and /usr/sbin) /usr/sbin/himmelblaud /usr/sbin/himmelblaud_tasks
-    restorecon -Fv /usr/sbin/himmelblaud /usr/sbin/himmelblaud_tasks || :
+  # Compile the policy module from source
+  if [ -d "$SELINUX_SRC_DIR" ]; then
+    echo "Compiling SELinux policy module..."
+    cd "$SELINUX_SRC_DIR"
+    if make -f "$SELINUX_MAKEFILE" himmelblaud.pp; then
+      echo "Installing SELinux policy module..."
+      if semodule -i himmelblaud.pp; then
+        # Clean up compiled files (keep source for potential recompilation)
+        rm -f himmelblaud.pp tmp/*.* 2>/dev/null || :
+        rmdir tmp 2>/dev/null || :
 
-    # Relabel existing dirs only (DynamicUser will create cache dirs on first start)
-    [ -d /etc/himmelblau ]                && restorecon -RFv /etc/himmelblau || :
-    [ -d /run/himmelblaud ]               && restorecon -RFv /run/himmelblaud || :
-    [ -d /var/cache/private/himmelblaud ] && restorecon -RFv /var/cache/private/himmelblaud || :
-    [ -d /var/cache/himmelblaud ]         && restorecon -RFv /var/cache/himmelblaud || :
-    [ -d /var/cache/nss-himmelblau ]      && restorecon -RFv /var/cache/nss-himmelblau || :
+        # Relabel installed binaries
+        restorecon -Fv /usr/sbin/himmelblaud /usr/sbin/himmelblaud_tasks 2>/dev/null || :
 
-    # /var/lib/himmelblaud is a systemd DynamicUser symlink to /var/lib/private/himmelblaud
-    semanage fcontext -a -t himmelblau_var_lib_t '/var/lib/himmelblaud'
-    #restorecon -v -h /var/lib/himmelblaud
-    LIBTARGET="$(readlink -f /var/lib/himmelblaud || true)"
-    [ -n "$LIBTARGET" ] && semanage fcontext -a -t himmelblau_var_lib_t "${LIBTARGET}(/.*)?"
-    # If the private dir already exists (e.g. after a previous run), relabel it
-    [ -d "$LIBTARGET" ] && restorecon -RFv "$LIBTARGET" || :
+        # Relabel existing dirs (may not exist on fresh install)
+        [ -d /etc/himmelblau ]                && restorecon -RFv /etc/himmelblau || :
+        [ -d /run/himmelblaud ]               && restorecon -RFv /run/himmelblaud || :
+        [ -d /var/run/himmelblaud ]           && restorecon -RFv /var/run/himmelblaud || :
+        [ -d /var/cache/private/himmelblaud ] && restorecon -RFv /var/cache/private/himmelblaud || :
+        [ -d /var/cache/himmelblaud ]         && restorecon -RFv /var/cache/himmelblaud || :
+        [ -d /var/cache/nss-himmelblau ]      && restorecon -RFv /var/cache/nss-himmelblau || :
+        [ -d /var/lib/private/himmelblaud ]   && restorecon -RFv /var/lib/private/himmelblaud || :
+        [ -d /var/lib/himmelblaud ]           && restorecon -RFv /var/lib/himmelblaud || :
+
+        echo "SELinux policy module installed successfully"
+      else
+        echo "Warning: Failed to install SELinux policy module"
+      fi
+    else
+      echo "Warning: Failed to compile SELinux policy module"
+    fi
+  else
+    echo "Warning: SELinux source directory not found at $SELINUX_SRC_DIR"
   fi
 fi
 
@@ -501,41 +574,46 @@ fi
 %dir %{_sysconfdir}/himmelblau
 %dir %{_localstatedir}/cache/himmelblau-policies
 %dir %{_unitdir}/display-manager.service.d
+%dir %{_datadir}/doc/himmelblau
 %config(noreplace) %{_sysconfdir}/himmelblau/himmelblau.conf
 %config %{_sysconfdir}/krb5.conf.d/krb5_himmelblau.conf
-%config %{_unitdir}/display-manager.service.d/override.conf
+%{_unitdir}/display-manager.service.d/override.conf
 %{_bindir}/aad-tool
 %{_unitdir}/himmelblaud-tasks.service
 %{_unitdir}/himmelblaud.service
+%{_unitdir}/himmelblau-hsm-pin-init.service
+%{_libexecdir}/himmelblau-init-hsm-pin
 %{_sbindir}/himmelblaud
 %{_sbindir}/himmelblaud_tasks
-%{_sbindir}/rchimmelblaud
-%{_sbindir}/rchimmelblaud_tasks
-%dir %{_datadir}/doc/himmelblau
 %{_datadir}/doc/himmelblau/README
 %{_datadir}/doc/himmelblau/himmelblau.conf.example
 %{_mandir}/man1/aad-tool.1*
 %{_mandir}/man5/himmelblau.conf.5*
 %{_mandir}/man8/himmelblaud.8*
 %{_mandir}/man8/himmelblaud_tasks.8*
-%config %{_tmpfilesdir}/himmelblau-policies.conf
-%config %{_tmpfilesdir}/himmelblaud.conf
+%{_tmpfilesdir}/himmelblau-policies.conf
+%{_tmpfilesdir}/himmelblaud.conf
 %if 0%{?suse_version} > 1600 || 0%{?sle_version} >= 160000
 %dir %{_docdir}/himmelblau-selinux
 %dir %{_selinux_docdir}
-%{_selinux_pkgdir}/himmelblaud.pp
-%{_selinux_docdir}/himmelblaud.te
-%{_selinux_docdir}/himmelblaud.fc
+%dir %{_selinux_pkgdir}
+%dir %{_selinux_pkgdir}/himmelblaud
+%{_selinux_pkgdir}/himmelblaud/himmelblaud.te
+%{_selinux_pkgdir}/himmelblaud/himmelblaud.fc
 %endif
+%{_sbindir}/rchimmelblaud
+%{_sbindir}/rchimmelblaud_tasks
 
 %files -n libnss_himmelblau2
 %dir %{_tmpfilesdir}
 %{_libdir}/libnss_himmelblau.so.2
-%config %{_tmpfilesdir}/nss-himmelblau.conf
+%{_tmpfilesdir}/nss-himmelblau.conf
 %ghost %attr(0755,root,root) /%{_localstatedir}/cache/nss-himmelblau
 
 %files -n pam-himmelblau
 %{_pam_moduledir}/pam_himmelblau.so
+%dir /usr/lib/pam-config.d
+/usr/lib/pam-config.d/himmelblau.conf
 %if !0%{?suse_version}
 %dir %{_datadir}/authselect
 %dir %{_datadir}/authselect/vendor
@@ -555,9 +633,13 @@ fi
 %dir %{_sysconfdir}/firefox
 %dir %{_sysconfdir}/firefox/policies
 %dir /etc/chromium
+%dir /etc/chromium/native-messaging-hosts
 %dir /etc/chromium/policies
+%dir /etc/chromium/policies/managed
 %dir /etc/opt/chrome
+%dir /etc/opt/chrome/native-messaging-hosts
 %dir /etc/opt/chrome/policies
+%dir /etc/opt/chrome/policies/managed
 %dir /usr/share/google-chrome
 %dir %{chrome_nm_dir}
 %dir %{chromium_nm_dir}
@@ -573,13 +655,13 @@ fi
 %{_datadir}/applications/*.desktop
 %{_iconsdir}/hicolor/256x256/apps/*.png
 %{_bindir}/linux-entra-sso
-%config %{_libdir}/mozilla/native-messaging-hosts/linux_entra_sso.json
+%{_libdir}/mozilla/native-messaging-hosts/linux_entra_sso.json
 %config %{_sysconfdir}/firefox/policies/policies.json
-%config %{chrome_nm_dir}/linux_entra_sso.json
-%config %{chromium_nm_dir}/linux_entra_sso.json
-%config %{chrome_ext_dir}/jlnfnnolkbjieggibinobhkjdfbpcohn.json
-%config %{chrome_policy_dir}/himmelblau.json
-%config %{chromium_policy_dir}/himmelblau.json
+%{chrome_nm_dir}/linux_entra_sso.json
+%{chromium_nm_dir}/linux_entra_sso.json
+%{chrome_ext_dir}/jlnfnnolkbjieggibinobhkjdfbpcohn.json
+%{chrome_policy_dir}/himmelblau.json
+%{chromium_policy_dir}/himmelblau.json
 %{_datadir}/dbus-1/services/com.microsoft.identity.broker1.service
 %{_sbindir}/broker
 %{_sbindir}/rcbroker
@@ -588,9 +670,9 @@ fi
 %dir %{_datarootdir}/gnome-shell
 %dir %{_datarootdir}/gnome-shell/extensions
 %dir %{_datarootdir}/gnome-shell/extensions/qr-greeter@himmelblau-idm.org
-%{_datarootdir}/gnome-shell/extensions/qr-greeter@himmelblau-idm.org/extension.js
-%{_datarootdir}/gnome-shell/extensions/qr-greeter@himmelblau-idm.org/metadata.json
-%{_datarootdir}/gnome-shell/extensions/qr-greeter@himmelblau-idm.org/stylesheet.css
-%{_datarootdir}/gnome-shell/extensions/qr-greeter@himmelblau-idm.org/msdag.png
+%{_datadir}/gnome-shell/extensions/qr-greeter@himmelblau-idm.org/extension.js
+%{_datadir}/gnome-shell/extensions/qr-greeter@himmelblau-idm.org/metadata.json
+%{_datadir}/gnome-shell/extensions/qr-greeter@himmelblau-idm.org/stylesheet.css
+%{_datadir}/gnome-shell/extensions/qr-greeter@himmelblau-idm.org/msdag.png
 
 %changelog

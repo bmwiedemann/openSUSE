@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan 22 20:30:14 UTC 2026 - David Mulder <david.mulder@suse.com>
+
+- Update to version 2.3.2+git0.5a7a598:
+  * Compile SELinux policy at install time for cross-distro compatibility
+  * Improve PAM configuration on openSUSE/SLE
+  * Fix SELinux policy
+  * Add a git hook to ensure selinux policy is tested
+  * Ignore generated himmelblau-hsm-pin-init service file
+  * Refactor SELinux policy for cross-distro compatibility
+  * cargo vet
+  * Fix NSS lookup for mapped local users
+  * Skip OS version compliance checks when min/max values are empty
+
+-------------------------------------------------------------------
 Thu Jan 15 21:22:11 UTC 2026 - David Mulder <david.mulder@suse.com>
 
 - Update to version 2.3.1+git0.2418ec2:

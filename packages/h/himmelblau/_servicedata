@@ -1,6 +1,4 @@
 <servicedata>
 <service name="tar_scm">
-                <param name="url">https://github.com/openSUSE/himmelblau.git</param>
-              <param name="changesrevision">6d2f6450ff3c0c945a884d4b35307e03a035a581</param></service><service name="tar_scm">
                 <param name="url">https://github.com/himmelblau-idm/himmelblau.git</param>
-              <param name="changesrevision">2418ec22e24a8d1410078f884a89752fa4f0e1a1</param></service></servicedata>
+              <param name="changesrevision">5a7a5985cbaef6f0265f354a878715d31c6efea6</param></service></servicedata>
