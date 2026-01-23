@@ -1,7 +1,7 @@
 #
 # spec file for package kubescape
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           kubescape
-Version:        3.0.46
+Version:        3.0.47
 Release:        0
 Summary:        Tool providing a multi-cloud K8s single pane of glass
 License:        Apache-2.0
 URL:            https://github.com/armosec/kubescape
 Source:         kubescape-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.24
+BuildRequires:  golang(API) >= 1.25
 
 %description
 Kubescape is a K8s open-source tool providing a multi-cloud K8s single pane of

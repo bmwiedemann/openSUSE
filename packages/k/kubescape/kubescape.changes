@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Fri Jan 23 06:20:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.0.47:
+  * Enhance installation scripts for cross-platform support and
+    improve error handling
+  * Refactor release workflow to simplify tagging and remove
+    unnecessary inputs
+  * Update release workflow to include tagging in arguments
+  * Refactor GitHub Actions workflow for system tests and update
+    smoke test logging
+  * Add debug listing and adjust JUnit report options
+  * Add skip flag and collect system test results
+  * Add production secrets to release workflow
+  * Require Python 3.9 for system tests
+  * Use python3-dev in release workflow
+  * Install system dependencies in release workflow
+  * Remove pip cache from release workflow
+  * Require Python 3.11 for system tests
+  * fix go mod tidy
+  * fix: prefer Python 3.11 for system-tests and update environment
+    setup
+  * fix: update post-build hook to conditionally execute script for
+    amd64 architecture
+  * fix: add k8s Kind cluster creation step and clean up post-e2e
+    script
+  * fix: update test_command and test_scan to remove deprecated
+    scan commands and adjust file paths
+  * fix: correct post-build hook syntax for setting GOARCH
+    environment variable
+  * fix: update post-build hook to set GOARCH environment variable
+  * fix: enable end-to-end tests in release workflow
+  * fix: enhance release workflow with optional skip publish input
+    and add system tests execution
+  * fix: enhance release workflow with optional skip publish input
+    and add system tests execution
+  * Update go-git-url to v0.0.31 for improved URL parsing
+  * fix: update e2e script to enforce fatal failures and improve
+    artifact detection
+  * Address code review feedback: Extract helper function and
+    improve comments
+  * Fix: Prevent URLs from being treated as local file paths
+  * Initial plan
+  * fix: update kubescape krew configuration to skip upload
+  * fix: add commit author information to goreleaser configuration
+  * fix: update krew index pull request configuration to specify
+    owner and name
+  * fix: correct kubescape repository owner in goreleaser
+    configuration
+  * fix: update GITHUB_TOKEN handling and correct kubescape
+    repository owner in configuration
+  * fix: update kubescape krew configuration to use repository
+    field
+  * feat: add kubescape krew index to goreleaser configuration
+  * feat: add QEMU and Docker Buildx setup steps in release
+    workflow
+  * feat: add Syft setup step in release workflow
+  * fix: update runner to ubuntu-large in release configuration
+  * fix: add cosign.key to .gitignore
+  * fix: remove unnecessary secrets inheritance in release
+    configuration
+  * cleaning up release action
+  * use goreleaser for all builds and release publication
+  * fix: log added and minor fixes applied
+  * fix go mod tidy
+  * Bump github.com/containerd/containerd/v2 from 2.1.4 to 2.1.5
+  * Update cosign package to v3 and adjust go.mod dependencies
+  * Update cosign package to v3 and adjust go.mod dependencies
+  * Bump github.com/sigstore/fulcio from 1.6.6 to 1.8.3
+  * feature: skipPersistence request parameter added
+
+-------------------------------------------------------------------
 Fri Dec 05 14:11:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.0.46:
