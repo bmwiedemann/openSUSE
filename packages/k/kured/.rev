@@ -313,4 +313,41 @@
   * build(deps): bump actions/checkout from 4.2.2 to 5.0.0 (forwarded request 1302036 from jfkw)</comment>
     <requestid>1302037</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>38e697d824a8867e312a29b96f34b8ab</srcmd5>
+    <version>1.21.0</version>
+    <time>1769185944</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.21.0:
+  * chore: update release
+  * Update Kured to support kubernetes 1.35
+  * fix: fix vulnerability in go std library Signed-off-by: Dharsan Baskar &lt;git@dharsanb.com&gt;
+  * docs: fix trademark usage link Signed-off-by: Dharsan Baskar &lt;git@dharsanb.com&gt;
+  * fix: don't auto-close PRs with keep label
+  * Revert &quot;Bump GoReleaser to version 2&quot;
+  * update maintainers: add dharsanb, retire ckotzbauer
+  * fix: bump go version to fix vulnerabilities.
+  * build(deps): bump lycheeverse/lychee-action from 2.6.1 to 2.7.0
+  * build(deps): bump actions/upload-artifact from 4.6.2 to 5.0.0
+  * build(deps): bump actions/stale from 10.0.0 to 10.1.0
+  * build(deps): bump actions/dependency-review-action from 4.8.0 to 4.8.1
+  * ci: fix periodic test setup for go
+  * build(deps): bump alpine from 3.22.1 to 3.22.2
+  * ci: bump goreleaser to version 2 Signed-off-by: Dharsan Baskar &lt;git@dharsanb.com&gt;
+  * build: changed developer toolkit management from shell script to mise
+  * Clarify contributing docs
+  * build(deps): bump github/codeql-action from 3.30.3 to 3.30.6
+  * build(deps): bump ossf/scorecard-action from 2.4.2 to 2.4.3
+  * build(deps): bump docker/login-action from 3.5.0 to 3.6.0
+  * build(deps): bump actions/dependency-review-action from 4.7.3 to 4.8.0
+  * build(deps): bump github/codeql-action from 3.30.1 to 3.30.3
+  * build(deps): bump step-security/harden-runner from 2.13.0 to 2.13.1
+  * build(deps): bump github.com/prometheus/client_golang
+  * Improve contributing guide
+  * build(deps): bump github/codeql-action from 3.29.11 to 3.30.1
+  * build(deps): bump actions/stale from 9.1.0 to 10.0.0
+  * build(deps): bump actions/setup-go from 5.5.0 to 6.0.0
+  * build(deps): bump aquasecurity/trivy-action from 0.33.0 to 0.33.1 (forwarded request 1328748 from jfkw)</comment>
+    <requestid>1328749</requestid>
+  </revision>
 </revisionlist>

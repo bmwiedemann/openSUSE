@@ -9,13 +9,13 @@ Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/kured-ds.yaml b/kured-ds.yaml
-index 6baf7c1..aac5c46 100644
+index 15c4aca..e6ef192 100644
 --- a/kured-ds.yaml
 +++ b/kured-ds.yaml
 @@ -39,7 +39,7 @@ spec:
            # If you find yourself here wondering why there is no
            # :latest tag on Docker Hub,see the FAQ in the README
-           image: ghcr.io/kubereboot/kured:1.20.0
+           image: ghcr.io/kubereboot/kured:1.21.0
 -          imagePullPolicy: IfNotPresent
 +          imagePullPolicy: Always
            securityContext:
