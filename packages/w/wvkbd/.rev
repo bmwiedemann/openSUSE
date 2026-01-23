@@ -37,4 +37,16 @@
     zone from compositor (#102, #93)</comment>
     <requestid>1328611</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2f9d49b22aea0d0b5a39fd0bfaf95fdf</srcmd5>
+    <version>0.19.2</version>
+    <time>1769185938</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.19.2:
+  * Makefile: do not rebuild on install
+
+- Update to 0.19.1:
+  * Improve the makefile to simplify building multiple layouts</comment>
+    <requestid>1328746</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 22 20:57:03 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.19.2:
+  * Makefile: do not rebuild on install
+
+-------------------------------------------------------------------
+Thu Jan 22 20:56:53 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.19.1:
+  * Improve the makefile to simplify building multiple layouts
+
+-------------------------------------------------------------------
 Thu Jan 22 07:41:02 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.19:
