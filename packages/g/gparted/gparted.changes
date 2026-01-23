@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 22 14:24:18 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require pkexec instead of /usr/bin/pkexec: the package split
+  happened very long tmie ago, but with a 2nd provider for
+  /usr/bin/pkexec (run0-wrappers) we need to be more specific which
+  one we want to use (switch to run0-providers is still possible,
+  as it does provide pkexec, but at a lower version)
+
+-------------------------------------------------------------------
 Fri Jan 31 03:17:48 UTC 2025 - RN <R_Nik_C@proton.me>
 
 - Update to 1.7.0:

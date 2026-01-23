@@ -61,7 +61,7 @@ Recommends:     ntfsprogs
 Recommends:     udftools
 Recommends:     xfsprogs
 Recommends:     bcachefs-tools
-Requires:     /usr/bin/pkexec
+Requires:       pkexec
 %if !0%{?is_opensuse}
 BuildRequires:  translation-update-upstream
 %endif
