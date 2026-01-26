@@ -1,0 +1,14 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>08787ad830119cf4ab43adf7ac126bb0</srcmd5>
+    <version>0.72.0</version>
+    <time>1769421648</time>
+    <user>anag_factory</user>
+    <comment>InputPlumber is an open source input routing and control daemon for Linux.
+It can be used to combine any number of input devices (like gamepads, mice, and keyboards) and translate their input to a variety of virtual device formats.
+
+The security whitelisting should be done in the next few days, the package has already been reviewed.
+See: https://bugzilla.opensuse.org/show_bug.cgi?id=1249149</comment>
+    <requestid>1328729</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,8 @@
+-------------------------------------------------------------------
+Mon Jan 19 18:14:23 UTC 2026 - Tobias Görgens <suse.snooper541@passmail.net>
+
+- Initial version 0.72.0:
+  * fix(Hardware Support): Harden device names for Legion Go and Go 2 controllers
+  * fix(Hardware Support): Add dinput mappings for MSI Claw
+  * fix(Hardware Support): Update device configs to use upstream bmi260 driver
+  * fix(Profile): omit null fields when serializing profiles and configs

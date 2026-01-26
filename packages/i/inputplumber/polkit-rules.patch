@@ -1,0 +1,14 @@
+--- /rootfs/usr/share/polkit-1/rules.d/org.shadowblip.InputPlumber.rules	2026-01-18 07:13:56.000000000 +0100
++++ /rootfs/usr/share/polkit-1/rules.d/org.shadowblip.InputPlumber.rules	2026-01-20 12:43:15.102213070 +0100
+@@ -3,10 +3,8 @@
+   if (
+     (action.id.indexOf("org.shadowblip.Input") == 0 ||
+       action.id.indexOf("org.shadowblip.Output") == 0) &&
+-    (subject.isInGroup("inputplumber") || subject.isInGroup("wheel"))
++    (subject.isInGroup("inputplumber"))
+   ) {
+-    polkit.log("action=" + action);
+-    polkit.log("subject=" + subject);
+     return polkit.Result.YES;
+   }
+ });

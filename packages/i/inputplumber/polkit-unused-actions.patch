@@ -1,0 +1,30 @@
+diff --git a/rootfs/usr/share/polkit-1/actions/org.shadowblip.InputPlumber.policy b/rootfs/usr/share/polkit-1/actions/org.shadowblip.InputPlumber.policy
+index 60a0da8..6b7b66b 100644
+--- a/rootfs/usr/share/polkit-1/actions/org.shadowblip.InputPlumber.policy
++++ b/rootfs/usr/share/polkit-1/actions/org.shadowblip.InputPlumber.policy
+@@ -218,9 +218,9 @@
+     <description>Emit an input event from the DBus device</description>
+     <message>Authorization required to emit an input event from the DBus device.</message>
+     <defaults>
+-      <allow_any>yes</allow_any>
+-      <allow_inactive>yes</allow_inactive>
+-      <allow_active>yes</allow_active>
++      <allow_any>no</allow_any>
++      <allow_inactive>no</allow_inactive>
++      <allow_active>no</allow_active>
+     </defaults>
+   </action>
+ 
+@@ -228,9 +228,9 @@
+     <description>Emit a touch event from the DBus device</description>
+     <message>Authorization required to emit a touch event from the DBus device.</message>
+     <defaults>
+-      <allow_any>yes</allow_any>
+-      <allow_inactive>yes</allow_inactive>
+-      <allow_active>yes</allow_active>
++      <allow_any>no</allow_any>
++      <allow_inactive>no</allow_inactive>
++      <allow_active>no</allow_active>
+     </defaults>
+   </action>
+ 
