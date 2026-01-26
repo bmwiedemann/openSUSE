@@ -1,7 +1,7 @@
 #
 # spec file for package python-patatt
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-patatt
-Version:        0.6.3
+Version:        0.7.0
 Release:        0
 Summary:        Cryptographic patch attestation for the masses
 License:        MIT-0
