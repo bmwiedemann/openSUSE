@@ -1369,4 +1369,12 @@ Apple grant an openssl linking exception (and an exception for linking on Apple 
     <comment>CUPS version upgrade to 2.4.14 fixes CVE-2025-58060 bsc#1249049 and CVE-2025-58364 bsc#1249128 (forwarded request 1305299 from jsmeix)</comment>
     <requestid>1305300</requestid>
   </revision>
+  <revision rev="180" vrev="1">
+    <srcmd5>8d161cfc83d2aa3e5ec8596e4eccbed1</srcmd5>
+    <version>2.4.16</version>
+    <time>1769420570</time>
+    <user>anag_factory</user>
+    <comment>CUPS version upgrade to 2.4.16 fixes CVE-2025-61915 bsc#1253783 and CVE-2025-58436 bsc#1244057 plus fix for Immutable Mode jsc#PED-14775 from epic jsc#PED-14688 (forwarded request 1328662 from jsmeix)</comment>
+    <requestid>1328663</requestid>
+  </revision>
 </revisionlist>

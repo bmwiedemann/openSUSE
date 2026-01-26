@@ -1,7 +1,7 @@
 #
 # spec file for package cups
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,18 +40,18 @@ Name:           cups
 # "zypper vcmp 2.3.b99 2.3.0" shows "2.3.b99 is older than 2.3.0" and
 # "zypper vcmp 2.2.99 2.3b6" show "2.2.99 is older than 2.3b6" so that
 # version upgrades from 2.2.x via 2.3.b* to 2.3.0 work:
-Version:        2.4.14
+Version:        2.4.16
 Release:        0
 Summary:        The Common UNIX Printing System
 License:        Apache-2.0
 Group:          Hardware/Printing
 URL:            https://openprinting.github.io/cups
 # To get Source0 go to https://github.com/OpenPrinting/cups/releases or use e.g.
-# wget --no-check-certificate -O cups-2.4.14-source.tar.gz https://github.com/OpenPrinting/cups/releases/download/v2.4.14/cups-2.4.14-source.tar.gz
-Source0:        https://github.com/OpenPrinting/cups/releases/download/v2.4.14/cups-2.4.14-source.tar.gz
+# wget --no-check-certificate -O cups-2.4.16-source.tar.gz https://github.com/OpenPrinting/cups/releases/download/v2.4.16/cups-2.4.16-source.tar.gz
+Source0:        https://github.com/OpenPrinting/cups/releases/download/v2.4.16/cups-2.4.16-source.tar.gz
 # To get Source1 go to https://github.com/OpenPrinting/cups/releases or use e.g.
-# wget --no-check-certificate -O cups-2.4.14-source.tar.gz.sig https://github.com/OpenPrinting/cups/releases/download/v2.4.14/cups-2.4.14-source.tar.gz.sig
-Source1:        https://github.com/OpenPrinting/cups/releases/download/v2.4.14/cups-2.4.14-source.tar.gz.sig
+# wget --no-check-certificate -O cups-2.4.16-source.tar.gz.sig https://github.com/OpenPrinting/cups/releases/download/v2.4.16/cups-2.4.16-source.tar.gz.sig
+Source1:        https://github.com/OpenPrinting/cups/releases/download/v2.4.16/cups-2.4.16-source.tar.gz.sig
 # To make Source2 use e.g.
 #   gpg --keyserver keys.openpgp.org --recv-keys 7082A0A50A2E92640F3880E0E4522DCC9B246FF7
 #   gpg --export --armor 7082A0A50A2E92640F3880E0E4522DCC9B246FF7 >cups.keyring
@@ -61,7 +61,7 @@ Source2:        cups.keyring
 # To manually verify Source0 with Source1 and Source2 do e.g.
 #   gpg --import cups.keyring
 #   gpg --list-keys | grep -1 'Zdenek Dohnal'
-#   gpg --verify cups-2.4.14-source.tar.gz.sig cups-2.4.14-source.tar.gz
+#   gpg --verify cups-2.4.16-source.tar.gz.sig cups-2.4.16-source.tar.gz
 Source102:      Postscript.ppd.gz
 Source105:      Postscript-level1.ppd.gz
 Source106:      Postscript-level2.ppd.gz
@@ -408,7 +408,6 @@ ln -sf libcups.so.2 %{buildroot}%{_libdir}/libcups.so
 test -d %{buildroot}%{_libdir}/pkgconfig || mv %{buildroot}/usr/lib/pkgconfig %{buildroot}%{_libdir}/pkgconfig
 # Add missing usual directories:
 install -d -m755 %{buildroot}%{_datadir}/cups/drivers
-install -d -m755 %{buildroot}%{_localstatedir}/cache/cups
 # Add conf/pam.suse regarding support for PAM (see Patch100: cups-pam.diff):
 %if 0%{?suse_version} > 1500
 install -d -m755 %{buildroot}%{_pam_vendordir}
@@ -446,21 +445,43 @@ ln -s service %{buildroot}%{_sbindir}/rccups
 ln -s service %{buildroot}%{_sbindir}/rccups-lpd
 %endif
 # Install /usr/lib/tmpfiles.d/cups.conf
-# According to
-# https://developers.redhat.com/blog/2016/09/20/managing-temporary-files-with-systemd-tmpfiles-on-rhel7/
-#   d /var/spool/cups/tmp - - - 30d
-# results that each file older than 30 days on /var/spool/cups/tmp will be deleted where a file
-# will be considered unused only if atime, mtime and ctime are all older than the specified time.
-# We use group 'root' for /run/cups/certs (instead of 'sys')
-#   d /run/cups/certs 0511 lp root -
-# because of https://bugzilla.opensuse.org/show_bug.cgi?id=1042916
 mkdir -p %{buildroot}%{_tmpfilesdir}
 cat > %{buildroot}%{_tmpfilesdir}/cups.conf <<EOF
 # See tmpfiles.d(5) for details
 # Type(d=directory) Path Mode UID GID Age(until delete when cleaning)
+# When cupsd creates directories with specific owner group and permissions
+# (usually owner is 'root' and group matches "configure --with-cups-group=lp")
+# we must specify same owner group and permission settings here
+# to ensure those directories are installed by RPM with the right settings
+# because if those directories were installed by RPM with different settings then
+# cupsd would use them as is and not adjust its specific owner group and permissions.
+# How cupsd creates those directories:
+#   drwxr-xr-x root lp   /run/cups
+#   dr-x--x--x lp   root /run/cups/certs
+#   drwxr-xr-x root lp   /var/log/cups
+#   drwxrwx--- root lp   /var/cache/cups
+#   drwxrwxr-x root lp   /var/cache/cups/rss
+#   drwx--x--- root lp   /var/spool/cups
+#   drwxrwx--T root lp   /var/spool/cups/tmp
+# see https://bugzilla.suse.com/show_bug.cgi?id=1184161#c7
+# We use group 'root' for /run/cups/certs (instead of 'sys')
+# because of https://bugzilla.opensuse.org/show_bug.cgi?id=1042916
+# The 'lp' user does not need write permissions in /var/log/cups
+# regardless that filters and backends are usually run as user 'lp' because
+# filters and backends write log messages to the inherited stderr file descriptor
+# and do not append them directly to /var/log/cups/error_log (via fopen on their own).
+# According to
+# https://developers.redhat.com/blog/2016/09/20/managing-temporary-files-with-systemd-tmpfiles-on-rhel7/
+#   d /var/spool/cups/tmp ... 30d
+# results that each file older than 30 days on /var/spool/cups/tmp will be deleted where a file
+# will be considered unused only if atime, mtime and ctime are all older than the specified time.
 d /run/cups 0755 root lp -
 d /run/cups/certs 0511 lp root -
-d %{_localstatedir}/spool/cups/tmp - - - 30d
+d %{_localstatedir}/log/cups 0755 root lp -
+d %{_localstatedir}/cache/cups 0770 root lp -
+d %{_localstatedir}/cache/cups/rss 0775 root lp -
+d %{_localstatedir}/spool/cups 0710 root lp -
+d %{_localstatedir}/spool/cups/tmp 1770 root lp 30d
 EOF
 # Never run fdupes carelessly over the whole buildroot directory
 # because in older openSUSE and SLE11 versions fdupes
@@ -591,23 +612,29 @@ exit 0
 # In particular all executables are listed explicitly.
 # This avoids that CUPS' configure magic might silently
 # not build and install an executable when whatever condition
-# for configure's automated tests is not fulfilled in the build system.
-# See https://bugzilla.suse.com/show_bug.cgi?id=526847#c9
+# for configure's automated tests is not fulfilled in the build system,
+# see https://bugzilla.suse.com/show_bug.cgi?id=526847#c9
 # Regarding specific owner group and permission settings for directories
 # see https://bugzilla.suse.com/show_bug.cgi?id=1184161
 # When cupsd creates directories with specific owner group and permissions
 # (usually owner is 'root' and group matches "configure --with-cups-group=lp")
 # we must specify same owner group and permission settings here
-# to ensure those directories are installed by RPM with the right settings
-# because if those directories were installed by RPM with different settings then
-# cupsd would use them as is and not adjust its specific owner group and permissions.
-# How cupsd creates those directories:
-# drwxr-xr-x ... root lp ... /etc/cups/ppd
+# to ensure those directories are installed by RPM with the right settings.
+# When those directories were installed by RPM with different settings then
+# cupsd would adapt them and report that in /var/log/cups/error_log
+# with debug messages for example like
+# D ... Creating missing directory "/var/spool/cups"
+# D ... Repairing ownership of "/var/spool/cups"
+# D ... Repairing access permissions of "/var/spool/cups"
+# D ... Repairing ownership of "/etc/cups/ssl"
+# D ... Repairing access permissions of "/etc/cups/ssl"
+# How cupsd creates those directories see the tmpfiles.d part above and
+# drwxr-xr-x root lp /etc/cups/ppd
+# drwx------ root lp /etc/cups/ssl
 # see https://bugzilla.suse.com/show_bug.cgi?id=1184161#c7
 # The /etc/cups/ssl directory is not created by cupsd (but needed by it)
 # and when needed (e.g. during the first run of "# lpstat -E -p")
 # cupsd creates files in /etc/cups/ssl like localhost.crt and localhost.key
-# so we specify secure owner group and permissions for /etc/cups/ssl
 %config(noreplace) %attr(640,root,lp) %{_sysconfdir}/cups/cups-files.conf
 %config(noreplace) %attr(640,root,lp) %{_sysconfdir}/cups/cupsd.conf
 %config(noreplace) %attr(640,root,lp) %{_sysconfdir}/cups/snmp.conf
@@ -621,7 +648,7 @@ exit 0
 %config %{_sysconfdir}/cups/cups-files.conf.default
 %config %{_sysconfdir}/cups/snmp.conf.default
 %dir %attr(755,root,lp) %{_sysconfdir}/cups/ppd
-%dir %attr(700,root,root) %{_sysconfdir}/cups/ssl
+%dir %attr(700,root,lp) %{_sysconfdir}/cups/ssl
 %{_unitdir}/cups.service
 %{_unitdir}/cups.socket
 %{_unitdir}/cups.path
@@ -780,16 +807,6 @@ exit 0
 %files config
 # Regarding specific owner group and permission settings for directories
 # see the above comment in the files section of the main package.
-# How cupsd creates those directories:
-# drwx--x--- ... root lp ... /var/spool/cups
-# drwxrwx--T ... root lp ... /var/spool/cups/tmp
-# drwxr-xr-x ... root lp ... /var/log/cups
-# drwxrwx--- ... root lp ... /var/cache/cups
-# see https://bugzilla.suse.com/show_bug.cgi?id=1184161#c7
-# The 'lp' user does not need write permissions in /var/log/cups
-# regardless that filters and backends are usually run as user 'lp' because
-# filters and backends write log messages to the inherited stderr file descriptor
-# and do not append them directly to /var/log/cups/error_log (via fopen on their own).
 # The /etc/cups directory is not created by cupsd but needed by it
 # because cupsd cannot start if there is no /etc/cups/cupsd.conf file
 # (otherwise cupsd aborts with: "Unable to open /etc/cups/cupsd.conf").
@@ -798,10 +815,6 @@ exit 0
 %dir %attr(0755,root,lp) /etc/cups
 %endif
 %config(noreplace) %{_sysconfdir}/cups/client.conf
-%dir %attr(0710,root,lp) %{_var}/spool/cups
-%dir %attr(1770,root,lp) %{_var}/spool/cups/tmp
-%dir %attr(0755,root,lp) %{_var}/log/cups
-%dir %attr(0770,root,lp) %{_var}/cache/cups
 %{_bindir}/cups-config
 %{_datadir}/locale/*/cups_*
 %doc %{_mandir}/man1/cups-config.1.gz

@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Jan 21 08:38:41 UTC 2026 - Johannes Meixner <jsmeix@suse.com>
+
+- Version upgrade to 2.4.16:
+  See https://github.com/openprinting/cups/releases
+  The hotfix release 2.4.16 includes fix for infinite loop in GTK,
+  which was caused by change of internal behavior in libcups
+  on which GTK depended on, and workaround for stopping
+  the scheduler if configuration includes unknown directives.
+  Detailed list (from CHANGES.md):
+  * 'cupsUTF8ToCharset' didn't validate 2-byte UTF-8 sequences,
+    potentially reading past the end of the source string
+    (Issue #1438)
+  * The web interface did not support domain usernames fully
+    (Issue #1441)
+  * Fixed an infinite loop issue in the GTK+ print dialog
+    (Issue #1439 boo#1254353)
+  * Fixed stopping scheduler on unknown directive in
+    configuration (Issue #1443)
+  Issues are those at https://github.com/OpenPrinting/cups/issues
+- Version upgrade to 2.4.15:
+  See https://github.com/openprinting/cups/releases
+  The release CUPS 2.4.15 brings two CVE fixes:
+  Fix various cupsd issues which cause local DoS
+  (CVE-2025-61915 bsc#1253783)
+  Fix unresponsive cupsd process caused by slow client
+  (CVE-2025-58436 bsc#1244057)
+  and several bug fixes described in CHANGES.md.
+  Detailed list (from CHANGES.md):
+  * Fixed potential crash in 'cups-driverd' when there are
+    duplicate PPDs (Issue #1355)
+  * Fixed error recovery when scanning for PPDs
+    in 'cups-driverd' (Issue #1416)
+  Issues are those at https://github.com/OpenPrinting/cups/issues
+- Adapted downgrade-autoconf-requirement.patch for CUPS 2.4.16
+- Fixed entry below dated "Sat Sep 30 08:52:42 UTC 2017"
+  which contained needless UTF-8 Unicode characters that are
+  now replaced by plain ASCII text in "... line - the ..."
+  to fix a rpmlint "non-break-space" warning.
+- Adapted and enhanced 'tmpfiles.d' related things in cups.spec
+  to "Fix packages for Immutable Mode - cups"
+  (implementation task jsc#PED-14775 from epic jsc#PED-14688)
+
+-------------------------------------------------------------------
 Wed Sep 17 06:47:34 UTC 2025 - Johannes Meixner <jsmeix@suse.com>
 
 - Version upgrade to 2.4.14:
@@ -1344,7 +1387,7 @@ Fri Oct 13 11:11:10 UTC 2017 - jengelh@inai.de
 -------------------------------------------------------------------
 Sat Sep 30 08:52:42 UTC 2017 - jengelh@inai.de
 
-- Remove redundant Requires(pre) line — the use of %post -p
+- Remove redundant Requires(pre) line - the use of %post -p
   already implies it.
 
 -------------------------------------------------------------------
