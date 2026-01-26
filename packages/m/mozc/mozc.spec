@@ -1,7 +1,7 @@
 #
 # spec file for package mozc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -103,7 +103,6 @@ BuildRequires:  gcc10-c++
 BuildRequires:  python312
 %endif
 BuildRequires:  unzip
-BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -278,15 +277,11 @@ unzip %{output_dir}/unix/icons.zip -d %{buildroot}%{_datadir}/ibus-mozc/
 
 install -m755 -d %{buildroot}%{_datadir}/applications
 install -m644 ibus-setup-mozc-jp.desktop %{buildroot}%{_datadir}/applications/ibus-setup-mozc-jp.desktop
-%suse_update_desktop_file ibus-setup-mozc-jp System X-SuSE-Core-System
 
 # for provide-layout-variations patch
 ln -s ibus-setup-mozc-jp.desktop %{buildroot}%{_datadir}/applications/ibus-setup-mozc-jp-jp.desktop
-%suse_update_desktop_file ibus-setup-mozc-jp-jp System X-SuSE-Core-System
 ln -s ibus-setup-mozc-jp.desktop %{buildroot}%{_datadir}/applications/ibus-setup-mozc-us.desktop
-%suse_update_desktop_file ibus-setup-mozc-us System X-SuSE-Core-System
 ln -s ibus-setup-mozc-jp.desktop %{buildroot}%{_datadir}/applications/ibus-setup-mozc-dv.desktop
-%suse_update_desktop_file ibus-setup-mozc-dv System X-SuSE-Core-System
 %endif
 
 %if %{with_fcitx4}
