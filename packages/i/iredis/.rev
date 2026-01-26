@@ -120,4 +120,17 @@ ssues/495
     <comment></comment>
     <requestid>1272792</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>abf11dbb63fa8611072f36dd2d0daac9</srcmd5>
+    <version>1.15.2</version>
+    <time>1769421650</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.15.2
+  * Add support for IREDIS_CONFIG env
+- Fix requirements
+  * Nobody needs full poetry to build a rpm package
+  * Bump to current minimum versions
+</comment>
+    <requestid>1328492</requestid>
+  </revision>
 </revisionlist>

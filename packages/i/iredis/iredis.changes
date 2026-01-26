@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 18 13:49:30 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.15.2
+  * Add support for IREDIS_CONFIG env
+- Fix requirements
+  * Nobody needs full poetry to build a rpm package
+  * Bump to current minimum versions
+
+-------------------------------------------------------------------
 Fri Apr 25 16:49:07 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.15.1:

@@ -1,7 +1,7 @@
 #
 # spec file for package iredis
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define pythons python3
 Name:           iredis
-Version:        1.15.1
+Version:        1.15.2
 Release:        0
 Summary:        Terminal client for Redis with auto-completion and syntax highlighting
 License:        BSD-3-Clause
@@ -27,35 +27,34 @@ Source:         https://github.com/laixintao/iredis/archive/refs/tags/v%{version
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-pip
-BuildRequires:  python3-poetry
-BuildRequires:  python3-setuptools
+BuildRequires:  python3-poetry-core
 # SECTION tests
 # for killall
 BuildRequires:  psmisc
+BuildRequires:  python3-freezegun
+BuildRequires:  python3-pexpect >= 4.7
+BuildRequires:  python3-pytest
+# /SECTION
+# SECTION runtime
 BuildRequires:  python3-Pygments >= 2
 BuildRequires:  python3-click >= 8.0
 BuildRequires:  python3-configobj >= 5.0
-BuildRequires:  python3-dateutil >= 2.8.2
-BuildRequires:  python3-freezegun
 BuildRequires:  python3-mistune >= 3.0
 BuildRequires:  python3-packaging >= 23.0
-BuildRequires:  python3-pexpect
-BuildRequires:  python3-pip
 BuildRequires:  python3-prompt_toolkit >= 3
-BuildRequires:  python3-pytest
-BuildRequires:  python3-redis >= 4.5.3
+BuildRequires:  python3-python-dateutil >= 2.8.2
+BuildRequires:  python3-redis >= 5.0.0
 BuildRequires:  python3-wcwidth >= 0.1.9
-BuildRequires:  python3-wheel
 BuildRequires:  redis >= 5.0.0
 # /SECTION
 Requires:       python3-Pygments >= 2
 Requires:       python3-click >= 8.0
 Requires:       python3-configobj >= 5.0
-Requires:       python3-dateutil >= 2.8.2
-Requires:       python3-mistune >= 2.0
+Requires:       python3-mistune >= 3.0
 Requires:       python3-packaging >= 23.0
 Requires:       python3-prompt_toolkit >= 3
-Requires:       python3-redis >= 3
+Requires:       python3-python-dateutil >= 2.8.2
+Requires:       python3-redis >= 5
 Requires:       python3-wcwidth >= 0.1.9
 Recommends:     redis >= 5.0.0
 BuildArch:      noarch
