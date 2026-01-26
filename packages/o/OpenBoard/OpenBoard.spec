@@ -1,7 +1,7 @@
 #
 # spec file for package OpenBoard
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define         namelc openboard
 %define         fqname ch.%{namelc}.%{name}
 Name:           OpenBoard
-Version:        1.7.3
+Version:        1.7.4
 Release:        0
 Summary:        Interactive whiteboard for schools and universities
 License:        GPL-3.0-or-later
@@ -28,8 +28,6 @@ URL:            https://openboard.ch
 Source0:        https://github.com/OpenBoard-org/OpenBoard/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # https://github.com/OpenBoard-org/OpenBoard/pull/955
 Patch955:       0955-shortcut-configuration.patch
-# https://github.com/OpenBoard-org/OpenBoard/pull/1387
-Patch1387:      1387-fix-poppler-25-11.patch
 # https://github.com/letsfindaway/OpenBoard/pull/117
 Patch9117:      9117-disable-software-update.patch
 BuildRequires:  desktop-file-utils
