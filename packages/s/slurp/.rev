@@ -103,4 +103,27 @@
   * Fix crosshair cursor is not scaled</comment>
     <requestid>1133078</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f344d5892e4411a01b7073bf0909d067</srcmd5>
+    <version>1.6.0</version>
+    <time>1769421946</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.6.0:
+  * Make a single click equivalent to point selection
+  * Add support for crosshairs with the -x option
+  * Prevent multiple instances of slurp running for the same wayland session at once
+  * Only use shift to lock aspect ratio when resizing current selection
+  * Add example how to select windows without border under Sway #150
+  * fix handling cursor_shape_manager #151
+  * Fix weird :; code style #158
+  * slurp.1.scd: add missing documentation for the default values #168
+  * Update link to grim in README #172
+  * Enable Shift key only while resizing current selection #132
+  * feat: Use a lockfile to prevent multiple instances #174
+  * Crosshairs #95
+  * Add documentation of how to use backslash escapes. #103
+  * Fix wl_callback use-after-free in send_frame() #180
+  * Makes a single click equivalent to a point selection #129</comment>
+    <requestid>1329061</requestid>
+  </revision>
 </revisionlist>
