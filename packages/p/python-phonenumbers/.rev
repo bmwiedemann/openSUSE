@@ -463,4 +463,13 @@
     <comment></comment>
     <requestid>1326737</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>40d60ead3750172603746d91ba69504a</srcmd5>
+    <version>9.0.22</version>
+    <time>1769427283</time>
+    <user>anag_factory</user>
+    <comment>- update to 9.0.22:
+  * Merge upstream 9.0.22 phonenumber updates</comment>
+    <requestid>1329250</requestid>
+  </revision>
 </revisionlist>
