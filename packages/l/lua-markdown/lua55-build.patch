@@ -1,0 +1,30 @@
+---
+ markdown.lua |    8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+Index: markdown-0.33/markdown.lua
+===================================================================
+--- markdown-0.33.orig/markdown.lua	2026-01-22 15:31:50.217036340 +0100
++++ markdown-0.33/markdown.lua	2026-01-22 15:35:12.767885110 +0100
+@@ -254,8 +254,8 @@
+ -- Unprotects the specified text by expanding all the nonces
+ local function unprotect(text)
+    for k,v in pairs(PD.blocks) do
+-      v = v:gsub("%%", "%%%%")
+-      text = text:gsub(k, v)
++      local escaped_v = v:gsub("%%", "%%%%")
++      text = text:gsub(k, escaped_v)
+    end
+    return text
+ end
+@@ -686,8 +686,8 @@
+ local function unescape_special_chars(t)
+    local tin = t
+    for k,v in pairs(escape_table) do
+-      k = k:gsub("%%", "%%%%")
+-      t = t:gsub(v,k)
++      local escaped_k = k:gsub("%%", "%%%%")
++      t = t:gsub(v,escaped_k)
+    end
+    if t ~= tin then t = unescape_special_chars(t) end
+    return t

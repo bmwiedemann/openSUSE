@@ -43,4 +43,13 @@
 - Make the package buildable with LuaJIT.</comment>
     <requestid>1315184</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>e2b2a082e23381912198f3f9ee250402</srcmd5>
+    <version>0.331</version>
+    <time>1769427304</time>
+    <user>anag_factory</user>
+    <comment>- Add lua55-build.patch to fix incompatibility with Lua 5.5
+  (gh#mpeterv/markdown!8).</comment>
+    <requestid>1328835</requestid>
+  </revision>
 </revisionlist>

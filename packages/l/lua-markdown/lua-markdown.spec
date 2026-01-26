@@ -25,6 +25,9 @@ Summary:        Markdown text-to-html markup system
 License:        MIT
 URL:            https://github.com/mpeterv/markdown
 Source:         https://github.com/mpeterv/markdown/archive/%{upversion}.tar.gz#/%{mod_name}-%{upversion}.tar.gz
+# PATCH-FIX-UPSTREAM lua55-build.patch gh#mpeterv/markdown!8 mcepl@suse.com
+# Fix incompatibility with Lua 5.5
+Patch0:         lua55-build.patch
 BuildRequires:  %{flavor}-devel
 BuildRequires:  lua-macros
 Requires:       %{flavor}
@@ -41,7 +44,7 @@ Name:           %{flavor}-%{mod_name}
 A pure-lua implementation of the Markdown text-to-html markup system.
 
 %prep
-%setup -q -n %{mod_name}-%{upversion}
+%autosetup -p1 -n %{mod_name}-%{upversion}
 sed -i '\|%{_bindir}/env |d' markdown.lua
 
 %build

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 22 14:45:56 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add lua55-build.patch to fix incompatibility with Lua 5.5
+  (gh#mpeterv/markdown!8).
+
+-------------------------------------------------------------------
 Fri Oct 24 14:50:24 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Switch off building lua51 build of the package.
