@@ -92,4 +92,33 @@
     <comment></comment>
     <requestid>1253918</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>637e282f09af6a4d708a06427367981d</srcmd5>
+    <version>5.0.1</version>
+    <time>1769427300</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.0.1:
+  * In multi-windows installation the imv script now contains absolute paths to
+    the executables allowing multiple installations on a single machine to coexist
+
+- Update to 5.0.0:
+  * FreeImage support is dropped as the library is unmaintained and contains
+    unpatched vulnerabilities
+  * libnsgif now requires version 1.0.0
+  * The 'open' command no longer splits arguments by space before shell expansion
+  * The 'zoom' command now checks the passed argument for a '%' suffix and scales
+    the image linearly if it is present; no other suffixes are allowed
+  * Fix linking errors with icu &gt; 75
+  * Fix displaying HEIF images with odd width
+  * Fix displaying images with dimensions larger than maximum OpenGL texture size
+  * Use linear mipmaps to downscale images when OpenGL 3 is available
+  * Fix scaling of SVG images on HiDPI monitors
+  * Try to display broken JPEG images when the corruption is not fatal
+  * Mime types listed in desktop files now correctly reflect enabled backends
+  * New backends: libnsbmp, qoi, farbfeld, libwebp
+  * Support for touchpad gestures on wayland
+  * New command line option '-i' sets the app id of the created window
+- Drop imv-link-icu-uc.patch</comment>
+    <requestid>1329262</requestid>
+  </revision>
 </revisionlist>

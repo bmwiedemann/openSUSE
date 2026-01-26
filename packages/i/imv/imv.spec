@@ -1,7 +1,7 @@
 #
 # spec file for package imv
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,22 @@
 
 
 Name:           imv
-Version:        4.5.0
+Version:        5.0.1
 Release:        0
 Summary:        Image viewer for X11/Wayland
 License:        GPL-2.0-or-later AND MIT
 Group:          Productivity/Graphics/Viewers
 URL:            https://git.sr.ht/~exec64/imv
 Source:         https://git.sr.ht/~exec64/imv/archive/v%{version}.tar.gz
-Patch0:         imv-link-icu-uc.patch
 BuildRequires:  asciidoc
 BuildRequires:  cmake
-BuildRequires:  freeimage-devel
 BuildRequires:  libicu-devel
 BuildRequires:  libinih-devel
+BuildRequires:  libnetpbm-devel
 BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
+BuildRequires:  qoi-devel
 BuildRequires:  pkgconfig(SDL2_ttf)
 BuildRequires:  pkgconfig(cmocka)
 BuildRequires:  pkgconfig(egl)
@@ -49,6 +49,7 @@ BuildRequires:  pkgconfig(libturbojpeg)
 BuildRequires:  pkgconfig(pangocairo)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-egl)
+BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xkbcommon-x11)
 
@@ -59,7 +60,7 @@ imv is a command line image viewer intended for use with tiling window managers.
 %autosetup -n %{name}-v%{version}
 
 %build
-%meson -Dlibnsgif=disabled
+%meson -Dlibnsgif=disabled -Dlibnsbmp=disabled -Dtest=disabled
 %meson_build
 
 %install
