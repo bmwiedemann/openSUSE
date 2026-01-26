@@ -1,12 +1,19 @@
 -------------------------------------------------------------------
+Thu Jan 22 14:15:42 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- BuildRequire llvm21-devel, no matter which suse_version/sle_version
+  is being used
+
+-------------------------------------------------------------------
 Tue Jan 20 23:14:21 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
-- includes the fixes for bsc#1245034, bsc#1241370, bsc#1241701
-- includes the following patches:
+- current tarball includes the fixes for bsc#1245034, bsc#1241370,
+  bsc#1241701 and supersedes the previously applied patches:
   * U_0001-svga-add-svga_resource_create_with_modifiers-functio.patch
   * U_0002-svga-fix-printing-64-bit-value-for-32-bit-build.patch
   * U_gbm-fix-get_back_bo-failure-with-gbm_surface-and-imp.patch
   * U_egl-never-select-swrast-for-vmwgfx.patch
+  * U_loader_wayland-Fix-missing-timespec.h-include.patch
 
 -------------------------------------------------------------------
 Sat Jan 17 15:02:15 UTC 2026 - Neal Gompa <ngompa@opensuse.org>

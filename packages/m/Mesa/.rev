@@ -6639,4 +6639,15 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
 - Enable Asahi DRI and Vulkan drivers for x86_64 and AArch64</comment>
     <requestid>1328391</requestid>
   </revision>
+  <revision rev="566" vrev="4">
+    <srcmd5>52afebfeb915d7e6def609ccf017fc62</srcmd5>
+    <version>25.3.3</version>
+    <time>1769420583</time>
+    <user>anag_factory</user>
+    <comment>- BuildRequire llvm21-devel, no matter which suse_version/sle_version
+  is being used
+
+- improved previous changelog</comment>
+    <requestid>1328714</requestid>
+  </revision>
 </revisionlist>
