@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan 24 11:50:34 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.10.1
+  * Fix stray Notification Item showing up
+  * kdeconnect no longer uses a KCM module for configuration, but
+    an app
+  * add workaround for weird behavior when opening some
+    configure Dialogs
+  * Also allow symlinks in QuickLaunch
+
+-------------------------------------------------------------------
 Sat Oct 5 11:00:00 UTC 2024 - Martin Koller <kollix@aon.at>
 
 - Update to 1.10, which is the first version based on Qt6/KF6
