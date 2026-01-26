@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Jan 26 08:22:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.42.0:
+  * `run` subcommand:
+  * Introduce a new `run` subcommand capable of running targets
+    until a time limit or EOT (suited for CI/CD workflows)
+  * Supports semihosting console output/input and SWV output
+  * Standard I/O routing:
+  * Add new abstraction layer to unify STDIO routing for each
+    core
+  * Routing support for `console`, `telnet`, `file` and `off`
+  * >Note: Currently only output is supported
+  * CMSIS-Toolbox Run and Debug Management integration:
+  * Add configuration layer in session options, which sits below
+    command line arguments
+  * Disable `*.cbuild-run.yml` processing if the
+    `target_override` option is set
+  * Improve port assignment logic for multi-core GDBServer and
+    telnet configurations
+  * Add processing for `connect` mode configuration
+  * Add processing for `pre-reset` and `post-reset` options in
+    `load-setup` configuration
+  * Improve error messages for missing or invalid `*.cbuild-
+    run.yml` file
+  * Improve checking for required files
+  * Raise a warning instead of an error for missing SVD files
+  * Load SVD files only when available and when used by the
+    subcommand
+  * Flash programming:
+  * Add new session options for configuring `pre-reset` and
+    `post-reset` type in `load` subcommand
+  * Relax flash algorithm requirement to require only RO section
+  * Update Zephyr thread state definitions to match modern
+    versions (@mathieuchopstm)
+  * CoreSight and Cortex-M:
+  * Add support for Cortex-M52 and Star-MC3 based devices (@Liu-
+    Gu)
+  * Skip adding cores not described in the debug topology while
+    retaining direct AP access
+- update to 0.41.0:
+  * Probe:
+  * Enable STLINK-V3PWR probe
+  * Fix RTOS support for Zephyr (thread detection)
+  * Improve robustness of HID read thread
+
+-------------------------------------------------------------------
 Tue Nov 11 23:44:17 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.40.0:

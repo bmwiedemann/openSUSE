@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyOCD
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-pyOCD
-Version:        0.40.0
+Version:        0.42.0
 Release:        0
 Summary:        CMSIS-DAP debugger for python
 License:        Apache-2.0
