@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jan 11 19:23:59 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to version 1.5.30:
+  * Fixed const-correctness of input arguments of Mat_VarCreateStruct
+  * Deprecated usage of Mat_VarCreateStruct in favor of
+    Mat_VarCreateStruct2 (CVE-2025-50343, boo#1255825)
+  * Several other fixes, for example for memory leaks
+
+-------------------------------------------------------------------
+Fri Jan  2 10:11:01 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- enable MAT v7.3 file support (hdf5)
+
+-------------------------------------------------------------------
 Wed Dec 31 17:04:24 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to version 1.5.29:
