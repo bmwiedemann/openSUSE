@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 15 11:39:25 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Support Immutable Mode (jsc#PED-14906)
+  * Use a tmpfiles list and systemd-tmpfiles to create the files
+    below /var/.
+  * Add /var/lib/texmf/fonts/conf to list as well (jsc#PED-14907)
+- Move /etc/texmf/TRANSACTIONAL_UPDATE to /usr/share/texmf/
+
+-------------------------------------------------------------------
 Fri Apr  4 06:56:16 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Avoid doubled pattern() (bug boo#1240761)

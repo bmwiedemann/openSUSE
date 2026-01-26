@@ -1,7 +1,7 @@
 #
 # spec file for package texlive-filesystem
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %define texlive_version  2025
 %define texlive_previous 2022
 %define texlive_release  20250308
-%define texlive_noarch   220
+%define texlive_noarch   221
 %define texlive_source   texlive-20250308-source
 %define biber_version    2.20
 
@@ -33,6 +33,11 @@
   %(ls /usr/lib/rpm/brp-suse.d/* 2> /dev/null | grep -vE 'symlink|desktop') %{nil}
 
 %bcond_with     zypper_posttrans
+%if 0%{?suse_version} >= 1600
+%bcond_without  immutable
+%else
+%bcond_with     immutable
+%endif
 
 Name:           texlive-filesystem
 Version:        %{texlive_version}.%{texlive_noarch}
@@ -82,6 +87,9 @@ Requires(pre):  sed
 %if 0%{?suse_version} > 1550
 Requires(preun): rpm_macro(service_del_preun)
 %endif
+%if 0%{?suse_version} >= 1600
+Requires(posttrans): pkgconfig(systemd)
+%endif
 Requires(posttrans): coreutils
 Requires(posttrans): ed
 Requires(posttrans): findutils
@@ -96,6 +104,10 @@ Obsoletes:      tetex <= %{texlive_previous}
 BuildRequires:  cron
 BuildRequires:  ed
 BuildRequires:  fontconfig
+%if 0%{?suse_version} >= 1600
+BuildRequires:  pkgconfig(systemd)
+BuildRequires:  rpm_macro(_tmpfilesdir)
+%endif
 #BuildConflicts: texinfo
 Source10:       rc.config.texlive
 Source11:       update.texlive
@@ -181,6 +193,10 @@ Prefix:         %{_bindir}
 %define _texmfvardir	%{_varlib}/texmf
 %define _texmfcache	%{_localstatedir}/cache/texmf
 %define _fontcache	%{_texmfcache}/fonts
+# Immutable
+%define _immutabledir   %{_texmfdistdir}%{_localstatedir}
+%define _immutablecache %{_immutabledir}/cache
+%define _immutablelib   %{_immutabledir}/lib
 #
 %define _x11bin		%{_prefix}/bin
 %define _x11lib		%{_libdir}
@@ -10837,6 +10853,51 @@ popd
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/pmx
     mkdir -p %{buildroot}%{_texmfmaindir}/scripts/texlive
     mkdir -p %{buildroot}%{_texmfvardir}
+#   Immutable
+%if %{with immutable}
+    mkdir -p %{buildroot}%{_tmpfilesdir}
+    (cat >   %{buildroot}%{_tmpfilesdir}/texlive.conf) <<-"EOF"
+	d %{_texmfcache}                    1755 root  root  - -
+	d %{_fontcache}                     3775 %{texusr} %{texgrp} - -
+	d %{_fontcache}/pk                  3775 %{texusr} %{texgrp} - -
+	d %{_fontcache}/source              3775 %{texusr} %{texgrp} - -
+	d %{_fontcache}/tfm                 3775 %{texusr} %{texgrp} - -
+	d %{_fontcache}/luatex-cache        3775 %{texusr} %{texgrp} - -
+	f %{_fontcache}/ls-R                0664 %{texusr} %{texgrp} - %%%% ls-R -- filename database for kpathsea; do not change this line.
+	d %{_texmfvardir}                   1755 root  root  - -
+	d %{_texmfvardir}/dist              1755 root  root  - -
+	f %{_texmfvardir}/dist/ls-R         0664 root  %{texgrp} - %%%% ls-R -- filename database for kpathsea; do not change this line.
+	d %{_texmfvardir}/fonts             1755 root  root  - -
+	d %{_texmfvardir}/fonts/dvipdfm     1755 root  root  - -
+	d %{_texmfvardir}/fonts/dvips       1755 root  root  - -
+	d %{_texmfvardir}/fonts/pdftex      1755 root  root  - -
+	d %{_texmfvardir}/fonts/conf        1755 root  root  - -
+	d %{_texmfvardir}/fonts/map         1755 root  root  - -
+	d %{_texmfvardir}/main              1755 root  root  - -
+	f %{_texmfvardir}/main/ls-R         0664 root  %{texgrp} - %%%% ls-R -- filename database for kpathsea; do not change this line.
+	d %{_texmfvardir}/md5               0755 root  root  - -
+	d %{_texmfvardir}/web2c             1755 root  root  - -
+	d %{_texmfvardir}/web2c/aleph       1755 root  root  - -
+	d %{_texmfvardir}/web2c/eptex       1755 root  root  - -
+	d %{_texmfvardir}/web2c/luatex      1755 root  root  - -
+	d %{_texmfvardir}/web2c/metafont    1755 root  root  - -
+	d %{_texmfvardir}/web2c/pdftex      1755 root  root  - -
+	d %{_texmfvardir}/web2c/ptex        1755 root  root  - -
+	d %{_texmfvardir}/web2c/tex         1755 root  root  - -
+	d %{_texmfvardir}/web2c/xetex       1755 root  root  - -
+	d %{_texmfvardir}/web2c/hitex       1755 root  root  - -
+	d %{_texmfvardir}/web2c/luahbtex    1755 root  root  - -
+	d %{_texmfvardir}/web2c/luajithbtex 1755 root  root  - -
+	d %{_texmfvardir}/web2c/luajittex   1755 root  root  - -
+	d %{_texmfvardir}/web2c/mflua-nowin 1755 root  root  - -
+	d %{_texmfvardir}/web2c/euptex      1755 root  root  - -
+	d %{_texmfvardir}/web2c/uptex       1755 root  root  - -
+	d %{_texmfvardir}/luatex-cache      0755 root  root  - -
+	d %{_texmfvardir}/luametatex-cache  0755 root  root  - -
+	f %{_texmfvardir}/ls-R              0664 root  %{texgrp} - %%%% ls-R -- filename database for kpathsea; do not change this line.
+EOF
+%endif
+#
     mkdir -p %{buildroot}%{_texmfvardir}/dist
     mkdir -p %{buildroot}%{_texmfvardir}/fonts
     mkdir -p %{buildroot}%{_texmfvardir}/fonts/dvipdfm
@@ -24501,6 +24562,12 @@ popd
     install -m 0755 %{S:12} %{buildroot}%{_sysconfdir}/cron.daily/suse-texlive
 %endif
 
+# Final remove all below /var/
+%if %{with immutable}
+    rm -vrf %{buildroot}%{_texmfvardir}
+    rm -vrf %{buildroot}%{_texmfcache}
+%endif
+
 %if %{defined verify_permissions}
 %verifyscript
 %verify_permissions -e %{_texmfconfdir}/ls-R
@@ -24508,7 +24575,6 @@ popd
 %verify_permissions -e %{_texmfvardir}/fonts/
 %verify_permissions -e %{_texmfvardir}/fonts/dvipdfm/
 %verify_permissions -e %{_texmfvardir}/fonts/dvips/
-%verify_permissions -e %{_texmfvardir}/fonts/ls-R
 %verify_permissions -e %{_texmfvardir}/fonts/pdftex/
 %verify_permissions -e %{_texmfvardir}/dist/
 %verify_permissions -e %{_texmfvardir}/dist/ls-R
@@ -24531,6 +24597,7 @@ for dir in	%{_texmfconfdir}	\
 		%{_texmfvardir}/dist	\
 		%{_texmfvardir}/main
 do
+    test -e ${dir} || continue
     rm -f ${dir}/ls-R
 done
 %if 0%{?suse_version} > 1550
@@ -24538,6 +24605,9 @@ done
 %endif
 
 %post
+%if %{defined tmpfiles_create}
+%tmpfiles_create %{_tmpfilesdir}/texlive.conf
+%endif
 %fillup_only -n texlive
 # the ls-R file (empty at package time)
 error=0
@@ -24548,6 +24618,7 @@ for dir in	%{_texmfconfdir}	\
 		%{_texmfvardir}/dist	\
 		%{_texmfvardir}/main
 do
+    test -e ${dir} || continue
     test "$dir" = %{_fontcache} && user=%{texusr} || user=root
     setpriv --reuid $user --regid %{texgrp} --init-groups /bin/sh -ec "
 	tmp=\$(mktemp ${dir}/ls-R.XXXXXX)
@@ -24561,7 +24632,6 @@ done
 %set_permissions %{_texmfvardir}/fonts/
 %set_permissions %{_texmfvardir}/fonts/dvipdfm/
 %set_permissions %{_texmfvardir}/fonts/dvips/
-%set_permissions %{_texmfvardir}/fonts/ls-R
 %set_permissions %{_texmfvardir}/fonts/pdftex/
 %set_permissions %{_texmfvardir}/dist/
 %set_permissions %{_texmfvardir}/dist/ls-R
@@ -24701,7 +24771,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/scripts/context/perl
 %dir %{_texmfdistdir}/scripts/de-macro
 %dir %{_texmfdistdir}/scripts/dviasm
-## %dir %{_texmfdistdir}/scripts/ebong
+# %%dir %{_texmfdistdir}/scripts/ebong
 %dir %{_texmfdistdir}/scripts/epspdf
 %dir %{_texmfdistdir}/scripts/epstopdf
 %dir %{_texmfdistdir}/scripts/fig4latex
@@ -39098,6 +39168,15 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfmaindir}/tlpkg
 %dir %{_texmfmaindir}/tlpkg/TeXLive
 %dir %{_texmfmaindir}/tlpkg/gpg
+%if %{with immutable}
+%dir %{_tmpfilesdir}
+%{_tmpfilesdir}/texlive.conf
+%ghost %dir %attr(1755,root,root) %{_texmfcache}/
+%ghost %dir %attr(3775,%{texusr},%{texgrp}) %verify(not mode) %{_fontcache}/
+%ghost %dir %attr(1755,root,root) %verify(not mode) %{_texmfvardir}/
+%ghost %dir %attr(1755,root,root) %verify(not mode) %{_texmfvardir}/dist/
+%ghost %dir %attr(1755,root,root) %verify(not mode) %{_texmfvardir}/main/
+%else
 %dir %attr(1755,root,root) %{_texmfvardir}/
 %dir %attr(1755,root,root) %{_texmfvardir}/dist/
 %dir %attr(1755,root,root) %{_texmfvardir}/main/
@@ -39120,6 +39199,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %attr(3775,%{texusr},%{texgrp}) %verify(not mode) %{_fontcache}/source/
 %dir %attr(3775,%{texusr},%{texgrp}) %verify(not mode) %{_fontcache}/tfm/
 %dir %{_texmfvardir}/md5
+%endif
 %verify(link) %{_texmfmaindir}/ls-R
 %verify(link) %{_texmfdistdir}/ls-R
 %ghost %config(noreplace) %attr(0664,root,%{texgrp}) %verify(not md5 size mtime mode) %{_texmfconfdir}/ls-R

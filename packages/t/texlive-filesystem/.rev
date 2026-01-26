@@ -620,4 +620,12 @@
     <comment>- Avoid doubled pattern() (bug boo#1240761)</comment>
     <requestid>1267078</requestid>
   </revision>
+  <revision rev="62" vrev="65">
+    <srcmd5>d0f293bce0783015271e0b0c408feda8</srcmd5>
+    <version>unknown</version>
+    <time>1769420596</time>
+    <user>anag_factory</user>
+    <comment>Support Immutable Mode (jsc#PED-14907 and jsc#PED-14906)</comment>
+    <requestid>1327569</requestid>
+  </revision>
 </revisionlist>

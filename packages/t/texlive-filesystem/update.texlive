@@ -13,25 +13,49 @@
 # Copyright (c) 2007-2009 SuSE LINUX Products GmbH, Nuernberg, Germany.
 # Copyright (c) 2011-2012 SuSE LINUX Products GmbH, Nuernberg, Germany.
 # Copyright (c) 2016 SUSE Linux GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
-# 
-# Author: Werner Fink, 1997-2012,2016
 #
+# Author: Werner Fink, 1997-2012,2016,2026
+#
+
+tmpfiles=/usr/lib/tmpfiles.d/texlive.conf
+transact=/usr/share/texmf/TRANSACTIONAL_UPDATE
 
 if test -n "${TRANSACTIONAL_UPDATE}"
 then
     umask 022
     mkdir -p /etc/texmf
-    > /etc/texmf/TRANSACTIONAL_UPDATE
+    > $transact
     rm -rf /var/run/texlive || :
-    find /var/cache/texmf /var/lib/texmf -type f -exec rm -f '{}' \+
+    declare -A varlist
+    test -d /var/cache/texmf && varlist[0]=/var/cache/texmf || :
+    test -d /var/lib/texmf   && varlist[1]=/var/lib/texmf   || :
+    if test ${#varlist[@]} -gt 0
+    then
+	find ${varlist[@]} -type f -exec rm -f '{}' \+
+    fi
+    unset varlist
     exit 0
-elif test -e /etc/texmf/TRANSACTIONAL_UPDATE
+elif test -e $transact
 then
     set -- force
-    rm -f /etc/texmf/TRANSACTIONAL_UPDATE || :
+    rm -f $transact || :
 fi
+unset transact
+
+if ! id mktex > /dev/null 2>&1
+then
+    useradd -U -d /var/cache/texmf/fonts -c "System user for TeXLive" -s "/usr/sbin/nologin" mktex
+fi
+
+if test -s $tmpfiles
+then
+    type -p systemd-tmpfiles &> /dev/null || { echo "${0##*/}: No systemd-tmpfiles in PATH ... skipping" 1>&2; exit 0 ; }
+    systemd-tmpfiles --create $tmpfiles
+fi
+unset tmpfiles
 
 if test -n "$1" -a "$1" = force; then
     umask 022
@@ -42,9 +66,6 @@ if test -n "$1" -a "$1" = force; then
     do
 	> /var/run/texlive/$tag
     done
-    if ! id mktex > /dev/null 2>&1; then
-	useradd -U -d /var/cache/texmf/fonts -c "System user for mktex" -s "/usr/sbin/nologin" mktex
-    fi
     test -e /var/cache/texmf/fonts/ls-R || {
 	setpriv --reuid mktex --regid mktex --init-groups bash -c \
 	    "umask 0002
