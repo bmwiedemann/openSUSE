@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst-distri-opensuse-deps
-Version:        1.1768906106.3eb55338
+Version:        1.1769189266.07b75843
 Release:        0
 Summary:        Metapackage that contains the dependencies of os-autoinst-distri-opensuse
 License:        MIT
@@ -84,7 +84,8 @@ Requires:       golang-github-google-jsonnet
 # Required to get information from Agama isos
 Requires:       mkisofs
 Requires:       jq
-Requires:       gzip
+Requires:       /usr/bin/gzip
+Suggests:       gzip
 
 %description
 Metapackage that contains the dependencies of os-autoinst-distri-opensuse.
