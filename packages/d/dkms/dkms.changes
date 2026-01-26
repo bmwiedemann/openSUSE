@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan  3 17:19:11 UTC 2026 - Alexandru Gabriel Bradatan <alex.bradatan85@yahoo.it>
+
+- Update to version 3.3.0
+  * Add per-module BUILD_EXCLUSIVE_* directives
+  * New build_environment directive to specify custom compilers
+- Update to version 3.2.2
+  * Various fixes
+
+-------------------------------------------------------------------
 Wed Sep 10 09:40:48 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 3.2.1:
