@@ -460,4 +460,12 @@ Index: filter-pyopenssl-deprecationwarning.patch
 +                 conn.close()</comment>
     <requestid>1297619</requestid>
   </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>8f7da5fd309cce66808beb0fbb679418</srcmd5>
+    <version>1.26.20</version>
+    <time>1769420579</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1328693</requestid>
+  </revision>
 </revisionlist>

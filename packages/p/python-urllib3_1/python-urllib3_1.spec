@@ -1,7 +1,7 @@
 #
 # spec file for package python-urllib3_1
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,13 @@ Patch0:         remove_mock.patch
 Patch1:         CVE-2025-50181-poolmanager-redirects.patch
 # PATCH-FIX-OPENSUSE Explicitly ignore new DeprecationWarning from PyOpenSSL 25.1+
 Patch2:         filter-pyopenssl-deprecationwarning.patch
+# PATCH-FIX-UPSTREAM CVE-2025-66471.patch bsc#1254867 gh#urllib3/urllib3@c19571d
+# and parts from gh#urllib3/urllib3@c35033f as prerequisite
+Patch3:         CVE-2025-66471.patch
+# PATCH-FIX-UPSTREAM CVE-2025-66418.patch bsc#1254866 gh#urllib3/urllib3@24d7b67
+Patch4:         CVE-2025-66418.patch
+# PATCH-FIX-UPSTREAM CVE-2026-21441.patch bsc#1256331 gh#urllib3/urllib3@8864ac4
+Patch5:         CVE-2026-21441.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -53,11 +60,11 @@ Requires:       python-cryptography >= 1.3.4
 Requires:       python-idna >= 2.0.0
 Requires:       python-pyOpenSSL >= 0.14
 Requires:       python-six >= 1.12.0
-Recommends:     python-Brotli >= 1.0.9
+Recommends:     python-Brotli >= 1.2.0
 Recommends:     python-PySocks >= 1.5.6
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module Brotli >= 1.0.9}
+BuildRequires:  %{python_module Brotli >= 1.2.0}
 BuildRequires:  %{python_module PySocks >= 1.5.6}
 BuildRequires:  %{python_module dateutil}
 BuildRequires:  %{python_module flaky}

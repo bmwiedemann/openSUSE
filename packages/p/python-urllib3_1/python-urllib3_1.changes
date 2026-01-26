@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 21 16:44:35 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Add security patches:
+  * CVE-2025-66471.patch (bsc#1254867)
+  * CVE-2025-66418.patch (bsc#1254866)
+  * CVE-2026-21441.patch (bsc#1256331)
+
+-------------------------------------------------------------------
 Tue Aug  5 05:58:09 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Do not ignore deprecation warnings, the testsuite explicitly
