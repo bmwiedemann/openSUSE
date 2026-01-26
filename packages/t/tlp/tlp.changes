@@ -1,4 +1,129 @@
 -------------------------------------------------------------------
+Wed Jan 14 12:01:10 UTC 2026 - Thomas Renninger <trenn@suse.de>
+
+- Make completion pkgs require their command providing pkg
+  https://build.opensuse.org/requests/1326947 (as reviewed by darix)
+- Remove unusued /%localstatedir/lib/tlp from files section 
+
+-------------------------------------------------------------------
+Mon Jan 12 14:47:44 UTC 2026 - Thomas Renninger <trenn@suse.de>
+
+- Update to version 1.9.1:
+  * *** 1.9.1 Release ***
+  * tlp-stat -s: align output
+  * Fix RESTORE_THRESHOLDS_ON_BAT
+  * tlp-pd: limit simultaneous holds to 16
+  * tlp-pd: add polkit auth for SyncProfile(), ReleaseProfile()
+  * tlp-pd: make hold cookies unpredictable
+  * tlp-pd: fix polkit authentication bypass concerning profile/loglevel
+- Last (auto) change fixes CVE-2025-67859 - bsc#1254768
+- Removed compressed zst tarball, tarball creation is done on server side
+  by recompress services
+
+-------------------------------------------------------------------
+Tue Dec 30 16:46:03 UTC 2025 - Luan C. Adão <carluad@proton.me>
+
+- Enhance packaging:
+    Split tlp-pd into a subpackage.
+    Shell completions subpackages.
+
+-------------------------------------------------------------------
+Thu Dec  4 03:15:03 UTC 2025 - Splyffer <splyffer@proton.me>
+
+- Update to 1.9.0 
+* Features
+    Power Profiles:
+    - tlp-pd: TLP Profiles Daemon is a new addition to TLP. It implements
+      the D-Bus interface, which lets desktop environments show a
+      power profile switch. Together with TLP as the backend for applying
+      these profiles, it replaces power-profiles-daemon.
+    - Introduce a third configuration profile for maximum power savings
+      and make tlp-pd possible. The following are now available:
+      - performance: parameters ending in _AC are used when AC power
+        is connected or when the new command 'tlp performance' is run.
+      - balanced: parameters ending in _BAT are used when operating
+        on battery power or when the new command 'tlp balanced' is run.
+      - power-saver: parameters ending in _SAV are used when the new command
+        'tlp power-saver' is run. If there is no _SAV parameter available
+        for a feature, the _BAT parameter will be used instead.
+    - tlpctl: new command to switch between power profiles, launch applications
+      with specific profiles and control tlp-pd.
+      It offers a subset of powerprofilesctl's commands supplemented by
+      TLP-specific shortcuts.
+    - TLP_AUTO_SWITCH: controls the automatic switching of the power profile
+      when the charger is connected or removed (even during a suspend).
+      The Innovation (and new default) is a "smart" mode that can retain a
+      manually selected profile when the power source changes.
+    - Use the TLP_DEFAULT_MODE profile when automatic switching is disabled.
+    - tlp-stat --pd-diag: show tlp-pd diagnostic
+    - tlp: drop the commands 'false' and 'true', which have been superseded
+      by 'ac' and 'bat' for ages
+    - tlp-stat --pd-diag: display active desktop session
+
+    Battery Care:
+    - Tuxedo laptops supported by the clevo_acpi out-of-tree driver from
+      tuxedo-drivers: start and stop threshold (Issue #803);
+      only models with a Clevo ODM chassis are compatible,
+      check the tlp-stat -b output to find out if yours is
+    - tlp-stat -b: advertise chargeonce, discharge, recalibrate features
+      individually
+    General:
+    - TLP_DISABLE_DEFAULTS: deactivate all intrinsic defaults so that
+      only settings that have been explicitly activated are applied;
+      helpful to use only selected features
+    - tlp-stat -s: unified representation of tlp/tlp-rdw/tlp-pd's status
+    - tlp-stat --trace-nm: show the journal entries for NetworkManager
+      correlated with TLP's trace output, supplemented with device details
+      for NetworkManager and rfkill
+    - Response to invalid subcommands/options: output not only “Usage:”
+      but also “Error:”
+    Graphics:
+    - New parameter for the power-saver profile: AMDGPU_ABM_LEVEL_ON_SAV
+    - tlp-stat -g -v: show power state and clocks of AMD GPUs
+    - RADEON_POWER_PROFILE_ON_AC/BAT removed (deprecated since 1.8.0)
+    Processor:
+    - PLATFORM_PROFILE_ON_AC/BAT/SAV: activated by default
+    - New parameters for the power-saver profile:
+      - CPU_DRIVER_OPMODE_ON_SAV
+      - CPU_SCALING_GOVERNOR_ON_SAV
+      - CPU_SCALING_MIN/MAX_FREQ_ON_SAV
+      - CPU_MIN/MAX_PERF_ON_SAV
+      - CPU_BOOST_ON_SAV
+      - CPU_HWP_DYN_BOOST_ON_SAV
+    - tlp-stat -p: add to display per core:
+      - amd_pstate_lowest_nonlinear_freq, amd_pstate_max_freq
+      - (-v) scaling_cur_freq (current core frequency)
+      - (-v) amd_pstate_hw_prefcore, amd_pstate_prefcore_ranking
+    - tlp-stat -t -v: show all individual temperature/fan sensors
+    Radio Devices:
+    - bluetooth/nfc/wifi/wwan: add command 'cycle', equivalent of 'toggle' twice
+    - DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE: Fix the disabling of nfc
+      (Issue #808)
+    - tlp-stat -s: warn if RDW is configured but tlp-rdw is not installed
+    - tlp-stat -r -v: show device details for NetworkManager and rfkill
+
+  * Bugfixes
+    Battery Care:
+    - Chromebooks, Framework laptops: fix tlp discharge to a target percentage
+    - ThinkPads:
+      - Fix X201, X220 discharge (Issue #793)
+      - Fix bash completion for tlp discharge on tp-smapi models
+      - Detect coreboot more reliable via DMI bios_vendor
+      - tlp-stat -b:
+        - Fix X13s Gen 1 ARM data read out (Issue #807)
+        - Do not wrongly recommend kernel 5.17 if coreboot is detected,
+          as coreboot does not implement discharge anyway
+    Radio Devices:
+      - Ensure clean wifi/wwan switching by keeping the status of
+        NetworkManager and TLP in sync
+      - bluetooth/nfc/wifi/wwan: restore device status display
+    Disks:
+      - Fix double processing of plugged USB disks
+      - tlp-stat -d: fix anonymization of newish NVMe disk ids
+    Operation:
+      - run-on-ac/bat: fix power source detection (regression in 1.9.0-beta.1)
+
+-------------------------------------------------------------------
 Wed Feb 19 08:52:47 UTC 2025 - Thomas Renninger <trenn@suse.de>
 
 - Update to Version 1.8.0
