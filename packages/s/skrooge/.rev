@@ -190,4 +190,12 @@ It's very actively maintained upstream, so I see no reason why it shouldn't be p
     <comment>Update to 25.10.0</comment>
     <requestid>1312204</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>df61cd907becd1a5ce383e914ad88b41</srcmd5>
+    <version>26.1.20</version>
+    <time>1769421891</time>
+    <user>anag_factory</user>
+    <comment>Update to 26.1.20</comment>
+    <requestid>1329022</requestid>
+  </revision>
 </revisionlist>
