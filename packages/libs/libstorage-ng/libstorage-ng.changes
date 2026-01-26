@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Fri Jan 23 18:43:31 UTC 2026 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1050
+- libstorage-ng.spec.in: drop dependency on dmraid
+- 4.5.286
+
+--------------------------------------------------------------------
 Mon Jan 19 14:20:41 UTC 2026 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#1049

@@ -18,7 +18,7 @@
 
 %define libname %{name}1
 Name:           libstorage-ng
-Version:        4.5.285
+Version:        4.5.286
 Release:        0
 Summary:        Library for storage management
 License:        GPL-2.0-only
@@ -83,7 +83,9 @@ Recommends:     %{name}-lang
 Requires:       coreutils
 Suggests:       cryptsetup
 Requires:       device-mapper
+%if 0%{suse_version} <= 1600
 Suggests:       dmraid
+%endif
 Requires:       lsscsi >= 0.26
 Suggests:       lvm2
 Suggests:       mdadm >= 3.3
