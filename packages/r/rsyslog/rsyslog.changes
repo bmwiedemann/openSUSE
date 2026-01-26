@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Mon Jan 19 15:10:35 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
 
-- switch to tmpfiles based file creation in specfile (jsc#PED-14786)
+- switch to tmpfiles based file creation in specfile (jsc#PED-14852)
 
 -------------------------------------------------------------------
 Fri Nov 21 12:21:20 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
