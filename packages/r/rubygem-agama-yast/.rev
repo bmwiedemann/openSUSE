@@ -526,4 +526,16 @@
   (gh#agama-project/agama#2684).</comment>
     <requestid>1327355</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>de2a02167751cccbaeb9d991e917018b</srcmd5>
+    <version>19.pre.devel1110.2ad621a9f</version>
+    <time>1769420577</time>
+    <user>anag_factory</user>
+    <comment>- Honor the read_only flag for volumes coming from the product
+  configuration (bsc#1253616).
+
+- refactor install_translations.sh for readability and testability
+  (part of Rust translations enablement, gh#agama-project/agama#2949).</comment>
+    <requestid>1328666</requestid>
+  </revision>
 </revisionlist>
