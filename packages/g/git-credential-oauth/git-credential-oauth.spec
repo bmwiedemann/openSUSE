@@ -1,7 +1,7 @@
 #
 # spec file for package git-credential-oauth
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           git-credential-oauth
-Version:        0.15.0
+Version:        0.17.2
 Release:        0
 Summary:        Git credential helper that authenticates to GitHub and other forges using OAuth
 License:        Apache-2.0
@@ -27,7 +27,7 @@ Source0:        https://github.com/hickford/%{name}/archive/refs/tags/v%{version
 Source1:        vendor.tar.zst
 BuildRequires:  golang-packaging
 BuildRequires:  zstd
-BuildRequires:  golang(API)
+BuildRequires:  golang(API) >= 1.24.1
 Requires:       git-core
 
 %description
