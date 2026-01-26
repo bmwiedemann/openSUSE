@@ -324,7 +324,6 @@
     <package name="distribution-logos-openSUSE-Tumbleweed" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="distribution-logos-openSUSE-icons" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="dmidecode" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="dmraid" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="dnsmasq" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="docbook-xsl-stylesheets" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="docbook_4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1085,7 +1084,7 @@
     <package name="konversation-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="korganizer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="korganizer-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="kpartx" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="kpartx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kpat" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kpat-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kpimtextedit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->

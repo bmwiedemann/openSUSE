@@ -1386,6 +1386,7 @@ unsorted:
   - bcg729-devel 
   - bchunk 
   - bcmatroska2-devel 
+  - bcpp 
   - bctoolbox-devel 
   - bcunit-devel 
   - bcunit-doc 
@@ -2011,6 +2012,7 @@ unsorted:
   - cargo1.90 
   - cargo1.91 
   - cargo1.92 
+  - cargo1.93 
   - caribou 
   - caribou-common 
   - caribou-devel 
@@ -3320,6 +3322,7 @@ unsorted:
   - dm-zoned-tools 
   - dmd 
   - dmenu 
+  - dmraid 
   - dmraid-devel 
   - dmz-icon-theme-cursors 
   - dnf-plugins-core 
@@ -4086,6 +4089,7 @@ unsorted:
   - fde-tpm-helper-rpm-macros 
   - fdo-client 
   - fdo-client-devel 
+  - feathernotes 
   - featherpad 
   - featherpad-lang 
   - fec-devel 
@@ -8960,6 +8964,7 @@ unsorted:
   - input-pad-devel 
   - input-pad-eek 
   - input-pad-xtest 
+  - inputplumber 
   - insighttoolkit-devel 
   - inspectrum 
   - inspektor-gadget 
@@ -11078,6 +11083,7 @@ unsorted:
   - leocad 
   - leptonica-devel 
   - leptonica-tools 
+  - lerc-devel 
   - letsconnect-client 
   - letterize 
   - level-zero 
@@ -11283,6 +11289,7 @@ unsorted:
   - libLTO19 
   - libLTO20 
   - libLTO21 
+  - libLerc4 
   - libLibreGraphAPI1 
   - libLimeSuite23_11-0 
   - libMagick++-7_Q16HDRI5 
@@ -12212,6 +12219,7 @@ unsorted:
   - libbaseencode-devel 
   - libbaseencode1 
   - libbasicobjects-devel 
+  - libbbf 
   - libbcc0 
   - libbcg729-0 
   - libbcmatroska2-0 
@@ -14622,7 +14630,7 @@ unsorted:
   - libmateweather-lang 
   - libmateweather1 
   - libmatio-devel 
-  - libmatio13 
+  - libmatio14 
   - libmatrix_client0_10_1 
   - libmatroska-devel 
   - libmaxminddb-devel 
@@ -17968,9 +17976,15 @@ unsorted:
   - lua54-vstruct 
   - lua54-zlib 
   - lua55 
+  - lua55-compat-5.3 
+  - lua55-compat-5.3-bit32 
   - lua55-devel 
   - lua55-doc 
+  - lua55-ldbus 
+  - lua55-lpeg 
+  - lua55-lpeg-doc 
   - lua55-luafilesystem 
+  - lua55-markdown 
   - luabind-devel 
   - luajit 
   - luajit-alt-getopt 
@@ -26207,6 +26221,7 @@ unsorted:
   - python311-miniupnpc 
   - python311-misaka 
   - python311-mistletoe 
+  - python311-mistralai 
   - python311-mistune 
   - python311-mistune2 
   - python311-mitmproxy-rs 
@@ -30051,6 +30066,7 @@ unsorted:
   - python312-miniupnpc 
   - python312-misaka 
   - python312-mistletoe 
+  - python312-mistralai 
   - python312-mistune 
   - python312-mistune2 
   - python312-mitmproxy 
@@ -33900,6 +33916,7 @@ unsorted:
   - python313-miniupnpc 
   - python313-misaka 
   - python313-mistletoe 
+  - python313-mistralai 
   - python313-mistralclient 
   - python313-mistune 
   - python313-mistune2 
@@ -37221,6 +37238,8 @@ unsorted:
   - rust1.91-src 
   - rust1.92 
   - rust1.92-src 
+  - rust1.93 
+  - rust1.93-src 
   - rustdesk-server 
   - rustdesk-server-hbbr 
   - rustdesk-server-hbbs 
